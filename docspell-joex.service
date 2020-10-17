@@ -1,0 +1,20 @@
+[Unit]
+Description=docspell-joex
+Requires=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/lib/docspell
+ExecStart=/usr/bin/docspell-joex
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=60
+SuccessExitStatus=
+TimeoutStopSec=5
+User=docspell
+Group=docspell
+PermissionsStartOnly=true
+LimitNOFILE=1024
+
+[Install]
+WantedBy=multi-user.target

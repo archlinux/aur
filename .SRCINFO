@@ -1,0 +1,41 @@
+pkgbase = docspell
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/eikek/docspell
+	arch = any
+	groups = docspell
+	license = GPL3
+	source = docspell-0.12.0-restserver.zip::https://github.com/eikek/docspell/releases/download/v0.12.0/docspell-restserver-0.12.0.zip
+	source = docspell-0.12.0-joex.zip::https://github.com/eikek/docspell/releases/download/v0.12.0/docspell-joex-0.12.0.zip
+	source = docspell-joex.sh
+	source = docspell-restserver.sh
+	source = docspell-joex.service
+	source = docspell-restserver.service
+	source = docspell.sysusers
+	source = docspell.tmpfiles
+	sha512sums = 71d57a7645fb62138019d2be01d6fcd627c8b85407954cba50d4dd4c939ea35f06516eda24f10cc53d2f28b0ed4a534ec842b15409e1c21fe639581e7bb9d878
+	sha512sums = d563241a071f81fd325c88bccd6c9f448e6b297be326266639af2eec51f766d134dad379f56fd737247769b22007ba2ded6e8ad2b3b84e13f9bc4b9cfb529e9b
+	sha512sums = 2603c87f2db0e5d57486ad15f83092f577308d1bcda94d9f03bb142cc367c8421105b09bdcd93164a5f55059ac2d4f6d188ba3f729c11211438643675b577f00
+	sha512sums = 71887a73f3f545260667084e065d8268cefb10912d81e3cdbcbb0e104f3ebb1a498b8fc7bf14ec1ebcbfae9d79006a618f2477969eb2bd79603e0abfe9cb120c
+	sha512sums = ecc4caa40f4605b6889f5afae2686b9082c012e4a12225a219daaf304a7ceec31b7b2d9458133d33ec12cb10b47b3275b0b14707c39733204e64904885858d41
+	sha512sums = 20874138bfbcb952a9cd913d38418b0ab19c3c91f035e6a1b2b4549daf7f63075968dfc1eb114322a0666c9709888a3f578c8924fd23ccb2d839385c923e1ff9
+	sha512sums = 1c5d5ade3948e3791b790ff27ec20017b589101622342a7ff603127a4400fd557cdc1125a35b812eef317abdb04b5ffd43d4b52977eac85e4ed009086293bc78
+	sha512sums = 22bece62e82fcbc7c41daeb457cf7473a5e22690ec6a9a7e45e471aabcce930fca8220102b2b979057b577ddfedba3b758227ee912191f8074dbdd2f56b20e8c
+
+pkgname = docspell-joex
+	pkgdesc = Job executer for docspell
+	depends = java-runtime-headless
+	depends = ghostscript
+	depends = tesseract
+	depends = unoconv
+	depends = wkhtmltopdf
+	optdepends = unpaper: pre-processes images to yield better results when doing ocr
+	optdepends = ocrmypdf: adds an OCR layer to scanned PDF files to make them searchable
+	optdepends = solr: provide the fulltext search feature
+	backup = etc/docspell-joex.conf
+
+pkgname = docspell-restserver
+	depends = java-runtime-headless
+	optdepends = solr: provide the fulltext search feature
+	backup = etc/.conf
+

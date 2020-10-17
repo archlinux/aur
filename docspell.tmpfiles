@@ -1,0 +1,3 @@
+d /run/docspell 755 docspell docspell -
+d /var/log/docspell - docspell docspell -
+d /var/lib/docspell 755 docspell docspell -
