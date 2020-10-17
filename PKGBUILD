@@ -4,7 +4,7 @@
 _gemname='gettext'
 pkgname="ruby-${_gemname}"
 pkgver=3.3.6
-pkgrel=4
+pkgrel=5
 pkgdesc='Gettext gem is a pure Ruby Localization(L10n) library and tool which is modeled after the GNU gettext package.'
 arch=(any)
 url='https://github.com/ruby-gettext/gettext'
@@ -12,7 +12,7 @@ license=('RUBY' 'LGPL3')
 makedepends=('ruby-rdoc' 'ruby-yard' 'ruby-bundler')
 depends=('ruby' 'ruby-locale' 'ruby-text')
 checkdepends=('ruby-test-unit' 'ruby-rake' 'ruby-test-unit-rr')
-source=("https://github.com/ruby-gettext/gettext/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=("!emptydirs")
 sha512sums=('3637009d2c97928ebe9755433df8c79337d7f7c39cd5c8a68bc28ed4c4f975b3addb99031bea7ab9bc482b03fef962e5c6357626123958de20c0155f8f71f25d')
 
@@ -47,5 +47,6 @@ package() {
 
   rm -rf "${pkgdir}/${_gemdir}/cache"
 
-  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 README.md doc/text/news.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 doc/text/lgpl-3.0.txt doc/text/ruby-license.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
