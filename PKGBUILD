@@ -7,12 +7,11 @@ pkgname=('jed-snapshot' 'rgrep')
 _pkgver=0.99.20-143
 pkgver=${_pkgver//-/.}
 _pkgname=${pkgname/-snapshot/}
-pkgrel=1
+pkgrel=2
 pkgdesc="A freely available text editor - Latest development version"
 arch=('i686' 'x86_64')
 url="http://www.jedsoft.org/snapshots/"
 license=('GPL')
-depends=('gpm' 'slang' 'libxft')
 makedepends=('libxext' 'libxt')
 source=("http://www.jedsoft.org/snapshots/jed-pre${_pkgver}.tar.gz")
 sha256sums=('23df3a7adb4d34348be53baf758885b5da249ce11fb04c488e3d9c4dc33dff05')
@@ -35,6 +34,7 @@ build() {
 package_jed-snapshot() {
   provides=('jed')
   conflicts=('jed')
+  depends=('gpm' 'slang' 'libxft')
   cd ${_pkgname}-pre${_pkgver}
   make DESTDIR="${pkgdir}" install
 }
