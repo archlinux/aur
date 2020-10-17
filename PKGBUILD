@@ -7,10 +7,11 @@ license=('BSD')
 depends=('mingw-w64-zlib' 'mingw-w64-boost')
 makedepends=('mingw-w64-cmake')
 url='http://www.assimp.org/'
-source=("https://github.com/assimp/assimp/archive/v${pkgver}.tar.gz")
+source=("https://github.com/assimp/assimp/archive/v${pkgver}.tar.gz"
+       'dll-export.patch::https://github.com/assimp/assimp/pull/2698/commits/81d125a2cca748ef3f79f1f0a6731d7e6d694ec1.patch')
 options=('!strip' '!buildflags' 'staticlibs')
-sha256sums=('11310ec1f2ad2cd46b95ba88faca8f7aaa1efe9aa12605c55e3de2b977b3dbfc')
-
+sha256sums=('11310ec1f2ad2cd46b95ba88faca8f7aaa1efe9aa12605c55e3de2b977b3dbfc'
+            '986af7dda8625e6d9cbea787dcdab57fd1e00f8d171c76acece7187a032ca46c')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare ()
@@ -19,7 +20,7 @@ prepare ()
   # master is ok
   sed -i 's|set(sharedLibraryName "libassimp\${ASSIMP_LIBRARY_SUFFIX}@CMAKE_SHARED_LIBRARY_SUFFIX@.@ASSIMP_VERSION_MAJOR@")|set(sharedLibraryName "libassimp.dll.a")|g' assimpTargets-release.cmake.in
   sed -i 's|set(sharedLibraryName "libassimp\${ASSIMP_LIBRARY_SUFFIX}@CMAKE_DEBUG_POSTFIX@@CMAKE_SHARED_LIBRARY_SUFFIX@.@ASSIMP_VERSION_MAJOR@")|set(sharedLibraryName "libassimp.dll.a")|g' assimpTargets-debug.cmake.in
-  curl -L https://github.com/assimp/assimp/pull/2698/commits/81d125a2cca748ef3f79f1f0a6731d7e6d694ec1.patch | patch -p1
+  patch -p1 -i ../dll-export.patch
 }
 
 build()

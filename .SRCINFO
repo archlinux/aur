@@ -12,7 +12,9 @@ pkgbase = mingw-w64-assimp
 	options = !buildflags
 	options = staticlibs
 	source = https://github.com/assimp/assimp/archive/v5.0.1.tar.gz
+	source = dll-export.patch::https://github.com/assimp/assimp/pull/2698/commits/81d125a2cca748ef3f79f1f0a6731d7e6d694ec1.patch
 	sha256sums = 11310ec1f2ad2cd46b95ba88faca8f7aaa1efe9aa12605c55e3de2b977b3dbfc
+	sha256sums = 986af7dda8625e6d9cbea787dcdab57fd1e00f8d171c76acece7187a032ca46c
 
 pkgname = mingw-w64-assimp
 
