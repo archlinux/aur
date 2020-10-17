@@ -26,7 +26,7 @@ package() {
   mkdir -p "$pkgdir"/usr/share/licenses/"$_pkgname"/
   mkdir -p "$pkgdir"/usr/share/man/man6/
   cp -f "$srcdir/$__pkgname-$pkgver"/LICENSE "$pkgdir"/usr/share/licenses/"$_pkgname"/
-  install -g 0 -o 0 -m 0644 "$srcdir/$__pkgname-$pkgver"/"$_pkgname".6 "$pkgdir"/usr/share/man/man6/
+  install -g 0 -o 0 -m 0644 "$srcdir/$__pkgname-$pkgver"/manual/"$_pkgname".6 "$pkgdir"/usr/share/man/man6/
   gzip -f "$pkgdir"/usr/share/man/man6/"$_pkgname".6
   cp "$srcdir/$__pkgname-$pkgver"/"$_pkgname" "$pkgdir"/usr/bin
 }
