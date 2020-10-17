@@ -1,4 +1,6 @@
 # Maintainer: Alisson Lauffer <alissonvitortc@gmail.com>
+# Contributor: TBK <aur at jjtc dot eu>
+
 pkgname=bluemail
 pkgver=1.1.35
 pkgrel=1
@@ -9,10 +11,12 @@ license=('custom')
 conflicts=('bluemail-bin')
 provides=('bluemail')
 
-depends=('libglvnd')
-optdepends=('libnotify: Desktop notifications')
+depends=('libnotify' 'libappindicator-gtk3' 'libxtst' 'nss' 'libxss')
 makedepends=('squashfs-tools' 'imagemagick')
 
+# Get latest version + link from https://snapcraft.io/bluemail || snap info bluemail || run the following
+# curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/bluemail | jq '.download_url' -r
+# curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/bluemail | jq '.version' -r
 source=('LICENSE'
         "${pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/ZVlj0qw0GOFd5JgTfL8kk2Y5eIG1IpiH_42.snap")
 
