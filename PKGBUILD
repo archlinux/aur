@@ -6,29 +6,30 @@
 
 pkgname=libpulse-nosystemd
 pkgdesc="Client library for PulseAudio"
-pkgver=13.0
-pkgrel=2
+pkgver=13.99.2+13+g7f4d7fcf5
+pkgrel=1
 arch=(i686 x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(LGPL)
 depends=(dbus libasyncns libcap libxtst libsm libsndfile)
-makedepends=(attr rtkit speexdsp tdb orc gtk3 libsoxr meson xmltoman)
+makedepends=(attr rtkit speexdsp tdb orc gtk3 libsoxr meson xmltoman
+             gst-plugins-base-libs)
 provides=("libpulse=${pkgver}" libpulse{,-simple,-mainloop-glib}.so)
 conflicts=('libpulse')
 replaces=('libpulse')
 backup=(etc/pulse/client.conf)
-_commit=200618b32f0964a479d69c9b6e5073e6931c370a  # tags/v13.0^0
+_commit=7f4d7fcf5f6407913e50604c6195d0d5356195b1  # master
 source=("git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#commit=$_commit")
 sha256sums=('SKIP')
 
 build() {
   arch-meson --auto-features auto pulseaudio build \
-    -D gcov=false \
     -D pulsedsp-location='/usr/\$LIB/pulseaudio' \
+    -D stream-restore-clear-old-devices=true \
     -D udevrulesdir=/usr/lib/udev/rules.d \
     -D systemd=disabled \
     -D tests=false
-  ninja -C build
+  meson compile -C build
 }
 
 package() {
