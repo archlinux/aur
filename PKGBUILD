@@ -2,7 +2,7 @@
 # Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=rstudio-desktop
-pkgver=1.3.1073
+pkgver=1.3.1093
 _clangver=3.6.1
 pkgrel=1
 pkgdesc="Open source and enterprise-ready professional software for the R community"
@@ -28,7 +28,7 @@ source=(
 	'https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip'
 )
 noextract=('core-dictionaries.zip' "gin-$_ginver.zip")
-sha256sums=('4c458a1f86c4d4084d5d719a13f2a4a12851de60ed654565280d8c78f5a5b318'
+sha256sums=('6ea169a0d59f0c3eba408d74a2590f7bf9f1e6f911b266a02f6266bf4975cec9'
             '4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494')
 
 _pkgname=rstudio
