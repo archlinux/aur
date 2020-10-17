@@ -1,12 +1,12 @@
 pkgbase = ruby-puppet_forge
 	pkgdesc = Ruby client for the Puppet Forge API. Access and manipulate the Puppet Forge API from Ruby.
-	pkgver = 2.3.3
+	pkgver = 2.3.4
 	pkgrel = 1
 	url = https://github.com/puppetlabs/forge-ruby
 	arch = any
 	license = Apache
+	checkdepends = ruby-rspec
 	makedepends = ruby-rdoc
-	makedepends = ruby-rspec
 	makedepends = ruby-bundler
 	depends = ruby
 	depends = ruby-faraday
@@ -15,8 +15,8 @@ pkgbase = ruby-puppet_forge
 	depends = ruby-semantic_puppet
 	depends = ruby-minitar
 	options = !emptydirs
-	source = https://github.com/puppetlabs/forge-ruby/archive/v2.3.3/ruby-puppet_forge-v2.3.3.tar.gz
-	sha512sums = 990ba97406a04df90d8b809ff68cfac524e1b61d6dfff3251c1ea674d85485fae686e734559d1b1f0048eb9a4c17d35bcf7a4692bd9a8ad8c7868ae94a5bc9bf
+	source = https://github.com/puppetlabs/forge-ruby/archive/v2.3.4/ruby-puppet_forge-v2.3.4.tar.gz
+	sha512sums = cc0e95e2ae4c94268b647a664f9b07ff3e5f60d01ef2b37602763f7bd9b68e3543abca8b45c5a9007b418c35c7108bc3d75df721bf78d9318717caf3ccbb905c
 
 pkgname = ruby-puppet_forge
 

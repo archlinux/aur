@@ -3,17 +3,18 @@
 
 _gemname='puppet_forge'
 pkgname="ruby-${_gemname}"
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=1
 pkgdesc='Ruby client for the Puppet Forge API. Access and manipulate the Puppet Forge API from Ruby.'
 arch=('any')
 url='https://github.com/puppetlabs/forge-ruby'
 license=('Apache')
-makedepends=('ruby-rdoc' 'ruby-rspec' 'ruby-bundler')
+makedepends=('ruby-rdoc' 'ruby-bundler')
+checkdepends=('ruby-rspec')
 depends=('ruby' 'ruby-faraday' 'ruby-faraday-middleware' 'ruby-gettext-setup' 'ruby-semantic_puppet' 'ruby-minitar')
-source=("https://github.com/puppetlabs/forge-ruby/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 options=("!emptydirs")
-sha512sums=('990ba97406a04df90d8b809ff68cfac524e1b61d6dfff3251c1ea674d85485fae686e734559d1b1f0048eb9a4c17d35bcf7a4692bd9a8ad8c7868ae94a5bc9bf')
+sha512sums=('cc0e95e2ae4c94268b647a664f9b07ff3e5f60d01ef2b37602763f7bd9b68e3543abca8b45c5a9007b418c35c7108bc3d75df721bf78d9318717caf3ccbb905c')
 
 # update the gemspec to allow newer versions of rake
 # remove deprecated options from the gemspec
@@ -46,6 +47,7 @@ package() {
   gem install --verbose --ignore-dependencies --no-user-install --install-dir "${pkgdir}/${_gemdir}" --bindir "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
 
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 README.md CHANGELOG.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 
   rm -rf "${pkgdir}/${_gemdir}/cache"
 }
