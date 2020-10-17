@@ -2,7 +2,7 @@
 # Contributor: Steven Seifried <gitlab@canox.net>
 # Contributor: Kevin Van Lierde <kevin.van.lierde@gmail.com>
 pkgname=tuxedo-backlight-control
-pkgver=0.7
+pkgver=0.6
 pkgrel=3
 arch=('x86_64')
 license=('MIT')
