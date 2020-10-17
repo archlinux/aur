@@ -7,7 +7,7 @@
 pkgname=openafs-modules-dkms
 _srcname=openafs
 pkgver=1.8.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel module for OpenAFS (dkms)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -21,13 +21,15 @@ source=("http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.b
         0001-Temporary-fix-for-compilation-with-GCC-10.patch
         0002-LINUX-5.8-Replace-kernel_setsockopt-with-new-funcs.patch
         0003-LINUX-5.8-do-not-set-name-field-in-backing_dev_info.patch
-        0004-LINUX-5.8-use-lru_cache_add.patch)
+        0004-LINUX-5.8-use-lru_cache_add.patch
+        0005-LINUX-5.9-Remove-HAVE_UNLOCKED_IOCTL-COMPAT_IOCTL.patch)
 sha256sums=('8b4e9d3180f1ecd752753da17ac630df04eb7007c90a921a5f6403c0339d2945'
             '5ea5e184f9b44f5ed45817d2b5a10149d15c8c54f49e0b5b4b773652673cb9b0'
-            '3d0bf6960ef1eaab87492e93ea36c3b1a6b1e12877863abd7b64ad78e4637bce'
-            '5c02f2c152720bc790dfdf5f99b083b986acd34074da917efa9f39265eda7483'
-            '4373b0509c1eb7f4aec4cb11a231571f1015cdf3bef6e059c0df9e493e178e83'
-            '955f710fff9f535406800406bf128deccc209511b0aa9b6aacb6f3b4417a6a4d')
+            '604fc461acf66dc833baa434023320ab656b17acdfabcd8153759af5578ddaf8'
+            'fa4a34c095429a84a68251270323dfa7159ee3532c2fe2dd8d49da449d275e89'
+            '0921338953f2359971a1431c3fc2d2a5f4d3ff050acce160e5cf21023eca9d0f'
+            '938fcde2ab0637164cc893bf21fec0f495495bea5690f00a0cc0bfd6b8c07f66'
+            '9057a23e755c4b218f67c71d481500ff32598f3f6de6a2f487d5b22412130c78')
 
 prepare() {
   cd "${srcdir}/${_srcname}-${pkgver}"
@@ -39,6 +41,9 @@ prepare() {
   patch -p1 < "${srcdir}"/0002-LINUX-5.8-Replace-kernel_setsockopt-with-new-funcs.patch
   patch -p1 < "${srcdir}"/0003-LINUX-5.8-do-not-set-name-field-in-backing_dev_info.patch
   patch -p1 < "${srcdir}"/0004-LINUX-5.8-use-lru_cache_add.patch
+
+  # Compatibility with Linux 5.9
+  patch -p1 < "${srcdir}"/0005-LINUX-5.9-Remove-HAVE_UNLOCKED_IOCTL-COMPAT_IOCTL.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q
