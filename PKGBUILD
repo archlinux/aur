@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=git-subrepo-xdg
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Git Submodule alternative"
 arch=('any')
 url="https://github.com/ingydotnet/git-subrepo"
@@ -30,5 +30,13 @@ package() {
   gzip -c $srcdir/git-subrepo-${pkgver}/man/man1/git-subrepo.1 > $pkgdir/usr/share/man/man1/git-subrepo.1.gz
 
   # TODO: completions
+  install -d $pkgdir/usr/share/zsh/site-functions
+  sed -i '6,9d' $srcdir/git-subrepo-${pkgver}/share/zsh-completion/_git-subrepo
+  cp -a $srcdir/git-subrepo-${pkgver}/share/zsh-completion/_git-subrepo $pkgdir/usr/share/zsh/site-functions
+
+  # not sure about these, I don't use bash :)
+  # Note: seems to work like git-annex; may need to install bash-completion to enable
+  install -d $pkgdir/usr/share/bash-completion/completions
+  cp -a $srcdir/git-subrepo-${pkgver}/share/completion.bash $pkgdir/usr/share/bash-completion/completions/git-subrepo
 }
 
