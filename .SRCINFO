@@ -1,5 +1,5 @@
 pkgbase = sge
-	pkgdesc = Son of Grid Engine/Sun Grid Engine
+	pkgdesc = The Son of Grid Engine is a community project to continue Sun's old gridengine.
 	pkgver = 8.1.9
 	pkgrel = 2
 	epoch = 1
