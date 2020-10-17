@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r347.9bf163d
+pkgver=r348.4a7b868
 pkgrel=1
 pkgdesc='A dmenu-inspired native client for web services. Supports youtube, nyaa.si, 4chan, matrix and several manga sites.'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
 provides=('QuickMedia')
 conflicts=('QuickMedia')
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.tar.gz")
-sha512sums=('29665f53a5785de648e306e893714afc7aeb97e0905288225705d241103d2ef387b106d0a7ebef02aed012428c1c38d49f837786e6b51f1bb973743d97b82065')
+sha512sums=('ddba099488f6033d6dd135e180af23ec8645388a138644201a9470538bb679ad8c49432fdcf17014a8e95607fef43c2b1ad84f94e2218b5ec1771260e7369404')
 
 build() {
   cd "$srcdir"
@@ -31,7 +31,7 @@ package() {
   install -Dm755 "sibs-build/$(sibs platform)/release/QuickMedia" "$pkgdir/usr/bin/QuickMedia"
   install -Dm644 boards.json "$pkgdir/usr/share/quickmedia/boards.json"
   install -Dm644 input.conf "$pkgdir/usr/share/quickmedia/input.conf"
-  for file in images/* icons/*; do
+  for file in images/* icons/* shaders/*; do
     install -Dm644 "$file" "$pkgdir/usr/share/quickmedia/$file"
   done
   for file in launcher/*; do
