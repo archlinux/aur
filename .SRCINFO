@@ -12,5 +12,5 @@ pkgbase = glaxnimate-bin
 	source = glaxnimate-0.1.4.deb::https://gitlab.com/mattbas/glaxnimate/-/jobs/artifacts/0.1.4/raw/build/glaxnimate.deb?job=linux%3Adeb
 	sha1sums = 9c1260c753b16b8bbafedf67889ce77fdbf0554b
 
-pkgname = glaxnimate
+pkgname = glaxnimate-bin
 
