@@ -7,12 +7,12 @@ pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
 url='http://kicad-pcb.org/'
 license=('GPL')
-depends=(
-	'wxgtk3' 'python' 'boost-libs' 'glew' 'curl' 'glm' 'ngspice' 'opencascade'
-	'python-wxpython' 'kicad-library-nightly'
-)
+depends=('wxgtk3' 'python' 'boost-libs' 'glew' 'curl' 'glm' 'ngspice' 'opencascade' 'python-wxpython')
 makedepends=('git' 'cmake' 'zlib' 'mesa' 'boost' 'swig')
-optdepends=('kicad-library-3d-nightly: for 3d models of components')
+optdepends=(
+	'kicad-library-nightly: for footprints and symbols'
+	'kicad-library-3d-nightly: for 3d models of components'
+)
 source=(
 	'git+https://gitlab.com/kicad/code/kicad.git'#commit=@KICAD_HASH@
 	'git+https://gitlab.com/kicad/code/kicad-i18n.git'#commit=@I18N_HASH@

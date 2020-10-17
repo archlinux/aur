@@ -1,21 +1,21 @@
 # Maintainer: Rachel Mant <dx-mon@users.sourceforge.net>
 
 pkgname=kicad-nightly
-pkgver=5.99.0_4092_g1ee3df61c9
+pkgver=5.99.0_4126_g229194c76b
 pkgrel=1
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
 url='http://kicad-pcb.org/'
 license=('GPL')
-depends=(
-	'wxgtk3' 'python' 'boost-libs' 'glew' 'curl' 'glm' 'ngspice' 'opencascade'
-	'python-wxpython' 'kicad-library-nightly'
-)
+depends=('wxgtk3' 'python' 'boost-libs' 'glew' 'curl' 'glm' 'ngspice' 'opencascade' 'python-wxpython')
 makedepends=('git' 'cmake' 'zlib' 'mesa' 'boost' 'swig')
-optdepends=('kicad-library-3d-nightly: for 3d models of components')
+optdepends=(
+	'kicad-library-nightly: for footprints and symbols'
+	'kicad-library-3d-nightly: for 3d models of components'
+)
 source=(
-	'git+https://gitlab.com/kicad/code/kicad.git'#commit=1ee3df61c9
-	'git+https://gitlab.com/kicad/code/kicad-i18n.git'#commit=72653a3
+	'git+https://gitlab.com/kicad/code/kicad.git'#commit=229194c76b
+	'git+https://gitlab.com/kicad/code/kicad-i18n.git'#commit=adb743b
 	'kicad-nightly.env'
 )
 sha256sums=(
