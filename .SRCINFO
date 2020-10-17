@@ -1,7 +1,7 @@
 pkgbase = jackett-runit
 	pkgdesc = Use many torrent trackers with software that supports torznab/potato feeds.
-	pkgver = 0.16.1757
-	pkgrel = 2
+	pkgver = 0.16.1771
+	pkgrel = 1
 	url = https://github.com/Jackett/Jackett
 	arch = x86_64
 	arch = aarch64
@@ -18,12 +18,12 @@ pkgbase = jackett-runit
 	sha256sums = ceac561ee2755a0ec2d4ffa9e381f0ecb422ac34e77f65df996a10d79fda429b
 	sha256sums = d005fcd009ec5404e1ec88246c31e664167f5551d6cabc35f68eb41750bfe590
 	sha256sums = 64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1
-	source_x86_64 = Jackett.Binaries.LinuxAMDx64-0.16.1757.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.16.1757/Jackett.Binaries.LinuxAMDx64.tar.gz
-	sha256sums_x86_64 = 8515290dc7649c47285a54f70aaa6544876eade74f52c64522c5782b2e873ce6
-	source_aarch64 = Jackett.Binaries.LinuxARM64-0.16.1757.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.16.1757/Jackett.Binaries.LinuxARM64.tar.gz
-	sha256sums_aarch64 = ab8c6fa9841a1591a069181c5de33e4695597c1dad07eb594518655435942b62
-	source_armv7h = Jackett.Binaries.LinuxARM32-0.16.1757.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.16.1757/Jackett.Binaries.LinuxARM32.tar.gz
-	sha256sums_armv7h = e71921ea26eb19a4621aa19a8e90a3a930485e788127c8fcb0b29ef4dc29b381
+	source_x86_64 = Jackett.Binaries.LinuxAMDx64-0.16.1771.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.16.1771/Jackett.Binaries.LinuxAMDx64.tar.gz
+	sha256sums_x86_64 = 3956d4376d1f344c1815b8be4270a94800c1cfe76f42aa7e8ab8a0a3e03a84af
+	source_aarch64 = Jackett.Binaries.LinuxARM64-0.16.1771.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.16.1771/Jackett.Binaries.LinuxARM64.tar.gz
+	sha256sums_aarch64 = 2f2a729998100aa20b815d183dc6fb7777f331791f900adfabe4adab4810bf05
+	source_armv7h = Jackett.Binaries.LinuxARM32-0.16.1771.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.16.1771/Jackett.Binaries.LinuxARM32.tar.gz
+	sha256sums_armv7h = 42dea7cb1e3bdcaf2f48409c1867c6b4d42dc8f73a3bdf7338f7dbb47500baeb
 
 pkgname = jackett-runit
 
