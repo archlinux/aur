@@ -2,12 +2,13 @@
 # Contributor: Hekuran https://github.com/narukeh
 
 pkgname=sm64ex-nightly-git
-pkgver=r573.dd0e86db
+pkgver=r592.2cf99649
 pkgrel=1
 pkgdesc='Nightly branch of sm64ex with 60fps patch. PKGBUILD based on sm64pc-git.'
 arch=('any')
 url='https://github.com/sm64pc/sm64ex'
 license=('reverse-engineered and unlicensed')
+makedepends=('git')
 depends=('python' 'audiofile' 'sdl2' 'glew')
 provides=(sm64ex-nightly)
 
