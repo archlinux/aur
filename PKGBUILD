@@ -1,33 +1,34 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=libclc
-pkgver=0.2.0+589+9aa6f35
-pkgrel=2
+pkgver=11.0.0
+pkgrel=1
 pkgdesc="Library requirements of the OpenCL C programming language"
 arch=('any')
 url="https://libclc.llvm.org/"
 license=('MIT')
-makedepends=('clang' 'llvm' 'python' 'git')
-options=('staticlibs')
-source=('git+https://llvm.org/git/libclc.git#commit=9aa6f35')
+makedepends=('clang' 'llvm' 'cmake' 'ninja' 'python' 'git')
+source=("git+https://github.com/llvm/llvm-project.git#tag=llvmorg-$pkgver")
 md5sums=('SKIP')
 
-pkgver() {
-  cd libclc
-
-  echo 0.2.0+$(git rev-list --count HEAD)+$(git describe --always)
+prepare() {
+  cd llvm-project/libclc
+  mkdir build
 }
 
 build() {
-  cd libclc
-   ./configure.py --prefix=/usr
-  make
+  cd llvm-project/libclc/build
+
+  cmake .. -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  ninja
 }
 
 package() {
-  cd libclc
-  
-  make install DESTDIR="$pkgdir"
-  install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd llvm-project/libclc/build
+
+  DESTDIR="$pkgdir" ninja install
+  install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
