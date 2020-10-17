@@ -1,10 +1,11 @@
 pkgname=vk-layer-flimes-gui-git
 pkgver=1.0.0.r0.gf9b2919
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for vk-layer-flimes external control"
 arch=('x86_64')
 url="https://github.com/zaps166/vk-layer-flimes-gui"
 license=('MIT')
+depends=('qt5-base' 'qt5-x11extras')
 makedepends=('git' 'cmake')
 optdepends=('vk-layer-flimes-git')
 source=("git+https://github.com/zaps166/vk-layer-flimes-gui.git")
