@@ -1,34 +1,30 @@
 # Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
 
-_base=fiat
-_fragment="#branch=master"
-pkgname=python-${_base}-git
-pkgdesc="Supports generation of arbitrary order instances of the Lagrange elements on lines, triangles, and tetrahedra."
-pkgver=20181101
+pkgname=python-fiat-git
+pkgdesc="Generation of arbitrary order Lagrange elements on lines, triangles, and tetrahedra."
+pkgver=20200113
 pkgrel=1
 arch=('any')
-url="https://bitbucket.org/fenics-project/${_base}"
+url="https://bitbucket.org/fenics-project/fiat"
 license=('GPL3')
 groups=('fenics-git')
 depends=('python-numpy' 'python-sympy')
 makedepends=('python-setuptools' 'git')
 options=(!emptydirs)
-source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git${_fragment}")
+source=("fiat::git+https://bitbucket.org/fenics-project/fiat.git")
 md5sums=('SKIP')
 
 pkgver() {
- 	cd ${_base}
+ 	cd fiat
  	git log --format="%cd" --date=short -1 | sed 's/-//g'
 }
 
 build() {
- 	cd ${_base}
+ 	cd fiat
  	python setup.py build
 }
 
 package() {
- 	cd ${_base}
+ 	cd fiat
  	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 }
-
-# vim: shiftwidth=2 softtabstop=2 tabstop=2 noexpandtab
