@@ -6,14 +6,14 @@
 # Contributor: Kyle Manna <kyle(at)kylemanna(dot)com>
 
 pkgname=slack-desktop-black-theme-night-mood
-pkgver=4.4.2
+pkgver=4.10.3
 pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux, with black theme night mood patch"
 cssver=c09f3e0fe9c3f362f3c8c9e55554da076a04a354
 arch=('x86_64')
 url="https://slack.com/downloads"
 license=('custom')
-depends=('alsa-lib' 'gconf' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss' 'ttf-muli' 'xdg-utils')
+depends=('alsa-lib' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss' 'ttf-muli' 'xdg-utils')
 makedepends=('asar')
 optdepends=('gnome-keyring')
 conflicts=('slack-desktop' 'slack-desktop-dark')
@@ -22,7 +22,7 @@ source=("https://downloads.slack-edge.com/linux_releases/${pkgname%-black-theme-
         "darkify_slack.js"
         "${pkgname}.patch")
 noextract=("${pkgname%-black-theme-night-mood}-${pkgver}-amd64.deb")
-sha256sums=('5aaa055652155773985c6b2d45b87e6321c1f98213218dfc8e416cbc44043a73'
+sha256sums=('2eb79127ff0e17f2344338b22fbbc44482d07fbd3841f4a4929ca1e9a390d2be'
             '341056a19165860715c0ba12911c930d04214c51ee863bbd5cad4e2b2be78f68'
             'b5c2d94ef8bac73c7a97bcde303505f20d6b8561dfd86ed2278b4109e0c5412c'
             'd351d8ff3eee0006d1c66e3efec60a78ae8cc10fd8c3042e8d899125a1c4bf47')
