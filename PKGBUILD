@@ -1,17 +1,17 @@
-# Maintainer: Jonathon Fernyhough <jonathon_at_manjaro dot_org>
+# Maintainer: Jonathon Fernyhough <jonathon_at m2x+dev>
 
 pkgname=uecide
-pkgver=0.9.1
+pkgver=0.11.8
 pkgrel=1
 pkgdesc='Universal Embedded Computing IDE'
 arch=('any')
 url='https://uecide.org/'
 license=('GPL2')
 makedepends=('apache-ant' 'jdk8-openjdk')
-depends=('java-environment>7')
+depends=('java-environment>8')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname^^}/${pkgname^^}/archive/${pkgver}.tar.gz")
-sha256sums=('380258455d05d652200d3c1650e2dcec8f80f4f47a115e207529e9eb24b2bef0')
+b2sums=('f09e647fbf04088c98a2d6babc1ae22bd349ec39eba8a6971b277b780236c9d37fd346bb5d24fd882abfbce7f97a3c1c39d90be9fb688c263c45e47f28f343e0')
 
 build() {
 	cd "${pkgname^^}-$pkgver"
