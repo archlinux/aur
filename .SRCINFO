@@ -1,0 +1,17 @@
+pkgbase = ossfs-git
+	pkgdesc = The OSSFS enables you to mount Alibaba Cloud OSS buckets to a local file in Linux/Mac OS X systems.
+	pkgver = 1.80.6.r0.g9640e79
+	pkgrel = 1
+	url = https://github.com/aliyun/ossfs
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = fuse
+	depends = man
+	depends = libxml2
+	depends = curl
+	source = git+https://github.com/aliyun/ossfs
+	md5sums = SKIP
+
+pkgname = ossfs-git
+
