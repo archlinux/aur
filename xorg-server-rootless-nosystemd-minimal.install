@@ -1,0 +1,12 @@
+post_install() {
+	chown -v :input /usr/bin/Xorg
+	chmod -v g+s /usr/bin/Xorg
+cat <<MSG
+>>> Xserver will fail to run if not launched from the same virtual 
+    terminal as was used to log in.
+    Without root rights, log files will be in ~/.local/share/xorg/ directory.
+MSG
+}
+post_upgrade() {
+	post_install $1
+}
