@@ -36,12 +36,7 @@ build() {
   cd "${pkgname}-${pkgver}/src/${pkgname}"
   lupdate "${pkgname}.pro"
   lrelease "${pkgname}.pro"
-  qmake-qt4
-    PREFIX='/usr' \
-    QMAKE_CFLAGS="$CFLAGS" \
-    QMAKE_CXXFLAGS="$CXXFLAGS" \
-    QMAKE_LFLAGS="$LDFLAGS" \
-    qmake-qt4 "${pkgname}.pro" -config release "DEFINES += NOSTATIC" "RESOURCES -= ${pkgname}.qrc"
+  qmake-qt4 "${pkgname}.pro" -config release "DEFINES += NOSTATIC" "RESOURCES -= ${pkgname}.qrc"
 	make
 }
 
