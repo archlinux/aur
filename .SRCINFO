@@ -1,8 +1,8 @@
 pkgbase = python-dolfin-git
-	pkgdesc = the Python interface of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations.
-	pkgver = 20181206
+	pkgdesc = Python interface of FEniCS for ordinary and partial differential equations.
+	pkgver = 20201015
 	pkgrel = 1
-	url = https://bitbucket.org/fenics-project/dolfin
+	url = https://github.com/FEniCS/dolfinx
 	arch = i686
 	arch = x86_64
 	groups = fenics-git
@@ -12,12 +12,12 @@ pkgbase = python-dolfin-git
 	depends = dolfin-git
 	depends = python-pkgconfig
 	depends = python-ply
+	depends = petsc4py
 	optdepends = python-mpi4py: MPI library for python
-	optdepends = petsc4py: interface with PETSc from python
 	optdepends = slepc4py: interface with SLEPc from python
 	optdepends = python-matplotlib: plotting support
 	options = !emptydirs
-	source = dolfin::git+https://bitbucket.org/fenics-project/dolfin.git#branch=master
+	source = dolfin::git+https://github.com/FEniCS/dolfinx.git
 	md5sums = SKIP
 
 pkgname = python-dolfin-git
