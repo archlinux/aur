@@ -10,7 +10,7 @@ depends=('git')
 makedepends=(gzip sed)
 provides=("git-subrepo")
 conflicts=("git-subrepo")
-source=("${url}archive/${pkgver}.tar.gz")
+source=("${url}/archive/${pkgver}.tar.gz")
 sha256sums=('64cc2490c54fe1e5396bb14f6bbf0aa8378085f3b8847fd8ed171e5ddd886065')
 
 package() {
