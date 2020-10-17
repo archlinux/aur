@@ -1,0 +1,31 @@
+pkgbase = material-maker-bin
+	pkgdesc = A tool based on Godot Engine that can be used to create textures procedurally
+	pkgver = 0.93
+	pkgrel = 1
+	url = https://rodzilla.itch.io/material-maker
+	arch = x86_64
+	license = MIT
+	depends = libpulse
+	depends = alsa-lib
+	depends = libxrandr
+	depends = libglvnd
+	depends = libxcursor
+	depends = libxinerama
+	depends = hicolor-icon-theme
+	provides = material-maker
+	conflicts = material-maker
+	conflicts = material-maker-git
+	options = !strip
+	source = https://github.com/RodZill4/material-maker/releases/download/0.93/material_maker_0_93_linux.tar.gz
+	source = io.github.RodZill4.Material-Maker.appdata.xml
+	source = io.github.RodZill4.Material-Maker.desktop
+	source = material-maker.png
+	source = LICENSE
+	sha256sums = b85f2c2b577e899d741c50d1047bb3870fd4a784f3927112264eba737890b28f
+	sha256sums = 4a27286e448b35c2e7e840c267ac2402f53956ff9fcb5c5f8285797753c32e38
+	sha256sums = d8c96863144183d9f256229232c0cfe18b10518abdb2bba3477781a8d96f0133
+	sha256sums = b6217901109513d5856369b1d9fd8a1981b584ab8d3091fa9c37691782495222
+	sha256sums = ddbacfaf9c588c476c73073e27f69d8137fe41cec7e9081ad0f6fefaa92541b3
+
+pkgname = material-maker-bin
+
