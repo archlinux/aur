@@ -1,16 +1,16 @@
 # Maintainer: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
-pkgver=0.21.1
-pkgrel=2
+pkgver=0.22.1
+pkgrel=1
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('i686' 'x86_64')
 url="https://github.com/lunaryorn/mdcat"
 license=('MPL2')
 depends=('openssl')
-makedepends=('cargo')
+makedepends=('cargo' 'asciidoctor')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('243fb64d72f4eee2350ab0db62c807b0e5092a4d39fb76f6d566c10687b723f1')
+sha256sums=('b14846542fb8b60ac0235b399136372df7569aa59ed63f3faf88ff7a485abe5f')
 
 build() {
   cd "$pkgname-$pkgname-$pkgver"
@@ -44,4 +44,9 @@ package() {
     "$pkgdir/usr/share/bash-completion/completions/mdcat"
   install -Dm644 "$COMPLETIONS_DIR/mdcat.fish" \
     "$pkgdir/usr/share/fish/vendor_completions.d/mdcat.fish"
+
+  MANPAGE="$COMPLETIONS_DIR/../mdcat.1"
+  gzip "$MANPAGE"
+  install -Dm 644 "$MANPAGE.gz" \
+    "$pkgdir/usr/share/man/man1/mdcat.1.gz"
 }
