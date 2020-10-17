@@ -1,6 +1,6 @@
 pkgbase = pixelorama
-	pkgdesc = A free & open-source 2D sprite editor, made with the Godot Engine
-	pkgver = 0.8
+	pkgdesc = A free & open-source 2D sprite editor
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://orama-interactive.itch.io/pixelorama
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = pixelorama
 	provides = pixelorama
 	conflicts = pixelorama-bin
 	conflicts = pixelorama-git
-	source = Pixelorama-0.8.tar.gz::https://github.com/Orama-Interactive/Pixelorama/archive/v0.8.tar.gz
-	sha512sums = f9496d52a4053257ba0a87244b860a6540d02db1f1adc770a6b5753b01f2b908708f98d2c1981651f40c4910238ffb7ccec8a435d5cef88927ce50ba31b9f638
+	source = Pixelorama-0.8.1.tar.gz::https://github.com/Orama-Interactive/Pixelorama/archive/v0.8.1.tar.gz
+	sha512sums = 5d10510ac4452c7a07e1c51a213839ac57af39d7c7f6f6c8c7bc166094c3af7cbb7d8eb343a64ca0cfd1ad269327fac17d0f93625a977cfa27be7663626e446f
 
 pkgname = pixelorama
 

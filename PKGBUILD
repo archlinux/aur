@@ -3,9 +3,9 @@
 
 _pkgname=Pixelorama
 pkgname=pixelorama
-pkgver=0.8
+pkgver=0.8.1
 pkgrel=1
-pkgdesc="A free & open-source 2D sprite editor, made with the Godot Engine"
+pkgdesc="A free & open-source 2D sprite editor"
 arch=('i686' 'pentium4' 'x86_64')
 url="https://orama-interactive.itch.io/pixelorama"
 _url="https://github.com/Orama-Interactive/Pixelorama"
@@ -15,7 +15,7 @@ makedepends=('curl' 'godot' 'unzip')
 provides=('pixelorama')
 conflicts=('pixelorama-bin' 'pixelorama-git')
 source=("${_pkgname}-${pkgver}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
-sha512sums=('f9496d52a4053257ba0a87244b860a6540d02db1f1adc770a6b5753b01f2b908708f98d2c1981651f40c4910238ffb7ccec8a435d5cef88927ce50ba31b9f638')
+sha512sums=('5d10510ac4452c7a07e1c51a213839ac57af39d7c7f6f6c8c7bc166094c3af7cbb7d8eb343a64ca0cfd1ad269327fac17d0f93625a977cfa27be7663626e446f')
 
 prepare() {
   # Checks if the user's directory has the export templates
@@ -55,8 +55,8 @@ prepare() {
   sed -i "s/enable_file_logging=true/enable_file_logging=false/" \
          "${srcdir}/${_pkgname}-${pkgver}/project.godot"
 
-  echo "#!/bin/sh" >> ${srcdir}/${pkgname}
-  echo "exec /usr/lib/${pkgname}/${pkgname} \"\$@\"" >> ${srcdir}/${pkgname}
+  echo "#!/bin/sh" >> "${srcdir}/${_pkgname}-${pkgver}/Misc/Linux/${pkgname}.sh"
+  echo "exec /usr/lib/${pkgname}/${pkgname} \"\$@\"" >> "${srcdir}/${_pkgname}-${pkgver}/Misc/Linux/${pkgname}.sh"
 }
 
 build() {
@@ -66,14 +66,14 @@ build() {
 }
     
 package() {
-  install -Dm755 "${srcdir}/${pkgname}" \
-                 "${pkgdir}/usr/bin/${pkgname}"
-
   install -Dm755 "${srcdir}/${_pkgname}-${pkgver}/build/${pkgname}" \
                  "${pkgdir}/usr/lib/${pkgname}/${pkgname}"
 
   install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/build/${pkgname}.pck" \
                  "${pkgdir}/usr/lib/${pkgname}/${pkgname}.pck"
+
+  install -Dm755 "${srcdir}/${_pkgname}-${pkgver}/Misc/Linux/${pkgname}.sh" \
+                 "${pkgdir}/usr/bin/${pkgname}"
 
   install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/Misc/Linux/com.orama_interactive.${_pkgname}.desktop" \
                  "${pkgdir}/usr/share/applications/com.orama_interactive.${pkgname}.desktop"
