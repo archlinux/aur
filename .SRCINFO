@@ -1,0 +1,15 @@
+pkgbase = solarwolfx
+	pkgdesc = Action/Arcade space game
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://gitlab.com/klockenschooster/solarwolfx
+	arch = x86_64
+	license = LGPL
+	makedepends = python-setuptools
+	depends = python3
+	depends = python-pygame
+	source = solarwolfx-1.6.tar.gz::https://gitlab.com/klockenschooster/solarwolfx/-/archive/v1.6/solarwolfx-v1.6.tar.gz
+	sha256sums = 183abef709991a6c5515539dd5dc5115c88e0fd310a97c7ecc64b1416431cfff
+
+pkgname = solarwolfx
+
