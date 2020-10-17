@@ -1,7 +1,7 @@
 pkgbase = pantheon-dock-instctl-git
 	pkgdesc = The Pantheon Dock (with instance controls)
 	pkgver = r1970.e9fa02b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.reddit.com/r/elementaryos/comments/irt66g/instance_controls_close_switch_to_or_minimize/
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = pantheon-dock-instctl-git
 	depends = python
 	provides = plank
 	conflicts = plank
-	source = pantheon-dock::git+https://www.reddit.com/r/elementaryos/comments/irt66g/instance_controls_close_switch_to_or_minimize/
+	source = pantheon-dock::git+https://github.com/elementary/dock
 	source = instance-controls.patch
 	sha256sums = SKIP
 	sha256sums = 04bdb2b50e7150f9265664fd6d02ed894380c91af26fede3e4560bc80975e77c
