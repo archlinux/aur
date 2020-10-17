@@ -1,6 +1,6 @@
 pkgbase = glaxnimate-bin
 	pkgdesc = Simple vector animation program.
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://glaxnimate.mattbas.org/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = glaxnimate-bin
 	depends = zlib
 	depends = hicolor-icon-theme
 	source = glaxnimate-0.1.4.deb::https://gitlab.com/mattbas/glaxnimate/-/jobs/artifacts/0.1.4/raw/build/glaxnimate.deb?job=linux%3Adeb
-	sha1sums = 9c1260c753b16b8bbafedf67889ce77fdbf0554b
+	sha1sums = d70a71d3dcf5bb5463df4b3263c48af77f423c9f
 
 pkgname = glaxnimate-bin
 
