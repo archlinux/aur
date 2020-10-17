@@ -2,7 +2,7 @@
 # Contributor: Ismael Barros² (RazZziel) <razielmine@gmail.com>
 
 pkgname=emacs-android-git
-pkgver=20150609
+pkgver=20190903
 pkgrel=1
 pkgdesc="Emacs minor mode for Android application development"
 arch=('any')
@@ -11,22 +11,20 @@ license=('GPL3')
 depends=('emacs')
 makedepends=('git')
 install=$pkgname.install
-source=()
-md5sums=()
+source=("${pkgname}::git://github.com/remvee/android-mode.git")
+md5sums=('SKIP')
 
-_gitroot="git://github.com/remvee/android-mode.git"
+pkgver() {
+  cd "$pkgname"
+  git log -1 --pretty=format:%cd --date=short | sed 's/-//g'
+}
 
 build() {
-  msg "Connecting to GIT server..."
-  if [[ -d $srcdir/$pkgname-$pkgver ]]; then
-    cd $srcdir/$pkgname-$pkgver && git pull origin || return 1
-  else
-    git clone $_gitroot $srcdir/$pkgname-$pkgver || return 1
-    cd $srcdir/$pkgname-$pkgver
-  fi
+  cd "$pkgname"
+}
 
-  msg "GIT checkout done or server timeout"
-
+package() {
+  cd "$pkgname"
   install -d $pkgdir/usr/share/emacs/site-lisp/
   install android-mode.el $pkgdir/usr/share/emacs/site-lisp/
 }
