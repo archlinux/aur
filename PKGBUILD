@@ -3,7 +3,7 @@
 # Mantainer: XenGi
 pkgname=unrealtournament
 pkgver=469a
-pkgrel=2
+pkgrel=3
 pkgdesc="The classic Unreal Tournament from 1999 (Retail CD or DVD required)"
 arch=('i686' 'x86_64')
 url="http://www.unrealtournament.com/"
@@ -18,7 +18,7 @@ source=(ut436.run::"https://gitlab.com/XenGi/oldgames/-/raw/master/ut/unreal.tou
         ut436goty.run::"https://gitlab.com/XenGi/oldgames/-/raw/master/ut/unreal.tournament_436-multilanguage.goty.run"
         "https://gitlab.com/XenGi/oldgames/-/raw/master/ut/ALAudio-86eade1c.zip"
 	    "https://gitlab.com/XenGi/oldgames/-/raw/master/ut/OpenGLDrv-3.6-86eade1c.zip"
-        "https://www.oldunreal.com/patch/official/UTPGPatch451.tar.bz2"
+        "https://gitlab.com/XenGi/oldgames/-/raw/master/ut/UTPGPatch451.tar.bz2"
         "https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver}/OldUnreal-UTPatch${pkgver}-Linux.tar.bz2"
         "ut.desktop"
         "disk.list"

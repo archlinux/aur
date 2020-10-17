@@ -1,7 +1,7 @@
 pkgbase = unrealtournament
 	pkgdesc = The classic Unreal Tournament from 1999 (Retail CD or DVD required)
 	pkgver = 469a
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.unrealtournament.com/
 	arch = i686
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = unrealtournament
 	source = ut436goty.run::https://gitlab.com/XenGi/oldgames/-/raw/master/ut/unreal.tournament_436-multilanguage.goty.run
 	source = https://gitlab.com/XenGi/oldgames/-/raw/master/ut/ALAudio-86eade1c.zip
 	source = https://gitlab.com/XenGi/oldgames/-/raw/master/ut/OpenGLDrv-3.6-86eade1c.zip
-	source = https://www.oldunreal.com/patch/official/UTPGPatch451.tar.bz2
+	source = https://gitlab.com/XenGi/oldgames/-/raw/master/ut/UTPGPatch451.tar.bz2
 	source = https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469a/OldUnreal-UTPatch469a-Linux.tar.bz2
 	source = ut.desktop
 	source = disk.list
