@@ -1,0 +1,25 @@
+pkgbase = unetbootin-git
+	pkgdesc = Create bootable Live USB drives
+	pkgver = 681.r16.g28ffb108
+	pkgrel = 1
+	url = https://unetbootin.github.io
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = setconf
+	depends = mtools
+	depends = p7zip
+	depends = qt5-base
+	depends = syslinux
+	optdepends = polkit: run unetbootin directly from menu
+	provides = unetbootin
+	conflicts = unetbootin
+	source = git+https://github.com/unetbootin/unetbootin.git
+	source = unetbootin.sh
+	source = org.archlinux.pkexec.unetbootin.policy
+	sha256sums = SKIP
+	sha256sums = 6b99405a78ac4de80e3a20e766ce993f22c8a01e4ab50f952a10bdcc26effd3f
+	sha256sums = 118f154e2772ff0d50d22735418fb37c9a03ecd0a1bbf2c8a4a8ed48da64160c
+
+pkgname = unetbootin-git
+
