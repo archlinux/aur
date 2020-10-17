@@ -1,34 +1,30 @@
 # Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
 
-_base=ufl
-_fragment="#branch=master"
-pkgname=python-${_base}-git
+pkgname=python-ufl-git
 pkgdesc="Unified form language."
-pkgver=20181115
+pkgver=20200113
 pkgrel=1
 arch=('any')
-url="https://bitbucket.org/fenics-project/${_base}"
+url="https://bitbucket.org/fenics-project/ufl"
 license=('GPL3')
 groups=('fenics-git')
 depends=('python-numpy')
 makedepends=('python-setuptools' 'git')
 options=(!emptydirs)
-source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git${_fragment}")
+source=("ufl::git+https://bitbucket.org/fenics-project/ufl.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd ${_base}
+	cd ufl
 	git log --format="%cd" --date=short -1 | sed 's/-//g'
 }
 
 build() {
-	cd ${_base}
+	cd ufl
 	python setup.py build
 }
 
 package() {
-	cd ${_base}
+	cd ufl
 	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 }
-
-# vim: shiftwidth=2 softtabstop=2 tabstop=2 noexpandtab
