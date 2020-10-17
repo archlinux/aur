@@ -34,7 +34,7 @@ pkgbase = xorg-server-rootless-nosystemd-minimal-glxdelay
 	makedepends = meson
 	optdepends = wayland-protocols: xwayland support
 	optdepends = egl-wayland: xwayland support
-	source = https://gitlab.freedesktop.org/ajax/xserver/-/tree/glx-delay
+	source = https://gitlab.freedesktop.org/ajax/xserver.git#branch=glxdelay
 	source = xvfb-run
 	source = xvfb-run.1
 	sha512sums = SKIP
@@ -43,7 +43,7 @@ pkgbase = xorg-server-rootless-nosystemd-minimal-glxdelay
 
 pkgname = xorg-server-rootless-nosystemd-minimal-glxdelay
 	pkgdesc = Xorg X server
-	install = xorg-server-rootless-nosystemd-minimal.install
+	install = xorg-server-rootless-nosystemd-minimal-glxdelay.install
 	depends = libepoxy
 	depends = libxfont2
 	depends = pixman

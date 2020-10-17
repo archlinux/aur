@@ -14,7 +14,7 @@ pkgname=(
 pkgver=1.20.9
 pkgrel=1
 url="http://xorg.freedesktop.org"
-source=("https://gitlab.freedesktop.org/ajax/xserver/-/tree/glx-delay"
+source=("https://gitlab.freedesktop.org/ajax/xserver.git#branch=glxdelay"
         xvfb-run # with updates from FC master
         xvfb-run.1)
 
@@ -145,7 +145,7 @@ package_xorg-server-rootless-nosystemd-minimal-glxdelay() {
   provides=('X-ABI-VIDEODRV_VERSION=24.0' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server' 'xorg-server')
   conflicts=('nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting' 'xorg-server')
   replaces=('glamor-egl' 'xf86-video-modesetting')
-  install=xorg-server-rootless-nosystemd-minimal.install
+  install=xorg-server-rootless-nosystemd-minimal-glxdelay.install
 
   
   _install fakeinstall/usr/bin/{Xorg,cvt,gtf}
