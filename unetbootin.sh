@@ -1,11 +1,16 @@
 #!/bin/bash
+
 export QT_X11_NO_MITSHM=1
-if [ $(which pkexec) ]; then
-  pkexec --disable-internal-agent "/usr/bin/unetbootin.elf" "$@" 2>/tmp/_polkit_error
-  if [ -s /tmp/_polkit_error ]; then
-    zenity --error --text="`cat /tmp/_polkit_error`"
-    rm /tmp/_polkit_error
+
+ELF_FILE='/usr/bin/unetbootin.elf'
+TMP_FILE='/tmp/_polkit_error'
+
+if [ $(command -v pkexec) ]; then
+  pkexec --disable-internal-agent "${ELF_FILE}" "$@" 2>"${TMP_FILE}"
+  if [ -s "${TMP_FILE}" ]; then
+    zenity --error --text="$(cat ${TMP_FILE})"
+    rm -f "${TMP_FILE}"
   fi
 else
-  /usr/bin/unetbootin.elf "$@"
+  "${ELF_FILE}" "$@"
 fi

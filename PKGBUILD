@@ -1,60 +1,63 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Det <nimetonmaili@gmail.com>
 # Contributor: Godane aka Christopher Rogers <slaxemulator@gmail.com>
 # Contributor: Michai Coman <mihai@m1x.ro>
 
-pkgname=unetbootin
+pkgname='unetbootin'
 pkgver=681
 pkgrel=1
-arch=('x86_64')
-license=('GPL')
 pkgdesc='Create bootable Live USB drives'
+arch=('x86_64')
 url='https://unetbootin.github.io'
-depends=('syslinux' 'p7zip' 'qt4' 'mtools' 'zenity')
+_url_source='https://github.com/unetbootin/unetbootin'
+license=('GPL3')
+depends=('mtools' 'p7zip' 'qt4' 'syslinux' 'zenity')
+#depends=('mtools' 'p7zip' 'qt5-base' 'syslinux' 'zenity') # qt5
 makedepends=('setconf')
-optdepends=('polkit: run unetbootin directly from menu'
-            'zenity: display an error if no authentication agent is found')
-source=("https://github.com/unetbootin/unetbootin/archive/${pkgver}.tar.gz"
-        'org.archlinux.pkexec.unetbootin.policy'
-        'unetbootin.sh')
+optdepends=('polkit: run unetbootin directly from menu')
+source=("${pkgname}-${pkgver}::${_url_source}/archive/${pkgver}.tar.gz"
+        "${pkgname}.sh"
+				"org.archlinux.pkexec.${pkgname}.policy")
 sha256sums=('ec62a6321c39203a096d6a778b2f1518da815ece135e5eb95ba1e42e28ec240a'
-            'fa9bb53d90cb10a0ab8dd317ed6a3506b228b0e26ed2ed8b108b5990f641641a'
-            '6399c6a44b270a4ec67a36e3914c7c2f47a9008efb0133a33f92d9ad4284cc57')
+            'c3bfa4723c1834d608be97ecf7b0c6975f6d0f9af2358427e4c9aa2f6c58c2e3'
+            '118f154e2772ff0d50d22735418fb37c9a03ecd0a1bbf2c8a4a8ed48da64160c')
 
 prepare() {
-	cd "${pkgname}-${pkgver}/src/${pkgname}"
-
-	setconf unetbootin.desktop Exec /usr/bin/unetbootin
+  cd "${pkgname}-${pkgver}/src/${pkgname}"
+  setconf "${pkgname}.desktop" 'Exec' "/usr/bin/${pkgname}"
+	sed -i '/^RESOURCES/d' "${pkgname}.pro"
 }
 
+# Update on qt5 release
 build() {
-	cd "${pkgname}-${pkgver}/src/${pkgname}"
-
-	./build-nostatic
+  cd "${pkgname}-${pkgver}/src/${pkgname}"
+  lupdate "${pkgname}.pro"
+  lrelease "${pkgname}.pro"
+  qmake-qt4
+    PREFIX='/usr' \
+    QMAKE_CFLAGS="$CFLAGS" \
+    QMAKE_CXXFLAGS="$CXXFLAGS" \
+    QMAKE_LFLAGS="$LDFLAGS" \
+    qmake-qt4 "${pkgname}.pro" -config release "DEFINES += NOSTATIC" "RESOURCES -= ${pkgname}.qrc"
+	make
 }
 
 package() {
-	cd "${pkgname}-${pkgver}/src/${pkgname}"
+  install -Dvm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dvm644 "org.archlinux.pkexec.${pkgname}.policy" -t "${pkgdir}/usr/share/polkit-1/actions"
 
-	install -d "${pkgdir}/usr/share/${pkgname}"
-	install -m644 "${pkgname}"_*.qm "${pkgdir}/usr/share/${pkgname}/"
-	install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}.elf"
+  cd "${pkgname}-${pkgver}/src/${pkgname}"
+  install -Dvm644 "${pkgname}"_*.qm -t "${pkgdir}/usr/share/${pkgname}"
+  install -Dvm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}.elf"
+  install -Dvm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dvm644 'readme.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
 
-	# Application shortcut
-	install -Dm644 "${pkgname}.desktop" \
-		"${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	for i in 16 22 24 32 48 256; do
-		install -Dm644 "${pkgname}_${i}.png" \
-			"${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
-	done
-
-	cd "$srcdir"
-
-	install -m755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-
-	# Polkit policy
-	install -Dm644 'org.archlinux.pkexec.unetbootin.policy' \
-		"${pkgdir}/usr/share/polkit-1/actions/org.archlinux.pkexec.unetbootin.policy"
+  for i in 16 24 32 48 64 128 256 512; do
+    install -Dvm644 "${pkgname}_${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
+  done
 }
+
+# vim: ts=2 sw=2 et:
