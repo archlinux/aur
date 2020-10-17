@@ -121,6 +121,7 @@ prepare() {
 build() {
   CFLAGS+=" -Wall" \
   arch-meson $pkgname-$pkgver build \
+    --libexecdir=/usr/lib/libvirt \
     -D apparmor=disabled \
     -D hal=disabled \
     -D netcf=disabled \
