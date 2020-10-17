@@ -27,8 +27,8 @@ pkgver() {
 prepare() {
 	cd "$srcdir/ThiefMD"
 	git submodule init
-	git config submodule.src/ultheme-vala.url $srcdir/mysubmodule
-	git config submodule.src/libwritegood-vala.url $srcdir/mysubmodule
+	git config submodule.src/ultheme-vala.url $srcdir/ultheme-vala
+	git config submodule.src/libwritegood-vala.url $srcdir/libwritegood-vala
 	git submodule update
 }
 
