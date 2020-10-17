@@ -5,6 +5,7 @@ pkgbase = axosnake-git
 	url = https://codeberg.org/nycex/axosnake
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = cargo
 	source = git+https://gitlab.com/nycex/axosnake
 	sha256sums = SKIP

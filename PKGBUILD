@@ -8,6 +8,7 @@ arch=('any')
 url="https://codeberg.org/nycex/$_pkgbasename"
 license=('MIT')
 depends=('cargo')
+makedepends=('git')
 source=(git+https://gitlab.com/nycex/${_pkgbasename})
 sha256sums=('SKIP')
 
