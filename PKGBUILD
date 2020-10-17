@@ -4,7 +4,7 @@
 _gemname='text'
 pkgname="ruby-${_gemname}"
 pkgver=1.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A collection of text algorithms: Levenshtein, Soundex, Metaphone, Double Metaphone, Porter Stemming'
 arch=(any)
 url='https://github.com/threedaymonk/text'
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('ruby-rdoc')
 checkdepends=('ruby-test-unit' 'ruby-rake')
 depends=('ruby')
-source=("https://github.com/threedaymonk/text/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 options=("!emptydirs")
 sha512sums=('eaf3ce2d5a8d5cc27b6b9c5b820ffede864466a460dd1a64a1141adf1ee78a616684b484e0548ba8eb47c492f02244ffc06058a87b3ad5c2116929e9e8fe10a8')
 
