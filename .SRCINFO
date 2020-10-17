@@ -1,0 +1,20 @@
+pkgbase = chromeos-kde-theme-git
+	pkgdesc = ChromeOS theme for the KDE Plasma desktop.
+	pkgver = r28.55d0e85
+	pkgrel = 1
+	url = https://github.com/vinceliuice/ChromeOS-kde
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = plasma-desktop
+	optdepends = kvantum-qt5
+	optdepends = chromeos-gtk-theme-git
+	optdepends = tela-icon-theme-git
+	optdepends = sddm
+	source = chromeos-kde::git+https://github.com/vinceliuice/ChromeOS-kde.git
+	source = fix-theme-installer-path.patch
+	sha256sums = SKIP
+	sha256sums = 3c5ec095be345bc5e560c0f594e1afdef9b2ffef9e3de90c52673382ec85f729
+
+pkgname = chromeos-kde-theme-git
+
