@@ -1,53 +1,36 @@
-# Maintainer: Daniel Appelt <daniel.appelt@gmail.com>
+# Maintainer: Thomas Girod <tgirod@altu.fr>
+# Contributor: Daniel Appelt <daniel.appelt@gmail.com>
+
 pkgname=open-stage-control
-pkgver=1.0.0_beta5
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='A libre desktop OSC bi-directional control surface application'
-arch=(i686 x86_64 armv7h)
+arch=('x86_64')
 url='http://osc.ammd.net/'
 license=('GPL3')
-depends=('alsa-lib' 'gtk2' 'libxss' 'libxtst' 'nss')
-depends_i686=('gcc-libs')
-depends_x86_64=('gcc-libs-multilib')
-optdepends=('python-rtmidi: send and receive midi messages')
-makedepends=('npm')
-source=("https://github.com/jean-emmanuel/$pkgname/archive/v${pkgver//_/-}.tar.gz")
-sha256sums=('825c7ee127ec07b6562eadc275b908d48507be108c938e0557447e4d93b17daa')
-_platform=linux
-case "$CARCH" in
-  i686)
-    _arch=ia32
-    ;;
-  x86_64)
-    _arch=x64
-    ;;
-  armv7h)
-    _arch=armv7l
-    ;;
-esac
+depends=('npm')
+makedepends=('rsync')
+optdepends=('python-pyrtmidi: send and receive midi messages')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+source=("https://github.com/jean-emmanuel/${pkgname}/archive/v${pkgver}.tar.gz")
 
 build() {
-  cd "$srcdir/$pkgname-${pkgver//_/-}"
-
-  # Use PKBUILD conforming environment variables and allow redefining the build location.
-  sed -i "s/PLATFORM/_platform/g" scripts/package.js
-  sed -i "s/ARCH/_arch/g" scripts/package.js
-  sed -i "s/out:.*/out: process.env._dist,/g" scripts/package.js
-
-  # pkgdir only seems to be available inside PKGBUILD functions
-  export _dist="$pkgdir/usr/share/"
-
-  # Make sure to run this inside build() with non-fakeroot privileges
-  npm install --arch=$_arch
+  cd "$srcdir/${pkgname}-${pkgver}"
+  npm install
   npm run build
 }
 
 package() {
-  cd "$srcdir/$pkgname-${pkgver//_/-}"
+  cd "$srcdir/${pkgname}-${pkgver}"
 
   npm run package
 
-  install -d "$pkgdir/usr/bin"
-  cd "$pkgdir/usr/bin"
-  ln -s "/usr/share/$pkgname-$_platform-$_arch/$pkgname"
+  install -d ${pkgdir}/usr/share/${pkgname}
+  install -d ${pkgdir}/usr/bin
+
+  rsync -a dist/${pkgname}-linux-x64/ "${pkgdir}/usr/share/${pkgname}"
+  ln -s ${pkgdir}/usr/share/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 }
+
+md5sums=('07f19692646eb5ad7eda746296aec1ff')
