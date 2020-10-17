@@ -1,7 +1,7 @@
 pkgbase = yubihsm2-sdk
 	pkgdesc = YubiHSM2 SDK
 	pkgver = 2019.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developers.yubico.com/YubiHSM2/Releases/
 	arch = x86_64
 	license = Apache
@@ -12,7 +12,7 @@ pkgbase = yubihsm2-sdk
 	source = https://developers.yubico.com/YubiHSM2/Releases/yubihsm2-sdk-2019-12-fedora31-amd64.tar.gz
 	source = 70-yubihsm2.rules
 	sha256sums = 1d3006b444c473040abc3f715c46b18b4a5a4b73ae7a592bbb3092a6779c004c
-	sha256sums = 478b43f4de96936d9c18e52b0911c6f5a80c8d81268b08ed90c3d71d5af16ca8
+	sha256sums = 13cc09150fe3b03665f864f86a5f8057259cc41a014d3631ca13c8c7b0445d2a
 
 pkgname = yubihsm2-sdk
 

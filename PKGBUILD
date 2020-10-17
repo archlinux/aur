@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=yubihsm2-sdk
 pkgver=2019.12
-pkgrel=1
+pkgrel=2
 pkgdesc='YubiHSM2 SDK'
 url='https://developers.yubico.com/YubiHSM2/Releases/'
 arch=(x86_64)
@@ -17,7 +17,7 @@ source=(
 )
 sha256sums=(
 	"1d3006b444c473040abc3f715c46b18b4a5a4b73ae7a592bbb3092a6779c004c"
-	"478b43f4de96936d9c18e52b0911c6f5a80c8d81268b08ed90c3d71d5af16ca8"
+	"13cc09150fe3b03665f864f86a5f8057259cc41a014d3631ca13c8c7b0445d2a"
 )
 
 prepare() {
@@ -69,5 +69,7 @@ package() {
   install -Dt "$pkgdir/usr/share/licenses/$pkgname/yubihsm-shell"  yubihsm-shell/usr/share/licenses/yubihsm-shell/LICENSE
 
   # udev rule
-  install -Dt "$pkgdir/etc/udev/rules.d" 70-yubihsm2.rules
+  # NB: /usr/lib/udev/rules.d/30-systemd-udev-reload.hook a triggers on installation
+  # of this file, so we don't need additional post_{install,upgrade} scripts
+  install -m644 -Dt "$pkgdir/usr/lib/udev/rules.d" 70-yubihsm2.rules
 }

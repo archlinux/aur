@@ -2,7 +2,6 @@
 ACTION!="add|change", GOTO="yubihsm2_connector_end"
 
 # Yubico YubiHSM 2
-# The OWNER attribute here has to match the uid of the process running the Connector
-SUBSYSTEM=="usb", ATTRS{idVendor}=="1050", ATTRS{idProduct}=="0030" #, OWNER="<your uid>"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1050", ATTRS{idProduct}=="0030"
 
 LABEL="yubihsm2_connector_end"
