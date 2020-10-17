@@ -70,8 +70,8 @@ pkgver=5.9.0
 _major=5.9
 _branch=5.x
 _rt=16
-xanmod=1
-pkgrel=1
+xanmod=2
+pkgrel=${xanmod}
 pkgdesc='Linux Xanmod real-time version'
 arch=(x86_64)
 url="http://www.xanmod.org/"
@@ -101,7 +101,7 @@ done
 
 sha256sums=('3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06'
             'SKIP'
-            'b9af8b1b89bcc1bfab96166a372892a5e43a404261548e4324b02596c835cbf6'
+            'a94d0cadcb465a2b3021a772023951ea3a4d192d65e6fa0c2cfd9dd68dc62b5e'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
