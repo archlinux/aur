@@ -1,0 +1,14 @@
+pkgbase = com.xunlei.download
+	pkgdesc = Thunderspeed
+	pkgver = 1.0.0.1
+	pkgrel = 1
+	url = http://dl.xunlei.com/
+	arch = x86_64
+	license = Proprietary
+	makedepends = tar
+	noextract = com.xunlei.download_1.0.0.1_amd64.deb
+	source = https://community-store-packages.deepin.com/appstore/pool/appstore/c/com.xunlei.download/com.xunlei.download_1.0.0.1_amd64.deb
+	md5sums = 3924c1893a6ce3ab0b239f752e79934f
+
+pkgname = com.xunlei.download
+
