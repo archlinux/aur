@@ -41,6 +41,7 @@ package() {
 		sbindir="/bin" \
 		firmdir="/lib/ucode" \
 		UDEV_INSTALL="/usr/lib/udev/rules.d" \
+        install
 	install recode-fw.scm ${pkgdir}/usr/bin
 	cp -r "${pkgdir}/usr/lib/ucode" "${pkgdir}/usr/lib/r5u87x/"
 	cp -r "${pkgdir}/usr/lib/ucode" "${pkgdir}/usr/lib32/r5u87x/"
