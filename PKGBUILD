@@ -2,7 +2,7 @@
 
 pkgname=lemon-lime-git
 _pkgname=lemon-lime
-pkgver=0.2.3.12.r278.b7511c5
+pkgver=0.2.6.42.r317.bab68f0
 pkgrel=1
 epoch=1
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
@@ -49,7 +49,7 @@ prepare() {
     for module in ${submodules[@]}; do
         git config submodule."3rdparty/$module".url "${srcdir}/$module"
     done
-    
+
     git submodule update
 }
 
@@ -60,7 +60,9 @@ build() {
 		-GNinja \
 		-DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
 		-DLEMON_BUILD_INFO="Build for Arch Linux (Git Version)" \
-		-DLEMON_BUILD_EXTRA_INFO="Build on $(uname -a | cut -d " " -f3,13)"
+		-DLEMON_BUILD_EXTRA_INFO="Build on $(uname -a | cut -d " " -f3,13)" \
+		-DEMBED_TRANSLATIONS=OFF \
+		-DEMBED_DOCS=OFF
 	ninja
 
 }
