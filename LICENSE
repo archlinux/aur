@@ -1,0 +1,34 @@
+Root Distribution License
+
+1. Terms
+
+"CAcert Inc" means CAcert Incorporated, a non-profit association incorporated in New South Wales, Australia.
+"CAcert Community Agreement" means the agreement entered into by each person wishing to RELY.
+"Member" means a natural or legal person who has agreed to the CAcert Community Agreement.
+"Certificate" means any certificate or like device to which CAcert Inc's digital signature has been affixed.
+"CAcert Root Certificates" means any certificate issued by CAcert Inc to itself for the purposes of signing further CAcert Roots or for signing certificates of Members.
+"RELY" means the human act in taking on a risk or liability on the basis of the claim(s) bound within a certificate issued by CAcert.
+"Embedded" means a certificate that is contained within a software application or hardware system, when and only when, that software application or system is distributed in binary form only.
+
+2. Copyright
+
+CAcert Root Certificates are Copyright CAcert Incorporated. All rights reserved.
+
+3. License
+
+You may copy and distribute CAcert Root Certificates only in accordance with this license.
+
+CAcert Inc grants you a free, non-exclusive license to copy and distribute CAcert Root Certificates in any medium, with or without modification, provided that the following conditions are met:
+
+ - Redistributions of Embedded CAcert Root Certificates must take reasonable steps to inform the recipient of the disclaimer in section 4 or reproduce this license and copyright notice in full in the documentation provided with the distribution.
+ - Redistributions in all other forms must reproduce this license and copyright notice in full.
+
+4. Disclaimer
+
+THE CACERT ROOT CERTIFICATES ARE PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED TO THE MAXIMUM EXTENT PERMITTED BY LAW. IN NO EVENT SHALL CACERT INC, ITS MEMBERS, AGENTS, SUBSIDIARIES OR RELATED PARTIES BE LIABLE TO THE LICENSEE OR ANY THIRD PARTY FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THESE CERTIFICATES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. IN ANY EVENT, CACERT'S LIABILITY SHALL NOT EXCEED $1,000.00 AUSTRALIAN DOLLARS.
+
+THIS LICENSE SPECIFICALLY DOES NOT PERMIT YOU TO RELY UPON ANY CERTIFICATES ISSUED BY CACERT INC. IF YOU WISH TO RELY ON CERTIFICATES ISSUED BY CACERT INC, YOU MUST ENTER INTO A SEPARATE AGREEMENT WITH CACERT INC.
+
+5. Statutory Rights
+
+Nothing in this license affects any statutory rights that cannot be waived or limited by contract. In the event that any provision of this license is held to be invalid or unenforceable, the remaining provisions of this license remain in full force and effect.
