@@ -4,7 +4,7 @@
 
 pkgname=vim-limelight-git
 _pkgname=limelight.vim
-pkgver=r29.815c612
+pkgver=r32.4412a84
 pkgrel=1
 pkgdesc='Hyperfocus-writing in Vim.'
 arch=('any')
