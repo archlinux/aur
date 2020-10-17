@@ -1,0 +1,13 @@
+pkgbase = archlinuxarm-keyring
+	pkgdesc = Arch Linux ARM PGP keyring
+	pkgver = 20140119
+	pkgrel = 1
+	url = http://archlinuxarm.org
+	install = archlinuxarm-keyring.install
+	arch = any
+	license = GPL
+	source = http://archlinuxarm.org/builder/src/archlinuxarm-keyring-20140119.tar.gz
+	md5sums = 187140dd1078a4466f79f82f85a43f29
+
+pkgname = archlinuxarm-keyring
+
