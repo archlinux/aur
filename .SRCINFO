@@ -1,22 +1,22 @@
 pkgbase = gcg
 	pkgdesc = A GitHub Changelog Generator.
-	pkgver = v1.7.2
+	pkgver = v1.7.3
 	pkgrel = 1
 	url = https://github.com/ldez/gcg
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	arch = aarch64
-	license = MIT
+	license = APACHE
 	provides = gcg
-	source_x86_64 = https://github.com/ldez/gcg/releases/download/v1.7.2/gcg_v1.7.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 19c8d46b7e2b76dc3ec63ba85ea41200f1eeb9308b84a298df41c6d6465c779e
-	source_i686 = https://github.com/ldez/gcg/releases/download/v1.7.2/gcg_v1.7.2_linux_386.tar.gz
-	sha256sums_i686 = eb920250bc1d31756b44d2648bd83023786bc9c53a10a35e043e18367624454b
-	source_armv7h = https://github.com/ldez/gcg/releases/download/v1.7.2/gcg_v1.7.2_linux_armv7.tar.gz
-	sha256sums_armv7h = 7e27a9a95a50301c525422e0a1bca9a437f04247e63bf55bdf603cac59af1479
-	source_aarch64 = https://github.com/ldez/gcg/releases/download/v1.7.2/gcg_v1.7.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 5f8859364dcbaca87d9acf756ee69a01c4e926de8a9dd9c04cd0def93dc94b86
+	source_x86_64 = https://github.com/ldez/gcg/releases/download/v1.7.3/gcg_v1.7.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1dd27857204dbe7e77a83f3d1b33dc8daee5377ab273c8bd78db3cc2892a3258
+	source_i686 = https://github.com/ldez/gcg/releases/download/v1.7.3/gcg_v1.7.3_linux_386.tar.gz
+	sha256sums_i686 = 3ce45983c9c72c9d9038f0a5acb24d0440cf8ce66656f90bbcbd9b9cdf3ceb05
+	source_armv7h = https://github.com/ldez/gcg/releases/download/v1.7.3/gcg_v1.7.3_linux_armv7.tar.gz
+	sha256sums_armv7h = c2844af0942aefb000360783b3718b1fd76b23946e72040be7b3254510148f35
+	source_aarch64 = https://github.com/ldez/gcg/releases/download/v1.7.3/gcg_v1.7.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = a81cd46eadcd0c703ab2ee871349f36cf3dc55743438af3b9e78b808abde99ca
 
 pkgname = gcg
 
