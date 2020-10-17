@@ -1,10 +1,12 @@
 pkgbase = flycasual-bin
 	pkgdesc = Fan-made "Star Wars: X-Wing Miniatures Game" simulator
 	pkgver = 1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Sandrem/FlyCasual
 	arch = x86_64
 	license = MIT
+	depends = gcc-libs
+	depends = zlib
 	source = https://github.com/Sandrem/FlyCasual/releases/download/1.5/FlyCasual-v1.5-Linux.zip
 	source = https://raw.githubusercontent.com/Sandrem/FlyCasual/development/LICENSE
 	source = flycasual.sh
