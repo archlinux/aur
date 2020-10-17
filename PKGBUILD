@@ -1,35 +1,31 @@
 # Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
 
-_base=dijitso
-_fragment="#branch=master"
-pkgname=python-${_base}-git
+pkgname=python-dijitso-git
 pkgdesc="A Python module for distributed just-in-time shared library building"
-pkgver=20181121
+pkgver=20190418
 pkgrel=1
 arch=('any')
-url="https://bitbucket.org/fenics-project/${_base}"
+url="https://bitbucket.org/fenics-project/dijitso"
 license=('GPL3')
 groups=('fenics-git')
 depends=('python-numpy')
 makedepends=('git' 'python-setuptools')
 optdepends=('mpi4py: for running tests with MPI')
 options=(!emptydirs)
-source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git${_fragment}")
+source=("dijitso::git+https://bitbucket.org/fenics-project/dijitso.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd ${_base}
+	cd dijitso
 	git log --format="%cd" --date=short -1 | sed 's/-//g'
 }
 
 build() {
-	cd ${_base}
+	cd dijitso
 	python setup.py build
 }
 
 package() {
-	cd ${_base}
+	cd dijitso
 	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 }
-
-# vim: shiftwidth=2 softtabstop=2 tabstop=2 noexpandtab
