@@ -1,7 +1,7 @@
 # Maintainer: David Mehren <david.mehren@udo.edu>
 
 pkgname=element-desktop-nightly-bin
-pkgver=2020101401
+pkgver=2020101701
 pkgrel=1
 pkgdesc="All-in-one secure chat app for teams, friends and organisations (nightly .deb build)."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://element.io"
 license=('Apache')
 source=("https://packages.riot.im/debian/pool/main/e/element-nightly/element-nightly_${pkgver}_amd64.deb"
         "element-desktop-nightly.sh")
-sha256sums=('fe6cf0fb301a996c608a625d81bbdbac0fc4e681349fc1f9c9120acc0b06827d'
+sha256sums=('336b57931fbe0492ecbeb9643d78864f2e56f9a728b353eb4a9cde5a88c9af6a'
             'cf5a9348d8ad3f4c7a46bb8abf6ea9059d65231de2cf89f1b5e1885071afb0e2')
 replaces=('riot-desktop-nightly-bin')
 
