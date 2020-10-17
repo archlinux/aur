@@ -1,0 +1,4 @@
+python-v4l2*
+pkg/
+src/
+*.tar.*

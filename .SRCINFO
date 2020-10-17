@@ -1,0 +1,15 @@
+pkgbase = python-v4l2_antmicro
+	pkgdesc = Python v4l2 with antmicro's patches
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/antmicro/python3-v4l2
+	arch = any
+	license = GPL2
+	depends = python
+	provides = python-v4l2
+	conflicts = python-v4l2
+	source = python-v4l2::git+https://github.com/antmicro/python3-v4l2#commit=eefd091
+	sha256sums = SKIP
+
+pkgname = python-v4l2_antmicro
+
