@@ -1,10 +1,11 @@
 pkgbase = cargo-llvm-lines
 	pkgdesc = Count the number of lines of LLVM IR across all instantiations of a generic function
 	pkgver = 0.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dtolnay/cargo-llvm-lines
 	arch = any
 	license = Apache
+	license = MIT
 	depends = cargo
 	depends = rust-nightly
 	depends = rustfmt
