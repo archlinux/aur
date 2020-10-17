@@ -1,4 +1,4 @@
-# Maintainer: SimonK <Sallad9707@gmail.com>
+# Maintainer: SimonK <Simon.m.kejonen97@gmail.com>
 pkgname=wurm-launcher
 pkgver=1.0
 pkgrel=2
