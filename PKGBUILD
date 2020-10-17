@@ -2,7 +2,7 @@
 # Contributor: Chris Oelmueller <chris.oelmueller@gmail.com>
 # Contributor: apaugh
 # Contributor: speps <speps at aur dot archlinux dot org>
-# shellcheck disable=SC2034,2154
+# shellcheck disable=2034,2154,2148
 
 pkgname=fife
 pkgver=0.4.2
