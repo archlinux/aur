@@ -1,29 +1,37 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 # NOTE:
-# You need to download the SDK file from NVIDIA's website (registration required)
+# In order to build the package, you need to manually download the SDK
+# file from NVIDIA's website (registration required). Place the downloaded
+# file in the PKGBUILD directory and run makepkg.
 # Download website:
 # https://developer.nvidia.com/nvidia-video-codec-sdk/
 
-pkgname=nvidia-sdk
-pkgver=10.0.26
+pkgbase=nvidia-sdk
+pkgname=('nvidia-sdk' 'nvidia-sdk-doc')
+pkgver=11.0.10
 pkgrel=1
-pkgdesc='NVIDIA Video Codec SDK (NVDECODE and NVENCODE APIs) (needs registration at upstream URL and manual download)'
+pkgdesc='NVIDIA Video Codec SDK (NVDECODE and NVENCODE APIs)'
 arch=('any')
 url='https://developer.nvidia.com/nvidia-video-codec-sdk/'
 license=('custom')
 makedepends=('poppler')
 source=("local://Video_Codec_SDK_${pkgver}.zip")
-sha256sums=('67ff4543f93ad8ec1bc4ce2ef653b0778b94652597da9762a6e08f442dad5f45')
+sha256sums=('5348e296192dc533d81ef1fbe21ea0c1e1f9ce35f978dc05efc2f5e163fe5346')
 
 prepare() {
     pdftotext -layout "Video_Codec_SDK_${pkgver}/LicenseAgreement.pdf"
 }
 
-package() {
-    install -D -m644 "Video_Codec_SDK_${pkgver}/Interface/nvEncodeAPI.h" -t "${pkgdir}/usr/include/${pkgname}"
-    install -D -m644 "Video_Codec_SDK_${pkgver}/Interface/cuviddec.h" -t "${pkgdir}/usr/include/${pkgname}"
-    install -D -m644 "Video_Codec_SDK_${pkgver}/Interface/nvcuvid.h" -t "${pkgdir}/usr/include/${pkgname}"
-    install -D -m644 "Video_Codec_SDK_${pkgver}/Doc"/* -t "${pkgdir}/usr/share/doc/${pkgname}"
+package_nvidia-sdk() {
+    install -D -m644 "Video_Codec_SDK_${pkgver}/Interface"/*.h -t "${pkgdir}/usr/include/${pkgbase}"
+    install -D -m644 "Video_Codec_SDK_${pkgver}/LicenseAgreement.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_nvidia-sdk-doc() {
+    pkgdesc+=' (documentation)'
+    
+    install -D -m644 "Video_Codec_SDK_${pkgver}/Doc"/*.pdf -t "${pkgdir}/usr/share/doc/${pkgbase}"
+    install -D -m644 "Video_Codec_SDK_${pkgver}/Deprecation_Notices.pdf" -t "${pkgdir}/usr/share/doc/${pkgbase}"
     install -D -m644 "Video_Codec_SDK_${pkgver}/LicenseAgreement.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
