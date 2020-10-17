@@ -1,7 +1,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer-git
-pkgver=2.2.54.0.r10.gdb99b091d
+pkgver=2.2.54.0.r14.g2291bd76d
 _pkgtag=$pkgver
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
@@ -11,7 +11,7 @@ license=('AGPL3')
 depends=('cgal' 'glew' 'nlopt' 'openvdb' 'wxgtk3-dev' 'boost-libs-171-opt')
 conflicts=('slic3r++')
 replaces=('slic3r++')
-makedepends=('cereal' 'cmake' 'eigen' 'libigl' 'openvdb' 'wxgtk2') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
+makedepends=('git' 'cereal' 'cmake' 'eigen' 'libigl' 'openvdb' 'wxgtk2') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
 provides=('superslicer')
 conflicts=('superslicer')
 source=("SuperSlicer::git+https://github.com/supermerill/SuperSlicer.git"
