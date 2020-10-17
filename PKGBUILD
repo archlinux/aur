@@ -3,7 +3,7 @@
 
 pkgname=mum-git
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A mumble client/daemon pair"
 arch=('x86_64')
 url="https://github.com/sornas/mum.git"
@@ -12,6 +12,11 @@ sha256sums=('SKIP')
 depends=('alsa-lib' 'opus' 'openssl')
 makedepends=('git' 'rust')
 source=("git+$url")
+
+pkgver() {
+  cd "${srcdir}/${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
     cd "${srcdir}/${pkgname%-git}"
