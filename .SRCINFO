@@ -6,10 +6,10 @@ pkgbase = lightcord-bin
 	arch = x86_64
 	license = MIT
 	source = lightcord-bin-dev.zip::https://lightcord.org/api/v1/gh/releases/Lightcord/Lightcord/dev/lightcord-linux-x64.zip
-	source = https://raw.githubusercontent.com/Lightcord/Lightcord/master/Lightcord.desktop
+	source = Lightcord.desktop
 	source = https://raw.githubusercontent.com/Lightcord/LightcordLogos/master/lightcord/lightcord.png
 	md5sums = 28afa9efc7a884d9840559c2cb90fd47
-	md5sums = ebf3cec35312bd3eee358b5ac5202dac
+	md5sums = 93edcd577375c0b3b045b7fbd9dcf09a
 	md5sums = f1ace6f149a3d778bfb789d10181d877
 
 pkgname = lightcord-bin
