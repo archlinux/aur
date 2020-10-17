@@ -1,26 +1,28 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='wireviz'
-pkgver=0.1
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc='Easily document cables, wiring harnesses and connector pinouts'
 arch=('any')
 url='https://github.com/formatc1702/WireViz'
+_url_pypi='https://pypi.org/project/wireviz'
 license=('GPL3')
-depends=('python' 'python-graphviz' 'python-pyaml')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('851a6d3a5302b0a41659b7622500c7b8edf7005f3ec88a823f2d207feee7ebf7')
+depends=('python-graphviz' 'python-pillow' 'python-pyaml')
+makedepends=('git' 'python-setuptools')
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   python setup.py build
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
+  install -Dvm644 'docs/'*.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  cp -rfv 'examples' 'tutorial' "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
