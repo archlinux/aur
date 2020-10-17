@@ -1,15 +1,15 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=gmni-git
-pkgrel=2
-pkgver=r95.5d3ae7b
+pkgrel=1
+pkgver=r100.e1d4e9a
 pkgdesc="A Gemini client"
 url="https://git.sr.ht/~sircmpwn/gmni"
 arch=("any")
 license=("GPL")
 source=("gmni::git+https://git.sr.ht/~sircmpwn/gmni")
 depends=('openssl')
-optdepends=('scdoc')
+makedepends=('git' 'scdoc')
 
 pkgver() {
     cd gmni
