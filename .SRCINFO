@@ -1,0 +1,14 @@
+pkgbase = pyvidctrl
+	pkgdesc = A simple TUI util to control V4L2 camera parameters
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/antmicro/pyvidctrl
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-v4l2_antmicro
+	source = pyvidctrl::git+https://github.com/antmicro/pyvidctrl#commit=de0e394
+	sha256sums = SKIP
+
+pkgname = pyvidctrl
+

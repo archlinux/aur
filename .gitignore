@@ -1,0 +1,4 @@
+pyvidctrl*
+pkg/
+src/
+*.tar.*
