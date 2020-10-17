@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Simon Allen <simon@simonallen.org>
 pkgname=ytmdesktop-git
-pkgver=1.12.1.r15.gbdcea44
+pkgver=1.13.0.r56.gfdc734e
 pkgrel=1
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
 license=('CC0 1.0 Universal')
-depends=('gtk3' 'nss' 'libxss')
+depends=('electron')
 makedepends=('git' 'npm' 'python')
 optdepends=('libnotify: for desktop notifications'
             'libappindicator-gtk3: for tray icon'
@@ -15,9 +15,11 @@ optdepends=('libnotify: for desktop notifications'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/ytmdesktop/ytmdesktop.git#branch=development'
-        "${pkgname%-git}.desktop")
+        "${pkgname%-git}.desktop"
+        "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            '3f937b477845f9b0391731a4e7b7cf3a52101c03f48eb34d29124b4664eb59a1')
+            '3f937b477845f9b0391731a4e7b7cf3a52101c03f48eb34d29124b4664eb59a1'
+            '4cbf5c9c7a2b24feb0fd623bf267cf8da1a9948431affba9b3927d5df84a269a')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -32,12 +34,10 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -dm755 "$pkgdir/opt/${pkgname%-git}"
-	cp -r dist/linux-unpacked/* "$pkgdir/opt/${pkgname%-git}"
+	install -dm755 "$pkgdir/usr/lib/${pkgname%-git}"
+	cp -r dist/linux-unpacked/resources "$pkgdir/usr/lib/${pkgname%-git}"
 
-	install -dm755 "$pkgdir/usr/bin"
-	ln -s "/opt/${pkgname%-git}/youtube-music-desktop-app" \
-		"$pkgdir/usr/bin/${pkgname%-git}"
+	install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
 
 	for icon_size in 16 256 512; do
 		icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
