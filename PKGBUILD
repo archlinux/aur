@@ -2,7 +2,7 @@
 pkgname=earbuds-git
 _pkgname=earbuds
 _gitname=LiveBudsCli
-pkgver=v0.1.3.r3.g75e6ed7
+pkgver=v0.1.4.r0.gd633a64
 pkgrel=1
 pkgdesc="Control your galaxy buds live via cli"
 url="https://github.com/JojiiOfficial/LiveBudsCli"
