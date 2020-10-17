@@ -1,6 +1,6 @@
 pkgbase = looking-glass-git
 	pkgdesc = An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough
-	pkgver = B2rc2.r12.g06aee15
+	pkgver = B2.r23.g0684ff4
 	pkgrel = 1
 	epoch = 2
 	url = https://looking-glass.hostfission.com

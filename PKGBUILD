@@ -6,7 +6,7 @@ pkgname=("${_pkgname}-git"
          "${_pkgname}-module-dkms-git"
          "obs-plugin-${_pkgname}-git")
 epoch=2
-pkgver=B2rc2.r12.g06aee15
+pkgver=B2.r23.g0684ff4
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.hostfission.com"
@@ -64,9 +64,10 @@ package_looking-glass-module-dkms-git() {
 	conflicts=("${_pkgname}-module-dkms")
 
 	cd "${srcdir}/${_pkgname}/module"
-	for f in {Makefile,dkms.conf,kvmfr.{h,c}}; do
-		install -Dm644 "${f}" "${pkgdir}/usr/src/${pkgbase}-${pkgver}/${f}"
-	done
+	install -Dm644 -t "${pkgdir}/usr/src/${pkgbase}-${pkgver}" \
+		Makefile \
+		dkms.conf \
+		kvmfr.{h,c}
 }
 
 package_obs-plugin-looking-glass-git() {
@@ -75,6 +76,6 @@ package_obs-plugin-looking-glass-git() {
 	provides=("obs-plugin-${_pkgname}")
 	conflicts=("obs-plugin-${_pkgname}")
 
-	cd "${srcdir}/${_pkgname}/obs"
-	install -Dm644 "liblooking-glass-obs.so" "${pkgdir}/usr/lib/obs-plugins/liblooking-glass-obs.so"
+	install -Dm644 -t "${pkgdir}/usr/lib/obs-plugins" \
+		"${srcdir}/${_pkgname}/obs/liblooking-glass-obs.so"
 }
