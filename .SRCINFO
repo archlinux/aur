@@ -1,7 +1,7 @@
 pkgbase = authy-desktop-win32-bin
 	pkgdesc = Two-Factor Authentication from your PC. Converted from Windows electron version
 	pkgver = 1.8.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://authy.com/
 	arch = x86_64
 	license = unknown
@@ -14,7 +14,7 @@ pkgbase = authy-desktop-win32-bin
 	source = https://s3.amazonaws.com/authy-electron-repository-production/authy/stable/1.8.3/win32/x64/Authy%20Desktop%20Setup%201.8.3.exe
 	source = authy.desktop
 	md5sums = 630362cf725391d1fc86c9a4d06f0161
-	md5sums = cc79603cae19a93f67bc2da8120501e9
+	md5sums = f02a27fe07bf9924c462838a6340d14d
 
 pkgname = authy-desktop-win32-bin
 
