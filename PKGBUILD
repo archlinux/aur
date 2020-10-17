@@ -70,7 +70,8 @@ build() {
     -D lmsensors=enabled \
     -D osmesa=gallium \
     -D shared-glapi=enabled \
-    -D valgrind=enabled
+    -D valgrind=enabled \
+    -D delay=true
 
   # Print config
   meson configure build
