@@ -1,4 +1,4 @@
-From 78170848a4679dfe807768bba7638798498a2ab9 Mon Sep 17 00:00:00 2001
+From 9bbddd5714e13bde1f918dc8f6ccef33396f8b4a Mon Sep 17 00:00:00 2001
 From: soloturn <soloturn@gmail.com>
 Date: Sat, 1 Aug 2020 16:21:07 +0200
 Subject: [PATCH] arch aur pachtes
@@ -8,23 +8,21 @@ Subject: [PATCH] arch aur pachtes
  1 file changed, 3 insertions(+), 7 deletions(-)
 
 diff --git a/utils/build-presets.ini b/utils/build-presets.ini
-index 7d9a5c264c8..5dcadf391c3 100644
+index dc3826f228a..ff2523726c8 100644
 --- a/utils/build-presets.ini
 +++ b/utils/build-presets.ini
-@@ -783,12 +783,10 @@ llbuild
+@@ -726,10 +726,8 @@ llbuild
  swiftpm
  swift-driver
  xctest
 -libicu
  libcxx
  
- dash-dash
- 
 -build-ninja
  install-llvm
  install-swift
  install-lldb
-@@ -796,8 +794,7 @@ install-llbuild
+@@ -737,8 +735,7 @@ install-llbuild
  install-swiftpm
  install-swift-driver
  install-xctest
@@ -34,7 +32,7 @@ index 7d9a5c264c8..5dcadf391c3 100644
  install-libcxx
  install-sourcekit-lsp
  build-swift-static-stdlib
-@@ -809,14 +806,13 @@ build-swift-stdlib-unittest-extra
+@@ -750,14 +747,13 @@ build-swift-stdlib-unittest-extra
  
  test-installable-package
  

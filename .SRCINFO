@@ -1,6 +1,6 @@
 pkgbase = swift-language-git
 	pkgdesc = The Swift programming language, taken directly from the Apple repository
-	pkgver = swift.DEVELOPMENT.SNAPSHOT.2020.09.28.a.r173.gc02dc720da8
+	pkgver = swift.DEVELOPMENT.SNAPSHOT.2020.10.15.a.r46.g907b06901f4
 	pkgrel = 1
 	url = https://swift.org/
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = swift-language-git
 	makedepends = python-six
 	makedepends = python2
 	makedepends = rsync
-	makedepends = sccache
 	depends = icu
 	depends = libedit
 	depends = libxml2
@@ -21,28 +20,28 @@ pkgbase = swift-language-git
 	depends = libbsd
 	depends = ncurses
 	provides = swift-language-git
-	source = git+https://github.com/apple/swift
-	source = cmark::git+https://github.com/apple/swift-cmark
-	source = llbuild::git+https://github.com/apple/swift-llbuild
-	source = swift-argument-parser::git+https://github.com/apple/swift-argument-parser
-	source = swift-driver::git+https://github.com/apple/swift-driver
-	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core
-	source = swiftpm::git+https://github.com/apple/swift-package-manager
-	source = swift-syntax::git+https://github.com/apple/swift-syntax
-	source = swift-stress-tester::git+https://github.com/apple/swift-stress-tester
-	source = swift-corelibs-xctest::git+https://github.com/apple/swift-corelibs-xctest
-	source = swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation
-	source = swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch
-	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests
+	source = git+https://github.com/apple/swift#branch=main
+	source = cmark::git+https://github.com/apple/swift-cmark#branch=main
+	source = llbuild::git+https://github.com/apple/swift-llbuild#branch=main
+	source = swift-argument-parser::git+https://github.com/apple/swift-argument-parser#branch=main
+	source = swift-driver::git+https://github.com/apple/swift-driver#branch=main
+	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#branch=main
+	source = swiftpm::git+https://github.com/apple/swift-package-manager#branch=main
+	source = swift-syntax::git+https://github.com/apple/swift-syntax#branch=main
+	source = swift-stress-tester::git+https://github.com/apple/swift-stress-tester#branch=main
+	source = swift-corelibs-xctest::git+https://github.com/apple/swift-corelibs-xctest#branch=main
+	source = swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation#branch=main
+	source = swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch#branch=main
+	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests#branch=main
 	source = llvm-project::git+https://github.com/apple/llvm-project#branch=swift/main
 	source = 0001-arch-aur-pachtes.patch
 	source = 0003-linux_load_commands-test-sourcekit-lsp-are-python2.patch
-	source = indexstore-db::git+https://github.com/apple/indexstore-db
+	source = indexstore-db::git+https://github.com/apple/indexstore-db#branch=main
 	source = yams::git+https://github.com/jpsim/Yams#commit=3.0.1
-	source = sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp
-	source = swift-format::git+https://github.com/apple/swift-format
-	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core
-	source = swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support
+	source = sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#branch=main
+	source = swift-format::git+https://github.com/apple/swift-format#branch=main
+	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#branch=main
+	source = swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#branch=main
 	source = tensorflow-swift-apis::git+https://github.com/tensorflow/swift-apis.git
 	md5sums = SKIP
 	md5sums = SKIP
