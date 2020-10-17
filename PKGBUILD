@@ -4,7 +4,7 @@
 
 pkgname=fla.sh-git
 _pkgname=${pkgname%-*}
-pkgver=1.1.r38.g81ca453
+pkgver=1.2.r8.gbf17b7d
 pkgrel=1
 pkgdesc='Flashcards in your terminal.'
 arch=('any')
