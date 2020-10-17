@@ -1,8 +1,8 @@
 # Maintainer: Diab Neiroukh <officiallazerl0rd@gmail.com>
 
 pkgname="keydb"
-pkgver=5.3.3
-pkgrel=2
+pkgver=6.0.16
+pkgrel=3
 pkgdesc="A Multithreaded Fork of Redis"
 arch=(
 	"i686"
@@ -31,7 +31,7 @@ backup=(
 	"etc/keydb.conf"
 )
 source=(
-	"https://github.com/JohnSully/KeyDB/archive/v5.3.3.tar.gz"
+	"https://github.com/JohnSully/KeyDB/archive/v$pkgver.tar.gz"
 	"keydb-5.0-use-system-jemalloc.patch"
 	"keydb.conf-sane-defaults.patch"
 	"keydb.logrotate"
@@ -49,39 +49,32 @@ b2sums=(
 	"d93a88d286698163e9f29fe77a15eb60c0afc028b5343b6bf195da0a123857463c36496a1a378c87fa263f7e901b73db07bf7e47f57a2172b50f0e8502de6fbd"
 )
 
-prepare()
-{
+prepare() {
 	cd "KeyDB-$pkgver" || exit
-	patch "keydb.conf" < ../keydb.conf-sane-defaults.patch
-	patch "src/Makefile" < ../keydb-5.0-use-system-jemalloc.patch
+	patch "keydb.conf" <../keydb.conf-sane-defaults.patch
+	patch "src/Makefile" <../keydb-5.0-use-system-jemalloc.patch
 }
 
-build()
-{
-	#* Clang nee
+build() {
 	export LDFLAGS="$LDFLAGS -latomic"
-
 	make BUILD_TLS=yes MALLOC=jemalloc -C "KeyDB-$pkgver"
 }
 
-check()
-{
+# TODO: Fix tests in makepkg's environment.
+: '
+check() {
 	cd "KeyDB-$pkgver" || exit
-
-	#! The test is currently broken in makepkg's environment
-	#make test
+	make test
 }
+'
 
-package()
-{
+package() {
 	cd "KeyDB-$pkgver" || exit
 	make PREFIX="$pkgdir/usr" install
 
 	install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "keydb.conf" "$pkgdir/etc/keydb.conf"
 	install -Dm644 "../keydb.service" "$pkgdir/usr/lib/systemd/system/keydb.service"
-
-	#* Files kept for compatibility with older installations
 	install -Dm644 "../keydb.logrotate" "$pkgdir/etc/logrotate.d/keydb"
 
 	ln -sf "keydb-server" "$pkgdir/usr/bin/keydb-sentinel"
