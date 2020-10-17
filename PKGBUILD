@@ -34,11 +34,11 @@ if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
 
-## Enable PDS CPU scheduler by default https://gitlab.com/alfredchen/linux-pds
-## Set variable "use_pds" to: n to disable (stock Xanmod)
-##                            y to enable
-if [ -z ${use_pds+x} ]; then
-  use_pds=n
+## Enable Cachy CPU scheduler by default https://github.com/xanmod/linux/blob/5.8/Documentation/scheduler/sched-Cachy.rst
+## Set variable "use_cachy" to: n to disable (stock Xanmod)
+##                              y to enable
+if [ -z ${use_cachy+x} ]; then
+  use_cachy=n
 fi
 
 ## Enable CONFIG_USER_NS_UNPRIVILEGED flag https://aur.archlinux.org/cgit/aur.git/tree/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck
@@ -66,12 +66,12 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rt
-pkgver=5.6.19
-_major=5.6
+pkgver=5.9.0
+_major=5.9
 _branch=5.x
-xanmod=11
+_rt=16
+xanmod=1
 pkgrel=1
-_rev=1
 pkgdesc='Linux Xanmod real-time version'
 arch=(x86_64)
 url="http://www.xanmod.org/"
@@ -81,10 +81,10 @@ makedepends=(
   python-sphinx python-sphinx_rtd_theme graphviz imagemagick
 )
 options=('!strip')
-_srcname="linux-${pkgver}-rt${xanmod}-xanmod${_rev}"
+_srcname="linux-${pkgver}-rt${_rt}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "https://github.com/xanmod/linux/releases/download/${pkgver}-rt${xanmod}-xanmod${_rev}/patch-${pkgver}-rt${xanmod}-xanmod${_rev}.xz"
+        "https://github.com/xanmod/linux/releases/download/${pkgver}-rt${_rt}-xanmod${xanmod}/patch-${pkgver}-rt${_rt}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
         '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b')
 validpgpkeys=(
@@ -99,9 +99,9 @@ for _patch in $_commits; do
 done
     
 
-sha256sums=('e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622'
+sha256sums=('3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06'
             'SKIP'
-            '8a72839767df8cf22e3de77b2e6bff0b14b2a5a3dd83bcb905b698706c4114d8'
+            'b9af8b1b89bcc1bfab96166a372892a5e43a404261548e4324b02596c835cbf6'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
@@ -113,7 +113,7 @@ prepare() {
   cd linux-${_major}
 
   # Apply Xanmod patch
-  patch -Np1 -i ../patch-${pkgver}-rt${xanmod}-xanmod${_rev}
+  patch -Np1 -i ../patch-${pkgver}-rt${_rt}-xanmod${xanmod}
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -149,9 +149,11 @@ prepare() {
     scripts/config --disable CONFIG_NUMA
   fi
 
-  if [ "$use_pds" = "y" ]; then
-    msg2 "Enabling PDS CPU scheduler by default..."
-    scripts/config --enable CONFIG_SCHED_PDS
+  if [ "$use_cachy" = "y" ]; then
+    msg2 "Enabling Cachy CPU scheduler by default (also NUMA and grouping for tasks, which are not compatible with Cachy)..."
+    scripts/config --disable CONFIG_NUMA
+    scripts/config --disable FAIR_GROUP_SCHED
+    scripts/config --enable CONFIG_CACHY_SCHED
   fi
 
   if [ "$use_ns" = "n" ]; then
@@ -167,8 +169,8 @@ prepare() {
   # If it's a full config, will be replaced
   # If not, you should use scripts/config commands, one by line
   if [ -f "${startdir}/myconfig" ]; then
-    if [ $(wc -l < "${startdir}/myconfig") -gt 1000 ]; then
-      # myconfig is a full config file. Replace it
+    if ! grep -q 'scripts/config' "${startdir}/myconfig"; then
+      # myconfig is a full config file. Replacing default .config
       msg2 "Using user CUSTOM config..."
       cp -f "${startdir}"/myconfig .config
     else
