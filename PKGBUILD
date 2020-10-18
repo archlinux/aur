@@ -1,12 +1,13 @@
-# Maintainer: Alonso Rodriguez <alonsorodi20 (at) gmail (dot) com>
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Alonso Rodriguez <alonsorodi20 (at) gmail (dot) com>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
+# Contributor: loqs
 
 pkgbase=nvidia-390xx
 pkgname=(nvidia-390xx nvidia-390xx-dkms)
 pkgver=390.138
-pkgrel=5
+pkgrel=6
 pkgdesc="NVIDIA drivers for linux, 390xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -17,10 +18,12 @@ options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
         'kernel-4.16.patch'
-        'kernel-5.8.patch')
-sha256sums=('a34a19b618be0eb06c4699247489833a8f22c59423f246248614e0a59b1508da'
-            '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385'
-            'e3df2945e29a9834d2c1c21eb6871b1672f25bd809b413cd5e0b45d0d2c815a5')
+        'kernel-5.8.patch'
+        'kernel-5.9.patch')
+b2sums=('bf56cef38d76accdf547b96cd444b0bd4288f604d44a1d274f3246c13310d6a59050b36f384280edb83938db81fa0544f7a2dc84ff6f440ff90b76ee62749fc1'
+        '1d21307640a3844752c92e8344518daf6ad62d846689bebe6eed4dcadbf7b2e742862f5c17c0faee7256662cb75e62e124d59e5a5617e87324e1f0658f2b748d'
+        '1e6ad252be5f603e022c854d391d4d768fb81d532a837203ab3b024dbb10f328c40a9579a19ab730de4e16f3841f15bfbcd1815ec913ac3d555811daf338ae6d'
+        '8d4944edfc2d594726d8122330c50eac3766260690cc0cfd077dc541986a9eee8e25441945baed1f9a4b72948642d55348a20dfc67f7069f8954300ae7166147')
 
 prepare() {
     sh "${_pkg}.run" --extract-only
@@ -33,6 +36,8 @@ prepare() {
     # 5.8 Patch
     patch -Np1 -i ../kernel-5.8.patch
 
+    # 5.9 Patch
+    patch -Np1 -i ../kernel-5.9.patch
 
     ## OLD PATCHES [390.132] ##
 
