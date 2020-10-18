@@ -76,15 +76,6 @@ diff -Naur epson-inkjet-printer-escpr-1.6.9/src/filter.c epson-inkjet-printer-es
  
  	/* Others */
  	jobAttr.apfAutoCorrect = EPS_APF_ACT_STANDARD;
-@@ -881,7 +888,7 @@
- 
- //	fwrite (pBuf, cbBuf, 1, outfp);
- 
--	XFIFOWrite(context, pBuf, cbBuf);
-+	XFIFOWrite(context, (char *)pBuf, cbBuf);
- 
- 	return 1;
- }
 diff -Naur epson-inkjet-printer-escpr-1.6.9/src/mem.c epson-inkjet-printer-escpr-1.6.9-fixed/src/mem.c
 --- epson-inkjet-printer-escpr-1.6.9/src/mem.c	2016-09-21 03:55:30.000000000 +0200
 +++ epson-inkjet-printer-escpr-1.6.9-fixed/src/mem.c	2016-10-07 22:07:59.519366574 +0200
