@@ -1,0 +1,14 @@
+pkgbase = xboxdrv-runit
+	pkgdesc = runit service scripts for xboxdrv
+	pkgver = 20201018
+	pkgrel = 1
+	url = https://artixlinux.org
+	arch = any
+	license = BSD
+	depends = xboxdrv
+	conflicts = systemd-sysvcompat
+	source = xboxdrv.run
+	sha256sums = 4e17337aaa018bbd616ad74d1f32fd0063e32754ce92c2235e008d54f3f10d75
+
+pkgname = xboxdrv-runit
+

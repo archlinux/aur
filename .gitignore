@@ -1,0 +1,4 @@
+/bim
+*.tar.zst
+/pkg
+/src
