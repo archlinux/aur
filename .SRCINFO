@@ -1,7 +1,7 @@
 pkgbase = chatrullete-plus
 	pkgdesc = ChatRullete (Plus)
 	pkgver = 0.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/chatrullete-plus
 	arch = x86_64
 	license = custom
@@ -14,7 +14,7 @@ pkgbase = chatrullete-plus
 	depends = libegl
 	depends = libgles
 	optdepends = gnome-keyring
-	source = chatrullete-0.0.2-3.tar.gz::https://github.com/vicimpa/chatrullete-plus/releases/download/0.0.1/ChatRullete-linux-0.0.1.tar.gz
+	source = chatrullete-0.0.2-4.tar.gz::https://github.com/vicimpa/chatrullete-plus/releases/download/0.0.1/ChatRullete-linux-0.0.1.tar.gz
 	sha256sums = a166184a809fe48df21d66371b005e2bd9017ed54e8c86ac0734b56728d7d29b
 
 pkgname = chatrullete-plus
