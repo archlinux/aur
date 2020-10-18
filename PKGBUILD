@@ -16,13 +16,12 @@ md5sums=('SKIP')
 
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-    mkdir -p build
+    mkdir -p build "$srcdir/$pkgname-$pkgver/build"
 }
 
 build() {
     cd "$srcdir/$pkgname-$pkgver/build"
-    cmake .. -DLSL_NO_FANCY_LIBNAME=ON
+    cmake -DLSL_NO_FANCY_LIBNAME=ON ..
     make
 }
 
