@@ -1,6 +1,6 @@
 pkgbase = cpeditor-git
 	pkgdesc = The editor for competitive programming
-	pkgver = 6.7.1.r15.gee501961
+	pkgver = 6.7.1.r16.ge3c72b5e
 	pkgrel = 1
 	url = https://github.com/cpeditor/cpeditor
 	arch = x86_64
