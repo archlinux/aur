@@ -2,8 +2,8 @@
 # Contributor: ArielAxionL <i at axionl dot me>
 # Contributor: Leroy.H.Y <me at lhy0403 dot top>
 pkgname=qv2ray
-pkgver=2.6.2
-pkgrel=3
+pkgver=2.6.3
+pkgrel=3.1
 pkgdesc="Cross-platform V2ray Client written in Qt (Stable Release)"
 arch=('x86_64')
 url='https://github.com/Qv2ray/Qv2ray'
@@ -15,9 +15,7 @@ makedepends=('git' 'make' 'qt5-tools' 'which' 'gcc' 'qt5-declarative'
 provides=('qv2ray')
 conflicts=('qv2ray')
 
-source=(
-    'Qv2ray::git+https://github.com/Qv2ray/Qv2ray'
-)
+source=('Qv2ray::git+https://github.com/Qv2ray/Qv2ray')
 
 sha512sums=('SKIP')
 
@@ -28,13 +26,13 @@ pkgver() {
 prepare() {
     cd "${srcdir}/Qv2ray"
     git submodule init
-    git config submodule."3rdparty/zxing-cpp".active true
+    git config submodule."3rdparty/zxing-cpp".active true 
     git submodule update
 }
 
 build() {
-    export _QV2RAY_BUILD_INFO_="Qv2ray for Arch Linux CN"
-    export _QV2RAY_BUILD_EXTRA_INFO_="(Official Build) $(uname -a | cut -d " " -f3,13)"
+    export _QV2RAY_BUILD_INFO_="Qv2ray from AUR"
+    export _QV2RAY_BUILD_EXTRA_INFO_="(Manual Build) $(uname -a | cut -d " " -f3,13)"
 
     cd "${srcdir}/Qv2ray"
     mkdir -p build && cd build
