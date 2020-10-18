@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Karuna Murti <karuna.murti@gmail.com>
 pkgname=mssql-tools
-pkgver=17.4.1.1
+pkgver=17.6.1.1
 pkgrel=1
 pkgdesc="Microsoft® SQL Server® Tools for Linux"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('msodbcsql')
 options=('!strip')
 source=("https://packages.microsoft.com/rhel/7/prod/$pkgname-$pkgver-1.x86_64.rpm")
-sha512sums=('6ac21455950d1570d270b7e5d0fa2522b87d6b38d5f0914d529499a3a1eb37230fb6a5c3e77c01ffded3ea5b50ded22f5164b319aeed9d1ebcd64bbe45b59215')
+sha512sums=('e9694cb294d4a103a9824587faa426467688d12d37c73cdd135a5432b2b3624450b44071624af31775213af4c3d58d38ac8aaa4d6b29a2c3e11ade8c6331443e')
 
 package() {
   cd "$srcdir"
