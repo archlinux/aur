@@ -4,7 +4,7 @@
 
 pkgname=libretro-ppsspp-gameros
 pkgver=28196
-pkgrel=1
+pkgrel=2
 pkgdesc='Sony PlayStation Portable core with all required assets'
 arch=(x86_64)
 url=https://github.com/libretro/ppsspp
@@ -26,6 +26,9 @@ makedepends=(
   git
   libglvnd
   python
+)
+provides=(
+  libretro-ppsspp
 )
 conflicts=(
   libretro-ppsspp

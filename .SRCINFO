@@ -1,7 +1,7 @@
 pkgbase = libretro-ppsspp-gameros
 	pkgdesc = Sony PlayStation Portable core with all required assets
 	pkgver = 28196
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/libretro/ppsspp
 	arch = x86_64
 	groups = libretro
@@ -19,6 +19,7 @@ pkgbase = libretro-ppsspp-gameros
 	depends = libzip
 	depends = snappy
 	depends = zlib
+	provides = libretro-ppsspp
 	conflicts = libretro-ppsspp
 	source = libretro-ppsspp::git+https://github.com/hrydgard/ppsspp.git#commit=f0ea814107e3c29fc3c961195765e9148fa97fdd
 	source = git+https://github.com/Kingcom/armips.git
