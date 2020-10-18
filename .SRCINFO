@@ -1,0 +1,16 @@
+pkgbase = minetest-mod-caverealms-git
+	pkgdesc = A mod for Minetest to add underground realms
+	pkgver = 57.9ab6487
+	pkgrel = 1
+	url = https://github.com/HeroOfTheWinds/minetest-caverealms/
+	install = minetest-mod-caverealms-git.install
+	arch = any
+	license = custom:WTFPL
+	makedepends = git
+	optdepends = minetest-usrdir_patch
+	provides = minetest-mod-caverealms
+	source = minetest-mod-caverealms::git+https://github.com/HeroOfTheWinds/minetest-caverealms.git
+	md5sums = SKIP
+
+pkgname = minetest-mod-caverealms-git
+
