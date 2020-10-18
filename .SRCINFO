@@ -1,0 +1,25 @@
+pkgbase = wifymosys
+	pkgdesc = Evil Twin Attack Bash script
+	pkgver = 0.25
+	pkgrel = 1
+	url = https://github.com/Vodker/wifimosys
+	arch = x86_64
+	license = GPL-3.0
+	depends = aircrack-ng
+	depends = curl
+	depends = dhcp
+	depends = hostapd
+	depends = wireless_tools
+	depends = lighttpd
+	depends = macchanger
+	depends = mdk3
+	depends = php-cgi
+	depends = pyrit
+	depends = python
+	depends = unzip
+	depends = xterm
+	source = wifymosys::git+https://github.com/Vodker/wifimosys
+	md5sums = SKIP
+
+pkgname = wifymosys
+
