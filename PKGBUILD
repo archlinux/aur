@@ -1,4 +1,4 @@
-# Maintainer: Matthew Ellison <matt+aur@arroyonetworks>
+# Maintainer: la Fleur <lafleur at boum dot org>
 # Contributor: Ivan Cai <caizixian@users.noreply.github.com>
 
 pkgname=python-iptables 
