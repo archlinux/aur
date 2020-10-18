@@ -25,7 +25,7 @@ PKGEXT='.pkg.tar'
 #}
 
 build () {
-  find . -iname fixpaths.py -o -iname checkglade -o -iname update_ini|xargs perl -p -i -e "s/python/python2/"
+  find . -iname fixpaths.py -o -iname checkglade -o -iname update_ini|xargs perl -p -i -e "s/python$/python2/"
   cd $srcdir/$_gitname/src
 
   patch -Np2 -i $srcdir/libtirpc.patch
