@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/Lightcord/Lightcord"
 license=('MIT')
 depends=()
-makedepends=('npm' 'nodejs')
+makedepends=('npm' 'nodejs' 'git')
 conflicts=('lightcord-bin')
 source=("git://github.com/Lightcord/Lightcord.git"
 	"git://github.com/pryme-svg/lightcord-tools.git"
