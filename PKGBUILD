@@ -9,7 +9,7 @@ epoch=1
 _commit=gbd112320
 _ver_x86_64=37
 #_ver_i686=10
-pkgrel=1
+pkgrel=2
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
 license=('custom')
@@ -41,7 +41,8 @@ sha512sums=('999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb43
 sha512sums_x86_64=('a3fe98d69460ffd641df3219c2a3d164a33e2b52c86a56276e473dd5c3a43d6304df3b77fefcf0ca6c09cb6e2c8dacab65573cf7543725b6c8d402832149e122'
                    'af7eb8c50e003638cab04ef1cad36f43379e678a1071c65844a6ff8963434b427044b76159e51c1383698c309c814261ed85aab02ffb86ac73ee86181aada5e9')
 validpgpkeys=('931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90'
-              '2EBF997C15BDA244B6EBF5D84773BD5E130D1D45') # Spotify <tux@spotify.com>
+              '2EBF997C15BDA244B6EBF5D84773BD5E130D1D45'
+              '8FD3D9A8D3800305A9FFF259D1742AD60D811D58') # Spotify <tux@spotify.com>
 
 # Spotify uses different names for the arch
 if [ "${CARCH}" = "i686" ]; then
