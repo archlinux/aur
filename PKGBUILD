@@ -12,9 +12,11 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha512sums=('49d85e30035c982d9a4b537675c93c1000227f45c3d945b927107b4fc4e238de086c7a6fb033eec6b2a459c088b4572c6b90621edc0c147e39ef743e96927541')
 
 build() {
-	mkdir -p "${srcdir}/go/src/github.com/Luzifer"
-	ln -sf "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/go/src/github.com/Luzifer/${pkgname}"
-	GOPATH="${srcdir}/go" go install -a -v -ldflags="-X main.version=${pkgver}" "github.com/Luzifer/${pkgname}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	GO111MODULE=on GOPATH="${srcdir}/go" go install \
+		-a -v \
+		-ldflags="-X main.version=${pkgver}" \
+		-mod=readonly
 }
 
 package() {
