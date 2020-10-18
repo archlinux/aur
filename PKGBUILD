@@ -3,15 +3,13 @@
 pkgname=python-dolfin-git
 pkgdesc="Python interface of FEniCS for ordinary and partial differential equations."
 pkgver=20201015
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/dolfinx"
 license=('GPL3')
 groups=('fenics-git')
-depends=('dolfin-git' 'python-pkgconfig' 'python-ply' 'petsc4py')
-optdepends=('python-mpi4py: MPI library for python'
-            'slepc4py: interface with SLEPc from python'
-            'python-matplotlib: plotting support')
+depends=('dolfin-git' 'python-pkgconfig' 'python-ply' 'python-mpi4py' 'petsc4py' 'slepc4py')
+optdepends=('python-matplotlib: plotting support')
 makedepends=('python-setuptools' 'git')
 options=(!emptydirs)
 source=("dolfin::git+https://github.com/FEniCS/dolfinx.git")
