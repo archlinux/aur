@@ -1,7 +1,7 @@
 pkgbase = mroonga
 	pkgdesc = Fast fulltext search on MySQL(MariaDB bundled Mroonga package).
-	pkgver = 10.06
-	pkgrel = 2
+	pkgver = 10.07
+	pkgrel = 1
 	url = http://mroonga.org/
 	arch = i686
 	arch = x86_64
@@ -27,9 +27,9 @@ pkgbase = mroonga
 	optdepends = cutter-test_framework
 	optdepends = ruby
 	optdepends = snowball-c
-	provides = mysql-clients=10.4.14
-	provides = mysql=10.4.14
-	provides = libmysqlclient=10.4.14
+	provides = mysql-clients=10.4.15
+	provides = mysql=10.4.15
+	provides = libmysqlclient=10.4.15
 	conflicts = libmariadbclient
 	conflicts = mariadb-clients
 	conflicts = mytop
@@ -37,18 +37,18 @@ pkgbase = mroonga
 	conflicts = mysql
 	conflicts = libmysqlclient
 	conflicts = mysql-clients
-	source = http://packages.groonga.org/source/mroonga/mroonga-10.06.tar.gz
-	source = https://downloads.mariadb.org/f/mariadb-10.4.14/source/mariadb-10.4.14.tar.gz
+	source = http://packages.groonga.org/source/mroonga/mroonga-10.07.tar.gz
+	source = https://downloads.mariadb.org/f/mariadb-10.4.15/source/mariadb-10.4.15.tar.gz
 	source = mariadb.service
 	source = mariadb-post.sh
 	source = mariadb-tmpfile.conf
-	sha1sums = afe1efbe717c0c3b9d11fcd3e8318e4f4d31b486
-	sha1sums = 3f71dae76251674f29a7f0cc3d6eded13b9ade0e
+	sha1sums = 517022f9fb79e3ecfe430edc24a70c9686929d1c
+	sha1sums = 929f6847c93be099f2667492d9426486d29fc606
 	sha1sums = 4bc34244fc4b578c155c8cd569d952a97a476f10
 	sha1sums = 206e9f7ba5357027becc2491e0987442f684d63e
 	sha1sums = c2a86c745002923234f9d6d79b3b462d5ab55e8d
-	sha256sums = f4496a8b32bce1bcc819602e83f9fba8255cd37b581348183ff3da78fe9a9f3e
-	sha256sums = f92fcd59e0122461482f28c67c5ea01c7cf6979494a571db68074396864c86fc
+	sha256sums = e79fb10219c870997bae3e433e77a229ba8854854a28167c7c779fa438ff2d50
+	sha256sums = 2783d76d950a259789edc7b43a42b1ee45c350860abff454b26731644efeae31
 	sha256sums = 2c60dfdc866078a8402d6e18d538e6a1deaa70e1b2410bee5eb209a314d7daa7
 	sha256sums = 368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd
 	sha256sums = 2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd
