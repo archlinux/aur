@@ -1,6 +1,6 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 
-pkgname=('python-ompython')
+pkgname='python-ompython'
 _name=OMPython
 pkgver='3.1.2'
 pkgrel=2
