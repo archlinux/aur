@@ -1,0 +1,19 @@
+pkgbase = nerd-fonts-tinos
+	pkgdesc = Patched font Tinos from Nerd Fonts Library
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts
+	arch = any
+	groups = nerd-fonts
+	license = MIT
+	depends = fontconfig
+	provides = nerd-fonts-tinos
+	conflicts = nerd-fonts-git
+	conflicts = nerd-fonts-complete
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Tinos.zip
+	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.1.0/LICENSE
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = nerd-fonts-tinos
+
