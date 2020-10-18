@@ -1,7 +1,7 @@
 # Maintainer: martin sandsmark <martin.sandsmark@kde.org>
 
 pkgname=ageofconquerors-trial-data
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Data files from Age of Empires II: The Conquerors Demo"
 arch=('any')
@@ -33,6 +33,8 @@ package() {
     install -Dm 0644 Sound/Midi/*.mid -t "${pkgdir}/usr/share/ageofconquerors-trial/Sound/Midi/"
 
     install -Dm 0644 language{,_x1}.dll -t "${pkgdir}/usr/share/ageofconquerors-trial/"
+
+    install -Dm 0644 *.TTF -t "${pkgdir}/usr/share/ageofconquerors-trial/"
 
     install -Dm 644 EULAx.RTF -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm 644 Readmex.rtf -t "${pkgdir}/usr/share/doc/${pkgname}"
