@@ -1,5 +1,5 @@
 # Maintainer: Fernando Barrientos <fernando.barrientos57@gmail.com>
-pkgname="wifymosys"
+pkgname="wifimosys"
 pkgver=0.25
 pkgrel=1
 pkgdesc="Evil Twin Attack Bash script"
@@ -18,7 +18,7 @@ package() {
 	install -d "${pkgdir}/usr/bin"
 	cat > "${pkgdir}/usr/bin/${pkgname}" << EOF
 #!/bin/sh
-/opt/wifymosys/wifimosys
+/opt/wifimosys/wifimosys
 EOF
 	chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"

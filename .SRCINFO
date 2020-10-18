@@ -18,7 +18,7 @@ pkgbase = wifimosys
 	depends = python
 	depends = unzip
 	depends = xterm
-	source = wifymosys::git+https://github.com/Vodker/wifimosys
+	source = wifimosys::git+https://github.com/Vodker/wifimosys
 	md5sums = SKIP
 
 pkgname = wifimosys
