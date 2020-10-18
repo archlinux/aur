@@ -4,14 +4,14 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.10.15.a.r48.g2ae0c80c1a4
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.10.15.a.r55.g789ada59f31
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
 url="https://swift.org/"
 license=('apache2')
 depends=('icu' 'libedit' 'libxml2' 'swig' 'python' 'libbsd' 'ncurses' )
-makedepends=('clang' 'cmake' 'git' 'ninja' 'python-six' 'python2' 'rsync')
+makedepends=('clang' 'cmake' 'git' 'ninja' 'python-six' 'rsync')
 provides=('swift-language-git')
 source=(
     'git+https://github.com/apple/swift#branch=main'
