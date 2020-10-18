@@ -1,0 +1,13 @@
+pkgbase = libworld
+	pkgdesc = NEUTRINO WORLD Library
+	pkgver = 1.0.0
+	pkgrel = 0
+	arch = any
+	makedepends = cmake
+	makedepends = ninja
+	depends = clang
+	source = git+https://github.com/kokkiemouse/World.git
+	md5sums = SKIP
+
+pkgname = libworld
+
