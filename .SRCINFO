@@ -1,0 +1,24 @@
+pkgbase = libnfc-nci-alt
+	pkgdesc = Linux NFC stack for NCI based NXP NFC Controllers (PN7150, PN7120). With alt-i2c tml.
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/NXPNFCLinux/linux_libnfc-nci/
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = systemd-libs
+	depends = openssl
+	provides = libnfc-nci
+	conflicts = libnfc-nci-lpcusbsio
+	conflicts = libnfc-nci-i2c
+	source = git+https://github.com/NXPNFCLinux/linux_libnfc-nci#commit=2aff6448cf6a86897d3d1bacb0a0943a594aa9ce
+	source = 01-fix-tml-linker-errors.patch
+	source = 02-fix-llcp-linker-errors.patch
+	sha256sums = SKIP
+	sha256sums = c9992a8449de8ece0324cbf180a24f8bcab82cb7f51832d3d80958c0968a7575
+	sha256sums = c6ece172b50e1d1070a979fbafa2e9ee7f7f7b92d583fa38f8ea433123a9ef4d
+
+pkgname = libnfc-nci-alt
+
