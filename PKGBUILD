@@ -28,7 +28,7 @@ package() {
 
   python setup.py install --root="$pkgdir" --optimize=1
 
-  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
 #  rm -f "$pkgdir"/usr/bin/{aws.cmd,aws_bash_completer}
 }
