@@ -1,8 +1,8 @@
 pkgbase = linux-froidzen
-	pkgdesc = Linux ZEN with Patches
-	pkgver = 5.9.1.zen1
+	pkgdesc = Linux ZEN with Patches and Modifications
+	pkgver = 5.9.1.zen2
 	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.9.1-zen1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.9.1-zen2
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -16,7 +16,7 @@ pkgbase = linux-froidzen
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.9.1-zen1
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.9.1-zen2
 	source = config
 	source = sphinx-workaround.patch
 	source = https://raw.githubusercontent.com/dolohow/uksm/master/v5.x/uksm-5.9.patch
@@ -29,7 +29,7 @@ pkgbase = linux-froidzen
 	sha256sums = 59d2b5e63c30332bd6e7030e4050ce9722f420b0e5b9bc383e7e93aca4268929
 
 pkgname = linux-froidzen
-	pkgdesc = The Linux ZEN with Patches kernel and modules
+	pkgdesc = The Linux ZEN with Patches and Modifications kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -40,8 +40,8 @@ pkgname = linux-froidzen
 	replaces = 
 
 pkgname = linux-froidzen-headers
-	pkgdesc = Headers and scripts for building modules for the Linux ZEN with Patches kernel
+	pkgdesc = Headers and scripts for building modules for the Linux ZEN with Patches and Modifications kernel
 
 pkgname = linux-froidzen-docs
-	pkgdesc = Documentation for the Linux ZEN with Patches kernel
+	pkgdesc = Documentation for the Linux ZEN with Patches and Modifications kernel
 
