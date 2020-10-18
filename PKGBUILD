@@ -7,7 +7,7 @@
 # Contributor: nixi <nixi at cock dot li>
 
 pkgname=sqlitebrowser-cipher
-pkgver=3.11.2
+pkgver=3.12.0
 pkgrel=1
 pkgdesc="SQLite Database browser is a light GUI editor for SQLite databases, built on top of Qt (with sqlcipher support)"
 arch=('i686' 'x86_64')
@@ -15,11 +15,11 @@ url="http://sqlitebrowser.org/"
 license=('GPL')
 provides=('sqlitebrowser')
 conflicts=('sqlitebrowser')
-depends=('qt5-base' 'hicolor-icon-theme' 'sqlcipher')
+depends=('qt5-base' 'hicolor-icon-theme' 'sqlcipher' 'qt5-tools')
 makedepends=('cmake')
 install=sqlitebrowser.install
 source=("https://github.com/sqlitebrowser/sqlitebrowser/archive/v${pkgver}.tar.gz")
-sha256sums=('298acb28878aa712277a1c35c185b07a5a1671cc3e2c6a21b323477b91d486fc')
+sha256sums=('3f1a1453ed0f4b5b72b0468bf8ee56887eb23d71c2518a449f4eb179471d73d1')
 
 build() {
   mkdir -p build
@@ -34,5 +34,5 @@ package() {
 
   install -Dm0644 "$srcdir/sqlitebrowser-$pkgver/distri/sqlitebrowser.desktop" "$pkgdir/usr/share/applications/sqlitebrowser.desktop"
   install -dm0755 "$pkgdir/usr/share/icons/"
-  install -m0644 "$srcdir/sqlitebrowser-$pkgver/images/sqlitebrowser.svg" "$pkgdir/usr/share/icons/"
+  install -m0644 "$srcdir/sqlitebrowser-$pkgver/images/logo.svg" "$pkgdir/usr/share/icons/sqlitebrowser.svg"
 }
