@@ -1,12 +1,12 @@
 pkgbase = muso
 	pkgdesc = muso: music sorter
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/quebin31/muso
 	arch = any
 	license = GPL3
-	source = muso-v1.5.0.tar.gz::https://github.com/quebin31/muso/releases/download/1.5.0/release.tar.gz
-	sha256sums = be2570f19901342bfd0ba276d28ac923050e128c134ae34c266de0fc993b66b7
+	source = muso-v1.5.1.tar.gz::https://github.com/quebin31/muso/releases/download/1.5.1/release.tar.gz
+	sha256sums = e719401f298a60ec9c62ee0fd9baaac4db0f1f4fd40ade6b33d444c326876f05
 
 pkgname = muso
 
