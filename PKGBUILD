@@ -20,7 +20,7 @@ source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
   "config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=73c7e1d6489aa3ae743b2abb1113fc738ba7d8f1"
   i8042.patch
-  "asus-n-key-keyboard.patch::https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/-/raw/master/kernel_patches/5.8/5.8.8/0001-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard.patch"
+  "asus-n-key-keyboard.patch::https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/-/raw/master/kernel_patches/5.9/5.9.1/0001-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard.patch"
   "https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.9.patch"
 )
 validpgpkeys=(
