@@ -1,7 +1,7 @@
 # Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
 
 pkgname=petsc-git
-pkgver=20201016
+pkgver=20201018
 pkgrel=1
 _config=linux-c-opt
 pkgdesc="Portable, extensible toolkit for scientific computation (external downloads enabled)"
@@ -10,8 +10,8 @@ conflicts=(petsc)
 arch=('i686' 'x86_64')
 url="https://gitlab.com/petsc/petsc"
 license=('BSD')
-depends=('openmpi' 'lapack' 'fftw' 'hdf5' 'suitesparse')
-makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing' 'python')
+depends=('openmpi' 'lapack' 'fftw' 'hdf5' 'suitesparse' 'metis' 'parmetis' 'superlu' 'eigen')
+makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing' 'python' 'git')
 optdepends=("opencl: GPU computing"
             "hwloc: hardware locality"
             "cgns: CFD data support"
@@ -77,18 +77,21 @@ build() {
       --with-hdf5=1
       --with-suitesparse=1
 
+      --with-parmetis=1
+      --with-metis=1
+      --with-superlu=1
+      --with-superlu-include=/usr/include/superlu
+      --with-superlu-lib=superlu
+      --with-eigen=1
+      --with-eigen-pkg-config=/usr/share/pkgconfig
+
       --with-scalar-type=complex
 
-      --download-amd=1
-      --download-eigen=1
-      --download-hypre=1
-      --download-metis=1
-      --download-mumps=1
-      --download-parmetis=1
+      --download-scotch=1
       --download-ptscotch=1
+      --download-mumps=1
       --download-scalapack=1
-      --download-superlu=1
-      --download-superlu_dist=1
+      --download-hypre=1
     )
 
     CONFOPTS=( "${CONFOPTS[@]}" )
@@ -158,5 +161,12 @@ package() {
     install -dm 755 "${pkgdir}/etc/ld.so.conf.d/"
     echo "${_install_dir}/lib" > "${pkgdir}/etc/ld.so.conf.d/petsc.conf"
 
-    sed -i "s#-L${_build_dir}/${_petsc_arch}/lib ##" "${pkgdir}${_install_dir}/lib/pkgconfig/PETSc.pc"
+    _rem_dir="${_build_dir}/${_petsc_arch}"
+
+    sed -i "s#-L${_rem_dir}/lib ##" "${pkgdir}${_install_dir}/lib/pkgconfig/PETSc.pc"
+    sed -i "s#-L${_rem_dir}/lib ##" "${pkgdir}${_install_dir}/lib/pkgconfig/petsc.pc"
+    sed -i "s#${_rem_dir}#${_install_dir}#g" "${pkgdir}${_install_dir}/include/petscmachineinfo.h"
+    sed -i "s#${_rem_dir}#${_install_dir}#g" "${pkgdir}${_install_dir}/lib/petsc/conf/pkg.conf.mumps"
+    sed -i "s#${_rem_dir}#${_install_dir}#g" "${pkgdir}${_install_dir}/lib/petsc/conf/pkg.conf.hypre"
+    sed -i "s#${_rem_dir}#${_install_dir}#g" "${pkgdir}${_install_dir}/lib/petsc/conf/petscvariables"
 }
