@@ -1,0 +1,15 @@
+pkgbase = bruski-git
+	pkgdesc = The BruSKI language compiler and platform
+	pkgver = 1.1.r236.0506501
+	pkgrel = 1
+	url = https://github.com/NicklasBoto/BruSKI.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	makedepends = stack
+	source = git+https://github.com/NicklasBoto/BruSKI.git
+	md5sums = SKIP
+
+pkgname = bruski-git
+
