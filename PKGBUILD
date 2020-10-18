@@ -2,7 +2,7 @@
 
 pkgname=chatrullete-plus
 pkgver=0.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="ChatRullete (Plus)"
 arch=('x86_64')
 url="https://github.com/chatrullete-plus"
@@ -20,9 +20,10 @@ package() {
     mkdir -p "${pkgdir}/usr/share/pixmaps"
 
     mv "${srcdir}/"* "${pkgdir}/usr/lib/chatrullete"
+    mv "${pkgdir}/usr/lib/chatrullete/ChatRullete" "${pkgdir}/usr/lib/chatrullete/chatrullete"
 
     # Create symlink to executable
-    ln -s "${pkgdir}/usr/lib/ChatRullete" "${pkgdir}/usr/bin/chatrullete"
+    ln -s "${pkgdir}/usr/lib/chatrullete/chatrullete" "${pkgdir}/usr/bin/chatrullete"
 
     # Copy resources
     cp "${startdir}/chatrullete.desktop" "${pkgdir}/usr/share/applications"
