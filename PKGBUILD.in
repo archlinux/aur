@@ -9,6 +9,7 @@ url='http://kicad-pcb.org/'
 license=('GPL')
 depends=('wxgtk3' 'python' 'boost-libs' 'glew' 'curl' 'glm' 'ngspice' 'opencascade' 'python-wxpython')
 makedepends=('git' 'cmake' 'zlib' 'mesa' 'boost' 'swig')
+options=('!strip')
 optdepends=(
 	'kicad-library-nightly: for footprints and symbols'
 	'kicad-library-3d-nightly: for 3d models of components'
