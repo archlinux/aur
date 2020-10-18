@@ -1,0 +1,24 @@
+pkgbase = alertmanager-matrix
+	pkgdesc = Alertmanager webhook receiver that sends to a Matrix channel
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = http://github.com/dkess/alertmanager_matrix
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = go
+	makedepends = git
+	provides = alertmanager-matrix
+	conflicts = alertmanager-matrix
+	backup = etc/alertmanager-matrix/ammatrix.yml
+	source = alertmanager_matrix-0.0.2.tar.gz::https://github.com/dkess/alertmanager_matrix/archive/v0.0.2.tar.gz
+	source = alertmanager-matrix.service
+	source = alertmanager-matrix.sysusers
+	source = alertmanager-matrix.tmpfiles
+	sha256sums = 48d94de3d517ce244668a3cfad7f98ca94c0fdb8f451d460f94fcb447ed9002b
+	sha256sums = 229b3885a7b83a2bb64797af7e143be660fc6231173b5e509d641b1e32f8b3c5
+	sha256sums = 7214f94ad898305e8054c0382eca49136ba82d4f97fc3e747a5e2a9a18fa7573
+	sha256sums = e91e9be3b0c25daddf38cb18ad792bffe040e88074b49043c9a49638e17d73bc
+
+pkgname = alertmanager-matrix
+

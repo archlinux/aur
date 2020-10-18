@@ -1,0 +1,2 @@
+d /var/lib/alertmanager-matrix 0755 alertmanager-matrix alertmanager-matrix
+f /var/lib/alertmanager-matrix/access_token 0400 alertmanager-matrix alertmanager-matrix
