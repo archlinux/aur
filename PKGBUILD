@@ -5,7 +5,7 @@
 # This file is based on original PKGBUILD of GTK3 package.
 # https://git.archlinux.org/svntogit/packages.git/plain/trunk/PKGBUILD?h=packages/gtk3
 
-__arch_pkg_commit="90b0e66dd7be571a849f9b300806a00d0f51d3ed#diff-8d0411b338c83cd8cd8ad9d9db127101"
+__arch_pkg_commit="c544d29e39f906fcb3f76ff477d11751fefcbb0f"
 _gtkver=3.24.23
 
 pkgbase=gtk3-classic

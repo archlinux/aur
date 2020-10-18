@@ -91,8 +91,8 @@ pkgbase = gtk3-classic
 	source = popovers__places-sidebar.patch
 	source = smaller-adwaita.css
 	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.23.tar.xz
-	source = settings.ini::https://git.archlinux.org/svntogit/packages.git/plain/trunk/settings.ini?h=packages/gtk3&id=90b0e66dd7be571a849f9b300806a00d0f51d3ed#diff-8d0411b338c83cd8cd8ad9d9db127101
-	source = gtk-query-immodules-3.0.hook::https://git.archlinux.org/svntogit/packages.git/plain/trunk/gtk-query-immodules-3.0.hook?h=packages/gtk3&id=90b0e66dd7be571a849f9b300806a00d0f51d3ed#diff-8d0411b338c83cd8cd8ad9d9db127101
+	source = settings.ini::https://git.archlinux.org/svntogit/packages.git/plain/trunk/settings.ini?h=packages/gtk3&id=c544d29e39f906fcb3f76ff477d11751fefcbb0f
+	source = gtk-query-immodules-3.0.hook::https://git.archlinux.org/svntogit/packages.git/plain/trunk/gtk-query-immodules-3.0.hook?h=packages/gtk3&id=c544d29e39f906fcb3f76ff477d11751fefcbb0f
 	source = README.md
 	sha256sums = 4935ec23cbd0150bd479fc457861d3a665354509c3ff933997827c7141c8657c
 	sha256sums = 6de32e1bee6bf4307aaec072fc8431b044e73299720a490298b8c1b7c502e039
