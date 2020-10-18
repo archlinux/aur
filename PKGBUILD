@@ -2,8 +2,8 @@
 
 _basename=jitsi-meet
 _pkgname=prosody
-_tag=4480
-_version=1.0.4480
+_tag=4481
+_version=1.0.4481
 
 _pkgbase=${_basename}-${_pkgname}-nightly
 _debname=${_basename}-${_pkgname}
@@ -48,4 +48,4 @@ package() {
 	
 
 }
-sha256sums=('056bfa4fbf476a2d8a93146e10d6d1adb5f5a9f139a0510ca6eeada1b9a9ca17')
+sha256sums=('df6bd557212f1b3a1a73b4ef27fd4a1f2b98cd20eed9f8504d0385bdb865dd62')
