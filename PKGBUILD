@@ -2,10 +2,10 @@
 
 pkgname=chatrullete-plus
 pkgver=0.0.2
-pkgrel=8
+pkgrel=9
 pkgdesc="ChatRullete (Plus)"
 arch=('x86_64')
-url="https://github.com/chatrullete-plus"
+url="https://github.com/vicimpa/chatrullete-plus"
 license=('custom')
 depends=('libnotify' 'libxss' 'nspr' 'nss' 'gtk3' 'opera-ffmpeg-codecs' 'libegl' 'libgles')
 optdepends=('gnome-keyring')
@@ -32,8 +32,6 @@ package() {
 }
 
 post_install() {
-    echo "Hello!"
-
     # Create symlink to executable
     ln -s "/usr/lib/chatrullete/chatrullete" "/usr/bin/chatrullete"
 
