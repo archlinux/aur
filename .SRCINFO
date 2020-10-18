@@ -1,0 +1,15 @@
+pkgbase = ultraloop-git
+	pkgdesc = converter from Ultrastar's song format to blitzloop's
+	pkgver = r27.da64bf5
+	pkgrel = 1
+	url = https://github.com/T045T/ultraloop
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = bison
+	depends = flex
+	source = ultraloop::git+https://github.com/T045T/ultraloop
+	md5sums = SKIP
+
+pkgname = ultraloop-git
+
