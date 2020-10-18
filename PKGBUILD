@@ -1,22 +1,44 @@
 # Maintainer: Vojtěch Aschenbrenner <v@asch.cz>
+# Contributor: Tim Meusel <tim@bastelfreak.de>
 
-_gemname=locale
-pkgname=ruby-$_gemname
-pkgver=2.1.2
-pkgrel=2
-pkgdesc='Ruby-Locale is the pure ruby library which provides basic APIs for localization.'
-arch=(any)
-url='https://github.com/ruby-gettext/locale'
-license=(Ruby LGPLv3+)
-depends=(ruby ruby-rdoc)
+_gemname='locale'
+pkgname="ruby-${_gemname}"
+pkgver=2.1.3
+pkgrel=1
+pkgdesc='A pure ruby library which provides basic and general purpose APIs for localization.'
+arch=('any')
+url="https://github.com/ruby-gettext/locale"
+license=('RUBY' 'LGPL3')
+makedepends=('ruby-rdoc' 'ruby-rake' 'ruby-bundler' 'ruby-yard')
+checkdepends=('ruby-test-unit' 'ruby-test-unit-rr')
+depends=('ruby')
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha1sums=('e4e70de4b0cbbc641afa8cf90833fb0057318d27')
+source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('77877f15914dbee5ca83155f8cb84815296b4e2e4205218c9926e0265b40940cbdbe68fb048870ce4f53a6caeeb593813a2e16e8c130a19e44a28cb67c82fe25')
+
+build() {
+  cd "${_gemname}-${pkgver}"
+  # remove dependencies that aren't actual dependencies
+  sed --in-place '/test\/unit\/notify/d' test/run-test.rb
+  sed --in-place '/s.add_development_dependency("redcarpet")/d' "${_gemname}.gemspec"
+  sed --in-place '/s.add_development_dependency("test-unit-notify")/d' "${_gemname}.gemspec"
+  rake build
+}
+
+check() {
+  cd "${_gemname}-${pkgver}"
+  rake test
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  cd "${_gemname}-${pkgver}"
+  local _gemdir="$(gem env gemdir)"
+  gem install --verbose --ignore-dependencies --no-user-install --install-dir "${pkgdir}/${_gemdir}" --bindir "${pkgdir}/usr/bin" "pkg/${_gemname}-${pkgver}.gem"
+
+  install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm 644 README.rdoc ChangeLog doc/text/news.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+
+  rm -rf "${pkgdir}/${_gemdir}/cache"
 }
+
+# vim: ts=2 sw=2 et:
