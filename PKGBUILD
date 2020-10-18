@@ -7,7 +7,7 @@ arch=('x86_64' 'i686')
 url="http://cpat.sourceforge.net/"
 license=('GPL3')
 depends=('ncurses')
-source=("https://ayera.dl.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
+source=("https://master.dl.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('48b9a67cf5b8c9ce0b65de2d75c2086e37067bfa9b401f3d660465f1fd863327')
 
 build() {
