@@ -1,0 +1,25 @@
+--- a/mupen64plus-gui/mainwindow.cpp
++++ b/mupen64plus-gui/mainwindow.cpp
+@@ -4,6 +4,7 @@
+ #include <QCloseEvent>
+ #include <QActionGroup>
+ #include <QDesktopServices>
++#include <QStandardPaths>
+ #include "settingsdialog.h"
+ #include "plugindialog.h"
+ #include "mainwindow.h"
+@@ -408,11 +409,11 @@ MainWindow::MainWindow(QWidget *parent) :
+     updatePIF(ui);
+ 
+     if (!settings->contains("coreLibPath"))
+-        settings->setValue("coreLibPath", "$APP_PATH$");
++        settings->setValue("coreLibPath", "/usr/lib");
+     if (!settings->contains("pluginDirPath"))
+-        settings->setValue("pluginDirPath", "$APP_PATH$");
++        settings->setValue("pluginDirPath", "/usr/lib/mupen64plus");
+     if (!settings->contains("configDirPath"))
+-        settings->setValue("configDirPath", "$CONFIG_PATH$");
++        settings->setValue("configDirPath", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/mupen64plus");
+ 
+     updatePlugins();
+ 
