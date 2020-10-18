@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.8.14.arch1
+pkgver=5.9.1.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -94,8 +94,8 @@ source=(
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
     sphinx-workaround.patch
-    0005-v5.8_undead-pds099o.patch
-    0005-undead-glitched-pds.patch
+    0009-prjc_v5.9-r0.patch
+    0005-glitched-pds.patch
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -104,10 +104,10 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '9ecc48185b70552e37a66315bb5ef73b861c808520dfb71bea6f501d3753db5a8b74f75e3a104fcfc70f9e501467854c3d6573ef4c0aa5f9fc2c4fb9c4cc14f7'
+            '29e6b6b45fec5a93cfdd41d2286c406ed94aaee0148df0e452ace250eeff9287cf87d9a339af34b9beec690db5a3b439a2c7c441313f05f577a4e11b056b1610'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
-            '2fdedae6a8233520119dc0874a38460253f9644413ba4b73083e33a098e9b5121a4f5f94e97ce872727533febba91093b7aa580809624883416f010a0c33cae6'
-            'dca2b705810db5e3c3782ac4c11f499e010752055629213ccada09c8e748d20cd1e8c49a93d2e28c5b0c7bf23a2247f0d9858a26d4a56b7cef35108c731cff1c')
+            'afc135ec7c147ab6dc22e34f1f3373bde30a3a5fb77032832470ededf97a0a1a3e1fd4294bd0a03ef3edc51a10331ba7e37e63d5f6d6d603111600693bac9755'
+            '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -120,19 +120,14 @@ prepare() {
     scripts/setlocalversion --save-scmversion
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
-
-    # https://github.com/graysky2/kernel_gcc_patch
-    msg2 "Patching with Graysky's additional gcc CPU optimizatons..."
-    patch -Np1 -i "$srcdir/$_reponame_gcc_patch/$_gcc_patch_name"
     
-    msg2 "Patching with Sphinx build fail workaround..."
-    patch -Np1 -i "$srcdir/sphinx-workaround.patch"
-    
-    # From https://github.com/Frogging-Family/linux-tkg/tree/master/linux56-tkg/linux56-tkg-patches
-    msg2 "Patching with Undead PDS 0.99o patches, rebased by TkG"
-    for MyPatch in \
-        0005-v5.8_undead-pds099o.patch \
-        0005-undead-glitched-pds.patch
+    PatchesArray=(
+        sphinx-workaround.patch
+        $_reponame_gcc_patch/$_gcc_patch_name
+        0009-prjc_v5.9-r0.patch
+        0005-glitched-pds.patch
+    )
+    for MyPatch in "${PatchesArray[@]}"
     do
         msg2 "Applying patch $MyPatch..."
         patch -Np1 -i "$srcdir/$MyPatch"
@@ -160,7 +155,7 @@ prepare() {
     fi
     
     # Set yield_type to 0
-    sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 0;/' ./kernel/sched/pds.c
+    sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 0;/' ./kernel/sched/alt_core.c
 
     # do not run 'make olddefconfig' as it sets default options
     yes "" | make config >/dev/null
