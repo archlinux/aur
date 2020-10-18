@@ -1,7 +1,7 @@
 pkgbase = dolfin-git
 	pkgdesc = C++ interface of FEniCS for ordinary and partial differential equations.
 	pkgver = 20201015
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FEniCS/dolfinx
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = dolfin-git
 	depends = gl2ps
 	depends = python-ffc-git
 	depends = petsc
-	optdepends = slepc: eigenvalue problem solvers
+	depends = slepc
 	options = !emptydirs
 	source = dolfin::git+https://github.com/FEniCS/dolfinx.git
 	md5sums = SKIP
