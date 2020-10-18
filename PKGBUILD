@@ -1,10 +1,10 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 
 _pkgname=rust
-_cargo=0.47.0
+_cargo=0.48.0
 
 pkgname=mingw-w64-rust-bin
-pkgver=1.46.0
+pkgver=1.47.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (PLEASE READ COMMENTS FIRST) (official build, mingw-w64)"
 arch=('x86_64')
@@ -25,15 +25,15 @@ source=("https://static.rust-lang.org/dist/cargo-${_cargo}-x86_64-unknown-linux-
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-i686-pc-windows-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-pc-windows-gnu.tar.xz"{,.asc})
-sha256sums=('9da5c4888c6025fa174eaef330337e49666ca9562f876a34d40c03a80d432b8d'
+sha256sums=('6958f9797b7acacb708423c61f5e8b23c63d9e96fdc7c07fdb0a3feafeaf27e9'
             'SKIP'
-            '6edcec5367f9fcaee78cbcabfb1f6757fa95d7fd2c0853913223fe20ad534f12'
+            '6effe67c3461335eabba2334f4747260bd479c938e635899a60ed094beec7481'
             'SKIP'
-            'e631d80cb03539769c041ee4566e94e36a271d4b3cdd149e1447d1f77fda979c'
+            'a469db59f7df3a5e4003421d853b274e828b537d2d56fd5ce6bba8ba73266f02'
             'SKIP'
-            '649c055a3ebdd259e013e71593d0873ec71a5410477fbb87ae8f7bcd030c5eb5'
+            '441abb95fb607a17fa249302f530282ce11c02597deb6d9ad2cfb4136291cd6d'
             'SKIP'
-            '9cf40cb67e4669b9aa29ea2acc80ca0ac4e578df9a9d81dfbe31beda92fd712c'
+            '5c598edc6810bb8bc6439d8b49ce2e837ecd4295bd3bdcf4f6d580e177cdad85'
             'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
