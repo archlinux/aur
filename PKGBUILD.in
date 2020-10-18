@@ -22,7 +22,7 @@ build_package()
 	cd "$1"
 	cmake . \
 		-DCMAKE_INSTALL_PREFIX=/usr/lib/kicad-nightly \
-		-DCMAKE_INSTALL_DATADIR=/usr/share/kicad-nightly
+		-DKICAD_DATA=/usr/share/kicad-nightly
 	make
 }
 
