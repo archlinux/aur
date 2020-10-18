@@ -1,13 +1,12 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=git-subrepo-xdg
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Git Submodule alternative"
 arch=('any')
 url="https://github.com/ingydotnet/git-subrepo"
 license=('MIT')
 depends=('git')
-makedepends=(gzip sed)
 provides=("git-subrepo")
 conflicts=("git-subrepo")
 source=("${url}/archive/${pkgver}.tar.gz")
@@ -38,5 +37,8 @@ package() {
   # Note: seems to work like git-annex; may need to install bash-completion to enable
   install -d $pkgdir/usr/share/bash-completion/completions
   cp -a $srcdir/git-subrepo-${pkgver}/share/completion.bash $pkgdir/usr/share/bash-completion/completions/git-subrepo
+
+  # MIT license
+  install -Dm644 $srcdir/git-subrepo-${pkgver}/License "$pkgdir/usr/share/licenses/$pkgname/License"
 }
 

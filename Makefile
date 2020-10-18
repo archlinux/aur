@@ -1,4 +1,4 @@
-package:
+build:
 	makepkg -f
 
 install:
