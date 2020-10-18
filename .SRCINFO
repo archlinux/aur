@@ -1,7 +1,7 @@
 pkgbase = coil64
-	pkgdesc = Coil inductance calculator
+	pkgdesc = Coil inductance calculator (formerly Coil32)
 	pkgver = 1.2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://coil32.net/
 	arch = x86_64
 	license = GPL
