@@ -2,7 +2,7 @@
 
 pkgbase=kicad-library-nightly
 pkgname=('kicad-library-nightly' 'kicad-library-3d-nightly')
-pkgver=5.99.0_4092_g1ee3df61c9
+pkgver=5.99.0_4135_g688a031793
 pkgrel=1
 pkgdesc='KiCAD component and footprint libraries'
 arch=('any')
@@ -20,7 +20,9 @@ sha256sums=('SKIP' 'SKIP' 'SKIP')
 build_package()
 {
 	cd "$1"
-	cmake . -DCMAKE_INSTALL_PREFIX=/usr/lib/kicad-nightly
+	cmake . \
+		-DCMAKE_INSTALL_PREFIX=/usr/lib/kicad-nightly \
+		-DCMAKE_INSTALL_DATADIR=/usr/share/kicad-nightly
 	make
 }
 
