@@ -1,5 +1,5 @@
-# Packager: William Chen <edoc.www@gmail.com>
-# Maintainer: William Chen <edoc.www@gmail.com>
+# Packager: pryme-svg <edoc.www@gmail.com>
+# Maintainer: pryme-svg <edoc.www@gmail.com>
 
 pkgname=nerd-fonts-tinos
 pkgver=2.1.0
