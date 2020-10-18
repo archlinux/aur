@@ -1,25 +1,21 @@
 # Maintainer: Julien Desgats <julien at desgats dot fr>
 
 pkgname=osrm-backend
-pkgver=5.22.0
-pkgrel=4
+pkgver=5.23.0
+pkgrel=1
 pkgdesc="High performance routing engine written in C++14 designed to run on OpenStreetMap data."
 url="http://map.project-osrm.org/"
 depends=("expat" "boost-libs" "lua52" "intel-tbb")
-makedepends=("cmake" "boost")
+# XXX: for now build with gcc 10 fails, so we have to stick with gcc 9 a little longer
+# see https://github.com/Project-OSRM/osrm-backend/issues/5858
+makedepends=("cmake" "boost" "gcc9")
 arch=('x86_64')
 license=('BSD')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Project-OSRM/osrm-backend/archive/v$pkgver.tar.gz"
-        "fix-boost-fs.patch"
-        "fix-guidance-so.patch")
-sha256sums=("df0987a04bcf65d74f9c4e18f34a01982bf3bb97aa47f9d86cfb8b35f17a6a55"
-            "2c353e7e942df92091cf138f9c47135a74dc6f70bcad6897b118b312ca226ad6"
-            "5866c256dcfd63806d696483e2b9ca9b74edb969697ba4ac3025948c892c1407")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Project-OSRM/osrm-backend/archive/v$pkgver.tar.gz")
+sha256sums=("8527ce7d799123a9e9e99551936821cc0025baae6f2120dbf2fbc6332c709915")
 
 prepare() {
     cd "$pkgname-$pkgver"
-    patch --forward --strip=1 --input="${srcdir}/fix-boost-fs.patch"
-    patch --forward --strip=1 --input="${srcdir}/fix-guidance-so.patch"
 }
 
 build() {
@@ -30,7 +26,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_CXX_FLAGS="-Wno-pessimizing-move -Wno-redundant-move" \
+        -DCMAKE_CXX_COMPILER=g++-9 \
+        -DCMAKE_C_COMPILER=gcc-9 \
         -DBUILD_SHARED_LIBS=ON
     make VERBOSE=1
 }
