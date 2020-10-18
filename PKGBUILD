@@ -21,7 +21,7 @@ package() {
 /opt/wifimosys/wifimosys
 EOF
 	chmod 755 "${pkgdir}/usr/bin/${pkgname}"
-	install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm 644 License -t "${pkgdir}/usr/share/licenses/${pkgname}"
 	install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 	return 0
 }
