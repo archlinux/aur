@@ -9,10 +9,10 @@
 # * https://github.com/bohoomil/fontconfig-ultimate/blob/master/freetype/03-infinality-2.6.3-2016.04.16.patch#L2092
 # * https://www.reddit.com/r/archlinux/comments/5qkvqb/best_way_to_approximate_infinalitys_ultimate5
 
-__arch_pkg_commit="6cdc4ff886a3bdf6d02a674b119e6b42dad9675b"
+__arch_pkg_commit="68a744d932ddf1d218c687ed89f5742b57385bba"
 
 pkgname=freetype2-ultimate5
-pkgver=2.10.2
+pkgver=2.10.3
 pkgrel=1
 pkgdesc="FreeType patched for effect similar to Infinality's ultimate5 preset."
 url="https://www.freetype.org/"
@@ -29,17 +29,19 @@ source=(
 
 	# Arch Linux package files.
 	"upstream_1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Enable-table-validation-modules.patch?h=packages/freetype2&id=$__arch_pkg_commit"
-	"upstream_2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-Enable-infinality-subpixel-hinting.patch?h=packages/freetype2&id=$__arch_pkg_commit"
-	"upstream_3.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Enable-long-PCF-family-names.patch?h=packages/freetype2&id=$__arch_pkg_commit"
+	"upstream_2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-Enable-subpixel-rendering.patch?h=packages/freetype2&id=$__arch_pkg_commit"
+	"upstream_3.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Enable-infinality-subpixel-hinting.patch?h=packages/freetype2&id=$__arch_pkg_commit"
+	"upstream_4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0004-Enable-long-PCF-family-names.patch?h=packages/freetype2&id=$__arch_pkg_commit"
 
 	# FreeType source code.
 	https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.xz
 )
-sha1sums=('4d111cc93d9a7aca79b4a75ccd069df08aa2ad26'
-          '283427030ef4b942f01e24ba022f2b84f1733fa8'
-          '1efd1e1db64cb7705296b724920d6328ff5f1f14'
-          '6b289e2ba54a4513af9aa3981b374fccb20ffc89'
-          'b074d5c34dc0e3cc150be6e7aa6b07c9ec4ed875')
+sha256sums=('9554d3a23619a46cf48e512e5b6336afd0802f42fdaf9b2e47ba0c718143f1dd'
+            '751ff94b186b5c5b02ae6fd22533c5954bb6a14dd4bac2dd8ff826ba2b695ef5'
+            'dc77c1cfee4bf8e7e0690628c95d211df09e0d0750e4c8f075b78b5f105514f7'
+            '21a62bc12b848320c686d602d8d4e3bcd51294a9def4dc9c301736e077b59f3f'
+            '266384222f87a02fb02b2179828f6c26fe6d7b1fd09d1f7e3734e7fcb09cda2e'
+            'c22244bc766b2d8152f22db7370965431dcb1e408260428208c24984f78e6659')
 
 prepare()
 {
