@@ -1,0 +1,110 @@
+diff --git a/src/libnfc-nci/nfc/cipher/cipher.c b/src/libnfc-nci/nfc/cipher/cipher.c
+index 899fc34..3d97306 100644
+--- a/src/libnfc-nci/nfc/cipher/cipher.c
++++ b/src/libnfc-nci/nfc/cipher/cipher.c
+@@ -31,6 +31,7 @@
+ #if(NFC_NXP_LLCP_SECURED_P2P == TRUE)
+ #include "cipher.h"
+ 
++tCIPHER_SUITE cipher_suite;
+ void cipher_init()
+ {
+ 
+@@ -53,6 +54,7 @@ void cipher_deinit()
+ 
+ }
+ 
++tECDH_KEY ecdh_key;
+ void cipher_generate_keys()
+ {
+ 
+diff --git a/src/libnfc-nci/nfc/include/cipher.h b/src/libnfc-nci/nfc/include/cipher.h
+index 5167de2..af7b971 100644
+--- a/src/libnfc-nci/nfc/include/cipher.h
++++ b/src/libnfc-nci/nfc/include/cipher.h
+@@ -79,7 +79,6 @@ typedef struct {
+     UINT32 packet_counter_recv;
+ 
+ } tCIPHER_SUITE;
+-tCIPHER_SUITE cipher_suite;
+ 
+ typedef struct {
+     EC_KEY* privKey_local;
+@@ -96,7 +95,6 @@ typedef struct {
+     CMAC_CTX* cctx;
+     EVP_CIPHER_CTX* ccmctx;
+ }tECDH_KEY;
+-tECDH_KEY ecdh_key;
+ 
+ void cipher_init(void);
+ void cipher_deinit(void);
+diff --git a/src/libnfc-nci/nfc/int/llcp_int.h b/src/libnfc-nci/nfc/int/llcp_int.h
+index 379e1f0..c0ba899 100644
+--- a/src/libnfc-nci/nfc/int/llcp_int.h
++++ b/src/libnfc-nci/nfc/int/llcp_int.h
+@@ -74,7 +74,6 @@ typedef struct {
+     BOOLEAN           p2p_flag;                 /* p2p flag */
+     BT_HDR            *dps_msg;                 /* dps message */
+ } tLLCP_SECURED;
+-tLLCP_SECURED llcp_secured;
+ #endif
+ 
+ 
+diff --git a/src/libnfc-nci/nfc/llcp/llcp_api.c b/src/libnfc-nci/nfc/llcp/llcp_api.c
+index 70cb03f..82fe74b 100644
+--- a/src/libnfc-nci/nfc/llcp/llcp_api.c
++++ b/src/libnfc-nci/nfc/llcp/llcp_api.c
+@@ -50,6 +50,10 @@
+ #include "llcp_int.h"
+ #include "llcp_defs.h"
+ 
++#if(NFC_NXP_LLCP_SECURED_P2P == TRUE)
++tLLCP_SECURED llcp_secured;
++#endif
++
+ #if (LLCP_TEST_INCLUDED == TRUE) /* this is for LLCP testing */
+ 
+ tLLCP_TEST_PARAMS llcp_test_params =
+diff --git a/src/libnfc-nci/nfc/llcp/llcp_dlc.c b/src/libnfc-nci/nfc/llcp/llcp_dlc.c
+index 9091679..6f1e664 100644
+--- a/src/libnfc-nci/nfc/llcp/llcp_dlc.c
++++ b/src/libnfc-nci/nfc/llcp/llcp_dlc.c
+@@ -42,6 +42,10 @@ static char *llcp_dlsm_get_state_name (tLLCP_DLC_STATE state);
+ static char *llcp_dlsm_get_event_name (tLLCP_DLC_EVENT event);
+ #endif
+ 
++#if(NFC_NXP_LLCP_SECURED_P2P == TRUE)
++extern tLLCP_SECURED llcp_secured;
++#endif
++
+ /*******************************************************************************
+ **
+ ** Function         llcp_dlsm_execute
+diff --git a/src/libnfc-nci/nfc/llcp/llcp_link.c b/src/libnfc-nci/nfc/llcp/llcp_link.c
+index f6fba0f..50f3217 100644
+--- a/src/libnfc-nci/nfc/llcp/llcp_link.c
++++ b/src/libnfc-nci/nfc/llcp/llcp_link.c
+@@ -52,6 +52,8 @@
+ #if(NFC_NXP_LLCP_SECURED_P2P == TRUE)
+ #include "nci_config.h"
+ #include "cipher.h"
++extern tLLCP_SECURED llcp_secured;
++extern tCIPHER_SUITE cipher_suite;
+ #endif
+ const UINT16 llcp_link_rwt[15] =  /* RWT = (302us)*2**WT; 302us = 256*16/fc; fc = 13.56MHz */
+ {
+diff --git a/src/libnfc-nci/nfc/llcp/llcp_sdp.c b/src/libnfc-nci/nfc/llcp/llcp_sdp.c
+index fe1faa3..49d371a 100644
+--- a/src/libnfc-nci/nfc/llcp/llcp_sdp.c
++++ b/src/libnfc-nci/nfc/llcp/llcp_sdp.c
+@@ -55,6 +55,10 @@
+ #include "nfa_dm_int.h"
+ #endif
+ 
++#if(NFC_NXP_LLCP_SECURED_P2P == TRUE)
++extern tLLCP_SECURED llcp_secured;
++#endif
++
+ /*******************************************************************************
+ **
+ ** Function         llcp_sdp_proc_data
