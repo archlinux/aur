@@ -1,4 +1,4 @@
-# Maintainer: Samuel Bernardo <samuelbernardo dot mail at gmail dot com>
+# Maintainer: Samuel Bernardo <samuelbernardo at lip dot pt>
 
 pkgbase=oidc-agent
 pkgname=('oidc-agent')
@@ -8,9 +8,7 @@ pkgdesc='A set of tools to manage OpenID Connect tokens and make them easily usa
 arch=('x86_64')
 license=('MIT')
 url='https://github.com/indigo-dc/oidc-agent'
-makedepends=('gcc'
-             'make'
-             'help2man'
+makedepends=('help2man'
              'libcurl-openssl-1.0')
 depends=('libmicrohttpd'
          'libseccomp'
