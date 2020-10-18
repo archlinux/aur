@@ -2,7 +2,7 @@
 # Contributor: Denis Kasak <dkasak|AT|termina.org.uk>
 
 pkgname=vimpc-git
-pkgver=0.09.1.r115.gc518610
+pkgver=0.09.2.r8.gc518610
 pkgrel=1
 pkgdesc="Vi/vim inspired client for Music Player Daemon (MPD)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -30,6 +30,7 @@ build() {
 
 package() {
   cd $pkgname
+  install -Dm644 doc/vimpcrc.example "$pkgdir/usr/share/doc/vimpc/vimpcrc.example"
   make DESTDIR="$pkgdir/" install
 }
 
