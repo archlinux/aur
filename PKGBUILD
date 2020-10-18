@@ -1,9 +1,8 @@
 # Maintainer: WhiredPlanck
-# Contributor: Bruce Zhang
+# Maintainer: Vyacheslav Konovalov <vyachkonovalov@protonmail.com>
 
 pkgname=slack-electron
-_pkgname=slack
-pkgver=4.8.0
+pkgver=4.10.3
 pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux, modified to use the system 'electron' package instead of its own"
 arch=('x86_64')
@@ -12,44 +11,24 @@ license=('custom: Slack')
 depends=('electron')
 provides=('slack' 'slack-desktop')
 conflicts=('slack-desktop')
-source=("https://downloads.slack-edge.com/linux_releases/${_pkgname}-desktop-${pkgver}-amd64.deb")
-sha256sums=('60febe824334cbc33e4c63e7ac133a53efc325447405fc8a3ffa426ecbbf1861')
+source=("https://downloads.slack-edge.com/linux_releases/slack-desktop-$pkgver-amd64.deb"
+        'slack.sh')
+sha256sums=('2eb79127ff0e17f2344338b22fbbc44482d07fbd3841f4a4929ca1e9a390d2be'
+            'ee973ec37027e96e140499cb85dd9587c9dab59bea5a240112c3792bd61a5846')
 
 prepare() {
-    cd "${srcdir}"
-    bsdtar -xf data.tar.xz 
-	echo "#!/bin/env sh
-exec electron /usr/share/${_pkgname}/app.asar \$@
-" > "${srcdir}/${_pkgname}.sh"
+  bsdtar -xf data.tar.xz
 
-    # Fix hardcoded icon path in .desktop file
-    sed -i "s/Icon=\/usr\/share\/pixmaps\/slack.png/Icon=slack/g"  usr/share/applications/slack.desktop
-
-    # Permission fix
-    find "${srcdir}" -type d -exec chmod 755 {} +
-
-    # Remove all unnecessary stuff
-    rm -rf "${srcdir}/etc"
-    #rm -rf "${pkgdir}/usr/lib/slack/src"
-    rm -rf "${srcdir}/usr/share/lintian"
-    rm -rf "${srcdir}/usr/share/doc"
+  # Enable slack silent mode and fix icon
+  sed -ri 's|^(Exec=.+/slack)(.+)|\1 -s\2|' $srcdir/usr/share/applications/slack.desktop
+  sed -ri 's/^Icon=.+slack\.png/Icon=slack/' $srcdir/usr/share/applications/slack.desktop
 }
-package() {
-    # Install share
-    cd "${srcdir}/usr/share"
-	find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/{}" \;
-    
-    # Install .sh
-    install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/slack"
-    
-    # Install resources
-    cd "${srcdir}/usr/lib/slack/resources"
-	install -Dm644 app.asar "${pkgdir}/usr/share/${_pkgname}/app.asar"
-	
-    cd app.asar.unpacked
-	find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${_pkgname}/app.asar.unpacked/{}" \;
 
-    # Install license
-    install -Dm755 "${srcdir}/usr/lib/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-    
+package() {
+  install -Dm755 slack.sh "$pkgdir/usr/bin/slack"
+  install -Dm644 usr/lib/slack/resources/app.asar -t "$pkgdir/usr/share/slack"
+  cp -r usr/lib/slack/resources/app.asar.unpacked "$pkgdir/usr/share/slack"
+  install -Dm644 usr/share/applications/slack.desktop -t "$pkgdir/usr/share/applications"
+  install -Dm644 usr/share/pixmaps/slack.png -t "$pkgdir/usr/share/pixmaps"
+  install -Dm644 "$srcdir/usr/lib/slack/LICENSE" "$pkgdir/usr/share/licenses/slack/LICENSE"
 }
