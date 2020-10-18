@@ -1,0 +1,37 @@
+diff --git a/blackmagic-11.6a26/blackmagic_lib.c.orig b/blackmagic-11.6a26/blackmagic_lib.c
+index 83fab89..35b54b5 100644
+--- a/blackmagic-11.6a26/blackmagic_lib.c.orig
++++ b/blackmagic-11.6a26/blackmagic_lib.c
+@@ -670,9 +670,17 @@ dl_get_user_pages(void *task_ptr, void *ptr, unsigned long size, unsigned long *
+ 		write = 1;
+ 	else
+ 		write = 0;
+-	
++#if KERNEL_VERSION_OR_LATER(5, 8, 0)
++	down_read(&current_task->mm->mmap_lock);
++#else
+ 	down_read(&current_task->mm->mmap_sem);
+-#if KERNEL_VERSION_OR_LATER(4, 10, 0)
++#endif
++#if KERNEL_VERSION_OR_LATER(5, 9, 0)
++		if (current_task == current)
++			ret = get_user_pages((unsigned long)ptr & PAGE_MASK, *nr_pages, write ? FOLL_WRITE : 0, pages, NULL);
++		else
++			ret = get_user_pages_remote(current_task->mm, (unsigned long)ptr & PAGE_MASK, *nr_pages, write ? FOLL_WRITE : 0, pages, NULL, NULL);
++#elif KERNEL_VERSION_OR_LATER(4, 10, 0)
+ 		if (current_task == current)
+ 			ret = get_user_pages((unsigned long)ptr & PAGE_MASK, *nr_pages, write ? FOLL_WRITE : 0, pages, NULL);
+ 		else
+@@ -692,7 +700,12 @@ dl_get_user_pages(void *task_ptr, void *ptr, unsigned long size, unsigned long *
+ #else
+ 		ret = get_user_pages(current_task, current_task->mm, (unsigned long)ptr & PAGE_MASK, *nr_pages, write, 0, pages, NULL);
+ #endif
++
++#if KERNEL_VERSION_OR_LATER(5, 8, 0)
++	up_read(&current_task->mm->mmap_lock);
++#else
+ 	up_read(&current_task->mm->mmap_sem);
++#endif
+ 	
+ 	if (ret < (long)*nr_pages)
+ 	{
