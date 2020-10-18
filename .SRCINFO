@@ -1,7 +1,7 @@
 pkgbase = python-pylru
 	pkgdesc = A least recently used (LRU) cache implementation
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jlhutch/pylru
 	arch = any
 	license = GPL2
