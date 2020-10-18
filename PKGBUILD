@@ -4,7 +4,7 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct libvirt-storage-rbd)
-epocj=1
+epoch=1
 pkgver=6.5.0
 pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
