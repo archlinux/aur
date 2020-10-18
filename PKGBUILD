@@ -2,7 +2,7 @@
 # Contributor: Ivan Cai <caizixian@users.noreply.github.com>
 
 pkgname=python-iptables 
-pkgver=0.12.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Python bindings for iptables'
 arch=('x86_64' 'i686')
@@ -16,8 +16,8 @@ conflicts=()
 replaces=()
 backup=()
 options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('9815fd5ba780fd14b5f8cf8a93e007c0e603019738813a806e37553cd72e4c33')
+source=("https://github.com/ldx/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('f0193c73a7300b7ffd7a2b3dab2692b6358168b9162ab03271e9adff720c9503')
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
