@@ -17,6 +17,8 @@ build() {
 		-a -v \
 		-ldflags="-X main.version=${pkgver}" \
 		-mod=readonly
+
+	GO111MODULE=on GOPATH="${srcdir}/go" go clean -modcache
 }
 
 package() {
