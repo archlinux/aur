@@ -1,13 +1,13 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=weechat-matrix-rs-git
-pkgver=r206.fcd3da2
+pkgver=r281.78f0d09
 pkgrel=1
 pkgdesc='Rust rewrite of the Python weechat-matrix script'
 arch=('x86_64')
 url='https://github.com/poljar/weechat-matrix-rs'
 license=('ISC')
 depends=('openssl' 'weechat')
-makedepends=('git' 'clang' 'llvm' 'rust')
+makedepends=('git' 'clang' 'cmake' 'rust')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")
