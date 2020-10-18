@@ -1,7 +1,7 @@
 pkgbase = vigil-bin
 	pkgdesc = an open-source Status Page you can host on your infrastructure, used to monitor all your servers and apps, and visible to your users
 	pkgver = 1.18.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/valeriansaliou/vigil
 	install = vigil-bin.install
 	arch = x86_64

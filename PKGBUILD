@@ -2,7 +2,7 @@
 
 pkgname=vigil-bin
 pkgver=1.18.0
-pkgrel=3
+pkgrel=4
 pkgdesc="an open-source Status Page you can host on your infrastructure, used to monitor all your servers and apps, and visible to your users"
 arch=("x86_64")
 url="https://github.com/valeriansaliou/vigil"
@@ -23,6 +23,7 @@ prepare() {
 
 package() {
   install -Dm644 vigil.service -t "${pkgdir}/usr/lib/systemd/system"
+  install -Dm644 sysusers.d "${pkgdir}/usr/lib/sysusers.d/vigil.conf"
   cd vigil
   install -Dm755 vigil -t "${pkgdir}/usr/bin"
   install -Dm644 config.cfg "${pkgdir}/etc/vigil.cfg"
