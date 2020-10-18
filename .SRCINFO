@@ -11,6 +11,7 @@ pkgbase = kamerka
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
+	makedepends = kdesignerplugin
 	depends = kdeclarative
 	depends = qt5-base
 	depends = kdelibs4support
@@ -25,7 +26,6 @@ pkgbase = kamerka
 	depends = qt5-script
 	depends = v4l-utils
 	depends = qimageblitz
-	depends = kdesignerplugin
 	source = kamerka-0.20.tar.gz::https://github.com/dos1/kamerka/archive/0.20.tar.gz
 	sha256sums = a87612851fba9222f6454aaa08694f1ae5a2483a708198a761262789fd246467
 
