@@ -1,0 +1,14 @@
+pkgbase = dotenv-linter
+	pkgdesc = Lightning-fast linter for .env files. Written in Rust
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/dotenv-linter/dotenv-linter
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	source = dotenv-linter-2.2.0.tar.gz::https://github.com/dotenv-linter/dotenv-linter/archive/v2.2.0.tar.gz
+	sha256sums = 6e24bc8c6908abbef35c217c6398623246c536af2da5f72fb9f55f2b364d14be
+
+pkgname = dotenv-linter
+
