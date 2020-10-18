@@ -341,8 +341,11 @@ debug-assertions-std = false
 # Debuginfo for tests run with compiletest is not controlled by this option
 # and needs to be enabled separately with `debuginfo-level-tests`.
 #
-# Defaults to 2 if debug is true
-debuginfo-level = 1
+# Note that debuginfo-level = 2 generates several gigabytes of debuginfo
+# and will slow down the linking process significantly.
+#
+# Defaults to 1 if debug is true
+debuginfo-level = 0
 
 # Debuginfo level for the compiler.
 #
@@ -352,7 +355,7 @@ debuginfo-level-rustc = 0
 # Debuginfo level for the standard library.
 #
 # Defaults to rust.debuginfo-level value
-debuginfo-level-std = 1
+debuginfo-level-std = 0
 
 # Debuginfo level for the tools.
 #
@@ -391,8 +394,7 @@ channel = "stable"
 # desired in distributions, for example.
 rpath = true
 
-# Emits extraneous output from tests to ensure that failures of the test
-# harness are debuggable just from logfiles.
+# Emits extra output from tests so test failures are debuggable just from logfiles.
 verbose-tests = false
 
 # Flag indicating whether tests are compiled with optimizations (the -O flag).
@@ -431,7 +433,7 @@ lld = true
 #
 # LLD will not be used if we're cross linking or running tests.
 #
-# Explicitly setting the linker for a target will override this option.
+# Explicitly setting the linker for a target will override this option when targeting MSVC.
 use-lld = false
 
 # Indicates whether some LLVM tools, like llvm-objdump, will be made available in the
@@ -454,8 +456,7 @@ verify-llvm-ir = false
 # instead of LLVM's default of 100.
 #thin-lto-import-instr-limit = 100
 
-# Map all debuginfo paths for libstd and crates to `/rust/$sha/$crate/...`,
-# generally only set for releases
+# Map debuginfo paths to `/rust/$sha/...`, generally only set for releases
 remap-debuginfo = false
 
 # Link the compiler against `jemalloc`, where on Linux and OSX it should
@@ -473,6 +474,10 @@ llvm-libunwind = false
 # Enable Windows Control Flow Guard checks in the standard library.
 # This only applies from stage 1 onwards, and only for Windows targets.
 control-flow-guard = false
+
+# Enable symbol-mangling-version v0. This can be helpful when profiling rustc,
+# as generics will be preserved in symbols (rather than erased into opaque T).
+new-symbol-mangling = false
 
 # =============================================================================
 # Options for specific targets
@@ -502,7 +507,7 @@ ranlib = "ranlib"
 # Linker to be used to link Rust code. Note that the
 # default value is platform specific, and if not specified it may also depend on
 # what platform is crossing to what platform.
-# Setting this will override the `use-lld` option for Rust code.
+# Setting this will override the `use-lld` option for Rust code when targeting MSVC.
 linker = "cc"
 
 # Path to the `llvm-config` binary of the installation of a custom LLVM to link
@@ -563,7 +568,7 @@ ranlib = "i686-w64-mingw32-ranlib"
 # Linker to be used to link Rust code. Note that the
 # default value is platform specific, and if not specified it may also depend on
 # what platform is crossing to what platform.
-# Setting this will override the `use-lld` option for Rust code.
+# Setting this will override the `use-lld` option for Rust code when targeting MSVC.
 linker = "i686-w64-mingw32-cc"
 
 # Path to the `llvm-config` binary of the installation of a custom LLVM to link
@@ -624,7 +629,7 @@ ranlib = "x86_64-w64-mingw32-ranlib"
 # Linker to be used to link Rust code. Note that the
 # default value is platform specific, and if not specified it may also depend on
 # what platform is crossing to what platform.
-# Setting this will override the `use-lld` option for Rust code.
+# Setting this will override the `use-lld` option for Rust code when targeting MSVC.
 linker = "x86_64-w64-mingw32-cc"
 
 # Path to the `llvm-config` binary of the installation of a custom LLVM to link
