@@ -1,13 +1,13 @@
 # Maintainer: robertfoster
 pkgname=ocaml-lame-git
-pkgver=r76.d9fc714
+pkgver=r85.5ed5784
 pkgrel=1
 pkgdesc="OCaml bindings to the LAME mp3 encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-lame"
 license=('GPL2')
 depends=('ocaml' 'lame')
-makedepends=('ocaml-findlib')
+makedepends=('dune')
 options=('!strip' '!makeflags')
 source=("$pkgname::git+https://github.com/savonet/ocaml-lame")
 
@@ -18,16 +18,15 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    ./bootstrap
-    ./configure
-    make
+    dune build
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
+    dune install --prefix "${pkgdir}/usr" --libdir \
+        "${pkgdir}$(ocamlfind printconf destdir)"
 
-    export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-    mkdir -p "${OCAMLFIND_DESTDIR}/stublibs"
-    make install
+    # Remove docs
+    rm -rf "${pkgdir}/usr/doc"
 }
 md5sums=('SKIP')
