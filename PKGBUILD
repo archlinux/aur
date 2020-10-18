@@ -2,7 +2,7 @@
 pkgname=cuda-10.2
 pkgver=10.2.89
 _driverver=440.33.01
-pkgrel=2
+pkgrel=3
 pkgdesc="NVIDIA's GPU programming toolkit"
 arch=('x86_64')
 url="https://developer.nvidia.com/cuda-zone"
@@ -14,11 +14,9 @@ optdepends=('gdb: for cuda-gdb'
 options=(!strip staticlibs)
 install=cuda-10.2.install
 source=(http://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda_${pkgver}_${_driverver}_linux.run
-        cuda-10.2.sh
         cuda-10.2.conf
         cuda-findgllib_mk.diff)
 sha512sums=('ad8da539ff5df7caf411d1e497ff3d6978cfa8a1fd9150fa4846089e92a604ea56be8631f3efdfe7229a655b8d2d28e6edb32f5731530a77d6f00241cc7aab6e'
-            'c116402ff3c0b42482d1a3896cc462b779ecd6e50f930bb55cb16950a076878057cb6c2623d083c58df8db1cce23c52e30b0d5c026132802210d4a8441136afd'
             '2e660355c25f0f920fd1e29f7eabbed916e051ab10f39a3b783dfa58166e2d49a00fa2ae09374b2ff46c2b448b068a75421b2a939fe989974387f9ebe77dec17'
             '41d6b6cad934f135eafde610d1cbd862033977fd4416a4b6abaa47709a70bab7fcf6f8377c21329084fb9db13f2a8c8c20e93c15292d7d4a6448d70a33b23f1b')
 
@@ -62,7 +60,6 @@ package() {
   done
 
   # Install profile and ld.so.config files
-  install -Dm755 "${srcdir}/cuda-10.2.sh" "${pkgdir}/etc/profile.d/cuda-10.2.sh"
   install -Dm644 "${srcdir}/cuda-10.2.conf" "${pkgdir}/etc/ld.so.conf.d/cuda-10.2.conf"
 
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
