@@ -1,12 +1,13 @@
 pkgbase = python-petsc4py-git
 	pkgdesc = Python bindings for PETSc
 	pkgver = 20200721
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/petsc/petsc4py
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = petsc-git
+	makedepends = git
+	depends = petsc
 	depends = python-numpy
 	provides = petsc4py
 	conflicts = petsc4py

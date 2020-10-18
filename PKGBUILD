@@ -3,13 +3,14 @@
 pkgname=python-petsc4py-git
 pkgdesc="Python bindings for PETSc"
 pkgver=20200721
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://gitlab.com/petsc/petsc4py"
 provides=(petsc4py)
 conflicts=(petsc4py)
 license=('custom')
-depends=('petsc-git' 'python-numpy')
+depends=('petsc' 'python-numpy')
+makedepends=('git')
 options=(!emptydirs)
 source=("petsc4py::git+https://gitlab.com/petsc/petsc4py.git")
 md5sums=('SKIP')
