@@ -1,4 +1,4 @@
-# Maintainer: Edgar Toll <edjopato@gmail.com>
+# Maintainer: EdJoPaTo <snoopy-aur@edjopato.de>
 pkgname=snoopy
 pkgver=2017.12.13
 pkgrel=2
