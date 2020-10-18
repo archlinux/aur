@@ -22,5 +22,5 @@ package() {
   install -D "${srcdir}/tuxedo-backlight-control/src/usr/share/tuxedo-backlight-control/backlight.py" "${pkgdir}/usr/share/tuxedo-backlight-control/backlight.py"
   install -D "${srcdir}/tuxedo-backlight-control/src/usr/share/tuxedo-backlight-control/icon.png" "${pkgdir}/usr/share/tuxedo-backlight-control/icon.png"
   install -D "${srcdir}/tuxedo-backlight-control/src/usr/share/tuxedo-backlight-control/colors.py" "${pkgdir}/usr/share/tuxedo-backlight-control/colors.py"
-  install -D "${srcdir}tuxedo-backlight-control/LICENSE" "${pkgdir}/usr/share/licenses/LICENSE"
+  install -D "${srcdir}/tuxedo-backlight-control/LICENSE" "${pkgdir}/usr/share/licenses/LICENSE"
 }
