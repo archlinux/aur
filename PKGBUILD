@@ -16,7 +16,7 @@ source=("alertmanager_matrix-$pkgver.tar.gz::https://github.com/dkess/alertmanag
         alertmanager-matrix.sysusers
         alertmanager-matrix.tmpfiles)
 sha256sums=('48d94de3d517ce244668a3cfad7f98ca94c0fdb8f451d460f94fcb447ed9002b'
-            '229b3885a7b83a2bb64797af7e143be660fc6231173b5e509d641b1e32f8b3c5'
+            '20c89a35a4af468d99ee16a9960a8d00e90c47fd377e83b0c77e89864829b5d4'
             '7214f94ad898305e8054c0382eca49136ba82d4f97fc3e747a5e2a9a18fa7573'
             'e91e9be3b0c25daddf38cb18ad792bffe040e88074b49043c9a49638e17d73bc')
 
