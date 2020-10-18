@@ -6,20 +6,30 @@
 _pkgname=avahi
 pkgname=avahi-gtk2
 pkgver=0.8+15+ge8a3dd0
-pkgrel=1
+pkgrel=2
 pkgdesc='Multicast/unicast DNS-SD framework (with Gtk2 client apps)'
 url='https://github.com/lathiat/avahi'
 license=(LGPL)
 arch=(x86_64 i686)
-options=('!emptydirs')
-depends=(expat libdaemon glib2 libcap gdbm dbus libevent)
-makedepends=(git intltool gobject-introspection gtk2 xmltoman)
-provides=("${_pkgname}=${pkgver}")
+depends=(expat libdaemon glib2 libcap gdbm dbus)
+makedepends=(git gobject-introspection gtk2 gtk3 qt5-base xmltoman python-dbus
+	     python-gobject doxygen graphviz libevent)
+optdepends=('gtk2: avahi-discover, avahi-discover-standalone, bshell, bssh, bvnc'
+	    'gtk3: avahi-discover, avahi-discover-standalone, bshell, bssh, bvnc'
+            'qt5-base: qt5 bindings'
+            'libevent: libevent bindings'
+            'nss-mdns: NSS support for mDNS'
+            'python-twisted: avahi-bookmarks'
+            'python-gobject: avahi-bookmarks, avahi-discover'
+            'python-dbus: avahi-bookmarks, avahi-discover')
+provides=(libavahi-client.so libavahi-common.so libavahi-core.so
+          libavahi-glib.so libavahi-gobject.so libavahi-libevent.so
+          libavahi-qt5.so libavahi-ui-gtk2.so libavahi-ui-gtk3.so libdns_sd.so
+	  "${_pkgname}=${pkgver}")
 conflicts=(${_pkgname})
-optdepends=('gtk2: avahi-discover-standalone, bshell, bssh, bvnc, gtk2 bindings'
-            'nss-mdns: NSS support for mDNS')
-backup=(etc/avahi/{hosts,avahi-daemon.conf,avahi-{autoip,dnsconf}d.action})
-_commit="e8a3dd0d480a754318e312e6fa66fea249808187"
+backup=(etc/avahi/{hosts,avahi-daemon.conf,avahi-{autoip,dnsconf}d.action}
+        usr/lib/avahi/service-types.db)
+_commit=e8a3dd0d480a754318e312e6fa66fea249808187  # master
 source=("git+https://github.com/lathiat/avahi#commit=$_commit")
 sha512sums=('SKIP')
 
@@ -35,28 +45,16 @@ prepare() {
 
 build() {
   cd $_pkgname
-  export MOC_QT4=/usr/bin/moc-qt4
-  export PYTHON=/usr/bin/python3
 
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
     --sbindir=/usr/bin \
-    --with-dbus-sys=/usr/share/dbus-1/system.d \
-    --disable-monodoc \
-    --disable-qt4 \
-    --disable-qt5 \
-    --disable-gtk3 \
-    --disable-python \
-    --disable-pygobject \
-    --disable-python-dbus \
+    with_dbus_sys=/usr/share/dbus-1/system.d \
+    --enable-gtk \
+    --enable-gtk3 \
     --disable-mono \
-    --disable-monodoc \
-    --disable-doxygen-doc \
-    --disable-doxygen-dot \
-    --disable-doxygen-xml \
-    --disable-doxygen-html \
     --enable-compat-libdns_sd \
     --with-distro=archlinux \
     --with-avahi-priv-access-group=network \
@@ -65,22 +63,16 @@ build() {
     --with-systemdsystemunitdir=/usr/lib/systemd/system
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
-# cp -a avahi-python/avahi avahi-python/avahi2
-
   make
-# make -C avahi-python/avahi2 PYTHON=/usr/bin/python2
 }
 
 package() {
+  depends+=(libdbus-1.so)
+
   cd $_pkgname
   make DESTDIR="$pkgdir" install
-# make DESTDIR="$pkgdir" -C avahi-python/avahi2 install \
-#   PYTHON=/usr/bin/python2 pythondir=/usr/lib/python2.7/site-packages
 
   rmdir "$pkgdir/run"
-
-# # this isn't ported
-# sed -i '1s|python3|python2|' "$pkgdir/usr/bin/avahi-bookmarks"
 
   # mdnsresponder compat
   ln -s avahi-compat-libdns_sd/dns_sd.h "$pkgdir/usr/include/dns_sd.h"
