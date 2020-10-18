@@ -16,7 +16,7 @@ depends=('libmicrohttpd'
          'libsodium'
          'curl')
 source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/LIP-Computing/oidc-agent/archive/v${pkgver}_so.tar.gz)
-sha256sums=('c52bd83d34d6c097ae37e2b9ac84f3a6c296328e0122e8bf1e2552ee2b79b3c8')
+sha256sums=('8ef20b1614f7607fb4f708b6f0b5ef878c938889a49b009da03a180779c75efc')
 
 build() {
   cd "$srcdir"/${pkgbase}-${pkgver}_so
