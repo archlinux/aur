@@ -7,7 +7,11 @@ pkgdesc="Data files from Age of Empires II: The Conquerors Demo"
 arch=('any')
 url='https://www.ageofempires.com/'
 license=('custom')
-source=(https://archive.org/download/AgeOfEmpiresIiTheConquerorsDemo/Age2XTrial.exe)
+
+# Use a mirror
+#source=(https://archive.org/download/AgeOfEmpiresIiTheConquerorsDemo/Age2XTrial.exe)
+source=('https://github.com/sandsmark/freeaoe/releases/download/1/Age2XTrial.exe')
+
 sha1sums=('a0b27848a70bcda203837573445de6e243920170')
 makedepends=('cabextract')
 
