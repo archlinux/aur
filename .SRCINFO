@@ -1,4 +1,4 @@
-pkgbase = wifymosys
+pkgbase = wifimosys
 	pkgdesc = Evil Twin Attack Bash script
 	pkgver = 0.25
 	pkgrel = 1
