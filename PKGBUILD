@@ -2,7 +2,7 @@
 
 pkgname=chatrullete-plus
 pkgver=0.0.2
-pkgrel=7
+pkgrel=8
 pkgdesc="ChatRullete (Plus)"
 arch=('x86_64')
 url="https://github.com/chatrullete-plus"
@@ -22,8 +22,6 @@ package() {
     mv "${srcdir}/"* "${pkgdir}/usr/lib/chatrullete"
     mv "${pkgdir}/usr/lib/chatrullete/ChatRullete" "${pkgdir}/usr/lib/chatrullete/chatrullete"
 
-    # Create symlink to executable
-    ln -s "${pkgdir}/usr/lib/chatrullete/chatrullete" "${pkgdir}/usr/bin/chatrullete"
 
     # Copy resources
     cp "${startdir}/chatrullete.desktop" "${pkgdir}/usr/share/applications"
@@ -31,5 +29,22 @@ package() {
 
     # Permission fix
     chmod +x "${pkgdir}/usr/lib/chatrullete/chatrullete"
-    chmod +x "${pkgdir}/usr/bin/chatrullete"
+}
+
+post_install() {
+    echo "Hello!"
+
+    # Create symlink to executable
+    ln -s "/usr/lib/chatrullete/chatrullete" "/usr/bin/chatrullete"
+
+    # Permission fix
+    chmod +x "/usr/bin/chatrullete"
+}
+
+post_remove() {
+    echo "Good by!"
+
+    if [ -f "/usr/bin/chatrullete" ]; then
+        rm "/usr/bin/chatrullete"
+    fi
 }
