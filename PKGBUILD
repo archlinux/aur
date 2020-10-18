@@ -3,7 +3,7 @@
 pkgname=gtk-theme-plano
 _pkgname=plano-theme
 _pkgauthor=lassekongo83
-pkgver=3.36.1
+pkgver=3.36.2
 pkgrel=1
 pkgdesc='flat GTK+ theme'
 arch=('any')
@@ -14,8 +14,8 @@ makedepends=('meson' 'ninja' 'sassc')
 optdepends=('ttf-roboto: for the GNOME shell theme'
             'gtk-engine-murrine: for the GTK2 theme')
 conflicts=('gtk-theme-plano-git')
-source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/lassekongo83/${_pkgname}/archive/v${pkgver/%.1/-1}.tar.gz)
-sha256sums=('ccf659111218cd0f2d3c59eee635ce70fddfff56eb09f9177452e34512e44c7a')
+source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/lassekongo83/${_pkgname}/archive/v${pkgver/%.2/-2}.tar.gz)
+sha256sums=('16653048f733c1067020bc337f54b2dccb31b7aab823aac3b473d0f29ac2ffe5')
 
 
 build() {
