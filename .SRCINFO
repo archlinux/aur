@@ -1,13 +1,14 @@
 pkgbase = dolfin-git
 	pkgdesc = C++ interface of FEniCS for ordinary and partial differential equations.
 	pkgver = 20201015
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/FEniCS/dolfinx
 	arch = i686
 	arch = x86_64
 	groups = fenics-git
 	license = GPL3
 	makedepends = git
+	makedepends = boost
 	depends = cppunit
 	depends = eigen
 	depends = gl2ps
