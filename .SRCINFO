@@ -1,16 +1,14 @@
 pkgbase = fetch
 	pkgdesc = FreeBSD fetch for Linux
-	pkgver = 12.0.8
-	pkgrel = 2
+	pkgver = 12.0.9
+	pkgrel = 1
 	url = https://github.com/jrmarino/fetch-freebsd
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = cmake
-	makedepends = gcc
-	makedepends = make
 	depends = libressl
-	source = v12.0.8.zip::https://github.com/jrmarino/fetch-freebsd/archive/v12.0.8.zip
-	sha256sums = ef2e7c5129134e0b9db27afcb3cdc404a41788788aeff9ed2dd9b12aebd1870b
+	source = v12.0.9.zip::https://github.com/jrmarino/fetch-freebsd/archive/v12.0.9.zip
+	sha256sums = f6628fcf8887a9e836f3365ed94cbbcf5008a75c0127b2ab096dcf5b07ce74c9
 
 pkgname = fetch
 
