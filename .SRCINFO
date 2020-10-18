@@ -1,13 +1,13 @@
 pkgbase = zfs-linux-rc
-	pkgver = 2.0.0_rc3_5.8.14.arch1.1
+	pkgver = 2.0.0_rc3_5.9.1.arch1.1
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-headers=5.8.14.arch1-1
+	makedepends = linux-headers=5.9.1.arch1-1
 	depends = kmod
 	depends = zfs-utils-rc=2.0.0_rc3
-	depends = linux=5.8.14.arch1-1
+	depends = linux=5.9.1.arch1-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.0.0-rc3/zfs-2.0.0-rc3.tar.gz
 	sha256sums = d06ef8baa44a302ff28c6860e4ff1bf454c617198f755dbbce5d46d3bb7bca7b
 
