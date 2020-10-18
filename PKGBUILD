@@ -2,7 +2,7 @@
 
 _pkgname=py3nvml
 pkgname=python-${_pkgname}
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Bindings for NVML library."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 provides=()
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/fbcotter/py3nvml/${pkgver}/LICENSE")
-sha256sums=('e263690a909857d1797b65e0ed4e13c57cb8ec73602025352fad4d462c83c67d'
+sha256sums=('98416c8b57136b81aba2007165f63717a10701f131347bfde7541524aba6d7cb'
             '9c4e61bb223b54a9f78b4b7c5fdcd777c7782debf577fddc6e07efeaceefcc98')
 
 build() {
