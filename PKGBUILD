@@ -2,29 +2,26 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=gnome-internet-radio-locator
-pkgver=3.4.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Easily find live radio programs based on geographical location of radio broadcasters on the Internet"
 arch=('x86_64')
 url="https://wiki.gnome.org/Apps/InternetRadioLocator"
 license=(GPL3)
 depends=('libchamplain' 'geoclue' 'gst-plugins-base' 'gst-plugins-bad')
-makedepends=('intltool' 'itstool' 'python')
+makedepends=('intltool' 'itstool' 'python' 'meson')
 source=(https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('e9d6ba705ef3244e137d6af588caebc234a21aaa803704e3795032b294b59b2e')
+sha256sums=('60b9e0f4919b4fedcefbabe12231774156ecaa312d527b348a0eb62742c1bd07')
 
 build() {
-  cd $pkgname-$pkgver
-  ./configure --prefix=/usr --with-recording
-  make
+  arch-meson $pkgname-$pkgver build
+  meson compile -C build
 }
 
 check(){
-  cd $pkgname-$pkgver
-  make check -k
+  meson test -C build
 }
 
 package(){
-  cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 }
