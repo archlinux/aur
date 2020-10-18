@@ -2,13 +2,13 @@
 
 pkgname=libnfc-nci-lpcusbsio
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux NFC stack for NCI based NXP NFC Controllers (PN7150, PN7120)"
 arch=('x86_64')
 url="https://github.com/NXPNFCLinux/linux_libnfc-nci/"
 license=('APACHE')
 depends=('glibc' 'gcc-libs' 'systemd-libs' 'openssl')
-makedepends=('automake' 'autoconf' 'libtool')
+makedepends=('git')
 provides=('libnfc-nci')
 conflicts=('libnfc-nci-i2c' 'libnfc-nci-alt')
 source=("git+https://github.com/NXPNFCLinux/linux_libnfc-nci#commit=2aff6448cf6a86897d3d1bacb0a0943a594aa9ce"

@@ -1,13 +1,11 @@
 pkgbase = libnfc-nci-lpcusbsio
 	pkgdesc = Linux NFC stack for NCI based NXP NFC Controllers (PN7150, PN7120)
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NXPNFCLinux/linux_libnfc-nci/
 	arch = x86_64
 	license = APACHE
-	makedepends = automake
-	makedepends = autoconf
-	makedepends = libtool
+	makedepends = git
 	depends = glibc
 	depends = gcc-libs
 	depends = systemd-libs
