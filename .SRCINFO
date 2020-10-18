@@ -1,14 +1,14 @@
 pkgbase = firefox-extension-yomichan
 	pkgdesc = Firefox extension that provides a Japanese dictionary with Anki integration
-	pkgver = 20.8.24.0
+	pkgver = 20.9.28.1
 	pkgrel = 1
 	url = https://foosoft.net/projects/yomichan/
 	arch = any
 	license = GPL3
 	depends = firefox
-	noextract = yomichan-20.8.24.0-an+fx.xpi
-	source = https://addons.cdn.mozilla.net/user-media/addons/789636/yomichan-20.8.24.0-an+fx.xpi
-	sha256sums = 8aa43f3661bfa6c500a91d69f9e58cf82e1d782cf4b692699a8bef6881a36053
+	noextract = yomichan-20.9.28.1-an+fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/789636/yomichan-20.9.28.1-an+fx.xpi
+	sha256sums = e6bdb40fb45d6191833099168b52d814c78127b7d3b26a2f49aa18163561e73d
 
 pkgname = firefox-extension-yomichan
 
