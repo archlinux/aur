@@ -4,7 +4,7 @@ Description=loolwsd as a service
 [Service]
 User=lool
 Group=lool
-ExecStart=/usr/bin/loolwsd 
+ExecStart=/usr/bin/loolwsd --o:sys_template_path=/var/lib/libreoffice-online/systemplate --o:child_root_path=/var/lib/libreoffice-online/jails --o:file_server_root_path=/usr/share/loolwsd
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 Restart=on-failure
