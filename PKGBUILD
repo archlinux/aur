@@ -2,7 +2,7 @@
 
 pkgname=chatrullete-plus
 pkgver=0.0.2
-pkgrel=6
+pkgrel=7
 pkgdesc="ChatRullete (Plus)"
 arch=('x86_64')
 url="https://github.com/chatrullete-plus"
@@ -30,5 +30,6 @@ package() {
     cp "${startdir}/icon.png" "${pkgdir}/usr/share/pixmaps/chatrullete.png"
 
     # Permission fix
+    chmod +x "${pkgdir}/usr/lib/chatrullete/chatrullete"
     chmod +x "${pkgdir}/usr/bin/chatrullete"
 }
