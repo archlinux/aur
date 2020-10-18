@@ -2,8 +2,8 @@
 
 pkgname=libnfc-nci-lpcusbsio
 pkgver=2.4.1
-pkgrel=2
-pkgdesc="Linux NFC stack for NCI based NXP NFC Controllers (PN7150, PN7120)"
+pkgrel=3
+pkgdesc="Linux NFC stack for NCI based NXP NFC Controllers (PN7150, PN7120). lpcusbsio USB tml."
 arch=('x86_64')
 url="https://github.com/NXPNFCLinux/linux_libnfc-nci/"
 license=('APACHE')
