@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=boston-icon-theme-git
-pkgver=r128.b7a4b17
-pkgrel=2
+pkgver=r185.f125f2a
+pkgrel=1
 pkgdesc="Boston is a highly minimalist icon theme, with a sober color palette inspired on basic hues."
 arch=('any')
 url="https://github.com/heychrisd/Boston-Icons"
@@ -22,7 +22,7 @@ package() {
 	cd "${srcdir}/${pkgname}"
 
 	install -dm 755 "${pkgdir}/usr/share/icons"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 license "${pkgdir}/usr/share/licenses/${pkgname}/license"
 
 	cp -a "${srcdir}/${pkgname}" "${pkgdir}/usr/share/icons/Boston"
 }
