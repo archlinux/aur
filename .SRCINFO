@@ -1,7 +1,7 @@
 pkgbase = gtk-theme-plano
 	pkgdesc = flat GTK+ theme
 	pkgver = 3.36.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lassekongo83/plano-theme
 	arch = any
 	license = GPL3
