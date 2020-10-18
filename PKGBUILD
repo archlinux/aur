@@ -12,6 +12,13 @@ conflicts=(${pkgname})
 source=("${pkgname}::git+${url}")
 sha256sums=("SKIP")
 
+pkgver() {
+	cd "${pkgname}"
+	( set -o pipefail
+		printf "$(git describe --tags | awk -F- '{print $1}' | cut -c2-)"
+	)
+}
+
 build() {
 	cd "${pkgname}"
 	cargo build --release
