@@ -2,7 +2,7 @@
 # Maintainer: neothefox <soniczerops(at)gmail.com>
 
 pkgname=paintstorm-bin
-pkgver=2.43
+pkgver=2.46
 pkgrel=2
 pkgdesc="Professional software for digital painting"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="http://www.paintstormstudio.com"
 license=('Commercial')
 depends=('gtk2' 'freeglut' 'ftgl' 'libcurl-gnutls'  'glew1.13')
 source=("https://paintstormstudio.com/Paintstorm_linux_v${pkgver}.run.tar.gz")
-sha256sums=('c94a7174666a04ad9329dfd7a3ed9963e49cacdfc4de4880b26d337767c9b84b')
+sha256sums=('84855fc8b405bd4a5de8303020d2fbbec9a31ce837bb5baaef67c4f6cec012d5')
 provides=('paintstorm')
 conflicts=('paintstorm')
 install="${pkgname}.install"
