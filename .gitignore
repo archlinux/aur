@@ -1,0 +1,5 @@
+libnfc-*/
+libnfc-*.tar.bz2
+pkg/
+src/
+*.pkg.tar.*

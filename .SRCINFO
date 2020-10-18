@@ -1,0 +1,23 @@
+pkgbase = libnfc-pn71xx
+	pkgdesc = Platform independent Near Field Communication (NFC) library. With NXP pn71xx support.
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = http://nfc-tools.org/
+	arch = x86_64
+	license = LGPL3
+	depends = glibc
+	depends = gcc-libs
+	depends = systemd-libs
+	depends = openssl
+	depends = libusb
+	depends = libusb-compat
+	depends = pcsclite
+	depends = libnfc-nci
+	optdepends = acsccid: acr122_pcsc support
+	provides = libnfc=1.8.0
+	conflicts = libnfc
+	source = https://github.com/nfc-tools/libnfc/releases/download/libnfc-1.8.0/libnfc-1.8.0.tar.bz2
+	sha256sums = 6d9ad31c86408711f0a60f05b1933101c7497683c2e0d8917d1611a3feba3dd5
+
+pkgname = libnfc-pn71xx
+
