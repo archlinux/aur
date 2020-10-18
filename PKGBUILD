@@ -1,33 +1,28 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname=wayback-machine-archiver
-pkgver=1.8.1
+pkgname='wayback-machine-archiver'
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Submit web pages to the Wayback Machine for archiving'
 arch=('any')
 url='https://github.com/agude/wayback-machine-archiver'
+_url_pypi='https://pypi.org/project/wayback-machine-archiver'
 license=('MIT')
-depends=('python' 'python-requests')
+depends=('python-requests')
 makedepends=('python-setuptools')
-#checkdepends=('python-pytest' 'python-requests-mock')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('2bd12ed8d31d0eae6f7a4e7f6f7a80052de0e0e8243e5c0538a6195bcd6decce')
+sha256sums=('dc944fda4e490268a696ebd06cd3e6d03a2d92c590247f75528e45ccdbaf8f8a')
 
 build() {
   cd "${pkgname}-${pkgver}"
   python setup.py build
 }
 
-#check(){
-#  cd "${pkgname}-${pkgver}"
-#  pytest
-#}
-
 package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" 'LICENSE'
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
