@@ -16,3 +16,7 @@ Server = https://chaotic.tn.dedyn.io/$arch
 # Germany
 ## By: ParanoidBangL
 Server = http://chaotic.bangl.de/$repo/$arch
+
+# Seoul, Korea
+## By: Ryoichi <t.me/r377yx>
+Server = https://mirror.maakpain.kro.kr/garuda/$repo/$arch
