@@ -1,22 +1,22 @@
-# Maintainer: Jonathon Fernyhough <jonathon_at_manjaro dot+org>
+# Maintainer: Jonathon Fernyhough <jonathon_at_m2x dotdev>
 
 pkgname=mapton
-pkgver=1.1.3
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Some kind of map application"
 arch=(any)
 url="https://mapton.org"
 license=('Apache')
-makedepends=('git' 'jre8-openjdk' 'jdk8-openjdk' 'java8-openjfx' 'maven')
+makedepends=('git' 'jdk11-openjdk' 'java11-openjfx' 'maven')
 
 source=(git+https://github.com/trixon/mapton.git#tag=v$pkgver
         mapton.desktop
-        jdkhome.patch)
-sha256sums=('SKIP'
-            '303620b07b9a48324acfa2541a1f93fe5630cca7919cd5b5b1141f0ffe7b6cd7'
-            '16a6788545ecc091bc56057def2362db0de3cea4705d675ee769070136b40f40')
-
-export HOME=/nonexistent
+        jdkhome.patch
+        settings.xml)
+b2sums=('SKIP'
+        '514d31d2d2f17f53382624f390e02469e19d0a60cd44aa52db1011429b2fa313038c9c04b262b5b29393e38ce6bc7a702d5c23058a5790ad053c7e5ae74e19bd'
+        '5dab7052dfe1c612eb6563178bf7ba7ba8245411c6b60428b302c4f570f552ef96a1fcf08b873e39c7e8f8195a1de0c9dee115f0434950452c4d4fe2c152e0cb'
+        '703df64460b6f8868c2b2be2b3323e6db14f63a5c4b3f2d3ea0b6249c727b48893472a4baf718516df2a129ff16ac14345b0666843c8f36bfb0fd48fb2898c80')
 
 prepare() {
 	cd $pkgname
@@ -24,18 +24,16 @@ prepare() {
 }
 
 build() {
-	# Requires JDK8
-	export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
-
-	MAVENCACHE="${SRCDEST:-$srcdir}"
-	export MAVENCACHE
+	export HOME="$srcdir" # Try to prevent maven from escaping the build root
+	export JAVA_HOME=/usr/lib/jvm/java-11-openjdk # Requires JDK11
+	export MAVENCACHE="${SRCDEST:-$srcdir}"  # Cache maven artefacts where possible
 
 	cd $pkgname
-	mvn -e package -gs "$srcdir"/../settings.xml
+	mvn -e package -gs "$srcdir"/settings.xml
 }
 
 package() {
-	depends=('java-runtime>=8' 'java8-openjfx')
+	depends=('java-runtime>=11' 'java11-openjfx')
 	cd mapton/application/target/mapton
 
 	# Initial target directories

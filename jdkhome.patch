@@ -2,12 +2,12 @@ diff --git a/application/src/main/resources/mapton.conf b/application/src/main/r
 index dc30143..26913b0 100644
 --- a/application/src/main/resources/mapton.conf
 +++ b/application/src/main/resources/mapton.conf
-@@ -10,7 +10,7 @@ default_options="--branding mapton -J-Xss2m -J-Dnetbeans.logger.console=true -J-
- # for development purposes you may wish to append: -J-Dnetbeans.logger.console=true -J-ea
- 
+@@ -37,7 +37,7 @@
+ default_options="--branding mapton -J-Xss2m -J-Dnetbeans.logger.console=true -J--add-exports=javafx.graphics/com.sun.javafx.scene=ALL-UNNAMED -J--add-exports=javafx.graphics/com.sun.javafx.scene.traversal=ALL-UNNAMED -J--add-exports=javafx.graphics/com.sun.javafx.css=ALL-UNNAMED -J--add-exports=javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED -J--add-exports=javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED -J--add-exports=javafx.controls/com.sun.javafx.scene.control.inputmap=ALL-UNNAMED -J--add-exports=javafx.base/com.sun.javafx.event=ALL-UNNAMED -J--add-exports=javafx.base/com.sun.javafx.collections=ALL-UNNAMED -J--add-exports=javafx.base/com.sun.javafx.runtime=ALL-UNNAMED -J--add-exports=javafx.web/com.sun.webkit=ALL-UNNAMED -J--add-exports=javafx.graphics/com.sun.javafx.css=ALL-UNNAMED -J--add-opens=javafx.controls/javafx.scene.control.skin=ALL-UNNAMED"
+ #default_options="--branding mapton --nosplash -J-Xss2m -J-Dnetbeans.logger.console=true -J-ea -J-Djdk.gtk.version=2.2 -J--add-exports=javafx.graphics/com.sun.javafx.scene=ALL-UNNAMED -J--add-exports=javafx.graphics/com.sun.javafx.scene.traversal=ALL-UNNAMED -J--add-exports=javafx.graphics/com.sun.javafx.css=ALL-UNNAMED -J--add-exports=javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED -J--add-exports=javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED -J--add-exports=javafx.controls/com.sun.javafx.scene.control.inputmap=ALL-UNNAMED -J--add-exports=javafx.base/com.sun.javafx.event=ALL-UNNAMED -J--add-exports=javafx.base/com.sun.javafx.collections=ALL-UNNAMED -J--add-exports=javafx.base/com.sun.javafx.runtime=ALL-UNNAMED -J--add-exports=javafx.web/com.sun.webkit=ALL-UNNAMED -J--add-exports=javafx.graphics/com.sun.javafx.css=ALL-UNNAMED -J--add-opens=javafx.controls/javafx.scene.control.skin=ALL-UNNAMED -J--add-opens=javafx.controls/javafx.scene.control=ALL-UNNAMED"
  # default location of JDK/JRE, can be overridden by using --jdkhome <dir> switch
 -#jdkhome="/path/to/jdk"
-+jdkhome="/usr/lib/jvm/java-8-openjdk"
++jdkhome="/usr/lib/jvm/java-11-openjdk"
  
  # clusters' paths separated by path.separator (semicolon on Windows, colon on Unices)
  #extra_clusters=
