@@ -1,14 +1,14 @@
 pkgbase = goldtree-py
 	pkgdesc = A python port of XorTroll's Goldtree
-	pkgver = 0.7.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/friedkeenan/GoldtreePy
 	arch = any
 	license = GPL3
 	depends = python
 	depends = python-pyusb
-	source = https://github.com/friedkeenan/GoldtreePy/archive/v0.7.tar.gz
-	sha256sums = 0422ead54edb41314c2c13d6cc4b14219cfcf0ea5b2f81aefa99919710ab2205
+	source = https://github.com/friedkeenan/GoldtreePy/archive/v0.9.tar.gz
+	sha256sums = 56755c6f6ac9bf2979ccab5bd053796b53b19fc5a74c412db5dcaad23bb00588
 
 pkgname = goldtree-py
 
