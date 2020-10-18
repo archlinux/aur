@@ -11,8 +11,8 @@ pkgbase = liblsl
 	depends = gcc-libs
 	provides = liblsl
 	conflicts = liblsl
-	source = liblsl-1.13.1.tar.gz::https://github.com/sccn/liblsl/archive/1.13.1.tar.gz
-	md5sums = 23dee2f87cb55ca867c24a389ac6525c
+	source = liblsl-1.13.1::git+ssh://git@github.com/sccn/liblsl.git#tag=1.13.1
+	md5sums = SKIP
 
 pkgname = liblsl
 
