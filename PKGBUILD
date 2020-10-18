@@ -19,7 +19,7 @@ sha512sums=('SKIP'
 
 build() {
   cd "Lightcord" 
-  npm run devInstall:x64 
+  npm run devInstall:64 
   npm run build
 }
 
