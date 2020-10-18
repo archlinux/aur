@@ -1,0 +1,13 @@
+pkgbase = libpkgbuild
+	pkgdesc = This is a pkgbuild parse library
+	pkgver = 1.0.0
+	pkgrel = 0
+	arch = any
+	makedepends = cmake
+	makedepends = ninja
+	depends = clang
+	source = git+https://github.com/FascodeNet/libpkgbuild.git
+	md5sums = SKIP
+
+pkgname = libpkgbuild
+
