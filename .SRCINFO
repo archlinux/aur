@@ -7,6 +7,7 @@ pkgbase = lightcord-git
 	license = MIT
 	makedepends = npm
 	makedepends = nodejs
+	makedepends = git
 	conflicts = lightcord-bin
 	source = git://github.com/Lightcord/Lightcord.git
 	source = git://github.com/pryme-svg/lightcord-tools.git
