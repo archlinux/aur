@@ -100,8 +100,6 @@ build() {
 }
 
 package() {
-#  mv /opt/swift/* $pkgdir
-  pwd
   ls -la
   # mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin"
   # ln -s /opt/swift/swift-linux-$CARCH/bin/{lldb-moduleimport-test,sil-extract,sil-opt,swift,swift-autolink-extract,swiftc,swift-demangle,swift-ide-test,swift-llvm-opt} "$pkgdir/usr/bin"
