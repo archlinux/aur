@@ -3,7 +3,7 @@
 
 pkgname=paintstorm-bin
 pkgver=2.46
-pkgrel=2
+pkgrel=1
 pkgdesc="Professional software for digital painting"
 arch=('x86_64')
 url="http://www.paintstormstudio.com"
