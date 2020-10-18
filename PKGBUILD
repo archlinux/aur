@@ -3,12 +3,12 @@
 _pkgname=adb_shell
 pkgname="python-${_pkgname}"
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python implementation of ADB with shell and FileSync functionality."
 arch=('any')
 url="https://pypi.org/project/${_pkgname}"
 license=('Apache')
-depends=('python')
+depends=('python' 'python-cryptography' 'python-pyasn1' 'python-rsa')
 makedepends=('python-setuptools')
 optdepends=('python-aiofiles: async API'
             'python-libusb1: To connect to a device via USB')
