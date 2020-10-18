@@ -1,0 +1,14 @@
+pkgbase = box86-git
+	pkgdesc = Linux Userspace x86 Emulator with a twist
+	pkgver = v0.1.2.r294.g9119443c
+	pkgrel = 1
+	url = https://github.com/ptitSeb/box86
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	depends = gcc-libs
+	source = git+https://github.com/ptitSeb/box86.git
+	sha256sums = SKIP
+
+pkgname = box86-git
+
