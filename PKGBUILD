@@ -5,15 +5,15 @@
 
 pkgname=libreoffice-online
 pkgver=7.0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="HTML5-based/cloud-based version of the office suite"
 arch=('x86_64')
 url="https://www.libreoffice.org/download/libreoffice-online/"
 license=("MPL")
-makedepends=("cppunit" "git" "libreoffice-fresh-sdk" "nodejs" "npm" "openssl" "poco" "python-polib")
-depends=("poco" "libreoffice-fresh" "cpio")
+depends=("cpio" "libreoffice-fresh" "nodejs" "openssl" "poco")
+makedepends=("cppunit" "git" "libreoffice-fresh-sdk" "npm" "python-polib")
 backup=("etc/libreoffice-online/loolwsd.xml")
-source=("${pkgname}::git+https://github.com/LibreOffice/online#tag=libreoffice-${pkgver}"
+source=("https://github.com/LibreOffice/online/archive/libreoffice-${pkgver}.tar.gz"
   "disable-fc-cache.patch"
   "loolwsd-config.patch"
   "loolwsd.service"
@@ -21,7 +21,7 @@ source=("${pkgname}::git+https://github.com/LibreOffice/online#tag=libreoffice-$
   "libreoffice-online.sysusers"
   "libreoffice-online.tmpfiles")
 
-sha512sums=('SKIP'
+sha512sums=('092be634649fb28391ba1164343a8a26958159243455f9f98178d6ca3312d2c9b5e79738e8a557197b9fe545f5f01764cd57042c1fed3a1b11117ddab616f31c'
             'f7a63c32480b71258bad023095cfaa58baf1477acdcda76fd54e63e33caccb071749cdf577af12a9d4c95a3cd22e5e98ad4e12531307d860322b84e5d8973f92'
             '4b2c91f4cdd27faa6d19683872baac1fac13d85d109b5d7c5be7116ecfeeab2e94bc67f1a02e0f108cdc18777cf9facd0e3c55186615cd5658f7723cdc57bf44'
             '285071cc43da05a1065434078f8fd1d8046ca3deed6e25ddcbead714665940c1c0033559b6b938430878420a564de3927f10f975ac066a6c94a0d5609b8523aa'
@@ -32,13 +32,13 @@ sha512sums=('SKIP'
 install=libreoffice-online.install
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/online-libreoffice-${pkgver}"
   patch -p1 <"${srcdir}/disable-fc-cache.patch"
   patch -p1 <"${srcdir}/loolwsd-config.patch"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/online-libreoffice-${pkgver}"
   ./autogen.sh
 
   ./configure \
@@ -65,7 +65,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/online-libreoffice-${pkgver}"
   make DESTDIR="${pkgdir}" install
   mkdir -p "${pkgdir}/var/log" "${pkgdir}"/var/lib/{,cache}/libreoffice-online
 
