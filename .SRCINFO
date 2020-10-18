@@ -1,0 +1,13 @@
+pkgbase = repokeeper
+	pkgdesc = AUR package repository keeper
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/tibor95/repokeeper
+	arch = any
+	license = GPL3
+	backup = etc/repokeeper.conf
+	source = git+https://github.com/tibor95/repokeeper.git#commit=eb8cb49affdb0c1f796a5ca34a79ff866f9342f2
+	md5sums = SKIP
+
+pkgname = repokeeper
+
