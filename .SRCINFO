@@ -1,0 +1,14 @@
+pkgbase = deskew-git
+	pkgdesc = deskew is a command-line program which deskews images containing text
+	pkgver = v1.30.r15.gb8f5ff6
+	pkgrel = 1
+	url = http://jwilk.net/software/deskew
+	arch = any
+	license = MIT
+	makedepends = fpc
+	provides = deskew
+	source = deskew::git+https://github.com/galfar/deskew
+	md5sums = SKIP
+
+pkgname = deskew-git
+
