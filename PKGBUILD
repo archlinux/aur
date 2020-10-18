@@ -2,7 +2,7 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=podget
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 pkgdesc="Simple tool to automate downloading of podcasts"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://podget.sourceforge.net/"
 license=("GPL3")
 depends=('wget')
 source=(http://downloads.sourceforge.net/project/podget/podget/podget-$pkgver/podget-$pkgver.tar.gz)
-md5sums=('233d642f7fa3e0127ada4742166af159')
+md5sums=('2b637cdebedd4e170dacb69bab1ec5db')
 
 package() {
   cd $pkgname-$pkgver
