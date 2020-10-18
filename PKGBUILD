@@ -10,7 +10,7 @@
 
 pkgbase=calibre-git
 pkgname=calibre-git
-pkgver=4.23.0.r599.g9ec29bb548
+pkgver=5.3.0.r35.g40e5b7124f
 pkgrel=1
 _dictionaries_commit="libreoffice-6.4.0.0.beta1"
 pkgdesc="Ebook management application"
@@ -21,7 +21,7 @@ _py_deps=('apsw' 'beautifulsoup4' 'cssselect' 'css-parser' 'dateutil' 'dbus' 'dn
           'feedparser' 'html2text' 'html5-parser' 'lxml' 'markdown' 'mechanize' 'msgpack'
           'netifaces' 'unrardll' 'pillow' 'psutil' 'pychm' 'pygments' 'pyqt5'
           'pyqtwebengine' 'regex' 'zeroconf')
-depends=('chmlib' 'hunspell' 'hyphen' 'icu' 'jxrlib' 'libmtp' 'libusbx'
+depends=('hunspell' 'hyphen' 'icu' 'jxrlib' 'libmtp' 'libusb'
          'libwmf' 'mathjax' 'mtdev' 'optipng' 'podofo'
          "${_py_deps[@]/#/python-}" 'qt5-svg' 'udisks2')
 makedepends=('git' 'qt5-x11extras' 'sip5' 'pyqt-builder' 'xdg-utils' 'rapydscript-ng' 'python-sphinx')
@@ -94,13 +94,13 @@ check() {
     #
     # test_ajax_book segfaults on qt >=5.15.1 inside of qt itself, but only in nspawn containers
     # see https://github.com/kovidgoyal/calibre/commit/28ef780d9911d598314d98bdfc3b1c88a94681df
-    LANG='en_US.UTF-8' xvfb-run python3 setup.py test --exclude-test-name=test_ajax_book
+    LANG='en_US.UTF-8' xvfb-run python setup.py test --exclude-test-name=test_ajax_book
 }
 
 package() {
     cd "${srcdir}/${pkgbase%-git}"
 
-    # If this directory don't exist, zsh completion won't install.
+    # If this directory doesn't exist, zsh completion won't install.
     install -d "${pkgdir}/usr/share/zsh/site-functions"
 
     LANG='en_US.UTF-8' python setup.py install \
