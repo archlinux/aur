@@ -1,0 +1,13 @@
+[Unit]
+Description=Vigil Microservices Status Page
+After=network.target
+
+[Service]
+Type=simple
+User=vigil
+Group=vigil
+ExecStart=/usr/bin/vigil -c /etc/vigil.cfg
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
