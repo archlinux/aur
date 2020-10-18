@@ -11,9 +11,8 @@ pkgdesc="Standalone Mail/News reader - Bleeding edge binary version"
 arch=('x86_64')
 url="https://www.mozilla.org/thunderbird"
 license=('GPL' 'LGPL' 'MPL')
-depends=('dbus-glib' 'gtk3' 'libxt' 'nss')
-optdepends=('hunspell: Spell checking'
-            'hyphen: Hyphenation'
+depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'hunspell')
+optdepends=('hyphen: Hyphenation'
             'libcanberra: Sound support')
 provides=("thunderbird=$pkgver")
 conflicts=('thunderbird-beta')
@@ -22,7 +21,7 @@ source=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/e
         'thunderbird-beta-bin.desktop'
         'vendor.js')
 sha512sums=('9aa43fbf96b5596bfcda97a535d4630879944b0f6c2b548265e121760a4f32432167d9af8867bdd74ad9f3845a227398ad9d45bd88cc327ee777b35145cc2e3b'
-            '5639d9808d543f151eebb5b79246dbac9c5a3f68a2e1fc28190da62867e02a07b96e8409e460ecb5398aab37ea4959d5eeb7d2fc592014779c3b6791a0b50b93'
+            '3fbafa3b7e58bc3ba29b7605a6d7e2ee24464608893bd5718c9990fde3619e32da9a828e52a5df821ababc4353eacd054bcad885c97927954f2cf24ab4a08936'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
 # RC
 if [[ $_build = ? ]]; then

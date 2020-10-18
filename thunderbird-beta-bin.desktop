@@ -172,5 +172,5 @@ Name[uk]=Відкрити адресну книгу
 Name[vi]=Mở sổ địa chỉ
 Name[zh_CN]=打开通讯录
 Name[zh_TW]=開啟通訊錄
-Exec=/opt/thunderbird-beta/thunderbird -addressbook
+Exec=env DICPATH=/usr/share/hunspell /opt/thunderbird-beta/thunderbird -addressbook
 StartupWMClass=thunderbird
