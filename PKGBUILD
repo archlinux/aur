@@ -11,7 +11,8 @@ source=('git+https://github.com/webketje/tuxedo-backlight-control')
 sha256sums=('SKIP')
 sha512sums=('SKIP')
 pkgdesc='GUI utility built on top of TUXEDO Keyboard. Provides a bash CLI (backlight) and a minimal Python UI.'
-depends=('python' 'tk' 'polkit, git')
+depends=('python' 'tk' 'polkit')
+makedepends=('git')
 package() {
   mkdir -p "${pkgdir}/usr/share/tuxedo-backlight-control/"
   install -D "${srcdir}/tuxedo-backlight-control/src/usr/share/tuxedo-backlight-control/backlight.py" "${pkgdir}/usr/local/bin/backlight"
