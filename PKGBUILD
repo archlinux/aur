@@ -2,7 +2,7 @@
 
 pkgname=magicmirror
 _pkgname=MagicMirror
-pkgver=2.11.0
+pkgver=2.13.0
 pkgrel=1
 pkgdesc="Open source modular smart mirror platform."
 arch=("x86_64")
@@ -14,7 +14,7 @@ source=("https://github.com/MichMich/$_pkgname/archive/v$pkgver.tar.gz"
 	"magicmirror.desktop"
 	"magicmirror.png"
 	"magicmirror.sh")
-sha256sums=("a014f9b5b6952e0b12a178f9896ae5c99166abfda15d94f28ec20376adcbca89"
+sha256sums=("5a1a9bf5d1ef87b388fc6f227f934e70d9fe319975898af3ff20b601f9f6245b"
 	"44d4754359eea4f95f506a05a8eeeb849a5a1c79d22085f7a49e20f4cb248cc6"
 	"8b863c41ab31114c92e060fa724e1ef63d4023cd534dafa96d49e943c346959c"
 	"0595927a2b55ac88403f495afd413e32e72ada9262e0c709b96c7e62453fb039")
