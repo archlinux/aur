@@ -1,6 +1,6 @@
 # Maintainer: Lasha Kanteladze <kanteladzelasha339@gmail.com>
 pkgname=dxhd-git
-pkgver=master
+pkgver=dfc3cbb
 pkgrel=0
 pkgdesc="An X11 Hotkey Daemon"
 arch=('any')
