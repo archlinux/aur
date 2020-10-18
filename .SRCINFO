@@ -1,0 +1,14 @@
+pkgbase = huniq-git
+	pkgdesc = Filter out duplicates on the command line (git)
+	pkgver = r42.ee7136d
+	pkgrel = 1
+	url = https://github.com/koraa/huniq
+	arch = x86_64
+	license = BSD
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/koraa/huniq
+	sha512sums = SKIP
+
+pkgname = huniq-git
+
