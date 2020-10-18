@@ -4,7 +4,7 @@ url='https://wiki.ros.org/python_qt_binding'
 pkgname='ros-noetic-python-qt-binding'
 pkgver='0.4.3'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -29,9 +29,9 @@ depends=(
 
 _dir="python_qt_binding-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/python_qt_binding/archive/${pkgver}.tar.gz"
-        "sip_path.patch")
+        "sip_path.patch"::"https://patch-diff.githubusercontent.com/raw/ros-visualization/python_qt_binding/pull/95.patch")
 sha256sums=('e76de1c4a05c59094ccbb37a7bb0e252a6e33e5cc0fed83b41ccf84bc47c39c6'
-            'd60d8edfc7dec99700fd66076d6fd01963a26e7623562c1ef289abc041e8d2ef')
+            '07a4fb8dc8f822b5806a757a51584851f7960d05940ca6d9e1256f567cb32759')
 
 prepare() {
     cd ${srcdir}/${_dir}
