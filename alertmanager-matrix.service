@@ -5,6 +5,8 @@ After=network.target
 [Service]
 ExecStart=/usr/bin/alertmanager_matrix --config.file="/etc/ammatrix.yml"
 ExecReload=/bin/kill -HUP $MAINPID
+User=alertmanager-matrix
+Group=alertmanager-matrix
 
 NoNewPrivileges=true
 ProtectSystem=full

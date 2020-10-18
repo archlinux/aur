@@ -2,7 +2,7 @@
 
 pkgname=alertmanager-matrix
 pkgver=0.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Alertmanager webhook receiver that sends to a Matrix channel'
 arch=('x86_64' 'i686')
 url='http://github.com/dkess/alertmanager_matrix'
