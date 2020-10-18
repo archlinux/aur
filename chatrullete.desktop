@@ -16,7 +16,7 @@ Comment=Chatrullete client for Linux
 Path=/usr/lib/chatrullete
 
 # Исполняемый файл приложения, возможно с аргументами.
-Exec=ChatRullete
+Exec=chatrullete
 
 # Имя значка, который будет использоваться для отображения этого ярлыка.
 Icon=chatrullete
