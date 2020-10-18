@@ -9,7 +9,7 @@ pkgname=('virtualbox-bin' 'virtualbox-bin-guest-iso' 'virtualbox-bin-sdk')
 pkgver=6.1.14
 _build=140239
 _rev=83509
-pkgrel=2
+pkgrel=3
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE)'
 arch=('x86_64')
 url='https://www.virtualbox.org/'
@@ -27,7 +27,8 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         'vboxweb.service'
         'virtualbox.sysusers'
         'LICENSE.sdk'
-        '013-Makefile.patch')
+        '013-Makefile.patch'
+        '021-kernel-5.9.patch')
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
 sha256sums=('29a6506445909f6286bb0a113a353b9aa92dd831609a9343ff9763f4aee92845'
             '935c210fda2b0fbed42c4bc6acdf7d1fd2b197e348ad4c42b4be4c4d2ffd2c75'
@@ -40,7 +41,8 @@ sha256sums=('29a6506445909f6286bb0a113a353b9aa92dd831609a9343ff9763f4aee92845'
             'e6e875ef186578b53106d7f6af48e426cdaf1b4e86834f01696b8ef1c685787f'
             '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
             '09335d7d1075df02d29cec13119538134efdf43ea73a93b0f89d0d7d4b6625a1'
-            '3c2089575e8c03b7517fe176e65168e15fb7aefe7e71224bf264d21812dbc635')
+            '3c2089575e8c03b7517fe176e65168e15fb7aefe7e71224bf264d21812dbc635'
+            '36bb00a53842b46267cac7acf7584e5394816a10f0ea72473ced6dc0494d9ed0')
 
 prepare() {
     local _extractdir="${pkgname}-${pkgver}/VirtualBox-extracted"
@@ -58,6 +60,7 @@ prepare() {
     
     # fix dkms build
     patch -d "$_extractdir" -Np1 -i "${srcdir}/013-Makefile.patch"
+    patch -d "$_extractdir" -Np1 -i "${srcdir}/021-kernel-5.9.patch"
 }
 
 build() {
@@ -107,11 +110,10 @@ package_virtualbox-bin() {
     install -D -m755 "${pkgdir}/${_installdir}/VBoxCreateUSBNode.sh" -t "${pkgdir}/usr/share/virtualbox"
     
     # configuration file
-    printf '%s\n' "INSTALL_DIR=/${_installdir}" | install -D -m644 /dev/stdin "${pkgdir}/etc/vbox/vbox.cfg"
+    install -D -m644 <(printf '%s\n' "INSTALL_DIR=/${_installdir}") "${pkgdir}/etc/vbox/vbox.cfg"
     
     # modules-load.d configuration
-    printf 'vboxdrv\nvboxnetadp\nvboxnetflt\n' | 
-        install -D -m644 /dev/stdin "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
+    install -D -m644 <(printf 'vboxdrv\nvboxnetadp\nvboxnetflt\n') "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
     
     # systemd
     install -D -m644 vboxweb.service -t "${pkgdir}/usr/lib/systemd/system"
@@ -143,7 +145,7 @@ package_virtualbox-bin() {
     ## hicolor icons
     while read -r -d '' _file
     do
-        if printf '%s' "$_file" | grep -Eq '/virtualbox\.(png|svg)$'
+        if grep -Eq '/virtualbox\.(png|svg)$' <<< "$_file"
         then
             _dir="${_file%/*}/apps"
         else
@@ -165,8 +167,8 @@ package_virtualbox-bin-guest-iso() {
     arch=('any')
     provides=('virtualbox-guest-iso')
     
-    install -t "${pkgdir}/opt/VirtualBox/additions" \
-        -D -m644 "${pkgbase}-${pkgver}/VirtualBox-extracted/additions/VBoxGuestAdditions.iso"
+    install -D -m644 "${pkgbase}-${pkgver}/VirtualBox-extracted/additions/VBoxGuestAdditions.iso" \
+        -t "${pkgdir}/opt/VirtualBox/additions"
 }
 
 package_virtualbox-bin-sdk() {
@@ -186,6 +188,7 @@ package_virtualbox-bin-sdk() {
     do
         cp -pr "$_dir" "${pkgdir}/${_installdir}/sdk"
     done < <(find "${pkgbase}-${pkgver}/sdk" -mindepth 1 -maxdepth 1 -type d ! -name 'installer' -print0)
+    
     install -D -m644 "VBoxAuth-r${_rev}.h"    "${pkgdir}/${_installdir}/sdk/bindings/auth/include/VBoxAuth.h"
     install -D -m644 "VBoxAuthPAM-r${_rev}.c" "${pkgdir}/${_installdir}/sdk/bindings/auth/VBoxAuthPAM.cpp"
     install -D -m644 "VBoxAuthSimple-r${_rev}.cpp" "${pkgdir}/${_installdir}/sdk/bindings/auth/VBoxAuthSimple.cpp"

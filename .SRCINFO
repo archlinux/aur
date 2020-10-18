@@ -1,7 +1,7 @@
 pkgbase = virtualbox-bin
 	pkgdesc = Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE)
 	pkgver = 6.1.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.virtualbox.org/
 	arch = x86_64
 	license = GPL2
@@ -19,6 +19,7 @@ pkgbase = virtualbox-bin
 	source = virtualbox.sysusers
 	source = LICENSE.sdk
 	source = 013-Makefile.patch
+	source = 021-kernel-5.9.patch
 	sha256sums = 29a6506445909f6286bb0a113a353b9aa92dd831609a9343ff9763f4aee92845
 	sha256sums = 935c210fda2b0fbed42c4bc6acdf7d1fd2b197e348ad4c42b4be4c4d2ffd2c75
 	sha256sums = 61eab70173ec0c4959ec3b8bf9fa19cfac49bb223a0bb041fe12aa14742db15a
@@ -31,6 +32,7 @@ pkgbase = virtualbox-bin
 	sha256sums = 2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c
 	sha256sums = 09335d7d1075df02d29cec13119538134efdf43ea73a93b0f89d0d7d4b6625a1
 	sha256sums = 3c2089575e8c03b7517fe176e65168e15fb7aefe7e71224bf264d21812dbc635
+	sha256sums = 36bb00a53842b46267cac7acf7584e5394816a10f0ea72473ced6dc0494d9ed0
 
 pkgname = virtualbox-bin
 	depends = device-mapper

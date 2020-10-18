@@ -1,0 +1,69 @@
+--- a/src/vboxhost/vboxdrv/r0drv/linux/the-linux-kernel.h
++++ b/src/vboxhost/vboxdrv/r0drv/linux/the-linux-kernel.h
+@@ -137,7 +137,10 @@
+ #include <linux/interrupt.h>
+ #include <linux/completion.h>
+ #include <linux/compiler.h>
+-#ifndef HAVE_UNLOCKED_IOCTL /* linux/fs.h defines this */
++#if RTLNX_VER_MIN(5, 9, 0)
++#define HAVE_UNLOCKED_IOCTL 1	/* defined in linux/fs.h for kernels before 5.9 */
++#endif
++#ifndef HAVE_UNLOCKED_IOCTL
+ # include <linux/smp_lock.h>
+ #endif
+ /* For the shared folders module */
+--- a/src/vboxhost/vboxnetadp/r0drv/linux/the-linux-kernel.h
++++ b/src/vboxhost/vboxnetadp/r0drv/linux/the-linux-kernel.h
+@@ -137,7 +137,10 @@
+ #include <linux/interrupt.h>
+ #include <linux/completion.h>
+ #include <linux/compiler.h>
+-#ifndef HAVE_UNLOCKED_IOCTL /* linux/fs.h defines this */
++#if RTLNX_VER_MIN(5, 9, 0)
++#define HAVE_UNLOCKED_IOCTL 1	/* defined in linux/fs.h for kernels before 5.9 */
++#endif
++#ifndef HAVE_UNLOCKED_IOCTL
+ # include <linux/smp_lock.h>
+ #endif
+ /* For the shared folders module */
+--- a/src/vboxhost/vboxnetflt/r0drv/linux/the-linux-kernel.h
++++ b/src/vboxhost/vboxnetflt/r0drv/linux/the-linux-kernel.h
+@@ -137,7 +137,10 @@
+ #include <linux/interrupt.h>
+ #include <linux/completion.h>
+ #include <linux/compiler.h>
+-#ifndef HAVE_UNLOCKED_IOCTL /* linux/fs.h defines this */
++#if RTLNX_VER_MIN(5, 9, 0)
++#define HAVE_UNLOCKED_IOCTL 1	/* defined in linux/fs.h for kernels before 5.9 */
++#endif
++#ifndef HAVE_UNLOCKED_IOCTL
+ # include <linux/smp_lock.h>
+ #endif
+ /* For the shared folders module */
+--- a/src/vboxhost/vboxdrv/r0drv/linux/memobj-r0drv-linux.c
++++ b/src/vboxhost/vboxdrv/r0drv/linux/memobj-r0drv-linux.c
+@@ -1181,7 +1181,9 @@ DECLHIDDEN(int) rtR0MemObjNativeLockUser
+          */
+         else
+             rc = get_user_pages_remote(
++#if    RTLNX_VER_MAX(5, 9, 0)
+                                 pTask,                  /* Task for fault accounting. */
++#endif
+                                 pTask->mm,              /* Whose pages. */
+                                 R3Ptr,                  /* Where from. */
+                                 cPages,                 /* How many pages. */
+--- a/src/vboxhost/vboxdrv/r0drv/linux/thread2-r0drv-linux.c
++++ b/src/vboxhost/vboxdrv/r0drv/linux/thread2-r0drv-linux.c
+@@ -92,8 +92,12 @@ DECLHIDDEN(int) rtThreadNativeSetPriorit
+             return VERR_INVALID_PARAMETER;
+     }
+ 
++#if RTLNX_VER_MAX(5, 9, 0)
+     sched_setscheduler(current, iSchedClass, &Param);
+ #else
++    sched_set_fifo_low(current);
++#endif
++#else
+     RT_NOREF_PV(enmType);
+ #endif
+     RT_NOREF_PV(pThread);
