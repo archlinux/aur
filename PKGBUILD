@@ -2,7 +2,7 @@
 pkgbasename=gnome-shell-extension-bubblemail
 pkgname=${pkgbasename}-git
 pkgver=1.3.r1.g5f907e7
-pkgrel=0
+pkgrel=1
 pkgdesc="Unread mail notification service: Gnome shell extension"
 pkgfolder="bubblemail-gnome-shell"
 provides=("${pkgbasename}")
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgfolder}"
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
