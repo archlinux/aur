@@ -1,7 +1,7 @@
 # Packager: William Chen <edoc.www@gmail.com>
 # Maintainer: William Chen <edoc.www@gmail.com>
 
-pkgname=nerd-space-code-pro
+pkgname=nerd-fonts-space-code-pro
 pkgver=2.1.0
 pkgrel=1
 pkgdesc="Patched font SpaceCodePro from Nerd Fonts Library"
