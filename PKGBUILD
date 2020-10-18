@@ -1,7 +1,7 @@
 # Maintainer: Bruno Bollos Correa <bollos@outlook.com.br>
 pkgname=grsim-git
 
-pkgver=v1.5
+pkgver=v2.2.r57.g3f6ca89
 pkgrel=1
 epoch=
 pkgdesc="RoboCup Small Size Robot Soccer Simulator"
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd grSim
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
