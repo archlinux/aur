@@ -2,7 +2,7 @@
 
 pkgname=chatrullete-plus
 pkgver=0.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="ChatRullete (Plus)"
 arch=('x86_64')
 url="https://github.com/chatrullete-plus"
