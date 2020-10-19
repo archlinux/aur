@@ -7,6 +7,7 @@ url='https://github.com/kevr/sprunge'
 
 arch=('i686' 'x86_64' 'armv6h')
 depends=('python')
+optdepends=('xclip: default --clipboard-command.')
 source=('sprunge')
 sha256sums=(
     '5a9ff1ff05fca02df5b88dcb052bee1afca7ffa8290845ec94c1b8b61cad4ecf'
