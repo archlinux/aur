@@ -1,15 +1,15 @@
 pkgbase = glassfish
 	pkgdesc = The Open Source Jakarta EE (Java EE) Reference Implementation.
-	pkgver = 6.0.0_M2_servlet5
+	pkgver = 6.0.0_M3_2020_10_04
 	pkgrel = 1
 	url = https://github.com/eclipse-ee4j/glassfish
 	arch = any
 	license = EPL
 	depends = java-environment=8
 	options = !strip
-	source = glassfish-6.0.0-M2-servlet5.zip::https://github.com/eclipse-ee4j/glassfish/releases/download/6.0.0-M2-servlet5/glassfish.zip
+	source = glassfish-6.0.0-M3-2020-10-04.zip::https://github.com/eclipse-ee4j/glassfish/releases/download/6.0.0-M3-2020-10-04/glassfish-6.0.0-M3-2020-10-04.zip
 	source = glassfish.service
-	sha256sums = ab42efbbf6fa45f1db9f69cb3afa98f6f05b71113d265fc83034c31bc23d2318
+	sha256sums = f69a582e2ee15f49afb48adb2393d42351256ea070a60513e1ae17afe973e9c3
 	sha256sums = 7dbfedd1bdd3e040e91f89f8b6895117db3fda0fac774d2fdd8d55e4f602afa6
 
 pkgname = glassfish
