@@ -1,0 +1,23 @@
+pkgbase = dark-podval-demo-git
+	pkgdesc = A platformer game written in C++
+	pkgver = r14.a67d8bb
+	pkgrel = 1
+	url = https://github.com/HaBeBu/dark-podval-demo
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = ZLIB
+	makedepends = git
+	depends = sdl2
+	depends = sdl2_ttf
+	depends = sdl2_image
+	depends = sdl2_mixer
+	provides = dark-podval-demo
+	source = git+https://github.com/HaBeBu/dark-podval-demo
+	md5sums = SKIP
+
+pkgname = dark-podval-demo-git
+
