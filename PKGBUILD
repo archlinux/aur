@@ -5,12 +5,12 @@
 
 pkgname=libptp2
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to communicate with PTP devices like cameras or MP3 players"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://libptp.sourceforge.net/"
 license=('GPL')
-depends=('libusb')
+depends=('libusb-compat')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/sourceforge/libptp/$pkgname-$pkgver.tar.gz
         ptpcam.1.man)
@@ -35,7 +35,8 @@ build() {
 }
 
 package() {
-  install -Dm644 ptpcam.1 "$pkgdir/usr/share/man/man1/ptpcam.1"
+  install -dm755 "$pkgdir/usr/share/man/man1"
+  gzip ptpcam.1 > "$pkgdir/usr/share/man/man1/ptpcam.1.gz"
 
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
