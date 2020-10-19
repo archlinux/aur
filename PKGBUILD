@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-opencv
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library (mingw-w64)"
 arch=('any')
@@ -11,8 +11,8 @@ depends=('mingw-w64-crt' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-lapacke')
 source=("opencv-$pkgver.zip::https://github.com/opencv/opencv/archive/$pkgver.zip"
         "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz")
-sha256sums=('7faa0991c74cda52313ee37ef73f3e451332a47e7aa36c2bb2240b69f5002d27'
-            'a69772f553b32427e09ffbfd0c8d5e5e47f7dab8b3ffc02851ffd7f912b76840')
+sha256sums=('168f6e61d8462fb3d5a29ba0d19c0375c111125cac753ad01035a359584ccde9'
+            'a65f1f0b98b2c720abbf122c502044d11f427a43212d85d8d2402d7a6339edda')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -37,7 +37,9 @@ _cmakeopts=('-DCMAKE_SKIP_RPATH=ON'
             '-DBUILD_OPENEXR=OFF'
             '-DWITH_VTK=OFF'
             '-DWITH_IPP=OFF'
-            '-DWITH_DSHOW=OFF')
+            '-DWITH_DSHOW=OFF'
+            '-DOPENCV_GENERATE_PKGCONFIG=ON'
+            '-DOPENCV_GENERATE_SETUPVARS=OFF')
 
 build() {
   cd "$srcdir/opencv-$pkgver"
@@ -76,15 +78,13 @@ package() {
  
     install -d "$pkgdir"/usr/${_arch}/lib/pkgconfig
     install -d "$pkgdir"/usr/${_arch}/lib/cmake/opencv4
+    install -m644 ./unix-install/opencv4.pc "$pkgdir"/usr/${_arch}/lib/pkgconfig/
     # fix paths
     sed -i "s/\/\/usr\/${_arch}\/lib/\/lib/g" ./unix-install/opencv4.pc
     # fix static builds. To be able to static build lapack.pc should be fixed too
     # adding Libs.private: -lgfortran -lquadmath
     sed -i "s/^Libs.private.*/& -lgdi32 -lcomdlg32/" ./unix-install/opencv4.pc
     echo "Requires.private: libjpeg libtiff-4 libpng libwebp lapack cblas" >> ./unix-install/opencv4.pc
-    # remove nonexistent include dir
-    sed -i "/^Cflags.*/ s/-I\${includedir_old}//g" ./unix-install/opencv4.pc
-    install -m644 ./unix-install/opencv4.pc "$pkgdir"/usr/${_arch}/lib/pkgconfig/
     rm "$pkgdir"/usr/${_arch}/LICENSE
     # fix cmake INSTALL_PATH
     sed -i "s/^get_filename_component(OpenCV_INSTALL_PATH.*/get_filename_component(OpenCV_INSTALL_PATH \"\$\{OpenCV_CONFIG_PATH\}\/..\/..\/..\/\" REALPATH)/g" ./unix-install/OpenCVConfig.cmake
