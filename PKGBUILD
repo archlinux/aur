@@ -1,14 +1,14 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=omphalos
-pkgver=0.99.12
-pkgrel=2
+pkgver=0.99.13
+pkgrel=1
 pkgdesc="Network enumeration and domination"
 url="https://nick-black.com/dankwiki/index.php/Omphalos"
 license=('GPL3')
 arch=('x86_64')
 depends=('libpciaccess' 'libpcap' 'zlib' 'wireless_tools' 'sysfsutils'
-         'notcurses>=1.4.3')
+         'notcurses>=2.0.1')
 makedepends=('docbook-xsl' 'autoconf-archive' 'libxslt' 'autoconf')
 source=("https://github.com/dankamongmen/omphalos/archive/v${pkgver}.tar.gz")
 
@@ -27,7 +27,7 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
-  install -m 0644 -D -t "$pkgdir/usr/share/omphalos" usb.ids ieee-oui.txt
+  install -m 0644 -D -t "$pkgdir/usr/share/omphalos" ieee-oui.txt
 }
 
-sha256sums=('7ab9e0ddbcc5fa7acd4e46b84db97d1bdcd96d532effff80a27673cf7e1b40a6')
+sha256sums=('5e29377543992389df66eb427fca373d519eb8843786403acfa3c0c8c180cf8d')
