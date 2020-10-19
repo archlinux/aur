@@ -1,7 +1,7 @@
 # Maintainer: Morgan <morganamilo@archlinux.org>
 pkgname=paru
 pkgver=0.99.0
-pkgrel=1
+pkgrel=2
 pkgdesc='AUR helper based on yay'
 url='https://github.com/morganamilo/paru'
 source=("$pkgname-$pkgver::https://github.com/Morganamilo/paru/archive/v$pkgver.tar.gz")
@@ -26,7 +26,7 @@ build () {
     _features+="backtrace,"
   fi
 
-  cargo build --features "${_features:-?}" --release
+  cargo build --features "${_features:-}" --release
 }
 
 package() {
