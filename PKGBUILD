@@ -42,6 +42,9 @@ source=(
     "media_codecs_google_telephony.xml"
     "$_gapps_src"
 )
+
+noextract=('XposedInstaller_3.1.5.apk')
+
 md5sums=(
     '26874452a6521ec2e37400670d438e33'
     '7ebf618b1af94a02322d9f2d2610090b'

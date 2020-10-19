@@ -11,6 +11,7 @@ pkgbase = anbox-image-gapps-rooted-xposed
 	makedepends = squashfs-tools
 	provides = anbox-image
 	conflicts = anbox-image
+	noextract = XposedInstaller_3.1.5.apk
 	source = https://build.anbox.io/android-images/2018/07/19/android_amd64.img
 	source = https://github.com/redchenjs/aur-packages/raw/master/anbox-image/houdini_y.sfs
 	source = https://github.com/redchenjs/aur-packages/raw/master/anbox-image/houdini_z.sfs
