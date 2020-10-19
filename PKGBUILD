@@ -1,8 +1,8 @@
-# Maintainer: Ben Westover <kwestover [dot] kw [at] gmail [dot] com>
+# Maintainer: BenTheTechGuy
 # Contributer: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=btdex
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Decentralized cryptocurrency exchange system running on the Burstcoin blockchain'
 arch=('any')
@@ -16,7 +16,7 @@ source=("https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgnam
         "https://raw.githubusercontent.com/$pkgname/$pkgname/v$pkgver/src/main/resources/icon.png"
         "https://raw.githubusercontent.com/$pkgname/$pkgname/v$pkgver/dist/$pkgname.desktop"
         "https://raw.githubusercontent.com/$pkgname/$pkgname/v$pkgver/LICENSE")
-sha256sums=('833fb9b8042eb7333d10f687ec897a7764a9b42844520ffb6beebbfddc3ca495'
+sha256sums=('2282a02347d5738c37b7e83681e43e1ed4148e4dc6894d4cd44180bfeb448b7e'
             '3c1830a574257a35e4d4e1a242f786b98fb3fa0d3c7db1418d4b69d4df881533'
             'e8cba764ca0cddbb8cf658f80e015b941b4ad732bcb1b8da3078894ad51f397a'
             'fa8e5f6561192d1f2554365a7f49c36ac368ae00413f489c0873a801c11e6219'
