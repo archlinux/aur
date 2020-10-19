@@ -44,7 +44,6 @@ build() {
 	cd "$_pkgname"
 	arch-meson \
 		-Dwerror=false \
-		--prefix /usr \
 		"$srcdir/build"
 	ninja -C "$srcdir/build"
 }
