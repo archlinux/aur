@@ -1,6 +1,6 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoakanter@gmail.com>
 pkgname="nerdfetch"
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="A POSIX fetch using NerdFonts"
 arch=('any')
@@ -12,12 +12,11 @@ source=("git+https://github.com/ThatOneCalculator/NerdFetch")
 noextract=()
 md5sums=('SKIP')
 
-pkgver() {
+prepare() {
 	if ! which dc &> /dev/null; then
 		echo "Looks like you don't have bc (or your path is wonky)! The program will work, but you won't get the memory percent."
 	fi
 	cd NerdFetch
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
