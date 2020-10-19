@@ -4,11 +4,12 @@ _target_arch=mips
 _target=mipsr5900el-unknown-linux-gnu
 pkgname=$_target-linux-api-headers
 pkgver=5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel headers sanitized for use in userspace ($_target)"
 arch=(any)
 url='https://github.com/frno7/linux'
 license=(GPL2)
+makedepends=('git')
 source=(git+https://github.com/frno7/linux#branch=ps2-v${pkgver})
 sha1sums=('SKIP')
 

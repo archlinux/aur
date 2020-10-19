@@ -1,10 +1,11 @@
 pkgbase = mipsr5900el-unknown-linux-gnu-linux-api-headers
 	pkgdesc = Kernel headers sanitized for use in userspace (mipsr5900el-unknown-linux-gnu)
 	pkgver = 5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frno7/linux
 	arch = any
 	license = GPL2
+	makedepends = git
 	source = git+https://github.com/frno7/linux#branch=ps2-v5.4
 	sha1sums = SKIP
 
