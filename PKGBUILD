@@ -64,7 +64,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.7.19
+pkgver=5.9.1
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -74,53 +74,35 @@ makedepends=(
   bc kmod libelf
 )
 options=('!strip')
-_ckpatch="patch-5.7-ck${_ckpatchversion}"
+_ckpatch="patch-5.9-ck${_ckpatchversion}"
 _gcc_more_v='20200615'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  "http://ck.kolivas.org/patches/5.0/5.7/5.7-ck${_ckpatchversion}/$_ckpatch.xz"
-  fix_ck1_for_5.7.14.patch
-  fix_ck1_for_5.7.17.patch
-  "unfuck-ck1.patch::https://github.com/ckolivas/linux/commit/0b69e633d6b0b08ae8547dc4099c8c0985019553.patch"
-  "unfuck-ck1-fix-suspend-to-ram.patch::https://github.com/zen-kernel/zen-kernel/commit/fb7e2cfaf61cf5f9c2336331e73296f455bd2d51.patch"
-  "unfuck-ck1-muqss-Add-missing-static-function-uclamp_is_used.patch::https://github.com/zen-kernel/zen-kernel/commit/e7113f2c1d56962d4afabc627ad761c138f5b858.patch"
+  "http://ck.kolivas.org/patches/5.0/5.9/5.9-ck${_ckpatchversion}/$_ckpatch.xz"
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
-  0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
+  0002-i2c-core-Restore-acpi_walk_dep_device_list-getting-c.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('408fdc49f8a341f6d7c0fead1ddc1b0816caf4a7393286127440a6ec1b513cd413067d6e56180310cc9d634b95c9583b7f38ae4711cd115f4ac2f08918e6b916'
+b2sums=('65eeccf077194ce03d5dbc1e8ea8f6022d709bc930945a49880fb87d71992e0614cf5ee92eb1b60fe2e3ed41fe17f0c176bbbad5f2cf0a2a349e1b08e6236558'
         'SKIP'
-        '4fcc0fb8672d93c2702d7e42ed15824dd58f6822fd14fb4439aca773e9860c942c833586c47e4707832fc2fb4eda832dc4fd1506c8bfe3f99fe2654bfd54e5bd'
+        'ea3fda355bd421b68dff7e81b52bffe332c6e6030398ea84706fe29b39f9ce4a818128b4ed817b834df35f6237ae3e623fdea61b2fcb5b586990ea94eb4cd287'
         'c8d0697f99fe6105815217b8ec059d8f587415ea8dd2b88a65e1087feedf697341a64cd56810fde9e7aeada79125fc8235faccc7e7b06492c099e27a8abbe99c'
-        '29b2530e91a7c0f75c47d75361a94ec92fec398cef1b3e213e97c8f9e0ed210711c4c63ae7717f59273105a83e30397cbd5b7252cb94c06d9b328a24c70ad444'
-        '5d4275b060aac58206c5a76b554168dbcb95b2e469bdad6de78c8815d34eb970483f36a18b7343121dc70358c447d6fd66e30f64cf8c429656816aa8dd42db38'
-        'fb7fc6ae5df7765b5f28350032469d756ff9bad4de73395ded1c242f402e7c326f963627dcb35a92ac0e8011a17de03cfccf50a40faa4147e43bb9dd5f7d7028'
-        '84c9438120100bb5b21122a29344b9e818514d94a31b6d57519a6e25385cb7f91a7f87c930da55c828c7a4330959a94b8a3a3d56773c46b335e1380cd00180b1'
-        '5dfb38f2096f27cf436afa6ac41d432f4e23295deb26d12146b31c57db85a8be59819f08f9c5197183c26c557b32e967edded22206c1abb9b89b83e61450ec5c'
-        '5c56a6bcf03b8b771cf5a96161eaded2ff987732e41b09c31c4c894a42d300167c9acbed49e35ef6cf86cd8c986bd57ddd3dc9552914a2804559447a6ce9efb2'
+        'c19099ad66168db4608dee44e1913c07c035bc002a91267abc2e1eadf1788ddb5be3b17e3fdfeddcba96526dfa2b9fcc43a5dd0f8236d94c864e6477924a6718'
         'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95'
-        'cfac70bc43305a6dda6b812092da4e947bf91866a24fa62ecad40727e39cf9a54cc41fae0f9d6477e1b37731e39bce12a737ea421056a650b7f14236a8b3f870'
-        '3fb9b66e85cf1a6921dab85dc831a5f1a97e61bbbec3bcfe191962e52da8481876fe6599f7884265e9a5d9773baa31ae3770e954672f75a7cf62b62fdb9b985a'
-        'b7c825b9606dcb10a68a1efabfe1b8eeb8e2b0a1737fd0a263475729501095f877b00f5132c0ad3a2a9c1515572145f5dc7cbd290ded7be2abbc5210015604df')
+        '3c5cdf6da7ff5312bfe2a8dcd18e58c8e1a3408e1612be60417ed33866e9e70da77db88435fe49483c907c5ff45d4b9ed979aaa96d485cef976c6aa6fdaa834c'
+        '5d54400c8cb1d2a2858684beba31a3b7b1a2695e1695b6382fc6eb3b54c858dae6d4a5b0c623a8cd1405000c8495eee72c1395b2a697c6ca7c24c2863c176b8d')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  # changes from 5.7.13 to 5.7.14 breaks ck1
-  patch -Np1 -i fix_ck1_for_5.7.14.patch
-
-  # changes from 5.7.16 to 5.7.17 breaks ck1
-  patch -Np1 -i fix_ck1_for_5.7.17.patch
-
   cd linux-${pkgver}
 
   echo "Setting version..."
@@ -159,21 +141,17 @@ prepare() {
   sed -i -e 's/CONFIG_DEBUG_INFO=y/# CONFIG_DEBUG_INFO is not set/' \
       -i -e '/CONFIG_DEBUG_INFO_DWARF4=y/d' -i -e '/CONFIG_DEBUG_INFO_BTF=y/d' ./.config
 
-  echo "Patching with ck patchset..."
+  # https://github.com/graysky2/kernel_gcc_patch
+  echo "Patching to enable GCC optimization for other uarchs..."
+  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.8+.patch"
 
   # ck patchset itself
+  echo "Patching with ck patchset..."
   patch -Np1 -i ../"${_ckpatch}"
-  patch -Np1 -i ../unfuck-ck1.patch
-  patch -Np1 -i ../unfuck-ck1-fix-suspend-to-ram.patch
-  patch -Np1 -i ../unfuck-ck1-muqss-Add-missing-static-function-uclamp_is_used.patch
 
   # non-interactively apply ck1 default options
   # this isn't redundant if we want a clean selection of subarch below
   make olddefconfig
-
-  # https://github.com/graysky2/kernel_gcc_patch
-  echo "Patching to enable GCC optimization for other uarchs..."
-  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.7+.patch"
 
   if [ -n "$_subarch" ]; then
     # user wants a subarch so apply choice defined above interactively via 'yes'
