@@ -1,10 +1,10 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
 pkgname=reflector-nomirrorlist
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Use reflector-generated mirrorlist by default"
 arch=('any')
-url="https://aur.archlinux.org/packages/reflector-mirrorlist/"
+url="https://aur.archlinux.org/packages/reflector-nomirrorlist/"
 license=('unknown')
 depends=('pacman' 'reflector')
 provides=('pacman-mirrorlist')
