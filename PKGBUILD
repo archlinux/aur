@@ -191,7 +191,7 @@ prepare() {
   scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES "binder,hwbinder,vndbinder"
   # CONFIG_ANDROID_BINDER_IPC_SELFTEST is not set
   
-  scripts/config --set-str CONFIG_DEFAULT_HOSTNAME="manjaro"
+  scripts/config --set-str CONFIG_DEFAULT_HOSTNAME "manjaro"
 
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
