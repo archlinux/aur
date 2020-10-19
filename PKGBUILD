@@ -4,7 +4,7 @@ pkgname=phddns-bin
 _pkgname=${pkgname%-bin}
 pkgver=5.0.0
 _pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Peanut shell is a dynamic DNS software, any place, any time, any lines, all can through fixed domain access to the remote host services"
 arch=("x86_64" "i686" "aarch64")
 depends=('wget')
@@ -30,15 +30,18 @@ package() {
   # binary
   install -Dm755  -t ${pkgdir}/usr/bin/ ${srcdir}/${pkgname}/usr/bin/phtunnel
   if [ $CARCH == "aarch64" ];then
-    install -Dm755  -t ${pkgdir}/usr/bin/ ${srcdir}/${pkgname}/usr/bin/phddns
+    install -Dm755  -t ${pkgdir}/usr/bin/ ${srcdir}/${pkgname}/usr/bin/${_pkgname}
+  else
+    install -Dm755  ${srcdir}/${pkgname}/tmp/pht_script/phddns_systemd ${pkgdir}/usr/bin/${_pkgname}
   fi
-    
+
   # systemd service
   if [ $CARCH == "aarch64" ];then
     install -Dm644 -t ${pkgdir}/usr/lib/systemd/system/ ${srcdir}/${pkgname}/lib/systemd/system/phtunnel.service
   else
     install -Dm644 -t ${pkgdir}/usr/lib/systemd/system/ ${srcdir}/${pkgname}/tmp/pht_script/phtunnel.service
   fi
+
   # license
   install -Dm644 -t ${pkgdir}/usr/share/licenses/${pkgname}/ ${srcdir}/LICENSE
 }    
