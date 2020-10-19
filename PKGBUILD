@@ -13,6 +13,9 @@ noextract=()
 md5sums=('SKIP')
 
 pkgver() {
+	if ! which dc &> /dev/null; then
+		echo "Looks like you don't have bc (or your path is wonky)! The program will work, but you won't get the memory percent."
+	fi
 	cd NerdFetch
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
