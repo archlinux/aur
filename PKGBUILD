@@ -5,8 +5,8 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=81.0
-pkgrel=2
+pkgver=81.0.2
+pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
@@ -26,6 +26,7 @@ source_x86_64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/f
                $pkgname.desktop
                "0002-Bug-1660901-Support-the-fstat-like-subset-of-fstatat.patch::${_arch_svn}/0002-Bug-1660901-Support-the-fstat-like-subset-of-fstatat.patch?h=packages/firefox"
                "0003-Bug-1660901-ignore-AT_NO_AUTOMOUNT-in-fstatat-system.patch::${_arch_svn}/0003-Bug-1660901-ignore-AT_NO_AUTOMOUNT-in-fstatat-system.patch?h=packages/firefox"
+               "0004-Bug-1663715-Update-syn-and-proc-macro2-so-that-Firef.patch::${_arch_svn}/0004-Bug-1663715-Update-syn-and-proc-macro2-so-that-Firef.patch?h=packages/firefox"
                "git+https://gitlab.com/${pkgname}-community/browser/common.git"
                "git+https://gitlab.com/${pkgname}-community/settings.git"
                "megabar.patch"
@@ -34,6 +35,7 @@ source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/
                 $pkgname.desktop
                 "0002-Bug-1660901-Support-the-fstat-like-subset-of-fstatat.patch::${_arch_svn}/0002-Bug-1660901-Support-the-fstat-like-subset-of-fstatat.patch?h=packages/firefox"
                 "0003-Bug-1660901-ignore-AT_NO_AUTOMOUNT-in-fstatat-system.patch::${_arch_svn}/0003-Bug-1660901-ignore-AT_NO_AUTOMOUNT-in-fstatat-system.patch?h=packages/firefox"
+                "0004-Bug-1663715-Update-syn-and-proc-macro2-so-that-Firef.patch::${_arch_svn}/0004-Bug-1663715-Update-syn-and-proc-macro2-so-that-Firef.patch?h=packages/firefox"
                 "git+https://gitlab.com/${pkgname}-community/browser/common.git"
                 "git+https://gitlab.com/${pkgname}-community/settings.git"
                 "megabar.patch"
@@ -41,18 +43,20 @@ source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/
                 arm.patch
                 https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
 
-sha256sums_x86_64=('9328745012178aee5a4f47c833539f7872cc6e0f20a853568a313e60cabd1ec8'
+sha256sums_x86_64=('91b6482de9b193b19d1fd9a8b99015a001646a48429297bbb7fe41784f9f9b44'
                    '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                    'c2489a4ad3bfb65c064e07180a1de9a2fbc3b1b72d6bc4cd3985484d1b6b7b29'
                    '52cc26cda4117f79fae1a0ad59e1404b299191a1c53d38027ceb178dab91f3dc'
+                   '2ffa37306bf8e5d79e074e612f88b6f3f671c45215724f84dd85cbea8b91e6bd'
                    'SKIP'
                    'SKIP'
                    '682bf4bf5d79db0080aa132235a95b25745c8ef944d2a2e1fed985489d894df5'
                    '41719289b309912c4b6bc86b41594f671427979481a90c32a9d3d0bf1cdd6d44')
-sha256sums_aarch64=('9328745012178aee5a4f47c833539f7872cc6e0f20a853568a313e60cabd1ec8'
+sha256sums_aarch64=('91b6482de9b193b19d1fd9a8b99015a001646a48429297bbb7fe41784f9f9b44'
                     '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                     'c2489a4ad3bfb65c064e07180a1de9a2fbc3b1b72d6bc4cd3985484d1b6b7b29'
                     '52cc26cda4117f79fae1a0ad59e1404b299191a1c53d38027ceb178dab91f3dc'
+                    '2ffa37306bf8e5d79e074e612f88b6f3f671c45215724f84dd85cbea8b91e6bd'
                     'SKIP'
                     'SKIP'
                     '682bf4bf5d79db0080aa132235a95b25745c8ef944d2a2e1fed985489d894df5'
@@ -68,6 +72,9 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1660901
   patch -Np1 -i ../0002-Bug-1660901-Support-the-fstat-like-subset-of-fstatat.patch
   patch -Np1 -i ../0003-Bug-1660901-ignore-AT_NO_AUTOMOUNT-in-fstatat-system.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1663715
+  patch -Np1 -i ../0004-Bug-1663715-Update-syn-and-proc-macro2-so-that-Firef.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
