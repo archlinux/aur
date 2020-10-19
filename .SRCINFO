@@ -1,7 +1,7 @@
 pkgbase = badass
 	pkgdesc = Advanced 6502 assembler with embedded lua.
 	pkgver = 0.0beta6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sasq64/bass
 	arch = i686
 	arch = x86_64

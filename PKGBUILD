@@ -9,7 +9,7 @@ _pkgver="beta6"
 
 pkgname="badass"
 pkgver=0.0${_pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced 6502 assembler with embedded lua."
 arch=('i686' 'x86_64')
 url="https://github.com/sasq64/bass"
@@ -58,7 +58,7 @@ package()
   cd "${srcdir}/${pkg_name_ver}"
   #
   mkdir -p "${pkgdir}/usr/bin"
-  install ${V} -m 644 -D "${srcdir}/${pkg_name_ver}/${BUILD_DIR}/bass" "${pkgdir}/usr/bin/bass"
+  install ${V} -m 755 -D "${srcdir}/${pkg_name_ver}/${BUILD_DIR}/bass" "${pkgdir}/usr/bin/bass"
   #
   mkdir -p "${pkgdir}/usr/share/${pkgname}/docs"
   (cd ${srcdir}/${pkg_name_ver}/docs && find . -type f -exec install ${V} -m 644 -D "{}" "${pkgdir}/usr/share/${pkgname}/docs/{}" \;)
