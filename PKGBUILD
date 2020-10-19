@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=data.table
-_cranver=1.13.0
+_cranver=1.13.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(MPL2)
 depends=('r>=3.1.0' zlib)
 optdepends=(r-bit64 r-curl r-r.utils r-xts r-nanotime r-zoo r-yaml r-knitr r-rmarkdown)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('9d4987a86d06e5f8f098095d2643f48b')
+sha256sums=('27db478345faaa35fcc058d17e6deea2f3c7a68366252bb5f097eee59dd43804')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
