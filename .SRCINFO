@@ -1,6 +1,6 @@
 pkgbase = umps3-git
 	pkgdesc = Virtual machine simulator based around the MIPS R2/3000 microprocessor.
-	pkgver = 3.0.1.r3.gece5d58
+	pkgver = 3.0.2.r0.g2107f56
 	pkgrel = 1
 	url = https://github.com/virtualsquare/umps3
 	arch = x86_64
