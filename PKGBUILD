@@ -14,7 +14,7 @@ license=('MIT')
 provides=('appleseed')
 conflicts=('appleseed')
 depends=(python2 python embree qt5-base seexpr-qt5 boost openexr opencolorio 'openimageio=2.1.19.0' 'openshadinglanguage=1.10.13' xerces-c zlib)
-makedepends=(git cmake)
+makedepends=(git cmake ninja)
 options=()
 source=("${pkgname}::git+https://github.com/appleseedhq/appleseed.git${_fragment}"
         "cmake.extra.install.dirs.remove.patch"

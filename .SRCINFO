@@ -9,6 +9,7 @@ pkgbase = appleseed-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	depends = python2
 	depends = python
 	depends = embree
