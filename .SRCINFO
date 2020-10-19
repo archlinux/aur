@@ -1,17 +1,16 @@
 pkgbase = imeditor
 	pkgdesc = Simple & versatile image editor.
-	pkgver = 0.9.4
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://imeditor.github.io
 	arch = any
 	license = GPL3
 	makedepends = meson
-	makedepends = appstream-glib
 	depends = gtk3
 	depends = python-gobject
 	depends = python-pillow
-	source = imeditor-0.9.4.tar.gz::https://github.com/ImEditor/ImEditor/archive/0.9.4.tar.gz
-	sha256sums = 82105705461431e1592399b59f1417b53e441d68d1de76b2a6b57ca7efcf0aa6
+	source = imeditor-0.9.5.tar.gz::https://github.com/ImEditor/ImEditor/archive/0.9.5.tar.gz
+	sha256sums = 7261fd8cfa7592d3f812af7a8b7ee39c73404827deaf20bfa19378b9f1371617
 
 pkgname = imeditor
 
