@@ -2,15 +2,16 @@
 
 pkgname="savvycan"
 pkgproper="SavvyCAN"
-pkgver="199.1"
-pkgrel=3
+pkgver="1.0.40"
+pkgrel=1
+epoch=1
 pkgdesc="QT-based CAN bus analysis tool"
 url="https://github.com/collin80/SavvyCAN"
 license=('MIT')
 arch=('x86_64')
 depends=('qt5-serialbus')
 makedepends=('qt5-base' 'qt5-tools')
-source=("https://github.com/collin80/SavvyCAN/archive/V${pkgver}.tar.gz")
+source=("https://github.com/collin80/SavvyCAN/archive/${pkgver}.tar.gz")
 
 build() {
   cd "$srcdir/$pkgproper-$pkgver"
@@ -32,4 +33,4 @@ package() {
 	make INSTALL_ROOT="$pkgdir" install
 }
 
-sha256sums=('ed1a7131673f7363009ba067252d91053edce7491ff82a0b51d32fe5cee916b6')
+sha256sums=('43da3925c83014200f2b64318f585b256aecfb446b776646adcebff89cd24022')
