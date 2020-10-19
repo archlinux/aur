@@ -36,7 +36,7 @@ prepare() {
 
 build() {
 	cd "$_pkgname"
-	meson \
+	arch-meson \
 		-Dwerror=false \
 		--prefix /usr \
 		"$srcdir/build"
