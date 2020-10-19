@@ -1,4 +1,6 @@
-# Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
+# Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
+# Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: Mattia Basaglia <mattia.basaglia@gmail.com>
 
 pkgname=qt5-color-widgets
@@ -6,7 +8,7 @@ pkgver=2020.8.9
 pkgrel=1
 pkgdesc='A user-friendly color dialog and several color-related widgets for Qt'
 arch=('i686' 'x86_64')
-url='https://github.com/TheCynicalTeam/Qt-Color-Widgets'
+url="https://github.com/TheCynicalTeam/qt5-color-widgets/$pkgname"
 license=('LGPL3')
 depends=('qt5-base')
 optdepends=('qt5-tools: for QtDesigner integration'
