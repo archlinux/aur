@@ -3,7 +3,7 @@
 # Contributor: rtfreedman  (rob<d0t>til<d0t>freedman<aT>googlemail<d0t>com
 # Contributor: Loren Copeland <thisisquitealongname at gm--l>
 
-_name=jack2
+_pkgname=jack2
 pkgname=jack2-git
 pkgdesc="C++ version of the JACK low-latency audio server for multi-processor machines"
 pkgver=1.9.16.r0.g5b78c2ef
@@ -22,10 +22,12 @@ optdepends=('a2jmidid: Expose legacy ALSA sequencer applications in JACK MIDI'
             'python-dbus: For jack_control'
             'realtime-privileges: Acquire realtime privileges'
             'zita-ajbridge: for using multiple ALSA devices')
-provides=('jack' 'jack2' 'libjack.so' 'libjacknet.so' 'libjackserver.so')
-conflicts=('jack' 'jack2')
+provides=('jack' "jack=${pkgver//.r*}"
+          "${_pkgname}" "${_pkgname}=${pkgver//.r*}"
+          'libjack.so' 'libjacknet.so' 'libjackserver.so')
+conflicts=('jack' "${_pkgname}")
 replaces=('jack2-dbus-git')
-source=("${pkgname}::git+https://github.com/jackaudio/${_name}#branch=master")
+source=("${pkgname}::git+https://github.com/jackaudio/${_pkgname}#branch=master")
 md5sums=('SKIP')
 
 prepare() {

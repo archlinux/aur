@@ -28,7 +28,9 @@ pkgbase = jack2-git
 	optdepends = realtime-privileges: Acquire realtime privileges
 	optdepends = zita-ajbridge: for using multiple ALSA devices
 	provides = jack
+	provides = jack=1.9.16
 	provides = jack2
+	provides = jack2=1.9.16
 	provides = libjack.so
 	provides = libjacknet.so
 	provides = libjackserver.so
