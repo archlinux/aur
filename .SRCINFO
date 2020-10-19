@@ -1,7 +1,7 @@
 pkgbase = multimc5
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
 	pkgver = 0.6.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://multimc.org/
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = multimc5
 	depends = qt5-svg
 	depends = xorg-xrandr
 	optdepends = mcedit: Allows editing of minecraft worlds
+	optdepends = visualvm: Profiling support
 	provides = multimc
 	conflicts = multimc
 	source = https://github.com/MultiMC/MultiMC5/archive/0.6.11.tar.gz
