@@ -2,7 +2,7 @@
 
 pkgname=nomachine-enterprise-client
 pkgver=6.12.3
-pkgrel=8
+pkgrel=7
 x64_rel=7
 i386_rel=8
 pkgdesc="Remote desktop application"
