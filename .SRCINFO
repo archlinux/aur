@@ -1,0 +1,17 @@
+pkgbase = paru
+	pkgdesc = AUR helper based on yay
+	pkgver = 0.99.0
+	pkgrel = 1
+	url = https://github.com/morganamilo/paru
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cargo
+	depends = git
+	depends = pacman
+	optdepends = asp: downloading repo pkgbuilds
+	backup = etc/paru.conf
+	source = paru-0.99.0::https://github.com/Morganamilo/paru/archive/v0.99.0.tar.gz
+	sha256sums = 9956082d2af9475d310e5f064780392697f675f2b3d1dd445e128f81523a7809
+
+pkgname = paru
