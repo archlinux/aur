@@ -3,7 +3,7 @@
 
 _pkgname="saturnon"
 pkgname="$_pkgname"-git
-pkgver=0.38.4
+pkgver=0.38.6
 pkgrel=1
 pkgdesc="Treeview based file browser"
 arch=('any')
