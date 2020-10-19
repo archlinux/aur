@@ -19,8 +19,14 @@ optdepends=(
 )
 arch=("i686" "x86_64")
 url="https://swaywm.org"
-source=("${_pkgname%-*}::git+https://github.com/swaywm/sway.git")
-sha512sums=('SKIP')
+source=(
+	"${_pkgname%-*}::git+https://github.com/swaywm/sway.git"
+	"50-systemd-user.conf"
+)
+sha512sums=(
+	'SKIP'
+	'57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e'
+)
 provides=("sway")
 conflicts=("sway" "sway-git")
 options=(debug)
@@ -46,4 +52,5 @@ build() {
 package() {
 	cd "$_pkgname"
 	DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
+	install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
 }
