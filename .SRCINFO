@@ -1,6 +1,6 @@
 pkgbase = python-sentry_sdk
 	pkgdesc = The new Python SDK for Sentry.io
-	pkgver = 0.19.0
+	pkgver = 0.19.1
 	pkgrel = 1
 	url = https://sentry.io/for/python
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = python-sentry_sdk
 	depends = python-urllib3
 	depends = python-certifi
 	optdepends = python-flask: adds support for the Flask Web Framework
+	optdepends = python-blinker:
 	optdepends = python-bottle: adds support for the Bottle Web Framework
 	optdepends = python-falcon: adds support for the Falcon Web Framework
 	optdepends = python-django: adds support for the Django Web Framework
@@ -22,9 +23,10 @@ pkgbase = python-sentry_sdk
 	optdepends = python-pyspark: adds support for the Python API for Apache Spark
 	optdepends = python-pure_eval: for richer stacktraces & additional variables
 	optdepends = python-executing: for richer stacktraces & better function names
+	optdepends = python-asttokens:
 	optdepends = python-chalice: for the Chalice web framework for AWS Lambda
-	source = https://pypi.org/packages/source/s/sentry-sdk/sentry-sdk-0.19.0.tar.gz
-	sha256sums = a3716e98a1285a74eeaea7418a5b8fb2d7568fa11b5fba389946f465876a4d44
+	source = https://pypi.org/packages/source/s/sentry-sdk/sentry-sdk-0.19.1.tar.gz
+	sha256sums = 5cf36eb6b1dc62d55f3c64289792cbaebc8ffa5a9da14474f49b46d20caa7fc8
 
 pkgname = python-sentry_sdk
 
