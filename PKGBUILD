@@ -1,7 +1,6 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
-_pkgname=terra
-pkgname=$_pkgname-bzr
+pkgname=terra-bzr
 pkgver=r56
 pkgrel=2
 pkgdesc="Python/GTK3 drop-down tiling terminal emulator"
@@ -10,8 +9,8 @@ url="https://launchpad.net/terra"
 license=('GPL3')
 depends=('python2-dbus' 'python2-gobject' 'vte3')
 makedepends=('bzr' 'python2-distutils-extra')
-provides=($_pkgname)
-conflicts=($_pkgname)
+provides=("${pkgname%-bzr}")
+conflicts=("${pkgname%-bzr}")
 source=($pkgname::bzr+https://code.launchpad.net/terra/trunk)
 md5sums=('SKIP')
 
