@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dropbear-hg
-pkgver=r1621.8cdabd7d34aa
+pkgver=r1749.32307118bc26
 pkgrel=1
 pkgdesc="Small SSH server and client"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'pam' 'zlib')
 makedepends=('mercurial')
 provides=('dropbear')
 conflicts=('dropbear')
-source=("hg+https://secure.ucc.asn.au/hg/dropbear/"
+source=("hg+https://hg.ucc.asn.au/dropbear/"
         "dropbear.service::https://git.archlinux.org/svntogit/community.git/plain/trunk/dropbear.service?h=packages/dropbear"
         "localoptions.h::https://git.archlinux.org/svntogit/community.git/plain/trunk/localoptions.h?h=packages/dropbear")
 sha256sums=('SKIP'
@@ -36,7 +36,10 @@ build() {
 
   autoconf
   autoheader
-  ./configure --prefix="/usr" --sbindir="/usr/bin" --enable-pam
+  ./configure \
+    --prefix="/usr" \
+    --sbindir="/usr/bin" \
+    --enable-pam
   make
 }
 
@@ -44,7 +47,7 @@ package() {
   cd "dropbear"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/dropbear/LICENSE"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/dropbear"
 
-  install -Dm644 "$srcdir/dropbear.service" "$pkgdir/usr/lib/systemd/system/dropbear.service"
+  install -Dm644 "$srcdir/dropbear.service" -t "$pkgdir/usr/lib/systemd/system"
 }
