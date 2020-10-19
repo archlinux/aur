@@ -1,7 +1,7 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 _name=resvg
 pkgname=$_name-cairo
-pkgver=0.9.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='SVG rendering library and CLI (Linked against cairo)'
 arch=(i686 x86_64)
@@ -10,24 +10,17 @@ license=(MPL2)
 provides=(resvg)
 conflicts=(resvg)
 depends=(gdk-pixbuf2 cairo pango)
-makedepends=(cargo)
-source=(
-	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-	"qt-5.15.patch::$url/commit/8ea12d08a4402eb49a8d371cf7dde1a7e047bb47.patch"
-)
-sha256sums=(
-	'678e2bb453bd1b979fe1371f6a68da830f300067717604d8b9e83a196528bf36'
-	'10f8ac12ac63c12905c7ac4f373e619653ed772e34c60bcaabe180364c5f7f13'
-)
+makedepends=(cargo clang)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('bf348c37705e69e4684bd361914f165789cb679ccb47335ff6605b8e1a1c9b4e')
 
 prepare() {
 	cd "$_name-$pkgver"
-	patch --forward --strip=1 --input="$srcdir/qt-5.15.patch"
 }
 
 build() {
 	cd "$_name-$pkgver"
-	for dir in capi tools/{render,u}svg; do
+	for dir in usvg c-api .; do
 	(
 		msg2 "Building $dir"
 		cd "$dir"
@@ -46,11 +39,11 @@ build() {
 package() {
 	cd "$_name-$pkgver"
 	
-	for tool in {render,u}svg; do
+	for tool in resvg usvg; do
 		install -Dm755 target/release/$tool "$pkgdir/usr/bin/$tool"
 	done
 	install -Dm755 target/release/libresvg.so "$pkgdir/usr/lib/libresvg.so"
-	install -Dm644 capi/include/resvg.h       "$pkgdir/usr/include/resvg.h"
+	install -Dm644 c-api/resvg.h              "$pkgdir/usr/include/resvg.h"
 	install -d "$pkgdir/usr/share/doc/resvg"
 	cp -r target/doc/* "$pkgdir/usr/share/doc/resvg"
 }
