@@ -7,8 +7,8 @@
 
 pkgname=opencpn
 _name="OpenCPN"
-pkgver=5.2.0
-pkgrel=4
+pkgver=5.2.4
+pkgrel=1
 pkgdesc="Open Source Chart Plotting / Marine Navigation"
 arch=('x86_64' 'aarch64')
 license=("GPL2")
@@ -16,11 +16,11 @@ depends=('wxgtk3' 'gpsd' 'portaudio' 'tinyxml' 'hicolor-icon-theme' 'webkit2gtk'
 makedepends=('cmake' 'lsb-release')
 url="http://opencpn.org"
 install=opencpn.install
-source=("https://github.com/${_name}/${_name}/archive/v${pkgver}.tar.gz")
-sha1sums=('352037909fde8a7195f740ed6a0f8d1eff8e9e78')
+source=("https://github.com/${_name}/${_name}/archive/Release_${pkgver}.tar.gz")
+sha1sums=('157d7392e42a8ee9b6efbb6496642e575ad958fa')
 
 build() {
-  cd "OpenCPN-${pkgver}"
+  cd "OpenCPN-Release_${pkgver}"
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUNDLE_GSHHS=CRUDE -DBUNDLE_TCDATA=ON -DBUNDLE_DOCS=ON \
         -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
@@ -29,6 +29,6 @@ build() {
 }
 
 package() {
-  cd "OpenCPN-${pkgver}"
+  cd "OpenCPN-Release_${pkgver}"
   make DESTDIR="$pkgdir" install
 }
