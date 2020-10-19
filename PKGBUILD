@@ -3,13 +3,12 @@
 
 pkgname=tuxpaint-git
 pkgver=3215.b7c312ed
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc="A free drawing program designed for young children. Checkout from git"
 url="http://www.newbreedsoftware.com/tuxpaint/"
 license=('GPL')
-depends=('sdl_ttf' 'sdl' 'sdl_mixer' 'sdl_image' 'sdl_pango' 'libpaper' 
-  'librsvg' 'python' 'fribidi' 'fontforge' 'libimagequant')
+depends=('sdl' 'libpaper' 'hicolor-icon-theme' 'librsvg' 'python')
 provides=('tuxpaint')
 conflicts=('tuxpaint')
 makedepends=('git' 'gperf' 'awk')
@@ -40,6 +39,4 @@ package() {
   make DESTDIR="$pkgdir" install 
   rm -rf "$pkgdir"/usr/share/tuxpaint/CVS
   rm -rf "$pkgdir"/usr/X11R6 
-  sed -i '1s/python/python2/' \
-    "$pkgdir"/usr/share/tuxpaint/fonts/locale/zh_tw_docs/maketuxfont.py
 } 
