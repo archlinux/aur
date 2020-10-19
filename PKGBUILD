@@ -3,7 +3,7 @@
 
 pkgname=rvgl-io-music
 pkgver=20.1018
-pkgrel=2
+pkgrel=1
 pkgdesc="Extra music for RVGL community tracks."
 url='https://re-volt.io/downloads/packs'
 arch=('any')

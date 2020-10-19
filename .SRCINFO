@@ -1,7 +1,7 @@
 pkgbase = rvgl-io-music
 	pkgdesc = Extra music for RVGL community tracks.
 	pkgver = 20.1018
-	pkgrel = 2
+	pkgrel = 1
 	url = https://re-volt.io/downloads/packs
 	arch = any
 	groups = rvgl-community
