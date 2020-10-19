@@ -1,8 +1,8 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-no-strip-override-git
 _pkgname=sway
-pkgver=r6362.9b5895be
-pkgrel=2
+pkgver=1.5.rc2.r79.cc8d318a
+pkgrel=1
 license=("MIT")
 pkgdesc="i3-compatible Wayland compositor (modified PKGBUILD that doesn't override strip to off)"
 makedepends=("meson" "git" "scdoc" "wayland-protocols" "ninja")
@@ -33,7 +33,7 @@ options=(debug)
 
 pkgver() {
 	cd "$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
