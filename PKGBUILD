@@ -1,4 +1,4 @@
-# Maintainer: Your name <gianniesoft at gmail dot com>
+# Maintainer: Giancarlo Grasso <gianniesoft at gmail dot com>
 
 pkgname=whatsdesk-bin
 pkgver=0.3.3
