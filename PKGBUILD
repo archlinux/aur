@@ -1,7 +1,7 @@
 # Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
 
 pkgname=vvenc-git
-pkgver=r1.2ed056b
+pkgver=0.1.0.1.r0.gbc966db
 pkgrel=1
 pkgdesc="Fraunhofer Versatile Video Encoder (VVenC)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/vvenc"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
