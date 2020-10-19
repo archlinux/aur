@@ -4,7 +4,7 @@ _pkgname=libfprint
 pkgname=libfprint-vfs009x-git
 epoch=1
 pkgver=1.90.1.r3.gc6f5f0e
-pkgrel=6
+pkgrel=7
 pkgdesc="Library for fingerprint readers (includes libre vfs0090 and vfs0097 driver)"
 arch=(i686 x86_64)
 url="https://github.com/3v1n0/libfprint"
@@ -34,7 +34,7 @@ prepare() {
   cd "$srcdir/$_pkgname"
   git submodule update --init --recursive
   
-  patch -np1 < "$srcdir/0001-Do-not-checkout-the-vfs0090-submodule-in-the-meson-s.patch"
+  patch -Np1 < "$srcdir/0001-Do-not-checkout-the-vfs0090-submodule-in-the-meson-s.patch"
 
   local patch97=0
   warning "NOTE:"
@@ -55,7 +55,7 @@ prepare() {
 
   if [[ "$patch97" == 1 ]]; then
     cd libfprint/drivers/vfs0090
-    patch -np1 < "$srcdir/0001-VFS0097-Update-vfs0090.h.patch"
+    patch -Np1 < "$srcdir/0001-VFS0097-Update-vfs0090.h.patch"
   fi
 }
 
