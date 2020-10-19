@@ -6,6 +6,7 @@ pkgbase = appleseed
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = ninja
 	depends = python2
 	depends = python
 	depends = embree
@@ -14,8 +15,8 @@ pkgbase = appleseed
 	depends = boost
 	depends = openexr
 	depends = opencolorio
-	depends = openimageio
-	depends = openshadinglanguage>=1.8.9
+	depends = openimageio=2.1.19.0
+	depends = openshadinglanguage=1.10.13
 	depends = xerces-c
 	depends = zlib
 	provides = appleseed
