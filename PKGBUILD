@@ -3,7 +3,7 @@
 
 pkgname=tuxpaint-git
 pkgver=3215.b7c312ed
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="A free drawing program designed for young children. Checkout from git"
 url="http://www.newbreedsoftware.com/tuxpaint/"
