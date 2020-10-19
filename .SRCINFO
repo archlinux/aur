@@ -1,0 +1,17 @@
+pkgbase = reflector-nomirrorlist
+	pkgdesc = Use reflector-generated mirrorlist by default
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/reflector-mirrorlist/
+	install = reflector-nomirrorlist.install
+	arch = any
+	license = unknown
+	depends = pacman
+	depends = reflector
+	provides = pacman-mirrorlist
+	conflicts = pacman-mirrorlist
+	replaces = pacman-mirrorlist
+	backup = etc/pacman.d/mirrorlist
+
+pkgname = reflector-nomirrorlist
+

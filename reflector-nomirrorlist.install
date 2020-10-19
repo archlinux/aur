@@ -1,0 +1,19 @@
+post_install() {
+    echo "==> generating mirrorlist using config file"
+    /usr/bin/reflector @/etc/xdg/reflector/reflector.conf
+
+    # check to make sure reflector timer is activated
+    if [[ ! -L "/etc/systemd/system/timers.target.wants/reflector.timer" ]]; then
+        echo "==$ it is suggested that you activate the reflector systemd timer"
+        echo "==$ to periodically update the mirrorlist! Do the following:"
+        echo ""
+        echo "  sudo systemctl enable --now reflector.timer"
+        echo ""
+    else
+        echo "==> reflector.timer is enabled 😁"
+    fi
+}
+
+post_update() {
+    post_install
+}
