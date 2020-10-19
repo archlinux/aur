@@ -9,8 +9,8 @@ pkgbase = sprunge
 	license = GPL2
 	depends = python
 	optdepends = xclip: default --clipboard-command.
-	source = sprunge
-	sha256sums = 098b1a2e84c4251d5bd68d017597bb483dacd8565e0f28042c90ae052f1d0fb0
+	source = https://www.github.com/kevr/sprunge/archive/0.3.tar.gz
+	sha256sums = 85844eccc7d1a6e22b11decb613305a68362d373258d0801d0b186cb3d9b60ab
 
 pkgname = sprunge
 

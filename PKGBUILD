@@ -1,5 +1,6 @@
 pkgname='sprunge'
-pkgver='0.3.0'
+release='0.3'
+pkgver="${release}.0"
 pkgrel=1
 pkgdesc='Upload data to sprunge.us via stdin'
 license=('GPL2')
@@ -8,13 +9,13 @@ url='https://github.com/kevr/sprunge'
 arch=('i686' 'x86_64' 'armv6h')
 depends=('python')
 optdepends=('xclip: default --clipboard-command.')
-source=('sprunge')
+source=("https://www.github.com/kevr/sprunge/archive/${release}.tar.gz")
 sha256sums=(
-    '098b1a2e84c4251d5bd68d017597bb483dacd8565e0f28042c90ae052f1d0fb0'
+    '85844eccc7d1a6e22b11decb613305a68362d373258d0801d0b186cb3d9b60ab'
 )
 
 package()
 {
-    install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}-${release}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
 
