@@ -2,7 +2,7 @@
 
 pkgname=editorconfig-gedit-git
 pkgver=0.5.3.r195.ga7190f7
-pkgrel=1
+pkgrel=2
 pkgdesc="EditorConfig plugin for gedit"
 arch=('any')
 url="https://editorconfig.org/"
@@ -24,12 +24,8 @@ pkgver() {
 package() {
   cd "editorconfig-gedit"
 
-  _installdir="$pkgdir/usr/lib/gedit/plugins"
-  install -d "$_installdir"
-
-  cp -r "editorconfig_plugin/" "$_installdir"
-  install "editorconfig.plugin" -t "$_installdir"
-  install "editorconfig_gedit3.py" -t "$_installdir"
+  install -Dm644 {editorconfig.plugin,editorconfig_gedit3.py} -t "$pkgdir/usr/lib/gedit/plugins"
+  cp -r "editorconfig_plugin" "$pkgdir/usr/lib/gedit/plugins"
 
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/editorconfig-gedit"
 }
