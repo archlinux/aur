@@ -1,5 +1,5 @@
 pkgbase = tcgui-git
-	pkgdesc = Small software application for transforming your voice or music in real-time.
+	pkgdesc = A lightweight Python-based Web-GUI for Linux traffic control (tc) to set, view and delete traffic shaping rules.
 	pkgver = 57d33c4
 	pkgrel = 1
 	url = https://github.com/tum-lkn/tcgui
