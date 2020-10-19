@@ -12,6 +12,7 @@
 # 5.4.4-5 - 2019-10-12 - Rodrigo Severo
 - finally fixing quoting in PKGBUILD
 
-# NEXT - DATE - NAME
-- Including date and person in changelog - 2019-10-13 - Rodrigo Severo
-
+# 5.5.3-1 - 2020-10-19 - Thomas Holder
+- enable parallel execution
+- add ini files to backup
+- remove depends: webkitgtk2
