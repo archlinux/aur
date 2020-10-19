@@ -274,7 +274,7 @@ _package() {
   # echo "${_major}-${CARCH}" | install -Dm644 /dev/stdin "$modulesdir/kernelbase"
  
   # add kernel version
-  echo "${pkgver}-${pkgrel}-Manjaro-Xanmod x64" > "${pkgdir}/boot/${pkgbase}.kver"
+  echo "${pkgver}-${pkgrel}-Manjaro-Xanmod x64" | install -Dm644 /dev/stdin "${pkgdir}/boot/${pkgbase}.kver"
 
   msg2 "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
