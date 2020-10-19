@@ -2,7 +2,7 @@
 
 pkgname=whatsdesk-bin
 pkgver=0.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc="unofficial client of whatsapp"
 arch=('x86_64')
 url="https://zerkc.gitlab.io/whatsdesk"
@@ -17,6 +17,6 @@ sha256sums_x86_64=('bef797ce3a89f584b12cdc4c10f5d5c6bcb3fa1598c68c9ef2ad39602dcd
 package() {
   bsdtar -xv -C "${pkgdir}" -f "${srcdir}/data.tar.xz"
   mkdir -p "${pkgdir}/usr/bin/"
-  ln -s "/opt/whatsdesk/${pkgname%-electron-bin}" "${pkgdir}/usr/bin"
+  ln -s "/opt/whatsdesk/whatsdesk" "${pkgdir}/usr/bin"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
