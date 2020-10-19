@@ -1,6 +1,6 @@
 pkgbase = craftos-pc-accelerated
 	pkgdesc = Advanced ComputerCraft emulator written in C++, using the LuaJIT engine
-	pkgver = 2.4.3
+	pkgver = 2.4.4
 	pkgrel = 2
 	url = https://www.craftos-pc.cc/
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = craftos-pc-accelerated
 	optdepends = png++: PNG screenshot support
 	optdepends = ncurses: CLI mode support
 	conflicts = craftos-pc-accelerated-ccemux<2.4.2
-	source = craftos2.tar.gz::https://github.com/MCJack123/craftos2/archive/v2.4.3-luajit.tar.gz
+	source = craftos2.tar.gz::https://github.com/MCJack123/craftos2/archive/v2.4.4-luajit.tar.gz
 	source = craftos2-luajit.tar.gz::https://github.com/MCJack123/craftos2-luajit/archive/v2.4.3.tar.gz
-	sha256sums = ac8e5eaac36cc58b1d36e32b3333dc384265095d31127eb8d48bf25071c8515d
+	sha256sums = 77b3ce180effc1bbd7a860a259b36134e7e9bfc53c4701f01e2b4c578726958f
 	sha256sums = 547241de46b87ea0248edc740d56c8d8e9f5e844f3fc924b2bc5de5fb2899382
 
 pkgname = craftos-pc-accelerated
