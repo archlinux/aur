@@ -3,7 +3,7 @@
 
 pkgname=anbox-image-gapps-rooted-xposed
 pkgver=2018.07.19
-pkgrel=7
+pkgrel=8
 pkgdesc="Android image for running in Anbox with Houdini, OpenGApps, SuperSU and Xposed Framework"
 arch=('x86_64')
 url="https://anbox.io/"
