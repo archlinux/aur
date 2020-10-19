@@ -1,6 +1,6 @@
 pkgbase = python-subsync
 	pkgdesc = Automagically synchronize subtitles with video
-	pkgver = 0.4.5
+	pkgver = 0.4.8
 	pkgrel = 1
 	url = https://github.com/smacke/ffsubsync
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = python-subsync
 	depends = python-rich
 	depends = python-pysubs2
 	provides = subsync
-	source = https://github.com/smacke/ffsubsync/archive/0.4.5.tar.gz
-	sha256sums = 7e7fa844cdde88ffcac553166a3577df81481d8b82c4f3357f184b9744ada0f2
+	source = https://github.com/smacke/ffsubsync/archive/0.4.8.tar.gz
+	sha256sums = f72e918e5d679f8c7cd7376778dc4b65489963b33a632fecb0b071f455437d6e
 
 pkgname = python-subsync
 
