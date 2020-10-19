@@ -1,6 +1,6 @@
 pkgbase = sprunge
 	pkgdesc = Upload data to sprunge.us via stdin
-	pkgver = 0.2.6
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/kevr/sprunge
 	arch = i686

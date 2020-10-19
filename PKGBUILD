@@ -1,5 +1,5 @@
 pkgname='sprunge'
-pkgver='0.2.6'
+pkgver='0.3.0'
 pkgrel=1
 pkgdesc='Upload data to sprunge.us via stdin'
 license=('GPL2')
