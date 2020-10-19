@@ -6,13 +6,13 @@
 
 pkgname=dia-git
 _pkgname=dia
-pkgver=6576.793f0966
+pkgver=6604.6063d791
 pkgrel=1
 pkgdesc="A GTK+ based diagram creation program (GIT VERSION)"
 arch=('x86_64')
 license=('GPL')
 url="http://live.gnome.org/Dia"
-depends=('libxslt' 'gtk2' 'freetype2' 'python2')
+depends=('libxslt' 'gtk2' 'python' 'libpoppler' 'graphene')
 makedepends=('git' 'cmake' 'meson' 'intltool' 'dblatex' 'docbook-xsl')
 optdepends=('python2')
 provides=('dia')
@@ -24,13 +24,6 @@ md5sums=('SKIP')
 pkgver() {
   cd ${_pkgname}
   printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd ${_pkgname}
-  for file in ./plug-ins/python/gtkcons.py ./plug-ins/python/doxrev.py; do
-      sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' "$file"
-  done
 }
 
 build() {
