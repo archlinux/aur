@@ -2,7 +2,7 @@
 
 pkgbase=bigjubeldesktop-git
 pkgname=bigjubeldesktop-git
-pkgver=0.2.1.r1.ge40c3d9
+pkgver=0.2.2.r0.ge02e7f0
 pkgrel=1
 pkgdesc="Desktop client for BigJubel: calculate current jubilees"
 url="https://www.kabus.eu/git/bigjubeldesktop"
