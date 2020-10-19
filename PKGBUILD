@@ -1,8 +1,8 @@
 # Maintainer: Simon Tas <simon.tas.st@gmail.com>
 pkgname="covid19-cli-git"
 _pkgname="covid19-cli"
-pkgver=0.2.0.r0.g6632ea4
-pkgrel=1
+pkgver=0.2.4.r0.g84ced76
+pkgrel=2
 pkgdesc="Corona Virus (Covid 19) BASH Tracking CLI"
 arch=('any')
 url="https://github.com/garrylachman/${_pkgname}"
@@ -10,12 +10,19 @@ license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=('jq')
-source=("${_pkgname}::git+https://github.com/garrylachman/${_pkgname}")
-md5sums=('SKIP')
+source=("${_pkgname}::git+https://github.com/garrylachman/${_pkgname}"
+        "22.patch")
+md5sums=('SKIP'
+         '9bb5dadbdae9b5b3a6ff14aa1574dfcd')
 
 pkgver() {
     cd "$srcdir/${_pkgname}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$srcdir/${_pkgname}"
+	git apply "$srcdir/22.patch"
 }
 
 build() {

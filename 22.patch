@@ -1,0 +1,25 @@
+From d55b8e9b4446ddea80d4cdc2035ce2134a1eaa44 Mon Sep 17 00:00:00 2001
+From: "miguel.hernandez" <miguel.hernandez@peopleconnect.us>
+Date: Mon, 10 Aug 2020 14:10:57 -0500
+Subject: [PATCH] Change API endpoints to the newest versions. Old ones are
+ deprecated.
+
+---
+ src/defines.sh | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/defines.sh b/src/defines.sh
+index 9c3e8b2..ac797f3 100644
+--- a/src/defines.sh
++++ b/src/defines.sh
+@@ -1,6 +1,6 @@
+ VERSION="0.2.4"
+ 
+ BASE_API="https://corona.lmao.ninja"
+-API_TOTAL_ENDPOINT="$BASE_API/all"
+-API_ALL_COUNTRIES_ENDPOINT="$BASE_API/countries"
+-API_HISTORICAL_COUNTRIES_ENDPOINT="$BASE_API/v2/historical"
+\ No newline at end of file
++API_TOTAL_ENDPOINT="$BASE_API/v3/covid-19/all"
++API_ALL_COUNTRIES_ENDPOINT="$BASE_API/v3/covid-19/countries"
++API_HISTORICAL_COUNTRIES_ENDPOINT="$BASE_API/v3/covid-19/historical"
