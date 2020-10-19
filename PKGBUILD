@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=imeditor
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple & versatile image editor."
 arch=('any')
 url="https://imeditor.github.io"
@@ -14,10 +14,6 @@ sha256sums=('7261fd8cfa7592d3f812af7a8b7ee39c73404827deaf20bfa19378b9f1371617')
 build() {
 	arch-meson ImEditor-$pkgver build
 	meson compile -C build
-}
-
-check() {
-	meson test -C build
 }
 
 package() {
