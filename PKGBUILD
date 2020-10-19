@@ -3,19 +3,18 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman dot com>
 # Contributor: Adam Wolk <netprobe at gmail dot com>
 
-_pkgname=scalpel
-pkgname=$_pkgname-git
+pkgname=scalpel-git
 pkgver=r24.47815c2
 pkgrel=1
-pkgdesc="A frugal, high performance file carver"
+pkgdesc="Recover files based on their headers, footers and internal data structures. This program is based on Foremost."
 arch=('i686' 'x86_64')
 url="https://github.com/sleuthkit/scalpel"
 license=('Apache')
 depends=('tre')
 makedepends=('git')
-provides=($_pkgname) 
-conflicts=($_pkgname)
-source=($pkgname::git+https://github.com/sleuthkit/scalpel)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=($pkgname::git+$url.git)
 md5sums=('SKIP')
 
 pkgver() {

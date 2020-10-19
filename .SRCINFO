@@ -1,5 +1,5 @@
 pkgbase = scalpel-git
-	pkgdesc = A frugal, high performance file carver
+	pkgdesc = Recover files based on their headers, footers and internal data structures. This program is based on Foremost.
 	pkgver = r24.47815c2
 	pkgrel = 1
 	url = https://github.com/sleuthkit/scalpel
@@ -10,7 +10,7 @@ pkgbase = scalpel-git
 	depends = tre
 	provides = scalpel
 	conflicts = scalpel
-	source = scalpel-git::git+https://github.com/sleuthkit/scalpel
+	source = scalpel-git::git+https://github.com/sleuthkit/scalpel.git
 	md5sums = SKIP
 
 pkgname = scalpel-git
