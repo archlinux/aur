@@ -1,24 +1,15 @@
 # Maintainer: jojii <jojii@gmx.net>
 pkgname=rsv
-pkgver=1.1.0
+pkgver=1.3.0
 pkgrel=1
-pkgdesc="The runit sv command rewritten in rust with additional features"
+pkgdesc="The runit sv command rewritten in rust with nice new features"
 url="https://github.com/JojiiOfficial/rsv"
-license=("GPL-3.0")
+license=("GPL3")
 source=("git+$url#tag=v$pkgver")
-md5sums=("SKIP")
+md5sums=('SKIP')
 arch=("x86_64")
 makedepends=("cargo")
 provides=("rsv")
-
-pkgver() {
-    cd $pkgname
-    ( set -o pipefail
-        (cat Cargo.toml | grep "version =" | cut -d "\"" -f2 | head -n1) ||                             # Try to parse Cargo.toml
-        (git describe --abbrev=0 --tags || echo "$pkgver") | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || # Try to use latest tag
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"                  # use git revision
-    )
-}
 
 build() {
     cd $pkgname
@@ -30,5 +21,10 @@ package() {
     usrdir="$pkgdir/usr"
     mkdir -p $usrdir
     install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-}
 
+    ./target/release/${pkgname} --generate=zsh > _${pkgname}
+    install -Dm 644 _${pkgname} "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+
+    ./target/release/${pkgname} --generate=bash > ${pkgname}.fish
+    install -Dm 644 ${pkgname}.fish "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+}
