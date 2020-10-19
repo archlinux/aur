@@ -1,7 +1,7 @@
 pkgbase = regtools-git
 	pkgdesc = Tools that integrate DNA-seq and RNA-seq data to help interpret mutations in a regulatory and splicing context
 	pkgver = 0.6.0.r0.9221a19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/griffithlab/regtools
 	arch = any
 	license = MIT

@@ -1,7 +1,7 @@
 # Maintainer: Lev Levitsky <levlev<at>mail.ru>
 pkgname=regtools-git
 pkgver=0.6.0.r0.9221a19
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools that integrate DNA-seq and RNA-seq data to help interpret mutations in a regulatory and splicing context"
 arch=('any')
 url="https://github.com/griffithlab/regtools"
@@ -38,7 +38,10 @@ build() {
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}/build"
+    install -d "$pkgdir/usr/share/licenses/$pkgname"
+    cd "$srcdir/${pkgname%-git}"
+    install LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
+	cd build
     install -d "$pkgdir/usr/bin"
 	install "${pkgname%-git}" "$pkgdir/usr/bin/"
 }
