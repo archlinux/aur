@@ -6,7 +6,7 @@
 
 pkgname=yosys-git
 pkgrel=1
-pkgver=r9464.283b1130
+pkgver=r10243.9e00f3f1
 pkgdesc='A framework for RTL synthesis'
 arch=('x86_64' 'i686')
 url='http://www.clifford.at/yosys/'
@@ -25,7 +25,7 @@ sha512sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/yosys"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s.r%s.%s" "$(make echo-yosys-ver)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
