@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/werf"
   # Use the tag of the last commit
-  git describe | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe
 }
 
 build() {
