@@ -1,0 +1,13 @@
+pkgbase = navicat15-premium-cs
+	pkgver = 15.0.20
+	pkgrel = 1
+	url = https://www.navicat.com/en/navicat-15-highlights
+	arch = x86_64
+	license = GPL3
+	source = premium-cs-15.0.20.AppImage::http://download.navicat.com.cn/download/navicat15-premium-cs.AppImage
+	source = navicat15.desktop
+	sha256sums = 8c89151c89d853326d492f5ffa08a5e9e561eae7182b9f1dbaca28b0e03f4812
+	sha256sums = 6477d39b5c6247a6e5769fb65ac99504ba602170794f5610a1e301cd0832032e
+
+pkgname = navicat15-premium-cs
+
