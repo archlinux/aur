@@ -1,6 +1,6 @@
 pkgbase = dxhd-git
 	pkgdesc = An X11 Hotkey Daemon
-	pkgver = dfc3cbb
+	pkgver = 07ca242
 	pkgrel = 0
 	url = https://github.com/dakyskye/dxhd
 	arch = any
