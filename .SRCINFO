@@ -1,0 +1,17 @@
+pkgbase = python-pyheif
+	pkgdesc = Python interface to libheif using CFFI (reading only)
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/david-poirier-csn/pyheif
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = libheif
+	source = https://files.pythonhosted.org/packages/source/p/pyheif/pyheif-0.5.1.tar.gz
+	sha256sums = f4ae1dc659b0f8daf63083a298f6ce99e8fec09cf1af125bacaee2b37a13989b
+
+pkgname = python-pyheif
+
