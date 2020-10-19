@@ -1,12 +1,15 @@
 pkgbase = osccli
 	pkgdesc = Fast and simple cli tool for Open Sound Control communication, written in Rust
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/madskjeldgaard/osccli
 	arch = x86_64
 	groups = pro-audio
 	license = GPL
-	source = https://github.com/madskjeldgaard/osccli/releases/download/v0.1/osccli-linux-x86_64-v0.1.zip
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	source = osccli-0.1.zip::https://github.com/madskjeldgaard/osccli/archive/v0.1.zip
 	sha256sums = SKIP
 
 pkgname = osccli
