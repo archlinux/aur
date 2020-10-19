@@ -1,0 +1,17 @@
+pkgbase = tcgui-git
+	pkgdesc = Small software application for transforming your voice or music in real-time.
+	pkgver = 57d33c4
+	pkgrel = 1
+	url = https://github.com/tum-lkn/tcgui
+	arch = any
+	license = custom:MIT
+	makedepends = git
+	depends = python
+	depends = python-flask
+	provides = tcgui
+	conflicts = tcgui
+	source = git+https://github.com/tum-lkn/tcgui
+	sha256sums = SKIP
+
+pkgname = tcgui-git
+
