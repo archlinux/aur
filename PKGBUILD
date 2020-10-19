@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=pciutils-git
-pkgver=3.5.6.r1.ge4d209f
+pkgver=3.7.0.r15.ge12bd01
 pkgrel=1
 pkgdesc="Programs for inspecting and manipulating configuration of PCI devices"
 arch=('i686' 'x86_64')
@@ -25,20 +25,34 @@ pkgver() {
 build() {
   cd "pciutils"
 
-  make OPT="$CFLAGS" SHARED=no ZLIB=no
+  make \
+    OPT="$CFLAGS" \
+    SHARED=no \
+    ZLIB=no
   cp "lib/libpci.a" "$srcdir"
 
   make clean
-  make OPT="$CFLAGS" SHARED=yes ZLIB=no
+  make \
+    OPT="$CFLAGS" \
+    SHARED=yes \
+    ZLIB=no
 }
 
 package() {
   cd "pciutils"
 
-  make DESTDIR="$pkgdir" PREFIX="/usr" SBINDIR="/usr/bin" SHAREDIR="/usr/share/hwdata" SHARED=yes ZLIB=no install install-lib
+  make \
+    DESTDIR="$pkgdir" \
+    PREFIX="/usr" \
+    SBINDIR="/usr/bin" \
+    SHAREDIR="/usr/share/hwdata" \
+    SHARED=yes \
+    ZLIB=no \
+    install \
+    install-lib
 
-  install -m644 "$srcdir/libpci.a" "$pkgdir/usr/lib"
+  install -Dm644 "$srcdir/libpci.a" -t "$pkgdir/usr/lib"
 
   # supplied by hwids package
-  rm -rf "$pkgdir/usr/share/hwdata"
+  rm -rf "$pkgdir/usr"/{bin/update-pciids,share/{hwdata,man/man8/update-pciids.8}}
 }

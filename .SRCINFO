@@ -1,6 +1,6 @@
 pkgbase = pciutils-git
 	pkgdesc = Programs for inspecting and manipulating configuration of PCI devices
-	pkgver = 3.5.6.r1.ge4d209f
+	pkgver = 3.7.0.r15.ge12bd01
 	pkgrel = 1
 	url = https://mj.ucw.cz/sw/pciutils/
 	arch = i686
