@@ -67,6 +67,11 @@ package()
   (cd ${srcdir}/${pkg_name_ver}/asm && find . -type f -exec install ${V} -m 644 -D "{}" "${pkgdir}/usr/share/${pkgname}/asm/{}" \;)
   # remote dasm executable
   rm -f "${pkgdir}/usr/share/${pkgname}/asm/a2600/dasm"
+  #
+  (cd ${srcdir}/${pkg_name_ver}/data && find . -type f -exec install ${V} -m 644 -D "{}" "${pkgdir}/usr/share/${pkgname}/asm/data/{}" \;)
+  #
+  mkdir -p "${pkgdir}/usr/share/${pkgname}/vim"
+  (cd ${srcdir}/${pkg_name_ver}/vim && find . -type f -exec install ${V} -m 644 -D "{}" "${pkgdir}/usr/share/${pkgname}/vim/{}" \;)
 }
 
 #
