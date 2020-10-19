@@ -3,7 +3,7 @@
 # Contributor: bohoomil <@zoho.com>
 
 pkgname=ttf-iosevka-ibx
-pkgver=3.5.0
+pkgver=3.6.3
 pkgrel=1
 pkgdesc="A programmer's typeface"
 url="https://github.com/be5invis/Iosevka"
@@ -13,7 +13,7 @@ license=('OFL')
 source=("$url/releases/download/v$pkgver/pkg-iosevka-$pkgver.zip"
         45-iosevka.conf
         90-tt-iosevka.conf)
-sha256sums=('c2c56c2600490571d796ba4f655bb116a8334420bee65991c7d59d83cbccd4ff'
+sha256sums=('6d952ddf47d3fe9fffc9901cc86affcaebfe98d67cd3c0b0861bedca0e4c4579'
             '6e6526bdb8c5128e27edcb554f6d7663ca18eeb3f9e076ea938a51d883115ffe'
             'afa1120b3ca7885158ac6ab59f5d22b9ceb7147f46880cd3f76a2560959ded3b')
 
