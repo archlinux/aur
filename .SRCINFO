@@ -1,0 +1,36 @@
+pkgbase = anbox-image-gapps-rooted-xposed
+	pkgdesc = Android image for running in Anbox with Houdini, OpenGApps, SuperSU and Xposed Framework
+	pkgver = 2018.07.19
+	pkgrel = 7
+	url = https://anbox.io/
+	arch = x86_64
+	license = custom
+	makedepends = curl
+	makedepends = lzip
+	makedepends = unzip
+	makedepends = squashfs-tools
+	provides = anbox-image
+	conflicts = anbox-image
+	source = https://build.anbox.io/android-images/2018/07/19/android_amd64.img
+	source = https://github.com/redchenjs/aur-packages/raw/master/anbox-image/houdini_y.sfs
+	source = https://github.com/redchenjs/aur-packages/raw/master/anbox-image/houdini_z.sfs
+	source = http://supersuroot.org/downloads/SuperSU-v2.82-201705271822.zip
+	source = https://github.com/youling257/XposedTools/files/1931996/xposed-x86_64.zip
+	source = media_codecs.xml
+	source = media_codecs_google_video.xml
+	source = media_codecs_google_audio.xml
+	source = media_codecs_google_telephony.xml
+	source = https://downloads.sourceforge.net/project/opengapps/x86_64/20201017/open_gapps-x86_64-7.1-pico-20201017.zip
+	md5sums = 26874452a6521ec2e37400670d438e33
+	md5sums = 7ebf618b1af94a02322d9f2d2610090b
+	md5sums = 5ca37e1629edb7d13b18751b72dc98ad
+	md5sums = 8755c94775431f20bd8de368a2c7a179
+	md5sums = 86ffee229b724a8019cc78c5e221c24f
+	md5sums = a638728bc2413d908f5eb44a9f09e947
+	md5sums = 599598e70060eb74c119cf7dac0ce466
+	md5sums = 43193761081a04ca18a28d4a6e039950
+	md5sums = 91f5f3e5c31f8e221ae8f318527dcb83
+	md5sums = a28535feb608b4001ece476cbd733ca6
+
+pkgname = anbox-image-gapps-rooted-xposed
+
