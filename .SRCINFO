@@ -31,7 +31,7 @@ pkgbase = linux-manjaro-xanmod
 	sha256sums = a10426315a98f862a8656ba0dd435bfca6440c682b1f0f4475bbe9937f0528d9
 
 pkgname = linux-manjaro-xanmod
-	pkgdesc = The Linux kernel and modules with Xanmod and Manjaro patches (Bootsplash support)
+	pkgdesc = The Linux kernel and modules with Xanmod and Manjaro patches (Bootsplash support). Ashmem and binder are enabled
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
