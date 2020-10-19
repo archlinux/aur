@@ -1,6 +1,6 @@
 # Maintainer: Andrey Alekseev <andrey.android7890@gmail.com>
 
-# https://gitlab.manjaro.org/packages/core/linux58
+# https://gitlab.manjaro.org/packages/core/linux59
 #
 # Maintainer: Philip Müller
 # Maintainer: Bernhard Landauer
@@ -78,8 +78,8 @@ _makenconfig=
 
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.8.14
-_major=5.8
+pkgver=5.9.1
+_major=5.9
 _branch=5.x
 xanmod=1
 pkgrel=1
@@ -87,7 +87,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="1dfdc631d35094a902c0c64e98668e417a4cbc91" # 5.8.14-1
+__commit="535feac9e5cfcdb830b4db8a60fafd1dfc661108" # 5.9.1-1
 
 license=(GPL2)
 makedepends=(
@@ -99,12 +99,12 @@ _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
-        "manjaro.tar.gz::https://gitlab.manjaro.org/packages/core/linux58/-/archive/${__commit}/linux58-${__commit}.tar.gz")
-sha256sums=('e7f75186aa0642114af8f19d99559937300ca27acaf7451b36d4f9b0f85cf1f5'
+        "manjaro.tar.gz::https://gitlab.manjaro.org/packages/core/linux59/-/archive/${__commit}/linux59-${__commit}.tar.gz")
+sha256sums=('3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06'
             'SKIP'
-            '5ad21f97be90f5feaf09a023a3bad2155eefd0025781150d9b09cfceda75ee1b'
+            'bf7703e423fb7b79b96ee462c660eb9ecd4a1ee5fc1ace68606841ea037fe344'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
-            'a10426315a98f862a8656ba0dd435bfca6440c682b1f0f4475bbe9937f0528d9')
+            'b322760a2a9c8dad6842c9623d6e9362342d29b4e8e8bae1615c2e94f2793c1f')
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -142,15 +142,15 @@ prepare() {
   done
   
   # Manjaro patches
-  rm ../linux58-$__commit/0001-fix-iwlwifi.patch
-  rm ../linux58-$__commit/0103-futex.patch
+  rm ../linux59-$__commit/0001-fix-iwlwifi.patch
+  rm ../linux59-$__commit/0103-futex.patch
   local _patch
-  for _patch in ../linux58-$__commit/*; do
+  for _patch in ../linux59-$__commit/*; do
       [[ $_patch = *.patch ]] || continue
       msg2 "Applying patch: $_patch..."
-      patch -Np1 < "../linux58-$__commit/$_patch"
+      patch -Np1 < "../linux59-$__commit/$_patch"
   done 
-  git apply -p1 < "../linux58-$__commit/0513-bootsplash.gitpatch"
+  git apply -p1 < "../linux59-$__commit/0513-bootsplash.gitpatch"
   scripts/config --enable CONFIG_BOOTSPLASH
   
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
@@ -203,8 +203,8 @@ prepare() {
   # If it's a full config, will be replaced
   # If not, you should use scripts/config commands, one by line
   if [ -f "${startdir}/myconfig" ]; then
-    if [ $(wc -l < "${startdir}/myconfig") -gt 1000 ]; then
-      # myconfig is a full config file. Replace it
+    if ! grep -q 'scripts/config' "${startdir}/myconfig"; then
+      # myconfig is a full config file. Replacing default .config
       msg2 "Using user CUSTOM config..."
       cp -f "${startdir}"/myconfig .config
     else
