@@ -66,11 +66,11 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-anbox
-pkgver=5.9.0
+pkgver=5.9.1
 _major=5.9
 _branch=5.x
 xanmod=1
-pkgrel=1
+pkgrel=${xanmod}
 pkgdesc='Linux Xanmod with ashmem and binder enabled for Anbox'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -101,7 +101,7 @@ done
 
 sha256sums=('3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06'
             'SKIP'
-            'b69e0e0940df96870a7270d4e5b21d4f192077e5c0683532c300bc482548cb35'
+            'bf7703e423fb7b79b96ee462c660eb9ecd4a1ee5fc1ace68606841ea037fe344'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991')
 
