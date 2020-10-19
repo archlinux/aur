@@ -9,14 +9,9 @@ arch=('any')
 url=https://github.com/jbremer/peepdf
 license=('GPL3')
 makedepends=('git')
-depends=('python2')
+depends=('python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('cbce99242f507ef9526a4245b7692c15eaf12b21c8635d192ea2fcfb7d5e3390')
-
-prepare() {
-  cd $pkgname-$pkgver
-  find -name '*.py' -exec sed -i 's/env python$/env python2/' '{}' \;
-}
 
 package() {
   cd $pkgname-$pkgver
