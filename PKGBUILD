@@ -3,7 +3,7 @@
 _pkgname=eigen
 pkgname=${_pkgname}32
 pkgver=3.2.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra. 3.2 branch."
 arch=('any')
 url='http://eigen.tuxfamily.org'
@@ -12,13 +12,13 @@ makedepends=('cmake' 'freeglut' 'gcc-fortran' 'fftw' 'qt4' 'suitesparse' 'boost'
 optdepends=('qt4: for example programs')
 conflicts=('eigen3' 'eigen')
 provides=('eigen3' 'eigen')
-source=("${pkgname}-${pkgver}.tar.bz2::http://bitbucket.org/eigen/eigen/get/${pkgver}.tar.bz2")
-sha1sums=('a85bb68c82988648c3d53ba9768d7dcbcfe105f8')
+source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/libeigen/eigen/-/archive/${pkgver}/eigen-${pkgver}.tar.bz2")
+sha1sums=('ff8e208ec59fab48173d8e2569bbec116fca1aca')
 
 build() {
 	mkdir -p build
 	cd build
-	cmake ../eigen-eigen-* \
+	cmake ../eigen-* \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
                 -DCMAKE_INSTALL_LIBDIR=lib
@@ -29,7 +29,7 @@ package() {
 	make DESTDIR="$pkgdir" install
 
 	# install custom licenses
-	install -Dm644 ../eigen-eigen-*/COPYING.MPL2 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-        install -Dm644 ../eigen-eigen-*/COPYING.BSD "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-        install -Dm644 ../eigen-eigen-*/COPYING.MINPACK "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 ../eigen-*/COPYING.MPL2 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        install -Dm644 ../eigen-*/COPYING.BSD "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        install -Dm644 ../eigen-*/COPYING.MINPACK "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
