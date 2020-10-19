@@ -3,19 +3,18 @@
 
 pkgname=peepdf
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A python tool to explore PDF files in order to find out if the file can be harmful or not"
 arch=('any')
 url=https://github.com/jesparza/peepdf
 license=('GPL3')
 makedepends=('git')
-depends=('python2-simplejson')
+depends=('python2')
 source=("$url/archive/$pkgname-$pkgver.tar.gz")
 sha256sums=('e2038bf3379f93b5b62faaf39f47c6a096fc7655705e7edd808acb25e55c43a2')
 
 prepare() {
   cd $pkgname-$pkgname-$pkgver
-
   find -name '*.py' -exec sed -i 's/env python$/env python2/' '{}' \;
 }
 
