@@ -47,33 +47,35 @@ _use_current=
 
 pkgbase=linux-rt-bfq-dev
 # pkgname=('linux-rt-bfq-dev' 'linux-rt-bfq-dev-headers' 'linux-rt-bfq-dev-docs')
-_major=5.6
-_minor=19
-_rtver=12
+_major=5.9
+_minor=0
+_rtver=16
 _rtpatchver=rt${_rtver}
-pkgver=${_major}.${_minor}.${_rtpatchver}
-_pkgver=${_major}.${_minor}
+#pkgver=${_major}.${_minor}.${_rtpatchver}
+#_pkgver=${_major}.${_minor}
+pkgver=${_major}.${_rtpatchver}
+_pkgver=${_major}
 _srcname=linux-${_pkgver}
-pkgrel=4
+pkgrel=3
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
-             'graphviz' 'imagemagick')
+             'graphviz' 'imagemagick' 'pahole')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 # Some patches for BFQ conflict with patches for BFQ-dev.
 # To use linux-rt-bfq-dev smoothly apply bfq-reverts before bfq-dev patch.
 # Otherwise the kernel will not compile.
-_bfq_rev_path="bfq-reverts-all-v2"
+_bfq_rev_path="bfq-reverts-all"
 _bfq_rev_patch="0001-bfq-reverts.patch"
 _bfq_path="bfq-dev-lucjan"
-_bfq_ver="v11"
-_bfq_rel="r2K200514"
+_bfq_ver="v13"
+_bfq_rel="r2K201012"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
-_gcc_path="cpu-patches-v4-sep"
+_gcc_path="cpu-patches-sep"
 _gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
@@ -83,8 +85,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v16-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v16-sep/0002-gcc-plugins-drop-support-for-GCC-4.7.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0002-i2c-core-Restore-acpi_walk_dep_device_list-getting-c.patch"
         "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
@@ -220,7 +222,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -300,6 +302,9 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
+
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
@@ -336,17 +341,17 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('0b3c64ab4f63431c2da6786b4f85237f20c86f20a1faa79440d9cbc2aa6101118b0f18b6688ca7ad27dbcc4978d197fae52886fc23a3e2deb3c0a1d9c82c386b'
+sha512sums=('d3d92ce4246bad74c9a784212f160d98449b1e8793970c2c308276568d852b8effe0528686bdb87d55d691f09a826abf7938d69bdd4759ce65ddd5c05ffe4eca'
             'SKIP'
-            '5b6497b1c798358ae75f15b6c649e06a8db6200ce618776ac8cafc4a24e92ad4d257b10f72b8c03ba471549a3320f9a127f85530ad912ccf691538c068a07481'
+            'd032ea3f9887b6558a93db826b6f397520abad61228c70870f62c69d27ae599788f18f2a43b9a8f86e423ea74a42fa11e0709b28998a47a97eea5cd59c1b07da'
             'SKIP'
-            '31141f3afa388dbfc7a0a1c0a7b7fc58a6824befea1fc044eb76fc0e6d4c55f249e3e0f7e63c0697ba736dc902d85128c0d78eeffe8eca3c207a573664c74514'
-            '1962d021d48236f287736383acac9176e6f992cf980b5c66c1ba006288b1f2039c02caa81ebf44e99edc0dcaf09160a3fe8e4aece7541b09ec5f30cd8d834dc5'
-            'd33662ee0009bfec94c66e18a7ba545d777741fd7b2e5bf7663eaf1b9f1ab8e093769c5f2aeafe7f3eb590e49c6f36f504030ea1c0e265d1842927165fbe4206'
-            '8c0ca7ab292e6f1a75fd4ae0de797259bf68a5f1512b9f0c905250446ebb924531589d4b8d4d9d7fb1cdd65658b32a8528a7fb7056947d7b31bdc87b4e424752'
-            '4ef82534e202188bec24232a60af73d48870c7f0b3403ec821b132c38cdccc9917037d74dd94cbcbc6be70cf45006e7ace928c32623cecb5289251c2eb4ea1d8'
-            '711ecce2ce54c81e8b60b9b347cb88db054bf697396ee15e9b425671f88d22a14dae17c1c451aa10bd1d7a71c145b2fa588863205ec94e1439ed9b2769ee2e4c'
-            '997645e07d3a8677f9ab7a98fd1f112d6e84e343af1df4689b0d6ce8c75b69fb324dce24006444a0d483e6bcc55cd8280b364e5f9b54ec0eb4dc9d2f75980d0c')
+            '7d30c34e75c2800d93c01e34ca23a00cda24d2f44bb837a48f6789c50ad69f7db4cc93d1fc75e43cfa4d4f4e9c612330dd595c56c13f8abb5d062338ea30697c'
+            'cf634a9e0298adf1d05b7a8048ba2f89d4b8490cf48f1ab493cb40473116f360035b7fb3d8a54af980b1a49a1ad4dcfbc4ca69de8543b8bdf0a1d586908bd093'
+            '96427eecb0078ce57a40ef4ee78d3576216f27390ba6b9dfbb851f4d969558a82b698cc633217ad8f6b9d991e7eaebd613ed4bd5741cafe7fa40b2502dacd43a'
+            '82601180156862d6652d023ff9f80776a5dab67f1c46c3b27e177245fd7e12c9f8c4597990925940e215ddd673c24c1cfd1e5ef1ca69762c2cc5724d11133e55'
+            '9646cf65b2dd6b16d0df3c74e43eacfbc1fdc8ab241fe698a1f0762497ccc612df01b019cdf82430cca28bf843f91ba784c8bdfb7eb204330b7c73154ef6dda1'
+            'b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6'
+            'dfad8ea58cf37cb76f6876375340b1480a332fe710c06f112cd5a93bf6e7e6d1d40e9e8827bfdb5ade1037f6a9609ad19a29c4262c3d6fd29712673d4d471fc7')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
