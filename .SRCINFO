@@ -60,12 +60,10 @@ pkgbase = firefox-wayland-hg
 	options = !strip
 	source = hg+https://hg.mozilla.org/mozilla-unified#revision=autoland
 	source = 0001-Pipewire.patch
-	source = 0002-system-icu.patch
 	source = firefox.desktop
 	source = firefox-symbolic.svg
 	sha256sums = SKIP
 	sha256sums = 11181e2668f6dd67693278c5ba65aa213bb7023c1b3fd69c0530f3476ac47843
-	sha256sums = f425916c86c5c25e2421cacb5a42c6f0625334e93455c62561bf43c3d57cd73a
 	sha256sums = a9e5264257041c0b968425b5c97436ba48e8d294e1a0f02c59c35461ea245c33
 	sha256sums = 9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797
 

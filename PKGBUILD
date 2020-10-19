@@ -32,11 +32,9 @@ conflicts=('firefox')
 provides=('firefox')
 source=("hg+$_repo#revision=autoland"
         '0001-Pipewire.patch'
-        '0002-system-icu.patch'
         $_pkgname.desktop $_pkgname-symbolic.svg)
 sha256sums=('SKIP'
             '11181e2668f6dd67693278c5ba65aa213bb7023c1b3fd69c0530f3476ac47843'
-            'f425916c86c5c25e2421cacb5a42c6f0625334e93455c62561bf43c3d57cd73a'
             'a9e5264257041c0b968425b5c97436ba48e8d294e1a0f02c59c35461ea245c33'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
 
@@ -64,9 +62,6 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1430775
   # source: https://github.com/xhorak/firefox-devedition-flatpak/tree/master/org.mozilla.FirefoxNightly
   patch -fNp1 -i ../0001-Pipewire.patch
-
-  # to be reported
-  patch -fNp1 -i ../0002-system-icu.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
