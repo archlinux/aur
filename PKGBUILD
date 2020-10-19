@@ -63,7 +63,7 @@ prepare() {
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
 
   # https://phabricator.services.mozilla.com/D90627
-  patch -Np1 -i ../D90627.diff
+  # patch -Np1 -i ../D90627.diff
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
  
