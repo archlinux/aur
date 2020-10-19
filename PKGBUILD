@@ -6,7 +6,7 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=0.116.3
+pkgver=0.116.4
 pkgrel=1
 arch=(any)
 url=https://home-assistant.io/
@@ -22,10 +22,10 @@ depends=(
   python-certifi
   python-ciso8601
   python-cryptography
-  python-importlib-metadata
   python-jinja
-  python-pyjwt
+  python-pillow
   python-pip
+  python-pyjwt
   python-pytz
   python-requests
   python-ruamel-yaml
@@ -45,7 +45,7 @@ optdepends=(
   'openzwave: Z-Wave integration'
   'python-lxml: Meteo France integration'
 )
-_tag=0323aeb660bb2a9a391eefaab5a698b3bdd221d8
+_tag=3bcf2f9fd576d2abcbb0cacaf9b163ec44e67797
 source=(
   git+https://github.com/home-assistant/home-assistant.git#tag=${_tag}
   home-assistant.service
