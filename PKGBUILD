@@ -52,5 +52,5 @@ build() {
 package() {
 	cd "$_pkgname"
 	DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
-	install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
+	install -Dm644 "$srcdir/50-systemd-user.conf" -t "$pkgdir/etc/sway/config.d/"
 }
