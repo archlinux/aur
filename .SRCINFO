@@ -1,19 +1,21 @@
 pkgbase = nushell
 	pkgdesc = A new type of shell.
-	pkgver = 0.20.0
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://www.nushell.sh
+	install = nushell.install
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = rust
 	depends = openssl
-	optdepends = libxcb
-	optdepends = libx11
-	source = https://github.com/nushell/nushell/archive/0.20.0.tar.gz
-	sha256sums = ccecbfd49d03ca45f347fe55b789b8732003ceab49a14af110390e723f2fd274
-	b2sums = 3d8fcccc0c353ab7c98a4ad5c3485cd74950d96c481cb6b855e8d5f549b3622d28d1e32f087eb6f620f83f1b7160d25efe80255694cad79b23ad5c2585c5678a
+	depends = libxcb
+	depends = libgit2
+	depends = zlib
+	optdepends = libx11: for binaryview plugin
+	source = https://github.com/nushell/nushell/archive/0.21.0.tar.gz
+	sha256sums = 24598bcf6e61825fd3b6f17e083952926a4b072efff413748bbd5bc83a3158f1
+	b2sums = b09cf833353b302479238f938a92979a6d37cb4072a945a5abbf637757c5083ccc59906ba7527bfcad5e6bf89eb9eecafc94a263597934720950833e4516bffd
 
 pkgname = nushell
-	install = nushell.install
 
