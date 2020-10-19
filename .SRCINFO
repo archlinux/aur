@@ -1,7 +1,7 @@
 pkgbase = umps3
 	pkgdesc = Virtual machine simulator based around the MIPS R2/3000 microprocessor.
-	pkgver = 3.0.1
-	pkgrel = 2
+	pkgver = 3.0.2
+	pkgrel = 1
 	url = https://github.com/virtualsquare/umps3
 	arch = x86_64
 	license = GPL3
@@ -13,8 +13,8 @@ pkgbase = umps3
 	makedepends = cross-mipsel-linux-gnu-gcc
 	optdepends = cross-mipsel-linux-gnu-gcc: compile programs for µMPS
 	conflicts = umps3-git
-	source = umps3-3.0.1.tar.gz::https://github.com/virtualsquare/umps3/archive/v3.0.1.tar.gz
-	sha256sums = 0f3072ac6295f58f9980d43f0dd3991771ebe6b1cd1d1c55b08323b06edac674
+	source = umps3-3.0.2.tar.gz::https://github.com/virtualsquare/umps3/archive/v3.0.2.tar.gz
+	sha256sums = 268d9294e02ab0bdbf8c24d24135f5e9ccf80d837763c60fa4ae50f384914fbe
 
 pkgname = umps3
 
