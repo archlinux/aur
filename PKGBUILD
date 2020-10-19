@@ -1,5 +1,5 @@
 pkgname='sprunge'
-pkgver='0.2.2'
+pkgver='0.2.6'
 pkgrel=1
 pkgdesc='Upload data to sprunge.us via stdin'
 license=('GPL2')
@@ -10,7 +10,7 @@ depends=('python')
 optdepends=('xclip: default --clipboard-command.')
 source=('sprunge')
 sha256sums=(
-    '5a9ff1ff05fca02df5b88dcb052bee1afca7ffa8290845ec94c1b8b61cad4ecf'
+    '098b1a2e84c4251d5bd68d017597bb483dacd8565e0f28042c90ae052f1d0fb0'
 )
 
 package()

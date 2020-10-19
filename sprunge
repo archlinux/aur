@@ -23,54 +23,92 @@ def quit(code, msg):
     print(msg)
     return code
 
-## Sorry for the C-style functions, I prefer them
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--clipboard-command",
-            dest="clipboard_command",
-            default="xclip -sel primary",
-            help="Command to use for clipboard pipe.")
-    parser.add_argument("--clipboard", "-c",
-            dest="clipboard",
-            action="store_const",
-            const=True,
-            default=False,
-            help="Copy URL to the primary clipboard.")
-    args = parser.parse_args()
-
-    if not has_data(sys.stdin):
-        return quit(1, "sprunge: no data given via stdin")
-
-    try:
-        stdin = sys.stdin.read()
-    except UnicodeDecodeError:
-        return quit(2, "sprunge: an error occured reading stdin")
-        
-    post_data = { "sprunge": stdin }
-    post_data = urllib.parse.urlencode(post_data)
-
-    # The actual request process
-    request = urllib.request.Request(url, post_data.encode("UTF-8"))
+def get_paste(id):
+    paste_url = f"http://sprunge.us/{id}"
+    request = urllib.request.Request(paste_url)
     reply = urllib.request.urlopen(request, timeout=timeout)
 
     if not reply:
-        return quit(3, "sprunge: no response from '{}'".format(url))
+        return 3, "error: no response from '{}'".format(paste_url)
 
-    # Read in the reply socket's data and close it cleanly
-    response = reply.read().decode("UTF-8")
+    response = reply.read().decode()
     reply.close()
 
-    response = response.rstrip()
-    print(response)
+    return 0, response.rstrip()
 
-    # If --clipboard was given, additionally use --clipboard-command
-    # to save the resulting URL to the clipboard.
-    if args.clipboard:
-        proc = Popen([
-            "/bin/sh", "-c",
-            f'echo "{response}" | {args.clipboard_command}'
-        ])
-        proc.wait()
+def post_paste(text):
+    post_data = urllib.parse.urlencode({ "sprunge": text })
+
+    # The actual request process
+    request = urllib.request.Request(url, post_data.encode())
+    reply = urllib.request.urlopen(request, timeout=timeout)
+
+    if not reply:
+        return 3, "error: no response from '{}'".format(url)
+
+    # Read in the reply socket's data and close it cleanly
+    response = reply.read().decode()
+    reply.close()
+
+    return 0, response.rstrip()
+
+## Sorry for the C-style functions, I prefer them
+def main():
+    help_description = "Upload text from stdin to http://sprunge.us. If [id] "
+    help_description += "is provided, the corresponding paste is fetched and "
+    help_description += "displayed."
+    parser = argparse.ArgumentParser(description=help_description)
+    parser.add_argument("--clip-command", "-cc",
+            metavar="clip_command",
+            default="xclip -sel primary",
+            help="clipboard pipe command (default: 'xclip -sel primary')")
+    parser.add_argument("--clipboard", "-c",
+            metavar="clipboard",
+            action="store_const",
+            const=True,
+            default=False,
+            help="pipe stdout to --clip-command")
+    parser.add_argument("id",
+            nargs="?",
+            help="when provided, fetches and displays a sprunge paste")
+    args = parser.parse_args()
+
+    # If [id] was provided by the user.
+    if args.id is not None:
+        if args.id[:4] == "http" and args.id[:18] != "http://sprunge.us/":
+            return quit(1, "error: invalid id provided; "
+                    + "URLs must begin with 'http://sprunge.us/'")
+
+        paste_id = args.id.split("/")[-1]
+        if not paste_id:
+            return quit(1, "error: no id provided")
+
+        return_code, response = get_paste(paste_id)
+        if return_code != 0:
+            return quit(return_code, response)
+        print(response)
+    else:
+        try:
+            stdin = sys.stdin.read()
+        except UnicodeDecodeError as exc:
+            return quit(2, f"error: {str(exc)}")
+
+        if not has_data(sys.stdin):
+            return quit(1, "error: no data given via stdin")
+
+        return_code, response = post_paste(stdin)
+        if return_code != 0:
+            return quit(return_code, response)
+        print(response)
+
+        # If --clipboard was given, additionally use --clipboard-command
+        # to save the resulting URL to the clipboard.
+        if args.clipboard:
+            proc = Popen([
+                "/bin/sh", "-c",
+                f'echo "{response}" | {args.clip_command}'
+            ])
+            proc.wait()
 
     return 0
 
