@@ -2,25 +2,27 @@
 
 _pkgname='got'
 pkgname="${_pkgname}-bin"
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='CLI tool to download large files faster than cURL and Wget'
 arch=('x86_64' 'armv6h' 'aarch64')
 url='https://github.com/melbahja/got'
 license=('MIT')
 provides=("${_pkgname}")
-source_x86_64=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_amd64.tar.gz")
-source_armv6h=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv6.tar.gz")
-source_aarch64=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_arm64.tar.gz")
+conflicts=("${_pkgname}")
 
-sha256sums_x86_64=('931f7a2fd4fc1ecfcbad997f220e51e9641b11e14a84e678ba75932f69534ba3')
-sha256sums_armv6h=('540357dc914f75ea70353e7cde1d5ec71f971078e6cdb5070f5c8567ea760dcf')
-sha256sums_aarch64=('f0a4d8d9caad72fc128d17f93b3ef275d4e3bf40e55ebb5cc0967b4f0ce97af1')
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_amd64.tar.gz")
+source_armv6h=("${_pkgname}-${pkgver}-armv6h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv6.tar.gz")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_arm64.tar.gz")
+
+sha256sums_x86_64=('f97efb6350bbec25a62055f7431ef6d92a82bd647934356f4d0ed711f403c148')
+sha256sums_armv6h=('b7328e8d2b74615f70609412644be0e9593ef8462c4f0f0d46a1e1799f4ae1ac')
+sha256sums_aarch64=('1ba396f6ab6cd4dc3cee9766b7c0f7e4c3848b2e66cde2fd89d93b52b1c62d71')
 
 package() {
-  install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}"
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" 'LICENSE'
+  install -Dvm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
