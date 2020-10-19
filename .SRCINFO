@@ -1,6 +1,6 @@
 pkgbase = libdart
 	pkgdesc = Dynamic Animation and Robotics Toolkit
-	pkgver = 6.9.4
+	pkgver = 6.9.5
 	pkgrel = 1
 	url = https://dartsim.github.io
 	arch = i686
@@ -26,8 +26,8 @@ pkgbase = libdart
 	optdepends = libxi: GLUT GUI support
 	optdepends = libxmu: GLUT GUI support
 	provides = dartsim
-	source = libdart-6.9.4.tar.gz::https://github.com/dartsim/dart/archive/v6.9.4.tar.gz
-	sha256sums = aefa13b9cb1c968373faa976288f29fde4d94110125ab14b4707c2e0c7280443
+	source = libdart-6.9.5.tar.gz::https://github.com/dartsim/dart/archive/v6.9.5.tar.gz
+	sha256sums = 624c00b65e3a753cba50de038620860c86e2ac47b1793ae51f9427a4bcb14c32
 
 pkgname = libdart
 

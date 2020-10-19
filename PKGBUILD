@@ -4,7 +4,7 @@
 # Contributor: midgard <arch dot midgard "at symbol" janmaes "youknowwhat" com>
 
 pkgname=libdart
-pkgver=6.9.4
+pkgver=6.9.5
 pkgrel=1
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
@@ -28,16 +28,13 @@ makedepends=('cmake')
 provides=('dartsim')
 _pkgname=dart
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dartsim/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('aefa13b9cb1c968373faa976288f29fde4d94110125ab14b4707c2e0c7280443')
-
-_buildtype="Release"
+sha256sums=('624c00b65e3a753cba50de038620860c86e2ac47b1793ae51f9427a4bcb14c32')
 
 build() {
     mkdir -p "${srcdir}/${_pkgname}-${pkgver}/build"
     cd "${srcdir}/${_pkgname}-${pkgver}/build"
 
     cmake .. \
-        -DCMAKE_BUILD_TYPE="${_buildtype}" \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_INSTALL_LIBDIR="lib" \
 
