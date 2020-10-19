@@ -142,8 +142,6 @@ prepare() {
   done
   
   # Manjaro patches
-  rm ../linux59-$__commit/0001-fix-iwlwifi.patch
-  rm ../linux59-$__commit/0103-futex.patch
   local _patch
   for _patch in ../linux59-$__commit/*; do
       [[ $_patch = *.patch ]] || continue
