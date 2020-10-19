@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=threadweaver-git
-pkgver=r222.c2a2eea
-pkgrel=2
+pkgver=r454.abe37fe
+pkgrel=1
 pkgdesc='ThreadWeaver'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/threadweaver'
@@ -12,7 +12,7 @@ makedepends=('extra-cmake-modules-git' 'git')
 groups=('kf5')
 conflicts=(threadweaver)
 provides=(threadweaver)
-source=('git://anongit.kde.org/threadweaver.git')
+source=('git+https://invent.kde.org/frameworks/threadweaver.git')
 md5sums=('SKIP')
 
 pkgver() {
