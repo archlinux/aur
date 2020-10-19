@@ -1,5 +1,5 @@
 /src/
 /pkg/
 /*.tar.gz
-/*.pkg.tar.xz
-/qt-5.15.patch
+/*.pkg.tar.*
+/*.log
