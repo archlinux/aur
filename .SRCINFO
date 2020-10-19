@@ -1,13 +1,13 @@
 pkgbase = flatwoken-icons-git
 	pkgdesc = Flat, long-shadow icon themes derived from the AwOken Token-style iconset
-	pkgver = r636.6f826b0
-	pkgrel = 1
+	pkgver = r669.aa7b4a4
+	pkgrel = 2
 	url = https://github.com/alecive/FlatWoken
 	arch = any
 	license = CCPL:by-sa-4.0
 	provides = flatwoken-icons
 	conflicts = flatwoken-icons
-	source = flatwoken-icons-git::git://github.com/alecive/FlatWoken.git
+	source = flatwoken-icons-git::git+https://github.com/alecive/FlatWoken.git
 	md5sums = SKIP
 
 pkgname = flatwoken-icons-git

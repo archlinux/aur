@@ -1,16 +1,15 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
-_pkgname=flatwoken-icons
-pkgname=$_pkgname-git
-pkgver=r636.6f826b0
-pkgrel=1
+pkgname=flatwoken-icons-git
+pkgver=r669.aa7b4a4
+pkgrel=2
 pkgdesc="Flat, long-shadow icon themes derived from the AwOken Token-style iconset"
 arch=('any')
 url="https://github.com/alecive/FlatWoken"
 license=('CCPL:by-sa-4.0')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=($pkgname::git://github.com/alecive/FlatWoken.git)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=($pkgname::git+$url.git)
 md5sums=('SKIP')
 
 pkgver() {
@@ -31,7 +30,7 @@ build() {
 
 package() {
   cd $pkgname
-  install -d  "$pkgdir/usr/share/icons/"
-  cp -rp FlatWoken* "$pkgdir/usr/share/icons/"
+  install -dm755 "$pkgdir/usr/share/icons/"
+  cp -a FlatWoken* "$pkgdir/usr/share/icons/"
 }
 
