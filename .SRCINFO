@@ -1,7 +1,7 @@
 pkgbase = python-jsonschema-typed-git
 	pkgdesc = Use JSON Schema for type checking in Python
 	pkgver = r42.54d2f8c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/inspera/jsonschema-typed
 	arch = any
 	license = MIT

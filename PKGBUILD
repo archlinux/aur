@@ -2,7 +2,7 @@
 
 pkgname=python-jsonschema-typed-git
 pkgver=r42.54d2f8c
-pkgrel=1
+pkgrel=2
 pkgdesc="Use JSON Schema for type checking in Python"
 arch=(any)
 url="https://github.com/inspera/jsonschema-typed"
@@ -15,17 +15,15 @@ source=("${pkgname}::git+https://github.com/inspera/jsonschema-typed")
 md5sums=('SKIP')
 
 build() {
-    rm -rf "$srcdir/$pkgname-build"
-    git clone "$srcdir/$pkgname" "$srcdir/$pkgname-build"
-    cd "$srcdir/$pkgname-build"
-
+    cd "$srcdir/$pkgname"
     python setup.py build
 }
 
 package() {
-    rm -rf "$pkgdir/usr/lib/python3.8/site-packages"
-    mkdir -p "$pkgdir/usr/lib/python3.8/site-packages"
-    cp -r "$srcdir/$pkgname-build/build/lib/jsonschema_typed" "$pkgdir/usr/lib/python3.8/site-packages/jsonschema_typed"
+    cd "$srcdir/$pkgname"
+
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 pkgver() {
