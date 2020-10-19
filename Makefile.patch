@@ -76,23 +76,6 @@ index d4eefe51..a48b900c 100644
  	fi
  
  # Install the PNG icon (for KDE desktop, etc.)
-@@ -917,13 +901,13 @@ install-dlls:
- 	  echo; \
- 	  echo "...Installing Library Modules..."; \
- 	  mkdir -p $(BIN_PREFIX)/lib/gdk-pixbuf-2.0/2.10.0/loaders; \
--	  cp /usr/local/lib/gdk-pixbuf-2.0/2.10.0/loaders/*.dll $(BIN_PREFIX)/lib/gdk-pixbuf-2.0/2.10.0/loaders; \
-+	  cp /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/*.dll $(BIN_PREFIX)/lib/gdk-pixbuf-2.0/2.10.0/loaders; \
- 	  strip -s $(BIN_PREFIX)/lib/gdk-pixbuf-2.0/2.10.0/loaders/*.dll; \
- 	  mkdir -p $(BIN_PREFIX)/lib/gtk-2.0/2.10.0/loaders; \
--	  cp /usr/local/lib/gtk-2.0/loaders/*.dll $(BIN_PREFIX)/lib/gtk-2.0/2.10.0/loaders; \
-+	  cp /usr/lib/gtk-2.0/loaders/*.dll $(BIN_PREFIX)/lib/gtk-2.0/2.10.0/loaders; \
- 	  strip -s $(BIN_PREFIX)/lib/gtk-2.0/2.10.0/loaders/*.dll; \
- 	  mkdir -p $(BIN_PREFIX)/lib/pango/1.6.0/modules; \
--	  cp /usr/local/lib/pango/1.6.0/modules/*.dll $(BIN_PREFIX)/lib/pango/1.6.0/modules; \
-+	  cp /usr/lib/pango/1.6.0/modules/*.dll $(BIN_PREFIX)/lib/pango/1.6.0/modules; \
- 	  strip -s $(BIN_PREFIX)/lib/pango/1.6.0/modules/*.dll; \
- 	fi
- 
 @@ -1079,7 +1063,7 @@ obj/parse.c:	obj/parse_step1.c
  	@echo
  	@echo "...Generating the command-line and config file parser (STEP 2)..."
