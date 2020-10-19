@@ -2,14 +2,14 @@
 
 _pkgname='zeit'
 pkgname="${_pkgname}-git"
-pkgver=0.5.0.r14.g43f773f
+pkgver=0.5.0.r16.gdfcc5f9
 pkgrel=1
 pkgdesc='Qt frontend to crontab'
 arch=('x86_64')
 url='https://github.com/loimu/zeit'
 license=('GPL3')
 depends=('hicolor-icon-theme' 'kauth')
-makedepends=('cmake' 'cron' 'imagemagick' 'git')
+makedepends=('cron' 'extra-cmake-modules' 'imagemagick' 'git' 'qt5-tools')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+${url}.git")
