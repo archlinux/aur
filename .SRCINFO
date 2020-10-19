@@ -1,7 +1,7 @@
 pkgbase = coolvlviewer-bin
 	pkgdesc = A third-party viewer for Second Life (C) (secondlife) and OpenSim (opensimulator) grids. ('VL' stands for virtual life, formerly known as 'Cool SL Viewer', binary)
 	pkgver = 1.28.0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sldev.free.fr
 	install = coolvlviewer.install
 	arch = x86_64
@@ -37,6 +37,7 @@ pkgbase = coolvlviewer-bin
 	optdepends = gst-plugins-ugly: for video support
 	optdepends = lib32-freealut: for OpenAL support
 	optdepends = lib32-libidn11: for voice support
+	optdepends = wine: for SLVoice support
 	conflicts = coolvlviewer
 	conflicts = coolvlviewer-experimental
 	conflicts = coolvlviewer-experimental-bin

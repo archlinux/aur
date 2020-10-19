@@ -3,7 +3,7 @@
 
 pkgname=coolvlviewer-bin
 pkgver=1.28.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A third-party viewer for Second Life (C) (secondlife) and OpenSim (opensimulator) grids. ('VL' stands for virtual life, formerly known as 'Cool SL Viewer', binary)"
 url="http://sldev.free.fr"
 license=('custom')
@@ -18,7 +18,8 @@ optdepends=(
 	'gst-plugins-bad: for video support'
 	'gst-plugins-ugly: for video support'
 	'lib32-freealut: for OpenAL support'
-	'lib32-libidn11: for voice support')
+	'lib32-libidn11: for voice support'
+	'wine: for SLVoice support')
 arch=('x86_64')
 conflicts=('coolvlviewer' 'coolvlviewer-experimental' 'coolvlviewer-experimental-bin')
 install=coolvlviewer.install
