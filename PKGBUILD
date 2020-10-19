@@ -2,7 +2,7 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 
 _cranname=spelling
-_cranver=2.1
+_cranver=2.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(MIT)
 depends=(r r-commonmark r-xml2 'r-hunspell>=3.0' r-knitr)
 optdepends=(r-pdftools)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('e7758038652a039fc3404f7ba6930a21')
+sha256sums=('740dc8546d096f89d796d8778d522ae980fbde6e0d105170c2f8881d7892369d')
 
 build() {
   cd "${srcdir}"
