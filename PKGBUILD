@@ -3,7 +3,7 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-git
-pkgver=5.5r20200810.11231
+pkgver=5.5r20201005.11284
 _majorver=5.5
 pkgrel=1
 pkgdesc="A command-line driven interactive function and data plotting utility - git version"
@@ -14,7 +14,7 @@ depends=('gd' 'lua' 'qt5-svg' 'pango' 'libcerf')
 makedepends=('git' 'qt5-tools' 'emacs')
 provides=("gnuplot=${_majorver}")
 conflicts=('gnuplot')
-source=("${pkgname%-git}::git+https://git.code.sf.net/p/gnuplot/gnuplot-main")
+source=("${pkgname%-git}::git+https://git.code.sf.net/p/gnuplot/gnuplot-main#commit=d89d5178bb246f658727a4e38be0d1f94214097f")
 sha256sums=('SKIP')
 
 pkgver() {

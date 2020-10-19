@@ -1,6 +1,6 @@
 pkgbase = gnuplot-git
 	pkgdesc = A command-line driven interactive function and data plotting utility - git version
-	pkgver = 5.5r20200810.11231
+	pkgver = 5.5r20201005.11284
 	pkgrel = 1
 	url = https://github.com/gnuplot/gnuplot
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = gnuplot-git
 	depends = libcerf
 	provides = gnuplot=5.5
 	conflicts = gnuplot
-	source = gnuplot::git+https://git.code.sf.net/p/gnuplot/gnuplot-main
+	source = gnuplot::git+https://git.code.sf.net/p/gnuplot/gnuplot-main#commit=d89d5178bb246f658727a4e38be0d1f94214097f
 	sha256sums = SKIP
 
 pkgname = gnuplot-git
