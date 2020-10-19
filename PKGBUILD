@@ -1,17 +1,16 @@
-# Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
+# Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at pm dot me>
 
 _pkgname=pykml
 pkgname=python-pykml
-pkgver=0.1.3
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='pyKML is a Python package for parsing and authoring KML documents.'
 arch=('any')
 url="https://pythonhosted.org/pykml/"
 license=('BSD')
 depends=('python' 'python-lxml')
-source=('https://pypi.python.org/packages/8f/16/276e16f024db5aca4c8891cecd56219a5a1e016fa356e858dfb04590b1d5/pykml-0.1.3.tar.gz')
-md5sums=('bc5c499b4e16cf51d502f9c828284f96')
-
+source=('https://files.pythonhosted.org/packages/8c/1e/56db25550a3de6401c8f08216530bd2f96b9e9b463598d6e2190229bee12/pykml-0.2.0.tar.gz')
+md5sums=('d99ec70275e9dc12e3d81828b18d3764')
 package() {
     cd ${_pkgname}-${pkgver}
     python setup.py install --root="$pkgdir"
