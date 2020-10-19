@@ -2,7 +2,7 @@
 # Contributor: Oleksii Opaliev <rayder.ua@gmail.com>
 _appname_=werf
 pkgname=${_appname_}-git
-pkgver=v1.2.0.alpha10
+pkgver=v1.2.0.alpha10.r0.gf83d01d0d
 pkgrel=1
 pkgdesc="Open Source CLI tool written in Go, designed to simplify and speed up the delivery of applications"
 arch=('x86_64')
@@ -17,19 +17,20 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/werf"
   # Use the tag of the last commit
-  git describe
+  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  curl -LsO https://dl.bintray.com/flant/werf/${pkgver}/werf-linux-amd64-${pkgver}
+  cd "$srcdir/werf"
+  TAG=$(git describe)
+  curl -Ls https://dl.bintray.com/flant/werf/${TAG}/werf-linux-amd64-${TAG} -o werf
 }
 
 check() {
   cd "${srcdir}/werf"
-  test -f werf-linux-amd64-${pkgver} || true
+  test -f werf || true
 }
 
 package() {
-  cd "${srcdir}/werf"
-	install -Dm755 "${srcdir}"/werf-linux-amd64-${pkgver} "${pkgdir}/usr/bin/werf"
+	install -Dm755 "${srcdir}/werf/werf" "${pkgdir}/usr/bin/werf"
 }
