@@ -2,11 +2,12 @@
 
 pkgname=flatwoken-icons-git
 pkgver=r669.aa7b4a4
-pkgrel=2
+pkgrel=3
 pkgdesc="Flat, long-shadow icon themes derived from the AwOken Token-style iconset"
 arch=('any')
 url="https://github.com/alecive/FlatWoken"
 license=('CCPL:by-sa-4.0')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=($pkgname::git+$url.git)
