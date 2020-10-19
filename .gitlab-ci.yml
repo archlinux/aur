@@ -1,4 +1,4 @@
 include:
-  - project: 'aur-packages/ci-cd'
+  - project: 'archlinux-packages/ci-cd'
     ref: master
     file: 'github-packages.yml'
