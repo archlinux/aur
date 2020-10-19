@@ -14,10 +14,6 @@ makedepends=(cargo clang)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('bf348c37705e69e4684bd361914f165789cb679ccb47335ff6605b8e1a1c9b4e')
 
-prepare() {
-	cd "$_name-$pkgver"
-}
-
 build() {
 	cd "$_name-$pkgver"
 	for dir in usvg c-api .; do
