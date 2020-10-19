@@ -3,10 +3,10 @@
 pkgname=navicat15-premium-cs
 pkgver=15.0.20
 pkgrel=1
+pkgdesc="Navicat Premium is a multi-connection database development tool. (Chinese Simplified)"
 arch=(x86_64)
 url='https://www.navicat.com/en/navicat-15-highlights'
 license=('GPL3')
-makedepends=()
 source=(
     # The download url always download latest version
     "${navicat15-premium-cs}-${pkgver}.AppImage::http://download.navicat.com.cn/download/navicat15-premium-cs.AppImage"
