@@ -1,7 +1,7 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=nnrss
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=2
 pkgdesc='Web/API RSS aggregator'
 url='https://git.roshless.me/~roshless/nnrss'
@@ -10,7 +10,9 @@ license=('AGPL')
 depends=('python-flask' 'python-sqlalchemy' 'python-werkzeug'
 	 'python-feedparser' 'python-listparser' 'python-apscheduler'
 	 'python-wtforms')
-optdepends=('gunicorn: recommended WSGI server' 'python-psycopg2: connect to PostgreSQL database')
+optdepends=('gunicorn: recommended WSGI server'
+	    'python-psycopg2: connect to PostgreSQL database'
+	    'sqlite: local file database')
 makedepends=('python-setuptools')
 backup=("var/lib/$pkgname/config.ini")
 source=("https://git.roshless.me/~roshless/$pkgname/archive/${pkgver}.tar.gz"
@@ -33,7 +35,7 @@ package() {
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
 
-md5sums=('25bc59c60113f623d49a7973d28ecb84'
+md5sums=('b45aacc78a250e6abe00607610437065'
          '85e39687367524c7b87bfb95571020bf'
          '8b9a147720fbe9f6c013f6aa7dbb8140'
          '364b51a829d7cf46a9557b97f8d3ce28')
