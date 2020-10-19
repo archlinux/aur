@@ -3,10 +3,10 @@ pkgname=pitchbox
 pkgver=2.0.2
 pkgrel=1
 pkgdesc="Small software application for transforming your voice or music in real-time."
-arch=('x86_64')
+arch=('any')
 url="https://www.pitchtech.ch/PitchBox"
 license=('none/unknown')
-depends=('java-runtime-common' 'java-environment-common' 'ca-certificates-java')
+depends=('java-runtime' 'ca-certificates-java')
 makedepends=()
 source=('https://www.pitchtech.ch/PitchBox/PitchBox.zip'
         'PitchBox.desktop')
