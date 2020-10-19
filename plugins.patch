@@ -1,6 +1,8 @@
---- Makefile	2016-07-13 22:24:24.000000000 +0300
-+++ Makefile	2019-03-14 14:22:10.860111342 +0300
-@@ -22,7 +22,7 @@
+--- plugins/Makefile	2020-09-16 21:36:11.000000000 +0300
++++ plugins/Makefile	2020-10-20 00:29:29.170540420 +0300
+@@ -20,11 +20,11 @@
+                 multiseq multiseqdialog phylotree \
+                 psipred seqdata seqedit stamp
  
  # When building from the independent multiseq tree, we'll use an empty list
  # since the dependency will be dealt with manually.
@@ -9,18 +11,23 @@
  
  # The Intersurf plugin is compiled manually and should only be
  # listed if the binaries are up-to-date for the target platform(s)
-@@ -139,6 +139,8 @@
+ #INTERSURF = intersurf
+ INTERSURF = 
+@@ -145,10 +145,11 @@
+   vmdtkcon \
+   zoomseq \
    $(MSEQBUILDDIRS) \
    $(INTERSURF)
  
-+BUILDDIRS=
-+
++BUILDDIRS = 
  INCLUDEDIR = include
  PLUGINHEADERS = vmdplugin.h molfile_plugin.h vmdconio.h
  
---- Make-arch	2016-10-22 00:34:39.000000000 +0300
-+++ Make-arch	2020-04-28 19:42:25.214095411 +0300
-@@ -331,25 +331,27 @@
+ distrib: 
+ 	@echo "Populating distribution directory with compiled plugins"
+--- plugins/Make-arch	2020-04-17 08:29:16.000000000 +0300
++++ plugins/Make-arch	2020-10-20 00:30:56.335121025 +0300
+@@ -332,25 +332,27 @@
  	"NM = nm -p" \
  	"RANLIB = touch" \
  	"SHLD = gcc -shared"
@@ -49,7 +56,7 @@
 -	"SHLD = gcc -shared"
 +	"SHLD = gcc-9 -shared"
  
- LINUXCARMA:
+ LINUXARM64:
  	$(MAKE) dynlibs staticlibs bins \
- 	"ARCH = LINUXCARMA" \
+ 	"ARCH = LINUXARM64" \
  	"COPTO = -fPIC -o " \
