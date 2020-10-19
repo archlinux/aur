@@ -1,8 +1,6 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
-#pkgname=('python-twodict' 'python2-twodict')
-_pkgname=python2-twodict
-pkgname=$_pkgname-git
+pkgname=python2-twodict-git
 pkgver=1.2.r2.g925d3bd
 pkgrel=1
 pkgdesc="Simple two way ordered dictionary for Python"
@@ -11,9 +9,9 @@ url="https://github.com/MrS0m30n3/twodict"
 license=('custom:UNLICENSE')
 depends=('python2')
 makedepends=('git')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=($pkgname::git+https://github.com/MrS0m30n3/twodict.git)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+source=($pkgname::git+$url.git)
 md5sums=('SKIP')
 
 pkgver() {
@@ -28,7 +26,7 @@ check() {
 
 package() {
   cd $pkgname
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
 
