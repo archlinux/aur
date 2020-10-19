@@ -15,6 +15,7 @@ pkgbase = rvgl-community
 	depends = rvgl-io-loadlevel
 	depends = rvgl-io-music
 	depends = rvgl-io-skins
+	depends = rvgl-io-skins-bonus
 	depends = rvgl-io-tracks
 	depends = rvgl-io-tracks-bonus
 	depends = rvgl-io-tracks-circuit

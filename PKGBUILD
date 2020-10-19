@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('custom')
 depends=('rvgl-bin' 'rvgl-dcpack' 'rvgl-io-cars' 'rvgl-io-cars-bonus'
          'rvgl-io-clockworks' 'rvgl-io-clockworks-modern' 'rvgl-io-lmstag'
-         'rvgl-io-loadlevel' 'rvgl-io-music' 'rvgl-io-skins' 
+         'rvgl-io-loadlevel' 'rvgl-io-music' 'rvgl-io-skins' 'rvgl-io-skins-bonus'
          'rvgl-io-tracks' 'rvgl-io-tracks-bonus' 'rvgl-io-tracks-circuit'
          'rvgl-io-soundtrack')
 provides=('rvgl')
