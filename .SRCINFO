@@ -1,0 +1,14 @@
+pkgbase = fuzzy-pdf
+	pkgdesc = Fuzzy finder for a collection of pdf files
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/MarioJim/fuzzy-pdf
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = poppler-glib
+	source = fuzzy-pdf-0.3.2.tar.gz::https://github.com/MarioJim/fuzzy-pdf/archive/v0.3.2.tar.gz
+	sha256sums = 7be91edeba3de9183b791d41e6afb5958dc86fa890361c2cb89da0b57e0661f0
+
+pkgname = fuzzy-pdf
+
