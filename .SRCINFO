@@ -1,6 +1,6 @@
 pkgbase = qt5-color-widgets
 	pkgdesc = A user-friendly color dialog and several color-related widgets for Qt
-	pkgver = 2020.8.9
+	pkgver = 2020.10.19
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/qt5-color-widgets
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = qt5-color-widgets
 	provides = qt-color-widgets-common
 	conflicts = qt-color-widgets-common
 	replaces = qt5-color-picker
-	source = https://github.com/TheCynicalTeam/qt5-color-widgets/archive/2020.8.9-1.tar.gz
-	sha256sums = 5325e843189cace2c5fa5cde6e193841a54c625daf817ffec22fe5d8e7a1be06
+	source = https://github.com/TheCynicalTeam/qt5-color-widgets/archive/2020.10.19.tar.gz
+	sha256sums = cb33d19842843c0bf236e958d9194a36b682ef9777ef1cb450fbac383b45563d
 
 pkgname = qt5-color-widgets
 

@@ -4,7 +4,7 @@
 # Contributor: Mattia Basaglia <mattia.basaglia@gmail.com>
 
 pkgname=qt5-color-widgets
-pkgver=2020.8.9
+pkgver=2020.10.19
 pkgrel=1
 pkgdesc='A user-friendly color dialog and several color-related widgets for Qt'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ provides=('qt-color-widgets-common')
 conflicts=('qt-color-widgets-common')
 replaces=('qt5-color-picker')
 source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=('5325e843189cace2c5fa5cde6e193841a54c625daf817ffec22fe5d8e7a1be06')
+sha256sums=('cb33d19842843c0bf236e958d9194a36b682ef9777ef1cb450fbac383b45563d')
 
 
 build() {
