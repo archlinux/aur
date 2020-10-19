@@ -1,7 +1,7 @@
 # Maintainer: Mario Hros <m-aur@k3a.me>
 
 pkgname=go-carbon
-pkgver=0.13.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Golang implementation of Graphite/Carbon server with classic architecture: Agent -> Cache -> Persister"
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ backup=(etc/go-carbon/go-carbon.conf
 source=($pkgname-$pkgver.tar.gz::https://github.com/lomik/go-carbon/archive/v$pkgver.tar.gz
 		go-carbon.conf.diff
 		go-carbon-dynamicuser.diff)
-sha256sums=('e04dd4817464667cad6c9873f06376d232149b0bc2f5475f74b0f693e13ce73e'
+sha256sums=('af500da34394bc1c9c905373b5e1204db13644bbe72f1855f9155cdff0796f0b'
             '174654ee0dfc98b220fa5be85365fce3a07fb94400ae8aecf5ae79e8af620758'
             'dceef1378a24a7acf7677284ee52f86e197fadeeab87b3c289cc0ac5741add9d')
 
