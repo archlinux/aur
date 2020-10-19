@@ -3,7 +3,7 @@
 
 pkgname=peepdf
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A python tool to explore PDF files in order to find out if the file can be harmful or not"
 arch=('any')
 url=https://github.com/jbremer/peepdf
@@ -24,7 +24,7 @@ package() {
 
   cat > "$pkgdir"/usr/bin/peepdf <<EOF
 #!/bin/sh
-exec python2 /usr/share/peepdf/peepdf.py "\$@"
+exec python /usr/share/peepdf/peepdf.py "\$@"
 EOF
 
   chmod +x "$pkgdir"/usr/bin/peepdf
