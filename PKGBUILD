@@ -3,7 +3,7 @@
 pkgname=rdrview-git
 _pkgname=rdrview
 pkgver=20201016.00207dc
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line tool to extract the main content from a webpage'
 url='https://github.com/eafer/rdrview'
 license=('custom')
@@ -36,5 +36,5 @@ build() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	make PREFIX="${pkgdir}" install
+	make PREFIX="${pkgdir}/usr" install
 }

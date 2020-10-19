@@ -1,7 +1,7 @@
 pkgbase = rdrview-git
 	pkgdesc = Command line tool to extract the main content from a webpage
 	pkgver = 20201016.00207dc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eafer/rdrview
 	arch = x86_64
 	license = custom
