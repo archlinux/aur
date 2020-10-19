@@ -1,13 +1,13 @@
 pkgbase = ali
 	pkgdesc = Generate HTTP load and plot the results in real-time
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/nakabonne/ali
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = ali-0.5.0.tar.gz::https://github.com/nakabonne/ali/archive/v0.5.0.tar.gz
-	sha512sums = dea3fd06e49d4a1f26b46c3840af05856cfc6295f1979d4960a9d4de055553caddc1618539b9643c4310156a43fec380c848778c58fac86f2b97074c7490bd71
+	source = ali-0.5.1.tar.gz::https://github.com/nakabonne/ali/archive/v0.5.1.tar.gz
+	sha512sums = 98a56889167f88c927a2482fef36444e15c04210ffcc3bf9e1ac7c02255098011170d227733a98392d5795a4a4c6a866a36445b34a894b44d57022b46dcfd117
 
 pkgname = ali
 
