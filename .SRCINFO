@@ -1,7 +1,7 @@
 pkgbase = colormake-git
 	pkgdesc = Colorize the output of make
 	pkgver = 0.9.20140503.r19.g93dd19b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bre.klaki.net/programs/colormake/
 	arch = any
 	license = GPL2

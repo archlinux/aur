@@ -4,7 +4,7 @@
 
 pkgname=colormake-git
 pkgver=0.9.20140503.r19.g93dd19b
-pkgrel=1
+pkgrel=2
 pkgdesc="Colorize the output of make"
 arch=('any')
 url="https://bre.klaki.net/programs/colormake/"
@@ -33,21 +33,10 @@ pkgver() {
 package() {
   cd "Colormake"
 
-  # executables
   install -dm755 "$pkgdir/usr/bin"
   cp -r {clmake,clmake-short,colormake,colormake-short} "$pkgdir/usr/bin"
 
-  install -Dm755 "colormake.pl" "$pkgdir/usr/share/colormake/colormake.pl"
-
-  # man page
-  install -Dm644 "colormake.1" "$pkgdir/usr/share/man/man1/colormake.1"
-
-  # documentation
-  install -dm755 "$pkgdir/usr/share/doc/colormake"
-  install -m644 \
-    AUTHORS \
-    BUGS \
-    ChangeLog \
-    README.md \
-    "$pkgdir/usr/share/doc/colormake"
+  install -Dm755 "colormake.pl" -t "$pkgdir/usr/share/colormake"
+  install -Dm644 "colormake.1" -t "$pkgdir/usr/share/man/man1"
+  install -Dm644 {AUTHORS,BUGS,ChangeLog,README.md} -t "$pkgdir/usr/share/doc/colormake"
 }
