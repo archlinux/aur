@@ -3,7 +3,7 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-git
-pkgver=5.5r20201005.11284
+pkgver=5.5r20201016.11328
 _majorver=5.5
 pkgrel=1
 pkgdesc="A command-line driven interactive function and data plotting utility - git version"
@@ -11,10 +11,11 @@ arch=('i686' 'x86_64')
 url="https://github.com/gnuplot/gnuplot"
 license=('custom')
 depends=('gd' 'lua' 'qt5-svg' 'pango' 'libcerf')
-makedepends=('git' 'qt5-tools' 'emacs')
+makedepends=('git' 'qt5-tools')
 provides=("gnuplot=${_majorver}")
 conflicts=('gnuplot')
-source=("${pkgname%-git}::git+https://git.code.sf.net/p/gnuplot/gnuplot-main#commit=d89d5178bb246f658727a4e38be0d1f94214097f")
+provides=('gnuplot')
+source=("${pkgname%-git}::git+https://git.code.sf.net/p/gnuplot/gnuplot-main")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -35,12 +36,10 @@ build() {
 	  --enable-kpsexpand \
 	  --with-qt=qt5 
   make pkglibexecdir=/usr/bin
-  cd docs
-  make info
 }
 
 package() {
   cd ${pkgname%-git}
-  make pkglibexecdir=/usr/bin DESTDIR="$pkgdir" install install-info
+  make pkglibexecdir=/usr/bin DESTDIR="$pkgdir" install 
   install -Dm644 Copyright "$pkgdir"/usr/share/licenses/$pkgname/Copyright
 }
