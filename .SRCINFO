@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rosparam-shortcuts
 	pkgdesc = ROS - rosparam wrapper with improved error checking.
-	pkgver = 0.3.3
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/PickNikRobotics/rosparam_shortcuts
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = ros-melodic-rosparam-shortcuts
 	makedepends = ros-melodic-roslint
 	depends = ros-melodic-rosparam
 	depends = ros-melodic-rosout
-	source = ros-melodic-rosparam-shortcuts-0.3.3.tar.gz::https://github.com/PickNikRobotics/rosparam_shortcuts/archive/0.3.3.tar.gz
-	sha256sums = 3022ea05b63f57209ceb0fb0df21c7c8747d8af9825949a65e94d9cb7a2ef8cc
+	source = ros-melodic-rosparam-shortcuts-0.4.0.tar.gz::https://github.com/PickNikRobotics/rosparam_shortcuts/archive/0.4.0.tar.gz
+	sha256sums = b858eb37e6fe31df8e58b80ce1ebbf42a7e3d1a68a9fd49fb51866a8d008d887
 
 pkgname = ros-melodic-rosparam-shortcuts
 

@@ -4,7 +4,7 @@ pkgdesc="ROS - rosparam wrapper with improved error checking."
 url='https://github.com/PickNikRobotics/rosparam_shortcuts'
 
 pkgname='ros-melodic-rosparam-shortcuts'
-pkgver='0.3.3'
+pkgver='0.4.0'
 arch=('x86_64')
 pkgrel=1
 license=('unknown')
@@ -32,7 +32,7 @@ depends=(
 
 _dir="rosparam_shortcuts-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/PickNikRobotics/rosparam_shortcuts/archive/${pkgver}.tar.gz")
-sha256sums=('3022ea05b63f57209ceb0fb0df21c7c8747d8af9825949a65e94d9cb7a2ef8cc')
+sha256sums=('b858eb37e6fe31df8e58b80ce1ebbf42a7e3d1a68a9fd49fb51866a8d008d887')
 
 build() {
 	# Use ROS environment variables.
