@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p-git
-pkgver=20201017.r1.g4033a04
+pkgver=20201018.r0.gc4a279b
 pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI (git version)'
 arch=('x86_64')
@@ -17,11 +17,13 @@ source=('git+https://github.com/loganmc10/m64p.git'
         '010-m64p-remove-build-jobs-limitation.patch'
         '020-m64p-enable-optimizations.patch'
         '030-m64p-fix-default-config-paths.patch'
+        '040-m64p-add-pie.patch'
         'm64p.desktop')
 sha256sums=('SKIP'
             '28c95005fbfa3b30bcee412070c5fc13f74a2b6f52526a9ad733778de3aaec04'
             'd3834a29ccf06be9ad1c0a3039efb4ed69d81f61e814d1578a6bd19474aa11c3'
             'c3f932cfe90909bd2f69a352add4acdd4d67d1fb73559d651de3cec3acdc3737'
+            '06915a74819512b423ce9c8b3717ce4132836d3b691500f0298810b92ba7ac2c'
             '8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808')
 
 prepare() {
@@ -29,6 +31,7 @@ prepare() {
     patch -d m64p -Np1 -i "${srcdir}/010-m64p-remove-build-jobs-limitation.patch"
     patch -d m64p -Np1 -i "${srcdir}/020-m64p-enable-optimizations.patch"
     patch -d m64p -Np1 -i "${srcdir}/030-m64p-fix-default-config-paths.patch"
+    patch -d m64p -Np1 -i "${srcdir}/040-m64p-add-pie.patch"
 }
 
 pkgver() {
