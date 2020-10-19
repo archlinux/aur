@@ -1,11 +1,12 @@
 pkgbase = nerdfetch
 	pkgdesc = A POSIX fetch using NerdFonts
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	url = https://github.com/ThatOneCalculator/NerdFetch
 	arch = any
 	license = GPL
 	makedepends = git
+	optdepends = bc: memory percent
 	source = git+https://github.com/ThatOneCalculator/NerdFetch
 	md5sums = SKIP
 
