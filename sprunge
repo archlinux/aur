@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 # Project: sprunge
-# Author: kevr <kevr@nixcode.us>
+# Author: kevr <kevr@0cost.org>
 # Description: A tool which uploads data from stdin to sprunge.us
 # Copyright (C) 2014 Kevin Morris
 import sys
 import urllib.parse
 import urllib.request
 from select import select
+import argparse
+from subprocess import Popen
 
 ## Voila hardcoded settings~
 url = "http://sprunge.us"
@@ -23,6 +25,19 @@ def quit(code, msg):
 
 ## Sorry for the C-style functions, I prefer them
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--clipboard-command",
+            dest="clipboard_command",
+            default="xclip -sel primary",
+            help="Command to use for clipboard pipe.")
+    parser.add_argument("--clipboard", "-c",
+            dest="clipboard",
+            action="store_const",
+            const=True,
+            default=False,
+            help="Copy URL to the primary clipboard.")
+    args = parser.parse_args()
+
     if not has_data(sys.stdin):
         return quit(1, "sprunge: no data given via stdin")
 
@@ -45,8 +60,17 @@ def main():
     response = reply.read().decode("UTF-8")
     reply.close()
 
-    # End the program by printing out sprunge's response
-    print(response.rstrip())
+    response = response.rstrip()
+    print(response)
+
+    # If --clipboard was given, additionally use --clipboard-command
+    # to save the resulting URL to the clipboard.
+    if args.clipboard:
+        proc = Popen([
+            "/bin/sh", "-c",
+            f'echo "{response}" | {args.clipboard_command}'
+        ])
+        proc.wait()
 
     return 0
 

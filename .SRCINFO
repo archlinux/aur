@@ -1,13 +1,15 @@
 pkgbase = sprunge
 	pkgdesc = Upload data to sprunge.us via stdin
-	pkgver = r2.a2b92dd
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/kevr/sprunge
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = armv6h
 	license = GPL2
 	depends = python
 	source = sprunge
-	sha256sums = 7c65273804d26a24c1dcda83a559315b9f501013d3d77d7d140f882f05eb2b33
+	sha256sums = 5a9ff1ff05fca02df5b88dcb052bee1afca7ffa8290845ec94c1b8b61cad4ecf
 
 pkgname = sprunge
 
