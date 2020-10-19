@@ -4,7 +4,7 @@
 pkgname=emscripten-git
 epoch=2
 pkgver=2.0.7.r20.gf94626edf
-pkgrel=1
+pkgrel=2
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
 url="http://emscripten.org"
@@ -14,7 +14,7 @@ makedepends=('git' 'ninja' 'cmake' 'clang' 'libxml2' 'ocaml-ctypes')
 optdepends=('java-runtime: for using clojure'
 	    'gcc-go: for using llvm-go, go may also work'
 	    'ruby: for running some scripts')
-conflicts=('emscripten')
+conflicts=('emscripten' 'binaryen')
 provides=('emscripten')
 source=('git+https://github.com/emscripten-core/emscripten.git'
 	'git+https://github.com/llvm/llvm-project.git#commit=25a8881b724abf7251a9278e72224af7e82cb9c2'
