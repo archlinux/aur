@@ -35,6 +35,7 @@ source=(
     "https://github.com/redchenjs/aur-packages/raw/master/anbox-image/houdini_z.sfs"
     "http://supersuroot.org/downloads/SuperSU-v2.82-201705271822.zip"
     "https://github.com/youling257/XposedTools/files/1931996/xposed-x86_64.zip"
+    "XposedInstaller_3.1.5.apk::https://forum.xda-developers.com/attachment.php?attachmentid=4393082&d=1516301692"
     "media_codecs.xml"
     "media_codecs_google_video.xml"
     "media_codecs_google_audio.xml"
@@ -47,6 +48,7 @@ md5sums=(
     '5ca37e1629edb7d13b18751b72dc98ad'
     '8755c94775431f20bd8de368a2c7a179'
     '86ffee229b724a8019cc78c5e221c24f'
+    '315362d994986e6584203fca282f4472'
     'a638728bc2413d908f5eb44a9f09e947'
     '599598e70060eb74c119cf7dac0ce466'
     '43193761081a04ca18a28d4a6e039950'
@@ -174,6 +176,10 @@ build () {
     install -Dm 644 ./lib64/libart-disassembler.so ./squashfs-root/system/lib64/libart-disassembler.so
     install -Dm 644 ./lib64/libsigchain.so ./squashfs-root/system/lib64/libsigchain.so
     install -Dm 644 ./lib64/libxposed_art.so ./squashfs-root/system/lib64/libxposed_art.so
+    
+    mkdir -p ./squashfs-root/system/app/XposedInstaller
+    chmod 755 ./squashfs-root/system/app/XposedInstaller
+    install -Dm 644 XposedInstaller_3.1.5.apk ./squashfs-root/system/app/XposedInstaller/XposedInstaller.apk
 }
 
 package() {
