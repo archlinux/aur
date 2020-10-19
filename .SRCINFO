@@ -1,0 +1,19 @@
+pkgbase = nvidia-455xx-dkms
+	pkgdesc = NVIDIA driver sources for Linux, 455xx
+	pkgver = 455.28
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	arch = x86_64
+	license = custom
+	depends = dkms
+	depends = nvidia-utils=455.28
+	depends = libglvnd
+	depends = linux-headers
+	provides = nvidia=455.28
+	conflicts = nvidia-lts
+	options = !strip
+	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/455.28/NVIDIA-Linux-x86_64-455.28.run
+	md5sums = 961169e263b2b9941c5c6f9b13d48e4c
+
+pkgname = nvidia-455xx-dkms
+
