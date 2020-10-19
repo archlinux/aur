@@ -15,5 +15,5 @@ sha256sums_x86_64=('bef797ce3a89f584b12cdc4c10f5d5c6bcb3fa1598c68c9ef2ad39602dcd
 package() {
   bsdtar -xv -C "${pkgdir}" -f "${srcdir}/data.tar.xz"
   mkdir -p "${pkgdir}/usr/bin/"
-  ln -s "/opt/Simplenote/${pkgname%-electron-bin}" "${pkgdir}/usr/bin"
+  ln -s "/opt/whatsdesk/${pkgname%-electron-bin}" "${pkgdir}/usr/bin"
 }
