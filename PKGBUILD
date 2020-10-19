@@ -1,7 +1,7 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname="pagemon"
-pkgver="0.01.16"
+pkgver="0.01.20"
 pkgrel=1
 pkgdesc="Interactive memory/page monitoring tool"
 url="https://kernel.ubuntu.com/~cking/pagemon/"
@@ -20,4 +20,4 @@ package() {
   make DESTDIR="$pkgdir" BINDIR=/usr/bin install
 }
 
-sha256sums=('41e493134e2a574df7fcdaf019e460f7ecf2eb764afae5e8f1dc5e02b9787aca')
+sha256sums=('2f5b968c6b5981f9e72a45b5817900f30003e36b856a9497955cfbcc1fe20dd6')
