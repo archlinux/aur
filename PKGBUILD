@@ -67,7 +67,7 @@ build() {
 }
 
 package() {
-	"cd ${srcdir}/${pkgname}-${pkgver}/source"
+	cd "${pkgname}-${pkgver}/source"
 
 	export SGE_ROOT="${pkgdir}/opt/${pkgname}"
 	mkdir -p "${SGE_ROOT}"
