@@ -2,7 +2,7 @@
 
 pkgname=python-proto-plus
 _name=proto-plus
-pkgver=1.10.0
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="A wrapper around protocol buffers."
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('python-google-api-core')
 makedepends=('python'
 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('SKIP')
+md5sums=('56b3132a3c925047917bf5dfcd7cf26a')
 
 
 prepare() {
