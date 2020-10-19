@@ -49,8 +49,8 @@ check()
 
 package()
 {
-  V="-v"
-  #V=""
+  #V="-v"
+  V=""
 
   # beta6 seems to have no real install
   #make -C "${BUILD_DIR}" -j1 DESTDIR="${pkgdir}" install
