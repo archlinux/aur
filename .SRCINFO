@@ -1,13 +1,15 @@
 pkgbase = whatsdesk-bin
 	pkgdesc = unofficial client of whatsapp
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://zerkc.gitlab.io/whatsdesk
 	arch = x86_64
 	license = MIT
 	provides = whatsdesk
 	source_x86_64 = https://zerkc.gitlab.io/whatsdesk/whatsdesk_0.3.3_amd64.deb
+	source_x86_64 = LICENSE
 	sha256sums_x86_64 = bef797ce3a89f584b12cdc4c10f5d5c6bcb3fa1598c68c9ef2ad39602dcde5b3
+	sha256sums_x86_64 = 38f8c3d94c9497be761fc95f10d3c530a693bae33fa89d5ce29fe1fac45e3aea
 
 pkgname = whatsdesk-bin
 
