@@ -1,7 +1,7 @@
 pkgbase = far2l-git
 	pkgdesc = Linux port of FAR v2
-	pkgver = r1928.daa8a7b8
-	pkgrel = 2
+	pkgver = r1945.149a122c
+	pkgrel = 1
 	url = https://github.com/elfmz/far2l
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = far2l-git
 	depends = spdlog
 	depends = xerces-c
 	depends = fmt
+	depends = uchardet
 	optdepends = libssh: SFTP support in NetRocks
 	optdepends = smbclient: SMB support in NetRocks
 	optdepends = libnfs: NFS support in NetRocks
