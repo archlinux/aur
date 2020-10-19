@@ -1,6 +1,6 @@
 pkgbase = paru
 	pkgdesc = AUR helper based on yay
-	pkgver = 0.99.1
+	pkgver = 0.99.2
 	pkgrel = 1
 	url = https://github.com/morganamilo/paru
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = paru
 	depends = pacman
 	optdepends = asp: downloading repo pkgbuilds
 	backup = etc/paru.conf
-	source = paru-0.99.1::https://github.com/Morganamilo/paru/archive/v0.99.1.tar.gz
-	sha256sums = 51e1784733f22431f8b82a39a75f9dacf8d9cf29306c0c488c0618b3fa65bbf7
+	source = paru-0.99.2::https://github.com/Morganamilo/paru/archive/v0.99.2.tar.gz
+	sha256sums = ba85c59d392a9c14e7252e9b39b19ed14819a26e9dbd4a5c03e377a1ebd3c5db
 
 pkgname = paru
 
