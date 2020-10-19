@@ -1,6 +1,6 @@
 pkgbase = foundationdb-server-bin
 	pkgdesc = FoundationDB server. FoundationDB is a scalable, fault-tolerant, ordered key-value store with full ACID transactions. This package contains the server.
-	pkgver = 6.2.25
+	pkgver = 6.2.27
 	pkgrel = 1
 	url = https://www.foundationdb.org
 	install = foundationdb-server-bin.install
@@ -12,8 +12,8 @@ pkgbase = foundationdb-server-bin
 	depends = tar>=1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://www.foundationdb.org/downloads/6.2.25/ubuntu/installers/foundationdb-server_6.2.25-1_amd64.deb
-	sha256sums_x86_64 = f35bec769ed375f399c24b822103ca689ff9f9a33e222f44807296298dbd29d0
+	source_x86_64 = https://www.foundationdb.org/downloads/6.2.27/ubuntu/installers/foundationdb-server_6.2.27-1_amd64.deb
+	sha256sums_x86_64 = c9c8e8ae4dee0f485a179ec5544c9fa28e3ebbbdd41f6ff9666f13be191555ff
 
 pkgname = foundationdb-server-bin
 
