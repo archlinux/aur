@@ -3,7 +3,7 @@
 pkgbase=bigjubelweb-git
 pkgname=bigjubelweb-git
 _module='bigjubelweb'
-pkgver=0.7.5.r0.gb521d7a
+pkgver=0.7.6.r0.g0f7ce11
 pkgrel=1
 pkgdesc="A web interface for BigJubel"
 url="https://www.kabus.eu/git/bigjubelweb"
