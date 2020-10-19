@@ -2,8 +2,8 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-skins
-pkgver=20.0920
-pkgrel=2
+pkgver=20.1018
+pkgrel=1
 pkgdesc="Additional skins for RVGL default and community cars."
 url='https://re-volt.io/downloads/packs'
 arch=('any')
@@ -19,6 +19,5 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/rvgl_io_skins"
-    rm cars/phim_stinger/car.bmp
     find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
