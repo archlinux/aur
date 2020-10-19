@@ -1,4 +1,4 @@
-From 60c805f794ee09a9e91a81788a11b0f197b0dc85 Mon Sep 17 00:00:00 2001
+From 079b86ba750d68b9cf648babcaa2087033435866 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 1 Sep 2020 12:22:28 +0100
 Subject: [PATCH 3/3] Don't build the main poppler library.
@@ -8,7 +8,7 @@ Subject: [PATCH 3/3] Don't build the main poppler library.
  1 file changed, 17 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index b5428237..67ed8c8a 100644
+index 2f035b8d..3105ebd5 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -541,23 +541,6 @@ ADD_GPERF_FILE(TimesItalicWidths)
@@ -21,7 +21,7 @@ index b5428237..67ed8c8a 100644
 -else()
 -add_library(poppler ${poppler_SRCS})
 -endif()
--set_target_properties(poppler PROPERTIES VERSION 102.0.0 SOVERSION 102)
+-set_target_properties(poppler PROPERTIES VERSION 103.0.0 SOVERSION 103)
 -if(MINGW AND BUILD_SHARED_LIBS)
 -    get_target_property(POPPLER_SOVERSION poppler SOVERSION)
 -    set_target_properties(poppler PROPERTIES SUFFIX "-${POPPLER_SOVERSION}${CMAKE_SHARED_LIBRARY_SUFFIX}")
