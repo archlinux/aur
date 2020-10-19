@@ -25,8 +25,8 @@ source=("https://github.com/raspberrypi/linux/archive/${_commit}.tar.gz"
         '60-linux.hook'
         '90-linux.hook')
 b2sums=('19dfe2c6a91c2dc26712732149b87237133022574c345e25cce7aeacc46e444541a630e61ce538bc5b6e5883cabd552dc1b4e58bdf5f434fdf70e84d5f1db146'
-        '07e6a3aafee0a2c9b4bb010b28f3203671ed5fc9e82ebee3f9228d9233b3b09fd52ce4585e12f6a346edb8c19bf16733905723b0ce165b2aeed1573f0e72ad72'
-        '969479870f2fdcb92a9d3cb43bf4d329aa1ffe5b1b3862c0cbce43788230e5f3d308e766739257c265b4a83dc1c8e935f13f223fbd70a05f2776096a9db0d32b'
+        '4bbd31aeb35fb0400ee65d63d1718bd93ed65fbe5f50c22fff63a60e2934f63c71245590b2ab4449abdd75f80c44e6b5016e44e6c35406b5ba20bbc346d5dcb5'
+        '7988d1abc76ff5237ab104e4d3ce0d4d62e6d4c514cbe9411e6950baeb4e3121731ff75d85868071fbcc7f8c98448f5db128a564237844680375cb2e3176fdd7'
         '2f4b84080e6955cb69c8daa7d4fd9beeacb82a7e9172c53fe467afd8cb073d2fdc0dade02ec300da255ffc53ab16a4bd9fef065d9fa9afdb28fbb58a6c83b94c'
         'f0cb39a8e448dc93cd830f1680303ecfcda6c729030ecf0bbf6dd8c57777a12ab33bbd991da4f735ba5869afb59d39f5cf5c7c725cc9ba6a78c235c2fd00251a'
         '40e2e0ac9eec9f9c08593875ca5bb8a26f835e33ae42e3718b98e83d76bbbc51a68395215c707fe58269954127261f7f8d12ec47341d28c672de973f3c4e71e8'
@@ -78,8 +78,8 @@ _package() {
   pkgdesc="The Linux Kernel and modules - ${_desc}"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7' 'firmware-raspberrypi')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=('kernel26' "linux=${pkgver}")
-  conflicts=('kernel26' 'linux')
+  provides=("linux=${pkgver}")
+  conflicts=('linux-aarch64' 'uboot-raspberrypi')
   install=${pkgname}.install
   backup=('boot/config.txt' 'boot/cmdline.txt')
   replaces=('linux-raspberrypi4' 'linux-raspberrypi-latest')
