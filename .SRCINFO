@@ -1,7 +1,7 @@
 pkgbase = lib32-alure
 	pkgdesc = Utility library to help manage common tasks with OpenAL applications (32-bit)
 	pkgver = 1.2
-	pkgrel = 6
+	pkgrel = 7
 	url = https://kcat.strangesoft.net/alure.html
 	arch = x86_64
 	license = MIT

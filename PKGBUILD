@@ -5,7 +5,7 @@
 pkgname=lib32-alure
 _pkgbasename=alure
 pkgver=1.2
-pkgrel=6
+pkgrel=7
 pkgdesc='Utility library to help manage common tasks with OpenAL applications (32-bit)'
 arch=('x86_64')
 url='https://kcat.strangesoft.net/alure.html'
