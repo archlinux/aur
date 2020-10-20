@@ -22,11 +22,3 @@ package() {
   install -Dm644 Copyright "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   make DESTDIR="$pkgdir/" install
 }
-md5sums=('13b3c76dae57051d7764de18dbd46f6a')
-
-md5sums=('9b578caca83e375020c485d9a2e06af1')
-md5sums=('9b578caca83e375020c485d9a2e06af1')
-md5sums=('9b578caca83e375020c485d9a2e06af1')
-md5sums=('9b578caca83e375020c485d9a2e06af1')
-md5sums=('9b578caca83e375020c485d9a2e06af1')
-md5sums=('9b578caca83e375020c485d9a2e06af1')
