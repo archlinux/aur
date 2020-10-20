@@ -1,0 +1,16 @@
+pkgbase = jdreplace
+	pkgdesc = With jdReplace you can replace a text in all files of a directory
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://gitlab.com/JakobDev/jdReplace
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = gendesk
+	depends = python-pyqt5
+	depends = python-jdtranslationhelper
+	source = jdreplace-2.2.tar.gz::https://gitlab.com/JakobDev/jdReplace/-/archive/2.2/jdReplace-2.2.tar.gz
+	sha256sums = 8a8df34b3dd4c80ac3561f109162fb3ef81008a50ebc3ce3915ef0a3139e16b5
+
+pkgname = jdreplace
+
