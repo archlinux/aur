@@ -19,9 +19,10 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~mil/lisgd/archive/0.1.1.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~mil/${pkgname}/archive/${pkgver}.tar.gz"
     "Makefile.patch")
-md5sums=("088a38d9938e46829295f17294158c1d" "SKIP")
+sha1sums=("cae9863918604ffd4c01f2ce30425eecd45c56c9"
+    "601e3fa3cf64bc9b5b2509ee60099b95c79979d0")
 
 prepare() {
     patch "$pkgname-$pkgver/Makefile" -i Makefile.patch
