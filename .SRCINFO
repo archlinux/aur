@@ -1,0 +1,22 @@
+pkgbase = jupyterhub-nativeauthenticator-git
+	pkgdesc = Authenticator for storing users in the JupyterHub database
+	pkgver = r234.5d34628
+	pkgrel = 1
+	url = https://github.com/jupyterhub/nativeauthenticator
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = jupyter
+	makedepends = git
+	makedepends = python-setuptools
+	depends = jupyterhub
+	depends = python-bcrypt
+	depends = python-onetimepass
+	provides = jupyterhub-nativeauthenticator
+	conflicts = jupyterhub-nativeauthenticator
+	source = git+https://github.com/jupyterhub/nativeauthenticator.git
+	sha256sums = SKIP
+
+pkgname = jupyterhub-nativeauthenticator-git
+

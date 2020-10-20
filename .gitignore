@@ -1,0 +1,6 @@
+src
+pkg
+nativeauthenticator
+*.pkg.tar.zst
+*.tar.gz
+*.log
