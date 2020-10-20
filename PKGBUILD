@@ -1,10 +1,10 @@
-# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer:  Anton Kudelin <kudelin at protonmail dot com>
 # Contributor: George Eleftheriou <eleftg>
 # Contributor: Xwang <xwaang1976@gmail.com>
  
 _PkgName=SU2
 pkgname=su2
-pkgver=7.0.6
+pkgver=7.0.7
 pkgrel=1
 pkgdesc="An Open-Source Suite for Multiphysics Simulation and Design"
 url="https://su2code.github.io"
@@ -13,7 +13,7 @@ depends=('openmpi' 'python')
 makedepends=('gcc-fortran')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/su2code/SU2/archive/v$pkgver.tar.gz")
-sha256sums=('5be22a992952b08f16bb80658f6cbe29c62a27e20236eccd175ca58dbc4ed27d')
+sha256sums=('123c42f097c583a3d7b53123d79bf470f67a6481851fddb010ff590837da61d4')
 
 prepare() {
     cd "$srcdir/$_PkgName-$pkgver"
