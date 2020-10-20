@@ -1,24 +1,21 @@
 pkgbase = howdoi
-	pkgdesc = A code search tool.
-	pkgver = 1.2.1
+	pkgdesc = Instant coding answers via the command line
+	pkgver = 2.0.7
 	pkgrel = 1
 	url = https://github.com/gleitz/howdoi
-	changelog = Changelog
 	arch = any
 	license = MIT
-	makedepends = python
-	makedepends = python-setuptools
-	depends = python-pygments>=2.2.0
-	depends = python-argparse>=1.4.0
-	depends = python-cssselect>=1.0.3
-	depends = python-lxml>=4.2.5
-	depends = python-pyquery>=1.4.0
-	depends = python-requests>=2.20.1
-	depends = python-cachelib>=0.1
-	depends = python-appdirs>=1.4.3
-	conflicts = howdoi-git
-	source = https://files.pythonhosted.org/packages/source/h/howdoi/howdoi-1.2.1.tar.gz
-	sha512sums = 83af30118087105392ddb95b05d9e7442f5ee5df981faa9143770dedb8927c164a4f30f37ccd219a826340f0f8cd81fc5eb9a3b12e5d3956786294699b6e2f9b
+	depends = keep
+	depends = python-appdirs
+	depends = python-cachelib
+	depends = python-cssselect
+	depends = python-lxml
+	depends = python-pygments
+	depends = python-pyquery
+	depends = python-requests
+	depends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/h/howdoi/howdoi-2.0.7.tar.gz
+	sha256sums = 09362f7390119dffd83c61a942801ad4d19aee499340ef7e8d5871167391d3d6
 
 pkgname = howdoi
 
