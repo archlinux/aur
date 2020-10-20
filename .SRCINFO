@@ -1,0 +1,16 @@
+pkgbase = obs-rgb-levels-filter-git
+	pkgdesc = A simple OBS Studio filter to adjust RGB levels git version
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/petrifiedpenguin/obs-rgb-levels-filter
+	arch = x86_64
+	license = GPL2
+	depends = obs-studio
+	provides = obs-rgb-levels-filter-git=1
+	source = obs-rgb-levels-filter-git::git+https://github.com/petrifiedpenguin/obs-rgb-levels-filter.git
+	source = git+https://github.com/obsproject/obs-studio.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = obs-rgb-levels-filter-git
+
