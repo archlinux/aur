@@ -33,6 +33,11 @@ post_install() {
 
   $ systemctl --user enable globus-connect-personal.service
   $ systemctl --user start globus-connect-personal.service
+
+  By default Globus Connect Personal will share your HOME folder. To configure which
+  directories are accessible to Globus Connect Personal, follow the instructions at
+  https://docs.globus.org/faq/globus-connect-endpoints/#how_do_i_configure_accessible_directories_on_globus_connect_personal_for_linux
+
 _EOF
 }
 
