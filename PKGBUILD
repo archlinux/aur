@@ -7,8 +7,8 @@ arch=(x86_64)
 pkgdesc="A simple OBS Studio filter to adjust RGB levels git version"
 url="https://github.com/petrifiedpenguin/obs-rgb-levels-filter"
 license=('GPL2')
-depends=("obs-studio")
-provides=("obs-rgb-levels-filter-git=$pkgver")
+depends=("obs-studio" "cmake")
+provides=("obs-rgb-levels-filter-git")
 source=("$pkgname::git+https://github.com/petrifiedpenguin/obs-rgb-levels-filter.git"
         "git+https://github.com/obsproject/obs-studio.git")
 md5sums=("SKIP" "SKIP")

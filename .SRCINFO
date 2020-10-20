@@ -6,7 +6,8 @@ pkgbase = obs-rgb-levels-filter-git
 	arch = x86_64
 	license = GPL2
 	depends = obs-studio
-	provides = obs-rgb-levels-filter-git=1
+	depends = cmake
+	provides = obs-rgb-levels-filter-git
 	source = obs-rgb-levels-filter-git::git+https://github.com/petrifiedpenguin/obs-rgb-levels-filter.git
 	source = git+https://github.com/obsproject/obs-studio.git
 	md5sums = SKIP
