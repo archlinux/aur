@@ -18,9 +18,13 @@ pkgbase = knossos
 	source = https://github.com/knossos-project/knossos/archive/v5.1.tar.gz
 	source = knossos.desktop
 	source = GCC8-combat-K5.patch
+	source = https://raw.githubusercontent.com/knossos-project/knossos/f3bfcd80dc582248a59b857609a796d133bb1fa5/CMake/Modules/FindQuaZip.cmake
+	source = https://github.com/knossos-project/knossos/commit/b6f40b52.patch
 	md5sums = fd97340a07b58b3f1b1543405d893c35
 	md5sums = 1a2b3733cf5fcb3e1845ce771abb58e9
 	md5sums = 9e6daa1198b3f819379995d37178e3d1
+	md5sums = b7f68f267e26f86db118cfafbb006ec9
+	md5sums = 64544b58149bc2e0cd7be42944082310
 
 pkgname = knossos
 
