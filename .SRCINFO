@@ -1,6 +1,6 @@
 pkgbase = python-slackclient
 	pkgdesc = Slack Python SDK
-	pkgver = 2.8.1
+	pkgver = 2.9.2
 	pkgrel = 1
 	url = https://slack.dev/python-slackclient
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-slackclient
 	makedepends = python-wheel
 	depends = python-aiohttp
 	optdepends = python-aiodns
-	source = python-slackclient-2.8.1.tar.gz::https://github.com/slackapi/python-slackclient/archive/v2.8.1.tar.gz
-	sha256sums = 3be74444a78e73d2247a8c8333cc0cffc04045dd93066690f441235220127674
+	source = python-slackclient-2.9.2.tar.gz::https://github.com/slackapi/python-slackclient/archive/v2.9.2.tar.gz
+	sha256sums = e7d58cf069ca4a9d31c0343126413d7ba3a844537d3072ff24484b84cee3a15c
 
 pkgname = python-slackclient
 

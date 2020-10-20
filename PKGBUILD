@@ -2,7 +2,7 @@
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=python-slackclient
-pkgver=2.8.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="Slack Python SDK"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-aiohttp')
 optdepends=('python-aiodns')
 makedepends=('python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/slackapi/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('3be74444a78e73d2247a8c8333cc0cffc04045dd93066690f441235220127674')
+sha256sums=('e7d58cf069ca4a9d31c0343126413d7ba3a844537d3072ff24484b84cee3a15c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
