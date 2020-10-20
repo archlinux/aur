@@ -1,9 +1,9 @@
-# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer:  Anton Kudelin <kudelin at protonmail dot com>
 # Contributor: Scott Tincman <sctincman at gmail dot com>
 
 pkgname=nwchem
-pkgver=7.0.0
-pkgrel=3
+pkgver=7.0.2
+pkgrel=1
 pkgdesc="Ab initio computational chemistry software package"
 arch=('x86_64')
 url="https://nwchemgit.github.io"
@@ -14,7 +14,7 @@ install=nwchem.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwchemgit/nwchem/archive/v$pkgver-release.tar.gz"
         "config.sh"
         "nwchemrc")
-sha256sums=('dc03194513a6d2deecde6e80135b68419dca35483c9ecb45e35c5a028e27b15f'
+sha256sums=('d63cf8c6e9df591ae8b542175999c16219757cc75fb6a528c06e7590a7f63271'
             '2e67032fd6175df26b9cfe543cea96befe90f6315846b6e92e231fdaf461f667'
             'd63fdfc44a8f44419748e029d031c91716635ac4f062cd835014cde04677b90f')
 
@@ -43,8 +43,7 @@ build() {
 
 check() {
   cd "$srcdir/$pkgname-$pkgver-release/QA"
-  _corenumber=$( grep -c ^processor /proc/cpuinfo )
-  bash doqmtests.mpi 4 fast
+  bash doafewqmtests.mpi 4
 }
 
 package() {
