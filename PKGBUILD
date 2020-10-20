@@ -4,7 +4,7 @@
 # Contributor: Dr-Shadow <kerdiles.robin@gmail.com>
 
 pkgname=mingw-w64-python
-pkgver=3.8.2
+pkgver=3.8.6
 _pybasever=3.8
 pkgrel=1
 pkgdesc="Next generation of the python high-level scripting language (mingw-w64)"
@@ -29,13 +29,13 @@ makedepends=('mingw-w64-configure' 'mingw-w64-wine' 'python')
 optdepends=('mingw-w64-wine: runtime support')
 options=('staticlibs' '!buildflags' '!strip')
 source=("https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
-        'patches.tar.xz'
+        "patches.tar.xz"
         "wine-python.sh")
-sha1sums=('5ae54baf26628a7ed74206650a31192e6d5c6f93'
-          'faa2298aaf144079ab3cdd9fd3d71f384be631ee'
+sha1sums=('6ee446eaacf901a3305565bd6569e2de135168e3'
+          'fd5dea1f6f0a887cfdea90c40de3ff327a6b12da'
           'a024e7fd7eea7984a0d050164a4a015dea762da7')
-sha512sums=('ca37ad0e7c5845f5f228566aa8ff654a8f428c7d4a5aaabff29baebb0ca3219b31ba8bb2607f89e37cf3fc564f023b8407e53a4f2c47bd99122c1cc222613e37'
-            '76de68db3fc05152f5dbe2520ddf3f3a2c56f653b7b98cce84f013a6e3ba60e2cebb12bb936dbf0d69da8af77ec0be7b1816142efb09e450b38e15af7b860c4a'
+sha512sums=('22faec84f6e172e1ac7c6bd6fd37e9b6ae4afc91cf5136aa8cac8ebbed8d18793f9196e8749b8ccc43447cb6c41cb450f65ea72dd363c06dfaeb14e0455f5560'
+            'e6dc81c167c733cba70c6a39530c002d3fd5c753b5b9c707973da27b66b4cb5c3a186bed9834de269eec6e763c7731c3b7aec2bb8736b26686bd89de76127073'
             'd0fb7f0e1a3d98a170ebea301226ad8caa7ffab9fc0bee224abc31c22875c892b43d3468dffbdd15eb71ca1b5260e039d0fceb21ecc92341b9bb6949d7e9be6a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -61,12 +61,6 @@ del_file_exists() {
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
-
-  # these are created by patches
-  rm -f Misc/config_mingw \
-        Misc/cross_mingw32 \
-        Modules/Setup.config.in \
-        Python/fileblocks.c
 
   plain "Apply Ray Donnelly's should-be-upstreamed patches"
   apply_patch_with_msg \
@@ -124,8 +118,7 @@ prepare() {
     0560-mingw-use-posix-getpath.patch \
     0565-mingw-add-ModuleFileName-dir-to-PATH.patch \
     0570-mingw-add-BUILDIN_WIN32_MODULEs-time-msvcrt.patch
-  # 0610- changed to not using -DVPATH='"$(VPATH_b2h)"' anymore since VPATH is
-  # relative, therefore getpath.c:355: joinpath(prefix, vpath) works naturally
+
   apply_patch_with_msg \
     0610-msys-cygwin-semi-native-build-sysconfig.patch \
     0620-mingw-sysconfig-like-posix.patch \
@@ -182,11 +175,9 @@ prepare() {
 
   apply_patch_with_msg \
     1810-3.7-mpdec-mingw.patch \
-    1830-mingw-implement-setenv-for-PY_COERCE_C_LOCALE.patch \
     1850-disable-readline.patch \
     1860-fix-isselectable.patch \
     1870-use-_wcsnicmp-instead-wcsncasecmp.patch \
-    1880-make-default-python.patch \
     1890-_xxsubinterpretersmodule.patch
 
   # https://github.com/msys2/MINGW-packages/issues/5184
@@ -221,21 +212,6 @@ prepare() {
   sed -e "s|VersionHelpers.h|versionhelpers.h|g" -i ${srcdir}/Python-${pkgver}/Modules/socketmodule.c
 
   autoreconf -vfi
-
-  touch Include/graminit.h
-  touch Python/graminit.c
-  touch Parser/Python.asdl
-  touch Parser/asdl.py
-  touch Parser/asdl_c.py
-  touch Include/Python-ast.h
-  touch Python/Python-ast.c
-  echo \"\" > Parser/pgen.stamp
-
-  # Ensure that we are using the system copy of various libraries (expat, zlib and libffi),
-  # rather than copies shipped in the tarball
-  rm -r Modules/expat
-  # rm -r Modules/zlib
-  rm -r Modules/_ctypes/{darwin,libffi}*
 }
 
 build() {
@@ -256,9 +232,6 @@ build() {
       CFLAGS+=" -DNDEBUG "
       CXXFLAGS+=" -DNDEBUG "
     else
-      plain " -DDEBUG -DPy_DEBUG -D_DEBUG does not work unfortunately .."
-      #    CFLAGS+=" -DDEBUG -DPy_DEBUG -D_DEBUG "
-      #    CXXFLAGS+=" -DDEBUG -DPy_DEBUG -D_DEBUG "
       CFLAGS+=" -O0 -ggdb"
       CXXFLAGS+=" -O0 -ggdb"
       _extra_config+=("--with-pydebug")
@@ -279,6 +252,8 @@ build() {
       --with-system-ffi \
       --with-system-libmpdec \
       --without-ensurepip \
+      --without-c-locale-coercion \
+      --enable-loadable-sqlite-extensions \
       "${_extra_config[@]}" \
       OPT=""
 
@@ -314,7 +289,6 @@ package() {
     
     # Need for building boost python3 module
     cp -f "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/config-${VERABI}/libpython${VERABI}.dll.a "${pkgdir}/usr/${_arch}"/lib/libpython${_pybasever}.dll.a
-    #cp -f "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/config-${VERABI}/libpython${VERABI}.dll.a "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/config-${VERABI}/libpython${_pybasever}.dll.a
     
     # some useful "stuff"
     install -dm755 "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/Tools/{i18n,scripts}
@@ -374,10 +348,12 @@ package() {
     install -m755 ${_arch}-python${_pybasever} "${pkgdir}"/usr/bin/${_arch}-python${_pybasever}
     install -m755 ${_arch}-python3 "${pkgdir}"/usr/bin/${_arch}-python3
     install -m755 ${_arch}-python "${pkgdir}"/usr/bin/${_arch}-python
-      
-    #ln -s "/usr/${_arch}/bin/python${_pybasever}.exe" "${pkgdir}/usr/${_arch}/bin/python.exe"
-    #ln -s "/usr/${_arch}/bin/python3-config" "${pkgdir}/usr/${_arch}/bin/python-config"
-    ln -s "/usr/${_arch}/bin/idle3" "${pkgdir}/usr/${_arch}/bin/idle"
-    ln -s "/usr/${_arch}/bin/pydoc3" "${pkgdir}/usr/${_arch}/bin/pydoc"
+    
+    # create relative symlinks
+    ln -s "python3.exe" "${pkgdir}/usr/${_arch}/bin/python.exe"
+    ln -s "python3w.exe" "${pkgdir}/usr/${_arch}/bin/pythonw.exe"
+    ln -s "python3-config" "${pkgdir}/usr/${_arch}/bin/python-config"
+    ln -s "idle3" "${pkgdir}/usr/${_arch}/bin/idle"
+    ln -s "pydoc3" "${pkgdir}/usr/${_arch}/bin/pydoc"
   done
 }
