@@ -1,0 +1,45 @@
+From fab226c5cf4d1ae1306d6d48d684e9bb231a3cc7 Mon Sep 17 00:00:00 2001
+From: Nirbheek Chauhan <nirbheek@centricular.com>
+Date: Thu, 9 Jul 2020 16:43:45 +0530
+Subject: [PATCH 2/4] interfaces: Port to GetBestInterfaceEx for UWP compat
+
+Still prefer ipv4 addresses for backwards-compat. GetBestInterface is
+not allowed when targeting UWP, so use GetBestInterfaceEx.
+
+Also add some debug logging to ensure that the function is actually
+running correctly.
+---
+ agent/interfaces.c | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/agent/interfaces.c b/agent/interfaces.c
+index 5c8d131..309ca65 100644
+--- a/agent/interfaces.c
++++ b/agent/interfaces.c
+@@ -600,8 +600,21 @@ GList * nice_interfaces_get_local_ips (gboolean include_loopback)
+    * Get the best interface for transport to 0.0.0.0.
+    * This interface should be first in list!
+    */
+-  if (GetBestInterface (0, &pref) != NO_ERROR)
+-    pref = 0;
++  {
++    DWORD retcode;
++    struct sockaddr_in sa_any = {0};
++
++    sa_any.sin_family = AF_INET;
++    sa_any.sin_addr.s_addr = htonl (INADDR_ANY);
++
++    retcode = GetBestInterfaceEx ((SOCKADDR *) &sa_any, &pref);
++    if (retcode != NO_ERROR) {
++      gchar *msg = g_win32_error_message (retcode);
++      nice_debug ("Error fetching best interface: %s", msg);
++      g_free (msg);
++      pref = 0;
++    }
++  }
+ 
+   /* Loop over the adapters. */
+   for (a = addresses; a != NULL; a = a->Next) {
+-- 
+2.27.0.windows.1
+

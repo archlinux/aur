@@ -1,0 +1,30 @@
+From ffb45c21af0c0f028a800cfe4c1b7235ee8febba Mon Sep 17 00:00:00 2001
+From: Nirbheek Chauhan <nirbheek@centricular.com>
+Date: Mon, 15 Jun 2020 19:54:21 +0530
+Subject: [PATCH] stund: Use lowercase winsock2.h
+
+Windows ships with `WinSock2.h` but mingw ships with `winsock2.h`.
+This is fine on Windows because files are case-insensitive, but on
+Linux it causes the compiler to not find the header.
+
+All other #includes are lowercase, so just use that.
+---
+ stun/tools/stund.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/stun/tools/stund.c b/stun/tools/stund.c
+index ed74c87..5d0987a 100644
+--- a/stun/tools/stund.c
++++ b/stun/tools/stund.c
+@@ -54,7 +54,7 @@
+ #include <sys/types.h>
+ 
+ #ifdef _WIN32
+-#include <WinSock2.h>
++#include <winsock2.h>
+ #else
+ #include <sys/socket.h>
+ #include <netdb.h>
+-- 
+2.26.2
+

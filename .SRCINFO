@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libnice
 	pkgdesc = An implementation of the IETF's draft ICE (for p2p UDP data streams) (mingw-w64)
-	pkgver = 0.1.16
+	pkgver = 0.1.17
 	pkgrel = 1
 	url = https://nice.freedesktop.org
 	arch = any
@@ -13,8 +13,22 @@ pkgbase = mingw-w64-libnice
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://gitlab.freedesktop.org/libnice/libnice.git#commit=5969b34e3acd9150506ed8d9d109c73665858f3e
+	source = git+https://gitlab.freedesktop.org/libnice/libnice.git#commit=5fb2511725a690a68ed9ace030931b78bc6fe92c
+	source = 0001-rand-Use-crypto-libs-instead-of-CryptGenRandom.patch
+	source = 0001-stund-Use-lowercase-winsock2.h.patch
+	source = 0002-meson-Fix-typos-in-crypto-library-detection.patch
+	source = 0001-interfaces-Add-debug-logging-to-sockaddr_to_string.patch
+	source = 0002-interfaces-Port-to-GetBestInterfaceEx-for-UWP-compat.patch
+	source = 0003-interfaces-Remove-unused-win32-code.patch
+	source = 0004-interfaces-Fix-fetching-of-interfaces-on-Win32.patch
 	sha256sums = SKIP
+	sha256sums = 60cb90e75a33fb1a7b27c3d44427292f57fef5e323bbc34059c882f7ac915fd7
+	sha256sums = 678ae8681958699e0f75ef203b6feead7cf3fd2693f11f6f05f4ff1bdc9317b8
+	sha256sums = c13cf63b6f53939349d7ef19713ce1b9b25a387a1bc185c596471017bcf3aa27
+	sha256sums = 71c1f26848645d635f08361859e0878fd818ed1730146f6f764dc1ecacd76beb
+	sha256sums = 57de9f9b97f05de2cc7c03fd76484b49f005285145252f7206ef4d5e56d21c3c
+	sha256sums = 398011d48d899713fc79b440ca8237488e3291939cb16885b618e5a8c8bcae1b
+	sha256sums = f888e748c970311303fe6b4e0761223c5966bd2eb57be4476d19def21881bc43
 
 pkgname = mingw-w64-libnice
 
