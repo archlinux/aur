@@ -1,18 +1,28 @@
-# Maintainer: Alex Epstein <epsteina@wit.edu>
-
-pkgname=Bash-Snippets
-pkgver=1.18.0
-pkgrel=2
+# Maintainer: Jona Miller <miller dot jona at yandex dot com>
+# Contributor: Alex Epstein <epsteina at wit dot edu>
+pkgname=bash-snippets
+pkgver=1.23.0
+pkgrel=1
 pkgdesc="A collection of small bash scripts for heavy terminal users"
 arch=('any')
 url="https://github.com/alexanderepstein/Bash-Snippets"
-license=("MIT")
-source=("https://github.com/alexanderepstein/Bash-Snippets/archive/v$pkgver.tar.gz")
-depends=("bash" "curl" "openssl" "git" "bc")
-sha256sums=("61602551a999448e9142489ad62d1e5da72a3b1354e010f1ee7135e4524d2eae")
+license=('MIT')
+depends=('bash' 'curl' 'openssl' 'git' 'bc')
+source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
+md5sums=('SKIP')
+_pkgname=Bash-Snippets
+_tools=(bak2dvd bash-snippets cheat cloudup crypt cryptocurrency currency geo \
+lyrics meme movies newton pwned qrify short siteciphers stocks taste todo \
+transfer weather ytview)
 
 package() {
-    tar -xf v$pkgver.tar.gz
-    cd Bash-Snippets-$pkgver
-    ./install.sh --prefix=/usr all
+  cd "$srcdir/$_pkgname-$pkgver"
+  for i in "${_tools[@]}"
+  do
+    echo "./$i/$i"
+    install -Dm755 ./$i/$i -t "$pkgdir/usr/bin/"
+  done
+  install -Dm644 ./bash-snippets.1 -t "$pkgdir/usr/share/man/man1/"
+  install -Dm644 ./README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 ./LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
