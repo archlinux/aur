@@ -1,0 +1,27 @@
+pkgbase = python-aws-okta-keyman
+	pkgdesc = AWS Okta Keyman
+	pkgver = 0.8.5
+	pkgrel = 1
+	url = https://github.com/nathan-v/aws_okta_keyman
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-colorlog
+	depends = python-beautifulsoup4
+	depends = python-requests
+	depends = python-boto3
+	depends = python-future
+	depends = python-pyaml
+	depends = python-keyring
+	source = https://files.pythonhosted.org/packages/source/a/aws-okta-keyman/aws_okta_keyman-0.8.5.tar.gz
+	sha256sums = 7dc9457011242b1d47af066d3b6acc1553ca655d9147f9b0c1212ceff97b2acc
+
+pkgname = python-aws-okta-keyman
+	depends = python-colorlog
+	depends = python-beautifulsoup4
+	depends = python-requests
+	depends = python-boto3
+	depends = python-future
+	depends = python-pyaml
+	depends = python-keyring
+
