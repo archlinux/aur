@@ -2,8 +2,8 @@
 pkgname=gba-tileeditor-git
 url="https://github.com/quentin-dev/gba-tileeditor"
 _gitname=gba-tileeditor
-pkgver=0.0.10
-pkgrel=4
+pkgver=0.0.10.r3.gc5e7c0d
+pkgrel=1
 pkgdesc="A Gameboy Advance tile editor"
 arch=(x86_64)
 license=('MIT')
@@ -14,7 +14,7 @@ md5sums=('SKIP' '847b6674e02e552783e6db33a11b6e53')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    git describe --tags $(git rev-list --tags --max-count=1) | tail -c +2
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
