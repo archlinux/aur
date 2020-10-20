@@ -1,12 +1,10 @@
 pkgbase = libgtextutils
 	pkgdesc = Gordon’s Text utils Library
 	pkgver = 0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/agordon/libgtextutils
 	arch = x86_64
 	makedepends = libtool
-	makedepends = autoconf
-	makedepends = automake
 	source = https://github.com/agordon/libgtextutils/archive/0.7.tar.gz
 	source = https://patch-diff.githubusercontent.com/raw/agordon/libgtextutils/pull/6.diff
 	sha256sums = 9eed751dea812ab247486f040754815bd3d0239557d0f91c0152d1b5b10dbc3e
