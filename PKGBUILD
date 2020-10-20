@@ -6,12 +6,12 @@
 
 pkgname=yosys-git
 pkgrel=1
-pkgver=r10243.9e00f3f1
+pkgver=0.9+3627.r10276.e919d0c1
 pkgdesc='A framework for RTL synthesis'
 arch=('x86_64' 'i686')
 url='http://www.clifford.at/yosys/'
 license=('custom:ISC')
-provides=("yosys")
+provides=("yosys=$pkgver")
 conflicts=("yosys")
 depends=('tcl' 'libffi' 'python' 'boost-libs')
 optdepends=('graphviz: Schematics display support' 'xdot: Design netlist display support')
