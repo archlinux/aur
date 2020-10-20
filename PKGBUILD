@@ -1,7 +1,7 @@
 pkgname='hastebin'
 release='1.1'
 pkgver="${release}.0"
-pkgrel=1
+pkgrel=2
 pkgdesc='Upload data to hastebin.com via stdin'
 license=('GPL2')
 url='https://github.com/kevr/hastebin'
