@@ -2,7 +2,7 @@
 
 pkgname=gnome-calendar-linuxmint
 _pkgname=gnome-calendar
-pkgver=3.36.1
+pkgver=3.38.1
 pkgrel=1
 pkgdesc='Simple and beautiful calendar application designed to perfectly fit the GNOME desktop. With Linux Mint patches'
 arch=(x86_64)
@@ -25,6 +25,7 @@ optdepends=(
 )
 makedepends=(
     appstream-glib
+    libhandy0
     git
     meson
     python
@@ -32,7 +33,7 @@ makedepends=(
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 groups=(gnome)
-_commit=ec23a9ae05b6a10de27144c9573c0ee220bed770  # tags/3.36.1^0
+_commit=3ccf609a7865b11248bc21b1dc1d29a174d48c87  # tags/3.38.1^0
 source=(
     "git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=$_commit"
     "add_cinnamon_settings_online_support.patch"
