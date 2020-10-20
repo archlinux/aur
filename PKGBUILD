@@ -3,7 +3,7 @@
 
 pkgname=vice-svn-sdl2
 _pkgname=vice-svn
-pkgver=r38746
+pkgver=r38865
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator (Commodore 64/C64) - SDL2 development version"
 arch=('i686' 'x86_64')
@@ -25,12 +25,7 @@ pkgver() {
 build() {
     cd "${_pkgname}/vice"
     ./autogen.sh
-    ./configure \
-    --prefix=/usr \
-    --libdir=/usr/lib \
-    --enable-external-ffmpeg \
-    --enable-x64 \
-    --enable-sdlui2 
+    ./configure --prefix=/usr --libdir=/usr/lib  --enable-external-ffmpeg  --enable-x64 --enable-sdlui2 
     make
 }
 
