@@ -59,7 +59,7 @@ _lqxpatchrel=15
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=5.8.16.lqx1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
@@ -149,21 +149,14 @@ prepare() {
     ### Disable MUQSS
         if [ -n "$_muqss_disable" ]; then
         echo "Disabling MUQSS..."
-        sed -i -e s'/^CONFIG_SCHED_MUQSS=y/# CONFIG_SCHED_MUQSS is not set/' ./.config	
+        scripts/config --disable CONFIG_SCHED_MUQSS
         fi
 
     ### Optionally disable NUMA for 64-bit kernels only
         # (x86 kernels do not support NUMA)
         if [ -n "$_NUMAdisable" ]; then
             echo "Disabling NUMA from kernel config..."
-            sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
-                -i -e '/# CONFIG_AMD_NUMA is not set/d' \
-                -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-                -i -e '/# CONFIG_NUMA_EMU is not set/d' \
-                -i -e '/CONFIG_NODES_SHIFT=6/d' \
-                -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-                -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
-                -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
+            scripts/config --disable CONFIG_NUMA
         fi
 
     ### Optionally load needed modules for the make localmodconfig
