@@ -1,0 +1,11 @@
+--- a/pyFltk-1.3.5/python/MakeSwig.py	2020-10-08 13:22:56.982973535 -0400
++++ b/pyFltk-1.3.5/python/MakeSwig.py	2020-10-16 13:17:11.787141444 -0400
+@@ -47,7 +47,7 @@
+     versionIdentifier = ""
+     if sys.version >= "3.0":
+         versionIdentifier = "-DPYTHON3 -py3"
+-    cmd_line = "swig -w312 -w451 -w473 -I../swig %s -DFL_EXPORT -DPYTHON %s -c++ -python -shadow -modern -fastdispatch -o fltk_wrap.cpp ../swig/fltk.i "%(add_incl, versionIdentifier)
++    cmd_line = "swig -w302 -w312 -w325 -w362 -w389 -w401 -w473 -w509 -I../swig %s -DFL_EXPORT -DPYTHON %s -c++ -python -shadow -fastdispatch -o fltk_wrap.cpp ../swig/fltk.i "%(add_incl, versionIdentifier)
+     # command line for swig-1.3.27
+     # cmd_line = "swig -w312 -w451 -w473 -I../swig %s -DFL_EXPORT -DPYTHON  -c++ -python -shadow -modern -dirprot -o fltk_wrap.cpp ../swig/fltk.i "%add_incl
+     if is_msys_mingw():

@@ -1,0 +1,133 @@
+--- a/pyFltk-1.3.5/python/MakeSwig.py	2020-10-16 13:17:11.787141444 -0400
++++ b/pyFltk-1.3.5/python/MakeSwig.py	2020-10-16 18:58:04.580305746 -0400
+@@ -32,6 +32,7 @@
+         #print(result)
+         if len(result) > 0:
+             p_inc = map(lambda x: x.strip(), result[0].split(' '))
++#            p_inc = [x.strip() for x in result[0].split(' ')]
+             for item in p_inc:
+                 #if string.find(item, '-I') == 0:
+                 if item.find('-I') == 0:
+--- a/pyFltk-1.3.5/python/updateInits.py	2020-10-08 13:22:56.982973535 -0400
++++ b/pyFltk-1.3.5/python/updateInits.py	2020-10-16 11:46:38.496560571 -0400
+@@ -65,7 +65,7 @@
+     
+     ifl = open(in_file, 'r')
+     for line in ifl.readlines():
+-        exec line
++        exec(line)
+ 
+     # write the footer
+     ofl.write("}\n")
+--- a/pyFltk-1.3.5/setup.py	2020-10-08 13:22:56.136300686 -0400
++++ b/pyFltk-1.3.5/setup.py	2020-10-16 20:24:04.518331788 -0400
+@@ -197,6 +197,7 @@
+         print("No compile flags found!")
+     else:
+         inc_list = map(lambda x: x.strip(), result[0].split(' '))
++#        inc_list = [x.strip() for x in result[0].split(' ')]
+     
+         for inc in inc_list:
+             if inc[:2] == '-I':
+@@ -211,6 +212,7 @@
+         print("No link flags found!")
+     else:
+         lib_list = map(lambda x: x.strip(), result[0].split(' '))
++#        lib_list = [x.strip() for x in result[0].split(' ')]
+     
+         for lib in lib_list:
+             if lib[:2] == '-l':
+--- a/pyFltk-1.3.5/test/PyAppWithGUI/app.py	2020-10-08 13:22:56.166300905 -0400
++++ b/pyFltk-1.3.5/test/PyAppWithGUI/app.py	2020-10-10 11:43:29.933237150 -0400
+@@ -7,7 +7,7 @@
+ import sys
+ 
+ def theBrowserCallback( ptr ):
+-	print "selected:"+str(gui.theBrowser.text(gui.theBrowser.value()))
++	print("selected:"+str(gui.theBrowser.text(gui.theBrowser.value())))
+ 
+ def theOKCallback(ptr):
+ 	sys.exit()
+--- a/pyFltk-1.3.5/test/arc.py	2020-10-08 13:22:56.146300759 -0400
++++ b/pyFltk-1.3.5/test/arc.py	2020-10-10 12:53:59.901605322 -0400
+@@ -71,14 +71,14 @@
+             fl_pop_matrix()
+             fl_pop_clip()
+         except:
+-            print('uncaught!', sys.exc_type, sys.exc_value)
++            print('uncaught!', sys.exc_info()[0], sys.exc_info()[1])
+         return None
+ 
+     
+ 
+ def slider_cb(ptr, v):
+     global d
+-    args[long(v)] = ptr.value()
++    args[int(v)] = ptr.value()
+     d.redraw()
+ 
+ 
+--- a/pyFltk-1.3.5/test/cube.py	2020-10-08 13:22:56.156300832 -0400
++++ b/pyFltk-1.3.5/test/cube.py	2020-10-10 14:31:04.535282880 -0400
+@@ -74,7 +74,7 @@
+ 			      gl_draw("Cube: flat", -4.5, -4.5)
+ 		      glEnable(GL_DEPTH_TEST)
+ 	      except:
+-		      print("Exception: ", sys.exc_type, sys.exc_value)
++		      print("Exception: ", sys.exc_info()[0], sys.exc_info()[1])
+ 
+ # the cube definition
+ v0 = [0.0, 0.0, 0.0]
+--- a/pyFltk-1.3.5/test/subwindow.py	2020-10-08 13:22:56.146300759 -0400
++++ b/pyFltk-1.3.5/test/subwindow.py	2020-10-10 14:49:51.137075639 -0400
+@@ -50,7 +50,7 @@
+ 				self.color(FL_RED)
+ 				self.redraw()
+ 			except:
+-				print('uncaught!', sys.exc_type, sys.exc_value)
++				print('uncaught!', sys.exc_info()[0], sys.exc_info()[1])
+ 			return 1
+ 		elif e == FL_LEAVE:
+ 			try:
+@@ -58,7 +58,7 @@
+ 				self.color(FL_GRAY)
+ 				self.redraw()
+ 			except:
+-				print('uncaught!', sys.exc_type, sys.exc_value)
++				print('uncaught!', sys.exc_info()[0], sys.exc_info()[1])
+ 			return 1
+ 		else:
+ 			return 0
+--- a/pyFltk-1.3.5/test/tree.py	2020-10-08 13:22:56.156300832 -0400
++++ b/pyFltk-1.3.5/test/tree.py	2020-10-16 21:16:41.245394864 -0400
+@@ -551,10 +551,10 @@
+ 
+ 
+ def cb_loaddb_button(loaddb_button, tree):
+-    filename = fl_file_chooser("Select a Preferences style Database", "Preferences(*.prefs)", long(0))
++    filename = fl_file_chooser("Select a Preferences style Database", "Preferences(*.prefs)", int(0))
+     if len(filename) > 0:
+         tree.clear()
+-        prefs = Fl_Preferences(filename, long(0), long(0))
++        prefs = Fl_Preferences(filename, int(0), int(0))
+         tree.load(prefs)
+         tree.redraw()
+ 
+@@ -565,7 +565,7 @@
+             tree.insert_above(item, "AaaAaa")
+             tree.insert_above(item, "BbbBbb")
+             tree.insert_above(item, "CccCcc")
+-        item = item.next()
++        item = next(item)
+     tree.redraw()
+ 
+ def cb_rebuildtree_button(rebuildtree_button, tree):
+@@ -607,7 +607,7 @@
+                 break
+             item = tree.first()
+         else:
+-            item = item.next()
++            item = next(item)
+     tree.redraw()
+ 
+ def cb_clearall_button(clearall_button, tree):
