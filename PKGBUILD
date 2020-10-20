@@ -1,6 +1,6 @@
 #Maintainer: Konstantin Gizdov <arch at kge dot pw>
 pkgname=send_email
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='Send emails in bare-bone environments with minimal requirements.'
 arch=(any)
@@ -10,7 +10,7 @@ depends=('coreutils' 'bash' 'curl')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/kgizdov/${pkgname}.sh/archive/v${pkgver}.tar.gz"
 )
-sha512sums=('525d790404966368a07e974a338c5f74bbbaf4fdafbc576cf8cc4b89e8b65a082d3cccfcf9b9a28dd9f1d7befd0a2217af1ad6ee5d1fbfe9129f1033ce553a5f')
+sha512sums=('285dca2d53c57f660498fc6ae9a6d29cb0ebf80447f1bd56623d6400a088d42d59405eb5f7acf6087bc23de911ed3e82efb8529793b99c9e19b35e969a289f82')
 validpgpkeys=('4BE61D684CB4E31741614E7089AA27231C530226')
 
 package () {

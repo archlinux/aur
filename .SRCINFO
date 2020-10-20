@@ -1,6 +1,6 @@
 pkgbase = send_email
 	pkgdesc = Send emails in bare-bone environments with minimal requirements.
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/kgizdov/send_email.sh
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = send_email
 	depends = coreutils
 	depends = bash
 	depends = curl
-	source = send_email-0.4.4.tar.gz::https://github.com/kgizdov/send_email.sh/archive/v0.4.4.tar.gz
+	source = send_email-0.4.5.tar.gz::https://github.com/kgizdov/send_email.sh/archive/v0.4.5.tar.gz
 	validpgpkeys = 4BE61D684CB4E31741614E7089AA27231C530226
-	sha512sums = 525d790404966368a07e974a338c5f74bbbaf4fdafbc576cf8cc4b89e8b65a082d3cccfcf9b9a28dd9f1d7befd0a2217af1ad6ee5d1fbfe9129f1033ce553a5f
+	sha512sums = 285dca2d53c57f660498fc6ae9a6d29cb0ebf80447f1bd56623d6400a088d42d59405eb5f7acf6087bc23de911ed3e82efb8529793b99c9e19b35e969a289f82
 
 pkgname = send_email
 
