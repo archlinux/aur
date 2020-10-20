@@ -1,0 +1,3 @@
+#!/usr/bin/execlineb -P
+fdmove -c 2 1
+exec /opt/teamviewer/tv_bin/teamviewerd
