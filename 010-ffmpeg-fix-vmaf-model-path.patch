@@ -1,4 +1,4 @@
-/libavfilter/vf_libvmaf.c
+--- a/libavfilter/vf_libvmaf.c
 +++ b/libavfilter/vf_libvmaf.c
 @@ -72,7 +72,7 @@ typedef struct LIBVMAFContext {
  #define FLAGS AV_OPT_FLAG_FILTERING_PARAM|AV_OPT_FLAG_VIDEO_PARAM
