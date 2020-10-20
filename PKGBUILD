@@ -48,15 +48,13 @@ _use_current=
 pkgbase=linux-rt-bfq-dev
 # pkgname=('linux-rt-bfq-dev' 'linux-rt-bfq-dev-headers' 'linux-rt-bfq-dev-docs')
 _major=5.9
-_minor=0
-_rtver=16
+_minor=1
+_rtver=17
 _rtpatchver=rt${_rtver}
-#pkgver=${_major}.${_minor}.${_rtpatchver}
-#_pkgver=${_major}.${_minor}
-pkgver=${_major}.${_rtpatchver}
-_pkgver=${_major}
+pkgver=${_major}.${_minor}.${_rtpatchver}
+_pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=4
+pkgrel=1
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -334,9 +332,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('d3d92ce4246bad74c9a784212f160d98449b1e8793970c2c308276568d852b8effe0528686bdb87d55d691f09a826abf7938d69bdd4759ce65ddd5c05ffe4eca'
+sha512sums=('96af08c1dc964e5dbb3d221880ef8ca246f13370d2dc2f5ae64039f0352efc687c7446a2b4f86dad553b776ee75f78bbf58bb9bc845c9b57a9013ece63264874'
             'SKIP'
-            'd032ea3f9887b6558a93db826b6f397520abad61228c70870f62c69d27ae599788f18f2a43b9a8f86e423ea74a42fa11e0709b28998a47a97eea5cd59c1b07da'
+            '5f6aca05245f59a244904284e50640a50b78659a4aa88e4ca77d15a03e0d2bb96991082b5d82662a56578626d2e8c7311514187a32008f7caf4037c61918930a'
             'SKIP'
             '7d30c34e75c2800d93c01e34ca23a00cda24d2f44bb837a48f6789c50ad69f7db4cc93d1fc75e43cfa4d4f4e9c612330dd595c56c13f8abb5d062338ea30697c'
             'cf634a9e0298adf1d05b7a8048ba2f89d4b8490cf48f1ab493cb40473116f360035b7fb3d8a54af980b1a49a1ad4dcfbc4ca69de8543b8bdf0a1d586908bd093'
