@@ -1,5 +1,5 @@
 pkgbase = sasview
-	pkgver = 5.0.0
+	pkgver = 5.0.3
 	pkgrel = 1
 	url = https://sasview.org
 	arch = x86_64
@@ -29,8 +29,8 @@ pkgbase = sasview
 	depends = python-qt5reactor
 	depends = python-service-identity
 	depends = python-pytest
-	source = sasview-5.0.0.tar.gz::https://github.com/SasView/sasview/archive/v5.0.0.tar.gz
-	md5sums = 7b8cd735932a0d422ff92d67a2396925
+	source = sasview-5.0.3.tar.gz::https://github.com/SasView/sasview/archive/v5.0.3.tar.gz
+	md5sums = fe4a96c271950171e5cf9a0b921e06ea
 
 pkgname = sasview
 
