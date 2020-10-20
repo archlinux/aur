@@ -2,11 +2,12 @@ USER = wfxr
 REPO = csview
 PKGDESC = A high performance csv viewer with cjk/emoji support
 PKGVER = 0.3.5
-PKGREL = 1
+PKGREL = 2
 
 MAINTAINER = $(shell git config user.name) <$(shell git config user.email)>
 PKGNAME = $(REPO)-bin
 BINNAME = $(REPO)
+CONFLICTS = ("$(REPO)" "$(REPO)-git")
 
 .PHONY: codegen
 codegen:
@@ -19,6 +20,7 @@ codegen:
 		-e 's#{{PKGDESC}}#$(PKGDESC)#g' \
 		-e 's#{{PKGVER}}#$(PKGVER)#g' \
 		-e 's#{{PKGREL}}#$(PKGREL)#g' \
+		-e 's#{{CONFLICTS}}#$(CONFLICTS)#g' \
 		PKGBUILD.tmpl > PKGBUILD
 	@sed -i "s/{{MD5SUM}}/$$(makepkg -g | grep -Po '[0-9a-f]{32}')/g" PKGBUILD
 	@makepkg --printsrcinfo > .SRCINFO

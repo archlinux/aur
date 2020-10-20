@@ -9,6 +9,7 @@ url="https://github.com/{{USER}}/{{REPO}}"
 license=("MIT" "APACHE")
 depends=()
 makedepends=("rust" "cargo")
+conflicts={{CONFLICTS}}
 
 source=("${binname}-v${pkgver}.tar.gz::https://github.com/{{USER}}/{{REPO}}/releases/download/v${pkgver}/${binname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 md5sums=('{{MD5SUM}}')

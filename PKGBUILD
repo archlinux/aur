@@ -2,13 +2,14 @@
 pkgname=csview-bin
 binname=csview
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance csv viewer with cjk/emoji support"
 arch=(i686 x86_64)
 url="https://github.com/wfxr/csview"
 license=("MIT" "APACHE")
 depends=()
 makedepends=("rust" "cargo")
+conflicts=("csview" "csview-git")
 
 source=("${binname}-v${pkgver}.tar.gz::https://github.com/wfxr/csview/releases/download/v${pkgver}/${binname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 md5sums=('c2cc034979579a68bdd62c2b7380b8f0')
