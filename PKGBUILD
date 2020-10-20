@@ -1,10 +1,10 @@
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
 
-_cudaarch="5.2;6.0;6.1;7.0;7.2;7.5;8.0"
+_cudaarch="5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6"
 _pkgname=mxnet
 pkgname=('mxnet-git' 'mxnet-cuda-git')
 _pkgver=2.0.0
-pkgver=2.0.0.r11362.ce1e68260e
+pkgver=2.0.0.r11368.defaafe078
 pkgrel=1
 pkgdesc='A flexible and efficient library for deep learning'
 arch=('x86_64')
