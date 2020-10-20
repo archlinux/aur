@@ -13,7 +13,7 @@ source=(http://www.muppetlabs.com/~breadbox/pub/software/$pkgname-${pkgver}b.tar
 md5sums=('02e9ac92557257d5f4ed5b7391d640fd')
 
 build() {
-  cd $srcdir/$pkgname-${pkgver}a
+  cd $srcdir/$pkgname-${pkgver}b
 
   ./configure --prefix=/usr --with-ncurses
 
