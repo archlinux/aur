@@ -4,7 +4,7 @@
 
 pkgname=nginx-mainline-mod-fancyindex
 pkgver=0.4.4
-pkgrel=2
+pkgrel=3
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.19.3
 pkgdesc="Fancy indexes module for the Nginx web server"
@@ -29,7 +29,8 @@ build() {
 }
 
 package() {  
-  for _mod in "$srcdir"/nginx-"$_nginxver"/objs/*.so; do
+  cd ""$srcdir/nginx-"$_nginxver/objs"
+  for _mod in *.so; do
 	install -D $_mod "$pkgdir/usr/lib/nginx/modules/$_mod"
   done
   install -Dm644 "$srcdir/ngx-$_modname-$pkgver/LICENSE" \
