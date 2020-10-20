@@ -4,7 +4,7 @@
 
 pkgname=flatbuffers-static
 _pkgname=flatbuffers
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='An efficient cross platform serialization library for C++, with support for Java, C# and Go'
 arch=(x86_64)
@@ -14,7 +14,7 @@ depends=(gcc-libs)
 makedepends=(cmake)
 options=('staticlibs')
 source=($pkgname-$pkgver.tar.gz::https://github.com/google/$_pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('3f4a286642094f45b1b77228656fbd7ea123964f19502f9ecfd29933fd23a50b')
+sha256sums=('62f2223fb9181d1d6338451375628975775f7522185266cd5296571ac152bc45')
 provides=('flatbuffers')
 conflicts=('flatbuffers')
 
@@ -27,7 +27,8 @@ build() {
   cmake ../$_pkgname-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_CXX_FLAGS="-Wno-ignored-qualifiers"
+    -DCMAKE_CXX_FLAGS="-Wno-ignored-qualifiers -Wno-error=class-memaccess" \
+    -DFLATBUFFERS_BUILD_SHAREDLIB=ON
   make
 }
 
