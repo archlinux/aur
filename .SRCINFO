@@ -1,0 +1,13 @@
+pkgbase = wizdom.ai
+	pkgdesc = The desktop application for wizdom.ai Library.
+	pkgver = 3.20.0907
+	pkgrel = 1
+	url = https://www.wizdom.ai
+	arch = x86_64
+	license = unknown
+	provides = wizdom.ai
+	source = wizdom.ai-3.20.0907.tar::https://app.wizdom.ai/wizdomUpdate?app=wizdom.ai.installer.v3.nix.64
+	sha256sums = SKIP
+
+pkgname = wizdom.ai
+
