@@ -1,5 +1,5 @@
 pkgbase = zoxide-bin
-	pkgdesc = A fast cd command that learns your habits
+	pkgdesc = A fast cd command that learns your habits (binary release)
 	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/ajeetdsouza/zoxide
