@@ -9,7 +9,7 @@
 
 pkgname=ansible-base-git
 pkgver=r50791.d18901dd4a
-pkgrel=2
+pkgrel=3
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
 url='https://github.com/ansible/ansible'
@@ -48,7 +48,4 @@ package() {
   install -d "${pkgdir}"/usr/share/ansible/doc
   cp -dpr --no-preserve=ownership ./examples "${pkgdir}"/usr/share/ansible/doc/
   install -Dm644 examples/ansible.cfg "${pkgdir}"/etc/ansible/ansible.cfg
-
-  install -d "${pkgdir}"/usr/share/man/man1
-  cp -dpr --no-preserve=ownership docs/man/man1/*.1 "${pkgdir}"/usr/share/man/man1
 }
