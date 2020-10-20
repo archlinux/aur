@@ -4,15 +4,15 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=noto-fonts-emoji
 pkgname=$_pkgname-git
-pkgver=2020.04.08.unicode12_1.r23.g8990ed0f
+pkgver=2020.09.16.unicode13_1.r0.gaac7ccaa
 pkgrel=1
 epoch=1
-pkgdesc="Noto Emoji fonts"
+pkgdesc="Google Noto emoji fonts"
 arch=('any')
 url="https://github.com/googlefonts/noto-emoji"
 license=('Apache')
 makedepends=('git' 'zopfli' 'python-fonttools' 'python-nototools' 'pngquant' 'cairo' 'imagemagick')
-provides=("$_pkgname")
+provides=("$_pkgname" 'emoji-font')
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
 md5sums=('SKIP')
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
 	cd $_pkgname
-	make VIRTUAL_ENV=dummy
+	make VIRTUAL_ENV=dummy BYPASS_SEQUENCE_CHECK=1
 }
 
 package() {
