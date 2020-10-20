@@ -9,7 +9,7 @@ url="https://textbrowser.github.io/dooble/"
 license=('BSD')
 depends=('qt5-webengine')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/textbrowser/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('bb445e649579af2c9296937fa1cf9a66ba4f7aeafc5482e1b30abb3c6f9c469a')
+sha256sums=('201002c2f8ad5f87c32612ef03551a918eb853966d573aad29084535e7741d98')
 
 prepare() {
   cd $pkgname-$pkgver/2.x

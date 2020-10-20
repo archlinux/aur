@@ -7,6 +7,6 @@ pkgbase = dooble
 	license = BSD
 	depends = qt5-webengine
 	source = dooble-2020.10.10.tar.gz::https://github.com/textbrowser/dooble/archive/2020.10.10.tar.gz
-	sha256sums = bb445e649579af2c9296937fa1cf9a66ba4f7aeafc5482e1b30abb3c6f9c469a
+	sha256sums = 201002c2f8ad5f87c32612ef03551a918eb853966d573aad29084535e7741d98
 
 pkgname = dooble
