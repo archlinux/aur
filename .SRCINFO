@@ -1,0 +1,15 @@
+pkgbase = libkcoidc
+	pkgdesc = Kopano OpenID Connection validation library
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://stash.kopano.io/projects/KC/repos/libkcoidc
+	arch = x86_64
+	license = AGPL
+	makedepends = go
+	makedepends = git
+	source = git+https://stash.kopano.io/scm/kc/libkcoidc.git#tag=v0.9.2?signed
+	validpgpkeys = 9DDB6CAD455D63112CAD26D8CA499C410B3C3354
+	sha512sums = SKIP
+
+pkgname = libkcoidc
+
