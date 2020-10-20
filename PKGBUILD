@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20201013.r0.gf2fb1afc5730
+pkgver=20201016.r0.gb2926c108f9f
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -121,23 +121,16 @@ prepare() {
     ### Optionally set tickrate to 1000
 	if [ -n "$_1k_HZ_ticks" ]; then
 		echo "Setting tick rate to 1k..."
-		sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
-                    -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
-                    -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' ./.config
+                scripts/config --disable CONFIG_HZ_300
+                scripts/config --enable CONFIG_HZ_1000
+                scripts/config --set-val CONFIG_HZ 1000
 	fi
 
     ### Optionally disable NUMA for 64-bit kernels only
         # (x86 kernels do not support NUMA)
         if [ -n "$_NUMAdisable" ]; then
             echo "Disabling NUMA from kernel config..."
-            sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
-                -i -e '/CONFIG_AMD_NUMA=y/d' \
-                -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-                -i -e '/# CONFIG_NUMA_EMU is not set/d' \
-                -i -e '/CONFIG_NODES_SHIFT=5/d' \
-                -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-                -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
-                -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
+            scripts/config --disable CONFIG_NUMA
         fi
 
     ### Optionally load needed modules for the make localmodconfig
