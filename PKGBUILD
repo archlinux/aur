@@ -32,6 +32,6 @@ check() {
 }
 
 package() {
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "${srcdir}/werf/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm755 "${srcdir}/werf/werf" "${pkgdir}/usr/bin/werf"
 }
