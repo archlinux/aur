@@ -1,14 +1,14 @@
 # Maintainer: Charles Vejnar
 
 pkgname=star-cshl
-pkgver=2.7.5b
+pkgver=2.7.6a
 pkgrel=1
 pkgdesc="STAR aligns RNA-seq reads to a reference genome using uncompressed suffix arrays"
 arch=("i686" "x86_64")
 url="https://github.com/alexdobin/STAR"
 license=("GPL3")
 source=("https://github.com/alexdobin/STAR/archive/${pkgver}.tar.gz")
-sha1sums=("d12fbaca5072f46550228cdfecc8e7a4c2654cb5")
+sha1sums=("6ef75bf95b672c22883dace1255bfa1ec2857a38")
 
 build() {
     cd "$srcdir/STAR-${pkgver}/source"
