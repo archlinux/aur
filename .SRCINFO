@@ -1,0 +1,16 @@
+pkgbase = edge
+	pkgdesc = Cross-platform web browser based on Chromium
+	pkgver = 88.0.673.0
+	pkgrel = 1
+	url = https://www.microsoft.com/en-us/edge
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = nss
+	noextract = microsoft-edge-dev_88.0.673.0-1_amd64.deb
+	options = !strip
+	source = https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_88.0.673.0-1_amd64.deb
+	sha256sums = ffd002c232bfb54f23648bd56e4bec60c74eae35c19f1e45c15e84a2a114d3e1
+
+pkgname = edge
+
