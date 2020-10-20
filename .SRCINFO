@@ -1,0 +1,14 @@
+pkgbase = plymouth-theme-arch10
+	pkgdesc = Windows10-like Archlinux boot splash theme for Plymouth
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/manilarome/plymouth-theme-arch10
+	install = plymouth-theme-arch10.install
+	arch = any
+	license = GPL2
+	depends = plymouth
+	source = https://github.com/manilarome/plymouth-theme-arch10/releases/download/v1/plymouth-theme-arch10-1.tar.gz
+	sha512sums = 27da8d82b730736cd37d7591b029ddb302e80855f6791e65fffeae3f5cfd6363986dbe8b3b447a72bdd57869bbf94e253e45f008e4d3139f01aa456634f08740
+
+pkgname = plymouth-theme-arch10
+
