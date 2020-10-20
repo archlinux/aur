@@ -1,0 +1,20 @@
+pkgbase = fspropfaker
+	pkgdesc = File-system property faker library based on fuse
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://efanomars.com/libraries/fspropfaker
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = python
+	depends = fuse
+	source = https://efanomars.com/sources/fspropfaker-0.1.tar.gz
+	sha256sums = 2e71524572e83e17e2205a5308e07fbb0538449e1b48866796c46be823e4be34
+
+pkgname = fspropfaker
+
