@@ -1,0 +1,21 @@
+pkgbase = service6-git
+	pkgdesc = user-friendy control of s6-rc
+	pkgver = 43.15f048f
+	pkgrel = 1
+	url = https://github.com/misho88/service6
+	arch = any
+	license = GPL
+	makedepends = make
+	makedepends = git
+	depends = s6-rc
+	depends = python-argcomplete
+	depends = python-natsort
+	depends = python-blessed
+	optdepends = bash-completion
+	provides = service6
+	conflicts = service6
+	source = git+https://github.com/misho88/service6.git
+	md5sums = SKIP
+
+pkgname = service6-git
+
