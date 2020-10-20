@@ -2,22 +2,23 @@
 # <billyburly [at] gmail [dot] com>
 pkgname=crashplan-pro
 _pkgname=crashplan
-pkgver=8.2.2
-_pkgtimestamp=1525200006822
-_pkgbuild=26
-pkgrel=2
+pkgver=8.5.0
+_pkgtimestamp=1525200006850
+_pkgbuild=446
+pkgrel=0
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
 arch=('x86_64')
 license=('custom')
-depends=('bash' 'java-runtime-headless=8' 'alsa-lib' 'gconf' 'gtk3' 'libxss' 'inetutils')
+depends=('bash' 'java-runtime-headless=8' 'alsa-lib' 'gtk3' 'libxss' 'inetutils')
+# We are trying without gconf or gtk3
 makedepends=('cpio')
 conflicts=('crashplan')
 install=crashplan-pro.install
 source=(https://download.code42.com/installs/agent/cloud/${pkgver}/${_pkgbuild}/install/CrashPlanSmb_${pkgver}_${_pkgtimestamp}_${_pkgbuild}_Linux.tgz
         crashplan-pro
         crashplan-pro.service)
-sha1sums=('896d6bcdd2682120f31c2629de013efb197a44df'
+sha1sums=('ba63e1c4725f8788419eaa4b3657f114c909b37d'
           'c6bf34f1b0ba0bd8d9eb04f6b300112e3c053f84'
           'f01486b90dafe714a69d20aaa873153ce069af13')
 options=(!strip)
