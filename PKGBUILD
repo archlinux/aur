@@ -25,6 +25,10 @@ build() {
     cd "$srcdir/$pkgname"
     cmake -DCMAKE_INSTALL_PREFIX=/usr .
     make
+}
+
+check() {
+    cd "$srcdir/$pkgname"
     make test
 }
 
