@@ -8,7 +8,7 @@ url='https://github.com/kevr/sprunge'
 
 arch=('i686' 'x86_64' 'armv6h')
 depends=('python')
-optdepends=('xclip: default --clip-command.')
+optdepends=('xclip: default --clip-command')
 source=("${url}/archive/${release}.tar.gz")
 sha256sums=(
     'd806968a85def53a22b9674ffddb0c4a2b1f42b01cdd83a53d68b79caa6e81ff'
