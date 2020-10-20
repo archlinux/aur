@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-srt
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Secure Reliable Transport library (mingw-w64)"
 url="https://www.srtalliance.org/"
 arch=('any')
@@ -20,6 +20,7 @@ build() {
 		mkdir -p build-${_arch} && pushd build-${_arch}
   	${_arch}-cmake \
 			-DCMAKE_INSTALL_BINDIR=/usr/${_arch}/bin \
+			-DCMAKE_INSTALL_INCLUDEDIR=/usr/${_arch}/include \
 			..
 		make
 		popd
