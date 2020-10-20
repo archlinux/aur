@@ -1,20 +1,21 @@
 pkgbase = swapper
 	pkgdesc = Swap tiles to remove them
-	pkgver = 0.25
+	pkgver = 0.26
 	pkgrel = 1
 	url = https://efanomars.com/games/swapper
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = python
-	depends = stmm-games>=0.25
-	depends = stmm-input>=0.14
+	depends = stmm-games>=0.26
+	depends = stmm-input>=0.15
 	depends = gtkmm3
-	source = https://efanomars.com/sources/swapper-0.25.tar.gz
-	sha256sums = c92f8b3f5131878b3210a33de64aeeed176d1990918075a74f44842e4d28425d
+	source = https://efanomars.com/sources/swapper-0.26.tar.gz
+	sha256sums = 38623155837e7ee4840cf532f3ae35a1be43dbe4c0dab3a1d5e8d68769d2252d
 
 pkgname = swapper
 
