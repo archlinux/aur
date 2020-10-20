@@ -7,8 +7,8 @@ pkgbase = lisgd
 	license = MIT
 	source = lisgd-0.1.1.tar.gz::https://git.sr.ht/~mil/lisgd/archive/0.1.1.tar.gz
 	source = Makefile.patch
-	md5sums = 088a38d9938e46829295f17294158c1d
-	md5sums = SKIP
+	sha1sums = cae9863918604ffd4c01f2ce30425eecd45c56c9
+	sha1sums = 601e3fa3cf64bc9b5b2509ee60099b95c79979d0
 
 pkgname = lisgd
 
