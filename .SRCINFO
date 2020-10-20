@@ -1,9 +1,16 @@
 pkgbase = intel-ucode-clear
+	pkgdesc = Intel cpu microcode and i915 firmware used by Clear Linux
 	pkgver = 33600
 	pkgrel = 1
+	url = https://clearlinux.org/
 	arch = x86_64
+	provides = intel-ucode
+	source = 33600-Manifest.linux-firmware::https://cdn.download.clearlinux.org/update/33600/Manifest.linux-firmware
+	source = 33600-00-intel-ucode.cpio.tar::https://cdn.download.clearlinux.org/update/33600/files/dafc994b611551d56ec40fafe77f552770d5e1c72b870e323191a95c8abf2700.tar
+	source = 33600-i915-firmware.cpio.xz.tar::https://cdn.download.clearlinux.org/update/33600/files/17f0707b6321d2cc43db42468197677177e3c2c07712b026d28716595128a5cd.tar
+	sha256sums = cc64eee07250a31d7b07b80345838242c384516bafc52b6415ed5f286d9e6caf
+	sha256sums = 3258b131aecf607a901f56d550da3fb3c063ee530fbd7cfc7b6f79e4991a2f9a
+	sha256sums = 6bda1869f067d19c8a97093821b76e085ed8bd76b255fdf24c8dc9de4aa437b9
 
 pkgname = intel-ucode-clear
-	pkgdesc = intel cpu microcode and i915 firmware used by clear linux
-	provides = intel-ucode
 
