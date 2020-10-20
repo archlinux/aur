@@ -1,7 +1,7 @@
 pkgbase = edge
 	pkgdesc = Cross-platform web browser based on Chromium
 	pkgver = 88.0.673.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/en-us/edge
 	arch = x86_64
 	license = custom
