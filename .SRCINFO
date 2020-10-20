@@ -1,0 +1,16 @@
+pkgbase = flux-git
+	pkgdesc = flux is an interface description language used by DirectFB
+	pkgver = 1.4.4.r0.e45758a
+	pkgrel = 1
+	url = https://github.com/deniskropp/flux
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gcc-libs
+	provides = flux
+	conflicts = flux
+	source = flux::git+https://github.com/deniskropp/flux.git#branch=master
+	md5sums = SKIP
+
+pkgname = flux-git
+
