@@ -1,0 +1,26 @@
+# Maintainer: {{MAINTAINER}}
+pkgname={{PKGNAME}}
+binname={{BINNAME}}
+pkgver={{PKGVER}}
+pkgrel={{PKGREL}}
+pkgdesc="{{PKGDESC}}"
+arch=(i686 x86_64)
+url="https://github.com/{{USER}}/{{REPO}}"
+license=("MIT" "APACHE")
+depends=()
+makedepends=("rust" "cargo")
+
+source=("${binname}-v${pkgver}.tar.gz::https://github.com/{{USER}}/{{REPO}}/releases/download/v${pkgver}/${binname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
+md5sums=('{{MD5SUM}}')
+
+package() {
+	cd "${srcdir}/${binname}-v${pkgver}-x86_64-unknown-linux-gnu"
+	install -Dm755 "${binname}"                       "$pkgdir/usr/bin/${binname}"
+	install -Dm644 "completions/fish/${binname}.fish" "$pkgdir/usr/share/fish/vendor_completions.d/${binname}.fish"
+	install -Dm644 "completions/zsh/_${binname}"      "$pkgdir/usr/share/zsh/site-functions/_${binname}"
+	install -Dm644 "README.md"                        "$pkgdir/usr/share/doc/${binname}/README.md"
+	install -Dm644 "LICENSE-MIT"                      "$pkgdir/usr/share/licenses/${binname}/LICENSE-MIT"
+	install -Dm644 "LICENSE-APACHE"                   "$pkgdir/usr/share/licenses/${binname}/LICENSE-APACHE"
+}
+
+# vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
