@@ -12,7 +12,7 @@ optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
             'lxsession: needed for authentification in Xfce, LXDE etc.'
 	    'libappindicator-gtk3: needed for tray icon')
 
-makedepends=('meson')
+makedepends=('meson' 'desktop-file-utils' 'appstream-glib')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}_${pkgver}.orig.tar.gz"::"https://github.com/vagnum08/cpupower-gui/archive/v${pkgver}.tar.gz")
