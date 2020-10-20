@@ -9,7 +9,7 @@ pkgver='5.3.0'
 pkgrel='4'
 pkgdesc='A library for cooperative threads in OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/ocsigen/lwt"
+url="https://github.com/ocsigen/$_projectname"
 license=('MIT')
 depends=('libev' 'ocaml>=4.02.0' 'ocaml-mmap>=1.1.0' 'ocaml-ocplib-endian' 'ocaml-result' 'ocaml-seq' 'ocaml-migrate-parsetree>=1.5.0' 'ocaml-ppx_tools_versioned>=5.3.0' 'ocaml-react>=1.0.0')
 makedepends=('cppo>=1.1.0' 'dune>=1.8.0')
