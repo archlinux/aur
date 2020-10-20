@@ -1,16 +1,17 @@
+# Contributor: Dylan Delgado <dylan1496@live.com>
 # Contributor: Marcos Heredia <chelqo@gmail.com>
 
 _font="cabin-sketch"
 _group="impallari"
 pkgname=ttf-${_group}-${_font}
 pkgver=1.100
-pkgrel=1
+pkgrel=2
 pkgdesc="Other humanist sans inspired by Edward Johnston's and Eric Gill's typefaces, from Pablo Impallari"
 arch=(any)
 url="http://www.impallari.com/cabinsketch/"
 license=('custom:OFL')
 groups=("${_group}-fonts")
-depends=('fontconfig' 'xorg-font-utils')
+depends=()
 #install=updatefont.install
 source=("${_font}-${pkgver}.zip::https://github.com/impallari/CabinSketch/archive/master.zip")
 md5sums=('b6ed40b8bcc486a2bb5442a853286eee')
