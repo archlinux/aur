@@ -5,6 +5,7 @@ pkgbase = lisgd
 	url = https://git.sr.ht/~mil/lisgd
 	arch = any
 	license = MIT
+	depends = libinput
 	source = lisgd-0.1.1.tar.gz::https://git.sr.ht/~mil/lisgd/archive/0.1.1.tar.gz
 	source = Makefile.patch
 	sha1sums = cae9863918604ffd4c01f2ce30425eecd45c56c9
