@@ -2,7 +2,7 @@
 
 pkgname=libplasma
 _pkgname=plasma
-pkgver=19.8.1
+pkgver=20.9.20
 pkgrel=1
 pkgdesc="Parallel Linear Algebra Software for Multicore Architectures"
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('cblas' 'lapacke' 'gcc-libs')
 makedepends=('cmake')
 source=("$url/downloads/$_pkgname-$pkgver.tar.gz")
-sha256sums=('3a5db6eabf91aec782b7f27b17a7f6b8ce2c9d8e648c0e9c0ff5d87277ba4d17')
+sha256sums=('2144a77b739f8dd2f0dbe5b64d94cde0e916f55c4eb170facd168c0db7fc7970')
 
 build() {
   mkdir "$srcdir/build"
