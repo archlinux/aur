@@ -9,10 +9,16 @@ license=('APACHE')
 makedepends=(mingw-w64-cmake)
 groups=("mingw-w64-vulkan-devel")
 options=(!buildflags staticlibs !strip)
-source=("https://github.com/KhronosGroup/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('dbc121f58641acd45c386ee96ecd5e10a124c489087443d7367fff4b53b49283')
+source=("https://github.com/KhronosGroup/${_pkgname}/archive/v${pkgver}.tar.gz"
+        "https://github.com/KhronosGroup/Vulkan-Headers/pull/155.patch")
+sha256sums=('dbc121f58641acd45c386ee96ecd5e10a124c489087443d7367fff4b53b49283' SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  patch -p1 -i "${srcdir}"/155.patch
+}
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"

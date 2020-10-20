@@ -11,7 +11,9 @@ pkgbase = mingw-w64-vulkan-headers
 	options = staticlibs
 	options = !strip
 	source = https://github.com/KhronosGroup/Vulkan-Headers/archive/v1.2.157.tar.gz
+	source = https://github.com/KhronosGroup/Vulkan-Headers/pull/155.patch
 	sha256sums = dbc121f58641acd45c386ee96ecd5e10a124c489087443d7367fff4b53b49283
+	sha256sums = SKIP
 
 pkgname = mingw-w64-vulkan-headers
 
