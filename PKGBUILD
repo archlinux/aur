@@ -1,7 +1,8 @@
+
 # Maintainer: dszryan
 pkgname=pacmanity-git
 pkgver=r53.e181875
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="Keeps a list of installed packages in a Gist at your GitHub account"
 arch=('x86_64' 'i686')
@@ -24,7 +25,7 @@ build() {
   echo "by Pacmanity in a private Gist at your GitHub account."
 
   echo -e "\n- Step 1: Log in to Gist using your GitHub account:"
-  [[ -f ~/.gist ]] || gist --login # dont save login details in package, due to securiry concerns
+  [[ -n "$SKIP_LOGIN" ]] || gist --login # dont save login details in package, due to securiry concerns
 
   # if file is present, assume it is maanged externally (via a build system)
   [[ -r /etc/pacmanity ]] && source /etc/pacmanity
