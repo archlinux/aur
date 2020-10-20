@@ -5,7 +5,7 @@
 pkgbase=bullet-multithreaded
 pkgname=('bullet-multithreaded' 'bullet-multithreaded-docs' 'python-pybullet-multithreaded')
 pkgver=3.05
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D Collision Detection and Rigid Body Dynamics Library with multithreading support"
 arch=('x86_64')
 url="http://www.bulletphysics.com/Bullet/"
@@ -44,7 +44,7 @@ package_bullet-multithreaded() {
     optdepends=('glu: for the example browser'
                             'python: python bindings'
                             'python-numpy: python bindings'
-                            'bullet-openmp-docs: documentation')
+                            'bullet-multithreaded-docs: documentation')
     provides=('bullet')
     conflicts=('bullet')
 
