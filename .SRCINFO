@@ -1,15 +1,17 @@
-pkgbase = fastx-toolkit
-	pkgdesc = collection of command line tools for Short-Reads FASTA/FASTQ files preprocessing.
+pkgbase = fastx_toolkit
+	pkgdesc = The FASTX-Toolkit is a collection of command line tools for Short-Reads FASTA/FASTQ files preprocessing.
 	pkgver = 0.0.14
 	pkgrel = 1
 	url = https://github.com/agordon/fastx_toolkit
-	arch = x86_64
-	makedepends = libtool
-	makedepends = autoconf
-	makedepends = automake
+	arch = any
+	license = AGPL3
+	depends = perl
+	depends = perl-perlio-gzip
+	depends = perl-gd
+	depends = gnuplot
 	depends = libgtextutils
-	source = https://github.com/agordon/fastx_toolkit/archive/0.0.14.tar.gz
-	sha256sums = af4f9fe59f8c91bdd2d735bdac1fd89f0549b2bc759313fe3b86948056aad1aa
+	source = https://github.com/agordon/fastx_toolkit/releases/download/0.0.14/fastx_toolkit-0.0.14.tar.bz2
+	md5sums = bf1993c898626bb147de3d6695c20b40
 
-pkgname = fastx-toolkit
+pkgname = fastx_toolkit
 

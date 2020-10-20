@@ -1,23 +1,30 @@
-pkgname=fastx-toolkit
+# Maintainer: Saulius Lukauskas < luksaulius at gmail com >
+
+pkgname=fastx_toolkit
 pkgver=0.0.14
 pkgrel=1
-arch=(x86_64)
-pkgdesc='collection of command line tools for Short-Reads FASTA/FASTQ files preprocessing.'
+pkgdesc="The FASTX-Toolkit is a collection of command line tools for Short-Reads FASTA/FASTQ files preprocessing."
+arch=("any")
 url="https://github.com/agordon/fastx_toolkit"
-source=("$url/archive/$pkgver.tar.gz")
-makedepends=(libtool autoconf automake)
-depends=(libgtextutils)
-sha256sums=('af4f9fe59f8c91bdd2d735bdac1fd89f0549b2bc759313fe3b86948056aad1aa')
+license=('AGPL3')
+depends=('perl' 'perl-perlio-gzip' 'perl-gd' 'gnuplot' 'libgtextutils')
+source=("https://github.com/agordon/fastx_toolkit/releases/download/0.0.14/fastx_toolkit-0.0.14.tar.bz2")
+md5sums=('bf1993c898626bb147de3d6695c20b40')
 
+prepare() {
+    cd ${pkgname}-${pkgver}
+    # https://github.com/agordon/fastx_toolkit/pull/22
+    sed -i 's/usage();/usage(); break;/g' src/fasta_formatter/fasta_formatter.cpp
+}
 build() {
-	cd "$srcdir/fastx_toolkit-$pkgver"
-	
-	./reconf
-	./configure --prefix="$pkgdir/usr"
-	make
+		cd ${pkgname}-${pkgver}
+        ./configure --prefix=${pkgdir}/usr
+		make
 }
 
 package() {
-	cd "$srcdir/fastx_toolkit-$pkgver"
-	make install
+    cd ${pkgname}-${pkgver}
+    make install
+    # Not sure why it tries to install these but they're not necessary
+    rm -rf "${pkgdir}/usr/share"
 }
