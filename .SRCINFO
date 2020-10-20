@@ -9,7 +9,7 @@ pkgbase = 8188eu-aircrack-dkms-git
 	license = GPL
 	makedepends = git
 	depends = dkms
-	provides = 8188eu
+	provides = 8188eu-dkms
 	conflicts = 8188eu-dkms
 	conflicts = 8188eu-dkms-git
 	source = 8188eu::git+https://github.com/aircrack-ng/rtl8188eus#branch=v5.3.9

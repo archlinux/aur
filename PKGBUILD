@@ -11,7 +11,7 @@ url="https://github.com/aircrack-ng/rtl8188eus"
 license=('GPL')
 depends=('dkms')
 makedepends=('git')
-provides=('8188eu')
+provides=('8188eu-dkms')
 conflicts=('8188eu-dkms' '8188eu-dkms-git')
 source=("${_pkgname}::git+${url}#branch=v${_pkgver}"
         'blacklist-r8188eu.conf')
