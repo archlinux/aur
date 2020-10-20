@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Polaric-Connect
+Exec=polaric-connect
+Icon=polaric-connect.png
+Terminal=false
