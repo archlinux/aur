@@ -10,7 +10,7 @@ license=('Apache')
 url="https://github.com/werf/werf"
 provides=("${_appname_}-bin" "${_appname_}")
 conflicts=("${_appname_}-bin" "${_appname_}")
-makedepends=('git')
+makedepends=('git' 'curl')
 source=("git+https://github.com/werf/werf.git")
 sha256sums=('SKIP')
 
