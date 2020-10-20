@@ -9,7 +9,7 @@ pkgver='0.129.0.r10753.g547988d89'
 pkgrel='1'
 pkgdesc='A static type checker for JavaScript - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://$_pkgname.org/"
+url="https://$_pkgname.org"
 license=('MIT')
 optdepends=('bash-completion: Bash completion')
 makedepends=('git' 'ocaml>=4.07.1' 'dune' 'ocamlbuild' 'ocaml-findlib' 'ocaml-base>=0.11.1' 'ocaml-dtoa>=0.3.1' 'ocaml-lwt>=4.5.0' 'ocaml-lwt_log>=1.1.0' 'ocaml-migrate-parsetree' 'ocaml-ppx_deriving' 'ocaml-ppx_gen_rec' 'ocaml-ppx_let>=0.11.0' 'ocaml-ppx_tools_versioned' 'ocaml-sedlex>=2.1' 'ocaml-visitors' 'ocaml-wtf8')
