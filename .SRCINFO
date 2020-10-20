@@ -1,0 +1,16 @@
+pkgbase = hastebin-git
+	pkgdesc = Upload data to hastebin via stdin
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/kevr/hastebin
+	arch = any
+	license = GPL2
+	depends = python
+	depends = python-requests
+	optdepends = xclip: default --clip-command
+	conflicts = hastebin
+	source = git+https://github.com/kevr/hastebin
+	sha256sums = SKIP
+
+pkgname = hastebin-git
+
