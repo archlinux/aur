@@ -1,0 +1,33 @@
+pkgbase = microsoft-edge-dev
+	pkgdesc = Microsoft Edge is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier
+	pkgver = 88.0.673.0
+	pkgrel = 1
+	url = https://www.microsoftedgeinsider.com/en-us/download
+	arch = x86_64
+	license = Microsoft Edge License
+	makedepends = w3m
+	makedepends = imagemagick
+	depends = gtk3
+	depends = libcups
+	depends = nss
+	depends = alsa-lib
+	depends = libxtst
+	depends = libdrm
+	depends = mesa
+	optdepends = libpipewire02: WebRTC desktop sharing under Wayland
+	optdepends = kdialog: for file dialogs in KDE
+	optdepends = gnome-keyring: for storing passwords in GNOME keyring
+	optdepends = kwallet: for storing passwords in KWallet
+	optdepends = gtk3-print-backends: for printing
+	optdepends = libunity: for download progress on KDE
+	optdepends = ttf-liberation: fix fonts for some PDFs - CRBug #369991
+	optdepends = xdg-utils
+	options = !strip
+	options = !zipman
+	source = https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_88.0.673.0-1_amd64.deb
+	source = Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf
+	sha256sums = ffd002c232bfb54f23648bd56e4bec60c74eae35c19f1e45c15e84a2a114d3e1
+	sha256sums = edf2ed596eb068f168287fc76aa713ad5e0afb59f0a0a47a4f29c0c124ade15e
+
+pkgname = microsoft-edge-dev
+
