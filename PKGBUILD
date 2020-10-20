@@ -15,12 +15,12 @@ _makenconfig=
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
+_localmodcfg=y
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.9
+pkgver=5.9.1
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -33,7 +33,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_bmqversion=5.9-r0
+_bmqversion=5.9-r1
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v='20200615'
 source=(
@@ -42,22 +42,24 @@ source=(
   "0000-sphinx-workaround.patch"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=56c7f1acc778e6e90ea7777c0d3d217ccf3e470e"
-  "bmq-compilation-fix.patch::https://gitlab.com/alfredchen/linux-prjc/-/commit/12a53f318624a4cbc902a704cd5741dce67b647d.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=c7c51372f02b8b45275897e5728ef28a35b82658"
+  "0002-Restore-acpi_walk_dep_device_list-getting-called-aft.patch::https://git.archlinux.org/linux.git/patch/?id=94d41d2b670111855a361a35806ebac8d2444042"
+  "bmq-fix-compilation-nr_cpus.patch::https://gitlab.com/alfredchen/linux-prjc/-/commit/c6e352a26de8e46f5737fed2b876516df82adad1.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06'
+sha256sums=('ba4a11e93896305835c630969cf330ae808b0e43f09b375b510cde1bd0efc036'
             'SKIP'
-            'e996108e858a78c1acd138fbf2717aa0bd37ee0d9ffbfbe87344161a0233261c'
+            'b47902218bd273f35afa77ef4adfc6f434e8fbdfc46bbd902ae2ea742ed88655'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
-            'c3474793766a17c1770ada445c07c126e5278493d0056b5d28a69109b422e546'
+            'a18dee6e4eeb677adef61b4e695cbb800a9aa88e3f6673a6dcfef8a840dee0cc'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
             '1d0975a43d3ac7e777d53a0bbd96556aa6b24e3f098075980865cdb691cb654a'
-            'e42f35097254c5f81878ebd42155351d6353b62671a7d31f28e0e8ee4b6e540c')
+            'e06508b783c3aecbe4048cae75ea1edbebc9bd18c247d4d252fdea628ea735f6'
+            '7cc22759cb74e884b2dcd603d760adb451fd1f2e5d24d472c32811b254566b7a')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -92,8 +94,8 @@ prepare() {
 
   echo "Applying patch ${_bmq_patch}..."
   patch -Np1 -i "$srcdir/${_bmq_patch}"
-  echo "Applying patch bmq-compilation-fix.patch..."
-  patch -Np1 -i "$srcdir/bmq-compilation-fix.patch"
+  echo "Applying patch bmq-fix-compilation-nr_cpus.patch..."
+  patch -Np1 -i "$srcdir/bmq-fix-compilation-nr_cpus.patch"
 
   # non-interactively apply ck1 default options
   # this isn't redundant if we want a clean selection of subarch below
