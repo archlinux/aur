@@ -1,0 +1,18 @@
+pkgbase = croc-git
+	pkgdesc = Easily and securely send things from one computer to another
+	pkgver = 8.5.2.r2.gf562400
+	pkgrel = 1
+	url = https://schollz.com/blog/croc6/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = croc
+	conflicts = croc
+	source = git+https://github.com/schollz/croc.git
+	sha256sums = SKIP
+
+pkgname = croc-git
+
