@@ -1,20 +1,22 @@
 pkgbase = stmm-input-au
 	pkgdesc = Device input event library - sound playback
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://efanomars.com/libraries/stmm-input-au
 	arch = x86_64
+	arch = i686
+	arch = aarch64
 	license = LGPL3
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = python
-	depends = stmm-input>=0.14
+	depends = stmm-input>=0.15
 	depends = alure
 	depends = glibmm
-	source = https://efanomars.com/sources/stmm-input-au-0.7.tar.gz
-	sha256sums = f8b775d93a88b7dd5584b021656dd64899c28c4b68e7f1e8817ebed1fc7f9d42
+	source = https://efanomars.com/sources/stmm-input-au-0.8.tar.gz
+	sha256sums = cc5ac16df60e9817ce414d65253458d30c00906bd8929e224fe3a1c0a52cdf11
 
 pkgname = stmm-input-au
 
