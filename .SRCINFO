@@ -1,7 +1,7 @@
 pkgbase = ansible-base-git
 	pkgdesc = Radically simple IT automation platform
 	pkgver = r50791.d18901dd4a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ansible/ansible
 	arch = any
 	license = GPL3
