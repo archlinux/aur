@@ -1,0 +1,21 @@
+pkgbase = sigpy
+	pkgdesc = A package for signal processing, with emphasis on iterative methods.
+	pkgver = 0.1.21
+	pkgrel = 1
+	url = https://github.com/mikgroup/sigpy
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python>=3.5
+	depends = python-tqdm
+	depends = python-numpy
+	depends = python-numba
+	depends = python-pywavelets
+	optdepends = python-cupy: CUDA support
+	optdepends = python-matplotlib: plotting
+	optdepends = python-mpi4py: MPI support
+	source = https://files.pythonhosted.org/packages/source/s/sigpy/sigpy-0.1.21.tar.gz
+	sha256sums = 9e5e58ed155502bbe97267db6821a0831f42edd8b6e58e8d0be767d4e49f2137
+
+pkgname = sigpy
+
