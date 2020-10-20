@@ -1,0 +1,18 @@
+pkgbase = vmtouch-git
+	pkgdesc = Portable file system cache diagnostics and control
+	pkgver = 1.3.1.r8.g3382336
+	pkgrel = 1
+	url = https://hoytech.com/vmtouch/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = perl
+	depends = glibc
+	provides = vmtouch
+	conflicts = vmtouch
+	source = git+https://github.com/hoytech/vmtouch.git
+	sha256sums = SKIP
+
+pkgname = vmtouch-git
+
