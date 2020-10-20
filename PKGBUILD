@@ -2,7 +2,7 @@
 
 pkgname=jupyter-nbextension-hide-code
 _name=hide_code
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="Code, prompt and output hiding for Jupyter/IPython notebooks."
 arch=(any)
@@ -12,7 +12,7 @@ conflicts=('python-rise')
 depends=('python' 'jupyter-notebook' 'python-pdfkit')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('3517d38277c28314727bf16c6cee3467e4fb5026e08e8201d036c031f537f70b')
+sha256sums=('ed5003661b8e60497d2dfc2da624b0c8e2277a2c1520788bb3cb545b9c3b0914')
 
 package() {
     cd "$srcdir/hide_code-$pkgver" || return

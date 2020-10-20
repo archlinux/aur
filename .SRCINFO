@@ -1,6 +1,6 @@
 pkgbase = jupyter-nbextension-hide-code
 	pkgdesc = Code, prompt and output hiding for Jupyter/IPython notebooks.
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://github.com/kirbs-/hide_code
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = jupyter-nbextension-hide-code
 	depends = jupyter-notebook
 	depends = python-pdfkit
 	conflicts = python-rise
-	source = https://files.pythonhosted.org/packages/source/h/hide_code/hide_code-0.5.5.tar.gz
-	sha256sums = 3517d38277c28314727bf16c6cee3467e4fb5026e08e8201d036c031f537f70b
+	source = https://files.pythonhosted.org/packages/source/h/hide_code/hide_code-0.5.6.tar.gz
+	sha256sums = ed5003661b8e60497d2dfc2da624b0c8e2277a2c1520788bb3cb545b9c3b0914
 
 pkgname = jupyter-nbextension-hide-code
 
