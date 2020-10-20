@@ -5,7 +5,7 @@
 # Things that need to be updated on new build
 pkgver=1.19.0
 sha256sums_x86_64=(ac604ad74847a947019a946c89fceae3a4698476fae0df61d0757e031afaeee9)
-pkgrel=2
+pkgrel=3
 
 # Things that will stay the same
 pkgname=crio-bin
@@ -13,7 +13,7 @@ pkgdesc='Open Container Initiative-based implementation of Kubernetes Container 
 license=('Apache2')
 url='https://cri-o.io/'
 arch=('x86_64')
-depends=(cni-plugins conntrack-tools)
+depends=(cni-plugins conntrack-tools runc crictl)
 makedepends=(tar gzip make sed coreutils)
 provides=(crio crio-bin cri-o)
 conflicts=(crio crio-bin crio-git cri-o cri-o-git)
@@ -25,13 +25,15 @@ sha256sums=(b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1)
 
 backup=("etc/crio/crio.conf"
         "etc/cni/net.d/10-crio-bridge.conf"
-        "etc/containers/policy.json"
-        "etc/crictl.yaml")
+        "etc/containers/policy.json")
 
 package() {
     cd "${srcdir}/crio-v${pkgver}"
     make DESDIR="${pkgdir}" PREFIX="${pkgdir}/usr" ETCDIR="${pkgdir}/etc" OPT_CNI_BIN_DIR="${pkgdir}/usr/lib/cni"
     rm -rf "${pkgdir}/usr/lib/cni/"
+    rm -f "${pkgdir}/usr/bin/runc"
+    rm -f "${pkgdir}/usr/bin/crictl"
+    rm -f "${pkgdir}/etc/crictl.yaml"
     sed -i --follow-symlinks -re 's|/usr/local|/usr|g' "${pkgdir}/usr/lib/systemd/system/"*.service
     sed -i --follow-symlinks -re 's|/opt/cni/bin|/usr/lib/cni|g' "${pkgdir}/etc/crio/crio.conf"
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/crio/LICENSE"
