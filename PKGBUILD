@@ -1,10 +1,11 @@
 # Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Henri Chain <henri@henricha.in>
 
 _pkgname=kxmlrpcclient
 pkgname=$_pkgname-git
-pkgver=r400.1005c7036
+pkgver=r413.d0a39304a
 pkgrel=1
 pkgdesc="XML-RPC client library for KDE"
 arch=('i686' 'x86_64')
@@ -38,6 +39,5 @@ build() {
 package() {
   cd $srcdir/$_pkgname/build
   make DESTDIR="$pkgdir" install
-  install -Dm644 ../COPYING.LIB "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-
+  install -Dm644 ../LICENSES/* -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }

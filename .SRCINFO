@@ -1,6 +1,6 @@
 pkgbase = kxmlrpcclient-git
 	pkgdesc = XML-RPC client library for KDE
-	pkgver = r400.1005c7036
+	pkgver = r413.d0a39304a
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/pim/kxmlrpcclient
 	arch = i686
