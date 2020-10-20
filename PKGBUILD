@@ -4,8 +4,8 @@
 # then please put 'unknown'.
 
 # Maintainer: Your Name <youremail@domain.com>
-pkgbase=afetch-git
-pkgname=afetch
+pkgname=afetch-git
+_pkgname=afetch
 pkgver=1
 pkgrel=1
 epoch=
@@ -31,15 +31,15 @@ noextract=()
 md5sums=("SKIP" "SKIP")
 
 prepare() {
-    patch "$pkgname/Makefile" -i Makefile.patch
+    patch "$_pkgname/Makefile" -i Makefile.patch
 }
 
 build() {
-	cd "$pkgname"
+	cd "$_pkgname"
 	make all
 }
 
 package() {
-	cd "$pkgname"
+	cd "$_pkgname"
 	make DESTDIR="$pkgdir/" PREFIX="/usr/" install
 }

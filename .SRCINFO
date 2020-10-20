@@ -5,10 +5,12 @@ pkgbase = afetch-git
 	url = https://github.com/13-CF/afetch
 	arch = any
 	license = GPL
+	provides = afetch
+	conflicts = afetch
 	source = git+https://github.com/13-CF/afetch
 	source = Makefile.patch
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = afetch
+pkgname = afetch-git
 
