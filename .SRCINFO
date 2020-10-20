@@ -1,6 +1,6 @@
 pkgbase = fselect-git
 	pkgdesc = Find files with SQL-like queries
-	pkgver = 0.6.10.r31.g608221f
+	pkgver = 0.7.1.r4.g2207b29
 	pkgrel = 1
 	url = https://github.com/jhspetersson/fselect
 	arch = i686
