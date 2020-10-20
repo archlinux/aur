@@ -2,7 +2,7 @@
 _pkgname="agena"
 pkgname="$_pkgname-bin"
 pkgver="2.22.0"
-pkgrel=14
+pkgrel=15
 pkgdesc="An easy-to-learn procedural programming language designed to be used in science, scripting, and many other applications."
 arch=('x86_64')
 url="http://$_pkgname.sourceforge.net/"
