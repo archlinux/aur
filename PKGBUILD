@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Wright <jon@than.io>
 
 pkgname=waypoint-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Consistent developer workflow tool"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('unzip')
 provides=("waypoint=${pkgver}")
 
 source_x86_64=("waypoint-${pkgver}.zip::https://releases.hashicorp.com/waypoint/${pkgver}/waypoint_${pkgver}_linux_amd64.zip")
-sha256sums_x86_64=('05c2be901fa0cc24e4bd40c96267f9af7d8b62fe75e0a2f1b5862179bbc81c11')
+sha256sums_x86_64=('bdf668eacd418ca412df9a93e9c243d790653eea75df608a242965ef79998633')
 options=("!strip")
 
 package() {
