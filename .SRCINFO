@@ -1,6 +1,6 @@
 pkgbase = open-stage-control
 	pkgdesc = A libre desktop OSC bi-directional control surface application
-	pkgver = 1.5.1
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = http://osc.ammd.net/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = open-stage-control
 	optdepends = python-pyrtmidi: send and receive midi messages
 	provides = open-stage-control
 	conflicts = open-stage-control
-	source = https://github.com/jean-emmanuel/open-stage-control/archive/v1.5.1.tar.gz
-	md5sums = 07f19692646eb5ad7eda746296aec1ff
+	source = https://github.com/jean-emmanuel/open-stage-control/archive/v1.5.3.tar.gz
+	md5sums = f6b39dd60925c5e712efd9b1b035dce8
 
 pkgname = open-stage-control
 
