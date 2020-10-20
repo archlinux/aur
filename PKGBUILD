@@ -3,14 +3,14 @@
 
 pkgname=cgames
 pkgver=2.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Collection of three ncurses games. csokoban (sokoban), cmines (minesweeper) and cblocks (sliding-block puzzles)."
 arch=('i686' 'x86_64')
 url="http://www.muppetlabs.com/~breadbox/software/cgames.html"
 license=('GPL2')
 depends=('ncurses')
-source=(http://www.muppetlabs.com/~breadbox/pub/software/$pkgname-${pkgver}a.tar.gz)
-md5sums=('9222c1a1720444977d4cd9b0e95894db')
+source=(http://www.muppetlabs.com/~breadbox/pub/software/$pkgname-${pkgver}b.tar.gz)
+md5sums=('02e9ac92557257d5f4ed5b7391d640fd')
 
 build() {
   cd $srcdir/$pkgname-${pkgver}a
