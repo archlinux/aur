@@ -1,7 +1,7 @@
 pkgbase = spinvis
 	pkgdesc = A visualization program for spins.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sciapp/spinvis
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = spinvis
 	depends = python-gr-framework
 	depends = python-numpy
 	depends = python-pyqt5
+	optdepends = povray: povray render support
 	source = https://github.com/sciapp/spinvis/archive/v0.2.0.tar.gz
 	source = https://raw.githubusercontent.com/sciapp/spinvis/v0.2.0/icon.png
 	sha256sums = c9eb2e9384dab43dc092d376a426f1c6c5bca7d7ffad36ade961fb78ed687354

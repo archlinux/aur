@@ -2,13 +2,14 @@
 
 pkgname="spinvis"
 pkgver="0.2.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A visualization program for spins."
 arch=("any")
 url="https://github.com/sciapp/spinvis"
 license=("MIT")
 depends=("python" "python-gr-framework" "python-numpy" "python-pyqt5")
 makedepends=("python-setuptools")
+optdepends=("povray: povray render support")
 source=("https://github.com/sciapp/spinvis/archive/v${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/sciapp/spinvis/v${pkgver}/icon.png")
 sha256sums=("c9eb2e9384dab43dc092d376a426f1c6c5bca7d7ffad36ade961fb78ed687354"
