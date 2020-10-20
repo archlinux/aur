@@ -40,7 +40,7 @@ package() {
 	ln -s /usr/lib32/libhistory.so.8.0 $pkgdir/usr/lib32/libhistory.so.7
 	ln -s /usr/lib32/libncursesw.so $pkgdir/usr/lib32/libncurses.so.5
 	ln -s /usr/lib32/libncursesw.so $pkgdir/usr/lib32/libtinfo.so.5
-	ln -s $pkgdir/usr/local/lib/libagena.so $pkgdir/usr/lib32/libagena.so
+	cp $pkgdir/usr/local/lib/libagena.so $pkgdir/usr/lib32/libagena.so
 
 	# generate desktop file for agenaedit
 	mkdir $pkgdir/usr/share
