@@ -1,3 +1,5 @@
+# Maintainer Saulius Lukauskas <luksaulius at gmail>
+
 pkgname=libgtextutils
 pkgver=0.7
 pkgrel=2
