@@ -2,12 +2,12 @@
 # Contributor: Oleksii Opaliev <rayder.ua@gmail.com>
 _appname_=werf
 pkgname=${_appname_}-git
-pkgver=v1.2.0.alpha10.r0.gf83d01d0d
+pkgver=v1.2.0.alpha11.r0.g4bfce41cd
 pkgrel=1
 pkgdesc="Open Source CLI tool written in Go, designed to simplify and speed up the delivery of applications"
 arch=('x86_64')
-license=('BSD')
-url="https://github.com/openstack/liberasurecode"
+license=('Apache')
+url="https://github.com/werf/werf"
 provides=("${_appname_}-bin" "${_appname_}")
 conflicts=("${_appname_}-bin" "${_appname_}")
 makedepends=('git')
@@ -32,5 +32,6 @@ check() {
 }
 
 package() {
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm755 "${srcdir}/werf/werf" "${pkgdir}/usr/bin/werf"
 }

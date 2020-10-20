@@ -1,10 +1,10 @@
 pkgbase = werf-git
 	pkgdesc = Open Source CLI tool written in Go, designed to simplify and speed up the delivery of applications
-	pkgver = v1.2.0.alpha10.r0.gf83d01d0d
+	pkgver = v1.2.0.alpha11.r0.g4bfce41cd
 	pkgrel = 1
-	url = https://github.com/openstack/liberasurecode
+	url = https://github.com/werf/werf
 	arch = x86_64
-	license = BSD
+	license = Apache
 	makedepends = git
 	provides = werf-bin
 	provides = werf
