@@ -2,7 +2,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=jackett-runit
-pkgver=0.16.1819
+pkgver=0.16.1842
 pkgrel=1
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -24,9 +24,9 @@ sha256sums=('ceac561ee2755a0ec2d4ffa9e381f0ecb422ac34e77f65df996a10d79fda429b'
             'd005fcd009ec5404e1ec88246c31e664167f5551d6cabc35f68eb41750bfe590'
             '64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1')
 
-sha256sums_x86_64=('98f74341f842ac9edb18baaa864279ad59255b740b472cef96d87cd3d469eb60')
-sha256sums_armv7h=('dcccf681a5897fee31562a970219fa2734526d60cdd3759e5df6e2adf19f2fba')
-sha256sums_aarch64=('49a68eb4c7ffbbbc7fc7a4bc6ec5755c43ce8f705fac39ee8a4655211f07746b')
+sha256sums_x86_64=('21a9949d714aa12ca4938e4eeab057139ffc5c70b73ce4f6358d98db57dff446')
+sha256sums_armv7h=('1f16429720777126afe32a0b381cc90f9a06f09db8f012a6cde702fe236eb154')
+sha256sums_aarch64=('dc3288c606105c0f03cf0edf390283c8ae304cb67ef4edc504b56b0092b6ad6f')
 
 package() {
     cd "$srcdir"
