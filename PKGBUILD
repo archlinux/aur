@@ -4,14 +4,14 @@ _font="dancing-script"
 _group="impallari"
 pkgname=ttf-${_group}-${_font}
 pkgver=2.000
-pkgrel=1
+pkgrel=2
 pkgdesc="Lively casual script where the letters bounce and change size slightly, from Pablo Impallari"
 arch=(any)
 url="http://www.impallari.com/dancing/"
 license=('custom:OFL')
 groups=("${_group}-fonts")
-depends=('fontconfig' 'xorg-font-utils')
-install=updatefont.install
+depends=()
+#install=updatefont.install
 source=("${_font}-${pkgver}.zip::https://github.com/impallari/DancingScript/archive/master.zip")
 md5sums=('bad057ff904f9963fb3ed1eab915a5e2')
 
