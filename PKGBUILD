@@ -7,7 +7,7 @@
 
 pkgname=alarm-clock-applet
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A fully-featured alarm clock for GTK panel"
 arch=('x86_64' 'i686')
 alias=alarm-clock
