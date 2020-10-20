@@ -1,0 +1,13 @@
+pkgbase = gphotos-uploader-cli
+	pkgdesc = Command line tool to mass upload media folders to your Google Photos account(s).
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/gphotosuploader/gphotos-uploader-cli
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = https://github.com/gphotosuploader/gphotos-uploader-cli/archive/v1.2.0.tar.gz
+	sha256sums = f9220c79945eb5a1ecb1ea5101aefa98febd9e4ad554e3fb9a2eda174c0c0d67
+
+pkgname = gphotos-uploader-cli
+
