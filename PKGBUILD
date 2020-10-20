@@ -3,8 +3,8 @@
 # Regenerate the `.SRCINFO` file:
 # $ makepkg --printsrcinfo > .SRCINFO
 
-pkgname=markets
-pkgver=0.2.0
+pkgname=bitstower-markets
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A stock, currency and cryptocurrency tracker"
 url="https://github.com/bitstower/markets"
@@ -23,17 +23,18 @@ makedepends=(
     meson
     vala
 )
-_commit=c2ee559879d145b75f189035122259a8d3552442  # 0.2.0
-source=("git+https://github.com/bitstower/markets.git#commit=$_commit")
+_upstream="markets"
+_commit=08c96225a0c5a08c3d0c2b75dcf76072ea91b6c6  # 0.3.0
+source=("git+https://github.com/bitstower/$_upstream.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd ${_upstream}
   git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 build() {
-  arch-meson $pkgname build
+  arch-meson ${_upstream} build
   ninja -C build
 }
 
