@@ -1,0 +1,54 @@
+pkgbase = linux-manjaro-xanmod-lts
+	pkgdesc = Linux Xanmod
+	pkgver = 5.4.72
+	pkgrel = 1
+	url = http://www.xanmod.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	makedepends = cpio
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
+	options = !strip
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.sign
+	source = https://github.com/xanmod/linux/releases/download/5.4.72-xanmod1/patch-5.4.72-xanmod1.xz
+	source = choose-gcc-optimization.sh
+	source = manjaro.tar.gz::https://gitlab.manjaro.org/packages/core/linux54/-/archive/41beff0a892767780b4ab392a5f17f92076ad225/linux59-41beff0a892767780b4ab392a5f17f92076ad225.tar.gz
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491
+	sha256sums = SKIP
+	sha256sums = 926a046f6d2f2d3b9f8c4d6b729aac79aa398fda43c540f7e0fe6220ea30546c
+	sha256sums = 2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511
+	sha256sums = b89053bd91b9951a89eb40bebce0aae050fb8078d3e0dfbd1dd67735bd9c7bf6
+
+pkgname = linux-manjaro-xanmod-lts
+	pkgdesc = The Linux LTS kernel and modules with Xanmod and Manjaro patches (Bootsplash support)
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = initramfs
+	depends = mkinitcpio>=27
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	optdepends = bootsplash-systemd: for bootsplash functionality
+	provides = linux
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	conflicts = 
+	replaces = 
+
+pkgname = linux-manjaro-xanmod-lts-headers
+	pkgdesc = Header files and scripts for building modules for linux-manjaro-xanmod-lts kernel
+	provides = linux-headers
+	conflicts = 
+	replaces = 
+
