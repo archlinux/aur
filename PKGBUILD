@@ -3,7 +3,7 @@
 
 pkgname=bozohttpd
 pkgver=20201014
-pkgrel=1
+pkgrel=2
 pkgdesc="A small and secure HTTP version 1.1 server"
 arch=('i686' 'x86_64' 'armv6h')
 url="http://www.eterna.com.au/bozohttpd/"
