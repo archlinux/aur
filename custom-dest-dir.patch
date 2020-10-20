@@ -1,0 +1,28 @@
+--- install.sh	2020-08-17 14:29:13.000000000 +0300
++++ src/install.sh	2020-10-20 23:18:03.383960431 +0300
+@@ -1,15 +1,18 @@
+ #!/bin/bash
++PKGDIR=$1
++
+ echo "------------Start Installation------------"
+-mkdir -p /opt/easyeda
+-unzip -d /opt/easyeda easyeda-linux-x64.zip
+-cd /opt/easyeda
++mkdir -p "${PKGDIR}/opt/easyeda"
++unzip -d "${PKGDIR}/opt/easyeda" easyeda-linux-x64.zip
++cd "${PKGDIR}/opt/easyeda"
+ # chown root chrome-sandbox
+ # chmod 4755 chrome-sandbox
+ chmod +x easyeda
+-path=`pwd`
+-sed -i "s!/easyeda-linux-x64!$path!g" $path/EASYEDA.dkt
+-chmod +x $path/EASYEDA.dkt
+-cp $path/EASYEDA.dkt /usr/share/applications/EASYEDA.desktop
++
++sed -i "s!/easyeda-linux-x64!/opt/easyeda!g" "EASYEDA.dkt"
++chmod +x EASYEDA.dkt
++install -d "${PKGDIR}/usr/share/applications/"
++install -T "EASYEDA.dkt" "${PKGDIR}/usr/share/applications/EASYEDA.desktop"
+ 
+ echo "------------Install Finish, Please open it in the launcher------------"
+ 
