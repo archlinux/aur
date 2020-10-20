@@ -11,6 +11,7 @@ pkgbase = typeracer-git
 	depends = zlib
 	provides = typeracer
 	conflicts = typeracer
+	conflicts = typeracer-bin
 	source = git+https://gitlab.com/ttyperacer/terminal-typeracer
 	sha512sums = SKIP
 
