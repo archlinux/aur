@@ -1,7 +1,7 @@
 pkgbase = pitchbox
 	pkgdesc = Small software application for transforming your voice or music in real-time.
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://www.pitchtech.ch/PitchBox
 	arch = any
 	license = none/unknown

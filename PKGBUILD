@@ -1,7 +1,7 @@
 # Maintainer: meister1593 <leruop@gmail.com>
 pkgname=pitchbox
 pkgver=2.0.2
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Small software application for transforming your voice or music in real-time."
 arch=('any')
 url="https://www.pitchtech.ch/PitchBox"
@@ -16,6 +16,7 @@ sha256sums=('0e6b5e2f597c96e59f8ed8606d60cf1cdbd1b32052eef74e65731256620ada6f'
 package() {
     # make pitchbox files structure 
     install -d ${pkgdir}/opt/PitchBox
+    install -d ${pkgdir}/usr/bin
     install -d ${pkgdir}/usr/share/applications
     
     # copy pitchbox to pkgdir 
@@ -24,4 +25,9 @@ package() {
     
     # install desktop file for users
     install -Dm644 ${srcdir}/PitchBox.desktop -t ${pkgdir}/usr/share/applications
+    
+    # create startup script for terminal and fix permissions
+    echo '#!/bin/bash' > ${pkgdir}/usr/bin/${pkgname}
+    echo "java -jar /opt/PitchBox/PitchBox.jar" >> ${pkgdir}/usr/bin/${pkgname}
+    chmod 755 ${pkgdir}/usr/bin/${pkgname}
 }
