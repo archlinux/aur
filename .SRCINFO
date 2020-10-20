@@ -1,0 +1,19 @@
+pkgbase = python-pypotrace-git
+	pkgdesc = potrace Python bindings
+	pkgver = 0.2.r2.g76c76be
+	pkgrel = 1
+	url = https://pypi.org/project/pypotrace/
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = cython
+	makedepends = git
+	depends = potrace
+	depends = agg
+	depends = python-numpy
+	depends = python
+	source = git+https://github.com/flupke/pypotrace.git
+	sha256sums = SKIP
+
+pkgname = python-pypotrace-git
+
