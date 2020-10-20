@@ -1,0 +1,17 @@
+pkgbase = pwninit-git
+	pkgdesc = Automate starting binary exploit challenges (git)
+	pkgver = 2.2.0.r35.ga7af7bc
+	pkgrel = 1
+	url = https://github.com/io12/pwninit
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = pwninit
+	conflicts = pwninit
+	conflicts = pwninit-bin
+	source = git+https://github.com/io12/pwninit
+	sha256sums = SKIP
+
+pkgname = pwninit-git
+
