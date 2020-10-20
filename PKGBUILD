@@ -5,7 +5,7 @@
 # Contributor: Bruno Pagani <archange at archlinux dot org>
 
 pkgname=mattermost-desktop
-pkgver=4.5.3
+pkgver=4.6.0
 pkgrel=1
 pkgdesc='Mattermost Desktop application for Linux'
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ makedepends=('git' 'jq' 'npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "${pkgname/-/.}")
-sha256sums=('84c2deade6e17ef655408824e76f7630d77452ac02f84407cd6e0d4ee618c5de'
+sha256sums=('ee1ff93120ed0d296c293950fd00cbd9dcc36a4f5085e1f3abf9c48ccc1e7ce0'
             '0f18f87764465f1fc5a9fdfb6ef2834af4623c13bc95fce58da6cb0d8d39a75e'
             'e628268d3393aac0d5b7237c6b8818d2e362c373f99874a19171bf96a25e4ffa')
 
