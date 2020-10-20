@@ -1,0 +1,11 @@
+pkgbase = ttf-street-cred
+	pkgdesc = Dual-stripe geometric headline font
+	pkgver = 20140616
+	pkgrel = 1
+	url = https://typodermicfonts.com/street-cred
+	arch = any
+	license = custom:Typodermic EULA
+	source = ttf-street-cred-20140616-1.zip::https://dl.dafont.com/dl/?f=street_cred
+	sha256sums = f8b3ea1ce97cea3b7698e7ed1a5015da74e1c23550c99bc19f9bf39dfcee6dac
+
+pkgname = ttf-street-cred
