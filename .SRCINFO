@@ -1,0 +1,18 @@
+pkgbase = typeracer-git
+	pkgdesc = terminal typing speed tester (git)
+	pkgver = 2.0.3.r0.g0249e62
+	pkgrel = 1
+	url = https://gitlab.com/ttyperacer/terminal-typeracer
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = openssl
+	depends = zlib
+	provides = typeracer
+	conflicts = typeracer
+	source = git+https://gitlab.com/ttyperacer/terminal-typeracer
+	sha512sums = SKIP
+
+pkgname = typeracer-git
+
