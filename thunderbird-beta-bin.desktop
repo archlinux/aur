@@ -55,7 +55,7 @@ GenericName[uk]=Поштова програма
 GenericName[vi]=Phần mềm khách quản lý thư điện tử
 GenericName[zh_CN]=邮件新闻客户端
 GenericName[zh_TW]=郵件用戶端
-Exec=/opt/thunderbird-beta/thunderbird %u
+Exec=env DICPATH=/usr/share/hunspell /opt/thunderbird-beta/thunderbird %u
 Terminal=false
 Type=Application
 Icon=thunderbird-beta
@@ -117,7 +117,7 @@ Name[uk]=Написати нового листа
 Name[vi]=Viết thư mới
 Name[zh_CN]=编写新消息
 Name[zh_TW]=寫一封新訊息
-Exec=/opt/thunderbird-beta/thunderbird -compose
+Exec=env DICPATH=/usr/share/hunspell /opt/thunderbird-beta/thunderbird -compose
 StartupWMClass=thunderbird
 
 [Desktop Action OpenAddressBook]
