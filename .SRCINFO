@@ -1,6 +1,6 @@
 pkgbase = python-albumentations
 	pkgdesc = Fast image augmentation library and easy to use wrapper around other libraries
-	pkgver = 0.4.6
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/albumentations-team/albumentations
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = python-albumentations
 	depends = python-pillow
 	depends = python-tqdm
 	depends = python-yaml
-	source = albumentations-0.4.6.tar.gz::https://github.com/albumentations-team/albumentations/archive/0.4.6.tar.gz
-	sha512sums = c70b5621636f554171910ffa4bfd9e21100f5130d56ffe0e4e0a6bdc09816e492a705deb4780e40cb4b9bd919bf60f7f153a7feb2f3048e403f08d4de0f73ac8
+	source = albumentations-0.5.0.tar.gz::https://github.com/albumentations-team/albumentations/archive/0.5.0.tar.gz
+	sha512sums = 49b63987ee4f81bb495cf77c196327feb86bb285182798b1ba326145d5956e12901728fdb7d4f1a276c9eecd30ecb34d967d803eef17dc9aec6817667e0f1d80
 
 pkgname = python-albumentations
 
