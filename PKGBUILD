@@ -5,7 +5,7 @@
 # Contributor:  Jan Oliver Oelerich <janoliver[at]oelerich[dot]org>
 
 pkgname=ovito
-pkgver=3.2.1
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Open Visualization Tool"
 url="http://www.ovito.org"
@@ -15,7 +15,7 @@ depends=('fftw' 'python' 'netcdf' 'ffmpeg' 'qt5-base')
 makedepends=('cmake' 'boost' 'qscintilla-qt5')
 conflicts=("$pkgname-git")
 source=("https://gitlab.com/stuko/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.bz2")
-sha256sums=('0b028b1d1c1e18aaeb4d7d790788761eb4d68a6807aecb9bacb44245e4a497a1')
+sha256sums=('d904b495467c17affaf171aa1be86e9ecd37a8e7328d94d5f9a6d93563a335de')
 
 prepare() {
   mkdir "$srcdir/build"
@@ -24,7 +24,9 @@ prepare() {
 build() {
   cd "$srcdir/build"
   cmake ../$pkgname-v$pkgver \
-      -DCMAKE_INSTALL_PREFIX=/usr
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DOpenGL_GL_PREFERENCE=GLVND \
+      -DOVITO_BUILD_DOCUMENTATION=ON
   make
 }
 
