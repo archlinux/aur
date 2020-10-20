@@ -1,5 +1,5 @@
 pkgname='sprunge-git'
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Upload data to sprunge.us via stdin'
 license=('GPL2')
@@ -11,11 +11,6 @@ conflicts=("${pkgname%-git}")
 optdepends=('xclip: default --clip-command')
 source=("git+${url}")
 sha256sums=('SKIP')
-
-prepare() {
-    cd "${pkgname%-git}"
-    git pull origin master --tags --no-rebase
-}
 
 pkgver() {
     cd "${pkgname%-git}"
