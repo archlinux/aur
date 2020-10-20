@@ -2,14 +2,14 @@
 
 _gitname="linux_notification_center"
 pkgname=deadd-notification-center-git
-pkgver=1.7.3.r0.g2aacce2
+pkgver=1.7.3.r5.g329506b
 pkgrel=1
 pkgdesc="Customizable notification-daemon with notification center"
 url="https://github.com/phuhl/linux_notification_center"
 license=("BSD")
 arch=('x86_64')
 depends=('gobject-introspection-runtime' 'gtk3')
-makedepends=('stack' 'cairo' 'pango' 'gobject-introspection')
+makedepends=('stack' 'cairo' 'pango' 'gobject-introspection' 'git')
 provides=('deadd-notification-center')
 conflicts=('deadd-notification-center-bin' 'deadd-notification-center')
 source=("git+${url}.git#branch=master")
