@@ -10,7 +10,7 @@ conflicts=('pueue-git' 'pueue')
 provides=('pueue')
 url='https://github.com/nukesor/pueue'
 source=(
-    "https://github.com/Nukesor/pueue/releases/download/v${pkgver}/systemd.pueued.service"
+    "pueued-systemd-service-${pkgver}::https://github.com/Nukesor/pueue/releases/download/v${pkgver}/systemd.pueued.service"
     "pueue-linux-amd64-${pkgver}::https://github.com/Nukesor/pueue/releases/download/v${pkgver}/pueue-linux-x86_64"
     "pueued-linux-amd64-${pkgver}::https://github.com/Nukesor/pueue/releases/download/v${pkgver}/pueued-linux-x86_64"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Nukesor/pueue/master/LICENSE"
@@ -33,7 +33,7 @@ package() {
     install -Dm755 "pueued-linux-amd64-${pkgver}" "${pkgdir}/usr/bin/pueued"
 
     # Place systemd user service
-    install -Dm644 "systemd.pueued.service" "${pkgdir}/usr/lib/systemd/user/pueued.service"
+    install -Dm644 "pueued-systemd-service-${pkgver}" "${pkgdir}/usr/lib/systemd/user/pueued.service"
 
     # Install zsh completions file
     # Zsh is broken for now
