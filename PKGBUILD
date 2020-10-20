@@ -1,6 +1,6 @@
 # Maintainer: Marek Darocha <aur@mdarocha.pl>
 pkgname=elm-language-server
-pkgver=1.12.1
+pkgver=1.13.1
 pkgrel=1
 epoch=0
 pkgdesc="Language server for Elm Language, utilizing the Language Server Protocol"
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/@elm-tooling/elm-language-server/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-md5sums=('e2c7c5ad8aff9b11098467243624dab1')
+md5sums=('03db1f227f409702b6f78bce16918d20')
 options=(!strip)
 
 package() {

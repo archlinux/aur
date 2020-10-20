@@ -1,6 +1,6 @@
 pkgbase = elm-language-server
 	pkgdesc = Language server for Elm Language, utilizing the Language Server Protocol
-	pkgver = 1.12.1
+	pkgver = 1.13.1
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/elm-tooling/elm-language-server
@@ -9,10 +9,10 @@ pkgbase = elm-language-server
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = elm-language-server-1.12.1.tgz
+	noextract = elm-language-server-1.13.1.tgz
 	options = !strip
-	source = https://registry.npmjs.org/@elm-tooling/elm-language-server/-/elm-language-server-1.12.1.tgz
-	md5sums = e2c7c5ad8aff9b11098467243624dab1
+	source = https://registry.npmjs.org/@elm-tooling/elm-language-server/-/elm-language-server-1.13.1.tgz
+	md5sums = 03db1f227f409702b6f78bce16918d20
 
 pkgname = elm-language-server
 
