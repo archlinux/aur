@@ -19,7 +19,6 @@ package() {
   cd "$srcdir/$_pkgname-$pkgver"
   for i in "${_tools[@]}"
   do
-    echo "./$i/$i"
     install -Dm755 ./$i/$i -t "$pkgdir/usr/bin/"
   done
   install -Dm644 ./bash-snippets.1 -t "$pkgdir/usr/share/man/man1/"
