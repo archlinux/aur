@@ -1,0 +1,14 @@
+pkgbase = yuglify
+	pkgdesc = A wrapper around UglifyJS and cssmin with the default YUI configurations
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/yui/yuglify
+	arch = any
+	license = custom
+	makedepends = npm
+	depends = nodejs
+	source = https://registry.npmjs.org/yuglify/-/yuglify-2.0.0.tgz
+	sha256sums = c5380f86738acb9a83b600104a36d23c2d7c8e4f69fa642acf7c0e517d82be81
+
+pkgname = yuglify
+
