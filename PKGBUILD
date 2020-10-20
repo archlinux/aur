@@ -1,3 +1,4 @@
+# Contributor: Dylan Delgado <dylan1496@live.com>
 # Contributor: Marcos Heredia <chelqo@gmail.com>
 
 _font="dancing-script"
