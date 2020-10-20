@@ -1,6 +1,6 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 pkgname=cpp-httplib
-pkgver=0.7.9
+pkgver=0.7.10
 pkgrel=1
 pkgdesc='A C++ header-only HTTP/HTTPS server and client library'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('cmake>=3.14')
 optdepends=('openssl>=1.1.1: HTTPS support' 'zlib: compression support' 'brotli: Brotli decompression support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yhirose/cpp-httplib/archive/v$pkgver.tar.gz")
-sha512sums=('5745e39c8a0e0e876b348f09c751b40c7bfa0aa01ff0ce5b8846e690a4029edc1be611af80fee5a3b452e074f81edf95d29ddaaccdbe0bef6e11ce67a022179c')
+sha512sums=('6d645d8f6e3bae37cb9e9baa43bf93cb3c82003a6dfa4a9b2270699720600f4ddf2802e9b642b3ecef05c246dcbad5351e4c71ea155e73c449f9953055dfd171')
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	# Lets us force a full version string to be defined instead of just a major.minor
