@@ -9,10 +9,10 @@
 
 pkgname=ansible-base-git
 pkgver=r50791.d18901dd4a
-pkgrel=1
+pkgrel=2
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
-url='https://www.ansible.com'
+url='https://github.com/ansible/ansible'
 license=('GPL3')
 depends=('python' 'python-yaml' 'python-paramiko' 'python-jinja')
 provides=('ansible-base' 'python-ansible')
@@ -20,17 +20,12 @@ replaces=('ansible-base' 'python-ansible')
 conflicts=('ansible-base' 'python-ansible')
 optdepends=('sshpass: for ssh connections with password'
             'python-passlib: crypt values for vars_prompt'
-            'python-pyopenssl: openssl modules'
             'python-netaddr: for the ipaddr filter'
             'python-systemd: log to journal'
             'python-pywinrm: connect to Windows machines'
             'python-dnspython: for dig lookup'
-            'python-ovirt-engine-sdk: ovirt support'
-            'python-boto3: aws_s3 module'
-            'python-jmespath: json_query support'
-            'python-ldap: ldap support'
-            'acme-tiny: openssl_certificate module')
-makedepends=('fakeroot' 'python-setuptools' 'python-straight.plugin' 'git' 'python-sphinx')
+            'python-jmespath: json_query support')
+makedepends=('fakeroot' 'python-setuptools' 'git')
 backup=('etc/ansible/ansible.cfg')
 source=($pkgname::git+https://github.com/ansible/ansible.git)
 sha512sums=('SKIP')
@@ -43,13 +38,12 @@ pkgver() {
 build() {
   cd "${srcdir}"/${pkgname}
   python setup.py build
-  make docs
 }
 
 package() {
   cd ${pkgname}
   python setup.py install -O1 --root="${pkgdir}"
-  install -Dm644 COPYING "${pkgdir}"/usr/share/doc/ansible-base/COPYING
+  install -Dm644 COPYING "${pkgdir}"/usr/share/doc/${pkgname}/COPYING
 
   install -d "${pkgdir}"/usr/share/ansible/doc
   cp -dpr --no-preserve=ownership ./examples "${pkgdir}"/usr/share/ansible/doc/
