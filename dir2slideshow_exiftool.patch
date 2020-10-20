@@ -1,0 +1,51 @@
+--- dvd-slideshow-0.8.6-1/dir2slideshow.orig	2014-01-29 11:23:41.000000000 -0500
++++ dvd-slideshow-0.8.6-1/dir2slideshow	2020-10-05 10:44:28.520607731 -0400
+@@ -419,13 +419,18 @@
+ }
+ 
+ ## check for the necessary programs:
+-checkforprog ()
++checkfor_exiftool_jhead ()
+ {
+-        it=`which "$1"`
++        it=`which exiftool`
+         if [ -z "$it" ] ; then
+-                echo "[dir2slideshow] ERROR: $1 not found! "
+-                echo "[dir2slideshow] Check the dependencies and make sure everything is installed."
+-                exit 1
++                it=`which jhead`
++                if [ -z "$it" ] ; then
++                        echo ""
++                else
++                        echo "jhead"
++                fi
++        else
++                echo "exiftool"
+         fi
+ }
+ 
+@@ -681,12 +686,21 @@
+ myecho "[dir2slideshow] Sorting pictures..."
+ if [ "$sortmethod" == 'taken_date' ] ; then
+ 	## sort by taken date:
+-	checkforprog jhead
++	timestamp_tool=`checkfor_exiftool_jhead`
+ 	check_rm "$output_dir"/filelist_date.txt
+ 	for (( i=1 ; i<=picture_count ; i++ )) ; do
+ 		file=`sed -n "$i"p "$output_dir"/imagelist.txt`
+-		taken=`jhead "$file" | grep 'Date/Time' | awk -F': ' '{print $2}'`
+-		modified=`jhead "$file" | grep 'File date' | awk -F': ' '{print $2}'`
++                if [ "$timestamp_tool" == 'exiftool' ]; then
++			taken=`exiftool "$file" | grep 'Date/Time Original' | awk -F': ' '{print $2}'`
++			modified=`exiftool "$file" | grep 'File Modification Date/Time' | awk -F': ' '{print $2}' | awk -F'-' '{print $1}'`
++                elif [ "$timestamp_tool" == 'jhead' ]; then
++			taken=`jhead "$file" | grep 'Date/Time' | awk -F': ' '{print $2}'`
++			modified=`jhead "$file" | grep 'File date' | awk -F': ' '{print $2}'`
++                else
++                        echo "[dir2slideshow] ERROR: exiftool/jhead not found! "
++                        echo "[dir2slideshow] Check the dependencies and make sure everything is installed."
++                        exit 1
++                fi
+ 		if [ -n "$taken" ] ; then
+ 			echo "$file: $taken" >> "$output_dir"/filelist_date.txt
+ 		else

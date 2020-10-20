@@ -1,20 +1,35 @@
-# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
-# Contributor: Tim Yang <tdy@gmx.com>
-# Contributor: JJDaNiMoTh <jjdanimoth.aur@gmail.com>
-# Contributor: Travis Nickles <ryoohki7@yahoo.com>
-# Contributor: Haw-Bin Chai <hbchai@gmail.com>
+# Maintainer: Clemmitt Sigler <cmsigler (dot) online (at) gmail (dot) com>
 
 pkgname=dvd-slideshow
-pkgver=0.8.4
-pkgrel=3
-pkgdesc="Scripts for creating slideshow DVDs with menus, audio, and fancy effects"
+pkgver=0.8.6
+pkgrel=1
+pkgdesc="Scripts for creating slideshow DVDs with menus, audio, and fancy effects."
 arch=('any')
 url="http://dvd-slideshow.sourceforge.net"
 license=('GPL')
-depends=('bc' 'cdrkit' 'dvdauthor' 'jhead' 'netpbm' 'sox' 'toolame' 'transcode' 'vorbis-tools')
-install=$pkgname.install
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-1.tar.gz)
-sha256sums=('484f71614ab45205f6133829c431b9a631cb0251de9b97993a9361648d0607e7')
+depends=('dvdauthor>0.6.11' 'imagemagick>5.5.4' 'sox>14' 'ffmpeg>0.4.8' 'mjpegtools' 'cdrtools' 'bc' 'jhead')
+optdepends=('lame: MP3 audio support'
+            'vorbis-tools: Ogg audio support'
+            'faad2: m4a audio support'
+            'vcdimager: vcd/svcd .cue, .bin support'
+            'toolame: Faster mpeg2 audio encoding'
+            'graphicsmagick: Alternative to imagemagick'
+            'libav-no-libs: avconv alternative to ffmpeg'
+            'perl-image-exiftool: Alternative to jhead'
+            'gsfonts: URW fonts')
+install="$pkgname.install"
+source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-1.tar.gz"
+        "dvd-slideshow_ffprobe.patch"
+        "dir2slideshow_exiftool.patch")
+sha1sums=('383f4e6ee33e8c344ccc484f61dd868c714b49dd'
+          'a96c72392d0dafe19cd93127bfaf70abd1ffa6ed'
+          'ae1bf3490fdc78a8e00c0b5c86bdeaaf3cc09a2d')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}-1"
+  patch -p1 -i "${srcdir}"/dvd-slideshow_ffprobe.patch
+  patch -p1 -i "${srcdir}"/dir2slideshow_exiftool.patch
+}
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}-1"

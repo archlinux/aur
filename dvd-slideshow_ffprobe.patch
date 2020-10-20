@@ -1,0 +1,20 @@
+--- dvd-slideshow-0.8.6-1/dvd-slideshow.orig	2015-12-30 14:53:56.000000000 -0500
++++ dvd-slideshow-0.8.6-1/dvd-slideshow	2020-10-04 19:30:50.219564875 -0400
+@@ -4021,7 +4021,7 @@
+                 image_file[$i]=0 ; audio_file[$i]=0 ; avi_file[$i]=1
+ 		### need to get the length of the video here and set the duration
+ 		### so the audio is the correct length!
+-		checkforprog tcprobe
++		checkforprog ffprobe
+ 		if [ -n "${duration[$i]}" ] ; then
+ 			# user specified something in duration field:
+ 			if [ "${duration[$i]}" == 'noaudio' ] ; then
+@@ -4035,7 +4035,7 @@
+ 		effect1_params[$i]=`echo "${thisline}" | cut -s -d: -f4 | awk -F' #' '{print $1}' | tr -d \[:blank:\]`
+ 		effect2[$i]=`echo "${thisline}" | cut -s -d: -f5 | awk -F' #' '{print $1}'`
+ 		effect2_params[$i]=`echo "${thisline}" | cut -s -d: -f6 | awk -F' #' '{print $1}' | tr -d \[:blank:\]`
+-        	video_length=`tcprobe -i "${image[$i]}" 2> /dev/null | grep 'duration=' | awk -F'duration=' '{print $2}'`
++        	video_length=`ffprobe -i "${image[$i]}" 2>&1 1>/dev/null | grep 'Duration:' | awk -F, '{print $1}' | awk -F'Duration:' '{print $2}'`
+ 		it=`hms2seconds "$video_length"`
+ 		duration_ms=`seconds2ms $it`
+ 		duration[$i]="`hms2seconds $video_length`"
