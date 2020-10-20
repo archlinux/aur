@@ -2,24 +2,24 @@
 
 _pkgname=pyexcel-xlsx
 pkgname=python-$_pkgname
-pkgver=0.5.8
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A wrapper library to read, manipulate and write data in xlsx and xlsm format using openpyxl'
 url="https://github.com/pyexcel/$_pkgname"
 arch=('any')
 license=('MIT')
-depends=('python')
+depends=('python-openpyxl' 'python-pyexcel-io')
 makedepends=('python-setuptools')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('2870c701e7a0f100af8963e9b37b90520bf2fddd8d7964f01b362bd422056846')
+sha256sums=('9fc3a45d0cac5a5411e5bb4ce7a48f1af0709a14a8621a92b0d005aaeb48526e')
 
 build(){
-  cd $srcdir/$_pkgname-$pkgver
+  cd "$srcdir/$_pkgname-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd $_pkgname-$pkgver
-  python setup.py install --root=$pkgdir --optimize=1 --skip-build
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
