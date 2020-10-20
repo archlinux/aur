@@ -1,18 +1,18 @@
-# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer:  Anton Kudelin <kudelin at protonmail dot com>
 # Contributor: Eric Berquist <eric DOT berquist AT gmail>
 # Contributor: steabert <steabert@member.fsf.org>
 # Contributor: Ricardo Honorato Z.
 
 pkgname=vmd-src
 _pkgname=vmd
-pkgver=1.9.4a43
-pkgrel=2
+pkgver=1.9.4a48
+pkgrel=1
 pkgdesc="Visual Molecular Dynamics"
 url="http://www.ks.uiuc.edu/Research/vmd/"
 license=('custom')
 arch=('x86_64')
-depends=('tcsh' 'tk' 'python2-numpy' 'fltk' 'ospray'
-         'netcdf' 'ocl-icd' 'opencl-headers' 'libxi')
+depends=('tcsh' 'tk' 'python-numpy' 'fltk' 'ospray' 'netcdf' 'ocl-icd' 'libxi'
+         'opencl-headers')
 makedepends=('gcc')
 optdepends=('openbabel: additional file formats support'
             'sqlite: dmsplugin'
@@ -23,10 +23,12 @@ conflicts=("$_pkgname" "$_pkgname-bin")
 # and put it in the PKGBUILD folder.
 source=("local://$_pkgname-${pkgver}.src.tar.gz"
         "configure.patch"
-        "mpi.patch")
-sha256sums=('84323b2c34db8ce5739372dd6e225ef1fa1dc5c4b82d3810d55923a653b1bdc0'
-            'a7d905ecc3fdba7ea14e1c1774919c1c0e3058fdd4a2fd896781be7c7e3c5df8'
-            'e281a57831b8ff60c5a644219f0b6289d32bee239978af676474941c7d8548c0')
+        "mpi.patch"
+        "wkfthreads_reversal.patch")
+sha256sums=('d1ef1260be2bb43aed891832cc2ad15df1bb8402cb47d848073342c3df917ea4'
+            'dcda14b9a4b43824a968ccb6613e4f704f50ecbdce3bbdfde1257185b5a6af32'
+            'e281a57831b8ff60c5a644219f0b6289d32bee239978af676474941c7d8548c0'
+            '1284e19124743fe85969ebbee67e4e4e5b6ec07e9c4c83f75f960db75b0587ad')
 
 prepare() {
   sed -i 's/ltcl8.5/ltcl/g' plugins/Make-arch
@@ -34,6 +36,9 @@ prepare() {
   mkdir plugins
   sed -i 's#:${LD_LIBRARY_PATH}/:${LD_LIBRARY_PATH}:#/opt/optix/lib64#g' bin/*
   patch -p0 < ../configure.patch
+  
+  # Removing CPU intrinsics from WKFThreads.C as they break compilation
+  patch -p0 < ../wkfthreads_reversal.patch
   
   # Assuming openmpi; if not the case edit mpi.patch
   patch -p0 < ../mpi.patch

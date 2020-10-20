@@ -68,33 +68,33 @@
  }
  
  
-@@ -1591,20 +1584,20 @@
- ###################
- # location of Python library and include file.
- # If left blank, standard system  directories will be searched.
--#$stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "/usr/local/include";
-+$stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "/usr/include/python2.7";
- #$stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "/usr/local/lib";
--$stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "$vmd_library_dir/python/lib_$config_arch/include/python2.5";
--$stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/config";
-+#$stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "$vmd_library_dir/python/lib_$config_arch/include/python2.5";
-+#$stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/config";
- 
- #$stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "/usr/local/include";
- #$stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "/usr/local/lib";
--$stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "$vmd_library_dir/numpy/lib_$config_arch/include";
--$stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/site-packages/numpy/core/include";
-+#$stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "$vmd_library_dir/numpy/lib_$config_arch/include";
-+#$stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/site-packages/numpy/core/include";
+@@ -1629,16 +1622,16 @@
+   $stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "$conda_root/lib/python-3.7/site-packages/numpy/core/include";
+   $python_libs        = "-fno-lto -lpython3.7m -lpthread";
+ } else {
+-#  $stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "/usr/local/include";
+-#  $stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "/usr/local/lib";
+-  $stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "$vmd_library_dir/python/lib_$config_arch/include/python2.5";
+-  $stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/config";
+-
+-#  $stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "/usr/local/include";
+-#  $stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "/usr/local/lib";
+-  $stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "$vmd_library_dir/numpy/lib_$config_arch/include";
+-  $stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/site-packages/numpy/core/include";
+-  $python_libs        = "-lpython2.5 -lpthread";
++  $stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "/usr/include/python3.8";
++  $stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "/usr/lib/python3.8/config-3.8-x86_64-linux-gnu";
++#   $stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "$vmd_library_dir/python/lib_$config_arch/include/python2.5";
++#   $stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/config";
++
++  $stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "/usr/lib/python3.8/site-packages/numpy/core/include/numpy";
++  $stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "/usr/lib/python3.8/site-packages/numpy/core/include";
++#   $stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "$vmd_library_dir/numpy/lib_$config_arch/include";
++#   $stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/site-packages/numpy/core/include";
++  $python_libs        = "-lpython3.8 -lpthread";
+ }
  
  $python_defines     = "-DVMDPYTHON";
- $python_include     = "-I$stock_python_include_dir -I$stock_numpy_include_dir -I$stock_numpy_library_dir";
- $python_library     = "-L$stock_python_library_dir";
--$python_libs        = "-lpython2.5 -lpthread";
-+$python_libs        = "-lpython2.7 -lpthread";
- @python_h           = ('PythonTextInterp.h',
-                        'VMDTkinterMenu.h',
- 		       'py_commands.h',
 @@ -2499,9 +2492,9 @@
        # for compiling with g++:
        $arch_cc		= "gcc";
