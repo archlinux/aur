@@ -1,5 +1,6 @@
-# Maintainer: Jack Rubacha  <rubacha.jack03@gmail.com>
-# Mainainter: Paul Nicholson <brenix@gmail.com>
+# Maintainer: Amin Vakil <info AT aminvakil DOT com>
+# Contributor: Jack Rubacha  <rubacha.jack03@gmail.com>
+# Contributor: Paul Nicholson <brenix@gmail.com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
@@ -8,8 +9,8 @@
 # Contributor: atweiden <archbaum@gmail.com>
 
 pkgname=ansible-base-git
-pkgver=r50791.d18901dd4a
-pkgrel=3
+pkgver=r50796.c20329a0f6
+pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
 url='https://github.com/ansible/ansible'
@@ -25,7 +26,7 @@ optdepends=('sshpass: for ssh connections with password'
             'python-pywinrm: connect to Windows machines'
             'python-dnspython: for dig lookup'
             'python-jmespath: json_query support')
-makedepends=('fakeroot' 'python-setuptools' 'git')
+makedepends=('python-setuptools' 'git')
 backup=('etc/ansible/ansible.cfg')
 source=($pkgname::git+https://github.com/ansible/ansible.git)
 sha512sums=('SKIP')
