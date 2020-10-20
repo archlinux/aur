@@ -1,0 +1,14 @@
+pkgbase = lisgd
+	pkgdesc = Bind gestures on touchscreens, and unsupported gesture devices via libinput touch events
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://git.sr.ht/~mil/lisgd
+	arch = any
+	license = MIT
+	source = lisgd-0.1.1.tar.gz::https://git.sr.ht/~mil/lisgd/archive/0.1.1.tar.gz
+	source = Makefile.patch
+	md5sums = 088a38d9938e46829295f17294158c1d
+	md5sums = SKIP
+
+pkgname = lisgd
+
