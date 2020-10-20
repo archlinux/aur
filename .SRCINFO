@@ -6,7 +6,7 @@ pkgbase = pueue
 	arch = any
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/Nukesor/pueue/archive/v0.7.2.tar.gz
+	source = pueue-0.7.2.tar.gz::https://github.com/Nukesor/pueue/archive/v0.7.2.tar.gz
 	md5sums = aa7b034da9ea0a2f319ca855032178b5
 
 pkgname = pueue
