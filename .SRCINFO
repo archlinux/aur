@@ -1,12 +1,12 @@
 pkgbase = noto-fonts-emoji-blob
 	pkgdesc = Google Noto emoji fonts (blob version, C1710's fork)
 	pkgver = 20190614
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/C1710/blobmoji/
 	arch = any
 	license = Apache
-	depends = fontconfig
 	provides = noto-fonts-emoji
+	provides = emoji-font
 	source = https://github.com/C1710/blobmoji/releases/download/v2019-06-14-Emoji-12/Blobmoji.ttf
 	sha256sums = 702d0521c6f58476abc9f16f09b6a2943850b1b54cf098f573f6ee4a5ff5db6a
 
