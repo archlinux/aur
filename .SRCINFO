@@ -1,6 +1,6 @@
 pkgbase = obs-rgb-levels-filter-git
 	pkgdesc = A simple OBS Studio filter to adjust RGB levels git version
-	pkgver = 1
+	pkgver = master.r0.geaada12
 	pkgrel = 1
 	url = https://github.com/petrifiedpenguin/obs-rgb-levels-filter
 	arch = x86_64

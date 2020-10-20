@@ -1,7 +1,7 @@
 # Maintainer: Katoitalia
 
 pkgname=obs-rgb-levels-filter-git
-pkgver=1
+pkgver=master.r0.geaada12
 pkgrel=1
 arch=(x86_64)
 pkgdesc="A simple OBS Studio filter to adjust RGB levels git version"
