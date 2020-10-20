@@ -1,0 +1,3 @@
+sudo rm /usr/bin/polaric-connect
+sudo rm /usr/share/pixmaps/polaric-connect.png
+sudo rm /usr/share/applications/polaric-connect.desktop
