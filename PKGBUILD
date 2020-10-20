@@ -1,24 +1,20 @@
 # Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
-pkgname=plasma-desktop-git
-pkgver=r7717.4c4ce2dbc
+pkgbase=plasma-desktop-git
+pkgname=(plasma-desktop-git knetattach-git)
+pkgver=r7932.d5a68ae77
 pkgrel=1
 pkgdesc='KDE Plasma Desktop'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/kde-workspace'
 license=(LGPL)
-depends=(libxkbfile libcanberra systemsettings-git ksysguard-git kactivities-stats-git
-powerdevil-git kmenuedit-git kinfocenter-git polkit-kde-agent-git kpeople-git qt5-graphicaleffects packagekit-qt5)
-makedepends=(xorg-server-devel xf86-input-synaptics extra-cmake-modules-git git kdoctools-git scim libibus boost)
-optdepends=('plasma-nm-git: Network manager applet' 'scim: SCIM backend for kimpanel'
-	'fcitx: FCITX backend for kimpanel' 'libibus: IBUS backend for kimpanel')
-conflicts=(plasma-desktop kdebase-workspace kdebase-kdepasswd kcm-touchpad-frameworks)
-provides=(plasma-desktop)
-replaces=(kcm-touchpad-git)
-install=$pkgname.install
-source=('git+https://github.com/KDE/plasma-desktop.git')
-groups=('plasma')
+depends=(polkit-kde-agent-git libxkbfile kmenuedit-git systemsettings-git ksysguard-git baloo-git accountsservice)
+makedepends=(extra-cmake-modules-git kdoctools-git xf86-input-evdev xf86-input-synaptics xf86-input-libinput xorg-server-devel scim kdesignerplugin kaccounts-integration intltool git)
+conflicts=(plasma-desktop knetattach)
+provides=(plasma-desktop knetattach)
+source=("git+https://github.com/KDE/plasma-desktop.git")
+groups=(plasma)
 md5sums=('SKIP')
 
 pkgver() {
@@ -26,22 +22,35 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../plasma-desktop \
+  cmake -B build -S plasma-desktop \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_LIBEXECDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake --build build
 }
 
-package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+package_plasma-desktop-git() {
+  depends+=(knetattach)
+  optdepends=('plasma-nm: Network manager applet'
+              'powerdevil: power management, suspend and hibernate support'
+              'kscreen: screen management'
+              'ibus: kimpanel IBUS support'
+              'scim: kimpanel SCIM support'
+              'kaccounts-integration: OpenDesktop integration plugin')
+  replaces=(user-manager)
+
+  DESTDIR="$pkgdir" cmake --install build
+
+# Split knetattach
+  rm "$pkgdir"/usr/{bin/knetattach,share/applications/org.kde.knetattach.desktop}
+}
+
+package_knetattach-git() {
+  pkgdesc='Wizard which makes it easier to integrate network resources with the Plasma Desktop'
+  depends=(kdelibs4support-git)
+
+  DESTDIR="$pkgdir" cmake --install build/knetattach
 }
