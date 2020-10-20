@@ -5,7 +5,7 @@
 # Things that need to be updated on new build
 pkgver=1.19.0
 sha256sums_x86_64=(ac604ad74847a947019a946c89fceae3a4698476fae0df61d0757e031afaeee9)
-pkgrel=1
+pkgrel=2
 
 # Things that will stay the same
 pkgname=crio-bin
@@ -15,8 +15,8 @@ url='https://cri-o.io/'
 arch=('x86_64')
 depends=(cni-plugins conntrack-tools)
 makedepends=(tar gzip make sed coreutils)
-provides=(crio crio-bin)
-conflicts=(crio crio-bin crio-git)
+provides=(crio crio-bin cri-o)
+conflicts=(crio crio-bin crio-git cri-o cri-o-git)
 
 # Using source and source_x86_64 is just a dumb hack so I can put the single sha hash up above
 source=("https://raw.githubusercontent.com/cri-o/cri-o/580db0719d68b3ff3bb30f60397c3892be383eb5/LICENSE")
