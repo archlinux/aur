@@ -1,0 +1,26 @@
+pkgbase = sonorem
+	pkgdesc = Bluetoooth adapter connectivity GUI tool
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://efanomars.com/utilities/sonorem
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = python
+	depends = stmm-input
+	depends = gtkmm3
+	depends = sox
+	depends = espeak
+	depends = stmm-input-bt
+	depends = bluez
+	depends = bluez-libs
+	source = https://efanomars.com/sources/sonorem-0.1.tar.gz
+	sha256sums = 291221f871125278e147dfe83d61025dcbf076bf28f074b6f5c6ad00270ebfe0
+
+pkgname = sonorem
+
