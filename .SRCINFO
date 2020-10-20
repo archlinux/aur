@@ -1,7 +1,7 @@
 pkgbase = knossos4
 	pkgdesc = A software tool for the visualization and annotation of 3D image data. It was developed for the rapid reconstruction of neural morphology and connectivity.
 	pkgver = 4.1.2
-	pkgrel = 12
+	pkgrel = 13
 	url = https://knossos.app
 	arch = x86_64
 	license = GPL2
@@ -20,14 +20,16 @@ pkgbase = knossos4
 	source = curl.patch
 	source = knossos4.desktop
 	source = qt-5.7.patch
-	source = quazip.patch
 	source = GCC8-combat-K4.patch
+	source = https://raw.githubusercontent.com/knossos-project/knossos/464cbb2b13f0142877e70a7d37528a92fe12b99e/CMake/Modules/FindQuaZip.cmake
+	source = https://github.com/knossos-project/knossos/commit/f3bfcd80dc582248a59b857609a796d133bb1fa5.patch
 	md5sums = c648b510bcec05a914540eea7f577bfa
 	md5sums = 07e9b7ac1ed5ecd0185ae92e61e97bbb
 	md5sums = 67a3dfea8d64d8b9eb999f16096819ee
 	md5sums = 10ac71de3331013293518da4be88cde6
-	md5sums = be06cd6e91c80b63b9bfe4184b537d7e
 	md5sums = 9e6daa1198b3f819379995d37178e3d1
+	md5sums = c901e39da0c394200d9f1bb81590d245
+	md5sums = 34d98beaafbf2e6281402f881da5a8c7
 
 pkgname = knossos4
 

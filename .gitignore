@@ -4,3 +4,7 @@ pkg
 
 # source archives and generated packages
 *.tar.*
+
+# downloaded files
+FindQuaZip.cmake
+f3bfcd80dc582248a59b857609a796d133bb1fa5.patch
