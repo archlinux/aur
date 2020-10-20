@@ -1,12 +1,12 @@
 # Maintainer: Matthew Murray <matt@mattmurr.xyz>
 pkgname=python-validity
 pkgver=0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Validity fingerprint sensor driver"
 arch=(any)
 license=(MIT)
 depends=(python python-yaml python-pyusb python-cryptography python-dbus python-gobject 
-  innoextract open-fprintd fprintd-clients)
+  innoextract "open-fprintd>=0.6" fprintd-clients)
 makedepends=(python-setuptools)
 conflicts=($pkgname)
 provides=($pkgname)
