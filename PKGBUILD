@@ -1,48 +1,37 @@
-# Maintainer: jkl
+# Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
+# Contributor: jkl <jkl@johnluebs.com>
 # Contributor: hdhoang <arch@hdhoang.space>
 
 pkgname=nginx-mainline-mod-fancyindex
 pkgver=0.4.4
-pkgrel=1
-
+pkgrel=2
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.19.0
-
-pkgdesc='Fancy indexes module for the Nginx web server'
-arch=('i686' 'x86_64' 'armv7h')
-makedepends=('nginx-mainline')
-depends=('nginx-mainline')
+_nginxver=1.19.3
+pkgdesc="Fancy indexes module for the Nginx web server"
+arch=('x86_64')
 url="https://github.com/aperezdc/ngx-fancyindex"
 license=('BSD')
-
-source=(
-	https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
-	https://github.com/aperezdc/ngx-$_modname/archive/v$pkgver.tar.gz
-)
-sha256sums=('44a616171fcd7d7ad7c6af3e6f3ad0879b54db5a5d21be874cd458b5691e36c8'
-			'SKIP'
-			'34e2bf332b9fa930914220c0187ca18d6f7a6abb88b81fdc9eb4779a1584f83a')
+depends=('nginx-mainline')
+source=(https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
+	"${pkgname}-${pkgver}.tar.gz::https://github.com/aperezdc/ngx-$_modname/archive/v$pkgver.tar.gz")
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
-
-prepare() {
-	cd ngx-$_modname-$pkgver
-}
+sha256sums=('91e5b74fa17879d2463294e93ad8f6ffc066696ae32ad0478ffe15ba0e9e8df0'
+            'SKIP'
+            '34e2bf332b9fa930914220c0187ca18d6f7a6abb88b81fdc9eb4779a1584f83a')
 
 build() {
-	cd "$srcdir"/nginx-$_nginxver
-	opts=$(nginx -V 2>&1 | grep 'configure arguments' | sed -r 's@^[^:]+: @@')
-	IFS=$'\n' opts=( $(xargs -n1 <<< "$opts") )
-	./configure "${opts[@]}" \
-		--add-dynamic-module=../ngx-$_modname-$pkgver
-	make modules
+  cd "$srcdir/nginx-$_nginxver"
+  _opts=$(nginx -V 2>&1 | grep 'configure arguments' | sed -r 's/^[^:]+: //')
+  IFS=$'\n' _opts=( $(xargs -n1 <<< "$_opts") )
+  ./configure "${_opts[@]}" \
+	--add-dynamic-module=../ngx-"$_modname-$pkgver"
+  make modules
 }
 
-package() {
-	install -Dm644 "$srcdir/"ngx-$_modname-$pkgver/LICENSE \
-	  "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-
-	cd "$srcdir"/nginx-$_nginxver/objs
-	for mod in *.so; do
-		install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
-	done
+package() {  
+  for _mod in "$srcdir"/nginx-"$_nginxver"/objs/*.so; do
+	install -D $_mod "$pkgdir/usr/lib/nginx/modules/$_mod"
+  done
+  install -Dm644 "$srcdir/ngx-$_modname-$pkgver/LICENSE" \
+	"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

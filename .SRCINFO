@@ -1,19 +1,16 @@
 pkgbase = nginx-mainline-mod-fancyindex
 	pkgdesc = Fancy indexes module for the Nginx web server
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aperezdc/ngx-fancyindex
-	arch = i686
 	arch = x86_64
-	arch = armv7h
 	license = BSD
-	makedepends = nginx-mainline
 	depends = nginx-mainline
-	source = https://nginx.org/download/nginx-1.19.0.tar.gz
-	source = https://nginx.org/download/nginx-1.19.0.tar.gz.asc
-	source = https://github.com/aperezdc/ngx-fancyindex/archive/v0.4.4.tar.gz
+	source = https://nginx.org/download/nginx-1.19.3.tar.gz
+	source = https://nginx.org/download/nginx-1.19.3.tar.gz.asc
+	source = nginx-mainline-mod-fancyindex-0.4.4.tar.gz::https://github.com/aperezdc/ngx-fancyindex/archive/v0.4.4.tar.gz
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = 44a616171fcd7d7ad7c6af3e6f3ad0879b54db5a5d21be874cd458b5691e36c8
+	sha256sums = 91e5b74fa17879d2463294e93ad8f6ffc066696ae32ad0478ffe15ba0e9e8df0
 	sha256sums = SKIP
 	sha256sums = 34e2bf332b9fa930914220c0187ca18d6f7a6abb88b81fdc9eb4779a1584f83a
 
