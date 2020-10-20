@@ -6,7 +6,7 @@ _pkgname=thunderbird-beta
 pkgver=82.0b3
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone Mail/News reader - Bleeding edge binary version"
 arch=('x86_64')
 url="https://www.mozilla.org/thunderbird"
@@ -21,7 +21,7 @@ source=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/e
         'thunderbird-beta-bin.desktop'
         'vendor.js')
 sha512sums=('9aa43fbf96b5596bfcda97a535d4630879944b0f6c2b548265e121760a4f32432167d9af8867bdd74ad9f3845a227398ad9d45bd88cc327ee777b35145cc2e3b'
-            '3fbafa3b7e58bc3ba29b7605a6d7e2ee24464608893bd5718c9990fde3619e32da9a828e52a5df821ababc4353eacd054bcad885c97927954f2cf24ab4a08936'
+            '97976bec26750151ecc474a4d6aabffce5c45de077e2c3c4b76035ae282a26a6959c8dc4726227bb2243c98ff81d92a5eeb252eb234ad702ae4cd4263a630c73'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
 # RC
 if [[ $_build = ? ]]; then
