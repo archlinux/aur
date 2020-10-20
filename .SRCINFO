@@ -7,6 +7,7 @@ pkgbase = service6-git
 	license = GPL
 	makedepends = make
 	makedepends = git
+	makedepends = w3m
 	depends = s6-rc
 	depends = python-argcomplete
 	depends = python-natsort
