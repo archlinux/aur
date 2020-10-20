@@ -1,0 +1,20 @@
+pkgbase = obs-plugin-tuna-git
+	pkgdesc = Song information plugin for obs-studio git version
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://github.com/univrsal/tuna
+	arch = x86_64
+	license = GPL2
+	makedepends = clang
+	depends = obs-studio
+	provides = obs-plugin-tuna-git=1.5.3
+	conflicts = obs-plugin-tuna-bin
+	source = obs-plugin-tuna-git::git+https://github.com/univrsal/tuna.git
+	source = git+https://github.com/taglib/taglib
+	source = git+https://github.com/MusicPlayerDaemon/libmpdclient
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = obs-plugin-tuna-git
+
