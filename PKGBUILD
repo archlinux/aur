@@ -1,6 +1,6 @@
 # Maintainer: Saulius Lukauskas < luksaulius at gmail com >
 
-pkgname=fastx_toolkit
+pkgname=fastx-toolkit
 pkgver=0.0.14
 pkgrel=1
 pkgdesc="The FASTX-Toolkit is a collection of command line tools for Short-Reads FASTA/FASTQ files preprocessing."
@@ -12,18 +12,18 @@ source=("https://github.com/agordon/fastx_toolkit/releases/download/0.0.14/fastx
 md5sums=('bf1993c898626bb147de3d6695c20b40')
 
 prepare() {
-    cd ${pkgname}-${pkgver}
+    cd fastx_toolkit-${pkgver}
     # https://github.com/agordon/fastx_toolkit/pull/22
     sed -i 's/usage();/usage(); break;/g' src/fasta_formatter/fasta_formatter.cpp
 }
 build() {
-		cd ${pkgname}-${pkgver}
+		cd fastx_toolkit-${pkgver}
         ./configure --prefix=${pkgdir}/usr
 		make
 }
 
 package() {
-    cd ${pkgname}-${pkgver}
+    cd fastx_toolkit-${pkgver}
     make install
     # Not sure why it tries to install these but they're not necessary
     rm -rf "${pkgdir}/usr/share"
