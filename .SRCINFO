@@ -9,6 +9,7 @@ pkgbase = sprunge
 	license = GPL2
 	depends = python
 	optdepends = xclip: default --clip-command
+	conflicts = sprunge-git
 	source = https://github.com/kevr/sprunge/archive/0.3.tar.gz
 	sha256sums = d806968a85def53a22b9674ffddb0c4a2b1f42b01cdd83a53d68b79caa6e81ff
 

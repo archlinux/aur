@@ -1,13 +1,14 @@
 pkgname='sprunge'
 release='0.3'
 pkgver="${release}.0"
-pkgrel=2
+pkgrel=3
 pkgdesc='Upload data to sprunge.us via stdin'
 license=('GPL2')
 url='https://github.com/kevr/sprunge'
 
 arch=('i686' 'x86_64' 'armv6h')
 depends=('python')
+conflicts=("${pkgname}-git")
 optdepends=('xclip: default --clip-command')
 source=("${url}/archive/${release}.tar.gz")
 sha256sums=(
