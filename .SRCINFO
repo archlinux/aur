@@ -1,0 +1,18 @@
+pkgbase = xsuspender-git
+	pkgdesc = Automatically suspend inactive X11 applications
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/kernc/xsuspender
+	arch = i686
+	arch = x86_64
+	license = custom:WTFPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	depends = glib2
+	depends = libwnck3
+	source = xsuspender-git::git+https://github.com/kernc/xsuspender.git#branch=master
+	md5sums = SKIP
+
+pkgname = xsuspender-git
+
