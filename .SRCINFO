@@ -1,0 +1,22 @@
+pkgbase = braus-git
+	pkgdesc = Application to select a browser every time you click a link anywhere
+	pkgver = d58a27d
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/properlypurple/braus
+	arch = any
+	license = GPL3
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	depends = gsettings-desktop-schemas
+	depends = glib2
+	depends = pango
+	depends = gtk3
+	depends = python-gobject
+	provides = braus
+	source = git+https://github.com/properlypurple/braus
+	sha256sums = SKIP
+
+pkgname = braus-git
+
