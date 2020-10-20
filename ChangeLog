@@ -1,3 +1,11 @@
+2020-10-20 Christopher Arndt <aur -at- chrisarndt -dot- de>
+    * 0.9.5.r3.gdb90ad7-1
+    * Update JUCE to 6.0.1
+    * VST2 no longer supported / built
+    * Provides VST3 plugin instead
+    * Consequently remove 'steinberg-vst36' make dependency
+    * Remove obsolete 'curl' and 'libxinerama' dependencies
+
 2020-04-27 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 0.9.4hf1.r57.g2ebdf1e-1

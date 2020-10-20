@@ -1,27 +1,27 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _pkgname=dexed
-_juce_version=5.4.7
+_juce_version=6.0.1
 pkgname="${_pkgname}-git"
-pkgver=0.9.4hf1.r57.g2ebdf1e
+pkgver=0.9.5.r3.gdb90ad7
 pkgrel=1
 pkgdesc="A software synth closely modelled on the Yamaha DX7 (git version)"
 arch=('i686' 'x86_64')
 url="http://asb2m10.github.io/dexed/"
 license=("GPL3")
 groups=('pro-audio' 'vst-plugins')
-depends=('alsa-lib' 'curl' 'hicolor-icon-theme' 'freetype2' 'libxinerama')
-makedepends=('git' 'steinberg-vst36')
+depends=('alsa-lib' 'hicolor-icon-theme' 'freetype2')
+makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-vst-git")
 source=("${_pkgname}::git+https://github.com/asb2m10/dexed.git"
-        "https://d30pueezughrda.cloudfront.net/juce/juce-${_juce_version}-linux.zip"
+        "https://github.com/juce-framework/JUCE/releases/download/${_juce_version}/juce-${_juce_version}-linux.zip"
         'git+https://github.com/steinbergmedia/vst3sdk.git'
         'git+https://github.com/surge-synthesizer/tuning-library.git'
         'git+https://github.com/surge-synthesizer/surgesynthteam_tuningui.git'
         'dexed.desktop')
 sha256sums=('SKIP'
-            '6f259573553a26951e896ed8d0737f78c3db7668894adc699a1e517aafe76e39'
+            'dcaac2c8a9f752ffd8d65325cea9224421f018786c229b46fdbc0cba180c5737'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -48,7 +48,7 @@ prepare() {
 
   mkdir -p assets
   ln -sf "${srcdir}/JUCE" assets
-  VST2SDK_DIR="/usr/include/vst36" ./scripts/projuce-lin-vst2.sh
+  ./scripts/projuce-lin.sh
 }
 
 build() {
@@ -60,8 +60,8 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   # install VST plugin
-  install -Dm755 Builds/Linux/build/Dexed.so \
-    "${pkgdir}/usr/lib/vst/Dexed.so"
+  install -Dm755 Builds/Linux/build/Dexed.vst3/Contents/$(uname -m)-linux/Dexed.so \
+    -t "${pkgdir}/usr/lib/vst/Dexed.vst3/Contents/$(uname -m)-linux/"
   # install standalone program
   install -Dm755 Builds/Linux/build/Dexed \
     "${pkgdir}/usr/bin/dexed"
