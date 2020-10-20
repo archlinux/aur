@@ -1,0 +1,955 @@
+--- a/trunk/pyfltk/python/MakeSwig.py	2020-10-16 18:58:04.580305746 -0400
++++ b/trunk/pyfltk/python/MakeSwig.py	2020-10-16 14:16:12.694560622 -0400
+@@ -22,7 +22,7 @@
+     include = ['-I/usr/include']
+     try:
+         fltk_dir = os.environ['FLTK_HOME']
+-        include.insert(0, "-I%s"%fltk_dir)
++        include.insert(0, f"-I{fltk_dir}")
+     except:
+         print("Using default location for FLTK!")
+         if is_msys_mingw():
+@@ -48,7 +48,7 @@
+     versionIdentifier = ""
+     if sys.version >= "3.0":
+         versionIdentifier = "-DPYTHON3 -py3"
+-    cmd_line = "swig -w302 -w312 -w325 -w362 -w389 -w401 -w473 -w509 -I../swig %s -DFL_EXPORT -DPYTHON %s -c++ -python -shadow -fastdispatch -o fltk_wrap.cpp ../swig/fltk.i "%(add_incl, versionIdentifier)
++    cmd_line = f"swig -w302 -w312 -w325 -w362 -w389 -w401 -w473 -w509 -I../swig {add_incl} -DFL_EXPORT -DPYTHON {versionIdentifier} -c++ -python -shadow -fastdispatch -o fltk_wrap.cpp ../swig/fltk.i "
+     # command line for swig-1.3.27
+     # cmd_line = "swig -w312 -w451 -w473 -I../swig %s -DFL_EXPORT -DPYTHON  -c++ -python -shadow -modern -dirprot -o fltk_wrap.cpp ../swig/fltk.i "%add_incl
+     if is_msys_mingw():
+@@ -62,13 +62,13 @@
+         tmpf = open(tmpfn, "w+b")
+         tmpf.write(cmd_line)
+         tmpf.close()
+-        r = os.system("sh %s" % tmpfn)
++        r = os.system(f"sh {tmpfn}")
+ 
+         os.remove(tmpfn)
+         if r != 0:
+-            raise DistutilsExecError("command '%s' failed with exit status :%d: command was :%s:.  " % (cmd[0], r, cmpl))
++            raise DistutilsExecError(f"command '{cmd[0]}' failed with exit status :{r}: command was :{cmpl}:.  ")
+         
+-        print("return value of the command is :%s:" % r)
++        print(f"return value of the command is :{r}:")
+     else:
+         print(cmd_line)
+         os.system(cmd_line)
+--- a/trunk/pyfltk/python/updateInits.py	2020-10-16 11:46:38.496560571 -0400
++++ b/trunk/pyfltk/python/updateInits.py	2020-10-08 19:15:34.799056263 -0400
+@@ -15,46 +15,46 @@
+ 
+ def mapInit_Old(name, owns, virtual):
+     # constructor
+-    line1 = "_swig_setattr(self, %s, 'this', apply(_fltk.new_%s, args))" % (name, name)
+-    line2 = "_swig_setattr(self, %s, 'thisown', %d)" % (name, owns)
++    line1 = f"_swig_setattr(self, {name}, 'this', apply(_fltk.new_{name}, args))"
++    line2 = f"_swig_setattr(self, {name}, 'thisown', {owns})"
+     # only for virtual classes
+     if virtual != 0:
+         line3 = "self.registerSelf(self)"
+ 
+     # prepare the output
+-    ofl.write("# override the implementation of the %s wrapper\n" % name)
+-    ofl.write("def __%sInit(self,*args):\n" % name)
+-    ofl.write("    %s\n" % line1)
+-    ofl.write("    %s\n" % line2)
++    ofl.write(f"# override the implementation of the {name} wrapper\n")
++    ofl.write(f"def __{name}Init(self,*args):\n")
++    ofl.write(f"    {line1}\n")
++    ofl.write(f"    {line2}\n")
+     if virtual != 0:
+-        ofl.write("    %s\n" % line3)
+-    ofl.write("%s.__init__ = __%sInit\n" % (name, name))
+-    ofl.write("# end of the %s wrapper\n\n" % name)
++        ofl.write(f"    {line3}\n")
++    ofl.write(f"{name}.__init__ = __{name}Init\n")
++    ofl.write(f"# end of the {name} wrapper\n\n")
+ 
+ def mapInit(name, owns, virtual):
+     lines = []
+     # constructor
+     # only for director classes
+     if virtual == 2:
+-        lines.append("if self.__class__ == %s:"%name)
++        lines.append(f"if self.__class__ == {name}:")
+         lines.append("  args = (None,) + args")
+         lines.append("else:")
+         lines.append("  args = (self,) + args")
+-    lines.append("newobj = _fltk.new_%s(*args)"%name)
++    lines.append(f"newobj = _fltk.new_{name}(*args)")
+     lines.append("self.this = newobj.this")
+-    lines.append("self.thisown = %d"%owns)
++    lines.append(f"self.thisown = {owns}")
+     lines.append("del newobj.thisown")
+     # only for virtual classes
+     if virtual == 1:
+         lines.append("self.registerSelf(self)")
+ 
+     # prepare the output
+-    ofl.write("# override the implementation of the %s wrapper\n" % name)
+-    ofl.write("def __%sInit(self,*args):\n" % name)
++    ofl.write(f"# override the implementation of the {name} wrapper\n")
++    ofl.write(f"def __{name}Init(self,*args):\n")
+     for line in lines:
+-        ofl.write("    %s\n" % line)
+-    ofl.write("%s.__init__ = __%sInit\n" % (name, name))
+-    ofl.write("# end of the %s wrapper\n\n" % name)
++        ofl.write(f"    {line}\n")
++    ofl.write(f"{name}.__init__ = __{name}Init\n")
++    ofl.write(f"# end of the {name} wrapper\n\n")
+ 
+ 
+ if __name__ == '__main__':
+--- a/trunk/pyfltk/setup.py	2020-10-16 20:24:04.518331788 -0400
++++ b/trunk/pyfltk/setup.py	2020-10-14 11:05:22.555152377 -0400
+@@ -108,7 +108,7 @@
+     lib_dir_list = [fltk_lib_dir, '/usr/lib']
+     lib_list = ["fltk"]
+ elif sys.platform in ['freebsd4','freebsd5','freebsd6','freebsd7', 'sunos5']:
+-    print("Building for: %s"%sys.platform)
++    print(f"Building for: {sys.platform}")
+     def_list = [('UNIX', '1')]
+     lib_dir_list = [fltk_lib_dir,'/usr/X11R6/lib','/usr/lib']
+     lib_list = ["fltk"]
+@@ -168,21 +168,21 @@
+         if isVerbose:
+             print("Checking fltk-config using FLTK_HOME")
+         fltk_dir = os.environ['FLTK_HOME']
+-        ver_cmd = "sh %s/fltk-config --version"%fltk_dir
+-        inc_cmd = "sh %s/fltk-config --cxxflags %s"%(fltk_dir, var_string)
+-        #lib_cmd = "sh %s/fltk-config --use-gl --use-glut --use-images --use-forms --ldflags"%fltk_dir
+-        lib_cmd = "sh %s/fltk-config --ldflags %s"%(fltk_dir, var_string)
++        ver_cmd = f"sh {fltk_dir}/fltk-config --version"
++        inc_cmd = f"sh {fltk_dir}/fltk-config --cxxflags {var_string}"
++        #lib_cmd = f"sh {fltk_dir}/fltk-config --use-gl --use-glut --use-images --use-forms --ldflags"
++        lib_cmd = f"sh {fltk_dir}/fltk-config --ldflags {var_string}"
+     except:
+         if isVerbose:
+             print("Checking fltk-config using default installation")
+         if is_msys_mingw():
+             ver_cmd = "sh fltk-config --version"
+-            inc_cmd = "sh fltk-config --cxxflags %s"%var_string
+-            lib_cmd = "sh fltk-config --ldflags %s"%var_string
++            inc_cmd = f"sh fltk-config --cxxflags {var_string}"
++            lib_cmd = f"sh fltk-config --ldflags {var_string}"
+         else:
+             ver_cmd = "fltk-config --version"
+-            inc_cmd = "fltk-config --cxxflags %s"%var_string
+-            lib_cmd = "fltk-config --ldflags %s"%var_string
++            inc_cmd = f"fltk-config --cxxflags {var_string}"
++            lib_cmd = f"fltk-config --ldflags {var_string}"
+ 
+     # version
+     result = os.popen(ver_cmd).readlines()
+--- a/trunk/pyfltk/test/tree.py	2020-10-16 21:16:41.245394864 -0400
++++ b/trunk/pyfltk/test/tree.py	2020-10-10 13:25:51.489642495 -0400
+@@ -57,7 +57,7 @@
+         return "???"
+ 
+ def Button_CB(w):
+-    print("'%s' button pushed\n"%w.label())
++    print(f"'{w.label()}' button pushed\n")
+ 
+ def RebuildTree(tree):
+     global but, grp
+@@ -132,7 +132,7 @@
+     # Add 500 items in numerical order
+     tree.sortorder(FL_TREE_SORT_NONE);
+     for t in range(500):
+-        s = "500 Items/item %04d"%t
++        s = f"500 Items/item {t:04d}"
+         tree.add(s)
+ 
+     tree.close("500 Items")	# close the 500 items by default
+@@ -150,13 +150,9 @@
+     
+     item = tree.callback_item()
+     if item:
+-        print("TREE CALLBACK: label='%s' userdata=%ld reason=%s\n"%(
+-          item.label(),
+-          data,
+-	  reason_as_name(tree.callback_reason())))
++        print(f"TREE CALLBACK: label='{item.label()}' userdata={data} reason={reason_as_name(tree.callback_reason())}\n")
+     else:
+-        print("TREE CALLBACK: reason=%s item=(no item -- probably multiple items were changed at once)\n"%(
+-          reason_as_name(tree.callback_reason())))
++        print(f"TREE CALLBACK: reason={reason_as_name(tree.callback_reason())} item=(no item -- probably multiple items were changed at once)\n")
+ 
+ 
+ def cb_margintop_slider(margintop_slider, tree):
+@@ -596,7 +592,7 @@
+         msg = item.label()
+         if msg == None or msg == "":
+             msg = "???"
+-        print("\t%s\n"%msg)
++        print(f"\t{msg}\n")
+         item = tree.next_selected_item(item)
+ 
+ def cb_clearselected_button(clearselected_button, tree):
+--- a/trunk/pyfltk/util/flconvert/Code_py.py	2020-10-16 22:25:34.274178386 -0400
++++ b/trunk/pyfltk/util/flconvert/Code_py.py	2020-10-16 22:07:23.494578365 -0400
+@@ -167,7 +167,7 @@
+ 			self.out.write("# global object names\n")
+ 			for od in self.getGlobalNames():
+ 				# (name, type, func)
+-				self.out.write("%s = None      # type '%s' from '%s()'\n"%od)
++				self.out.write(f"{od[0]} = None      # type '{od[1]}' from '{od[2]}()'\n")
+ 			self.out.write("\n\n")
+ 
+ 		#generate the function defs
+@@ -240,25 +240,24 @@
+ 		# the level of the objects nesting within the function
+ 		name = obj['name']
+ 		if (name == ''):
+-			name = "o_%d_%d"%(childLevel, childNumber)
++			name = f"o_{childLevel}_{childNumber}"
+ 		return name
+ 
+ 
+ 	def doClass(self, aClass, tabLevel):
+ 		if 'base' in aClass:
+-			self.out.write(ts(tabLevel)+"class %s(%s):\n\n" \
+-				%(aClass['name'], aClass['base']))
++			self.out.write(ts(tabLevel)+f"class {aClass['name']}({aClass['base']}):\n\n")
+ 		else:
+-			self.out.write(ts(tabLevel)+"class %s:\n\n"%(aClass['name']))
++			self.out.write(ts(tabLevel)+f"class {aClass['name']}:\n\n")
+ 
+ 		for member in aClass['objects']:
+ 			self.handlers[member['def_type']]( member, tabLevel+1)
+ 
+-		self.out.write("# end of class %s\n\n"%(aClass['name']))
++		self.out.write(f"# end of class {aClass['name']}\n\n")
+ 		
+ 
+ 	def doDeclaration(self, decl, tabLevel):
+-		self.out.write("%s%s\n\n"%(ts(tabLevel),decl['code'][1:-1]))
++		self.out.write(f"{ts(tabLevel)}{decl['code'][1:-1]}\n\n")
+ 			
+ 	def doFunction(self, func, tabLevel):
+ 		# write Python code for the given function
+@@ -274,7 +273,7 @@
+ 			if (inputParams != ''):
+ 				inputParams = inputParams + ", "
+ 			inputParams = inputParams + ip[0]
+-		self.out.write("%sdef %s(%s):\n"%(ts(tabLevel), name, inputParams))
++		self.out.write(f"{ts(tabLevel)}def {name}({inputParams}):\n")
+ 
+ 		#write any global declarations
+         # DM - support class attrib generation option
+@@ -441,11 +440,10 @@
+ 
+ 
+ 		xywh = opts['xywhDef']  
+-		constructorParams = "%s, %s, %s, %s"%(xywh[0], xywh[1], 
+-			xywh[2], xywh[3])
++		constructorParams = f"{xywh[0]}, {xywh[1]}, {xywh[2]}, {xywh[3]}"
+ 		if 'labelDef' in opts:
+ 			# take care of multiline labels
+-			constructorParams = '%s, """%s"""'%(constructorParams, opts['labelDef'])
++			constructorParams = '{0}, """{1}"""'.format(constructorParams, opts['labelDef'])
+ 
+ 		self.out.write( ts(tabLevel)+self.attribsPrefix+name+" = " + type + \
+ 			"("+constructorParams+")\n")
+@@ -526,10 +524,9 @@
+ 		name = self.getObjectName( obj, childLevel, childNumber)
+ 		type = obj['class']
+ 		xywh = opts['xywhDef']
+-		constructorParams = "%s, %s, %s, %s"%(xywh[0], xywh[1], 
+-			xywh[2], xywh[3])
++		constructorParams = f"{xywh[0]}, {xywh[1]}, {xywh[2]}, {xywh[3]}"
+ 		if 'labelDef' in opts:
+-			constructorParams = '%s, """%s"""'%(constructorParams, opts['labelDef'])
++			constructorParams = '{0}, """{1}"""'.format(constructorParams, opts['labelDef'])
+ 
+ 		#self.out.write( ts(tabLevel)+name+" = "+type+"("+constructorParams+")\n")
+ 		self.out.write( ts(tabLevel)+self.attribsPrefix+name+" = "+type+"("+constructorParams+")\n")
+@@ -590,8 +587,7 @@
+ 			if 'divider' in opts:
+ 				flags = flags + 128
+ 
+-			self.out.write('%s("%s", %s, %s, 0, %d), \n'%( prefix, label,
+-				accel, callback, flags)	)
++			self.out.write(f'{prefix}("{label}", {accel}, {callback}, 0, {flags}), \n')
+ 		
+ 			if 'objects' in o:
+ 				for childObject in o['objects']:
+--- a/trunk/pyfltk/util/flconvert/DumpTree.py	2020-10-08 16:37:23.666516695 -0400
++++ b/trunk/pyfltk/util/flconvert/DumpTree.py	2020-10-16 22:32:46.581564651 -0400
+@@ -8,9 +8,9 @@
+ 		GenericASTTraversal.__init__(self, ast)
+ 
+ 	def default(self, node):
+-		dump("%20s"%node.type)
++		dump(f"{node.type:20s}")
+ 		try:
+-			dump(" (%s)"%str(node.attr))
++			dump(f" ({str(node.attr)})")
+ 		except:
+ 			pass
+ 		dump("\n")
+--- a/trunk/pyfltk/util/flconvert/FlParseTreeConverter.py	2020-10-16 10:55:08.692791676 -0400
++++ b/trunk/pyfltk/util/flconvert/FlParseTreeConverter.py	2020-10-10 09:30:08.891716020 -0400
+@@ -18,9 +18,9 @@
+ 		print(l+":")
+ 	for i in range(0, len(n), 1):
+ 		try:
+-			print("   %d:%s = %s"%(i, n[i].type, str(n[i].attr)))
++			print(f"   {i}:{n[i].type} = {str(n[i].attr)}")
+ 		except:
+-			print("   %d:%s"%(i, n[i].type))
++			print(f"   {i}:{n[i].type}")
+ 	
+ 
+ 
+--- a/trunk/pyfltk/util/flconvert/spark.py	2020-10-16 12:17:47.771154797 -0400
++++ b/trunk/pyfltk/util/flconvert/spark.py	2020-10-12 15:11:08.369355150 -0400
+@@ -47,7 +47,7 @@
+ 
+ 	def makeRE(self, name):
+ 		doc = getattr(self, name).__doc__
+-		rv = '(?P<%s>%s)' % (name[2:], doc)
++		rv = f'(?P<{name[2:]}>{doc})'
+ 		return rv
+ 
+ 	def reflect(self):
+@@ -60,7 +60,7 @@
+ 		return string.join(rv, '|')
+ 
+ 	def error(self, s, pos):
+-		print("Lexical error at position %s" % pos)
++		print(f"Lexical error at position {pos}")
+ 		raise SystemExit
+ 
+ 	def tokenize(self, s):
+@@ -179,7 +179,7 @@
+ 		return None
+ 
+ 	def error(self, token):
+-		print("Syntax error at or near `%s' token" % token)
++		print(f"Syntax error at or near `{token}' token")
+ 		raise SystemExit
+ 
+ 	def parse(self, tokens):
+--- a/trunk/pyfltk/distutils_mod.py	2020-10-08 13:22:56.989640251 -0400
++++ b/trunk/pyfltk/distutils_mod.py	2020-10-08 18:38:59.008664942 -0400
+@@ -29,7 +29,7 @@
+         """
+         self.verbose = 1
+         if self.verbose:
+-            print("cmd :%s:" % cmd)
++            print(f"cmd :{cmd}:")
+         
+         cmpl = " ".join(cmd)
+         cmpl = cmpl.replace("\\", "/")
+@@ -38,7 +38,7 @@
+         #cmpl = cmpl.replace("gcc", "gcc -g ")
+         
+         if self.verbose:
+-            print("cmpl is :%s:" % cmpl)
++            print(f"cmpl is :{cmpl}:")
+ 
+         if not self.dry_run:
+             import tempfile
+@@ -46,14 +46,14 @@
+             tmpf = open(tmpfn, "w+b")
+             tmpf.write(cmpl.encode('ASCII'))
+             tmpf.close()
+-            r = os.system("sh %s" % tmpfn)
++            r = os.system(f"sh {tmpfn}")
+ 
+             os.remove(tmpfn)
+             if r != 0:
+-                raise DistutilsExecError("command '%s' failed with exit status :%d: command was :%s:.  " % (cmd[0], r, cmpl))
++                raise DistutilsExecError(f"command '{cmd[0]}' failed with exit status :{r}: command was :{cmpl}:.  ")
+         
+             if self.verbose:
+-                print("return value of the compile command is :%s:" % r)
++                print(f"return value of the compile command is :{r}:")
+ 
+ 
+ 
+--- a/trunk/pyfltk/test/DragAndDrop.py	2020-10-08 13:22:56.156300832 -0400
++++ b/trunk/pyfltk/test/DragAndDrop.py	2020-10-10 12:23:11.743965957 -0400
+@@ -46,10 +46,10 @@
+             print("FL_DND_LEAVE ", self.text_string)
+             return 1
+         elif event == FL_DND_DRAG:
+-            print("FL_DND_DRAG %c (%d, %d)"%(self.text_string, Fl.event_x(), Fl.event_y()))
++            print(f"FL_DND_DRAG {self.text_string} ({Fl.event_x()}, {Fl.event_y()})")
+             return 1
+         elif event == FL_DND_RELEASE:
+-            print("FL_DND_RELEASE %c (%d, %d)"%(self.text_string, Fl.event_x(), Fl.event_y()))
++            print(f"FL_DND_RELEASE {self.text_string} ({Fl.event_x()}, {Fl.event_y()})")
+             return 1
+         elif event == FL_PUSH:
+             print("PREPUSH ", self.text_string)
+@@ -61,7 +61,7 @@
+             cl = Fl.event_text()
+             ln = Fl.event_length()
+             print("PASTE ", self.text_string)
+-            print("  text = %s, length = %d"%(cl, ln))
++            print(f"  text = {cl}, length = {ln}")
+             return 1
+         else:
+             return 0
+--- a/trunk/pyfltk/test/TextEditor.py	2020-10-08 13:22:56.139634043 -0400
++++ b/trunk/pyfltk/test/TextEditor.py	2020-10-10 12:02:35.677517874 -0400
+@@ -37,7 +37,7 @@
+ def onFileQuit(ptr, data):
+     #menuItem = Fl_Menu_ItemPtr(ptr)
+     menuItem = ptr
+-    print('onFileQuit(%s, "%s")'%(str(menuItem), str(data)))
++    print(f'onFileQuit({str(menuItem)}, "{str(data)}")')
+     import sys  # code
+     sys.exit(0)  # code
+ 
+@@ -45,7 +45,7 @@
+ def onFileSave(ptr , data):
+     #menuItem = Fl_Menu_ItemPtr(ptr)
+     menuItem = ptr
+-    print('onFileSave(%s, "%s")'%(str(menuItem), str(data)))
++    print(f'onFileSave({str(menuItem)}, "{str(data)}")')
+ 
+     textEditor = data
+     print(textEditor.buffer().text())
+--- a/trunk/pyfltk/test/browser.py	2020-10-08 13:22:56.152967474 -0400
++++ b/trunk/pyfltk/test/browser.py	2020-10-10 10:44:08.820254311 -0400
+@@ -68,7 +68,7 @@
+ 
+ def b_cb(ptr):
+ 	#print "callback, selection = %d, event_clicks = <not yet wrapped>"%(ptr.value())
+-	print("callback, selection = %d, event_clicks = %d"%(ptr.value(),Fl.event_clicks()))
++	print(f"callback, selection = {ptr.value()}, event_clicks = {Fl.event_clicks()}")
+ 
+ def show_cb(ptr):
+ 	if field.value() == '':
+--- a/trunk/pyfltk/test/check_browser.py	2020-10-08 13:22:56.139634043 -0400
++++ b/trunk/pyfltk/test/check_browser.py	2020-10-10 14:43:38.548190562 -0400
+@@ -35,7 +35,7 @@
+ def checkBrowserCallback(ptr):
+     #cb = Fl_Check_BrowserPtr(ptr)  # code
+     cb = ptr
+-    print("contains %d items"%cb.nitems())
++    print(f"contains {cb.nitems()} items")
+     for i in range(1, cb.nitems()+1):  # code
+     	if cb.checked(i):  # code
+     		print(cb.text(i)+" is checked")
+--- a/trunk/pyfltk/test/editor.py	2020-10-08 13:22:56.159634189 -0400
++++ b/trunk/pyfltk/test/editor.py	2020-10-09 16:43:49.521666023 -0400
+@@ -247,7 +247,7 @@
+     else:
+         r = textbuf.insertfile(newfile, ipos)
+     if r != 0:
+-        fl_alert("Error reading from file %s."%newfile)
++        fl_alert(f"Error reading from file {newfile}.")
+     else:
+         if insert == 0:
+             filename = newfile
+@@ -257,7 +257,7 @@
+ def save_file(newfile):
+     global changed, filename
+     if textbuf.savefile(newfile) != 0:
+-        fl_alert("Error writing to file %s."%newfile)
++        fl_alert(f"Error writing to file {newfile}.")
+     else:
+         filename = newfile
+     changed = False
+@@ -294,7 +294,7 @@
+         editor.editor.insert_position(pos+len(editor.search))
+         editor.editor.show_insert_position()
+     else:
+-        fl_alert("No occurrences of %s found!"%editor.search)
++        fl_alert(f"No occurrences of {editor.search} found!")
+ 
+ def set_title(win):
+     global filename, title
+@@ -385,7 +385,7 @@
+         editor.editor.insert_position(pos+len(replace))
+         editor.editor.show_insert_position()
+     else:
+-        fl_alert("No occurrences of %s found!"%find)
++        fl_alert(f"No occurrences of {find} found!")
+ 
+ def replall_cb(widget, editor):
+     find = editor.replace_find.value()
+@@ -414,9 +414,9 @@
+             times += 1
+ 
+     if times > 0:
+-        fl_message("Replaced %d occurrences."%times)
++        fl_message(f"Replaced {times} occurrences.")
+     else:
+-        fl_alert("No occurrences of %s found!"%find)
++        fl_alert(f"No occurrences of {find} found!")
+ 
+ def replcan_cb(widget, editor):
+     editor.replace_dlg.hide()
+--- a/trunk/pyfltk/test/fltk_threads.py	2020-10-08 13:22:56.149634116 -0400
++++ b/trunk/pyfltk/test/fltk_threads.py	2020-10-10 11:13:53.353368290 -0400
+@@ -68,7 +68,7 @@
+         
+     #callbacks:
+     def newProcessCB(self,widget):
+-        t = MyThread('Thread %d\n'%self.id)
++        t = MyThread(f'Thread {self.id}\n')
+         self.id += 1
+         t.start()
+         self.ThreadList.append(t)
+--- a/trunk/pyfltk/test/freeze/hello.py	2020-10-08 13:22:56.262968277 -0400
++++ b/trunk/pyfltk/test/freeze/hello.py	2020-10-08 20:40:35.997654327 -0400
+@@ -20,7 +20,7 @@
+ 
+ def onHelloWorldButton(ptr):
+     import sys  # code
+-    print "onHelloWorldButton(%s)"%str(ptr)  # code
++    print(f"onHelloWorldButton({str(ptr)})")  # code
+     sys.exit(0)  # code
+ 
+ 
+--- a/trunk/pyfltk/test/handle_events.py	2020-10-08 13:22:56.156300832 -0400
++++ b/trunk/pyfltk/test/handle_events.py	2020-10-10 12:38:13.463057943 -0400
+@@ -61,7 +61,7 @@
+             return 1
+         elif event == FL_RELEASE:
+             print("FL_RELEASE")
+-            print("Button = %d" % Fl.event_button())
++            print(f"Button = {Fl.event_button()}")
+             if highlight != 0:
+                 highlight = 0
+                 self.redraw()
+@@ -98,7 +98,7 @@
+         return None
+ 
+     def resize(self, X, Y, W, H):
+-        print("Resizing: %d, %d, %d, %d\n"%(X,Y,W,H))
++        print(f"Resizing: {X}, {Y}, {W}, {H}\n")
+         #Fl_Widget.resize(self, X, Y, W, H)
+         
+ 
+--- a/trunk/pyfltk/test/hello.py	2020-10-08 13:22:56.146300759 -0400
++++ b/trunk/pyfltk/test/hello.py	2020-10-10 12:58:17.355483253 -0400
+@@ -31,7 +31,7 @@
+ 
+ def theCancelButtonCallback(ptr, data):
+ 	print("type = ", type(ptr))
+-	print("theCancelButtonCallback(%s)"%str(data))
++	print(f"theCancelButtonCallback({str(data)})")
+ 	print("Tooltip: ", ptr.tooltip())
+ 
+ window = Fl_Window(100, 100, 200, 90)
+--- a/trunk/pyfltk/test/hello_utf8.py	2020-10-08 13:22:56.142967401 -0400
++++ b/trunk/pyfltk/test/hello_utf8.py	2020-10-10 11:27:51.376432932 -0400
+@@ -35,7 +35,7 @@
+ 
+ def theCancelButtonCallback(ptr, data):
+ 	print("type = ", type(ptr))
+-	print("theCancelButtonCallback(%s)"%str(data))
++	print(f"theCancelButtonCallback({str(data)})")
+ 	print("Tooltip: ", ptr.tooltip())
+ 
+ window = Fl_Window(100, 100, 200, 90)
+--- a/trunk/pyfltk/test/idle.py	2020-10-08 13:22:56.152967474 -0400
++++ b/trunk/pyfltk/test/idle.py	2020-10-08 20:48:43.929136605 -0400
+@@ -34,7 +34,7 @@
+ def anIdleCallback(data):
+ 	global timesCalled
+ 	timesCalled = timesCalled + 1
+-	print("idle data=%d times called=%d"%(data,timesCalled))
++	print(f"idle data={data} times called={timesCalled}")
+ 
+ docb = 0
+ def theCancelButtonCallback(ptr):
+--- a/trunk/pyfltk/test/listSelect.py	2020-10-08 13:22:56.152967474 -0400
++++ b/trunk/pyfltk/test/listSelect.py	2020-10-09 16:44:27.641771102 -0400
+@@ -61,7 +61,7 @@
+ ls = ListSelect( 0, 0, 420, 300, " From:", " To:");
+ 
+ for t in range(0, 30, 1):
+-	ls.getTopBrowser().add("Item #%d"%t)
++	ls.getTopBrowser().add(f"Item #{t}")
+ 
+ window.resizable(window.this)
+ window.end()
+--- a/trunk/pyfltk/test/logo.py	2020-10-08 13:22:56.152967474 -0400
++++ b/trunk/pyfltk/test/logo.py	2020-10-10 12:41:17.053406574 -0400
+@@ -31,7 +31,7 @@
+ 
+ def theCancelButtonCallback(ptr, data):
+ 	print("type = ", type(ptr))
+-	print("theCancelButtonCallback(%s)"%str(data))
++	print(f"theCancelButtonCallback({str(data)})")
+ 	print("Tooltip: ", ptr.tooltip())
+ 
+ def createButton(x, y, w, h, label):
+--- a/trunk/pyfltk/test/logo_gleam.py	2020-10-08 13:22:56.146300759 -0400
++++ b/trunk/pyfltk/test/logo_gleam.py	2020-10-10 13:10:45.187133398 -0400
+@@ -31,7 +31,7 @@
+ 
+ def theCancelButtonCallback(ptr, data):
+ 	print("type = ", type(ptr))
+-	print("theCancelButtonCallback(%s)"%str(data))
++	print(f"theCancelButtonCallback({str(data)})")
+ 	print("Tooltip: ", ptr.tooltip())
+ 
+ def createButton(x, y, w, h, label):
+--- a/trunk/pyfltk/test/menu.py	2020-10-08 13:22:56.142967401 -0400
++++ b/trunk/pyfltk/test/menu.py	2020-10-08 20:58:05.410496482 -0400
+@@ -35,7 +35,7 @@
+ def onFileQuit(ptr, data):
+     #menuItem = Fl_Menu_ItemPtr(ptr)
+     menuItem = ptr
+-    print('onFileQuit(%s, "%s")'%(str(menuItem), str(data)))
++    print(f'onFileQuit({str(menuItem)}, "{str(data)}")')
+     import sys  # code
+     sys.exit(0)  # code
+     
+--- a/trunk/pyfltk/test/menubar.py	2020-10-08 13:22:56.149634116 -0400
++++ b/trunk/pyfltk/test/menubar.py	2020-10-10 13:08:36.376842433 -0400
+@@ -40,7 +40,7 @@
+ 		print("menu.mvalue()=NULL")
+ 	else:
+ 		if (m.shortcut()):
+-			print("%s - %s" % ( m.label(), fl_shortcut_label(m.shortcut()) ))
++			print(f"{m.label()} - {fl_shortcut_label(m.shortcut())}")
+ 		else:
+ 			print(m.label())
+ 
+@@ -96,7 +96,7 @@
+ 	menus[0].parent().redraw()
+ 
+ for i in range(0, 99, 1):
+-	hugemenu.append( nm("item %d"%i) )
++	hugemenu.append( nm(f"item {i}") )
+ 
+ window = Fl_Window(0,0, WIDTH, 400)
+ 
+--- a/trunk/pyfltk/test/message.py	2020-10-08 13:22:56.156300832 -0400
++++ b/trunk/pyfltk/test/message.py	2020-10-10 13:52:56.441473112 -0400
+@@ -33,13 +33,13 @@
+ fl_alert("Quantum fluctuations in the space-time continuim detected, "
+ 	   "you have %f seconds to comply."% 10.0)
+ 
+-print("fl_ask returned %d"%fl_ask("Do you really want to %s?"%"continue"))
++print(f"fl_ask returned {fl_ask('Do you really want to continue?')}")
+ 
+-print("fl_choice returned %d"%fl_choice("Choose one of the following:","choice0","choice1","choice2"))
++print(f"fl_choice returned {fl_choice('Choose one of the following:', 'choice0', 'choice1', 'choice2')}")
+ 
+ r = fl_input("Please enter a string for input:", "this is the default value")
+-print("fl_input returned \"%s\""%str(r))
++print(f"fl_input returned \"{str(r)}\"")
+ 
+ r = fl_password("Enter password:", "123")
+-print("fl_password returned \"%s\""%str(r))
++print(f"fl_password returned \"{str(r)}\"")
+ 
+--- a/trunk/pyfltk/test/message_de.py	2020-10-08 13:22:56.149634116 -0400
++++ b/trunk/pyfltk/test/message_de.py	2020-10-10 14:03:20.650118376 -0400
+@@ -38,13 +38,13 @@
+ fl_alert("Quantum fluctuations in the space-time continuim detected, "
+ 	   "you have %f seconds to comply."% 10.0)
+ 
+-print("fl_ask returned %d"%fl_ask("Do you really want to %s?"%"continue"))
++print(f"fl_ask returned {fl_ask('Do you really want to continue?')}")
+ 
+-print("fl_choice returned %d"%fl_choice("Choose one of the following:","choice0","choice1","choice2"))
++print(f"fl_choice returned {fl_choice('Choose one of the following:', 'choice0', 'choice1', 'choice2')}")
+ 
+ r = fl_input("Please enter a string for input:", "this is the default value")
+-print("fl_input returned \"%s\""%str(r))
++print(f"fl_input returned \"{str(r)}\"")
+ 
+ r = fl_password("Enter password:", "123")
+-print("fl_password returned \"%s\""%str(r))
++print(f"fl_password returned \"{str(r)}\"")
+ 
+--- a/trunk/pyfltk/test/postioner.py	2020-10-08 13:22:56.142967401 -0400
++++ b/trunk/pyfltk/test/postioner.py	2020-10-09 16:58:56.594297723 -0400
+@@ -39,7 +39,7 @@
+ 
+ 
+ def thePosCallback(ptr):
+-    theDisplay.value("%3.3f, %3.3f"%(thePos.xvalue(), thePos.yvalue()))  # code
++    theDisplay.value(f"{thePos.xvalue():3.3f}, {thePos.yvalue():3.3f}")  # code
+ 
+ 
+ def main():
+--- a/trunk/pyfltk/test/simple_table.py	2020-10-08 13:22:56.156300832 -0400
++++ b/trunk/pyfltk/test/simple_table.py	2020-10-10 13:36:18.481582445 -0400
+@@ -42,7 +42,7 @@
+             fl_font(FL_HELVETICA, 12) # font used by all headers
+             return None
+         elif context==self.CONTEXT_CELL:
+-            s = "%d"%self.data[R][C]
++            s = f"{self.data[R][C]}"
+             fl_push_clip(X,Y,W,H)
+             fl_draw_box(FL_THIN_UP_BOX, X, Y, W, H, self.row_header_color())
+             fl_color(FL_BLACK)
+--- a/trunk/pyfltk/test/sudoku.py	2020-10-08 13:22:56.142967401 -0400
++++ b/trunk/pyfltk/test/sudoku.py	2020-10-09 17:02:43.064993929 -0400
+@@ -404,7 +404,7 @@
+         for i in range(9):
+             for j in range(9):
+                 cell = self.grid_cells[i][j]
+-                name = "value%d.%d"%(i,j)
++                name = f"value{i}.{j}"
+                 val = 0
+                 (status, val) = self.prefs.get(name, 0)
+                 if status == 0:
+@@ -412,7 +412,7 @@
+                     break
+                 self.grid_values[i][j] = val
+                 
+-                name = "state%d.%d"%(i,j)
++                name = f"state{i}.{j}"
+                 (status, val) = self.prefs.get(name, 0)
+                 cell.readonly(val)
+                 if val != 0:
+@@ -422,7 +422,7 @@
+                     solved = False
+ 
+                 for k in range(8):
+-                    name = "test%d%d.%d"%(k, i, j)
++                    name = f"test{k}{i}.{j}"
+                     (status, val) = self.prefs.get(name, 0)
+                     cell.test_value(k, val)
+ 
+@@ -611,17 +611,17 @@
+         for i in range(9):
+             for j in range(9):
+                 cell = self.grid_cells[i][j]
+-                name = "value%d.%d"%(i,j)
++                name = f"value{i}.{j}"
+                 self.prefs.set(name, self.grid_values[i][j])
+ 
+-                name = "state%d.%d"%(i, j)
++                name = f"state{i}.{j}"
+                 self.prefs.set(name, cell.value())
+ 
+-                name = "readonly%d.%d"%(i, j)
++                name = f"readonly{i}.{j}"
+                 self.prefs.set(name, cell.readonly())
+ 
+                 for k in range(8):
+-                    name = "test%d%d.%d"%(k, i, j)
++                    name = f"test{k}{i}.{j}"
+                     self.prefs.set(name, cell.test_value(k))
+ 
+     def set_title(self):
+--- a/trunk/pyfltk/test/table.py	2020-10-08 13:22:56.156300832 -0400
++++ b/trunk/pyfltk/test/table.py	2020-10-08 21:52:31.201008633 -0400
+@@ -31,7 +31,7 @@
+ 
+ 
+ def button_cb(w, data):
+-    print("BUTTON: %s"%w.label())
++    print(f"BUTTON: {w.label()}")
+ 
+ class WidgetTable(Fl_Table_Row):
+     def __init__(self, x, y, w, h, l=""):
+@@ -45,7 +45,7 @@
+         self.end()
+ 
+     def draw_cell(self, context, R, C, X, Y, W, H):
+-        s="%d/%d"%(R,C) # text for each cell
++        s=f"{R}/{C}" # text for each cell
+ 
+         if context==self.CONTEXT_STARTPAGE:
+             fl_font(FL_HELVETICA, 12) # font used by all headers
+@@ -64,7 +64,7 @@
+             self.init_sizes()
+             return None
+         elif context==self.CONTEXT_ROW_HEADER:
+-            s1="Row %d"%R
++            s1=f"Row {R}"
+             fl_push_clip(X,Y,W,H)
+             fl_draw_box(FL_THIN_UP_BOX, X, Y, W, H, self.row_header_color())
+             fl_color(FL_BLACK)
+@@ -72,7 +72,7 @@
+             fl_pop_clip()
+             return None
+         elif context==self.CONTEXT_COL_HEADER:
+-            s1="Column %d"%C
++            s1=f"Column {C}"
+             fl_push_clip(X, Y, W, H)
+             fl_draw_box(FL_THIN_UP_BOX, X, Y, W, H, self.col_header_color())
+             fl_color(FL_BLACK)
+@@ -99,11 +99,11 @@
+                 #(status, X, Y, W, H)=self.find_cell(self.CONTEXT_TABLE, r, c, X, Y, W, H)
+                 
+                 if c&1:
+-                    s="%d.%d"%(r,c)
++                    s=f"{r}.{c}"
+                     inp = Fl_Input(X,Y,W,H)
+                     inp.value(s)
+                 else:
+-                    s1="%d/%d"%(r,c)
++                    s1=f"{r}/{c}"
+                     butt = Fl_Light_Button(X,Y,W,H,s1)
+                     self.s_list.append(s1)
+                     butt.align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE)
+@@ -121,7 +121,7 @@
+         Fl_Table_Row.__init__(self, x, y, w, h, l)
+ 
+     def draw_cell(self, context, R, C, X, Y, W, H):
+-        s="%d/%d"%(R,C) # text for each cell
++        s=f"{R}/{C}" # text for each cell
+ 
+         if context==self.CONTEXT_STARTPAGE:
+             fl_font(FL_HELVETICA, 16)
+@@ -158,7 +158,7 @@
+ 
+ def table_cb(o, data):
+     table = data
+-    print("%s callback: row=%d col=%d, context=%d, event=%d, clicks=%d"%(table.label(),table.callback_row(),table.callback_col(),table.callback_context(),Fl.event(), Fl.event_clicks()))
++    print(f"{table.label()} callback: row={table.callback_row()} col={table.callback_col()}, context={table.callback_context()}, event={Fl.event()}, clicks={Fl.event_clicks()}")
+     
+ if __name__=='__main__':
+     win1 = Fl_Window(940, 500, "widgettable")
+--- a/trunk/pyfltk/test/timeout.py	2020-10-08 13:22:56.149634116 -0400
++++ b/trunk/pyfltk/test/timeout.py	2020-10-08 21:53:52.488010236 -0400
+@@ -32,7 +32,7 @@
+ 
+ def timeoutCallback(data):
+ 	global numTimeoutsCalled
+-	print("timeoutCallback(%s)"%str(data))
++	print(f"timeoutCallback({str(data)})")
+ 	Fl.repeat_timeout( 2.0, timeoutCallback, numTimeoutsCalled)
+ 	numTimeoutsCalled = numTimeoutsCalled + 1
+ 	if numTimeoutsCalled == 5:
+--- a/trunk/pyfltk/test/tree_demo.py	2020-10-08 13:22:56.152967474 -0400
++++ b/trunk/pyfltk/test/tree_demo.py	2020-10-08 22:31:23.253006805 -0400
+@@ -462,7 +462,7 @@
+         """
+         """
+         def on_select(self, node):
+-            print("on_select: node=%s" % node.title)
++            print(f"on_select: node={node.title}")
+         
+     print("creating window")
+     win = fltk.Fl_Window(xWin, yWin, wWin, hWin, "Fl_Tree demo")
+@@ -474,25 +474,25 @@
+     def on_promote(ev):
+         node = tree.valuenode()
+         if node:
+-            print("promote: %s" % node.title)
++            print(f"promote: {node.title}")
+             node.promote()
+ 
+     def on_demote(ev):
+         node = tree.valuenode()
+         if node:
+-            print("demote: %s" % node.title)
++            print(f"demote: {node.title}")
+             node.demote()
+ 
+     def on_moveup(ev):
+         node = tree.valuenode()
+         if node:
+-            print("moveup: %s" % node.title)
++            print(f"moveup: {node.title}")
+             node.moveup()
+ 
+     def on_movedown(ev):
+         node = tree.valuenode()
+         if node:
+-            print("movedown: %s" % node.title)
++            print(f"movedown: {node.title}")
+             node.movedown()
+ 
+     but_promote = fltk.Fl_Button(xButs, 20, 20, 20, "@<-")
+@@ -517,13 +517,13 @@
+     # add stuff to root node
+     if 1:
+         for i in range(3):
+-            node = tree.append("item-%s" % i)
++            node = tree.append(f"item-{i}")
+             if 1:
+                 for j in range(3):
+-                    subnode = node.append("item-%s%s" % (i, j))
++                    subnode = node.append(f"item-{i}{j}")
+                     if 0:
+                         for k in range(2):
+-                            subnode.append("item-%s%s%s" % (i,j,k))
++                            subnode.append(f"item-{i}{j}{k}")
+     
+     print("entering main loop")
+     fltk.Fl.run()
+--- a/trunk/pyfltk/test/tty.py	2020-10-08 13:22:56.146300759 -0400
++++ b/trunk/pyfltk/test/tty.py	2020-10-10 14:13:42.192064370 -0400
+@@ -90,17 +90,17 @@
+             bytes = "waitpid(): no child process\n"
+         else:
+             if os.WIFEXITED(status):
+-                bytes = "Exit=%d\n"%os.WEXITSTATUS(status)
++                bytes = f"Exit={os.WEXITSTATUS(status)}\n"
+                 os.close(fd)
+                 Fl.remove_fd(fd)
+                 G_pids[t] = -1
+             elif os.WIFSIGNALED(status):
+-                bytes = "Killed with %d\n"%os.WTERMSIG(status)
++                bytes = f"Killed with {os.WTERMSIG(status)}\n"
+                 os.close(fd)
+                 Fl.remove_fd(fd)
+                 G_pids[t] = -1
+             elif os.WIFSTOPPED(status):
+-                bytes = "Stopped with %d\n"%os.WSTOPSIG(status)
++                bytes = f"Stopped with {os.WSTOPSIG(status)}\n"
+ 
+         G_buff[t].append(bytes)
+     else:                            # DATA
+--- a/trunk/pyfltk/test/utf8.py	2020-10-08 13:22:56.146300759 -0400
++++ b/trunk/pyfltk/test/utf8.py	2020-10-08 22:57:10.030697161 -0400
+@@ -148,10 +148,10 @@
+             i = i+1
+             buf = ""
+             if j < size_count and i == size_array[j]:
+-                buf = "@b%d"%i
++                buf = f"@b{i}"
+                 j = j+1
+             else:
+-                buf = "%d"%i
++                buf = f"{i}"
+         
+             sizeobj.add(buf)
+ 
+@@ -164,7 +164,7 @@
+             if size_array[i] <= pickedsize:
+                 w = i
+ 
+-                buf = "@b%d"%size_array[i]
++                buf = f"@b{size_array[i]}"
+                 sizeobj.add(buf)
+             sizeobj.value(w+1)
+     # force selection of nearest valid size, then redraw
+@@ -191,8 +191,8 @@
+     else:
+         font_idx = font_idx-1
+         name, font_type = Fl.get_font_name(font_idx)
+-        print("idx %d\nUser name :%s:"%( font_idx, name))
+-        print("FLTK name :%s:"%( Fl.get_font(font_idx)))
++        print(f"idx {font_idx}\nUser name :{name}:")
++        print(f"FLTK name :{Fl.get_font(font_idx)}:")
+ 
+         Fl.set_font(extra_font, font_idx)
+ 
+@@ -250,7 +250,7 @@
+                 prefix = prefix+"@i"
+             buf = prefix+"@."+name
+         else:
+-            buf="@F%d@.%s"%(font_idx, name)
++            buf=f"@F{font_idx}@.{name}"
+         fontobj.add(buf)
+ 
+     fontobj.topline(i_was)
+@@ -515,7 +515,7 @@
+                 o = o+1
+                 i = i+1
+             buf = buf+'\0'
+-            bu = "0x%04lX"%(y * 16)
++            bu = f"0x{(y * 16):04X}"
+             b = Fl_Input(200,(y-off)*25,60,25)
+             b.value(bu)
+             b = Fl_Input(260,(y-off)*25,400,25)

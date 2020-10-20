@@ -1,0 +1,860 @@
+--- a/trunk/pyfltk/python/MakeSwig.py	2020-10-16 13:17:11.787141444 -0400
++++ b/trunk/pyfltk/python/MakeSwig.py	2020-10-16 18:58:04.580305746 -0400
+@@ -32,6 +32,7 @@
+         #print(result)
+         if len(result) > 0:
+             p_inc = map(lambda x: x.strip(), result[0].split(' '))
++#            p_inc = [x.strip() for x in result[0].split(' ')]
+             for item in p_inc:
+                 #if string.find(item, '-I') == 0:
+                 if item.find('-I') == 0:
+--- a/trunk/pyfltk/python/updateInits.py	2020-10-08 13:22:56.982973535 -0400
++++ b/trunk/pyfltk/python/updateInits.py	2020-10-16 11:46:38.496560571 -0400
+@@ -65,7 +65,7 @@
+     
+     ifl = open(in_file, 'r')
+     for line in ifl.readlines():
+-        exec line
++        exec(line)
+ 
+     # write the footer
+     ofl.write("}\n")
+--- a/trunk/pyfltk/setup.py	2020-10-08 13:22:56.136300686 -0400
++++ b/trunk/pyfltk/setup.py	2020-10-16 20:24:04.518331788 -0400
+@@ -197,6 +197,7 @@
+         print("No compile flags found!")
+     else:
+         inc_list = map(lambda x: x.strip(), result[0].split(' '))
++#        inc_list = [x.strip() for x in result[0].split(' ')]
+     
+         for inc in inc_list:
+             if inc[:2] == '-I':
+@@ -211,6 +212,7 @@
+         print("No link flags found!")
+     else:
+         lib_list = map(lambda x: x.strip(), result[0].split(' '))
++#        lib_list = [x.strip() for x in result[0].split(' ')]
+     
+         for lib in lib_list:
+             if lib[:2] == '-l':
+--- a/trunk/pyfltk/test/PyAppWithGUI/app.py	2020-10-08 13:22:56.166300905 -0400
++++ b/trunk/pyfltk/test/PyAppWithGUI/app.py	2020-10-10 11:43:29.933237150 -0400
+@@ -7,7 +7,7 @@
+ import sys
+ 
+ def theBrowserCallback( ptr ):
+-	print "selected:"+str(gui.theBrowser.text(gui.theBrowser.value()))
++	print("selected:"+str(gui.theBrowser.text(gui.theBrowser.value())))
+ 
+ def theOKCallback(ptr):
+ 	sys.exit()
+--- a/trunk/pyfltk/test/arc.py	2020-10-08 13:22:56.146300759 -0400
++++ b/trunk/pyfltk/test/arc.py	2020-10-10 12:53:59.901605322 -0400
+@@ -71,14 +71,14 @@
+             fl_pop_matrix()
+             fl_pop_clip()
+         except:
+-            print('uncaught!', sys.exc_type, sys.exc_value)
++            print('uncaught!', sys.exc_info()[0], sys.exc_info()[1])
+         return None
+ 
+     
+ 
+ def slider_cb(ptr, v):
+     global d
+-    args[long(v)] = ptr.value()
++    args[int(v)] = ptr.value()
+     d.redraw()
+ 
+ 
+--- a/trunk/pyfltk/test/cube.py	2020-10-08 13:22:56.156300832 -0400
++++ b/trunk/pyfltk/test/cube.py	2020-10-10 14:31:04.535282880 -0400
+@@ -74,7 +74,7 @@
+ 			      gl_draw("Cube: flat", -4.5, -4.5)
+ 		      glEnable(GL_DEPTH_TEST)
+ 	      except:
+-		      print("Exception: ", sys.exc_type, sys.exc_value)
++		      print("Exception: ", sys.exc_info()[0], sys.exc_info()[1])
+ 
+ # the cube definition
+ v0 = [0.0, 0.0, 0.0]
+--- a/trunk/pyfltk/test/subwindow.py	2020-10-08 13:22:56.146300759 -0400
++++ b/trunk/pyfltk/test/subwindow.py	2020-10-10 14:49:51.137075639 -0400
+@@ -50,7 +50,7 @@
+ 				self.color(FL_RED)
+ 				self.redraw()
+ 			except:
+-				print('uncaught!', sys.exc_type, sys.exc_value)
++				print('uncaught!', sys.exc_info()[0], sys.exc_info()[1])
+ 			return 1
+ 		elif e == FL_LEAVE:
+ 			try:
+@@ -58,7 +58,7 @@
+ 				self.color(FL_GRAY)
+ 				self.redraw()
+ 			except:
+-				print('uncaught!', sys.exc_type, sys.exc_value)
++				print('uncaught!', sys.exc_info()[0], sys.exc_info()[1])
+ 			return 1
+ 		else:
+ 			return 0
+--- a/trunk/pyfltk/test/tree.py	2020-10-08 13:22:56.156300832 -0400
++++ b/trunk/pyfltk/test/tree.py	2020-10-16 21:16:41.245394864 -0400
+@@ -551,10 +551,10 @@
+ 
+ 
+ def cb_loaddb_button(loaddb_button, tree):
+-    filename = fl_file_chooser("Select a Preferences style Database", "Preferences(*.prefs)", long(0))
++    filename = fl_file_chooser("Select a Preferences style Database", "Preferences(*.prefs)", int(0))
+     if len(filename) > 0:
+         tree.clear()
+-        prefs = Fl_Preferences(filename, long(0), long(0))
++        prefs = Fl_Preferences(filename, int(0), int(0))
+         tree.load(prefs)
+         tree.redraw()
+ 
+@@ -565,7 +565,7 @@
+             tree.insert_above(item, "AaaAaa")
+             tree.insert_above(item, "BbbBbb")
+             tree.insert_above(item, "CccCcc")
+-        item = item.next()
++        item = next(item)
+     tree.redraw()
+ 
+ def cb_rebuildtree_button(rebuildtree_button, tree):
+@@ -607,7 +607,7 @@
+                 break
+             item = tree.first()
+         else:
+-            item = item.next()
++            item = next(item)
+     tree.redraw()
+ 
+ def cb_clearall_button(clearall_button, tree):
+--- a/trunk/pyfltk/util/flconvert/Code_py.py	2020-10-08 13:22:59.012988363 -0400
++++ b/trunk/pyfltk/util/flconvert/Code_py.py	2020-10-16 22:25:34.274178386 -0400
+@@ -204,13 +204,13 @@
+ 	def getGlobalNamesFromObject(self, obj, funcName):
+ 		# returns list of global (name, type, functionNameWhereDeclared) tuples 
+ 		globalNames = []
+-		if obj.has_key('name') and obj['name'] != '':
+-				if obj['options'].has_key('classDef'):
++		if 'name' in obj and obj['name'] != '':
++				if 'classDef' in obj['options']:
+ 					objType = obj['options']['classDef']
+ 				else:
+ 					objType = obj['class']
+ 				globalNames.append( (obj['name'], objType, funcName) )
+-		if obj.has_key('objects'):
++		if 'objects' in obj:
+ 			for subObj in obj['objects']:
+ 				globalNames = globalNames + \
+ 					self.getGlobalNamesFromObject(subObj, funcName)
+@@ -221,12 +221,12 @@
+ 		# returns list of 'extra code' lines that are import statements
+ 		# present in the object or its children
+ 		importStatements = []
+-		if obj['options'].has_key('codeDef'):
++		if 'codeDef' in obj['options']:
+ 			codeDefs = obj['options']['codeDef']
+ 			for lineOfCode in codeDefs:
+ 					if self.importStatementRegex.match(lineOfCode):
+ 						importStatements.append( (lineOfCode, funcName) )
+-		if obj.has_key('objects'):
++		if 'objects' in obj:
+ 			for subObj in obj['objects']:
+ 				importStatements = importStatements + \
+ 					self.getImportsFromObject(subObj, funcName)
+@@ -245,7 +245,7 @@
+ 
+ 
+ 	def doClass(self, aClass, tabLevel):
+-		if aClass.has_key('base'):
++		if 'base' in aClass:
+ 			self.out.write(ts(tabLevel)+"class %s(%s):\n\n" \
+ 				%(aClass['name'], aClass['base']))
+ 		else:
+@@ -370,9 +370,9 @@
+ 		}
+ 
+ 			
+-		for key in opts.keys():
+-			if self.binaryOptionSet.has_key(key):
+-				if  optionValueFix.has_key(opts[key]):
++		for key in iter(opts):
++			if key in self.binaryOptionSet:
++				if opts[key] in optionValueFix:
+ 					tags["value"]=optionValueFix[opts[key]]
+ 				else:
+ 					tags["value"]=opts[key]
+@@ -392,7 +392,7 @@
+ 		# are replaced by these values
+ 		tags = { "name":name, "value":"TheNode'sAttribute" }	
+ 
+-		if self.binaryOptionSet.has_key("resizable") and "resizable" in opts.keys():
++		if "resizable" in self.binaryOptionSet and "resizable" in opts:
+ 			tags["value"]=opts["resizable"]
+ 			self.out.write( ts(tabLevel)+"Fl_Group.current()." + self.binaryOptionSet["resizable"]%tags+"\n")
+ 
+@@ -417,7 +417,7 @@
+ 		opts = obj['options']
+ 		name = self.getObjectName( obj, childLevel, childNumber )
+ 
+-		if opts.has_key('classDef'):
++		if 'classDef' in opts:
+ 			type = opts['classDef']
+ 		else:
+ 			type = obj['class']
+@@ -426,7 +426,7 @@
+ 		#this may change the object's class
+ 		# guard to avoid spurious comments
+ 		typeDefProcessed=0
+-		if opts.has_key('typeDef'):
++		if 'typeDef' in opts:
+ 			try:
+ 				newtype = typeDefMappings[type][opts['typeDef']][0]
+ 				if newtype != "":
+@@ -443,7 +443,7 @@
+ 		xywh = opts['xywhDef']  
+ 		constructorParams = "%s, %s, %s, %s"%(xywh[0], xywh[1], 
+ 			xywh[2], xywh[3])
+-		if opts.has_key('labelDef'):
++		if 'labelDef' in opts:
+ 			# take care of multiline labels
+ 			constructorParams = '%s, """%s"""'%(constructorParams, opts['labelDef'])
+ 
+@@ -452,7 +452,7 @@
+ 
+ 		#handle the special cases of types in the class options section
+ 		#add the 'type' call if needed - becuase not all are subclasses
+-		if opts.has_key('typeDef') and typeDefProcessed==0:
++		if 'typeDef' in opts and typeDefProcessed==0:
+ 			try:
+ 				typeCall = typeDefMappings[type][opts['typeDef']][1]
+ 				if typeCall != "":
+@@ -471,7 +471,7 @@
+ 		#self.out.write( ts(tabLevel)+name+".thisown = 0\n")
+ 
+ 		#recurse and process child objects
+-		if obj.has_key('objects'):
++		if 'objects' in obj:
+ 			#for o in obj['objects']:
+ 			#	self.doObject(o, tabLevel)
+ 			for i in range(0, len(obj['objects']), 1):
+@@ -483,7 +483,7 @@
+ 
+ 		
+ 		#generate 'extra code' if it is not some form of import statement
+-		if opts.has_key("codeDef"):
++		if "codeDef" in opts:
+ 			codeDefs = opts["codeDef"]
+ 			for lineOfCode in codeDefs:
+ 				if (not self.importStatementRegex.match(lineOfCode)):
+@@ -528,8 +528,8 @@
+ 		xywh = opts['xywhDef']
+ 		constructorParams = "%s, %s, %s, %s"%(xywh[0], xywh[1], 
+ 			xywh[2], xywh[3])
+-		if opts.has_key('labelDef'):
+-			constructorParams = '%s, "%s"'%(constructorParams, opts['labelDef'])
++		if 'labelDef' in opts:
++			constructorParams = '%s, """%s"""'%(constructorParams, opts['labelDef'])
+ 
+ 		#self.out.write( ts(tabLevel)+name+" = "+type+"("+constructorParams+")\n")
+ 		self.out.write( ts(tabLevel)+self.attribsPrefix+name+" = "+type+"("+constructorParams+")\n")
+@@ -540,7 +540,7 @@
+ 		#self.out.write( ts(tabLevel)+name+".thisown = 0\n")
+ 
+ 		# generate call to set the menu
+-		if obj.has_key('objects') and len(obj['objects'])>0:
++		if 'objects' in obj and len(obj['objects'])>0:
+ 			#self.out.write("\n"+ts(tabLevel)+"# *hack alert*\n")
+ 			#self.out.write(ts(tabLevel)+"setMenu( "+name+", (\n")
+ 			#self.out.write(ts(tabLevel)+name+".copy( (\n")
+@@ -566,12 +566,12 @@
+ 			# for use in a call to setMenu
+ 			opts = o['options']
+ 			label = opts['labelDef']
+-			if opts.has_key('shortcutDef'):
++			if 'shortcutDef' in opts:
+ 				accel = opts['shortcutDef'] 
+ 			else:
+ 				accel = '0'
+ 
+-			if opts.has_key('callbackDef'):
++			if 'callbackDef' in opts:
+ 				callback = opts['callbackDef']
+ 			else:
+ 				callback = '0'
+@@ -579,21 +579,21 @@
+ 			#handle menu item modifiers
+ 			#- yes, these hard-coded constants are bad
+ 			flags = 0
+-			if opts.has_key('deactivate'):
++			if 'deactivate' in opts:
+ 				flags = flags + 1
+-			if opts.has_key('value'):
++			if 'value' in opts:
+ 				flags = flags + 4
+-			if opts.has_key('hide'):
++			if 'hide' in opts:
+ 				flags = flags + 16
+ 			if o['class'].lower()=='submenu':
+ 				flags = flags + 64 
+-			if opts.has_key('divider'):
++			if 'divider' in opts:
+ 				flags = flags + 128
+ 
+ 			self.out.write('%s("%s", %s, %s, 0, %d), \n'%( prefix, label,
+ 				accel, callback, flags)	)
+ 		
+-			if o.has_key('objects'):
++			if 'objects' in o:
+ 				for childObject in o['objects']:
+ 					self.__dumpMenuSubObject(childObject, prefix+ts(1))
+ 				self.out.write(prefix+ts(1)+"(None, ),\n")
+@@ -602,13 +602,13 @@
+ 
+ if __name__ == '__main__':
+ 
+-	from FlScanner import FlScanner
+-	from FlParser import FlParser
+-	from FlPreProcessor import FlPreProcessor
+-	from FlParseTreeConverter import FlParseTreeConverter
+-	import cStringIO
+-	from util import *
+-	from FlParseTreeConverter import dumpAstTree
++	from .FlScanner import FlScanner
++	from .FlParser import FlParser
++	from .FlPreProcessor import FlPreProcessor
++	from .FlParseTreeConverter import FlParseTreeConverter
++	import io
++	from .util import *
++	from .FlParseTreeConverter import dumpAstTree
+ 
+ 	try:
+ 		import sys
+@@ -618,25 +618,25 @@
+ 	f = open(filename)
+ 	input = f.read()
+ 
+-	tempFile = cStringIO.StringIO()
++	tempFile = io.StringIO()
+ 
+ 	preProcessor = FlPreProcessor()
+ 	preProcessor.tokenize(input, tempFile)
+ 	input = tempFile.getvalue()
+ 
+-	print "PreProcesssed:\n"+input
+-	print
++	print("PreProcesssed:\n"+input)
++	print()
+ 	scanner = FlScanner()
+ 	tokens = scanner.tokenize(input)
+ 
+ 	dumpSequence(tokens, "Tokens:")
+ 
+-	print
+-	print "About to Parse."
++	print()
++	print("About to Parse.")
+ 	parser = FlParser()
+ 	parseTree =  parser.parse(tokens)
+ 
+-	print "\n\nParse Tree:"
++	print("\n\nParse Tree:")
+ 	dumpAstTree(parseTree)
+ 
+ 	ptc  = FlParseTreeConverter(parseTree)
+--- a/trunk/pyfltk/util/flconvert/DumpTree.py	2020-10-08 13:22:59.176322890 -0400
++++ b/trunk/pyfltk/util/flconvert/DumpTree.py	2020-10-08 16:37:23.666516695 -0400
+@@ -1,7 +1,7 @@
+-from token import Token
+-from ast import AST
++from .token import Token
++from .ast import AST
+ #from generic import GenericASTTraversal
+-from spark import GenericASTTraversal
++from .spark import GenericASTTraversal
+ 
+ class PyCodeGenerator(GenericASTTraversal):
+ 	def __init__(self, ast):
+@@ -23,8 +23,8 @@
+ 	def dump(s):
+ 		sys.stdout.write(s)
+ 
+-	from FlScanner import FlScanner
+-	from FlParser import FlParser
++	from .FlScanner import FlScanner
++	from .FlParser import FlParser
+ 	#filename = sys.argv[1]
+ 	filename = "test.fl"
+ 	f = open(filename)
+--- a/trunk/pyfltk/util/flconvert/FlParseTreeConverter.py	2020-10-08 13:22:59.172989532 -0400
++++ b/trunk/pyfltk/util/flconvert/FlParseTreeConverter.py	2020-10-16 10:55:08.692791676 -0400
+@@ -6,21 +6,21 @@
+ #	Last Modified: 1999:06:10 15:35:33
+ #
+ 
+-from ast import AST
++from .ast import AST
+ #from generic import GenericASTTraversal
+-from spark import GenericASTTraversal
++from .spark import GenericASTTraversal
+ #from util import *
+ #from flconvert import *
+ 
+ 
+ def dn(l,n):
+ 	if (l!=""):
+-		print l+":"
+-	for i in xrange(0, len(n), 1):
++		print(l+":")
++	for i in range(0, len(n), 1):
+ 		try:
+-			print "   %d:%s = %s"%(i, n[i].type, str(n[i].attr))
++			print("   %d:%s = %s"%(i, n[i].type, str(n[i].attr)))
+ 		except:
+-			print "   %d:%s"%(i, n[i].type)
++			print("   %d:%s"%(i, n[i].type))
+ 	
+ 
+ 
+@@ -91,7 +91,7 @@
+ 	
+ 	def n_ld1_exit(self, node):
+ 		#dn("n_ld1", node)
+-		print "n_ld1_exit"
++		print("n_ld1_exit")
+ 		node.attr = ""
+ 		for n in node:
+ 			if hasattr(n, "attr"):
+@@ -393,10 +393,10 @@
+ 	def dump(s):
+ 		sys.stdout.write(s)
+ 
+-	from FlScanner import FlScanner
+-	from FlParser import FlParser
+-	from FlPreProcessor import FlPreProcessor
+-	import cStringIO
++	from .FlScanner import FlScanner
++	from .FlParser import FlParser
++	from .FlPreProcessor import FlPreProcessor
++	import io
+ 
+ 	try:
+ 		filename = sys.argv[1]
+@@ -405,7 +405,7 @@
+ 	f = open(filename)
+ 	input = f.read()
+ 
+-	tempFile = cStringIO.StringIO()
++	tempFile = io.StringIO()
+ 
+ 	preProcessor = FlPreProcessor()
+ 	preProcessor.tokenize(input, tempFile)
+@@ -424,10 +424,10 @@
+ 	#print str(defs)
+ 	#print
+ 	#dumpTree(defs)
+-	print len(codeGen.defStack)
++	print(len(codeGen.defStack))
+ 	
+ 	def dd(ddef, sp):
+-		print sp + str(ddef)
++		print(sp + str(ddef))
+ 	
+ 	for d in codeGen.defStack:
+ 		dd(d,"")	
+--- a/trunk/pyfltk/util/flconvert/FlParser.py	2020-10-08 13:22:59.172989532 -0400
++++ b/trunk/pyfltk/util/flconvert/FlParser.py	2020-10-08 16:37:24.823195919 -0400
+@@ -2,9 +2,9 @@
+ 
+ #from generic import GenericParser
+ #from token import Token
+-from ast import AST
++from .ast import AST
+ #from generic import GenericASTBuilder
+-from spark import GenericASTBuilder
++from .spark import GenericASTBuilder
+ #
+ #from flconvert import *
+ 
+--- a/trunk/pyfltk/util/flconvert/FlPreProcessor.py	2020-10-08 13:22:59.176322890 -0400
++++ b/trunk/pyfltk/util/flconvert/FlPreProcessor.py	2020-10-08 16:37:25.243200479 -0400
+@@ -3,7 +3,7 @@
+ #
+ #from flconvert import *
+ #from generic import GenericScanner
+-from spark import GenericScanner
++from .spark import GenericScanner
+ import re
+ 
+ codeDefRegex = re.compile("code[0-4]?$")
+--- a/trunk/pyfltk/util/flconvert/FlScanner.py	2020-10-08 13:22:59.009655005 -0400
++++ b/trunk/pyfltk/util/flconvert/FlScanner.py	2020-10-08 16:37:25.669871778 -0400
+@@ -4,8 +4,8 @@
+ #from token import Token
+ #from flconvert import *
+ #from generic import GenericScanner
+-from spark import GenericScanner
+-from token import Token
++from .spark import GenericScanner
++from .token import Token
+ 
+ import re
+ 
+@@ -91,6 +91,6 @@
+ 	import sys
+ 	filename = sys.argv[1]
+ 	f = open(filename)
+-	print scan(f)
++	print(scan(f))
+ 
+ 
+--- a/trunk/pyfltk/util/flconvert/__init__.py	2020-10-08 13:22:59.176322890 -0400
++++ b/trunk/pyfltk/util/flconvert/__init__.py	2020-10-08 16:37:26.076542860 -0400
+@@ -1,10 +1,10 @@
+-from ast import *
+-from spark import *
+-from token import *
+-from util import *
+-from Code_py  import *
+-from FlParseTreeConverter import *
+-from FlParser import *
+-from FlPreProcessor import *
+-from FlScanner import *
++from .ast import *
++from .spark import *
++from .token import *
++from .util import *
++from .Code_py  import *
++from .FlParseTreeConverter import *
++from .FlParser import *
++from .FlPreProcessor import *
++from .FlScanner import *
+ 
+--- a/trunk/pyfltk/util/flconvert/spark.py	2020-10-08 13:22:59.176322890 -0400
++++ b/trunk/pyfltk/util/flconvert/spark.py	2020-10-16 12:17:47.771154797 -0400
+@@ -31,7 +31,7 @@
+ 		for b in c.__bases__:
+ 			classlist.append(b)
+ 		for name in dir(c):
+-			if not namedict.has_key(name):
++			if name not in namedict:
+ 				namelist.append(name)
+ 				namedict[name] = 1
+ 	return namelist
+@@ -42,7 +42,7 @@
+ 		self.re = re.compile(pattern, re.VERBOSE)
+ 
+ 		self.index2func = {}
+-		for name, number in self.re.groupindex.items():
++		for name, number in iter(self.re.groupindex.items()):
+ 			self.index2func[number-1] = getattr(self, 't_' + name)
+ 
+ 	def makeRE(self, name):
+@@ -60,7 +60,7 @@
+ 		return string.join(rv, '|')
+ 
+ 	def error(self, s, pos):
+-		print "Lexical error at position %s" % pos
++		print("Lexical error at position %s" % pos)
+ 		raise SystemExit
+ 
+ 	def tokenize(self, s):
+@@ -73,7 +73,7 @@
+ 
+ 			groups = m.groups()
+ 			for i in range(len(groups)):
+-				if groups[i] and self.index2func.has_key(i):
++				if groups[i] and i in self.index2func:
+ 					self.index2func[i](groups[i])
+ 			pos = m.end()
+ 
+@@ -114,7 +114,7 @@
+ 
+ 			rule, fn = self.preprocess(rule, func)
+ 
+-			if self.rules.has_key(lhs):
++			if lhs in self.rules:
+ 				self.rules[lhs].append(rule)
+ 			else:
+ 				self.rules[lhs] = [ rule ]
+@@ -145,9 +145,9 @@
+ 		union = {}
+ 		self.first = {}
+ 		
+-		for rulelist in self.rules.values():
++		for rulelist in iter(self.rules.values()):
+ 			for lhs, rhs in rulelist:
+-				if not self.first.has_key(lhs):
++				if lhs not in self.first:
+ 					self.first[lhs] = {}
+ 
+ 				if len(rhs) == 0:
+@@ -155,14 +155,14 @@
+ 					continue
+ 
+ 				sym = rhs[0]
+-				if not self.rules.has_key(sym):
++				if sym not in self.rules:
+ 					self.first[lhs][sym] = 1
+ 				else:
+ 					union[(sym, lhs)] = 1
+ 		changes = 1
+ 		while changes:
+ 			changes = 0
+-			for src, dest in union.keys():
++			for src, dest in iter(union):
+ 				destlen = len(self.first[dest])
+ 				self.first[dest].update(self.first[src])
+ 				if len(self.first[dest]) != destlen:
+@@ -179,7 +179,7 @@
+ 		return None
+ 
+ 	def error(self, token):
+-		print "Syntax error at or near `%s' token" % token
++		print("Syntax error at or near `%s' token" % token)
+ 		raise SystemExit
+ 
+ 	def parse(self, tokens):
+@@ -190,7 +190,7 @@
+ 		if self.ruleschanged:
+ 			self.makeFIRST()
+ 
+-		for i in xrange(len(tokens)):
++		for i in range(len(tokens)):
+ 			states[i+1] = []
+ 
+ 			if states[i] == []:
+@@ -201,7 +201,7 @@
+ 
+ 		if i < len(tokens)-1 or states[i+1] != [(self.startRule, 2, 0)]:
+ 			del tokens[-1]
+-                        _dumptokens(tokens, states)
++			_dumptokens(tokens, states)
+ 			self.error(tokens[i-1])
+ 		rv = self.buildTree(tokens, tree, ((self.startRule, 2, 0), i+1))
+ 		del tokens[-1]
+@@ -246,7 +246,7 @@
+ 			#
+ 			#  A -> a . B (predictor)
+ 			#
+-			if self.rules.has_key(nextSym):
++			if nextSym in self.rules:
+ 				#
+ 				#  Work on completer step some more; for rules
+ 				#  with empty RHS, the "parent state" is the
+@@ -254,7 +254,7 @@
+ 				#  so the Earley items the completer step needs
+ 				#  may not all be present when it runs.
+ 				#
+-				if needsCompletion.has_key(nextSym):
++				if nextSym in needsCompletion:
+ 					new = (rule, pos+1, parent)
+ 					olditem_i = needsCompletion[nextSym]
+ 					if new not in state:
+@@ -266,7 +266,7 @@
+ 				#
+ 				#  Has this been predicted already?
+ 				#
+-				if predicted.has_key(nextSym):
++				if nextSym in predicted:
+ 					continue
+ 				predicted[nextSym] = 1
+ 
+@@ -290,15 +290,15 @@
+ 							state.append(new)
+ 							continue
+ 						prhs0 = prhs[0]
+-						if not self.rules.has_key(prhs0):
++						if prhs0 not in self.rules:
+ 							if prhs0 != ttype:
+ 								continue
+ 							else:
+ 								state.append(new)
+ 								continue
+ 						first = self.first[prhs0]
+-						if not first.has_key(None) and \
+-						   not first.has_key(ttype):
++						if None not in first and \
++						   ttype not in first:
+ 							continue
+ 						state.append(new)
+ 					continue
+@@ -311,7 +311,7 @@
+ 					#
+ 					prhs = prule[1]
+ 					if len(prhs) > 0 and \
+-					   not self.rules.has_key(prhs[0]) and \
++					   prhs[0] not in self.rules and \
+ 					   token != prhs[0]:
+ 						continue
+ 					state.append((prule, 0, i))
+@@ -333,7 +333,7 @@
+ 		
+ 		while pos > 0:
+ 			want = ((rule, pos, parent), state)
+-			if not tree.has_key(want):
++			if want not in tree:
+ 				#
+ 				#  Since pos > 0, it didn't come from closure,
+ 				#  and if it isn't in tree[], then there must
+@@ -389,7 +389,8 @@
+ 			sortlist.append((len(rhs), name))
+ 			name2index[name] = i
+ 		sortlist.sort()
+-		list = map(lambda (a,b): b, sortlist)
++		list = list(map(lambda itm: itm[1], sortlist))
++#		list = [a_b[1] for a_b in sortlist]
+ 		return children[name2index[self.resolve(list)]]
+ 
+ 	def resolve(self, list):
+@@ -554,22 +555,22 @@
+ 
+ def _dump(tokens, states):
+ 	for i in range(len(states)):
+-		print 'state', i
++		print('state', i)
+ 		for (lhs, rhs), pos, parent in states[i]:
+-			print '\t', lhs, '::=',
+-			print string.join(rhs[:pos]),
+-			print '.',
+-			print string.join(rhs[pos:]),
+-			print ',', parent
++			print('\t', lhs, '::=', end=' ')
++			print(string.join(rhs[:pos]), end=' ')
++			print('.', end=' ')
++			print(string.join(rhs[pos:]), end=' ')
++			print(',', parent)
+ 		if i < len(tokens):
+-			print
+-			print 'token', str(tokens[i])
+-			print
++			print()
++			print('token', str(tokens[i]))
++			print()
+ 
+ #fewer messages
+ def _dumptokens(tokens, states):
+     for i in range(len(states)):
+-        print 'state', i
++        print('state', i)
+         if i < len(tokens):
+-            print 'token', str(tokens[i])
++            print('token', str(tokens[i]))
+             
+--- a/trunk/pyfltk/util/flconvert/util.py	2020-10-08 13:22:59.179656247 -0400
++++ b/trunk/pyfltk/util/flconvert/util.py	2020-10-10 09:34:59.513132739 -0400
+@@ -4,7 +4,7 @@
+ 		s = s + ", " + str(node.attr) + ")"
+ 	else:
+ 		s = s + ")"
+-	print s
++	print(s)
+ 	for n in node:
+ 		dumpAstTree(n, depth + "  ")
+ 	
+@@ -16,47 +16,47 @@
+ 		dumpFunc(func)
+ 
+ def dumpFunc(func):
+-	print "Function: " + func['name']
++	print("Function: " + func['name'])
+ 	t = makeBlanks(1)
+-	print t + "Input Paramaters:"
++	print(t + "Input Paramaters:")
+ 	for i in func['inputParams']:
+-		print makeBlanks(2)+str(i)
+-	print t + "Options:"
++		print(makeBlanks(2)+str(i))
++	print(t + "Options:")
+ 	for i in func['options']:
+-		print makeBlanks(2)+str(i)
+-	print t + "Functions Child Objects:"
++		print(makeBlanks(2)+str(i))
++	print(t + "Functions Child Objects:")
+ 	for i in func['objects']:
+ 		dumpObject( 2, i)
+ 
+ def dumpObject(depth, obj):
+ 	t = makeBlanks(depth)
+-	print t +  "Object:"
+-	for i in obj.keys():
++	print(t +  "Object:")
++	for i in iter(obj):
+ 		if i == "options":
+-			print makeBlanks(depth+1)+"Options:"
++			print(makeBlanks(depth+1)+"Options:")
+ 			opts = obj[i]
+-			for o in opts.keys():
+-				print makeBlanks(depth+2)+o+" : "+str(opts[o])
++			for o in iter(opts):
++				print(makeBlanks(depth+2)+o+" : "+str(opts[o]))
+ 		else:
+ 			if i == 'objects':
+-				print makeBlanks(depth+1)+"Child Objects:"
++				print(makeBlanks(depth+1)+"Child Objects:")
+ 				for o in obj[i]:
+ 					dumpObject(depth+2, o)
+ 			else:
+-				print makeBlanks(depth+1)+i+" : "+str(obj[i])
++				print(makeBlanks(depth+1)+i+" : "+str(obj[i]))
+ 
+ 
+ def dumpSequence(sequence, label=""):
+-	print label
++	print(label)
+ 	for s in sequence:
+-		print str(s)
+-	print
++		print(str(s))
++	print()
+ 
+ 	
+ 	
+ def makeBlanks(depth):
+ 	r = ""
+-	for i in xrange(0, depth, 1):
++	for i in range(0, depth, 1):
+ 		r = r + "     "
+ 	return r
+ 
+--- a/trunk/pyfltk/util/generateFLTKList.py	2020-10-08 13:22:59.186322963 -0400
++++ b/trunk/pyfltk/util/generateFLTKList.py	2020-10-10 09:08:24.351803955 -0400
+@@ -70,7 +70,7 @@
+ 
+ def printClassAndChildren(c, spacing=""):
+ 	""" pretty prints a class and its children """
+-	print spacing+c.name
++	print(spacing+c.name)
+ 	for ch in c.children:
+ 		printClassAndChildren(ch, spacing+"       ")
+ 
+@@ -94,19 +94,19 @@
+ if (__name__=="__main__"):
+ 	import sys
+ 	if (len(sys.argv) != 2):
+-		print 
+-		print "usage: "+sys.argv[0]+" <path to FLTK headers>"
+-		print
+-		print "        ex: "+sys.argv[0]+" /usr/local/include/FL"
+-		print
++		print() 
++		print("usage: "+sys.argv[0]+" <path to FLTK headers>")
++		print()
++		print("        ex: "+sys.argv[0]+" /usr/local/include/FL")
++		print()
+ 	else:
+ 		classList = {}
+ 		lines = generateListFromHeaders(sys.argv[1])
+ 		parseLines(lines, classList)
+ 
+-		for key in classList.keys():
++		for key in iter(classList):
+ 			c = classList[key]
+ 			if (not c.parent):
+ 				printClassAndChildren(c)
+-				print
++				print()
+ 
