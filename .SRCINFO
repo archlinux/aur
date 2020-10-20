@@ -1,13 +1,10 @@
 pkgbase = crio-bin
 	pkgdesc = Open Container Initiative-based implementation of Kubernetes Container Runtime Interface
 	pkgver = 1.19.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://cri-o.io/
 	arch = x86_64
 	license = Apache2
-	makedepends = tar
-	makedepends = sed
-	makedepends = coreutils
 	depends = cni-plugins
 	depends = conntrack-tools
 	depends = runc

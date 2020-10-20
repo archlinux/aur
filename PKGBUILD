@@ -5,7 +5,7 @@
 # Things that need to be updated on new build
 pkgver=1.19.0
 sha256sums_x86_64=(ac604ad74847a947019a946c89fceae3a4698476fae0df61d0757e031afaeee9)
-pkgrel=4
+pkgrel=5
 
 # Things that will stay the same
 pkgname=crio-bin
@@ -14,7 +14,7 @@ license=('Apache2')
 url='https://cri-o.io/'
 arch=('x86_64')
 depends=(cni-plugins conntrack-tools runc crictl)
-makedepends=(tar sed coreutils)
+makedepends=()
 provides=(crio crio-bin cri-o)
 conflicts=(crio crio-bin crio-git cri-o cri-o-git)
 
