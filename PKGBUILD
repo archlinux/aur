@@ -1,7 +1,7 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
 
 pkgname=ttf-recursive
-pkgver=1.065
+pkgver=1.066
 pkgrel=1
 pkgdesc="A variable type family built for better code & UI"
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom:SIL Open Font License 1.1')
 depends=('fontconfig')
 _srcname=ArrowType-Recursive
 source=("${url}/releases/download/${pkgver}/${_srcname}-${pkgver}.zip")
-sha256sums=('598ed547a2dfa117091126559b17b39948bc7160e218a214262d301cc24985c1')
+sha256sums=('27a8733584de5659e9e304ff32ea16930465edb3abdb899ece1b1f6a58aa2060')
 
 package() {
   install -d ${pkgdir}/usr/share/fonts/TTF/Recursive
