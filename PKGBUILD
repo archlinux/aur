@@ -1,10 +1,10 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-native
-_srctag=5.0-9
+_srctag=5.13-1b
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
-_monover=4.9.4
+_monover=5.1.1
 pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
@@ -34,6 +34,8 @@ depends=(
 makedepends=(autoconf ncurses bison perl fontforge flex meson
   'gcc>=4.5.0-2'
   mingw-w64-gcc
+  rust                  lib32-rust-libs
+  cargo
   giflib                lib32-giflib
   libpng                lib32-libpng
   gnutls                lib32-gnutls
@@ -94,28 +96,27 @@ makedepends=(${makedepends[@]} ${depends[@]})
 source=(
     proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-${_srctag}
     wine-valve::git+https://github.com/ValveSoftware/wine.git
-    vkd3d-valve::git+https://github.com/ValveSoftware/vkd3d.git
+    vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
     dxvk-valve::git+https://github.com/ValveSoftware/dxvk.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
-    ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
     liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
     SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
+    dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
     FAudio::git+https://github.com/FNA-XNA/FAudio.git
-    glib::git+https://gitlab.gnome.org/GNOME/glib.git
     gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
     gst-orc::git+https://gitlab.freedesktop.org/gstreamer/orc.git
     gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
     gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
-    https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-bin-${_monover}.tar.gz
+    https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
     proton-user_compat_data.patch
     dxvk-extraopts.patch
-    wine-gcc10.patch
+    vkd3d-extraopts.patch
 )
 noextract=(
-    wine-mono-bin-${_monover}.tar.gz
+    wine-mono-${_monover}-x86.tar.xz
 )
 sha256sums=(
     SKIP
@@ -123,7 +124,6 @@ sha256sums=(
     SKIP
     SKIP
     SKIP
-    SKIP    
     SKIP
     SKIP
     SKIP
@@ -133,47 +133,59 @@ sha256sums=(
     SKIP
     SKIP
     SKIP
-    'df97cdb904a583a1f92ce17d9d4793aed063ebc9bb139b6d1989b22a534c7b63'
-    '4cce6f7f262fa42f9e6b4c30d3b75852c186b71e91ccbe5cc5980563d3296120'
+    'b17ac815afbf5eef768c4e8d50800be02af75c8b230d668e239bad99616caa82'
+    '9f69e174941d3201fc75c39f7bc3de0abe7d32dd9beb438d9e9a8a015c510719'
     '8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954'
     '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
     'bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98'
-    '311dd7461619c2f31e0ec281f1aca2f46dec23d3e21246b9b8d7775081998e32'
+    '7c5f9c20e41c0cd7d0d18867950a776608cef43e0ab9ebad2addb61e613fe17a'
 )
 
 prepare() {
     [ ! -d mono ] && mkdir mono
-    cp "wine-mono-bin-${_monover}.tar.gz" mono/
+    cp "wine-mono-${_monover}-x86.tar.xz" mono/
 
     [ ! -d build ] && mkdir build
     cd proton
-    for submodule in ffmpeg openvr SPIRV-Headers Vulkan-Headers FAudio fonts/liberation-fonts; do
+    for submodule in openvr FAudio fonts/liberation-fonts vkd3d-proton; do
         git submodule init "${submodule}"
-        git config submodule."${submodule}".url ../"${submodule#*/}"
+        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
         git submodule update "${submodule}"
     done
 
-    for submodule in wine vkd3d dxvk; do
+    for submodule in wine dxvk; do
         git submodule init "${submodule}"
-        git config submodule."${submodule}".url ../"${submodule#*/}"-valve
+        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"-valve
         git submodule update "${submodule}"
     done
 
-    for submodule in gstreamer gst-{plugins-{base,good},orc} glib; do
+    for submodule in gstreamer gst-{plugins-{base,good},orc}; do
         git submodule init "${submodule}"
-        git config submodule."${submodule}".url ../"${submodule#*/}"
+        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
         git submodule update "${submodule}"
     done
+
+    pushd vkd3d-proton
+    for submodule in subprojects/{dxil-spirv,Vulkan-Headers,SPIRV-Headers}; do
+        git submodule init "${submodule}"
+        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
+        git submodule update "${submodule}"
+    done
+    pushd subprojects/dxil-spirv
+    git submodule init third_party/spirv-headers
+    git config submodule.third_party/spirv-headers.url "$srcdir"/SPIRV-Headers
+    git submodule update third_party/spirv-headers
+    popd
+    popd
 
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
 
-    patch -p1 -i "$srcdir"/wine-gcc10.patch
-
     # Uncomment to enable extra optimizations
     # Patch crossfiles with extra optimizations from makepkg.conf
     patch -p1 -i "$srcdir"/dxvk-extraopts.patch
+    patch -p1 -i "$srcdir"/vkd3d-extraopts.patch
     local dxvk_cflags="$CFLAGS"
     local dxvk_ldflags="$LDFLAGS"
     # Filter known bad flags before applying optimizations
@@ -191,9 +203,6 @@ prepare() {
     # https://github.com/Joshua-Ashton/d9vk/issues/476
     #dxvk_cflags+=" -fno-stack-protector"
     dxvk_cflags="${dxvk_cflags// -fstack-protector*([\-all|\-strong])/}"
-    # Adjust optimization level in meson arguments. This is ignored
-    # anyway because meson sets its own optimization level.
-    dxvk_cflags="${dxvk_cflags// -O+([0-3s]|fast)/}"
     # Doesn't compile with these flags in MingW so remove them.
     # They are also filtered in Wine PKGBUILDs so remove them
     # for winelib versions too.
@@ -204,6 +213,12 @@ prepare() {
         -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
     sed -i dxvk/build-win32.txt \
+        -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
+        -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
+    sed -i vkd3d-proton/build-win64.txt \
+        -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
+        -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
+    sed -i vkd3d-proton/build-win32.txt \
         -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
 }
@@ -225,6 +240,8 @@ build() {
     export CFLAGS="${CFLAGS/ -fno-plt/}"
     export CXXFLAGS="${CXXFLAGS/ -fno-plt/}"
     export LDFLAGS="${LDFLAGS/,-z,now/}"
+    # MingW Wine builds fail with relro
+    export LDFLAGS="${LDFLAGS/,-z,relro/}"
 
     SUBMAKE_JOBS="${MAKEFLAGS/-j/}" \
         WINEESYNC=0 \
@@ -241,18 +258,6 @@ package() {
 
     mkdir -p "$pkgdir/usr/share/steam/compatibilitytools.d"
     mv dist "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"
-
-    find "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}" \
-        -exec chmod go-w {} \;
-    find "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}" \
-        -type f \
-        -not -path "*/proton" \
-        -not -path "*/dist/bin/*" \
-        -not -path "*/dist/lib/*" \
-        -not -path "*/dist/lib64/*" \
-        -not -path "*/dist/share/default_pfx/*" \
-        -exec chmod 644 {} \;
-    chmod 755 "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/{proton,dist/bin/{msidb,wine{,64},wine{,64}-preloader,wineserver}}
 
     ln -s /usr/share/wine/gecko \
         "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/share/wine/gecko
