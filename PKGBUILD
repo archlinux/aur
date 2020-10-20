@@ -1,13 +1,13 @@
 # Contributor: josip <josip@jjanzic.com>
 pkgname=kandoman-git
 _pkgname=kandoman
-pkgver=r11.979a418
+pkgver=r13.1f85a49
 pkgrel=1
 pkgdesc="UI for todoman in form of kanban board"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'arm' 'aarch64')
 url="https://github.com/janza/kandoman"
 license=('MIT')
-depends=('todoman' 'pyside2')
+depends=('todoman' 'python-pyqt5')
 source=("${pkgname%-*}::git+https://github.com/janza/kandoman.git")
 sha1sums=("SKIP")
 
