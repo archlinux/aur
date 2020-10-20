@@ -21,7 +21,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/$pkgname-${pkgver}a
+  cd $srcdir/$pkgname-${pkgver}b
 
   make DESTDIR=$pkgdir datadir=$pkgdir/usr/share/csokoban mandir=$pkgdir/usr/share/man bindir=$pkgdir/usr/bin csokoban-install
   make DESTDIR=$pkgdir datadir=$pkgdir/usr/share/cmines   mandir=$pkgdir/usr/share/man bindir=$pkgdir/usr/bin cmines-install
