@@ -1,0 +1,15 @@
+pkgbase = devicon-lookup-git
+	pkgdesc = A simple standalone CLI tool. It accepts text over stdin, and returns it stdout with a devicon prepended.
+	pkgver = 0.8.0.r397.g9dbd84b
+	pkgrel = 1
+	url = https://github.com/coreyja/devicon-lookup
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	depends = awesome-terminal-fonts
+	source = devicon-lookup::git+https://github.com/coreyja/devicon-lookup.git
+	sha512sums = SKIP
+
+pkgname = devicon-lookup-git
+
