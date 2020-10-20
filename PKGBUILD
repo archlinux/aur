@@ -10,6 +10,7 @@ license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=('jq')
+makedepends=('git')
 source=("${_pkgname}::git+https://github.com/garrylachman/${_pkgname}"
         "22.patch")
 md5sums=('SKIP'
