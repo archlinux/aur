@@ -8,13 +8,13 @@
 
 ### MERGE REQUESTS SELECTION
 
-# Merge Requests List: ('579' '1309' '1050')
-_merge_requests_to_use=('1050' '1309') # safe pick
+# Merge Requests List: ('579' '1309' '1050' '1441')
+_merge_requests_to_use=('1050' '1309' '1441') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.38.1+2+g103d79877
+pkgver=3.38.1+9+g54936263c
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -30,7 +30,7 @@ conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=103d798775de27bce10fc8827b2b7b5f79fb2ff7 # tags/3.38.1^2
+_commit=54936263cdfda48b5bf38d79b6f218d59e2c7f07 # tags/3.38.1^9
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -129,6 +129,13 @@ prepare() {
   # Status: 3
   # Comment: Fix high latency on nvidia driver
   pick_mr '1309'
+
+  # Title: WIP: clutter-frame-clock: Triple buffering support (v4)
+  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
+  # Type: 1
+  # Status: 3
+  # Comment: Help GPU frequencies to scale up
+   pick_mr '1441'
 
 }
 
