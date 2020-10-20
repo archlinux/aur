@@ -1,4 +1,4 @@
-# Maintainer: Brett M. Gilio <mail@brettgilio.com>
+# Maintainer: Kalashnikov I.V <ivankalashnikov@outlook.com>
 
 pkgname=emergent
 pkgver=8.2.0
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://grey.colorado.edu/emergent"
 license=('GPL')
 depends=('qt5-base' 'cmake' 'subversion' 'libsndfile' 'coin')
-source=("http://brettgilio.com/emergent-8.2.0.zip")
+source=("https://github.com/emer/cemer/archive/master.zip")
 md5sums=('79fde976b2c89590fb78854aa2c04101')
 
 build() {
