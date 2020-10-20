@@ -6,31 +6,32 @@ _pkgname=skywire
 _pkgname1=skywire-mainnet
 _githuborg=SkycoinProject
 pkgdesc="Skywire: Building a New Internet. Skycoin.com"
-_pkgver1='0.2.3'
-_tag_ver='v0.2.3'
+_pkgver1='0.3.0'
+_tag_ver="v${_pkgver1}"
 pkgver=${_pkgver1//-/.}
 _pkggopath="github.com/${_githuborg}/${_pkgname1}"
 pkgrel=1
-arch=('x86_64' 'aarch64' 'armv7' 'armv8' 'armv7l' 'armv7h')
+arch=('i686' 'x86_64' 'aarch64' 'armv7' 'armv8' 'armv7l' 'armv7h')
 url="https://${_pkggopath}"
 license=()
 makedepends=(git skycoin-keyring)
 depends=()
 provides=(skywire)
 #source=("git+${url}.git#branch=${BRANCH:-develop}"
-install=skywire.install
+#install=skywire.install
 source=("skywire-scripts.tar.gz"
 "PKGBUILD.sig")
 #tar -czvf skywire-scripts.tar.gz skywire-scripts
 #updpkgsums
 sha256sums=('fff8b9f7d4e60c8993497a963161f934d445f4d7cf2ff47bc787dcb459c8b351'
             'SKIP')
-sha256sums_x86_64=('985711605361caf7ddd24e82a632d56cfb33252afbc5e1740a54c4db7048a455')
-sha256sums_aarch64=('9a41a13604dab1971e0c4a8200fbaa6d0bb77d8c19d6d6e5702bbd02e661078d')
-sha256sums_armv7=('30154480cb2711ae23b11cf61b49be95748470a32a23286888eb7fd25bd6c809')
-sha256sums_armv8=('9a41a13604dab1971e0c4a8200fbaa6d0bb77d8c19d6d6e5702bbd02e661078d')
-sha256sums_armv7l=('30154480cb2711ae23b11cf61b49be95748470a32a23286888eb7fd25bd6c809')
-sha256sums_armv7h=('30154480cb2711ae23b11cf61b49be95748470a32a23286888eb7fd25bd6c809')
+sha256sums_x86_64=('dffd28740b051bf07764fa254bf2be15a56dfd6390860541f660aef03fe71856')
+sha256sums_aarch64=('ac8cadc15a506f324718cdc9a549ccefa9459e88367441361a6395d330bfcf8b')
+sha256sums_armv8=('ac8cadc15a506f324718cdc9a549ccefa9459e88367441361a6395d330bfcf8b')
+sha256sums_armv7=('271e6f175ee3382287929ff0eb298712427d64f4cfb930b3b75277a3ace500b2')
+sha256sums_armv7l=('271e6f175ee3382287929ff0eb298712427d64f4cfb930b3b75277a3ace500b2')
+sha256sums_armv7h=('271e6f175ee3382287929ff0eb298712427d64f4cfb930b3b75277a3ace500b2')
+sha256sums_i686=('d74b659aca0e3b90c05cf2b31de9bdbd44f6a4a69a4a0a083f7c44454be3012a')
 _release_url=("${url}/releases/download/${_tag_ver}/${_pkgname}-${_tag_ver}")
 source_x86_64=("${_release_url}-linux-amd64.tar.gz")
 source_aarch64=("${_release_url}-linux-arm64.tar.gz")
@@ -38,9 +39,9 @@ source_armv7=("${_release_url}-linux-arm.tar.gz")
 source_armv7l=("${_release_url}-linux-arm.tar.gz")
 source_armv7h=("${_release_url}-linux-arm.tar.gz")
 source_armv8=("${_release_url}-linux-arm64.tar.gz")
-
-validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC'  # Moses Narrow <moe_narrow@use.startmail.com>
-'98F934F04F9334B81DFA3398913BBD5206B19620') #iketheadore skycoin <luxairlake@protonmail.com>
+source_i686=('')
+validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC')  # Moses Narrow <moe_narrow@use.startmail.com>
+#'98F934F04F9334B81DFA3398913BBD5206B19620') #iketheadore skycoin <luxairlake@protonmail.com>
 
 
 prepare() {
