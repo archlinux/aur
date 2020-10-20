@@ -1,8 +1,8 @@
 # Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="spinvis"
-pkgver="0.1.2"
-pkgrel="2"
+pkgver="0.2.0"
+pkgrel="1"
 pkgdesc="A visualization program for spins."
 arch=("any")
 url="https://github.com/sciapp/spinvis"
@@ -11,7 +11,7 @@ depends=("python" "python-gr-framework" "python-numpy" "python-pyqt5")
 makedepends=("python-setuptools")
 source=("https://github.com/sciapp/spinvis/archive/v${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/sciapp/spinvis/v${pkgver}/icon.png")
-sha256sums=("bca7e8db5cfa77a2b9f9aa3dba52b8c7be9e566e0b9a1a211760d0f725cfa876"
+sha256sums=("c9eb2e9384dab43dc092d376a426f1c6c5bca7d7ffad36ade961fb78ed687354"
             "136d8aaf4aaff1d9c770d5caf13e63c87022dedc51394a7cb7f56e2e65020aef")
 
 build() {
