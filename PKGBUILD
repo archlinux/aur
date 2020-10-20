@@ -1,5 +1,5 @@
 pkgname='hastebin-git'
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Upload data to hastebin via stdin'
 license=('GPL2')
@@ -9,6 +9,7 @@ arch=('any')
 depends=('python' 'python-requests')
 conflicts=("${pkgname%-git}")
 optdepends=('xclip: default --clip-command')
+makedepends=('git')
 source=("git+${url}")
 sha256sums=('SKIP')
 
