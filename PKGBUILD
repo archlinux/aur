@@ -3,17 +3,17 @@
 
 pkgname=florist
 pkgver=2020
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source implementation of IEEE Standard 1003.5b-1996, the POSIX Ada binding."
 
 arch=('any')
-url="https://github.com/charlie5/florist"
+url="https://github.com/Blady-Com/florist"
 license=('GPL3')
 
 depends=('gcc-ada')
 options=(staticlibs)
 
-source=('git+https://github.com/charlie5/florist.git#branch=update_unsafe_process_primitives')
+source=('git+https://github.com/Blady-Com/florist.git')
 sha1sums=(SKIP)
 
 
