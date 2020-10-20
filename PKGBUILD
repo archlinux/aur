@@ -8,13 +8,13 @@ arch=('i686' 'x86_64')
 url="https://grey.colorado.edu/emergent"
 license=('GPL')
 depends=('qt5-base' 'cmake' 'subversion' 'libsndfile' 'coin')
-source=("https://github.com/emer/cemer/archive/master.zip")
+source=("git+https://github.com/emer/cemer")
 md5sums=('79fde976b2c89590fb78854aa2c04101')
 
 build() {
   cd "$srcdir/emergent-$pkgver"
   ./configure --prefix=/usr --bindir=/usr/bin --libdir=/usr/lib --qt5
-  make
+  make -j4
 }
 
 package() {
