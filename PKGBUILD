@@ -9,10 +9,10 @@ url="https://github.com/wfxr/csview"
 license=("MIT" "APACHE")
 depends=()
 makedepends=("rust" "cargo")
-conflicts=("csview")
-sha256sums=("SKIP")
+conflicts=("csview" "csview-bin")
 
 source=("${_pkgname}::git+https://github.com/wfxr/csview.git")
+sha256sums=("SKIP")
 
 pkgver() {
     cd "${_pkgname}"
