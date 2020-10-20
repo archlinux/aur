@@ -1,10 +1,11 @@
 # Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Henri Chain <henri@henricha.in>
 
 _pkgname=kcontacts
 pkgname=$_pkgname-git
-pkgver=r3175.53a4ef81
+pkgver=r3195.0e4a5832
 pkgrel=1
 pkgdesc="Address book API for KDE"
 arch=(i686 x86_64)
@@ -40,6 +41,5 @@ build() {
 package() {
   cd $srcdir/$_pkgname/build
   make DESTDIR="$pkgdir" install
-  install -Dm644 ../COPYING.LIB "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-
+  install -Dm644 ../LICENSES/* -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }

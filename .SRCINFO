@@ -1,6 +1,6 @@
 pkgbase = kcontacts-git
 	pkgdesc = Address book API for KDE
-	pkgver = r3175.53a4ef81
+	pkgver = r3195.0e4a5832
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = i686
