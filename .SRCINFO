@@ -1,6 +1,6 @@
 pkgbase = sirius
 	pkgdesc = Domain specific library for electronic structure calculations
-	pkgver = 6.5.6
+	pkgver = 6.5.7
 	pkgrel = 1
 	url = https://github.com/electronic-structure/SIRIUS
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = sirius
 	depends = spfft
 	depends = gsl
 	depends = hdf5
-	optdepends = cuda: Linear algebra on GPU
+	optdepends = magma: Linear algebra on GPU
 	options = !emptydirs
-	source = sirius-6.5.6.tar.gz::https://github.com/electronic-structure/SIRIUS/archive/v6.5.6.tar.gz
-	sha256sums = c8120100bde4477545eae489ea7f9140d264a3f88696ec92728616d78f214cae
+	source = sirius-6.5.7.tar.gz::https://github.com/electronic-structure/SIRIUS/archive/v6.5.7.tar.gz
+	sha256sums = d886c3066163c43666ebac2ea50351df03907b5686671e514a75f131ba51b43c
 
 pkgname = sirius
 

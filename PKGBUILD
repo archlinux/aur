@@ -2,7 +2,7 @@
 
 pkgname=sirius
 _PkgName=SIRIUS
-pkgver=6.5.6
+pkgver=6.5.7
 pkgrel=1
 pkgdesc="Domain specific library for electronic structure calculations"
 arch=('x86_64')
@@ -10,9 +10,9 @@ license=('BSD')
 url="https://github.com/electronic-structure/SIRIUS"
 depends=('libvdwxc' 'libxc' 'spglib' 'elpa' 'spfft' 'gsl' 'hdf5')
 makedepends=('cmake')
-optdepends=('cuda: Linear algebra on GPU')
+optdepends=('magma: Linear algebra on GPU')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c8120100bde4477545eae489ea7f9140d264a3f88696ec92728616d78f214cae')
+sha256sums=('d886c3066163c43666ebac2ea50351df03907b5686671e514a75f131ba51b43c')
 options=(!emptydirs)
 
 prepare() {
@@ -41,6 +41,7 @@ build() {
       -DUSE_OPENMP=ON \
       -DUSE_SCALAPACK=ON \
       -DUSE_CUDA=$_ACC \
+      -DUSE_MAGMA=$_ACC \
       -DUSE_VDWXC=ON \
       -DUSE_ELPA=ON \
       -DELPA_INCLUDE_DIR=/usr/include/elpa_openmp-$_ELPAVER
