@@ -2,11 +2,11 @@
 
 pkgname=clickrouter-git
 pkgver=v2.0.1.r943.g6fa978f01
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast modular packet processing and analysis'
 depends=('glibc' 'libpcap')
 optdepends=()
-makedepends=('git' 'gcc' 'make' 'autoconf')
+makedepends=('git')
 arch=('x86_64')
 url='https://github.com/kohler/click'
 license=('custom')
