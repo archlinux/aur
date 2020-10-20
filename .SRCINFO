@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-vulkan-tools
+	pkgdesc = Vulkan Utilities and Tools (mingw-w64)
+	pkgver = 1.2.157
+	pkgrel = 1
+	url = https://www.khronos.org/vulkan/
+	arch = any
+	license = custom
+	makedepends = mingw-w64-cmake
+	makedepends = python
+	makedepends = mingw-w64-vulkan-headers
+	makedepends = mingw-w64-glslang
+	makedepends = mingw-w64-spirv-tools
+	depends = mingw-w64-vulkan-icd-loader
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = https://github.com/KhronosGroup/Vulkan-Tools/archive/v1.2.157.tar.gz
+	sha256sums = ac259d00c807c7cd5ec7f572d10da86adaa5adb21bf066dd16ea86f878015c74
+
+pkgname = mingw-w64-vulkan-tools
+
