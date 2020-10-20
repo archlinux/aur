@@ -6,8 +6,8 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
 _pkgver=2020.6
-_channel=beta
-pkgver=${_pkgver}.${_channel}3
+_channel=stable
+pkgver=${_pkgver}.${_channel}
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
@@ -19,7 +19,7 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
 _commit='b82a3e9a7717b8b15c339bc78d4a2f3c6d90ea50'
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}3?signed"
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "${pkgname%-beta}.sh")
 sha256sums=('SKIP'
@@ -60,7 +60,7 @@ build() {
 	./version-metadata.sh inject $PRODUCT_VERSION
 
 	echo "Building wireguard-go..."
-	cd "$srcdir/mullvadvpn-app/wireguard/libwg"
+	pushd wireguard/libwg
 	mkdir -p "../../build/lib/$arch-unknown-linux-gnu"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
@@ -68,21 +68,22 @@ build() {
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 	go build -v -o "../../build/lib/$arch-unknown-linux-gnu"/libwg.a -buildmode c-archive
+	popd
 
 	# Clean mod cache for makepkg -C
 	go clean -modcache
 
 	echo "Building Rust code in release mode using $RUSTC_VERSION..."
 
-	cd "$srcdir/mullvadvpn-app/mullvad-cli"
-	mkdir -p dist-assets/shell-completions
+	pushd mullvad-cli
+	mkdir -p ../dist-assets/shell-completions
 	for sh in bash zsh fish; do
 		echo "Generating shell completion script for $sh..."
 		cargo run --release --locked --features shell-completions -- \
 			shell-completions "$sh" ../dist-assets/shell-completions/
 	done
+	popd
 
-	cd "$srcdir/mullvadvpn-app"
 	MULLVAD_ADD_MANIFEST="1" cargo build --release --locked
 
 	echo "Copying binaries"
@@ -98,15 +99,16 @@ build() {
 		cp "target/release/$binary" "dist-assets/$binary"
 	done
 
-	echo "Updating relay list..."
-	cargo run -p mullvad-rpc --bin relay_list > dist-assets/relays.json
+	# Update relay list & generate relays.json
+	./update-relays.sh
 
 	# Build Electron GUI app
-	cd gui
+	pushd gui
 	echo "Installing JavaScript dependencies..."
 	npm ci --no-optional --cache "$srcdir/npm-cache"
 	echo "Packing final release artifact..."
 	npm run pack:linux
+	popd
 }
 
 #check() {
@@ -148,7 +150,7 @@ package() {
 
 	# Install desktop file & icons from deb
 	cd dist
-	ar x "MullvadVPN-${_pkgver}.0-${_channel}3_amd64.deb"
+	ar x "MullvadVPN-${_pkgver}.0_amd64.deb"
 	bsdtar -xf data.tar.xz
 	install -Dm644 "usr/share/applications/${pkgname%-beta}.desktop" -t \
 		"$pkgdir/usr/share/applications"
