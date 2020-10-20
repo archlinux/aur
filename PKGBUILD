@@ -1,6 +1,6 @@
-# Maintainer: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
+# Maintainer: Saulius Lukauskas <luksaulius@gmail.com>
 pkgname=salmon
-pkgver=0.13.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Highly-accurate & wicked fast transcript-level quantification from RNA-seq reads using lightweight alignments"
 arch=('x86_64')
@@ -10,22 +10,29 @@ depends=('bzip2' 'intel-tbb' 'xz')
 makedepends=('boost>=1.55' 'cmake' 'unzip')
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/COMBINE-lab/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('bae03f0e2b30d976029f83e745a3ad65')
+md5sums=('ec4fc93d95bbcc782d63578e8f2624fd')
 
 prepare() {
-  # Fix for now segmentation fault when using archlinux jemalloc package
-  # Force cmake to statically build jemalloc from salmon's dev sources
   cd "$pkgname-$pkgver"
-  sed -i '/^find_package(Jemalloc)/ , /^endif()/ s/^/#/' CMakeLists.txt
+
+  # Add missing include <string> in 1.3.0 headers
+  sed -i 's/#include <unordered_map>/#include <unordered_map>\n#include <string>/g' include/BAMUtils.hpp
 }
 
 build() {
+  
   cd "$pkgname-$pkgver"
+
+  # FIXME: NO_IPO=TRUE is for some reason needed in 1.3.0
+  #        Otherwise it is segfaulting...
+
   cmake \
+    -DNO_IPO:BOOL='TRUE' \
     -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
     -Wno-dev \
     .
+
   make
 }
 
