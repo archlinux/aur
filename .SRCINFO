@@ -1,6 +1,6 @@
 pkgbase = man-pages-ro-git
 	pkgdesc = Romanian man pages (Git version)
-	pkgver = r11870.548995fe9
+	pkgver = r11939.702f4991a
 	pkgrel = 1
 	url = https://salsa.debian.org/manpages-l10n-team/manpages-l10n
 	arch = any
