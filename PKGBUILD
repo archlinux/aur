@@ -1,8 +1,8 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.8.12.arch1
-pkgrel=2
+pkgver=5.9.1.arch1
+pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/"
@@ -19,14 +19,12 @@ source=(
 	"$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
 	config         # the main kernel config file
 	sphinx-workaround.patch
-	"sys-kernel_arch-sources-g14_files_0001-nonupstream-navi10-vfio-reset.patch"
 	"sys-kernel_arch-sources-g14_files_0002-asus-nb-wmi-add-support-for-GU502DU.patch"
-	"sys-kernel_arch-sources-g14_files_0003-i8042-dmiids.patch"
+	"sys-kernel_arch-sources-g14_files_0003-i8042-dmiids.patch" 
 	"sys-kernel_arch-sources-g14_files_0004-hid-asus-n-key.patch"
-	#"sys-kernel_arch-sources-g14_files_0006-ALSA-hda-fixup-headset-for-ASUS-GX502-laptop.patch"
-	"sys-kernel_arch-sources-g14_files_0007-snd-hda-realtek-g401-ga502.patch"
 	"sys-kernel_arch-sources-g14_files_6002-amdgpu-dm-kernel-5.8.patch"
-	"sys-kernel_arch-sources-g14_files_6003-vboxdrv-glp.patch"
+	"sys-kernel_arch-sources-g14_files_6004-apci_d3_fix.patch"
+	"sys-kernel_arch-sources-g14_files-6005-alsa-hda-ga401-ga502-experimental.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -37,13 +35,13 @@ validpgpkeys=(
 sha256sums=('SKIP'
             '457d5c9717048cd5334ba3d14dfb37699ac1d2c6dc2fd1df93adb487d6921f2f'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '02c59a722f5d1912ba9ee4c2b5e84b079c13badc225040b834a18a42345a7a61'
-            'edf23d81eb39f38e106c6ce172600cc06d7d155a4ef578c3c94344a45a8a7858'
-            'a7b045dc36aea9b3203a4910da3f3314121672e940d7bd8a8cf0126d913e0fe3'
-            '8ef9f603fa838cda5eec84da18f00b81f5acde9b3705717cbc4b0e7ee2e2fe8d'
-            'dc2fad922a2e557e38f63dcaeefe7cd1ba1094699f44968cc916788ba14848a3'
-            '7063af2e6588575ee4fd20d2339850221595acd3da5d8912e6298aea57186887'
-            'e92f713d50425be96f118a7a3b9f62787453341a27ff10ac5ba394de060ccef7')
+            'e924edb045476201968eb76157a72ddae7dac18932e54f0e3d32eeed98d2b2c6'
+            '7c9bff35d0bde9b4250137ea9e5292a103ecbc1fe68a753688541d22be27fa29'
+            '68bf0dcc390ed14d97f48ebd1095d2587ac2eb2671445125fbcaaf7a6aa01733'
+            'af68b47b81e5d361058e3293cf3c0b266af0fcdd2d4a5fb62468793e4cb903e4'
+            'bb502b035367b57319c2cc1a74ea3e8155003984d00b189badeec9c72429f3da'
+            'b8889a48d258d801d7a0b87665eb4b6c621e711a5d0e7a7c3cb7524349e5cbfc')
+
 
 
 

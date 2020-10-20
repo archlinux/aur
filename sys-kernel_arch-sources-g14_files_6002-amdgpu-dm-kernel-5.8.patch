@@ -8,7 +8,7 @@ index db5e0bb0d935..bfbd56e857bf 100644
  	int i;
 -	struct dmcu *dmcu = NULL;
 +	struct dmcu *dmcu = adev->dm.dc->res_pool->dmcu;;
- 	bool ret;
+ 	bool ret = true;
  
 -	if (!adev->dm.fw_dmcu && !adev->dm.dmub_fw)
 -		return detect_mst_link_for_all_connectors(adev->ddev);

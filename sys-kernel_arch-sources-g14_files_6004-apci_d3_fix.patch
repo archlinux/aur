@@ -1,0 +1,59 @@
+Recent laptops with dual AMD GPUs fail to suspend the discrete GPU, thus
+causing lockups on system sleep and high power consumption at runtime.
+The discrete GPU would normally be suspended to D3cold by turning off
+ACPI _PR3 Power Resources of the Root Port above the GPU.
+
+However on affected systems, the Root Port is hotplug-capable and
+pci_bridge_d3_possible() only allows hotplug ports to go to D3 if they
+belong to a Thunderbolt device or if the Root Port possesses a
+"HotPlugSupportInD3" ACPI property.  Neither is the case on affected
+laptops.  The reason for whitelisting only specific, known to work
+hotplug ports for D3 is that there have been reports of SkyLake Xeon-SP
+systems raising Hardware Error NMIs upon suspending their hotplug ports:
+https://lore.kernel.org/linux-pci/20170503180426.GA4058@otc-nc-03/
+
+But if a hotplug port is power manageable by ACPI (as can be detected
+through presence of Power Resources and corresponding _PS0 and _PS3
+methods) then it ought to be safe to suspend it to D3.  To this end,
+amend acpi_pci_bridge_d3() to whitelist such ports for D3.
+
+Link: https://gitlab.freedesktop.org/drm/amd/-/issues/1222
+Link: https://gitlab.freedesktop.org/drm/amd/-/issues/1252
+Link: https://gitlab.freedesktop.org/drm/amd/-/issues/1304
+Reported-and-tested-by: Arthur Borsboom <arthurborsboom at gmail.com>
+Reported-and-tested-by: matoro <matoro at airmail.cc>
+Reported-by: Aaron Zakhrov <aaron.zakhrov at gmail.com>
+Reported-by: Michal Rostecki <mrostecki at suse.com>
+Reported-by: Shai Coleman <git at shaicoleman.com>
+Signed-off-by: Lukas Wunner <lukas at wunner.de>
+Cc: stable at vger.kernel.org
+Cc: Alex Deucher <alexander.deucher at amd.com>
+Cc: Rafael J. Wysocki <rafael.j.wysocki at intel.com>
+Cc: Mika Westerberg <mika.westerberg at linux.intel.com>
+---
+ drivers/pci/pci-acpi.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/drivers/pci/pci-acpi.c b/drivers/pci/pci-acpi.c
+index d5869a0..d9aa551 100644
+--- a/drivers/pci/pci-acpi.c
++++ b/drivers/pci/pci-acpi.c
+@@ -944,6 +944,16 @@ static bool acpi_pci_bridge_d3(struct pci_dev *dev)
+ 	if (!dev->is_hotplug_bridge)
+ 		return false;
+ 
++	/* Assume D3 support if the bridge is power-manageable by ACPI. */
++	adev = ACPI_COMPANION(&dev->dev);
++	if (!adev && !pci_dev_is_added(dev)) {
++		adev = acpi_pci_find_companion(&dev->dev);
++		ACPI_COMPANION_SET(&dev->dev, adev);
++	}
++
++	if (adev && acpi_device_power_manageable(adev))
++		return true;
++
+ 	/*
+ 	 * Look for a special _DSD property for the root port and if it
+ 	 * is set we know the hierarchy behind it supports D3 just fine.
+-- 
+2.27.0

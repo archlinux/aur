@@ -1,9 +1,9 @@
 diff --git a/drivers/input/serio/i8042-x86ia64io.h b/drivers/input/serio/i8042-x86ia64io.h
-index 7b08ff8ddf35..10dfd68ffb1b 100644
+index a4c9b9652560..0893ce4e5523 100644
 --- a/drivers/input/serio/i8042-x86ia64io.h
 +++ b/drivers/input/serio/i8042-x86ia64io.h
-@@ -698,6 +698,55 @@ static const struct dmi_system_id __initconst i8042_dmi_nopnp_table[] = {
- 			DMI_MATCH(DMI_BOARD_VENDOR, "MICRO-STAR INTERNATIONAL CO., LTD"),
+@@ -728,6 +728,55 @@ static const struct dmi_system_id __initconst i8042_dmi_nopnp_table[] = {
+ 			DMI_MATCH(DMI_BOARD_VENDOR, "PK"),
  		},
  	},
 +	{
