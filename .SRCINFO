@@ -1,0 +1,18 @@
+pkgbase = obs-transition-matrix-git
+	pkgdesc = A simple OBS Studio filter to adjust RGB levels git version
+	pkgver = master.r0.g15f096e
+	pkgrel = 1
+	url = https://github.com/petrifiedpenguin/obs-rgb-levels-filter
+	arch = x86_64
+	license = GPL2
+	depends = obs-studio
+	depends = cmake
+	depends = qt5-base
+	provides = obs-transition-matrix
+	source = obs-transition-matrix-git::git+https://github.com/admshao/obs-transition-matrix.git
+	source = git+https://github.com/obsproject/obs-studio.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = obs-transition-matrix-git
+
