@@ -16,7 +16,6 @@ sha256sums=('a08c84eddd8179de5234105821fd5cc210015671a0bd3cd0bc4f631c475e1670')
 
 package() {
   cd "$srcdir"/${_name}-${pkgver}
-  echo $(pwd)
   python setup.py install --root="$pkgdir"/ --optimize=1
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
