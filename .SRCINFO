@@ -1,18 +1,19 @@
 pkgbase = ytcc
-	pkgdesc = The YouTube channel checker
-	pkgver = 1.8.5
+	pkgdesc = Command line tool to keep track of playlists
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/woefe/ytcc
 	arch = any
 	license = GPL3
-	depends = python
-	depends = python-lxml
-	depends = python-feedparser
-	depends = python-sqlalchemy
-	depends = mpv
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-click
 	depends = youtube-dl
-	source = https://github.com/woefe/ytcc/archive/v1.8.5.tar.gz
-	sha256sums = 4e301120a06988159f14f178380c5dd6cdf8e96c572cbb13888c6979d97e3c14
+	depends = python-wcwidth
+	optdepends = mpv
+	optdepends = fzf
+	source = https://github.com/woefe/ytcc/archive/v2.0.0.tar.gz
+	sha256sums = a8cc651d1a304d092c356c87e2080f2313ad5ac982b9320e77e7844dfc1067c0
 
 pkgname = ytcc
 
