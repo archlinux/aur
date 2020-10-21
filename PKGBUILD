@@ -8,7 +8,6 @@ arch=('x86_64')
 url='https://choria.io'
 license=('Apache')
 depends=('glibc' 'logrotate')
-#makedepends=('git' 'go' 'go-bindata-assetfs' 'go-bindata-hashicorp' 'procps-ng' 'zip' 'yarn' 'bower' 'nodejs-lts-dubnium' 'npm' 'zip' 'gox' 'go-tools')
 makedepends=('go')
 checkdepends=('ruby')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/choria-io/go-choria/archive/v${pkgver}.tar.gz"
@@ -18,7 +17,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/choria-io/go-choria/arc
         'server.conf'
         'broker.conf'
         'choria')
-#backup=('etc/default/consul')
+backup=('etc/default/choria-server' 'etc/choria/server.conf' 'etc/choria/broker.conf')
 sha512sums=('2fa71d0a939f0205d9c760c5bb40332982ac9a481353ac49bef0f5a5f3f249b77e539e325d2d06730ae557d2fa3d3c72cbfa9e37c3110b7b50d8bcf54b4ce3af'
             '78337d1cd28aa5f6206f85b0a5998c96a974e148149498183057f7e2d9b5adbe9ebe37ceb3add117d4229ca84312fd870ea541512dd29e57dade81f10efe3583'
             '7d889360b06fdd5e297cb781e898c8f3e87b17b3c7a33f952edd40a35f215032abfdee52e458b8f47678c06ff674e339d99c79fa435d3dd4841c96f28226a9ec'
@@ -44,6 +43,7 @@ build() {
   cd "${srcdir}/go-choria-${pkgver}"
 
   go generate -v
+
   go build -o "binary/${pkgname}-${pkgver}" -ldflags "-X 'github.com/choria-io/go-choria/build.Version=${pkgver}' -X 'github.com/choria-io/go-choria/build.SHA=aa7901a99dd91cd247fdf07fe2d09e6961b5fed5' -X 'github.com/choria-io/go-choria/build.BuildDate=$(date '+%F %T %z')' -X 'github.com/choria-io/go-choria/build.ProvisionJWTFile=/etc/choria/provisioning.jwt'"
 }
 
@@ -72,7 +72,7 @@ package() {
   install -Dm644 "${srcdir}/choria-server.service" "${srcdir}/choria-broker.service" -t "${pkgdir}/usr/lib/systemd/system/"
   install -Dm644 "${srcdir}/choria-server" -t "${pkgdir}/etc/default/"
   install -Dm644 "${srcdir}/choria" -t "${pkgdir}/etc/logrotate.d/"
-  install -Dm640 "${srcdir}/broker.conf" "${srcdir}/server.conf" -t "${pkgdir}/etc/logrotate.d/"
+  install -Dm640 "${srcdir}/broker.conf" "${srcdir}/server.conf" -t "${pkgdir}/etc/choria/"
 }
 
 # vim:set ts=2 sw=2 et:
