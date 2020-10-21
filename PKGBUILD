@@ -4,8 +4,8 @@
 pkgbase=pulseaudio-hsphfpd
 pkgname=(pulseaudio-hsphfpd libpulse-hsphfpd alsa-card-profiles-hsphfpd pulseaudio-{zeroconf,lirc,jack,bluetooth,equalizer,rtp}-hsphfpd)
 pkgdesc="A fork of pulseaudio providing superior bluetooth headset functionality"
-pkgver=13.99.2+85+g95460f49e
-pkgrel=2
+pkgver=13.99.2+96+gbb7408dfa
+pkgrel=1
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(GPL)
@@ -25,13 +25,13 @@ pkgver() {
 prepare() {
   cd pulseaudio
 
-  git fetch "https://gitlab.freedesktop.org/MarijnS95/pulseaudio.git" "absolute-volume-on-hsphfpd"
-  git checkout -B "MarijnS95/pulseaudio-absolute-volume-on-hsphfpd" FETCH_HEAD
-  git checkout master
-  git merge --ff -m "Merge branch 'MarijnS95/pulseaudio-absolute-volume-on-hsphfpd' into master" "MarijnS95/pulseaudio-absolute-volume-on-hsphfpd"
-
   # Freeze version before patching
   ./git-version-gen doesnt-exist >.tarball-version
+
+  git fetch "https://gitlab.freedesktop.org/pali/pulseaudio.git" "hsphfpd"
+  git checkout -B "pali/hsphfpd" FETCH_HEAD
+  git checkout master
+  git merge --ff -m "Merge branch 'pali/hsphfpd' into master" "pali/hsphfpd"
 }
 
 build() {
