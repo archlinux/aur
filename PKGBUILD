@@ -10,7 +10,7 @@ depends=('python2' 'python2-pyparsing')
 makedepends=('git')
 provides=('geneet')
 options=('!libtool')
-source=("git://git.enlightenment.org/tools/$_pkgname.git")
+source=("git+https://git.enlightenment.org/tools/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
