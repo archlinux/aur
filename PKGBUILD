@@ -6,7 +6,7 @@
 pkgbase=nvidia-340xx
 pkgname=(nvidia-340xx nvidia-340xx-dkms)
 pkgver=340.108
-pkgrel=9
+pkgrel=10
 pkgdesc="NVIDIA drivers for linux, 340xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -15,12 +15,10 @@ conflicts=('nvidia')
 license=('custom')
 options=(!strip)
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-  kernel-5.7.patch::https://gitlab.manjaro.org/packages/extra/linux57-extramodules/nvidia-340xx/-/raw/master/kernel-5.7.patch?inline=false
-  buildfix_kernel_5.8.patch
+nvidia-340.108-fix-5.9-kernel-compile.patch::https://raw.githubusercontent.com/warpme/minimyth2/master/script/nvidia/nvidia-340.108/files/nvidia-340.108-fix-5.9-kernel-compile.patch
 )
 b2sums=('6538bbec53b10f8d20977f9b462052625742e9709ef06e24cf2e55de5d0c55f1620a4bb21396cfd89ebc54c32f921ea17e3e47eaa95abcbc24ecbd144fb89028'
-        'e1e3d2dd5f4c79bb6c0235236ba5c092d3d2ff07175125947d01817f014652b5ebf93710270189cc06c03a96172627adeaf495607c360f2470f62bca2a6a55ba'
-        'bd75129644bd11caed8d9d1e2d5bbbced59bcdcb7784c3defe9a48b4c4de09adde59626456b0bc8c789d2e1e4844c21a7f2e5795d9eefbb548914af1ca8a60ae')
+        'daf886ec4622b0800fc82784f08f4fc0f6dfa1b70ef7c87a91bded2221b710da2baf4b3129542da6210fda5e5b862876ccd5e93d799f60fc6d75d83ef302210b')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 # default is 'linux' substitute custom name here
@@ -34,12 +32,7 @@ prepare() {
 
   # seems manjaro is keeping this current
   # https://gitlab.manjaro.org/packages?utf8=%E2%9C%93&filter=nvidia-340xx
-  (patch -p1 --no-backup-if-mismatch -i "$srcdir"/kernel-5.7.patch)
-
-  # https://launchpad.net/~kelebek333/+archive/ubuntu/nvidia-legacy/+packages
-  # the following was extracted from
-  # https://launchpadlibrarian.net/492468557/nvidia-graphics-drivers-340_340.108-1lmtrfocal3_340.108-2lmtrfocal.diff.gz
-  (cd kernel && patch -p1 --no-backup-if-mismatch -i "$srcdir"/buildfix_kernel_5.8.patch)
+  (patch -p1 --no-backup-if-mismatch -i "$srcdir"/nvidia-340.108-fix-5.9-kernel-compile.patch)
 
   cp -a kernel kernel-dkms
 }
