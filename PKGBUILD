@@ -2,7 +2,7 @@
 
 pkgname="gphotos-uploader-cli"
 pkgver="1.2.0"
-pkgrel=2
+pkgrel=3
 pkgdesc='Command line tool to mass upload media folders to your Google Photos account(s).'
 
 url="https://github.com/gphotosuploader/gphotos-uploader-cli"
@@ -24,7 +24,6 @@ sha256sums=(
 )
 
 build() {
-  export GOPATH="$srcdir"/gopath
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
