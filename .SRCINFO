@@ -7,8 +7,7 @@ pkgbase = flux-git
 	license = GPL3
 	makedepends = git
 	depends = gcc-libs
-	provides = flux
-	conflicts = flux
+	provides = fluxcomp
 	source = flux::git+https://github.com/deniskropp/flux.git#branch=master
 	md5sums = SKIP
 
