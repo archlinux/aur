@@ -1,8 +1,8 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
-_commit='b887688ecd1360960335a52e7b02f21dc14389a4'
+_commit='a182661fbcc097a933d5e8cce3922eb1734a563e'
 pkgname='tasknc'
-pkgver='2015.11.23'
+pkgver='2020.02.05'
 pkgrel='1'
 pkgdesc="A ncurses wrapper around taskwarrior"
 url="https://github.com/lharding/${pkgname}"
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 depends=('task' 'perl')
 conflicts=("taskwarrior-${pkgname}-git")
 source=("https://github.com/lharding/${pkgname}/archive/${_commit}.tar.gz")
-sha256sums=('4bcc1a4eb0774ea6aaa61ce3ad96469df453149abdf838656e4261d5eff943fd')
+sha256sums=('5b56a580eb762dd98ec2cf157a85edfeec231c64322dd9f532b2a7e9099f91f0')
 
 build() {
     cd "${pkgname}-${_commit}"
