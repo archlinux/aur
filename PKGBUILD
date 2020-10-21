@@ -2,7 +2,7 @@
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=screencloud
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='An easy to use screenshot sharing application'
 arch=('x86_64')
@@ -16,23 +16,26 @@ depends=(
         'pythonqt'
 )
 makedepends=('cmake' 'zlib' 'openssl' 'qt5-svg' 'qt5-tools')
-optdepends=('python-pycryptodome: for SFTP support')
+optdepends=('python-ssh2: for SFTP support')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/olav-st/${pkgname}/archive/v${pkgver}.tar.gz"
         '010-screencloud-fix-python-link-libraries.patch')
-sha256sums=('2a22ca06fc217574aee2204fdae4ba9c01cf6d5d78a63334ae95207bfbf0fc72'
-            '5526080cd195127cc94f4c8d69ae3e55e6d3b24b6feeb23c1d5f8f885c87d7f4')
+sha256sums=('c7bcc21873fbd9f2dff30d7a4834516828b76a4cdd533be25656dc210310978c'
+            'bf9327568513852f02b87c7a72474b50ed323ed525098e790e190472f9b1fa8e')
 
 prepare() {
     patch -d "${pkgname}-${pkgver}" -Np1 -i "${srcdir}/010-screencloud-fix-python-link-libraries.patch"
 }
 
 build() {
+    local _quazip_include
+    _quazip_include="$(find /usr/include -type d -name 'QuaZip-Qt5*')/quazip"
+    
     cmake -B build -S "${pkgname}-${pkgver}" \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DCOLOR_OUTPUT:BOOL='ON' \
         -DPYTHON_USE_PYTHON3:BOOL='ON' \
-        -DQT_USE_QT5:BOOL='ON' \
+        -DQUAZIP_INCLUDE_DIR:PATH="${_quazip_include}" \
+        -DQUAZIP_LIBRARY:FILEPATH='/usr/lib/libquazip1-qt5.so' \
         -Wno-dev
     make -C build
 }
