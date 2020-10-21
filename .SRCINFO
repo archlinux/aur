@@ -1,15 +1,15 @@
 pkgbase = esbuild
 	pkgdesc = An extremely fast JavaScript/TypeScript bundler and minifier
-	pkgver = 0.7.17
+	pkgver = 0.7.19
 	pkgrel = 1
 	url = https://github.com/evanw/esbuild
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = esbuild-0.7.17.tgz
-	source = https://registry.npmjs.org/esbuild/-/esbuild-0.7.17.tgz
-	sha256sums = 9215c1745c9e520020123b69aba3e2cf90aeac4cf804c6e51f3a28761dcf6673
+	noextract = esbuild-0.7.19.tgz
+	source = https://registry.npmjs.org/esbuild/-/esbuild-0.7.19.tgz
+	sha256sums = 970d5b6c0560dd0819adfb4374085ac9fd4688bbd4de3bc06c21d5348f48ceb5
 
 pkgname = esbuild
 
