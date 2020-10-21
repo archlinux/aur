@@ -11,7 +11,7 @@ options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/KhronosGroup/Vulkan-Tools/archive/v${pkgver}.tar.gz")
 sha256sums=('ac259d00c807c7cd5ec7f572d10da86adaa5adb21bf066dd16ea86f878015c74')
 
-_architectures="x86_64-w64-mingw32"
+_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "${srcdir}"/Vulkan-Tools-${pkgver}
