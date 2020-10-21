@@ -1,15 +1,15 @@
 pkgbase = cherrytree-bin
 	pkgdesc = Binary version of cherrytree
-	pkgver = 0.39.4
+	pkgver = 0.99.16
 	pkgrel = 1
 	url = https://www.giuspen.com/cherrytree/
-	arch = any
+	arch = amd64
 	license = GPL3
-	depends = python2-gtksourceview2
-	depends = python2-dbus
-	optdepends = python2-pyenchant: for spell checking support
+	depends = gtksourceviewmm
+	depends = libxml++2.6
+	depends = gspell
 	optdepends = p7zip: for password protection support
-	source = http://www.giuspen.com/software/cherrytree_0.39.4-0_all.deb
+	source = https://launchpad.net/~giuspen/+archive/ubuntu/ppa/+files/cherrytree_0.99.16-1_amd64.deb
 	sha256sums = bddc893e19a3b37921fab7b9db7d5b1968432470d267d6931b60d30bf767793e
 
 pkgname = cherrytree-bin
