@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "$srcdir/$caps_pkgname"
   ./autogen.sh
-  ./configure
+  ./configure --prefix=/usr
   make
 }
 
