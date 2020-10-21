@@ -8,8 +8,8 @@ pkgdesc="Linux Driver for ITE LPC chips, using frankcrawford's upstream"
 arch=('x86_64' 'i686')
 url="https://github.com/frankcrawford/it87"
 license=('GPL')
-depends=('make' 'gcc' 'linux' 'dkms')
-makedepends=('git' 'linux-headers')
+depends=('dkms')
+makedepends=('git')
 provides=('it87')
 
 source=("$_pkgbase::git+https://github.com/frankcrawford/it87.git"
