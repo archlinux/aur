@@ -1,7 +1,7 @@
 # Maintainer: Vincent.Ducamps <aur@ducamps.win>
 pkgname=gnome-shell-extension-pop-shell-git
 pkgdesc="Pop Shell - Tiling window management in Gnome (WIP)"
-pkgver=r576.fd2380c
+pkgver=r578.a11d3c3
 pkgrel=1
 _gitorg=pop-os
 _gitname=shell
@@ -20,11 +20,6 @@ _dir="${_gitname}"
 source=("${_dir}::git+https://github.com/${_gitorg}/${_gitname}.git#branch=${_gitbranch}")
 sha256sums=("SKIP")
 
-if [[ $(echo $XDG_SESSION_TYPE) = x11 ]]; then
-	depends+=('dbus-x11')
-elif [[ $(echo $XDG_SESSION_TYPE) = wayland ]]; then
-	depends+=('dbus')
-fi
 
 pkgver() {
     cd "${srcdir}/${_dir}"
