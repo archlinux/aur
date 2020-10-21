@@ -2,7 +2,7 @@
 # Maintainer: Gustav Sörnäs <gustav at sornas dot net>
 
 pkgname=mum-git
-pkgver=r101.d66eea2
+pkgver=r150.1c18f57
 pkgrel=1
 pkgdesc="A mumble client/daemon pair"
 arch=('x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname%-git}"
-    cargo build --release --target-dir=target
+    cargo build --locked --release --target-dir=target
 
     which bash &>/dev/null && ./target/release/mumctl completions --bash > mumctl.bash
     which fish &>/dev/null && ./target/release/mumctl completions --fish > mumctl.fish
@@ -32,7 +32,7 @@ build() {
 
 check() {
     cd "${srcdir}/${pkgname%-git}"
-    cargo test --release --target-dir=target
+    cargo test --locked --release --target-dir=target
 }
 
 package() {
