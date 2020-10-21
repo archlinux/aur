@@ -1,18 +1,17 @@
 # Maintainer: Carlos Galindo <carlos.s.galindo (at) gmail.com>
 
-_commit=b5f7aeeb2ed10fd9328e6e3a74eaec2287b6d97c
 pkgname=bitwarden-dmenu
-pkgver=1.5.6
+pkgver=1.5.9
 pkgrel=1
 pkgdesc="dmenu adapter for bitwarden-cli"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/andykais/bitwarden-dmenu"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${_commit}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha512sums=('3ba2316fe6e857c9237d2e79381bb6d8cc4279e7e3f8ed58933e0e6addd65bf4b7247cdb071b30a2bd7e47ce263afeec8a6404c283f845bf151059061afb841f')
+sha512sums=('c99082fafe7382dd7609fb790676b2ca7391a99a2db89fd492866c4243dd11fbb40828e426dacb51b2fec5d7d35ee17f1541244f4763be365b0d967bc8074d6d')
 
 package() {
     cd "${srcdir}"
