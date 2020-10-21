@@ -1,3 +1,4 @@
+caps_pkgname=DHCProbe
 _pkgname=dhcprobe
 pkgname=$_pkgname-git
 pkgver=x
@@ -15,12 +16,12 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$caps_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$caps_pkgname"
   ./autogen.sh
   ./configure
   make
@@ -28,6 +29,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir/$caps_pkgname"
   install -Dm644 "$pkgname" "$pkgdir/usr/bin"
 }
