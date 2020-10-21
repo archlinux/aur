@@ -2,11 +2,11 @@
 # Contributor: Timothée Ravier <tim@siosm.fr>
 
 pkgname=mozilla-firefox-sync-server-git
-pkgver=1.8.0.r67.g516807e
-pkgrel=4
+pkgver=1.9.1.r10.g58b8036
+pkgrel=5
 pkgdesc='Mozilla Sync Server for built-in Firefox Sync'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url='http://docs.services.mozilla.com/howtos/run-sync-1.5.html'
+url='https://mozilla-services.readthedocs.io/en/latest/howtos/run-sync-1.5.html'
 license=('MPL2')
 depends=('python2' 'python2-virtualenv')
 makedepends=('git')
@@ -37,10 +37,7 @@ prepare() {
 
 	# Change default sqlite database location
 	sed -i "s|/tmp/syncserver.db|/var/lib/ffsync/sync_storage.db|g" syncserver.ini
-	sed -i "s|^\#sqluri|sqluri|" syncserver.ini
-
-	# Remove obsolete parameter
-	sed -i "s| --no-site-packages||g" Makefile
+	sed -i "0,/^\#sqluri/s//sqluri/" syncserver.ini
 }
 
 build() {

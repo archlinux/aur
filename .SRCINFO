@@ -1,8 +1,8 @@
 pkgbase = mozilla-firefox-sync-server-git
 	pkgdesc = Mozilla Sync Server for built-in Firefox Sync
-	pkgver = 1.8.0.r67.g516807e
-	pkgrel = 4
-	url = http://docs.services.mozilla.com/howtos/run-sync-1.5.html
+	pkgver = 1.9.1.r10.g58b8036
+	pkgrel = 5
+	url = https://mozilla-services.readthedocs.io/en/latest/howtos/run-sync-1.5.html
 	install = mozilla-firefox-sync-server-git.install
 	arch = i686
 	arch = x86_64
