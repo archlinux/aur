@@ -6,6 +6,8 @@ pkgbase = obs-plugin-tuna-git
 	arch = x86_64
 	license = GPL2
 	makedepends = clang
+	makedepends = cmake
+	makedepends = git
 	depends = obs-studio
 	provides = obs-plugin-tuna-git=1.5.3
 	conflicts = obs-plugin-tuna-bin
