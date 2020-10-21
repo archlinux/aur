@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname='boop-gtk-bin'
-pkgver='1.3.0'
+pkgver='1.4.0'
 pkgrel='1'
 pkgdesc="A scriptable scratchpad for developers."
 arch=('x86_64')
