@@ -72,6 +72,8 @@ build() {
   if test "$J" -lt 1; then J=1; fi
   echo "Free Mem: $MEM M, using $J threads for build"
 
+#-Dtslib=true \ #Disabled until fixed upstream. tslib cannot be used when framebuffer(fbcon) is enabled.
+
   rm -rf build
   meson --prefix=/usr \
     -Dfb=true \
@@ -84,7 +86,6 @@ build() {
     -Dwl-deprecated=true \
     -Ddrm-deprecated=true \
     -Dxpresent=true \
-    -Dtslib=true \
     -Dopengl=full \
     -Dphysics=true \
     -Dglib=true \
