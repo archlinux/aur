@@ -1,0 +1,17 @@
+pkgbase = libreddit-git
+	pkgdesc = Alternative private front-end to Reddit
+	pkgver = r27.c4b9400
+	pkgrel = 1
+	url = https://github.com/spikecodes/libreddit
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = git
+	makedepends = cargo
+	makedepends = rustup
+	provides = libreddit
+	conflicts = libreddit
+	source = libreddit::git+https://github.com/spikecodes/libreddit
+	sha256sums = SKIP
+
+pkgname = libreddit-git
+
