@@ -1,0 +1,14 @@
+pkgbase = butler-font
+	pkgdesc = A serif font family inspired by Dala Floda & the Bodoni family
+	pkgver = 1.000
+	pkgrel = 1
+	url = http://fabiandesmet.com/portfolio/butler-font
+	arch = any
+	license = custom
+	source = https://fabiandesmet.com/wp-content/uploads/Butler_and_ButlerStencil.zip
+	sha256sums = ebf56a01103f100420cb4e54accd0ab839d064dbae462d72294212a5e5d9a798
+
+pkgname = otf-butler
+
+pkgname = otf-butler-stencil
+
