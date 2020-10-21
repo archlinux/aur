@@ -12,8 +12,9 @@ depends=(mingw-w64-crt)
 options=(!buildflags staticlibs !strip)
 source=("https://github.com/KhronosGroup/${_pkgname}/archive/v${pkgver}.tar.gz"
         "https://github.com/KhronosGroup/Vulkan-Loader/pull/495.patch"
-        "https://github.com/KhronosGroup/Vulkan-Loader/pull/496.patch")
-sha256sums=('536e70a29715ad04bbeba68802f785e72a1cf960e8dc244aa7ab1a130276f02f' SKIP SKIP)
+        "https://github.com/KhronosGroup/Vulkan-Loader/pull/496.patch"
+        "https://github.com/KhronosGroup/Vulkan-Loader/pull/498.patch")
+sha256sums=('536e70a29715ad04bbeba68802f785e72a1cf960e8dc244aa7ab1a130276f02f' SKIP SKIP SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -21,6 +22,7 @@ prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   patch -p1 -i "${srcdir}"/495.patch
   patch -p1 -i "${srcdir}"/496.patch
+  patch -p1 -i "${srcdir}"/498.patch
 }
 
 build() {

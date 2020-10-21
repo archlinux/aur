@@ -16,7 +16,9 @@ pkgbase = mingw-w64-vulkan-icd-loader
 	source = https://github.com/KhronosGroup/Vulkan-Loader/archive/v1.2.157.tar.gz
 	source = https://github.com/KhronosGroup/Vulkan-Loader/pull/495.patch
 	source = https://github.com/KhronosGroup/Vulkan-Loader/pull/496.patch
+	source = https://github.com/KhronosGroup/Vulkan-Loader/pull/498.patch
 	sha256sums = 536e70a29715ad04bbeba68802f785e72a1cf960e8dc244aa7ab1a130276f02f
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
