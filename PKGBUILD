@@ -28,7 +28,7 @@ build() {
 	cd "$srcdir"
     export MATH_ROOT=/opt/intel/mkl
     cmake psi4-master -Bbuild -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" \
-        -DOpenMP_LIBRARY_DIRS="/opt/intel/mkl/lib" \
+        -DOpenMP_LIBRARY_DIRS="$MATH_ROOT/lib/intel64" \
         -Dpybind11_DIR="/usr/share/cmake" \
         -DENABLE_ambit="OFF"  \
         -DENABLE_CheMPS2="OFF" \
