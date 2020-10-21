@@ -1,7 +1,7 @@
 # Maintainer: Shiv Upadhyay <shivnupadhyay@gmail.com>
 pkgname=psi4-git-gccmkl
 pkgver=master
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Open-source quantum chemistry"
 arch=("x86_64")
