@@ -1,14 +1,14 @@
 # Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=dendrite
-pkgver=0.2.0rc1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A second-generation Matrix homeserver written in Go"
 arch=('x86_64')
 url='https://github.com/matrix-org/dendrite'
 license=('Apache')
 makedepends=('git' 'go')
-_commit=8c9248de8dae60c3f9375d1105f72adcab08973c    #refs/tags/v0.1.0^{}
+_commit=6a16d46fba9edf82203b2b3606d9a16ed6ef4ae0
 source=("git+https://github.com/matrix-org/dendrite.git#commit=$_commit"
         "dendrite.service")
 sha256sums=('SKIP'
