@@ -4,7 +4,7 @@
 
 pkgname='frr'
 pkgver='7.4'
-pkgrel='2'
+pkgrel='6'
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, BFD, VRRP, NHRP and EIGRP.'
 arch=('x86_64')
 url="https://frrouting.org/"
@@ -23,15 +23,18 @@ source=("https://github.com/FRRouting/${pkgname}/archive/${pkgname}-${pkgver}.ta
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "${pkgname}_${pkgver}_Archlinux.patch"
+	"ospf6d_ospf6_lsdb.pach"
 	"frr-init-functions")
 sha256sums=('3c8204fda1c9b178d8446562579bbbc49d134b98f3ad02aa56f68724a2f9e40a'
             '9371cc0522d13621c623b5da77719052bdebdceb7ffdbdc06fc32a2f07118e7e'
             '6f8dd86ef9c600763faead3052908531e8dc8ef67058e6f7f8da01bf0fe4eb89'
             '4662bcd384d40be42cc55182310cada2461c18f126f432dd31c9db286641bef8'
+            'cf5a042c78f9f32b68e9a3ec87e931a4916431a9392d5a8187407e8af4c8cef4'
             'e6e2592a8b0b18f7f173186fb4ebf23e642b3d912179f0bb36251962ca64cd7a')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
+  patch -d ospf6d -i "${srcdir}/ospf6d_ospf6_lsdb.pach"
   patch -p1 -i "${srcdir}/${pkgname}_${pkgver}_Archlinux.patch"
 
   autoreconf -fvi
