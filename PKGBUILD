@@ -2,7 +2,7 @@
 
 pkgname="gphotos-uploader-cli"
 pkgver="1.2.0"
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line tool to mass upload media folders to your Google Photos account(s).'
 
 url="https://github.com/gphotosuploader/gphotos-uploader-cli"
@@ -37,7 +37,6 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
-  mkdir -p "${pkgdir}/usr/bin" 
-  mv "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "${pkgname}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "${pkgname}-${pkgver}/${pkgname}" -t "${pkgdir}/usr/bin"
 }
