@@ -1,6 +1,6 @@
 pkgbase = nextgen
 	pkgdesc = A small bash script that lets you easily set up a new extension project for GNOME's Nautilus file manager
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://gitlab.gnome.org/madmurphy/nextgen
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = nextgen
 	depends = bash
 	depends = libnautilus-extension
 	conflicts = nextgen-git
-	source = https://gitlab.gnome.org/madmurphy/nextgen/-/archive/0.1.4/nextgen-0.1.4.tar.gz
-	sha256sums = dbc4618b0f0b227abae0e536a1f7c6ed60185693db45bd85ff40c47fd8f4e6d9
+	source = https://gitlab.gnome.org/madmurphy/nextgen/-/archive/0.1.5/nextgen-0.1.5.tar.gz
+	sha256sums = 573fcacb5e2c526574ade41117c40a9a3cc1504fc808b2755c3755e40a12c73d
 
 pkgname = nextgen
 
