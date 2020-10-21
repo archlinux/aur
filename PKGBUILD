@@ -2,7 +2,7 @@
 pkgname=csview-bin
 _binname=csview
 pkgver=0.3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A high performance csv viewer with cjk/emoji support"
 arch=(i686 x86_64)
 url="https://github.com/wfxr/csview"
