@@ -7,14 +7,13 @@
 pkgname=dia-git
 _pkgname=dia
 pkgver=6604.6063d791
-pkgrel=1
+pkgrel=3
 pkgdesc="A GTK+ based diagram creation program (GIT VERSION)"
 arch=('x86_64')
 license=('GPL')
 url="http://live.gnome.org/Dia"
-depends=('libxslt' 'gtk2' 'python' 'libpoppler' 'graphene')
+depends=('libxslt' 'gtk2' 'python' 'poppler' 'graphene')
 makedepends=('git' 'cmake' 'meson' 'intltool' 'dblatex' 'docbook-xsl')
-optdepends=('python2')
 provides=('dia')
 conflicts=('dia')
 options=('docs' '!emptydirs')
