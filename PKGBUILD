@@ -4,15 +4,15 @@ _pkgbase=it87
 pkgname=it87-dkms-git
 pkgver=148.40bec4b
 pkgrel=1
-pkgdesc="Linux Driver for ITE LPC chips"
+pkgdesc="Linux Driver for ITE LPC chips, using frankcrawford's upstream"
 arch=('x86_64' 'i686')
-url="https://github.com/bbqlinux/it87"
+url="https://github.com/frankcrawford/it87"
 license=('GPL')
 depends=('make' 'gcc' 'linux' 'dkms')
 makedepends=('git' 'linux-headers')
 provides=('it87')
 
-source=("$_pkgbase::git+https://github.com/bbqlinux/it87.git"
+source=("$_pkgbase::git+https://github.com/frankcrawford/it87.git"
         "dkms.conf"
         "it87.conf")
 
