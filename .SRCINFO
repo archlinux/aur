@@ -1,0 +1,16 @@
+pkgbase = prelockd-git
+	pkgdesc = prelockd is a daemon that locks memory mapped binaries and libraries in memory to improve system responsiveness under low-memory conditions.
+	pkgver = 0.8.r3.g8ad80b1
+	pkgrel = 1
+	url = https://github.com/hakavlad/prelockd
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	conflicts = prelockd
+	backup = etc/prelockd.conf
+	source = prelockd-git::git+https://github.com/hakavlad/prelockd.git#branch=master
+	md5sums = SKIP
+
+pkgname = prelockd-git
+
