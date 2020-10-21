@@ -1,7 +1,7 @@
 # Maintainer: Kevin Andriessens <kevin@kelaun.be>
 # Contributor: layday <layday@protonmail.com>
 pkgname='instawow'
-pkgver='1.17.0'
+pkgver='1.17.1'
 pkgrel=1
 pkgdesc="Package manager for World of Warcraft"
 arch=('x86_64')
@@ -11,20 +11,20 @@ depends=('python>=3.7.0' 'python-aiohttp=3.6.2' 'python-alembic>=1.4.3' 'python-
 makedepends=('tar' 'python-setuptools' 'python-setuptools-scm' 'python-toml')
 optdepends=('python-aiohttp_rpc: server support')
 checkdepends=('python-pytest>=6.0.1' 'python-pytest<7.0.0' 'python-pytest-asyncio>=0.14.0' 'python-aresponses>=2.0.0')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.post1.tar.gz")
-sha256sums=('0d3037e1dd958b9b7b9546cdf9151963863782d191f75af3728b7cc739ca29d4')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('4ecaa6b14d8a9de42926937742b5975ac05feb6398f077150c4028c95d417216')
 
 build() {
-	cd "$pkgname-$pkgver.post1"
+	cd "$pkgname-$pkgver"
 	python setup.py build
 }
 
 check() {
-	cd "$pkgname-$pkgver.post1"
+	cd "$pkgname-$pkgver"
 	PYTHONPATH="$PWD/build/lib" pytest --ignore tests/test_json_rpc_api.py --ignore tests/test_cli_output.py
 }
 
 package() {
-	cd "$pkgname-$pkgver.post1"
+	cd "$pkgname-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
