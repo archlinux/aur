@@ -9,6 +9,8 @@ pkgbase = pcloudcc
 	makedepends = boost
 	depends = zlib
 	depends = fuse
+	provides = pcloudcc
+	conflicts = pcloudcc-git
 	source = pcloudcc::git+https://github.com/pcloudcom/console-client.git
 	sha256sums = SKIP
 
