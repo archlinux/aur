@@ -18,12 +18,12 @@ arch=(x86_64)
 url=http://www.ppsspp.org/
 license=(GPL2)
 depends=(
-  gcc-libs
   glew
   glibc
   libgl
   sdl2
   zlib
+  snappy
 )
 makedepends=(
   cmake
@@ -117,7 +117,9 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
     -DHEADLESS=ON \
-    -DUSE_SYSTEM_LIBZIP=ON
+    -DUSE_SYSTEM_LIBZIP=ON \
+    -DUSE_SYSTEM_SNAPPY=ON \
+    -DOpenGL_GL_PREFERENCE=GLVND
   make
 
   cd ../build-qt
@@ -126,7 +128,9 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
     -DUSE_SYSTEM_LIBZIP=ON \
-    -DUSING_QT_UI=ON
+    -DUSING_QT_UI=ON \
+    -DUSE_SYSTEM_SNAPPY=ON \
+    -DOpenGL_GL_PREFERENCE=GLVND
   make
 }
 
