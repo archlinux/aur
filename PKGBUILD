@@ -5,11 +5,12 @@
 
 pkgname=directfb
 pkgver=1.7.7
-pkgrel=3
+pkgrel=4
 pkgdesc="A thin library that provides hardware graphics acceleration, input device handling and abstraction, integrated windowing system on top of the Linux Framebuffer Device"
 arch=('i686' 'x86_64')
 url="http://www.directfb.org"
 license=('LGPL')
+makedepends=('fluxcomp')
 depends=('gcc-libs' 'libjpeg' 'sdl' 'libpng' 'freetype2' 'libdrm' 'libgl' 'mesa')
 source=(https://github.com/deniskropp/DirectFB/archive/DIRECTFB_1_7_7.tar.gz)
 sha512sums=('4b4c800e3fa18a02aba6cd2224b57fd9522b024a5b90a5f69676d73254875513822634d039f307a2e5334bbb9f905a8e7d8d6bd388fcbc94580a35d652965f32')
