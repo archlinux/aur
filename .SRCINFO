@@ -1,5 +1,5 @@
 pkgbase = dhcprobe-git
-	pkgdesc = Retrieve configuration from a DHCP server without having to apply it
+	pkgdesc = Retrieve configuration from a DHCP server
 	pkgver = r15.bb96b07
 	pkgrel = 1
 	url = https://github.com/JohannesBuchner/DHCProbe
