@@ -1,0 +1,7 @@
+post_install() {
+    echo
+    echo "Execute the following command to enable powertop.service:"
+    echo
+    echo "      systemctl enable powertop"
+    echo
+}

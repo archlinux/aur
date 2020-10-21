@@ -11,6 +11,7 @@ depends=("systemd" "powertop")
 _unit='powertop.service'
 source=($_unit)
 sha256sums=('9bec6ad11930ba315588970a032ecd05dd580af9ce903de6f787800445357304')
+install="${pkgname}.install"
 
 package() {
 	install -Dpm 0644 $_unit "$pkgdir/usr/lib/systemd/system/$_unit"
