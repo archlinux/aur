@@ -7,8 +7,7 @@ pkgdesc="A high performance csv viewer with cjk/emoji support"
 arch=(i686 x86_64)
 url="https://github.com/wfxr/csview"
 license=("MIT" "APACHE")
-depends=()
-makedepends=("rust" "cargo")
+makedepends=("git" "rust" "cargo")
 conflicts=("csview" "csview-bin")
 
 source=("${_pkgname}::git+https://github.com/wfxr/csview.git")
