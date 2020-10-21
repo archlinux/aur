@@ -1,20 +1,21 @@
-# Maintainer: Cravix < dr dot neemous at gmail dot com >
+# Maintainer: EndlessEden < TODO >
+# Previous Maintainer: Cravix < dr dot neemous at gmail dot com >
 # Contributor: Changaco < changaco at changaco dot net >
 
 pkgname=efbb-git
 _pkgname=efbb
-pkgver=0.1.0.32.9158208
+pkgver=0.1.0.35.71159b1
 pkgrel=1
 pkgdesc="Escape from Booty Bay is an EFL-based physics game that explore EPhysics amazing features"
 arch=('i686' 'x86_64')
 url="http://git.enlightenment.org/games/efbb.git"
 license=('BSD' 'CCPL:BY' 'CCPL:BY-NC' 'CCPL:BY-SA' 'CCPL:sampling+')
-depends=('elementary' 'efl' 'libcanberra' 'etrophy')
+depends=('elementary' 'efl' 'libcanberra' 'etrophy' 'ephysics')
 makedepends=('geneet-git' 'git')
 conflicts=('efbb-svn')
 replaces=('efbb-svn')
 options=('!libtool')
-source=("git://git.enlightenment.org/games/$_pkgname.git")
+source=("git+https://git.enlightenment.org/games/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
