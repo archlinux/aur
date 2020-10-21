@@ -9,7 +9,7 @@ arch=('any')
 url="http://slovnik-cizich-slov.abz.cz/"
 license=('GPL')
 depends=('stardict')
-source=(http://dl.cihar.com/slovnik/stardict-czech-$pkgver.tar.gz)
+source=(http://dl.cihar.com/slovnik/stable/stardict-czech-$pkgver.tar.gz)
 sha256sums=('ff039e96413e5d9c0a644f8817151ff3d3a674cca7fb29b43ca70d5d19806c92')
 
 package() {
