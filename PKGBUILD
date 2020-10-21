@@ -1,7 +1,7 @@
 caps_pkgname=DHCProbe
 _pkgname=dhcprobe
 pkgname=$_pkgname-git
-pkgver=x
+pkgver=r15.bb96b07
 pkgrel=1
 pkgdesc='Retrieve configuration from a DHCP server without having to apply it'
 arch=('any')
