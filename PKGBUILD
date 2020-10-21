@@ -2,7 +2,7 @@
 
 pkgname='nautilus-bluetooth-git'
 _extname='nautilus-bluetooth'
-pkgver='r10.65d378c'
+pkgver='r11.148e7f3'
 pkgrel=1
 pkgdesc="A simple Nautilus extension that adds a \"Send via Bluetooth\" entry to Nautilus' right-click menu"
 arch=('i686' 'x86_64')
