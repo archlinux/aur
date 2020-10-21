@@ -10,6 +10,7 @@ pkgname=(
   ppsspp-git
   ppsspp-headless-git
   ppsspp-qt-git
+  ppsspp-common-git
 )
 pkgver=1.10.3.r976.870685d8a
 pkgrel=1
@@ -138,28 +139,26 @@ package_ppsspp-git() {
   depends+=(
     hicolor-icon-theme
     libzip
+    ppsspp-common-git
   )
   provides=(ppsspp)
-  conflicts=(
-    ppsspp
-    ppsspp-qt
-    ppsspp-qt-git
-  )
+  conflicts=(ppsspp)
 
   cd ppsspp/build-sdl
 
   install -dm 755 "${pkgdir}"/{opt/ppsspp,usr/{bin,share/{applications,icons,pixmaps}}}
   install -m 755 PPSSPPSDL "${pkgdir}"/opt/ppsspp/
-  cp -dr --no-preserve=ownership assets "${pkgdir}"/opt/ppsspp/
-  cp -dr --no-preserve=ownership ../icons/hicolor "${pkgdir}"/usr/share/icons/
-  install -m 644 ../icons/icon-512.svg "${pkgdir}"/usr/share/pixmaps/ppsspp.svg
   install -m 755 ../../ppsspp.sh "${pkgdir}"/usr/bin/ppsspp
   install -m 644 ../../ppsspp.desktop "${pkgdir}"/usr/share/applications/
 }
 
 package_ppsspp-headless-git() {
+  depends+=(
+    ppsspp-common-git
+  )
   provides=(ppsspp-headless)
   conflicts=(ppsspp-headless)
+  pkgdesc='A PSP emulator written in C++ (headless)'
 
   cd ppsspp/build-sdl
 
@@ -174,23 +173,30 @@ package_ppsspp-qt-git() {
     libzip
     qt5-base
     qt5-multimedia
+    ppsspp-common-git
   )
   provides=(ppsspp-qt)
-  conflicts=(
-    ppsspp
-    ppsspp-git
-    ppsspp-qt
-  )
+  conflicts=(ppsspp-qt)
+  pkgdesc='A PSP emulator written in C++ (with Qt frontend)'
 
   cd ppsspp/build-qt
 
-  install -dm 755 "${pkgdir}"/{opt/ppsspp,usr/{bin,share/{applications,icons,pixmaps}}}
+  install -dm 755 "${pkgdir}"/{opt/ppsspp,usr/{bin,share/applications}}
   install -m 755 PPSSPPQt "${pkgdir}"/opt/ppsspp/
+  install -m 755 ../../ppsspp-qt.sh "${pkgdir}"/usr/bin/ppsspp-qt
+  install -m 644 ../../ppsspp-qt.desktop "${pkgdir}"/usr/share/applications/
+}
+
+package_ppsspp-common-git() {
+  depends=()
+  pkgdesc='A PSP emulator written in C++ (common assets)'
+
+  cd ppsspp/build-qt
+
+  install -dm 755 "${pkgdir}"/{opt/ppsspp,usr/share/{applications,icons,pixmaps}}
   cp -dr --no-preserve=ownership assets "${pkgdir}"/opt/ppsspp/
   cp -dr --no-preserve=ownership ../icons/hicolor "${pkgdir}"/usr/share/icons/
   install -m 644 ../icons/icon-512.svg "${pkgdir}"/usr/share/pixmaps/ppsspp.svg
-  install -m 755 ../../ppsspp-qt.sh "${pkgdir}"/usr/bin/ppsspp-qt
-  install -m 644 ../../ppsspp-qt.desktop "${pkgdir}"/usr/share/applications/
 }
 
 # vim: ts=2 sw=2 et:
