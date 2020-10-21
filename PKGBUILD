@@ -11,7 +11,7 @@ pkgname=(
   ppsspp-headless-git
   ppsspp-qt-git
 )
-pkgver=1.8.0.r358.2a664add3
+pkgver=1.10.3.r976.870685d8a
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
@@ -33,6 +33,7 @@ makedepends=(
   libzip
   python
   qt5-tools
+  qt5-multimedia
 )
 source=(
   git+https://github.com/hrydgard/ppsspp.git
@@ -44,6 +45,7 @@ source=(
   git+https://github.com/Tencent/rapidjson.git
   git+https://github.com/KhronosGroup/SPIRV-Cross.git
   armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git
+  git+https://github.com/hrydgard/miniupnp.git
   ppsspp.sh
   ppsspp-headless.sh
   ppsspp-qt.sh
@@ -52,6 +54,7 @@ source=(
   ppsspp-flags.patch
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -83,7 +86,7 @@ prepare() {
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git submodule update ${submodule}
   done
-  for submodule in ext/{armips,discord-rpc,rapidjson,SPIRV-Cross}; do
+  for submodule in ext/{armips,discord-rpc,rapidjson,SPIRV-Cross,miniupnp}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule#*/}
     git submodule update ${submodule}
@@ -166,6 +169,7 @@ package_ppsspp-qt-git() {
     hicolor-icon-theme
     libzip
     qt5-base
+    qt5-multimedia
   )
   provides=(ppsspp-qt)
   conflicts=(
