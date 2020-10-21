@@ -44,6 +44,14 @@ pkgver() {
   printf "%s.%s.g%s" "$v_ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  gl_drm=$(cat $srcdir/$_pkgname/src/modules/ecore_evas/engines/drm/meson.build | grep -oc 'engine_gl_drm' )
+  if [ $gl_drm -gt 0 ]; then
+  	sed -e 's/engine_gl_drm/gl_deps/g' $srcdir/$_pkgname/src/modules/ecore_evas/engines/drm/meson.build > $srcdir/$_pkgname/src/modules/ecore_evas/engines/drm/meson.build
+  fi
+
+}
+
 build() {
   cd $_pkgname
 
