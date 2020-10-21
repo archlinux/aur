@@ -2,9 +2,7 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgbase=linux-rt
-_pkgver=5.6.19
-_rtpatchver=12
-pkgver="${_pkgver}.${_rtpatchver}"
+pkgver=5.9.1.18.arch1
 pkgrel=1
 pkgdesc='Linux RT'
 arch=('x86_64')
@@ -13,32 +11,21 @@ license=('GPL2')
 makedepends=('bc' 'git' 'graphviz' 'imagemagick' 'kmod' 'libelf'
 'python-sphinx' 'python-sphinx_rtd_theme' 'xmlto')
 options=('!strip')
-_srcname=linux-${_pkgver}
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_pkgver}.tar.xz"
-  "https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_pkgver}.tar.sign"
-  "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.xz"
-  "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.sign"
+  "git+https://gitlab.archlinux.org/dvzrv/linux-rt#tag=v${pkgver}?signed"
   config
-  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  sphinx-workaround.patch)
-sha512sums=('0b3c64ab4f63431c2da6786b4f85237f20c86f20a1faa79440d9cbc2aa6101118b0f18b6688ca7ad27dbcc4978d197fae52886fc23a3e2deb3c0a1d9c82c386b'
-            'SKIP'
-            '5b6497b1c798358ae75f15b6c649e06a8db6200ce618776ac8cafc4a24e92ad4d257b10f72b8c03ba471549a3320f9a127f85530ad912ccf691538c068a07481'
-            'SKIP'
-            'dcabb2c35a5b54d7fee81437f86da98da65323b0c2ba793247781befbcb78f59f31afbc77f3987ea3524d9a2c144a98cd6b18099a4b5c8dd8af86e33f0f0d85c'
-            'b1966327fac96607d052b5648e28728fdc94a14cc41e108fe336e16e8b9bad8b0ea4df0c27e13bb0ed32acb785bd7f6bf91b65f778eab3aff7695f94d348e26f'
+  sphinx-workaround.patch
+)
+sha512sums=('SKIP'
+            'eda968b4408eabf1dc57796bb208e9088d7c475017fa5284de20b1f4fe770e8856000df36981d0eae051b7f8702355d0eed851a6a762ff3607fbfd73ab8a3855'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be')
-b2sums=('7c0afa0e3d322314992022272614973311a8dfb85de5e0710dd4c929b0abc0a2389b49938f7df4256ea5719bf2a56a7d6eed2eebb51c337fd5fb277747a6620a'
-        'SKIP'
-        'f41194b4311f68f27cd58e4adadf510e9ddb68fde824e6cf31af9331a3dd3adc5284097226158d4ceadf4c738896fff347d9877e54bb7998e86f44d94025ad7a'
-        'SKIP'
-        '720bb287882fdab7a9ee052a32f57452a2c083dfbbd1fbf90dca142a896ab95a1c3f3adad5ede2afd265cd724d5ce8e795388625585c33bf805efe71163cb435'
-        '9afbf0527415c8fc49c624f2eae17473f4f212c494a08faf4ccb08e2be9ec426bfd36bfbf56bf5a1d917fa5eb33f454454beb214c0281c06ebf01a804c5a011d'
+b2sums=('SKIP'
+        '699c5a7686d5b19f8cb2bb47f1f63c32411c5edc8933eed31cc0f7cb68163465e665b38ee17c531e47e1c5417a849f34528c050675e105d8075946d056ef7f74'
         'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
+  'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -46,7 +33,7 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  cd $_srcname
+  cd "${pkgbase}"
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -74,7 +61,7 @@ prepare() {
 }
 
 build() {
-  cd $_srcname
+  cd "${pkgbase}"
   make all
   make htmldocs
 }
@@ -85,7 +72,7 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
 
-  cd $_srcname
+  cd "${pkgbase}"
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -107,7 +94,7 @@ _package() {
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
 
-  cd $_srcname
+  cd "${pkgbase}"
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing build files..."
@@ -182,7 +169,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel"
 
-  cd $_srcname
+  cd "${pkgbase}"
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing documentation..."
