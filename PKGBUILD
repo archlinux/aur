@@ -1,5 +1,5 @@
 pkgname='hastebin-git'
-pkgver=1.2.0
+pkgver=1.2.r0.gb50e403
 pkgrel=1
 pkgdesc='Upload data to hastebin via stdin'
 license=('GPL2')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${pkgname%-git}"
-    sh "./scripts/get_version.sh"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package()
