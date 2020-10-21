@@ -1,7 +1,7 @@
 # Maintainer: Daniel Hillenbrand <codeworkx at bbqlinux dot org>
 
 _pkgbase=it87
-pkgname=it87-dkms-git
+pkgname=it87-frankcrawford-dkms-git
 pkgver=152.2b8b4fe
 pkgrel=1
 pkgdesc="Linux Driver for ITE LPC chips, using frankcrawford's upstream"
