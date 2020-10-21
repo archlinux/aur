@@ -3,11 +3,11 @@
 # Contributor: Sharif Olorin <sio@tesser.org>
 
 pkgname=orthanc
-pkgver=1.7.1
+pkgver=1.9.7
 pkgrel=1
 pkgdesc='Open-source, lightweight DICOM server'
 arch=('x86_64' 'i686')
-url='http://orthanc-server.com/'
+url='https://www.orthanc-server.com/'
 license=('GPL3')
 
 depends=(
@@ -24,25 +24,36 @@ source=(
     "${pkgname}.tmpfiles"
 )
 sha512sums=(
-    'aaee5a381ce0fd8f14cfd4c21fa4894ca2e3d39d168be90c276f33e9c4724d3ebb3a17eacaeae66422e4fd641cb2334d807f8830e43a77da861ed0044bdfa0dc'
+    'b3716913307fbc5b2e07e5cf02b1bfd21518d3402c85b54595c1e07d3ce12b7d20d15d61caf2dc1725c63b6770d9cb01b6d88fabeb234853d662adcb2131961d'
     'cd69b74eff5eea43191341ec35cef53d026a1939bb6fdc6a71734c0f9339ff47effc0eb611c16fd609d6ffcf1e332f48cfaa533ccf8d7f71ce7e61f04b4fabca'
     '30d63bafdcfff751e12f6187115bac5d1630eb31848eab6d06d10359118e3a3c404a845ef14852ee578df0b25f622f2195d0b0546fe62cdc8a2702f2ffb59634'
     '2dffd683e6c9bd0e495a1478bf2c6f90833a5c260c7619828136804d410da1d38b385db5db094a065352e21c54c0da1b5dcdd83bce129bd4bcba9c4a11361d18'
 )
 
 build() {
+    # dcmtk needs to be rebuilt each time there is a new libicu release.
+    # After that, make sure the package builds from a fresh env.
+    # src.: https://wiki.archlinux.org/title/DeveloperWiki:Building_in_a_clean_chroot
+    #
+    # mkdir chroot
+    # CHROOT=${PWD}/chroot
+    # mkarchroot $CHROOT/root base-devel
+    # makechrootpkg -c -r $CHROOT -I /home/wget/.cache/yay/dcmtk/dcmtk-3.6.6-3-x86_64.pkg.tar
+    cd Orthanc-"${pkgver}"/OrthancServer
     cmake \
         -DSTATIC_BUILD=OFF \
         -DALLOW_DOWNLOADS=ON \
         -DUSE_SYSTEM_CIVETWEB=OFF \
-        -DBoost_NO_BOOST_CMAKE=ON \
+        -DUSE_SYSTEM_BOOST=ON \
+        -DUSE_SYSTEM_LIBICU=OFF \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -H"${srcdir}"/Orthanc-"${pkgver}" \
-        -B"${srcdir}"/build
+        -B"${srcdir}"/build \
+        ../OrthancServer/
 
-    cmake --build "${srcdir}"/build
-    cmake --build "${srcdir}"/build --target doc
+    cd "${srcdir}"/build
+    make
+    make doc
 }
 
 check() {
@@ -51,20 +62,20 @@ check() {
 }
 
 package() {
+    cd Orthanc-"${pkgver}"/OrthancServer
     cmake --build "${srcdir}"/build --target install -- DESTDIR="${pkgdir}"
     mkdir -p ${pkgdir}/usr/bin
     mv "${pkgdir}"/usr/sbin/* ${pkgdir}/usr/bin
     rmdir "${pkgdir}"/usr/sbin
 
     # Systemd
-    install -Dm644 "${pkgname}".service -t "${pkgdir}"/usr/lib/systemd/system/
-    install -Dm644 "${pkgname}".sysusers "${pkgdir}"/usr/lib/sysusers.d/"${pkgname}".conf
-    install -Dm644 "${pkgname}".tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/"${pkgname}".conf
+    install -Dm644 "${srcdir}/${pkgname}".service -t "${pkgdir}"/usr/lib/systemd/system/
+    install -Dm644 "${srcdir}/${pkgname}".sysusers "${pkgdir}"/usr/lib/sysusers.d/"${pkgname}".conf
+    install -Dm644 "${srcdir}/${pkgname}".tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/"${pkgname}".conf
 
     # Orthanc config file
     install -dm755 "${pkgdir}"/etc/webapps/"${pkgname}"
-    install -Dm644 "${srcdir}"/Orthanc-"${pkgver}"/Resources/Configuration.json -t "${pkgdir}"/etc/webapps/"${pkgname}"
-    mv "${pkgdir}"/etc/webapps/"${pkgname}"/Configuration.json "${pkgdir}"/etc/webapps/"${pkgname}"/config.json
+    install -m644 "${srcdir}"/Orthanc-"${pkgver}"/OrthancServer/Resources/Configuration.json "${pkgdir}"/etc/webapps/"${pkgname}"/config.json
 
     sed -e 's@"StorageDirectory" : ".*"@"StorageDirectory" : "/var/lib/orthanc/"@g' \
         -e 's@"IndexDirectory" : ".*"@"IndexDirectory" : "/var/lib/orthanc/"@g' \
