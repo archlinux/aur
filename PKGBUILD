@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=giara-git
-pkgver=0.1.1.r15.gf27f3f4
+pkgver=0.2.r0.ga6ae3fa
 pkgrel=1
 epoch=
 pkgdesc="Reddit gtk client"
@@ -14,7 +14,6 @@ depends=(
 	'libhandy>=1'
 	'python-beautifulsoup4'
 	'python-dateutil'
-	'python-flask'
 	'python-gobject'
 	'python-mistune'
 	'python-pillow'
