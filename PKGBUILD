@@ -2,7 +2,7 @@
 
 pkgname=choria-io
 pkgver=0.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Go based server to host Choria agents, networks, federations and discovery'
 arch=('x86_64')
 url='https://choria.io'
@@ -49,9 +49,6 @@ build() {
 
 check() {
   cd "${srcdir}/go-choria-${pkgver}"
-
-  # some tests need the built `choria` binary in $PATH
-  export PATH="${PWD}/binary:${PATH}"
 
   # TLS certificate name referenced in the tests
   # https://github.com/choria-io/go-choria/blob/aa7901a99dd91cd247fdf07fe2d09e6961b5fed5/Rakefile#L3
