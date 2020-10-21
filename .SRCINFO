@@ -1,6 +1,6 @@
 pkgbase = sprunge
 	pkgdesc = Upload data to sprunge.us via stdin
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/kevr/sprunge
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = sprunge
 	depends = python
 	optdepends = xclip: default --clip-command
 	conflicts = sprunge-git
-	source = https://github.com/kevr/sprunge/archive/0.4.tar.gz
-	sha256sums = dbecea4711476824e1a35f909d505621c92a579a46ab9fd6cf0c14182193dac3
+	source = https://github.com/kevr/sprunge/archive/0.5.tar.gz
+	sha256sums = 20c4d5e00b579e1b51846faa7c71da0e5281652354ab0f5c3005f0f3d84f070d
 
 pkgname = sprunge
 
