@@ -30,7 +30,7 @@ optdepends=('gst-plugins-base: Video and thumbnail codecs'
             'gst-plugins-ugly: Video and thumbnail codecs'
             'gst-libav: Video and thumbnails with ffmpeg/libav'
             'libreoffice: Office document thumbnails')
-provides=("$_pkgname=$pkgver" elementary{,-git}=$pkgver "evas_generic_loaders=$pkgver" ephysics{,-git}=$pkgver)
+provides=("$_pkgname=$pkgver" elementary{,-git}=$pkgver "evas_generic_loaders=$pkgver" ephysics{,-git}=$pkgver efl-git)
 conflicts=("$_pkgname" elementary{,-git} elementary_test{,-git} evas_generic_loaders{,-git})
 options=('debug' 'ccache')
 source=("git+https://git.enlightenment.org/core/$_pkgname.git")
