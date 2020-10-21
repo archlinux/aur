@@ -1,5 +1,5 @@
 pkgname='sprunge-git'
-pkgver=0.4.0
+pkgver=0.4.r0.gca54f95
 pkgrel=1
 pkgdesc='Upload data to sprunge.us via stdin'
 license=('GPL2')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${pkgname%-git}"
-    sh "./scripts/get_version.sh"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package()
