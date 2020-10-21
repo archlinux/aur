@@ -8,7 +8,7 @@ url='https://github.com/JohannesBuchner/DHCProbe'
 makedepends=('git')
 #install=$pkgname.install
 source=(
-  'https://github.com/JohannesBuchner/DHCProbe'
+  'git+https://github.com/JohannesBuchner/DHCProbe.git'
 )
 sha256sums=(
   'SKIP'
