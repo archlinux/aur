@@ -2,7 +2,7 @@
 
 pkgname=qspeakers
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="DIY speaker design software"
 url="http://brouits.free.fr/qspeakers/"
 arch=('i686' 'x86_64' 'aarch64')
