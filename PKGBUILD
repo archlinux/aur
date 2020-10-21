@@ -2,7 +2,7 @@
 
 pkgname=sidequest-git
 _pkgname=SideQuest
-pkgver=v0.10.14.10.gd3ef55b
+pkgver=v0.10.17.2.g768b1f7
 pkgrel=1
 pkgdesc="A tool to help simplify getting content onto Oculus Quest, Go, and other VR headsets."
 arch=('any')
