@@ -1,0 +1,12 @@
+diff -ruN siggen-2.3.10.orig/Makefile siggen-2.3.10/Makefile
+--- siggen-2.3.10.orig/Makefile	2020-10-21 20:16:14.505957450 +0200
++++ siggen-2.3.10/Makefile	2020-10-21 20:16:26.349175124 +0200
+@@ -34,7 +34,7 @@
+ LOCALMAN	= $(HOME)/man
+ 
+ CC		= gcc
+-CFLAGS		=  -O2  
++CFLAGS		= -fcommon -O2  
+ CPPFLAGS	= -I. -I$(includedir)
+ 
+ CCFLAGS		= $(CFLAGS) $(CPPFLAGS)
