@@ -1,5 +1,4 @@
 # Maintainer: Nagy Roland <roliboy@protonmail.com>
-# Python package author: Brandon <brandon@skerritt.blog>
 
 pkgname=ciphey
 _pkgname=Ciphey
