@@ -45,6 +45,8 @@ post_upgrade() {
   systemctl is-active systemd-swap >/dev/null || systemctl enable systemd-swap
   systemctl is-active irqbalance >/dev/null || systemctl enable irqbalance
   systemctl is-active nohang-desktop >/dev/null || systemctl enable nohang-desktop
+  systemctl is-active memavaild >/dev/null || systemctl enable memavaild
+  systemctl is-active prelockd >/dev/null || systemctl enable prelockd
   systemctl is-active ananicy >/dev/null || systemctl enable ananicy
   systemctl is-active auto-cpufreq >/dev/null || systemctl enable auto-cpufreq
   systemctl is-active thermald >/dev/null || systemctl enable thermald

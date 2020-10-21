@@ -6,7 +6,7 @@ _gitname=performance-tweaks
 pkgname=(
     'performance-tweaks'
     )
-pkgver=r15.13befa3
+pkgver=r17.953cb59
 pkgrel=1
 arch=('any')
 _branch='master'
@@ -51,8 +51,11 @@ package_performance-tweaks() {
 	'hdparm'
     'thermald'
     'nohang-git'
+    'prelockd-git'
+    'memavaild-git'
 	'ananicy-git'
     'auto-cpufreq-git'
+    'profile-sync-daemon'
         )
     optdepends=(
         'timeshift-autosnap: for snapshots bfore pacman upgrade'
