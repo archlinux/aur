@@ -1,6 +1,6 @@
 pkgbase = 1password-bin
 	pkgdesc = Password manager and secure wallet (development preview)
-	pkgver = 0.8.11
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://1password.com/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = 1password-bin
 	depends = libxss
 	depends = gtk3
 	depends = nss
-	source = https://onepassword.s3.amazonaws.com/linux/debian/pool/main/1/1password/1password-0.8.11.deb
-	sha256sums = 1f893a323fa63a0be73d14072dd92301d1099d2f6afffa37d43959494294bdda
+	source = https://onepassword.s3.amazonaws.com/linux/debian/pool/main/1/1password/1password-0.9.0.deb
+	sha256sums = a65a2bcdfbd0b6b25655244df764d818817c5b7e4e909ada1be1280bda4d204c
 
 pkgname = 1password-bin
 
