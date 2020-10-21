@@ -10,6 +10,7 @@ license=('GPL3')
 depends=('qt5-charts')
 makedepends=('qt5-tools')
 conflicts=('qspeakers-svn')
+install=qspeakers.install
 source=(
   "http://brouits.free.fr/${pkgname}/${pkgname}-${pkgver}.tar.gz"
 )
