@@ -20,9 +20,15 @@ build() {
 package() {
   cd "$srcdir/$pkgname-mk-v$pkgver"
 
+  if [ "$(uname -s)" = 'Darwin' ]; then
+    _install='ginstall'
+  else
+    _install='install'
+  fi
+
   mkdir -p "${pkgdir}/opt/aq/lib/slick"
   mkdir -p "${pkgdir}/etc/profile.d"
-  install -m644 -T "src/base.mk" "${pkgdir}/opt/aq/lib/slick/base.mk"
-  install -m644 -T "src/targets.mk" "${pkgdir}/opt/aq/lib/slick/targets.mk"
-  install -m755 -T "../aquefir.sh" "${pkgdir}/etc/profile.d/aquefir.sh"
+  $_install -m644 -T "src/base.mk" "${pkgdir}/opt/aq/lib/slick/base.mk"
+  $_install -m644 -T "src/targets.mk" "${pkgdir}/opt/aq/lib/slick/targets.mk"
+  $_install -m755 -T "../aquefir.sh" "${pkgdir}/etc/profile.d/aquefir.sh"
 }
