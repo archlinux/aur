@@ -1,17 +1,19 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Marcel Joss <marceljoss@hotmail.ch>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: M A <morealaz at gmail dot com>
 
-pkgname=java-openjdk-bin
-_majorver=14.0.2
-_buildver=12
-pkgver=${_majorver}b${_buildver}
+pkgname='java-openjdk-bin'
+_majorver='15'
+_fullver='15.0.1'
+_buildver='9'
+pkgver="${_fullver}.u${_buildver}"
 pkgrel=1
-pkgdesc="Java OpenJDK ${_majorver} Oracle Build."
+pkgdesc="Java OpenJDK ${_fullver} Oracle Build."
 arch=('x86_64')
-url="https://jdk.java.net/14"
+url="https://jdk.java.net/15"
 license=('GPL2')
 depends=('java-environment-common' 'java-runtime-common' 'ca-certificates-utils' 'nss')
-conflicts=('jre-openjdk' 'jre-openjdk-headless' 'jdk-openjdk')
+conflicts=("jre-openjdk>=${_majorver}" "jre-openjdk-headless>=${_majorver}" "jdk-openjdk>=${_majorver}")
 provides=(
     "java-environment=${_majorver}" 
     "java-environment-openjdk=${_majorver}"
@@ -20,15 +22,15 @@ provides=(
     "java-runtime-headless=${_majorver}"
     "java-runtime-headless-openjdk=${_majorver}"
 )
-source=("openjdk-${_majorver}_${_buildver}_linux-x64_bin.tar.gz::https://download.java.net/java/GA/jdk${_majorver}/205943a0976c4ed48cb16f1043c5c647/${_buildver}/GPL/openjdk-${_majorver}_linux-x64_bin.tar.gz")
-sha256sums=('91310200f072045dc6cef2c8c23e7e6387b37c46e9de49623ce0fa461a24623d')
+source=("https://download.java.net/java/GA/jdk${_fullver}/51f4f36ad4ef43e39d0dfdbaf6549e32/${_buildver}/GPL/openjdk-${_fullver}_linux-x64_bin.tar.gz")
+sha256sums=('83ec3a7b1649a6b31e021cde1e58ab447b07fb8173489f27f427e731c89ed84a')
 
-_jvmdir=usr/lib/jvm/java-${_majorver}-openjdk
+_jvmdir="usr/lib/jvm/java-${_majorver}-openjdk"
 
 package() {
     # Install
     install -d "${pkgdir}/${_jvmdir}"
-    cd jdk-${_majorver}
+    cd jdk-${_fullver}
     cp -a bin include jmods lib release "${pkgdir}/${_jvmdir}/"
     # Link JKS keystore from ca-certificates-utils
     rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"

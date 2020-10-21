@@ -1,25 +1,25 @@
 pkgbase = java-openjdk-bin
-	pkgdesc = Java OpenJDK 14.0.2 Oracle Build.
-	pkgver = 14.0.2b12
+	pkgdesc = Java OpenJDK 15.0.1 Oracle Build.
+	pkgver = 15.0.1.u9
 	pkgrel = 1
-	url = https://jdk.java.net/14
+	url = https://jdk.java.net/15
 	arch = x86_64
 	license = GPL2
 	depends = java-environment-common
 	depends = java-runtime-common
 	depends = ca-certificates-utils
 	depends = nss
-	provides = java-environment=14.0.2
-	provides = java-environment-openjdk=14.0.2
-	provides = java-runtime=14.0.2
-	provides = java-runtime-openjdk=14.0.2
-	provides = java-runtime-headless=14.0.2
-	provides = java-runtime-headless-openjdk=14.0.2
-	conflicts = jre-openjdk
-	conflicts = jre-openjdk-headless
-	conflicts = jdk-openjdk
-	source = openjdk-14.0.2_12_linux-x64_bin.tar.gz::https://download.java.net/java/GA/jdk14.0.2/205943a0976c4ed48cb16f1043c5c647/12/GPL/openjdk-14.0.2_linux-x64_bin.tar.gz
-	sha256sums = 91310200f072045dc6cef2c8c23e7e6387b37c46e9de49623ce0fa461a24623d
+	provides = java-environment=15
+	provides = java-environment-openjdk=15
+	provides = java-runtime=15
+	provides = java-runtime-openjdk=15
+	provides = java-runtime-headless=15
+	provides = java-runtime-headless-openjdk=15
+	conflicts = jre-openjdk>=15
+	conflicts = jre-openjdk-headless>=15
+	conflicts = jdk-openjdk>=15
+	source = https://download.java.net/java/GA/jdk15.0.1/51f4f36ad4ef43e39d0dfdbaf6549e32/9/GPL/openjdk-15.0.1_linux-x64_bin.tar.gz
+	sha256sums = 83ec3a7b1649a6b31e021cde1e58ab447b07fb8173489f27f427e731c89ed84a
 
 pkgname = java-openjdk-bin
 
