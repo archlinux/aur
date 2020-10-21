@@ -1,6 +1,6 @@
 pkgbase = braus-git
 	pkgdesc = Application to select a browser every time you click a link anywhere
-	pkgver = d58a27d
+	pkgver = r5.e8e94a5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/properlypurple/braus

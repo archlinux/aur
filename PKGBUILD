@@ -2,7 +2,7 @@
 
 pkgname=braus-git
 _pkgname=braus
-pkgver=d58a27d
+pkgver=r5.e8e94a5
 pkgrel=1
 epoch=1
 pkgdesc="Application to select a browser every time you click a link anywhere"
@@ -16,7 +16,7 @@ source=("git+https://github.com/properlypurple/braus")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_pkgname"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
