@@ -1,43 +1,44 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=velero
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Backup and migrate Kubernetes applications and their persistent volumes"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://velero.io"
 license=('Apache')
-depends=('kubectl')
-makedepends=('go')
+depends=('glibc' 'kubectl')
+makedepends=('git' 'go')
 optdepends=('restic: for restic integration support')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/vmware-tanzu/velero/archive/v$pkgver.tar.gz")
-sha256sums=('b5d8f50f8f84f08ec7fc72d2572fd15749b3b95f1a0ac2483f3a4fe6f43e4961')
+source=("git+https://github.com/vmware-tanzu/velero#tag=v$pkgver"
+        "build.patch")
+sha256sums=('SKIP'
+            '6a3a98867f35180ed604da9fa608c290107651b5ebba9409bcedd45c395cdda4')
+
+prepare() {
+    cd $pkgname
+    patch -Np1 < ../build.patch
+    sed -E 's#(OUTPUT_DIR)=\$\$\(pwd\)/_output/bin/\$\(GOOS\)/\$\(GOARCH\)#\1=.#g' -i Makefile
+}
 
 build() {
-    cd $pkgname-$pkgver
+    cd $pkgname
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    export GOLDFLAGS="-linkmode=external"
 
-    _commit=87d86a45a6ca66c6c942c7c7f08352e26809426c
+    make local GIT_TREE_STATE=clean
 
-    go build \
-        -trimpath \
-        -buildmode=pie \
-        -mod=readonly \
-        -modcacherw \
-        -ldflags "-linkmode=external
-            -X \"github.com/vmware-tanzu/velero/pkg/buildinfo.Version=$pkgver\"
-            -X \"github.com/vmware-tanzu/velero/pkg/buildinfo.GitSHA=$_commit\"
-            -X \"github.com/vmware-tanzu/velero/pkg/buildinfo.GitTreeState=clean\"" \
-        -o $pkgname cmd/velero/main.go
+    ./velero completion bash | install -Dm644 /dev/stdin share/bash-completion/completions/velero
+    ./velero completion zsh | install -Dm644 /dev/stdin share/zsh/site-functions/_velero
 }
 
 package() {
-    cd $pkgname-$pkgver
+    cd $pkgname
     install -Dm755 $pkgname -t "$pkgdir/usr/bin"
-    $pkgname completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-    $pkgname completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+    cp -r share/ "$pkgdir/usr"
 }

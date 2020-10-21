@@ -1,0 +1,30 @@
+diff --git a/hack/build.sh b/hack/build.sh
+index b04378ad..d6f320d1 100755
+--- a/hack/build.sh
++++ b/hack/build.sh
+@@ -51,22 +51,13 @@ if [[ -z "${GIT_TREE_STATE}" ]]; then
+     exit 1
+ fi
+
+-export CGO_ENABLED=0
++export CGO_ENABLED=1
+
+-LDFLAGS="-X ${PKG}/pkg/buildinfo.Version=${VERSION}"
++LDFLAGS="${GOLDFLAGS} -X ${PKG}/pkg/buildinfo.Version=${VERSION}"
+ LDFLAGS="${LDFLAGS} -X ${PKG}/pkg/buildinfo.GitSHA=${GIT_SHA}"
+ LDFLAGS="${LDFLAGS} -X ${PKG}/pkg/buildinfo.GitTreeState=${GIT_TREE_STATE}"
+
+-if [[ -z "${OUTPUT_DIR:-}" ]]; then
+-  OUTPUT_DIR=.
+-fi
+-OUTPUT=${OUTPUT_DIR}/${BIN}
+-if [[ "${GOOS}" = "windows" ]]; then
+-  OUTPUT="${OUTPUT}.exe"
+-fi
+-
+ go build \
+-    -o ${OUTPUT} \
+-    -installsuffix "static" \
++    -o ${OUTPUT_DIR} \
+     -ldflags "${LDFLAGS}" \
+     ${PKG}/cmd/${BIN}
