@@ -1,4 +1,4 @@
-# Maintainer: Michael Gwin <oksijun+arch at gmail dot com>
+# Maintainer: Benoît Rouits <brouits at free dot fr>
 
 pkgname=qspeakers-svn
 pkgver=r266
