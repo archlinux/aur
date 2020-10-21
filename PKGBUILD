@@ -3,7 +3,7 @@
 _rockname=fluent
 _project=$_rockname-lua
 pkgname=("lua-$_rockname-git" "lua53-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
-pkgver=0.0.4.r75.g382a1a2
+pkgver=0.0.4.r79.g4661a39
 _branch='master'
 _rockrel=0
 pkgrel=1
@@ -24,7 +24,7 @@ pkgver() {
 _package_helper() {
   cd "$_project"
   luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
-    make --deps-mode=none --no-manifest "$_rockname-scm-$_rockrel.rockspec"
+    make --deps-mode=none --no-manifest "$_rockname-dev-$_rockrel.rockspec"
 }
 
 package_lua-fluent-git() {
