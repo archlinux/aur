@@ -1,7 +1,7 @@
 pkgbase = sigpy
 	pkgdesc = A package for signal processing, with emphasis on iterative methods.
 	pkgver = 0.1.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mikgroup/sigpy
 	arch = any
 	license = BSD
@@ -15,7 +15,9 @@ pkgbase = sigpy
 	optdepends = python-matplotlib: plotting
 	optdepends = python-mpi4py: MPI support
 	source = https://files.pythonhosted.org/packages/source/s/sigpy/sigpy-0.1.21.tar.gz
+	source = https://raw.githubusercontent.com/mikgroup/sigpy/master/LICENSE
 	sha256sums = 9e5e58ed155502bbe97267db6821a0831f42edd8b6e58e8d0be767d4e49f2137
+	sha256sums = 506416d7ce128410517c77753a5e0ccab4783f13061fd1f724a92a5de08d1244
 
 pkgname = sigpy
 
