@@ -1,0 +1,19 @@
+pkgbase = termimage-bin
+	pkgdesc = Display images in your terminal
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/nabijaczleweli/termimage
+	arch = x86_64
+	license = MIT
+	provides = termimage
+	conflicts = termimage
+	conflicts = termimage-git
+	source_x86_64 = https://github.com/nabijaczleweli/termimage/releases/download/v1.1.0/termimage-v1.1.0
+	source_x86_64 = termimage-v1.1.0-LICENSE::https://github.com/nabijaczleweli/termimage/raw/v1.1.0/LICENSE
+	source_x86_64 = https://github.com/nabijaczleweli/termimage/releases/download/v1.1.0/termimage-man-v1.1.0.tbz2
+	sha512sums_x86_64 = 379d7a598bb669ffae6e7bf60071e9cbb80e81969faf1fb1fa7bd174b0ed465b5d291b238c53b80139e9f87eea4f3e7e905880e1db2941d62ca5ca76a9cfceb7
+	sha512sums_x86_64 = 25e0f2eb4d34813f14fabea8245680d734a50ff3be597146c47d4d6c819f61f4f8bb1c6ffa4f9047725aa6923d5db3043b7add60b5f428ab29de6932a70b8a24
+	sha512sums_x86_64 = 7e2f220b7b023f357c1ee32ac7ed2936e4b01378d8fd2bf96becedb4dd16e8bae4a7eb57790292342beb9512e915e52d782782e04aec28d6d415f6741f241c5b
+
+pkgname = termimage-bin
+
