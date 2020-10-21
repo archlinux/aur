@@ -1,7 +1,7 @@
 pkgbase = siggen
 	pkgdesc = Curses based signal generator
 	pkgver = 2.3.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://packages.debian.org/wheezy/siggen
 	install = siggen.install
 	arch = i686

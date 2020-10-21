@@ -2,7 +2,7 @@
 
 pkgname=siggen
 pkgver=2.3.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Curses based signal generator"
 arch=('i686' 'x86_64')
 url="https://packages.debian.org/wheezy/siggen"
