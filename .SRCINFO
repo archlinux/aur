@@ -1,0 +1,14 @@
+pkgbase = maple
+	pkgdesc = vim-clap external filter gadget
+	pkgver = 0.1.21
+	pkgrel = 1
+	url = https://github.com/liuchengxu/vim-clap
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	source = https://github.com/liuchengxu/vim-clap/archive/v0.21/vim-clap-v0.21.tar.gz
+	b2sums = e8abdaf3e438341a38c594a8c9a0b11fbaf0b8b95f607aecf47b5c93aac8c535a78ccfe274ccd7776c9a4635e3fe0db617774ba78bce7191b91074e922d069e2
+
+pkgname = maple
+
