@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-vaapi
-pkgver=86.0.4240.75
+pkgver=86.0.4240.111
 pkgrel=1
 _launcher_ver=6
 _gcc_patchset=6
@@ -42,7 +42,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         check-for-enable-accelerated-video-decode-on-Linux.patch
         wayland-egl.patch
         chromium-skia-harmony.patch)
-sha256sums=('dd7a41eda5f984e44474d7e6fb25b5df88c1c924a1a3966189f037f7d325bcb5'
+sha256sums=('f27bdb02ebf3c48abe054c73f1ae57e22a22535ea34f5edf8693ab8432a7c717'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '6f9ab35fa2c9e6e34ec454b829b7b87adaebc10cacecd1ac1daa67035ee44aba'
             '69d8b7a439db1af4713245ddf5f44ca647283ba833a8733e848033ebdaf03cdc'
