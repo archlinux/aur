@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gtksourceviewmm' 'libxml++2.6' 'gspell')
 optdepends=('p7zip: for password protection support')
 source=("https://launchpad.net/~giuspen/+archive/ubuntu/ppa/+files/${_basename}_${pkgver}-1_amd64.deb")
-sha256sums=('bddc893e19a3b37921fab7b9db7d5b1968432470d267d6931b60d30bf767793e')
+sha256sums=('1e4c1d972c21897bd120757c076ea5211aa31eeb615c8e2c22f8c1bab6129f08')
 
 package() {
 	msg2 "Extracting the data.tar.xz..."
