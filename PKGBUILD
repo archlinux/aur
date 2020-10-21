@@ -78,30 +78,29 @@ build() {
   meson --prefix=/usr \
     -Dfb=true \
     -Ddrm=true \
-    -Davahi=true \
+    -Dwl=true \
+    -Dnetwork-backend=connman \
+    -Dlua-interpreter=lua \
+    -Dbuild-examples=false \
+    -Dbuild-tests=false \
     -Dx11=true \
     -Dsdl=true \
     -Dbuffer=true \
-    -Dwl=true \
     -Dwl-deprecated=true \
     -Ddrm-deprecated=true \
     -Dxpresent=true \
     -Dopengl=full \
-    -Dphysics=true \
-    -Dglib=true \
-    -Decore-imf-loaders-disabler= \
-    -Dbindings=cxx,lua,mono \
-    -Dmono-beta=true \
-    -Dwindows-version='win10' \
     -Dpixman=true \
+    -Dwindows-version=win10 \
+    -Decore-imf-loaders-disabler='' \
+    -Dmono-beta=true \
     -Dhyphen=true \
     -Dvnc-server=true \
     -Delua=true \
-    -Dnetwork-backend=connman \
-    -Dlua-interpreter=lua \
-    -Dbindings= \
-    -Dbuild-examples=false \
-    -Dbuild-tests=false \
+    -Dphysics=true \
+    -Dglib=true \
+    -Davahi=true \
+    -Dbindings=cxx,lua,mono \
     . build
   ninja -j $J -C build
 }
