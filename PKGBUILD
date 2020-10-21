@@ -4,7 +4,7 @@
 pkgname=pcloudcc-git
 _pkgname=${pkgname%-*}
 pkgver=r1464.2ecb7c9
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple linux console client for pCloud cloud storage."
 provides=("pcloudcc")
 conflicts=("pcloudcc")
@@ -12,7 +12,7 @@ arch=('x86_64')
 url="https://github.com/pcloudcom/console-client"
 license=('GPL')
 depends=('zlib' 'fuse')
-makedepends=('cmake' 'boost')
+makedepends=('git' 'cmake' 'boost')
 
 source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
