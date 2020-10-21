@@ -1,4 +1,7 @@
 *.zip
 *.tar.xz
+*.tar.zst
 *.png
+
 /src
+/pkg
