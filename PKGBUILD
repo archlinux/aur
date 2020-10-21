@@ -1,30 +1,51 @@
+# Maintainer: Nagy Roland <roliboy@protonmail.com>
+# Python package author: Brandon <brandon@skerritt.blog>
+
 pkgname=ciphey
-pkgver=5.0.0
+_pkgname=Ciphey
+pkgver=5.9.0
 pkgrel=1
-pkgdesc="Automated decryption tool"
-arch=("any")
-url="https://github.com/Ciphey/Ciphey"
+pkgdesc='Automated decryption tool'
+arch=('any')
+url='https://github.com/Ciphey/Ciphey'
 license=('MIT')
-depends=('python-cipheycore' 'python-loguru' 'python-yaml'
-         'python-appdirs' 'python-requests' 'python-cipheydists'
-         'python-rich' 'python-click' 'python-click-spinner'
-         'python-yaspin')
-makedepends=('python-setuptools' 'python-poetry')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/5.0.0.tar.gz")
-sha256sums=('2437811b3cedb87fa2282efd70f122de32daba1401bd11e9eeefbfead87c4236')
+depends=(
+    'python'
+    'python-appdirs'
+    'python-base58' #aur
+    'python-base91' #aur
+    'python-cipheycore' #aur
+    'python-cipheydists' #aur
+    'python-click'
+    'python-click-spinner' #aur
+    'python-loguru' #aur
+    'python-pybase62' #aur
+    'python-pylint'
+    'python-pyaml'
+    'python-rich'
+    'python-yaspin'
+)
+makedepends=('python-setuptools' 'python-dephell')
+provides=('ciphey')
+source=(
+    "$pkgname.tar.gz::https://codeload.github.com/Ciphey/Ciphey/tar.gz/$pkgver"
+)
+sha256sums=(
+    '4351191d274a237874356ef2eb08d2421e66dbee5707ca3e05e3f6da5049cd67'
+)
+
+prepare() {
+    cd "$_pkgname-$pkgver"
+    dephell deps convert --from pyproject.toml --to setup.py
+}
 
 build() {
-  cd Ciphey-${pkgver}
-  python -m poetry build
-  cd dist
-  tar zxf ${pkgname}-${pkgver}.tar.gz
-  cd ${pkgname}-${pkgver}
-  python setup.py build
+    cd "$_pkgname-$pkgver"
+    python setup.py build
 }
 
 package() {
-  cd Ciphey-${pkgver}
-  install -Dm644 license -t ${pkgdir}/usr/share/licenses/${pkgname}/
-  cd dist/${pkgname}-${pkgver}
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    cd "$_pkgname-$pkgver"
+    python setup.py install --root=$pkgdir --optimize=1 --skip-build
+    install -Dm644 license $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
