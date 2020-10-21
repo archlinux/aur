@@ -1,0 +1,20 @@
+pkgbase = bash-snippets-git
+	pkgdesc = A collection of small bash scripts for heavy terminal users
+	pkgver = 1.23.0.r15.g97a1c0d
+	pkgrel = 1
+	url = https://github.com/alexanderepstein/Bash-Snippets
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = curl
+	depends = openssl
+	depends = git
+	depends = bc
+	provides = bash-snippets
+	conflicts = bash-snippets
+	source = bash-snippets::git+https://github.com/alexanderepstein/Bash-Snippets.git
+	md5sums = SKIP
+
+pkgname = bash-snippets-git
+
