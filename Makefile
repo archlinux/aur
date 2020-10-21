@@ -1,7 +1,7 @@
 all: .SRCINFO package
 
 clean:
-	rm -rf pkg src *.gem *.pkg.*
+	rm -rf pkg src *.gem *.pkg.* *.gz
 
 .SRCINFO: PKGBUILD
 	makepkg --printsrcinfo > .SRCINFO
