@@ -1,0 +1,17 @@
+pkgbase = libeno
+	pkgdesc = C reference parsing library for eno notation
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://eno-lang.org
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = gcc
+	makedepends = meson
+	depends = icu
+	provides = libeno.so
+	source = libeno-0.1.0.tar.gz::https://codeberg.org/simonrepp/libeno/archive/0.1.0.tar.gz
+	md5sums = aa773b3ead156cc8a1e0077f12b34c85
+
+pkgname = libeno
+
