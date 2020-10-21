@@ -95,10 +95,10 @@ build() {
     -D libunwind=false \
     -D debug=false
      
-# xinerama needed with nvidia blob
-# mitshm needed with nvidia blob
-# xv needed with nvidia blob
-# glamor needed for xwayland gaming
+# xinerama needed with nvidia blob/amdgpu/mesa
+# mitshm needed with nvidia blob/amdgpu/mesa
+# xv needed with nvidia blob/amdgpu/mesa
+# glamor needed for xwayland support
 
   # Print config
   meson configure build
