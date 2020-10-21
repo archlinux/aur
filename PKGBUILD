@@ -5,7 +5,7 @@
 
 _pkgname=vokoscreenNG
 pkgname=vokoscreen-git
-pkgver=3.0.7.r5.gf877a1d0
+pkgver=3.0.7.r14.g2222ed25
 pkgrel=1
 epoch=1
 pkgdesc='An easy to use screencast creator. Development version.'
@@ -18,18 +18,12 @@ makedepends=('git' 'qt5-tools' 'libxrandr' 'bzip2')
 optdepends=('gst-plugins-ugly: for x264 video codec')
 provides=("${_pkgname%NG}=${pkgver}")
 conflicts=("${_pkgname%NG}")
-source=("git+https://github.com/vkohaupt/${_pkgname}.git" bzip2.patch)
-sha256sums=('SKIP'
-            'eafc44d38e255851f221c86dd65e9651d520041b89bdb55eecbc49d7f303ac2e')
+source=("git+https://github.com/vkohaupt/${_pkgname}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}
   git describe --long --tags 2>/dev/null | sed -r 's/-/.r/' | tr - .
-}
-
-prepare() {
-  cd ${_pkgname}
-  git apply "$srcdir"/bzip2.patch
 }
 
 build() {
