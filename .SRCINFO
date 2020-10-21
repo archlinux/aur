@@ -1,7 +1,7 @@
 pkgbase = linux-rt
 	pkgdesc = Linux RT
 	pkgver = 5.9.1.18.arch1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.linuxfoundation.org/realtime/start
 	arch = x86_64
 	license = GPL2
@@ -35,6 +35,10 @@ pkgname = linux-rt
 	depends = kmod
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
 
 pkgname = linux-rt-headers
 	pkgdesc = Headers and scripts for building modules for the Linux RT kernel
