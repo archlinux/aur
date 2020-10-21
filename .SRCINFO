@@ -1,14 +1,14 @@
 pkgbase = libsdrplay
 	pkgdesc = Modules for the SDRplay receiver
-	pkgver = 2.13.1
+	pkgver = 3.07.1
 	pkgrel = 1
 	url = http://www.sdrplay.com
 	arch = i686
 	arch = x86_64
 	license = custom:EULA
 	depends = libusb>=1.0
-	source = http://www.sdrplay.com/software/SDRplay_RSP_API-Linux-2.13.1.run
-	sha256sums = e2320b9eafffa3cb5d49e956207af2521ccf098aacc1fd9abecc8fb96b364522
+	source = http://www.sdrplay.com/software/SDRplay_RSP_API-Linux-3.07.1.run
+	sha256sums = aefe8733cba3e480157c28439c1ed5ab757724a7a26fe74eee92cda6f36145a8
 
 pkgname = libsdrplay
 
