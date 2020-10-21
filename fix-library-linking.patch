@@ -1,6 +1,6 @@
-diff -ru PyMuPDF-1.18.0-orig/setup.py PyMuPDF-1.18.0/setup.py
---- PyMuPDF-1.18.0-orig/setup.py	2020-10-08 14:54:26.000000000 +0800
-+++ PyMuPDF-1.18.0/setup.py	2020-10-12 23:44:28.773459862 +0800
+diff -ru PyMuPDF-1.18.1-orig/setup.py PyMuPDF-1.18.1/setup.py
+--- PyMuPDF-1.18.1-orig/setup.py	2020-10-19 00:50:21.000000000 +0800
++++ PyMuPDF-1.18.1/setup.py	2020-10-21 13:05:15.966308000 +0800
 @@ -12,7 +12,7 @@
  
  
@@ -8,5 +8,13 @@ diff -ru PyMuPDF-1.18.0-orig/setup.py PyMuPDF-1.18.0/setup.py
 -ARCH_LINUX = DEFAULT + ["jbig2dec", "openjp2", "jpeg", "freetype"]
 +ARCH_LINUX = DEFAULT + ["jbig2dec", "openjp2", "jpeg", "freetype", "gumbo"]
  OPENSUSE = ARCH_LINUX + ["harfbuzz", "png16"]
- FEDORA = ARCH_LINUX + ["harfbuzz"]
+ FEDORA = ARCH_LINUX + ["harfbuzz", "gumbo"]
  LIBRARIES = {
+@@ -54,6 +54,7 @@
+         include_dirs=[  # we need the path of the MuPDF headers
+             "/usr/include/mupdf",
+             "/usr/local/include/mupdf",
++            "/usr/include/freetype2",
+         ],
+         libraries=load_libraries(),
+     )

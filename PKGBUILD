@@ -4,19 +4,19 @@
 
 pkgname=('python-pymupdf')
 _name='PyMuPDF'
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc='Python bindings for MuPDF'
 arch=('x86_64')
 url='https://github.com/pymupdf/PyMuPDF'
 license=('AGPL3')
 depends=('python' 'libjpeg-turbo' 'jbig2dec' 'openjpeg2'  'freetype2' 'gumbo-parser')
-makedepends=('python-setuptools' 'libmupdf-pymupdf=1.18.0-1' 'swig' 'python-sphinx' 'python-sphinx_rtd_theme')
+makedepends=('python-setuptools' 'libmupdf>=1.18' 'libmupdf<1.19' 'swig' 'python-sphinx' 'python-sphinx_rtd_theme')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pymupdf/PyMuPDF/archive/${pkgver}.tar.gz"
         "fix-library-linking.patch")
-sha256sums=('2ce5d0be64e91ff4ba39e83e65368538ba5c0396517e3103150a17d7e118b845'
-            'e7589e4499fb64d2729ae04f928624b5aff49a0d5a7cf25411b9537132fe8528')
+sha256sums=('068e1e7ed56ea008ed025413ad2a0468fb04b2b8f1789acdb18a4336d6639f25'
+            'e28b0b3a1300ebea1413a5a90b99575f624994f202e61d92875114cb7ce43c8c')
 
 prepare() {
   cd "${_name}-${pkgver}"
@@ -41,4 +41,5 @@ package() {
   install -D COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
   mkdir -p "$pkgdir/usr/share/doc"
   cp -r docs_built "$pkgdir/usr/share/doc/$pkgname"
+  rm -rf "$pkgdir/usr/share/doc/$pkgname/.doctrees"
 }
