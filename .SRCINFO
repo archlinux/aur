@@ -1,0 +1,90 @@
+pkgbase = efl-full-git
+	pkgdesc = Enlightenment Foundation Libraries - Full Development version (All optional settings enabled)
+	pkgver = 1.25.99.66347.gd6a6dd54a1
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = LGPL2.1
+	license = GPL2
+	license = MIT
+	license = custom
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = gcc
+	makedepends = binutils
+	makedepends = fakeroot
+	makedepends = procps-ng
+	makedepends = ccache
+	depends = curl
+	depends = fontconfig
+	depends = fribidi
+	depends = harfbuzz
+	depends = gst-plugins-base-libs
+	depends = lua52
+	depends = libgl
+	depends = libinput
+	depends = libpulse
+	depends = libsndfile
+	depends = libspectre
+	depends = libraw
+	depends = librsvg
+	depends = libwebp
+	depends = libxcomposite
+	depends = libxcursor
+	depends = libxinerama
+	depends = libxkbcommon
+	depends = libxrandr
+	depends = libxss
+	depends = libunwind
+	depends = mesa
+	depends = poppler
+	depends = openjpeg2
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libtiff
+	depends = giflib
+	depends = lz4
+	depends = zlib
+	depends = systemd-libs
+	depends = openssl
+	depends = glibc
+	depends = libutil-linux
+	depends = dbus
+	depends = shared-mime-info
+	depends = mailcap
+	depends = ttf-font
+	depends = scim
+	depends = wayland
+	depends = wayland-protocols
+	depends = libxkbcommon-x11
+	depends = pulseaudio
+	optdepends = gst-plugins-base: Video and thumbnail codecs
+	optdepends = gst-plugins-good: Video and thumbnail codecs
+	optdepends = gst-plugins-bad: Video and thumbnail codecs
+	optdepends = gst-plugins-ugly: Video and thumbnail codecs
+	optdepends = gst-libav: Video and thumbnails with ffmpeg/libav
+	optdepends = libreoffice: Office document thumbnails
+	provides = efl=1.25.99.66347.gd6a6dd54a1
+	provides = elementary=1.25.99.66347.gd6a6dd54a1
+	provides = elementary-git=1.25.99.66347.gd6a6dd54a1
+	provides = evas_generic_loaders=1.25.99.66347.gd6a6dd54a1
+	provides = ephysics=1.25.99.66347.gd6a6dd54a1
+	provides = ephysics-git=1.25.99.66347.gd6a6dd54a1
+	conflicts = efl
+	conflicts = elementary
+	conflicts = elementary-git
+	conflicts = elementary_test
+	conflicts = elementary_test-git
+	conflicts = evas_generic_loaders
+	conflicts = evas_generic_loaders-git
+	options = debug
+	options = ccache
+	source = git+https://git.enlightenment.org/core/efl.git
+	sha256sums = SKIP
+
+pkgname = efl-full-git
+
