@@ -1,7 +1,7 @@
 pkgbase = protonmail-bridge-nogui
 	pkgdesc = Integrate ProtonMail paid account with any program that supports IMAP and SMTP
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProtonMail/proton-bridge
 	arch = x86_64
 	license = GPL3
@@ -14,9 +14,9 @@ pkgbase = protonmail-bridge-nogui
 	conflicts = protonmail-bridge
 	options = !emptydirs
 	options = !strip
-	source = proton-bridge-ie-1.1.0.tar.gz::https://github.com/ProtonMail/proton-bridge/archive/ie-1.1.0.tar.gz
+	source = proton-bridge-ie-1.1.2.tar.gz::https://github.com/ProtonMail/proton-bridge/archive/ie-1.1.2.tar.gz
 	source = bridge.service
-	sha256sums = d2d592749c87d134e0e1832d396684045bd994feb9e8e5dba435230bde2c6307
+	sha256sums = dcc29b263260c27d3d39314b9dbc0ba7c39b55647f1c825ca47940c995cfef1d
 	sha256sums = 6b2fd1e042b55dc6d0ffe5eb44e82ffd233452b4571ef571132600e7ec0d5d82
 
 pkgname = protonmail-bridge-nogui
