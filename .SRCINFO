@@ -1,7 +1,7 @@
 pkgbase = cpat
 	pkgdesc = A curses based solitaire/patience collection of 9 games
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cpat.sourceforge.net/
 	arch = x86_64
 	arch = i686
