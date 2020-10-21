@@ -1,28 +1,36 @@
 pkgbase = i2pd-git
-	pkgdesc = Simplified C++ implementation of I2P client
-	pkgver = 2.26.0.r7.g85eeba14
+	pkgdesc = A full-featured C++ implementation of the I2P router (git version)
+	pkgver = 2.33.0.r79.gcb55944f
 	pkgrel = 1
-	url = https://github.com/PurpleI2P/i2pd
-	install = i2pd.install
-	arch = i686
+	url = https://i2pd.website/
 	arch = x86_64
-	arch = armv6h
-	arch = armv7h
-	arch = aarch64
 	license = BSD
 	makedepends = git
-	makedepends = boost
 	makedepends = cmake
+	makedepends = boost
 	depends = boost-libs
-	depends = miniupnpc
+	depends = libminiupnpc.so
 	depends = openssl
 	depends = zlib
-	provides = i2pd=2.26.0.r7.g85eeba14
+	provides = i2pd
+	provides = i2p-router
 	conflicts = i2pd
 	backup = etc/i2pd/i2pd.conf
 	backup = etc/i2pd/tunnels.conf
-	source = i2pd::git+https://github.com/PurpleI2P/i2pd#branch=openssl
-	md5sums = SKIP
+	source = git+https://github.com/PurpleI2P/i2pd.git#branch=openssl
+	source = 010-i2pd-use-arch-flags-on-tests.patch
+	source = 020-i2pd-config.patch
+	source = 030-i2pd-do-not-override-config.patch
+	source = 040-i2pd-tunnels-d-readme.patch
+	source = i2pd.sysusers
+	source = i2pd.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 0064503a9124b764d01db862ba3c2ff97bc5961d41359970df2d6ce9842a5ab5
+	sha256sums = 452550678ea5702a6492eb58e8d0452b91dc5d0aaa112cf04542df74a3dc0dfc
+	sha256sums = 45cfc3035c5b5cfc92cfffec1fe7d7efc4fed3229195cdb640ec4a6c405af149
+	sha256sums = cfcb6b07b67aff3e3af12767f4649d88b9320dc71907b6c01b465e5c138cdaa3
+	sha256sums = 88b2e709228049ba11f37863f87de75ab6cde295104852871384337cfdc906a3
+	sha256sums = fe8cc2ec83cb5b5c2b2ec8cce9a989e0cb6fd347e00b84e03a17b12efd152fac
 
 pkgname = i2pd-git
 

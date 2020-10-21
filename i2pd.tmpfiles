@@ -1,0 +1,6 @@
+d /var/lib/i2pd 0700 i2pd i2pd - -
+d /var/log/i2pd 0700 i2pd i2pd - -
+L /var/lib/i2pd/i2pd.conf - - - - /etc/i2pd/i2pd.conf
+L /var/lib/i2pd/tunnels.d - - - - /etc/i2pd/tunnels.d
+L /var/lib/i2pd/tunnels.conf - - - - /etc/i2pd/tunnels.conf
+L /var/lib/i2pd/certificates - - - - /usr/share/i2pd/certificates

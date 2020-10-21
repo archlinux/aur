@@ -1,0 +1,29 @@
+--- a/contrib/i2pd.service
++++ b/contrib/i2pd.service
+@@ -11,20 +11,24 @@ RuntimeDirectoryMode=0700
+ LogsDirectory=i2pd
+ LogsDirectoryMode=0700
+ Type=forking
+-ExecStart=/usr/sbin/i2pd --conf=/etc/i2pd/i2pd.conf --tunconf=/etc/i2pd/tunnels.conf --tunnelsdir=/etc/i2pd/tunnels.conf.d --pidfile=/run/i2pd/i2pd.pid --logfile=/var/log/i2pd/i2pd.log --daemon --service
++ExecStart=/usr/sbin/i2pd --conf=/var/lib/i2pd/i2pd.conf --pidfile=/run/i2pd/i2pd.pid --daemon --service
+ ExecReload=/bin/sh -c "kill -HUP $MAINPID"
+ PIDFile=/run/i2pd/i2pd.pid
+ ### Uncomment, if auto restart needed
+ #Restart=on-failure
+ 
++# SIGQUIT is setted by upstream and always generates a core dump.
++# You can ignore the failed exit (core dump) when stopping the service.
+ KillSignal=SIGQUIT
++
+ # If you have the patience waiting 10 min on restarting/stopping it, uncomment this.
+ # i2pd stops accepting new tunnels and waits ~10 min while old ones do not die.
+ #KillSignal=SIGINT
+ #TimeoutStopSec=10m
+ 
+-# If you have problems with hanging i2pd, you can try increase this
++# If you have problems with hanging i2pd, you can try to increase this
+ LimitNOFILE=4096
++
+ # To enable write of coredump uncomment this
+ #LimitCORE=infinity
+ 

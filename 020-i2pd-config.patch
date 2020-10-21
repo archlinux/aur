@@ -1,0 +1,30 @@
+--- a/contrib/i2pd.conf
++++ b/contrib/i2pd.conf
+@@ -8,15 +8,17 @@
+ 
+ ## Tunnels config file
+ ## Default: ~/.i2pd/tunnels.conf or /var/lib/i2pd/tunnels.conf
++## Note: /var/lib/i2pd/tunnels.conf is a symlink to /etc/i2pd/tunnels.conf (use the latter)
+ # tunconf = /var/lib/i2pd/tunnels.conf
+ 
+ ## Tunnels config files path
+ ## Use that path to store separated tunnels in different config files.
+ ## Default: ~/.i2pd/tunnels.d or /var/lib/i2pd/tunnels.d
++## Note: /var/lib/i2pd/tunnels.d is a symlink to /etc/i2pd/tunnels.d (use the latter)
+ # tunnelsdir = /var/lib/i2pd/tunnels.d
+ 
+ ## Where to write pidfile (default: i2pd.pid, not used in Windows)
+-# pidfile = /run/i2pd.pid
++# pidfile = /run/i2pd/i2pd.pid
+ 
+ ## Logging configuration section
+ ## By default logs go to stdout with level 'info' and higher
+@@ -27,7 +29,7 @@
+ ##  * syslog - use syslog, see man 3 syslog
+ # log = file
+ ## Path to logfile (default - autodetect)
+-# logfile = /var/log/i2pd/i2pd.log
++logfile = /var/log/i2pd/i2pd.log
+ ## Log messages above this level (debug, info, *warn, error, none)
+ ## If you set it to none, logging will be disabled
+ # loglevel = warn
