@@ -1,0 +1,15 @@
+[Unit]
+Description=The Choria Orchestrator Server
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/default/choria-server
+StandardOutput=syslog
+StandardError=syslog
+User=root
+Group=root
+ExecStart=/bin/sh -c "${COMMAND_PREFIX} /usr/bin/choria server --config=/etc/choria/server.conf"
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=The Choria Orchestrator Network Broker
+After=network.target
+
+[Service]
+StandardOutput=syslog
+StandardError=syslog
+LimitNOFILE=51200
+User=root
+Group=root
+ExecStart=/usr/bin/choria broker --config=/etc/choria/broker.conf
+
+[Install]
+WantedBy=multi-user.target

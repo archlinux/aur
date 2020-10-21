@@ -1,0 +1,10 @@
+*
+!PKGBUILD
+!.gitignore
+!.SRCINFO
+!broker.conf
+!choria
+!choria-broker.service
+!choria-server
+!choria-server.service
+!server.conf

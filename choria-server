@@ -1,0 +1,6 @@
+# These are additional flags to pass to the choria server invocation
+EXTRA_OPTS=""
+
+# This is a prefix command to invoke the server, use this is perhaps you want
+# to run choria in a namespace and wish to invoke nsenter or ip netns exec
+COMMAND_PREFIX=""
