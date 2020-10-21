@@ -1,0 +1,12 @@
+[Unit]
+Description=telephony_client for hsphfpd
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/telephony_client.pl
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+
