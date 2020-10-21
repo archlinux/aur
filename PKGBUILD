@@ -80,8 +80,8 @@ build() {
     -Dopengl=full \
     -Dphysics=true \
     -Dglib=true \
-    -Decore-imf-loaders-disabler='' \
-    -Dbindings='cxx', 'lua', 'mono' \
+    -Decore-imf-loaders-disabler= \
+    -Dbindings=cxx,lua,mono \
     -Dmono-beta=true \
     -Dwindows-version='win10' \
     -Dpixman=true \
