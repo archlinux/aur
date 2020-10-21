@@ -10,7 +10,7 @@ pkgver=0.3.11
 # grep VERSION "${srcdir}/${_PkgName}-${pkgver}"/lapack-netlib/README.md | tail -n 1 | cut -d ' ' -f 2
 _lapackver=3.9.0
 _blasver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('x86_64')
 url="http://www.openblas.net/"
@@ -33,7 +33,7 @@ _config="FC=gfortran USE_OPENMP=1 USE_THREAD=1 \
 build(){
   cd "${srcdir}/${_PkgName}-${pkgver}"
 
-  make ${_config} CFLAGS="${CFLAGS}" libs netlib shared
+  make ${_config} CFLAGS="${CFLAGS} -march=native" libs netlib shared
 }
 
 check(){
