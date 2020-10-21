@@ -1,18 +1,20 @@
 pkgbase = python-qiskit-ibmq-provider
 	pkgdesc = Module for accessing the quantum devices and simulators at IBMQ
-	pkgver = 0.4.6
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit-ibmq-provider
 	arch = x86_64
 	license = Apache
 	makedepends = python-setuptools
-	depends = python-qiskit-terra
 	depends = python-nest_asyncio
+	depends = python-qiskit-terra
 	depends = python-requests
 	depends = python-requests-ntlm
 	depends = python-websockets
-	source = qiskit-ibmq-provider-0.4.6.tar.gz::https://github.com/Qiskit/qiskit-ibmq-provider/archive/0.4.6.tar.gz
-	sha256sums = b8460af5394d546b386a27055d31559165c4266fd68ed93245b1e4ae3a30823a
+	depends = python-urllib3
+	depends = python-dateutil
+	source = qiskit-ibmq-provider-0.11.0.tar.gz::https://github.com/Qiskit/qiskit-ibmq-provider/archive/0.11.0.tar.gz
+	sha256sums = 7af262fd190fd43bb9ab810581ebbfc5992a8c1918e5a993b8f2b4716294d48a
 
 pkgname = python-qiskit-ibmq-provider
 
