@@ -1,6 +1,6 @@
 pkgbase = macaulay2
 	pkgdesc = Software system for algebraic geometry and commutative algebra
-	pkgver = 18864.8103563cf
+	pkgver = 19030.995c6fd8c
 	pkgrel = 1
 	url = http://www.math.uiuc.edu/Macaulay2/
 	arch = i686

@@ -2,7 +2,7 @@
 # Contributor: Rémy Oudompheng <remy@archlinux.org>
 
 pkgname=macaulay2
-pkgver=18864.8103563cf
+pkgver=19030.995c6fd8c
 pkgrel=1
 pkgdesc="Software system for algebraic geometry and commutative algebra"
 arch=('i686' 'x86_64')
@@ -26,7 +26,10 @@ build() {
   sed -i -e 's/IgnoreExampleErrors ?= false/IgnoreExampleErrors ?= true/' Macaulay2/packages/Makefile.in
   sed -i -e 's/ -q//' Macaulay2/packages/Makefile.in
 
-  autoreconf
+  # M2 recommends to run make first which runs autoconf and autoheader
+  make
+  #autoreconf
+  # Now run configure and then make again
   ./configure "LIBS=-lcblas" --prefix=/usr \
     --libexecdir='${prefix}'/lib/Macaulay2 \
     --enable-shared --enable-download \
