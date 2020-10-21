@@ -33,7 +33,7 @@ prepare() {
 	cd "$srcdir/$pkgname-$pkgver/$pkgname"
 
 	local _pver="$(python --version | sed "s/Python \(.*\)\..*/\1/")"
-	local _ddir="/usr/lib/python$_pver/site-packages/${pkgname%-git}/"
+	local _ddir="/usr/lib/python$_pver/site-packages/$pkgname/"
 
 	# Generate pycache, if you ran giara as root this will conflict
 	for f in "" -O;
