@@ -29,5 +29,5 @@ build() {
 
 package() {
   cd "$srcdir/$caps_pkgname"
-  install -Dm644 "$pkgname" "$pkgdir/usr/bin"
+  install -Dm644 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
