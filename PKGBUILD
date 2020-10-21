@@ -7,10 +7,6 @@ pkgdesc="An open-source framework for working with noisy quantum computers at th
 arch=('x86_64')
 url="https://github.com/Qiskit/qiskit-terra"
 license=('Apache')
-conflicts=(
-    'python-qiskit-sdk-git'
-    'python-qiskit-api-git'
-)
 depends=(
     'python-jsonschema'
     'python-marshmallow'
