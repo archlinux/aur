@@ -27,7 +27,7 @@ build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DBUILD_TESTS=OFF \
+    MINGW_CPPFLAGS="-D_WIN32_WINNT=0x0600" ${_arch}-cmake -DBUILD_TESTS=OFF \
       -DCMAKE_ASM_MASM_COMPILER=0 -DCMAKE_ASM_MASM_COMPILER_WORKS=0 \
       ..
     make
