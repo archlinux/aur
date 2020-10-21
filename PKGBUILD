@@ -28,7 +28,8 @@ prepare() {
 }
 
 pkgver() {
-  "$srcdir/bin/az" --version 2> /dev/null | head -1 | tr -c -d 0-9.
+  # Make sure we have a writable $HOME/.azure directory to run az
+  HOME=$srcdir "$srcdir/bin/az" --version 2> /dev/null | head -1 | tr -c -d 0-9.
 }
 
 package() {
