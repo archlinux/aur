@@ -1,18 +1,20 @@
 # Maintainer: Mira Strannaya <rsxrwscjpzdzwpxaujrr@yahoo.com>
-pkgname=mazemaze-git
-pkgver=0.2.1.r57.gb274ac6
-pkgrel=2
+_pkgname=mazemaze
+pkgname="${_pkgname}-git"
+pkgver=0.2.1.r69.gcff7079
+pkgrel=3
 pkgdesc='Simple 3D OpenGL first-person maze game.'
-url="https://mira-strannaya.ru/articles/mazemaze"
+url="https://mira-strannaya.ru/articles/${_pkgname}"
 arch=('x86_64' 'i686')
 license=('GPLv2')
 depends=('jsoncpp' 'sfml' 'sfgui')
 optdepends=()
 makedepends=('git' 'cmake')
-conflicts=()
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 replaces=()
 backup=()
-source=("git+https://github.com/mirai65536/mazemaze")
+source=("git+https://github.com/mirai65536/${_pkgname}")
 md5sums=('SKIP')
 
 pkgver() {
@@ -21,7 +23,7 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/mazemaze"
+  cd "${srcdir}/${_pkgname}"
   mkdir build
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
@@ -30,10 +32,10 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/mazemaze/build"
+  cd "${srcdir}/${_pkgname}/build"
   make DESTDIR="${pkgdir}" install
   cd ..
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-  install -Dm644 FONT_LICENSE "$pkgdir/usr/share/licenses/$pkgname/FONT_LICENSE"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 FONT_LICENSE "$pkgdir/usr/share/licenses/${pkgname}/FONT_LICENSE"
 }
 
