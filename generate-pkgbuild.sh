@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-set -e
+set -euo pipefail
 
 usage() {
     echo "Usage: $0 [{stable|regular|rapid}]" >&2
@@ -14,13 +14,14 @@ get_major_version() {
     curl https://cloud.google.com/feeds/kubernetes-engine-$1-channel-release-notes.xml \
         | sed 's/xmlns=".*"//g' \
         | xmllint --nocdata --xpath '(/feed/entry)[1]/content/text()' - \
-        | rg -o 'v?(\d\.\d+)\.\d+-gke\.\d+' -r '$1'
+        | rg -o 'v?(\d\.\d+)\.\d+-gke\.\d+' -r '$1' \
+        | head -n 1
 }
 
-if [ -z "$1" ];
+if [[ $# -eq 0 ]];
 then
   readonly channel=$(get_channel)
-  echo "Channel is not specified, automatically detected: $channel"
+  echo "Channel is not specified, automatically detected: $channel" >&2
   read -p "Is it correct? y/n " yn
   case $yn in
     [Yy]* ) set -- "$channel" ;;
