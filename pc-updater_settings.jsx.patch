@@ -1,5 +1,5 @@
---- /opt/powercord/src/Powercord/plugins/pc-updater/components/Settings.jsx	2020-08-15 18:33:09.000000000 +0200
-+++ ./pc-updater_settings.jsx	2020-08-15 21:48:42.927277433 +0200
+--- Settings.jsx.orig	2020-10-21 18:38:57.797506650 +0200
++++ Settings.jsx	2020-10-21 18:51:02.065686073 +0200
 @@ -83,7 +83,7 @@
          <div className="about">
            <div>
@@ -13,7 +13,7 @@
          >
            {Messages.POWERCORD_UPDATES_OPTS_CHANGE_LOGS}
          </ButtonItem>
--        <ButtonItem
+-        {/* <ButtonItem
 -          note={Messages.POWERCORD_UPDATES_OPTS_RELEASE_DESC}
 -          button={powercord.gitInfos.branch === 'v2'
 -            ? Messages.POWERCORD_UPDATES_OPTS_RELEASE_DEVELOP_BTN
@@ -23,7 +23,7 @@
 -          )}
 -        >
 -          {Messages.POWERCORD_UPDATES_OPTS_RELEASE}
--        </ButtonItem>
+-        </ButtonItem> */}
  
          <Category
            name={Messages.POWERCORD_UPDATES_OPTS_DEBUG}
