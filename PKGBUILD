@@ -18,7 +18,7 @@
 
 _pkgname='tor-browser'
 pkgname='tor-browser-behind-tor'
-pkgver='10.0.1'
+pkgver='10.0.2'
 pkgrel='1'
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor (international PKGBUILD) (using tor service to download sources)'
 url='https://www.torproject.org/projects/torbrowser.html'
@@ -96,9 +96,9 @@ sha256sums=('0b0614d04d55ac3748775fd34cb6c1f244fd05b5a16cc1e3ae70d887f7eedbc6'
             '8a6e0945571c332c1fc8b1cef11d15f699a752da2bb403bd0b65ee44821cc643'
             'f25ccf68b47f5eb14c6fec0664c74f30ea9c6c58d42fc6abac3b64670aaa3152'
             '7b28b5dbe8ad573bb46e61b4d542b33e01ca240825ca640b4893fee6203b021f')
-sha256sums_i686=('2142dbfda6522018af9b8e376681b9bb95400866512464ddede04612a9f8c9b1'
+sha256sums_i686=('11a9d6d90f13b423d8e454a9f337e005732d7bdf917ca136e1fbbc44eb40acad'
                  'SKIP')
-sha256sums_x86_64=('98c98e726493d6e33a7e9db1cccf722fd07b90a3506fe1f3e52d51a7026de130'
+sha256sums_x86_64=('241243302e385528757a45cfc6c56f164e67381f11a38506b43df6a46d7078ff'
                    'SKIP')
 
 noextract=("${_pkgname}-${_tag_i686}-${pkgver}_${_language}.tar.xz"
