@@ -2,12 +2,12 @@
 # Previous Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=lib32-spirv-tools
-pkgver=2020.4
+pkgver=2020.5
 pkgrel=1
 pkgdesc="API and commands for processing SPIR-V modules"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url='https://www.khronos.org/vulkan'
-license=('custom')
+url='https://github.com/KhronosGroup/SPIRV-Tools'
+license=('Apache')
 groups=('vulkan-devel')
 depends=('lib32-gcc-libs'
          'vulkan-tools'
@@ -18,7 +18,8 @@ makedepends=('cmake'
              'git'
 )
 source=("git+https://github.com/KhronosGroup/SPIRV-Tools.git#tag=v${pkgver}"
-        'git+https://github.com/KhronosGroup/SPIRV-Headers.git'
+        # Temporary fixed tags for the header files.
+        'git+https://github.com/KhronosGroup/SPIRV-Headers.git#tag=1.5.3.reservations1'
 )
 sha256sums=('SKIP'
             'SKIP'

@@ -1,23 +1,23 @@
 pkgbase = lib32-spirv-tools
 	pkgdesc = API and commands for processing SPIR-V modules
-	pkgver = 2020.4
+	pkgver = 2020.5
 	pkgrel = 1
-	url = https://www.khronos.org/vulkan
+	url = https://github.com/KhronosGroup/SPIRV-Tools
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
 	groups = vulkan-devel
-	license = custom
+	license = Apache
 	makedepends = cmake
 	makedepends = python
 	makedepends = git
 	depends = lib32-gcc-libs
 	depends = vulkan-tools
 	depends = spirv-tools
-	source = git+https://github.com/KhronosGroup/SPIRV-Tools.git#tag=v2020.4
-	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
+	source = git+https://github.com/KhronosGroup/SPIRV-Tools.git#tag=v2020.5
+	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git#tag=1.5.3.reservations1
 	sha256sums = SKIP
 	sha256sums = SKIP
 
