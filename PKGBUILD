@@ -1,7 +1,7 @@
 # Maintainer: Timo Kramer <fw minus aur at timokramer dot de>
 
 pkgname=mullvad-vpn-cli
-pkgver=2020.5
+pkgver=2020.6
 pkgrel=1
 pkgdesc="The Mullvad VPN client cli"
 url="https://www.mullvad.net"
@@ -11,7 +11,7 @@ depends=('nss')
 makedepends=('git' 'rust' 'go')
 conflicts=('mullvad-vpn')
 install="${pkgname}.install"
-_commit='f9c55513f372de96223fad3ab6bd2aa78d517387'
+_commit='b82a3e9a7717b8b15c339bc78d4a2f3c6d90ea50'
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${pkgver}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
         'override.conf'
@@ -20,8 +20,10 @@ sha256sums=('SKIP'
             'SKIP'
             'ed978958f86da9acbce950a832491b140a350c594e2446b99a7c397a98731316'
             '2729b6842bff30eb3dae23a2133054ab1cfe9312a4fc9baa8433a81e9bafd362')
-validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87')
+validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               # Linus Färnstrand (code signing key) <linus at mullvad dot net>
+              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
+              # David Lönnhager (code signing) <david dot l at mullvad dot net>
 
 prepare() {
     # Point the submodule to our local copy
@@ -32,12 +34,11 @@ prepare() {
 
     export GOPATH="$srcdir/gopath"
     go clean -modcache
-
-    mkdir -p dist-assets/shell-completions
 }
 
 build() {
-    # Compile wireguard-go
+    echo "Building Mullvad VPN..."
+    echo "Building wireguard-go..."
     cd "$srcdir/mullvadvpn-app/wireguard/libwg"
     mkdir -p "../../build/lib/$arch-unknown-linux-gnu"
     export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -47,6 +48,7 @@ build() {
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     go build -v -o "../../build/lib/$arch-unknown-linux-gnu"/libwg.a -buildmode c-archive
 
+    # Clean mod cache for makepkg -C
     go clean -modcache
 
     cd "${srcdir}/mullvadvpn-app"
@@ -74,7 +76,8 @@ build() {
 
     # Shell completions
     cd mullvad-cli
-    for sh in bash zsh; do
+    mkdir -p ../dist-assets/shell-completions
+    for sh in bash zsh fish; do
         echo "Generating shell completion script for $sh..."
         cargo run --release --locked --features shell-completions -- \
             shell-completions "$sh" ../dist-assets/shell-completions/
@@ -109,6 +112,10 @@ package() {
     # Install shell completion bash
     install --verbose -D --mode=644 dist-assets/shell-completions/mullvad.bash -t \
         "${pkgdir}/usr/share/bash-completion/completions/mullvad"
+
+    # Install shell completion fish
+    install -Dm755 dist-assets/shell-completions/mullvad.fish -t \
+        "$pkgdir/usr/share/fish/vendor_completions.d"
 
     # Install settings.json
     install --verbose -D --mode=644 "${srcdir}/settings.json.sample" -t "${pkgdir}/etc/mullvad-vpn"
