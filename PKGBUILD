@@ -55,7 +55,7 @@ package() {
     install -Dm644 ${pkgname}.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s /usr/share/shiny-server/bin/shiny-server $pkgdir/usr/bin/shiny-server
+    ln -s /usr/share/shiny-server/bin/shiny-server "${pkgdir}/usr/bin/shiny-server"
 }
 
 # vim: set ts=4 sw=4 et:
