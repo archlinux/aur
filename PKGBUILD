@@ -1,7 +1,7 @@
-# Maintainer: Kian Kasad <kian at kasad.com>
+# Maintainer: Kian Kasad <kian@kasad.com>
 
 pkgname=kirc-git
-pkgver=0.0.6.r1.13cd7d3
+pkgver=0.1.8.r0.8022754
 pkgrel=1
 pkgdesc="KISS for IRC, an IRC client written in POSIX C99"
 arch=(any)
@@ -10,11 +10,7 @@ license=('MIT')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
-source=('kirc::git+https://github.com/mcpcpc/kirc.git')
+source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
@@ -30,6 +26,6 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir" install
-	install -D -m 0644 -T LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
+	make DESTDIR="$pkgdir" PREFIX="/usr" install
+	install -TDm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
