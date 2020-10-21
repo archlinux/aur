@@ -1,7 +1,7 @@
 pkgbase = choria-io
 	pkgdesc = Go based server to host Choria agents, networks, federations and discovery
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://choria.io
 	arch = x86_64
 	license = Apache

@@ -2,7 +2,7 @@
 
 pkgname=choria-io
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Go based server to host Choria agents, networks, federations and discovery'
 arch=('x86_64')
 url='https://choria.io'
