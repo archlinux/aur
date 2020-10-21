@@ -1,0 +1,16 @@
+pkgbase = memavaild-git
+	pkgdesc = Improve responsiveness during heavy swapping: keep amount of available memory.
+	pkgver = 0.5.r12.geb346e7
+	pkgrel = 1
+	url = https://github.com/hakavlad/memavaild
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	conflicts = memavaild
+	backup = etc/memavaild.conf
+	source = memavaild-git::git+https://github.com/hakavlad/memavaild.git#branch=master
+	md5sums = SKIP
+
+pkgname = memavaild-git
+
