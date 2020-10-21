@@ -1,16 +1,16 @@
 pkgbase = bazelisk-bin
 	pkgdesc = A user-friendly launcher for Bazel
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/bazelbuild/bazelisk
 	arch = x86_64
 	license = Apache 2.0
 	provides = bazel
 	conflicts = bazel
-	source = https://raw.githubusercontent.com/bazelbuild/bazelisk/v1.7.2/LICENSE
-	source = bazelisk-linux-amd64-1.7.2::https://github.com/bazelbuild/bazelisk/releases/download/v1.7.2/bazelisk-linux-amd64
+	source = https://raw.githubusercontent.com/bazelbuild/bazelisk/v1.7.3/LICENSE
+	source = bazelisk-linux-amd64-1.7.3::https://github.com/bazelbuild/bazelisk/releases/download/v1.7.3/bazelisk-linux-amd64
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	sha256sums = 9601e4dd4cef7a2423c072272580f53d26b528f89b1bda5e51843a1db42fc3fc
+	sha256sums = f09ac7a8effb8673f0674c738f426736b846fc7d2b686190a0624190ce2cfb99
 
 pkgname = bazelisk-bin
 
