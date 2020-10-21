@@ -1,0 +1,3 @@
+d /var/lib/shiny-server 755 shiny shiny
+d /var/log/shiny-server 755 shiny shiny
+d /srv/shiny-server 755 - -

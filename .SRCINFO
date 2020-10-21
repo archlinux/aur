@@ -1,0 +1,26 @@
+pkgbase = shiny-server
+	pkgdesc = Host Shiny applications over the web
+	pkgver = 1.5.14.948
+	pkgrel = 1
+	url = https://rstudio.com/shiny/server
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = wget
+	depends = python
+	depends = r
+	optdepends = r-shiny: build interactive web apps with R
+	optdepends = r-rmarkdown: convert R markdown docs to various formats
+	backup = etc/shiny-server/shiny-server.conf
+	source = git+https://github.com/rstudio/shiny-server#tag=v1.5.14.948
+	source = shiny-server.service
+	source = shiny-server.sysusers
+	source = shiny-server.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 1dc3401a3d87ef27ae026dc45bc374c2763b2819384ef8f326b4b7a12201ef42
+	sha256sums = e56bfe2b7bf85fdc72d1080ab2d08a54c52928a0dc25cdbeff1302981aa18e30
+	sha256sums = 27538c6961fdb70f168be6d7c5754c474dd221dff0dcf639181d5803d6646a54
+
+pkgname = shiny-server
+

@@ -1,0 +1,11 @@
+[Unit]
+Description=Shiny Server
+After=network.target
+
+[Service]
+Type=simple
+User=shiny
+ExecStart=/usr/bin/shiny-server
+
+[Install]
+WantedBy=multi-user.target
