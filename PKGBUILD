@@ -1,7 +1,7 @@
 # Maintainer: amesgen <amesgen AT amesgen DOT de>
 
 pkgname=coursier-native
-_pkgver=2.0.2
+_pkgver=2.0.4
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc="Pure Scala Artifact Fetching (native-image edition)"
@@ -9,11 +9,10 @@ arch=("x86_64")
 url="http://get-coursier.io"
 license=("Apache")
 depends=("gcc-libs" "zlib")
-provides=("coursier")
-conflicts=("coursier")
 source=("coursier-$pkgver::https://github.com/coursier/coursier/releases/download/v$_pkgver/cs-x86_64-pc-linux")
-sha256sums=('bae38fa9f617ae067d24c8bd9935bb317d8b61ff7d2f29e7effb35b6b5b0a178')
+sha256sums=('f5e560555e6df8c8f554ebb958e3b26a26c6f117802c79ccce81e3ec17f43124')
 
 package() {
-  install -Dm755 "coursier-$pkgver" "$pkgdir/usr/bin/coursier"
+  install -Dm755 "coursier-$pkgver" "$pkgdir/usr/bin/cs"
+  install -Dm644 <("$pkgdir/usr/bin/cs" --completions zsh) "$pkgdir/usr/share/zsh/site-functions/_cs"
 }
