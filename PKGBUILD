@@ -29,5 +29,5 @@ build() {
 
 package() {
   cd "$srcdir/$caps_pkgname"
-  install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  make DESTDIR="$pkgdir/" install
 }
