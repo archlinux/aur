@@ -1,12 +1,13 @@
 pkgname=hisat2
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='A fast and sensitive alignment program for mapping next-generation sequencing reads against genomes'
 url="https://ccb.jhu.edu/software/$pkgname"
-license=(GPLv3)
+license=(GPL3)
 arch=(x86_64)
-source=("$pkgname-$pkgver-source.zip::https://cloud.biohpc.swmed.edu/index.php/s/$pkgname-${pkgver//./}-source/download")
-sha256sums=('0dd55168853b82c1b085f79ed793dd029db163773f52272d7eb51b3b5e4a4cdd')
+optdepends=('python: To use the wrapper scripts instead of -l and -s variants')
+source=("$pkgname-$pkgver-source.zip::https://cloud.biohpc.swmed.edu/index.php/s/fE9QCsX3NH4QwBi/download")
+sha256sums=('48e933330d4d8470d2b3dfe7ec3918f2e98a75f7381891e23b7df1fb4f135eb1')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
