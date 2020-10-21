@@ -1,13 +1,14 @@
 pkgbase = cling
 	pkgdesc = Interactive C++ interpreter, built on the top of LLVM and Clang libraries
 	pkgver = 0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://root.cern.ch/cling
 	arch = i686
 	arch = x86_64
 	license = custom:Cling Release License
 	makedepends = git
 	makedepends = cmake
+	makedepends = python2
 	depends = libxml2
 	optdepends = python2: support for scan-view and Jupyter
 	optdepends = perl: support for scan-build, ccc-analyzer and c++-analyzer
