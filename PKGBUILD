@@ -1,5 +1,5 @@
 pkgname='hastebin'
-release='1.2'
+release='1.3'
 pkgver="${release}.0"
 pkgrel=1
 pkgdesc='Upload data to hastebin.com via stdin'
@@ -12,7 +12,7 @@ conflicts=("${pkgname}-git")
 optdepends=('xclip: default --clip-command')
 source=("${url}/archive/${release}.tar.gz")
 sha256sums=(
-    'b02f7f2178dad239233045932752d198c55f30a9dc10dd9f0edc9f2b9a0932e3'
+    '77823bb8624e20490148c2c39817c6544645d4fb8e6f00526180f0fcec829739'
 )
 
 package()
