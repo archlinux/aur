@@ -59,7 +59,7 @@ _lqxpatchrel=15
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=5.8.16.lqx1
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
@@ -156,6 +156,7 @@ prepare() {
             scripts/config --disable CONFIG_RQ_MC_LLC
             scripts/config --disable CONFIG_RQ_SMP
             scripts/config --disable CONFIG_RQ_ALL
+            scripts/config --undefine CONFIG_SHARERQ
         fi
 
     ### Optionally disable NUMA for 64-bit kernels only
