@@ -1,14 +1,15 @@
 pkgbase = nginxbeautifier
-	pkgdesc = Nginx config formatter and beautifier.
-	pkgver = 1.0.18
+	pkgdesc = nginx config file formatter and beautifier
+	pkgver = 1.0.19
 	pkgrel = 1
-	url = https://nginxbeautifier.com
+	url = https://github.com/vasilevich/nginxbeautifier
 	arch = any
-	license = Apache-2.0
+	license = Apache
+	makedepends = git
+	makedepends = npm
 	depends = nodejs
-	provides = nginxbeautifier
-	source = nginxbeautifier::git://github.com/vasilevich/nginxbeautifier.git
-	md5sums = SKIP
+	source = nginxbeautifier::git+https://github.com/vasilevich/nginxbeautifier.git#commit=734ff631f254d8f17661d81e43927ba68e69f545
+	sha512sums = SKIP
 
 pkgname = nginxbeautifier
 
