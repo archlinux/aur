@@ -1,0 +1,78 @@
+#!/usr/bin/bash
+CERTS=/etc/secureboot
+DB_KEY="${CERTS}/local/db.key"
+DB_CERT="${CERTS}/local/db.crt"
+function sign(){ sbsign --key "${DB_KEY}" --cert "${DB_CERT}" --output "$2" "$1"; }
+if [ "$(whoami)" != "root" ]
+then	if [ -n "${DISPLAY}" ]
+	then exec pkexec "$0" "$@"
+	else exec sudo "$0" "$@"
+	fi
+	exit 1
+fi
+if ! [ -f "${DB_KEY}" ]
+then	echo "SecureBoot certificates not found,execute 'secureboot-keygen' first." >&2
+	exit 1
+fi
+case "${1}" in
+	'')
+		echo "Usage: $0 <source> <signed>" >&2
+		echo "       $0 --replace <file>" >&2
+		echo "       $0 --systemd-boot" >&2
+		exit 1
+	;;
+	--systemd-boot)
+		if [ -n "${2}" ]
+		then	echo "Too many arguments." >&2
+			exit 1
+		fi
+		EFI=/usr/lib/systemd/boot/efi/systemd-bootx64.efi
+		if ! [ -f "${EFI}" ]
+		then	echo "No systemd-boot found." >&2
+			exit 1
+		fi
+		echo "Resign systemd-boot bootloader SecureBoot support."
+		cp "${EFI}"{,.bak} ||exit 1
+		echo "Signing systemd-boot file..."
+		sign "${EFI}"{.bak,} ||exit 1
+		echo "Generate checksum..."
+		md5sum "${EFI}" > "${EFI}.md5"
+	;;
+	--replace)
+		if [ -z "$2" ]
+		then	echo "Usage: $0 --replace <file>" >&2
+			exit 1
+		fi
+		if [ -n "${3}" ]
+		then	echo "Too many arguments." >&2
+			exit 1
+		fi
+		if ! [ -f "$2" ]
+		then	echo "File $2 not found." >&2
+			exit 1
+		fi
+		mv "${2}"{,.bak}
+		echo "Signing custom file..."
+		if ! sign "${2}"{.bak,} || ! [ -f "${2}" ]
+		then	echo "Sign ${2} failed." >&2
+			mv "${2}"{.bak,}
+		fi
+	;;
+	*)
+		if [ -z "$2" ]
+		then	echo "Usage: $0 <source> <signed>" >&2
+			exit 1
+		fi
+		if [ -n "${3}" ]
+		then	echo "Too many arguments." >&2
+			exit 1
+		fi
+		if ! [ -f "${1}" ]
+		then	echo "File $1 not found." >&2
+			exit 1
+		fi
+		rm -f "${2}"
+		echo "Signing custom file..."
+		sign "${1}" "${2}"
+	;;
+esac

@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = linux-lts
+[Action]
+Description = Updating Linux LTS SecureBoot kernel...
+When = PostTransaction
+Exec = /usr/bin/secureboot-sign --replace /boot/vmlinuz-linux-lts

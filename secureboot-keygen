@@ -1,0 +1,31 @@
+#!/usr/bin/bash
+set -e
+if [ "$(whoami)" != "root" ]
+then	if [ -n "${DISPLAY}" ]
+	then exec pkexec "$0" "$@"
+	else exec sudo "$0" "$@"
+	fi
+	exit 1
+fi
+cd /etc/secureboot
+[ -f "uuid.txt" ]&&UUID="$(<uuid.txt)"
+[ "${#UUID}" != 36 ]&&UUID="$(findmnt -no UUID / 2>/dev/null)"
+[ "${#UUID}" != 36 ]&&UUID="$(uuidgen)"
+if [ "${#UUID}" != 36 ]
+then echo "Cannot generate uuid." >&2;exit
+else echo "${UUID}" >uuid.txt
+fi
+set -e
+echo "Generate local certificates..."
+openssl req -new -x509 -newkey rsa:2048 -subj "/CN=Platform Key/"     -keyout local/pk.key  -out local/pk.crt  -days 36525 -nodes -sha256
+openssl req -new -x509 -newkey rsa:2048 -subj "/CN=Key Exchange Key/" -keyout local/kek.key -out local/kek.crt -days 36525 -nodes -sha256
+openssl req -new -x509 -newkey rsa:2048 -subj "/CN=Database/"         -keyout local/db.key  -out local/db.crt  -days 36525 -nodes -sha256
+echo "Generate EFI sig list..."
+cert-to-efi-sig-list -g "${UUID}" local/pk.crt local/pk.esl
+cert-to-efi-sig-list -g "${UUID}" local/kek.crt local/kek.esl
+cert-to-efi-sig-list -g "${UUID}" local/db.crt local/db.esl
+echo "Sign EFI list..."
+sign-efi-sig-list -k local/pk.key  -c local/pk.crt  PK  local/pk.esl  pk.auth
+sign-efi-sig-list -k local/pk.key  -c local/pk.crt  KEK local/kek.esl kek.auth
+sign-efi-sig-list -k local/kek.key -c local/kek.crt db  local/db.esl  db.auth
+secureboot-write

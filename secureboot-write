@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+set -e
+if [ "$(whoami)" != "root" ]
+then	if [ -n "${DISPLAY}" ]
+	then exec pkexec "$0" "$@"
+	else exec sudo "$0" "$@"
+	fi
+	exit 1
+fi
+cd /etc/secureboot
+efi-updatevar -f db.auth db
+efi-updatevar -f kek.auth KEK
+efi-updatevar -f pk.auth PK

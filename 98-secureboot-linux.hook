@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = linux
+[Action]
+Description = Updating Linux SecureBoot kernel...
+When = PostTransaction
+Exec = /usr/bin/secureboot-sign --replace /boot/vmlinuz-linux
