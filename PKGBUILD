@@ -1,4 +1,5 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: David Wu <xdavidwuph@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Ben Reedy <thebenj88@gmail.com>
 # Contributor: Clement Guerin <geecko.dev@free.fr>
@@ -29,7 +30,6 @@ depends=(
 makedepends=(
   cmake
   git
-  glu
   libglvnd
   libzip
   python
@@ -47,9 +47,6 @@ source=(
   git+https://github.com/KhronosGroup/SPIRV-Cross.git
   armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git
   git+https://github.com/hrydgard/miniupnp.git
-  ppsspp.sh
-  ppsspp-headless.sh
-  ppsspp-qt.sh
   ppsspp.desktop
   ppsspp-qt.desktop
   ppsspp-flags.patch
@@ -64,11 +61,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '2c2d1ee6d1ce5c2acec372d58b8079885f6d5d674633cfea489cd550252a5426'
-            '1236ce000bb670ee2c0e0645c3d55f4d8c8e74dbc35a1af0962a3bdd7608f1c5'
-            '828b06aacc56672a4d953d77342717c5be414a68261025f74e466abd084b8e6b'
-            '1c332702d0aeced07df7e12ba8530bc3f19a52bc76c355f6c84c141becfd46d8'
-            'b3b1fb9e0ecd3c4472b51f27d028a69514b1a3823c26e33da6ffaebfb1522b7f'
+            '77a88e75f3c090856442b11c8d3f24ed95cc9ca0da1e3f22a40b700b30a3a7b7'
+            '7456207ba3759ee93709e25b7bfce5b560a8cb432e2d578ef0f98cb6da6c4d15'
             '6694643d96dae673f01555637139468eb277f3379afbcceccad3f7e0ae670278')
 
 pkgver() {
@@ -146,9 +140,8 @@ package_ppsspp-git() {
 
   cd ppsspp/build-sdl
 
-  install -dm 755 "${pkgdir}"/{opt/ppsspp,usr/{bin,share/{applications,icons,pixmaps}}}
-  install -m 755 PPSSPPSDL "${pkgdir}"/opt/ppsspp/
-  install -m 755 ../../ppsspp.sh "${pkgdir}"/usr/bin/ppsspp
+  install -dm 755 "${pkgdir}"/usr/{bin,share/applications}
+  install -m 755 PPSSPPSDL "${pkgdir}"/usr/bin/
   install -m 644 ../../ppsspp.desktop "${pkgdir}"/usr/share/applications/
 }
 
@@ -162,9 +155,8 @@ package_ppsspp-headless-git() {
 
   cd ppsspp/build-sdl
 
-  install -dm 755 "${pkgdir}"/{opt/ppsspp,usr/bin}
-  install -m 755 PPSSPPHeadless "${pkgdir}"/opt/ppsspp/
-  install -m 755 ../../ppsspp-headless.sh "${pkgdir}"/usr/bin/ppsspp-headless
+  install -dm 755 "${pkgdir}"/usr/bin
+  install -m 755 PPSSPPHeadless "${pkgdir}"/usr/bin/
 }
 
 package_ppsspp-qt-git() {
@@ -181,9 +173,8 @@ package_ppsspp-qt-git() {
 
   cd ppsspp/build-qt
 
-  install -dm 755 "${pkgdir}"/{opt/ppsspp,usr/{bin,share/applications}}
-  install -m 755 PPSSPPQt "${pkgdir}"/opt/ppsspp/
-  install -m 755 ../../ppsspp-qt.sh "${pkgdir}"/usr/bin/ppsspp-qt
+  install -dm 755 "${pkgdir}"/usr/{bin,share/applications}
+  install -m 755 PPSSPPQt "${pkgdir}"/usr/bin/
   install -m 644 ../../ppsspp-qt.desktop "${pkgdir}"/usr/share/applications/
 }
 
@@ -193,8 +184,8 @@ package_ppsspp-common-git() {
 
   cd ppsspp/build-qt
 
-  install -dm 755 "${pkgdir}"/{opt/ppsspp,usr/share/{applications,icons,pixmaps}}
-  cp -dr --no-preserve=ownership assets "${pkgdir}"/opt/ppsspp/
+  install -dm 755 "${pkgdir}"/usr/share/{applications,icons,pixmaps,ppsspp}
+  cp -dr --no-preserve=ownership assets "${pkgdir}"/usr/share/ppsspp/
   cp -dr --no-preserve=ownership ../icons/hicolor "${pkgdir}"/usr/share/icons/
   install -m 644 ../icons/icon-512.svg "${pkgdir}"/usr/share/pixmaps/ppsspp.svg
 }
