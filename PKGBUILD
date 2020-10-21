@@ -65,7 +65,7 @@ build() {
   echo "Free Mem: $MEM M, using $J threads for build"
 
   rm -rf build
-  meson --prefix=/usr 
+  meson --prefix=/usr \
     -Dfb=true \
     -Ddrm=true \
     -Davahi=true \
