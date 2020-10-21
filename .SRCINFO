@@ -1,17 +1,16 @@
 pkgbase = amgx
 	pkgdesc = Distributed multigrid linear solver library on GPU
-	pkgver = 2.1.0
-	pkgrel = 1
+	pkgver = 2.1
+	pkgrel = 2
 	url = https://github.com/NVIDIA/AMGX
 	arch = x86_64
 	license = custom
 	makedepends = cmake
 	depends = cuda>=10.2
-	depends = cuda<10.3
 	depends = openmpi
 	provides = amgx
 	conflicts = amgx-git
-	source = amgx-2.1.0.tar.gz::https://github.com/NVIDIA/AMGX/tarball/f2ceca6
+	source = amgx-2.1.tar.gz::https://github.com/NVIDIA/AMGX/tarball/be168bf
 	source = amgx.sh
 	source = amgx.conf
 	sha256sums = SKIP
@@ -19,3 +18,4 @@ pkgbase = amgx
 	sha256sums = 7a1ee0bf5d5610a8e643720e579d8659e362a77ac763a7570ee22a2e56c05cbd
 
 pkgname = amgx
+
