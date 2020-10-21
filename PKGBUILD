@@ -24,8 +24,10 @@ optdepends=('libpipewire02: WebRTC desktop sharing under Wayland'
 options=(!strip !zipman)
 _channel=dev
 source=("https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/${_pkgname}_${pkgver}-1_amd64.deb"
+        "microsoft-edge-dev.sh"
         "Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf")
 sha256sums=('ffd002c232bfb54f23648bd56e4bec60c74eae35c19f1e45c15e84a2a114d3e1'
+            'fc4bc832130d4408ba8e9c75f207f56468c563c2b651c01a06398e824b8eac7b'
             'edf2ed596eb068f168287fc76aa713ad5e0afb59f0a0a47a4f29c0c124ade15e')
 
 package() {
@@ -51,6 +53,9 @@ package() {
 		install -Dm644 "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}_dev.png" \
 			"${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_pkgname}.png"
 	done
+
+	# User flag aware launcher
+	install -m755 microsoft-edge-dev.sh "${pkgdir}/usr/bin/microsoft-edge-dev"
 
 	# License
 	install -Dm644 'Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf' "${pkgdir}/usr/share/licenses/${_pkgname}/Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf"

@@ -25,8 +25,10 @@ pkgbase = microsoft-edge-dev-bin
 	options = !strip
 	options = !zipman
 	source = https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_88.0.673.0-1_amd64.deb
+	source = microsoft-edge-dev.sh
 	source = Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf
 	sha256sums = ffd002c232bfb54f23648bd56e4bec60c74eae35c19f1e45c15e84a2a114d3e1
+	sha256sums = fc4bc832130d4408ba8e9c75f207f56468c563c2b651c01a06398e824b8eac7b
 	sha256sums = edf2ed596eb068f168287fc76aa713ad5e0afb59f0a0a47a4f29c0c124ade15e
 
 pkgname = microsoft-edge-dev-bin
