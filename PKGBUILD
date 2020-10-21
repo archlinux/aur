@@ -2,7 +2,7 @@
 # Contributor: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 _pyname=oletools
 pkgname=python-oletools
-pkgver=0.55
+pkgver=0.56
 pkgrel=1
 pkgdesc="Python tools to analyze security characteristics of MS Office and OLE files"
 depends=('python'
@@ -14,7 +14,7 @@ arch=('any')
 url="https://github.com/decalage2/oletools"
 license=('BSD')
 source=("https://github.com/decalage2/oletools/releases/download/v${pkgver}/${_pyname}-${pkgver}.tar.gz")
-sha512sums=('7c3a62f21e8cb56816f03479ca97e9e03011513b661a9b6b4d913dac000b4065e9e60d429e6731601040f09dae9494ddb9ac76c11fc0baeab086b755a565f058')
+sha512sums=('dc6dd56f39dd07c7672f6df9372a9114935db1a0d4c080eeacf9e94058548dee03fd55b6aa0ac892264c75e4b0893e804f2b6b8e8ded8d18b18ad6671b6d5c10')
 
 # Some checks failing; will investigate. -BA 20190616
 # check() {
