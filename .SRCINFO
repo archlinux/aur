@@ -1,6 +1,6 @@
 pkgbase = giara
 	pkgdesc = Reddit gtk client
-	pkgver = 0.1.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GabMus/giara
 	arch = any
@@ -11,7 +11,6 @@ pkgbase = giara
 	depends = libhandy>=1
 	depends = python-beautifulsoup4
 	depends = python-dateutil
-	depends = python-flask
 	depends = python-gobject
 	depends = python-mistune
 	depends = python-pillow
@@ -21,8 +20,8 @@ pkgbase = giara
 	provides = redditgtk
 	conflicts = redditgtk
 	replaces = redditgtk
-	source = https://gitlab.gnome.org/GabMus/giara/-/archive/0.1.1/giara-0.1.1.tar.gz
-	sha256sums = d017402bf2f4c71aa1d7d00c74f08738fff91cc522b90531909557d272bfe2d9
+	source = https://gitlab.gnome.org/GabMus/giara/-/archive/0.2/giara-0.2.tar.gz
+	sha256sums = b67934de3c71a26cecaab9511bd35e7ffdad8d6c0eaf9594078e15682a3c6ad4
 
 pkgname = giara
 
