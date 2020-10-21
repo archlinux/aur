@@ -1,9 +1,10 @@
-# Maintainer: Oscar Morante <spacepluk@gmail.com>
+# Maintainer: Valentijn "noirscape" V. <neko at catgirlsin dot space>
+# Contributor: Oscar Morante <spacepluk at gmail dot com>
 
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts-android
-pkgver=2018.4.15f1
+pkgver=2019.4.9f1
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the Android platform"
 arch=('x86_64')
@@ -15,8 +16,8 @@ depends=('unity-editor-lts'
          'android-udev')
 makedepends=('cpio')
 optdepends=('android-ndk-13b: needed for IL2CPP builds')
-source=("2018.4.15f1.4.15f1.pkg::https://download.unity3d.com/download_unity/13f5a1bf9ca1/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2018.4.15f1.pkg")
-md5sums=("7fe080d950694ca53e43314536a56d3f")
+source=("2019.4.9f1.pkg::https://download.unity3d.com/download_unity/50fe8a171dd9/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2019.4.9f1.pkg")
+md5sums=('586760082e04d3c15456565005e03455')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
