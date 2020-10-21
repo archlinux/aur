@@ -1,0 +1,18 @@
+pkgbase = deepin-draw-git
+	pkgdesc = Draw is a lightweight drawing tool for users to freely draw and simply edit images developed by Deepin Technology.
+	pkgver = 5.8.0.73
+	pkgrel = 1
+	url = https://github.com/univrsal/spectralizer
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = deepin-notifications
+	provides = deepin-draw-git=5.8.0.73
+	conflicts = deepin-draw
+	source = deepin-draw-git::git+https://github.com/linuxdeepin/deepin-draw.git
+	md5sums = SKIP
+
+pkgname = deepin-draw-git
+
