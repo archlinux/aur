@@ -9,6 +9,7 @@ pkgbase = it87-frankcrawford-dkms-git
 	makedepends = git
 	depends = dkms
 	provides = it87
+	conflicts = it87-dkms-git
 	source = it87::git+https://github.com/frankcrawford/it87.git
 	source = dkms.conf
 	source = it87.conf

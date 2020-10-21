@@ -11,6 +11,7 @@ license=('GPL')
 depends=('dkms')
 makedepends=('git')
 provides=('it87')
+conflicts=('it87-dkms-git')
 
 source=("$_pkgbase::git+https://github.com/frankcrawford/it87.git"
         "dkms.conf"
