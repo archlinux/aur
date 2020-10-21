@@ -1,12 +1,13 @@
-# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Maintainer: Antoine Viallon <antoine@lesviallon.fr>
+# Contributor : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Kamran Mackey <kamranm1200@gmail.com>
 # Contributor: richteer <richteer at lastprime.net>
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
-pkgname=ffmpeg-git
-pkgver=4.4.r99044.gd1f3d721df
+pkgname=ffmpeg-nox-git
+pkgver=4.4.r99691.g1bf86ee907
 pkgrel=1
-pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
+pkgdesc='Complete solution to record, convert and stream audio and video (git version, without X dependencies, for headless systems)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
 license=('GPL3')
@@ -37,16 +38,13 @@ depends=(
     'libsoxr'
     'libssh'
     'libtheora'
-    'libva.so'
-    'libva-drm.so'
-    'libva-x11.so'
+    'libva'
     'libvdpau'
     'libvidstab.so'
     'libvorbisenc.so'
     'libvorbis.so'
     'libvpx.so'
     'libwebp'
-    'libx11'
     'libx264.so'
     'libx265.so'
     'libxcb'
@@ -95,9 +93,9 @@ pkgver() {
 
 build() {
     cd ffmpeg
-    
+
     printf '%s\n' '  -> Running ffmpeg configure script...'
-    
+ 
     ./configure \
         --prefix='/usr' \
         --disable-debug \
