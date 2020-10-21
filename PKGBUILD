@@ -7,8 +7,7 @@
 # Download website:
 # https://developer.nvidia.com/tensorrt/
 
-_tensorrt_tag=20.09
-_cudaver=11.0
+_cudaver=11.1
 _cudnnver=8.0
 _graphsurgeonver=0.4.5
 _uffver=0.6.9
@@ -16,14 +15,14 @@ _ubuntuver=18.04
 _protobuf_branch=3.8.x
 _protobuf_ver=3.12.4
 _cub_tag=1.8.0
-_onnx_tensorrt_branch=7.1
+_onnx_tensorrt_branch=7.2.1
 _onnx_branch=rel-1.6.0
 _onnx_ver=1.7.0
 
 pkgbase=tensorrt
 pkgname=('tensorrt' 'tensorrt-doc')
-pkgver=7.2.0.14
-pkgrel=2
+pkgver=7.2.1.6
+pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference using NVIDIA hardware'
 arch=('x86_64')
 url='https://github.com/NVIDIA/TensorRT/'
@@ -31,7 +30,7 @@ license=('custom' 'Apache')
 makedepends=('git' 'cmake' 'poppler' 'pybind11' 'python' 'python-pip' 'zlib'
              'cuda' 'cudnn')
 source=("local://TensorRT-${pkgver}.Ubuntu-${_ubuntuver}.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_cudnnver}.tar.gz"
-        "git+https://github.com/NVIDIA/TensorRT.git#tag=${_tensorrt_tag}"
+        "git+https://github.com/NVIDIA/TensorRT.git#tag=${pkgver%.*}"
         'protobuf-protocolbuffers'::"git+https://github.com/protocolbuffers/protobuf.git#branch=${_protobuf_branch}"
         "git+https://github.com/NVIDIA/cub.git#tag=${_cub_tag}"
         "git+https://github.com/onnx/onnx-tensorrt.git#branch=${_onnx_tensorrt_branch}"
@@ -42,7 +41,7 @@ source=("local://TensorRT-${pkgver}.Ubuntu-${_ubuntuver}.${CARCH}-gnu.cuda-${_cu
         '010-tensorrt-use-local-protobuf-sources.patch'
         '020-tensorrt-fix-cub-deprecation-huge-warnings.patch')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('5681d6f7d4a6d6b9ef7239caa5a0508748e6f6cade77cb4d48f89e133295ab60'
+sha256sums=('eef37d387b74f452c86d1ffe58bc57d0514409591e1ac2ae9d11b3167d8d5e6b'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -52,7 +51,7 @@ sha256sums=('5681d6f7d4a6d6b9ef7239caa5a0508748e6f6cade77cb4d48f89e133295ab60'
             'SKIP'
             'ccfbaaba52f67e0e6536a05f3df3f6618620d255513cfca3a07f5935b624e26b'
             'ea25bb1b188d53cbfbec35d242ab2a2fa8d6009c547c9f5f67bc2f1ad127ceac'
-            '6a12e65113b6c1814a73be85b96b4be365850dcdf772f9a3c66476f8647b5ba1')
+            'e6153bf43c248fb3ed843e41f6b722ff8c3507ad48fe105bfa129b8641741ecf')
 
 prepare() {
     # tensorrt git submodules
@@ -98,7 +97,7 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DTRT_LIB_DIR="${srcdir}/TensorRT-${pkgver}/lib" \
-        -DGPU_ARCHS='52 53 60 61 62 70 72 75 80' \
+        -DGPU_ARCHS='52 53 60 61 62 70 72 75 80 86' \
         -DPROTOBUF_VERSION="${_protobuf_ver}" \
         -DCUDA_VERSION="$_cudaver" \
         -DCUDNN_VERSION="$_cudnnver" \
