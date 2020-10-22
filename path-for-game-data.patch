@@ -22,7 +22,7 @@ Index: simmain.cc
 -		*(strrchr( env_t::data_dir, PATH_SEPARATOR[0] )+1) = 0;
 +        static char buffer[100];
 +        sprintf(buffer, "%s/.local/share/simutrans/", getenv("HOME"));
-+        strcpy(env_t::program_dir, buffer);
++        strcpy(env_t::data_dir, buffer);
  
  #ifdef __APPLE__
  		// change working directory from binary dir to bundle dir
