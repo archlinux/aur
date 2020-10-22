@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=qt6-tools
-_qtver=6.0.0-alpha
+_qtver=6.0.0-beta1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -13,11 +13,11 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A cross-platform application and UI framework (Development Tools, QtHelp)'
 depends=(qt6-base hicolor-icon-theme)
 makedepends=(cmake qt6-declarative vulkan-headers llvm clang ninja)
-optdepends=('clang: for qdoc')
+optdepends=('clang: for qdoc and lupdate')
 groups=(qt6)
 _pkgfqn="${pkgname/6-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('69f242ecca020b78643d2d7aaae9e2c1713b6aa7b9b915b16cc9265bf5dfd212')
+sha256sums=('4f6f408dcf13d3a87d6b6725142fee6cfd38d16e2de945e374fa9e1f5605a8d0')
 
 build() {
   cmake -G Ninja -B build -S $_pkgfqn
@@ -26,6 +26,11 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+
+  mkdir "$pkgdir"/usr/bin
+  for b in "${pkgdir}"/usr/lib/qt6/bin/*; do
+    ln -rs "$pkgdir"/usr/lib/qt6/bin/$(basename $b) "$pkgdir"/usr/bin/$(basename $b)-qt6
+  done
 
   # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
   find "$pkgdir/usr/lib" -type f -name '*.prl' \

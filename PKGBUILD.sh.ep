@@ -1,6 +1,6 @@
-% layout 'qt6-module';
+% layout 'qt6-module', has_binaries => 1;
 \
-_qtver=6.0.0-alpha
+_qtver=6.0.0-beta1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -9,4 +9,4 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A cross-platform application and UI framework (Development Tools, QtHelp)'
 depends=(qt6-base hicolor-icon-theme)
 makedepends=(cmake qt6-declarative vulkan-headers llvm clang ninja)
-optdepends=('clang: for qdoc')
+optdepends=('clang: for qdoc and lupdate')
