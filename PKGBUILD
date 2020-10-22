@@ -13,20 +13,20 @@ options=(!emptydirs)
 source=(
     git+https://github.com/RPCS3/rpcs3.git#tag=v${pkgver}
     rpcs3-cereal::git+https://github.com/RPCS3/cereal.git
-    rpcs3-hidapi::git+https://github.com/RPCS3/hidapi
-    rpcs3-llvm::git+https://github.com/RPCS3/llvm-mirror
+    rpcs3-hidapi::git+https://github.com/RPCS3/hidapi.git
+    rpcs3-llvm::git+https://github.com/RPCS3/llvm-mirror.git
     rpcs3-yaml-cpp::git+https://github.com/RPCS3/yaml-cpp.git
-    git+https://github.com/Cyan4973/xxHash
+    git+https://github.com/Cyan4973/xxHash.git
     git+https://github.com/FNA-XNA/FAudio.git
     git+https://github.com/google/flatbuffers.git
     git+https://github.com/KhronosGroup/glslang.git
     git+https://github.com/KhronosGroup/SPIRV-Headers.git
     git+https://github.com/KhronosGroup/SPIRV-Tools.git
-    git+https://github.com/kobalicek/asmjit
+    git+https://github.com/kobalicek/asmjit.git
     git+https://github.com/libusb/libusb.git
     git+https://github.com/RipleyTom/wolfssl.git
-    git+https://github.com/tcbrindle/span
-    git+https://github.com/zeux/pugixml
+    git+https://github.com/tcbrindle/span.git
+    git+https://github.com/zeux/pugixml.git
 )
 
 md5sums=('SKIP'
