@@ -1,14 +1,13 @@
 # Maintainer: BigfootACA <bigfoot@classfun.cn>
 pkgname=secureboot-utils
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="UEFI SecureBoot Utils (Generate, Write, Sign)"
 arch=(any)
 url="https://github.com/BigfootACA/secureboot-utils"
 license=('LGPL2.1')
 options=(emptydirs)
-depends=(openssl efitools sbsigntools bash util-linux coreutils pacman)
-makedepends=(coreutils pacman bash)
+depends=(openssl efitools sbsigntools)
 optdepends=(
 	'linux: sign kernel image for UEFI stub boot.'
 	'linux-lts: sign kernel image for UEFI stub boot.'
