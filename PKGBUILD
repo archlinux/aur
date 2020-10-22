@@ -2,7 +2,7 @@
 
 pkgname='denise-git'
 _pkgname='denise'
-pkgdesc='Highly accurate C64/Amiga emulator.'
+pkgdesc='Highly accurate C64/Amiga emulator - Git version'
 url='https://sourceforge.net/projects/deniseemu/'
 license=('GPL')
 pkgver=v1.0.8.r87.ge762b97
