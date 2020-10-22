@@ -1,0 +1,5 @@
+*
+!.gitignore
+!.pre-commit-config.yaml
+!.SRCINFO
+!PKGBUILD

@@ -1,0 +1,19 @@
+pkgbase = code-minimap-git
+	pkgdesc = A high performance code minimap render
+	pkgver = 0.4.3.48.g7099262
+	pkgrel = 1
+	url = https://github.com/wfxr/code-minimap
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = APACHE
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	conflicts = code-minimap
+	conflicts = code-minimap-bin
+	source = code-minimap::git+https://github.com/wfxr/code-minimap.git
+	sha256sums = SKIP
+
+pkgname = code-minimap-git
+
