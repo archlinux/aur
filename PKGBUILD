@@ -1,7 +1,7 @@
 # Maintainer: Alex J. Malozemoff <amaloz@galois.com>
 pkgname=matterhorn-git
 _pkgname=matterhorn
-pkgver=50200.1.0
+pkgver=50200.11.0
 pkgver() {
   cd ${_pkgname}
   git describe --long --tags | cut -d- -f1
@@ -12,17 +12,17 @@ arch=('x86_64')
 url="https://github.com/matterhorn-chat/matterhorn"
 license=('BSD')
 depends=('gmp' 'zlib')
-makedepends=('git' 'cabal-install' 'ghc8.2')
+makedepends=('git' 'cabal-install' 'ghc')
 source=("git+https://github.com/matterhorn-chat/matterhorn.git")
 sha1sums=('SKIP')
-provides=('matterhorn-git')
-conflicts=('matterhorn' 'matterhorn-bin')
+provides=('matterhorn')
+conflicts=('matterhorn')
 
 build() {
   cd ${srcdir}/${_pkgname}
   git submodule update --init
   cabal new-update
-  cabal new-build -w /usr/bin/ghc-8.2
+  cabal new-build
 }
 
 package() {
