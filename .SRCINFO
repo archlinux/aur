@@ -1,6 +1,6 @@
 pkgbase = electron-cash-git
 	pkgdesc = Lightweight Bitcoin Cash wallet
-	pkgver = 4.1.1.r1.ga228bbc0e
+	pkgver = 4.2.0.r1.gd26f86768
 	pkgrel = 1
 	url = http://www.electroncash.org/
 	arch = any
