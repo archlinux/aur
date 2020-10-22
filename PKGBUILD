@@ -1,11 +1,10 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
-# Contributor: masutu < masutu dot arch dot googlemail dot com >
+# Maintainer: Benoît Rouits <brouits at free dor fr>
 pkgname=qloud
 pkgver=1.3a
 _pkgver=1.3-alpha
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to measure a loudspeaker frequency response and distortions."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/molke-productions/qloud"
 license=('GPL')
 depends=('fftw' 'jack' 'qwt')
@@ -21,6 +20,8 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$_pkgver"
   install -Dm755 bin/qloud $pkgdir/usr/bin/qloud
+  install -Dm644 qloud.xpm $pkgdir/usr/share/pixmaps/qloud.xpm
+  install -Dm644 qloud.desktop $pkgdir/usr/share/applications/qloud.desktop
 }
 
 # vim:set ts=2 sw=2 et:
