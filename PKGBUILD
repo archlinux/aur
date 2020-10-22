@@ -2,7 +2,7 @@
 _name=umps
 _ver=3
 pkgname=$_name$_ver-git
-pkgver=3.0.3.r0.gfd6086e
+pkgver=3.0.4.r0.g1c55382
 pkgrel=1
 pkgdesc="Virtual machine simulator based around the MIPS R2/3000 microprocessor."
 arch=('x86_64')
