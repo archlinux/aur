@@ -11,7 +11,7 @@
 
 pkgname=chromium-vaapi
 pkgver=86.0.4240.111
-pkgrel=1
+pkgrel=2
 _launcher_ver=6
 _gcc_patchset=6
 pkgdesc="Chromium with VA-API support to enable hardware acceleration"
@@ -40,6 +40,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         only-fall-back-to-the-i965-driver-if-we-re-on-iHD.patch
         remove-dead-reloc-in-nonalloc-LD-flags.patch
         check-for-enable-accelerated-video-decode-on-Linux.patch
+        xproto-fix-underflow-in-Fp1616ToDouble.patch
         wayland-egl.patch
         chromium-skia-harmony.patch)
 sha256sums=('f27bdb02ebf3c48abe054c73f1ae57e22a22535ea34f5edf8693ab8432a7c717'
@@ -49,6 +50,7 @@ sha256sums=('f27bdb02ebf3c48abe054c73f1ae57e22a22535ea34f5edf8693ab8432a7c717'
             '7514c6c81a64a5457b66494a366fbb39005563eecc48d1a39033dd06aec4e300'
             '7cace84d7494190e7882d3e637820646ec8d64808f0a2128c515bd44991a3790'
             '03d03a39b2afa40083eb8ccb9616a51619f71da92348effc8ee289cbda10128b'
+            '1ec617b362bf97cce4254debd04d8396f17dec0ae1071b52ec8c1c3d86dbd322'
             'bf86923eaee5529ab9fb6148bd6c33a73c8746ab1b4ade0cd3b761109bc55826'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
@@ -103,6 +105,7 @@ prepare() {
   patch -Np1 -i ../only-fall-back-to-the-i965-driver-if-we-re-on-iHD.patch
   patch -Np1 -i ../remove-dead-reloc-in-nonalloc-LD-flags.patch
   patch -Np1 -i ../check-for-enable-accelerated-video-decode-on-Linux.patch
+  patch -Np1 -i ../xproto-fix-underflow-in-Fp1616ToDouble.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-86-nearby-include.patch
