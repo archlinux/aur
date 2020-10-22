@@ -1,0 +1,23 @@
+pkgbase = pomatez
+	pkgdesc = Stay Focused. Take a Break.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://roldanjr.github.io/pomatez/
+	arch = x86_64
+	license = MIT
+	makedepends = tar
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libappindicator-gtk3
+	depends = libsecret
+	source = https://github.com/roldanjr/pomatez/releases/download/v1.1.0/Pomatez-v1.1.0-linux.deb
+	sha512sums = 85dfcc952a061c2143ef550692513e3a45be82d09982d9bd0fdc7cccc4868343a3be2b93ed1fade9f121d68a14176493c50ab7d77ed8fb0607ce8c45e26b4e52
+
+pkgname = pomatez
+
