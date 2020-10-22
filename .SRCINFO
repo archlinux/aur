@@ -1,9 +1,11 @@
 pkgbase = open-stage-control
 	pkgdesc = A libre desktop OSC bi-directional control surface application
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://osc.ammd.net/
 	arch = x86_64
+	arch = i686
+	arch = armv7l
 	license = GPL3
 	makedepends = rsync
 	depends = npm
