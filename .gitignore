@@ -1,0 +1,7 @@
+# makepkg artifacts
+src/
+pkg/
+wait-urandom-init/
+
+# built packages
+wait-urandom-init-git*.pkg.*
