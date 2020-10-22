@@ -9,13 +9,14 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-readline
 pkgver=${_basever}.${_patchlevel}
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU readline library (mingw-w64)"
 arch=('any')
 url="https://tiswww.case.edu/php/chet/readline/rltop.html"
 license=('GPL')
 depends=('mingw-w64-crt'
-         'mingw-w64-pdcurses')
+         'mingw-w64-pdcurses'
+         'mingw-w64-termcap')
 makedepends=('mingw-w64-configure')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://ftp.gnu.org/gnu/readline/readline-${_basever}.tar.gz"{,.sig})
@@ -59,7 +60,7 @@ build() {
       --enable-multibyte \
       --without-purify \
       --with-curses
-    make SHLIB_LIBS="-lpdcurses"
+    make SHLIB_LIBS="-lpdcurses -ltermcap"
     popd
   done
 }
@@ -67,7 +68,7 @@ build() {
 package() {
   for _arch in ${_architectures} ; do
     cd "${srcdir}/readline-${_basever}/build-${_arch}"
-    make install DESTDIR="${pkgdir}" SHLIB_LIBS="-lpdcurses"
+    make install DESTDIR="${pkgdir}" SHLIB_LIBS="-lpdcurses -ltermcap"
     rm -r "${pkgdir}"/usr/${_arch}/share/
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
     ${_arch}-strip --strip-debug "${pkgdir}"/usr/${_arch}/lib/*.a
