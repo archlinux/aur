@@ -3,7 +3,7 @@
 arch=('i686' 'x86_64')
 depends=('icu')
 license=('LGPL3')
-makedepends=('gcc' 'meson')
+makedepends=('meson')
 md5sums=('aa773b3ead156cc8a1e0077f12b34c85')
 pkgdesc="C reference parsing library for eno notation"
 pkgname=libeno
