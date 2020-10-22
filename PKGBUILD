@@ -5,16 +5,16 @@
 # you also find the URL of a binary repository.
 
 pkgname=qt6-base
-_qtver=6.0.0-alpha
+_qtver=6.0.0-beta1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A cross-platform application and UI framework'
-depends=(libjpeg-turbo xcb-util-keysyms xcb-util-renderutil libgl fontconfig xdg-utils
-         shared-mime-info xcb-util-wm libxrender libxi sqlite xcb-util-image mesa
-         tslib libinput libxkbcommon-x11 libproxy libcups double-conversion md4c brotli)
+depends=(libjpeg-turbo xcb-util-keysyms xcb-util-cursor libgl fontconfig xdg-utils
+         shared-mime-info xcb-util-wm libxrender libxi sqlite mesa
+         tslib libinput libxkbcommon-x11 libproxy libcups double-conversion md4c brotli libb2)
 makedepends=(cmake libfbclient mariadb-libs unixodbc postgresql-libs alsa-lib gst-plugins-base-libs
              gtk3 libpulse cups freetds vulkan-headers ninja)
 optdepends=('postgresql-libs: PostgreSQL driver'
@@ -27,7 +27,7 @@ optdepends=('postgresql-libs: PostgreSQL driver'
 groups=(qt6)
 _pkgfqn="${pkgname/6-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('1816c4490d3f1f6c6ae3f57a3ec9dff4e8bcab2951786cb0f457847c7ab0e8fa')
+sha256sums=('d23210ba903be38aa43fe7887b8df62a1a310ea053712a30670cc479cf0219a0')
 
 build() {
   cmake -G Ninja -B build -S $_pkgfqn \
@@ -39,8 +39,8 @@ build() {
     -DINSTALL_INCLUDEDIR=include/qt6 \
     -DINSTALL_MKSPECSDIR=lib/qt6/mkspecs \
     -DINSTALL_EXAMPLESDIR=share/doc/qt6/examples \
-    -DQT_FEATURE_journald=ON
-#    -DQT_FEATURE_openssl_linked=ON
+    -DQT_FEATURE_journald=ON \
+    -DQT_FEATURE_openssl_linked=ON
   VERBOSE=1 cmake --build build
 }
 
