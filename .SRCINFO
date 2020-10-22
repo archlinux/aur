@@ -1,7 +1,7 @@
 pkgbase = code-minimap-git
 	pkgdesc = A high performance code minimap render
 	pkgver = 0.4.3.48.g7099262
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wfxr/code-minimap
 	arch = i686
 	arch = x86_64
