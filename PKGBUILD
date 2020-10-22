@@ -1,7 +1,7 @@
-# Maintainer: Mikael Blomstrand <mbloms ÅT kth DÖT se>
+# Maintainer: Mikael Blomstrand <gmail: kmbloms>
 
 pkgname=svgbob-git
-pkgver=0.4.1.r328.883aa12
+pkgver=0.5.0alpha.8.r389.503f303
 pkgrel=1
 pkgdesc='Convert your ascii diagram scribbles into happy little SVG'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/svgbob"
-    printf "%s.r%s.%s" "$(grep version svgbob_cli/Cargo.toml | sed -e "s/version = \"//" -e "s/\"//")"\
+    printf "%s.r%s.%s" "$(grep '^version = ' svgbob_cli/Cargo.toml | sed -e "s/version = \"//" -e "s/\"//" -e "s/-//")"\
                        "$(git rev-list --count HEAD)"\
                        "$(git rev-parse --short HEAD)"
 }
@@ -27,6 +27,6 @@ build() {
 }
 
 package() {
-  install -Dm755 "${srcdir}/svgbob/svgbob_cli/target/release/svgbob" "${pkgdir}/usr/bin/svgbob"
+  install -Dm755 "${srcdir}/svgbob/target/release/svgbob" "${pkgdir}/usr/bin/svgbob"
   install -Dm644 "${srcdir}/svgbob/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
