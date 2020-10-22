@@ -1,0 +1,22 @@
+pkgbase = filelight-git
+	pkgdesc = View disk usage information
+	pkgver = r915.7ec619e
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/applications/filelight
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	depends = kio
+	depends = hicolor-icon-theme
+	provides = filelight
+	conflicts = filelight
+	source = git+https://invent.kde.org/utilities/filelight.git
+	md5sums = SKIP
+
+pkgname = filelight-git
+
