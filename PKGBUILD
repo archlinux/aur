@@ -2,7 +2,7 @@
 # Maintaoner: Yamada Hayao <development@fascode.net>
 
 pkgname="cinnamenu"
-pkgver=20200801
+pkgver=20201022
 pkgrel=1
 pkgdesc="A flexible menu providing formatting options, web bookmarks, search provider support and fuzzy searching."
 arch=('any')
