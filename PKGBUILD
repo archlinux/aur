@@ -1,41 +1,43 @@
-# Maintainer: Sosthène Guédon <sosthene.gued@gmail.com>
-# contributor: Stefan Husmann <stefan-husmann@t-online.de>
-
+# Maintainer: Guillaume Dollé <dolle.guillaume@gmail.com>
+# Contributor: Sosthène Guédon <sosthene.gued@gmail.com>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=freefem
-pkgver=4.6
-_pkgver=4.6
+pkgver=4.7.1
+_pkgver=4.7-1
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method'
 arch=('x86_64')
 url="https://freefem.org/index.html"
 license=('LGPL')
-depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5' 'gsl' 'openmpi' 'lapack'
-	 'arpack' 'parmetis' 'cblas')
-makedepends=('texlive-core' 'gcc-fortran' 'unzip' 'autoconf' 'python')
+depends=('freeglut' 'glu' 'hdf5' 'gsl' 'openmpi' 'suitesparse'
+         'arpack' 'parmetis' )
+makedepends=('bison' 'flex' 'texlive-core' 'gcc-fortran' 'unzip' 'autoconf' 'python')
+optdepends=( 'cblas' 'fftw' 'nlopt' 'coin-or-ipopt' 'scotch' 'mumps' 'scalapack' 'lapack' 'superlu' 'mmg3d' 'petsc' 'slepc' 'boost' 'metis' 'tetgen')
 conflicts=('freefem++')
 provides=('freefem++')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/FreeFem/FreeFem-sources/archive/v${_pkgver}.tar.gz")
-sha256sums=('6c09af8e189fc02214b0e664b679b49832c134e29cf1ede3cab29cf754f6078f')
-
+source=($pkgname-$pkgver.tar.gz::https://github.com/FreeFem/FreeFem-sources/archive/v${_pkgver}.tar.gz
+        freefem.sh
+        freefem.csh)
+sha256sums=('60d84424d20b5f6abaee638dc423480fc76f9c389bba1a2f23fd984e39a3fb96'
+            '8dfad023deccc20044bac7fb1c4c73221026c8a8f52ed2d7727065c71d87e488'
+            '56eea801f08cc0f790af79a49c680d54f763fee196ce7d65af470c732c3d1043')
 prepare() {
   cd FreeFem-sources-${_pkgver}
 
   autoreconf -i
-  ./configure --prefix=/usr \
-	      --sysconfdir=/etc \
-	      --enable-download \
-	      --enable-optim \
-	      --disable-mumps \
-	      --disable-hpddm \
-              --disable-parmmg
-    cd 3rdparty
-    make clean
-
+  # Use system/AUR packages for 3rdparty.
+  # MUMPS, HPDDM provided by petsc.
+  ./configure --prefix=/opt/freefem \
+              --with-petsc=${PETSC_DIR}/lib/petsc/conf/petscvariables \
+              --with-petsc=${SLEPC_DIR}/lib/slepc/conf/slepcvariables \
+              --disable-superlu \
+	      --disable-mumps_seq
+              #--with-superlu-include=/usr/include/superlu \
 }
 
 build() {
   cd FreeFem-sources-${_pkgver}
-  make
+  make -j4
 }
 
 check() {
@@ -45,12 +47,8 @@ check() {
 
 package() {
   cd FreeFem-sources-${_pkgver}
-  make -d DESTDIR="$pkgdir" install || true
-
-  find "$pkgdir"/usr/lib/ff++/ -name "*.h" -exec chmod o+r {} \;
-  # remove unneeded files
-  rm -f "$pkgdir"/usr/share/${pkgname}/${pkgver}/INSTALL*
-  rm -f "$pkgdir"/usr/share/${pkgname}/README_*
-  rm -f "$pkgdir"/usr/share/${pkgname}/mode-mi-edp.zip
-  rm -rf "$pkgdir"/usr/share/${pkgname}/download
+  make -d DESTDIR="${pkgdir}" install || true
+  cd ${srcdir}
+  install -Dm 644 ${pkgname}.sh ${pkgdir}/etc/profile.d/${pkgname}.sh
+  install -Dm 644 ${pkgname}.sh ${pkgdir}/etc/profile.d/${pkgname}.csh
 }
