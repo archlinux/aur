@@ -1,6 +1,6 @@
 pkgbase = sslscan-rbsec
 	pkgdesc = sslscan tests SSL/TLS enabled services to discover supported cipher suites
-	pkgver = 2.0.0
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://github.com/rbsec/sslscan
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = sslscan-rbsec
 	makedepends = make
 	conflicts = sslscan
 	conflicts = sslscan-git
-	source = https://github.com/rbsec/sslscan/archive/2.0.0.tar.gz
-	sha256sums = f582c4b1c9ff6cadde4a3130a3f721866faf6048f5b1cddd1f696dc5a6fb7921
+	source = https://github.com/rbsec/sslscan/archive/2.0.4.tar.gz
+	sha256sums = 245252982076103f1c20e9f136e38070c0b71fbcd98a3a04aa0175bef5acc8b9
 
 pkgname = sslscan-rbsec
 
