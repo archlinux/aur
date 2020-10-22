@@ -43,10 +43,10 @@ source=(git+https://github.com/aburch/simutrans
 sha256sums=('SKIP'
             'c0c2dd5da146f64901b00c6ee67e0818a166b983a81cee7897c4843aa9f21c81'
             '671398550f46525ef0dae338d9e1984bfc0e1ec36153e1c4163c8c35de240c7e'
-            '61ce1dab7d1b7d161eb032d9fb4ed929236ff45669f1aaec33fbdb978baa1365'
+            '9898a1bc8062f18e393edb0c81d0caa31d158ed6fa39a51ff7e3f10f1e981156'
             'd85cce5c473131912f749f4c632932e0d5cac8d338babf5d9279f42ceea76fca'
             '99545152f5e739b7eb028152383fa10d3e3d303c99167e1c6e5a6bd7dcd00fa3'
-            'f933d5608052b73e03e21d4ade0909e471c643ee5493023921fa5bc963a06ab3')
+            '52a00091a71e250205adcb3ef8b86b560a5c27429ec700c5e5242f58184d90ab')
             
 prepare() {
   # Some files are distributed in DOS format

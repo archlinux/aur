@@ -1,10 +1,12 @@
---- simmain.cc.orig	2020-08-31 22:27:22.631270676 +0200
-+++ simmain.cc	2020-10-14 12:38:44.360649459 +0200
+Index: simmain.cc
+===================================================================
+--- simmain.cc	(revisión: 9320)
++++ simmain.cc	(copia de trabajo)
 @@ -428,6 +428,11 @@
  
  	env_t::init();
  
-++    // Make simutrans re-symlinks the files when opened
++	// Make simutrans re-symlinks the files when opened
 +#ifdef __linux__
 +	system("\cp -rs --remove-destination /usr/share/games/simutrans/ ~/.local/share/");
 +#endif
@@ -12,12 +14,12 @@
  	// you really want help with this?
  	if (gimme_arg(argc, argv, "-h",     0) ||
  			gimme_arg(argc, argv, "-?",     0) ||
-@@ -513,8 +518,9 @@
- 		strcat( env_t::program_dir, PATH_SEPARATOR );
+@@ -515,8 +520,9 @@
+ 		strcat( env_t::data_dir, PATH_SEPARATOR );
  	}
  	else {
--		strcpy( env_t::program_dir, argv[0] );
--		*(strrchr( env_t::program_dir, PATH_SEPARATOR[0] )+1) = 0;
+-		strcpy( env_t::data_dir, argv[0] );
+-		*(strrchr( env_t::data_dir, PATH_SEPARATOR[0] )+1) = 0;
 +        static char buffer[100];
 +        sprintf(buffer, "%s/.local/share/simutrans/", getenv("HOME"));
 +        strcpy(env_t::program_dir, buffer);
