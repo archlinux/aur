@@ -1,8 +1,8 @@
 # Maintainer: Daniel Araujo <contact@daniel-araujo.pt>
 pkgname='click4ever'
 pkgver='1.0.2'
-pkgrel='2'
-pkgdesc='An auto clicker for Linux running X11. This program will generate potentially thousands of clicks per second at where your mouse cursor is.'
+pkgrel='3'
+pkgdesc='An auto clicker for Linux running X11. A program that generates a lot of mouse clicks per second at the current position of the mouse until you move it away.'
 url='https://github.com/daniel-araujo/click4ever'
 arch=('x86_64')
 license=('GPL3')
