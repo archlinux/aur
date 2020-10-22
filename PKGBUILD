@@ -3,7 +3,7 @@
 # Contributor: Matej Horváth <matej.horvath@gmail.com>
 
 pkgname=gscreenshot
-pkgver=2.12.1
+pkgver=2.12.2
 pkgrel=1
 epoch=
 pkgdesc="A simple screenshot tool supporting multiple backends"
@@ -14,7 +14,6 @@ groups=()
 depends=("python"
         "python-pillow"
         "scrot"
-        "pygtk"
         "gtk3"
         "python-setuptools"
         "python-gobject")
@@ -31,7 +30,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/thenaterhood/gscreenshot/archive/v$pkgver.tar.gz")
-sha256sums=('e50408d6ddf07ebae9ea9bfbe1cd943733f2ae2b189a56df79495ef6c10be2cf')
+sha256sums=('023e1a35030043f01ed908177ba87879ddeb81f874f5889fe328005f9d2cf9f1')
 validpgpkeys=()
 
 prepare() {
