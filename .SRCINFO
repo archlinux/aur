@@ -1,7 +1,7 @@
 pkgbase = qspeakers-svn
 	pkgdesc = DIY speaker design software
 	pkgver = r268
-	pkgrel = 2
+	pkgrel = 3
 	url = http://brouits.free.fr/qspeakers/
 	install = qspeakers-svn.install
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = qspeakers-svn
 	depends = qt5-charts
 	depends = shared-mime-info
 	conflicts = qspeakers
-	source = qspeakers-svn::svn://svn.gtmp.org/svn/qspeakers/branches/qtcharts
+	source = qspeakers-svn::svn://svn.gtmp.org/qspeakers/branches/qtcharts
 	sha256sums = SKIP
 
 pkgname = qspeakers-svn
