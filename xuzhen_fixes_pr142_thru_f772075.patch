@@ -1,7 +1,7 @@
 From b8f102546e590034092e99b422d37b7f7bb9c5b0 Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sun, 9 Aug 2020 12:19:23 +0800
-Subject: [PATCH 01/21] fixed issue #140
+Subject: [PATCH 01/25] fixed issue #140
 
 ---
  dockx | 2 +-
@@ -28,7 +28,7 @@ index bbc9535..a45a9a2 100755
 From e16735bea70290a6bd4beafe448c8befa06502ee Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sun, 9 Aug 2020 18:17:38 +0800
-Subject: [PATCH 02/21] fixed X11 timestamp
+Subject: [PATCH 02/25] fixed X11 timestamp
 
 ---
  dockbarx/windowbutton.py | 3 ++-
@@ -59,7 +59,7 @@ index 2554dc7..751a15a 100644
 From 2744ee6234ab3bf38875269eaeaaf22a27995e42 Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sat, 15 Aug 2020 13:23:56 +0800
-Subject: [PATCH 03/21] fixed locked popup behavior
+Subject: [PATCH 03/25] fixed locked popup behavior
 
 ---
  dockbarx/cairowidgets.py |   3 +-
@@ -336,7 +336,7 @@ index a45a9a2..9c6f821 100755
 From 8d5bf59e35381f8350b09443324f577402e4f858 Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sat, 15 Aug 2020 18:41:52 +0800
-Subject: [PATCH 04/21] fixed issue #143
+Subject: [PATCH 04/25] fixed issue #143
 
 ---
  dockbarx/cairowidgets.py | 2 +-
@@ -373,7 +373,7 @@ index 9c6f821..0c1d811 100755
 From 57e59bd53954d76eb936b1e9acb49f058b96954d Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sat, 15 Aug 2020 19:20:30 +0800
-Subject: [PATCH 05/21] added existence checking
+Subject: [PATCH 05/25] added existence checking
 
 ---
  dockx | 5 ++++-
@@ -399,7 +399,7 @@ index 0c1d811..af986a3 100755
 From 0e2712a8469552d91fdda9a0445599703f9543d9 Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sat, 15 Aug 2020 19:50:58 +0800
-Subject: [PATCH 06/21] updated README
+Subject: [PATCH 06/25] updated README
 
 ---
  README.md | 4 ++--
@@ -424,7 +424,7 @@ index fde8edd..d428506 100644
 From 2fb1f4c618c6536f8b8028ae776a99bf79778222 Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sun, 23 Aug 2020 13:47:11 +0800
-Subject: [PATCH 07/21] fixed missing argument
+Subject: [PATCH 07/25] fixed missing argument
 
 ---
  dockbarx/groupbutton.py | 2 +-
@@ -447,7 +447,7 @@ index 65249e4..ed05d60 100644
 From 0308d1bb368c4236ceebf82f2bc54b7a07a6d5a4 Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sun, 23 Aug 2020 20:10:29 +0800
-Subject: [PATCH 08/21] a fallback desktop file editor. fixed issue #146
+Subject: [PATCH 08/25] a fallback desktop file editor. fixed issue #146
 
 ---
  dockbarx/desktopfileeditor.py | 251 ++++++++++++++++++++++++++++++++++
@@ -778,7 +778,7 @@ index ed05d60..4aa5ce9 100644
 From 1d31bdad9fe66119077d567fd09d376e3dfc285f Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sun, 23 Aug 2020 20:42:28 +0800
-Subject: [PATCH 09/21] avoid calling method on None
+Subject: [PATCH 09/25] avoid calling method on None
 
 ---
  dockbarx/groupbutton.py | 7 ++++---
@@ -806,7 +806,7 @@ index 4aa5ce9..5a3f48c 100644
 From 1dd377a77868b7100145e84001beb885d4867fd2 Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sun, 23 Aug 2020 22:42:26 +0800
-Subject: [PATCH 10/21] fixed method
+Subject: [PATCH 10/25] fixed method
 
 ---
  dockbarx/desktopfileeditor.py | 2 +-
@@ -829,7 +829,7 @@ index 1f07531..3b11714 100644
 From fba486ec131e3356ff0236724eba92f57fb8c48e Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sun, 23 Aug 2020 22:46:52 +0800
-Subject: [PATCH 11/21] fixed unhidden popup menu
+Subject: [PATCH 11/25] fixed unhidden popup menu
 
 ---
  dockbarx/groupbutton.py | 2 +-
@@ -853,7 +853,7 @@ index 5a3f48c..259c0b9 100644
 From 087436756a59c96c46b2b661d01fe1a7c12d7ba9 Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sat, 29 Aug 2020 00:31:50 +0800
-Subject: [PATCH 12/21] free pixmap to avoid memory leak. fixed issue #147
+Subject: [PATCH 12/25] free pixmap to avoid memory leak. fixed issue #147
 
 ---
  dockbarx/windowbutton.py | 1 +
@@ -875,7 +875,7 @@ index 751a15a..4226008 100644
 From 89c39a570559d2cc974ece26023a8c9f8d9b7ee1 Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sat, 29 Aug 2020 12:18:11 +0800
-Subject: [PATCH 13/21] fixed Spacer width
+Subject: [PATCH 13/25] fixed Spacer width
 
 ---
  dockx | 7 -------
@@ -903,7 +903,7 @@ index af986a3..0349867 100755
 From 5281e9e3932cb67a05c2a5ee0386340f70af0757 Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sat, 29 Aug 2020 12:52:52 +0800
-Subject: [PATCH 14/21] catch exceptions during applet initialization
+Subject: [PATCH 14/25] catch exceptions during applet initialization
 
 ---
  dockx | 6 +++++-
@@ -930,7 +930,7 @@ index 0349867..97b79b7 100755
 From d2044ece46db849d29061980367876acfb21abef Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sat, 29 Aug 2020 13:42:46 +0800
-Subject: [PATCH 15/21] update AUR urls
+Subject: [PATCH 15/25] update AUR urls
 
 ---
  README.md | 6 +++---
@@ -961,7 +961,7 @@ index d428506..696241c 100644
 From c7d87cf7c5be785441f7b43cc88e0b12ac0ceb6b Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sat, 5 Sep 2020 01:29:59 +0800
-Subject: [PATCH 16/21] fixed a constant
+Subject: [PATCH 16/25] fixed a constant
 
 ---
  dockbarx/groupbutton.py | 2 +-
@@ -984,7 +984,7 @@ index 259c0b9..e615ade 100644
 From e61886994937e412fc112add644a1805aadd83d7 Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sat, 5 Sep 2020 01:37:56 +0800
-Subject: [PATCH 17/21] fixed maximize menu status
+Subject: [PATCH 17/25] fixed maximize menu status
 
 ---
  dockbarx/groupbutton.py | 1 +
@@ -1006,7 +1006,7 @@ index e615ade..e5b4440 100644
 From aec0ab5f463e8fa2f25d15ef0325cd95fddb413a Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sun, 6 Sep 2020 12:20:52 +0800
-Subject: [PATCH 18/21] update dockx colors immediately when setting changed
+Subject: [PATCH 18/25] update dockx colors immediately when setting changed
 
 ---
  dockbarx/common.py | 1 +
@@ -1028,7 +1028,7 @@ index 2686795..cd60d07 100644
 From dbbae3a3ccea230819f5903954792ee64ed8cf88 Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sun, 6 Sep 2020 12:31:19 +0800
-Subject: [PATCH 19/21] fixed the initial visibility of some widgets
+Subject: [PATCH 19/25] fixed the initial visibility of some widgets
 
 ---
  dbx_preference | 2 +-
@@ -1053,7 +1053,7 @@ index cdeb1b2..2356bac 100755
 From 32b36016a6a3019c6694893cfe0b2d19bed65774 Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sun, 6 Sep 2020 19:55:38 +0800
-Subject: [PATCH 20/21] fixed drag & drop bugs
+Subject: [PATCH 20/25] fixed drag & drop bugs
 
 ---
  dockbarx/dockbar.py     |  71 ++++++++++++++--------
@@ -1520,7 +1520,7 @@ index 97b79b7..2610b2c 100755
 From 663001e6859f3181295845da45ac6b0c262a459d Mon Sep 17 00:00:00 2001
 From: xuzhen <xuzhen@users.noreply.github.com>
 Date: Sun, 6 Sep 2020 20:11:29 +0800
-Subject: [PATCH 21/21] sync settings
+Subject: [PATCH 21/25] sync settings
 
 ---
  dockbarx/common.py | 5 +++++
@@ -1565,3 +1565,347 @@ index cd60d07..bf22b39 100644
  
  
  __connector = Connector()
+
+From 56933975e108d7afc66ca48b6f45464bdbedb2d5 Mon Sep 17 00:00:00 2001
+From: xuzhen <xuzhen@users.noreply.github.com>
+Date: Sat, 17 Oct 2020 00:14:44 +0800
+Subject: [PATCH 22/25] improved CEF apps compatibility. fixed issue #151
+
+---
+ dockbarx/dockbar.py | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/dockbarx/dockbar.py b/dockbarx/dockbar.py
+index 600df50..b440ea8 100644
+--- a/dockbarx/dockbar.py
++++ b/dockbarx/dockbar.py
+@@ -1024,6 +1024,14 @@ def __add_window(self, window):
+             if self.globals.settings["separate_ooo_apps"]:
+                 connect(window, "name-changed",
+                         self.__on_ooo_window_name_changed)
++        if res_class == '' and res_name == 'untitled window':
++            win_name = window.get_name().lower()
++            if win_name == 'untitled window':
++                connect(window, "name-changed",
++                        self.__on_cef_window_name_changed)
++            else:
++                identifier = win_name
++
+         self.windows[window] = identifier
+         if identifier in self.groups.get_identifiers():
+             self.groups[identifier].add_window(window)
+@@ -1242,6 +1250,13 @@ def __on_ooo_window_name_changed(self, window):
+             if window == self.screen.get_active_window():
+                 self.__on_active_window_changed(self.screen, None)
+ 
++    def __on_cef_window_name_changed(self, window):
++        if window.get_name().lower() != 'untitled window':
++            self.__remove_window(window)
++            self.__add_window(window)
++            if window == self.screen.get_active_window():
++                self.__on_active_window_changed(self.screen, None)
++
+     def __set_group_identifier(self, group, identifier):
+         group.set_identifier(identifier)
+         for window in group:
+
+From 21e86e3f0d3198eb6a2682afec0377ee28fc5fd5 Mon Sep 17 00:00:00 2001
+From: xuzhen <xuzhen@users.noreply.github.com>
+Date: Sun, 18 Oct 2020 14:19:15 +0800
+Subject: [PATCH 23/25] add choices
+
+---
+ org.dockbar.dockbarx.gschema.xml | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/org.dockbar.dockbarx.gschema.xml b/org.dockbar.dockbarx.gschema.xml
+index 201a216..e729b03 100644
+--- a/org.dockbar.dockbarx.gschema.xml
++++ b/org.dockbar.dockbarx.gschema.xml
+@@ -783,6 +783,12 @@
+ 
+     <key name='position' type='s'>
+       <default>"left"</default>
++       <choices>
++        <choice value='left'/>
++        <choice value='right'/>
++        <choice value='top'/>
++        <choice value='bottom'/>
++      </choices>
+       <summary>The position of the dock</summary>
+       <description>
+         Position the dock at left, right, top or bottom.
+@@ -808,6 +814,11 @@
+ 
+     <key name='mode' type='s'>
+       <default>"centered"</default>
++      <choices>
++        <choice value='panel'/>
++        <choice value='corner'/>
++        <choice value='centered'/>
++      </choices>
+       <summary>The mode of the dock</summary>
+       <description>
+         The dock has three modes:
+@@ -819,6 +830,13 @@
+ 
+     <key name='behavior' type='s'>
+       <default>"panel"</default>
++      <choices>
++        <choice value='panel'/>
++        <choice value='standard'/>
++        <choice value='dodge windows'/>
++        <choice value='dodge active window'/>
++        <choice value='always autohide'/>
++      </choices>
+       <summary>The behavior of the dock</summary>
+       <description>
+         Description needed
+
+From ca39d247dd265c01666987cfd76f062f4d1d0ca6 Mon Sep 17 00:00:00 2001
+From: xuzhen <xuzhen@users.noreply.github.com>
+Date: Sun, 18 Oct 2020 15:34:39 +0800
+Subject: [PATCH 24/25] fix autohide behavior
+
+---
+ dockx | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/dockx b/dockx
+index 2610b2c..3defb8f 100755
+--- a/dockx
++++ b/dockx
+@@ -941,6 +941,7 @@ class DockX(CairoDockX):
+ 
+     def show_dock(self):
+         self.show()
++        self.position_dock()
+         if self.globals.settings["dock/mode"] != "centered":
+             self.move(self.old_x, self.old_y)
+             self.dockbar.dockbar_moved()
+@@ -1305,6 +1306,7 @@ class DockX(CairoDockX):
+         # self.position_dock(rebuild=True)  # already in __on_dock_theme_reloaded
+         if self.autohide:
+             self.__compute_should_autohide()
++            self.show_dock()
+ 
+     def on_destroy(self, *args):
+         Gtk.main_quit()
+
+From f772075ae4fc410a8bd24460ce29117ef25efc62 Mon Sep 17 00:00:00 2001
+From: xuzhen <xuzhen@users.noreply.github.com>
+Date: Sun, 18 Oct 2020 16:08:59 +0800
+Subject: [PATCH 25/25] add an option to act as a normal window. fixed issue
+ #152
+
+---
+ dbx_migrate_settings             |  2 ++
+ dbx_preference                   | 29 +++++++++++++++++++++++++++--
+ dockbarx/common.py               |  6 +++++-
+ dockbarx/dockbar.py              |  3 +++
+ dockx                            | 10 ++++++----
+ org.dockbar.dockbarx.gschema.xml | 15 +++++++++++++--
+ 6 files changed, 56 insertions(+), 9 deletions(-)
+
+diff --git a/dbx_migrate_settings b/dbx_migrate_settings
+index 6100b64..e930486 100755
+--- a/dbx_migrate_settings
++++ b/dbx_migrate_settings
+@@ -114,6 +114,8 @@ for option in options:
+     elif key.startswith("dock/"):
+         gsettings, gschema = dockx_gsettings
+         key = key[len("dock/"):]
++        if key == "behavior" and value == "panel":
++            value = "standard"
+     elif key.startswith("themes/"):
+         path = key[:key.rindex("/")].lower()
+         gsettings, gschema = get_gsettings("dockbarx.theme", "dockbarx/" + path)
+diff --git a/dbx_preference b/dbx_preference
+index 2356bac..8a5850e 100755
+--- a/dbx_preference
++++ b/dbx_preference
+@@ -1298,6 +1298,19 @@ class PrefDialog():
+         hbox.set_border_width(5)
+         label = Gtk.Label(label=_("Type"))
+         hbox.pack_start(label, False, False, 0)
++        self.dock_type_box = Gtk.ComboBoxText()
++        for pos in (_("dock"), _("normal window")):
++            self.dock_type_box.append_text(pos)
++        self.dock_type_box.connect("changed", self.__cb_changed)
++        hbox.pack_start(self.dock_type_box, False, True, 0)
++        label = Gtk.Label(label=_("(Need to restart dockx to take effect)"))
++        hbox.pack_start(label, False, False, 0)
++        dock_box.pack_start(hbox, False, True, 0)
++
++        hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 5)
++        hbox.set_border_width(5)
++        label = Gtk.Label(label=_("Mode"))
++        hbox.pack_start(label, False, False, 0)
+         self.dock_mode_box = Gtk.ComboBoxText()
+         for pos in (_("panel"), _("corner"), _("centered")):
+             self.dock_mode_box.append_text(pos)
+@@ -1325,7 +1338,7 @@ class PrefDialog():
+         label = Gtk.Label(label=_("Behavior"))
+         hbox.pack_start(label, False, False, 0)
+         self.dock_behavior_box = Gtk.ComboBoxText()
+-        for pos in (_("panel"), _("standard"), _("dodge windows"),
++        for pos in (_("standard"), _("dodge windows"),
+                     _("dodge active window"), _("always autohide")):
+             self.dock_behavior_box.append_text(pos)
+         self.dock_behavior_box.connect("changed", self.__cb_changed)
+@@ -1818,6 +1831,12 @@ class PrefDialog():
+             self.dock_offset_spin.set_sensitive(False)
+         else:
+             self.dock_offset_spin.set_sensitive(True)
++        model = self.dock_type_box.get_model()
++        for i in range(len(model)):
++            mode = self.globals.settings["dock/type"].lower()
++            if model[i][0].lower() == _(mode):
++                self.dock_type_box.set_active(i)
++                break
+         model = self.dock_mode_box.get_model()
+         for i in range(len(model)):
+             mode = self.globals.settings["dock/mode"].lower()
+@@ -2013,6 +2032,12 @@ class PrefDialog():
+                 if value == _(p) and p != self.globals.settings["dock/size"]:
+                     self.dock_gsettings.set_string("position", p)
+ 
++        if combobox == self.dock_type_box:
++            pos = ("dock", "normal window")
++            for p in pos:
++                if value == _(p) and p != self.globals.settings["dock/type"]:
++                    self.dock_gsettings.set_string("type", p)
++
+         if combobox == self.dock_mode_box:
+             pos = ("panel", "centered", "corner")
+             for p in pos:
+@@ -2020,7 +2045,7 @@ class PrefDialog():
+                     self.dock_gsettings.set_string("mode", p)
+ 
+         if combobox == self.dock_behavior_box:
+-            pos = ("panel", "standard", "dodge windows",
++            pos = ("standard", "dodge windows",
+                    "dodge active window", "always autohide")
+             for p in pos:
+                 if value == _(p) and \
+diff --git a/dockbarx/common.py b/dockbarx/common.py
+index bf22b39..0ab2b1f 100644
+--- a/dockbarx/common.py
++++ b/dockbarx/common.py
+@@ -588,6 +588,7 @@ class Globals(GObject.GObject):
+         "dock-position-changed": (GObject.SignalFlags.RUN_FIRST,
+                                       None,()),
+         "dock-mode-changed": (GObject.SignalFlags.RUN_FIRST, None,()),
++        "dock-type-changed": (GObject.SignalFlags.RUN_FIRST, None,()),
+         "dock-offset-changed": (GObject.SignalFlags.RUN_FIRST,
+                                 None,()),
+         "dock-overlap-changed": (GObject.SignalFlags.RUN_FIRST,
+@@ -714,7 +715,8 @@ class Globals(GObject.GObject):
+           "dock/size": 42,
+           "dock/offset":0,
+           "dock/mode": "centered",
+-          "dock/behavior": "panel",
++          "dock/type": "dock",
++          "dock/behavior": "standard",
+           "dock/end_decorations": False,
+           
+           "applets/enabled_list": ["DockbarX"]}
+@@ -890,6 +892,8 @@ def __on_dock_gsettings_changed(self, settings, gkey, data=None):
+             self.emit("dock-end-decorations-changed")
+         elif "theme-file" == gkey:
+             self.emit("dock-theme-changed")
++        elif "type" == gkey:
++            self.emit("dock-type-changed")
+         self.emit("preference-update")
+ 
+     def __on_applets_gsettings_changed(self, settings, gkey, data=None):
+diff --git a/dockbarx/dockbar.py b/dockbarx/dockbar.py
+index b440ea8..a685fb7 100644
+--- a/dockbarx/dockbar.py
++++ b/dockbarx/dockbar.py
+@@ -984,6 +984,9 @@ def __add_window(self, window):
+         window = Wnck.Window.get(window.get_xid())
+         res_class = window.get_class_group().get_res_class().lower()
+         res_name = window.get_class_group().get_name().lower()
++        if self.globals.settings["dock/type"] == "normal window":
++            if res_class == "dockx" and res_name == "dockx":
++                return
+         identifier = res_class or res_name
+         pid = window.get_pid()
+         if not identifier:
+diff --git a/dockx b/dockx
+index 3defb8f..9e6feb1 100755
+--- a/dockx
++++ b/dockx
+@@ -57,7 +57,8 @@ class CairoDockX(Gtk.Window):
+         GObject.GObject.__init__(self)
+         self.globals = Globals()
+         self.theme = DockTheme()
+-        self.set_type_hint(Gdk.WindowTypeHint.DOCK)
++        if self.globals.settings["dock/type"] == "dock":
++            self.set_type_hint(Gdk.WindowTypeHint.DOCK)
+         self.stick()
+         self.set_accept_focus(False)
+         self.set_decorated(False)
+@@ -499,7 +500,7 @@ class DockX(CairoDockX):
+                             "top": 1000, "bottom":1000}
+         self.geometry_time = 0
+         self.last_geometry_window = lambda: None
+-        if self.globals.settings["dock/behavior"] in ("panel", "standard"):
++        if self.globals.settings["dock/behavior"] == "standard":
+             self.autohide = False
+         else:
+             self.autohide = True
+@@ -794,7 +795,8 @@ class DockX(CairoDockX):
+     def __set_dock_strut(self, x, y, w, h):
+         if not self.get_window():
+             return
+-        set_strut = self.globals.settings["dock/behavior"] == "panel"
++        set_strut = self.globals.settings["dock/type"] == "dock" and \
++                self.globals.settings["dock/behavior"] == "standard"
+         if not set_strut:
+             topw = XDisplay.create_resource_object('window',
+                                     self.get_toplevel().get_window().get_xid())
+@@ -1137,7 +1139,7 @@ class DockX(CairoDockX):
+         self.position_dock()
+ 
+     def __on_behavior_changed(self, *args):
+-        if self.globals.settings["dock/behavior"] in ("panel", "standard"):
++        if self.globals.settings["dock/behavior"] == "standard":
+             if self.autohide:
+                 self.autohide = False
+                 if self.autohide_sid is not None:
+diff --git a/org.dockbar.dockbarx.gschema.xml b/org.dockbar.dockbarx.gschema.xml
+index e729b03..ebd07d4 100644
+--- a/org.dockbar.dockbarx.gschema.xml
++++ b/org.dockbar.dockbarx.gschema.xml
+@@ -829,9 +829,8 @@
+     </key>
+ 
+     <key name='behavior' type='s'>
+-      <default>"panel"</default>
++      <default>"standard"</default>
+       <choices>
+-        <choice value='panel'/>
+         <choice value='standard'/>
+         <choice value='dodge windows'/>
+         <choice value='dodge active window'/>
+@@ -851,6 +850,18 @@
+       </description>
+     </key>
+ 
++    <key name='type' type='s'>
++      <default>"dock"</default>
++      <choices>
++        <choice value='dock'/>
++        <choice value='normal window'/>
++      </choices>
++      <summary>The window type of dockx</summary>
++      <description>
++        The window type of dockx
++      </description>
++    </key>
++
+   </schema>
+ 
+ 

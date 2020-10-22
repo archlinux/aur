@@ -3,7 +3,7 @@
 pkgname=dockbarx
 _pkgver=1.0beta
 pkgver=1.0beta+r820+4a5b382
-pkgrel=3
+pkgrel=4
 pkgdesc="TaskBar with groupping and group manipulation"
 arch=('i688' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/M7S/dockbarx"
@@ -19,7 +19,7 @@ optdepends=('mate-panel: mate applet'
             'python-lxml: import settings script')
 _commit='4a5b382f03402e58cbbaaeb2ee3be4fbbb795aba'
 source=("${pkgname}::git+https://github.com/M7S/dockbarx.git#commit=${_commit}"
-        'xuzhen_fixes_pr142_20200909.patch')
+        'xuzhen_fixes_pr142_thru_f772075.patch')
 sha256sums=('SKIP'
             '7ff9d0d99630f6229e4a8c9f0a9098d5af8f26b363971096ccc69b1143e0b69a')
 install="${pkgname}.install"
@@ -31,7 +31,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  patch -Np1 -i ../xuzhen_fixes_pr142_20200909.patch
+  patch -Np1 -i ../xuzhen_fixes_pr142_thru_f772075.patch
 }
 
 package() {
