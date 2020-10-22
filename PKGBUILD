@@ -6,7 +6,7 @@
 
 pkgname=crossover
 pkgver=20.0.0
-pkgrel=1
+pkgrel=2
 _pkgdebrel=1
 pkgdesc="Run Windows Programs on Linux"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=("https://media.codeweavers.com/pub/${pkgname}/cxlinux/demo/${pkgname}_${
 sha256sums=('0dca282eab4b42f4dc2dbc7e3707f52b44aa7eca3049424c7d922953982fc576')
 
 depends=( 
-    'python' 'desktop-file-utils'
+    'python' 'desktop-file-utils' 'python-gobject'
 )
 
 optdepends=(
