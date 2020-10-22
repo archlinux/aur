@@ -21,7 +21,7 @@ _commit='4a5b382f03402e58cbbaaeb2ee3be4fbbb795aba'
 source=("${pkgname}::git+https://github.com/M7S/dockbarx.git#commit=${_commit}"
         'xuzhen_fixes_pr142_thru_f772075.patch')
 sha256sums=('SKIP'
-            '7ff9d0d99630f6229e4a8c9f0a9098d5af8f26b363971096ccc69b1143e0b69a')
+            'c95ceebf2391d8bedb4fe0014474d7e91ad894b0d7eba1c1e76046c74e8a5457')
 install="${pkgname}.install"
 
 pkgver() {
