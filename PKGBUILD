@@ -4,16 +4,17 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.2.5033.r5032
+pkgver=1.3.1073.r5301
 _gwtver=2.8.2
 _ginver=2.1.2
 _nodever=10.19.0
+_pandocver="2.11.0.2"
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
-depends=('r>=3.0.1' boost-libs qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns postgresql-libs sqlite3 soci clang hunspell-en_US mathjax2 pandoc)
+depends=('r>=3.0.1' boost-libs qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns postgresql-libs sqlite3 soci clang hunspell-en_US mathjax2 pandoc=${_pandocver})
 makedepends=(git 'cmake>=3.1.0' boost desktop-file-utils jdk8-openjdk apache-ant unzip openssl libcups pam patchelf wget yarn)
 optdepends=('git: for git support'
             'subversion: for subversion support'
@@ -42,19 +43,17 @@ prepare() {
 
     msg "Extracting dependencies..."
     cd "${srcdir}/${_gitname}/src/gwt"
-    install -d lib/{gin,gwt}
-    install -d lib/gin/${_ginver}
-    install -d lib/gwt/${_gwtver}
+    install -d lib/gin/${_ginver} lib/gwt/${_gwtver}
     unzip -qo "${srcdir}/gin-${_ginver}.zip" -d lib/gin/${_ginver}
     cp -r "${srcdir}/gwt-${_gwtver}/"* lib/gwt/${_gwtver}
 
     cd "${srcdir}/${_gitname}/dependencies/common"
-    install -d pandoc
+    install -d pandoc/${_pandocver}
  
     ln -sfT /usr/share/myspell/dicts dictionaries
     ln -sfT /usr/share/mathjax2 mathjax-27
-    ln -sfT /usr/bin/pandoc pandoc/pandoc
-    ln -sfT /usr/bin/pandoc-citeproc pandoc/pandoc-citeproc
+    ln -sfT /usr/bin/pandoc pandoc/${_pandocver}/pandoc
+    ln -sfT /usr/bin/pandoc-citeproc pandoc/${_pandocver}/pandoc-citeproc
 
     # Nodejs
     install -d node/${_nodever}
@@ -69,14 +68,10 @@ prepare() {
 }
 
 build() {
-    rm -rf "${srcdir}/${_gitname}/build"
-    mkdir "${srcdir}/${_gitname}/build"
-
-    cd "${srcdir}/${_gitname}/build"
-
     export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:${PATH}
 
-    cmake -DRSTUDIO_TARGET=Desktop \
+    cmake -S "${srcdir}/${_gitname}" -B build \
+          -DRSTUDIO_TARGET=Desktop \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio \
           -DRSTUDIO_USE_SYSTEM_BOOST=yes \
@@ -88,11 +83,10 @@ build() {
 
 package() {
     # Install the program
-    cd "${srcdir}/${_gitname}/build"
-    make DESTDIR="${pkgdir}" install
+    make -C build DESTDIR="${pkgdir}" install
 
     # Install the license
-    install -Dm 644 ../COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+    install -Dm 644 "${srcdir}/${_gitname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
     # Symlink main binary
     install -d "${pkgdir}/usr/bin"
