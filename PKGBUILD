@@ -30,7 +30,7 @@ prepare() {
   # remove a bit of fedora's custom sutff 
   rm -f usr/lib64/firefox/browser/defaults/preferences/firefox-redhat-default-prefs.js
   # Enable wayland by default
-  sed -i '72d;73d;75d;76d;' usr/bin/firefox
+  sed -i '73d;74d;76d;77d;' usr/bin/firefox
   
 }
 
