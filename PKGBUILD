@@ -3,7 +3,7 @@
 pkgname=qspeakers-svn
 _pkgbranch=qtcharts
 pkgver=r268
-pkgrel=3
+pkgrel=4
 pkgdesc="DIY speaker design software"
 url="http://brouits.free.fr/qspeakers/"
 arch=('i686' 'x86_64' 'aarch64')
@@ -21,19 +21,19 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgbranch}"
   local ver="$(svnversion)"
   printf "r%s" "${ver}" 
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgbranch}"
   qmake-qt5 PREFIX=/usr -config release
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgbranch}"
   make install INSTALL_ROOT="${pkgdir}"
 }
 

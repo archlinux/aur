@@ -1,7 +1,7 @@
 pkgbase = qspeakers-svn
 	pkgdesc = DIY speaker design software
 	pkgver = r268
-	pkgrel = 3
+	pkgrel = 4
 	url = http://brouits.free.fr/qspeakers/
 	install = qspeakers-svn.install
 	arch = i686
