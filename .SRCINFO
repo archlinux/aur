@@ -8,7 +8,6 @@ pkgbase = mgit
 	checkdepends = rust
 	checkdepends = git
 	makedepends = rust
-	makedepends = gcc
 	depends = git
 	provides = mgit
 	source = mgit-0.1.10.tar.gz::https://github.com/koozz/mgit/archive/0.1.10.tar.gz
