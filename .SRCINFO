@@ -1,6 +1,6 @@
 pkgbase = nb
 	pkgdesc = A command line note-taking, bookmarking, archiving, and knowledge base application
-	pkgver = 5.6.1
+	pkgver = 5.7.5
 	pkgrel = 1
 	url = https://github.com/xwmx/nb
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = nb
 	optdepends = tig
 	provides = nb
 	conflicts = nb
-	source = nb-5.6.1.tar.gz::https://github.com/xwmx/nb/archive/5.6.1.tar.gz
-	sha512sums = 0009ddfff04688d71183f9f25a55a06b4b75c2c24163f5acb5f638356fd66f54231142092e9b1858c7c121c8cc1b7b6018980df34c49cc1af9f4fee46916ecd5
+	source = nb-5.7.5.tar.gz::https://github.com/xwmx/nb/archive/5.7.5.tar.gz
+	sha512sums = 934ee71d2dd7d06f2e06dafbcac7eaace12afeb0f37bef3715004bd171c079bee3b843336a203a34b415408106028e63d2a7008b548a0399c50c2a03948838ef
 
 pkgname = nb
 
