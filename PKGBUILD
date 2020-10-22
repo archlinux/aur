@@ -30,7 +30,7 @@ source=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkg
         'LICENSE.html::https://discordapp.com/terms'
         'OSS-LICENSES.html::https://discordapp.com/licenses')
 sha256sums=('8130c6240f4b027eabf7fa0e8cf10485cb9db5c45a1832c0bf5947499c247c48'
-            '9be5f85421c9094c390c25bf1f45157c3c8dcf592feb8acb0810a61f11d80b90'
+            '54d66c5ed7f289f318935c571b438cbae154c1cb52783c3b3a21ef347078aa9b'
             'dfb803d0e71e323831743c978b0dbc5f662fdcdf53c43fb1739b8b4e62bc8453')
 
 # The tar extracts to a folder called DiscordCanary.
