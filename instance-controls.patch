@@ -1,5 +1,5 @@
 diff --git a/lib/Items/ApplicationDockItem.vala b/lib/Items/ApplicationDockItem.vala
-index a58dbed..b438311 100644
+index a58dbed..ba9c7c8 100644
 --- a/lib/Items/ApplicationDockItem.vala
 +++ b/lib/Items/ApplicationDockItem.vala
 @@ -459,7 +459,7 @@ namespace Plank
@@ -19,6 +19,10 @@ index a58dbed..b438311 100644
 +					else
  						window_item = create_literal_menu_item (window_name, Icon);
  					
+-					if (window.is_active ())
+-						window_item.set_sensitive (false);
+-					else
+-						window_item.activate.connect (() => WindowControl.focus_window (window, event_time));
 +					//instance "Close"
 +					Gdk.Pixbuf close_icon = Gtk.IconTheme.get_default ().load_icon ("window-close-symbolic", Gtk.IconSize.MENU, 0);
 +					Gtk.MenuItem close_item = create_literal_menu_item_with_pixbuf ("Close", close_icon);
@@ -40,12 +44,10 @@ index a58dbed..b438311 100644
 +					control_menu.append (minimize_item);
 +					control_menu.append (switch_item);
 +					close_item.show();
- 					if (window.is_active ())
--						window_item.set_sensitive (false);
-+						minimize_item.show();
- 					else
--						window_item.activate.connect (() => WindowControl.focus_window (window, event_time));
++					if (!window.is_active ())
 +						switch_item.show();
++					else if (window.get_transient () == null)
++						minimize_item.show();
 +					window_item.set_submenu (control_menu);
  					
  					items.add (window_item);
