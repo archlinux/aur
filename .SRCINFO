@@ -1,6 +1,6 @@
 pkgbase = among-sus-git
 	pkgdesc = Among Us, but it's a text adventure
-	pkgver = r68.fb2bd86
+	pkgver = r69.628e77f
 	pkgrel = 1
 	url = https://sr.ht/~martijnbraam/among-sus/
 	arch = i686
@@ -11,9 +11,7 @@ pkgbase = among-sus-git
 	provides = among-sus
 	conflicts = among-sus
 	source = among-sus::git+https://git.sr.ht/~martijnbraam/among-sus
-	source = 0001-Add-ldflags-to-Makefile.patch
 	md5sums = SKIP
-	md5sums = 249ccb050e1dd57cdf713aae53b95938
 
 pkgname = among-sus-git
 
