@@ -5,12 +5,12 @@
 
 pkgname=gerbera
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="UPnP Media Server (Based on MediaTomb)"
 arch=(i686 x86_64 armv7h)
 url="https://github.com/gerbera/gerbera"
 license=('GPL2')
-depends=('taglib' 'curl' 'sqlite' 'file' 'gcc-libs' 'libupnp1.12' 'duktape' 'libexif' 'fmt' 'pugixml' 'spdlog' 'ffmpeg' 'ffmpegthumbnailer' 'libmatroska')
+depends=('taglib' 'curl' 'sqlite' 'file' 'gcc-libs' 'libupnp' 'duktape' 'libexif' 'fmt' 'pugixml' 'spdlog' 'ffmpeg' 'ffmpegthumbnailer' 'libmatroska')
 optdepends=('libmariadbclient')
 makedepends=('cmake')
 install=gerbera.install
