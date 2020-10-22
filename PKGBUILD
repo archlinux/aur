@@ -6,7 +6,7 @@
 pkgbase=nvidia-340xx
 pkgname=(nvidia-340xx nvidia-340xx-dkms)
 pkgver=340.108
-pkgrel=10
+pkgrel=11
 pkgdesc="NVIDIA drivers for linux, 340xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -18,7 +18,7 @@ source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Li
 nvidia-340.108-fix-5.9-kernel-compile.patch::https://raw.githubusercontent.com/warpme/minimyth2/master/script/nvidia/nvidia-340.108/files/nvidia-340.108-fix-5.9-kernel-compile.patch
 )
 b2sums=('6538bbec53b10f8d20977f9b462052625742e9709ef06e24cf2e55de5d0c55f1620a4bb21396cfd89ebc54c32f921ea17e3e47eaa95abcbc24ecbd144fb89028'
-        'daf886ec4622b0800fc82784f08f4fc0f6dfa1b70ef7c87a91bded2221b710da2baf4b3129542da6210fda5e5b862876ccd5e93d799f60fc6d75d83ef302210b')
+        'cb2521375317a368d7a5b4766071d0dfb09f359f7521f769e581b083540bfcbaab18f2d1b308d4e668841ef15dbeebcf0495b3cbaa2c9ee1a8b6a35308206e6e')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 # default is 'linux' substitute custom name here
