@@ -28,7 +28,7 @@ fi
 
 _reponame=brave-browser
 pkgname=brave
-pkgver=1.15.75
+pkgver=1.15.76
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -106,6 +106,8 @@ depends+=(${_system_libs[@]})
 if [ "$COMPONENT" = "4" ]; then
     depends+=('libpulse' 'pciutils')
     makedepends+=('lld' 'libva' 'libpipewire02' 'python2-xcb-proto')
+else
+    makedepends+=('ncurses5-compat-libs')
 fi
 
 prepare() {
