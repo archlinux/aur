@@ -21,8 +21,9 @@ depends=('qt5-base'
          'poppler-qt5'
 				 'libxerces-c-3.1'
 				 'libcurl-compat'
-         'xml-security-c')
-makedepends=('swig' 'qconf' 'git' 'xml-security-c' 'jdk11-openjdk')
+         'xml-security-c'
+				 'libcurl-gnutls')
+makedepends=('swig' 'qconf' 'git' 'xml-security-c' 'libcurl-gnutls' 'jdk11-openjdk')
 optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online'
             'autenticacao-gov-pt-pki: PKI que confirma a validade dos certificados dos CC'
             'ecce-gov-pt-certificates: Certificados da ECCE quem assina dos certificados contidos em cartaodecidadao-pki')
