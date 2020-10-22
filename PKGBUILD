@@ -11,7 +11,7 @@
 # All patches are managed at https://github.com/Martchus/qtbase
 
 pkgname=mingw-w64-qt6-base
-_qtver=6.0.0-alpha
+_qtver=6.0.0-beta1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -22,7 +22,8 @@ depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-libjpeg-turbo' 'mingw-w64-s
          'mingw-w64-libpng' 'mingw-w64-openssl' 'mingw-w64-dbus' 'mingw-w64-harfbuzz'
          'mingw-w64-brotli' 'mingw-w64-pcre2' 'mingw-w64-zstd')
 makedepends=('mingw-w64-cmake' 'mingw-w64-postgresql' 'mingw-w64-mariadb-connector-c'
-             'mingw-w64-vulkan-icd-loader' 'mingw-w64-pkg-config' 'qt6-base' 'ninja')
+             'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'mingw-w64-pkg-config'
+             'qt6-base' 'ninja')
 optdepends=('mingw-w64-postgresql: PostgreSQL driver'
             'mingw-w64-mariadb-connector-c: MariaDB driver'
             'qt6-base: development tools')
@@ -33,7 +34,7 @@ source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/s
         '0001-Use-CMake-s-default-import-library-suffix.patch'
         '0002-Rename-qtmain-to-qt6main-to-make-Qt-6-co-installable.patch'
         '0003-Fix-finding-D-Bus.patch')
-sha256sums=('1816c4490d3f1f6c6ae3f57a3ec9dff4e8bcab2951786cb0f457847c7ab0e8fa'
+sha256sums=('d23210ba903be38aa43fe7887b8df62a1a310ea053712a30670cc479cf0219a0'
             '43a19aaaf39d9e5fbce15657f216b5bd343b4be3eeffcb888dcb0d00a011d744'
             '74871688a19acd6e254852485c07a1bceb0ce8ae67274d44227528c25e913b37'
             '969c980eb3d8e9dc06063def818172e443e87b0511e5a6c95a84a1b5f4a5f841')
@@ -55,8 +56,6 @@ build() {
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
     $_arch-cmake -G Ninja -B build-$_arch -S $_pkgfqn \
       -DQT_HOST_PATH=/usr \
-      -DQT_HOST_PATH=/usr \
-      -DFEATURE_pkg_config=ON \
       -DFEATURE_pkg_config=ON \
       -DFEATURE_system_pcre2=ON \
       -DFEATURE_system_freetype=ON \
@@ -84,16 +83,23 @@ package() {
 
     install -Dm644 $_pkgfqn/LICENSE* -t "$pkgdir"/usr/$_arch/share/licenses/$pkgname
 
-    # Symlinks for backwards compatibility
+    # Add symlinks of DLLs in usual bin directory
     mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/$_arch/bin"
     for dll in "$pkgdir"/usr/$_arch/lib/qt6/bin/*.dll; do
         ln -rs "$dll" "$pkgdir/usr/$_arch/bin/${dll##*/}"
     done
+
+    # Symlinks for backwards compatibility
     for qmake; do
         ln -rs "$pkgdir"/usr/$_arch/lib/qt6/bin/$_b "$pkgdir"/usr/bin/$_arch-$_b-qt6
     done
 
-    $_arch-strip --strip-unneeded "$pkgdir"/usr/$_arch/bin/*.dll
-    $_arch-strip -g "$pkgdir"/usr/$_arch/lib/*.a
+    # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+    find "$pkgdir/usr/$_arch/lib" -type f -name '*.prl' \
+      -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+
+    find "$pkgdir/usr/$_arch" -iname '*.exe' -exec $_arch-strip --strip-all {} \;
+    find "$pkgdir/usr/$_arch" -iname '*.dll' -exec $_arch-strip --strip-unneeded {} \;
+    find "$pkgdir/usr/$_arch" -iname '*.a'   -exec $_arch-strip -g {} \;
   done
 }
