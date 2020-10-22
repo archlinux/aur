@@ -2,7 +2,7 @@
 
 pkgname=awslogs
 pkgver=0.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc="AWS CloudWatch logs for Humans™"
 arch=('any')
 license=('Apache')
@@ -18,9 +18,15 @@ source=("https://github.com/jorgebastida/${pkgname}/archive/${pkgver}.tar.gz"
 sha512sums=('73f7d4e983b0a1658027aa88174ced0d2760823463c67832303be72b174ecdfbf6aabd73342634e233afd7736c57d397b55f0db89d0c59392145062de8868241'
             'ee96370c27a866ac503e498f0b2bdbe292633431343a2f458c3547d854f856e46e35af5dada4e757a7cfdf6790f9e5075a4ffd96622507e591e7c6edf7db73a9')
 
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  # See: https://github.com/jorgebastida/awslogs/pull/324
+  patch -Nfp1 < "$srcdir/exclude-tests.patch"
+}
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  patch -Nfp1 < "$srcdir/exclude-tests.patch"
   python setup.py build
 }
 

@@ -1,7 +1,7 @@
 pkgbase = awslogs
 	pkgdesc = AWS CloudWatch logs for Humans™
 	pkgver = 0.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jorgebastida/awslogs
 	arch = any
 	license = Apache
