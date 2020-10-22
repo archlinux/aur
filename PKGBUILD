@@ -7,9 +7,9 @@
 
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.1.1
+pkgver=4.2.0
 secp256k1ver=0.20.9
-pkgrel=6
+pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -58,7 +58,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz"
         "secp256k1-${secp256k1ver}.tar.gz::https://github.com/Bitcoin-ABC/secp256k1/archive/v${secp256k1ver}.tar.gz")
-sha256sums=('06acc6290c19a74d2a8cfb962f38e5fc260c9a76aeb14a4d15bfa288eb69fdaf'
+sha256sums=('7bb1b227f206b8a237f9f99dd20513b6c60e5af19cc280a5068536502fb30aab'
             '68e84775e57da77e19ccb6b0dde6ca0882377bdd48ecc6da0047a70201ec64c8')
 
 prepare() {
@@ -74,9 +74,9 @@ build() {
   # python2-pyqt5 and qt5-base are needed for _only_ the icons...
 
   # Compile the icons file for Qt:
-  pyrcc5 icons.qrc -o gui/qt/icons_rc.py
+  pyrcc5 icons.qrc -o electroncash_gui/qt/icons_rc.py
   # Compile the protobuf description file:
-  protoc --proto_path=lib/ --python_out=lib/ lib/paymentrequest.proto
+  protoc --proto_path=electroncash/ --python_out=electroncash/ electroncash/paymentrequest.proto
   # Create translations (optional):
   python contrib/make_locale
   # Use libsecp
