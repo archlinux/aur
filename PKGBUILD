@@ -40,7 +40,7 @@ build() {
 #	cd "$srcdir/${pkgname%-git}"
 	cd "$srcdir/RandomX/build"
 	cmake -DARCH=native ..
-	/usr/bin/make
+	make
 }
 
 #check() {
