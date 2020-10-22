@@ -1,6 +1,7 @@
 # Maintainer: Benoît Rouits <brouits at free dot fr>
 
 pkgname=qspeakers-svn
+_pkgbranch=qtcharts
 pkgver=r268
 pkgrel=2
 pkgdesc="DIY speaker design software"
@@ -12,7 +13,7 @@ makedepends=('subversion')
 conflicts=('qspeakers')
 install=qspeakers-svn.install
 source=(
-  "${pkgname}::svn://svn.gtmp.org/svn/qspeakers/branches/qtcharts"
+  "${pkgname}::svn://svn.gtmp.org/svn/qspeakers/branches/$_pkgbranch"
 )
  
 sha256sums=(
@@ -20,19 +21,19 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${_pkgbranch}"
   local ver="$(svnversion)"
   printf "r%s" "${ver}" 
 }
 
 build() {
-  cd "${srcdir}/$pkgname"
+  cd "${srcdir}/_$pkgbranch"
   qmake-qt5 PREFIX=/usr -config release
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgbranch}"
   make install INSTALL_ROOT="${pkgdir}"
 }
 
