@@ -7,7 +7,7 @@
 
 pkgname=salt-py3
 pkgver=3002
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Central system and configuration manager'
 arch=('any')
@@ -36,7 +36,7 @@ backup=('etc/logrotate.d/salt'
         'etc/salt/minion')
 
 install=salt.install
-source=("https://pypi.io/packages/source/s/salt/salt-$pkgver.tar.gz"
+source=("https://pypi.io/packages/source/s/salt/salt-${pkgver}.tar.gz"
         "salt.logrotate")
 
 sha512sums=(
@@ -49,27 +49,31 @@ b2sums=(
   0184dc30496c44add470c9d2f922133db5a43917040b3cc74025535132c5819edebc4523fa6d62a2b823fafe8ed8b7eeb3c489ad849cd1deea6f709c1e872317
 )
 
+prepare(){
+  echo "pycryptodomex" > "${srcdir}/salt-${pkgver}/requirements/crypto.txt"
+}
+
 build() {
-  cd salt-$pkgver
+  cd "${srcdir}/salt-${pkgver}"
   python setup.py build
 }
 
 package() {
-  install -Dm644 salt.logrotate "$pkgdir"/etc/logrotate.d/salt
+  install -Dm644 salt.logrotate "${pkgdir}/etc/logrotate.d/salt"
 
-  cd salt-$pkgver
-  python setup.py --salt-pidfile-dir="/run/salt" install --root="$pkgdir" --optimize=1 --skip-build
+  cd "salt-${pkgver}"
+  python setup.py --salt-pidfile-dir="/run/salt" install --root="${pkgdir}" --optimize=1 --skip-build
 
   # default config
-  install -Dm644 conf/master "$pkgdir/etc/salt/master"
-  install -Dm644 conf/minion "$pkgdir/etc/salt/minion"
+  install -Dm644 conf/master "${pkgdir}/etc/salt/master"
+  install -Dm644 conf/minion "${pkgdir}/etc/salt/minion"
 
   # systemd services
   for _svc in salt-master.service salt-syndic.service salt-minion.service salt-api.service; do
-    install -Dm644 pkg/$_svc "$pkgdir/usr/lib/systemd/system/$_svc"
+    install -Dm644 pkg/${_svc} "${pkgdir}/usr/lib/systemd/system/${_svc}"
   done
-  install -Dm644 pkg/salt.bash "$pkgdir/usr/share/bash-completion/completions/salt"
-  install -Dm644 pkg/zsh_completion.zsh "$pkgdir/usr/share/zsh/site-functions/_salt"
+  install -Dm644 pkg/salt.bash "${pkgdir}/usr/share/bash-completion/completions/salt"
+  install -Dm644 pkg/zsh_completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_salt"
 }
 
 # vim:set ts=2 sw=2 et:
