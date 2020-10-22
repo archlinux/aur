@@ -2,7 +2,7 @@
 
 pkgname=chronic
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Filters out standard output for cron emails.'
 arch=('x86_64')
 url='https://github.com/docwhat/chronic'
@@ -10,6 +10,7 @@ license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('9e0a50086f15d32c68cdafa22919f088813b64bd4890e667a7c08ed7ba7dce1c')
+conflicts=('moreutils')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -17,7 +18,7 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     go build -o chronic
 }
 
