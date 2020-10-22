@@ -10,6 +10,7 @@ arch=(any)
 url="https://github.com/Grenadingue/${_gitname}"
 license=('GPL3')
 makedepends=('make' 'gcc' 'git')
+provides=("${_pkgname}")
 source=("git+${url}.git")
 sha256sums=('SKIP')
 

@@ -8,6 +8,7 @@ pkgbase = wait-urandom-init-git
 	makedepends = make
 	makedepends = gcc
 	makedepends = git
+	provides = wait-urandom-init
 	source = git+https://github.com/Grenadingue/wait-urandom-init.git
 	sha256sums = SKIP
 
