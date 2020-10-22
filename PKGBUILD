@@ -1,4 +1,5 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Brad Ackerman <brad@facefault.org>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: EoleDev
 # Contributor: Jan Cholasta <grubber at grubber cz>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
@@ -9,7 +10,7 @@ pkgname=(python-ipalib
          freeipa-common
          freeipa-client-common
          freeipa-client)
-pkgver=4.8.8
+pkgver=4.8.10
 pkgrel=1
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
@@ -31,11 +32,14 @@ makedepends=('openldap'
              'python-jinja'
              'python-pyasn1-modules')
 options=(emptydirs)
+validpgpkeys=('0E63D716D76AC080A4A33513F40800B6298EB963')
 source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"
+        "https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz.asc"
         0001-platform-add-Arch-Linux-platform.patch
         freeipa-client-update-sshd_config
         freeipa-client-update-sshd_config.hook)
-sha256sums=('686a13fc3311cc05bd765e741fbc9c94bdcafa65a24766183da51a5ea0065516'
+sha256sums=('01e1d239e24c8841b1221c36d4fe50b7b4f165c022b888b8bdfb376fa55dc999'
+            'b3b9a8355c785ce7b9f24529aed3f39f297c0fb7bc8ed05b2d9bd3c6c9499a99'
             '07571a3899e4403a404ffe2ad96816f9978dc4c8efc3204df9748784623f253b'
             '9fbac49fa4bc23afe0c4d575ea2795f1da435399289dbd04c5a3ac47580e2a0d'
             '1e73f394d276357dcd578df7a349b1f381c9edc7b1c053ecf65f7a9255c0490d')
