@@ -1,8 +1,8 @@
-pkgbase = chatrullete-plus
-	pkgdesc = ChatRullete (Plus)
-	pkgver = 0.0.2
-	pkgrel = 9
-	url = https://github.com/vicimpa/chatrullete-plus
+pkgbase = chatroulette
+	pkgdesc = ChatRoulette desktop client whithout blocking virtual camera.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/vicimpa/chatroulette
 	arch = x86_64
 	license = custom
 	depends = libnotify
@@ -10,12 +10,11 @@ pkgbase = chatrullete-plus
 	depends = nspr
 	depends = nss
 	depends = gtk3
-	depends = opera-ffmpeg-codecs
 	depends = libegl
 	depends = libgles
 	optdepends = gnome-keyring
-	source = chatrullete-0.0.2-9.tar.gz::https://github.com/vicimpa/chatrullete-plus/releases/download/0.0.1/ChatRullete-linux-0.0.1.tar.gz
-	sha256sums = a166184a809fe48df21d66371b005e2bd9017ed54e8c86ac0734b56728d7d29b
+	source = chatroulette-0.0.1-1.tar.gz::https://github.com/vicimpa/chatroulette/releases/download/0.0.1/ChatRoulette-linux-0.0.1.tar.xz
+	sha256sums = d2b4aa7dde73c891b6360162e6a148f55685f9bfca84df828d95e3d3ef4c6d9d
 
-pkgname = chatrullete-plus
+pkgname = chatroulette
 
