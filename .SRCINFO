@@ -1,7 +1,7 @@
 pkgbase = mapbox-variant
 	pkgdesc = An header-only alternative to boost::variant for C++11 and C++14
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mapbox/variant
 	arch = x86_64
 	license = BSD
