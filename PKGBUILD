@@ -1,6 +1,6 @@
 pkgname=watchman-bin
 pkgver=2020.09.21.00
-pkgrel=1
+pkgrel=2
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
 arch=(x86_64)
@@ -33,7 +33,7 @@ prepare() {
 package() {
   install -Dt "$pkgdir/usr/bin" watchman
   install -Dm644 /dev/stdin "$pkgdir"/usr/lib/tmpfiles.d/watchman.conf <<END
-d /run/watchman 0777 root root
+d /run/watchman 1777 root root
 END
 }
 
