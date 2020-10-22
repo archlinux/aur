@@ -8,6 +8,7 @@ arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/molke-productions/qloud"
 license=('GPL')
 depends=('fftw' 'jack' 'qwt')
+conflicts=('qloud-qtcharts')
 source=("$pkgname.tar.gz::https://github.com/molke-productions/qloud/archive/v$_pkgver.tar.gz")
 sha512sums=('4ad124da340cd4f1e3ee43da65ba78c605665be7ce05fd375b09ecd785331adee56d4475b5d191fa7393528768e3c302a8051227d292ada57d2827ab0fffb5a1')
 
