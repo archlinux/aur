@@ -4,12 +4,12 @@
 
 pkgname=python-graph-tool
 pkgver=2.35
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python module for manipulation and statistical analysis of graphs'
 arch=('i686' 'x86_64')
 url='https://graph-tool.skewed.de'
 license=(GPL3)
-depends=(boost-libs python3 expat python3-scipy python-numpy cgal cairomm python-cairo python-zstandard)
+depends=(boost-libs python expat python-scipy python-numpy cgal cairomm python-cairo python-zstandard)
 makedepends=(boost sparsehash autoconf-archive)
 optdepends=('graphviz: graph layout'
 'python-matplotlib: graph drawing')
