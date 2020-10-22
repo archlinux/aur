@@ -3,7 +3,7 @@
 # Builder: lobisquit <enricolovisotto@gmail.com>
 
 pkgname=webpatente
-pkgver=4.2.22
+pkgver=4.4.13
 pkgrel=1
 pkgdesc="Practise to obtain Italian driving license"
 arch=('i686' 'x86_64' 'armhf')
@@ -12,10 +12,10 @@ license=(costum)
 
 depends=("gtk2" "libxt" "dbus-glib" "alsa-lib" "desktop-file-utils")
 
-source=("licenza.pdf::https://www.dropbox.com/s/c92tie6qzparj0l/licenza.pdf?dl=1")
-source_i686=("$pkgname-$pkgver-i686.deb::https://www.dropbox.com/s/solm573urei9y3x/webpatente-4.2.22-i386.deb?dl=1")
-source_x86_64=("$pkgname-$pkgver-x86_64.deb::https://www.dropbox.com/s/drdrbjltcg3omir/webpatente-4.2.22-x86_64.deb?dl=1")
-source_armhf=("$pkgname-$pkgver-armhf.deb::https://www.dropbox.com/s/9xmsyoa5kvyarod/webpatente-4.2.20-armhf.deb?dl=1")
+source=("contrattodilicenzauf2014.pdf::https://www.rmastri.it/request.php?129")
+source_i686=("$pkgname-$pkgver-i686.deb::https://www.rmastri.it/request.php?131")
+source_x86_64=("$pkgname-$pkgver-x86_64.deb::https://www.rmastri.it/request.php?139")
+source_armhf=("$pkgname-$pkgver-armhf.deb::https://www.rmastri.it/request.php?166")
 
 install=$pkgname.install
 
