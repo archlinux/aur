@@ -1,11 +1,10 @@
 #! /bin/sh
 
 set -e
-
-name="ODAFileConverter_QT5_lnxX64_7.2dll.deb"
+name="ODAFileConverter_QT5_lnxX64_7.2dll_21.9.deb"
 dest="/tmp/$name"
 
-wget -N "https://download.opendesign.com/guestfiles/ODAFileConverter/$name" -P "/tmp/"
+wget -N "https://download.opendesign.com/guestfiles/Demo/$name" -P "/tmp/"
 new=( $(sha256sum "$dest") )
 old=$(grep -oP "sha256sums=\('\K[[:alnum:]]{64}(?=')" PKGBUILD)
 
