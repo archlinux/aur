@@ -11,13 +11,21 @@ depends=('glibc')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://git.sr.ht/~martijnbraam/among-sus")
-md5sums=('SKIP')
+source=("${_pkgname}::git+https://git.sr.ht/~martijnbraam/among-sus"
+	'0001-Add-ldflags-to-Makefile.patch')
+md5sums=('SKIP'
+         '249ccb050e1dd57cdf713aae53b95938')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
 	
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+	cd "$srcdir/${_pkgname}"
+
+	patch -p1 -i ${srcdir}/0001-Add-ldflags-to-Makefile.patch
 }
 
 build() {

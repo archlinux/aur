@@ -11,7 +11,9 @@ pkgbase = among-sus-git
 	provides = among-sus
 	conflicts = among-sus
 	source = among-sus::git+https://git.sr.ht/~martijnbraam/among-sus
+	source = 0001-Add-ldflags-to-Makefile.patch
 	md5sums = SKIP
+	md5sums = 249ccb050e1dd57cdf713aae53b95938
 
 pkgname = among-sus-git
 
