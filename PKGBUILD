@@ -13,7 +13,7 @@ makedepends=('subversion')
 conflicts=('qspeakers')
 install=qspeakers-svn.install
 source=(
-  "${pkgname}::svn://svn.gtmp.org/qspeakers/branches/${_pkgbranch}"
+  "${pkgname}::svn://svn.gtmp.org/qspeakers/branches/qtcharts"
 )
  
 sha256sums=(
@@ -21,19 +21,19 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "${srcdir}/${_pkgbranch}"
+  cd "${srcdir}/${pkgname}"
   local ver="$(svnversion)"
   printf "r%s" "${ver}" 
 }
 
 build() {
-  cd "${srcdir}/${_pkgbranch}"
+  cd "${srcdir}/${pkgname}"
   qmake-qt5 PREFIX=/usr -config release
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgbranch}"
+  cd "${srcdir}/${pkgname}"
   make install INSTALL_ROOT="${pkgdir}"
 }
 
