@@ -8,6 +8,7 @@ pkgbase = elm-language-server
 	license = MIT
 	makedepends = npm
 	makedepends = jq
+	makedepends = git
 	depends = nodejs
 	noextract = elm-language-server-1.13.1.tgz
 	options = !strip
