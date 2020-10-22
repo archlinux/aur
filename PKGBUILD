@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=basilisk
-pkgver=2020.09.11
+pkgver=2020.10.05
 pkgrel=1
 pkgdesc="Standalone web browser forked from mozilla.org"
 arch=('x86_64')
@@ -12,18 +12,18 @@ license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'libxt' 'mime-types' 'alsa-lib' 'ffmpeg' 'ttf-font')
 makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'autoconf2.13')
 options=('!emptydirs')
-_commit=42f895f27f239e973c9c06241f7a58da7381353c
-source=("https://github.com/MoonchildProductions/Basilisk/archive/v$pkgver.tar.gz"
-        "https://github.com/MoonchildProductions/UXP/archive/$_commit.tar.gz"
-        "https://raw.githubusercontent.com/MoonchildProductions/Pale-Moon/1f08c80172805b68ac36dd368a36f1e6828fc662/palemoon/branding/official/palemoon.desktop")
-sha256sums=('c6e320da944ab4d90f834af17717f94805b01441f00bbc08937a7a9fa2ff6120'
-            '005e551641933a477f97375c5bca5946c7dbef928b06e3321bece193f31d59bc'
-            '98fce6e155a0c0243886b09364ab925d742cdc97d631bfd1019a2c597aed42fc')
+_UXP=20201001
+source=("https://repo.palemoon.org/MCP/Basilisk/archive/v${pkgver}.tar.gz"
+        "https://repo.palemoon.org/MCP/UXP/archive/RELBASE_${_UXP}.tar.gz"
+        "https://repo.palemoon.org/MCP/Pale-Moon/raw/commit/7046794388319744751208a8d0e98e27861f67ce/palemoon/branding/unofficial/browser.desktop")
+sha256sums=('dace20613e2571a9f34d6f9b69804aed542710d0b2023a16ee76797ee130e3ac'
+            '6618b60ec5c05f8d3c57b2461791b176637971d145efb6dd73028bf463a0668d'
+            '9ffbaa46c277e3c9addc2ce61b17e8eccffd3860706ca75d4fd70eeaa6f5e380')
 
 prepare() {
-  cd "$srcdir/Basilisk-$pkgver"
+  cd "$srcdir/$pkgname"
 
-  mv -T "$srcdir/UXP-$_commit" platform
+  mv -T "$srcdir/uxp" platform
   ln -s basilisk browser
 
   cat > .mozconfig << EOF
@@ -98,13 +98,13 @@ EOF
 }
 
 build() {
-  cd "$srcdir/Basilisk-$pkgver"
+  cd "$srcdir/$pkgname"
 
   make -f client.mk build
 }
 
 package() {
-  cd "$srcdir/Basilisk-$pkgver"
+  cd "$srcdir/$pkgname"
 
   make -f client.mk DESTDIR="$pkgdir" install
 
@@ -122,10 +122,11 @@ package() {
   install -Dm644 basilisk/branding/official/content/about-logo@2x.png \
     "$pkgdir/usr/share/icons/hicolor/384x384/apps/basilisk.png"
 
-  install -Dm644 "$srcdir/palemoon.desktop" \
+  install -Dm644 "$srcdir/browser.desktop" \
     "$pkgdir/usr/share/applications/basilisk.desktop"
-  sed -i -e "s:Pale Moon:Basilisk:" -e "s:palemoon:basilisk:" \
+  sed -i -e "s:Web Browser:Basilisk:" -e "s:palemoon:basilisk:" \
     -e "s@https://start.palemoon.org@about:newtab@" \
+    -e "s:Name=Browser:Name=Basilisk:" \
     "$pkgdir/usr/share/applications/basilisk.desktop"
 
   # Replace duplicate binary with symlink
