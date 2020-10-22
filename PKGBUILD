@@ -4,16 +4,16 @@
 
 pkgname=liquidshell-git
 _gitname=liquidshell
-pkgver=r266.d12f28a
+pkgver=r324.2cf42c8
 pkgrel=1
 pkgdesc='Alternative desktop replacement for Plasma, using QtWidgets instead of QtQuick to ensure hardware acceleration is not required'
 arch=('x86_64')
-url='https://cgit.kde.org/liquidshell.git/'
+url='https://invent.kde.org/system/liquidshell'
 license=('GPL3')
 depends=('networkmanager-qt' 'bluez-qt' 'kcmutils' 'knewstuff' 'packagekit-qt5' 'hicolor-icon-theme')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'ruby' 'svn')
+makedepends=('cmake' 'extra-cmake-modules' 'git')
 optdepends=('ksysguard' 'kconfig')
-source=("git+git://anongit.kde.org/liquidshell.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -29,7 +29,7 @@ build() {
    mkdir build && cd build
    cmake .. \
          -DCMAKE_INSTALL_PREFIX=/usr
-   make fetch-translations
+   
 
 }
 
