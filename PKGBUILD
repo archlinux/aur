@@ -13,7 +13,7 @@ pkgname=discord-canary-electron-bin
 # Name of the tar.
 _pkgname=discord-canary
 pkgver=0.0.114
-pkgrel=2
+pkgrel=3
 pkgdesc="Discord Canary (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
 provides=('discord-canary')
