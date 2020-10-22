@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+
+Version=1.0
+Name=ChatRoulette
+Comment=Chatroulette client for Linux
+Path=/usr/lib/chatroulette
+Exec=/usr/lib/chatroulette/chatroulette
+Icon=chatroulette
+Terminal=false
+Categories=Network;
