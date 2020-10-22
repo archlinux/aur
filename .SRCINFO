@@ -6,7 +6,6 @@ pkgbase = sicuit
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = gcc
 	makedepends = meson
 	depends = gpgme
 	depends = icu

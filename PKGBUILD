@@ -3,7 +3,7 @@
 arch=('i686' 'x86_64')
 depends=('gpgme' 'icu' 'libeno' 'ncurses')
 license=('GPL3')
-makedepends=('gcc' 'meson')
+makedepends=('meson')
 md5sums=('0097e41fdd796ad19b1e1024f9a00882')
 pkgdesc="Minimal plaintext password store"
 pkgname=sicuit
