@@ -2,8 +2,8 @@
 
 _pkgname=filezilla
 pkgname="$_pkgname-bin"
-pkgver=3.50.0
-pkgrel=3
+pkgver=3.51.0
+pkgrel=1
 pkgdesc='Free, open source FTP, FTPS and SFTP client (Pre-built binary)'
 arch=('i686' 'x86_64')
 url='https://filezilla-project.org'
@@ -32,23 +32,20 @@ sha512sums=(
 )
 
 package() {
-    # filezilla
-    mkdir -p "${pkgdir}/usr/bin/"
-    mkdir -p "${pkgdir}/usr/share/"
-    cp -r "${srcdir}/FileZilla3/bin/"* "${pkgdir}/usr/bin/"
-    cp -r "${srcdir}/FileZilla3/share/"* "${pkgdir}/usr/share/"
+    rm -rf "${srcdir}/FileZilla_${pkgver}_${machine_arch}-linux-gnu.tar.bz2"
+    mkdir -p "${pkgdir}/opt/" "${pkgdir}/usr/bin/"
+    cp -r "${srcdir}/"* "${pkgdir}/opt/"
 
-    # libfilezilla
-    mkdir -p "${pkgdir}/usr/lib/"
-    cp -r "${srcdir}/FileZilla3/lib/"* "${pkgdir}/usr/lib/"
+    mv "${pkgdir}/opt/FileZilla3/share" "${pkgdir}/usr/"
 
-    # remove conflict files
-    rm -rf "${pkgdir}/usr/lib/libgmp."*
-    rm -rf "${pkgdir}/usr/lib/libgnutls."*
-    rm -rf "${pkgdir}/usr/lib/libhogweed."*
-    rm -rf "${pkgdir}/usr/lib/libnettle."*
-    rm -rf "${pkgdir}/usr/lib/libsqlite3."*
-
-    chmod -R 755 "${pkgdir}/usr/"
+    local _fullpath _filename _make_link
+    function _make_link () {
+        ln -s "${1}" "${2}"
+        echo "Created symlink ${1} -> ${2}"
+    }
+    for _fullpath in "${pkgdir}/opt/FileZilla3/bin/"* ;do
+        _filename="$(basename "${_fullpath}")"
+        _make_link "/opt/FileZilla3/bin/${_filename}"  "${pkgdir}/usr/bin/${_filename}" 
+    done
 }
 
