@@ -9,13 +9,13 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-readline
 pkgver=${_basever}.${_patchlevel}
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU readline library (mingw-w64)"
 arch=('any')
 url="https://tiswww.case.edu/php/chet/readline/rltop.html"
 license=('GPL')
 depends=('mingw-w64-crt'
-         'mingw-w64-pdcurses')
+         'mingw-w64-pdcurses-win32a')
 makedepends=('mingw-w64-configure')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://ftp.gnu.org/gnu/readline/readline-${_basever}.tar.gz"{,.sig})

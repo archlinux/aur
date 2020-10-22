@@ -1,13 +1,13 @@
 pkgbase = mingw-w64-readline
 	pkgdesc = GNU readline library (mingw-w64)
 	pkgver = 8.0.004
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tiswww.case.edu/php/chet/readline/rltop.html
 	arch = any
 	license = GPL
 	makedepends = mingw-w64-configure
 	depends = mingw-w64-crt
-	depends = mingw-w64-pdcurses
+	depends = mingw-w64-pdcurses-win32a
 	options = !strip
 	options = staticlibs
 	options = !buildflags
