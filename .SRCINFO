@@ -1,0 +1,18 @@
+pkgbase = mgit
+	pkgdesc = Run git on multiple projects.
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://crates.io/crates/mgit
+	arch = x86_64
+	license = MIT
+	checkdepends = rust
+	checkdepends = git
+	makedepends = rust
+	makedepends = gcc
+	depends = git
+	provides = mgit
+	source = mgit-0.1.10.tar.gz::https://github.com/koozz/mgit/archive/0.1.10.tar.gz
+	sha256sums = 8007e08059c9c97e07078beb59d3e37635b06b6a14cbecf7c237ea7f8f087681
+
+pkgname = mgit
+
