@@ -22,8 +22,8 @@ optdepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/BLumia/pineapple-pictures/archive/${pkgver}.tar.gz"
 )
-md5sums=(
-    'SKIP'
+sha256sums=(
+    '5215e30b31962dd0ceb2961819a80f9bb459329537bda90c5c2022c4260f5235'
 )
 
 build () {
