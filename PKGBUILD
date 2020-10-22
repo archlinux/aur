@@ -1,11 +1,12 @@
-# Maintainer: Jack Chen <redchenjs at live dot com>
+# Maintainer: Xnopyt <billy@xnopyt.info>
+# Contributor: Jack Chen <redchenjs at live dot com>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Robosky <fangyuhao0612 at gmail dot com>
 
-pkgname=anbox-image-gapps
+pkgname=anbox-image-gapps-magisk
 pkgver=2018.07.19
 pkgrel=15
-pkgdesc="Android image for running in Anbox, with OpenGApps and Houdini"
+pkgdesc="Android image for running in Anbox, with OpenGApps, Houdini and Magisk (Bootless)"
 arch=('x86_64')
 url="https://anbox.io"
 license=('custom')
@@ -26,6 +27,9 @@ source=(
     "https://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img"
     "https://github.com/redchenjs/aur-packages/raw/master/anbox-image/houdini_y.sfs"
     "https://github.com/redchenjs/aur-packages/raw/master/anbox-image/houdini_z.sfs"
+    "https://github.com/topjohnwu/Magisk/releases/download/v20.4/Magisk-v20.4.zip"
+    "magisk-init-rc.patch"
+    "init-magisk.sh"
     "media_codecs.xml"
     "media_codecs_google_video.xml"
     "media_codecs_google_audio.xml"
@@ -36,6 +40,9 @@ md5sums=(
     '26874452a6521ec2e37400670d438e33'
     '7ebf618b1af94a02322d9f2d2610090b'
     '5ca37e1629edb7d13b18751b72dc98ad'
+    '9503fc692e03d60cb8897ff2753c193f'
+    '52959db8bc730ee3b7ab2cff7d41b299'
+    'ec1cc3310ea277c66fa6f44ab7b45a13'
     'a638728bc2413d908f5eb44a9f09e947'
     '599598e70060eb74c119cf7dac0ce466'
     '43193761081a04ca18a28d4a6e039950'
@@ -117,6 +124,19 @@ build () {
         tar --lzip -xvf ./Core/$i.tar.lz
         cp -r ./$i/nodpi/priv-app/* ./squashfs-root/system/priv-app/
     done
+
+    # install magisk
+    rm -f ./squashfs-root/system/bin/su
+    rm -f ./squashfs-root/system/xbin/su
+    rm -f ./squashfs-root/system/sbin/su
+
+    install -Dm 700 ./init-magisk.sh ./squashfs-root/system/bin/init-magisk.sh
+    install -Dm 700 ./x86/magiskinit ./squashfs-root/sbin/magiskinit
+    cd "$srcdir"/squashfs-root/sbin
+    ln -s magiskinit magisk
+    ln -s magiskinit magiskpolicy
+    cd "$srcdir"
+    patch --forward --strip=1 --input="${srcdir}/magisk-init-rc.patch"
 }
 
 package() {
