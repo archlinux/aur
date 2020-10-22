@@ -1,7 +1,7 @@
 pkgbase = lftp-git
 	pkgdesc = Sophisticated file transfer program
-	pkgver = 4.9.2.r0.g586b2562
-	pkgrel = 2
+	pkgver = 4.9.2.r2.g11482e5e
+	pkgrel = 1
 	url = https://lftp.yar.ru/
 	arch = i686
 	arch = x86_64
@@ -19,9 +19,7 @@ pkgbase = lftp-git
 	conflicts = lftp
 	backup = etc/lftp.conf
 	source = git+https://github.com/lavv17/lftp.git
-	source = autoconf_bump.patch::https://github.com/lavv17/lftp/commit/df0b2b8e4fb3f334114651d9d7b8be5f8e738375.patch
 	sha256sums = SKIP
-	sha256sums = 3838c1964d40fec4a8738513a40e4b593c849dfc0675dd0a45467a14285a3c9c
 
 pkgname = lftp-git
 
