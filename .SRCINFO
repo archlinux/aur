@@ -1,0 +1,14 @@
+pkgbase = paperview-git
+	pkgdesc = A high performance X11 animated wallpaper setter
+	pkgver = r15.40162fb
+	pkgrel = 1
+	url = https://github.com/glouw/paperview
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = sdl2
+	source = paperview-git-r15.40162fb::git+https://github.com/glouw/paperview
+	sha256sums = SKIP
+
+pkgname = paperview-git
+
