@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wordpress-git
-pkgver=5.2.1.r75.gce21465841
-pkgrel=2
+pkgver=5.5.1.r489.ge4fadc6f4d
+pkgrel=1
 pkgdesc="Blog tool, publishing platform and CMS"
 arch=('any')
 url="https://wordpress.org/"
@@ -15,20 +15,12 @@ optdepends=('apache: Web server for serving WordPress'
 provides=('wordpress')
 conflicts=('wordpress')
 install=wordpress.install
-source=("git://core.git.wordpress.org/"
-        "password_reset_exploit.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/password_reset_exploit.patch?h=packages/wordpress")
-sha256sums=('SKIP'
-            'SKIP')
+source=("git://develop.git.wordpress.org/")
+sha256sums=('SKIP')
 
-
-prepare() {
-  cd "core"
-
-  patch -Np1 -i "$srcdir/password_reset_exploit.patch"
-}
 
 pkgver() {
-  cd "core"
+  cd "develop"
 
   _tag=$(git tag -l --sort -v:refname | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
@@ -37,8 +29,8 @@ pkgver() {
 }
 
 package() {
-  cd "core"
+  cd "develop"
 
   install -d "$pkgdir/usr/share/webapps/wordpress"
-  cp -r ./* "$pkgdir/usr/share/webapps/wordpress"
+  cp -r "src"/* "$pkgdir/usr/share/webapps/wordpress"
 }

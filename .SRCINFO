@@ -1,7 +1,7 @@
 pkgbase = wordpress-git
 	pkgdesc = Blog tool, publishing platform and CMS
-	pkgver = 5.2.1.r75.gce21465841
-	pkgrel = 2
+	pkgver = 5.5.1.r489.ge4fadc6f4d
+	pkgrel = 1
 	url = https://wordpress.org/
 	install = wordpress.install
 	arch = any
@@ -13,9 +13,7 @@ pkgbase = wordpress-git
 	optdepends = nginx: Web server for serving WordPress
 	provides = wordpress
 	conflicts = wordpress
-	source = git://core.git.wordpress.org/
-	source = password_reset_exploit.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/password_reset_exploit.patch?h=packages/wordpress
-	sha256sums = SKIP
+	source = git://develop.git.wordpress.org/
 	sha256sums = SKIP
 
 pkgname = wordpress-git
