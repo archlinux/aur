@@ -1,12 +1,13 @@
 pkgbase = gephgui-git
 	pkgdesc = Geph connects you with the censorship-free Internet, even when nothing else works
-	pkgver = r61.1b47287
-	pkgrel = 1.1
+	pkgver = r77.7f60599
+	pkgrel = 1
 	url = https://github.com/geph-official/gephgui
 	arch = x86_64
 	license = custom
 	makedepends = npm
 	makedepends = git
+	depends = libxss
 	depends = gdk-pixbuf2
 	depends = geph-client-git
 	provides = gephgui

@@ -1,14 +1,15 @@
 # Maintainer: Dct Mei <dctxmei@gmail.com>
+# Maintainer: Steven Tang <xosdy.t@gmail.com>
 
 pkgname=gephgui-git
 _pkgname=gephgui
-pkgver=r61.1b47287
-pkgrel=1.1
+pkgver=r77.7f60599
+pkgrel=1
 pkgdesc="Geph connects you with the censorship-free Internet, even when nothing else works"
 arch=('x86_64')
 url="https://github.com/geph-official/gephgui"
 license=('custom')
-depends=('gdk-pixbuf2' 'geph-client-git')
+depends=('libxss' 'gdk-pixbuf2' 'geph-client-git')
 makedepends=('npm' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
