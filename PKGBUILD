@@ -3,7 +3,7 @@
 pkgname=hsphfpd-git
 pkgdesc="Prototype implementation for connecting Bluetooth devices with HSP and HFP profiles"
 pkgver=r12.e254c6a
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url=https://github.com/pali/hsphfpd-prototype
 license=(unknown)
@@ -30,4 +30,5 @@ package() {
     install -Dm644 org.hsphfpd.conf -t "$pkgdir"/etc/dbus-1/system.d
     install -Dm755 hsphfpd.pl -t "$pkgdir"/usr/bin
     install -Dm755 telephony_client.pl -t "$pkgdir"/usr/bin
+    install -Dm755 sco_features.pl -t "$pkgdir"/usr/bin
 }
