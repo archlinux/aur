@@ -1,7 +1,7 @@
 pkgbase = webpatente
 	pkgdesc = Practise to obtain Italian driving license
-	pkgver = 4.2.22
-	pkgrel = 1
+	pkgver = 4.4.13
+	pkgrel = 2
 	url = http://www.rmastri.it/
 	install = webpatente.install
 	arch = i686
@@ -13,13 +13,13 @@ pkgbase = webpatente
 	depends = dbus-glib
 	depends = alsa-lib
 	depends = desktop-file-utils
-	source = licenza.pdf::https://www.dropbox.com/s/c92tie6qzparj0l/licenza.pdf?dl=1
+	source = contrattodilicenzauf2014.pdf::https://www.rmastri.it/request.php?129
 	md5sums = 418af5c47148aee9597fdc426edf2395
-	source_i686 = webpatente-4.2.22-i686.deb::https://www.dropbox.com/s/solm573urei9y3x/webpatente-4.2.22-i386.deb?dl=1
+	source_i686 = webpatente-4.4.13-i686.deb::https://www.rmastri.it/request.php?131
 	md5sums_i686 = fddaabae0dacd0a207f2dbdb0a1c902c
-	source_x86_64 = webpatente-4.2.22-x86_64.deb::https://www.dropbox.com/s/drdrbjltcg3omir/webpatente-4.2.22-x86_64.deb?dl=1
+	source_x86_64 = webpatente-4.4.13-x86_64.deb::https://www.rmastri.it/request.php?139
 	md5sums_x86_64 = d5cb9deca7f12891bf28ecf560cfcd24
-	source_armhf = webpatente-4.2.22-armhf.deb::https://www.dropbox.com/s/9xmsyoa5kvyarod/webpatente-4.2.20-armhf.deb?dl=1
+	source_armhf = webpatente-4.2.22-armhf.deb::https://www.rmastri.it/request.php?166
 	md5sums_armhf = 8a9be978335fb516d283470c3f7fff3b
 
 pkgname = webpatente
