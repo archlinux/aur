@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-dev-ozone
-pkgver=87.0.4280.11
+pkgver=88.0.4292.2
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone (dev channel)"
@@ -28,12 +28,10 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        chromium-skia-harmony.patch
-        0001-Merge-to-M87-Disable-cfi-icall-for-generated-stubs.patch)
-sha256sums=('a7c9424f0efadddd62c80e9ec126779a0cb0cf99376241f48e5044af0142a83c'
+        chromium-skia-harmony.patch)
+sha256sums=('ade4b8a94e145ea25fc4da5749125437a5f22d9a4aa79bf863ebe2b6d783112d'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
-            '052c35ec5f9dacfe2baa8c82225079c95bbb089abd7be6fd89db3690c242718c')
+            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -83,8 +81,6 @@ prepare() {
 
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
-
-  patch -Np1 -i ../0001-Merge-to-M87-Disable-cfi-icall-for-generated-stubs.patch
 
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
