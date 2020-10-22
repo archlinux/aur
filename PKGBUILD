@@ -3,7 +3,7 @@
 
 _gemname=winrm
 pkgname=ruby-$_gemname
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 pkgdesc='Ruby library for Windows Remote Management'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-builder ruby-erubi ruby-gssapi ruby-gyoku ruby-httpclient rub
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('359709bee343fae36e976c85fb28a2e387ad7ab1')
+sha1sums=('a7dfeb9ef6e3375545da0d6d5e16572f05941156')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
