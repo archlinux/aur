@@ -6,7 +6,7 @@ pkgdesc="Open source wireless development platform suitable for Bluetooth experi
 url="https://github.com/greatscottgadgets/ubertooth/"
 arch=('x86_64' 'i686')
 license=('GPL')
-depends=('bluez-libs' 'libbtbb>=2018.12.R1' 'libusbx' 'libpcap' 'python-numpy' 'python-pyusb')
+depends=('bluez-libs' 'libbtbb>=2018.12.R1' 'libusb' 'libpcap' 'python-numpy' 'python-pyusb')
 optdepends=('qt5-declarative' 'python-pyside2')
 makedepends=('cmake')
 source=("https://github.com/greatscottgadgets/ubertooth/releases/download/${_pkgver}/ubertooth-${_pkgver}.tar.xz")
