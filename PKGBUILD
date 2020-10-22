@@ -9,13 +9,13 @@
 ### MERGE REQUESTS SELECTION
 
 # Merge Requests List: ('579' '1309' '1050' '1441')
-_merge_requests_to_use=('1050' '1309' '1441') # safe pick
+_merge_requests_to_use=('1050' '1309') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
 pkgver=3.38.1+9+g54936263c
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -134,7 +134,7 @@ prepare() {
   # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
   # Type: 1
   # Status: 3
-  # Comment: Help GPU frequencies to scale up
+  # Comment: Help GPU frequencies to scale up but not currently working on Wayland
    pick_mr '1441'
 
 }
