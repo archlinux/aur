@@ -19,8 +19,5 @@ pkgbase = webpatente
 	md5sums_i686 = fddaabae0dacd0a207f2dbdb0a1c902c
 	source_x86_64 = webpatente-4.4.13-x86_64.deb::https://www.rmastri.it/request.php?139
 	md5sums_x86_64 = d5cb9deca7f12891bf28ecf560cfcd24
-	source_armhf = webpatente-4.2.22-armhf.deb::https://www.rmastri.it/request.php?166
-	md5sums_armhf = 8a9be978335fb516d283470c3f7fff3b
-
 pkgname = webpatente
 
