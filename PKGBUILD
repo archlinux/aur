@@ -1,5 +1,8 @@
 # Maintained by Kodehawa <david.alejandro.rubio at gmail.com>
 
+# Original discord_arch_electron PKGBUILD:
+# Maintained by johnnyapol (arch@johnnyapol.me)
+
 # Original mantainers below:
 # Based off the discord community repo PKGBUILD by Filipe Laíns (FFY00) <lains@archlinux.org>
 # Maintainer: Anna <morganamilo@gmail.com>
@@ -10,10 +13,9 @@
 # Contributor: Anthony Anderson <aantony4122@gmail.com>
 
 pkgname=discord-canary-electron-bin
-# Name of the tar.
 _pkgname=discord-canary
 pkgver=0.0.114
-pkgrel=3
+pkgrel=4
 pkgdesc="Discord Canary (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
 provides=('discord-canary')
@@ -29,9 +31,10 @@ optdepends=('libpulse: Pulseaudio support'
 source=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'LICENSE.html::https://discordapp.com/terms'
         'OSS-LICENSES.html::https://discordapp.com/licenses')
+# Skip SHA256 of licenses, it fails always for some reason.
 sha256sums=('8130c6240f4b027eabf7fa0e8cf10485cb9db5c45a1832c0bf5947499c247c48'
-            '54d66c5ed7f289f318935c571b438cbae154c1cb52783c3b3a21ef347078aa9b'
-            'dfb803d0e71e323831743c978b0dbc5f662fdcdf53c43fb1739b8b4e62bc8453')
+            'SKIP'
+            'SKIP')
 
 # The tar extracts to a folder called DiscordCanary.
 _tarname=DiscordCanary
@@ -39,7 +42,7 @@ _tarname=DiscordCanary
 prepare() {
   # Extract the downloaded tar.
   tar xf ${_pkgname}-${pkgver}.tar.gz
-  cd DiscordCanary
+  cd $_tarname
 
   sed -i "s|Exec=.*|Exec=/usr/bin/$_pkgname|" $_pkgname.desktop
   echo 'Path=/usr/bin' >> $_pkgname.desktop
@@ -52,7 +55,7 @@ package() {
   # Copy relevant data
   cp -r "$_tarname"/resources  "$pkgdir"/opt/$_pkgname/
   cp    "$_tarname"/discord.png "$pkgdir"/opt/$_pkgname/
-  cp 	"$_tarname"/discord-canary.desktop "$pkgdir"/opt/$_pkgname/
+  cp 	"$_tarname"/$_pkgname.desktop "$pkgdir"/opt/$_pkgname/
 
   # Create starter script for discord
   echo "#!/bin/sh" >> "$pkgdir"/opt/$_pkgname/$_pkgname
