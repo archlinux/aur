@@ -30,7 +30,7 @@ pkgbase = simutrans-extended
 	sha256sums = 30e5d7e4dc90048a3df03d72cf7edc0e983ad1ef1b8ddce37b0aadf52ce66de5
 	sha256sums = e27c08194522e852385435b9c232bc378b058a3e9245df891787698a1c881ef4
 	sha256sums = 0efcf72d3670c53de99c44cb0d8f43f7e7663fda5df0f631ba6c687cc85967d3
-	sha256sums = 18444d02d9212938abc26bec60dda401dfeb24579c89be72274ec0da3c5d271d
+	sha256sums = 1707b5adff4174af173ac4d7a5cab1fbcda9245e55c0149ed5c3274e7bfc586c
 
 pkgname = simutrans-extended
 

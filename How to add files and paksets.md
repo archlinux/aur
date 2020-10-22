@@ -1,3 +1,10 @@
+# Preserving your game configuration
+
+To preserve your game config you need to copy `/usr/share/games/simutrans-extended/config/simuconf.tab` to `~/.config/simutrans-extended/simuconf.tab`. Otherwise, the original simuconf.tab file will be **overwrited** with every update.
+
+Additionally, you can also add non-pakset files (fonts, music, etc) in `~/.config/simutrans-extended`
+
+
 # Adding files in the user data directory (~/.local/share/simutrans-extended)
 
 Files in this directory are symlinked from: 
@@ -21,7 +28,3 @@ Symlinked files are updated everytime you open the game, so:
 2. New paksets installed will be picked up automatically.
 
 But please **don't replace symlinked files in this directory**. You will lose your replaced files when you open Simutrans! Instead, if you want, for example, to install another version of "pak64" rename it to "pak64-myversion".
-
-# Adding files in the user config directory (~/.config/simutrans-extended)
-
-Additionally, you can also add non-pakset files (fonts, music, etc) in `~/.config/simutrans-extended`
