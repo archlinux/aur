@@ -1,7 +1,7 @@
 pkgbase = wpspin
 	pkgdesc = WPS PIN generator
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/drygdryg/wpspin-nim
 	arch = x86_64
 	arch = i686

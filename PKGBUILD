@@ -2,7 +2,7 @@
 
 pkgname=wpspin
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WPS PIN generator"
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/drygdryg/wpspin-nim"
