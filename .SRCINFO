@@ -1,0 +1,22 @@
+pkgbase = python-matrix-reminder-bot
+	pkgdesc = Matrix bot to remind you about stuff.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/anoadragon453/matrix-reminder-bot
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-matrix-nio
+	depends = python-markdown
+	depends = python-yaml
+	depends = python-dateparser
+	depends = python-readabledelta
+	depends = python-apscheduler
+	depends = python-pytz
+	optdepends = python-psycopg2
+	source = https://github.com/anoadragon453/matrix-reminder-bot/archive/v0.2.0.tar.gz
+	sha256sums = bf346bdf5dfa17219f0cc06c24751404e4d0e0dbcc9a41391c87145032df45b5
+
+pkgname = python-matrix-reminder-bot
+
