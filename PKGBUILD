@@ -1,12 +1,12 @@
 pkgname='sprunge-git'
-pkgver=0.4.r0.gca54f95
+pkgver=0.5.r2.g31e8914
 pkgrel=1
 pkgdesc='Upload data to sprunge.us via stdin'
 license=('GPL2')
 url='https://github.com/kevr/sprunge'
 
 arch=('i686' 'x86_64' 'armv6h')
-depends=('python')
+depends=('python' 'python-requests')
 conflicts=("${pkgname%-git}")
 optdepends=('xclip: default --clip-command')
 makedepends=('git')
