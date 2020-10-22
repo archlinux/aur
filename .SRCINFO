@@ -3,6 +3,7 @@ pkgbase = memavaild-git
 	pkgver = 0.5.r12.geb346e7
 	pkgrel = 1
 	url = https://github.com/hakavlad/memavaild
+	install = memavaild.install
 	arch = any
 	license = MIT
 	makedepends = git
