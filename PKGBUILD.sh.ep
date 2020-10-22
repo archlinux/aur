@@ -1,11 +1,11 @@
 % layout 'qt6-module';
 \
-_qtver=6.0.0-alpha
+_qtver=6.0.0-beta1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
-pkgdesc='Classes from Qt 5'
+pkgdesc='Module that contains unsupported Qt 5 APIs'
 depends=(qt6-base)
 makedepends=(cmake ninja)
