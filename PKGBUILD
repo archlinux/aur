@@ -1,6 +1,6 @@
 # Maintainer: hokkjoy <hokkjoy@pickaxelinux.org>
 pkgname=randomx-git
-pkgver=r289.1f62d78
+pkgver=r398.5ce5f49
 pkgrel=1
 pkgdesc="RandomX: The proof of work algorithm based on random code execution"
 arch=('x86_64')
@@ -30,15 +30,17 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-#prepare() {
+prepare() {
+	mkdir -p "$srcdir/RandomX/build"
 #	cd "$srcdir/${pkgname%-git}"
 #	patch -p1 -i "$srcdir/${pkgname%-git}.patch"
-#}
+}
 
 build() {
 #	cd "$srcdir/${pkgname%-git}"
-	cd "$srcdir/RandomX"
-	make
+	cd "$srcdir/RandomX/build"
+	cmake -DARCH=native ..
+	/usr/bin/make
 }
 
 #check() {
@@ -50,8 +52,7 @@ package() {
 #	cd "$srcdir/${pkgname%-git}"
 	cd "$srcdir/RandomX"
 #	make DESTDIR="$pkgdir/" install
-	install -Dm755 "${srcdir}/RandomX/bin/randomx-benchmark" "${pkgdir}/usr/bin/randomx-benchmark"
-	install -Dm755 "${srcdir}/RandomX/bin/randomx-generator" "${pkgdir}/usr/bin/randomx-generator"
-	install -Dm755 "${srcdir}/RandomX/bin/randomx-tests" "${pkgdir}/usr/bin/randomx-tests"
-	install -Dm755 "${srcdir}/RandomX/bin/librandomx.a" "${pkgdir}/usr/lib/librandomx.a"
+	install -Dm755 "${srcdir}/RandomX/build/randomx-benchmark" "${pkgdir}/usr/bin/randomx-benchmark"
+	install -Dm755 "${srcdir}/RandomX/build/randomx-codegen" "${pkgdir}/usr/bin/randomx-codegen"
+	install -Dm755 "${srcdir}/RandomX/build/randomx-tests" "${pkgdir}/usr/bin/randomx-tests"
 }
