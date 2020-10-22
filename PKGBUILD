@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq' 'git')
 source=("https://registry.npmjs.org/@elm-tooling/elm-language-server/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-md5sums=('03db1f227f409702b6f78bce16918d20')
+sha256sums=('23e4d2b23c42c6e190ef9178955500f73bd58532c28638f33bafb299c2010d12')
 options=(!strip)
 
 package() {
