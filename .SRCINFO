@@ -1,6 +1,6 @@
 pkgbase = wlsunset-git
 	pkgdesc = Day/night gamma adjustments for Wayland
-	pkgver = r16.ef117f0
+	pkgver = 0.1.0.r0.0569fb4
 	pkgrel = 1
 	url = https://git.sr.ht/~kennylevinsen/wlsunset
 	arch = x86_64
