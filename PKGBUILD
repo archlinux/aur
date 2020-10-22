@@ -1,72 +1,83 @@
-# Maintainer: Alad Wenter <alad@mailbox.org>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Alad Wenter <alad@mailbox.org>
 # Contributor: Carlos Pita <carlosjosepita@gmail.com>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 
 pkgname=bash-devel-git
-pkgdesc='The GNU Bourne Again shell (development version)'
-pkgver=4.0.alpha.r535.g560db36b
+pkgver=r1155.g75c5460c
 pkgrel=1
-url='http://www.gnu.org/software/bash/bash.html'
+pkgdesc="The GNU Bourne Again shell (development version)"
 arch=('i686' 'x86_64')
+url="https://www.gnu.org/software/bash/bash.html"
 license=('GPL')
-backup=(etc/bash.bash{rc,_logout} etc/skel/.bash{rc,_profile,_logout})
-depends=('glibc' 'ncurses' 'libncursesw.so')
+depends=('glibc' 'ncurses' 'readline>=7.0')
 makedepends=('git')
 optdepends=('bash-completion: for tab completion')
-provides=('sh' 'bash=4.4')
+provides=('bash' 'sh')
 conflicts=('bash')
-source=('git+https://git.savannah.gnu.org/git/bash.git#branch=devel'
-        'dot.bashrc'
-        'dot.bash_profile'
-        'dot.bash_logout'
-        'system.bashrc'
-        'system.bash_logout')
-md5sums=('SKIP'
-         '027d6bd8f5f6a06b75bb7698cb478089'
-         '2902e0fee7a9168f3a4fd2ccd60ff047'
-         '42f4400ed2314bd7519c020d0187edc5'
-         'd8f3f334e72c0e30032eae1a1229aef1'
-         '472f536d7c9e8250dc4568ec4cfaf294')
+backup=(etc/bash.bash{rc,_logout} etc/skel/.bash{rc,_profile,_logout})
+source=("git+https://git.savannah.gnu.org/git/bash.git#branch=devel"
+        "dot.bash_logout::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/bash/trunk/dot.bash_logout"
+        "dot.bash_profile::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/bash/trunk/dot.bash_profile"
+        "dot.bashrc::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/bash/trunk/dot.bashrc"
+        "system.bash_logout::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/bash/trunk/system.bash_logout"
+        "system.bashrc::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/bash/trunk/system.bashrc")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
+
 
 pkgver() {
-  cd bash
-  git describe --long --tags | sed -e 's/bash.//' -e 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "bash"
+
+  _rev=$(git rev-list --count --all)
+  _hash=$(git rev-parse --short HEAD)
+  printf "r%s.g%s" "$_rev" "$_hash"
 }
 
 build() {
-  cd bash
+  cd "bash"
+
   _bashconfig=(-DDEFAULT_PATH_VALUE=\'\"/usr/local/sbin:/usr/local/bin:/usr/bin\"\'
                -DSTANDARD_UTILS_PATH=\'\"/usr/bin\"\'
                -DSYS_BASHRC=\'\"/etc/bash.bashrc\"\'
                -DSYS_BASH_LOGOUT=\'\"/etc/bash.bash_logout\"\'
                -DNON_INTERACTIVE_LOGIN_SHELLS)
-  export CFLAGS="${CFLAGS} ${_bashconfig[@]}"
+  export CFLAGS="$CFLAGS ${_bashconfig[@]}"
 
-  # Note: This package does not use the system readline, as it depends on 
+  # Note: This package does not use the system readline, as it depends on
   # a development version which is usually not ABI-compatible.
-  ./configure --prefix=/usr --with-curses --enable-readline \
-              --without-bash-malloc
+  ./configure \
+    --prefix="/usr" \
+    --enable-readline \
+    --with-curses
   make
 }
 
-
 check() {
-  make -C bash check
+  cd "bash"
+
+  #make check
 }
 
 package() {
-  make -C bash DESTDIR="$pkgdir" install
-  ln -s bash "$pkgdir"/usr/bin/sh
-  install -dm755 "$pkgdir"/etc/skel
+  cd "bash"
+
+  make DESTDIR="$pkgdir" install
+
+  ln -s "bash" "$pkgdir/usr/bin/sh"
 
   # system-wide configuration files
-  install -m644 system.bashrc $pkgdir/etc/bash.bashrc
-  install -m644 system.bash_logout "$pkgdir"/etc/bash.bash_logout
+  install -Dm644 "$srcdir/system.bashrc" "$pkgdir/etc/bash.bashrc"
+  install -Dm644 "$srcdir/system.bash_logout" "$pkgdir/etc/bash.bash_logout"
 
   # user configuration file skeletons
-  install -m644 dot.bashrc "$pkgdir"/etc/skel/.bashrc
-  install -m644 dot.bash_profile "$pkgdir"/etc/skel/.bash_profile
-  install -m644 dot.bash_logout "$pkgdir"/etc/skel/.bash_logout
+  install -Dm644 "$srcdir/dot.bashrc" "$pkgdir/etc/skel/.bashrc"
+  install -Dm644 "$srcdir/dot.bash_profile" "$pkgdir/etc/skel/.bash_profile"
+  install -Dm644 "$srcdir/dot.bash_logout" "$pkgdir/etc/skel/.bash_logout"
 }
