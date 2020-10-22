@@ -1,43 +1,23 @@
 pkgbase = kata-containers-bin
 	pkgdesc = Lightweight virtual machines for containers (binary version)
-	pkgver = 1.11.3
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://katacontainers.io
 	arch = x86_64
 	license = Apache
-	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.11/Fedora_30/x86_64/kata-containers-image-1.11.3-7.1.x86_64.rpm
-	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.11/Fedora_30/x86_64/kata-ksm-throttler-1.11.3-7.1.x86_64.rpm
-	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.11/Fedora_30/x86_64/kata-linux-container-5.4.32.75-7.1.x86_64.rpm
-	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.11/Fedora_30/x86_64/kata-proxy-bin-1.11.3-7.1.x86_64.rpm
-	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.11/Fedora_30/x86_64/kata-runtime-1.11.3-7.1.x86_64.rpm
-	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.11/Fedora_30/x86_64/kata-shim-bin-1.11.3-7.1.x86_64.rpm
-	sha256sums = 0f791db850f54da333b0a106f5ed205c3ac00176b3d7b4c6be546cceff1aa04d
-	sha256sums = 1e108b6e233a0d34d8a130b75828644ff6a0d345eba05e0ded90121aa3371138
-	sha256sums = 45d210b29d6d11b9d9c62f55ec5b323a431016e6c872a24d5bf3e991fcd03ef0
-	sha256sums = 41e0661d9004d246b79b13f5854e93222b1415e2e50258477864ce4b73fd7ba9
-	sha256sums = d0af42580d0c37cf0adefbb395f6b40b0ea134fdc8a7cdb925971c36649d2760
-	sha256sums = 7adbd10bde3aee469087250ccab7b48f2cdb3e291872f76a2469f8ff917191e3
+	source = https://github.com/kata-containers/kata-containers/releases/download/2.0.0/kata-static-2.0.0-x86_64.tar.xz
+	sha512sums = a201f14d4e88307a8959b158aeaa2789906a913c0463aa60a6124befcb5f6e6c9b107c6cd30e0f3392901c6727972083b9261ec1b4d2d4755c58fa6c6106eca9
+	b2sums = 7bd43eb6facb6012b9c02613588683bea6fe8b3e1cbeb828bdabb7df815acd7c6c6cd9dc85ccc8956d1c304c342a33b356706947f4801c28b3f035b1403d2936
 
 pkgname = kata-runtime-bin
 	install = kata-runtime.install
 	depends = qemu-headless
-	depends = kata-proxy
-	depends = kata-shim
-	depends = kata-ksm-throttler
 	depends = kata-containers-image
 	depends = kata-linux-container
-	optdepends = cloud-hypervisor<0.8.0
+	optdepends = cloud-hypervisor<0.11.0
 	optdepends = firecracker<0.22.0
 	provides = kata-runtime
 	conflicts = kata-runtime
-
-pkgname = kata-proxy-bin
-	provides = kata-proxy
-	conflicts = kata-proxy
-
-pkgname = kata-shim-bin
-	provides = kata-shim
-	conflicts = kata-shim
 
 pkgname = kata-containers-image-bin
 	provides = kata-containers-image
@@ -46,8 +26,4 @@ pkgname = kata-containers-image-bin
 pkgname = kata-linux-container-bin
 	provides = kata-linux-container
 	conflicts = kata-linux-container
-
-pkgname = kata-ksm-throttler-bin
-	provides = kata-ksm-throttler
-	conflicts = kata-ksm-throttler
 
