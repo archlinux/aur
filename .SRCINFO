@@ -12,7 +12,7 @@ pkgbase = qspeakers-svn
 	depends = qt5-charts
 	depends = shared-mime-info
 	conflicts = qspeakers
-	source = qspeakers-svn::svn+https://svn.gtmp.org/svn/qspeakers/branches/qtcharts
+	source = qspeakers-svn::svn://svn.gtmp.org/svn/qspeakers/branches/qtcharts
 	sha256sums = SKIP
 
 pkgname = qspeakers-svn
