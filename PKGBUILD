@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=19.0a2
 #_major=18.7.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -78,7 +78,7 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/spdlog-$_spdlog_version.tar.gz"
-  cpuinfo
+  cheat-sse-build.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -101,7 +101,7 @@ b2sums=('f61ad74fdcf7254731842feb45897d46291bfe591fed7a1de2d91db36275e3310443fc9
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         '69024d77e6e7a5036e24729e337b17680dc3735cb1d209058a88b980989826fe56ff113c1177410106e0f70d827fa82603372277e3bc1aa4d12ffe5bb979af96'
         'bac6c6650f8347458dd2dd66f318b43a769b0896d68f6a6f1310754527a69feaa52b2f6f48d67c7e811c2dafa5d3863a9a07c738df8c12abed2718fb06254b28'
-        'e384224db97c88f67cee733d1ea5b0d0a32c532e7931b323724842e4182485d20fc25dc9f419343afdeafab19185c546c329736765c084a95a02a52c9df92679')
+        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0')
 prepare() {
   [[ -d kodi-build-x11 ]] && rm -rf kodi-build-x11
   mkdir kodi-build-x11
@@ -111,13 +111,6 @@ prepare() {
   mkdir kodi-build-gbm
 
   cd "xbmc-$_tag"
-
-  # detect if building in arch chroot using $pkgname rather than hard coding it into a patch
-  if [[ "$srcdir" =~ ^\/build.* ]]; then
-    local _find="exec_program(cat ARGS \"/proc/cpuinfo\" OUTPUT_VARIABLE CPUINFO)"
-    local _replace="exec_program(cat ARGS \"/build/$pkgname/src/cpuinfo\" OUTPUT_VARIABLE CPUINFO)"
-    sed -i s"|$_find|$_replace|" cmake/modules/FindSSE.cmake
-  fi
 
   # needed for `git apply` ... if you know how to avoid this let me know
   git init
@@ -136,6 +129,7 @@ prepare() {
     fi
   done
 
+  patch -p1 -i "$srcdir/cheat-sse-build.patch"
   rm -rf .git
 }
 
