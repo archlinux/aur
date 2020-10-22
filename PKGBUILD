@@ -3,7 +3,7 @@
 # Based on gtk4-git
 
 pkgname=gtk4
-pkgver=3.99.2
+pkgver=3.99.3
 pkgrel=2
 pkgdesc="GObject-based multi-platform GUI toolkit"
 arch=('i686' 'x86_64')
@@ -50,7 +50,7 @@ source=("https://gitlab.gnome.org/GNOME/gtk/-/archive/${pkgver}/gtk-${pkgver}.ta
         'gtk4-update-icon-cache.hook'
         'gtk4-update-icon-cache.script'
         'settings.ini')
-sha512sums=('bbb711ae2de296954f92b9c87c2071dccd720c809ca445a1c4b51a543ae3e9bbf4198ba581a0b92d0283889e696111984027544e17e00e7c1137dec03b37e8de'
+sha512sums=('f6d990943da2312e4db68147da93a73ab7ee069deb51aed9c5f08a0522e394d74e7327c28817ac8d9de22cd8e1f060e7bb51adc46ae1f21b0969438c5469b3d8'
             '5dcb698a15e7d5f4611c9357782d475052944cc71e73351238ffb5dfbe18d1bd1b62289da7f8066cde256c4339de5efa982088f47781876f5d8317f92b87f79f'
             '9d3bb80afb3a00dc50402d32476719daaeab017e1a066425bb602316b534d0a9899d48734a84f70af1066ed104df0491264383a34969dfad2ea9828fb41b9b6b'
             '805cf12606c738d0442d8af415223d3faada93c933b563b7c4c1d5e0c16d2d21435406add1fcc69300fb2fe534f2d0ddbf50b2c0463fc7462109d0f7802ccef1'
