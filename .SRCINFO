@@ -1,7 +1,7 @@
 pkgbase = velero
 	pkgdesc = Backup and migrate Kubernetes applications and their persistent volumes
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://velero.io
 	arch = x86_64
 	arch = armv6h
@@ -12,7 +12,6 @@ pkgbase = velero
 	makedepends = go
 	depends = glibc
 	depends = kubectl
-	optdepends = restic: for restic integration support
 	source = git+https://github.com/vmware-tanzu/velero#tag=v1.5.2
 	source = build.patch
 	sha256sums = SKIP

@@ -2,14 +2,13 @@
 
 pkgname=velero
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup and migrate Kubernetes applications and their persistent volumes"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://velero.io"
 license=('Apache')
 depends=('glibc' 'kubectl')
 makedepends=('git' 'go')
-optdepends=('restic: for restic integration support')
 source=("git+https://github.com/vmware-tanzu/velero#tag=v$pkgver"
         "build.patch")
 sha256sums=('SKIP'
@@ -31,7 +30,7 @@ build() {
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     export GOLDFLAGS="-linkmode=external"
 
-    make local GIT_TREE_STATE=clean
+    make local GIT_TREE_STATE=clean VERSION=$pkgver
 
     ./velero completion bash | install -Dm644 /dev/stdin share/bash-completion/completions/velero
     ./velero completion zsh | install -Dm644 /dev/stdin share/zsh/site-functions/_velero
