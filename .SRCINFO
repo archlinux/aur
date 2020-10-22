@@ -1,13 +1,13 @@
 pkgbase = fineftp-server
 	pkgdesc = FineFTP is a minimal FTP server library for Windows and Unix flavors
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/continental/fineftp-server
 	arch = any
 	license = MIT
 	depends = asio
-	source = https://github.com/continental/fineftp-server/archive/v1.0.5.tar.gz
-	md5sums = 9650433ac836b5a2cb772297735dd679
+	source = https://github.com/continental/fineftp-server/archive/v1.0.6.tar.gz
+	md5sums = 15979ef5017c67eb3c61a229705cac3d
 
 pkgname = fineftp-server
 
