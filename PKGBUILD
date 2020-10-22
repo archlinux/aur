@@ -16,7 +16,7 @@ provides=('plank')
 source=('pantheon-dock::git+https://github.com/elementary/dock'
         'instance-controls.patch')
 sha256sums=('SKIP'
-            '04bdb2b50e7150f9265664fd6d02ed894380c91af26fede3e4560bc80975e77c')
+            '19cc44fbe9b103ce05d86e668b869c0144948b5026e21a53bc5ac5919e79fbc9')
 
 pkgver() {
   cd pantheon-dock

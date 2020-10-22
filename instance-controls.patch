@@ -1,7 +1,16 @@
 diff --git a/lib/Items/ApplicationDockItem.vala b/lib/Items/ApplicationDockItem.vala
-index a58dbed..0c375f7 100644
+index a58dbed..b438311 100644
 --- a/lib/Items/ApplicationDockItem.vala
 +++ b/lib/Items/ApplicationDockItem.vala
+@@ -459,7 +459,7 @@ namespace Plank
+ 				
+ 				foreach (var view in windows) {
+ 					unowned Bamf.Window? window = (view as Bamf.Window);
+-					if (window == null || window.get_transient () != null)
++					if (window == null)
+ 						continue;
+ 					
+ 					Gtk.MenuItem window_item;
 @@ -469,13 +469,35 @@ namespace Plank
  					
  					if (pbuf != null)
