@@ -19,5 +19,6 @@ build() {
 
 package() {
     cd "wpspin-nim-${pkgver}"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     make DESTDIR=${pkgdir} install
 }
