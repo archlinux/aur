@@ -1,0 +1,29 @@
+pkgbase = mongodb-3.6-bin
+	pkgdesc = Document-oriented database server
+	pkgver = 3.6.20
+	pkgrel = 1
+	url = https://www.mongodb.com/
+	arch = x86_64
+	license = custom:SSPL
+	provides = mongodb=3.6.20
+	provides = mongodb-tools=3.6.20
+	conflicts = mongodb
+	conflicts = mongodb-bin
+	conflicts = mongodb-tools
+	conflicts = mongodb-tools-bin
+	replaces = mongodb
+	replaces = mongodb-tools
+	backup = etc/mongodb.conf
+	source = https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.6.20.tgz
+	source = mongodb.conf
+	source = mongodb-3.6.service
+	source = mongodb.sysusers
+	source = mongodb.tmpfiles
+	md5sums = d99542d71f2ba71ae3ebe1a066856d11
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = mongodb-3.6-bin
+
