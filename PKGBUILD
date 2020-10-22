@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-quickcontrols2
-_qtver=6.0.0-alpha
+_qtver=6.0.0-beta1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,7 +17,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtquickcontrols2-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('2cf6c41075154e6dd92864f1ce95b58c3da35b4bb171a8fdc48cafb1802a3e00')
+sha256sums=('0ca121e8beca8dd58341ca6b7e99b332698782707ec77e225282779cbb77f2a9')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
