@@ -1,6 +1,6 @@
 pkgbase = qt6-shadertools
-	pkgdesc = Shader tools
-	pkgver = 6.0.0alpha
+	pkgdesc = Experimental module providing APIs and a host tool to host tool to perform graphics and compute shader conditioning for the upcoming Qt graphics abstraction layer
+	pkgver = 6.0.0beta1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = qt6-shadertools
 	makedepends = vulkan-headers
 	makedepends = ninja
 	depends = qt6-base
-	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-alpha/submodules/qtshadertools-everywhere-src-6.0.0-alpha.tar.xz
-	sha256sums = 7607174fa298632887dc4571bead66fe519ebe98dd92b5264ac42ab71e0cfb2d
+	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-beta1/submodules/qtshadertools-everywhere-src-6.0.0-beta1.tar.xz
+	sha256sums = 9dd44cdd75b1447f3c664039a063175922a885912238205e3bbed0c638fb94e7
 
 pkgname = qt6-shadertools
 
