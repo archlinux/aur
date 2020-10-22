@@ -7,7 +7,7 @@ url='https://github.com/daniel-araujo/click4ever'
 arch=('x86_64')
 license=('GPL3')
 depends=('xdotool')
-makedepends=('git' 'autoconf', 'automake')
+makedepends=('git' 'autoconf' 'automake')
 source=("git+https://github.com/daniel-araujo/click4ever.git#tag=v1.0.2")
 md5sums=('SKIP')
 
