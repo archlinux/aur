@@ -1,0 +1,14 @@
+pkgbase = python-readabledelta
+	pkgdesc = Human readable modification of timedelta
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://pypi.org/project/readabledelta/
+	arch = any
+	license = Unlicense
+	depends = python
+	depends = python-setuptools
+	source = readabledelta-0.0.2.tar.gz::https://github.com/wimglenn/readabledelta/archive/608c46d737a22711d03083adb6baf30592715d31.zip
+	sha256sums = 97940af7e611780e14a8a7728414cc32f8b83423714703155b26d716924d979a
+
+pkgname = python-readabledelta
+
