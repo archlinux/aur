@@ -3,7 +3,7 @@
 # Contributor: mickael9 <mickael9 at gmail dot com>
 
 pkgname=bitlbee-facebook
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Facebook protocol plugin for BitlBee'
 arch=('i686' 'x86_64' 'armv7h' 'arm6h')
@@ -11,7 +11,7 @@ url='https://github.com/bitlbee/bitlbee-facebook'
 license=('GPL')
 depends=('bitlbee' 'json-glib')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bitlbee/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('b815dcaceb9ee12a68cfe7401da503139ba92cb0396e8d52e5491fed04431d2c6e4cf667bcc6f457bc51b916c8dc1dc43dc277ff0a683a1c0d72a65e819fe5b4')
+sha512sums=('6424931a93695c41816304177f13d3c02c1e7e352f8548a18a1245cc90b151123d31d354147851d56f6b42946c30c43eaefb6d2f296a8078067eb5c65c0da1d5')
 
 build() {
   cd $pkgname-$pkgver
