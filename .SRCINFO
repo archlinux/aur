@@ -1,5 +1,5 @@
 pkgbase = qloud
-	pkgdesc = A tool to measure a loudspeaker frequency response and distortions.
+	pkgdesc = Tool to measure loudspeaker frequency response and distortions.
 	pkgver = 1.3a
 	pkgrel = 2
 	url = https://github.com/molke-productions/qloud
