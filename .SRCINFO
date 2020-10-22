@@ -1,14 +1,15 @@
 pkgbase = dot-git
-	pkgdesc = Dot.
-	pkgver = 0.1
+	pkgdesc = Yet another management tool for dotfiles
+	pkgver = 0.1.4
 	pkgrel = 1
-	url = https://github.com/Ventto/dot-git.git
-	arch = any
+	url = https://github.com/ubnt-intrepid/dot
+	arch = x86_64
 	license = MIT
-	depends = git
-	provides = dot-git
-	conflicts = dot-git
-	source = https://github.com/Ventto/lux/archive/v0.1.tar.gz
+	makedepends = git
+	makedepends = cargo
+	provides = dot
+	conflicts = dot
+	source = dot::git+https://github.com/ubnt-intrepid/dot
 	sha256sums = SKIP
 
 pkgname = dot-git

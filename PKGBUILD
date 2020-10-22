@@ -1,22 +1,31 @@
-# Maintainer: Thomas "Ventto" Venriès <thomas.venries@gmail.com>
-
+# Maintainer: spikecodes <19519553+spikecodes@users.noreply.github.com>
 pkgname=dot-git
-pkgver=0.1
+_pkgname=${pkgname%-git}
+pkgver=0.1.4
 pkgrel=1
-pkgdesc='Dot.'
-arch=('any')
-url="https://github.com/Ventto/${pkgname}.git"
-license=('MIT')
-depends=('git')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
-source=("https://github.com/Ventto/lux/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+pkgdesc="Yet another management tool for dotfiles"
+arch=('x86_64')
+url="https://github.com/ubnt-intrepid/dot"
+license=("MIT")
+makedepends=("git" "cargo")
+provides=(${_pkgname})
+conflicts=(${_pkgname})
+source=("${_pkgname}::git+${url}")
+sha256sums=("SKIP")
+
+pkgver() {
+	cd "${_pkgname}"
+	( set -o pipefail
+		printf "$(git describe --tags | awk -F- '{print $1}' | cut -c2-)"
+	)
+}
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+	cd "${_pkgname}"
+	cargo build --release --locked --all-features --target-dir=target
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+	install -Dm644 "${_pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm755 "${_pkgname}/target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
