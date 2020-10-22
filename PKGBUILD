@@ -1,10 +1,11 @@
-# Maintainer: Charles Bos <charlesbos1 AT gmail>
+# Maintainer: ashka <aur AT ashka DOT me>
+# Contributor: Charles Bos <charlesbos1 AT gmail>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=freetype2-ttmetrics
 _srcname=freetype
-pkgver=2.10.0
-pkgrel=2
+pkgver=2.10.4
+pkgrel=1
 pkgdesc="Font rasterization library with TrueType metrics enabled"
 arch=(i686 x86_64)
 license=('GPL')
@@ -17,19 +18,17 @@ provides=("libfreetype.so" "freetype2=$pkgver")
 conflicts=('freetype2')
 install=freetype2.install
 backup=('etc/profile.d/freetype2.sh')
-source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2
+source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.xz
         0001-Enable-table-validation-modules.patch
         0002-Enable-infinality-subpixel-hinting.patch
         0003-Enable-long-PCF-family-names.patch
-        0004-pcf-Fix-handling-of-undefined-glyph-56067.patch
         freetype2.sh
         enable_truetype_like_size_metrics.patch
         fix_metrics_on_size_request.patch)
-sha1sums=('f6abf03e0e3189a0de883981c57d3861b5d314f5'
+sha1sums=('0181862673f7216ad2b5074f95fc131209e30b27'
           '46fd67e6a594f6c2c473b9321ba64913984ba42f'
           '4bf0c0749db09878b918cc404300f0d3e9091607'
           'af76172be8135e74391b7ad1b82c2124ae0ad86c'
-          '74d0ae26620a22c03002ecfffd7bd4c8130d6f6c'
           'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f'
           'd9b223610b530de017a919ee93d506d4450b04fa'
           'fcb6e379591f06793d4e081f8a9ea7731b484478')
@@ -41,9 +40,6 @@ prepare() {
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
   patch -Np1 -i ../0002-Enable-infinality-subpixel-hinting.patch
   patch -Np1 -i ../0003-Enable-long-PCF-family-names.patch
-
-  # https://bugs.archlinux.org/task/62395
-  patch -Np1 -i ../0004-pcf-Fix-handling-of-undefined-glyph-56067.patch
 
   # ttmetrics patches
   # see https://bbs.archlinux.org/viewtopic.php?id=226380
