@@ -1,6 +1,6 @@
 pkgbase = azcopy
 	pkgdesc = A command-line utility designed for copying data to/from Microsoft Azure
-	pkgver = 10.6.0
+	pkgver = 10.6.1
 	pkgrel = 1
 	url = https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = azcopy
 	makedepends = go
 	makedepends = git
 	replaces = azcopy-10
-	source = azcopy-10.6.0.tar.gz::https://github.com/Azure/azure-storage-azcopy/archive/v10.6.0.tar.gz
-	sha512sums = 1f7d88e63eb2ffd384b3a313f7118c54f701112d4394af4cbac7cccfa8882dc3e7bdb5bcd0a44a92c53fe010db813ac4a49b514c3463456d28fe20b24e51883f
+	source = azcopy-10.6.1.tar.gz::https://github.com/Azure/azure-storage-azcopy/archive/v10.6.1.tar.gz
+	sha512sums = fed4f6046c448e6be25ea2b923fdf588277cd12a1dc0a78a0749bda0de53448af7292f8010c2acb0085962126ae3c437368ca2e934dcda37e9a06b038686bf89
 
 pkgname = azcopy
 
