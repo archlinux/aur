@@ -1,7 +1,7 @@
 # Maintainer: Benoît Rouits <brouits at free dot fr>
 
 pkgname=qspeakers-svn
-pkgver=r266
+pkgver=r268
 pkgrel=1
 pkgdesc="DIY speaker design software"
 url="http://brouits.free.fr/qspeakers/"
