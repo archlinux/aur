@@ -1,18 +1,18 @@
 # Maintainer: Jiří Prokop <jprokop@synaptiko.cz>
 
 pkgname=zsa-wally-cli
-pkgver=1.1.1
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Wally: Flash your ZSA Keyboard the EZ way."
 arch=('i686' 'x86_64')
-url="https://github.com/zsa/wally"
+url="https://github.com/zsa/wally-cli"
 license=('MIT')
 depends=('libusb')
 provides=('wally-cli')
-source=('https://github.com/zsa/wally/releases/download/1.1.1-linux/wally-cli'
+source=('https://github.com/zsa/wally-cli/releases/download/2.0.0-linux/wally-cli'
 	'50-wally-cli.rules'
 )
-sha256sums=('b968aeba6f17d0873b26371307179dc02cd360a4cfa74732ab5c814607479d82'
+sha256sums=('a38f731cc1a89d32a5cb9e377d2ec24280cb5d2fc0b34b1cb05464305fb38800'
 	'SKIP'
 )
 
