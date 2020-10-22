@@ -7,10 +7,10 @@ pkgdesc="ChatRoulette desktop client whithout blocking virtual camera."
 arch=('x86_64')
 url="https://github.com/vicimpa/chatroulette"
 license=('custom')
-depends=('libnotify' 'libxss' 'nspr' 'nss' 'gtk3' 'opera-ffmpeg-codecs' 'libegl' 'libgles')
+depends=('libnotify' 'libxss' 'nspr' 'nss' 'gtk3' 'libegl' 'libgles')
 optdepends=('gnome-keyring')
 source=("chatroulette-${pkgver}-${pkgrel}.tar.gz::https://github.com/vicimpa/chatroulette/releases/download/0.0.1/ChatRoulette-linux-0.0.1.tar.xz")
-sha256sums=('a166184a809fe48df21d66371b005e2bd9017ed54e8c86ac0734b56728d7d29b')
+sha256sums=('d2b4aa7dde73c891b6360162e6a148f55685f9bfca84df828d95e3d3ef4c6d9d')
 
 package() {
     mkdir -p "${pkgdir}/usr/lib/chatroulette"
@@ -19,10 +19,9 @@ package() {
     mkdir -p "${pkgdir}/usr/share/pixmaps"
 
     mv "${srcdir}/"* "${pkgdir}/usr/lib/chatroulette"
-    mv "${pkgdir}/usr/lib/chatroulette/ChatRoulette" "${pkgdir}/usr/lib/chatroulette/chatroulette"
 
     cp "${startdir}/chatroulette.desktop" "${pkgdir}/usr/share/applications"
     cp "${startdir}/icon.png" "${pkgdir}/usr/share/pixmaps/chatroulette.png"
 
-    chmod +x "${pkgdir}/usr/lib/chatroulette/chatroulette"
+    chmod +x "${pkgdir}/usr/lib/chatroulette/ChatRoulette"
 }
