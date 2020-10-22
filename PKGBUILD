@@ -6,7 +6,7 @@
 pkgbase=nvidia-340xx
 pkgname=(nvidia-340xx nvidia-340xx-dkms)
 pkgver=340.108
-pkgrel=11
+pkgrel=12
 pkgdesc="NVIDIA drivers for linux, 340xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -15,10 +15,14 @@ conflicts=('nvidia')
 license=('custom')
 options=(!strip)
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-nvidia-340.108-fix-5.9-kernel-compile.patch::https://raw.githubusercontent.com/warpme/minimyth2/master/script/nvidia/nvidia-340.108/files/nvidia-340.108-fix-5.9-kernel-compile.patch
+  0001-kernel-5.7.patch
+  0002-kernel-5.8.patch
+  0003-kernel-5.9.patch
 )
 b2sums=('6538bbec53b10f8d20977f9b462052625742e9709ef06e24cf2e55de5d0c55f1620a4bb21396cfd89ebc54c32f921ea17e3e47eaa95abcbc24ecbd144fb89028'
-        'cb2521375317a368d7a5b4766071d0dfb09f359f7521f769e581b083540bfcbaab18f2d1b308d4e668841ef15dbeebcf0495b3cbaa2c9ee1a8b6a35308206e6e')
+        '7150233df867a55f57aa5e798b9c7618329d98459fecc35c4acfad2e9772236cb229703c4fa072381c509279d0588173d65f46297231f4d3bfc65a1ef52e65b1'
+        'b436095b89d6e294995651a3680ff18b5af5e91582c3f1ec9b7b63be9282497f54f9bf9be3997a5af30eec9b8548f25ec5235d969ac00a667a9cddece63d8896'
+        '947cb1f149b2db9c3c4f973f285d389790f73fc8c8a6865fc5b78d6a782f49513aa565de5c82a81c07515f1164e0e222d26c8212a14cf016e387bcc523e3fcb1')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 # default is 'linux' substitute custom name here
@@ -28,11 +32,11 @@ _extradir="/usr/lib/modules/$_kernver/extramodules"
 
 prepare() {
   sh "${_pkg}.run" --extract-only
-  cd "${_pkg}"
 
-  # seems manjaro is keeping this current
-  # https://gitlab.manjaro.org/packages?utf8=%E2%9C%93&filter=nvidia-340xx
-  (patch -p1 --no-backup-if-mismatch -i "$srcdir"/nvidia-340.108-fix-5.9-kernel-compile.patch)
+  cd "${_pkg}"
+  patch -Np1 -i ../0001-kernel-5.7.patch
+  patch -Np1 -i ../0002-kernel-5.8.patch
+  patch -Np1 -i ../0003-kernel-5.9.patch
 
   cp -a kernel kernel-dkms
 }
