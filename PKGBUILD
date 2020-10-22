@@ -1,12 +1,12 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 _pkgname="among-sus"
 pkgname="${_pkgname}-git"
-pkgver=r69.628e77f
+pkgver=r73.02f42a1
 pkgrel=1
 pkgdesc="Among Us, but it's a text adventure"
 arch=('i686' 'x86_64')
 url="https://sr.ht/~martijnbraam/${_pkgname}/"
-license=('GPL3')
+license=('AGPL3')
 depends=('glibc')
 makedepends=('git')
 provides=("${_pkgname}")

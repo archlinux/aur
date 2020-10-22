@@ -1,11 +1,11 @@
 pkgbase = among-sus-git
 	pkgdesc = Among Us, but it's a text adventure
-	pkgver = r69.628e77f
+	pkgver = r73.02f42a1
 	pkgrel = 1
 	url = https://sr.ht/~martijnbraam/among-sus/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = AGPL3
 	makedepends = git
 	depends = glibc
 	provides = among-sus
