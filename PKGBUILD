@@ -26,7 +26,6 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	sed -i 's/${PC_UPNP_LIBRARIES}//g' cmake/Findpupnp.cmake
-	export PKG_CONFIG_PATH="/usr/lib/libupnp-1.12/pkgconfig/:${PKG_CONFIG_PATH}"
 	# Gerbera build options can be found here: https://github.com/gerbera/gerbera/blob/master/CMakeLists.txt
 	# use sqlite backend
 	cmake -DCMAKE_INSTALL_PREFIX=/usr -DWITH_AVCODEC=1 -DWITH_FFMPEGTHUMBNAILER=1 .
