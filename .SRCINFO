@@ -1,6 +1,6 @@
 pkgbase = qt6-translations
 	pkgdesc = A cross-platform application and UI framework (Translations)
-	pkgver = 6.0.0alpha
+	pkgver = 6.0.0beta1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = qt6-translations
 	makedepends = qt6-tools
 	makedepends = ninja
 	depends = qt6-base
-	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-alpha/submodules/qttranslations-everywhere-src-6.0.0-alpha.tar.xz
-	sha256sums = 940fa99c2f90881667816a5acfae1c6ba1d76f79a80a42815857cfef25a23a7d
+	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-beta1/submodules/qttranslations-everywhere-src-6.0.0-beta1.tar.xz
+	sha256sums = 9eb56f4a193effe682362644b63cc328143c75d6418cfdd8907d3ea26bba3bb6
 
 pkgname = qt6-translations
 
