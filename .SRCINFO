@@ -6,7 +6,6 @@ pkgbase = libeno
 	arch = i686
 	arch = x86_64
 	license = LGPL3
-	makedepends = gcc
 	makedepends = meson
 	depends = icu
 	provides = libeno.so
