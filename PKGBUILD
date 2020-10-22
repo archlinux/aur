@@ -8,7 +8,7 @@ pkgdesc="Draw is a lightweight drawing tool for users to freely draw and simply 
 url="https://github.com/linuxdeepin/deepin-draw"
 license=('GPL3')
 depends=("qt5-base" "deepin-notifications")
-makedepends=("cmake" "qt5-tools")
+makedepends=("cmake" "git" "qt5-tools")
 conflicts=("deepin-draw")
 provides=("deepin-draw-git=$pkgver")
 source=("$pkgname::git+https://github.com/linuxdeepin/deepin-draw.git")
