@@ -5,7 +5,7 @@ _reponame=keystore-explorer
 _pkgname=kse
 pkgver=5.4.4
 _pkgver=${pkgver//./}
-pkgrel=2
+pkgrel=3
 pkgdesc="a free GUI replacement for the Java command-line utilities keytool, jarsigner and jadtool"
 arch=('i686' 'x86_64')
 url="http://www.keystore-explorer.org/"
@@ -33,7 +33,7 @@ package() {
   install -D -m644 licenses/license-*.txt "${pkgdir}/usr/share/licenses/${pkgname}"
   install -D -m644 lib/*.jar "${pkgdir}/usr/lib/${pkgname}/lib"
 
-  ln -sf "${pkgdir}/usr/lib/${pkgname}/kse.sh" "${pkgdir}/usr/bin/kse"
+  ln -sf "/usr/lib/${pkgname}/kse.sh" "${pkgdir}/usr/bin/kse"
 
   # install .desktop
   for i in 16 32 48 128; do
