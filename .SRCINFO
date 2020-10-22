@@ -1,0 +1,15 @@
+pkgbase = wps-office-extension-spanish-mexican-dictionary
+	pkgdesc = Mexican Spanish dictionary for WPS Office
+	pkgver = 2.6
+	pkgrel = 1
+	url = https://github.com/sbosio/rla-es
+	arch = any
+	groups = wps-office-extensions
+	license = GPL
+	makedepends = unzip
+	depends = wps-office
+	source = https://github.com/sbosio/rla-es/releases/download/v2.6/es_MX.oxt
+	sha1sums = 937ea7a1512456b978c6948907d6b35443090cf0
+
+pkgname = wps-office-extension-spanish-mexican-dictionary
+
