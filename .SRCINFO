@@ -1,0 +1,15 @@
+pkgbase = wait-urandom-init-git
+	pkgdesc = Command line tool which waits for the urandom source to be initialized before returning
+	pkgver = r6.3d5732c
+	pkgrel = 1
+	url = https://github.com/Grenadingue/wait-urandom-init
+	arch = any
+	license = GPL3
+	makedepends = make
+	makedepends = gcc
+	makedepends = git
+	source = git+https://github.com/Grenadingue/wait-urandom-init.git
+	sha256sums = SKIP
+
+pkgname = wait-urandom-init-git
+
