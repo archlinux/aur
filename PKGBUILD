@@ -1,14 +1,14 @@
 # Maintainer: Nguyen Pham Cao <natsukagami at gmail dot com>
 
 pkgname=mpd-mpris
-pkgver=0.2.4
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='An implementation of the MPRIS protocol for MPD.'
 arch=('any')
 url='https://github.com/natsukagami/mpd-mpris'
 makedepends=('go>=1.9' 'git')
 source=("https://github.com/natsukagami/mpd-mpris/archive/v$pkgver.tar.gz")
-sha256sums=('0988af1afbed51840397e4e74ffa853b2f7fc675ac0b638ea46e4223014fc7ad')
+sha256sums=('d5c288c1fa0371892af9697f3787c30a10f50ca6afbe5d9d12c7d5deb6cd18fc')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
