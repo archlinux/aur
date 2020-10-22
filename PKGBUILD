@@ -5,11 +5,11 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-no-extras
-pkgver=85.0.4183.121
+pkgver=86.0.4240.111
 pkgrel=1
 _pkgname=chromium
 _launcher_ver=6
-_gcc_patchset=2
+_gcc_patchset=6
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -23,7 +23,7 @@ makedepends=('python' 'python2' 'gperf' 'mesa' 'ninja' 'nodejs' 'git' 'libva'
                              'clang' 'lld' 'gn' 'java-runtime-headless'
              'python2-setuptools')
 optdepends=('pepper-flash: support for Flash content'
-            'libva: experimental hardware-accelerated video decode'
+            'libva: hardware-accelerated video decode [experimental]'
             'kdialog: needed for file dialogs in KDE'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: for storing passwords in KWallet on KDE desktops')
@@ -31,14 +31,20 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
-        media-Set-allocation-limit-compatible-with-FFmpeg-4.3.patch
-        chromium-fix-vaapi-on-intel.patch
+        fix-invalid-end-iterator-usage-in-CookieMonster.patch
+        only-fall-back-to-the-i965-driver-if-we-re-on-iHD.patch
+        remove-dead-reloc-in-nonalloc-LD-flags.patch
+        check-for-enable-accelerated-video-decode-on-Linux.patch
+        xproto-fix-underflow-in-Fp1616ToDouble.patch
         chromium-skia-harmony.patch)
-sha256sums=('e018547e54566410fb365d9f3dae10037c30fca5debe6ba8baceef3ad3b03d28'
+sha256sums=('f27bdb02ebf3c48abe054c73f1ae57e22a22535ea34f5edf8693ab8432a7c717'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '2194fe22b9e5ccdc4a86da4e3572214f670c561486671f57c90636fd3cbfa43e'
-            '0f041d655335cd2a4773ae7ca5e301a0ff12c6c53f57b7cf6651c268e0420a1c'
-            'e495f2477091557b15bff2c99831e0a3db64ea2ebde7dcb22857a6469c944b9a'
+            '6f9ab35fa2c9e6e34ec454b829b7b87adaebc10cacecd1ac1daa67035ee44aba'
+            '69d8b7a439db1af4713245ddf5f44ca647283ba833a8733e848033ebdaf03cdc'
+            '7514c6c81a64a5457b66494a366fbb39005563eecc48d1a39033dd06aec4e300'
+            '7cace84d7494190e7882d3e637820646ec8d64808f0a2128c515bd44991a3790'
+            '03d03a39b2afa40083eb8ccb9616a51619f71da92348effc8ee289cbda10128b'
+            '1ec617b362bf97cce4254debd04d8396f17dec0ae1071b52ec8c1c3d86dbd322'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -87,15 +93,15 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
 
-  # https://crbug.com/1095962
-  patch -Np1 -i ../media-Set-allocation-limit-compatible-with-FFmpeg-4.3.patch
+  # Upstream fixes
+  patch -Np1 -i ../fix-invalid-end-iterator-usage-in-CookieMonster.patch
+  patch -Np1 -i ../only-fall-back-to-the-i965-driver-if-we-re-on-iHD.patch
+  patch -Np1 -i ../remove-dead-reloc-in-nonalloc-LD-flags.patch
+  patch -Np1 -i ../check-for-enable-accelerated-video-decode-on-Linux.patch
+  patch -Np1 -i ../xproto-fix-underflow-in-Fp1616ToDouble.patch
 
   # Fixes for building with libstdc++ instead of libc++
-  patch -Np1 -i ../patches/chromium-85-NearbyShareEncryptedMetadataKey-include.patch
-  patch -Np1 -i ../patches/chromium-85-sim_hash-include.patch
-
-  # Patch from rpmfusion: chromium-freeworld
-  patch -Np1 -i ../chromium-fix-vaapi-on-intel.patch
+  patch -Np1 -i ../patches/chromium-86-nearby-include.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
@@ -152,7 +158,6 @@ build() {
     'link_pulseaudio=true'
     'use_gnome_keyring=false'
     'use_sysroot=false'
-    'linux_use_bundled_binutils=false'
     'use_custom_libcxx=false'
     'enable_hangout_services_extension=false'
     'enable_widevine=false'
