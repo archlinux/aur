@@ -21,7 +21,7 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "${_pkgbranch}"
+  cd "${srcdir}/${_pkgbranch}"
   local ver="$(svnversion)"
   printf "r%s" "${ver}" 
 }
