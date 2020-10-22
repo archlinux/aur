@@ -1,4 +1,4 @@
 post_install() {
-  echo "Note: Only use the nextcloud-news-updater.timer, if you have set testrun=true in your configuration!"
+  printf "NOTE: To use nextcloud-news-updater.service, add your instance's data directory to the service's ReadWritePaths!\nsystemctl edit nextcloud-news-updater.service"
+  printf "NOTE: nextcloud-news-updater.timer can only be used with 'testrun=true' in /etc/webapps/nextcloud/news/nextcloud-news-updater.ini!"
 }
-

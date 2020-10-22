@@ -1,21 +1,37 @@
 [Unit]
-Description=Nextcloud news updater service
-After=default.target
+Description=Update nextcloud news feeds
+After=network.target network-online.target
 
 [Service]
-Type=simple
-User=http
-Group=http
+CapabilityBoundingSet=
+DeviceAllow=
+DevicePolicy=closed
 Environment=NEXTCLOUD_CONFIG_DIR=/etc/webapps/nextcloud/config
 ExecStart=/usr/bin/nextcloud-news-updater -c /etc/webapps/nextcloud/news/nextcloud-news-updater.ini
-PrivateTmp=yes
-ProtectSystem=full
+Group=http
+LockPersonality=true
+NoNewPrivileges=true
+PrivateTmp=true
 PrivateDevices=true
-ProtectKernelTunables=true
+PrivateUsers=true
+ProtectClock=true
 ProtectControlGroups=true
-ReadWritePaths=/etc/webapps/nextcloud /usr/share/webapps/nextcloud
-ProtectHome=yes
-NoNewPrivileges=yes
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectSystem=strict
+ReadWritePaths=/etc/webapps/nextcloud
+RemoveIPC=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+UMask=007
+User=http
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
