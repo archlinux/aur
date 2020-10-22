@@ -3,7 +3,7 @@
 pkgname=inverse-icon-theme-git
 _pkgname=inverse-icon-theme
 _gitname=Inverse-icon-theme
-pkgver=r29.f47fcf7
+pkgver=r39.f320885d
 pkgrel=1
 pkgdesc="A colorful Design icon theme for linux desktops"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('gtk-update-icon-cache')
 optdepends=()
 source=("git+${url}.git")
 md5sums=('SKIP')
-conflicts=('inverse-icon-theme')
+conflicts=('inverse-icon-theme' 'inverse-icon-theme-blue-git')
 
 pkgver() {
   cd "${_gitname}"
