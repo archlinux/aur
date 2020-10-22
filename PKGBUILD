@@ -1,28 +1,45 @@
-# Maintained by johnnyapol (arch@johnnyapol.me)
-# Based off the discord community repo PKGBUILD by Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintained by Kodehawa <david.alejandro.rubio at gmail.com>
 
-pkgname=discord_arch_electron
-_pkgname=discord
-pkgver=0.0.12
+# Original mantainers below:
+# Based off the discord community repo PKGBUILD by Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer: Anna <morganamilo@gmail.com>
+# Maintainer: E5ten <e5ten.arch@gmail.com>
+# Maintainer: Parker Reed <parker.l.reed@gmail.com>
+# Maintainer: Stephanie Wilde-Hobbs <steph@rx14.co.uk>
+# Contributor: Cayde Dixon <me@cazzar.net>
+# Contributor: Anthony Anderson <aantony4122@gmail.com>
+
+pkgname=discord-canary-electron-bin
+# Name of the tar.
+_pkgname=discord-canary
+pkgver=0.0.114
 pkgrel=2
-pkgdesc="Discord (popular voice + video app) using the system provided electron for increased security and performance"
+pkgdesc="Discord Canary (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
-provides=('discord')
-conflicts=('discord')
-url='https://discordapp.com'
+provides=('discord-canary')
+conflicts=('discord-canary')
+url='https://canary.discordapp.com'
 license=('custom')
-depends=('electron')
+depends=('electron' 'gtk3' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'xdg-utils' 'libcups')
 optdepends=('libpulse: Pulseaudio support'
-            'xdg-utils: Open files')
-source=("https://dl.discordapp.net/apps/linux/$pkgver/$_pkgname-$pkgver.tar.gz"
+            'xdg-utils: Open files'
+            'noto-fonts-emoji: Google font for emoji support.'
+            'ttf-symbola: Font for emoji support.'
+            'noto-fonts-cjk: Font for special characters such as /shrug face.')
+source=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'LICENSE.html::https://discordapp.com/terms'
         'OSS-LICENSES.html::https://discordapp.com/licenses')
-sha512sums=('c5009e022cac0b76d39cc125a98b9dd3d7a5827dd7d733c5578237b99b746aeccc1cd253aafa99e2a237bd82ef71ee42011f864059aa5ee62812488dbd82f511'
-             SKIP
-             SKIP)
+sha256sums=('8130c6240f4b027eabf7fa0e8cf10485cb9db5c45a1832c0bf5947499c247c48'
+            '9be5f85421c9094c390c25bf1f45157c3c8dcf592feb8acb0810a61f11d80b90'
+            'dfb803d0e71e323831743c978b0dbc5f662fdcdf53c43fb1739b8b4e62bc8453')
+
+# The tar extracts to a folder called DiscordCanary.
+_tarname=DiscordCanary
 
 prepare() {
-  cd Discord
+  # Extract the downloaded tar.
+  tar xf ${_pkgname}-${pkgver}.tar.gz
+  cd DiscordCanary
 
   sed -i "s|Exec=.*|Exec=/usr/bin/$_pkgname|" $_pkgname.desktop
   echo 'Path=/usr/bin' >> $_pkgname.desktop
@@ -32,27 +49,38 @@ package() {
   # Install the app
   install -d "$pkgdir"/opt/$_pkgname
 
-  # Copy Relevanat data
-  cp -r Discord/resources  "$pkgdir"/opt/$_pkgname/
-  cp    Discord/discord.png "$pkgdir"/opt/$_pkgname/
-  cp 	Discord/discord.desktop "$pkgdir"/opt/$_pkgname/
+  # Copy relevant data
+  cp -r "$_tarname"/resources  "$pkgdir"/opt/$_pkgname/
+  cp    "$_tarname"/discord.png "$pkgdir"/opt/$_pkgname/
+  cp 	"$_tarname"/discord-canary.desktop "$pkgdir"/opt/$_pkgname/
 
   # Create starter script for discord
   echo "#!/bin/sh" >> "$pkgdir"/opt/$_pkgname/$_pkgname
   echo "electron /opt/$_pkgname/resources/app.asar \$@" >> "$pkgdir"/opt/$_pkgname/$_pkgname
 
-  # Set Permissions, symlinks
+  # Set permissions
   chmod 755 "$pkgdir"/opt/$_pkgname/$_pkgname
 
+  # Install.
   install -d "$pkgdir"/usr/{bin,share/{pixmaps,applications}}
   install -d "$pkgdir"/usr/lib/electron
   install -d "$pkgdir"/usr/lib/electron/resources
 
+  # Create a symbolic link to the binary itself (discord-canary)
   ln -s /opt/$_pkgname/$_pkgname "$pkgdir"/usr/bin/$_pkgname
+  # Create a symbolic link to the icon.
   ln -sf /opt/$_pkgname/discord.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
+  # Create a symbolic link to the .desktop file.
   ln -sf /opt/$_pkgname/$_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
 
   # HACKS FOR SYSTEM ELECTRON
+  # Without this it'd fail to launch saying it's missing build_info.json.
+  # Then fail saying it's missing discord.png
+  # So just copy them to the root of the electron folder, so Discord can see them.
+  # This is a little hacky, but lol. I dunno what Discord has against using the system electron
+  # When their own electron is quite broken, to be fair. At least under linux.
+  # No offense to them, though. I still enjoy the app, propietary and all.
+  # Thanks to the discord_arch_electron guy for this ;)
   ln -s /opt/$_pkgname/resources/build_info.json "$pkgdir"/usr/lib/electron/resources/
   ln -s /opt/$_pkgname/discord.png        "$pkgdir"/usr/lib/electron
 
