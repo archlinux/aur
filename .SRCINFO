@@ -1,14 +1,14 @@
 pkgbase = rambox-bin
 	pkgdesc = Free and Open Source messaging and emailing app that combines common web applications into one.
 	pkgver = 0.7.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rambox.pro/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = desktop-file-utils
-	depends = bash
 	depends = gtk3
+	depends = libappindicator-gtk3
 	depends = libnotify
 	depends = libxtst
 	depends = libxss
@@ -18,16 +18,10 @@ pkgbase = rambox-bin
 	depends = libutil-linux
 	provides = rambox
 	conflicts = rambox
-	source = rambox.sh
-	source = rambox.desktop
-	source = rambox.png
-	sha256sums = ee2573d62b580e8ee584335534976396761b5da53a009bccb881b9cf6cb2041d
-	sha256sums = 61ad70a929c402e24c79b8868208310f9b3c4d7801db2b791af38293231ee524
-	sha256sums = 0bf4d0c849ad6151f77b346fea0424fab910f434378f9890b16fd15a32a10064
-	source_i686 = https://github.com/ramboxapp/community-edition/releases/download/0.7.7/Rambox-0.7.7-linux-ia32.tar.gz
-	sha256sums_i686 = 0b4ca41de646b711c81151cb107f078d4358ff814ddbbdf3cf0663293e32bbeb
-	source_x86_64 = https://github.com/ramboxapp/community-edition/releases/download/0.7.7/Rambox-0.7.7-linux-x64.tar.gz
-	sha256sums_x86_64 = de4bef9738fd130771b0cb6440c6f2377151ec3d1da43bf10a03f27818edc3dd
+	source_i686 = https://github.com/ramboxapp/community-edition/releases/download/0.7.7/Rambox-0.7.7-linux-i386.deb
+	sha256sums_i686 = dae550daa5383df57c1a0690f031927e9db7e2a41b3e6d93f35b82a0a0c40fda
+	source_x86_64 = https://github.com/ramboxapp/community-edition/releases/download/0.7.7/Rambox-0.7.7-linux-amd64.deb
+	sha256sums_x86_64 = a99bf982ba01925a60b5d5b6ea05e39bfd52bdf3261f7c117b24bdb98223322e
 
 pkgname = rambox-bin
 
