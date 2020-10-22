@@ -1,0 +1,17 @@
+pkgbase = among-sus-git
+	pkgdesc = Among Us, but it's a text adventure
+	pkgver = r68.fb2bd86
+	pkgrel = 1
+	url = https://sr.ht/~martijnbraam/among-sus/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = glibc
+	provides = among-sus
+	conflicts = among-sus
+	source = among-sus::git+https://git.sr.ht/~martijnbraam/among-sus
+	md5sums = SKIP
+
+pkgname = among-sus-git
+
