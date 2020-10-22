@@ -1,0 +1,12 @@
+pkgbase = armeb-none-eabi-gcc75-linaro-bin
+	pkgdesc = The GNU Compiler Collection - cross compiler for ARM EABI (bare-metal) big-endian target.
+	pkgver = 7.5_2019.12
+	pkgrel = 1
+	url = https://www.linaro.org/downloads/
+	arch = x86_64
+	license = GPL
+	source = https://releases.linaro.org/components/toolchain/binaries/7.5-2019.12/armeb-eabi/gcc-linaro-7.5.0-2019.12-x86_64_armeb-eabi.tar.xz
+	md5sums = SKIP
+
+pkgname = armeb-none-eabi-gcc75-linaro-bin
+
