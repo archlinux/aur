@@ -1,7 +1,7 @@
 pkgbase = autenticacao-gov-pt
 	pkgdesc = Portuguese Citizen Card Application (Portugal eID)
-	pkgver = 3.1.0
-	pkgrel = 7
+	pkgver = 3.3.0
+	pkgrel = 0
 	url = http://www.cartaodecidadao.pt/
 	install = autenticacao-gov-pt.install
 	arch = i686
@@ -36,7 +36,7 @@ pkgbase = autenticacao-gov-pt
 	conflicts = cartaodecidadao
 	conflicts = cartaodecidadao-bin
 	replaces = cartaodecidadao
-	source = git+https://github.com/amagovpt/autenticacao.gov/#branch=openssl-migration
+	source = git+https://github.com/amagovpt/autenticacao.gov/#branch=master
 	source = autenticacao-gov-pt.install
 	sha512sums = SKIP
 	sha512sums = 4a9b2405626854b744777c564f6d4254c605a0c291a8cf3d665ec9fbdfe1441be1efb77719ec5d154c60a8c65a8f73f5729c3fae5eb49a195edf846af192b35b

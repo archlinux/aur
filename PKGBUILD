@@ -3,8 +3,8 @@
 
 pkgname=autenticacao-gov-pt
 _pkgname=autenticacao.gov
-pkgver=3.1.0
-pkgrel=7
+pkgver=3.3.0
+pkgrel=0
 pkgdesc="Portuguese Citizen Card Application (Portugal eID)"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -30,7 +30,8 @@ optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online
 conflicts=('classpath' 'cartaodecidadao' 'cartaodecidadao-bin')
 replaces=('cartaodecidadao')
 
-source=('git+https://github.com/amagovpt/autenticacao.gov/#branch=openssl-migration'
+source=('git+https://github.com/amagovpt/autenticacao.gov/#branch=master'
+#source=('git+https://github.com/amagovpt/autenticacao.gov/#branch=openssl-migration'
 		    'autenticacao-gov-pt.install')
 
 sha512sums=('SKIP'
