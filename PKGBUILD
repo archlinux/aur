@@ -13,7 +13,7 @@ makedepends=('subversion')
 conflicts=('qspeakers')
 install=qspeakers-svn.install
 source=(
-  "${pkgname}::svn://svn.gtmp.org/qspeakers/branches/qtcharts"
+  "${pkgname}::svn://svn.gtmp.org/qspeakers/branches/${_pkgbranch}"
 )
  
 sha256sums=(
@@ -21,7 +21,7 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "${pkgname}"
   local ver="$(svnversion)"
   printf "r%s" "${ver}" 
 }
