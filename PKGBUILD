@@ -3,7 +3,7 @@
 pkgname=inverse-icon-theme-blue-git
 _pkgname=inverse-icon-theme
 _gitname=Inverse-icon-theme
-pkgver=r29.f47fcf7
+pkgver=r39.f320885d
 pkgrel=1
 pkgdesc="A colorful Design icon theme for linux desktops"
 arch=('any')
