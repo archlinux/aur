@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-svg
-_qtver=6.0.0-alpha
+_qtver=6.0.0-beta1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -12,12 +12,12 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Classes for displaying the contents of SVG files (mingw-w64)'
 depends=('mingw-w64-qt6-base')
-makedepends=('mingw-w64-cmake' 'mingw-w64-vulkan-icd-loader' 'qt6-base' 'ninja')
+makedepends=('mingw-w64-cmake' 'qt6-base' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtsvg-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('1ff80c015fe044fa1b625d37830b02e0cc780ee92638a1b7a5561adb5a0546ee')
+sha256sums=('63ab098d9ae306118a8f7583e4cbde12ccb27ffdeddeea574b56b0cefc3b4205')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
