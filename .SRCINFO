@@ -3,6 +3,7 @@ pkgbase = prelockd-git
 	pkgver = 0.8.r3.g8ad80b1
 	pkgrel = 1
 	url = https://github.com/hakavlad/prelockd
+	install = prelockd.install
 	arch = any
 	license = MIT
 	makedepends = git
