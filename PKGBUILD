@@ -2,7 +2,7 @@
 
 pkgname=thunderbird-bin
 _pkgname=thunderbird
-pkgver=78.2.1
+pkgver=78.4.0
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -24,9 +24,9 @@ source_i686=(https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-i686
 
 sha512sums=('2f2da27d0d677cfee9ed2ff9da74c4e779150d26e369cb6816f2b1962b38af7d0728c9c362304138212b45e9580f65847c3a011b9bd3417a26b1b48c00cabe8d'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('1627a4de6ecafbf535469bf6c95667574818a3931e8f2da938cbdc69bb1b643040382b2ea2c4888c3887774c01543f74b8ca039c2be3c5d4ea62ef1dc5acc25a'
+sha512sums_x86_64=('92bff6a7ac7a2437a37ba2bbc9dde5e559057519768d35b064b720d11915891f41641b0e5e331b34cea5e29f20120d6243890575eadbe33b9d6e02f9ac3918d7'
                    'SKIP')
-sha512sums_i686=('1627a4de6ecafbf535469bf6c95667574818a3931e8f2da938cbdc69bb1b643040382b2ea2c4888c3887774c01543f74b8ca039c2be3c5d4ea62ef1dc5acc25a'
+sha512sums_i686=('92bff6a7ac7a2437a37ba2bbc9dde5e559057519768d35b064b720d11915891f41641b0e5e331b34cea5e29f20120d6243890575eadbe33b9d6e02f9ac3918d7'
                  'SKIP')
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
 
@@ -67,7 +67,7 @@ pref("extensions.shownSelectionUI", true);
 END
 
   # Desktop
-  install -m644 $pkgname.desktop "$pkgdir"/usr/share/applications/
+  install -m644 $pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
 
   # Icons
   for i in 16 22 24 32 48 256; do
