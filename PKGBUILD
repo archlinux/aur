@@ -20,6 +20,7 @@ makedepends=(
 	'git'
 )
 conflicts=("${_pkgname}")
+install=${_pkgname}.install
 backup=(
 	'etc/memavaild.conf'
 )
