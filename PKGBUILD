@@ -2,7 +2,7 @@
 # Contributor: Marc Plano-Lesay <marc.planolesay@gmail.com>
 
 pkgname=bazelisk
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="A user-friendly launcher for Bazel."
 arch=("x86_64")
@@ -12,7 +12,7 @@ makedepends=("bazel" "git")
 conflicts=("bazel")
 provides=("bazel")
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('39fd0d6d21dee7aed11ed48f2b14e08726485904b60acc67645c6f64f6b1bb4d')
+sha256sums=('c6ea1f28b33f9091cbcdefcade83c23c44fd00545ee45a157914d033d01c88f6')
 
 build() {
   cd bazelisk-$pkgver
