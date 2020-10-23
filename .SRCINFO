@@ -1,14 +1,14 @@
 pkgbase = minify
 	pkgdesc = Minifier CLI for HTML, CSS, JS, JSON, SVG and XML
-	pkgver = 2.9.9
+	pkgver = 2.9.10
 	pkgrel = 1
 	url = https://github.com/tdewolff/minify
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	optdepends = bash-completion: command-line autocomplete with bash
-	source = https://github.com/tdewolff/minify/archive/v2.9.9.tar.gz
-	sha256sums = 5336fca3f378a799bcc5a21c166d4480dc78dbb91f922b7024fcbb71e87ab70a
+	source = https://github.com/tdewolff/minify/archive/v2.9.10.tar.gz
+	sha256sums = f775e92aaefd1d4cce7df8559d35eeec022f281aad350b843610ef8f36531cb1
 
 pkgname = minify
 
