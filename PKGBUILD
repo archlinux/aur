@@ -20,7 +20,7 @@ build() {
 
 check() {
   cd python-periphery-$pkgver
-  python setup.py pytest || warning "Tests failed"
+  python setup.py pytest || echo "Tests failed"
 }
 
 package() {
