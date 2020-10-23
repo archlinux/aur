@@ -1,11 +1,12 @@
 pkgbase = elftosb
 	pkgdesc = ELF to Secure Binary Utility for NXP MCUs
 	pkgver = 5.1.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nxp.com/design/software/development-software/mcuxpresso-software-and-tools-/mcuboot-mcu-bootloader-for-nxp-microcontrollers:MCUBOOT
 	arch = x86_64
 	license = custom:NXP
-	source = file://elftosb_5.1.19.zip
+	makedepends = nxp-dlagent
+	source = elftosb_5.1.19.zip::nxp://elftosb_5.1.19
 	sha256sums = c5becbe8905ce4002c4bd351ecb585125cf8090c1ae043b324432598707a5d2b
 
 pkgname = elftosb
