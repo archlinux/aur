@@ -1,0 +1,23 @@
+pkgbase = python-python-pkcs11
+	pkgdesc = PKCS#11/Cryptoki support for Python
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/danni/python-pkcs11
+	arch = x86_64
+	license = MIT
+	checkdepends = python-cryptography
+	checkdepends = python-oscrypto
+	checkdepends = softhsm
+	makedepends = cython
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-asn1crypto
+	depends = python-cached-property
+	depends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/p/python-pkcs11/python-pkcs11-0.7.0.tar.gz
+	source = python-pkcs11_mark-tests-as-xfail.patch
+	sha256sums = 9737e0c24cabb8bc9d48bf8c57c3df2a70f8cdd96b70c50290803286f9e46bf7
+	sha256sums = 28a5ce996fe6cb455b55c98e8a46fcd0539dc0b3a70677a390f4dddbe1b55d65
+
+pkgname = python-python-pkcs11
+
