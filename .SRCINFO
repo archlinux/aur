@@ -1,7 +1,7 @@
 pkgbase = libnfc-nci-lpcusbsio
-	pkgdesc = Linux NFC stack for NCI based NXP NFC Controllers (PN7150, PN7120). lpcusbsio USB tml.
+	pkgdesc = Linux NFC stack for NCI based NXP NFC Controllers (PN7150, PN7120). For USB transport.
 	pkgver = 2.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/NXPNFCLinux/linux_libnfc-nci/
 	arch = x86_64
 	license = APACHE
@@ -17,10 +17,12 @@ pkgbase = libnfc-nci-lpcusbsio
 	source = 01-fix-tml-linker-errors.patch
 	source = 02-fix-llcp-linker-errors.patch
 	source = 03-udev-rules.patch
+	source = 04-udev-rules-automake.patch
 	sha256sums = SKIP
 	sha256sums = c9992a8449de8ece0324cbf180a24f8bcab82cb7f51832d3d80958c0968a7575
 	sha256sums = c6ece172b50e1d1070a979fbafa2e9ee7f7f7b92d583fa38f8ea433123a9ef4d
-	sha256sums = 0a44a4a1c0e429b6415332ededfc36111d6832a98c0717a996c8f862ba623e77
+	sha256sums = 7aca0dfecb6bb9455a82b46a52dc653f1143493839585429876da31c1e8356a4
+	sha256sums = 8d12d95b11edf634fca2f0289b58a063bc2a6be12ec5fbc2c9b06c63e676f46d
 
 pkgname = libnfc-nci-lpcusbsio
 

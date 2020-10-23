@@ -1,0 +1,15 @@
+diff --git a/Makefile.am b/Makefile.am
+index 3561d93..56b93d2 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -39,8 +39,8 @@ endif
+ if LPCUSBSIO
+ AM_LDFLAGS += `pkg-config libudev --libs` 
+ 
+-udevrules_DATA = src/halimpl/pn54x/tml/lpcusbsio/97-lpcusbsio-hid.rules
+-udevrulesdir = /etc/udev/rules.d
++udevrules_DATA = src/halimpl/pn54x/tml/lpcusbsio/60-lpcusbsio-hid.rules
++udevrulesdir = /usr/lib/udev/rules.d
+ endif
+ 
+ LIBNFC_NCI_INCLUDE := \

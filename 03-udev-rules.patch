@@ -1,8 +1,8 @@
 diff --git a/src/halimpl/pn54x/tml/lpcusbsio/97-lpcusbsio-hid.rules b/src/halimpl/pn54x/tml/lpcusbsio/97-lpcusbsio-hid.rules
-index bf3c8db..04f24a7 100644
+index bf3c8db..f8a0827 100644
 --- a/src/halimpl/pn54x/tml/lpcusbsio/97-lpcusbsio-hid.rules
 +++ b/src/halimpl/pn54x/tml/lpcusbsio/97-lpcusbsio-hid.rules
-@@ -1,21 +1,5 @@
+@@ -1,21 +1,2 @@
 -# This is a sample udev file for HIDAPI devices which changes the permissions
 -# to 0666 (world readable/writable) for a specified device on Linux systems.
 -
@@ -24,7 +24,4 @@ index bf3c8db..04f24a7 100644
 -# grained permission setting. For example, it might be sufficient to just
 -# set the group or user owner for specific devices (for example the plugdev
 -# group on some systems).
-+KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="1fc9", ATTRS{idProduct}=="0088", TAG+="uaccess"
-+KERNEL=="hidraw*", ATTRS{busnum}=="2", ATTRS{idVendor}=="1fc9", ATTRS{idProduct}=="0088", TAG+="uaccess"
-+KERNEL=="hidraw*", ATTRS{busnum}=="3", ATTRS{idVendor}=="1fc9", ATTRS{idProduct}=="0088", TAG+="uaccess"
-+KERNEL=="hidraw*", ATTRS{busnum}=="4", ATTRS{idVendor}=="1fc9", ATTRS{idProduct}=="0088", TAG+="uaccess"
++SUBSYSTEM=="hidraw", KERNEL=="hidraw*", ATTRS{idVendor}=="1fc9", ATTRS{idProduct}=="0088", TAG+="uaccess"
