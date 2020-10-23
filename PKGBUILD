@@ -1,12 +1,12 @@
 # Maintainer: Joel Shapiro <jshapiro at nvidia dot com>
 
 pkgname=p4v
-_version=2020.1
-pkgver=2020.1.1966006
+_version=2020.2
+pkgver=2020.2.2028073
 pkgrel=1
 pkgdesc="Perforce Visual Client"
 arch=('x86_64')
-url="http://www.perforce.com"
+url="https://www.perforce.com"
 license=('custom:p4v')
 depends=('libxcb' 'qt5-base')
 options=('!strip')
@@ -24,7 +24,7 @@ sha256sums=('1fc7ea925fdcb38915f191b6a9c85fb46db9ef501dbaa077e8f38876c5e8fda0'
             '10e470c6099459a072565494c4fd21cc1f4198f1024fe6fdeb6c77ea7e594827'
             '139c5e4951ea9ab040912ef1f9705de16a37d32fdf7b8c7116eb5a785829c634'
             'c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32'
-            '206c9a29dd1b1dc80b107843b46b95673d58000c168d11a9142db7274f03877d')
+            'd776dd364f9ac5f8b1cb7d45eca31e6a027d033050b3c00642739b481f4e8f0e')
 
 # Perforce Software (Package Signing) <support+packaging@perforce.com>
 # validpgpkeys=('7123CB760FF18869'
@@ -40,7 +40,7 @@ package() {
 
   mkdir -p "${pkgdir}"/usr/share/p4v/bin/
 
-  install -sm755 bin/{helixmfa,p4admin.bin,p4merge.bin,p4v.bin,p4vc.bin,QtWebEngineProcess} "${pkgdir}/usr/share/p4v/bin"
+  install -sm755 bin/{helixmfa,p4admin.bin,p4merge.bin,p4v.bin,QtWebEngineProcess} "${pkgdir}/usr/share/p4v/bin"
   install -m755 bin/{p4admin,p4merge,p4v,p4vc} "${pkgdir}/usr/share/p4v/bin"
   install -m644 bin/qt.conf "${pkgdir}/usr/share/p4v/bin"
 
