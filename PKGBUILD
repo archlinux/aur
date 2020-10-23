@@ -1,23 +1,23 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=sonorem
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
-pkgdesc="Bluetoooth adapter connectivity GUI tool"
+pkgdesc="Record sound 24/7 with Raspberry Pi"
 url='https://efanomars.com/utilities/sonorem'
 arch=('x86_64' 'i686' 'aarch64')
 license=('GPL3')
 
 depends=('stmm-input' 'gtkmm3' 'sox' 'espeak' 'stmm-input-bt' 'bluez' 'bluez-libs')
-makedepends=('cmake' 'gcc' 'doxygen' 'graphviz' 'python')
+makedepends=('cmake' 'python')
 optdepends=()
 
 #provides=("sonorem")
 #replaces=("sonorem")
 #conflicts=("sonorem")
 
-source=('https://efanomars.com/sources/sonorem-0.1.tar.gz')
-sha256sums=('291221f871125278e147dfe83d61025dcbf076bf28f074b6f5c6ad00270ebfe0')
+source=('https://efanomars.com/sources/sonorem-0.2.tar.gz')
+sha256sums=('8375a1931705582771fadc38fc86490b5bd7e0e6e138c4b267c0950d86b7f57d')
 
 build() {
   cd "${srcdir}/sonorem"
