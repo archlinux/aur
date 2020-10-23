@@ -1,7 +1,7 @@
 # Maintainer: alex4ip <alex4ip@gmail.com>
 
 pkgname=porter-bin
-pkgver=0.28.1
+pkgver=0.29.1
 pkgrel=3
 epoch=1
 pkgdesc='A utility to help make your application + etc (env/tool) as a versioned bundle that you can distribute, and then install with a single command'
@@ -18,7 +18,7 @@ optdepends=('kubernetes-bin'
 provides=('porter')
 #makedepends=('go')
 source=("$pkgname-$pkgver::https://cdn.porter.sh/v${pkgver}/porter-linux-amd64")
-sha512sums=('87ef0021c98bfa44352a23bfba9a910cce41d0131a287eba404bdbdb5de89918ecf8f52c790e514669677ce3b6edaca3c33a97d4a15474689d8ad3bcb78ba6d6')
+sha512sums=('d8c73629cbe3a2021b44c405956aa14d4b6ec5b6132676e1cc3dacb0874697ceae5621356bf5f69e6cbee86cc7814b570e262a2bac2e0ef956316304b0d37ae2')
 
 package() {  
   #mkdir -p "${pkgdir}/opt"
