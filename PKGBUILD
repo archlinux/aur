@@ -5,7 +5,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=mpb
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="A program for computing the band structures and electromagnetic modes"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('lapack' 'hdf5' 'fftw' 'libctl' 'guile')
 makedepends=('gcc-fortran')
 source=(https://github.com/NanoComp/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('5852a0a40cd035ffcbab9cfdab759be731bfe1d9c8cc491120acbac26731d4a0')
+sha256sums=('dc55b081c56079727dac92d309f8e4ea84ca6eea9122ec24b7955f8c258608e1')
 
 prepare() {
   cp -r $pkgname-$pkgver $pkgname-inv
