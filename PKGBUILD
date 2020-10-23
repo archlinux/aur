@@ -21,7 +21,7 @@ build() {
 check() {
   # https://github.com/pydanny/cached-property/issues/131
   cd cached-property-$pkgver
-  py.test || warning "Tests failed"
+  py.test || echo "Tests failed"
 }
 
 package() {
