@@ -1,13 +1,13 @@
 # Maintainer: coldbug <coldBug@e.mail.de>
 _pkgbase=smbmap
 pkgname=python-smbmap-git
-pkgver=v1.8.r0.g146a5d8
+pkgver=v1.8.2.r24.g6151db7
 pkgrel=1
 pkgdesc="SMBMap allows users to enumerate samba share drives across an entire domain"
 arch=(any)
 url="https://github.com/ShawnDEvans/smbmap"
 license=('GPL3')
-depends=('python' 'python-pyasn1' 'python-pycryptodome' 'python-impacket-git')
+depends=('python' 'python-pyasn1' 'python-pycryptodome' 'python-impacket-git' 'python-termcolor')
 makedepends=('git')
 provides=("${pkgname}")
 conflicts=('smbmap' 'python2-smbmap-git')
