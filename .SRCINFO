@@ -1,7 +1,7 @@
 pkgbase = electrum-dash
 	pkgdesc = Lightweight Bitcoin wallet, fork for DASH
 	pkgver = 3.3.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://electrum-dash.org
 	arch = any
 	license = MIT

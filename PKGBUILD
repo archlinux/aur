@@ -8,7 +8,7 @@ pkgname=electrum-dash
 _pkgname=Dash-Electrum
 pkgdesc="Lightweight Bitcoin wallet, fork for DASH"
 pkgver=3.3.8.7
-pkgrel=1
+pkgrel=2
 url="https://electrum-dash.org"
 arch=('any')
 license=('MIT')
@@ -35,6 +35,6 @@ build() {
 }
 
 package() {
-	cd ${pkgname}-${pkgver}
-	python setup.py install --root="${pkgdir}" --optimize=1
+        cd ${_pkgname}-${pkgver}
+        python setup.py install --root="${pkgdir}" --optimize=1
 }
