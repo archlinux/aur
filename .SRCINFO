@@ -5,6 +5,10 @@ pkgbase = taiwins-git
 	url = https://taiwins.org
 	arch = x86_64
 	license = GPL2
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	makedepends = wayland-protocols>=1.18
 	depends = glibc
 	depends = wayland>=1.17
 	depends = libxkbcommon
