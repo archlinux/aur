@@ -1,9 +1,10 @@
 pkgbase = beekeeper-studio-bin
 	pkgdesc = Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more
-	pkgver = 1.7.5
-	pkgrel = 2
+	pkgver = 1.8.2
+	pkgrel = 1
 	url = https://www.beekeeperstudio.io
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = libappindicator-gtk3
 	depends = libnotify
@@ -15,10 +16,12 @@ pkgbase = beekeeper-studio-bin
 	depends = xdg-utils
 	provides = beekeeper-studio
 	conflicts = beekeeper-studio
-	source = https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v1.7.5/beekeeper-studio_1.7.5_amd64.deb
-	source = beekeeper-studio-1.7.5-LICENSE::https://github.com/beekeeper-studio/beekeeper-studio/raw/master/LICENSE.md
-	sha256sums = 13da76eb871a549ef8876681351f1a9edec7460d5152bbda68b5e49cf6430638
-	sha256sums = SKIP
+	source = license-5c3257cf1989ca38b651a9dad77d81ace18961de::https://github.com/beekeeper-studio/beekeeper-studio/raw/5c3257cf1989ca38b651a9dad77d81ace18961de/LICENSE.md
+	sha256sums = 787ebc78ce29cd0cea3e52651936df7fef96b117782882fce389c3b7ce5683f5
+	source_x86_64 = https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v1.8.2/beekeeper-studio_1.8.2_amd64.deb
+	sha256sums_x86_64 = 3203367b1916ffd4ecd185a5d35d91285a3c775099c4c8d378d25ca8184fffa4
+	source_aarch64 = https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v1.8.2/beekeeper-studio_1.8.2_arm64.deb
+	sha256sums_aarch64 = fa8c84b3a755b0a410e8a02fac1c1a4acc9fe3808e399aa53c8a6cf9331f08cd
 
 pkgname = beekeeper-studio-bin
 
