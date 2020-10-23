@@ -17,7 +17,7 @@ sha256sums=('9d96f711d1f3d997f29bf83e704fc8dae0233beb400afa278792ff8349cd22a2')
 sha512sums=('6d9db4b6bcdd6d223be8b4e3830da4d63ac6d7d28ee83abd97809b0b901968c994c8434c992fbdd148101ba25d8d786c93657cb5f82881af44dadbba40bf3252')
 
 build() {
-  msg2 "Building python..."
+  echo "Building python..."
   cd ${_pkgname}-${_gitcommit}
    python setup.py build
    sphinx-build -b text docs docs/_build/text
@@ -25,7 +25,7 @@ build() {
 }
 
 check() {
-  msg2 "Checking python..."
+  echo "Checking python..."
   cd ${_pkgname}-${_gitcommit}
    python setup.py test
 }
