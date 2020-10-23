@@ -1,0 +1,13 @@
+pkgbase = mkusb
+	pkgdesc = A shell script to create ISO multiboot USB flash drives that support both legacy and EFI boot
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = http://nuclear.mutantstargoat.com/sw/xlivebg
+	arch = any
+	license = MIT
+	depends = bash
+	source = mkusb-0.2.3.tar.gz::https://github.com/lilyinstarlight/mkusb/archive/v0.2.3.tar.gz
+	sha256sums = 2a0808dbaf43ec37d1bf27e1471a65f30b6ea9e83eb027ef2fb6b6b7fb97a529
+
+pkgname = mkusb
+
