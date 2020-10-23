@@ -1,0 +1,17 @@
+pkgbase = vim-smoothie-git
+	pkgdesc = Smoth scrolling for Vim done right
+	pkgver = 2019.12.02.gd3de4fb
+	pkgrel = 1
+	url = https://github.com/psliwka/vim-smoothie
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim
+	provides = vim-smoothie
+	conflicts = vim-smoothie
+	source = git+https://github.com/psliwka/vim-smoothie.git
+	sha256sums = SKIP
+
+pkgname = vim-smoothie-git
+
