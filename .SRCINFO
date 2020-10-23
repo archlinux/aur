@@ -1,6 +1,6 @@
 pkgbase = dnscomp-git
 	pkgdesc = A simple, fast DNS benchmark tool
-	pkgver = 0.r24.6336e52
+	pkgver = 0.r26.7a2cec3
 	pkgrel = 1
 	url = https://github.com/Chizi123/dnscomp.git
 	arch = x86_64
