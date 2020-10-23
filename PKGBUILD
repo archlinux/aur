@@ -1,16 +1,23 @@
-# Maintainer: Steven Honeyman <stevenhoneyman at gmail com>
-# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Maintainer: Benjamin Goodger <ben at goodger dot nl>
+# Contributor: Steven Honeyman <stevenhoneyman at gmail dot com>
+# Contributor: Jaroslav Lichtblau <dragonlord at aur dot archlinux dot org>
 
 pkgname=fslint
+
 pkgver=2.46
-pkgrel=1
-pkgdesc="A utility to find and clean various forms of lint on a filesystem"
+pkgrel=2
+
+pkgdesc="Finds and clean various forms of lint on a filesystem"
 arch=('any')
 url="http://www.pixelbeat.org/fslint/"
 license=('GPL')
-depends=('pygtk' 'python2')
-source=(http://www.pixelbeat.org/$pkgname/$pkgname-$pkgver.tar.xz)
-sha256sums=('f15daebfecfd2eea0d3b48a0193e25974b71dcf1e4b4a33d5a3dcfb7bb9c90cc')
+
+depends=('python2')
+optdepends=('pygtk: GUI')
+
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pixelb/fslint/archive/${pkgver}.tar.gz")
+
+sha256sums=('5b7403bde841cbca2cb4906ff56482a0476c5860b3486d88c675f4d6a26be0b1')
 
 prepare() {
   cd "${srcdir}"/$pkgname-$pkgver
