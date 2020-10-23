@@ -1,6 +1,6 @@
 pkgbase = sicuit
 	pkgdesc = Minimal plaintext password store
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://fdpl.io/sicuit/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = sicuit
 	depends = icu
 	depends = libeno
 	depends = ncurses
-	source = sicuit-1.0.tar.gz::https://codeberg.org/simonrepp/sicuit/archive/1.0.tar.gz
-	md5sums = 0097e41fdd796ad19b1e1024f9a00882
+	source = sicuit-1.1.tar.gz::https://codeberg.org/simonrepp/sicuit/archive/1.1.tar.gz
+	md5sums = 035cbbf3a740ea5fe3596be8404a957c
 
 pkgname = sicuit
 
