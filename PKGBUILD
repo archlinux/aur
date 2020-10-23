@@ -2,12 +2,12 @@
 pkgname=piavpn-manual-git
 _pkgname=piavpn-manual
 pkgver=r26.82ebed7
-pkgrel=1
+pkgrel=2
 pkgdesc="Shell scripts to connect manually to PIA VPN"
 arch=(any)
 url="https://github.com/pia-foss/manual-connections"
 license=('MIT')
-depends=(curl jq)
+depends=(curl jq openvpn wireguard-tools WIREGUARD-MODULE)
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
