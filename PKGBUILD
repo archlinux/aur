@@ -7,7 +7,7 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 pkgname=amule-dlp-git
 pkgver=2.3.2.r10525.07932e9a3
-pkgrel=1
+pkgrel=2
 pkgdesc="An eMule-like client for ed2k p2p network with DLP patch"
 arch=('i686' 'x86_64')
 url="https://github.com/persmule/amule-dlp"
@@ -20,10 +20,12 @@ install=amule.install
 provides=('amule' 'amule-dlp')
 source=("git+https://github.com/persmule/amule-dlp.git#commit=07932e9a37f88f3daa1322628f2db818178c258b"
         'amuled.systemd'
-		'amuleweb.systemd')
+		'amuleweb.systemd'
+		'UPnPBase.patch')
 sha256sums=('SKIP'
             '6dbdd1ad1c3c3d8637b8f4cbd5416f39c8e4277a2f8498577b08bf6cda8dbca9'
-			'f4f43b1154ddccc9036a4291a58c6715f097b171fec62ea7aead0c9d9fa654f2')
+            'f4f43b1154ddccc9036a4291a58c6715f097b171fec62ea7aead0c9d9fa654f2'
+            'efc6a7c93f04cbeafc4aa4b3db28e22992a8a435f41708a97c5d190c9466b306')
 
 pkgver() {
   cd "${srcdir}/amule-dlp"
@@ -33,6 +35,7 @@ pkgver() {
 prepare(){
   cd "${srcdir}/amule-dlp"
   cp src/aMule.xpm amule.xpm
+  patch -p1 < ../UPnPBase.patch
 }
 
 build() {
