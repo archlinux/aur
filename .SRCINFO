@@ -1,0 +1,17 @@
+pkgbase = terraform-provider-ovirt-git
+	pkgdesc = Terraform provider for oVirt 4.x
+	pkgver = 0.4.2.r50.g15d9359
+	pkgrel = 1
+	url = https://github.com/oVirt/terraform-provider-ovirt
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = terraform-provider-ovirt=0.4.2
+	conflicts = terraform-provider-ovirt=0.4.2
+	source = git+https://github.com/oVirt/terraform-provider-ovirt
+	md5sums = SKIP
+
+pkgname = terraform-provider-ovirt-git
+
