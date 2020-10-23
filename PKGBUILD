@@ -1,7 +1,7 @@
 # Maintainer: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 pkgname=receivemidi
 _pkgname=ReceiveMIDI
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Multi-platform command-line tool to monitor and receive MIDI messages "
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/gbevin/ReceiveMIDI"
 license=('GPL3')
 depends=('alsa-lib' 'curl')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-md5sums=('cedf1b238da9cfc510c94d688717c936')
+md5sums=('fff1bda61b343fdab59891c88c991d3a')
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver/Builds/LinuxMakefile"
