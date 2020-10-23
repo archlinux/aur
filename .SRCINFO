@@ -6,6 +6,7 @@ pkgbase = nxp-dlagent
 	arch = x86_64
 	license = Apache
 	license = MIT
+	makedepends = python-pip
 	depends = python-selenium
 	depends = geckodriver
 	source = git+https://github.com/nickray/nxp-dlagent

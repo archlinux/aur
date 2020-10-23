@@ -6,6 +6,7 @@ pkgdesc="Download agent for NXP material"
 url="https://github.com/nickray/nxp-dlagent"
 arch=(x86_64)
 license=(Apache MIT)
+makedepends=(python-pip)
 depends=(python-selenium geckodriver)
 
 source=(git+https://github.com/nickray/nxp-dlagent)
@@ -14,5 +15,6 @@ sha256sums=(SKIP)
 
 package() {
   cd $srcdir/$pkgname
-  pip install --root="$pkgdir/" .
+  # https://wiki.archlinux.org/index.php/Python_package_guidelines#pip
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
 }
