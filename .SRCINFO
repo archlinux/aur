@@ -1,0 +1,14 @@
+pkgbase = python-speech-features
+	pkgdesc = Python Speech Feature extraction
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/jameslyons/python_speech_features
+	arch = any
+	license = MIT
+	depends = python-scipy
+	depends = python-numpy
+	source = https://github.com/jameslyons/python_speech_features/archive/0.6.1.zip
+	sha256sums = 30ed2034fb26bc83b2b4a527a4fc45323c5a7674be0ac304f22559acfdb84e37
+
+pkgname = python-speech-features
+
