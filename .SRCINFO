@@ -7,6 +7,7 @@ pkgbase = moltengamepad-git
 	license = MIT
 	depends = scraw
 	depends = scrawpp
+	provides = moltengamepad
 	source = moltengamepad-git::git+https://github.com/jgeumlek/MoltenGamepad.git
 	source = moltengamepad-sysusers.conf
 	source = 70-moltengamepad-uaccess.rules
