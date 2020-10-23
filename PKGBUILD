@@ -8,7 +8,7 @@ url='https://github.com/neoclide/coc-pairs'
 depends=('vim-coc')
 makedepends=('git' 'yarn' 'npm')
 _packdir="usr/share/vim/vimfiles/pack/coc/start/${_extname}"
-license=('')
+license=('MIT')
 groups=('vim-coc-extras-git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -24,12 +24,12 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_extname}"
-    yarn install --frozen-lockfile
+    yarn install --frozen-lockfile --preferred-cache-folder "${srcdir}/.cache/yarn"
     yarn pack
     tar xvf *.tgz
     rm *.tgz
     cd package
-    npm install --only=production --no-lockfile --ignore-scripts
+    npm install --only=production --no-lockfile --ignore-scripts --cache "${srcdir}/.cache/npm"
 }
 
 package() {
@@ -37,4 +37,6 @@ package() {
     find . -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
     rm -rf "${srcdir}/${_extname}/package"
+    find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+    chown -R root:root "${pkgdir}"
 }
