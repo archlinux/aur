@@ -6,7 +6,7 @@
 # We grab koreader.png and koreader.desktop from the AppImage, patch the koreader.desktop,
 # and install them as we would other apps, for convenience sake.
 pkgname=koreader-appimage
-pkgver=2020.09
+pkgver=2020.10.1
 pkgrel=1
 
 pkgdesc="An ebook reader supporting PDF, DjVu, EPUB, FB2 and many more formats."
@@ -20,7 +20,7 @@ noextract=("$_filename")
 options=('!strip')
 install=${pkgname}.install
 source=("http://ota.koreader.rocks/koreader-appimage-x86_64-linux-gnu-v$pkgver.AppImage")
-sha256sums=('bcc923e2e02bd8ae44a123c38d9c8404edf05d2b6e0b2098dc85716240eb4d00')
+sha256sums=('3135b9dea968b8e5b7a286de07d5755df8117288c8f40e7603079477fa44f758')
 
 prepare() {
     cd "${srcdir}"
