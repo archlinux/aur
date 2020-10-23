@@ -1,6 +1,6 @@
 pkgbase = nat-git
 	pkgdesc = nat the ls replacement you never knew you needed
-	pkgver = .0.6
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/willdoescode/nat
 	arch = x86_64

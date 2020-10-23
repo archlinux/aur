@@ -1,7 +1,7 @@
 # Maintainer: spikecodes <19519553+spikecodes@users.noreply.github.com>
 pkgname=nat-git
 _pkgname=${pkgname%-git}
-pkgver=.0.6
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="nat the ls replacement you never knew you needed"
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha256sums=("SKIP")
 pkgver() {
 	cd "${_pkgname}"
 	( set -o pipefail
-		printf "$(git describe --tags | awk -F- '{print $1}' | cut -c2-)"
+		printf "$(git describe --tags | awk -F- '{print $1}')"
 	)
 }
 
