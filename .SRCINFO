@@ -1,6 +1,6 @@
 pkgbase = fofimon
 	pkgdesc = Monitor selected folders and files for modifications
-	pkgver = 0.11
+	pkgver = 0.12
 	pkgrel = 1
 	url = https://efanomars.com/utilities/fofimon
 	arch = x86_64
@@ -8,13 +8,10 @@ pkgbase = fofimon
 	arch = aarch64
 	license = GPL3
 	makedepends = cmake
-	makedepends = gcc
-	makedepends = doxygen
-	makedepends = graphviz
 	makedepends = python
 	depends = glibmm
-	source = https://efanomars.com/sources/fofimon-0.11.tar.gz
-	sha256sums = 32827efae57332a5b7e1da068ac74e98ce21f73f37c6bedcf0eb7b4383abc65a
+	source = https://efanomars.com/sources/fofimon-0.12.tar.gz
+	sha256sums = bc99064ed9705c5ce01d5cdda72c22bb31af793f3c715f6dbf715ea1b2723074
 
 pkgname = fofimon
 
