@@ -8,7 +8,7 @@ url="https://inko-lang.org"
 license=(MPL2)
 arch=(x86_64)
 depends=('ruby>=2.3.0' 'libffi>=3.2.0')
-makedepends=(coreutils clang 'rust>=1.34' make)
+makedepends=(coreutils 'rust>=1.34' make)
 provides=(inko)
 conflicts=(inko-git)
 options=(strip !docs !libtool !staticlibs)
