@@ -1,6 +1,6 @@
 pkgbase = yabridgectl-git
 	pkgdesc = Optional utility to help set up and manage yabridge
-	pkgver = 1.7.0.r0.g21c1f53
+	pkgver = 1.7.1.r0.gcbc55aa
 	pkgrel = 1
 	url = https://github.com/robbert-vdh/yabridge
 	arch = x86_64
