@@ -2,7 +2,7 @@
 
 pkgname=layan-gtk-theme-git
 _reponame='Layan-gtk-theme'
-pkgver=0.0.0.a61c2ff
+pkgver=r56.31a7ef4
 pkgrel=1
 pkgdesc='An Flat Gtk+ theme based on Material Design'
 arch=("any")
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 pkgver(){
     cd "${srcdir}/${_reponame}"
     if [ $(git tag|wc -l) == 0 ]; then
-        echo "0.0.0.$(git log -1 --format='%h')"
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     else
         git describe --tags | sed 's/-/.r/; s/-g/./'
     fi
