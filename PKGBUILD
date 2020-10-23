@@ -15,7 +15,7 @@ source=("git+https://github.com/Impostor/Impostor.git#tag=v${pkgver}"
         "https://dot.net/v1/dotnet-install.sh")
 sha512sums=('SKIP'
             'SKIP'
-            '7cdf91eda30e18ae3042ea77ad2a43e66e5a020df1ae09ff0b73f327385a34b51da3cd52361ef2714c853d30fffc8dd077733858b07ec6f79a444b6d8dcf637c')
+            'ffbcb792bc25976322c18189d8884bbddd8e0fdc216a0e541b8a28baf4791001cb6cd114bb2935190df8cfe95fc909cc87b64e87d8f1f3d0a77e0fd2f4a1f43e')
 
 prepare() {
   chmod +x ./dotnet-install.sh
