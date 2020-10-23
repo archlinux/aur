@@ -1,0 +1,14 @@
+pkgbase = python-pytube3
+	pkgdesc = Python 3 library for downloading YouTube Videos.
+	pkgver = 9.6.4
+	pkgrel = 1
+	url = https://github.com/get-pytube/pytube3
+	arch = any
+	license = MIT
+	depends = python-setuptools
+	depends = python-typing_extensions
+	source = https://pypi.io/packages/source/p/pytube3/pytube3-9.6.4.tar.gz
+	sha512sums = e15d82c4b09e227bb35566edcc3e1014af8cce7af09735ec174550f227a964fc7225941e7ade6e15cba237434bd2d55306dd87b75a1356835abc5982665941f2
+
+pkgname = python-pytube3
+
