@@ -1,0 +1,16 @@
+pkgbase = rymfony-git
+	pkgdesc = A work-in-progress CLI tool built in Rust to mimic the Symfony CLI binary
+	pkgver = r185.751e78b
+	pkgrel = 1
+	url = https://github.com/Orbitale/Rymfony
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = git
+	makedepends = cargo
+	provides = rymfony
+	conflicts = rymfony
+	source = rymfony::git+https://github.com/Orbitale/Rymfony
+	sha256sums = SKIP
+
+pkgname = rymfony-git
+
