@@ -22,7 +22,7 @@ build() {
 
 check() {
   cd ibm_db_sa-$pkgver
-  nosetests3 || warning "Tests failed"
+  nosetests3 || echo "Tests failed"
 }
 
 package() {
