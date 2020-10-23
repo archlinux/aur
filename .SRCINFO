@@ -1,7 +1,7 @@
 pkgbase = nxp-dlagent
 	pkgdesc = Download agent for NXP material
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nickray/nxp-dlagent
 	arch = x86_64
 	license = Apache
@@ -9,8 +9,8 @@ pkgbase = nxp-dlagent
 	makedepends = python-pip
 	depends = python-selenium
 	depends = geckodriver
-	source = git+https://github.com/nickray/nxp-dlagent
-	sha256sums = SKIP
+	source = https://github.com/nickray/nxp-dlagent/archive/0.1.0.tar.gz
+	sha256sums = b06d1d0b219c9981e32e832bacb3da5a4e58bde98eef62503fb5fc8ee814b56b
 
 pkgname = nxp-dlagent
 
