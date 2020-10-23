@@ -1,15 +1,16 @@
 # Maintainer: Ralph Zhou  <1694487365@qq.com>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=q5go-git
 _pkgname=q5go
-pkgver=20200314.3968725
+pkgver=20201014.d2e6920
 pkgrel=1
-pkgdesc='Go Client based on Qt 5, Support KataGo/LeeLa Zero analysis Pandanet and SGF edition'
+pkgdesc='Everyday SGF editor for Go players'
 url='https://github.com/bernds/q5go'
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 makedepends=('git')
-depends=('qt5-multimedia' 'qt5-tools')
+depends=('qt5-multimedia' 'qt5-svg')
 source=("git://github.com/bernds/q5go.git")
 sha256sums=('SKIP')
 
@@ -18,17 +19,16 @@ conflicts=("${_pkgname}")
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-    git log -1 --format='%cd.%h' --date=short | tr -d -
+	git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
 build() {
 	cd "${srcdir}/${_pkgname}/src"
-	#qmake-qt5
-    qmake ./q5go.pro PREFIX=${pkgdir}/usr
+	qmake-qt5 q5go.pro PREFIX=/usr
 	make
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}/src"
-    make install
+	cd "${srcdir}/${_pkgname}/src"
+	make INSTALL_ROOT="${pkgdir}" install
 }
