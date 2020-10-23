@@ -5,6 +5,7 @@ pkgbase = poly.lv2-git
 	url = https://github.com/polyeffects/PolyLV2
 	arch = x86_64
 	groups = lv2plugins
+	makedepends = git
 	depends = lv2
 	provides = poly.lv2
 	conflicts = poly.lv2
