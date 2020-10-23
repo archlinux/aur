@@ -7,9 +7,6 @@
 # accept the license terms, and place the downloaded ZIP file in the same directory as this PKGBUILD,
 # then try building again.
 
-# N.B.: The ZIP file lacks files such as blhost.cpp and common.mk,
-#       which prevents offering a non-prebuilt `blhost` PKGBUILD.
-
 pkgname=blhost
 pkgver=2.6.2
 pkgname_pkgver=${pkgname}_$pkgver
