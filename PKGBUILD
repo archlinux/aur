@@ -11,7 +11,7 @@ license=('GPL3')
 url="https://github.com/BambooEngine/ibus-bamboo"
 conflicts=('ibus-bamboo')
 depends=('ibus')
-makedepends=('git' 'go' 'libx11' 'libxtst')
+makedepends=('git' 'go' 'libx11' 'libxtst' 'make')
 source=("git+$url")
 md5sums=('SKIP')
 

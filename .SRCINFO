@@ -9,6 +9,7 @@ pkgbase = bamboo-ibus-git
 	makedepends = go
 	makedepends = libx11
 	makedepends = libxtst
+	makedepends = make
 	depends = ibus
 	conflicts = ibus-bamboo
 	source = git+https://github.com/BambooEngine/ibus-bamboo
