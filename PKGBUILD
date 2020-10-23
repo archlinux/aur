@@ -29,16 +29,18 @@ prepare() {
   git submodule update --init --recursive
 }
 
+_BUILDDIR=build
+
 build() {
-	mkdir trenchbroom/build
-	cd trenchbroom/build
-	cmake .. -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release
+	mkdir "$_BUILDDIR"
+	cd "$_BUILDDIR"
+	cmake "$srcdir/trenchbroom" -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release
 	QT_QPA_PLATFORM=offscreen cmake --build . --target TrenchBroom
 }
 
 package() {
-	cd trenchbroom/build
-	make DESTDIR=${pkgdir} install
-	install -Dm644 ../../../trenchbroom.desktop "${pkgdir}/usr/share/applications/trenchbroom.desktop"
+	install -Dm644 trenchbroom.desktop "${pkgdir}/usr/share/applications/trenchbroom.desktop"
+	cd "${srcdir}/$_BUILDDIR"
+	make DESTDIR="${pkgdir}" install
 	install -Dm644 "${srcdir}/trenchbroom/app/resources/linux/icons/icon_256.png" "${pkgdir}/usr/share/pixmaps/trenchbroom.png"
 }
