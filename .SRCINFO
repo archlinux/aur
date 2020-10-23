@@ -1,6 +1,6 @@
 pkgbase = etesync-dav
 	pkgdesc = A CalDAV and CardDAV adapter for EteSync
-	pkgver = 0.30.0
+	pkgver = 0.30.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/etesync-dav/
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = etesync-dav
 	depends = python-flask
 	depends = python-flask-wtf
 	replaces = python-radicale-storage-etesync
-	source = https://pypi.org/packages/source/e/etesync-dav/etesync-dav-0.30.0.tar.gz
+	source = https://pypi.org/packages/source/e/etesync-dav/etesync-dav-0.30.1.tar.gz
 	source = etesync-dav.service
-	sha512sums = 499ae506b588f0926fa2bec0aed72f7af5fbda7c27f9202f1ba1265bf6824313f7482000ebd5e1fb5b0db30c06e7fdb9819d80de8224ddb87efc7ad59bd6f954
+	sha512sums = 2665ee3bb73c3e5cbf5876b3873ac54c881286723d97c4c93bb58c2c4e86ed9f1237550cdb66b065d17bd6f908e656e84753d03aeefe6c5604099fb0bc33be43
 	sha512sums = SKIP
 
 pkgname = etesync-dav
