@@ -2,7 +2,7 @@
 
 pkgname=s3uploader
 pkgver=0.2.0
-pkgrel=1.3
+pkgrel=1.4
 pkgdesc="A minimalistic electron-based UI to conveniently upload and download files from AWS S3"
 url="https://github.com/Yamazaki93/S3Uploader"
 arch=("x86_64")
@@ -43,14 +43,14 @@ build() {
 
     cd app/frontend
     yarn
-    ng config -g cli.warnings.versionMismatch false
-    ng build --prod --aot=false --build-optimizer=false
+    yarn ng config -g cli.warnings.versionMismatch false
+    yarn ng build --prod --aot=false --build-optimizer=false
     
     cd ../..
     mkdir -p dist/frontend
     cp -ar app/frontend/dist dist/frontend/dist
 
-    electron-builder --linux
+    yarn electron-builder --linux
 }
 
 package() {
