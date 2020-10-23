@@ -25,7 +25,7 @@ build() {
 
 check() {
   cd pysimplesoap-$pkgver
-  nosetests3 -a !internal,!disabled || warning "Tests failed"
+  nosetests3 -a !internal,!disabled || echo "Tests failed"
 }
 
 package() {
