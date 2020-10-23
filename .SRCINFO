@@ -11,6 +11,8 @@ pkgbase = python-scalene-git
 	makedepends = git
 	depends = python>=3.6
 	depends = python-numpy
+	depends = python-cloudpickle
+	depends = python-rich
 	provides = python-scalene
 	source = python-scalene-git::git+https://github.com/emeryberger/scalene.git
 	source = git+https://github.com/emeryberger/Heap-Layers
