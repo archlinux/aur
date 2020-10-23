@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Update packages lists in /etc
+When = PostTransaction
+# pacman -Qqe : List explicitly installed packages name. --native for pacman packages, --foreign for others (like from the AUR)
+Exec = /bin/sh -c '/usr/bin/pacman -Qqe  --native > /etc/packages-list-native.txt && /usr/bin/pacman -Qqe --foreign > /etc/packages-list-foreign.txt'

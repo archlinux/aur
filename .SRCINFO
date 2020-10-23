@@ -1,0 +1,14 @@
+pkgbase = pacman-hook-list-installed-packages
+	pkgdesc = Pacman hook to list installed packages in /etc/packages-list-native.txt and /etc/packages-list-foreign.txt
+	pkgver = latest
+	pkgrel = 1
+	url = https://gitlab.com/jdorel-archlinux/pacman-hook-list-installed-packages
+	arch = any
+	license = GPL
+	makedepends = git
+	source = list-installed-packages.hook
+	md5sums = SKIP
+	sha256sums = 010b00d9804e65643609f7605661e9a16535729668bd9533db1d83daa7dce197
+
+pkgname = pacman-hook-list-installed-packages
+
