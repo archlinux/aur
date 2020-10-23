@@ -1,0 +1,13 @@
+pkgbase = ttf-material-design-icons-desktop-git
+	pkgdesc = Material Design Icons Desktop Font
+	pkgver = r1168.2977b80
+	pkgrel = 1
+	url = https://materialdesignicons.com
+	arch = any
+	license = custom:PFL
+	makedepends = git
+	source = git+https://github.com/Templarian/MaterialDesign-Font.git
+	md5sums = SKIP
+
+pkgname = ttf-material-design-icons-desktop-git
+
