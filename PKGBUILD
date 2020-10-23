@@ -22,7 +22,7 @@ check() {
   # Needs an account
 
   cd PyNamecheap-$pkgver
-  python setup.py nosetests || warning "Tests failed"
+  python setup.py nosetests || echo "Tests failed"
 }
 
 package() {
