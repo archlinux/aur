@@ -6,7 +6,7 @@
 # Contributor: Dario 'Dax' Vilardi <dax [at] deelab [dot] org>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 pkgname=amule-dlp-git
-pkgver=2.3.2.r10468.3e9f92bc3
+pkgver=2.3.2.r10525.07932e9a3
 pkgrel=1
 pkgdesc="An eMule-like client for ed2k p2p network with DLP patch"
 arch=('i686' 'x86_64')
