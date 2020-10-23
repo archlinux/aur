@@ -1,6 +1,6 @@
 pkgbase = q5go-git
-	pkgdesc = Go Client based on Qt 5, Support KataGo/LeeLa Zero analysis Pandanet and SGF edition
-	pkgver = 20200314.3968725
+	pkgdesc = Everyday SGF editor for Go players
+	pkgver = 20201014.d2e6920
 	pkgrel = 1
 	url = https://github.com/bernds/q5go
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = q5go-git
 	license = GPL
 	makedepends = git
 	depends = qt5-multimedia
-	depends = qt5-tools
+	depends = qt5-svg
 	provides = q5go
 	conflicts = q5go
 	source = git://github.com/bernds/q5go.git

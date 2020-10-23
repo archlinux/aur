@@ -1,4 +1,4 @@
-# Maintainer: Ralph Zhou  <1694487365@qq.com>
+# Maintainer: Ralph Zhou <1694487365@qq.com>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=q5go-git
