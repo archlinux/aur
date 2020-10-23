@@ -6,7 +6,6 @@ pkgbase = inko-git
 	arch = x86_64
 	license = MPL2
 	makedepends = coreutils
-	makedepends = clang
 	makedepends = rust>=1.34
 	makedepends = make
 	depends = ruby>=2.3.0
