@@ -1,10 +1,11 @@
-# Maintainer: LIN Ruohshoei <lin dot ruohshoei+arch at gmail dot com>
+# Maintainer: Joey Dumont <joey.dumont@gmail.com>
+# Contributor: LIN Ruohshoei <lin dot ruohshoei+arch at gmail dot com>
 # Contributor: Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgbase=snes9x-git
 _pkgbase=snes9x
 pkgname=( snes9x-git snes9x-gtk-git )
-pkgver=1.59.2.r33.gc39f769
+pkgver=1.60.r280.gfc78065
 pkgrel=1
 pkgdesc="Port of the Snes9x emulator (git version)"
 arch=('x86_64')
@@ -17,8 +18,10 @@ makedepends=( alsa-lib cairo gdk-pixbuf2 git glib2 glslang
 source=(
   git+https://github.com/snes9xgit/snes9x.git
   git+https://github.com/KhronosGroup/SPIRV-Cross.git
+  git+https://github.com/KhronosGroup/glslang.git
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -29,6 +32,12 @@ pkgver() {
 prepare() {
   cd ${_pkgbase}
   for submodule in shaders/SPIRV-Cross; do
+    git submodule init ${submodule}
+    git config submodule.${submodule}.url ../${submodule#*/}
+    git submodule update ${submodule}
+  done
+
+  for submodule in shaders/glslang; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule#*/}
     git submodule update ${submodule}
