@@ -6,7 +6,6 @@ pkgbase = bdf-curie
 	arch = any
 	license = OFL
 	makedepends = git
-	makedepends = xorg-font-utils
 	source = git+https://github.com/NerdyPepper/curie.git
 	sha256sums = SKIP
 
