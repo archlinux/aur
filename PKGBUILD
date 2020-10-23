@@ -2,13 +2,13 @@
 
 pkgname=p4
 _version=2020.1
-pkgver=2020.1.1953492
+pkgver=2020.1.2007551
 pkgrel=1
 
 pkgdesc="Perforce command line client"
 depends=('glibc')
 arch=('i686' 'x86_64')
-url="http://www.perforce.com"
+url="https://www.perforce.com"
 license=('custom:p4')
 
 _url="${url}/downloads/perforce"
