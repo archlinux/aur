@@ -1,7 +1,7 @@
 # Maintainer: Björn <theodorstormgrade@gmail.com>
 pkgname=scratchbox2
 pkgver=2.3.90+git2.r76.fc3eefe
-pkgrel=1
+pkgrel=2
 pkgdesc="https://git.sailfishos.org/mer-core/scratchbox2"
 arch=('x86_64' 'i686')
 url="https://git.sailfishos.org/mer-core/scratchbox2"
@@ -12,6 +12,7 @@ depends=('perl' 'lib32-glibc' 'sh')
 source=(upstream::git+https://git.sailfishos.org/Thaodan/scratchbox2#branch=fix_ld_pie_error)
 makedepends=(
   'git'
+  'lib32-gcc-libs'
 )
 
 
@@ -23,7 +24,7 @@ pkgver() {
 build() {
         cd upstream/$pkgname
         ./autogen.sh
-        ./configure --prefix=/usr
+        ./configure --prefix=/usrg
         make
 }
 
