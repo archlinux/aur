@@ -1,4 +1,4 @@
-# Contributor: Slash <demodevil5 [at] yahoo [dot] com>
+# Maintainer: Slash <demodevil5 [at] yahoo [dot] com>
 # Contributor: Andrew Simmons <andrew.simmons@gmail.com>
 # Contributor: teddy_beer_maniac <teddy_beer_maniac@wp.pl>
 # Contributor: Babets
@@ -9,8 +9,8 @@ pkgrel=1
 pkgdesc='The stock Doom 3 binaries. Punkbuster compatible. You need the retail .pk4 files to play.'
 url='http://www.doom3.com/'
 license=('custom:"DOOM 3"' 'custom:"PunkBuster"')
-[ "$CARCH" = "i686"   ] && depends=('libxext' 'libgl' 'alsa-lib>=1.0.6')
-[ "$CARCH" = "x86_64" ] && depends=('lib32-gcc-libs' 'lib32-libxdamage' 'lib32-libxext' 'lib32-libgl' 'lib32-alsa-lib>=1.0.6' 'lib32-libstdc++5' 'lib32-openal')
+depends_i686=('libxext' 'libgl' 'alsa-lib>=1.0.6')
+depends_x86_64=('lib32-gcc-libs' 'lib32-libxdamage' 'lib32-libxext' 'lib32-libgl' 'lib32-alsa-lib>=1.0.6' 'lib32-libstdc++5' 'lib32-openal')
 arch=('i686' 'x86_64')
 install=doom3.install
 source=('doom3.launcher' 'doom3-dedicated.launcher' 'doom3.desktop' \
@@ -18,13 +18,13 @@ source=('doom3.launcher' 'doom3-dedicated.launcher' 'doom3.desktop' \
 "http://slashbunny.com/aur/doom3/doom3-linux-$pkgver.x86.run")
 provides=('doom3')
 conflicts=('doom3')
-md5sums=('da5f33feaa929c2c588a5a773c777e0f'
-         '6bdef1e111e5f450bca3f1c043caf4a2'
-         'facb0291279621d997f9504924d7e9b1'
-         '7ccbdd8f07672c6c34b2fe1de131e57c'
-         'aca58ca787ac3c2c44eea46b08a5a3c1'
-         'f99eb141eecc4b9dd188d6819d741546'
-         '6325f0936f59420d33668754032141cb')
+sha256sums=('ea9fe17fdb19cfe8a22e2b7859093f7a76eeaa51fd2571507b6dc37462515f21'
+            'f7aa055489f581e3da3001b23becef68586b0994da70ee138425926fc580b204'
+            'f9199b09981bb1fffba0f17a71e01021e4ea4aae6d99e553aa00c74d576e812b'
+            '718378f2c3c42d56b916e9341e01261a2cfad5fb60ef15cc57954d1a4ce2a94e'
+            'e6654e29773b5ed01f897294ecbc21a84dcb59afc30cb60eb0d5a3c03c7d3de1'
+            'c9a701498a7b0f923182bf9f11aac8d2193026e509ae3643a5bc118b1a458c6b'
+            '2f90dff20f2d3c0c47f17b3d6d45c4f0e7d27b986bf6084f21b85180cd1e03b4')
 
 build() {
     cd $srcdir
