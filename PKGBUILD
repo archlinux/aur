@@ -1,7 +1,7 @@
 # Maintainer: Wenxuan <wenxuangm@gmail.com>
 pkgname=code-minimap
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A high performance code minimap render'
 arch=(i686 x86_64)
 url="https://github.com/wfxr/code-minimap"
