@@ -1,7 +1,10 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: orhun <orhunparmaksiz@gmail.com>
+# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 # Contributor: Travis Willard <travisw@wmpub.ca>
 # Contributor: William Rea <sillywilly@gmail.com>
+
+# https://github.com/orhun/pkgbuilds
 
 pkgname=devilspie
 pkgver=0.23
