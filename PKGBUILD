@@ -1,7 +1,7 @@
 # Maintainer: Michael Riegert <michael at eowyn net>
 
 pkgname=fpga-toolchain-bin
-pkgver=20201022
+pkgver=20201023
 pkgrel=2
 pkgdesc="Nightly builds of open-source FPGA tools"
 arch=('x86_64')
@@ -24,7 +24,7 @@ conflicts=(
     'yices'
     )
 source_x86_64=($url/releases/download/nightly-$pkgver/fpga-toolchain-linux_x86_64-nightly-$pkgver.tar.xz)
-sha256sums_x86_64=('01d032cddb6338fc893c582cde51a94bd7df0da1a0d7b21966e7a6d389da0908')
+sha256sums_x86_64=('c88ee049d342678345bde4f363b56ec94441c4a5acd96ee868c2494173e422cc')
 package() {
     mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/include" "$pkgdir/usr/lib/ghdl" "$pkgdir/usr/share"
     rsync -a "$srcdir/fpga-toolchain/" "$pkgdir/usr/" --chmod=755 --exclude lib/python3.8 --exclude VERSION --exclude lib/libghdl.link
