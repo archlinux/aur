@@ -1,10 +1,8 @@
 pkgbase = neutrino
 	pkgver = 0.400
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	source = neutrino_auto_patch.sh
-	source = neutrino.sh
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = neutrino

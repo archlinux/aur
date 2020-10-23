@@ -1,2 +1,0 @@
-export PATH=$PATH:/opt/NEUTRINO/bin
-export LD_LIBRARY_PATH=/opt/NEUTRINO/bin:/opt/NEUTRINO/NSF/bin:$LD_LIBRARY_PATH
