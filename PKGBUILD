@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=cargo-spellcheck
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Checks all your documentation for spelling mistakes"
 url="https://github.com/drahnr/$pkgname"
@@ -8,7 +8,7 @@ arch=("x86_64")
 license=("MIT" "Apache")
 depends=("cargo" "hunspell")
 source=("$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=('6960c503f1eb64465cdd09daf1c181b13782dfe4718e38ce1642814fce670c84')
+sha256sums=('a65c31830b3b5eda44f87c5051c8c08a86254c4507e1b42c0957f07bd86e3591')
 
 build()
 {
