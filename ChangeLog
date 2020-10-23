@@ -1,19 +1,25 @@
+2020.10.23, Version 2.2:
+	- Fixed hourglass movement.
+	- Larger arrow handlers for 42 size.
+	- Fixed wrong color in 42-progress4.xpm black cursor.
+
 2019.12.14, Version 2.1:
-    - Version 2.1
-    - Better shadow projection.
-    - Size 32 added.
+	- Version 2.1
+	- Better shadow projection.
+	- Size 32 added.
+
 2019.11.20, Version 2.0:
-    - Version 2.0: Hourglass design.
-    - Better building. No external scripts needed.
-    - Minor fixes.
+	- Version 2.0: Hourglass design.
+	- Better building. No external scripts needed.
+	- Minor fixes.
 
 2019.07.13, Version 1.2:
-    - Added versions with shadow.
+	- Added versions with shadow.
 
 2019.03.08, Version 1.1:
-    - The names of the installation directories are changed from
+	- The names of the installation directories are changed from
  retrosmart-* to retrosmart-xcursors-* so as not to be confused
  with icons themes.
 
 2019.03.05, Version 1.0:
-    - First stable version.
+	- First stable version.
