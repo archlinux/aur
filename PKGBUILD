@@ -32,14 +32,14 @@ prepare() {
 }
 
 build() {
-  msg2 "Building python..."
+  echo "Building python..."
   cd ${pkgbase}
   python setup.py build
   make -j1 -C docs text man SPHINXBUILD=sphinx-build
 }
 
 check() {
-  msg2 "Checking python..."
+  echo "Checking python..."
   cd ${pkgbase}
   py.test
 }
