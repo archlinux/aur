@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=stmm-input-bt
-pkgver=0.18
+pkgver=0.19
 pkgrel=1
 pkgdesc="Device input event library - keyboards over bluetooth"
 url='https://efanomars.com/libraries/stmm-input-bt'
@@ -9,17 +9,17 @@ arch=('x86_64' 'i686' 'aarch64')
 license=('GPL3' 'LGPL3')
 
 depends=(
-    'stmm-input>=0.15'
+    'stmm-input>=0.16'
     'bluez' 'bluez-libs' 'dconf')
-makedepends=('cmake' 'gcc' 'doxygen' 'graphviz' 'python')
+makedepends=('cmake' 'doxygen' 'graphviz' 'python')
 optdepends=()
 
 #provides=("stmm-input-bt")
 #replaces=("stmm-input-bt")
 #conflicts=("stmm-input-bt")
 
-source=('https://efanomars.com/sources/stmm-input-bt-0.18.tar.gz')
-sha256sums=('5620e29966d4a775c5f3dfbd96ea7094b4f5b4ca5b8dad9e524ae7f4b47381ae')
+source=('https://efanomars.com/sources/stmm-input-bt-0.19.tar.gz')
+sha256sums=('409653397f65def942592e8e63be2a43bf46ad59886d1bfb7939a0383e8ba1f2')
 
 build() {
   cd "${srcdir}/stmm-input-bt"
