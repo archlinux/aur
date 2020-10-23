@@ -1,13 +1,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=('python-sqlalchemy-git' 'python2-sqlalchemy-git')
-pkgver=1.4.0b1.rc11996.ae14861a3
+pkgver=1.4.0b1.rc13273.91e14cc42
 pkgrel=1
 pkgdesc="Python SQL toolkit and Object Relational Mapper"
 arch=('i686' 'x86_64')
 url="http://www.sqlalchemy.org"
 license=('custom:MIT')
-makedepends=('git' 'python' 'python2' 'python-setuptools')
+makedepends=('git' 'python' 'python2' 'python-setuptools' 'python2-setuptools')
 source=("git+https://github.com/sqlalchemy/sqlalchemy.git")
 md5sums=('SKIP')
 
