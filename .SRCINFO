@@ -1,0 +1,14 @@
+pkgbase = yacy-runit
+	pkgdesc = runit service scripts for yacy
+	pkgver = 20201023
+	pkgrel = 1
+	url = https://artixlinux.org
+	arch = any
+	license = BSD
+	depends = yacy
+	conflicts = systemd-sysvcompat
+	source = yacy.run
+	sha256sums = eb56b3a472dd99d4c26e8c065bac1f6f75c8d45dfe07f5d5393e8436ac13abab
+
+pkgname = yacy-runit
+

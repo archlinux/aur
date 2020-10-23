@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /opt/yacy/yacy start 1>&2
