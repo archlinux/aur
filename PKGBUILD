@@ -1,17 +1,23 @@
 # Maintainer: spikecodes <19519553+spikecodes@users.noreply.github.com>
 pkgname=rsflex-git
 _pkgname=${pkgname%-git}
-pkgver=0.1
+pkgver=r23.05e8a74
 pkgrel=1
 pkgdesc="A super fast system information displayer written in Rust"
 arch=('x86_64')
 url="https://github.com/curlpipe/rsflex"
 license=("MPL-2.0")
-makedepends=("git" "cargo" "pciutils" "coreutils" "xorg-xrandr" "playerctl" "ttf-nerd-fonts-symbols")
+makedepends=("git" "cargo")
+depends=("pciutils" "coreutils" "xorg-xrandr" "playerctl" "ttf-nerd-fonts-symbols")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${_pkgname}::git+${url}")
 sha256sums=("SKIP")
+
+pkgver() {
+	cd "${_pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	cd "${_pkgname}"
