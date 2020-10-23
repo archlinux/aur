@@ -10,7 +10,7 @@ pkgrel=2
 pkgdesc="A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier"
 arch=('x86_64')
 url="https://www.microsoftedgeinsider.com/en-us/download"
-license=('Microsoft Edge License')
+license=('custom')
 depends=('gtk3' 'libcups' 'nss' 'alsa-lib' 'libxtst' 'libdrm' 'mesa')
 makedepends=('w3m' 'imagemagick')
 optdepends=('libpipewire02: WebRTC desktop sharing under Wayland'
@@ -58,7 +58,7 @@ package() {
 	install -m755 microsoft-edge-dev.sh "${pkgdir}/usr/bin/microsoft-edge-dev"
 
 	# License
-	install -Dm644 'Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf' "${pkgdir}/usr/share/licenses/${_pkgname}/Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf"
+	install -Dm644 'Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf' "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.pdf"
 	rm -r "${pkgdir}/etc/cron.daily/" "${pkgdir}/opt/microsoft/${_pkgshortname}/cron/"
 	# Globbing seems not to work inside double parenthesis
 	rm "${pkgdir}/opt/microsoft/${_pkgshortname}"/product_logo_*.png
