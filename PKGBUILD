@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=stmm-games
-pkgver=0.26
+pkgver=0.27
 pkgrel=1
 pkgdesc="C++ 2D games library"
 url='https://efanomars.com/libraries/stmm-games'
@@ -9,18 +9,18 @@ arch=('x86_64' 'aarch64')
 license=('LGPL3')
 
 depends=(
-    'stmm-input-au>=0.8'
-    'stmm-input>=0.15'
+    'stmm-input-au>=0.9'
+    'stmm-input>=0.16'
     'gtkmm3' 'librsvg' 'libxml++2.6')
-makedepends=('cmake' 'gcc' 'doxygen' 'graphviz' 'python')
+makedepends=('cmake' 'doxygen' 'graphviz' 'python')
 optdepends=()
 
 #provides=("stmm-games")
 #replaces=("stmm-games")
 #conflicts=("stmm-games")
 
-source=('https://efanomars.com/sources/stmm-games-0.26.tar.gz')
-sha256sums=('345e9ca261410d60f0a02ba56582d9d9ba19ab8d68110c34e4051affb4523cdd')
+source=('https://efanomars.com/sources/stmm-games-0.27.tar.gz')
+sha256sums=('60c9cd54f48884c59d345d7326701f9f3ea9e510561e3d868c2ad2f34064e43e')
 
 build() {
   cd "${srcdir}/stmm-games"
