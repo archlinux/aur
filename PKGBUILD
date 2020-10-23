@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=12.0.0_r362797.100e1f911c0e
+pkgver=12.0.0_r369828.e6c4d880fa8c
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -59,7 +59,7 @@ pkgver() {
 prepare() {
     cd llvm-project
     # llvm-project contains a lot of stuff, remove parts that aren't used by this package
-    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind llgo openmp parallel-libs pstl libc mlir flang
+    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind llgo openmp parallel-libs pstl libc mlir flang lld
     
 }
 
@@ -91,7 +91,7 @@ build() {
         -D SPHINX_WARNINGS_AS_ERRORS=OFF \
         -D POLLY_ENABLE_GPGPU_CODEGEN=ON \
         -D LLDB_USE_SYSTEM_SIX=1 \
-        -D LLVM_ENABLE_PROJECTS="polly;lldb;lld;compiler-rt;clang-tools-extra;clang"
+        -D LLVM_ENABLE_PROJECTS="polly;lldb;compiler-rt;clang-tools-extra;clang"
 
     ninja -C _build $NINJAFLAGS
     ninja -C _build $NINJAFLAGS ocaml_doc
@@ -103,7 +103,6 @@ check() {
     ninja -C _build $NINJAFLAGS check-clang
     ninja -C _build $NINJAFLAGS check-clang-tools
     ninja -C _build $NINJAFLAGS check-polly
-    ninja -C _build $NINJAFLAGS check-lld
     ninja -C _build $NINJAFLAGS check-lldb
 }
 
@@ -115,11 +114,11 @@ package_llvm-git() {
     )
     # yes, I know polly is not in official repos. It just feels cleaner to list it
     provides=(aur-llvm-git
-                        compiler-rt-git clang-git lld-git lldb-git polly-git
-                        compiler-rt clang lld lldb polly
+                        compiler-rt-git clang-git lldb-git polly-git
+                        compiler-rt clang lldb polly
     )
     # A package always provides itself, so there's no need to provide llvm-git
-    conflicts=('llvm' 'compiler-rt' 'clang' 'lld' 'lldb' 'polly')
+    conflicts=('llvm' 'compiler-rt' 'clang' 'lldb' 'polly')
     
    DESTDIR="$pkgdir" ninja -C _build $NINJAFLAGS install
 
@@ -165,7 +164,6 @@ package_llvm-git() {
     install -Dm644 clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-LICENSE
     install -Dm644 clang-tools-extra/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-tools-extra-LICENSE
     install -Dm644 compiler-rt/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/compiler-rt-LICENSE
-    install -Dm644 lld/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lld-LICENSE
     install -Dm644 lldb/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lldb-LICENSE
     install -Dm644 polly/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/polly-LICENSE
 }
@@ -174,25 +172,19 @@ package_llvm-libs-git() {
     pkgdesc="runtime libraries for llvm-git"
     depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2' 'z3' 'lua')
     provides=(aur-llvm-libs-git llvm-libs)
-    conflicts=('llvm-libs')
+    optdepends=('llvm-libs: for LLVMgold linker')
+
 
     install -d "$pkgdir"/usr/lib
     cp -P \
         "$srcdir"/lib{LLVM,LTO,Remarks}*.so* \
-        "$srcdir"/LLVMgold.so \
         "$pkgdir"/usr/lib/
-
-    # Symlink LLVMgold.so from /usr/lib/bfd-plugins
-    # https://bugs.archlinux.org/task/28479
-    install -d "$pkgdir"/usr/lib/bfd-plugins
-    ln -s ../LLVMgold.so "$pkgdir"/usr/lib/bfd-plugins/LLVMgold.so
 
     cd llvm-project/
     install -Dm644 llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/llvm-LICENSE
     install -Dm644 clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-LICENSE
     install -Dm644 clang-tools-extra/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-tools-extra-LICENSE
     install -Dm644 compiler-rt/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/compiler-rt-LICENSE
-    install -Dm644 lld/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lld-LICENSE
     install -Dm644 lldb/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lldb-LICENSE
     install -Dm644 polly/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/polly-LICENSE
 }
