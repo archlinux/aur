@@ -3,7 +3,7 @@
 
 pkgname=nand2tetris
 pkgver=2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Software suite accompanying Nand2Tetris course."
 arch=('any')
 url="http://www.nand2tetris.org/"
@@ -21,7 +21,7 @@ source=(n2tCPUEmulator.run
         n2tAssembler.desktop
 )
 _nand2teris_source="nand2tetris.zip"
-_nand2teris_url="https://drive.google.com/file/u/1/d/1KcFPj8KQ_QAHheFmLCqs5iqC_0NCndvs/view?usp=sharing"
+_nand2teris_url="https://www.nand2tetris.org/software"
 sha256sums=('f93e4c08ed6af6a687f8d144598f998a19ac544d9fe6da05c162932d00f6a592'
             'f05fbcd9d86e7151c2e16682792586fd51086fa4864695ff8600256c15eb83d4'
             '838dda39a97694ef1635ebbb0f6aa850623e281f70ef1e699930ee72e4934361'
@@ -35,7 +35,7 @@ sha256sums=('f93e4c08ed6af6a687f8d144598f998a19ac544d9fe6da05c162932d00f6a592'
 prepare() {
   if [[ ! -f "${_nand2teris_source}" ]]
   then
-    echo "Please download the nand2tetris source from ${_nand2teris_url} and place in the src directory."
+    echo "Please download the nand2tetris source from ${_nand2teris_url} and place in the ${srcdir} directory."
     exit 1
   fi
 
