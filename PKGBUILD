@@ -1,3 +1,4 @@
+# Maintainer: Stephanie Wilde-Hobbs <git@stephanie.is>
 # Maintainer: Rolf van Kleef <aur@rolfvankleef.nl>
 # Contributor: Gregory Goijaerts <crecketgaming@gmail.com>
 # Contributor: Dennis Snijder <dennissnijder97@gmail.com>
@@ -8,79 +9,44 @@
 # Contributor: Emile Bons
 
 pkgname="bunq-desktop-src"
-pkgver="0.8.4"
+pkgver="0.9.10"
 pkgrel=1
 pkgdesc="A desktop implementation for the bunq API"
-url="https://github.com/BunqCommunity/BunqDesktop"
+url="https://github.com/bunqCommunity/bunqDesktop"
 provides=('bunq-desktop')
-conflicts=(
-	'bunq-desktop-git'
-	'bunq-desktop-bin'
-)
-
-arch=(
-	'x86_64'
-)
-
-license=(
-	'MIT'
-)
-
-depends=(
-	'nodejs'
-)
-
-makedepens=(
-	'git'
-	'yarn'
-)
-
-source=(
-	"https://github.com/BunqCommunity/BunqDesktop/archive/${pkgver}.tar.gz"
-	"bunq-desktop-src.desktop"
-)
-
-sha256sums=(
-	"e6299d5fdad1821f81838f2a515c393dfb088f3470ee26cb5437791fedd7bfb1"
-	"1d84f185830733bb38928fcaa33ffc0ba46140f7f116b4d5ad24c93a585a0ffa"
-)
+conflicts=('bunq-desktop-git' 'bunq-desktop-bin')
+arch=('x86_64')
+license=('MIT')
+depends=('nodejs')
+makedepends=('yarn' 'python2' 'npm' 'desktop-file-utils')
+source=("${url}/archive/${pkgver}.tar.gz"
+		"bunq-desktop-src.desktop")
+sha256sums=('98560c229d52b6696f14e31dcf62c70d2ebada9c85a76e65e26cc0dcc8ffb22f'
+            '97183aab64799aec2462ba81cbb9cdbdf8617e1e6a843270a0ca07ca14fe2a49')
 
 build() {
-	cd BunqDesktop-$pkgver
+	cd bunqDesktop-${pkgver}
 
-	# Generate release files
-	yarn && yarn release
+	sed -i '/plugin-syntax-dynamic-import/d' package.json
+	sed -i '/@babel/ s/7.7.[0-9]/7.8.4/' package.json
+
+	yarn
+	yarn release
 }
 
 package() {
-	mkdir $pkgdir/usr
-	mkdir $pkgdir/usr/bin
-	mkdir $pkgdir/usr/share
-	mkdir $pkgdir/usr/share/pixmaps
-	mkdir $pkgdir/opt
+	cd bunqDesktop-${pkgver}
 
-	cp -R\
-		BunqDesktop-$pkgver/dist/linux-unpacked\
-		$pkgdir/opt/$pkgname
+	mkdir ${pkgdir}/usr
+	mkdir ${pkgdir}/usr/bin
+	mkdir ${pkgdir}/usr/share
+	mkdir ${pkgdir}/usr/share/pixmaps
+	mkdir ${pkgdir}/opt
 
-	cp -R\
-		BunqDesktop-$pkgver/LICENSE\
-		$pkgdir
+	cp -R dist/linux-unpacked ${pkgdir}/opt/${pkgname}
+	ln -s /opt/${pkgname}/bunqdesktop ${pkgdir}/usr/bin/bunq-desktop
 
-	cp\
-		BunqDesktop-$pkgver/build/icons/512x512.png\
-		$pkgdir/usr/share/pixmaps/bunq.png
-	
-	pushd $pkgdir/usr/bin
-
-	ln -s\
-		../../opt/$pkgname/bunqdesktop\
-		bunq-desktop-src
-
-	popd
-
-	desktop-file-install\
-		$pkgname.desktop\
-		--dir $pkgdir/usr/share/applications/
+	cp build/icons/512x512.png ${pkgdir}/usr/share/pixmaps/bunq.png
+	desktop-file-install ${srcdir}/${pkgname}.desktop --dir ${pkgdir}/usr/share/applications/
 }
 

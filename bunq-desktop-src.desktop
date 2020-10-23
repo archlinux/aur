@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Name=Bunq Desktop
 Comment=A desktop implementation for the bunq API.
-Exec=bunq-desktop-src -- %u
+Exec=bunq-desktop -- %u
 StartupWMClass=BunqDesktop
 Icon=bunq
 Terminal=false
