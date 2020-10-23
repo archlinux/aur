@@ -1,0 +1,54 @@
+# Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
+
+# BUILD INSTRUCTIONS
+#
+# The source for `blhost` is available behind a login wall.
+# Visit <https://www.nxp.com/webapp/Download?colCode=blhost_2.6.2&appType=license>,
+# accept the license terms, and place the downloaded ZIP file in the same directory as this PKGBUILD,
+# then try building again.
+
+# N.B.: The ZIP file lacks files such as blhost.cpp and common.mk,
+#       which prevents offering a non-prebuilt `blhost` PKGBUILD.
+
+pkgname=blhost
+pkgver=2.6.2
+pkgname_pkgver=${pkgname}_$pkgver
+pkgrel=1
+pkgdesc="Bootloader Host Application for NXP MCUs"
+url="https://www.nxp.com/design/software/development-software/mcuxpresso-software-and-tools-/mcuboot-mcu-bootloader-for-nxp-microcontrollers:MCUBOOT"
+# could also support 32-bit with some more work
+arch=(x86_64)
+license=(custom:NXP)
+depends=()
+
+download_url="https://www.nxp.com/webapp/Download?colCode=${pkgname}_${pkgver}&appType=license"
+DLAGENTS=("file::/usr/bin/echo ${BOLD}${RED} Unable to find %u, please download from ${download_url} and read the PKGBUILD ${ALL_OFF}" $DLAGENTS[@])
+source=(
+  file://${pkgname}_$pkgver.zip
+  # common.mk
+)
+sha256sums=(
+  "2e7aa1aa430fbbe01093412f97d618e1773ea40f2f6f24ffcc1e26102d36eb2b"
+  # "SKIP"
+)
+
+# File common.mk seems to be used only to prettify compile output
+# For instance, the ZIP for Downloads/NXP_Kinetis_Bootloader_2_0_0 from the same download page contains a variant
+
+prepare() {
+  makefile=$srcdir/$pkgname_pkgver/proj/blhost/gcc/Makefile
+  # install -D common.mk -t $srcdir/${pkgname}_$pkgver/mk
+  sed -i '/mk\/common.mk/d' $makefile
+  # bug in the Makefile
+  sed -i 's|/tools/blhost/src/blhost.cpp|/proj/blhost/src/blhost.cpp|g' $makefile
+}
+
+build() {
+  cd $srcdir/$pkgname_pkgver/proj/$pkgname/gcc
+  make all
+}
+
+package() {
+  bld=$srcdir/$pkgname_pkgver/proj/blhost/gcc/Release
+  install -Dm 755 $bld/$pkgname -t $pkgdir/usr/bin
+}
