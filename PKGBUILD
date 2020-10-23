@@ -20,7 +20,7 @@ build() {
 
 check() {
   cd geocoder-$pkgver
-  python setup.py pytest || warning "Some tests require API key"
+  python setup.py pytest || echo "Some tests require API key"
 }
 
 package() {
