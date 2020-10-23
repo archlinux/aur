@@ -2,7 +2,7 @@
 
 pkgname=yabridge-git
 _pkgname=yabridge
-pkgver=1.7.0.r0.g21c1f53
+pkgver=1.7.1.r2.ge99375e
 pkgrel=1
 pkgdesc="Yet Another VST bridge, run Windows VST2 plugins under Linux"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('yabridgectl: utility for setting up and managing yabridge')
 provides=('yabridge')
 conflicts=('yabridge')
 install=yabridge.install
-source=('git+https://github.com/robbert-vdh/yabridge')
+source=('git+https://github.com/robbert-vdh/yabridge#branch=removeme/bitwig-3.3-beta-hack')
 sha256sums=('SKIP')
 
 pkgver() {
