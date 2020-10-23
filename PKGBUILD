@@ -16,7 +16,7 @@ depends=( 'glibc' 'wayland>=1.17' 'libxkbcommon' 'libinput' 'pixman>=0.25.0'
           'cairo' 'fontconfig' 'freetype2' 'librsvg' 'libgl' 'libegl' 'libgles'
           'wlroots=0.11.0')
 
-makedepedends=('meson' 'ninja' 'git' 'wayland-protocols>=1.18')
+makedepends=('meson' 'ninja' 'git' 'wayland-protocols>=1.18')
 
 prepare() {
     cd $srcdir/${_pkgname}
