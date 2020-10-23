@@ -1,34 +1,25 @@
-# Maintainer: Dmytri Kleiner <dk@trick.ca>
-
-#
-# derived from spideroak-one AUR packges
-#
+# Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
+# Contributor: Dmytri Kleiner <dk@trick.ca>
 # Contributor: Matt Warner <mattwarner001@gmail.com>
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
 # Contributor: Limao Luo <luolimao@gmail.com>
-#
-
-#
-# SpiderOakGroups
-#
 
 pkgname=spideroak-groups
-pkgver=7.3.0
-pkgrel=4
-pkgdesc='Secure file backup, sync and sharing client. This provides the client for SpiderOak Groups / Enterprise'
+pkgver=7.5.0
+pkgrel=1
+pkgdesc="Secure file backup, sync and sharing client. This provides the client for SpiderOak Groups / Enterprise"
 arch=(x86_64)
-url='https://spideroak.com/'
-license=('custom')
-depends=('glibc>=2.9' 'desktop-file-utils')
-provides=('spideroak-groups')
+url="https://spideroak.com/"
+license=(custom)
+depends=(desktop-file-utils)
+options=(!strip)
 install=${pkgname}.install
-_rpmname=("SpiderOakGroups.$pkgver.$arch.rpm")
-source=("$_rpmname::https://spideroak.com/release/so.blue/rpm_x64" 'terms.txt')
-noextract=("$_rpmname")
-sha256sums=('ee9633ee3e119cc21360b6abee609903ba031bd79402d81755caafdb37c6e876' '4819c8d923ab19e552e877b87adf1d45aca6adcb5dffcb238d7819501e6e6737')
-options=('!strip')
+source=(https://spideroak.com/release/so.blue/rpm_x64
+		terms.txt)
+sha256sums=('36cfdd5db10351fee3fcd04e9be1339c21fc8ac276a2f45e59506ed0a1270041'
+            '4819c8d923ab19e552e877b87adf1d45aca6adcb5dffcb238d7819501e6e6737')
 package() {
-  bsdtar -xf $_rpmname -C $pkgdir
-  install -Dm644 "$srcdir"/terms.txt "$pkgdir"/usr/share/licenses/$pkgname/terms.txt
+	cp -r {etc,opt,usr} "${pkgdir}"
+	install -Dt "${pkgdir}"/usr/share/licenses/"${pkgname}" -m0644 terms.txt
 }
 

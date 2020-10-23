@@ -1,19 +1,16 @@
 pkgbase = spideroak-groups
 	pkgdesc = Secure file backup, sync and sharing client. This provides the client for SpiderOak Groups / Enterprise
-	pkgver = 7.3.0
-	pkgrel = 4
+	pkgver = 7.5.0
+	pkgrel = 1
 	url = https://spideroak.com/
 	install = spideroak-groups.install
 	arch = x86_64
 	license = custom
-	depends = glibc>=2.9
 	depends = desktop-file-utils
-	provides = spideroak-groups
-	noextract = SpiderOakGroups.7.3.0.x86_64.rpm
 	options = !strip
-	source = SpiderOakGroups.7.3.0.x86_64.rpm::https://spideroak.com/release/so.blue/rpm_x64
+	source = https://spideroak.com/release/so.blue/rpm_x64
 	source = terms.txt
-	sha256sums = ee9633ee3e119cc21360b6abee609903ba031bd79402d81755caafdb37c6e876
+	sha256sums = 36cfdd5db10351fee3fcd04e9be1339c21fc8ac276a2f45e59506ed0a1270041
 	sha256sums = 4819c8d923ab19e552e877b87adf1d45aca6adcb5dffcb238d7819501e6e6737
 
 pkgname = spideroak-groups
