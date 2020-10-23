@@ -1,5 +1,5 @@
-pkgbase = it87-frankcrawford-dkms-git
-	pkgdesc = Linux Driver for ITE LPC chips, using frankcrawford's upstream
+pkgbase = it87-dkms-git
+	pkgdesc = Linux Driver for ITE LPC chips
 	pkgver = 152.2b8b4fe
 	pkgrel = 1
 	url = https://github.com/frankcrawford/it87
@@ -9,7 +9,7 @@ pkgbase = it87-frankcrawford-dkms-git
 	makedepends = git
 	depends = dkms
 	provides = it87
-	conflicts = it87-dkms-git
+	conflicts = it87-frankcrawford-dkms-git
 	source = it87::git+https://github.com/frankcrawford/it87.git
 	source = dkms.conf
 	source = it87.conf
@@ -17,5 +17,5 @@ pkgbase = it87-frankcrawford-dkms-git
 	sha256sums = 9eb35ca8dcff02744dd3256238f22bfe6ebaf1636867aabed4c40a31073c4e1e
 	sha256sums = acdc488d1505e891ed6259b29428d4b27d26d18e3ea170f017b930390d6420e7
 
-pkgname = it87-frankcrawford-dkms-git
+pkgname = it87-dkms-git
 

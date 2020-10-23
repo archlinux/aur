@@ -1,17 +1,17 @@
 # Maintainer: Daniel Hillenbrand <codeworkx at bbqlinux dot org>
 
 _pkgbase=it87
-pkgname=it87-frankcrawford-dkms-git
+pkgname=it87-dkms-git
 pkgver=152.2b8b4fe
 pkgrel=1
-pkgdesc="Linux Driver for ITE LPC chips, using frankcrawford's upstream"
+pkgdesc="Linux Driver for ITE LPC chips"
 arch=('x86_64' 'i686')
 url="https://github.com/frankcrawford/it87"
 license=('GPL')
 depends=('dkms')
 makedepends=('git')
 provides=('it87')
-conflicts=('it87-dkms-git')
+conflicts=('it87-frankcrawford-dkms-git')
 
 source=("$_pkgbase::git+https://github.com/frankcrawford/it87.git"
         "dkms.conf"
