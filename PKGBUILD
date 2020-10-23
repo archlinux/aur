@@ -1,20 +1,20 @@
-# Maintainer: Jordi Pakey-Rodriguea <jordi at 0xdec dot im>
+# Maintainer: Jordi Pakey-Rodriguez <jordi at 0xdec dot im>
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 pkgname=kicad-packages3d
 _pkgname=kicad-packages3D
-pkgver=5.1.5
+pkgver=5.1.7
 pkgrel=1
 pkgdesc="KiCad 3D package libraries"
 arch=('any')
-url="https://github.com/KiCad/kicad-packages3D"
+url="https://gitlab.com/kicad/libraries/kicad-packages3D"
 license=('GPL')
 groups=('kicad-libraries')
 makedepends=('cmake')
 options=('!strip')
 conflicts=('kicad-packages3d-git' 'kicad-library-git' 'kicad-library' 'kicad-library-3d')
-source=("https://github.com/KiCad/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('b1c35e686865faf8a9b08d3843b188e90b4088f0b1e5f3f0393fac833a22a749')
+source=("https://gitlab.com/kicad/libraries/$_pkgname/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz")
+sha256sums=('5420ed6a9cebb15c70210c633d0710f0a89ec43ca2ef111c0439930c8156006c')
 
 build() {
   cd "$srcdir"
