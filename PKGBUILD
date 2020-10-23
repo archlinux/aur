@@ -1,7 +1,7 @@
 # Maintainer: David P. <megver83@parabola.nu>
 
 pkgname=linphone-desktop
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=1
 pkgdesc='A free VoIP and video softphone based on the SIP protocol'
 arch=(x86_64 i686)
@@ -11,19 +11,21 @@ depends=(qt5-quickcontrols qt5-quickcontrols2 qt5-graphicaleffects qt5-svg qt5-t
 makedepends=(cmake python-pystache doxygen nasm yasm python-six)
 source=("https://gitlab.linphone.org/BC/public/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         0001-do-not-build-linphone-sdk.patch
-        0002-Fix-building-out-of-git.patch
-        0003-remove-bc_compute_full_version-usage.patch
+        0002-remove-bc_compute_full_version-usage.patch
 )
-sha512sums=('736b3448f309e8286acfdf724b765fcc77cb9d092ba892fd38f88f7af431c50f784c399bf5688cfe6caf45d2e6cc6e7d0c5e01b991be07b237f2f6bda35f338c'
-            '7c1d1782d02da7b24ac1b39548a0b995d9abcfd883e3dfc0611f6431542ad7e873d785cf1e15033562818f0ce9ec1021d47d6b8ac5dc64530902b997f051c886'
-            '8f90eed36db84369b8b44e7004d67f7634c3ef9549304491b56a1c0b18d676ab46afa0322353d6919f7317b4f0f387972be25dcfd09621d54fe63d74e8a1f52f'
-            'c09bce9a5fb51519bde651a6f25187274b2cb561b8590b9cd849f88d0cd35c4a8d4698578fe75d453c8c82135b8f5cf8e0a58093706dcfcb7382d07928c8dba9')
+sha512sums=('d0f0fbd99bd8ab20d89b525ac4f38774974aefedb36b311b51190682ffdceedaed205e918c3685124497aa14d95dfdf1bd6c1c2675a1dd2452fed44d7b171bce'
+            '24f9849692ca1f937661dfaa89695da38d5c1713f42d364446568fdef3fca54cc195bf815111c7bf570e4520f15846ecd5d0cd44cefa380384bf37d74c69e9a9'
+            'c41551388e590844b06e0ff23ec079c5a10a67a6ec9b1aec27d2662e5e8b22d8cbceb601e0277365f2e9b0c004af06b6481248b296b7645007d964e16dac197f')
 
 prepare() {
   cd "$pkgname-$pkgver"
   patch -Np1 -i ../0001-do-not-build-linphone-sdk.patch
-  patch -Np1 -i ../0002-Fix-building-out-of-git.patch
-  patch -Np1 -i ../0003-remove-bc_compute_full_version-usage.patch
+  patch -Np1 -i ../0002-remove-bc_compute_full_version-usage.patch
+
+  # Fix building out-of-git
+  echo '#define LINPHONE_QT_GIT_VERSION "${PROJECT_VERSION}"' >> linphone-app/src/config.h.cmake
+  # Hardcode linphoneqt version
+  echo "project(linphoneqt VERSION $pkgver)" > linphone-app/linphoneqt_version.cmake
 }
 
 build() {   
@@ -33,8 +35,8 @@ build() {
   cmake "../$pkgname-$pkgver"
   make
 
-  sed '/linphone-sdk/d' -i linphone-app/cmake_builder/linphone_package/cmake_install.cmake
-  sed "s|$srcdir/build/OUTPUT|$pkgdir/usr|" -i cmake_install.cmake
+  sed -i '/linphone-sdk/d' linphone-app/cmake_builder/linphone_package/cmake_install.cmake
+  sed -i "s|$srcdir/build/OUTPUT|$pkgdir/usr|" cmake_install.cmake
 }
 
 package() {
