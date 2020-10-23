@@ -1,6 +1,6 @@
 pkgbase = lollypop-stable-git
 	pkgdesc = Music player for GNOME (stable branch)
-	pkgver = 1.4.3.r2.g8e8084d4
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://gitlab.gnome.org/gnumdk/lollypop
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = lollypop-stable-git
 	depends = python-beautifulsoup4
 	depends = python-cairo
 	depends = python-gobject
-	depends = libhandy1
+	depends = libhandy
 	depends = python-pillow
 	depends = gst-python
 	depends = totem-plparser

@@ -4,7 +4,7 @@
 # Contributor: Ian Brunelli (brunelli) <ian@brunelli.me>
 
 pkgname=lollypop-stable-git
-pkgver=1.4.3.r2.g8e8084d4
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='Music player for GNOME (stable branch)'
 arch=(any)
@@ -17,7 +17,7 @@ depends=(
 	python-beautifulsoup4
 	python-cairo
 	python-gobject
-	libhandy1
+	libhandy
 	python-pillow
 	gst-python
 	totem-plparser
