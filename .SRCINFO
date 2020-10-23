@@ -13,10 +13,10 @@ pkgbase = jabberd2
 	makedepends = sqlite3
 	makedepends = postgresql-libs
 	makedepends = autoconf-archive
-	depends = expat=2.2.10
 	depends = glibc>=2.31
 	depends = gsasl=1.8.1
 	depends = libcrypt.so=2
+	depends = libexpat.so=1
 	depends = libidn=1.36
 	depends = openssl=1.1.1.h
 	depends = pam=1.4.0
