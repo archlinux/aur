@@ -11,7 +11,7 @@ conflicts=("${_variant}-${_extname}")
 arch=('any')
 depends=("${_variant}-coc")
 makedepends=('yarn' 'npm' 'git')
-license=('')
+license=('MIT')
 source=("${_extname}::git+${url}.git")
 pkgver=v0.5.1.r0.g179138e
 pkgrel=1
@@ -24,12 +24,12 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_extname}"
-    yarn install --frozen-lockfile
+    yarn install --frozen-lockfile --preferred-cache-folder "${srcdir}/.cache/yarn"
     yarn pack
     tar xvf *.tgz
     rm *.tgz
     cd package
-    npm install --only=production --no-lockfile --ignore-scripts
+    npm install --only=production --no-lockfile --ignore-scripts --cache "${srcdir}/.cache/npm"
 }
 
 package() {
@@ -38,4 +38,6 @@ package() {
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
     chmod +x "${pkgdir}/${_packdir}/node_modules/bash-language-server/bin/main.js"
     rm -rf "${srcdir}/${_extname}/package"
+    find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+    chown -R root:root "${pkgdir}"
 }
