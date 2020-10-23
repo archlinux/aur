@@ -1,7 +1,7 @@
 # Maintainer: Björn <theodorstormgrade@gmail.com>
 pkgname=scratchbox2
 pkgver=2.3.90+git2.r76.fc3eefe
-pkgrel=3
+pkgrel=4
 pkgdesc="https://git.sailfishos.org/mer-core/scratchbox2"
 arch=('x86_64' 'i686')
 url="https://git.sailfishos.org/mer-core/scratchbox2"
@@ -37,6 +37,6 @@ package() {
         ln -s obs-rpm-build+pp $pkgdir/usr/share/$pkgname/modes/sdk-build+pp
         ln -s obs-rpm-install $pkgdir/usr/share/$pkgname/modes/sdk-install
         ln -s /usr/bin/qemu-arm $pkgdir/usr/bin/qemu-arm-dynamic
-        ls -s /usr/bin/qemu-aarch64 $pkgdir/usr/bin/qemu-aarch64-dynamic
+        ln -s /usr/bin/qemu-aarch64 $pkgdir/usr/bin/qemu-aarch64-dynamic
 }
 md5sums=('SKIP')
