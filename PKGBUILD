@@ -2,7 +2,7 @@
 
 _pkgname=windows10-dark-gtk-theme
 pkgname=${_pkgname}-git
-pkgver=3.0.dark.r24.gc9b5b0b
+pkgver=3.2.dark.r7.g6f3e063
 pkgrel=1
 pkgdesc="Windows 10 Dark GTK theme"
 arch=('any')
