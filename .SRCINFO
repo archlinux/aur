@@ -9,6 +9,7 @@ pkgbase = csview-bin
 	license = APACHE
 	makedepends = rust
 	makedepends = cargo
+	provides = csview
 	conflicts = csview
 	conflicts = csview-git
 	source = csview-v0.3.5.tar.gz::https://github.com/wfxr/csview/releases/download/v0.3.5/csview-v0.3.5-x86_64-unknown-linux-gnu.tar.gz

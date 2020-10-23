@@ -8,6 +8,7 @@ MAINTAINER = $(shell git config user.name) <$(shell git config user.email)>
 PKGNAME = $(REPO)-bin
 BINNAME = $(REPO)
 CONFLICTS = ("$(REPO)" "$(REPO)-git")
+PROVIDES = ("$(REPO)")
 
 .PHONY: codegen
 codegen:
@@ -21,6 +22,7 @@ codegen:
 		-e 's#{{PKGVER}}#$(PKGVER)#g' \
 		-e 's#{{PKGREL}}#$(PKGREL)#g' \
 		-e 's#{{CONFLICTS}}#$(CONFLICTS)#g' \
+		-e 's#{{PROVIDES}}#$(PROVIDES)#g' \
 		PKGBUILD.tmpl > PKGBUILD
 	@sed -i "s/{{MD5SUM}}/$$(makepkg -g | grep -Po '[0-9a-f]{32}')/g" PKGBUILD
 	@makepkg --printsrcinfo > .SRCINFO
