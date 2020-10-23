@@ -3,7 +3,7 @@
 pkgname=2048-cli-git
 _pkgname=2048-cli
 _pkgname2=2048
-pkgver=20161025
+pkgver=20201024
 pkgrel=1
 pkgdesc="The game 2048 for your Linux terminal"
 arch=('x86_64' 'i686')
