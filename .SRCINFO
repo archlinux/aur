@@ -1,0 +1,14 @@
+pkgbase = dnscomp-git
+	pkgdesc = A simple, fast DNS benchmark tool
+	pkgver = 0.r24.6336e52
+	pkgrel = 1
+	url = https://github.com/Chizi123/dnscomp.git
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	provides = dnscomp
+	source = dnscomp::git+https://github.com/Chizi123/dnscomp.git
+	md5sums = SKIP
+
+pkgname = dnscomp-git
+
