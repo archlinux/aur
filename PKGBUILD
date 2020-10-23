@@ -33,7 +33,7 @@ build() {
 	mkdir trenchbroom/build
 	cd trenchbroom/build
 	cmake .. -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release
-	cmake --build . --target TrenchBroom
+	QT_QPA_PLATFORM=offscreen cmake --build . --target TrenchBroom
 }
 
 package() {
