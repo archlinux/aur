@@ -5,7 +5,7 @@ build:
 	makepkg -f
 
 install:
-	sudo pacman --noconfirm -U $(PKG)-*.pkg.tar.*
+	yes | sudo pacman -U $(PKG)-*.pkg.tar.*
 
 clean:
 	rm -rf pkg src
