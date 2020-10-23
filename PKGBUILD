@@ -3,7 +3,7 @@
 pkgname=libnfc-nci-alt
 pkgver=2.4.1
 pkgrel=1
-pkgdesc="Linux NFC stack for NCI based NXP NFC Controllers (PN7150, PN7120). With alt-i2c tml."
+pkgdesc="Linux NFC stack for NCI based NXP NFC Controllers (PN7150, PN7120). For alt-i2c transport."
 arch=('x86_64')
 url="https://github.com/NXPNFCLinux/linux_libnfc-nci/"
 license=('APACHE')
