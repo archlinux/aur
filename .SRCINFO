@@ -10,9 +10,10 @@ pkgbase = csview-git
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
+	provides = csview
 	conflicts = csview
 	conflicts = csview-bin
-	source = csview::git+https://github.com/wfxr/csview.git
+	source = csview::git+https://github.com/wfxr/csview
 	sha256sums = SKIP
 
 pkgname = csview-git
