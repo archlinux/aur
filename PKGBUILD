@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=stmm-input-au
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="Device input event library - sound playback"
 url='https://efanomars.com/libraries/stmm-input-au'
@@ -9,17 +9,17 @@ arch=('x86_64' 'i686' 'aarch64')
 license=('LGPL3')
 
 depends=(
-    'stmm-input>=0.15'
+    'stmm-input>=0.16'
     'alure' 'glibmm')
-makedepends=('cmake' 'gcc' 'doxygen' 'graphviz' 'python')
+makedepends=('cmake' 'doxygen' 'graphviz' 'python')
 optdepends=()
 
 #provides=("stmm-input-au")
 #replaces=("stmm-input-au")
 #conflicts=("stmm-input-au")
 
-source=('https://efanomars.com/sources/stmm-input-au-0.8.tar.gz')
-sha256sums=('cc5ac16df60e9817ce414d65253458d30c00906bd8929e224fe3a1c0a52cdf11')
+source=('https://efanomars.com/sources/stmm-input-au-0.9.tar.gz')
+sha256sums=('57d76b2f77ae426d068dfbc7ac0b931622653717e74d58ab3b2bbce8eda798ed')
 
 build() {
   cd "${srcdir}/stmm-input-au"
