@@ -1,0 +1,15 @@
+pkgbase = sdns-git
+	pkgdesc = Realtime ticker data in your terminal
+	pkgver = r659.3089a62
+	pkgrel = 1
+	url = https://github.com/semihalev/sdns
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = sdns
+	conflicts = sdns
+	source = sdns::git+https://github.com/semihalev/sdns
+	sha256sums = SKIP
+
+pkgname = sdns-git
+
