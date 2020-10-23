@@ -1,5 +1,5 @@
 pkgbase = sdns-git
-	pkgdesc = Realtime ticker data in your terminal
+	pkgdesc = Privacy important, fast, recursive dns resolver server with dnssec support
 	pkgver = r659.3089a62
 	pkgrel = 1
 	url = https://github.com/semihalev/sdns
