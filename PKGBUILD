@@ -3,7 +3,7 @@
 pkgname=mkusb
 pkgver=0.2.3
 pkgrel=1
-pkgdesc="A shell script to create ISO multiboot USB flash drives that support both legacy and EFI boot "
+pkgdesc="A shell script to create ISO multiboot USB flash drives that support both legacy and EFI boot"
 arch=('any')
 url="https://github.com/lilyinstarlight/mkusb"
 license=('MIT')
