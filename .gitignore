@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/manual-connections/
+*.pkg.tar*
