@@ -20,7 +20,7 @@ build() {
 
 check() {
   cd flask-restful-$pkgver
-  python setup.py nosetests || warning "Tests failed"
+  python setup.py nosetests || echo "Tests failed"
 }
 
 package() {
