@@ -9,6 +9,8 @@ pkgbase = code-minimap
 	license = APACHE
 	makedepends = rust
 	makedepends = cargo
+	conflicts = code-minimap-git
+	conflicts = code-minimap-bin
 	source = https://github.com/wfxr/code-minimap/archive/v0.4.2.tar.gz
 	md5sums = 3fece54f3539602477321493f6736a7d
 

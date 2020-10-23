@@ -2,12 +2,13 @@
 pkgname=code-minimap
 pkgver=0.4.2
 pkgrel=1
-pkgdesc="A high performance code minimap render"
+pkgdesc='A high performance code minimap render'
 arch=(i686 x86_64)
 url="https://github.com/wfxr/code-minimap"
-license=("MIT" "APACHE")
+license=('MIT' 'APACHE')
 depends=()
-makedepends=("rust" "cargo")
+makedepends=('rust' 'cargo')
+conflicts=("${pkgname}-git" "${pkgname}-bin")
 
 source=("https://github.com/wfxr/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('3fece54f3539602477321493f6736a7d')
