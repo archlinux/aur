@@ -1,7 +1,7 @@
 pkgbase = salt-py3
 	pkgdesc = Central system and configuration manager
 	pkgver = 3002
-	pkgrel = 2
+	pkgrel = 3
 	url = http://saltstack.org/
 	install = salt.install
 	arch = any

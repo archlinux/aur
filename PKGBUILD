@@ -6,8 +6,8 @@
 # Contributor: Christer Edwards <christer.edwards@gmail.com>
 
 pkgname=salt-py3
-pkgver=3002
-pkgrel=2
+pkgver="${PKGVER:-3002}"
+pkgrel=3
 
 pkgdesc='Central system and configuration manager'
 arch=('any')
@@ -40,13 +40,13 @@ source=("https://pypi.io/packages/source/s/salt/salt-${pkgver}.tar.gz"
         "salt.logrotate")
 
 sha512sums=(
-  7a3ed78b301e9c1ef65c8e6aeeaebc2376b3942e94e38b0591860fa1d9213c6c0f85db4d932b4c7c9d20717027a686690973d0dfd2aff17f44abae0ec0e97d31
-  9b667483073f1e396e47ab7b434657a973337e2dd10ae533eb20ccfaa1cb53dc5e1b65eeddbb58317161dfd3c851d80dd1f827dc32b1fb34e8b538c0b7af1de2
+  "${PKGSUM_SHA512:-7a3ed78b301e9c1ef65c8e6aeeaebc2376b3942e94e38b0591860fa1d9213c6c0f85db4d932b4c7c9d20717027a686690973d0dfd2aff17f44abae0ec0e97d31}"
+  "9b667483073f1e396e47ab7b434657a973337e2dd10ae533eb20ccfaa1cb53dc5e1b65eeddbb58317161dfd3c851d80dd1f827dc32b1fb34e8b538c0b7af1de2"
 )
 
 b2sums=(
-  7463cfe558515697177fedb25fdf9f2e2819b62e3a96c8196b4243a4f2a59a202ac5a3869138b2df00fb47238329ba102396b464379f09d2a79c8c0a672638fb
-  0184dc30496c44add470c9d2f922133db5a43917040b3cc74025535132c5819edebc4523fa6d62a2b823fafe8ed8b7eeb3c489ad849cd1deea6f709c1e872317
+  "${PKGSUM_B2:-7463cfe558515697177fedb25fdf9f2e2819b62e3a96c8196b4243a4f2a59a202ac5a3869138b2df00fb47238329ba102396b464379f09d2a79c8c0a672638fb}"
+  "0184dc30496c44add470c9d2f922133db5a43917040b3cc74025535132c5819edebc4523fa6d62a2b823fafe8ed8b7eeb3c489ad849cd1deea6f709c1e872317"
 )
 
 prepare(){
@@ -61,7 +61,7 @@ build() {
 package() {
   install -Dm644 salt.logrotate "${pkgdir}/etc/logrotate.d/salt"
 
-  cd "salt-${pkgver}"
+  cd "${srcdir}/salt-${pkgver}"
   python setup.py --salt-pidfile-dir="/run/salt" install --root="${pkgdir}" --optimize=1 --skip-build
 
   # default config
