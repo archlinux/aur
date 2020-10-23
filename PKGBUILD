@@ -2,20 +2,15 @@
 # Contributor: Antonio Cervone <ant.cervone@gmail.com>
 
 pkgname=metview
-pkgver=5.9.0
+pkgver=5.10.0
 pkgrel=1
 pkgdesc="ECMWF interactive meteorological application"
 arch=(i686 x86_64)
 url="https://software.ecmwf.int/wiki/display/METV/Metview"
 license=('APACHE')
 groups=(science)
-depends=('magics++>=4.0.0'
-         qt5-xmlpatterns
-         qt5-svg
-         lapack
-         snappy
-         cgal)
-makedepends=(rpcsvc-proto)
+depends=(cgal lapack 'magics++>=4.5.0' qt5-svg qt5-xmlpatterns snappy)
+makedepends=(boost cmake rpcsvc-proto gcc-fortran)
 provides=()
 conflicts=()
 replaces=()
@@ -29,7 +24,7 @@ source=(https://software.ecmwf.int/wiki/download/attachments/3964985/Metview-${p
         string.patch)
 
 noextract=()
-sha256sums=('6bbcf15602a21c8fee4276ec11179c6f95247eeaf08a870181ec339a7c5b80ba'
+sha256sums=('7adc282710f87077ff167b624f21f261ceee17ec041ac5d6c9b94806575c805a'
             'abd2f612ca08e9d2a7c288ab0d5512777411f9e6c6077e9b1ac62d4a444345a2'
             'c80aed03a542364af5ff177a49e04052d017f992f9139300249be31466170096'
             'a86a2a0c8c7a52c38f2c37d2366d0ff22beabf81723f8c6f9696a1743221c3f0'
