@@ -5,12 +5,12 @@ _modver=1.3.0
 pkgname=asterisk-${_modname}
 _astver=18.0
 pkgver=${_astver}_${_modver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Opus Software Codec for Asterisk"
 url="https://digium.com"
 license=(EULA)
 arch=(x86_64)
-depends=(asterisk)
+depends=('asterisk>=18.0.0' 'asterisk<19.0.0')
 source=("https://downloads.digium.com/pub/telephony/codec_opus/asterisk-${_astver}/x86-64/${_modname}-${pkgver}-${arch}.tar.gz")
 sha256sums=('5f48e535582f6dc0b93ab132421dbbeb72728bfdd3c27359f06363d9327d3835')
 
