@@ -17,7 +17,7 @@ source=("trenchbroom::git+https://github.com/kduske/TrenchBroom.git#branch=maste
 	trenchbroom.desktop)
 
 sha1sums=('SKIP'
-          '34e2e1168624a61358c01cecfad170d435952740')
+          '028252ac86ec7f733e94589062eb316224887bd4')
 
 pkgver() {
   cd "trenchbroom"
