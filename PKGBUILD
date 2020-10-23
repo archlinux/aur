@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=taskwarrior-tui
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A Terminal User Interface for Taskwarrior"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('task')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('cc20101e32d931fe260860c187b47bc74a75c7235800b68b2d04f51fce58010a57c9ad0968b17e394839b612bbcac21fdca2666df2a95e21be343b6ebb83f0fe')
+sha512sums=('3c6b425b3fbfcd4f7c23cb2714eb9067b2c647626365e57fe945237562ed34f5c7f733d84e833b226771264d2f553a0e70e31bddf50cfc29a48f0a47a3800a35')
 
 build() {
   cd "$pkgname-$pkgver"
