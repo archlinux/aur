@@ -15,7 +15,7 @@ md5sums=('3fece54f3539602477321493f6736a7d')
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
-	cargo build --release
+	cargo build --release --locked
 }
 
 package() {
