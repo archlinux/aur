@@ -1,0 +1,30 @@
+# udev rules for seat users (uaccess)
+# Installs as 70-moltengamepad.rules
+
+# Seat access
+KERNEL=="uinput", SUBSYSTEM=="misc", MODE="0660", OPTIONS+="static_node=uinput", TAG+="uaccess"
+
+# Standard gamepads already in 70-uaccess.rules
+
+# Wiimote rules
+# LEDs not included.
+SUBSYSTEM=="input", DRIVERS=="wiimote", TAG+="uaccess"
+
+# Nintendo products over bluetooth hidraw
+KERNEL=="hidraw", KERNELS=="0005:057E:*.*", MODE="0660", TAG+="uaccess"
+
+# DS4 rules
+# DualShock 4 over USB hidraw
+KERNEL=="hidraw*", ATTRS{idVendor}=="054c", ATTRS{idProduct}=="05c4", MODE="0660", TAG+="uaccess"
+
+# DualShock 4 wireless adapter over USB hidraw
+KERNEL=="hidraw*", ATTRS{idVendor}=="054c", ATTRS{idProduct}=="0ba0", MODE="0660", TAG+="uaccess"
+
+# DualShock 4 Slim over USB hidraw
+KERNEL=="hidraw*", ATTRS{idVendor}=="054c", ATTRS{idProduct}=="09cc", MODE="0660", TAG+="uaccess"
+
+# DualShock 4 over bluetooth hidraw
+KERNEL=="hidraw*", KERNELS=="*054C:05C4*", MODE="0660", TAG+="uaccess"
+
+# DualShock 4 Slim over bluetooth hidraw
+KERNEL=="hidraw*", KERNELS=="*054C:09CC*", MODE="0660", TAG+="uaccess"
