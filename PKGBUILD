@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=fspropfaker
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="File-system property faker library based on fuse"
 url='https://efanomars.com/libraries/fspropfaker'
@@ -10,15 +10,15 @@ license=('GPL3')
 
 depends=(
     'fuse')
-makedepends=('cmake' 'gcc' 'doxygen' 'graphviz' 'python')
+makedepends=('cmake' 'doxygen' 'graphviz' 'python')
 optdepends=()
 
 #provides=("fspropfaker")
 #replaces=("fspropfaker")
 #conflicts=("fspropfaker")
 
-source=('https://efanomars.com/sources/fspropfaker-0.1.tar.gz')
-sha256sums=('2e71524572e83e17e2205a5308e07fbb0538449e1b48866796c46be823e4be34')
+source=('https://efanomars.com/sources/fspropfaker-0.2.tar.gz')
+sha256sums=('b136c281280955a1b8e7e7e124fc99557f0125b861bd20d03a717c77bbddcf15')
 
 build() {
   cd "${srcdir}/fspropfaker"
