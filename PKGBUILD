@@ -1,6 +1,6 @@
 #Maintainer: Valentijn <deepnavy at waifu dot club>
 pkgname=tubeup
-pkgver=0.0.18
+pkgver=0.0.19
 pkgrel=1
 pkgdesc="Youtube (and other video site) to Internet Archive Uploader"
 url="https://github.com/bibanon/tubeup"
@@ -9,7 +9,7 @@ makedepends=('python3' )
 license=('GPL 3')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/t/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('be5a37f909efbb8da1204d3ab932c9a3')
+md5sums=('567b4d971efbbe292b6a6ee166b25946')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
