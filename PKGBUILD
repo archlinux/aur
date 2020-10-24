@@ -1,22 +1,22 @@
 # Maintainer: kumen
 pkgname="nrfconnect-appimage"
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Cross-platform development software for Bluetooth Low Energy and cIoT"
 arch=("x86_64")
-depends=(jlink-software-and-documentation)
-optdepends=()
+depends=('jlink-software-and-documentation')
+optdepends=('nrf-udev')
 conflicts=()
 url="https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Connect-for-desktop/"
 license=('Commercial')
 options=(!strip)
 
-_file_name="nrfconnect350x8664.AppImage"
+_file_name="nrfconnect360x8664.AppImage"
 
-source=("https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-Connect-for-Desktop/3-5-0/${_file_name}"
+source=("https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-Connect-for-Desktop/3-6-0/${_file_name}"
 	$pkgname.desktop)
-sha256sums=('90b320b9f42721ae90e61034055abfaad7edbc1fc920257abcad2e345ab6b3c5'
-	'b387e021edbb03521dc656e8eac14c84d9511e0af6f0ab4559ec42800220c96d')
+sha256sums=('a4b2248db7d46cbb61373762233d7e358987bdf6aaa8e72ac273657be5bdaafa'
+	'e1643396521334eb81918c52c302d415e8d5965f6a556b9fc9db98b017f69b41')
 
 prepare(){
 	# mark as executable
