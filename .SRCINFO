@@ -7,6 +7,7 @@ pkgbase = json2tsv-git
 	license = ISC
 	makedepends = git
 	provides = json2tsv
+	conflicts = json2tsv
 	source = git://git.codemadness.org/json2tsv
 	sha256sums = SKIP
 
