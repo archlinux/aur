@@ -12,8 +12,8 @@ url="https://gitlab.gnome.org/GNOME/geary"
 license=('GPL3')
 depends=('appstream-glib' 'enchant' 'folks' 'gcr' 'gmime3' 'gtk3' 'gsound'
          'gnome-online-accounts' 'gspell' 'libgee' 'libhandy' 'libnotify'
-         'libpeas' 'libsoup' 'libunwind' 'libxml2' 'libytnef' 'sqlite'
-         'webkit2gtk')
+         'libpeas' 'libsoup' 'libstemmer' 'libunwind' 'libxml2' 'libytnef'
+         'sqlite' 'webkit2gtk')
 makedepends=('git' 'gobject-introspection' 'itstool' 'meson' 'vala')
 provides=('geary')
 conflicts=('geary')

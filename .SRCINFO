@@ -25,6 +25,7 @@ pkgbase = geary-git
 	depends = libnotify
 	depends = libpeas
 	depends = libsoup
+	depends = libstemmer
 	depends = libunwind
 	depends = libxml2
 	depends = libytnef
