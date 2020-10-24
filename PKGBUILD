@@ -2,12 +2,13 @@
 
 pkgname=keyman
 pkgver=13.0.103
-pkgrel=1
+pkgrel=2
 pkgdesc="IBus engine supporting over 1,000 keyboard layouts (former KMFL)"
 arch=('i686' 'x86_64')
 url="https://keyman.com/linux/"
 license=('GPL')
-depends=('ibus' 'webkit2gtk' 'python-magic' 'python-requests-cache' 'python-numpy' 'python-pillow' 'python-qrcode')
+depends=('ibus' 'webkit2gtk' 'help2man' 'python-magic' 'python-requests-cache'
+         'python-numpy' 'python-pillow' 'python-qrcode' 'python-lxml')
 makedepends=('meson' 'git')
 optdepends=('keyman-onboard: on-screen keyboard')
 replaces=('kmflcomp' 'libkmfl' 'ibus-kmfl')
