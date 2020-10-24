@@ -1,5 +1,4 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
-# Maintainer: anon at sansorgan.es 
 
 pkgname=cherrytree
 pkgver=0.99.16
