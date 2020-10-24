@@ -1,6 +1,6 @@
 # Maintainer: relrel <relrelbachar@gmail.com>
 pkgname=scratch3
-pkgver=3.16.1
+pkgver=3.17.1
 pkgrel=1
 pkgdesc="Create stories, games, and animations, share with others around the world"
 arch=('any')
@@ -14,7 +14,7 @@ source=("https://downloads.scratch.mit.edu/desktop/Scratch%20$pkgver%20Setup.exe
         "$pkgname.desktop"
         "$pkgname.xml")
 noextract=("Scratch%20$pkgver%20Setup.exe")
-sha512sums=('d20d543d3257da6a744884945071955e9d332b461e18e8b544f872738a86cae99031a1e0f45032651851ebe7ff01bc618d94b68911cbae2f6c640ec830f6e914'
+sha512sums=('71f6dce077db24f3b372f9030bdeb2e25bccf85532bfe24ba0a04b523885d6f9afc334866079e10f8902c8f549cdb8a29eff8c34561d625061f296b373f40a0c'
             '66ec37746fa3fdc21c30a53050f73cd989b0da01edecb4dc75aadae8cb616a8913ff3ec0e4145d214b06548cf1a767eea1c1890a617e484db4da009867304a43'
             'd9dd01d52f91ded4ef033dcd22ed97e7bf3a2afc64b28b5c2d36efd095897953f0d93b7e5ec98905b970f99da2fa57b88e56e01cad54eec13af98e4786cb5bc7'
             '429dd0954dbd32d38ca38e77940bd63dac975c7da0f91ba2b6bbe1b70ba146d751cea48ff9c667594bf49ff6b3d8949410fc76dc67106bc25387b60fe78a7d01'
