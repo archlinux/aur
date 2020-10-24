@@ -1,7 +1,7 @@
 pkgname=intel-thermalmonitor-git
 pkgver=v1.4.2.r515.g950d6b0
 pkgrel=1
-pkgdesc="Intel's ThermalMonitor QT5 tool for monitoring and "
+pkgdesc="Intel's ThermalMonitor QT5 tool for monitoring thermald"
 arch=('any')
 url="https://github.com/intel/thermal_daemon/tree/master/tools/thermal_monitor"
 license=('GPL3')

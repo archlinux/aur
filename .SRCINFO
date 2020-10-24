@@ -1,13 +1,13 @@
 pkgbase = intel-thermalmonitor-git
-	pkgdesc = Intel's ThermalMonitor QT5 tool for monitoring and
-	pkgver = r8.1d12cae
+	pkgdesc = Intel's ThermalMonitor QT5 tool for monitoring thermald
+	pkgver = v1.4.2.r515.g950d6b0
 	pkgrel = 1
 	url = https://github.com/intel/thermal_daemon/tree/master/tools/thermal_monitor
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = qt5-base
-	source = ::git+https://github.com/intel/thermal_daemon.git
+	source = intel-thermalmonitor-git::git+https://github.com/intel/thermal_daemon.git
 	sha256sums = SKIP
 
 pkgname = intel-thermalmonitor-git
