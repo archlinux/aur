@@ -2,7 +2,7 @@
 # PGP ID: 1DB95DC235C2C613
 
 pkgname='expandrive-bin'
-pkgver='7.5.0'
+pkgver='7.6.5'
 pkgrel='1'
 pkgdesc='A utility for managing multiple cloud storage services'
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=(
 source=('LICENSE'
     "https://packages.expandrive.com/expandrive/pool/stable/e/ex/ExpanDrive_${pkgver}_amd64.deb")
 sha256sums=('dd77a86c9319a5e12b066688a0c804f942fd358b096ad1981eba04426dd16781'
-    'bc61cecbf77ec3bf655ee079b5ca86de2855e33b3fd55dfdd5e5fe78fa69d275')
+    'bf7dc1d796744eef8247c469048790f06d44b872add73bca6662cb0f6ba61f79')
 
 prepare() {
     # Create the package directory, if it doesn't already exist
