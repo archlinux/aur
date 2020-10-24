@@ -1,7 +1,7 @@
 pkgbase = microsoft-edge-dev-bin
 	pkgdesc = A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier
 	pkgver = 88.0.673.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.microsoftedgeinsider.com/en-us/download
 	arch = x86_64
 	license = custom
