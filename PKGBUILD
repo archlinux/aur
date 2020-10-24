@@ -2,9 +2,9 @@
 # Maintainer: Stephanie Wilde-Hobbs <hi@stephanie.is>
 
 pkgbase=linux-bcachefs-steph-git
-_basever=5.8
-_arch_pkgver=${_basever}.14.arch1
-pkgver=5.8.14.arch1.bcachefs.r302.gcfa372a898d2
+_basever=5.9
+_arch_pkgver=${_basever}.1.arch1
+pkgver=5.9.1.arch1.bcachefs.r316.gff83eed5f5f7
 pkgrel=1
 pkgdesc='Linux with bcachefs'
 _srctag=v${_arch_pkgver%.*}-${_arch_pkgver##*.}
@@ -31,7 +31,7 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             'SKIP'
-            '40c80a5e6ef76702021abd10e5a9bf07c68530cb2c4868154c1b5adf4bf3b917'
+            '36439a90c9d2f860298d90e141f3bf9d897dd8ece9e21cd46508f4ed7b2151bb'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
 
 export KBUILD_BUILD_HOST=archlinux
