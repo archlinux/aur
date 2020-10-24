@@ -1,7 +1,7 @@
 pkgbase = piavpn-manual-git
 pkgdesc = Shell scripts to connect manually to PIA VPN
 pkgver = r26.82ebed7
-pkgrel = 2
+pkgrel = 3
 url = https://github.com/pia-foss/manual-connections
 arch = any
 license = MIT
