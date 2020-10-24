@@ -1,7 +1,7 @@
 pkgbase = lerna
 	pkgdesc = Tool for managing JavaScript projects with multiple packages
 	pkgver = 3.22.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sebmck/lerna#readme
 	arch = any
 	license = MIT

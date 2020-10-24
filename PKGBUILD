@@ -3,7 +3,7 @@
 
 pkgname=lerna
 pkgver=3.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for managing JavaScript projects with multiple packages"
 arch=(any)
 url="https://github.com/sebmck/lerna#readme"
@@ -15,13 +15,15 @@ noextract=($pkgname-$pkgver.tgz)
 options=(!strip)
 
 package() {
-  cd ${srcdir}
-  local _npmdir="${pkgdir}/usr/lib/node_modules/"
-  mkdir -p ${_npmdir}
-  cd ${_npmdir}
-  npm install -g --prefix "${pkgdir}/usr" ${pkgname}@${pkgver}
-  find "${pkgdir}"/usr -name package.json -exec sed -i '/"_where"/d' '{}' '+'
-  find "${pkgdir}"/usr -type d -exec chmod 755 {} +
+  npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
+
+  # Non-deterministic race in npm gives 777 permissions to random directories.
+  # See https://github.com/npm/npm/issues/9359 for details.
+  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+
+  # npm gives ownership of ALL FILES to build user
+  # https://bugs.archlinux.org/task/63396
+  chown -R root:root "${pkgdir}"
 }
 
 sha256sums=('77a036b03fafd7a6915ef32ad9e0f5cb1950ae8c86ee27fa886e2e1bad4004ac')
