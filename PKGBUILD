@@ -16,7 +16,7 @@ optdepends=('bash-completion: bash completion'
             'vifm: build file interaction')
 sha256sums=('bae2f7211cb80626f260e1ebcb2c061751407a03f1ab8898bc80182888502bef'
             'SKIP'
-            'b952fc11638af129ac98c0924819f3b12fb0660d1d09b780fe1b245d8467cd66')
+            '90b2b4fa409461c67489f9a5092039ba52f90447ae58bff80f94db38878132c5')
 
 prepare() {
     signify -V -p aurutils.pub -m "$pkgname-$pkgver".tar.gz \
