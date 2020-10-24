@@ -1,0 +1,33 @@
+--- gnome-sharp-2.24.4.orig/configure.in.in	2017-05-10 17:25:41.000000000 +0300
++++ gnome-sharp-2.24.4/configure.in.in	2020-10-24 10:55:35.458416249 +0300
+@@ -168,10 +168,6 @@
+ AC_SUBST(GTKSHARP_CFLAGS)
+ AC_SUBST(GTKSHARP_LIBS)
+ 
+-PKG_CHECK_MODULES(GLADESHARP, glade-sharp-2.0 >= $GTK_SHARP_REQUIRED_VERSION)
+-AC_SUBST(GLADESHARP_CFLAGS)
+-AC_SUBST(GLADESHARP_LIBS)
+-
+ PKG_CHECK_MODULES(GAPI, gapi-2.0 >= $GTK_SHARP_REQUIRED_VERSION)
+ AC_PATH_PROG(GAPI_PARSER, gapi2-parser, no)
+ AC_SUBST(GAPI_PARSER)
+--- gnome-sharp-2.24.4.orig/sample/Makefile.am	2017-05-10 17:25:41.000000000 +0300
++++ gnome-sharp-2.24.4/sample/Makefile.am	2020-10-24 10:59:31.879546610 +0300
+@@ -1,4 +1,4 @@
+-SUBDIRS = gconf gnomevfs 
++SUBDIRS = gnomevfs 
+ 
+ if ENABLE_GNOME
+ GNOME_TARGETS=gnome-hello-world.exe canvas-example.exe fifteen.exe
+--- gnome-sharp-2.24.4.orig/gconf/GConf.PropertyEditors/Makefile.am	2017-05-10 17:25:41.000000000 +0300
++++ gnome-sharp-2.24.4/gconf/GConf.PropertyEditors/Makefile.am	2020-10-24 10:54:53.915470149 +0300
+@@ -34,8 +34,7 @@
+ 	PropertyEditorOptionMenu.cs	\
+ 	PropertyEditorRadioButton.cs 	\
+ 	PropertyEditorSpinButton.cs 	\
+-	PropertyEditorToggleButton.cs 	\
+-	EditorShell.cs
++	PropertyEditorToggleButton.cs
+ 
+ build_sources = $(addprefix $(srcdir)/, $(sources)) $(top_builddir)/AssemblyInfo.cs
+ 
