@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Scratch 3
-Comment=Create stories, games, and animations, share with others around the world
-Exec=scratch3 %f
-Icon=scratch3
-Terminal=false
-MimeType=application/x-scratch3-project;
