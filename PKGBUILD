@@ -2,7 +2,7 @@
 
 pkgname=python-pep-adapter-hg
 _name=pEpPythonAdapter
-pkgver=2.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="p≡p Python adapter"
 url="https://pep.foundation/dev/repos/pEpPythonAdapter"
@@ -18,14 +18,15 @@ provides=('python-pep-adapter')
 prepare() {
 	cd "$srcdir/${_name}"
 
-	hg up "sync"
+	hg up "Release_2.1.0"
+
 	sed -i 's/\-mt//g' setup.py
 }
 
 pkgver() {
 	cd "$srcdir/${_name}"
 	
-	awk "/^\\s*version='[0-9\.]+',$/ "'{print $1}' setup.py | cut -c10- | rev | cut -c3- | rev
+	hg tags | grep Release | grep -v RC | sort -r | head -1 | awk '{print $1}' | cut -c9-
 }
 
 build() {
