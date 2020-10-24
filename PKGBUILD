@@ -2,21 +2,21 @@
 
 pkgname=v2raya-bin
 _pkgname=v2raya
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports V2Ray, SS, SSR, Trojan and Pingtunnel protocols"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/v2rayA/v2rayA"
-license=('GPL')
+license=('GPL3')
 depends=('glibc' 'v2ray')
 provides=('v2raya')
 conflicts=('v2raya')
 
 sha_service=0249389e1b8e5a2b05f16dcde7fb57f7de37ca92
 sha_png=5c51b3e670733d6d1cf22e1cb5fe45305f4b8014
-sha_desktop=4d8985bfdca21a611fbb51fd02eddade4da99add
-sha_web=26cdbe03a495d608ba42d30a5dd4bcb9798feeee
+sha_desktop=f4abf270b2ce588a4e8ab4b5ccdc9168b96791fe
+sha_web=28193e431412c99f4670027506e926cb766ab800
 
 source=(
     "v2raya.service"
@@ -49,30 +49,27 @@ sha1sums=(
 )
 
 sha1sums_i686=(
-    '39bd67c160750781b580a2dd5358b67238ba5940'
+    'd8c77afc5243808d2856cbad1b5719939da28e72'
 )
 sha1sums_x86_64=(
-    'a76008f1e27ced3441de3c46b78467c83915d35d'
+    '74225af395792a0dcc0fcea609170268b326f4d5'
 )
 sha1sums_aarch64=(
-    '947bf270ab98148a65f18cfb65ce7a42f62e3552'
+    '5b6bbca3cec86af0804aafbe1eb86d4b0f2103cb'
 )
 sha1sums_armv6h=(
-    '019d1bd917c39f68cc5484902a2bf74aad123152'
+    '7fe67544de376dcc30e3229adcd263e02c8960ef'
 )
 sha1sums_armv7h=(
-    '019d1bd917c39f68cc5484902a2bf74aad123152'
+    '7fe67544de376dcc30e3229adcd263e02c8960ef'
 )
 
 package() {
     cd "$srcdir"
-    
-    install -Dm644 "v2raya.service" "$pkgdir/usr/lib/systemd/system/v2raya.service"
-    install -Dm755 "v2raya_v${pkgver}" "$pkgdir/usr/bin/v2raya"
-
-    install -Dm644 "v2raya.png" "$pkgdir/usr/share/icons/v2raya.png"
-    install -Dm755 "v2raya.desktop" -t "$pkgdir/usr/share/applications/"
-
-    install -d -Dm755 "web" "$pkgdir/etc/v2raya/web"
-    cp -r web/* "$pkgdir/etc/v2raya/web"
+    install -Dm 755 v2raya_v"${pkgver}" -t "${pkgdir}"/usr/bin/
+    find web -type d -exec install -vd "${pkgdir}"/etc/v2raya/{} \;
+    find web -type f -exec install -vm 644 {} "${pkgdir}"/etc/v2raya/{} \;
+    install -Dm 644 v2raya.desktop -t "${pkgdir}"/usr/share/applications/
+    install -Dm 644 v2raya.service -t "${pkgdir}"/usr/lib/systemd/system/
+    install -Dm 644 v2raya.png "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/v2raya.png
 }
