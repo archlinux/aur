@@ -1,7 +1,7 @@
 pkgbase = wpewebkit
 	pkgdesc = Web content engine library optimized for embedded devices
-	pkgver = 2.30.1
-	pkgrel = 2
+	pkgver = 2.30.2
+	pkgrel = 1
 	url = https://wpewebkit.org
 	arch = x86_64
 	arch = i686
@@ -32,19 +32,15 @@ pkgbase = wpewebkit
 	depends = geoclue
 	depends = at-spi2-atk
 	depends = libwpe>=1.6.0
-	source = https://wpewebkit.org/releases/wpewebkit-2.30.1.tar.xz
-	source = https://wpewebkit.org/releases/wpewebkit-2.30.1.tar.xz.asc
-	source = 0001-Merge-r268350-REGRESSION-r256892-WPE-GTK-Build-broke.patch
+	source = https://wpewebkit.org/releases/wpewebkit-2.30.2.tar.xz
+	source = https://wpewebkit.org/releases/wpewebkit-2.30.2.tar.xz.asc
 	validpgpkeys = 5AA3BC334FD7E3369E7C77B291C559DBE4C9123B
-	md5sums = 251228a6e2917eff90a3eb6e9a7e920d
+	md5sums = 5b0fed3333b53dbb36e572935fd54a7b
 	md5sums = SKIP
-	md5sums = 9bf98437bdab11f0da5d292cbd21a68f
-	sha1sums = 7f5bdc79d4694ab5644b7fed9bd7311c2cbc988f
+	sha1sums = a143723fb77c2ea20bad888b95ccc37a7dd5b375
 	sha1sums = SKIP
-	sha1sums = 7bab09bc9a32e1a6fcd057fc83fef8a05e59f944
-	sha256sums = 78c0135d935b980fc64fbddf1fbaf441920edda4eeb4c16857ee8dc985650c25
+	sha256sums = c94925ca2d655c7fc07dbc2d4b7a47a822c7699816a8cca35ed9efd676b5ba86
 	sha256sums = SKIP
-	sha256sums = 6e333205cec87b6b306ebb2c9ee31f4168f7762081d48f8f745ea57900f5e70e
 
 pkgname = wpewebkit
 

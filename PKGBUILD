@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wpewebkit
-pkgver=2.30.1
-pkgrel=2
+pkgver=2.30.2
+pkgrel=1
 pkgdesc='Web content engine library optimized for embedded devices'
 arch=(x86_64 i686 aarch64 armv7l armv7h)
 url='https://wpewebkit.org'
@@ -12,23 +12,14 @@ depends=(cairo libxslt gst-plugins-base-libs libepoxy libsoup libwebp
 		 geoclue at-spi2-atk 'libwpe>=1.6.0')
 makedepends=(gperf ruby cmake python ninja gtk-doc patch)
 source=("${url}/releases/${pkgname}-${pkgver}.tar.xz"
-        "${url}/releases/${pkgname}-${pkgver}.tar.xz.asc"
-		"0001-Merge-r268350-REGRESSION-r256892-WPE-GTK-Build-broke.patch")
+        "${url}/releases/${pkgname}-${pkgver}.tar.xz.asc")
 validpgpkeys=('5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
-md5sums=('251228a6e2917eff90a3eb6e9a7e920d'
-         'SKIP'
-         '9bf98437bdab11f0da5d292cbd21a68f')
-sha1sums=('7f5bdc79d4694ab5644b7fed9bd7311c2cbc988f'
-          'SKIP'
-          '7bab09bc9a32e1a6fcd057fc83fef8a05e59f944')
-sha256sums=('78c0135d935b980fc64fbddf1fbaf441920edda4eeb4c16857ee8dc985650c25'
-            'SKIP'
-            '6e333205cec87b6b306ebb2c9ee31f4168f7762081d48f8f745ea57900f5e70e')
-
-prepare () {
-	cd "${pkgname}-${pkgver}"
-	patch -p1 < "${srcdir}/0001-Merge-r268350-REGRESSION-r256892-WPE-GTK-Build-broke.patch"
-}
+md5sums=('5b0fed3333b53dbb36e572935fd54a7b'
+         'SKIP')
+sha1sums=('a143723fb77c2ea20bad888b95ccc37a7dd5b375'
+          'SKIP')
+sha256sums=('c94925ca2d655c7fc07dbc2d4b7a47a822c7699816a8cca35ed9efd676b5ba86'
+            'SKIP')
 
 build () {
 	cmake -H"${pkgname}-${pkgver}" -Bbuild \
