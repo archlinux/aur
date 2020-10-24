@@ -5,7 +5,6 @@ pkgbase = microsoft-edge-dev-bin
 	url = https://www.microsoftedgeinsider.com/en-us/download
 	arch = x86_64
 	license = custom
-	makedepends = w3m
 	makedepends = imagemagick
 	depends = gtk3
 	depends = libcups

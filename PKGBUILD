@@ -14,7 +14,7 @@ license=('custom')
 provides=('microsoft-edge-dev' 'edge-dev')
 conflicts=('microsoft-edge-dev' 'edge-dev' 'edge-dev-bin' 'edge')
 depends=('gtk3' 'libcups' 'nss' 'alsa-lib' 'libxtst' 'libdrm' 'mesa')
-makedepends=('w3m' 'imagemagick')
+makedepends=('imagemagick')
 optdepends=('libpipewire02: WebRTC desktop sharing under Wayland'
             'kdialog: for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
