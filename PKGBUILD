@@ -15,12 +15,12 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/thermal_daemon/tools/thermal_monitor"
+  cd "$srcdir/$pkgname/tools/thermal_monitor"
   qmake-qt5 ThermalMonitor.pro
   make
 }
 
 package() {
-  cd "$srcdir/thermal_daemon/tools/thermal_monitor"
+  cd "$srcdir/$pkgname/tools/thermal_monitor"
   make DESTDIR="$pkgdir/" install
 }
