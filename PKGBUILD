@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Animation engine for explanatory math videos (community edition)."
 arch=('any')
 url="https://github.com/ManimCommunity/manim/"
-license=('MIT')
+license=('MIT' 'custom')
 depends=(
 	'cairo'
 	'ffmpeg'
@@ -41,4 +41,5 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -D -m644 LICENSE.community "$pkgdir/usr/share/licenses/$pkgname/LICENSE.community"
 }
