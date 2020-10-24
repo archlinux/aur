@@ -18,7 +18,7 @@ optdepends=(
  'xorg-xinit: for kodi-x11.service'
 ) 
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/graysky2/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('6e74514e6d610682048f600d753337f6ab1139ef82789e9c852d25abbaa2a6d4f50a3bd81eab1248d9fe391ac23de5c09e7656b285826a42dc6bb43f0261c4a1')
+b2sums=('fe1c2882f8d69a502bca354a68d948d7f81f24dde2a46c43b3a61f076feef195d3f20ec553f6df3a66b24aba48d005bbf1fa7b59e9aa462637f46e3619fcb0f7')
 
 package() {
   cd "$pkgname-$pkgver"
