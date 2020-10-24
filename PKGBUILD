@@ -22,7 +22,7 @@ prepare() {
 untrusted comment: signify public key
 $_validsignifykey
 EOF
-    signify -V -p aurutils.pub -m "$pkgname-$pkgver".tar.gz \
+    signify -V -p aurutils-23.pub -m "$pkgname-$pkgver".tar.gz \
             -x "$pkgname-$pkgver".tar.gz.signify
 }
 
