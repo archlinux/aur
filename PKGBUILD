@@ -2,7 +2,7 @@
 
 pkgname=cozy-desktop
 pkgver=3.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="File synchronisation for Cozy Cloud on Desktop"
 arch=(any)
 url="https://cozy-labs.github.io/cozy-desktop/"
@@ -16,7 +16,7 @@ source=(https://github.com/cozy-labs/${pkgname}/archive/v${pkgver}/${pkgname}-${
 sha256sums=('94cc2262cceb769f6fbd625245ae268bd252805a1090b578e4c63e4fef81ffb0'
             '2038004680b7a480fd7f072f5d3bbc5fd412fe5a24ecaa50d764fcb1f296aaa0'
             '563edd5a43c7f06080e03bec5f4e46154227f7e163500950ea39ecad466b198a'
-            '16200451af0bd1099510da4eeb7bd440ac4db4eda82013f1b3bd58777e04004e')
+            '4a4b83e818b6dd9143680b630d4aaa3a29c409c31e19c958ecf5dc7051604831')
 
 prepare() {
     cd ${pkgname}-${pkgver}
