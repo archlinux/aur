@@ -2,7 +2,7 @@
 
 pkgname=impostor-server-bin
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Unofficial dedicated server for Among Us (binary release).'
 url='https://impostor.github.io/Impostor/'
 arch=('x86_64')
@@ -22,6 +22,8 @@ prepare() {
 package() {
   
   mkdir -p "${pkgdir}/usr/bin/"
+  mkdir -p "${pkgdir}/etc/impostor/"
 
   cp --verbose "${srcdir}/impostor-server" "${pkgdir}/usr/bin/"
+  cp --verbose "${srcdir}/config.json" "${pkgdir}/etc/impostor/"
 }

@@ -1,7 +1,7 @@
 pkgbase = impostor-server-bin
 	pkgdesc = Unofficial dedicated server for Among Us (binary release).
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://impostor.github.io/Impostor/
 	arch = x86_64
 	license = GPL3
