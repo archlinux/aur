@@ -9,7 +9,7 @@
 pkgname=librepcb
 pkgver=0.1.5
 _pkgver=${pkgver/_/-}
-pkgrel=2
+pkgrel=3
 pkgdesc="A free EDA software to develop printed circuit boards"
 arch=('x86_64' 'i686')
 url="http://librepcb.org/"
@@ -40,6 +40,9 @@ build() {
 package() {
   cd "${srcdir}/librepcb-${_pkgver}/build/"
   make install
+
+  # Clean up: https://github.com/LibrePCB/LibrePCB/issues/778
+  rm -rf "${pkgdir}/usr/include/fontobene-qt5/"
 
   # Install development utils
   install -s -m 755 \
