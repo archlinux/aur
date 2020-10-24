@@ -26,7 +26,6 @@ pkgbase = squid4
 	backup = etc/squid/errorpage.css
 	backup = etc/squid/mime.conf
 	source = http://www.squid-cache.org/Versions/v4/squid-4.13.tar.xz
-	source = http://www.squid-cache.org/Versions/v4/squid-4.13.tar.xz.asc
 	source = squid.pam
 	source = squid.service
 	source = squid.tmpfiles
