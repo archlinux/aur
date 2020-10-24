@@ -3,7 +3,7 @@
 
 pkgname=nand2tetris
 pkgver=2.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Software suite accompanying Nand2Tetris course."
 arch=('any')
 url="http://www.nand2tetris.org/"
@@ -35,7 +35,7 @@ sha256sums=('f93e4c08ed6af6a687f8d144598f998a19ac544d9fe6da05c162932d00f6a592'
 prepare() {
   if [[ ! -f "${_nand2teris_source}" ]]
   then
-    echo "Please download the nand2tetris source from ${_nand2teris_url} and place in the ${srcdir} directory."
+    echo "Download ${_nand2teris_source} from ${_nand2teris_url} and place in ${srcdir}"
     exit 1
   fi
 
