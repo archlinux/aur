@@ -1,0 +1,33 @@
+diff --git a/Makefile.am b/Makefile.am
+index 61d9921..0559c0a 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -15,6 +15,8 @@ AM_CPPFLAGS = \
+ 	-D__STDC_CONSTANT_MACROS \
+ 	@FFMPEG_CFLAGS@ \
+ 	@ZLIB_CPPFLAGS@ \
++	@Avisynth_CFLAGS@ \
++	@Vapoursynth_CFLAGS@ \
+ 	-include config.h
+ AM_CXXFLAGS = -std=c++11 -fvisibility=hidden
+ 
+diff --git a/configure.ac b/configure.ac
+index b35ef80..5c3796a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -118,6 +118,15 @@ if test "$FFMPEG_WORKS" = no; then
+ AC_MSG_FAILURE([cannot link with FFmpeg])
+ fi
+ 
++if test "$enable_avisynth" = "yes"; then
++PKG_CHECK_MODULES(Avisynth, [avisynth])
++AC_SUBST([Avisynth_CFLAGS])
++fi
++
++#Let's hack vapoursynth!
++PKG_CHECK_MODULES(Vapoursynth, [vapoursynth])
++AC_SUBST([Vapoursynth_CFLAGS])
++
+ src_core_libffms2_la_LDFLAGS=""
+ AC_MSG_CHECKING([whether -Wl,-Bsymbolic is needed])
+ if test "$enable_shared" = yes; then

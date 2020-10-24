@@ -1,8 +1,8 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ffms2-git
-pkgver=2.23.203.gbda9eeb
-pkgrel=3
+pkgver=2.40.0.g55c2af5
+pkgrel=1
 pkgdesc="An FFmpeg/Libav based source library and Avisynth/Vapoursynth plugin for easy frame accurate access. (GIT version)"
 url='https://github.com/FFMS/ffms2'
 arch=('x86_64')
@@ -13,15 +13,25 @@ depends=('gcc-libs'
          'libswscale.so'
          'libavutil.so'
          )
-makedepends=('git')
+makedepends=('git'
+            'vapoursynth'
+            'avisynthplus'
+            )
 provides=('ffms2'
           'libffms2.so'
           'vapoursynth-plugin-ffms2'
           'vapoursynth-plugin-ffms2-git'
           )
 conflicts=('ffms2')
-source=('git+https://github.com/FFMS/ffms2.git')
-sha256sums=('SKIP')
+optdepends=('vapoursynth: Vapoursynth support'
+            'avisynth: Avisynth support'
+            )
+source=('git+https://github.com/FFMS/ffms2.git'
+        'esee.patch'
+        )
+sha256sums=('SKIP'
+            'SKIP'
+            )
 
 pkgver() {
   cd ffms2
@@ -32,6 +42,10 @@ prepare() {
   mkdir -p build
 
   cd ffms2
+
+  # use pkg-config for search Avisyhth/Vapoursynth
+  rm -fr src/vapoursynth/{Vapoursynth,VSHelper}.h
+  patch -p1 -i "${srcdir}/esee.patch"
 
   mkdir -p src/config
 
@@ -45,14 +59,17 @@ build() {
   ../ffms2/configure \
     --prefix=/usr \
     --enable-shared=yes \
-    --enable-static=no
+    --enable-static=no \
+    --enable-avisynth
 
   make
 }
 
 package() {
   make -C build DESTDIR="${pkgdir}" install
-  install -d "${pkgdir}/usr/lib/vapoursynth"
+  install -d "${pkgdir}/usr/lib/"{avi,vapour}synth
   ln -s /usr/lib/libffms2.so "${pkgdir}/usr/lib/vapoursynth/"
-  install -Dm644 ffms2/doc/ffms2-vapoursynth.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/ffms2-vapoursynth.md"
+  ln -s /usr/lib/libffms2.so "${pkgdir}/usr/lib/avisynth/"
+  install -Dm644 ffms2/doc/ffms2-vapoursynth.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/ffms2/ffms2-vapoursynth.md"
+  install -Dm644 ffms2/doc/ffms2-avisynth.md "${pkgdir}/usr/share/doc/avisynth/plugins/ffms2/ffms2-vapoursynth.md"
 }
