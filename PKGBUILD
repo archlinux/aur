@@ -3,7 +3,7 @@
 
 pkgname=neru-icon-newyear-theme
 pkgver=1.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Christmas theme icons Neru"
 arch=('any')
 url="https://github.com/chistota/neru-icon-newyear-theme/"
@@ -96,11 +96,17 @@ prepare() {
     ln -s wps-office-pdfmain.svg neru-newyear-light/medium/apps/com.wps.Office2019.pdfmain.svg
     ln -s wps-office-pdfmain.svg neru-newyear-light/medium/apps/com.wps.Office.pdfmain.svg
     ln -s distributor-logo-archlinux.svg neru-newyear-light/medium/apps/kalu.svg
+    ln -s preferences-system-notifications.svg neru-newyear-light/medium/apps/org.xfce.notification.svg
+    ln -s accessories-dictionary.svg neru-newyear-light/medium/apps/org.xfce.Dictionary.svg
+    ln -s flameshot.svg neru-newyear-light/medium/apps/org.flameshot.Flameshot.svg
     
     ln -s wps-office-pdfmain.svg neru-newyear-dark/medium/apps/wps-office2019-pdfmain.svg
     ln -s wps-office-pdfmain.svg neru-newyear-dark/medium/apps/com.wps.Office2019.pdfmain.svg
     ln -s wps-office-pdfmain.svg neru-newyear-dark/medium/apps/com.wps.Office.pdfmain.svg
     ln -s distributor-logo-archlinux.svg neru-newyear-dark/medium/apps/kalu.svg
+    ln -s preferences-system-notifications.svg neru-newyear-dark/medium/apps/org.xfce.notification.svg
+    ln -s accessories-dictionary.svg neru-newyear-dark/medium/apps/org.xfce.Dictionary.svg
+    ln -s flameshot.svg neru-newyear-dark/medium/apps/org.flameshot.Flameshot.svg
     
     rm -f neru-newyear-dark/medium/apps/com.librehat.yahooweather.svg
     rm -f neru-newyear-dark/medium/apps/cumulus.svg
