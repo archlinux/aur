@@ -1,7 +1,7 @@
 pkgbase = sway-git
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager
 	pkgver = r6506.1be66c98
-	pkgrel = 1
+	pkgrel = 2
 	url = https://swaywm.org
 	arch = i686
 	arch = x86_64
@@ -34,7 +34,6 @@ pkgbase = sway-git
 	provides = sway
 	conflicts = sway
 	options = debug
-	options = !strip
 	backup = etc/sway/config
 	source = sway::git+https://github.com/swaywm/sway.git
 	source = 50-systemd-user.conf
