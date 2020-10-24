@@ -1,4 +1,4 @@
-# Maintainer: Jonathon Fernyhough <jonathon"manjaro+org>
+# Maintainer: Jonathon Fernyhough <jonathon"m2x+dev>
 # Contributor: Sam Guymer <sam at guymer dot me>
 
 # This PKGBUILD adapted from zulu-8-bin
@@ -6,7 +6,7 @@
 _jdkname=liberica-jdk-8-full
 pkgname="${_jdkname}-bin"
 _java_ver=8
-pkgver=8u265+1
+pkgver=8u272+10
 pkgrel=1
 pkgdesc='BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.'
 arch=(i686 x86_64)
@@ -32,8 +32,8 @@ source_i686=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-linux
 source_x86_64=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-linux-amd64-full.tar.gz)
 
 # Upstream-provided
-sha1sums_i686=('e31a1447c6acee203bef75ca8a084d040ff7cd84')
-sha1sums_x86_64=('eb4b20d578326533daba3df690337afd0bdc84d7')
+sha1sums_i686=('5053f97552c2ddd5bcfdc4520ccb71e8eb88ee52')
+sha1sums_x86_64=('d69720942cec3557e73674b1f8cd974e55224f38')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
