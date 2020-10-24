@@ -1,0 +1,25 @@
+From ca6dbf10325a997405accbe9380e48d8d0695555 Mon Sep 17 00:00:00 2001
+From: soloturn <soloturn@gmail.com>
+Date: Sat, 24 Oct 2020 07:34:24 +0200
+Subject: [PATCH] sourcekit-lsp python2, python3
+
+---
+ Utilities/build-script-helper.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Utilities/build-script-helper.py b/Utilities/build-script-helper.py
+index 2a4f193..2e7ca03 100755
+--- a/Utilities/build-script-helper.py
++++ b/Utilities/build-script-helper.py
+@@ -71,7 +71,7 @@ def install(swiftpm_bin_path, toolchain):
+     install_binary(exe, swiftpm_bin_path, toolchain_bin, toolchain)
+ 
+ def install_binary(exe, source_dir, install_dir, toolchain):
+-  cmd = ['rsync', '-a', os.path.join(source_dir.decode('UTF-8'), exe), install_dir]
++  cmd = ['rsync', '-a', os.path.join(source_dir, exe), install_dir]
+   print(' '.join(cmd))
+   subprocess.check_call(cmd)
+ 
+-- 
+2.29.1
+
