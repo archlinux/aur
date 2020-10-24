@@ -18,7 +18,7 @@ sha256sums=('28a7ec9150007b4d9f2c46720c4215a46524e24d6283ab03d83ae113d7dece60')
 
 build() {
   cd "$srcdir/$__pkgname-$pkgver"
-    g++ -o "$_pkgname" main.cpp src/ProtonCaller.cpp -std=c++17
+    g++ -o "$_pkgname" src/main.cpp src/ProtonCaller.cpp -std=c++17
 }
 
 package() {
