@@ -8,7 +8,7 @@ pkgdesc="DNIeRemote enable to use the smartphone as reader for Spanish DNI"
 arch=('x86_64')
 url="https://www.dnielectronico.es/"
 license=('custom')
-depends=('gtkmm3' 'libpkcs11-dnie')
+depends=('gtkmm3')
 source=("https://www.dnielectronico.es/descargas/Apps/DNIeRemoteSetup_${pkgver}-${pkgrel}_amd64.deb"
         "https://www.dnielectronico.es/PDFs/DNIeRemote_user_manual.pdf")
 noextract=("DNIeRemoteSetup_${pkgver}-${pkgrel}_amd64.deb")
