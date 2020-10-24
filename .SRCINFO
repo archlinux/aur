@@ -1,0 +1,18 @@
+pkgbase = defold
+	pkgdesc = Defold is a completely free to use game engine for development of desktop, mobile and web games.
+	pkgver = 1.2.174
+	pkgrel = 1
+	url = https://defold.com/
+	arch = x86_64
+	license = custom
+	source = https://d.defold.com/archive/editor-alpha/8f3e864464062e1b35c207521dc65dfd77899cdf/editor-alpha/editor2/Defold-x86_64-linux.zip
+	source = LICENSE
+	source = Defold.desktop
+	source = logo.zip
+	md5sums = 162f8082d877819945e46b2276c2a5a1
+	md5sums = 12ddd6bdaaf6397931608af50492f005
+	md5sums = 8be2aad566732d3845c4472ebcfdd049
+	md5sums = 2e220c9bf4a7e2f5aa3b81cfd7b8c8fe
+
+pkgname = defold
+
