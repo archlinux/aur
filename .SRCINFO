@@ -1,0 +1,28 @@
+pkgbase = manimce
+	pkgdesc = Animation engine for explanatory math videos (community edition).
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ManimCommunity/manim/
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	depends = cairo
+	depends = ffmpeg
+	depends = python
+	depends = python-cairocffi
+	depends = python-colour
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-progressbar
+	depends = python-pygments
+	depends = python-rich
+	depends = python-scipy
+	depends = python-tqdm
+	depends = python-watchdog
+	depends = python-pydub
+	optdepends = texlive-most: latex support
+	source = https://files.pythonhosted.org/packages/f9/17/5b538d8350983c9a3baaaaa0345a0def774be463c909f61d56798a275089/manimce-0.1.0.tar.gz
+	sha256sums = 402c0c91efe29375ba2a6306d48147b827922f34a3f5e3bef792829751dce550
+
+pkgname = manimce
+
