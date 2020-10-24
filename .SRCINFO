@@ -1,7 +1,7 @@
 pkgbase = kclock
 	pkgdesc = Convergent clock application for Plasma
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/plasma-mobile/kclock
 	arch = x86_64
 	license = GPL2

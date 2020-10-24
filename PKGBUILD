@@ -2,7 +2,7 @@
 
 pkgname='kclock'
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Convergent clock application for Plasma'
 arch=('x86_64')
 url='https://invent.kde.org/plasma-mobile/kclock'
@@ -13,12 +13,8 @@ source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 sha256sums=('9c7286f79d10427cac4ea31faba59009185bc44c86fae9a32c7e93cdc92b12a4')
 
 build() {
-  export CFLAGS+=" ${CPPFLAGS}"
-  export CXXFLAGS+=" ${CPPFLAGS}"
   cmake -B 'build' -S "${pkgname}-v${pkgver}" \
-    -DCMAKE_BUILD_TYPE='None' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -Wno-dev
+    -DBUILD_TESTING=OFF
   make -C 'build'
 }
 
