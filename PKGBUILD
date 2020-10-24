@@ -1,5 +1,5 @@
 pkgname='sprunge'
-release='0.5'
+release='0.6'
 pkgver="${release}.0"
 pkgrel=1
 pkgdesc='Upload data to sprunge.us via stdin'
@@ -12,7 +12,7 @@ conflicts=("${pkgname}-git")
 optdepends=('xclip: default --clip-command')
 source=("${url}/archive/${release}.tar.gz")
 sha256sums=(
-    '20c4d5e00b579e1b51846faa7c71da0e5281652354ab0f5c3005f0f3d84f070d'
+    '64a0d2ce9697da413fbcedcd8bff94569a05b92c5941fecff0c7bd30e0961f3b'
 )
 
 package()
