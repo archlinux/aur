@@ -2,13 +2,13 @@
 
 _name=gtranslator
 pkgname=$_name-git
-pkgver=3.38.0.r5120.e3f489f1
+pkgver=3.38.0.r5135.f6e6ffaf
 pkgrel=1
 pkgdesc='Translation Editor, an enhanced gettext po file editor for the GNOME'
 arch=('x86_64')
 url='https://wiki.gnome.org/Apps/Gtranslator'
 license=('GPL3')
-depends=(gtksourceview4 gspell gettext libgda libdazzle)
+depends=(gtksourceview4 gspell gettext libgda libdazzle libhandy)
 makedepends=(meson gobject-introspection git gtk-doc itstool)
 conflicts=($_name)
 provides=($_name)
