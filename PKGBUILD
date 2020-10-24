@@ -1,8 +1,8 @@
 # Maintainer: LightDot <lightdot -a-t- g m a i l>
 
 pkgname=alpine
-pkgver=2.23
-pkgrel=2
+pkgver=2.24
+pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 pkgdesc="A free software email client, a rewrite of Pine which was a continuation of the venerable ELM."
 url="http://alpine.x10host.com/"
@@ -15,18 +15,18 @@ provides=('pico' 'pine' 're-alpine')
 conflicts=('pico' 'pine' 're-alpine' 'alpine-fancythreading')
 replaces=('pico' 'pine' 're-alpine' 'alpine-fancythreading')
 options=('!makeflags')
-source=("http://alpine.x10host.com/alpine/release/src/alpine-2.23.tar.xz"
-		"http://alpine.x10host.com/alpine/patches/alpine-2.23/maildir.patch.gz"
-		"http://alpine.x10host.com/alpine/patches/alpine-2.23/fancy.patch.gz"
-		"http://alpine.x10host.com/alpine/patches/alpine-2.23/fillpara.patch.gz"
-		"http://alpine.x10host.com/alpine/patches/alpine-2.23/compose.patch.gz"
-		"http://alpine.x10host.com/alpine/patches/alpine-2.23/longurl.patch.gz")
-sha256sums=('793a61215c005b5fcffb48f642f125915276b7ec7827508dd9e83d4c4da91f7b'
-			'e91399e72a57a1f4aba1eb64796d56b7b8abff396ea8b7a491ac249483a0f60b'
-			'354580049ab6fc13700eef2ccb99cf48d83a1dc84b00f1d9b62e5deee95aa311'
-			'14e10307df9ca1fb49489fe8ea1b560dd561f96f7aa525ff839f5ebc94a69419'
-			'7b7dbcd05ef72e2cee5a86d61a792a315214e41bbcfc1fd1c1846c038a031e59'
-			'785195c2f1718b3d6b6b63f21c6dd437988858223896be6c83d62aba7e2f547b')
+source=("http://alpine.x10host.com/alpine/release/src/alpine-2.24.tar.xz"
+		"http://alpine.x10host.com/alpine/patches/alpine-2.24/maildir.patch.gz"
+		"http://alpine.x10host.com/alpine/patches/alpine-2.24/fancy.patch.gz"
+		"http://alpine.x10host.com/alpine/patches/alpine-2.24/fillpara.patch.gz"
+		"http://alpine.x10host.com/alpine/patches/alpine-2.24/compose.patch.gz"
+		"http://alpine.x10host.com/alpine/patches/alpine-2.24/longurl.patch.gz")
+sha256sums=('651a9ffa0a29e2b646a0a6e0d5a2c8c50f27a07a26a61640b7c783d06d0abcef'
+			'bae1dbb4727b2049e50a42c9bbf3b7cd15fa7dee4e8f0a554bc344c85e9043b5'
+			'8d8a180eb30b4b015d9704347b7bc24e19df72b0a887fe97b3a0716135f9deb7'
+			'ed3f81e7871361d6ee31ba78ea2ebc3f8c23b72be48de94d62cfaba38a53fb84'
+			'e29099207a21561feb2e9d25ce978aa73b184898701efe3ca29bb2f1b4451853'
+			'072bee67499ecfd7237fba4ce354f88c1df1216cf23ba9699e0c3acf3198eca1')
 
 
 build() {
