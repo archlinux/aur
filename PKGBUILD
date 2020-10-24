@@ -4,11 +4,11 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.3.1073.r5301
+pkgver=1.3.1073.r5323
 _gwtver=2.8.2
 _ginver=2.1.2
 _nodever=10.19.0
-_pandocver="2.11.0.2"
+_pandocver="2.11.0.4"
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
