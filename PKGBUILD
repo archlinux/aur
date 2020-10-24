@@ -2,14 +2,14 @@
 
 _pkgname=pep-engine
 pkgname=$_pkgname-hg
-pkgver=2.1.0
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="A Free Software library for automatic key management and encryption of messages."
 arch=('x86_64' 'i686')
 url='https://pep.software'
 license=('GPL3')
 makedepends=('mercurial' 'asn1c' 'make' 'yml2')
-depends=('libetpan-fdik-git' 'gpgme' 'sqlite')
+depends=('libetpan-fdik-git' 'gpgme' 'sqlite' 'sequoia')
 provides=('pep-engine')
 source=("hg+https://pep.foundation/dev/repos/pEpEngine")
 md5sums=('SKIP')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 prepare() {
 	cd "$srcdir/pEpEngine"
 
-	hg up 'sync'
+	hg up
 	
 	echo "PREFIX=$pkgdir/usr" > 'local.conf'
 	echo "PER_MACHINE_DIRECTORY=$pkgdir/usr/share/pEp" >> 'local.conf'
