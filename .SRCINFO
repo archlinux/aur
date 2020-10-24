@@ -1,6 +1,6 @@
 pkgbase = libxft-bgra-git
 	pkgdesc = libXft with BGRA glyph (color emoji) rendering & scaling patches by Maxime Coste
-	pkgver = 2.3.3.r1.dda4979
+	pkgver = 2.3.3.r112.dcd637d
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xorg/lib/libxft.git
 	arch = x86_64
