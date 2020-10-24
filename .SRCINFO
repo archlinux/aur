@@ -1,0 +1,20 @@
+pkgbase = retrosmart-color-schemes
+	pkgdesc = Retrosmart KDE Plasma color schemes
+	pkgver = 0.1b
+	pkgrel = 1
+	url = https://github.com/mdomlop/retrosmart-color-schemes
+	changelog = ChangeLog
+	arch = any
+	license = GPL3
+	optdepends = xcursor-retrosmart: The corresponding Xcursor themes
+	optdepends = retrosmart-aurorae-themes: The corresponding Aurorae themes
+	optdepends = retrosmart-kvantum-theme: The corresponding theme for Kvantum
+	optdepends = retrosmart-qtcurve-theme: The corresponding theme for QtCurve
+	optdepends = retrosmart-icon-theme: The corresponding icon theme
+	optdepends = retrosmart-xfwm4-themes: The corresponding themes for XFwm4
+	optdepends = retrosmart-openbox-themes: The corresponding themes for Openbox
+	source = retrosmart-color-schemes-0.1b.tar.gz::https://github.com/mdomlop/retrosmart-color-schemes/archive/0.1b.tar.gz
+	md5sums = aeb8a93247e9bd0830be118473ee48a7
+
+pkgname = retrosmart-color-schemes
+
