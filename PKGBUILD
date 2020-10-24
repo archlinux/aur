@@ -1,5 +1,5 @@
 pkgname=intel-thermalmonitor-git
-pkgver=r8.1d12cae
+pkgver=r1.b4f58cc
 pkgrel=1
 pkgdesc="Intel's ThermalMonitor QT5 tool for monitoring and "
 arch=('any')
