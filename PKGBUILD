@@ -4,7 +4,7 @@
 # Contributor: xyproto
 
 pkgname=ags
-pkgver=3.5.0.24
+pkgver=3.5.0.27
 pkgrel=1
 pkgdesc='Engine to run adventure/quest games'
 arch=('x86_64')
@@ -17,9 +17,15 @@ license=('Artistic2.0')
 depends=('dumb-a4' 'libtheora' 'freetype2')
 makedepends=('cmake' 'wxgtk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adventuregamestudio/ags/archive/v.$pkgver.tar.gz"
-        'https://github.com/adventuregamestudio/ags/commit/44d954493bb5f3e95a11a4eddbb62bd6110b1b63.patch')
-sha256sums=('289d6d832cb35f18d67a03bbdb30f62c6f6ad6984a99e0e34356c6717df40b9f'
-            '6b7092e5794ae532f79c5c6ad5f5761c217b3ec874da43537152fb8e60b20019')
+        'https://github.com/adventuregamestudio/ags/commit/fa1b9c7a442ac6966357d510fb7e6b78a214410d.patch')
+sha256sums=('f8940e390510ebddc872ae032bc65351581a67bf9bb64a0c5d8e996615baf819'
+            '5b6cf508340ae23aac6c4ed0805f64330333b9b6ba466e60f8d625aedaa07208')
+
+prepare () {
+    cd "ags-v.$pkgver"
+    # https://github.com/adventuregamestudio/ags/issues/1080
+    patch -p1 < ../fa1b9c7a442ac6966357d510fb7e6b78a214410d.patch
+}
 
 build() {
     cd "ags-v.$pkgver"
