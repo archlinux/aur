@@ -1,0 +1,20 @@
+pkgbase = hisat2-git
+	pkgdesc = A fast and sensitive alignment program for mapping sequencing reads
+	pkgver = 2.2.1.r8.g49aa20c
+	pkgrel = 1
+	url = https://daehwankimlab.github.io/hisat2/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	optdepends = perl
+	optdepends = python
+	provides = hisat2
+	conflicts = hisat2
+	options = staticlibs
+	source = git+https://github.com/DaehwanKimLab/hisat2.git
+	sha256sums = SKIP
+
+pkgname = hisat2-git
+
