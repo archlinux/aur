@@ -1,13 +1,11 @@
-# Maintainer: Austin Haedicke <austin.haedicke@gmail.com>
-# Telegram @savagezen / @savagezen_aur
-# GitHub https://github.com/savagezen/pkgbuild
-
+# Maintainer: Holger Schramm <dev@strace.it>
+# Contributor: Austin Haedicke <austin.haedicke@gmail.com>
 # Contributor: Jonathon Fernyhough <jonathon@manjaro.org>
 
 pkgname=zef
-pkgver=0.8.4
+pkgver=0.9.1
 pkgrel=1
-pkgdesc="Perl6 Module Management"
+pkgdesc="Rakudo (Perl6) Module Management"
 arch=('any')
 depends=('perl6')
 checkdepends=('perl')
@@ -17,22 +15,22 @@ url="https://github.com/ugexe/zef"
 license=('PerlArtistic')
 options=('!purge')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/ugexe/$pkgname/tar.gz/v$pkgver)
-sha256sums=('0afbd344c8c05a4167e27d99cc092e0b093dedf30b2e54e9abb69e7ba5ab6ee3')
+sha256sums=('d58f23d3bd84b8b204b5a17f4bd55b1d50eb107d5a1715d2f82171119175080a')
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg2 'Running tests...'
+  printf 'Running tests...\n'
   PERL6LIB=lib prove -r -e perl6
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg2 'Installing documentation...'
+  printf 'Installing documentation...\n'
   install -Dm 644 README.pod -t "$pkgdir/usr/share/doc/$pkgname"
 
-  msg2 'Installing...'
+  printf 'Installing...\n'
   export RAKUDO_LOG_PRECOMP=1
   export RAKUDO_RERESOLVE_DEPENDENCIES=0
   perl6-install-dist \
