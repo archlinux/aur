@@ -2,7 +2,7 @@
 _pkgname=python_speech_features
 pkgname=python-speech-features
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Speech Feature extraction"
 arch=('any')
 license=('MIT')
@@ -22,4 +22,7 @@ build() {
 package() {
     cd $srcdir/$_pkgname-$pkgver
     python setup.py install --root=$pkgdir --optimize=1 --skip-build
+
+    # License
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

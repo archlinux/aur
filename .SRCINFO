@@ -1,7 +1,7 @@
 pkgbase = python-speech-features
 	pkgdesc = Python Speech Feature extraction
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jameslyons/python_speech_features
 	arch = any
 	license = MIT
