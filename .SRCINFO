@@ -1,7 +1,7 @@
 pkgbase = thunar-budlabs-git
 	pkgdesc = file manager for xfce, patched for people with keyboards
 	pkgver = 4.16pre1+75+g87722dab
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.xfce.org/budRich/thunar
 	arch = i686
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = thunar-budlabs-git
 	optdepends = thunar-media-tags-plugin: view/edit id3/ogg tags
 	provides = thunar=4.16pre1+75+g87722dab
 	conflicts = thunar
-	source = thunar::git+https://gitlab.xfce.org/xfce/thunar.git
+	source = thunar::git+https://gitlab.xfce.org/budRich/thunar.git
 	sha256sums = SKIP
 
 pkgname = thunar-budlabs-git

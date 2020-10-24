@@ -8,7 +8,7 @@
 _pkgname=thunar
 pkgname=${_pkgname}-budlabs-git
 pkgver=4.16pre1+75+g87722dab
-pkgrel=1
+pkgrel=2
 pkgdesc='file manager for xfce, patched for people with keyboards'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('GPL')
@@ -25,7 +25,7 @@ optdepends=('gvfs: trash support, mounting with udisks, and remote filesystems'
           'thunar-media-tags-plugin: view/edit id3/ogg tags')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}.git")
+source=("${_pkgname}::git+https://gitlab.xfce.org/budRich/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
