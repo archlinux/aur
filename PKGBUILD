@@ -15,7 +15,7 @@
 pkgname=discord-canary-electron-bin
 _pkgname=discord-canary
 pkgver=0.0.114
-pkgrel=4
+pkgrel=5
 pkgdesc="Discord Canary (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
 provides=('discord-canary')
@@ -59,7 +59,7 @@ package() {
 
   # Create starter script for discord
   echo "#!/bin/sh" >> "$pkgdir"/opt/$_pkgname/$_pkgname
-  echo "electron /opt/$_pkgname/resources/app.asar \$@" >> "$pkgdir"/opt/$_pkgname/$_pkgname
+  echo "exec electron /opt/$_pkgname/resources/app.asar \$@" >> "$pkgdir"/opt/$_pkgname/$_pkgname
 
   # Set permissions
   chmod 755 "$pkgdir"/opt/$_pkgname/$_pkgname
