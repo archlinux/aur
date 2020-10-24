@@ -1,0 +1,15 @@
+pkgbase = calyxos-flasher-git
+	pkgdesc = A simple way to install CalyxOS on your device
+	pkgver = r108.ff9a4de
+	pkgrel = 1
+	url = https://github.com/AOSPAlliance/device-flasher
+	arch = any
+	license = Apache
+	makedepends = go
+	provides = calyxos-flasher
+	conflicts = calyxos-flasher
+	source = calyxos-flasher::git+https://github.com/AOSPAlliance/device-flasher
+	sha256sums = SKIP
+
+pkgname = calyxos-flasher-git
+
