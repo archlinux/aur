@@ -1,7 +1,7 @@
 # Maintainer: kumen
 
 pkgname="embedded-studio"
-pkgver=5.10b
+pkgver=5.20
 pkgrel=1
 pkgdesc="Segger Embedded Studio for ARM"
 arch=("x86_64")
@@ -17,7 +17,7 @@ source_x86_64=("Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_x64.tar.gz::https:/
 source_i686=("Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_x86.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_x86.tar.gz")
 source=($pkgname.desktop)
 	
-sha256sums_x86_64=('0063ec3c3b7ba82c0df55732418637e2750567650516c0f62ba10eb3244f0e01')
+sha256sums_x86_64=('7dd337f5d68e8b9dea5e5cab472af0fde4ffa54de4f8c06a19ecab9373251de5')
 sha256sums_i686=('f2c0bb150961f8e029ea0101a48aab92a4043b80ea623ec369d16ae36fb42c19')
 sha256sums=('8d559936293917d566be7efb63ad4b18299ef0bad1656f9a939a4ac6d288576c')
 
@@ -35,7 +35,7 @@ package() {
 		    "${pkgdir}/usr/share/licenses/${pkgname}" \
 		    "${pkgdir}/usr/bin/" \
 
-	msg2 'Installing Embedded Studio'
+	msg2 'Installing Embedded Studio ARM'
 	"$srcdir"/embedded-studio/install_segger_embedded_studio --copy-files-to ${pkgdir}/opt/SEGGER/Embedded-Studio/  --accept-license --no-upgrade
 
 	msg2 'Instalation of binary file'
