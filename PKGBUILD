@@ -1,7 +1,7 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-_pkgname=webdump
-pkgname=${_pkgname}-git
+_pkgname='webdump'
+pkgname="${_pkgname}-git"
 pkgver=r101.254e833
 pkgrel=1
 pkgdesc='Render HTML to stdout'
@@ -10,6 +10,7 @@ url='https://www.codemadness.org/git/webdump/file/README.html'
 license=('ISC')
 makedepends=('git')
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("git://git.codemadness.org/${_pkgname}")
 sha256sums=('SKIP')
 
@@ -24,7 +25,7 @@ build() {
 
 package() {
   make DESTDIR="${pkgdir}" PREFIX="/usr" MANPREFIX="/usr/share/man" -C "${_pkgname}" install
-  install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dvm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
