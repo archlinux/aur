@@ -1,0 +1,17 @@
+pkgbase = hisat2-bin
+	pkgdesc = A fast and sensitive alignment program for mapping sequencing reads
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://daehwankimlab.github.io/hisat2/
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	optdepends = perl
+	optdepends = python
+	provides = hisat2
+	conflicts = hisat2
+	source = https://cloud.biohpc.swmed.edu/index.php/s/4pMgDq4oAF9QCfA/download
+	sha256sums = 37a8731bdaecbc378b6cadd1c220641c47f5ff4f00f9d089308706cb47e1b3fa
+
+pkgname = hisat2-bin
+
