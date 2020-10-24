@@ -1,0 +1,19 @@
+pkgbase = kde1-kshow-git
+	pkgdesc = Historical copy of kshow for KDE 1, adapted to compile on modern systems
+	pkgver = 0.2.1.r9.e9d9ee1
+	pkgrel = 1
+	url = https://github.com/sandsmark/kde1-kshow/
+	arch = i686
+	arch = x86_64
+	groups = kde1
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = kde1-kdelibs
+	provides = kde1-kdekshow
+	conflicts = kde1-kdekshow
+	source = git+https://github.com/sandsmark/kde1-kshow.git
+	md5sums = SKIP
+
+pkgname = kde1-kshow-git
+
