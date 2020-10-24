@@ -22,5 +22,5 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname/tools/thermal_monitor"
-  make DESTDIR="$pkgdir/" install
+  install -Dm755 ThermalMonitor $pkgdir/usr/bin/ThermalMonitor
 }
