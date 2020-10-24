@@ -1,4 +1,5 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: restore <sanktuarium at web dot de>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 # Contributor: cassfalg <cassfalg-git@gmx.de>
 # Contributor: Christian Bühler <christian@cbuehler.de>
