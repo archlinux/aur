@@ -1,5 +1,5 @@
 pkgname=intel-thermalmonitor-git
-pkgver=r1.b4f58cc
+pkgver=v1.4.2.r515.g950d6b0
 pkgrel=1
 pkgdesc="Intel's ThermalMonitor QT5 tool for monitoring and "
 arch=('any')
@@ -10,8 +10,8 @@ source=("$pkgname::git+https://github.com/intel/thermal_daemon.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
