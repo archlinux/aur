@@ -50,7 +50,7 @@ package() {
 	sed -i '/^After/s/syslog.target //' $pkgdir/usr/lib/systemd/system/piavpn.service
 
 	mkdir -p $pkgdir/usr/share/licenses/$pkgname/
-	cp $pkgdir/opt/piavpn/share/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/
+	mv $pkgdir/opt/piavpn/share/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/
 
 	# limit log to the minimum to avoid excessive flooding
 	cat > $pkgdir/opt/piavpn/var/debug.txt << EOF
