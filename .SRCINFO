@@ -1,8 +1,8 @@
 pkgbase = thunar-budlabs-git
-	pkgdesc = file manager for xfce
+	pkgdesc = file manager for xfce, patched for people with keyboards
 	pkgver = 4.16pre1+75+g87722dab
 	pkgrel = 1
-	url = https://thunar.xfce.org
+	url = https://gitlab.xfce.org/budRich/thunar
 	arch = i686
 	arch = x86_64
 	arch = armv7h
