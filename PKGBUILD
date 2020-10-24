@@ -1,5 +1,5 @@
 pkgname=signal-backup-decode-git
-pkgver=0.1.5.r2.7f98586
+pkgver=0.2.0.r2.de0c58c
 pkgrel=1
 pkgdesc="Decode Signal Backups"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ _pkgname="${pkgname%-git}"
 
 pkgver() {
   cd "$_pkgname"
-  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//')"
 }
 
 build() {
