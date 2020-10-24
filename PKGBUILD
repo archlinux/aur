@@ -15,7 +15,7 @@ backup=('etc/squid/squid.conf'
 	'etc/squid/errorpage.css'
 	'etc/squid/mime.conf')
 validpgpkeys=('B06884EDB779C89B044E64E3CD6DBF8EF3B17D3E')
-source=("http://www.squid-cache.org/Versions/v4/squid-$pkgver.tar.xz"{,.asc}
+source=("http://www.squid-cache.org/Versions/v4/squid-$pkgver.tar.xz"
         'squid.pam'
         'squid.service'
         'squid.tmpfiles'
