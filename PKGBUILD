@@ -21,6 +21,7 @@ license=(GPL custom)
 groups=('selinux')
 # Make sure systemd's hook supports reloading dbus: the following commit was introduced in package systemd 242.84-2
 # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/systemd&id=4e247891655844511c775fba566df270f8d0d55f
+# https://github.com/archlinux/svntogit-packages/commit/4e247891655844511c775fba566df270f8d0d55f
 depends=('systemd-libs-selinux>=242.84-2' expat audit)
 makedepends=(systemd-selinux xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive audit libselinux)
 _commit=a0926ef86f413f18202ffa19cb1433b6ba00ac36  # tags/dbus-1.12.18^0
