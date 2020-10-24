@@ -2,7 +2,6 @@
 
 ## AUR packages of reference
 
- - JavaHelp (it's a dependency): https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=javahelp2
  - Freemind: https://git.archlinux.org/svntogit/community.git/tree/trunk?h=packages/freemind
 
 ## Guides
