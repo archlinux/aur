@@ -6,7 +6,7 @@ arch=('any')
 url="https://github.com/intel/thermal_daemon/tree/master/tools/thermal_monitor"
 license=('GPL3')
 makedepends=('git' 'qt5-base')
-source=("$_pkgname::git+https://github.com/intel/thermal_daemon.git")
+source=("$pkgname::git+https://github.com/intel/thermal_daemon.git")
 sha256sums=('SKIP')
 
 pkgver() {
