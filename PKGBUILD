@@ -5,8 +5,8 @@
 # Contributor: SanskritFritz
 
 pkgname=tupitube
-pkgver=0.2.15
-pkgrel=2
+pkgver=0.2.16
+pkgrel=1
 pkgdesc="Design and authoring tool for digital artists interested in 2D animation"
 arch=(x86_64)
 url="https://www.maefloresta.com/"
@@ -17,7 +17,7 @@ replaces=(tupitube.desk)
 source=(https://downloads.sourceforge.net/tupi2d/$pkgname.desk-$pkgver.tar.gz
         tupitube.appdata.xml
         qt-5.15.patch)
-sha256sums=('700433296de253539c3ec3189c9eeffa5fd1b864f3010fac38259ac5ac40d8a4'
+sha256sums=('daedd818c7782ab88116d9a0f1401c6bcf874453d93381acefdd4a746625bc2e'
             '99fbafe0b359130d53278db3cada052f8245c325dcb82ce33997322dd750707a'
             'afb563345a62034f523dcc558aee83efb466c863feb39e6a8d5744c974b979ce')
 
@@ -27,6 +27,7 @@ prepare() {
   sed -i 's|quazip/|QuaZip-Qt5-1.1/quazip/|' configure.tests/quazip/main.cpp src/libtupi/tuppackagehandler.cpp
   sed -i 's|quazip-qt5|quazip1-qt5|' qonf/test.rb
   sed -i 's|/share/pixmaps|/share/icons/hicolor/128x128/apps|' qonf/makefile.rb
+  sed -i '/require .os/d' qonf/configure.rb
 }
 
 build() {
