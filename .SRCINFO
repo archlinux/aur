@@ -1,0 +1,30 @@
+pkgbase = kcoreaddons-blucrystal
+	pkgdesc = Addons to QtCore (with the metric binary dialect, so sizes will be measured in KB/MB/GB/etc instead of KiB/MiB/GiB/etc)
+	pkgver = 5.75.0
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = qt5-doc
+	makedepends = qt5-doc
+	makedepends = clang
+	makedepends = python-pyqt5
+	makedepends = doxygen
+	makedepends = sip
+	depends = qt5-base
+	optdepends = python-pyqt5: for the Python bindings
+	provides = kcoreaddons
+	conflicts = kcoreaddons
+	source = https://download.kde.org/stable/frameworks/5.75/kcoreaddons-5.75.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.75/kcoreaddons-5.75.0.tar.xz.sig
+	source = prefix.patch
+	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
+	sha256sums = 9ca2cf82ddc12e27ff73aaefdf616c3eb6552a3a5531f014b5bf52a34a4c73f9
+	sha256sums = SKIP
+	sha256sums = 85315f2bea9e2bf31ebe6c8edb57731672cf8471713b7d7757d4a4d115b6d92f
+
+pkgname = kcoreaddons-blucrystal
+

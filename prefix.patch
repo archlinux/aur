@@ -1,0 +1,11 @@
+--- a/src/lib/util/kformat.h	2020-10-08 11:31:52.259466585 -0500
++++ b/src/lib/util/kformat.h	2020-10-08 11:32:23.409493135 -0500
+@@ -169,7 +169,7 @@
+      * @see formatByteSize
+      */
+     enum BinaryUnitDialect {
+-        DefaultBinaryDialect = -1, ///< Used if no specific preference
++        DefaultBinaryDialect = -3, ///< Used if no specific preference
+         IECBinaryDialect,          ///< KiB, MiB, etc. 2^(10*n)
+         JEDECBinaryDialect,        ///< KB, MB, etc. 2^(10*n)
+         MetricBinaryDialect,       ///< SI Units, kB, MB, etc. 10^(3*n)
