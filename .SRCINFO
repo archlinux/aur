@@ -1,6 +1,6 @@
 pkgbase = gnome-sharp
 	pkgver = 2.24.4
-	pkgrel = 6
+	pkgrel = 7
 	url = http://gtk-sharp.sourceforge.net
 	arch = any
 	license = LGPL
