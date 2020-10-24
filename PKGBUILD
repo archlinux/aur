@@ -11,9 +11,9 @@ pkgdesc="Port of the Snes9x emulator (git version)"
 arch=('x86_64')
 url="http://www.snes9x.com/"
 license=('custom')
-makedepends=( alsa-lib cairo gdk-pixbuf2 git glib2 glslang 
+makedepends=( alsa-lib cairo gdk-pixbuf2 git glib2
   gtk3 intltool libepoxy libpng libpulse libx11 libxext libxml2
-  libxrandr libxv meson minizip nasm portaudio sdl2 zlib
+  libxrandr libxv meson minizip nasm portaudio sdl2 zlib gtkmm3
 )
 source=(
   git+https://github.com/snes9xgit/snes9x.git
@@ -63,7 +63,7 @@ build() {
 package_snes9x-git() {
 
   pkgdesc="portable Emulator for the Super Nintendo Entertainment System"
-  depends=(libpng libx11 libxext libxinerama libxv minizip zlib)
+  depends=(libpng libxinerama libxv minizip)
 
   conflicts=('snes9x')
   provides=('snesx')
@@ -81,8 +81,7 @@ package_snes9x-git() {
 package_snes9x-gtk-git() {
 
   pkgdesc="Portable Emulator for the Super Nintendo Entertainment System - GTK version"
-  depends=(alsa-lib cairo gdk-pixbuf2 glib2 glslang gtk3 hicolor-icon-theme libepoxy libpng
-  libpulse libx11 libxext libxml2 libxrandr libxv minizip portaudio sdl2 zlib)
+  depends=(alsa-lib cairo gdk-pixbuf2 glib2  gtk3 hicolor-icon-theme libepoxy libpng libpulse libxext libxml2 libxrandr libxv minizip portaudio sdl2 gtkmm3)
 
   conflicts=('snes9x-gtk')
   provides=('snes9x-gtk')
