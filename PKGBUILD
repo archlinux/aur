@@ -21,7 +21,7 @@ int main() {
  return 0;
 }
 EOL
-	cc sleep_forever.c -o sleep_forever
+	gcc $CFLAGS sleep_forever.c -o sleep_forever
 }
 
 package () {
