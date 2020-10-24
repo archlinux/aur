@@ -14,6 +14,7 @@ StartupNotify=true
 Terminal=false
 TerminalOptions=
 Type=Application
+Categories=Game;
 X-DBUS-ServiceName=
 X-DBUS-StartupType=
 X-KDE-SubstituteUID=false
