@@ -1,0 +1,19 @@
+pkgbase = kde1-kuickshow-git
+	pkgdesc = Historical copy of kuickshow for KDE 1, adapted to compile on modern systems
+	pkgver = 0.2.1.r6.ca926a2
+	pkgrel = 1
+	url = https://github.com/sandsmark/kde1-kuickshow/
+	arch = i686
+	arch = x86_64
+	groups = kde1
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = kde1-kdelibs
+	provides = kde1-kdekuickshow
+	conflicts = kde1-kdekuickshow
+	source = git+https://github.com/sandsmark/kde1-kuickshow.git
+	md5sums = SKIP
+
+pkgname = kde1-kuickshow-git
+
