@@ -1,5 +1,5 @@
 pkgbase = saait
-	pkgdesc = The most boring static page generator
+	pkgdesc = Fast and simple static site generator
 	pkgver = 0.7.1
 	pkgrel = 2
 	url = https://codemadness.org/saait.html

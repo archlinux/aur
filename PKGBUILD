@@ -1,13 +1,14 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname=saait
+pkgname='saait'
 pkgver=0.7.1
 pkgrel=2
-pkgdesc='The most boring static page generator'
+pkgdesc='Fast and simple static site generator'
 arch=('x86_64')
 url='https://codemadness.org/saait.html'
+_url_source='https://codemadness.org/releases/saait'
 license=('ISC')
-source=("https://codemadness.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("${_url_source}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('cba86b0c01ef1ff7aa154de4c45f720acb9d18c8f397af1a2642aadb7e8bdd35')
 
 build() {
@@ -15,8 +16,8 @@ build() {
 }
 
 package() {
-  make DESTDIR="${pkgdir}" PREFIX="/usr" MANPREFIX="/usr/share/man" -C "${pkgname}-${pkgver}" install
-  install -Dm644 "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  make DESTDIR="${pkgdir}" PREFIX='/usr' MANPREFIX='/usr/share/man' -C "${pkgname}-${pkgver}" install
+  install -Dvm644 "${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
