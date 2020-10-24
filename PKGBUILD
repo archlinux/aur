@@ -15,9 +15,6 @@ noextract=("DNIeRemoteSetup_${pkgver}-${pkgrel}_amd64.deb")
 sha256sums=('b8fdcfe57350dc45e75f876e962aff7c6b31d124ee5ac63b62260874e53ef07b'
             'afb1520fc5d3329d5ef271d89b6c7026d9208b79c52de0d491eaf543d642f9d0')
 
-# Misconfigured server
-DLAGENTS=('https::/usr/bin/curl -A "Mozilla/5.0" -fLC - --retry 3 --retry-delay 3 -o %o %u')
-
 package() {
   bsdtar -O -xf "DNIeRemoteSetup_${pkgver}-${pkgrel}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
 
@@ -25,6 +22,13 @@ package() {
   find "${pkgdir}" -type f -exec chmod 644 {} \;
   find "${pkgdir}" -type d -exec chmod 755 {} \;
   chmod 755 "${pkgdir}/usr/bin/dnieremotewizard"
+  chown -R root:root "${pkgdir}/usr"
+
+  # Fix libs
+  mv "${pkgdir}/usr/local/lib" "${pkgdir}/usr/lib"
+  rm -rf "${pkgdir}/usr/local" "${pkgdir}/usr/lib/libdnieremotepkcs11.so" "${pkgdir}/usr/lib/libdnieremotepkcs11.so.0"
+  ln -fsT "libdnieremotepkcs11.so.0.0.1" "${pkgdir}/usr/lib/libdnieremotepkcs11.so.0"
+  ln -fsT "libdnieremotepkcs11.so.0.0.1" "${pkgdir}/usr/lib/libdnieremotepkcs11.so"
 
   # Install manual
   install -D -m644 "DNIeRemote_user_manual.pdf" "${pkgdir}/usr/share/doc/${pkgname}/README.pdf"
