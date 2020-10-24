@@ -18,7 +18,7 @@ sha256sums=('bae2f7211cb80626f260e1ebcb2c061751407a03f1ab8898bc80182888502bef'
 _validsignifykey='RWQawitEue1JU2SxUyRD8LXP8m36QsbaHOkKfvZBfhj00EXBYiDZilp0'
 
 prepare() {
-    cat >aurutils.pub <<EOF
+    cat >aurutils-23.pub <<EOF
 untrusted comment: signify public key
 $_validsignifykey
 EOF
