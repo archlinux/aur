@@ -1,7 +1,7 @@
 # Maintainer: spikecodes <19519553+spikecodes@users.noreply.github.com>
 pkgname=nat-git
 _pkgname=${pkgname%-git}
-pkgver=1.0.6
+pkgver=v1.0.8
 pkgrel=1
 pkgdesc="nat the ls replacement you never knew you needed"
 arch=('x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
 	cd "${_pkgname}"
-	cargo build --release --locked --all-features --target-dir=target
+	cargo build --release --all-features --target-dir=target
 }
 
 package() {
