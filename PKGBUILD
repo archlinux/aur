@@ -7,22 +7,19 @@ url='https://github.com/AladW/aurutils'
 arch=('any')
 license=('custom:ISC')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-        "$pkgname-$pkgver.tar.gz.signify::$url/releases/download/$pkgver/$pkgver.tar.gz.sig")
+        "$pkgname-$pkgver.tar.gz.signify::$url/releases/download/$pkgver/$pkgver.tar.gz.sig"
+        "aurutils.pub")
 depends=('git' 'jq' 'expac' 'diffstat' 'pacutils' 'wget')
 makedepends=('git' 'signify')
 optdepends=('bash-completion: bash completion'
             'devtools: aur-chroot'
             'vifm: build file interaction')
 sha256sums=('bae2f7211cb80626f260e1ebcb2c061751407a03f1ab8898bc80182888502bef'
-            'SKIP')
-_validsignifykey='RWQawitEue1JU2SxUyRD8LXP8m36QsbaHOkKfvZBfhj00EXBYiDZilp0'
+            'SKIP'
+            'b952fc11638af129ac98c0924819f3b12fb0660d1d09b780fe1b245d8467cd66')
 
 prepare() {
-    cat >aurutils-23.pub <<EOF
-untrusted comment: signify public key
-$_validsignifykey
-EOF
-    signify -V -p aurutils-23.pub -m "$pkgname-$pkgver".tar.gz \
+    signify -V -p aurutils.pub -m "$pkgname-$pkgver".tar.gz \
             -x "$pkgname-$pkgver".tar.gz.signify
 }
 
