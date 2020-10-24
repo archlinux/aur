@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=taskwarrior-tui-bin
-pkgver=0.8.1
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="A Terminal User Interface for Taskwarrior"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}-x86_64-unknown-l
         "${pkgname%-bin}-$pkgver-README.md::$url/raw/v$pkgver/README.md")
 sha256sums_x86_64=('0b5967c0a89191b977aa5e4d0346785fa2c73c544d808d586260d985b2924fa3'
                    '0591178e63904cfbcd6c5efc0490d59637aaede5e2e14e79e978a8162981a755'
-                   '5185766add7acf2fe63b02e9fc2644c96d43f30dd892a2a8a89262c88ebd7318')
+                   'ab0fa7f2a3a2c376392b7779ad577ee02ab9bf1e9fd984bcbb49fbf866e4c2b4')
 
 package() {
   install -Dm 755 "${pkgname%-bin}" -t "${pkgdir}/usr/bin"
