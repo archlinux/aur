@@ -1,64 +1,62 @@
 # Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 pkgname=tribler
-_gitver=7.1.0-beta
-pkgver=${_gitver//-/_}
-pkgrel=1
-pkgdesc="Privacy enhanced BitTorrent client with P2P content discovery"
-url="https://www.tribler.org/"
+pkgver=7.4.4
+pkgrel=4
+pkgdesc='Privacy enhanced BitTorrent client with P2P content discovery'
+url='https://www.tribler.org'
 arch=('any')
 license=('LGPL3')
-depends=('python2-cryptography' 'python2-feedparser' 'python2-apsw' 'python2-cherrypy' 'python2-plyvel'
-	 'python2-pillow' 'python2-pyqt5' 'qt5-svg' 'phonon-qt5-vlc' 'python2-feedparser' 'python2-chardet'
-	 'python2-psutil' 'python2-meliae' 'python2-decorator' 'python2-netifaces' 'python2-requests'
-	 'python2-twisted' 'libsodium' 'libtorrent-rasterbar' 'python2-m2crypto' 'python2-configobj'
-	 'python2-matplotlib' 'python2-service-identity' 'python2-keyring' 'python2-keyrings-alt'
-	 'python2-libnacl' 'python2-contextlib2' 'python2-zc.lockfile' 'python2-datrie' 'python2-networkx')
-optdepends=('vlc: for internal video player')
-makedepends=('python2-setuptools' 'git')
-provides=('python2-pyipv8')
-conflicts=('python2-pyipv8')
-source=("git+https://github.com/Tribler/tribler.git#tag=v$_gitver"
-	'git+https://github.com/Tribler/dispersy.git#tag=v1.0'
-	'git+https://github.com/devos50/pymdht.git#tag=12.7.0'
-	'git+https://github.com/spesmilo/electrum#tag=3.2.2'
-	'git+https://github.com/Tribler/py-ipv8.git#commit=4d2ead9e6a0ff02bcaa0cfd5cb94b70cd4d881ee') # Should have a tag
-sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+depends=('python-pyqt5' 'python-aiohttp' 'python-aiohttp-apispec' 'libtorrent-rasterbar'
+         'python-cryptography' 'python-libnacl' 'python-pony' 'python-lz4'
+         'python-psutil' 'python-networkx' 'python-pyqtgraph' 'python-chardet'
+         'python-cherrypy' 'python-configobj' 'python-netifaces' 'python-bitcoinlib'
+         'python-twisted' 'python-pyopenssl' 'python-pyasn1' 'vlc')
+makedepends=('git')
+#checkdepends=('python-pytest-runner')
+source=("https://github.com/Tribler/tribler/releases/download/v$pkgver/Tribler-v$pkgver.tar.xz")
+sha512sums=('931dff82bb7f83de8d5b63ab8a712cf371a7361a75e8bbb7c490d8b56aa55d1586586ae6e14f28c3c8ad5daf938eb2bbc05b67f74bcc9a3a23e38f8fc909d722')
 
 prepare() {
-  cd "$srcdir"/$pkgname
-  git submodule init
-  git config submodule.Tribler/dispersy.url "$srcdir"/dispersy
-  git config submodule.Tribler/Core/DecentralizedTracking/pymdht.url "$srcdir"/pymdht
-  git config submodule.electrum.url "$srcdir"/electrum
-  git config submodule.py-ipv8.url "$srcdir"/py-ipv8
-  git submodule update
+  cd $pkgname
 
   # Fix tribler path
-  sed -i 's|/opt/tribler|/usr/share/tribler|g' systemd/anontunnel_helper@.service
+  sed -i '/PYTHONPATH/d
+          s|/opt/tribler|/usr/share/tribler|g
+          s|ExecStart=.*|ExecStart=tribler|' systemd/anontunnel_helper@.service
   sed -i 's|/opt/tribler|/usr/share/tribler|g' systemd/tribler.service
 
-  # Fix version
-  sed -i "s|7.0.0-GIT|$_gitver|g" Tribler/Core/version.py
+  # Fix version info
+  sed -e "s|version_id =.*|version_id = \"${pkgver%_*}\"|g" \
+      -e "s|build_date =.*|build_date = \"$SOURCE_DATE_EPOCH\"|g" \
+        -i src/tribler/tribler-core/tribler_core/version.py
 }
 
 build () {
-  cd "$srcdir"/$pkgname
-  python2 setup.py build
+  cd $pkgname
+
+  python setup.py build
 }
 
+#check() {
+#  cd $pkgname
+#
+#  python setup.py test
+#}
+
 package() {
-  cd "$srcdir"/$pkgname
+  cd $pkgname
 
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  # Install python modules
+  python setup.py install --root="$pkgdir" --optimize=1
 
+  # Install binary files/assets
   install -dm 755 "$pkgdir"/usr/{bin,share/tribler}
-#  install -dm 755 "$pkgdir"/var/lib/{tribler,tunnel_helper}
   cp -dr --no-preserve=ownership Tribler "$pkgdir"/usr/share/tribler
   cp -dr --no-preserve=ownership TriblerGUI "$pkgdir"/usr/share/tribler
   ln -s Tribler/Core/CacheDB/schema_sdb_v*.sql "$pkgdir"/usr/share/tribler/Tribler
 
-  install -dm 644 "$pkgdir"/usr/share/{applications,pixmaps}
+  install -dm 755 "$pkgdir"/usr/share/{applications,pixmaps}
   install -Dm 644 Tribler/Main/Build/Ubuntu/tribler.desktop "$pkgdir"/usr/share/applications
   install -Dm 644 Tribler/Main/Build/Ubuntu/tribler.xpm "$pkgdir"/usr/share/pixmaps
   install -Dm 644 Tribler/Main/Build/Ubuntu/tribler_big.xpm "$pkgdir"/usr/share/pixmaps
@@ -68,10 +66,10 @@ package() {
   install -Dm 644 check_os.py "$pkgdir"/usr/share/tribler/
 
   cp -dr --no-preserve=ownership twisted "$pkgdir"/usr/share/tribler
-  cp -dr --no-preserve=ownership electrum "$pkgdir"/usr/share/tribler
 
-  # Remove tests
-  find "$pkgdir" -type d -name "test" -name "tests" -exec rm -rf {} \;
+  # Remove test folders
+  rm -rf "$pkgdir"/usr/lib/python*/site-packages/Tribler/Test
+  rm -rf "$pkgdir"/usr/share/tribler/Tribler/Test
 
   # Install systemd files
   install -Dm 644 systemd/anontunnel_helper@.service "$pkgdir"/usr/lib/systemd/system/anontunnel_helper@.service
