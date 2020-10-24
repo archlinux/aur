@@ -47,7 +47,7 @@ pkgbase = systemd-selinux
 	source = initcpio-install-udev
 	source = arch.conf
 	source = loader.conf
-	source = splash-arch.bmp::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/splash-arch.bmp?h=packages/systemd&id=e43ddb71a5b1ab56e898347a63e54c5d5d07728a
+	source = splash-arch.bmp::https://raw.githubusercontent.com/archlinux/svntogit-packages/391c1f5d4a18d08be809caa08c769ef9cded28db/trunk/splash-arch.bmp
 	source = systemd-user.pam
 	source = systemd-hook
 	source = 20-systemd-sysusers.hook

@@ -29,7 +29,8 @@ validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <
 # file is too big to fit in the AUR.
 #
 # systemd 238.0-2 removed the ".git" from the Github URLs
-# (cf. https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/systemd&id=fa248b709cd106bf65b42f3e93e68decc811e163 )
+# (cf. https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/systemd&id=fa248b709cd106bf65b42f3e93e68decc811e163
+# or https://github.com/archlinux/svntogit-packages/commit/fa248b709cd106bf65b42f3e93e68decc811e163 )
 # When updating, if makepkg reports "systemd-stable is not a clone of https://github.com/systemd/systemd-stable",
 # you need to update the remotes of the git repositories, for example with the following commands:
 #   git -C systemd-stable remote set-url origin https://github.com/systemd/systemd-stable
@@ -42,7 +43,7 @@ source=("git+https://github.com/systemd/systemd-stable#tag=${_tag}?signed"
         'initcpio-install-udev'
         'arch.conf'
         'loader.conf'
-        'splash-arch.bmp::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/splash-arch.bmp?h=packages/systemd&id=e43ddb71a5b1ab56e898347a63e54c5d5d07728a'
+        'splash-arch.bmp::https://raw.githubusercontent.com/archlinux/svntogit-packages/391c1f5d4a18d08be809caa08c769ef9cded28db/trunk/splash-arch.bmp'
         'systemd-user.pam'
         'systemd-hook'
         '20-systemd-sysusers.hook'
