@@ -2,7 +2,7 @@
 
 _pkgname=meld
 pkgname=$_pkgname-git
-pkgver=3.21.0.26.gf56f653c
+pkgver=3.21.0.55.ge121d992
 pkgrel=1
 _realver=3.21.0
 pkgdesc='Visual diff and merge tool'
@@ -11,7 +11,7 @@ url='http://meldmerge.org/'
 license=('GPL')
 depends=('dconf'
          'gsettings-desktop-schemas'
-         'gtksourceview3'
+         'gtksourceview4'
          'python-cairo'
          'python-gobject')
 makedepends=('git'
