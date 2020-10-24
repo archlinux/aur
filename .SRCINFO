@@ -17,3 +17,4 @@ pkgbase = code-server
 	sha512sums_aarch64 = badc150af52263232240edc16e960ac9e51b22e05bc96d81d11726e28d733b1d79139b0d85aa108011f2993c6a6e395134d2524e5fc13fe3b7dfeac24899eb75
 
 pkgname = code-server
+

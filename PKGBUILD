@@ -1,5 +1,6 @@
 # Maintainer: Colin Adler <colin@coder.com>
 # Maintainer: Anmol Sethi <anmol@coder.com>
+# Maintainer: Ash <ash@coder.com>
 
 pkgname=code-server
 pkgver=3.6.1
