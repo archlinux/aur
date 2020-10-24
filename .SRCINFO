@@ -1,12 +1,11 @@
 pkgbase = otb-curie
 	pkgdesc = A slightly upscaled version of scientifica
-	pkgver = 1.0
-	pkgrel = 0
+	pkgver = 1.3
+	pkgrel = 1
 	url = https://github.com/NerdyPepper/curie
 	arch = any
 	license = OFL
 	makedepends = git
-	makedepends = xorg-font-utils
 	source = git+https://github.com/NerdyPepper/curie.git
 	sha256sums = SKIP
 

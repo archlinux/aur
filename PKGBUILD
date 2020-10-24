@@ -3,13 +3,13 @@
 pkgname=otb-curie
 _gitname=curie
 pkgver=1.3
-pkgrel=0
+pkgrel=1
 pkgdesc='A slightly upscaled version of scientifica'
 arch=('any')
 url="https://github.com/NerdyPepper/curie"
 license=('OFL')
 depends=()
-makedepends=('git' 'xorg-font-utils')
+makedepends=('git')
 source=('git+https://github.com/NerdyPepper/curie.git')
 sha256sums=('SKIP')
 
