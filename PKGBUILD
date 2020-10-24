@@ -3,7 +3,7 @@
 
 pkgname=neru-icon-classic-theme
 pkgver=2.7
-pkgrel=10
+pkgrel=11
 pkgdesc="Classic theme icons Neru"
 arch=('any')
 url="https://github.com/chistota/neru-icon-classic-theme"
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 sha256sums=('f03e19d145cc7582933ac2c89cfccfd73e2a63f776fab0838629d7b98dcebfb2'
             'ab2e66b5d52086dcde3656f6b262124796811881de38722733f6459047ab62c4'
             'a5ec781231da2e80199ec1191a11df5fbb495745abac4824a3ef14f5577e4bba'
-            '0cca9b229729c5bd5533a9546d7bc09a8c64eadf1d79a363d2ececee2fb32615')
+            '05a53f7eb588193726bef5d50788c9be814c76e4d1e167645e5f7b82e699602a')
 
 
 prepare() {
