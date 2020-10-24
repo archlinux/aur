@@ -1,6 +1,6 @@
 pkgbase = sleep_forever
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = unknown
 	provides = sleep_forever
