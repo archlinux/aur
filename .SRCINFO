@@ -1,7 +1,7 @@
 pkgbase = sge
 	pkgdesc = The Son of Grid Engine is a community project to continue Sun's old gridengine.
 	pkgver = 8.1.9
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://arc.liv.ac.uk/trac/SGE
 	install = sge.install
@@ -18,24 +18,15 @@ pkgbase = sge
 	depends = libxt
 	depends = make
 	depends = openmotif
+	depends = openssl-1.0
 	depends = patch
 	depends = tcsh
 	source = https://arc.liv.ac.uk/downloads/SGE/releases/8.1.9/sge_8.1.9.tar.xz
 	source = sgemaster@.service
 	source = sgeexecd@.service
-	source = cl_ssl_framework.c.patch
-	source = sge_passwd.c.patch
-	source = drmaa2_list_dict.h.patch
-	source = sh.proc.c.patch
-	source = qmake.patch
 	md5sums = a2f03ca8b803ca4da7d2dedadeca74bb
 	md5sums = 0f4d29ce1dd17af61f48e61431020ea7
 	md5sums = b3e8d5b14639e1f16773f468dabec7de
-	md5sums = 209d58787a6980f1680dbf00f251403f
-	md5sums = 573880df6c2915002af3422376933588
-	md5sums = 4d77510a2601cc79f1260257f2989f08
-	md5sums = 9ca5f0631567400952ac8099e0869393
-	md5sums = 5f52ba50a206ebae0f25ec1852d86c5a
 
 pkgname = sge
 
