@@ -3,7 +3,7 @@
 _name=pEpJNIAdapter
 _pkgname=pep-jni-adapter
 pkgname=$_pkgname-hg
-pkgver=2.0.5
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="p≡p JNI adapter"
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 prepare() {	
 	cd "$srcdir/$_name"
 
-	hg up "sync"
+	hg up "Release_2.1.0"
 	
 	echo "YML2_PATH=/usr/bin" > 'local.conf'
 	echo "ENGINE_INC_PATH=/usr/include" >> 'local.conf'

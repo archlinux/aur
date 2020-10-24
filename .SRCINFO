@@ -1,6 +1,6 @@
 pkgbase = pep-jni-adapter-hg
 	pkgdesc = p≡p JNI adapter
-	pkgver = 2.0.5
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://pep.foundation/dev/repos/pEpJNIAdapter
 	arch = x86_64
