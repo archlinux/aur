@@ -3,7 +3,7 @@
 pkgname=sway-hidpi-git
 _pkgname=sway-hidpi
 pkgver=r6506.1be66c98
-pkgrel=1
+pkgrel=2
 license=("MIT")
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager, with XWayland HiDPI"
 makedepends=(
@@ -49,7 +49,7 @@ sha512sums=('SKIP'
             '813863fe8d391761770eb264b1c0a2d9442efde3e79fae6b78386ed7c041906eef60bbf9d9bc7d118494de8aba2cd4c45a13dcd2ca09f3f1cd1157e74f122667')
 provides=("sway")
 conflicts=("sway")
-options=(debug !strip)
+options=(debug)
 
 prepare() {
 	cd "$_pkgname"
