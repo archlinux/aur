@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=dstask
-pkgver=0.22
+pkgver=0.23
 pkgrel=1
 pkgdesc="Single binary terminal-based TODO manager with git-based sync + markdown notes per task"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -31,7 +31,7 @@ build() {
         -ldflags "-linkmode=external
             -X \"github.com/naggie/dstask.GIT_COMMIT=$_commit\"
             -X \"github.com/naggie/dstask.VERSION=$pkgver\"
-            -X \"github.com/naggie/dstask.BUILD_DATE=$(date -d@"$SOURCE_DATE_EPOCH" +%Y-%m-%dT%H:%M:%SZ)\""\
+            -X \"github.com/naggie/dstask.BUILD_DATE=$(date -d@"$SOURCE_DATE_EPOCH" +%FT%TZ)\"" \
         cmd/dstask.go
 }
 
