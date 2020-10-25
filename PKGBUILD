@@ -28,6 +28,11 @@ build() {
     go build -o build .
 }
 
+#check() {
+#    cd "$srcdir/$_pkgname-$pkgver"
+#    "./build/$_pkgname" sample.png > /dev/null
+#}
+
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
     install -Dm0755 "build/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
