@@ -5,7 +5,7 @@ _name_upper='Beekeeper Studio'
 _pkgname='beekeeper-studio'
 pkgname="${_pkgname}-bin"
 
-pkgver=1.8.5
+pkgver=1.8.7
 pkgrel=1
 _commit_license='5c3257cf1989ca38b651a9dad77d81ace18961de'
 
@@ -24,9 +24,9 @@ source_armv7h=("${_url_source}/releases/download/v${pkgver}/${_pkgname}_${pkgver
 source_aarch64=("${_url_source}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 
 sha256sums=('787ebc78ce29cd0cea3e52651936df7fef96b117782882fce389c3b7ce5683f5')
-sha256sums_x86_64=('ffa5630eaeb336fd7f60eb5e6a4ada22f37e5124040a9fbe6ff4f618675350a8')
-sha256sums_armv7h=('2ff813606cfadc31c95782a6c68b64825785af80cf0c94d22da07c896186877e')
-sha256sums_aarch64=('7e4da3d4ecf8fc1fde435caea3e06166324666cf83d86648c6471c6a7e570f70')
+sha256sums_x86_64=('a6e58a221e23a75d9e29c6a80853f4cb5cf8844afeebca83d9ffb30382bb7a75')
+sha256sums_armv7h=('4cd9fbb25de0055a3176c9d4eb16c6c045f6b5bc500d1a594217dfaeaac3251e')
+sha256sums_aarch64=('45968f5e348cdbdf21306687d634e311192da86a64da64266dc8f598ee545c94')
 
 package() {
   tar -xvf 'data.tar.xz' -C "${pkgdir}"
