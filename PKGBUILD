@@ -1,7 +1,7 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 
 pkgname=puddletag-git
-pkgver=r973.66636fc
+pkgver=2.0.1.r12.g4ce2b67
 pkgrel=1
 pkgdesc="An audio tag editor for GNU/Linux, git version"
 url="https://github.com/puddletag/puddletag"
@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
