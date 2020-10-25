@@ -6,7 +6,7 @@
 pkgname=boostnote
 _pkgname=Boostnote
 pkgver=0.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source note-taking app for programmers"
 arch=('any')
 url="https://boostnote.io/"
