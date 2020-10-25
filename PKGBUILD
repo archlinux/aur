@@ -4,7 +4,7 @@
 pkgbase=pulseaudio-hsphfpd
 pkgname=(pulseaudio-hsphfpd libpulse-hsphfpd alsa-card-profiles-hsphfpd pulseaudio-{zeroconf,lirc,jack,bluetooth,equalizer,rtp}-hsphfpd)
 pkgdesc="A fork of pulseaudio providing superior bluetooth headset functionality"
-pkgver=13.99.2+96+gbb7408dfa
+pkgver=13.99.2+105+gccd74cc80
 pkgrel=1
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
