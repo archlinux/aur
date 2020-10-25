@@ -1,30 +1,28 @@
 # Maintainer: Hideaki Takahashi <mymelo+aur@gmail.com>
-python=python
-
-_libname=pushbullet.py
-pkgname=python-$_libname
-pkgver=0.11.1
+pkgname=python-pushbullet.py
+_name=${pkgname#python-}
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A simple python client for pushbullet.com."
 depends=('python-requests' 'python-magic' 'python-websocket-client')
 makedepends=('python-setuptools')
 arch=('any')
-source=(https://github.com/randomchars/${_libname}/archive/${pkgver}.tar.gz)
-sha256sums=('7b25734638d36f6788e2cededd5c0684ca16510e9acf9c536e929a162b1dc608')
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+sha256sums=('917883e1af4a0c979ce46076b391e0243eb8fe0a81c086544bcfa10f53e5ae64')
 
-url="https://github.com/randomchars/pushbullet.py"
+url="https://github.com/rbrcsk/pushbullet.py"
 license=("MIT")
 
 build() {
-    cd $srcdir/$_libname-$pkgver
+    cd $srcdir/$_name-$pkgver
 
-    $python setup.py build || return 1
+    python setup.py build || return 1
 }
 
 package() {
-    cd $srcdir/$_libname-$pkgver
+    cd $srcdir/$_name-$pkgver
 
-    $python setup.py install --root=$pkgdir
+    python setup.py install --root=$pkgdir
 
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
