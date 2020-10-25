@@ -3,7 +3,7 @@
 
 pkgname=jamulus
 _pkgname=Jamulus
-pkgver=3.5.12
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Internet jam session software"
 arch=('x86_64')
@@ -31,4 +31,4 @@ package() {
      "${pkgdir}/usr/share/applications/jamulus.desktop" > "${pkgdir}/usr/share/applications/jamulus-server.desktop"
 }
 
-sha1sums=('ede1c673c423f637ca316128b8542e064141de85')
+sha1sums=('2df09f63819c40e9dc0102dbbfb37fff109aa1a2')
