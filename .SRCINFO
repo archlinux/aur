@@ -1,0 +1,16 @@
+pkgbase = gwm
+	pkgdesc = A modern tilling windows manager for X11
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://sourceforge.net/projects/gsmwm/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = libx11
+	noextract = code
+	source = /gwm-0.7.4::git://git.code.sf.net/p/gsmwm/code
+	md5sums = SKIP
+
+pkgname = gwm
+
