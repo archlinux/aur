@@ -1,6 +1,6 @@
 pkgbase = ali-bin
 	pkgdesc = Generate HTTP load and plot the results in real-time
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/nakabonne/ali
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = ali-bin
 	provides = ali
 	conflicts = ali
 	conflicts = ali-git
-	source_x86_64 = https://github.com/nakabonne/ali/releases/download/v0.5.1/ali_0.5.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 0e6330cc5eaf0be2b90fa2faddffa7ccc31c5b9a6004762d4a7f6b27ca118fad
+	source_x86_64 = https://github.com/nakabonne/ali/releases/download/v0.5.2/ali_0.5.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = c73132d52c9e6189ecc4c6ad2a641459c2e717710ab347d9093a3ec85ce93c92
 
 pkgname = ali-bin
 
