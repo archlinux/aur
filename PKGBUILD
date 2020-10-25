@@ -20,7 +20,7 @@ source=(
   "${pkgname}.desktop"
   "warning-fix.patch"
   "remove-analytics.patch"
-  "electron_5_fix.patch"
+  "latest_electron_compatibility.patch"
   )
 
 sha512sums=('eeb37f835bc74f7022f5f7cdf55513541f1aafd9b0d055ce84072b05d35645d8de544349e52a6243a0ff739de6e565aeec04bd9306584da9aa5f1bbc0a8755f2'
@@ -28,14 +28,14 @@ sha512sums=('eeb37f835bc74f7022f5f7cdf55513541f1aafd9b0d055ce84072b05d35645d8de5
             '18bcda13580da8ceeaa86793a77ec00a053b8fd51451dad7e2b1a19553fe1a467ac647b44b789212e783f3f6a80968cc9404e884ef7ff6b1f6588473b3229d40'
             'a52e5631867e2c5f18465dee6a3201b9b5c546bda373205c4891c9f7b6114599e0854e2b49defb55ee7bea0778a7fde9c9d9f7271dceeeece743a2d72e2fd0c6'
             'aa25e326f7bddb0855f4d38c3105a6347e69b780ab86e18612c80fe4b004a7adb83aee8daf7f75f4806411164676235b83968037f017ae6def6b7d8183984674'
-            'ad745b9643e9a677a2a3840c02c8dad7af33e35007141dbc33ff8f7c084b66bd1a794ef44340925fc9d6d77065f41709be56cc8ac55a978e7dc7d520cf8777bf')
+            'c178e46a51e11285087b0859e95f352cf167aa578134f9d19fefe867579ec8add95a2b24ff75e226d2ad9ab9fa960ce3f00e625d53997307e0c0df213eb26b35')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
   patch -Np1 -i "${srcdir}/warning-fix.patch"
   patch -Np1 -i "${srcdir}/remove-analytics.patch"
-  patch -Np1 -i "${srcdir}/electron_5_fix.patch"
+  patch -Np1 -i "${srcdir}/latest_electron_compatibility.patch"
 }
 
 build() {

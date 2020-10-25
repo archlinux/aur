@@ -1,0 +1,29 @@
+diff --color -ura a/browser/main/lib/dataApi/formatPDF.js b/browser/main/lib/dataApi/formatPDF.js
+--- a/browser/main/lib/dataApi/formatPDF.js	2020-09-04 16:47:01.000000000 +0200
++++ b/browser/main/lib/dataApi/formatPDF.js	2020-10-25 10:29:34.265677941 +0100
+@@ -5,7 +5,7 @@
+   return function(note, targetPath, exportTasks) {
+     const printout = new remote.BrowserWindow({
+       show: false,
+-      webPreferences: { webSecurity: false, javascript: false }
++      webPreferences: { webSecurity: false, javascript: false, enableRemoteModule: true }
+     })
+ 
+     printout.loadURL(
+Alleen in b: compiled
+diff --color -ura a/lib/main-window.js b/lib/main-window.js
+--- a/lib/main-window.js	2020-09-04 16:47:01.000000000 +0200
++++ b/lib/main-window.js	2020-10-25 10:40:39.929617534 +0100
+@@ -50,7 +50,11 @@
+   minHeight: 320,
+   webPreferences: {
+     zoomFactor: 1.0,
+-    enableBlinkFeatures: 'OverlayScrollbars'
++    enableBlinkFeatures: 'OverlayScrollbars',
++    contextIsolation: false,
++    nodeIntegration: true,
++    webviewTag: true,
++    enableRemoteModule: true
+   },
+   icon: path.resolve(__dirname, '../resources/app.png')
+ })
