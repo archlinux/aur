@@ -1,7 +1,7 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='typewriter'
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Minimal writer with autosave'
 arch=('x86_64')
@@ -10,16 +10,16 @@ license=('GPL3')
 depends=('granite' 'gtksourceview3')
 makedepends=('meson' 'vala')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('ae3d8827d04dad083cf9bd3109353fcf9a03fb90afc3e8cd71f18a8824282e9f')
+sha256sums=('32749d2441bc54a441ee4eba2a9cf77ee30ef19dcb6ba49400f11450926b8807')
 
 build() {
-  arch-meson "${pkgname}-${pkgver}" build
-  meson compile -C build
+  arch-meson "${pkgname}-${pkgver}" 'build'
+  meson compile -C 'build'
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${pkgname}-${pkgver}/README.md"
+  DESTDIR="${pkgdir}" meson install -C 'build'
+  install -Dvm644 "${pkgname}-${pkgver}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
