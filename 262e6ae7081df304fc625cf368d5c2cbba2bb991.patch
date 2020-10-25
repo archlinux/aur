@@ -1,0 +1,81 @@
+From 262e6ae7081df304fc625cf368d5c2cbba2bb991 Mon Sep 17 00:00:00 2001
+From: Christoph Hellwig <hch@lst.de>
+Date: Tue, 28 Jul 2020 23:33:33 +0200
+Subject: [PATCH] modules: inherit TAINT_PROPRIETARY_MODULE
+
+If a TAINT_PROPRIETARY_MODULE exports symbol, inherit the taint flag
+for all modules importing these symbols, and don't allow loading
+symbols from TAINT_PROPRIETARY_MODULE modules if the module previously
+imported gplonly symbols.  Add a anti-circumvention devices so people
+don't accidentally get themselves into trouble this way.
+
+Comment from Greg:
+  "Ah, the proven-to-be-illegal "GPL Condom" defense :)"
+
+[jeyu: pr_info -> pr_err and pr_warn as per discussion]
+Link: http://lore.kernel.org/r/20200730162957.GA22469@lst.de
+Acked-by: Daniel Vetter <daniel.vetter@ffwll.ch>
+Reviewed-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Signed-off-by: Christoph Hellwig <hch@lst.de>
+Signed-off-by: Jessica Yu <jeyu@kernel.org>
+---
+ include/linux/module.h |  1 +
+ kernel/module.c        | 26 ++++++++++++++++++++++++++
+ 2 files changed, 27 insertions(+)
+
+diff --git a/include/linux/module.h b/include/linux/module.h
+index 30b0f5fcdb3c3..e30ed5fa33a73 100644
+--- a/include/linux/module.h
++++ b/include/linux/module.h
+@@ -389,6 +389,7 @@ struct module {
+ 	unsigned int num_gpl_syms;
+ 	const struct kernel_symbol *gpl_syms;
+ 	const s32 *gpl_crcs;
++	bool using_gplonly_symbols;
+ 
+ #ifdef CONFIG_UNUSED_SYMBOLS
+ 	/* unused exported symbols. */
+diff --git a/kernel/module.c b/kernel/module.c
+index 656f5ff27088f..09bf5a652a47c 100644
+--- a/kernel/module.c
++++ b/kernel/module.c
+@@ -1431,6 +1431,24 @@ static int verify_namespace_is_imported(const struct load_info *info,
+ 	return 0;
+ }
+ 
++static bool inherit_taint(struct module *mod, struct module *owner)
++{
++	if (!owner || !test_bit(TAINT_PROPRIETARY_MODULE, &owner->taints))
++		return true;
++
++	if (mod->using_gplonly_symbols) {
++		pr_err("%s: module using GPL-only symbols uses symbols from proprietary module %s.\n",
++			mod->name, owner->name);
++		return false;
++	}
++
++	if (!test_bit(TAINT_PROPRIETARY_MODULE, &mod->taints)) {
++		pr_warn("%s: module uses symbols from proprietary module %s, inheriting taint.\n",
++			mod->name, owner->name);
++		set_bit(TAINT_PROPRIETARY_MODULE, &mod->taints);
++	}
++	return true;
++}
+ 
+ /* Resolve a symbol for this module.  I.e. if we find one, record usage. */
+ static const struct kernel_symbol *resolve_symbol(struct module *mod,
+@@ -1456,6 +1474,14 @@ static const struct kernel_symbol *resolve_symbol(struct module *mod,
+ 	if (!sym)
+ 		goto unlock;
+ 
++	if (license == GPL_ONLY)
++		mod->using_gplonly_symbols = true;
++
++	if (!inherit_taint(mod, owner)) {
++		sym = NULL;
++		goto getname;
++	}
++
+ 	if (!check_version(info, name, mod, crc)) {
+ 		sym = ERR_PTR(-EINVAL);
+ 		goto getname;

@@ -1,0 +1,25 @@
+From c6e352a26de8e46f5737fed2b876516df82adad1 Mon Sep 17 00:00:00 2001
+From: Alfred Chen <cchalpha@gmail.com>
+Date: Tue, 20 Oct 2020 07:10:30 +0800
+Subject: [PATCH] sched/alt: Fix compilation when NR_CPUS > 64
+
+---
+ kernel/sched/alt_core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kernel/sched/alt_core.c b/kernel/sched/alt_core.c
+index fa0ba0d55503..edba089affc0 100644
+--- a/kernel/sched/alt_core.c
++++ b/kernel/sched/alt_core.c
+@@ -153,7 +153,7 @@ static inline unsigned int sched_best_cpu(const unsigned int cpu,
+ 	while (!cpumask_and(&t, chk, m))
+ 		chk++;
+ 
+-	return cpumask_any(t);
++	return cpumask_any(&t);
+ }
+ #endif
+ 
+-- 
+GitLab
+

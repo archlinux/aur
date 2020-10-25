@@ -56,18 +56,19 @@ _BATCH_MODE=n # enable batch mode
 ##
 
 _major=5
-_minor=8
+_minor=9
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_unpatched_sublevel=12
-_pfrel=6
+_unpatched_sublevel=1
+_pfrel=2
 _kernelname=pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
-_pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
-_projectcpatchname=prjc_v5.8-r3.patch
+#_pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
+_pfpatchname="v$_major.$_minor...953f4aa2026dd864374208c3b3f56f4e56da70e0.diff"
+_projectcpatchname=prjc_v5.9-r1.patch
 _CPUSUFFIXES_KBUILD=(
   CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER PSC
   ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
@@ -92,6 +93,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekerne
         "https://gitlab.com/alfredchen/projectc/raw/master/$_major.$_minor/$_projectcpatchname"
         "90-linux.hook"
         "60-linux.hook"
+        '262e6ae7081df304fc625cf368d5c2cbba2bb991.patch'
+        'fix_project_c.patch'
        )
 # 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'     
 
@@ -102,6 +105,10 @@ prepare() {
   msg "Applying pf-kernel patch"
   patch -Np1 < ${srcdir}/${_pfpatchname}
   patch -Np1 < ${srcdir}/${_projectcpatchname}
+
+
+  patch -Np1 -R < ${srcdir}/262e6ae7081df304fc625cf368d5c2cbba2bb991.patch
+  patch -Np1 < ${srcdir}/fix_project_c.patch
   
   if [ "$CARCH" = "x86_64" ]; then
 	  cat "${startdir}/config.x86_64" >| .config
@@ -618,13 +625,15 @@ eval "package_linux-pf${LCPU+-$LCPU}() {
      }"
 
 
-sha256sums=('e7f75186aa0642114af8f19d99559937300ca27acaf7451b36d4f9b0f85cf1f5'
-            '181330a9cf4517abbbe29b93165bc859ad8ca14a43582f4e1d69aae2b5ecc2c9'
-            '8cf6c288c53bdb0adc7638a7a897e0c4f65a29e795bc3aa372ff9cd9e23c38d7'
+sha256sums=('3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06'
+            '36439a90c9d2f860298d90e141f3bf9d897dd8ece9e21cd46508f4ed7b2151bb'
+            '998ee2c0aeb2c2190251a1d18f88939a19f1be3d1ac631b66d484f7e33dd253f'
             'b6aeb6c460f08443ecce4006d8da83c5f01a224ad2123998ae351b5357286bcd'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '4dcdf320d5cb9862ba670ff10d801c296e5dc0e2145d461e9f44f45f80b15d6e'
-            'f5dbff4833a2e3ca94c202e5197894d5f1006c689ff149355353e77d2e17c943'
+            '3b93ee5f09832b2e701ca4c9ca47e07867d68304eed6ff05e12320a442720870'
+            'a18dee6e4eeb677adef61b4e695cbb800a9aa88e3f6673a6dcfef8a840dee0cc'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
+            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
+            '7908288d8549489d8ac1f7e523cb986c41c8306dbe4946cca890c6fc7c2d260b'
+            '7cc22759cb74e884b2dcd603d760adb451fd1f2e5d24d472c32811b254566b7a')
 # vim:set ts=2 sw=2 tw=0 et:
