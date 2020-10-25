@@ -1,9 +1,11 @@
+# Mantainer: Fabrizio Pietrucci <bamlessnty5@gmail.com>
+
 pkgname=jstar
 pkgver=1.2.4
 pkgrel=1
 pkgdesc="A Lightweight Embeddable Scripting Language"
 arch=('i686' 'x86_64')
-url="https://jstar-lang.github.io/docs/"
+url="https://github.com/jstar-lang/jstar"
 license=('MIT')
 makedepends=('cmake>=3.9' 'python>=2.7')
 source=("https://github.com/jstar-lang/jstar/archive/v${pkgver}.tar.gz")
