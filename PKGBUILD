@@ -2,7 +2,7 @@
 
 _pkgname='typewriter'
 pkgname="${_pkgname}-git"
-pkgver=r46.7ad6b18
+pkgver=r56.eacdb73
 pkgrel=1
 pkgdesc='Minimal writer with autosave'
 arch=('x86_64')
@@ -11,6 +11,7 @@ license=('GPL3')
 depends=('granite' 'gtksourceview3')
 makedepends=('git' 'meson' 'vala')
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -20,13 +21,13 @@ pkgver() {
 }
 
 build() {
-  arch-meson "${_pkgname}" build
-  meson compile -C build
+  arch-meson "${_pkgname}" 'build'
+  meson compile -C 'build'
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "${_pkgname}/README.md"
+  DESTDIR="${pkgdir}" meson install -C 'build'
+  install -Dvm644 "${_pkgname}/README.md" -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
