@@ -2,7 +2,7 @@
 
 pkgname=3dslicer-nightly-bin
 _pkgname=3dslicer
-pkgver=4.13.0.r20201020
+pkgver=4.13.0.r20201025
 pkgrel=1
 pkgdesc="A multi-platform, free open source software package for visualization and medical image computing (nightly build)"
 arch=('x86_64')
@@ -20,9 +20,9 @@ source=(
     "${_pkgname}.svg::https://github.com/Slicer/Slicer/raw/master/Resources/3DSlicerLogo-app-icon.svg"
 )
 noextract=("${_pkgname}.tar.gz")
-sha512sums=('cd093df894dd9687bf59e36f21bc770476a813fb3d91ca1a2e1fca5dec3eaa99da9f4fee2d08f7bcaff6293b57ce4ad989fd22f949334eae87c07b5632d1f139'
+sha512sums=('d4e20fadbff3ade3eb7cd7b6f3ae5f945ae471cd85f0d6b6ae6283a49c154561dbb06fa92749d1be9fbbd6aa1df6b2185cafc5285c1b3b110c763442405cdb52'
             'c23104efcbec3d49b5c26ad5514ed74316423db4aa9e6c7894f02f7ddbe509b577de358dfdd2f7c492963f312b7c146f03d5e41a89ab1298811894dc18746225')
-options=('!strip')
+options=('!strip' '!emptydirs')
 
 prepare() {
 # manually extract tarball due to their unpredicted name
