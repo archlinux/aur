@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=8.7.72
+pkgver=8.8.166
 pkgrel=1
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -22,16 +22,14 @@ source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot
         "v8.pc"
         "v8_libbase.pc"
         "v8_libplatform.pc"
-        "d8"
-        "unknown_option.diff")
+        "d8")
 sha256sums=('SKIP'
             '3616bcfb15af7cd5a39bc0f223b2a52f15883a4bc8cfcfb291837c7421363d75'
             'efb37bd706e6535abfa20c77bb16597253391619dae275627312d00ee7332fa3'
             'ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb'
-            '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0'
-            '4e8135a5cc22f84f18fd91a323b6aefb05220052bf4cc4dae6e3a37ebe1ba0d0')
+            '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0')
 
-OUTFLD=out.gn/Release
+OUTFLD=x86.release
 
 prepare() {
 
@@ -61,31 +59,30 @@ prepare() {
   msg2 "Using system libraries for ICU"
   $srcdir/v8/build/linux/unbundle/replace_gn_files.py --system-libraries icu
 
-  # msg2 "patch compiler options"
-  # patch -p2 < ../unknown_option.diff
-
+  # provide pkgconfig files
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8.pc"
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8_libbase.pc"
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8_libplatform.pc"
   
   msg2 "Running GN..."
-  $srcdir/depot_tools/gn gen $OUTFLD \
+  gn gen $OUTFLD \
     -vv --fail-on-unused-args \
-    --args='clang_base_path="/usr/"
-    is_clang=false
-    is_asan=false
-    use_gold=false
-    clang_use_chrome_plugins=false
-    is_component_build=true
-    is_debug=false
-    is_official_build=false
-    treat_warnings_as_errors=false
-    v8_enable_i18n_support=true
-    v8_use_external_startup_data=false
-    v8_enable_reverse_jsargs=false
-    use_custom_libcxx=false
-    use_sysroot=false'
+    --args='is_clang=false
+            is_asan=false
+            use_gold=false
+            is_component_build=true
+            is_debug=false
+            is_official_build=false
+            treat_warnings_as_errors=false
+            v8_enable_i18n_support=true
+            v8_use_external_startup_data=false
+            use_custom_libcxx=false
+            use_sysroot=false'
 
+  # Fixes bug in generate_shim_headers.py that fails to create these dirs
+  msg2 "Adding icu missing folders"
+  mkdir -p "$OUTFLD/gen/shim_headers/icuuc_shim/third_party/icu/source/common/unicode/"
+  mkdir -p "$OUTFLD/gen/shim_headers/icui18n_shim/third_party/icu/source/i18n/unicode/"
 }
 
 build() {
@@ -93,11 +90,6 @@ build() {
   export GYP_GENERATORS=ninja
 
   cd $srcdir/v8
-  
-  # Fixes bug in generate_shim_headers.py that fails to create these dirs
-  msg2 "Adding icu missing folders"
-  mkdir -p "$OUTFLD/gen/shim_headers/icuuc_shim/third_party/icu/source/common/unicode/"
-  mkdir -p "$OUTFLD/gen/shim_headers/icui18n_shim/third_party/icu/source/i18n/unicode/"
 
   msg2 "Building, this will take a while..."
   ninja -C $OUTFLD
@@ -108,9 +100,8 @@ check() {
 
   msg2 "Testing, this will also take a while..."
   python2  tools/run-tests.py --no-presubmit \
-                              --outdir=out.gn \
-                              --arch="x64" \
-                              --mode=Release || true
+                              --outdir=$OUTFLD \
+                              --arch="x64" || true
 }
 
 package() {
