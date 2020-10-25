@@ -3,12 +3,12 @@
 # Contributor: leuko
 # Contributor: calvertdw
 pkgname=ros2-arch-deps
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc="Dependencies for building ROS2 on Arch"
 url="https://index.ros.org/doc/ros2/"
 arch=('any')
-license=('BSD')
+license=('none')
 
 depends=('asio'
          'bullet'
@@ -31,7 +31,6 @@ depends=('asio'
          'python-nose'
          'python-notify2'
          'python-numpy'
-         'python-pydot'
          'python-pyqt5'
          'python-pytest-repeat'
          'python-setuptools'
@@ -71,6 +70,9 @@ depends=('asio'
          'python-rospkg'
          'python-rosdistro'
          'python-rosdep')
+optdepends=('python-pydot: running the node graph in rqt'
+            'python-pyqtgraph: for plotting in rqt'
+            'python-matploblib: for plotting in rqt')
 
 md5sums=()
 
