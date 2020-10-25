@@ -8,7 +8,7 @@ pkgdesc="Adds two-step verification (TOTP) to the Roundcube login process"
 url="https://github.com/alexandregz/twofactor_gauthenticator"
 arch=('any')
 license=('MIT')
-#depends=('roundcubemail>=0.9.5')
+depends=('roundcubemail>=0.9.5')
 makedepends=('git')
 replaces=('roundcube-twofactor-git')
 install=${pkgname}.install

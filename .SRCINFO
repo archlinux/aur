@@ -7,6 +7,7 @@ pkgbase = roundcubemail-plugin-twofactor-git
 	arch = any
 	license = MIT
 	makedepends = git
+	depends = roundcubemail>=0.9.5
 	replaces = roundcube-twofactor-git
 	source = roundcubemail-plugin-twofactor-git::git+https://github.com/alexandregz/twofactor_gauthenticator.git
 	sha512sums = SKIP
