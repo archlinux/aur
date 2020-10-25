@@ -1,4 +1,5 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
+# Contributor: reujab <reujab@gmail.com>
 # https://github.com/orhun/pkgbuilds
 
 pkgname=silver-git
