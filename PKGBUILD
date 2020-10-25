@@ -11,7 +11,7 @@ md5sums=(
 )
 pkgdesc="Semantic, procedural, non-destructive vector modelling"
 pkgname=ommpfritt-git
-pkgrel=1
+pkgrel=2
 pkgver=0.1.3.r568.g62a6fe81
 provides=('ommpfritt')
 source=(
