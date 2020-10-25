@@ -14,7 +14,7 @@ pkgname=(
 epoch=1
 pkgver="1.11.4"
 _pkgver=${pkgver/\~/-}
-pkgrel=1
+pkgrel=3
 pkgdesc="Lightweight virtual machines for containers (binary version)"
 arch=(x86_64)
 url="https://katacontainers.io"
@@ -28,11 +28,11 @@ if [ "${_bin_pkg_root}" = "/opt/kata" ]; then
   sha512sums=(a201f14d4e88307a8959b158aeaa2789906a913c0463aa60a6124befcb5f6e6c9b107c6cd30e0f3392901c6727972083b9261ec1b4d2d4755c58fa6c6106eca9)
   b2sums=(7bd43eb6facb6012b9c02613588683bea6fe8b3e1cbeb828bdabb7df815acd7c6c6cd9dc85ccc8956d1c304c342a33b356706947f4801c28b3f035b1403d2936)
 else
-  _kata_kernel_ver="5.4.32.75"
-  _default_suffix="-7.1"  # f30 package build revision
+  _kata_kernel_ver="5.4.32.76"
+  _default_suffix="-8.1"  # f30 package build revision
   #_image_suffix="-6.1"
   #_ksm_suffix="-6.1"
-  #_kernel_suffix="-6.1"
+  _kernel_suffix="-9.1"
   #_proxy_suffix="-6.1"
   #_runtime_suffix="-6.1"
   #_shim_suffix="-6.1"
@@ -74,13 +74,15 @@ package_kata-runtime-bin() {
   provides=('kata-runtime')
   install=kata-runtime.install
 
-  install -D -m 0755 -t ${pkgdir}/usr/bin ${srcdir}${_bin_pkg_root}/bin/{containerd-shim-kata-v2,kata-runtime,kata-collect-data.sh}
-  install -D -m 0755 {${srcdir}${_bin_pkg_root}/libexec,${pkgdir}/usr/lib}/kata-containers/kata-netmon
-  install -D -m 0644 {${srcdir}${_bin_pkg_root},${pkgdir}/usr}/share/bash-completion/completions/kata-runtime
+  install -D -m 0755 -t ${pkgdir}/usr/bin \
+    ${srcdir}${_bin_pkg_root}/bin/containerd-shim-kata-v2 \
+    ${srcdir}${_bin_pkg_root}/bin/kata-runtime \
+    ${srcdir}${_bin_pkg_root}/bin/kata-collect-data.sh
+  install -D -m 0755 ${srcdir}${_bin_pkg_root}/libexec/kata-containers/kata-netmon ${pkgdir}/usr/lib/kata-containers/kata-netmon
+  install -D -m 0644 ${srcdir}${_bin_pkg_root}/share/bash-completion/completions/kata-runtime ${pkgdir}/usr/share/bash-completion/completions/kata-runtime
   install -D -m 0644 -t ${pkgdir}/usr/share/defaults/kata-containers ${srcdir}${_bin_pkg_root}/share/defaults/kata-containers/*.toml
 
-  sed -i 's/libexec/lib/' ${pkgdir}/usr/share/defaults/kata-containers/*.toml ${pkgdir}/usr/bin/kata-collect-data.sh
-  sed -i -e 's/qemu-lite/qemu/' -e 's/qemu-vanilla/qemu/' ${pkgdir}/usr/share/defaults/kata-containers/configuration.toml ${pkgdir}/usr/bin/kata-collect-data.sh
+  sed -i -e "s;${_bin_pkg_root};/usr;" -e 's/libexec/lib/' -e 's/kata-qemu/qemu/' -e 's/qemu-lite/qemu/' -e 's/qemu-vanilla/qemu/' ${pkgdir}/usr/share/defaults/kata-containers/*.toml ${pkgdir}/usr/bin/kata-collect-data.sh
 }
 
 package_kata-proxy-bin() {
