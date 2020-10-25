@@ -2,7 +2,7 @@
 
 _pkgname=LanguageClient-neovim
 pkgname=languageclient-neovim-bin
-pkgver=0.1.159
+pkgver=0.1.160
 pkgrel=1
 pkgdesc="Language Server Protocol (LSP) support for Vim and NeoVim."
 url="https://github.com/autozimu/LanguageClient-neovim"
@@ -11,8 +11,8 @@ license=('MIT')
 arch=('x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${url}/releases/download/${pkgver}/${pkgname%-neovim-bin}-${pkgver}-x86_64-unknown-linux-musl")
-sha256sums=('f972c356d899e763dafc5d0efa15afaee5d58af1d27496ea594b70f713d7b4f6'
-            '88547197d6a122825c87e0ece7c82c51cba40806586b796fac3cc5b779a3639f')
+sha256sums=('2f2e09ae19d750d3b35c5632369383b53f6cdd09c5238598a7c76bca94bc0150'
+            '372bd36f4a2d4aabecaadd366d6252b6464f25cc617feeca6f76fe4c7f4dda10')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
