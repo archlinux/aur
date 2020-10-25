@@ -2,9 +2,9 @@
 
 arch=('i686' 'x86_64')
 conflicts=('ommpfritt')
-depends=('lib2geom-git' 'poppler-qt5' 'pybind11' 'python3' 'qt5-base' 'qt5-imageformats' 'qt5-svg' 'qt5-tools' 'qt5-translations')
+depends=('kitemmodels' 'lib2geom-git' 'poppler-qt5' 'python' 'qt5-base' 'qt5-svg')
 license=('GPL3')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'pybind11' 'qt5-imageformats' 'qt5-tools' 'qt5-translations')
 md5sums=(
   '39e4dba5aa7eff71507a96c49457edcc'
   'SKIP'
