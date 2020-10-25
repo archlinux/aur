@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=DatCom Jitsi Meet
+Exec=/usr/share/jitsi-meet-electron/datcom-meet
+Icon=jitsi-meet-electron
+Categories=Network;AudioVideo;
+Terminal=false
+Type=Application
