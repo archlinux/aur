@@ -1,0 +1,13 @@
+[Unit]
+Description=Allow/deny traffic in nftables using country specific IP blocks
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=-/etc/conf.d/nft-geo-filter
+ExecStart=/usr/bin/nft-geo-filter --counter \
+                                  --table-family netdev \
+                                  --interface $INTERFACE \
+                                  --table-name $TABLE_NAME \
+                                  $BLOCKED_COUNTRIES

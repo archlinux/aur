@@ -1,0 +1,24 @@
+pkgbase = nft-geo-filter
+	pkgdesc = Allow/deny traffic in nftables using country specific IP blocks
+	pkgver = v3.0.r39.76e1603
+	pkgrel = 1
+	url = https://github.com/rpthms/nft-geo-filter
+	arch = any
+	license = custom
+	makedepends = git
+	depends = nftables
+	depends = python
+	provides = nft-geo-filter
+	conflicts = nft-geo-filter
+	backup = etc/conf.d/nft-geo-filter
+	source = git+https://github.com/rpthms/nft-geo-filter.git
+	source = nft-geo-filter.conf
+	source = nft-geo-filter.service
+	source = nft-geo-filter.timer
+	md5sums = SKIP
+	md5sums = e06e047f9340ea61d0bb95d50d797a8a
+	md5sums = 02ce6d873f449a01643f932c45c64c0d
+	md5sums = dc9fe74b90cf2022213f01a17dc99d88
+
+pkgname = nft-geo-filter
+

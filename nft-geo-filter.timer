@@ -1,0 +1,10 @@
+[Unit]
+Description=Run nft-geo-filter daily and on boot
+
+[Timer]
+OnBootSec=30s
+OnCalendar=daily
+RandomizedDelaySec=30s
+
+[Install]
+WantedBy=timers.target
