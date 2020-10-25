@@ -19,7 +19,7 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git')
-pkgver=11.0.0_r356576.615673f3a10
+pkgver=12.0.0_r369979.3052e474eceb
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
