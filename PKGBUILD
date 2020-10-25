@@ -1,7 +1,7 @@
 # Maintainer: Marek Darocha <aur@mdarocha.pl>
 pkgname=elm-language-server
 pkgver=1.13.1
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Language server for Elm Language, utilizing the Language Server Protocol"
 arch=('any')
