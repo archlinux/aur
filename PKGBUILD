@@ -2,10 +2,10 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname='pop-session-bin'
-pkgver='4.0.6'
-pkgrel=2
-_timestamp=1589393668
-_commit=bf50dee
+pkgver='5.0.0'
+pkgrel=1
+_timestamp=1603315847
+_commit=7120e32
 pkgdesc='System76 Pop Session'
 arch=('x86_64')
 url='https://github.com/pop-os/session'
@@ -14,8 +14,8 @@ conflicts=('pop-session')
 provides=('pop-session')
 depends=("gnome-shell")
 
-source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-session/pop-session_${pkgver}~${_timestamp}~20.04~${_commit}_all.deb")
-sha256sums=('f2c1f6882ffdbb7dd2dc8abd8ead2002364d78341ab9da615c22144b411f7bee')
+source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-session/pop-session_${pkgver}~${_timestamp}~20.10~${_commit}_all.deb")
+sha256sums=('1672bde4b041d190e9d4c1afe4a96e60a5d8652a75eead0532c50ae3375997e6')
 
 package() {
   cd "${srcdir}"
