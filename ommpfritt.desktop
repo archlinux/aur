@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Graphics;2DGraphics;VectorGraphics
+Comment=Semantic, procedural, non-destructive vector modelling
+Exec=ommpfritt %f
+Icon=ommpfritt
+Name=ommpfritt
+Terminal=false
+Type=Application
