@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=XMinesweeper
+Comment=A minesweeper game for the X Window System
+Terminal=false
+Categories=Game;
+Exec=xdemineur
+Icon=xdemineur
