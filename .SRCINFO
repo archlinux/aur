@@ -11,7 +11,9 @@ pkgbase = impostor-server-bin
 	conflicts = impostor-server
 	options = !strip
 	source = https://github.com/Impostor/Impostor/releases/download/v1.1.0/Impostor-Server-linux-x64.zip
+	source = impostor.service
 	sha512sums = f05213362fd5415608e6cebfd01250ebbb2bba320561d77c9bd20cb91e41c112faa3b8db2d4ecc3afccf2c2b28553516bc53a05c07218603200f2835e6b5f2b6
+	sha512sums = 0b6fb15b0f6fbd9fdd1407e47a22fe71dce5fb31d9021142b3e1b0c5689252fab7300081a65e4b4221c1ac9803f2dadb03994eece608c917d58481d1a7fb8b9f
 
 pkgname = impostor-server-bin
 
