@@ -33,8 +33,8 @@ prepare() {
     SRC="$srcdir/${_pkgname}-$pkgver"
     cd $SRC
     # set global configuration files to /etc/[g]vimrc
-    sed -i 's|^.*\(#define SYS_.*VIMRC_FILE.*"\) .*$|\1|' src/feature.h
-    sed -i 's|^.*\(#define VIMRC_FILE.*"\) .*$|\1|' src/feature.h
+    sed -E -i 's|^.*(#define SYS_.*VIMRC_FILE.*").*$|\1|g' src/feature.h
+    sed -E -i 's|^.*(#define VIMRC_FILE.*").*$|\1|g' src/feature.h
     cd src
     autoconf
     cd ..
