@@ -3,8 +3,8 @@
 # Contributor: hdhoang <arch@hdhoang.space>
 
 pkgname=nginx-mainline-mod-fancyindex
-pkgver=0.4.4
-pkgrel=3
+pkgver=0.5.0
+pkgrel=1
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.19.3
 pkgdesc="Fancy indexes module for the nginx web server"
@@ -17,10 +17,10 @@ source=(https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
 sha256sums=('91e5b74fa17879d2463294e93ad8f6ffc066696ae32ad0478ffe15ba0e9e8df0'
             'SKIP'
-            '34e2bf332b9fa930914220c0187ca18d6f7a6abb88b81fdc9eb4779a1584f83a')
+            '4187ab26117f0886a971ae04705f0a60e33949ba2f85a4772179e9f29c6e7e91')
 
 build() {
-  cd "$srcdir/nginx-$_nginxver"
+  cd "nginx-$_nginxver"
   _opts=$(nginx -V 2>&1 | grep 'configure arguments' | sed -r 's/^[^:]+: //')
   IFS=$'\n' _opts=( $(xargs -n1 <<< "$_opts") )
   ./configure "${_opts[@]}" \
@@ -28,8 +28,8 @@ build() {
   make modules
 }
 
-package() {  
-  cd ""$srcdir/nginx-"$_nginxver/objs"
+package() {
+  cd "nginx-$_nginxver/objs"
   for _mod in *.so; do
 	install -D $_mod "$pkgdir/usr/lib/nginx/modules/$_mod"
   done
