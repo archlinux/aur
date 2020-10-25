@@ -1,13 +1,12 @@
 pkgbase = libftd2xx
 	pkgdesc = Library that allows a direct access to a USB FTDI2XX chip based device
 	pkgver = 1.4.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ftdichip.com/
 	arch = i686
 	arch = x86_64
 	license = Proprietary
 	depends = glibc
-	depends = libusbx>=1.0.8
 	source = 55-ft2232.rules
 	sha384sums = 470dd4b34d9f62fa2e6d739804751fe2b635b84ef29312c02d20c572bc371c5f6369cd3bda739fc6987fd886766cd0fd
 	source_i686 = http://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-i386-1.4.8.tgz

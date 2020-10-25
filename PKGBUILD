@@ -2,14 +2,15 @@
 # Maintainer: Chris <alostengineer at narmos org>
 # Contributor: Olivier EBLE <olivier.eble at gmail com>
 # Contributor: Laszlo Papp <djszapi2 at gmail com>
+# Contributor: Justin Gottula <justin at jgottula com>
 pkgname=libftd2xx
 pkgver=1.4.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Library that allows a direct access to a USB FTDI2XX chip based device"
 arch=('i686' 'x86_64')
 url="http://www.ftdichip.com/"
 license=('Proprietary')
-depends=('glibc' 'libusbx>=1.0.8')
+depends=('glibc')
 
 source=(
 	55-ft2232.rules
