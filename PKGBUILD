@@ -4,7 +4,7 @@
 pkgname=passwall-desktop-git
 _pkgname=passwall
 pkgdesc="Desktop client of the PassWall platform (git)"
-pkgver=0.1.3.r79.g9e1a8dc
+pkgver=1.0.0.r0.g9eb0139
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/passwall/passwall-desktop"
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags $(git rev-list --tags --max-count=1) | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
