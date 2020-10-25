@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=12.0.0_r369828.e6c4d880fa8c
+pkgver=12.0.0_r369979.3052e474eceb
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -56,13 +56,6 @@ pkgver() {
     echo "$_pkgver"
 }
 
-prepare() {
-    cd llvm-project
-    # llvm-project contains a lot of stuff, remove parts that aren't used by this package
-    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind llgo openmp parallel-libs pstl libc mlir flang lld
-    
-}
-
 build() {
     
     export CFLAGS+=" ${CPPFLAGS}"
@@ -74,7 +67,6 @@ build() {
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX=/usr \
         -D LLVM_BINUTILS_INCDIR=/usr/include \
-        -D PYTHON_EXECUTABLE=/usr/bin/python \
         -D LLVM_APPEND_VC_REV=ON \
         -D LLVM_VERSION_SUFFIX="" \
         -D LLVM_HOST_TRIPLE=$CHOST \
@@ -91,7 +83,7 @@ build() {
         -D SPHINX_WARNINGS_AS_ERRORS=OFF \
         -D POLLY_ENABLE_GPGPU_CODEGEN=ON \
         -D LLDB_USE_SYSTEM_SIX=1 \
-        -D LLVM_ENABLE_PROJECTS="polly;lldb;compiler-rt;clang-tools-extra;clang"
+        -D LLVM_ENABLE_PROJECTS="polly;lldb;lld;compiler-rt;clang-tools-extra;clang"
 
     ninja -C _build $NINJAFLAGS
     ninja -C _build $NINJAFLAGS ocaml_doc
@@ -103,6 +95,7 @@ check() {
     ninja -C _build $NINJAFLAGS check-clang
     ninja -C _build $NINJAFLAGS check-clang-tools
     ninja -C _build $NINJAFLAGS check-polly
+    ninja -C _build $NINJAFLAGS check-lld
     ninja -C _build $NINJAFLAGS check-lldb
 }
 
@@ -113,12 +106,10 @@ package_llvm-git() {
                            'python-setuptools: for using lit = LLVM Integrated Tester'
     )
     # yes, I know polly is not in official repos. It just feels cleaner to list it
-    provides=(aur-llvm-git
-                        compiler-rt-git clang-git lldb-git polly-git
-                        compiler-rt clang lldb polly
-    )
+    provides=(aur-llvm-git compiler-rt-git clang-git lldb-git lld-git polly-git
+                        compiler-rt clang lldb polly lld )
     # A package always provides itself, so there's no need to provide llvm-git
-    conflicts=('llvm' 'compiler-rt' 'clang' 'lldb' 'polly')
+    conflicts=('llvm' 'compiler-rt' 'clang' 'lldb' 'polly' 'lld')
     
    DESTDIR="$pkgdir" ninja -C _build $NINJAFLAGS install
 
@@ -164,6 +155,7 @@ package_llvm-git() {
     install -Dm644 clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-LICENSE
     install -Dm644 clang-tools-extra/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-tools-extra-LICENSE
     install -Dm644 compiler-rt/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/compiler-rt-LICENSE
+    install -Dm644 lld/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lld-LICENSE
     install -Dm644 lldb/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lldb-LICENSE
     install -Dm644 polly/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/polly-LICENSE
 }
@@ -185,6 +177,7 @@ package_llvm-libs-git() {
     install -Dm644 clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-LICENSE
     install -Dm644 clang-tools-extra/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-tools-extra-LICENSE
     install -Dm644 compiler-rt/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/compiler-rt-LICENSE
+    install -Dm644 lld/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lld-LICENSE
     install -Dm644 lldb/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lldb-LICENSE
     install -Dm644 polly/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/polly-LICENSE
 }

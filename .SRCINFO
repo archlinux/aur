@@ -1,5 +1,5 @@
 pkgbase = llvm-git
-	pkgver = 12.0.0_r369828.e6c4d880fa8c
+	pkgver = 12.0.0_r369979.3052e474eceb
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = llvm-git
 
 pkgname = llvm-git
 	pkgdesc = LLVM development version. includes clang and many other tools
-	depends = llvm-libs-git=12.0.0_r369828.e6c4d880fa8c-1
+	depends = llvm-libs-git=12.0.0_r369979.3052e474eceb-1
 	depends = perl
 	optdepends = python: for scripts
 	optdepends = python-setuptools: for using lit = LLVM Integrated Tester
@@ -43,16 +43,19 @@ pkgname = llvm-git
 	provides = compiler-rt-git
 	provides = clang-git
 	provides = lldb-git
+	provides = lld-git
 	provides = polly-git
 	provides = compiler-rt
 	provides = clang
 	provides = lldb
 	provides = polly
+	provides = lld
 	conflicts = llvm
 	conflicts = compiler-rt
 	conflicts = clang
 	conflicts = lldb
 	conflicts = polly
+	conflicts = lld
 
 pkgname = llvm-libs-git
 	pkgdesc = runtime libraries for llvm-git
@@ -70,7 +73,7 @@ pkgname = llvm-libs-git
 
 pkgname = llvm-ocaml-git
 	pkgdesc = OCaml bindings for LLVM
-	depends = llvm-git=12.0.0_r369828.e6c4d880fa8c-1
+	depends = llvm-git=12.0.0_r369979.3052e474eceb-1
 	depends = ocaml
 	depends = ocaml-ctypes
 	provides = llvm-ocaml
