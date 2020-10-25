@@ -3,7 +3,7 @@
 
 pkgname=jamulus-headless
 _pkgname=Jamulus
-pkgver=3.5.12
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Internet jam session software (headless server)"
 arch=('x86_64')
@@ -29,6 +29,5 @@ package() {
   install -Dm644 $srcdir/jamulus.service $pkgdir/usr/lib/systemd/system/jamulus.service
 }
 
-sha1sums=('ede1c673c423f637ca316128b8542e064141de85'
+sha1sums=('2df09f63819c40e9dc0102dbbfb37fff109aa1a2'
           'cbe82818b40eba6dc3ee88f98af8ae16ff44137e')
-
