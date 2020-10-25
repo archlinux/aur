@@ -10,7 +10,7 @@ license=(MIT)
 provides=(imgcat)
 conflicts=(imgcat-git imgcat-bin)
 makedepends=(go)
-source=("$url/$_pkgname/archive/v$pkgver.tar.gz")
+source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('d7a8cfff4bf298d578872f0cdb6e30fde280e28edec3939b0553f3b8ee16164f')
 
 prepare() {

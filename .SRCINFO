@@ -13,7 +13,7 @@ pkgbase = imgcat-trashhalo
 	provides = imgcat
 	conflicts = imgcat-git
 	conflicts = imgcat-bin
-	source = https://github.com/trashhalo/imgcat/imgcat/archive/v1.0.2.tar.gz
+	source = https://github.com/trashhalo/imgcat/archive/v1.0.2.tar.gz
 	sha256sums = d7a8cfff4bf298d578872f0cdb6e30fde280e28edec3939b0553f3b8ee16164f
 
 pkgname = imgcat-trashhalo
