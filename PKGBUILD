@@ -21,7 +21,7 @@ optdepends=('zenity: For the GTK3 GUI.'
             'p7zip: For unpacking. If not available, will fall back to wine 7zip.'
             'xdg-utils: For opening manual download pages.'
             'perl: For installing Steam.'
-            'hicolor-icon-theme: Needed for hicolor theme hierarchy')
+            'hicolor-icon-theme: For hicolor theme hierarchy')
 provides=('winetricks-zh')
 conflicts=('winetricks-zh')
 #install=winetricks-zh.install
