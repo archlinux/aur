@@ -1,6 +1,6 @@
 pkgbase = jcloisterzone5
 	pkgdesc = A Java version of the Carcassonne board game.
-	pkgver = 5.0.15
+	pkgver = 5.0.16
 	pkgrel = 1
 	url = http://jcloisterzone.com/en/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = jcloisterzone5
 	depends = nodejs>=12.13.0
 	conflicts = jcloisterzone
 	options = !strip
-	source = https://github.com/farin/JCloisterZone-Client/releases/download/v5.0.15/jcloisterzone-5.0.15.deb
-	sha256sums = 207f0ffa3288f6043c19a98a90ed16dfc440a544dc1b18f68fff3478e645bbd2
+	source = https://github.com/farin/JCloisterZone-Client/releases/download/v5.0.16/jcloisterzone-5.0.16.deb
+	sha256sums = f7a49e9dccb6acdca6eb6acef28a6d210da4a2dd361f15717fac9a7b06d7eb38
 
 pkgname = jcloisterzone5
 
