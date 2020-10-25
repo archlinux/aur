@@ -42,7 +42,7 @@ package() {
   install -d ${pkgdir}/usr/bin
 
   rsync -a dist/${pkgname}-${_platform}-${_arch}/ "${pkgdir}/usr/share/${pkgname}"
-  ln -s ${pkgdir}/usr/share/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+  ln -s /usr/share/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 }
 
 md5sums=('f6b39dd60925c5e712efd9b1b035dce8')
