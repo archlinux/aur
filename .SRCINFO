@@ -1,0 +1,13 @@
+pkgbase = bdt
+	pkgdesc = Herramienta LFS
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/azaeldevel/bdt
+	arch = x86_64
+	license = GPL
+	depends = octetos-core
+	source = https://github.com/azaeldevel/bdt/archive/0.10.0-alpha.tar.gz
+	md5sums = db8d822c1a958f1644468f02258b5bd2
+
+pkgname = bdt
+
