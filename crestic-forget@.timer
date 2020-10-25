@@ -1,5 +1,6 @@
 [Unit]
 Description=Monthly crestic %I forget
+PartOf=crestic-backup@%i.timer
 
 [Timer]
 OnCalendar=monthly

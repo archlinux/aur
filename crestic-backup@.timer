@@ -1,5 +1,6 @@
 [Unit]
 Description=Daily crestic %I backup
+Wants=crestic-forget@%i.timer
 
 [Timer]
 OnCalendar=daily
