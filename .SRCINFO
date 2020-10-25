@@ -13,7 +13,7 @@ pkgbase = open-stage-control
 	provides = open-stage-control
 	conflicts = open-stage-control
 	source = https://github.com/jean-emmanuel/open-stage-control/archive/v1.5.4.tar.gz
-	md5sums = f6b39dd60925c5e712efd9b1b035dce8
+	md5sums = 92dafcf10fe07e1b9047b8ff4fd1a425
 
 pkgname = open-stage-control
 

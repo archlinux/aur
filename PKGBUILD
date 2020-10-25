@@ -45,4 +45,4 @@ package() {
   ln -s /usr/share/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 }
 
-md5sums=('f6b39dd60925c5e712efd9b1b035dce8')
+md5sums=('92dafcf10fe07e1b9047b8ff4fd1a425')
