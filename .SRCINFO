@@ -1,0 +1,16 @@
+pkgbase = agate
+	pkgdesc = Agate is a server for the Gemini network protocol, built with the Rust programming language. Agate has very few features, and can only serve static files.
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/mbrubeck/agate
+	arch = x86_64
+	license = APACHE
+	license = MIT
+	makedepends = cargo
+	source = agate-1.2.2.tar.gz::https://github.com/mbrubeck/agate/archive/v1.2.2.tar.gz
+	source = use-latest-deps.patch
+	sha512sums = 9d4fe7f7d7fd49294ca6878edcfb844a5c2bcf736e1040aa40799bb7957126a9ffcf49315c0a081dced2b1f215ab987c4d3b2fbfafb38dada170b2c318ddbecf
+	sha512sums = 0e1e49ed86f962bc66123572f225c958a8c9d8563d18b236796935f2e900b1c8fedc43b238778214429b3934303969f4eeafdd1b2e7ac3dd0b9eda8b2a8c059e
+
+pkgname = agate
+
