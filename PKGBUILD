@@ -1,12 +1,12 @@
 # Maintainer: Sorah Fukumori <her@sorah.jp>
 pkgname=thanos
-pkgver=0.12.2
+pkgver=0.15.0
 pkgrel=2
 pkgdesc="Highly available Prometheus setup with long term storage capabilities"
 arch=('x86_64')
 url="https://thanos.io/"
 license=('MIT')
-makedepends=('go-pie')
+makedepends=('go-pie' 'git')
 backup=(
   'etc/thanos/compact.conf'
   'etc/thanos/downsample.conf'
@@ -35,16 +35,14 @@ source=(
 
 build() {
   cd "thanos-$pkgver"
-  go build \
-      -trimpath \
-      -ldflags "-extldflags $LDFLAGS" \
-      -o thanos ./cmd/thanos
+  mkdir bin
+  PREFIX=${PWD}/bin make build
 }
 
 package() {
   cd "thanos-$pkgver"
 
-  install -Dm0755 thanos "${pkgdir}/usr/bin/thanos"
+  install -Dm0755 bin/thanos "${pkgdir}/usr/bin/thanos"
   install -D -m0644 "${srcdir}/thanos.sysuser" "${pkgdir}/usr/lib/sysusers.d/thanos.conf"
 
   install -d -m0755 "${pkgdir}/etc/thanos/"
@@ -66,4 +64,4 @@ sha512sums=('8b99500bd2aee6f49993cdce2770e890cec5cbb2c18e104afbf9d95442a1cc01159
             '5f8da17393a10a1b62c0eef3895dae812de88b2cb3a37ef3d5596ecfd30d43f04533a76c4510907de655222c2e2b46f55b0e9a503fc08cfa5daac50b5fb3edf1'
             'd9b6da366d8eca19062471ed4b0c96b7762069e5235953d71aa796ef8fe184ad82acf235fd9bfeaaf62a3f47ba1ef412958d91b5975e18416e3d0127a5338db9'
             '7921e4320877e4783ba40a29869618d53d2a1a8403527b174ad1e5f0115e610e3882d812ba5ae427d5a84dc8c559ff81ce787e3cf38c9004e242f9b8e6347325'
-            '79ce3e5924e013a6243bf7fdf7792914311e930127c94c99aa00f8919bdf257ab2ca67e4fef72e416129154f6bc91b323ea65566fa58d1335ef2e75ff7e818f5')
+            '3c1bc7d797c429356d842e2cb4efdbcbe15ca8a1c54a343f5db9d3734855596ec85b0b80b09b0f3a9a6aa9cfb9683e7188fefad4128b65768d8c298d3afa1e30')
