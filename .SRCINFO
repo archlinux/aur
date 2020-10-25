@@ -1,0 +1,22 @@
+pkgbase = ytdl-dmca-repo
+	pkgdesc = A small command-line program to download videos from YouTube.com and a few more sites (git version)
+	pkgver = 416da574e
+	pkgrel = 1
+	url = http://ytdl-org.github.io/youtube-dl/
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = pandoc
+	depends = python
+	depends = python-setuptools
+	optdepends = ffmpeg: for video post-processing
+	optdepends = rtmpdump: for rtmp streams support
+	optdepends = atomicparsley: for embedding thumbnails into m4a files
+	optdepends = phantomjs: for openload support
+	provides = youtube-dl
+	conflicts = youtube-dl
+	source = youtube-dl::git+https://github.com/github/dmca.git#commit=416da574ec0df3388f652e44f7fe71b1e3a4701f
+	md5sums = SKIP
+
+pkgname = ytdl-dmca-repo
+
