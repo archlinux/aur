@@ -1,13 +1,13 @@
 pkgbase = ttf-iosevka-sparkle
 	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
-	pkgver = 3.7.0
+	pkgver = 3.7.1
 	pkgrel = 1
 	url = https://typeof.net/Iosevka/
 	arch = any
 	license = OFL
-	source = https://github.com/be5invis/Iosevka/releases/download/v3.7.0/ttf-iosevka-sparkle-3.7.0.zip
-	source = ttf-iosevka-sparkle-3.7.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v3.7.0/LICENSE.md
-	sha256sums = 6980f4540feac3f44cfa880d8bd7d9c2d5c19c3a275b8a2c2ca821751c69ac02
+	source = https://github.com/be5invis/Iosevka/releases/download/v3.7.1/ttf-iosevka-sparkle-3.7.1.zip
+	source = ttf-iosevka-sparkle-3.7.1-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v3.7.1/LICENSE.md
+	sha256sums = f15f075b341d4dd6edc2e3a9a15e7bb2c523774011c014b45cad3300d211b419
 	sha256sums = e61c0988bb231a321f14cce1b119a468f279ea86826c32e943ab16dbf08c1ba9
 
 pkgname = ttf-iosevka-sparkle
