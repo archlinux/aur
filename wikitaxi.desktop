@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=WikiTaxi
+Comment=MediaWiki offline reader
+Exec=/usr/bin/wikitaxi
+Icon=wikitaxi
+Terminal=false
+Categories=Education;
