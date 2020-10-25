@@ -1,19 +1,29 @@
-# Maintainer: Bruce Zhang <zttt183525594@gmail.com>
+# Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
+# Contributor: Bruce Zhang <zttt183525594@gmail.com>
+
 pkgname=winetricks-zh-git
-pkgver=r127.02900ad
+pkgver=r235.77e5348
 pkgrel=1
 pkgdesc="Wine Setup Wizard Winetricks Chinese Version"
 arch=('any')
 url="https://github.com/hillwoodroc/winetricks-zh"
 license=('LGPL')
-depends=('wine' 'curl' 'cabextract' 'unrar' 'unzip' 'p7zip')
-makedepends=('git')
+depends=('cabextract')
+makedepends=('git' 'bash' 'wine')
 optdepends=('zenity: For the GTK3 GUI.'
-            'kdebase-kdialog: For the KDE GUI (less capable).'
+            'kdialog: For the KDE GUI (less capable).'
+            'aria2: For downloading. At least one download command should be available.'
+            'wget: For downloading. At least one download command should be available.'
+            'curl: For downloading. At least one download command should be available.'
+            'binutils: For unpacking. If not available, will fall back to wine 7zip.'
+            'unrar: For unpacking. If not available, will fall back to wine 7zip.'
+            'unzip: For unpacking. If not available, will fall back to wine 7zip.'
+            'p7zip: For unpacking. If not available, will fall back to wine 7zip.'
             'sudo: For automatically mounting ISO images.'
             'xdg-utils: For opening manual download pages.'
-            'perl: For installing Steam.')
-install=winetricks-zh.install
+            'perl: For installing Steam.'
+            'hicolor-icon-theme: Needed for hicolor theme hierarchy')
+#install=winetricks-zh.install
 source=("$pkgname::git+https://github.com/hillwoodroc/winetricks-zh.git")
 md5sums=('SKIP')
 
@@ -27,5 +37,7 @@ pkgver() {
 
 package() {
 	cd "$pkgname"
-	find ./ -type f -exec install -Dm755 {} "${pkgdir}/opt/winetricks-zh/{}" \;
+	install -Dm755 winetricks-zh ${pkgdir}/usr/bin/winetricks-zh
+    install -Dm644 icon/winetricks-zh.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/winetricks-zh.svg
+    install -Dm644 winetricks-zh.desktop ${pkgdir}/usr/share/applications/winetricks-zh.desktop
 }
