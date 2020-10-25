@@ -1,0 +1,23 @@
+pkgbase = crown
+	pkgdesc = The Flexible Game Engine
+	pkgver = 0.39.0
+	pkgrel = 1
+	url = https://github.com/dbartolini/crown
+	arch = x86_64
+	license = MIT
+	depends = glib2>=2.48.2
+	depends = gtk3>=3.16
+	depends = libgl
+	depends = libpulse
+	depends = libx11
+	depends = libxrandr
+	replaces = pepper
+	source = https://github.com/dbartolini/crown/releases/download/v0.39.0/crown-0.39.0-linux-x64.tar.gz
+	source = crown.sh
+	source = crown.desktop
+	sha256sums = a9f9674b0df3af56415d25d682e20bcc3f6875052c13f7d751c811fabb87ba89
+	sha256sums = 96f19db60857c1a4db31f1d115ad77b99f6c11aecbab4239f2adcb98cac66d78
+	sha256sums = e8950a977117d524b56c5103126938430d787dbada535c9efaba266666ad3624
+
+pkgname = crown
+
