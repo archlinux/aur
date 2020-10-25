@@ -37,9 +37,9 @@ package() {
 
     # Unzip Compiled project
     cd "${srcdir}/${pkgname}/${pkgname}-cli/build/distributions"
-    unzip -o ${pkgname}-cli-${pkgver}-${pkgrel}-${shorthash}.dirty.zip
+    unzip -o ${pkgname}-cli-${pkgver}-1-${shorthash}.dirty.zip
     rm -rf "${pkgname}/"
-    cp -r "${pkgname}-cli-${pkgver}-${pkgrel}-${shorthash}.dirty/" "${pkgname}/"
+    cp -r "${pkgname}-cli-${pkgver}-1-${shorthash}.dirty/" "${pkgname}/"
     rm -f "modsman/bin/${pkgname}-cli.bat"
 
     # install the main files.
