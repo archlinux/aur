@@ -1,0 +1,15 @@
+pkgbase = jstar
+	pkgdesc = A Lightweight Embeddable Scripting Language
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://jstar-lang.github.io/docs/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake>=3.9
+	makedepends = python>=2.7
+	source = https://github.com/jstar-lang/jstar/archive/v1.2.4.tar.gz
+	sha512sums = 72baf230c5ebfcf22a59ea553bbdb332848cfec725f38115bba5555836f0d94e75c6d19c0d78b1d0d2a10697a9fc9d779b15197244be831df5384bb6d7f281b3
+
+pkgname = jstar
+
