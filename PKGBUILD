@@ -9,11 +9,11 @@
 # * https://github.com/bohoomil/fontconfig-ultimate/blob/master/freetype/03-infinality-2.6.3-2016.04.16.patch#L2092
 # * https://www.reddit.com/r/archlinux/comments/5qkvqb/best_way_to_approximate_infinalitys_ultimate5
 
-__arch_pkg_commit="68a744d932ddf1d218c687ed89f5742b57385bba"
+__arch_pkg_commit="a5a4ee489620cbb38b3a214feb6f3001a1a23449"
 
 pkgname=freetype2-ultimate5
 pkgver=2.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc="FreeType patched for effect similar to Infinality's ultimate5 preset."
 url="https://www.freetype.org/"
 conflicts=(freetype2)
@@ -37,7 +37,7 @@ source=(
 	https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.xz
 )
 sha256sums=('9554d3a23619a46cf48e512e5b6336afd0802f42fdaf9b2e47ba0c718143f1dd'
-            '751ff94b186b5c5b02ae6fd22533c5954bb6a14dd4bac2dd8ff826ba2b695ef5'
+            'f41df4f336d5e82e58733c7a4594476c9216cfc85c096327745a7e1b559e17e1'
             'dc77c1cfee4bf8e7e0690628c95d211df09e0d0750e4c8f075b78b5f105514f7'
             '21a62bc12b848320c686d602d8d4e3bcd51294a9def4dc9c301736e077b59f3f'
             '266384222f87a02fb02b2179828f6c26fe6d7b1fd09d1f7e3734e7fcb09cda2e'
