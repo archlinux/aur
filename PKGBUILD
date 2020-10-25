@@ -6,22 +6,21 @@ pkgdesc="Debugger for sed, written in rust. Step through code and observe sed in
 arch=('x86_64')
 url="https://github.com/soptikha2/desed"
 license=('GPL3')
-depends=('gcc-libs')
-makedepends=('cargo' 'git')
+depends=()
+makedepends=('cargo')
 conflicts=('desed-git')
-source=("$pkgname::git+https://github.com/soptikha2/desed.git")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
 
-    # Checkout to published version
-    git checkout 'tags/v1.2.0'
     cargo build --release
 }
 
 package() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
 
-    install -D "target/release/desed" -t "$pkgdir/usr/bin"
+    install -Dm755 "target/release/desed" -t "$pkgdir/usr/bin/desed"
+    install -Dm644 "desed.1" -t "$pkgdir/usr/share/man/man1/desed.1"
 }

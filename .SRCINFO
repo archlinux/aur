@@ -6,10 +6,8 @@ pkgbase = desed
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
-	makedepends = git
-	depends = gcc-libs
 	conflicts = desed-git
-	source = desed::git+https://github.com/soptikha2/desed.git
+	source = desed-1.2.0.tar.gz::https://github.com/soptikha2/desed/archive/v1.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = desed
