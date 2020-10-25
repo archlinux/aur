@@ -19,10 +19,11 @@ optdepends=('zenity: For the GTK3 GUI.'
             'unrar: For unpacking. If not available, will fall back to wine 7zip.'
             'unzip: For unpacking. If not available, will fall back to wine 7zip.'
             'p7zip: For unpacking. If not available, will fall back to wine 7zip.'
-            'sudo: For automatically mounting ISO images.'
             'xdg-utils: For opening manual download pages.'
             'perl: For installing Steam.'
             'hicolor-icon-theme: Needed for hicolor theme hierarchy')
+provides=('winetricks-zh')
+conflicts=('winetricks-zh')
 #install=winetricks-zh.install
 source=("$pkgname::git+https://github.com/hillwoodroc/winetricks-zh.git")
 md5sums=('SKIP')

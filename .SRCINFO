@@ -17,10 +17,11 @@ pkgbase = winetricks-zh-git
 	optdepends = unrar: For unpacking. If not available, will fall back to wine 7zip.
 	optdepends = unzip: For unpacking. If not available, will fall back to wine 7zip.
 	optdepends = p7zip: For unpacking. If not available, will fall back to wine 7zip.
-	optdepends = sudo: For automatically mounting ISO images.
 	optdepends = xdg-utils: For opening manual download pages.
 	optdepends = perl: For installing Steam.
 	optdepends = hicolor-icon-theme: Needed for hicolor theme hierarchy
+	provides = winetricks-zh
+	conflicts = winetricks-zh
 	source = winetricks-zh-git::git+https://github.com/hillwoodroc/winetricks-zh.git
 	md5sums = SKIP
 
