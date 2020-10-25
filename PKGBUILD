@@ -3,7 +3,7 @@
 
 _arch=x86_64
 pkgname=android-google-apis-${_arch/_/-}-system-image
-pkgver=30_r08
+pkgver=30_r09
 pkgrel=1
 pkgdesc="Android with Google APIs ${_arch} Atom System Image, latest API"
 arch=('any')
@@ -14,8 +14,8 @@ conflicts=("${pkgname}-${pkgver/_*/}")
 options=('!strip')
 source=("https://dl.google.com/android/repository/sys-img/google_apis/${_arch}-${pkgver}.zip"
         "package.xml")
-sha256sums=('897144f8d44fff656b17d66994db9f92be72f3ec17f8afff85c734cf7f178180'
-            'f1f25423b94aa7fb752ae2147224431d03a80fa606b4fc8e1899f889dd91447e')
+sha256sums=('5d8c099fdfa756f20b10ad7ab85f393bf813eeec8506f4c92bcaa52f495a59e0'
+            'd627ccb27951b429819652ef55ea5cac8103548a4b546f38b88f198150c8a52d')
 
 prepare() {
   # Fix permissions
