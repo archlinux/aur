@@ -1,8 +1,7 @@
 # Maintainer: João Pinto <jpinto@ccsint.eu>
 pkgname=linuxkit
-pkgver=0.0.1.git.20190111
+pkgver=0.8
 pkgrel=1
-_commit=eb7e07542f839961b4611ee10f86f524ec9c39e9
 epoch=
 pkgdesc="A toolkit for building secure, portable and lean operating systems for containers"
 arch=('x86_64')
@@ -10,11 +9,12 @@ url="https://github.com/linuxkit/linuxkit"
 license=('APACHE')
 groups=()
 depends=()
-makedepends=('git'
-	'docker')
-source=("git+https://github.com/linuxkit/linuxkit.git#commit=$_commit")
+checkdepends=()
+makedepends=('git' 'docker' 'make')
+conflicts=('linuxkit-git')
+source=("https://github.com/linuxkit/linuxkit/archive/v${pkgver}.tar.gz")
 
-sha256sums=('SKIP')
+sha256sums=('70aeb7f8cb0d84a57f615ed1f262427ce314296f92436b5b584f2f0502f765f5')
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
@@ -22,17 +22,17 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	#cd "$pkgname-$pkgver"
-	make
+	make VERSION=v${pkgver}
 }
 
 #check() {
+#	cd "${srcdir}/${pkgname}"
+#	make test
 #}
 
 package() {
-	#cd "$pkgname-$pkgver"
 	cd "${srcdir}/${pkgname}"
-	install -dm755 "${pkgdir}/usr/bin"	
+	install -dm755 "${pkgdir}/usr/bin"
 	install -Dm755  bin/linuxkit "${pkgdir}/usr/bin"
 	install -Dm755  bin/rtf "${pkgdir}/usr/bin"
 }

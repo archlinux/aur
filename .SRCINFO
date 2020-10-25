@@ -1,14 +1,16 @@
 pkgbase = linuxkit
 	pkgdesc = A toolkit for building secure, portable and lean operating systems for containers
-	pkgver = 0.0.1.git.20190111
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://github.com/linuxkit/linuxkit
 	arch = x86_64
 	license = APACHE
 	makedepends = git
 	makedepends = docker
-	source = git+https://github.com/linuxkit/linuxkit.git#commit=eb7e07542f839961b4611ee10f86f524ec9c39e9
-	sha256sums = SKIP
+	makedepends = make
+	conflicts = linuxkit-git
+	source = https://github.com/linuxkit/linuxkit/archive/v0.8.tar.gz
+	sha256sums = 70aeb7f8cb0d84a57f615ed1f262427ce314296f92436b5b584f2f0502f765f5
 
 pkgname = linuxkit
 
