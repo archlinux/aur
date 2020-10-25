@@ -1,7 +1,7 @@
 # Maintainer: Nathaniel Chin <thegamingorangutans+aur at gmail.com>
 
 pkgname=python-av1an-git
-pkgver=1.12.r265.g006d919
+pkgver=1.12.r317.g51cb13c
 pkgrel=1
 pkgdesc='A cross-platform all-in-one tool for streamlining AV1 encoding'
 arch=('any')
@@ -16,7 +16,9 @@ optdepends=('svt-av1: SVT-AV1 encoder support'
             'libvpx: vpx encoder support'
             'svt-vp9: SVT-VP9 encoder support'
             'vmaf: VMAF calculation support'
-            'x265: x265 encoder support')
+            'x265: x265 encoder support'
+            'x264: x264 encoder support'
+            )
 provides=('python-av1an')
 conflicts=('python-av1an')
 source=("git+https://github.com/master-of-zen/Av1an.git")

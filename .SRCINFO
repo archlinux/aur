@@ -1,6 +1,6 @@
 pkgbase = python-av1an-git
 	pkgdesc = A cross-platform all-in-one tool for streamlining AV1 encoding
-	pkgver = 1.12.r265.g006d919
+	pkgver = 1.12.r317.g51cb13c
 	pkgrel = 1
 	url = https://github.com/master-of-zen/Av1an
 	arch = any
@@ -25,6 +25,7 @@ pkgbase = python-av1an-git
 	optdepends = svt-vp9: SVT-VP9 encoder support
 	optdepends = vmaf: VMAF calculation support
 	optdepends = x265: x265 encoder support
+	optdepends = x264: x264 encoder support
 	provides = python-av1an
 	conflicts = python-av1an
 	source = git+https://github.com/master-of-zen/Av1an.git
