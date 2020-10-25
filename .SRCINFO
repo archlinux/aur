@@ -1,6 +1,6 @@
 pkgbase = gba-tileeditor-git
 	pkgdesc = A Gameboy Advance tile editor
-	pkgver = 0.0.10.r3.gc5e7c0d
+	pkgver = 0.0.10.r12.g75b6e07
 	pkgrel = 1
 	url = https://github.com/quentin-dev/gba-tileeditor
 	arch = x86_64
