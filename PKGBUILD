@@ -2,7 +2,7 @@
 
 pkgname=topolvm
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Capacity-aware CSI plugin for Kubernetes"
 arch=('x86_64')
 url="https://github.com/topolvm/topolvm"
@@ -17,12 +17,12 @@ source=(
 
 build() {
   cd "topolvm-$pkgver"
-  make build
+  make build TOPOLVM_VERSION=$pkgver
 }
 
 package() {
   cd "topolvm-$pkgver"
-  install -Dm0644 "${srcdir}/topolvm-lvmd.service" "${pkgdir}/lib/systemd/system/topolvm-lvmd.service"
+  install -Dm0644 "${srcdir}/topolvm-lvmd.service" "${pkgdir}/usr/lib/systemd/system/topolvm-lvmd.service"
   install -Dm0755 build/hypertopolvm "${pkgdir}/usr/bin/hypertopolvm"
   install -Dm0755 build/lvmd "${pkgdir}/usr/bin/topolvm-lvmd"
   ln -s hypertopolvm "${pkgdir}/usr/bin/topolvm-controller"
