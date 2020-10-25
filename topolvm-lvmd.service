@@ -1,0 +1,17 @@
+[Unit]
+Description=lvmd for TopoLVM
+Wants=lvm2-monitor.service
+After=lvm2-monitor.service
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartForceExitStatus=SIGPIPE
+RuntimeDirectory=topolvm
+RuntimeDirectoryPreserve=yes
+ExecStart=/usr/bin/topolvm-lvmd
+
+[Install]
+WantedBy=multi-user.target
+
+# vim: ft=systemd
