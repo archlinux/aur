@@ -5,53 +5,37 @@
 
 pkgname=evince-no-gnome
 _pkgname=evince
-pkgver=3.36.5
+pkgver=3.38.0
 pkgrel=1
 pkgdesc="GTK3 document viewer, complete features, no gnome dependencies"
 url="https://wiki.gnome.org/Apps/Evince"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('dconf' 'gtk3' 'libgxps' 'libspectre' 'poppler-glib' 'djvulibre' 'gsettings-desktop-schemas' 'gspell' 'libarchive' 'gst-plugins-base-libs' 'libsynctex')
-makedepends=('itstool' 'texlive-bin' 'gobject-introspection' 'intltool' 'docbook-xsl' 'python' 'gtk-doc' 'gnome-common' 'appstream-glib')
+makedepends=('meson' 'ninja' 'itstool' 'texlive-bin' 'gobject-introspection' 'intltool' 'docbook-xsl' 'python' 'gtk-doc' 'gnome-common' 'appstream-glib')
 optdepends=('texlive-bin: DVI support'
-            'gvfs: for session saving and bookmarking')
+			'gvfs: for session saving and bookmarking')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "evince-light")
 options=('!emptydirs')
 source=("https://download.gnome.org/sources/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('6f0dd6e30639eb620f201a6ae40f21c4b78c030f0d6437f9e309f7240195e97c')
+sha256sums=('26df897a417545b476d2606b14731122e84278ae994bd64ea535449c3cf01948')
 
 build() {
-cd ${_pkgname}-${pkgver}
-BROWSER_PLUGIN_DIR=/usr/lib/epiphany/plugins \
+	arch-meson "$_pkgname-${pkgver}" build \
+		-D ps=enabled \
+		-D nautilus=false \
+		-D introspection=false \
+		-D browser-plugin=false \
+		-D thumbnail_cache=disabled \
+		-D keyring=disabled
+	meson compile -C build
+}
 
-./configure --prefix=/usr \
-  --sysconfdir=/etc \
-  --localstatedir=/var \
-  --libexecdir=/usr/lib/${_pkgname} \
-  --disable-static \
-  --enable-compile-warnings=minimum \
-  --disable-introspection \
-  --disable-nautilus \
-  --enable-pdf \
-  --enable-ps \
-  --enable-tiff \
-  --enable-djvu \
-  --enable-dvi \
-  --enable-t1lib \
-  --enable-comics \
-  --enable-gtk-doc \
-  --enable-multimedia \
-  --disable-schemas-compile \
-  --enable-dbus \
-  --without-keyring \
-  --disable-libgnome-desktop \
-  --disable-browser-plugin
-
-make
+check() {
+	meson test -C build --print-errorlogs
 }
 
 package() {
-cd ${_pkgname}-${pkgver}
-make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" meson install -C build
 }
