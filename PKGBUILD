@@ -4,7 +4,7 @@ _name=combomethod
 pkgname=( python-$_name python2-$_name)
 pkgbase=python-$_name
 pkgver=1.0.12
-pkgrel=2
+pkgrel=3
 pkgdesc='Decorator indicating a method is both a class and an instance method'
 
 arch=(any)
