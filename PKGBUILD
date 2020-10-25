@@ -8,8 +8,8 @@ pkgdesc="Wine Setup Wizard Winetricks Chinese Version"
 arch=('any')
 url="https://github.com/hillwoodroc/winetricks-zh"
 license=('LGPL')
-depends=('cabextract')
-makedepends=('git' 'bash' 'wine')
+depends=('cabextract' 'wine')
+makedepends=('git')
 optdepends=('zenity: For the GTK3 GUI.'
             'kdialog: For the KDE GUI (less capable).'
             'aria2: For downloading. At least one download command should be available.'
