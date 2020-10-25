@@ -1,0 +1,22 @@
+post_install() {
+  echo ":: You need to generate a configuration file before running gerbera, e.g.:"
+  echo "   gerbera --create-config | sudo tee /etc/gerbera/config.xml"
+  echo "   chown -R gerbera:gerbera /etc/gerbera"
+  echo ":: Make sure <home> points to /etc/gerbera in /etc/gerbera/config.xml:"
+  echo " <home>/etc/gerbera</home>"
+  echo ":: You need to create a database/user for Gerbera:"
+  echo "   mysql>CREATE DATABASE database;"
+  echo "   mysql>GRANT ALL ON database.* TO 'username'@'host' IDENTIFIED BY 'password';"
+  echo ":: Make sure the following attributes are set in /etc/gerbera/config.xml:"
+  echo " <sqlite3 enabled="no">"
+  echo " <mysql enabled="yes">"
+  echo " <host>host</host>"
+  echo " <database>database</database>"
+  echo " <username>username</username>"
+  echo " <password>password</password>"
+}
+
+post_upgrade() {
+  echo ":: Version 1.2.0-3 of gerbera switched to the packages systemd unit."
+  echo "   Please check your config before you start gerbera."
+}

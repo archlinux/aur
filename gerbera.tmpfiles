@@ -1,0 +1,4 @@
+d /var/lib/gerbera 0750
+Z /var/lib/gerbera - gerbera gerbera
+z /etc/gerbera 0755 gerbera gerbera
+z /etc/gerbera/config.xml 0660 gerbera gerbera
