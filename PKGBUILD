@@ -1,14 +1,14 @@
 # Maintainer: Sander van Kasteel <info at sandervankasteel dot nl>
 pkgname=cityofthieves-cli
-pkgver=1.2
+pkgver=1.8
 pkgrel=1
 pkgdesc="City Of Thieves is a text adventure game after the English gamebook with the same name by Ian Livingstone."
 arch=('any')
 url="https://github.com/richelbilderbeek/CityOfThieves"
 license=('GPL3')
-makedepends=('qt5-base')
+makedepends=('qt5-base' 'make')
 source=("https://github.com/richelbilderbeek/CityOfThieves/archive/v${pkgver}.tar.gz")
-md5sums=('7ee7d1de1cbd9f40e505425e62c19f34')
+sha256sums=('98bcb1d3a61f6ca3174aee3e9b79144459825bb898f363ef3f65bbc40b320de4')
 
 prepare() {
 	cd "CityOfThieves-$pkgver"
@@ -17,7 +17,12 @@ prepare() {
 
 build() {
 	cd "CityOfThieves-$pkgver"
-	./build_console
+	make console
+}
+
+check() {
+	cd "CityOfThieves-$pkgver"
+	make console_test
 }
 
 package() {
