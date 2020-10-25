@@ -1,7 +1,7 @@
 pkgbase = pop-gnome-shell-theme-bin
 	pkgdesc = System76 Pop GNOME Shell Theme
-	pkgver = 5.2.0
-	pkgrel = 8
+	pkgver = 5.3.0
+	pkgrel = 1
 	url = https://github.com/pop-os/gnome-shell-theme
 	arch = any
 	license = GPL2
@@ -16,8 +16,8 @@ pkgbase = pop-gnome-shell-theme-bin
 	optdepends = pop-session-bin
 	provides = pop-gnome-shell-theme
 	conflicts = pop-gnome-shell-theme
-	source = http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gnome-shell-theme_5.2.0~1599689740~20.04~11b9d22_all.deb
-	sha256sums = 218eba5bfae610e52bfcc5b816a4a3421f46a3bb7f730e14446642b264675753
+	source = http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gnome-shell-theme_5.3.0~1603307552~20.10~a5e0cc9_all.deb
+	sha256sums = 9303ab4ecf494f8ce49df74805b1cb02d6c5ff583fc30b780b83ad4bdfd9624c
 
 pkgname = pop-gnome-shell-theme-bin
 
