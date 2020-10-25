@@ -1,34 +1,36 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fotoxx-test
-#_pkgvermaj=20.0-RC1
-#_pkgvermin=2019.12.19
-_pkgver=20.0-RC1
-pkgver=20.0_rc1
+pkgver=21.25
 pkgrel=1
-epoch=1
-pkgdesc="A program for improving image files made with a digital camera, test-version"
+pkgdesc="A program for improving image files made with a digital camera, test version"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
 arch=('i686' 'x86_64')
 license=('GPL3')
-conflicts=('fotoxx')
-provides=('fotoxx')
-depends=('libraw' 'gtk3' 'libchamplain' 'perl-image-exiftool>=0.8.6' 'xdg-utils')
+depends=('dcraw' 'gtk3' 'libchamplain' 'perl-image-exiftool>=0.8.6' 'xdg-utils')
 optdepends=('rawtherapee: for raw image processing'
 	    'dvd+rw-tools: for burning CDs,DVDs or BlueRays'
 	    'hugin: for panorama photos')
-#source=("http://kornelix.net/downloads/downloads/${pkgname%-test}-${_pkgvermaj}-test-${_pkgvermin//./-}.tar.gz")
-source=("http://kornelix.net/downloads/downloads/${pkgname%-test}-${_pkgver}.tar.gz")
-sha256sums=('a5488009dcd3bb3082bbac401998511b8a7e434574760789f21423b0eaef4f8f')
+conflicts=('fotoxx')
+provides=('fotoxx')
+source=("http://www.kornelix.net/downloads/downloads/${pkgname%-test}-$pkgver-test.tar.gz")
+sha512sums=('fe94c8e45b9a61095f180046dac802231284d01aa8c545a72d2fb1d04f5b7b9e3ba014c7fd485c56a0354380c90714d6e682717b06c65afb7c52acc9a7b7d995')
+
+prepare() {
+  cd ${pkgname%-test}
+  sed -i 's+libchamplain+champlain+g' Makefile
+  chmod o+r images/color-mode.jpg
+}
 
 build() {
-  cd ${pkgname%-test}
-  make clean
+    cd ${pkgname%-test}
   make PREFIX=/usr
 }
 
 package() {
   cd ${pkgname%-test}
-  make DESTDIR="$pkgdir" PREFIX=/usr install
+  make DESTDIR="$pkgdir" PREFIX=/usr ICONDIR=/usr/share/pixmaps install 
   rm -r "$pkgdir"/usr/share/appdata
+  sed -i 's+/usr/share/fotoxx/icons/++' "$pkgdir"/usr/share/applications/${pkgname%-test}.desktop
+  sed -i 's+Icon=fotoxx.png+Icon=fotoxx+' "$pkgdir"/usr/share/applications/${pkgname%-test}.desktop
 }
