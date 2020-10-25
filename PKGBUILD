@@ -12,7 +12,7 @@ sha256sums=('98bcb1d3a61f6ca3174aee3e9b79144459825bb898f363ef3f65bbc40b320de4')
 
 prepare() {
 	cd "CityOfThieves-$pkgver"
-	patch --forward --strip=1 --input="../../001-fix-qt-building.patch"
+	patch --forward --strip=1 --input="${startdir}/001-fix-qt-building.patch"
 }
 
 build() {
