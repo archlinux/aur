@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=12.0.0_r364174.5e3fd471acb7
+pkgver=12.0.0_r369979.3052e474eceb
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -46,12 +46,6 @@ pkgver() {
              END { print "\n" }' \
              CMakeLists.txt)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
     echo "${_pkgver}"
-}
-
-prepare() {
-    cd llvm-project
-    # remove code parts not needed for build
-    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl mlir libc flang
 }
 
 build() {
