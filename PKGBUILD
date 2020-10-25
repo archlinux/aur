@@ -1,6 +1,6 @@
 # Maintainer: Vlad Petrov <ejiek@mail.ru>
 pkgname=nb
-pkgver=5.7.6
+pkgver=5.7.7
 pkgrel=1
 pkgdesc="A command line note-taking, bookmarking, archiving, and knowledge base application"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('bash' 'git')
 optdepends=('bat' 'pandoc' 'ripgrep' 'w3m' 'tig')
 provides=("$pkgname")
 conflicts=("$pkgname")
-sha512sums=('38908c1eb6b7af2552c97323862e63f46cf6b605615d53d9eca5e7194b63a84484880e87ea616fafc0213ed7091848a9fc1864f80a3ffbeb3ac2503fdb37c783')
+sha512sums=('cfc102f158cfb986e8a8e327308b7443af08b8097f0d0b6bec59ab03cba40b5d20b7579724fd9b4196402f06d3fb3fc9aba7c86fa77661460c124821d3f1c716')
 
 package() {
   cd "${pkgname}-${pkgver}"
