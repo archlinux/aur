@@ -6,7 +6,7 @@
 _pkgname=my-weather-indicator
 pkgname=my-weather-indicator-git
 epoch=1
-pkgver=0.9.4.0extras19.10.10.r123.355bd96
+pkgver=0.9.5.0+r137+9cf392b
 pkgrel=1
 pkgdesc='A simple indicator for the weather'
 arch=('any')
@@ -18,18 +18,15 @@ depends=('libappindicator-gtk3' 'libnotify' 'webkit2gtk' 'geocode-glib' 'python-
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/atareao/my-weather-indicator#branch=dev/19.10")
+source=("${_pkgname}::git+https://github.com/atareao/my-weather-indicator")
 sha256sums=('SKIP')
-
-_pkgver() {
-  cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    printf "%s.r%s.%s" "$(head -n 1 debian/changelog | cut -d'(' -f 2 | cut -d')' -f 1 | \
-        sed 's/-/./')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s+r%s+%s" \
+      "$(head -n 1 debian/changelog | cut -d'(' -f 2 | cut -d')' -f 1 | sed 's/-/./;s:[^0-9\.].*::')" \
+      "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -45,15 +42,17 @@ prepare() {
     sed "s:\${CURDIR}/debian/my-weather-indicator:\"${pkgdir}\":g" > make_translations.sh
   chmod +x make_translations.sh
   # Missing newline at the end of the file makes the package function not install the file on the last line 
-  echo -e >> debian/install
+  # echo -e >> debian/install
 }
 
 package() {
   cd "${_pkgname}"
   while read _in _out ; do
     mkdir -p "${pkgdir}/${_out}/"
-    install -m644 ${_in} "${pkgdir}/${_out}/"
+    cp -r ${_in} "${pkgdir}/${_out}/"
   done < debian/install
+  find "${pkgdir}" -type d -exec chmod 755 '{}' \;  
+  find "${pkgdir}" -type f -exec chmod 644 '{}' \;
   chmod 755 "${pkgdir}"/usr/bin/my-weather-indicator
   ./make_translations.sh
 }
