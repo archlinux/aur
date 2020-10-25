@@ -1,0 +1,15 @@
+pkgbase = pulseaudio-control
+	pkgdesc = Polybar module to control PulseAudio
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/marioortizmanero/polybar-pulseaudio-control
+	arch = any
+	license = custom:MIT
+	depends = bash
+	depends = libpulse
+	depends = pulseaudio
+	source = https://github.com/marioortizmanero/polybar-pulseaudio-control/archive/v1.3.tar.gz
+	md5sums = e6693e35cb023fd1c4a02dc4ddc6b765
+
+pkgname = pulseaudio-control
+
