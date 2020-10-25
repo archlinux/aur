@@ -8,6 +8,7 @@ pkgbase = gba-tileeditor-git
 	makedepends = qt5-base
 	makedepends = git
 	makedepends = make
+	makedepends = cmake
 	depends = qt5-base
 	source = gba-tileeditor-git::git+https://github.com/quentin-dev/gba-tileeditor#branch=master
 	source = gba-tileeditor-git.desktop
