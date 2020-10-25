@@ -1,27 +1,26 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer-git
-pkgver=2.2.54.0.r14.g2291bd76d
+pkgver=2.2.54.0.r10.gdb99b091d
 _pkgtag=$pkgver
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 arch=('x86_64')
 url="https://github.com/supermerill/SuperSlicer"
 license=('AGPL3')
-depends=('cgal' 'glew' 'nlopt' 'openvdb' 'wxgtk3-dev' 'boost-libs-171-opt')
-conflicts=('slic3r++')
+depends=('cgal' 'glew' 'nlopt' 'openvdb' 'wxgtk3-dev-opt' 'boost-libs-171-opt')
 replaces=('slic3r++')
-makedepends=('git' 'cereal' 'cmake' 'eigen' 'libigl' 'openvdb' 'wxgtk2') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
+makedepends=('git' 'cereal' 'cmake' 'eigen' 'libigl' 'openvdb' 'wxgtk2-dev-opt') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
 provides=('superslicer')
 conflicts=('superslicer')
-source=("SuperSlicer::git+https://github.com/supermerill/SuperSlicer.git"
+source=("SuperSlicer::git+https://github.com/supermerill/SuperSlicer.git#commit=db99b091d97eb3a56a4d70de69c9595e3917162e"
         "superslicer.desktop"
         "start-superslicer.sh"
         "0001-wxgtk3-is-broken-on-wayland.patch"
         "qhull-broken.patch")
 sha512sums=('SKIP'
             'a06f4ec1e78f43783c3cf7a2fe38ff8620e51d1c6f149acccccb58f1121a9d4d0e1823abfb711594ab42abcadd23c8cf92996a39906aa8f308c74c11c7a5a4a3'
-            'c1960eab53ffdd62dac6e33e936dd577fa9c93e100dd3bffdf69bbf71ec995d98ffcc46118bf0830f7017a0fafe5fb611a11861a607737a9bd34337f2bc13423'
+            '3703901d97ae1982a36eb5c491fe0fd6953e81e6bb1d155404acfcac1de1f377931c88b9667688775af5ed16bd46944ca3a285bc4b2739762faa70e546044c43'
             'acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5'
             'db1857418c2fe380a5e82c3c2b67d945ceb81f40df810c9b6b64730fdbcdf0e5b45e5f6ee8d77f40547b8f078b07aa92f2011e2aaa864a69c4b13d60c2a7b912')
 
@@ -62,7 +61,8 @@ build()
 		-DBoost_NO_SYSTEM_PATHS=TRUE \
 		-DBOOST_ROOT:PATHNAME=/opt/usr \
 		-DBoost_LIBRARY_DIRS:FILEPATH=/opt/usr/lib \
-		-DBoost_INCLUDE_DIR:FILEPATH=/opt/usr/include
+		-DBoost_INCLUDE_DIR:FILEPATH=/opt/usr/include \
+		-DwxWidgets_CONFIG_EXECUTABLE=/opt/wxgtk-dev/bin/wx-config
 
 	make
 }
