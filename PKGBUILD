@@ -1,6 +1,6 @@
 # Maintainer: Balázs Batári <bayi@bayi.hu>
 pkgname=qdmenu
-pkgver=v1.0.22.gac36f59
+pkgver=v1.0.37.ga8fc5a8
 pkgrel=1
 pkgdesc="A QML launcher similar to dmenu"
 arch=('i686' 'x86_64')
