@@ -2,12 +2,12 @@
 
 _pkgname='tuxedo-backlight-control'
 pkgname="${_pkgname}-git"
-pkgver=0.6.r5.gd94e59f
+pkgver=0.7.r9.g05940fb
 pkgrel=1
 arch=('x86_64')
 license=('MIT')
 url=https://github.com/webketje/tuxedo-backlight-control
-source=('git+https://github.com/webketje/tuxedo-backlight-control')
+source=('git+https://github.com/webketje/tuxedo-backlight-control#branch=feature/aur-pkg')
 sha256sums=('SKIP')
 sha512sums=('SKIP')
 pkgdesc='GUI utility built on top of TUXEDO Keyboard. Provides a bash CLI (backlight) and a minimal Python UI.'
