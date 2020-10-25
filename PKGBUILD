@@ -1,7 +1,7 @@
 # Maintainer: Tim Schumacher <timschumi@gmx.de>
 # Contributor: David Vilar <davvil@gmail.com>
 pkgname=vassal
-pkgver=3.4.6
+pkgver=3.4.7
 pkgrel=1
 pkgdesc="Game engine for building and playing online adaptations of board games and card games."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('java-runtime>=11')
 source=(https://github.com/vassalengine/vassal/releases/download/${pkgver}/VASSAL-${pkgver}-linux.tar.bz2
         VASSAL-256x256.png)
 noextract=()
-md5sums=('646c60108e179353a3237089b5f0e4c5'
+md5sums=('c69cbe1f8d2490cbf46c88a13c3ac7a5'
          '4a4ec11bdbd7dbbf56e6f1d533f69a7e')
 build() {
   true
