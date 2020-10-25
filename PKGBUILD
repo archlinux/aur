@@ -4,7 +4,7 @@
 pkgname=passwall-desktop
 _pkgname=passwall
 pkgdesc="Desktop client of the PassWall platform"
-pkgver=0.1.3
+pkgver=1.0.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/passwall/passwall-desktop"
@@ -12,7 +12,7 @@ license=('unknown')
 depends=('git')
 makedepends=('yarn' 'npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0af5a51e336cf10c07f2d8d351c92d4c435dabbfb698ea49fbf7186e959af397')
+sha256sums=('9cc6286130d67ecbef526335c7ea953da6d4cd9b027c3efb1905083a0023569f')
 
 build() {
   cd "$pkgname-$pkgver"
