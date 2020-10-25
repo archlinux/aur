@@ -16,7 +16,7 @@ pkgver() {
 	cd "$srcdir/$pkgname"
 	local date=$(git log -1 --format="%cd" --date=short | sed s/-//g)
 	local commit=$(git rev-parse --short HEAD)
-	echo "$date_$commit"
+	echo "${date}_${commit}"
 }
 
 build() {
