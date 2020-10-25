@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd /usr/share/wikitaxi
+wine WikiTaxi_Importer.exe "$@"
