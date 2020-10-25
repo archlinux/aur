@@ -6,10 +6,13 @@
 pkgbase=kata-containers-bin
 pkgname=(
   kata-runtime-bin
+  kata-proxy-bin
+  kata-shim-bin
   kata-containers-image-bin
   kata-linux-container-bin
 )
-pkgver="2.0.0"
+epoch=1
+pkgver="1.11.4"
 _pkgver=${pkgver/\~/-}
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers (binary version)"
@@ -17,11 +20,11 @@ arch=(x86_64)
 url="https://katacontainers.io"
 license=('Apache')
 
-_bin_pkg_root="/opt/kata"  # `/usr` for f30 packages, `/opt/kata` for static packages
+_bin_pkg_root="/usr"  # `/usr` for f30 packages, `/opt/kata` for static packages
 
 if [ "${_bin_pkg_root}" = "/opt/kata" ]; then
   #pkgname+=(kata-containers-static)
-  source=("https://github.com/kata-containers/kata-containers/releases/download/${_pkgver}/kata-static-${_pkgver}-${CARCH}.tar.xz")
+  source=("https://github.com/kata-containers/runtime/releases/download/${_pkgver}/kata-static-${_pkgver}-${CARCH}.tar.xz")
   sha512sums=(a201f14d4e88307a8959b158aeaa2789906a913c0463aa60a6124befcb5f6e6c9b107c6cd30e0f3392901c6727972083b9261ec1b4d2d4755c58fa6c6106eca9)
   b2sums=(7bd43eb6facb6012b9c02613588683bea6fe8b3e1cbeb828bdabb7df815acd7c6c6cd9dc85ccc8956d1c304c342a33b356706947f4801c28b3f035b1403d2936)
 else
@@ -34,31 +37,35 @@ else
   #_runtime_suffix="-6.1"
   #_shim_suffix="-6.1"
 
+  pkgname+=(kata-ksm-throttler-bin)
   source=(
     "https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-containers-image-${pkgver}${_image_suffix:-${_default_suffix}}.${CARCH}.rpm"
+    "https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-ksm-throttler-${pkgver}${_ksm_suffix:-${_default_suffix}}.${CARCH}.rpm"
     "https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-linux-container-${_kata_kernel_ver}${_kernel_suffix:-${_default_suffix}}.${CARCH}.rpm"
     "https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-proxy-bin-${pkgver}${_proxy_suffix:-${_default_suffix}}.${CARCH}.rpm"
     "https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-runtime-${pkgver}${_runtime_suffix:-${_default_suffix}}.${CARCH}.rpm"
     "https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-shim-bin-${pkgver}${_shim_suffix:-${_default_suffix}}.${CARCH}.rpm"
   )
   sha512sums=(
-    70aaad6efc468baa2ef05f971b4c755f9035d83e2ac4dcdf3b53ff95c58a8fa5063d2427a585e8657801b78d290b0362480d05c987b093f69c969566dff99036
-    618f8272360f2f5685f1bd3bc1a05df42a4229387cda9ca7b2ca6846a9974eee4d1f85fd46b62f8d65a014f64f257922601f65d5a489e83d6220af1426e2e137
-    4a7b3650d3747633f44dcb3c6a7d6258c2aa70e169c10f7e686b5772c467eb0bb69f91370c4546d11a81311fe0d69428c7f4db75e0c665e2673f6282e1abeb71
-    37ed3a0799f3d54d8917125a9713c297256cb952c3e53314ff51ace2b8eaa0093e16596dfd0448a101bc555697d4c5a750c7d789d19016dce04e15beb051bbaa
-    1d37f6ff64a7d2cbb097b4157da3200559bf6ca301727a4af1f04c87c739626c17a9e558acd54dc58a83656ec83cf0ffa8c5f70d6ed1d4f316fe662717d76902
+    7f0df542e9f24158d9ff81360591d3e30886437a2f21f3f8071e85b387f76dc7ac4bb4e46604b1aff368aa1d15a61eb354c35b071840b4ea2911020cc80be8ed
+    aee2c4423c0253d7f7983a693e325024d0365b799f761c2ae7fec72567df988a0df1f171ea3ea142899edb225e5cda5b43ca95fadd85f1c33a04ff0dc48a856c
+    259247e7854aee7cf5d91abca365c516570afc700af04656a900306c1cfe497d7a4cb0e29f89944b083261f704d9a9daee521809ab6071639055768df7f7f61e
+    1d14be901f418d0f5b0ace3e3604e45cdf6034d6f9b0e3c19a7d5aff9fabeb4b0ef57f8e5422a68ecc05785594d66ec9258e5490ab35a31f2ba825199e7b273e
+    3c296414ae303673b23bf98110aa19d3ba00c6b7c9d867e82e199249a9074cd3028c512250b74e5a222c7eb642dc7b546ddae4dc3f0221464d75a374e8f73efd
+    91d173106877db7d960a57463c369f92618c308d880215b4c0fdcc23218aaac19aa4cbe9b4c9c4e4984ff23bfb4e0686cc40401fe6f26d147a38c780f1d723b9
   )
   b2sums=(
-    fed5a77db2301cac9f60ed6094456911d941644eeb65eb83fb4b1b240638f9c5e8f6b29f73f5533b66b83299106109b490607f1a0302ba29e8d50e78a46761f9
-    694ba5743566052bfe26629ceb040c252b966e03b8231fd63b5287121f7a4a4825948e6723142a92705dad84968cfc8c37d10dbca8a3b90c16798d2708d13706
-    19bddd80d61aed3723abae649c0ea3de8deba49a544ead288ccc41efb73c173b54b7cbaf50358ec673b267ff04c099f9556a26db2a56f42edefbe252471a4865
-    58bfbc87ae6f48938138b05008dc855beb7df208bf80ca0c30a7f4b6e9d17ff035b8bf0f15e06e0cf7dcd668b44756945939c9d1b3622443274e4229e2316e84
-    ff2b46172c09a458180b4addb0ce2dc512a568a61ae5c29fc3d75a07ae75c513e2a8a2355cdae5992c6e5c433421ea93b943a5be68391f796439790bb3402aed
+    bbfb6cebaedccc36904c46292365efe77d667c7b1fa4dc21a8358a760f4e3504a092e2ccbf3cdacad96ad14346aca6ef044ddbe9eb82c2bc69b2dc630bcb9359
+    4c16e67ea3be8db28ca2441d21123034f1a9ac4f9ae605b72f87c56a5c888a49e909a0810f0ba677e4c04ff014d3100ecee1a3210ac52bbdffa7d892159e2c78
+    fa23a3b8a7e31c343c790ed4200db5ae15c1db4c6f0f03f9014dff1f7d79060cb0db95c5afa07148487f2a37e88b7f45a23a4c76cdfde6439fc61f7f36968e26
+    53bbdabfb6b08bbbe4ec4217c760ded2f2848cce42cee869b4cfad865e8ed0c16b769ba64a092a0353e69ca0e972d724412eae502bad2d54bf71e595d6c11a69
+    fcd4a2e03c15c34bcf75cc3b7c600a52ac9acd1662cffa8b5c8619e4911f191a47664060d591aaaa24701cad7786a50f6ff5cf4f5f446dc2df2e290df1d1b65d
+    2406a674b822c98b36045c3c4270afd75d83b5b4c25e812e78885ad6433afc1776e0fb8c8a135ad3b0417af4f24b03f6edb86356e9808d97e3f53d3220fd8ce9
   )
 fi
 
 package_kata-runtime-bin() {
-  depends=(qemu-headless kata-containers-image kata-linux-container)
+  depends=(qemu-headless kata-proxy kata-shim kata-ksm-throttler kata-containers-image kata-linux-container)
   optdepends=(
     'cloud-hypervisor<0.11.0'
     'firecracker<0.22.0'
@@ -74,6 +81,18 @@ package_kata-runtime-bin() {
 
   sed -i 's/libexec/lib/' ${pkgdir}/usr/share/defaults/kata-containers/*.toml ${pkgdir}/usr/bin/kata-collect-data.sh
   sed -i -e 's/qemu-lite/qemu/' -e 's/qemu-vanilla/qemu/' ${pkgdir}/usr/share/defaults/kata-containers/configuration.toml ${pkgdir}/usr/bin/kata-collect-data.sh
+}
+
+package_kata-proxy-bin() {
+  conflicts=('kata-proxy')
+  provides=('kata-proxy')
+  install -D -m 0755 {${srcdir}${_bin_pkg_root}/libexec,${pkgdir}/usr/lib}/kata-containers/kata-proxy
+}
+
+package_kata-shim-bin() {
+  conflicts=('kata-shim')
+  provides=('kata-shim')
+  install -D -m 0755 {${srcdir}${_bin_pkg_root}/libexec,${pkgdir}/usr/lib}/kata-containers/kata-shim
 }
 
 package_kata-containers-image-bin(){
@@ -101,6 +120,16 @@ package_kata-linux-container-bin(){
   # bash-specific behavior?
   ln -s vmlinux-[0-9].[0-9]* vmlinux.container
   ln -s vmlinuz-[0-9].[0-9]* vmlinuz.container
+}
+
+package_kata-ksm-throttler-bin() {
+  conflicts=('kata-ksm-throttler')
+  provides=('kata-ksm-throttler')
+  install -D -m 0644 -t ${pkgdir}/usr/lib/systemd/system ${srcdir}/usr/lib/systemd/system/kata-{ksm,vc}-throttler.service
+  sed -i 's/libexec/lib/' ${pkgdir}/usr/lib/systemd/system/kata-{ksm,vc}-throttler.service
+  install -D -m 0755 {${srcdir}/usr/libexec,${pkgdir}/usr/lib}/kata-ksm-throttler/kata-ksm-throttler
+  install -D -m 0755 {${srcdir}/usr/libexec,${pkgdir}/usr/lib}/kata-ksm-throttler/trigger/virtcontainers/vc
+  install -d -m 0755 ${pkgdir}/var/lib/vc/firecracker ${pkgdir}/var/lib/vc/sbs ${pkgdir}/var/lib/vc/uuid
 }
 
 package_kata-containers-static(){

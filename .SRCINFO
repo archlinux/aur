@@ -1,23 +1,50 @@
 pkgbase = kata-containers-bin
 	pkgdesc = Lightweight virtual machines for containers (binary version)
-	pkgver = 2.0.0
-	pkgrel = 1
+	pkgver = 1.11.4
+	pkgrel = 2
+	epoch = 1
 	url = https://katacontainers.io
 	arch = x86_64
 	license = Apache
-	source = https://github.com/kata-containers/kata-containers/releases/download/2.0.0/kata-static-2.0.0-x86_64.tar.xz
-	sha512sums = a201f14d4e88307a8959b158aeaa2789906a913c0463aa60a6124befcb5f6e6c9b107c6cd30e0f3392901c6727972083b9261ec1b4d2d4755c58fa6c6106eca9
-	b2sums = 7bd43eb6facb6012b9c02613588683bea6fe8b3e1cbeb828bdabb7df815acd7c6c6cd9dc85ccc8956d1c304c342a33b356706947f4801c28b3f035b1403d2936
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.11/Fedora_30/x86_64/kata-containers-image-1.11.4-8.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.11/Fedora_30/x86_64/kata-ksm-throttler-1.11.4-8.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.11/Fedora_30/x86_64/kata-linux-container-5.4.32.76-9.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.11/Fedora_30/x86_64/kata-proxy-bin-1.11.4-8.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.11/Fedora_30/x86_64/kata-runtime-1.11.4-8.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.11/Fedora_30/x86_64/kata-shim-bin-1.11.4-8.1.x86_64.rpm
+	sha512sums = 7f0df542e9f24158d9ff81360591d3e30886437a2f21f3f8071e85b387f76dc7ac4bb4e46604b1aff368aa1d15a61eb354c35b071840b4ea2911020cc80be8ed
+	sha512sums = aee2c4423c0253d7f7983a693e325024d0365b799f761c2ae7fec72567df988a0df1f171ea3ea142899edb225e5cda5b43ca95fadd85f1c33a04ff0dc48a856c
+	sha512sums = 259247e7854aee7cf5d91abca365c516570afc700af04656a900306c1cfe497d7a4cb0e29f89944b083261f704d9a9daee521809ab6071639055768df7f7f61e
+	sha512sums = 1d14be901f418d0f5b0ace3e3604e45cdf6034d6f9b0e3c19a7d5aff9fabeb4b0ef57f8e5422a68ecc05785594d66ec9258e5490ab35a31f2ba825199e7b273e
+	sha512sums = 3c296414ae303673b23bf98110aa19d3ba00c6b7c9d867e82e199249a9074cd3028c512250b74e5a222c7eb642dc7b546ddae4dc3f0221464d75a374e8f73efd
+	sha512sums = 91d173106877db7d960a57463c369f92618c308d880215b4c0fdcc23218aaac19aa4cbe9b4c9c4e4984ff23bfb4e0686cc40401fe6f26d147a38c780f1d723b9
+	b2sums = bbfb6cebaedccc36904c46292365efe77d667c7b1fa4dc21a8358a760f4e3504a092e2ccbf3cdacad96ad14346aca6ef044ddbe9eb82c2bc69b2dc630bcb9359
+	b2sums = 4c16e67ea3be8db28ca2441d21123034f1a9ac4f9ae605b72f87c56a5c888a49e909a0810f0ba677e4c04ff014d3100ecee1a3210ac52bbdffa7d892159e2c78
+	b2sums = fa23a3b8a7e31c343c790ed4200db5ae15c1db4c6f0f03f9014dff1f7d79060cb0db95c5afa07148487f2a37e88b7f45a23a4c76cdfde6439fc61f7f36968e26
+	b2sums = 53bbdabfb6b08bbbe4ec4217c760ded2f2848cce42cee869b4cfad865e8ed0c16b769ba64a092a0353e69ca0e972d724412eae502bad2d54bf71e595d6c11a69
+	b2sums = fcd4a2e03c15c34bcf75cc3b7c600a52ac9acd1662cffa8b5c8619e4911f191a47664060d591aaaa24701cad7786a50f6ff5cf4f5f446dc2df2e290df1d1b65d
+	b2sums = 2406a674b822c98b36045c3c4270afd75d83b5b4c25e812e78885ad6433afc1776e0fb8c8a135ad3b0417af4f24b03f6edb86356e9808d97e3f53d3220fd8ce9
 
 pkgname = kata-runtime-bin
 	install = kata-runtime.install
 	depends = qemu-headless
+	depends = kata-proxy
+	depends = kata-shim
+	depends = kata-ksm-throttler
 	depends = kata-containers-image
 	depends = kata-linux-container
 	optdepends = cloud-hypervisor<0.11.0
 	optdepends = firecracker<0.22.0
 	provides = kata-runtime
 	conflicts = kata-runtime
+
+pkgname = kata-proxy-bin
+	provides = kata-proxy
+	conflicts = kata-proxy
+
+pkgname = kata-shim-bin
+	provides = kata-shim
+	conflicts = kata-shim
 
 pkgname = kata-containers-image-bin
 	provides = kata-containers-image
@@ -26,4 +53,8 @@ pkgname = kata-containers-image-bin
 pkgname = kata-linux-container-bin
 	provides = kata-linux-container
 	conflicts = kata-linux-container
+
+pkgname = kata-ksm-throttler-bin
+	provides = kata-ksm-throttler
+	conflicts = kata-ksm-throttler
 
