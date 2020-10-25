@@ -1,9 +1,17 @@
+# vim: ft=systemd
 [Unit]
 Description=Kerberos Ticket Renewal Daemon
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/krenew -v -L -b -K 30 -i
+ExecStart=/usr/bin/krenew -K30 -a -H30 -i -b -L -v
+# -K30	Run forever, wake up every 30 min
+# -a	Renew on every wakeup
+# -H30	Only renew if less than 30 min
+# -i	Don't exit if renewal fails
+# -b	Detach on startup
+# -L	Log to syslog
+# -v	Be verbose
 ExecReload=/bin/kill -s ALRM $MAINPID
 StandardOutput=null
 
