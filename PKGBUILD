@@ -4,7 +4,7 @@
 # Contributor: calvertdw
 pkgname=ros2-arch-deps
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Dependencies for building ROS2 on Arch"
 url="https://index.ros.org/doc/ros2/"
 arch=('any')
@@ -72,7 +72,7 @@ depends=('asio'
          'python-rosdep')
 optdepends=('python-pydot: running the node graph in rqt'
             'python-pyqtgraph: for plotting in rqt'
-            'python-matploblib: for plotting in rqt')
+            'python-matplotlib: for plotting in rqt')
 
 md5sums=()
 
