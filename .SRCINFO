@@ -5,6 +5,7 @@ pkgbase = castblock-git
 	url = https://github.com/stephen304/castblock
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = jq
 	depends = bc
 	depends = diffutils
