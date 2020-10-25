@@ -1,7 +1,7 @@
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="modsman"
 pkgver="0.32.1"
-pkgrel=2
+pkgrel=3
 commithash="6add8e25be26080164cd4f84ce5338b8d98e4e4e"
 shorthash="g6add8e2"
 arch=('x86_64')
@@ -21,7 +21,7 @@ prepare() {
     git reset --hard ${commithash}
 
     # Create Startup Script
-    cat > "${pkgname}" <<-EOT
+    cat > "${pkgname}-app" <<-EOT
 #!/bin/sh
 cd /opt/modsman/bin
 ./modsman-cli
@@ -52,7 +52,7 @@ package() {
 
     # link the binary
     install -d -m755 "${pkgdir}/usr/bin"
-    cp -Rr "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    cp -Rr "${srcdir}/${pkgname}/${pkgname}-app" "${pkgdir}/usr/bin/${pkgname}"
 
     # make sure the main binary has the right permissions
     chmod +x "${pkgdir}/usr/bin/${pkgname}"

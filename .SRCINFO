@@ -1,7 +1,7 @@
 pkgbase = modsman
 	pkgdesc = Minecraft mod manager and updater for the CLI
 	pkgver = 0.32.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sargunv/modsman
 	arch = x86_64
 	license = GPL3
