@@ -11,7 +11,7 @@ depends=('xcb-util-wm' 'xcb-util')
 options=(!strip)
 provides=('xininfo')
 install=xininfo-git.install
-makedepends=('git')
+makedepends=('git' 'xorgproto')
 source=('git+https://github.com/DaveDavenport/xininfo.git')
 
 pkgver() {
