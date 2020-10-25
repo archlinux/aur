@@ -1,7 +1,7 @@
 # Maintainer: Anatoly Rugalev <anatoly.rugalev g-mail>
 
 pkgname=simple-rt
-pkgver=20190920_9b63526
+pkgver=20190906_9b63526
 pkgrel=1
 url="https://github.com/vvviperrr/SimpleRT"
 pkgdesc="SimpleRT - Reverse Tethering utility for Android"
@@ -15,9 +15,8 @@ license=('GPLv3')
 pkgver() {
 	cd "$srcdir/$pkgname"
 	local date=$(git log -1 --format="%cd" --date=short | sed s/-//g)
-	local count=$(git rev-list --count HEAD)
 	local commit=$(git rev-parse --short HEAD)
-	echo "$date.${count}_$commit"
+	echo "$date_$commit"
 }
 
 build() {
