@@ -1,22 +1,27 @@
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="modsman"
 pkgver="0.32.1"
-pkgrel=1
+pkgrel=2
+commithash="6add8e25be26080164cd4f84ce5338b8d98e4e4e"
+shorthash="g6add8e2"
 arch=('x86_64')
 pkgdesc="Minecraft mod manager and updater for the CLI"
 url='https://github.com/sargunv/modsman'
 license=('GPL3')
-makedepends=('gendesk' 'unzip')
+makedepends=('gendesk' 'unzip' 'git')
 depends=('java-runtime=8')
 conflicts=('modsman-git' 'modsman-bin')
-source_x86_64=(
-    "${pkgname}-${pkgver}.zip::${url}/archive/${pkgver}.zip"
-)
-
-md5sums_x86_64=('SKIP')
+source=("${pkgname}::git+${url}.git")
+md5sums=('SKIP')
 
 prepare() {
-cat > "${pkgname}" <<-EOT
+    #Rebase project to proper commit
+    #because the project cannot be built dirty
+    cd "${srcdir}/${pkgname}"
+    git reset --hard ${commithash}
+
+    # Create Startup Script
+    cat > "${pkgname}" <<-EOT
 #!/bin/sh
 cd /opt/modsman/bin
 ./modsman-cli
@@ -24,22 +29,22 @@ EOT
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     ./gradlew :${pkgname}-cli:distZip --info --stacktrace
 }
 
 package() {
 
     # Unzip Compiled project
-    cd "${srcdir}/${pkgname}-${pkgver}/${pkgname}-cli/build/distributions"
-    unzip -o ${pkgname}-cli.zip
+    cd "${srcdir}/${pkgname}/${pkgname}-cli/build/distributions"
+    unzip -o ${pkgname}-cli-${pkgver}-${pkgrel}-${shorthash}.dirty.zip
     rm -rf "${pkgname}/"
-    cp -r "${pkgname}-cli/" "${pkgname}/"
+    cp -r "${pkgname}-cli-${pkgver}-${pkgrel}-${shorthash}.dirty/" "${pkgname}/"
     rm -f "modsman/bin/${pkgname}-cli.bat"
 
     # install the main files.
     install -d -m755 "${pkgdir}/opt/${pkgname}"
-    cp -Rr "${srcdir}/${pkgname}-${pkgver}/modsman-cli/build/distributions/modsman" "${pkgdir}/opt/"
+    cp -Rr "${srcdir}/${pkgname}/modsman-cli/build/distributions/modsman" "${pkgdir}/opt/"
 
     # fix file permissions - all files as 644 - directories as 755
     find "${pkgdir}/"opt -type d -exec chmod 755 {} \;
