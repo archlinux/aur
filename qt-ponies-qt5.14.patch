@@ -1,0 +1,55 @@
+commit 641da6a21ced8b1c1373aa1eb17a5667cdadbd58
+Author: Daniel Maslowski <info@orangecms.org>
+Date:   Sun Oct 25 21:31:24 2020 +0100
+
+    remove redefinition of QString
+    
+    This has been added in Qt 5.14. See also
+    https://github.com/linuxdeepin/deepin-system-monitor/issues/34#issuecomment-578397562
+
+diff --git a/src/csv_parser.cpp b/src/csv_parser.cpp
+index 154db8d..3421f9c 100644
+--- a/src/csv_parser.cpp
++++ b/src/csv_parser.cpp
+@@ -3,18 +3,6 @@
+ 
+ #include "csv_parser.h"
+ 
+-namespace std
+-{
+-        template <>
+-        struct hash<QString>
+-        {
+-            size_t operator()(const QString& s) const
+-            {
+-                return qHash(s);
+-            }
+-        };
+-}
+-
+ std::unordered_map<QString, const CSVParser::ParseTypes &> CSVParser::parse_types;
+ 
+ static QVariant convert_type(std::pair<std::string, QVariant::Type> type, QString value)
+diff --git a/src/pony.h b/src/pony.h
+index e6d4d92..ba35b40 100644
+--- a/src/pony.h
++++ b/src/pony.h
+@@ -38,18 +38,6 @@
+ 
+ class ConfigWindow;
+ 
+-namespace std
+-{
+-        template <>
+-        struct hash<QString>
+-        {
+-            size_t operator()(const QString& s) const
+-            {
+-                return qHash(s);
+-            }
+-        };
+-}
+-
+ class Pony : public QMainWindow, public std::enable_shared_from_this<Pony>
+ {
+     Q_OBJECT

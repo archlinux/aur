@@ -2,9 +2,9 @@
 # Contributor: mid-kid <esteve.varela@gmail.com>
 # based on https://github.com/aur-archive/qt-ponies-git/blob/master/PKGBUILD
 _gitname="qt-ponies"
-pkgname="$_gitname-git"
+pkgname=qt-ponies-git
 pkgver=v0.9.3.g882a8cf
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop ponies in Qt"
 arch=("i686" "x86_64")
 url="https://github.com/myszha/qt-ponies"
@@ -15,9 +15,11 @@ provides=("qt-ponies")
 source=(
   "git://github.com/myszha/$_gitname.git"
   "qt-ponies-qt5.patch"
+  "qt-ponies-qt5.14.patch"
 )
 sha256sums=('SKIP'
-            '5681360eb583cd25d42200abda9c01c050db69778c63a8a2ab79b6ecbb441034')
+            '5681360eb583cd25d42200abda9c01c050db69778c63a8a2ab79b6ecbb441034'
+            'cb7019e0dd6bdbf335ffd52748cd60a58e1ef15e81974b4db58fb5bee1db5f88')
 
 
 pkgver() {
@@ -31,6 +33,8 @@ prepare() {
   sed -i "s/.\/desktop-ponies/\/usr\/share\/qt-ponies\/desktop-ponies/g" src/configwindow.cpp
   # Patch for Qt5 - big kudos to Kiwii for this :)
   patch -p1 < "$srcdir/qt-ponies-qt5.patch"
+  # Patch for Qt5.14
+  patch -p1 < "$srcdir/qt-ponies-qt5.14.patch"
 }
 
 package() {
