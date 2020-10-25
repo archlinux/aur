@@ -4,7 +4,7 @@
 pkgname=pulseaudio-control
 _reponame="polybar-$pkgname" # expected to change
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Control PulseAudio from the polybar status bar'
 url="https://github.com/marioortizmanero/${_reponame}"
 license=('custom:MIT')
