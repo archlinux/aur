@@ -4,12 +4,13 @@
 pkgname=passwall-desktop-git
 _pkgname=passwall
 pkgdesc="Desktop client of the PassWall platform (git)"
-pkgver=0.1.3.r70.g481a826
+pkgver=0.1.3.r79.g9e1a8dc
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/passwall/passwall-desktop"
 license=('unknown')
 conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
 makedepends=('git' 'yarn' 'npm')
 source=("git+$url")
 sha256sums=('SKIP')
