@@ -13,7 +13,7 @@
 pkgbase=lib32-llvm-git
 pkgname=(lib32-llvm-git lib32-llvm-libs-git)
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit, git)"
-pkgver=12.0.0_r369840.68f47157164e
+pkgver=12.0.0_r369979.3052e474eceb
 pkgrel=1
 arch=('x86_64')
 url='https://llvm.org/'
@@ -34,14 +34,6 @@ pkgver() {
              END { print "\n" }' \
              CMakeLists.txt)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
     echo "${_pkgver//svn}"
-}
-
-
-prepare() {
-   cd llvm-project
-    # remove code parts not needed to build this package
-    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl libc mlir flang
-
 }
 
 build() {
