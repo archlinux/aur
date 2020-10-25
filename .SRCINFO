@@ -1,7 +1,7 @@
 pkgbase = hdrmerge
 	pkgdesc = HDRMerge fuses two or more raw images into a single raw with an extended dynamic range.
-	pkgver = 5.0
-	pkgrel = 1
+	pkgver = 0.5.0
+	pkgrel = 3
 	url = http://jcelaya.github.io/hdrmerge/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = hdrmerge
 	depends = alglib
 	depends = boost-libs
 	provides = hdrmerge
-	source = hdrmerge::git+https://github.com/flatzo/hdrmerge.git#branch=flatfield-deprecated
+	source = hdrmerge::git+https://github.com/jcelaya/hdrmerge.git
 	md5sums = SKIP
 
 pkgname = hdrmerge
