@@ -1,17 +1,17 @@
 # Maintainer: Joël Krähemann <jkraehemann@gmail.com>
 pkgname=gsequencer
-pkgver=3.5.16
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="Advanced Gtk+ Sequencer"
 arch=('x86_64')
 url="https://nongnu.org/gsequencer"
 license=('GPL3')
 depends=('cairo' 'gdk-pixbuf2' 'glibc' 'harfbuzz' 'libx11' 'libxml2' 'zlib')
-makedepends=('alsa-lib' 'atk' 'dssi' 'fftw' 'glib2' 'gobject-introspection' 'gtk3' 'gtk-doc' 'jack' 'ladspa' 'libinstpatch' 'libpulse' 'libsndfile' 'libsoup' 'libutil-linux' 'lv2' 'pango' 'webkit2gtk')
+makedepends=('alsa-lib' 'atk' 'dssi' 'fftw' 'glib2' 'gobject-introspection' 'gtk3' 'gtk-doc' 'jack' 'ladspa' 'libinstpatch' 'libpulse' 'libsndfile' 'libsoup' 'libutil-linux' 'lv2' 'pango' 'webkit2gtk' 'gst-plugins-base' 'gst-plugins-good')
 checkdepends=('cunit' 'xorg-server-xvfb')
 provides=('libgsequencer.so' 'libags_thread.so' 'libags_server.so' 'libags_gui.so' 'libags_audio.so' 'libags.so')
-source=("https://download.savannah.gnu.org/releases/gsequencer/3.5.x/$pkgname-$pkgver.tar.gz")
-sha512sums=('8d168d140393cc020d96960bb3298b7fc8ce65092a7ace4babb153e5627d87cc8bc53f858084fa4232e68cf94ba34f7302ce483e7009ab05511f98cdeda84ad7')
+source=("https://download.savannah.gnu.org/releases/gsequencer/3.6.x/$pkgname-$pkgver.tar.gz")
+sha512sums=('7d54f5da4d772b1310e436494fdfb4fc9cf7de2228c0a4fbdab6a26a040f86d6fc4ffe4e19b6571bc9ccda3eedc4612e0b974265738879996ca80ea5cae64dc7')
 # validpgpkeys=('ECD34CA97E55AE2AF14FBE9F25B4B3AE3388A17A') # key not available on key servers
 
 prepare() {

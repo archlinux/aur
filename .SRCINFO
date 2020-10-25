@@ -1,6 +1,6 @@
 pkgbase = gsequencer
 	pkgdesc = Advanced Gtk+ Sequencer
-	pkgver = 3.5.16
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://nongnu.org/gsequencer
 	arch = x86_64
@@ -25,6 +25,8 @@ pkgbase = gsequencer
 	makedepends = lv2
 	makedepends = pango
 	makedepends = webkit2gtk
+	makedepends = gst-plugins-base
+	makedepends = gst-plugins-good
 	depends = cairo
 	depends = gdk-pixbuf2
 	depends = glibc
@@ -38,8 +40,8 @@ pkgbase = gsequencer
 	provides = libags_gui.so
 	provides = libags_audio.so
 	provides = libags.so
-	source = https://download.savannah.gnu.org/releases/gsequencer/3.5.x/gsequencer-3.5.16.tar.gz
-	sha512sums = 8d168d140393cc020d96960bb3298b7fc8ce65092a7ace4babb153e5627d87cc8bc53f858084fa4232e68cf94ba34f7302ce483e7009ab05511f98cdeda84ad7
+	source = https://download.savannah.gnu.org/releases/gsequencer/3.6.x/gsequencer-3.6.1.tar.gz
+	sha512sums = 7d54f5da4d772b1310e436494fdfb4fc9cf7de2228c0a4fbdab6a26a040f86d6fc4ffe4e19b6571bc9ccda3eedc4612e0b974265738879996ca80ea5cae64dc7
 
 pkgname = gsequencer
 	depends = cairo
