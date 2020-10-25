@@ -1,15 +1,14 @@
 pkgbase = dendrite
 	pkgdesc = A second-generation Matrix homeserver written in Go
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/matrix-org/dendrite
 	arch = x86_64
 	license = Apache
-	makedepends = git
 	makedepends = go
-	source = git+https://github.com/matrix-org/dendrite.git#commit=6a16d46fba9edf82203b2b3606d9a16ed6ef4ae0
+	source = https://github.com/matrix-org/dendrite/archive/v0.2.1/dendrite-v0.2.1.tar.gz
 	source = dendrite.service
-	sha256sums = SKIP
+	sha256sums = b314100c9dc17f9287da99715710fd14d8c1376d40783dbe08ab844cf52e2d44
 	sha256sums = 5957e293152b982aacb2fbb7f29e889f7d174dd6a718b28ee69a1b1d368ff125
 
 pkgname = dendrite
