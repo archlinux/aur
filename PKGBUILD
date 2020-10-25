@@ -2,8 +2,8 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=yuna
-pkgver=1.4.18
-pkgrel=2
+pkgver=1.4.21
+pkgrel=1
 pkgdesc='Anime player & list manager integrating AniList, Simkl, Crunchyroll, and Hidive'
 arch=(x86_64)
 url=https://yuna.moe
@@ -14,7 +14,7 @@ options=(!strip)
 source=($pkgname-$pkgver.tar.gz::https://github.com/BeeeQueue/yuna/archive/v$pkgver.tar.gz
         electron-builder.patch
         yuna.desktop)
-sha512sums=('689a042c7fec1cc858b650e63805b89190617e0126f316e78b97366ffacc7dfe42ae5456b14af012e7d1f3336e8e5bd17008cf4bf8e7e7fc07f1237ba8f309a0'
+sha512sums=('9664c10e2497544bbc6b914124c54afb88ad7651ff38edd97a234fd9f901d8c1e36a31060af17eda33380270ec6834fc3a9977abdbe21b4954a1460054da78db'
             '893065948029906084e5a7f94982a666fc553b294d2a423dc1642d6c67b1755e1f6ac0304adf726ff26c6b1ce74fbb8fc76a8bd129527abb3d7529ca59ebf643'
             'c6979b40c36a5a2763f1b56256a15e550a776ab75d99e64fb7772d91497ade0fed575b137fcfb8bc58c9729ad6460c9c012f7ebd57d342a2de4ba11886732277')
 
