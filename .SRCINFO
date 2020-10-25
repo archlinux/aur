@@ -1,0 +1,20 @@
+pkgbase = imgcat-trashhalo
+	pkgdesc = Tool to output images in the terminal.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/trashhalo/imgcat
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	provides = imgcat
+	conflicts = imgcat-git
+	conflicts = imgcat-bin
+	source = https://github.com/trashhalo/imgcat/imgcat/archive/v1.0.2.tar.gz
+	sha256sums = d7a8cfff4bf298d578872f0cdb6e30fde280e28edec3939b0553f3b8ee16164f
+
+pkgname = imgcat-trashhalo
+
