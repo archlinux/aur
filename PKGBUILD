@@ -1,6 +1,6 @@
 pkgname=hdrmerge
-pkgver=5.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=3
 pkgdesc='HDRMerge fuses two or more raw images into a single raw with an
 extended dynamic range.'
 arch=('i686' 'x86_64')
