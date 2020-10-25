@@ -4,6 +4,7 @@ Operation = Install
 Operation = Upgrade
 Operation = Remove
 Target = usr/lib/modules/*/vmlinuz
+Target = boot/*
 
 [Action]
 Description = Sync /boot to ESP...
