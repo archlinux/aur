@@ -1,0 +1,15 @@
+pkgbase = otf-opendyslexic-git
+	pkgdesc = Typeface that uses typeface shapes & features to help offset some visual symptoms of Dyslexia
+	pkgver = 0.91.12.r27.g2cafdbc
+	pkgrel = 1
+	url = https://opendyslexic.org
+	arch = any
+	license = OFL
+	makedepends = git
+	provides = otf-opendyslexic
+	conflicts = otf-opendyslexic
+	source = git+https://github.com/antijingoist/opendyslexic.git
+	sha256sums = SKIP
+
+pkgname = otf-opendyslexic-git
+
