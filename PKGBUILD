@@ -1,22 +1,32 @@
-# Maintainer: reujab <reujab@gmail.com>
-_pkgname=silver
-pkgname=$_pkgname-git
-pkgver=v1.1.0
-pkgrel=3
-makedepends=('rust' 'cargo' 'git')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-pkgdesc="A cross-shell customizable powerline-like prompt with icons"
+# Maintainer: orhun <orhunparmaksiz@gmail.com>
+# https://github.com/orhun/pkgbuilds
+
+pkgname=silver-git
+pkgver=1.1.0.r51.gb25b7a0
+pkgrel=1
+pkgdesc="A cross-shell customizable powerline-like prompt with icons (git)"
+arch=('x86_64')
+url="https://github.com/reujab/silver"
 license=('MIT')
-source=(git+https://github.com/reujab/silver.git#branch=master)
-md5sums=('SKIP')
+makedepends=('cargo' 'git')
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
+source=("git+${url}")
+sha512sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "${pkgname%-git}"
+  cargo build --release --locked --all-features
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    cargo install --locked --all-features --no-track --root "$pkgdir/usr/" --path .
-    install -Dm644 license "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${pkgname%-git}"
+  install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
+  install -Dm 644 readme.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm 644 license -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }

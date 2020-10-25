@@ -1,17 +1,16 @@
 pkgbase = silver-git
-	pkgdesc = A cross-shell customizable powerline-like prompt with icons
-	pkgver = v1.1.0
-	pkgrel = 3
-	arch = i686
+	pkgdesc = A cross-shell customizable powerline-like prompt with icons (git)
+	pkgver = 1.1.0.r51.gb25b7a0
+	pkgrel = 1
+	url = https://github.com/reujab/silver
 	arch = x86_64
-	arch = armv6h
-	arch = armv7h
 	license = MIT
-	makedepends = rust
 	makedepends = cargo
 	makedepends = git
-	source = git+https://github.com/reujab/silver.git#branch=master
-	md5sums = SKIP
+	provides = silver
+	conflicts = silver
+	source = git+https://github.com/reujab/silver
+	sha512sums = SKIP
 
 pkgname = silver-git
 
