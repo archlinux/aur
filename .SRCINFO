@@ -1,0 +1,22 @@
+pkgbase = cascaydia-code-fonts
+	pkgdesc = Cascaydia fonts with Nerd patches.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts/
+	arch = x86_64
+	license = MIT
+	noextract = Caskaydia Cove Regular Nerd Font Complete Mono Windows Compatible.ttf
+	noextract = Caskaydia Cove Regular Nerd Font Complete Mono.ttf
+	noextract = Caskaydia Cove Regular Nerd Font Complete Windows Compatible.ttf
+	noextract = Caskaydia Cove Regular Nerd Font Complete.ttf
+	source = https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/CascadiaCode/complete/Caskaydia%20Cove%20Regular%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf
+	source = https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/CascadiaCode/complete/Caskaydia%20Cove%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
+	source = https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/CascadiaCode/complete/Caskaydia%20Cove%20Regular%20Nerd%20Font%20Complete%20Windows%20Compatible.ttf
+	source = https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/CascadiaCode/complete/Caskaydia%20Cove%20Regular%20Nerd%20Font%20Complete.ttf
+	sha256sums = ccbbc5b4ff2aaf99261d78426e59fb24996b56161858149a2a984097070295fd
+	sha256sums = 0114b6b311271e7e4975ca05419f6921035dc63628b0f4eb55028ea4e0767991
+	sha256sums = c1630546abd0a3c2502eb81b0b8d46ea186de8196acf2f894106a804f581a379
+	sha256sums = 5ec51303efcda3a1cdd3a01b32a1595bbbcecae5f48dad4a0bd376aa03f312a7
+
+pkgname = cascaydia-code-fonts
+
