@@ -1,5 +1,5 @@
 pkgbase = ytdl-dmca-repo
-	pkgdesc = A small command-line program to download videos from YouTube.com and a few more sites (git version)
+	pkgdesc = youtube-dl-git but the source is from GitHub's DMCA repo. Refer [this](https://www.reddit.com/r/programming/comments/jhlhok/someone_replaced_the_github_dmca_repo_with/)
 	pkgver = 416da574e
 	pkgrel = 1
 	url = http://ytdl-org.github.io/youtube-dl/
