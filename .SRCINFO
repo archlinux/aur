@@ -1,6 +1,6 @@
 pkgbase = gif-for-cli-git
 	pkgdesc = Render an animated GIF to your command line terminal.
-	pkgver = r24.9696f25
+	pkgver = r25.31f8aa2
 	pkgrel = 1
 	url = https://github.com/google/gif-for-cli
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = gif-for-cli-git
 	depends = python
 	depends = python-pillow
 	depends = python-requests
-	depends = python-x256
+	depends = python-x256-git
 	depends = ffmpeg
 	source = gif-for-cli-git::git+https://github.com/google/gif-for-cli
 	sha256sums = SKIP
