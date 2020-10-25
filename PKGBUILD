@@ -3,11 +3,11 @@
 # Contributor: Kaushal M <kshlmster cat gmail dog com>
 # Contributor: Stefan Zwanenburg <stefan cat zwanenburg dog info>
 
-pkgbase=kata-containers-bin
+pkgbase=kata2-containers-bin
 pkgname=(
-  kata-runtime-bin
-  kata-containers-image-bin
-  kata-linux-container-bin
+  kata2-runtime-bin
+  kata2-containers-image-bin
+  kata2-linux-container-bin
 )
 pkgver="2.0.0"
 _pkgver=${pkgver/\~/-}
@@ -20,16 +20,16 @@ license=('Apache')
 _bin_pkg_root="/opt/kata"  # `/usr` for f30 packages, `/opt/kata` for static packages
 
 if [ "${_bin_pkg_root}" = "/opt/kata" ]; then
-  #pkgname+=(kata-containers-static)
+  #pkgname+=(kata2-containers-static)
   source=("https://github.com/kata-containers/kata-containers/releases/download/${_pkgver}/kata-static-${_pkgver}-${CARCH}.tar.xz")
   sha512sums=(a201f14d4e88307a8959b158aeaa2789906a913c0463aa60a6124befcb5f6e6c9b107c6cd30e0f3392901c6727972083b9261ec1b4d2d4755c58fa6c6106eca9)
   b2sums=(7bd43eb6facb6012b9c02613588683bea6fe8b3e1cbeb828bdabb7df815acd7c6c6cd9dc85ccc8956d1c304c342a33b356706947f4801c28b3f035b1403d2936)
 else
-  _kata_kernel_ver="5.4.32.75"
-  _default_suffix="-7.1"  # f30 package build revision
+  _kata_kernel_ver="5.4.32.76"
+  _default_suffix="-8.1"  # f30 package build revision
   #_image_suffix="-6.1"
   #_ksm_suffix="-6.1"
-  #_kernel_suffix="-6.1"
+  _kernel_suffix="-9.1"
   #_proxy_suffix="-6.1"
   #_runtime_suffix="-6.1"
   #_shim_suffix="-6.1"
@@ -57,28 +57,27 @@ else
   )
 fi
 
-package_kata-runtime-bin() {
-  depends=(qemu-headless kata-containers-image kata-linux-container)
+package_kata2-runtime-bin() {
+  depends=(qemu-headless kata2-containers-image kata2-linux-container)
   optdepends=(
     'cloud-hypervisor<0.11.0'
     'firecracker<0.22.0'
   )
-  conflicts=('kata-runtime')
-  provides=('kata-runtime')
-  install=kata-runtime.install
+  conflicts=('kata2-runtime' 'kata-runtime')
+  provides=('kata2-runtime')
+  install=kata2-runtime.install
 
   install -D -m 0755 -t ${pkgdir}/usr/bin ${srcdir}${_bin_pkg_root}/bin/{containerd-shim-kata-v2,kata-runtime,kata-collect-data.sh}
   install -D -m 0755 {${srcdir}${_bin_pkg_root}/libexec,${pkgdir}/usr/lib}/kata-containers/kata-netmon
   install -D -m 0644 {${srcdir}${_bin_pkg_root},${pkgdir}/usr}/share/bash-completion/completions/kata-runtime
   install -D -m 0644 -t ${pkgdir}/usr/share/defaults/kata-containers ${srcdir}${_bin_pkg_root}/share/defaults/kata-containers/*.toml
 
-  sed -i 's/libexec/lib/' ${pkgdir}/usr/share/defaults/kata-containers/*.toml ${pkgdir}/usr/bin/kata-collect-data.sh
-  sed -i -e 's/qemu-lite/qemu/' -e 's/qemu-vanilla/qemu/' ${pkgdir}/usr/share/defaults/kata-containers/configuration.toml ${pkgdir}/usr/bin/kata-collect-data.sh
+  sed -i -e "s;${_bin_pkg_root};/usr;" -e 's/libexec/lib/' -e 's/kata-qemu/qemu/' -e 's/qemu-lite/qemu/' -e 's/qemu-vanilla/qemu/' ${pkgdir}/usr/share/defaults/kata-containers/*.toml ${pkgdir}/usr/bin/kata-collect-data.sh
 }
 
-package_kata-containers-image-bin(){
-  conflicts=('kata-containers-image')
-  provides=('kata-containers-image')
+package_kata2-containers-image-bin(){
+  conflicts=('kata2-containers-image' 'kata-containers-image')
+  provides=('kata2-containers-image')
   install -Dm644 -t "${pkgdir}/usr/share/kata-containers/" \
     ${srcdir}${_bin_pkg_root}/share/kata-containers/kata-containers-image_clearlinux_${_pkgver}_agent_*.img \
     ${srcdir}${_bin_pkg_root}/share/kata-containers/kata-containers-initrd_alpine_${_pkgver}_agent_*.initrd
@@ -87,9 +86,9 @@ package_kata-containers-image-bin(){
   ln -s kata-containers-initrd_alpine_${_pkgver}_agent_*.initrd kata-containers-initrd.img
 }
 
-package_kata-linux-container-bin(){
-  conflicts=('kata-linux-container')
-  provides=('kata-linux-container')
+package_kata2-linux-container-bin(){
+  conflicts=('kata2-linux-container' 'kata-linux-container')
+  provides=('kata2-linux-container')
   install -Dm644 -t "${pkgdir}/usr/share/kata-containers/" \
     ${srcdir}${_bin_pkg_root}/share/kata-containers/vmlinux-* \
     ${srcdir}${_bin_pkg_root}/share/kata-containers/vmlinuz-*
@@ -103,6 +102,6 @@ package_kata-linux-container-bin(){
   ln -s vmlinuz-[0-9].[0-9]* vmlinuz.container
 }
 
-package_kata-containers-static(){
+package_kata2-containers-static(){
   cp -dr --no-preserve='ownership' "${srcdir}/opt" "${pkgdir}/opt"
 }
