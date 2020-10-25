@@ -1,6 +1,8 @@
---- src/sage/doctest/control.py.orig       2016-10-20 19:39:53.714618246 +0200
-+++ src/sage/doctest/control.py    2016-10-20 19:40:15.158049920 +0200
-@@ -347,17 +347,6 @@
+diff --git a/src/sage/doctest/control.py b/src/sage/doctest/control.py
+index 2d93841e50..937e20cd2e 100644
+--- a/src/sage/doctest/control.py
++++ b/src/sage/doctest/control.py
+@@ -356,20 +356,6 @@ class DocTestController(SageObject):
                  # Special case to run all optional tests
                  options.optional = True
              else:
@@ -14,6 +16,9 @@
 -                    for pkg in list_packages('optional', local=True).values():
 -                        if pkg['installed'] and pkg['installed_version'] == pkg['remote_version']:
 -                            options.optional.add(pkg['name'])
+-
+-                    from sage.features import package_systems
+-                    options.optional.update(system.name for system in package_systems())
 -
                  # Check that all tags are valid
                  for o in options.optional:

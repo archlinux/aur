@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.2.beta12.r0.g5ec24db181
+pkgver=9.2.rc3.r0.gf976c52c57
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -15,7 +15,7 @@ url="http://www.sagemath.org"
 license=(GPL)
 depends=(ipython palp brial cliquer maxima-ecl gfan sympow nauty python-rpy2 python-fpylll python-psutil python-cypari2
   python-matplotlib python-scipy python-sympy python-networkx python-pillow python-pplpy python-sphinx
-  gap flintqs lcalc lrcalc arb eclib zn_poly gd python-cvxopt pynac linbox m4rie rubiks pari-galdata pari-seadata-small planarity rankwidth tachyon
+  gap flintqs lcalc lrcalc arb eclib zn_poly gd python-cvxopt pynac linbox m4rie pari-galdata pari-seadata-small planarity rankwidth tachyon
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
   iml libgiac libhomfly libbraiding symmetrica three.js)
 optdepends=('cython: to compile cython code' 'python-pkgconfig: to compile cython code'
@@ -26,6 +26,7 @@ optdepends=('cython: to compile cython code' 'python-pkgconfig: to compile cytho
   'buckygen: for generating fullerene graphs' 'plantri: for generating some classes of graphs' 'benzene: for generating fusenes and benzenoids'
   'ffmpeg: to export animations to video' 'imagemagick: to show animations'
   'coxeter: Coxeter groups implementation'
+  'rubiks: Rubiks cube algorithms'
   'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes'
   'python-pynormaliz: Normaliz backend for polyhedral computations'
   'latte-integrale: integral point count in polyhedra' 'python-jupymake: polymake backend for polyhedral computations'
@@ -45,10 +46,10 @@ source=(git://git.sagemath.org/sage.git#branch=develop
 sha256sums=('SKIP'
             '4fb46b12b5ee5e5bde87f646dc69a7b8929886be247e2d9a9ae1f12efbe5b580'
             'af922e1f978821a9a1f6c9a56130d71e5011c84a7aee7bf66a591bee658af30b'
-            '77aa8e99aae5da74a9486f01b603a0b5d224c3d13e9d9fab681fb71a6af149f1'
+            '7da0dbcda15a327c21dc33853cb8f98cb86a283139f8735e3b20a71d49458a88'
             '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
             '6f98488d0eb3a12b958cd1a34f85b7bee950ac756430371c1e134e564cbbf7d3'
-            'ae3c0c4412030224e7a911636a78a23e8835f49379557874b411e63dd876786f'
+            '34f06f9776f84f6998b1350555316e0ffea76ed16e149916970f19ef750a467f'
             'b881d4a6867a6f5360fd204e6a86fd27c6177c539b06f521402e2bcb5a6209cd')
 
 pkgver() {
@@ -75,7 +76,7 @@ prepare(){
 # assume all optional packages are installed
   patch -p1 -i ../sagemath-optional-packages.patch
 # don't list optional packages when running tests
-  patch -p0 -i ../test-optional.patch
+  patch -p1 -i ../test-optional.patch
 # use correct latte-count binary name
   patch -p1 -i ../latte-count.patch
 # Fix mathjax path
