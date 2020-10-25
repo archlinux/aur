@@ -1,6 +1,6 @@
 # Maintainer: Dana Sorensen <dana.r.sorensen@gmail.com>
 
-pkgname=nft-geo-filter
+pkgname=nft-geo-filter-git
 pkgver=v3.0.r39.76e1603
 pkgrel=1
 pkgdesc="Allow/deny traffic in nftables using country specific IP blocks"
