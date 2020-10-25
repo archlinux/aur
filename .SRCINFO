@@ -1,0 +1,17 @@
+pkgbase = pkmt
+	pkgdesc = Herramienta LFS
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/azaeldevel/pkmt
+	arch = x86_64
+	license = GPL
+	depends = octetos-coreutils
+	depends = libconfig
+	depends = bdt
+	depends = cunit
+	depends = curl
+	source = https://github.com/azaeldevel/pkmt/archive/0.11.0-alpha.tar.gz
+	md5sums = 73e83dfe8522e1fe660e236fd3f11f2d
+
+pkgname = pkmt
+
