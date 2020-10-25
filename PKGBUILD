@@ -58,7 +58,7 @@ else
 fi
 
 package_kata2-runtime-bin() {
-  depends=(qemu-headless kata2-containers-image kata2-linux-container)
+  depends=(qemu-headless kata2-containers-image kata2-linux-container kata2-containers-image)
   optdepends=(
     'cloud-hypervisor<0.11.0'
     'firecracker<0.22.0'
@@ -67,10 +67,14 @@ package_kata2-runtime-bin() {
   provides=('kata2-runtime')
   install=kata2-runtime.install
 
-  install -D -m 0755 -t ${pkgdir}/usr/bin ${srcdir}${_bin_pkg_root}/bin/{containerd-shim-kata-v2,kata-runtime,kata-collect-data.sh}
-  install -D -m 0755 {${srcdir}${_bin_pkg_root}/libexec,${pkgdir}/usr/lib}/kata-containers/kata-netmon
-  install -D -m 0644 {${srcdir}${_bin_pkg_root},${pkgdir}/usr}/share/bash-completion/completions/kata-runtime
+  install -D -m 0755 -t ${pkgdir}/usr/bin \
+    ${srcdir}${_bin_pkg_root}/bin/containerd-shim-kata-v2 \
+    ${srcdir}${_bin_pkg_root}/bin/kata-runtime \
+    ${srcdir}${_bin_pkg_root}/bin/kata-collect-data.sh
+  install -D -m 0755 ${srcdir}${_bin_pkg_root}/libexec/kata-containers/kata-netmon ${pkgdir}/usr/lib/kata-containers/kata-netmon
+  install -D -m 0644 ${srcdir}${_bin_pkg_root}/share/bash-completion/completions/kata-runtime ${pkgdir}/usr/share/bash-completion/completions/kata-runtime
   install -D -m 0644 -t ${pkgdir}/usr/share/defaults/kata-containers ${srcdir}${_bin_pkg_root}/share/defaults/kata-containers/*.toml
+  #install -D -m 0644 ${srcdir}${_bin_pkg_root}/share/kata-qemu/qemu/pvh.bin ${pkgdir}/usr/share/qemu/pvh.bin
 
   sed -i -e "s;${_bin_pkg_root};/usr;" -e 's/libexec/lib/' -e 's/kata-qemu/qemu/' -e 's/qemu-lite/qemu/' -e 's/qemu-vanilla/qemu/' ${pkgdir}/usr/share/defaults/kata-containers/*.toml ${pkgdir}/usr/bin/kata-collect-data.sh
 }

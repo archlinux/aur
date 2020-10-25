@@ -14,6 +14,7 @@ pkgname = kata2-runtime-bin
 	depends = qemu-headless
 	depends = kata2-containers-image
 	depends = kata2-linux-container
+	depends = kata2-containers-image
 	optdepends = cloud-hypervisor<0.11.0
 	optdepends = firecracker<0.22.0
 	provides = kata2-runtime
