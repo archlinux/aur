@@ -1,6 +1,6 @@
 pkgname=wikitaxi
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="browse MediaWiki files offline"
 arch=('x86_64')
 license=('unknown')
