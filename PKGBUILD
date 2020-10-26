@@ -2,13 +2,13 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgbase=linux-rt
-pkgver=5.9.1.18.arch1
-pkgrel=2
+pkgver=5.9.1.19.arch1
+pkgrel=1
 pkgdesc='Linux RT'
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
 license=('GPL2')
-makedepends=('bc' 'git' 'graphviz' 'imagemagick' 'kmod' 'libelf'
+makedepends=('bc' 'git' 'graphviz' 'imagemagick' 'kmod' 'libelf' 'pahole'
 'python-sphinx' 'python-sphinx_rtd_theme' 'xmlto')
 options=('!strip')
 source=(
@@ -17,10 +17,10 @@ source=(
   sphinx-workaround.patch
 )
 sha512sums=('SKIP'
-            'eda968b4408eabf1dc57796bb208e9088d7c475017fa5284de20b1f4fe770e8856000df36981d0eae051b7f8702355d0eed851a6a762ff3607fbfd73ab8a3855'
+            '34d040462566e365e094ce1ce6a22558913203f98a4beead302efc339c645e1cf4788cd1ff642a1a5161a4947ff23fe87867ff8ed4fbeb8814d18c12e8e4239d'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be')
 b2sums=('SKIP'
-        '699c5a7686d5b19f8cb2bb47f1f63c32411c5edc8933eed31cc0f7cb68163465e665b38ee17c531e47e1c5417a849f34528c050675e105d8075946d056ef7f74'
+        'b2b925584c62ede37276f7207ce72caa702cf8d27f8ae0653e564f49a96f969518347ef888ccf5210c82a971dc89e8cc4f269234072c6e3121a6cf1f39f35331'
         'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
@@ -72,7 +72,6 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-  replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd "${pkgbase}"
   local kernver="$(<version)"
