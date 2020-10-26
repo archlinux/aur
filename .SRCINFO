@@ -1,6 +1,6 @@
 pkgbase = font-line
 	pkgdesc = OpenType vertical metrics reporting and font line spacing adjustment tool
-	pkgver = 3.1.2
+	pkgver = 3.1.3
 	pkgrel = 1
 	url = https://github.com/source-foundry/font-line
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = font-line
 	depends = python-commandlines
 	depends = python-fonttools
 	depends = python-standardstreams
-	source = font-line-3.1.2.tar.gz::https://github.com/source-foundry/font-line/archive/v3.1.2.tar.gz
-	sha256sums = 708b5f815d7f6dee478c723950c383ed31abc22343bd176da24bbc4762f7f8b1
+	source = font-line-3.1.3.tar.gz::https://github.com/source-foundry/font-line/archive/v3.1.3.tar.gz
+	sha256sums = d03825af124992ad9a96742a69819a20805ad929f14d4e5d93b4891713cb8dfb
 
 pkgname = font-line
 
