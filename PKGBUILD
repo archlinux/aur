@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc='Print upcoming space-related events to your terminal'
 arch=('any')
 url='https://github.com/The-Kid-Gid/nextinspace'
+_url_pypi='https://pypi.org/project/nextinspace'
 license=('GPL3')
 depends=('python-colorama' 'python-requests' 'python-tzlocal')
 makedepends=('git' 'python-setuptools')
