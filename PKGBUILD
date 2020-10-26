@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/jstar-lang/jstar"
 license=('MIT')
 makedepends=('cmake>=3.9' 'python>=2.7')
-source=("https://github.com/jstar-lang/jstar/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}::https://github.com/jstar-lang/jstar/archive/v${pkgver}.tar.gz")
 sha512sums=("72baf230c5ebfcf22a59ea553bbdb332848cfec725f38115bba5555836f0d94e75c6d19c0d78b1d0d2a10697a9fc9d779b15197244be831df5384bb6d7f281b3")
 
 build() {
