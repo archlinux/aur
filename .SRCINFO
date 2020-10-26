@@ -1,14 +1,14 @@
 pkgbase = python-colcon-python-setup-py
 	pkgdesc = An extension for colcon-core to identify packages with a setup.py file by introspecting the arguments to the setup() function call of setuptools.
-	pkgver = 0.2.1
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://pypi.org/project/colcon-python-setup-py
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python-colcon-core
-	source = https://files.pythonhosted.org/packages/65/97/f0dac66d6afa400e339229398ffd250b7be320261fa32a13db3e41764567/colcon-python-setup-py-0.2.1.tar.gz
-	sha256sums = c9495b26515fc17189045d8a564e0b37a359d797c900f78e83f6ece1377d573b
+	source = https://files.pythonhosted.org/packages/source/c/colcon-python-setup-py/colcon-python-setup-py-0.2.7.tar.gz
+	sha256sums = eec293085c4301797706d9e61634fa0cb2136be9b820aa556b2b8baa0bde412d
 
 pkgname = python-colcon-python-setup-py
 
