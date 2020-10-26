@@ -1,6 +1,6 @@
 pkgbase = insomnia-bin
 	pkgdesc = API Client and Design Platform for GraphQL and REST
-	pkgver = 2020.4.1
+	pkgver = 2020.4.2
 	pkgrel = 1
 	url = https://insomnia.rest
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = insomnia-bin
 	depends = xdg-utils
 	provides = insomnia
 	conflicts = insomnia
-	source = https://github.com/Kong/insomnia/releases/download/core@2020.4.1/Insomnia.Core-2020.4.1.deb
-	source = Insomnia-2020.4.1-LICENSE::https://github.com/Kong/insomnia/raw/master/LICENSE
-	sha256sums = 353cf8b0a78c95ee610f72ff2ee825c7bab9805f6ea7995b3aaebce7d8f537d8
-	sha256sums = SKIP
+	source = https://github.com/Kong/insomnia/releases/download/core@2020.4.2/Insomnia.Core-2020.4.2.deb
+	source = license-fa85501efdb0aff74d4fcca4207664711486c430::https://github.com/Kong/insomnia/raw/fa85501efdb0aff74d4fcca4207664711486c430/LICENSE
+	sha256sums = 6a8f7a73c7116473e821f2874dc6a32be0dfb69270e2abded7629a05af35ae5f
+	sha256sums = cc91b5641bbbf592a69ca5f7b45807efba470068e815fc7682a42022bbd3cbb9
 
 pkgname = insomnia-bin
 
