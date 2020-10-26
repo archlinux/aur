@@ -2,7 +2,7 @@
 pkgname=suricata-nfqueue
 _pkgname=suricata
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source mature, fast and robust network IDS and IPS"
 arch=('i686' 'x86_64')
 url="https://suricata-ids.org/"
@@ -10,7 +10,7 @@ license=('GPL2')
 provides=('suricata')
 conflicts=('suricata')
 makedepends=('rust')
-depends=('file' 'libcap-ng' 'libnet' 'libnetfilter_queue' 'libpcap' 'libyaml' 'nss' 'pcre' 'python' 'python-yaml')
+depends=('file' 'jansson' 'libcap-ng' 'libnet' 'libnetfilter_queue' 'libpcap' 'libyaml' 'lz4' 'nss' 'pcre' 'python' 'python-yaml')
 install=suricata.install
 backup=('etc/suricata/suricata.yaml'
         'etc/suricata/local.yaml'
