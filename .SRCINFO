@@ -1,15 +1,15 @@
 pkgbase = lagrange
 	pkgdesc = Beautiful Gemini Client
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://git.skyjake.fi/skyjake/lagrange
 	arch = any
 	license = BSD
 	makedepends = cmake
 	depends = openssl
 	depends = sdl2
-	source = https://git.skyjake.fi/skyjake/lagrange/releases/download/v0.5.0/lagrange-0.5.0.tar.gz
-	md5sums = 9c7284b6e0cae53ef4ba7ad62b0c9434
+	source = https://git.skyjake.fi/skyjake/lagrange/releases/download/v0.6.0/lagrange-0.6.0.tar.gz
+	md5sums = d7dd4889fddff7de5f8bb7e91b9acaf4
 
 pkgname = lagrange
 
