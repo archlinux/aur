@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=libosmpbf-git
-pkgver=1.3.3.r15.g1283c4a
+pkgver=1.4.0.r4.g8ab05ca
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
