@@ -3,7 +3,7 @@
 
 _target=riscv64-unknown-elf
 pkgname=$_target-picolibc
-pkgver=1.4.6
+pkgver=1.4.7
 pkgrel=1
 pkgdesc='Fork of newlib with stdio bits from avrlibc'
 conflicts=("$_target-newlib")
@@ -12,14 +12,14 @@ url='https://github.com/picolibc/picolibc'
 license=('BSD')
 makedepends=("$_target-gcc" 'meson')
 source=("picolibc-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('00764d0c0a2e8685fd9c91685ee8c404ef935975eaa07a55b15243558d390a00')
+sha256sums=('c46d37bbdea6eb1eb658f67d05c8c37f2b7e768e54f4d0b4312da9326c0cd92e')
 options=(!strip !buildflags)
 
 build() {
   meson \
     --prefix="/usr/$_target" \
     --buildtype=plain \
-    --cross-file "picolibc-$pkgver/cross-${_target}.txt" \
+    --cross-file "picolibc-$pkgver/scripts/cross-${_target}.txt" \
     "picolibc-$pkgver" build
 
   meson compile -C build
