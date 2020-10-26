@@ -1,6 +1,6 @@
 pkgname=distroflex
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-distro settings tool"
 arch=('any')
 url="https://github.com/AlexVIM1/distroflex"
@@ -13,15 +13,15 @@ optdepends=(
 	'alsa-lib: sound library'
 	'alsa-utils: sound settings'
 )
-source=("https://raw.githubusercontent.com/AlexVIM1/distroflex/pkg/${pkgname}-${pkgver}-${pkgrel}.tar.gz")
-md5sums=('e9b39bbfb9213bdb32ecaa8300e2500b')
+source=("https://github.com/AlexVIM1/distroflex/raw/master/${pkgname}-${pkgver}-${pkgrel}.tar.gz")
+md5sums=('80ab03cff3137f786d70564eceb3cbc0')
 build() {
-	cd "${srcdir}/build"
-    	qmake
-    	make
+	cd "${srcdir}"
+    qmake
+    make
 }
 package() {
-    	cd "${srcdir}/build"
+    cd "${srcdir}"
 	mkdir -p "${pkgdir}/usr/bin/"
 	mkdir -p "${pkgdir}/usr/share/applications"
 	mkdir -p "${pkgdir}/usr/share/pixmaps"

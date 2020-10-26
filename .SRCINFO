@@ -1,7 +1,7 @@
 pkgbase = distroflex
 	pkgdesc = Cross-distro settings tool
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AlexVIM1/distroflex
 	arch = any
 	license = GPLv3
@@ -11,8 +11,8 @@ pkgbase = distroflex
 	optdepends = lm_sensors: get CPU temperature
 	optdepends = alsa-lib: sound library
 	optdepends = alsa-utils: sound settings
-	source = https://raw.githubusercontent.com/AlexVIM1/distroflex/pkg/distroflex-1.0-1.tar.gz
-	md5sums = e9b39bbfb9213bdb32ecaa8300e2500b
+	source = https://github.com/AlexVIM1/distroflex/raw/master/distroflex-1.0-2.tar.gz
+	md5sums = 80ab03cff3137f786d70564eceb3cbc0
 
 pkgname = distroflex
 
