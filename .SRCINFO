@@ -1,0 +1,19 @@
+pkgbase = mindspore-lite
+	pkgdesc = Lightweright machine learning inference framework
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.mindspore.cn/en
+	arch = x86_64
+	license = Apache
+	depends = protobuf
+	depends = flatbuffers
+	depends = gmock
+	depends = eigen
+	depends = cmake
+	source = mindspore-lite-1.0.1.tar.gz::https://github.com/mindspore-ai/mindspore/archive/v1.0.1.tar.gz
+	source = googletest.tar.gz::https://github.com/google/googletest/archive/release-1.8.0.tar.gz
+	sha512sums = 159c5e0ee00cd3c72d88279bed206f20406d40a7b97e9e22d43755ba269d883d4757e660315aa70794231ae9f06f286f50e7dbb6460128ea7f8ec41d64b2b5cc
+	sha512sums = 1dbece324473e53a83a60601b02c92c089f5d314761351974e097b2cf4d24af4296f9eb8653b6b03b1e363d9c5f793897acae1f0c7ac40149216035c4d395d9d
+
+pkgname = mindspore-lite
+
