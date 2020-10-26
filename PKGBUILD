@@ -3,7 +3,7 @@
 replaces=('pepper')
 pkgname=crown
 pkgver=0.39.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The Flexible Game Engine"
 arch=(x86_64)
 url="https://github.com/dbartolini/crown"
@@ -20,7 +20,7 @@ source=("https://github.com/dbartolini/crown/releases/download/v$pkgver/$pkgname
         "crown.sh"
         "crown.desktop"
         )
-sha256sums=('a9f9674b0df3af56415d25d682e20bcc3f6875052c13f7d751c811fabb87ba89'
+sha256sums=('f5dd85eec0096e8e6054c67ce3c38a3e9835c8b691adb534bcdf1c28badf7da7'
             'a03e46e40bf1a08aecb97dfea2d22e3f7b61ab906a3f24e329a98fd6fb1a9b1d'
             'e8950a977117d524b56c5103126938430d787dbada535c9efaba266666ad3624')
 
