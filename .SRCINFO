@@ -1,0 +1,17 @@
+pkgbase = simple-droidcam-client
+	pkgdesc = A simple droidcam client
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://gitlab.com/tarmaciltur/simple-droidcam-client
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	depends = v4l2loopback-dkms
+	depends = ffmpeg
+	depends = android-udev
+	source = https://gitlab.com/tarmaciltur/simple-droidcam-client/-/archive/0.3.0/simple-droidcam-client-0.3.0.tar.gz
+	sha256sums = 0abe580d573e0cf8af4afbc22049c8683af5380222ea8d73ff626a355e4bb1f7
+
+pkgname = simple-droidcam-client
+
