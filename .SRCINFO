@@ -1,0 +1,25 @@
+pkgbase = nchat-git
+	pkgdesc = nchat is a console-based chat client for Linux and macOS with support for Telegram.
+	pkgver = 0.28
+	pkgrel = 1
+	url = https://github.com/d99kris/nchat
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = ncurses
+	depends = ccache
+	depends = cmake
+	depends = gperf
+	depends = help2man
+	depends = readline
+	depends = openssl
+	depends = ncurses
+	depends = zlib
+	provides = nchat
+	conflicts = nchat
+	source = git+https://github.com/d99kris/nchat
+	md5sums = SKIP
+
+pkgname = nchat-git
+
