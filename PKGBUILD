@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-git
-pkgver=5.7rc1.r0.g8f3d9f354286
+pkgver=5.10rc1.r5.g41ba50b0572e
 pkgrel=1
 pkgdesc='Linux git'
 url="https://www.kernel.org"
@@ -17,7 +17,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '4931225620a3314232b3144e6ecd8cc10470cf08e1e8553a89ae4d161a087898')
+            'ff6ed758e3e0f41aee968c117f96dd802e3ee1a9eacc5a2621576e4e94d98e24')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
