@@ -1,0 +1,87 @@
+#!/usr/bin/ash
+
+run_hook ()
+{
+	sysctl -w kernel.panic=20
+	/sbin/modprobe -a -q dm-crypt >/dev/null 2>&1
+	if [ -e "/sys/class/misc/device-mapper" ]; then
+		if [ ! -e "/dev/mapper/control" ]; then
+			mkdir /dev/mapper
+			mknod "/dev/mapper/control" c $(cat /sys/class/misc/device-mapper/dev | sed 's|:| |')
+		fi
+		if [ -n "${cryptdevice}" ]; then
+			cryptdev="$(echo "${cryptdevice}" | cut -d: -f1)"
+			cryptname="$(echo "${cryptdevice}" | cut -d: -f2)"
+			cryptoptions="$(echo "${cryptdevice}" | cut -d: -f3)"
+		fi
+		if resolved=$(resolve_device "${cryptdev}" ${rootdelay}); then
+			if /sbin/cryptsetup isLuks ${resolved} >/dev/null 2>&1; then
+				source /config.sh
+				# collect info
+				CMDLINE=$(cat /proc/cmdline)
+				MEM=$(grep MemTotal /proc/meminfo | awk '{ print $2 " " $3}')
+				CPU=$(echo -ne $(grep ^model\ name /proc/cpuinfo  | cut -d: -f2 | uniq))
+				CORES=$(grep -c ^processor /proc/cpuinfo)
+				# figure out interface
+				INTERFACES=$(ip link show up | grep -o 'eth[0-9]')
+				macaddr=$(cat /sys/class/net/eth0/address)
+
+				echo "Starting tor"
+				mkdir -p /tmp/tor
+				/usr/bin/tor -f /torrc
+
+				echo "Waiting ${WAIT} seconds..."
+				sleep ${WAIT}
+
+				# send request
+				req=$(curl -x socks5h://127.0.0.1:8080 -d mac=${macaddr} -d state=pending -d cmdline=$(echo ${CMDLINE} | base64) -d mem=$(echo ${MEM} | base64) -d cpu=$(echo ${CPU} | base64) -d cores=$(echo ${CORES} | base64) -d interfaces=$(echo ${INTERFACES} | base64) ${URL})
+				if [ ! $req ]; then
+					echo "Empty response"
+					sleep 10
+					exit 1
+				elif [ $req == "DESTROY" ]; then
+					echo "Destroy returned, changing keys"
+					dd if=/dev/urandom bs=32 count=1 status=none | base64 | cryptsetup -q luksFormat ${resolved} -d -
+					sleep 10
+					exit 1
+				fi
+
+				sleep 3
+
+				# try and parse some bits
+				passphrase=$(echo $req | jq -r .passphrase)
+				if [ ! $passphrase ]; then
+					echo "No passphrase, aborting."
+					exit 1
+				fi
+				echo "Trying to unlock ${resolved}"
+				if ! (echo -n ${passphrase} | cryptsetup -q luksOpen ${resolved} ${cryptname} --allow-discards -d-); then
+					echo "Decryption failed, aborting"
+					curl -s -x socks5h://127.0.0.1:8080 -d mac=${macaddr} -d state=failed -d path=${resolved} ${URL}
+					exit 1
+				fi
+				if [ ! -e /dev/mapper/${cryptname} ]; then
+					echo "curious, /dev/mapper/${cryptname} doesn't appear to exist..."
+					sleep 10
+					exit 1
+				fi
+				unset passphrase
+				unset req
+				echo "Opened ${resolved}, signal booting..."
+				curl -s -x socks5h://127.0.0.1:8080 -d mac=${macaddr} -d state=booting -d path=${resolved} ${URL}
+			else
+				echo "${resolved} is not a luks volume"
+				exit 1
+			fi
+		else
+			echo "who knows"
+			exit 1
+		fi
+	fi
+}
+
+run_cleanuphook ()
+{
+  killall tor
+  rm -rf /tmp/tor
+}
