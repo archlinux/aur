@@ -9,7 +9,7 @@
 
 pkgbase=intel-media-sdk-git
 pkgname=('intel-media-sdk-git' 'libmfx-git')
-pkgver=2020.3.pre2.r5.g37f26bb6
+pkgver=2020.3.pre6.r61.ge7b13633
 pkgrel=1
 pkgdesc='API to access hardware-accelerated video on Intel Gen graphics hardware platforms (git version)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ url='https://software.intel.com/en-us/media-sdk/'
 license=('MIT')
 makedepends=('libdrm' 'libva-git' 'wayland' 'intel-media-driver'
              'git' 'git-lfs' 'cmake' 'libpciaccess' 'libx11' 'libxcb' 'python'
-             'opencl-headers' 'ocl-icd' 'intel-compute-runtime')
+             'opencl-headers' 'opencl-clhpp' 'ocl-icd' 'intel-compute-runtime')
 source=('git+https://github.com/Intel-Media-SDK/MediaSDK.git')
 sha256sums=('SKIP')
 
@@ -51,7 +51,7 @@ check() {
 }
 
 package_intel-media-sdk-git() {
-    depends=('gcc-libs' 'libdrm' 'libva-git' 'wayland' "libmfx-git=${pkgver}" 'intel-media-driver')
+    depends=('libdrm' 'libva-git' 'wayland' "libmfx-git=${pkgver}" 'intel-media-driver')
     optdepends=('ocl-icd: for rotate_opencl plugin'
                 'intel-compute-runtime: for rotate_opencl plugin')
     provides=('intel-media-sdk')

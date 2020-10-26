@@ -1,6 +1,6 @@
 pkgbase = intel-media-sdk-git
 	pkgdesc = API to access hardware-accelerated video on Intel Gen graphics hardware platforms (git version)
-	pkgver = 2019.4.pre2.r121.g2c3a4551
+	pkgver = 2020.3.pre6.r61.ge7b13633
 	pkgrel = 1
 	url = https://software.intel.com/en-us/media-sdk/
 	arch = x86_64
@@ -17,17 +17,17 @@ pkgbase = intel-media-sdk-git
 	makedepends = libxcb
 	makedepends = python
 	makedepends = opencl-headers
+	makedepends = opencl-clhpp
 	makedepends = ocl-icd
 	makedepends = intel-compute-runtime
 	source = git+https://github.com/Intel-Media-SDK/MediaSDK.git
 	sha256sums = SKIP
 
 pkgname = intel-media-sdk-git
-	depends = gcc-libs
 	depends = libdrm
 	depends = libva-git
 	depends = wayland
-	depends = libmfx-git=2019.4.pre2.r121.g2c3a4551
+	depends = libmfx-git=2020.3.pre6.r61.ge7b13633
 	depends = intel-media-driver
 	optdepends = ocl-icd: for rotate_opencl plugin
 	optdepends = intel-compute-runtime: for rotate_opencl plugin
