@@ -1,6 +1,6 @@
 pkgname=mingw-w64-ceres-solver
-pkgver=1.14.0
-pkgrel=4
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Solver for nonlinear least squares problems (mingw-w64)"
 arch=('any')
 url="http://ceres-solver.org/"
@@ -8,8 +8,8 @@ license=('LGPL')
 makedepends=('mingw-w64-cmake')
 depends=('mingw-w64-lapack' 'mingw-w64-google-glog' 'mingw-w64-suitesparse' 'mingw-w64-eigen')
 options=('!buildflags' 'staticlibs' '!strip')
-source=("http://ceres-solver.org/ceres-solver-1.14.0.tar.gz")
-sha256sums=("4744005fc3b902fed886ea418df70690caa8e2ff6b5a90f3dd88a3d291ef8e8e")
+source=("http://ceres-solver.org/ceres-solver-${pkgver}.tar.gz")
+sha256sums=('10298a1d75ca884aa0507d1abb0e0f04800a92871cd400d4c361b56a777a7603')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
