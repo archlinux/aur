@@ -1,26 +1,24 @@
-# Maintainer: Tomasz Paś <kierek93@gmail.com>
+# Maintainer: Martin Rys <rys.pw/#contact_me>
 
 pkgname=sc-controller
-pkgver=0.4.7
+pkgver=0.4.8.1
 pkgrel=1
 pkgdesc='User-mode driver and GTK3 based GUI for Steam Controller'
 arch=('any')
-url='https://github.com/kozec/sc-controller'
+url='https://github.com/Ryochan7/sc-controller'
 license=('GPL2')
-depends=('gtk3' 'python2-gobject' 'python2-cairo' 'pylibacl' 'python2-evdev')
-makedepends=('python2-setuptools')
+depends=('gtk3' 'python-gobject' 'python-cairo' 'python-pylibacl' 'python-evdev')
+makedepends=('python-setuptools')
 conflicts=("${pkgname}-git")
-source=("https://github.com/kozec/sc-controller/archive/v${pkgver}.tar.gz")
-sha256sums=('b564d2f35a0a41ed5ea17df4add545a6e2035b6444227880131cdcced620ef04')
+source=("https://github.com/Ryochan7/sc-controller/archive/v${pkgver}.tar.gz")
+sha256sums=('920738a15e430d79e2f85f08f4ab3a0b3bcb0cf916be858db38d432377b0534f')
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
-  	python2 setup.py build
+	python setup.py build
 }
 
 package() {
 	cd "$srcdir/${pkgname}-${pkgver}"
-	python2 setup.py install --root="${pkgdir}" --optimize=1
+	python setup.py install --root="${pkgdir}" --optimize=1
 }
-
-# vim:set ts=2 sw=2 et:
