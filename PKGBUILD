@@ -12,7 +12,7 @@ license=('custom:brother commercial license')
 
 arch=('i686' 'x86_64')
 
-depends=('cups' 'perl' 'bash')
+depends=('cups' 'perl' 'bash' 'ghostscript')
 if test "$CARCH" == x86_64; then
   depends+=('lib32-glibc')
 fi
