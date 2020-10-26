@@ -1,4 +1,5 @@
-# Maintainer: Tong Chunli<t.cunly at 163 dot com>
+# Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
+# Contributor: Tong Chunli<t.cunly at 163 dot com>
 pkgname=python-colcon-recursive-crawl
 pkgver=0.2.1
 pkgrel=1
