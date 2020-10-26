@@ -1,6 +1,6 @@
 # Maintainer: Noel Kuntze <noel@familie-kuntze.de>
 pkgname=docker-makepkg
-pkgver=2.8
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="A script and docker image to build packages in a clean container"
 arch=(any)
@@ -10,10 +10,10 @@ depends=(iptables docker darkhttpd python python-netifaces python-ipaddress)
 makedepends=()
 source=("https://github.com/Thermi/docker-makepkg/releases/download/${pkgver}/docker-makepkg-${pkgver}.tar.gz"
 		"https://github.com/Thermi/docker-makepkg/releases/download/${pkgver}/docker-makepkg-${pkgver}.tar.gz.asc")
-sha256sums=('bb72bd5fc54fdbf77a40e57b7e58a2b5066cb704cfadc59189df2fe3be0299f3'
+sha256sums=('7e7f2108795521fd5725b4843ed410fa9394ef4362881201b2eadcba0f372bab'
             'SKIP')
 
-validpgpkeys=(92C65A2073E1D8A4D0985B7B509B7C4EBF451EDC)
+validpgpkeys=(352493BEB5F78E631372AF2DF54EE40B0739AD6C)
 install=docker_makepkg.install
 
 package() {
