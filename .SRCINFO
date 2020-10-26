@@ -24,7 +24,7 @@ pkgbase = linux-amd
 	sha256sums = 5ab29eb64e57df83b395a29a6a4f89030d142feffbfbf73b3afc6d97a2a7fd12
 
 pkgname = linux-amd
-	pkgdesc = Linux kernel aimed at the latest AMD CPU based hardware
+	pkgdesc = Linux kernel aimed at the latest AMD Ryzen CPU based hardware
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware

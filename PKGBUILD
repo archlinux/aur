@@ -82,7 +82,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="Linux kernel aimed at the latest AMD CPU based hardware"
+  pkgdesc="Linux kernel aimed at the latest AMD Ryzen CPU based hardware"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=('linux')
