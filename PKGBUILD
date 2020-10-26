@@ -1,13 +1,13 @@
 # Maintainer: Cobra <najahannah [at] gmail [dot] com>
 pkgname=portfolio
-pkgver=0.48.1
+pkgver=0.49.0
 pkgrel=1
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
 url="http://buchen.github.io/portfolio/"
 license=('EPL')
 depends=('java-runtime>=8' 'webkit2gtk')
-makedepends=('maven' 'java-runtime>=8' 'java-runtime<14' 'archlinux-java-run' 'gendesk')
+makedepends=('maven' 'java-runtime>=8' 'archlinux-java-run' 'gendesk')
 
 _DEST="/usr/share/portfolio"
 
@@ -15,7 +15,7 @@ _DEST="/usr/share/portfolio"
 [ "$CARCH" = "x86_64" ] && _platform="x86_64"
 
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz")
-sha1sums=('08ec6178eace364d8d5991a5c926aa4d62708ebe')
+sha1sums=('7e7beaba075967c5ab2721a89ef3b27eb355bd3c')
 
 prepare() {
 	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
@@ -32,7 +32,7 @@ prepare() {
 build() {
     export MAVEN_OPTS="-Xmx1g"
     #export JAVA_HOME=/usr/lib/jvm/default-runtime
-    export JAVA_HOME=$(archlinux-java-run --min 8 --max 13 --java-home)
+    export JAVA_HOME=$(archlinux-java-run --min 8 --java-home)
     cd $pkgname-$pkgver
 
     cd portfolio-app
