@@ -1,14 +1,14 @@
 pkgbase = python-colcon-powershell
 	pkgdesc = An extension for colcon-core to provide PowerShell scripts.
-	pkgver = 0.3.4
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://pypi.org/project/colcon-powershell/
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python-colcon-core
-	source = https://files.pythonhosted.org/packages/71/47/09e63a06b4d4df417323f37e4bb13a2629f41c8cea31dc3bbd7bc1d8d69f/colcon-powershell-0.3.4.tar.gz
-	sha256sums = a0d7b5008fa2648cafbf19b8cd3310f1fde980ec5c0094bac746e8c56d02ee91
+	source = https://files.pythonhosted.org/packages/source/c/colcon-powershell/colcon-powershell-0.3.6.tar.gz
+	sha256sums = 351d4bd1a8be45857d79cc2575d1c71346501a56f2e5546e348134c64b59e289
 
 pkgname = python-colcon-powershell
 
