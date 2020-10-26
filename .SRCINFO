@@ -1,0 +1,25 @@
+pkgbase = mautrix-whatsapp-git
+	pkgdesc = A Matrix-WhatsApp puppeting bridge (git)
+	pkgver = r451.cccaa62
+	pkgrel = 1
+	arch = x86_64
+	license = AGPL
+	makedepends = go
+	makedepends = libolm
+	depends = libolm
+	depends = ffmpeg
+	conflicts = mautrix-whatsapp
+	backup = etc/mautrix-whatsapp-git/mautrix-whatsapp.yaml
+	source = mautrix-whatsapp-git::git+https://github.com/tulir/mautrix-whatsapp-git
+	source = sysusers-mautrix-whatsapp.conf
+	source = mautrix-whatsapp.tmpfiles
+	source = mautrix-whatsapp.service
+	source = log-path.diff
+	md5sums = SKIP
+	md5sums = f1fea8f4fcd101f1230031652de1c53c
+	md5sums = 6e1e73d152d8a459541fcb6c79654c4a
+	md5sums = 01bd1d42f312bebfeec6f8a71e714d1d
+	md5sums = 9b4a4e7d6265ecc83cdaa83a03f1bd5b
+
+pkgname = mautrix-whatsapp-git
+
