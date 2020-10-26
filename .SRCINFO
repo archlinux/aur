@@ -1,14 +1,14 @@
 pkgbase = python-colcon-zsh
 	pkgdesc = An extension for colcon-core to provide zsh scripts.
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://pypi.org/project/colcon-zsh
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python-colcon-core
-	source = https://files.pythonhosted.org/packages/52/98/3bd10dbfec6410f4bccd1fd20d6d8fff14e877024c87e075477a4a7bf2e7/colcon-zsh-0.3.2.tar.gz
-	sha256sums = 4b108e81913da4ff408de788633de5868b9dfb2a577a67997e50b3ccfed1ff54
+	source = https://files.pythonhosted.org/packages/source/c/colcon-zsh/colcon-zsh-0.4.0.tar.gz
+	sha256sums = 555c1b1653f9a97c1acb16fb350042b3cce5d692a13db9a6cbcc3b4de9b94beb
 
 pkgname = python-colcon-zsh
 
