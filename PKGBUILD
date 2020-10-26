@@ -3,14 +3,14 @@
 pkgname=superproductivity-git
 _pkgname=superproductivity
 _reponame=super-productivity
-pkgver=5.4.2.r0.gb77473a6
+pkgver=6.0.1.r2.g15c734304
 pkgrel=1
 pkgdesc='To Do List / Time Tracker with Jira Integration.'
 arch=('x86_64')
 url="http://super-productivity.com/"
 license=('MIT')
 depends=('alsa-lib' 'gtk3' 'gconf' 'libxss' 'libxtst' 'nss' 'nspr' 
-'xdg-utils' 'xprintidle' 'libnotify' 'libappindicator-gtk3' 'electron')
+'xdg-utils' 'xprintidle' 'libnotify' 'libappindicator-gtk3' 'electron>=10')
 makedepends=('git' 'npm' 'yarn' 'python')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -64,12 +64,11 @@ build() {
 	electronDist=$(dirname $(realpath $(which electron)))
 	electronVer=$(electron --version | tail -c +2)
 
-	# Building angular
-	node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng build --aot --prod --base-href=''
-	# Building electron-builder
-	yarn electron:build && yarn electron-builder
+	# Building angular and electron-builder
+	yarn buildFrontend:prod && yarn electron:build
+
 	# Building the app
-	npx electron-builder --linux dir --x64 --dir dist \
+	npx electron-builder --linux dir --x64 --dir \
 	 -c.electronDist="${electronDist}" -c.electronVersion="${electronVer}"
 }
 
