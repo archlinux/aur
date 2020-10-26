@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/PolyphasicDevTeam/stayawake/releases/download/0.5-beta/stayawake-0.5.tar.xz")
+source=("https://github.com/PolyphasicDevTeam/stayawake/releases/download/0.5/stayawake-0.5.tar.xz")
 noextract=()
 md5sums=()
 validpgpkeys=()
@@ -52,4 +52,4 @@ package() {
 
 }
 
-md5sums=('b6506ca6e8228edf6aed1a91e9e846fd')
+md5sums=('27cca6a1a36a4c25af40277d2e798e64')
