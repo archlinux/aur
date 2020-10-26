@@ -1,6 +1,7 @@
 # Contributor: Hwkiller
 
 pkgname="moltengamepad-git"
+_pkgroot="moltengamepad"
 pkgver=v1.1.0.r36.g95b0d47
 # pkgver=1.1.0
 pkgrel=1
@@ -51,4 +52,5 @@ package() {
   install -Dm 644 ${srcdir}/moltengamepad-sysusers.conf $pkgdir/usr/lib/sysusers.d/moltengamepad.conf
   # Sys user tmp dir
   install -Dm644 installation/systemuser/tmpfiles.conf "$pkgdir"/usr/lib/tmpfiles.d/moltengamepad.conf
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgroot/license
 }
