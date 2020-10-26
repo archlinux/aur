@@ -6,7 +6,7 @@
 pkgname=python-nibabel
 _pkgname=nibabel
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library for reading and writing of some common neuroimaging file formats'
 arch=('any')
 url='http://nipy.org/nibabel'
@@ -17,7 +17,7 @@ makedepends=('python-setuptools')
 # checkdepends=('python-nose' 'python-mock')
 optdepends=('python-scipy: for full SPM-ANALYZE support' 'python-pydicom: for DICOM support' 'python-pillow: for PNG conversion in DICOMFS' 'python-h5py: for MINC2 support' 'python-indexed-gzip')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/nipy/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('ca38ca2f79adb0931e8e4b9c3877ff0ba523dbe44b626b774bb8d5efa32e2d56ffe09abaf1f2bb9bcbc0ec748856d0ddcf4f3059e992ffc4c2bb7b443082c563')
+sha512sums=('dc16048466c41c02f1f2f9910eb82b979cac1a1a4a7339f7972a238a1785a3bbec9511c02f8f70ffab28b9b77bd92113fdcecddc2b3e83d72f540990b43d48e0')
 
 build()
 {
