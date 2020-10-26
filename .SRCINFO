@@ -10,6 +10,7 @@ pkgbase = postgis-git
 	makedepends = git
 	makedepends = llvm
 	depends = postgresql
+	depends = protobuf-c
 	depends = gdal
 	depends = geos
 	depends = json-c

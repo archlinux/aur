@@ -9,7 +9,7 @@ url="https://postgis.net/"
 license=('GPL')
 
 arch=('i686' 'x86_64')
-depends=('postgresql' 'gdal' 'geos' 'json-c' 'libxml2' 'libxslt')
+depends=('postgresql' 'protobuf-c' 'gdal' 'geos' 'json-c' 'libxml2' 'libxslt')
 makedepends=('clang' 'git' 'llvm')
 
 conflicts=('postgis')
