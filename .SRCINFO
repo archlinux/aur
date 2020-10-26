@@ -1,14 +1,14 @@
 pkgbase = python-colcon-devtools
 	pkgdesc = An extension for colcon-core to provide information about the plugin system.
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://pypi.org/project/colcon-devtools/
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python-colcon-core
-	source = https://files.pythonhosted.org/packages/1d/ac/8f67927a04e8c05fb9d7abca0f5954382e92d136e00c9d961a8875b84bd7/colcon-devtools-0.2.1.tar.gz
-	sha256sums = 5761e2025e4860ca618491aebd2bd12ab68ebd96c11c92ad1b7e1b1caf7a1ecf
+	source = https://files.pythonhosted.org/packages/source/c/colcon-devtools/colcon-devtools-0.2.2.tar.gz
+	sha256sums = 6ed3f29052c44e021b64106d5ae338e2b8936ba58c9f1c0496478327973d3f7b
 
 pkgname = python-colcon-devtools
 
