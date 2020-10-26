@@ -7,7 +7,7 @@ pkgbase = python-colcon-bash
 	license = Apache
 	makedepends = python-setuptools
 	depends = python-colcon-core
-	source = https://files.pythonhosted.org/packages/c3/7c/7ab5345c9aa64d91bdc09e69bc3f90678eb08a0ba8c512ca1972927d8ee6/colcon-bash-0.4.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/c/colcon-bash/colcon-bash-0.4.2.tar.gz
 	sha256sums = 86950ca62293b655ef8d655d2994d110321fff2fc6739c46a64f005a0cee1bdd
 
 pkgname = python-colcon-bash
