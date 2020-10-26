@@ -9,11 +9,12 @@
 
 _majorver=11
 _minorver=0
-_securityver=8
-_updatever=10
+_securityver=9
+_updatever=11.1
 pkgrel=1
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 _tag_ver=${_majorver}.${_minorver}.${_securityver}+${_updatever}
+_tag_ver_short=${_majorver}.${_minorver}.${_securityver}+${_updatever%.*}
 
 pkgname=jdk11-adoptopenjdk
 pkgdesc="OpenJDK Java ${_majorver} development kit (AdoptOpenJDK build)"
@@ -54,17 +55,14 @@ backup=(etc/${pkgname}/net.properties
         etc/${pkgname}/sound.properties)
 install=install_jdk11-adoptopenjdk.sh
 
-source=(https://github.com/AdoptOpenJDK/openjdk${_majorver}-binaries/releases/download/jdk-${_tag_ver/+/%2B}/OpenJDK${_majorver}U-jdk_x64_linux_hotspot_${_tag_ver/+/_}.tar.gz
+source=(https://github.com/AdoptOpenJDK/openjdk${_majorver}-binaries/releases/download/jdk-${_tag_ver/+/%2B}/OpenJDK${_majorver}U-jdk_x64_linux_hotspot_${_tag_ver_short/+/_}.tar.gz
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('6e4cead158037cb7747ca47416474d4f408c9126be5b96f9befd532e0a762b47'
-            '734aab5e8fca5360fd996142a0c0ff23434da56f83c21b26cfbcbf31556230eb'
-            '53b7da18785675438d1d7cfa776be419a313c11049c48f791c7426224fe51025'
-            'bc4305c5870fa8e050c0a2cbc629a8f84e366200b436429c789038596a4259f6')
+
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-adoptopenjdk
-_jdkdir=jdk-${_tag_ver}
+_jdkdir=jdk-${_tag_ver_short}
 
 package() {
 
@@ -102,3 +100,7 @@ package() {
   done
 
 }
+sha256sums=('a3c52b73a76bed0f113604165eb4f2020b767e188704d8cc0bfc8bc4eb596712'
+            '734aab5e8fca5360fd996142a0c0ff23434da56f83c21b26cfbcbf31556230eb'
+            '53b7da18785675438d1d7cfa776be419a313c11049c48f791c7426224fe51025'
+            'bc4305c5870fa8e050c0a2cbc629a8f84e366200b436429c789038596a4259f6')
