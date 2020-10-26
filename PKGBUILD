@@ -1,7 +1,7 @@
 # Maintainer  : Chris Billington <chrisjbillington@gmail.com>
 pkgname=python-numpy-mkl-bin
 _pkgname=numpy-base
-_pkgver=1.19.1
+_pkgver=1.19.2
 _build=py38hfa32c7d_0
 _build_number=0
 pkgver="${_pkgver}.${_build_number}.${_build//_/.}"
@@ -14,7 +14,7 @@ provides=('python-numpy' 'python-numpy-mkl')
 conflicts=('python-numpy')
 depends=('python-mkl-service')
 source=("https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${_pkgver}-${_build}.tar.bz2")
-sha256sums=('58315e53a89d3412630dfdd439a26881d59f73560080774fb3b0315907fa7ebd')
+sha256sums=('56783f4e7ef58161be4f852a93b0f6abb0ff48520885ee6897d26dd462ceb53d')
 
 package() {
   mkdir "${pkgdir}/usr"
