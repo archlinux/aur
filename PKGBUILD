@@ -11,7 +11,7 @@ depends=(
     'unzip'
 )
 source=("https://gitlab.com/alexvim/controls/-/raw/master/${pkgname}-${pkgver}-${pkgrel}.tar.gz")
-md5sums=('dd65ea7148c7000b08a272c3c9b41cc4')
+md5sums=('826c4c150be79c17e270a7498df7bbc7')
 build() {
         cd ${srcdir}
         cmake CMakeLists.txt
@@ -20,5 +20,9 @@ build() {
 package() {
     	cd ${srcdir}
         mkdir -p "${pkgdir}/usr/bin/"
+        mkdir -p "~/.controls/backup/"
+        mkdir -p "~/.controls/build/"
+        mkdir -p "~/.controls/controls/"
+        mkdir -p "~/.controls/data/"
         install -Dm755 controls "${pkgdir}/usr/bin/"
 }
