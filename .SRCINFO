@@ -1,6 +1,6 @@
 pkgbase = ttf-monoid-git
 	pkgdesc = Open Source coding font
-	pkgver = r427.a331c7c5
+	pkgver = r439.0673c8d6
 	pkgrel = 1
 	url = http://larsenwork.github.io/monoid/
 	arch = any
@@ -15,9 +15,7 @@ pkgbase = ttf-monoid-git
 	conflicts = ttf-mono16-git
 	conflicts = ttf-monoid
 	source = ttf-monoid-git::git://github.com/larsenwork/monoid.git
-	source = fontbuilder-python3.patch
 	sha512sums = SKIP
-	sha512sums = 7f06b8827ed12b3070512ae58424b92a05635eefe0dee0d6314f1b92230f431e2fde5a2d70adbff324bbcb4ce70b135ccda2a6dfaaeb7b6e4219a447034f00c0
 
 pkgname = ttf-monoid-git
 
