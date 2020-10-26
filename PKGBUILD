@@ -1,7 +1,7 @@
 # Maintainer: Jaime Martínez Rincón <jaime(at)jamezrin(dot)name>
 
 pkgname=gatsby-desktop
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Official proof-of-concept desktop app for managing your Gatsby sites."
 arch=("x86_64")
