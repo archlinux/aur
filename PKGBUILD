@@ -2,7 +2,7 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='aeon'
-pkgver='0.14.0.0'
+pkgver='0.14.1.0'
 pkgrel='1'
 pkgdesc='A lightweight CryptoNote digital currency.'
 url="https://github.com/${pkgname}ix/${pkgname}"
@@ -19,7 +19,7 @@ sha256sums=('5212dff199bb3880191292976cd8278dcdbae64f9c0ab39a9c2a91a4733186c3'
             'a0cdf75b86073829f4033e367f36e9418dc20556e7adfa6ffac8653c67cd6337'
             '1da20b66d52db4f1c5b3106cf27ee54033650a0e36c5c775b25c9e86e6027be0'
             '3ef15e3c9e2d146c415f2e483dd10e4ec36f653e4684c254d9f69a5fb699036b'
-            '25e5fcd87016da47aeb0546a4aebb0e7125c42ebb607913249d090e6cf20b08c')
+            '319bb1781a6aba52b9770ae06dcef91e66daa4e5c26085fa7c3feeae40b9c7b5')
 backup=("etc/${pkgname}d.conf")
 
 prepare() {
