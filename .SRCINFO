@@ -9,11 +9,12 @@ pkgbase = linux-git
 	makedepends = kmod
 	makedepends = libelf
 	makedepends = git
+	makedepends = pahole
 	options = !strip
 	source = git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux
 	source = config
 	sha256sums = SKIP
-	sha256sums = ff6ed758e3e0f41aee968c117f96dd802e3ee1a9eacc5a2621576e4e94d98e24
+	sha256sums = 4876208fb4c758dfe73f36139a69d47c9d6dbe32f30d2fdb3140d4591fbd687c
 
 pkgname = linux-git
 	pkgdesc = The Linux git kernel and modules

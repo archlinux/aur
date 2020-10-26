@@ -9,7 +9,7 @@ pkgdesc='Linux git'
 url="https://www.kernel.org"
 arch=(x86_64)
 license=(GPL2)
-makedepends=(bc kmod libelf git)
+makedepends=(bc kmod libelf git pahole)
 options=('!strip')
 _srcname=linux
 source=(
@@ -17,7 +17,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            'ff6ed758e3e0f41aee968c117f96dd802e3ee1a9eacc5a2621576e4e94d98e24')
+            '4876208fb4c758dfe73f36139a69d47c9d6dbe32f30d2fdb3140d4591fbd687c')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
