@@ -1,0 +1,22 @@
+pkgbase = filmulator
+	pkgdesc = Simple raw photo editor based on the process of developing film
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://filmulator.org/
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = openmp
+	depends = exiv2
+	depends = lensfun-git
+	depends = libarchive
+	depends = libraw
+	depends = librtprocess
+	depends = qt5-declarative
+	source = filmulator-gui-0.9.0.tar.gz::https://github.com/CarVac/filmulator-gui/archive/v0.9.0.tar.gz
+	sha512sums = 1148d613f558ae6a43f5478ebd7a035401462544607955a55a6d0472d56ea70eb36019d4de56a2f405cc88fdc6e146c243f8bde7b50c98e0c255e8ea03e085d1
+
+pkgname = filmulator
+
