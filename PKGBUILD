@@ -2,12 +2,12 @@
 
 pkgname=dwm-kian-git
 pkgver=v6.2.r30.4019b4b
-pkgrel=1
+pkgrel=2
 pkgdesc="A customized version of dwm by Kian Kasad"
 arch=('any')
 url="https://git.kasad.com/dwm"
 license=('MIT')
-depends=('libx11' 'libxinerama' 'freetype2')
+depends=('libx11' 'libxinerama' 'freetype2' 'yajl')
 makedepends=('git')
 optdepends=('libxft-bgra: for emojis in statusbar')
 provides=('dwm')

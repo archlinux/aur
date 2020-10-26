@@ -1,7 +1,7 @@
 pkgbase = dwm-kian-git
 	pkgdesc = A customized version of dwm by Kian Kasad
 	pkgver = v6.2.r30.4019b4b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.kasad.com/dwm
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = dwm-kian-git
 	depends = libx11
 	depends = libxinerama
 	depends = freetype2
+	depends = yajl
 	optdepends = libxft-bgra: for emojis in statusbar
 	provides = dwm
 	conflicts = dwm
