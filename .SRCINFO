@@ -24,7 +24,7 @@ pkgbase = linux-amd-znver2
 	sha256sums = 5ab29eb64e57df83b395a29a6a4f89030d142feffbfbf73b3afc6d97a2a7fd12
 
 pkgname = linux-amd-znver2
-	pkgdesc = Linux kernel aimed at the znver2 AMD CPU based hardware
+	pkgdesc = Linux kernel aimed at the znver2 AMD Ryzen CPU based hardware
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
