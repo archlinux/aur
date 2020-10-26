@@ -2,7 +2,7 @@
 
 pkgname=vtk9
 pkgver=9.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization'
 arch=('x86_64')
 url="http://vtk.org"
@@ -11,8 +11,15 @@ depends=('freetype2' 'jsoncpp' 'libharu' 'libjpeg-turbo' 'libogg' 'libpng' 'libt
 makedepends=('cmake')
 provides=('vtk')
 conflicts=('vtk')
-source=("https://gitlab.kitware.com/vtk/vtk/-/archive/v${pkgver}/vtk-v${pkgver}.tar.gz")
-sha256sums=("15c269946a8a8ed578bbd28a59672c251089185d582cd1268658908bf414e017")
+source=("https://gitlab.kitware.com/vtk/vtk/-/archive/v${pkgver}/vtk-v${pkgver}.tar.gz"
+        "freetype.patch")
+sha256sums=("15c269946a8a8ed578bbd28a59672c251089185d582cd1268658908bf414e017"
+            "aa2daca929f4bc75809dcfe959b1bf6f8b81450a8c29892c73420711823d1438")
+
+prepare() {
+    cd "$srcdir/vtk-v${pkgver}"
+    patch -p1 < "${srcdir}/freetype.patch"
+}
 
 build() {
     cd "$srcdir/vtk-v${pkgver}"
