@@ -1,5 +1,5 @@
 pkgbase = instamenu
-	pkgdesc = dmenu like menu with the Manjaro Breath theme
+	pkgdesc = dmenu like menu with the Manjaro Matcha-dark-sea theme
 	pkgver = 2020.9.28
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/instamenu

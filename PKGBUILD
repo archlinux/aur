@@ -3,7 +3,7 @@
 pkgname=instamenu 
 pkgver=2020.9.28
 pkgrel=1
-pkgdesc="dmenu like menu with the Manjaro Breath theme"
+pkgdesc="dmenu like menu with the Manjaro Matcha-dark-sea theme"
 url="https://github.com/TheCynicalTeam/$pkgname"
 arch=('any')
 license=('GNU General Public License v3.0')
