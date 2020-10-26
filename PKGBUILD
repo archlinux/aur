@@ -4,7 +4,7 @@
 
 _release='2020'
 _short_release="${_release:2:4}"
-_service_pack='1'
+_service_pack='0'
 pkgname="labview-${_release}"
 pkgver="${_service_pack}f1"
 pkgrel=1
@@ -43,7 +43,7 @@ sha256sums=('440ad6f0dd88f1015a3a68b55beec710886658f189a44f0c11683e9766171e66'
             'b0892581d01df5a1df9ce637609dc3dfd5b5b83bf58e97b02c2a35ec81a300a5'
             '2b0595171fd4459cae9e16f48c9bcfa2afdc59ff955b6738ece0bd0b0385c69d'
             '5ce5a77ab8963a7097c4698d0d917dde920fde5a2f37bf956e2b3514aebd2443'
-            '88825a0e3e8bd1d403131038f4e02e80c8df09f6e39c2be3b1a6f5dc2c731100'
+            '26be91869d66501a670f230402cbbe89e14b838565b151a759c504076f615184'
             'a3db25755a63a6df4525bb11883f440e2798d7ba8e67eabaa31e9c796a7d4dc7'
             '911a996e926cbb19f785e3390623dbd57f0e0af07f442af1d54a405086018813'
             '96b1f89fe496059ecd321c88cead2d23aa80cf183965f654cab67fd7a6a7d2fe'
@@ -57,7 +57,8 @@ sha256sums=('440ad6f0dd88f1015a3a68b55beec710886658f189a44f0c11683e9766171e66'
             'b8e469a6cf867d1e42cdd2913ecf049f40183bab7724f4b7b3907d51e86aa30a'
             '9ae56b74c29ef4c45638b72d4acb77b500e5cedea8805db5b2c00a76736a1bf4'
             'a2e8e7b6c315caf55ee120db96d49a2252022d5155641ae962292134c470322a'
-            '73c55fae8f9a071d337a02ecc058eb52a275f9b428bb34f9bd439db6fb105bd3')
+            '73c55fae8f9a071d337a02ecc058eb52a275f9b428bb34f9bd439db6fb105bd3'
+            'f1653775dd9f188bd2509e9c23ed85c1cf502eca315b2751386a3b13e3755969')
 
 prepare() {
     cd ${srcdir}
