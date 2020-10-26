@@ -1,6 +1,6 @@
 # Maintainer: Ethan Budd <budde25@protonmail.com>
 _pkgname=keysync
-_version=0.2.0
+_version=2.0.0
 pkgname=$_pkgname-bin
 pkgver=$_version
 pkgrel=1
