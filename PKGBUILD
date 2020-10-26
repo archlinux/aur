@@ -22,6 +22,7 @@ depends=('bc'
          'procps-ng'
          'psmisc')
 makedepends=('intltool')
+conflicts=('linuxcnc-git' 'linuxcnc-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LinuxCNC/linuxcnc/archive/v${pkgver}.tar.gz"
         'libtirpc.patch')
 sha256sums=('27588f90df3f23c94e058b560f6d8f815f6a00b411f71ed8e25d40d1171b1afc'
