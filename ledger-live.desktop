@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=ledger-live
-Comment=Open source companion app for your Ledger devices
+Comment=Ledger Live - Desktop
 Path=/opt/ledger-live
 Exec=ledger-live
 Icon=ledger-live
