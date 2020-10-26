@@ -26,7 +26,7 @@ build() {
   bsdtar -xf "data.tar.xz"
 
   # Extract license file
-  gzip -dfc "usr/share/doc/${pkgname}/EULA.txt.gz" > "EULA.txt"
+  gzip -dfc "usr/share/doc/kerio-control-vpnclient/EULA.txt.gz" > "EULA.txt"
 }
 
 package() {
@@ -41,8 +41,8 @@ package() {
   install -m 644 -t "${pkgdir}/usr/lib" "usr/lib"/*
 
   install -m 755 -d "${pkgdir}/usr/share/doc/${pkgname}"
-  install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "usr/share/doc/${pkgname}/Acknowledgments.gz"
-  install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "usr/share/doc/${pkgname}/copyright"
+  install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "usr/share/doc/kerio-control-vpnclient/Acknowledgments.gz"
+  install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "usr/share/doc/kerio-control-vpnclient/copyright"
 
   install -m 755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "EULA.txt"
