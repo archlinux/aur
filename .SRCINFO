@@ -1,19 +1,20 @@
 pkgbase = tsar-git
 	pkgdesc = Taobao System Activity Reporter
-	pkgver = 0.241.297a2db
+	pkgver = 0.404.14c1392
 	pkgrel = 1
 	url = http://tsar.taobao.org/
-	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	depends = glibc
+	depends = luajit
+	depends = cron
 	backup = etc/tsar/tsar.conf
 	source = git://github.com/alibaba/tsar.git
 	source = fix_module_path.patch
 	source = fix_apache_log.patch
 	sha1sums = SKIP
-	sha1sums = fcb802d50a4d374b05e9453e688ea6e9e5e40d4d
+	sha1sums = 64f0e29f56e2be08a54ecd6b1819e1c0f97e72cb
 	sha1sums = 3ad26fcbc9bcbb886caa58e3315eb02edb65534f
 
 pkgname = tsar-git

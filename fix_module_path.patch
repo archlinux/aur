@@ -1,11 +1,26 @@
---- a/src/framework.c	2014-05-05 13:34:08.000000000 +0800
-+++ b/src/framework.c	2014-05-05 13:33:52.000000000 +0800
-@@ -55,7 +55,7 @@
-     int    (*mod_register) (struct module *);
+diff --git a/include/define.h b/include/define.h
+index 0d01e14..40e9d23 100644
+--- a/include/define.h
++++ b/include/define.h
+@@ -58,7 +58,7 @@
  
-     /* get the full path of modules */
--    sprintf(buff, "/usr/local/tsar/modules");
-+    sprintf(buff, "/usr/lib/tsar/modules");
+ #define MOD_INFO_SIZE       sizeof(strcut mod_info)
  
-     for (i = 0; i < statis.total_mod_num; i++) {
-         mod = &mods[i];
+-#define DEFAULT_MODULE_PATH         "/usr/local/tsar/modules"
++#define DEFAULT_MODULE_PATH         "/usr/lib/tsar/modules"
+ #define DEFAULT_CONF_FILE_PATH      "/etc/tsar/tsar.conf"
+ #define DEFAULT_OUTPUT_FILE_PATH    "/var/log/tsar.data"
+ #define MIN_STRING "MIN:        "
+diff --git a/lualib/Makefile b/lualib/Makefile
+index d5a3b29..5f65d93 100644
+--- a/lualib/Makefile
++++ b/lualib/Makefile
+@@ -3,7 +3,7 @@ LUASOCKET = luasocket-2.0.2
+ DIRS = $(LUACJSON) $(LUASOCKET)
+ 
+ INCLUDE_DIR ?= $(CURDIR)/../src/obj/include/luajit-2.0
+-INSTALL_DIR ?= /usr/local/tsar/lualib
++INSTALL_DIR ?= /usr/lib/tsar/lualib
+ 
+ all:
+ 	for i in $(DIRS); do tar --no-same-owner -zxf $$i.tar.gz; done

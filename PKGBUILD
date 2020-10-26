@@ -3,20 +3,20 @@
 
 pkgname=tsar-git
 _gitname=tsar
-pkgver=0.241.297a2db
+pkgver=0.404.14c1392
 pkgrel=1
 pkgdesc="Taobao System Activity Reporter"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://tsar.taobao.org/"
 license=('Apache')
-depends=('glibc')
+depends=('glibc' 'luajit' 'cron')
 makedepends=('git')
 backup=('etc/tsar/tsar.conf')
 source=("git://github.com/alibaba/$_gitname.git"
         "fix_module_path.patch"
         "fix_apache_log.patch")
 sha1sums=('SKIP'
-          'fcb802d50a4d374b05e9453e688ea6e9e5e40d4d'
+          '64f0e29f56e2be08a54ecd6b1819e1c0f97e72cb'
           '3ad26fcbc9bcbb886caa58e3315eb02edb65534f')
 
 pkgver() {
