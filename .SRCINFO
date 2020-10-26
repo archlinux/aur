@@ -1,7 +1,7 @@
 pkgbase = juicebox
 	pkgdesc = Visualization and analysis software for Hi-C data
 	pkgver = 1.11.08
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aidenlab.org/juicebox
 	arch = any
 	license = MIT

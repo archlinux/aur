@@ -2,7 +2,7 @@
 _pkgname=Juicebox
 pkgname=juicebox
 pkgver=1.11.08
-pkgrel=1
+pkgrel=2
 pkgdesc='Visualization and analysis software for Hi-C data'
 arch=('any')
 url='https://aidenlab.org/juicebox'
@@ -17,7 +17,7 @@ sha512sums=('b763fe3f288e006fdbe06091222cc6dcd768570acb4d354d23464c1bc3bbc5c5aa9
 'daf5d5bc93a6487a86f35577812cacfe1de7052a30d14b4e2e7ba5a4a1f9ef0818f7fe4e932d029170690923ed10f0d74915dec9ff874cad47c55bd5a3945f86')
 
 prepare() {
-  gendesk --pkgname="$pkgname" --pkgdesc="$pkgdesc" --categories=Science PKGBUILD
+  gendesk -f --pkgname="$pkgname" --pkgdesc="$pkgdesc" --categories=Science PKGBUILD
 }
 
 package() {
