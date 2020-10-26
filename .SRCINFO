@@ -1,8 +1,8 @@
 pkgbase = mpc-qt
 	pkgdesc = A clone of Media Player Classic reimplimented in Qt.
-	pkgver = 19.06.g2abe6e7f
+	pkgver = 20.10
 	pkgrel = 1
-	url = https://gitlab.com/mpc-qt/mpc-qt
+	url = https://github.com/cmdrkotori/mpc-qt-origin
 	arch = x86_64
 	license = GPL2
 	makedepends = git
@@ -12,8 +12,8 @@ pkgbase = mpc-qt
 	optdepends = libva-vdpau-driver: backend for Nvidia and AMD cards
 	optdepends = libva-intel-driver: backend for Intel cards
 	optdepends = udisks2: to detect available discs
-	source = mpc-qt-19.06.g2abe6e7f.tar.bz2::https://gitlab.com/mpc-qt/mpc-qt/-/archive/2abe6e7fc643068d50522468fe75d614861555ad/mpc-qt-2abe6e7fc643068d50522468fe75d614861555ad.tar.bz2
-	sha256sums = 2d1b1dfbd73123a93461ee98176d5b405c63b2d89021566ff025dda9c016998c
+	source = mpc-qt-origin-20.10.tar.gz::https://github.com/cmdrkotori/mpc-qt-origin/archive/v20.10.tar.gz
+	sha256sums = 325f3845e4ead9c6935c089c6321c8d0ea5097023de07ed2799e85a1f382d647
 
 pkgname = mpc-qt
 
