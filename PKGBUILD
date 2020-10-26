@@ -1,7 +1,7 @@
 # Maintainer: <https://aur.archlinux.org/user/vorbote
 EDT="YES"
 pkgname=vim-vi
-pkgver=5
+pkgver=6
 pkgrel=1
 pkgdesc="Replace heirloom vi from core with (g)vim using symlinks."
 arch=('any')
@@ -20,12 +20,10 @@ package() {
   mkdir -p "$pkgdir"/usr/bin
   ln -sf /usr/bin/vim "$pkgdir"/usr/bin/edit
   ln -sf /usr/bin/vim "$pkgdir"/usr/bin/ex
-  ln -sf /usr/bin/vim "$pkgdir"/usr/bin/vedit
   ln -sf /usr/bin/vim "$pkgdir"/usr/bin/vi
   ln -sf /usr/bin/vim "$pkgdir"/usr/bin/view
   ln -sf /usr/bin/vim "$pkgdir"/usr/bin/redit
   ln -sf /usr/bin/vim "$pkgdir"/usr/bin/rex
-  ln -sf /usr/bin/vim "$pkgdir"/usr/bin/rvedit
   ln -sf /usr/bin/vim "$pkgdir"/usr/bin/rvi
 }
 
