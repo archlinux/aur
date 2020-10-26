@@ -1,6 +1,8 @@
-# Maintainer: Tong Chunli<t.cunly at 163 dot com>
+# Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
+# Contributor: Tong Chunli<t.cunly at 163 dot com>
 pkgname=python-colcon-notification
-pkgver=0.2.8
+_name=${pkgname:7}
+pkgver=0.2.13
 pkgrel=1
 pkgdesc="An extension for colcon-core to provide status notifications."
 arch=(any)
@@ -8,12 +10,12 @@ url="https://pypi.org/project/colcon-notification"
 license=('Apache')
 depends=('python-colcon-core')
 makedepends=('python-setuptools')
-source=(https://files.pythonhosted.org/packages/fc/a7/1944423a15ca14904f45ab504fe5aebcf7430933772637b769998d90a718/colcon-notification-0.2.8.tar.gz)
-sha256sums=('3467248415f6acc8f434b3b36b875be3efa76e1166b95852881d9768e6f41c06')
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+sha256sums=('6aae1ffe73ae956bcb36e330822cd230a2a88c9181b3170aafd1a446638e69b3')
 
 
 package() {
-    cd ${srcdir}/colcon-notification-${pkgver}
+    cd ${srcdir}/${_name}-${pkgver}
 
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1 || echo "Not A Problem"
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
