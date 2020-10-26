@@ -10,7 +10,7 @@ license=('AGPL-3.0')
 depends=(python-sqlalchemy python-ruamel-yaml python-magic-git python-commonmark
   python-aiohttp python-mautrix-git python-cryptg python-cchardet python-aiodns 
   python-brotli python-pillow python-moviepy python-asyncpg python-olm python-phonenumbers
-  python-pycryptodome python-unpaddedbase64 python-matrix-nio)
+  python-pycryptodome python-unpaddedbase64 python-matrix-nio signald-git)
 makedepends=('git')
 backup=("etc/$_pkgbase/config.yaml")
 url='https://github.com/tulir/mautrix-signal'
