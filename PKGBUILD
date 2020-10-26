@@ -17,13 +17,13 @@
 
 pkgname=protonmail-bridge-nogui
 
-_pkgver=1.4.0
+_pkgver=1.4.5
 _rev=""
-_srcver=ie-1.1.2
+_srcver=br-1.4.5
 _srcname=proton-bridge-"$_srcver"
 
 pkgver="$_pkgver""$_rev"
-pkgrel=2
+pkgrel=1
 
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
@@ -37,11 +37,12 @@ conflicts=('protonmail-bridge-bin' 'protonmail-bridge')
 options=('!emptydirs' '!strip')
 source=("$_srcname.tar.gz::https://github.com/ProtonMail/proton-bridge/archive/"$_srcver".tar.gz"
         "bridge.service")
-sha256sums=('dcc29b263260c27d3d39314b9dbc0ba7c39b55647f1c825ca47940c995cfef1d'
+sha256sums=('2ee9fb6a4106d70403f7e0b6ab4ce45ae97f847a03e8a6c0e7f829b3d9445901'
             '6b2fd1e042b55dc6d0ffe5eb44e82ffd233452b4571ef571132600e7ec0d5d82')
 
 prepare() {
     cd "${srcdir}"/"$_srcname"/
+    sed -i 's/BRIDGE_APP_VERSION?=.*/BRIDGE_APP_VERSION?=1.4.5-git/' Makefile
     export PATH=$PATH:$(go env GOPATH)/bin/
     make clean
     make build-nogui
