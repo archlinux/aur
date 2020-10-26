@@ -2,7 +2,7 @@
 
 pkgname=superproductivity
 _reponame=super-productivity
-pkgver=5.9.13
+pkgver=6.0.1
 pkgrel=1
 pkgdesc='To Do List / Time Tracker with Jira Integration.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/johannesjo/${_reponame}/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-md5sums=('9d3434496029bfeb1eabafd750875bdc'
+md5sums=('04082c9c1f237e4acd2da737f9695b52'
          '2497ef16691da7fe4dc3c9d6ce6a8bcf'
          '6532676c1c13ae77f24205b3e3e97db9')
 
@@ -62,7 +62,7 @@ build() {
 	yarn buildFrontend:prod && yarn electron:build
 
 	# Building the app
-	npx electron-builder --linux dir --x64 --dir dist \
+	npx electron-builder --linux dir --x64 --dir \
 	 -c.electronDist="${electronDist}" -c.electronVersion="${electronVer}"
 }
 
