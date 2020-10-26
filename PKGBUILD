@@ -8,6 +8,7 @@ arch=('any')
 url='https://github.com/sm64pc/sm64ex'
 license=('reverse-engineered and unlicensed')
 depends=('python' 'audiofile' 'sdl2' 'glew')
+makedepends=('git')
 provides=(sm64ex)
 
 _gitname=sm64ex
