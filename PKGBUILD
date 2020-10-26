@@ -1,6 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 # Contributor: Tong Chunli<t.cunly at 163 dot com>
 pkgname=python-colcon-argcomplete
+_name=colcon-argcomplete
 pkgver=0.3.3
 pkgrel=1
 pkgdesc="An extension for colcon-core to provide command line completion using argcomplete."
@@ -9,7 +10,7 @@ url="https://pypi.org/project/colcon-argcomplete"
 license=('Apache')
 depends=('python-colcon-core' 'python-argcomplete')
 makedepends=('python-setuptools')
-source=(https://files.pythonhosted.org/packages/c9/9e/fe7842b0c1c82511f8d9176cfdbd1ba0e19bc24219c84a0510ed816078a6/colcon-argcomplete-0.3.3.tar.gz)
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
 sha256sums=('3e70a32b7d16b816a7c72182bdb20df985ffc01678ec9c67d44659814a61987d')
 
 package() {

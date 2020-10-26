@@ -8,7 +8,7 @@ pkgbase = python-colcon-argcomplete
 	makedepends = python-setuptools
 	depends = python-colcon-core
 	depends = python-argcomplete
-	source = https://files.pythonhosted.org/packages/c9/9e/fe7842b0c1c82511f8d9176cfdbd1ba0e19bc24219c84a0510ed816078a6/colcon-argcomplete-0.3.3.tar.gz
+	source = https://files.pythonhosted.org/packages/source/c/colcon-argcomplete/colcon-argcomplete-0.3.3.tar.gz
 	sha256sums = 3e70a32b7d16b816a7c72182bdb20df985ffc01678ec9c67d44659814a61987d
 
 pkgname = python-colcon-argcomplete
