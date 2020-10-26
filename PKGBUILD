@@ -1,12 +1,12 @@
 # Maintainer: Denis Lobanov <first name dot last name at zooei dot com>
 pkgname=bloomrpc
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI Client for gRPC Services"
 arch=(any)
 url="https://github.com/uw-labs/bloomrpc"
 license=(LGPL3)
-depends=('gtk3' 'gconf' 'libxss' 'libxtst')
+depends=('gtk3' 'python2' 'libxss' 'libxtst')
 makedepends=('nodejs' 'npm'  'clang' 'git' 'yarn')
 source=("${pkgname}::git+https://github.com/uw-labs/bloomrpc.git#tag=${pkgver//_/-}"
         "${pkgname}.desktop")
