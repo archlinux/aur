@@ -11,12 +11,17 @@ depends=('ncurses' 'ccache' 'cmake' 'gperf' 'help2man' 'readline' 'openssl' 'ncu
 
 # depends=('ncurses' 'ccache' 'cmake' 'gperf' 'help2man' 'readline' 'openssl' 'ncurses' 'zlib', 'php', 'clang')  #dependancies for slow mode (low memory/RAM systems)
 
-makedepends=('git' 'make')
+makedepends=('git')
 provides=('nchat')
 conflicts=('nchat')
 source=("git+$url")
 md5sums=('SKIP')
 _install_mode=('normal') #normal or slow
+
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
@@ -36,6 +41,8 @@ build() {
     fi
 }
 package() {
-    cd "${srcdir}/${_pkgname}/build"
+    cd "${srcdir}/${_pkgname}"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    cd build
     make DESTDIR="${pkgdir}" install
 }

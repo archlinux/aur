@@ -6,7 +6,6 @@ pkgbase = nchat-git
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = make
 	depends = ncurses
 	depends = ccache
 	depends = cmake
