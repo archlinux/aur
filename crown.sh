@@ -1,5 +1,2 @@
 #! /bin/bash
-
-CROWN=/opt/crown
-
-cd $CROWN && ./crown "$@" &
+/opt/crown/crown "$@" &
