@@ -2,8 +2,8 @@
 _pkgname=Red-Lavalink
 pkgname=python-red-lavalink
 pkgver=0.7.0
-pkgrel=1
-pkgdesc="Implements JSON-RPC 2.0 Specification using aiohttp"
+pkgrel=2
+pkgdesc="Lavalink client library used in Red-DiscordBot"
 arch=(any)
 url="https://github.com/Cog-Creators/Red-Lavalink"
 license=('GPL3')

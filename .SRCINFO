@@ -1,7 +1,7 @@
 pkgbase = python-red-lavalink
-	pkgdesc = Implements JSON-RPC 2.0 Specification using aiohttp
+	pkgdesc = Lavalink client library used in Red-DiscordBot
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Cog-Creators/Red-Lavalink
 	arch = any
 	license = GPL3
