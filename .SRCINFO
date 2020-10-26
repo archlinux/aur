@@ -12,7 +12,9 @@ pkgbase = mingw-w64-glslang
 	options = !buildflags
 	options = staticlibs
 	source = https://github.com/KhronosGroup/glslang/archive/8.13.3743.tar.gz
+	source = wine-glslangValidator.sh
 	sha256sums = 639ebec56f1a7402f2fa094469a5ddea1eceecfaf2e9efe361376a0f73a7ee2f
+	sha256sums = SKIP
 
 pkgname = mingw-w64-glslang
 

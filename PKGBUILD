@@ -8,8 +8,8 @@ license=('BSD')
 depends=('mingw-w64-spirv-tools')
 makedepends=('mingw-w64-cmake' 'python')
 options=('!strip' '!buildflags' 'staticlibs')
-source=(https://github.com/KhronosGroup/glslang/archive/${pkgver}.tar.gz)
-sha256sums=('639ebec56f1a7402f2fa094469a5ddea1eceecfaf2e9efe361376a0f73a7ee2f')
+source=(https://github.com/KhronosGroup/glslang/archive/${pkgver}.tar.gz wine-glslangValidator.sh)
+sha256sums=('639ebec56f1a7402f2fa094469a5ddea1eceecfaf2e9efe361376a0f73a7ee2f' SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -26,9 +26,9 @@ build() {
     ${_arch}-cmake \
       -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_SHARED_LIBS=OFF \
-      -DENABLE_GLSLANG_BINARIES=OFF \
       ..
     make
+    sed "s|@TRIPLE@|${_arch}|g" "${srcdir}"/wine-glslangValidator.sh > ${_arch}-glslangValidator
     popd
   done
 }
@@ -39,5 +39,7 @@ package() {
     make DESTDIR="${pkgdir}" install
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
 #     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
+    install -d "$pkgdir"/usr/bin
+    install -m755 ${_arch}-glslangValidator "$pkgdir"/usr/bin
   done
 }
