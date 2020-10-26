@@ -1,0 +1,26 @@
+pkgbase = linuxcnc-bin
+	pkgdesc = Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = http://linuxcnc.org
+	arch = x86_64
+	license = GPL2
+	depends = bc
+	depends = bwidget
+	depends = libxaw
+	depends = python2-imaging
+	depends = python2-yapps2
+	depends = tkimg
+	depends = python2-gtkglext
+	depends = tclx
+	depends = xorg-server
+	depends = boost
+	depends = procps-ng
+	depends = psmisc
+	provides = linuxcnc
+	conflicts = linuxcnc
+	source = linuxcnc-bin-2.8.0.deb::http://linuxcnc.org/dists/stretch/2.8-rtpreempt/binary-amd64/linuxcnc-uspace_2.8.0_amd64.deb
+	sha256sums = 86fc5708552300316add400c83afe56537c15ae9ab5d9c597c87f4c9b0d2316b
+
+pkgname = linuxcnc-bin
+
