@@ -1,6 +1,7 @@
+# Maintainer: smallst <smallst@smallst.cn>
 # Maintainer: LinRs <LinRs AT users.noreply.github.com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
-
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=auctex
 pkgver=12.3
 pkgrel=1
@@ -9,7 +10,6 @@ arch=('any')
 url="https://www.gnu.org/software/auctex/"
 license=('GPL3')
 depends=('emacs' 'ghostscript' 'texlive-core')
-options=('!makeflags')
 install=auctex.install
 source=("https://ftp.gnu.org/pub/gnu/auctex/${pkgname}-${pkgver}.tar.gz"{,.sig})
 sha256sums=('2fd4fe30b69457c9277fe204d3e83c8472bcf500c8fe4a810d744406174ca9dd'

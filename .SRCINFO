@@ -9,7 +9,6 @@ pkgbase = auctex
 	depends = emacs
 	depends = ghostscript
 	depends = texlive-core
-	options = !makeflags
 	source = https://ftp.gnu.org/pub/gnu/auctex/auctex-12.3.tar.gz
 	source = https://ftp.gnu.org/pub/gnu/auctex/auctex-12.3.tar.gz.sig
 	validpgpkeys = 70CDE487C45540307F86972BE2FD58BF20485F50
