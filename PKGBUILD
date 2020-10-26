@@ -61,7 +61,7 @@ build() {
   # because argument expansion with quoting in bash is hard, and -ldflags=-extldflags='-foo'
   # is not exactly the same as -ldflags "-extldflags '-foo'" use the array trick
   # to pass exactly what we want
-  flags=(-buildmode=pie -ldflags "-s -extldflags '$LDFLAGS'" -trimpath)
+  flags=(-buildmode=pie -ldflags "-s -linkmode external -extldflags '$LDFLAGS'" -trimpath)
   staticflags=(-buildmode=pie -ldflags "-s -linkmode external -extldflags '$LDFLAGS -static'" -trimpath)
   # Build/install snap and snapd
   go build "${flags[@]}" -o "$srcdir/go/bin/snap" "${_gourl}/cmd/snap"
