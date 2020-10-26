@@ -3,14 +3,13 @@
 
 pkgname=swift-bin
 pkgver=5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary builds of the Swift programming language"
 arch=('x86_64')
 url="https://swift.org"
 license=('apache')
 depends=('libutil-linux' 'libxml2' 'python2')
 makedepends=('patchelf' 'rpmextract')
-conflicts=('swift-language-git')
 options=('!strip')
 provides=('swift-language')
 replaces=('swift-language-bin')
@@ -41,4 +40,7 @@ package() {
     patchelf+=(--replace-needed "lib${lib}.so.6" "lib${lib}w.so")
   done
   find_elf_only -exec "${patchelf[@]}" {} \;
+
+  install -dm755 "${pkgdir}/etc/ld.so.conf.d"
+  echo '/usr/lib/swift/lib/swift/linux' >> "${pkgdir}/etc/ld.so.conf.d/swift.conf"
 }
