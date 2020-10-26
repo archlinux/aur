@@ -1,0 +1,17 @@
+pkgbase = muffet-git
+	pkgdesc = Fast website link checker (git)
+	pkgver = 2.2.2.r0.ga61cb11
+	pkgrel = 1
+	url = https://github.com/raviqqe/muffet
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = muffet
+	conflicts = muffet
+	conflicts = muffet-bin
+	source = git+https://github.com/raviqqe/muffet
+	sha256sums = SKIP
+
+pkgname = muffet-git
+
