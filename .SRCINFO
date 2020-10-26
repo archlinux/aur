@@ -3,10 +3,17 @@ pkgbase = polaric-connect
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://www.polaricsemi.com
-	install = post_remove.install
 	arch = i686
 	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
 	depends = libssh
+	depends = gtk3
+	provides = polaric-connect
+	conflicts = polaric-connect
+	source = git+https://github.com/NikitaLavrinenko/Polaric-Connect.git
+	sha256sums = SKIP
 
 pkgname = polaric-connect
 

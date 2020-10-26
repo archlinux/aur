@@ -3,17 +3,22 @@ pkgver=0.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Utility for connect Polaric web platform to raspberry"
+license=('GPL')
 url="https://www.polaricsemi.com"
-depends=('libssh')
-install=post_remove.install
+makedepends=('git' 'make')
+depends=('libssh' 'gtk3')
+provides=('polaric-connect')
+conflicts=('polaric-connect')
+source=("git+https://github.com/NikitaLavrinenko/Polaric-Connect.git")
+sha256sums=('SKIP')
+
 
 build() {
-  sudo cp ../polaric-connect /usr/bin/polaric-connect
+    cd "Polaric-Connect"
+    make
 }
 
 package() {
-    echo "Installing"
-  sudo cp ../polaric-connect.png /usr/share/pixmaps/.
-  sudo cp ../polaric-connect.desktop /usr/share/applications/.
+    cd "Polaric-Connect"
+    make install DESTDIR="$pkgdir"
 }
-
