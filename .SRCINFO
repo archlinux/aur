@@ -22,6 +22,7 @@ pkgbase = linuxcnc-git
 	depends = psmisc
 	provides = linuxcnc
 	conflicts = linuxcnc
+	conflicts = linuxcnc-bin
 	source = linuxcnc-git::git+https://github.com/LinuxCNC/linuxcnc
 	source = libtirpc.patch
 	sha256sums = SKIP

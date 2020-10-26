@@ -21,7 +21,7 @@ depends=('bc'
          'psmisc')
 makedepends=('intltool' 'git')
 provides=('linuxcnc')
-conflicts=('linuxcnc')
+conflicts=('linuxcnc' 'linuxcnc-bin')
 source=("${pkgname}::git+https://github.com/LinuxCNC/linuxcnc"
         'libtirpc.patch')
 sha256sums=('SKIP'
