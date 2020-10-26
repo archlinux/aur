@@ -1,14 +1,14 @@
 pkgbase = python-colcon-cmake
 	pkgdesc = An extension for colcon-core to support CMake projects.
-	pkgver = 0.2.13
+	pkgver = 0.2.26
 	pkgrel = 1
 	url = https://pypi.org/project/colcon-cmake/
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python-colcon-core
-	source = https://files.pythonhosted.org/packages/95/55/9717b72bd932f68a4c6e8ce2f03e51b6aa9f45b105233dffbe47f0b3f041/colcon-cmake-0.2.13.tar.gz
-	sha256sums = f52c1fbd81674b3391b10677ae48c1d9092827ab1182a0f406fa87d4448154f7
+	source = https://files.pythonhosted.org/packages/source/c/colcon-cmake/colcon-cmake-0.2.26.tar.gz
+	sha256sums = 5a227fe812766be5fc3895c821bf9190f571e8c25eb73962967310d6b524349f
 
 pkgname = python-colcon-cmake
 
