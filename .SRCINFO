@@ -1,13 +1,13 @@
 pkgbase = drivedlgo-bin
 	pkgdesc = A Minimal Google Drive Downloader Written in Go
-	pkgver = 1.3
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://github.com/jaskaranSM/drivedlgo
 	arch = x86_64
 	license = GPL3
 	provides = drivedlgo
-	source = drivedlgo_1.3_Linux_x86_64.gz::https://www.github.com/jaskaranSM/drivedlgo/releases/download/1.3/drivedlgo_1.3_Linux_x86_64.gz
-	sha256sums = f6c987083c4f9a1f9256742ee72b2f1d90a012978c30dbf8bf3a9b015e069cf3
+	source = drivedlgo_1.3.3_Linux_x86_64.gz::https://www.github.com/jaskaranSM/drivedlgo/releases/download/1.3.3/drivedlgo_1.3.3_Linux_x86_64.gz
+	sha256sums = e2a8284520c8870ae027646baf2c771b3e456679106263886823e17addfa8134
 
 pkgname = drivedlgo-bin
 
