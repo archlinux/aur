@@ -8,8 +8,10 @@ pkgbase = jstar
 	license = MIT
 	makedepends = cmake>=3.9
 	makedepends = python>=2.7
-	source = https://github.com/jstar-lang/jstar/archive/v1.2.5.tar.gz
-	sha512sums = e2729c760a3ca6a4afe808aeba697fc15fbbca1996409d9bc73a5a6a241d56ae20182560ea03b88bcfebcbb4a5d80720f841ebad6971a203b3d40ff7448ce34d
+	source = jstar-1.2.5::https://github.com/jstar-lang/jstar/archive/v1.2.5.tar.gz
+	source = https://raw.githubusercontent.com/jstar-lang/jstar/master/LICENSE
+	sha256sums = 7de9613722874432088f26480b68e56c28d3c02596f7fe98994535c2182b0a92
+	sha256sums = SKIP
 
 pkgname = jstar
 
