@@ -9,7 +9,7 @@ url="https://github.com/jstar-lang/jstar"
 license=('MIT')
 makedepends=('cmake>=3.9' 'python>=2.7')
 source=("${pkgname}-${pkgver}::https://github.com/jstar-lang/jstar/archive/v${pkgver}.tar.gz")
-sha512sums=("72baf230c5ebfcf22a59ea553bbdb332848cfec725f38115bba5555836f0d94e75c6d19c0d78b1d0d2a10697a9fc9d779b15197244be831df5384bb6d7f281b3")
+sha256sums=("7de9613722874432088f26480b68e56c28d3c02596f7fe98994535c2182b0a92")
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
