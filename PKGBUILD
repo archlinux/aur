@@ -2,20 +2,21 @@
 
 pkgname=cascaydia-code-fonts
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cascaydia fonts with Nerd patches.'
 arch=('x86_64')
-license=('MIT')
+license=('MIT'
+         'Creative Commons 4.0'
+         'Apache 2.0'
+         'SIL OFT'
+         'Copying Licence')
+
 url='https://github.com/ryanoasis/nerd-fonts/'
 
 source=("https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/CascadiaCode/complete/Caskaydia%20Cove%20Regular%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf"
         "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/CascadiaCode/complete/Caskaydia%20Cove%20Regular%20Nerd%20Font%20Complete%20Mono.ttf"
         "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/CascadiaCode/complete/Caskaydia%20Cove%20Regular%20Nerd%20Font%20Complete%20Windows%20Compatible.ttf"
         "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/CascadiaCode/complete/Caskaydia%20Cove%20Regular%20Nerd%20Font%20Complete.ttf")
-noextract=('Caskaydia Cove Regular Nerd Font Complete Mono Windows Compatible.ttf'
-           'Caskaydia Cove Regular Nerd Font Complete Mono.ttf'
-           'Caskaydia Cove Regular Nerd Font Complete Windows Compatible.ttf'
-           'Caskaydia Cove Regular Nerd Font Complete.ttf')
 
 sha256sums=('ccbbc5b4ff2aaf99261d78426e59fb24996b56161858149a2a984097070295fd' 
             '0114b6b311271e7e4975ca05419f6921035dc63628b0f4eb55028ea4e0767991'
@@ -24,7 +25,7 @@ sha256sums=('ccbbc5b4ff2aaf99261d78426e59fb24996b56161858149a2a984097070295fd'
 
 package() {
     cd "$srcdir"
-       
+
     install -d -m 755 "${pkgdir}/usr/share/fonts/TTF/"
     cp "${srcdir}/Caskaydia%20Cove%20Regular%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf"* "${pkgdir}/usr/share/fonts/TTF/Caskaydia Cove Regular Nerd Font Complete Mono Windows Compatible.ttf"
     cp "${srcdir}/Caskaydia%20Cove%20Regular%20Nerd%20Font%20Complete%20Mono.ttf"* "${pkgdir}/usr/share/fonts/TTF/Caskaydia Cove Regular Nerd Font Complete Mono.ttf"
