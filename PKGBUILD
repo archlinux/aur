@@ -1,6 +1,8 @@
-# Maintainer: Tong Chunli<t.cunly at 163 dot com>
+# Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
+# Contributor: Tong Chunli<t.cunly at 163 dot com>
 pkgname=python-colcon-package-information
-pkgver=0.2.2
+_name=${pkgname:7}
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="An extension for colcon-core to provide information about the packages."
 arch=(any)
@@ -8,12 +10,12 @@ url="https://pypi.org/project/colcon-package-information/"
 license=('Apache')
 depends=('python-colcon-core')
 makedepends=('python-setuptools')
-source=(https://files.pythonhosted.org/packages/2d/34/3571034051350571b4c885258ddb9b600ddd6abcd8cf94799f314e97a961/colcon-package-information-0.2.2.tar.gz)
-sha256sums=('4d34a0c05ca6c94679ef37b8166895f41343919de051bb884af8010c10afdcfa')
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+sha256sums=('db0b1200bfec91fcf396d9d7671eb410f0eb5a18a0819f778f335ebac82e0b9e')
 
 
 package() {
-    cd ${srcdir}/colcon-package-information-${pkgver}
+    cd ${srcdir}/${_name}-${pkgver}
 
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
