@@ -3,13 +3,14 @@
 replaces=('pepper')
 pkgname=crown
 pkgver=0.39.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Flexible Game Engine"
 arch=(x86_64)
 url="https://github.com/dbartolini/crown"
 license=('MIT')
 depends=('glib2>=2.48.2'
          'gtk3>=3.16'
+         'libgee'
          'libgl'
          'libpulse'
          'libx11'

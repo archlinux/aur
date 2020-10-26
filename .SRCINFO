@@ -1,12 +1,13 @@
 pkgbase = crown
 	pkgdesc = The Flexible Game Engine
 	pkgver = 0.39.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dbartolini/crown
 	arch = x86_64
 	license = MIT
 	depends = glib2>=2.48.2
 	depends = gtk3>=3.16
+	depends = libgee
 	depends = libgl
 	depends = libpulse
 	depends = libx11
