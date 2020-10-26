@@ -8,7 +8,7 @@ pkgbase = qliquidsfz-git
 	arch = aarch64
 	license = GPL
 	depends = jack
-	depends = qt5
+	depends = qt5-base
 	source = qliquidsfz-0.1.3.tar.gz::https://github.com/be1/qliquidsfz/archive/0.1.3.tar.gz
 	sha512sums = SKIP
 
