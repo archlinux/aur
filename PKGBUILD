@@ -95,6 +95,11 @@ package() {
 
   mkdir -p "${pkgdir}/usr/share/mime/packages"
   cp "${pkgdir}/opt/natinst/LabVIEW-${_release}-64/etc/desktop/mime/labview.xml" "${pkgdir}/usr/share/mime/packages"
+  
+  # apply patch 1
+  cp -p "${srcdir}/labview" "${pkgdir}/opt/natinst/LabVIEW-${_release}-64/"
+  cp -rp "${srcdir}/vi.lib" "${pkgdir}/opt/natinst/LabVIEW-${_release}-64/"
+  cp -rp "${srcdir}/AppLibs" "${pkgdir}/opt/natinst/LabVIEW-${_release}-64/"
 }
 
 # vim:set et sw=2 sts=2:
