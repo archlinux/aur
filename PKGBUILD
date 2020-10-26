@@ -2,7 +2,7 @@
 
 _pkgname=redkite
 pkgname="${_pkgname}-git"
-pkgver=0.8.1.r232.93b76c4
+pkgver=1.2.0.r335.61f26b1
 pkgrel=1
 pkgdesc="A small free software and cross-platform GUI toolkit"
 arch=('x86_64')
