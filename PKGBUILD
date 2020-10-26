@@ -5,7 +5,8 @@
 pkgname="brother-mfc-255cw"
 _model="255cw"
 pkgver="1.1.3"
-pkgrel=2
+pkgrel=3
+source_pkgrel=1
 pkgdesc="LPR and CUPS driver for the Brother MFC-255CW"
 url="http://solutions.brother.com/linux/en_us/"
 license=('custom:brother commercial license')
@@ -19,8 +20,8 @@ fi
 
 install="$pkgname.install"
 
-source=("http://www.brother.com/pub/bsc/linux/dlf/mfc255cwlpr-$pkgver-$pkgrel.i386.rpm"
-	"http://www.brother.com/pub/bsc/linux/dlf/mfc255cwcupswrapper-$pkgver-$pkgrel.i386.rpm"
+source=("http://www.brother.com/pub/bsc/linux/dlf/mfc255cwlpr-$pkgver-$source_pkgrel.i386.rpm"
+	"http://www.brother.com/pub/bsc/linux/dlf/mfc255cwcupswrapper-$pkgver-$source_pkgrel.i386.rpm"
 )
 md5sums=('e36d4a5cebc93b95e2699e82737b25b3'
 	 '5e6196f096a8bf915efbcb183e53c117'
