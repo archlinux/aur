@@ -1,0 +1,17 @@
+pkgbase = python-rtoml
+	pkgdesc = A better TOML library for python implemented in rust.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://pypi.org/project/rtoml
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-setuptools-rust
+	makedepends = rust
+	depends = python
+	source = python-rtoml-0.4.0.tar.gz::https://pypi.org/packages/source/r/rtoml/rtoml-0.4.0.tar.gz
+	sha256sums = 38539f5601f67fcd5cad2dee564b7a898471d21a030c81889d713e72ef963a5c
+	b2sums = cf471e7bb8e215e0f0d26a7ef7a087ce78a04bd506a0adadb405ed47ebd495a1f5aec743163087b4621beb5bdbc4850797e43ec8b5f8dd459df0179b4ea05b4d
+
+pkgname = python-rtoml
+
