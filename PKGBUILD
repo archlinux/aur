@@ -3,7 +3,7 @@
 # Contributor: hdhoang <arch@hdhoang.space>
 
 pkgname=nginx-mainline-mod-fancyindex
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.19.3
@@ -17,7 +17,7 @@ source=(https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
 sha256sums=('91e5b74fa17879d2463294e93ad8f6ffc066696ae32ad0478ffe15ba0e9e8df0'
             'SKIP'
-            '4187ab26117f0886a971ae04705f0a60e33949ba2f85a4772179e9f29c6e7e91')
+            '238bd5521d6c9b55780e6871339a7ea79508b9a6758ad2fa4451f2dfe26d94c9')
 
 build() {
   cd "nginx-$_nginxver"
