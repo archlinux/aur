@@ -1,0 +1,16 @@
+pkgbase = mlogtail-git
+	pkgdesc = Mail log tailing and simple stats collecting application
+	pkgver = r44.9c23c35
+	pkgrel = 1
+	url = https://github.com/aadz/mlogtail
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = go
+	provides = mlogtail
+	conflicts = mlogtail
+	source = mlogtail::git+https://github.com/aadz/mlogtail.git
+	sha256sums = SKIP
+
+pkgname = mlogtail-git
+
