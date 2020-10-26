@@ -1,0 +1,19 @@
+pkgbase = juicebox
+	pkgdesc = Visualization and analysis software for Hi-C data
+	pkgver = 1.11.08
+	pkgrel = 1
+	url = https://aidenlab.org/juicebox
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	depends = java-runtime
+	depends = sh
+	source = https://s3.amazonaws.com/hicfiles.tc4ga.com/public/Juicebox/Juicebox_1.11.08.jar
+	source = https://raw.githubusercontent.com/aidenlab/Juicebox/master/LICENSE
+	source = juicebox.sh
+	sha512sums = b763fe3f288e006fdbe06091222cc6dcd768570acb4d354d23464c1bc3bbc5c5aa9b388f1411955c55a93bf646366f3379191f1691cd3b0bf87f2166589e2d1e
+	sha512sums = 106869ddab74b937419c54b5a9ba2a4e7dd0bf9d3ddca79dfc746ef73ade5548629ba067bafc7ceb2bf36dcdbec57cc29d1850cb9a360e4a75a8cf8a2afbe1f7
+	sha512sums = daf5d5bc93a6487a86f35577812cacfe1de7052a30d14b4e2e7ba5a4a1f9ef0818f7fe4e932d029170690923ed10f0d74915dec9ff874cad47c55bd5a3945f86
+
+pkgname = juicebox
+
