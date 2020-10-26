@@ -19,6 +19,7 @@ pkgbase = linuxcnc-bin
 	depends = psmisc
 	provides = linuxcnc
 	conflicts = linuxcnc
+	conflicts = linuxcnc-git
 	source = linuxcnc-bin-2.8.0.deb::http://linuxcnc.org/dists/stretch/2.8-rtpreempt/binary-amd64/linuxcnc-uspace_2.8.0_amd64.deb
 	sha256sums = 86fc5708552300316add400c83afe56537c15ae9ab5d9c597c87f4c9b0d2316b
 

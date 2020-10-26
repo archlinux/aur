@@ -20,7 +20,7 @@ depends=('bc'
          'procps-ng'
          'psmisc')
 provides=('linuxcnc')
-conflicts=('linuxcnc')
+conflicts=('linuxcnc' 'linuxcnc-git')
 source=("${pkgname}-${pkgver}.deb::http://linuxcnc.org/dists/stretch/2.8-rtpreempt/binary-amd64/linuxcnc-uspace_${pkgver}_amd64.deb")
 sha256sums=('86fc5708552300316add400c83afe56537c15ae9ab5d9c597c87f4c9b0d2316b')
 
