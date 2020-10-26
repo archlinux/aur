@@ -2,13 +2,13 @@
 
 pkgname=asn-git
 _reponame=asn
-pkgver=r21.6d98132
+pkgver=r52.f928817
 pkgrel=1
 pkgdesc='ASN/IPv4/IPv6/Prefix/ASPath lookup tool'
 arch=('any')
 url="https://github.com/nitefood/asn"
 license=('MIT')
-depends=('bash' 'mtr' 'whois' 'bind-tools')
+depends=('bash' 'mtr' 'whois' 'bind-tools' 'ipcalc' 'grepcidr')
 conflicts=('asn')
 source=("git+${url}")
 sha256sums=('SKIP')
