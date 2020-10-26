@@ -5,7 +5,7 @@ pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="A library to support OpenStreetMap's protocolbuffer binary format (OSM PBF)"
 arch=('i686' 'x86_64')
 url="https://github.com/scrosby/OSM-binary"
@@ -13,6 +13,7 @@ license=('LGPL3')
 depends=('protobuf')
 makedepends=('git')
 provides=('libosmpbf')
+conflicts=('libosmpbf')
 source=("$pkgname::git+https://github.com/scrosby/OSM-binary.git")
 md5sums=('SKIP')
 
