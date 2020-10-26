@@ -38,7 +38,7 @@ package() {
     install -Dm644 "utils/pueued.service" "${pkgdir}/usr/lib/systemd/user/pueued.service"
 
     # Install zsh completions file
-    # install -Dm644 "utils/completions/_pueue" "${pkgdir}/usr/share/zsh/site-functions/_pueue"
+    install -Dm644 "utils/completions/_pueue" "${pkgdir}/usr/share/zsh/site-functions/_pueue"
     install -Dm644 "utils/completions/pueue.bash" "${pkgdir}/usr/share/bash-completion/completions/pueue.bash"
     install -Dm644 "utils/completions/pueue.fish" "${pkgdir}/usr/share/fish/completions/pueue.fish"
 
