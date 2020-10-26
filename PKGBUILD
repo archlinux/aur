@@ -1,7 +1,7 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 _pkgname=Red-Lavalink
 pkgname=python-red-lavalink
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Implements JSON-RPC 2.0 Specification using aiohttp"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('python' 'python-aiohttp' 'python-discord')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-asyncio')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('dc79453d816ebdf44963285c8bcd6eb625f6682c8827c20f32ffaefb4b0a7dab')
+sha256sums=('c46a650d4d1cce710e3f7e853856dd050708b6e54994673ef3c0365b72c47811')
 
 build() {
 	cd "$_pkgname-$pkgver"
