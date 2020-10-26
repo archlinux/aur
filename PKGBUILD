@@ -2,7 +2,7 @@
 
 _pkgname=nmigen
 pkgname="python-$_pkgname-git"
-pkgver=0.2.r191.g2c505de
+pkgver=0.2.r198.ge3207b7
 pkgrel=1
 pkgdesc="A refreshed Python toolbox for building complex digital hardware"
 arch=(any)
@@ -12,9 +12,9 @@ depends=('python')
 makedepends=('git' 'python-setuptools' 'python-setuptools-scm' 'python-pytest')
 optdepends=('python-pyvcd: for nmigen.pysim'
             'python-jinja: for nmigen.build'
-            'paramiko: for remote builds')
-# FIXME: yosys>=0.9+3468, symbiyosys
-checkdepends=('python-pytest' 'python-pyvcd' 'python-jinja' 'yosys-git' 'symbiyosys-git' 'yices')
+            'python-paramiko: for remote builds')
+# FIXME: symbiyosys
+checkdepends=('python-pytest' 'python-pyvcd' 'python-jinja' 'yosys>=0.9+3468' 'symbiyosys-git' 'yices')
 provides=("python-nmigen=$pkgver")
 conflicts=('python-nmigen')
 source=("git+$url.git")

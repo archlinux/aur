@@ -1,6 +1,6 @@
 pkgbase = python-nmigen-git
 	pkgdesc = A refreshed Python toolbox for building complex digital hardware
-	pkgver = 0.2.r191.g2c505de
+	pkgver = 0.2.r198.ge3207b7
 	pkgrel = 1
 	url = https://github.com/nmigen/nmigen
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-nmigen-git
 	checkdepends = python-pytest
 	checkdepends = python-pyvcd
 	checkdepends = python-jinja
-	checkdepends = yosys-git
+	checkdepends = yosys>=0.9+3468
 	checkdepends = symbiyosys-git
 	checkdepends = yices
 	makedepends = git
@@ -18,8 +18,8 @@ pkgbase = python-nmigen-git
 	depends = python
 	optdepends = python-pyvcd: for nmigen.pysim
 	optdepends = python-jinja: for nmigen.build
-	optdepends = paramiko: for remote builds
-	provides = python-nmigen=0.2.r191.g2c505de
+	optdepends = python-paramiko: for remote builds
+	provides = python-nmigen=0.2.r198.ge3207b7
 	conflicts = python-nmigen
 	source = git+https://github.com/nmigen/nmigen.git
 	sha256sums = SKIP
