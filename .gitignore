@@ -1,7 +1,6 @@
 pkg
 src
+rtl8821ce
 *.zst
-*.deb
-*.gz
 *.xz
 git.sh

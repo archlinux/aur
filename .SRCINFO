@@ -1,6 +1,6 @@
 pkgbase = rtl8821ce-dkms
 	pkgdesc = rtl8821CE driver with firmware
-	pkgver = 1.0.5.r103.gaf3b12d
+	pkgver = 1.0.5.r110.gd95376d
 	pkgrel = 1
 	url = https://github.com/MounirErhili/rtl8821ce.git
 	arch = i686
