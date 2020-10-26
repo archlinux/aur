@@ -2,7 +2,7 @@
 
 pkgname=helmenv-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.2.3
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='Helm version manager inspired by tfenv'
 arch=('x86_64')
