@@ -17,7 +17,7 @@ pkgbase = mautrix-signal-git
 	depends = python-aiodns
 	depends = python-brotli
 	depends = python-pillow
-	depends = python-asyncpg
+	depends = python-asyncpg>=0.21
 	depends = python-olm
 	depends = python-phonenumbers
 	depends = python-pycryptodome
