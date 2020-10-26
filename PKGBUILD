@@ -2,31 +2,29 @@
 # Contributor: Marti Raudsepp <marti@juffo.org>
 
 pkgname=ssss
-pkgver=0.5
-pkgrel=4
+_tag='84b540782a22d7c6bcf240b34d838e0af846c62d' # git rev-parse releases/v${pkgver}
+pkgver=0.5.6
+pkgrel=1
 pkgdesc="Simple command-line implementation of Shamir's Secret Sharing Scheme"
 arch=('i686' 'x86_64')
 license=('GPL')
-url="http://point-at-infinity.org/ssss/"
+url='https://github.com/MrJoy/ssss'
 depends=('gmp')
-makedepends=('xmltoman')
-source=("http://point-at-infinity.org/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('3f8f5046c2c5c3a2cf1a93f0a9446681852b190e')
+makedepends=('git' 'xmltoman')
+validpgpkeys=('6DD601691023247FB4FE63A3498FCFAD9FE6855B') # Jon Frisby <jfrisby@mrjoy.com>
+source=("git+https://github.com/MrJoy/ssss#tag=${_tag}?signed")
+sha256sums=('SKIP')
 
 build() {
-	cd ${srcdir}/${pkgname}-${pkgver}/
+  cd ${srcdir}/${pkgname}/
 
-	make
+  make CC="cc ${CFLAGS} ${LDFLAGS}"
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver}/
+  cd ${srcdir}/${pkgname}/
 
-	install -D -m0755 ssss-combine ${pkgdir}/usr/bin/ssss-combine
-	install -D -m0755 ssss-split ${pkgdir}/usr/bin/ssss-split
-
-	install -D -m0644 ssss.1 ${pkgdir}/usr/share/man/man1/ssss.1
-
-	install -D -m0755 doc.html ${pkgdir}/usr/share/doc/${pkgname}/doc.html
-	install -D -m0755 ssss.1.html ${pkgdir}/usr/share/doc/${pkgname}/ssss.1.html
+  install -D -m0755 -t ${pkgdir}/usr/bin/ ssss-combine ssss-split
+  install -D -m0644 -t ${pkgdir}/usr/share/man/man1/ ssss.1 ssss-combine.1 ssss-split.1
+  install -D -m0755 -t ${pkgdir}/usr/share/doc/${pkgname}/ doc.html ssss.1.html
 }
