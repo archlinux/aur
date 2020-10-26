@@ -1,5 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 # Contributor: Tong Chunli<t.cunly at 163 dot com>
+# Contributor: Tong Chunli<t.cunly at 163 dot com>
+_name=${pkgname:7}
 pkgname=python-colcon-recursive-crawl
 _name=${pkgname:7}
 pkgver=0.2.1
