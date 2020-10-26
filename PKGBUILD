@@ -41,7 +41,6 @@ build() {
 
 package() {
   # Install start script
-  echo "package"
   install -Dm755 ${pkgname}.sh "${pkgdir}/usr/bin/insomnia"
   install -Dm644 ${pkgname}.desktop -t "${pkgdir}/usr/share/applications"
 
