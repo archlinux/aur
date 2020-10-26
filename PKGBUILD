@@ -16,7 +16,7 @@ install="${_pkgname}.install"
 source=("https://phar.phpunit.de/phpunit-${pkgver}.phar"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/sebastianbergmann/phpunit/${pkgver}/LICENSE")
 sha512sums=('e70dea8e9e77863ea08d3bda78750de87094c064d1d930ccde061a24b1ae9ca2297fb9ce43efbdb6bfbf84948f9c489bbe3b1a7b30495a955b76fdd6e8e7c208'
-            '9ca5ce5d441629921af418c7d700d3a6942fbaa07d0081ce5abf835122f2f025b7737daedf55b2039d05875dac4d09fc034ea3dbd97404d8d1f326b1ce7b22df')
+            '8e9e4a876a6b08ad44a60599ad23b3fad5b827925121f2daa427c4a682c6dd2b535151f3cf4f866231722bfb09866f1559fc3e82757a4e64405393ef7e0382cc')
 
 package() {
   install -D -m 644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
