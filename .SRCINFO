@@ -1,6 +1,6 @@
 pkgbase = evolution-etesync-git
 	pkgdesc = EteSync (end-to-end encrypted sync) plugin for Evolution
-	pkgver = 0.5.1.r0.g8f0a8aa
+	pkgver = 0.6.0.r173.f94f7ff
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/evolution-etesync/
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = evolution-etesync-git
 	depends = json-glib
 	depends = evolution-data-server
 	depends = evolution
-	depends = etesync-git
-	source = evolution-etesync::git+https://gitlab.gnome.org/GNOME/evolution-etesync.git
+	depends = etebase
+	source = evolution-etesync::git+https://gitlab.gnome.org/nourmat/evolution-etesync.git#branch=EteSync-2.0
 	sha512sums = SKIP
 
 pkgname = evolution-etesync-git
