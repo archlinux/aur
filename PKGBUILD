@@ -2,11 +2,11 @@
 
 pkgname=python-typish
 _pkgname="${pkgname#python-}"
-pkgver=1.7.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='Functionality for types'
 arch=(any)
-url='https://github.com/ramonhagenaars/typish'
+url="https://github.com/ramonhagenaars/$_pkgname"
 license=(MIT)
 
 depends=(
@@ -15,7 +15,7 @@ depends=(
 
 makedepends=(
     'python-pip'
-    # 'python-wheel'
+    'python-wheel'
 )
 
 checkdepends=(
@@ -30,9 +30,9 @@ checkdepends=(
 )
 
 source=(
-    'https://github.com/ramonhagenaars/typish/archive/1.7.0.tar.gz'
+    "$url/archive/v$pkgver.tar.gz"
 )
-sha512sums=('cf8dae1d556fd1de430904e96a97c8f1f777ffebf1b9796ffb1c50e01aef5eec683c5b1b80c9b1394284b5e8c47a9d8c48193596ccb57d4f1df141f673053ba6')
+sha512sums=('867694f5fee9387b14cc94d3741ada256b8a32db931f01576a4d38d78fd237fe708f8e890703db21ccb790ace5ff178a09cda28d8ab9164b6ecbb105eeefc670')
 
 _extracted="$_pkgname-$pkgver/"
 
