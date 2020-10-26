@@ -1,6 +1,6 @@
 pkgbase = jdk-adoptopenjdk
 	pkgdesc = OpenJDK Java 15 development kit (AdoptOpenJDK build)
-	pkgver = 15.u36
+	pkgver = 15.0.1.u9
 	pkgrel = 1
 	url = https://adoptopenjdk.net/
 	install = install_jdk-adoptopenjdk.sh
@@ -16,18 +16,18 @@ pkgbase = jdk-adoptopenjdk
 	optdepends = gtk3: for the Gtk+ 3 look and feel
 	provides = java-runtime-headless=15
 	provides = java-runtime-headless-openjdk=15
-	provides = jre15-openjdk-headless=15.u36
-	provides = jre-openjdk-headless=15.u36
+	provides = jre15-openjdk-headless=15.0.1.u9
+	provides = jre-openjdk-headless=15.0.1.u9
 	provides = java-runtime=15
 	provides = java-runtime-openjdk=15
-	provides = jre15-openjdk=15.u36
-	provides = jre-openjdk=15.u36
+	provides = jre15-openjdk=15.0.1.u9
+	provides = jre-openjdk=15.0.1.u9
 	provides = java-environment=15
 	provides = java-environment-openjdk=15
-	provides = jdk15-openjdk=15.u36
-	provides = jdk-openjdk=15.u36
-	provides = openjdk15-src=15.u36
-	provides = openjdk-src=15.u36
+	provides = jdk15-openjdk=15.0.1.u9
+	provides = jdk-openjdk=15.0.1.u9
+	provides = openjdk15-src=15.0.1.u9
+	provides = openjdk-src=15.0.1.u9
 	backup = etc/jdk-adoptopenjdk/logging.properties
 	backup = etc/jdk-adoptopenjdk/management/jmxremote.access
 	backup = etc/jdk-adoptopenjdk/management/jmxremote.password.template
@@ -43,11 +43,11 @@ pkgbase = jdk-adoptopenjdk
 	backup = etc/jdk-adoptopenjdk/security/policy/unlimited/default_local.policy
 	backup = etc/jdk-adoptopenjdk/security/policy/unlimited/default_US_export.policy
 	backup = etc/jdk-adoptopenjdk/sound.properties
-	source = https://github.com/AdoptOpenJDK/openjdk15-binaries/releases/download/jdk-15%2B36/OpenJDK15U-jdk_x64_linux_hotspot_15_36.tar.gz
+	source = https://github.com/AdoptOpenJDK/openjdk15-binaries/releases/download/jdk-15.0.1%2B9/OpenJDK15U-jdk_x64_linux_hotspot_15.0.1_9.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = c198593d1b5188ee3570e2ca33c3bc004aaefbda2c11e68e58ae7296cf5c3982
+	sha256sums = 61045ecb9434e3320dbc2c597715f9884586b7a18a56d29851b4d4a4d48a2a5e
 	sha256sums = b221b6b040fd73e081fe679c106726309cdab8977bb4be25986ddda7068ccb4f
 	sha256sums = dafd84555287f16a59d4c7603167efc2a64a632780b6d8de109e75d6aa29782e
 	sha256sums = 4f05bf04f6397e9586881951116b3a12ae8336142e8be0caf196eaee1444c03f
