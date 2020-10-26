@@ -1,10 +1,15 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
-# Contributor: Oscar Morante <spacepluk@gmail.com>
+# Maintainer: Valentijn "noirscape" V <neko at catgirlsin dot space>
+# Maintainer: Felix Golatofski <contact at xdfr dot de>
+# Contributor: Oscar Morante <spacepluk at gmail dot com>
+
 
 _prefix=/opt/UnityLts
+_hash=518737b1de84
+# hash obtained from: https://unity3d.com/unity/qa/lts-releases , you can find it by right clicking the download
+# link for any installer and then using your brain to figure otu what part looks like the hash
 
 pkgname=unity-editor-lts
-pkgver=2019.4.9f1
+pkgver=2019.4.13f1
 pkgrel=1
 epoch=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences. (LTS)"
@@ -24,7 +29,8 @@ depends=('desktop-file-utils'
          'libpqxx'
          'npm'
          'intel-tbb'
-         'gtk3')
+         'gtk3'
+         'python2')
 optdepends=("${pkgname}-doc"
             "${pkgname}-android"
             "${pkgname}-ios"
@@ -35,7 +41,7 @@ optdepends=("${pkgname}-doc"
             "visual-studio-code-bin"
             "unityhub"
             "jq: needed for UnityHub integration helpers --register/--deregister")
-source=("$pkgver.tar.xz::https://download.unity3d.com/download_unity/50fe8a171dd9/LinuxEditorInstaller/Unity.tar.xz"
+source=("$pkgver.tar.xz::https://download.unity3d.com/download_unity/${_hash}/LinuxEditorInstaller/Unity.tar.xz"
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}-icon.png"
