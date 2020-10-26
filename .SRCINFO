@@ -1,7 +1,7 @@
 pkgbase = filmulator
 	pkgdesc = Simple raw photo editor based on the process of developing film
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://filmulator.org/
 	arch = i686
 	arch = pentium4
@@ -10,6 +10,7 @@ pkgbase = filmulator
 	makedepends = cmake
 	makedepends = openmp
 	depends = exiv2
+	depends = hicolor-icon-theme
 	depends = lensfun-git
 	depends = libarchive
 	depends = libraw
