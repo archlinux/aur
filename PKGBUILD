@@ -2,8 +2,8 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=auctex
-pkgver=12.1
-pkgrel=3
+pkgver=12.3
+pkgrel=1
 pkgdesc="An extensible package for writing and formatting TeX files in Emacs"
 arch=('any')
 url="https://www.gnu.org/software/auctex/"
@@ -12,7 +12,7 @@ depends=('emacs' 'ghostscript' 'texlive-core')
 options=('!makeflags')
 install=auctex.install
 source=("https://ftp.gnu.org/pub/gnu/auctex/${pkgname}-${pkgver}.tar.gz"{,.sig})
-sha256sums=('c95cca4d70a9783617f7b5035c5e2c77438fa35d2505555d40190ac2652a5db4'
+sha256sums=('2fd4fe30b69457c9277fe204d3e83c8472bcf500c8fe4a810d744406174ca9dd'
             'SKIP')
 validpgpkeys=('70CDE487C45540307F86972BE2FD58BF20485F50') #Mosè Giordano <mose@gnu.org>
 
