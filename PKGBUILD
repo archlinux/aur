@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=mylar3
-pkgver=0.4.7
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="Comic book download automation for usenet and torrents."
 arch=('any')
@@ -36,7 +36,7 @@ source=("mylar3-${pkgver}.tar.gz::https://github.com/mylar3/mylar3/archive/v${pk
         'mylar3.tmpfiles'
         'mylar3.sysusers')
 
-sha256sums=('542023cd01085d5e08affd1ba21c07918095d961826eaf650a35a7d1d105fb31'
+sha256sums=('b130319b19c5a25d3a1a04e71ec7f0630bb674c5d76a81d987393b0179da43b6'
             'bfe7c28f5c773b77e6bc0014bd4473de2f4650d049cfedb177aedef74187c932'
             'e39441d41acd5d66b63631872e06f8e5425bf0725044e5c3843626d4a090eba5'
             'e26cad50c8c8501fa12e2e2b2443f57aaf309e28f28d6dd4944958f9cb20f3cd')
