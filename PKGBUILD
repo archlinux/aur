@@ -1,5 +1,5 @@
 # Maintainer: Joe Holden <jwh@zorins.us>
-_pkgbase=mautrix-whatsapp-git
+_pkgbase=mautrix-whatsapp
 pkgname=mautrix-whatsapp-git
 pkgver=r451.cccaa62
 pkgrel=1
