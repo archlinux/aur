@@ -23,7 +23,7 @@ sha256sums=(
 pkgver() {
   cd "${pkgname}"
   local ver="$(svnversion)"
-  printf "r%s" "${ver}" 
+  printf "r%s" "${ver//[[:alpha:]]}"
 }
 
 build() {
