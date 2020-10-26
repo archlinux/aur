@@ -1,6 +1,6 @@
 pkgbase = ctre
 	pkgdesc = A Compile time PCRE (almost) compatible regular expression matcher
-	pkgver = 2.10
+	pkgver = 3.2
 	pkgrel = 1
 	url = https://github.com/hanickadot/compile-time-regular-expressions/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = ctre
 	optdepends = clang: c++ compiler
 	provides = compile-time-regular-expressions
 	conflicts = compile-time-regular-expressions
-	source = https://github.com/hanickadot/compile-time-regular-expressions//archive/v2.10.tar.gz
-	sha512sums = SKIP
+	source = https://github.com/hanickadot/compile-time-regular-expressions//archive/v3.2.tar.gz
+	sha512sums = 853559fbb808610dad0a825d85db5e6fe9398a2c7838dfde93e0766f2072104ff063a7ae1bf4ce49e3b12c977bc51861855d023527c764631875dfd41cc09ad4
 
 pkgname = ctre
 
