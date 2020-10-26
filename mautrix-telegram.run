@@ -9,4 +9,4 @@ regfile=/etc/mautrix-telegram/registration.yaml
 cd /etc/mautrix-telegram || exit
 alembic -x "config=$cfgfile" upgrade head
 
-exec mautrix-telegram --config "$cfgfile" --registration "$regfile"
+exec python -m mautrix_telegram --config "$cfgfile" --registration "$regfile"
