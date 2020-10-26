@@ -1,6 +1,8 @@
-#Maintainer: Tong Chunli<t.cunly at 163 dot com>
+# Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
+# Contributor: Tong Chunli<t.cunly at 163 dot com>
 pkgname=python-colcon-ros
-pkgver=0.3.10
+_name=${pkgname:7}
+pkgver=0.3.21
 pkgrel=1
 pkgdesc="An extension for colcon-core to support ROS packages."
 arch=(any)
@@ -8,12 +10,12 @@ url="https://pypi.org/project/colcon-ros/"
 license=('Apache')
 depends=('python-colcon-core' 'python-colcon-library-path' 'python-colcon-cmake' 'python-colcon-pkg-config' 'python-colcon-recursive-crawl' 'python-colcon-python-setup-py' 'python-pyparsing' 'python-catkin_pkg')
 makedepends=('python-setuptools')
-source=(https://files.pythonhosted.org/packages/bd/70/d9e688261bf824546426120cb8e87375114bcaa98364d0fc0cb68937330e/colcon-ros-0.3.10.tar.gz)
-sha256sums=('e560084af1f8aa059e7ea579357904137ede59b8083562bdd6e39f2db147143f')
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+sha256sums=('9dccfa4bce1a18a06e1edcd589aa287e1807afc853af26c25e716830a8b6eaa3')
 
 
 package() {
-    cd ${srcdir}/colcon-ros-${pkgver}
+    cd ${srcdir}/${_name}-${pkgver}
 
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1 
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
