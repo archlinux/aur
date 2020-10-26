@@ -1,16 +1,16 @@
-# Maintainer: Přemysl Janouch <p@janouch.name>
+# Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=sdtui-git
 _pkgname=sdtui
-pkgver=r163.fcc0c3e
+pkgver=r180.f15fc0f
 pkgrel=1
 pkgdesc="StarDict terminal UI"
 url="https://git.janouch.name/p/sdtui"
 arch=('i686' 'x86_64')
-license=('BSD')
+license=('custom:0BSD')
 options=(zipman)
 conflicts=('sdtui')
 provides=('sdtui')
-makedepends=('cmake' 'pkg-config' 'git' 'libxslt' 'docbook-xsl')
+makedepends=('cmake' 'pkg-config' 'git' 'asciidoctor')
 depends=('zlib' 'glib2' 'ncurses' 'pango')
 optdepends=('libxcb: X11 selection watcher')
 source=("git+https://git.janouch.name/p/$_pkgname")
@@ -41,4 +41,6 @@ build() {
 package() {
   cd "$srcdir/$_pkgname-build"
   make install DESTDIR=$pkgdir
+  install -Dm644 "$srcdir/$_pkgname/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
