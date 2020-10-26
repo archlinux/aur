@@ -1,8 +1,8 @@
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="koalalauncher"
-pkgver="1.0.4"
+pkgver="1.0.5"
 pkgrel=1
-commitsha="2ecf84767ec9e1ff661004dc02fd8034571df1f0"
+commitsha="1f9091a4e87bef06769d0d6081853bbc68038e88"
 arch=('x86_64')
 pkgdesc="Koala Launcher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://koalalauncher.com"
