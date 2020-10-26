@@ -39,10 +39,10 @@ prepare() {
    --without-libmodbus --prefix=/usr \
    --with-python=/usr/bin/python2.7 \
    --enable-non-distributable=yes
-   # Linking time errors fix
-   sed -i "163s|FileName|FileNameArr|" hal/classicladder/files_project.c
-   sed -i "174s|FileName|FileNameArr|g" hal/classicladder/files_project.c
-   sed -i "175s|FileName|FileNameArr|" hal/classicladder/files_project.c
+  # Linking time errors fix
+  sed -i "163s|FileName|FileNameArr|" hal/classicladder/files_project.c
+  sed -i "174s|FileName|FileNameArr|g" hal/classicladder/files_project.c
+  sed -i "175s|FileName|FileNameArr|" hal/classicladder/files_project.c
 }
 
 build () {
