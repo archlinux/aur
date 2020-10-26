@@ -1,6 +1,8 @@
-# Maintainer: Tong Chunli<t.cunly at 163 dot com>
+# Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
+# Contributor: Tong Chunli<t.cunly at 163 dot com>
 pkgname=python-colcon-test-result
-pkgver=0.3.3
+_name=${pkgname:7}
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="An extension for colcon-core to provide information about the test results."
 arch=(any)
@@ -8,12 +10,12 @@ url="https://pypi.org/project/colcon-test-result"
 license=('Apache')
 depends=('python-colcon-core')
 makedepends=('python-setuptools')
-source=(https://files.pythonhosted.org/packages/03/c2/0c98c7bb1ebc3685fe02e62320955803e0bbbd3f80ea709eb0e4af6910ee/colcon-test-result-0.3.3.tar.gz)
-sha256sums=('78f7d761418d2aa44b111b425db8d06294a2e3915d4f360f72336bb8966614a3')
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+sha256sums=('aa5225716a5bdd9f1df721e7a04f1e02150def8c86dd070793cb62e747c36ed3')
 
 
 package() {
-    cd ${srcdir}/colcon-test-result-${pkgver}
+    cd ${srcdir}/${_name}-${pkgver}
 
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
