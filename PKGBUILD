@@ -1,8 +1,8 @@
-# Maintainer:  Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontship
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
 url="https://github.com/theleagueof/$pkgname"
@@ -17,13 +17,11 @@ depends=('diffutils'
          'python'
          'python-babelfont'
          'python-brotli' # fonttools optdepends
-         'python-click'
          'python-cffsubr' # ufo2ft optdepends
          'python-fontmake'
          'python-fonttools'
          'python-fs' # fonttools optdepends
          'python-lxml' # fonttools optdepends
-         'python-pygit2'
          'python-skia-pathops' # ufo2ft optdepends
          'python-ufo2ft'
          'python-ufonormalizer'
@@ -35,8 +33,14 @@ depends=('diffutils'
          'ttfautohint'
          'woff2'
          'zsh')
+makedepends=('cargo' 'rust')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('9120725cbdff4b65fef1470e0073c669ce3c57bfbc9dc4ee41095f0511ab2d0b')
+sha256sums=('ec5998e0489060a2c9cfe54980513f71ed22526900f5610733be84552936d495')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    cargo fetch --locked
+}
 
 build() {
     cd "$pkgname-$pkgver"
