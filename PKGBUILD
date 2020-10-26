@@ -1,4 +1,4 @@
-#
+# Maintainer Ruijie Yu <first DOT last@outlook DOT com>
 pkgname=bass-fish
 _pkgname=bass
 pkgver=1.0
@@ -11,7 +11,6 @@ depends=(fish)
 optdepends=()
 makedepends=()
 checkdepends=(
-    tree
     python
 )
 source=(
