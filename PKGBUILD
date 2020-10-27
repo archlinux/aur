@@ -8,7 +8,7 @@ pkgname=(swift swift-lldb)
 #_swiftver=5.3-RELEASE
 #pkgver=${_swiftver//-RELEASE/}
 #_swiftver=5.3-DEVELOPMENT-SNAPSHOT-2020-07-04-a
-_swiftver=DEVELOPMENT-SNAPSHOT-2020-09-28-a
+_swiftver=DEVELOPMENT-SNAPSHOT-2020-10-24-a
 pkgver=5.4
 pkgrel=1
 pkgdesc="The Swift programming language and debugger"
@@ -44,8 +44,8 @@ sha256sums=(
 
 prepare() {
     # Use directory names which build-script expects
-    rm -rf llvm-project
-    ln -sf llvm-project-swift-${_swiftver} llvm-project
+    #rm -rf llvm-project
+    ln -sfn llvm-project-swift-${_swiftver} llvm-project
 
     for sdir in cmark llbuild
     do
