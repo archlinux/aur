@@ -2,8 +2,8 @@
 _reponame=ndn-cxx
 _pkgname=ndn-cxx
 pkgname=${_pkgname}
-pkgver=0.7.0
-pkgrel=10
+pkgver=0.7.1
+pkgrel=1
 # epoch=
 pkgdesc="Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ options=()
 install=
 source=(https://github.com/named-data/${_reponame}/archive/${_reponame}-${pkgver}.tar.gz)
 noextract=()
-sha256sums=('0efa2e7828bd8751ea2fb1aed0c83359410e7f76390c4fec905a6f4dea8a1b70')
+sha256sums=('8105558b95c7989d5211ffc101dfde2182d981542a348f0566d580ff6c4623c9')
 validpgpkeys=()
 
 prepare() {

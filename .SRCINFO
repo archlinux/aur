@@ -1,7 +1,7 @@
 pkgbase = ndn-cxx
 	pkgdesc = Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications
-	pkgver = 0.7.0
-	pkgrel = 10
+	pkgver = 0.7.1
+	pkgrel = 1
 	url = https://github.com/named-data/ndn-cxx
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = ndn-cxx
 	optdepends = boost-stacktrace-backtrace
 	provides = ndn-cxx
 	conflicts = ndn-cxx
-	source = https://github.com/named-data/ndn-cxx/archive/ndn-cxx-0.7.0.tar.gz
-	sha256sums = 0efa2e7828bd8751ea2fb1aed0c83359410e7f76390c4fec905a6f4dea8a1b70
+	source = https://github.com/named-data/ndn-cxx/archive/ndn-cxx-0.7.1.tar.gz
+	sha256sums = 8105558b95c7989d5211ffc101dfde2182d981542a348f0566d580ff6c4623c9
 
 pkgname = ndn-cxx
 
