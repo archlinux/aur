@@ -3,7 +3,7 @@
 # Contributor: Markus Opitz <mastero23 at gmail dot com>
 
 pkgname=oscam-svn
-pkgver=11578
+pkgver=11667
 pkgrel=1
 
 pkgdesc="The Open Source Conditional Access Module daemon"
@@ -11,7 +11,7 @@ url="http://www.streamboard.tv/oscam"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 
-depends=('bash' 'openssl' 'libusbx' 'pcsclite')
+depends=('bash' 'openssl' 'libusb' 'pcsclite')
 makedepends=('subversion')
 provides=('oscam')
 conflicts=('oscam')
