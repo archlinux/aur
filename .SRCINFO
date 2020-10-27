@@ -7,9 +7,8 @@ pkgbase = yuzu-ea-bin
 	license = gpl
 	depends = zlib
 	depends = hicolor-icon-theme
-	noextract = Yuzu-Ea-1068.AppImage
+	noextract = 
 	options = !strip
-	source_x86_64 = https://github.com/pineappleEA/pineappleEA.github.io/releases/download/EA-1068/Yuzu-Ea-1068.AppImage
 	sha256sums_x86_64 = 47f86b02e1e8c24a6f16397f7a7cca0039f9567922bd9c8aa3ee9f518cef0615
 
 pkgname = yuzu-ea-bin
