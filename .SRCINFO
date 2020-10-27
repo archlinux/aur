@@ -1,6 +1,6 @@
 pkgbase = python-pymupdf
 	pkgdesc = Python bindings for MuPDF
-	pkgver = 1.18.1
+	pkgver = 1.18.2
 	pkgrel = 1
 	url = https://github.com/pymupdf/PyMuPDF
 	arch = x86_64
@@ -17,10 +17,8 @@ pkgbase = python-pymupdf
 	depends = openjpeg2
 	depends = freetype2
 	depends = gumbo-parser
-	source = python-pymupdf-1.18.1.tar.gz::https://github.com/pymupdf/PyMuPDF/archive/1.18.1.tar.gz
-	source = fix-library-linking.patch
-	sha256sums = 068e1e7ed56ea008ed025413ad2a0468fb04b2b8f1789acdb18a4336d6639f25
-	sha256sums = e28b0b3a1300ebea1413a5a90b99575f624994f202e61d92875114cb7ce43c8c
+	source = PyMuPDF-1.18.2.tar.gz::https://github.com/pymupdf/PyMuPDF/archive/1.18.2.tar.gz
+	sha256sums = e6b7c952958a13fab9c5d1d3c2d73d536b60a82c561c0fe6bc821eaa1f1d1342
 
 pkgname = python-pymupdf
 
