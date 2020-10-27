@@ -1,19 +1,19 @@
 # Maintainer: Zanny <lordzanny@gmail.com>
-# Maintainer: Pavel Lymarev <x-user at bk dot ru>
+# Contributor: Pavel Lymarev <x-user at bk dot ru>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 # Contributor: Rene Schoebel (wesley) <schoebel.r at gmail dot com>
 
 pkgname='openjk-git'
-pkgver=r3645.52030235f
+pkgver=r3661.ec5fa44a8
 pkgrel=1
 pkgdesc="Open Source Jedi Knight II + III Engine"
-arch=('i686' 'x86_64')
+arch=(x86_64)
 url="https://github.com/JACoders/OpenJK"
-license=('GPL2')
-depends=('sdl2' 'libjpeg' 'libpng')
-makedepends=('cmake' 'git' 'libpng')
-provides=('openjk')
-conflicts=('openjk')
+license=(GPL2)
+depends=(sdl2 libjpeg libpng)
+makedepends=(cmake git libpng)
+provides=(openjk)
+conflicts=(openjk)
 source=(
   "${pkgname}::git+https://github.com/JACoders/OpenJK.git"
   'openjkmp.png'
@@ -22,7 +22,7 @@ source=(
   'openjkmp.desktop'
   'openja.desktop'
   'openjo.desktop'
-  'sdl2-cmake.patch')
+)
 sha256sums=(
   'SKIP'
   '3e9d36b3f982cc29fb3e4385ddc46e431be9fa045b32a811346f4254fa8d372c'
@@ -31,7 +31,6 @@ sha256sums=(
   'd3ad7dd270e57d36a22caef21bff17f2eb4acb0ad9087f6a17ca4a0bf9c566fc'
   '698792f86b75311a5c96d0b1310d97e242107559d341ea23a705f259e20a5ec2'
   '08812c7d1791b86a842401ecc54f29117d3d8b77369ad04db520561d57df41dd'
-  '2e1af0df37e69553731e1e18e10483735f31463a6dd856ae26aebb50ae97a734'
 )
 
 pkgver() {
@@ -42,32 +41,22 @@ pkgver() {
     "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    cd "$pkgname"
-    patch -p1 -i "$srcdir/sdl2-cmake.patch"
-}
-
 build() {
-  cd "$pkgname"
 
-  mkdir -p build
-  cd build
-  cmake ..                                        \
-    -DCMAKE_BUILD_TYPE=Release                    \
+  cmake -B build -S "$pkgname" \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/opt/${pkgname/-git}" \
     -DBuildJK2SPEngine=on \
     -DBuildJK2SPGame=on \
     -DBuildJK2SPRdVanilla=on
-  make
+  cmake --build build
 }
 
 package() {
-  cd "$pkgname/build"
+  DESTDIR="$pkgdir" cmake --install build
 
   _jkarch="${CARCH}"
   echo "${_jkarch}"
-
-  make DESTDIR="${pkgdir}" install
 
   install -m 755 -d "${pkgdir}/usr/bin"
 
