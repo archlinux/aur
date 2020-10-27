@@ -1,8 +1,8 @@
 # Maintainer: Denis Kasak <dkasak AT termina DOT org DOT uk>
 
 pkgname=polyfile
-pkgver=0.1.6
-pkgrel=2
+pkgver=0.1.7
+pkgrel=1
 pkgdesc="A utility to identify and map the semantic structure of files, including polyglots, chimeras, and schizophrenic files."
 arch=('any')
 url=https://github.com/trailofbits/polyfile
@@ -12,7 +12,7 @@ depends=('python' 'python-graphviz' 'python-intervaltree' 'python-jinja'
          'python-yaml>=3.13')
 makedepends=('python-setuptools')
 source=(https://github.com/trailofbits/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('51eccc0c9149501fa597863667c145d34f1d28225614cef60aa1cecab28ed653')
+sha256sums=('201e329a0762165c54e95758c1c9e26a70a68d821d464b5801568c2a0c3c14d8')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver/"
