@@ -32,7 +32,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_AVX_INSTRUCTIONS=ON \
         -DDLIB_USE_CUDA=OFF \
-        "../${pkgname}-${pkgver}"
+        "../${pkgbase}-${pkgver}"
     ninja
 
     cd "${srcdir}"
@@ -44,7 +44,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_AVX_INSTRUCTIONS=ON \
         -DDLIB_USE_CUDA=ON \
-        "../${pkgname}-${pkgver}"
+        "../${pkgbase}-${pkgver}"
     ninja
 }
 
