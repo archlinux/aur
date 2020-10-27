@@ -1,13 +1,12 @@
 pkgbase = polaric-connect
 	pkgdesc = Utility for connect Polaric web platform to raspberry
-	pkgver = 0.1
+	pkgver = r4.4be4173
 	pkgrel = 1
 	url = https://www.polaricsemi.com
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = make
 	depends = libssh
 	depends = gtk3
 	provides = polaric-connect
