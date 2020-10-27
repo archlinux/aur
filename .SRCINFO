@@ -1,0 +1,13 @@
+pkgbase = sintl
+	pkgdesc = A tool for translating HTML5 web pages.
+	pkgver = 0.2.11
+	pkgrel = 1
+	url = https://kristaps.bsd.lv/sintl/
+	arch = any
+	license = custom
+	depends = expat
+	source = https://kristaps.bsd.lv/sintl/snapshots/sintl.tar.gz
+	sha512sums = 5a22cd8266568798d6f045dcce47bd0e1c0949ab8515a1a08f616435eae0042dc941a2c995d3a90d43537dbfa50eaab6845ce4faa0d85f93b4dbfebe2bb547e9
+
+pkgname = sintl
+
