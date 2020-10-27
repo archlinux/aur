@@ -2,8 +2,8 @@
 _reponame=NFD
 _pkgname=ndn-nfd
 pkgname=$_pkgname
-pkgver=0.7.0
-pkgrel=9
+pkgver=0.7.1
+pkgrel=1
 # epoch=
 pkgdesc="NFD is a network forwarder that implements and evolves together with the Named Data Networking (NDN) protocol"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=(
   https://github.com/cawka/websocketpp/archive/0.8.1-hotfix.tar.gz
 )
 noextract=()
-sha256sums=('dfe90e958b062b8beb90ebaa10d9a10c2165952c772aa03f170913666d602cce'
+sha256sums=('7f911b79745fdbb1bebc75d1a8319d2d5189bb740c2ed6ccb87d6cdea8672706'
             'a5f692a4a8304eccfb6506941ceeb97990f0aecfcbe045d7fe8b24a46e0ef671')
 validpgpkeys=()
 

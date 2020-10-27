@@ -1,7 +1,7 @@
 pkgbase = ndn-nfd
 	pkgdesc = NFD is a network forwarder that implements and evolves together with the Named Data Networking (NDN) protocol
-	pkgver = 0.7.0
-	pkgrel = 9
+	pkgver = 0.7.1
+	pkgrel = 1
 	url = https://github.com/named-data/NFD
 	arch = i686
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = ndn-nfd
 	optdepends = valgrind: memory analysis
 	provides = ndn-nfd
 	conflicts = ndn-nfd
-	source = https://github.com/named-data/NFD/archive/NFD-0.7.0.tar.gz
+	source = https://github.com/named-data/NFD/archive/NFD-0.7.1.tar.gz
 	source = https://github.com/cawka/websocketpp/archive/0.8.1-hotfix.tar.gz
-	sha256sums = dfe90e958b062b8beb90ebaa10d9a10c2165952c772aa03f170913666d602cce
+	sha256sums = 7f911b79745fdbb1bebc75d1a8319d2d5189bb740c2ed6ccb87d6cdea8672706
 	sha256sums = a5f692a4a8304eccfb6506941ceeb97990f0aecfcbe045d7fe8b24a46e0ef671
 
 pkgname = ndn-nfd
