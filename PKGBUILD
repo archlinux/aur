@@ -11,6 +11,7 @@ url="https://github.com/pineappleEA/pineappleEA.github.io"
 license=('gpl')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
+pkgver=1070
 noextract=("${_appimage}")
 sha256sums_x86_64=('a91d915e131887cf7f91f0c2ffe98b8d84a39b8de4a08235d6371d2c0ef797a8')
 
