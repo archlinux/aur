@@ -1,6 +1,6 @@
 # Maintainer: Quinn Casey <quinn@quinncasey.com>
 pkgname=boop-gtk
-pkgver=v1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Port of @IvanMathy's Boop to GTK, a scriptable scratchpad for developers."
 arch=('any')
@@ -25,7 +25,7 @@ build() {
 
 package() {
   install -Dm 755 "Boop-GTK/target/release/${pkgname}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 "Boop-GTK/flatpak/data/uk.co.mrbenshef.Boop-GTK.png" -t "${pkgdir}/usr/share/pixmaps"
+  install -Dm 644 "Boop-GTK/flatpak/data/uk.co.mrbenshef.Boop-GTK.svg" -t "${pkgdir}/usr/share/pixmaps"
   install -Dm 644 "Boop-GTK/flatpak/data/uk.co.mrbenshef.Boop-GTK.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 Boop-GTK/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 Boop-GTK/README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
