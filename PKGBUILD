@@ -1,33 +1,39 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer: DDoSolitary <DDoSolitary@gmail.com>
 
 pkgname=libvlc-qt-git
-pkgver=498.9b2f561
-pkgrel=1
-pkgdesc="A free library used to connect Qt and libvlc libraries"
+_pkgname=vlc-qt
+pkgver=1.1.1.r7.g9b2f561
+pkgrel=2
+epoch=1
+pkgdesc='A simple library to connect Qt application with libvlc'
 arch=('i686' 'x86_64')
-url="https://github.com/vlc-qt/vlc-qt"
-license=('GPL3')
+url='https://github.com/vlc-qt/vlc-qt'
+license=('LGPL3')
 depends=('vlc' 'qt5-declarative')
-makedepends=('cmake>=2.8')
-provides=('libvlc-qt')
+makedepends=('cmake' 'git')
+provides=('libvlc-qt' 'libVLCQtCore.so' 'libVLCQtQml.so' 'libVLCQtWidgets.so')
 conflicts=('libvlc-qt')
-source=("git+https://github.com/vlc-qt/vlc-qt")
-md5sums=("SKIP")
-_gitname=vlc-qt
+source=('git+https://github.com/vlc-qt/vlc-qt.git')
+md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  # Use the tag of the last commit
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd $_pkgname
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	mkdir -p build
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt5
-  make
+	cd build
+	cmake ../$_pkgname \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DSYSTEM_QML=ON
+	make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  make DESTDIR="$pkgdir" install
+	cd build
+	make DESTDIR="$pkgdir/" install
 }
