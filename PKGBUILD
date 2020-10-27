@@ -10,12 +10,6 @@ license=('Apache')
 groups=()
 depends=('steghide')
 makedepends=('rust')
-checkdepends=()
-optdepends=()
-backup=()
-options=()
-install=
-changelog=
 source=("https://github.com/R4yGM/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('99e7d09926caaa99d4dde2dff73c24e2882931f80611d8ddc210b3afdb26aa5c')
 
@@ -23,11 +17,6 @@ prepare() {
   cd "${pkgname}-${pkgver}"
   sed -i 's/version = "0.1.0"/version = "0.1.1"/' Cargo.lock
 }
-
-#check() {
-#  cd "${pkgname}-${pkgver}"
-#  cargo test --release --locked --target-dir=target
-#}
 
 build() {
   cd "${pkgname}-${pkgver}"
