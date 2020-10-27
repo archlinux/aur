@@ -5,4 +5,4 @@ for name in /usr/share/java/docspell-restserver/*.jar ; do
   CP=$CP:$name
 done
 
-exec /usr/bin/java -Dconfig.file="/etc/docspell-restserver.conf" -cp "$CP" docspell.restserver.Main "$@"
+exec /usr/bin/java -Dconfig.file="/etc/docspell/restserver.conf" -cp "$CP" docspell.restserver.Main "$@"

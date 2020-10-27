@@ -21,12 +21,12 @@ source=("$pkgbase-$pkgver-restserver.zip::https://github.com/eikek/$pkgbase/rele
         "$pkgbase.tmpfiles")
 sha512sums=('d4892ad84b0d91713dd2fd0eb4b22bb7acf7b285898acda55928049c2a463cdb0c7f865acf5fe05c15bd5e581049948e9d2cbef31049dc049786324fb117ac1c'
             '315f2bdcefa48685bf4cfe5f0c1860c88904aab5cfdf4eea8885975d72177baa9308fbdf0e350fe14b1f6a22edfab538cfa82a70739c4b8bade1857f216226a5'
-            '2603c87f2db0e5d57486ad15f83092f577308d1bcda94d9f03bb142cc367c8421105b09bdcd93164a5f55059ac2d4f6d188ba3f729c11211438643675b577f00'
-            '71887a73f3f545260667084e065d8268cefb10912d81e3cdbcbb0e104f3ebb1a498b8fc7bf14ec1ebcbfae9d79006a618f2477969eb2bd79603e0abfe9cb120c'
+            '6ab8b24eb76f02b68e4fa4194b8771ef4f57c8375b34bf7bf914563528e347ea127beb5547e432910911d4fd15982cccdd1df50aeb76058129b909824ce49093'
+            '0b8b08f47f1cb46a3bfc16df4b0574cebfb4a851562d134fcba3c4bf80fb011443499a549c3a04480456c048346d09f36fbcbc9d792810001c9c8b370d3926a8'
             'f63f0fa58715b7da01aa265a7bec72eb24f0e98c354eed479b6034bc33b2ccdaef87db8a7630af1d5a6ac43fadf11a0f0a3fb3de5e183aa64d838a69b67125f9'
             '5cbe3c5a547eaa0af0952aca352b5dd86397b2c7fbc4fc730dd8882ee381586630124946d33ac34439505726a924c3b3c12792561ddc824fd5d5ef255d0a8d0f'
             'afe9a62801e962aac2996d1bfdd02bcf027f5135e40130bff2078a0fe2072d1d135ceb0dfce5d2174686f1f60a6d93f460c83fbb62884ef2e51c23232f521597'
-            '2c3926f7bb67b2556c1d46116035053b204ab5aa5f11bbf2b0e7e7b5b10acfa5e1dd86fa9aa7b57f8d7d92a7cdac0d8f314de4dc289e33d5d327c2349fd97698')
+            '0fc1d59cd6b57186c3a17d03779f428552f50f161f9a13de3ce727ac47ae8e3aac3c719bae08dfda258de02cd140c0ab7ba9cc6728d0ae6f5a4b0cbbaf72fa9c')
 
 prepare() {
     # shellcheck disable=2016
@@ -49,7 +49,7 @@ package_docspell-joex() {
     depends+=('ghostscript' 'tesseract' 'unoconv' 'wkhtmltopdf')
     optdepends+=('ocrmypdf: adds an OCR layer to scanned PDF files to make them searchable'
                  'unpaper: pre-processes images to yield better results when doing ocr')
-    backup=("etc/${pkgname[0]}.conf")
+    backup=("etc/docspell/joex.conf")
 
     install -Dm 755 "${pkgname[0]}.sh" "$pkgdir/usr/bin/${pkgname[0]}"
     install -Dm 644 "${pkgname[0]}.service" -t "$pkgdir/usr/lib/systemd/system"
@@ -58,7 +58,9 @@ package_docspell-joex() {
 
     cd "${pkgname[0]}-$pkgver" || exit
 
-    install -Dm 644 "conf/${pkgname[0]}.conf" -t "$pkgdir/etc"
+    # shellcheck disable=2174
+    mkdir -p -m 750 "$pkgdir/etc/docspell"
+    install -Dm 640 "conf/${pkgname[0]}.conf" "$pkgdir/etc/docspell/joex.conf"
 
     # https://lists.archlinux.org/pipermail/aur-general/2011-November/016777.html
     # make directories
@@ -74,7 +76,7 @@ package_docspell-joex() {
 
 package_docspell-restserver() {
     description=("Assists in organizing your piles of documents, resulting from scanners, e-mails and other sources with miminal effort. (Server)")
-    backup=("etc/${pkgname[1]}.conf")
+    backup=("etc/docspell/restserver.conf")
 
     install -Dm 755 "${pkgname[1]}.sh" "$pkgdir/usr/bin/${pkgname[1]}"
     install -Dm 644 "${pkgname[1]}.service" -t "$pkgdir/usr/lib/systemd/system"
@@ -83,7 +85,9 @@ package_docspell-restserver() {
 
     cd "${pkgname[1]}-$pkgver" || exit
 
-    install -Dm 644 "conf/$pkgbase-server.conf" "$pkgdir/etc/${pkgname[1]}.conf"
+    # shellcheck disable=2174
+    mkdir -p -m 750 "$pkgdir/etc/docspell"
+    install -Dm 640 "conf/$pkgbase-server.conf" "$pkgdir/etc/docspell/restserver.conf"
 
     # https://lists.archlinux.org/pipermail/aur-general/2011-November/016777.html
     # make directories

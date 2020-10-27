@@ -1,1 +1,3 @@
 d /var/lib/docspell 750 docspell docspell -
+z /etc/docspell 750 root docspell -
+z /etc/docspell/* 640 root docspell -
