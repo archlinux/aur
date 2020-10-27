@@ -1,0 +1,13 @@
+pkgbase = meli
+	pkgdesc = A MUA for the terminal aiming for configurability and extensibility with sane defaults
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://meli.delivery/
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	source = https://git.meli.delivery/meli/meli/archive/alpha-0.6.2.tar.gz
+	sha256sums = ae6651d11c5edd449e1a57729c792f5dc425fbc153fa180f9a6a6131d23a19fa
+
+pkgname = meli
+
