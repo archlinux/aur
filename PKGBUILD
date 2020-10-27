@@ -4,18 +4,21 @@
 
 _name=cgrep-clang
 pkgname=$_name-git
-pkgver=r143.a6c42a8
+pkgver=r154.f7e9ac8
 _mainfolder=$_name
-pkgrel=2
+pkgrel=1
 pkgdesc='grep for C/C++ source files'
 arch=(any)
 url=https://github.com/bloodstalker/cgrep
 license=(GPL3)
 depends=(llvm clang)
 makedepends=(git)
-source=($_name::git+$url git+https://github.com/bloodstalker/cfe-extra)
+source=($_name::git+$url
+        git+https://github.com/bloodstalker/cfe-extra
+        adjust-libclang-lib-names.patch)
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            'c726ccfdc45f9ad434647cfcab95ac536700ab87978f05f3a341a555642eb8c4')
 conflicts=($_name)
 provides=($_name)
 
@@ -39,6 +42,9 @@ prepare() {
 
 package() {
   cd "$srcdir/$_mainfolder"
+
+  # see https://www.archlinux.org/todo/llvm-10/
+  patch -p1 -i "$srcdir/adjust-libclang-lib-names.patch"
 
   make
 

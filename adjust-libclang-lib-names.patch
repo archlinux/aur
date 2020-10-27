@@ -1,0 +1,18 @@
+diff --git a/makefile b/makefile
+index 94fd556..35483c2 100644
+--- a/makefile
++++ b/makefile
+@@ -38,12 +38,7 @@ LLVM_CXX_FLAGS=$(shell $(LLVM_CONF) --cxxflags)
+ LLVM_CXX_FLAGS+=-I$(shell $(LLVM_CONF) --src-root)/tools/clang/include\
+  -I$(shell $(LLVM_CONF) --obj-root)/tools/clang/include\
+  -std=c++17 -fexceptions
+-LLVM_LD_FLAGS=-Wl,--start-group -lclangAST -lclangAnalysis -lclangBasic\
+- -lclangDriver -lclangEdit -lclangFrontend -lclangFrontendTool\
+- -lclangLex -lclangParse -lclangSema -lclangEdit -lclangASTMatchers\
+- -lclangRewrite -lclangRewriteFrontend -lclangStaticAnalyzerFrontend\
+- -lclangStaticAnalyzerCheckers -lclangStaticAnalyzerCore\
+- -lclangSerialization -lclangToolingCore -lclangTooling -lstdc++\
++LLVM_LD_FLAGS=-Wl,--start-group -lclang-cpp -lstdc++\
+  -lLLVMRuntimeDyld -lm -Wl,--end-group
+ LLVM_LD_FLAGS+=$(shell $(LLVM_CONF) --ldflags --libs --system-libs)
+ 
