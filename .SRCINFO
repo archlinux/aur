@@ -1,0 +1,18 @@
+pkgbase = onefetch-git
+	pkgdesc = Git repository summary on your terminal (git)
+	pkgver = 2.5.0.r108.g6197db5
+	pkgrel = 1
+	url = https://github.com/o2sh/onefetch
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = libgit2
+	provides = onefetch
+	conflicts = onefetch
+	conflicts = onefetch-bin
+	source = git+https://github.com/o2sh/onefetch
+	sha512sums = SKIP
+
+pkgname = onefetch-git
+
