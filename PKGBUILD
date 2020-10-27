@@ -1,7 +1,5 @@
 # Maintainer: Patrykf03 <hamachi0912@gmail.com>
 
-_pkgname=yuzu-ea-bin
-
 pkgname=yuzu-ea-bin
 pkgver=1070
 pkgrel=1
@@ -11,19 +9,20 @@ url="https://github.com/pineappleEA/pineappleEA.github.io"
 license=('gpl')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
-pkgver=1070
-noextract=("${_appimage}")
+source_x86_64=("https://github.com/pineappleEA/pineappleEA.github.io/releases/download/EA-${pkgver}/Yuzu-EA-${pkgver}.AppImage")
+noextract=("Yuzu-EA-${pkgver}.AppImage")
 sha256sums_x86_64=('a91d915e131887cf7f91f0c2ffe98b8d84a39b8de4a08235d6371d2c0ef797a8')
 
 prepare() {
-    chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
+    chmod +x "Yuzu-EA-${pkgver}.AppImage"
+    ./"Yuzu-EA-${pkgver}.AppImage" --appimage-extract
 }
+
 
 
 build() {
     # Adjust .desktop so it will work outside of AppImage container
-    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
+    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${pkgname}|"\
         "squashfs-root/yuzu.desktop"
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr
@@ -31,7 +30,7 @@ build() {
 
 package() {
     # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
+    install -Dm755 "${srcdir}/Yuzu-EA-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/Yuzu-EA-${pkgver}.AppImage"
 
     # Desktop file
     install -Dm644 "${srcdir}/squashfs-root/yuzu.desktop"\
@@ -43,5 +42,5 @@ package() {
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${_appimage}" "${pkgdir}/usr/bin/yuzu"
+    ln -s "/opt/${pkgname}/Yuzu-EA-${pkgver}.AppImage" "${pkgdir}/usr/bin/yuzu"
 }
