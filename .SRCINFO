@@ -1,6 +1,6 @@
 pkgbase = cfssl
 	pkgdesc = CloudFlare PKI and TLS toolkit
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://cfssl.org/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = cfssl
 	license = BSD
 	makedepends = go
 	depends = glibc
-	source = cfssl-1.4.1.tar.gz::https://github.com/cloudflare/cfssl/archive/v1.4.1.tar.gz
-	sha256sums = c8a86ef10cbb0c168f3b597db15b31f98b170edb7958f7154edeb29aee41315e
+	source = cfssl-1.5.0.tar.gz::https://github.com/cloudflare/cfssl/archive/v1.5.0.tar.gz
+	sha256sums = 5267164b18aa99a844e05adceaf4f62d1b96dcd326a9132098d65c515c180a91
 
 pkgname = cfssl
 
