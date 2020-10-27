@@ -19,7 +19,7 @@ source=(https://github.com/HandBrake/HandBrake/releases/download/$pkgver/HandBra
         handbrake-fix-close-button-in-about-dialog.patch::https://github.com/HandBrake/HandBrake/commit/d3eb4a11ac.patch)
 sha256sums=('218a37d95f48b5e7cf285363d3ab16c314d97627a7a710cab3758902ae877f85'
             'SKIP'
-            'd4ec5689a3ff6bb1d350ffc63199199ad45d90178a318070faed8a869fe5639b')
+            '628451adc1341abf0917da86dcae7922c42b6e61225ef4b55182e8dbe74cfa49')
 validpgpkeys+=('1629C061B3DDE7EB4AE34B81021DB8B44E4A8645') # HandBrake Team <developers@handbrake.fr>
 
 prepare() {
