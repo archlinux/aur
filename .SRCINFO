@@ -23,6 +23,7 @@ pkgbase = slippi-online-appimage
 	depends = qt5-base
 	depends = sfml
 	depends = zlib
+	depends = fuse2
 	optdepends = pulseaudio: PulseAudio backend
 	provides = slippi-online
 	options = !strip

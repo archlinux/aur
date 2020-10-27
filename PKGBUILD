@@ -11,7 +11,7 @@ provides=('slippi-online')
 depends=(
 	'alsa-lib' 'bluez-libs' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpng'
 	'libpulse' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'pugixml' 'qt5-base'
-	'sfml' 'zlib'
+	'sfml' 'zlib' 'fuse2'
 )
 makedepends=('wget')
 optdepends=('pulseaudio: PulseAudio backend')
