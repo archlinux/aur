@@ -1,0 +1,6 @@
+src
+pkg
+*.deb
+*.rpm
+.AppImage
+*.pkg.tar.xz
