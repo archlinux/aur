@@ -1,6 +1,6 @@
-# Maintainer: Eugene Lebedev <satanych13@gmail.com>
+# Maintainer: Eugene Lebedev <satanych13+dev@gmail.com>
 
-pkgname=libretro-pcsx2
+pkgname=libretro-pcsx2-launcher
 pkgver=1.1.1
 pkgrel=1
 pkgdesc="Launch Sony PlayStation 2 games through PCSX2, directly from RetroArch."
