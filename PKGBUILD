@@ -6,7 +6,7 @@
 #Contributor: onny <onny@project-insanity.org>
 
 pkgname=wfuzz
-pkgver=3.0.1
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Utility to bruteforce web applications to find their not linked resources"
 url="https://github.com/xmendez/wfuzz"
@@ -15,7 +15,7 @@ license=('GPL')
 depends=('python-pycurl' 'python-pyparsing' 'python-future' 'python-chardet' 'python-six')
 makedepends=('python-setuptools' 'python-sphinx')
 source=("https://github.com/xmendez/wfuzz/archive/v$pkgver.tar.gz")
-sha256sums=('55ac415c66db05f1f0504e35426caa52b0322c6a87c7c529a84a9c8d061426fd')
+sha256sums=('420853b6a925ebabd7f3fa235369547a3dd6c5ecc333dee324cbfc9271eb62dd')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/docs"
