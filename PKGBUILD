@@ -1,129 +1,104 @@
 # Maintainer: Cyano Hao <c@cyano.cn>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
-# Contributor: Thomas Baechler <thomas@archlinux.org>
+# Maintainer (core/linux): Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-pkgbase=linux-x32       # Build kernel with a different name
-_srcver=5.3.6-arch1
-pkgver=${_srcver//-/.}
+pkgbase=linux-x32
+pkgver=5.9.1.arch1
 pkgrel=1
+pkgdesc='Linux with x32 ABI'
+_srctag=v${pkgver%.*}-${pkgver##*.}
+url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
 arch=(x86_64)
-url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
 license=(GPL2)
 makedepends=(
-  xmlto kmod inetutils bc libelf git python-sphinx python-sphinx_rtd_theme
-  graphviz imagemagick
+  bc kmod libelf pahole
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  git
 )
 options=('!strip')
 _srcname=archlinux-linux
 source=(
-  "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=v$_srcver"
+  "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
   config         # the main kernel config file
-  60-linux.hook  # pacman hook for depmod
-  90-linux.hook  # pacman hook for initramfs regeneration
-  linux.preset   # standard config files for mkinitcpio ramdisk
+  sphinx-workaround.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-  '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
+  'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '7f6fc939dd137adcf264fa3dfb5d476941f6f0830cf9bc1fa089a2a3d1585ce1'
-            '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
-            'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+            'ec4cc4478284ceb348a2b5663e39bec0e24316ff5aacd12a98acdc2d2d252dc8'
+            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
 
-_kernelname=${pkgbase#linux}
-: ${_kernelname:=-ARCH}
+export KBUILD_BUILD_HOST=archlinux
+export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
   cd $_srcname
 
-  msg2 "Setting version..."
+  echo "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "$_kernelname" > localversion.20-pkgname
+  echo "${pkgbase#linux}" > localversion.20-pkgname
 
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
-    msg2 "Applying patch $src..."
+    echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
 
-  msg2 "Setting config..."
+  echo "Setting config..."
   cp ../config .config
   make olddefconfig
 
   make -s kernelrelease > version
-  msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+  echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  make bzImage modules htmldocs
+  make all
+  make htmldocs
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules with x32 ABI support"
+  pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  backup=("etc/mkinitcpio.d/$pkgbase.preset")
-  install=linux.install
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd $_srcname
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-  msg2 "Installing boot image..."
+  echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
-  install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
-  msg2 "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  echo "Installing modules..."
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  msg2 "Installing hooks..."
-  # sed expression for following substitutions
-  local subst="
-    s|%PKGBASE%|$pkgbase|g
-    s|%KERNVER%|$kernver|g
-  "
-
-  # hack to allow specifying an initially nonexisting install file
-  sed "$subst" "$startdir/$install" > "$startdir/$install.pkg"
-  true && install=$install.pkg
-
-  # fill in mkinitcpio preset and pacman hooks
-  sed "$subst" ../linux.preset | install -Dm644 /dev/stdin \
-    "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
-  sed "$subst" ../60-linux.hook | install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/libalpm/hooks/60-$pkgbase.hook"
-  sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/libalpm/hooks/90-$pkgbase.hook"
-
-  msg2 "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  msg2 "Installing build files..."
+  echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
     localversion.* version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
@@ -136,7 +111,7 @@ _package-headers() {
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
 
-  msg2 "Installing headers..."
+  echo "Installing headers..."
   cp -t "$builddir" -a include
   cp -t "$builddir/arch/x86" -a arch/x86/include
   install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
@@ -152,10 +127,10 @@ _package-headers() {
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-  msg2 "Installing KConfig files..."
+  echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-  msg2 "Removing unneeded architectures..."
+  echo "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
     [[ $arch = */x86/ ]] && continue
@@ -163,16 +138,16 @@ _package-headers() {
     rm -r "$arch"
   done
 
-  msg2 "Removing documentation..."
+  echo "Removing documentation..."
   rm -r "$builddir/Documentation"
 
-  msg2 "Removing broken symlinks..."
+  echo "Removing broken symlinks..."
   find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-  msg2 "Removing loose objects..."
+  echo "Removing loose objects..."
   find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-  msg2 "Stripping build tools..."
+  echo "Stripping build tools..."
   local file
   while read -rd '' file; do
     case "$(file -bi "$file")" in
@@ -187,42 +162,31 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-  msg2 "Adding symlink..."
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
+
+  echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-  msg2 "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Documentation for the $pkgdesc kernel"
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  msg2 "Installing documentation..."
-  mkdir -p "$builddir"
-  cp -t "$builddir" -a Documentation
-
-  msg2 "Removing doctrees..."
-  rm -r "$builddir/Documentation/output/.doctrees"
-
-  msg2 "Moving HTML docs..."
+  echo "Installing documentation..."
   local src dst
   while read -rd '' src; do
-    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    mkdir -p "${dst%/*}"
-    mv "$src" "$dst"
-    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  done < <(find "$builddir/Documentation/output" -type f -print0)
+    dst="${src#Documentation/}"
+    dst="$builddir/Documentation/${dst#output/}"
+    install -Dm644 "$src" "$dst"
+  done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
 
-  msg2 "Adding symlink..."
+  echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-  msg2 "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
