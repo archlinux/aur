@@ -6,6 +6,7 @@ pkgdesc="Manage multiple git repositories with ease."
 url="https://github.com/Aphosis/gmux"
 license=("MIT")
 arch=("x86_64")
+source=(https://github.com/Aphosis/${pkgname}/archive/${pkgver}.tar.gz)
 makedepends=("cargo")
 provides=("gmux")
 

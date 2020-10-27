@@ -7,6 +7,7 @@ pkgbase = gmux
 	license = MIT
 	makedepends = cargo
 	provides = gmux
+	source = https://github.com/Aphosis/gmux/archive/0.1.2.tar.gz
 
 pkgname = gmux
 
