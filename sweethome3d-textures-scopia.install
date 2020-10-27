@@ -5,7 +5,7 @@ user_path=".eteks/sweethome3d/textures/"
 post_install() {
     find /home/* -maxdepth 0 -type d \! -user root -print0 | while IFS= read -r -d '' user_home; do
         mkdir -p "${user_home}/${user_path}"
-        for lib in /usr/share/eteks/sweethome3d/textures/textures-scopia/*.sh3f; do
+        for lib in /usr/share/eteks/sweethome3d/textures/textures-scopia/*.sh3t; do
             ln -s "$lib" "${user_home}/${user_path}/"
         done
         chown --no-dereference --preserve-root --recursive --reference="${user_home}" "${user_home}/${user_path}"
