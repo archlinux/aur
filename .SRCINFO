@@ -17,6 +17,7 @@ pkgbase = squid4
 	depends = gnutls
 	depends = libnsl
 	depends = gperftools
+	depends = libbsd
 	conflicts = squid
 	conflicts = squid4
 	conflicts = squid5
