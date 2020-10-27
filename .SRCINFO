@@ -1,6 +1,6 @@
 pkgbase = async-profiler
 	pkgdesc = Sampling CPU and HEAP profiler for Java featuring AsyncGetCallTrace + perf_events
-	pkgver = 1.7.1
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/jvm-profiling-tools/async-profiler
 	install = async-profiler.install
@@ -10,8 +10,8 @@ pkgbase = async-profiler
 	license = Apache
 	depends = java-environment
 	provides = async-profiler
-	source = async-profiler-1.7.1.tar.gz::https://github.com/jvm-profiling-tools/async-profiler/archive/v1.7.1.tar.gz
-	sha256sums = 886748e7919d91d22673abdb23cd101bb2b5195444403fffdc6517e94325a5a3
+	source = async-profiler-1.8.1.tar.gz::https://github.com/jvm-profiling-tools/async-profiler/archive/v1.8.1.tar.gz
+	sha256sums = fe3ea0de1c113c4346476486200dfdd493e2460788f88a9c3ab4cf3f3b1d31ca
 
 pkgname = async-profiler
 
