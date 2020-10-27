@@ -1,6 +1,6 @@
 pkgbase = libvgm-git
 	pkgdesc = Library for decoding and playing VGM files
-	pkgver = r408.5fe3883
+	pkgver = r413.49e9450
 	pkgrel = 1
 	url = https://github.com/ValleyBell/libvgm
 	arch = x86_64
@@ -13,9 +13,7 @@ pkgbase = libvgm-git
 	makedepends = git
 	makedepends = cmake
 	source = git+https://github.com/ValleyBell/libvgm.git
-	source = libvgm-fix-shared-build.patch
 	md5sums = SKIP
-	md5sums = fd9cdfd3f3e6bc849feb3f76fd1f0a82
 
 pkgname = libvgm-player-git
 	pkgdesc = libvgm player library
