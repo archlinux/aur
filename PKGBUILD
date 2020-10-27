@@ -3,7 +3,7 @@
 _pkgname=proton-call
 pkgname=proton-caller
 __pkgname=Proton-Caller
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Run any Windows program through Proton"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
   'dxvk'
 )
 source=("https://github.com/caverym/"$__pkgname"/archive/${pkgver}.tar.gz")
-sha256sums=('28a7ec9150007b4d9f2c46720c4215a46524e24d6283ab03d83ae113d7dece60')
+sha256sums=('eb2d99c02c75149900c9ede8fee6c2a66f926db896e3807af47693a8de95e784')
 
 build() {
   cd "$srcdir/$__pkgname-$pkgver"
