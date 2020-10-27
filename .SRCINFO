@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-armv7h-bin
 	pkgdesc = Telegram Desktop armv7h binaries from Debian
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://desktop.telegram.org
 	arch = armv7h
 	license = GPL3
@@ -19,9 +19,9 @@ pkgbase = telegram-desktop-armv7h-bin
 	conflicts = telegram-desktop
 	conflicts = telegram-desktop-git
 	source = telegram-desktop-armv7h-bin.desktop
-	source = http://ftp.us.debian.org/debian/pool/main/t/telegram-desktop/telegram-desktop_2.2.0%2Bds-1_armhf.deb
+	source = http://ftp.us.debian.org/debian/pool/main/t/telegram-desktop/telegram-desktop_2.2.0%2Bds-3_armhf.deb
 	sha256sums = 32d1597d67a7ef519367e499fcc978da4cce104e370b3787853446d93b1533d6
-	sha256sums = 0076cb07e7340e5a4c2b3d3a852ec6072b6b3c8ce20c95c88af1243ca3724df4
+	sha256sums = a774b37abf3eda376664b784e206421c5e157e0bc2abb79526d8dab87e2040d3
 
 pkgname = telegram-desktop-armv7h-bin
 

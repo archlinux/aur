@@ -3,7 +3,7 @@
 
 pkgname=telegram-desktop-armv7h-bin
 pkgver=2.2.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Telegram Desktop armv7h binaries from Debian"
 arch=('armv7h')
 url="https://desktop.telegram.org"
@@ -30,11 +30,11 @@ provides=('telegram-desktop')
 # Sources
 source=(
 	"$pkgname.desktop"
-	http://ftp.us.debian.org/debian/pool/main/t/telegram-desktop/telegram-desktop_2.2.0%2Bds-1_armhf.deb
+	"http://ftp.us.debian.org/debian/pool/main/t/telegram-desktop/telegram-desktop_${pkgver}%2Bds-${pkgrel}_armhf.deb"
 	)
 # Checksums
 sha256sums=('32d1597d67a7ef519367e499fcc978da4cce104e370b3787853446d93b1533d6'
-            '0076cb07e7340e5a4c2b3d3a852ec6072b6b3c8ce20c95c88af1243ca3724df4')
+            'a774b37abf3eda376664b784e206421c5e157e0bc2abb79526d8dab87e2040d3')
 
 package() {
 
@@ -42,7 +42,7 @@ package() {
 
 	# Unarchive Deb
 
-	ar vx "$srcdir/telegram-desktop_2.2.0%2Bds-1_armhf.deb"
+	ar vx "$srcdir/telegram-desktop_${pkgver}%2Bds-${pkgrel}_armhf.deb"
 	tar -xf "$srcdir/data.tar.xz"
 
 	# Creating needed directories
