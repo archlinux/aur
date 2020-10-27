@@ -3,7 +3,7 @@
 pkgname=ugene-full-bin
 pkgver=33.0
 pkgrel=1
-pkgdesc="A free cross-platform genome analysis suite (binary release)"
+pkgdesc="A free cross-platform genome analysis suite (full binary release)"
 arch=('x86_64')
 url="http://ugene.net"
 license=('GPL')
