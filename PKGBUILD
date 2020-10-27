@@ -1,32 +1,32 @@
-# Maintainer: Pavel Antonov <pvantonov@gmail.com>
+# Maintainer: DDoSolitary <DDoSolitary@gmail.com>
 
 pkgname=libvlc-qt
-pkgver=1.0.0
-pkgrel=1
-pkgdesc="A simple library to connect Qt application with libvlc"
+_pkgname=vlc-qt
+pkgver=1.1.1
+pkgrel=2
+pkgdesc='A simple library to connect Qt application with libvlc'
 arch=('i686' 'x86_64')
-url="https://github.com/vlc-qt/vlc-qt"
-license=('GPL3')
+url='https://github.com/vlc-qt/vlc-qt'
+license=('LGPL3')
 depends=('vlc' 'qt5-declarative')
-makedepends=('cmake>=2.8')
-provides=('libvlc-qt')
-conflicts=('libvlc-qt')
-source=("https://github.com/vlc-qt/vlc-qt/archive/1.0.0.tar.gz")
-md5sums=(46ae9e0c9488a178ed20a6a290bd489a)
+makedepends=('cmake')
+provides=('libVLCQtCore.so' 'libVLCQtQml.so' 'libVLCQtWidgets.so')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/vlc-qt/vlc-qt/archive/$pkgver.tar.gz")
+sha256sums=('bdc8adb85d2c81e2b07630042e38b894b18882f74b3dbb97b33f357b50135bce')
 
 prepare() {
-  mkdir -p build
+	mkdir -p build
 }
 
 build() {
-  cd build
-  cmake ../vlc-qt-$pkgver \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt5
-  make
+	cd build
+	cmake ../$_pkgname-$pkgver \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DSYSTEM_QML=ON
+	make
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir/" install
+	cd build
+	make DESTDIR="$pkgdir/" install
 }
