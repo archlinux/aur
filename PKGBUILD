@@ -1,7 +1,7 @@
 # Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 # Maintainer: Ossama Hjaji <ossama-hjaji@live.fr>
 pkgname=onefetch
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Git repository summary on your terminal"
 url="https://github.com/o2sh/onefetch"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('libgit2')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ea7b2c0a3742a110a60528df7fb05647ea87d41fe22de1de3be61d310486ae0d')
+sha256sums=('1f4d34f70fc38d453f875c40852c535a5c5b011563262209976ecaf028a664c6')
 
 build() {
   cd "$pkgname-$pkgver"
