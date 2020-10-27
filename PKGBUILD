@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <privat@arne.beer>
 
 pkgname=pueue
-pkgver='0.8.0'
+pkgver='0.8.1'
 pkgrel=1
 arch=('any')
 pkgdesc='A command scheduler for shells'
@@ -11,7 +11,7 @@ url='https://github.com/nukesor/pueue'
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/Nukesor/pueue/archive/v${pkgver}.tar.gz"
 )
-md5sums=('3ce8bfb5a817023bad2db4e9f38b640d')
+md5sums=('2879f50c2afc36bfab811fedf9ec6668')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -30,9 +30,8 @@ package() {
     # Place systemd user service
     install -Dm644 "utils/pueued.service" "$pkgdir/usr/lib/systemd/user/pueued.service"
 
-    # Install zsh completions file
-    # Zsh is broken for now
-#    install -Dm644 "utils/completions/_pueue "$pkgdir/usr/share/zsh/site-functions/_pueue"
+    # Install shell completions file
+    install -Dm644 "utils/completions/_pueue" "$pkgdir/usr/share/zsh/site-functions/_pueue"
     install -Dm644 "utils/completions/pueue.bash" "$pkgdir/usr/share/bash-completion/completions/pueue.bash"
     install -Dm644 "utils/completions/pueue.fish" "$pkgdir/usr/share/fish/completions/pueue.fish"
 
