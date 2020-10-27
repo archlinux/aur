@@ -12,11 +12,9 @@ license=('custom')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}-${pkgver}.deb::https://www.edrawsoft.cn/2download/${_pkgname}-1-amd64-cn.deb"
-    "LICENSE::https://www.edrawsoft.cn/private-policy/"
-    )
+        "LICENSE::https://www.edrawsoft.cn/private-policy/")
 sha256sums=('a48e00954e10df60c441346809c152fe3a1ccf03e0c6f6429fecbf5113c69607'
-    'SKIP')
-
+            'SKIP')
 
 prepare () {
 
