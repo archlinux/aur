@@ -1,6 +1,6 @@
 pkgbase = mcomix-gtk3-git
 	pkgdesc = A comic book reader. Forked from MComix and ported to GTK3.
-	pkgver = r1937.b029d08
+	pkgver = r1949.c5afd37
 	pkgrel = 1
 	url = https://github.com/multiSnow/mcomix3
 	install = mcomix-gtk3-git.install
