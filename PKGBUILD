@@ -3,7 +3,7 @@ pkgname=azure-sphere-sdk
 pkgmajor=20
 pkgminor=07
 pkgver=${pkgmajor}.${pkgminor}
-pkgrel=1
+pkgrel=2
 pkgdesc="Azure Sphere SDK Preview for Linux"
 arch=('x86_64')
 url="https://aka.ms/AzureSphereSDK"
@@ -38,7 +38,6 @@ build() {
 
   for sysroot in `ls ${srcdir}/azurespheresdk/Sysroots/`; do
     chmod 755 "${srcdir}"/azurespheresdk/Sysroots/"${sysroot}"/tools/exp23-appsdk-linux-blanca.sh
-    "${srcdir}"/azurespheresdk/Sysroots/"${sysroot}"/tools/exp23-appsdk-linux-blanca.sh -d "${srcdir}"/azurespheresdk/Sysroots/"${sysroot}"/tools/ -y
   done
 }
 

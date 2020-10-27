@@ -1,7 +1,25 @@
-post_install() { cat <<EOT
+_sysroots=/opt/azurespheresdk/Sysroots
+
+post_upgrade() {
+  echo "Installing toolchains"
+
+  for _sysroot in `ls ${_sysroots}`; do
+    ${_sysroots}/${_sysroot}/tools/exp23-appsdk-linux-blanca.sh \
+       -d ${_sysroots}/${_sysroot}/tools/ -y > /dev/null
+  done
+
+  cat <<EOT
 Add users who should manage 'azsphere' devices to
 the 'azsphere' group with:
 
         # usermod -a -G azsphere USERNAME
 EOT
+}
+
+post_install() {
+  post_upgrade
+}
+
+pre_remove() {
+  echo "removing"
 }
