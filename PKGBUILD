@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=tpm2-tss-engine-git
-pkgver=1.1.0rc1.r0.62a60ef
+pkgver=1.1.0rc1.r4.ae070ca
 pkgrel=1
 pkgdesc='OpenSSL engine for Trusted Platform Module 2.0 devices'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/tpm2-software/tpm2-tss-engine'
 license=('BSD')
 depends=('openssl' 'tpm2-tss' 'libtss2-esys.so' 'libtss2-mu.so' 'libtss2-tctildr.so')
 makedepends=('git' 'autoconf-archive' 'pandoc')
-checkdepends=('cmocka' 'expect' 'ibm-sw-tpm2' 'iproute2' 'tpm2-tools')
+checkdepends=('cmocka' 'expect' 'iproute2' 'swtpm' 'tpm2-tools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")
