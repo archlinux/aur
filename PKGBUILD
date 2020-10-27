@@ -6,11 +6,11 @@ _gitname=performance-tweaks
 pkgname=(
     'performance-tweaks'
     )
-pkgver=r17.953cb59
+pkgver=0.0.1.r0.ge9d8ab2
 pkgrel=1
 arch=('any')
 _branch='master'
-url="https://github.com/librewish/performance-tweaks"
+url="https://gitlab.com/garuda-linux/themes-and-settings/settings/performance-tweaks"
 license=('GPL')
 makedepends=('git')
 source=("git+$url.git#branch=${_branch}")
@@ -35,11 +35,8 @@ _install() {
 }
 
 pkgver() {
-	cd "$srcdir/performance-tweaks"
-
-# Git, no tags available
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-
+  cd $pkgname
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package_performance-tweaks() {

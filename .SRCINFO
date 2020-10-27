@@ -1,11 +1,11 @@
 pkgbase = performance-tweaks
-	pkgver = r17.953cb59
+	pkgver = 0.0.1.r0.ge9d8ab2
 	pkgrel = 1
-	url = https://github.com/librewish/performance-tweaks
+	url = https://gitlab.com/garuda-linux/themes-and-settings/settings/performance-tweaks
 	arch = any
 	license = GPL
 	makedepends = git
-	source = git+https://github.com/librewish/performance-tweaks.git#branch=master
+	source = git+https://gitlab.com/garuda-linux/themes-and-settings/settings/performance-tweaks.git#branch=master
 	sha256sums = SKIP
 
 pkgname = performance-tweaks
