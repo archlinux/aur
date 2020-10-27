@@ -1,13 +1,13 @@
 pkgbase = imgcat
 	pkgdesc = Output images as RGB ANSI graphics on the terminal
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/trashhalo/imgcat
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = imgcat-1.1.0.tar.gz::https://github.com/trashhalo/imgcat/archive/v1.1.0.tar.gz
-	sha512sums = efc6a8e894dff5b25b04e0701139db89b6419d484b9e998eca22b1d3d8b10dfc67c8ac88f01d4eadd8f4edd56b25b4fa3e239f4bd79706b1fb36b1e00307672e
+	source = imgcat-1.1.1.tar.gz::https://github.com/trashhalo/imgcat/archive/v1.1.1.tar.gz
+	sha512sums = 43993adbc46fffacc1ef0bcf2729d1d125928051995ceed3c7c54247501673df10679310c6ab07c03abf11d300d4ad474e000f1c77b04d39b07617d354dade10
 
 pkgname = imgcat
 
