@@ -1,0 +1,15 @@
+pkgbase = eww-git
+	pkgdesc = ElKowar's wacky widgets
+	pkgver = dunno
+	pkgrel = 1
+	url = https://github.com/elkowar/eww
+	arch = any
+	license = GPL
+	makedepends = cargo
+	makedepends = git
+	provides = eww
+	source = git+https://github.com/elkowar/eww
+	md5sums = SKIP
+
+pkgname = eww-git
+
