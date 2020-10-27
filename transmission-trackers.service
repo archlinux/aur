@@ -1,0 +1,5 @@
+[Unit]
+Description=Update Transmission trackers
+
+[Service]
+ExecStart=/usr/bin/transmission-trackers

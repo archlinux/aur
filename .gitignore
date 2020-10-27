@@ -1,0 +1,6 @@
+*
+!.SRCINFO
+!PKGBUILD
+!transmission-trackers.install
+!transmission-trackers.service
+!transmission-trackers.timer

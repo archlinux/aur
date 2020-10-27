@@ -1,0 +1,15 @@
+post_install()
+{
+	cat <<EOF
+First enable transmission-rpc in Transmission by checking
+ 'Menu > Edit > Preferences > Remote > Allow remote access'
+then run:
+	\`systemctl --user --now enable transmission-trackers.timer\`
+to start the timer.
+
+Optionally you can enable authentication on transmission-rpc.
+If you enable authentication,then you have to set client.user
+and client.password in \$XDG_CONFIG_HOME/transmission/trackers.toml
+
+EOF
+}

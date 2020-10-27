@@ -1,0 +1,22 @@
+pkgbase = transmission-trackers-git
+	pkgver = r21.10849a0
+	pkgrel = 1
+	url = https://github.com/blind-oracle/transmission-trackers
+	install = transmission-trackers.install
+	arch = any
+	license = unknown
+	depends = systemd
+	depends = transmission-cli
+	depends = python-transmissionrpc
+	depends = python-toml
+	provides = transmission-trackers
+	conflicts = transmission-trackers
+	source = git+https://github.com/blind-oracle/transmission-trackers.git
+	source = transmission-trackers.service
+	source = transmission-trackers.timer
+	sha256sums = SKIP
+	sha256sums = 52304cf9430f274eb90cb0929787560703b74230b2485a2c4633793c876c4900
+	sha256sums = 0b7ff86930e1732c65d323c8641b43ec5f3aa2a6c9a8b108b0421ca92d977db4
+
+pkgname = transmission-trackers-git
+

@@ -1,0 +1,9 @@
+[Unit]
+Description=Transmission trackers update timer
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=30
+
+[Install]
+WantedBy=timers.target
