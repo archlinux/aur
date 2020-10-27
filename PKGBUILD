@@ -17,13 +17,13 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/executor"
+  cd "${srcdir}/executor"
   git submodule init
   git submodule update
 }
 
 build() {
-        cd "$srcdir/executor"
+        cd "${srcdir}/executor"
         mkdir build
         cd build
         cmake ..
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/executor/build/executor" "${pkgdir}/usr/bin/executor"
-  install -Dm755 "$srcdir/executor/build/executor-x" "${pkgdir}/usr/bin/executor-x"
-  install -Dm755 "$srcdir/executor/build/executor-sdl2" "${pkgdir}/usr/bin/executor-sdl2"
+  install -Dm755 "${srcdir}/executor/build/executor" "${pkgdir}/usr/bin/executor"
+  install -Dm755 "${srcdir}/executor/build/executor-x" "${pkgdir}/usr/bin/executor-x"
+  install -Dm755 "${srcdir}/executor/build/executor-sdl2" "${pkgdir}/usr/bin/executor-sdl2"
 }
