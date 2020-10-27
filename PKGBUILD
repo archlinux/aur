@@ -1,8 +1,8 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 # Contributor: varris <varris@protonmail.com>
 pkgname=krakenx-git
-pkgver=0.0.3.r22.583060b
-pkgrel=2
+pkgver=0.0.3.r28.798440e
+pkgrel=1
 pkgdesc='Python script to control NZXT Kraken X52/X62/X72 coolers'
 arch=('any')
 url='https://github.com/KsenijaS/krakenx.git'
@@ -28,3 +28,9 @@ package() {
 	cd "$srcdir/$pkgname"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
+
+# check() {
+	# cd "$srcdir/$pkgname"
+	# export PYTHONPATH=.
+	# bin/colctl --mode fading --color_count 2 --color0 192,32,64 --color1 246,11,21 --fan_speed "(30, 100), (40, 100)" --pump_speed "(30, 100), (40, 100)"
+# }
