@@ -2,18 +2,18 @@
 
 pkgname=discover-overlay
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another Discord overlay for Linux written in Python using GTK3"
 arch=("x86_64")
 url="https://pypi.org/project/discover-overlay/"
 license=("GPL3")
 makedepends=("python-setuptools")
-depends=("gtk3" "python-gobject" "python-pyxdg" "python-websocket-client" "python-pidfile" "python-cairo")
+depends=("gtk3" "python-gobject" "python-pyxdg" "python-websocket-client" "python-pidfile" "python-cairo" "python-pillow")
 conflicts=("discover-overlay-git")
 provides=("discover-overlay")
-optdepends=("discord: All-in-one voice and text chat for gamers that's free and secure."
-            "discord-ptb: All-in-one voice and text chat for gamers that's free and secure. Public Test Build"
-            "discord-canary: All-in-one voice and text chat for gamers that's free and secure. Nightly Build")
+optdepends=("discord: Discord client Stable"
+            "discord-ptb: Discord client Public Test Build"
+            "discord-canary: Discord client Nightly")
 source=("${pkgname}-${pkgver}.tar.gz::https://pypi.io/packages/source/d/discover-overlay/${pkgname}-${pkgver}.tar.gz")
 sha512sums=("1e145b64d1d0ea4d094dc16fc7871d9177604fd72991c06c6067d08bb49c95b8b4e1e84121b61c6393ddd45bb307eb5796c8a83ce708e30ec2a93c9043e971a3")
 
