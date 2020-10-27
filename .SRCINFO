@@ -5,6 +5,7 @@ pkgbase = cachefilesd
 	url = https://people.redhat.com/~dhowells/fscache/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	depends = glibc
 	backup = etc/cachefilesd.conf
