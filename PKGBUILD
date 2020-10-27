@@ -1,6 +1,6 @@
 # Maintainer: Mees Luten <mees [dot] luten [at] gmail [dot] com>
 pkgname=l-band-decoders-git
-pkgver=r70.35e1c6b
+pkgver=r79.09c71f7
 pkgrel=1
 pkgdesc="Small experimental project aimed at decoding various (HRPT) satellites such as Metop and FengYun"
 arch=('x86_64')
@@ -28,7 +28,7 @@ prepare() {
 build() {
 	cd "$pkgname"/build
 	cmake ../
-	make
+	make -i # If build fails it installs succeeded decoders
 }
 
 package() {
