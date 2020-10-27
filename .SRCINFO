@@ -1,0 +1,16 @@
+pkgbase = thrash-protect-git
+	pkgdesc = Program causing graceful degradation rather than thrashing on heavy swap usage.
+	pkgver = 0.13.0.r14.g3473819
+	pkgrel = 1
+	url = https://github.com/tobixen/thrash-protect
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	provides = thrash-protect
+	conflicts = thrash-protect
+	source = thrash-protect-git::git+https://github.com/tobixen/thrash-protect#branch=master
+	md5sums = SKIP
+
+pkgname = thrash-protect-git
+
