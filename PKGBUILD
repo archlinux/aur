@@ -8,9 +8,9 @@ pkgdesc="Git repository summary on your terminal"
 arch=('x86_64')
 url="https://github.com/o2sh/onefetch"
 license=('MIT')
+depends=('libgit2')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
 provides=("${pkgname%-bin}")
-depends=('libgit2')
 source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}-linux.tar.gz"
                "${pkgname%-bin}-$pkgver-LICENSE.md::$url/raw/v$pkgver/LICENSE.md"
                "${pkgname%-bin}-$pkgver-README.md::$url/raw/v$pkgver/README.md"
