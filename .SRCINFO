@@ -1,5 +1,5 @@
 pkgbase = lampswitch
-	pkgdesc = Indicator and control applet for Apache
+	pkgdesc = Indicator and control applet for web services
 	pkgver = 20.7.24
 	pkgrel = 1
 	url = https://tari.in/www/software/lampswitch

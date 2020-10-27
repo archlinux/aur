@@ -5,12 +5,6 @@ post_install()
     fi
 
     chmod +x /usr/share/lampswitch/services.sh
-    if systemctl is-active httpd --quiet; then systemctl disable httpd --quiet; fi
-    if systemctl is-active postgresql --quiet; then systemctl disable postgresql --quiet; fi
-    if systemctl is-active mysql --quiet; then systemctl disable mysql --quiet; fi
-    if systemctl is-active postgresql --quiet; then systemctl disable postgresql --quiet; fi
-    if systemctl is-active mariadb --quiet; then systemctl disable mariadb --quiet; fi
-
     gtk-update-icon-cache -q -f usr/share/icons/hicolor
     gtk-update-icon-cache -q -f usr/share/icons/ubuntu-mono-dark
     gtk-update-icon-cache -q -f usr/share/icons/ubuntu-mono-light

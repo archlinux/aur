@@ -4,7 +4,7 @@
 pkgname="lampswitch"
 pkgver="20.7.24"
 pkgrel=1
-pkgdesc="Indicator and control applet for Apache"
+pkgdesc="Indicator and control applet for web services"
 arch=("any")
 url="https://tari.in/www/software/lampswitch"
 license=("GPL3")
