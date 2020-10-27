@@ -1,0 +1,18 @@
+pkgbase = kde2-kdelibs-git
+	pkgdesc = Historical copy of the libs module of KDE 2, adapted to compile on modern systems
+	pkgver = 2.2.2.r23846.c22d02e13
+	pkgrel = 1
+	url = https://github.com/sandsmark/kdelibs
+	arch = i686
+	arch = x86_64
+	groups = kde2
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	provides = kde2-kdelibs
+	conflicts = kde2-kdelibs
+	source = git+https://github.com/sandsmark/kdelibs.git
+	md5sums = SKIP
+
+pkgname = kde2-kdelibs-git
+
