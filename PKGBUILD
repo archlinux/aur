@@ -8,7 +8,7 @@ url="https://www.pling.com/p/1215613"
 license=('GPL3')
 depends=('libxcursor' 'libpng')
 makedepends=('yarn' 'npm' 'python-clickgen')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ful1e5/Google_Cursor/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('c83c3037a8e8e0b473467b3ed8db5ee0328dcaded38290d660e035cd01a0288a')
 
 build() {
