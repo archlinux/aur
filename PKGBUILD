@@ -1,6 +1,6 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com
 pkgname=mintmenu
-pkgver=6.0.3
+pkgver=6.1.1
 pkgrel=1
 pkgdesc="Mint Menu for MATE"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('mint-translations: translations files'
             'mate-screensaver: lock screen button'
             'pamac: package manager button'
 )
-source=("$pkgname-$pkgver::git+$url#commit=e603bee1f36827c1f2a0a44b3d7e422d384599a7" 
+source=("$pkgname-$pkgver::git+$url#commit=b807a89b682e65c9d9f9b1051f366157d5af6e67" 
         'arch-compat.patch')
 sha256sums=('SKIP'
             'ad3b5267206782ea5631d030dc827b7f24c5eb6d5b71964d432e3ccb19266a9f')
