@@ -26,5 +26,5 @@ source=("${pkgname}-${pkgver}.pacman::https://github.com/scratux/scratux/release
 md5sums=(e341ad8bf3134a652b03143719782371)
 
 package() {
-	cd ${pkgname}-${pkgver}
+	echo "This package is not provided by the Scratux developers. The Scratux developers is not responsible for any consequences caused by using this software. "
 }
