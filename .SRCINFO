@@ -14,6 +14,7 @@ pkgbase = executor-git
 	makedepends = perl
 	depends = qt5-base
 	depends = boost
+	depends = executor-data
 	source = git+https://github.com/autc04/executor
 	md5sums = SKIP
 
