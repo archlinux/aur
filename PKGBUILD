@@ -11,7 +11,7 @@ license=("GPL")
 makedepends=('imake')
 depends=('tcl' 'tk')
 conflicts=('tkgate-beta')
-source=("http://http.debian.net/debian/pool/main/t/tkgate/tkgate_1.8.7.orig.tar.gz"
+source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/tkgate/1.8.7-4/tkgate_1.8.7.orig.tar.gz"
         tkgate.diff.gz)
 md5sums=('628b5ca66283fc1473c9ef7300ae73c8'
          '0eaafa98ff751c657b3adf73ea4f5bf6')
