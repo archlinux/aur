@@ -1,7 +1,7 @@
 # Maintainer: Victor3D <webmaster@victor3d.com.br>
 pkgname=executor
 pkgver=2
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Old-school Macintosh Emulator"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://wiki.victor3d.com.br"
 license=('GPL')
 groups=()
 depends=("qt5-base" "boost")
-makedepends=("cmake" "sdl2" "boost" "git" "ruby")
+makedepends=("cmake" "sdl2" "boost" "git" "ruby" "bison" "perl")
 checkdepends=()
 optdepends=()
 provides=()
@@ -31,9 +31,6 @@ prepare() {
 	git pull origin master
 	git submodule init
 	git submodule update
-	sed -i 's/SDL_keycode.h/SDL2\/SDL_keycode.h/g' src/config/front-ends/sdl2/keycode_map.h
-	sed -i 's/SDL.h/SDL2\/SDL.h/g' src/config/front-ends/sdl2/sdl2.cpp
-	sed -i 's/SDL.h/SDL2\/SDL.h/g' src/config/front-ends/sdl2/keycode_map.cpp
 }
 
 build() {
@@ -41,7 +38,7 @@ build() {
 	mkdir build
 	cd build
 	cmake ..
-	make
+	cmake --build .
 }
 
 check() {
@@ -59,5 +56,5 @@ package() {
 	mkdir -p "$pkgdir/usr/share/executor"
 	cp -Rp "usr/share/executor/" "$pkgdir/usr/share/"
 	mkdir -p "$pkgdir/usr/bin"
-	cp -Rp "build/executor" "$pkgdir/usr/bin/"
+	cp -Rp "build/executor*" "$pkgdir/usr/bin/"
 }
