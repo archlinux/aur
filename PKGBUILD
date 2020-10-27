@@ -1,13 +1,13 @@
 # Maintainer: Florent Thiéry fthiery@gmail.com
 pkgname=gst-instruments-git
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Set of performance analyzing tools for time profiling and data flow inspection in GStreamer apps."
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/kirushyk/gst-instruments"
-license=('GPL3')
-depends=('gstreamer' 'gtk3' 'vala' 'xdot')
-makedepends=(meson)
+license=(GPL3)
+depends=(gstreamer gtk3 vala xdot)
+makedepends=(meson git)
 source=('git+https://github.com/kirushyk/gst-instruments.git')
 sha512sums=('SKIP')
 
