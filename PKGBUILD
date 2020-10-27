@@ -1,7 +1,7 @@
 # Maintainer: René Wagner < rwagner at rw-net dot de >
 
 pkgname=mimalloc
-pkgver=1.6.4
+pkgver=1.6.7
 pkgrel=1
 pkgdesc='General-purpose allocator with excellent performance characteristics'
 arch=('x86_64')
