@@ -2,8 +2,8 @@
 
 pkgname=qemacs
 pkgver=0.3.3
-pkgrel=3
-pkgdesc='Lightweight Emacs'
+pkgrel=4
+pkgdesc='Quick Emacs'
 license=('LGPL2.1')
 arch=(x86_64)
 url='https://bellard.org/qemacs/'

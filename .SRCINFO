@@ -1,7 +1,7 @@
 pkgbase = qemacs
-	pkgdesc = Lightweight Emacs
+	pkgdesc = Quick Emacs
 	pkgver = 0.3.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bellard.org/qemacs/
 	arch = x86_64
 	license = LGPL2.1
