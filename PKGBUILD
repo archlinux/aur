@@ -4,7 +4,7 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.10.22.a.r57.g40ce7f6e24b
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.10.24.a.r84.g290923c344a
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -39,11 +39,9 @@ source=(
     'swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#branch=main'
     'swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#branch=main'
     'tensorflow-swift-apis::git+https://github.com/tensorflow/swift-apis.git'
-    '0001-sourcekit-lsp-python2-python3.patch'
 )
 noextract=()
 md5sums=(
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -79,7 +77,6 @@ md5sums=(
 
 prepare () {
     ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-pachtes.patch" )
-    ( cd sourcekit-lsp && patch -p1 -i "$srcdir/0001-sourcekit-lsp-python2-python3.patch" )
     ( cd swift-integration-tests && patch -p1 -i "$srcdir/0003-linux_load_commands-test-sourcekit-lsp-are-python2.patch" )
 }
 
