@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/altillimity/L-Band-Decoders"
 license=('GPLv3')
 depends=()
-makedepends=('libfec-git' 'git')
+makedepends=('libcorrect-git' 'libpng' 'zlib' 'tclap' 'libccsds-git' 'libfec-git' 'git')
 provides=()
 conflicts=(satellite-decoders)
 replaces=()
@@ -47,5 +47,6 @@ package() {
 	install -Dm755 NOAA\ MHS\ Decoder/MHS_Decoder "${pkgdir}"/usr/bin/MHS_Decoder
 	install -Dm755 QPSK\ Demodulator/QPSK-Demodulator "${pkgdir}"/usr/bin/QPSK-Demodulator
 	install -Dm755 NOAA\ AVHRR\ Decoder/NOAA-AVHRR-Decoder "${pkgdir}"/usr/bin/NOAA-AVHRR-Decoder
+	install -Dm755 CADU\ RSynchroderand/ "${pkgdir}"/usr/bin/CADU-RSynchroderand
 }
 
