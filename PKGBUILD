@@ -1,4 +1,4 @@
-# Maintainer: Jonathon Fernyhough <jonathon"manjaro+org>
+# Maintainer: Jonathon Fernyhough <jonathon"m2x+dev>
 # Contributor: Sam Guymer <sam at guymer dot me>
 
 # This PKGBUILD adapted from zulu-11-bin
@@ -6,7 +6,7 @@
 _jdkname=liberica-jre-11-full
 pkgname="${_jdkname}-bin"
 _java_ver=11
-pkgver=11.0.9+11
+pkgver=11.0.9+12
 pkgrel=1
 pkgdesc='BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.'
 arch=(aarch64 armv7h armv8h x86_64)
@@ -46,10 +46,10 @@ source_armv8h=(${source_armv7h[@]})
 source_x86_64=(https://download.bell-sw.com/java/$pkgver/bellsoft-jre$pkgver-linux-amd64-full.tar.gz)
 
 # Upstream-provided
-sha1sums_aarch64=('636fc0eabe4ce247fa670c7db5a09aa56072346c')
-sha1sums_armv7h=('19c3c0f80ee6866025c545dc15a5327e1e16465f')
+sha1sums_aarch64=('4f5ab87d38bc968ba4cede096b783220d8c1faca')
+sha1sums_armv7h=('9e5cb892de60ebd332ac32b3cd83df9ae58030bf')
 sha1sums_armv8h=(${sha1sums_armv7h[@]})
-sha1sums_x86_64=('f658ea6097d8bb8046f8f1ee52b9ddb8d9928e00')
+sha1sums_x86_64=('7523d2850726044d612581911998ee855909247c')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
