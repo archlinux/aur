@@ -1,0 +1,16 @@
+pkgbase = edrawproject-bin
+	pkgdesc = Edraw Project is a professional gantt chart tool to schedule.
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://www.edrawsoft.cn/download/edrawproject/
+	arch = x86_64
+	license = custom
+	provides = edrawproject
+	conflicts = edrawproject
+	source = edrawproject-bin-1.3.deb::https://www.edrawsoft.cn/2download/edrawproject-1-amd64-cn.deb
+	source = LICENSE::https://www.edrawsoft.cn/private-policy/
+	sha256sums = a48e00954e10df60c441346809c152fe3a1ccf03e0c6f6429fecbf5113c69607
+	sha256sums = SKIP
+
+pkgname = edrawproject-bin
+
