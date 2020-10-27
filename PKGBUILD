@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=dns-lexicon
-pkgver=3.4.3
+pkgver=3.4.4
 pkgrel=1
 pkgdesc="Manipulate DNS records on various DNS providers in a standardized/agnostic way"
 arch=('any')
@@ -20,10 +20,14 @@ checkdepends=('python-pytest-runner' 'python-vcrpy' 'python-softlayer' 'python-b
               'python-pynamecheap' 'python-zeep' 'python-xmltodict' 'python-beautifulsoup4'
               'python-localzone' 'python-html5lib' 'python-dnspython' 'bind-tools')
 source=("https://github.com/AnalogJ/lexicon/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('18aabeca204c5aff30807984123a97df81859eff3ff90b376bf6356117daacb0910180c3b1c454993ad090633aeb0a618d68cd6740934c7b9ba4d229d1762378')
+sha512sums=('a5459fcf671b8cf6e7c3e189f5c2791dea906ac8d94020347a4f147ef08f0afaef254a93b3ac503a88e9f5edd4da75bb5692e00c51c44a5f68700559614e8eee')
 
 prepare() {
   cd lexicon-$pkgver
+
+  # Wait for a proper fix
+  sed -i 's/cache_file=TLDEXTRACT_CACHE_FILE, //' lexicon/client.py
+  sed -i 's/tldextract = "\^2"/tldextract = ">=2"/' pyproject.toml
 
   # poetry-generated setup.py is badly broken in several ways, including
   # distribution of tests in the built package as well as using distutils for
