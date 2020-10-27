@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenJDK Java 15 Console
+Comment=OpenJDK Java 15 Monitoring & Management Console
+Keywords=java;console;monitoring
+Exec=/usr/lib/jvm/liberica-jdk-full/bin/jconsole
+Terminal=false
+Type=Application
+Icon=liberica-jdk-full
+Categories=Application;System;

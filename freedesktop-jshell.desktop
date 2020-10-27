@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenJDK Java 15 Shell
+Comment=OpenJDK Java 15 Shell
+Keywords=java;shell
+Exec=/usr/lib/jvm/liberica-jdk-full/bin/jshell
+Terminal=true
+Type=Application
+Icon=liberica-jdk-full
+Categories=Application;System;
