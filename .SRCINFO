@@ -1,0 +1,21 @@
+pkgbase = executor-git
+	pkgdesc = Old-school Macintosh Emulator
+	pkgver = r1224.a7451c9f
+	pkgrel = 1
+	url = https://github.com/autc04/executor
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = sdl2
+	makedepends = boost
+	makedepends = git
+	makedepends = ruby
+	makedepends = bison
+	makedepends = perl
+	depends = qt5-base
+	depends = boost
+	source = https://github.com/autc04/executor.git
+	md5sums = SKIP
+
+pkgname = executor-git
+
