@@ -1,6 +1,6 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=noise-suppression-for-voice
-pkgver=0.9
+pkgver=0.91
 pkgrel=1
 pkgdesc="A real-time noise suppression plugin for voice"
 arch=('x86_64')
@@ -8,17 +8,13 @@ url="https://github.com/werman/noise-suppression-for-voice"
 license=('GPL3')
 depends=('gcc-libs')
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/v${pkgver}.tar.gz"
-        "headers.patch")
-sha256sums=('db42eb863082847ce58eeb9395eaaa7ccd84a0dd7153c35a614f35dd0967aab1'
-            'e565b6fe5cdede167fea0aed145ce51e17953313a4648ec51e8f63687c8752bf')
-sha512sums=('eaeea0842b467adc73d55bbbc9146b88dddafd80c227f51514152aaac25cebd0febe2a2577669525cd39706e6c2a28d9195313d53f12739c904ac4c78d11ca1f'
-            '63eee80770b497e9c2d2e09298e5084d7712084cdf775676b1764882d04fe7ba168a9af930f12873539270a01c6adc8d8ca23e65a516b53ad9e18e090319d062')
+source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('4f3a112534d4abb5ee2b6c328cde89193dbdb2146cffc98505972c3b5397a35e')
+sha512sums=('e117fd54e6cf01c4721b79fddca2f2898331e46764c7a05077ed3034c50e2cbc0c1d6fa3084f7c6f56a629bf20127a7d1bccd57d30b0693cc3eb30edaae6cd28')
 
 prepare() {
   cd ${pkgname}-${pkgver}
   mkdir build
-  patch -p1 -i "${srcdir}/headers.patch"
 }
 
 build() {
