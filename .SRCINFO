@@ -1,13 +1,15 @@
 pkgbase = gmux
 	pkgdesc = Manage multiple git repositories with ease.
-	pkgver = 0.1.2
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/Aphosis/gmux
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	provides = gmux
-	source = https://github.com/Aphosis/gmux/archive/0.1.2.tar.gz
+	source = https://github.com/Aphosis/gmux/archive/0.1.4.tar.gz
+	sha512sums = 0009468dc95c28c8ec1d35af526a355663f872bb46e48c5dc93929ce952dcaab7641268c267168a7a9fe38a5718fa4dbd53323bb67c684c4c4c52e5a06836372
+	b2sums = 2dd71a9f5fac3864d630ab36453d537e2c1a9f894666badccf9ebc5942b9c0b6ec60256cdfa2b0c955248d11a4bdba91a8cd76cf01dec3fde4bbc56fc9855adf
 
 pkgname = gmux
 
