@@ -1,5 +1,5 @@
 pkgbase = csmith-git
-	pkgdesc = Tool for stress-testing compilers, static analyzers, and other tools that process C code
+	pkgdesc = A random generator of C programs
 	pkgver = csmith.2.3.0.r62.g0bd545f
 	pkgrel = 1
 	url = https://github.com/csmith-project/csmith

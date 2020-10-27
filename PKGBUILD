@@ -3,7 +3,7 @@
 pkgname=csmith-git
 pkgver=csmith.2.3.0.r62.g0bd545f
 pkgrel=1
-pkgdesc='Tool for stress-testing compilers, static analyzers, and other tools that process C code'
+pkgdesc='A random generator of C programs'
 arch=('i686' 'x86_64')
 url='https://github.com/csmith-project/csmith'
 license=('BSD')
