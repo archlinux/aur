@@ -4,7 +4,7 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 
 pkgname=pithos
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Native Pandora Radio client'
 arch=('any')
@@ -19,14 +19,11 @@ optdepends=('libkeybinder3: for media keys plugin'
             'python-systemd: Logging to the system journal')
 makedepends=('meson' 'appstream-glib')
 source=(
-  "https://github.com/pithos/pithos/releases/download/${pkgver}/pithos-${pkgver}.tar.xz"{,.asc}
+  "https://github.com/pithos/pithos/releases/download/${pkgver}/pithos-${pkgver}.tar.xz"
   "systemd.service"
 )
-sha256sums=('61e2a778252358519979ea53ab9fb9dd10a9554d24f3e249560bc4971f386133'
-            'SKIP'
+sha256sums=('6850234fb7cf5a66f72219ef571b8f61b2506d314320274a236e514fd6fe90cd'
             '6d29178697384fb046d9d25c6c2482f353a4484ec4f0a5b9080d1a26aa24f839')
-
-validpgpkeys=('108BF2212A051F4A72B18448B3C7CE210DE76DFC')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
