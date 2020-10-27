@@ -21,5 +21,8 @@ post_install() {
 }
 
 pre_remove() {
-  echo "removing"
+  for _sysroot in `ls ${_sysroots}`; do
+    rm -rf ${_sysroots}/${_sysroot}/tools/sysroots
+    rm -rf ${_sysroots}/${_sysroot}/tools/*musleabi
+  done
 }
