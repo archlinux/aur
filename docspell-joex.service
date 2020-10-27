@@ -1,5 +1,5 @@
 [Unit]
-Description=docspell-joex
+Description=Docspell job executer
 Requires=network.target
 
 [Service]
@@ -7,7 +7,7 @@ Type=simple
 WorkingDirectory=/var/lib/docspell
 ExecStart=/usr/bin/docspell-joex
 ExecReload=/bin/kill -HUP $MAINPID
-Restart=on-failure
+Restart=on-abnormal
 RestartSec=60
 SuccessExitStatus=
 TimeoutStopSec=5
@@ -15,6 +15,31 @@ User=docspell
 Group=docspell
 PermissionsStartOnly=true
 LimitNOFILE=1024
+
+# Sandboxing features
+# https://github.com/alegrey91/systemd-service-hardening#getting-started
+# https://gist.github.com/ageis/f5595e59b1cddb1513d1b425a323db04
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_DAC_READ_SEARCH
+DevicePolicy=closed
+IPAddressAllow=192.168.1.0/24
+LockPersonality=yes
+#MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+PrivateDevices=yes
+PrivateTmp=yes
+PrivateUsers=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectSystem=strict
+ReadWritePaths=/var/lib/docspell
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+RestrictNamespaces=net
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
 
 [Install]
 WantedBy=multi-user.target
