@@ -1,0 +1,21 @@
+pkgbase = displayset
+	pkgdesc = A simple display auto-setup script using xrandr
+	pkgver = 0.1
+	pkgrel = 7
+	url = https://github.com/bullekeup/displayset
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = xorg-xrandr
+	source = git+https://github.com/bullekeup/displayset.git
+	md5sums = SKIP
+
+pkgname = displayset
+
+pkgname = displayset-udev-rules
+	install = displayset-udev-rules.install
+	depends = displayset
+	depends = udev
+
+pkgname = displayset-doc
+
