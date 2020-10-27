@@ -3,8 +3,8 @@
 
 pkgname=('displayset' 'displayset-udev-rules' 'displayset-doc')
 pkgver=0.1
-pkgrel=7
-pkgdesc='A simple display auto-setup script using xrandr'
+pkgrel=9
+pkgdesc='A simple display auto-setup script tool using xrandr'
 arch=('any')
 url="https://github.com/bullekeup/displayset"
 license=('GPL2')
@@ -21,11 +21,14 @@ package_displayset() {
 
 package_displayset-udev-rules() {
   install=displayset-udev-rules.install
+  pkgdesc='A simple display auto-setup script tool using xrandr - udev rules'
   depends=('displayset' 'udev')
   install -m 664 ${srcdir}/displayset/99-displayset-hotplug.rules -Dt ${pkgdir}/etc/udev/rules.d/  
 }
 
 package_displayset-doc() {
+  depends=()
+  pkgdesc='A simple display auto-setup script tool using xrandr - doc and sample config'
   for FILE in $(find ${srcdir}/displayset/sample -maxdepth 1 -type f -printf '%p '); do
     install -m 444 ${FILE} -Dt ${pkgdir}/usr/share/doc/displayset/sample/
   done;
