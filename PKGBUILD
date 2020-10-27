@@ -9,7 +9,6 @@ arch=('i686' 'x86_64')
 url="http://thomasokken.com/free42/"
 license=('GPL')
 depends=('gtk3')
-optdepends=('free42-skins: Additional skins')
 source=("http://thomasokken.com/free42/upstream/$pkgname-nologo-$pkgver.tgz"
         "free42.desktop")
 md5sums=('92221ed0826ed7ad929eeb141ce6b476'

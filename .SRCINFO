@@ -7,7 +7,6 @@ pkgbase = free42
 	arch = x86_64
 	license = GPL
 	depends = gtk3
-	optdepends = free42-skins: Additional skins
 	source = http://thomasokken.com/free42/upstream/free42-nologo-2.5.21.tgz
 	source = free42.desktop
 	md5sums = 92221ed0826ed7ad929eeb141ce6b476
