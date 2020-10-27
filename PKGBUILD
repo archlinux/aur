@@ -1,49 +1,64 @@
 # Maintainer: pingplug < aur at pingplug dot me >
+# Maintainer: Adrià Arrufat <swiftscythe@gmail.com>
 # Contributor: perlawk
 
-pkgname=dlib
+pkgbase=dlib
+pkgname=("dlib" "dlib-cuda")
 pkgver=19.21
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques"
 arch=('x86_64')
 url="http://dlib.net"
 license=('custom')
 depends=('cblas'
          'lapack'
+         'openblas'
          'libjpeg-turbo'
          'libpng'
          'libx11')
-optdepends=('cuda: for CUDA support'
-            'cudnn: for CUDNN support'
-            'giflib: for GIF support'
+optdepends=('giflib: for GIF support'
             'sqlite: for sqlite support')
-makedepends=('cmake')
+makedepends=('cmake' 'ninja')
 source=("http://dlib.net/files/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('be728a03ae8c4dc8b48408d90392a3c28bc6642a6eb22f3885895b434d7df53c')
 
 build() {
-  cd "${srcdir}"
-  mkdir -p build && cd build
-  cmake \
-    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-    -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
-    -DBUILD_SHARED_LIBS:BOOL=ON \
-    -DCUDA_HOST_COMPILER='/opt/cuda/bin/gcc' \
-    -DCMAKE_BUILD_TYPE=Release \
-    "../${pkgname}-${pkgver}"
-  if [[ -f "/usr/lib/ccache/bin/nvcc-ccache" ]] ; then
-    cmake \
-      -DCUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache \
-      -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/gcc \
-      "../${pkgname}-${pkgver}"
-  fi
-  make
+    cd "${srcdir}"
+    mkdir -p build && cd build
+    cmake -GNinja \
+        -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+        -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
+        -DBUILD_SHARED_LIBS=ON \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DUSE_AVX_INSTRUCTIONS=ON \
+        -DDLIB_USE_CUDA=OFF \
+        "../${pkgname}-${pkgver}"
+    ninja
+
+    cd "${srcdir}"
+    mkdir -p build-cuda && cd build-cuda
+    cmake -GNinja \
+        -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+        -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
+        -DBUILD_SHARED_LIBS=ON \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DUSE_AVX_INSTRUCTIONS=ON \
+        -DDLIB_USE_CUDA=ON \
+        "../${pkgname}-${pkgver}"
+    ninja
 }
 
-package() {
-  cd "${srcdir}/build"
-  make DESTDIR=${pkgdir} install
-  install -Dm644 "../${pkgname}-${pkgver}/dlib/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+package_dlib() {
+    cd "${srcdir}/build"
+    DESTDIR=${pkgdir} ninja install
+    install -Dm644 "../${pkgbase}-${pkgver}/dlib/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
+package_dlib-cuda() {
+    pkgdesc="A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques (with CUDA)"
+    depends+=(cuda cudnn)
+    conflicts=(dlib)
+    cd "${srcdir}/build-cuda"
+    DESTDIR=${pkgdir} ninja install
+    install -Dm644 "../${pkgbase}-${pkgver}/dlib/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+}
