@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=gosec
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Inspects source code for security problems by scanning the Go AST"
 arch=("x86_64" "i686")
@@ -10,17 +10,16 @@ license=("Apache")
 depends=("glibc")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/securego/gosec/archive/v${pkgver}.tar.gz")
-sha256sums=('5a567944ff509f39fd3f61955bfd6541b95e1971aff2cd477a030aeec2d73205')
+sha256sums=('5d4967570f953c8478a3e51a0dee5cfe6313f2570eca15e6fabd5d6379e530f4')
 
 build() {
   cd ${pkgname}-${pkgver}/cmd/gosec
-  go build \
-  -trimpath \
-  -buildmode=pie \
-  -mod=readonly \
-  -modcacherw \
-  -ldflags "-extldflags \"${LDFLAGS}\"" \
-  .
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build .
 }
 
 package() {
