@@ -4,7 +4,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer
-pkgver=2020.1009.0
+pkgver=2020.1020.0
 pkgrel=1
 
 dotnet_version=3.1
@@ -16,9 +16,6 @@ url='https://osu.ppy.sh/'
 
 depends=(ffmpeg libgl sdl2 shared-mime-info "dotnet-runtime>=$dotnet_version.0")
 makedepends=(git "dotnet-sdk>=$dotnet_version.0")
-
-provides=(osu-lazer)
-conflicts=(osu-lazer-git)
 
 source=(
     "osu-lazer::git+https://github.com/ppy/osu.git#tag=$pkgver"
