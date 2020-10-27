@@ -4,7 +4,7 @@
 pkgname=orfeo-toolbox
 pkgver=7.2.0
 _pkgver=7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org/otb/"
@@ -41,10 +41,10 @@ prepare() {
 build() {  
   cd $srcdir/  
  
-#  if  [ -d "$srcdir/build/" ]; then
-#    rm -rf $srcdir/build/
-#   fi
-#  mkdir $srcdir/build/
+  if  [ -d "$srcdir/build/" ]; then
+    rm -rf $srcdir/build/
+   fi
+  mkdir $srcdir/build/
  
    cd $srcdir/build
  
@@ -74,7 +74,6 @@ build() {
   -DOTB_USE_QWT=ON \
   -DOTB_USE_GLUT=ON \
   -DOTB_USE_SPTW=ON \
-  -DOTB_USE_SHARK=ON \
   -DCMAKE_CXX_STANDARD=14
          
   make
