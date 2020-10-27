@@ -1,4 +1,4 @@
-# Maintainer: Tamvana Makuluni <emakman@gmail.com>
+# Maintainer: Tamvana Makuluni <sw@makuluni.com>
 pkgname=neovim-latex-previewer-git
 pkgver=r15.286e5c3
 pkgrel=1
