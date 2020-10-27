@@ -4,20 +4,20 @@
 
 _pkgname='xdis'
 pkgname="python-${_pkgname}"
-pkgver=5.0.4
+pkgver=5.0.5
 pkgrel=1
 pkgdesc='Python cross-version bytecode library and disassembler'
 arch=('any')
 url='https://github.com/rocky/python-xdis'
+_url_pypi='https://pypi.org/project/xdis'
 license=('GPL2')
 depends=('flake8'
         'python-click'
         'python-nose'
         'python-six')
 makedepends=('python-setuptools')
-provides=("${_pkgname}")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('9074c15d92111877adf9e6a3156106acde8f87fc279a4ec03538f3faa1a5bfca')
+sha256sums=('14a98414e0b02ba5dba3b64d5e40c4fe9398b492a01bc2c2803f7f58156a3715')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -27,7 +27,7 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.rst'
+  install -Dvm644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
