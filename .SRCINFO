@@ -1,0 +1,17 @@
+pkgbase = csmith-git
+	pkgdesc = Tool for stress-testing compilers, static analyzers, and other tools that process C code
+	pkgver = csmith.2.3.0.r62.g0bd545f
+	pkgrel = 1
+	url = https://github.com/csmith-project/csmith
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	depends = perl
+	provides = csmith
+	conflicts = csmith
+	source = git+git://github.com/csmith-project/csmith
+	sha1sums = SKIP
+
+pkgname = csmith-git
+
