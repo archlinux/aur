@@ -1,7 +1,7 @@
 # Maintainer: Rocka <i at Rocka dot me>
 
 pkgname=p3x-onenote
-pkgver=2020.10.105
+pkgver=2020.10.164
 pkgrel=1
 pkgdesc="Linux Electron Onenote - A Linux compatible version of OneNote"
 arch=('any')
@@ -14,7 +14,7 @@ source=("https://github.com/patrikx3/onenote/archive/v${pkgver//_/-}.tar.gz"
         "p3x-onenote.sh"
         "p3x-onenote.desktop")
 
-md5sums=('1df284eae030386ad4fd3aaea200383a'
+md5sums=('22a9314064577422c95ac80d60a48f77'
          'ef34fda1179a804e31b9684788e2ed25'
          'ff11d699c2aeac0caebf1a9d8533e664')
 
