@@ -1,7 +1,7 @@
 # Maintainer: Jean-Francois Chevrette <jfchevrette@gmail.com>
 
 pkgname=kbld
-pkgver=0.25.0
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="kbld seamlessly incorporates image building and image pushing into your development and deployment workflows"
 url="https://get-kbld.io/"
@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=('glibc')
 makedepends=('git' 'go' 'ytt' 'zip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/k14s/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('89a036d21b7864f303873d7c8fb4ec013aed19931136ff84c98cabb3cf263a06')
+sha256sums=('ce9553b654c01d01b8bf87ff5ca414210eae3800b0b41d87ab5a8742149688fc')
 
 prepare() {
 	rm -rf "${srcdir}/src/github.com/k14s/${pkgname}"
