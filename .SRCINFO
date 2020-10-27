@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-aarch64-bin
 	pkgdesc = Telegram Desktop aarch64 binaries from Debian
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://desktop.telegram.org
 	arch = aarch64
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = telegram-desktop-aarch64-bin
 	conflicts = telegram-desktop
 	conflicts = telegram-desktop-git
 	source = telegram-desktop.desktop
-	source = http://ftp.us.debian.org/debian/pool/main/t/telegram-desktop/telegram-desktop_2.2.0%2Bds-1_arm64.deb
+	source = http://ftp.us.debian.org/debian/pool/main/t/telegram-desktop/telegram-desktop_2.2.0%2Bds-3_arm64.deb
 	sha256sums = 32d1597d67a7ef519367e499fcc978da4cce104e370b3787853446d93b1533d6
-	sha256sums = 9eba0fd2a6ffc1e8c5f82530a32205971cdd3a2d197dfe3cf02af7204c5b5ab0
+	sha256sums = a83b663d4962e1f9a2a4625ea32ba7ee442b848adefd188227a5d58569788ed3
 
 pkgname = telegram-desktop-aarch64-bin
 

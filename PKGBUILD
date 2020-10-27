@@ -2,7 +2,7 @@
 
 pkgname=telegram-desktop-aarch64-bin
 pkgver=2.2.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Telegram Desktop aarch64 binaries from Debian"
 arch=('aarch64' 'x86_64')
 url="https://desktop.telegram.org"
@@ -18,7 +18,7 @@ provides=('telegram-desktop')
 source=("telegram-desktop.desktop"
         "http://ftp.us.debian.org/debian/pool/main/t/telegram-desktop/telegram-desktop_${pkgver}%2Bds-${pkgrel}_arm64.deb")
 sha256sums=('32d1597d67a7ef519367e499fcc978da4cce104e370b3787853446d93b1533d6'
-            '9eba0fd2a6ffc1e8c5f82530a32205971cdd3a2d197dfe3cf02af7204c5b5ab0')
+            'a83b663d4962e1f9a2a4625ea32ba7ee442b848adefd188227a5d58569788ed3')
 
 package() {
 	cd "$srcdir/"
