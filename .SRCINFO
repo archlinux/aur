@@ -1,0 +1,21 @@
+pkgbase = sdn-git
+	pkgdesc = Directory navigator
+	pkgver = r136.df046bb
+	pkgrel = 1
+	url = https://git.janouch.name/p/sdn
+	arch = i686
+	arch = x86_64
+	license = custom:0BSD
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = git
+	depends = ncurses
+	depends = acl
+	provides = sdn
+	conflicts = sdn
+	options = zipman
+	source = git+https://git.janouch.name/p/sdn.git
+	md5sums = SKIP
+
+pkgname = sdn-git
+
