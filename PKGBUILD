@@ -1,7 +1,7 @@
 # Maintainer: Pan Junkai <panjk.panyx@gmail.com>
 pkgname=scratux
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux binary for Scratch. Fixed depend errors from the original package. "
 arch=('x86_64')
 url="https://github.com/scratux/scratux/"
