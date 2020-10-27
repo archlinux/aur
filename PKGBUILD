@@ -24,7 +24,7 @@ package() {
     cd "$srcdir/3proxy-$pkgver"
     sed -i '137,$d' Makefile.Linux
     make='make -f Makefile.Linux INSTALL=/usr/bin/install'
-    $make prefix="$_prefix" ETCDIR="$_etcdir" INITDIR=$etcdir RUNBASE=$_runbase LOGBASE=$_logbase
+    $make prefix="$_prefix" ETCDIR="$_etcdir" INITDIR=$_initdir RUNBASE=$_runbase LOGBASE=$_logbase
     $make prefix="$_prefix" install DESTDIR="$pkgdir" ETCDIR="$pkgdir$_etcdir" INITDIR="$pkgdir$_initdir" RUNBASE="$pkgdir$_runbase" LOGBASE="$pkgdir$_logbase"
     ( cd ${pkgdir}${_prefix}/bin && mv proxy 3proxy-proxy ) || return 1
     rm -f ${pkgdir}${_etcdir}/counters ${pkgdir}${_etcdir}/passwd ${pkgdir}${_etcdir}/bandlimiters
