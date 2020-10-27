@@ -14,8 +14,8 @@ depends=('openssl' 'pcre')
 source=("$pkgname-v$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz"
         "$pkgname-v$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz.asc")
 
-b2sums=('aa6882d97b69d31d509bc736ac2fa7dadce2548d886b5d05cf3792a9134265641dd5f9e4d2aacc7df8bbeaeeb3dca0f34a6f288e09a8a0e39cde158b83a5ad2a'
-	'SKIP')
+b2sums=('668e4ce90c7629bf05366260e3a7f16c336bc524fc9d4505a304bad6949a4e05df21e877d5ff1d3c6032cddaf18139cd7bc2abd59aaeb9502d17c106c75b2a1f'
+        'SKIP')
 
 validpgpkeys=('28F768BE4B746F79A6D3288302FBEAF81EAD18C3')
 
