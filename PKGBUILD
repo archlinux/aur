@@ -13,16 +13,18 @@ sha512sums=('7e04b9c93e451a5e4f7515056e224c52fe1e1b5fe5dd9dbcd718c3279a445ebcfd7
 b2sums=('c717edb85794681c18474be5ddbb3cbfdc5580ac6a504a9792d225cc70a5d3d0928d8635800b3c0285bb2ab6b1417f8b98b1037dedbf01c1925f290bcae1abcb')
 
 build() {
-    export CARGO_TARGET_DIR="${srcdir}/${pkgname}-${pkgver}"
-    cargo build --release
+  cd ${pkgname}-${pkgver}
+  cargo build --release --locked
 }
 
 package() {
-    export CARGO_TARGET_DIR="${srcdir}/${pkgname}-${pkgver}"
-    cd ..
-    usrdir="$pkgdir/usr"
-    mkdir -p $usrdir
-    cargo install --path . --root "$usrdir"
-    rm -f $usrdir/.crates.toml
+  cd ${pkgname}-${pkgver}
+
+  install -Dm 755 \
+    target/release/gmux \
+    -t "${pkgdir}/usr/bin"
+
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
