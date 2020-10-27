@@ -10,5 +10,7 @@ source=("https://github.com/victor3dptz/executor-packaging/raw/master/arch/execu
 md5sums=("868697896b0c51c66d31440f3c59a3fc")
 
 package() {
-	cp -r "${srcdir}/executor/usr" "${pkgdir}/usr"
+	cp -r "executor/usr" "${pkgdir}"
+	mkdir -p "${pkgdir}/usr/share/executor/home"
+	chmod -R 777 "${pkgdir}/usr/share/executor/home"
 }
