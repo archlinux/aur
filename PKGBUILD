@@ -42,7 +42,7 @@ package() {
 	install -Dm755 FengYun\ MERSI-2\ Decoder/FengYun-MERSI-2-Decoder "${pkgdir}"/usr/bin/FengYun-MERSI-2-Decoder
 	install -Dm755 FengYun\ MERSI-1\ Decoder/FengYun-MERSI-1-Decoder "${pkgdir}"/usr/bin/FengYun-MERSI-1-Decoder
 	install -Dm755 MODIS\ Decoder/MODIS-Decoder "${pkgdir}"/usr/bin/MODIS-Decoder
-	install -Dm755 HRD\ Decoder/HRD-Decoder "${pkgdir}"/usr/bin/MODIS-Decoder
-	install -Dm755 Terra\ Decoder/TERRA-Decoder "${pkgdir}"/usr/bin/MODIS-Decoder
-	install -Dm755 VIIRS\ Decoder/VIIRS-Decoder "${pkgdir}"/usr/bin/MODIS-Decoder
+	install -Dm755 HRD\ Decoder/HRD-Decoder "${pkgdir}"/usr/bin/HRD-Decoder
+	install -Dm755 Terra\ Decoder/TERRA-Decoder "${pkgdir}"/usr/bin/TERRA-Decoder
+	install -Dm755 VIIRS\ Decoder/VIIRS-Decoder "${pkgdir}"/usr/bin/VIIRS-Decoder
 }
