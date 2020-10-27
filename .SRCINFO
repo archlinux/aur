@@ -20,6 +20,7 @@ pkgbase = dv-runtime-git
 	depends = libx11
 	depends = lz4
 	depends = zstd
+	depends = fmt
 	provides = dv-runtime
 	conflicts = dv-runtime
 	source = dv-runtime-git::git+https://gitlab.com/inivation/dv/dv-runtime.git
