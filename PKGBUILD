@@ -4,13 +4,14 @@ _pkgname=libfprint
 pkgname=libfprint-vfs009x-git
 epoch=1
 pkgver=1.90.1.r3.gc6f5f0e
-pkgrel=7
+pkgrel=8
 pkgdesc="Library for fingerprint readers (includes libre vfs0090 and vfs0097 driver)"
 arch=(i686 x86_64)
 url="https://github.com/3v1n0/libfprint"
 license=(LGPL)
-depends=(libusb nss pixman gnutls openssl gobject-introspection glib2 cairo pixman nss openssl)
+depends=(libusb nss pixman gnutls openssl gobject-introspection glib2 libgusb pixman nss openssl)
 makedepends=(git meson gtk-doc pkgconf usbutils)
+checkdepends=(cairo)
 optdepends=(
   "fprintd: D-Bus daemon that manages fingerprint readers"
   "validity-sensors-tools: Flash, factory reset and pair Validity fingerprint sensors 009x"
@@ -66,7 +67,7 @@ pkgver() {
 
 build() {
   cd "$srcdir"
-  arch-meson $_pkgname build -D x11-examples=false -D doc=false
+  arch-meson $_pkgname build -D x11-examples=false -D doc=false -D udev_rules_dir=/usr/lib/udev/rules.d
   ninja -C build
 }
 
