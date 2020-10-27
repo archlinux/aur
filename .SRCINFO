@@ -1,6 +1,6 @@
-pkgbase = nerdfetch-ohio2
+pkgbase = ohio2-nerdfetch
 	pkgdesc = A POSIX fetch using NerdFonts
-	pkgver = r157.7cb4cbb
+	pkgver = ohio2v1
 	pkgrel = 1
 	url = https://github.com/ThatOneCalculator/NerdFetch
 	arch = any
@@ -10,5 +10,5 @@ pkgbase = nerdfetch-ohio2
 	source = git+https://github.com/Ohio2/NerdFetch
 	md5sums = SKIP
 
-pkgname = nerdfetch-ohio2
+pkgname = ohio2-nerdfetch
 
