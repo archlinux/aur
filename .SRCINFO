@@ -1,5 +1,5 @@
 pkgbase = zordak
-	pkgdesc = Tower of Guns is a fast-paced, first-person shooter for the twitch gamer, featuring a few randomized elements to keep each playthrough fresh.
+	pkgdesc = Zordak is a game heavily inspired by Super Metroid
 	pkgver = 0.0.30
 	pkgrel = 1
 	url = https://apapappa.itch.io/zordak
