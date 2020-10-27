@@ -1,7 +1,7 @@
 # Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 pkgname=3proxy
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tiny crossplatform proxy server"
 arch=('any')
 url="http://www.3proxy.ru/"
@@ -17,12 +17,15 @@ md5sums=('d47099e82914d854daac4688740d625c'
 )
 _prefix=/usr
 _etcdir=/etc/3proxy
+_initdir=/etc/init.d
+_runbase=/var/run
+_logbase=/var/log
 package() {
     cd "$srcdir/3proxy-$pkgver"
     sed -i '137,$d' Makefile.Linux
     make='make -f Makefile.Linux INSTALL=/usr/bin/install'
-    $make prefix="$_prefix" ETCDIR="$_etcdir"
-    $make prefix="$_prefix" install DESTDIR="$pkgdir" ETCDIR="${pkgdir}${_etcdir}" INITDIR="$pkgdir/etc/init.d" RUNBASE="$pkgdir/var/run" LOGBASE="$pkgdir/var/log"
+    $make prefix="$_prefix" ETCDIR="$_etcdir" INITDIR=$etcdir RUNBASE=$_runbase LOGBASE=$_logbase
+    $make prefix="$_prefix" install DESTDIR="$pkgdir" ETCDIR="$pkgdir$_etcdir" INITDIR="$pkgdir$_initdir" RUNBASE="$pkgdir$_runbase" LOGBASE="$pkgdir$_logbase"
     ( cd ${pkgdir}${_prefix}/bin && mv proxy 3proxy-proxy ) || return 1
     rm -f ${pkgdir}${_etcdir}/counters ${pkgdir}${_etcdir}/passwd ${pkgdir}${_etcdir}/bandlimiters
     install -D -m644 copying ${pkgdir}${_prefix}/share/licenses/$pkgname/copying
