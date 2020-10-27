@@ -8,7 +8,7 @@ url="https://github.com/autc04/executor"
 license=('MIT')
 depends=("qt5-base" "boost")
 makedepends=("cmake" "sdl2" "boost" "git" "ruby" "bison" "perl")
-source=('https://github.com/autc04/executor')
+source=('git+https://github.com/autc04/executor')
 md5sums=('SKIP')
 
 pkgver() {
