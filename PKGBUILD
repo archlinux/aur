@@ -1,8 +1,8 @@
 # Maintainer: Wouter Wijsman <wwijsman@live.nl>
 
 pkgname=dosbox-staging
-pkgver=0.75.1
-pkgrel=2
+pkgver=0.75.2
+pkgrel=1
 epoch=1
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
 arch=('any')
@@ -17,7 +17,7 @@ source=(
   "https://github.com/dosbox-staging/${pkgname}/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '9155cc7220e612817670fbe51f30c69e560573f1daad075037194f2731a538a8'
+  '6546427cb3218224a5e3f97c5a4a30960aca5eced3e44ab94810357f36fcfafb'
 )
 
 prepare() {
