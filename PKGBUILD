@@ -3,7 +3,7 @@
 # Contributor: jkl
 
 pkgname=nginx-mainline-mod-fancyindex-git
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 
 _modname="ngx_fancyindex"
