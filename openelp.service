@@ -1,0 +1,31 @@
+[Unit]
+Description=Open Source EchoLink Proxy
+After=network.target nss-lookup.target
+ConditionPathExists=/etc/ELProxy.conf
+
+[Service]
+PrivateTmp=true
+PrivateUsers=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictNamespaces=true
+NoNewPrivileges=true
+MemoryDenyWriteExecute=true
+LockPersonality=true
+SystemCallFilter=@system-service
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ProtectHostname=true
+
+Type=forking
+
+User=openelp
+Group=openelp
+ExecStart=/usr/bin/openelpd -S /etc/ELProxy.conf
+
+[Install]
+WantedBy=multi-user.target
