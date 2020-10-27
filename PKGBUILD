@@ -1,13 +1,13 @@
 # Maintainer: Mees Luten <mees [dot] luten [at] gmail [dot] com>
 pkgname=x-band-decoders-git
-pkgver=r52.f8d2295
+pkgver=r87.2bafa9e
 pkgrel=1
 pkgdesc="A project aimed at decoding various X-Band satellites"
 arch=('x86_64')
 url="https://github.com/altillimity/X-Band-Decoders"
 license=('GPLv3')
-depends=(libaec)
-makedepends=('libfec-git' 'libcorrect-git' 'git' 'libccsds-git')
+depends=()
+makedepends=('libaec' 'libfec-git' 'libcorrect-git' 'git' 'libccsds-git')
 provides=()
 conflicts=()
 replaces=()
@@ -37,9 +37,12 @@ package() {
 	install -Dm755 Aqua\ MODIS\ Extractor/AQUA-MODIS-Extractor "${pkgdir}"/usr/bin/AQUA-MODIS-Extractor
 	install -Dm755 CADU\ Synchroderand/CADU-Synchroderand "${pkgdir}"/usr/bin/CADU-Synchroderand
 	install -Dm755 ELEKTRO-L\ Decoder/ELEKTRO-L-Decoder "${pkgdir}"/usr/bin/ELEKTRO-L-Decoder
-	install -Dm755 FengYun\ 3D\ Decoder/FY3DDecoder "${pkgdir}"/usr/bin/FY3DDecoder
+	install -Dm755 FengYun\ 3D\ Decoder/FengYun-3D-Decoder "${pkgdir}"/usr/bin/FY3DDecoder
 	install -Dm755 FengYun\ MPT\ Decoder/FengYun-MPT-Decoder "${pkgdir}"/usr/bin/FengYun-MPT-Decoder
 	install -Dm755 FengYun\ MERSI-2\ Decoder/FengYun-MERSI-2-Decoder "${pkgdir}"/usr/bin/FengYun-MERSI-2-Decoder
 	install -Dm755 FengYun\ MERSI-1\ Decoder/FengYun-MERSI-1-Decoder "${pkgdir}"/usr/bin/FengYun-MERSI-1-Decoder
 	install -Dm755 MODIS\ Decoder/MODIS-Decoder "${pkgdir}"/usr/bin/MODIS-Decoder
+	install -Dm755 HRD\ Decoder/HRD-Decoder "${pkgdir}"/usr/bin/MODIS-Decoder
+	install -Dm755 Terra\ Decoder/TERRA-Decoder "${pkgdir}"/usr/bin/MODIS-Decoder
+	install -Dm755 VIIRS\ Decoder/VIIRS-Decoder "${pkgdir}"/usr/bin/MODIS-Decoder
 }
