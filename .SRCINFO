@@ -1,0 +1,16 @@
+pkgbase = stegbrute
+	pkgdesc = Fast steganography brute force tool written in Rust using also threads to achieve a faster execution
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/R4yGM/stegbrute
+	arch = i686
+	arch = x86_64
+	arch = pentium4
+	license = Apache
+	makedepends = rust
+	depends = steghide
+	source = https://github.com/R4yGM/stegbrute/archive/0.1.1.tar.gz
+	sha256sums = 99e7d09926caaa99d4dde2dff73c24e2882931f80611d8ddc210b3afdb26aa5c
+
+pkgname = stegbrute
+
