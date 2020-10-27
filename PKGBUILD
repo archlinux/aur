@@ -21,7 +21,7 @@ package() {
   cd ${pkgname}-${pkgver}
 
   install -Dm 755 \
-    target/release/gmux \
+    target/release/${pkgname} \
     -t "${pkgdir}/usr/bin"
 
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
