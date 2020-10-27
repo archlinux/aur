@@ -1,0 +1,14 @@
+pkgbase = amimullvad
+	pkgdesc = Utility to check for a mullvad vpn connection status
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/hgrahamcs/amimullvad
+	arch = x86_64
+	license = custom:WTFPL
+	makedepends = cargo
+	provides = amimullvad
+	source = https://github.com/hgrahamcs/amimullvad/archive/v1.1.tar.gz
+	sha256sums = 42b1699869f3733aa3506f0cb804d19b515fc64c020b2502a1245cd256637160
+
+pkgname = amimullvad
+
