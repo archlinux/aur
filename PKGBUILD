@@ -10,10 +10,6 @@ source=(https://github.com/Aphosis/${pkgname}/archive/${pkgver}.tar.gz)
 makedepends=("cargo")
 provides=("gmux")
 
-pkgver() {
-    (git describe --long --tags || echo "$pkgver") | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
     export CARGO_TARGET_DIR="${srcdir}/${pkgname}-${pkgver}"
     cargo build --release
