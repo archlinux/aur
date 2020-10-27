@@ -7,10 +7,9 @@ pkgdesc='A random generator of C programs'
 arch=('i686' 'x86_64')
 url='https://github.com/csmith-project/csmith'
 license=('BSD')
-depends=('perl')
+optdepends=('perl')
 provides=('csmith')
 conflicts=('csmith')
-makedepends=('git')
 source=('git+git://github.com/csmith-project/csmith')
 sha1sums=('SKIP')
 
