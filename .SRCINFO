@@ -1,7 +1,7 @@
 pkgbase = ndn-tools
 	pkgdesc = A collection of basic tools for Named Data Networking
-	pkgver = 0.7
-	pkgrel = 6
+	pkgver = 0.7.1
+	pkgrel = 1
 	url = https://github.com/named-data/ndn-tools
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = ndn-tools
 	depends = libpcap
 	provides = ndn-tools
 	conflicts = ndn-tools
-	source = https://github.com/named-data/ndn-tools/archive/ndn-tools-0.7.tar.gz
-	sha256sums = b7ef805f5532acbc312a8250466216743528da5ad09f41fc6da451b6d05ed7a3
+	source = https://github.com/named-data/ndn-tools/archive/ndn-tools-0.7.1.tar.gz
+	sha256sums = 75fa841e86da3d4bb8dc8c700d1d42ea229f6f7f4e08ee9a209e5019760d32c4
 
 pkgname = ndn-tools
 
