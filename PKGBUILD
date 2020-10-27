@@ -2,52 +2,42 @@
 
 pkgname=qemacs
 pkgver=0.3.3
-pkgrel=2
-pkgdesc='Quick version of Emacs'
+pkgrel=3
+pkgdesc='Lightweight Emacs'
 license=('LGPL2.1')
-arch=('x86_64' 'i686')
-url='http://bellard.org/qemacs/'
-depends=('libxv')
-conflicts=('qemacs-cvs')
-provides=('qemacs')
-makedepends=('texi2html' 'setconf')
-install="$pkgname.install"
-source=("http://bellard.org/$pkgname/$pkgname-$pkgver.tar.gz")
+arch=(x86_64)
+url='https://bellard.org/qemacs/'
+depends=(libxv)
+makedepends=(setconf texi2html)
+source=("https://bellard.org/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('2ffba66a44783849282199acfcc08707debc7169394a8fd0902626222f27df94')
 
 prepare() {
   cd "$pkgname-$pkgver"
 
-  # Patch a few compilation errors
+  # fix compilation errors
   sed -i 's:static QEDisplay:QEDisplay:' tty.c
   sed -i 's:static QECharset:QECharset:' charset.c
   sed -i 's/ found:/ found: return q - buf_out;/g' unicode_join.c
   sed -i 's:static QEDisplay:QEDisplay:' x11.c
 
-  # Stop doing ELF-acrobatics
+  # stop doing ELF-acrobatics
   sed -i 's:GNUC:NOP:' qe.c
 
-  # Configure
+  export LDFLAGS="$LDFLAGS -Wl,-z,now"
   ./configure --prefix=$pkgdir/usr --disable-png
 
-  # Remove the blank line
+  # fix config before building
   sed -i '/^$/d' config.mak
-  # Remove the line with only "
   sed -i '/^"$/d' config.h
-  # Add a " after 0.3.1
   sed -i 's:\.1:\.1":' config.h
-  # Set the configuration path
   sed -i "/CONFIG_QE/d" config.h
   echo '#define CONFIG_QE_PREFIX "/usr"' >> config.h
-
-  # Disable -Wall and -Werror (won't compile with gcc otherwise)
   setconf Makefile CFLAGS "-fno-strict-aliasing -g $CFLAGS"
 }
 
 build() {
   cd "$pkgname-$pkgver"
-
-  # Compile
   make -C libqhtml
   make
 }
@@ -55,30 +45,28 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  # Binaries
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/qe"
-  mkdir -p "$pkgdir/usr/man/man1"
+  install -d "$pkgdir/usr/bin"
+  install -d "$pkgdir/usr/share/qe"
+  install -d "$pkgdir/usr/man/man1"
+
+  # install
   make --silent install
 
-  # Manual
+  # man page fix
   mkdir -p "$pkgdir/usr/share/man"
   mv "$pkgdir/usr/man/man1" "$pkgdir/usr/share/man/man1"
   rmdir "$pkgdir/usr/man"
   ln -s "/usr/share/man/man1/qe.1.gz" "$pkgdir/usr/share/man/man1/qemacs.1.gz"
 
-  # Configuration
+  # shared files
   install -Dm644 config.eg "$pkgdir/usr/share/qe/config.eg"
+  install -Dm644 util.c "$pkgdir/usr/share/doc/$pkgname/util.c"
 
-  # Documentation
+  # documentation
   mkdir -p "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 qe-doc.html "$pkgdir/usr/share/doc/$pkgname/qemacs.html"
   install -Dm644 config.eg "$pkgdir/usr/share/doc/$pkgname/sample-config"
-  # util.c is mentioned in config.qe
-  install -Dm644 util.c "$pkgdir/usr/share/doc/$pkgname/util.c"
 
-  # License
+  # license
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
-
-# vim:set ts=2 sw=2 et:
