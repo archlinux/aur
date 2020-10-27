@@ -1,0 +1,30 @@
+pkgbase = zordak
+	pkgdesc = Tower of Guns is a fast-paced, first-person shooter for the twitch gamer, featuring a few randomized elements to keep each playthrough fresh.
+	pkgver = 0.0.30
+	pkgrel = 1
+	url = https://apapappa.itch.io/zordak
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = libarchive
+	depends = lib32-gcc-libs
+	depends = lib32-zlib
+	depends = lib32-libxxf86vm
+	depends = lib32-libglvnd
+	depends = lib32-openal
+	depends = lib32-glibc
+	depends = lib32-openssl-1.0
+	depends = lib32-libxext
+	depends = lib32-libx11
+	depends = lib32-libxrandr
+	depends = lib32-glu
+	depends = lib32-libxcb
+	depends = lib32-libxrender
+	depends = lib32-libxau
+	depends = lib32-libxdmcp
+	options = !strip
+	source = zordak.desktop
+	md5sums = 760cb564d58aef4e0260e19b1d9b338c
+
+pkgname = zordak
+

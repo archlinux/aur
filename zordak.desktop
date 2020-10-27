@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Zordak
+GenericName=Zordak
+Comment=Zordak is a game heavily inspired by Super Metroid
+Icon=/usr/local/games/zordak/assets/icon.png
+Exec="/usr/bin/zordak"
+Categories=Game;
+Path=/usr/local/games/zordak
