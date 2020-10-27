@@ -1,0 +1,5 @@
+post_install() {
+  echo 'One of the optional file search engines must be installed for catfish to work.'
+}
+
+# vim: ts=2 sw=2 et:

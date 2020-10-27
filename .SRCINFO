@@ -1,0 +1,28 @@
+pkgbase = catfish-devel
+	pkgdesc = Versatile file searching tool (development release)
+	pkgver = 4.15.0
+	pkgrel = 1
+	url = https://docs.xfce.org/apps/catfish/start
+	install = catfish.install
+	arch = any
+	license = GPL
+	makedepends = intltool
+	makedepends = python-distutils-extra
+	depends = gtk3
+	depends = python-cairo
+	depends = python-gobject
+	depends = python-pexpect
+	depends = python-ptyprocess
+	depends = python-xdg
+	depends = xdg-utils
+	depends = python-dbus
+	depends = xfconf>=4.14.0
+	optdepends = mlocate: filename search
+	optdepends = zeitgeist: integration with zeitgeist
+	provides = catfish=4.15.0
+	conflicts = catfish
+	source = https://archive.xfce.org/src/apps/catfish/4.15/catfish-4.15.0.tar.bz2
+	sha256sums = cefc43d091c719690d0c4ad259a757c89038ccdf290626674f54b1b1ea9cefbe
+
+pkgname = catfish-devel
+
