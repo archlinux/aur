@@ -1,7 +1,7 @@
 pkgbase = sweethome3d-textures-scopia
 	pkgdesc = Free textures advertised on SweetHome3D website
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sweethome3d.com/importTextures.jsp
 	install = sweethome3d-textures-scopia.install
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: Alexis BRENON <brenon.alexis+arch at gmail dot com>
 pkgname=sweethome3d-textures-scopia
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free textures advertised on SweetHome3D website"
 arch=('any')
 url="http://www.sweethome3d.com/importTextures.jsp"
