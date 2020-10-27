@@ -1,6 +1,6 @@
 pkgbase = eww-git
 	pkgdesc = ElKowar's wacky widgets
-	pkgver = dunno
+	pkgver = dd3c50f
 	pkgrel = 1
 	url = https://github.com/elkowar/eww
 	arch = any

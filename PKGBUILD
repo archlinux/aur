@@ -1,7 +1,7 @@
 # Maintainer: Fronkles McFranko <mrelfranko@disroot.org>
 pkgname=eww-git
 _pkgname=eww
-pkgver=dunno
+pkgver=dd3c50f
 pkgrel=1
 epoch=
 pkgdesc="ElKowar's wacky widgets"
@@ -26,7 +26,7 @@ md5sums=("SKIP")
 validpgpkeys=()
 
 pkgver() {
-    cd $_gitname
+    cd $_pkgname
     printf "%s" "$(git describe --always --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
