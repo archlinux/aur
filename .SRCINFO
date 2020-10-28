@@ -1,6 +1,6 @@
 pkgbase = bb-rs
 	pkgdesc = Simple process viewer in Rust
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://nessuent.xyz/bb.html
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = bb-rs
 	license = GPL3
 	makedepends = rust
 	depends = gcc-libs
-	source = bb-rs-0.4.0.tar.gz::https://github.com/epilys/bb/archive/0.4.0.tar.gz
-	sha512sums = f189fd77603d8e4335a41acc27bf017ab12f0ba024c14bf930b8ba1744f0bd070635ba9c09fd39b7b1f37f0e9d38f074a782bf38ff6d05da468ff6df735b65ce
+	source = bb-rs-0.4.1.tar.gz::https://github.com/epilys/bb/archive/0.4.1.tar.gz
+	sha512sums = 89c036a195801a3795768203c6af0e68d537002c57571720dd59f4afdc5a0b52faad734bc86674cb8c88e31c3a1e943c4d36321344ac8a78c6542020039e30a5
 
 pkgname = bb-rs
 
