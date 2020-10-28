@@ -10,6 +10,7 @@ pkgbase = studio-controls-git
 	depends = python
 	depends = python-gobject
 	depends = python-jack-client
+	optdepends = realtime-privileges
 	source = git+https://github.com/ovenwerks/studio-controls
 	md5sums = SKIP
 
