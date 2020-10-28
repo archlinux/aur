@@ -3,7 +3,7 @@ _reponame=ChronoSync
 _pkgname=ndn-chronosync
 pkgname=${_pkgname}-git
 pkgver=0.5.3.r9.g5f408ae
-pkgrel=8
+pkgrel=9
 # epoch=
 pkgdesc="Synchronization library for distributed realtime applications for NDN"
 arch=('i686' 'x86_64')
@@ -52,5 +52,5 @@ package() {
 
 	cd "${srcdir}/${_reponame}"
 	./waf install --destdir="${pkgdir}"
-  cp -r "${srcdir}/${_reponame}-${pkgver}/build/docs/"* "${pkgdir}/usr/share/doc/$_pkgname"
+  cp -r "${srcdir}/${_reponame}/build/docs/"* "${pkgdir}/usr/share/doc/$_pkgname"
 }
