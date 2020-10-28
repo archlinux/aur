@@ -3,13 +3,14 @@
 # Contributor: pavanjadhaw <pavanjadhaw96@gmail.com>
 _pkgname=multilockscreen
 pkgname=${_pkgname}-git
-pkgver=r150.1740f94
+pkgver=r151.4cfccbd
 pkgrel=1
 pkgdesc="A simple lock script for i3lock-color"
 arch=('any')
 url="https://github.com/jeffmhubbard/${_pkgname}"
 license=('MIT')
-depends=('i3lock-color' 'imagemagick' 'xorg-xrandr' 'xorg-xdpyinfo' 'bc' 'feh')
+depends=('i3lock-color' 'imagemagick' 'xorg-xrandr' 'xorg-xdpyinfo' 'bc')
+optdepends=('feh: set desktop background to match')
 makedepends=('git')
 conflicts=('multilockscreen')
 source=("${_pkgname}::git+${url}.git#branch=multi-monitor")
