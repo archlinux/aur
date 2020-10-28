@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=faktory-bin
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="High-performance job processing for the polyglot enterprise"
 arch=("x86_64")
@@ -10,7 +10,7 @@ depends=("redis")
 provides=("faktory")
 conflicts=("faktory" "faktory-git")
 source=("$pkgname-$pkgver.deb::$url/releases/download/v$pkgver-1/faktory_$pkgver-1_amd64.deb")
-sha256sums=("64384f0069b04e11b996cd545aad426b14e2affcd0e7b0e446b228b71c9d1410")
+sha256sums=("4f32cad05b8499a8082f619b01c8954f34c06193126ac68d4c24fd869d049953")
 
 prepare() {
   bsdtar xf data.tar.gz
