@@ -4,11 +4,11 @@
 # Repository for PR: https://gitlab.com/phnx47-aur/ledger-live-bin
 
 pkgname=ledger-live-bin
-pkgdesc='Ledger Hardware Wallet management software'
+pkgdesc='Ledger Live - Desktop'
 pkgbin=ledger-live-desktop
 license=('MIT')
 url='https://github.com/LedgerHQ/ledger-live-desktop'
-pkgver=2.14.0
+pkgver=2.15.0
 pkgrel=1
 arch=('x86_64')
 package="ledger-live-desktop-${pkgver}-linux-${arch}.AppImage"
@@ -18,7 +18,7 @@ source=(
   "${package}::${url}/releases/download/v${pkgver}/${package}"
   "LICENSE"
 )
-sha512sums=('2b0a24cdbc4c8a3b62f27ea5909caa1d8a8c10b39ab686e9042804d48f701c3fa0ac65dcba29266af6b02a75811c9cec32344f95f079c203413e63f715b4e81f'
+sha512sums=('6511d3c6553e11e38d56d9391ee9ac30ba6c1ad5996e59e3b1be37c894576e3457659258a6cdcf09193e2efc93fe3df9b2bb80a14adc9d8e6891fb8240a16074'
             '0e76943ab7d3849ee569a30a46dec494658b8de9937965a81d043ad957116bf9c8bdb9bb9aee20e2f00fb15b736df90bbe6144dc2088a968ced2cc7b8e2de07f')
 
 
