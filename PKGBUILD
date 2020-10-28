@@ -32,9 +32,6 @@ package() {
   install -D -m 644 debian/python3-validity.service \
     $pkgdir/usr/lib/systemd/system/python3-validity.service
 
-  install -D -m 644 debian/python3-validity-suspend-restart.service \
-    $pkgdir/usr/lib/systemd/system/python3-validity-suspend-restart.service
-
   install -D -m 644 debian/python3-validity.udev \
     $pkgdir/usr/lib/udev/rules.d/60-python-validity.rules
 }
