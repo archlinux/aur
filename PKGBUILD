@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fotoxx
-pkgver=20.18
-pkgrel=2
+pkgver=20.19
+pkgrel=1
 pkgdesc="A program for improving image files made with a digital camera, stable version"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
 arch=('i686' 'x86_64')
@@ -12,12 +12,13 @@ optdepends=('rawtherapee: for raw image processing'
 	    'dvd+rw-tools: for burning CDs,DVDs or BlueRays'
 	    'hugin: for panorama photos')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha512sums=('eba34107757fe1ff607c7fd88fd87e1f35cef80c7b63c4ea0206ee07f41ef5435b9e664967ef9b456fdb15bfef46b0ded5cc63f7acfb5586eaddda1637518c91')
+sha512sums=('5fba0738ae352549a7fdc707613eb94a0cc3dfe205b98f704c429f8b64ed994426024e51ea33a2887910538843e28d81918ff2713b5a0211ac027203f000a642')
 
 prepare() {
   cd $pkgname
-  sed -i 's+libchamplain+champlain+g' Makefile
+  #sed -i 's+libchamplain+champlain+g' Makefile
   chmod o+r images/color-mode.jpg
+  sed -i '125s+^+# +' Makefile
 }
 
 build() {
@@ -27,7 +28,7 @@ build() {
 
 package() {
   cd $pkgname
-  make DESTDIR="$pkgdir" PREFIX=/usr ICONDIR=/usr/share/pixmaps install 
+  make DESTDIR="$pkgdir" PREFIX=/usr ICONDIR=/usr/share/pixmaps  install 
   rm -r "$pkgdir"/usr/share/appdata
   sed -i 's+/usr/share/fotoxx/icons/++' "$pkgdir"/usr/share/applications/$pkgname.desktop
   sed -i 's+Icon=fotoxx.png+Icon=fotoxx+' "$pkgdir"/usr/share/applications/$pkgname.desktop
