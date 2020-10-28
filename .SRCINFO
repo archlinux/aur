@@ -1,6 +1,6 @@
 pkgbase = m64p
 	pkgdesc = Mupen64Plus with custom plugins and Qt5 GUI
-	pkgver = 20201020
+	pkgver = 20201027
 	pkgrel = 1
 	url = https://m64p.github.io/
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = m64p
 	makedepends = git
 	makedepends = cmake
 	makedepends = nasm
+	makedepends = zip
 	makedepends = icoutils
 	depends = freetype2
 	depends = hidapi
@@ -27,7 +28,7 @@ pkgbase = m64p
 	conflicts = mupen64plus-gui
 	conflicts = mupen64plus-video-gliden64
 	conflicts = mupen64plus
-	source = git+https://github.com/loganmc10/m64p.git#commit=2aa2588a91d5ca97d6fa97dbdffa05bcd88583f6
+	source = git+https://github.com/loganmc10/m64p.git#commit=1367455caf8423c03785254df60cf294144bc47c
 	source = 010-m64p-remove-build-jobs-limitation.patch
 	source = 020-m64p-enable-optimizations.patch
 	source = 030-m64p-fix-default-config-paths.patch
@@ -36,8 +37,8 @@ pkgbase = m64p
 	sha256sums = SKIP
 	sha256sums = 28c95005fbfa3b30bcee412070c5fc13f74a2b6f52526a9ad733778de3aaec04
 	sha256sums = d3834a29ccf06be9ad1c0a3039efb4ed69d81f61e814d1578a6bd19474aa11c3
-	sha256sums = c3f932cfe90909bd2f69a352add4acdd4d67d1fb73559d651de3cec3acdc3737
-	sha256sums = 06915a74819512b423ce9c8b3717ce4132836d3b691500f0298810b92ba7ac2c
+	sha256sums = 5f2e645cf807e42b41da98576e16562289b5abb2b933b0ea27c2aa48e8d177e2
+	sha256sums = 132130e28c303647d61e3c52420d14c0c8f04115b1b0937e67bcd07d078a19f4
 	sha256sums = 8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808
 
 pkgname = m64p

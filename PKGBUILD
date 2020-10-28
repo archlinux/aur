@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p
-pkgver=20201020
+pkgver=20201027
 pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI'
 arch=('x86_64')
@@ -10,10 +10,10 @@ license=('GPL3')
 depends=('freetype2' 'hidapi' 'libgl' 'libpng' 'libsamplerate' 'minizip'
          'qt5-base' 'qt5-websockets' 'sdl2' 'sdl2_net' 'zlib' 'hicolor-icon-theme')
 optdepends=('p7zip: for 7z/zip support')
-makedepends=('git' 'cmake' 'nasm' 'icoutils')
+makedepends=('git' 'cmake' 'nasm' 'zip' 'icoutils')
 provides=('mupen64plus-gui' 'mupen64plus-video-gliden64')
 conflicts=('mupen64plus-gui' 'mupen64plus-video-gliden64' 'mupen64plus')
-_commit=2aa2588a91d5ca97d6fa97dbdffa05bcd88583f6
+_commit=1367455caf8423c03785254df60cf294144bc47c
 source=("git+https://github.com/loganmc10/m64p.git#commit=${_commit}"
         '010-m64p-remove-build-jobs-limitation.patch'
         '020-m64p-enable-optimizations.patch'
@@ -23,8 +23,8 @@ source=("git+https://github.com/loganmc10/m64p.git#commit=${_commit}"
 sha256sums=('SKIP'
             '28c95005fbfa3b30bcee412070c5fc13f74a2b6f52526a9ad733778de3aaec04'
             'd3834a29ccf06be9ad1c0a3039efb4ed69d81f61e814d1578a6bd19474aa11c3'
-            'c3f932cfe90909bd2f69a352add4acdd4d67d1fb73559d651de3cec3acdc3737'
-            '06915a74819512b423ce9c8b3717ce4132836d3b691500f0298810b92ba7ac2c'
+            '5f2e645cf807e42b41da98576e16562289b5abb2b933b0ea27c2aa48e8d177e2'
+            '132130e28c303647d61e3c52420d14c0c8f04115b1b0937e67bcd07d078a19f4'
             '8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808')
 
 prepare() {
@@ -48,7 +48,7 @@ package() {
     install -D -m644 m64p.desktop -t "${pkgdir}/usr/share/applications"
     while read -r -d '' _file
     do
-        _res="$(printf '%s' "$_file" | sed 's/\.png$//;s/^.*_//;s/x.*$//')"
+        _res="$(sed 's/\.png$//;s/^.*_//;s/x.*$//' <<< "$_file")"
         install -D -m644 "$_file" "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/mupen64plus.png"
     done < <(find m64p/mupen64plus-gui -maxdepth 1 -type f -name 'mupen64plus_*_*x*x*.png' -print0)
     
