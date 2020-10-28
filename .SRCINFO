@@ -1,0 +1,15 @@
+pkgbase = playlist-sync
+	pkgdesc = Tool to sync playlists between music folders.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://gitlab.com/999eagle/playlist-sync
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	depends = python
+	depends = python-m3u8
+	source = https://gitlab.com/999eagle/playlist-sync/-/archive/v0.1.0/playlist-sync-v0.1.0.tar.gz
+	sha256sums = 9bbb19561eef3a4e978b6238605f29ea33062073bc449f78d1a6f028bcf196ad
+
+pkgname = playlist-sync
+
