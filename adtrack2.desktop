@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Adtrack2
+Comment=OPL3 music tracker
+Exec=adtrack2
+Icon=adtrack2
+Terminal=false
+StartupNotify=false
+Categories=Application;Multimedia;
