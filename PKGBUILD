@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-imageformats
-_qtver=6.0.0-beta1
+_qtver=6.0.0-beta2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
