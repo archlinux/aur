@@ -1,6 +1,6 @@
 pkgbase = r-quantreg
 	pkgdesc = Quantile Regression
-	pkgver = 5.74
+	pkgver = 5.75
 	pkgrel = 1
 	url = https://cran.r-project.org/package=quantreg
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = r-quantreg
 	optdepends = r-formula
 	optdepends = r-zoo
 	optdepends = r-r.rsp
-	source = https://cran.r-project.org/src/contrib/quantreg_5.74.tar.gz
-	sha256sums = aac684387f5f5317e61f9640305a8b767ddcf7370eb715c4d1cacc218edaa74d
+	source = https://cran.r-project.org/src/contrib/quantreg_5.75.tar.gz
+	sha256sums = 6577aa52ac7bfab0add4a4b3b036bce910383135a39e2fde6bba40c52b0eab16
 
 pkgname = r-quantreg
 
