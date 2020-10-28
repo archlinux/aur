@@ -1,33 +1,26 @@
 pkgbase = perl-catalyst-devel
 	pkgdesc = Catalyst Development Tools
-	pkgver = 1.39
+	pkgver = 1.42
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Catalyst-Devel
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	makedepends = perl-test-fatal>=0.003
-	depends = perl-catalyst-action-renderview>=0.10
-	depends = perl-catalyst-plugin-configloader>=0.30
-	depends = perl-catalyst-plugin-static-simple>=0.28
-	depends = perl-catalyst-runtime
-	depends = perl-config-general>=2.42
-	depends = perl-file-changenotify>=0.07
+	checkdepends = perl-perlio-utf8-strict
+	makedepends = perl-test-fatal
+	makedepends = perl-file-sharedir-install
+	depends = perl-module-install
+	depends = perl-catalyst-action-renderview
+	depends = perl-catalyst-plugin-configloader
+	depends = perl-catalyst-plugin-static-simple
+	depends = perl-config-general
+	depends = perl-file-changenotify
 	depends = perl-file-copy-recursive
-	depends = perl-file-sharedir
-	depends = perl-module-install>=1.02
-	depends = perl-moose
-	depends = perl-moosex-daemonize
-	depends = perl-moosex-emulate-class-accessor-fast
-	depends = perl-namespace-autoclean
-	depends = perl-namespace-clean
-	depends = perl-path-class>=0.09
-	depends = perl-starman
 	depends = perl-template-toolkit
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/I/IL/ILMARI/Catalyst-Devel-1.39.tar.gz
-	md5sums = d4cd43379ffc981e43a5e440adcadd04
-	sha512sums = 3f13ba85cab764b869953915bf1846e4cc2919aacc4038fdb9b90543e5ea77ee8edd8d88ef4f063af2c3089a275b16f37daa2d72d7d4454958cb34c16113d90d
+	source = https://cpan.metacpan.org/authors/id/H/HA/HAARG/Catalyst-Devel-1.42.tar.gz
+	md5sums = 4c51b2c27c23942551b74a4db5fdc4d3
+	sha512sums = 246786d5d6f83a51b474bd095571d648a25d5482b5af15f0062622aa3f3052b7ac0be5f67916772efdf85d56deedc4a3b96b7e504f9b6565a52f963a54c6e2d4
 
 pkgname = perl-catalyst-devel
 

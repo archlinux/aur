@@ -1,18 +1,20 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: xRemaLx <anton.komolov@gmail.com>
 
 pkgname='perl-catalyst-devel'
-pkgver='1.39'
+pkgver='1.42'
 pkgrel='1'
 pkgdesc="Catalyst Development Tools"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-catalyst-action-renderview>=0.10' 'perl-catalyst-plugin-configloader>=0.30' 'perl-catalyst-plugin-static-simple>=0.28' 'perl-catalyst-runtime' 'perl-config-general>=2.42' 'perl-file-changenotify>=0.07' 'perl-file-copy-recursive' 'perl-file-sharedir' 'perl-module-install>=1.02' 'perl-moose' 'perl-moosex-daemonize' 'perl-moosex-emulate-class-accessor-fast' 'perl-namespace-autoclean' 'perl-namespace-clean' 'perl-path-class>=0.09' 'perl-starman' 'perl-template-toolkit')
-makedepends=('perl-test-fatal>=0.003')
+depends=('perl-module-install' 'perl-catalyst-action-renderview' 'perl-catalyst-plugin-configloader' 'perl-catalyst-plugin-static-simple' 'perl-config-general' 'perl-file-changenotify' 'perl-file-copy-recursive' 'perl-template-toolkit')
+makedepends=('perl-test-fatal' 'perl-file-sharedir-install')
+checkdepends=('perl-perlio-utf8-strict')
 url='http://search.cpan.org/dist/Catalyst-Devel'
-source=("http://search.cpan.org/CPAN/authors/id/I/IL/ILMARI/Catalyst-Devel-${pkgver}.tar.gz")
-md5sums=('d4cd43379ffc981e43a5e440adcadd04')
-sha512sums=('3f13ba85cab764b869953915bf1846e4cc2919aacc4038fdb9b90543e5ea77ee8edd8d88ef4f063af2c3089a275b16f37daa2d72d7d4454958cb34c16113d90d')
+source=("https://cpan.metacpan.org/authors/id/H/HA/HAARG/Catalyst-Devel-${pkgver}.tar.gz")
+md5sums=('4c51b2c27c23942551b74a4db5fdc4d3')
+sha512sums=('246786d5d6f83a51b474bd095571d648a25d5482b5af15f0062622aa3f3052b7ac0be5f67916772efdf85d56deedc4a3b96b7e504f9b6565a52f963a54c6e2d4')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,9 +41,3 @@ package() {
   make install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
