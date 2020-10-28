@@ -2,12 +2,12 @@
 
 pkgname=onednn-git
 pkgver=2.0_beta09.r663.gd58524e69
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source performance library for deep learning applications"
 arch=('i686' 'x86_64')
 url="https://01.org/oneDNN"
 license=('apache')
-depends=('glibc')
+depends=('gcc-libs')
 makedepends=('git' 'cmake' 'doxygen')
 provides=('onednn')
 conflicts=('onednn')
