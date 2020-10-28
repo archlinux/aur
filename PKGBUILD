@@ -4,7 +4,7 @@
 # Repository for PR: https://gitlab.com/phnx47-aur/ledger-live
 
 pkgname=ledger-live
-pkgver=2.14.0
+pkgver=2.15.0
 pkgrel=2
 pkgdesc="Ledger Live - Desktop"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=(yarn python nodejs-lts-erbium)
 
 source=("https://github.com/LedgerHQ/ledger-live-desktop/archive/v${pkgver}.tar.gz"
         "ledger-live.desktop")
-sha512sums=('b23f560036c798d95c6ca305155dbbbdfe08ac5ee3cd136d51bc29e2e363babbd64a971e37ea77d459c3f4dde3d3fee08438f3ea5b53196bf05c8028ac287a93'
+sha512sums=('9270380ef9d078fe1f7ad03d4e4e8b843c8ccf27ea35d21c61789c5649fd60927d7385ffd04d3c151e75adf28fb503ac962cd61a2b423d24413780d735f41db6'
             'bfdf0295b7225380c78ef1a3e1351529bd5ee0cecc17b1591ef20bd144d38e3c4aba0a4115c97131517c109698cf8d6db55c0744c7c6f194e8c61a0576c64fab')
 # TODO sign with ledger pgp
 validpgpkeys=()
