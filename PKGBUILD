@@ -19,6 +19,7 @@ source=(
 md5sums=(
     'SKIP'
 )
+options=(!strip)
 
 package() {
     mkdir -p "${pkgdir}/opt/${pkgname}/"
