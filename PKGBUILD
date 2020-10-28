@@ -7,7 +7,7 @@
 _pkgname=teamspeak3
 pkgname=$_pkgname-wbundled
 pkgver=3.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="TeamSpeak is software for quality voice communication via the Internet"
 url="http://www.teamspeak.com"
 license=('custom')
@@ -46,8 +46,8 @@ prepare() {
       sqldrivers \
       ts3client_runscript.sh
 
-  # Fix libquazip.so name
-  patchelf --replace-needed libquazip.so libquazip5.so ts3client_linux_amd64
+  # Fix libquazip1-qt5.so name
+  patchelf --replace-needed libquazip.so libquazip1-qt5.so ts3client_linux_amd64
 
   # Fix permissions
   find -type d | xargs chmod 755
