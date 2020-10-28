@@ -1,0 +1,14 @@
+% layout 'qt6-module', git_commit => '9d2f8c3f0825f8114a2a916dd8e305f9848d2653';
+\
+_qtver=6.0.0-beta2
+pkgver=${_qtver/-/}
+pkgrel=1
+arch=(x86_64)
+url='https://www.qt.io'
+license=(GPL3 LGPL3 FDL custom)
+#pkgdesc='Plugins for additional image formats: TIFF, MNG, TGA, WBMP'
+#depends=(qt6-base jasper libmng libwebp)
+# FIXME: It doesn't actually build with MNG support at this point.
+pkgdesc='Plugins for additional image formats: TIFF, TGA, WBMP'
+depends=(qt6-base jasper libwebp)
+makedepends=(cmake ninja git)
