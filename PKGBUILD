@@ -1,8 +1,8 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 # pkg: git
 pkgname=transmission-trackers-git
-pkgver=r21.10849a0
-pkgrel=2
+pkgver=r23.3a74746
+pkgrel=1
 pkgdesc="Automatically add trackers from a list to all torrents in Transmission"
 arch=('any')
 url="https://github.com/blind-oracle/transmission-trackers"
