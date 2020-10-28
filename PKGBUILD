@@ -1,7 +1,8 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
-_pkgname=avalon_framework
+
 pkgname=python-avalon_framework
-pkgver=1.5.3
+_pkgname=avalon_framework
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Avalon Framework is a library that can make python printing in Linux much easier."
 arch=('any')
@@ -9,19 +10,13 @@ url="https://github.com/K4YT3X/AVALON"
 license=('LGPLv3')
 depends=('python')
 makedepends=('python')
-source=("https://github.com/K4YT3X/AVALON/archive/${pkgver}.tar.gz")
-sha256sums=('dcb6c04e6c9aae642270886cd75b6166d037d67477eed8fb1478075dc9663b69')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('8648849cea09de4823f8432113c5c2d05d1e0f4ad99b67cbaf9a3f2ba3de41ae')
 
 _pyver=$(pacman -Q python | cut -f 2 -d " " |cut -d "." -f 1,2)
 
-build() {
-  cd "$_pkgname-$pkgver"
-  python -m compileall .
-}
-
 package() {
-  cd "$_pkgname-$pkgver"
-  install -Dm644 "__init__.py" "${pkgdir}/usr/lib/python${_pyver}/avalon_framework/__init__.py"
-  cp -ra "__pycache__" "${pkgdir}/usr/lib/python${_pyver}/avalon_framework"
+  cd ${_pkgname}-${pkgver}
+  python setup.py install -O1 --root="${pkgdir}" --prefix=/usr
 }
 
