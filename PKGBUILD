@@ -2,8 +2,8 @@
 
 pkgname=ipe
 _dirver=7.2
-pkgver=7.2.20
-pkgrel=3
+pkgver=7.2.21
+pkgrel=1
 pkgdesc="The extensible drawing editor"
 url="http://ipe.otfried.org/"
 depends=('lua53' 'qt5-base' 'qt5-svg' 'freetype2' 'zlib' 'poppler' 'hicolor-icon-theme' 'gsl')
@@ -61,7 +61,7 @@ package() {
 }
 
 # vim: ft=sh syn=sh et ts=2 sw=2
-md5sums=('79b42c8f64d936e5c2857518662f40cc'
+md5sums=('d7dba3e01e8601c2bdcc71311cf99ffb'
          '694f0d5402655901be385647e5d8d6e3'
          'd4e289bce01302a8b76a0df294c7de40'
          '19fd2cac2564125afa0149105d00d3dd')
