@@ -1,4 +1,4 @@
-# Maintainer: Mario O.M. <marioortizmanero@gmail.com>
+# Maintainer: Mario Ortiz Manero <marioortizmanero@gmail.com>
 pkgname=python-readchar
 pkgver=2.0.0
 pkgrel=1
