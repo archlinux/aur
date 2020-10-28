@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=qt6-5compat
-_qtver=6.0.0-beta1
+_qtver=6.0.0-beta2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -16,7 +16,7 @@ makedepends=(cmake ninja)
 groups=(qt6)
 _pkgfqn="${pkgname/6-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('c9c8266ba512c9819a080edfc7a17374c249c92d14734ee3581923b8c6c3a13a')
+sha256sums=('9626aa2a8752e4fd1e75e1a35583f6209ea451174e501205d6ccb4f8c63b51fc')
 
 build() {
   cmake -G Ninja -B build -S $_pkgfqn
