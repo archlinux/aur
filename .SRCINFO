@@ -1,6 +1,6 @@
 pkgbase = gnome-flashback-compiz
 	pkgdesc = GNOME Flashback session (with compiz support)
-	pkgver = 3.36.5
+	pkgver = 3.38.0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GnomeFlashback
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = gnome-flashback-compiz
 	optdepends = network-manager-applet: Network management
 	provides = gnome-flashback
 	conflicts = gnome-flashback
-	source = git+https://gitlab.gnome.org/GNOME/gnome-flashback.git#commit=cf8d922e11b5fa3683482d0b16971a2ea70f2591
+	source = git+https://gitlab.gnome.org/GNOME/gnome-flashback.git#commit=9dd97c98166b65b6dcf67b40da303b3506bd38f7
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	source = gnome-flashback.pam
 	sha256sums = SKIP

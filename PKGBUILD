@@ -2,7 +2,7 @@
 
 pkgname=gnome-flashback-compiz
 _pkgname=${pkgname%-compiz}
-pkgver=3.36.5
+pkgver=3.38.0
 pkgrel=1
 pkgdesc="GNOME Flashback session (with compiz support)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('autoconf-archive' 'git' 'intltool' 'python')
 optdepends=('gnome-backgrounds: Default background'
             'gnome-control-center: System settings'
             'network-manager-applet: Network management')
-_commit=cf8d922e11b5fa3683482d0b16971a2ea70f2591  # tags/3.36.5^0
+_commit=9dd97c98166b65b6dcf67b40da303b3506bd38f7  # tags/3.38.0^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-flashback.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
         gnome-flashback.pam)
