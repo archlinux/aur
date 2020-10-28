@@ -19,7 +19,7 @@ source=(https://downloads.sourceforge.net/project/dejavu/dejavu/${pkgver}/dejavu
         cleaner.py)
 sha256sums=('fa9ca4d13871dd122f61258a80d01751d603b4d3ee14095d65453b4e846e17d7'
             '21d85a4f6ea7856074a4eb5c5fce6a10e764d11ff4336e92c4f009815efebb0c'
-            'SKIP'
+            '4822fed8b857ca26490fe13ab504904a1da59ed18f34ed25cc27fcace0fdf88b'
             '67056b33de2550ecbb93d269eacd08d508f47892d5fc582d8bd0c211d5787b78')
 
 prepare() {
