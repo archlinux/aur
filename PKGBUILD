@@ -2,7 +2,7 @@
 
 pkgname=evolution-etesync-git
 _pkgname=evolution-etesync
-pkgver=0.6.0.r173.f94f7ff
+pkgver=0.6.0.r176.91de4e3
 pkgrel=1
 pkgdesc="EteSync (end-to-end encrypted sync) plugin for Evolution"
 arch=(x86_64)

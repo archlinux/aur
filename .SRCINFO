@@ -1,6 +1,6 @@
 pkgbase = evolution-etesync-git
 	pkgdesc = EteSync (end-to-end encrypted sync) plugin for Evolution
-	pkgver = 0.6.0.r173.f94f7ff
+	pkgver = 0.6.0.r176.91de4e3
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/evolution-etesync/
 	arch = x86_64
