@@ -2,10 +2,10 @@
 
 name=meshroom
 #fragment="#commit=9bd70ed8ace83c6dde174178e17c5147bb50248f"
-fragment="#tag=v2019.2.0"
+fragment="#tag=v2020.1.1"
 pkgname=${name}
 pkgver=${fragment#\#tag=v}
-pkgrel=2
+pkgrel=1
 pkgdesc="Meshroom is a free, open-source 3D Reconstruction Software based on the AliceVision framework."
 arch=('i686' 'x86_64')
 url="https://alicevision.github.io/"
