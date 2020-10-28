@@ -5,7 +5,7 @@ name=meshroom
 fragment="#tag=v2020.1.1"
 pkgname=${name}
 pkgver=${fragment#\#tag=v}
-pkgrel=1
+pkgrel=2
 pkgdesc="Meshroom is a free, open-source 3D Reconstruction Software based on the AliceVision framework."
 arch=('i686' 'x86_64')
 url="https://alicevision.github.io/"
@@ -29,7 +29,7 @@ prepare() {
   cd "${srcdir}"/${pkgname}
   msg2 "Hardcode camera_database and voctree default value"
   sed -i   "s:'ALICEVISION_VOCTREE', '':'ALICEVISION_VOCTREE', '/usr/share/${pkgname}/vlfeat_K80L3.SIFT.tree':g" meshroom/nodes/aliceVision/*.py
-  sed -i "s:'ALICEVISION_SENSOR_DB', '':'ALICEVISION_SENSOR_DB', '/usr/share/aliceVision/sensor_width_camera_database.txt':g" meshroom/nodes/aliceVision/*.py
+  sed -i "s:'ALICEVISION_SENSOR_DB', '':'ALICEVISION_SENSOR_DB', '/usr/share/aliceVision/cameraSensors.db':g" meshroom/nodes/aliceVision/*.py
   sed -i '1 i\#include <cmath>' "${srcdir}"/QtOIIO/src/jetColorMap.hpp
   sed -i 's|imageformats|plugins/imageformats|' "${srcdir}"/QtOIIO/src/imageIOHandler/CMakeLists.txt
 }
