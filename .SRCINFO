@@ -6,7 +6,7 @@ pkgbase = executor-data
 	arch = any
 	license = GPL
 	source = executor-data-1.tar.gz::https://github.com/victor3dptz/executor-packaging/raw/master/arch/executor.tar.gz
-	sha256sums = 2a80bfe8c0501b8278eca43f3a46761eebea317c04f6a019a980a1995ffaf4d6
+	sha256sums = 34bcb0a41fcdf55d72020bd0446af0b29fbde1ac0de1cf50013b1d885775788b
 
 pkgname = executor-data
 
