@@ -6,6 +6,7 @@ pkgbase = csmith-git
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = git
 	optdepends = perl
 	provides = csmith
 	conflicts = csmith

@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/csmith-project/csmith'
 license=('BSD')
 optdepends=('perl')
+makedepends=('git')
 provides=('csmith')
 conflicts=('csmith')
 source=('git+git://github.com/csmith-project/csmith')
