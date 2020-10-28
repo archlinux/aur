@@ -1,6 +1,6 @@
 # Maintainer: Markus Rippl <markus dot rippl at dlr dot de>
 pkgname="rnxcmp"
-pkgver=4.0.7
+pkgver=4.0.8
 pkgrel=1
 epoch=
 pkgdesc="RNX2CRX and CRX2RNX for compression/restoration of RINEX observation files developed by Y. Hatanaka of GSI"
@@ -21,7 +21,7 @@ install=
 changelog="CHANGES.txt"
 source=("http://terras.gsi.go.jp/ja/crx2rnx/RNXCMP_${pkgver}_src.tar.gz")
 noextract=()
-md5sums=("6597988cc92949b3cff861bc9731ca9e")
+md5sums=("0efa55a89044836a8700ef1502341e51")
 validpgpkeys=()
 
 #prepare() {
