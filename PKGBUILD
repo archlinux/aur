@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=libhandy-git
-pkgver=0.91.0.r1.ge3fb740
+pkgver=1.0.0.r15.ge52a8be
 pkgrel=1
 pkgdesc="Library full of GTK+ widgets for mobile phones"
 url="https://gitlab.gnome.org/GNOME/libhandy"
@@ -9,8 +9,8 @@ license=(LGPL2.1)
 arch=(i686 x86_64 armv7h aarch64)
 depends=(gtk3)
 makedepends=(git glade gobject-introspection meson vala)
-provides=("libhandy=1" libhandy-1.so libhandy1)
-conflicts=("libhandy>=0.80.0" libhandy1)
+provides=(libhandy libhandy-1.so)
+conflicts=(libhandy)
 source=("git+$url.git")
 md5sums=(SKIP)
 
