@@ -1,13 +1,13 @@
 # Author: butaford <butaford@gmail.com>
 pkgname=rcon-git
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Rcon is a command line application that can be used as a Source RCON client. It will send commands to the given server, and print the reply to stdout."
 arch=('i686' 'x86_64')
 url="https://github.com/n0la/rcon"
-license=('BSD' '2-Clause')
+license=('BSD 2-Clause')
 depends=()
-makedepends=('cmake' 'git' 'check' 'libbsd' 'glib2')
+makedepends=('cmake' 'git' 'check' 'libbsd' 'glib2' 'bash-completion')
 source=("git+git://github.com/n0la/rcon.git")
 sha1sums=('SKIP')
 
