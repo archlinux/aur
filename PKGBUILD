@@ -3,18 +3,20 @@
 
 pkgname=spivak
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Karaoke player based on GStreamer and Qt5"
 arch=(x86_64)
 url="https://github.com/gyunaev/spivak"
 license=(GPL3)
 depends=(gst-plugins-base libzip qt5-base uchardet)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/gyunaev/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('e64a5d46ed6cfb5ed0c6fcb46a956155a28dd75b87a5de9394d69ec593aa7859')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/gyunaev/$pkgname/archive/$pkgver.tar.gz" "incomplete_type.patch")
+sha256sums=('e64a5d46ed6cfb5ed0c6fcb46a956155a28dd75b87a5de9394d69ec593aa7859'
+            '2f2365bb82c3a8f026ea7a5f651d48bb14033cc09ff5169cf5fda2178729cea9')
 
 prepare() {
 	cd $pkgname-$pkgver
 	sed -i '/SUBDIRS += languagedetector/d' plugins/plugins.pro
+        patch -p2 -i  $srcdir/incomplete_type.patch
 }
 
 build() {
