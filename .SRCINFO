@@ -1,0 +1,16 @@
+pkgbase = goimports-reviser-git
+	pkgdesc = Right imports sorting & code formatting tool (goimports alternative).
+	pkgver = r102.573c4d8
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/incu6us/goimports-reviser
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = mercurial
+	provides = goimports-reviser
+
+pkgname = goimports-reviser-git
+
