@@ -1,0 +1,15 @@
+post_install() {
+  patch /usr/lib/code/product.json < /usr/lib/code/product_json.patch
+}
+
+pre_upgrade() {
+  patch -R /usr/lib/code/product.json < /usr/lib/code/product_json.patch
+}
+
+post_upgrade() {
+  patch /usr/lib/code/product.json < /usr/lib/code/product_json.patch
+}
+
+pre_remove() {
+  patch -R /usr/lib/code/product.json < /usr/lib/code/product_json.patch
+}

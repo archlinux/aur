@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/lib/code/product.json
+
+[Action]
+Description = Modifying product.json...
+Exec = /usr/bin/bash -c "/usr/bin/patch /usr/lib/code/product.json < /usr/lib/code/product_json.patch"
+When = PostTransaction
