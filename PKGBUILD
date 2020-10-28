@@ -1,37 +1,66 @@
-# Maintainer: Victor Perevozchikov webmaster@victor3d.com.br
 pkgname=executor-git
-pkgver=r1224.a7451c9f
+pkgver=0.1.0.r203.ga7451c9f
 pkgrel=1
-pkgdesc='Old-school Macintosh Emulator'
+pkgdesc="A modern fork of the classic Mac emulator"
 arch=('x86_64')
 url="https://github.com/autc04/executor"
 license=('MIT')
-depends=("qt5-base" "boost" "executor-data")
-makedepends=("cmake" "sdl2" "boost" "git" "ruby" "bison" "perl")
-source=('git+https://github.com/autc04/executor')
-md5sums=('SKIP')
+depends=('qt5-base' 'executor-data')
+makedepends=('git' 'cmake' 'ruby' 'sdl' 'sdl2' 'libxext' 'waylandpp' 'python'
+             'boost' 'perl')
+optdepends=('sdl2: for SDL 2 frontend'
+            'sdl: for SDL 1.2 frontend'
+            'libxext: for X11 frontend'
+            'waylandpp: for Wayland frontend')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://github.com/autc04/executor.git'
+        'git+https://github.com/autc04/PowerCore.git'
+        'git+https://github.com/vector-of-bool/cmrc.git'
+        'git+https://github.com/autc04/cxmon.git'
+        'git+https://github.com/LMDB/lmdb.git'
+        'git+https://github.com/autc04/lmdbxx.git'
+        'git+https://github.com/autc04/multiversal.git'
+        'git+https://github.com/autc04/syn68k.git'
+        'git+https://github.com/google/googletest.git')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
-  cd "$srcdir/executor"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/${pkgname%-git}"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${srcdir}/executor"
-  git submodule init
-  git submodule update
+	cd "$srcdir/${pkgname%-git}"
+	git submodule init
+	git config submodule.PowerCore.url $srcdir/PowerCore
+	git config submodule.cmrc.url $srcdir/cmrc
+	git config submodule.cxmon.url $srcdir/cxmon
+	git config submodule.lmdb.url $srcdir/lmdb
+	git config submodule.lmdbxx.url $srcdir/lmdbxx
+	git config submodule.multiversal.url $srcdir/multiversal
+	git config submodule.syn68k.url $srcdir/syn68k
+	git config submodule.tests/googletest.url $srcdir/googletest
+	git submodule update
 }
 
 build() {
-        cd "${srcdir}/executor"
-        mkdir build
-        cd build
-        cmake ..
-        cmake --build .
+	cmake -B build -S "${pkgname%-git}" \
+		-Wno-dev
+	make -C build
 }
 
 package() {
-  install -Dm755 "${srcdir}/executor/build/executor" "${pkgdir}/usr/bin/executor"
-  install -Dm755 "${srcdir}/executor/build/executor-x" "${pkgdir}/usr/bin/executor-x"
-  install -Dm755 "${srcdir}/executor/build/executor-sdl2" "${pkgdir}/usr/bin/executor-sdl2"
+	cd "$srcdir/${pkgname%-git}"
+	install -Dm755 $srcdir/build/{${pkgname%-git},${pkgname%-git}{-sdl,-sdl2,-wayland,-x}} -t \
+		"$pkgdir/usr/bin"
+	install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }
