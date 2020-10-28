@@ -1,0 +1,33 @@
+diff -ruN a/Makefile b/Makefile
+--- a/Makefile	2020-09-14 15:46:17.000000000 +0200
++++ b/Makefile	2020-10-28 16:14:38.476052535 +0100
+@@ -157,7 +157,7 @@
+ 		-x ${SHELLFILES}
+ 
+ bin/pinns:
+-	$(MAKE) -C pinns
++	$(MAKE) -C pinns LDFLAGS=$(LDFLAGS)
+ 
+ test/copyimg/copyimg: $(GO_FILES) .gopathok
+ 	$(GO_BUILD) $(GCFLAGS) $(GO_LDFLAGS) -tags "$(BUILDTAGS)" -o $@ $(PROJECT)/test/copyimg
+diff -ruN a/pinns/Makefile b/pinns/Makefile
+--- a/pinns/Makefile	2020-09-14 15:46:17.000000000 +0200
++++ b/pinns/Makefile	2020-10-28 16:24:25.212722369 +0100
+@@ -1,15 +1,15 @@
+ src = $(wildcard src/*.c)
+ obj = $(src:.c=.o)
+ 
++LDFLAGS ?=
+ STRIP ?= strip
+ override LIBS +=
+ CFLAGS ?= -std=c99 -Os -Wall -Werror -Wextra
+-override CFLAGS += -static
+ 
+ all: ../bin/pinns
+ 
+ ../bin/pinns: $(obj) | ../bin
+-	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
++	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS) $(LIBS)
+ 	$(STRIP) -s $@
+ 
+ %.o: %.c $(HEADERS)

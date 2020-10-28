@@ -1,58 +1,58 @@
-# Maintainer: Tony Lambiris <tony@libpcap.net>
+# Maintainer: David Runge <dvzrv@archlinux.org>
+# Contributor: Tony Lambiris <tony@libpcap.net>
 
 pkgname=cri-o
-pkgver=1.17.0
+pkgver=1.19.0
 pkgrel=1
-pkgdesc='Open Container Initiative-based implementation of Kubernetes Container Runtime Interface'
-arch=(x86_64)
-url='https://github.com/cri-o/cri-o'
-license=(Apache)
-makedepends=(go go-md2man ostree)
+pkgdesc="Open Container Initiative-based implementation of Kubernetes Container Runtime Interface"
+arch=('x86_64')
+url="https://github.com/cri-o/cri-o"
+license=('Apache')
+depends=('glibc')
+makedepends=('gpgme' 'go' 'go-md2man' 'libseccomp' 'ostree')
+optdepends=('cni-plugins: for CNI networking'
+            'conmon: for per-container monitoring')
 backup=('etc/crio/crio.conf')
-source=("git+https://github.com/cri-o/cri-o")
-sha256sums=('SKIP')
+# configuration override and hook directories should exist
+options=('emptydirs')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
+        "${pkgname}-1.19.0-pinns_pie.patch")
+sha512sums=('15b506d755be735d7b71e503b02b309693e3090be41f5790bd34cec460238eab56829239caf18849f3656cf8c12f77a10bbb3ae4ad81eb4e18858946e454583d'
+            '1eb382a0a5c273a6ed1df9666ff2b7a83cdb513818f85ca9984da254aecf518580c1b13410715eb73fd1bc7d687a4fd6ef5ae30eb11a1046e422157f117aeb1a')
+b2sums=('8288985392a08fb7fdc58f509d34f8814bf9670386b7aae42be349765cb1f3bd3f4b77077e9c282a4a25b0f99b8a8fc335c6a53053bd2575b3e23c225483a1d3'
+        '8d77c8060f483c943bd48d9bc2c1d676878e570b29989b7ff733906612b6dff09ed1ffcabc5174175ebc667df897e37e98a8132016bddcb27137661fca2da6dd')
 
 prepare() {
-	cd "$srcdir/$pkgname"
-
-	git checkout "v$pkgver"
-	install -m755 -d "$srcdir/go/src/github.com/cri-o"
-
-	ln -sf "$srcdir/$pkgname" "$srcdir/go/src/github.com/cri-o/cri-o"
+  cd "${pkgname}-${pkgver}"
+  # make sure that /usr/bin is used in systemd units
+  sed -e 's|/usr/local|/usr|g' \
+      -i contrib/systemd/*.service
+  # do not statically link pinns and enable PIE
+  patch -Np1 -i "../${pkgname}-1.19.0-pinns_pie.patch"
 }
 
 build() {
-	cd "$srcdir/go/src/github.com/cri-o/cri-o"
+  cd "${pkgname}-${pkgver}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-	sed -i 's/$(GO) build -i/$(GO) build/' Makefile
-	#sed -i 's#../bin/conmon: config.h $(obj) | ../bin#../bin/conmon: $(obj) | config.h ../bin#' conmon/Makefile
-
-
-	export GOPATH="${srcdir}/go" PATH="${srcdir}/go/bin:${PATH}"
-
-	#make install.tools
-	make
-
-	./bin/crio --selinux=true \
-		--storage-driver=overlay \
-		--conmon /usr/libexec/crio/conmon \
-		--cni-plugin-dir /usr/libexec/cni \
-		--cgroup-manager=systemd config > crio.conf
+  make
 }
 
 package() {
-	cd "${srcdir}/go/src/github.com/cri-o/cri-o"
-
-	export GOPATH="${srcdir}/go"
-	make install install.systemd PREFIX="${pkgdir}/usr"
-
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-	# fix-up paths pointing to /usr/local to /usr
-	sed -i --follow-symlinks -re 's|/usr/local|/usr|g' "${pkgdir}/usr/lib/systemd/system/"*.service
-
-	# install configs
-	install -dm755 "${pkgdir}/etc/crio/"
-	install -Dm644 "crio.conf" "${pkgdir}/etc/crio/crio.conf"
-	#install -Dm644 "seccomp.json" "${pkgdir}/etc/crio/seccomp.json"
+  depends+=('libgpgme.so' 'libseccomp.so')
+  cd "${pkgname}-${pkgver}"
+  # makefile is mixing DESTDIR and PREFIX
+  make install install.systemd DESTDIR="${pkgdir}" PREFIX="${pkgdir}/usr"
+  install -vDm 644 {CONTRIBUTING,README,awesome,code-of-conduct,install,transfer,tutorial}.md \
+    -t "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -vDm 644 tutorials/*.md \
+    -t "${pkgdir}/usr/share/doc/${pkgname}/tutorials/"
+  install -vDm 644 contrib/cni/*.{conf,md} \
+    -t "${pkgdir}/usr/share/doc/${pkgname}/examples/cni/"
+  install -vDm 644 contrib/metrics-exporter/{Containerfile,*.{yaml,gif,json,go}} \
+    -t "${pkgdir}/usr/share/doc/${pkgname}/examples/metrics-exporter/"
 }

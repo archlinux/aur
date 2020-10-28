@@ -1,5 +1,4 @@
-src
-pkg
-cri-o
-*pkg.tar.xz
-tags
+*.gz
+*.log
+*.zst
+*/*
