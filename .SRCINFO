@@ -1,0 +1,18 @@
+pkgbase = uki-script
+	pkgdesc = A simple bash script and pacman hook to create unified kernel images.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.github.com/emakman/unified-kernel-image-script
+	arch = any
+	license = CC0
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	depends = binutils
+	depends = sbsigntools
+	depends = sed
+	source = uki-script::git+http://www.github.com/emakman/unified-kernel-image-script
+	md5sums = SKIP
+
+pkgname = uki-script
+
