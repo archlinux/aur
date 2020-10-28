@@ -13,6 +13,7 @@ depends=(
   'steam'
   'dxvk'
 )
+conflicts=(proton-caller-git)
 source=("https://github.com/caverym/"$__pkgname"/archive/${pkgver}.tar.gz")
 sha256sums=('eb2d99c02c75149900c9ede8fee6c2a66f926db896e3807af47693a8de95e784')
 
