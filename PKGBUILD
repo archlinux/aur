@@ -42,7 +42,6 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 backup=('opt/odin2/odin2.conf' 'opt/odin2/Soundbanks/User Patches')
 
-
 prepare() {
     # Checkout the 6.0.1 branch of JUCE, and build Projucer
     cd "${srcdir}/JUCE"
