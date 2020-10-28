@@ -1,7 +1,7 @@
 pkgbase = kct
 	pkgdesc = A Kubernetes Configuration Tool
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kseat/kct
 	arch = any
 	license = MIT
