@@ -1,6 +1,6 @@
 # Maintainer: Florian Märkl <tree-sitter-aur@florianmaerkl.de>
 pkgname=tree-sitter-cli-bin
-pkgver=0.16.8
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="An incremental parsing system for programming tools"
 arch=(x86_64)
@@ -21,7 +21,7 @@ source=("https://github.com/tree-sitter/tree-sitter/releases/download/$pkgver/tr
 		"https://raw.githubusercontent.com/tree-sitter/tree-sitter/$pkgver/LICENSE")
 noextract=(tree-sitter-linux-x64.gz
 		   LICENSE)
-md5sums=('f6dcb99b97621442785528a6c579cfca'
+md5sums=('c92c6a7b27ea3b20b01f3300bfc8f5fc'
          'b83e3e9ab94483903b3bc21d9a1d41ed')
 
 prepare() {
