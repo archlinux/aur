@@ -1,7 +1,7 @@
 # Maintainer: Alex Zose <alexander.zosimidis[at]gmail[dot]com>
 
 pkgname=gophish
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Open-Source Phishing Framework"
 url="https://getgophish.com/"
@@ -11,7 +11,7 @@ depends=('glibc')
 install="gophish.install"
 source=("https://github.com/gophish/gophish/releases/download/v$pkgver/$pkgname-v$pkgver-linux-64bit.zip"
         "gophish.service")
-sha512sums=("854e74ce9052e82680e62d39797da832484896a1dcdeea936df9efa5cf8ff015f9c4e6f98311328b5eac958ac1d8fe76286b9c1fef0c0dc1176563ef69babcde"
+sha512sums=("91ba2f49e3e5e3c528e0e1a7d76e05fcbfaf8383645aaa0f3639e767519f19a27da9f03341f4581a51b02309980976d3a866f2530cbd9a882864c0acd0c6af84"
             "c712c7680f661d399d0613ad2ff5598f2ef6a7f385567b264b55675feee052718da009e0b9dd3c5b5b56f5ba1de0165860eee53eacbdcd939289d34f42e0e147")
 
 package() {
