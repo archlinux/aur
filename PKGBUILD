@@ -21,7 +21,7 @@ pkgver() {
 build() {
   echo "Building ecwolf..."
   export LDFLAGS="-lvorbisfile -lopusfile -lFLAC  -lmodplug -lfluidsynth $LDFLAGS"
-  cmake -B build ecwolf -DGPL=ON 
+  cmake -B build ecwolf -DGPL=ON
   make -C build
 }
 
@@ -40,4 +40,3 @@ package() {
   # license
   install -Dm644 docs/license-id.txt "$pkgdir"/usr/share/licenses/$pkgname/license-id.txt
 }
- 
