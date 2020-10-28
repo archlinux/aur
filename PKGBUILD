@@ -9,16 +9,16 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=86.0.4240.75
-pkgrel=1
+pkgver=86.0.4240.111
+pkgrel=2
 _launcher_ver=6
 _gcc_patchset=6
 _pkgname=$(echo $pkgname | cut -d\- -f1-2)
 _pkgver=$(echo $pkgver | cut -d\. -f1-4)
 # ungoogled chromium variables
-_uc_ver=86.0.4240.80-1
+_uc_ver=$pkgver-1
 _uc_usr=Eloston
-_uc_sum='9bc0946f661942b182b12fdec024b12b337aa895f3c39a321916bafe297e97a1'
+_uc_sum='4364e8b1d68e4a9e0694f09d41c0458b18e5683f043e29015aacb1ceecd3fb4e'
 _uc_url="$_pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz"
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
@@ -48,9 +48,10 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         only-fall-back-to-the-i965-driver-if-we-re-on-iHD.patch
         remove-dead-reloc-in-nonalloc-LD-flags.patch
         check-for-enable-accelerated-video-decode-on-Linux.patch
+        xproto-fix-underflow-in-Fp1616ToDouble.patch
         wayland-egl.patch
         chromium-skia-harmony.patch)
-sha256sums=('dd7a41eda5f984e44474d7e6fb25b5df88c1c924a1a3966189f037f7d325bcb5'
+sha256sums=('f27bdb02ebf3c48abe054c73f1ae57e22a22535ea34f5edf8693ab8432a7c717'
             $_uc_sum
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
@@ -59,6 +60,7 @@ sha256sums=('dd7a41eda5f984e44474d7e6fb25b5df88c1c924a1a3966189f037f7d325bcb5'
             '7514c6c81a64a5457b66494a366fbb39005563eecc48d1a39033dd06aec4e300'
             '7cace84d7494190e7882d3e637820646ec8d64808f0a2128c515bd44991a3790'
             '03d03a39b2afa40083eb8ccb9616a51619f71da92348effc8ee289cbda10128b'
+            '1ec617b362bf97cce4254debd04d8396f17dec0ae1071b52ec8c1c3d86dbd322'
             'bf86923eaee5529ab9fb6148bd6c33a73c8746ab1b4ade0cd3b761109bc55826'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
@@ -106,6 +108,7 @@ prepare() {
   patch -Np1 -i ../only-fall-back-to-the-i965-driver-if-we-re-on-iHD.patch
   #patch -Np1 -i ../remove-dead-reloc-in-nonalloc-LD-flags.patch
   patch -Np1 -i ../check-for-enable-accelerated-video-decode-on-Linux.patch
+  patch -Np1 -i ../xproto-fix-underflow-in-Fp1616ToDouble.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-86-nearby-include.patch
