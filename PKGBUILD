@@ -1,8 +1,8 @@
 # Maintainer: Wenxuan <wenxuangm@gmail.com>
 _pkgname=csview
 pkgname=csview-git
-pkgver=0.3.6.48.gca098b0
-pkgrel=2
+pkgver=0.3.6.rc.0.20201010
+pkgrel=1
 pkgdesc='A high performance csv viewer with cjk/emoji support'
 arch=(i686 x86_64)
 url='https://github.com/wfxr/csview'
@@ -12,11 +12,11 @@ conflicts=("${_pkgname}" "${_pkgname}-bin")
 provides=("${_pkgname}")
 
 source=("${_pkgname}::git+${url}")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${_pkgname}"
-    echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+    echo "$(grep -oPm1 '(?<=^version = ")[^"]+' Cargo.toml).$(TZ=UTC git log -1 --pretty='%cd' --date=short-local | tr -d '-')" | tr '-' '.'
 }
 
 build() {
