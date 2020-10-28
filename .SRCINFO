@@ -1,0 +1,16 @@
+pkgbase = perl-lazy-utils
+	pkgdesc = ORKUN's collection of utility functions Lazy::Util
+	pkgver = 1.22
+	pkgrel = 1
+	url = https://metacpan.org/release/Lazy-Utils
+	arch = any
+	license = GPL3
+	depends = perl
+	depends = perl-json
+	options = !emptydirs
+	options = purge
+	source = https://search.cpan.org/CPAN/authors/id/O/OR/ORKUN/Lazy-Utils-1.22.tar.gz
+	sha256sums = 73aec71fc292a9f606d700192820935bb11177725516e93904652b3a4b78ee91
+
+pkgname = perl-lazy-utils
+
