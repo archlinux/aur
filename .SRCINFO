@@ -1,6 +1,6 @@
 pkgbase = paru-git
 	pkgdesc = AUR helper based on yay
-	pkgver = 0.99.0.r0.g36063ec
+	pkgver = 1.0.0.r0.g387a38f
 	pkgrel = 1
 	url = https://github.com/morganamilo/paru
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = paru-git
 	depends = git
 	depends = pacman
 	optdepends = asp: downloading repo pkgbuilds
+	optdepends = bat: colored pkgbuild printing
 	provides = paru
 	conflicts = paru
 	backup = etc/paru.conf
