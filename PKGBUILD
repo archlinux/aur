@@ -40,8 +40,7 @@ md5sums=('bb04a521a7702c963790666f16013d1c'
 
 prepare() {
   mkdir $srcdir/infinality
-  cd $srcdir
-  cp 30-infinality-aliases.conf $srcdir/infinality
+  cp $srcdir/30-infinality-aliases.conf $srcdir/infinality
   cd $srcdir/infinality
   patch -p1 -i "$srcdir/pdf-aliases.patch"
 }
