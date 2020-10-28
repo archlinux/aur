@@ -2,3 +2,5 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!fonts-meta-extended-lt.install
+!pdf-aliases.patch

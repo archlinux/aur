@@ -1,0 +1,19 @@
+diff -Naur a/30-infinality-aliases.conf b/30-infinality-aliases.conf
+--- a/30-infinality-aliases.conf	2020-10-28 04:37:16.093567568 -0700
++++ b/30-infinality-aliases.conf	2020-10-28 04:39:38.455607387 -0700
+@@ -226,4 +226,15 @@
+       <string>Symbola</string>
+     </edit>
+   </match>
++  <!-- Additional fixes for PDF forms -->
++  <alias binding="same">
++    <family>CourierStd</family>
++    <accept>
++    <family>Courier</family>
++    </accept>
++  </alias>
++  <alias>
++    <family>CourierStd</family>
++    <default><family>monospace</family></default>
++  </alias>
+ </fontconfig>
