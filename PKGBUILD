@@ -30,5 +30,6 @@ build() {
 package() {
   install -Dm644 libretro-pcsx2/dolphin_launcher_libretro.so "${pkgdir}/usr/lib/libretro/pcsx2_launcher_libretro.so"
   install -Dm644 libretro-pcsx2/dolphin_launcher_libretro.info "${pkgdir}/usr/share/libretro/info/pcsx2_launcher_libretro.info"
+  install -D -m644 libretro-pcsx2/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
