@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-rosserial-msgs
 	pkgdesc = ROS - Messages for automatic topic configuration using rosserial.
-	pkgver = 0.8.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://wiki.ros.org/rosserial_msgs
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ros-noetic-rosserial-msgs
 	makedepends = ros-noetic-catkin
 	makedepends = ros-noetic-message-generation
 	depends = ros-noetic-message-runtime
-	source = ros-noetic-rosserial-msgs-0.8.0.tar.gz::https://github.com/ros-drivers/rosserial/archive/0.8.0.tar.gz
-	sha256sums = e96cdeb81e1c03fb1c5ad85a740cb0a1a0836c52a24c6a5d97c975084b49d576
+	source = ros-noetic-rosserial-msgs-0.9.1.tar.gz::https://github.com/ros-drivers/rosserial/archive/0.9.1.tar.gz
+	sha256sums = 0e4dbb4d6e456c354ee04f552cc36b43d053dc3f5a8bbfccff7f8adf3ae48534
 
 pkgname = ros-noetic-rosserial-msgs
 

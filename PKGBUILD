@@ -2,7 +2,7 @@ pkgdesc="ROS - Messages for automatic topic configuration using rosserial."
 url='https://wiki.ros.org/rosserial_msgs'
 
 pkgname='ros-noetic-rosserial-msgs'
-pkgver='0.8.0'
+pkgver='0.9.1'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -28,7 +28,7 @@ depends=(
 
 _dir="rosserial-${pkgver}/rosserial_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/rosserial/archive/${pkgver}.tar.gz")
-sha256sums=('e96cdeb81e1c03fb1c5ad85a740cb0a1a0836c52a24c6a5d97c975084b49d576')
+sha256sums=('0e4dbb4d6e456c354ee04f552cc36b43d053dc3f5a8bbfccff7f8adf3ae48534')
 
 build() {
 	# Use ROS environment variables.
