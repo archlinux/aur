@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster (milk on freenode)
 _pkgname=studio-controls
 pkgname=${_pkgname}-git
-pkgver=2.0.8.r0.g2675e63
+pkgver=2.0.9.r3.g9e9111b
 pkgrel=1
 pkgdesc="An audio setup utility."
 arch=('x86_64')
@@ -43,7 +43,8 @@ check() {
 package() {
 	cd "$srcdir/${_pkgname%}"
   cp -r etc lib usr $pkgdir
-  mv $pkgdir/usr/sbin $pkgdir/usr/bin
+  mv $pkgdir/usr/sbin/studio-system $pkgdir/usr/bin
+  rm -rf $pkgdir/usr/sbin
   mv $pkgdir/lib $pkgdir/usr/lib
 
 }

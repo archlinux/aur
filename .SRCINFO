@@ -1,6 +1,6 @@
 pkgbase = studio-controls-git
 	pkgdesc = An audio setup utility.
-	pkgver = 2.0.8.r0.g2675e63
+	pkgver = 2.0.9.r3.g9e9111b
 	pkgrel = 1
 	url = https://github.com/ovenwerks/studio-controls
 	arch = x86_64
