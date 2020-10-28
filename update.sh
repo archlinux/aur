@@ -1,7 +1,7 @@
 #! /bin/sh
 
 set -e
-name="ODAFileConverter_QT5_lnxX64_7.2dll_21.9.deb"
+name="ODAFileConverter_QT5_lnxX64_7.2dll_21.10.deb"
 dest="/tmp/$name"
 
 wget -N "https://download.opendesign.com/guestfiles/Demo/$name" -P "/tmp/"
