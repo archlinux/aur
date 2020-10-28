@@ -1,7 +1,7 @@
 pkgbase = multilockscreen
 	pkgdesc = A simple lock script for i3lock-color
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jeffmhubbard/multilockscreen
 	install = multilockscreen.install
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = multilockscreen
 	depends = xorg-xrandr
 	depends = xorg-xdpyinfo
 	depends = bc
-	depends = feh
+	optdepends = feh: set desktop background to match
 	conflicts = multilockscreen-git
 	source = https://github.com/jeffmhubbard/multilockscreen/archive/v1.0.0.tar.gz
 	md5sums = f07e0246737c48a2cf373b9f5393dc3b
