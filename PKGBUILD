@@ -28,8 +28,10 @@ source=(
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "swift-package-manager-${_swiftver}.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-${_swiftver}.tar.gz"
     '0001-arch-aur-pachtes.patch'
+    "yams.tar.gz::https://github.com/jpsim/Yams/archive/3.0.1.tar.gz"
 )
 sha256sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -61,6 +63,8 @@ prepare() {
     rm -rf swift swiftpm
     mv swift-swift-${_swiftver} swift
     mv swift-package-manager-swift-${_swiftver} swiftpm
+
+    ln -sfn Yams-3.0.1 yams
 
     ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-pachtes.patch" )
 }
