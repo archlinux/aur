@@ -5,7 +5,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=qt6-base
-_qtver=6.0.0-beta1
+_qtver=6.0.0-beta2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -27,7 +27,7 @@ optdepends=('postgresql-libs: PostgreSQL driver'
 groups=(qt6)
 _pkgfqn="${pkgname/6-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('d23210ba903be38aa43fe7887b8df62a1a310ea053712a30670cc479cf0219a0')
+sha256sums=('1207a5ceb001d164f3cf6646fbd483a055440400c20a315f98f36e23c73f204e')
 
 build() {
   cmake -G Ninja -B build -S $_pkgfqn \
