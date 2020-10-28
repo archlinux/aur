@@ -1,13 +1,13 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=selectdefaultapplication-git
-pkgver=r9.23da033
+pkgver=r14.f7bc6c0
 pkgrel=1
 pkgdesc='A very simple application that lets you define default applications on Linux in a sane way'
 arch=('i686' 'x86_64')
 url='https://github.com/sandsmark/selectdefaultapplication'
 license=('GPL')
-depends=('qt5-base')
+depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=('git')
 source=("git://github.com/sandsmark/selectdefaultapplication.git")
 md5sums=('SKIP')
@@ -27,4 +27,9 @@ package() {
   cd selectdefaultapplication
   install -dm755 ${pkgdir}/usr/bin/
   install -m755 selectdefaultapplication ${pkgdir}/usr/bin/
+
+  install -dm755 ${pkgdir}/usr/share/applications/
+  install -m644 selectdefaultapplication.desktop ${pkgdir}/usr/share/applications/
+  install -dm755 ${pkgdir}/usr/share/icons/hicolor/48x48/apps/
+  install -m644 selectdefaultapplication.png ${pkgdir}/usr/share/icons/hicolor/48x48/apps/
 }
