@@ -19,7 +19,7 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	mkdir -p build && cd build
 	
-	cmake -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr -DCMAKE_BUILD_RPATH_USE_ORIGIN=0 ../
+	cmake -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr ../
 	make -j
 }
 
