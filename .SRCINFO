@@ -1,7 +1,7 @@
 pkgbase = gdm-plymouth-nox
 	pkgdesc = Display manager and login screen with plymouth support, but without xorg-server
 	pkgver = 3.38.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.gnome.org/Projects/GDM
 	arch = x86_64
 	license = GPL
@@ -21,8 +21,8 @@ pkgbase = gdm-plymouth-nox
 	source = 0002-pam-arch-Update-to-match-pambase-20200721.1-2.patch
 	source = default.pa
 	sha256sums = SKIP
-	sha256sums = 5a32db412fc5256e16691e8f2db0b460bafbbb2be8eb9b9bcc71b5cd49688f9e
-	sha256sums = 723bf4462ea4eed4193a891e95137687abfeefe6a170ec5822921bffdfc1f412
+	sha256sums = b9ead66d2b6207335f0bd982a835647536998e7c7c6b5248838e5d53132ca21a
+	sha256sums = d5cd6a401db2aa19374d477817420a39759044393bd420414fdc41881fd93597
 	sha256sums = e88410bcec9e2c7a22a319be0b771d1f8d536863a7fc618b6352a09d61327dcb
 
 pkgname = gdm-plymouth-nox
