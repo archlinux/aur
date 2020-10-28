@@ -1,12 +1,12 @@
 pkgname='kct-git'
 _pkgname='kct'
 pkgver=0.2.0.23.g703878d
-pkgrel=1
+pkgrel=2
 arch=('any')
-url="https://github.com/kseat/kct"
-pkgdesc="A Kubernetes Configuration Tool"
+url='https://github.com/kseat/kct'
+pkgdesc='A Kubernetes Configuration Tool'
 license=('MIT')
-makedepends=('rust' 'cargo')
+makedepends=('git' 'rust' 'cargo')
 provides=('kct')
 conflicts=('kct')
 source=("$_pkgname::git+https://github.com/kseat/kct.git")
@@ -30,5 +30,6 @@ check(){
 package() {
 	cd "$_pkgname"
 
-	install -D -m755 "target/release/kct" "$pkgdir/usr/bin/kct"
+	install -Dm755 'target/release/kct' "$pkgdir/usr/bin/kct"
+	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
