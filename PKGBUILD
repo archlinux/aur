@@ -12,7 +12,7 @@ makedepends=('cmake>=3.9' 'python>=2.7')
 source=("${pkgname}-${pkgver}::https://github.com/jstar-lang/jstar/archive/v${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/jstar-lang/jstar/master/LICENSE")
 
-sha256sums=("23aac1392117e5398de22440bd85846c465ff6a9b813bf4b1bb4c1de0334b214"
+sha256sums=("8bb74f4419b68c43953ce960112c14a81f82b8fe3c1aebd33c668c773b9bd861"
             "SKIP")
 
 build() {
