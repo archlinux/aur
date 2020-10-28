@@ -1,0 +1,12 @@
+pkgbase = aws-es-proxy-bin
+	pkgdesc = aws-es-proxy is a small proxy server for signing your requests using latest AWS Signature Version 4 when connecting to AWS ElasticSearch
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/abutaha/aws-es-proxy
+	arch = x86_64
+	license = MPL2
+	source = aws-es-proxy-1.2::https://github.com/abutaha/aws-es-proxy/releases/download/v1.2/aws-es-proxy-1.2-linux-amd64
+	sha256sums = 6e8723d69cf531c314e3a4bdf2f8fcf9f9f99b27b57c3a053c43b1c6d1a1d061
+
+pkgname = aws-es-proxy-bin
+

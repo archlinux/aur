@@ -1,0 +1,4 @@
+aws-es-proxy-*
+aws-es-proxy-bin-*
+pkg/
+src/
