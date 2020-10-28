@@ -1,0 +1,14 @@
+pkgbase = nwjs-ffmpeg
+	pkgdesc = FFmpeg prebuilt binaries for NW.js
+	pkgver = 0.47.2
+	pkgrel = 1
+	url = https://github.com/iteufel/nwjs-ffmpeg-prebuilt
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = gcc-libs
+	source = nwjs-ffmpeg-0.47.2-linux-x64.zip::https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/0.47.2/0.47.2-linux-x64.zip
+	md5sums = 46c4c919a0a5bd6569f02f0b70434ccb
+
+pkgname = nwjs-ffmpeg
+
