@@ -4,7 +4,7 @@
 # Co-maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=igv
-pkgver=2.8.10
+pkgver=2.8.11
 minor_pkgver=$(<<<$pkgver sed -E 's/^([0-9]+\.[0-9]+)\..*/\1/')
 _pkgver=${pkgver//_/-}   # currently not needed
 pkgrel=1
@@ -21,7 +21,7 @@ source=("https://data.broadinstitute.org/igv/projects/downloads/${minor_pkgver}/
 	"$pkgname.desktop"
 	"igv_hidpi.desktop"
 	"${pkgname}-license-2020.txt::https://raw.githubusercontent.com/igvteam/igv/master/license.txt")
-sha512sums=('bd2419542a1f32ef91feb7433ab9893ccfd3152a70172768b41daff642cf3fdf29d63429783f93e64460c1cfa7a235096e5bc08828f427f324064118a1784f05'
+sha512sums=('0531bf1d183488fe43d02fbda541af9f1f3d394f35ac50c3854d86d29d80002e8930e9a5658efc4545ec3320672ba7423c797524a0ac7a9459f7a4d970e5bbc3'
             #'e71a0dc70c717b3db00268632500b5723b8cddb1ecfbd8ce48b77ffad59bf93a8d275cc5ebd18b9eb1025200438ac55ec348def343b1b5f72a2c982b5dc4cc90'
             '70de493d5188d6eedbd0bf7c74d41ce4829efab75e3a79b56f998326c209d0184f5d3624d6b85d01ad93f0462e785c314322ef4a9260ead6d747f1791ecbe649'
             '60c9c8c6f66259a4edafd1d58d1f1ebcda4450f7620d4c0fc987d5875c2fd531bc2a3159fcdb77975bf07002036e3544f4d301a31d1085ab24d576eea1f8adcb'
