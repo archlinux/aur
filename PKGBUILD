@@ -1,7 +1,7 @@
 # Maintainer: Eric Biggers <ebiggers3@gmail.com>
 
 pkgname=fsverity-utils-git
-pkgver=1.2.r0.g406187b
+pkgver=1.2.r11.gb561e4a
 pkgrel=1
 pkgdesc='Userspace utilities for fs-verity'
 arch=('x86_64')
@@ -13,6 +13,8 @@ conflicts=('fsverity-utils')
 provides=('fsverity-utils')
 source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/ebiggers/fsverity-utils.git')
 sha256sums=('SKIP')
+
+export USE_SHARED_LIB=1
 
 pkgver() {
   cd fsverity-utils
