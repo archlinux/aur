@@ -21,7 +21,7 @@ sha1sums=('4f4417d53923c34891f1c05f302be2ed197d6844'
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/cmdline-tools/"
-  cp -a 'tools' "${pkgdir}/opt/android-sdk/cmdline-tools/latest"
+  cp -a cmdline-tools "${pkgdir}/opt/android-sdk/cmdline-tools/latest"
   install -Dm755 "${pkgname}.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
   install -Dm755 "${pkgname}.csh" "${pkgdir}/etc/profile.d/${pkgname}.csh"
 }
