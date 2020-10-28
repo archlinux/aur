@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=linux-wifi-hotspot
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="Create virtual wifi hotspot using same wifi card which is connected to an AP + many features (a GUI tool)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ conflicts=('wihotspot' 'create_ap')
 backup=('etc/create_ap.conf')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e5a6198e09ff5ff853e0cb0f225c6707c79ed8d3433d0a2e679a5ad1ca0eda19')
+sha256sums=('13d315a8a4d4f110e4969613bdbf64a73a8da2663e1344e7bf35cf639b7036d0')
 
 build() {
   cd "${pkgname}-${pkgver}"
