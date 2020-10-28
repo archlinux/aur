@@ -1,13 +1,13 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=bitcoin-abc
-pkgver=0.22.4
+pkgver=0.22.5
 pkgrel=0
 pkgdesc="Bitcoin ABC with bitcoind, bitcoin-tx, bitcoin-seeder and bitcoin-cli"
 arch=('i686' 'x86_64')
 url="https://bitcoinabc.org"
 depends=('boost-libs' 'libevent' 'openssl' 'zeromq' 'miniupnpc' 'jemalloc')
-makedepends=('cmake' 'ninja' 'boost' 'python' 'help2man' 'xorg-server-xvfb')
+makedepends=('cmake' 'ninja' 'boost' 'python' 'help2man')
 license=('MIT')
 source=(https://github.com/Bitcoin-ABC/bitcoin-abc/archive/v$pkgver.tar.gz
         bitcoin.conf
@@ -77,7 +77,7 @@ package() {
   ninja install/strip
 
   msg2 'Installing man pages...'
-  ninja -j1 install-manpages
+  ninja install-manpages
   popd
 
   msg2 'Installing bitcoin.conf...'
@@ -97,7 +97,7 @@ package() {
       "$pkgdir/usr/share/bash-completion/completions/$_compl"
   done
 }
-sha256sums=('cceef075fd909f9052b2a1246ae633fd40db2f185012e5ab0f730a8b41e6641c'
+sha256sums=('17e4949f049a1678021ed3755d0aeb5e0c9b378be0c7af090e4e555afaa3e3c2'
             'c30e5c7e0e97b001fdeac5f4510d5ebc0e0499ec086325e845db609a24f2e22f'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             'f2fd9d8331238727333cf2412ba3759cb194a65b2060eff36808b24c06382104'
