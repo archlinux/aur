@@ -6,7 +6,7 @@
 
 pkgname=quantlib
 _pkgname=QuantLib
-pkgver=1.19
+pkgver=1.20
 pkgrel=1
 pkgdesc="A free/open-source library for quantitative finance."
 arch=('x86_64')
@@ -16,17 +16,17 @@ options=(!libtool)
 depends=('boost-libs' 'sh')
 makedepends=('make' 'boost' 'gcc')
 source=("Quantlib-$pkgver.tar.gz::https://bintray.com/quantlib/releases/download_file?file_path=$_pkgname-$pkgver.tar.gz")
-sha256sums=('4a5ff7d53ed5590944f2f0d6b96dd6fba041cc7601e25bc06b040257a455813a')
+sha256sums=('af51fe73b88be67536aca68ce8aaa30f523a95cc369652a6071d66beef8708ff')
 
 build() {
-  cd "$srcdir"/"$_pkgname-$pkgver"/
+  cd "$srcdir/$_pkgname-$pkgver"/
   ./autogen.sh
   ./configure --prefix=/usr --enable-intraday --enable-openmp --disable-static --enable-std-classes --enable-std-function
   make
 }
 
 package() {
-  cd "$srcdir"/"$_pkgname-$pkgver"/
+  cd "$srcdir/$_pkgname-$pkgver"/
   make DESTDIR="$pkgdir/" install
   install -D -m644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE.TXT"
 }
