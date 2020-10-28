@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rosserial-server
 	pkgdesc = ROS - A more performance- and stability-oriented server alternative implemented in C++ to rosserial_python.
 	pkgver = 0.9.1
-	pkgrel = 3
+	pkgrel = 1
 	url = https://wiki.ros.org/rosserial_server
 	arch = i686
 	arch = x86_64

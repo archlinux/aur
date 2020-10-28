@@ -5,7 +5,7 @@ url='https://wiki.ros.org/rosserial_server'
 pkgname='ros-noetic-rosserial-server'
 pkgver='0.9.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
