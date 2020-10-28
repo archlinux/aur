@@ -11,7 +11,7 @@
 # All patches are managed at https://github.com/Martchus/qtbase
 
 pkgname=mingw-w64-qt6-base
-_qtver=6.0.0-beta1
+_qtver=6.0.0-beta2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -32,12 +32,10 @@ groups=(mingw-w64-qt6)
 _pkgfqn="qtbase-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Use-CMake-s-default-import-library-suffix.patch'
-        '0002-Rename-qtmain-to-qt6main-to-make-Qt-6-co-installable.patch'
-        '0003-Fix-finding-D-Bus.patch')
-sha256sums=('d23210ba903be38aa43fe7887b8df62a1a310ea053712a30670cc479cf0219a0'
-            '43a19aaaf39d9e5fbce15657f216b5bd343b4be3eeffcb888dcb0d00a011d744'
-            '74871688a19acd6e254852485c07a1bceb0ce8ae67274d44227528c25e913b37'
-            '969c980eb3d8e9dc06063def818172e443e87b0511e5a6c95a84a1b5f4a5f841')
+        '0002-Fix-finding-D-Bus.patch')
+sha256sums=('1207a5ceb001d164f3cf6646fbd483a055440400c20a315f98f36e23c73f204e'
+            '10ea48221878769b7bd50328f31f16effc6789d92dd91e9cb22c0acb77ca6095'
+            '35ef8ed4f01727ef4a56b856fd91e33fd7f93e5f2813b308872231d182c5df8f')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
