@@ -1,0 +1,17 @@
+pkgbase = falcon-sensor
+	pkgdesc = Crowdstrike Falcon Sensor daemon and kernel modules
+	pkgver = 4.15.0_6003
+	pkgrel = 1
+	url = https://crowdstrike.com
+	arch = x86_64
+	license = custom
+	depends = openssl
+	depends = libnl1
+	backup = etc/logrotate.d/falcon-sensor
+	source = manual://ubuntu14-ubuntu16-4.15.6003.deb
+	source = LICENSE
+	sha256sums = fe6a38de757a9f264b42b8f494f1ff5d078df0272555c6be0acb80d078562b5c
+	sha256sums = 76dbcf8027846d9a8c2fbd9ca2a163c171bbc75161b46a24f59bf64dd44fc6e9
+
+pkgname = falcon-sensor
+
