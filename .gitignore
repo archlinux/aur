@@ -3,3 +3,4 @@
 !/.gitignore
 !/PKGBUILD
 !/cleaner.py
+!/remove-generic-name-assignment-and-aliasing.patch
