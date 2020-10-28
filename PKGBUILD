@@ -1,6 +1,6 @@
 # Maintainer: Jared Johnson <jaredj@gmx.com>
 pkgname=fvim
-pkgver=0.2.285_g48ec668
+pkgver=0.2.290_4a6e1cc
 _pkgver=$(echo "${pkgver}" | sed -e "s/_/-/g")
 pkgrel=1
 pkgdesc="Cross platform Neovim front-end UI, built with F# + Avalonia"
@@ -13,7 +13,7 @@ makedepends=('dotnet-sdk-bin')
 optdepends=()
 provides=('fvim')
 conflicts=('fvim')
-source=("https://github.com/yatli/fvim/archive/v0.2.285+g48ec668.tar.gz")
+source=("https://github.com/yatli/fvim/archive/v0.2.290+4a6e1cc.tar.gz")
 md5sums=('SKIP')
 options=('staticlibs')
 
