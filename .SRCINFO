@@ -1,0 +1,13 @@
+pkgbase = neovim-visual-multi
+	pkgdesc = Multiple cursors plugin for neovim
+	pkgver = 0.5.8
+	pkgrel = 1
+	url = https://github.com/mg979/vim-visual-multi
+	arch = any
+	license = MIT
+	depends = neovim
+	source = https://github.com/mg979/vim-visual-multi/archive/v0.5.8.tar.gz
+	sha256sums = 6fe2345306c751ab9f84ff5f99ba77a79d0db391d38992904b40f0abc538dbc7
+
+pkgname = neovim-visual-multi
+
