@@ -2,15 +2,15 @@
 
 pkgname=torrentzip.net
 pkgver=1.0.5.0
-_rvver=3.1.3
-pkgrel=1
+_rvver=3.1.4
+pkgrel=2
 pkgdesc='Torrentzip utility with mutli core processing capability'
 arch=('any')
 url='https://www.romvault.com/trrntzip/'
 license=('MIT')
 depends=('mono' 'sh' 'hicolor-icon-theme')
 makedepends=('git' 'icoutils')
-source=("git+https://github.com/RomVault/RVWorld.git#tag=${_rvver}"
+source=("git+https://github.com/RomVault/RVWorld.git#tag=v${_rvver}"
         'TrrntZip.NET'
         'TrrntZipUI'
         'torrentzip.net.desktop'
@@ -59,7 +59,7 @@ package() {
     local _res
     while read -r -d '' _file
     do
-        _res="$(printf '%s' "$_file" | sed 's/\.png$//;s/^.*_//;s/x.*$//')"
+        _res="$(sed 's/\.png$//;s/^.*_//;s/x.*$//' <<< "$_file")"
         install -D -m644 "$_file" "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/${pkgname}.png"
     done < <(find RVWorld/TrrntZipUI -maxdepth 1 -type f -name 'memory-rom_*_*x*x*.png' -print0)
     
