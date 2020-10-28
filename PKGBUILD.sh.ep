@@ -1,6 +1,6 @@
 % layout 'mingw-w64-qt6-module', no_libs => 1;
 \
-_qtver=6.0.0-beta1
+_qtver=6.0.0-beta2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
