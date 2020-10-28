@@ -1,18 +1,14 @@
 pkgbase = katfetch-git
 	pkgdesc = A minimal and customizable fetch script.
-	pkgver = 1.2.9
+	pkgver = 1.3.1
 	pkgrel = 3
 	url = https://gitlab.com/KatHamer/katfetch
 	arch = any
 	license = MIT
-	depends = python-click
-	depends = python-psutil
-	depends = python-hurry-filesize
-	depends = python-py-cpuinfo
-	depends = python-distro
+	depends = python-setuptools
 	depends = wmctrl
-	source = katfetch-git-1.2.9.tar.gz::https://gitlab.com/KatHamer/katfetch/-/archive/1e079b39520664f27c85c289eb5e56b40dbd229b/katfetch-1e079b39520664f27c85c289eb5e56b40dbd229b.tar.gz
-	sha256sums = 94ef602e0d5d5f8e2e9453d9205f51fcdbd916f8042ac80c0acd3778aaaf0666
+	source = katfetch-git-1.3.1.tar.gz::https://gitlab.com/KatHamer/katfetch/-/archive/3b5548e48cc645f38bd9fcba746ffa3da9069267/katfetch-3b5548e48cc645f38bd9fcba746ffa3da9069267.tar.gz
+	sha256sums = 508182c6fbea905558f3cb7e7b6cf6c3a5afc8ae725fbfd0f0f91d23e2c013b0
 
 pkgname = katfetch-git
 
