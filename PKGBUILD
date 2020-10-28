@@ -17,18 +17,17 @@ sha256sums=('a48e00954e10df60c441346809c152fe3a1ccf03e0c6f6429fecbf5113c69607'
             'SKIP')
 
 prepare () {
-
+  # extract
   install -dm 755 ${srcdir}/${_pkgname}
   tar -xf ${srcdir}/data.tar.xz -C ${srcdir}/${_pkgname}
 }
 
 package() {
-
-  #rename dir
+  # rename dir
   install -dm755 ${pkgdir}/opt/${_pkgname}
   mv ${srcdir}/${_pkgname}/opt/EdrawProject-1/* ${pkgdir}/opt/${_pkgname}
 
-  # install desktop entry
+  # desktop entry
   install -Dm 644 ${srcdir}/${_pkgname}/usr/share/applications/${_pkgname}.desktop  -t ${pkgdir}/usr/share/applications
 
   sed -i "s|EdrawProject-1|${_pkgname}|g" ${pkgdir}/usr/share/applications/${_pkgname}.desktop
@@ -37,7 +36,7 @@ package() {
   install -dm755 ${pkgdir}/usr/bin
   ln -s /opt/${_pkgname}/${_binaryname}  ${pkgdir}/usr/bin/${_binaryname}
 
-  # install LICENSE
+  # LICENSE
   install -Dm644 ${srcdir}/LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
 }
 
