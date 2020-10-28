@@ -1,0 +1,5 @@
+post_install() {
+    cat << EOF
+==> To start the service on boot run systemctl --user enable --now fetchcord.service
+EOF
+}

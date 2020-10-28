@@ -1,7 +1,7 @@
 # Maintainer Lingfeng Ren <lastname+firstname+8thfibonaccinumber@gmail.com>
 
 pkgname=fetchcord-git
-pkgver=r540.fbdee30
+pkgver=r692.071ba37
 pkgrel=1
 pkgdesc="FetchCord grabs your OS info and displays it as Discord Rich Presence"
 arch=('any')
@@ -12,6 +12,7 @@ provides=('fetchcord')
 depends=('python-pypresence' 'neofetch' 'python-psutil' 'python-setuptools')
 source=("fetchcord::git+$url#branch=master")
 sha256sums=('SKIP')
+install=fetchcord.install
 
 pkgver() {
   cd "$srcdir/fetchcord"
