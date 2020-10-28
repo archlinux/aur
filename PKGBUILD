@@ -2,17 +2,17 @@
 pkgbase=python-sherpa
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=4.12.1
+pkgver=4.12.2
 pkgrel=1
 pkgdesc="Modeling and fitting package for scientific data analysis"
 arch=('i686' 'x86_64')
 url="http://cxc.cfa.harvard.edu/contrib/sherpa/"
 license=('GPL')
-makedepends=('python>=3.5' 'python-numpy' 'fftw' 'python-setuptools' 'python-sphinx_rtd_theme' 'python-sphinx-astropy' 'graphviz')
+makedepends=('python>=3.5' 'python-numpy' 'fftw' 'python-setuptools' 'python-sphinx_rtd_theme' 'python-sphinx-astropy' 'graphviz' 'python-nbsphinx' 'pandoc')
 #'gcc-fortran')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'sherpa_local_fftw.patch')
-md5sums=('2e886f781d7371ddf105cd4f14caa673'
+md5sums=('752b19ed99da486c84313b53d159f178'
          'd1823cc7683442d92450fadff7aed362')
 _pyver=$(python -V | cut -c 8-10)
 
