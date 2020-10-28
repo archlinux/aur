@@ -3,7 +3,7 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=python-pygerrit2
-pkgver=2.0.9
+pkgver=2.0.14
 pkgrel=1
 pkgdesc="Python library to interface with Gerrit's REST API "
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 url="https://github.com/dpursehouse/pygerrit2"
 depends=('python-setuptools' 'python-pbr' 'python-requests')
 source=("https://pypi.io/packages/source/p/pygerrit2/pygerrit2-$pkgver.tar.gz")
-sha512sums=('043aa7659b6ff8321e733a4a7e48f75fe262970df8e8eb34f19307fc19a40c3ae6515f1ecfa958f777f48e66ecf04cbddff7441539a785803d80bf23b5338dde')
+sha512sums=('368ddfb950aa40688cbf8895019c18b15101c86c0e420fe99372b55dfe81a515ea9975d86fb03ed6dcc75e33791c50edcf67cf4ece9f038f84e511e33ec0a1ed')
 
 build() {
   cd pygerrit2-$pkgver
