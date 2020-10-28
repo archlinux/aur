@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-rosserial-server
 	pkgdesc = ROS - A more performance- and stability-oriented server alternative implemented in C++ to rosserial_python.
-	pkgver = 0.8.0
+	pkgver = 0.9.1
 	pkgrel = 3
 	url = https://wiki.ros.org/rosserial_server
 	arch = i686
@@ -21,10 +21,8 @@ pkgbase = ros-noetic-rosserial-server
 	depends = ros-noetic-std-msgs
 	depends = ros-noetic-roscpp
 	depends = ros-noetic-topic-tools
-	source = ros-noetic-rosserial-server-0.8.0.tar.gz::https://github.com/ros-drivers/rosserial/archive/0.8.0.tar.gz
-	source = fix-boost-1-71.patch::https://patch-diff.githubusercontent.com/raw/ros-drivers/rosserial/pull/468.patch
-	sha256sums = e96cdeb81e1c03fb1c5ad85a740cb0a1a0836c52a24c6a5d97c975084b49d576
-	sha256sums = 750137d86f3d535be30ecdc904e12355c71a7873a780fc686f6e6f133cd2172a
+	source = ros-noetic-rosserial-server-0.9.1.tar.gz::https://github.com/ros-drivers/rosserial/archive/0.9.1.tar.gz
+	sha256sums = 0e4dbb4d6e456c354ee04f552cc36b43d053dc3f5a8bbfccff7f8adf3ae48534
 
 pkgname = ros-noetic-rosserial-server
 

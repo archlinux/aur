@@ -3,7 +3,7 @@ implemented in C++ to rosserial_python."
 url='https://wiki.ros.org/rosserial_server'
 
 pkgname='ros-noetic-rosserial-server'
-pkgver='0.8.0'
+pkgver='0.9.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=3
 license=('BSD')
@@ -35,15 +35,8 @@ depends=(
 )
 
 _dir="rosserial-${pkgver}/rosserial_server"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/rosserial/archive/${pkgver}.tar.gz"
-        "fix-boost-1-71.patch"::"https://patch-diff.githubusercontent.com/raw/ros-drivers/rosserial/pull/468.patch")
-sha256sums=('e96cdeb81e1c03fb1c5ad85a740cb0a1a0836c52a24c6a5d97c975084b49d576'
-            '750137d86f3d535be30ecdc904e12355c71a7873a780fc686f6e6f133cd2172a')
-
-prepare() {
-    cd "${srcdir}/${_dir}/.."
-    patch -p1 < ${srcdir}/fix-boost-1-71.patch
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/rosserial/archive/${pkgver}.tar.gz")
+sha256sums=('0e4dbb4d6e456c354ee04f552cc36b43d053dc3f5a8bbfccff7f8adf3ae48534')
 
 build() {
 	# Use ROS environment variables.
