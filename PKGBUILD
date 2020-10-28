@@ -11,10 +11,10 @@ arch=('i686' 'x86_64')
 url="https://alicevision.github.io/"
 license=('MPL2')
 groups=()
-_depends_qt=(qt5-quickcontrols{,2} qt5-3d qt5-graphicaleffects qt5-imageformats qt5-location qt5-svg)
+_depends_qt=(python-pyside2 qt5-quickcontrols{,2} qt5-3d qt5-graphicaleffects qt5-imageformats qt5-location qt5-svg)
 #_depends_qt+=(qt5-datavis3d qt5-scxml)
-depends=(alice-vision alembic openimageio ${_depends_qt[@]})
-makedepends=(git cmake python-pip python-psutil python-setuptools python-cx_freeze)
+depends=(alice-vision alembic openimageio python python-psutil ${_depends_qt[@]})
+makedepends=(git cmake python-setuptools python-cx_freeze)
 source=("${pkgname}::git+https://github.com/alicevision/meshroom.git${fragment}"
         "voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git"
         "git+https://github.com/alicevision/QtOIIO.git"
@@ -44,8 +44,6 @@ build() {
   make
   
   cd "${srcdir}"/${pkgname}
-  sed -i '/^PySide2/s/5.13.0/5.14.1/' requirements.txt
-  pip install --user -r requirements.txt
   python setup.py build
 }
 
