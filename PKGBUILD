@@ -2,7 +2,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=jackett-runit
-pkgver=0.16.1902
+pkgver=0.16.1922
 pkgrel=1
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -20,13 +20,13 @@ source_x86_64=("Jackett.Binaries.LinuxAMDx64-${pkgver}.tar.gz::https://github.co
 source_armv7h=("Jackett.Binaries.LinuxARM32-${pkgver}.tar.gz::https://github.com/Jackett/Jackett/releases/download/v${pkgver}/Jackett.Binaries.LinuxARM32.tar.gz")
 source_aarch64=("Jackett.Binaries.LinuxARM64-${pkgver}.tar.gz::https://github.com/Jackett/Jackett/releases/download/v${pkgver}/Jackett.Binaries.LinuxARM64.tar.gz")
 
-sha256sums=('ceac561ee2755a0ec2d4ffa9e381f0ecb422ac34e77f65df996a10d79fda429b'
-            'd005fcd009ec5404e1ec88246c31e664167f5551d6cabc35f68eb41750bfe590'
-            '64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1')
+b2sums=('fed3336e07fe1d88a65bad5fb4f3e081ec16b24c07cc2a96462e7cecc3962b9742897455c0ce7f7fdbe04ecb337c575d54194d2dedad865f72572a5158cc6ef4'
+        '6b0534e5f3320e70cff1cc59b0c4de202451d6bc240c0659749929a72223fcb8e636508b14905e3d449c854ae6774c4349480039dd50e35d1d01ac13fa15eea3'
+        '4837363802330a33153e8b1560074d3af1c24c393287d295083dc41c82d6667ef0eb1dbcabc6afd180082405762bfed749adc7483d0c6fab0be431f944b4c001')
 
-sha256sums_x86_64=('50732d9418ddb6dc23cdfdf99636a30e064a0320fb7129a91a3f4e4b068b310e')
-sha256sums_armv7h=('38e7a550ee05605a596276410120c316d319246ed93a2e2d009525df6300bf49')
-sha256sums_aarch64=('abba83dccd6f144843019a986891fbe38f452d6a5fcb5b1676bf3f7b65d5c3f3')
+b2sums_x86_64=('6681111cb2aacd658cef03247147c2ae3e3576a290c1baeeecc28281c3c59c64d446f8058b0f10b20d2da39db4855c57796d5698d09362d0005fcab77753cd45')
+b2sums_armv7h=('11d04e993b33dcdc1ec1f1ce753cd5d42f64ff453acf933936f0dee2a4dd268f759c5528f97a137018ead2de73e2f48e9d4caff3539f1bb79f11085fb527a5c7')
+b2sums_aarch64=('4db275e74022493c4eb40b0a4da40b4da6f64df47dda4f95b6ae14ea6a879f66810bb4be2b2deb2d0e3f89acd01ff8c5d7a20f4a309acf659789c3b03849970c')
 
 package() {
     cd "$srcdir"
