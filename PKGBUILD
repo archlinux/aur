@@ -1,4 +1,5 @@
-# Maintainer: Mario O.M. <marioortizmanero@gmail.com>
+# Maintainer: Mario Ortiz Manero <marioortizmanero@gmail.com>
+# Maintainer: Daniel Vogt <marioortizmanero@gmail.com>
 pkgname=moodle-dl-git
 _pkgname=Moodle-Downloader-2
 pkgver=v2.1.0.5.r0.ga122ba7
