@@ -1,6 +1,6 @@
 # Maintainer: AdmiringWorm <kim.nordmo@gmail.com>
 pkgname=qutepart
-pkgver=3.2.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Code editor component for PyQt and Pyside"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('LGPL')
 depends=("python-pyqt5")
 makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hlamer/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('1e58699b3306077b9faa18baa30cff3edc63eb2058c33f11f4b5aed8bbf3e599')
+sha256sums=('624ee463d5b18e1530badd013fc9086c56a6f837fcfb07c60058dbec80bbc02f')
 
 build() {
 	cd "$pkgname-$pkgver"
