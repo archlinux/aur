@@ -7,10 +7,10 @@ After=time-sync.target
 RequiresMountsFor=/etc /var/lib
 
 [Service]
-ExecStart=/usr/bin/weewxd --daemon --pidfile=/var/run/weewx.pid /etc/weewx/weewx.conf
+ExecStart=/usr/bin/weewxd --daemon --pidfile=/run/weewx.pid /etc/weewx/weewx.conf
 ExecReload=/bin/kill -HUP $MAINPID
 Type=forking
-PIDFile=/var/run/weewx.pid
+PIDFile=/run/weewx.pid
 #User=weewx
 #Group=weewx
 
