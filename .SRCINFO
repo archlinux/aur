@@ -1,7 +1,7 @@
 pkgbase = perl-file-changenotify
 	pkgdesc = Watch for changes to files, cross-platform style
 	pkgver = 0.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/File-ChangeNotify
 	arch = any
 	license = PerlArtistic
