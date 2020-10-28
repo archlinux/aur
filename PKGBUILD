@@ -26,24 +26,24 @@ md5sums=('SKIP'
          'SKIP')
 
 prepare() {
-  cd ${srcdir}/${pkgname}
+  cd "${srcdir}"/${pkgname}
   msg2 "Hardcode camera_database and voctree default value"
   sed -i   "s:'ALICEVISION_VOCTREE', '':'ALICEVISION_VOCTREE', '/usr/share/${pkgname}/vlfeat_K80L3.SIFT.tree':g" meshroom/nodes/aliceVision/*.py
   sed -i "s:'ALICEVISION_SENSOR_DB', '':'ALICEVISION_SENSOR_DB', '/usr/share/aliceVision/sensor_width_camera_database.txt':g" meshroom/nodes/aliceVision/*.py
-  sed -i '1 i\#include <cmath>' ${srcdir}/QtOIIO/src/jetColorMap.hpp
-  sed -i 's|imageformats|plugins/imageformats|' ${srcdir}/QtOIIO/src/imageIOHandler/CMakeLists.txt
+  sed -i '1 i\#include <cmath>' "${srcdir}"/QtOIIO/src/jetColorMap.hpp
+  sed -i 's|imageformats|plugins/imageformats|' "${srcdir}"/QtOIIO/src/imageIOHandler/CMakeLists.txt
 }
 
 build() {
-  cd ${srcdir}/QtOIIO
+  cd "${srcdir}"/QtOIIO
   cmake -DCMAKE_INSTALL_PREFIX="/usr/lib/qt/" -DCMAKE_BUILD_TYPE=Release .
   make
 
-  cd ${srcdir}/qmlAlembic 
+  cd "${srcdir}"/qmlAlembic 
   cmake -DCMAKE_INSTALL_PREFIX="/usr/lib/qt/" -DCMAKE_BUILD_TYPE=Release .
   make
   
-  cd ${srcdir}/${pkgname}
+  cd "${srcdir}"/${pkgname}
   sed -i '/^PySide2/s/5.13.0/5.14.1/' requirements.txt
   pip install --user -r requirements.txt
   python setup.py build
@@ -51,14 +51,14 @@ build() {
 
 
 package() {
-  cd ${srcdir}/QtOIIO
-  make DESTDIR=${pkgdir} install
+  cd "${srcdir}"/QtOIIO
+  make DESTDIR="${pkgdir}" install
 
-  cd ${srcdir}/qmlAlembic 
-  make DESTDIR=${pkgdir} install
+  cd "${srcdir}"/qmlAlembic 
+  make DESTDIR="${pkgdir}" install
 
-  cd ${srcdir}/${pkgname}
-  python setup.py install --root=${pkgdir} --optimize=1 --skip-build
-  install -Dm644 -t ${pkgdir}/usr/share/${pkgname} ${srcdir}/voctree/vlfeat_K80L3.SIFT.tree
+  cd "${srcdir}"/${pkgname}
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 -t "${pkgdir}"/usr/share/${pkgname} "${srcdir}"/voctree/vlfeat_K80L3.SIFT.tree
 }
 # vim:set ts=2 sw=2 et:
