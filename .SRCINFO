@@ -1,0 +1,17 @@
+pkgbase = perl-app-virtualenv
+	pkgdesc = App::Virtualenv is a Perl package to create isolated Perl virtual environments, like Python virtual environment.
+	pkgver = 2.07
+	pkgrel = 1
+	url = https://metacpan.org/release/App-Virtualenv
+	arch = any
+	license = GPL3
+	depends = perl
+	depends = perl-local-lib
+	depends = perl-lazy-utils
+	options = !emptydirs
+	options = purge
+	source = https://search.cpan.org/CPAN/authors/id/O/OR/ORKUN/App-Virtualenv-2.07.tar.gz
+	sha256sums = bb13a1aea1c395f4c1146aaa9e1b9c131ba92256cc8a033c228ad09e370f9730
+
+pkgname = perl-app-virtualenv
+
