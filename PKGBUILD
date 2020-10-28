@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=redi-search
-pkgver=1.6.14
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Redis module that implements a search engine on top of Redis."
 arch=("x86_64")
@@ -24,6 +24,6 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -D src/redisearch.so $pkgdir/usr/lib/redis/redisearch.so
+  install -D build/redisearch.so $pkgdir/usr/lib/redis/redisearch.so
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/redisearch/LICENSE
 }
