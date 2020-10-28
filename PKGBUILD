@@ -19,7 +19,6 @@ depends=("python"
 optdepends=("python-ephem: for extended almanac information"
             "mariadb-clients: for MariaDB support"
             "python-mysqlclient: for MySQL/MariaDB support")
-install="weewx.install"
 backup=("etc/weewx/weewx.conf")
 source=("http://www.weewx.com/downloads/released_versions/${pkgname}-${pkgver}.tar.gz"
         "wee_config"
@@ -31,8 +30,7 @@ source=("http://www.weewx.com/downloads/released_versions/${pkgname}-${pkgver}.t
         "wee_reports"
         "weewxd"
         "wunderfixer"
-        "weewx.service"
-        "weewx.install")
+        "weewx.service")
 sha512sums=('c823858fe616af5c41d532c820038c3fc6a00614c4183c9d87b7e4f8602d7f28f3c7a5e4828efbde2a87a29531edf5d6112ec464be570d34d7b74ee7d152d925'
             'fc47d8cd4972c7cfbaf89f7705242471e5333591cb6e9781f0352fba0aee542166c0be337492a2dbdaea48d6e2cb7035b921fa3b26142324373c14594171fec6'
             '5e1a64fed4b5c752b1bfa8381394517403aa8fc4bf7c2b1af025ff4fc872e733761e7fc25cd603d5c2b57e4a673164ff87cb640ce69c8b257213ca4f906fe8f9'
@@ -43,8 +41,7 @@ sha512sums=('c823858fe616af5c41d532c820038c3fc6a00614c4183c9d87b7e4f8602d7f28f3c
             'fdd820de4de0a0fe68c940adfdec405489295213c990e20ebf43c73416c9ffbe2e503894127dca37a5ad20772812647f40e50ce64b864ae87fd3858158806a12'
             '94cd797c5a0b252caefa7cb54817468871259c8ff5590124cfa3aad0f72630dbea68beb2f2d928a7530d9efbc2707e7f7f36502f21980ebef0a7b557a2b76299'
             '4ca8e074b4c9c6a2de62d2f9d0918b76b0f146bdae80bb01d6a1013ff00b8030accdcd1dc677deacc2c8fd96e5f57a623b18014f93d3aa9fc9f617866047c8d7'
-            '1dde475cb8c3c3ca728dd5bd169f66b0d8f504990617418fc9504e0f815ec2543e7158327ad5df1673541715de60578d172b37f43c7ab0382cc177d0c8399a16'
-            '693444d52abc046aae15e784b4de935c59b40079533ac7905b77ad11c19ab5310fc6d68e839017ffb354e1e54b4c473ff3fb505217c823128d37f39cf94eb68b')
+            '1dde475cb8c3c3ca728dd5bd169f66b0d8f504990617418fc9504e0f815ec2543e7158327ad5df1673541715de60578d172b37f43c7ab0382cc177d0c8399a16')
 _watch="http://www.weewx.com/downloads/"
 
 build() {

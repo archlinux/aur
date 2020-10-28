@@ -1,4 +1,0 @@
-post_install() {
-  echo "To enable and start WeeWX execute:"
-  echo "    sudo systemctl enable --now weewx.service"
-}
