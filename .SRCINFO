@@ -1,10 +1,11 @@
 pkgbase = futhark-nightly
 	pkgdesc = A data-parallel functional programming language
-	pkgver = 0.15.5.r5.gf59a43a58
+	pkgver = 0.19.0.r1603790886.g0d10f768
 	pkgrel = 1
 	url = https://github.com/diku-dk/futhark
 	arch = x86_64
 	license = ISC
+	makedepends = curl
 	depends = ncurses5-compat-libs
 	depends = zlib
 	depends = gmp
@@ -13,7 +14,7 @@ pkgbase = futhark-nightly
 	optdepends = opencl-driver: opencl support
 	provides = futhark
 	conflicts = futhark
-	source = futhark-nightly-2020042406.tar.xz::https://futhark-lang.org/releases/futhark-nightly-linux-x86_64.tar.xz
+	source = futhark-nightly-1603790886.tar.xz::https://futhark-lang.org/releases/futhark-nightly-linux-x86_64.tar.xz
 	sha256sums = SKIP
 
 pkgname = futhark-nightly

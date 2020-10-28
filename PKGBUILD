@@ -2,7 +2,7 @@
 # Contributor: Olaf Leidinger <oleid@mescharet.de>
 
 pkgname=futhark-nightly
-pkgver=0.15.5.r5.gf59a43a58
+pkgver=0.19.0.r1603790886.g0d10f768
 pkgrel=1
 pkgdesc="A data-parallel functional programming language"
 arch=('x86_64')
@@ -14,16 +14,25 @@ depends=('ncurses5-compat-libs'
 optdepends=('opencl-headers: opencl support'
             'ocl-icd: opencl support'
             'opencl-driver: opencl support')
-makedepends=()
+makedepends=('curl')
 provides=("${pkgname%-nightly}")
 conflicts=("${pkgname%-nightly}")
-_timestamp=$(date -u +%Y%m%d%H)
-source=("${pkgname}-${_timestamp}.tar.xz::https://futhark-lang.org/releases/futhark-nightly-linux-${arch}.tar.xz")
+_tarurl="https://futhark-lang.org/releases/futhark-nightly-linux-${arch}.tar.xz"
+_modificationtime=$(date +%s -d "$(curl -sI ${_tarurl} | grep Last-Modified | sed s/^'Last-Modified: '//)")
+source=("${pkgname}-${_modificationtime}.tar.xz::https://futhark-lang.org/releases/futhark-nightly-linux-${arch}.tar.xz")
 sha256sums=(SKIP)
 
 pkgver() {
     cd "${srcdir}/futhark-nightly-linux-${arch}"
-    sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' < commit-id
+
+    if [[ $(cat commit-id) =~ "-g" ]]
+    then
+        # If commit-id contains output from `git describe`
+        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' < commit-id
+    else
+        # Fallback on modification time and commit-id
+        printf "%s.r%s.g%s" "$(./bin/futhark -V | grep Futhark | sed "s/Futhark //")" "$_modificationtime" "$(cut -c 1-8 < commit-id)"
+    fi
 }
 
 package() {
