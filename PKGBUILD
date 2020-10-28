@@ -1,8 +1,8 @@
 # Maintainer: Benjamin Manuel <ben@benmanuel.com>
 pkgname=python-validity-git
 _pkgdirname=python-validity
-pkgver=0.9.r23.g64438d6
-pkgrel=2
+pkgver=0.12.r0.gfcd862d
+pkgrel=1
 pkgdesc="Validity fingerprint sensor driver"
 arch=(any)
 license=(MIT)
