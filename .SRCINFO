@@ -1,7 +1,7 @@
 pkgbase = gophish
 	pkgdesc = Open-Source Phishing Framework
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getgophish.com/
 	install = gophish.install
 	arch = x86_64

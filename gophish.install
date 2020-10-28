@@ -1,8 +1,3 @@
-post_install() {
-  echo "default username: admin"
-  echo "default password: gophish"
-}
-
 post_remove() {
   echo "Check the /usr/share/gophish directory, and remove it manually if not needed."
 }

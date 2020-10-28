@@ -2,7 +2,7 @@
 
 pkgname=gophish
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-Source Phishing Framework"
 url="https://getgophish.com/"
 arch=("x86_64")
