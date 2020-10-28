@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=falcon-sensor
-pkgver=4.15.0_6003
+pkgver=5.33.0_9808
 pkgrel=1
 pkgdesc="Crowdstrike Falcon Sensor daemon and kernel modules"
 arch=("x86_64")
@@ -10,11 +10,11 @@ license=("custom")
 depends=("openssl" "libnl1")
 backup=("etc/logrotate.d/falcon-sensor")
 source=(
-  "manual://ubuntu14-ubuntu16-${pkgver/\.0_/.}.deb"
+  "manual://${pkgname}_${pkgver/_/-}_amd64.deb"
   "LICENSE"
 )
 sha256sums=(
-  "fe6a38de757a9f264b42b8f494f1ff5d078df0272555c6be0acb80d078562b5c"
+  "2d2914b3b5a3bca3eaa0cbb72fa255269c262422d4fbe555f095fb47930f6fcc"
   "76dbcf8027846d9a8c2fbd9ca2a163c171bbc75161b46a24f59bf64dd44fc6e9"
 )
 
