@@ -1,7 +1,7 @@
 pkgbase = kbld
 	pkgdesc = kbld seamlessly incorporates image building and image pushing into your development and deployment workflows
 	pkgver = 0.27.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://get-kbld.io/
 	arch = x86_64
 	license = Apache

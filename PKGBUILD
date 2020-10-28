@@ -2,7 +2,7 @@
 
 pkgname=kbld
 pkgver=0.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc="kbld seamlessly incorporates image building and image pushing into your development and deployment workflows"
 url="https://get-kbld.io/"
 license=('Apache')
@@ -22,6 +22,7 @@ build() {
 	cd "${srcdir}/src/github.com/k14s/${pkgname}"
 
 	export GOPATH="${srcdir}"
+	export GOFLAGS="-modcacherw -trimpath -buildmode=pie"
 	./hack/build.sh
 
 	## Build ytt without website assets
