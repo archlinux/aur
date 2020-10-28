@@ -1,0 +1,19 @@
+pkgbase = manjaro-keyring
+	pkgdesc = Manjaro PGP keyring
+	pkgver = 20200603
+	pkgrel = 1
+	url = http:/manjaro.org
+	install = manjaro-keyring.install
+	arch = any
+	license = GPL
+	source = Makefile
+	source = manjaro.gpg
+	source = manjaro-revoked
+	source = manjaro-trusted
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = manjaro-keyring
+
