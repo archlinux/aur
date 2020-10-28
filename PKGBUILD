@@ -7,7 +7,7 @@
 # Maintainer: Uffe Jakobsen <uffe@uffe.org>
 #
 pkgname=cone-simple
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc="Curses text-based mail client - handles multiple POP3, IMAP accounts, and local mail folders. contains a simple newsreader. This version has no dependencies to courier libraries (other than the mandatory courier-unicode)."
@@ -28,7 +28,7 @@ install=
 changelog=
 source=(http://sourceforge.net/projects/courier/files/cone/${pkgver}/cone-${pkgver}.tar.bz2)
 noextract=()
-md5sums=('57ea2f089455c3eae4437f243d786606')
+md5sums=('769d388de05292ea4eb54d173eaa8006')
 
 
 prepare() {
