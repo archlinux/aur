@@ -1,0 +1,32 @@
+From b422ccb9b9eea288bfbe683349a424f01fb74248 Mon Sep 17 00:00:00 2001
+From: AdmiringWorm <kim.nordmo@gmail.com>
+Date: Tue, 10 Nov 2020 08:47:04 +0100
+Subject: [PATCH] Update target framework to netcore 3.1
+
+---
+ src/GitReleaseManager.Cli/GitReleaseManager.Cli.csproj | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/GitReleaseManager.Cli/GitReleaseManager.Cli.csproj b/src/GitReleaseManager.Cli/GitReleaseManager.Cli.csproj
+index 70e5404..38dffa3 100644
+--- a/src/GitReleaseManager.Cli/GitReleaseManager.Cli.csproj
++++ b/src/GitReleaseManager.Cli/GitReleaseManager.Cli.csproj
+@@ -3,7 +3,7 @@
+         <LangVersion>8.0</LangVersion>
+         <OutputType>Exe</OutputType>
+         <AssemblyName>GitReleaseManager</AssemblyName>
+-        <TargetFrameworks>netcoreapp2.1;net461</TargetFrameworks>
++        <TargetFrameworks>netcoreapp3.1;net461</TargetFrameworks>
+         <Title>GitReleaseManager.Cli</Title>
+         <Description>Create release notes in markdown given a milestone</Description>
+         <IsPackable>false</IsPackable>
+@@ -25,4 +25,4 @@
+         <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+         <PackageReference Include="seriloganalyzer" Version="0.15.0" />
+     </ItemGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+-- 
+2.29.2
+
