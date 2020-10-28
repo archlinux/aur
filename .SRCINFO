@@ -1,12 +1,12 @@
 pkgbase = executor-data
 	pkgdesc = Data files for Executor
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.victor3d.com.br
 	arch = any
 	license = GPL
-	source = https://github.com/victor3dptz/executor-packaging/raw/master/arch/executor.tar.gz
-	md5sums = 868697896b0c51c66d31440f3c59a3fc
+	source = executor-data-1.tar.gz::https://github.com/victor3dptz/executor-packaging/raw/master/arch/executor.tar.gz
+	sha256sums = 7f02071d49634f7b20137cfb58382ab41552414895b839236189fe0586038911
 
 pkgname = executor-data
 

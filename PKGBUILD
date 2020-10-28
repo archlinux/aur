@@ -1,16 +1,15 @@
-# Maintainer: Victor3D <webmaster@victor3d.com.br>
 pkgname=executor-data
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Data files for Executor"
 arch=('any')
 url="http://wiki.victor3d.com.br"
 license=('GPL')
-source=("https://github.com/victor3dptz/executor-packaging/raw/master/arch/executor.tar.gz")
-md5sums=("868697896b0c51c66d31440f3c59a3fc")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/victor3dptz/executor-packaging/raw/master/arch/executor.tar.gz")
+sha256sums=('7f02071d49634f7b20137cfb58382ab41552414895b839236189fe0586038911')
 
 package() {
-	cp -r "executor/usr" "${pkgdir}"
-	mkdir -p "${pkgdir}/usr/share/executor/home"
-	chmod -R 777 "${pkgdir}/usr/share/executor/home"
+	cp -r "${pkgname%-*}/usr" "${pkgdir}"
+	cp -r "${pkgname%-*}/opt" "${pkgdir}"
+	chmod -R 777 "${pkgdir}/opt"
 }
