@@ -1,4 +1,4 @@
-# Maintainer: Mario O.M. <marioortizmanero@gmail.com>
+# Maintainer: Mario Ortiz Manero <marioortizmanero@gmail.com>
 pkgname=vidify-audiosync
 pkgver=0.3.0
 pkgrel=1
