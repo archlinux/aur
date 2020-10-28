@@ -1,0 +1,14 @@
+pkgbase = kct-bin
+	pkgdesc = A Kubernetes Configuration Tool
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/kseat/kct
+	arch = x86_64
+	license = MIT
+	provides = kct
+	conflicts = kct
+	source_x86_64 = kct::https://github.com/kseat/kct/releases/download/v0.2.0/kct-linux-amd64
+	sha256sums_x86_64 = 87f7dbe30b60375b1546c3eb9d289ef204ebcfa113377aca5ede5acf8e09ed6b
+
+pkgname = kct-bin
+
