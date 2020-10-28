@@ -1,7 +1,7 @@
 # Maintainer: Andrew Lin <andrewlin16 at gmail dot com>
 # Contributor: Simon Thorpe <simon at hivetechnology dot com dot au>
 pkgname=openmpt
-pkgver=1.29.04.00
+pkgver=1.29.05.00
 pkgrel=1
 pkgdesc="Audio module tracker formerly known as ModPlug Tracker"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ makedepends=('gendesk' 'imagemagick')
 optdepends=('bash-completion: tab completion support')
 source_i686=("https://download.openmpt.org/archive/openmpt/$(echo $pkgver | grep -Po '^\d+.\d+')/OpenMPT-$pkgver-portable.zip")
 source_x86_64=("https://download.openmpt.org/archive/openmpt/$(echo $pkgver | grep -Po '^\d+.\d+')/OpenMPT-$pkgver-portable-x64.zip")
-sha256sums_i686=('6d5a7cea94e646078697f03f3e98b75c1a0ec1643db1c90075fe3338f7dae3ac')
-sha256sums_x86_64=('dc1f6b5b7b1a0fa625ee5335266b42ed08364cbc5032f3baf2efc37eaa02e5e7')
+sha256sums_i686=('b0bfa22ec21ac00dc707630075b61815c277f575e9b7b7da249bcf65886e1edd')
+sha256sums_x86_64=('737d8a01f207b4ea77cb44a50ebf5b05b29a01a9855be6f93fc9a93e88ff30c2')
 
 prepare(){
   convert "$srcdir/OpenMPT-$pkgver/mpt.ico" "$srcdir/icon.png"
