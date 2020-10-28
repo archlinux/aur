@@ -1,6 +1,6 @@
 pkgbase = openbangla-keyboard-git
 	pkgdesc = An OpenSource, Unicode compliant Bengali Input Method
-	pkgver = 2.0.0.r5.g332d3d3
+	pkgver = 2.0.0.r6.g6f6163d
 	pkgrel = 1
 	url = https://openbangla.github.io
 	install = openbangla-keyboard.install
