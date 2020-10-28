@@ -77,7 +77,7 @@ package() {
 
 	# Create shortcut
 	mkdir -p "${pkgdir}/usr/bin"
-	ln -srf "../../opt/${pkgname}/shadow" "${pkgdir}/usr/bin/{$pkgname}"
+	ln -srf "/opt/${pkgname}/shadow" "${pkgdir}/usr/bin/${pkgname}"
 
 	# Remove AppImage related files
 	rm "${pkgdir}/opt/${pkgname}/AppRun"
