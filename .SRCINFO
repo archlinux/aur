@@ -1,0 +1,28 @@
+pkgbase = ecwolf-unofficial-git
+	pkgdesc = Advanced source port of "Wolfenstein 3D" (development version with fixed sound and installation)
+	pkgver = 1.3.3.r365.g0fc332d
+	pkgrel = 1
+	url = http://maniacsvault.net/ecwolf
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom: ID
+	makedepends = git
+	makedepends = cmake
+	makedepends = sdl
+	makedepends = sdl2
+	depends = libvorbis
+	depends = flac
+	depends = opusfile
+	depends = libmodplug
+	depends = fluidsynth
+	depends = libjpeg
+	depends = sdl2
+	depends = sdl2_net
+	provides = ecwolf
+	conflicts = ecwolf-git
+	source = git+https://bitbucket.org/ecwolf/ecwolf
+	sha256sums = SKIP
+
+pkgname = ecwolf-unofficial-git
+
