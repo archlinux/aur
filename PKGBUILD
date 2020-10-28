@@ -1,5 +1,5 @@
 pkgname=nsis
-pkgver=3.05
+pkgver=3.06.1
 pkgrel=1
 pkgdesc='A professional open source system to create Windows installers'
 arch=('x86_64')
@@ -9,16 +9,10 @@ depends=('gcc-libs')
 makedepends=('scons' 'mingw-w64-gcc' 'mingw-w64-zlib')
 options=(!strip)
 source=(http://downloads.sourceforge.net/project/nsis/NSIS%203/$pkgver/$pkgname-$pkgver-src.tar.bz2)
-sha256sums=('b6e1b309ab907086c6797618ab2879cb95387ec144dab36656b0b5fb77e97ce9')
+sha256sums=('9b5d68bf1874a7b393432410c7e8c376f174d2602179883845d2508152153ff0')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver-src"
-  curl -L https://github.com/kichik/nsis/pull/9.patch | patch -p1
-  curl -L https://github.com/kichik/nsis/pull/12.patch | patch -p1
-
-  # stub_bzip2-x86-ansi/decompress.o:decompress.c:(.text+0x445): undefined reference to `memmove'
-#   sed -i "s|defenv\['NODEFLIBS_FLAG'\] = '-nostdlib -Wl,--exclude-libs,msvcrt.a'|defenv\['NODEFLIBS_FLAG'\] = '-nostdlib -lmsvcrt'|g" SCons/Config/gnu
-  sed -i "s|ole32|ole32 msvcrt|g" Source/exehead/SConscript
 }
 
 build() {
