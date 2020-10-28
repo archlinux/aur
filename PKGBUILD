@@ -1,7 +1,7 @@
 # Maintainer: Francisco Lopes <francisco@oblita.com>
 pkgname=interception-tools
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A minimal composable infrastructure on top of libudev and libevdev'
 arch=('x86_64')
 license=('GPL3')

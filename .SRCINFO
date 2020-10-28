@@ -1,7 +1,7 @@
 pkgbase = interception-tools
 	pkgdesc = A minimal composable infrastructure on top of libudev and libevdev
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/interception/linux/tools
 	arch = x86_64
 	license = GPL3
