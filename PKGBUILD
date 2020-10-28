@@ -2,20 +2,21 @@
 
 pkgname=scientifica-bdf
 _gitname=scientifica
-pkgver=2.4
-pkgrel=4
+pkgver=2.1
+pkgrel=6
 pkgdesc='Tall and condensed bitmap font for geeks.'
 arch=('any')
 url="https://github.com/NerdyPepper/scientifica"
 license=('SIL')
 depends=()
-makedepends=('git' 'xorg-font-utils')
-source=('git+https://github.com/NerdyPepper/scientifica.git')
+makedepends=()
+source=("https://github.com/NerdyPepper/scientifica/releases/download/v$pkgver/scientifica-v$pkgver.tar")
 sha256sums=('SKIP')
 
 package() {
-    install -D -m644 "$srcdir/$_gitname/regular/scientifica-11.bdf" "$pkgdir/usr/share/fonts/misc/scientifica-11.bdf"
-    install -D -m644 "$srcdir/$_gitname/bold/scientificaBold-11.bdf" "$pkgdir/usr/share/fonts/misc/scientificaBold-11.bdf"
-    install -D -m644 "$srcdir/$_gitname/italic/scientificaItalic-11.bdf" "$pkgdir/usr/share/fonts/misc/scientificaItalic-11.bdf"
-    install -D -m644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	tar xvf "scientifica-v$pkgver.tar"
+
+    install -D -m644 "$_gitname/bdf/scientifica-11.bdf" "$pkgdir/usr/share/fonts/misc/scientifica-11.bdf"
+    install -D -m644 "$_gitname/bdf/scientificaBold-11.bdf" "$pkgdir/usr/share/fonts/misc/scientificaBold-11.bdf"
+    install -D -m644 "$_gitname/bdf/scientificaItalic-11.bdf" "$pkgdir/usr/share/fonts/misc/scientificaItalic-11.bdf"
 }

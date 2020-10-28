@@ -1,13 +1,11 @@
 pkgbase = scientifica-bdf
 	pkgdesc = Tall and condensed bitmap font for geeks.
-	pkgver = 2.4
-	pkgrel = 4
+	pkgver = 2.1
+	pkgrel = 6
 	url = https://github.com/NerdyPepper/scientifica
 	arch = any
 	license = SIL
-	makedepends = git
-	makedepends = xorg-font-utils
-	source = git+https://github.com/NerdyPepper/scientifica.git
+	source = https://github.com/NerdyPepper/scientifica/releases/download/v2.1/scientifica-v2.1.tar
 	sha256sums = SKIP
 
 pkgname = scientifica-bdf
