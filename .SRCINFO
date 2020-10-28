@@ -1,18 +1,19 @@
 pkgbase = adtrack2-bin
 	pkgdesc = OPL3 music tracker
 	pkgver = 2.4.24
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.adlibtracker.net
 	arch = x86_64
-	license = custom:unknown
-	makedepends = setconf
+	license = custom
 	depends = sdl2
 	source = http://www.adlibtracker.net/files/adtrack-2.4.24-linux-bin-debian-stretch-x86.tar.gz
 	source = adtrack2.sh
 	source = adtrack2.desktop
+	source = LICENSE.html::http://www.adlibtracker.net/programfaq.php
 	sha256sums = fdfbb29ae5da944d082a1d33331532745bdfca92acea67eabeae3ff446ec8b17
 	sha256sums = e8554514c56872d1baf2aceb513249b873e2745eba5448816c06b2a41087603e
 	sha256sums = c6393a8159cdb8e2de29c82930cb19d5532aa38ab5e4b81d4baf0fac4580fcbf
+	sha256sums = 21dbd102eb17ab90526d03b831d5ec463c8284f75b665766c1dab61697f15f5a
 
 pkgname = adtrack2-bin
 
