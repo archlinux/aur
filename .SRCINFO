@@ -1,7 +1,7 @@
 pkgbase = mlogtail-git
 	pkgdesc = Mail log tailing and simple stats collecting application
 	pkgver = r44.9c23c35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aadz/mlogtail
 	arch = any
 	license = GPL
@@ -10,7 +10,9 @@ pkgbase = mlogtail-git
 	provides = mlogtail
 	conflicts = mlogtail
 	source = mlogtail::git+https://github.com/aadz/mlogtail.git
+	source = stdin_tail.patch::https://github.com/aadz/mlogtail/commit/2c46943f928529630d4c7c1ac5e2a0e2d56dec14.patch
 	sha256sums = SKIP
+	sha256sums = 715c763856b5aa86d9c18c360a478d2e616656a63dc6160f6c281eec24c21731
 
 pkgname = mlogtail-git
 
