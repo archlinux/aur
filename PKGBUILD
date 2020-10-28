@@ -1,4 +1,4 @@
-# Maintainer: Mario O.M. <marioortizmanero@gmail.com>
+# Maintainer: Mario Ortiz Manero <marioortizmanero@gmail.com>
 pkgname=vidify
 pkgver=2.2.6
 pkgrel=2
