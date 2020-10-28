@@ -2,7 +2,7 @@
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=screencloud
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='An easy to use screenshot sharing application'
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=('cmake' 'zlib' 'openssl' 'qt5-svg' 'qt5-tools')
 optdepends=('python-ssh2: for SFTP support')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/olav-st/${pkgname}/archive/v${pkgver}.tar.gz"
         '010-screencloud-fix-python-link-libraries.patch')
-sha256sums=('c7bcc21873fbd9f2dff30d7a4834516828b76a4cdd533be25656dc210310978c'
+sha256sums=('cff8cf5f5afa5c7aee2d7dd3a8ce28a9808f703042e03dd635b255c5b5a12c27'
             'bf9327568513852f02b87c7a72474b50ed323ed525098e790e190472f9b1fa8e')
 
 prepare() {
