@@ -7,7 +7,7 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.3.0.rc2.r963.g4de96f8bc
+pkgver=1.3.0.rc2.r1004.gf5489231a
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
@@ -46,7 +46,6 @@ prepare() {
 }
 
 build() {
-  CXXFLAGS+=" -DPLUGIN_PATH=/usr/lib/$_pkgname"
   cmake \
     -B "$_pkgname/build" \
     -S "$_pkgname" \
