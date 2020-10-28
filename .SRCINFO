@@ -1,6 +1,6 @@
 pkgbase = r-openxlsx
 	pkgdesc = Read, Write and Edit xlsx Files
-	pkgver = 4.2.2
+	pkgver = 4.2.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=openxlsx
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = r-openxlsx
 	optdepends = r-testthat
 	optdepends = r-roxygen2
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/openxlsx_4.2.2.tar.gz
-	sha256sums = 0bde8a51be71c80e7cd0b6845a391dfb93d4a261c86336ab349cb7555956528b
+	source = https://cran.r-project.org/src/contrib/openxlsx_4.2.3.tar.gz
+	sha256sums = cdef89d826e50bef772af3e5eae935ca0316626a6e22f55f7631eac733b5e46f
 
 pkgname = r-openxlsx
 
