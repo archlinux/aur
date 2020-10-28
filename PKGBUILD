@@ -4,17 +4,18 @@
 # Contributor: 2bluesc <2bluesc gmail.com>
 # Contributor: Vadzim Dambrouski <pftbest gmail.com>
 pkgname=xtensa-esp32-elf-gcc-bin
-pkgver=8.2.0_esp32_2019r1
+pkgver=8.4.0_esp32_2020r3
 pkgrel=1
 pkgdesc="ESP32 Toolchain"
 arch=('x86_64')
-depends=('glibc' 'gcc' 'git' 'make' 'ncurses' 'flex' 'bison' 'gperf' 'python2-pyserial' 'python2-cryptography' 'python2-future' 'python2-pyparsing' 'python2-pyelftools')
+depends=('glibc' 'gcc' 'git' 'make' 'ncurses' 'flex' 'bison' 'gperf' 'python2-pyserial' 'python2-cryptography' 'python2-pyparsing')
 conflicts=('gcc-xtensa-esp32-elf-bin')
 url="https://esp-idf.readthedocs.io/en/latest/get-started/linux-setup.html"
-source=("https://dl.espressif.com/dl/xtensa-esp32-elf-gcc8_2_0-esp32-2019r1-linux-amd64.tar.gz")
+# see https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/tools/idf-tools.html#xtensa-esp32-elf
+source=("https://dl.espressif.com/dl/xtensa-esp32-elf-gcc8_4_0-esp-2020r3-linux-amd64.tar.gz")
 license=('GPL' 'LGPL')
 options=(!strip staticlibs)
-sha256sums=('39db59b13f25e83e53c55f56979dbfce77b7f23126ad79de833509ad902d3f0a')
+sha256sums=('674080a12f9c5ebe5a3a5ce51c6deaeffe6dfb06d6416233df86f25b574e9279')
 
 package() {
   mkdir -p $pkgdir/usr
