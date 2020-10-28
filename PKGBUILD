@@ -7,13 +7,13 @@ pkgver=8.0.22
 pkgrel=1
 pkgdesc="ODBC driver/connector for MySQL"
 arch=(i686 x86_64)
-url="http://dev.mysql.com/downloads/connector/odbc/"
+url="https://dev.mysql.com/downloads/connector/odbc/"
 depends=('unixodbc' 'libmysqlclient')
 makedepends=('cmake' 'gtk2')
 optdepends=('gtk2: graphical interface')
 license=('GPL')
 options=('libtool')
-source=("http://cdn.mysql.com/Downloads/Connector-ODBC/8.0/mysql-connector-odbc-$pkgver-src.tar.gz")
+source=("https://cdn.mysql.com/Downloads/Connector-ODBC/8.0/mysql-connector-odbc-$pkgver-src.tar.gz")
 md5sums=('2fe5df8f3b804a9c4628103f7ab6b3f7')
 
 build() {
