@@ -1,0 +1,12 @@
+pkgbase = hactool
+	pkgdesc = a tool to view information about common file formats for the Nintendo Switch
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/SciresM/hactool
+	arch = x86_64
+	license = ISC
+	source = hactool-1.4.0.tar.gz::https://github.com/SciresM/hactool/archive/1.4.0.tar.gz
+	b2sums = 8ab5a52c895fc295d342f1470a2c25a77b53c1b251683eae587d5930221f80228231d215ded99277d18951f616eb3a4bb95c45c08a98fe0e69d10bf5b4b0c05b
+
+pkgname = hactool
+
