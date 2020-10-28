@@ -1,13 +1,12 @@
 pkgbase = otb-scientifica
 	pkgdesc = Tall and condensed bitmap font for geeks.
-	pkgver = 2.5
-	pkgrel = 0
+	pkgver = 2.1
+	pkgrel = 5
 	url = https://github.com/NerdyPepper/scientifica
 	arch = any
 	license = SIL
 	makedepends = git
-	makedepends = xorg-font-utils
-	source = git+https://github.com/NerdyPepper/scientifica.git
+	source = https://github.com/NerdyPepper/scientifica/releases/download/v2.1/scientifica-v2.1.tar
 	sha256sums = SKIP
 
 pkgname = otb-scientifica
