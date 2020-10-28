@@ -1,18 +1,21 @@
-#!/usr/bin/env sh
+#!/bin/sh
 DEV="$1"
 MNTPT="$2"
 OPTIONS=""
 TCOPTIONS=""
+
 shift 3
 IFS=','
 for arg in $*; do
-  if [ "${arg}" == "system" ]; then
-    TCOPTIONS="${TCOPTIONS}-m=system "
-  elif [[ "${arg}" == fs=* ]]; then
-    FS=${arg#*=}
-    TCOPTIONS="${TCOPTIONS}--filesystem=${FS} "
-  else
-    OPTIONS="${OPTIONS}${arg},"
-  fi
+    case "$arg" in
+        system)                   TCOPTIONS=(${TCOPTIONS[*]} --m=system);;
+        fs*)                      TCOPTIONS=(${TCOPTIONS[*]} --filesystem=${arg#*=});;
+        keyfiles*)                TCOPTIONS=(${TCOPTIONS[*]} --keyfiles=${arg#*=});;
+        password*)                TCOPTIONS=(${TCOPTIONS[*]} --password=${arg#*=}) && echo "password triggered" ;;
+        protect-hidden*)          TCOPTIONS=(${TCOPTIONS[*]} --protect-hidden=${arg#*=});;
+        *)                        OPTIONS="${OPTIONS}${arg},";;
+
+    esac
 done
-exec truecrypt ${DEV} ${MNTPT} ${TCOPTIONS% *} --fs-options="${OPTIONS%,*}"
+
+/bin/truecrypt --text --non-interactive ${DEV} ${MNTPT} ${TCOPTIONS[*]} --fs-options="${OPTIONS%,*}"
