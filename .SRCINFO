@@ -1,5 +1,5 @@
 pkgbase = natapp
-	pkgdesc = 内网穿透,基于ngrok的国内高速内网映射工具
+	pkgdesc = High speed intranet penetration tools in Chinese based on ngrok.
 	pkgver = 2_3_9
 	pkgrel = 5
 	url = https://natapp.cn
