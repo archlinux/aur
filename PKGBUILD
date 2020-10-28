@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-tools
-_qtver=6.0.0-beta1
+_qtver=6.0.0-beta2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,7 +17,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qttools-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('4f6f408dcf13d3a87d6b6725142fee6cfd38d16e2de945e374fa9e1f5605a8d0')
+sha256sums=('06f41e6c50bcb0e278cc69d2cae9ad06a06a45ca2ed5939ccd93e101d6ebe862')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
