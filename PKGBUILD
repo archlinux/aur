@@ -2,7 +2,7 @@
 _reponame=nlsr
 _pkgname=nlsr
 pkgname=ndn-${_pkgname}-git
-pkgver=0.5.2.r11.g7a231c0
+pkgver=0.5.2.r12.g4a90b9a
 pkgrel=1
 # epoch=
 pkgdesc="Named Data Link State Routing Protocol"
@@ -32,6 +32,11 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_reponame}"
+
+  # Patch missing include
+  sed -i "26i#include <ostream>" "${srcdir}/${_reponame}/src/hello-protocol.hpp"
+  sed -i "25i#include <ostream>" "${srcdir}/${_reponame}/src/statistics.hpp"
+
 	./waf configure --prefix=/usr --with-tests
 }
 

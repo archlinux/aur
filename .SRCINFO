@@ -1,6 +1,6 @@
 pkgbase = ndn-nlsr-git
 	pkgdesc = Named Data Link State Routing Protocol
-	pkgver = 0.5.2.r11.g7a231c0
+	pkgver = 0.5.2.r12.g4a90b9a
 	pkgrel = 1
 	url = https://github.com/named-data/nlsr
 	arch = i686
