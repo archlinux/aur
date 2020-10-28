@@ -1,4 +1,4 @@
-# Maintainer: Mario O.M. <marioortizmanero@gmail.com>
+# Maintainer: Mario Ortiz Manero <marioortizmanero@gmail.com>
 pkgname=python-lyricwikia
 pkgver=0.1.11
 pkgrel=1
