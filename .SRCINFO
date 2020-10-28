@@ -1,14 +1,14 @@
 pkgbase = league-spartan-font
 	pkgdesc = A geometric sans-serif revival of ATF’s classic Spartan
-	pkgver = 2.210
+	pkgver = 2.220
 	pkgrel = 1
 	epoch = 1
 	url = https://www.theleagueofmoveabletype.com/league-spartan
 	arch = any
 	groups = lmt-fonts
 	license = OFL
-	source = https://github.com/theleagueof/league-spartan/releases/download/2.210/LeagueSpartan-2.210.tar.xz
-	sha256sums = d67faf9ceba579c41624078e4628e0ce644b3cfb0f2c2e2ea20dbe3517ceabaa
+	source = https://github.com/theleagueof/league-spartan/releases/download/2.220/LeagueSpartan-2.220.tar.xz
+	sha256sums = 141a96e215554871504dca16be159901bbb0d56f3a84224f39fe472c7ab4ef47
 
 pkgname = otf-league-spartan
 	provides = league-spartan-font
