@@ -1,6 +1,6 @@
 pkgname=lc2kicad
-pkgver=0.1.4
-pkgrel=1
+pkgver=0.1.5
+pkgrel=2
 pkgdesc="A utility that converts EasyEDA files to KiCad files"
 arch=('x86_64' 'i686' 'arm')
 license=('LGPL3')
@@ -8,7 +8,7 @@ depends=()
 optdepends=()
 makedepends=('cmake')
 url="https://github.com/RigoLigoRLC/LC2KiCad"
-source=(git+https://github.com/RigoLigoRLC/LC2KiCad.git#commit=216f939)
+source=(git+https://github.com/RigoLigoRLC/LC2KiCad.git#commit=533c542)
 md5sums=('SKIP')
 
 build()
