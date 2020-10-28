@@ -1,6 +1,7 @@
 pkgbase = transmission-trackers-git
+	pkgdesc = Automatically add trackers from a list to all torrents in Transmission
 	pkgver = r21.10849a0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blind-oracle/transmission-trackers
 	install = transmission-trackers.install
 	arch = any
