@@ -5,8 +5,8 @@
 
 _basename=zoom
 pkgname="$_basename-system-qt"
-pkgver=5.3.472687.1012
-pkgrel=2
+pkgver=5.4.53350.1027
+pkgrel=1
 pkgdesc='Video Conferencing and Web Conferencing Service - system Qt libraries'
 arch=('x86_64')
 license=('custom')
@@ -22,7 +22,7 @@ optdepends=('qt5-webengine: SSO login support'
 			'xcompmgr: extra compositor needed by some window managers for screen sharing')
 options=(!strip)
 source=("${pkgname}-${pkgver}_orig_x86_64.pkg.tar.xz"::"https://zoom.us/client/${pkgver}/zoom_x86_64.pkg.tar.xz")
-sha512sums=('99b9cc5743e92fa5472ca33e1cbe5668d978d96530822d372b7227502d41ef33789035b74160945d5eb08e57cf3762f524f8ece087fc0f5c7ce05ad0ba41abf7')
+sha512sums=('db293308f752140c2086476c790d366193c4ca17dfa68bbddb595c3b395c7cda04658c3bd5127dd785abd56c693ece47501d998b1f96b7305b2a6fd64b0ca4a0')
 
 package() {
 	cp -dpr --no-preserve=ownership opt usr "${pkgdir}"
@@ -46,7 +46,8 @@ package() {
     rm -rf platforms
     rm -rf platforminputcontexts
     rm -rf platformthemes
-    rm -rf Qt{,GraphicalEffects,Qml,Quick,Quick.2}
+    rm -rf Qt{,GraphicalEffects,Qml,Quick,Quick.2,Wayland}
+    rm -rf wayland-*
     rm -f libmpg123.so
     rm -f libfaac1.so
     rm -f libturbojpeg.so{,.*}
