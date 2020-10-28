@@ -1,4 +1,4 @@
-# Contributor: Your Name <youremail@domain.com>
+# Contributor: Wilhelm Schuster <aur [aT] rot13 dot io>
 pkgname=perl-lazy-utils
 pkgver=1.22
 pkgrel=1
