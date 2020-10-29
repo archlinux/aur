@@ -4,7 +4,7 @@ pkgname=popura-git
 _pkgname="popura"
 pkgver=0.3.15+popura1
 _commit=42941caaf13472f1ecc0c675ae6059a857f3e60a
-pkgrel=1
+pkgrel=2
 pkgdesc="Popura ポプラ: alternative Yggdrasil network client"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/popura-network/Popura"
@@ -27,6 +27,14 @@ build() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
+
+	export GOPATH="${srcdir}/gopath"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
 	install -Dm755 "yggdrasil" "${pkgdir}/usr/bin/popura"
 	install -Dm755 "yggdrasilctl" "${pkgdir}/usr/bin/popuractl"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
