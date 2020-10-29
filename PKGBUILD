@@ -9,17 +9,19 @@ pkgname=(
   kata-proxy
   kata-shim
 
-  #kata-linux-container
+  kata-linux-container
   #kata-containers-image
 )
 pkgver=1.11.4
 _pkgver=${pkgver/\~/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight virtual machines for containers"
 arch=('x86_64')
 url="https://katacontainers.io/"
 license=('Apache')
-makedepends=('go')
+makedepends=(
+  'go<2:1.15'  # thanks Intel, love you big time: https://github.com/kata-containers/runtime/issues/2982
+)
 
 _gh_org="github.com/kata-containers"
 _kata_kernel_ver="5.4.32"
@@ -32,8 +34,8 @@ source=(
   "proxy-${_pkgver}.tar.gz::https://${_gh_org}/proxy/archive/${_pkgver}.tar.gz"
   "runtime-${_pkgver}.tar.gz::https://${_gh_org}/runtime/archive/${_pkgver}.tar.gz"
   "shim-${_pkgver}.tar.gz::https://${_gh_org}/shim/archive/${_pkgver}.tar.gz"
-  #"https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_kata_kernel_ver}.tar.xz"
-  #"https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_kata_kernel_ver}.tar.sign"
+  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_kata_kernel_ver}.tar.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_kata_kernel_ver}.tar.sign"
   #"http://mirrors.evowise.com/archlinux/iso/2020.08.01/archlinux-bootstrap-2020.08.01-x86_64.tar.gz"
   #"http://mirrors.evowise.com/archlinux/iso/2020.08.01/archlinux-bootstrap-2020.08.01-x86_64.tar.gz.sig"
 )
@@ -45,8 +47,8 @@ sha512sums=(
   e19619110b4162e22bc4fa6c17330d9d77519a015971acbd8101ef9b4fbab728eb5779dc8c98c77e99a9a6355ce09408b37ecd440cef24ff8bb3e2e3156ef160
   f5b932d19b13a6150037d4929038142e218e752bf8cd52bf5a19b29abcf0bb377683ba84c9412b5f744549099d12ba82c2a35188230af759991ffff5eca7bce1
   8632772e67c2e045a9363eb00af3309632a5b15b8afe12a1756ae74fa484a0e7f9293b019355f483c6771a9294e09d518d40f34d15c114a0ca2bca90712171ab
-  #197f292fa541031071b8ed64880a3d4251fa65059747cbdf3900b8f934d17f681b506ca5f70132899bdef343d2d249a7902215d2ea04af5410599f1e50d6cbac
-  #SKIP
+  197f292fa541031071b8ed64880a3d4251fa65059747cbdf3900b8f934d17f681b506ca5f70132899bdef343d2d249a7902215d2ea04af5410599f1e50d6cbac
+  SKIP
   #24044fb5a9870dbe13ec7eafb60d99e664cec10d50d80a73a0445d1368c0fa95881003d92e0a1c0446f76c1bbe89b098f35ceffd0ef24e9beaa51f1a83494b98
   #SKIP
 )
@@ -58,8 +60,8 @@ b2sums=(
   f514bb42482fcdf54454cb6e2362a45a897f6e3cd748ebd1bab7d1fe4a0736ec27bfa07d8ccc7bd7b037c4cf097bb23ecd69b2f93d31f9028c8dafc28fecd39d
   4721581ccc2c4af854091dd60ef6134e7285672993c99a0e0f4932de422d887b197ad80176fbc1a2f4085dfe9ae8baf044ee0728a92b7aedbc02139e62e84c0c
   0625dc648f976b2aa0dc8b9a8b06eb0e25b043f68506861aa85888646648df347adfe7d1b94c24315315f6f81e1fb9c89d6f07102401b6eb2b4de8c818001d55
-  #0ac78d1eb97ce4689ccdab01fb1475d07f29a90251b44b05fcf030d2f9aa644ac9dbb1315c7fe1eb991ef1435b7f17669e2b4f66187e3404599a0f136d2b1a50
-  #SKIP
+  0ac78d1eb97ce4689ccdab01fb1475d07f29a90251b44b05fcf030d2f9aa644ac9dbb1315c7fe1eb991ef1435b7f17669e2b4f66187e3404599a0f136d2b1a50
+  SKIP
   #24044fb5a9870dbe13ec7eafb60d99e664cec10d50d80a73a0445d1368c0fa95881003d92e0a1c0446f76c1bbe89b098f35ceffd0ef24e9beaa51f1a83494b98
   #SKIP
 )
@@ -96,7 +98,7 @@ _kernel_prepare(){
 }
 
 prepare(){
-  #_kernel_prepare
+  _kernel_prepare
 
   mkdir -p "${srcdir}/src/${_gh_org}"
   for i in agent ksm-throttler proxy runtime shim; do
@@ -130,13 +132,12 @@ build(){
   GOPATH="${srcdir}" LDFLAGS="" make
 
   # kernel build
-  #cd "${srcdir}/linux-${_kata_kernel_ver}"
-  #make -s ARCH="${_KARCH}"
+  cd "${srcdir}/linux-${_kata_kernel_ver}"
+  make -s ARCH="${_KARCH}"
 
   #_kata_image_build
 
   for i in ksm-throttler proxy runtime shim; do
-    echo "Building kata-${i}…"
     cd "${srcdir}/src/${_gh_org}/${i}"
     GOPATH="${srcdir}" make DESTDIR="${pkgdir}" BINDIR="/usr/bin" PKGLIBEXECDIR="/usr/lib/kata-containers" LIBEXECDIR="/usr/lib"
   done
@@ -181,8 +182,9 @@ package_kata-proxy(){
 }
 
 package_kata-runtime(){
-  depends=('qemu-headless' "kata-ksm-throttler=${pkgver}" "kata-proxy=${pkgver}" "kata-shim=${pkgver}" "kata-linux-container" "kata-containers-image")
+  depends=('qemu-headless' "kata-proxy=${pkgver}" "kata-shim=${pkgver}" "kata-linux-container" "kata-containers-image")
   optdepends=(
+    "kata-ksm-throttler=${pkgver}"
     'firecracker<0.22.0'
     'cloud-hypervisor<0.8.0'
   )
