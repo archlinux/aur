@@ -4,13 +4,14 @@ pkgname=popura-git
 _pkgname="popura"
 pkgver=0.3.15+popura1
 _commit=42941caaf13472f1ecc0c675ae6059a857f3e60a
-pkgrel=4
+pkgrel=5
 pkgdesc="Popura ポプラ: alternative Yggdrasil network client"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/popura-network/Popura"
 license=('LGPLv3')
 conflicts=('popura')
 makedepends=('git' 'go')
+backup=(etc/default/popura)
 source=("popura::git+https://github.com/popura-network/Popura.git#commit=${_commit}"
 	'popura.sysusers'
 	'popura-default-config.service'
