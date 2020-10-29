@@ -6,7 +6,7 @@ _name=league-spartan
 _fname=LeagueSpartan
 pkgbase=$_name-font-git
 pkgname=(otf-$_name-git ttf-$_name-git ttf-$_name-variable-git)
-pkgver=2.210.r0.gb901cb0
+pkgver=2.220.r1.g8811c61
 pkgrel=1
 pkgdesc='A geometric sans-serif revival of ATF’s classic Spartan'
 arch=('any')
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
     cd "$pkgbase"
-    fontship -q make
+    fontship make
 }
 
 package_otf-league-spartan-git() {
@@ -34,8 +34,8 @@ package_otf-league-spartan-git() {
     cd "$pkgbase"
     export GLOBIGNORE='*-VF.otf'
     install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" $_fname-*.otf
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ofl{,-faq}.markdown
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.markdown
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.md
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
 
 package_ttf-league-spartan-git() {
@@ -44,8 +44,8 @@ package_ttf-league-spartan-git() {
     cd "$pkgbase"
     export GLOBIGNORE='*-VF.ttf'
     install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" $_fname-*.ttf
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ofl{,-faq}.markdown
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.markdown
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.md
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
 
 package_ttf-league-spartan-variable-git() {
@@ -53,6 +53,6 @@ package_ttf-league-spartan-variable-git() {
     conflicts=("${pkgname%-git}")
     cd "$pkgbase"
     install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" $_fname-VF.ttf
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ofl{,-faq}.markdown
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.markdown
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.md
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
