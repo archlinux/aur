@@ -16,7 +16,7 @@ provides=('elasticsearch')
 conflicts=('elasticsearch')
 relpkgname=elasticsearch
 source=(
-  "https://artifacts.elastic.co/downloads/$relpkgname/$relpkgname-$pkgver-x86_64.rpm"
+  https://artifacts.elastic.co/downloads/$relpkgname/$relpkgname-$pkgver-x86_64.rpm{,.asc}
   elasticsearch-env
   elasticsearch.service
   elasticsearch@.service
@@ -28,6 +28,7 @@ source=(
   elasticsearch.default
 )
 sha512sums=('04d1d21361bd05a1c512d5394afa053ee7dd56a086d9990124093d9fa6adc5a40b95d2fd86d834c3f7526aba028838c88f5981577e9c23c9bb5654d878035328'
+            'SKIP'
             '52556e0709590f0e15039d89b64c08c9bbeb0c61d29e3cd5a4471744968c882eb559081db1c89e846fa33d50b31e2fe9ba46d7e7e2cf5d4a23e78bc97a50c853'
             '8280cfd911c1762a1cba67a72bf01c593dbcec00ab02b5f7ca2ef05dbcbae835f2d0e20f3143b0f601e233708e7a60148a1b2087aaff0e0b239361ca4792409f'
             '712974b708f54b631d635601e7dff037a2fff0cd927cd09b27974fdb9232c1e495d70232afad5eaa4d2876665e099f880c23f914ed602700ef1962b5f137879f'
@@ -37,6 +38,7 @@ sha512sums=('04d1d21361bd05a1c512d5394afa053ee7dd56a086d9990124093d9fa6adc5a40b9
             '1c1b3dfe28cd2f9026fdfa373bc59be35cf281bf22fcab12150ddded40b1355268078b9197559c4bdb9665177924fe95786028386baec90dede53264506383fd'
             'af1af8854ca5a129b6c1d5fd3d977d99af0acef4490f2a9d39ee0746467a3305e223031c4ca5cebbb1629b8611e04ea61a1bf57f7fcef4ff4da0d6bae0df8c72'
             '4ef74026f82b6f0cb6cec9b992cd3f9b145083da39a37b7d8da01824c44054c72644ee0fe6d92f0329496f0fce97b7b913bca1402ef922b6cceccc360e35c5b1')
+validpgpkeys=('46095ACC8548582C1A2699A9D27D666CD88E42B4') # Elasticsearch (Elasticsearch Signing Key) <dev_ops@elasticsearch.org>
 
 backup=('etc/default/elasticsearch'
         'etc/elasticsearch/elasticsearch.yml'
