@@ -1,6 +1,6 @@
 # Maintainer: Alad Wenter <https://github.com/AladW>
 pkgname=aurutils-git
-pkgver=2.3.1.r24.g7a72b96
+pkgver=3.0.0.r6.g868691f
 pkgrel=1
 pkgdesc='helper tools for the arch user repository'
 url='https://github.com/AladW/aurutils'
@@ -10,7 +10,7 @@ source=('git+https://github.com/AladW/aurutils')
 sha256sums=('SKIP')
 conflicts=('aurutils')
 provides=("aurutils=${pkgver%%.r*}")
-depends=('git' 'jq' 'pacutils' 'parallel' 'wget')
+depends=('git' 'jq' 'pacutils' 'curl')
 makedepends=('git')
 optdepends=('bash-completion: bash completion'
             'devtools: aur-chroot'
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
     cd aurutils
-    make DESTDIR="$pkgdir"
+    make
 }
 
 package() {
