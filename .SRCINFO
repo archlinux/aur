@@ -1,6 +1,6 @@
 pkgbase = dynamodb
 	pkgdesc = Amazon DynamoDB Local instance. Amazon DynamoDB is a fast and flexible NoSQL database service for all applications that need consistent, single-digit millisecond latency at any scale.
-	pkgver = 2019_02_07
+	pkgver = 2020_10_12
 	pkgrel = 1
 	url = http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tools.DynamoDBLocal.html
 	install = dynamodb.install
@@ -9,14 +9,15 @@ pkgbase = dynamodb
 	depends = java-environment
 	depends = bash
 	depends = lib32-glibc
+	options = !strip
 	source = config.cfg
 	source = dynamodb
 	source = dynamodb.service
-	source = http://dynamodb-local.s3-website-us-west-2.amazonaws.com/dynamodb_local_2019-02-07.tar.gz
+	source = http://dynamodb-local.s3-website-us-west-2.amazonaws.com/dynamodb_local_2020-10-12.tar.gz
 	sha256sums = 6a2d271d62de9e4e48bd4bd866a72283dec6bacc097c2f6262ab19fc0feb34d9
 	sha256sums = 2c4d4840735b2dd8b73c3a3132d23dc1e586a758cb699ea0ccf74943657bda69
 	sha256sums = 4024db91c14087290fbce707cadead1ea013dc845216e9758a485b7d2f67c3ca
-	sha256sums = 3281b5403d0d397959ce444b86a83b44bc521e8b40077a3c2094fa17c9eb3c43
+	sha256sums = 99688643427ad952558ea240f2e011e923468fe2422fc1e6aea810fdffeda069
 
 pkgname = dynamodb
 
