@@ -1,7 +1,7 @@
 # Maintainer: goll <adrian.goll+aur[at]gmail>
 
 pkgname=sslscan-rbsec
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="sslscan tests SSL/TLS enabled services to discover supported cipher suites"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('git' 'gcc' 'make')
 conflicts=('sslscan' 'sslscan-git')
 source=("https://github.com/rbsec/sslscan/archive/${pkgver}.tar.gz")
-sha256sums=('245252982076103f1c20e9f136e38070c0b71fbcd98a3a04aa0175bef5acc8b9')
+sha256sums=('34a557a7996bb5c2f69fe512b7ef14ba272094178e76140535e50691bf934f99')
 
 build() {
   cd "${srcdir}/sslscan-${pkgver}"
