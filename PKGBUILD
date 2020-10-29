@@ -5,12 +5,12 @@
 
 pkgname=ledger-live
 pkgver=2.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Ledger Live - Desktop"
 arch=('x86_64')
 url="https://www.ledgerwallet.com/live"
 license=('MIT')
-makedepends=(yarn python nodejs-lts-erbium)
+makedepends=(yarn python nodejs)
 
 source=("https://github.com/LedgerHQ/ledger-live-desktop/archive/v${pkgver}.tar.gz"
         "ledger-live.desktop")
@@ -33,19 +33,20 @@ build() {
 }
 
 package() {
-  install -D -m644 \
-    "${pkgname}.desktop" \
-    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   cd $extractedFolder
 
   install -dm755 "${pkgdir}/opt"
-  cp -r "dist/linux-unpacked" "${pkgdir}/opt/ledger-live"
+  cp -r "dist/linux-unpacked" "${pkgdir}/opt/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/ledger-live-desktop" "${pkgdir}/usr/bin/${pkgname}"
 
-  install -D -m644 \
-    "build/icons/icon@4x.png" \
-    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/ledger-live.png"
+  install -Dm644 "build/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
+  install -Dm644 "build/icons/icon@2x.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
+  install -Dm644 "build/icons/icon@3x.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"  
+  install -Dm644 "build/icons/icon@4x.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+  install -Dm644 "build/icons/icon@5x.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png"
+
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

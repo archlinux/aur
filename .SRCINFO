@@ -1,13 +1,13 @@
 pkgbase = ledger-live
 	pkgdesc = Ledger Live - Desktop
 	pkgver = 2.15.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.ledgerwallet.com/live
 	arch = x86_64
 	license = MIT
 	makedepends = yarn
 	makedepends = python
-	makedepends = nodejs-lts-erbium
+	makedepends = nodejs
 	source = https://github.com/LedgerHQ/ledger-live-desktop/archive/v2.15.0.tar.gz
 	source = ledger-live.desktop
 	sha512sums = 9270380ef9d078fe1f7ad03d4e4e8b843c8ccf27ea35d21c61789c5649fd60927d7385ffd04d3c151e75adf28fb503ac962cd61a2b423d24413780d735f41db6
