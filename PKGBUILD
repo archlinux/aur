@@ -2,15 +2,15 @@
 
 pkgbase=libjpeg-xl-git
 pkgname=('libjpeg-xl-git' 'libjpeg-xl-doc-git')
-pkgver=r24.gc8ce59f
+pkgver=r26.g4d70bd5
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
 license=('Apache')
-makedepends=('git' 'cmake' 'clang' 'giflib' 'gperftools' 'libjpeg-turbo'
-             'libpng' 'openexr' 'zlib' 'libgl' 'freeglut' 'gtest' 'python'
-             'doxygen' 'graphviz')
+makedepends=('git' 'cmake' 'clang' 'gdk-pixbuf2' 'giflib' 'gimp' 'gperftools'
+             'libjpeg-turbo' 'libpng' 'openexr' 'zlib' 'libgl' 'freeglut'
+             'gtest' 'python' 'doxygen' 'graphviz')
 source=('git+https://gitlab.com/wg1/jpeg-xl.git'
         'git+https://github.com/google/brotli.git'
         'git+https://github.com/lvandeve/lodepng.git'
@@ -22,8 +22,8 @@ source=('git+https://gitlab.com/wg1/jpeg-xl.git'
         'git+https://github.com/meganz/mingw-std-threads.git'
         'git+https://github.com/veluca93/IQA-optimization.git'
         'git+https://github.com/Netflix/vmaf.git'
-        '010-libjpeg-xl-git-fix-headers-install-path.patch'
-        '020-libjpeg-xl-git-fix-highway-build.patch')
+        'git+https://github.com/thorfdbg/difftest_ng.git'
+        '010-libjpeg-xl-git-fix-highway-build.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -35,8 +35,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'f8d4950895f71b9709dd3b6399be6f87474051a7ac0addb608676e7ffe9f19da'
-            '287f18dfe7a75c75527e879c5a4470239153cc74dd76d459aed20db1062fdc47')
+            'SKIP'
+            'f783be03afe7094e21281097da0c727a83317dad118f15d36691f7f14163efa5')
 
 prepare() {
     local _mingw_commit
@@ -54,9 +54,9 @@ prepare() {
     git -C jpeg-xl config --local submodule.third_party/mingw-std-threads.url "${srcdir}/mingw-std-threads"
     git -C jpeg-xl config --local submodule.third_party/IQA-optimization.url "${srcdir}/IQA-optimization"
     git -C jpeg-xl config --local submodule.third_party/vmaf.url "${srcdir}/vmaf"
+    git -C jpeg-xl config --local submodule.third_party/difftest_ng.url "${srcdir}/difftest_ng"
     git -C jpeg-xl submodule update
-    patch -d jpeg-xl -Np1 -i "${srcdir}/010-libjpeg-xl-git-fix-headers-install-path.patch"
-    patch -d jpeg-xl -Np1 -i "${srcdir}/020-libjpeg-xl-git-fix-highway-build.patch"
+    patch -d jpeg-xl -Np1 -i "${srcdir}/010-libjpeg-xl-git-fix-highway-build.patch"
 }
 
 pkgver() {
@@ -64,12 +64,14 @@ pkgver() {
 }
 
 build() {
+    export CC='clang'
+    export CXX='clang++'
     cmake -B build -S jpeg-xl \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DJPEGXL_ENABLE_BENCHMARK:BOOL='false' \
         -DJPEGXL_ENABLE_FUZZERS:BOOL='false' \
-        -DJPEGXL_ENABLE_PLUGINS:BOOL='false' \
+        -DJPEGXL_ENABLE_PLUGINS:BOOL='true' \
         -DJPEGXL_ENABLE_VIEWERS:BOOL='false' \
         -DJPEGXL_WARNINGS_AS_ERRORS:BOOL='false' \
         -Wno-dev
@@ -82,8 +84,10 @@ check() {
 
 package_libjpeg-xl-git() {
     depends=('gcc-libs')
-    optdepends=('giflib: for CLI tools'
-                'gperftools: for CLI tools'
+    optdepends=('gdk-pixbuf2: for gdk-pixbuf plugin'
+                'giflib: for CLI tools'
+                'gimp: for gimp plugin'
+                'gperftools: for CLI tools and gdk-pixbuf/gimp plugins'
                 'libjpeg-turbo: for CLI tools'
                 'libpng: for CLI tools'
                 'openexr: for CLI tools')
@@ -92,7 +96,6 @@ package_libjpeg-xl-git() {
     
     make -C build DESTDIR="$pkgdir" install
     install -D -m644 jpeg-xl/plugins/mime/image-jxl.xml -t "${pkgdir}/usr/share/mime/packages"
-    rm "${pkgdir}/usr/bin/"{butteraugli_main,decode_and_encode,epf_main,fuzzer_corpus,ssimulacra_main,xyb_range}
     rm "${pkgdir}/usr/lib/"{libhwy.a,pkgconfig/libhwy{,-test}.pc}
     rm -r "${pkgdir}/usr/include/hwy"
 }
