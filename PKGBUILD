@@ -9,7 +9,7 @@ pkgdesc="Simple tool for managing Xiaomi devices on desktop using ADB and Fastbo
 arch=(any) 
 url="https://szaki.github.io/XiaomiADBFastbootTools/"  
 license=('MIT')
-depends=('java-runtime>=11' 'android-tools')
+depends=('jre11-openjdk' 'android-tools')
 makedepends=('gradle' 'gendesk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Szaki/$_pkgname/archive/$pkgver.tar.gz"
         "$pkgname.sh")
