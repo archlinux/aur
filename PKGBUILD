@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -28,6 +28,7 @@ build() {
 package() {
   cd $srcdir/${_pkgname}
   install -D -m 755 "$srcdir/${_pkgname}/target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${_pkgname}"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${_pkgname}"
 }
 
