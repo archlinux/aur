@@ -2,7 +2,7 @@
 
 pkgname=python-kornia
 _name=kornia
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 arch=(any)
 url='https://github.com/kornia/kornia'
@@ -13,7 +13,7 @@ depends=('python-pytorch' 'python-numpy' 'python-torchvision' 'opencv' 'ipython'
 checkdepends=('python-pytest')
 options=(!emptydirs)
 source=(${_name}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('266e3fd4941897d4b35d91861110ae0412c8dc10efafdc73d7b673a0d1974f40')
+sha256sums=('62e785e3c7940eded4c3aeaadf493483b2e064e9c1ec93f347759e64cf25a216')
 
 check() {
   cd "${srcdir}/${_name}-${pkgver}"
