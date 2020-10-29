@@ -1,6 +1,6 @@
 pkgbase = remt
 	pkgdesc = reMarkable tablet command-line tools.
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://gitlab.com/wrobell/remt
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = remt
 	depends = python-cytoolz
 	depends = python-iterfzf
 	depends = python-getmac
-	source = https://files.pythonhosted.org/packages/source/r/remt/remt-0.8.0.tar.gz
-	md5sums = b597ff7a8c939736db568c64897992fc
+	source = https://files.pythonhosted.org/packages/source/r/remt/remt-0.9.0.tar.gz
+	md5sums = b971f22837dd797862ec66b94caf0720
 
 pkgname = remt
 
