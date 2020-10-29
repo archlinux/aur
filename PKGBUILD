@@ -19,18 +19,26 @@ depends=('icu' 'libedit' 'libxml2' 'python' 'libbsd' 'ncurses' )
 makedepends=('clang' 'cmake' 'git' 'ninja' 'python-six' 'python2' 'rsync' 'swig')
 source=(
     "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
+    "sourcekit-lsp-${_swiftver}.tar.gz::https://github.com/apple/sourcekit-lsp/archive/swift-${_swiftver}.tar.gz"
+    "swift-argument-parser-${_swiftver}.tar.gz::https://github.com/apple/swift-argument-parser/archive/0.3.1.tar.gz"
     "swift-cmark-${_swiftver}.tar.gz::https://github.com/apple/swift-cmark/archive/swift-${_swiftver}.tar.gz"
-    "swift-llbuild-${_swiftver}.tar.gz::https://github.com/apple/swift-llbuild/archive/swift-${_swiftver}.tar.gz"
-    "llvm-project-${_swiftver}.tar.gz::https://github.com/apple/llvm-project/archive/swift-${_swiftver}.tar.gz"
-    "swift-corelibs-xctest-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-${_swiftver}.tar.gz"
+    "swift-driver-${_swiftver}.tar.gz::https://github.com/apple/swift-driver/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
+    "swift-corelibs-xctest-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
+    "swift-llbuild-${_swiftver}.tar.gz::https://github.com/apple/swift-llbuild/archive/swift-${_swiftver}.tar.gz"
     "swift-package-manager-${_swiftver}.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-${_swiftver}.tar.gz"
+    "llvm-project-${_swiftver}.tar.gz::https://github.com/apple/llvm-project/archive/swift-${_swiftver}.tar.gz"
+    "swift-tools-support-core-${_swiftver}.tar.gz::https://github.com/apple/swift-tools-support-core/archive/swift-${_swiftver}.tar.gz"
     '0001-arch-aur-pachtes.patch'
     "yams.tar.gz::https://github.com/jpsim/Yams/archive/3.0.1.tar.gz"
 )
 sha256sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -65,6 +73,7 @@ prepare() {
     mv swift-package-manager-swift-${_swiftver} swiftpm
 
     ln -sfn Yams-3.0.1 yams
+    ln -sfn swift-argument-parser-0.3.1 swift-argument-parser
 
     ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-pachtes.patch" )
 }
