@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=5.9
-_minor=1
+_minor=2
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=3
+pkgrel=1
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,8 +72,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0002-i2c-core-Restore-acpi_walk_dep_device_list-getting-c.patch"
+        "${_lucjanpath}/arch-patches-v3/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
@@ -310,12 +309,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('96af08c1dc964e5dbb3d221880ef8ca246f13370d2dc2f5ae64039f0352efc687c7446a2b4f86dad553b776ee75f78bbf58bb9bc845c9b57a9013ece63264874'
+sha512sums=('98efc0d10e76685eb3280546d8d9b0251062a8ede05959d0de95df18414d2a07ced0a585ba58dd5aad188ad2761d7c5150cd8a8435a6bb53d692702f434732a9'
             'SKIP'
             'fa79b1abfb94693e2dfcc9348e508e8d35103f5c1e57fc74f28eeee5b237c692994aee94567431976bd4bff9ac5964306194c0970ac8c72a2e9ddf47c0510523'
             '96427eecb0078ce57a40ef4ee78d3576216f27390ba6b9dfbb851f4d969558a82b698cc633217ad8f6b9d991e7eaebd613ed4bd5741cafe7fa40b2502dacd43a'
-            '82601180156862d6652d023ff9f80776a5dab67f1c46c3b27e177245fd7e12c9f8c4597990925940e215ddd673c24c1cfd1e5ef1ca69762c2cc5724d11133e55'
-            '9646cf65b2dd6b16d0df3c74e43eacfbc1fdc8ab241fe698a1f0762497ccc612df01b019cdf82430cca28bf843f91ba784c8bdfb7eb204330b7c73154ef6dda1'
+            '1692618ab047cc0b5e4b489a1bfeeb3f65e2f72f0990f7f85c8ab6eb135315fb1f87a12a9108189b5710fafe0394e9c596f2c5d846d2f158335c8f270bbd02a3'
             'b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6'
             '05fa26eb7ae135bbe4fdf6675d4eef95dbdf7a763a1ccc03313b8225143d9a20494f117eb2dd32a3f49c99c93b4e5d6cb47fddcaf39eebdff1528bcc11e4c047')
 
