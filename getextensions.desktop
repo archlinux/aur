@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Icon=gnome-logo-icon
+Name=Get Extensions
+Exec=getextensions
+Terminal=false
+Hidden=false
