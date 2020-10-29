@@ -1,10 +1,9 @@
 pkgbase = briar-gtk-git
 	pkgdesc = Native GTK Briar client
-	pkgver = 0.1.0.beta1.r17.ga9c883b
+	pkgver = 0.1.0.beta1.r51.gd976738
 	pkgrel = 1
 	url = https://code.briarproject.org/briar/briar-gtk
-	arch = x86_64
-	arch = aarch64
+	arch = any
 	license = GPL
 	makedepends = meson
 	makedepends = gtk3
@@ -13,7 +12,7 @@ pkgbase = briar-gtk-git
 	makedepends = git
 	makedepends = ninja
 	makedepends = java-environment=11
-	depends = libhandy1
+	depends = libhandy
 	depends = python
 	depends = gettext
 	depends = python-briar-wrapper-git

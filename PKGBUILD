@@ -1,13 +1,13 @@
 pkgname=briar-gtk-git
 _pkgname=briar-gtk
 conflicts=('briar-gtk')
-pkgver=0.1.0.beta1.r17.ga9c883b
+pkgver=0.1.0.beta1.r51.gd976738
 pkgrel=1
 pkgdesc='Native GTK Briar client'
 url='https://code.briarproject.org/briar/briar-gtk'
-arch=('x86_64' 'aarch64')
+arch=('any')
 license=('GPL')
-depends=('libhandy1' 'python' 'gettext'
+depends=('libhandy' 'python' 'gettext'
          'python-briar-wrapper-git' 'python-gobject'
          'briar-headless-git' 'java-runtime=11')
 makedepends=('meson' 'gtk3' 'appstream-glib' 'cmake'
