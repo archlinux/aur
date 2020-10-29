@@ -1,7 +1,7 @@
 pkgbase = trezor-suite-appimage
 	pkgdesc = desktop app for Trezor hardware wallets
 	pkgver = 20.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://suite.trezor.io/
 	arch = x86_64
 	license = custom:Trezor Reference Source License
@@ -13,7 +13,7 @@ pkgbase = trezor-suite-appimage
 	options = !strip
 	source = https://github.com/trezor/trezor-suite/releases/download/v20.10.1/Trezor-Suite-20.10.1-linux.AppImage
 	source = https://github.com/trezor/trezor-suite/releases/download/v20.10.1/Trezor-Suite-20.10.1-linux.AppImage.asc
-	validpgpkeys = 86E6792FC27BFD478860C11091F3B339B9A02A3D
+	validpgpkeys = 54067D8BBF00554181B5AB8F26A3A56662F0E7E2
 	sha256sums = ed08ffd7c4d64cbd0729d34476963cdf37d68961142120f0ea52737b2b7ff43a
 	sha256sums = SKIP
 
