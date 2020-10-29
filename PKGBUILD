@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=termchat
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Terminal chat through the LAN"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/lemunozm/termchat"
 license=('Apache')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('4ff391a373647ddd31a279fd5a32f78ff34276667852383b2aafb461aa5237eef8601115c1ab56bbbfb67111a8bf49ec1ff0cbfb3e998a2abe06491d0455ed22')
+sha512sums=('0ad9654ebcada15ff525d03acbab33544b0b904956622034bb8e5d13c016df633b4e799b0c1470805f7d519f8fe7f9589c54231b78b5d085465d81870231e0c0')
 
 build() {
   cd "$pkgname-$pkgver"
