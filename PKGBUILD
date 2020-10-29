@@ -1,14 +1,14 @@
-# $Id$
-# Maintainer: Victor3D <webmaster@victor3d.com.br>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: Victor3D <webmaster@victor3d.com.br>
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=directfb
 pkgver=1.7.7
-pkgrel=4
+pkgrel=5
 pkgdesc="A thin library that provides hardware graphics acceleration, input device handling and abstraction, integrated windowing system on top of the Linux Framebuffer Device"
 arch=('i686' 'x86_64')
-url="http://www.directfb.org"
+url="https://www.directfb.org"
 license=('LGPL')
 makedepends=('fluxcomp')
 depends=('gcc-libs' 'libjpeg' 'sdl' 'libpng' 'freetype2' 'libdrm' 'libgl' 'mesa')
@@ -23,7 +23,7 @@ build() {
     --enable-video4linux2 --enable-voodoo \
     --enable-mesa --enable-drmkms
   make
-} 
+}
 
 package() {
   cd $srcdir/DirectFB-DIRECTFB_1_7_7/
