@@ -1,3 +1,0 @@
-post_install() {
-  echo '--> call the binary via /opt/ssh-audit/ssh-audit'
-}
