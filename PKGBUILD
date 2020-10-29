@@ -61,9 +61,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=202
+_minor=203
 _srcname=linux-${_major}
-_clr=${_major}.201-131
+_clr=${_major}.202-132
 pkgbase=linux-clear-lts2017
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -175,7 +175,7 @@ prepare() {
     ### Optionally load needed modules for the make localmodconfig
         # See https://aur.archlinux.org/packages/modprobed-db
         if [ -n "$_localmodcfg" ]; then
-          if [ -f $HOME/.config/modprobed.db ]; then
+          if [ -e $HOME/.config/modprobed.db ]; then
             echo "Running Steven Rostedt's make localmodconfig now"
             make LSMOD=$HOME/.config/modprobed.db localmodconfig
           else
@@ -324,7 +324,7 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '459f49e4f75dd83287e95ad9d8e8246df828341b07b6352c9e3cf550b7c07d89'
+            'b7c6ac263ac2cb8e8a4ed67e6803f70c6f13baba07d811690fa6034c842a387e'
             'SKIP'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90')
 
