@@ -51,7 +51,7 @@ _major=5.9
 _minor=2
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -78,7 +78,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v3/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0002-mac80211-fix-regression-where-EAPOL-frames-were-sent.patch"
         "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
@@ -328,7 +329,8 @@ sha512sums=('98efc0d10e76685eb3280546d8d9b0251062a8ede05959d0de95df18414d2a07ced
             '7d30c34e75c2800d93c01e34ca23a00cda24d2f44bb837a48f6789c50ad69f7db4cc93d1fc75e43cfa4d4f4e9c612330dd595c56c13f8abb5d062338ea30697c'
             'cf634a9e0298adf1d05b7a8048ba2f89d4b8490cf48f1ab493cb40473116f360035b7fb3d8a54af980b1a49a1ad4dcfbc4ca69de8543b8bdf0a1d586908bd093'
             '96427eecb0078ce57a40ef4ee78d3576216f27390ba6b9dfbb851f4d969558a82b698cc633217ad8f6b9d991e7eaebd613ed4bd5741cafe7fa40b2502dacd43a'
-            '1692618ab047cc0b5e4b489a1bfeeb3f65e2f72f0990f7f85c8ab6eb135315fb1f87a12a9108189b5710fafe0394e9c596f2c5d846d2f158335c8f270bbd02a3'
+            '6f315551225e7d31595bfc6ff2cc0ea46d88c1d0c54024ee29da04c0d2573865d68b78bf2e9bf545e41f3231933bbe08b694d564af857ba5053ee467b6a48cb2'
+            '465fb40b6574cb6a64f2975998ccb13047c424553d7ac80ed46b2d8371657a4f3003efc81ec5227e2f09724e08599443cb4b3cd1018d889631e1a215891f10c8'
             'b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6'
             '0704f58ac0f4d07133408a8165247b2495fe5c74b446a7d1f4011665d03c1be6eb7f94a643438bde1bb749f109e5eb8cdbe8934b278de4373a81d6311e6ad716')
 
