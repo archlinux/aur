@@ -2,7 +2,7 @@
 # Contributor:  Pavel Milko <p.milko1999@yandex.ru>
 
 
-pkgname=yandex-ffmpeg
+pkgname=yandex-libffmpeg
 pkgver=0.47.2
 pkgrel=1
 
