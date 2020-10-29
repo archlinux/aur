@@ -1,7 +1,7 @@
 # Maintainer: Giorgio Gilestro <giorgio at gilest.ro>
 
 pkgname=ethoscope-node
-pkgver=0.0.0
+pkgver=r1969.g0521648
 pkgrel=1
 pkgdesc="A platform for monitoring animal behaviour in real time from a raspberry pi"
 arch=('any')
@@ -11,13 +11,12 @@ makedepends=('git' 'gcc-fortran' 'rsync' 'wget' 'fping' )
 depends=('ntp' 'openssh' 'mariadb' 'dnsmasq' 'avahi' 'python-setuptools' 'python-pip' 'python-ifaddr' 'python-numpy' 'python-bottle' 'python-pyserial' 'python-mysql-connector' 'python-netifaces' 'python-cherrypy' 'python-eventlet' 'python-gitpython'  'python-dnspython' 'python-greenlet' 'python-monotonic' 'python-zeroconf' 'python-cheroot')
 provides=('ethoscope')
 install="ethoscope-node.install"
-source=("$pkgname::git://github.com/gilestrolab/ethoscope.git")
+source=("$pkgname::git+https://github.com/gilestrolab/ethoscope.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  # Use the tag of the last commit
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "$pkgname"
+  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
@@ -32,12 +31,16 @@ package() {
   
   #setting python3 branch
   cd "${srcdir}/${pkgname}"
-  git checkout python3.7
+  git checkout dev
 
   #cp node server and node updater
   cd "${srcdir}"
   cp -R --no-dereference --preserve=mode,links -v * "${pkgdir}/opt/${pkgname}"
   ln -s /opt/ethoscope-node/scripts/ethoscope_updater "${pkgdir}/opt/"
+  
+  #changing the remote GIT source to local BARE created during installation
+  cd "${pkgdir}/opt/${pkgname}"
+  git remote set-url origin /srv/git/ethoscope.git
   
   #install python service
   #cd "${srcdir}/${pkgname}/node_src"
