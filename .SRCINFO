@@ -9,6 +9,7 @@ pkgbase = termchat-git
 	makedepends = git
 	provides = termchat
 	conflicts = termchat
+	conflicts = termchat-bin
 	source = git+https://github.com/lemunozm/termchat
 	sha512sums = SKIP
 
