@@ -1,14 +1,13 @@
 pkgbase = viu
-	pkgdesc = A command-line application to view images from the terminal written in Rust
+	pkgdesc = Simple terminal image viewer
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/atanunq/viu
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	conflicts = viu-git
-	source = 1.2.1.tar.gz::https://github.com/atanunq/viu/archive/v1.2.1.tar.gz
-	sha256sums = e4055c66b90173c51311a9c9868bba9e6cca80489c121b305905f930948b17a0
+	source = viu-1.2.1.tar.gz::https://github.com/atanunq/viu/archive/v1.2.1.tar.gz
+	sha512sums = 22d8a4260552d49e8cf269a52262b40f02f4be84e799aab111cdac4ff57e2998ed6c61975ed7e90ecd25ad163aee4c3c9662720c119fb9134452396b76c21665
 
 pkgname = viu
 
