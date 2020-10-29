@@ -5,12 +5,12 @@
 
 # arg 1:  the new package version
 post_install() {
-    echo "changing the remote GIT source to local BARE created during installation"
-    cd /opt/ethoscope-node
-    git remote set-url origin /srv/git/ethoscope.git
+    #echo "changing the remote GIT source to local BARE created during installation"
+    #cd /opt/ethoscope-node
+    #git remote set-url origin /srv/git/ethoscope.git
 
     #setting branch
-    git checkout python3.7
+    git checkout dev
     
     #installing python module
     cd /opt/ethoscope-node/node_src/
@@ -19,8 +19,8 @@ post_install() {
     echo "enabling NODE specific systemd service files"
     systemctl enable ethoscope_node.service ethoscope_update_node.service ethoscope_backup.service ethoscope_video_backup.service 
     echo "enabling the GIT server on the node and NTP service"
-    systemctl enable git-daemon.socket ntpd.service avahi-daemon.service
-
+    systemctl enable git-daemon.socket ntpd.service 
+    
     #changing hostname on node
     hostnamectl set-hostname node
     
@@ -44,7 +44,7 @@ post_upgrade() {
     git remote set-url origin /srv/git/ethoscope.git
 
     #setting branch
-    git checkout python3.7
+    git checkout dev
 }
 
 # arg 1:  the old package version
@@ -61,5 +61,6 @@ pre_remove() {
 post_remove() {
     #removes the git directorie just in case
     rm -rf /opt/ethoscope-node
+    rm -rf /opt/ethoscope-updater
     rm -rf /srv/git/ethoscope.git
 }
