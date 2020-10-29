@@ -1,6 +1,6 @@
 pkgname=vk-layer-flimes-gui-git
-pkgver=1.0.0.r0.gf9b2919
-pkgrel=2
+pkgver=1.1.1.r0.g2b9f330
+pkgrel=1
 pkgdesc="GUI for vk-layer-flimes external control"
 arch=('x86_64')
 url="https://github.com/zaps166/vk-layer-flimes-gui"
