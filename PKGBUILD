@@ -2,13 +2,14 @@
 # Contributor: desbma
 pkgname=bat-extras-git
 pkgver=2020.10.05.r8.gbb94b33
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash scripts that integrate bat with various command line tools."
 arch=('any')
 url="https://github.com/eth-p/bat-extras"
 license=('MIT')
 depends=('bat')
-makedepends=('git' 'shfmt')
+makedepends=('git')
+checkdepends=('ripgrep')
 optdepends=('ripgrep: required for batgrep script'
             'entr: optional for batwatch script'
             'ncurses: optional for batdiff script'
@@ -45,7 +46,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    ./build.sh
+    ./build.sh --minify=none
 }
 
 check() {
