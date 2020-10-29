@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r377.290ca90
+pkgver=r386.620123f
 pkgrel=1
 pkgdesc='A dmenu-inspired native client for web services. Supports youtube, nyaa.si, 4chan, matrix and several manga sites.'
 arch=('x86_64')
@@ -13,13 +13,13 @@ optdepends=(
     'libnotify: For showing notifications'
     'automedia: For automatically downloading new chapters of tracked manga'
     'waifu2x-ncnn-vulkan: For upscaling manga pages when using the --upscale-images option'
-    'xdg-utils: For downloading torrents when using nyaa.si plugin'
+    'xdg-utils: For downloading torrents when using nyaa.si plugin or opening remote links'
     'ffmpeg: For sending video metadata and thumbnail with /upload in matrix'
 )
 provides=('QuickMedia')
 conflicts=('QuickMedia')
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.tar.gz")
-sha512sums=('e469c742a82c88522eea488880dbbd1dd91e5b8297fce4fd0c152ac561f4079cc1a9e614ebbdd9a5afafdf52d59af86c5862f46bd561d0e4c7a3fcfbfe3c87dc')
+sha512sums=('0261d955083db8c159838b472caca358e0a9fb35ba01593803039010089adc8fa04cb8510dc02b03d34ec828b365eb828c7271069f90085ead7ce531f302c45b')
 
 build() {
   cd "$srcdir"

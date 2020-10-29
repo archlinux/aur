@@ -1,6 +1,6 @@
 pkgbase = quickmedia-git
 	pkgdesc = A dmenu-inspired native client for web services. Supports youtube, nyaa.si, 4chan, matrix and several manga sites.
-	pkgver = r377.290ca90
+	pkgver = r386.620123f
 	pkgrel = 1
 	url = https://git.dec05eba.com/QuickMedia
 	arch = x86_64
@@ -21,12 +21,12 @@ pkgbase = quickmedia-git
 	optdepends = libnotify: For showing notifications
 	optdepends = automedia: For automatically downloading new chapters of tracked manga
 	optdepends = waifu2x-ncnn-vulkan: For upscaling manga pages when using the --upscale-images option
-	optdepends = xdg-utils: For downloading torrents when using nyaa.si plugin
+	optdepends = xdg-utils: For downloading torrents when using nyaa.si plugin or opening remote links
 	optdepends = ffmpeg: For sending video metadata and thumbnail with /upload in matrix
 	provides = QuickMedia
 	conflicts = QuickMedia
-	source = quickmedia-git-r377.290ca90.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.tar.gz
-	sha512sums = e469c742a82c88522eea488880dbbd1dd91e5b8297fce4fd0c152ac561f4079cc1a9e614ebbdd9a5afafdf52d59af86c5862f46bd561d0e4c7a3fcfbfe3c87dc
+	source = quickmedia-git-r386.620123f.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.tar.gz
+	sha512sums = 0261d955083db8c159838b472caca358e0a9fb35ba01593803039010089adc8fa04cb8510dc02b03d34ec828b365eb828c7271069f90085ead7ce531f302c45b
 
 pkgname = quickmedia-git
 
