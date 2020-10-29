@@ -3,7 +3,7 @@
 pkgname=fluffychat
 _gitname=${pkgname}-flutter
 pkgver=0.21.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Chat with your friends"
 arch=('any')
 url="https://fluffychat.im/"
@@ -12,7 +12,7 @@ makedepends=('clang'
              'ninja'
              'flutter'
              'cmake')
-optdepends=('pantlaimon: used for E2E encryption')
+optdepends=('pantalaimon: used for E2E encryption')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("fluffychat-flutter-v0.21.1.tar.gz::https://gitlab.com/ChristianPauly/fluffychat-flutter/-/archive/v0.21.1/fluffychat-flutter-v0.21.1.tar.gz")
