@@ -2,7 +2,7 @@
 
 pkgname=gossa
 pkgdesc="a fast and simple multimedia fileserver"
-pkgver=0.1.7
+pkgver=0.1.7.1
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('MIT')
@@ -25,6 +25,6 @@ build() {
 
 package() {
   cd ${pkgname}-${pkgver}
-  mkdir -p ${pkgdir}/usr/bin
-  install -Dm755 ${pkgname}-${pkgver} ${pkgdir}/usr/bin/${pkgname}
+  install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
