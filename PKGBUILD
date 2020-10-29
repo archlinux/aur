@@ -1,9 +1,10 @@
-# Maintainer: Bailey Fox <bfox200012@gmail.com>
+# Maintainer: Alex Sarum <rum.274.4 at gmail dot com>
+# Contributor: Bailey Fox <bfox200012@gmail.com>
 
 pkgname=('python-crccheck')
 _module=${pkgname#python-}
 pkgver='0.6'
-pkgrel=1
+pkgrel=2
 pkgdesc="Calculation library for CRCs and checksums"
 url="https://bitbucket.org/martin_scharrer/crccheck"
 depends=('python')
@@ -22,5 +23,5 @@ package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    rm -r ${pkgdir}/usr/lib/python3.7/site-packages/tests/
+    rm -r ${pkgdir}/usr/lib/python3.8/site-packages/tests/
 }
