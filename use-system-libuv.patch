@@ -1,13 +1,13 @@
 diff --git a/cmake/Dependencies.cmake b/cmake/Dependencies.cmake
-index b498be17e1..69e5c9f187 100644
+index 023bbe9e8d..e25aa0aa7f 100644
 --- a/cmake/Dependencies.cmake
 +++ b/cmake/Dependencies.cmake
-@@ -1312,7 +1312,7 @@ if(USE_DISTRIBUTED AND USE_TENSORPIPE)
-     set(__BUILD_TESTING ${BUILD_TESTING})
-     set(BUILD_TESTING OFF)
-     set(TP_BUILD_PYTHON OFF)
--    set(TP_BUILD_LIBUV ON)
-+    set(TP_BUILD_LIBUV OFF)
- 
-     add_subdirectory(${PROJECT_SOURCE_DIR}/third_party/tensorpipe)
- 
+@@ -1308,7 +1308,7 @@ if(USE_DISTRIBUTED AND USE_TENSORPIPE)
+   if(MSVC)
+     message(WARNING "Tensorpipe cannot be used on Windows.")
+   else()
+-    set(TP_BUILD_LIBUV ON CACHE BOOL "" FORCE)
++    set(TP_BUILD_LIBUV OFF CACHE BOOL "" FORCE)
+     set(TP_ENABLE_SHM OFF CACHE BOOL "" FORCE)
+     set(TP_ENABLE_CMA OFF CACHE BOOL "" FORCE)
+     set(TP_STATIC_OR_SHARED STATIC CACHE STRING "" FORCE)

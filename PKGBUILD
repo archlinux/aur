@@ -4,9 +4,9 @@
 pkgbase=python-pytorch
 pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pytorch-opt-cuda")
 _pkgname="pytorch"
-pkgver=1.6.0
-_pkgver=1.6.0
-pkgrel=6
+pkgver=1.7.0
+_pkgver=1.7.0
+pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -23,9 +23,9 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         disable_non_x86_64.patch)
 sha256sums=('SKIP'
             '147bdaeac8ec46ea46382e6146878bd8f8d51e05d5bd6f930dfd8e2b520859b9'
-            '6f3b7a87172011de810bf1ab581245b4463ef86e5cd09bec63aeffa372e26646'
+            '26b1dd596f1e21a011ee18cab939924483d6c6d4d98e543bf76f5a9312d54d67'
             '7b65c3b209fc39f92ba58a58be6d3da40799f1922910b1171ccd9209eda1f9eb'
-            '1a276bd827a0c76dab908cbc6605fa4c9fc2cc2b9431b6578a41133ae27dba2b'
+            'e4a96887b41cbdfd4204ce5f16fcb16a23558d23126331794ab6aa30a66f2e0d'
             'd3ef8491718ed7e814fe63e81df2f49862fffbea891d2babbcb464796a1bd680')
 
 prepare() {
@@ -43,10 +43,9 @@ prepare() {
 
   # Use system libuv
   patch -Np1 -i "${srcdir}"/use-system-libuv.patch
-  patch -Np1 -i "${srcdir}"/use-system-libuv2.patch -d third_party/tensorpipe
 
   # FindNCCL patch to export correct nccl version
-  patch -Np1 -i "${srcdir}"/nccl_version.patch
+  # patch -Np1 -i "${srcdir}"/nccl_version.patch
 
   # remove local nccl
   rm -rf third_party/nccl/nccl
@@ -78,8 +77,8 @@ prepare() {
   export CUDA_HOME=/opt/cuda
   export CUDNN_LIB_DIR=/usr/lib
   export CUDNN_INCLUDE_DIR=/usr/include
-  export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
-  export TORCH_CUDA_ARCH_LIST="5.2;5.3;6.0;6.0+PTX;6.1;6.1+PTX;6.2;6.2+PTX;7.0;7.0+PTX;7.2;7.2+PTX;7.5;7.5+PTX;8.0"  # Not yet supported in pytorch: 8.0+PTX;8.6;8.6+PTX
+  # export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
+  export TORCH_CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.0+PTX;7.2;7.2+PTX;7.5;7.5+PTX;8.0;8.0+PTX;8.6;8.6+PTX"
 }
 
 build() {
