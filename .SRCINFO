@@ -1,0 +1,18 @@
+pkgbase = auto-cpufreq
+	pkgdesc = Automatic CPU speed & power optimizer
+	pkgver = 1.3.4
+	pkgrel = 1
+	url = https://github.com/AdnanHodzic/auto-cpufreq
+	install = auto-cpufreq.install
+	arch = any
+	license = GPL3
+	depends = python-distro
+	depends = python-psutil
+	depends = python-click
+	provides = auto-cpufreq
+	conflicts = auto-cpufreq
+	source = auto-cpufreq-1.3.4.tar.gz::https://github.com/AdnanHodzic/auto-cpufreq/archive/v1.3.4.tar.gz
+	md5sums = fcffad89b9a4a8adcfef128d46a833f1
+
+pkgname = auto-cpufreq
+
