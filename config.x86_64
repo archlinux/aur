@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.9.1 Kernel Configuration
+# Linux/x86 5.9.2 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 10.2.0"
 CONFIG_CC_IS_GCC=y
@@ -6512,6 +6512,7 @@ CONFIG_TEST_MEMCAT_P=m
 # CONFIG_TEST_STACKINIT is not set
 # CONFIG_TEST_MEMINIT is not set
 # CONFIG_TEST_HMM is not set
+# CONFIG_TEST_FREE_PAGES is not set
 # CONFIG_TEST_FPU is not set
 # CONFIG_MEMTEST is not set
 # end of Kernel Testing and Coverage
