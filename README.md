@@ -8,11 +8,11 @@ This package adheres to the Filesystem Hierarchy Standard, instead of the typica
 
 ### Binary Location
 
-The binary can be run standalone, and is at `/usr/bin/sync_gateway`.
+The binary can be run standalone, and is located at `/usr/bin/sync_gateway`.
 
 ### Systemd Service
 
-Start/Enable the systemd service:
+Start/Enable the systemd service, located at `/usr/lib/systemd/system/`:
 
 ```
 # systemctl start sync_gateway
@@ -28,3 +28,7 @@ You must restart Sync Gateway for any configuration changes to take effect.
 ### Log Files
 
 Log files are written to `/var/log/sync_gateway`, in addition to journalctl.
+
+### License
+
+Sync Gateway Community Edition is licensed under the [Couchbase Community Edition License](https://www.couchbase.com/community-license-agreement).
