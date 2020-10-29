@@ -4,7 +4,7 @@
 
 pkgname=miniflux
 pkgver=2.0.24
-pkgrel=2
+pkgrel=3
 pkgdesc='Minimalist Feed Reader'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://miniflux.app'
@@ -19,6 +19,7 @@ source=(
   miniflux.service
   miniflux.sysusers
 )
+_repo="v2"
 sha256sums=('58c0136d4687a36a8950d5b7626e68cd0bed0e89193b4891a89d8a6cf081afc5'
             '1247a3cfe0307f5f1bb070e616f57344d8f16201070ecf7dda243b3fa1fbd8b8'
             'b0b26d629ebb3a7b4c65d4a293dbc272f4e9695c0803989604519ccac3454402'
@@ -26,7 +27,7 @@ sha256sums=('58c0136d4687a36a8950d5b7626e68cd0bed0e89193b4891a89d8a6cf081afc5'
 
 prepare() {
   mkdir -p "${srcdir}/src/github.com/miniflux"
-  ln -s "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/src/github.com/miniflux/${pkgname}"
+  ln -s "${srcdir}/${_repo}-${pkgver}" "${srcdir}/src/github.com/miniflux/${pkgname}"
 }
 
 case "$CARCH" in
@@ -40,7 +41,7 @@ case "$CARCH" in
 esac
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${_repo}-${pkgver}"
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -55,7 +56,7 @@ package() {
   install -Dm644 "${srcdir}/miniflux.conf" "${pkgdir}/etc/miniflux.conf"
   install -Dm644 "${srcdir}/miniflux.service" "${pkgdir}/usr/lib/systemd/system/miniflux.service"
   install -Dm644 "${srcdir}/miniflux.sysusers" "${pkgdir}/usr/lib/sysusers.d/miniflux.conf"
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/miniflux.1" "${pkgdir}/usr/share/man/man1/miniflux.1"
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/miniflux-linux-${_target}" "${pkgdir}/usr/bin/miniflux"
+  install -Dm644 "${srcdir}/${_repo}-${pkgver}/miniflux.1" "${pkgdir}/usr/share/man/man1/miniflux.1"
+  install -Dm755 "${srcdir}/${_repo}-${pkgver}/miniflux-linux-${_target}" "${pkgdir}/usr/bin/miniflux"
 }
 
