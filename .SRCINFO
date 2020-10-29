@@ -13,7 +13,7 @@ pkgbase = rnxcmp
 	license = custom
 	depends = tcsh
 	source = http://terras.gsi.go.jp/ja/crx2rnx/RNXCMP_4.0.8_src.tar.gz
-	md5sums = 6597988cc92949b3cff861bc9731ca9e
+	md5sums = 0efa55a89044836a8700ef1502341e51
 
 pkgname = rnxcmp
 
