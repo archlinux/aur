@@ -3,7 +3,7 @@
 pkgname=fluffychat
 _gitname=${pkgname}-flutter
 pkgver=0.21.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Chat with your friends"
 arch=('any')
 url="https://fluffychat.im/"
@@ -39,11 +39,11 @@ package() {
   
   # install
   install -dm755 ${pkgdir}/opt
-  mv build/linux/release/bundle ${pkgdir}/opt/${_gitname}
+  mv build/linux/release/bundle ${pkgdir}/opt/${pkgname}
   
   # link
   install -dm755 ${pkgdir}/usr/bin
-  ln -s /opt/${_gitname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+  ln -s /opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 
   # icon
   install -Dm 644 assets/favicon.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
