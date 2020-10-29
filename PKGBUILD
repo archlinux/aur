@@ -4,7 +4,7 @@
 
 pkgname=miniflux
 pkgver=2.0.24
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimalist Feed Reader'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://miniflux.app'
@@ -19,7 +19,7 @@ source=(
   miniflux.service
   miniflux.sysusers
 )
-sha256sums=('4f0fa176b80bc8c34e4bfa954eebb3dc49c38c38c057b60831cda3162de43637'
+sha256sums=('58c0136d4687a36a8950d5b7626e68cd0bed0e89193b4891a89d8a6cf081afc5'
             '1247a3cfe0307f5f1bb070e616f57344d8f16201070ecf7dda243b3fa1fbd8b8'
             'b0b26d629ebb3a7b4c65d4a293dbc272f4e9695c0803989604519ccac3454402'
             'd1ce5acf1e633b04b92bf9330bd64d97c19d8f8d39c7bb4b64e11a96be4b73e2')
@@ -48,7 +48,7 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  GOPATH="${srcdir}" PATH="${PATH}:${GOPATH}/bin/" make linux-$_target
+  VERSION="${pkgver}" GOPATH="${srcdir}" PATH="${PATH}:${GOPATH}/bin/" make linux-$_target
 }
 
 package() {
