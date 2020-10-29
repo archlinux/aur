@@ -6,25 +6,25 @@
 # Contributor: mefistofeles
 
 pkgname=mathics
-pkgver=1.0
-pkgrel=3
+pkgver=1.1.0rc1
+pkgrel=1
 pkgdesc="A general-purpose computer algebra system."
 arch=('any')
 url="https://mathics.github.io/"
 license=('GPL3')
-depends=('python' 'python-colorama' 'python-django18' 'python-mpmath'
-         'python-dateutil' 'python-six' 'python-sympy')
+depends=('python' 'python-sympy' 'python-django' 'python-mpmath' 'python-numpy'
+         'python-palettable' 'python-pint' 'python-dateutil' 'python-llvmlite'
+         'python-requests' 'cython')
 makedepends=('python-setuptools')
-source=("mathics-$pkgver.tgz::https://github.com/mathics/Mathics/releases/download/v$pkgver/mathics-$pkgver.tgz")
-sha256sums=('865f146738e220d4f3dfaea11bcef9330957963644a33f67a58255bc29741282')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mathics/Mathics/releases/download/$pkgver/Mathics-$pkgver.tar.gz")
+sha256sums=('330846db1c7c0620db8699c77ece4a9763d2f110fbb2b92b5686bf442563a602')
 
 build() {
-  cd "$pkgname-$pkgver"
-  sed -i 's/sympy==1.0/sympy>=1.0/g' setup.py
+  cd "${srcdir}/Mathics-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "${srcdir}/Mathics-${pkgver}"
   python setup.py install --root=${pkgdir} --optimize=1
 }
