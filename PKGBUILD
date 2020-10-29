@@ -1,6 +1,6 @@
 # Maintainer: zer0def <zer0def@github>
 pkgname=cloud-hypervisor-bin
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A Rust-VMM based cloud hypervisor from Intel (binary source)"
 url="https://github.com/cloud-hypervisor/cloud-hypervisor"
@@ -17,16 +17,19 @@ source=(
   "https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v${pkgver}/cloud-hypervisor-static"
 )
 sha512sums=(
-  0d767d784baba86fd8e4fe9c8465e5e2c5cc32b3f248a87b01c7f8ca491ded26c85319dd09e7329b302b2be25c25ef87e2aa6b17bb14c6b0f50e8a24dd4b66f1
-  028b2c9029615cca42bb9f92eb97aee72db072c7c4915c192eea092d440cbcb3c44711ecf77172fb673638838e087535a2641d8d38334898c8886478f5b8f8f6
-  89a235d972e2739464b7e277439f0e6c173d9887e25d04ed015974787c09a86fab9443095ea82f8039245747c8691cd4380adbe98e694189d654cb89da0f8d7b
+  c3e2332e74b0361cb4f5e3d9abd95a0cfb5d15084caed39ccf35c1bcf936d94ded773c1d2e43aeb9df0e181d983d5d60167e3dcacbdc2615b71f810ff10e9b13
+  a508703a2a31890d3cfc0997329a0d7e0a31b1a012ad3724fbd90e092c4fde30e7a23b2dc32d82d4d31237c4673998b8838c98743ed9d62fda7fb5944f27fbf4
+  511b4521314dac548bedb42db5ef1091d11874d079213c4adeffdd9e23506e701f61a9ef6f5708f3bcf0b398c78bbe2cab93410bf9abe39769ce21ed2606c781
 )
 b2sums=(
-  5987e200e552f4e80b4e7e18a6aaa1b830b9f8e4a0546afaf9fc95bda88c68d4a4373d650ac2bef2ea6bad1463f45f91cf55d2e7f0c179f20c0a862f008e2daf
-  26fbc475084d1e0dd146d518b360fe7bdeee926e06939b6fb3bdce76a47065b2a293c5257efdf5a2a0fe25350bfff5e8c2774700ee8695bcf29ba552093b01f7
-  a77bf9be30ef72097eb399acf3bcfbd676277727bbc07fd235ff0feb06feaf196d90cf129b11a43d2da6bf454e7140c95b0e1c6cbcf73f6c3fe57fd5ce4ee13a
+  135beeb3dc4af237c24a5e991f562be040a8735f38dea0ada68c983e3b2bfb79d00cbd0e1e346c3ef9c2fdf7fe147d52067733edd5cb7222bdd9866c81897a22
+  1b3728178aa79d5531e319a0a4260d6be6475b1728a94655eb4056774f0672725268384fd3063950c98d52c5cfa8312cff9af8f710b186c8e29d9045f26995b4
+  213ab6d843da836be0cb8b85d43306b1f9f16cbadf61f4b340a673e790c02187d005398c3487197c0cdbec65f9238b106b98538643009f89a12cd21c71ad0bb0
 )
 
 package() {
-  install -Dm755 -t ${pkgdir}/usr/bin ${srcdir}/{ch-remote,cloud-hypervisor{,-static}}
+  install -Dm755 -t "${pkgdir}/usr/bin" \
+    "${srcdir}/ch-remote" \
+    "${srcdir}/cloud-hypervisor" \
+    "${srcdir}/cloud-hypervisor-static"
 }
