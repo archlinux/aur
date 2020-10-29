@@ -3,7 +3,7 @@
 pkgname=fluffychat
 _gitname=${pkgname}-flutter
 pkgver=0.21.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Chat with your friends"
 arch=('any')
 url="https://fluffychat.im/"
@@ -12,41 +12,36 @@ makedepends=('clang'
              'ninja'
              'flutter'
              'cmake')
+optdepends=('pantlaimon: used for E2E encryption')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("git+https://gitlab.com/ChristianPauly/fluffychat-flutter.git")
-sha256sums=('SKIP')
+source=("fluffychat-flutter-v0.21.1.tar.gz::https://gitlab.com/ChristianPauly/fluffychat-flutter/-/archive/v0.21.1/fluffychat-flutter-v0.21.1.tar.gz")
+sha256sums=('fb667f64b013b94ccb22a23a033b1f152ec429a38af3bacaa4f70d253771b8c0')
 
 
 prepare() {
   flutter channel dev
   flutter upgrade
   flutter config --enable-linux-desktop
-
-  cd ${_gitname}
-  git checkout v$pkgver
-  git submodule update --init --recursive
 }
 
 build() {
-  cd ${_gitname}
+  cd ${_gitname}-v$pkgver
 
   flutter build linux --release
 }
 
-package() {
-  cd ${_gitname}
-  
+package() {  
   # install
   install -dm755 ${pkgdir}/opt
-  mv build/linux/release/bundle ${pkgdir}/opt/${pkgname}
+  mv ${_gitname}-v$pkgver/build/linux/release/bundle ${pkgdir}/opt/${pkgname}
   
   # link
   install -dm755 ${pkgdir}/usr/bin
   ln -s /opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 
   # icon
-  install -Dm 644 assets/favicon.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+  install -Dm 644 ${pkgdir}/opt/${pkgname}/data/flutter_assets/assets/favicon.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
 
   # desktop entry
 
