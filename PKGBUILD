@@ -1,7 +1,7 @@
 # Maintainer: Vincent Bernardoff <vb AT luminar.eu.org>
 
 pkgname=libkcapi
-pkgver=1.1.5
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Linux Kernel Crypto API User Space Interface Library"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,15 +11,14 @@ license=('BSD' 'GPL2')
 source=("http://www.chronox.de/$pkgname/$pkgname-$pkgver.tar.xz"
         "http://www.chronox.de/$pkgname/$pkgname-$pkgver.tar.xz.asc"
         "makefile.patch")
-sha256sums=('8a08dcbb4d05ede4357cdc9d61c7f2a7f2cd96b7ce2eb41b28e45b2e378267ad'
+sha256sums=('60964a9555218c8d0eebd90804e80a87e36bde788dfb1bed3da2f390480031f6'
             'SKIP'
             '792424adf0c33ec1902a0cde15e9ca8ee7b19c9952b07b3b799fad5662d3b551')
+
 validpgpkeys=("3BCC43D4D2C87D1784B69EE4421EE936326AC15B")
 
 build() {
   cd "${pkgname}-${pkgver}"
-
-  msg2 'Building...'
   patch < ../makefile.patch
   autoreconf -i
   ./configure \
@@ -37,15 +36,9 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-
-  msg2 'Installing license...'
   for file in COPYING* ; do
       install -Dm 644 $file -t "$pkgdir/usr/share/licenses/$pkgname"
   done
-
-  msg2 'Installing documentation'
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-
-  msg2 'Installing...'
   make DESTDIR="$pkgdir" install
 }
