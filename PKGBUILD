@@ -4,7 +4,7 @@
 
 pkgname=zenmonitor
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Zen monitor is monitoring software for AMD Zen-based CPUs'
 arch=('x86_64' 'i686')
 url='https://github.com/ocerman/zenmonitor'
@@ -33,6 +33,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" PREFIX="/usr" install
+  install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/zenmonitor/LICENSE"
 }
 
 # vim:set et ts=2 sw=2 tw=79
