@@ -1,25 +1,17 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 
 pkgname=pyston
-pkgver=0.6.1
+pkgver=2.0
 pkgrel=1
 pkgdesc="An open-source Python implementation using JIT techniques."
 arch=('x86_64')
 license=('custom')
+options=('!emptydirs' '!strip')
 url="https://github.com/dropbox/pyston"
-depends=('ncurses5-compat-libs')
-source=(https://github.com/dropbox/pyston/releases/download/v${pkgver}/pyston-${pkgver}-linux64.tar.gz)
-sha256sums=('b09516d8e421cb004ef39d832bae600face4ecf80d9791469fb2c026bcf1faae')
+source=(https://github.com/dropbox/pyston/releases/download/v${pkgver}/pyston_${pkgver}_amd64_20.04.deb)
+sha256sums=('cd0a910214d116cb96f88b2a0823db72f8cfe3c7ecc4ebff0e08077a66ee6d88')
 
 package() {
-	mkdir -p "${pkgdir}/opt/pyston"
-	mkdir -p "${pkgdir}/usr/bin"
-	
-	cd "${srcdir}/pyston-${pkgver}-linux64/"
-	cp -R * "${pkgdir}/opt/pyston"
-	ln -s "/opt/pyston/pyston" "${pkgdir}/usr/bin/pyston"
-
-	mkdir -p "${pkgdir}/usr/lib"
-	ln -s /usr/lib/libreadline.so.7 "${pkgdir}/usr/lib/libreadline.so.6"
+	bsdtar -xJf data.tar.xz -C "$pkgdir/"
 }
 

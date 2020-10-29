@@ -1,13 +1,14 @@
 pkgbase = pyston
 	pkgdesc = An open-source Python implementation using JIT techniques.
-	pkgver = 0.6.1
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/dropbox/pyston
 	arch = x86_64
 	license = custom
-	depends = ncurses5-compat-libs
-	source = https://github.com/dropbox/pyston/releases/download/v0.6.1/pyston-0.6.1-linux64.tar.gz
-	sha256sums = b09516d8e421cb004ef39d832bae600face4ecf80d9791469fb2c026bcf1faae
+	options = !emptydirs
+	options = !strip
+	source = https://github.com/dropbox/pyston/releases/download/v2.0/pyston_2.0_amd64_20.04.deb
+	sha256sums = cd0a910214d116cb96f88b2a0823db72f8cfe3c7ecc4ebff0e08077a66ee6d88
 
 pkgname = pyston
 
