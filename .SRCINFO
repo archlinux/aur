@@ -1,5 +1,5 @@
-pkgbase = mpd
-	pkgdesc = Flexible, powerful, server-side application for playing music
+pkgbase = mpd-smbclient
+	pkgdesc = Flexible, powerful, server-side application for playing music (smbclient plugin enabled)
 	pkgver = 0.22.2
 	pkgrel = 1
 	url = https://www.musicpd.org/
@@ -60,6 +60,8 @@ pkgbase = mpd
 	depends = yajl
 	depends = zlib
 	depends = zziplib
+	provides = mpd
+	conflicts = mpd
 	backup = etc/mpd.conf
 	source = https://www.musicpd.org/download/mpd/0.22/mpd-0.22.2.tar.xz
 	source = https://www.musicpd.org/download/mpd/0.22/mpd-0.22.2.tar.xz.sig
@@ -78,7 +80,7 @@ pkgbase = mpd
 	b2sums = 4ab6e415284c77802a39d0913d701fe55e56f3c22b19557661fbef77e456b5e1d151da4202695282b956602e716a7afdb994aa2fc17368b9a0d0d051d47a3afb
 	b2sums = d7b587c25dd5830c27af475a8fdd8102139d7c8fdd6f04fe23b36be030e4411582e289f575c299255ff8183096f7d47247327276f9a24641cbd032d9675b837a
 
-pkgname = mpd
+pkgname = mpd-smbclient
 	depends = bzip2
 	depends = chromaprint
 	depends = gcc-libs

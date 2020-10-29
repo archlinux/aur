@@ -1,14 +1,16 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: jakob <grandchild@mailbox.org>
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 # Contributor: Ben <ben@benmazer.net>
 
-pkgname=mpd
+_pkgname=mpd
+pkgname=${_pkgname}-smbclient
 pkgver=0.22.2
 pkgrel=1
-pkgdesc="Flexible, powerful, server-side application for playing music"
+pkgdesc="Flexible, powerful, server-side application for playing music (smbclient plugin enabled)"
 url="https://www.musicpd.org/"
 license=('GPL2')
 arch=('x86_64')
@@ -21,11 +23,13 @@ makedepends=('alsa-lib' 'audiofile' 'avahi' 'boost' 'curl' 'dbus' 'expat'
 'libmikmod' 'libmpdclient' 'libogg' 'libpulse' 'libsamplerate' 'libsndfile'
 'libupnp' 'liburing' 'libvorbis' 'meson' 'mpg123' 'python-sphinx'
 'systemd-libs' 'twolame')
-backup=("etc/${pkgname}.conf")
-source=("https://www.musicpd.org/download/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz"{,.sig}
-        "${pkgname}.conf"
-        "${pkgname}.sysusers"
-        "${pkgname}.tmpfiles")
+provides=('mpd')
+conflicts=('mpd')
+backup=("etc/${_pkgname}.conf")
+source=("https://www.musicpd.org/download/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
+        "${_pkgname}.conf"
+        "${_pkgname}.sysusers"
+        "${_pkgname}.tmpfiles")
 sha512sums=('13ec85bda79d0c2588c50e2ebbf53b733f23c9700abfd7ccd4140db8080a4c496073727c8c04e9a2f8897669beeced0d77caa2bac7e2ca9adb41ad56dcf92aeb'
             'SKIP'
             '25a823740d92da8e186916701413114142eb6ad91a172c592e68b569c8e4f50fa99580e555ccf6cd31fc4f55a09bfe0278efa46e4e76ee0fe02846292fadf3c1'
@@ -40,13 +44,13 @@ validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512') # Max Kellermann <max@
 
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
   sed -e '/\[Service\]/a User=mpd' \
       -i "systemd/system/mpd.service.in"
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
   # NOTE: sndio conflicts with alsa
   # TODO: package adplug
   # TODO: package shine
@@ -63,12 +67,13 @@ build() {
         -D sndio=disabled \
         -D shine=disabled \
         -D tremor=disabled \
+        -D smbclient=enabled \
         build
   ninja -C build
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
   ninja -C build test
 }
 
@@ -80,11 +85,11 @@ package() {
   'libmikmod.so' 'libmpdclient.so' 'libmpg123.so' 'libogg.so' 'libpulse.so'
   'libsamplerate.so' 'libsndfile.so' 'libsystemd.so' 'libtwolame.so'
   'libupnp.so' 'liburing.so' 'libvorbis.so' 'libvorbisenc.so')
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
   DESTDIR="${pkgdir}" ninja -C build install
-  install -vDm 644 "doc/${pkgname}conf.example" \
-    -t "${pkgdir}/usr/share/doc/${pkgname}/"
-  install -vDm 644 "../${pkgname}.conf" -t "${pkgdir}/etc/"
-  install -vDm 644 "../${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-  install -vDm 644 "../${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  install -vDm 644 "doc/${_pkgname}conf.example" \
+    -t "${pkgdir}/usr/share/doc/${_pkgname}/"
+  install -vDm 644 "../${_pkgname}.conf" -t "${pkgdir}/etc/"
+  install -vDm 644 "../${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
+  install -vDm 644 "../${_pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
 }
