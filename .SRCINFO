@@ -1,0 +1,18 @@
+pkgbase = grc-devel-git
+	pkgdesc = Yet another colouriser for beautifying your logfiles or output of commands. Devel branch.
+	pkgver = 1.11.3.r81.g8263f4f
+	pkgrel = 1
+	url = https://github.com/garabik/grc
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	provides = grc
+	conflicts = grc
+	backup = etc/grc.conf
+	source = grc-devel-git::git+https://github.com/garabik/grc.git#branch=devel
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = grc-devel-git
+
