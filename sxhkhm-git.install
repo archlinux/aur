@@ -1,0 +1,8 @@
+post_install() {
+    echo "sxhkhm is now installed! Before it can function, you have to:"
+    echo ""
+    echo "Copy and modify the default configuration file: \`cp /usr/share/doc/sxhkhm/sxhkhm.ini ~/.config/sxhkhm.ini\`"
+    echo "Add a keybind for the menu to your sxhkd configuration:"
+	echo "echo \"# Display keybind menu\nsuper + b\n    sxhkhmenu\" >> ~/.config/sxhkd/sxhkdrc"
+    echo ""
+}

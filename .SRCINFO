@@ -1,12 +1,23 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = sxhkhm-git
+	pkgdesc = Parse and fuzzy-find keybinds from sxhkd-configuration - built from latest sources at github
+	pkgver = r61.e03506e
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
-	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	url = https://github.com/fiskhest/aur-sxhkhm-git
+	install = sxhkhm-git.install
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = sxhkd
+	depends = python
+	depends = bash
+	depends = rofi
+	depends = grep
+	depends = fzf
+	provides = sxhkhm
+	conflicts = sxhkhm
+	source = git+https://github.com/fiskhest/sxhkd-helper-menu.git
+	md5sums = SKIP
 
-pkgname = yarxi
+pkgname = sxhkhm-git
 
