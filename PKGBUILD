@@ -8,13 +8,16 @@ pkgdesc="An action-based tactical adventure with active pause (extreme slowdown 
 arch=('x86_64')
 url="https://www.gog.com/game/we_are_the_dwarves"
 license=('custom')
+makedepends=('lgogdownloader')
 depends=('libx11' 'libxinerama' 'libxcursor' 'libxrandr' 'libxi' 'alsa-lib' 'libpulse' 'libglvnd' 'glibc')
-source=("gogdownloader://we_are_the_dwarves/en3installer4"
+source=("gog-we-are-the-dwarves_${pkgver//./_}.sh::gogdownloader://1115004086/en3installer4"
         "We are the Dwarves.desktop"
         "start-we-are-the-dwarves.sh")
 sha512sums=('5a6b5dffa1be9e24b7eae0932cd0f063189e9be746800d00bc880d3ad7ae51df15d268e978c36ac3a9c8e8c0f0cea25f15e480afddc064f22d42e38996cad01d'
             'd537996628ba1f4c8b492101ad3d4f3353ebd6c5a3042d6376521a7d10ea180025468b10b60f2d43d65d4221cedbba2e2560d0d7aa1a708e28e86e647f156cdc'
             '8689653f539f8ae75920717e71bead644f5934d7bc575072d7fc00b1d30be5cc68cd7cb221e9ebeb6c94674d7afd887025ffd494fe2dae36fc55cebc47769517')
+
+DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 
 package()
 {
