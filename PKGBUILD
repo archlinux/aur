@@ -1,7 +1,7 @@
 pkgname=python-briar-wrapper-git
 _pkgname=python-briar-wrapper
 conflicts=('python-briar-wrapper')
-pkgver=0.0.4.r1.gb8ac26b
+pkgver=0.0.6.r1.g79a7889
 pkgrel=1
 pkgdesc='A wrapper for the Briar headless API.'
 arch=('any')
