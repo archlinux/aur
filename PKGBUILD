@@ -13,7 +13,7 @@ depends=('gtk2' 'zlib' 'libjpeg' 'libssh' 'libunique' 'avahi' 'vte3'
 	'libgcrypt' 'libxdmcp' 'libgnome-keyring' 'libvncserver'
 	'libsecret' 'webkit2gtk' 'libsodium')
 makedepends=('git' 'intltool' 'pkgconfig' 'cmake'
-	'avahi' 'libxkbfile' 'freerdp-git' 'telepathy-glib' )
+	'avahi' 'libxkbfile' 'freerdp-git' 'telepathy-glib' 'gobject-introspection' 'spice' 'spice-gtk' 'spice-protocol')
 optdepends=('avahi' 'libxkbfile' 'telepathy-glib' 'gobject-introspection' 'spice' 'spice-gtk' 'spice-protocol')
 replaces=('remmina-plugins')
 provides=('remmina' 'grdc' "grdc=${pkgver}" 'remmina-plugins')
