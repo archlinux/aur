@@ -6,16 +6,21 @@ pkgname=(
   kata-proxy-git
   kata-shim-git
 
-  #kata-linux-container-git
+  kata-linux-container-git
   #kata-containers-image-git
 )
-pkgver=1.12.0~rc0~runtime.r2.17cc7d6a
+pkgver=1.12.0~rc0~runtime.r9.9380b6e1
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers (Git version)"
 arch=('x86_64')
 url="https://katacontainers.io/"
 license=('Apache')
-makedepends=('go' 'yq2-bin' 'bc' 'git')
+makedepends=(
+  'go<2:1.15'  # thanks Intel, love you big time: https://github.com/kata-containers/runtime/issues/2982
+  'yq2-bin'
+  'bc'
+  'git'
+)
 
 _gh_org="github.com/kata-containers"
 _kata_kernel_ver="5.4.60"
@@ -29,8 +34,8 @@ source=(
   "runtime::git+https://${_gh_org}/runtime"
   "shim::git+https://${_gh_org}/shim"
 
-  #"https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_kata_kernel_ver}.tar.xz"
-  #"https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_kata_kernel_ver}.tar.sign"
+  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_kata_kernel_ver}.tar.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_kata_kernel_ver}.tar.sign"
   #"http://mirrors.evowise.com/archlinux/iso/2020.08.01/archlinux-bootstrap-2020.08.01-x86_64.tar.gz"
   #"http://mirrors.evowise.com/archlinux/iso/2020.08.01/archlinux-bootstrap-2020.08.01-x86_64.tar.gz.sig"
 
@@ -41,8 +46,8 @@ source=(
 sha512sums=(
   SKIP SKIP SKIP SKIP SKIP SKIP SKIP
 
-  #fb9ebada932c17d0adbc099a1df31a7d97afe3be694665b1f8171e7159bda84a36a435ceecfdce6d492d8e5075ed4253c68029dcdf952e75a3fe7ee36646327b
-  #SKIP
+  fb9ebada932c17d0adbc099a1df31a7d97afe3be694665b1f8171e7159bda84a36a435ceecfdce6d492d8e5075ed4253c68029dcdf952e75a3fe7ee36646327b
+  SKIP
   #24044fb5a9870dbe13ec7eafb60d99e664cec10d50d80a73a0445d1368c0fa95881003d92e0a1c0446f76c1bbe89b098f35ceffd0ef24e9beaa51f1a83494b98
   #SKIP
 
@@ -104,7 +109,7 @@ _kernel_prepare(){
 }
 
 prepare(){
-  #_kernel_prepare
+  _kernel_prepare
 
   # kata-container-image osbuilder fix
   cd "${srcdir}/osbuilder"
@@ -147,8 +152,8 @@ build(){
   GOPATH="${srcdir}" LDFLAGS="" make
 
   # kernel build
-  #cd "${srcdir}/linux-${_kata_kernel_ver}"
-  #make -s ARCH="${_KARCH}"
+  cd "${srcdir}/linux-${_kata_kernel_ver}"
+  make -s ARCH="${_KARCH}"
 
   #_kata_image_build
 
@@ -210,8 +215,9 @@ package_kata-proxy-git(){
 package_kata-runtime-git(){
   conflicts=('kata-runtime')
   provides=('kata-runtime')
-  depends=('qemu-headless' "kata-ksm-throttler" "kata-proxy" "kata-shim" "kata-linux-container" "kata-containers-image")
+  depends=('qemu-headless' "kata-proxy" "kata-shim" "kata-linux-container" "kata-containers-image")
   optdepends=(
+    'kata-ksm-throttler'
     'firecracker'
     'cloud-hypervisor'
     #'acrn'
