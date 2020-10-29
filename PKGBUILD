@@ -2,7 +2,7 @@
 pkgname=gemget
 pkgver=1.6.0
 _commit=6262222a6c35d98e1e15fe43cd3a0b136b078949
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line downloader for the Gemini protocol'
 arch=('x86_64')
 url='https://github.com/makeworld-the-better-one/gemget'
@@ -19,7 +19,7 @@ prepare() {
 build() {
     cd "$pkgname-$pkgver"
     GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw" \
-        make VERSION="$pkgver" COMMIT="$_commit"
+        make VERSION="$pkgver" COMMIT="$_commit" BUILDER=gemget-AUR
 }
 
 package() {

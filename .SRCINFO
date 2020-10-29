@@ -1,7 +1,7 @@
 pkgbase = gemget
 	pkgdesc = Command line downloader for the Gemini protocol
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/makeworld-the-better-one/gemget
 	arch = x86_64
 	license = MIT
