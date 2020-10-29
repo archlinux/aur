@@ -4,12 +4,13 @@ pkgname=popura-git
 _pkgname="popura"
 pkgver=0.3.15+popura1
 _commit=42941caaf13472f1ecc0c675ae6059a857f3e60a
-pkgrel=5
+pkgrel=6
 pkgdesc="Popura ポプラ: alternative Yggdrasil network client"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/popura-network/Popura"
 license=('LGPLv3')
 conflicts=('popura')
+depends=('glibc')
 makedepends=('git' 'go')
 backup=(etc/default/popura)
 source=("popura::git+https://github.com/popura-network/Popura.git#commit=${_commit}"
@@ -27,13 +28,10 @@ sha512sums=('SKIP'
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	export GOPATH="${srcdir}/gopath"
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	./build
+	PKGNAME="${pkgname}" PKGVER="${pkgver}" \
+		CGO_LDFLAGS="${LDFLAGS}" \
+		GOFLAGS="-trimpath -buildmode=pie -mod=readonly" \
+		./build -l "-linkmode external -extldflags \"${LDFLAGS}\""
 }
 
 package() {
