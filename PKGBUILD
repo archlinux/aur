@@ -5,7 +5,7 @@
 # Contributor: DDoSolitary <DDoSolitary@gmail.com>
 
 pkgname=i2pd-git
-pkgver=2.33.0.r79.gcb55944f
+pkgver=2.34.0.r17.gb9b431e8
 pkgrel=1
 pkgdesc='A full-featured C++ implementation of the I2P router (git version)'
 arch=('x86_64')
@@ -85,9 +85,9 @@ package() {
     install -D -m644 "${srcdir}/i2pd.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/i2pd.conf"
     
     # tunnels.d examples
-    install -D -m644 contrib/tunnels.d/README         -t "${pkgdir}/usr/share/doc/${pkgname}/tunnels.d"
-    install -D -m644 contrib/tunnels.d/IRC-Ilita.conf -t "${pkgdir}/usr/share/doc/${pkgname}/tunnels.d"
-    install -D -m644 contrib/tunnels.d/IRC-Irc2P.conf -t "${pkgdir}/usr/share/doc/${pkgname}/tunnels.d"
+    install -D -m644 contrib/tunnels.d/README         -t "${pkgdir}/usr/share/doc/i2pd/tunnels.d"
+    install -D -m644 contrib/tunnels.d/IRC-Ilita.conf -t "${pkgdir}/usr/share/doc/i2pd/tunnels.d"
+    install -D -m644 contrib/tunnels.d/IRC-Irc2P.conf -t "${pkgdir}/usr/share/doc/i2pd/tunnels.d"
     
     # headers
     install -D -m644 libi2pd{,_client}/*.h -t "${pkgdir}/usr/include/i2pd"
