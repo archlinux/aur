@@ -1,0 +1,16 @@
+pkgbase = sic-git
+	pkgdesc = Accessible image processing and conversion from the terminal.
+	pkgver = r914.c56e230
+	pkgrel = 1
+	url = https://github.com/foresterre/sic
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cargo
+	provides = sic
+	conflicts = sic
+	source = sic::git+https://github.com/foresterre/sic
+	sha256sums = SKIP
+
+pkgname = sic-git
+
