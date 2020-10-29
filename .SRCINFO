@@ -1,14 +1,14 @@
 pkgbase = fnm-bin
 	pkgdesc = Fast and simple Node.js version manager, built in Rust
-	pkgver = 1.22.4
+	pkgver = 1.22.5
 	pkgrel = 1
 	url = https://github.com/Schniz/fnm
 	arch = x86_64
 	license = GPL3
 	provides = fnm
 	conflicts = fnm-git
-	source = fnm-1.22.4.zip::https://github.com/Schniz/fnm/releases/download/v1.22.4/fnm-linux.zip
-	md5sums = f308bf357c1f8d1676e8b861d783531d
+	source = fnm-1.22.5.zip::https://github.com/Schniz/fnm/releases/download/v1.22.5/fnm-linux.zip
+	md5sums = f2cccb034fccb9ed8e3addddea665262
 
 pkgname = fnm-bin
 
