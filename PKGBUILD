@@ -8,10 +8,10 @@ pkgrel=1
 pkgdesc="A FastCGI module for Apache HTTP Server, build with apache httpd 2.2"
 license=('APACHE')
 arch=('i686' 'x86_64')
-url="http://httpd.apache.org/mod_fcgid/"
+url="https://httpd.apache.org/mod_fcgid/"
 depends=('apache22')
 conflicts=('mod_fcgid')
-source=(http://www.apache.org/dist/httpd/mod_fcgid/mod_fcgid-$pkgver.tar.bz2{,.asc})
+source=(https://www.apache.org/dist/httpd/mod_fcgid/mod_fcgid-$pkgver.tar.bz2{,.asc})
 sha1sums=('f0b6d87dfcfe18b318905a3f91274051f3f17945'
           'SKIP')
 
