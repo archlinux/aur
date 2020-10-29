@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: desbma
 pkgname=bat-extras-git
-pkgver=2020.10.05.r1.g0df5cff
+pkgver=2020.10.05.r8.gbb94b33
 pkgrel=1
 pkgdesc="Bash scripts that integrate bat with various command line tools."
 arch=('any')
@@ -12,8 +12,11 @@ makedepends=('git' 'shfmt')
 optdepends=('ripgrep: required for batgrep script'
             'entr: optional for batwatch script'
             'ncurses: optional for batdiff script'
-            'prettier: various formatting for prettybat'
-            'shfmt: bash formatting for prettybat')
+            'git-delta: optional for batdiff script'
+            'prettier: various code formatting for prettybat script'
+            'shfmt: bash formatting for prettybat script'
+            'rustfmt: Rust formatting for prettybat script'
+            'clang: C / C++ / Objective-C formatting for prettybat script')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/eth-p/bat-extras.git'
