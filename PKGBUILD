@@ -2,7 +2,7 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgbase=linux-rt
-pkgver=5.9.1.19.arch1
+pkgver=5.9.1.20.arch1
 pkgrel=1
 pkgdesc='Linux RT'
 arch=('x86_64')

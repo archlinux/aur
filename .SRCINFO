@@ -1,6 +1,6 @@
 pkgbase = linux-rt
 	pkgdesc = Linux RT
-	pkgver = 5.9.1.19.arch1
+	pkgver = 5.9.1.20.arch1
 	pkgrel = 1
 	url = https://wiki.linuxfoundation.org/realtime/start
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = linux-rt
 	makedepends = python-sphinx_rtd_theme
 	makedepends = xmlto
 	options = !strip
-	source = git+https://gitlab.archlinux.org/dvzrv/linux-rt#tag=v5.9.1.19.arch1?signed
+	source = git+https://gitlab.archlinux.org/dvzrv/linux-rt#tag=v5.9.1.20.arch1?signed
 	source = config
 	source = sphinx-workaround.patch
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
