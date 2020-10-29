@@ -1,7 +1,7 @@
 pkgname=jitsi-meet
 # https://github.com/jitsi/jitsi-meet/releases/latest
-pkgver=1.0.4289
-_tag="jitsi-meet_4857"
+pkgver=1.0.4466
+_tag="jitsi-meet_5142"
 pkgrel=1
 pkgdesc="WebRTC JavaScript video conferences"
 arch=("x86_64")
@@ -17,7 +17,7 @@ backup=("opt/jitsi-meet/config.js"
         "opt/jitsi-meet/logging_config.js")
 options=("!strip")
 source=($pkgname-$pkgver.tar.gz::https://github.com/jitsi/jitsi-meet/archive/stable/$_tag.tar.gz)
-sha256sums=('f15f9060ddbc650724563d12bfc8f85c88d303ea823fbb402b462d11e23473cd')
+sha256sums=('657dc093f716bb547fee8e6f6b6541933025feb82f9fc8d14a53e52b20f78542')
 
 build() {
     cd "${srcdir}/${pkgname}-stable-${_tag}"
