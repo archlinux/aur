@@ -1,15 +1,15 @@
 pkgbase = python-py3amf
 	pkgdesc = Python action Message Format (AMF) support
 	pkgver = 0.8.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/StdCarrot/Py3AMF
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = python
 	depends = python-defusedxml
-	provides = py3amf
-	source = py3amf-0.8.10.tar.gz::https://github.com/StdCarrot/Py3AMF/archive/v0.8.10.tar.gz
-	sha256sums = a5f012da90bcdf6731f8e7f185afed5f57d5fe71863198a03c25f50e884ca536
+	source = https://files.pythonhosted.org/packages/source/P/Py3AMF/Py3AMF-0.8.10.tar.gz
+	sha256sums = 6dac2d34a09daf5351e654e8cdc3026b3560a6db498c17cdcc84322b3149952c
 
 pkgname = python-py3amf
 
