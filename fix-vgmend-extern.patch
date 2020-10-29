@@ -1,0 +1,12 @@
+diff --unified --recursive --text src.old/vgmplay-0.40.9/VGMPlay/VGMPlay_AddFmts.c src.new/vgmplay-0.40.9/VGMPlay/VGMPlay_AddFmts.c
+--- src.old/vgmplay-0.40.9/VGMPlay/VGMPlay_AddFmts.c	2018-12-24 13:00:00.000000000 -0800
++++ src.new/vgmplay-0.40.9/VGMPlay/VGMPlay_AddFmts.c	2020-10-28 19:26:25.945034851 -0700
+@@ -117,7 +117,7 @@
+ extern INT32 VGMSampleRate;
+ extern UINT32 BlocksSent;
+ extern UINT32 BlocksPlayed;
+-bool VGMEnd;
++extern bool VGMEnd;
+ extern bool EndPlay;
+ extern bool PausePlay;
+ extern bool FadePlay;
