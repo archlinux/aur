@@ -2,7 +2,7 @@
 # PRs/Issues: https://github.com/bbrks/aur-sync_gateway-community-bin
 
 pkgname=sync_gateway-community-bin
-pkgver=2.7.3
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Manages access and synchronization between Couchbase Lite and Couchbase Server - Community Edition (CE)"
 url="https://github.com/couchbase/sync_gateway"
@@ -15,7 +15,7 @@ source=(
 	'sync_gateway.service'
 )
 sha256sums=(
-	'4e0306d06840c8e5a6df6984cb47feb5706df5a11058e4253eaab9d9a9044d18'
+	'f26ba49a2449f589acdd7e732244b4cd6577cb591d9a67e366bf81ef98df8ab2'
 	'4bc3c5843b2b6e31d954a53d43c9ecdce77faf3942b5da4ffdaba846f02dd381'
 )
 
