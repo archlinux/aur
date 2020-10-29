@@ -1,0 +1,19 @@
+pkgbase = spivak-git
+	pkgdesc = Karaoke player based on GStreamer and Qt5 (git)
+	pkgver = r174.2507040
+	pkgrel = 1
+	url = https://github.com/gyunaev/spivak
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gst-plugins-base
+	depends = libzip
+	depends = qt5-base
+	depends = uchardet
+	provides = spivak
+	conflicts = spivak
+	source = spivak-git::git+https://github.com/gyunaev/spivak.git
+	sha256sums = SKIP
+
+pkgname = spivak-git
+
