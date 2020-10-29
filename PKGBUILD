@@ -4,7 +4,7 @@
 pkgname=git-delta
 _name="${pkgname#*-}"
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 
 pkgdesc='A syntax-highlighting pager for git and diff output'
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
