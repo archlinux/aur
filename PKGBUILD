@@ -1,5 +1,5 @@
 # Maintainer: Valentijn "noirscape" V <neko at catgirlsin dot space>
-# Maintainer: Felix Golatofski <contact at xdfr dot de>
+# Contributor: Felix Golatofski <contact at xdfr dot de>
 # Contributor: Oscar Morante <spacepluk at gmail dot com>
 
 
@@ -10,7 +10,7 @@ _hash=518737b1de84
 
 pkgname=unity-editor-lts
 pkgver=2019.4.13f1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences. (LTS)"
 arch=('x86_64')
@@ -46,7 +46,7 @@ source=("$pkgver.tar.xz::https://download.unity3d.com/download_unity/${_hash}/Li
         "${pkgname}.desktop"
         "${pkgname}-icon.png"
         "eula.txt")
-sha256sums=('1d11cbdbc84184854b6990b5a2104ec4f51402648a6a388f85b7b93222101b64'
+sha256sums=('e1aa37a070e724d1a90ef122ab4bd1ed6649340f7a195b90013fe33ef3081345'
             'c22d2f91c47923496d24e8be376f70305846e60c038f923d6c7b41f0741bcb4a'
             'e786f76cfe96b41300775e54fcdd7e81dbfb3b28f607a263ac7a3a73a697ae06'
             '193a3b88d7149f7eff19bbb282a836847831a842db399addbcc0cc600fd08cdb'

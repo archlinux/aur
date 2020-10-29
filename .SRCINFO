@@ -1,7 +1,7 @@
 pkgbase = unity-editor-lts
 	pkgdesc = The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences. (LTS)
 	pkgver = 2019.4.13f1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = unity-editor-lts
 	source = unity-editor-lts.desktop
 	source = unity-editor-lts-icon.png
 	source = eula.txt
-	sha256sums = 1d11cbdbc84184854b6990b5a2104ec4f51402648a6a388f85b7b93222101b64
+	sha256sums = e1aa37a070e724d1a90ef122ab4bd1ed6649340f7a195b90013fe33ef3081345
 	sha256sums = c22d2f91c47923496d24e8be376f70305846e60c038f923d6c7b41f0741bcb4a
 	sha256sums = e786f76cfe96b41300775e54fcdd7e81dbfb3b28f607a263ac7a3a73a697ae06
 	sha256sums = 193a3b88d7149f7eff19bbb282a836847831a842db399addbcc0cc600fd08cdb
