@@ -1,0 +1,27 @@
+pkgbase = modloader64-gui-bin
+	pkgdesc = Successor to OotModLoader. It is designed to provide memory access, rom patching, and multiplayer networking in an easy to use framework.
+	pkgver = 1.1.60
+	pkgrel = 1
+	url = https://github.com/hylian-modding/ModLoader64-GUI
+	arch = x86_64
+	license = GPL3
+	makedepends = npm
+	makedepends = git
+	depends = nodejs
+	depends = glew-2.1
+	depends = sdl2_ttf
+	depends = sdl2_image
+	depends = sfml
+	depends = mpg123
+	depends = nss
+	depends = libxss
+	depends = gtk3
+	source = https://github.com/hylian-modding/ModLoader64-GUI/releases/download/v1.1.60/modloader64-gui-1.1.60.tar.gz
+	source = git+https://github.com/hylian-modding/node-addon-sfml-audio.git
+	source = modloader64-gui.sh
+	md5sums = 0a54afa7c624e03887553e77eb9172aa
+	md5sums = SKIP
+	md5sums = 2be2b992d95048fb4737e37dae4a442d
+
+pkgname = modloader64-gui-bin
+
