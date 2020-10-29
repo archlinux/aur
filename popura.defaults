@@ -1,0 +1,4 @@
+#
+# Here you could add additional options for popura
+#
+#popura_opts="-autopeer"

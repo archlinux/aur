@@ -1,0 +1,20 @@
+# Last Modified: Thu Oct 29 19:43:48 2020
+include <tunables/global>
+
+# vim:syntax=apparmor
+# AppArmor policy for popura
+
+
+/usr/bin/popura {
+  include <abstractions/base>
+  include <abstractions/nameservice>
+
+  capability net_admin,
+
+  /sys/kernel/mm/transparent_hugepage/hpage_pmd_size r,
+  owner /dev/net/tun rw,
+  owner /etc/popura.conf r,
+  owner /proc/sys/net/core/somaxconn r,
+  owner /run/yggdrasil.sock w,
+
+}
