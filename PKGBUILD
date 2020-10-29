@@ -23,34 +23,34 @@ case "$CARCH" in
         source=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-c2-linux_${_arch}.tar.gz")
         ;;
     aarch64) _arch='aarch64'
-        _build=15.27.17
-        pkgver=15.0.0
-        sha256sums=('AADB8303B975B757049FACE3086C57147C0089F83D7C065F117E8D664B41314B')
+        _build=15.28.13
+        pkgver=15.0.1
+        sha256sums=('4BC0368DBFCC17A7263C60DB1F82DE424D0F8B0BEED4C80139BC65F983DB4FA5')
+        source=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
         provides=("java-environment=13" "java-runtime=13")
         ;;
     i686) _arch='i686'
-        _build=15.27.17
-        pkgver=15.0.0
-        sha256sums=('387AC0C807DBE4E4772E61A1B5508CC700F57CB19F3CEE2A80BC38CAF3E6DA32')
-        source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_i686.tar.gz")
+        _build=15.28.13
+        pkgver=15.0.1
+        sha256sums=('458913990AE85635E5C6E2FCB18490EC6F6DA5DCD54ECA1FC23E91DB602B2262')
+        source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
         provides=("java-environment=14" "java-runtime=14")
         ;;
     x86_64) _arch='x64'
-        _build=15.27.17
-        pkgver=15.0.0
-        sha256sums=('0A38F1138C15A4F243B75EB82F8EF40855AFCC402E3C2A6DE97CE8235011B1AD')
-        source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_x64.tar.gz")
+        _build=15.28.13
+        pkgver=15.0.1
+        sha256sums=('F0CB5492B8544A77AE7BCCA50FBF41A4CE538A3AC4AB8BA123A5E1E58D685D1B')
+        source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
         provides=("java-environment=14" "java-runtime=14")
         ;;
 esac
 
-_archive="zulu${_build}-ca-jdk${pkgver}-linux_${_arch}"
-source=(${source:-"http://cdn.azul.com/zulu-embedded/bin/${_archive}.tar.gz"})
-
+#_archive="zulu${_build}-ca-jdk${pkgver}-linux_${_arch}"
+_archive=${source[0]/.tar.gz/}
 _jvmdir="usr/lib/jvm/zulu-embedded-${pkgver%%.*}"
 
 package() {
-    cd "$_archive"
+    cd "$(basename $_archive)"
 
     install -dm 755 "${pkgdir}/${_jvmdir}"
     cp -a . "${pkgdir}/${_jvmdir}/"
