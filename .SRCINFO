@@ -13,9 +13,6 @@ pkgbase = league-mono-font
 pkgname = otf-league-mono
 	provides = league-mono-font
 
-pkgname = ttf-league-mono
-	provides = league-mono-font
-
 pkgname = ttf-league-mono-variable
 	provides = league-mono-font-variable
 

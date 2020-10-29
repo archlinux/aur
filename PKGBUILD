@@ -4,7 +4,7 @@
 _name=league-mono
 _fname=LeagueMono
 pkgbase=$_name-font
-pkgname=(otf-$_name ttf-$_name ttf-$_name-variable)
+pkgname=(otf-$_name ttf-$_name-variable) # ttf-$_name
 pkgver=2.220
 pkgrel=1
 epoch=1
