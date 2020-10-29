@@ -3,7 +3,7 @@
 
 pkgname=pgcli
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a command line interface for Postgres with auto-completion and syntax highlighting"
 url="http://pgcli.com/"
 arch=(any)
@@ -18,6 +18,7 @@ md5sums=('86fd20b9ace3091e06607f0ba9aba6f0')
 package() {
     cd "$srcdir/pgcli-${pkgver}"
     sed -i -e "s/prompt_toolkit>=2.0.6,<3.0.0/prompt_toolkit>=2.0.6/g" setup.py
+    sed -i -e "s/sqlparse >=0.3.0,<0.4/sqlparse >= 0.3.0,<0.5/g" setup.py
     python setup.py install --root="$pkgdir/" --optimize=1
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
     cp LICENSE.txt "$_/LICENSE"
