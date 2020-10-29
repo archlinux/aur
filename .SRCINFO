@@ -33,6 +33,9 @@ pkgbase = remmina-git
 	optdepends = libxkbfile
 	optdepends = telepathy-glib
 	optdepends = gobject-introspection
+	optdepends = spice
+	optdepends = spice-gtk
+	optdepends = spice-protocol
 	provides = remmina
 	provides = grdc
 	provides = grdc=1.4.7.r6.gef3ef1bf
