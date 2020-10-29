@@ -1,0 +1,13 @@
+[Unit]
+Description=popura default config generator
+ConditionPathExists=|!/etc/popura.conf
+ConditionFileNotEmpty=|!/etc/popura.conf
+Wants=local-fs.target
+After=local-fs.target
+
+[Service]
+Type=oneshot
+Group=popura
+StandardOutput=file:/etc/popura.conf
+ExecStart=/usr/bin/popura -genconf
+ExecStartPost=/usr/bin/chmod 0640 /etc/popura.conf

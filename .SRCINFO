@@ -1,12 +1,25 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = popura-git
+	pkgdesc = Popura ポプラ: alternative Yggdrasil network client
+	pkgver = 0.3.15+popura1
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
+	url = https://github.com/popura-network/Popura
+	arch = i686
 	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = LGPLv3
+	makedepends = git
+	makedepends = go
+	conflicts = popura
+	source = popura::git+https://github.com/popura-network/Popura.git#commit=42941caaf13472f1ecc0c675ae6059a857f3e60a
+	source = popura.sysusers
+	source = popura-default-config.service
+	source = popura.service
+	sha512sums = SKIP
+	sha512sums = af276973744e079e6892d8ecdf2027ea265a05908f624f82da35d5bcc77a91ddeb458c4c3d07341aae42f003189201d3989cce5f87e184e472c1a23112cfe554
+	sha512sums = 449da220d0e7f502268adb302a2672315e37dc0a08a7923727eec6eb9f49fdc803ac0240508e62920edd826c6d294cec238485edebb5250228fa35eb20e544fb
+	sha512sums = c6fbc97bb7c372e6d6094a6826fdc03306ed7ba67bb7303567ad5d650dee34eead803c03bcf39a6a836b149fafbef5462d756aae3c1099ddaba6eb7b446e3274
 
-pkgname = yarxi
+pkgname = popura-git
 
