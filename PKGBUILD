@@ -2,12 +2,13 @@
 
 pkgname=adtrack2-bin
 pkgver=2.4.24
-pkgrel=3
-pkgdesc="OPL3 music tracker"
+pkgrel=4
+pkgdesc="Adlib Tracker II - an OPL3 music tracker"
 arch=(x86_64)
 url="http://www.adlibtracker.net"
 license=('custom:freeware')
 depends=(sdl2)
+groups=(pro-audio)
 source=("http://www.adlibtracker.net/files/adtrack-2.4.24-linux-bin-debian-stretch-x86.tar.gz"
         adtrack2.sh
         adtrack2.desktop
