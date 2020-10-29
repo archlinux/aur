@@ -4,7 +4,7 @@
 pkgbase=docspell
 pkgname=('docspell-joex' 'docspell-restserver')
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/eikek/docspell"
 license=('GPL3')
@@ -44,8 +44,7 @@ prepare() {
 # checkdepends=('unpaper' 'ocrmypdf' 'solr')
 
 package_docspell-joex() {
-    description=("Assists in organizing your piles of documents, resulting from scanners, e-mails and other sources with miminal effort. (Job executer)")
-    pkgdesc="Job executer for docspell"
+    pkgdesc="Assists in organizing your piles of documents, resulting from scanners, e-mails and other sources with miminal effort. (Job executer)"
     depends+=('ghostscript' 'tesseract' 'unoconv' 'wkhtmltopdf')
     optdepends+=('ocrmypdf: adds an OCR layer to scanned PDF files to make them searchable'
                  'unpaper: pre-processes images to yield better results when doing ocr')
@@ -75,7 +74,7 @@ package_docspell-joex() {
 }
 
 package_docspell-restserver() {
-    description=("Assists in organizing your piles of documents, resulting from scanners, e-mails and other sources with miminal effort. (Server)")
+    pkgdesc="Assists in organizing your piles of documents, resulting from scanners, e-mails and other sources with miminal effort. (Server)"
     backup=("etc/docspell/restserver.conf")
 
     install -Dm 755 "${pkgname[1]}.sh" "$pkgdir/usr/bin/${pkgname[1]}"

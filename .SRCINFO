@@ -1,6 +1,6 @@
 pkgbase = docspell
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eikek/docspell
 	arch = any
 	groups = docspell
@@ -25,7 +25,7 @@ pkgbase = docspell
 	sha512sums = 0fc1d59cd6b57186c3a17d03779f428552f50f161f9a13de3ce727ac47ae8e3aac3c719bae08dfda258de02cd140c0ab7ba9cc6728d0ae6f5a4b0cbbaf72fa9c
 
 pkgname = docspell-joex
-	pkgdesc = Job executer for docspell
+	pkgdesc = Assists in organizing your piles of documents, resulting from scanners, e-mails and other sources with miminal effort. (Job executer)
 	depends = java-runtime-headless
 	depends = ghostscript
 	depends = tesseract
@@ -37,5 +37,6 @@ pkgname = docspell-joex
 	backup = etc/docspell/joex.conf
 
 pkgname = docspell-restserver
+	pkgdesc = Assists in organizing your piles of documents, resulting from scanners, e-mails and other sources with miminal effort. (Server)
 	backup = etc/docspell/restserver.conf
 
