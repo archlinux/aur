@@ -1,22 +1,22 @@
 pkgbase = duck
 	pkgdesc = Cyberduck CLI
-	pkgver = 7.2.2.32045
+	pkgver = 7.6.2.33520
 	pkgrel = 1
 	url = https://duck.sh/
 	arch = x86_64
 	arch = i686
 	license = GPL
 	depends = java-runtime
-	depends = libxtst
-	depends = java-environment-common
+	depends = pango
+	depends = libxi
+	depends = libnet
 	depends = libglvnd
-	optdepends = gtk2: Graphical interface
-	optdepends = alsa-lib: Audio support
+	depends = gdk-pixbuf2
 	options = !strip
-	source_x86_64 = https://repo.cyberduck.io/stable/x86_64/duck-7.2.2.32045.x86_64.rpm
-	md5sums_x86_64 = f52961666b7afefa763081c4ca032be1
-	source_i686 = https://repo.cyberduck.io/stable/i386/duck-7.2.2.32045.x86_64.rpm
-	md5sums_i686 = 122eb22d219a52e420fa137f3b0a13ff
+	source_x86_64 = https://repo.cyberduck.io/stable/x86_64/duck-7.6.2.33520.x86_64.rpm
+	sha256sums_x86_64 = 612aae66bef284f199ffc1dc9facc206fedc5a62a500750238f0967fa1507382
+	source_i686 = https://repo.cyberduck.io/stable/i386/duck-7.6.2.33520.x86_64.rpm
+	sha256sums_i686 = 8a95c65d10a9171f5ac1ed7f50e4c139d6df8080b8665821befd4d920c0eb92a
 
 pkgname = duck
 
