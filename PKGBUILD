@@ -4,35 +4,25 @@
 
 _quake=vkQuake
 pkgname=vkquake
-pkgver=1.04.1
-pkgrel=3
+pkgver=1.05.0
+pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('x86_64')
-conflicts=('vkquake')
 provides=('vkquake')
 url="https://github.com/Novum/vkquake"
 license=('GPL2')
-depends=(	 'git' 'flac' 'glibc' 'libgl' 'libmad' 'libmikmod' 
+depends=(	 'flac' 'glibc' 'libgl' 'libmad' 'libmikmod' 
 		 'libvorbis' 'libx11' 'opusfile' 'sdl2' 'vulkan-validation-layers'
 )
 install=$pkgname.install
 source=("https://github.com/Novum/vkQuake/archive/${pkgver}.tar.gz"
 	'vkquake.desktop'
 	'vkquake.png'
-	'vkquake.svg'
-	'fix-build.patch')
-md5sums=(	'0e7aadbfa99a9890a498a5072167c910'
+	'vkquake.svg')
+md5sums=(	'567088e7e14f0c3d4fc137934e927c02'
 		'202e1efb0491aafcc9de6f44295dc272'
 		'ffc3103326b0378af770b1318cf4e7e6'
-		'd6b9553906db3cbadfbc40aafafa2b5d'
-		'0c17db6ff55638f027a4b12458a1680f')
-
-
-prepare() {
-  cd "$srcdir/$_quake-$pkgver"
-  # https://github.com/Novum/vkQuake/issues/222
-  patch -Np1 -i ../fix-build.patch
-}
+		'd6b9553906db3cbadfbc40aafafa2b5d')
 
 build() {
   
