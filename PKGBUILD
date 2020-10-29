@@ -51,7 +51,7 @@ package() {
   install -Dm644 "$pkgname.tmpfile" "$pkgdir"/usr/lib/tmpfiles.d/$pkgname.conf
   install -Dm644 "$pkgname.sysuser" "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
 
-  install -dm755 "$pkgdir"/etc/pihole
+  install -dm775 "$pkgdir"/etc/pihole
   install -Dm644 "$pkgname.conf" "$pkgdir"/etc/pihole/pihole-FTL.conf
   install -Dm644 "$pkgname.db" "$pkgdir"/etc/pihole/pihole-FTL.db
 
