@@ -64,8 +64,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.9.1
-pkgrel=2
+pkgver=5.9.2
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -83,20 +83,20 @@ source=(
   "http://ck.kolivas.org/patches/5.0/5.9/5.9-ck${_ckpatchversion}/$_ckpatch.xz"
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-i2c-core-Restore-acpi_walk_dep_device_list-getting-c.patch
+  0002-mac80211-fix-regression-where-EAPOL-frames-were-sent.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('65eeccf077194ce03d5dbc1e8ea8f6022d709bc930945a49880fb87d71992e0614cf5ee92eb1b60fe2e3ed41fe17f0c176bbbad5f2cf0a2a349e1b08e6236558'
+b2sums=('22ba992df3a1d73fa16efb31bb0d62eacd106fb6f4d6dd1ebe522dc09b94c8df689cdb594ed105076ab5e1be4bd00eb834019dc19b6f58f6bee04f53e5de961e'
         'SKIP'
         'ea3fda355bd421b68dff7e81b52bffe332c6e6030398ea84706fe29b39f9ce4a818128b4ed817b834df35f6237ae3e623fdea61b2fcb5b586990ea94eb4cd287'
         'c8d0697f99fe6105815217b8ec059d8f587415ea8dd2b88a65e1087feedf697341a64cd56810fde9e7aeada79125fc8235faccc7e7b06492c099e27a8abbe99c'
         'c19099ad66168db4608dee44e1913c07c035bc002a91267abc2e1eadf1788ddb5be3b17e3fdfeddcba96526dfa2b9fcc43a5dd0f8236d94c864e6477924a6718'
         'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95'
-        '3c5cdf6da7ff5312bfe2a8dcd18e58c8e1a3408e1612be60417ed33866e9e70da77db88435fe49483c907c5ff45d4b9ed979aaa96d485cef976c6aa6fdaa834c'
-        '5d54400c8cb1d2a2858684beba31a3b7b1a2695e1695b6382fc6eb3b54c858dae6d4a5b0c623a8cd1405000c8495eee72c1395b2a697c6ca7c24c2863c176b8d')
+        '065c46b01678f8f177e93652600bd0967592a5962a78ba1c77f7e0e4028ddaf0ad05ccacdce50d33176330e7e9adb5083ca747d86c01dc11a3bbabb3ac7e9f24'
+        'c159ba9bfe9b400a604d1ee0b74aa19ee2e5fea96d0781fef48bb92c09909566a879ff9a68e101f0878d8dbd86d7bb6dfee91802ec837dfcc745237869bc1a1e')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
