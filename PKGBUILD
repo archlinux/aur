@@ -1,20 +1,21 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Pierre Neidhardt <ambrevar@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor:  Gour <gour@mail.inet.hr>
 
 pkgname=emms
-pkgver=5.3
+pkgver=6.00
 pkgrel=1
 pkgdesc="The Emacs Multimedia System"
-url="http://www.gnu.org/software/emms/"
+url="https://www.gnu.org/software/emms/"
 arch=('x86_64')
 license=('GPL3')
 depends=('emacs' 'taglib')
 install=${pkgname}.install
 validpgpkeys=('691BF9D0EEC472730726EB7869725A21D60EEC42')
 source=(https://ftp.gnu.org/gnu/emms/emms-$pkgver.tar.gz{,.sig})
-sha256sums=('413e8b667f141a12985a130639cff45a3ccf8217ee1d975f8d5aac27e5d91602'
+sha256sums=('6b05b5a6ff811d0cb1f0119b9fe831a87dd6a252994168257cd0b7bbc0dbb8da'
             'SKIP')
 
 prepare() {
