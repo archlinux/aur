@@ -1,9 +1,10 @@
 pkgbase = mpd-smbclient
 	pkgdesc = Flexible, powerful, server-side application for playing music (smbclient plugin enabled)
 	pkgver = 0.22.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.musicpd.org/
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	makedepends = alsa-lib
 	makedepends = audiofile
