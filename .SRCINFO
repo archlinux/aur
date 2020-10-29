@@ -1,14 +1,14 @@
 pkgbase = nextcloud-integration-twitter
 	pkgdesc = Twitter integration into Nextcloud
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/nextcloud/integration_twitter
 	arch = any
 	license = AGPL3
 	depends = nextcloud
 	options = !strip
-	source = https://github.com/nextcloud/integration_twitter/releases/download/v0.0.4/integration_twitter-0.0.4.tar.gz
-	sha512sums = 2136f9f58da5dd1d35c492fc76c0ae555e16828d379164d5a59a3e4164a5650cbed8ef3140dbfbbf654eb891eddcb94ace94146efc82a7e73868ef837d09356a
+	source = https://github.com/nextcloud/integration_twitter/releases/download/v0.0.5/integration_twitter-0.0.5.tar.gz
+	sha512sums = 510a17e89d9b8dd30d3ea82b21defeef29bf619b8c971cabbcb571fe4637267ecd22466cc0cbfab5b4282b078521c8f3d2cdded81fa6ca0b4e9ec7ad675a5423
 
 pkgname = nextcloud-integration-twitter
 
