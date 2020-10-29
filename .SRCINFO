@@ -1,4 +1,4 @@
-pkgbase = yandex-ffmpeg
+pkgbase = yandex-libffmpeg
 	pkgdesc = simlink libffmpeg for yandex-browser
 	pkgver = 0.47.2
 	pkgrel = 1
@@ -7,8 +7,8 @@ pkgbase = yandex-ffmpeg
 	license = GPL
 	makedepends = unzip
 	depends = gcc-libs
-	source = yandex-ffmpeg-0.47.2-linux-x64.zip::https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/0.47.2/0.47.2-linux-x64.zip
+	source = yandex-libffmpeg-0.47.2-linux-x64.zip::https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/0.47.2/0.47.2-linux-x64.zip
 	md5sums = 46c4c919a0a5bd6569f02f0b70434ccb
 
-pkgname = yandex-ffmpeg
+pkgname = yandex-libffmpeg
 
