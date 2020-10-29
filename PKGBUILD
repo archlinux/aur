@@ -3,7 +3,7 @@
 pkgname=fluffychat
 _gitname=${pkgname}-flutter
 pkgver=0.21.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Chat with your friends"
 arch=('any')
 url="https://fluffychat.im/"
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 
 prepare() {
-  flutter channel master
+  flutter channel dev
   flutter upgrade
   flutter config --enable-linux-desktop
 
