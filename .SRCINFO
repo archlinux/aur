@@ -1,7 +1,7 @@
 pkgbase = openvisualtraceroute
 	pkgdesc = Open source cross-platform Java Visual Traceroute
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/openvisualtrace
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = openvisualtraceroute
 	source = ovtr
 	source = ovtr.desktop
 	sha256sums = 196054d50a15975dca18dca51308bbb2ccdc454d153cd6137612fad67d541617
-	sha256sums = 8eb4f3ad755ce5c0ec8a85331cd291da71d70d5325cf2ad5133aca9e736c8e1d
+	sha256sums = 561cb4a91ba7ab18ffc875d2833c023daf2db0d0655f5ebc37ddc32a8b70292c
 	sha256sums = af0cef38105d65182c261067577f8ff68bf50e71d4d2f4fc7fe8e0ba4472d22f
 
 pkgname = openvisualtraceroute
