@@ -1,3 +1,7 @@
+2020-10-29
+	add patches "environment fixes"
+	change description
+
 2020-10-10
 	upstream upgrade: 3.36.2 -> 3.38.1
 	requires vte3 >= 0.62.1
