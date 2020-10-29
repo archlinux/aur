@@ -1,6 +1,6 @@
 pkgbase = briar-headless-git
 	pkgdesc = Briar REST API
-	pkgver = 1.2.9.r107.g4e5f2e31d
+	pkgver = 1.2.11.r0.g8cbb38ee6
 	pkgrel = 1
 	url = https://code.briarproject.org/briar/briar
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = briar-headless-git
 	makedepends = git
 	makedepends = jdk11-openjdk
 	depends = java-runtime=11
+	depends = bash
 	conflicts = briar-headless
 	source = briar-headless::git+https://code.briarproject.org/briar/briar.git
 	sha256sums = SKIP
