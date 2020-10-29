@@ -4,15 +4,13 @@
 pkgname=bear
 _pkgname=Bear
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="tool to generate compilation database for clang tooling"
 arch=('i686' 'x86_64')
 url="https://github.com/rizsotto/Bear"
 license=('GPL3')
-makedepends=('cmake' 'ninja')
-depends=('python' 'grpc' 'fmt' 'spdlog' 'nlohmann-json')
-# FUNC_TESTS fails without this flag. Disabling for good measure
-options=('!buildflags')
+makedepends=('cmake' 'ninja' 'nlohmann-json')
+depends=('grpc' 'fmt' 'spdlog')
 conflicts=('bear')
 provides=('bear')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/rizsotto/$_pkgname/archive/$pkgver.tar.gz")
@@ -35,6 +33,6 @@ package() {
     DESTDIR="${pkgdir}" make install
 
     # Workaround for including compile dir in package
-    rm -rf "$pkgdir${srcdir}"
-    find "$pkgdir" -empty -type d -delete
+    rm -rf "${pkgdir}${srcdir}"
+    find "${pkgdir}" -empty -type d -delete
 }
