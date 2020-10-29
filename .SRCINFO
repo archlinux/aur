@@ -1,5 +1,5 @@
 pkgbase = studio-controls-git
-	pkgdesc = An audio setup utility.
+	pkgdesc = An JACK audio setup utility with USB device and PulseAudio bridges.
 	pkgver = 2.0.9.r3.g9e9111b
 	pkgrel = 1
 	url = https://github.com/ovenwerks/studio-controls
@@ -10,7 +10,13 @@ pkgbase = studio-controls-git
 	depends = python
 	depends = python-gobject
 	depends = python-jack-client
+	depends = python-alsaaudio
+	depends = zita-ajbridge
 	optdepends = realtime-privileges
+	provides = studio-controls
+	provides = studio-controls-git
+	conflicts = studio-controls
+	conflicts = studio-controls-git
 	source = git+https://github.com/ovenwerks/studio-controls
 	md5sums = SKIP
 
