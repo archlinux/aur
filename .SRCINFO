@@ -1,14 +1,14 @@
 pkgbase = ms-sys-devel
 	pkgdesc = Write Microsoft-compatible boot records (MBR and PBR)
-	pkgver = 2.6.0
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = http://ms-sys.sourceforge.net/
 	arch = x86_64
 	license = GPL
 	provides = ms-sys
 	conflicts = ms-sys
-	source = https://sourceforge.net/projects/ms-sys/files/ms-sys-2.6.0.tar.gz
-	sha512sums = f49790813712b9fd9f63273a7571edbdacb855d93d26dfe1da94d35b656c0ec0574ec43b3cad0f363fa4ec18bd29b81a440d592dc8148b15b18bb8a28c35fbbe
+	source = https://sourceforge.net/projects/ms-sys/files/ms-sys-2.7.0.tar.gz
+	b2sums = ae1b6de38bb4ac275f971c7dfbbdc5d32a645ffc0c32a6fa82f6673fa8788f1a328d9609c2e82812fc74b9c94ea980f257297e67b7fb9536c9d42c0fabc26f8f
 
 pkgname = ms-sys-devel
 
