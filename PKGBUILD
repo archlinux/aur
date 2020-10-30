@@ -16,7 +16,7 @@ source=(
     "hp15c.desktop"
 )
 md5sums=('c3d055f978eb9eba61589fb54204e189'
-         '1cce408ad1c6c8458681690e96a02508'
+         'c63c593bb9cc8083c33d54b87fafd2ad'
          '33588adff38833aa1a2957457d4701b3'
          'bab776009feb1db971b92649c839ff1f')
 

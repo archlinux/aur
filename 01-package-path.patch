@@ -1,10 +1,8 @@
-diff --git a/HP-15C.tcl b/HP-15C.tcl
-old mode 100644
-new mode 100755
-index 50238bb..209392b
+diff --git a/src/HP-15C.tcl b/src/HP-15C.tcl
+index f9957a3d809e..762d72d9ae9e 100644
 --- a/HP-15C.tcl
 +++ b/HP-15C.tcl
-@@ -62,7 +62,7 @@ array set APPDATA {
+@@ -63,7 +63,7 @@ array set APPDATA {
  }
  
  set APPDATA(SerialNo) "$APPDATA(build)[string map {. {}} $APPDATA(version)]"
@@ -13,20 +11,28 @@ index 50238bb..209392b
  set APPDATA(locale) [mclocale]
  
  # Load language according to current locale
-@@ -3252,14 +3253,7 @@ proc help { topic } {
+@@ -3399,22 +3399,7 @@ proc help { topic } {
  
-   switch $topic {
-     simulator {
+   global APPDATA HP15 errorInfo
+ 
+-  switch $topic {
+-    simulator {
 -# Differentiate between running from a starpack or from wish
 -      if {[info exists ::starkit::topdir]} {
 -        set helpdir [file dirname $::starkit::topdir]
 -      } else {
 -        set helpdir [file dirname $::argv0]
 -      }
--      if {[string compare $helpdir "."] == 0} {set helpdir [pwd]}
+-      if {$helpdir eq "."} {set helpdir [pwd]}
 -      set helpfile "$helpdir/doc/index.htm"
-+      set helpfile "/usr/share/doc/hp15c/index.htm"
-     }
-     prgm {
-       set helpfile "$HP15(prgmdir)/$HP15(prgmname).htm"
+-    }
+-    prgm {
+-      set helpfile "$HP15(prgmdir)/$HP15(prgmname).htm"
+-    }
+-  }
+-  catch {set helpfile [file nativename [lindex [glob "$helpfile*"] 0]]}
++  set helpfile "/usr/share/doc/hp15c/index.htm"
+ 
+   if {[string length $HP15(browser)] == 0} {
+     set msg [mc help.nobrowser]
 ---
