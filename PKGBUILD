@@ -1,7 +1,7 @@
 # Maintainer: max.bra <max dot bra at alice dot it>
 
 pkgname=hub-kids
-pkgver=1.0
+pkgver=5.2.219
 pkgrel=1
 pkgdesc="La piattaforma facile, gratuita e innovativa per la didattica digitale."
 arch=('x86_64')
@@ -19,10 +19,10 @@ optdepends=(
 )
 options=(!strip)
 
-_debname=hubkids-1.0_amd64.deb
+_debname=HUB-Kids.deb
 
-source=(http://www.mondadorieducation.it/media/contenuti/appdilettura/kidslinux.zip)
-md5sums=('4497dfe4b6e2516c11e3ae1480a01c25')
+source=(https://bce.mondadorieducation.it/media_educar/contenuti/appdilettura/kidslinux.zip)
+md5sums=('ce99177da78911898ec6ae724e7cb915')
 
 prepare() {
   cd "$srcdir"
@@ -30,10 +30,13 @@ prepare() {
   ar xv "${_debname}" > /dev/null
   tar -xf data.tar.xz > /dev/null
 
-  find ./{etc,usr} -type d -exec chmod 755 '{}' \;
+  #find ./{etc,usr} -type d -exec chmod 755 '{}' \;
+  find ./usr -type d -exec chmod 755 '{}' \;
+  chmod 755 ./usr/local/bin/hubkids/hub-kids
 }
 
 package() {
   cd "$srcdir"
-  cp -dpr --no-preserve=ownership {opt,usr} "$pkgdir"
+  #cp -dpr --no-preserve=ownership {opt,usr} "$pkgdir"
+  cp -dpr --no-preserve=ownership ./usr "$pkgdir"
 }
