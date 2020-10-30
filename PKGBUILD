@@ -4,7 +4,7 @@
 
 pkgname=vitables
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI browser and editor for PyTables/HDF5 files"
 arch=(any)
 url=http://vitables.org
@@ -30,10 +30,6 @@ sha256sums=(
 
 build() {
   cd ViTables-"$pkgver"
-  sed -e "s/'PyQt5 (>=5.5.1)'//g" -i setup.py
-  sed -e "/if 'CONDA_PREFIX' not in os.environ:/d" -i setup.py
-  sed -e "/install_requires.append()/d" -i setup.py
-  sed '/PyQt5/d' requirements.txt
   python setup.py build
 }
 
