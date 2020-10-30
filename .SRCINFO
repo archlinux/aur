@@ -1,6 +1,6 @@
 pkgbase = proton-ge-custom
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build
-	pkgver = 5.11.GE.2.MF
+	pkgver = 5.13.GE.1
 	pkgrel = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	arch = x86_64
@@ -173,16 +173,17 @@ pkgbase = proton-ge-custom
 	optdepends = samba
 	optdepends = dosbox
 	noextract = wine-mono-5.1.0-x86.tar.xz
-	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=47db5f75cb1b650985934db626b75173486602da
+	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=ae15b580525714b76de074c2aee30f535e15a349
 	source = wine::git://source.winehq.org/git/wine.git
 	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git
-	source = vkd3d::git+https://github.com/HansKristian-Work/vkd3d.git
+	source = vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
 	source = dxvk::git+https://github.com/doitsujin/dxvk.git
 	source = openvr::git+https://github.com/ValveSoftware/openvr.git
 	source = ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
 	source = liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
 	source = SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	source = Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
+	source = dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
 	source = FAudio::git+https://github.com/FNA-XNA/FAudio.git
 	source = protonfixes-gloriouseggroll::git+https://github.com/gloriouseggroll/protonfixes.git
 	source = glib::git+https://gitlab.gnome.org/GNOME/glib.git
@@ -198,6 +199,8 @@ pkgbase = proton-ge-custom
 	source = proton-disable_lock.patch
 	source = proton-user_compat_data.patch
 	source = dxvk-extraopts.patch
+	source = vkd3d-extraopts.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -219,10 +222,11 @@ pkgbase = proton-ge-custom
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 7c69355566055121669f7e416e44185a5ccceb4312d0c19587d2303e63b6b63f
-	sha256sums = 403bd4f6cb7b7c2508dfce9444ea6d3a1eee625d21f8ac27620b099e6612217c
+	sha256sums = 97f33530c996b7cc1968d167f2251dc95d79aac04e0337d8c44ee14878153203
 	sha256sums = 9389a6bcd8e8d8f0349fa082644a5519026dbcdd91a3e978f39103a21a6298f1
 	sha256sums = 20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3
 	sha256sums = bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98
+	sha256sums = 7c5f9c20e41c0cd7d0d18867950a776608cef43e0ab9ebad2addb61e613fe17a
 
 pkgname = proton-ge-custom
 

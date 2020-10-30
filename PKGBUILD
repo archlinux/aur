@@ -1,8 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=5.11-GE-2-MF
-_commit=47db5f75cb1b650985934db626b75173486602da
+_srctag=5.13-GE-1
+_commit=ae15b580525714b76de074c2aee30f535e15a349
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.1.0
@@ -96,13 +96,14 @@ source=(
     proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=${_commit}
     wine::git://source.winehq.org/git/wine.git
     wine-staging::git+https://github.com/wine-staging/wine-staging.git
-    vkd3d::git+https://github.com/HansKristian-Work/vkd3d.git
+    vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
     dxvk::git+https://github.com/doitsujin/dxvk.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
     ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
     liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
     SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
+    dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
     FAudio::git+https://github.com/FNA-XNA/FAudio.git
     protonfixes-gloriouseggroll::git+https://github.com/gloriouseggroll/protonfixes.git
     glib::git+https://gitlab.gnome.org/GNOME/glib.git
@@ -118,6 +119,7 @@ source=(
     proton-disable_lock.patch
     proton-user_compat_data.patch
     dxvk-extraopts.patch
+    vkd3d-extraopts.patch
 )
 noextract=(
     wine-mono-${_monover}-x86.tar.xz
@@ -128,7 +130,8 @@ sha256sums=(
     SKIP
     SKIP
     SKIP
-    SKIP    
+    SKIP
+    SKIP
     SKIP
     SKIP
     SKIP
@@ -144,10 +147,11 @@ sha256sums=(
     SKIP
     SKIP
     '7c69355566055121669f7e416e44185a5ccceb4312d0c19587d2303e63b6b63f'
-    '403bd4f6cb7b7c2508dfce9444ea6d3a1eee625d21f8ac27620b099e6612217c'
+    '97f33530c996b7cc1968d167f2251dc95d79aac04e0337d8c44ee14878153203'
     '9389a6bcd8e8d8f0349fa082644a5519026dbcdd91a3e978f39103a21a6298f1'
     '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
     'bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98'
+    '7c5f9c20e41c0cd7d0d18867950a776608cef43e0ab9ebad2addb61e613fe17a'
 )
 
 prepare() {
@@ -156,27 +160,42 @@ prepare() {
 
     [ ! -d build ] && mkdir build
     cd proton-ge-custom
-    for submodule in ffmpeg openvr SPIRV-Headers Vulkan-Headers FAudio fonts/liberation-fonts; do
+    for submodule in ffmpeg openvr FAudio fonts/liberation-fonts vkd3d-proton; do
         git submodule init "${submodule}"
-        git config submodule."${submodule}".url ../"${submodule#*/}"
+        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
         git submodule update "${submodule}"
     done
 
-    for submodule in wine wine-staging vkd3d dxvk; do
+    for submodule in wine wine-staging dxvk; do
         git submodule init "${submodule}"
-        git config submodule."${submodule}".url ../"${submodule#*/}"
+        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
         git submodule update "${submodule}"
     done
 
     for submodule in gstreamer gst-{plugins-{base,good,bad,ugly},libav,orc} glib; do
         git submodule init "${submodule}"
-        git config submodule."${submodule}".url ../"${submodule#*/}"
+        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
         git submodule update "${submodule}"
     done
 
+    pushd vkd3d-proton
+    for submodule in subprojects/{dxil-spirv,Vulkan-Headers,SPIRV-Headers}; do
+        git submodule init "${submodule}"
+        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
+        git submodule update "${submodule}"
+    done
+    pushd subprojects/dxil-spirv
+    git submodule init third_party/spirv-headers
+    git config submodule.third_party/spirv-headers.url "$srcdir"/SPIRV-Headers
+    git submodule update third_party/spirv-headers
+    popd
+    popd
+
     git submodule init protonfixes
-    git config submodule.protonfixes.url ../protonfixes-gloriouseggroll
+    git config submodule.protonfixes.url "$srcdir"/protonfixes-gloriouseggroll
     git submodule update protonfixes
+
+    ./patches/protonprep-nofshack.sh
 
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
@@ -185,6 +204,7 @@ prepare() {
     # Uncomment to enable extra optimizations
     # Patch crossfiles with extra optimizations from makepkg.conf
     patch -p1 -i "$srcdir"/dxvk-extraopts.patch
+    patch -p1 -i "$srcdir"/vkd3d-extraopts.patch
     local dxvk_cflags="$CFLAGS"
     local dxvk_ldflags="$LDFLAGS"
     # Filter known bad flags before applying optimizations
@@ -202,9 +222,6 @@ prepare() {
     # https://github.com/Joshua-Ashton/d9vk/issues/476
     #dxvk_cflags+=" -fno-stack-protector"
     dxvk_cflags="${dxvk_cflags// -fstack-protector*([\-all|\-strong])/}"
-    # Adjust optimization level in meson arguments. This is ignored
-    # anyway because meson sets its own optimization level.
-    dxvk_cflags="${dxvk_cflags// -O+([0-3s]|fast)/}"
     # Doesn't compile with these flags in MingW so remove them.
     # They are also filtered in Wine PKGBUILDs so remove them
     # for winelib versions too.
@@ -217,8 +234,12 @@ prepare() {
     sed -i dxvk/build-win32.txt \
         -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
-
-    ./patches/protonprep-nofshack.sh
+    sed -i vkd3d-proton/build-win64.txt \
+        -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
+        -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
+    sed -i vkd3d-proton/build-win32.txt \
+        -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
+        -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
 }
 
 build() {
@@ -238,6 +259,8 @@ build() {
     export CFLAGS="${CFLAGS/ -fno-plt/}"
     export CXXFLAGS="${CXXFLAGS/ -fno-plt/}"
     export LDFLAGS="${LDFLAGS/,-z,now/}"
+    # MingW Wine builds fail with relro
+    export LDFLAGS="${LDFLAGS/,-z,relro/}"
 
     SUBMAKE_JOBS="${MAKEFLAGS/-j/}" \
         WINEESYNC=0 \
