@@ -1,4 +1,5 @@
-# Maintainer:  Kozec (kozec-at-kozec-dot-com)
+# Maintainer:  Clemmitt Sigler <cmsigler (dot) online (at) gmail (dot) com>
+# Contributor:  Kozec (kozec-at-kozec-dot-com)
 # Contributor: TDY <tdy@gmx.com>
 # Contributor: rabyte <rabyte*gmail>
 # Contributor: LukenShiro <lukenshiro@ngi.it>
