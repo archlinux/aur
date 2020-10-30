@@ -1,6 +1,6 @@
 pkgbase = v8-r
 	pkgdesc = Google's open source JavaScript and WebAssembly engine
-	pkgver = 8.8.166
+	pkgver = 8.8.211
 	pkgrel = 1
 	url = https://v8.dev
 	arch = x86_64
