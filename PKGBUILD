@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster (milk on freenode)
 _pkgname=studio-controls
 pkgname=${_pkgname}-git
-pkgver=2.0.9.r3.g9e9111b
+pkgver=2.0.9.r4.g2bdd72d
 pkgrel=1
 pkgdesc="An JACK audio setup utility with USB device and PulseAudio bridges."
 arch=('x86_64')
@@ -30,7 +30,7 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir/${_pkgname%}"
+cd "$srcdir/${_pkgname%}"
 }
 
 build() {
@@ -43,9 +43,9 @@ check() {
 
 package() {
 	cd "$srcdir/${_pkgname%}"
-  cp -r etc lib usr $pkgdir
+  cp -r etc usr $pkgdir
   mv $pkgdir/usr/sbin/studio-system $pkgdir/usr/bin
   rm -rf $pkgdir/usr/sbin
-  mv $pkgdir/lib $pkgdir/usr/lib
+  # mv $pkgdir/lib $pkgdir/usr/lib
 
 }
