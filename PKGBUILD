@@ -1,6 +1,6 @@
 pkgname="stm8flash-git"
 _pkgname="stm8flash"
-pkgver=a
+pkgver=r279.cdafc46
 pkgrel=1
 pkgdesc="Utility for flashing STM8 MCU family via ST-LINK (V1 and V2)"
 arch=('i686' 'x86_64')
@@ -25,5 +25,5 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
   mkdir -p "$pkgdir/usr/bin"
- make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir/usr/" install
 }
