@@ -1,0 +1,17 @@
+pkgbase = illuaminate
+	pkgdesc = Very WIP static analysis for Lua
+	pkgver = latest
+	pkgrel = 1
+	url = https://squiddev.cc/illuaminate
+	arch = any
+	license = BSD
+	license = 3-Clause
+	makedepends = git
+	makedepends = opam
+	makedepends = upx
+	provides = illuaminate
+	source = git+https://github.com/SquidDev/illuaminate.git
+	sha256sums = SKIP
+
+pkgname = illuaminate
+
