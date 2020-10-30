@@ -1,7 +1,7 @@
 # Maintainer: max.bra <max dot bra at alice dot it>
 
 pkgname=hub-young
-pkgver=1.0
+pkgver=5.2.219
 pkgrel=1
 pkgdesc="La piattaforma facile, gratuita e innovativa per la didattica digitale."
 arch=('x86_64')
@@ -19,10 +19,10 @@ optdepends=(
 )
 options=(!strip)
 
-_debname=hubyoung-1.0_amd64.deb
+_debname=HUB-Young.deb
 
-source=(http://www.mondadorieducation.it/media/contenuti/appdilettura/younglinux.zip)
-md5sums=('1f83815420381a1151925af84bea62e3')
+source=(https://bce.mondadorieducation.it/media_educar/contenuti/appdilettura/younglinux.zip)
+md5sums=('d38948dff60797ac7266aec9f8026c01')
 
 prepare() {
   cd "$srcdir"
@@ -30,10 +30,13 @@ prepare() {
   ar xv "${_debname}" > /dev/null
   tar -xf data.tar.xz > /dev/null
 
-  find ./{etc,usr} -type d -exec chmod 755 '{}' \;
+  #find ./{etc,usr} -type d -exec chmod 755 '{}' \;
+  find ./usr -type d -exec chmod 755 '{}' \;
+  chmod 755 ./usr/local/bin/hubyoung/hub-young
 }
 
 package() {
   cd "$srcdir"
-  cp -dpr --no-preserve=ownership {opt,usr} "$pkgdir"
+  #cp -dpr --no-preserve=ownership {opt,usr} "$pkgdir"
+  cp -dpr --no-preserve=ownership ./usr "$pkgdir"
 }
