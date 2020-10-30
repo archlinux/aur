@@ -1,0 +1,18 @@
+pkgbase = fw-git
+	pkgdesc = Workspace productivity booster (git)
+	pkgver = 2.6.0.r16.g3d69c2d
+	pkgrel = 1
+	url = https://github.com/brocode/fw
+	arch = x86_64
+	license = custom:WTFPL
+	makedepends = cargo
+	makedepends = git
+	depends = fzf
+	provides = fw
+	conflicts = fw
+	conflicts = fw-bin
+	source = git+https://github.com/brocode/fw
+	sha512sums = SKIP
+
+pkgname = fw-git
+
