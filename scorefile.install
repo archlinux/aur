@@ -1,0 +1,24 @@
+post_install() {
+  set -e
+  scorefile='/var/games/tint.scores'
+
+  if [ ! -e "${scorefile}" ]; then
+    touch "${scorefile}"
+    chmod 0664 "${scorefile}"
+    chown root:games "${scorefile}"
+  fi
+
+    cat << EOF
+
+==> To enable savefile functionality; Add your user to the "games" group
+==> You will need to logout or reboot for the changes to take effect.
+
+==> sudo usermod -a -G games \$USER
+
+EOF
+}
+
+post_remove() {
+  set -e
+  rm -f '/var/games/tint.scores'
+}

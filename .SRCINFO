@@ -1,0 +1,22 @@
+pkgbase = tint-git
+	pkgdesc = Tetris clone for the terminal
+	pkgver = r10.f3f757f
+	pkgrel = 1
+	url = https://github.com/DavidGriffith/tint
+	install = scorefile.install
+	arch = x86_64
+	license = BSD
+	makedepends = gendesk
+	makedepends = git
+	makedepends = imagemagick
+	depends = hicolor-icon-theme
+	depends = ncurses
+	provides = tint
+	conflicts = tint
+	source = git+https://github.com/DavidGriffith/tint.git
+	source = tint.png
+	sha256sums = SKIP
+	sha256sums = 86bf162483cf1a18248e07ae979a3fefc9dcfcdc1ba63e5a1335a38210064c34
+
+pkgname = tint-git
+
