@@ -2,7 +2,7 @@
 # Contributor: Aaron Miller <aaronm@cldtk.com>
 
 pkgname=aws-sam-cli
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='CLI tool to build, test, debug, and deploy Serverless applications using AWS SAM'
 arch=('any')
@@ -15,8 +15,8 @@ makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
        'loosen-requirements.patch')
-sha256sums=('1ec16a7c28ce8e05bc72b814877870383c2ef0ebd72b09a4d019c70861f59669'
-            'd69137085d8442fea37f9de21ded80f610ee919294c014d337f508b46337137d')
+sha256sums=('388802de1e79235eb769da7eb00d6f73df989e11b7d5e65260528656131597b2'
+            'b2991a10df5cab847f9f3c23cec8fb94f43ed46ab3cbfa36d416c290370a6401')
 
 prepare() {
   cd "$pkgname-$pkgver"

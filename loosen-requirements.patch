@@ -1,7 +1,7 @@
 diff -arU2 a/requirements/base.txt b/requirements/base.txt
 --- a/requirements/base.txt	2020-05-27 11:26:42.000000000 -0700
 +++ b/requirements/base.txt	2020-06-10 22:44:16.399098009 -0700
-@@ -1,17 +1,17 @@
+@@ -1,19 +1,19 @@
  chevron~=0.12
  click~=7.0
 -Flask~=1.0.2
@@ -13,7 +13,7 @@ diff -arU2 a/requirements/base.txt b/requirements/base.txt
  PyYAML~=5.1
 -cookiecutter~=1.6.0
 +cookiecutter~=1.6
- aws-sam-translator==1.27.0
+ aws-sam-translator==1.28.1
  #docker minor version updates can include breaking changes. Auto update micro version only.
 -docker~=4.2.0
 +docker~=4.2
@@ -28,3 +28,5 @@ diff -arU2 a/requirements/base.txt b/requirements/base.txt
 +serverlessrepo~=0.1.9
 +aws_lambda_builders~=1.1.0
 +tomlkit~=0.5, >=0.5.8
+ # TODO: remove six and its usage since we don't support Python 2
+ six==1.15.0
