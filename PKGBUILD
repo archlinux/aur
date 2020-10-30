@@ -27,7 +27,7 @@ sha512sums=('SKIP'
 # Ref.: https://github.com/QubesOS/qubes-builder/blob/master/example-configs/qubes-os-master.conf#L9
 qubes_backend_vmm=xen
 
-pa_ver=`(pkg-config --modversion libpulse 2>/dev/null || echo 0.0) | cut -f 1 -d "-"`
+pa_ver=$((pkg-config --modversion libpulse 2>/dev/null || echo 0.0) | cut -f 1 -d "-")
 
 
 build() {
