@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-franka-ros
 	pkgdesc = A metapackage for all Franka Emika ROS packages
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/franka_ros
 	arch = i686
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgbase = ros-noetic-franka-ros
 
 pkgname = ros-noetic-franka-control
 	pkgdesc = franka_control provides a hardware node to control a Franka Emika research robot
-	url = https://www.wiki.ros.org/franka_control
+	url = https://wiki.ros.org/franka_control
 	depends = ros-noetic-libfranka
 	depends = ros-noetic-actionlib
 	depends = ros-noetic-actionlib-msgs
@@ -67,12 +67,12 @@ pkgname = ros-noetic-franka-control
 
 pkgname = ros-noetic-franka-description
 	pkgdesc = franka_description contains URDF files and meshes of Franka Emika robots
-	url = https://www.wiki.ros.org/franka_description
+	url = https://wiki.ros.org/franka_description
 	depends = ros-noetic-xacro
 
 pkgname = ros-noetic-franka-example-controllers
 	pkgdesc = franka_example_controllers provides example code for controlling Franka Emika research robots with ros_control
-	url = https://www.wiki.ros.org/franka_example_controllers
+	url = https://wiki.ros.org/franka_example_controllers
 	depends = ros-noetic-controller-interface
 	depends = ros-noetic-dynamic-reconfigure
 	depends = ros-noetic-franka-hw
@@ -90,7 +90,7 @@ pkgname = ros-noetic-franka-example-controllers
 
 pkgname = ros-noetic-franka-gripper
 	pkgdesc = This package implements the franka gripper of type Franka Hand for the use in ros
-	url = https://www.wiki.ros.org/franka_gripper
+	url = https://wiki.ros.org/franka_gripper
 	depends = ros-noetic-roscpp
 	depends = ros-noetic-message-generation
 	depends = ros-noetic-libfranka
@@ -104,7 +104,7 @@ pkgname = ros-noetic-franka-gripper
 
 pkgname = ros-noetic-franka-hw
 	pkgdesc = franka_hw provides hardware interfaces for using Franka Emika research robots with ros_control
-	url = https://www.wiki.ros.org/franka_hw
+	url = https://wiki.ros.org/franka_hw
 	depends = ros-noetic-controller-interface
 	depends = ros-noetic-hardware-interface
 	depends = ros-noetic-joint-limits-interface
@@ -114,7 +114,7 @@ pkgname = ros-noetic-franka-hw
 
 pkgname = ros-noetic-franka-msgs
 	pkgdesc = franka_msgs provides messages specific to Franka Emika research robots
-	url = https://www.wiki.ros.org/franka_msgs
+	url = https://wiki.ros.org/franka_msgs
 	depends = ros-noetic-std-msgs
 	depends = ros-noetic-message-runtime
 
@@ -130,7 +130,7 @@ pkgname = ros-noetic-franka-ros
 
 pkgname = ros-noetic-franka-visualization
 	pkgdesc = This package contains visualization tools for Franka Emika.
-	url = https://www.wiki.ros.org/franka_visualization
+	url = https://wiki.ros.org/franka_visualization
 	depends = ros-noetic-sensor-msgs
 	depends = ros-noetic-roscpp
 	depends = ros-noetic-libfranka
