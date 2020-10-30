@@ -4,6 +4,7 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="OpenRC service script for nordvpn-bin"
 arch=('any')
+url='https://github.com/mrkajetanp/aur/tree/main/nordvpn-openrc'
 license=('unknown')
 depends=('nordvpn-bin' 'openrc')
 optdepends=('wireguard-tools: necessary for NordLynx support')
