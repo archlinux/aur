@@ -21,7 +21,7 @@ depends=(lib{ltdl,soxr,asyncns,xtst,sndfile} "rtkit" "speexdsp" "tdb" "orc"
          "webrtc-audio-processing" jack2 "lirc" bluez{,-libs} "sbc"
          python-{pyqt5,dbus,sip} "fftw" dconf)
 makedepends=("git" lib{asyncns,xtst,tool,soxr,sndfile} "attr" "rtkit" "speexdsp"
-             "tdb" jack2 bluez{,-libs} "intltool"  "sbc" "lirc" "fftw"
+             "tdb" jack bluez{,-libs} "intltool"  "sbc" "lirc" "fftw"
              "orc" "gtk3" "webrtc-audio-processing" "check" "meson")
 optdepends=("alsa-plugins: ALSA support"
             "pulseaudio-alsa: ALSA configuration (recommended)"
