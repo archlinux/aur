@@ -4,6 +4,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
+# Contributor: Luna Jernberg <droidbittin@gmail.com>
 
 ##
 ## The following variables can be customized at build time. Use env or export to change at your wish
@@ -48,7 +49,7 @@ fi
 
 pkgname=firefox-beta
 _pkgname=firefox
-pkgver=83.0b4
+pkgver=83.0b6
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 _pkgver=83.0
@@ -72,7 +73,7 @@ options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/$_pkgname-$pkgver.source.tar.xz{,.asc}
         0001-Use-remoting-name-for-GDK-application-names.patch
         $pkgname.desktop)
-sha256sums=('d3c5e22f3e8720adecc5fa9456a7f088a774ebb2a7cb795d9cf57c263e56c716'
+sha256sums=('ebe60fe341599e73bd5efe3ecfab56d5e992b340b798fd474f7d17954a4bad42'
             'SKIP'
             '3bb7463471fb43b2163a705a79a13a3003d70fff4bbe44f467807ca056de9a75'
             '54d93249fedc9c4cdc5eb82da498b08f08bcb089f85a138b457f3251a0913ad1')
