@@ -1,15 +1,19 @@
 pkgbase = pugdebug-git
 	pkgdesc = PugDebug is a standalone debugging client for PHP applications that uses XDebug as the debugging engine
-	pkgver = v1.0.0.r20.g00859c3
-	pkgrel = 2
-	url = http://pugdebug.com/
+	pkgver = 1.1.0.r1.gddb1193
+	pkgrel = 1
+	url = https://github.com/mte90/pugdebug
 	arch = any
 	license = GPL3
-	depends = python>=3.4
+	makedepends = python-setuptools
+	depends = python>=3.7
 	depends = python-pyqt5
 	depends = python-pygments
+	depends = flake8
+	depends = python-fuzzywuzzy
+	depends = python-levenshtein
 	provides = pugdebug
-	source = pugdebug-git::git://github.com/robertbasic/pugdebug.git
+	source = pugdebug-git::git://github.com/Mte90/pugdebug.git
 	source = setup.py
 	source = PugDebug.desktop
 	source = https://openclipart.org/image/256px/svg_to_png/204954/dog.png

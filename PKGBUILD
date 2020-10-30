@@ -1,22 +1,22 @@
-# This PKGBUILD is maintained at https://github.com/winged/aur-packages
 # Dog icon by ecuabron ( https://openclipart.org/detail/204954/dog )
 
 # Contributor: Fabio Comuni <fabrixxm@kirgroup.com>
-# Maintainer: David Vogt <dave at winged dot ch>
+# Contributor: David Vogt <dave at winged dot ch>
+# Maintainer: Éric Gillet <e + aur2419 at linuxw dot info>
 
 pkgname=pugdebug-git
 _pkgname=pugdebug-git
-pkgver=v1.0.0.r20.g00859c3
-pkgrel=2
+pkgver=1.1.0.r1.gddb1193
+pkgrel=1
 pkgdesc="PugDebug is a standalone debugging client for PHP applications that uses XDebug as the debugging engine"
 arch=('any')
 license=('GPL3')
-url="http://pugdebug.com/"
-depends=('python>=3.4' 'python-pyqt5' 'python-pygments')
+url='https://github.com/mte90/pugdebug'
+depends=('python>=3.7' 'python-pyqt5' 'python-pygments' 'flake8' 'python-fuzzywuzzy' 'python-levenshtein')
 conflicts=()
 provides=('pugdebug')
-make_depends=('git' 'python-setuptools')
-source=("$pkgname::git://github.com/robertbasic/pugdebug.git" 
+makedepends=('python-setuptools')
+source=("$pkgname::git://github.com/Mte90/pugdebug.git"
 	setup.py 
 	PugDebug.desktop 
 	https://openclipart.org/image/256px/svg_to_png/204954/dog.png)
@@ -33,7 +33,6 @@ pkgver() {
 
 build() {
 	cp "${srcdir}/setup.py" "${srcdir}/${_pkgname}/"
-	sed -i "s|:version:|${pkgver}|" "${srcdir}/${_pkgname}/setup.py"
 }
 
 package() {
@@ -44,7 +43,6 @@ package() {
 	cd "${srcdir}/${_pkgname}"
 	python setup.py install --root="${pkgdir}"
 	
-	sed -i 's|#! python|#!/usr/bin/env python3|' app.py
 	install -TD app.py "${pkgdir}/usr/bin/pugdebug"
 	
 	install -D -m655 LICENSE "${pkgdir}/usr/share/pugdebug/LICENSE"
