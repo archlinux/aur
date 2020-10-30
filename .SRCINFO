@@ -1,0 +1,20 @@
+pkgbase = ruby-bcrypt_pbkdf
+	pkgdesc = OpenBSD's bcrypt_pdkfd (a variant of PBKDF2 with bcrypt-based PRF)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/net-ssh/bcrypt_pbkdf-ruby
+	arch = x86_64
+	license = MIT
+	checkdepends = ruby-minitest
+	makedepends = ruby-rake
+	makedepends = ruby-bundler
+	makedepends = ruby-rdoc
+	makedepends = ruby-rake-compiler
+	depends = ruby
+	provides = bcrypt_pbkdf_ext.so
+	options = !emptydirs
+	source = ruby-bcrypt_pbkdf-1.0.1.tar.gz::https://github.com/net-ssh/bcrypt_pbkdf-ruby/archive/v1.0.1.tar.gz
+	sha512sums = bc10be5c1a4d66c31a33b687e2c2147235ac6d7da84b4c6a786ee9d117688facc0fb44babd3dd4e13bce335c93368fb87dd6ccd4b303116e909f2253bd27365a
+
+pkgname = ruby-bcrypt_pbkdf
+
