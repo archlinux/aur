@@ -1,0 +1,20 @@
+pkgbase = fblog-bin
+	pkgdesc = Workspace productivity booster
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/brocode/fblog
+	arch = x86_64
+	license = custom:WTFPL
+	depends = fzf
+	provides = fblog
+	conflicts = fblog
+	conflicts = fblog-git
+	source_x86_64 = fblog-2.3.0::https://github.com/brocode/fblog/releases/download/v2.3.0/fblog
+	source_x86_64 = fblog-2.3.0-LICENSE::https://github.com/brocode/fblog/raw/v2.3.0/LICENSE
+	source_x86_64 = fblog-2.3.0-README.org::https://github.com/brocode/fblog/raw/v2.3.0/README.org
+	sha512sums_x86_64 = fef318afb48dfc255b7102b3ba1e01f62ff549e5392ff8836393bde7b73db8215c313c0050fdc27bd13bb8391da368b9c7a4e9f5df2e6a4dafbd4ff4a1f30740
+	sha512sums_x86_64 = 1b4064171fa88f41d05e3d1d1c14ceb8a5cb4cca9e6f08f7e267d7740b7d65e4765cb56f0ccf3765ee9c85654559d2d7726d71516b890b0174b68e6cc62ef421
+	sha512sums_x86_64 = cd12a62f6b3629ebbd0386290fb2a1c47dd7b82b1bf2626ac1a4c12fee0f1289e1174a7ab837bb4e76705422b049db7bebd9235950366397ec52a96a0e0d1494
+
+pkgname = fblog-bin
+
