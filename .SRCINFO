@@ -1,0 +1,21 @@
+pkgbase = ruby-molinillo
+	pkgdesc = Provides support for dependency resolution
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/CocoaPods/Molinillo
+	arch = any
+	license = MIT
+	checkdepends = ruby-rspec
+	makedepends = ruby-rake
+	makedepends = ruby-bundler
+	makedepends = ruby-rdoc
+	makedepends = git
+	depends = ruby
+	options = !emptydirs
+	source = ruby-molinillo-0.7.0.tar.gz::https://github.com/CocoaPods/Molinillo/archive/0.7.0.tar.gz
+	source = git+https://github.com/CocoaPods/Resolver-Integration-Specs#commit=53a8e313db92dab94384e9824bab469fc7144102
+	sha512sums = 350cac48a42461df709fcec8a1b34d7d2a9141af7701403ca15263169baf6fc554653073739abe96a2d9bdc727e59690f12213076560a2e0614bbdfeba71275c
+	sha512sums = SKIP
+
+pkgname = ruby-molinillo
+
