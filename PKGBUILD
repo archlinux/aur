@@ -1,21 +1,22 @@
-# Maintainer: jerry73204 <jerry73204@gmail.com>
+# New maintainer: patrick <patrick at neumannsland dot de>
+# Old maintainer: jerry73204 <jerry73204@gmail.com>
 # Created by Gillen Dan
 
 pkgname=fred
-pkgver=0.1.1
-pkgrel=8
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='Digital forensics tool for viewing and reporting on Windows registry files'
 arch=('i686' 'x86_64')
 url='https://www.pinguin.lu/fred'
 license=('GPL3')
-depends=('qt4' 'hivex')
-makedepends=('qtwebkit' 'qt4' 'hivex')
+depends=('qt5-base' 'qt5-webkit' 'qt5-webengine' 'hivex')
+makedepends=('qt5-base' 'qt5-webkit' 'qt5-webengine' 'hivex')
 source=("http://files.pinguin.lu/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('7d051e364064f17fdba30c9706f8a493f5e97aa0')
+sha256sums=('ca6a51d115a1168f7d768e2058d297f4288cce7e554749476cea6e176959561f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  qmake-qt4
+  qmake-qt5
   make
 }
 
