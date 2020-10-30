@@ -17,9 +17,10 @@ pkgbase = v8
 	conflicts = v8-r
 	conflicts = v8-static-gyp
 	conflicts = v8-static-gyp-5.4
+	options = staticlibs
 	source = v8.pc
 	source = d8
-	sha512sums = 9172da9918f2e36902bb162115738639b2b71c014e87906e1219b075f7fb990ed6a8d666b1ca37bee8df56c846ef0fbb1856e625d0d36189964357a97aac67b4
+	sha512sums = 25b44dfc7b0525a6396990149478cfd8bfcddbe2cdd1af99263bd116b774206fcec920294515b036576721c4da89150610ea26e99987a640d73cb7211dfd4934
 	sha512sums = 5aa6fea4a6d2f84bdba2032dcc00a79e3169c49066cc055a5106f858834db38dec3257f7a435aa518eb57eb4dfe4a3e092e2486c522362d49a61dfd92fba5717
 
 pkgname = v8

@@ -7,7 +7,9 @@ cd "$(dirname "$0")"
 CHROMIUM_VERSION=$(curl -sSf "https://omahaproxy.appspot.com/linux")
 V8_VERSION=$(curl -sSf "https://omahaproxy.appspot.com/v8.json?version=$CHROMIUM_VERSION" | jq -r '.v8_version')
 
-sed -i -e "s/^pkgver=.*/pkgver=$V8_VERSION/" -e 's/pkgrel=.*/pkgrel=1/' PKGBUILD
+sed -e "s/^pkgver=.*/pkgver=$V8_VERSION/" \
+    -e 's/pkgrel=.*/pkgrel=1/' \
+    -i PKGBUILD
 if (git diff --quiet PKGBUILD); then
 	echo "Nothing to do"
 	exit

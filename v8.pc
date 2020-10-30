@@ -8,5 +8,5 @@ Description: @DESCRIPTION@
 Version: @VERSION@
 URL: @URL@
 Requires: icu-i18n
-Libs: -L${libdir}/v8 -lv8_monolith
-Cflags: -I${includedir}/v8 -pthread -std=c++11 @CFLAGS@
+Libs: -L${libdir}/@PKGNAME@ -lv8_monolith
+Cflags: -I${includedir}/@PKGNAME@ -pthread -std=c++11 @CFLAGS@

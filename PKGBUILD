@@ -16,8 +16,10 @@ depends=(icu)
 optdepends=('rlwrap: readline support')
 makedepends=(depot-tools-git python2)
 conflicts=(v8-3.14 v8-3.14-bin v8-6.7-static v8-6.8 v8-r v8-static-gyp v8-static-gyp-5.4)
-source=(v8.pc d8)
-sha512sums=('9172da9918f2e36902bb162115738639b2b71c014e87906e1219b075f7fb990ed6a8d666b1ca37bee8df56c846ef0fbb1856e625d0d36189964357a97aac67b4'
+# TODO: Dynamic library
+options=(staticlibs)
+source=("$pkgname.pc" d8)
+sha512sums=('25b44dfc7b0525a6396990149478cfd8bfcddbe2cdd1af99263bd116b774206fcec920294515b036576721c4da89150610ea26e99987a640d73cb7211dfd4934'
             '5aa6fea4a6d2f84bdba2032dcc00a79e3169c49066cc055a5106f858834db38dec3257f7a435aa518eb57eb4dfe4a3e092e2486c522362d49a61dfd92fba5717')
 
 case "$CARCH" in
@@ -41,7 +43,12 @@ prepare() {
 		'x64') cflags="-DV8_COMPRESS_POINTERS" ;;
 		*) cflags="" ;;
 	esac
-	sed -i -e "s|@VERSION@|$pkgver|g" -e "s|@DESCRIPTION@|$pkgdesc|g" -e "s|@URL@|$url|g" -e "s|@CFLAGS@|$cflags|g" v8.pc
+	sed -e "s|@PKGNAME@|$pkgname|g" \
+	    -e "s|@VERSION@|$pkgver|g" \
+	    -e "s|@DESCRIPTION@|$pkgdesc|g" \
+	    -e "s|@URL@|$url|g" \
+	    -e "s|@CFLAGS@|$cflags|g" \
+	    -i "$pkgname.pc"
 
 	if [ ! -d "$pkgname/" ]; then
 		fetch "$pkgname"
@@ -96,14 +103,14 @@ package() {
 	install -Dm755 -t "$pkgdir/usr/bin/" "$srcdir/d8"
 
 	# Install headers
-	install -Dm644 -t "$pkgdir/usr/include/v8/" include/*.h
+	install -Dm644 -t "$pkgdir/usr/include/$pkgname/" include/*.h
 	for dir in include/*/; do
-		install -Dm644 -t "$pkgdir/usr/include/v8/${dir##include/}" "$dir"/*.h
+		install -Dm644 -t "$pkgdir/usr/include/$pkgname/${dir##include/}" "$dir"/*.h
 	done
-	ln -rs "$pkgdir/usr/include/v8/" "$pkgdir/usr/include/v8/include"
+	ln -rs "$pkgdir/usr/include/$pkgname/" "$pkgdir/usr/include/$pkgname/include"
 
 	# Install pkg-config
-	install -Dm644 -t "$pkgdir/usr/lib/pkgconfig/" "$srcdir/v8.pc"
+	install -Dm644 -t "$pkgdir/usr/lib/pkgconfig/" "$srcdir/$pkgname.pc"
 
 	# Install licenses
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE*
