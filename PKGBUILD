@@ -11,6 +11,9 @@ pkgname=(swift swift-lldb)
 _swiftver=DEVELOPMENT-SNAPSHOT-2020-10-24-a
 pkgver=5.4
 pkgrel=1
+swiftargumentparserversion=0.3.1
+yamsver=3.0.1
+
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
@@ -20,7 +23,7 @@ makedepends=('clang' 'cmake' 'git' 'ninja' 'python-six' 'python2' 'rsync' 'swig'
 source=(
     "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
     "sourcekit-lsp-${_swiftver}.tar.gz::https://github.com/apple/sourcekit-lsp/archive/swift-${_swiftver}.tar.gz"
-    "swift-argument-parser-${_swiftver}.tar.gz::https://github.com/apple/swift-argument-parser/archive/0.3.1.tar.gz"
+    "swift-argument-parser-${swiftargumentparserversion}.tar.gz::https://github.com/apple/swift-argument-parser/archive/${swiftargumentparserversion}.tar.gz"
     "swift-cmark-${_swiftver}.tar.gz::https://github.com/apple/swift-cmark/archive/swift-${_swiftver}.tar.gz"
     "swift-driver-${_swiftver}.tar.gz::https://github.com/apple/swift-driver/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
@@ -32,7 +35,7 @@ source=(
     "llvm-project-${_swiftver}.tar.gz::https://github.com/apple/llvm-project/archive/swift-${_swiftver}.tar.gz"
     "swift-tools-support-core-${_swiftver}.tar.gz::https://github.com/apple/swift-tools-support-core/archive/swift-${_swiftver}.tar.gz"
     '0001-arch-aur-pachtes.patch'
-    "yams.tar.gz::https://github.com/jpsim/Yams/archive/3.0.1.tar.gz"
+    "yams-${yamsver}.tar.gz::https://github.com/jpsim/Yams/archive/${yamsver}.tar.gz"
 )
 sha256sums=(
     'SKIP'
@@ -54,26 +57,26 @@ sha256sums=(
 
 prepare() {
     # Use directory names which build-script expects
-    #rm -rf llvm-project
-    ln -sfn llvm-project-swift-${_swiftver} llvm-project
-
+    for sdir in llvm-project sourcekit-lsp swift
+    do
+        rm -rf ${sdir}
+        mv ${sdir}-swift-${_swiftver} ${sdir}
+    done
     for sdir in cmark llbuild
     do
         rm -rf ${sdir}
         mv swift-${sdir}-swift-${_swiftver} ${sdir}
     done
     for sdir in corelibs-xctest corelibs-foundation corelibs-libdispatch \
-                integration-tests
+                driver integration-tests tools-support-core
     do
         rm -rf swift-${sdir}
         mv swift-${sdir}-swift-${_swiftver} swift-${sdir}
     done
-    rm -rf swift swiftpm
-    mv swift-swift-${_swiftver} swift
-    mv swift-package-manager-swift-${_swiftver} swiftpm
 
-    ln -sfn Yams-3.0.1 yams
-    ln -sfn swift-argument-parser-0.3.1 swift-argument-parser
+    rm -rf swiftpm && mv swift-package-manager-swift-${_swiftver} swiftpm
+    rm -rf swift-argument-parser && mv swift-argument-parser-${swiftargumentparserversion} swift-argument-parser
+    rm -rf yams && mv Yams-${yamsver} yams
 
     ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-pachtes.patch" )
 }
