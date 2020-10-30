@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=DelayedArray
-_bcver=0.14.1
+_bcver=0.16.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -10,11 +10,10 @@ pkgdesc="A unified framework for working transparently with on-disk and in-memor
 arch=(i686 x86_64)
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
 license=(Artistic-2.0)
-depends=('r>=3.4' r-matrixstats 'r-biocgenerics>=0.31.5' 'r-s4vectors>=0.25.15' 'r-iranges>=2.17.3')
-makedepends=(gcc)
+depends=('r>=3.4' 'r-biocgenerics>=0.31.5' 'r-matrixgenerics>=1.1.3' 'r-s4vectors>=0.27.2' 'r-iranges>=2.17.3')
 optdepends=(r-biocparallel r-hdf5array r-genefilter r-summarizedexperiment r-airway r-pryr r-delayedmatrixstats r-knitr r-biocstyle r-runit)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-md5sums=('d2417e300179bc4de74d5ac6728f3f40')
+sha256sums=('6f4c473a73253e0f075e2bd21a541f9a3ddb47e3829b6db52d81f7a6b2e5c494')
 
 build() {
   cd "${srcdir}"
