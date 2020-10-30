@@ -5,6 +5,7 @@ pkgbase = nordvpn-openrc
 	arch = any
 	license = unknown
 	depends = nordvpn-bin
+	depends = openrc
 	optdepends = wireguard-tools: necessary for NordLynx support
 	source = nordvpnd.initd
 	sha256sums = e86938a27c5da04cc61314fa6b5d9a8016614e059882187abac791331c342b54
