@@ -1,6 +1,6 @@
 pkgbase = mtpaint-wjaguar
 	pkgdesc = Simple paint program for creating icons and pixel based artwork (Dmitry Groshevs fork)
-	pkgver = 3.49.32
+	pkgver = 3.49.33
 	pkgrel = 1
 	url = https://github.com/wjaguar/mtPaint
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = mtpaint-wjaguar
 	optdepends = gifsicle: for exporting GIF files from mtPaint
 	provides = mtpaint
 	conflicts = mtpaint
-	source = git+https://github.com/wjaguar/mtPaint.git#commit=8dd4af91c61416a9d53bfd8135ef9a138020d993
+	source = git+https://github.com/wjaguar/mtPaint.git#commit=5272e2b1e773c8e02ac3506b2d3bde82ad946b21
 	sha256sums = SKIP
 
 pkgname = mtpaint-wjaguar
