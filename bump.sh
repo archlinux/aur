@@ -3,7 +3,7 @@ set -e -u -o pipefail
 
 VERSION=$1
 PKGREL=${2:-1}
-SOURCE="https://github.com/brocode/fw/releases/download/v$VERSION/fw"
+SOURCE="https://github.com/brocode/fw/archive/v$VERSION.tar.gz"
 NAME="fw"
 SHA256=$(curl -L --silent --fail $SOURCE  | sha256sum | awk '{print $1}')
 

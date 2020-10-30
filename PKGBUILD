@@ -3,17 +3,28 @@
 pkgname=fw
 pkgver=2.6.0
 pkgrel=1
-pkgdesc="faster workspace management"
-depends=('fzf')
+pkgdesc="Workspace productivity booster"
 arch=('x86_64')
 url="https://github.com/brocode/fw"
-license=('WTFPL')
-source=('https://github.com/brocode/fw/releases/download/v2.6.0/fw')
-sha256sums=('12a23dda4fe36a6ec39b34d9570b09f32c43e2bcc96c4730f756f5c5aff402af')
+license=('custom:WTFPL')
+depends=('fzf')
+makedepends=('cargo')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('0b82d0af29da3f5bc5968659f527dd8a2a4f0e3c6fd551f1433ee0bd1f1f84df')
 
-package() {
-  mkdir -p "${pkgdir}/usr/bin"
-  chmod +x fw
-  cp fw "${pkgdir}/usr/bin/fw"
+build() {
+  cd "$pkgname-$pkgver"
+  cargo build --release --locked --all-features
 }
 
+check() {
+  cd "$pkgname-$pkgver"
+  cargo test --release --locked
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm 644 README.org -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+}
