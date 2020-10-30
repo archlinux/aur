@@ -1,4 +1,5 @@
-# Maintainer: Taijian <taijian@posteo.de>
+# Maintainer: James Bunton <jamesbunton@delx.net.au>
+# Contributor: Taijian <taijian@posteo.de>
 # Contributor: Jonathan Conder <jonno.conder@gmail.com>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
@@ -6,84 +7,143 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=mythtv
-pkgver=31.0
-pkgrel=3
-epoch=1
+pkgver=31+fixes.20201012.eb3c84de
+pkgrel=1
 pkgdesc="A Homebrew PVR project"
-arch=('any')
+arch=('x86_64')
 url="https://www.mythtv.org/"
 license=('GPL')
-depends=('qt5-script' 'fftw' 'exiv2' 'taglib' 'perl-net-upnp' 'ffmpeg' 'libxinerama' 'libxrandr'
-         'qt5-webkit' 'python-mysqlclient' 'libxnvctrl' 'libhdhomerun' 'python-simplejson' 'python-future')
-makedepends=('git' 'help2man' 'yasm' 'mariadb-libs' 'libcec' 'libcdio' 'lirc' 'perl-io-socket-inet6' 'perl-libwww'
-             'perl-dbd-mysql' 'python-lxml' 'perl-xml-simple' 'perl-xml-xpath' 'python-requests')
-optdepends=('glew: for GPU commercial flagging'
-            'libcec: for consumer electronics control capabilities'
-            'libhdhomerun: to work properly with HDHomerun devices'
-            'mariadb: Database-Backend for server deployment'
-            'mariadb-clients: Database-Frontend for client deployment'
-            'python-requests: for metadata-lookup / cover art'
-            'python-requests-cache: for metadata-lookup / cover art'
-            'xmltv: for Schedule Direct TV listings')
-conflicts=('myththemes' 'mythplugins-mythvideo')
-replaces=('myththemes' 'mythplugins-mythvideo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/MythTV/$pkgname/archive/v$pkgver.tar.gz"
-        'mythbackend.service'
-        '99-mythbackend.rules'
-        'sysusers.d'
-        '001-mythpainter.patch'
+depends=(
+    'exiv2'
+    'fftw'
+    'jack'
+    'lame'
+    'libass'
+    'libavc1394'
+    'libbluray'
+    'libhdhomerun'
+    'libiec61883'
+    'libpulse'
+    'libsamplerate'
+    'libva'
+    'libvdpau'
+    'libvpx'
+    'libxinerama'
+    'libxml2'
+    'libxrandr'
+    'qt5-script'
+    'qt5-webkit'
+    'taglib'
+    'x264'
+    'x265'
 )
-sha256sums=('907d1747950ec6ef1ec965069c75500b4538b781333f60e16d62d519b221a86d'
-            '086f573884e4df1ff6e6e8de5a423a9ff900166acfe085abe65b62f32730e4a3'
-            'ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333'
-            '470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae'
-            'fcb078842ecceb636183ed358fb4acfb25ddbe456b2529763519a6661a29baec')
+makedepends=(
+    'git'
+    'help2man'
+    'libcdio'
+    'libcec'
+    'libmariadbclient'
+    'libxml2'
+    'lirc'
+    'perl-dbd-mysql'
+    'perl-io-socket-inet6'
+    'perl-libwww'
+    'perl-net-upnp'
+    'perl-xml-simple'
+    'perl-xml-xpath'
+    'python-future'
+    'python-lxml'
+    'python-mysqlclient'
+    'python-requests'
+    'python-simplejson'
+    'yasm'
+)
+optdepends=(
+    'glew: for GPU commercial flagging'
+    'libcec: for consumer electronics control capabilities'
+    'mariadb: Database-Backend for server deployment'
+    'mariadb-clients: Database-Frontend for client deployment'
+    'perl-dbd-mysql: Perl bindings'
+    'perl-io-socket-inet6: Perl bindings'
+    'perl-libwww: Perl bindings'
+    'perl-net-upnp: Perl bindings'
+    'perl-xml-simple: Perl bindings'
+    'perl-xml-xpath: Perl bindings'
+    'python-future: Python bindings'
+    'python-lxml: Python bindings'
+    'python-mysqlclient: Python bindings'
+    'python-requests: Python bindings'
+    'python-requests-cache: Python bindings'
+    'python-simplejson: Python bindings'
+)
+conflicts=('myththemes' 'mythplugins-mythvideo' 'mythtv')
+replaces=('myththemes' 'mythplugins-mythvideo' 'mythtv')
+source=(
+    "git+https://github.com/MythTV/mythtv#branch=fixes/31"
+    'mythbackend.service'
+    'mythtv.desktop'
+    'mythtv.png'
+    'wayland-hide-mouse-cursor.patch'
+    '99-mythbackend.rules'
+    'sysusers.d'
+)
+sha256sums=(
+    'SKIP'
+    '0588fb34c116521590ff970083bffaf55722e184d06e80cbfe6c5f2b39ee80f1'
+    '3fd2018d0d5aaa7d530835305dac80d4ca7d8fc991cdf9e1cebadebd86e25c03'
+    '12cb52bf9b084a4f16419c9370fef0450ce6a11308b0c3f7240f4f83df7e2ab6'
+    'bc43d38acac43bbc15dd6b27b74ff5a7e7abc16ad80ce6e676b108a2d501660c'
+    'ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333'
+    '470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae'
+)
+
+pkgver() {
+  cd "${srcdir}/mythtv/mythtv"
+  echo -n "31+fixes.$(git show -s --format=%cd --date=short | tr -d -).$(git rev-parse --short=8 HEAD)"
+}
 
 prepare() {
-  cd $pkgname-$pkgver/$pkgname
-
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
-    patch -Np1 < "../../$src"
-  done
-
+  cd "${srcdir}/mythtv/mythtv"
+  patch -Np2 < "${srcdir}/wayland-hide-mouse-cursor.patch"
 }
 
 build() {
-  cd $pkgname-$pkgver/$pkgname
+  cd "${srcdir}/mythtv/mythtv"
 
   ARCH="${CARCH/_/-}"
   ./configure --prefix=/usr \
               --cpu="$ARCH" \
               --disable-altivec \
+              --enable-audio-jack \
               --disable-distcc \
-              --enable-pic \
+              --enable-libfftw3 \
               --enable-libmp3lame \
               --enable-libvpx \
               --enable-libx264 \
               --enable-libx265 \
-              --enable-libvpx \
-              --enable-libxvid \
-              --perl-config-opts=INSTALLDIRS=vendor         
+              --enable-vaapi \
+              --with-bindings=python \
+              --with-bindings=perl \
+              --perl-config-opts=INSTALLDIRS=vendor
   make
 }
 
 package() {
-  cd $pkgname-$pkgver/$pkgname
+  cd "${srcdir}/mythtv/mythtv"
   make INSTALL_ROOT="$pkgdir" install
 
   install -D -m644 "$srcdir/mythbackend.service" "$pkgdir/usr/lib/systemd/system/mythbackend.service"
   install -D -m644 'database/mc.sql' "$pkgdir/usr/share/mythtv/mc.sql"
   install -D -m644 "$srcdir/sysusers.d" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
-#  mkdir -p "$pkgdir/usr/share/mythtv"
+  mkdir -p "$pkgdir/usr/share/mythtv"
   cp -R 'contrib' "$pkgdir/usr/share/mythtv"
   mkdir -p "$pkgdir/var/log/mythtv"
 
-# Install udev rules https://www.mythtv.org/wiki/Systemd_mythbackend_Configuration#Delay_starting_the_backend_until_tuners_have_initialized
+  # Install udev rules https://www.mythtv.org/wiki/Systemd_mythbackend_Configuration#Delay_starting_the_backend_until_tuners_have_initialized
   install -Dm644 "$srcdir/99-mythbackend.rules" "$pkgdir/usr/lib/udev/rules.d/99-mythbackend.rules"
+
+  # Install desktop file
+  install -Dm644 "$srcdir/mythtv.png" "$pkgdir/usr/share/pixmaps/mythtv.png"
+  install -Dm644 "$srcdir/mythtv.desktop" "$pkgdir/usr/share/applications/mythtv.desktop"
 }

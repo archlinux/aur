@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=MythTV
+Comment=A frontend for all content on a mythtv-backend
+Exec=mythfrontend --syslog local7 --noupnp
+Type=Application
+Icon=mythtv
