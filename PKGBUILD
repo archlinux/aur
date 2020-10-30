@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rusty-krab-manager-git
-pkgver=1.0.r11.g0e5f3d8
+pkgver=1.1.3.r0.g446140c
 pkgrel=1
 pkgdesc="Time management TUI (git)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
