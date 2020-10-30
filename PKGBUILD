@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/atx/wtype"
 license=('MIT')
 depends=('wayland' 'libxkbcommon')
-makedepends=('git' 'meson')
+makedepends=('meson')
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('1544ecf0e516d10a7121160a1e3be746a932a6404452b3d65a56c8a7189e2cda')
 
