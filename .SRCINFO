@@ -1,0 +1,16 @@
+pkgbase = vdx
+	pkgdesc = Intuitive CLI for processing video, powered by FFmpeg
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/yuanqing/vdx
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	noextract = vdx-0.0.7.tgz
+	source = https://registry.npmjs.org/vdx/-/vdx-0.0.7.tgz
+	sha256sums = 39250e7d00fefb29e1ac686b89e73313bbce075ee7e9e5f34434e5d1cc3e30dd
+
+pkgname = vdx
+
