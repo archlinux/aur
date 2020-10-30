@@ -3,6 +3,10 @@ post_install() {
 	xmlstarlet ed -L -s /MODES -t elem -n MODE -i //MODE[last\(\)] -t attr -n NAME -v PKGBUILD -i //MODE[last\(\)] -t attr -n FILE -v pkgbuild.xml -i //MODE[last\(\)] -t attr -n FILE_NAME_GLOB -v PKGBUILD /usr/share/jedit-pkgbuild/catalog.xml
 }
 
+post_upgrade() {
+	post_install $1
+}
+
 pre_remove() {
 	xmlstarlet ed -L -d //MODE[@FILE_NAME_GLOB=\"PKGBUILD\"] /usr/share/jedit-pkgbuild/catalog.xml
 }

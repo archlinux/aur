@@ -1,7 +1,7 @@
 pkgbase = jedit-pkgbuild
 	pkgdesc = jEdit PKGBUILD edit mode
 	pkgver = 4.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/radio_rogal/jedit-pkgbuild
 	install = jedit-pkgbuild.install
 	arch = any
