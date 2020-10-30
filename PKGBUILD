@@ -4,7 +4,7 @@
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 pkgname=icaclient
-pkgver=20.09
+pkgver=20.10
 pkgrel=1
 pkgdesc="Citrix Workspace App for x86_64 (64bit) Linux (ICAClient, Citrix Receiver)"
 arch=('x86_64' 'i686' 'armv7h')
@@ -31,9 +31,9 @@ md5sums=('71aca6257f259996ac59729604f32978'
          '1f214f6f456f59afd1a3275580f4240e'
          '59f8e50cc0e0c399d47eb7ace1df5a32'
          'dca5a1f51449ef35f1441b900d622276')
-sha256sums_x86_64=('F992869AB2CECAD50D0DC192288601D9E6045355B68B73D360E6F83077C0F295')
-sha256sums_i686=('64673CF7FEE5666C43349A716D709E1A3ACBD055D53AB163F3C1A86B6D6D8FAC')
-sha256sums_armv7h=('339D74E69C6FB08B52DE31A7DD1262BBCDA2453354AFCECDA8630B5EDDBA1B99')
+sha256sums_x86_64=('AE613A77036AFB101B47F268177B9DF0453184F5641265EAC41C735845CAE78D')
+sha256sums_i686=('DD2788D7E770483127717EE246AF1C334FD20E515C7AC650021DED2254139911')
+sha256sums_armv7h=('2D2806B84D1FA09FA810475D6C6762F372CC4EE1741C5D9E8EBBCA5D9903B98D')
 install=citrix-client.install
 
 package() {
@@ -68,6 +68,8 @@ package() {
     cp -r ./usb/ "${pkgdir}$ICAROOT"
     cp -r ./util/ "${pkgdir}$ICAROOT"
 
+	rm "${pkgdir}$ICAROOT/lib/UIDialogLibWebKit.so"
+	
     # Install License
     install -m644 -D nls/en.UTF-8/eula.txt \
       "${pkgdir}$ICAROOT/eula.txt"
@@ -76,9 +78,9 @@ package() {
     touch "${pkgdir}$ICAROOT/config/.server"
 
     # Extract system ca-certificates and install in the Citrix cacerts directory
-    cp /etc/ca-certificates/extracted/tls-ca-bundle.pem "${pkgdir}$ICAROOT/keystore/cacerts/"
-    cd "${pkgdir}$ICAROOT/keystore/cacerts/"
-    awk 'BEGIN {c=0;} /BEGIN CERT/{c++} { print > "cert." c ".pem"}' < tls-ca-bundle.pem
+    #cp /etc/ca-certificates/extracted/tls-ca-bundle.pem "${pkgdir}$ICAROOT/keystore/cacerts/"
+    #cd "${pkgdir}$ICAROOT/keystore/cacerts/"
+    #awk 'BEGIN {c=0;} /BEGIN CERT/{c++} { print > "cert." c ".pem"}' < tls-ca-bundle.pem
 
     # The following 32-bit library causes false namcap errors
     # rm util/libgstflatstm.32.so
@@ -97,6 +99,7 @@ package() {
     cp "${pkgdir}$ICAROOT/nls/$lang/appsrv.template" "${pkgdir}/$ICAROOT/config/appsrv.ini"
     cp "${pkgdir}$ICAROOT/nls/$lang/wfclient.template" "${pkgdir}/$ICAROOT/config/wfclient.ini"
  
+	sed -i 's/Ceip=Enable/Ceip=Disable/g' "${pkgdir}$ICAROOT/config/module.ini"
     # Copy Firefox plugin into plugin directory
     mkdir -p "${pkgdir}/usr/lib/mozilla/plugins"
     ln -s "$ICAROOT/npica.so" "${pkgdir}"/usr/lib/mozilla/plugins/npica.so
@@ -109,6 +112,7 @@ package() {
     # install scripts
     install -Dm755 wfica.sh "${pkgdir}$ICAROOT"
     install -Dm755 wfica_assoc.sh "${pkgdir}$ICAROOT"
+	chmod +x "${pkgdir}$ICAROOT/util/HdxRtcEngine"
 
     # make certificates available
 	rm -r "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts"
