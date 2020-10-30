@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=3.77.1
+pkgver=3.77.3
 pkgrel=1
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
@@ -10,18 +10,19 @@ url="https://tutanota.com"
 license=('GPL3')
 depends=('nss' 'libxss' 'libxtst' 'libappindicator-gtk3' 'libnotify')
 makedepends=('npm' 'nvm')
+optdepends=('')
 source=("https://github.com/tutao/tutanota/archive/tutanota-release-$pkgver.tar.gz"
         "$pkgname"
         "$pkgname.desktop")
-sha256sums=('8751cb1fa6fe9284f23c0e1c96d3746283966fd7fe67439223d388e132d8643c'
+sha256sums=('7ae7ecdef089f0b30bec66927510b852d5e05c00c5c9ecbfc379993474f40cc3'
             '4f91e842bd92a3312943854383e4929f9baf6cb684a7027aa55edcce1bf4ca16'
-            '1215678e2fc23cfbeb73063f68dc440891e5b2e10734fa7f402e06860c292e31')
+            'a2e2b932eb0bc2ad2413b7f39eb9fbdb517f5670367413f76d718d5d270996f7')
 
 build() {
-	# Use nodejs v12 until upstream fixes build with v14
+	# Use nodejs v10 per upstream
 	export npm_config_cache="$srcdir/npm-cache"
 	local npm_prefix=$(npm config get prefix)
-	local nodeversion='12.19.0'
+	local nodeversion='10.23.0'
 	npm config delete prefix
 	source /usr/share/nvm/init-nvm.sh
 	nvm install "$nodeversion" && nvm use "$nodeversion"
