@@ -1,0 +1,12 @@
+post_install() {
+	echo " ==> Add the nordvpn daemon to system startup wtih 'rc-update add nordvpnd default'"
+	echo " ==> Start the nordvpn daemon now with 'rc-service nordvpnd start'"
+}
+
+post_upgrade() {
+	post_install "$1"
+}
+
+pre_remove() {
+	echo " ==> Make sure you run 'rc-update del nordvpnd default'"
+}

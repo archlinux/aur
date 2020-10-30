@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+
+pidfile="/var/run/nordvpn.pid"
+command="/usr/sbin/nordvpnd"
+retry="SIGTERM/5/SIGTERM/5/SIGKILL/5"
+start_stop_daemon_args="-b -m --pidfile ${pidfile}"
+command_background=true
+
+depend() {
+    use logger net
+    provide dns
+}
