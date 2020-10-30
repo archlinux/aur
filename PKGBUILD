@@ -13,8 +13,8 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - with tran
 #   - ?: 11 (not in repos)
 #   - erbium: 12
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
-_electron=electron
-pkgver=1.49.0
+_electron=electron9
+pkgver=1.50.1
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
@@ -23,7 +23,7 @@ depends=($_electron 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 optdepends=('bash-completion: Bash completions'
             'zsh-completions: ZSH completitons'
             'x11-ssh-askpass: SSH authentication')
-makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-dubnium')
+makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-erbium')
 conflicts=('code')
 provides=('code')
 install='code-transparent.install'
@@ -35,8 +35,8 @@ source=("$_pkgname::git+$url.git#tag=$pkgver"
 sha512sums=('SKIP'
             '814c9554427183cd893a33cd2cbe91f6e0ea71921ef0717c86217b1d3058d265f9ff7a9ace3e7b76f122e60b7686475cf4d999e581a1845face3033afb9f745f'
             '0e75ee88274cbaf48c59ef6f363f6b8ac2ea83f8b17a61155008db773b709a1f0233754fa63a136ec0417313ba90a7eb17db000ec22a38ca8840d8ba6c47cab1'
-            '8ec47e497287d67f37e7b669af416f43d5cdbd4574892867d7b95996ef5de53640b5bc919b06b177e1fd91cb005579d6ed0c17325117b9914ba7cf28f5f06e40'
-            '680804ebe32b653df274a71b68f10a72eb478141095e8d360dcb45ad8139f2f3a31d4eeac6ddc9a5a9e615b79a3584e1fa5cdb98ff32884313337aa27da3b957')
+            'b1aa0d7c5b3e3e8ba1172822d75ea38e90efc431b270e0b4ca9e45bf9c0be0f60922c8618969ef071b5b6dbd9ac9f030294f1bf49bcc28c187b46d113dca63a7'
+            'ae7fc5d2d1851bf9353c3f531a4de05cc5b41496468e908776b7a17cf85e889c601b94499bd6165efb902578af1ebf37443a03881f98d8c6120cb4f8667d8fe7')
 
 # Even though we don't officially support other archs, let's
 # allow the user to use this PKGBUILD to compile the package
@@ -149,7 +149,7 @@ package() {
   install -Dm 644 $_pkgname/resources/linux/code.appdata.xml "$pkgdir"/usr/share/metainfo/code-oss.appdata.xml
   install -Dm 644 $_pkgname/resources/linux/code.desktop "$pkgdir"/usr/share/applications/code-oss.desktop
   install -Dm 644 $_pkgname/resources/linux/code-url-handler.desktop "$pkgdir"/usr/share/applications/code-oss-url-handler.desktop
-  install -Dm 644 VSCode-linux-$_vscode_arch/resources/app/resources/linux/code.png "$pkgdir"/usr/share/pixmaps/code-oss.png
+  install -Dm 644 VSCode-linux-$_vscode_arch/resources/app/resources/linux/code.png "$pkgdir"/usr/share/pixmaps/com.visualstudio.code.oss.png
 
   # Install bash and zsh completions
   install -Dm 644 $_pkgname/resources/completions/bash/code "$pkgdir"/usr/share/bash-completion/completions/code

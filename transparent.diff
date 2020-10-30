@@ -1,5 +1,4 @@
 diff --git a/src/main.js b/src/main.js
-index d5f4c90..5e4dba7 100644
 --- a/src/main.js
 +++ b/src/main.js
 @@ -157,6 +157,9 @@ function configureCommandlineSwitchesSync(cliArgs) {
@@ -13,19 +12,18 @@ index d5f4c90..5e4dba7 100644
  	const jsFlags = getJSFlags(cliArgs);
  	if (jsFlags) {
 diff --git a/src/vs/code/electron-main/window.ts b/src/vs/code/electron-main/window.ts
-index b55f409..8c61319 100644
 --- a/src/vs/code/electron-main/window.ts
 +++ b/src/vs/code/electron-main/window.ts
-@@ -122,7 +122,8 @@ export class CodeWindow extends Disposable implements ICodeWindow {
+@@ -157,7 +157,8 @@					width: this.windowState.width,
  				height: this.windowState.height,
  				x: this.windowState.x,
  				y: this.windowState.y,
 -				backgroundColor: this.themeMainService.getBackgroundColor(),
 +				transparent: true,
 +				backgroundColor: '#00000000' || this.themeMainService.getBackgroundColor(),
- 				minWidth: CodeWindow.MIN_WIDTH,
- 				minHeight: CodeWindow.MIN_HEIGHT,
- 				show: !isFullscreenOrMaximized,
+				minWidth: WindowMinimumSize.WIDTH,
+				minHeight: WindowMinimumSize.HEIGHT,
+				show: !isFullscreenOrMaximized,
 diff --git a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
 --- a/src/vs/workbench/common/theme.ts	2020-04-21 11:28:02.140938188 +0800
 +++ b/src/vs/workbench/common/theme.ts	2020-04-21 11:36:36.133491755 +0800
@@ -66,7 +64,6 @@ diff --git a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
  // < --- Tabs --- >
  
 diff --git a/src/vs/workbench/contrib/terminal/browser/terminalInstance.ts b/src/vs/workbench/contrib/terminal/browser/terminalInstance.ts
-index 373f411..16d74ca 100644
 --- a/src/vs/workbench/contrib/terminal/browser/terminalInstance.ts
 +++ b/src/vs/workbench/contrib/terminal/browser/terminalInstance.ts
 @@ -466,6 +466,7 @@ export class TerminalInstance extends Disposable implements ITerminalInstance {
