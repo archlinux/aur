@@ -2,7 +2,7 @@
 # Contributor: Roman Lisagor <rlisagor at gmail dot com>
 
 pkgname=calicoctl
-pkgver=3.15.0
+pkgver=3.16.4
 pkgrel=1
 pkgdesc="Calico CLI tool"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=("Apache")
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/projectcalico/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('605c9879b3e0414a2aef68a603045a5b13cc27153244cf67474ed0639ca06040')
+sha256sums=('3aeae6e98b9f8a1d3ce0e7d96adb632fbebb81d011159b77658c053c020114d2')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
