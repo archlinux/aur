@@ -1,0 +1,9 @@
+This release fixes a few leftover problems from 3.0.
+
+## Usability Improvements
+- Fixed bug causing the selection of fields in Object diagrams to changes their relative order (#377)
+- Fixed insufficient name padding for some class diagram and use case diagram elements (#379)
+- Fixed bug causing version migration between compatible versions.
+
+## Code Improvement
+- Removed unnecessary parameter in edge segmentation code (#378)
