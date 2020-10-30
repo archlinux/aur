@@ -21,7 +21,9 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$_pkgname-$pkgver/src"
+    cd "$srcdir/$_pkgname-$pkgver"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "src"
     install -Dm755 passman $pkgdir/usr/bin/passman
 }
 
