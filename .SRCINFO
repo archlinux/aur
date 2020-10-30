@@ -1,0 +1,20 @@
+pkgbase = gnome-schedule-git
+	pkgdesc = Graphical interface to crontab and at for GNOME
+	pkgver = 2.3.0.r18.09b92ea
+	pkgrel = 1
+	url = http://gnome-schedule.sourceforge.net
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = at
+	depends = cronie
+	depends = python
+	provides = gnome-schedule
+	conflicts = gnome-schedule
+	source = git+https://gitlab.gnome.org/GNOME/gnome-schedule.git
+	source = gnome-doc-utils.patch
+	md5sums = SKIP
+	md5sums = 13b96f3715fb7b56bfbb366f79349311
+
+pkgname = gnome-schedule-git
+
