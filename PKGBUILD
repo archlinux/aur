@@ -1,13 +1,13 @@
 # Maintainer: Andy Kluger <AndyKluger@gmail.com>
 # Contributor: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-git
-pkgver=r1808.057cac08
+pkgver=r2050.075dd6e4
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
-makedepends=('afdko' 'git' 'nodejs' 'npm' 'otfcc' 'ttfautohint')
+makedepends=('git' 'nodejs' 'npm' 'ttfautohint')
 depends=()
 conflicts=('ttf-iosevka')
 provides=('ttf-iosevka')
