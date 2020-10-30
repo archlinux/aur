@@ -1,6 +1,6 @@
 pkgbase = storrent-git
 	pkgdesc = An implementation of the BitTorrent protocol that is optimised for streaming media.
-	pkgver = r96.dc3234c
+	pkgver = r123.e99a05a
 	pkgrel = 1
 	url = https://github.com/jech/storrent
 	arch = x86_64

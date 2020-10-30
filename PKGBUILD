@@ -1,6 +1,6 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=storrent-git
-pkgver=r96.dc3234c
+pkgver=r123.e99a05a
 pkgrel=1
 pkgdesc='An implementation of the BitTorrent protocol that is optimised for streaming media.'
 arch=('x86_64')
