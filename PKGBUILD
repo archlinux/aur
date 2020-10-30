@@ -2,13 +2,13 @@
 
 pkgname='vdx'
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Intuitive CLI for processing video, powered by FFmpeg'
 arch=('any')
 url='https://github.com/yuanqing/vdx'
 _url_source='https://www.npmjs.com/package/vdx'
 license=('MIT')
-depends=('nodejs')
+depends=('ffmpeg' 'nodejs')
 makedepends=('npm' 'jq')
 noextract=("${pkgname}-${pkgver}.tgz")
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
