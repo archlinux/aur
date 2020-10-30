@@ -1,12 +1,11 @@
 pkgbase = r-shortread
 	pkgdesc = FASTQ input and manipulation
-	pkgver = 1.46.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/ShortRead.html
 	arch = i686
 	arch = x86_64
 	license = Artistic-2.0
-	makedepends = gcc
 	depends = r
 	depends = r-biocgenerics>=0.23.3
 	depends = r-biocparallel
@@ -26,8 +25,8 @@ pkgbase = r-shortread
 	optdepends = r-biomart
 	optdepends = r-genomicfeatures
 	optdepends = r-yeastnagalakshmi
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ShortRead_1.46.0.tar.gz
-	md5sums = 1cb99240a3a440c0d28282f50b66b1a0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ShortRead_1.48.0.tar.gz
+	sha256sums = 69badfa1ca5c075ff29adda33d6bd71a2b62433640dcea45ae15180347439570
 
 pkgname = r-shortread
 
