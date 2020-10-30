@@ -1,6 +1,6 @@
 pkgbase = r-r6
 	pkgdesc = Encapsulated Classes with Reference Semantics
-	pkgver = 2.4.1
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=R6
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = r-r6
 	optdepends = r-testthat
 	optdepends = r-ggplot2
 	optdepends = r-scales
-	source = https://cran.r-project.org/src/contrib/R6_2.4.1.tar.gz
-	md5sums = 78cabfb5a4e18fab29659752271ab4af
+	source = https://cran.r-project.org/src/contrib/R6_2.5.0.tar.gz
+	sha256sums = aec1af9626ec532cb883b544bf9eff4cb2d89c343c7ce0fa31761ec5a7882e02
 
 pkgname = r-r6
 
