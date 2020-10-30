@@ -1,0 +1,21 @@
+pkgbase = ruby-x25519
+	pkgdesc = An efficient public key cryptography library for Ruby providing key exchange/agreement via the X25519 (a.k.a. Curve25519) Elliptic Curve Diffie-Hellman function as described in RFC 7748
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/RubyCrypto/x25519
+	arch = x86_64
+	license = BSD
+	checkdepends = ruby-rspec
+	makedepends = ruby-rake
+	makedepends = ruby-bundler
+	makedepends = ruby-rdoc
+	makedepends = ruby-rake-compiler
+	depends = ruby
+	provides = x25519_precomputed.so
+	provides = x25519_ref10.so
+	options = !emptydirs
+	source = ruby-x25519-1.0.8.tar.gz::https://github.com/RubyCrypto/x25519/archive/v1.0.8.tar.gz
+	sha512sums = 42a9a2f1c470ea82c070435e4d85317c69fbd6e994f765c46b3aa4b544a5557559ff36194e37100bd8f581711156d185117535aeb3da9f5b6b5523e5a4b347b6
+
+pkgname = ruby-x25519
+
