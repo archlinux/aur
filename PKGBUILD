@@ -1,7 +1,7 @@
 # Maintainer: Patrykf03 <hamachi0912@gmail.com>
 
 pkgname=yuzu-ea-bin
-pkgver=1076
+pkgver=1088
 pkgrel=1
 pkgdesc="Yuzu switch emulator Early Access build for Arch Linux"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 source_x86_64=("https://github.com/pineappleEA/pineappleEA.github.io/releases/download/EA-${pkgver}/Yuzu-EA-${pkgver}.AppImage")
 noextract=("Yuzu-EA-${pkgver}.AppImage")
-sha256sums_x86_64=('e65d4b81890ad28ec469ac6fa5ab9630a6da0f83203f5b7fbb2513cc586bb880')
+sha256sums_x86_64=('1a22f3b6c8743d86c01ca3e99dce4610e084eee3a946a1c17b1398cd0998a1d0')
 
 prepare() {
     chmod +x "Yuzu-EA-${pkgver}.AppImage"
