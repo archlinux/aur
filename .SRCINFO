@@ -1,6 +1,6 @@
 pkgbase = exif-py
 	pkgdesc = Easy to use Python2 module to extract Exif metadata from tiff and jpeg files.
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/ianare/exif-py
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = exif-py
 	depends = python2
 	conflicts = exifread
 	replaces = exifread
-	source = exif-py-2.3.1.tar.gz::https://github.com/ianare/exif-py/archive/2.3.1.tar.gz
-	sha1sums = 0982b11e578724400ca79026ca2d56a84a69c34b
+	source = exif-py-2.3.2.tar.gz::https://github.com/ianare/exif-py/archive/2.3.2.tar.gz
+	sha1sums = 9653949851358b6a65fa784601bfe9306621aec6
 
 pkgname = exif-py
 

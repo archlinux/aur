@@ -2,7 +2,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=exif-py
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Easy to use Python2 module to extract Exif metadata from tiff and jpeg files."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python2-setuptools')
 conflicts=('exifread')
 replaces=('exifread')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ianare/exif-py/archive/$pkgver.tar.gz")
-sha1sums=('0982b11e578724400ca79026ca2d56a84a69c34b')
+sha1sums=('9653949851358b6a65fa784601bfe9306621aec6')
 
 build() {
   cd "$pkgname-$pkgver"
