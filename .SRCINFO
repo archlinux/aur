@@ -1,10 +1,11 @@
 pkgbase = ssh-audit
 	pkgdesc = A tool for ssh server auditing.
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jtesta/ssh-audit
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	source = ssh-audit-2.3.1.tar.gz::https://github.com/jtesta/ssh-audit/archive/v2.3.1.tar.gz
 	b2sums = 38656a2c93f7230a7aec760c4eca892fe1ce5977f482ff369db2812c1a87adcb4d3966bee1b0d59988666e3ab4416332448940ecd02518eb64407c0d8d793b3e
