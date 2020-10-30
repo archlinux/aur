@@ -1,0 +1,16 @@
+pkgbase = nv-card-pm
+	pkgdesc = A script to switch NVIDIA graphics card using kernel PM feature
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/YiPrograms/NV-Card/tree/nv-card-pm
+	arch = x86_64
+	license = GPL
+	depends = nvidia
+	optdepends = bumblebee: optirun support
+	optdepends = xf86-video-intel: External display support
+	conflicts = nv-card
+	source = https://github.com/YiPrograms/NV-Card/archive/0.2.tar.gz
+	md5sums = SKIP
+
+pkgname = nv-card-pm
+
