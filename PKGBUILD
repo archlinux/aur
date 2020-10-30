@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phoc
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Wlroots based Phone compositor"
 url="https://source.puri.sm/Librem5/phoc"
@@ -15,18 +15,19 @@ makedepends=(ctags
              vala)
 checkdepends=(xorg-server-xvfb)
 source=("https://source.puri.sm/Librem5/phoc/-/archive/v${pkgver}/phoc-v${pkgver}.tar.gz")
-sha256sums=('30d496ee348c619bdf11c62a93ea599a5e000a77788e124b897c6731f1ae7c92')
+sha256sums=('49e418ebe0389d325a53306e538947d71f9fdce5bdd0ba3675c05e6b0577ea64')
 
 build() {
-    rm -rf build
     arch-meson phoc-v${pkgver} build -Dembed-wlroots=disabled
-    ninja -C build
+    meson compile -C build
 }
 
 check() {
-    xvfb-run ninja -C build test
+    dbus-run-session xvfb-run \
+        -s '-screen 0 1920x1080x24 -nolisten local' \
+        meson test -C build --print-errorlogs
 }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C build install
+    DESTDIR="${pkgdir}" meson install -C build
 }
