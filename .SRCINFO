@@ -1,8 +1,8 @@
 pkgbase = rust-script
-	pkgdesc = Run Rust files and expressions without any setup or compilation necessary.
+	pkgdesc = Run Rust files and expressions without any setup or compilation necessary
 	pkgver = 0.7.0
-	pkgrel = 1
-	url = https://github.com/fornwall/rust-script
+	pkgrel = 2
+	url = https://rust-script.org
 	arch = i686
 	arch = x86_64
 	license = MIT

@@ -1,8 +1,9 @@
 USER = fornwall
 REPO = rust-script
-PKGDESC = Run Rust files and expressions without any setup or compilation necessary.
+PKGDESC = Run Rust files and expressions without any setup or compilation necessary
+PKGURL = https://rust-script.org
 PKGVER = 0.7.0
-PKGREL = 1
+PKGREL = 2
 
 MAINTAINER = $(shell git config user.name) <$(shell git config user.email)>
 PKGNAME = $(REPO)
@@ -15,6 +16,7 @@ codegen:
 	@sed \
 		-e 's#{{USER}}#$(USER)#g' \
 		-e 's#{{REPO}}#$(REPO)#g' \
+		-e 's#{{PKGURL}}#$(PKGURL)#g' \
 		-e 's#{{MAINTAINER}}#$(MAINTAINER)#g' \
 		-e 's#{{PKGNAME}}#$(PKGNAME)#g' \
 		-e 's#{{BINNAME}}#$(BINNAME)#g' \
