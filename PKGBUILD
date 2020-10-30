@@ -13,9 +13,9 @@ arch=("x86_64")
 url="https://github.com/QubesOS/qubes-vmm-xen"
 license=('GPL')
 groups=()
-depends=('python2'
+depends=('python'
          'bridge-utils'
-         'python2-lxml'
+         'python-lxml'
          'libutil-linux'
          'lzo'
          'libsystemd'
@@ -68,7 +68,6 @@ build() {
 
     export XEN_VENDORVERSION="-$pkgrel"
     export OCAML_TOOLS=n
-    export PYTHON=/usr/bin/python2
     unset LDFLAGS
 
     autoreconf
@@ -87,7 +86,6 @@ package() {
     cd "xen-${pkgver}"
 
     export OCAML_TOOLS=n
-    export PYTHON=python2
 
     # Note: Archlinux removed use of directory such as /sbin /bin /usr/sbin (https://mailman.archlinux.org/pipermail/arch-dev-public/2012-March/022625.html)
     make DESTDIR="$pkgdir" LIBDIR=/usr/lib/ SBINDIR=/usr/bin prefix=/usr install-tools
