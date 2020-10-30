@@ -6,7 +6,7 @@
 pkgname=plausible-git
 _pkgname=plausible
 pkgver=r456.b29afde
-pkgrel=8
+pkgrel=2
 license=('MIT')
 pkgdesc='Simple and privacy-friendly alternative to Google Analytics'
 makedepends=("nodejs" "yarn" "python" "npm" "nodejs-webpack" "wget" "ca-certificates" "gnupg" "elixir")
@@ -23,7 +23,7 @@ sha1sums=('SKIP'
           'b52729ab148fcf4e2be54abc37f01aebd02b1655'
           '1ddfc6e48f8b39c9e0a59ba1bd12a827b34716f1'
           '1f7c448513d7ca4b4ff0890c1b8df282ca5092f6'
-          'c5866213a3154ffb9e3a878c7c274331fdc3adef')
+          'ecf4f528744d597eb21cfc9e4a946dcf6e15bd78')
 provides=('plausible')
 conflicts=('plausible')
 
@@ -48,7 +48,7 @@ build() {
 	cd "$_pkgname"/app
         
 	export MIX_ENV=prod
-	export NODE_ENV=production
+	export NODE-_ENV=production
         
 	mix local.hex --force
 	mix local.rebar --force
@@ -70,6 +70,7 @@ package() {
 	mkdir -p "$pkgdir"/opt/
 	cp -r _build/prod/rel/plausible "$pkgdir"/opt/
 	chmod 755 "$pkgdir"/opt/plausible/bin/plausible
+	chmod +x "$pkgdir"/opt/plausible/releases/*/elixir
 
 	mkdir -p "$pkgdir"/usr/bin/
 	ln -sf /opt/plausible/bin/plausible "$pkgdir"/usr/bin/plausible
