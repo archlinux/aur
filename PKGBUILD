@@ -20,12 +20,12 @@ md5sums=('SKIP'
 	    'SKIP')
 
 pkgver() {
-	cd "$srcdir/Lightcord"
+	cd "$srcdir/$pkgname-$pkgver"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "Lightcord" 
+  cd "$pkgname-$pkgver" 
   npm run devInstall 
   npm run build
 }
@@ -37,7 +37,7 @@ package() {
     install -d "$pkgdir"/usr/share/pixmaps
 
     # Copy files over and set rights
-    cp -a "$srcdir/Lightcord/builds/linux-unpacked"/. "$pkgdir"/opt/lightcord
+    cp -a "$srcdir/$pkgname-$pkgver/builds/linux-unpacked"/. "$pkgdir"/opt/lightcord
     cp -a "$srcdir/lightcord.png" "$pkgdir"/opt/lightcord
     chmod 755 "$pkgdir"/opt/lightcord/lightcord
     # Link icon and add Desktop
