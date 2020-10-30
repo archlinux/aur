@@ -1,13 +1,13 @@
 # Maintainer: Morgan <morganamilo@archlinux.org>
 pkgname=paru-git
 _pkgname=paru
-pkgver=1.0.0.r0.g387a38f
+pkgver=1.0.1.r0.ge58d7f8
 pkgrel=1
 pkgdesc='AUR helper based on yay'
 url='https://github.com/morganamilo/paru'
 source=("git+https://github.com/morganamilo/paru")
 backup=("etc/paru.conf")
-arch=('x86_64' 'i686')
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('GPL3')
 makedepends=('cargo')
 depends=('git' 'pacman')
