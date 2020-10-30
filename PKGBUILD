@@ -2,7 +2,7 @@
 
 pkgname=zy-player-appimage
 _pkgname=zy-player
-pkgver=2.5.7
+pkgver=2.5.8
 _pkgver=$(echo $pkgver | sed 's/\./-/3')
 pkgrel=1
 pkgdesc="跨平台视频资源播放器, 简洁免费无广告"
@@ -13,7 +13,7 @@ provides=('zy-player')
 options=(!strip)
 source=("https://github.com/Hunlongyu/ZY-Player/releases/download/v${_pkgver}/ZY-Player-${_pkgver}.AppImage"
         'zy-player.sh')
-sha256sums=('a9f4e23f87880696489b945071469ce0426ea746bfdf59d19774c63a497bcde6'
+sha256sums=('0dcdf31c39d00881b99b19219e7ed35a67f40035c84b4850c9cce906440366b1'
             '3626ced8de95c110129ed9dff1f8ea34243b2430b0b91c737dd7d166658bc1f2')
 _filename=ZY-Player-${_pkgver}.AppImage
 
