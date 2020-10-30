@@ -22,7 +22,7 @@ source=("${pkgname%-*}::git+https://github.com/plausible/analytics.git"
 sha1sums=('SKIP'
           'b52729ab148fcf4e2be54abc37f01aebd02b1655'
           '1ddfc6e48f8b39c9e0a59ba1bd12a827b34716f1'
-          '1f7c448513d7ca4b4ff0890c1b8df282ca5092f6'
+          '9c2569c4529612916f808637697195b1e5dd780a'
           'ecf4f528744d597eb21cfc9e4a946dcf6e15bd78')
 provides=('plausible')
 conflicts=('plausible')
