@@ -1,7 +1,7 @@
 # Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 pkgname=3proxy
 pkgver=0.9.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A tiny crossplatform proxy server"
 arch=('any')
 url="http://www.3proxy.ru/"
@@ -17,24 +17,36 @@ source=("https://github.com/z3APA3A/3proxy/archive/$pkgver.tar.gz"
 md5sums=('d47099e82914d854daac4688740d625c'
          '99fbf305116df79fde910402c1132295'
          "6cafc741aa7ca8aab877f24a132c8bd1"
-         "d5163425d56f9f065a4425f96059ae15"
+         "127ddc9c57a7b30ed8c70782f94e69b1"
 )
 _prefix=/usr
 _etcdir=/etc/3proxy
 _initdir=/etc/init.d
 _runbase=/run
 _logbase=/var/log
+prepare() {
+    cd "$srcdir/$pkgname-$pkgver"
+    echo -e "  \e[1;34m->\033[0m \e[1;37mPatching Makefile for Linux...\033[0m"
+    # O2 and march should be dound in makepkg.conf, so let's remove them. Install should not really perform anything but calling another targets
+    sed --follow-symlinks -i.bak -e 's| -O2||g;s|CFLAGS = -g|CFLAGS =|;s|CC = gcc|CC ?= gcc|;s|LN = gcc|LN ?= gcc|;137,$d' Makefile.Linux
+}
+
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    make prefix="$_prefix" DESTDIR="$pkgdir" ETCDIR="$_etcdir" INITDIR=$_initdir BINDIR="/usr/bin" -f Makefile.Linux
+}
+
 package() {
     cd "$srcdir/3proxy-$pkgver"
-    sed -i '137,$d' Makefile.Linux
-    make='make -f Makefile.Linux INSTALL=/usr/bin/install'
-    $make prefix="$_prefix" DESTDIR="$pkgdir" ETCDIR="$_etcdir" INITDIR=$_initdir RUNBASE=$_runbase LOGBASE=$_logbase
-    $make prefix="$_prefix" install DESTDIR="$pkgdir" ETCDIR="$pkgdir$_etcdir" INITDIR="$pkgdir$_initdir" RUNBASE="$pkgdir$_runbase" LOGBASE="$pkgdir$_logbase"
-    sed -i 's|chroot.*|chroot /usr/local/3proxy threeproxy threeproxy|' "$pkgdir/etc/3proxy/3proxy.cfg"
+    make prefix="$_prefix" install DESTDIR="$pkgdir" ETCDIR="$pkgdir$_etcdir" INITDIR="$pkgdir$_initdir" RUNBASE="$pkgdir$_runbase" LOGBASE="$pkgdir$_logbase" -f Makefile.Linux
+    mkdir "$pkgdir/usr/lib"
+    mv "$pkgdir"/usr/local/3proxy/libexec/*.so "$pkgdir"/usr/lib/
+    rm -rf "$pkgdir/usr/local"
     ( cd ${pkgdir}${_prefix}/bin && mv proxy 3proxy-proxy ) || return 1
     rm -f ${pkgdir}${_etcdir}/counters ${pkgdir}${_etcdir}/passwd ${pkgdir}${_etcdir}/bandlimiters "$pkgdir$_etcdir/3proxy.cfg"
+    rm -rf "$pkgdir$_etcdir/conf"
     #touch "$pkgdir$_runbase/3proxy/3proxy.pid"
-    install -D -m644 copying ${pkgdir}${_prefix}/share/licenses/$pkgname/copying
+    install -D -m644 copying "${pkgdir}${_prefix}/share/licenses/$pkgname/copying"
     install -D -m644 cfg/3proxy.cfg.sample ${pkgdir}${_etcdir}/3proxy.cfg.sample
     install -D -m644 cfg/counters.sample ${pkgdir}${_etcdir}/counters.sample
     mkdir -p "$pkgdir/usr/lib/systemd/system/"

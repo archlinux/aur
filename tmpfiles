@@ -1,4 +1,2 @@
 #Type Path        Mode User Group Age Argument
 d     /run/3proxy   0755 threeproxy threeproxy  - -
-d     /usr/local/3proxy   0755 threeproxy threeproxy  - -
-L+    /etc/3proxy/conf                   -    -    -     -           /usr/local/3proxy/conf
