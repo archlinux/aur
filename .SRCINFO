@@ -1,10 +1,11 @@
 pkgbase = python-ptflops
 	pkgdesc = Flops counter for convolutional networks in pytorch framework
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sovrasov/flops-counter.pytorch
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python-pytorch
 	source = https://github.com/sovrasov/flops-counter.pytorch/archive/v0.6.2.tar.gz
 	sha256sums = 5abbef678601a4cb7bead99fbbec0265a2a1746718eecf76975d888f0e2d048b
