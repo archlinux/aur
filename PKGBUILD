@@ -11,7 +11,7 @@ license=('custom')
 groups=('gog-stellaris-dlcs')
 depends=("gog-stellaris=$pkgver")
 makedepends=('unzip' 'findutils' 'lgogdownloader')
-source=("stellaris_horizon_signal_${pkgver//./_}::gogdownloader://1490429179/en3installer0")
+source=("stellaris_horizon_signal_${pkgver//./_}.sh::gogdownloader://1490429179/en3installer0")
 sha512sums=('d778828413382880a17484958c34c7c176e62097dc6a0baf5410624390da199dfc6b1665ae3e370832623305172b7b4b17b5e04e3634401bd4f809bcd1f9bd43')
 
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
