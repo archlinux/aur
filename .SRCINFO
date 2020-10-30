@@ -1,0 +1,17 @@
+pkgbase = buku-rofi-git
+	pkgdesc = rofi frontend for buku bookmarks manager
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/lbcnz/agnostic-browser
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = gawk
+	depends = buku
+	depends = rofi
+	provides = buku-rofi
+	source = git+https://gitlab.com/lbcnz/buku-rofi.git
+	md5sums = SKIP
+
+pkgname = buku-rofi-git
+
