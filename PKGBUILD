@@ -20,7 +20,7 @@ prepare()
 {
   cd "${srcdir}"
   test -d "${srcdir}/stellaris" && rm -r "${srcdir}/stellaris"
-  unzip -q -d stellaris stellaris_horizon_signal_${pkgver//./_}_38578.sh || test $? -eq 1
+  unzip -q -d stellaris stellaris_horizon_signal_${pkgver//./_}.sh || test $? -eq 1
 }
 
 package()
