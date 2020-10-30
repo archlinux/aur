@@ -1,6 +1,6 @@
 pkgbase = python-pyfltk-svn
 	pkgdesc = A Python wrapper for the Fast Light Tool Kit library
-	pkgver = r535
+	pkgver = r536
 	pkgrel = 1
 	url = http://pyfltk.sourceforge.net/
 	arch = x86_64
@@ -14,9 +14,7 @@ pkgbase = python-pyfltk-svn
 	provides = python-pyfltk
 	conflicts = python-pyfltk
 	source = svn://svn.code.sf.net/p/pyfltk/code/trunk
-	source = pyfltk_remove_percent_format.patch
 	sha1sums = SKIP
-	sha1sums = a105e1ca3592c880634503c9faa558bcc21a6636
 
 pkgname = python-pyfltk-svn
 
