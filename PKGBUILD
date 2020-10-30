@@ -11,9 +11,9 @@ depends=()
 optdepends=('picom: transparency support')
 makedepends=('npm' 'nodejs' 'git')
 conflicts=('lightcord-bin')
-source=("git://github.com/Lightcord/Lightcord.git"
+source=("$pkgname-$pkgver::git://github.com/Lightcord/Lightcord.git"
 	"Lightcord.desktop"
-	"https://raw.githubusercontent.com/Lightcord/LightcordLogos/master/lightcord/lightcord.png")
+	"lightcord.png::https://raw.githubusercontent.com/Lightcord/LightcordLogos/master/lightcord/lightcord.png")
 
 md5sums=('SKIP'
 	    'd60e05000301e23b5819bdfbe8d9f52b'
