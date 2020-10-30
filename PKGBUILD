@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 url='https://github.com/fornwall/rust-script'
 license=('MIT' 'APACHE')
 depends=()
-makedepends=('rust' 'cargo')
+makedepends=('rust>=1.47')
 conflicts=("rust-script-git" "rust-script-bin")
 provides=()
 

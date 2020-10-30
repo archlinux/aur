@@ -7,8 +7,7 @@ pkgbase = rust-script
 	arch = x86_64
 	license = MIT
 	license = APACHE
-	makedepends = rust
-	makedepends = cargo
+	makedepends = rust>=1.47
 	conflicts = rust-script-git
 	conflicts = rust-script-bin
 	source = https://github.com/fornwall/rust-script/archive/v0.7.0.tar.gz
