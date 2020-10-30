@@ -15,12 +15,12 @@ _makenconfig=
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=y
+_localmodcfg=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.9.1
+pkgver=5.9.2
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -42,8 +42,8 @@ source=(
   "0000-sphinx-workaround.patch"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=c7c51372f02b8b45275897e5728ef28a35b82658"
-  "0002-Restore-acpi_walk_dep_device_list-getting-called-aft.patch::https://git.archlinux.org/linux.git/patch/?id=94d41d2b670111855a361a35806ebac8d2444042"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=9dda33cd8d3d2feb086a5cb7f7392cda483939ee"
+  "0002-mac80211_fix_regression_where_EAPOL_frames_were_sent.patch::https://git.archlinux.org/linux.git/patch/?id=5fbf98ceb5b2218ec764dd0d187953393732a5ef"
   "bmq-fix-compilation-nr_cpus.patch::https://gitlab.com/alfredchen/linux-prjc/-/commit/c6e352a26de8e46f5737fed2b876516df82adad1.patch"
 )
 validpgpkeys=(
@@ -51,14 +51,14 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('ba4a11e93896305835c630969cf330ae808b0e43f09b375b510cde1bd0efc036'
+sha256sums=('51f4eced91a95206946a0f1449e3f883bb3b300baa2f7f493e4c899a7d640236'
             'SKIP'
-            'b47902218bd273f35afa77ef4adfc6f434e8fbdfc46bbd902ae2ea742ed88655'
+            '85f8e88741e21b6488725f5d1517a79d9878c5054e13d5a9ead631e260b059b4'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
             'a18dee6e4eeb677adef61b4e695cbb800a9aa88e3f6673a6dcfef8a840dee0cc'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
-            '1d0975a43d3ac7e777d53a0bbd96556aa6b24e3f098075980865cdb691cb654a'
-            'e06508b783c3aecbe4048cae75ea1edbebc9bd18c247d4d252fdea628ea735f6'
+            'a1df9ab2acb18fb9f459c2e2b0e221ccd3db8b7a2bf69ca4dd5b01fb1a80704d'
+            '8dc9a19c75835b5eb903384295c2d9e17ef7d7ff61f4fed3f4db2c299ab0ca2c'
             '7cc22759cb74e884b2dcd603d760adb451fd1f2e5d24d472c32811b254566b7a')
 
 _kernelname=${pkgbase#linux}
