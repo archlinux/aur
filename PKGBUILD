@@ -1,7 +1,7 @@
 # Maintainer: mzz2017 <m@mzz.pub>
 
 pkgname=v2raya
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports V2Ray, SS, SSR, Trojan and Pingtunnel protocols"
@@ -17,7 +17,7 @@ build() {
     cd "$srcdir/v2rayA-$pkgver/gui"
     yarn config set registry https://registry.npm.taobao.org
     yarn config set sass_binary_site https://cdn.npm.taobao.org/dist/node-sass -g
-    yarn
+    yarn --check-files
     yarn build
 
     cd "$srcdir/v2rayA-$pkgver/service"
