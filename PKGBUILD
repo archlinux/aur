@@ -1,4 +1,4 @@
-# Maintainer: José San Juan <josesj@gmail.com>
+# Maintainer: TurboPunk <turbopunk@telenet.be>
 pkgname=snapmaker-luban
 pkgver=3.10.3
 pkgrel=1
