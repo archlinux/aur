@@ -26,9 +26,9 @@ if [ -z ${COMPONENT+x} ]; then
 fi
 ##
 
-_reponame=brave-browser
 pkgname=brave
-pkgver=1.15.76
+_reponame=${pkgname}-browser
+pkgver=1.16.69
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -50,12 +50,13 @@ source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'brave-browser.desktop'
         "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz"
         'brave-custom-build.patch')
-arch_revision=2cbe439471932d30ff2c8ded6b3dfd51b312bbc9
+arch_revision=a702396adb03e094bfbe836ff05a451465fc986d
 for Patches in \
         fix-invalid-end-iterator-usage-in-CookieMonster.patch \
         only-fall-back-to-the-i965-driver-if-we-re-on-iHD.patch \
         remove-dead-reloc-in-nonalloc-LD-flags.patch \
         check-for-enable-accelerated-video-decode-on-Linux.patch \
+        xproto-fix-underflow-in-Fp1616ToDouble.patch \
         chromium-skia-harmony.patch
 do
   source+=("${Patches}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${Patches}?h=packages/chromium&id=${arch_revision}")
@@ -73,6 +74,7 @@ sha256sums=('SKIP'
             '7514c6c81a64a5457b66494a366fbb39005563eecc48d1a39033dd06aec4e300'
             '7cace84d7494190e7882d3e637820646ec8d64808f0a2128c515bd44991a3790'
             '03d03a39b2afa40083eb8ccb9616a51619f71da92348effc8ee289cbda10128b'
+            '1ec617b362bf97cce4254debd04d8396f17dec0ae1071b52ec8c1c3d86dbd322'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -121,8 +123,8 @@ prepare() {
 
     msg2 "Prepare the environment..."
     npm install
-    #npm run sync || (npm run update_patches && npm run init)
-    npm run init || (npm run update_patches && npm run init)
+    #npm run init || (npm run update_patches && npm run init)
+    npm run init
 
     msg2 "Apply Chromium patches..."
     cd src/
@@ -138,6 +140,7 @@ prepare() {
     patch -Np1 -i "${srcdir}"/only-fall-back-to-the-i965-driver-if-we-re-on-iHD.patch
     patch -Np1 -i "${srcdir}"/remove-dead-reloc-in-nonalloc-LD-flags.patch
     patch -Np1 -i "${srcdir}"/check-for-enable-accelerated-video-decode-on-Linux.patch
+    patch -Np1 -i "${srcdir}"/xproto-fix-underflow-in-Fp1616ToDouble.patch
 
     # https://crbug.com/skia/6663#c10
     patch -Np0 -i "${srcdir}"/chromium-skia-harmony.patch
