@@ -22,7 +22,7 @@ pkgname=(
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
 pkgver=r56462.73548f97c0a
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -142,6 +142,7 @@ build() {
       -DENABLE_INTERNAL_FLATBUFFERS=ON \
       -DENABLE_INTERNAL_SPDLOG=ON \
       -DENABLE_MYSQLCLIENT=ON \
+      -DCORE_PLATFORM_NAME=x11 \
       -DAPP_RENDER_SYSTEM=gl \
       -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
       -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
@@ -221,7 +222,7 @@ package_kodi-git() {
   pkgdesc="A software media player and entertainment hub for digital media (master branch)"
   depends=(
     'desktop-file-utils' 'hicolor-icon-theme' 'mesa' 'python-pycryptodomex'
-    'python-pillow' 'python-simplejson' 'xorg-xdpyinfo'
+    'python-pillow' 'python-simplejson' 'xorg-xdpyinfo' 'shairplay'
     'KODI-BIN'
   )
   optdepends=(
@@ -230,7 +231,6 @@ package_kodi-git() {
     'python-pybluez: Bluetooth support'
     'libplist: AirPlay support'
     'pulseaudio: PulseAudio support'
-    'shairplay: AirPlay support'
     'upower: Display battery level'
   )
   provides=('xbmc' "kodi=${pkgver}")
@@ -253,7 +253,7 @@ package_kodi-git() {
   done
 
   # remove x11 binaries
-  rm "$pkgdir"/usr/lib/kodi/kodi.bin
+  rm "$pkgdir/usr/lib/kodi/"{kodi-x11,kodi-xrandr}
 }
 
 # kodi-x11
@@ -271,7 +271,7 @@ package_kodi-git-x11() {
   )
 
   cd kodi-build-x11
-  install -Dm755 kodi.bin "$pkgdir/usr/lib/kodi/kodi.bin"
+  install -Dm755 kodi-x11 "$pkgdir/usr/lib/kodi/kodi-x11"
   install -Dm755 kodi-xrandr "$pkgdir/usr/lib/kodi/kodi-xrandr"
 }
 

@@ -1,6 +1,6 @@
 pkgbase = kodi-git
 	pkgver = r56462.73548f97c0a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -96,13 +96,13 @@ pkgname = kodi-git
 	depends = python-pillow
 	depends = python-simplejson
 	depends = xorg-xdpyinfo
+	depends = shairplay
 	depends = KODI-BIN
 	optdepends = afpfs-ng: Apple shares support
 	optdepends = bluez: Blutooth support
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = libplist: AirPlay support
 	optdepends = pulseaudio: PulseAudio support
-	optdepends = shairplay: AirPlay support
 	optdepends = upower: Display battery level
 	provides = xbmc
 	provides = kodi=r56462.73548f97c0a
