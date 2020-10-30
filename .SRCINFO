@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-openni-launch
 	pkgdesc = ROS - Drivers for the Microsoft Kinect, Asus Xtion, and Primesense Devices.
 	pkgver = 1.11.1
-	pkgrel = 2
-	url = https://www.wiki.ros.org/openni_launch
+	pkgrel = 3
+	url = https://wiki.ros.org/openni_launch
 	arch = i686
 	arch = x86_64
 	arch = aarch64
