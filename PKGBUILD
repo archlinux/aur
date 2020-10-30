@@ -49,6 +49,7 @@ package() {
   for _arch in $_architectures; do
     cd "$srcdir/hdf5-${pkgver/_/-}/build-${_arch}"
     LD_PRELOAD="" make DESTDIR="${pkgdir}" install
+    chmod 644 "$pkgdir"/usr/${_arch}/include/H5*
     rm "$pkgdir"/usr/${_arch}/share/{COPYING,*.txt}
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
