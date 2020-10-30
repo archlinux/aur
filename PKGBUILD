@@ -10,6 +10,7 @@ license=('MIT')
 depends=()
 optdepends=('picom: transparency support')
 makedepends=('npm' 'nodejs' 'git')
+provides=('lightcord')
 conflicts=('lightcord-bin')
 source=("$pkgname-$pkgver::git://github.com/Lightcord/Lightcord.git"
 	"Lightcord.desktop"

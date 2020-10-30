@@ -9,6 +9,7 @@ pkgbase = lightcord-git
 	makedepends = nodejs
 	makedepends = git
 	optdepends = picom: transparency support
+	provides = lightcord
 	conflicts = lightcord-bin
 	source = lightcord-git-r375.d0ea1fd::git://github.com/Lightcord/Lightcord.git
 	source = Lightcord.desktop
