@@ -1,10 +1,9 @@
 # Maintainer: Cyrinux <pkgbuilds AT levis DOT name>
 pkgname=firetunnel-git
-pkgver=r29.4861cd7
-pkgrel=2
+pkgver=master
+pkgrel=3
 pkgdesc="Tunneling program for Firejail sandboxes"
 arch=('any')
-depends=('')
 url="https://github.com/netblue30/firetunnel"
 license=('GPL')
 makedepends=('git')
