@@ -6,7 +6,7 @@
 pkgname=qubes-vm-xen
 _gitname=${pkgname%-git*}
 pkgver='4.8.5'
-pkgrel=23
+pkgrel=25
 epoch=
 pkgdesc="QubesOS component"
 arch=("x86_64")
