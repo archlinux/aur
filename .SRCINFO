@@ -1,0 +1,18 @@
+pkgbase = qqc2-suru-style-git
+	pkgdesc = Suru style for QtQuick Controls 2
+	pkgver = r81.4bd56af
+	pkgrel = 1
+	url = https://github.com/ubports/qqc2-suru-style.git
+	arch = x86_64
+	arch = armv7
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols2
+	source = git+https://github.com/ubports/qqc2-suru-style.git
+	md5sums = SKIP
+
+pkgname = qqc2-suru-style-git
+
