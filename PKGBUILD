@@ -82,14 +82,16 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname/"
-	# Based on BUILD_TARGETS_TEST in tools/dev/gm.py
-	autoninja -C "$OUTDIR" v8_monolith d8 cctest inspector-test unittests wasm_api_tests
+	autoninja -C "$OUTDIR" v8_monolith d8
 }
 
 check() {
 	cd "$srcdir/$pkgname/"
-	# Based on DEFAULT_TESTS in tools/dev/gm.py
-	./tools/run-tests.py --outdir="$OUTDIR" cctest debugger intl message mjsunit unittests
+	# Based on tools/dev/gm.py
+	BUILD_TARGETS_TEST=(d8 cctest inspector-test unittests wasm_api_tests)
+	DEFAULT_TESTS=(cctest debugger intl message mjsunit unittests)
+	autoninja -C "$OUTDIR" "${BUILD_TARGETS_TEST[@]}"
+	./tools/run-tests.py --outdir="$OUTDIR" "${DEFAULT_TESTS[@]}"
 }
 
 package() {
