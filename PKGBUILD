@@ -4,7 +4,7 @@
 pkgname=fblog-bin
 pkgver=2.3.0
 pkgrel=1
-pkgdesc="Workspace productivity booster"
+pkgdesc="Small command-line JSON log viewer"
 arch=('x86_64')
 url="https://github.com/brocode/fblog"
 license=('custom:WTFPL')

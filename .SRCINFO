@@ -1,5 +1,5 @@
 pkgbase = fblog-bin
-	pkgdesc = Workspace productivity booster
+	pkgdesc = Small command-line JSON log viewer
 	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/brocode/fblog
