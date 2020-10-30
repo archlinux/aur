@@ -1,7 +1,7 @@
 pkgbase = cri-o
 	pkgdesc = Open Container Initiative-based implementation of Kubernetes Container Runtime Interface
 	pkgver = 1.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cri-o/cri-o
 	arch = x86_64
 	license = Apache
@@ -10,9 +10,12 @@ pkgbase = cri-o
 	makedepends = go-md2man
 	makedepends = libseccomp
 	makedepends = ostree
+	depends = cni-plugins
+	depends = conmon
+	depends = conntrack-tools
 	depends = glibc
-	optdepends = cni-plugins: for CNI networking
-	optdepends = conmon: for per-container monitoring
+	depends = runc
+	provides = container-runtime
 	options = emptydirs
 	backup = etc/crio/crio.conf
 	source = cri-o-1.19.0.tar.gz::https://github.com/cri-o/cri-o/archive/v1.19.0.tar.gz
@@ -23,7 +26,11 @@ pkgbase = cri-o
 	b2sums = 8d77c8060f483c943bd48d9bc2c1d676878e570b29989b7ff733906612b6dff09ed1ffcabc5174175ebc667df897e37e98a8132016bddcb27137661fca2da6dd
 
 pkgname = cri-o
+	depends = cni-plugins
+	depends = conmon
+	depends = conntrack-tools
 	depends = glibc
+	depends = runc
 	depends = libgpgme.so
 	depends = libseccomp.so
 

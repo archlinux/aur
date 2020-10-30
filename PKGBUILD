@@ -3,15 +3,14 @@
 
 pkgname=cri-o
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Container Initiative-based implementation of Kubernetes Container Runtime Interface"
 arch=('x86_64')
 url="https://github.com/cri-o/cri-o"
 license=('Apache')
-depends=('glibc')
+depends=('cni-plugins' 'conmon' 'conntrack-tools' 'glibc' 'runc')
 makedepends=('gpgme' 'go' 'go-md2man' 'libseccomp' 'ostree')
-optdepends=('cni-plugins: for CNI networking'
-            'conmon: for per-container monitoring')
+provides=('container-runtime')
 backup=('etc/crio/crio.conf')
 # configuration override and hook directories should exist
 options=('emptydirs')
@@ -24,9 +23,18 @@ b2sums=('8288985392a08fb7fdc58f509d34f8814bf9670386b7aae42be349765cb1f3bd3f4b770
 
 prepare() {
   cd "${pkgname}-${pkgver}"
+  # make sure that /run instead of /var/run is used
+  sed -e 's|/var/run|/run|g' \
+      -i crictl.yaml pkg/config/config{,_unix}.go \
+      docs/*.md crio-umount.conf \
+      vendor/github.com/containers/conmon/runner/config/config_unix.go \
+      vendor/github.com/containers/storage/{storage.conf,store.go}
   # make sure that /usr/bin is used in systemd units
   sed -e 's|/usr/local|/usr|g' \
       -i contrib/systemd/*.service
+  # set the correct default PATH for cni-plugins
+  sed -e 's|/opt/cni/bin/|/usr/lib/cni/|g' \
+      -i pkg/config/config_unix.go
   # do not statically link pinns and enable PIE
   patch -Np1 -i "../${pkgname}-1.19.0-pinns_pie.patch"
 }
