@@ -1,6 +1,6 @@
 pkgbase = picopt
 	pkgdesc = A multi format lossless image optimizer that uses external tools
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/ajslater/picopt
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = picopt
 	optdepends = advpng
 	optdepends = pngout
 	optdepends = optipng
-	source = https://files.pythonhosted.org/packages/source/p/picopt/picopt-2.2.0.tar.gz
-	sha256sums = 7d6d3cadbe141527f720841bb898f08c8bf15bef05317e82d4c16cc71692b169
+	source = https://files.pythonhosted.org/packages/source/p/picopt/picopt-2.2.1.tar.gz
+	sha256sums = 35a246798af996466d2dad4df24b2e4461f01a9983c6a684c25542dbd26ece48
 
 pkgname = picopt
 	depends = python
