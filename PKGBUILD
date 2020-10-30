@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: Donald Carr <sirspudd at gmail dot com>
 # Contributor: Arthur Borsboom <arthurborsboom@gmail.com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
@@ -132,7 +132,7 @@ build() {
   #sed -i 's|libsystemd-daemon|libsystemd|g' configure
   mkdir build && cd build
    
-  meson --prefix=/usr --libexec=/usr/lib/$_pkgname --sysconfdir=/etc 
+  meson --prefix=/usr --libexec=/usr/lib/$_pkgname --sysconfdir=/etc --sbindir=/usr/bin
   ninja
 }
 
