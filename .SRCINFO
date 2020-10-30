@@ -1,6 +1,6 @@
 pkgbase = nextinspace
 	pkgdesc = Print upcoming space-related events to your terminal
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/The-Kid-Gid/nextinspace
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = nextinspace
 	depends = python-colorama
 	depends = python-requests
 	depends = python-tzlocal
-	source = https://files.pythonhosted.org/packages/source/n/nextinspace/nextinspace-1.0.4.tar.gz
-	sha256sums = 60f9ac837b8131ff3b996ea4eb5f4eff42c61c4810238c318cb030b430924daf
+	source = https://files.pythonhosted.org/packages/source/n/nextinspace/nextinspace-1.0.5.tar.gz
+	sha256sums = f6ee814dbc9428bd9769343fa93f9608ef526d2157799cb92baf2ab8ef065956
 
 pkgname = nextinspace
 
