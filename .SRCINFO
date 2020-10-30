@@ -1,10 +1,11 @@
 pkgbase = sintl
 	pkgdesc = A tool for translating HTML5 web pages.
 	pkgver = 0.2.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kristaps.bsd.lv/sintl/
 	arch = any
 	license = custom
+	makedepends = bmake
 	depends = expat
 	source = https://kristaps.bsd.lv/sintl/snapshots/sintl.tar.gz
 	source = LICENSE

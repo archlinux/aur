@@ -2,12 +2,13 @@
 
 pkgname=sintl
 pkgver=0.2.11
-pkgrel=2
+pkgrel=3
 pkgdesc='A tool for translating HTML5 web pages.'
 arch=('any')
 url='https://kristaps.bsd.lv/sintl/'
 license=('custom')
 depends=('expat')
+makedepends=('bmake')
 source=('https://kristaps.bsd.lv/sintl/snapshots/sintl.tar.gz'
         'LICENSE')
 sha512sums=('5a22cd8266568798d6f045dcce47bd0e1c0949ab8515a1a08f616435eae0042dc941a2c995d3a90d43537dbfa50eaab6845ce4faa0d85f93b4dbfebe2bb547e9'
@@ -16,19 +17,20 @@ sha512sums=('5a22cd8266568798d6f045dcce47bd0e1c0949ab8515a1a08f616435eae0042dc94
 build()
 {
 	cd "$pkgname-$pkgver"
-	./configure PREFIX="$pkgdir/usr" MANDIR="$pkgdir/usr/share/man"
-	make
+	./configure PREFIX="/usr" MANDIR="/usr/share/man"
+	bmake
 }
 
 check()
 {
 	cd "$pkgname-$pkgver"
-	make regress
+	bmake regress
 }
 
 package()
 {
 	cd "$pkgname-$pkgver"
-	make install
+	pwd
+	bmake install DESTDIR="$pkgdir"
 	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
