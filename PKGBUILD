@@ -1,8 +1,11 @@
+# Maintainer: SanskritFritz (gmail)
+# Contributor: tsdgeos (AUR)
+
 pkgname=charmtimetracker
 pkgver=1.12.0
-pkgrel=2
+pkgrel=3
 arch=(any)
-pkgdesc=""
+pkgdesc="Keep track of time. It is built around two major ideas - tasks and events."
 license=("GPL")
 depends=('qt5-base' 'qt5-script' 'qtkeychain')
 makedepends=('cmake' 'make')
