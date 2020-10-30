@@ -1,4 +1,5 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
+# Contributor: spikecodes <19519553+spikecodes@users.noreply.github.com>
 # https://github.com/orhun/pkgbuilds
 
 pkgname=sic-git # TODO: rename it to sic-image-cli-git
