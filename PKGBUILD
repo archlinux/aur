@@ -2,16 +2,15 @@
 # Submitter: Chris Werner Rau <aur@cwrau.io>
 
 _pkgname=kyverno
-pkgname=kyverno-git
-pkgver=v1.1.4.rc1.r45.g2768574a
-pkgrel=3
+pkgname=$_pkgname-git
+pkgver=v1.2.1.r3.g7e9b08ba
+pkgrel=1
 pkgdesc="Kubernetes Native Policy Management - CLI"
 arch=('any')
-url="https://github.com/nirmata/kyverno"
-source=("git+https://github.com/nirmata/kyverno")
+url="https://github.com/nirmata/$_pkgname"
+source=("git+$url")
 md5sums=('SKIP')
 license=('Apache')
-depends=()
 makedepends=('make' 'go')
 
 pkgver() {
@@ -19,8 +18,12 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+  cd $srcdir/$_pkgname
+  make cli
+}
+
 package() {
-    cd $srcdir/$_pkgname
-    make cli
-    install -Dm755 "$srcdir/$_pkgname/cmd/cli/kubectl-kyverno/kyverno" "$pkgdir/usr/bin/$_pkgname"
+  cd $srcdir/$_pkgname
+  install -Dm755 "$srcdir/$_pkgname/cmd/cli/kubectl-kyverno/kyverno" "$pkgdir/usr/bin/$_pkgname"
 }
