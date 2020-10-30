@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=SummarizedExperiment
-_bcver=1.18.2
+_bcver=1.20.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -10,10 +10,10 @@ pkgdesc="SummarizedExperiment container"
 arch=(any)
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
 license=(Artistic-2.0)
-depends=('r>=3.2' 'r-genomicranges>=1.33.6' r-biobase 'r-delayedarray>=0.3.20' 'r-biocgenerics>=0.15.3' 'r-s4vectors>=0.25.14' 'r-iranges>=2.21.6' 'r-genomeinfodb>=1.13.1')
-optdepends=(r-annotate r-annotationdbi r-hgu95av2.db r-genomicfeatures r-txdb.hsapiens.ucsc.hg19.knowngene r-biocstyle r-knitr r-rmarkdown r-digest r-jsonlite r-rhdf5 r-hdf5array r-airway r-runit r-testthat)
+depends=('r>=3.2' 'r-matrixgenerics>=1.1.3' 'r-genomicranges>=1.41.5' r-biobase 'r-biocgenerics>=0.15.3' 'r-s4vectors>=0.27.12' 'r-iranges>=2.23.9' 'r-genomeinfodb>=1.13.1' 'r-delayedarray>=0.15.10')
+optdepends=(r-hdf5array r-annotate r-annotationdbi r-hgu95av2.db r-genomicfeatures r-txdb.hsapiens.ucsc.hg19.knowngene r-jsonlite r-rhdf5 r-airway r-biocstyle r-knitr r-rmarkdown r-runit r-testthat r-digest)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-md5sums=('aa68ba5e3ef706d9d3d42627c25a313a')
+sha256sums=('fa864028b2231d7aa1027be71407981f69373613d3b83ae9337f5bcd2a69a613')
 
 build() {
   cd "${srcdir}"
