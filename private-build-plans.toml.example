@@ -1,6 +1,6 @@
 # docs:
-# https://github.com/be5invis/Iosevka
 # https://github.com/be5invis/Iosevka/blob/master/private-build-plans.sample.toml
+# https://github.com/be5invis/Iosevka
 # https://github.com/be5invis/Iosevka#build-your-own-style
 
 # ss## stylistic sets:
@@ -19,7 +19,7 @@ design = [                         # Common styles
   "cv05",                          # hooky i
   "cv23",                          # lower ¶
   "cv24",                          # open double story g
-  "cv26",                          # short leg m
+  "cv26",                          # short legged m
   "cv27",                          # tailed l
   "cv33",                          # short @
   "cv46",                          # flat top 3
@@ -52,6 +52,9 @@ design = [                         # Common styles
   "VXBY",                          # hatless J
   "VXCA",                          # crossing Q
   "VXCT",                          # cornered tailed q
+  "VXDH",                          # comma-like '
+  "VXDP",                          # cornered tailed n
+  "VXDS",                          # cornered r
 
 ]
 
@@ -68,7 +71,7 @@ design = [                         # Common styles
   "cv05",                          # hooky i
   "cv23",                          # lower ¶
   "cv24",                          # open double story g
-  "cv26",                          # short leg m
+  "cv26",                          # short legged m
   "cv27",                          # tailed l
   "cv33",                          # short @
   "cv46",                          # flat top 3
@@ -101,6 +104,9 @@ design = [                         # Common styles
   "VXBY",                          # hatless J
   "VXCA",                          # crossing Q
   "VXCT",                          # cornered tailed q
+  "VXDH",                          # comma-like '
+  "VXDP",                          # cornered tailed n
+  "VXDS",                          # cornered r
 
 ]
 # upright = []                     # Upright-only styles
@@ -116,7 +122,7 @@ design = [                         # Common styles
   "cv05",                          # hooky i
   "cv23",                          # lower ¶
   "cv24",                          # open double story g
-  "cv26",                          # short leg m
+  "cv26",                          # short legged m
   "cv27",                          # tailed l
   "cv33",                          # short @
   "cv46",                          # flat top 3
@@ -149,6 +155,9 @@ design = [                         # Common styles
   "VXBY",                          # hatless J
   "VXCA",                          # crossing Q
   "VXCT",                          # cornered tailed q
+  "VXDH",                          # comma-like '
+  "VXDP",                          # cornered tailed n
+  "VXDS",                          # cornered r
 
 ]
 # upright = []                     # Upright-only styles
