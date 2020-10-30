@@ -4,12 +4,13 @@ pkgname=python-pytorch-thop-git
 _reponame="pytorch-OpCounter"
 _modulename="thop"
 pkgver=r112.d1920d3
-pkgrel=1
+pkgrel=2
 pkgdesc="PyTorch MACs counter"
 url="https://github.com/Lyken17/${_reponame}"
 license=('MIT')
 arch=('any')
 depends=('python-pytorch')
+makedepends=('python-setuptools')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -28,6 +29,7 @@ build() {
 
 package() {
   cd ${srcdir}/${_reponame}
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 

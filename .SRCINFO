@@ -1,10 +1,11 @@
 pkgbase = python-pytorch-thop-git
 	pkgdesc = PyTorch MACs counter
 	pkgver = r112.d1920d3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lyken17/pytorch-OpCounter
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python-pytorch
 	source = git+https://github.com/Lyken17/pytorch-OpCounter.git
 	sha256sums = SKIP
