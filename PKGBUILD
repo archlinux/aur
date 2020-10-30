@@ -3,13 +3,13 @@
 pkgname=adguardhome
 _pkgname=AdGuardHome
 pkgver=0.104.0
-_pkgver=${pkgver/.b/-b}
 pkgrel=1
+epoch=1
 pkgdesc="Network-wide ads and trackers blocking DNS server"
 arch=('x86_64')
 url="https://github.com/AdguardTeam/AdGuardHome"
 license=('GPL')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/AdguardTeam/AdGuardHome/archive/v$_pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/AdguardTeam/AdGuardHome/archive/v$pkgver.tar.gz"
   "$_pkgname.service" sysusers.conf tmpfiles.conf
 )
 makedepends=(go npm git)
@@ -20,12 +20,12 @@ b2sums=('9a1ab1da8f1c9f50b7cd309c2f28de6347bb988d0e8ee08c3479effdd4f8438a20ce2af
         '430f32020a6077951fc98f8375fffed3b304645f398de4f5ce38ef2233439e23a1e3919fa9e7c93472eb2da75629c7d7ccaae9fe2c48dfe42315020c524a4053')
 
 build(){
-  cd "$_pkgname-$_pkgver"
+  cd "$_pkgname-$pkgver"
   make
 }
 
 package() {
-  install -Dm755 "$_pkgname-$_pkgver/$_pkgname" "$pkgdir/var/lib/adguardhome/$_pkgname"
+  install -Dm755 "$_pkgname-$pkgver/$_pkgname" "$pkgdir/var/lib/adguardhome/$_pkgname"
   install -Dm644 "$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
   install -Dm644 "$srcdir"/sysusers.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   install -Dm644 "$srcdir"/tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
