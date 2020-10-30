@@ -7,6 +7,7 @@ arch=("any")
 url="https://github.com/Col-E/Recaf"
 license=("MIT")
 depends=("java-runtime" "java-openjfx")
+makedepends=("jdk-openjdk")
 noextract=("$pkgname-$pkgver.jar")
 source=("https://github.com/Col-E/Recaf/releases/download/$pkgver/$pkgname-$pkgver-J8-jar-with-dependencies.jar")
 sha256sums=('SKIP')
