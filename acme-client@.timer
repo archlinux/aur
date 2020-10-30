@@ -3,7 +3,7 @@ Description=Check and renew ACME TLS certificates
 
 [Timer]
 OnCalendar=daily
-RandomizedDelaySec=1h
+RandomizedDelaySec=2h
 
 [Install]
 WantedBy=timers.target
