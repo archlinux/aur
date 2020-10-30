@@ -9,7 +9,7 @@ pkgdesc="Accessible image processing and conversion from the terminal"
 arch=('x86_64')
 url="https://github.com/foresterre/sic"
 license=('MIT')
-conflicts=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}" "${_pkgname}-git") # TODO: conflict with sic-image-cli-git
 provides=("${pkgname%-bin}")
 source_x86_64=("${pkgname%-bin}-$pkgver::$url/releases/download/v$pkgver/$_pkgname-$pkgver+features.imageproc-ops-x86_64-unknown-linux-gnu.tar.xz"
                "${pkgname%-bin}-$pkgver-LICENSE-MIT::$url/raw/v$pkgver/LICENSE-MIT"
