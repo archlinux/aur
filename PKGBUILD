@@ -1,35 +1,34 @@
-# Maintainer: spikecodes <19519553+spikecodes@users.noreply.github.com>
-pkgname=sic-git
-_pkgname=${pkgname%-git}
-pkgver=r914.c56e230
+# Maintainer: orhun <orhunparmaksiz@gmail.com>
+# https://github.com/orhun/pkgbuilds
+
+pkgname=sic-git # TODO: rename it to sic-image-cli-git
+_newname=sic-image-cli-git
+_pkgname=sic
+pkgver=0.14.0.r0.g9c0e31f
 pkgrel=1
-pkgdesc="Accessible image processing and conversion from the terminal."
+pkgdesc="Accessible image processing and conversion from the terminal (git)"
 arch=('x86_64')
 url="https://github.com/foresterre/sic"
-license=("Apache")
-makedepends=("git" "cargo")
-provides=(${_pkgname})
-conflicts=(${_pkgname})
-source=("${_pkgname}::git+${url}")
-sha256sums=("SKIP")
+license=('MIT')
+makedepends=('cargo' 'git')
+conflicts=("${_newname%-git}" "${_newname%-git}-bin")
+provides=("${_newname%-git}")
+source=("git+${url}")
+sha512sums=('SKIP')
 
 pkgver() {
-    cd "${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgname"
+  git describe --long --tags $(git rev-list --tags --max-count=1) | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-# pkgver() {
-# 	cd "${_pkgname}"
-# 	printf "$(git describe --tags | awk -F- '{print $1}' | cut -c2-)"
-# }
-
 build() {
-	cd "${_pkgname}"
-	cargo build --release --locked --all-features --target-dir=target
+  cd "$_pkgname"
+  cargo build --release --locked --all-features
 }
 
 package() {
-	cd "${_pkgname}"
-	install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE-APACHE"
-	install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  cd "$_pkgname"
+  install -Dm 755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+  install -Dm 644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
