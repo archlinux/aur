@@ -1,0 +1,22 @@
+--- a/src/host/recovery.c
++++ b/src/host/recovery.c
+@@ -42,7 +42,7 @@
+ } recovery_entry_t;
+ 
+ /* list of recovery tokens */
+-TAILQ_HEAD(recovery_queue_s, recovery_entry_s)  t_recovery_queue;
++static TAILQ_HEAD(recovery_queue_s, recovery_entry_s)  t_recovery_queue;
+ static platform_mutex_t recovery_lock;
+ 
+ 
+--- a/src/host/usb-linux.c
++++ b/src/host/usb-linux.c
+@@ -79,7 +79,7 @@
+ static platform_thread_t findandattach_thread;
+ volatile int novacom_shutdown = 0;
+ 		/* list of recovery tokens */
+-TAILQ_HEAD(recovery_queue_s, recovery_entry_s)  t_recovery_queue;
++static TAILQ_HEAD(recovery_queue_s, recovery_entry_s)  t_recovery_queue;
+ static platform_mutex_t recovery_lock;
+ 
+ 

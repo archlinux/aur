@@ -2,7 +2,7 @@
 # Contributor: Carl George <cwgtex gmail.com>
 
 pkgname=palm-novacom-git
-pkgver=20130426
+pkgver=20201030
 pkgrel=1
 pkgdesc="WebOS <-> PC connection, open source version"
 arch=('x86_64' 'i686')
@@ -18,7 +18,8 @@ source=(
         'novacomd.service'
         '0001-Use-usb_bulk_-read-write-instead-of-homemade-handler.patch'
         '0002-Fix-makefile-so-it-respects-environmental-CFLAGS.patch'
-        '0003-Remove-unused-err-variable.patch')
+        '0003-Remove-unused-err-variable.patch'
+        '0004-avoid-duplicate-symbols.patch')
 
 build() {
   cd "$srcdir"
@@ -40,6 +41,7 @@ build() {
   patch -Np1 -i  "${srcdir}/0001-Use-usb_bulk_-read-write-instead-of-homemade-handler.patch"
 #  patch -Np1 -i "${srcdir}/0002-Fix-makefile-so-it-respects-environmental-CFLAGS.patch"
 #  patch -Np1 -i "${srcdir}/0003-Remove-unused-err-variable.patch"
+  patch -Np1 -i  "${srcdir}/0004-avoid-duplicate-symbols.patch"
 
   cd "$srcdir"
   rm -rf server-build
@@ -70,4 +72,5 @@ sha256sums=('SKIP'
             '9d4ed1bc1f0a8d091394e0273353384962b8276c0f72f7341138daa87bc6d6e5'
             '971f634077384bb53dcd679f59a76a5d98a9f3cc6ef2efd167c65a58003d3890'
             'cc7eff6b70b7b953b39f4f918718836bdf543e64b77137fadeee3d875434ef21'
-            '065d8b2976700d2ed6861d8fd9c6cf8b621be13ba16e9dd8c01c0e250b0d4415')
+            '065d8b2976700d2ed6861d8fd9c6cf8b621be13ba16e9dd8c01c0e250b0d4415'
+            'a86ef9a1c08f4b23b93b0052770be3f8a4023ca020c52456953c021e7441e5a3')

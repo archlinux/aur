@@ -1,6 +1,6 @@
 pkgbase = palm-novacom-git
 	pkgdesc = WebOS <-> PC connection, open source version
-	pkgver = 20130426
+	pkgver = 20201030
 	pkgrel = 1
 	url = http://openwebosproject.org/
 	arch = x86_64
@@ -17,12 +17,14 @@ pkgbase = palm-novacom-git
 	source = 0001-Use-usb_bulk_-read-write-instead-of-homemade-handler.patch
 	source = 0002-Fix-makefile-so-it-respects-environmental-CFLAGS.patch
 	source = 0003-Remove-unused-err-variable.patch
+	source = 0004-avoid-duplicate-symbols.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 9d4ed1bc1f0a8d091394e0273353384962b8276c0f72f7341138daa87bc6d6e5
 	sha256sums = 971f634077384bb53dcd679f59a76a5d98a9f3cc6ef2efd167c65a58003d3890
 	sha256sums = cc7eff6b70b7b953b39f4f918718836bdf543e64b77137fadeee3d875434ef21
 	sha256sums = 065d8b2976700d2ed6861d8fd9c6cf8b621be13ba16e9dd8c01c0e250b0d4415
+	sha256sums = a86ef9a1c08f4b23b93b0052770be3f8a4023ca020c52456953c021e7441e5a3
 
 pkgname = palm-novacom-git
 
