@@ -1,0 +1,14 @@
+pkgbase = ghidra-xtensa-bin
+	pkgdesc = Tensilica Xtensa processor module for Ghidra
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/yath/ghidra-xtensa
+	arch = any
+	license = MIT
+	makedepends = unzip
+	depends = ghidra
+	source = https://github.com/yath/ghidra-xtensa/releases/download/v0.3/ghidra-xtensa-v0.3.zip
+	md5sums = 4b1cd8fec2834a2651ef577ac0cf8f03
+
+pkgname = ghidra-xtensa-bin
+
