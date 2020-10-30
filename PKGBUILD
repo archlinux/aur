@@ -10,10 +10,13 @@ arch=('x86_64' 'i686')
 url="https://github.com/sberk42/fritzbox_exporter"
 license=('Apache')
 makedepends=('go' 'git')
+backup=('etc/conf.d/prometheus-fritzbox-exporter')
 source=("git+https://github.com/sberk42/fritzbox_exporter.git"
-        "prometheus-fritzbox-exporter.service")
+        "prometheus-fritzbox-exporter.service"
+        "prometheus-fritzbox-exporter.conf")
 sha256sums=('SKIP'
-            '298c952ea69e5231a140a6b7776538a1b24231dcfaa880b51654541382c80f59')
+            '862d7a028de9a52ac11d1408d621cc727f59e1ccf85bca23e42032c945509411'
+            '1faaf054a2b84a88ca8f3766346bba0dc63456fa62258c8fb5d66048cf052225')
 
 pkgver() {
   cd "$_gitname"
@@ -32,9 +35,19 @@ build() {
 package() {
   cd "$srcdir"
 
-  install -Dm644 "$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
-  install -Dm755 "bin/$_gitname" "$pkgdir/usr/bin/prometheus-fritzbox-exporter"
-  install -Dm644 "$_gitname/metrics.json" "$pkgdir/opt/fritzbox_exporter/metrics.json"
-  install -Dm644 "$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm644 "$_pkgname.service" \
+        "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+
+  install -Dm644 "$_pkgname.conf" \
+        "${pkgdir}/etc/conf.d/$_pkgname"
+
+  install -Dm755 "bin/$_gitname" \
+        "$pkgdir/usr/bin/$_pkgname"
+
+  install -Dm644 "$_gitname/metrics.json" \
+        "$pkgdir/opt/$_gitname/metrics.json"
+
+  install -Dm644 "$_gitname/LICENSE" \
+        "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
 

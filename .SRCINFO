@@ -8,10 +8,13 @@ pkgbase = prometheus-fritzbox-exporter-sberk42-git
 	license = Apache
 	makedepends = go
 	makedepends = git
+	backup = etc/conf.d/prometheus-fritzbox-exporter
 	source = git+https://github.com/sberk42/fritzbox_exporter.git
 	source = prometheus-fritzbox-exporter.service
+	source = prometheus-fritzbox-exporter.conf
 	sha256sums = SKIP
 	sha256sums = 298c952ea69e5231a140a6b7776538a1b24231dcfaa880b51654541382c80f59
+	sha256sums = 1faaf054a2b84a88ca8f3766346bba0dc63456fa62258c8fb5d66048cf052225
 
 pkgname = prometheus-fritzbox-exporter-sberk42-git
 

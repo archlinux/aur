@@ -1,10 +1,13 @@
 [Unit]
 Description=Prometheus UPnP exporter for Fritz!Box routers
+After=network.target
 
 [Service]
-ExecStart=/usr/bin/prometheus-fritzbox-exporter -gateway-url http://fritz.box:49000 -metrics-file /opt/fritzbox_exporter/metrics.json -listen-address 127.0.0.1:9101
-DynamicUser=true
+EnvironmentFile=-/etc/conf.d/prometheus-fritzbox-exporter
+ExecStart=/usr/bin/prometheus-fritzbox-exporter $FRITZBOX_EXPORTER_ARGS
+Restart=on-failure
 
+DynamicUser=true
 NoNewPrivileges=true
 ProtectSystem=full
 ProtectKernelModules=true
