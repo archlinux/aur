@@ -2,7 +2,7 @@
 
 pkgname=v2raya-bin
 _pkgname=v2raya
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports V2Ray, SS, SSR, Trojan and Pingtunnel protocols"
@@ -16,29 +16,29 @@ conflicts=('v2raya')
 sha_service=0249389e1b8e5a2b05f16dcde7fb57f7de37ca92
 sha_png=5c51b3e670733d6d1cf22e1cb5fe45305f4b8014
 sha_desktop=f4abf270b2ce588a4e8ab4b5ccdc9168b96791fe
-sha_web=5c238e9ec7ebcef7051e1915a11a5bbd7cf3eb73
+sha_web=2b27b1a0a6e10cf74a83f2fd1a7c62527c9db7be
 
 source=(
     "v2raya.service"
     "v2raya.png"
     "v2raya.desktop"
-    "web_v${pkgver}.tar.gz::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/web_v${pkgver}.tar.gz"
+    "web_v${pkgver}.tar.gz::https://raw.fastgit.org/v2rayA/v2raya-apt/master/pool/main/v/v2raya/web_v${pkgver}.tar.gz"
 )
 
 source_i686=(
-    "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_386_v${pkgver}"
+    "v2raya_v${pkgver}::https://raw.fastgit.org/v2rayA/v2raya-apt/master/pool/main/v/v2raya/v2raya_linux_386_v${pkgver}"
 )
 source_x86_64=(
-    "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_amd64_v${pkgver}"
+    "v2raya_v${pkgver}::https://raw.fastgit.org/v2rayA/v2raya-apt/master/pool/main/v/v2raya/v2raya_linux_amd64_v${pkgver}"
 )
 source_aarch64=(
-    "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_arm64_v${pkgver}"
+    "v2raya_v${pkgver}::https://raw.fastgit.org/v2rayA/v2raya-apt/master/pool/main/v/v2raya/v2raya_linux_arm64_v${pkgver}"
 )
 source_armv6h=(
-    "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_arm_v${pkgver}"
+    "v2raya_v${pkgver}::https://raw.fastgit.org/v2rayA/v2raya-apt/master/pool/main/v/v2raya/v2raya_linux_arm_v${pkgver}"
 )
 source_armv7h=(
-    "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_arm_v${pkgver}"
+    "v2raya_v${pkgver}::https://raw.fastgit.org/v2rayA/v2raya-apt/master/pool/main/v/v2raya/v2raya_linux_arm_v${pkgver}"
 )
 
 sha1sums=(
@@ -49,19 +49,19 @@ sha1sums=(
 )
 
 sha1sums_i686=(
-    '0ac1e58c108fc383b6c3b28e335e39a719b04238'
+    '44e9d538b0fd2ca1061eee241a7b46134dc79e95'
 )
 sha1sums_x86_64=(
-    '37900d3f94649c492f0b7e71513b9d578acb876d'
+    '21a0b9e93428ee6e21cf45868e3f7ce67bc3c13b'
 )
 sha1sums_aarch64=(
-    '2e2dd3810894369e14dbfbe0fb07d679762d97c5'
+    'a3a588349212a193ca511fd4660b0ec2fe669c4e'
 )
 sha1sums_armv6h=(
-    '2a7b07adf4f627a914f4eb434be227d72d4073f0'
+    '21ee40bced7452f3a2e6b88ad6b10b719107011f'
 )
 sha1sums_armv7h=(
-    '2a7b07adf4f627a914f4eb434be227d72d4073f0'
+    '21ee40bced7452f3a2e6b88ad6b10b719107011f'
 )
 
 package() {
