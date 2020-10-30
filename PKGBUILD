@@ -1,10 +1,10 @@
 # Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: hexchain <i@hexchain.org>
-# Thanks Nicholas Guriev <guriev-ns@ya.ru> for the patches!
+# Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ _commit="tag=v$pkgver"
 # All the submodules "source" definitions are generated them via:
 # git submodule foreach --quiet 'echo \"${name##*/}::git+`git remote get-url origin`\"' | sort
 source=(
-    "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#$_commit"
+    "tdesktop::git+https://github.com/telegramdesktop/tdesktop#$_commit"
     "https://raw.githubusercontent.com/archlinux/svntogit-community/packages/telegram-desktop/trunk/Use-tg_owt-webrtc-fork.patch"
     "Update-webrtc-packaged-build-for-tg_owt.patch::https://github.com/desktop-app/cmake_helpers/commit/d955882cb4d4c94f61a9b1df62b7f93d3c5bff7d.patch"
     "Catch::git+https://github.com/philsquared/Catch"
@@ -43,7 +43,6 @@ source=(
     "libdbusmenu-qt::git+https://github.com/desktop-app/libdbusmenu-qt.git"
     "lib_lottie::git+https://github.com/desktop-app/lib_lottie.git"
     "lib_qr::git+https://github.com/desktop-app/lib_qr.git"
-    "libqtxdg::git+https://github.com/lxqt/libqtxdg.git"
     "lib_rlottie::git+https://github.com/desktop-app/lib_rlottie.git"
     "lib_rpl::git+https://github.com/desktop-app/lib_rpl.git"
     "lib_spellcheck::git+https://github.com/desktop-app/lib_spellcheck"
@@ -52,7 +51,6 @@ source=(
     "lib_tl::git+https://github.com/desktop-app/lib_tl.git"
     "lib_ui::git+https://github.com/desktop-app/lib_ui.git"
     "lib_webrtc::git+https://github.com/desktop-app/lib_webrtc.git"
-    "lxqt-qtplugin::git+https://github.com/lxqt/lxqt-qtplugin.git"
     "lz4::git+https://github.com/lz4/lz4.git"
     "materialdecoration::git+https://github.com/desktop-app/materialdecoration.git"
     "nimf::git+https://github.com/hamonikr/nimf.git"
@@ -66,8 +64,6 @@ source=(
 sha512sums=('SKIP'
             '071591c6bb71435f8186dcaf570703718051f00366dbbe3f13c4df3706d3de1f168bff4bfa707ad1d6f09f5505c925f0b01d76fd65efe904f3ba7db693d63f43'
             'b3c44e76a3907f7acc197746b471564577e912bf0561e9576dc8459211c88f400716437bcaa10967376461c69c8a98a56477d26d3feb9ca34747d9208bf5f6c6'
-            'SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -127,9 +123,7 @@ prepare() {
     git config submodule.Telegram/ThirdParty/hime.url "$srcdir/hime"
     git config submodule.Telegram/ThirdParty/hunspell.url "$srcdir/hunspell"
     git config submodule.Telegram/ThirdParty/libdbusmenu-qt.url "$srcdir/libdbusmenu-qt"
-    git config submodule.Telegram/ThirdParty/libqtxdg.url "$srcdir/libqtxdg"
     git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
-    git config submodule.Telegram/ThirdParty/lxqt-qtplugin.url "$srcdir/lxqt-qtplugin"
     git config submodule.Telegram/ThirdParty/lz4.url "$srcdir/lz4"
     git config submodule.Telegram/ThirdParty/materialdecoration.url "$srcdir/materialdecoration"
     git config submodule.Telegram/ThirdParty/nimf.url "$srcdir/nimf"
@@ -139,7 +133,6 @@ prepare() {
     git config submodule.Telegram/ThirdParty/rlottie.url "$srcdir/rlottie"
     git config submodule.Telegram/ThirdParty/tgcalls.url "$srcdir/tgcalls"
     git config submodule.Telegram/ThirdParty/xxHash.url "$srcdir/xxHash"
-
     # Magic is over!
     git submodule update
 
