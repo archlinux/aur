@@ -1,6 +1,6 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=amazon-corretto-11
-pkgver=11.0.8.10.1
+pkgver=11.0.9.11.1
 pkgrel=1
 pkgdesc='No-cost, multiplatform, production-ready distribution of OpenJDK'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('java-runtime-headless=11' 'java-runtime=11' 'java-environment=11')
 backup=()
 options=()
 # https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html
-source=("https://corretto.aws/downloads/resources/${pkgver}/amazon-corretto-${pkgver}-linux-x64.tar.gz"{,.sig})
+source=("https://corretto.aws/downloads/resources/${pkgver}-1/amazon-corretto-${pkgver}-linux-x64.tar.gz"{,.sig})
 validpgpkeys=('6DC3636DAE534049C8B94623A122542AB04F24E3') # Amazon Services LLC (Amazon Corretto release) <corretto-team@amazon.com>
 
 package() {
@@ -19,5 +19,5 @@ package() {
   cp -a "amazon-corretto-$pkgver-linux-x64" "$pkgdir/usr/lib/jvm/java-11-amazon-corretto"
 }
 
-md5sums=('58b8ae057e363594fb2efaf70cf13b4d'
+md5sums=('aecee89c6817a26c74587c69cc5c2967'
          'SKIP')
