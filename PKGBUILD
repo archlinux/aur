@@ -2,7 +2,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.6.9.r21.g5644232
+pkgver=3.7.r11.gcd31090
 pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -12,10 +12,8 @@ depends=("wlroots-git" "sdl2" "libxcomposite" "vulkan-icd-loader" "libxtst" "lib
 makedepends=("git" "meson" "ninja" "patch" "vulkan-headers" "glslang")
 provides=($_pkgname "steamcompmgr")
 conflicts=($_pkgname "steamcompmgr")
-source=("git+https://github.com/Plagman/gamescope.git"
-        "use-system-libs.patch")
-sha512sums=('SKIP'
-            'a36d6bef5ea19a0754ab82df5bc2c5f64c23321fde7be33073953dad76eb8c0af64ae1b5723f4e778a403c6bf75d4df27a524899de3b412d2bacd1cd4052e86a')
+source=("git+https://github.com/Plagman/gamescope.git")
+sha512sums=('SKIP')
 
 
 pkgver() {
@@ -25,14 +23,14 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/$_pkgname"
     
-    patch -p1 < "../use-system-libs.patch"
+    rm -rf "$srcdir/$_pkgname/subprojects/libliftoff"
+    rm -rf "$srcdir/$_pkgname/subprojects/wlroots"
 }
 
 build() {
 
-    meson --prefix /usr --buildtype=release "$srcdir/$_pkgname" build
+    meson setup --prefix /usr --buildtype=release --wrap-mode=nodownload "$srcdir/$_pkgname" build
     ninja -C build
 }
 
