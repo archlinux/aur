@@ -8,7 +8,6 @@ pkgdesc="Small command-line JSON log viewer"
 arch=('x86_64')
 url="https://github.com/brocode/fblog"
 license=('custom:WTFPL')
-depends=('fzf')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
 provides=("${pkgname%-bin}")
 source_x86_64=("${pkgname%-bin}-$pkgver::$url/releases/download/v$pkgver/${pkgname%-bin}"

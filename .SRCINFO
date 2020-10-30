@@ -5,7 +5,6 @@ pkgbase = fblog-bin
 	url = https://github.com/brocode/fblog
 	arch = x86_64
 	license = custom:WTFPL
-	depends = fzf
 	provides = fblog
 	conflicts = fblog
 	conflicts = fblog-git
