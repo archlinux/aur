@@ -19,7 +19,7 @@ makedepends=('python-setuptools')
 source=("$pkgname::git://github.com/Mte90/pugdebug.git"
 	setup.py 
 	PugDebug.desktop 
-	https://openclipart.org/image/256px/svg_to_png/204954/dog.png)
+	dog.png)
 
 md5sums=('SKIP'
          '7556a53bc966e1fd2a51ac8d7f61220f'
