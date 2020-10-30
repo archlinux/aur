@@ -22,7 +22,7 @@ pkgname=(
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
 pkgver=r56462.73548f97c0a
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -253,7 +253,7 @@ package_kodi-git() {
   done
 
   # remove x11 binaries
-  rm "$pkgdir/usr/lib/kodi/"{kodi-x11,kodi-xrandr}
+  rm "$pkgdir"/usr/lib/kodi/kodi.bin
 }
 
 # kodi-x11
@@ -271,7 +271,7 @@ package_kodi-git-x11() {
   )
 
   cd kodi-build-x11
-  install -Dm755 kodi-x11 "$pkgdir/usr/lib/kodi/kodi-x11"
+  install -Dm755 kodi.bin "$pkgdir/usr/lib/kodi/kodi.bin"
   install -Dm755 kodi-xrandr "$pkgdir/usr/lib/kodi/kodi-xrandr"
 }
 
