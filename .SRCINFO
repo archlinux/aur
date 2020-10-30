@@ -1,0 +1,18 @@
+pkgbase = goat-bin
+	pkgdesc = Better sleep
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/brocode/goat
+	arch = x86_64
+	license = custom:WTFPL
+	provides = goat
+	conflicts = goat
+	source_x86_64 = goat-0.10.0::https://github.com/brocode/goat/releases/download/v0.10.0/goat
+	source_x86_64 = goat-0.10.0-LICENSE::https://github.com/brocode/goat/raw/v0.10.0/LICENSE
+	source_x86_64 = goat-0.10.0-README.org::https://github.com/brocode/goat/raw/v0.10.0/README.org
+	sha512sums_x86_64 = aec038209b502dceb56ae249fe4c80d12e63b803c666c5806396285e62c3539fb7082a67170fb29df68d3b1964a817cfdfe7907a32a1261153d9aeaf95baca03
+	sha512sums_x86_64 = 1b4064171fa88f41d05e3d1d1c14ceb8a5cb4cca9e6f08f7e267d7740b7d65e4765cb56f0ccf3765ee9c85654559d2d7726d71516b890b0174b68e6cc62ef421
+	sha512sums_x86_64 = 4c12bb43e49c3e843cf76af3425dd3fa6cec11049c2b39fc14719bf6a06a1ac3bdeb4c9d15c4fe19376844affa70ecc24df55a98a7b8ce0367f01f56c8a5fafa
+
+pkgname = goat-bin
+
