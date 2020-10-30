@@ -1,6 +1,6 @@
 pkgbase = nxmc
 	pkgdesc = Graphical console for NetXMS NMS based on Eclipse.
-	pkgver = 3.3.314
+	pkgver = 3.5.90
 	pkgrel = 1
 	url = https://www.netxms.org/
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = nxmc
 	depends = gtk3
 	depends = python
 	depends = cairo
-	depends = jre8-openjdk
-	source = https://www.netxms.org/download/releases/3.3/nxmc-3.3.314-linux-gtk-x64.tar.gz
+	depends = jre-openjdk
+	source = https://netxms.org/download/releases/3.5/nxmc-3.5.90-linux-gtk-x64.tar.gz
 	source = nxmc.desktop
 	source = https://raw.githubusercontent.com/netxms/netxms/master/COPYING
-	sha256sums = b711001e1823a10f854aea1265702eef25cfbafa16dec51abd9277746e033120
+	sha256sums = bed2daaeffa4c4212313b53d40e2e969600d632af7ec0d0b322675a4e30266fb
 	sha256sums = a8fd91020c07d78163bcc4988ab94ca192240bb01566138cc6ed531e3d183e9c
 	sha256sums = 9ac6daa129fb98672b5bc6bd6d2283a7b419b1186d298c5aeb3156bf317228ab
 
