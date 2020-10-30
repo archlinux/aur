@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /usr/bin/radeon-profile-daemon 2>&1

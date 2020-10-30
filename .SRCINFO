@@ -1,0 +1,14 @@
+pkgbase = radeon-profile-daemon-runit
+	pkgdesc = runit service scripts for radeon-profile-daemon
+	pkgver = 20201030
+	pkgrel = 1
+	url = https://artixlinux.org
+	arch = any
+	license = BSD
+	depends = radeon-profile-daemon
+	conflicts = systemd-sysvcompat
+	source = radeon-profile-daemon.run
+	sha256sums = 1410698fde5f761bdbfa0c976ab1b424e692491c0c1d7d0ccf3f1bcda2af2502
+
+pkgname = radeon-profile-daemon-runit
+
