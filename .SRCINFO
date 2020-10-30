@@ -1,6 +1,6 @@
 pkgbase = lightcord-git
 	pkgdesc = A simple - customizable - Discord Client
-	pkgver = dev
+	pkgver = r375.d0ea1fd
 	pkgrel = 1
 	url = https://github.com/Lightcord/Lightcord
 	arch = x86_64
@@ -8,13 +8,14 @@ pkgbase = lightcord-git
 	makedepends = npm
 	makedepends = nodejs
 	makedepends = git
+	optdepends = picom: transparency support
 	conflicts = lightcord-bin
 	source = git://github.com/Lightcord/Lightcord.git
-	source = git://github.com/pryme-svg/lightcord-tools.git
+	source = Lightcord.desktop
 	source = https://raw.githubusercontent.com/Lightcord/LightcordLogos/master/lightcord/lightcord.png
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
+	md5sums = SKIP
+	md5sums = d60e05000301e23b5819bdfbe8d9f52b
+	md5sums = SKIP
 
 pkgname = lightcord-git
 
