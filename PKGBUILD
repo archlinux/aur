@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_fields_conv'
 pkgname="ocaml-$_projectname"
-pkgver='0.14.1'
-pkgrel='2'
+pkgver='0.14.2'
+pkgrel='1'
 epoch='1'
 pkgdesc='Generation of accessor and iteration functions for ocaml records'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.2' 'ocaml-base>=0.14.0' 'ocaml-fieldslib>=0.14.0' 'ocaml-ppxlib>=0.14.0')
+depends=('ocaml>=4.04.2' 'ocaml-base>=0.14.0' 'ocaml-fieldslib>=0.14.0' 'ocaml-ppxlib>=0.18.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a352f360dffa5ce9ea22ef70499175460eb6fd2f77d6707fe390a9a2c58f95e1')
+sha256sums=('37b6967a03c2855427b4ff97e93f08162de520acb06acc97513f64526428ed64')
 
 _sourcedirectory="$_projectname-$pkgver"
 
