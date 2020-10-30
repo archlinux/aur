@@ -5,12 +5,12 @@
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 pkgname=icaclient
 pkgver=20.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Citrix Workspace App for x86_64 (64bit) Linux (ICAClient, Citrix Receiver)"
 arch=('x86_64' 'i686' 'armv7h')
 url='https://www.citrix.com/downloads/workspace-app/linux/'
 license=('custom:Citrix')
-depends=('alsa-lib' 'libvorbis' 'curl' 'gtk2' 'libpng12' 'libxaw' 'libxp' 'speex' 'libjpeg6-turbo' 'libsoup' 'gst-plugins-base-libs' 'libidn11')
+depends=('alsa-lib' 'libvorbis' 'curl' 'gtk2' 'libpng12' 'libxaw' 'libxp' 'speex' 'libjpeg6-turbo' 'libsoup' 'gst-plugins-base-libs' 'libidn11' 'libc++')
 makedepends=('automake' 'autoconf' 'wget')
 optdepends=(
   'xerces-c: gtk2 configuration manager'
@@ -88,6 +88,8 @@ package() {
     # Install wrapper script
     install -m755 "${srcdir}/wfica.sh" "${pkgdir}$ICAROOT/wfica.sh"
 
+	ln -s gst_play1.0 "${pkgdir}/$ICAROOT/util/gst_play"
+	ln -s gst_read1.0 "${pkgdir}/$ICAROOT/util/gst_read"
     # Dirty Hack
     # wfica expects {module,wfclient,apssrv}.ini in $ICAROOT/config
     # sadly these configs differ slightly by locale
@@ -113,6 +115,10 @@ package() {
     install -Dm755 wfica.sh "${pkgdir}$ICAROOT"
     install -Dm755 wfica_assoc.sh "${pkgdir}$ICAROOT"
 	chmod +x "${pkgdir}$ICAROOT/util/HdxRtcEngine"
+	chmod +x "${pkgdir}$ICAROOT/util/ctx_app_bind"
+	chmod +x "${pkgdir}$ICAROOT/util/ctxlogd"
+	chmod +x "${pkgdir}$ICAROOT/util/icalicense.sh"
+	chmod +x "${pkgdir}$ICAROOT/util/setlog"
 
     # make certificates available
 	rm -r "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts"
