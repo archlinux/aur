@@ -1,7 +1,7 @@
 pkgbase = ftba
 	pkgdesc = Offers many different styles of Minecraft modpacks to the community.
 	pkgver = 202007161516_479dedc615_release
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = LGPL2
 	depends = java-runtime

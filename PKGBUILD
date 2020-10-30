@@ -2,7 +2,7 @@
 pkgname="ftba"
 pkgver="202007161516_479dedc615_release"
 _version="202007161516-479dedc615-release"
-pkgrel="1"
+pkgrel="2"
 arch=("any")
 pkgdesc="Offers many different styles of Minecraft modpacks to the community."
 source=("https://apps.modpacks.ch/FTBApp/release/$_version/FTBA_linux_$_version.deb" "run-ftb.sh" "ftbapp.desktop")

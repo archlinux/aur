@@ -3,5 +3,5 @@
 Type=Application
 Name=FTBApp
 Exec=/usr/bin/FTBApp
-Icon=/opt/FTBApp/.install4j/FTBApp.png
+Icon=/opt/FTBA/.install4j/FTBApp.png
 Categories=Game;
