@@ -1,0 +1,17 @@
+pkgbase = trunk-bin
+	pkgdesc = A WASM web application bundler for Rust.
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://github.com/thedodd/trunk
+	arch = x86_64
+	license = MIT/Apache-2.0
+	provides = trunk
+	source = trunk-0.7.4.tar.gz::https://github.com/thedodd/trunk/releases/download/v0.7.4/trunk-x86_64-unknown-linux-gnu.tar.gz
+	source = https://raw.githubusercontent.com/thedodd/trunk/v0.7.4/LICENSE-APACHE
+	source = https://raw.githubusercontent.com/thedodd/trunk/v0.7.4/LICENSE-MIT
+	sha256sums = a35dce760c84e5647854a9d0754b21d46bff40dfde917d5790cea12b68767cac
+	sha256sums = a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2
+	sha256sums = 23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3
+
+pkgname = trunk-bin
+
