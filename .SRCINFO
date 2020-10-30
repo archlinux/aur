@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-joy
 	pkgdesc = ROS - ROS driver for a generic Linux joystick.
-	pkgver = 1.13.0
-	pkgrel = 2
-	url = https://www.wiki.ros.org/joy
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = https://wiki.ros.org/joy
 	arch = i686
 	arch = x86_64
 	arch = aarch64
@@ -21,8 +21,8 @@ pkgbase = ros-noetic-joy
 	depends = ros-noetic-sensor-msgs
 	depends = linuxconsole
 	depends = python-empy
-	source = ros-noetic-joy-1.13.0.tar.gz::https://github.com/ros-drivers/joystick_drivers/archive/1.13.0.tar.gz
-	sha256sums = bfe0633623f4dc917524198aaea10b1c4603881e736dafb7b652f1af60922ad7
+	source = ros-noetic-joy-1.15.0.tar.gz::https://github.com/ros-drivers/joystick_drivers/archive/1.15.0.tar.gz
+	sha256sums = 37e82742674a5fd4cf9959051aeae3bb961da74f254f891909d10589266166ad
 
 pkgname = ros-noetic-joy
 
