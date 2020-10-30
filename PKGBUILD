@@ -21,7 +21,7 @@ pkgname=(
   "$pkgbase" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=r56286.588a38221d1
+pkgver=r56462.73548f97c0a
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -43,6 +43,11 @@ makedepends=(
 
 _codename=Leia
 _gitname='xbmc'
+_sse_workaround=1
+_build_x11=1
+_build_wayland=1
+_build_gbm=1
+
 # Found on their respective github release pages. One can check them against
 # what is pulled down when not specifying them in the cmake step.
 # $CHROOT/build/kodi-git/src/kodi-build/build/download
@@ -114,8 +119,7 @@ prepare() {
   mkdir kodi-build-gbm
 
   cd "$_gitname"
-
-  patch -p1 -i "$srcdir/cheat-sse-build.patch"
+  [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
 }
 
 build() {
@@ -125,84 +129,89 @@ build() {
   # export CFLAGS+=" -march=native"
   # export CXXFLAGS="${CFLAGS}"
 
-  echo "building kodi-x11"
-  cd "$srcdir/kodi-build-x11"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-    -DENABLE_EVENTCLIENTS=ON \
-    -DENABLE_INTERNAL_FFMPEG=ON \
-    -DENABLE_INTERNAL_FMT=ON \
-    -DENABLE_INTERNAL_CROSSGUID=ON \
-    -DENABLE_INTERNAL_FSTRCMP=ON \
-    -DENABLE_INTERNAL_FLATBUFFERS=ON \
-    -DENABLE_INTERNAL_SPDLOG=ON \
-    -DENABLE_MYSQLCLIENT=ON \
-    -DX11_RENDER_SYSTEM=gl \
-    -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
-    -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
-    -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
-    -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.gz" \
-    -DFMT_URL="$srcdir/fmt-$_fmt_version.tar.gz" \
-    -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz" \
-    -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz" \
-    -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz" \
-    -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz" \
-    -DX11_RENDER_SYSTEM=gl \
-    ../xbmc
-  make
-  make preinstall
+  if [[ "$_build_x11" -eq 1 ]]; then
+    echo "building kodi-x11"
+    cd "$srcdir/kodi-build-x11"
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+      -DENABLE_EVENTCLIENTS=ON \
+      -DENABLE_INTERNAL_FFMPEG=ON \
+      -DENABLE_INTERNAL_FMT=ON \
+      -DENABLE_INTERNAL_CROSSGUID=ON \
+      -DENABLE_INTERNAL_FSTRCMP=ON \
+      -DENABLE_INTERNAL_FLATBUFFERS=ON \
+      -DENABLE_INTERNAL_SPDLOG=ON \
+      -DENABLE_MYSQLCLIENT=ON \
+      -DAPP_RENDER_SYSTEM=gl \
+      -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
+      -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
+      -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
+      -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.gz" \
+      -DFMT_URL="$srcdir/fmt-$_fmt_version.tar.gz" \
+      -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz" \
+      -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz" \
+      -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz" \
+      -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz" \
+      ../xbmc
+    make
+    make preinstall
+  fi
 
-  echo "building kodi-wayland"
-  cd "$srcdir/kodi-build-wayland"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-    -DENABLE_EVENTCLIENTS=ON \
-    -DENABLE_INTERNAL_FFMPEG=ON \
-    -DENABLE_INTERNAL_FMT=ON \
-    -DENABLE_INTERNAL_CROSSGUID=ON \
-    -DENABLE_INTERNAL_FSTRCMP=ON \
-    -DENABLE_INTERNAL_FLATBUFFERS=ON \
-    -DENABLE_INTERNAL_SPDLOG=ON \
-    -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
-    -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
-    -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
-    -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.gz" \
-    -DFMT_URL="$srcdir/fmt-$_fmt_version.tar.gz" \
-    -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz" \
-    -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz" \
-    -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz" \
-    -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz" \
-    -DCORE_PLATFORM_NAME=wayland \
-    -DWAYLAND_RENDER_SYSTEM=gl \
-    ../xbmc
-  make
-  make preinstall
+  if [[ "$_build_wayland" -eq 1 ]]; then
+    echo "building kodi-wayland"
+    cd "$srcdir/kodi-build-wayland"
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+      -DENABLE_EVENTCLIENTS=ON \
+      -DENABLE_INTERNAL_FFMPEG=ON \
+      -DENABLE_INTERNAL_FMT=ON \
+      -DENABLE_INTERNAL_CROSSGUID=ON \
+      -DENABLE_INTERNAL_FSTRCMP=ON \
+      -DENABLE_INTERNAL_FLATBUFFERS=ON \
+      -DENABLE_INTERNAL_SPDLOG=ON \
+      -DCORE_PLATFORM_NAME=wayland \
+      -DAPP_RENDER_SYSTEM=gl \
+      -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
+      -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
+      -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
+      -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.gz" \
+      -DFMT_URL="$srcdir/fmt-$_fmt_version.tar.gz" \
+      -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz" \
+      -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz" \
+      -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz" \
+      -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz" \
+      ../xbmc
+    make
+    make preinstall
+  fi
 
-  echo "building kodi-gbm"
-  cd "$srcdir/kodi-build-gbm"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-    -DENABLE_EVENTCLIENTS=ON \
-    -DENABLE_INTERNAL_FFMPEG=ON \
-    -DENABLE_INTERNAL_FMT=ON \
-    -DENABLE_INTERNAL_CROSSGUID=ON \
-    -DENABLE_INTERNAL_FSTRCMP=ON \
-    -DENABLE_INTERNAL_FLATBUFFERS=ON \
-    -DENABLE_INTERNAL_SPDLOG=ON \
-    -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
-    -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
-    -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
-    -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.gz" \
-    -DFMT_URL="$srcdir/fmt-$_fmt_version.tar.gz" \
-    -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz" \
-    -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz" \
-    -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz" \
-    -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz" \
-    -DCORE_PLATFORM_NAME=gbm \
-    -DGBM_RENDER_SYSTEM=gles \
-    ../xbmc
-  make
-  make preinstall
+  if [[ "$_build_gbm" -eq 1 ]]; then
+    echo "building kodi-gbm"
+    cd "$srcdir/kodi-build-gbm"
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+      -DENABLE_EVENTCLIENTS=ON \
+      -DENABLE_INTERNAL_FFMPEG=ON \
+      -DENABLE_INTERNAL_FMT=ON \
+      -DENABLE_INTERNAL_CROSSGUID=ON \
+      -DENABLE_INTERNAL_FSTRCMP=ON \
+      -DENABLE_INTERNAL_FLATBUFFERS=ON \
+      -DENABLE_INTERNAL_SPDLOG=ON \
+      -DCORE_PLATFORM_NAME=gbm \
+      -DAPP_RENDER_SYSTEM=gles \
+      -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
+      -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
+      -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
+      -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.gz" \
+      -DFMT_URL="$srcdir/fmt-$_fmt_version.tar.gz" \
+      -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz" \
+      -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz" \
+      -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz" \
+      -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz" \
+      ../xbmc
+    make
+    make preinstall
+  fi
 }
 
 # kodi
