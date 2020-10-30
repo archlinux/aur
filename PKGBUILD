@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=XVector
-_bcver=0.28.0
+_bcver=0.30.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -10,11 +10,10 @@ pkgdesc="Foundation of external vector representation and manipulation in Biocon
 arch=(i686 x86_64)
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
 license=(Artistic-2.0)
-depends=('r>=2.8.0' 'r-biocgenerics>=0.19.2' 'r-s4vectors>=0.25.14' 'r-iranges>=2.21.6' r-zlibbioc)
-makedepends=(gcc)
+depends=('r>=2.8.0' 'r-biocgenerics>=0.19.2' 'r-s4vectors>=0.27.12' 'r-iranges>=2.23.9' r-zlibbioc)
 optdepends=(r-biostrings r-drosophila2probe r-runit)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-md5sums=('7053fb56a45728eafe5126073ddcbfe1')
+sha256sums=('989aeac1929409ec78964f85efed086015fcf83fa394faf859d238f2669414df')
 
 build() {
   cd "${srcdir}"
