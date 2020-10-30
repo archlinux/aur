@@ -29,7 +29,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_gitname"
 
-  GOPATH="$srcdir" go get -fix -v -x github.com/sberk42/fritzbox_exporter
+  GOPATH="$srcdir" go get -v github.com/sberk42/fritzbox_exporter
 }
 
 package() {
