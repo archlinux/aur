@@ -1,6 +1,6 @@
 pkgname=mingw-w64-hdf5
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="General purpose library and file format for storing scientific data (mingw-w64)"
 url="http://www.hdfgroup.org/HDF5/"
@@ -25,6 +25,9 @@ prepare () {
   # fix cmake config location
   sed -i 's|_INSTALL_DATA_DIR "."|_INSTALL_DATA_DIR share|g' config/cmake_ext_mod/HDFMacros.cmake
   sed -i 's|_INSTALL_CMAKE_DIR cmake|_INSTALL_CMAKE_DIR share/cmake|g' config/cmake_ext_mod/HDFMacros.cmake
+
+  # avoid static-libstdc++
+  sed -i "s|if (MINGW)|if (0)|g" c++/src/CMakeLists.txt
 }
 
 build() {
