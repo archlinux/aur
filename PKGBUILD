@@ -1,7 +1,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=gog-stellaris-anniversary-portraits
-pkgver=2.7.2
+pkgver=2.8.0
 _pkgtag=$pkgver
 pkgrel=1
 pkgdesc="The free Anniversary Portraits DLC for the Stellaris game"
@@ -9,10 +9,12 @@ arch=('x86_64')
 url="https://www.gog.com/game/stellaris_anniversary_portraits"
 license=('custom')
 groups=('gog-stellaris-dlcs')
-depends=('gog-stellaris')
-makedepends=('unzip' 'findutils')
-source=("stellaris_anniversary_portraits_${pkgver//./_}_38578.sh::gogdownloader://1619776270/en3installer0")
-sha512sums=('a5fd89da943d3a81f06be1a0068fe4a9c1bd6523037b40e86676b78ab309a50f5016ec9c2fd3d50b6c4419ee5337d93d474f0792ed4795a37299f651369c145d')
+depends=("gog-stellaris=$pkgver")
+makedepends=('unzip' 'findutils' 'lgogdownloader')
+source=("stellaris_anniversary_portraits_${pkgver//./_}.sh::gogdownloader://1619776270/en3installer0")
+sha512sums=('e4d7bf6f618973edf5cd7e14fe6c64fd520d2d31396b1167c2a488058c96357badbe7275d2d05e72c925dd0ab93a64aa404d1ebe5ef10f21fd2cb58dc5e35067')
+
+DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 
 prepare()
 {
