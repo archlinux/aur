@@ -12,6 +12,8 @@ _swiftver=DEVELOPMENT-SNAPSHOT-2020-10-24-a
 pkgver=5.4
 pkgrel=1
 swiftargumentparserversion=0.3.1
+swiftformatversion=0.50300.0
+tensorflowswiftapisversion=0.2
 yamsver=3.0.1
 
 pkgdesc="The Swift programming language and debugger"
@@ -22,8 +24,11 @@ depends=('icu' 'libedit' 'libxml2' 'python' 'libbsd' 'ncurses' )
 makedepends=('clang' 'cmake' 'git' 'ninja' 'python-six' 'python2' 'rsync' 'swig')
 source=(
     "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
+    "indexstore-db-${_swiftver}.tar.gz::https://github.com/apple/indexstore-db/archive/swift-${_swiftver}.tar.gz"
+    "llvm-project-${_swiftver}.tar.gz::https://github.com/apple/llvm-project/archive/swift-${_swiftver}.tar.gz"
     "sourcekit-lsp-${_swiftver}.tar.gz::https://github.com/apple/sourcekit-lsp/archive/swift-${_swiftver}.tar.gz"
     "swift-argument-parser-${swiftargumentparserversion}.tar.gz::https://github.com/apple/swift-argument-parser/archive/${swiftargumentparserversion}.tar.gz"
+    "swift-format-${swiftformatversion}.tar.gz::https://github.com/apple/swift-format/archive/${swiftformatversion}.tar.gz"
     "swift-cmark-${_swiftver}.tar.gz::https://github.com/apple/swift-cmark/archive/swift-${_swiftver}.tar.gz"
     "swift-driver-${_swiftver}.tar.gz::https://github.com/apple/swift-driver/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
@@ -32,12 +37,17 @@ source=(
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "swift-llbuild-${_swiftver}.tar.gz::https://github.com/apple/swift-llbuild/archive/swift-${_swiftver}.tar.gz"
     "swift-package-manager-${_swiftver}.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-${_swiftver}.tar.gz"
-    "llvm-project-${_swiftver}.tar.gz::https://github.com/apple/llvm-project/archive/swift-${_swiftver}.tar.gz"
+    "swift-xcode-playground-support-${_swiftver}.tar.gz::https://github.com/apple/swift-xcode-playground-support/archive/swift-${_swiftver}.tar.gz"
     "swift-tools-support-core-${_swiftver}.tar.gz::https://github.com/apple/swift-tools-support-core/archive/swift-${_swiftver}.tar.gz"
     '0001-arch-aur-pachtes.patch'
+    "tensorflow-swift-apis-v${tensorflowswiftapisversion}.tar.gz::https://github.com/tensorflow/swift-apis/archive/v${tensorflowswiftapisversion}.tar.gz"
     "yams-${yamsver}.tar.gz::https://github.com/jpsim/Yams/archive/${yamsver}.tar.gz"
 )
 sha256sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -57,7 +67,7 @@ sha256sums=(
 
 prepare() {
     # Use directory names which build-script expects
-    for sdir in llvm-project sourcekit-lsp swift
+    for sdir in indexstore-db llvm-project sourcekit-lsp swift
     do
         rm -rf ${sdir}
         mv ${sdir}-swift-${_swiftver} ${sdir}
@@ -68,7 +78,7 @@ prepare() {
         mv swift-${sdir}-swift-${_swiftver} ${sdir}
     done
     for sdir in corelibs-xctest corelibs-foundation corelibs-libdispatch \
-                driver integration-tests tools-support-core
+                driver integration-tests xcode-playground-support tools-support-core
     do
         rm -rf swift-${sdir}
         mv swift-${sdir}-swift-${_swiftver} swift-${sdir}
@@ -76,6 +86,8 @@ prepare() {
 
     rm -rf swiftpm && mv swift-package-manager-swift-${_swiftver} swiftpm
     rm -rf swift-argument-parser && mv swift-argument-parser-${swiftargumentparserversion} swift-argument-parser
+    rm -rf swift-format && mv swift-format-${swiftformatversion} swift-format
+    rm -rf tensorflow-swift-apis && mv swift-apis-${tensorflowswiftapisversion} tensorflow-swift-apis
     rm -rf yams && mv Yams-${yamsver} yams
 
     ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-pachtes.patch" )
