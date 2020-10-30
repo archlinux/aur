@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="ayatana-indicator-bluetooth"
-pkgver="0.8.0"
+pkgver="0.8.1"
 pkgrel="1"
 pkgdesc="Ayatana system bluetooth indicator"
 arch=("i686" "x86_64" "pentium4")
@@ -10,7 +10,7 @@ license=("GPL3")
 makedepends=("cmake" "cmake-extras" "intltool" "glib2" "systemd" "vala")
 depends=("libayatana-indicator" "bluez" "blueman")
 source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("b4be62ae0d54c0c5d818e0ca2557dd80")
+md5sums=("a612acff445610f2ea123d09a14fec94")
 options=("!emptydirs")
 
 build()

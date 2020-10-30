@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-bluetooth
 	pkgdesc = Ayatana system bluetooth indicator
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = ayatana-indicator-bluetooth
 	depends = bluez
 	depends = blueman
 	options = !emptydirs
-	source = https://github.com/AyatanaIndicators/ayatana-indicator-bluetooth/archive/0.8.0.tar.gz
-	md5sums = b4be62ae0d54c0c5d818e0ca2557dd80
+	source = https://github.com/AyatanaIndicators/ayatana-indicator-bluetooth/archive/0.8.1.tar.gz
+	md5sums = a612acff445610f2ea123d09a14fec94
 
 pkgname = ayatana-indicator-bluetooth
 
