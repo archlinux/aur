@@ -2,7 +2,8 @@
 
 _pkgname=sxhkhm
 pkgname=${_pkgname}-git
-pkgver=r61.e03506e
+longpkgname=sxhkd-helper-menu
+pkgver=r78.afec96a
 pkgrel=1
 pkgdesc='Parse and fuzzy-find keybinds from sxhkd-configuration - built from latest sources at github'
 arch=('any')
@@ -13,21 +14,21 @@ install=${pkgname}.install
 makedepends=('git' 'python-setuptools')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+https://github.com/fiskhest/sxhkd-helper-menu.git")
+source=("git+https://github.com/fiskhest/${longpkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$longpkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$longpkgname"
     python setup.py build
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$longpkgname"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
     install -D -m 644 sxhkhm.ini "${pkgdir}/usr/share/doc/${_pkgname}/sxhkhm.ini"
     install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
