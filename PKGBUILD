@@ -10,12 +10,13 @@ makedepends=('git')
 groups=('neovim-plugins')
 
 #temp pkgver variables
-pkgver=0.10
+pkgver=0.11
 pkgrel=0
 _themes_pkgver=r1321.3bfe1d0
 source=("${pkgname[0]}::git://github.com/vim-airline/${pkgname[0]#neo}.git#tag=v$pkgver"
         "${pkgname[1]}::git://github.com/vim-airline/${pkgname[1]#neo}.git#commit=${_themes_pkgver#*.}")
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'SKIP')
 
 # Neovim install dir
 _installpath="usr/share/nvim/runtime"
