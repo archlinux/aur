@@ -9,7 +9,7 @@ url="https://github.com/deviceinsight/kafkactl"
 license=('Apache')
 makedepends=('go')
 depends=('glibc')
-source=("$url/archive/$pkgver.tar.gz")
+source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('eb89b65c9e3d62f70bcd6739cd539c1774271521d67117c58792a0d135b997b9')
 
 build() {
