@@ -27,7 +27,7 @@ case "$CARCH" in
 	'i686') V8_ARCH='ia32' ;;
 esac
 
-OUTDIR="out.gn/$V8_ARCH.release/"
+OUTDIR="out/$V8_ARCH.release/"
 
 # Add depot_tools and python2 to $PATH
 TEMPDIR=$(mktemp -d)
