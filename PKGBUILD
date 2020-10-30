@@ -4,7 +4,7 @@ pkgname=popura-git
 _pkgname="popura"
 pkgver=0.3.15+popura1
 _commit=42941caaf13472f1ecc0c675ae6059a857f3e60a
-pkgrel=7
+pkgrel=8
 pkgdesc="Popura ポプラ: alternative Yggdrasil network client"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/popura-network/Popura"
@@ -34,5 +34,4 @@ package() {
 	install -Dm644 -t "${pkgdir}/usr/lib/systemd/system" \
 		contrib/systemd/yggdrasil.service \
 		contrib/systemd/yggdrasil-default-config.service
-	install -Dm644 "contrib/apparmor/usr.bin.yggdrasil" "${pkgdir}/etc/apparmor.d/usr.bin.yggdrasil"
 }
