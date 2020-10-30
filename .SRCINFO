@@ -1,16 +1,16 @@
 pkgbase = ruby-kramdown-rfc2629
 	pkgdesc = An RFC2629 (XML2RFC) generating backend for Thomas Leitner's kramdown markdown parser
-	pkgver = 1.3.14
+	pkgver = 1.3.15
 	pkgrel = 1
 	url = http://github.com/cabo/kramdown-rfc2629
 	arch = any
 	license = MIT
 	depends = ruby-kramdown
 	depends = ruby-certified
-	noextract = kramdown-rfc2629-1.3.14.gem
+	noextract = kramdown-rfc2629-1.3.15.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/kramdown-rfc2629-1.3.14.gem
-	sha256sums = 3dff6204af79a0a00bb1f45209b333ccc189c165ce4120aea32ccc1720895c0b
+	source = https://rubygems.org/downloads/kramdown-rfc2629-1.3.15.gem
+	sha256sums = d784c1ebe41357f11e55ab2f54b0fa61333e4da45fb62ffa5adf1b78cecebe33
 
 pkgname = ruby-kramdown-rfc2629
 
