@@ -1,10 +1,10 @@
 pkgdesc="ROS - Library for visual odometry"
-url='https://wiki.ros.org/viso2'
+url='https://wiki.ros.org/libviso2'
 
 pkgname='ros-noetic-libviso2'
 pkgver='0.0.1'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('GPL')
 
 makedepends=(

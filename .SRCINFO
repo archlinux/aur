@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-libviso2
 	pkgdesc = ROS - Library for visual odometry
 	pkgver = 0.0.1
-	pkgrel = 2
-	url = https://wiki.ros.org/viso2
+	pkgrel = 3
+	url = https://wiki.ros.org/libviso2
 	arch = any
 	license = GPL
 	makedepends = cmake
