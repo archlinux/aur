@@ -1,0 +1,13 @@
+pkgbase = globe-cli
+	pkgdesc = ASCII globe generator
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/adamsky/globe
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	source = globe-cli-0.1.1.tar.gz::https://github.com/adamsky/globe/archive/v0.1.1.tar.gz
+	sha512sums = 361c68819be14314cb289bc7ca9ba18539660c8a51d8003017ece45f78a6b0a77fc396241dd45f7881bd423796f3ac5d0fd26bc54a5e4287dec6820277fd30b9
+
+pkgname = globe-cli
+
