@@ -1,12 +1,12 @@
 # Maintainer: Yarema aka Knedlyk <yupadmin (at) gmail (dot) com>
 
 pkgname=ddrescue-gui
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A simple GUI frontend to make ddrescue (a command-line data recovery tool) easier to use."
 arch=('any')
 url="https://launchpad.net/ddrescue-gui"
-depends=('python2' 'python2-requests' 'python2-getdevinfo' 'python-wxpython' 'wxpython' 'ddrescue' 'parted' 'lshw' 'python2-beautifulsoup4')
+depends=('python2' 'python2-getdevinfo' 'python2-wxpython4' 'ddrescue' 'parted' 'lshw' 'python2-requests' 'python2-beautifulsoup4')
 license=('GPL3')
 source=(https://launchpad.net/ddrescue-gui/2.x/${pkgver}/+download/ddrescue-gui_${pkgver}%7Eotherdistro-0ubuntu1%7Eppa1.tar.gz)
 provides=('ddrescue-gui')
@@ -35,4 +35,5 @@ package() {
     install -D -m644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/${pkgname}"
     install -D -m644 "${srcdir}/${pkgname}-${pkgver}/org.hamishmb.ddrescue-gui.policy" "${pkgdir}/usr/share/polkit-1/actions/"
 }
-md5sums=('eef4c468ef647594b23478d76442c883')
+
+md5sums=('e03c81f83b9ff11b88df02c63a803651')
