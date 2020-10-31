@@ -1,0 +1,14 @@
+pkgbase = neovim-dracula
+	pkgdesc = Dracula theme for neovim
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/dracula/vim
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	depends = neovim
+	source = neovim-dracula-2.0.0.tar.gz::https://github.com/dracula/vim/archive/v2.0.0.tar.gz
+	sha256sums = b783e2879c13dcdcd8a1a24b8ebe37a8b4482eb26e0b516e559d1d5f7182ed01
+
+pkgname = neovim-dracula
+
