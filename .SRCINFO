@@ -1,0 +1,17 @@
+pkgbase = python-auto-changelog
+	pkgdesc = Generates changelogs for git repositories using conventional style commit messages
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/Michael-F-Bryan/auto-changelog
+	arch = any
+	license = MIT
+	makedepends = python-dephell
+	depends = python-jinja
+	depends = python-gitpython
+	depends = python-docopt
+	depends = python-click
+	source = python-auto-changelog-0.5.1.tar.gz::https://github.com/Michael-F-Bryan/auto-changelog/archive/0.5.1.tar.gz
+	b2sums = ba8db56292d62cacc81e8559eb74900e0f3b3994a996c19517417a7f8cb477cb6510dc994d2ce24ea9de17fd1f3ab2221458ee14920ba42b313f96f8a0b549eb
+
+pkgname = python-auto-changelog
+
