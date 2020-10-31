@@ -1,0 +1,19 @@
+pkgbase = kde1-kteatime-git
+	pkgdesc = ssh://aur@aur.archlinux.org/kde1-ktip-git.git
+	pkgver = 1.r2.01826a4
+	pkgrel = 1
+	url = https://github.com/sandsmark/kde1-kteatime
+	arch = i686
+	arch = x86_64
+	groups = kde1
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = kde1-kdelibs
+	provides = kde1-kteatime
+	conflicts = kde1-kteatime
+	source = git+https://github.com/sandsmark/kde1-kteatime.git
+	md5sums = SKIP
+
+pkgname = kde1-kteatime-git
+
