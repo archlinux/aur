@@ -1,0 +1,24 @@
+pkgbase = mingw-w64-piglit-git
+	pkgdesc = OpenGL implementation testing suite. Provides a simple means to perform regression tests. (mingw-w64)
+	pkgver = r11172.59e695c16
+	pkgrel = 1
+	url = http://piglit.freedesktop.org/
+	arch = any
+	license = GPL2
+	license = GPL3
+	license = LGPL2.1
+	makedepends = git
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-freeglut
+	depends = python-mako
+	depends = python-numpy
+	provides = mingw-w64-piglit
+	conflicts = mingw-w64-piglit
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = git+https://gitlab.freedesktop.org/mesa/piglit.git
+	sha256sums = SKIP
+
+pkgname = mingw-w64-piglit-git
+
