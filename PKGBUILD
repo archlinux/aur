@@ -1,12 +1,13 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=5.13-GE-1
-_commit=ae15b580525714b76de074c2aee30f535e15a349
+_srctag=5.9-GE-8-ST
+_commit=2c4dc16f26b94e416c999299d076228d4f45c242
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.1.0
 pkgrel=1
+epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -106,6 +107,8 @@ source=(
     dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
     FAudio::git+https://github.com/FNA-XNA/FAudio.git
     protonfixes-gloriouseggroll::git+https://github.com/gloriouseggroll/protonfixes.git
+    lsteamclient-gloriouseggroll::git+https://github.com/gloriouseggroll/lsteamclient.git
+    vrclient_x64-gloriouseggroll::git+https://github.com/gloriouseggroll/vrclient_x64.git
     glib::git+https://gitlab.gnome.org/GNOME/glib.git
     gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
     gst-orc::git+https://gitlab.freedesktop.org/gstreamer/orc.git
@@ -146,8 +149,10 @@ sha256sums=(
     SKIP
     SKIP
     SKIP
+    SKIP
+    SKIP
     '7c69355566055121669f7e416e44185a5ccceb4312d0c19587d2303e63b6b63f'
-    '97f33530c996b7cc1968d167f2251dc95d79aac04e0337d8c44ee14878153203'
+    '53d588b811d992fc1caaa81fea9c563d536e48bf9186fa1c6ad19de3ed67ab3e'
     '9389a6bcd8e8d8f0349fa082644a5519026dbcdd91a3e978f39103a21a6298f1'
     '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
     'bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98'
@@ -191,11 +196,13 @@ prepare() {
     popd
     popd
 
-    git submodule init protonfixes
-    git config submodule.protonfixes.url "$srcdir"/protonfixes-gloriouseggroll
-    git submodule update protonfixes
+    for submodule in lsteamclient vrclient_x64 protonfixes; do
+        git submodule init "${submodule}"
+        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}-gloriouseggroll"
+        git submodule update "${submodule}"
+    done
 
-    ./patches/protonprep-nofshack.sh
+    ./patches/protonprep-nofshack-5.9.sh
 
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch

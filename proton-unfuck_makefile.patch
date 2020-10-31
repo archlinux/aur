@@ -1,5 +1,5 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index d9b6b80..cf09300 100644
+index d1af5be..fb439a0 100644
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -89,8 +89,8 @@ SELECT_DOCKER_IMAGE :=
@@ -22,24 +22,20 @@ index d9b6b80..cf09300 100644
  SANITY_FLAGS   := -fwrapv -fno-strict-aliasing
  COMMON_FLAGS   := $(OPTIMIZE_FLAGS) $(SANITY_FLAGS)
  
-@@ -227,6 +228,16 @@ GST_LIBAV_OBJ64 := ./obj-gst-libav64
+@@ -227,6 +228,12 @@ GST_LIBAV_OBJ64 := ./obj-gst-libav64
  FAUDIO := $(SRCDIR)/FAudio
  FAUDIO_OBJ32 := ./obj-faudio32
  FAUDIO_OBJ64 := ./obj-faudio64
-+FAUDIO_DEPS32 :=
-+FAUDIO_DEPS64 :=
++FAUDIO_DEPS32 := gst_base32
++FAUDIO_DEPS64 := gst_base64
 +ifneq ($(STEAMRT_PATH),) # Don't build cmake in native mode
 +	FAUDIO_DEPS32 += cmake32
 +	FAUDIO_DEPS64 += cmake64
 +endif # STEAMRT_PATH
-+ifeq ($(WITH_FFMPEG),1)
-+	FAUDIO_DEPS32 += ffmpeg32
-+	FAUDIO_DEPS64 += ffmpeg64
-+endif # WITH_FFMPEG
  
  LSTEAMCLIENT := $(SRCDIR)/lsteamclient
  LSTEAMCLIENT32 := ./syn-lsteamclient32/lsteamclient
-@@ -243,6 +254,16 @@ WINE_DST32 := ./dist-wine32
+@@ -243,6 +250,16 @@ WINE_DST32 := ./dist-wine32
  WINE_OBJ32 := ./obj-wine32
  WINE_OBJ64 := ./obj-wine64
  WINEMAKER := $(abspath $(WINE)/tools/winemaker/winemaker)
@@ -56,7 +52,7 @@ index d9b6b80..cf09300 100644
  
  # Wine outputs that need to exist for other steps (dist)
  WINE_OUT_BIN := $(DST_DIR)/bin/wine64
-@@ -250,9 +271,11 @@ WINE_OUT_SERVER := $(DST_DIR)/bin/wineserver
+@@ -250,9 +267,11 @@ WINE_OUT_SERVER := $(DST_DIR)/bin/wineserver
  WINE_OUT := $(WINE_OUT_BIN) $(WINE_OUT_SERVER)
  # Tool-only build outputs needed for other projects
  WINEGCC32 := $(TOOLS_DIR32)/bin/winegcc
@@ -68,7 +64,7 @@ index d9b6b80..cf09300 100644
  WINEBUILD64 := $(TOOLS_DIR64)/bin/winebuild
  WINE_BUILDTOOLS64 := $(WINEGCC64) $(WINEBUILD64)
  
-@@ -260,6 +283,12 @@ WINEWIDL_OBJ32 := ./obj-widl32
+@@ -260,6 +279,12 @@ WINEWIDL_OBJ32 := ./obj-widl32
  WINEWIDL_OBJ64 := ./obj-widl64
  WINEWIDL32 := $(WINEWIDL_OBJ32)/tools/widl/widl
  WINEWIDL64 := $(WINEWIDL_OBJ64)/tools/widl/widl
@@ -81,7 +77,7 @@ index d9b6b80..cf09300 100644
  
  VRCLIENT := $(SRCDIR)/vrclient_x64
  VRCLIENT32 := ./syn-vrclient32
-@@ -274,11 +303,15 @@ VKD3D := $(SRCDIR)/vkd3d-proton
+@@ -274,11 +299,15 @@ VKD3D := $(SRCDIR)/vkd3d-proton
  VKD3D_OBJ32 := ./obj-vkd3d32
  VKD3D_OBJ64 := ./obj-vkd3d64
  
@@ -99,7 +95,7 @@ index d9b6b80..cf09300 100644
  
  BISON_VER = 3.3.2
  BISON_TARBALL := bison-$(BISON_VER).tar.xz
-@@ -287,13 +320,10 @@ BISON_OBJ32 := ./obj-bison32
+@@ -287,13 +316,10 @@ BISON_OBJ32 := ./obj-bison32
  BISON_OBJ64 := ./obj-bison64
  BISON_BIN32 := $(BISON_OBJ32)/built/bin/bison
  BISON_BIN64 := $(BISON_OBJ64)/built/bin/bison
@@ -117,7 +113,7 @@ index d9b6b80..cf09300 100644
  
  
  FONTS := $(SRCDIR)/fonts
-@@ -303,7 +333,6 @@ FONTS_OBJ := ./obj-fonts
+@@ -303,7 +329,6 @@ FONTS_OBJ := ./obj-fonts
  OBJ_DIRS := $(TOOLS_DIR32)        $(TOOLS_DIR64)        \
              $(FFMPEG_OBJ32)       $(FFMPEG_OBJ64)       \
              $(GLIB_OBJ32)         $(GLIB_OBJ64)         \
@@ -125,7 +121,7 @@ index d9b6b80..cf09300 100644
              $(GST_ORC_OBJ32)      $(GST_ORC_OBJ64)      \
              $(GSTREAMER_OBJ32)    $(GSTREAMER_OBJ64)    \
              $(GST_BASE_OBJ32)     $(GST_BASE_OBJ64)     \
-@@ -333,13 +362,11 @@ $(OBJ_DIRS):
+@@ -333,13 +358,11 @@ $(OBJ_DIRS):
  .PHONY: downloads
  
  BISON_TARBALL_URL := https://ftpmirror.gnu.org/bison/$(BISON_TARBALL)
@@ -139,7 +135,7 @@ index d9b6b80..cf09300 100644
  SHARED_GECKO64_TARBALL := $(SRCDIR)/../gecko/$(GECKO64_TARBALL)
  SHARED_GECKO32_TARBALL := $(SRCDIR)/../gecko/$(GECKO32_TARBALL)
  SHARED_MONO_TARBALL := $(SRCDIR)/../mono/$(WINEMONO_TARBALL)
-@@ -347,10 +374,6 @@ SHARED_MONO_TARBALL := $(SRCDIR)/../mono/$(WINEMONO_TARBALL)
+@@ -347,10 +370,6 @@ SHARED_MONO_TARBALL := $(SRCDIR)/../mono/$(WINEMONO_TARBALL)
  $(SHARED_BISON_TARBALL):
  	mkdir -p $(dir $@)
  	wget -O "$@" "$(BISON_TARBALL_URL)"
@@ -150,7 +146,7 @@ index d9b6b80..cf09300 100644
  
  $(SHARED_GECKO64_TARBALL):
  	mkdir -p $(dir $@)
-@@ -364,7 +387,7 @@ $(SHARED_MONO_TARBALL):
+@@ -364,7 +383,7 @@ $(SHARED_MONO_TARBALL):
  	mkdir -p $(dir $@)
  	wget -O "$@" "$(MONO_TARBALL_URL)"
  
@@ -159,7 +155,7 @@ index d9b6b80..cf09300 100644
  
  ##
  ## dist/install -- steps to finalize the install
-@@ -410,11 +433,26 @@ DIST_GECKO64 := $(DIST_GECKO_DIR)/wine-gecko-$(GECKO_VER)-x86_64
+@@ -410,11 +429,26 @@ DIST_GECKO64 := $(DIST_GECKO_DIR)/wine-gecko-$(GECKO_VER)-x86_64
  DIST_WINEMONO_DIR := $(DST_DIR)/share/wine/mono
  DIST_WINEMONO := $(DIST_WINEMONO_DIR)/wine-mono-$(WINEMONO_VER)
  DIST_FONTS := $(DST_DIR)/share/fonts
@@ -187,7 +183,7 @@ index d9b6b80..cf09300 100644
  DEPLOY_COPY_TARGETS := $(DIST_COPY_TARGETS) $(DIST_VERSION) $(DIST_LICENSE) $(DIST_OFL_LICENSE)
  REDIST_COPY_TARGETS := $(DEPLOY_COPY_TARGETS) $(DIST_COMPAT_MANIFEST)
  
-@@ -490,7 +528,7 @@ $(DIST_FONTS): fonts
+@@ -490,7 +524,7 @@ $(DIST_FONTS): fonts
  ALL_TARGETS += dist
  GOAL_TARGETS += dist
  
@@ -196,7 +192,7 @@ index d9b6b80..cf09300 100644
  	echo `date '+%s'` `GIT_DIR=$(abspath $(SRCDIR)/.git) git describe --tags` > $(DIST_VERSION)
  	cp $(DIST_VERSION) $(DST_BASE)/
  	rm -rf $(abspath $(DIST_PREFIX)) && \
-@@ -537,6 +575,8 @@ module64:
+@@ -537,6 +571,8 @@ module64:
  
  module: module32 module64
  
@@ -205,7 +201,7 @@ index d9b6b80..cf09300 100644
  ##
  ## glib
  ##
-@@ -545,27 +585,36 @@ GLIB_CONFIGURE_FILES32 := $(GLIB_OBJ32)/build.ninja
+@@ -545,27 +581,36 @@ GLIB_CONFIGURE_FILES32 := $(GLIB_OBJ32)/build.ninja
  GLIB_CONFIGURE_FILES64 := $(GLIB_OBJ64)/build.ninja
  
  GLIB_MESON_ARGS := -Dlibmount=false
@@ -244,7 +240,7 @@ index d9b6b80..cf09300 100644
  		meson --prefix="$(abspath $(TOOLS_DIR32))" --libdir="lib" $(GLIB_MESON_ARGS) $(MESON_STRIP_ARG) --buildtype=release "$(abspath $(GLIB_OBJ32))"
  
  ## glib goals
-@@ -606,6 +655,8 @@ glib32: $(GLIB_CONFIGURE_FILES32)
+@@ -606,6 +651,8 @@ glib32: $(GLIB_CONFIGURE_FILES32)
  
  
  GST_COMMON_MESON_ARGS := \
@@ -253,7 +249,7 @@ index d9b6b80..cf09300 100644
  	-Dexamples=disabled \
  	-Dtests=disabled \
  	-Dgtk_doc=disabled \
-@@ -647,6 +698,9 @@ $(GST_ORC_CONFIGURE_FILES32): $(MAKEFILE_DEP) glib32 | $(GST_ORC_OBJ32)
+@@ -647,6 +694,9 @@ $(GST_ORC_CONFIGURE_FILES32): $(MAKEFILE_DEP) glib32 | $(GST_ORC_OBJ32)
  	fi
  	cd "$(abspath $(GST_ORC))" && \
  	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
@@ -263,7 +259,7 @@ index d9b6b80..cf09300 100644
  		PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR32))/lib/pkgconfig \
  		meson --prefix="$(abspath $(TOOLS_DIR32))" --libdir="lib" $(GST_ORC_MESON_ARGS) $(MESON_STRIP_ARG) "$(abspath $(GST_ORC_OBJ32))"
  
-@@ -688,6 +742,10 @@ GSTREAMER_MESON_ARGS := \
+@@ -688,6 +738,10 @@ GSTREAMER_MESON_ARGS := \
  	-Dgst_parse=false \
  	-Dbenchmarks=disabled \
  	-Dtools=disabled \
@@ -274,7 +270,7 @@ index d9b6b80..cf09300 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GSTREAMER_CONFIGURE_FILES32 := $(GSTREAMER_OBJ32)/build.ninja
-@@ -712,6 +770,9 @@ $(GSTREAMER_CONFIGURE_FILES32): $(MAKEFILE_DEP) gst_orc32 | $(GSTREAMER_OBJ32)
+@@ -712,6 +766,9 @@ $(GSTREAMER_CONFIGURE_FILES32): $(MAKEFILE_DEP) gst_orc32 | $(GSTREAMER_OBJ32)
  	fi
  	cd "$(abspath $(GSTREAMER))" && \
  	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
@@ -284,7 +280,7 @@ index d9b6b80..cf09300 100644
  		PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR32))/lib/pkgconfig \
  		meson --prefix="$(abspath $(TOOLS_DIR32))" --libdir="lib" $(GSTREAMER_MESON_ARGS) $(MESON_STRIP_ARG) --buildtype=release "$(abspath $(GSTREAMER_OBJ32))"
  
-@@ -776,6 +837,7 @@ GST_BASE_MESON_ARGS := \
+@@ -776,6 +833,7 @@ GST_BASE_MESON_ARGS := \
  	-Dx11=disabled \
  	-Dxshm=disabled \
  	-Dxvideo=disabled \
@@ -292,7 +288,7 @@ index d9b6b80..cf09300 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_BASE_CONFIGURE_FILES32 := $(GST_BASE_OBJ32)/build.ninja
-@@ -800,6 +862,9 @@ $(GST_BASE_CONFIGURE_FILES32): $(MAKEFILE_DEP) gstreamer32 | $(GST_BASE_OBJ32)
+@@ -800,6 +858,9 @@ $(GST_BASE_CONFIGURE_FILES32): $(MAKEFILE_DEP) gstreamer32 | $(GST_BASE_OBJ32)
  	fi
  	cd "$(abspath $(GST_BASE))" && \
  	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
@@ -302,7 +298,7 @@ index d9b6b80..cf09300 100644
  		PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR32))/lib/pkgconfig \
  		meson --prefix="$(abspath $(TOOLS_DIR32))" --libdir="lib" $(GST_BASE_MESON_ARGS) $(MESON_STRIP_ARG) --buildtype=release "$(abspath $(GST_BASE_OBJ32))"
  
-@@ -888,6 +953,7 @@ GST_GOOD_MESON_ARGS := \
+@@ -888,6 +949,7 @@ GST_GOOD_MESON_ARGS := \
  	-Dwavenc=disabled \
  	-Dximagesrc=disabled \
  	-Dy4m=disabled \
@@ -310,7 +306,7 @@ index d9b6b80..cf09300 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_GOOD_CONFIGURE_FILES32 := $(GST_GOOD_OBJ32)/build.ninja
-@@ -912,6 +978,9 @@ $(GST_GOOD_CONFIGURE_FILES32): $(MAKEFILE_DEP) gst_base32 | $(GST_GOOD_OBJ32)
+@@ -912,6 +974,9 @@ $(GST_GOOD_CONFIGURE_FILES32): $(MAKEFILE_DEP) gst_base32 | $(GST_GOOD_OBJ32)
  	fi
  	cd "$(abspath $(GST_GOOD))" && \
  	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
@@ -320,7 +316,7 @@ index d9b6b80..cf09300 100644
  		PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR32))/lib/pkgconfig \
  		meson --prefix="$(abspath $(TOOLS_DIR32))" --libdir="lib" $(GST_GOOD_MESON_ARGS) $(MESON_STRIP_ARG) --buildtype=release "$(abspath $(GST_GOOD_OBJ32))"
  
-@@ -971,6 +1040,9 @@ GST_BAD_MESON_ARGS := \
+@@ -971,6 +1036,9 @@ GST_BAD_MESON_ARGS := \
  	-Dopencv=disabled \
  	-Dvoamrwbenc=disabled \
  	-Dx265=disabled \
@@ -330,7 +326,7 @@ index d9b6b80..cf09300 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_BAD_CONFIGURE_FILES32 := $(GST_BAD_OBJ32)/build.ninja
-@@ -995,6 +1067,9 @@ $(GST_BAD_CONFIGURE_FILES32): $(MAKEFILE_DEP) gst_base32 | $(GST_BAD_OBJ32)
+@@ -995,6 +1063,9 @@ $(GST_BAD_CONFIGURE_FILES32): $(MAKEFILE_DEP) gst_base32 | $(GST_BAD_OBJ32)
  	fi
  	cd "$(abspath $(GST_BAD))" && \
  	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
@@ -340,7 +336,7 @@ index d9b6b80..cf09300 100644
  		PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR32))/lib/pkgconfig \
  		meson --prefix="$(abspath $(TOOLS_DIR32))" --libdir="lib" $(GST_BAD_MESON_ARGS) $(MESON_STRIP_ARG) --buildtype=release "$(abspath $(GST_BAD_OBJ32))"
  
-@@ -1040,6 +1115,7 @@ GST_UGLY_MESON_ARGS := \
+@@ -1040,6 +1111,7 @@ GST_UGLY_MESON_ARGS := \
          -Dglib-checks='disabled' \
          -Dglib-checks='disabled' \
          -Ddoc='disabled' \
@@ -348,7 +344,7 @@ index d9b6b80..cf09300 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_UGLY_CONFIGURE_FILES32 := $(GST_UGLY_OBJ32)/build.ninja
-@@ -1064,6 +1140,9 @@ $(GST_UGLY_CONFIGURE_FILES32): $(MAKEFILE_DEP) gst_base32 | $(GST_UGLY_OBJ32)
+@@ -1064,6 +1136,9 @@ $(GST_UGLY_CONFIGURE_FILES32): $(MAKEFILE_DEP) gst_base32 | $(GST_UGLY_OBJ32)
  	fi
  	cd "$(abspath $(GST_UGLY))" && \
  	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
@@ -358,7 +354,7 @@ index d9b6b80..cf09300 100644
  		PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR32))/lib/pkgconfig \
  		meson --prefix="$(abspath $(TOOLS_DIR32))" --libdir="lib" $(GST_UGLY_MESON_ARGS) $(MESON_STRIP_ARG) --buildtype=release "$(abspath $(GST_UGLY_OBJ32))"
  
-@@ -1105,6 +1184,7 @@ gst_ugly32: $(GST_UGLY_CONFIGURE_FILES32)
+@@ -1105,6 +1180,7 @@ gst_ugly32: $(GST_UGLY_CONFIGURE_FILES32)
  
  GST_LIBAV_MESON_ARGS := \
          -Ddoc=disabled \
@@ -366,7 +362,7 @@ index d9b6b80..cf09300 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_LIBAV_CONFIGURE_FILES32 := $(GST_LIBAV_OBJ32)/build.ninja
-@@ -1129,6 +1209,9 @@ $(GST_LIBAV_CONFIGURE_FILES32): $(MAKEFILE_DEP) gst_base32 | ffmpeg32 $(GST_LIBA
+@@ -1129,6 +1205,9 @@ $(GST_LIBAV_CONFIGURE_FILES32): $(MAKEFILE_DEP) gst_base32 | ffmpeg32 $(GST_LIBA
  	fi
  	cd "$(abspath $(GST_LIBAV))" && \
  	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
@@ -376,7 +372,7 @@ index d9b6b80..cf09300 100644
  		PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR32))/lib/pkgconfig \
  		meson --prefix="$(abspath $(TOOLS_DIR32))" --libdir="lib" $(GST_LIBAV_MESON_ARGS) $(MESON_STRIP_ARG) --buildtype=release "$(abspath $(GST_LIBAV_OBJ32))"
  
-@@ -1164,11 +1247,14 @@ gst_libav32: $(GST_LIBAV_CONFIGURE_FILES32)
+@@ -1164,11 +1243,14 @@ gst_libav32: $(GST_LIBAV_CONFIGURE_FILES32)
  	cp -a $(TOOLS_DIR32)/lib/libgst* $(DST_DIR)/lib/ && \
  	cp -a $(TOOLS_DIR32)/lib/gstreamer-1.0 $(DST_DIR)/lib/
  
@@ -391,7 +387,7 @@ index d9b6b80..cf09300 100644
  FFMPEG_CONFIGURE_FILES32 := $(FFMPEG_OBJ32)/Makefile
  FFMPEG_CONFIGURE_FILES64 := $(FFMPEG_OBJ64)/Makefile
  
-@@ -1179,6 +1265,8 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ6
+@@ -1179,6 +1261,8 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ6
  		$(abspath $(FFMPEG))/configure \
  			--cc=$(CC_QUOTED) --cxx=$(CXX_QUOTED) \
  			--prefix=$(abspath $(TOOLS_DIR64)) \
@@ -400,7 +396,7 @@ index d9b6b80..cf09300 100644
  			--disable-static \
  			--enable-shared \
  			--disable-programs \
-@@ -1225,10 +1313,12 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ6
+@@ -1225,10 +1309,12 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ6
  $(FFMPEG_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
  $(FFMPEG_CONFIGURE_FILES32): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ32)
  	cd $(dir $@) && \
@@ -414,7 +410,7 @@ index d9b6b80..cf09300 100644
  			--disable-static \
  			--enable-shared \
  			--disable-programs \
-@@ -1301,11 +1391,16 @@ ffmpeg32: $(FFMPEG_CONFIGURE_FILES32)
+@@ -1301,6 +1387,8 @@ ffmpeg32: $(FFMPEG_CONFIGURE_FILES32)
  	mkdir -pv $(DST_DIR)/lib
  	cp -a $(TOOLS_DIR32)/lib/{libavcodec,libavfilter,libavformat,libavutil,libswresample}* $(DST_DIR)/lib
  
@@ -423,46 +419,42 @@ index d9b6b80..cf09300 100644
  ##
  ## FAudio
  ##
- 
--FAUDIO_CMAKE_FLAGS = -DCMAKE_BUILD_TYPE=Release -DFORCE_ENABLE_DEBUGCONFIGURATION=ON -DLOG_ASSERTIONS=ON -DCMAKE_INSTALL_LIBDIR="lib" -DXNASONG=OFF -DFFMPEG=ON
-+FAUDIO_CMAKE_FLAGS = -DCMAKE_BUILD_TYPE=Release -DFORCE_ENABLE_DEBUGCONFIGURATION=ON -DLOG_ASSERTIONS=ON -DCMAKE_INSTALL_LIBDIR="lib" -DXNASONG=OFF
-+ifeq ($(WITH_FFMPEG),1)
-+FAUDIO_CMAKE_FLAGS += -DFFMPEG=ON
-+endif # ifeq ($(WITH_FFMPEG),1)
- 
- FAUDIO_TARGETS = faudio faudio32 faudio64
- 
-@@ -1320,21 +1415,22 @@ FAUDIO_CONFIGURE_FILES32 := $(FAUDIO_OBJ32)/Makefile
+@@ -1320,27 +1408,28 @@ FAUDIO_CONFIGURE_FILES32 := $(FAUDIO_OBJ32)/Makefile
  FAUDIO_CONFIGURE_FILES64 := $(FAUDIO_OBJ64)/Makefile
  
  $(FAUDIO_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
--$(FAUDIO_CONFIGURE_FILES32): $(FAUDIO)/CMakeLists.txt $(MAKEFILE_DEP) $(CMAKE_BIN32) | ffmpeg32 $(FAUDIO_OBJ32)
+-$(FAUDIO_CONFIGURE_FILES32): $(FAUDIO)/CMakeLists.txt $(MAKEFILE_DEP) $(CMAKE_BIN32) | gst_base32 $(FAUDIO_OBJ32)
 +$(FAUDIO_CONFIGURE_FILES32): $(FAUDIO)/CMakeLists.txt $(MAKEFILE_DEP) $(FAUDIO_DEPS32) | $(FAUDIO_OBJ32)
  	cd $(dir $@) && \
+ 		PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR32))/lib/pkgconfig \
 -		../$(CMAKE_BIN32) $(abspath $(FAUDIO)) \
 +		$(CMAKE_BIN32) $(abspath $(FAUDIO)) \
+ 			-DCMAKE_EXE_LINKER_FLAGS_INIT="-L$(abspath $(TOOLS_DIR32))/lib" \
+ 			-DCMAKE_SHARED_LINKER_FLAGS_INIT="-L$(abspath $(TOOLS_DIR32))/lib:$(abspath $(TOOLS_DIR32))/lib/gstreamer-1.0 -Wl,-rpath-link,$(abspath $(TOOLS_DIR32))/lib:$(abspath $(TOOLS_DIR32))/lib/gstreamer-1.0" \
+ 			-DCMAKE_MODULE_LINKER_FLAGS_INIT="-L$(abspath $(TOOLS_DIR32))/lib:$(abspath $(TOOLS_DIR32))/lib/gstreamer-1.0 -Wl,-rpath-link,$(abspath $(TOOLS_DIR32))/lib:$(abspath $(TOOLS_DIR32))/lib/gstreamer-1.0" \
  			-DCMAKE_INSTALL_PREFIX="$(abspath $(TOOLS_DIR32))" \
--			$(FAUDIO_CMAKE_FLAGS) \
- 			-DFFmpeg_INCLUDE_DIR="$(abspath $(TOOLS_DIR32))/include" \
+ 			$(FAUDIO_CMAKE_FLAGS) \
 -			-DCMAKE_C_FLAGS="-m32" -DCMAKE_CXX_FLAGS="-m32"
-+			$(FAUDIO_CMAKE_FLAGS) \
 +			-DCMAKE_C_FLAGS="$(COMMON_FLAGS) -m32" -DCMAKE_CXX_FLAGS="$(COMMON_FLAGS) -m32"
  
  $(FAUDIO_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
--$(FAUDIO_CONFIGURE_FILES64): $(FAUDIO)/CMakeLists.txt $(MAKEFILE_DEP) $(CMAKE_BIN64) | ffmpeg64 $(FAUDIO_OBJ64)
+-$(FAUDIO_CONFIGURE_FILES64): $(FAUDIO)/CMakeLists.txt $(MAKEFILE_DEP) $(CMAKE_BIN64) | gst_base64 $(FAUDIO_OBJ64)
 +$(FAUDIO_CONFIGURE_FILES64): $(FAUDIO)/CMakeLists.txt $(MAKEFILE_DEP) $(FAUDIO_DEPS64) | $(FAUDIO_OBJ64)
  	cd $(dir $@) && \
+ 		PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR64))/lib/pkgconfig \
 -		../$(CMAKE_BIN64) $(abspath $(FAUDIO)) \
 +		$(CMAKE_BIN64) $(abspath $(FAUDIO)) \
+ 			-DCMAKE_EXE_LINKER_FLAGS_INIT="-L$(abspath $(TOOLS_DIR64))/lib" \
+ 			-DCMAKE_SHARED_LINKER_FLAGS_INIT="-L$(abspath $(TOOLS_DIR64))/lib:$(abspath $(TOOLS_DIR64))/lib/gstreamer-1.0 -Wl,-rpath-link,$(abspath $(TOOLS_DIR64))/lib:$(abspath $(TOOLS_DIR64))/lib/gstreamer-1.0" \
+ 			-DCMAKE_MODULE_LINKER_FLAGS_INIT="-L$(abspath $(TOOLS_DIR64))/lib:$(abspath $(TOOLS_DIR64))/lib/gstreamer-1.0 -Wl,-rpath-link,$(abspath $(TOOLS_DIR64))/lib:$(abspath $(TOOLS_DIR64))/lib/gstreamer-1.0" \
  			-DCMAKE_INSTALL_PREFIX="$(abspath $(TOOLS_DIR64))" \
-+			-DFFmpeg_INCLUDE_DIR="$(abspath $(TOOLS_DIR64))/include" \
- 			$(FAUDIO_CMAKE_FLAGS) \
--			-DFFmpeg_INCLUDE_DIR="$(abspath $(TOOLS_DIR64))/include"
+-			$(FAUDIO_CMAKE_FLAGS)
++			$(FAUDIO_CMAKE_FLAGS) \
 +			-DCMAKE_C_FLAGS="$(COMMON_FLAGS)" -DCMAKE_CXX_FLAGS="$(COMMON_FLAGS)"
  
  faudio32: SHELL = $(CONTAINER_SHELL32)
  faudio32: $(FAUDIO_CONFIGURE_FILES32)
-@@ -1528,36 +1624,48 @@ WINE32_MAKE_ARGS := \
+@@ -1534,36 +1623,48 @@ WINE32_MAKE_ARGS := \
  
  # 64bit-configure
  $(WINE_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
@@ -519,7 +511,7 @@ index d9b6b80..cf09300 100644
  			CC=$(CC_QUOTED) \
  			CXX=$(CXX_QUOTED)
  
-@@ -1713,6 +1821,8 @@ vrclient32: $(VRCLIENT_CONFIGURE_FILES32) | $(WINE_BUILDTOOLS32) $(filter $(MAKE
+@@ -1719,6 +1820,8 @@ vrclient32: $(VRCLIENT_CONFIGURE_FILES32) | $(WINE_BUILDTOOLS32) $(filter $(MAKE
  
  ## Create & configure object directory for cmake
  
@@ -528,7 +520,7 @@ index d9b6b80..cf09300 100644
  CMAKE_CONFIGURE_FILES32 := $(CMAKE_OBJ32)/Makefile
  CMAKE_CONFIGURE_FILES64 := $(CMAKE_OBJ64)/Makefile
  
-@@ -1764,12 +1874,16 @@ cmake32-intermediate: $(CMAKE_CONFIGURE_FILES32) $(filter $(MAKECMDGOALS),cmake3
+@@ -1770,12 +1873,16 @@ cmake32-intermediate: $(CMAKE_CONFIGURE_FILES32) $(filter $(MAKECMDGOALS),cmake3
  	+$(MAKE) -C $(CMAKE_OBJ32) install
  	touch $(CMAKE_BIN32)
  
@@ -545,7 +537,7 @@ index d9b6b80..cf09300 100644
  $(BISON):
  	if [ -e "$(SRCDIR)/../bison/$(BISON_TARBALL)" ]; then \
  		mkdir -p $(dir $@); \
-@@ -1834,74 +1948,7 @@ bison32-intermediate: $(BISON_CONFIGURE_FILES32) $(filter $(MAKECMDGOALS),bison3
+@@ -1840,74 +1947,7 @@ bison32-intermediate: $(BISON_CONFIGURE_FILES32) $(filter $(MAKECMDGOALS),bison3
  	+$(MAKE) -C $(BISON_OBJ32) install
  	touch $(BISON_BIN32)
  	
@@ -621,7 +613,7 @@ index d9b6b80..cf09300 100644
  
  ##
  ## dxvk
-@@ -1951,7 +1998,7 @@ dxvk_configure32: $(DXVK_CONFIGURE_FILES32)
+@@ -1957,7 +1997,7 @@ dxvk_configure32: $(DXVK_CONFIGURE_FILES32)
  dxvk: dxvk32 dxvk64
  
  dxvk64: $(DXVK_CONFIGURE_FILES64)
@@ -630,7 +622,7 @@ index d9b6b80..cf09300 100644
  	mkdir -p "$(DST_DIR)/lib64/wine/dxvk"
  	cp "$(DXVK_OBJ64)"/bin/dxgi.dll "$(DST_DIR)"/lib64/wine/dxvk
  	cp "$(DXVK_OBJ64)"/bin/d3d11.dll "$(DST_DIR)"/lib64/wine/dxvk
-@@ -1964,7 +2011,7 @@ dxvk64: $(DXVK_CONFIGURE_FILES64)
+@@ -1970,7 +2010,7 @@ dxvk64: $(DXVK_CONFIGURE_FILES64)
  
  
  dxvk32: $(DXVK_CONFIGURE_FILES32)
@@ -639,7 +631,7 @@ index d9b6b80..cf09300 100644
  	mkdir -p "$(DST_DIR)"/lib/wine/dxvk
  	cp "$(DXVK_OBJ32)"/bin/dxgi.dll "$(DST_DIR)"/lib/wine/dxvk/
  	cp "$(DXVK_OBJ32)"/bin/d3d11.dll "$(DST_DIR)"/lib/wine/dxvk/
-@@ -1983,14 +2030,18 @@ WINEWIDL_CONFIGURE_FILES64 := $(WINEWIDL_OBJ64)/Makefile
+@@ -1989,14 +2029,18 @@ WINEWIDL_CONFIGURE_FILES64 := $(WINEWIDL_OBJ64)/Makefile
  WINEWIDL_CONFIGURE_FILES32 := $(WINEWIDL_OBJ32)/Makefile
  
  $(WINEWIDL_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
@@ -661,7 +653,7 @@ index d9b6b80..cf09300 100644
  			LDFLAGS=-L$(abspath $(TOOLS_DIR32))/lib \
  			PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR32))/lib/pkgconfig \
  			CC=$(CC_QUOTED) \
-@@ -2002,14 +2053,18 @@ $(WINEWIDL32): $(WINEWIDL_CONFIGURE_FILES32)
+@@ -2008,14 +2052,18 @@ $(WINEWIDL32): $(WINEWIDL_CONFIGURE_FILES32)
  	make tools/widl
  
  $(WINEWIDL_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
