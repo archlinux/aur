@@ -2,21 +2,21 @@
 
 _target=xtensa-esp32-elf
 pkgname=$_target-binutils
-pkgver=2.34
-_overlay_commit=fe9a594
-pkgrel=2
+pkgver=2.35
+_overlay_commit=4d8c98d
+pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the xtensa esp32 (bare-metal) target'
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(libelf)
-source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2 # {,.sig}
+source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig}
         xtensa-overlays-$_overlay_commit.tar.gz::https://codeload.github.com/espressif/xtensa-overlays/tar.gz/$_overlay_commit)
-sha256sums=('89f010078b6cf69c23c27897d686055ab89b198dddf819efb0a4f2c38a0b36e6'
-#            'SKIP'
-            '025a16d88ae7b17c013ed23beb02b8545b44673d2b8ecca748e63a79d5c1070d')
-#validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93'  # Tristan Gingold <gingold@adacore.com>
-#              '3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
+sha256sums=('7d24660f87093670738e58bcc7b7b06f121c0fcb0ca8fc44368d675a5ef9cff7'
+            'SKIP'
+            '88b054b60b8009d02184ed0703b7fe200b8965af5c45268b7e99a11820119344')
+validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93'  # Tristan Gingold <gingold@adacore.com>
+              '3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 
 prepare() {
 	cd binutils-$pkgver
@@ -36,11 +36,10 @@ build() {
 		--with-gnu-as \
 		--with-gnu-ld \
 		--disable-nls \
-		--enable-ld=default \
+		--enable-ld=yes \
 		--enable-gold \
 		--enable-plugins \
 		--enable-deterministic-archives
-
 	make
 }
 
