@@ -4,7 +4,7 @@ pkgbase=linux-amd
 _srcname=linux
 gitver=v5.9.2
 pkgver=5.9.v.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -23,9 +23,9 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'e78e9f1966592c1022c9c151d2fa31ce9dd49a6f5afe0cc186d3abbd89aebd3c'
+            '371c06e14fd17f0fdc23100ec1bf5cb348fb026e2c9b56f916050e6e40097ab7'
             #.preset file
-            '71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08'
+            '60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #gentoopatch
