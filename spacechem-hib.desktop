@@ -5,6 +5,6 @@ Name=SpaceChem
 GenericName=Game
 Comment=Solve design-based challenges in this game from Zachtronics Industries
 Icon=spacechem
-Exec=/opt/spacechem/spacechem-launcher.sh
+Exec=/opt/spacechem/SpaceChem
 Terminal=false
 Categories=Game;
