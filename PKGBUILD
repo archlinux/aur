@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "${srcdir}"/mesa
   for _arch in ${_architectures}; do
-    ${_arch}-meson build-${_arch} -Db_lto=false -Dgallium-drivers=swrast,swr
+    ${_arch}-meson build-${_arch} -Db_lto=false
     ninja -C build-${_arch}
   done
 }
@@ -34,7 +34,6 @@ package() {
   for _arch in ${_architectures}; do
     install -d "$pkgdir"/usr/${_arch}/bin
     install -m755 build-${_arch}/src/gallium/targets/libgl-gdi/opengl32.dll "$pkgdir"/usr/${_arch}/bin
-    install -m755 build-${_arch}/src/gallium/drivers/swr/swr*.dll "$pkgdir"/usr/${_arch}/bin
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
   done
 }
