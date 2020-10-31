@@ -1,15 +1,15 @@
 pkgbase = qqmusic-bin
 	pkgdesc = tencent qq music
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://y.qq.com/
 	arch = x86_64
-	license = custom
+	license = CC0-1.0
 	depends = nss
 	depends = libxss
 	depends = gtk3
-	source = qqmusic-1.0.0.deb::https://development6.baidupan.com/102223bb/2020/10/22/85c79f9c3c40dc554dbd7a3faff63cfa.deb?st=dazLtNIsORrp3x5hbc9Kfw&e=1603382049&b=ASJbKlQ5A3NSdAc4V2QOVQBkWykDMgQsB2QMXgJkUT4ANg07UmZWfQc2AzBVZw_c_c&fi=31386566&pid=120-36-243-99&up=
-	sha512sums = f5fe5ddf2d5c71387507cfd673d9ecc417f4ed92170ddc8d82818e927c9eddaf61f421c0b3027360c7e291e83690f4f0a853e7607af8ee574c19f20e5cd804f7
+	source = qqmusic_1.0.2_amd64.deb::https://share.ohthis.me/qqmusic/qqmusic_1.0.2_amd64.deb
+	sha512sums = bcae1b51317b4c68c3386df916536b5ae77445da7af94085cab05f4eb0d2971316c1fbaa98508147721f62adcbd136b91b3a9efbb93f8347f4abb07122a6168f
 
 pkgname = qqmusic-bin
 
