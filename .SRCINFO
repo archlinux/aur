@@ -1,0 +1,16 @@
+pkgbase = globe-cli-git
+	pkgdesc = ASCII globe generator (git)
+	pkgver = 0.1.1.r0.g6ef5c31
+	pkgrel = 1
+	url = https://github.com/adamsky/globe
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	provides = globe-cli
+	conflicts = globe-cli
+	source = git+https://github.com/adamsky/globe
+	sha512sums = SKIP
+
+pkgname = globe-cli-git
+
