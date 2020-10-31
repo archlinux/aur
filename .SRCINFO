@@ -1,6 +1,6 @@
 pkgbase = linux-lqx
 	pkgdesc = Linux Liquorix
-	pkgver = 5.8.17.lqx1
+	pkgver = 5.8.17.lqx2
 	pkgrel = 1
 	url = https://liquorix.net/
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = linux-lqx
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.8.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.8.tar.sign
-	source = https://github.com/damentz/liquorix-package/archive/5.8-16.tar.gz
+	source = https://github.com/damentz/liquorix-package/archive/5.8-17.tar.gz
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.8/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = 45a53ecf351096ef6e98242cca4228b8da9b9139ecc6963695791ea6fb7a9484a4e1c19dcca7ce7cbfdfa49de0451b70973bb078f12bdae9cbaddbc3f8092556
 	sha512sums = SKIP
-	sha512sums = 366c6ac407cacbf95afed415b3e57d824d48b7c0fa3292b1707b066a207bb4ff09c83fd4dceaa37456530b8931269a76420d5e6054d1575dd9b40f3e1c4bc283
+	sha512sums = d4cb8de5a16e5aa58d1cf7dc1ddab290c97905faa7db24e3f03d919b2fd9e58129382d2379f774851fbd9b376efe711676cf158d931f092ad2ccc0e0578bfc3c
 	sha512sums = 711ecce2ce54c81e8b60b9b347cb88db054bf697396ee15e9b425671f88d22a14dae17c1c451aa10bd1d7a71c145b2fa588863205ec94e1439ed9b2769ee2e4c
 
 pkgname = linux-lqx
