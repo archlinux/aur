@@ -1,0 +1,41 @@
+commit 12ab9514299c32c235139148824cba704e7d5e27
+Author: Anatol Pomozov <anatol.pomozov@gmail.com>
+Date:   Fri Oct 16 09:05:27 2020 -0700
+
+    Arch linux build changes
+
+diff --git a/Makefile b/Makefile
+index e59799c..f3fb3bf 100644
+--- a/Makefile
++++ b/Makefile
+@@ -12,7 +12,7 @@ LLD_SRC ?= $(LLVM_PROJECTDIR)/lld
+ ifneq (, $(shell command -v llvm-build/bin/clang 2> /dev/null))
+     CLANG ?= $(abspath llvm-build/bin/clang)
+ else
+-    CLANG ?= clang-10
++    CLANG ?= clang
+ endif
+ ifneq (, $(shell command -v llvm-build/bin/llvm-ar 2> /dev/null))
+     LLVM_AR ?= $(abspath llvm-build/bin/llvm-ar)
+@@ -184,11 +184,10 @@ lib/wasi-libc/sysroot/lib/wasm32-wasi/libc.a:
+ 
+ # Build the Go compiler.
+ tinygo:
+-	@if [ ! -f "$(LLVM_BUILDDIR)/bin/llvm-config" ]; then echo "Fetch and build LLVM first by running:"; echo "  make llvm-source"; echo "  make $(LLVM_BUILDDIR)"; exit 1; fi
+-	CGO_CPPFLAGS="$(CGO_CPPFLAGS)" CGO_CXXFLAGS="$(CGO_CXXFLAGS)" CGO_LDFLAGS="$(CGO_LDFLAGS)" $(GO) build -buildmode exe -o build/tinygo$(EXE) -tags byollvm -ldflags="-X main.gitSha1=`git rev-parse --short HEAD`" .
++	CGO_CPPFLAGS="$(CGO_CPPFLAGS)" CGO_CXXFLAGS="$(CGO_CXXFLAGS)" CGO_LDFLAGS="$(CGO_LDFLAGS)" $(GO) build -buildmode exe -o build/tinygo$(EXE) -tags llvm11 -ldflags="-X main.gitSha1=`git rev-parse --short HEAD`" .
+ 
+ test: wasi-libc
+-	CGO_CPPFLAGS="$(CGO_CPPFLAGS)" CGO_CXXFLAGS="$(CGO_CXXFLAGS)" CGO_LDFLAGS="$(CGO_LDFLAGS)" $(GO) test -v -buildmode exe -tags byollvm ./cgo ./compileopts ./interp ./transform .
++	CGO_CPPFLAGS="$(CGO_CPPFLAGS)" CGO_CXXFLAGS="$(CGO_CXXFLAGS)" CGO_LDFLAGS="$(CGO_LDFLAGS)" $(GO) test -v -buildmode exe ./cgo ./compileopts ./interp ./transform .
+ 
+ # Test known-working standard library packages.
+ # TODO: do this in one command, parallelize, and only show failing tests (no
+@@ -392,7 +391,6 @@ build/release: tinygo gen-device wasi-libc
+ 	@mkdir -p build/release/tinygo/pkg/armv7em-none-eabi
+ 	@echo copying source files
+ 	@cp -p  build/tinygo$(EXE)           build/release/tinygo/bin
+-	@cp -p $(abspath $(CLANG_SRC))/lib/Headers/*.h build/release/tinygo/lib/clang/include
+ 	@cp -rp lib/CMSIS/CMSIS/Include      build/release/tinygo/lib/CMSIS/CMSIS
+ 	@cp -rp lib/CMSIS/README.md          build/release/tinygo/lib/CMSIS
+ 	@cp -rp lib/compiler-rt/lib/builtins build/release/tinygo/lib/compiler-rt/lib

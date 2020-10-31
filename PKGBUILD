@@ -3,7 +3,7 @@
 _pkgname=tinygo
 pkgname=${_pkgname}-git
 pkgver=v0.15.0.r0.ge8615d10
-pkgrel=3
+pkgrel=4
 pkgdesc="Go compiler for small places. Microcontrollers, WebAssembly, and command-line tools. Based on LLVM."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://tinygo.org/"
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=(
   'go>=1.11.0'
-  'llvm'
+  'llvm<11.0.0'
   'git'
 )
 optdepends=(
@@ -27,7 +27,7 @@ optdepends=(
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
-  "${_pkgname}::git+https://github.com/tinygo-org/tinygo.git"
+  "git+https://github.com/tinygo-org/tinygo.git"
   "git+https://github.com/NordicSemiconductor/nrfx"
   "git+https://github.com/ARM-software/CMSIS"
   "git+https://github.com/avr-rust/avr-mcu"
@@ -35,6 +35,7 @@ source=(
   "git+https://github.com/llvm-mirror/compiler-rt#branch=release_80"
   "git+https://github.com/CraneStation/wasi-libc"
   "git+https://github.com/keith-packard/picolibc"
+  "disable_static_llvm.patch"
   "LICENSE.llvm::https://llvm.org/LICENSE.txt"
   "LICENSE.golang::https://raw.githubusercontent.com/golang/go/master/LICENSE"
 )
@@ -46,6 +47,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            '7648bd3b4b78174d912908d35bff6f2b0fe5dfdf78e4aa2d3824b929fb244335'
             'f72b120d1385408e9e380acc020756eb6ba1b461d66c328ea67327ba08d7dcfd'
             '2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067')
 
@@ -67,6 +69,8 @@ prepare() {
     git config -f .gitmodules 'submodule.lib/picolibc.url' "$srcdir/picolibc"
     git submodule sync
     git submodule update
+
+    patch -Np1 < "$srcdir"/disable_static_llvm.patch
 }
 
 build() {
@@ -75,24 +79,22 @@ build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"  
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-    go build \
-        -trimpath \
-        -buildmode=pie \
-        -mod=readonly \
-        -modcacherw \
-        -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
-        .
+    export TINYGOROOT="$srcdir/tinygo/build/release/tinygo"
+    make build/release
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
 
-    install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    install -dm755 "$pkgdir"/usr/bin "$pkgdir"/usr/lib/tinygo
+    cp -a build/release/tinygo/* "$pkgdir"/usr/lib/tinygo
+    ln -s ../lib/tinygo/bin/tinygo "$pkgdir"/usr/bin/tinygo
+
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
     install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
     install -m644 "$srcdir/LICENSE.llvm" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.llvm"
     install -m644 "$srcdir/LICENSE.golang" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.golang"
 }
