@@ -2,7 +2,7 @@
 
 _gemname=progress_bar
 pkgname=ruby-$_gemname
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Simple Progress Bar for output to a terminal'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby-highline ruby-options)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('3633e9d0d8424f6480e1f0b3299f3e234e9417e0110bc8168b43236de712a1b1')
+sha256sums=('ccd720dc735ccf6038661cba23adc128273f33f64e59193b38268b0f85413b7c')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
