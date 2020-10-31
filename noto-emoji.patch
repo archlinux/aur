@@ -9,10 +9,10 @@ index 00000000..b1692606
 +set -e
 +exec git diff origin/master origin/noto-emoji > ${1:-'noto-emoji.patch'}
 diff --git a/package.json b/package.json
-index b2b7ef16..649d44e5 100644
+index ab51b6ef..59f13e0c 100644
 --- a/package.json
 +++ b/package.json
-@@ -79,7 +79,7 @@
+@@ -78,7 +78,7 @@
      "dashdash": "1.14.1",
      "draft-js": "0.10.5",
      "emoji-datasource": "5.0.1",
@@ -21,7 +21,7 @@ index b2b7ef16..649d44e5 100644
      "emoji-regex": "8.0.0",
      "fast-glob": "3.2.1",
      "filesize": "3.6.1",
-@@ -386,8 +386,8 @@
+@@ -380,8 +380,8 @@
        "sticker-creator/dist/**",
        "!node_modules/emoji-datasource/emoji_pretty.json",
        "!node_modules/emoji-datasource/**/*.png",
@@ -33,7 +33,7 @@ index b2b7ef16..649d44e5 100644
        "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme,test,__tests__,tests,powered-test,example,examples,*.d.ts}",
        "!**/node_modules/.bin",
 diff --git a/ts/components/emoji/lib.ts b/ts/components/emoji/lib.ts
-index 99aae7f2..6d474c49 100644
+index 591c387a..d6064a75 100644
 --- a/ts/components/emoji/lib.ts
 +++ b/ts/components/emoji/lib.ts
 @@ -68,7 +68,7 @@ export type EmojiData = {
@@ -45,7 +45,7 @@ index 99aae7f2..6d474c49 100644
    .map(emoji =>
      // Why this weird map?
      // the emoji dataset has two separate categories for Emotions and People
-@@ -89,7 +89,7 @@ const ROOT_PATH = get(
+@@ -88,7 +88,7 @@ const ROOT_PATH = get(
  );
  
  const makeImagePath = (src: string) => {
@@ -55,10 +55,10 @@ index 99aae7f2..6d474c49 100644
  
  const imageQueue = new PQueue({ concurrency: 10, timeout: 1000 * 60 * 2 });
 diff --git a/yarn.lock b/yarn.lock
-index ab2e8b4b..5e73cb5c 100644
+index b879f584..b359aca0 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -6310,10 +6310,10 @@ email-validator@^2.0.4:
+@@ -6313,10 +6313,10 @@ email-validator@^2.0.4:
    resolved "https://registry.yarnpkg.com/email-validator/-/email-validator-2.0.4.tgz#b8dfaa5d0dae28f1b03c95881d904d4e40bfe7ed"
    integrity sha512-gYCwo7kh5S3IDyZPLZf6hSS0MnZT8QmJFqYvbqlDZSbwdZlY6QZWxJ4i/6UhITOJ4XzyI647Bm2MXKCLqnJ4nQ==
  

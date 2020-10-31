@@ -4,13 +4,13 @@
 _pkgroot=signal-desktop
 pkgname=${_pkgroot}-noto
 _pkgname=Signal-Desktop
-pkgver=1.36.3
+pkgver=1.37.2
 pkgrel=1
 pkgdesc="Signal Private Messenger for Linux (Noto emoji version)"
 license=('GPL3')
 arch=('x86_64')
 url="https://github.com/Skycoder42/Signal-Desktop-Noto"
-depends=('libvips' 'libxss')
+depends=('libvips' 'libxss' 'hicolor-icon-theme')
 makedepends=('yarn' 'git' 'nodejs' 'npm' 'python')
 optdepends=("repkg: Automatically rebuild the package on dependency updates")
 provides=(signal signal-desktop signal-desktop-bin)
@@ -26,12 +26,12 @@ source=(
   "noto-emoji.patch"
   "$pkgname.rule"
 )
-sha512sums=('9b82e45c5cceee5ffc035cb82545d5b5f4dd1d4ddd96fb1be37b225ab2ca07d177494e5bdc8c0290fdf44aaca45534b09529f14b15aeaad6cfa0f017747180b4'
+sha512sums=('67045502429850e3bbb934cee3bb0aa740b52ca3cd825136f0426e72d7aef8bb9a1829c7ba7011208ffd98428ab080233e17cdc1f52a36fb6697f93200beb2ed'
             'bc70532c6591d15761df2d7eaf01875e77be756798728fb8fab442bb40e20893dac0148133f892de2db36395bf82c9d289440d64479b0d916d773570a2f7a39d'
             'a25698e39e2a3e88ce87e4b89bf222169c279a63359b576e05883682ee1553600b3e7afee5063aa901eaa8529a93d324b4e227d51d491a2054b559d9865ee6da'
             '1d0c276528b19b103a000d8640805971dc2b79b2ef785d3df2d31f610991b3404500ee7118d80da57332578132c04903fd9b9ff157144f2a0226a9efc73561a5'
             '42f57802fa91dafb6dbfb5a3f613c4c07df65e97f8da84c9a54292c97a4d170f8455461aac8f6f7819d1ffbea4bf6c28488f8950056ba988776d060be3f107dd'
-            '863a64154dd39dd66ae58e09ce514430ba87ac83ecd44f8d80fde814ae1dd334bc26d5b214819ca9048773521ab8953b49d0f351795ee4a107892319c10bb533'
+            '82832e97c8208e0a8d3e077626a5b4ae97dd834731e9dc839b0a9d48a7625ef18319456103077b295cc4b67250c8e444b485c336a0a66bf03054a14b01347bb5'
             '76856030f91b0b4af3d4113c6a991d0a25838c7b2f02e0819e7c683dd9f710d3e75a426dcba898e946f16829e58baaf45edcf4a29991eccd692429423c473ab2')
 
 prepare() {
