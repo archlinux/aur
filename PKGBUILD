@@ -2,11 +2,10 @@
 
 _target=xtensa-esp32-elf
 pkgname=$_target-gcc-bootstrap
-pkgver=10.1.0
-_islver=0.22
-_overlay_commit=fe9a594
+pkgver=10.2.0
+_islver=0.22.1
+_overlay_commit=4d8c98d
 pkgrel=1
-#_snapshot=8-20180427
 pkgdesc='The GNU Compiler Collection - cross compiler bootstrap package for xtensa esp32 (bare-metal) target'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
@@ -17,20 +16,18 @@ provides=($_target-gcc)
 conflicts=($_target-gcc)
 options=(!emptydirs !strip)
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
-        #ftp://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.xz
         http://isl.gforge.inria.fr/isl-$_islver.tar.bz2
         xtensa-overlays-$_overlay_commit.tar.gz::https://codeload.github.com/espressif/xtensa-overlays/tar.gz/$_overlay_commit)
-sha256sums=('b6898a23844b656f1b68691c5c012036c2e694ac4b53a8918d4712ad876e7ea2'
+sha256sums=('b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c'
             'SKIP'
-            'b21d354acd613a91cb88328753ec3aaeb174d6af042d89c5fcf3bbcced370751'
-            '025a16d88ae7b17c013ed23beb02b8545b44673d2b8ecca748e63a79d5c1070d')
-validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
+            '1a668ef92eb181a7c021e8531a3ca89fd71aa1b3744db56f68365ab0a224c5cd'
+            '88b054b60b8009d02184ed0703b7fe200b8965af5c45268b7e99a11820119344')
+validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
+              86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
+              13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
+              33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
 
-if [ -n "$_snapshot" ]; then
-	_basedir=gcc-$_snapshot
-else
-	_basedir=gcc-$pkgver
-fi
+_basedir=gcc-$pkgver
 
 prepare() {
 	cd $_basedir
