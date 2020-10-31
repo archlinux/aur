@@ -11,7 +11,7 @@
 
 pkgname=openssh-selinux
 pkgver=8.4p1
-pkgrel=1
+pkgrel=2
 pkgdesc='Premier connectivity tool for remote login with the SSH protocol, with SELinux support'
 url='https://www.openssh.com/portable.html'
 license=('custom:BSD')
@@ -33,14 +33,16 @@ source=("https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname/-selinux
         'sshd.service'
         'sshd.conf'
         'sshd.pam'
-        'glibc-2.31.patch')
+        'glibc-2.31.patch'
+        '0001-Fix-EOF-command-not-found-error-in-ssh-copy-id.patch')
 sha256sums=('5a01d22e407eb1c05ba8a8f7c654d388a13e9f226e4ed33bd38748dafa1d2b24'
             'SKIP'
             '4031577db6416fcbaacf8a26a024ecd3939e5c10fe6a86ee3f0eea5093d533b7'
             'e40f8b7c8e5e2ecf3084b3511a6c36d5b5c9f9e61f2bb13e3726c71dc7d4fbc7'
             '4effac1186cc62617f44385415103021f72f674f8b8e26447fc1139c670090f6'
             '64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846'
-            '25b4a4d9e2d9d3289ef30636a30e85fa1c71dd930d5efd712cca1a01a5019f93')
+            '25b4a4d9e2d9d3289ef30636a30e85fa1c71dd930d5efd712cca1a01a5019f93'
+            'a9093693586ea1150ac50249ce8937f86cde7977efa54a324e3f1155110aff49')
 
 backup=('etc/ssh/ssh_config' 'etc/ssh/sshd_config' 'etc/pam.d/sshd')
 
@@ -50,6 +52,10 @@ prepare() {
 	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
 
 	patch -p1 -i ../glibc-2.31.patch
+
+        # Fix `EOF: command not found` error in ssh-copy-id
+        patch -p1 -i ../0001-Fix-EOF-command-not-found-error-in-ssh-copy-id.patch
+        
 	autoreconf
 }
 
