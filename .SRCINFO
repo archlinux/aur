@@ -1,7 +1,7 @@
 pkgbase = whale-browser
 	pkgdesc = A web browser that possess a lot of similar features as Vivaldi, being a customized pushed browser, multi-tasking browsing called Omnitasking, as well as other features such as cloud saves & quick translation
 	pkgver = stable
-	pkgrel = 1
+	pkgrel = 2
 	url = https://whale.naver.com/en
 	install = whale-browser.install
 	arch = x86_64
