@@ -1,7 +1,7 @@
 # Maintainer: kraxarn <me@kraxarn.com>
 
 pkgname=spotify-qt
-pkgver=2.12
+pkgver=3.0
 pkgrel=1
 pkgdesc="Lightweight Spotify client using Qt"
 arch=(x86_64)
@@ -14,7 +14,7 @@ optdepends=(
 	"spotifyd: Recommended playback client"
 )
 source=("$url/archive/v${pkgver}.tar.gz")
-sha256sums=("bc336dcf037adaee18885a2cceacf94ea30d17f592ea6b4a6c6fe797ceecbfec")
+sha256sums=("27856f0a0b928695639f771e36305927f8279d93f71a3884873759cefabda80c")
 
 build() {
 	cd "$pkgname-$pkgver"

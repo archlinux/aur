@@ -1,6 +1,6 @@
 pkgbase = spotify-qt
 	pkgdesc = Lightweight Spotify client using Qt
-	pkgver = 2.12
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://github.com/kraxarn/spotify-qt
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = spotify-qt
 	depends = hicolor-icon-theme
 	optdepends = librespot: Recommended playback client
 	optdepends = spotifyd: Recommended playback client
-	source = https://github.com/kraxarn/spotify-qt/archive/v2.12.tar.gz
-	sha256sums = bc336dcf037adaee18885a2cceacf94ea30d17f592ea6b4a6c6fe797ceecbfec
+	source = https://github.com/kraxarn/spotify-qt/archive/v3.0.tar.gz
+	sha256sums = 27856f0a0b928695639f771e36305927f8279d93f71a3884873759cefabda80c
 
 pkgname = spotify-qt
 
