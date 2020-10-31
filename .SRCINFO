@@ -1,6 +1,6 @@
 pkgbase = python-pyptt
 	pkgdesc = A PTT library that support PTT and PTT2
-	pkgver = 0.9.36
+	pkgver = 0.9.37
 	pkgrel = 1
 	url = https://github.com/PttCodingMan/PyPtt
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-pyptt
 	depends = python-uao
 	depends = python-beautifulsoup4
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/P/PyPtt/PyPtt-0.9.36.tar.gz
-	sha256sums = 335d720b84402b1b96ee2ce03b2077022c8ffd88cf6254a8665d151c4f258eca
+	source = https://files.pythonhosted.org/packages/source/P/PyPtt/PyPtt-0.9.37.tar.gz
+	sha256sums = 1ad3cf87745388c6c06321166c91104f6c16c76e45ab5288b1a5593a2681a02e
 
 pkgname = python-pyptt
 
