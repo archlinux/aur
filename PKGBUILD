@@ -3,7 +3,7 @@
 
 pkgname=kafkacat
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Generic command line non-JVM Apache Kafka producer and consumer'
 url="https://github.com/edenhill/kafkacat"
 license=('BSD')
@@ -18,13 +18,14 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/edenhill/kafkacat/archi
 sha256sums=('e67aecd153659d7ea0d561469a1e65038485fe9a3203fa8c9c59a9fe02164bf0')
 
 build() {
-  cd kafkacat-${pkgver}
+  cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr
+  sed -i -e 's/#define KAFKACAT_VERSION.*/#define KAFKACAT_VERSION "'"${pkgver}"'"/g' config.h
   make
 }
 
 package() {
-  cd kafkacat-${pkgver}
+  cd ${pkgname}-${pkgver}
   make install DESTDIR="$pkgdir"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
