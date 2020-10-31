@@ -16,7 +16,7 @@ optdepends=('realtime-privileges: Realtime privileges for users'
         'qastools: qasmixer desktop mixer application'
         'pavucontrol: PulseAudio Volume Control')
 provides=('studio-controls' 'studio-controls-git')
-conflicts=('studio-controls' 'studio-controls-git')
+conflicts=('studio-controls' 'studio-controls-git' 'cadence')
 replaces=()
 backup=()
 options=()

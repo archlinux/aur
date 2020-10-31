@@ -23,6 +23,7 @@ pkgbase = studio-controls-git
 	provides = studio-controls-git
 	conflicts = studio-controls
 	conflicts = studio-controls-git
+	conflicts = cadence
 	source = git+https://github.com/ovenwerks/studio-controls
 	md5sums = SKIP
 
