@@ -24,8 +24,7 @@ makedepends=('curl')
 conflicts=('redis-desktop-manager-bin' 'redis-desktop-manager')
 
 source=('rdm.desktop')
-sha256sums=('SKIP'
-            '5e96ea919336c483fba09fd40839a77f33dc98a0aa5e9de0c7570d9fd888f62e')
+sha256sums=('5e96ea919336c483fba09fd40839a77f33dc98a0aa5e9de0c7570d9fd888f62e')
 
 prepare() {
   curl -fsSOL https://github.com/pidario/rdm-build/releases/download/${pkgver}/rdm

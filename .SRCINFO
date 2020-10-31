@@ -21,7 +21,6 @@ pkgbase = rdm-bin
 	conflicts = redis-desktop-manager-bin
 	conflicts = redis-desktop-manager
 	source = rdm.desktop
-	sha256sums = SKIP
 	sha256sums = 5e96ea919336c483fba09fd40839a77f33dc98a0aa5e9de0c7570d9fd888f62e
 
 pkgname = rdm-bin
