@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-waffle
+	pkgdesc = a library for choosing window system and OpenGL API at runtime (mingw-w64)
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = http://www.waffle-gl.org
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://gitlab.freedesktop.org/mesa/waffle/-/archive/v1.6.1/waffle-v1.6.1.tar.gz
+	sha256sums = 4eb4dfe18b5a88e6ea2b6b0a0c415caeaa453ea8eb37a757c100e24e18c317dd
+
+pkgname = mingw-w64-waffle
+
