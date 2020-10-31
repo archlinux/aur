@@ -3,7 +3,7 @@
 _pkgname=tinygo
 pkgname=${_pkgname}-git
 pkgver=v0.15.0.r0.ge8615d10
-pkgrel=4
+pkgrel=5
 pkgdesc="Go compiler for small places. Microcontrollers, WebAssembly, and command-line tools. Based on LLVM."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://tinygo.org/"
@@ -36,6 +36,7 @@ source=(
   "git+https://github.com/CraneStation/wasi-libc"
   "git+https://github.com/keith-packard/picolibc"
   "disable_static_llvm.patch"
+  "0001-AUR-Use-package-TINYGOROOT-by-default-if-not-specifi.patch"
   "LICENSE.llvm::https://llvm.org/LICENSE.txt"
   "LICENSE.golang::https://raw.githubusercontent.com/golang/go/master/LICENSE"
 )
@@ -48,6 +49,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '7648bd3b4b78174d912908d35bff6f2b0fe5dfdf78e4aa2d3824b929fb244335'
+            '27574eabf8278634274cccc9ca106e5bc400c836c4c04a79079f1bd49e67fbe6'
             'f72b120d1385408e9e380acc020756eb6ba1b461d66c328ea67327ba08d7dcfd'
             '2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067')
 
@@ -71,6 +73,7 @@ prepare() {
     git submodule update
 
     patch -Np1 < "$srcdir"/disable_static_llvm.patch
+    patch -Np1 < "$srcdir"/0001-AUR-Use-package-TINYGOROOT-by-default-if-not-specifi.patch
 }
 
 build() {

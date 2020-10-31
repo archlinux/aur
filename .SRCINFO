@@ -1,7 +1,7 @@
 pkgbase = tinygo-git
 	pkgdesc = Go compiler for small places. Microcontrollers, WebAssembly, and command-line tools. Based on LLVM.
 	pkgver = v0.15.0.r0.ge8615d10
-	pkgrel = 4
+	pkgrel = 5
 	url = https://tinygo.org/
 	arch = i686
 	arch = pentium4
@@ -33,6 +33,7 @@ pkgbase = tinygo-git
 	source = git+https://github.com/CraneStation/wasi-libc
 	source = git+https://github.com/keith-packard/picolibc
 	source = disable_static_llvm.patch
+	source = 0001-AUR-Use-package-TINYGOROOT-by-default-if-not-specifi.patch
 	source = LICENSE.llvm::https://llvm.org/LICENSE.txt
 	source = LICENSE.golang::https://raw.githubusercontent.com/golang/go/master/LICENSE
 	sha256sums = SKIP
@@ -44,6 +45,7 @@ pkgbase = tinygo-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 7648bd3b4b78174d912908d35bff6f2b0fe5dfdf78e4aa2d3824b929fb244335
+	sha256sums = 27574eabf8278634274cccc9ca106e5bc400c836c4c04a79079f1bd49e67fbe6
 	sha256sums = f72b120d1385408e9e380acc020756eb6ba1b461d66c328ea67327ba08d7dcfd
 	sha256sums = 2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067
 

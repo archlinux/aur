@@ -1,0 +1,29 @@
+From 2833b22765a6041863f5a137e8e159a68acf9ace Mon Sep 17 00:00:00 2001
+From: Davide Depau <davide@depau.eu>
+Date: Sat, 31 Oct 2020 17:27:23 +0100
+Subject: [PATCH] AUR: Use package TINYGOROOT by default if not specified
+
+---
+ goenv/goenv.go | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/goenv/goenv.go b/goenv/goenv.go
+index fb5e353..3ab80c4 100644
+--- a/goenv/goenv.go
++++ b/goenv/goenv.go
+@@ -111,6 +111,12 @@ func sourceDir() string {
+ 		return root
+ 	}
+ 
++	// Fallback: use directory provided by the AUR package
++	root = filepath.Dir(filepath.Dir("/usr/lib/tinygo"))
++	if isSourceDir(root) {
++		return root
++	}
++
+ 	fmt.Fprintln(os.Stderr, "error: could not autodetect root directory, set the TINYGOROOT environment variable to override")
+ 	os.Exit(1)
+ 	panic("unreachable")
+-- 
+2.29.1
+
