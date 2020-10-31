@@ -2,7 +2,7 @@
 
 pkgname=zapier-platform-cli
 _pkgname="${pkgname%-platform-cli}"
-pkgver=10.1.1
+pkgver=10.1.2
 pkgrel=1
 pkgdesc='Gateway to creating custom applications on the Zapier platform'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('bash-completion: for tab completion')
 provides=("$_pkgname")
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=(8a703ff76cdedc635044d23ba2f797f46b89a2450bd35a3646d58edb6faea697)
+sha256sums=(6df999d17e92328fb8910fcbd6037d7399cfb50d106bb3ba1f937d99f198ca42)
 
 package() {
 	npm install --cache "$srcdir"/npm-cache -g --user root --prefix "$pkgdir"/usr "$srcdir"/$noextract
