@@ -3,6 +3,8 @@
 ALL_config="/etc/mkinitcpio.conf"
 ALL_kver="/boot/vmlinuz-linux-amd-raven"
 
+export COMPRESSION="lzop"
+
 PRESETS=('default' 'fallback')
 
 #default_config="/etc/mkinitcpio.conf"
