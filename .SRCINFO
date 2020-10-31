@@ -1,0 +1,14 @@
+pkgbase = todesk-bin
+	pkgdesc = Remote control and team work
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.todesk.cn/
+	arch = x86_64
+	license = custom
+	provides = todesk
+	conflicts = todesk
+	source = local://todesk20201010f.deb
+	sha256sums = 367b9ea53fd79283612e95a899b2f18488aa14e14b0beee4c26132475df75ee3
+
+pkgname = todesk-bin
+
