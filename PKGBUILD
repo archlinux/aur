@@ -5,7 +5,7 @@
 
 pkgname=python-exifread
 _name="exif-py"
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Python library to extract EXIF data from tiff and jpeg files"
 arch=('any')
@@ -16,8 +16,8 @@ makedepends=('python-setuptools')
 # 2.2.0+ was not properly uploaded to PyPi, download the tarball from project's
 # release page instead: https://github.com/ianare/exif-py/issues/102
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ianare/$_name/archive/$pkgver.tar.gz")
-sha1sums=('0982b11e578724400ca79026ca2d56a84a69c34b')
-sha256sums=('b6b012d72df9af6e8a4fb439914f3a293f0a63c2087c21e94f5b6e1221de45f4')
+sha1sums=('9653949851358b6a65fa784601bfe9306621aec6')
+sha256sums=('b595f8644a456d00df98b2f83b5fe17682bba0e7e9f7c8b39fb7130a80b73b0a')
 
 build() {
   cd "$_name-$pkgver"
