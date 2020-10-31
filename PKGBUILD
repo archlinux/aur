@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@birks.dev>
 
 pkgname=gnome-shell-extension-material-shell
-pkgver=8
+pkgver=9
 pkgrel=1
 pkgdesc='Tiling window extension for GNOME, following Material Design guidelines'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 conflicts=('gnome-shell-extension-material-shell-git')
 depends=('gnome-shell>=3.34')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/material-shell/material-shell/archive/$pkgver.tar.gz")
-b2sums=('61e607bd5149eb877d4cdff4d8605296fb32d601a52c26c0e75781710b7feee33541becbd85703523e9384aa2a4a70e876b8aaeedff5506841a35fae0f7463b5')
+b2sums=('2c2480ed6a92f433607d73267058625441b62147cb3567c6b06f26ee3a2424f754d0e39821d02da908ad0449ec064cd2c19ad5e1e4affe02cc373631e38082e7')
 
 package() {
     cd "$srcdir"/material-shell-$pkgver
