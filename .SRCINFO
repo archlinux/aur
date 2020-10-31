@@ -1,12 +1,12 @@
 pkgbase = cmakew
 	pkgdesc = CMake wrapper CLI tool
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thombashi/cmakew
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
+	makedepends = python-wheel
 	depends = python-logbook
 	depends = python-six
 	depends = python-subprocrunner
