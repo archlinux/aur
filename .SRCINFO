@@ -1,6 +1,6 @@
 pkgbase = tab-rs-git
 	pkgdesc = The intuitive config-driven terminal multiplexer
-	pkgver = 0.3.7.131.gfed3f93
+	pkgver = 0.5.0.178.g01c1852
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/austinjones/tab-rs

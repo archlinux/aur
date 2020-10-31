@@ -1,6 +1,6 @@
 pkgname=tab-rs-git
 _pkgname=tab-rs
-pkgver=0.3.7.131.gfed3f93
+pkgver=0.5.0.178.g01c1852
 epoch=1
 pkgrel=1
 pkgdesc="The intuitive config-driven terminal multiplexer"
@@ -22,11 +22,16 @@ pkgver() {
 
 build() {
 	cd $pkgname
-	cargo build --release
+	cargo build --release --locked --target-dir=target
 }
 
 package() {
 	cd $pkgname
+
 	install -D -m755 "$srcdir/$pkgname/target/release/tab" "$pkgdir/usr/bin/tab"
 	install -D -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+
+	install -Dm644 tab/src/completions/bash/tab.bash "$pkgdir/usr/share/bash-completion/completions/tab"
+	install -Dm644 tab/src/completions/zsh/_tab "$pkgdir/usr/share/zsh/site-functions/_tab"
+	install -Dm644 tab/src/completions/fish/tab.fish "$pkgdir/usr/share/fish/vendor_completions.d/tab.fish"
 }
