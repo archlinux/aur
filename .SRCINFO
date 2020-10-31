@@ -8,6 +8,7 @@ pkgbase = splunkforwarder
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = custom
 	conflicts = splunk
 	source = splunkforwarder.service
@@ -18,6 +19,8 @@ pkgbase = splunkforwarder
 	sha256sums_armv6h = 134ffae84dc3602b5bb765b9f479018a59fb9b10e23c51c155f50b0291e6bb7c
 	source_armv7h = https://download.splunk.com/products/universalforwarder/releases/8.1.0/linux/splunkforwarder-8.1.0-f57c09e87251-Linux-arm.tgz
 	sha256sums_armv7h = 134ffae84dc3602b5bb765b9f479018a59fb9b10e23c51c155f50b0291e6bb7c
+	source_aarch64 = https://download.splunk.com/products/universalforwarder/releases/8.1.0/linux/splunkforwarder-8.1.0-f57c09e87251-Linux-armv8.tgz
+	sha256sums_aarch64 = f9d2bf4e9e5c2a4e627b620a5b4f84352ac7fefaf09e302a53d1961ada08ee22
 
 pkgname = splunkforwarder
 
