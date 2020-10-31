@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=cie-middleware-git
-pkgver=r68.78d2e63
+pkgver=r75.ff8d6b9
 pkgrel=1
 pkgdesc="Middleware della CIE (Carta di Identità Elettronica) per Linux (mio fork)"
 arch=('any')
