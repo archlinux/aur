@@ -1,0 +1,12 @@
+pkgbase = kerbrute-bin
+	pkgdesc = A tool to perform Kerberos pre-auth bruteforcing
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/ropnop/kerbrute
+	arch = x86_64
+	license = Apache
+	source = kerbrute::https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64
+	sha256sums = 710a9d2653c8bd3689e451778dab9daec0de4c4c75f900788ccf23ef254b122a
+
+pkgname = kerbrute-bin
+
