@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=RealRTCW
+Comment=RealRTCW
+Exec=/usr/bin/realrtcw
+Icon=realrtcw
+Terminal=false
+Categories=Game
+StartupWMClass=RealRTCW.ARCH
+

@@ -1,121 +1,93 @@
 # Maintainer: robertfoster
 
-pkgbase=realrtcw
-pkgname=('realrtcw' 'realrtcw-hdpack' 'realrtcw-splatterladder')
-pkgver=3.0c
+pkgname=realrtcw
+pkgver=3.1n
 pkgrel=1
-pkgdesc="A mod that brings some realism to the classic Wolfenstein game. You can expect ruthless AI, new weapons and rebalanced gameplay"
+pkgdesc="An overhaul mod for critically acclaimed Return To Castle Wolfenstein."
 arch=('i686' 'x86_64')
 url="http://www.moddb.com/mods/realrtcw-realism-mod"
 license=('GPL')
 depends=('freetype2' 'graphite' 'harfbuzz' 'iortcw-data' 'libjpeg-turbo' 'libogg' 'openal' 'opus' 'opusfile' 'pcre' 'sdl2' 'zlib')
-makedepends=('unzip' 'innoextract')
+makedepends=('unzip')
 install='realrtcw.install'
-_commit="7e6dc5df09237b5d6b520c8bff9041aef61db943"
+_commit="d83161cbf8f3ebf5390dac3ccc0227543ec0989c"
+
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/${_commit}.tar.gz"
-	"$pkgname-$pkgver.zip::http://wolffiles.de/filebase/RtCW/Mods/RealRTCW_3.0_-_Complete_Edition.zip"
-	realrtcw.png
-	realrtcw-sp.launcher
-	realrtcw-sp.desktop
+  "$pkgname-$pkgver.zip::https://www.moddb.com/downloads/mirror/201571/125/9f598d20c7263f58fa8765d568cf020d"
+  "$pkgname.png"
+  "$pkgname.launcher"
+  "$pkgname.desktop"
 )
 
 prepare() {
-	cd $srcdir
+  cd $srcdir
 
-	# Unzipping with flattened paths
-	if [ ! -e setup.exe ]; then
-		# Unzipping with flattened paths
-		unzip -jo $pkgname-$pkgver.zip -d $srcdir
-	fi
-
-	# Extracting InnoSetup
-	if [ ! -d app ]; then
-		innoextract realrtcwsetup.exe
-	fi
+  # Unzipping with flattened paths
+  unzip -jo $pkgname-$pkgver.zip -d paks
 }
 
-package_realrtcw() {
-	cd "$srcdir"/RealRTCW-*
+package() {
+  cd "$srcdir/RealRTCW-${_commit}"
 
-	make USE_INTERNAL_LIBS=0 COPYDIR=$pkgdir/opt/realrtcw copyfiles
+  USE_INTERNAL_LIBS=0 \
+    COPYDIR=$pkgdir/opt/realrtcw \
+    make copyfiles
 
-	ln -s -r /opt/iortcw-data/pak0.pk3 $pkgdir/opt/realrtcw/main
-	ln -s -r /opt/iortcw-data/sp_pak1.pk3 $pkgdir/opt/realrtcw/main
-	ln -s -r /opt/iortcw-data/mp_pak0.pk3 $pkgdir/opt/realrtcw/main
+  ln -s -r /opt/iortcw-data/pak0.pk3 $pkgdir/opt/realrtcw/main
+  ln -s -r /opt/iortcw-data/sp_pak1.pk3 $pkgdir/opt/realrtcw/main
+  ln -s -r /opt/iortcw-data/mp_pak0.pk3 $pkgdir/opt/realrtcw/main
 
-	ln -s -r /opt/iortcw-data/mp_bin.pk3 $pkgdir/opt/realrtcw/main
-	ln -s -r /opt/iortcw-data/mp_pak1.pk3 $pkgdir/opt/realrtcw/main
-	ln -s -r /opt/iortcw-data/mp_pak2.pk3 $pkgdir/opt/realrtcw/main
-	ln -s -r /opt/iortcw-data/mp_pak3.pk3 $pkgdir/opt/realrtcw/main
-	ln -s -r /opt/iortcw-data/mp_pak4.pk3 $pkgdir/opt/realrtcw/main
-	ln -s -r /opt/iortcw-data/mp_pak5.pk3 $pkgdir/opt/realrtcw/main
-	ln -s -r /opt/iortcw-data/mp_pakmaps0.pk3 $pkgdir/opt/realrtcw/main
-	ln -s -r /opt/iortcw-data/mp_pakmaps1.pk3 $pkgdir/opt/realrtcw/main
-	ln -s -r /opt/iortcw-data/mp_pakmaps2.pk3 $pkgdir/opt/realrtcw/main
-	ln -s -r /opt/iortcw-data/mp_pakmaps3.pk3 $pkgdir/opt/realrtcw/main
-	ln -s -r /opt/iortcw-data/mp_pakmaps4.pk3 $pkgdir/opt/realrtcw/main
-	ln -s -r /opt/iortcw-data/mp_pakmaps5.pk3 $pkgdir/opt/realrtcw/main
-	ln -s -r /opt/iortcw-data/mp_pakmaps6.pk3 $pkgdir/opt/realrtcw/main
-	ln -s -r /opt/iortcw-data/sp_pak2.pk3 $pkgdir/opt/realrtcw/main
-	ln -s -r /opt/iortcw-data/sp_pak3.pk3 $pkgdir/opt/realrtcw/main
-	ln -s -r /opt/iortcw-data/sp_pak4.pk3 $pkgdir/opt/realrtcw/main
+  ln -s -r /opt/iortcw-data/mp_bin.pk3 $pkgdir/opt/realrtcw/main
+  ln -s -r /opt/iortcw-data/mp_pak1.pk3 $pkgdir/opt/realrtcw/main
+  ln -s -r /opt/iortcw-data/mp_pak2.pk3 $pkgdir/opt/realrtcw/main
+  ln -s -r /opt/iortcw-data/mp_pak3.pk3 $pkgdir/opt/realrtcw/main
+  ln -s -r /opt/iortcw-data/mp_pak4.pk3 $pkgdir/opt/realrtcw/main
+  ln -s -r /opt/iortcw-data/mp_pak5.pk3 $pkgdir/opt/realrtcw/main
+  ln -s -r /opt/iortcw-data/mp_pakmaps0.pk3 $pkgdir/opt/realrtcw/main
+  ln -s -r /opt/iortcw-data/mp_pakmaps1.pk3 $pkgdir/opt/realrtcw/main
+  ln -s -r /opt/iortcw-data/mp_pakmaps2.pk3 $pkgdir/opt/realrtcw/main
+  ln -s -r /opt/iortcw-data/mp_pakmaps3.pk3 $pkgdir/opt/realrtcw/main
+  ln -s -r /opt/iortcw-data/mp_pakmaps4.pk3 $pkgdir/opt/realrtcw/main
+  ln -s -r /opt/iortcw-data/mp_pakmaps5.pk3 $pkgdir/opt/realrtcw/main
+  ln -s -r /opt/iortcw-data/mp_pakmaps6.pk3 $pkgdir/opt/realrtcw/main
+  ln -s -r /opt/iortcw-data/sp_pak2.pk3 $pkgdir/opt/realrtcw/main
+  ln -s -r /opt/iortcw-data/sp_pak3.pk3 $pkgdir/opt/realrtcw/main
+  ln -s -r /opt/iortcw-data/sp_pak4.pk3 $pkgdir/opt/realrtcw/main
 
-	ln -s -r /opt/iortcw-data/openurl.sh   $pkgdir/opt/realrtcw/openurl.sh
+  ln -s -r /opt/iortcw-data/openurl.sh $pkgdir/opt/realrtcw/openurl.sh
 
-	# Installing RealRTCW pk3
-	install -m 644 $srcdir/app/Main/z_realrtcw.pk3 \
-		$pkgdir/opt/realrtcw/main
+  # Installing RealRTCW pk3
+  for i in paks/*.pk3; do
+    install -m 644 "$srcdir"/$i \
+      "$pkgdir/opt/realrtcw/main"
+  done
 
-	install -m 644 $srcdir/app/Main/z_trainingday.pk3 \
-		$pkgdir/opt/realrtcw/main
+  # Modify Launcher Scripts
+  if [ "$CARCH" = "x86_64" ]; then
+    # x86_64 Systems
+    TARGET=x86_64
+  else
+    # i686 Systems
+    TARGET=x86
+  fi
+  sed -i "s:ARCH:$TARGET:" \
+    $srcdir/realrtcw.*
 
-	for i in $(find ../app/ -type d -name "RealRTCW_*"); do
-		cp -r $srcdir/app/$i $pkgdir/opt/realrtcw/
-	done
+  # Install Launcher Script (Single Player Client)
+  install -D -m 755 "$srcdir/realrtcw.launcher" \
+    "$pkgdir/usr/bin/realrtcw"
 
-	# Modify Launcher Scripts
-	if [ "$CARCH" = "x86_64" ]; then
-		# x86_64 Systems
-		TARGET=x86_64
-	else
-		# i686 Systems
-		TARGET=x86
-	fi
-	sed -i "s:ARCH:$TARGET:" \
-		$srcdir/realrtcw-sp.*
+  # Install Desktop File (Single Player)
+  install -D -m 644 "$srcdir/realrtcw.desktop" \
+    "$pkgdir/usr/share/applications/realrtcw.desktop"
 
-	# Install Launcher Script (Single Player Client)
-	install -D -m 755 $srcdir/realrtcw-sp.launcher \
-		$pkgdir/usr/bin/realrtcw-sp
-
-	# Install Desktop File (Single Player)
-	install -D -m 644 $srcdir/realrtcw-sp.desktop \
-		$pkgdir/usr/share/applications/realrtcw-sp.desktop
-
-	# Install Icon File (Single Player)
-	install -Dm 644 $srcdir/realrtcw.png \
-		$pkgdir/usr/share/pixmaps/realrtcw.png
+  # Install Icon File (Single Player)
+  install -Dm 644 "$srcdir/realrtcw.png" \
+    "$pkgdir/usr/share/icons/hicolor/512x512/apps/realrtcw.png"
 }
 
-package_realrtcw-hdpack() {
-	pkgdesc="RTCW Vanilla textures upscaled by AI. This is for those who prefer original style and atmosphere of the game."
-
-	# Installing RealRTCW HD pack pk3
-	install -D -m 644 $srcdir/app/Main/z_hdpack.pk3 \
-		$pkgdir/opt/realrtcw/main/z_hdpack.pk3
-}
-
-package_realrtcw-splatterladder() {
-	pkgdesc="Splatterladder RtCW HD Pack: an amazing pack with true HD textures made by WolfRTCW."
-	conflicts=('realrtcw-hdpack')
-	replaces=('realrtcw-hdpack')
-	# Installing RealRTCW HD pack pk3
-	install -D -m 644 $srcdir/app/Main/z_Sl_RtCWHD.pk3 \
-		$pkgdir/opt/realrtcw/main/z_Sl_RtCWHD.pk3
-}
-
-md5sums=('06f02af2682825e3692fec9dbe9a1085'
-         'b31a4f9d8b9716a74b7384714a478b1d'
-         '13fd3f1ac91dff9ef31d02158f9b58d9'
-         '7e3991e5f331662419ad1ed04e49366c'
-         '5fcd49cca83f7bba0d75c6b4b5801f95')
+md5sums=('f0d07eef3bcde761727eca023aef2b4f'
+  '6f140b9df87f6fb362c323b0b5656710'
+  '19ef21acfceb965f36b53b70267641d1'
+  '7e3991e5f331662419ad1ed04e49366c'
+  '88752202a0da9bc9cb467b6f0f201132')

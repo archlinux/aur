@@ -1,6 +1,6 @@
 pkgbase = realrtcw
-	pkgdesc = A mod that brings some realism to the classic Wolfenstein game. You can expect ruthless AI, new weapons and rebalanced gameplay
-	pkgver = 3.0c
+	pkgdesc = An overhaul mod for critically acclaimed Return To Castle Wolfenstein.
+	pkgver = 3.1n
 	pkgrel = 1
 	url = http://www.moddb.com/mods/realrtcw-realism-mod
 	install = realrtcw.install
@@ -8,7 +8,6 @@ pkgbase = realrtcw
 	arch = x86_64
 	license = GPL
 	makedepends = unzip
-	makedepends = innoextract
 	depends = freetype2
 	depends = graphite
 	depends = harfbuzz
@@ -21,24 +20,16 @@ pkgbase = realrtcw
 	depends = pcre
 	depends = sdl2
 	depends = zlib
-	source = realrtcw-3.0c.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/7e6dc5df09237b5d6b520c8bff9041aef61db943.tar.gz
-	source = realrtcw-3.0c.zip::http://wolffiles.de/filebase/RtCW/Mods/RealRTCW_3.0_-_Complete_Edition.zip
+	source = realrtcw-3.1n.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/d83161cbf8f3ebf5390dac3ccc0227543ec0989c.tar.gz
+	source = realrtcw-3.1n.zip::https://www.moddb.com/downloads/mirror/201571/125/9f598d20c7263f58fa8765d568cf020d
 	source = realrtcw.png
-	source = realrtcw-sp.launcher
-	source = realrtcw-sp.desktop
-	md5sums = 06f02af2682825e3692fec9dbe9a1085
-	md5sums = b31a4f9d8b9716a74b7384714a478b1d
-	md5sums = 13fd3f1ac91dff9ef31d02158f9b58d9
+	source = realrtcw.launcher
+	source = realrtcw.desktop
+	md5sums = f0d07eef3bcde761727eca023aef2b4f
+	md5sums = 6f140b9df87f6fb362c323b0b5656710
+	md5sums = 19ef21acfceb965f36b53b70267641d1
 	md5sums = 7e3991e5f331662419ad1ed04e49366c
-	md5sums = 5fcd49cca83f7bba0d75c6b4b5801f95
+	md5sums = 88752202a0da9bc9cb467b6f0f201132
 
 pkgname = realrtcw
-
-pkgname = realrtcw-hdpack
-	pkgdesc = RTCW Vanilla textures upscaled by AI. This is for those who prefer original style and atmosphere of the game.
-
-pkgname = realrtcw-splatterladder
-	pkgdesc = Splatterladder RtCW HD Pack: an amazing pack with true HD textures made by WolfRTCW.
-	conflicts = realrtcw-hdpack
-	replaces = realrtcw-hdpack
 
