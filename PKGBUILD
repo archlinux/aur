@@ -1,6 +1,6 @@
 pkgname=jitsi-videobridge-git
-pkgver=r3063.a4bfc7f2
-pkgrel=2
+pkgver=r3249.0c2ac250e
+pkgrel=1
 pkgdesc="Videobridge for Jitsi Meet"
 arch=("x86_64")
 url="https://github.com/jitsi/jitsi-videobridge"
@@ -31,7 +31,7 @@ pkgver() {
 build() {
     cd "jitsi-videobridge"
     mvn package -DskipTests -Dassembly.skipAssembly=false
-    unzip -o target/jitsi-videobridge-2.1-SNAPSHOT-archive.zip
+    unzip -o jvb/target/jitsi-videobridge-2.1-SNAPSHOT-archive.zip
 }
 
 package() {
