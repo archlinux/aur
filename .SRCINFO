@@ -1,6 +1,6 @@
 pkgbase = rocm-opencl-runtime
 	pkgdesc = Radeon Open Compute - OpenCL runtime
-	pkgver = 3.8.0
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = rocm-opencl-runtime
 	depends = opencl-icd-loader
 	provides = opencl-driver
 	conflicts = opencl-amdgpu-pro-pal
-	source = rocm-opencl-runtime-3.8.0.tar.gz::https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/rocm-3.8.0.tar.gz
-	sha256sums = 7f75dd1abf3d771d554b0e7b0a7d915ab5f11a74962c92b013ee044a23c1270a
+	source = rocm-opencl-runtime-3.9.0.tar.gz::https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/rocm-3.9.0.tar.gz
+	sha256sums = 286ff64304905384ce524cd8794c28aee216befd6c9267d4187a12e5a21e2daf
 
 pkgname = rocm-opencl-runtime
 
