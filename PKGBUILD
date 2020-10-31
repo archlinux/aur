@@ -8,7 +8,7 @@ _pkgname=spotify
 pkgver=1.1.42.622
 _commit=gbd112320
 _rel=37
-pkgrel=2
+pkgrel=3
 pkgdesc="A proprietary music streaming service"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
@@ -21,7 +21,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-Release::http://repository.spotify.com/dists/testing/Release"
-	"${_pkgname}-Release::http://repository.spotify.com/dists/testing/Release.gpg"
+	"${_pkgname}-Release.sig::http://repository.spotify.com/dists/testing/Release.gpg"
 	"${_pkgname}-${pkgver}-${CARCH}.deb::http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_commit}-${_rel}_amd64.deb"
 	"${_pkgname}-${CARCH}-Packages::http://repository.spotify.com/dists/testing/non-free/binary-amd64/Packages"
 	'LICENSE')
@@ -30,7 +30,7 @@ sha512sums=('SKIP'
 	'a3fe98d69460ffd641df3219c2a3d164a33e2b52c86a56276e473dd5c3a43d6304df3b77fefcf0ca6c09cb6e2c8dacab65573cf7543725b6c8d402832149e122'
 	'SKIP'
 	'2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615')
-validpgpkeys=('931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90')
+validpgpkeys=('8FD3D9A8D3800305A9FFF259D1742AD60D811D58')
 
 # Spotify uses different names for the arch
 _SPOTIFY_ARCH=amd64
