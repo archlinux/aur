@@ -8,7 +8,7 @@ pkgver=2.11
 pkgrel=1
 pkgdesc="Small-footprint color management engine, version 2 (mingw-w64)"
 arch=('any')
-url="http://www.littlecms.com"
+url="https://littlecms.com/color-engine/"
 license=('MIT')
 depends=('mingw-w64-crt'
          'mingw-w64-libtiff')
