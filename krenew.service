@@ -4,7 +4,7 @@ Description=Kerberos Ticket Renewal Daemon
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/krenew -K30 -a -H30 -i -b -L -v
+ExecStart=/usr/bin/krenew -K30 -a -H30 -i -b -L
 # -K30	Run forever, wake up every 30 min
 # -a	Renew on every wakeup
 # -H30	Only renew if less than 30 min

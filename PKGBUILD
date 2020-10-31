@@ -12,7 +12,7 @@ source=("https://archives.eyrie.org/software/kerberos/$pkgname-$pkgver.tar.gz"
         "krenew.service")
 sha256sums=('2698bc1ab2fb36d49cc946b0cb864c56dd3a2f9ef596bfff59592e13d35315cd'
             'SKIP'
-            '481c2a34ab3774d15ed9f86de85b242f448067b02ba178f86a8db2ee8a26dd10')
+            'ca57afd39be992371d1008f3ac5058e1bdec537358643f32fbc13e813e007506')
 validpgpkeys=('E784364E8DDE7BB370FBD9EAD15D313882004173')
 
 build() {
