@@ -2,7 +2,7 @@
 
 _pkgname=kube-linter
 pkgname=$_pkgname-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure the applications represented in them adhere to best practices."
 url="https://github.com/stackrox/$_pkgname"
