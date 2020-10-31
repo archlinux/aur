@@ -10,6 +10,7 @@ url=https://github.com/mattn/efm-langserver
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
+optdepends=('ctags: for "go to definition" requests')
 source=("$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 b2sums=('5f29002c3fd80a759102201fac9e973dfe134cab53c96ace10b8a6d06dd690141b0f2e867174a634492c3c5eb87c2f389393a13ced4cb87d1c3781b58b946740')
 
