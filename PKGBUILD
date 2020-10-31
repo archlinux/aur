@@ -5,16 +5,17 @@
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 pkgname=icaclient
 pkgver=20.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Citrix Workspace App for x86_64 (64bit) Linux (ICAClient, Citrix Receiver)"
 arch=('x86_64' 'i686' 'armv7h')
 url='https://www.citrix.com/downloads/workspace-app/linux/'
 license=('custom:Citrix')
-depends=('alsa-lib' 'libvorbis' 'curl' 'gtk2' 'libpng12' 'libxaw' 'libxp' 'speex' 'libjpeg6-turbo' 'libsoup' 'gst-plugins-base-libs' 'libidn11' 'libc++')
+depends=('alsa-lib' 'libvorbis' 'curl' 'gtk2' 'libpng12' 'libxaw' 'libxp' 'speex' 'libjpeg6-turbo' 'libsoup' 'gst-plugins-base-libs' 'libidn11')
 makedepends=('automake' 'autoconf' 'wget')
 optdepends=(
   'xerces-c: gtk2 configuration manager'
-  'webkit2gtk: gtk2 selfservice/storefront ui')
+  'webkit2gtk: gtk2 selfservice/storefront ui'
+  'libc++: for HDXTeams')
 conflicts=('bin32-citrix-client' 'citrix-client')
 options=(!strip)
 backup=("opt/Citrix/ICAClient/config/appsrv.ini" "opt/Citrix/ICAClient/config/wfclient.ini" "opt/Citrix/ICAClient/config/module.ini")
