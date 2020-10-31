@@ -1,7 +1,7 @@
 pkgbase = megacmd-bin
 	pkgdesc = MEGA Command Line Interactive and Scriptable Application
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = http://mega.nz/cmd
 	arch = x86_64
 	license = custom
@@ -19,9 +19,12 @@ pkgbase = megacmd-bin
 	provides = megacmd
 	provides = ffmpeg-mega
 	source = LICENSE
-	sha256sums = 772d38729ab816eb94dbe30de277ffcc5af4e5d2c451cf7c071031ebe78f44ea
-	source_x86_64 = https://mega.nz/linux/MEGAsync/Arch_Extra/x86_64/megacmd-x86_64.pkg.tar.xz
-	sha256sums_x86_64 = SKIP
+	source = https://mega.nz/linux/MEGAsync/Arch_Extra/x86_64/megacmd-1.4.0-11-x86_64.pkg.tar.zst
+	source = https://mega.nz/linux/MEGAsync/Arch_Extra/x86_64/megacmd-1.4.0-11-x86_64.pkg.tar.zst.sig
+	validpgpkeys = 8F208FBF12FEE766AA32AEAF03C3AD3A7F068E5D
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = megacmd-bin
 
