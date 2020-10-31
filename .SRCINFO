@@ -1,14 +1,14 @@
 pkgbase = vgrep
 	pkgdesc = Reimpementation of the ancient cgvg perl scripts
-	pkgver = 2.4.0
-	pkgrel = 2
+	pkgver = 2.5.0
+	pkgrel = 1
 	url = https://github.com/vrothberg/vgrep
 	arch = x86_64
 	arch = i686
 	license = GPL3
 	depends = go
-	source = vgrep-2.4.0.tar.gz::https://github.com/vrothberg/vgrep/archive/v2.4.0.tar.gz
-	sha256sums = d0dd594156638158f7163d37169dd02e3a82eabfa6c8f57d6eb1dfa89c669c03
+	source = vgrep-2.5.0.tar.gz::https://github.com/vrothberg/vgrep/archive/v2.5.0.tar.gz
+	sha256sums = 5155ac4d8f747282bd21f4994d9a7c438b6c3affee1c8d1cd1966ae5764510b1
 
 pkgname = vgrep
 
