@@ -1,4 +1,4 @@
-# Maintainer: Hunter Peavey < printf "srht@die.bots" | sed "s/die.bots/krathalan.net/g" >
+# Maintainer: Dimitri Merejkowsky <d.merej at gmail.com>
 # https://wiki.archlinux.org/index.php/Rust_package_guidelines
 
 pkgname=agate
