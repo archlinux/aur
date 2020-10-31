@@ -1,0 +1,15 @@
+[Unit]
+Description=Matrix bot to remind you about stuff.
+After=network-online.target
+Requires=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/matrix-reminder-bot /etc/matrix-reminder-bot/config.yaml
+WorkingDirectory=/var/lib/matrix-reminder-bot
+DynamicUser=true
+ConfigurationDirectory=matrix-reminder-bot
+StateDirectory=matrix-reminder-bot
+
+[Install]
+WantedBy=multi-user.target
