@@ -2,41 +2,40 @@
 # Contributor: Dino Krtanjek <krtanjekdino@gmail.com>
 
 pkgname=python-iniparse
-pkgver=0.4
-pkgrel=2
+_name=${pkgname#python-}
+pkgver=0.5
+pkgrel=1
 pkgdesc="Better INI parser library for Python"
 arch=('any')
 license=('custom:MIT')
-url="https://pypi.python.org/pypi/iniparse"
+url="https://github.com/candlepin/$pkgname"
 depends=('python' 'python-six')
+makedepends=('python-setuptools')
 checkdepends=('python-tests')
-source=("https://pypi.python.org/packages/source/i/iniparse/iniparse-$pkgver.tar.gz"
-        "http://src.fedoraproject.org/rpms/$pkgname/raw/master/f/$pkgname-python3-compat.patch")
-md5sums=('5e573e9e9733d97623881ce9bbe5eca6'
-         'e0eaf5cc93b73983aab71be56613ae7b')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+md5sums=('2054bab923df21107652d009f2373789')
 
 prepare() {
-	cd "iniparse-$pkgver"
-	patch -p0 < "$srcdir/"$pkgname-python3-compat.patch
+	cd "$_name-$pkgver"
 
 	# Avoid conflict with doc files from python2-iniparse
-	sed -e "s|share/doc/iniparse-|share/doc/$pkgname-|" \
+	sed -e "s|share/doc/$_name-|share/doc/$pkgname-|" \
 	    -i setup.py
 }
 
 build() {
-	cd "iniparse-$pkgver"
+	cd "$_name-$pkgver"
 	python ./setup.py build
 }
 
 check() {
-	cd "iniparse-$pkgver"
+	cd "$_name-$pkgver"
 	python runtests.py
 }
 
 package() {
-	cd "iniparse-$pkgver"
-	python ./setup.py install --root="$pkgdir/" --optimize=1
+	cd "$_name-$pkgver"
+	python ./setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
 	install -m755 -d "$pkgdir/usr/share/licenses/$pkgname/"
 	mv "$pkgdir/usr/share/doc/$pkgname-$pkgver/"LICENSE* \

@@ -1,17 +1,16 @@
 pkgbase = python-iniparse
 	pkgdesc = Better INI parser library for Python
-	pkgver = 0.4
-	pkgrel = 2
-	url = https://pypi.python.org/pypi/iniparse
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/candlepin/python-iniparse
 	arch = any
 	license = custom:MIT
 	checkdepends = python-tests
+	makedepends = python-setuptools
 	depends = python
 	depends = python-six
-	source = https://pypi.python.org/packages/source/i/iniparse/iniparse-0.4.tar.gz
-	source = http://src.fedoraproject.org/rpms/python-iniparse/raw/master/f/python-iniparse-python3-compat.patch
-	md5sums = 5e573e9e9733d97623881ce9bbe5eca6
-	md5sums = e0eaf5cc93b73983aab71be56613ae7b
+	source = https://files.pythonhosted.org/packages/source/i/iniparse/iniparse-0.5.tar.gz
+	md5sums = 2054bab923df21107652d009f2373789
 
 pkgname = python-iniparse
 
