@@ -1,0 +1,21 @@
+pkgbase = dxcompress-git
+	pkgdesc = Compression and decompression utility
+	pkgver = 1.0.r0.g65946d5
+	pkgrel = 1
+	url = https://github.com/dennis95/dxcompress
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = xz
+	depends = zlib
+	provides = dxcompress
+	provides = gzip
+	provides = ncompress
+	conflicts = dxcompress
+	conflicts = gzip
+	conflicts = ncompress
+	source = git+https://github.com/dennis95/dxcompress
+	sha256sums = SKIP
+
+pkgname = dxcompress-git
+
