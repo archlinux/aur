@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.9.1.arch1
+pkgver=5.9.2.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -94,8 +94,8 @@ source=(
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
     sphinx-workaround.patch
-    0009-prjc_v5.9-r0.patch
-    0005-glitched-pds.patch
+    0005-v5.9_undead-pds099o.patch
+    0005-undead-glitched-pds.patch
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -104,10 +104,10 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '29e6b6b45fec5a93cfdd41d2286c406ed94aaee0148df0e452ace250eeff9287cf87d9a339af34b9beec690db5a3b439a2c7c441313f05f577a4e11b056b1610'
+            'cefb516ae87c748f8fa6c5f227d932938be06e32774305cbea4d29c342359ffcd4eed21b80cb560d0a3e0a016c801a1446034b5aec521808f0e27d5897e155d9'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
-            'afc135ec7c147ab6dc22e34f1f3373bde30a3a5fb77032832470ededf97a0a1a3e1fd4294bd0a03ef3edc51a10331ba7e37e63d5f6d6d603111600693bac9755'
-            '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
+            'e41d0f8a3ace142947fc5497f7377cf5a497ce1764ca96fdc6dc4915b027ac99a15296ad22c4ef99a3a5eb812614b5b280480249747a5c318452543cd85ce620'
+            '2cf83af1322f0fe5b9751e2b77fa1c890c7c22d9213b1cdfb57ca7f7a89a2cb263c213e178417ae1b7e947b386796b4b71507b127ec698cba661799346b33bbd')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -124,8 +124,8 @@ prepare() {
     PatchesArray=(
         sphinx-workaround.patch
         $_reponame_gcc_patch/$_gcc_patch_name
-        0009-prjc_v5.9-r0.patch
-        0005-glitched-pds.patch
+        0005-v5.9_undead-pds099o.patch
+        0005-undead-glitched-pds.patch
     )
     for MyPatch in "${PatchesArray[@]}"
     do
@@ -155,7 +155,7 @@ prepare() {
     fi
     
     # Set yield_type to 0
-    sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 0;/' ./kernel/sched/alt_core.c
+    sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 0;/' ./kernel/sched/pds.c
 
     # do not run 'make olddefconfig' as it sets default options
     yes "" | make config >/dev/null
