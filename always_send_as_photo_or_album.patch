@@ -3,23 +3,15 @@ photo or album by default.
 Credits: udf
 
 diff --git a/Telegram/SourceFiles/boxes/send_files_box.cpp b/Telegram/SourceFiles/boxes/send_files_box.cpp
-index 32ff2af77..28c32cced 100644
+index 79cf159dd..814e3a4de 100644
 --- a/Telegram/SourceFiles/boxes/send_files_box.cpp
 +++ b/Telegram/SourceFiles/boxes/send_files_box.cpp
-@@ -1947,15 +1947,7 @@ void SendFilesBox::initSendWay() {
- 				? SendFilesWay::Album
- 				: SendFilesWay::Photos;
- 		}
--		const auto way = Core::App().settings().sendFilesWay();
--		if (way == SendFilesWay::Files) {
--			return way;
--		} else if (way == SendFilesWay::Album) {
--			return _list.albumIsPossible
--				? SendFilesWay::Album
--				: SendFilesWay::Photos;
--		}
--		return (_list.albumIsPossible && !_albumPhotosCount)
-+		return _list.albumIsPossible
- 			? SendFilesWay::Album
- 			: SendFilesWay::Photos;
- 	}();
+@@ -425,6 +425,8 @@ void SendFilesBox::openDialogToAddFileToAlbum() {
+ void SendFilesBox::initSendWay() {
+ 	_sendWay = [&] {
+ 		auto result = Core::App().settings().sendFilesWay();
++		result.setGroupFiles(true);
++		result.setSendImagesAsPhotos(true);
+ 		if (_sendLimit == SendLimit::One) {
+ 			result.setGroupFiles(true);
+ 			return result;

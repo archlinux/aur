@@ -1,0 +1,11 @@
+diff --git a/external/webrtc/CMakeLists.txt b/external/webrtc/CMakeLists.txt
+index 8adb2d2..a354057 100644
+--- a/cmake/external/webrtc/CMakeLists.txt
++++ b/cmake/external/webrtc/CMakeLists.txt
+@@ -98,6 +98,5 @@ else()
+     INTERFACE
+         ${webrtc_libs_list}
+         desktop-app::external_openssl
+-        desktop-app::external_jpeg
+     )
+ endif()

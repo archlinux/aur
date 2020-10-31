@@ -2,7 +2,7 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop9
-pkgver=2.4.2
+pkgver=2.4.5
 pkgrel=1
 pkgdesc='Official Telegram Desktop client (personal build)'
 arch=('x86_64')
@@ -23,16 +23,18 @@ source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver
         "always_send_as_photo_or_album.patch"
         "clicky_sticker_panel.patch"
         "dont_pulse_mentions.patch"
-        "no_circles.patch")
-sha512sums=('e626ac2f74b7ba9c8db847b26275d88d4c95beb3c2b8787d0ecdc7dc1b40548e825056acf45ece1e647e6a3d6da7215d16d908f443da311b9d99769639c19ad3'
+        "no_circles.patch"
+        "remove_external_jpeg_for_webrtc.patch")
+sha512sums=('d0c792fcd890a95b24233f37cdfc34008e814f6f0730722a41916e25d2efff405fd472bd6b45bbfc79787ed117dc5f87271c438d92ec1ce29335cabe76a1062e'
             '3a7a20ace7dcea5be202e7b3008807ba0ae38ae8266709e3595f6b3c0aa2bf81299da4b5a7e7d66d2d9b3040cc6618e67e4d7b9572b2649db4c477056e649bcf'
             'b3c44e76a3907f7acc197746b471564577e912bf0561e9576dc8459211c88f400716437bcaa10967376461c69c8a98a56477d26d3feb9ca34747d9208bf5f6c6'
             'fdef3a430bdd60d88c9e9011ee878805e7803699204a2a7e22797d0f8729bf7dc0543851083ad700a4ece32bc768b6bfeb6f0135c8c039e035b22afb6df1171d'
-            '91a0edab6408a223db77b75df5a913ffd36efa79340e8d78fa01ac2c3b6e09d5a5fc7fa214ccd40473093809f86b7aef199cebf56a1d5821c20083c4a3e5780b'
-            'f934856707feec5c141ea2d03bf3fb5583c7a9065c46ce0bc3cbf7cbc853ad0c6ee64267eba66a94ce7b85caf9f61cb4c661295ca84f361ec049ee2de128d6dd'
+            'dc5ffda130496c44bfe52792e856dac811b1a8e48b463529dd54396ad1b45915f8b6d9fcb6cb254f9350b3440d7b94a67d1c19660962f0350015061b021af6f1'
+            '4da055da633b40b6133d14fd13d1aa9d933b3ba4b19370bc0edbccc02d4e31a9291191f7dc3a2aca9225da8dabca6ed33f90ab757435bebd034b6fed28ac8092'
             '010d0ea4e39170077e066858746411f1cc90bb6a9f343b29dbc82b1e963815e4ce220da2a1203661c57fe1810667a2bed34a4f02220fa75f2bc209c5e8472873'
             '673e2a28781d0d604549c621592b1017ad306ddaf6d1beedfe73f3f1357fbb6afd994a324dfa15029789bdf8a4d6e85ad12a3877519618f6585bbc1927c06900'
-            '8ec6b1739a1391b75a2653fff704a7d22e830c526acffe138936bbd20047bd24831e42558fa22069d7e914e762bbcfa2e1b14a8fd3911fd8bbbd0662d8baac14')
+            '8ec6b1739a1391b75a2653fff704a7d22e830c526acffe138936bbd20047bd24831e42558fa22069d7e914e762bbcfa2e1b14a8fd3911fd8bbbd0662d8baac14'
+            '8801aa52a6a7d844503ce1af43748db73ebfd5603b82c8bc2b297df1ff9227267ec3fad5844bcb7f85d95e09354469b5ddfd50fa17b7699eb638beac39738c02')
 
 prepare() {
     cd "$srcdir/tdesktop-$pkgver-full"
