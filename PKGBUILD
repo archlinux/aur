@@ -1,7 +1,7 @@
 # Maintainer: Tobias Frisch <thejackimonster@gmail.com>
 
 pkgname=cadet-gtk-git
-pkgver=0.6.0.r0.g8436195
+pkgver=0.6.0
 pkgrel=2
 pkgdesc="A GTK based GUI for the CADET subsystem of GNUnet."
 url="https://gitlab.com/gnunet-messenger/cadet-gtk"
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd cadet-gtk
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git tag | sort -r | head -1 | cut -c2-
 }
 
 build() {

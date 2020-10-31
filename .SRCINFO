@@ -1,6 +1,6 @@
 pkgbase = cadet-gtk-git
 	pkgdesc = A GTK based GUI for the CADET subsystem of GNUnet.
-	pkgver = 0.6.0.r0.g8436195
+	pkgver = 0.6.0
 	pkgrel = 2
 	url = https://gitlab.com/gnunet-messenger/cadet-gtk
 	arch = any
