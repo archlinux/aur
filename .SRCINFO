@@ -1,15 +1,15 @@
 pkgbase = rattlesnakeos-stack-bin
 	pkgdesc = RattlesnakeOS stack tool to install RattlesnakeOS on your phone
-	pkgver = 10.0.10
+	pkgver = 11.0.4
 	pkgrel = 1
 	url = https://github.com/dan-v/rattlesnakeos-stack
 	arch = x86_64
 	license = GPL3
 	makedepends = unzip
 	optdepends = aws-cli: Universal Command Line Interface for Amazon Web Services
-	noextract = rattlesnakeos-stack-bin-10.0.10.zip
-	source = rattlesnakeos-stack-bin-10.0.10.zip::https://github.com/dan-v/rattlesnakeos-stack/releases/download/v10.0.10/rattlesnakeos-stack-linux-10.0.10.zip
-	sha256sums = 1c731b08f05679bb2644ef974d226333feeca0cad30314dd7b2a4cca27458236
+	noextract = rattlesnakeos-stack-bin-11.0.4.zip
+	source = rattlesnakeos-stack-bin-11.0.4.zip::https://github.com/dan-v/rattlesnakeos-stack/releases/download/v11.0.4/rattlesnakeos-stack-linux-11.0.4.zip
+	sha256sums = 3611804cbd532b404e6ac2a66034f2e6787e490439041d772ae08245ee635ff1
 
 pkgname = rattlesnakeos-stack-bin
 
