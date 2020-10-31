@@ -1,7 +1,7 @@
 pkgbase = tinygo-git
 	pkgdesc = Go compiler for small places. Microcontrollers, WebAssembly, and command-line tools. Based on LLVM.
 	pkgver = v0.15.0.r0.ge8615d10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tinygo.org/
 	arch = i686
 	arch = pentium4
@@ -12,9 +12,12 @@ pkgbase = tinygo-git
 	arch = aarch64
 	license = custom:Apache 2.0 with LLVM Exception
 	license = BSD
+	makedepends = go>=1.11.0
 	makedepends = llvm
-	depends = go>=1.11.0
-	depends = gcc-libs
+	makedepends = git
+	depends = llvm-libs
+	depends = clang
+	depends = lld
 	optdepends = avr-gcc: Arduino Uno support
 	optdepends = avrdude: Arduino Uno support
 	optdepends = openocd: BBC Micro:bit support
