@@ -8,7 +8,7 @@ pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf' 'lzop')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
 
 source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=$gitver"
@@ -83,7 +83,7 @@ build() {
 
 _package() {
   pkgdesc="Linux kernel aimed at the znver2 AMD Ryzen CPU based hardware"
-  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
+  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7' 'lzop')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=('linux')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
