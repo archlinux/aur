@@ -1,7 +1,7 @@
 # Maintainer: Joffrey <j-off@live.fr>
 
 pkgname='python-django-simple-captcha'
-pkgver=0.5.12
+pkgver=0.5.13
 pkgrel=1
 pkgdesc='Django application to add captcha images to any Django form'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('89db73a3883573ad5e22c511948a5500491f9848363174d835a2364750c81a77')
+sha256sums=('2b5ed32a8808c8fe2001aa7ebe13d5b25d36f304566a71f8cc1c2cdcf0057039')
 
 package() {
     cd "$srcdir/django-simple-captcha-$pkgver"
