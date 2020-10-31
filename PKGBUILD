@@ -2,16 +2,18 @@
 
 pkgname=cherrytree-bin
 _basename=${pkgname%*-bin}
-pkgver=0.99.16
+pkgver=0.99.18
 pkgrel=1
 pkgdesc='Binary version of cherrytree'
-arch=('amd64')
+arch=('x86_64')
 url='https://www.giuspen.com/cherrytree/'
 license=('GPL3')
 depends=('gtksourceviewmm' 'libxml++2.6' 'gspell')
 optdepends=('p7zip: for password protection support')
+provides=("${_basename}")
+conflicts=("${_basename}")
 source=("https://launchpad.net/~giuspen/+archive/ubuntu/ppa/+files/${_basename}_${pkgver}-1_amd64.deb")
-sha256sums=('1e4c1d972c21897bd120757c076ea5211aa31eeb615c8e2c22f8c1bab6129f08')
+sha256sums=('2c17352f96b713544b37790b0128b8828c41a3bacf1ade5f2a41c3e3e723ce0e')
 
 package() {
 	msg2 "Extracting the data.tar.xz..."
