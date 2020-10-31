@@ -3,7 +3,7 @@
 _pkgname=tinygo
 pkgname=${_pkgname}-git
 pkgver=v0.15.0.r0.ge8615d10
-pkgrel=2
+pkgrel=3
 pkgdesc="Go compiler for small places. Microcontrollers, WebAssembly, and command-line tools. Based on LLVM."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://tinygo.org/"
@@ -28,10 +28,24 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
   "${_pkgname}::git+https://github.com/tinygo-org/tinygo.git"
+  "git+https://github.com/NordicSemiconductor/nrfx"
+  "git+https://github.com/ARM-software/CMSIS"
+  "git+https://github.com/avr-rust/avr-mcu"
+  "git+https://github.com/tinygo-org/cmsis-svd"
+  "git+https://github.com/llvm-mirror/compiler-rt#branch=release_80"
+  "git+https://github.com/CraneStation/wasi-libc"
+  "git+https://github.com/keith-packard/picolibc"
   "LICENSE.llvm::https://llvm.org/LICENSE.txt"
   "LICENSE.golang::https://raw.githubusercontent.com/golang/go/master/LICENSE"
 )
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'f72b120d1385408e9e380acc020756eb6ba1b461d66c328ea67327ba08d7dcfd'
             '2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067')
 
@@ -42,7 +56,17 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    git submodule update --init
+
+    git submodule init
+    git config -f .gitmodules 'submodule.lib/nrfx.url' "$srcdir/nrfx"
+    git config -f .gitmodules 'submodule.lib/CMSIS.url' "$srcdir/CMSIS"
+    git config -f .gitmodules 'submodule.lib/avr.url' "$srcdir/avr-mcu"
+    git config -f .gitmodules 'submodule.lib/cmsis-svd.url' "$srcdir/cmsis-svd"
+    git config -f .gitmodules 'submodule.lib/compiler-rt.url' "$srcdir/compiler-rt"
+    git config -f .gitmodules 'submodule.lib/wasi-libc.url' "$srcdir/wasi-libc"
+    git config -f .gitmodules 'submodule.lib/picolibc.url' "$srcdir/picolibc"
+    git submodule sync
+    git submodule update
 }
 
 build() {
