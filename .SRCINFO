@@ -1,0 +1,32 @@
+pkgbase = tinygo-git
+	pkgdesc = Go compiler for small places. Microcontrollers, WebAssembly, and command-line tools. Based on LLVM.
+	pkgver = v0.15.0.r0.ge8615d10
+	pkgrel = 1
+	url = https://tinygo.org/
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = custom:Apache 2.0 with LLVM Exception
+	license = BSD
+	makedepends = llvm
+	depends = go>=1.11.0
+	depends = gcc-libs
+	optdepends = avr-gcc: Arduino Uno support
+	optdepends = avrdude: Arduino Uno support
+	optdepends = openocd: BBC Micro:bit support
+	optdepends = arm-none-eabi-gdb: tinygo gdb support
+	provides = tinygo
+	conflicts = tinygo
+	source = tinygo::git+https://github.com/tinygo-org/tinygo.git
+	source = LICENSE.llvm::https://llvm.org/LICENSE.txt
+	source = LICENSE.golang::https://raw.githubusercontent.com/golang/go/master/LICENSE
+	sha256sums = SKIP
+	sha256sums = f72b120d1385408e9e380acc020756eb6ba1b461d66c328ea67327ba08d7dcfd
+	sha256sums = 2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067
+
+pkgname = tinygo-git
+
