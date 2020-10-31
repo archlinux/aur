@@ -6,12 +6,12 @@
 pkgname=boostnote
 _pkgname=Boostnote
 pkgver=0.16.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Open source note-taking app for programmers"
 arch=('any')
 url="https://boostnote.io/"
 license=('GPL3')
-depends=('electron4' 'nodejs')
+depends=('electron4-bin' 'nodejs')
 makedepends=('yarn' 'grunt-cli' 'git')
 
 source=(
