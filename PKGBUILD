@@ -1,4 +1,4 @@
-# Maintainer: Milk Brewster (milk on freenode)
+# Maintainer: Milk Brewster (milkii on freenode)
 _pkgname=studio-controls
 pkgname=${_pkgname}-git
 pkgver=2.0.9.r4.g2bdd72d
@@ -8,9 +8,13 @@ arch=('x86_64')
 url="https://github.com/ovenwerks/studio-controls"
 license=('GPL')
 groups=()
-depends=('jack2' 'python' 'python-gobject' 'python-jack-client' 'python-pyalsaaudio' 'zita-ajbridge')
+depends=('jack2' 'python' 'python-gobject' 'python-dbus' 'python-jack-client' 'python-pyalsaaudio' 'zita-ajbridge' 'a2jmidid')
 makedepends=(git)
-optdepends=(realtime-privileges)
+optdepends=('realtime-privileges: Realtime privileges for users'
+        'pulseaudio-jack: PulseAudio to JACK bridge'
+        'libffado: Driver for FireWire audio devices'
+        'qastools: qasmixer desktop mixer application'
+        'pavucontrol: PulseAudio Volume Control')
 provides=('studio-controls' 'studio-controls-git')
 conflicts=('studio-controls' 'studio-controls-git')
 replaces=()
