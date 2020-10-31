@@ -25,7 +25,7 @@ prepare() {
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
