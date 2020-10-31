@@ -2,7 +2,7 @@
 # Maintainer: Greg White <gwhite@kupulau.com>
 
 pkgname=brave-nightly-bin
-pkgver=1.18.22
+pkgver=1.18.25
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default (nightly binary release).'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/bra
         'MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt'
         "$pkgname.sh")
 options=(!strip)
-sha512sums=('3d27261187600cf1ea9275f5bed648278ff0af71946003d2021142e5f1c6f37d0d6a0ed687c191a29310aec6d6b85485320ef4bd657b6dd023a1a27c13dd7bd2'
+sha512sums=('ffb210fe17e00f598601afe17caeb6ce0b03b7eca2131a7c3af3d243a6111d10e7afd28e109daca2ee7955cfd5557c25c0703467170830faa6a8f7ba2ad00122'
             'b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f'
             '47e79d6adf223a620de3d875f082c7d176c3bc25bb9a35d90dd646bd9072d0b7cff7a7deea7b163d9d0c326ac133eab9024ae1a1351d55be40fd40622b023e5a')
 
