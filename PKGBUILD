@@ -9,6 +9,7 @@ arch=(i686 x86_64)
 url="https://github.com/sandsmark/kde${_module}"
 license=("GPL2")
 groups=(kde2)
+depends=(qt2-git)
 makedepends=(cmake git)
 provides=(kde2-kde${_module})
 conflicts=(kde2-kde${_module})
