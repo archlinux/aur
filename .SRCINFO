@@ -1,4 +1,4 @@
-pkgbase = nordpy-plasmoid
+pkgbase = nordpy-plasmoid-git
 	pkgdesc = Plasma widget to control NordPy; it uses the last server type used within nordpy to establish the VPN connection.
 	pkgver = r10.ec6491c
 	pkgrel = 1
@@ -15,5 +15,5 @@ pkgbase = nordpy-plasmoid
 	source = git+https://github.com/morpheusthewhite/nordpy-plasmoid.git
 	sha256sums = SKIP
 
-pkgname = nordpy-plasmoid
+pkgname = nordpy-plasmoid-git
 

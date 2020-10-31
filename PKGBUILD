@@ -1,6 +1,6 @@
 # Maintainer: morpheusthewhite <zffromGerace@hotmail.it>
 
-pkgname=nordpy-plasmoid
+pkgname=nordpy-plasmoid-git
 pkgver=r10.ec6491c
 pkgrel=1
 pkgdesc="Plasma widget to control NordPy; it uses the last server type used within nordpy to establish the VPN connection."
