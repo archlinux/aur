@@ -5,7 +5,7 @@
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 
 pkgname='flightgear'
-pkgver=2020.1.3
+pkgver=2020.3.1
 _pkgver=${pkgver%.*}
 pkgrel=1
 pkgdesc="An open-source, multi-platform flight simulator"
@@ -18,14 +18,11 @@ optdepends=('qt5-base: fgfs --launcher'
 license=("GPL")
 url="http://www.flightgear.org/"
 options=('makeflags')
-source=("http://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2"
-        'fg-cmake-fixes.patch')
-sha256sums=('1f07e8ef2c558dae3b9738e313b57e711d38e569f85d49fc2c5ae647e3949a17'
-            'e6f50770b57388c18a4f6988c5b3b9f09c90dc5bf4d0542b791316d315aa9395')
+source=("http://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('8860d13f8ca41d387dce1850b90650c5e440e3e2505021180d303dfa4784d103')
 
 prepare() {
   cd "$srcdir"/flightgear-$pkgver
-  patch -p1 -i ../fg-cmake-fixes.patch
   sed -i 's|Exec=.*|Exec=fgfs --fg-root=/usr/share/flightgear/data|' package/org.flightgear.FlightGear.desktop
 }
 
