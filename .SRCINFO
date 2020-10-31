@@ -1,6 +1,6 @@
 pkgbase = locatec
 	pkgdesc = Better locate/plocate, search inside local path
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	arch = any
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = locatec
 	source = locatec
 	source = locatecc
 	md5sums = 915f024abe9d12246891d55e56f49660
-	md5sums = 56cbfe0855d86c16293b32e955ce164b
+	md5sums = d84e5cb14fc875a26ffe2c6f00331af4
 
 pkgname = locatec
 

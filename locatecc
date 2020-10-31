@@ -64,7 +64,7 @@ search_str="$@"
     done < /tmp/locate-temp-file-4
 
     #per colorazione
-    grep --color -E $search_str /tmp/locate-temp-file-5
+    grep --color --no-messages --extended-regexp --ignore-case "$search_str" /tmp/locate-temp-file-5
 
     count=$(wc -l /tmp/locate-temp-file-5)
     count=$(echo $count | cut -f1 -d" ")

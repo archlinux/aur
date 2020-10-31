@@ -1,6 +1,6 @@
 # Maintainer: Simona <simona.pisano[at]gmail[dot]com>
 pkgname=locatec
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Better locate/plocate, search inside local path"
 #url="https://github.com/simona70/grub-custom-simona"
@@ -30,7 +30,7 @@ source=("locatec" "locatecc")
 #generate with 'makepkg -g'
 #md5sums=('SKIP')
 md5sums=('915f024abe9d12246891d55e56f49660'
-         '56cbfe0855d86c16293b32e955ce164b')
+         'd84e5cb14fc875a26ffe2c6f00331af4')
 
 # se trova il nuovo si chiama .pacnew (no / root path)
 #backup=('dir/file')
