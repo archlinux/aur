@@ -3,7 +3,7 @@
 
 pkgname=oneshot
 
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 
 pkgdesc='First-come-first-serve single-fire HTTP/HTTPS server'
@@ -18,7 +18,7 @@ options=('zipman')
 
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tgz::$url/archive/v$pkgver.tar.gz")
-b2sums=('e7a12bba13ea72b9b5b3327b119c74dd07b40696dc493868b6511fa69d4af6bc856c571aa720c5a6fb2be4e88c797bd879d6fabdb25ce8b5479cdd87ca7709d6')
+b2sums=('5249679376a362bf19384cf7e9422fc8074de9be6363ad6e3c2e4e525cd141c38584499beb865e6533ee99ce23ee0c6bc6054b81a89fe3563efc1a33184645bf')
 
 
 build() {
