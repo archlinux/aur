@@ -1,12 +1,12 @@
 # Maintainer: Spiros Georgaras <sng@hellug.gr>
 pkgname=ttf-sk-polytonic-fonts
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Greek polytonic fonts by Spiros Krontiris"
 arch=('any')
 license=('custom')
 url="http://www.enoriaka.gr"
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig')
 source=('http://members.hellug.gr/sng/AUR/ttf-sk-polytonic-fonts.tar.gz')
 md5sums=('bccb32b5c0e1d8c1b01feccb44b1dca6')
 install=${pkgname}.install

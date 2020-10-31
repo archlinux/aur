@@ -1,14 +1,13 @@
 pkgbase = ttf-sk-polytonic-fonts
 	pkgdesc = Greek polytonic fonts by Spiros Krontiris
 	pkgver = 1
-	pkgrel = 0
+	pkgrel = 2
 	url = http://www.enoriaka.gr
 	install = ttf-sk-polytonic-fonts.install
 	arch = any
 	license = custom
 	depends = fontconfig
-	depends = xorg-font-utils
-	source = http://members.hellug.gr/sng/public_html/AUR/ttf-sk-polytonic-fonts.tar.gz
+	source = http://members.hellug.gr/sng/AUR/ttf-sk-polytonic-fonts.tar.gz
 	md5sums = bccb32b5c0e1d8c1b01feccb44b1dca6
 
 pkgname = ttf-sk-polytonic-fonts
