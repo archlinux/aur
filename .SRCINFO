@@ -1,0 +1,18 @@
+pkgbase = cyanrip
+	pkgdesc = Fully featured CD ripping program
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/cyanreg/cyanrip
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = curl
+	depends = ffmpeg
+	depends = libcdio-paranoia
+	depends = libmusicbrainz5
+	source = cyanrip-0.6.0.tar.gz::https://github.com/cyanreg/cyanrip/archive/v0.6.0.tar.gz
+	sha512sums = 6fda9b3a4417e94821258c5a8ee6d6b68a930f1fa7743d245c116222888401f3c1ec967cba5162d270d78b363edcd82ded44e5681bbe85b5002bd061e2ab94bb
+
+pkgname = cyanrip
+
