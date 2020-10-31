@@ -7,7 +7,7 @@ _srcname=linux-5.9
 _major=5.9
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=1
+_minor=2
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -30,18 +30,20 @@ source=(
   config         # the main kernel config file
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-mac80211-fix-regression-where-EAPOL-frames-were-sent.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('9d61bcbcca4f8ffc573a2634ebf0768f2d90bf85634690f976094b7f0910e97bd12f3593444939773f99823a32bb98f50385aa738401d6eaca7cfb319101d2ef'
+b2sums=('81fe0377fc38eeae02adfddef36262f1b834fcab6c8b3d96bfc8cb1d1822f8ae77dadfc7538252613069b12c90ca6dc158f7b23205e5982c5d9372f9c92182a4'
         'SKIP'
-        '65eeccf077194ce03d5dbc1e8ea8f6022d709bc930945a49880fb87d71992e0614cf5ee92eb1b60fe2e3ed41fe17f0c176bbbad5f2cf0a2a349e1b08e6236558'
+        '22ba992df3a1d73fa16efb31bb0d62eacd106fb6f4d6dd1ebe522dc09b94c8df689cdb594ed105076ab5e1be4bd00eb834019dc19b6f58f6bee04f53e5de961e'
         'SKIP'
         '040cd9c2871f38537f5acac43baff091f46b8143fe66552238484b584456afd7f2862337056e27d3d8e034bcd68e030a4e47a059e9c92e4a416443bab2bc59db'
         'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95'
-        '3c5cdf6da7ff5312bfe2a8dcd18e58c8e1a3408e1612be60417ed33866e9e70da77db88435fe49483c907c5ff45d4b9ed979aaa96d485cef976c6aa6fdaa834c')
+        '3c5cdf6da7ff5312bfe2a8dcd18e58c8e1a3408e1612be60417ed33866e9e70da77db88435fe49483c907c5ff45d4b9ed979aaa96d485cef976c6aa6fdaa834c'
+        'c159ba9bfe9b400a604d1ee0b74aa19ee2e5fea96d0781fef48bb92c09909566a879ff9a68e101f0878d8dbd86d7bb6dfee91802ec837dfcc745237869bc1a1e')
 
 
 export KBUILD_BUILD_HOST=archlinux
