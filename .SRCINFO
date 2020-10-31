@@ -11,7 +11,6 @@ pkgbase = linux-amd-raven
 	makedepends = bc
 	makedepends = git
 	makedepends = libelf
-	makedepends = lzop
 	options = !strip
 	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.4.73
 	source = config.x86_64
@@ -31,6 +30,7 @@ pkgname = linux-amd-raven
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=0.7
+	depends = lzop
 	optdepends = crda: to set the correct wireless channels of your country
 	provides = linux
 	backup = etc/mkinitcpio.d/linux-amd-raven.preset
