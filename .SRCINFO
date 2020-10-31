@@ -1,13 +1,14 @@
 pkgbase = zecwallet-lite
 	pkgdesc = Z-Addr first, Sapling compatible lightwallet client for Zcash
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adityapk00/zecwallet-lite
 	arch = any
 	license = MIT
 	makedepends = rust
 	makedepends = nodejs
 	makedepends = yarn
+	makedepends = npm
 	depends = electron
 	provides = zcash-wallet
 	options = !strip
