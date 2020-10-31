@@ -3,7 +3,7 @@
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop9
 pkgver=2.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Telegram Desktop client (personal build)'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -24,6 +24,7 @@ source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver
         "clicky_sticker_panel.patch"
         "dont_pulse_mentions.patch"
         "no_circles.patch"
+        "use_xdg-open.patch"
         "remove_external_jpeg_for_webrtc.patch")
 sha512sums=('d0c792fcd890a95b24233f37cdfc34008e814f6f0730722a41916e25d2efff405fd472bd6b45bbfc79787ed117dc5f87271c438d92ec1ce29335cabe76a1062e'
             '3a7a20ace7dcea5be202e7b3008807ba0ae38ae8266709e3595f6b3c0aa2bf81299da4b5a7e7d66d2d9b3040cc6618e67e4d7b9572b2649db4c477056e649bcf'
@@ -34,6 +35,7 @@ sha512sums=('d0c792fcd890a95b24233f37cdfc34008e814f6f0730722a41916e25d2efff405fd
             '010d0ea4e39170077e066858746411f1cc90bb6a9f343b29dbc82b1e963815e4ce220da2a1203661c57fe1810667a2bed34a4f02220fa75f2bc209c5e8472873'
             '673e2a28781d0d604549c621592b1017ad306ddaf6d1beedfe73f3f1357fbb6afd994a324dfa15029789bdf8a4d6e85ad12a3877519618f6585bbc1927c06900'
             '8ec6b1739a1391b75a2653fff704a7d22e830c526acffe138936bbd20047bd24831e42558fa22069d7e914e762bbcfa2e1b14a8fd3911fd8bbbd0662d8baac14'
+            '9c74c88eff1402d1334ec66b6233e85497666ee28eca1a804b8f5006c691bdd3718db2a238a736e30b1c8249d2c20ccc320650e97f67c4a9a67b689eb572cc2b'
             '8801aa52a6a7d844503ce1af43748db73ebfd5603b82c8bc2b297df1ff9227267ec3fad5844bcb7f85d95e09354469b5ddfd50fa17b7699eb638beac39738c02')
 
 prepare() {
