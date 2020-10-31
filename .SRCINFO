@@ -1,0 +1,28 @@
+pkgbase = rdm-bin
+	pkgdesc = Cross-platform open source database management tool for Redis ®
+	pkgver = 2020.5
+	pkgrel = 1
+	url = https://rdm.dev/
+	arch = x86_64
+	license = GPL3
+	makedepends = curl
+	depends = botan
+	depends = libssh2
+	depends = python
+	depends = qt5-base
+	depends = qt5-imageformats
+	depends = qt5-tools
+	depends = qt5-declarative
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	depends = qt5-charts
+	depends = qt5-graphicaleffects
+	depends = qt5-svg
+	conflicts = redis-desktop-manager-bin
+	conflicts = redis-desktop-manager
+	source = rdm.desktop
+	sha256sums = SKIP
+	sha256sums = 5e96ea919336c483fba09fd40839a77f33dc98a0aa5e9de0c7570d9fd888f62e
+
+pkgname = rdm-bin
+
