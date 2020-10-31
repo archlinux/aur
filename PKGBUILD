@@ -5,7 +5,7 @@ _pkgname=${pkgname%-bin}
 pkgver=1.0.0
 _pkgver_ext=20201010f
 _pkg_file_name=${_pkgname}${_pkgver_ext}.deb
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote control and team work"
 arch=('x86_64')
 url="https://www.todesk.cn/"
@@ -28,13 +28,13 @@ if [ ! -f ${PWD}/${_pkg_file_name} ]; then
 fi
 
 package() {
-  tar -xf ${srcdir}/data.tar.xz -C ${pkgdir}
+  bsdtar -o --no-same-permissions -xf ${srcdir}/data.tar.xz -C ${pkgdir} 
   install -Dm755 ${pkgdir}/usr/local/bin/${_pkgname} -t ${pkgdir}/usr/bin/
   rm -rf ${pkgdir}/usr/local
 
   # fixed permission
-  find ${pkgdir} -type d -exec chmod 755 {} \;
-  
+  install -dm755 ${pkgdir}/opt/todesk/lib
+
   # desktop entry 
   sed -i "s|Emulator||g" ${pkgdir}/usr/share/applications/${_pkgname}.desktop
 
