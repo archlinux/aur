@@ -4,7 +4,7 @@
 # by automation in the wezterm repo.
 
 pkgname=wezterm-bin
-_tag=20200909-002054-4c9af461
+_tag=20201031-154415-9614e117
 pkgver=$(echo $_tag | tr - .)
 pkgrel=2
 pkgdesc='A GPU-accelerated cross-platform terminal emulator and multiplexer implemented in Rust'
@@ -30,8 +30,8 @@ source=(
   'LICENSE::https://github.com/wez/wezterm/raw/master/LICENSE.md'
 )
 sha256sums=(
-  'c0adf1c0355940674e52dc93d99618be46ecf1a30a056e6b20360880fe6ec049'
-  '191c46fcf52061382b1c51a70311eb9081381cc158e5899f3739473a9432185b'
+  '6ca830f9c603597a276e612932848c9e03c460879f08a0a322e53f34d2683f24'
+  'ad915d9508677a4e94e4b3c0a045fedd20e953d95d7cd3ec97e6d16840fa0ed5'
 )
 
 prepare() {
@@ -48,11 +48,11 @@ build() {
 
 package() {
   install -Dm755 squashfs-root/usr/bin/wezterm -t "${pkgdir}/usr/bin/"
+  install -Dm755 squashfs-root/usr/bin/wezterm-gui -t "${pkgdir}/usr/bin/"
+  install -Dm755 squashfs-root/usr/bin/wezterm-mux-server -t "${pkgdir}/usr/bin/"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 squashfs-root/usr/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png \
                  "${pkgdir}/usr/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png"
   install -Dm644 squashfs-root/usr/share/applications/org.wezfurlong.wezterm.desktop \
                  "${pkgdir}/usr/share/applications/org.wezfurlong.wezterm.desktop"
-  install -dm755 ${pkgdir}/usr/share/wezterm/colors
-  install -Dm644 -t ${pkgdir}/usr/share/wezterm/colors/ squashfs-root/usr/share/wezterm/colors/*
 }
