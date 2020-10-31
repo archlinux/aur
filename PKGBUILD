@@ -3,7 +3,7 @@
 _pkgname=tinygo
 pkgname=${_pkgname}-git
 pkgver=v0.15.0.r0.ge8615d10
-pkgrel=5
+pkgrel=6
 pkgdesc="Go compiler for small places. Microcontrollers, WebAssembly, and command-line tools. Based on LLVM."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://tinygo.org/"
@@ -26,6 +26,7 @@ optdepends=(
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+options=(!strip)
 source=(
   "git+https://github.com/tinygo-org/tinygo.git"
   "git+https://github.com/NordicSemiconductor/nrfx"

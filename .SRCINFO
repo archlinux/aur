@@ -1,7 +1,7 @@
 pkgbase = tinygo-git
 	pkgdesc = Go compiler for small places. Microcontrollers, WebAssembly, and command-line tools. Based on LLVM.
 	pkgver = v0.15.0.r0.ge8615d10
-	pkgrel = 5
+	pkgrel = 6
 	url = https://tinygo.org/
 	arch = i686
 	arch = pentium4
@@ -24,6 +24,7 @@ pkgbase = tinygo-git
 	optdepends = arm-none-eabi-gdb: tinygo gdb support
 	provides = tinygo
 	conflicts = tinygo
+	options = !strip
 	source = git+https://github.com/tinygo-org/tinygo.git
 	source = git+https://github.com/NordicSemiconductor/nrfx
 	source = git+https://github.com/ARM-software/CMSIS
