@@ -3,6 +3,7 @@ pkgbase = whale-browser
 	pkgver = stable
 	pkgrel = 1
 	url = https://whale.naver.com/en
+	install = whale-browser.install
 	arch = x86_64
 	license = custom:whale-browser
 	makedepends = tar

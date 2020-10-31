@@ -1,0 +1,15 @@
+# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+
+post_install() {
+    for _size in 16 24 32 48 64 128 256
+    do
+        xdg-icon-resource install --size ${_size} "/opt/naver/whale/product_logo_${_size}.png" "naver-whale"
+    done
+}
+
+post_remove() {
+    for _size in 16 24 32 48 64 128 256
+    do
+        xdg-icon-resource uninstall --size ${_size} "naver-whale"
+    done
+}  

@@ -12,13 +12,15 @@ depends=('nss'
          'libxss')
 makedepends=('tar')
 options=('!strip' '!emptydirs')
+install=${pkgname}.install
 source=("${pkgname}-${pkgver}.deb::http://update.whale.naver.net/downloads/installers/naver-whale-stable_amd64.deb"
         'LICENSE')
 sha256sums=('SKIP'
             'SKIP')
-
+            
 package() {
   tar xvf data.tar.xz -C "${pkgdir}/"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  rm -rf "${pkgdir}/etc"
 }
 # vim:set ts=2 sw=2 et:
