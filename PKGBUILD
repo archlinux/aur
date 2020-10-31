@@ -8,6 +8,7 @@ arch=('x86_64' 'aarch64' 'armv7h')
 license=('GPL')
 url='https://github.com/Jackett/Jackett'
 depends=('curl' 'openssl-1.0')
+makedepends=('mono-msbuild' 'nuget' 'dotnet-sdk')
 options=('!strip' 'staticlibs')
 
 source=(
