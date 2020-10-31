@@ -1,7 +1,7 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='reco'
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='Record talks to remember the contents later'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('granite' 'gstreamer')
 makedepends=('meson' 'vala')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('0490b6fb7f24bb5f48b9c21ae4b0ba8c2c69645344ce27df490be9ec70fd7486')
+sha256sums=('cf569a9eff6bb5b82a2e033a6410a4db2f1aba52b2bb78138c7e04fad8e20e04')
 
 build() {
   arch-meson "${pkgname}-${pkgver}" build
