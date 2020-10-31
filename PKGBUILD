@@ -1,6 +1,6 @@
 # Maintainer: Simona <simona.pisano[at]gmail[dot]com>
 pkgname=locate2
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Better locate/plocate, search inside local path"
 #url="https://github.com/simona70/grub-custom-simona"
@@ -29,7 +29,7 @@ source=("locate2.sh")
 
 #generate with 'makepkg -g'
 #md5sums=('SKIP')
-md5sums=('4a1dd8d6a8ba2db0d750ad84509a8dc9')
+md5sums=('ae7b3c6de2370c69a0819cc59277ac71')
 
 # se trova il nuovo si chiama .pacnew (no / root path)
 #backup=('dir/file')

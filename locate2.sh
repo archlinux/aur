@@ -1,21 +1,23 @@
 #!/bin/bash
 
-locate-current()
-
-  locate-current() {
     [[ -r /bin/plocate ]] && exe="/bin/plocate" || exe="/bin/locate"
-    [[ $1 == "-h" || $1 == "--help" ]] && { echo "Remember 'updatedb /var/lib/mlocate/' and 'plocate-build /var/lib/mlocate/mlocate.db /var/lib/mlocate/plocate.db'" ; return ; }
+    [[ $1 == "-h" || $1 == "--help" ]] && { echo "Remember 'updatedb /var/lib/mlocate/' and 'plocate-build /var/lib/mlocate/mlocate.db /var/lib/mlocate/plocate.db'" ; exit ; }
+
+    search_str="$*"
+    [[ ${#search_str} -le 3 ]] && { echo "Search string too short"; exit; }
+
+    echo "$exe --ignore-case \"$search_str\""
 
     rm -f /tmp/locate-temp-file-1
     touch /tmp/locate-temp-file-1
-    $exe --ignore-case $* > /tmp/locate-temp-file-1
+    $exe --ignore-case "$*" > /tmp/locate-temp-file-1
 
     touch /tmp/locate-temp-file-2
-    cat /tmp/locate-temp-file-1 | grep ^$(pwd) --ignore-case --color=never >/tmp/locate-temp-file-2
+    cat /tmp/locate-temp-file-1 | grep "^$(pwd)" --ignore-case --color=never >/tmp/locate-temp-file-2
 
     touch /tmp/locate-temp-file-3
-    cat /tmp/locate-temp-file-2 | grep --ignore-case --color=never "/$*" >/tmp/locate-temp-file-3
-    cat /tmp/locate-temp-file-2 | grep --ignore-case --color=never "/$*\.[A-Za-z0-9]*$" >>/tmp/locate-temp-file-3
+    cat /tmp/locate-temp-file-2 | grep --ignore-case --color=never "/$search_str" >/tmp/locate-temp-file-3
+    cat /tmp/locate-temp-file-2 | grep --ignore-case --color=never "/$search_str\.[A-Za-z0-9]*$" >>/tmp/locate-temp-file-3
 
     #cancellazione duplicati
     touch /tmp/locate-temp-file-4
@@ -68,5 +70,3 @@ locate-current()
     rm -f /tmp/locate-temp-file-3
     rm -f /tmp/locate-temp-file-4
     rm -f /tmp/locate-temp-file-5
-  }
-
