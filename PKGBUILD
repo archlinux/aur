@@ -1,15 +1,15 @@
 # Maintainer: Sam Stuewe <halosghost at archlinux dot info>
 
 pkgname=enlighten-git
-pkgver=0
-pkgrel=2
+pkgver=v0.9.1.r1.gf195a00
+pkgrel=1
 
 pkgdesc='A small tool to modify LCD backlight brightness'
 url='https://github.com/HalosGhost/enlighten'
 arch=('i686' 'x86_64')
 license=('GPL3')
 
-makedepends=('git' 'clang' 'python-docutils')
+makedepends=('git' 'scdoc')
 
 source=('git+https://github.com/HalosGhost/enlighten.git')
 sha256sums=('SKIP')
@@ -26,10 +26,10 @@ prepare () {
 
 build () {
     cd enlighten
-    make
+    make CONFIGURATION=release bin doc
 }
 
 package () {
     cd enlighten
-    make DESTDIR="$pkgdir" PREFIX="/usr" install
+    make CONFIGURATION=release DESTDIR="$pkgdir" PREFIX="/usr" install
 }
