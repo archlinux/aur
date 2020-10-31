@@ -5,7 +5,7 @@
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 
 pkgname=flightgear-data
-pkgver=2020.1.3
+pkgver=2020.3.1
 _pkgver=${pkgver%.*}
 pkgrel=1
 pkgdesc="Base-Data for the opensource flight-simulator."
@@ -14,7 +14,7 @@ license=('GPL')
 url="http://www.flightgear.org/"
 options=(!strip)
 source=("https://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/FlightGear-${pkgver}-data.tar.bz2")
-sha256sums=('2196f4ffcdeaae3a8b0a2b6ebf62a456bfd0198abb6c0619f763204d89804a03')
+sha256sums=('d4fd913c4dfa716744186725046f5b1ce85377c2bcb60da4a8eb792be2e0f982')
 
 package() {
   cd "$srcdir"
