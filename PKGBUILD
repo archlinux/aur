@@ -1,23 +1,24 @@
 # Maintainer: Hunter Peavey < printf "srht@die.bots" | sed "s/die.bots/krathalan.net/g" >
 
 pkgname=gmnisrv-git
+_pkgname=gmnisrv
 pkgrel=1
-pkgver=r48.1fe1078
+pkgver=r58.70fadc2
 pkgdesc="A high-performance Gemini server for POSIX systems"
-url="https://git.sr.ht/~sircmpwn/gmni"
+url="https://git.sr.ht/~sircmpwn/gmnisrv"
 arch=("any")
 license=("GPL")
-source=("gmnisrv::git+https://git.sr.ht/~sircmpwn/gmnisrv")
+source=("gmnisrv::git+${url}")
 depends=('openssl')
 makedepends=('git' 'scdoc')
 
 pkgver() {
-    cd gmnisrv
+    cd "${_pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd gmnisrv
+    cd "${_pkgname}"
 
     mkdir build && cd build
     ../configure --prefix=/usr
