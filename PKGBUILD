@@ -11,19 +11,17 @@ depends=('iortcw-data')
 makedepends=('unzip')
 noextract=("$pkgname-$pkgver.zip")
 source=("$pkgname-$pkgver.zip::https://www.moddb.com/downloads/mirror/173653/119/c90d40bdbeea743b5f31f401391f3ce4")
+_modpath="opt/iortcw/venom-mod"
 
-prepare() {
-  # Unzipping with flattened paths
-  unzip -jo $pkgname-$pkgver.zip -d paks
-}
 
 package() {
-  cd "$srcdir"/paks
-  find . -iname "*.pk3" -exec install -Dm644 {} "$pkgdir/opt/iortcw/Venom\ Mod/"{} \;
-  install -Dm644 autoexec.cfg "$pkgdir/opt/iortcw/Venom\ Mod/autoexec.cfg"
+  mkdir -p "${pkgdir}/${_modpath}"
+
+  # Unzipping with flattened paths
+  unzip -jo "$pkgname-$pkgver.zip" -d "${pkgdir}/${_modpath}"
   # RealRTCW compatibility
   mkdir -p "$pkgdir/opt/realrtcw"
-  ln -sr /opt/iortcw/Venom\ Mod "$pkgdir/opt/realrtcw/Venom\ Mod"
+  ln -sr /${_modpath} "${pkgdir}/opt/realrtcw/venom-mod"
 }
 
 md5sums=('1eb9a668b79d3d3a675eb57af192e283')
