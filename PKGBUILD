@@ -2,7 +2,7 @@
 
 pkgname=youtube-dlc
 _gitname=yt-dlc
-pkgver=2020.10.26
+pkgver=2020.10.31
 pkgrel=1
 pkgdesc="Fork of youtube-dl - download videos from youtube.com or other video platforms"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('ffmpeg: for video post-processing'
             'atomicparsley: for embedding thumbnails into m4a files'
             'python-pycryptodome: for hlsnative downloader')
 source=("https://github.com/blackjack4494/${_gitname}/archive/${pkgver}.tar.gz")
-sha256sums=('e0a777b90c55b8d8a64f0e1b7b2742d849484de00ef8055ffbc25fd7250148a2')
+sha256sums=('0d23cc2e2f1cc7291e5d2a468b1cd282a6be228a215df188aaecae8951ac64d9')
 
 prepare() {
   cd ${_gitname}-${pkgver}

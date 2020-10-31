@@ -1,6 +1,6 @@
 pkgbase = youtube-dlc
 	pkgdesc = Fork of youtube-dl - download videos from youtube.com or other video platforms
-	pkgver = 2020.10.26
+	pkgver = 2020.10.31
 	pkgrel = 1
 	url = https://github.com/blackjack4494/yt-dlc
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = youtube-dlc
 	optdepends = rtmpdump: for rtmp streams support
 	optdepends = atomicparsley: for embedding thumbnails into m4a files
 	optdepends = python-pycryptodome: for hlsnative downloader
-	source = https://github.com/blackjack4494/yt-dlc/archive/2020.10.26.tar.gz
-	sha256sums = e0a777b90c55b8d8a64f0e1b7b2742d849484de00ef8055ffbc25fd7250148a2
+	source = https://github.com/blackjack4494/yt-dlc/archive/2020.10.31.tar.gz
+	sha256sums = 0d23cc2e2f1cc7291e5d2a468b1cd282a6be228a215df188aaecae8951ac64d9
 
 pkgname = youtube-dlc
 
