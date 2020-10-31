@@ -7,7 +7,6 @@ pkgbase = jackett
 	arch = aarch64
 	arch = armv7h
 	license = GPL
-	makedepends = nuget
 	makedepends = dotnet-sdk
 	depends = curl
 	depends = openssl-1.0
