@@ -1,4 +1,4 @@
-#!/usr/bin/env electron
+#!/usr/bin/env electron4
 
 const name = 'boostnote';
 
