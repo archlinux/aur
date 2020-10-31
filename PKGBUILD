@@ -54,7 +54,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -83,8 +83,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0002-i2c-core-Restore-acpi_walk_dep_device_list-getting-c.patch"
+        "${_lucjanpath}/arch-rt-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-rt-patches-sep/0002-i2c-core-Restore-acpi_walk_dep_device_list-getting-c.patch"
+        "${_lucjanpath}/arch-rt-patches-sep/0003-mac80211-fix-regression-where-EAPOL-frames-were-sent.patch"
         "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
@@ -339,8 +340,9 @@ sha512sums=('96af08c1dc964e5dbb3d221880ef8ca246f13370d2dc2f5ae64039f0352efc687c7
             '7d30c34e75c2800d93c01e34ca23a00cda24d2f44bb837a48f6789c50ad69f7db4cc93d1fc75e43cfa4d4f4e9c612330dd595c56c13f8abb5d062338ea30697c'
             'cf634a9e0298adf1d05b7a8048ba2f89d4b8490cf48f1ab493cb40473116f360035b7fb3d8a54af980b1a49a1ad4dcfbc4ca69de8543b8bdf0a1d586908bd093'
             '96427eecb0078ce57a40ef4ee78d3576216f27390ba6b9dfbb851f4d969558a82b698cc633217ad8f6b9d991e7eaebd613ed4bd5741cafe7fa40b2502dacd43a'
-            '82601180156862d6652d023ff9f80776a5dab67f1c46c3b27e177245fd7e12c9f8c4597990925940e215ddd673c24c1cfd1e5ef1ca69762c2cc5724d11133e55'
-            '9646cf65b2dd6b16d0df3c74e43eacfbc1fdc8ab241fe698a1f0762497ccc612df01b019cdf82430cca28bf843f91ba784c8bdfb7eb204330b7c73154ef6dda1'
+            '45e15df84a8c6c24efb15c2136499f75e99d03cdccd6ca8ad92796e7bc932aef4756ebcd331b0715b9b194462d1e798b2d5c67d68b42dc9ac19e198a8c7c5af5'
+            '0450e9de3a7a52464533ce95154b57246a3456744baf15e0949699be481ed56e89737a028e888bc2922589fb4e5544c04d0459d378a18c45406fe1774b120c3e'
+            'efed0acd66858e5bced626f4a2f877e341aed5eeec38fff7097a1b39df07a8701ca66f759c617d6f4dc64e45b4b9e0419e47bf9f787a9df7f70790efc56f250b'
             'b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6'
             'dfad8ea58cf37cb76f6876375340b1480a332fe710c06f112cd5a93bf6e7e6d1d40e9e8827bfdb5ade1037f6a9609ad19a29c4262c3d6fd29712673d4d471fc7')
 
