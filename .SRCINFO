@@ -1,0 +1,17 @@
+pkgbase = qwt-qt6-svn
+	pkgdesc = Qt Widgets for Technical Applications
+	pkgver = 6.2.0
+	pkgrel = 1
+	url = https://qwt.sourceforge.io/
+	arch = x86_64
+	license = custom:qwt
+	makedepends = qt6-tools
+	makedepends = subversion
+	depends = qt6-base
+	depends = qt6-svg
+	optdepends = qt6-tools: For Designer plugin
+	source = svn+https://svn.code.sf.net/p/qwt/code/branches/qwt-6.2
+	sha512sums = SKIP
+
+pkgname = qwt-qt6-svn
+
