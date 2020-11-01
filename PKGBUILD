@@ -10,6 +10,7 @@ url="https://github.com/lay295/TwitchDownloader"
 #license=("")
 source=("https://github.com/lay295/TwitchDownloader/releases/download/${pkgver}/TwitchDownloaderCLI-Linux-x64.zip")
 sha512sums=("55a596eaaaf9b9390859fa729becb336afc850d1608fa84f9f886a5901054822425ad024ba460e6eca1ff212d478584284d9ce17a1945aebe74a36a52f2f5f35")
+options=(!strip)
 
 prepare() {
     cd "$srcdir"
