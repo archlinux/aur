@@ -1,3 +1,4 @@
+# Maintainer & Owner: johannesjo <contact@super-productivity.com>
 # Maintainer: José Miguel Sarasola <jmsaraur@gmail.com>
 
 _pkgname='superproductivity'
@@ -13,7 +14,6 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}"
 		   "${_pkgname}-git")
 source=("https://github.com/johannesjo/super-productivity/releases/download/v${pkgver}/superProductivity_${pkgver}_amd64.deb")
-md5sums=("59ca05a904289a9bb7bd32d82b8ee914")
 
 package() {
 	tar -xvf data.tar.xz -C "${pkgdir}"
