@@ -1,13 +1,18 @@
 pkgbase = pipewire-dropin
 	pkgdesc = Use pipewire as drop-in replacement for PulseAudio/JACK
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
+	install = pipewire-dropin.install
 	arch = any
 	license = LGPL2.1
 	source = pipewire-pulse.conf
 	source = pipewire-jack.conf
+	source = override-pipewire-socket.conf
+	source = pipewire-dropin.install
 	sha256sums = 750c8f53b47b39a7bb8bdb62b1f35d749391a6735e4ed88083abb7d2e77a2fcf
 	sha256sums = a3e7f6fb87019c1651243bd488e962a49c8e2e6916052c625a85e9a3e9762b8f
+	sha256sums = 3761246166d7b647d199f38e9c0e35e3b2df303a21fe2124b33be4f852a0071c
+	sha256sums = 1da4554e2c39c78aa4f8bd318b7ef3ff83979034be0b509891894f99bc7ecead
 
 pkgname = pipewire-pulse-dropin
 	pkgdesc = Use pipewire as drop-in replacement for PulseAudio

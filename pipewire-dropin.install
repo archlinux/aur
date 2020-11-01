@@ -1,0 +1,7 @@
+post_install() {
+    echo "Reboot your system for the changes to take effect."
+}
+
+post_remove() {
+    echo "Reboot your system for the changes to take effect."
+}
