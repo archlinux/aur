@@ -1,6 +1,6 @@
 pkgbase = i3session
 	pkgdesc = Remembers what's running in your i3 workspaces by saving a session file
-	pkgver = 2020.6.27
+	pkgver = 2020.11.1
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/i3session
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = i3session
 	depends = python-i3-py
 	depends = i3-wm
 	depends = xorg-xprop
-	source = https://github.com/TheCynicalTeam/i3session/archive/2020.6.27-1.tar.gz
-	sha256sums = bc3e5ecc99ed972d4b020790ee4eb56b2db8f1d0b3a1852f1214dbc11007be22
+	source = https://github.com/TheCynicalTeam/i3session/archive/2020.11.1-1.tar.gz
+	sha256sums = 552f37e0f7295d796bd07014bde3a949b936529b198563717752503db43b55db
 
 pkgname = i3session
 
