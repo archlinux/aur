@@ -13,7 +13,7 @@ license=("OFL")
 source=("http://smc.org.in/downloads/fonts/chilanka/Chilanka-Regular.ttf"
         "https://gitlab.com/smc/fonts/chilanka/raw/master/LICENSE.txt"
         "https://gitlab.com/smc/fonts/chilanka/raw/master/67-smc-chilanka.conf")
-sha256sums=('5c939ecbc38eb49922d64b217f076cbef4a648b619b90a83d1eeb701230f102c'
+sha256sums=('9000b62d9b5375a8104bed2e82462620ef0c83f442fa2578fb7bd852d385c2cb'
             '09c51553395ca2401d43c98a034dad1dad96b24706c2ea07972d698f90a0338f'
             'cf9d4c9e6efbd8bf676d9f1cabe86407ee570caa5f299bcbb8e4b5f46b59162a')
 
