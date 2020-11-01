@@ -7,6 +7,7 @@ pkgbase = universal-gcode-sender
 	license = GPL3
 	makedepends = jdk8
 	makedepends = npm
+	makedepends = maven
 	depends = jre8
 	depends = npm
 	provides = universal-gcode-sender
