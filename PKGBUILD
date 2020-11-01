@@ -62,12 +62,11 @@ _minor=9
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_unpatched_sublevel=1
+_unpatched_sublevel=3
 _pfrel=2
 _kernelname=pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
-#_pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
-_pfpatchname="v$_major.$_minor...953f4aa2026dd864374208c3b3f56f4e56da70e0.diff"
+_pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
 _projectcpatchname=prjc_v5.9-r1.patch
 _CPUSUFFIXES_KBUILD=(
   CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER PSC
@@ -630,7 +629,7 @@ sha256sums=('3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06'
             '998ee2c0aeb2c2190251a1d18f88939a19f1be3d1ac631b66d484f7e33dd253f'
             'b6aeb6c460f08443ecce4006d8da83c5f01a224ad2123998ae351b5357286bcd'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '3b93ee5f09832b2e701ca4c9ca47e07867d68304eed6ff05e12320a442720870'
+            '328122e2718ca28779bbe91567d57e8b817920e6b226e8c913fe68bc66da4b9b'
             'a18dee6e4eeb677adef61b4e695cbb800a9aa88e3f6673a6dcfef8a840dee0cc'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
