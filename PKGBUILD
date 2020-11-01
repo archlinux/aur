@@ -3,7 +3,7 @@
 # Contributor: goodguy <lists.cinelerra-gg.org>
 
 pkgname=cinelerra-gg
-pkgver=5.1.20200930
+pkgver=5.1.20201031
 pkgrel=1
 pkgdesc="Professional video editing and compositing environment"
 arch=(x86_64)
@@ -16,7 +16,7 @@ makedepends=(cmake ctags libxml2 nasm perl-xml-libxml
              perl-xml-parser python xorg-mkfontdir
              xorg-mkfontscale yasm)
 source=("https://www.cinelerra-gg.org/download/pkgs/src/cin_$pkgver-src.tgz")
-sha256sums=('b26e55f2fba91a01ff047274a1be970374aca24f869e353a3d80c2e8a56a4e9f')
+sha256sums=('b60daa268899961a0084659c1f7dfdff01d9184fea79ed26ac9f7cee1afb92f7')
 
 prepare() {
   cd "${srcdir}/cinelerra-5.1"

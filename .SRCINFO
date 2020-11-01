@@ -1,6 +1,6 @@
 pkgbase = cinelerra-gg
 	pkgdesc = Professional video editing and compositing environment
-	pkgver = 5.1.20200930
+	pkgver = 5.1.20201031
 	pkgrel = 1
 	url = https://www.cinelerra-gg.org
 	arch = x86_64
@@ -36,8 +36,8 @@ pkgbase = cinelerra-gg
 	depends = numactl
 	depends = openexr
 	depends = opus
-	source = https://www.cinelerra-gg.org/download/pkgs/src/cin_5.1.20200930-src.tgz
-	sha256sums = b26e55f2fba91a01ff047274a1be970374aca24f869e353a3d80c2e8a56a4e9f
+	source = https://www.cinelerra-gg.org/download/pkgs/src/cin_5.1.20201031-src.tgz
+	sha256sums = b60daa268899961a0084659c1f7dfdff01d9184fea79ed26ac9f7cee1afb92f7
 
 pkgname = cinelerra-gg
 
