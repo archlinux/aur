@@ -1,6 +1,6 @@
 pkgbase = python-av1an
 	pkgdesc = A cross-platform all-in-one tool for streamlining AV1 encoding
-	pkgver = 1.13.post8
+	pkgver = 1.13.post9
 	pkgrel = 1
 	url = https://github.com/master-of-zen/Av1an
 	arch = any
@@ -25,8 +25,8 @@ pkgbase = python-av1an
 	optdepends = vmaf: VMAF calculation support
 	optdepends = x265: x265 encoder support
 	optdepends = x264: x264 encoder support
-	source = av1an-1.13.post8.tar.gz::https://files.pythonhosted.org/packages/source/A/Av1an/Av1an-1.13.post8.tar.gz
-	sha256sums = 19b7158293986391851541123128bd9f6c1b7d2493396a1969cf14cbb2094d4b
+	source = av1an-1.13.post9.tar.gz::https://files.pythonhosted.org/packages/source/A/Av1an/Av1an-1.13.post9.tar.gz
+	sha256sums = e6627d350debec006a541bb77bca49a8cafdb2cb496b930a42fdf015a33f57ec
 
 pkgname = python-av1an
 
