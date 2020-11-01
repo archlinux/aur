@@ -1,14 +1,14 @@
 pkgbase = python-texsoup
 	pkgdesc = Python3 package for searching, navigating, and modifying LaTeX documents using BeautifulSoup-esque idioms
-	pkgver = 0.2.1
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/alvinwan/TexSoup
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	options = !emptydirs
-	source = https://github.com/alvinwan/TexSoup/archive/0.2.1.tar.gz
-	sha256sums = a42e5e3ecc004a0178edc83f552defb6e75258aaf3be614136a0dfdd6c4e6945
+	source = https://github.com/alvinwan/TexSoup/archive/0.3.1.tar.gz
+	sha256sums = 3c093e9634675436ff0cfcc9cd116722577613957b11a6285518f51c39a90784
 
 pkgname = python-texsoup
 

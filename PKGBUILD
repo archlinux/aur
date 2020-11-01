@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=texsoup
 pkgname=python-$_modulename
-pkgver=0.2.1
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Python3 package for searching, navigating, and modifying LaTeX documents using BeautifulSoup-esque idioms"
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('a42e5e3ecc004a0178edc83f552defb6e75258aaf3be614136a0dfdd6c4e6945')
+sha256sums=('3c093e9634675436ff0cfcc9cd116722577613957b11a6285518f51c39a90784')
 package() {
   cd "$srcdir/TexSoup-$pkgver/"
   python setup.py install --root="$pkgdir/" --optimize=1
