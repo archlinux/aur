@@ -3,7 +3,7 @@
 
 pkgname=rocm-opencl-runtime
 pkgver=3.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Radeon Open Compute - OpenCL runtime'
 arch=('x86_64')
 url='https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime'
@@ -17,8 +17,8 @@ sha256sums=('286ff64304905384ce524cd8794c28aee216befd6c9267d4187a12e5a21e2daf')
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
 build() {
-    CFLAGS="$CFLAGS -isystem /opt/rocm/rocclr/include/include -isystem /opt/rocm/rocclr/include/compiler/lib -isystem /opt/rocm/rocclr/include/compiler/lib/include" \
-    CXXFLAGS="$CXXFLAGS -isystem /opt/rocm/rocclr/include/include -isystem /opt/rocm/rocclr/include/compiler/lib -isystem /opt/rocm/rocclr/include/compiler/lib/include" \
+    CFLAGS="$CFLAGS -isystem /opt/rocm/rocclr/include/include -isystem /opt/rocm/rocclr/include/compiler/lib -isystem /opt/rocm/rocclr/include/compiler/lib/include -isystem /opt/rocm/rocclr/include/elf" \
+    CXXFLAGS="$CXXFLAGS -isystem /opt/rocm/rocclr/include/include -isystem /opt/rocm/rocclr/include/compiler/lib -isystem /opt/rocm/rocclr/include/compiler/lib/include -isystem /opt/rocm/rocclr/include/elf" \
     cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm \
           -DROCclr_DIR=/opt/rocm/rocclr \
           -DLIBROCclr_STATIC_DIR=/opt/rocm/rocclr/lib \
