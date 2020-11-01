@@ -2,7 +2,6 @@
 pkgname=ttf-comic-mono-git
 pkgver=r21.03b5ad8
 pkgrel=1
-epoch=2
 pkgdesc="like the famous font but monospace and with adjusted metric"
 license=('MIT')
 arch=('any')
