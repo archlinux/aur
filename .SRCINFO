@@ -1,6 +1,6 @@
 pkgbase = linux-nitrous-fire-git
 	pkgver = 5.9+
-	pkgrel = 2
+	pkgrel = 1
 	url = https://gitlab.com/xdevs23/linux-nitrous
 	arch = x86_64
 	license = GPL2
@@ -24,11 +24,11 @@ pkgname = linux-nitrous-fire-git
 	pkgdesc = Modified Linux kernel optimized for Skylake (and newer) compiled using clang, sacrificing security for performance. The 'nitrous-fire' kernel is insecure, only use it if you need the performance.
 	install = linux-nitrous-fire-git.install
 	depends = coreutils
-	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-nitrous-fire-git-headers: to build DKMS modules against this kernel
+	optdepends = linux-firmware: Additional firmware blobs
 	provides = linux
 	backup = etc/mkinitcpio.d/linux-nitrous-fire-git.preset
 
