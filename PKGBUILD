@@ -1,34 +1,41 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=universal-gcode-sender
-pkgver=1.0.9
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="Java based GRBL compatible cross-platform G-Code sender"
-arch=('any')
+arch=(any)
 url="https://github.com/winder/Universal-G-Code-Sender"
-license=('GPL3')
-depends=('java-environment>=8')
-makedepends=('maven')
-provides=('universal-gcode-sender')
-conflicts=('universal-gcode-sender-git')
+license=(GPL3)
+makedepends=(jdk8 npm)
+depends=(jre8 npm)
+provides=(universal-gcode-sender)
+conflicts=(universal-gcode-sender-git)
 source=("https://github.com/winder/Universal-G-Code-Sender/archive/v${pkgver}.tar.gz")
-md5sums=('f898607e51cd397b040550fab00911bf')
+md5sums=('ac25e62348d9378e40487f884b770ecf')
+
+prepare() {
+  cd "${srcdir}/Universal-G-Code-Sender-${pkgver}"
+  export MAVEN_OPTS="-Xmx2048m"
+  mvn --batch-mode validate
+}
 
 build() {
   cd "${srcdir}/Universal-G-Code-Sender-${pkgver}"
-  mvn package -DskipTests
-}
-
-check() {
-  cd "${srcdir}/Universal-G-Code-Sender-${pkgver}"
-  mvn test
+  mvn --batch-mode package
 }
 
 package() {
-  mkdir -p "${pkgdir}/opt/${pkgname}"
-  cp "${srcdir}/Universal-G-Code-Sender-${pkgver}/target/UniversalGcodeSender.jar" "${pkgdir}/opt/${pkgname}/."
-  cp "${srcdir}/Universal-G-Code-Sender-${pkgver}/release_files/start.sh" "${pkgdir}/opt/${pkgname}/."
-  chmod +x "${pkgdir}/opt/${pkgname}/start.sh"
+  mkdir -p "${pkgdir}/opt/universal-gcode-sender"
+
+  # classic
+  cp "${srcdir}/Universal-G-Code-Sender-${pkgver}/ugs-classic/target/UniversalGcodeSender.jar" "${pkgdir}/opt/universal-gcode-sender/."
+  cp "${srcdir}/Universal-G-Code-Sender-${pkgver}/ugs-classic/release_files/start.sh" "${pkgdir}/opt/universal-gcode-sender/."
+  chmod +x "${pkgdir}/opt/universal-gcode-sender/start.sh"
+  
+  # platform
+  cp -a "${srcdir}/Universal-G-Code-Sender-${pkgver}/ugs-platform/application/target/ugsplatform" "${pkgdir}/opt/universal-gcode-sender/."
 
   mkdir -p "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/start.sh" "${pkgdir}/usr/bin/ugs"
+  ln -s "/opt/universal-gcode-sender/start.sh" "${pkgdir}/usr/bin/ugs-clasic"
+  ln -s "/opt/universal-gcode-sender/ugsplatform/bin/ugsplatform" "${pkgdir}/usr/bin/ugs"
 }
