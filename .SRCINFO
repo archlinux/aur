@@ -1,0 +1,16 @@
+pkgbase = python-macs
+	pkgdesc = MACS -- Model-based Analysis of ChIP-Seq
+	pkgver = 2.2.7.1
+	pkgrel = 1
+	url = https://macs3-project.github.io/MACS/
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-numpy
+	conflicts = python2-macs2
+	replaces = python2-macs2
+	source = https://github.com/macs3-project/MACS/archive/v2.2.7.1.tar.gz
+	md5sums = 3b669e6b847e5d2edd9b9ab4b58edae9
+
+pkgname = python-macs
+
