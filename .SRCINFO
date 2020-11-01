@@ -1,18 +1,18 @@
 pkgbase = python-lmfit
 	pkgdesc = Non-Linear Least Squares Minimization, with flexible Parameter settings, based on scipy.optimize.leastsq, and with many additional classes and methods for curve fitting
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = http:/lmfit.github.io/lmfit-py/
-	arch = any
-	license = BSD-3
+	arch = x86_64
+	license = BSD
 	makedepends = python-setuptools
 	depends = python
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-asteval
 	depends = python-uncertainties
-	source = https://github.com/lmfit/lmfit-py/archive/1.0.0.tar.gz
-	sha256sums = a97f3ea280eed161c59fbb59362c6320120e3aaf2b24a07421b3c69f9c4dfdf7
+	source = https://github.com/lmfit/lmfit-py/archive/1.0.1.tar.gz
+	sha256sums = d271096aede53830a3af3017f5cccd742e8f23445187f5ba1595e07ae1b980aa
 
 pkgname = python-lmfit
 
