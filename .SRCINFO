@@ -1,0 +1,16 @@
+pkgbase = cartridge-cli-git
+	pkgdesc = Tarantool Cartridge command-line utility
+	pkgver = 2.4.0.r2.g55a16ec
+	pkgrel = 1
+	url = https://tarantool.io/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	makedepends = tarantool
+	depends = tarantool
+	source = cartridge-cli-git::git+https://github.com/tarantool/cartridge-cli/#branch=master
+	sha256sums = SKIP
+
+pkgname = cartridge-cli-git
+
