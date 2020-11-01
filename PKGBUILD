@@ -1,6 +1,6 @@
 # Maintainer: PumpkinCheshire <sollyonzou@gmail.com>
 
-_name=dian-ncnn-vulkan
+_name=dain-ncnn-vulkan
 pkgname=dain-ncnn-vulkan-git
 pkgver=r21.79257cd
 pkgrel=1
@@ -10,8 +10,8 @@ url="https://github.com/nihui/dain-ncnn-vulkan"
 license=('MIT')
 depends=('vulkan-icd-loader' 'libwebp')
 makedepends=('git' 'cmake' 'glslang' 'vulkan-headers' 'vulkan-icd-loader' 'ncnn-git' 'libwebp')
-provides=("dian-ncnn-vulkan")
-conflicts=("dian-ncnn-vulkan")
+provides=("dain-ncnn-vulkan")
+conflicts=("dain-ncnn-vulkan")
 source=('git+https://github.com/nihui/dain-ncnn-vulkan.git')
 md5sums=('SKIP')
 
