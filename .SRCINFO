@@ -1,5 +1,5 @@
 pkgbase = syncthingtray-lite
-	pkgdesc = Tray application for Syncthing
+	pkgdesc = Tray application for Syncthing - without the KDE integrations
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Martchus/syncthingtray
