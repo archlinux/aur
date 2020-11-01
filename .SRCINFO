@@ -15,8 +15,8 @@ pkgbase = dain-ncnn-vulkan-git
 	makedepends = libwebp
 	depends = vulkan-icd-loader
 	depends = libwebp
-	provides = dian-ncnn-vulkan
-	conflicts = dian-ncnn-vulkan
+	provides = dain-ncnn-vulkan
+	conflicts = dain-ncnn-vulkan
 	source = git+https://github.com/nihui/dain-ncnn-vulkan.git
 	md5sums = SKIP
 
