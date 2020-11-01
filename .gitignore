@@ -1,2 +1,6 @@
 *.pkg.tar*
+*.tar.gz
 *.jar
+src/
+pkg/
+picard/
