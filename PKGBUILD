@@ -2,20 +2,22 @@
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
 
 pkgname=vapoursynth-editor-git
-pkgver=r18.0.ga511db5
+pkgver=R3.1.gf38042a
 pkgrel=1
 pkgdesc="A simple program for edit/create VapourSynth scripts. (GIT version)"
 arch=('x86_64')
-url='http://forum.doom9.org/showthread.php?p=1688477'
-license=('CCPL' 'MIT' 'LGPL')
-depends=('qt5-base'
-         'qt5-websockets'
+url='https://forum.doom9.org/showthread.php?t=181708'
+license=('CCPL'
+         'MIT'
+         'LGPL'
+         )
+depends=('qt5-websockets'
          'vapoursynth'
          )
 makedepends=('git')
 provides=('vapoursynth-editor')
 conflicts=('vapoursynth-editor')
-source=('git+https://bitbucket.org/mystery_keeper/vapoursynth-editor.git'
+source=('vapoursynth-editor::git+https://bitbucket.org/gundamftw/vapoursynth-editor-2'
         'vsedit.desktop'
         'vsedit_server_watch.desktop'
         )
