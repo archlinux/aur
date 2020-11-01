@@ -79,8 +79,8 @@
     "vscode-builtin-icon-theme-seti": "https://open-vsx.org/api/vscode/vscode-theme-seti/1.50.0/file/vscode.vscode-theme-seti-1.50.0.vsix",
     "vscode-builtin-xml": "https://open-vsx.org/api/vscode/xml/1.50.0/file/vscode.xml-1.50.0.vsix",
     "vscode-builtin-yaml": "https://open-vsx.org/api/vscode/yaml/1.50.0/file/vscode.yaml-1.50.0.vsix",
-    "vscode-editorconfig": "https://open-vsx.org/api/EditorConfig/EditorConfig/0.14.4/file/EditorConfig.EditorConfig-0.14.4.vsix",
-    "vscode-eslint": "https://open-vsx.org/api/dbaeumer/vscode-eslint/2.1.1/file/dbaeumer.vscode-eslint-2.1.1.vsix",
+    "vscode-editorconfig": "https://open-vsx.org/api/EditorConfig/EditorConfig/0.15.1/file/EditorConfig.EditorConfig-0.15.1.vsix",
+    "vscode-eslint": "https://open-vsx.org/api/dbaeumer/vscode-eslint/2.1.8/file/dbaeumer.vscode-eslint-2.1.8.vsix",
     "vscode-references-view": "https://open-vsx.org/api/ms-vscode/references-view/0.0.47/file/ms-vscode.references-view-0.0.47.vsix"
   },
   "dependencies": {
