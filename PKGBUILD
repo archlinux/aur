@@ -3,7 +3,7 @@
 
 pkgname=odin2-synthesizer
 pkgver=2.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc='24 voice polyphonic synthesizer, with modulation and FX. (Standalone, VST3, LV2)'
 license=('GPL3')
 arch=('x86_64')
