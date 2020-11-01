@@ -2,10 +2,10 @@
 pkgname=vulkan-kompute-git 
 pkgver=r380.9babbc5
 pkgrel=1
-pkgdesc=""
+pkgdesc="The General Purpose Vulkan Compute Framework. Blazing fast, mobile-enabled, asynchronous and optimized for advanced GPU data processing usecases. "
 arch=('any')
-url=""
-license=('GPL')
+url="kompute.cc"
+license=('apache')
 groups=()
 depends=('vulkan-headers')
 makedepends=('git') 
@@ -22,7 +22,6 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
