@@ -1,32 +1,28 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=preseq
-pkgver=2.0.2
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="A tool for predicting and estimating the complexity of a genomic sequencing library, equivalent to predicting and estimating the number of redundant reads from a given sequencing depth."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://smithlabresearch.org/software/preseq/"
-depends=('gsl')
+depends=('gsl' 'htslib')
 license=('GPLv3')
-source=("https://github.com/smithlabcode/${pkgname}/releases/download/v${pkgver}/${pkgname}_v${pkgver}.tar.bz2")
-#source=("https://github.com/smithlabcode/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('9f2a7b597c9f08b821db6ee55e2ea39c')
+source=("https://github.com/smithlabcode/preseq/releases/download/v${pkgver}/preseq-${pkgver}.tar.gz")
+md5sums=('3114e2875ac45995b88c5dcc15ddfc23')
 
 prepare() {
-  cd "${pkgname}_v${pkgver}"
-  make clean
+  cd "${pkgname}-${pkgver}"
+  ./configure --prefix="${pkgdir}/usr/bin" --enable-hts
 }
 
 build() {
-  cd "${pkgname}_v${pkgver}"
+  cd "${pkgname}-${pkgver}"
   make all
 }
 
 package() {
-  mkdir -p "${pkgdir}/opt/${pkgname}"
-  cp -a "${pkgname}_v${pkgver}/"* "${pkgdir}/opt/${pkgname}"
-  mkdir -p "${pkgdir}/usr/bin/"
-  ln -s /opt/${pkgname}/preseq ${pkgdir}/usr/bin/preseq
-  ln -s /opt/${pkgname}/bam2mr ${pkgdir}/usr/bin/bam2mr
+  cd "${pkgname}-${pkgver}"
+  make install
 }
 
