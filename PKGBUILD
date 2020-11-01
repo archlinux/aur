@@ -5,12 +5,11 @@ pkgver=2.13
 pkgrel=2
 pkgdesc="Unix Amiga Delitracker Emulator"
 arch=('i686' 'x86_64')
-url="http://zakalwe.fi/uade"
+url="https://zakalwe.fi/uade"
 license=('GPL')
-depends=('libao' 'fuse')
-makedepends=('pkg-config')
+depends=('libao' 'fuse2')
 install=uade.install
-source=("http://zakalwe.fi/uade/uade2/$pkgname-$pkgver.tar.bz2")
+source=("https://zakalwe.fi/uade/uade2/$pkgname-$pkgver.tar.bz2")
 md5sums=('29bb1018b7fa58f93b246264c160bdc6')
 
 build() {
