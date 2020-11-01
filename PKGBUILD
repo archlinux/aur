@@ -2,12 +2,12 @@
 
 pkgname=hypnotix-git
 pkgver=r2.5687e0e
-pkgrel=2
+pkgrel=3
 pkgdesc="An IPTV app"
 arch=(any)
 url="https://github.com/linuxmint/hypnotix"
 license=(unknown)
-depends=(dconf hicolor-icon-theme lua51 python-requests python-setproctitle xapp)
+depends=(dconf hicolor-icon-theme lua51 python-requests python-setproctitle mpv xapp)
 makedepends=(git)
 provides=(hypnotix)
 conflicts=(hypnotix)
