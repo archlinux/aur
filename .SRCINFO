@@ -1,10 +1,10 @@
 pkgbase = python-htseq
 	pkgdesc = library to facilitate processing and analysis of data from high-throughput sequencing (HTS) experiments
-	pkgver = 0.11.2
+	pkgver = 0.11.3
 	pkgrel = 1
 	url = https://github.com/simon-anders/htseq
-	arch = any
-	license = GPL-3.0
+	arch = x86_64
+	license = GPL3
 	makedepends = python-setuptools
 	makedepends = cython
 	makedepends = swig
@@ -12,8 +12,8 @@ pkgbase = python-htseq
 	depends = python-matplotlib
 	depends = python-numpy
 	depends = python-pysam
-	source = https://github.com/simon-anders/htseq/archive/release_0.11.2.tar.gz
-	sha256sums = dfc707effa699d5ba9034e1bb9f13c0fb4e9bc60d31ede2444aa49c7e2fc71aa
+	source = https://github.com/simon-anders/htseq/archive/release_0.11.3.tar.gz
+	sha256sums = e9a8557fc350840ed7e6ed843e795de8a58b1dc09e18b3933e7484e219e6dcaf
 
 pkgname = python-htseq
 

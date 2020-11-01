@@ -1,27 +1,25 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
-_module_name=htseq
-pkgname=python-${_module_name}
-pkgver=0.11.2
+pkgname=python-htseq
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="library to facilitate processing and analysis of data from high-throughput sequencing (HTS) experiments"
-arch=('any')
+arch=(x86_64)
 url=https://github.com/simon-anders/htseq
-license=('GPL-3.0')
+license=(GPL3)
 depends=(python python-matplotlib python-numpy python-pysam)
 makedepends=(python-setuptools cython swig)
-source=("https://github.com/simon-anders/${_module_name}/archive/release_${pkgver}.tar.gz")
-sha256sums=('dfc707effa699d5ba9034e1bb9f13c0fb4e9bc60d31ede2444aa49c7e2fc71aa')
+source=("https://github.com/simon-anders/htseq/archive/release_${pkgver}.tar.gz")
+sha256sums=('e9a8557fc350840ed7e6ed843e795de8a58b1dc09e18b3933e7484e219e6dcaf')
 
 build() {
-  cd "$srcdir/${_module_name}-release_$pkgver"
+  cd htseq-release_$pkgver
   python setup.py build
 }
 
-
 package(){
-  cd "$srcdir/${_module_name}-release_$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd htseq-release_$pkgver
+  python setup.py install --root="$pkgdir/" --optimize=1  --skip-build
 }
 
 # vim:ts=2:sw=2:et:
