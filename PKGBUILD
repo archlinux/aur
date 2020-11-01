@@ -42,7 +42,7 @@ build() {
     # This is a mingw build, so Windows prefix is used. Let's change it:
     sed -i "s|C:/Qwt-\$\$QWT_VERSION|/usr/${_arch}|" qwtconfig.pri
 
-    ${QTDIR}/lib/qt6/bin/qmake qwt.pro
+    ${QTDIR}/bin/qmake qwt.pro
     make
   done
 }
