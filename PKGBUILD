@@ -1,7 +1,7 @@
 pkgbase=kodi-eggz
 pkgname=kodi-eggz
-pkgver=19.0a2
-gittag=19.0a2-Matrix
+pkgver=19.0a3
+gittag=19.0a3-Matrix
 gittagvfs=4.0.0-Matrix
 pkgrel=1
 arch=('x86_64')
@@ -23,9 +23,11 @@ makedepends=(
 source=(
   "git+https://github.com/xbmc/xbmc.git#tag=$gittag"
   "git+https://github.com/xbmc/vfs.rar.git#tag=$gittagvfs"
+  "removestupidremarks.patch"
 )
 sha256sums=('SKIP'
 'SKIP'
+'e89cc7c880b0b10361b882339b542ad49be91ae78de9d4b38ddc08b594734cf5'
 )
 
 pkgver() {
@@ -56,6 +58,15 @@ prepare() {
  make -j $threads -C tools/depends/target/libfmt PREFIX=${srcdir}/usr
  msg2 "making DEP/libspdlog"
  make -j $threads -C tools/depends/target/libspdlog PREFIX=${srcdir}/usr
+
+ msg "Prepare Kodi"
+ msg2 "Patching Kodisource"
+ while read patch; do
+  echo "Applying $patch"
+  git apply $patch || exit 2
+ done <<< $(ls ../../*.patch)
+
+
 }
 
 build() {
@@ -65,6 +76,7 @@ build() {
  mkdir ${srcdir}/kodi-build
  cd ${srcdir}/kodi-build
  msg2 "cmake configure phase"
+ export APP_RENDER_SYSTEM=gl
  cmake ../xbmc -DCMAKE_INSTALL_PREFIX=/usr -DX11_RENDER_SYSTEM=gl -DENABLE_INTERNAL_FMT=on -DENABLE_INTERNAL_FFMPEG=ON -DENABLE_INTERNAL_CROSSGUID=ON -DENABLE_INTERNAL_FSTRCMP=ON -DENABLE_INTERNAL_FLATBUFFERS=ON -DENABLE_INTERNAL_SPDLOG=ON -DENABLE_MYSQLCLIENT=ON
  msg2 "cmake build phase"
  cmake --build . -- #VERBOSE=1

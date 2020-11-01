@@ -1,5 +1,5 @@
 pkgbase = kodi-eggz
-	pkgver = 19.0a2
+	pkgver = 19.0a3
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -56,10 +56,12 @@ pkgbase = kodi-eggz
 	depends = libcec
 	depends = tinyxml
 	depends = shairplay
-	source = git+https://github.com/xbmc/xbmc.git#tag=19.0a2-Matrix
+	source = git+https://github.com/xbmc/xbmc.git#tag=19.0a3-Matrix
 	source = git+https://github.com/xbmc/vfs.rar.git#tag=4.0.0-Matrix
+	source = removestupidremarks.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = e89cc7c880b0b10361b882339b542ad49be91ae78de9d4b38ddc08b594734cf5
 
 pkgname = kodi-eggz
 	pkgdesc = Latest stable-ish kodi build with VFS automaticly installed
