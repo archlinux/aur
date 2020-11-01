@@ -6,13 +6,13 @@ pkgver=r523.d6a18749c0
 pkgrel=1
 pkgdesc="a deezer downloader built from the ashes of Deezloader Remix."
 arch=('any')
-url="https://git.fuwafuwa.moe/vaugerbird/$_pkgname"
+url="https://git.fuwafuwa.moe/RemixDev/$_pkgname"
 license=('gpl3')
 depends=('python>=3.6' 'python-click' 'python-pycryptodomex' 'python-mutagen' 'python-requests'  'python-spotipy' 'python-eventlet')
 conflicts=('deemix')
 makedepends=('git')
 provides=('deemix')
-source=("${_pkgname}::git+https://git.fuwafuwa.moe/vaugerbird/$_pkgname")
+source=("${_pkgname}::git+https://git.fuwafuwa.moe/RemixDev/$_pkgname")
 md5sums=('SKIP')
 
 pkgver() {
