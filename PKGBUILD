@@ -5,8 +5,8 @@
 _pkgname=coreutils
 pkgname=advcp
 pkgver=8.32
-pkgrel=1
-pkgdesc="'cp' and 'mv' utilities with progress bar patches" 
+pkgrel=2
+pkgdesc="'cp' and 'mv' utilities with progress bar patches"
 arch=('x86_64')
 license=('GPL3')
 url='https://www.gnu.org/software/coreutils/'
@@ -17,7 +17,7 @@ source=("ftp://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
 validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9') # Pádraig Brady
 sha256sums=('4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa'
             'SKIP'
-            'd39b493ccbd3a8423bd00fc5767e385b0588efca53ec9699f8b328715aa47368')
+            '6919835aac53c873267d199de8823e993d72870a5eb7b6caf566803a7f3f861e')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
