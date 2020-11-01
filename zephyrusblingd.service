@@ -1,0 +1,12 @@
+[Unit]
+Description=ASUS ROG Zephyrus G14 Anime matrix display control 
+StartLimitInterval=200
+StartLimitBurst=2
+
+[Service]
+ExecStart=/usr/bin/zephyrusblingd
+Restart=on-failure
+Restart=always
+RestartSec=1
+Type=dbus
+BusName=org.meumeu.bling

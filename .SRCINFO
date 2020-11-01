@@ -1,0 +1,19 @@
+pkgbase = zephyrusbling-git
+	pkgver = r19.a0c47d1
+	pkgrel = 1
+	arch = x86_64
+	makedepends = boost
+	makedepends = cmake
+	depends = asus-nb-ctrl-git
+	depends = cli11
+	depends = fmt
+	depends = glm
+	depends = microsoft-gsl
+	depends = sdbus-cpp
+	source = zephyrusbling::git+https://github.com/Meumeu/ZephyrusBling.git
+	source = zephyrusblingd.service
+	sha256sums = SKIP
+	sha256sums = d8e35ca01c148680414b65b7cd809054d945033779e187409f04f39889febbbe
+
+pkgname = zephyrusbling-git
+
