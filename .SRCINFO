@@ -1,6 +1,6 @@
 pkgbase = ttf-comic-mono-git
 	pkgdesc = like the famous font but monospace and with adjusted metric
-	pkgver = 1
+	pkgver = r21.03b5ad8
 	pkgrel = 1
 	arch = any
 	license = MIT
