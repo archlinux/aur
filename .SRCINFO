@@ -1,6 +1,6 @@
 pkgbase = ess-epics
 	pkgdesc = Experimental Physics and Industrial Control System -- ESS falvor
-	pkgver = 7.0.2
+	pkgver = 7.0.3
 	pkgrel = 1
 	url = http://www.aps.anl.gov/epics/
 	arch = any
