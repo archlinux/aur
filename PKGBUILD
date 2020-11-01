@@ -1,6 +1,6 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=ess-epics
-pkgver=7.0.2
+pkgver=7.0.3
 pkgrel=1
 pkgdesc="Experimental Physics and Industrial Control System -- ESS falvor"
 arch=('any')
