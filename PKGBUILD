@@ -19,7 +19,6 @@ pkgver() {
 }
 
 package() {
-	cd "$srcdir/comic-mono-font"
-	install -d "$pkgdir/usr/share/fonts/TTF"
-	install -Dm755 *.ttf "$pkgdir/usr/share/fonts/TTF"
+	install -Dm755 'comic-mono-font/'*.ttf -t "${pkgdir}/usr/share/fonts/TTF"
+	install -Dm644 'comic-mono-font/LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname%-*}"
 }
