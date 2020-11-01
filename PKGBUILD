@@ -2,7 +2,7 @@
 
 pkgname=kdepim-runtime-etesync-git
 _pkgname=kdepim-runtime-etesync
-pkgver=v20.04.1.r303.g82088a61f
+pkgver=v20.08.1.r196.ga0a134809
 pkgrel=1
 pkgdesc='Extends the functionality of kdepim (with etesync modules)'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(libkolabxml kdav akonadi-calendar knotifyconfig kalarmcal kmbox pimcomm
 makedepends=(extra-cmake-modules kdoctools boost git)
 provides=(kdepim-runtime)
 conflicts=(kdepim-runtime)
-source=("${_pkgname}::git+https://invent.kde.org/sjolly/kdepim-runtime.git#branch=etesync2resource"
+source=("${_pkgname}::git+https://invent.kde.org/pim/kdepim-runtime"
         "0001-XXX-Ease-version-requirements.patch")
 sha512sums=('SKIP'
         'SKIP')
