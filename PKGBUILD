@@ -2,27 +2,28 @@
 
 _pkgname='oneshot'
 pkgname="${_pkgname}-bin"
-pkgver=1.2.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Easily transfer files to and from your terminal and any browser'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/raphaelreyna/oneshot'
 license=('MIT')
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 
-source_x86_64=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.linux-x86_64.tar.gz")
-source_armv7h=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.linux-arm.tar.gz")
-source_aarch64=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.linux-arm64.tar.gz")
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.linux-x86_64.tar.gz")
+source_armv7h=("${_pkgname}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.linux-arm.tar.gz")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.linux-arm64.tar.gz")
 
-sha256sums_x86_64=('eea35b2ff2f166c397ccf754a2b0af9b32793f8f5553473ded0109d579bec2ed')
-sha256sums_armv7h=('7c9a7abc3ec2ca29ee07b4c98f67ffd63fa287226a3ea699fa0392b2160f097f')
-sha256sums_aarch64=('2dfe8f5ffbe0197e18c09ae9d40220403ee61ca0f8de4e66d83aa3cdf1ce496a')
+sha256sums_x86_64=('dfe8ca4b99aa6bcfcb635a178710573f94c61311725e789b87485d6ed07cdfcc')
+sha256sums_armv7h=('0052080354c0c830d7ed37a5a1837954f0770ae94b46e8daee8208a4f29a8cf3')
+sha256sums_aarch64=('80d8a391906ca764654b64c74fb100db2b5fa9f6db3f9fa361b89a36d0a578b0')
 
 package() {
-  install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}"
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" 'LICENSE'
-  install -Dm644 -t "${pkgdir}/usr/share/man/man1" "${_pkgname}.1"
+  install -Dvm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dvm644 "${_pkgname}.1" -t "${pkgdir}/usr/share/man/man1"
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
