@@ -4,17 +4,17 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.3.1073.r5323
+pkgver=1.3.1073.r5377
 _gwtver=2.8.2
 _ginver=2.1.2
 _nodever=10.19.0
-_pandocver="2.11.0.4"
+_pandocver=2.11.0.4
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
-depends=('r>=3.0.1' boost-libs qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns postgresql-libs sqlite3 soci clang hunspell-en_US mathjax2 pandoc=${_pandocver})
+depends=('r>=3.0.1' boost-libs qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns postgresql-libs sqlite3 soci clang hunspell-en_US mathjax2 pandoc)
 makedepends=(git 'cmake>=3.1.0' boost desktop-file-utils jdk8-openjdk apache-ant unzip openssl libcups pam patchelf wget yarn)
 optdepends=('git: for git support'
             'subversion: for subversion support'
