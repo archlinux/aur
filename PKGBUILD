@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="lms-git"
-pkgver=v3.19.2.r0.g8ecf41e
+pkgver=v3.21.0.r0.gb02b8e1
 pkgrel=1
 pkgdesc="Lightweight Music Server. Access your self-hosted music using a web interface"
 url="https://github.com/epoupon/lms"
@@ -37,7 +37,7 @@ build(){
  mkdir build
  cd build
  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
- make 
+ make
 }
 
 package(){
