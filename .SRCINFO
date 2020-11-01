@@ -1,6 +1,6 @@
 pkgbase = ucsc-kent-genome-tools
 	pkgdesc = UCSC Kent bioinformatics utilities: kent source utilities
-	pkgver = 394
+	pkgver = 405
 	pkgrel = 1
 	url = http://hgdownload.soe.ucsc.edu/admin/exe/
 	install = ucsc-kent-genome-tools.install
@@ -12,10 +12,10 @@ pkgbase = ucsc-kent-genome-tools
 	depends = openssl
 	source = .hg.conf
 	source = ucsc-kent-genome-tools.sh
-	source = ucsc-kent-genome-tools-394.src.tgz::http://hgdownload.soe.ucsc.edu/admin/exe/userApps.v394.src.tgz
+	source = ucsc-kent-genome-tools-405.src.tgz::http://hgdownload.soe.ucsc.edu/admin/exe/userApps.v405.src.tgz
 	sha256sums = 359db5b022847d3d674f21821fa08a363d2183379d59a2b63129fcf90954d674
 	sha256sums = 5ccec9d5e4de9be22746fab1591127b61176c8c4d586c0dd1df13ee5e52a5367
-	sha256sums = e5756cb332c172cf589ba449c99d36d370c826bce3be9a546090bdfdefcab330
+	sha256sums = 7102172b4186fb6afbbb36cf8efb24a5518172b291b58d3d5182bd8a7684328a
 
 pkgname = ucsc-kent-genome-tools
 

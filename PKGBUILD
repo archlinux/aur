@@ -2,14 +2,14 @@
 # Contributer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=ucsc-kent-genome-tools
-pkgver=394
+pkgver=405
 pkgrel=1
 pkgdesc="UCSC Kent bioinformatics utilities: kent source utilities"
-arch=('x86_64')
+arch=(x86_64)
 url="http://hgdownload.soe.ucsc.edu/admin/exe/"
 license=('custom:UCSC')
 install="${pkgname}".install
-depends=('libpng' 'mariadb-clients' 'uuid' 'openssl')
+depends=(libpng mariadb-clients uuid openssl)
 source=(
   .hg.conf
   "${pkgname}".sh
@@ -17,7 +17,7 @@ source=(
 )
 sha256sums=('359db5b022847d3d674f21821fa08a363d2183379d59a2b63129fcf90954d674'
             '5ccec9d5e4de9be22746fab1591127b61176c8c4d586c0dd1df13ee5e52a5367'
-            'e5756cb332c172cf589ba449c99d36d370c826bce3be9a546090bdfdefcab330')
+            '7102172b4186fb6afbbb36cf8efb24a5518172b291b58d3d5182bd8a7684328a')
 
 prepare() {
   cd "${srcdir}"/userApps
