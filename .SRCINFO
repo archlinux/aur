@@ -1,14 +1,14 @@
 pkgbase = octetos-db-postgresql
-	pkgdesc = C++ library for Database Acces.
-	pkgver = 1.4.0
+	pkgdesc = API to access database, PostgreSQL component.
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/azaeldevel/octetos-db-postgresql
 	arch = x86_64
 	license = GPL
 	depends = octetos-db-abstract
 	depends = postgresql-libs
-	source = https://github.com/azaeldevel/octetos-db-postgresql/archive/1.4.0-alpha.tar.gz
-	md5sums = 4c4f9a31c0e781626e7f77db666c8de3
+	source = https://github.com/azaeldevel/octetos-db-postgresql/archive/1.4.1-alpha.tar.gz
+	md5sums = 8030f16e43155433f49db56e3d38a995
 
 pkgname = octetos-db-postgresql
 
