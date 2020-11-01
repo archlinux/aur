@@ -1,7 +1,7 @@
 pkgbase = tuner
 	pkgdesc = Discover and play internet radio stations
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/louis77/tuner
 	arch = x86_64
 	license = GPL3
@@ -10,8 +10,8 @@ pkgbase = tuner
 	depends = geoclue
 	depends = granite
 	depends = gst-plugins-bad-libs
-	source = tuner-1.3.1.tar.gz::https://github.com/louis77/tuner/archive/1.3.1.tar.gz
-	sha256sums = 93f324b312eaa924c7d07f2cee29a63c7eb66692445e9281c73e7411e7e0eff0
+	source = tuner-1.3.0.tar.gz::https://github.com/louis77/tuner/archive/1.3.0.tar.gz
+	sha256sums = 37b9e69fbf6aa9da287ced34e3931663f357a9e83b0c3e4f72d036d26646a04b
 
 pkgname = tuner
 
