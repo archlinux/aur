@@ -1,7 +1,7 @@
 pkgbase = advcp
 	pkgdesc = 'cp' and 'mv' utilities with progress bar patches
 	pkgver = 8.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/coreutils/
 	arch = x86_64
 	license = GPL3
