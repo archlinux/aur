@@ -6,7 +6,7 @@ _pkgname="${pkgname%-git}"
 
 epoch=1
 pkgver() { git -C "$_pkgname" describe --tags --long | sed 's/^v//;s/-/.r/;s/-g/./'; }
-pkgver=6.8.r0.beec49a
+pkgver=6.8.r7.c99d1ea
 pkgrel=1
 
 pkgdesc='POP3 mail retriever with reliable Maildir and command delivery; Python 3 port'
@@ -19,6 +19,8 @@ conflicts=('getmail')
 
 makedepends=('git')
 depends=('python-chardet')
+optdepends=('python-keyring: secure password store'
+            'python-keyrings-alt: alternative backends')
 
 changelog=CHANGELOG
 source=("git+https://github.com/$_pkgname/$_pkgname.git")
