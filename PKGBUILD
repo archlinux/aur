@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=duf-git
-pkgver=r60.dac0c7d
+pkgver=r107.4c15e83
 pkgrel=1
 pkgdesc="Disk Usage/Free Utility"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -15,6 +15,8 @@ sha256sums=('SKIP')
 
 prepare() {
     export GOPATH="$srcdir/gopath"
+    export GO111MODULE=on
+
     go clean -modcache
 }
 
