@@ -1,22 +1,21 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=spotify-ripper
-pkgver=2.11
-pkgrel=5
+pkgver=2.14
+pkgrel=1
 pkgdesc='Command-line ripper for Spotify, with a workaround for playlist emptying'
 arch=('any')
-url="https://github.com/wolfmanx/spotify-ripper/tree/pr-collect"
+url="https://github.com/scaronni/spotify-ripper"
 license=('MIT')
-depends=('python2' 'python2-spotify' 'mutagen' 'python2-colorama' 'python2-requests' 
-         'python2-schedule' 'python2-spotipy' 'lame')
+depends=('python' 'python-spotify' 'python-spotipy' 'python-mutagen' 'python-colorama' 'python-requests' 'python-schedule' 'lame')
 optdepends=('flac: Rip songs to lossless FLAC encoding' 'opus-tools: Rip songs to Opus encoding' 
             'vorbis-tools: Rip songs to Ogg Vorbis encoding' 'faac: Rip songs to AAC format with FreeAAC' 
             'libav-git-no-libs: Rip songs to Apple Lossless format' 'fdkaac: Rip songs to MP4/M4A format with Fraunhofer FDK AAC codec')
-makedepends=('python2-setuptools')
-source=("https://github.com/wolfmanx/spotify-ripper/archive/pr-collect.zip"
+makedepends=('python-setuptools' 'libspotify')
+source=("https://github.com/scaronni/spotify-ripper/archive/${pkgver}.tar.gz"
         "setup.py" "requirements.txt")
-md5sums=('SKIP'
-         'c80e4dc2d35501cc87ef75deb954a3c0'
+md5sums=('347411bf137546432443f143f21221bd'
+         '2c3e897ce5cf74e0cf2db5cbf1890371'
          '433ec722cffccd32c7e31807262f1128')
 
 package() {
@@ -26,5 +25,5 @@ package() {
     cp ../setup.py .
     cp ../requirements.txt .
     
-    python2 setup.py install --root="$pkgdir"
+    python setup.py install --root="$pkgdir"
 }
