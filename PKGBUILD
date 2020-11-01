@@ -80,8 +80,8 @@ check() {
 package() {
     install -Dm 755 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2.vst3/Contents/x86_64-linux/Odin2.so" "${pkgdir}/usr/lib/vst3/Odin2/Odin2.so"
 
-    install -Dm 755 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2_.lv2/Odin2_.so" "${pkgdir}/usr/lib/lv2/Odin2/Odin2.so"
-    install -Dm 644 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2_.lv2/Odin2_.ttl" "${pkgdir}/usr/lib/lv2/Odin2/Odin2.ttl"
+    install -Dm 755 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2_.lv2/Odin2_.so" "${pkgdir}/usr/lib/lv2/Odin2/Odin2_.so"
+    install -Dm 644 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2_.lv2/Odin2_.ttl" "${pkgdir}/usr/lib/lv2/Odin2/Odin2_.ttl"
     install -Dm 644 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2_.lv2/presets.ttl" "${pkgdir}/usr/lib/lv2/Odin2/presets.ttl"
     install -Dm 644 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2_.lv2/manifest.ttl" "${pkgdir}/usr/lib/lv2/Odin2/manifest.ttl"
 
