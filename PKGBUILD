@@ -2,9 +2,11 @@
 pkgname=ttf-comic-mono-git
 pkgver=r21.03b5ad8
 pkgrel=1
+epoch=1
 pkgdesc="like the famous font but monospace and with adjusted metric"
 license=('MIT')
 arch=('any')
+url="https://dtinth.github.io/comic-mono-font/"
 makedepends=('git')
 provides=("comic-mono")
 
