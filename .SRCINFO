@@ -1,33 +1,24 @@
 pkgbase = zfs-dkms-rc
-	pkgver = 0.8.0
+	pkgdesc = Kernel modules for the Zettabyte File System.
+	pkgver = 2.0.0_rc4
 	pkgrel = 1
-	url = http://zfsonlinux.org/
-	arch = i686
+	url = https://zfsonlinux.org/
 	arch = x86_64
+	groups = archzfs-dkms-rc
 	license = CDDL
-	makedepends = git
-	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.8.0/zfs-0.8.0.tar.gz
-	source = zfs.bash-completion-r1
-	source = zfs.initcpio.install
-	source = zfs.initcpio.hook
-	sha256sums = 0fd92e87f4b9df9686f18e2ac707c16b2eeaf00f682d41c20ea519f3a0fe4705
-	sha256sums = b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540
-	sha256sums = 17114052aa20c528f022f7f1349971aa28810e2ed2c97871226b5679a91f7e77
-	sha256sums = 138964b43d7a282e1ed5f7fcf1f8dc9baa4f664655b628eeac1912a3017a787b
+	depends = zfs-utils-rc=2.0.0_rc4
+	depends = lsb-release
+	depends = dkms
+	provides = zfs
+	provides = zfs-headers
+	provides = spl
+	provides = spl-headers
+	conflicts = zfs
+	conflicts = zfs-headers
+	conflicts = spl
+	conflicts = spl-headers
+	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.0.0-rc4/zfs-2.0.0-rc4.tar.gz
+	sha256sums = d89838d93b4429de98075de1a7fcac4b22673cedab4e9b109594f9f8c2456c51
 
 pkgname = zfs-dkms-rc
-	pkgdesc = Kernel modules for the Zettabyte File System -- release candidates
-	depends = zfs-utils-rc=0.8.0-1
-	depends = dkms
-	depends = lsb-release
-	provides = zfs
-	conflicts = zfs-git
-	conflicts = zfs-lts
-	conflicts = zfs-dkms
-
-pkgname = zfs-utils-rc
-	pkgdesc = Kernel module support files for the Zettabyte File System -- release candidates
-	conflicts = zfs-utils-git
-	conflicts = zfs-utils-lts
-	conflicts = zfs-dkms
 
