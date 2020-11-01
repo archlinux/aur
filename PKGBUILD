@@ -3,8 +3,8 @@
 
 pkgbase=docspell
 pkgname=('docspell-joex' 'docspell-restserver')
-pkgver=0.13.0
-pkgrel=2
+pkgver=0.14.0
+pkgrel=1
 arch=('any')
 url="https://github.com/eikek/docspell"
 license=('GPL3')
@@ -19,8 +19,8 @@ source=("$pkgbase-$pkgver-restserver.zip::https://github.com/eikek/$pkgbase/rele
         "${pkgname[1]}.service"
         "$pkgbase.sysusers"
         "$pkgbase.tmpfiles")
-sha512sums=('d4892ad84b0d91713dd2fd0eb4b22bb7acf7b285898acda55928049c2a463cdb0c7f865acf5fe05c15bd5e581049948e9d2cbef31049dc049786324fb117ac1c'
-            '315f2bdcefa48685bf4cfe5f0c1860c88904aab5cfdf4eea8885975d72177baa9308fbdf0e350fe14b1f6a22edfab538cfa82a70739c4b8bade1857f216226a5'
+sha512sums=('e7e98f6f3a394930a94b4047a4e30090761525db50c0dd496ed97beeee6564c7a4455bcedf37047cf8547347feb7a920c7f199f1e4cedb409a1583d2b1f81634'
+            '8ea5b1d27a1385ad6a67ae874901a9a6fb07a56e465b9b45b62169708b2d54f0179adc8d84776fa7f788994bf6ec04f9263d08a28706faea6c1a62dc55a2e9e3'
             '6ab8b24eb76f02b68e4fa4194b8771ef4f57c8375b34bf7bf914563528e347ea127beb5547e432910911d4fd15982cccdd1df50aeb76058129b909824ce49093'
             '0b8b08f47f1cb46a3bfc16df4b0574cebfb4a851562d134fcba3c4bf80fb011443499a549c3a04480456c048346d09f36fbcbc9d792810001c9c8b370d3926a8'
             'f63f0fa58715b7da01aa265a7bec72eb24f0e98c354eed479b6034bc33b2ccdaef87db8a7630af1d5a6ac43fadf11a0f0a3fb3de5e183aa64d838a69b67125f9'
