@@ -6,7 +6,7 @@ _commit=2c4dc16f26b94e416c999299d076228d4f45c242
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.1.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
@@ -33,9 +33,8 @@ depends=(
   steam-native-runtime
   "wine-gecko-bin>=$_geckover"
 )
-makedepends=(autoconf ncurses bison perl fontforge flex meson
-  'gcc>=4.5.0-2'
-  mingw-w64-gcc
+makedepends=(autoconf ncurses bison perl fontforge flex mingw-w64-gcc
+  meson
   giflib                lib32-giflib
   libpng                lib32-libpng
   gnutls                lib32-gnutls
@@ -60,6 +59,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex meson
   libgphoto2
   sane
   gsm
+  vulkan-headers
   samba
   opencl-headers
   git
@@ -92,7 +92,7 @@ optdepends=(
   samba           dosbox
 )
 makedepends=(${makedepends[@]} ${depends[@]})
-#install=${pkgname%-git}.install
+#install=${pkgname}.install
 source=(
     proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=${_commit}
     wine::git://source.winehq.org/git/wine.git
@@ -152,7 +152,7 @@ sha256sums=(
     SKIP
     SKIP
     '7c69355566055121669f7e416e44185a5ccceb4312d0c19587d2303e63b6b63f'
-    '53d588b811d992fc1caaa81fea9c563d536e48bf9186fa1c6ad19de3ed67ab3e'
+    'd04b9d0aa42892946d846f52931442f5d4065814d8afd3e330d4324d75cd539b'
     '9389a6bcd8e8d8f0349fa082644a5519026dbcdd91a3e978f39103a21a6298f1'
     '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
     'bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98'
@@ -254,7 +254,7 @@ build() {
     ../proton-ge-custom/configure.sh \
         --no-steam-runtime \
         --with-ffmpeg \
-        --build-name="${pkgname%-git}"
+        --build-name="${pkgname}"
 
     # Use -mno-avx for wine too
     # https://bugs.winehq.org/show_bug.cgi?id=45289
@@ -282,12 +282,19 @@ build() {
 package() {
     cd build
 
-    mkdir -p "$pkgdir/usr/share/steam/compatibilitytools.d"
-    mv dist "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"
+    local _compatdir="$pkgdir/usr/share/steam/compatibilitytools.d"
 
-    find "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}" \
+    mkdir -p "$_compatdir"
+    mv dist "$_compatdir/${pkgname}"
+
+    i686-w64-mingw32-strip --strip-unneeded \
+        "$_compatdir/${pkgname}"/dist/lib/wine/{,fakedlls/,dxvk/,vkd3d-proton/}*.dll
+    x86_64-w64-mingw32-strip --strip-unneeded \
+        "$_compatdir/${pkgname}"/dist/lib64/wine/{,fakedlls/,dxvk/,vkd3d-proton/}*.dll
+
+    find "$_compatdir/${pkgname}" \
         -exec chmod go-w {} \;
-    find "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}" \
+    find "$_compatdir/${pkgname}" \
         -type f \
         -not -path "*/proton" \
         -not -path "*/dist/bin/*" \
@@ -295,12 +302,12 @@ package() {
         -not -path "*/dist/lib64/*" \
         -not -path "*/dist/share/default_pfx/*" \
         -exec chmod 644 {} \;
-    chmod 755 "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/{proton,dist/bin/{msidb,wine{,64},wine{,64}-preloader,wineserver}}
+    chmod 755 "$_compatdir/${pkgname}"/{proton,dist/bin/{msidb,wine{,64},wine{,64}-preloader,wineserver}}
 
     ln -s /usr/share/wine/gecko \
-        "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/share/wine/gecko
+        "$_compatdir/${pkgname}"/dist/share/wine/gecko
 
-    mkdir -p "$pkgdir/usr/share/licenses/${pkgname%-git}"
-    mv "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/LICENSE{,.OFL} \
-        "$pkgdir/usr/share/licenses/${pkgname%-git}"
+    mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
+    mv "$_compatdir/${pkgname}"/LICENSE{,.OFL} \
+        "$pkgdir/usr/share/licenses/${pkgname}"
 }
