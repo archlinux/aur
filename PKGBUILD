@@ -3,12 +3,12 @@
 
 pkgname=libsigrok
 pkgver=0.5.2
-pkgrel=5
+pkgrel=6
 pkgdesc='Client software that supports various hardware logic analyzers, core library'
 arch=('x86_64')
 url='https://www.sigrok.org/wiki/Libsigrok'
 license=('GPL3')
-depends=('libftdi' 'libserialport' 'glibmm' 'libzip' 'libieee1284' 'bluez-libs' 'hidapi')
+depends=('libftdi' 'libserialport' 'glibmm' 'libzip' 'libieee1284' 'bluez-libs' 'hidapi' 'libudev.so')
 makedepends=('cmake' 'doxygen' 'ruby' 'jdk8-openjdk' 'swig' 'python' 'pygobject-devel' 'python-numpy' 'python-setuptools')
 optdepends=('python' 'ruby' 'jdk8-openjdk'
             'sigrok-firmware-fx2lafw: Cypress FX2-based device support')
