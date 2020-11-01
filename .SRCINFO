@@ -1,21 +1,21 @@
 pkgbase = arduino-cli-rc
 	pkgdesc = Arduino command line interface -- stable and release candidates
-	pkgver = 0.7.2
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/arduino/arduino-cli
 	arch = x86_64
-	license = GPL
-	makedepends = go
+	license = GPL3
+	makedepends = go-pie
 	makedepends = git
-	makedepends = unzip
+	makedepends = taskfile-git
 	depends = arduino-ctags
 	optdepends = arduino-avr-core: AVR core with upstream avr-gcc and avrdude
 	optdepends = arduino-builder: Arduino command line interface
 	optdepends = arduino-ctags
 	provides = arduino-cli
 	conflicts = arduino-cli
-	source = https://github.com/arduino/arduino-cli/archive/0.7.2.tar.gz
-	sha512sums = 8ad5716aea3a36e93550290363528d103741e451c5b016d876ff1d08f6540c647453d29ac40a325393f00346f305385674abefd2a1e52fa44d5b037de8ca3e33
+	source = https://github.com/arduino/arduino-cli/archive/0.13.0.tar.gz
+	sha512sums = bb176b7057bd91a22fe2db2574c16107f8d0143725939276152510a1719ca91137eacbfbdd58e2c015e8a0137eb2f2e0e02ae08fc378acf0eb12044c02e7bd52
 
 pkgname = arduino-cli-rc
 
