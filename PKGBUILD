@@ -1,30 +1,30 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=python-google-cloud-firestore
-pkgver=1.4.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Google's Firestore Python client library"
-arch=('any')
-url=https://github.com/googleapis/google-cloud-python
-license=('APACHE 2.0')
+arch=(x86_64)
+url=https://github.com/googleapis/python-firestore
+license=(APACHE)
 depends=('python')
 makedepends=(python-setuptools)
-source=(https://github.com/googleapis/google-cloud-python/archive/firestore-${pkgver}.tar.gz)
-sha256sums=('9282c10801280ec2a1996075235bcf3f8fd55ddeab1041aa91763735991bc8df')
+source=(https://github.com/googleapis/python-firestore/archive/v${pkgver}.tar.gz)
+sha256sums=('889ea0f4a8926c796f055627f12db96c4d29632159eff5b7032cfecd23283093')
 
 prepare() {
-  cd "$srcdir/google-cloud-python-firestore-$pkgver/firestore"
+  cd "python-firestore-$pkgver"
   #versioneer install 
 }
 
 build() {
-  cd "$srcdir/google-cloud-python-firestore-$pkgver/firestore"
+  cd "python-firestore-$pkgver"
   python setup.py build
 }
 
 
 package() {
-  cd "$srcdir/google-cloud-python-firestore-$pkgver/firestore"
+  cd "python-firestore-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
