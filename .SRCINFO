@@ -1,0 +1,14 @@
+pkgbase = neix
+	pkgdesc = RSS/Atom feed reader for your terminal
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/tomschwarz/neix
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = ncurses
+	source = neix-0.1.3.tar.gz::https://github.com/tomschwarz/neix/archive/v0.1.3.tar.gz
+	sha256sums = 56515164cec7ec51fff4181f7b5e95ada80dab493305c7cf192e8b4aae924f41
+
+pkgname = neix
+
