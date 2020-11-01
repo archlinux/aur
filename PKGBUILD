@@ -1,17 +1,17 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=moarvm
 _pkgname=MoarVM
-pkgver=2020.09
+pkgver=2020.10
 pkgrel=1
 pkgdesc="A VM with adaptive optimization and JIT compilation, built for Rakudo"
 arch=('i686' 'x86_64')
 url="http://moarvm.com/"
 license=(PerlArtistic)
-depends=('glibc')
+depends=('zstd')
 makedepends=('perl>=5.8')
 options=('!makeflags')
 source=("http://moarvm.com/releases/$_pkgname-$pkgver.tar.gz")
-b2sums=('4846f7b44a238f6f2b40e829999c4939cb6cd6988ff11ae68dd2381db3144f2c7b7ec37dd71fa6749b4a0147e20224a801342e3ea8bf03dbd758012723468861')
+b2sums=('1486fbbe5407aaf010a2b929458750989820e62d9baadcf66ae97df55c93914639bc988ffe30055fee0a0b0f88f73d9de8d253e138b6d594581160d976831280')
 
 build() {
 	cd $_pkgname-$pkgver
