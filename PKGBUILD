@@ -11,7 +11,7 @@ license=('APACHE')
 depends=('apache22' 'python2')
 conflicts=('mod_python' 'mod_python2')
 install="mod_python.install"
-source=("http://archive.apache.org/dist/httpd/modpython/mod_python-$pkgver.tgz"
+source=("https://archive.apache.org/dist/httpd/modpython/mod_python-$pkgver.tgz"
 	"compile.patch"
 	"python-2.7.patch")
 options=('!strip')
