@@ -2,7 +2,7 @@
 
 pkgname=great-imd-evo-git
 pkgver=r9.70c782b
-pkgrel=1
+pkgrel=2
 pkgdesc='Great-IMD-evo is an sgi variation GTK2/3 theme.'
 arch=('any')
 url='https://github.com/sylphenix/Great-IMD-evo'
@@ -22,7 +22,7 @@ pkgver() {
 }
 package() {
     cd "$pkgname"
-    local dest="$pkgdir"/usr/share/themes/"$pkgname"
+    local dest="$pkgdir"/usr/share/themes/'Great IMD evo'
 
     install -d "$dest"
     cp -r * "$dest"
