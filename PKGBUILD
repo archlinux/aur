@@ -36,6 +36,6 @@ package() {
   cp -a "${srcdir}/Universal-G-Code-Sender-${pkgver}/ugs-platform/application/target/ugsplatform" "${pkgdir}/opt/universal-gcode-sender/."
 
   mkdir -p "${pkgdir}/usr/bin"
-  ln -s "/opt/universal-gcode-sender/start.sh" "${pkgdir}/usr/bin/ugs-clasic"
+  ln -s "/opt/universal-gcode-sender/start.sh" "${pkgdir}/usr/bin/ugs-classic"
   ln -s "/opt/universal-gcode-sender/ugsplatform/bin/ugsplatform" "${pkgdir}/usr/bin/ugs"
 }
