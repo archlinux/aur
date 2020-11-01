@@ -1,6 +1,6 @@
 pkgbase = linux-nitrous-git
 	pkgver = 5.9+
-	pkgrel = 2
+	pkgrel = 1
 	url = https://gitlab.com/xdevs23/linux-nitrous
 	arch = x86_64
 	license = GPL2
@@ -24,11 +24,11 @@ pkgname = linux-nitrous-git
 	pkgdesc = Modified Linux kernel optimized for Haswell (and newer) compiled using clang
 	install = linux-nitrous-git.install
 	depends = coreutils
-	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-nitrous-git-headers: to build DKMS modules against this kernel
+	optdepends = linux-firmware: Additional firmware blobs
 	provides = linux
 	backup = etc/mkinitcpio.d/linux-nitrous-git.preset
 
