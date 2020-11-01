@@ -12,7 +12,7 @@ pkgbase = librespeed-go
 	license = LGPL3
 	makedepends = go>=1.13
 	optdepends = mariadb: database
-	optdepends = postgres: database
+	optdepends = postgresql: database
 	conflicts = librespeed-go-bin
 	backup = etc/librespeed/settings.toml
 	backup = var/lib/librespeed/speedtest.db

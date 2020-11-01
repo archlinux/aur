@@ -10,7 +10,7 @@ arch=("i386" "x86_64" "aarch64" "armv5h" "armv6h" "armv7h")
 conflicts=("librespeed-go-bin")
 makedepends=("go>=1.13")
 optdepends=("mariadb: database"
-            "postgres: database")
+            "postgresql: database")
 source=("https://github.com/librespeed/speedtest-go/archive/v$pkgver.zip"
         "librespeed.service"
         "librespeed.sysusers"
@@ -33,17 +33,17 @@ package(){
  install -D -m 644 "librespeed.sysusers" "$pkgdir/usr/lib/sysusers.d/librespeed.conf"
  install -D -m 644 "librespeed.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/librespeed.conf"
  install -D -m 640 "settings.toml" "$pkgdir/etc/librespeed/settings.toml"
- 
+
  cd "speedtest-go-$pkgver"
  install -d "$pkgdir/usr/share/librespeed"
  install -m 644 "database/mysql/telemetry_mysql.sql" "$pkgdir/usr/share/librespeed"
  install -m 644 "database/postgresql/telemetry_postgresql.sql" "$pkgdir/usr/share/librespeed"
  cp -r "assets" "$pkgdir/usr/share/librespeed"
- 
+
  install -D "speedtest" "$pkgdir/usr/bin/librespeed"
 
  install -d -m 750 "$pkgdir/var/lib/librespeed"
  touch "$pkgdir/var/lib/librespeed/speedtest.db"
 
- install -D -m 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 
+ install -D -m 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
