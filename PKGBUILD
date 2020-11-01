@@ -1,4 +1,3 @@
-# Maintainer: Your Name <youremail@domain.com>
 pkgname=vulkan-kompute-git 
 pkgver=r380.9babbc5
 pkgrel=1
