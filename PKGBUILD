@@ -1,5 +1,3 @@
-# Maintainer: morpheusthewhite <zffromGerace@hotmail.it>
-
 pkgname=nordpy-plasmoid-git
 pkgver=r10.ec6491c
 pkgrel=1
@@ -14,17 +12,17 @@ source=("git+https://github.com/morpheusthewhite/nordpy-plasmoid.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname}"
+  cd "$srcdir/${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   # "Building and installing plugin"
-  qmake $pkgname/plugin -o build-plugin/Makefile
+  qmake ${pkgname%-git}/plugin -o build-plugin/Makefile
   make -C build-plugin
   
   # "Building and installing plasmoid"
-  cmake -B build $pkgname
+  cmake -B build ${pkgname%-git}
   make -C build
 }
 
