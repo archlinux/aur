@@ -1,16 +1,16 @@
 pkgbase = ruby-crass
 	pkgdesc = CSS parser based on the CSS Syntax Level 3 spec.
-	pkgver = 1.0.2
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/rgrove/crass/
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-rdoc
-	noextract = crass-1.0.2.gem
+	noextract = crass-1.0.6.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/crass-1.0.2.gem
-	sha1sums = 5a855504ff288cd8c36482c26d965d05b370dbbd
+	source = https://rubygems.org/downloads/crass-1.0.6.gem
+	sha1sums = 3ec82fc1653a715a092dbd116a33de6e777282b3
 
 pkgname = ruby-crass
 
