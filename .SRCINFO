@@ -1,7 +1,7 @@
 pkgbase = anbox-image-gapps-magisk
 	pkgdesc = Android image for running in Anbox, with OpenGApps, Houdini and Magisk (Bootless)
 	pkgver = 2018.07.19
-	pkgrel = 15
+	pkgrel = 16
 	url = https://anbox.io
 	arch = x86_64
 	license = custom
