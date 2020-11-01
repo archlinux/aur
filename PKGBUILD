@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=kicad-symbols
-_pkgver="5.1.5"
+_pkgver="5.1.7"
 pkgver=${_pkgver//-}
 pkgrel=1
 pkgdesc="Official KiCad schematic symbol libraries -- stable release"
@@ -12,7 +12,7 @@ makedepends=('cmake')
 conflicts=('kicad-library-bzr' 'kicad-library-git' 'kicad-library-3d' 'kicad-library' 'kicad-symbols-git' 'kicad-pretty-git')
 provides=($pkgname)
 source=("https://github.com/KiCad/kicad-symbols/archive/${_pkgver}.tar.gz")
-md5sums=('943175449bd7a5e2733a16e896786da4')
+md5sums=('d3dc2533796564a216d80aad19fa08cd')
 
 prepare() {
   cd "${pkgname}-${_pkgver}"
