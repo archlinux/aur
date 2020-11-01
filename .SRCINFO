@@ -2,7 +2,7 @@ pkgbase = pidgin-emoticons-penguins
 	pkgdesc = Pidgin port of Kadu penguins smileys
 	pkgver = 1.8
 	pkgrel = 1
-	url = http://www.kde-look.org/content/show.php/Kadu+Penguins?content=66357
+	url = https://store.kde.org/p/1002309
 	arch = any
 	license = GPL
 	depends = pidgin

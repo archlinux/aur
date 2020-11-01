@@ -5,7 +5,7 @@ pkgver=1.8
 pkgrel=1
 pkgdesc="Pidgin port of Kadu penguins smileys"
 arch=('any')
-url="http://www.kde-look.org/content/show.php/Kadu+Penguins?content=66357"
+url="https://store.kde.org/p/1002309"
 license=('GPL')
 depends=('pidgin')
 source=("penguins-${pkgver}.tar.gz::http://kde-look.org/CONTENT/content-files/66357-Kadu%20Penguins-1.8.tar.gz" theme)
