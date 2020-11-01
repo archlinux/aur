@@ -2,7 +2,7 @@
 # Maintainer: Nathan Owens <ndowens @ artixlinux.org>
 pkgname=libulfius
 _gitname=ulfius
-pkgver=2.6.6
+pkgver=2.6.9
 pkgrel=1
 pkgdesc="HTTP Framework for REST API in C, using JSON, with websockets and streaming data"
 arch=(x86_64)
