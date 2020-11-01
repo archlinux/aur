@@ -2,16 +2,16 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=bowtie2
-pkgver=2.3.5.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Bowtie 2 is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequence."
 arch=("any")
 depends=('termcap')
 optdepends=('intel-tbb: faster multithreading')
 url="http://bowtie-bio.sourceforge.net/bowtie2"
-license=('GPL3')
-source=("https://github.com/BenLangmead/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('8afc22b107667ebe2d5b17f49dd37b4a')
+license=(GPL3)
+source=("https://github.com/BenLangmead/bowtie2/archive/v${pkgver}.tar.gz")
+md5sums=('d5f8674aed8bdbf6b96bd07f3df528ee')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -19,7 +19,7 @@ prepare() {
 }
 
 build() {
-   cd "${srcdir}/${pkgname}-${pkgver}"
+   cd "bowtie2-${pkgver}"
    if pacman -Q intel-tbb > /dev/null 2>/dev/null; then
       msg2 "Building with Intel's TBB multithreading support"
       EXTRA_FLAGS="-std=gnu++98" NO_TBB=0 make prefix=/usr
@@ -31,9 +31,10 @@ build() {
 
 package() {
    mkdir -p "${pkgdir}/opt/"
-   cp -a "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/opt/${pkgname}"
-   cd "${srcdir}/${pkgname}-${pkgver}"
+   cp -a "${srcdir}/bowtie2-${pkgver}" "${pkgdir}/opt/bowtie2"
+   cd "${srcdir}/bowtie2-${pkgver}"
    make prefix=/usr DESTDIR="${pkgdir}" install
-   install -Dm644 ${srcdir}/${pkgname}-${pkgver}/MANUAL -t "${pkgdir}/usr/share/doc/${pkgname}"
-   install -Dm644 ${srcdir}/${pkgname}-${pkgver}/LICENSE -t "$pkgdir/usr/share/licenses/${pkgname}"
+   mkdir -p "${pkgdir}/usr/share/doc/bowtie2"
+   cp -a ${srcdir}/bowtie2-${pkgver}/doc "${pkgdir}/usr/share/doc/bowtie2"
+   install -Dm644 ${srcdir}/bowtie2-${pkgver}/LICENSE -t "${pkgdir}/usr/share/licenses/bowtie2"
 }
