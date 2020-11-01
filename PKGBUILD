@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=docrep
 pkgname=python-$_modulename
-pkgver=0.2.7
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A Python Module for intelligent reuse of docstrings"
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f60083212c812219ee1d97a123c9fa9f718d28bf5ecea9b9446705a0aaa644da')
+sha256sums=('fd2e92b8fb6b5d79211598e3b7c899a40c1dc408212ceaa26ddb32f487f159b9')
 
 package() {
   cd "$srcdir/$(tar -tf v${pkgver}.tar.gz | head -n1)"

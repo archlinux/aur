@@ -1,6 +1,6 @@
 pkgbase = python-docrep
 	pkgdesc = A Python Module for intelligent reuse of docstrings
-	pkgver = 0.2.7
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/Chilipp/docrep
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-docrep
 	makedepends = python-setuptools
 	makedepends = python-numpy
 	options = !emptydirs
-	source = https://github.com/Chilipp/docrep/archive/v0.2.7.tar.gz
-	sha256sums = f60083212c812219ee1d97a123c9fa9f718d28bf5ecea9b9446705a0aaa644da
+	source = https://github.com/Chilipp/docrep/archive/v0.3.1.tar.gz
+	sha256sums = fd2e92b8fb6b5d79211598e3b7c899a40c1dc408212ceaa26ddb32f487f159b9
 
 pkgname = python-docrep
 
