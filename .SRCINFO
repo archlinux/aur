@@ -1,0 +1,23 @@
+pkgbase = python-semantic-release
+	pkgdesc = Automatic semantic versioning for Python projects
+	pkgver = 7.3.0
+	pkgrel = 1
+	url = https://github.com/relekang/python-semantic-release
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-click
+	depends = python-click-log
+	depends = python-gitpython
+	depends = python-semver
+	depends = python-invoke
+	depends = twine
+	depends = python-requests
+	depends = python-wheel
+	depends = python-toml
+	depends = python-gitlab
+	source = python-semantic-release-7.3.0.tar.gz::https://github.com/relekang/python-semantic-release/archive/v7.3.0.tar.gz
+	b2sums = c0b30cfb163eaaab871b74e16712a59a97ab6d7924b2b1b76192e90614395a9daead692b60fdfffac1293ed85baffcca361d08d93317326be3c3fe8652b1a8b2
+
+pkgname = python-semantic-release
+
