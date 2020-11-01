@@ -22,9 +22,9 @@ pkgname=(
   "$pkgbase" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=19.0a2
+pkgver=19.0a3
 #_major=18.7.1
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -91,7 +91,7 @@ noextract=(
   "flatbuffers-$_flatbuffers_version.tar.gz"
   "spdlog-$_spdlog_version.tar.gz"
 )
-b2sums=('f61ad74fdcf7254731842feb45897d46291bfe591fed7a1de2d91db36275e3310443fc943f3a93b7ff21f83cad6b4a781b3d60701d6f56a93de231300f5ecd86'
+b2sums=('2672e8ec243e59ae31ce1a0a4d1bfadc4dddfe3ae5eb0e7560ad2c9452d3ad238be9d7e12ed2b72a63ba6b172515842f0b4bb0c79e987df25a21480bf7850851'
         '283aa2cec0a2200d3569bc280cb9659e9224a6b3a77db8a35b269cd8caf1337ac9d8b92b806df66f63ef7458a46bd6261f0b8b14678b10e26644a79dcbeea5da'
         '7573434a0ae8e8ccabf48173f81fcde29074eb138e119a2ae9156cde3c3d8bfd716f5d0e605b97f2dcac21f570781137c8533c5ae306b51e3905822fda318355'
         '0c206acdaf0776841ab792c74e023af07d9539eb72e03ae164382a31ed950f60e5e15f1d055979d28f1398924471b294d11f064b11b8373353b3962a3777ff3c'
@@ -152,7 +152,8 @@ build() {
     -DENABLE_INTERNAL_FLATBUFFERS=ON \
     -DENABLE_INTERNAL_SPDLOG=ON \
     -DENABLE_MYSQLCLIENT=ON \
-    -DX11_RENDER_SYSTEM=gl \
+    -DCORE_PLATFORM_NAME=x11 \
+    -DAPP_RENDER_SYSTEM=gl \
     -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
     -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
@@ -162,7 +163,6 @@ build() {
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz" \
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz" \
     -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz" \
-    -DX11_RENDER_SYSTEM=gl \
     ../"xbmc-$_tag"
   make
   make preinstall
@@ -178,6 +178,8 @@ build() {
     -DENABLE_INTERNAL_FSTRCMP=ON \
     -DENABLE_INTERNAL_FLATBUFFERS=ON \
     -DENABLE_INTERNAL_SPDLOG=ON \
+    -DCORE_PLATFORM_NAME=wayland \
+    -DAPP_RENDER_SYSTEM=gl \
     -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
     -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
@@ -187,8 +189,6 @@ build() {
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz" \
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz" \
     -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz" \
-    -DCORE_PLATFORM_NAME=wayland \
-    -DWAYLAND_RENDER_SYSTEM=gl \
     ../"xbmc-$_tag"
   make
   make preinstall
@@ -204,6 +204,8 @@ build() {
     -DENABLE_INTERNAL_FSTRCMP=ON \
     -DENABLE_INTERNAL_FLATBUFFERS=ON \
     -DENABLE_INTERNAL_SPDLOG=ON \
+    -DCORE_PLATFORM_NAME=gbm \
+    -DAPP_RENDER_SYSTEM=gles \
     -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
     -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
@@ -213,8 +215,6 @@ build() {
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz" \
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz" \
     -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz" \
-    -DCORE_PLATFORM_NAME=gbm \
-    -DGBM_RENDER_SYSTEM=gles \
     ../"xbmc-$_tag"
   make
   make preinstall
@@ -227,7 +227,7 @@ package_kodi-devel() {
   pkgdesc="Alpha, Beta, or RC versions of the software media player and entertainment hub for digital media"
   depends=(
     'desktop-file-utils' 'hicolor-icon-theme' 'mesa' 'python-pycryptodomex'
-    'python-pillow' 'python-simplejson' 'xorg-xdpyinfo'
+    'python-pillow' 'python-simplejson' 'xorg-xdpyinfo' 'shairplay'
     'KODI-BIN'
   )
   optdepends=(
@@ -236,7 +236,6 @@ package_kodi-devel() {
     'python-pybluez: Bluetooth support'
     'libplist: AirPlay support'
     'pulseaudio: PulseAudio support'
-    'shairplay: AirPlay support'
     'upower: Display battery level'
   )
   provides=('xbmc' "kodi=${pkgver}")

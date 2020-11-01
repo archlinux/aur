@@ -1,6 +1,6 @@
 pkgbase = kodi-devel
-	pkgver = 19.0a2
-	pkgrel = 3
+	pkgver = 19.0a3
+	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -64,7 +64,7 @@ pkgbase = kodi-devel
 	noextract = fstrcmp-0.7.D001.tar.gz
 	noextract = flatbuffers-1.11.0.tar.gz
 	noextract = spdlog-1.5.0.tar.gz
-	source = kodi-19.0a2-Matrix.tar.gz::https://github.com/xbmc/xbmc/archive/19.0a2-Matrix.tar.gz
+	source = kodi-19.0a3-Matrix.tar.gz::https://github.com/xbmc/xbmc/archive/19.0a3-Matrix.tar.gz
 	source = libdvdcss-1.4.2-Leia-Beta-5.tar.gz::https://github.com/xbmc/libdvdcss/archive/1.4.2-Leia-Beta-5.tar.gz
 	source = libdvdnav-6.0.0-Leia-Alpha-3.tar.gz::https://github.com/xbmc/libdvdnav/archive/6.0.0-Leia-Alpha-3.tar.gz
 	source = libdvdread-6.0.0-Leia-Alpha-3.tar.gz::https://github.com/xbmc/libdvdread/archive/6.0.0-Leia-Alpha-3.tar.gz
@@ -75,7 +75,7 @@ pkgbase = kodi-devel
 	source = http://mirrors.kodi.tv/build-deps/sources/flatbuffers-1.11.0.tar.gz
 	source = http://mirrors.kodi.tv/build-deps/sources/spdlog-1.5.0.tar.gz
 	source = cheat-sse-build.patch
-	b2sums = f61ad74fdcf7254731842feb45897d46291bfe591fed7a1de2d91db36275e3310443fc943f3a93b7ff21f83cad6b4a781b3d60701d6f56a93de231300f5ecd86
+	b2sums = 2672e8ec243e59ae31ce1a0a4d1bfadc4dddfe3ae5eb0e7560ad2c9452d3ad238be9d7e12ed2b72a63ba6b172515842f0b4bb0c79e987df25a21480bf7850851
 	b2sums = 283aa2cec0a2200d3569bc280cb9659e9224a6b3a77db8a35b269cd8caf1337ac9d8b92b806df66f63ef7458a46bd6261f0b8b14678b10e26644a79dcbeea5da
 	b2sums = 7573434a0ae8e8ccabf48173f81fcde29074eb138e119a2ae9156cde3c3d8bfd716f5d0e605b97f2dcac21f570781137c8533c5ae306b51e3905822fda318355
 	b2sums = 0c206acdaf0776841ab792c74e023af07d9539eb72e03ae164382a31ed950f60e5e15f1d055979d28f1398924471b294d11f064b11b8373353b3962a3777ff3c
@@ -96,16 +96,16 @@ pkgname = kodi-devel
 	depends = python-pillow
 	depends = python-simplejson
 	depends = xorg-xdpyinfo
+	depends = shairplay
 	depends = KODI-BIN
 	optdepends = afpfs-ng: Apple shares support
 	optdepends = bluez: Blutooth support
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = libplist: AirPlay support
 	optdepends = pulseaudio: PulseAudio support
-	optdepends = shairplay: AirPlay support
 	optdepends = upower: Display battery level
 	provides = xbmc
-	provides = kodi=19.0a2
+	provides = kodi=19.0a3
 	conflicts = xbmc
 	replaces = xbmc
 
@@ -133,7 +133,7 @@ pkgname = kodi-devel-x11
 	depends = tinyxml
 	depends = kodi-devel
 	provides = KODI-BIN
-	provides = kodi-x11=19.0a2
+	provides = kodi-x11=19.0a3
 	replaces = kodi-bin
 
 pkgname = kodi-devel-wayland
@@ -160,7 +160,7 @@ pkgname = kodi-devel-wayland
 	depends = waylandpp
 	depends = kodi-devel
 	provides = KODI-BIN
-	provides = kodi-wayland=19.0a2
+	provides = kodi-wayland=19.0a3
 
 pkgname = kodi-devel-gbm
 	pkgdesc = gbm kodi binary
@@ -186,12 +186,12 @@ pkgname = kodi-devel-gbm
 	depends = tinyxml
 	depends = kodi-devel
 	provides = KODI-BIN
-	provides = kodi-gbm=19.0a2
+	provides = kodi-gbm=19.0a3
 
 pkgname = kodi-devel-eventclients
 	pkgdesc = Kodi Event Clients
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=19.0a2
+	provides = kodi-eventclients=19.0a3
 	conflicts = kodi-eventclients
 
 pkgname = kodi-devel-tools-texturepacker
@@ -200,12 +200,12 @@ pkgname = kodi-devel-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=19.0a2
+	provides = kodi-tools-texturepacker=19.0a3
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-devel-dev
 	pkgdesc = Kodi dev files
 	depends = kodi-devel
-	provides = kodi-dev=19.0a2
+	provides = kodi-dev=19.0a3
 	conflicts = kodi-dev
 
