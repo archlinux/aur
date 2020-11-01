@@ -2,7 +2,7 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx_beta-git
-pkgver=r6755
+pkgver=r7686
 pkgrel=1
 pkgdesc="Digital DJ mixing software. 2.3 (beta) branch."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=('git' 'glu' 'lv2' 'qt5-tools' 'scons' 'vamp-plugin-sdk')
 #checkdepends=('xorg-server-xvfb')
 provides=('mixxx')
 conflicts=('mixxx')
-source=("${pkgname%-*}::git+https://github.com/mixxxdj/mixxx.git#branch=2.2")
+source=("${pkgname%-*}::git+https://github.com/mixxxdj/mixxx.git#branch=2.3")
 md5sums=('SKIP')
 
 pkgver() {
