@@ -3,7 +3,7 @@
 # Contributor: Fabio Loli
 # Contributor: Sergey Kasmy
 pkgname=liquidctl-git
-pkgver=1.4.1.r1.ceaf470
+pkgver=1.4.2.r2.b45952f
 pkgrel=1
 pkgdesc='Cross-platform tool and drivers for liquid coolers and other devices'
 arch=('any')
