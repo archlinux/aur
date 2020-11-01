@@ -2,24 +2,24 @@
 
 
 pkgname=octetos-db-postgresql
-pkgver=1.3.10
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="C++ library for Database Acces."
 arch=('x86_64')
 license=('GPL')
-url="https://github.com/azaeldevel/octetos-db"
-depends=('octetos-db')
-md5sums=('c93eaa5d397ec88e7deb83b25fd375f5')
-source=(https://github.com/azaeldevel/octetos-db/archive/1.3.10-alpha.tar.gz)
+url="https://github.com/azaeldevel/octetos-db-postgresql"
+depends=('octetos-db-abstract' 'postgresql-libs')
+md5sums=('4c4f9a31c0e781626e7f77db666c8de3')
+source=(https://github.com/azaeldevel/${pkgname}/archive/${pkgver}-alpha.tar.gz)
 
 build() {
-    cd octetos-db-1.3.10-alpha
+    cd ${pkgname}-${pkgver}-alpha
     autoreconf -fi
-    ./configure --prefix=/usr --sysconfdir=/etc --docdir=${datarootdir}/doc/${pkgname}-${pkgver} --with-postgresql
+    ./configure --prefix=/usr --sysconfdir=/etc --with-archlinux
     make
 }
 
 package() {
-  cd octetos-db-1.3.10-alpha
+  cd ${pkgname}-${pkgver}-alpha
   make DESTDIR="${pkgdir}" install
 }
