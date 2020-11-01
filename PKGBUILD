@@ -2,9 +2,9 @@
 
 pkgbase=linux-slim
 _srcname=linux
-gitver=v5.9.2
-pkgver=5.9.v.2
-pkgrel=2
+gitver=v5.9.3
+pkgver=5.9.v.3
+pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -23,7 +23,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'c7927607b1cfd0cc2a007d72f0e35a9f840297b592a4678515ae537c87800094'
+            '3dd79e7d67ba47db23fb257a42f81739e083421bd1decfb10177ffb4ceaabb61'
             #.preset file
             'e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5'
             #linux install file
@@ -78,7 +78,7 @@ build() {
 
 _package() {
   pkgdesc="Linux kernel slimmed down to only work on AMD hardware. Zero compatibility."
-  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
+  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7' 'lzop')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=('linux')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
