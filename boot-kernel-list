@@ -1,0 +1,13 @@
+#!/bin/bash
+# Simona Pisano - 2018-11-18 -
+# simona-scripts
+# Libertamente utilizzabile sotto GPL v3
+
+  #alias sget-kernel-list='
+  search=`uname -r`; printf "Kernels /boot :\n";
+  for file in /boot/vmlinuz* ; do
+  info=`file $file`; file="${file:6:99}"; ver=${info#*version}; ver=${ver%\(*}; [[ $ver =~ $search ]] && flag="<-used" || flag="";
+  printf "%-28s %s %24s %s\n" "$file" "->" "$ver" "$flag";
+  done;
+  #'
+

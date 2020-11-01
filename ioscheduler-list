@@ -1,0 +1,13 @@
+#!/bin/bash
+# Simona Pisano - 2018-11-18
+# simona-scripts
+# Libertamente utilizzabile sotto GPL v3
+
+  #alias sget-io-sched-all-device='
+  echo -e -n "I/O sched: ";
+  for device in /sys/block/nvme*/queue/scheduler ; do echo -e -n "nvme${device:15:3}>\e[1;39;41m"  ` cat /sys/block/nvme${device:15:4}/queue/scheduler | cut -d "[" -f2 | cut -d "]" -f1 ` "\e[0m " ; done;
+  for device in /sys/block/sd*/queue/scheduler ; do echo -e -n "sd${device:13:1}>\e[1;39;41m"  `cat /sys/block/sd${device:13:1}/queue/scheduler | cut -d "[" -f2 | cut -d "]" -f1` "\e[0m "; done;
+  echo ""
+  #'
+
+

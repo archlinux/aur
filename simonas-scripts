@@ -1,0 +1,60 @@
+#!/bin/bash
+# Simona Pisano - 2018-11-18 -
+# simonas-scripts
+# Libertamente utilizzabile sotto GPL v3
+
+if [[ $1 == "-h" || $1 == "--help" || $1 == "list" || $1 == "" ]] ; then
+
+  cat << EOF
+simonas-scripts - GPL v3 license
+image-mount       - image    - mount a big amount of image file (use -h for a full list)
+image-umount      - imageu   - related to image-mount. umount all what mounted
+pendrive-detect   - pendrive - detect a pendrive, size, full device
+ioscheduler-list  - iosched  - list scheduler for all block devices
+boot-kernel-list  - boot     - list kernels inside /boot, extract version (lile uname -r), say what is used in recent boot
+uuid-change       - uuid     - change uuid of a volume
+macinstall                   - install id files (commanded by config file)
+exchange-info                - change euro dollar and diff with previouos day
+
+EOF
+
+
+  exit
+elseif [[ $1 == "--version" ]]
+  echo "simona-scripts Version 0.0"
+  exit
+fi
+
+case $1 in
+image|imageu|pendrive|ioched|boot)
+  case $1 in
+    image)    launch="image-mount" ;;
+    imageu)   launch="image-umount" ;;
+    pendrive) launch="pendrive-detect" ;;
+    ioched)   launch="ioscheduler-list" ;;
+    boot)     launch="boot-kernel-list" ;;
+    uuid)     launch="uuid-change" ;;
+    *) ;;
+  esac
+  ;;
+image-mount|image-umount|pendrive-detect|ioscheduler-list|boot-kernel-list|uuid-change|exchange-info)
+  launch=$1
+  ;;
+*)
+  echo "Sorry, but this one is not a known simonascript bash script."
+  launch=""
+  ;;
+esac
+
+if [[ $launch != "" ]] ; then
+  if [[ -r /bin/$launch ]] ; then
+    echo "Launch '$launch'..."
+    shift
+    #. "$launch"
+    exec "$launch" "$@"
+  else
+    echo "Installed package 'simonas-script' is damaged. Script is unavailable. Please reinstall."
+  fi
+fi
+
+

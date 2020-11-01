@@ -1,0 +1,114 @@
+#!/bin/bash
+# Simona Pisano - 2018-12-18
+# simona-scripts
+# Libertamente utilizzabile sotto GPL v3
+
+#exchange-info() {
+  #read echange from internet
+  query_http="http://free.currencyconverterapi.com/api/v5/convert?q=EUR_USD&compact=y"
+  currency_echange="EUR_USD"
+  raw_echange=`wget -q -O - ${query_http}`
+  value=0
+  #echo "raw_echange=$raw_echange"
+  #raw_echange={"EUR_USD":{"val":1.14075}}
+
+  if [[ $raw_echange != "" ]] ; then
+    if [[ ${raw_echange:1:10} == "\"${currency_echange}\":" ]] ; then
+      value=${raw_echange#*\"val\":} #estract to right of "val":
+      if [[ ${value:${#value}-2:2} == "}}" ]]; then
+        value=${value:0:${#value}-2} #remove last two {{
+        if [[ $value != "" ]] ; then
+          echo -n "Echange EURO vs US DOLLAR: 1€ = ${value}\$"
+        fi
+      fi
+    fi
+
+    if [[ $value != "" ]]; then
+      #read cfg with yesterday's echange
+      today=`date +%Y%m%d`
+      file_name="${HOME}/.last_exch.log"
+      if [[ -r $file_name ]]; then
+
+        count_row=0
+        prop="blank"
+        cont=""
+        last_prop="blank"
+        last_cont=""
+        while read line ; do
+          let count_row+=1
+
+          last_prop=$prop
+          last_cont=$cont
+          prop=${line%=*}
+          cont=${line#*=}
+
+          if [[ $count_row -gt 2 ]]; then #can't happen
+            echo -n " [something goes wrong (1) !!!] "
+            echo -n -e "Value-${today}-${currency_echange}=${value}\n" >$file_name #reset file
+            break;
+          fi
+
+        done < $file_name
+
+        #newer value
+
+        get_date=${prop:6:8}
+
+        if [[ $get_date == "" ]]; then  #to-do correct check string
+          echo -n " [something goes wrong (2) !!!] "
+          echo -n "Value-${today}-${currency_echange}=${value}\n" >$file_name
+          echo ""
+          exit
+        fi
+
+        if [[ $today != $get_date ]]; then #add today's new value and store old one
+          echo -n -e "${prop}=${cont}\n" >$file_name
+          echo -n -e "Value-${today}-${currency_echange}=${value}\n" >>$file_name
+        fi
+
+        #older value
+
+        [[ $last_prop != "blank" ]] && { prop=$last_prop; cont=$last_cont; }
+
+        if [[ $prop != "blank" ]]; then
+          # ho prop e last_prop da scegliere
+          get_date=${prop:6:8}
+
+          if [[ $get_date == "" ]]; then  #to-do correct check string
+            echo -n " [something goes wrong (3) !!!] "
+            echo -n -e "Value-${today}-${currency_echange}=${value}\n" >$file_name
+            echo -e -n "\n"
+            exit
+          fi
+
+          #data 20181208
+          #idx  01234567
+          if [[ $get_date != $today ]]; then
+            calc=`echo "$value - $cont" | bc`
+            [[ ${calc:0:1} == "." ]] && calc="0${calc}" #add 0 if start with .459859
+            [[ ${calc:0:1} != "-" ]] && calc="+${calc}" #add + if not negative sign present
+            echo -n " (today is: ${today:6:2}/${today:4:2}/${today:0:4}, "\
+              "diff from ${get_date:6:2}/${get_date:4:2}/${get_date:0:4} :${calc})"
+          fi
+
+        else #if file blank
+          echo -e -n "Value-${today}-${currency_echange}=${value}\n" >$file_name
+        fi
+      else #if file do not exist
+        #Value-20181208-EUR_USD
+        #0123456789
+        #          10   15  19
+        echo -e -n "Value-${today}-${currency_echange}=${value}\n" >$file_name
+      fi
+      echo -e -n "\n"
+    fi
+  else
+    echo "Offline."
+  fi
+#}
+
+#exchange-info()
+
+
+
+

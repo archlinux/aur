@@ -1,0 +1,31 @@
+.\" Manpage for image-mount.
+.\" Contact Simona <simona.pisano.70[at]gmail[dot]com> to correct errors or typos.
+.TH man 1 "25 Nov 2018" "1.0" "image-mount man page"
+.SH NAME
+image-mount \- Bash script to mount image files (iso, vms, crypto, squashfs) inside simonascripts pkg
+.SH SYNOPSIS
+image-mount image-mount [path/]file-name[.format] [format | #partition] [path-where-mount | #partition] [--force-iso-stdmount]
+.SH DESCRIPTION
+Bash script to mount image files (iso, vms, crypto, squashfs) inside simonascripts pkg.
+.SH OPTIONS
+-h, --help
+    display this help and exit
+
+--force-iso-stdmount
+    force in iso sudo mount 'mount -o loop' instead 'fuseiso'
+
+-y, --ask-confirm
+    confirm before execute
+
+--version
+    output version information and exit
+.SH EXAMPLES
+
+.SH SEE ALSO
+image-umount, simona-scripts
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Simona Pisano (simona.pisano.70[at]gmail[dot]com)
+.SH COPYRIGHT
+Copyright © 2018 Simona Pisano. License GPLv3: GNU GPL version 3 <https://gnu.org/licenses/gpl.html>.
