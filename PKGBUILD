@@ -3,7 +3,7 @@
 
 _gemname=stringex
 pkgname=ruby-$_gemname
-pkgver=2.7.1
+pkgver=2.8.5
 pkgrel=1
 pkgdesc='Some [hopefully] useful extensions to Ruby'\''s String class'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('d462d32da69b6d65657d3e3ea436eab0128ea700')
+sha1sums=('5bf63d30c3f3fca974191175b04f0f8caf8c431a')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
