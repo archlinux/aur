@@ -1,7 +1,8 @@
 # Maintainer: Yoan Blanc <yoan@dosimple.ch>
+# GPG: https://keybase.io/greut/pgp_keys.asc
 
 pkgname='eclint'
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc='EditorConfig linter'
 url='https://gitlab.com/greut/eclint'
@@ -13,15 +14,15 @@ makedepends=('git' 'go' 'gzip')
 checkdepends=('git' 'go')
 optdepends=('git: Git repository support')
 source=(
-  "${url}/uploads/398421622b7bf9eb41e1b0cb9ed93cac/eclint-${pkgver}.tar.gz"
-  "${url}/uploads/c339db474625b66e6a84bf971c756157/eclint-${pkgver}.tar.gz.sig"
+  "${url}/uploads/0c3508cb73da403042121cee07e293f6/eclint-${pkgver}.tar.gz"
+  "${url}/uploads/2f76e78f763bbdc3530261efe786cdfb/eclint-${pkgver}.tar.gz.sig"
 )
 
 sha256sums=(
-  'f13611fea7b9b5459392fd782e3371276889b7dcd2010b7205ed36d384808f81'
-  'fcf201e5dd7787a85b148c0b6c05dc0a5c925fc1d090f3b27778e62da535b4ad'
+  'cfc8c27507a52da1cab9a9f520a7b885b5dcc377331b0033a68fc32e14584137'
+  'SKIP'
 )
-validpgpkeys=('9E2D407EAFEE50863F42B9D16058CF4574298812')
+validpgpkey=('9E2D407EAFEE50863F42B9D16058CF4574298812')
 
 build() {
   export CGO_LDFLAGS="$LDFLAGS"
