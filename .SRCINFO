@@ -1,6 +1,6 @@
 pkgbase = open-stage-control
 	pkgdesc = A libre desktop OSC bi-directional control surface application
-	pkgver = 1.5.4
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = http://osc.ammd.net/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = open-stage-control
 	depends = electron
 	provides = open-stage-control
 	conflicts = open-stage-control
-	source = https://github.com/jean-emmanuel/open-stage-control/archive/v1.5.4.tar.gz
-	md5sums = 92dafcf10fe07e1b9047b8ff4fd1a425
+	source = https://github.com/jean-emmanuel/open-stage-control/archive/v1.6.0.tar.gz
+	md5sums = b0cb2bb3ca0140f8108ddba6a9bfa780
 
 pkgname = open-stage-control
 

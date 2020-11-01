@@ -2,7 +2,7 @@
 # Contributor: Daniel Appelt <daniel.appelt@gmail.com>
 
 pkgname=open-stage-control
-pkgver=1.5.4
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='A libre desktop OSC bi-directional control surface application'
 arch=('x86_64' 'i686' 'armv7l')
@@ -45,4 +45,4 @@ package() {
   ln -s /usr/share/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 }
 
-md5sums=('92dafcf10fe07e1b9047b8ff4fd1a425')
+md5sums=('b0cb2bb3ca0140f8108ddba6a9bfa780')
