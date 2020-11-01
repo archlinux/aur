@@ -1,6 +1,6 @@
 pkgname=vulkan-kompute-git 
 pkgver=r380.9babbc5
-pkgrel=1
+pkgrel=2
 pkgdesc="The General Purpose Vulkan Compute Framework. Blazing fast, mobile-enabled, asynchronous and optimized for advanced GPU data processing usecases. "
 arch=('any')
 url="kompute.cc"
