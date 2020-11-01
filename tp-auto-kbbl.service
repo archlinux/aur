@@ -1,0 +1,13 @@
+[Unit]
+Description=Auto toggle keyboard backlight
+Documentation=https://github.com/saibotd/tp-auto-kbbl
+After=dbus.service
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/conf.d/tp-auto-kbbl
+ExecStart=/usr/bin/tp-auto-kbbl $TP_AUTO_KBBL_ARGS
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
