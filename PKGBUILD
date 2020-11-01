@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=raze-git
-pkgver=0.6.0+2041+g470f48161
+pkgver=0.7.3_alpha+17+gc93b8f3e5
 pkgrel=1
 pkgdesc='Build engine port backed by GZDoom tech (git version)'
 arch=('x86_64')
