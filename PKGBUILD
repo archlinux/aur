@@ -3,7 +3,7 @@
 
 _gemname=sanitize
 pkgname=ruby-$_gemname
-pkgver=5.0.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc='Whitelist-based HTML and CSS sanitizer.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-crass ruby-nokogiri ruby-nokogumbo)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('c85e1e3114c779c8145bc0038ff712737bf0345a')
+sha1sums=('402c051c73e79a70b6e3902ccfcb1367eb739fee')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

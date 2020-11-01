@@ -1,6 +1,6 @@
 pkgbase = ruby-sanitize
 	pkgdesc = Whitelist-based HTML and CSS sanitizer.
-	pkgver = 5.0.0
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://github.com/rgrove/sanitize/
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = ruby-sanitize
 	depends = ruby-crass
 	depends = ruby-nokogiri
 	depends = ruby-nokogumbo
-	noextract = sanitize-5.0.0.gem
+	noextract = sanitize-5.2.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/sanitize-5.0.0.gem
-	sha1sums = c85e1e3114c779c8145bc0038ff712737bf0345a
+	source = https://rubygems.org/downloads/sanitize-5.2.1.gem
+	sha1sums = 402c051c73e79a70b6e3902ccfcb1367eb739fee
 
 pkgname = ruby-sanitize
 
