@@ -1,14 +1,15 @@
 pkgbase = nanonote
 	pkgdesc = Minimalist note taking application
 	pkgver = 1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/agateau/nanonote
 	arch = x86_64
 	license = BSD
-	makedepends = cmake
+	makedepends = extra-cmake-modules
 	makedepends = git
 	makedepends = python-jinja
 	makedepends = python-pyaml
+	makedepends = qt5-tools
 	depends = hicolor-icon-theme
 	depends = qt5-base
 	source = git+https://github.com/agateau/nanonote.git#tag=1.3.0
