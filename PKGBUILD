@@ -1,37 +1,25 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=bcnc
-pkgver=0.9.11
-pkgrel=3
+pkgver=0.9.14.304
+pkgrel=1
 pkgdesc="GRBL CNC command sender, autoleveler and g-code editor"
 arch=('any')
 url="https://github.com/vlachoudis/bCNC"
-license=('GPL-2.0')
-depends=('python2-pyserial' 'python2-pillow' 'tk')
-provides=("bcnc")
+license=(GPL2)
+depends=(python python-pyserial python-pillow tk)
 source=("https://github.com/vlachoudis/bCNC/archive/${pkgver}.tar.gz"
         "bcnc.desktop")
-md5sums=('fba1c786ba65264d479bfd247a9f7678'
-         '96bb9218018772b0de84d257452295c0')
-
-
-prepare() {
-  cd "$srcdir/bCNC-${pkgver}"
-  sed 's,\${PYTHON} \${DIR}\/bCNC.py \$\*,python2 \${DIR}\/bCNC.py \$\*,g' -i bCNC
-  sed 's,DIR=`dirname \$0`,DIR="\$(dirname "\$(readlink -f "\$0")")",g' -i bCNC
-}
+md5sums=('387a49ac07b535b4002d30c6800971b6'
+         'bfebf708ff377bcc6c2597b5e03e420e')
 
 build() {
-  cd "$srcdir/bCNC-${pkgver}"
-  python2 -O -m py_compile *.py
+  cd "bCNC-${pkgver}"
+  python setup.py build
 }
 
-
 package() {
-  install -D -m644 "${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
-  install -D -m644 "$srcdir/bCNC-${pkgver}/bCNC.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
-
-  mkdir -p "${pkgdir}/opt/"
-  cp -a "$srcdir/bCNC-${pkgver}" "${pkgdir}/opt/${pkgname}"
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s "/opt/bcnc/bCNC" "${pkgdir}/usr/bin/."
+  cd "bCNC-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -D -m644 "${srcdir}/bcnc.desktop" "${pkgdir}/usr/share/applications/bcnc.desktop"
+  install -D -m644 "bCNC/bCNC.png" "${pkgdir}/usr/share/pixmaps/bcnc.png"
 }
