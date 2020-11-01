@@ -3,7 +3,7 @@
 
 pkgname=bit
 pkgver=0.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern Git CLI'
 arch=('x86_64')
 url="https://github.com/chriswalz/bit"
@@ -27,9 +27,9 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -v .
-  go build -v -o bitcomplete/bitcomplete
+  export GO_LDFLAGS="-linkmode=external -extldflags \"${LDFLAGS}\" -s -w -X main.version=v${pkgver}"
+  go build -v -buildmode=pie -trimpath -ldflags="${GO_LDFLAGS}" -mod=readonly -modcacherw .
+  go build -v -buildmode=pie -trimpath -ldflags="${GO_LDFLAGS}" -mod=readonly -modcacherw -o bitcomplete/bitcomplete
  
   # Clean mod cache for makepkg -C
   go clean -modcache

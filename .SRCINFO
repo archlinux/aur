@@ -1,7 +1,7 @@
 pkgbase = bit
 	pkgdesc = A modern Git CLI
 	pkgver = 0.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chriswalz/bit
 	install = bit.install
 	arch = x86_64
