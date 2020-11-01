@@ -2,7 +2,7 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _cranname=generics
-_cranver=0.0.2
+_cranver=0.1.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(GPL2)
 depends=('r>=3.1')
 optdepends=(r-covr r-pkgload r-testthat r-tibble)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('9b4d9351c6c413e6f67ec7a041217946')
+sha256sums=('ab71d1bdbb66c782364c61cede3c1186d6a94c03635f9af70d926e2c1ac88763')
 
 build() {
   cd "${srcdir}"
