@@ -5,7 +5,7 @@
 
 pkgname=anbox-image-gapps-magisk
 pkgver=2018.07.19
-pkgrel=15
+pkgrel=16
 pkgdesc="Android image for running in Anbox, with OpenGApps, Houdini and Magisk (Bootless)"
 arch=('x86_64')
 url="https://anbox.io"
@@ -131,7 +131,7 @@ build () {
     rm -f ./squashfs-root/system/sbin/su
 
     install -Dm 700 ./init-magisk.sh ./squashfs-root/system/bin/init-magisk.sh
-    install -Dm 700 ./x86/magiskinit ./squashfs-root/sbin/magiskinit
+    install -Dm 700 ./x86/magiskinit64 ./squashfs-root/sbin/magiskinit
     cd "$srcdir"/squashfs-root/sbin
     ln -s magiskinit magisk
     ln -s magiskinit magiskpolicy
