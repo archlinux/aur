@@ -5,7 +5,7 @@
 # Contributor: Alex Branham <alex.branham@gmail.com>
 
 _cranname=testthat
-_cranver=2.3.2
+_cranver=3.0.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,11 +13,10 @@ pkgdesc="Unit Testing for R"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
-depends=('r>=3.1' r-cli 'r-crayon>=1.3.4' r-digest r-ellipsis r-evaluate r-magrittr r-pkgload r-praise 'r-r6>=2.2.0' 'r-rlang>=0.4.1' 'r-withr>=2.0.0')
-makedepends=(gcc)
-optdepends=(r-covr r-curl r-devtools r-knitr r-rmarkdown r-usethis r-vctrs r-xml2)
+depends=('r>=3.1' 'r-callr>=3.5.1' r-cli 'r-crayon>=1.3.4' r-desc r-digest 'r-ellipsis>=0.2.0' r-evaluate r-jsonlite r-magrittr r-pkgload r-praise r-processx 'r-ps>=1.3.4' 'r-r6>=2.2.0' 'r-rlang>=0.4.1' 'r-waldo>=0.2.1' 'r-withr>=2.0.0')
+optdepends=(r-covr r-curl r-diffviewer r-knitr r-mockery r-rmarkdown r-rstudioapi r-shiny r-usethis r-vctrs r-xml2)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('0e9ed62b4d94f9b7fa1ad353a5372690')
+sha256sums=('f04b46eebad35011213f66d7c01cfa8fc460446089ad967c2d48873cc0eb3119')
 
 build() {
   cd "${srcdir}"
