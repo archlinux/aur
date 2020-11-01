@@ -11,6 +11,7 @@ pkgbase = superproductivity-bin
 	conflicts = superproductivity
 	conflicts = superproductivity-git
 	source = https://github.com/johannesjo/super-productivity/releases/download/v6.0.1/superProductivity_6.0.1_amd64.deb
+	md5sums = SKIP
 
 pkgname = superproductivity-bin
 
