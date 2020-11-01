@@ -1,27 +1,25 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=python-q2-dada2
-_pkgname=q2-dada2
-pkgver=2019.1.0
+pkgver=2020.11.0.dev0
 pkgrel=1
 pkgdesc="QIIME 2 plugin wrapping DADA2"
-arch=('any')
+arch=('x86_64')
 url="https://qiime2.org"
-license=('BSD 3-Clause License')
-depends=('python-qiime2' 'python-q2-types' 'python-biom-format' 'r-biobase' 'r-biocgenerics' 'r-biocparallel' 'r-biostrings' 'r-dada2' 'r-delayedarray' 'r-genomeinfodb' 'r-genomeinfodbdata' 'r-genomicalignments' 'r-genomicranges' 'r-iranges' 'r-rsamtools' 'r-s4vectors' 'r-shortread' 'r-summarizedexperiment' 'r-xvector' 'r-zlibbioc')
+license=('BSD')
+depends=('python-qiime2' 'python-q2-types' 'python-biom-format' 'r-dada2')
 makedepends=('python-setuptools')
-source=("https://github.com/qiime2/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('2cebca1380ea03be53c3a485ed2fb95168cbea115c3dc851c7a02b5ad59a63ac')
+source=("https://github.com/qiime2/q2-dada2/archive/${pkgver}.tar.gz")
+sha256sums=('81633daef1e92328087ff6a6a7b5092cd900ab2c004f8de438bd97ed232315c1')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "q2-dada2-$pkgver"
   python setup.py build
 }
 
-
 package(){
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "q2-dada2-$pkgver"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
 # vim:ts=2:sw=2:et:
