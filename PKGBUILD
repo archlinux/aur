@@ -1,4 +1,4 @@
-# Maintainer: Cezary Drożak <czarek@drozak.net>
+# Maintainer: Cezary Drożak <czarek at drozak dot net>
 
 pkgname=great-imd-evo-git
 pkgver=r9.70c782b
