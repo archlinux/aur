@@ -9,7 +9,6 @@ license=('GPL3')
 depends=('libuv' 'libsodium' 'curl' 'zeromq' 'unbound' 'sqlite')
 makedepends=('git' 'cmake')
 install='lokinet.install'
-_gitname=loki-network
 source=("https://github.com/loki-project/loki-network/releases/download/v$pkgver/lokinet-v$pkgver.tar.xz"{,.sig}
         'lokinet.service'
         'lokinet-bootstrap.service'
