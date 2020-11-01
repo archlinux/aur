@@ -17,7 +17,6 @@ pkgbase = openturns
 	depends = nlopt
 	depends = cminpack
 	depends = ceres-solver
-	depends = dlib
 	depends = coin-or-bonmin
 	depends = hdf5
 	backup = etc/openturns/openturns.conf
