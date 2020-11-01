@@ -1,7 +1,7 @@
 # Maintainer: nekgem2 <nekgem2@firemail.cc>
 pkgname=lokinet
 pkgver=0.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Anonymous, decentralized and IP based overlay network for the internet."
 arch=('x86_64' 'aarch64')
 url="https://lokinet.org"
@@ -11,6 +11,7 @@ makedepends=('git' 'cmake')
 install='lokinet.install'
 source=("https://github.com/loki-project/loki-network/releases/download/v$pkgver/lokinet-v$pkgver.tar.xz"{,.sig}
         'lokinet.service'
+        'lokinet-vpn.service'
         'lokinet-bootstrap.service'
         'lokinet-default-config.service'
         'lokinet-resume.service'
@@ -18,7 +19,8 @@ source=("https://github.com/loki-project/loki-network/releases/download/v$pkgver
         'lokinet.tmpfiles')
 sha256sums=('8eed27bee21bf504d9753b31d0709b59dd268fafcfde9869d773637c8077abf6'
             'SKIP'
-            'ce7f40f91c1de020466f82fb504e261e66774ef5f97a9d914dbe61236a1baf01'
+            '137a9d137329ef333b9d2ffa80fdbdbf7496fd1f22443642539a7bec2bd9309c'
+            '66adce25edd3323a3a6d07691bb886800f506944bf4fa0918eb42a033e344384'
             '21c9bc83f8466ab17fa927561d7f24f930f97c996a8aa0fbbbbb2b65cb97b342'
             '6ef779170b72856bbb8df40c34a808acffddd156684bdb66a55e71d50cf95841'
             'bcf4bd7b38d2f054e25cc243353d3c9a56d1948b42ad07ee5c0260de06e8dd6c'

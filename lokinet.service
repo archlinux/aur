@@ -8,7 +8,8 @@ Wants=lokinet-default-config.service
 After=lokinet-default-config.service
 
 [Service]
-Type=simple
+Type=notify
+WatchdogSec=30s
 User=lokinet
 SyslogIdentifier=lokinet
 WorkingDirectory=/var/lib/lokinet
