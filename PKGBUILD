@@ -2,7 +2,7 @@
 
 pkgname=mcstatus
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides an easy way to query Minecraft servers for any information they can expose."
 arch=(any)
 url="https://github.com/Dinnerbone/mcstatus"
@@ -11,7 +11,7 @@ depends=(python python-six python-click python-dnspython)
 makedepends=(python-setuptools)
 checkdepends=(python-mock python-nose)
 source=("https://github.com/Dinnerbone/mcstatus/archive/release-${pkgver}.tar.gz")
-sha256sums=('ba597341681efc3dff8683254c01e07d688d69ba3de332a82efadab28369e171')
+sha256sums=('21c3415ab1a0f68db3f8909566a945f6eeeca5ca8d0811dc5b4f2af3ee98c0b5')
 
 prepare() {
   cd "${srcdir}/mcstatus-release-${pkgver}"
