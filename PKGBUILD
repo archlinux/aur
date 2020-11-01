@@ -1,26 +1,44 @@
+# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+
 pkgname=quantum-espresso
-pkgver=6.5
+pkgver=6.6
 pkgrel=1
-pkgdesc="Computer codes for electronic-structure calculations and materials modeling
-at the nanoscale. It is based on density-functional theory, plane waves, and
-pseudopotentials."
+pkgdesc="A suite of codes for electronic-structure calculations and modeling"
 arch=("x86_64")
-url="http://www.quantum-espresso.org"
-license=('GPL')
-depends=(gcc-fortran zlib openmpi lapack numactl blas fftw)
-source=("https://gitlab.com/QEF/q-e/-/archive/qe-$pkgver/q-e-qe-$pkgver.tar.gz"
-	"https://gitlab.com/QEF/q-e/uploads/edd91febdd3916ce1d527ea00f0a05f0/fox.tgz")
-noextract=("fox.tgz")
-md5sums=('1af03e99261b1ae113a9ba94faacc5de' '3e4765d44ad77f65ed70c9c2992c0b84')
+url="https://www.quantum-espresso.org/"
+license=('GPL2')
+depends=('libxc' 'elpa' 'fftw')
+makedepends=('gcc-fortran')
+checkdepends=('python')
+source=("https://gitlab.com/QEF/q-e/-/archive/qe-$pkgver/q-e-qe-$pkgver.tar.bz2")
+sha256sums=('20384d86e963950c446e7f5b4703f84db755a8e630a7ad6a53b567b74f324b02')
+
+prepare() {
+  export _elpaver=$( ls /usr/include | grep elpa | sed 's/elpa_openmp-//g' )
+  mv "$srcdir/q-e-qe-$pkgver" "$srcdir/$pkgname-$pkgver"
+}
 
 build() {
-	cd "$srcdir/q-e-qe-$pkgver"
-	cp "$srcdir/fox.tgz" "$srcdir/q-e-qe-$pkgver/archive"
-	FFLAGS="-ffree-line-length-none" ./configure --prefix="$pkgdir/usr"
-	make all
+  cd "$srcdir/$pkgname-$pkgver"
+  ./configure --enable-openmp \
+              --with-libxc \
+              --with-elpa-version=2019 \
+              --with-elpa-include=/usr/include/elpa_openmp-$_elpaver/modules \
+              --with-elpa-lib="-lelpa_openmp" \
+              BLAS_LIBS='-lblas' \
+              LAPACK_LIBS='-llapack' \
+              SCALAPACK_LIBS='-lscalapack' \
+              FFT_LIBS='-lfftw3 -lfftw3_threads'
+  make all MANUAL_DFLAGS='-D__FFTW3' LD_LIBS='-lgomp'
+  make -j1 epw MANUAL_DFLAGS='-D__FFTW3' LD_LIBS='-lgomp'
+}
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver/test-suite"
+  make run-tests-pw-serial OMP_NUM_THREADS=4
 }
 
 package() {
-	cd "$srcdir/q-e-qe-$pkgver"
-	make install
+  cd "$srcdir/$pkgname-$pkgver"
+  make PREFIX="$pkgdir/usr" install
 }
