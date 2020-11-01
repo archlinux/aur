@@ -1,10 +1,10 @@
 pkgbase = python-biom-format
 	pkgdesc = The Biological Observation Matrix (BIOM) Format Project
-	pkgver = 2.1.7
+	pkgver = 2.1.8
 	pkgrel = 1
 	url = http://biom-format.org
-	arch = any
-	license = BSD 3-Clause License
+	arch = x86_64
+	license = BSD
 	makedepends = python-setuptools
 	makedepends = cython
 	depends = python-numpy
@@ -14,8 +14,8 @@ pkgbase = python-biom-format
 	depends = python-pandas
 	depends = python-six
 	depends = python-h5py
-	source = https://github.com/biocore/biom-format/archive/2.1.7.tar.gz
-	sha256sums = 88b3ef16fd7d16f4e125f1e0d356aaad4c7c281ea3fb746c0f8dc26f3a5b6d4d
+	source = https://github.com/biocore/biom-format/archive/2.1.8.tar.gz
+	sha256sums = 91cae2e11702c763eeb8a4e1db3cf120e7cdaae8cc38aaae7163be74e6cff77a
 
 pkgname = python-biom-format
 
