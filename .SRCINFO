@@ -1,0 +1,15 @@
+pkgbase = nift
+	pkgdesc = World's fastest cross-platform open source website generator.
+	pkgver = 2.3.10
+	pkgrel = 1
+	url = https://nift.dev
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = nsm
+	source = nsm-2.3.10.tar.gz::https://github.com/nifty-site-manager/nsm/archive/v2.3.10.tar.gz
+	sha256sums = ef4410d423fca8dfb67a349a188a0a46bec67f7eb0157d146ae2fbb28f2f2295
+
+pkgname = nift
+
