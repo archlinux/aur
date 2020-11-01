@@ -10,3 +10,6 @@ Restart=always
 RestartSec=1
 Type=dbus
 BusName=org.meumeu.bling
+
+[Install]
+WantedBy=multi-user.target
