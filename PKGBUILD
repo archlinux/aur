@@ -2,7 +2,7 @@
 
 pkgname=go-bootstrap
 _ver_num=1.4
-_ver_date=20161024
+_ver_date=20171003
 pkgver=${_ver_num}.${_ver_date}
 pkgrel=1
 pkgdesc="The last go with a toolchain written in C, used for bootstrapping the build process for later gos"
@@ -10,10 +10,10 @@ arch=('x86_64')
 url='http://golang.org/'
 license=('BSD')
 #depends=('')
-source=("https://storage.googleapis.com/golang/go${_ver_num}-bootstrap-${_ver_date}.tar.gz")
+source=("https://dl.google.com/go/go${_ver_num}-bootstrap-${_ver_date}.tar.gz")
 
 options=('!strip' 'staticlibs')
-md5sums=('76e42c8152e8560ded880a6d1d1f53cb')
+md5sums=('dbf727a4b0e365bf88d97cbfde590016')
 
 prepare() {
   # don't run any tests
