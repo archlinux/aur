@@ -1,5 +1,5 @@
 pkgname=mingw-w64-qwt-qt6
-pkgver=6.1.5
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Qt Widgets for Technical Applications (mingw-w64)"
 arch=('any')
@@ -8,13 +8,13 @@ url="http://qwt.sourceforge.net"
 depends=('mingw-w64-qt6-svg')
 makedepends=('mingw-w64-gcc' 'subversion')
 options=('staticlibs' '!strip' '!buildflags')
-source=("svn+https://svn.code.sf.net/p/qwt/code/trunk/qwt")
+source=("svn+https://svn.code.sf.net/p/qwt/code/branches/qwt-6.2")
 sha256sums=('SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  cd qwt
+  cd qwt-6.2
   # Build release only
   sed -i 's|+= debug_and_release|+= release|' qwtbuild.pri
   sed -i '/+= build_all/d' qwtbuild.pri
@@ -36,8 +36,8 @@ build() {
     export PATH=${QTDIR}/bin:${PATH}
     mkdir -p "${srcdir}/qwt-build-${_arch}"
     cd "${srcdir}"
-    cp -r "qwt/" "qwt-build-${_arch}"
-    cd "${srcdir}/qwt-build-${_arch}/qwt"
+    cp -r "qwt-6.2" "qwt-build-${_arch}"
+    cd "${srcdir}/qwt-build-${_arch}/qwt-6.2"
 
     # This is a mingw build, so Windows prefix is used. Let's change it:
     sed -i "s|C:/Qwt-\$\$QWT_VERSION|/usr/${_arch}|" qwtconfig.pri
@@ -51,7 +51,7 @@ package() {
 
   for _target in ${_architectures}; do
 
-    cd "${srcdir}/qwt-build-${_target}/qwt"
+    cd "${srcdir}/qwt-build-${_target}/qwt-6.2"
 
     make INSTALL_ROOT=${pkgdir} QTDIR=/usr/${_target}/ install
 
