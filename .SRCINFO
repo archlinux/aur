@@ -1,0 +1,15 @@
+pkgbase = cicero
+	pkgdesc = Unicode tool with a terminal user interface
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/eyeplum/cicero-tui
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = fontconfig
+	source = cicero-0.1.2.tar.gz::https://github.com/eyeplum/cicero-tui/archive/v0.1.2.tar.gz
+	sha512sums = b531556f0ea8a4789d54ef0d325b1d5d96000e76799b2e55a30641b4e1093f74344e37b53c876774f2ab5091f076e48ff267bd1e46c4ec80075af93ce99d1e01
+
+pkgname = cicero
+
