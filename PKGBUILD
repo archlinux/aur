@@ -1,12 +1,12 @@
 pkgname=vulkan-kompute-git 
 pkgver=r380.9babbc5
-pkgrel=2
+pkgrel=3
 pkgdesc="The General Purpose Vulkan Compute Framework. Blazing fast, mobile-enabled, asynchronous and optimized for advanced GPU data processing usecases. "
 arch=('any')
 url="kompute.cc"
 license=('apache')
 groups=()
-depends=('vulkan-headers' 'spdlog')
+depends=('vulkan-headers' 'spdlog' 'glslang')
 makedepends=('git') 
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -26,7 +26,8 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	cmake -Bbuild -DKOMPUTE_OPT_INSTALL=1 -DRELEASE=1 -DKOMPUTE_ENABLE_SPDLOG=1
+	export SCMP_BIN=glslangValidator
+	cmake -Bbuild -DKOMPUTE_OPT_INSTALL=1 -DRELEASE=1 -DKOMPUTE_ENABLE_SPDLOG=1 -DKOMPUTE_OPT_BUILD_SHADERS=1
 	make -C build
 }
 
