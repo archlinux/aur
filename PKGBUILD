@@ -1,13 +1,14 @@
 # Maintainer: nekgem2 <nekgem2@firemail.cc>
 pkgname=lokinet
 pkgver=0.8.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Anonymous, decentralized and IP based overlay network for the internet."
 arch=('x86_64' 'aarch64')
 url="https://lokinet.org"
 license=('GPL3')
 depends=('libuv' 'libsodium' 'curl' 'zeromq' 'unbound' 'sqlite')
 makedepends=('git' 'cmake')
+conflicts=('lokimq')
 install='lokinet.install'
 source=("https://github.com/loki-project/loki-network/releases/download/v$pkgver/lokinet-v$pkgver.tar.xz"{,.sig}
         'lokinet.service'
@@ -47,6 +48,7 @@ build() {
 		-DDOWNLOAD_SODIUM=OFF \
 		-DSUBMODULE_CHECK=OFF \
 		-DWITH_SYSTEMD=ON \
+		-DFORCE_LOKIMQ_SUBMODULE=ON \
 		-Wno-dev \
 		..
 	make
@@ -58,8 +60,11 @@ package() {
 	install -Dm755 contrib/systemd-resolved/lokinet.conf "$pkgdir/usr/lib/systemd/resolved.conf.d/00-lokinet.conf"
 	cd build
 	make DESTDIR="$pkgdir" install
+	# remove lokimq header stuff as it's confusing and currently pointless
+	rm -r "$pkgdir/usr/include"
 
 	install -D -m 644 "$srcdir/lokinet.service"                "$pkgdir/usr/lib/systemd/system/lokinet.service"
+	install -D -m 644 "$srcdir/lokinet-vpn.service"            "$pkgdir/usr/lib/systemd/system/lokinet-vpn.service"
 	install -D -m 644 "$srcdir/lokinet-bootstrap.service"      "$pkgdir/usr/lib/systemd/system/lokinet-bootstrap.service"
 	install -D -m 644 "$srcdir/lokinet-default-config.service" "$pkgdir/usr/lib/systemd/system/lokinet-default-config.service"
 	install -D -m 644 "$srcdir/lokinet-resume.service"         "$pkgdir/usr/lib/systemd/system/lokinet-resume.service"

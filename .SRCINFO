@@ -1,7 +1,7 @@
 pkgbase = lokinet
 	pkgdesc = Anonymous, decentralized and IP based overlay network for the internet.
 	pkgver = 0.8.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://lokinet.org
 	install = lokinet.install
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = lokinet
 	depends = zeromq
 	depends = unbound
 	depends = sqlite
+	conflicts = lokimq
 	source = https://github.com/loki-project/loki-network/releases/download/v0.8.0/lokinet-v0.8.0.tar.xz
 	source = https://github.com/loki-project/loki-network/releases/download/v0.8.0/lokinet-v0.8.0.tar.xz.sig
 	source = lokinet.service
