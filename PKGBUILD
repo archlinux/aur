@@ -2,8 +2,8 @@
 
 pkgname=ioninja
 pkgver=3.15.0
-pkgtag=
-pkgrel=1
+pkgtag=-b
+pkgrel=2
 pkgdesc="Professional, scriptable, all-in-one terminal/sniffer"
 arch=("i686" "x86_64")
 url="https://ioninja.com"
@@ -12,8 +12,8 @@ depends=("qt5-base" "openssl")
 options=("!strip")
 source_i686=("https://tibbo.com/downloads/archive/ioninja/ioninja-$pkgver/ioninja-$pkgver$pkgtag-linux-x86.tar.xz")
 source_x86_64=("https://tibbo.com/downloads/archive/ioninja/ioninja-$pkgver/ioninja-$pkgver$pkgtag-linux-amd64.tar.xz")
-sha256sums_i686=("82d9594afd952a5e8eeade2a6e588777b429efd97de0271905b12bf4e7730306")
-sha256sums_x86_64=("910d2e39df68468c984fd13c592da0c87f789f32bad92fa6aacade7d9ca29230")
+sha256sums_i686=("39764e88f770d9a735ca096afd7cc9faeffae83f434c1712558b7d4f7c9a5f8e")
+sha256sums_x86_64=("37ce2e830b2881ab3a8b12a94eda2adb6aa0fb9ebd1f0c3eb7266e21456d5057")
 
 package() {
 	if [ "$CARCH" == "x86_64" ]; then
