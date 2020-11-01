@@ -4,7 +4,6 @@ pkgver=1.5.6
 pkgrel=0
 epoch=
 pkgdesc="Scientific calculator in which you can define new functions and constants"
-packager="Philipp Hochmann"
 arch=('x86_64')
 url="https://github.com/PhilippHochmann/ccalc"
 license=('GPL3')
