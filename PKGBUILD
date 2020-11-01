@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/dadav/rofi-tmpmail"
 license=('GPL')
 makedepends=()
+depends=('xclip' 'tmpmail-git' 'rofi')
 provides=('rofi-tmpmail')
 source=("https://github.com/dadav/rofi-tmpmail/archive/${pkgver}.zip")
 sha256sums=('SKIP')
