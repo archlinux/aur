@@ -1,10 +1,11 @@
 pkgbase = todesk-bin
 	pkgdesc = Remote control and team work
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.todesk.cn/
 	arch = x86_64
 	license = custom
+	makedepends = xdg-user-dirs
 	provides = todesk
 	conflicts = todesk
 	source = local://todesk20201010f.deb

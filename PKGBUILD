@@ -5,11 +5,12 @@ _pkgname=${pkgname%-bin}
 pkgver=1.0.0
 _pkgver_ext=20201010f
 _pkg_file_name=${_pkgname}${_pkgver_ext}.deb
-pkgrel=2
+pkgrel=3
 pkgdesc="Remote control and team work"
 arch=('x86_64')
 url="https://www.todesk.cn/"
 license=('custom')
+makedepends=('xdg-user-dirs')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("local://${_pkg_file_name}")
@@ -28,18 +29,22 @@ if [ ! -f ${PWD}/${_pkg_file_name} ]; then
 fi
 
 package() {
-  bsdtar -o --no-same-permissions -xf ${srcdir}/data.tar.xz -C ${pkgdir} 
-  install -Dm755 ${pkgdir}/usr/local/bin/${_pkgname} -t ${pkgdir}/usr/bin/
-  rm -rf ${pkgdir}/usr/local
+  install -dm 755 ${srcdir}/${_pkgname}
+  tar --owner=root --group=root -xf ${srcdir}/data.tar.xz -C ${srcdir}/${_pkgname} 
 
-  # fixed permission
-  install -dm755 ${pkgdir}/opt/todesk/lib
+  cd ${srcdir}/${_pkgname}/
+
+  install -Dm 755 usr/local/bin/${_pkgname} -t ${pkgdir}/usr/bin/
+
+  # dir and lib
+  find opt/ -type d -exec install -dm 755 ${pkgdir}/{} \;
+  find opt/ -type f -exec install -Dm 755 {} ${pkgdir}/{} \;
 
   # desktop entry 
-  sed -i "s|Emulator||g" ${pkgdir}/usr/share/applications/${_pkgname}.desktop
+  install -Dm 644 usr/share/applications/${_pkgname}.desktop -t ${pkgdir}/usr/share/applications
+  sed -i "s|Emulator;||g" ${pkgdir}/usr/share/applications/${_pkgname}.desktop
 
-  # deleted unneed ico
-  rm -rf ${pkgdir}/usr/share/pixmaps/128.png
+  # icon
+  install -Dm 644 usr/share/pixmaps/${_pkgname}.png -t ${pkgdir}/usr/share/pixmaps
 }
-
 # vim: set sw=2 ts=2 et:
