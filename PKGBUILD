@@ -1,36 +1,23 @@
-# Maintainer: nekgem <nekgem@cock.li>
+# Maintainer: nekgem2 <nekgem2@firemail.cc>
 pkgname=lokinet
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=2
 pkgdesc="Anonymous, decentralized and IP based overlay network for the internet."
 arch=('x86_64' 'aarch64')
 url="https://lokinet.org"
-license=('ZLIB')
-depends=('libuv' 'libsodium' 'curl')
+license=('GPL3')
+depends=('libuv' 'libsodium' 'curl' 'zeromq' 'unbound' 'sqlite')
 makedepends=('git' 'cmake')
 install='lokinet.install'
 _gitname=loki-network
-source=("git+https://github.com/loki-project/$_gitname.git#tag=v$pkgver" # github archives don't embed submodules
-        'git+https://github.com/nlohmann/json.git'
-        'git+https://github.com/google/googletest.git'
-        'git+https://github.com/jarro2783/cxxopts.git'
-        'git+https://github.com/gulrak/filesystem.git'
-        'git+https://github.com/catchorg/Catch2'
-        'git+https://github.com/martinmoene/optional-lite.git'
-        'git+https://github.com/HowardHinnant/date.git'
+source=("https://github.com/loki-project/loki-network/releases/download/v$pkgver/lokinet-v$pkgver.tar.xz"{,.sig}
         'lokinet.service'
         'lokinet-bootstrap.service'
         'lokinet-default-config.service'
         'lokinet-resume.service'
         'lokinet.sysusers'
         'lokinet.tmpfiles')
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
+sha256sums=('8eed27bee21bf504d9753b31d0709b59dd268fafcfde9869d773637c8077abf6'
             'SKIP'
             'ce7f40f91c1de020466f82fb504e261e66774ef5f97a9d914dbe61236a1baf01'
             '21c9bc83f8466ab17fa927561d7f24f930f97c996a8aa0fbbbbb2b65cb97b342'
@@ -38,22 +25,10 @@ sha256sums=('SKIP'
             'bcf4bd7b38d2f054e25cc243353d3c9a56d1948b42ad07ee5c0260de06e8dd6c'
             '137cf7eeebc8737d62f3ccfad2398fb1c442a91cb9db7d650429b218dd949a00'
             '53837c9cfc90b93d55558045108a5d1d7a8b8a75a266af264d7f9101363d043f')
-
-prepare() {
-	cd "$_gitname"
-	git submodule init
-	git config submodule.external/nlohmann.url       "$srcdir"/json
-	git config submodule.external/googletest.url     "$srcdir"/googletest
-	git config submodule.external/cxxopts.url        "$srcdir"/cxxopts
-	git config submodule.external/ghc-filesystem.url "$srcdir"/filesystem
-	git config submodule.test/Catch2.url             "$srcdir"/Catch2
-	git config submodule.external/optional-lite.url  "$srcdir"/optional-lite
-	git config submodule.external/date.url           "$srcdir"/date
-	git submodule update
-}
+validpgpkeys=('67EF6BA68E7B0B0D6EB4F7D4F357B3B42F6F9B05') # Jeff Becker (probably not evil) <jeff@i2p.rocks>
 
 build() {
-	cd "$_gitname"
+	cd "lokinet-v$pkgver"
 
 	rm -rf build && mkdir build && cd build
 	# XXX cmake stuff overrides CFLAGS
@@ -67,17 +42,17 @@ build() {
 		-DUSE_NETNS=OFF \
 		-DUSE_AVX2=OFF \
 		-DXSAN=OFF \
-		-DWITH_SHARED=OFF \
 		-DWITH_TESTS=OFF \
 		-DDOWNLOAD_SODIUM=OFF \
 		-DSUBMODULE_CHECK=OFF \
+		-DWITH_SYSTEMD=ON \
 		-Wno-dev \
 		..
 	make
 }
 
 package() {
-	cd "$_gitname"
+	cd "lokinet-v$pkgver"
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	cd build
 	make DESTDIR="$pkgdir" install
