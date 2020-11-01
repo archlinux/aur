@@ -2,7 +2,7 @@
 
 pkgname=ganache-bin
 _pkgname=ganache
-pkgver=2.4.0
+pkgver=2.5.4
 pkgrel=1
 pkgdesc='Personal Blockchain for Ethereum'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('ganache')
 source=('ganache.desktop')
 source_x86_64=("ganache-$pkgver.AppImage::https://github.com/trufflesuite/ganache/releases/download/v$pkgver/ganache-$pkgver-linux-$arch.AppImage")
 sha256sums=('5133e6aa1fd234cdc63b7917d0735b7afd47a96515037695cf026da8c9862938')
-sha256sums_x86_64=('195de06d9cf38ec6f2ed57feaff7ac717530ea08a7b3c86020fa78079a734238')
+sha256sums_x86_64=('f5ed8c1088e5253b79d63cbe2f9cf8615c9e8a125844d95db83f5023053c9e8f')
 
 prepare() {
     chmod +x ./ganache-$pkgver.AppImage
