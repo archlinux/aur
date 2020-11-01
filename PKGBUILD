@@ -1,4 +1,5 @@
 # Maintainer: Bo Davidson <a3JvemFyZXFAZ21haWwuY29tCg== | base64 -d>
+# Contributor: Paul Davis <paul@dangersalad.com>
 pkgname=openrgb
 pkgver=0.4
 pkgrel=1
