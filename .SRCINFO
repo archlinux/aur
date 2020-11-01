@@ -1,0 +1,13 @@
+pkgbase = great-imd-evo-git
+	pkgdesc = Great-IMD-evo is an sgi variation GTK2/3 theme.
+	pkgver = r9.70c782b
+	pkgrel = 1
+	url = https://github.com/sylphenix/Great-IMD-evo
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = great-imd-evo-git::git+https://github.com/sylphenix/Great-IMD-evo.git
+	sha256sums = SKIP
+
+pkgname = great-imd-evo-git
+
