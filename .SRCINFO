@@ -1,18 +1,14 @@
 pkgbase = python-pox
 	pkgdesc = utilities for filesystem exploration and automated builds
-	pkgver = 0.2.4
+	pkgver = 0.2.8
 	pkgrel = 1
-	url = http://trac.mystic.cacr.caltech.edu/project/pathos/wiki/pox.html
+	url = http://pox.rtfd.io/
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://github.com/uqfoundation/pox/archive/0.2.4.tar.gz
-	sha1sums = 5b3616a3e8acf4961818d9207ca0e779b238f80f
+	depends = python
+	source = https://github.com/uqfoundation/pox/archive/0.2.8.tar.gz
+	sha1sums = 9662648d4e25b08ea3bbcd0876dfedc990cc6f7e
 
 pkgname = python-pox
-	depends = python
-
-pkgname = python2-pox
-	depends = python2
 
