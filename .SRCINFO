@@ -1,8 +1,8 @@
 pkgbase = deemix-git
 	pkgdesc = a deezer downloader built from the ashes of Deezloader Remix.
-	pkgver = r471.6e955ee
+	pkgver = r523.d6a18749c0
 	pkgrel = 1
-	url = https://codeberg.org/RemixDev/deemix
+	url = https://git.fuwafuwa.moe/vaugerbird/deemix
 	arch = any
 	license = gpl3
 	makedepends = git
@@ -15,7 +15,7 @@ pkgbase = deemix-git
 	depends = python-eventlet
 	provides = deemix
 	conflicts = deemix
-	source = deemix::git+https://codeberg.org/RemixDev/deemix
+	source = deemix::git+https://git.fuwafuwa.moe/vaugerbird/deemix
 	md5sums = SKIP
 
 pkgname = deemix-git
