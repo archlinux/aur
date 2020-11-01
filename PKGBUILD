@@ -2,8 +2,8 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=gzdoom
-pkgver=4.4.2
-pkgrel=3
+pkgver=4.5.0
+pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
@@ -44,6 +44,7 @@ sha256sums=('SKIP'
 
 prepare() {
     cd gzdoom
+    git submodule update --init
     patch -i "$srcdir"/0001-Fix-file-paths.patch -p 1
 }
 
@@ -64,7 +65,7 @@ package() {
     install build/{game_support,gzdoom}.pk3 -t "$pkgdir"/usr/lib/gzdoom -D -m 644
     desktop-file-install "$srcdir"/gzdoom.desktop --dir="$pkgdir"/usr/share/applications
     install docs/{console,rh-log,skins}.* -t "$pkgdir"/usr/share/doc/gzdoom -D -m 644
-    install build/{brightmaps,lights}.pk3 -t "$pkgdir"/usr/share/gzdoom -D -m 644
+    install build/{brightmaps,game_widescreen_gfx,lights}.pk3 -t "$pkgdir"/usr/share/gzdoom -D -m 644
     install build/soundfonts/gzdoom.sf2 -t "$pkgdir"/usr/share/gzdoom/soundfonts -D -m 644
     install build/fm_banks/* -t "$pkgdir"/usr/share/gzdoom/fm_banks -D -m 644
     install src/posix/zdoom.xpm "$pkgdir"/usr/share/icons/hicolor/256x256/apps/gzdoom.xpm -D -m 644
