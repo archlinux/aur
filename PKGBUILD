@@ -1,55 +1,19 @@
 # Maintainer: zandimna <zandimna@autistici.org>
 pkgname=stayawake-bin
-pkgver=0.5
+pkgver=0.5.1
 pkgrel=1
-epoch=
 pkgdesc="Advanced wakeup alarm system written in PyQt5"
 arch=("x86_64")
-url=""
+url="https://github.com/PolyphasicDevTeam/stayawake"
 license=('GPL3')
-groups=()
-depends=('mpg123')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+depends=('mpg123' 'pulseaudio')
 source=("https://github.com/PolyphasicDevTeam/stayawake/releases/download/0.5.1/stayawake-0.5.1.tar.xz")
-noextract=()
-md5sums=()
-validpgpkeys=()
-
-prepare() {
-    true
-}
-
-build() {
-    mkdir etc
-    mkdir usr
-    mkdir usr/bin
-    mkdir usr/share
-    mkdir usr/share/pixmaps
-    mkdir usr/share/applications
-    true
-}
-
-check() {
-    true
-}
 
 package() {
-    mv stayawake usr/bin
-    mv stayawake.png usr/share/pixmaps
-    mv StayAwake.desktop usr/share/applications
-    mv stayawake.conf etc/
-    mv etc/ $pkgdir
-    mv usr/ $pkgdir
-
+    install -Dm755 "${pkgname%-bin}" -t "$pkgdir/usr/bin"
+    install -Dm644 "${pkgname%-bin}.png" -t "$pkgdir/usr/share/pixmaps"
+    install -Dm644 StayAwake.desktop \
+        "$pkgdir/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${pkgname%-bin}.conf" -t "$pkgdir/etc"
 }
-
 md5sums=('3fe1e1ba5fd3b7fd789923a68cab0d59')

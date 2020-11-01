@@ -1,11 +1,14 @@
 pkgbase = stayawake-bin
 	pkgdesc = Advanced wakeup alarm system written in PyQt5
-	pkgver = 0.5
+	pkgver = 0.5.1
 	pkgrel = 1
+	url = https://github.com/PolyphasicDevTeam/stayawake
 	arch = x86_64
 	license = GPL3
 	depends = mpg123
+	depends = pulseaudio
 	source = https://github.com/PolyphasicDevTeam/stayawake/releases/download/0.5.1/stayawake-0.5.1.tar.xz
+	md5sums = 3fe1e1ba5fd3b7fd789923a68cab0d59
 
 pkgname = stayawake-bin
 
