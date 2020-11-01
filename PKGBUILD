@@ -2,9 +2,9 @@
 
 _pkgname=straw-viewer
 pkgname=straw-viewer-git
-pkgver=0.1.0.r0.gf310fa3
+pkgver=0.1.1.r0.gad4c5ae
 pkgrel=1
-pkgdesc="Application for searching and streaming videos from YouTube, using the API of invidio.us (fork of youtube-viewer)."
+pkgdesc="A lightweight YouTube client for Linux (CLI/GTK), using the invidious API (fork of youtube-viewer)."
 arch=('any')
 url="https://github.com/trizen/${_pkgname}"
 license=('Artistic2.0')
