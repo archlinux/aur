@@ -2,19 +2,19 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=whalebird-desktop
-pkgver=4.2.3
+pkgver=4.3.0
 pkgrel=1
 pkgdesc='Electron-based Mastodon/Pleroma client'
 arch=('any')
 url='https://whalebird.org'
 license=('MIT')
 depends=('electron')
-makedepends=('git' 'yarn')
+makedepends=('git' 'python2' 'yarn')
 provides=('whalebird')
 source=("https://github.com/h3poteto/${pkgname}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
   whalebird.desktop
   whalebird.sh)
-sha256sums=('64bab2149e827d2056beaa69949f7ad1118947cc88c537e02b08931f16810dc6'
+sha256sums=('c4d5658e5b6627a53028cae56bb3063a6d068703ddfba6add17625432863cf7f'
             '8feed931453da872291c4588c981007ed36566155cfcf55ab3ff5d7431d60aef'
             'a0a050952353c78389bdafd8885cae4a402d0819acad07010566657e387c5ce9')
 
