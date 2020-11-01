@@ -3,7 +3,7 @@
 
 _gemname=gitlab-grit
 pkgname=ruby-$_gemname
-pkgver=2.8.1
+pkgver=2.8.3
 pkgrel=1
 pkgdesc='Ruby Git bindings.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-charlock_holmes ruby-posix-spawn ruby-mime-types-2 ruby-diff-
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('05cb6d0f4fc0903c8b6587f1c346df8aa1417fdf')
+sha1sums=('32344465ee04f9f564c85a1a84a09db56e307a14')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
