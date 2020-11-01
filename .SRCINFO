@@ -1,6 +1,6 @@
 pkgbase = pyright-git
 	pkgdesc = Static type checker for Python
-	pkgver = 1.1.57.r0.geaa66050
+	pkgver = 1.1.82.r6.ga50a5358
 	pkgrel = 1
 	url = https://github.com/microsoft/pyright
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=pyright-git
 _pkgname=pyright
-pkgver=1.1.57.r0.geaa66050
+pkgver=1.1.82.r6.ga50a5358
 pkgrel=1
 pkgdesc="Static type checker for Python"
 arch=('any')
@@ -26,6 +26,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
   npm run install:all
+  cd "${srcdir}/${_pkgname}/packages/pyright"
   npm run build
 }
 
@@ -33,9 +34,9 @@ package() {
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/lib/node_modules/${_pkgname}"
   install -d "${pkgdir}/usr/share/doc/${_pkgname}"
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "${pkgdir}/usr/share/licenses/${_pkgname}"
 
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}/packages/pyright/"
 
   cp -r dist "${pkgdir}/usr/lib/node_modules/${_pkgname}/dist"
   install -Dm755 index.js "${pkgdir}/usr/lib/node_modules/${_pkgname}/index.js"
@@ -43,6 +44,7 @@ package() {
   ln -s "/usr/lib/node_modules/${_pkgname}/index.js" "${pkgdir}/usr/bin/pyright"
   ln -s "/usr/lib/node_modules/${_pkgname}/langserver.index.js" "${pkgdir}/usr/bin/pyright-langserver"
 
+  cd "${srcdir}/${_pkgname}"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 CONTRIBUTING.md "${pkgdir}/usr/share/doc/${_pkgname}/CONTRIBUTING.md"
   cp -r docs "${pkgdir}/usr/share/doc/${_pkgname}/docs"
