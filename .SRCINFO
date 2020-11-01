@@ -1,18 +1,18 @@
 pkgbase = bcnc
 	pkgdesc = GRBL CNC command sender, autoleveler and g-code editor
-	pkgver = 0.9.11
-	pkgrel = 3
+	pkgver = 0.9.14.304
+	pkgrel = 1
 	url = https://github.com/vlachoudis/bCNC
 	arch = any
-	license = GPL-2.0
-	depends = python2-pyserial
-	depends = python2-pillow
+	license = GPL2
+	depends = python
+	depends = python-pyserial
+	depends = python-pillow
 	depends = tk
-	provides = bcnc
-	source = https://github.com/vlachoudis/bCNC/archive/0.9.11.tar.gz
+	source = https://github.com/vlachoudis/bCNC/archive/0.9.14.304.tar.gz
 	source = bcnc.desktop
-	md5sums = fba1c786ba65264d479bfd247a9f7678
-	md5sums = 96bb9218018772b0de84d257452295c0
+	md5sums = 387a49ac07b535b4002d30c6800971b6
+	md5sums = bfebf708ff377bcc6c2597b5e03e420e
 
 pkgname = bcnc
 

@@ -22,4 +22,9 @@ package() {
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -D -m644 "${srcdir}/bcnc.desktop" "${pkgdir}/usr/share/applications/bcnc.desktop"
   install -D -m644 "bCNC/bCNC.png" "${pkgdir}/usr/share/pixmaps/bcnc.png"
+  
+  mkdir -p "${pkgdir}/usr/bin"
+  echo "#!/usr/bin/env bash" > "${pkgdir}/usr/bin/bcnc"
+  echo "python -m bCNC" > "${pkgdir}/usr/bin/bcnc"
+  chmod +x "${pkgdir}/usr/bin/bcnc"
 }
