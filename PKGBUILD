@@ -18,14 +18,14 @@ sha256sums=('367b9ea53fd79283612e95a899b2f18488aa14e14b0beee4c26132475df75ee3')
 
 _DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
 if [ ! -f ${PWD}/${_pkg_file_name} ]; then
-	if [ -f $_DOWNLOADS_DIR/${_pkg_file_name} ]; then
-		ln -sfn $_DOWNLOADS_DIR/${_pkg_file_name} ${PWD}
-	else
-		echo ""
-		echo "The package can be downloaded here: "
-		echo "Please remember to put a downloaded package ${_pkg_file_name} into the build directory ${PWD} or $_DOWNLOADS_DIR"
-		echo ""
-	fi
+  if [ -f $_DOWNLOADS_DIR/${_pkg_file_name} ]; then
+    ln -sfn $_DOWNLOADS_DIR/${_pkg_file_name} ${PWD}
+  else
+    echo ""
+    echo "The package can be downloaded here: "
+    echo "Please remember to put a downloaded package ${_pkg_file_name} into the build directory ${PWD} or $_DOWNLOADS_DIR"
+    echo ""
+  fi
 fi
 
 package() {
