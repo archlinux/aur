@@ -1,16 +1,16 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=rog-core
 pkgbase=rog-core
-pkgver=0.15.3
+pkgver=2.0.4
 pkgrel=1
 epoch=
-pkgdesc="A utility for Linux to control many aspects (eventually) of the ASUS ROG laptops like the Zephyrus GX502GW"
+pkgdesc="Transitional package for asus-nb-ctrl-git"
 arch=('x86_64')
-url="https://github.com/flukejones/rog-core"
+url="https://gitlab.com/asus-linux/asus-nb-ctrl"
 license=('MPL2')
 groups=()
-depends=(dbus libusb)
-makedepends=(rust clang)
+depends=(asus-nb-ctrl-git)
+makedepends=()
 checkdepends=()
 optdepends=()
 conflicts=()
@@ -19,23 +19,15 @@ options=()
 install=
 changelog=
 
-source=("https://github.com/flukejones/rog-core/archive/v$pkgver.tar.gz"
-        "install-dir.patch")
-sha256sums=('ccb85e87a069e1ce3e4f7348901785e21b14791a09dceda19dd75ae02b9302da' '78ec239b5255d1d6dd4e7ef67d61eab58f79b4d03a27de648c790f6077ad0e46')
+source=()
+sha256sums=()
 noextract=()
 validpgpkeys=()
 
-prepare()
-{
-	patch -d "$srcdir"/$pkgname-$pkgver -p1 < install-dir.patch
-}
-
 build() {
-	cd "$srcdir"/$pkgname-$pkgver
-	make
+:
 }
 
 package() {
-	cd "$srcdir"/$pkgname-$pkgver
-	DESTDIR="$pkgdir"/ make install
+:
 }
