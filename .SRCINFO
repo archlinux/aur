@@ -1,0 +1,13 @@
+pkgbase = vulkan-kompute-git
+	pkgver = r380.9babbc5
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = vulkan-kompute
+	conflicts = vulkan-kompute
+	source = vulkan-kompute::git+https://github.com/EthicalML/vulkan-kompute.git
+	md5sums = SKIP
+
+pkgname = vulkan-kompute-git
+
