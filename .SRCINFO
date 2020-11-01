@@ -1,10 +1,10 @@
 pkgbase = python-q2-types
 	pkgdesc = Definitions of common QIIME 2 types.
-	pkgver = 2019.1.0
+	pkgver = 2020.11.0.dev0
 	pkgrel = 1
 	url = https://qiime2.org
-	arch = any
-	license = BSD 3-Clause License
+	arch = x86_64
+	license = BSD
 	makedepends = python-setuptools
 	depends = python
 	depends = python-qiime2
@@ -13,8 +13,8 @@ pkgbase = python-q2-types
 	depends = python-h5py
 	depends = python-pandas
 	depends = python-ijson
-	source = https://github.com/qiime2/q2-types/archive/2019.1.0.tar.gz
-	sha256sums = facb098fb05f9833417de2dccf108675619d480c0efdac6545a384c6473ff460
+	source = https://github.com/qiime2/q2-types/archive/2020.11.0.dev0.tar.gz
+	sha256sums = f597c68a6b6ef9dae36cfe1ae3dadbb5078ff7c845e4694847daf7e1562bae72
 
 pkgname = python-q2-types
 
