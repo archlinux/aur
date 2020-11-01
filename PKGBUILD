@@ -1,3 +1,5 @@
+# Maintainer: morpheusthewhite <zffromGerace@hotmail.it>
+
 pkgname=nordpy-plasmoid-git
 pkgver=r10.ec6491c
 pkgrel=1
