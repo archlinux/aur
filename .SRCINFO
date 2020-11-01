@@ -1,7 +1,7 @@
 pkgbase = hypnotix
 	pkgdesc = An IPTV app
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/linuxmint/hypnotix
 	arch = any
 	license = unknown
@@ -12,8 +12,8 @@ pkgbase = hypnotix
 	depends = python-setproctitle
 	depends = mpv
 	depends = xapp
-	source = git+https://github.com/linuxmint/hypnotix.git#commit=5687e0e6db8069b02cbca8140f69aa8201999324
-	b2sums = SKIP
+	source = https://github.com/linuxmint/hypnotix/archive/5687e0e6db8069b02cbca8140f69aa8201999324.tar.gz
+	b2sums = fb2e9a576ff57227f9877374d0ba3ad16935a0af06d9c750cbe6b5703a1455ccfac750578808ce418e16c2204c41323323ea811bf1cf09574e7622703419e19a
 
 pkgname = hypnotix
 
