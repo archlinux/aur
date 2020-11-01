@@ -3,7 +3,7 @@
 
 _gemname=charlock_holmes
 pkgname=ruby-$_gemname
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 pkgdesc='Character encoding detection, brought to you by ICU'
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('546b3157f72a80a66627f90053d8e268f29144df')
+sha1sums=('1f1fecf192fbda28be0f5f6e6a6847741af0a8ff')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
