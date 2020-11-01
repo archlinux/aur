@@ -1,0 +1,23 @@
+pkgbase = r-waldo
+	pkgdesc = Find Differences Between R Objects
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=waldo
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-cli
+	depends = r-diffobj
+	depends = r-fansi
+	depends = r-glue
+	depends = r-rematch2
+	depends = r-rlang
+	depends = r-tibble
+	optdepends = r-testthat
+	optdepends = r-covr
+	optdepends = r-r6
+	source = https://cran.r-project.org/src/contrib/waldo_0.2.2.tar.gz
+	sha256sums = 2aef47fc5eb5a175963f107b474c2a8ba9bbffa5dabae4724efafd59813c9760
+
+pkgname = r-waldo
+
