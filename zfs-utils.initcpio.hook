@@ -94,7 +94,7 @@ zfs_mount_handler () {
         mountpoint=$(zfs get -H -o value mountpoint "${dataset}")
         canmount=$(zfs get -H -o value canmount "${dataset}")
         # skip dataset
-        [ ${canmount} = "off" -o ${mountpoint} = "none" ] && continue
+        [ ${canmount} = "off" -o ${canmount} = "noauto" -o ${mountpoint} = "none" ] && continue
         if [ ${mountpoint} = "legacy" ]; then
             if [ -f "${tab_file}" ]; then
                 if findmnt -snero source -F "${tab_file}" -S "${dataset}" > /dev/null 2>&1; then
