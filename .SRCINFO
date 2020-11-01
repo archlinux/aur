@@ -1,6 +1,6 @@
 pkgbase = roundcubemail-plugin-carddav-git
 	pkgdesc = CardDAV plugin for RoundCube Webmailer
-	pkgver = v4.0.0.r0.gdd5b6c8
+	pkgver = v4.0.1.r0.g455a249
 	pkgrel = 1
 	url = https://github.com/blind-coder/rcmcarddav
 	arch = any
