@@ -1,0 +1,69 @@
+§ 1 Vertragsparteien
+
+(1) Das Bayerische Landesamt für Steuern (LfSt) handelt hier für den Freistaat Bayern in seiner Eigenschaft als bundesweiter Koordinator des Projektes ELSTER der Finanzverwaltungen von Bund und Ländern.
+(2) "Steuerbürger" im Sinne dieses Vertrages sind natürliche und juristische Personen, zum Beispiel auch Arbeitgeber im Rahmen der Lohnsteuer-Anmeldungen; weiterhin deren autorisierte Dienstleister, die Steuererklärungen für die Vorgenannten einreichen.
+
+§ 2 Vertragsgegenstand und Unentgeltlichkeit
+
+(1) Gegenstand des Vertrages ist die Überlassung und Einräumung von Nutzungsrechten an dem Steuererklärungsprogramm ElsterFormular oder Integritätsprüfer (Steuersoftware).
+(2) Die Steuersoftware wird in maschinenlesbarer Form unentgeltlich überlassen. Sofern Open Source-Bestandteile integriert wurden, ist der Sourcecode für diese Bestandteile ebenfalls unentgeltlich erhältlich. Eine Auflistung der verwendeten Open Source-Bestandteile von ElsterFormular findet sich im Anhang 2.
+
+§ 3 Rechtsgrundlagen und Verwendungszweck
+
+(1) Rechtsgrundlage der elektronischen Übermittlung von Steuererklärungen und sonstiger für das Besteuerungsverfahren erforderlicher Daten sind §§ 72a und 87b bis 87d der Abgabenordnung (AO).
+(2) Die Steuersoftware und alle Ihre Bestandteile dienen ausschließlich dazu, im Zusammenhang mit der elektronischen Abgabe von Steuererklärungen und Übermittlung von Steuerdaten gemäß den gesetzlichen Vorgaben verwendet zu werden. Eine Beschreibung der Funktionalitäten der Steuersoftware ergibt sich aus den unter www.elsterformular.de bereitgestellten Dokumenten, welche dort heruntergeladen werden können.
+
+§ 4 Einräumung von Nutzungsrechten
+
+(1) Im Rahmen des gesetzlich sowie oben in § 3 beschriebenen Verwendungszwecks räumt die Steuerverwaltung dem Steuerbürger ein zeitlich und räumlich nicht begrenztes, nicht ausschließliches Recht ein, die Steuersoftware unentgeltlich zu nutzen.
+(2) Die Übertragung des in § 4 Absatz 1 eingeräumten Nutzungsrechts an Dritte und die Unterlizenzierung sind nicht gestattet.
+(3) Die im Anhang aufgeführten Softwarekomponenten sind Open Source Software. Die Nutzungsbefugnisse für diese Open Source-Komponenten richten sich alleine nach den Bedingungen der jeweiligen Open Source-Lizenzen, die Lizenzierung erfolgt durch die jeweiligen Rechtsinhaber direkt. Die Texte der betroffenen Open Source-Lizenzen sind ebenfalls im Anhang abgedruckt.
+
+§ 5 Pflichten und Obliegenheiten des Steuerbürgers
+
+(1) Der Steuerbürger verpflichtet sich, die Steuersoftware entsprechend den unter www.elsterformular.de bereitgestellten Dokumenten zu verwenden.
+(2) Es liegt im besten Interesse des Steuerbürgers und der Steuerverwaltung, dass stets nur die neueste Version der Steuersoftware verwendet wird. Updates oder neue Versionen können unter www.elsterformular.de heruntergeladen werden.
+(3) Eventuelle Mängel der Steuersoftware werden grundsätzlich dadurch behoben, dass die Steuerverwaltung jeweils eine neue Kopie der Steuersoftware zum Herunterladen zur Verfügung stellt (§ 5 Absatz 2). Eine Pflicht zur Bereitstellung von neuen Programmversionen beziehungsweise Updates ergibt sich daraus nicht.
+(4) Die Steuerverwaltung bietet für Teile der Steuersoftware zusätzliche Supportleistungen in Form von Dokumentationen und Hilfen online (www.elster.de), sowie über die ELSTER-Hotline. Hieraus erwachsen jedoch kein zusätzlicher Anspruch auf Mängelbeseitigung und kein Anspruch auf die Beibehaltung der Hotline.
+(5) Der Steuerbürger hat bei der Nutzung der Steuersoftware in angemessenem Umfang die Sicherung von Daten vorzunehmen.
+
+§ 6 Haftung
+
+(1) Die Haftung ist ausgeschlossen.
+(2) Dies gilt nicht für
+- die Haftung für die Verletzung von Amtspflichten (§ 839 BGB, Artikel 34 GG),
+- die Verletzung von Leben, Körper oder Gesundheit, die auf einer fahrlässigen Pflichtverletzung oder auf einer vorsätzlichen oder fahrlässigen Pflichtverletzung eines gesetzlichen Vertreters oder Erfüllungsgehilfen beruht,
+- sonstige Schäden, die auf einer grob fahrlässigen Pflichtverletzung der Steuerverwaltung oder auf einer vorsätzlichen oder grob fahrlässigen Pflichtverletzung eines gesetzlichen Vertreters oder Erfüllungsgehilfen beruhen.
+
+§ 7 Hinweis auf gewerbliche und urheberrechtliche Schutzrechte
+
+(1) Die Zeichen ELSTER und die entsprechende Grafik sind für den Freistaat Bayern als Marken geschützt.
+(2) Die Steuersoftware ist für die Steuerverwaltung umfassend urheberrechtlich geschützt. Jede in dieser Vereinbarung nicht ausdrücklich genehmigte Verwendung bedarf der ausdrücklichen und schriftlichen Zustimmung.
+(3) Einzelne Komponenten von ElsterFormular basieren auf Software, an denen die Steuerverwaltung selbst Rechte im Wege der Lizenz erworben hat. Insoweit wird auf Anhang verwiesen.
+
+§ 8 Eventuelle Rechtsverletzungen
+
+(1) Macht ein Dritter gegenüber dem Steuerbürger Ansprüche wegen der Verletzung von Schutzrechten durch die Steuersoftware gegenüber dem Steuerbürger geltend und wird die Nutzung der Steuersoftware hierdurch beeinträchtigt oder untersagt, haftet das LfSt wie folgt:
+Das LfSt wird nach seiner Wahl und auf seine Kosten entweder die Steuersoftware so ändern oder ersetzen, dass das Schutzrecht nicht weiter verletzt wird, oder den Steuerbürger von Lizenzgebühren gegenüber dem Schutzrechtsinhaber oder Dritten freistellen.
+Gelingt dies dem LfSt zu angemessenen Bedingungen nicht, wird das LfSt dies dem Steuerbürger mitteilen und ihm die Nutzung ab einem bestimmten Zeitpunkt untersagen. Der Steuerbürger ist nach Wahl des LfSt verpflichtet, die Steuersoftware einschließlich der Dokumentation und aller Kopien entweder zu löschen oder an das LfSt zurückzugeben.
+(2) Voraussetzungen für die Haftung des LfSt nach § 8 Absatz 1 sind, dass der Steuerbürger das LfSt von Ansprüchen Dritter unverzüglich verständigt, die behauptete Schutzrechtsverletzung nicht anerkennt und jegliche Auseinandersetzung, einschließlich etwaiger außergerichtlicher Regelungen, entweder dem LfSt überlässt oder nur im Einvernehmen mit dem LfSt führt. Die dem Steuerbürger nach Verständigung des LfSt durch die Rechtsverteidigung entstandenen, notwendigen Gerichts- und Anwaltskosten gehen zu Lasten der Steuerverwaltung.
+Stellt der Steuerbürger die Nutzung der Steuersoftware aus Schadensminderungs- oder sonstigen wichtigen Gründen ein, ist er verpflichtet, den Dritten darauf hinzuweisen, dass mit der Nutzungseinstellung ein Anerkenntnis der behaupteten Schutzrechtsverletzung nicht verbunden ist.
+(3) Soweit der Steuerbürger die Schutzrechtsverletzung selbst zu vertreten hat, sind Ansprüche gegen das LfSt ausgeschlossen.
+(4) Weitergehende Ansprüche des Steuerbürgers wegen einer Verletzung von Schutzrechten Dritter sind ausgeschlossen. Dieser Ausschluss gilt nicht bei Vorsatz, grober Fahrlässigkeit und bei der Verletzung des Lebens, des Körpers oder der Gesundheit. Die Regelung in § 6 Absatz 1 bleibt hiervon unberührt.
+
+§ 9 Ein- und Ausfuhrkontrolle
+
+Es liegt in der Verantwortung des Steuerbürgers, alle anwendbaren Ein- und Ausfuhrbestimmungen einzuhalten. Der Steuerbürger wird darauf hingewiesen, dass das ElsterFormular auch kryptographische Techniken verwendet (OpenSSL).
+
+§ 10 Datenschutzhinweis
+
+(1) Mit dieser Software werden personenbezogene Daten im Sinne des Art. 4 Nr. 1 Datenschutzgrundverordnung (DSGVO) und Art. 9 Abs. 1 DSGVO zum Zwecke der Verarbeitung erhoben. Neben den reinen Daten, die zur Steuerveranlagung benötigt werden, erhebt die Software Daten über die Art des Betriebssystems des Nutzers und übermittelt diese an die Finanzverwaltung. Diese Daten werden benötigt, um die ordnungsgemäße Verarbeitung der Daten sicherzustellen und Fehlern im Verarbeitungsprozess vorzubeugen. Die Nutzung der Daten erfolgt im Rahmen des Art. 6 Abs. 1 UAbs. 1 Buchst. e i.V.m. Abs. 3 UAbs. 1 Buchst. b DSGVO i.V.m. bundes- bzw. landesgesetzlicher Steuergesetze durch die Finanzverwaltung und nur für den genannten Zweck.
+(2) Im Rahmen der Anwendung werden Protokolldateien erstellt und lokal gespeichert. Die Protokolldateien verbleiben lokal beim Steuerbürger. Lediglich im Supportfall können sie nach ausdrücklicher Erlaubnis des Steuerbürgers an den ELSTER-Support übermittelt werden.
+
+§ 11 Wirksamkeitsklausel
+
+Die Unwirksamkeit einer Bestimmung dieses Vertrages berührt den übrigen Vertragsinhalt nicht.
+
+§ 12 Deutsches Recht
+
+Auf diesen Vertrag ist ausschließlich deutsches Recht mit Ausnahme des EGBGB anwendbar.

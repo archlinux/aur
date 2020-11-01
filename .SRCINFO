@@ -1,7 +1,7 @@
 pkgbase = elster
 	pkgdesc = Elektronische Steuererklärung - Ein Projekt der deutschen Steuerverwaltungen aller Länder und des Bundes zur Abwicklung der Steuererklärungen und Steueranmeldungen über das Internet (The official German software for electronic tax declaration)
 	pkgver = 21.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.elster.de/
 	arch = any
 	license = proprietary
@@ -11,8 +11,12 @@ pkgbase = elster
 	options = !strip
 	source = https://download.elster.de/aktuell/ElsterFormularPrivat.msi
 	source = elster
+	source = LICENSE
+	source = 3rdPartyLicense
 	md5sums = ca7a5b90633c6fdd579b7d5d7f4d2233
 	md5sums = 1cad66434bf3a305e6d5700c61359ca1
+	md5sums = 62a8a4b1d661644cfe0cff524c5480cd
+	md5sums = 65869b17505f99185b9ad8316282bdc7
 
 pkgname = elster
 

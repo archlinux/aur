@@ -2,7 +2,7 @@
 
 pkgname=elster
 pkgver=21.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Elektronische Steuererklärung - Ein Projekt der deutschen Steuerverwaltungen aller Länder und des Bundes zur Abwicklung der Steuererklärungen und Steueranmeldungen über das Internet (The official German software for electronic tax declaration)'
 arch=('any')
 url='https://www.elster.de/'
@@ -13,11 +13,15 @@ options=(!strip)
 source=(
     "https://download.elster.de/aktuell/ElsterFormularPrivat.msi"
     "elster"
+    "LICENSE"
+    "3rdPartyLicense"
     )
 
 md5sums=(
     "ca7a5b90633c6fdd579b7d5d7f4d2233"
     "1cad66434bf3a305e6d5700c61359ca1"
+    "62a8a4b1d661644cfe0cff524c5480cd"
+    "65869b17505f99185b9ad8316282bdc7"
     )
 
 build() {
@@ -38,4 +42,7 @@ package() {
 
     install -d "$pkgdir"/usr/bin/
     install -m755 elster "$pkgdir"/usr/bin/
+
+    install -Dm644 "${srcdir}"/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "${srcdir}"/3rdPartyLicense "$pkgdir/usr/share/licenses/$pkgname/3rdPartyLicense"
 }
