@@ -1,6 +1,6 @@
 pkgbase = ruby-nokogumbo
 	pkgdesc = Nokogiri interface to the Gumbo HTML5 parser
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/rubys/nokogumbo/#readme
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = ruby-nokogumbo
 	license = Apache-2.0
 	depends = ruby
 	depends = ruby-nokogiri
-	noextract = nokogumbo-2.0.1.gem
+	noextract = nokogumbo-2.0.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/nokogumbo-2.0.1.gem
-	sha1sums = 18af12a01cb39f0c711f62e36f51557ab0341bbe
+	source = https://rubygems.org/downloads/nokogumbo-2.0.2.gem
+	sha1sums = 78abdb656c913a7e0f792767d13457b0d9404e64
 
 pkgname = ruby-nokogumbo
 
