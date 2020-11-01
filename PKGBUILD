@@ -16,6 +16,7 @@ backup=("etc/webapps/roundcubemail/plugins/carddav/config.inc.php")
 
 package() {
  cd "carddav"
+ sed -i 's|"dealerdirect/phpcodesniffer-composer-installer": "^0.6.0"|"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0"|' "composer.json"
  composer install --no-interaction --no-dev
  install -d "$pkgdir/usr/share/webapps/roundcubemail/plugins/carddav"
  cp -r * "$pkgdir/usr/share/webapps/roundcubemail/plugins/carddav"
