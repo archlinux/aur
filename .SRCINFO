@@ -1,6 +1,6 @@
 pkgbase = gzdoom-git
 	pkgdesc = Feature centric port for all Doom engine games (git version)
-	pkgver = 4.5pre+149+gec3cd68c1
+	pkgver = 4.6pre+3+gff9a56dc0
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686

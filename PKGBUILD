@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom-git
-pkgver=4.5pre+149+gec3cd68c1
+pkgver=4.6pre+3+gff9a56dc0
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games (git version)'
 arch=('i686' 'x86_64')
@@ -50,6 +50,7 @@ pkgver() {
 
 prepare() {
     cd gzdoom
+    git submodule update --init
     patch -i "$srcdir"/0001-Fix-file-paths.patch -p 1
 }
 
@@ -70,7 +71,7 @@ package() {
     install build/{game_support,gzdoom}.pk3 -t "$pkgdir"/usr/lib/gzdoom -D -m 644
     desktop-file-install "$srcdir"/gzdoom.desktop --dir="$pkgdir"/usr/share/applications
     install docs/{console,rh-log,skins}.* -t "$pkgdir"/usr/share/doc/gzdoom -D -m 644
-    install build/{brightmaps,lights}.pk3 -t "$pkgdir"/usr/share/gzdoom -D -m 644
+    install build/{brightmaps,game_widescreen_gfx,lights}.pk3 -t "$pkgdir"/usr/share/gzdoom -D -m 644
     install build/soundfonts/gzdoom.sf2 -t "$pkgdir"/usr/share/gzdoom/soundfonts -D -m 644
     install build/fm_banks/* -t "$pkgdir"/usr/share/gzdoom/fm_banks -D -m 644
     install src/posix/zdoom.xpm "$pkgdir"/usr/share/icons/hicolor/256x256/apps/gzdoom.xpm -D -m 644
