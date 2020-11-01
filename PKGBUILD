@@ -42,7 +42,7 @@ package() {
     cd ${_alias^}-${pkgver}
 
     install -d -m 755 "${pkgdir}/usr/lib/jackett/"
-    cp -r "${srcdir}/Jackett/"* "${pkgdir}/usr/lib/jackett/"
+    cp -dpr --no-preserve=ownership buid/* "${pkgdir}/usr/lib/jackett/"
 
     #install -D -m 644 "${srcdir}/jackett.service" "${pkgdir}/usr/lib/systemd/system/jackett.service"
     install -D -m 644 "${srcdir}/jackett.sysusers" "${pkgdir}/usr/lib/sysusers.d/jackett.conf"
