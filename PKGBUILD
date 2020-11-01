@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgbase=python-camb
 pkgname=("python-camb")  
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Code for Anisotropies in the Microwave Background"
 arch=(any)
@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('b1e3f76eb82261072647646196745db7ed490f83abe460c2968ef0b86bfe1bbf')
+sha256sums=('d3959b7984a363b855ea45267fb9e977e68b7c78de020fa47352b169b85ee6a4')
 package() {
   depends=('python-numpy' 'gcc-fortran')
   cd "$srcdir/CAMB-$pkgver/"
