@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-qwt-qt6
+	pkgdesc = Qt Widgets for Technical Applications (mingw-w64)
+	pkgver = 6.1.5
+	pkgrel = 1
+	url = http://qwt.sourceforge.net
+	arch = any
+	license = custom:qwt
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-qt6-svg
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = svn+https://svn.code.sf.net/p/qwt/code/trunk/qwt
+	sha256sums = SKIP
+
+pkgname = mingw-w64-qwt-qt6
+
