@@ -8,7 +8,7 @@ pkgdesc="Audio and eBook download automation for usenet and torrents."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/Readarr/Readarr"
 license=("GPL3")
-depends=('sqlite')
+depends=('sqlite' 'chromaprint')
 options=('!strip' 'staticlibs')
 optdepends=('calibre: calibre-server as root folder'
             'sabnzbd: usenet downloader'
@@ -44,6 +44,9 @@ sha512sums_armv7h=('b1c70f7e17b6d0d6f978d1e46d7372cbcb9262d212a2a5264c34c7773812
 package() {
   # Update environment isn't needed.
   rm -rf "${srcdir}/Readarr/Readarr.Update"
+
+  # Remove unneeded fpcalc
+  rm -f "${srcdir}/Readarr/fpcalc"
 
   install -d -m 755 "${pkgdir}/usr/lib/readarr/bin"
   cp -dpr --no-preserve=ownership "${srcdir}/Readarr/"* "${pkgdir}/usr/lib/readarr/bin"
