@@ -3,14 +3,14 @@
 
 pkgname=('armorpaint-git')
 _pkgname='armorpaint'
-pkgver=0.8.r1614.gd0e03ad
-pkgrel=2
+pkgver=0.8.r1870.g4795f36
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="ArmorPaint is a software for 3D PBR texture painting"
 url="https://armorpaint.org/"
 license=('ZLIB')
 depends=('mesa' 'alsa-lib' 'libxinerama' 'gcc-libs' 'nodejs')
-makedepends=('git' 'nodejs' 'clang' 'make' 'gcc')
+makedepends=('git' 'nodejs' 'clang' 'make' 'gcc' 'gtk3' 'vulkan-headers')
 provides=('armorpaint')
 conflicts=('armorpaint')
 source=("git+https://github.com/armory3d/armorpaint"
