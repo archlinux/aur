@@ -6,7 +6,7 @@ arch=('any')
 url="kompute.cc"
 license=('apache')
 groups=()
-depends=('vulkan-headers')
+depends=('vulkan-headers', 'spdlog')
 makedepends=('git') 
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	cmake -Bbuild -DKOMPUTE_OPT_INSTALL=1
+	cmake -Bbuild -DKOMPUTE_OPT_INSTALL=1 -DRELEASE=1 -DKOMPUTE_ENABLE_SPDLOG=1
 	make -C build
 }
 
