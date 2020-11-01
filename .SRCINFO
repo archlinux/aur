@@ -1,12 +1,13 @@
 pkgbase = vulkan-kompute-git
 	pkgdesc = The General Purpose Vulkan Compute Framework. Blazing fast, mobile-enabled, asynchronous and optimized for advanced GPU data processing usecases.
 	pkgver = r380.9babbc5
-	pkgrel = 1
+	pkgrel = 2
 	url = kompute.cc
 	arch = any
 	license = apache
 	makedepends = git
 	depends = vulkan-headers
+	depends = spdlog
 	provides = vulkan-kompute
 	conflicts = vulkan-kompute
 	source = vulkan-kompute::git+https://github.com/EthicalML/vulkan-kompute.git
