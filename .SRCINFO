@@ -1,14 +1,14 @@
 pkgbase = python-rpyc
 	pkgdesc = Remote Python Call (RPyC), a transparent and symmetric RPC library
-	pkgver = 4.0.2
-	pkgrel = 2
+	pkgver = 4.1.5
+	pkgrel = 1
 	url = http://rpyc.readthedocs.org
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/ba/88/1cea477a4ad7c0f546a4c82aa367185be7b8fce512db8283e82de8454772/rpyc-4.0.2.tar.gz
-	md5sums = b6461956adf14ceda013b8d189c1a5e9
+	source = https://github.com/tomerfiliba-org/rpyc/archive/4.1.5.tar.gz
+	md5sums = 3f1d864da58341ae1477790304f09097
 
 pkgname = python-rpyc
 	depends = python
