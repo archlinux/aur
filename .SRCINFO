@@ -1,0 +1,16 @@
+pkgbase = ssf-git
+	pkgdesc = Network toolkit providing ways to forward data from sockets through a TLS link
+	pkgver = r386.2caaaab
+	pkgrel = 1
+	url = https://securesocketfunneling.github.io/ssf/
+	arch = x86_64
+	license = MIT
+	makedepends = boost-65-compat
+	depends = openssl-1.0
+	depends = boost-65-compat-libs
+	depends = krb5
+	source = git+https://github.com/securesocketfunneling/ssf.git
+	sha512sums = SKIP
+
+pkgname = ssf-git
+
