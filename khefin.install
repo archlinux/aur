@@ -6,6 +6,13 @@ post_install() {
   setcaps
 }
 
+pre_upgrade() {
+  if [ "$(printf "0.5.1-1\n%s\n" "$2" | sort -n | tail -n1)" = "0.5.1-1" ]; then
+    printf "\nWARNING: behavior of this package reading passphrases non-interactively has changed since version %s.\n" "$2"
+    printf "See https://github.com/mjec/khefin/issues/29 for more information.\n\n"
+  fi
+}
+
 post_upgrade() {
   setcaps
 }
