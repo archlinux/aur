@@ -4,7 +4,7 @@
 
 pkgname=oolite
 pkgver=1.90
-pkgrel=2
+pkgrel=3
 pkgdesc="A space-sim based on the classic Elite"
 arch=('x86_64')
 url="http://www.oolite.org/"
@@ -14,6 +14,15 @@ makedepends=('gnustep-make' 'curl' 'zip' 'mesa' 'gcc-objc')
 source=("oolite" "https://github.com/OoliteProject/oolite/releases/download/$pkgver/oolite-source-$pkgver.tar.bz2")
 md5sums=('ade14e17fe9d52d16b35f2e97046362c'
          'c34c6f88606be75c90cc52c5a4173611')
+
+prepare() {
+  cd "oolite-source-$pkgver"
+
+  # Workaround for missing textures and fonts (thanks Lone_Wolf)
+  # http://aegidian.org/bb/viewtopic.php?f=9&t=20754
+  rm deps/Linux-deps/include/png.h
+  rm deps/Linux-deps/include/pngconf.h
+}
 
 build() {
   cd "oolite-source-$pkgver"
