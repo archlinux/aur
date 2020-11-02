@@ -1,11 +1,13 @@
 pkgbase = kubectl-bin
 	pkgdesc = Kubernetes.io client binary
 	pkgver = 1.19.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kubernetes.io
 	arch = i686
 	arch = x86_64
 	arch = aarch64
+	arch = armv7h
+	arch = armv7l
 	license = apache
 	provides = kubectl=$pkgver
 	conflicts = kubectl
@@ -16,6 +18,10 @@ pkgbase = kubectl-bin
 	sha256sums_x86_64 = 84eeb8237448e4f431fef0f0ec0ba8b07558d8e52d5a7e89b4ae64dadcffbe66
 	source_aarch64 = kubectl-1.19.3::https://storage.googleapis.com/kubernetes-release/release/v1.19.3/bin/linux/arm64/kubectl
 	sha256sums_aarch64 = a4f2e2dbdcead30eed5aa47468e669b9574fd99457b860679eba84e1cb9cf863
+	source_armv7h = kubectl-1.19.3::https://storage.googleapis.com/kubernetes-release/release/v1.19.3/bin/linux/arm/kubectl
+	sha256sums_armv7h = fb611ff64139bc8712fe93497f2419c236d62c5f689e1cb4cc68037fda698f82
+	source_armv7l = kubectl-1.19.3::https://storage.googleapis.com/kubernetes-release/release/v1.19.3/bin/linux/arm/kubectl
+	sha256sums_armv7l = fb611ff64139bc8712fe93497f2419c236d62c5f689e1cb4cc68037fda698f82
 
 pkgname = kubectl-bin
 
