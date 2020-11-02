@@ -1,27 +1,40 @@
-# Maintainer: Maxime Gauduin <alucryd@arch
+# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=openzwave
 pkgver=1.6
-pkgrel=3
+pkgrel=4
 pkgdesc='A C++ library to control Z-Wave Networks via a USB Z-Wave Controller'
 arch=(x86_64)
 url=http://www.openzwave.net
 license=(LGPL3)
 depends=(
-  hidapi
+  bash
+  gcc-libs
+  glibc
+  libhidapi-libusb.so
+  libusb-1.0.so
   tinyxml
 )
 makedepends=(
   doxygen
   git
 )
+_tag=890f24b7e88f488eee464ed14c01fbceb276cf2a
 source=(
-  git+https://github.com/OpenZWave/open-zwave.git#tag=v${pkgver}
+  git+https://github.com/OpenZWave/open-zwave.git#tag=${_tag}
   openzwave-system-libs.patch
 )
-sha256sums=('SKIP'
-            '7480115fb887a37ba84ac553c66fea39b731b9789d8d176a139a663b33dd21e5')
+b2sums=(
+  SKIP
+  56095ee16bb04184b2bf037d7601bc5431c654e1328cd1ad63f1fcb7d6918bcd65ef4ab30ee2c80f3bf3c50e838f5818d23e9d01569e41125e9e68028d021c59
+)
+
+pkgver() {
+  cd open-zwave
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
   cd open-zwave
@@ -32,7 +45,6 @@ prepare() {
 build() {
   export CFLAGS="$CFLAGS -Wno-stringop-truncation -Wno-maybe-uninitialized"
   export CXXFLAGS="$CXXFLAGS -Wno-stringop-truncation -Wno-maybe-uninitialized"
-
   make -C open-zwave
 }
 
