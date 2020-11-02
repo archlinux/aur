@@ -1,29 +1,54 @@
 # Maintainer: wereii <wereii@wereii.cz>
-# File Author: Damian Blanco <blanco.damian@gmail.com>
-# Note: Copied from
-#  https://github.com/deimon777/AUR/blob/4a818c69382b46026e6cf336acbcf716be161957/SimulIDE/PKGBUILD
+# Contributor: Base pkgbuild files provided by Damian Blanco <blanco.damian@gmail.com>
+# Contributor: franciscod <demartino.francisco@gmail.com>
 
 pkgname=simulide
-pkgver=0.4.13.SR5
-pkgver_base="0.4.13"
-pkgver_dash="0.4.13-SR5"
+pkgver="0.4.13_SR5"
 pkgrel=1
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)"
-arch=('x86_64')
+arch=("x86_64")
 url="https://www.simulide.com/"
-license=('GPL3')
-source=("https://mailfence.com/pub/docs/santigoro/web/SimulIDE_${pkgver_base}/SimulIDE_${pkgver_dash}_Lin64.tar.gz" "simulide.desktop")
-md5sums=('b29a3c9fb291ec94a7eb0e12caedb293'
-         'beda8f4452562e5cc1e2c9a19ac99bb3')
+license=("GPL3")
+source=("https://mailfence.com/pub/docs/santigoro/web/SimulIDE_${pkgver//_*/}/SimulIDE_${pkgver//_/-}_Sources.tar.gz"
+        "simulide.desktop"
+        "changelog.txt")
+md5sums=("fdb189d2e75a1da3cdae6d2a596d3f08"
+         "beda8f4452562e5cc1e2c9a19ac99bb3"
+         "SKIP"
+        )
+changelog="changelog.txt"
 depends=(
-  'gpsim'
-  'qt5-multimedia'
-  'qt5-serialport'
-  'qt5-svg'
-  'qt5-tools'
+  "qt5-base>=5.15.1"
+  "qt5-multimedia"
+  "qt5-serialport"
+  "qt5-svg"
+  "qt5-script"
+  "libelf>=0.181"
 )
 
+optdepends=(
+  "gpsim: needed for PIC simulation"
+  "simavr: needed for AVR simulation"
+)
+
+makedepends=(
+  "avr-libc"
+  "avr-gcc"
+)
+
+build() {
+  cd "${srcdir}/simulide_${pkgver//_/-}_Sources/build_XX"
+  qmake
+  make
+}
+
 package() {
-  cp -r ${srcdir}/SimulIDE_${pkgver_dash}_Lin64/ ${pkgdir}/usr/
-  install -Dm644 "${srcdir}"/simulide.desktop "${pkgdir}"/usr/share/applications/simulide.desktop
+  install -D -m644 simulide.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+  cd "${srcdir}/simulide_${pkgver//_/-}_Sources/build_XX/release/SimulIDE_${pkgver//_/-}"
+
+  install -D -m755 "bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -D -m644 "share/icons/hicolor/256x256/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/${pkgname}.png"
+  install -d -m755 "${pkgdir}/usr/share/${pkgname}"
+  cp -r "share/${pkgname}"/* "${pkgdir}/usr/share/${pkgname}"
 }

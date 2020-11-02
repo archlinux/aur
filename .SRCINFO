@@ -1,16 +1,27 @@
 pkgbase = simulide
 	pkgdesc = Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)
-	pkgver = 0.2.8.SR1
+	pkgver = 0.4.13_SR5
 	pkgrel = 1
-	url = http://simulide.blogspot.com/
+	url = https://www.simulide.com/
+	changelog = changelog.txt
 	arch = x86_64
 	license = GPL3
-	depends = gpsim
+	makedepends = avr-libc
+	makedepends = avr-gcc
+	depends = qt5-base>=5.15.1
 	depends = qt5-multimedia
 	depends = qt5-serialport
 	depends = qt5-svg
-	source = https://sourceforge.net/projects/simulide/files/SimulIDE_0.2.8/SimulIDE_0.2.8-SR1-Sources.tar.gz
-	md5sums = f7c360c5fdac7a694022602c06937cba
+	depends = qt5-script
+	depends = libelf>=0.181
+	optdepends = gpsim: needed for PIC simulation
+	optdepends = simavr: needed for AVR simulation
+	source = https://mailfence.com/pub/docs/santigoro/web/SimulIDE_0.4.13/SimulIDE_0.4.13-SR5_Sources.tar.gz
+	source = simulide.desktop
+	source = changelog.txt
+	md5sums = fdb189d2e75a1da3cdae6d2a596d3f08
+	md5sums = beda8f4452562e5cc1e2c9a19ac99bb3
+	md5sums = SKIP
 
 pkgname = simulide
 

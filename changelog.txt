@@ -1,0 +1,310 @@
+
+simulide 0.4.13
+
+Changes (Internal):
+  RC1:
+    - Simulation Initialization changed ( +eElement->attach() ).
+    - Find connected Pins in eNodes changed.
+    
+Changes:
+  RC1:
+    - Dissapear support for toggleSwitch.
+    - Full Adder carry pins at bottom.
+    - Led shape to original, but displaced to Cathode.
+    - Subcircuit default to Logic Symbol.
+    
+  RC2:
+    - 100 MHz max. circuit speed.
+    - Editor: Move "Control Circuit" from Editor to Debugger Properties.
+    
+  SR5:
+    - Delete key working again to remove Components.
+    
+New Features:
+  RC1:
+    - Text Component opacity.
+    - Text Componext double-click to edit text.
+    - Allow positioning at 1/2 grid.
+    - Even smaller gates.
+    - New Buses: smaller footprint, connectable at both sides, nº Bit.
+    - 16 bit Encoder/Decoder
+    - Easier Auto-Connect pins.
+    - Drag and drop circuit files and open it.
+    
+  RC2:
+    - Labels in switches buttons, keyboard accesible.
+    
+  RC3:
+    - Multypole Push Switch.
+    - Circuit Zoom with key sequence: Ctrl+ Ctrl-
+    - AVR remote debugging.
+    - Serial Terminal: "Clear" and "CR" buttons.
+    - Make new Subcircuit pin naming compatible with old circuits.
+    - New Dialog: create and edit Package Pins
+    - Create Subcircuit and Package files in one shot.
+    - Inverted Pin Labels rendered with overline.
+    - WaveGen: Random waveform.
+    
+  RC4:
+    - Serial Monitor: Choose Usart to use.
+    - I2C module: Master Mode implemented.
+    - AVR Hardware I2C finally working!!
+    - Editor: Document reload.
+    
+  RC5:
+    - RAM/ROM load-save binary files.
+    - Buzzer option in Audio Out Component.
+    - Mcu: auto-load firmware at circuit power on (optional).
+    
+  RC6:
+    - Move Settings file to user folder: accessible to Win OS.
+    - Add Compile date to About Dialog.
+    - Select Mcu Uart in Serial Port.
+    - Open several Serial Ports at once.
+    - PcLink: Auto-Connect Mcu to Serial Port
+    - Simulation Pause Button.
+    - SSD1306: Addressing completed, invert Display, Disp. Fully On.
+    - Relay Impedance and release current properties.
+    
+  Final:
+    - Open several Serial Monitors at once.
+    - Bipolar Stepper Motor.
+    - Probe: Ternary Logic indicator.
+    - Probe: Threshold property.
+    - SSD1306: Basic Hardware Horizontal Scrolling.
+    - Help files: Russian translation ( Sergey Roenko ).
+    - Help files: Spanish translation ( Kike_Gl ).
+    - Help files: Spanish help for 74 Series ( Kike_Gl ).
+    - PcLink Feature deleted.
+    - Serial Port: Auto Open property.
+    
+  SR1:
+    - Mcu Logic Symbol enabled.
+    - Some AVR Logic Symbols (Sergey Roenko)
+    - Mcu Help Files enabled.
+    - Some AVR Help files (Sergey Roenko)
+    - Gui French translation (Pascal Cotret)
+    - Change Language: Circuit->Properties.
+  
+  SR3:
+    - Gui Brazilian Portuguese Translation ( Maico Smaniotto ).
+    
+  SR4:
+    - Several AVR Logic Symbol Packages (Sergey Roenko).
+    - Several AVR help files (Sergey Roenko).
+    
+Bug Fixes:
+  RC1:
+    - Crash hovering some external object over circuit canvas.
+    - Circuit not updating properly when animated( 0.3.12-SR1 ).
+    - Changes in Logic Devices properties while simulation running not updated.
+    - Load Circuit: avoid connect to already connected pins.
+    - Make 74HC and 74XX interchangeable.
+    - BJT animation not updated.
+    - BJT not working in vco example (0.3.12-RC2).
+    - Fix some memory leaks.
+    - Plotterwidget wrong scale in some cases.
+    - 74HC4022 Logic Symbol not working.
+    
+  RC2:
+    - Pic asm Compiler: gpasm does not find includes in project folder.
+    - Time widget scrollBars shown in some systems.
+    
+  RC3:
+    - Executable detected as shared lib in some builds.
+    - Push Switch broken (0.4.13-RC2).
+    - Keypad broken (0.4.13-RC2).
+    - debugger broken (0.4.13-RC2).
+    - AVR timer mode 14: Fast PWM, Top=ICR1, doesn't update in OCRX changes.
+    - Capacitor and Inductor not ok at simulation > 1MHz (0.4.13-RC2).
+    - Send Text in Serial monitor limited to 50 characters.
+    - ATtinyX4 wrong Pin assignation in Timer0,1.
+    - ATtinyX4 wrong ADC definition.
+    - Package not initialized if Logic Symbol file not found.
+    - Package should save file relative path, not absolute.
+    - Create Subcircuit taking Component Circuit Id instead of unique Id.
+    - Avoid dash "-" in Subcircuits Pin Ids.
+    - Avoid save Backup in read only filesystems.
+    - SR04 not OK at simulation > 1MHz (0.4.13-RC2).
+    - Clock and WaveGen not OK at simulation > 1MHz (0.4.13-RC2).
+    - Servo Motor not OK at simulation > 1MHz (0.4.13-RC2).
+    - Subcircuits fixed (thanks to Sergey Roenko):
+        74HC42, 74HC74, 74HC75, 74HC151, 74HC155, 74HC192, 74HC93
+        74HC393, 74HC592, 74HC4017, 74HC4026, 74HC4033
+    
+  RC4:
+    - I2C module: wrong output impedance when transmiting.
+    - Editor: closing unsaved doc + cancel not working.
+    - Editor: close unsaved doc whith no focus, editor takes the focused one.
+    - PIC with OSCCAL Reg. not working if call 0x3FF is made.
+    - Crash: Debug session + Close doc. + RamTable->LoadVAriables.
+    - Debugger: some operations taking too long in some cases.
+    - Serial Monitor: some characters missing randomly.
+    - AVR SPI: MOSI pin should be high when idle.
+    - Wrong extension Creating subcircuits in some cases.
+    - Ground not working in Subcircuits.
+    - Crash creating Subcircuit with 2 Package Pins connected together.
+    - Subcircuits fixed (Sergey Roenko strikes again)
+        74HC73, 74HC76, 74HC107, 74HC109, 74HC112,74HC113, 74HC173
+        74HC175, 74HC259, 74HC279, 74HC373, 74HC374, 74HC375, 74HC377
+    
+  RC5:
+    - Crash closing file with debugger when no mcu ( 0.4.13-RC4 ).
+    - Program hangs removing components in some cases.
+    - Debugger: Simulation keeps running after Stop when not driving Circuit( 0.4.13-RC4 ).
+    - PIC: if PIC goes to sleep fail to exit sleep afther reset.
+    - Crash setting MCU to logic Symbol (No LS available for MCU yet).
+    - Subcircuit: place inversion sign only after the symbol «!» 
+    - Crash on some actions while creating connector.
+    - Audio Out wrong at simulation speed > 1e6 (0.4.13-RC2).
+    - Audio Out latency too high.
+    - LatchD randomly not properly initialized.
+    - Drop simu file to canvas should not save state.
+
+  RC6:
+    - Editor: Sintax highlight error parsing some rules.
+    - MCU: Auto-Load not working in Arduino Boards.
+    - Crash: Mcu in circuit + Run + delete Mcu + Run;
+    - Oscope not updating when signal dissapears.
+    - Relays not working randomly.
+    - Fixed 74HC194_LS.package (Sergey Roenko)
+    
+  Final:
+    - Stepper: bounding box overlaping pins.
+    - Stepper not updating after change steps number.
+    - Arduino 1.8.10 issue solved.
+    - AppImage tries to backup in Readonly FS.
+    - Some Help Files not Found.
+    - Help files for each subcircuit not possible.
+    - Some wrong error strings higlighted in Arduino Compile.
+    - Memory: Error saving data in read only FS.
+    - Ram/Rom: Error saving and loading binary files.
+    - Text Encoding errors.
+    - Missing file extension filters in Ram/Rom.
+    - Missing file extension filters in Editor->SaveAs.
+    - Bad Led visualisation when cpu can not keep speed.
+    - Atmega 1280,1281, 2560, wrong package file.
+    - Crash if mcu can't be created + new circuit.
+    - Pic18F4420 missing data file.
+    - Servo: Redraw probrems.
+    
+  SR1:
+    - Mosfet animation not updating after Power-Off.
+    - Editor: SaveAs should take current file instead of last file.
+    - Editor: SaveAs+Modify+Compile takes old fileName.
+    - Crash Setting values < 1 pico 
+    - Passive Components: should not accept value = 0.
+    - Atmega32u4: Pwm not working.
+    - Atmega32u4: Duplicated Pin D4. (Sergey Roenko)
+    - Atmega64: Wrong Pin20, should be reset. (Sergey Roenko)
+    - Mcu eeprom: error loading data files.
+    - Pic mcu: error reading opencollector pins as input.
+    
+  SR2:
+    - Atmega32u4: Fast PWM on pin OC1C doesn't work for timer 1.
+    - Audio Output: cracking sounds.
+    - Volt. Regulator not working in some cases.
+    - PIC16F505 wrong package.
+    - Counter not working in Subcircuits.
+    - Crash deleting a subcircuit that fails to load .subcircuit file.
+    - Gates sometimes fail to restart after power-off (inverter oscillator example).
+    - SubPackage->LoadPackage fails to set proper default path in some cases.
+    - Logic Devices: Input HighV & LowV not working in Subcircuits.
+    - Windows can only reach 80% simulation speed.
+    - Windows cancel wire by right-click shows context menu.
+    - Drag & drop files not workingin windows.
+    - Editor: some grammatical errors.
+    - Frequencimeter: Wrong value at Circuit speed > 1 MHz.
+    - Plotter not showing small signals properly ( < 0.1 V ).
+    - Mcu: Setting Pin direction can miss previous Pin state.
+    - Mcu: Pullups not working depending on Pin direction set order.
+    - BcdToDec not working in subcircuits.
+    - Editor: asm type not recognized after modify and save.
+    
+  SR3:
+    - Clock & WaveGen: Wrong frequency after circuit speed change > 1 MHz while running.
+    - New Circuit when Simulation is paused = Power button dissabled.
+    - Serial Monitor not properly deleted.
+    - Remove waveGen max frequency limit.
+    - AVR Adc not working for channels > 8.
+    - Avr asm Copmiler: error in mega16 & mega 32 .inc files.
+    - Arduino Uno should have a buffer lo drive builtin led.
+    - Locale variants not working (eg. pt_BR).
+    - AVR i2c not working properly.
+    
+  SR4:
+    - Drag&Drop files not working as it should (item created at Drag enter).
+    - Crash: Arduino Uno led buffer not properly removed (0.4.13-SR3).
+    - LedMatrix not cleanly removed.
+    - Serial Monitor Windows always on top.
+    - Missing files: TC4560, TC4561 (Sergey Roenko).
+    - 74HC148 not working properly (Sergey Roenko).
+    - Fix Windows version number.
+  SR5:
+    - Text Component: Delete Key not working.
+    - PIC Comparator: Output Vref to Pin doesn't work.
+    - Image Component: Animated Gifs not working.
+    - RamTable: Load varset brokes RamTable (addr = 0).
+    - Pic Uart sends extra character after reset (0.4.13.SR2).
+    - Serial Monitor doesn't keep on top of main window (0.4.13.SR4).
+    - AVR spi not synched to mcu clock in some cases (asteroid game).
+    - Editor: Set Compiler Path for unsaved or unsupported files should show an info dialog.
+    - Crash dropping files to circuit in some cases.
+    
+    
+    New Components:
+  RC1:
+  RC2:
+  RC3:
+    - WS2812 LED.
+    - IC74 (thanks to Sergey Roenko)
+        74XX01, 74HC73, 74HC76, 74HC109, 74HC112, 74HC113, 74HC173
+        74HC175, 74HC259, 74HC373, 74HC374, 74HC375, 74HC377
+    
+  RC4:
+    - Image.
+    - SD1306 I2C OLED Display.
+    - IC74 (Sergey Roenko strikes again)
+        74XX91, 74XX95, 74XX96, 74XX166, 74XX170, 74XX178, 74XX179
+        74XX195, 74XX198, 74XX199, 74HC670, 74XX381, 74XX382
+
+  RC5:
+    - IC74 (Sergey Roenko)
+        74HC245, 74HC260, 74HC4094
+       
+    - ICCD (Sergey Roenko)
+        CD4006, CD4013, CD4014, CD4015, CD4021, CD4027, CD4035, CD4042, CD4043
+        CD4044, CD4076, CD4094, CD4095, CD4096, CD4099, CD4508, CD40174, CD40175
+
+  RC6:
+    - IC74 (Sergey Roenko)
+       74HC156, 74HC157, 74HC158, 74HC251, 74HC257, 74HC258, 74HC298, 74HC352
+       74HC353, 74HC354, 74HC356, 74HC4052, 74HC4053, 74HC4067
+       74XX150, 74XX582, 74XX583
+   
+    - ICCD (Sergey Roenko)
+        CD4019, CD4029, CD4066, CD4512, CD4532, CD4553
+        
+    - Keys (Sergey Roenko)
+        DG401, DG403, DG405
+        
+    - Ternary (Sergey Roenko)
+        Ternary_AND, Ternary_Buffer, Ternary_Multiplexer, Ternary_NAND
+        Ternary_NOR, Ternary_NOT. Ternary_OR
+        
+  SR2:
+    - IC74 (Sergey Roenko)
+        74C925, 74C926, 74C927, 74HC51, 74HC594, 74HC597, 74HC4016, 74LS54, 74XX45, 
+        74XX46, 74XX48, 74XX49, 74XX54, 74XX55, 74XX56, 74XX57, 74XX64, 74XX65, 
+        74XX68, 74XX69, 74XX70, 74XX72, 74XX82, 74XX83, 74XX114, 74XX141, 74XX145, 
+        74XX156, 74XX159, 74XX168, 74XX169, 74XX171, 74XX180, 74XX240, 74XX242, 
+        74XX243, 74XX244, 74XX246, 74XX248, 74XX249, 74XX276, 74XX280, 74XX295, 
+        74XX299, 74XX323, 74XX365, 74XX366, 74XX367, 74XX368, 74XX376, 74XX378, 
+        74XX379, 74XX395, 74XX540, 74XX541, 74XX591, 74XX682, 74XX684.
+      
+    - ICCD (Sergey Roenko)
+        CD4085, CD4502, CD4503, CD4522, CD4526, CD4539, MC14495, MM74C922, MM74C923, 
+        TC4467, TC4468, TC4469.
+      
+    - Keys (Sergey Roenko)
+        L293.
