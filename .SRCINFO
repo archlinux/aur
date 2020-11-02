@@ -1,6 +1,6 @@
 pkgbase = dovecot-fts-xapian
 	pkgdesc = Dovecot FTS plugin based on Xapian
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/grosjo/fts-xapian
@@ -9,8 +9,8 @@ pkgbase = dovecot-fts-xapian
 	depends = dovecot
 	depends = xapian-core
 	depends = icu
-	source = dovecot-fts-xapian-1.4.1.tar.gz::https://github.com/grosjo/fts-xapian/archive/1.4.1.tar.gz
-	sha256sums = 219ce1a0cb261745ec005156a6b9e3cdd47319750736eab727132b1c222cd7c2
+	source = dovecot-fts-xapian-1.4.2.tar.gz::https://github.com/grosjo/fts-xapian/archive/1.4.2.tar.gz
+	sha256sums = 11ff20bd91d81754bbe4f9ad52cf1fd74be8c3bb8633a7023a35cf4cc3c18c58
 
 pkgname = dovecot-fts-xapian
 
