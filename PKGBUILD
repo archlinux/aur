@@ -12,6 +12,7 @@ optdepends=('git-delta: improved diff highlighting'
             'diff-so-fancy: improved diff highlighting'
             'bat: syntax highlighting'
             'exa')
+conflicts=("${_pkgname}")
 url="https://github.com/bigH/git-fuzzy"
 source=("git+https://github.com/bigH/git-fuzzy.git")
 sha512sums=('SKIP')
@@ -25,6 +26,8 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
   sed -i 's%lib_dir="$script_dir/../lib"%lib_dir=/usr/lib/git-fuzzy%' bin/git-fuzzy
+
+  sed -i 's%gifs/%https://github.com/bigH/git-fuzzy/raw/master/gifs/%' README.md
 }
 
 package() {
@@ -33,5 +36,7 @@ package() {
   install -d "${pkgdir}/usr/lib"
   cp -r lib "${pkgdir}/usr/lib/git-fuzzy"
 
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+
+  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
