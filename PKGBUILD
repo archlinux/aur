@@ -3,13 +3,13 @@
 pkgname=(zapret-{nfqws,tpws}-git)
 pkgbase=zapret-git
 pkgver=r100.a740936
-pkgrel=2
+pkgrel=3
 pkgdesc="Bypass deep packet inspection."
 arch=('x86_64')
 url="https://github.com/bol-van/zapret"
 license=('GPL')
 depends=('systemd' 'ipset' 'curl')
-makedepends=('libnetfilter_queue')
+makedepends=('libnetfilter_queue' 'git')
 backup=('opt/zapret/config')
 provides=('zapret')
 conflicts=('zapret')
