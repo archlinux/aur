@@ -1,4 +1,4 @@
-src/
-pkg/
-auto-ytdl-git/
+src/*
+pkg/*
+auto-ytdl-git/*
 *.tar.gz*
