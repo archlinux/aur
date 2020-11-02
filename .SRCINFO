@@ -1,0 +1,22 @@
+pkgbase = freenitori
+	pkgdesc = Open source, general purpose Discord utility.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://freenitori.jp/
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = make
+	makedepends = bash
+	backup = etc/freenitori/nitori.conf
+	source = git+https://git.randomchars.net/RandomChars/FreeNitori.git
+	source = freenitori.service
+	source = freenitori.sysusers
+	source = freenitori.tmpfiles
+	sha256sums = SKIP
+	sha256sums = acbf6fa0c8c035bb9a59cd18986eaef7cdfa751fa04385d8e842e9f8d5c5318c
+	sha256sums = bb280c416e90f01fb1cc717b524f707e8a9da4ba4f6d728b899024aa277d3f84
+	sha256sums = cb8d60723616d8153505850a6ec8cb5458c34a833e5d5bc87b3efcce1486202b
+
+pkgname = freenitori
+

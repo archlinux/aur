@@ -1,0 +1,4 @@
+/FreeNitori/
+/src/
+/pkg/
+*.pkg.tar.zst

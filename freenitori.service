@@ -1,0 +1,18 @@
+[Unit]
+Description=FreeNitori Discord Bot
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=freenitori
+Group=freenitori
+ExecStart=/usr/bin/freenitori
+ExecStop=/usr/bin/freenitori-shell shutdown
+WorkingDirectory=/etc/freenitori
+PrivateDevices=true
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
