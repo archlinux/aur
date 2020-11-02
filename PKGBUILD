@@ -9,17 +9,18 @@
 _pkgname='unetbootin'
 pkgname="${_pkgname}-git"
 pkgver=681.r16.g28ffb108
-pkgrel=1
+pkgrel=2
 pkgdesc='Create bootable Live USB drives'
 arch=('x86_64')
 url='https://unetbootin.github.io'
 _url_source='https://github.com/unetbootin/unetbootin'
 license=('GPL3')
 depends=('mtools' 'p7zip' 'qt5-base' 'syslinux')
-makedepends=('git' 'setconf')
+makedepends=('git' 'setconf' 'qt5-tools')
 optdepends=('polkit: run unetbootin directly from menu')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+# NB: git repo size ~470MB
 source=("git+${_url_source}.git"
         "${_pkgname}.sh"
 				"org.archlinux.pkexec.${_pkgname}.policy")
@@ -39,8 +40,8 @@ pkgver() {
 
 build() {
   cd "${_pkgname}/src/${_pkgname}"
-  lupdate "${_pkgname}.pro"
-  lrelease "${_pkgname}.pro"
+  lupdate-qt5 "${_pkgname}.pro"
+  lrelease-qt5 "${_pkgname}.pro"
   qmake-qt5 "${_pkgname}.pro" -config release "DEFINES += NOSTATIC" "RESOURCES -= ${_pkgname}.qrc"
 	make
 }
