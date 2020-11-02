@@ -3,14 +3,14 @@
 
 pkgname=passwall-server
 pkgdesc="Core backend infrastructure of the PassWall platform"
-pkgver=1.1.3
+pkgver=1.1.5
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/passwall/passwall-server"
 license=('AGPL3')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('27a16419f342df281c30d1796497f4e7d61bfa6dcddbfad1aaffa47a4bcb7ced')
+sha256sums=('994bbf0944963e20771439246b93535cca3d00fe546ff2a8272f1dafa5621b07')
 
 build() {
   cd "$pkgname-$pkgver/cmd/$pkgname"
