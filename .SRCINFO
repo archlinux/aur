@@ -1,0 +1,14 @@
+pkgbase = python-neo4j
+	pkgdesc = Neo4j Bolt driver for Python
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/neo4j/
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	depends = python
+	source = neo4j-4.1.1.tar.gz::https://files.pythonhosted.org/packages/ad/4c/6d58b9416d2d62c4115d4c6bd84e6f31ca98716f50ee9da7a5418cfa61d0/neo4j-4.1.1.tar.gz
+	sha256sums = b19efd8949adfd6330537bd97b2d0df88e4074b741f7db4c05427498915886ec
+
+pkgname = python-neo4j
+
