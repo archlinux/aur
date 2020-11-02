@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/pinterest/ktlint"
 license=('MIT')
 depends=('java-runtime')
+makedepends=('git')
 source=(git+https://github.com/pinterest/${_pkgbasename})
 sha256sums=('SKIP')
 
