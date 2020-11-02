@@ -1,18 +1,16 @@
 pkgbase = python-haversine
-	pkgdesc = Calculate the distance (in km or in miles) between two points on Earth, located by their latitude and longitude.
-	pkgver = 0.4.5
+	pkgdesc = Calculate the distance (in various units) between two points on Earth using their latitude and longitude.
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/mapado/haversine
 	arch = any
 	license = MIT
 	makedepends = python2-setuptools
-	depends = python2
-	source = https://github.com/mapado/haversine/archive/v0.4.5.tar.gz
-	md5sums = ae7c33906818008025dc22d547fbbe53
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/h/haversine/haversine-2.3.0.tar.gz
+	md5sums = ff2d43a74195ec00c42ccd5da2a3f3de
 
 pkgname = python-haversine
-	depends = python
 
 pkgname = python2-haversine
-	depends = python2
 
