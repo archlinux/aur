@@ -1,0 +1,19 @@
+pkgbase = kadimus-git
+	pkgdesc = A tool to check and exploit lfi vulnerability
+	pkgver = 1.5.r7.gac5f438
+	pkgrel = 1
+	url = https://github.com/P0cL4bs/kadimus
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = curl
+	depends = pcre
+	depends = libssh
+	provides = kadimus
+	conflicts = kadimus
+	source = git+https://github.com/P0cL4bs/kadimus.git
+	md5sums = SKIP
+
+pkgname = kadimus-git
+
