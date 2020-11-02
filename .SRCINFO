@@ -1,16 +1,18 @@
 pkgbase = league-gothic-font
 	pkgdesc = A revival of an old classic, Alternate Gothic #1
-	pkgver = 20160215
-	pkgrel = 6
-	url = https://theleagueofmoveabletype.com/league-gothic
+	pkgver = 1.600
+	pkgrel = 1
+	epoch = 1
+	url = https://www.theleagueofmoveabletype.com/league-gothic
 	arch = any
 	groups = lmt-fonts
 	license = OFL
-	provides = league-gothic-font
-	source = otf-league-gothic-20160215.zip::https://github.com/theleagueof/league-gothic/archive/e6dce2137410648b2229d5d4717de8c1cd5f9b97.zip
-	sha256sums = f4cc4f754568c4d2b70c3b52a6663677656ee88277901efcdf079b40e8158ab1
+	source = https://github.com/theleagueof/league-gothic/releases/download/1.600/LeagueGothic-1.600.tar.xz
+	sha256sums = d332ece52571ebdea768c57aa6adfd8b5e87cb84ee07b925ba3f93aef4949de5
 
 pkgname = otf-league-gothic
+	provides = league-gothic-font
 
 pkgname = ttf-league-gothic
+	provides = league-gothic-font
 

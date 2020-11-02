@@ -2,32 +2,33 @@
 # Maintainer: LightDot <lightdot -a-t- g m a i l>
 # Contributor: samæ <samæ at marvid dot fr>
 
-_fnt_name=league-gothic
-pkgbase=$_fnt_name-font
-pkgname=(otf-$_fnt_name ttf-$_fnt_name)
-pkgver=20160215
-# 20140319
-_sha=e6dce2137410648b2229d5d4717de8c1cd5f9b97
-pkgrel=6
+_name=league-gothic
+_fname=LeagueGothic
+pkgbase=$_name-font
+pkgname=(otf-$_name ttf-$_name)
+pkgver=1.600
+pkgrel=1
+epoch=1
 pkgdesc='A revival of an old classic, Alternate Gothic #1'
 arch=('any')
-url="https://theleagueofmoveabletype.com/$_fnt_name"
+url="https://www.theleagueofmoveabletype.com/$_name"
 license=('OFL')
 groups=('lmt-fonts')
-provides=("$pkgbase")
-source=("$pkgname-$pkgver.zip::https://github.com/theleagueof/$_fnt_name/archive/$_sha.zip")
-sha256sums=('f4cc4f754568c4d2b70c3b52a6663677656ee88277901efcdf079b40e8158ab1')
+source=("https://github.com/theleagueof/$_name/releases/download/$pkgver/$_fname-$pkgver.tar.xz")
+sha256sums=('d332ece52571ebdea768c57aa6adfd8b5e87cb84ee07b925ba3f93aef4949de5')
 
 package_otf-league-gothic() {
-    cd "$_fnt_name-$_sha"
-    install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" *.otf
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" Open\ Font\ License*.markdown
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.markdown
+    provides=("$pkgbase")
+    cd "$_fname-$pkgver"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" static/OTF/*.otf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.md
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
 
 package_ttf-league-gothic() {
-    cd "$_fnt_name-$_sha"
-    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" webfonts/*.ttf
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" Open\ Font\ License*.markdown
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.markdown
+    provides=("$pkgbase")
+    cd "$_fname-$pkgver"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" static/TTF/*.ttf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.md
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
