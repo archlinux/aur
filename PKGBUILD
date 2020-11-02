@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-openimageio
-pkgver=2.2.7.0
+pkgver=2.2.8.0
 pkgrel=1
 pkgdesc="A library for reading and writing images. (mingw-w64)"
 url="http://www.openimageio.org/"
@@ -32,7 +32,7 @@ arch=("any")
 options=(!strip !buildflags staticlibs)
 optdepends=()
 sha256sums=(
-	"857ac83798d6d2bda5d4d11a90618ff19486da2e5a4c4ff022c5976b5746fe8c"
+	"82b8da5366e314dabe7be21d89d4e49e1e4fe36df598669d78eeb1fe3dd6425b"
 	"9afbed7e3f989dba04a8bb784af24dda26b362f13d4b5933c56bed68289ee352"
 )
 source=(
@@ -46,8 +46,6 @@ prepare() {
 	cd "oiio-Release-${pkgver}"
 	patch -uNp1 < "../mingw-dependency-fix.patch"
 	rm -f src/cmake/modules/FindOpenCV.cmake
-	sed -i -r 's/set \(REQUIED_DEPS/set \(REQUIRED_DEPS/' "src/cmake/externalpackages.cmake"
-	sed -i -r 's/target_link_libraries \(OpenImageIO PRIVATE \$\{PUGIXML_LIBRARIES\}\)/target_link_libraries \(OpenImageIO PRIVATE pugixml\)/' "src/libOpenImageIO/CMakeLists.txt"
 }
 
 build() {
