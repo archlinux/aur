@@ -1,7 +1,7 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=ardupilot-mission-planner
 _pkgname=mission-planner
-pkgver=2020_09_05
+pkgver=2020_11_02
 pkgrel=1
 pkgdesc="Mission Planner Ground Control Station"
 arch=('x86_64')

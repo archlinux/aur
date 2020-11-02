@@ -1,6 +1,6 @@
 pkgbase = ardupilot-mission-planner
 	pkgdesc = Mission Planner Ground Control Station
-	pkgver = 2020_09_05
+	pkgver = 2020_11_02
 	pkgrel = 1
 	url = https://github.com/ArduPilot/MissionPlanner
 	arch = x86_64
