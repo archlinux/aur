@@ -1,11 +1,12 @@
 pkgname=reduze
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Computer program for reducing Feynman integrals to master integrals employing a variant of Laporta's reduction algorithm."
 arch=('i686' 'x86_64')
 url="https://reduze.hepforge.org/"
 license=('GPL3')
-depends=('cmake' 'ginac')
+depends=('ginac')
+makedepends=('cmake')
 optdepends=('openmpi: For MPI support'
 'db: For Berkeley DB support'
 'fermat: For faster GCD calculations'
