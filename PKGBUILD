@@ -29,8 +29,8 @@ _GUID="EA4BB293-2D7F-4456-A681-1F22F42CD0BC"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-git"
 
-pkgver=28256.edk2.stable201903.2519.g1366cd58cd
-pkgrel=2
+pkgver=28247.edk2.stable201903.2510.gffddac3e0f
+pkgrel=3
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - GIT Version"
 url="https://github.com/tianocore/edk2"
 arch=('x86_64' 'i686')
@@ -45,9 +45,28 @@ provides=('uefi-shell')
 
 install="${_pkgname}.install"
 
-source=("${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=master")
+declare -A _submod_path
+_submod_path["CryptoPkg/Library/OpensslLib/openssl"]="openssl"
+_submod_path["SoftFloat"]="softfloat"
+_submod_path["UnitTestFrameworkPkg/Library/CmockaLib/cmocka"]="cmocka"
+_submod_path["MdeModulePkg/Universal/RegularExpressionDxe/oniguruma"]="oniguruma"
+_submod_path["MdeModulePkg/Library/BrotliCustomDecompressLib/brotli"]="brotli"
+_submod_path["BaseTools/Source/C/BrotliCompress/brotli"]="brotli"
 
-sha1sums=('SKIP')
+source=("${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=master"
+        brotli::git+https://github.com/google/brotli
+        softfloat::git+https://github.com/ucb-bar/berkeley-softfloat-3.git
+        cmocka::git+https://git.cryptomilk.org/projects/cmocka.git
+        oniguruma::git+https://github.com/kkos/oniguruma
+        openssl::git+https://github.com/openssl/openssl
+        )
+
+sha1sums=('SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_TIANO_DIR_}/"
@@ -63,8 +82,11 @@ _setup_env_vars() {
 _prepare_tianocore_sources() {
 	cd "${_UDK_DIR}/"
 
-	msg "Updating submodules"
-	git submodule update --init
+	git submodule init
+	for _module in "${!_submod_path[@]}"; do
+		git config submodule."$_module".url "$srcdir/${_submod_path[$_module]}"
+	done
+	git submodule update
 
 	msg "Cleanup UDK config files"
 	rm -rf "${_UDK_DIR}/Build/" || true
