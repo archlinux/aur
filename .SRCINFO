@@ -1,0 +1,30 @@
+pkgbase = duplicity-git
+	pkgdesc = A utility for encrypted, bandwidth-efficient backups using the rsync algorithm.
+	pkgver = rel.0.8.16.r29.15026d95
+	pkgrel = 1
+	url = https://www.nongnu.org/duplicity/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = gnupg
+	depends = librsync
+	depends = python-paramiko
+	depends = python-fasteners
+	depends = python-future
+	optdepends = lftp: backend for ftp, ftps, fish
+	optdepends = ncftp: alternative backend for ftp
+	optdepends = python-boto: Amazon S3 and Google Cloud Storage backend
+	optdepends = python-dropbox: Dropbox backend
+	optdepends = python-gobject: GIO backend
+	optdepends = gvfs: GIO backend
+	optdepends = python-pydrive: Google Drive backend
+	optdepends = python-requests-oauthlib: OneDrive backend
+	optdepends = rsync: rsync backend
+	provides = duplicity
+	conflicts = duplicity
+	source = git+https://gitlab.com/duplicity/duplicity.git
+	md5sums = SKIP
+
+pkgname = duplicity-git
+
