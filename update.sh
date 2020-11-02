@@ -7,7 +7,7 @@ URL=https://github.com/lidatong/dataclasses-json
 DEPENDS=(
     python-marshmallow
     python-marshmallow-enum
-    python-typing-inspect
+    python-typing_inspect
     python-stringcase
 )
 LICENSE='MIT'
