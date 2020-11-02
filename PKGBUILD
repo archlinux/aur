@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-hidpi-git
-pkgver=0.11.0.r57.g99f3c643
+pkgver=0.11.0.r76.gf0ddcd36
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library, with XWayland HiDPI'
@@ -10,7 +10,7 @@ arch=(x86_64)
 provides=("wlroots-hidpi=${pkgver%%.r*}")
 conflicts=(wlroots)
 options=(debug)
-depends=(libcap systemd wayland opengl-driver libxcb xcb-util-errors
+depends=(systemd wayland opengl-driver libxcb xcb-util-errors
          xcb-util-wm pixman libinput libxkbcommon)
 makedepends=(meson ninja git wayland-protocols xorgproto)
 source=("${pkgname}::git+${url}"
@@ -40,14 +40,13 @@ build () {
 	meson build \
 		--prefix /usr \
 		--buildtype debug \
-		-Dlibcap=enabled \
 		-Dlogind=enabled \
 		-Dlogind-provider=systemd \
 		-Dxcb-errors=enabled \
 		-Dxcb-icccm=enabled \
 		-Dxwayland=enabled \
 		-Dx11-backend=enabled \
-		-Dexamples=true
+		-Dexamples=false
 	ninja -C build
 }
 
