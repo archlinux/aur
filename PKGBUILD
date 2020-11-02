@@ -14,21 +14,29 @@ makedepends=("python2-setuptools" "python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 md5sums=("ff2d43a74195ec00c42ccd5da2a3f3de")
 
+prepare() {
+    cp -a $_name-$pkgver{,-py2}
+}
 
 build() {
-	cd "$_name-$pkgver"
-	python setup.py build
+    cd "$srcdir/$_name-$pkgver"
+    python setup.py build
+
+    cd "$srcdir/$_name-$pkgver-py2"
+    python2 setup.py build
 }
 
 
 package_python-haversine() {
-	cd "$_name-$pkgver"
+    depends=("python")
+	cd "$srcdir/$_name-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 #    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_name-$pkgver/LICENSE"
 }
 
 package_python2-haversine() {
-	cd "$_name-$pkgver"
+    depends=("python2")
+	cd "$srcdir/$_name-$pkgver-py2"
     python2 setup.py install --root ="$pkgdir" --optimize=1 --skip-build
 #    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_name-$pkgver/LICENSE"
 }

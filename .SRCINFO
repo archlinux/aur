@@ -11,6 +11,8 @@ pkgbase = python-haversine
 	md5sums = ff2d43a74195ec00c42ccd5da2a3f3de
 
 pkgname = python-haversine
+	depends = python
 
 pkgname = python2-haversine
+	depends = python2
 
