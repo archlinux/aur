@@ -1,7 +1,7 @@
 # Maintainer: ml <>
 _pkgname=cert-manager
 pkgname=kubectl-"$_pkgname"
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Automatically provision and manage TLS certificates in Kubernetes'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('kubectl')
 makedepends=('git' 'go')
 groups=('kubectl-plugins')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('c7603966b7bdc788f64dafed12584870ee56be7f214e13ee86ad32d0a9b98078')
+sha256sums=('d892533b0ced199d44936baac7bd7d1ec14457fdfaf25592d9d3c4855a62e998')
 
 prepare() {
   cd "$_pkgname-$pkgver"
