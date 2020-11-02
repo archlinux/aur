@@ -1,11 +1,12 @@
 pkgbase = lxd-snapper-bin
 	pkgdesc = LXD snapshots, automated
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Patryk27/lxd-snapper
 	arch = i686
 	arch = x86_64
 	license = MIT
+	depends = lxd>=4.0.0
 	provides = lxd-snapper
 	conflicts = lxd-snapper
 	source = LICENSE::https://raw.githubusercontent.com/Patryk27/lxd-snapper/master/LICENSE

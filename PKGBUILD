@@ -3,11 +3,12 @@
 pkgname=lxd-snapper-bin
 _pkgname="${pkgname%-bin}"
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="LXD snapshots, automated"
 arch=('i686' 'x86_64')
 url="https://github.com/Patryk27/lxd-snapper"
 license=('MIT')
+depends=('lxd>=4.0.0')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source_i686=("${_pkgname}-${pkgver}-i686::${url}/releases/download/v${pkgver}/lxd-snapper-linux32")
