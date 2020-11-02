@@ -2,12 +2,12 @@
 # pkg: git
 pkgname=anbox-launchers-git
 pkgver=r14.7d9530f
-pkgrel=5
+pkgrel=6
 pkgdesc="Add Anbox App Launchers to Anbox Category in Desktop Menu."
 arch=('any')
 url="https://github.com/ahmubashshir/anbox-launchers"
 license=('GPL')
-makedepends=('coreutils')
+makedepends=('coreutils' 'git')
 provides=('anbox-launchers')
 conflicts=('anbox-launchers')
 install=anbox-launchers.install
