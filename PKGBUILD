@@ -1,7 +1,7 @@
 # Maintainer: Daniel Moch <daniel@danielmoch.com>
 pkgname=nncli
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="NextCloud Notes Command Line Interface"
 arch=('any')
 url="https://nncli.org"
@@ -11,16 +11,14 @@ depends=('python'
          'python-requests'
          'python-appdirs'
          'python-click')
-makedepends=('python-pip' 'flit' 'python-sphinx' 'python-sphinx-sitemap')
+makedepends=('python-pip' 'flit' 'python-sphinx' 'python-sphinx-sitemap' 'git')
 checkdepends=('python-pytest'
               'python-pytest-cov'
               'python-pytest-mock'
               'python-pylint'
               'python-mock')
-source=("https://git.danielmoch.com/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.gz"{,.asc})
-validpgpkeys=('72A97F7072DDCE28058DEF30323C9F1784BDDD43')
-sha256sums=('d7ce489e1394bca5b7dce976184bfea331a71d7dd16486cd156297c0c0f2b832'
-            'SKIP')
+source=("${pkgname}-${pkgver}::git://git.danielmoch.com/nncli.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 build()
 {

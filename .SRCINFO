@@ -1,7 +1,7 @@
 pkgbase = nncli
 	pkgdesc = NextCloud Notes Command Line Interface
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nncli.org
 	arch = any
 	license = MIT
@@ -15,15 +15,14 @@ pkgbase = nncli
 	makedepends = flit
 	makedepends = python-sphinx
 	makedepends = python-sphinx-sitemap
+	makedepends = git
 	depends = python
 	depends = python-urwid
 	depends = python-requests
 	depends = python-appdirs
 	depends = python-click
-	source = https://git.danielmoch.com/nncli/snapshot/nncli-0.3.4.tar.gz
-	source = https://git.danielmoch.com/nncli/snapshot/nncli-0.3.4.tar.gz.asc
-	validpgpkeys = 72A97F7072DDCE28058DEF30323C9F1784BDDD43
-	sha256sums = d7ce489e1394bca5b7dce976184bfea331a71d7dd16486cd156297c0c0f2b832
+	source = nncli-0.3.4::git://git.danielmoch.com/nncli.git#tag=v0.3.4
 	sha256sums = SKIP
 
 pkgname = nncli
+
