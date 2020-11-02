@@ -27,7 +27,6 @@ depends=(
 )
 
 optdepends=(
-  'python-pygobject: tray icon'
   'python-pyopenssl: ssl support'
   'par2cmdline-tbb: par2 multi-threading'
   'p7zip: for .7z support'
