@@ -1,13 +1,13 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=olaris-git
 _pkgname=olaris-server
-pkgver=v0.3.2.r10.g6929193
+pkgver=v0.3.3.r47.g432918e
 pkgrel=1
 pkgdesc='open-source, community driven, media manager and transcoding server'
 arch=('x86_64')
 url="https://gitlab.com/olaris/olaris-server"
 license=('GPL3')
-makedepends=('go' 'git' 'unzip')
+makedepends=('go' 'git' 'unzip' 'go-bindata-assetfs')
 conflicts=('olaris')
 provides=('olaris')
 source=("${_pkgname}::git+https://gitlab.com/olaris/olaris-server.git"
