@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=explain
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Transform postgresql explain to a graph'
 url="https://github.com/sanpii/$pkgname"
 arch=('x86_64')
@@ -24,4 +24,5 @@ package()
     cd "$pkgname-$pkgver"
 
     make install PREFIX="$pkgdir/usr"
+    install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
