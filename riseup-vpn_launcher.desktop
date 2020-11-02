@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=RiseupVPN
+Comment=Anonymous VPN
+Comment[es]=VPN Anonima
+Comment[de]=Anonymous VPN
+Exec=riseup-vpn %U
+Terminal=false
+Icon=riseup-vpn
+Categories=Network;Application;
+StartupNotify=true
+Keywords=VPN;Riseup;leap

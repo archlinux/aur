@@ -1,0 +1,4 @@
+pkg/
+bitmask-vpn/
+*.pkg.*
+src/
