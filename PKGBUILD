@@ -1,8 +1,8 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=unsilence
-pkgver=1.0.5
-pkgrel=2
+pkgver=1.0.6
+pkgrel=1
 pkgdesc='Console Interface and Library to remove silent parts of a media file'
 arch=('any')
 url='https://github.com/lagmoellertim/unsilence'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('ffmpeg' 'python' 'python-argparse' 'python-rich')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('326b85b8c58660962d2d7880e0e44dada2be2bdd9830dc0285cbee718d382ef7')
+sha256sums=('176a2b26922ddc12f0d4c5c8a2bd6f0cebd9e319eb9ea55ef184ceb48401642d')
 
 build() {
   cd "${pkgname}-${pkgver}"
