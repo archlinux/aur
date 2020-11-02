@@ -1,6 +1,6 @@
 pkgbase = wget2-git
 	pkgdesc = Updated version of popular Wget tool
-	pkgver = 1.99.1.r179.g58588e7a
+	pkgver = 1.99.2.r330.ge8178bd3
 	pkgrel = 1
 	url = http://www.gnu.org/software/wget/wget.html
 	arch = i686
@@ -11,6 +11,9 @@ pkgbase = wget2-git
 	makedepends = rsync
 	makedepends = gperf
 	makedepends = python
+	makedepends = wget
+	makedepends = pandoc
+	makedepends = doxygen
 	depends = libutil-linux
 	depends = gnutls
 	depends = libidn2

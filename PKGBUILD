@@ -2,7 +2,7 @@
 
 _gitname=wget2
 pkgname=${_gitname}-git
-pkgver=1.99.1.r179.g58588e7a
+pkgver=1.99.2.r330.ge8178bd3
 pkgrel=1
 pkgdesc="Updated version of popular Wget tool"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('libutil-linux' 'gnutls' 'libidn2' 'libpsl' 'gpgme' 'nghttp2' 'lzip')
 checkdepends=('libmicrohttpd')
 optdepends=("ca-certificates: HTTPS Downloads")
-makedepends=('git' 'rsync' 'gperf' 'python')
+makedepends=('git' 'rsync' 'gperf' 'python' 'wget' 'pandoc' 'doxygen')
 provides=('wget2')
 conflicts=('wget2')
 source=("git+https://gitlab.com/gnuwget/wget2.git"
