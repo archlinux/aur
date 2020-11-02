@@ -3,7 +3,7 @@
 pkgname=devilutionx-git
 _pkgname=devilutionx
 pkgver=1.0.1.r17.g201c6fe8
-pkgrel=1
+pkgrel=2
 pkgdesc="Diablo devolved for linux (git version)"
 arch=('x86_64')
 url="https://github.com/diasurgical/devilutionX"
@@ -39,12 +39,8 @@ package() {
 	    -t "${pkgdir}"/usr/bin/
     install -Dm644 LICENSE \
 	    -t "${pkgdir}"/usr/share/licenses/"${pkgname}"
-    install -Dm644 Packaging/resources/16.png \
-	    "${pkgdir}"/usr/share/icons/hicolor/16x16/apps/devilutionx.png
-    install -Dm644 Packaging/resources/Diablo_32.png \
-	    "${pkgdir}"/usr/share/icons/hicolor/32x32/apps/devilutionx.png
-    install -Dm644 Packaging/resources/Diablo_48.png \
-	    "${pkgdir}"/usr/share/icons/hicolor/48x48/apps/devilutionx.png
+    install -Dm644 Packaging/resources/icon.png \
+	    "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/devilutionx.png
     install -Dm644 Packaging/fedora/devilutionx.desktop \
 	    -t "${pkgdir}"/usr/share/applications/
 }

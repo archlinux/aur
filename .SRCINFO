@@ -1,7 +1,7 @@
 pkgbase = devilutionx-git
 	pkgdesc = Diablo devolved for linux (git version)
 	pkgver = 1.0.1.r17.g201c6fe8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/diasurgical/devilutionX
 	install = devilutionx.install
 	arch = x86_64
