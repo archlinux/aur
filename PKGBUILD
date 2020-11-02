@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/zigtools/${_pkgbasename}"
 license=('MIT')
 depends=('zig')
+makedepends=('git')
 source=(git+https://github.com/zigtools/${_pkgbasename}
         git+https://github.com/ziglibs/known-folders)
 sha256sums=('SKIP'
