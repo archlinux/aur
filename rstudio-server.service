@@ -1,0 +1,11 @@
+[Unit]
+Description=RStudio Server daemon
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/bin/rserver --server-daemonize=0
+ExecStop=/bin/kill -HUP $MAINPID
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
