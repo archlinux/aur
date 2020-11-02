@@ -1,7 +1,7 @@
 pkgbase = nextcloud-news-updater
 	pkgdesc = A parallel feed updater for the Nextcloud News app
 	pkgver = 11.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nextcloud/news-updater
 	install = nextcloud-news-updater.install
 	arch = any

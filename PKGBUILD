@@ -5,7 +5,7 @@
 _name=news-updater
 pkgname=nextcloud-news-updater
 pkgver=11.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A parallel feed updater for the Nextcloud News app"
 arch=('any')
 url="https://github.com/nextcloud/news-updater"

@@ -1,4 +1,8 @@
 post_install() {
-  printf "NOTE: To use nextcloud-news-updater.service, add your instance's data directory to the service's ReadWritePaths!\nsystemctl edit nextcloud-news-updater.service"
-  printf "NOTE: nextcloud-news-updater.timer can only be used with 'testrun=true' in /etc/webapps/nextcloud/news/nextcloud-news-updater.ini!"
+  printf "NOTE: To use nextcloud-news-updater.service, add your instance's data directory to the service's ReadWritePaths!\n"
+  printf "NOTE: nextcloud-news-updater.timer can only be used with 'testrun=true' in /etc/webapps/nextcloud/news/nextcloud-news-updater.ini!\n"
+}
+
+post_upgrade() {
+  post_install
 }
