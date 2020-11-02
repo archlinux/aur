@@ -10,6 +10,7 @@ pkgbase = spivak-git
 	depends = libzip
 	depends = qt5-base
 	depends = uchardet
+	depends = cld2-git
 	provides = spivak
 	conflicts = spivak
 	source = spivak-git::git+https://github.com/gyunaev/spivak.git
