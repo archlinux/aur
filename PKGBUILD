@@ -3,7 +3,7 @@ pkgname=azure-sphere-sdk
 pkgmajor=20
 pkgminor=07
 pkgver=${pkgmajor}.${pkgminor}
-pkgrel=3
+pkgrel=4
 pkgdesc="Azure Sphere SDK Preview for Linux"
 arch=('x86_64')
 url="https://aka.ms/AzureSphereSDK"
@@ -48,7 +48,7 @@ package() {
   install -Dm644 "${srcdir}"/"${pkgname}".sysusers "${pkgdir}"/usr/lib/sysusers.d/"${pkgname}".conf
 
   mkdir -p "${pkgdir}"/opt/azurespheresdk
-  for DIR in BoardConfigPresets CMakeFiles Tools DebugTools Sysroots; do
+  for DIR in BoardConfigPresets  DebugTools Sysroots CMakeFiles HardwareDefinitions Tools; do
     cp -r "${srcdir}"/azurespheresdk/"${DIR}" "${pkgdir}"/opt/azurespheresdk
   done
 
