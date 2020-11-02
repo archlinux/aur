@@ -1,6 +1,6 @@
 # Maintainer: Carlo Teubner <carlo@cteubner.net>
 pkgname=wtype
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="xdotool type for wayland"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('wayland' 'libxkbcommon')
 makedepends=('meson')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('1544ecf0e516d10a7121160a1e3be746a932a6404452b3d65a56c8a7189e2cda')
+sha256sums=('14eef1c7a51c8c90ccf005443e2e52a164dbb49fabf75953ed1d021a1184acd6')
 
 build() {
   cd "$pkgname-$pkgver"

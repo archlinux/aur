@@ -1,6 +1,6 @@
 pkgbase = wtype
 	pkgdesc = xdotool type for wayland
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/atx/wtype
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = wtype
 	makedepends = meson
 	depends = wayland
 	depends = libxkbcommon
-	source = https://github.com/atx/wtype/archive/v0.1.tar.gz
-	sha256sums = 1544ecf0e516d10a7121160a1e3be746a932a6404452b3d65a56c8a7189e2cda
+	source = https://github.com/atx/wtype/archive/v0.2.tar.gz
+	sha256sums = 14eef1c7a51c8c90ccf005443e2e52a164dbb49fabf75953ed1d021a1184acd6
 
 pkgname = wtype
 
