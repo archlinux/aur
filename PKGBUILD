@@ -2,18 +2,18 @@
 # Contributor: Axel Moinet (bullekeup) <bullekeup@bullekeup.net>
 
 pkgname=('displayset' 'displayset-udev-rules' 'displayset-doc')
-pkgver=0.1
-pkgrel=10
+pkgver=0.2
+pkgrel=1
 pkgdesc='A simple display auto-setup script tool using xrandr'
 arch=('any')
 url="https://github.com/bullekeup/displayset"
 license=('GPL2')
 makedepends=()
 options=()
-source=(displayset-v${pkgver}.tar.gz::https://github.com/bullekeup/displayset/archive/v0.1.tar.gz)
-md5sums=('231853628b31acab78bf437a6c113dc5')
-sha256sums=('494b47df0d74002d14be241e8675b212e267cd34d5ffe57b3a9e30c71a2a8a03')
-b2sums=('4f94bdfc92b845a8e9c39d1e180f1dacac400e0a2ffed458e65acc2aec685388953eb8f3f3509ca574a5092d2842dc968b950330d32db562a6c3942908519d64')
+source=(displayset-v${pkgver}.tar.gz::https://github.com/bullekeup/displayset/archive/v0.2.tar.gz)
+md5sums=('268b6449a446814b4eecf33a7c671212')
+sha256sums=('2956e7a4c9452ca7b8cfb0c12780c1f375f154dc8de8ae4e9c1321180ada5ee7')
+b2sums=('669ea4908edeed18756b50c51344f2eab0a8e46ecf5395f25956d06177a007b5f1e68c9e2e3181ac145bd682350ce9bb084efde7c8d6426a9eaf5032cef74b2f')
 depends=('xorg-xrandr')
 
 package_displayset() {
