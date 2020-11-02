@@ -7,7 +7,6 @@ pkgbase = verco-git
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	optdepends = git: support for git repositories
 	optdepends = mercurial: support for mercurial repositories
 	provides = verco
 	conflicts = verco

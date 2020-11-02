@@ -8,8 +8,7 @@ pkgdesc="Simple Git/Hg tui client focused on keyboard shortcuts (git)"
 arch=('x86_64')
 url="https://github.com/matheuslessarodrigues/verco"
 license=('MIT')
-optdepends=('git: support for git repositories'
-            'mercurial: support for mercurial repositories')
+optdepends=('mercurial: support for mercurial repositories')
 makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 provides=("${pkgname%-git}")
