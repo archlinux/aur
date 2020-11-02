@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=cargo-embed
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility to develop software for embedded ARM and RISC-V cores"
 url="https://probe.rs/"
 arch=("x86_64")
@@ -22,4 +22,5 @@ package()
     cd "$srcdir/$pkgname-$pkgver"
 
     install -Dm 755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm 644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
