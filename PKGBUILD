@@ -1,30 +1,29 @@
-# Maintainer: Francisco Demartino <demartino.francisco@gmail.com>
+# Maintainer: wereii <wereii@wereii.cz>
+# File Author: Damian Blanco <blanco.damian@gmail.com>
+# Note: Copied from
+#  https://github.com/deimon777/AUR/blob/4a818c69382b46026e6cf336acbcf716be161957/SimulIDE/PKGBUILD
 
 pkgname=simulide
-pkgver=0.2.8.SR1
-pkgver_base="0.2.8"
-pkgver_dash="0.2.8-SR1"
+pkgver=0.4.13.SR5
+pkgver_base="0.4.13"
+pkgver_dash="0.4.13-SR5"
 pkgrel=1
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)"
 arch=('x86_64')
-url="http://simulide.blogspot.com/"
+url="https://www.simulide.com/"
 license=('GPL3')
-source=("https://sourceforge.net/projects/${pkgname}/files/SimulIDE_${pkgver_base}/SimulIDE_${pkgver_dash}-Sources.tar.gz")
-md5sums=('f7c360c5fdac7a694022602c06937cba')
+source=("https://mailfence.com/pub/docs/santigoro/web/SimulIDE_${pkgver_base}/SimulIDE_${pkgver_dash}_Lin64.tar.gz" "simulide.desktop")
+md5sums=('b29a3c9fb291ec94a7eb0e12caedb293'
+         'beda8f4452562e5cc1e2c9a19ac99bb3')
 depends=(
-'gpsim'
-'qt5-multimedia'
-'qt5-serialport'
-'qt5-svg'
+  'gpsim'
+  'qt5-multimedia'
+  'qt5-serialport'
+  'qt5-svg'
+  'qt5-tools'
 )
 
-build() {
-  cd ${srcdir}/${pkgname}_${pkgver_base}/build_XX
-  qmake
-  make
-}
-
 package() {
-  cp -r ${srcdir}/${pkgname}_${pkgver_base}/build_XX/release/SimulIDE_${pkgver_base} ${pkgdir}/usr
-  ln -s SimulIDE_${pkgver_base} ${pkgdir}/usr/bin/simulide
+  cp -r ${srcdir}/SimulIDE_${pkgver_dash}_Lin64/ ${pkgdir}/usr/
+  install -Dm644 "${srcdir}"/simulide.desktop "${pkgdir}"/usr/share/applications/simulide.desktop
 }
