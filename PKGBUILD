@@ -7,8 +7,11 @@ pkgdesc='A GUI front-end for youtube-dl, partly based on youtube-dl-gui and writ
 arch=('any')
 url='https://github.com/axcore/tartube'
 license=('GPL3')
-depends=('python'
-         'gtk3')
+depends=('gtk3'
+         'python-requests'
+         'python-pgi'
+         'python-playsound'
+         'python-feedparser')
 optdepends=('ffmpeg: Video playback support'
             'python-moviepy'
             'atomicparsley')
