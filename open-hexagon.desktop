@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.1
+Name=Open Hexagon
+Type=Application
+Exec=open-hexagon
+Comment=Free software clone of Super Hexagon
+Categories=Game;ArcadeGame;
+Terminal=false
+Icon=open-hexagon
+StartupWMClass=SSVOpenHexagon

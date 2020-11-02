@@ -1,0 +1,5 @@
+src/
+pkg/
+SSVOpenHexagon
+SSVOpenHexagonAssets
+*.pkg.tar.*
