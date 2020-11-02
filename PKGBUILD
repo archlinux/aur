@@ -2,7 +2,7 @@
 
 _pkgname=fdns
 pkgname=${_pkgname}-git
-pkgver=0.9.62.6+39+g87bccbe
+pkgver=0.9.64+15+g318ee24
 pkgrel=1
 pkgdesc="Firejail DNS-over-HTTPS proxy server - git version"
 arch=(x86_64)
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --enable-apparmor --with-systemd=/usr/lib/systemd/system
     make
 }
 
