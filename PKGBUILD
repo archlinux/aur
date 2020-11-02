@@ -2,7 +2,7 @@
 
 _pkgbase=aio-pika
 pkgname=python-${_pkgbase}
-pkgver=6.6.1
+pkgver=6.7.1
 pkgrel=1
 pkgdesc="AMQP 0.9 client designed for asyncio and humans"
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('python' 'python-aiormq>=3.2.0' 'python-yarl')
 makedepends=('python-setuptools')
 source=("https://pypi.io/packages/source/${_pkgbase:0:1}/$_pkgbase/$_pkgbase-${pkgver}.tar.gz")
-sha256sums=('c4cbbeb85b3c7bf81bc127371846cd949e6231717ce1e6ac7ee1dd5ede21f866')
+sha256sums=('9773440a89840941ac3099a7720bf9d51e8764a484066b82ede4d395660ff430')
 
 build() {
   cd "$srcdir/$_pkgbase-$pkgver"
