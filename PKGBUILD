@@ -3,11 +3,11 @@
 # Contributor: Valentin Hăloiu <vially.ichb@gmail.com>
 
 pkgname=electron-ozone
-pkgver=10.1.2
+pkgver=10.1.5
 provides=('electron')
 conflicts=('electron')
-_commit=fbd99fbed1e78af18017c31af20a5baa934468b6
-_chromiumver=85.0.4183.98
+_commit=1df0ea58d53cec71d8263289ea755ee24f9fbd4c
+_chromiumver=85.0.4183.121
 pkgrel=1
 pkgdesc='Electron compiled with wayland support via Ozone'
 arch=('x86_64')
@@ -15,7 +15,7 @@ url='https://electronjs.org/'
 license=('MIT' 'custom')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libxslt' 'minizip'
          'nss' 'snappy')
-makedepends=('git' 'gn<0.1809' 'gperf' 'harfbuzz-icu' 'java-runtime-headless'
+makedepends=('git' 'gn-m85' 'gperf' 'harfbuzz-icu' 'java-runtime-headless'
              'jsoncpp' 'libnotify' 'lld' 'llvm' 'ninja' 'npm' 'pciutils' 'yarn'
              'python2' 'wget' 'yasm' 'python2-setuptools' 'libpipewire02' 'nodejs'
              'openh264')
@@ -207,7 +207,7 @@ build() {
     _flags+=('symbol_level=1')
   fi
 
-  gn gen out/Release \
+  gn-m85 gen out/Release \
       --args="import(\"//electron/build/args/release.gn\") ${_flags[*]}" \
       --script-executable=/usr/bin/python2
   ninja -C out/Release electron
