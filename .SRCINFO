@@ -1,17 +1,21 @@
 pkgbase = open-stage-control-node-git
-	pkgdesc = A libre desktop OSC bi-directional control surface application
-	pkgver = 0.39.6.r2.g40f89293
+	pkgdesc = A libre desktop OSC bi-directional control surface application (node-only package)
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = http://osc.ammd.net/
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
-	makedepends = git
-	depends = npm
-	optdepends = python-pyrtmidi: send and receive midi messages
-	provides = open-stage-control
-	conflicts = open-stage-control
-	source = git+https://github.com/jean-emmanuel/open-stage-control
-	md5sums = SKIP
+	makedepends = npm
+	makedepends = rsync
+	depends = nodejs
+	optdepends = python-rtmidi: send and receive midi messages
+	source = https://github.com/jean-emmanuel/open-stage-control/archive/v1.6.0.tar.gz
+	sha256sums = f5a2c2d4856017f43228509571fd2c87ec08a8b1ba1dc0fe48f03976423e3be0
+	depends_i686 = gcc-libs
+	depends_x86_64 = gcc-libs-multilib
 
 pkgname = open-stage-control-node-git
 
