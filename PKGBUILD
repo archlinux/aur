@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 # Contributor: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=(x86_64)
@@ -24,7 +24,7 @@ source=(
     git+https://github.com/KhronosGroup/SPIRV-Tools.git
     git+https://github.com/kobalicek/asmjit.git
     git+https://github.com/libusb/libusb.git
-    git+https://github.com/RipleyTom/wolfssl.git
+    git+https://github.com/wolfSSL/wolfssl.git
     git+https://github.com/tcbrindle/span.git
     git+https://github.com/zeux/pugixml.git
 )
