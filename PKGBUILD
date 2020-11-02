@@ -2,7 +2,7 @@
 #
 
 pkgname=realsr-ncnn-vulkan
-pkgver=20200606
+pkgver=20200818
 pkgrel=1
 pkgdesc="RealSR super resolution implemented with ncnn library"
 url="https://github.com/nihui/realsr-ncnn-vulkan"
