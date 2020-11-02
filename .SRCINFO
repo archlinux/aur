@@ -4,7 +4,6 @@ pkgbase = terminus-re33
 	pkgrel = 1
 	arch = any
 	depends = fontconfig
-	depends = xorg-font-utils
 	source = https://www.dropbox.com/s/oqy1jrbct1t8z9r/terminus-re33.ttf
 	sha256sums = 0ffa3792c453042f93161e0f84e797492d59191ad8d299c3ea9443a4235f9815
 

@@ -5,7 +5,7 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="ttf version of terminus-font"
 arch=(any)
-depends=(fontconfig xorg-font-utils)
+depends=(fontconfig)
 source=("https://www.dropbox.com/s/oqy1jrbct1t8z9r/terminus-re33.ttf")
 sha256sums=("0ffa3792c453042f93161e0f84e797492d59191ad8d299c3ea9443a4235f9815")
 package() {
