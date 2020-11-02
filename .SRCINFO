@@ -1,6 +1,6 @@
 pkgbase = rpcs3-bin
 	pkgdesc = Open-source Sony PlayStation 3 Emulator
-	pkgver = 0.0.11
+	pkgver = 0.0.13
 	pkgrel = 1
 	url = https://rpcs3.net/
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = rpcs3-bin
 	conflicts = rpcs3
 	replaces = rpcs3
 	options = !strip
-	source = https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-ddd202b5ff5640f031b4685cbcd90f894de97975/rpcs3-v0.0.11-10610-ddd202b5_linux64.AppImage
-	sha256sums = 51799ba850a19d9f32a780a87b5d0a1b3c60308a2db0a5449b16ac1b5b9caa6f
+	source = https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-09a9d08466583df18925c59c8fec74f956ff0b1a/rpcs3-v0.0.13-11151-09a9d084_linux64.AppImage
+	sha256sums = 14c56db0091aac7b612ede593494cba01e9f0a7fd31e02103cb28adbd5d3c70f
 
 pkgname = rpcs3-bin
 

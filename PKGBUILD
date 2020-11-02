@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3-bin
-pkgver=0.0.11
-_pkgbuild='10610-ddd202b5'
+pkgver=0.0.13
+_pkgbuild='11151-09a9d084'
 pkgrel=1
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=('x86_64')
@@ -14,9 +14,9 @@ replaces=('rpcs3')
 provides=('rpcs3')
 conflicts=('rpcs3')
 # curl --silent --dump-header - https://github.com/RPCS3/rpcs3-binaries-linux/releases/latest | grep -i '^location: '
-_latest_release="https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-ddd202b5ff5640f031b4685cbcd90f894de97975"
+_latest_release="https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-09a9d08466583df18925c59c8fec74f956ff0b1a"
 source=("${_latest_release}/rpcs3-v$pkgver-${_pkgbuild}_linux64.AppImage")
-sha256sums=('51799ba850a19d9f32a780a87b5d0a1b3c60308a2db0a5449b16ac1b5b9caa6f')
+sha256sums=('14c56db0091aac7b612ede593494cba01e9f0a7fd31e02103cb28adbd5d3c70f')
 
 prepare()
 {
@@ -58,8 +58,10 @@ package()
     install -D -m644 'usr/share/rpcs3/GuiConfigs/Classic (Bright).qss' "$pkgdir/usr/share/rpcs3/GuiConfigs/Classic (Bright).qss"
     install -D -m644 'usr/share/rpcs3/GuiConfigs/Darker Style by TheMitoSan.qss' "$pkgdir/usr/share/rpcs3/GuiConfigs/Darker Style by TheMitoSan.qss"
     install -D -m644 'usr/share/rpcs3/GuiConfigs/Envy.qss' "$pkgdir/usr/share/rpcs3/GuiConfigs/Envy.qss"
+    install -D -m644 'usr/share/rpcs3/GuiConfigs/kot-bg.jpg' "$pkgdir/usr/share/rpcs3/GuiConfigs/kot-bg.jpg"
     install -D -m644 'usr/share/rpcs3/GuiConfigs/Kuroi (Dark) by Ani.qss' "$pkgdir/usr/share/rpcs3/GuiConfigs/Kuroi (Dark) by Ani.qss"
     install -D -m644 'usr/share/rpcs3/GuiConfigs/ModernBlue Theme by TheMitoSan.qss' "$pkgdir/usr/share/rpcs3/GuiConfigs/ModernBlue Theme by TheMitoSan.qss"
+    install -D -m644 'usr/share/rpcs3/GuiConfigs/Nekotekina by GooseWing.qss' "$pkgdir/usr/share/rpcs3/GuiConfigs/Nekotekina by GooseWing.qss"
     install -D -m644 'usr/share/rpcs3/GuiConfigs/Skyline (Nightfall).qss' "$pkgdir/usr/share/rpcs3/GuiConfigs/Skyline (Nightfall).qss"
     install -D -m644 'usr/share/rpcs3/GuiConfigs/Skyline.qss' "$pkgdir/usr/share/rpcs3/GuiConfigs/Skyline.qss"
     install -D -m644 'usr/share/rpcs3/GuiConfigs/YoRHa-background.jpg' "$pkgdir/usr/share/rpcs3/GuiConfigs/YoRHa-background.jpg"
