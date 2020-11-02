@@ -23,6 +23,7 @@ depends=(
   "qt5-serialport"
   "qt5-svg"
   "qt5-script"
+  "qt5-tools"
   "libelf>=0.181"
 )
 
