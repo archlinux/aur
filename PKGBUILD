@@ -2,7 +2,7 @@
 # pkg: pypi trakt-scrobbler
 pkgname=trakt-scrobbler
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
@@ -15,7 +15,7 @@ optdepends=(
     'python-gobject: Provides Updatable Notifications.'
 )
 source=(
-    "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
     "trakts-man.md"
     "trakts.zsh"
 )
