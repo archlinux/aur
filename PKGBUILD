@@ -1,8 +1,8 @@
 # Maintainer: luosoy <249799588@qq.com>
 
 pkgname=com.qq.weixin.work.deepin
-pkgver=3.0.23.1604deepin12
-pkgrel=2
+pkgver=3.0.25.2103deepin1
+pkgrel=1
 epoch=
 pkgdesc="Deepin Wine Weixin Work"
 arch=('i686' 'x86_64')
@@ -20,9 +20,10 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${pkgver}_i386.deb")
+#source=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${pkgver}_i386.deb")
+source=("https://master.dl.sourceforge.net/project/deepin-wine-apps/${pkgname}_${pkgver}_i386.deb")
 noextract=("${pkgname}_${pkgver}_i386.deb")
-md5sums=('a6dad21284f3790354e987d56261ab43')
+md5sums=('40cc44330f8a35e028702459b4888cdc')
 validpgpkeys=()
 
 prepare() {
