@@ -1,20 +1,20 @@
---- Makefile.libretro.orig	2019-09-16 11:27:03.800264893 +0200
-+++ Makefile.libretro	2019-09-16 11:29:51.682903646 +0200
-@@ -163,6 +163,8 @@
+--- Makefile.libretro.orig	2020-11-02 08:46:48.813818898 +0100
++++ Makefile.libretro	2020-11-02 08:53:20.323006145 +0100
+@@ -200,6 +200,8 @@
  else
-    CFLAGS := -funroll-loops -ffast-math -fomit-frame-pointer $(CFLAGS) -O3
+ CFLAGS += -funroll-loops -ffast-math -fomit-frame-pointer -O3
  endif
 +INCFLAGS += -I/usr/include
 +PLATFLAGS += -DHAVE_CAPSIMAGE=1
- CFLAGS := -fsigned-char -D__LIBRETRO__ -fno-builtin $(CFLAGS)
+ CFLAGS += -fsigned-char -D__LIBRETRO__ -fno-builtin
  
- CFLAGS := $(fpic) $(CFLAGS) $(PLATFLAGS)
-@@ -190,7 +192,7 @@
+ CFLAGS   += $(fpic) $(PLATFLAGS)
+@@ -225,7 +227,7 @@
  ifeq ($(STATIC_LINKING_LINK),1)
  	$(AR) rcs $@ $(OBJECTS) 
  else
--	$(CC) $(CFLAGS) $(INCFLAGS) $(LDFLAGS) $(OBJECTS) -o $@ -lm -lz $(SHARED)
-+	$(CC) $(CFLAGS) $(INCFLAGS) $(LDFLAGS) $(OBJECTS) -o $@ -lm -lz $(SHARED) -lpthread -L/usr/lib64 -lcapsimage
+-	$(CC) $(CFLAGS) $(INCFLAGS) $(LDFLAGS) $(OBJECTS) -o $@ -lm $(ZLIB) $(SHARED)
++	$(CC) $(CFLAGS) $(INCFLAGS) $(LDFLAGS) $(OBJECTS) -o $@ -lm $(ZLIB) $(SHARED) -lpthread -L/usr/lib64 -lcapsimage
  endif
  
  %.o: %.c
