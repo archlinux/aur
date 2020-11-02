@@ -17,6 +17,7 @@ md5sums=('SKIP')
 
 prepare() {
     mkdir -p build "$srcdir/$pkgname-$pkgver/build"
+    sed -i "s/CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT/CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT AND NOT LSL_PRESERVE_INSTALL_PREFIX/" "$srcdir/$pkgname-$pkgver/cmake/LSLCMake.cmake"
 }
 
 build() {
