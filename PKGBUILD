@@ -2,23 +2,23 @@
 
 _pkgname=htop
 pkgname=${_pkgname}-vim-git
-pkgver=1417.dc6523b
+pkgver=1539.0806a79
 pkgrel=1
 pkgdesc="Interactive text-mode process viewer. Patched for vim keybindings"
 url="https://github.com/htop-dev/${_pkgname}"
 license=('GPL')
 arch=('i686' 'x86_64' 'armv7h')
-depends=('ncurses')
-makedepends=('git' 'python2')
-optdepends=('lsof: list open files for running process'
-            'strace: attach to running process')
+depends=('ncurses' 'libncursesw.so' 'libnl')
+makedepends=('git')
+optdepends=('lsof: show files opened by a process'
+            'strace: attach to a running process')
 provides=('htop')
 conflicts=('htop' 'htop-git')
 options=('!emptydirs')
 source=("git+${url}.git"
         'vim-keybindings.patch')
 sha256sums=('SKIP'
-            'c15ecb884c65d3c168923728816157fc4a2dc80df6190fb46b2484a16d201d3a')
+            '66c2881bae50cb0a7d26bc390977be5aa20576dfa044b8f74c4dc85779b98865')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -35,23 +35,24 @@ prepare() {
         patch -p1 -i $_p
     done
 
-    ./autogen.sh
-
-    ./configure \
-        --prefix=/usr \
-        --sysconfdir=/etc \
-        --enable-unicode \
-        --enable-openvz \
-        --enable-vserver \
-        --enable-cgroup
+    autoreconf -fi
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
+
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --enable-cgroup \
+        --enable-delayacct \
+        --enable-openvz \
+        --enable-unicode \
+        --enable-vserver
+
     make
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-    make DESTDIR="${pkgdir}" install
+    make -C "${srcdir}/${_pkgname}" DESTDIR="$pkgdir" install
 }
