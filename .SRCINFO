@@ -12,7 +12,6 @@ pkgbase = tutanota-desktop
 	depends = libxtst
 	depends = libappindicator-gtk3
 	depends = libnotify
-	optdepends = 
 	source = https://github.com/tutao/tutanota/archive/tutanota-release-3.77.3.tar.gz
 	source = tutanota-desktop
 	source = tutanota-desktop.desktop

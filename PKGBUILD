@@ -10,7 +10,6 @@ url="https://tutanota.com"
 license=('GPL3')
 depends=('nss' 'libxss' 'libxtst' 'libappindicator-gtk3' 'libnotify')
 makedepends=('npm' 'nvm')
-optdepends=('')
 source=("https://github.com/tutao/tutanota/archive/tutanota-release-$pkgver.tar.gz"
         "$pkgname"
         "$pkgname.desktop")
