@@ -1,8 +1,8 @@
 # Maintainer: Guillaume Hayot ghayot@postblue.info
 pkgname=emulationstation
 _gitname=EmulationStation
-pkgver=2.9.3
-pkgrel=3
+pkgver=2.9.4
+pkgrel=1
 pkgdesc="Emulation Station is a flexible emulator front-end supporting keyboardless navigation and custom system themes."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/RetroPie/EmulationStation"
@@ -24,7 +24,7 @@ source=("https://github.com/RetroPie/$_gitname/archive/v$pkgver.tar.gz"
         "https://gist.githubusercontent.com/omgitsaheadcrab/9fae969ebad3ee44a52f5ef72037569d/raw/9cf5642e6a20a5d4899f20435d0f51200bc36b28/pugixml.patch"
         "emulationstation.desktop"
         "emulationstation.png")
-sha256sums=('ed5125611afd7f79453b8d634a2d3495ec775c4914eb90571a20b74ead54335c'
+sha256sums=('79452f6c1e8aaebe98c19708b3587a0a45330bf20b3301d556285d5cd756fa4a'
             '3c13d66479d4f900e65a53232034943fe44a9861e5fefec1cfd8bbd69dde20c3'
             'ca468dcfc59c4c56d84da1823fdcaa33277debb91195d7feffbf74650996233e'
             '5564803e0a82e132ab507b9cd341b32d1ce5b8be527996fbe13607d90f1dde2c'
