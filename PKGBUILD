@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.2.rc3.r0.gf976c52c57
+pkgver=9.3.beta0.r0.g2c87dc16f2
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -39,18 +39,20 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-optional-packages.patch
         latte-count.patch
         test-optional.patch
-        sagemath-cremona.patch
         sagemath-singular-4.1.2.patch
         sagemath-gap-4.11.patch
-        sagemath-flint-2.6.patch)
+        sagemath-flint-2.6.patch
+        sagemath-cypari-2.1.2.patch
+        sagemath-pari-2.13.patch)
 sha256sums=('SKIP'
             '4fb46b12b5ee5e5bde87f646dc69a7b8929886be247e2d9a9ae1f12efbe5b580'
             'af922e1f978821a9a1f6c9a56130d71e5011c84a7aee7bf66a591bee658af30b'
             '7da0dbcda15a327c21dc33853cb8f98cb86a283139f8735e3b20a71d49458a88'
-            '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
-            '6f98488d0eb3a12b958cd1a34f85b7bee950ac756430371c1e134e564cbbf7d3'
+            '881186d016a6eb47b919765b9d4e6abc4560fce54e08cf42bd948ba77e16aa85'
             '34f06f9776f84f6998b1350555316e0ffea76ed16e149916970f19ef750a467f'
-            'b881d4a6867a6f5360fd204e6a86fd27c6177c539b06f521402e2bcb5a6209cd')
+            '5d00b24c1d36b41b8ea3f07b93fc0e00b42dd84d9bc4e9b3d26e5f2cfeba6405'
+            'dc507eeb75eae1109273879771b4eb56172b7417e87a0693381106afd7554e04'
+            'a285ab97c4342c1d050db3493c03807a0162ced74a67bea9eb2794f52ce439fc')
 
 pkgver() {
   cd sage
@@ -63,14 +65,16 @@ prepare(){
   sed -e '/sage-env/d' -i src/setup.py # Don't try to install sage-env
 
 # Upstream patches
-# use Features to detect Cremona databases https://trac.sagemath.org/ticket/25825
-  patch -p1 -i ../sagemath-cremona.patch
 # Fixes for singular 4.1.2 https://trac.sagemath.org/ticket/25993
   patch -p1 -i ../sagemath-singular-4.1.2.patch
 # Fix segfault and tests with flint 2.6 https://trac.sagemath.org/ticket/29719
   patch -p1 -i ../sagemath-flint-2.6.patch
 # Fix gap.version() and doctests with GAP 4.11 https://trac.sagemath.org/ticket/29314
   patch -p1 -i ../sagemath-gap-4.11.patch
+# Fix gcd/lcm between pari and sage objects https://trac.sagemath.org/ticket/30849
+  patch -p1 -i ../sagemath-cypari-2.1.2.patch
+# Port to PARI 2.13 https://trac.sagemath.org/ticket/30801
+  patch -p1 -i ../sagemath-pari-2.13.patch
 
 # Arch-specific patches
 # assume all optional packages are installed

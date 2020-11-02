@@ -108,19 +108,3 @@ index 62379d2..2c163f5 100644
              sage: f.lift([1/12])
              Traceback (most recent call last):
              ...
-diff --git a/src/sage/schemes/hyperelliptic_curves/monsky_washnitzer.py b/src/sage/schemes/hyperelliptic_curves/monsky_washnitzer.py
-index 83b63b0..4bdb189 100644
---- a/src/sage/schemes/hyperelliptic_curves/monsky_washnitzer.py
-+++ b/src/sage/schemes/hyperelliptic_curves/monsky_washnitzer.py
-@@ -1875,9 +1875,9 @@ class SpecialHyperellipticQuotientRing(UniqueRepresentation, CommutativeAlgebra)
-             if not hasattr(self, '_curve'):
-                 if self._Q.degree() == 3:
-                     ainvs = [0, self._Q[2], 0, self._Q[1], self._Q[0]]
--                    self._curve = EllipticCurve(ainvs)
-+                    self._curve = EllipticCurve(ainvs, check_squarefree=R.is_field())
-                 else:
--                    self._curve = HyperellipticCurve(self._Q)
-+                    self._curve = HyperellipticCurve(self._Q, check_squarefree=R.is_field())
- 
-         else:
-             raise NotImplementedError("Must be an elliptic curve or polynomial "

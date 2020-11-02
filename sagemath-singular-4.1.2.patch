@@ -21,7 +21,7 @@ index a312548..d1c9c95 100644
  -  Using Singular's ``BrillNoether`` command (for details see the section
     Brill-Noether in the Singular online documentation
 diff --git a/src/sage/algebras/free_algebra.py b/src/sage/algebras/free_algebra.py
-index 2ba6b72..926ca07 100644
+index 7391dd9..7234f91 100644
 --- a/src/sage/algebras/free_algebra.py
 +++ b/src/sage/algebras/free_algebra.py
 @@ -39,7 +39,15 @@ two-sided ideals, and thus provide ideal containment tests::
@@ -69,10 +69,18 @@ index 2ba6b72..926ca07 100644
              newname = 'x'
              while newname in varnames:
 diff --git a/src/sage/algebras/letterplace/free_algebra_element_letterplace.pyx b/src/sage/algebras/letterplace/free_algebra_element_letterplace.pyx
-index ba75188..9c9944e 100644
+index ad863ea..d6127c9 100644
 --- a/src/sage/algebras/letterplace/free_algebra_element_letterplace.pyx
 +++ b/src/sage/algebras/letterplace/free_algebra_element_letterplace.pyx
-@@ -25,7 +25,6 @@ from cpython.object cimport PyObject_RichCompare
+@@ -17,6 +17,7 @@ AUTHOR:
+ #                  https://www.gnu.org/licenses/
+ # ****************************************************************************
+ 
++from sage.groups.perm_gps.all import CyclicPermutationGroup
+ from sage.libs.singular.function import lib, singular_function
+ from sage.misc.repr import repr_lincomb
+ from sage.rings.polynomial.multi_polynomial_ideal import MPolynomialIdeal
+@@ -25,7 +26,6 @@ from cpython.object cimport PyObject_RichCompare
  # Define some singular functions
  lib("freegb.lib")
  poly_reduce = singular_function("NF")
@@ -80,38 +88,41 @@ index ba75188..9c9944e 100644
  
  #####################
  # Free algebra elements
-@@ -445,9 +444,9 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
+@@ -445,9 +445,10 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
          cdef int i
          if P.monomial_divides(s_poly,p_poly):
              return True
 +        realngens = A._commutative_ring.ngens()
++        CG = CyclicPermutationGroup(P.ngens())
          for i from 0 <= i < p_d-s_d:
 -            s_poly = singular_system("stest",s_poly,1,
 -                                     A._degbound,A.__ngens,ring=P)
-+            s_poly = s_poly._cycle(realngens)
++            s_poly = s_poly * CG[realngens]
              if P.monomial_divides(s_poly,p_poly):
                  return True
          return False
-@@ -601,7 +600,8 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
+@@ -601,7 +602,9 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
          # we must put the polynomials into the same ring
          left._poly = A._current_ring(left._poly)
          right._poly = A._current_ring(right._poly)
 -        rshift = singular_system("stest",right._poly,left._poly.degree(),A._degbound,A.__ngens, ring=A._current_ring)
 +        realngens = A._commutative_ring.ngens()
-+        rshift = right._poly._cycle(left._poly.degree() * realngens)
++        CG = CyclicPermutationGroup(A._current_ring.ngens())
++        rshift = right._poly * CG[left._poly.degree() * realngens]
          return FreeAlgebraElement_letterplace(A,left._poly*rshift, check=False)
  
      def __pow__(FreeAlgebraElement_letterplace self, int n, k):
-@@ -627,10 +627,10 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
+@@ -627,10 +630,11 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
          self._poly = A._current_ring(self._poly)
          cdef int d = self._poly.degree()
          q = p = self._poly
 +        realngens = A._commutative_ring.ngens()
          cdef int i
++        CG = CyclicPermutationGroup(A._current_ring.ngens())
          for i from 0<i<n:
 -            q = singular_system("stest",q,d,A._degbound,A.__ngens,
 -                                     ring=A._current_ring)
-+            q = q._cycle(d * realngens)
++            q = q * CG[d * realngens]
              p *= q
          return FreeAlgebraElement_letterplace(A, p, check=False)
  
@@ -136,7 +147,7 @@ index 7e5f2bb..d1d162c 100644
      cdef MPolynomialRing_libsingular _commutative_ring
      cdef MPolynomialRing_libsingular _current_ring
 diff --git a/src/sage/algebras/letterplace/free_algebra_letterplace.pyx b/src/sage/algebras/letterplace/free_algebra_letterplace.pyx
-index a9d09ad..0fa69a1 100644
+index a9d09ad..714284e 100644
 --- a/src/sage/algebras/letterplace/free_algebra_letterplace.pyx
 +++ b/src/sage/algebras/letterplace/free_algebra_letterplace.pyx
 @@ -37,7 +37,15 @@ The preceding containment test is based on the computation of Groebner
@@ -220,16 +231,19 @@ index a9d09ad..0fa69a1 100644
  
              sage: from sage.libs.singular.function import singular_function
              sage: poly_reduce = singular_function("NF")
-@@ -683,7 +700,7 @@ cdef class FreeAlgebra_letterplace(Algebra):
+@@ -682,8 +699,10 @@ cdef class FreeAlgebra_letterplace(Algebra):
+         ngens = self.__ngens
          degbound = self._degbound
          cdef list G = [C(x._poly) for x in g]
++        from sage.groups.perm_gps.all import CyclicPermutationGroup
++        CG = CyclicPermutationGroup(C.ngens())
          for y in G:
 -            out.extend([y]+[singular_system("stest",y,n+1,degbound,ngens,ring=C) for n in xrange(d-y.degree())])
-+            out.extend([y]+[y._cycle(ngens*(n+1)) for n in xrange(d-y.degree())])
++            out.extend([y]+[y * CG[ngens*(n+1)] for n in xrange(d-y.degree())])
          return C.ideal(out)
  
      ###########################
-@@ -879,3 +896,28 @@ cdef class FreeAlgebra_letterplace(Algebra):
+@@ -879,3 +898,28 @@ cdef class FreeAlgebra_letterplace(Algebra):
              PNames[P.ngens(): len(PNames): P.ngens()+1] = list(Names[self.ngens(): len(Names): self.ngens()+1])[:P.degbound()]
              x = Ppoly.hom([Gens[Names.index(asdf)] for asdf in PNames])(x.letterplace_polynomial())
          return FreeAlgebraElement_letterplace(self,self._current_ring(x))
@@ -427,7 +441,7 @@ index 51f4113..ba42ed1 100644
               (q2/(-q1+q2))*2121 + ((-q2)/(-q1+q2))*121 - 212 + 12,
               -2121 + 121]
 diff --git a/src/sage/combinat/root_system/non_symmetric_macdonald_polynomials.py b/src/sage/combinat/root_system/non_symmetric_macdonald_polynomials.py
-index 3205a09..d24a691 100644
+index 3537772..ee8ddec 100644
 --- a/src/sage/combinat/root_system/non_symmetric_macdonald_polynomials.py
 +++ b/src/sage/combinat/root_system/non_symmetric_macdonald_polynomials.py
 @@ -555,8 +555,7 @@ class NonSymmetricMacdonaldPolynomials(CherednikOperatorsEigenvectors):
@@ -475,7 +489,7 @@ index 3205a09..d24a691 100644
          ....:     for weight in IntegerVectors(d,3).map(list).map(L0):
          ....:         eigenvalues = E.eigenvalues(E[L0(weight)])
 diff --git a/src/sage/combinat/sf/macdonald.py b/src/sage/combinat/sf/macdonald.py
-index 0d32a8d..5e48f87 100644
+index e664e21..cc525b4 100644
 --- a/src/sage/combinat/sf/macdonald.py
 +++ b/src/sage/combinat/sf/macdonald.py
 @@ -483,7 +483,7 @@ class Macdonald(UniqueRepresentation):
@@ -487,7 +501,7 @@ index 0d32a8d..5e48f87 100644
              sage: Ht(s([2]))
              ((-q)/(-q+t))*McdHt[1, 1] + (t/(-q+t))*McdHt[2]
          """
-@@ -899,7 +899,7 @@ class MacdonaldPolynomials_generic(sfa.SymmetricFunctionAlgebra_generic):
+@@ -901,7 +901,7 @@ class MacdonaldPolynomials_generic(sfa.SymmetricFunctionAlgebra_generic):
              sage: Q._multiply(Q[1],Q[2])
              McdQ[2, 1] + ((q^2*t-q^2+q*t-q+t-1)/(q^2*t-1))*McdQ[3]
              sage: Ht._multiply(Ht[1],Ht[2])
@@ -497,7 +511,7 @@ index 0d32a8d..5e48f87 100644
          return self( self._s(left)*self._s(right) )
  
 diff --git a/src/sage/interfaces/singular.py b/src/sage/interfaces/singular.py
-index 78e65d0..bf02916 100644
+index 88a33b0..a7cf5ea 100644
 --- a/src/sage/interfaces/singular.py
 +++ b/src/sage/interfaces/singular.py
 @@ -191,13 +191,21 @@ The 1x1 and 2x2 minors::
@@ -525,7 +539,7 @@ index 78e65d0..bf02916 100644
  ::
  
 diff --git a/src/sage/libs/singular/function.pyx b/src/sage/libs/singular/function.pyx
-index b649ab1..a405ab2 100644
+index 0fea70a..26c74d0 100644
 --- a/src/sage/libs/singular/function.pyx
 +++ b/src/sage/libs/singular/function.pyx
 @@ -1257,7 +1257,7 @@ cdef class SingularFunction(SageObject):
@@ -568,7 +582,7 @@ index b649ab1..a405ab2 100644
      The Singular function ``list`` can be called with any number of
      arguments::
 diff --git a/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py b/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py
-index 8b03d22..c5cd87b 100644
+index 8b9367e..ef04d4f 100644
 --- a/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py
 +++ b/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py
 @@ -1579,7 +1579,7 @@ class FractionWithFactoredDenominator(RingElement):
@@ -590,10 +604,10 @@ index 8b03d22..c5cd87b 100644
              sage: F1 = decomp[1]
              sage: p = {x: 1, y: 1, z: 1}
 diff --git a/src/sage/rings/polynomial/multi_polynomial_element.py b/src/sage/rings/polynomial/multi_polynomial_element.py
-index e5d6921..f4027eb 100644
+index d86833f..3742439 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_element.py
 +++ b/src/sage/rings/polynomial/multi_polynomial_element.py
-@@ -2179,7 +2179,7 @@ def degree_lowest_rational_function(r, x):
+@@ -2231,7 +2231,7 @@ def degree_lowest_rational_function(r, x):
      ::
  
          sage: r = f/g; r
@@ -603,10 +617,10 @@ index e5d6921..f4027eb 100644
          -1
          sage: degree_lowest_rational_function(r,b)
 diff --git a/src/sage/rings/polynomial/multi_polynomial_ideal.py b/src/sage/rings/polynomial/multi_polynomial_ideal.py
-index 962205f..1c9a81d 100644
+index f025b3a..94e130d 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_ideal.py
 +++ b/src/sage/rings/polynomial/multi_polynomial_ideal.py
-@@ -170,7 +170,7 @@ when the system has no solutions over the rationals.
+@@ -154,7 +154,7 @@ when the system has no solutions over the rationals.
      which is not 1. ::
  
          sage: I.groebner_basis()
@@ -615,7 +629,7 @@ index 962205f..1c9a81d 100644
  
      Now for each prime `p` dividing this integer 164878, the Groebner
      basis of I modulo `p` will be non-trivial and will thus give a
-@@ -1561,8 +1561,8 @@ class MPolynomialIdeal_singular_repr(
+@@ -1567,8 +1567,8 @@ class MPolynomialIdeal_singular_repr(
              sage: I2 = y*R
              sage: I3 = (x, y)*R
              sage: I4 = (x^2 + x*y*z, y^2 - z^3*y, z^3 + y^5*x*z)*R
@@ -626,16 +640,16 @@ index 962205f..1c9a81d 100644
  
          The ideals must share the same ring::
  
-@@ -4002,7 +4002,7 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
+@@ -4008,7 +4008,7 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
  
-             sage: J.groebner_basis.set_cache(gb)  # optional - giacpy_sage
+             sage: J.groebner_basis.set_cache(gb)
              sage: ideal(J.transformed_basis()).change_ring(P).interreduced_basis()  # testing trac 21884
 -            [a - 60*c^3 + 158/7*c^2 + 8/7*c - 1, b + 30*c^3 - 79/7*c^2 + 3/7*c, c^4 - 10/21*c^3 + 1/84*c^2 + 1/84*c]
 +            ...[a - 60*c^3 + 158/7*c^2 + 8/7*c - 1, b + 30*c^3 - 79/7*c^2 + 3/7*c, c^4 - 10/21*c^3 + 1/84*c^2 + 1/84*c]
  
          Giac's gbasis over `\QQ` can benefit from a probabilistic lifting and
          multi threaded operations::
-@@ -4104,9 +4104,9 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
+@@ -4111,9 +4111,9 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
              sage: P.<a,b,c> = PolynomialRing(ZZ,3)
              sage: I = P * (a + 2*b + 2*c - 1, a^2 - a + 2*b^2 + 2*c^2, 2*a*b + 2*b*c - b)
              sage: I.groebner_basis()
@@ -649,41 +663,10 @@ index 962205f..1c9a81d 100644
               10*b*c + 12*c^2 - b - 4*c,
               a + 2*b + 2*c - 1]
 diff --git a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
-index ab18796..868ca8c 100644
+index 1758424..553d22d 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
 +++ b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
-@@ -2549,6 +2549,26 @@ cdef class MPolynomial_libsingular(MPolynomial):
-         """
-         return  singular_polynomial_str_with_changed_varnames(self._poly, self._parent_ring, varnames)
- 
-+    def _cycle(self, int n):
-+        """
-+        Permute the variables by shifting ``n`` positions to the right.
-+
-+        EXAMPLES::
-+
-+            sage: R.<a,b,c,d> = QQ[]
-+            sage: f = a*b + c
-+            sage: f._cycle(-1), f._cycle(0), f._cycle(1)
-+            (a*d + b, a*b + c, b*c + d)
-+        """
-+        r = self.parent()
-+        n = n % r.ngens()
-+        olddict = self.dict()
-+        newdict = dict()
-+        for key in olddict:
-+            newkey = key[-n:]+key[:-n]
-+            newdict[newkey] = olddict[key]
-+        return r(newdict)
-+
-     def degree(self, MPolynomial_libsingular x=None, int std_grading=False):
-         """
-         Return the degree of this polynomial.
-diff --git a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
-index ab18796..2eb8f24 100644
---- a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
-+++ b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
-@@ -1348,7 +1348,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_base):
+@@ -1349,7 +1349,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_base):
              sage: R = IntegerModRing(15)['x,y']
              sage: singular(R)
              polynomial ring, over a ring (with zero-divisors), global ordering
@@ -693,10 +676,52 @@ index ab18796..2eb8f24 100644
              //        block   1 : ordering dp
              //                  : names    x y
 diff --git a/src/sage/rings/polynomial/plural.pyx b/src/sage/rings/polynomial/plural.pyx
-index 42001d4..8e4eea9 100644
+index c2792ae..aa2ef59 100644
 --- a/src/sage/rings/polynomial/plural.pyx
 +++ b/src/sage/rings/polynomial/plural.pyx
-@@ -2888,7 +2888,8 @@ cpdef MPolynomialRing_libsingular new_CRing(RingWrap rw, base_ring):
+@@ -390,28 +390,30 @@ cdef class NCPolynomialRing_plural(Ring):
+         TESTS:
+ 
+         This example caused a segmentation fault with a previous version
+-        of this method::
++        of this method. This doctest still results in a segmentation fault
++        occasionally which is difficult to isolate, so this test is partially
++        disabled (:trac:`29528`)::
+ 
+             sage: import gc
+             sage: from sage.rings.polynomial.plural import NCPolynomialRing_plural
+             sage: from sage.algebras.free_algebra import FreeAlgebra
+             sage: A1.<x,y,z> = FreeAlgebra(QQ, 3)
+             sage: R1 = A1.g_algebra({y*x:x*y-z, z*x:x*z+2*x, z*y:y*z-2*y}, order=TermOrder('degrevlex', 2))
+-            sage: A2.<x,y,z> = FreeAlgebra(GF(5), 3)
+-            sage: R2 = A2.g_algebra({y*x:x*y-z, z*x:x*z+2*x, z*y:y*z-2*y}, order=TermOrder('degrevlex', 2))
+-            sage: A3.<x,y,z> = FreeAlgebra(GF(11), 3)
+-            sage: R3 = A3.g_algebra({y*x:x*y-z, z*x:x*z+2*x, z*y:y*z-2*y}, order=TermOrder('degrevlex', 2))
+-            sage: A4.<x,y,z> = FreeAlgebra(GF(13), 3)
+-            sage: R4 = A4.g_algebra({y*x:x*y-z, z*x:x*z+2*x, z*y:y*z-2*y}, order=TermOrder('degrevlex', 2))
++            sage: A2.<x,y,z> = FreeAlgebra(GF(5), 3)                                                         # not tested
++            sage: R2 = A2.g_algebra({y*x:x*y-z, z*x:x*z+2*x, z*y:y*z-2*y}, order=TermOrder('degrevlex', 2))  # not tested
++            sage: A3.<x,y,z> = FreeAlgebra(GF(11), 3)                                                        # not tested
++            sage: R3 = A3.g_algebra({y*x:x*y-z, z*x:x*z+2*x, z*y:y*z-2*y}, order=TermOrder('degrevlex', 2))  # not tested
++            sage: A4.<x,y,z> = FreeAlgebra(GF(13), 3)                                                        # not tested
++            sage: R4 = A4.g_algebra({y*x:x*y-z, z*x:x*z+2*x, z*y:y*z-2*y}, order=TermOrder('degrevlex', 2))  # not tested
+             sage: _ = gc.collect()
+             sage: foo = R1.gen(0)
+             sage: del foo
+             sage: del R1
+             sage: _ = gc.collect()
+-            sage: del R2
+-            sage: _ = gc.collect()
+-            sage: del R3
+-            sage: _ = gc.collect()
++            sage: del R2            # not tested
++            sage: _ = gc.collect()  # not tested
++            sage: del R3            # not tested
++            sage: _ = gc.collect()  # not tested
+         """
+         singular_ring_delete(self._ring)
+ 
+@@ -2886,7 +2888,8 @@ cpdef MPolynomialRing_libsingular new_CRing(RingWrap rw, base_ring):
      self.__ngens = rw.ngens()
      self.__term_order =  TermOrder(rw.ordering_string(), force=True)
  
@@ -720,10 +745,10 @@ index 74b8b82..beee5ad 100644
              //        block   1 : ordering dp
              //                  : names    x y
 diff --git a/src/sage/schemes/curves/projective_curve.py b/src/sage/schemes/curves/projective_curve.py
-index 592bb68..962821c 100644
+index 1091c29..4f5936e 100644
 --- a/src/sage/schemes/curves/projective_curve.py
 +++ b/src/sage/schemes/curves/projective_curve.py
-@@ -1938,7 +1938,7 @@ class ProjectivePlaneCurve_finite_field(ProjectivePlaneCurve_field):
+@@ -2001,7 +2001,7 @@ class ProjectivePlaneCurve_finite_field(ProjectivePlaneCurve_field):
              sage: C = Curve(f); pts = C.rational_points()
              sage: D = C.divisor([ (3, pts[0]), (-1,pts[1]), (10, pts[5]) ])
              sage: C.riemann_roch_basis(D)
