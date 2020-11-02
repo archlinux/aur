@@ -1,7 +1,7 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 
 pkgname=qqmusic-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="tencent qq music"
 arch=("x86_64")
@@ -9,10 +9,10 @@ url="https://y.qq.com/"
 license=("CC0-1.0")
 depends=('nss' 'libxss' 'gtk3' )
 # currently upload files to this server, as the license is CC0-1.0
-source=("qqmusic_${pkgver}_amd64.deb::https://share.ohthis.me/qqmusic/qqmusic_1.0.2_amd64.deb")
+source=("qqmusic_${pkgver}_amd64.deb::https://share.ohthis.me/qqmusic/qqmusic_${pkgver}_amd64.deb")
 
 
-sha512sums=('bcae1b51317b4c68c3386df916536b5ae77445da7af94085cab05f4eb0d2971316c1fbaa98508147721f62adcbd136b91b3a9efbb93f8347f4abb07122a6168f')
+sha512sums=('f9f926328cc83b32ce85469bedd1618d85a43f2e552f6f79dc57888f6f14854d3876165ee237ef122367920c9192a73e312d76400542522ed2a6f1bc4108dac4')
 
 package(){
     cd ${srcdir}
