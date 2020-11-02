@@ -1,43 +1,30 @@
 ## Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
 
 pkgname=octoprint
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=(any)
 url="http://octoprint.org/"
 license=('AGPL3')
 depends=(
-		python2-argh
-		python2-babel
-		python2-backports.ssl_match_hostname
-		python2-blinker
-		python2-chardet
-		python2-feedparser
-		python2-idna
-		python2-itsdangerous
-		python2-markdown
-		python2-markupsafe
-		'python2-netifaces>=0.10.6'
-		'python2-netifaces<0.11'
-		python2-pathtools
-		python2-psutil
-		python2-pyasn1
-		python2-pyserial
-		python2-pytz
-		python2-regex
-		python2-requests
-		python2-sarge
-		python2-six
-		python2-tornado
-		python2-urllib3
+		python-feedparser
+		python-filetype
+		python-frozendict
+		python-future
+		python-markdown
+		python-netaddr
+		python-regex
+		python-rsa
+		python-tornado
+		python-unidecode
+		python-wrapt
 		)
-makedepends=('python2-virtualenv')
+makedepends=('python-virtualenv')
 optdepends=('ffmpeg: timelapse support'
 			'curaengine: fast and robust engine for processing 3D models'
 			'mjpg-streamer: stream images from webcam'
 			'motion: motion detector which grabs images from video4linux devices and/or from webcams'
-			'python2-pybonjour: interface to Apple Bonjour and compatible DNS-SD libraries'
 			)
 provides=(octoprint)
 conflicts=('octoprint-venv')
@@ -71,7 +58,7 @@ prepare()
 }
 
 package() {
-	virtualenv2 --system-site-packages --no-setuptools --no-wheel $pkgdir/usr/lib/$pkgname
+	virtualenv --system-site-packages --no-setuptools --no-wheel $pkgdir/usr/lib/$pkgname
 
 	pushd $srcdir/$pkgname
 	$pkgdir/usr/lib/$pkgname/bin/pip install --install-option '--optimize=1' .
