@@ -5,14 +5,14 @@
 
 # Maintainer: Faye Jackson <justalittleepsilon@gmail.com>
 pkgname=pleroma
-pkgver=2.0.7
+pkgver=2.1.2
 pkgrel=1
 _tagver="v$pkgver"
 pkgdesc="The Pleroma Server (ActivityPub Compatible)"
 arch=(x86_64 aarch64 armv7l)
 license=('AGPL')
 depends=(ncurses)
-optdepends=('postgresql: Pleroma Database for storage')
+optdepends=('postgresql: Pleroma Database for storage' 'nginx: HTTPS proxy server' 'certbot: For Lets Encrypt Certificates')
 makedepends=(unzip curl)
 provides=(pleroma)
 conflicts=(pleroma-git)
@@ -20,7 +20,8 @@ conflicts=(pleroma-git)
 FLAVOUR=$(arch="$(uname -m)";if [ "$arch" = "x86_64" ];then arch="amd64";elif [ "$arch" = "armv7l" ];then arch="arm";elif [ "$arch" = "aarch64" ];then arch="arm64";else echo "Unsupported arch: $arch">&2;fi;if getconf GNU_LIBC_VERSION>/dev/null;then libc_postfix="";elif [ "$(ldd 2>&1|head -c 9)" = "musl libc" ];then libc_postfix="-musl";elif [ "$(find /lib/libc.musl*|wc -l)" ];then libc_postfix="-musl";else echo "Unsupported libc">&2;fi;echo "$arch$libc_postfix")
 
 source=("pleroma.zip::https://git.pleroma.social/api/v4/projects/2/jobs/artifacts/stable/download?job=$FLAVOUR" "pleroma.sysusers")
-md5sums=('SKIP' 'SKIP')
+md5sums=('11d156419ada1c307ff5e614ec5a44d3'
+         '0026c871dbffef09159f5fae7426868c')
 install=pleroma.install
 
 prepare() {
