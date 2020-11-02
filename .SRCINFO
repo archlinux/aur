@@ -1,6 +1,6 @@
 pkgbase = zulu-embedded-jdk8
 	pkgdesc = Zulu Embedded is a certified build of OpenJDK for Armv8/v7/v6 devices.
-	pkgver = 8.0.265
+	pkgver = 8.0.272
 	pkgrel = 1
 	url = https://www.azul.com/products/zulu-embedded
 	install = jdk.install
@@ -24,8 +24,8 @@ pkgbase = zulu-embedded-jdk8
 	provides = java-environment=8
 	provides = java-runtime=8
 	options = !strip
-	source = https://cdn.azul.com/zulu/bin/zulu8.48.0.53-ca-jdk8.0.265-linux_x64.tar.gz
-	sha256sums = ed32513524b32a83b3b388831c69d1884df5675bd5069c6d1485fd1a060be209
+	source = https://cdn.azul.com/zulu/bin/zulu8.50.0.21-ca-jdk8.0.272-linux_x64.tar.gz
+	sha256sums = 6033f82b582ebbfa2cb1b17d05fc723fa4683d74b8b23c218415f7b92a9acf04
 
 pkgname = zulu-embedded-jdk8
 
