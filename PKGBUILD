@@ -4,11 +4,12 @@ pkgbase='python-marshmallow-enum'
 pkgname=('python-marshmallow-enum')
 _module='marshmallow-enum'
 pkgver='1.5.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='Enum handling for Marshmallow'
 url='https://github.com/justanr/marshmallow_enum'
 depends=(
     'python'
+    'python-marshmallow'
 )
 optdepends=()
 makedepends=(

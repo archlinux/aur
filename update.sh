@@ -4,7 +4,9 @@ AUR_NAME=python-marshmallow-enum
 PROJ_NAME=marshmallow-enum
 DESCRIPTION="Enum handling for Marshmallow"
 URL=https://github.com/justanr/marshmallow_enum
-DEPENDS=()
+DEPENDS=(
+    python-marshmallow
+)
 LICENSE='MIT'
 ADDITIONAL=
 
