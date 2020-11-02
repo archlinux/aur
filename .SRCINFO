@@ -1,11 +1,12 @@
 pkgbase = transmission-trackers-git
 	pkgdesc = Automatically add trackers from a list to all torrents in Transmission
 	pkgver = r23.3a74746
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/blind-oracle/transmission-trackers
 	install = transmission-trackers.install
 	arch = any
 	license = unknown
+	makedepends = git
 	depends = systemd
 	depends = transmission-cli
 	depends = python-transmissionrpc
