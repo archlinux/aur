@@ -1,7 +1,7 @@
 pkgbase = cain-ncnn-vulkan-git
-	pkgdesc = cain, Depth-Aware Video Frame Interpolation implemented with ncnn library
+	pkgdesc = CAIN, Channel Attention Is All You Need for Video Frame Interpolation implemented with ncnn library
 	pkgver = r4.8561211
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/nihui/cain-ncnn-vulkan
 	arch = x86_64
 	arch = i686
