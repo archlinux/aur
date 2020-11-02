@@ -8,6 +8,7 @@ arch=('any')
 url="https://codeberg.org/nycex/${_pkgbasename}"
 license=('GPL3')
 depends=('cargo' 'unicode-character-database')
+makedepends=('git')
 source=(git+${url})
 sha256sums=('SKIP')
 

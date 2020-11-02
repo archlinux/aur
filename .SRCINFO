@@ -5,6 +5,7 @@ pkgbase = lookupunicode-git
 	url = https://codeberg.org/nycex/lookupunicode
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = cargo
 	depends = unicode-character-database
 	source = git+https://codeberg.org/nycex/lookupunicode
