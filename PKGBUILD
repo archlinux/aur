@@ -4,8 +4,8 @@
 
 pkgname=brackets-bin
 _pkgname=brackets
-pkgver=1.14
-pkgrel=2
+pkgver=1.14.1
+pkgrel=1
 pkgdesc="A code editor for HTML, CSS and JavaScript. "
 arch=("x86_64")
 url="http://brackets.io"
@@ -21,11 +21,11 @@ provides=("brackets=$pkgver")
 conflicts=('brackets' 'brackets-git')
 install=$pkgname.install
 
-source=("https://github.com/Hritik14/brackets-bin/raw/master/data.tar.xzaa" "https://github.com/Hritik14/brackets-bin/raw/master/data.tar.xzab" "https://github.com/Hritik14/brackets-bin/raw/master/data.tar.xzac")
-noextract=("data.tar.xzaa" "data.tar.xzab" "data.tar.xzac")
-sha512sums=('cf2633293f50152b8558245353ff0d7efc8bcbaaf0f29421e12d0b2bf4e72c1e623c7d591d8221c5eba87defec9ad02053694f4c16d3ef8acdd26eff7f948bcb' 'a88781f1ebeee735a993413f191214b6f229bd9b17fc2c0a1f54b57ed9277557a46227ef1d347e419c28535e4e4ff5fb881b75f1d48b0f4f05ef54e683f87ba8' '5ccaff0fde7d65bf6d3a99e4afa114e88e06496ee3c3f5292d87138e24f33be7efaf150612b1bd18766e77c750e8b5efca84804ba278714db07a70552b79dc61')
+source=("https://github.com/Hritik14/brackets-bin/raw/master/data.tar.xzaa" "https://github.com/Hritik14/brackets-bin/raw/master/data.tar.xzab")
+noextract=("data.tar.xzaa" "data.tar.xzab")
+sha512sums=('2094065e915650bccd9707334ab73b70dd0fcf3bfb397608329e58f91a58fa0cffe7855483c0e152cda4b6231f54918774a2d467efe719c14c19fbbef026a8d1' '0dd731232b642dfd0fe9eb7533fcfe2a32de5bb8ab1c72f458b3437db9f893b840fc3323f58240b2ec0ee6324c5cef45bdda05a763ecb442d02d75d5ab3cf200')
 
- 
+
 prepare() {
   cd $srcdir
 
@@ -60,6 +60,4 @@ package() {
 
   install -Dm4755 $srcdir/opt/brackets/chrome-sandbox \
     "$pkgdir/opt/brackets/chrome-sandbox"
-
-
 }
