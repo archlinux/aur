@@ -8,21 +8,20 @@
 
 pkgname='unetbootin'
 pkgver=681
-pkgrel=1
+pkgrel=2
 pkgdesc='Create bootable Live USB drives'
 arch=('x86_64')
 url='https://unetbootin.github.io'
 _url_source='https://github.com/unetbootin/unetbootin'
 license=('GPL3')
-depends=('mtools' 'p7zip' 'qt4' 'syslinux' 'zenity')
-#depends=('mtools' 'p7zip' 'qt5-base' 'syslinux' 'zenity') # qt5
+depends=('mtools' 'p7zip' 'qt4' 'syslinux')
 makedepends=('setconf')
 optdepends=('polkit: run unetbootin directly from menu')
 source=("${pkgname}-${pkgver}::${_url_source}/archive/${pkgver}.tar.gz"
         "${pkgname}.sh"
 				"org.archlinux.pkexec.${pkgname}.policy")
 sha256sums=('ec62a6321c39203a096d6a778b2f1518da815ece135e5eb95ba1e42e28ec240a'
-            'c3bfa4723c1834d608be97ecf7b0c6975f6d0f9af2358427e4c9aa2f6c58c2e3'
+            '6b99405a78ac4de80e3a20e766ce993f22c8a01e4ab50f952a10bdcc26effd3f'
             '118f154e2772ff0d50d22735418fb37c9a03ecd0a1bbf2c8a4a8ed48da64160c')
 
 prepare() {
@@ -31,11 +30,10 @@ prepare() {
 	sed -i '/^RESOURCES/d' "${pkgname}.pro"
 }
 
-# Update on qt5 release
 build() {
   cd "${pkgname}-${pkgver}/src/${pkgname}"
-  lupdate "${pkgname}.pro"
-  lrelease "${pkgname}.pro"
+  lupdate-qt4 "${pkgname}.pro"
+  lrelease-qt4 "${pkgname}.pro"
   qmake-qt4 "${pkgname}.pro" -config release "DEFINES += NOSTATIC" "RESOURCES -= ${pkgname}.qrc"
 	make
 }
