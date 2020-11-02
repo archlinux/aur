@@ -1,0 +1,26 @@
+pkgbase = dsd-louiserigherve-git
+	pkgdesc = Decoder for P25 Phase 1, D-STAR, NXDN/IDAS, ProVoice, DMR/MOTOTRBO, X2-TDMA, dPMR (LouisErigHerve's fork).
+	pkgver = 1.6.0.r109.g1599d5b
+	pkgrel = 1
+	url = https://github.com/LouisErigHerve/dsd
+	arch = x86_64
+	license = GPL2
+	license = ISC
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = itpp
+	depends = libsndfile
+	depends = mbelib
+	depends = portaudio
+	provides = dsd-louiserigherve
+	provides = dsd
+	conflicts = dsd-louiserigherve
+	conflicts = dsd
+	conflicts = dsd-git
+	source = dsd-louiserigherve::git+https://github.com/LouisErigHerve/dsd
+	sha256sums = SKIP
+
+pkgname = dsd-louiserigherve-git
+
