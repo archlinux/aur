@@ -1,6 +1,6 @@
 # Maintainer: desbma
 pkgname=cyanrip
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Fully featured CD ripping program'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('curl' 'ffmpeg' 'libcdio-paranoia' 'libmusicbrainz5')
 makedepends=('meson' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cyanreg/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('6fda9b3a4417e94821258c5a8ee6d6b68a930f1fa7743d245c116222888401f3c1ec967cba5162d270d78b363edcd82ded44e5681bbe85b5002bd061e2ab94bb')
+sha512sums=('4d86a6637e216fceeb1cb44e4640d8b4f0c93320e5ca06d51be27e3f6b5c9c6502d5c95074d181b244c6f8b0bbdff195de31e02d68eb3fcd5cbf0a84c1a57ba2')
 
 build() {
     cd "${pkgname}-${pkgver}"
