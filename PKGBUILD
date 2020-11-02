@@ -10,7 +10,7 @@ url="https://github.com/CadQuery/cadquery"
 license=('Apache')
 conflicts=(python-cadquery-git)
 depends=(python python-ocp python-ezdxf)
-checkdepends=(python-pytest)
+checkdepends=(python-pytest python-pytest-cov python-typing_extensions)
 source=("https://github.com/CadQuery/cadquery/archive/${pkgver}.tar.gz")
 sha256sums=('7e126628a3928af42f9a86f2f0efd3ea2b143f9f9c14603a26ac76c25d1596b1')
 
@@ -27,4 +27,8 @@ check() {
 package() {
   cd cadquery-${pkgver}
   python setup.py install --root="${pkgdir}/" --prefix=/usr --optimize=1 --skip-build
+
+  # don't package test dir
+  _i_dir="${pkgdir}/$(python -c 'import sys; print(sys.path[-1])')"
+  rm -rf "${_i_dir}/tests"
 }
