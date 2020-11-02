@@ -1,0 +1,16 @@
+pkgbase = gof5
+	pkgdesc = Open Source F5 VPN client
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/kayrus/gof5
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = go
+	depends = base
+	optdepends = 
+	source = gof5-0.0.7.tar.gz::https://github.com/kayrus/gof5/archive/v0.0.7.tar.gz
+	sha256sums = 403eeb870eeb800fcb0d9874999e1e5989cb81d560cd72f40329c20af5a95750
+
+pkgname = gof5
+
