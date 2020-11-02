@@ -1,14 +1,15 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
-pkgname=go-dsp-guitar
+pkgname=go-dsp-guitar-bin
 pkgver=1.6.1
 pkgrel=1
 pkgdesc="A cross-platform multichannel multi-effects processor for electric guitars and other instruments"
 arch=('x86_64')
 url='https://github.com/andrepxx/go-dsp-guitar'
 license=('Apache')
-depends=('glibc')
-depends=('jack')
+provides=('go-dsp-guitar' 'dsp-guitar')
+conflicts=('go-dsp-guitar' 'dsp-guitar' 'go-dsp-guitar-git')
+depends=('glibc' 'jack')
 makedepends=('openssl')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/andrepxx/go-dsp-guitar/releases/download/v${pkgver}/go-dsp-guitar-v${pkgver}.tar.gz")
 sha256sums=('a1bb02f5fe85d32a19422f1fac4c0aaa9019a7adff49a6e776d30ed774a286c3')
