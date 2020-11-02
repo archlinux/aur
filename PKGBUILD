@@ -2,7 +2,7 @@
 
 pkgname=dxvk-mingw
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
@@ -33,18 +33,8 @@ prepare() {
     local dxvk_cflags="$CFLAGS"
     local dxvk_ldflags="$LDFLAGS"
     # Filter known bad flags before applying optimizations
-    # If using -march=native and the CPU supports AVX, launching a d3d9
-    # game can cause an Unhandled exception. The cause seems to be the
-    # combination of AVX instructions and tree vectorization (implied by O3),
-    # all tested archictures from sandybridge to haswell are affected.
-    # Disabling AVX (and AVX2 as a side-effect).
-    # Relevant Wine issues
-    # https://bugs.winehq.org/show_bug.cgi?id=45289
-    # https://bugs.winehq.org/show_bug.cgi?id=43516
-    dxvk_cflags+=" -mno-avx"
     # Filter fstack-protector{ ,-all,-strong} flag for MingW.
     # https://github.com/Joshua-Ashton/d9vk/issues/476
-    #dxvk_cflags+=" -fno-stack-protector"
     dxvk_cflags="${dxvk_cflags// -fstack-protector*([\-all|\-strong])/}"
     # Adjust optimization level in meson arguments. This is ignored
     # anyway because meson sets its own optimization level.
@@ -55,11 +45,25 @@ prepare() {
     dxvk_cflags="${dxvk_cflags/ -fno-plt/}"
     dxvk_ldflags="${dxvk_ldflags/,-z,now/}"
     dxvk_ldflags="${dxvk_ldflags/,-z,relro/}"
+    # If using -march=native and the CPU supports AVX, launching a d3d9
+    # game can cause an Unhandled exception. The cause seems to be the
+    # combination of AVX instructions and tree vectorization (implied by O3),
+    # all tested archictures from sandybridge to haswell are affected.
+    # Disabling AVX (and AVX2 as a side-effect).
+    # Since Wine 5.16 AVX is supported. Testing showed 32bit applications
+    # crashing with AVX regardless, but 64bit applications worked just fine.
+    # So disable AVX only for the 32bit binaries and AVX2 for the 64bit.
+    # Relevant Wine issues
+    # https://bugs.winehq.org/show_bug.cgi?id=45289
+    # https://bugs.winehq.org/show_bug.cgi?id=43516
+    dxvk64_cflags="$dxvk_cflags -mno-avx2"
+    dxvk32_cflags="$dxvk_cflags -mno-avx"
+
     sed -i build-win64.txt \
-        -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
+        -e "s|@CARGS@|\'${dxvk64_cflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
     sed -i build-win32.txt \
-        -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
+        -e "s|@CARGS@|\'${dxvk32_cflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
 
     # Uncomment to enable dxvk async patch.
@@ -76,7 +80,6 @@ build() {
         --prefix "/usr/share/dxvk/x64" \
         --bindir "" --libdir "" \
         --buildtype "release" \
-        --optimization=3 \
         --strip \
         -Denable_tests=false
     ninja -C "build/x64" -v
@@ -86,7 +89,6 @@ build() {
         --prefix "/usr/share/dxvk/x32" \
         --bindir "" --libdir "" \
         --buildtype "release" \
-        --optimization=3 \
         --strip \
         -Denable_tests=false
     ninja -C "build/x32" -v
