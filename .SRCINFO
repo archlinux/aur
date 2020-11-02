@@ -5,6 +5,7 @@ pkgbase = python-booleanoperations
 	url = https://github.com/typemytype/booleanOperations
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	checkdepends = python-defcon
 	checkdepends = python-fontpens
 	makedepends = python-setuptools
