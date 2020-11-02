@@ -6,7 +6,7 @@ _name=league-gothic
 _fname=LeagueGothic
 pkgbase=$_name-font
 pkgname=(otf-$_name ttf-$_name)
-pkgver=1.600
+pkgver=1.601
 pkgrel=1
 epoch=1
 pkgdesc='A revival of an old classic, Alternate Gothic #1'
@@ -15,7 +15,7 @@ url="https://www.theleagueofmoveabletype.com/$_name"
 license=('OFL')
 groups=('lmt-fonts')
 source=("https://github.com/theleagueof/$_name/releases/download/$pkgver/$_fname-$pkgver.tar.xz")
-sha256sums=('d332ece52571ebdea768c57aa6adfd8b5e87cb84ee07b925ba3f93aef4949de5')
+sha256sums=('a1d9d3aaba2abda2791eaad03d51dbfd97aa6f6f2ea23c3b2b2b31f90d8cbeb5')
 
 package_otf-league-gothic() {
     provides=("$pkgbase")
