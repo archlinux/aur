@@ -1,7 +1,7 @@
 pkgbase = yandex-libffmpeg
-	pkgdesc = simlink libffmpeg for yandex-browser
+	pkgdesc = Install libffmpeg and simlink for yandex-browser
 	pkgver = 0.47.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iteufel/nwjs-ffmpeg-prebuilt
 	arch = x86_64
 	license = GPL

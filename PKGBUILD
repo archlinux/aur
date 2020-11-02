@@ -4,9 +4,9 @@
 
 pkgname=yandex-libffmpeg
 pkgver=0.47.2
-pkgrel=1
+pkgrel=2
 
-pkgdesc="simlink libffmpeg for yandex-browser"
+pkgdesc="Install libffmpeg and simlink for yandex-browser"
 arch=("x86_64")
 license=("GPL")
 depends=(gcc-libs)
