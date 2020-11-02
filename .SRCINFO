@@ -1,13 +1,13 @@
 pkgbase = octetos-coreutils
 	pkgdesc = Similar to coretils but is a C ++ API.
-	pkgver = 0.7.0
+	pkgver = 0.11.0
 	pkgrel = 1
-	url = https://github.com/azaeldevel/octetos-core.git
+	url = https://github.com/azaeldevel/octetos-coreutils.git
 	arch = x86_64
 	license = GPL
 	depends = octetos-core
-	source = https://github.com/azaeldevel/octetos-coreutils/archive/0.7.0-alpha.tar.gz
-	md5sums = 3ff3acda32f6f6e5f02ff0c8f4f00521
+	source = https://github.com/azaeldevel/octetos-coreutils/archive/0.11.0-alpha.tar.gz
+	md5sums = 6b4aca50889a405e026cd9b6e88a1b53
 
 pkgname = octetos-coreutils
 
