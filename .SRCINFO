@@ -1,6 +1,6 @@
 pkgbase = mamba
 	pkgdesc = A virtual MIDI keyboard and file player/recorder for ALSA/JACK
-	pkgver = 1.6
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://github.com/brummer10/Mamba
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = mamba
 	makedepends = libsmf
 	depends = cairo
 	optdepends = new-session-manager: for NSM support
-	source = https://github.com/brummer10/Mamba/releases/download/v1.6/Mamba_1.6.tar.gz
-	sha256sums = c2cb6b2caa8eb886ae837b70d0649b3f5c709e98d0b55053516b788a70da5a0f
+	source = https://github.com/brummer10/Mamba/releases/download/v1.7/Mamba_1.7.tar.gz
+	sha256sums = 354d9248dd2239947f50d09fc2d0d0c7c79f9ab6ea6034f6ab8e7ae83fea8632
 
 pkgname = mamba
 	depends = cairo

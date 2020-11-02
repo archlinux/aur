@@ -2,7 +2,7 @@
 
 _projectname=Mamba
 pkgname="${_projectname,,}"
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="A virtual MIDI keyboard and file player/recorder for ALSA/JACK"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ groups=('pro-audio')
 source=(
     "https://github.com/brummer10/${_projectname}/releases/download/v${pkgver}/${_projectname}_${pkgver}.tar.gz"
 )
-sha256sums=('c2cb6b2caa8eb886ae837b70d0649b3f5c709e98d0b55053516b788a70da5a0f')
+sha256sums=('354d9248dd2239947f50d09fc2d0d0c7c79f9ab6ea6034f6ab8e7ae83fea8632')
 
 
 prepare() {
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_projectname}_${pkgver}"
-  LDFLAGS="$LDFLAGS -z noexecstack" make
+  make
 }
 
 package() {
