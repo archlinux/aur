@@ -2,7 +2,7 @@
 # pkg: git
 pkgname=transmission-trackers-git
 pkgver=r23.3a74746
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically add trackers from a list to all torrents in Transmission"
 arch=('any')
 url="https://github.com/blind-oracle/transmission-trackers"
@@ -17,7 +17,7 @@ provides=('transmission-trackers')
 conflicts=('transmission-trackers')
 install=${pkgname%*-git}.install
 source=(
-	"git+https://github.com/blind-oracle/transmission-trackers.git"
+	"transmission-trackers::git+https://github.com/blind-oracle/transmission-trackers.git"
 	"transmission-trackers.service"
 	"transmission-trackers.timer"
 )
