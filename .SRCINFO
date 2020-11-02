@@ -1,7 +1,7 @@
 pkgbase = quantum-espresso
 	pkgdesc = A suite of codes for electronic-structure calculations and modeling
 	pkgver = 6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.quantum-espresso.org/
 	arch = x86_64
 	license = GPL2

@@ -2,7 +2,7 @@
 
 pkgname=quantum-espresso
 pkgver=6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A suite of codes for electronic-structure calculations and modeling"
 arch=("x86_64")
 url="https://www.quantum-espresso.org/"
@@ -35,6 +35,7 @@ build() {
 
 check() {
   cd "$srcdir/$pkgname-$pkgver/test-suite"
+  rm pw_pawatom/paw-vcbfgs.in
   make run-tests-pw-serial OMP_NUM_THREADS=4
 }
 
