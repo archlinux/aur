@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=effitask
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Graphical task manager, based on the todo.txt format'
 url="https://github.com/sanpii/$pkgname"
 arch=('x86_64')
@@ -23,4 +23,5 @@ package()
     cd "$pkgname-$pkgver"
 
     make install PREFIX="$pkgdir/usr"
+    install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
