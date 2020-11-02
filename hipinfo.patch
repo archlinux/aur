@@ -1,7 +1,7 @@
-diff --unified --recursive --text HIP-rocm-3.5.1/bin/hipconfig HIP-rocm-3.5.1.new/bin/hipconfig
---- HIP-rocm-3.5.1/bin/hipconfig	2020-06-16 11:44:26.000000000 -0400
-+++ HIP-rocm-3.5.1.new/bin/hipconfig	2020-06-22 20:44:28.932530458 -0400
-@@ -96,12 +96,12 @@
+diff --unified --recursive --text HIP-rocm-3.9.0/bin/hipconfig HIP-rocm-3.9.0.new/bin/hipconfig
+--- HIP-rocm-3.9.0/bin/hipconfig	2020-10-13 02:42:39.000000000 -0400
++++ HIP-rocm-3.9.0.new/bin/hipconfig	2020-11-02 17:13:56.119076102 -0500
+@@ -98,12 +98,12 @@
      $HIP_INFO_PATH= "$HIP_PATH/lib/.hipInfo"; # use actual file
  }
  #---
@@ -16,10 +16,10 @@ diff --unified --recursive --text HIP-rocm-3.5.1/bin/hipconfig HIP-rocm-3.5.1.ne
  $HIP_COMPILER = $ENV{'HIP_COMPILER'} // $hipInfo{'HIP_COMPILER'} // "hcc";
  $HIP_RUNTIME = $ENV{'HIP_RUNTIME'} // $hipInfo{'HIP_RUNTIME'} // "HCC";
  
-diff --unified --recursive --text HIP-rocm-3.5.1/CMakeLists.txt HIP-rocm-3.5.1.new/CMakeLists.txt
---- HIP-rocm-3.5.1/CMakeLists.txt	2020-06-16 11:44:26.000000000 -0400
-+++ HIP-rocm-3.5.1.new/CMakeLists.txt	2020-06-22 20:43:27.635570691 -0400
-@@ -106,6 +106,7 @@
+diff --unified --recursive --text HIP-rocm-3.9.0/CMakeLists.txt HIP-rocm-3.9.0.new/CMakeLists.txt
+--- HIP-rocm-3.9.0/CMakeLists.txt	2020-10-13 02:42:39.000000000 -0400
++++ HIP-rocm-3.9.0.new/CMakeLists.txt	2020-11-02 17:12:49.638464570 -0500
+@@ -138,6 +138,7 @@
      endif()
  endif()
  message(STATUS "HIP Platform: " ${HIP_PLATFORM})
@@ -27,7 +27,7 @@ diff --unified --recursive --text HIP-rocm-3.5.1/CMakeLists.txt HIP-rocm-3.5.1.n
  
  # Determine HIP_COMPILER
  # Either hcc or clang; default is hcc
-@@ -300,7 +301,6 @@
+@@ -332,7 +333,6 @@
  
      include_directories(${PROJECT_SOURCE_DIR}/include)
      add_subdirectory(rocclr)
@@ -35,7 +35,7 @@ diff --unified --recursive --text HIP-rocm-3.5.1/CMakeLists.txt HIP-rocm-3.5.1.n
  
  
  # set(ROCclr_CXX_FLAGS  "-hc -fno-gpu-rdc --amdgpu-target=gfx803 --amdgpu-target=gfx900 --amdgpu-target=gfx906 --amdgpu-target=gfx908 ")
-@@ -404,14 +404,15 @@
+@@ -436,14 +436,14 @@
      else()
          target_link_libraries(device INTERFACE host)
      endif()
@@ -47,22 +47,20 @@ diff --unified --recursive --text HIP-rocm-3.5.1/CMakeLists.txt HIP-rocm-3.5.1.n
  if(HIP_PLATFORM STREQUAL "hcc" OR HIP_PLATFORM STREQUAL "rocclr")
      add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/lpl_ca)
  endif()
-+
 +# Generate .hipInfo
 +file(WRITE "${PROJECT_BINARY_DIR}/.hipInfo" ${_buildInfo})
 +
  # Generate .hipVersion
  file(WRITE "${PROJECT_BINARY_DIR}/.hipVersion" ${_versionInfo})
  
-@@ -445,11 +446,6 @@
+@@ -482,9 +482,7 @@
  endif()
  
  # Install .hipInfo
 -if(HIP_PLATFORM STREQUAL "hcc" OR HIP_PLATFORM STREQUAL "rocclr")
 -    install(FILES ${PROJECT_BINARY_DIR}/.hipInfo DESTINATION lib)
 -endif()
--
--# Install .hipInfo
- install(FILES ${PROJECT_BINARY_DIR}/.hipInfo DESTINATION lib)
++install(FILES ${PROJECT_BINARY_DIR}/.hipInfo DESTINATION lib)
  
  # Install .hipVersion
+ install(FILES ${PROJECT_BINARY_DIR}/.hipVersion DESTINATION bin)

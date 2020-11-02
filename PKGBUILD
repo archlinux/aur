@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-nvcc
-pkgver=3.7.0
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
@@ -13,8 +13,8 @@ conflicts=('hip')
 _git='https://github.com/ROCm-Developer-Tools/HIP'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz"
         "hipinfo.patch")
-sha256sums=('757b392c3beb29beea27640832fbad86681dbd585284c19a4c2053891673babd'
-            'f94d8b2426d5f8eecd420698a2b7f3d66ddc0531afe313a572f0b644f6e45b64')
+sha256sums=('25ad58691456de7fd9e985629d0ed775ba36a2a0e0b21c086bd96ba2fb0f7ed1'
+            'bddced0c770848aaa44514986fed3fe1c01699dffe41d11767a5014f0ebfa69f')
 
 prepare() {
   cd "${srcdir}/HIP-rocm-$pkgver"
