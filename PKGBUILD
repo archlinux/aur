@@ -1,7 +1,7 @@
 # Maintainer: Daniel Appelt <daniel.appelt@gmail.com>
 # Contributor: nucularjohn <nucularjohn@gmail.com>
 _pkgbasename=open-stage-control
-pkgname=$_pkgbasename-node-git
+pkgname=$_pkgbasename-node
 pkgver=1.6.0
 pkgrel=1
 pkgdesc='A libre desktop OSC bi-directional control surface application (node-only package)'
@@ -61,6 +61,4 @@ package() {
   rsync -a dist/$_pkgbasename-node/ "$pkgdir/usr/share/$_pkgbasename-node"
 
   install -Dm755 "$_pkgbasename-node" "$pkgdir/usr/bin/$_pkgbasename-node"
-
-  echo $'\nPlease note that this package will be renamed to open-stage-control-node in the near future.\n'
 }

@@ -1,4 +1,4 @@
-pkgbase = open-stage-control-node-git
+pkgbase = open-stage-control-node
 	pkgdesc = A libre desktop OSC bi-directional control surface application (node-only package)
 	pkgver = 1.6.0
 	pkgrel = 1
@@ -17,5 +17,5 @@ pkgbase = open-stage-control-node-git
 	depends_i686 = gcc-libs
 	depends_x86_64 = gcc-libs-multilib
 
-pkgname = open-stage-control-node-git
+pkgname = open-stage-control-node
 
