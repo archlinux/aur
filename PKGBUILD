@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=xargo
 pkgver=0.3.21
-pkgrel=1
+pkgrel=2
 pkgdesc='Effortless cross compilation of Rust programs to custom bare-metal targets like ARM Cortex-M'
 url="https://github.com/japaric/$pkgname"
 arch=('x86_64')
@@ -24,4 +24,5 @@ package()
 
     install --mode 755 --directory "$pkgdir/usr/bin"
     install --mode 755 target/release/xargo "$pkgdir/usr/bin"
+    install -Dm 644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
