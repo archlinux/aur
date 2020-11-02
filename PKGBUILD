@@ -2,7 +2,7 @@
 # pkg: git
 pkgname="openbangla-keyboard-git"
 pkgver=2.0.0.r6.g6f6163d
-pkgrel=1
+pkgrel=2
 pkgdesc="An OpenSource, Unicode compliant Bengali Input Method"
 arch=('x86_64')
 url="https://openbangla.github.io"
@@ -16,7 +16,7 @@ optdepends=('ttf-indic-otf: fonts for Bangla and other Indic scripts'
 install="${pkgname%*-git}.install"
 source=(
     "${pkgname%*-git}::git+https://github.com/OpenBangla/OpenBangla-Keyboard"
-    "git+https://github.com/OpenBangla/riti"
+    "riti::git+https://github.com/OpenBangla/riti"
 )
 sha256sums=('SKIP'
             'SKIP')
