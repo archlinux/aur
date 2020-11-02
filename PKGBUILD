@@ -4,7 +4,7 @@
 
 pkgname=waifu2x-ncnn-vulkan-git
 pkgver=20200818.r1.gb152fc7
-pkgrel=1
+pkgrel=2
 pkgdesc='waifu2x converter ncnn version'
 url=https://github.com/nihui/waifu2x-ncnn-vulkan
 license=(MIT)
@@ -37,7 +37,8 @@ build() {
 package() {
     install -Dm755 -t "${pkgdir}/usr/bin" build/${pkgname%-git}
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ${pkgname%-git}/LICENSE
-    for f in "${pkgname%-git}"/models/models-*/*; do
-        install -Dm644 -t "${pkgdir}/usr/share/${pkgname%-git}" "$f"
+    cd "${srcdir}/waifu2x-ncnn-vulkan/models"
+    for f in models-*/*; do
+        install -Dm 644 "$f" ${pkgdir}/usr/share/waifu2x-ncnn-vulkan/"$f"
     done
 }
