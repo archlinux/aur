@@ -1,14 +1,14 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=cargo-flash
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="A cargo extension for programming microcontrollers"
 url="https://probe.rs/"
 arch=("x86_64")
 license=("MIT" "Apache")
 depends=("cargo")
 source=("$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=('32896d7a1162350b3b0dd82b83e181eb072b6e7c73dc959d98a0a573407352fb')
+sha256sums=('8daf6a97ddccd58c141d9f4b43da7c1724bab226de118da7b7e302b7d49bd265')
 
 build()
 {
