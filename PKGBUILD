@@ -20,7 +20,8 @@ _cmakeopts=('-D CMAKE_BUILD_TYPE=Release'
             '-D EIGENSPARSE=ON'
             '-D BUILD_SHARED_LIBS=ON'
             '-D BUILD_TESTING=OFF'
-            '-D BUILD_EXAMPLES=OFF')
+            '-D BUILD_EXAMPLES=OFF'
+            '-D BUILD_BENCHMARKS=OFF')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
