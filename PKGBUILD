@@ -1,24 +1,17 @@
 _pkgname=qwikaccess
 pkgname=${_pkgname}-git
-pkgver=0.0.1.r35.67f65ca
+pkgver=0.0.1.r65.ae84897
 pkgrel=1
 pkgdesc="A point and click Qt GUI for scripts we use frequently."
 arch=('any')
 url="https://github.com/librewish/qwikaccess"
 license=('GPL3')
-depends=('qt5-base' 'polkit' 'libnotify' 'bluez-utils' 'playerctl' 'libpulse' 'brightnessctl')
+depends=('qt5-base' 'polkit' 'libnotify' 'libpulse' 'brightnessctl' 'inotify-tools' 'ffmpeg')
 optdepends=(
-	'ffmpeg: for screenshot & audio,screen,screencam recording'
-	'v4l-utils: for camera'
-	'xorg-xrdb: for autohidpi'
 	'xorg-xrandr: for screen rotation'
 	'xorg-xinput: for autorotation'
-	'inotify-tools: for autorotation'
 	'iio-sensor-proxy: for autorotation'
 	'redshift: for night mode'
-	'networkmanager: for wifi and hotspot'
-	'connman: for wifi and hotspot'
-	'util-linux: for airplane mode'
 	'xdg-utils: for lock screen (xdg-screensaver lock)'
 	'systemd: for leave commands and gps services'
 	'wmctrl: for screencam ffplay to be on above all windows'
