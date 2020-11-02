@@ -1,6 +1,6 @@
 pkgbase = openmusic-bin
 	pkgdesc = A visual programming language designed for music composition
-	pkgver = 6.16
+	pkgver = 6.17
 	pkgrel = 1
 	url = http://repmus.ircam.fr/openmusic/
 	install = openmusic.install
@@ -16,8 +16,8 @@ pkgbase = openmusic-bin
 	provides = openmusic
 	conflicts = openmusic
 	options = !strip
-	source = https://github.com/openmusic-project/OM6/releases/download/v6.16/OM_6.16.tar.bz2
-	sha256sums = 14214fcc6abf05383c2ec06bbe563e31d7ea079d94e9d3223d45a8ef8a96cc96
+	source = https://github.com/openmusic-project/OM6/releases/download/v6.17/OM_6.17.tar.bz2
+	sha256sums = 4c8fe14208be28f2ef8ec846b5c651decb399d64adf8667dc2fbce9b348dd5ed
 
 pkgname = openmusic-bin
 
