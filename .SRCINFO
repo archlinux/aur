@@ -1,6 +1,6 @@
 pkgbase = gr-foo
 	pkgdesc = gnuradio custom blocks by bastibl
-	pkgver = 0236c7d
+	pkgver = e17edbd
 	pkgrel = 1
 	url = https://github.com/bastibl/gr-foo
 	arch = any

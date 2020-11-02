@@ -1,7 +1,7 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
 
 pkgname='gr-foo'
-pkgver=0236c7d
+pkgver=e17edbd
 pkgrel=1
 pkgdesc="gnuradio custom blocks by bastibl"
 arch=('any')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "$_gitname"
-  git checkout master
+  git checkout maint-3.8
   mkdir build && cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr ../
   make
