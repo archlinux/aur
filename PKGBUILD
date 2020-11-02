@@ -3,7 +3,7 @@
 
 _pkgname=xfwm4
 pkgname=${_pkgname}-devel
-pkgver=4.15.1
+pkgver=4.15.3
 pkgrel=1
 pkgdesc="Xfce window manager (development snapshot)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!libtool')
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('8494d1c79c8254c2e222cb8247dce928e5bb7254bfd53202f6a437f3fbaecac4')
+sha256sums=('7a0121557812bce60be76af8050ec07e6d1fd06b3b120412bf21a5f3bf80c3a1')
 
 build() {
   cd "${_pkgname}-${pkgver}"
