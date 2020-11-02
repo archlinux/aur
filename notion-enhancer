@@ -1,6 +1,19 @@
+#colored warning
+warn() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
 post_install() {
     echo "Applying notion-enhancer automatically..."
     notion-enhancer apply -y
+    warn "The installer will own the files necessary for it to work with chmod -R a+wr"
+	chmod -R a+wr /usr/lib/node_modules/notion-enhancer/ /opt/notion-app/
+	chmod a+wr   /usr/share/applications/notion-app.desktop /usr/bin/notion-app
 }
 
 post_upgrade() {
@@ -14,5 +27,6 @@ post_upgrade() {
 
 pre_remove() {
     echo "Disabling notion-enhancer..."
-	notion-enhancer remove -y
+    warn "The data folder will NOT be deleted"
+	notion-enhancer remove -n
 }

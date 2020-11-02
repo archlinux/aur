@@ -1,11 +1,11 @@
 # Maintainer: Nek.12 <vaizin.nikita@gmail.com>
 pkgname='notion-enhancer'
-pkgver=0.9.1
-pkgrel=1
+pkgver=0.10.0
+pkgrel=2
 pkgdesc="An enhancer/customiser for the all-in-one productivity workspace notion.so"
 arch=('any')
 url="https://github.com/dragonwocky/notion-enhancer"
-license=(MIT)
+license=('MIT')
 groups=()
 depends=('notion-app>=1:2.0.7-3.2'
          'nodejs>=14.8.0-1'
@@ -17,9 +17,10 @@ replaces=()
 backup=()
 options=()
 install=$pkgname
-source=("https://registry.npmjs.org/notion-enhancer/-/$pkgname-$pkgver.tgz")
+source=("https://registry.npmjs.org/notion-enhancer/-/$pkgname-$pkgver.tgz"
+        "reapply-notion-enhancer.hook")
 noextract=("${pkgname}-${pkgver}.tgz" )
-md5sums=('e5567054115ca1e12d3bf85d9e1b7d6a')
+md5sums=('f1b3d3346846970feed95302bd654da6' 'b7bf09c180c52d43e569fa1165970f40') #tgz, hook
 package() {
     npm install --ignore-scripts -g --user root --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
 
@@ -36,4 +37,7 @@ package() {
 	jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
 	mv "$tmppackage" "$pkgjson"
 	chmod 644 "$pkgjson"
+
+	#add pacman hooks
+	install -Dm 644 "${srcdir}/reapply-notion-enhancer.hook" -t "${pkgdir}/usr/share/libalpm/hooks"
 }

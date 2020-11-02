@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = notion-app
+[Action]
+Description = Reapplying notion-enhancer...
+When = PostTransaction
+Exec = /usr/bin/notion-enhancer apply -n
+Depends = notion-enhancer
+Depends = notion-app
