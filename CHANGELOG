@@ -1,5 +1,5 @@
 Version 6.9
-TODO
+02 November 2020
     - fix python 3.9 issues #42 #44
     - fix regex warning #45
     - add usage of Python keyring package in addition to gnomekeyring (#43)
