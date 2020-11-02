@@ -3,15 +3,15 @@
 
 pkgname=python-prov
 _pypiname=${pkgname/python-/}
-pkgver=1.5.3
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="A library for W3C Provenance Data Model supporting PROV-JSON, PROV-XML and PROV-O RDF"
 arch=('any')
 url='https://pypi.python.org/pypi/prov/'
 license=('MIT')
 depends=('python-lxml' 'python-networkx' 'python-dateutil' 'python-six' 'python-pydot' 'python-rdflib')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trungdong/${_pypiname}/archive/${pkgver}.tar.gz")
-sha1sums=('462034925acbcd458b2e5b45063bf4a2a5a97c4d')
+sha1sums=('b54d3f2c9c28cc17a9111583ad64e1b0e33a7b43')
 
 build() {
 
