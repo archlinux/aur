@@ -1,0 +1,26 @@
+pkgbase = python-rlgear-git
+	pkgdesc = Makes setting up RL projects with Rllib a bit more turn-key
+	pkgver = r25.957ebb7
+	pkgrel = 1
+	url = https://github.com/esquires/rlgear
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-git-python
+	depends = python-tabulate
+	depends = python-pandas
+	depends = python-matplotlib
+	depends = python-gym
+	depends = python-dataclasses
+	depends = python-ray
+	depends = python-crc32c
+	depends = python-requests
+	depends = python-dm-tree
+	depends = python-lz4
+	source = rlgear::git+https://github.com/esquires/rlgear
+	sha256sums = SKIP
+
+pkgname = python-rlgear-git
+
