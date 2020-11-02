@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=cargo-spellcheck
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Checks all your documentation for spelling mistakes"
 url="https://github.com/drahnr/$pkgname"
 arch=("x86_64")
@@ -22,4 +22,5 @@ package()
     cd "$srcdir/$pkgname-$pkgver"
 
     install -Dm 755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm 644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
