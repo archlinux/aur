@@ -1,3 +1,9 @@
+Version 6.9
+02 November 2020
+    - fix python 3.9 issues #42 #44
+    - fix regex warning #45
+    - add usage of Python keyring package in addition to gnomekeyring (#43)
+
 Version 6.8
 07 October 2020
     - fix #37: update copyright date and notices

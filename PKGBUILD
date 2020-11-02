@@ -1,10 +1,10 @@
-# Maintainer :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
+# Maintainer :  Kr1ss  $(tr +- .@ <<<'<kr1ss+x-yandex+com>')
 
 
 pkgname=getmail6
 
-pkgver=6.8
-pkgrel=2
+pkgver=6.9
+pkgrel=1
 
 pkgdesc='POP3 mail retriever with reliable Maildir and command delivery; Python 3 port'
 arch=('any')
@@ -16,10 +16,12 @@ conflicts=('getmail')
 
 makedepends=('git')
 depends=('python-chardet')
+optdepends=('python-keyring: secure password store'
+            'python-keyrings-alt: alternative backends')
 
 changelog=CHANGELOG
 source=("$pkgname-$pkgver.tgz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('d2246def488a3ae8a589d0f371867e1d74fc15c72e049bc023a885b1f684346937a8b44afaa4350b4a9f6589228f10ec7b86726c8e007894a96e8f003490a859')
+b2sums=('90c6580391c2d0f038d7011f9873eedce009a50edf44923e78dd6547d86bf00398ac539dedba000925dd4b5f125d7f1ef23e3ca47101d25ad2780f7465bf7e16')
 
 
 build() {
