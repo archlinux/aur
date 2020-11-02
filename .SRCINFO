@@ -1,16 +1,16 @@
 pkgbase = exciting
-	pkgdesc = Full-potential all-electron density-functional-theory package implementing the families of linearized augmented planewave methods.
-	pkgver = 7
+	pkgdesc = A full-potential all-electron density-functional-theory package
+	pkgver = 7.14
 	pkgrel = 1
 	url = http://exciting-code.org
 	arch = x86_64
 	license = GPL
-	depends = gcc-fortran
-	depends = blas
-	depends = openmp
-	depends = openmpi
-	source = http://exciting.wdfiles.com/local--files/nitrogen/exciting.nitrogen.tar.gz
-	md5sums = 8447e7b325ce3f00f90c7ab8781b889c
+	depends = scalapack
+	depends = arpack
+	source = http://exciting.wdfiles.com/local--files/nitrogen-14/exciting.nitrogen-14.tar.gz
+	source = make.inc
+	sha256sums = a7feaffdc23881d6c0737d2f79f94d9bf073e85ea358a57196d7f7618a0a3eff
+	sha256sums = 30503a36da77ee97fd7c6beb4445b1215915fad41e4714368b5584866131e5fe
 
 pkgname = exciting
 
