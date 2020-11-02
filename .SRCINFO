@@ -6,7 +6,6 @@ pkgbase = go-dsp-guitar-bin
 	arch = x86_64
 	license = Apache
 	makedepends = openssl
-	depends = glibc
 	depends = jack
 	provides = go-dsp-guitar
 	provides = dsp-guitar

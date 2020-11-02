@@ -9,13 +9,13 @@ url='https://github.com/andrepxx/go-dsp-guitar'
 license=('Apache')
 provides=('go-dsp-guitar' 'dsp-guitar')
 conflicts=('go-dsp-guitar' 'dsp-guitar' 'go-dsp-guitar-git')
-depends=('glibc' 'jack')
+depends=('jack')
 makedepends=('openssl')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/andrepxx/go-dsp-guitar/releases/download/v${pkgver}/go-dsp-guitar-v${pkgver}.tar.gz")
 sha256sums=('a1bb02f5fe85d32a19422f1fac4c0aaa9019a7adff49a6e776d30ed774a286c3')
 
 prepare() {
-  cd "${pkgname}"
+  cd "${pkgname%-bin}"
   rm -rf keys
   mkdir -p keys
   openssl genrsa -out keys/private.pem 4096
@@ -23,13 +23,13 @@ prepare() {
 }
 
 package() {
-  cd "${pkgname}"
-  install -Dm755 dsp-linux-amd64 "${pkgdir}/opt/${pkgname}/go-dsp-guitar"
-  cp -R config "${pkgdir}/opt/${pkgname}/"
-  cp -R ir "${pkgdir}/opt/${pkgname}/"
-  cp -R keys "${pkgdir}/opt/${pkgname}/"
-  cp -R webroot "${pkgdir}/opt/${pkgname}/"
+  cd "${pkgname%-bin}"
+  install -Dm755 dsp-linux-amd64 "${pkgdir}/opt/${pkgname%-bin}/go-dsp-guitar"
+  cp -R config "${pkgdir}/opt/${pkgname%-bin}/"
+  cp -R ir "${pkgdir}/opt/${pkgname%-bin}/"
+  cp -R keys "${pkgdir}/opt/${pkgname%-bin}/"
+  cp -R webroot "${pkgdir}/opt/${pkgname%-bin}/"
   install -d "${pkgdir}/usr/bin/"
-  ln -s /opt/${pkgname}/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+  ln -s /opt/${pkgname%-bin}/${pkgname%-bin} "${pkgdir}/usr/bin/${pkgname%-bin}"
   chmod o+r "${pkgdir}/opt/go-dsp-guitar/keys/private.pem"
 }
