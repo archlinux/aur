@@ -1,58 +1,43 @@
-# Maintainer: Mitch Bigelow <ipha00@gmail.com>
+# Maintainer: katt <magunasu.b97@gmail.com>
+# Contributor: Mitch Bigelow <ipha00@gmail.com>
 # Contributor: Utkan Güngördü <utkan@freeconsole.org>
 
 pkgname=waifu2x-ncnn-vulkan-git
-pkgver=20200606.r0.gcd12dff
+pkgver=20200818.r1.gb152fc7
 pkgrel=1
-pkgdesc="waifu2x converter ncnn version, runs fast on intel / amd / nvidia GPU with vulkan"
-url="https://github.com/nihui/waifu2x-ncnn-vulkan"
-license=('MIT')
-depends=('vulkan-icd-loader' 'vulkan-driver')
-makedepends=('git' 'cmake' 'glslang' 'vulkan-headers')
-conflicts=('waifu2x-ncnn-vulkan')
-provides=('waifu2x-ncnn-vulkan')
-arch=('i686' 'x86_64')
-source=(
-    "git://github.com/nihui/waifu2x-ncnn-vulkan.git"
-)
-sha256sums=(
-    'SKIP'
-)
+pkgdesc='waifu2x converter ncnn version'
+url=https://github.com/nihui/waifu2x-ncnn-vulkan
+license=(MIT)
+depends=(vulkan-icd-loader libwebp)
+makedepends=(git cmake glslang vulkan-headers ncnn)
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
+arch=(i686 x86_64)
+source=(git+"${url}".git)
+md5sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/waifu2x-ncnn-vulkan"
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git -C ${pkgname%-git} describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "${srcdir}/waifu2x-ncnn-vulkan"
-
-    # init ncnn submodule
-    git submodule update --init --recursive
-
     # Fix default model path
-    sed -i 's|path_t model = PATHSTR("models-cunet")|path_t model = PATHSTR("/usr/share/waifu2x-ncnn-vulkan/models-cunet")|' src/main.cpp
+    sed -i 's|path_t model = PATHSTR("models-cunet")|path_t model = PATHSTR("/usr/share/waifu2x-ncnn-vulkan/models-cunet")|' "${pkgname%-git}"/src/main.cpp
 }
 
 build() {
-    cd "${srcdir}/waifu2x-ncnn-vulkan/src"
-    mkdir -p build
-    cd build
-    cmake \
+    cmake -B build -S "${pkgname%-git}"/src \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        ..
-    make
+        -DGLSLANG_TARGET_DIR=/usr/lib/cmake \
+        -DUSE_SYSTEM_NCNN=on \
+        -DUSE_SYSTEM_WEBP=on
+    cmake --build build
 }
 
 package() {
-
-    cd "${srcdir}/waifu2x-ncnn-vulkan"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-    install -Dm755 "src/build/waifu2x-ncnn-vulkan" "${pkgdir}/usr/bin/waifu2x-ncnn-vulkan"
-
-    cd "${srcdir}/waifu2x-ncnn-vulkan/models"
-    for f in models-*/*; do
-        install -Dm 644 "$f" ${pkgdir}/usr/share/waifu2x-ncnn-vulkan/"$f"
+    install -Dm755 -t "${pkgdir}/usr/bin" build/${pkgname%-git}
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ${pkgname%-git}/LICENSE
+    for f in "${pkgname%-git}"/models/models-*/*; do
+        install -Dm644 -t "${pkgdir}/usr/share/${pkgname%-git}" "$f"
     done
 }
