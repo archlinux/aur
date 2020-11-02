@@ -1,0 +1,19 @@
+pkgbase = verco-git
+	pkgdesc = Simple Git/Hg tui client focused on keyboard shortcuts (git)
+	pkgver = 5.5.1.r0.g287c5f9
+	pkgrel = 1
+	url = https://github.com/matheuslessarodrigues/verco
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	optdepends = git: support for git repositories
+	optdepends = mercurial: support for mercurial repositories
+	provides = verco
+	conflicts = verco
+	conflicts = verco-bin
+	source = git+https://github.com/matheuslessarodrigues/verco
+	sha512sums = SKIP
+
+pkgname = verco-git
+
