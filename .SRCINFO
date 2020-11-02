@@ -1,12 +1,13 @@
 pkgbase = openaudible-bin
 	pkgdesc = OpenAudible
 	pkgver = 2.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openaudible.org
 	arch = x86_64
 	license = Apache
 	depends = java-runtime-headless
 	depends = desktop-file-utils
+	depends = webkit2gtk
 	options = !strip
 	options = !emptydirs
 	source = https://github.com/openaudible/openaudible/releases/download/v2.3.5/OpenAudible_2.3.5_x86_64.deb
