@@ -6,17 +6,17 @@ pkgrel=1
 pkgdesc='Desktop tools for sabnzbd.'
 arch=('any')
 license=('GPL')
-
+depends=('python-gobject')
 optdepends=('sabnzbd: usenet downloader')
-
 install='sabnzbd.install'
-
-source=('sabnzbd.desktop'
-        'sabnzbd.confd'
-        'sabnzbd'
-        'nzb.png'
-        'sabnzbd.png'
-        'x-nzb.xml')
+source=(
+  'sabnzbd.desktop'
+  'sabnzbd.confd'
+  'sabnzbd'
+  'nzb.png'
+  'sabnzbd.png'
+  'x-nzb.xml'
+)
 
 sha256sums=('4e7aaa06e871196a66fe678977bf5715fb8dfdd717ebb62345a1857967b3c978'
             '8462203454d488b5d4f7beb85e61da2efa42d3dffa465f3bf16a95abe0bc7c0a'

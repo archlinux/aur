@@ -5,6 +5,7 @@ pkgbase = sabnzbd-desktop
 	install = sabnzbd.install
 	arch = any
 	license = GPL
+	depends = python-gobject
 	optdepends = sabnzbd: usenet downloader
 	source = sabnzbd.desktop
 	source = sabnzbd.confd
