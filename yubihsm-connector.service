@@ -1,0 +1,12 @@
+[Unit]
+Description=YubiHSM connector
+Documentation=https://developers.yubico.com/YubiHSM2/
+After=network-online.target
+Wants=network-online.target systemd-networkd-wait-online.service
+
+[Service]
+ExecStart=/usr/bin/yubihsm-connector -c /etc/yubihsm-connector.yaml
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target

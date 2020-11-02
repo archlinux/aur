@@ -1,23 +1,27 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=yubihsm2-sdk
 pkgver=2019.12
-pkgrel=2
-pkgdesc='YubiHSM2 SDK'
-url='https://developers.yubico.com/YubiHSM2/Releases/'
+pkgrel=3
+pkgdesc="YubiHSM2 SDK"
+url="https://developers.yubico.com/YubiHSM2/Releases/"
 arch=(x86_64)
-license=(Apache 'custom:https://www.yubico.com/support/terms-conditions/yubico-license-agreement/')
+license=(Apache "custom:https://www.yubico.com/support/terms-conditions/yubico-license-agreement/")
 # bind contains pkcs11.h
 # libusb contains libusb-1.0.so
 # openssl contains libcrypto.so
-depends=(bind libusb openssl)
+depends=(bind curl libusb)
 
 source=(
 	"https://developers.yubico.com/YubiHSM2/Releases/yubihsm2-sdk-2019-12-fedora31-amd64.tar.gz"
 	"70-yubihsm2.rules"
+	"yubihsm-connector.service"
+	"yubihsm-connector.yaml"
 )
 sha256sums=(
-	"1d3006b444c473040abc3f715c46b18b4a5a4b73ae7a592bbb3092a6779c004c"
-	"13cc09150fe3b03665f864f86a5f8057259cc41a014d3631ca13c8c7b0445d2a"
+    "1d3006b444c473040abc3f715c46b18b4a5a4b73ae7a592bbb3092a6779c004c"
+    "13cc09150fe3b03665f864f86a5f8057259cc41a014d3631ca13c8c7b0445d2a"
+    "SKIP"
+    "SKIP"
 )
 
 prepare() {
@@ -72,4 +76,9 @@ package() {
   # NB: /usr/lib/udev/rules.d/30-systemd-udev-reload.hook a triggers on installation
   # of this file, so we don't need additional post_{install,upgrade} scripts
   install -m644 -Dt "$pkgdir/usr/lib/udev/rules.d" 70-yubihsm2.rules
+
+  # sample systemd service
+  install -Dm644 yubihsm-connector.service -t $pkgdir/usr/lib/systemd/system
+  install -Dm644 yubihsm-connector.yaml -t $pkgdir/etc
+
 }

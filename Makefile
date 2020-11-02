@@ -2,7 +2,7 @@ build:
 	makepkg -f
 
 install:
-	sudo pacman --noconfirm -U yubihsm2-sdk-*.pkg.tar.*
+	yes | makepkg -i
 
 clean:
 	rm -rf pkg src

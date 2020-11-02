@@ -1,0 +1,10 @@
+cert: ""
+enable-host-whitelist: false
+host-whitelist:
+- localhost
+- localhost.
+- 127.0.0.1
+- '[::1]'
+key: ""
+listen: localhost:12345
+serial: ""
