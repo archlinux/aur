@@ -1,0 +1,19 @@
+pkgbase = excalidraw-desktop-git
+	pkgdesc = Excalidraw Desktop - Git Version
+	pkgver = r162.2e70a8c
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = yarn
+	makedepends = asar
+	source = excalidraw.sh
+	source = excalidraw.desktop
+	source = git+https://github.com/excalidraw/excalidraw-desktop.git
+	sha256sums = a1def7fb363218763bc21df048eeb79d4b3140c7d70394e94e7d28e6363ac9ee
+	sha256sums = 2ea68cdc03344fb8dbdda8f04242f931c89ce90b4715a684e7b3e89bbe2d4fbf
+	sha256sums = SKIP
+
+pkgname = excalidraw-desktop-git
+

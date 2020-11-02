@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Excalidraw
+Comment=Virtual whiteboard for sketching hand-drawn like diagrams
+Exec=/usr/bin/excalidraw
+Icon=/usr/share/excalidraw-desktop/icon.png
+Terminal=false
+Type=Application
+Categories=Application;Office;
