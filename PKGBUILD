@@ -2,7 +2,7 @@
 
 pkgname=go-dsp-guitar-bin
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform multichannel multi-effects processor for electric guitars and other instruments"
 arch=('x86_64')
 url='https://github.com/andrepxx/go-dsp-guitar'
