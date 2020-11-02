@@ -3,7 +3,7 @@
 _plug=waifu2x-caffe
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r14.1.g89f5401
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (NVIDIA users only)(static libcaffe)(GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=173673'
@@ -21,7 +21,6 @@ depends=('vapoursynth'
          )
 makedepends=('git'
              'boost'
-             'gcc8'
              'meson'
              )
 provides=("vapoursynth-plugin-${_plug}")
@@ -41,9 +40,10 @@ pkgver() {
 prepare() {
   mkdir -p fakeroot build
 
-  # CUDA 10.1.x requires gcc8
-  sed -e '/CUSTOM_CXX/s/^# //' \
-      -e '/CUSTOM_CXX/s/$/-8/' \
+  # CUDA 11.1.x not support compute_30 (Kepler boards)
+  # CUDA 11.1.x add support to new boards (Ampere boards)
+  sed -e 's|-gencode arch=compute_30,code=sm_30||g' \
+      -e 's|-gencode arch=compute_75,code=compute_75|-gencode arch=compute_80,code=sm_80 \\\n\t\t-gencode arch=compute_86,code=sm_86|g' \
       -i caffe/Makefile.config
 
   # set CUDA directory
@@ -55,6 +55,14 @@ prepare() {
       -e 's| /usr/local/lib||g' \
       -i caffe/Makefile.config
 
+  # Disable cuDNN due a not already support cuDNN 8
+  sed -e '/USE_CUDNN/s/^/#/' \
+      -i caffe/Makefile.config
+
+  # c++11 -> c++14
+  sed 's|c++11|c++14|g' \
+      -i caffe/Makefile
+
   cd "${_plug}"
 
   # rename models folder
@@ -63,7 +71,7 @@ prepare() {
 
 build() {
   cd caffe
-  make lib
+  NVCC_APPEND_FLAGS="-Wno-deprecated-gpu-targets" make lib
 
   install -Dm644 build/lib/libcaffe.a "${srcdir}/fakeroot/lib/libcaffe.a"
   cp -R include "${srcdir}/fakeroot"
