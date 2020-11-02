@@ -3,7 +3,7 @@
 
 pkgname=passwall-server-git
 pkgdesc="Core backend infrastructure of the PassWall platform (git)"
-pkgver=1.1.2.r32.g9670799
+pkgver=1.1.2.r39.gf2d1064
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/passwall/passwall-server"
