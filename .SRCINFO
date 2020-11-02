@@ -1,0 +1,18 @@
+pkgbase = vim-markdown-preview-git
+	pkgdesc = markdown preview plugin for (neo)vim
+	pkgver = r138.94101ef
+	pkgrel = 1
+	url = https://github.com/iamcco/markdown-preview.nvim
+	arch = any
+	license = unknown
+	makedepends = yarn
+	makedepends = git
+	depends = vim
+	depends = nodejs
+	provides = vim-markdown-preview
+	conflicts = vim-markdown-preview
+	source = git+https://github.com/iamcco/markdown-preview.nvim.git
+	sha256sums = SKIP
+
+pkgname = vim-markdown-preview-git
+
