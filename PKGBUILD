@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-mrboom-git
-pkgver=326.b974ce0
+pkgver=353.e074baf
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="Mr.Boom is a 8 players Bomberman clone for RetroArch/Libretro"
@@ -19,6 +19,11 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${_gitname}"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd "${_gitname}"
+  git submodule update --init
 }
 
 build() {
