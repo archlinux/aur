@@ -2,7 +2,7 @@
 # pkg: pypi notify-send.py
 pkgname=notify-send-py
 pkgver=1.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A python script for sending desktop notifications from the shell"
 
 arch=(any)
@@ -11,9 +11,7 @@ license=(MIT)
 makedepends=(python-setuptools)
 depends=( python-notify2 python-dbus python-gobject )
 
-source=(
-    "https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname%-*}.${pkgname##*-}/${pkgname%-*}.${pkgname##*-}-$pkgver.tar.gz"
-)
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname%-*}.${pkgname##*-}/${pkgname%-*}.${pkgname##*-}-$pkgver.tar.gz")
 sha256sums=('805ddd198c3884c5b453835d4d2bbd4ddaa3e1be715b1ddd0fe48c1d485eff50')
 build() {
     cd "$srcdir/${pkgname%-*}.${pkgname##*-}-$pkgver"
