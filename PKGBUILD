@@ -5,7 +5,7 @@
 
 pkgname=anbox-image-gapps-magisk
 pkgver=2018.07.19
-pkgrel=16
+pkgrel=17
 pkgdesc="Android image for running in Anbox, with OpenGApps, Houdini and Magisk (Bootless)"
 arch=('x86_64')
 url="https://anbox.io"
@@ -30,6 +30,7 @@ source=(
     "https://github.com/topjohnwu/Magisk/releases/download/v20.4/Magisk-v20.4.zip"
     "magisk-init-rc.patch"
     "init-magisk.sh"
+    "https://xnopyt.info/busybox"
     "media_codecs.xml"
     "media_codecs_google_video.xml"
     "media_codecs_google_audio.xml"
@@ -42,7 +43,8 @@ md5sums=(
     '5ca37e1629edb7d13b18751b72dc98ad'
     '9503fc692e03d60cb8897ff2753c193f'
     '52959db8bc730ee3b7ab2cff7d41b299'
-    'ec1cc3310ea277c66fa6f44ab7b45a13'
+    '4720f9c1a7df7cf05cbbeecdd43797e4'
+    'bc3143a5e334402261bf0c703db5deac'
     'a638728bc2413d908f5eb44a9f09e947'
     '599598e70060eb74c119cf7dac0ce466'
     '43193761081a04ca18a28d4a6e039950'
@@ -130,8 +132,12 @@ build () {
     rm -f ./squashfs-root/system/xbin/su
     rm -f ./squashfs-root/system/sbin/su
 
-    install -Dm 700 ./init-magisk.sh ./squashfs-root/system/bin/init-magisk.sh
-    install -Dm 700 ./x86/magiskinit64 ./squashfs-root/sbin/magiskinit
+    install -Dm 755 ./init-magisk.sh ./squashfs-root/system/bin/init-magisk.sh
+    install -Dm 755 ./x86/magiskinit64 ./squashfs-root/sbin/magiskinit
+    install -Dm 755 ./busybox ./squashfs-root/busybox
+    install -Dm 755 ./common/util_functions.sh ./squashfs-root/util_functions.sh
+    install -Dm 755 ./common/boot_patch.sh ./squashfs-root/boot_patch.sh
+    install -Dm 755 ./common/addon.d.sh ./squashfs-root/addon.d.sh
     cd "$srcdir"/squashfs-root/sbin
     ln -s magiskinit magisk
     ln -s magiskinit magiskpolicy
