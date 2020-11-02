@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=shy-git
-pkgver=0.1.8.r2.g1e5c772
+pkgver=0.1.9.r5.g50f5bc3
 pkgrel=1
 pkgdesc="Bare-bones SSH launcher (git)"
 arch=('x86_64')
