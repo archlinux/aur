@@ -1,11 +1,12 @@
 # Maintainer: Angelo Gazzola <(firstname) @ nglgzz.com>
 pkgname=neo4j-desktop
 pkgver=1.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for managing local and remote Neo4j Graph databases"
 arch=('x86_64')
 url=http://neo4j.org/
 license=(custom)
+depends=('fuse')
 optdepends=('gnome-keyring: Adds support for storing secrets')
 options=(!strip)
 _appimage="${pkgname}-offline-${pkgver}-${CARCH}.AppImage"
