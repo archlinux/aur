@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-userfonts-bin
 	pkgdesc = Official Telegram Desktop client, with your fonts as set by fontconfig
-	pkgver = 2.4.4
-	pkgrel = 1
+	pkgver = 2.4.5
+	pkgrel = 2
 	url = https://desktop.telegram.org/
 	arch = x86_64
 	license = GPL3
@@ -19,8 +19,8 @@ pkgbase = telegram-desktop-userfonts-bin
 	optdepends = ttf-opensans: default Open Sans font family
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = https://github.com/AndydeCleyre/archbuilder_telegram-desktop-userfonts/releases/download/2.4.4/telegram-desktop-userfonts-2.4.4-1-x86_64.pkg.tar.zst
-	sha512sums = a10e4a2dddb0800795e6ca95d0dd2351464a3124be091771cdfa9792713668b07e0c861842f469ad58157f9491e7a209ee85c262aab732822971160282f97c62
+	source = https://github.com/AndydeCleyre/archbuilder_telegram-desktop-userfonts/releases/download/2.4.5-2/telegram-desktop-userfonts-2.4.5-2-x86_64.pkg.tar.zst
+	sha512sums = 60854a34f86c0a438e8064961095dc108bb6c0c53b4891fadbeab63643b9d7da8544a17bfe74c21d34def9bea393d3afa8ed7107cf7c48515090c18583761cdc
 
 pkgname = telegram-desktop-userfonts-bin
 

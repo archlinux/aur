@@ -4,8 +4,8 @@
 
 _pkgname=telegram-desktop-userfonts
 pkgname=${_pkgname}-bin
-pkgver=2.4.4
-pkgrel=1
+pkgver=2.4.5
+pkgrel=2
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 pkgdesc='Official Telegram Desktop client, with your fonts as set by fontconfig'
@@ -15,8 +15,8 @@ license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
          'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'qt5-wayland' 'gtk3')
 optdepends=('ttf-opensans: default Open Sans font family')
-source=("https://github.com/AndydeCleyre/archbuilder_telegram-desktop-userfonts/releases/download/${pkgver}/telegram-desktop-userfonts-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha512sums=('a10e4a2dddb0800795e6ca95d0dd2351464a3124be091771cdfa9792713668b07e0c861842f469ad58157f9491e7a209ee85c262aab732822971160282f97c62')
+source=("https://github.com/AndydeCleyre/archbuilder_${_pkgname}/releases/download/${pkgver}-${pkgrel}/${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
+sha512sums=('60854a34f86c0a438e8064961095dc108bb6c0c53b4891fadbeab63643b9d7da8544a17bfe74c21d34def9bea393d3afa8ed7107cf7c48515090c18583761cdc')
 
 package() {
   cp -a usr $pkgdir/
