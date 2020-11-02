@@ -4,7 +4,7 @@
 
 pkgname=telegram-desktop-userfonts
 pkgver=2.4.5
-pkgrel=1
+pkgrel=2
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 pkgdesc='Official Telegram Desktop client, with your fonts as set by fontconfig'
@@ -18,10 +18,12 @@ optdepends=('ttf-opensans: default Open Sans font family')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
 "Use-tg_owt-webrtc-fork.patch"
 "Update-webrtc-packaged-build-for-tg_owt.patch::https://github.com/desktop-app/cmake_helpers/commit/d955882cb4d4c94f61a9b1df62b7f93d3c5bff7d.patch"
+"Add_external_jpeg.patch::https://github.com/desktop-app/cmake_helpers/commit/ed9fa2e798a1f175840479417d760c51181959b8.patch"
 )
 sha512sums=('d0c792fcd890a95b24233f37cdfc34008e814f6f0730722a41916e25d2efff405fd472bd6b45bbfc79787ed117dc5f87271c438d92ec1ce29335cabe76a1062e'
             '071591c6bb71435f8186dcaf570703718051f00366dbbe3f13c4df3706d3de1f168bff4bfa707ad1d6f09f5505c925f0b01d76fd65efe904f3ba7db693d63f43'
-            'b3c44e76a3907f7acc197746b471564577e912bf0561e9576dc8459211c88f400716437bcaa10967376461c69c8a98a56477d26d3feb9ca34747d9208bf5f6c6')
+            'b3c44e76a3907f7acc197746b471564577e912bf0561e9576dc8459211c88f400716437bcaa10967376461c69c8a98a56477d26d3feb9ca34747d9208bf5f6c6'
+            '3891f191f720e77d463365d1415ff8c20866d0d898909dcbe757d334c582c38975d47c33e82ae54e3cfbce7f46c257e9f2eb76b673a76c37446ecf1e9a9c681b')
 
 prepare() {
     cd tdesktop-$pkgver-full
@@ -32,6 +34,7 @@ prepare() {
     sed -i 's/DemiBold/Bold/g' Telegram/lib_ui/ui/style/style_core_font.cpp
 
     cd cmake
+    patch -R -Np1 -i ${srcdir}/Add_external_jpeg.patch
     patch -R -Np1 -i ${srcdir}/Update-webrtc-packaged-build-for-tg_owt.patch
     patch -R -Np1 -i ${srcdir}/Use-tg_owt-webrtc-fork.patch
     sed 's|set(webrtc_build_loc ${webrtc_loc}/out/$<CONFIG>/obj)|set(webrtc_build_loc /usr/lib)|' -i external/webrtc/CMakeLists.txt

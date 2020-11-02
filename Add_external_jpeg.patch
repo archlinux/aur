@@ -1,0 +1,96 @@
+From ed9fa2e798a1f175840479417d760c51181959b8 Mon Sep 17 00:00:00 2001
+From: Ilya Fedin <fedin-ilja2010@ya.ru>
+Date: Wed, 7 Oct 2020 06:19:33 +0400
+Subject: [PATCH] Add external_jpeg
+
+---
+ external/CMakeLists.txt        |  1 +
+ external/jpeg/CMakeLists.txt   | 22 ++++++++++++++++++++++
+ external/qt/CMakeLists.txt     |  7 +++++++
+ external/webrtc/CMakeLists.txt |  1 +
+ 4 files changed, 31 insertions(+)
+ create mode 100644 external/jpeg/CMakeLists.txt
+
+diff --git a/external/CMakeLists.txt b/external/CMakeLists.txt
+index 4e86522..7cd03d6 100644
+--- a/external/CMakeLists.txt
++++ b/external/CMakeLists.txt
+@@ -33,6 +33,7 @@ if (add_hunspell_library)
+ 	add_checked_subdirectory(hunspell)
+ endif()
+ add_checked_subdirectory(iconv)
++add_checked_subdirectory(jpeg)
+ add_checked_subdirectory(lz4)
+ if (LINUX)
+     add_checked_subdirectory(materialdecoration)
+diff --git a/external/jpeg/CMakeLists.txt b/external/jpeg/CMakeLists.txt
+new file mode 100644
+index 0000000..f35a126
+--- /dev/null
++++ b/external/jpeg/CMakeLists.txt
+@@ -0,0 +1,22 @@
++# This file is part of Desktop App Toolkit,
++# a set of libraries for developing nice desktop applications.
++#
++# For license and copyright information please follow this link:
++# https://github.com/desktop-app/legal/blob/master/LEGAL
++
++add_library(external_jpeg INTERFACE IMPORTED GLOBAL)
++add_library(desktop-app::external_jpeg ALIAS external_jpeg)
++
++if (DESKTOP_APP_USE_PACKAGED)
++    find_package(JPEG)
++    target_link_libraries(external_jpeg INTERFACE JPEG::JPEG)
++elseif (WIN32)
++    target_include_directories(external_jpeg INTERFACE ${libs_loc}/mozjpeg)
++    target_link_libraries(external_jpeg INTERFACE ${libs_loc}/mozjpeg/$<IF:$<CONFIG:Debug>,Debug,Release>/jpeg-static.lib)
++elseif (APPLE AND NOT build_osx)
++    target_link_libraries(external_jpeg INTERFACE /usr/local/macos/lib/libjpeg.a)
++elseif (APPLE)
++    target_link_libraries(external_jpeg INTERFACE /usr/local/lib/libjpeg.a)
++else()
++    target_link_static_libraries(external_jpeg INTERFACE jpeg)
++endif()
+diff --git a/external/qt/CMakeLists.txt b/external/qt/CMakeLists.txt
+index 5cfbe35..110c3fd 100644
+--- a/external/qt/CMakeLists.txt
++++ b/external/qt/CMakeLists.txt
+@@ -202,6 +202,11 @@ else()
+         foreach (lib ${qt_libs})
+             list(APPEND qt_libs_list "${qt_loc}/${lib}${qt_lib_suffix}")
+         endforeach()
++        target_link_libraries(external_qt
++        INTERFACE
++            desktop-app::external_jpeg
++            desktop-app::external_zlib
++        )
+     elseif (APPLE)
+         if (NOT build_osx)
+             set(qt_libs
+@@ -235,6 +240,7 @@ else()
+         endforeach()
+         target_link_libraries(external_qt
+         INTERFACE
++            desktop-app::external_jpeg
+             desktop-app::external_zlib
+             cups
+         )
+@@ -354,6 +360,7 @@ else()
+         endif()
+         target_link_libraries(external_qt
+         INTERFACE
++            desktop-app::external_jpeg
+             desktop-app::external_zlib
+             ICE
+             SM
+diff --git a/external/webrtc/CMakeLists.txt b/external/webrtc/CMakeLists.txt
+index a354057..8adb2d2 100644
+--- a/external/webrtc/CMakeLists.txt
++++ b/external/webrtc/CMakeLists.txt
+@@ -98,5 +98,6 @@ else()
+     INTERFACE
+         ${webrtc_libs_list}
+         desktop-app::external_openssl
++        desktop-app::external_jpeg
+     )
+ endif()
