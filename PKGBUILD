@@ -5,14 +5,14 @@ pkgname=( python-$_name python2-$_name )
 pkgbase=python-$_name
 
 pkgver=1.4.10
-pkgrel=4
+pkgrel=5
 pkgdesc='Simple, super-flexible options. Does magic upon request.'
 
 arch=(any)
 url=https://bitbucket.org/jeunice/options
 license=(Apache)
 depends=()
-source=("$pkgbase-$pkgver.zip::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.zip")
+source=("$pkgbase-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('8bfdf4f11613181880fdb8bfc7fce3717c961d495b42ab605baf1b7c94e821aa')
 makedepends=(python-setuptools python2-setuptools)
 

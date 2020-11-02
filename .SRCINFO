@@ -1,13 +1,13 @@
 pkgbase = python-options
 	pkgdesc = Simple, super-flexible options. Does magic upon request.
 	pkgver = 1.4.10
-	pkgrel = 4
+	pkgrel = 5
 	url = https://bitbucket.org/jeunice/options
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = python-options-1.4.10.zip::https://files.pythonhosted.org/packages/source/o/options/options-1.4.10.zip
+	source = python-options-1.4.10.tar.gz::https://files.pythonhosted.org/packages/source/o/options/options-1.4.10.tar.gz
 	sha256sums = 8bfdf4f11613181880fdb8bfc7fce3717c961d495b42ab605baf1b7c94e821aa
 
 pkgname = python-options
