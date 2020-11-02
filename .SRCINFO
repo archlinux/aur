@@ -6,6 +6,7 @@ pkgbase = mingw-w64-qwt-qt6
 	arch = any
 	license = custom:qwt
 	makedepends = mingw-w64-gcc
+	makedepends = qt6-base
 	makedepends = subversion
 	depends = mingw-w64-qt6-svg
 	options = staticlibs
