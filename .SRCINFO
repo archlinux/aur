@@ -1,7 +1,7 @@
 pkgbase = cadabra2
 	pkgdesc = A field-theory motivated approach to computer algebra
-	pkgver = 2.3.0
-	pkgrel = 2
+	pkgver = 2.3.2
+	pkgrel = 1
 	url = http://cadabra.science
 	arch = x86_64
 	license = GPL
@@ -13,8 +13,8 @@ pkgbase = cadabra2
 	depends = jsoncpp
 	depends = xeus
 	conflicts = cadabra2-git
-	source = cadabra2-2.3.0.tar.gz::https://github.com/kpeeters/cadabra2/archive/2.3.0.tar.gz
-	sha256sums = 1ba2dd2c91e6678a49a136c181da4ec424f1cec9a7172cf95fd1b0c04c253217
+	source = cadabra2-2.3.2.tar.gz::https://github.com/kpeeters/cadabra2/archive/2.3.2.tar.gz
+	sha256sums = a17424f41703e4b5c72d44f2c3057f7ea10375ff4b41bbb1675d665a86a489ca
 
 pkgname = cadabra2
 
