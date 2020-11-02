@@ -13,7 +13,9 @@ pkgbase = mingw-w64-hdf5
 	options = !buildflags
 	options = staticlibs
 	source = https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.12/hdf5-1.12.0/src/hdf5-1.12.0.tar.bz2
+	source = PR69.patch
 	sha256sums = 97906268640a6e9ce0cde703d5a71c9ac3092eded729591279bf2e3ca9765f61
+	sha256sums = SKIP
 
 pkgname = mingw-w64-hdf5
 
