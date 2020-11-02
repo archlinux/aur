@@ -1,17 +1,14 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
-# Contributor: Kaiting Chen <kaitocracy@gmail.com>
-# Contributor: Aaron Schaefer <aaron@elasticdog.com>
 
 pkgname=duplicity-git
-pkgver=rel.0.8.16.r29.15026d95
-_pkgver=0.8.16
+pkgver=0.8.17.dev29
 pkgrel=1
 pkgdesc='A utility for encrypted, bandwidth-efficient backups using the rsync algorithm.'
 arch=('x86_64')
 url='https://www.nongnu.org/duplicity/'
 license=('GPL')
 depends=('gnupg' 'librsync' 'python-paramiko' 'python-fasteners' 'python-future')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 optdepends=('lftp: backend for ftp, ftps, fish'
@@ -28,10 +25,17 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    python setup.py --version
+}
+
+build() {
+    # Go through sdist because it puts version into some files.
+    cd "$srcdir/${pkgname%-git}"
+    python setup.py sdist
+    tar -xf "dist/${pkgname%-git}-${pkgver}.tar.gz"
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}/${pkgname%-git}-${pkgver}"
     python setup.py install --root="$pkgdir" --optimize=1
 }

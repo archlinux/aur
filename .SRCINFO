@@ -1,12 +1,13 @@
 pkgbase = duplicity-git
 	pkgdesc = A utility for encrypted, bandwidth-efficient backups using the rsync algorithm.
-	pkgver = rel.0.8.16.r29.15026d95
+	pkgver = 0.8.17.dev29
 	pkgrel = 1
 	url = https://www.nongnu.org/duplicity/
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	depends = gnupg
 	depends = librsync
 	depends = python-paramiko
