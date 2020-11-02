@@ -2,10 +2,11 @@
 
 pkgname=proton-native
 _srctag=5.13-1b
+_commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.1.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 arch=(x86_64)
@@ -19,6 +20,7 @@ depends=(
   libxrandr       lib32-libxrandr
   libxdamage      lib32-libxdamage
   libpulse        lib32-libpulse
+  gsm             lib32-gsm
   libxi           lib32-libxi
   gettext         lib32-gettext
   freetype2       lib32-freetype2
@@ -31,11 +33,10 @@ depends=(
   steam-native-runtime
   "wine-gecko-bin>=$_geckover"
 )
-makedepends=(autoconf ncurses bison perl fontforge flex meson
-  'gcc>=4.5.0-2'
-  mingw-w64-gcc
-  rust                  lib32-rust-libs
+makedepends=(autoconf ncurses bison perl fontforge flex mingw-w64-gcc
+  meson
   cargo
+  rust                  lib32-rust-libs
   giflib                lib32-giflib
   libpng                lib32-libpng
   gnutls                lib32-gnutls
@@ -60,6 +61,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex meson
   libgphoto2
   sane
   gsm
+  vulkan-headers
   samba
   opencl-headers
   git
@@ -92,7 +94,7 @@ optdepends=(
   samba           dosbox
 )
 makedepends=(${makedepends[@]} ${depends[@]})
-#install=${pkgname%-git}.install
+#install=${pkgname}.install
 source=(
     proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-${_srctag}
     wine-valve::git+https://github.com/ValveSoftware/wine.git
@@ -134,7 +136,7 @@ sha256sums=(
     SKIP
     SKIP
     'b17ac815afbf5eef768c4e8d50800be02af75c8b230d668e239bad99616caa82'
-    '9f69e174941d3201fc75c39f7bc3de0abe7d32dd9beb438d9e9a8a015c510719'
+    '37ca48c0b64b94155e0af1ae06921e120db05817f3dcb6c44d4c55c03a28d595'
     '8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954'
     '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
     'bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98'
@@ -228,7 +230,7 @@ build() {
     ../proton/configure.sh \
         --no-steam-runtime \
         --with-ffmpeg \
-        --build-name="${pkgname%-git}"
+        --build-name="${pkgname}"
 
     # Use -mno-avx for wine too
     # https://bugs.winehq.org/show_bug.cgi?id=45289
@@ -256,13 +258,20 @@ build() {
 package() {
     cd build
 
-    mkdir -p "$pkgdir/usr/share/steam/compatibilitytools.d"
-    mv dist "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"
+    local _compatdir="$pkgdir/usr/share/steam/compatibilitytools.d"
+
+    mkdir -p "$_compatdir"
+    mv dist "$_compatdir/${pkgname}"
+
+    i686-w64-mingw32-strip --strip-unneeded \
+        "$_compatdir/${pkgname}"/dist/lib/wine/{,fakedlls/,dxvk/,vkd3d-proton/}*.dll
+    x86_64-w64-mingw32-strip --strip-unneeded \
+        "$_compatdir/${pkgname}"/dist/lib64/wine/{,fakedlls/,dxvk/,vkd3d-proton/}*.dll
 
     ln -s /usr/share/wine/gecko \
-        "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/share/wine/gecko
+        "$_compatdir/${pkgname}"/dist/share/wine/gecko
 
-    mkdir -p "$pkgdir/usr/share/licenses/${pkgname%-git}"
-    mv "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/LICENSE{,.OFL} \
-        "$pkgdir/usr/share/licenses/${pkgname%-git}"
+    mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
+    mv "$_compatdir/${pkgname}"/LICENSE{,.OFL} \
+        "$pkgdir/usr/share/licenses/${pkgname}"
 }

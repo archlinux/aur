@@ -1,5 +1,5 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index 6acce47..f7862a4 100644
+index 6acce47..1ad6278 100644
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -68,7 +68,7 @@ endif
@@ -43,6 +43,15 @@ index 6acce47..f7862a4 100644
  WINEBUILD64 := $(TOOLS_DIR64)/bin/winebuild
  WINE_BUILDTOOLS64 := $(WINEGCC64) $(WINEBUILD64)
  
+@@ -335,7 +338,7 @@ downloads: $(SHARED_GECKO64_TARBALL) $(SHARED_GECKO32_TARBALL) $(SHARED_MONO_TAR
+ $(DST_DIR):
+ 	mkdir -p $@
+ 
+-STEAM_DIR := $(HOME)/.steam/root
++STEAM_DIR ?= $(HOME)/.steam/root
+ 
+ FILELOCK_TARGET := $(addprefix $(DST_BASE)/,filelock.py)
+ $(FILELOCK_TARGET): $(addprefix $(SRCDIR)/,filelock.py)
 @@ -368,9 +371,17 @@ DIST_WINEMONO := $(DIST_WINEMONO_DIR)/wine-mono-$(WINEMONO_VER)
  DIST_FONTS := $(DST_DIR)/share/fonts
  
@@ -61,6 +70,17 @@ index 6acce47..f7862a4 100644
 +
  DEPLOY_COPY_TARGETS := $(DIST_COPY_TARGETS) $(DIST_VERSION) $(DIST_LICENSE) $(DIST_TOOLMANIFEST) $(DIST_OFL_LICENSE)
  REDIST_COPY_TARGETS := $(DEPLOY_COPY_TARGETS) $(DIST_COMPAT_MANIFEST)
+ 
+@@ -452,8 +463,8 @@ GOAL_TARGETS += dist
+ dist: $(DIST_TARGETS) wine gst_good vrclient lsteamclient steam dxvk vkd3d-proton mediaconv | $(DST_DIR)
+ 	echo `date '+%s'` `GIT_DIR=$(abspath $(SRCDIR)/.git) git describe --tags` > $(DIST_VERSION)
+ 	cp $(DIST_VERSION) $(DST_BASE)/
+-	find $(DST_DIR)/lib/wine -type f -execdir chmod a-w '{}' '+'
+-	find $(DST_DIR)/lib64/wine -type f -execdir chmod a-w '{}' '+'
++	find $(DST_DIR)/lib/wine -type f -execdir chmod go-w '{}' '+'
++	find $(DST_DIR)/lib64/wine -type f -execdir chmod go-w '{}' '+'
+ 	rm -rf $(abspath $(DIST_PREFIX))
+ 	python3 $(SRCDIR)/default_pfx.py $(abspath $(DIST_PREFIX)) $(abspath $(DST_DIR)) $(STEAM_RUNTIME_RUNSH)
  
 @@ -489,6 +500,8 @@ module64:
  module: module32 module64
@@ -168,7 +188,15 @@ index 6acce47..f7862a4 100644
  	cp -a $(TOOLS_DIR32)/lib/libgst* $(DST_DIR)/lib/ && \
  	cp -a $(TOOLS_DIR32)/lib/gstreamer-1.0 $(DST_DIR)/lib/
  
-@@ -1132,7 +1150,12 @@ $(WINE_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
+@@ -871,6 +889,7 @@ $(FAUDIO_CONFIGURE_FILES32): $(FAUDIO)/CMakeLists.txt $(MAKEFILE_DEP) gst_base32
+ 		CC="$(CC32)" \
+ 		CXX="$(CXX32)" \
+ 		PKG_CONFIG="$(PKG_CONFIG32)" \
++		CFLAGS="$(OPTIMIZE_FLAGS)" \
+ 		cmake $(abspath $(FAUDIO)) \
+ 			-DCMAKE_INSTALL_PREFIX="$(abspath $(TOOLS_DIR32))" \
+ 			$(FAUDIO_CMAKE_FLAGS)
+@@ -1132,7 +1151,12 @@ $(WINE_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
  $(WINE_CONFIGURE_FILES64): $(MAKEFILE_DEP) | faudio64 jxrlib64 gst_base64 $(WINE_OBJ64)
  	cd $(dir $@) && \
  		../$(WINE)/configure \
@@ -181,7 +209,7 @@ index 6acce47..f7862a4 100644
  			--enable-win64 \
  			--disable-tests \
  			--prefix=$(abspath $(DST_DIR)) \
-@@ -1152,7 +1175,12 @@ $(WINE_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
+@@ -1152,7 +1176,12 @@ $(WINE_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
  $(WINE_CONFIGURE_FILES32): $(MAKEFILE_DEP) | faudio32 jxrlib32 gst_base32 $(WINE_OBJ32)
  	cd $(dir $@) && \
  		../$(WINE)/configure \
@@ -194,7 +222,7 @@ index 6acce47..f7862a4 100644
  			--disable-tests \
  			--prefix=$(abspath $(WINE_DST32)) \
  			LD_LIBRARY_PATH=$(abspath $(TOOLS_DIR32))/lib \
-@@ -1356,7 +1384,7 @@ dxvk_configure32: $(DXVK_CONFIGURE_FILES32)
+@@ -1356,7 +1385,7 @@ dxvk_configure32: $(DXVK_CONFIGURE_FILES32)
  dxvk: dxvk32 dxvk64
  
  dxvk64: $(DXVK_CONFIGURE_FILES64)
@@ -203,7 +231,7 @@ index 6acce47..f7862a4 100644
  	mkdir -p "$(DST_DIR)/lib64/wine/dxvk"
  	cp -f "$(DXVK_OBJ64)"/bin/dxgi.dll "$(DST_DIR)"/lib64/wine/dxvk
  	cp -f "$(DXVK_OBJ64)"/bin/d3d11.dll "$(DST_DIR)"/lib64/wine/dxvk
-@@ -1369,7 +1397,7 @@ dxvk64: $(DXVK_CONFIGURE_FILES64)
+@@ -1369,7 +1398,7 @@ dxvk64: $(DXVK_CONFIGURE_FILES64)
  
  
  dxvk32: $(DXVK_CONFIGURE_FILES32)
@@ -212,7 +240,7 @@ index 6acce47..f7862a4 100644
  	mkdir -p "$(DST_DIR)"/lib/wine/dxvk
  	cp -f "$(DXVK_OBJ32)"/bin/dxgi.dll "$(DST_DIR)"/lib/wine/dxvk/
  	cp -f "$(DXVK_OBJ32)"/bin/d3d11.dll "$(DST_DIR)"/lib/wine/dxvk/
-@@ -1399,7 +1427,7 @@ $(VKD3D_CONFIGURE_FILES32): $(VKD3D)/meson.build $(VKD3D)/build-win32.txt | $(VK
+@@ -1399,7 +1428,7 @@ $(VKD3D_CONFIGURE_FILES32): $(VKD3D)/meson.build $(VKD3D)/build-win32.txt | $(VK
  
  vkd3d32: SHELL = $(CONTAINER_SHELL32)
  vkd3d32: $(VKD3D_CONFIGURE_FILES32)
@@ -221,7 +249,7 @@ index 6acce47..f7862a4 100644
  	mkdir -p "$(DST_DIR)"/lib/wine/vkd3d-proton
  	cp -af "$(VKD3D_OBJ32)/bin/d3d12.dll" "$(DST_DIR)"/lib/wine/vkd3d-proton/
  	rm -f "$(DST_DIR)"/lib/wine/vkd3d-proton/version && if test -e $(SRCDIR)/.git; then ( cd $(SRCDIR) && git submodule status -- vkd3d-proton ) > "$(DST_DIR)"/lib/wine/vkd3d-proton/version; fi
-@@ -1416,7 +1444,7 @@ $(VKD3D_CONFIGURE_FILES64): $(VKD3D)/meson.build $(VKD3D)/build-win64.txt | $(VK
+@@ -1416,7 +1445,7 @@ $(VKD3D_CONFIGURE_FILES64): $(VKD3D)/meson.build $(VKD3D)/build-win64.txt | $(VK
  
  vkd3d64: SHELL = $(CONTAINER_SHELL64)
  vkd3d64: $(VKD3D_CONFIGURE_FILES64)
