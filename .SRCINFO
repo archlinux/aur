@@ -1,7 +1,7 @@
 pkgbase = excalidraw-desktop-git
 	pkgdesc = Excalidraw Desktop - Git Version
 	pkgver = r162.2e70a8c
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = i686
 	license = MIT

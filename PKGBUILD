@@ -1,12 +1,11 @@
 # Maintainer: Alfredo Palhares <alfredo at palhares dot me>
-# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
 # Please contribute to:
 # https://github.com/alfredopalhares/arch-pkgbuilds
 
 pkgname=excalidraw-desktop-git
 pkgver=r162.2e70a8c
-pkgrel=1
+pkgrel=2
 pkgdesc="Excalidraw Desktop - Git Version"
 arch=('x86_64' 'i686')
 dependes=('nodejs' 'electron')
@@ -34,7 +33,6 @@ build() {
   yarn install
   yarn build:app
   rm dist/excalidraw.asar
-
 
 }
 
