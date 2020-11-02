@@ -1,7 +1,7 @@
 pkgbase = ttf-ezhuthu
 	pkgdesc = Ezhuthu Malayalam handwriting style font
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 1
 	url = http://rachana.org.in
 	arch = any
 	license = OFL
@@ -9,7 +9,7 @@ pkgbase = ttf-ezhuthu
 	makedepends = git
 	provides = ttf-ezhuthu
 	conflicts = ttf-ezhuthu
-	source = git+https://gitlab.com/rit-fonts/ezhuthu.git#commit=2f0185b89d13ae61dbaefdf1ef9df4c51014fd03
+	source = git+https://gitlab.com/rit-fonts/ezhuthu.git#commit=99e5c5f3b2820d57027747e68f185899990afacf
 	sha256sums = SKIP
 
 pkgname = ttf-ezhuthu

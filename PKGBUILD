@@ -5,9 +5,9 @@
 _pkgname='ezhuthu'
 pkgname="ttf-${_pkgname}"
 
-pkgver=1.0
-pkgrel=2
-_commit_version='2f0185b89d13ae61dbaefdf1ef9df4c51014fd03'
+pkgver=1.1
+pkgrel=1
+_commit_version='99e5c5f3b2820d57027747e68f185899990afacf'
 
 pkgdesc='Ezhuthu Malayalam handwriting style font'
 arch=('any')
