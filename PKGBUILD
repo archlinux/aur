@@ -3,17 +3,17 @@
 
 pkgname=python-matplotlib-venn
 _upstream_pkgname=matplotlib-venn
-pkgver=0.11.5
+pkgver=0.11.6
 pkgrel=1
 pkgdesc="Functions for plotting area-proportional two- and three-way Venn diagrams in matplotlib"
 arch=('any')
-url="https://pypi.python.org/pypi/matplotlib-venn"
+url="https://github.com/konstantint/matplotlib-venn"
 _github_url="https://github.com/konstantint/matplotlib-venn"
 license=('MIT')
 depends=('python-numpy' 'python-matplotlib' 'python-scipy')
 makedepends=('python-setuptools')
-source=(https://pypi.python.org/packages/source/m/matplotlib-venn/${_upstream_pkgname}-${pkgver}.zip)
-md5sums=('7c2f2baad242388147988f054023568e')
+source=("https://github.com/konstantint/${_upstream_pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('887dccc5ff8ace3ed3243f62391c346e')
 
 build() {
   cd "${srcdir}/${_upstream_pkgname}-${pkgver}"
