@@ -1,4 +1,5 @@
-# Maintainer:  Iyán Méndez Veiga <me (at) iyanmv (dot) com>
+# Maintainer:  b00rt00s <b00rt00s.aur@gmail.com>
+# Contributor: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 # Contributor: Shaun Ren <shaun DOT ren (at) linux (dOt) com>
 # Contributor: Simon Hanna <simon DOT hanna (at) serve-me (dOt) info>
 
