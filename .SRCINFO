@@ -1,0 +1,16 @@
+pkgbase = piknik-git
+	pkgdesc = Copy/paste anything over the network.
+	pkgver = r228.00ee34c
+	pkgrel = 1
+	url = https://github.com/jedisct1/piknik
+	arch = any
+	license = BSD
+	makedepends = go
+	makedepends = git
+	provides = piknik
+	conflicts = piknik
+	source = git+https://github.com/jedisct1/piknik
+	md5sums = SKIP
+
+pkgname = piknik-git
+
