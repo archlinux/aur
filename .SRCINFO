@@ -1,7 +1,7 @@
-pkgbase = distrho-lv2-git
+pkgbase = distrho-ports-lv2-git
 	pkgdesc = Distrho LV2 Audio Plugins, using the JUCE Toolkit
 	pkgver = r492.062a0f61
-	pkgrel = 3
+	pkgrel = 1
 	url = http://distrho.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -13,17 +13,16 @@ pkgbase = distrho-lv2-git
 	makedepends = libxrender
 	makedepends = libxcursor
 	makedepends = ladspa
-	depends = gcc-libs
 	depends = lv2
+	depends = libglvnd
 	depends = libxext
 	depends = freetype2
 	depends = alsa-lib
-	provides = distrho-lv2
-	conflicts = distrho-lv2
-	conflicts = distrho-plugins
-	conflicts = distrho-plugins-lv2-git
-	source = distrho-lv2::git://github.com/DISTRHO/DISTRHO-Ports.git
+	provides = distrho-ports-lv2
+	conflicts = distrho-ports
+	conflicts = distrho-git
+	source = distrho-ports::git://github.com/DISTRHO/DISTRHO-Ports.git
 	sha256sums = SKIP
 
-pkgname = distrho-lv2-git
+pkgname = distrho-ports-lv2-git
 

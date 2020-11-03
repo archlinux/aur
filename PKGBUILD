@@ -1,17 +1,17 @@
 # Maintainer: Daniel Appelt <daniel.appelt@gmail.com>
 # Contributor : speps <speps at aur dot archlinux dot org>
-_pkgbasename=distrho-lv2
-pkgname=${_pkgbasename}-git
+_pkgbasename=distrho-ports
+pkgname=${_pkgbasename}-lv2-git
 pkgver=r492.062a0f61
-pkgrel=3
+pkgrel=1
 pkgdesc="Distrho LV2 Audio Plugins, using the JUCE Toolkit"
 arch=('i686' 'x86_64')
 url="http://distrho.sourceforge.net/"
 license=('GPL' 'GPL3')
-depends=('gcc-libs' 'lv2' 'libxext' 'freetype2' 'alsa-lib')
+depends=('lv2' 'libglvnd' 'libxext' 'freetype2' 'alsa-lib')
 makedepends=('git' 'meson' 'libxinerama' 'libxrender' 'libxcursor' 'ladspa')
-provides=("${_pkgbasename}")
-conflicts=("${_pkgbasename}" 'distrho-plugins' 'distrho-plugins-lv2-git')
+provides=("${_pkgbasename}-lv2")
+conflicts=("${_pkgbasename}" 'distrho-git')
 source=("${_pkgbasename}::git://github.com/DISTRHO/DISTRHO-Ports.git")
 sha256sums=('SKIP')
 
