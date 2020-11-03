@@ -23,6 +23,7 @@ pkgbase = studio-controls-git
 	optdepends = agordejo: NSM based music production session manager
 	optdepends = raysession: NSM based music production session manager
 	optdepends = pavucontrol: PulseAudio Volume Control
+	optdepends = zita-mu1: JACK app used to organise stereo monitoring
 	provides = studio-controls
 	provides = studio-controls-git
 	conflicts = studio-controls

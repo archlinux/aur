@@ -18,7 +18,8 @@ optdepends=('realtime-privileges: Realtime privileges for users'
         'new-session-manager: NSM server and reference GUI'
         'agordejo: NSM based music production session manager'
         'raysession: NSM based music production session manager'
-        'pavucontrol: PulseAudio Volume Control')
+        'pavucontrol: PulseAudio Volume Control'
+        'zita-mu1: JACK app used to organise stereo monitoring')
 provides=('studio-controls' 'studio-controls-git')
 conflicts=('studio-controls' 'studio-controls-git' 'cadence')
 replaces=()
