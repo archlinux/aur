@@ -7,9 +7,9 @@
 # Contributor: CRT <cirkit@kode.email>
 validpgpkeys=('EFD9413B17293AFDFE6EA6F1402A088DEDF104CB')
 pkgname=ntopng
-pkgver=4.0
-_ndpiver=3.2-stable
-pkgrel=2
+pkgver=4.2
+_ndpiver=3.4
+pkgrel=1
 pkgdesc='The next generation version of the original ntop, a network traffic probe that shows the network usage'
 arch=('x86_64' 'i686')
 url='http://www.ntop.org/'
@@ -22,8 +22,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ntop/$pkgname/archive/$pkgv
 	"$pkgname@.service"
 	"$pkgname.install"
 	"$pkgname.sysusers")
-sha512sums=('a278cc5f304e3040b31c691286650a54d61b5587033724c4513dd7372168477d5b0b471a1d2a5c5682034464b022b88e971567a38d836216431ea77bf1ed90c9'
-            '2c78d482627a2f1cc299f3545dfd356bc75361a7b538d326a346509a29264e88512ccc2dc12b9e0bd12a6e859e368a40332212dffbf9a5358434658967b0a319'
+sha512sums=('e89ec3f35644ae8bc570d9802ecfadbf0067145e23a589df2032e8781e9c954f4166d3abb650ddafc65e4fbad656730ee1abf9c5273d3e09f8173d423436b8ff'
+            'ed5a22b6ddc14ad707a18a0bd96746c1df489969faaa42016fa9aad8d414fc4ee303b96cac15c3ba86f484a80a0aaa2dd1be5f92be672912e0e0d30da4bdad4c'
             'b3d9a2032cce91ee4faf81522a30a2877540b3fc7a0d43f8fe4f01c16efb0b8f6e73cfe26028b3a070296d7156abf511d3e11f93635ca2de8a4d67322b0ade60'
             '72749fbade0f14345481815355f42552bac3a9d053d86cf62caecd3cf7d304fadafd7ccf9a6a456ab7e5b8b0d36a3b92b1f4e1ecd0c40fa3d11e4a7d98cab39e'
             'bb7f81a43e6bd1d58e41693dca1b5f03e507fb040bf036a5847a273f55bcfa665e8512220a54495c2926afb64e786d4e666556d7880be432cc7660de105e3ee4')
