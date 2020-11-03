@@ -6,6 +6,7 @@ pkgbase = qmarkdown
 	arch = x86_64
 	license = GPL
 	makedepends = gcc>=9
+	makedepends = qt5-base
 	depends = qt5-base
 	optdepends = ttf-roboto
 	provides = qmarkdown

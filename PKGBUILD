@@ -8,7 +8,7 @@ url="https://github.com/Peterkmoss/qmarkdown"
 license=('GPL')
 depends=('qt5-base')
 optdepends=('ttf-roboto')
-makedepends=('gcc>=9')
+makedepends=('gcc>=9' 'qt5-base')
 provides=('qmarkdown')
 source=("https://github.com/Peterkmoss/qmarkdown/archive/v$pkgver.tar.gz")
 
