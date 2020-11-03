@@ -1,0 +1,19 @@
+pkgbase = qmarkdown-git
+	pkgdesc = qMarkdown - minimal markdown viewer
+	pkgver = r60.5b0fdf7
+	pkgrel = 1
+	url = https://github.com/Peterkmoss/qmarkdown
+	arch = x86_64
+	license = GPL
+	makedepends = gcc>=9
+	makedepends = qt5-base
+	makedepends = git
+	depends = qt5-base
+	optdepends = ttf-roboto
+	provides = qmarkdown
+	conflicts = qmarkdown
+	source = git+https://github.com/Peterkmoss/qmarkdown
+	md5sums = SKIP
+
+pkgname = qmarkdown-git
+
