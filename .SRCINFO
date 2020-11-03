@@ -9,6 +9,7 @@ pkgbase = globe-cli-git
 	makedepends = git
 	provides = globe-cli
 	conflicts = globe-cli
+	conflicts = globe-cli-bin
 	source = git+https://github.com/adamsky/globe
 	sha512sums = SKIP
 
