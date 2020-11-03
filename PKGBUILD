@@ -2,12 +2,11 @@
 
 pkgname=fblog
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="command-line JSON Log viewer"
 arch=('x86_64')
 url="https://github.com/brocode/fblog"
 license=('custom:WTFPL')
-depends=('fzf')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('6933f9cb826449a456198581eeeff37ec257a33098748b514937106ff74f885d')
