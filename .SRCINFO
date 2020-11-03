@@ -1,6 +1,6 @@
 pkgbase = mantablockscreen
 	pkgdesc = Another i3lock-color wrapper that mantab
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/reorr/mantablockscreen
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = mantablockscreen
 	depends = i3lock-color-git
 	depends = otf-san-francisco
 	depends = ttf-abel-regular
-	source = mantablockscreen-0.3.tar.gz::https://github.com/reorr/mantablockscreen/archive/v0.3.tar.gz
-	sha256sums = 796a5a16ef6392f2addb6a9bf1412b38a02aea7ee317d2ba8fce5fce08f6dfc0
+	source = mantablockscreen-0.4.tar.gz::https://github.com/reorr/mantablockscreen/archive/v0.4.tar.gz
+	sha256sums = 0132911f65ce022207883eb4e158a78159bd01adfd40e59ff5e08de061335b60
 
 pkgname = mantablockscreen
 
