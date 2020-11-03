@@ -1,0 +1,13 @@
+pkgbase = postgresql-orafce
+	pkgdesc = Oracle Database functions in PostgreSQL
+	pkgver = 3.13.4
+	pkgrel = 1
+	url = https://github.com/orafce/orafce
+	arch = x86_64
+	license = 0BSD
+	depends = postgresql
+	source = postgresql-orafce-3.13.4.tar.gz::https://github.com/orafce/orafce/archive/VERSION_3_13_4.tar.gz
+	sha256sums = 52274fba50913dc157145ffa18ef8db5295476e8b7f40809d3c35eb22ca0ec40
+
+pkgname = postgresql-orafce
+
