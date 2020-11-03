@@ -6,9 +6,6 @@ pkgbase = qmarkdown-git
 	arch = x86_64
 	license = GPL
 	makedepends = gcc>=9
-	makedepends = qt5-base
-	makedepends = qt5-webengine
-	makedepends = qt5-webchannel
 	makedepends = git
 	depends = qt5-base
 	depends = qt5-webengine
