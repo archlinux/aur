@@ -2,7 +2,7 @@
 
 pkgname=qspeakers-svn
 _pkgbranch=qtcharts
-pkgver=r268
+pkgver=r284
 pkgrel=4
 pkgdesc="DIY speaker design software"
 url="http://brouits.free.fr/qspeakers/"
