@@ -2,7 +2,7 @@
 # Contributor: Lucas Magalhães <whoisroot@national.shitposting.agency>
 pkgname=rocm-clang-ocl
 pkgver=3.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenCL compilation with clang compiler."
 arch=('x86_64')
 url="https://github.com/RadeonOpenCompute/clang-ocl"
@@ -17,7 +17,7 @@ build() {
   cmake -Wno-dev -B build \
         -S "$_dirname" \
         -DCLANG_BIN=/opt/rocm/llvm/bin \
-        -DBITCODE_DIR=/opt/rocm/lib \
+        -DBITCODE_DIR=/opt/rocm/amdgcn/bitcode \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm
 
   make -C build

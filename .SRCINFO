@@ -1,7 +1,7 @@
 pkgbase = rocm-clang-ocl
 	pkgdesc = OpenCL compilation with clang compiler.
 	pkgver = 3.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RadeonOpenCompute/clang-ocl
 	arch = x86_64
 	license = unknown
