@@ -1,0 +1,11 @@
+post_install() {
+    echo
+    echo "To use this app under chromium:"
+    echo "    -> Go to chrome://extensions"
+    echo "    -> Activate \`Developper mode' (top right corner)"
+    echo "    -> Click \`Load unpacked' (top left corner)"
+    echo "    -> Navigate to \`/usr/share/privacy-redirect'"
+    echo "    -> Click open"
+    echo "INFO: You will have an error concerning gecko, it's normal and not a real error"
+    echo
+}
