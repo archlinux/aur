@@ -10,7 +10,7 @@ url="https://github.com/FascodeNet/flast-gecko/"
 # _version=81.0a1
 _version=`curl https://raw.githubusercontent.com/FascodeNet/flast-gecko/master/browser/config/version.txt`
 #_release_id=2020-08-16-12-06
-pkgver="${_version}.$(date +%Y%m%d%H%M)"
+pkgver="${_version}"
 pkgrel=1
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -29,6 +29,9 @@ source=("${pkgname}.desktop" 'policies.json')
 source_x86_64=("${_filename}-x86_64.tar.bz2"::"${_url}/${_src}-x86_64.tar.bz2")
 sha512sums=(SKIP SKIP)
 sha512sums_x86_64=(SKIP)
+pkgver(){
+  curl -ILs -o /dev/null -w %{url_effective} "https://github.com/FascodeNet/flast-gecko/releases/latest/download" | sed "s#https://github.com/FascodeNet/flast-gecko/releases/download/#${_version}.#g"
+}
 package() {
   OPT_PATH="opt/${pkgname}"
 
