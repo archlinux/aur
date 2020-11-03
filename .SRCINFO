@@ -1,59 +1,40 @@
-pkgbase = kata-containers
-	pkgdesc = Lightweight virtual machines for containers
+pkgbase = kata-containers-guest
+	pkgdesc = Lightweight virtual machines for containers (guest components)
 	pkgver = 1.11.4
-	pkgrel = 2
+	pkgrel = 1
 	url = https://katacontainers.io/
 	arch = x86_64
 	license = Apache
 	makedepends = go<2:1.15
-	noextract = archlinux-bootstrap-2020.08.01-x86_64.tar.gz
+	makedepends = yq2-bin
+	makedepends = mkinitcpio
+	makedepends = udisks2
+	noextract = archlinux-bootstrap-2020.11.01-x86_64.tar.gz
 	source = agent-1.11.4.tar.gz::https://github.com/kata-containers/agent/archive/1.11.4.tar.gz
-	source = ksm-throttler-1.11.4.tar.gz::https://github.com/kata-containers/ksm-throttler/archive/1.11.4.tar.gz
 	source = osbuilder-1.11.4.tar.gz::https://github.com/kata-containers/osbuilder/archive/1.11.4.tar.gz
 	source = packaging-1.11.4.tar.gz::https://github.com/kata-containers/packaging/archive/1.11.4.tar.gz
-	source = proxy-1.11.4.tar.gz::https://github.com/kata-containers/proxy/archive/1.11.4.tar.gz
-	source = runtime-1.11.4.tar.gz::https://github.com/kata-containers/runtime/archive/1.11.4.tar.gz
-	source = shim-1.11.4.tar.gz::https://github.com/kata-containers/shim/archive/1.11.4.tar.gz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.32.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.32.tar.sign
+	source = http://mirrors.evowise.com/archlinux/iso/2020.11.01/archlinux-bootstrap-2020.11.01-x86_64.tar.gz
+	source = http://mirrors.evowise.com/archlinux/iso/2020.11.01/archlinux-bootstrap-2020.11.01-x86_64.tar.gz.sig
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = 4AA4767BBC9C4B1D18AE28B77F2D434B9741E8AC
 	sha512sums = e0af374e279899a010ab66ed4fd4caff33c91d2cc19711f5e51302041cd49e69a71909d71092042bf0c4070acbbc5421f5c6cca49c55a4c332c060e745cf5a0c
-	sha512sums = 326fe4e74313110b7afd4a701946ac90808ecd02643656cef27a180d5d47645e4bad5ede3ba9fb29cbfce1a691fb10d2136485fff4bcc651192c28e795102e43
 	sha512sums = b8f8998229e2f12491cf6f9262cf8889353e83c58e93010ca3f328f77b61f89fb33d9209b21a1babae406f60b915011edb0832b803dd31b32115dfffa1b2edb1
 	sha512sums = 867f8fbf9c589535a10696a14c26aa6b9b3c6344690105489d55ed1287bdbd56909eb8052a22b4be98e8eb697fc57021212780ff41e478438c71a5c20d7446ad
-	sha512sums = e19619110b4162e22bc4fa6c17330d9d77519a015971acbd8101ef9b4fbab728eb5779dc8c98c77e99a9a6355ce09408b37ecd440cef24ff8bb3e2e3156ef160
-	sha512sums = f5b932d19b13a6150037d4929038142e218e752bf8cd52bf5a19b29abcf0bb377683ba84c9412b5f744549099d12ba82c2a35188230af759991ffff5eca7bce1
-	sha512sums = 8632772e67c2e045a9363eb00af3309632a5b15b8afe12a1756ae74fa484a0e7f9293b019355f483c6771a9294e09d518d40f34d15c114a0ca2bca90712171ab
 	sha512sums = 197f292fa541031071b8ed64880a3d4251fa65059747cbdf3900b8f934d17f681b506ca5f70132899bdef343d2d249a7902215d2ea04af5410599f1e50d6cbac
 	sha512sums = SKIP
+	sha512sums = 91a3f0a1cbc7addb1941bc583b364b411e28223580980063ddc950cf4a0d247b0c40dbac6462f39d4d2f20102a8ff643b02179fa7dba685ae588962ea778c5d3
+	sha512sums = SKIP
 	b2sums = 94e996c463f0c5517bc6d97af2cb0f1dbadccd7e5f2ef5c45ea15d1deb5af65770371f25a0b9421ba70fa50a0b8c22c7d5a443173515ad4c5db30c1fa72cd395
-	b2sums = 5302020c94d0fe47ae605be048da8080e4aa9ab9ba8a669772ba4389240917e94d7ab61252b0866db17d471942ccefba9b4871b365f359b7d9d6fae3e70b801e
 	b2sums = 6c30855fc7d5298dbe8c6b7e294edbf840e123083fecfa3d73d91e741dcca70af6ca0c10672eb6fa24dd886b3ebddccefcff943b4c816ce65c2f05588947660e
 	b2sums = 6194835f2526a7b16e5b8ca97fb831fdfb78a951dec51c8640c8cff6efd5186ed051e717ff748af7913bdf339f5a69e1b5c9aff2d70c732a4876481ac6fb59ea
-	b2sums = f514bb42482fcdf54454cb6e2362a45a897f6e3cd748ebd1bab7d1fe4a0736ec27bfa07d8ccc7bd7b037c4cf097bb23ecd69b2f93d31f9028c8dafc28fecd39d
-	b2sums = 4721581ccc2c4af854091dd60ef6134e7285672993c99a0e0f4932de422d887b197ad80176fbc1a2f4085dfe9ae8baf044ee0728a92b7aedbc02139e62e84c0c
-	b2sums = 0625dc648f976b2aa0dc8b9a8b06eb0e25b043f68506861aa85888646648df347adfe7d1b94c24315315f6f81e1fb9c89d6f07102401b6eb2b4de8c818001d55
 	b2sums = 0ac78d1eb97ce4689ccdab01fb1475d07f29a90251b44b05fcf030d2f9aa644ac9dbb1315c7fe1eb991ef1435b7f17669e2b4f66187e3404599a0f136d2b1a50
+	b2sums = SKIP
+	b2sums = ce8bfce07a121780e6a09f2b652b0be3fb3c728cd0cccedaad4add394784a6ded18c5163d2a999fc8043cdc9eb6fc347aa6a26a990b31f1f4a445f83460eccc3
 	b2sums = SKIP
 
 pkgname = kata-agent
-
-pkgname = kata-ksm-throttler
-
-pkgname = kata-runtime
-	install = kata-runtime.install
-	depends = qemu-headless
-	depends = kata-proxy=1.11.4
-	depends = kata-shim=1.11.4
-	depends = kata-linux-container
-	depends = kata-containers-image
-	optdepends = kata-ksm-throttler=1.11.4
-	optdepends = firecracker<0.22.0
-	optdepends = cloud-hypervisor<0.8.0
-
-pkgname = kata-proxy
-
-pkgname = kata-shim
 
 pkgname = kata-linux-container
 
