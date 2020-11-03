@@ -1,7 +1,7 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=qt-logout
-pkgver=2020.7.9
+pkgver=2020.11.03
 pkgrel=1
 pkgdesc='Logout script for qt5'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GNU General Public License v3.0')
 depends=('python-pyqt5' 'gtk-engine-murrine')
 optdepends=('multimonitorlock: default lock screen for qt-logout')
 source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=('857381f920c17540fb4f745ad03790dfecfd455f93b95cf9df208fba9e2de76d')
+sha256sums=('5a10c06e946baddb45501efccf3dee74dc06dcdfd6aeba81c85c6ff8962f0a09')
 
 package() {
   cp -a $srcdir/$pkgname-$pkgver-$pkgrel/etc $pkgdir/etc
