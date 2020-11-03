@@ -1,0 +1,13 @@
+pkgbase = color_blinder
+	pkgdesc = Simulate different kinds of color blindness with a set of images
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/dns2utf8/color_blinder
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = color_blinder-1.0.0.tar.gz::https://gitlab.com/dns2utf8/color_blinder/-/archive/1.0.0/color_blinder-1.0.0.tar.gz
+	sha512sums = SKIP
+
+pkgname = color_blinder
+
