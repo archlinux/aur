@@ -3,7 +3,7 @@
 _pkgname=thunar
 pkgname=${_pkgname}-devel
 pkgver=4.15.3
-pkgrel=1
+pkgrel=2
 pkgdesc='file manager for xfce'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('GPL')
@@ -23,7 +23,7 @@ conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
 sha256sums=('f5f90e77cf6bdffe229d9d3a4d46a0e392d3e94b9ee1af7433e6e2fe45e35c5f')
 
-uild() {
+build() {
     cd "${_pkgname}-${pkgver}"
     ./configure \
         --prefix=/usr \
