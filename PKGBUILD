@@ -16,7 +16,7 @@ depends=('iscan')
 makedepends=('rpmextract')
 install=perfection-v550.install
 
-md5sums=('c4d4f05e37ce4a9347a431c63fa3b166')
+md5sums=('f0ea0be6d99385ebfd278a923b71ecd9')
 source=(https://download2.ebz.epson.net/iscan/plugin/perfection-v550/rpm/x64/iscan-perfection-v550-bundle-${_bundlever}.x64.rpm.tar.gz)
 
 package() {

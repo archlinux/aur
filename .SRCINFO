@@ -9,7 +9,7 @@ pkgbase = iscan-plugin-perfection-v550
 	makedepends = rpmextract
 	depends = iscan
 	source = https://download2.ebz.epson.net/iscan/plugin/perfection-v550/rpm/x64/iscan-perfection-v550-bundle-2.30.4.x64.rpm.tar.gz
-	md5sums = c4d4f05e37ce4a9347a431c63fa3b166
+	md5sums = f0ea0be6d99385ebfd278a923b71ecd9
 
 pkgname = iscan-plugin-perfection-v550
 
