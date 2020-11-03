@@ -4,8 +4,8 @@
 
 _pkgname=fcitx5-configtool
 pkgname=$_pkgname-git
-pkgver=r348.7031cf4
-pkgrel=1
+pkgver=5.0.0.r1.g5b1f8ee
+pkgrel=2
 pkgdesc="Config tools for Fcitx5, nightly build from git"
 arch=('i686' 'x86_64')
 url="https://github.com/fcitx/fcitx5-configtool"
@@ -22,7 +22,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

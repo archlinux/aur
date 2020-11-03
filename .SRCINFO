@@ -1,7 +1,7 @@
 pkgbase = fcitx5-configtool-git
 	pkgdesc = Config tools for Fcitx5, nightly build from git
-	pkgver = r348.7031cf4
-	pkgrel = 1
+	pkgver = 5.0.0.r1.g5b1f8ee
+	pkgrel = 2
 	url = https://github.com/fcitx/fcitx5-configtool
 	arch = i686
 	arch = x86_64
