@@ -3,14 +3,14 @@
 
 pkgname=ttf-abel-regular
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Abel is a modern interpretation of the condensed flat-sided sans serif."
 url="http://www.madtype.com/"
 arch=(any)
 license=(custom)
 source=('Abel-Regular.ttf::https://github.com/google/fonts/raw/master/ofl/abel/Abel-Regular.ttf'
         'LICENSE::https://github.com/google/fonts/raw/master/ofl/abel/OFL.txt') 
-sha256sums=('97cf1dbf8f17f42d7799b7725bacbee7d334da8eed29b3bbe3da0fab72a70379'
+sha256sums=('8809dcad25318225052f88333e208c5aad4adcb7b2c934c135735ec19aa410b4'
             '4f4bc3806a1e55789c6ef75ca5fc628297b05292f74966474dc0d40324abc609')
 
 package() {
