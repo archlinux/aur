@@ -1,6 +1,6 @@
 pkgbase = responsively
 	pkgdesc = A modified browser built using Electron that helps in responsive web development
-	pkgver = 0.14.1
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/responsively-org/responsively-app
 	arch = i686
@@ -12,12 +12,12 @@ pkgbase = responsively
 	makedepends = yarn
 	depends = zlib
 	options = !strip
-	source = https://github.com/responsively-org/responsively-app/archive/v0.14.1.tar.gz
+	source = https://github.com/responsively-org/responsively-app/archive/v0.15.0.tar.gz
 	source = responsively.desktop
 	source = fix-build.patch
-	sha512sums = 6971c819040077e6f14e01e83a746703998017c202c000cb73657a6e10a771857166afa93dbd83d21c2dbc7e3a1d45b7ec57b49609368bf5a12db95c9b3d19df
+	sha512sums = ee96ca75fd536062760a090de520012e9d43917baf9b20ed67c0ddd9a8a802f188d1c90ebca10495aab363720a4b6693d6c3a40778fe75f66e4ce43a378c4ed5
 	sha512sums = eebe6acbb675d8804d87e34f6a005f55268ef8927e7bb1c7199791dfdbd4c3839ffe61ba2e59c23359dc9cbbfd74bed9d9610d0cd71e9961666b8167b3a04c33
-	sha512sums = bd0e39244905f6f9ee96ec52c4d0d8b2b99b9a5c04df5a1d3783fed213d688b8f5c16abfcee6bd2b0111cf5cb47399b3c315d674dea10fa4705bb59a68e361ef
+	sha512sums = 0fa585861250350305a182f29b14cbbaa53ec91e96d15e3b1ec845d88c6fb23bc92652f7f9832dca092b8268a4b2075535e786d13c7c79de3ff4fb48deaee34d
 
 pkgname = responsively
 
