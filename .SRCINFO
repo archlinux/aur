@@ -1,0 +1,20 @@
+pkgbase = nordvpnteams-bin
+	pkgdesc = NordVPNTeams CLI tool for Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://nordvpnteams.com/download/linux/
+	install = post.install
+	arch = x86_64
+	license = custom
+	depends = libxslt
+	depends = iptables
+	depends = procps
+	depends = iproute2
+	depends = ipset
+	depends = ca-certificates
+	provides = nordvpnteams
+	source_x86_64 = https://downloads.nordteams.com/linux/latest/debian/pool/main/nordvpnteams_1.0.0_amd64.deb
+	sha256sums_x86_64 = 80546a19f170a951bc40eeb511d32ef71fab32e962c189afdbc49443727549fc
+
+pkgname = nordvpnteams-bin
+

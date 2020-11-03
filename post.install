@@ -1,0 +1,29 @@
+pre_install() {
+  groupadd -r -f nordvpnteams
+  useradd -s /usr/sbin/nologin -c "Used for running NordVPN Teams" \
+    -r -M -d /run/nordvpnteams -g nordvpnteams nordvpnteams
+}
+
+post_install() {
+setcap CAP_NET_BIND_SERVICE,CAP_NET_ADMIN,CAP_NET_RAW+eip /usr/sbin/nordvpnteamsd
+
+VAR_LIB=/var/lib/nordvpnteams
+chmod 0770 -R ${VAR_LIB}
+chown nordvpnteams:nordvpnteams -R ${VAR_LIB}
+
+# Reload config
+systemctl daemon-reload
+
+# Create tmpfiles
+systemd-tmpfiles --create
+
+cat <<"EOF"
+# Run the following to complete installation:
+# In order to enable nordvpn you have to start the following service:
+$ systemctl enable --now nordvpnteams.socket
+$ systemctl enable --now nordvpnteams.service
+
+# To login run
+sudo --user=nordvpnteams nordvpnteams login
+EOF
+}
