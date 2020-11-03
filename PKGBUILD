@@ -24,6 +24,8 @@ sha512sums=('ca92ec0c578ac80cfa58ef169403a08ea0daee14525c79776ba8e3ae349a1fc3d53
 
 build() {
     make WHAT="cmd/kubelet cmd/kubeadm"
+
+    hack/update-generated-docs.sh
 }
 
 package_kubelet() {
@@ -38,6 +40,8 @@ package_kubelet() {
 
     install -Dm644 kubelet.service -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 kubelet.default "$pkgdir/etc/default/kubelet"
+
+    install -Dm644 docs/man/man1/kubelet* -t "${pkgdir}/usr/share/man/man1/"
 }
 
 package_kubeadm() {
@@ -52,4 +56,6 @@ package_kubeadm() {
 
     "$pkgdir/usr/bin/kubeadm" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/kubeadm"
     "$pkgdir/usr/bin/kubeadm" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_kubeadm"
+
+    install -Dm644 docs/man/man1/kubeadm* -t "$pkgdir/usr/share/man/man1/"
 }
