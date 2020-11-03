@@ -1,0 +1,15 @@
+pkgbase = python-overly
+	pkgdesc = An overly configurable http server for client testing.
+	pkgver = 0.1.85
+	pkgrel = 1
+	url = https://github.com/theelous3/overly
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-sansio-multipart
+	depends = python-h11
+	source = https://files.pythonhosted.org/packages/source/o/overly/overly-0.1.85.tar.gz
+	sha256sums = 20a99526c7859acc859e87afd97b5c4916405e7477834f727b49210e478370cb
+
+pkgname = python-overly
+
