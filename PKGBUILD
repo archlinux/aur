@@ -1,16 +1,17 @@
 # Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
-pkgname=('anbox-git' 'anbox-modules-dkms-git')
+pkgname=anbox-git
 _pkgname=anbox
-pkgver=r1240.c1e7550
+pkgver=r1292.7f1bfaf
 pkgrel=1
 epoch=1
 arch=('x86_64')
 url="http://anbox.io/"
 license=('GPL3')
+pkgdesc="Running Android in a container"
+depends=('lxc' 'sdl2_image' 'protobuf' 'anbox-image' 'libsystemd' 'boost-libs')
 makedepends=('cmake' 'git' 'glm' 'lxc' 'sdl2_image' 'protobuf' 'boost' 'properties-cpp' 'gtest' 'python2')
 source=("git+https://github.com/anbox/anbox.git"
-	"git+https://github.com/anbox/anbox-modules.git"
 	"git+https://github.com/google/cpu_features.git"
 	"git+https://github.com/Kistler-Group/sdbus-cpp.git"
 	'anbox-container-manager.service'
@@ -21,7 +22,6 @@ source=("git+https://github.com/anbox/anbox.git"
 	'anbox-bridge.network'
 	'anbox-bridge.netdev')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             '5be94b63dc30d141f15ca7d1be6e3e81f26ef33f844614975537562f5d08236c'
@@ -61,11 +61,7 @@ build() {
   make
 }
 
-package_anbox-git() {
-  depends=('lxc' 'sdl2_image' 'protobuf' 'anbox-image' 'libsystemd' 'boost-libs')
-  optdepends=('anbox-modules-dkms-git: Required Android kernel modules')
-  pkgdesc="Running Android in a container"
-
+package() {
   cd "$srcdir/${_pkgname}"
   make -C build DESTDIR="$pkgdir" install
 
@@ -76,19 +72,4 @@ package_anbox-git() {
   install -Dm 644 -t $pkgdir/usr/lib/udev/rules.d $srcdir/99-anbox.rules
   install -Dm 644 -t $pkgdir/usr/share/applications $srcdir/anbox.desktop
   install -Dm 644 snap/gui/icon.png $pkgdir/usr/share/pixmaps/anbox.png
-}
-
-package_anbox-modules-dkms-git() {
-  pkgdesc="Required kernel module sources for Android"
-  depends=('dkms')
-  arch=('any')
-
-  cd "$srcdir/anbox-modules"
-  modules=(ashmem binder)
-  for mod in "${modules[@]}"; do
-    install -dm 755 $pkgdir/usr/src
-    cp -a $mod $pkgdir/usr/src/anbox-modules-$mod-$pkgver
-  done;
-
-  install -Dm 644 -t $pkgdir/usr/lib/modules-load.d $srcdir/anbox.conf
 }
