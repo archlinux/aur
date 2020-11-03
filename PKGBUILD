@@ -2,7 +2,7 @@
 
 _pkgname=xfce4-dev-tools
 pkgname=${_pkgname}-devel
-pkgver=4.15.0
+pkgver=4.15.1
 pkgrel=1
 pkgdesc="Xfce developer tools"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('gtk-doc' 'automake' 'make' 'intltool' 'pkg-config')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/xfce4-dev-tools/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('e3109849f2db8609dd80b3a1273f658afef60cb46c506d1e044a264acc5a4dbc')
+sha256sums=('666a84f54297336731b6ce1376f63ce4de7b60bbba9b8975287d7e8439eed522')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
