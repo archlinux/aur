@@ -20,7 +20,7 @@ makedepends=(
   'go' 'bc' 'rust'
   'yq2-bin'  # quietly pulled by Kata's codebase to read versions.yaml from repo
   'mkinitcpio'  # initrd build
-  'pacman' 'udisksctl' # rootless image build
+  'pacman' 'udisks2' # rootless image build
 )
 
 _gh_org="github.com/kata-containers"
