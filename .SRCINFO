@@ -1,13 +1,13 @@
 pkgbase = 2048-py
 	pkgdesc = 2048 written in Python by the Ladue High School Computer Science Club
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Ta180m/2048
 	arch = any
 	license = GPL
 	depends = python-termcolor
-	source = 2048-py-0.1.0.tar.gz::https://github.com/Ta180m/2048/releases/download/v0.1.0/2048.tar.gz
-	sha256sums = 972ad8e8dc5a6f79da4ad0d0526d871c3654704b181f1a2a1a639d4d6d933f2a
+	source = 2048-py-0.1.1.tar.gz::https://github.com/Ta180m/2048/releases/download/v0.1.1/2048.tar.gz
+	sha256sums = db80458ede4d15d0cc06a84311ea56a9dff1b99a0b88373b561b51f6a7119f6b
 
 pkgname = 2048-py
 
