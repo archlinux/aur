@@ -1,0 +1,13 @@
+[Unit]
+Description=Dotfiles Import Deamon
+
+[Service]
+Environment=RUST_LOG=info
+ExecStart=/usr/sbin/dimportd
+NonBlocking=true
+KillMode=process
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
