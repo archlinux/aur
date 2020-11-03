@@ -4,7 +4,7 @@
 _pkgname=kvdo
 pkgname=kvdo-dkms
 pkgrel=1
-pkgver=6.2.4.14
+pkgver=6.2.4.26
 pkgdesc='A pair of kernel modules which provide pools of deduplicated and/or compressed block storage'
 arch=('x86_64')
 url="https://github.com/dm-vdo/kvdo"
@@ -14,7 +14,7 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/dm-vdo/kvdo/archive/$pkgve
         "dkms.conf"
         "vla-warning.patch"
         "config_hz.patch")
-sha256sums=('4de172b753880105f9bfec3d941f537c6cbbd001aebd26db5c76632c39a2fdc5'
+sha256sums=('7bb38310000bc7bc19e7f11875699392bfe8c6fb52c1828e7a7b9b7a27bc8ea4'
             '516f60bdb28f7a0cb6c8f1f84c656ee7c6aec8feb393538f227ed515372ac88a'
             'a6b9a42ef6c0933ff02fe304f9ab627f045f83abc8ed33cf0b91522096cade0f'
             '8871d201fef0b4ae8ea4a3459e7a3b375b5d104df110dcbf56c8da929c68b946')
