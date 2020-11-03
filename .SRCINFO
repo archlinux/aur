@@ -1,8 +1,8 @@
 pkgbase = ares
 	pkgdesc = A free open source file sharing program that enables users to share any digital file including images, audio, video, software, documents, etc. (via wine)
-	pkgver = 2.5.2.3078
+	pkgver = 2.5.5.3081
 	pkgrel = 1
-	url = https://web.archive.org/web/20190515175058/https://aresgalaxy.io/
+	url = https://aresgalaxy.io/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -12,11 +12,11 @@ pkgbase = ares
 	source = ares.sh
 	source = ares.desktop
 	source = ares.xpm
-	source = https://web.archive.org/web/20190501072741if_/https://aresgalaxy.io/aresregular252_installer.exe
+	source = https://aresgalaxy.io/aresregular255_installer.exe
 	md5sums = c7bc3239f0a3f6e001942823f882bdcb
-	md5sums = 673b1c2d2ef64f7fd9b1b879df3f3904
+	md5sums = 752293e683546937e2258b0b22406c10
 	md5sums = f89b51f21633e02c9017222b33544c1b
-	md5sums = 9ff5736e1626e8bf51fb70c3bb3bffc2
+	md5sums = 0e32228c7d809d7fef94bbda16091375
 
 pkgname = ares
 
