@@ -2,13 +2,13 @@
 
 pkgname=snapcast
 pkgver=0.22.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Synchronous multi-room audio player"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/badaix/snapcast"
 license=('GPL')
 depends=(alsa-lib avahi libvorbis flac opus expat libsoxr)
-makedepends=(alsa-utils boost)
+makedepends=(cmake alsa-utils boost)
 install="snapcast.install"
 backup=('etc/default/snapserver' 'etc/default/snapclient' 'etc/snapserver.conf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/badaix/snapcast/archive/v${pkgver}.tar.gz"
@@ -22,12 +22,17 @@ sha256sums=('b5156f346c32557bc1347c81fd5071fd4a32be61adc582e63323c11b105c9ff6'
 
 build() {
     cd "${pkgname}-${pkgver}"
-    make
+    cmake -B build -S . \
+          -DCMAKE_BUILD_TYPE=None \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -Wno-dev
+    make -C build
 }
 
 package() {
     cd "${pkgname}-${pkgver}"
-    install -Dm755 server/snapserver "${pkgdir}/usr/bin/snapserver"
+
+    install -Dm755 bin/snapserver "${pkgdir}/usr/bin/snapserver"
     install -Dm644 server/snapserver.1 "${pkgdir}/usr/share/man/man1/snapserver.1"
     install -Dm644 server/etc/snapserver.conf "${pkgdir}/etc/snapserver.conf"
     # install snapweb
@@ -38,7 +43,7 @@ package() {
         do install -Dm 644 ${file} -t "${pkgdir}/usr/share/snapserver/snapweb/3rd-party/";
     done
 
-    install -Dm755 client/snapclient "${pkgdir}/usr/bin/snapclient"
+    install -Dm755 bin/snapclient "${pkgdir}/usr/bin/snapclient"
     install -Dm644 client/snapclient.1 "${pkgdir}/usr/share/man/man1/snapclient.1"
 
     install -Dm644 debian/snapserver.service "${pkgdir}/usr/lib/systemd/system/snapserver.service"
