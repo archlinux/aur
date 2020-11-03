@@ -1,4 +1,3 @@
-# Packager: pryme-svg <edoc.www@gmail.com>
 # Maintainer: pryme-svg <edoc.www@gmail.com>
 
 pkgname=nerd-fonts-tinos
