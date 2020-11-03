@@ -1,0 +1,14 @@
+pkgbase = lapidoc-man
+	pkgdesc = Lua API Functions Man Pages
+	pkgver = r5.99041d0
+	pkgrel = 1
+	url = https://github.com/patrickschulz/lapidoc-man
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = lua
+	source = git+https://github.com/patrickschulz/lapidoc-man.git
+	sha256sums = SKIP
+
+pkgname = lapidoc-man
+
