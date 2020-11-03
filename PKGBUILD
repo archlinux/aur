@@ -3,7 +3,7 @@
 pkgbase=srslte-falcon-patch-git
 pkgname=$pkgbase
 _pkgname=srsLTE
-pkgver=falcon_v0.1.r3.g1bea0987
+pkgver=0.1.r3.g1bea0987
 pkgrel=1
 pkgdesc='Open source SDR LTE software suite from Software Radio Systems (SRS) - patched for FALCON'
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^\(falcon_v\)\1*//'
 }
 
 build() {
