@@ -1,6 +1,6 @@
 pkgbase = obs-plugin-tuna-git
 	pkgdesc = Song information plugin for obs-studio git version
-	pkgver = 1.5.3
+	pkgver = 1.5.3.r1.geab85d1
 	pkgrel = 1
 	url = https://github.com/univrsal/tuna
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = obs-plugin-tuna-git
 	makedepends = cmake
 	makedepends = git
 	depends = obs-studio
-	provides = obs-plugin-tuna-git=1.5.3
+	provides = obs-plugin-tuna-git=1.5.3.r1.geab85d1
 	conflicts = obs-plugin-tuna-bin
 	source = obs-plugin-tuna-git::git+https://github.com/univrsal/tuna.git
 	source = git+https://github.com/taglib/taglib

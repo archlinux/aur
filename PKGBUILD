@@ -1,7 +1,7 @@
 # Maintainer: Katoitalia
 
 pkgname=obs-plugin-tuna-git
-pkgver=1.5.3
+pkgver=1.5.3.r1.geab85d1
 pkgrel=1
 arch=(x86_64)
 pkgdesc="Song information plugin for obs-studio git version"
@@ -18,7 +18,7 @@ md5sums=("SKIP" "SKIP" "SKIP")
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags | sed -r "s/([^-]*-g)/r\1/;s/-/./g"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
