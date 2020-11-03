@@ -5,7 +5,7 @@ pkgname=ros-melodic-socketcan-bridge
 pkgdesc='Conversion nodes for messages from SocketCAN to a ROS Topic and vice versa.'
 url="http://wiki.ros.org/socketcan_bridge?distro=melodic"
 
-pkgver='0.8.4'
+pkgver='0.8.5'
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 license=('LGPL3')
@@ -24,7 +24,7 @@ depends=(${ros_depends[@]})
 
 _dir="ros_canopen-${pkgver}/socketcan_bridge"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-industrial/ros_canopen/archive/${pkgver}.tar.gz")
-sha256sums=('0e35370ce242ab936386032764e7f0d9976fec43f2735d9482f4bb5f637fc19a')
+sha256sums=('3ef1aefdaadfc3548a9b3ea419709f858c1bb9bfdf85cf76ccd8bbcde5c34d9f')
 
 
 build() {
