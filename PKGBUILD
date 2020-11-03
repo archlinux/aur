@@ -5,7 +5,7 @@
 # Contributor: DDoSolitary <DDoSolitary@gmail.com>
 
 pkgname=i2pd-git
-pkgver=2.34.0.r17.gb9b431e8
+pkgver=2.34.0.r19.g3907c17c
 pkgrel=1
 pkgdesc='A full-featured C++ implementation of the I2P router (git version)'
 arch=('x86_64')
@@ -13,11 +13,10 @@ url='https://i2pd.website/'
 license=('BSD')
 depends=('boost-libs' 'libminiupnpc.so' 'openssl' 'zlib')
 makedepends=('git' 'cmake' 'boost')
-provides=('i2p-router')
-backup=('etc/i2pd/i2pd.conf'
-        'etc/i2pd/tunnels.conf')
 provides=('i2pd' 'i2p-router')
 conflicts=('i2pd')
+backup=('etc/i2pd/i2pd.conf'
+        'etc/i2pd/tunnels.conf')
 source=('git+https://github.com/PurpleI2P/i2pd.git#branch=openssl'
         '010-i2pd-use-arch-flags-on-tests.patch'
         '020-i2pd-config.patch'
