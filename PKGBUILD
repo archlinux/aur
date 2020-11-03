@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster (milkii on freenode)
 _pkgname=studio-controls
 pkgname=${_pkgname}-git
-pkgver=2.0.9.r4.g2bdd72d
+pkgver=2.0.9.r7.ga352067
 pkgrel=1
 pkgdesc="An JACK audio setup utility with USB device and PulseAudio bridges."
 arch=('x86_64')
@@ -14,6 +14,10 @@ optdepends=('realtime-privileges: Realtime privileges for users'
         'pulseaudio-jack: PulseAudio to JACK bridge'
         'libffado: Driver for FireWire audio devices'
         'qastools: qasmixer desktop mixer application'
+        'carla: Audio Plugin Host'
+        'new-session-manager: NSM server and reference GUI'
+        'agordejo: NSM based music production session manager'
+        'raysession: NSM based music production session manager'
         'pavucontrol: PulseAudio Volume Control')
 provides=('studio-controls' 'studio-controls-git')
 conflicts=('studio-controls' 'studio-controls-git' 'cadence')
@@ -34,7 +38,7 @@ pkgver() {
 }
 
 prepare() {
-cd "$srcdir/${_pkgname%}"
+  cd "$srcdir/${_pkgname%}"
 }
 
 build() {
