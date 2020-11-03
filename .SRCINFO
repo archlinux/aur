@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-topicons-plus
 	pkgdesc = Moves legacy tray icons to the top panel
 	pkgver = 27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/phocean/TopIcons-plus
 	arch = any
 	license = GPL2
