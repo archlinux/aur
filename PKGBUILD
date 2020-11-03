@@ -2,8 +2,8 @@
 
 _pkgname=xfce4-panel
 pkgname=${_pkgname}-devel
-pkgver=4.15.4
-pkgrel=2
+pkgver=4.15.5
+pkgrel=1
 pkgdesc="Panel for the Xfce desktop environment (development release)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.xfce.org/"
@@ -16,7 +16,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" 'xfce4-statusnotifier-plugin')
 replaces=('xfce4-statusnotifier-plugin')
 source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('ac4166b0072ff2b88b4f0fafaf7dad17f21b2df865bd447f277ddc20720bf444')
+sha256sums=('4fe1cf5dda6cac99203b138116b164d47c8af8e47ca380b458d00dbd98fefecb')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
