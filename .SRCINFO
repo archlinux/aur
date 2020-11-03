@@ -1,7 +1,7 @@
 pkgbase = asco
 	pkgdesc = A SPICE Circuit Optimizer.
 	pkgver = 0.4.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://asco.sourceforge.net
 	arch = i686
 	arch = x86_64
