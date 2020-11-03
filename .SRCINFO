@@ -1,0 +1,14 @@
+pkgbase = python-pyratemp
+	pkgdesc = A very simple template-engine for Python
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://www.simple-is-better.org/template/pyratemp.html
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://www.simple-is-better.org/template/pyratemp-0.3.2.tgz
+	sha256sums = c45ed656ada482a02fe780495f37a695e7671accb04f918f7e7f18abf877bc71
+
+pkgname = python-pyratemp
+
