@@ -4,7 +4,7 @@
 # Contributor: kstolp <kevinstolp at gmail dot com>
 # Contributor: kfgz <ffiasd at gmail dot com>
 pkgname=y-cruncher
-pkgver=0.7.8.9506
+pkgver=0.7.8.9507
 pkgrel=1
 pkgdesc="The first scalable multi-threaded Pi-benchmark for multi-core systems."
 arch=('x86_64')
