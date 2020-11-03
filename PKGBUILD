@@ -5,13 +5,13 @@ pkgname='passman++'
 pkgdesc='Incredibly simple and secure command-line password manager.'
 url="https://github.com/binex-dsk/$_pkgname/"
 license=('BSD')
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 source=("https://github.com/binex-dsk/$_pkgname/archive/$pkgver.zip")
-md5sums=('6191151651c0f1d5939b7097d485fa7c')
+md5sums=('bc5b28c9e9d61dd25839fea31c1a504d')
 provides=('passman')
 conflicts=('passman-git')
-depends=('botan' 'libsodium' 'qt5-base')
+depends=('botan' 'libsodium' 'qt5-base' 'ttf-hack')
 arch=('x86_64')
 
 build() {
