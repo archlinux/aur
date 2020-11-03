@@ -2,7 +2,7 @@
 # Contributor: rostov <imn@pochta.ru>
 
 pkgname=projectlibre
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=0
 pkgdesc="ProjectLibre is an open source project management software"
 arch=('any')
@@ -15,7 +15,7 @@ source=("https://netcologne.dl.sourceforge.net/project/projectlibre/ProjectLibre
         "projectlibre.desktop"
         "projectlibre.patch"
         "projectlibre.xml")
-md5sums=('93083e41a364a6b3d140b03c68ce2eee'
+md5sums=('2d39d676dfb03c25b84fc123e03440f7'
          'cbeee50a6324b473c17899616f3effbd'
          'e93fab66e95915aaf9ef204d914b6e9f'
          '0bc5fff49aa9b7161aef58661cb22d98'
