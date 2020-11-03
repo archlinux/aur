@@ -17,7 +17,7 @@ build() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "qMarkdown-$pkgver"
     make PREFIX=/usr DESTDIR="$pkgdir" install
 }
 md5sums=('daa239b9739c693171d8622d5eea5289')
