@@ -18,14 +18,14 @@ backup=('etc/cryptmount/cmtab')
 sha512sums=('972c7fefadb86bb82cdeb96b185f45bec08ac07d39474a4c7e2a473bc2453624ffcc387b6836a02260dcd0d1176a5a743c45bdf3d7e78d2f519f02a48c62a6b8')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$provides-$pkgver"
 
   ./configure --build=arm --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$provides-$pkgver"
 
   make DESTDIR="$pkgdir" install
 }
