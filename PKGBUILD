@@ -9,8 +9,8 @@
 _pkgname=mpd
 pkgname=${_pkgname}-smbclient
 pkgver=0.22.2
-pkgrel=2
-pkgdesc="Flexible, powerful, server-side application for playing music (smbclient plugin enabled)"
+pkgrel=3
+pkgdesc="Flexible, powerful, server-side application for playing music (with buggy smbclient plugin enabled, don't complain upstream!)"
 url="https://www.musicpd.org/"
 license=('GPL2')
 arch=('x86_64' 'aarch64')
