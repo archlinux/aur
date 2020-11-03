@@ -4,9 +4,11 @@ pkgbase = fblog
 	pkgrel = 1
 	url = https://github.com/brocode/fblog
 	arch = x86_64
-	license = WTFPL
-	source = https://github.com/brocode/fblog/releases/download/v2.3.0/fblog
-	sha256sums = 4a6e292b5843fc3f0c08e452249e05a53d3936aac62c85101f377a536e73dd15
+	license = custom:WTFPL
+	makedepends = cargo
+	depends = fzf
+	source = fblog-2.3.0.tar.gz::https://github.com/brocode/fblog/archive/v2.3.0.tar.gz
+	sha256sums = 6933f9cb826449a456198581eeeff37ec257a33098748b514937106ff74f885d
 
 pkgname = fblog
 

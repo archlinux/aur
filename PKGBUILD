@@ -6,13 +6,25 @@ pkgrel=1
 pkgdesc="command-line JSON Log viewer"
 arch=('x86_64')
 url="https://github.com/brocode/fblog"
-license=('WTFPL')
-source=('https://github.com/brocode/fblog/releases/download/v2.3.0/fblog')
-sha256sums=('4a6e292b5843fc3f0c08e452249e05a53d3936aac62c85101f377a536e73dd15')
+license=('custom:WTFPL')
+depends=('fzf')
+makedepends=('cargo')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('6933f9cb826449a456198581eeeff37ec257a33098748b514937106ff74f885d')
 
-package() {
-  mkdir -p "${pkgdir}/usr/bin"
-  chmod +x fblog
-  cp fblog "${pkgdir}/usr/bin/fblog"
+build() {
+  cd "$pkgname-$pkgver"
+  cargo build --release --locked --all-features
 }
 
+check() {
+  cd "$pkgname-$pkgver"
+  cargo test --release --locked
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm 644 README.org -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+}
