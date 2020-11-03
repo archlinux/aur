@@ -1,14 +1,14 @@
 #
 # PKGBUILD: vasm
 #
-# Maintainer: uffe Jakobsen <_microtop_-at-_starion_-_dot_-_dk_>
+# Maintainer: Uffe Jakobsen <_microtop_-at-_starion_-_dot_-_dk_>
 #
 
 _pkgver="1_8i"
 
 pkgname=vasm
 pkgver=1.8i
-pkgrel=1
+pkgrel=2
 pkgdesc="Portable and retargetable 6502 6800 arm c16x jagrisc m68k ppc test tr3200 vidcore x86 z80 assembler."
 arch=('i686' 'x86_64')
 url="http://sun.hasenbraten.de/vasm/"
@@ -26,30 +26,34 @@ OUTPUT_LIST="aout bin elf hunk test tos vobj"
 
 prepare()
 {
-  cd ${srcdir}/${pkgname}
+  cd "${srcdir}/${pkgname}"
 }
 
 build()
 {
-  cd ${srcdir}/${pkgname}
-  #make doc/vasm.pdf
-  #make doc/vasm.html
+  cd "${srcdir}/${pkgname}"
   for CPU in ${CPU_LIST}; do
     for SYNTAX in ${SYNTAX_LIST}; do
       make CPU=${CPU} SYNTAX=${SYNTAX}
     done
   done
+
+  make doc/vasm.pdf
+  #make doc/vasm.html # currently fails due to missing file (1.8i)
 }
 
 package()
 {
-  cd ${srcdir}/${pkgname}
-  mkdir -p ${pkgdir}/usr/bin
+  cd "${srcdir}/${pkgname}"
+  mkdir -p "${pkgdir}/usr/bin"
   for CPU in ${CPU_LIST}; do
     for SYNTAX in ${SYNTAX_LIST}; do
-      cp vasm${CPU}_${SYNTAX} ${pkgdir}/usr/bin
+      cp "vasm${CPU}_${SYNTAX}" "${pkgdir}/usr/bin/"
     done
   done
+
+  mkdir -p "${pkgdir}/usr/share/doc/vasm/"
+  install -m644 doc/vasm.pdf "${pkgdir}/usr/share/doc/vasm/"
 }
 
 #
