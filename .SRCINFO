@@ -1,7 +1,7 @@
 pkgbase = rdm-bin
 	pkgdesc = Cross-platform open source database management tool for Redis ®
 	pkgver = 2020.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rdm.dev/
 	arch = x86_64
 	license = GPL3
