@@ -2,8 +2,8 @@
 # If you think this package is shit, contact me with patch
 
 pkgname=keystore-explorer-git
-pkgver=v5.4.3+5+gb86412f
-pkgrel=3
+pkgver=v5.4.4+2+gad9cbc5
+pkgrel=1
 pkgdesc="KeyStore Explorer is a free GUI replacement for the Java command-line utilities keytool and jarsigner."
 arch=('any')
 url="https://keystore-explorer.org/"
@@ -16,7 +16,7 @@ source=('git+https://github.com/kaikramer/keystore-explorer.git')
 sha256sums=('SKIP')
 _pkgname=keystore-explorer
 _short_pkgname=kse
-_short_pkgver=543
+_short_pkgver=544
 
 pkgver() {
   cd $_pkgname
