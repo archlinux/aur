@@ -1,7 +1,7 @@
 # Maintainer: Severin Kaderli <severin.kaderli@gmail.com>
 _pkgname=pegasus-frontend
 pkgname=${_pkgname}-git
-pkgver=alpha13.r30.g7648b41
+pkgver=alpha14.r36.g49dd98b3
 pkgrel=1
 pkgdesc="A cross platform, customizable graphical frontend for launching emulators and managing your game collection."
 arch=('i686' 'x86_64')
@@ -9,20 +9,17 @@ url="https://pegasus-frontend.org/"
 license=('GPL3')
 makedepends=(
     'git'
-    'qt5-tools'
-    'qt5-quickcontrols'
-    'qt5-gamepad'
-    'qt5-svg'
-    'qt5-multimedia'
-    'qt5-graphicaleffects'
-    'qt5-declarative'
-    'qt5-imageformats'
-    'sdl2'
 )
 depends=(
-    'qt-gstreamer'
-    'fontconfig'
-    'openssl-1.0'
+    'qt5-declarative'
+    'qt5-gamepad'
+    'qt5-graphicaleffects'
+    'qt5-imageformats'
+    'qt5-multimedia'
+    'qt5-quickcontrols'
+    'qt5-svg'
+    'qt5-tools'
+    'sdl2'
 )
 optdepends=(
     'polkit'
@@ -66,7 +63,7 @@ build() {
         INSTALL_DOCDIR=/usr/share/doc/pegasus-frontend \
         INSTALL_ICONDIR=/usr/share/pixmaps \
         INSTALL_DESKTOPDIR=/usr/share/applications \
-        INSTALL_APPSTREAMDIR=/app/share/metainfo
+        INSTALL_APPSTREAMDIR=/usr/share/metainfo
     make
 }
 
