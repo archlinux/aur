@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=goverlay-bin
-_pkgver=0_3_8
+_pkgver=0_4
 pkgver=${_pkgver//_/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
@@ -12,7 +12,8 @@ optdepends=('mangohud: Configure MangoHUD'
             'vkbasalt: Configure vkBasalt'
             'mesa-demos: OpenGL preview'
             'vulkan-tools: Vulkan preview'
-            'git: Clone reshade repository')
+            'git: Clone reshade repository'
+            'replay-sorcery: Instant replay solution')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("$url/releases/download/$pkgver/${pkgname%-bin}_${_pkgver}.tar.xz"
@@ -20,10 +21,10 @@ source=("$url/releases/download/$pkgver/${pkgname%-bin}_${_pkgver}.tar.xz"
         "${pkgname%-bin}.desktop"
         "${pkgname%-bin}.metainfo.xml"
         "${pkgname%-bin}.png")
-sha256sums=('040d2b38dd0fb62caee18d124c25422913ecc84838daba9637ac5844ac55fe0f'
+sha256sums=('f2549d200b4408d83789be9b2f545970f496672d4f7a80d395ed6852d3e05f45'
             '1e69df4f0f1cbc2c8e145fcf709117882d67c1df9e9a39bc9fdd12f68b27be34'
-            'c7903e55d62e74f2993faefc628c3f5cb923e83ed79baf4ea9804b33048397c2'
-            '743e063ecc298b63ee7b0e25ac3f07fc4ecd713be7c8a3cb437aa9c07949cbdf'
+            '614ce62179b2e6f170de1422a8125de27b11215dc698fa8b2ade02f99ef6dfca'
+            '8874342a77b7a36dfa4e9e8da6ce0eaa5e437fe68d2f78cc5f056d41720b794c'
             '82baf73d583dd13f1073b2b8d6aa7edc0c558521a46d77bdf1a88cc401e7cc7f')
 
 package() {

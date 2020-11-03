@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!goverlay.1.gz
+!goverlay.desktop
+!goverlay.metainfo.xml
+!goverlay.png
