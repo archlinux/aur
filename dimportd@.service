@@ -2,6 +2,7 @@
 Description=Dotfiles Import Deamon
 
 [Service]
+User=%i
 Environment=RUST_LOG=info
 ExecStart=/usr/sbin/dimportd
 NonBlocking=true

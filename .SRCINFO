@@ -1,6 +1,6 @@
 pkgbase = dimport
 	pkgdesc = Dotfiles Importer - Import and keep your dotfiles in sync
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/Lyr-7D1h/dotfiles_importer_revamped
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = dimport
 	makedepends = rust
 	makedepends = cargo
 	depends = dbus
-	source = git+https://github.com/Lyr-7D1h/dotfiles_importer_revamped.git#tag=v1.3?signed
-	source = dimportd.service
+	source = git+https://github.com/Lyr-7D1h/dotfiles_importer_revamped.git#tag=v1.4?signed
+	source = dimportd@.service
 	validpgpkeys = F0E576DC4C752710F168C87C650AC1B95E7FEE6E
 	sha256sums = SKIP
-	sha256sums = ae52ae32a5e92f4c90ffe524ba5cccd25b3d9fe11557106127c4e56bdfdef3b4
+	sha256sums = 33dc92cb906bb24f7ffc019b3592d7f9ff5ae80eee841c1d9e1129b1cc5dcb77
 
 pkgname = dimport
 
