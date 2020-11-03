@@ -2,13 +2,13 @@
 
 pkgname=open-hexagon-git
 pkgver=r2432_2.6f36defe_1d125de
-pkgrel=1
+pkgrel=2
 pkgdesc='Free software clone of Super Hexagon - a music-based arcade game'
 url='https://openhexagon.org/'
 arch=('any')
 license=('custom:AFL-3.0' 'custom')
 depends=('sfml')
-makedepends=('git' 'cmake' 'make' 'gcc' 'rsync')
+makedepends=('git' 'cmake' 'rsync')
 provides=('open-hexagon')
 conflicts=('open-hexagon')
 source=('git+https://github.com/SuperV1234/SSVOpenHexagon.git'
@@ -45,6 +45,7 @@ build() {
 	./build.sh
 
 	cd ..
+	# Merge directories
 	rsync -av --remove-source-files --ignore-existing "$_assetsname/_RELEASE" "$_reponame"
 }
 

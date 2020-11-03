@@ -1,15 +1,13 @@
 pkgbase = open-hexagon-git
 	pkgdesc = Free software clone of Super Hexagon - a music-based arcade game
 	pkgver = r2432_2.6f36defe_1d125de
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openhexagon.org/
 	arch = any
 	license = custom:AFL-3.0
 	license = custom
 	makedepends = git
 	makedepends = cmake
-	makedepends = make
-	makedepends = gcc
 	makedepends = rsync
 	depends = sfml
 	provides = open-hexagon
