@@ -1,4 +1,5 @@
-# Maintainer: Sigmund Vestergaard <sigmundv at gmail dot com>
+# Maintainer: pumpkincheshire <sollyonzou at gmail dot com>
+# Contributor: Sigmund Vestergaard <sigmundv at gmail dot com>
 pkgname=python-eve-git
 pkgver=1.1.4.r5.ge1194eb7
 pkgrel=1
@@ -12,7 +13,7 @@ makedepends=('git' 'python-setuptools')
 optdepends=('python-sphinx: docs' 'python-sphinx-alabaster-theme: theme for sphinx' 'python-doc8: style checker for sphinx' 'python-redis: test use' 'python-testfixtures: test use' 'python-pytest: test use' 'python-tox: test use')
 conflicts=('python-eve')
 provides=('python-eve')
-#source=("git+https://github.com/pyeve/$_name.git")
+
 source=("$_name::git+https://github.com/pyeve/$_name.git#branch=master")
 sha256sums=('SKIP')
 
