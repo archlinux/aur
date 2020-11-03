@@ -3,7 +3,7 @@
 # Github Contributor: Michael Herold <https://github.com/michaelherold>
 
 pkgname=heroku-cli
-pkgver=7.46.2
+pkgver=7.47.0
 pkgrel=1
 _builddir=cli-$pkgver-$pkgrel
 pkgdesc="CLI to manage Heroku apps and services with forced auto-update removed"
@@ -15,8 +15,8 @@ makedepends=('npm' 'perl')
 optdepends=('git: Deploying to Heroku')
 conflicts=('heroku-cli-bin' 'heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
 source=("https://github.com/heroku/cli/archive/v$pkgver.tar.gz")
-sha256sums=('ad46d7d97a6fd786c48f3199b38af59400d7cd8376d447ccdfc68c4ef7d43f51')
-sha512sums=('98980b57ed2d1ed089760ef17a69a0b02fa214833581ae4756076d74a4dfae10c8f3cb023c2cb59c0c1d17d167dc7920f139380aa8db120577ffe130113df3dc')
+sha256sums=('2d7f20ddef888d5439c990365614f5a4c04aa2f042b912ed47aa0247ef9faab4')
+sha512sums=('7073311969cd3a57535182333bae67a6c0046b857ed6c9ee30f0de8925d5a77560cb8f3b4475e59f73f0bbd4f3b1c7d082d92dc15c490d3540472a4ef54bafc2')
 options=('!strip')
 provides=('heroku' 'heroku-cli')
 
