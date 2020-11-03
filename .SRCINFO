@@ -1,0 +1,17 @@
+pkgbase = go-serversdat-git
+	pkgdesc = Minecraft servers.dat tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/Jake-E/go-serversdat
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = serversdat
+	conflicts = serversdat
+	source = git+https://github.com/Jake-E/go-serversdat
+	sha256sums = SKIP
+
+pkgname = go-serversdat-git
+
