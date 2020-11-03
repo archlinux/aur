@@ -27,7 +27,7 @@ prepare() {
 
 build() {
     cd aurutils
-    make DESTDIR="$pkgdir"
+    make
 }
 
 package() {
