@@ -4,37 +4,37 @@
 
 pkgname=insomnia
 pkgver=2020.4.2
-pkgrel=1
+pkgrel=2
+_nodeversion=12.18.3
 pkgdesc="Cross-platform HTTP and GraphQL Client"
 url="https://github.com/Kong/insomnia"
 arch=('any')
 license=('MIT')
 depends=('electron')
-makedepends=('npm')
+makedepends=('npm' 'nvm')
 source=(
   "https://github.com/Kong/insomnia/archive/core@${pkgver}/${pkgname}-${pkgver}.tar.gz"
   "insomnia.desktop"
   "insomnia.sh"
-  "node-any.patch"
 )
 b2sums=('2527045680d99d0321ce9a29f8d3e9302bd07c79d059d0a2e9c3f963d2adb45c9566668faca817a0f4913ee22728ebb8f553463ae6cdc731793520a3371d0953'
         'd2ceeb224fa3a35551b0929648d5e066da93a451a66b73373c13ed0dd89575a2482c2dc8e7499b214d0d62cca2532189dac9a681537751a5a86b592cae5686c7'
         '7ea4aff2779267bfc5f7be5533d70b07a3da1c8bfed424c9f6cc9806fe6567a4cd40144264a8827b016e51f31c6dbb395c90aac4d333f297070213c77a0b2c9c'
-        'db40a0e7d85cb8378c1f973150249d67e5cfc5d018787b733f2516892144f3c536e1587cdba2eec5da800ee474d4bccf090379b371cb6c59a0a9829090012896')
+)
 
 prepare() {
-  # Use local node and electron version
+  # Use local electron version
   # See https://wiki.archlinux.org/index.php/Electron_package_guidelines
 
   cd ${pkgname}-core-${pkgver}
-  node --version | sed s/v// > .nvmrc
-  patch --forward --strip=1 --input="${srcdir}/node-any.patch"
   electron_version=$(electron --version | sed s/v//)
   sed -i 's/"electron": ".\+"/"electron": "'"$electron_version"'"/g' packages/insomnia-app/package.json
 }
 
 build() {
   cd ${pkgname}-core-${pkgver}
+  source /usr/share/nvm/init-nvm.sh
+  nvm use ${_nodeversion} || nvm install ${_nodeversion}
   npm run bootstrap
   GIT_TAG="core@${pkgver}" npm run app-package
 }
