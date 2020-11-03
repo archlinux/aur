@@ -1,14 +1,14 @@
 pkgbase = sia
 	pkgdesc = Decentralized storage for the post-cloud world
-	pkgver = 1.5.0
-	pkgrel = 3
+	pkgver = 1.5.1
+	pkgrel = 1
 	url = https://sia.tech
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
 	conflicts = sia-daemon
-	source = git+https://gitlab.com/NebulousLabs/Sia.git#tag=v1.5.0
+	source = git+https://gitlab.com/NebulousLabs/Sia.git#tag=v1.5.1
 	source = sia.sysusers
 	source = sia.tmpfiles
 	source = siad.service
