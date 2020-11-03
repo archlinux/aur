@@ -6,7 +6,7 @@ pkgdesc="qMarkdown - minimal markdown viewer"
 arch=("x86_64")
 url="https://github.com/Peterkmoss/qmarkdown"
 license=('GPL')
-depends=('qt5-base')
+depends=('qt5-base' 'ttf-roboto')
 makedepends=('gcc>=9')
 provides=('qmarkdown')
 source=("https://github.com/Peterkmoss/qmarkdown/archive/v$pkgver.tar.gz")

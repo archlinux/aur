@@ -7,6 +7,7 @@ pkgbase = qmarkdown
 	license = GPL
 	makedepends = gcc>=9
 	depends = qt5-base
+	depends = ttf-roboto
 	provides = qmarkdown
 	source = https://github.com/Peterkmoss/qmarkdown/archive/v0.2.1.tar.gz
 	md5sums = d86fec7c90b189421ceeac5a67bad7e3
