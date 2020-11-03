@@ -1,0 +1,17 @@
+[Unit]
+Description=Prometheus exporter for apcupsd metrics
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+EnvironmentFile=-/etc/conf.d/prometheus-apcupsd-exporter
+ExecStart=/usr/bin/prometheus-apcupsd-exporter $APCUPSD_EXPORTER_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+User=apcupsd-exporter
+Group=apcupsd-exporter
+Restart=on-failure
+NoNewPrivileges=true
+ProtectSystem=true
+
+[Install]
+WantedBy=multi-user.target
