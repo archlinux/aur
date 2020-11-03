@@ -1,12 +1,13 @@
 pkgbase = goat
 	pkgdesc = better sleep
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brocode/goat
 	arch = x86_64
-	license = WTFPL
-	source = https://github.com/brocode/goat/releases/download/v0.10.0/goat
-	sha256sums = 8d51e8c03edd6ae5b30c3829876022c4a7bb1e88171fba8fe6cea28efe1c688d
+	license = custom:WTFPL
+	makedepends = cargo
+	source = goat-0.10.0.tar.gz::https://github.com/brocode/goat/archive/v0.10.0.tar.gz
+	sha256sums = ab0ecf9c43b581b3b5658657c0a5006397176016222d253a175a5a9c974f6818
 
 pkgname = goat
 
