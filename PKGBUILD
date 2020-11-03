@@ -7,7 +7,7 @@ _SPELL_EN_DICT_SHA256='c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4
 
 _pkgname=fcitx5
 pkgname=${_pkgname}-git
-pkgver=r697.401a81e
+pkgver=5.0.1.r0.g45780ce
 pkgrel=1
 pkgdesc="Next generation of fcitx"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ sha256sums=('SKIP' "${_SPELL_EN_DICT_SHA256}")
 
 pkgver() {
   cd fcitx5
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
