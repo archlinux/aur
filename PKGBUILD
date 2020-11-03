@@ -1,7 +1,7 @@
 # Maintainer: Dmytro Meleshko <dmytro.meleshko@gmail.com>
 pkgbase=mindustry
 pkgname=("${pkgbase}" "${pkgbase}-server")
-_build=111
+_build=112
 pkgver="6.0_${_build}"
 pkgrel=1
 epoch=1
@@ -16,7 +16,7 @@ source=("${pkgbase}-${_build}.tar.gz::https://github.com/Anuken/${_repo_name}/ar
         "${pkgbase}.sh"
         "${pkgbase}-server.desktop"
         "${pkgbase}-server.sh")
-sha256sums=('372c092bdabdf0dc6ebe890b09d736142e4477c2fc9507a09867f3d176e5ac2a'
+sha256sums=('737fa35ebe34848e37386c6e64d656b0c2cab0b3e5c1d84cd4969f5f79faa32d'
             'e5fd49ed3456c53e91b834cb388956e3f9ded4e2c880352d36cf9c2246ca0f0b'
             '938f5f9f636379402ba0bb9a53345de499f4f3fd50f232b31605129dcf4ea6c9'
             '053030932334f40145e927f6c7e9ebf01bd28ddd1e7b9fba6234b51cc83ad241'
