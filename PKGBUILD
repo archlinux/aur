@@ -1,7 +1,7 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 
 pkgname=qqmusic-bin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="tencent qq music"
 arch=("x86_64")
@@ -12,7 +12,7 @@ depends=('nss' 'libxss' 'gtk3' )
 source=("qqmusic_${pkgver}_amd64.deb::https://share.ohthis.me/qqmusic/qqmusic_${pkgver}_amd64.deb")
 
 
-sha512sums=('f9f926328cc83b32ce85469bedd1618d85a43f2e552f6f79dc57888f6f14854d3876165ee237ef122367920c9192a73e312d76400542522ed2a6f1bc4108dac4')
+sha512sums=('100cdf526c1d233eb457361c185a2b78521e01106e4272445f0cd9d1c7abc0cf25d358a5d7d6abec64ae5d1cd71a0ec7ab7a1980d605f3ab70485871ff6ff34f')
 
 package(){
     cd ${srcdir}
