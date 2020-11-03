@@ -1,3 +1,12 @@
+2020.10.28:
+- Added youtube_dlc support.
+- Double click and open the player, issue #174
+- fixed pending items disappear if changed theme or restart application.
+- replaced font symbols by image icons.
+- fixed playlist download folder
+- Added option to bypass server's SSL certificate check, issue #177
+
+
 2020.10.11:
 - hotfix for systray icon quit action, issue #171.
 
