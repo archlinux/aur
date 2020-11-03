@@ -10,15 +10,13 @@ pkgname=(
 )
 pkgver=1.11.4
 _pkgver=${pkgver/\~/-}
-pkgrel=3
+pkgrel=4
 pkgdesc="Lightweight virtual machines for containers"
 arch=('x86_64')
 url="https://katacontainers.io/"
 license=('Apache')
-makedepends=('go')
-
+makedepends=('go' 'yq2-bin')
 _gh_org="github.com/kata-containers"
-
 source=(
   "ksm-throttler-${_pkgver}.tar.gz::https://${_gh_org}/ksm-throttler/archive/${_pkgver}.tar.gz"
   "proxy-${_pkgver}.tar.gz::https://${_gh_org}/proxy/archive/${_pkgver}.tar.gz"

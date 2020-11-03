@@ -1,11 +1,12 @@
 pkgbase = kata-containers
 	pkgdesc = Lightweight virtual machines for containers
 	pkgver = 1.11.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://katacontainers.io/
 	arch = x86_64
 	license = Apache
 	makedepends = go
+	makedepends = yq2-bin
 	source = ksm-throttler-1.11.4.tar.gz::https://github.com/kata-containers/ksm-throttler/archive/1.11.4.tar.gz
 	source = proxy-1.11.4.tar.gz::https://github.com/kata-containers/proxy/archive/1.11.4.tar.gz
 	source = runtime-1.11.4.tar.gz::https://github.com/kata-containers/runtime/archive/1.11.4.tar.gz
