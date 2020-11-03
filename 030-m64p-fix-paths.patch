@@ -8,7 +8,7 @@
  #include "settingsdialog.h"
  #include "plugindialog.h"
  #include "mainwindow.h"
-@@ -405,11 +406,11 @@ MainWindow::MainWindow(QWidget *parent) :
+@@ -407,11 +408,11 @@ MainWindow::MainWindow(QWidget *parent) :
      updatePIF(ui);
  
      if (!settings->contains("coreLibPath"))
@@ -22,4 +22,13 @@
 +        settings->setValue("configDirPath", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/mupen64plus");
  
      updatePlugins();
+ 
+@@ -507,7 +508,7 @@ void MainWindow::setupLLE()
+ 
+ void MainWindow::setupDiscord()
+ {
+-    QLibrary *discordLib = new QLibrary((QDir(QCoreApplication::applicationDirPath()).filePath("discord_game_sdk")), this);
++    QLibrary *discordLib = new QLibrary("/usr/lib/discord_game_sdk", this);
+ 
+     memset(&discord_app, 0, sizeof(discord_app));
  

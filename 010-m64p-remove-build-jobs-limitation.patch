@@ -45,12 +45,3 @@
  if [[ $UNAME == *"MINGW"* ]]; then
    cp $base_dir/mupen64plus-gui/build/release/mupen64plus-gui.exe $install_dir
  elif [[ $UNAME == *"Darwin"* ]]; then
-@@ -85,7 +85,7 @@ if [[ $UNAME == *"MINGW"* ]]; then
- else
-   cmake -DMUPENPLUSAPI_GLIDENUI=On -DNOHQ=On -DVEC4_OPT=On -DCRC_OPT=On -DMUPENPLUSAPI=On ../../src/
- fi
--make -j4
-+make
- 
- if [[ $UNAME == *"MINGW"* ]]; then
-   cp mupen64plus-video-GLideN64$suffix $install_dir
