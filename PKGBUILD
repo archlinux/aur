@@ -1,8 +1,8 @@
 # Maintainer: OriginCode <origincoder@yahoo.com>
 
 pkgname=fcitx5-anthy-git
-pkgver=r155.b7bbb8c
-pkgrel=1
+pkgver=5.0.0.r1.g54d32ac
+pkgrel=2
 pkgdesc="Anthy input method for fcitx5"
 arch=('x86_64')
 url="https://github.com/fcitx/fcitx5-anthy"
@@ -16,7 +16,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd fcitx5-anthy
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
