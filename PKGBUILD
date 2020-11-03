@@ -1,7 +1,7 @@
 # Maintainer: Alad Wenter <https://github.com/AladW>
 pkgname=aurutils
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='helper tools for the arch user repository'
 url='https://github.com/AladW/aurutils'
 arch=('any')
@@ -26,11 +26,11 @@ prepare() {
 }
 
 build() {
-    cd aurutils
+    cd "$pkgname-$pkgver"
     make
 }
 
 package() {
-    cd aurutils
+    cd "$pkgname-$pkgver"
     make DESTDIR="$pkgdir" install
 }
