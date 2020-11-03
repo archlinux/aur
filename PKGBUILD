@@ -1,9 +1,9 @@
-# Maintainer: Igor Moura <imp2@cin.ufpe.br>
+# Maintainer: Igor Moura <hi@igor.mp>
 
 pkgname=freecad-appimage
-pkgver=0.18_16146
+pkgver=0.18_16146_rev1
 _pkgver=0.18.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose 3D CAD modeler (binary AppImage version)"
 arch=('x86_64')
 url='http://www.freecadweb.org/'
