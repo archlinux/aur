@@ -1,6 +1,6 @@
 --- a/Action.c
 +++ b/Action.c
-@@ -406,7 +406,7 @@ static Htop_Reaction actionRedraw() {
+@@ -404,7 +404,7 @@ static Htop_Reaction actionTogglePauseProcessUpdate(State *st) {
  }
  
  static const struct { const char* key; const char* info; } helpLeft[] = {
@@ -9,21 +9,30 @@
     { .key = " Digits: ", .info = "incremental PID search" },
     { .key = "   F3 /: ", .info = "incremental name search" },
     { .key = "   F4 \\: ",.info = "incremental name filtering" },
-@@ -435,11 +435,11 @@ static const struct { const char* key; const char* info; } helpRight[] = {
+@@ -426,7 +426,7 @@ static const struct { const char* key; const char* info; } helpRight[] = {
+    { .key = "  Space: ", .info = "tag process" },
+    { .key = "      c: ", .info = "tag process and its children" },
+    { .key = "      U: ", .info = "untag all processes" },
+-   { .key = "   F9 k: ", .info = "kill process/tagged processes" },
++   { .key = " F9 x d: ", .info = "kill process/tagged processes" },
+    { .key = "   F7 ]: ", .info = "higher priority (root only)" },
+    { .key = "   F8 [: ", .info = "lower priority (+ nice)" },
+ #if (defined(HAVE_LIBHWLOC) || defined(HAVE_LINUX_AFFINITY))
+@@ -434,11 +434,11 @@ static const struct { const char* key; const char* info; } helpRight[] = {
  #endif
     { .key = "      e: ", .info = "show process environment" },
     { .key = "      i: ", .info = "set IO priority" },
 -   { .key = "      l: ", .info = "list open files with lsof" },
 +   { .key = "      L: ", .info = "list open files with lsof" },
     { .key = "      s: ", .info = "trace syscalls with strace" },
-    { .key = "         ", .info = "" },
+    { .key = "      w: ", .info = "wrap process command in multiple lines" },
     { .key = " F2 C S: ", .info = "setup" },
 -   { .key = "   F1 h: ", .info = "show this help screen" },
 +   { .key = "   F1 ?: ", .info = "show this help screen" },
     { .key = "  F10 q: ", .info = "quit" },
     { .key = NULL, .info = NULL }
  };
-@@ -567,6 +567,7 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -601,6 +601,7 @@ void Action_setBindings(Htop_Action* keys) {
     keys['I'] = actionInvertSortOrder;
     keys[KEY_F(6)] = actionExpandCollapseOrSortColumn;
     keys[KEY_F(18)] = actionExpandCollapseOrSortColumn;
@@ -31,7 +40,17 @@
     keys['<'] = actionSetSortColumn;
     keys[','] = actionSetSortColumn;
     keys['>'] = actionSetSortColumn;
-@@ -586,12 +587,11 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -609,7 +610,8 @@ void Action_setBindings(Htop_Action* keys) {
+    keys['q'] = actionQuit;
+    keys['a'] = actionSetAffinity;
+    keys[KEY_F(9)] = actionKill;
+-   keys['k'] = actionKill;
++   keys['x'] = actionKill;
++   keys['d'] = actionKill;
+    keys[KEY_RECLICK] = actionExpandOrCollapse;
+    keys['+'] = actionExpandOrCollapse;
+    keys['='] = actionExpandOrCollapse;
+@@ -620,12 +622,11 @@ void Action_setBindings(Htop_Action* keys) {
     keys['S'] = actionSetup;
     keys['C'] = actionSetup;
     keys[KEY_F(2)] = actionSetup;
@@ -47,7 +66,7 @@
     keys['c'] = actionTagAllChildren;
 --- a/CategoriesPanel.c
 +++ b/CategoriesPanel.c
-@@ -87,6 +87,8 @@ static HandlerResult CategoriesPanel_eventHandler(Panel* super, int ch) {
+@@ -77,6 +77,8 @@ static HandlerResult CategoriesPanel_eventHandler(Panel* super, int ch) {
        case KEY_CTRL('N'):
        case KEY_NPAGE:
        case KEY_PPAGE:
@@ -58,12 +77,7 @@
           int previous = selected;
 --- a/Panel.c
 +++ b/Panel.c
-@@ -372,14 +372,16 @@ void Panel_draw(Panel* this, bool focus) {
- 
- bool Panel_onKey(Panel* this, int key) {
-    assert (this != NULL);
--   
-+
+@@ -319,10 +319,12 @@ bool Panel_onKey(Panel* this, int key) {
     int size = Vector_size(this->items);
     switch (key) {
     case KEY_DOWN:
@@ -76,14 +90,14 @@
     case KEY_CTRL('P'):
        this->selected--;
        break;
-@@ -394,23 +396,33 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -337,23 +339,33 @@ bool Panel_onKey(Panel* this, int key) {
        break;
     #endif
     case KEY_LEFT:
 -   case KEY_CTRL('B'):
 +   case 'h':
        if (this->scrollH > 0) {
-          this->scrollH -= MAX(CRT_scrollHAmount, 0);
+          this->scrollH -= MAXIMUM(CRT_scrollHAmount, 0);
           this->needsRedraw = true;
        }
        break;
@@ -104,15 +118,15 @@
     case KEY_PPAGE:
 +   case KEY_CTRL('B'):
        this->selected -= (this->h - 1);
-       this->scrollV = MAX(0, this->scrollV - this->h + 1);
+       this->scrollV = MAXIMUM(0, this->scrollV - this->h + 1);
        this->needsRedraw = true;
        break;
     case KEY_NPAGE:
 +   case KEY_CTRL('F'):
        this->selected += (this->h - 1);
-       this->scrollV = MAX(0, MIN(Vector_size(this->items) - this->h,
+       this->scrollV = MAXIMUM(0, MINIMUM(Vector_size(this->items) - this->h,
                                   this->scrollV + this->h - 1));
-@@ -432,9 +444,11 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -375,9 +387,11 @@ bool Panel_onKey(Panel* this, int key) {
        break;
     }
     case KEY_HOME:
@@ -124,56 +138,9 @@
        this->selected = size - 1;
        break;
     case KEY_CTRL('A'):
---- a/README
-+++ b/README
-@@ -17,6 +17,44 @@
- This software has evolved considerably over the years,
- and is reasonably complete, but there is always room for improvement.
- 
-+Vim keybindings
-+----------------
-+
-+These are the keybindings added in this fork of htop:
-+
-+```
-+    g        to the top (gg in vim)
-+
-+  <C-b>      up 1 page
-+
-+  <C-u>      up 1/2 page
-+
-+    k
-+
-+h       l    one character
-+
-+    j
-+
-+  <C-d>      down 1/2 page
-+
-+  <C-f>      down 1 page
-+
-+    G        to the end
-+
-+--------------------------------------------------
-+
-+    o        Expand/collapse (like in NERDTree)
-+```
-+
-+In order to accomodate these keybindings, the following changes
-+were made to the original keybindings:
-+
-+* Ctrl+F and Ctrt+B can now longer be used to navigate horizontally
-+* 'h' can no longer be used to access the help, leaving Ctrl+F1 & '?'
-+* 'k' can no longer be used to kill processes, being replaced with 'x'
-+* 'l' can no longer be used to list open files, being replaced with 'L'
-+
-+
- Comparison between `htop` and classic `top`
- -------------------------------------------
- 
 --- a/ScreenManager.c
 +++ b/ScreenManager.c
-@@ -279,7 +279,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -257,7 +257,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
           continue;
        }
        case KEY_LEFT:
@@ -182,7 +149,7 @@
           if (this->panelCount < 2) {
              goto defaultHandler;
           }
-@@ -293,7 +293,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -271,7 +271,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
              goto tryLeft;
           break;
        case KEY_RIGHT:
