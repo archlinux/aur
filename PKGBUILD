@@ -6,7 +6,7 @@
 # Contributor: Tim Karreman <tim at karreman dot net>
 
 pkgname=mbuffer
-pkgver=20200505
+pkgver=20200929
 pkgrel=1
 pkgdesc="A tool for buffering data streams."
 arch=('x86_64' 'armv7l')
@@ -15,7 +15,7 @@ license=('GPL3')
 depends=('openssl')
 backup=('etc/mbuffer.rc')
 source=("http://www.maier-komor.de/software/${pkgname}/${pkgname}-${pkgver}.tgz")
-md5sums=('df39047654456f260665d66711cabcc5')
+md5sums=('e2b4f3b0d0944c08d52c167841bde3c0')
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
