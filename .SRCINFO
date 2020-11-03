@@ -1,0 +1,15 @@
+pkgbase = python-aiohttp-mako
+	pkgdesc = mako template renderer for aiohttp.web (http server for asyncio)
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://pypi.org/project/aiohttp-mako
+	arch = any
+	license = Apache 2
+	makedepends = python-setuptools
+	depends = python
+	source = python-aiohttp-mako-0.4.0.tar.gz::https://pypi.org/packages/source/a/aiohttp-mako/aiohttp-mako-0.4.0.tar.gz
+	sha256sums = f10bdee54589b6567e8a0339db582276fdaaa198764541d2f9741f1d3836312c
+	b2sums = 56889665316624c022d4a66b3286ca18057e85a64acff478df6993b3fbc7e19eed8683841454abd39d5d55b79bdf30ec708defa3711fee0fa26490ed99ff32db
+
+pkgname = python-aiohttp-mako
+
