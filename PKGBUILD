@@ -14,6 +14,7 @@ arch=('i686' 'x86_64')
 url="http://sun.hasenbraten.de/vasm/"
 license=('custom')
 depends=()
+#makedepends=('texinfo')
 #source=(http://sun.hasenbraten.de/vasm/release/vasm.tar.gz) # latest unversioned source url
 #source=(http://server.owl.de/~frank/tags/${pkgname}${_pkgver}.tar.gz)
 source=(http://phoenix.owl.de/tags/${pkgname}${_pkgver}.tar.gz)
@@ -38,8 +39,8 @@ build()
     done
   done
 
-  make doc/vasm.pdf
-  #make doc/vasm.html # currently fails due to missing file (1.8i)
+  #make doc/vasm.pdf # some users report texi problems (1.8i)
+  #make doc/vasm.html # currently fails due to missing html file (1.8i)
 }
 
 package()
@@ -52,8 +53,8 @@ package()
     done
   done
 
-  mkdir -p "${pkgdir}/usr/share/doc/vasm/"
-  install -m644 doc/vasm.pdf "${pkgdir}/usr/share/doc/vasm/"
+  #mkdir -p "${pkgdir}/usr/share/doc/vasm/"
+  #install -m644 doc/vasm.pdf "${pkgdir}/usr/share/doc/vasm/"
 }
 
 #
