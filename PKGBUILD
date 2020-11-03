@@ -1,23 +1,25 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=ubports-installer-git
-pkgver=0.4.18_beta.r4.g40b1a03
+pkgver=0.6.0_beta.r0.g4712efb
 pkgrel=1
 pkgdesc='A simple tool to install Ubuntu Touch on UBports devices'
 arch=('any')
 url='https://github.com/ubports/ubports-installer'
 license=('GPL3')
 depends=('android-tools' 'android-udev' 'electron')
-makedepends=('git' 'jq' 'npm')
+makedepends=('git' 'npm')
 provides=('ubports-installer')
 conflicts=('ubports-installer')
 source=("${pkgname}::git+${url}.git"
         ubports-installer
         ubports-installer.desktop
-        use-system-tools.patch)
+        disable-update-udev-prompts.patch
+        electrondist.patch)
 sha256sums=('SKIP'
-            'cc9a95c9b07eedb6ca18de0c09119747f311d52740ec69d83d08c8bd20b84aad'
+            'e3167aa1469a33d1eca4dae377ed51675bea08e61e6d17f94f83a241538be56b'
             '7f59cb66ab7e59caeff93f697e47f26f43a9a221258f4d89dee580e41dd7a39a'
-            '5b31be9612632f1a3beee3d38e97a23ee346ec814b580bfa41dad6e4f7ac4fb9')
+            '6d2be9f0d81fdd3ea6e95585457f967d9889c5884c1645b4212ea95add202f4e'
+            '768fcea52f63fed0bebb61861437db5f7e1f00358ad594c8d5593adc43a0f0c0')
 
 pkgver() {
     cd "$pkgname"
@@ -26,23 +28,16 @@ pkgver() {
 
 prepare() {
     cd "$pkgname"
-    patch -Np1 <../use-system-tools.patch
-    npm install --no-audit --no-progress --no-fund --ignore-scripts electron@"$(</usr/lib/electron/version)"
-
-    # Removing local references
-    for module in he sshpk; do
-        local target="node_modules/${module}/package.json"
-        jq 'del(.man)' "$target" >tmp.json
-        mv tmp.json "$target"
+    for p in ../{disable-update-udev-prompts,electrondist}.patch; do
+      patch -Np1 <"$p"
     done
+    npm install --no-audit --no-progress --no-fund --ignore-scripts electron@"$(</usr/lib/electron/version)"
+    npm run prerender
 }
 
 build() {
     cd "$pkgname"
-    npx electron-builder --linux --dir \
-      -c buildconfig-generic.json \
-      -c.electronDist=/usr/lib/electron \
-      -c.electronVersion="$(</usr/lib/electron/version)"
+    node ./build.js -o linux -p dir -a x64
 }
 
 package() {
@@ -51,6 +46,9 @@ package() {
 
     cd "${pkgname}"
     install -Dm644 -t "${pkgdir}/usr/share/ubports-installer" dist/linux-unpacked/resources/app.asar
+
+    find ./dist/linux-unpacked/resources/app.asar.unpacked -type d \( -name linux -o -name mac \) -print -exec rm -r {} +
+    cp -rt "${pkgdir}/usr/share/ubports-installer" dist/linux-unpacked/resources/app.asar.unpacked
 
     cd build/icons
     for i in *x*.png; do

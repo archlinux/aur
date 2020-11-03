@@ -1,0 +1,48 @@
+diff -ura package.orig/src/main.js package.new/src/main.js
+--- package.orig/src/main.js	2020-11-04 00:50:50.620740528 +0100
++++ package.new/src/main.js	2020-11-04 00:51:13.738986029 +0100
+@@ -95,7 +95,7 @@
+       },
+       udev: {
+         type: "boolean",
+-        default: false
++        default: true
+       },
+       windowsDrivers: {
+         type: "boolean",
+@@ -547,22 +547,6 @@
+       });
+   });
+ 
+-  // Task we need only on the first start
+-  mainWindow.webContents.once("did-finish-load", () => {
+-    utils
+-      .getUpdateAvailable()
+-      .then(() => {
+-        utils.log.info(
+-          "This is not the latest version of the UBports Installer! Please update: https://devices.ubuntu-touch.io/installer/" +
+-            (global.packageInfo.package
+-              ? "?package=" + global.packageInfo.package
+-              : "")
+-        );
+-        mainWindow.webContents.send("user:update-available");
+-      })
+-      .catch(() => {}); // Ignore errors, since this is non-essential
+-  });
+-
+   mainWindow.loadURL(
+     url.format({
+       pathname: path.join(__dirname, "html/index.html"),
+diff -ura package.orig/src/pug/index.pug package.new/src/pug/index.pug
+--- package.orig/src/pug/index.pug	2020-11-04 00:50:50.622740549 +0100
++++ package.new/src/pug/index.pug	2020-11-04 00:51:23.690090642 +0100
+@@ -45,9 +45,7 @@
+     include modals/unlock
+     include modals/result
+     // high prio
+-    include modals/udev
+     include modals/windows-drivers
+-    include modals/new-update
+     // errors
+     include modals/low-power
+     include modals/connection-lost
