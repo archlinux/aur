@@ -9,7 +9,7 @@ pkgname=(
 )
 pkgver=1.11.4
 _pkgver=${pkgver/\~/-}
-pkgrel=1
+pkgrel=3
 pkgdesc="Lightweight virtual machines for containers (guest components)"
 arch=('x86_64')
 url="https://katacontainers.io/"

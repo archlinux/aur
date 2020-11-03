@@ -1,7 +1,7 @@
 pkgbase = kata-containers-guest
 	pkgdesc = Lightweight virtual machines for containers (guest components)
 	pkgver = 1.11.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://katacontainers.io/
 	arch = x86_64
 	license = Apache
