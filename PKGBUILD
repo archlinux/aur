@@ -1,6 +1,6 @@
 # Maintainer: Patrice Lacouture <archlinux@lacouture.org>
 pkgname=gplanarity-svn
-pkgver=r19643
+pkgver=r19257
 pkgrel=1
 pkgdesc="A simple puzzle game involving untangling planar graphs for fun and prizes"
 arch=('i686' 'x86_64')
