@@ -3,12 +3,12 @@
 
 pkgname=ledger2beancount
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Ledger to Beancount text-based converter'
 arch=('any')
 url="https://github.com/beancount/ledger2beancount"
 license=('GPL')
-depends=('perl' 'perl-config-onion' 'perl-date-calc'
+depends=('perl' 'perl-date-calc'
          'perl-datetime-format-strptime' 'perl-file-basedir'
          'perl-getopt-long-descriptive' 'perl-string-interpolate' 'perl-yaml-libyaml'
          'perl-enum' 'perl-regexp-common' 'perl-list-moreutils'
