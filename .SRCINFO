@@ -38,3 +38,44 @@ pkgbase = geary-git
 
 pkgname = geary-git
 
+pkgbase = geary-git
+	pkgdesc = An email application built around conversations, for the GNOME 3 desktop.
+	pkgver = r6443.a24a6124
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/geary
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = itstool
+	makedepends = meson
+	makedepends = vala
+	depends = appstream-glib
+	depends = enchant
+	depends = folks
+	depends = gcr
+	depends = gmime3
+	depends = gtk3
+	depends = gsound
+	depends = gnome-online-accounts
+	depends = gspell
+	depends = libgee
+	depends = libhandy
+	depends = libnotify
+	depends = libpeas
+	depends = libsoup
+	depends = libstemmer
+	depends = libunwind
+	depends = libxml2
+	depends = libytnef
+	depends = nuspell
+	depends = sqlite
+	depends = webkit2gtk
+	provides = geary
+	conflicts = geary
+	source = git+https://gitlab.gnome.org/GNOME/geary.git
+	sha256sums = SKIP
+
+pkgname = geary-git
+
