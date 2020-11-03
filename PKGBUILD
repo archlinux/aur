@@ -1,5 +1,6 @@
-# Original Author: Maxim Andersson <thesilentboatman@gmail.com>
-# Current Maintainer: Jugal Gala <jugal.gala@sakec.ac.in>
+# Maintainer: j.r <j.r@jugendhacker.de>
+# Contributor: Jugal Gala <jugal.gala@sakec.ac.in>
+# Contributor: Maxim Andersson <thesilentboatman@gmail.com>
 
 pkgname=gnome-shell-extension-topicons-plus
 pkgver=27
