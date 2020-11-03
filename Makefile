@@ -1,8 +1,8 @@
 .PHONY: all clean updpkgsums
 
-all: azpainterb-*.pkg.tar
+all: azpainterb-*.pkg.tar.zst
 
-azpainterb-*.pkg.tar: updpkgsums .SRCINFO PKGBUILD
+azpainterb-*.pkg.tar.zst: .SRCINFO PKGBUILD
 	makepkg -f
 
 .SRCINFO: PKGBUILD
