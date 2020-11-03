@@ -4,9 +4,9 @@ pkgdesc="ROS - Common code for working with audio in ROS."
 url='https://wiki.ros.org/audio_common'
 
 pkgname='ros-melodic-audio-common'
-pkgver='0.3.8'
+pkgver='0.3.9'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -21,7 +21,7 @@ depends=(${ros_depends[@]})
 
 _dir="audio_common-${pkgver}/audio_common"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/audio_common/archive/${pkgver}.tar.gz")
-sha256sums=('f0c552e06e211998981c7204d479b7c5130503812fbba28324d1cb52b3454d21')
+sha256sums=('59d56e5894666e81641ae8684fd32937769befbd8110bf22eae3beeca0608e19')
 
 build() {
   # Use ROS environment variables
