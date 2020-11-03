@@ -11,6 +11,7 @@ pkgbase = roundcubemail-plugin-carddav-git
 	conflicts = roundcube-rcmcarddav
 	conflicts = roundcube-rcmcarddav-git
 	conflicts = roundcubemail-plugin-carddav
+	replaces = roundcube-rcmcarddav
 	backup = etc/webapps/roundcubemail/plugins/carddav/config.inc.php
 	source = roundcubemail-plugin-carddav-git::git+https://github.com/blind-coder/rcmcarddav.git
 	md5sums = SKIP
