@@ -1,7 +1,7 @@
 # Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
 
 pkgname=python-pyvoc
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 arch=(any)
 license=('MIT')
@@ -10,7 +10,7 @@ url="https://github.com/makkoncept/pyvoc"
 depends=('python-colorama' 'python-pyenchant' 'python-requests' 'python-termcolor')
 makedepends=('python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/makkoncept/pyvoc/archive/v${pkgver}.tar.gz")
-b2sums=('76b3627ff8bca1d82bc7d5b45d21debc9c7a92e85d98ad2308aef108323ebcbb2c4db75bed3eca1a3fa460cf717784a64c9bfac77f226ec57ec2fc1c5e712f61')
+b2sums=('ed51d5ae2686cdbe700607266d990f0b157f185090b68b461a61e719df43a2a43a9ca4a4e8287c889dd80f7e6cb22cd2f34cca12897eec46677c7820b943afce')
 
 build() {
   cd "pyvoc-$pkgver"
