@@ -1,68 +1,71 @@
-# Maintainer: Stephen Martin <stephensrmmartin at gmail dot com>
+# Maintainer: a821
+# Contributor: Stephen Martin <stephensrmmartin at gmail dot com>
+
 pkgname=shiny-server-git
-pkgver=1.5.6.875.r37.g66e45ab
+_pkgname=${pkgname%-git}
+pkgver=1.5.16.958.r3.g224af58
 pkgrel=1
 epoch=1
-pkgdesc="Open-source version of the shiny web development framework server"
-arch=('i686' 'x86_64')
-url="http://www.rstudio.com/shiny/server/install-opensource"
-license=('AGPL')
-depends=('r' 'wget')
-makedepends=('git' 'python2' 'cmake' 'r')
+pkgdesc="Host Shiny applications over the web"
+arch=('x86_64')
+url="https://rstudio.com/shiny/server"
+license=('AGPL3')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+depends=('r')
+makedepends=('git' 'cmake' 'wget' 'python')
+optdepends=(
+    'r-shiny: build interactive web apps with R' # AUR
+    'r-rmarkdown: convert R markdown docs to various formats' # AUR
+)
+source=("git+https://github.com/rstudio/shiny-server"
+        "${_pkgname}.service"
+        "${_pkgname}.sysusers"
+        "${_pkgname}.tmpfiles")
+sha256sums=("SKIP"
+            "1dc3401a3d87ef27ae026dc45bc374c2763b2819384ef8f326b4b7a12201ef42"
+            "e56bfe2b7bf85fdc72d1080ab2d08a54c52928a0dc25cdbeff1302981aa18e30"
+            "27538c6961fdb70f168be6d7c5754c474dd221dff0dcf639181d5803d6646a54")
 backup=('etc/shiny-server/shiny-server.conf')
-install='accounts.install'
-source=('shiny-server::git+https://github.com/rstudio/shiny-server.git'
-        'shiny-server.service')
-sha256sums=('SKIP'
-            '8486c5e5d2c8362daf2c6826ea702e3f49dd6ee64c30ca79bdf2f4edbe0d2744')
-_gitroot=https://github.com/rstudio/shiny-server.git
-_gitname=shiny-server
  
-pkgver(){
-  cd "$srcdir/$_gitname"
-  git describe --tags --long | sed -E 's/v//;s/([^-]*-g)/r\1/;s/-/./g'
+pkgver() {
+    cd "${_pkgname}"
+    git describe --long --tags | sed -e 's/^v//;s/-/.r/;s/-/./'
 }
- 
-prepare(){
-  # Vigorously force the use of python2
-  cd $srcdir
-  find -type f -exec sed \
-        -e 's_^#!/usr/bin/env python$_&2_' \
-            -e 's_^\(#!/usr/bin/python2\).[45]$_\1_' \
-                -e 's_^#!/usr/bin/python$_&2_' \
-                    -e "s_'python'_'python2'_" -i {} \;
-  }
+
+prepare() {
+    cd "${_pkgname}"
+    mkdir -p build tmp
+}
  
 build() {
-  cd "$srcdir/$_gitname"
-  mkdir tmp
-  cd tmp
-  # More python2 hackery
-  PATH=$PWD/../bin/:$PATH
-  ln -s `which python2` ../bin/python
-  export _PYTHON=`which python2`
-  export PYTHON=`which python2`
- 
-  # Node fails with gcc7
-  #export CC=/bin/gcc-6
-  #export CXX=/bin/g++-6
- 
-  # CMake
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON="$_PYTHON" ../
-  make
- 
-  mkdir ../build
-  (cd .. && external/node/install-node.sh)
-  (cd .. && bin/npm --python="$PYTHON" install)
-  (cd .. && bin/node ext/node/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js --python="$PYTHON" rebuild)
+    cd "${_pkgname}"/tmp
+
+    # install and download bundled Node.js
+    ../external/node/install-node.sh
+
+    # add bin PATH to reference node
+    PATH="${srcdir}/${_pkgname}/bin":$PATH
+
+    cmake -DCMAKE_INSTALL_PREFIX=/usr/share ..
+    make
+    cd ..
+    ./bin/npm install
+    ./bin/node ./ext/node/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js rebuild
 }
- 
+
 package() {
-  cd "$srcdir/$_gitname/tmp"
-  make DESTDIR="$pkgdir/" install
-  mkdir -p $pkgdir/usr/bin/
-  mkdir -p $pkgdir/etc/shiny-server/
-  ln -s /usr/shiny-server/bin/shiny-server $pkgdir/usr/bin/shiny-server
-  install -m 644 -D $srcdir/shiny-server.service $pkgdir/usr/lib/systemd/system/shiny-server.service
-  install -m 644 -D $srcdir/$_gitname/config/default.config $pkgdir/etc/shiny-server/shiny-server.conf
+    cd "${_pkgname}"/tmp
+    make DESTDIR="${pkgdir}" install
+    install -Dm644 ../config/default.config "${pkgdir}/etc/shiny-server/shiny-server.conf"
+
+    cd ../..
+    install -Dm644 ${_pkgname}.service -t "${pkgdir}/usr/lib/systemd/system"
+    install -Dm644 ${_pkgname}.sysusers "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
+    install -Dm644 ${_pkgname}.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
+
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s /usr/share/shiny-server/bin/shiny-server "${pkgdir}/usr/bin/shiny-server"
 }
+
+# vim: set ts=4 sw=4 et:
