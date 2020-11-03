@@ -3,7 +3,7 @@
 
 pkgname=globe-cli-git
 _pkgname=globe
-pkgver=0.1.2.r0.g89a2de2
+pkgver=0.2.0.r1.gbbd11b7
 pkgrel=1
 pkgdesc="ASCII globe generator (git)"
 arch=('x86_64')

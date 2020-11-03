@@ -1,6 +1,6 @@
 pkgbase = globe-cli-git
 	pkgdesc = ASCII globe generator (git)
-	pkgver = 0.1.2.r0.g89a2de2
+	pkgver = 0.2.0.r1.gbbd11b7
 	pkgrel = 1
 	url = https://github.com/adamsky/globe
 	arch = x86_64
