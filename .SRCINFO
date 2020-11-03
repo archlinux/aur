@@ -1,7 +1,7 @@
 pkgbase = bump2version
 	pkgdesc = Version-bump your software with a single command! (bumpversion community fork)
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/c4urself/bump2version
 	arch = any
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = bump2version
 	depends = python-setuptools
 	provides = bumpversion
 	conflicts = bumpversion
-	source = https://pypi.python.org/packages/source/b/bump2version/bump2version-1.0.0.tar.gz
-	sha256sums = cd4f3a231305e405ed8944d8ff35bd742d9bc740ad62f483bd0ca21ce7131984
+	source = https://pypi.python.org/packages/source/b/bump2version/bump2version-1.0.1.tar.gz
+	sha256sums = 762cb2bfad61f4ec8e2bdf452c7c267416f8c70dd9ecb1653fd0bbb01fa936e6
 
 pkgname = bump2version
 

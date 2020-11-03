@@ -2,8 +2,8 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch.de>
 
 pkgname=bump2version
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Version-bump your software with a single command! (bumpversion community fork)'
 provides=('bumpversion')
 conflicts=('bumpversion')
@@ -23,4 +23,4 @@ package() {
     python setup.py install --root="${pkgdir}" --optimize=1
 }
 
-sha256sums=('cd4f3a231305e405ed8944d8ff35bd742d9bc740ad62f483bd0ca21ce7131984')
+sha256sums=('762cb2bfad61f4ec8e2bdf452c7c267416f8c70dd9ecb1653fd0bbb01fa936e6')
