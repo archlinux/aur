@@ -1,8 +1,7 @@
 # Maintainer: Bart Janssens <bart at bartjanssens dot org>
 
 pkgname=ttf-juliamono
-_commit='3e9bd602b89ecd377f536007e8fdd75b80e01d60'
-pkgver=0.022
+pkgver=0.025
 pkgrel=1
 pkgdesc='JuliaMono is a monospace typeface designed for programming in Julia.'
 arch=('any')
@@ -10,7 +9,7 @@ url='https://juliamono.netlify.app/'
 license=('custom:SIL Open Font License v1.1')
 depends=('xorg-fonts-encodings')
 source=("JuliaMono-${pkgver}.tar.gz::https://github.com/cormullion/juliamono/releases/download/v${pkgver}/JuliaMono.tar.gz")
-sha256sums=('cbed22ede8b72705e856f0cda4b2c63d3aea48efc2962076520fd529febf8acb')
+sha256sums=('7f787fbc2f9fe175e808a209ca97d2dab253ef504890d79328a4c663febb270a')
 
 package() {
   cd "${srcdir}"
