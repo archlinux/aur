@@ -66,12 +66,12 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rt54
-pkgver=5.4.66
+pkgver=5.4.74
 _major=5.4
 _branch=5.x
-xanmod=38
-pkgrel=1
-_rev=1
+_rt=41
+xanmod=1
+pkgrel=${xanmod}
 pkgdesc='Linux Xanmod real-time version - LTS branch 5.4.x'
 arch=(x86_64)
 url="http://www.xanmod.org/"
@@ -81,10 +81,10 @@ makedepends=(
   python-sphinx python-sphinx_rtd_theme graphviz imagemagick
 )
 options=('!strip')
-_srcname="linux-${pkgver}-rt${xanmod}-xanmod${_rev}"
+_srcname="linux-${pkgver}-rt${_rt}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "https://github.com/xanmod/linux/releases/download/${pkgver}-rt${xanmod}-xanmod${_rev}/patch-${pkgver}-rt${xanmod}-xanmod${_rev}.xz"
+        "https://github.com/xanmod/linux/releases/download/${pkgver}-rt${_rt}-xanmod${xanmod}/patch-${pkgver}-rt${_rt}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
         '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b')
 validpgpkeys=(
@@ -101,7 +101,7 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            'c3b8631318411c68ad5b71d686829031a9ac1e985849fb3df8b291e8da313493'
+            '556c4e4ab7b6acabbc400655d4d9d00e247f372fdb8e8d44bdcf4a4567463d03'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
@@ -113,7 +113,7 @@ prepare() {
   cd linux-${_major}
 
   # Apply Xanmod patch
-  patch -Np1 -i ../patch-${pkgver}-rt${xanmod}-xanmod${_rev}
+  patch -Np1 -i ../patch-${pkgver}-rt${_rt}-xanmod${xanmod}
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -167,8 +167,8 @@ prepare() {
   # If it's a full config, will be replaced
   # If not, you should use scripts/config commands, one by line
   if [ -f "${startdir}/myconfig" ]; then
-    if [ $(wc -l < "${startdir}/myconfig") -gt 1000 ]; then
-      # myconfig is a full config file. Replace it
+    if ! grep -q 'scripts/config' "${startdir}/myconfig"; then
+      # myconfig is a full config file. Replacing default .config
       msg2 "Using user CUSTOM config..."
       cp -f "${startdir}"/myconfig .config
     else
