@@ -1,8 +1,8 @@
 pkgbase = jupp
 	pkgdesc = Fork of the joe text editor. Jupp is "the Editor which sucks less"
-	pkgver = 38
+	pkgver = 40
 	pkgrel = 1
-	url = https://www.mirbsd.org/jupp.htm
+	url = http://www.mirbsd.org/jupp.htm
 	arch = i686
 	arch = x86_64
 	arch = aarch64
@@ -18,9 +18,9 @@ pkgbase = jupp
 	backup = etc/joe/jstarrc
 	backup = etc/joe/jupprc
 	backup = etc/joe/rjoerc
-	source = https://www.mirbsd.org/MirOS/dist/jupp/joe-3.1jupp38.tgz
-	md5sums = df3df133eed0a28a72f7fb334a7bca4e
-	sha1sums = 8c5f423cf7b8f884756b9be4c0b48279d378d2fc
+	source = https://www.mirbsd.org/MirOS/dist/jupp/joe-3.1jupp40.tgz
+	md5sums = ad88a30b8ce2ca7bc732d9ba8a93c558
+	sha1sums = 3b4b9261b02206fc8f31cd27f415fdfc98eecae2
 
 pkgname = jupp
 
