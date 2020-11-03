@@ -12,7 +12,7 @@ pkgbase = cryptmount-arm
 	depends = util-linux
 	provides = cryptmount
 	backup = etc/cryptmount/cmtab
-	source = cryptmount-arm-5.3.2.tar.gz::http://downloads.sourceforge.net/project/cryptmount/cryptmount/cryptmount-5.3/cryptmount-5.3.2.tar.gz
+	source = cryptmount-5.3.2.tar.gz::http://downloads.sourceforge.net/project/cryptmount/cryptmount/cryptmount-5.3/cryptmount-5.3.2.tar.gz
 	sha512sums = 972c7fefadb86bb82cdeb96b185f45bec08ac07d39474a4c7e2a473bc2453624ffcc387b6836a02260dcd0d1176a5a743c45bdf3d7e78d2f519f02a48c62a6b8
 
 pkgname = cryptmount-arm
