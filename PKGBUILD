@@ -1,13 +1,13 @@
 # Maintainer: zer0def <zer0def@github>
 pkgname=cloud-hypervisor
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Rust-VMM based cloud hypervisor from Intel"
 url="https://github.com/cloud-hypervisor/cloud-hypervisor"
 arch=('x86_64' 'aarch64')
 license=('Apache:2.0')
-depends=(
-  'qemu'  # for /usr/lib/qemu/virtiofsd
+optdepends=(
+  'qemu-headless'  # for /usr/lib/qemu/virtiofsd
 )
 makedepends=('rust')
 source=(
