@@ -1,8 +1,8 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgname=papermc
-_pkgver=1.16.3
-_build=211
+_pkgver=1.16.4
+_build=259
 _license_commit=11de41c777
 pkgver="${_pkgver}+b${_build}"
 pkgrel=1
@@ -26,7 +26,7 @@ source=("papermc.${pkgver}.jar"::"https://papermc.io/api/v1/paper/${_pkgver}/${_
 	"papermc.sysusers"
 	"LICENSE_${pkgver}.md"::"https://raw.githubusercontent.com/PaperMC/Paper/${_license_commit}/LICENSE.md")
 noextract=("papermc.${pkgver}.jar")
-sha512sums=('a901d724fb98dff0cebb69cdbc3cdaddba41ebf973c194bf7e550bad75d54d96f184663590b1c3e129a1d37c61d037381b09e361603584b880d187a15ef5dcb1'
+sha512sums=('8df4249ca8b23d6975a6f29252f237c86588c196e20fb67b484a2d6ef5fd327d6f2cf1ef5d44cd802ce8482a531f9b4661b1db651f2f3ebd8aa8662970158983'
             'a4fcc9f28436c0163e9414f2793fcbd4f6ea74772230cdff4a628246eae2a8008688b3dfb94d433f8f0887cd7eea3fe43ce25f9d5812d46e62179ff315b62895'
             '51c5345155e8640d4f1eaef0c8cfb890ae46063f2d4e7a0fe181ad4c8ff7b96fea88b0f9fc74031d589dfd61602f37b440f183ca1859835930fe69d37508cd42'
             'f29c4044d9e3cc5ab137c21f7e62399b36d7e1f777d5558a39f7b4a01de75bdf2de0b8678e424accc03934ca7db9ebb6a22c78c8c4497759287dd55e1c3eb456'
