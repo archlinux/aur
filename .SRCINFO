@@ -1,6 +1,6 @@
 pkgbase = mudlet-git
 	pkgdesc = A modern MUD client with a graphical user inteface and built in Lua scripting (git development branch
-	pkgver = 4.6.1.r308.g62b21e672
+	pkgver = r513.gea6df57ad
 	pkgrel = 1
 	url = http://www.mudlet.org
 	arch = i686

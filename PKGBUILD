@@ -1,7 +1,7 @@
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet-git
 _gitname=Mudlet
-pkgver=4.6.1.r308.g62b21e672
+pkgver=r513.gea6df57ad
 pkgrel=1
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting (git development branch"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd ${_gitname}
-    git describe --long --tags | sed 's/^Mudlet-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags| sed 's/^Mudlet-4.6.1.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }    
 
 build() {
