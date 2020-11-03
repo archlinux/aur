@@ -1,29 +1,29 @@
 # Maintainer: Sigmund Vestergaard <sigmundv at gmail dot com>
 pkgname=python-eve-git
-pkgver=0.5.r174.ge615518
+pkgver=1.1.4.r5.ge1194eb7
 pkgrel=1
+_name=eve
 pkgdesc="An open source Python REST API framework designed for human beings."
 arch=('any')
 url="http://python-eve.org/"
 license=('BSD')
+depends=('python-flask' 'python-simplejson' 'python-pymongo' 'python-cerberus' 'python-events')
 makedepends=('git' 'python-setuptools')
+optdepends=('python-sphinx: docs' 'python-sphinx-alabaster-theme: theme for sphinx' 'python-doc8: style checker for sphinx' 'python-redis: test use' 'python-testfixtures: test use' 'python-pytest: test use' 'python-tox: test use')
 conflicts=('python-eve')
 provides=('python-eve')
-options=(!emptydirs)
-source=("git+https://github.com/nicolaiarocci/eve.git")
-_repname=eve
+#source=("git+https://github.com/pyeve/$_name.git")
+source=("$_name::git+https://github.com/pyeve/$_name.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_repname"
-  # cutting off 'v' prefix that presents in the git tag
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/$_name"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$srcdir/$_repname"
+  cd "$srcdir/$_name"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:

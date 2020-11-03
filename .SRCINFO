@@ -1,16 +1,27 @@
 pkgbase = python-eve-git
 	pkgdesc = An open source Python REST API framework designed for human beings.
-	pkgver = 0.5.r174.ge615518
+	pkgver = 1.1.4.r5.ge1194eb7
 	pkgrel = 1
 	url = http://python-eve.org/
 	arch = any
 	license = BSD
 	makedepends = git
 	makedepends = python-setuptools
+	depends = python-flask
+	depends = python-simplejson
+	depends = python-pymongo
+	depends = python-cerberus
+	depends = python-events
+	optdepends = python-sphinx: docs
+	optdepends = python-sphinx-alabaster-theme: theme for sphinx
+	optdepends = python-doc8: style checker for sphinx
+	optdepends = python-redis: test use
+	optdepends = python-testfixtures: test use
+	optdepends = python-pytest: test use
+	optdepends = python-tox: test use
 	provides = python-eve
 	conflicts = python-eve
-	options = !emptydirs
-	source = git+https://github.com/nicolaiarocci/eve.git
+	source = eve::git+https://github.com/pyeve/eve.git#branch=master
 	sha256sums = SKIP
 
 pkgname = python-eve-git
