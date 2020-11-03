@@ -2,36 +2,31 @@
 
 _pkgname='pythontexfigures'
 pkgname="python-${_pkgname}"
+
 pkgver=0.2.0
 pkgrel=1
+_commit_version='55bf83a495cf7b4f0d408fa834f430e3fcd5d95f'
+
 pkgdesc='Embed matplotlib figures into LaTeX documents using PythonTeX'
 arch=('any')
 url='https://github.com/mje-nz/pythontexfigures'
+_url_pypi='https://pypi.org/project/pythontexfigures'
 license=('BSD')
 depends=('python' 'python-matplotlib' 'python-pygments')
-makedepends=('python-setuptools')
-provides=("${_pkgname}")
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
-        "${_pkgname}-${pkgver}-Readme.md::${url}/raw/master/Readme.md"
-        "${_pkgname}-${pkgver}-LICENSE::${url}/raw/master/LICENSE")
-sha256sums=('99f2c9bff53ce5a41fa901add18328f0a767017949aee3198d58619c4fba9a4c'
-            'SKIP'
-            'SKIP')
-
-prepare() {
-  cp -f "${_pkgname}-${pkgver}-Readme.md" "${_pkgname}-${pkgver}/Readme.md"
-}
+makedepends=('git' 'python-setuptools')
+source=("git+${url}.git#commit=${_commit_version}")
+sha256sums=('SKIP')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${_pkgname}"
   python setup.py build
 }
 
 package() {
-  install -Dm644 "${_pkgname}-${pkgver}-Readme.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "${_pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  cd "${_pkgname}-${pkgver}"
+  cd "${_pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dvm644 'Readme.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
