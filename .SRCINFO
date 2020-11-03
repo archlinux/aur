@@ -2,15 +2,14 @@ pkgbase = qmarkdown
 	pkgdesc = qMarkdown - minimal markdown viewer
 	pkgver = 0.2.1
 	pkgrel = 1
-	url = https://github.com/Peterkmoss/qMarkdown
+	url = https://github.com/Peterkmoss/qmarkdown
 	arch = x86_64
 	license = GPL
 	makedepends = gcc>=9
 	depends = qt5-base
 	provides = qmarkdown
-	source = https://github.com/Peterkmoss/qMarkdown/archive/v0.2.1.tar.gz
+	source = https://github.com/Peterkmoss/qmarkdown/archive/v0.2.1.tar.gz
 	md5sums = daa239b9739c693171d8622d5eea5289
 
 pkgname = qmarkdown
-
 

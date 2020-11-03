@@ -4,12 +4,12 @@ pkgver=0.2.1
 pkgrel=1
 pkgdesc="qMarkdown - minimal markdown viewer"
 arch=("x86_64")
-url="https://github.com/Peterkmoss/qMarkdown"
+url="https://github.com/Peterkmoss/qmarkdown"
 license=('GPL')
 depends=('qt5-base')
 makedepends=('gcc>=9')
 provides=('qmarkdown')
-source=("https://github.com/Peterkmoss/qMarkdown/archive/v$pkgver.tar.gz")
+source=("https://github.com/Peterkmoss/qmarkdown/archive/v$pkgver.tar.gz")
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -17,7 +17,7 @@ build() {
 }
 
 package() {
-	cd "qMarkdown-$pkgver"
+	cd "$pkgname-$pkgver"
     make PREFIX=/usr DESTDIR="$pkgdir" install
 }
 md5sums=('daa239b9739c693171d8622d5eea5289')
