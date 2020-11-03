@@ -5,14 +5,14 @@ pkgname=ros-melodic-can-msgs
 pkgdesc='CAN related message types.'
 url="http://wiki.ros.org/can_msgs?distro=melodic"
 
-pkgver='0.8.4'
+pkgver='0.8.5'
 pkgrel=1
 arch=('any')
 license=('LGPL3')
 
 _dir="ros_canopen-${pkgver}/can_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-industrial/ros_canopen/archive/${pkgver}.tar.gz")
-sha256sums=('0e35370ce242ab936386032764e7f0d9976fec43f2735d9482f4bb5f637fc19a')
+sha256sums=('3ef1aefdaadfc3548a9b3ea419709f858c1bb9bfdf85cf76ccd8bbcde5c34d9f')
 
 ros_makedepends=(
   ros-melodic-message-generation
