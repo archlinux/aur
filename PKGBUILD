@@ -1,7 +1,7 @@
 # Maintainer: Katoitalia
 
 pkgname=obs-plugin-tuna-git
-pkgver=1.5.3.r1.geab85d1
+pkgver=1.5.3
 pkgrel=1
 arch=(x86_64)
 pkgdesc="Song information plugin for obs-studio git version"
