@@ -3,7 +3,7 @@
 pkgname=ffmpeg-normalize-git
 pkgver=1.20.1.r2.gbc0fbb3
 pkgrel=1
-pkgdesc="Audio normalization for Python/FFmpeg"
+pkgdesc="Normalize loudness of audio and video files using FFmpeg"
 arch=('any')
 url="https://github.com/slhck/ffmpeg-normalize"
 license=('MIT')
