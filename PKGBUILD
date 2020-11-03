@@ -4,7 +4,7 @@ _pkgname=proton-call
 pkgname=proton-caller
 __pkgname=Proton-Caller
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Run any Windows program through Proton"
 arch=('x86_64')
 url="https://github.com/caverym/Proton-Caller/"
@@ -19,7 +19,7 @@ sha256sums=('c9a4aa311c5a503dec0a6bf2f8b6ca9cb2a999d17c6087070cb940b7484e3485')
 
 build() {
   cd "$srcdir/$__pkgname-$pkgver"
-    g++ -o "$_pkgname" src/main.cpp src/ProtonCaller.cpp -std=c++17
+    make
 }
 
 package() {
