@@ -2,7 +2,7 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=tootle-git
-pkgver=1.0.alpha1.r6.g1ffd3ba
+pkgver=1.0.alpha2.r2.gcc9404a
 pkgrel=1
 pkgdesc='GTK+ 3 client for Mastodon (git)'
 arch=(i686 x86_64)
@@ -17,7 +17,8 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd tootle
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' 
+  #| cut -c2-48
 }
 
 build() {
