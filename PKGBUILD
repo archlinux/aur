@@ -2,13 +2,36 @@
 
 pkgname='perl-devel-repl'
 pkgver='1.003028'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="a modern perl interactive shell"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-file-homedir' 'perl-module-runtime' 'perl-moose>=0.93' 'perl-moosex-getopt>=0.72' 'perl-moosex-object-pluggable>=0.0009' 'perl-namespace-autoclean' 'perl-task-weaken')
-makedepends=('perl-test-fatal')
+depends=(
+  # main runtime requirements
+  'perl-file-homedir'
+  'perl-module-runtime'
+  'perl-moose>=0.93'
+  'perl-moosex-getopt>=0.72'
+  'perl-moosex-object-pluggable>=0.0009'
+  'perl-namespace-autoclean'
+  'perl-task-weaken'
+
+  # runtime requirements for modules
+  'perl-b-keywords'
+  'perl-data-dump-streamer'
+  'perl-data-dumper-concise'
+  'perl-file-next'
+  'perl-lexical-persistence'
+  'perl-module-refresh'
+  'perl-ppi'
+  'perl-ppi-xs'
+  'perl-sys-sigaction'
+)
+makedepends=(
+  'perl-test-cpan-meta'
+  'perl-test-fatal'
+)
 url='http://search.cpan.org/dist/Devel-REPL/'
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/Devel-REPL-${pkgver}.tar.gz")
 sha512sums=('f3eab967fc5502cdb66a601a20ef83561cf285c19c0634d77d0a037416874b0d8faeb0f840fff7d943c3c43dfed4eca0c8afd56f82a69065938f5b872f58fe7e')
