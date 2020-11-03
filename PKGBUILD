@@ -21,7 +21,7 @@ info() {
 pkgver() {
 	info
 
-    echo "$shadow_version"
+  echo "$shadow_version"
 }
 
 # Get the SHA512 checksum
