@@ -1,0 +1,14 @@
+pkgbase = alterlinux-medit-themes
+	pkgdesc = Medit themes for Alter Linux (Arc theme and Adapta theme)
+	pkgver = r19.67f0543
+	pkgrel = 1
+	url = https://github.com/FascodeNet/aptpac
+	arch = any
+	license = custom
+	makedepends = git
+	depends = medit
+	source = git+https://github.com/FascodeNet/medit-themes
+	md5sums = SKIP
+
+pkgname = alterlinux-medit-themes
+
