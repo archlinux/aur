@@ -1,6 +1,6 @@
 # Maintainer: AsamK <asamk@gmx.de>
 pkgname=git-absorb
-pkgver=0.6.5
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="git commit --fixup, but automatic "
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=(
   'cargo'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tummychow/git-absorb/archive/${pkgver}.tar.gz")
-sha256sums=('0c8bf3520209f6d292515ccaaa4b91d7d5e18bd8abe41fad049b5a2797386892')
+sha256sums=('955069cc70a34816e6f4b6a6bd1892cfc0ae3d83d053232293366eb65599af2f')
 
 build() {
   cd "${pkgname}-${pkgver}"
