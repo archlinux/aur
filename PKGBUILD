@@ -13,7 +13,7 @@ _version=255
 _filename="aresregular"$_version"_installer.exe"
 source=(ares.sh ares.desktop ares.xpm https://aresgalaxy.io/$_filename)
 md5sums=('c7bc3239f0a3f6e001942823f882bdcb'
-         '752293e683546937e2258b0b22406c10'
+         '56d5bf3c52a8c0977543b4201aeba170'
          'f89b51f21633e02c9017222b33544c1b'
          '0e32228c7d809d7fef94bbda16091375')
 

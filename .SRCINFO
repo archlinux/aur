@@ -14,7 +14,7 @@ pkgbase = ares
 	source = ares.xpm
 	source = https://aresgalaxy.io/aresregular255_installer.exe
 	md5sums = c7bc3239f0a3f6e001942823f882bdcb
-	md5sums = 752293e683546937e2258b0b22406c10
+	md5sums = 56d5bf3c52a8c0977543b4201aeba170
 	md5sums = f89b51f21633e02c9017222b33544c1b
 	md5sums = 0e32228c7d809d7fef94bbda16091375
 
