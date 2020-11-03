@@ -1,16 +1,16 @@
 pkgbase = netdata-go-plugins
 	pkgdesc = netdata go.d plugin
-	pkgver = 0.23.0
+	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://github.com/netdata/go.d.plugin
 	arch = x86_64
 	license = GPL3
 	makedepends = go
 	depends = glibc
-	source = netdata-go-plugins-0.23.0.tar.gz::https://github.com/netdata/go.d.plugin/archive/v0.23.0.tar.gz
-	source = netdata-go-plugins-0.23.0-config.tar.gz::https://github.com/netdata/go.d.plugin/releases/download/v0.23.0/config.tar.gz
-	sha256sums = 994d3c71e96057bbd70027f7dff17469c69f2cc15467eb28d3220e7089381662
-	sha256sums = 55733a75130953bbce5c249cfbb369afd543a36e714f8b55f9eafb2886ebf003
+	source = netdata-go-plugins-0.24.0.tar.gz::https://github.com/netdata/go.d.plugin/archive/v0.24.0.tar.gz
+	source = netdata-go-plugins-0.24.0-config.tar.gz::https://github.com/netdata/go.d.plugin/releases/download/v0.24.0/config.tar.gz
+	sha256sums = 36457592a0e36d193af8416b85e9d7104c8e1f1512fc1f57c1ec3daf6553f42c
+	sha256sums = 78612d7e35ba89cc0cb17ef29fb85de256f8f10de8587ef5fd8c551f93baad96
 
 pkgname = netdata-go-plugins
 
