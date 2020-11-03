@@ -1,7 +1,23 @@
-diff -aur old/g10/keygen.c new/g10/keygen.c
---- old/g10/keygen.c	2019-02-27 14:33:09.533386670 +0100
-+++ new/g10/keygen.c	2019-02-27 14:38:40.627816221 +0100
-@@ -1639,7 +1639,7 @@
+* Increase Secure Memory Size
+* Increase Key Size for RSA
+
+diff -aur a/configure b/configure
+--- a/configure	2020-09-03 17:16:56.000000000 +0200
++++ b/configure	2020-11-04 00:05:58.165589557 +0100
+@@ -5566,7 +5566,7 @@
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $large_secmem" >&5
+ $as_echo "$large_secmem" >&6; }
+ if test "$large_secmem" = yes ; then
+-   SECMEM_BUFFER_SIZE=65536
++   SECMEM_BUFFER_SIZE=100663296
+ else
+    SECMEM_BUFFER_SIZE=32768
+ fi
+
+diff -aur a/g10/keygen.c b/g10/keygen.c
+--- a/g10/keygen.c	2020-08-25 13:05:44.000000000 +0200
++++ b/g10/keygen.c	2020-11-04 00:05:58.165589557 +0100
+@@ -1643,7 +1643,7 @@
    int err;
    char *keyparms;
    char nbitsstr[35];
@@ -10,7 +26,7 @@ diff -aur old/g10/keygen.c new/g10/keygen.c
  
    log_assert (is_RSA(algo));
  
-@@ -2114,6 +2114,12 @@
+@@ -2260,6 +2260,12 @@
        def=255;
        break;
  
@@ -23,3 +39,4 @@ diff -aur old/g10/keygen.c new/g10/keygen.c
      default:
        *min = opt.compliance == CO_DE_VS ? 2048: 1024;
        *max = 4096;
+
