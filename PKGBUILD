@@ -3,7 +3,7 @@
 
 pkgname=roundcubemail-git
 pkgver=1.4.rc2.r595.ge99fb3968
-pkgrel=2
+pkgrel=3
 pkgdesc="A PHP web-based mail client"
 arch=('any')
 url="https://roundcube.net/"

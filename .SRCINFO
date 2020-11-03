@@ -1,7 +1,7 @@
 pkgbase = roundcubemail-git
 	pkgdesc = A PHP web-based mail client
 	pkgver = 1.4.rc2.r595.ge99fb3968
-	pkgrel = 2
+	pkgrel = 3
 	url = https://roundcube.net/
 	arch = any
 	license = GPL
