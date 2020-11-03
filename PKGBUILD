@@ -3,7 +3,7 @@
 
 pkgname=globe-cli
 _pkgname=globe
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="ASCII globe generator"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/adamsky/globe"
 license=('GPL3')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('9a2c7ff160bf385217584363572fde4424c878114797c56e3705aab56e33791dd28ef44c52a5ecf5d1936c79ca48539e71fd4fc1cae222a26d97b1d541703ff5')
+sha512sums=('1d2c1f9c480b16971fa093d81254cf61cadda44c2ee94ba7c4e48b20994f0340839443473614be751bd4ce23b84fa7652df9a1437ae61e552278795481c3ba14')
 
 build() {
   cd "$_pkgname-$pkgver"
