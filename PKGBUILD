@@ -19,7 +19,7 @@ sha256sums=('c9a4aa311c5a503dec0a6bf2f8b6ca9cb2a999d17c6087070cb940b7484e3485')
 
 build() {
   cd "$srcdir/$__pkgname-$pkgver"
-  g++ -o proton-call src/*.cpp -std=c+17
+  g++ -o proton-call src/*.cpp -std=c++17
 }
 
 package() {
