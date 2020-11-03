@@ -10,7 +10,7 @@ url="http://anbox.io/"
 license=('GPL3')
 pkgdesc="Running Android in a container"
 depends=('lxc' 'sdl2_image' 'protobuf' 'anbox-image' 'libsystemd' 'boost-libs')
-makedepends=('cmake' 'git' 'glm' 'lxc' 'sdl2_image' 'protobuf' 'boost' 'properties-cpp' 'gtest' 'python2')
+makedepends=('cmake' 'git' 'glm' 'lxc' 'sdl2_image' 'protobuf' 'boost' 'properties-cpp' 'gtest' 'python')
 source=("git+https://github.com/anbox/anbox.git"
 	"git+https://github.com/google/cpu_features.git"
 	"git+https://github.com/Kistler-Group/sdbus-cpp.git"
