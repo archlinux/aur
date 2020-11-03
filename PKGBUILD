@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-no-extras
-pkgver=86.0.4240.111
+pkgver=86.0.4240.183
 pkgrel=1
 _pkgname=chromium
 _launcher_ver=6
@@ -37,7 +37,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         check-for-enable-accelerated-video-decode-on-Linux.patch
         xproto-fix-underflow-in-Fp1616ToDouble.patch
         chromium-skia-harmony.patch)
-sha256sums=('f27bdb02ebf3c48abe054c73f1ae57e22a22535ea34f5edf8693ab8432a7c717'
+sha256sums=('aa12c6665c33275f3edffb6f127f97f84fa0bb69c644b4b023d51d2d058a69bc'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '6f9ab35fa2c9e6e34ec454b829b7b87adaebc10cacecd1ac1daa67035ee44aba'
             '69d8b7a439db1af4713245ddf5f44ca647283ba833a8733e848033ebdaf03cdc'
