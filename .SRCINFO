@@ -1,0 +1,17 @@
+pkgbase = globe-cli-bin
+	pkgdesc = ASCII globe generator
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/adamsky/globe
+	arch = x86_64
+	license = GPL3
+	provides = globe-cli
+	conflicts = globe-cli
+	conflicts = globe-cli-git
+	source_x86_64 = globe-cli-0.2.0::https://github.com/adamsky/globe/releases/download/v0.2.0/globe-x64-linux
+	source_x86_64 = globe-cli-0.2.0-README.md::https://github.com/adamsky/globe/raw/v0.2.0/README.md
+	sha512sums_x86_64 = d6ae2309ccf5e3ff9eed8cc2749d4cdf5de7154d4a530f76e9987aa4aafdc340341219b8d2c1aa0b9389baafe7e79d3f30dedf940da5cbdb6cf5dd7b171008b0
+	sha512sums_x86_64 = c003b4c8b2a352ffa47109c4a33d053f3d83a1dacefffc37bf635aadacd25135395ac9ec0fba86f13ba5093ab1c30ae1f802550fe381eaf16e36fbf064840c56
+
+pkgname = globe-cli-bin
+
