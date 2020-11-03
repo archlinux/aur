@@ -3,7 +3,7 @@
 pkgname=jamtaba
 _pkgname=JamTaba
 pkgver=2.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Ninjam online music jamsession client."
 arch=('i686' 'x86_64')
 url="https://jamtaba-music-web-site.appspot.com/"
@@ -21,6 +21,7 @@ sha256sums=('00d68b4207e87bd3311275ed221c041bd1b082149287d274c0f6a6058ee5bb2a' '
 prepare() {
     cd "${_pkgname}-${pkgver}"
     patch --forward --strip=1 --input="${srcdir}/package.patch"
+    sed -i "s|_DEST_DIR.*$|/usr/bin/jamtaba|; s|Jamtaba2\.png|jamtaba|" "installers/linux/Jamtaba2.desktop"
 }
 
 build() {
@@ -37,4 +38,8 @@ build() {
 
 package() {
     install -D -m755 "${srcdir}/${_pkgname}-${pkgver}/PROJECTS/Standalone/Jamtaba2" "${pkgdir}/usr/bin/jamtaba"
+    install -D -m644 "${srcdir}/${_pkgname}-${pkgver}/installers/linux/Jamtaba2.desktop" "${pkgdir}/usr/share/applications/jamtaba.desktop"
+    install -D -m644 "${srcdir}/${_pkgname}-${pkgver}/installers/linux/Jamtaba2.png" "${pkgdir}/usr/share/pixmaps/jamtaba.png"
 }
+
+# vim: set ts=4 sw=4 :
