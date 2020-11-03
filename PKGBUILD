@@ -4,8 +4,8 @@
 
 _pkgname=fcitx5-chinese-addons
 pkgname=${_pkgname}-git
-pkgver=r316.3d415ba
-pkgrel=1
+pkgver=5.0.0.r1.gfe0da37
+pkgrel=2
 pkgdesc="Addons related to Chinese, including IME previous bundled inside fcitx4"
 arch=('i686' 'x86_64')
 url="https://github.com/fcitx/fcitx5-chinese-addons"
@@ -20,7 +20,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd fcitx5-chinese-addons
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
