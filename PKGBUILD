@@ -2,7 +2,7 @@
 
 _pkgname=terraform-lsp
 pkgname=terraform-lsp-git
-pkgver=v0.0.11.beta1.r40.g4d5f533
+pkgver=v0.0.11.beta2.r19.ga503e90
 pkgrel=1
 pkgdesc="Language Server Protocol for Terraform"
 arch=('x86_64' 'i686')
