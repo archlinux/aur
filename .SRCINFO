@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rosconsole
 	pkgdesc = ROS - ROS console output library.
-	pkgver = 1.13.17
+	pkgver = 1.13.18
 	pkgrel = 1
 	url = https://wiki.ros.org/rosconsole
 	arch = i686
@@ -25,8 +25,8 @@ pkgbase = ros-melodic-rosconsole
 	depends = log4cxx
 	depends = apr
 	depends = apr-util
-	source = ros-melodic-rosconsole-1.13.17.tar.gz::https://github.com/ros/rosconsole/archive/1.13.17.tar.gz
-	sha256sums = fb099ded55a7f359b2af56adbf4c14ccd03b2bae57712278e2904fc75f9f7fb1
+	source = ros-melodic-rosconsole-1.13.18.tar.gz::https://github.com/ros/rosconsole/archive/1.13.18.tar.gz
+	sha256sums = 234d83dfddcf864e5d223eaedd58e1505ad0d2707ea4ff497b69c4f28501f179
 
 pkgname = ros-melodic-rosconsole
 
