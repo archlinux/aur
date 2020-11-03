@@ -20,4 +20,4 @@ package() {
 	cd "$pkgname-$pkgver"
     make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-md5sums=('e01b9d2f283e3ccc037c9d5dded1f710')
+md5sums=('daa239b9739c693171d8622d5eea5289')

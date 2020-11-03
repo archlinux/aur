@@ -9,7 +9,7 @@ pkgbase = qmarkdown
 	depends = qt5-base
 	provides = qmarkdown
 	source = https://github.com/Peterkmoss/qMarkdown/archive/v0.2.1.tar.gz
-	md5sums = e01b9d2f283e3ccc037c9d5dded1f710
+	md5sums = daa239b9739c693171d8622d5eea5289
 
 pkgname = qmarkdown
 
