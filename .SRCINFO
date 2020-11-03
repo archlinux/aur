@@ -1,40 +1,47 @@
 pkgbase = kata-containers-guest
 	pkgdesc = Lightweight virtual machines for containers (guest components)
 	pkgver = 1.11.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://katacontainers.io/
 	arch = x86_64
 	license = Apache
 	makedepends = go<2:1.15
 	makedepends = yq2-bin
 	makedepends = mkinitcpio
+	makedepends = pacman
 	makedepends = udisks2
-	noextract = archlinux-bootstrap-2020.11.01-x86_64.tar.gz
 	source = agent-1.11.4.tar.gz::https://github.com/kata-containers/agent/archive/1.11.4.tar.gz
 	source = osbuilder-1.11.4.tar.gz::https://github.com/kata-containers/osbuilder/archive/1.11.4.tar.gz
 	source = packaging-1.11.4.tar.gz::https://github.com/kata-containers/packaging/archive/1.11.4.tar.gz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.32.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.32.tar.sign
-	source = http://mirrors.evowise.com/archlinux/iso/2020.11.01/archlinux-bootstrap-2020.11.01-x86_64.tar.gz
-	source = http://mirrors.evowise.com/archlinux/iso/2020.11.01/archlinux-bootstrap-2020.11.01-x86_64.tar.gz.sig
+	source = mkinitcpio-agent.conf
+	source = install_kata-agent.tpl
+	source = image_builder.sh
+	source = install_sd-kata-agent.tpl
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	validpgpkeys = 4AA4767BBC9C4B1D18AE28B77F2D434B9741E8AC
 	sha512sums = e0af374e279899a010ab66ed4fd4caff33c91d2cc19711f5e51302041cd49e69a71909d71092042bf0c4070acbbc5421f5c6cca49c55a4c332c060e745cf5a0c
 	sha512sums = b8f8998229e2f12491cf6f9262cf8889353e83c58e93010ca3f328f77b61f89fb33d9209b21a1babae406f60b915011edb0832b803dd31b32115dfffa1b2edb1
 	sha512sums = 867f8fbf9c589535a10696a14c26aa6b9b3c6344690105489d55ed1287bdbd56909eb8052a22b4be98e8eb697fc57021212780ff41e478438c71a5c20d7446ad
 	sha512sums = 197f292fa541031071b8ed64880a3d4251fa65059747cbdf3900b8f934d17f681b506ca5f70132899bdef343d2d249a7902215d2ea04af5410599f1e50d6cbac
 	sha512sums = SKIP
-	sha512sums = 91a3f0a1cbc7addb1941bc583b364b411e28223580980063ddc950cf4a0d247b0c40dbac6462f39d4d2f20102a8ff643b02179fa7dba685ae588962ea778c5d3
-	sha512sums = SKIP
+	sha512sums = 182a249aecbab33b8704e9567e96d33b535ee59e6d2f52f0c30fbc3d12813f60192886539cc745933caaf59268925d78db9e0b6b427321e2bac932ebde77d62e
+	sha512sums = 0250e52251986f36cfb9e378d848f755caaf5253daa8ff7d87172f2622754c1eb4180b338a497e3fbeb880e232eef19d5e512f5a8e610e7a6eb468f210849a08
+	sha512sums = 6f476297d9001eef9a0665689f752cf5124907522cfc87240df16488379a5c7c9820a6e33a576dbf7f75c4fdfa7cab7a0e395b05c9339069dedbdaac42fb6c04
+	sha512sums = 65d368df7fe4546d5c825e30c5c831cb4b4f759fb1352b7715d40b750968b3ba54139f64cd1133a3b599d179d88d8181bd61eb34b1f5868b5606e53de6552c41
 	b2sums = 94e996c463f0c5517bc6d97af2cb0f1dbadccd7e5f2ef5c45ea15d1deb5af65770371f25a0b9421ba70fa50a0b8c22c7d5a443173515ad4c5db30c1fa72cd395
 	b2sums = 6c30855fc7d5298dbe8c6b7e294edbf840e123083fecfa3d73d91e741dcca70af6ca0c10672eb6fa24dd886b3ebddccefcff943b4c816ce65c2f05588947660e
 	b2sums = 6194835f2526a7b16e5b8ca97fb831fdfb78a951dec51c8640c8cff6efd5186ed051e717ff748af7913bdf339f5a69e1b5c9aff2d70c732a4876481ac6fb59ea
 	b2sums = 0ac78d1eb97ce4689ccdab01fb1475d07f29a90251b44b05fcf030d2f9aa644ac9dbb1315c7fe1eb991ef1435b7f17669e2b4f66187e3404599a0f136d2b1a50
 	b2sums = SKIP
-	b2sums = ce8bfce07a121780e6a09f2b652b0be3fb3c728cd0cccedaad4add394784a6ded18c5163d2a999fc8043cdc9eb6fc347aa6a26a990b31f1f4a445f83460eccc3
-	b2sums = SKIP
+	b2sums = 43c81141a65fd14b60ae72c5b98168bec531990903cc7c8b224b416c71d1d05c1cf3f73891954604e0b0c6f48c52a3a41a8e9e78874a79e72b14282373108e8b
+	b2sums = 9abf2208af353019ba177d8a48ba613401742cd21258a79c5d9cb8518a51f4f22a41dc386b71f2d6521d03f6ff65d8710dc59d1ca9c7c1dc5f94061c7374286c
+	b2sums = 1745aa5d5df0af2452381de163e3964511172e045c13736a062bb2c932e3306250d24992b2bdbc534ced188b35d3b1f4958a5680c99356afd3097d11c84aee31
+	b2sums = c9d90683b134dcbf656adcb5bebad02a9a02ec68a1497bbab16cdec7d626ab020f56a40f00bfddf06000452e20d5a58d53ed59d0be49451daf9019fe1f203a58
 
 pkgname = kata-agent
 
 pkgname = kata-linux-container
+
+pkgname = kata-containers-image
 
