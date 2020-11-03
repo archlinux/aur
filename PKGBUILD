@@ -5,8 +5,8 @@
 
 _pkgname=libxfce4ui
 pkgname=${_pkgname}-devel
-pkgver=4.15.3
-pkgrel=3
+pkgver=4.15.4
+pkgrel=1
 pkgdesc="Commonly used Xfce widgets among Xfce applications (Development version)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://gitlab.xfce.org/xfce/libxfce4ui/-/blob/master/README"
@@ -18,16 +18,8 @@ makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'vala' 'glade' 'xfce4-
 optdepends=('glade: Glade designer plugin')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2"
-        '0001_shortcut_keys_fix.patch::https://gitlab.xfce.org/xfce/libxfce4ui/-/commit/0fc934ebee037a91e032d362d83d991309c4ce88.patch')
-sha256sums=('ce89419720da0fa84a3bb46bc447564c5800057c026c272ae0b016918c0a9307'
-            'f26766a45833804699de03224ff9e5b6ca3d76ad860802bb14e26792864205ac')
-
-prepare() {
-  cd "${_pkgname}-${pkgver}"
-  # https://gitlab.xfce.org/xfce/libxfce4ui/-/merge_requests/4
-  patch -Np1 -i ../0001_shortcut_keys_fix.patch
-}
+source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
+sha256sums=('900477622aa1a02a77e79c769cc0df15613d3c5d38535e109942dfdb1a1f805e')
 
 build() {
   cd "${_pkgname}-${pkgver}"
