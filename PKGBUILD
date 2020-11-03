@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt-bin
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -39,11 +39,13 @@ package() {
 	mkdir -p "${pkgdir}/usr/local/"
 	mkdir -p "${pkgdir}/usr/share/"
 	mkdir -p "${pkgdir}/usr/lib"
+	mkdir -p "${pkgdir}/usr/share/fonts"
 	
-	# Move files into place
+	# Move files into the correct place
 	mv "${srcdir}"/usr/local/{share,bin} "${pkgdir}/usr/local/"
 	mv "${srcdir}"/usr/local/* "${pkgdir}/usr/"
 	mv "${srcdir}"/usr/share/* "${pkgdir}/usr/share/"
+	mv "${pkgdir}/usr/local/bin/Lato-Regular.ttf" "${pkgdir}/usr/share/fonts/"
 
 	# Fix symlinks
 	ln -s libcurl.so.3 "${pkgdir}/usr/lib/libcurl-nss.so.4"
