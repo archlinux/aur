@@ -1,19 +1,19 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.16.69
+	pkgver = 1.16.72
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
 	license = custom
 	makedepends = git
-	makedepends = npm
-	makedepends = python2
+	makedepends = npm<7.0.0
+	makedepends = python
 	makedepends = icu
 	makedepends = glibc
 	makedepends = gperf
 	makedepends = java-runtime-headless
 	makedepends = clang
-	makedepends = python2-setuptools
+	makedepends = python-setuptools
 	makedepends = ncurses5-compat-libs
 	depends = gtk3
 	depends = nss
@@ -42,7 +42,7 @@ pkgbase = brave
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: for storing passwords in KWallet on KDE desktops
 	optdepends = sccache: For faster builds
-	source = git+https://github.com/brave/brave-browser.git#tag=v1.16.69
+	source = https://github.com/brave/brave-browser/archive/v1.16.72.tar.gz
 	source = brave-launcher
 	source = brave-browser.desktop
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-86-patchset-6/chromium-86-patchset-6.tar.xz
@@ -53,7 +53,7 @@ pkgbase = brave
 	source = check-for-enable-accelerated-video-decode-on-Linux.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/check-for-enable-accelerated-video-decode-on-Linux.patch?h=packages/chromium&id=a702396adb03e094bfbe836ff05a451465fc986d
 	source = xproto-fix-underflow-in-Fp1616ToDouble.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/xproto-fix-underflow-in-Fp1616ToDouble.patch?h=packages/chromium&id=a702396adb03e094bfbe836ff05a451465fc986d
 	source = chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium&id=a702396adb03e094bfbe836ff05a451465fc986d
-	sha256sums = SKIP
+	sha256sums = 963a0a5f9da9e73333f9282a441374b4e1dee1c7bb91cae351c9cdfb995fe129
 	sha256sums = 725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5
 	sha256sums = fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d
 	sha256sums = 6f9ab35fa2c9e6e34ec454b829b7b87adaebc10cacecd1ac1daa67035ee44aba
