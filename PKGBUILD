@@ -1,7 +1,7 @@
 # Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
 _pkgname=Weblate
 pkgname=weblate
-pkgver=4.3
+pkgver=4.3.1
 pkgrel=1
 
 pkgdesc="Web based localization tool with tight version control integration"
@@ -69,11 +69,11 @@ source=("https://github.com/WeblateOrg/weblate/releases/download/weblate-${pkgve
         'celery-weblate.service'
         'logrotate-celery')
 
-sha256sums=('957c1d22409a6325d2ce79e071137b93211cdf845446eb35b6d21ca5c73dea1a'
+sha256sums=('0a7ae0edb62ca048ce5da1d657a03da67967d5ca9ca693e7ecadbea81d379fab'
             '115c69062ac231d71596ce6b7d4afd0c6ea9b934f50de062c58315b2ef007137'
             '094525f9bf6e40f96c58e089fc596319f557a4a20bd1b23f426352f94fa43dad'
             '065247e8a96f6db16c0d08b919e53cd5e04d71a2be94f2ff949dd726dee06394'
-            'fcd49f57da0fb81211789ecdb6eb2623d783f337c59a3d7dcacbe197cf519d69'
+            'e3b6369c0dd53edc42aef7ae69a97093a4c25cef478da1feaf9eb5dae25ebddf'
             'd96c6e95c1f021343382582c6233c61dfdf04f8a99c16a3a9be9fc4eb6030ad6'
             '9825ea64a5f66dc17622ad86659867ea98810e757b2ba679de9b9e10e9ac3e06')
 install=weblate.install
