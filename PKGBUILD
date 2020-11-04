@@ -1,7 +1,7 @@
 # Maintainer: gee
 
 pkgname=vkbasalt
-pkgver=0.3.2.2
+pkgver=0.3.2.3
 pkgrel=1
 pkgdesc='A Vulkan post-processing layer. Some of the effects are CAS, FXAA, SMAA, deband.'
 arch=('x86_64')
@@ -54,5 +54,6 @@ package() {
   sed -i 's|/path/to/reshade-shaders/Shaders|/usr/share/reshade/shaders|g' \
     "${pkgdir}/usr/share/vkBasalt/vkBasalt.conf.example"
   install -dm 755 "${pkgdir}/usr/share/vulkan/implicit_layer.d"
-  install -Dm 644 config/vkBasalt.json "${pkgdir}/usr/share/vulkan/implicit_layer.d/vkBasalt.json"
+  install -Dm 644 config/vkBasalt.json.in "${pkgdir}/usr/share/vulkan/implicit_layer.d/vkBasalt.json"
+  sed -i 's|@ld_lib_dir_vkbasalt@libvkbasalt.so|libvkbasalt.so|g' "${pkgdir}/usr/share/vulkan/implicit_layer.d/vkBasalt.json"
 }
