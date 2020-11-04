@@ -1,17 +1,24 @@
-# Maintainer: Hai Zhang <dreaming.in.code.zh@gmail.com>
+# Maintainer: kmille <arch@androidloves.me>
+# Contributor: Hai Zhang <dreaming.in.code.zh@gmail.com>
 
 pkgname=fprint_demo
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple GTK+ application to demonstrate and test libfprint'"'"'s capabilities'
 arch=('i686' 'x86_64')
 url='https://www.freedesktop.org/wiki/Software/fprint/fprint_demo/'
 license=('GPL2')
-depends=('gtk2' 'libfprint')
+depends=('gtk2' 'libfprint-0=0.7')
 makedepends=(git)
 groups=(fprint-git)
 source=('https://github.com/dsd/fprint_demo/archive/v0.4.tar.gz')
 md5sums=('41e78e420716f300b8776047b3c9fc5b')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  sed -i 's|libfprint|libfprint-0|' configure.ac
+  sed -i 's|include <libfprint/|include <libfprint-0/|g' src/{*.c,*.h}
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
