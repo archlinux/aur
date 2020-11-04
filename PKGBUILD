@@ -7,7 +7,7 @@
 pkgname='python-jira'
 pkgdesc='Python library to work with Jira APIs'
 pkgver='3.0'
-pkgrel=2
+pkgrel=3
 url='https://github.com/pycontribs/jira'
 license=('BSD 2-Clause')
 arch=('any')
@@ -16,6 +16,7 @@ depends=('python-defusedxml'
          'python-requests'
          'python-requests-oauthlib'
          'python-requests-toolbelt')
+optdepends=("ipython")
 makedepends=('git' 'python-setuptools')
 source=("git+https://github.com/pycontribs/jira.git#tag=$pkgver")
 sha256sums=('SKIP')
