@@ -4,7 +4,7 @@
 
 pkgname=sddm
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc='QML based X11 and Wayland display manager'
 arch=(x86_64)
 url='https://github.com/sddm/sddm'
@@ -18,10 +18,16 @@ backup=('usr/share/sddm/scripts/Xsetup'
         'etc/pam.d/sddm-greeter')
 provides=(display-manager)
 source=($pkgname-$pkgver.tar.gz::"https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz"
-        sddm.sysusers sddm.tmpfiles)
+        sddm.sysusers sddm.tmpfiles
+        pam-faillock.patch)
 sha256sums=('e76da1f13d5ad5e0179e3fec57543126044339405ef19c397e105e0807bd4e41'
             '9fce66f325d170c61caed57816f4bc72e9591df083e89da114a3bb16b0a0e60f'
-            'db625f2a3649d6d203e1e1b187a054d5c6263cadf7edd824774d8ace52219677')
+            'db625f2a3649d6d203e1e1b187a054d5c6263cadf7edd824774d8ace52219677'
+            '441f441fc63c16c5dbd83411a305d88b17e50836c958677db881b9b6c13c668a')
+
+prepare() {
+  patch -d $pkgname-$pkgver -p1 -i ../pam-faillock.patch # Port away from deprecated pam_tally2
+}
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
