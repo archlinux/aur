@@ -5,7 +5,7 @@
 
 pkgname=emby-server-beta
 pkgver=4.6.0.4
-pkgrel=1
+pkgrel=2
 _ffmpeg_ver=2020_05_23
 _ffdetect_ver=2020_05_23
 pkgdesc='Bring together your videos, music, photos, and live television'
@@ -57,7 +57,7 @@ source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgve
 noextract=(license.docx)
 backup=('etc/conf.d/emby-server')
 install=emby-server.install
-sha256sums=('be80bb985f71a011315e21eec9aa49cd8dccc9b424ed7abf9f853e64be811d3a'
+sha256sums=('bf26bae1ac287387d619cbfca3463829634b2f68dfd175e221769480062eda99'
             'ed2fde500b705b06a0b82a9bf6b367c63b0fc899f69f77691bc68d61f3862a77'
             'c66e73c86ebfdfb169dbdc3c6731f09bd82382dda3fb8a77abe19d6973c09b51'
             '0351d6e9118853e3aa275d62b67dce4444b3d85130b05fb889b2069f364f47ca'
