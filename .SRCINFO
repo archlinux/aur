@@ -1,11 +1,12 @@
 pkgbase = wf-recorder-git
 	pkgdesc = A video recorder for wlroots-based compositors like sway or wayfire
-	pkgver = r91.7cb37c4
+	pkgver = r139.2bb52d8
 	pkgrel = 1
 	url = https://github.com/ammen99/wf-recorder
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = scdoc
 	makedepends = meson
 	makedepends = git
 	makedepends = wayland-protocols
@@ -17,6 +18,7 @@ pkgbase = wf-recorder-git
 	depends = ocl-icd
 	optdepends = slurp: limit recording to a part of the screen
 	provides = wf-recorder
+	conflicts = wf-recorder
 	source = wf-recorder::git+https://github.com/ammen99/wf-recorder
 	sha1sums = SKIP
 
