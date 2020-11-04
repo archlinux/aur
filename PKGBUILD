@@ -82,6 +82,7 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX="/usr/${_arch}" \
         -DCONFIGURATION_NAME:STRING="${_cfg}" \
+        -DCONFIGURATION_DISPLAY_NAME="" \
         -DCONFIGURATION_PACKAGE_SUFFIX:STRING="-${_cfg}" \
         -DJS_PROVIDER:STRING="${_js_provider}" \
         -DENABLE_JSON_EXPORT:BOOL="${_json_export}" \
