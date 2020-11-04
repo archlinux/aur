@@ -1,0 +1,11 @@
+--- sixfireusb-0.6.2/control.c	2013-02-04 03:18:31.000000000 +0100
++++ sixfireusb-0.6.2/control.c	2020-11-04 19:12:21.308854791 +0100
+@@ -571,7 +571,7 @@
+ 		ret = snd_ctl_add(card, control);
+ 		if (ret < 0)
+ 			return ret;
+-		ret = snd_ctl_add_slave(vmaster, control);
++		ret = snd_ctl_add_follower(vmaster, control);
+ 		if (ret < 0)
+ 			return ret;
+ 		i++;
