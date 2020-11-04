@@ -1,0 +1,19 @@
+pkgbase = libfprint-0
+	pkgdesc = Library for fingerprint readers - version 0.7 for fprint_demo
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://fprint.freedesktop.org/
+	arch = x86_64
+	groups = fprint
+	license = LGPL
+	makedepends = git
+	depends = libusb
+	depends = pixman
+	depends = nss
+	depends = glib2
+	provides = libfprint-0.so
+	source = git+https://gitlab.freedesktop.org/libfprint/libfprint.git#commit=d82847a6b4bbd2864388f2bf8e6a2b9d1aed05c4
+	sha256sums = SKIP
+
+pkgname = libfprint-0
+
