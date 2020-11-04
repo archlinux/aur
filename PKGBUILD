@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 pkgname=duplicity-dev
 pkgver=0.8.16
-pkgrel=0
+pkgrel=1
 pkgdesc="A utility for encrypted, bandwidth-efficient backups using the rsync algorithm"
 arch=("x86_64")
 url="http://duplicity.nongnu.org/"

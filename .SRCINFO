@@ -1,7 +1,7 @@
 pkgbase = duplicity-dev
 	pkgdesc = A utility for encrypted, bandwidth-efficient backups using the rsync algorithm
 	pkgver = 0.8.16
-	pkgrel = 0
+	pkgrel = 1
 	url = http://duplicity.nongnu.org/
 	arch = x86_64
 	license = GPL
