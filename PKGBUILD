@@ -14,10 +14,10 @@ depends=(
 makedepends=(
 )
 provides=(
-	'lib_amxj'
+	'lib_amxd'
 )
 conflicts=(
-	'lib_amxj'
+	'lib_amxd'
 )
 
 gitbranch="master"

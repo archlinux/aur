@@ -7,8 +7,8 @@ pkgbase = lib_amxd-git
 	license = MIT
 	depends = lib_amxc
 	depends = lib_amxp
-	provides = lib_amxj
-	conflicts = lib_amxj
+	provides = lib_amxd
+	conflicts = lib_amxd
 	source = lib_amxd-git::git+https://gitlab.com/soft.at.home/ambiorix/libraries/libamxd.git#branch=master
 	md5sums = SKIP
 
