@@ -9,8 +9,8 @@ changelog='CHANGELOG'
 arch=('x86_64')
 url="https://github.com/maoschanz/${pkgname}"
 license=('GPL3')
-depends=('python' 'hicolor-icon-theme')
-makedepends=('meson' 'git')
+depends=('python' 'hicolor-icon-theme' 'dconf')
+makedepends=('meson')
 source=("${url}/archive/${pkgver}.tar.gz")
 sha256sums=('2b09717c07f68db9a7f2ccf4115ef7351cd9b80f5300870f3bc4545713e9bd6e')
 

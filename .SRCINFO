@@ -7,9 +7,9 @@ pkgbase = dynamic-wallpaper-editor
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
-	makedepends = git
 	depends = python
 	depends = hicolor-icon-theme
+	depends = dconf
 	source = https://github.com/maoschanz/dynamic-wallpaper-editor/archive/2.5.tar.gz
 	sha256sums = 2b09717c07f68db9a7f2ccf4115ef7351cd9b80f5300870f3bc4545713e9bd6e
 
