@@ -1,6 +1,6 @@
 pkgbase = fisher
 	pkgdesc = A package manager for the fish shell
-	pkgver = 3.3.2
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/jorgebucaran/fisher
 	install = fisher.install
@@ -11,8 +11,8 @@ pkgbase = fisher
 	depends = git
 	provides = fisher
 	conflicts = fisher
-	source = fisher-3.3.2.tar.gz::https://github.com/jorgebucaran/fisher/archive/3.3.2.tar.gz
-	sha512sums = ea2a5615e4eb5180e0c192a26a83a0ee152af04e1a9357ff0487aae4eec686f0344487b6cd919570e111bd5b206d8513246b25154fc5aec3de8f595c14c2e8f2
+	source = fisher-4.0.0.tar.gz::https://github.com/jorgebucaran/fisher/archive/4.0.0.tar.gz
+	sha512sums = a945093731c8af37c264d0cfb56c8241bac308e06c9c0369293017eb45ba723ef6df2be0f77b5eccd9d343e4d32d10e2303f828ebfb0a5bd08e46326f9e949e7
 
 pkgname = fisher
 
