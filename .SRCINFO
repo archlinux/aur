@@ -1,6 +1,6 @@
 pkgbase = keeperrl-git
 	pkgdesc = Dungeon Keeper and Dwarf Fortress inspired dungeon simulator built on top of roguelike mechanics.
-	pkgver = r801
+	pkgver = r5004
 	pkgrel = 1
 	url = http://keeperrl.com/
 	arch = i686
@@ -9,6 +9,8 @@ pkgbase = keeperrl-git
 	makedepends = git
 	makedepends = ctags
 	makedepends = boost
+	makedepends = clang
+	makedepends = sdl2_image
 	depends = sfml
 	depends = freeglut
 	conflicts = keeperrl
