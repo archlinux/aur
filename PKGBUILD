@@ -6,7 +6,7 @@ pkgdesc="Consistent interface for stream reading and writing tabular data (csv/x
 url="https://github.com/frictionlessdata/tabulator-py"
 
 pkgver=1.35.0
-pkgrel=0
+pkgrel=1
 
 arch=("any")
 license=("MIT")

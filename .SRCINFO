@@ -1,7 +1,7 @@
 pkgbase = python-tabulator
 	pkgdesc = Consistent interface for stream reading and writing tabular data (csv/xls/json/etc)
 	pkgver = 1.35.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/frictionlessdata/tabulator-py
 	arch = any
 	license = MIT
