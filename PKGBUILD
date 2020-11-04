@@ -12,7 +12,7 @@ pkgdesc='C++ library to read/write passwords from/to encrypted files using AES-2
 license=('GPL')
 depends=('c++utilities' 'openssl')
 optdepends=("$pkgname-doc: API documentation")
-makedepends=('cmake')
+makedepends=('cmake' 'ninja')
 checkdepends=('cppunit')
 optdepends=("$pkgname-doc: API documentation")
 install=
@@ -23,19 +23,20 @@ sha256sums=('556dc44cc061c57308ba389143eb21a39d6780d7260c0dd8f6382c2bc8aed0f9')
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   cmake \
+    -G Ninja \
     -DCMAKE_BUILD_TYPE:STRING='Release' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     .
-  make
+  ninja
 }
 
 check() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  make check
+  ninja check
 }
 
 package() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }

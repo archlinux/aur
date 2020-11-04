@@ -11,6 +11,7 @@ pkgbase = passwordfile
 	license = GPL
 	checkdepends = cppunit
 	makedepends = cmake
+	makedepends = ninja
 	depends = c++utilities
 	depends = openssl
 	optdepends = passwordfile-doc: API documentation
