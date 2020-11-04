@@ -14,7 +14,6 @@ pkgbase = mozc-ut
 	makedepends = gtk2
 	makedepends = qt5-base
 	makedepends = zinnia
-	makedepends = fcitx
 	makedepends = libxcb
 	makedepends = glib2
 	makedepends = bzip2
