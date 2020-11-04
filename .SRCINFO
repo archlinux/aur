@@ -1,15 +1,15 @@
 pkgbase = lib_amxj-git
 	pkgdesc = JSON Reader/generation - JSON string variant
-	pkgver = v0.0.3.r3.g58289ff
+	pkgver = v0.2.1.r0.g90f1f0d
 	pkgrel = 1
-	url = https://gitlab.com/proj_amx_01/libraries/lib_amxj
+	url = https://gitlab.com/soft.at.home/ambiorix/libraries/libamxj.git
 	arch = any
 	license = MIT
 	depends = lib_amxc
 	depends = yajl
 	provides = lib_amxj
 	conflicts = lib_amxj
-	source = lib_amxj-git::git+https://gitlab.com/proj_amx_01/libraries/lib_amxj.git#branch=master
+	source = lib_amxj-git::git+https://gitlab.com/soft.at.home/ambiorix/libraries/libamxj.git#branch=master
 	md5sums = SKIP
 
 pkgname = lib_amxj-git
