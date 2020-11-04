@@ -1,9 +1,9 @@
-# Maintainer: Federico Di Pierro <nierro92@gmail.com>
+# Contributor: Federico Di Pierro <nierro92@gmail.com>
 # Maintainer: Nathan Owens <ndowens @ artixlinux.org>
 pkgname=libulfius
 _gitname=ulfius
 pkgver=2.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP Framework for REST API in C, using JSON, with websockets and streaming data"
 arch=(x86_64)
 url="https://github.com/babelouest/${_gitname}"
@@ -31,4 +31,9 @@ build() {
 package() {
     cd "${srcdir}/${_gitname}"
     make -C build DESTDIR="$pkgdir" install
+    
+    # Remove conficts
+    rm -rf "$pkgdir"/usr/include/{orcania.h,orcania-cfg.h,yder-cfg.h,yder.h}
+    rm -rf "$pkgdir"/usr/lib/{liborcania.so*,liborcania.so.*,libyder.so*,libyder.so.*,pkgconfig/{liborcania.pc,libyder.pc}}
+
 }

@@ -1,7 +1,7 @@
 pkgbase = libulfius
 	pkgdesc = HTTP Framework for REST API in C, using JSON, with websockets and streaming data
 	pkgver = 2.6.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/babelouest/ulfius
 	arch = x86_64
 	license = GPL
