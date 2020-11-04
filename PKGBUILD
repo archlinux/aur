@@ -1,7 +1,8 @@
 # -*- shell-script -*-
+# Maintainer:  Marco Schroeder <marco.schroeder96 at gmail dot com>
 # Contributor: Fernando Carmona Varo <ferkiwi @t gmail dot com>
 pkgname=keeperrl-git
-pkgver=r801
+pkgver=r5004
 pkgrel=1
 pkgdesc="Dungeon Keeper and Dwarf Fortress inspired dungeon simulator built on top of roguelike mechanics."
 arch=('i686' 'x86_64')
@@ -11,7 +12,7 @@ license=('GPL')
 conflicts=('keeperrl')
 #depends=('sfml' 'freeglut' 'angelscript')
 depends=('sfml' 'freeglut')
-makedepends=('git' 'ctags' 'boost')
+makedepends=('git' 'ctags' 'boost' 'clang' 'sdl2_image')
 checkdepends=()
 optdepends=()
 backup=()
@@ -29,7 +30,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  make
+  make NO_STEAMWORKS=true RELEASE=true
 }
 
 package() {
@@ -37,8 +38,9 @@ package() {
 
   local instdir="/opt/keeperrl"
 
-  install -dm775 -g games "$pkgdir/$instdir"
+  install -dm775 "$pkgdir/$instdir"
   install -Dm755 keeper "$pkgdir/$instdir/"
+  install -Dm644 appconfig.txt "$pkgdir/$instdir/"
   cp -a data* "$pkgdir/$instdir/"
   
   install -dm755 "$pkgdir/usr/bin"
