@@ -1,0 +1,18 @@
+pkgbase = python-inquirer
+	pkgdesc = Collection of common interactive command line user interfaces, based on Inquirer.js
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://pypi.org/project/inquirer
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-blessed
+	depends = python-readchar
+	depends = python-editor
+	source = python-inquirer-2.7.0.tar.gz::https://github.com/magmax/python-inquirer/archive/2.7.0.tar.gz
+	sha256sums = 0ed6c9ee4a6eab6d914dfe08903430066a2222234ca0146760471270d93f0992
+	b2sums = e3628c395fd4df1570df5d3e397d4237a957501b9712fd2c031ea1be966450d16fa748c4655244d2230ec95497c0f3c50714217be294e7f7a2bf51d853e30d98
+
+pkgname = python-inquirer
+
