@@ -3,7 +3,7 @@
 # Based on nushell package, but uses prebuilt binary
 
 pkgname=nushell-bin
-pkgver=0.21.0
+pkgver=0.22.0
 _underscoredpkgver="${pkgver//./_}"
 pkgrel=1
 depends=('zlib' 'libxcb' 'openssl' 'libgit2')
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/nushell/nushell/releases/do
         "https://raw.githubusercontent.com/nushell/nushell/$pkgver/LICENSE")
 url="http://nushell.sh"
 license=('MIT')
-sha256sums=('8293bc0956a51e872ecbdc0fa1dc1dbac76d3b35ef80f2d889a63ac22b05cdc3'
+sha256sums=('78196d57be2e7bbdeb4d9fae8ed8d8aef4e170fb560b914ede71cb3f36f3852e'
             '57fdb6634a2372af0978dd178f8e157f227d96f3ca27ae9c73f1320f6c0c41d4')
 
 build() {
