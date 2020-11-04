@@ -5,7 +5,7 @@ pkgdesc="Rsync-based OSX-like time machine for atomic and resumable local and re
 url="https://github.com/cytopia/linux-timemachine"
 
 pkgver=1.0
-pkgrel=0
+pkgrel=1
 
 arch=("any")
 license=("MIT")
