@@ -5,7 +5,7 @@ pkgdesc="Library for fast text representation and classification"
 url="https://github.com/facebookresearch/fastText"
 
 pkgver=0.9.2
-pkgrel=0
+pkgrel=1
 
 arch=('x86_64')
 license=('BSD')
