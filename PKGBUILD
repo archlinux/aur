@@ -24,7 +24,7 @@ url='http://qt.io/ide'
 license=('GPL')
 provides=('qtcreator')
 conflicts=('qtcreator')
-depends=('python2-beautifulsoup4' 'qt5-tools' 'qt5-declarative' 'qt5-script' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-webengine' 'clang' 'llvm')
+depends=('python2-beautifulsoup4' 'qt5-tools' 'qt5-declarative' 'qt5-script' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'clang' 'llvm')
 install=qtcreator-prerelease.install
 optdepends=('qbs'
             'qt5-doc: integrated Qt documentation'

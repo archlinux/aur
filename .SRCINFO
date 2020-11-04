@@ -16,7 +16,6 @@ pkgbase = qtcreator-prerelease
 	depends = qt5-script
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
-	depends = qt5-webengine
 	depends = clang
 	depends = llvm
 	optdepends = qbs
