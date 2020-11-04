@@ -2,7 +2,7 @@
 pkgname=lib_amxd-git
 pkgver=v1.1.2.r0.gbd7cfce
 pkgrel=1
-pkgdesc="JSON Reader/generation - JSON string variant"
+pkgdesc="Generic C-implementation for managing a data model"
 arch=('any')
 url="https://gitlab.com/soft.at.home/ambiorix/libraries/libamxd.git"
 license=('MIT')

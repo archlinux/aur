@@ -1,5 +1,5 @@
 pkgbase = lib_amxd-git
-	pkgdesc = JSON Reader/generation - JSON string variant
+	pkgdesc = Generic C-implementation for managing a data model
 	pkgver = v1.1.2.r0.gbd7cfce
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/libraries/libamxd.git
