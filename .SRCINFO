@@ -1,0 +1,15 @@
+pkgbase = amxb-inspect-git
+	pkgdesc = Generic C-implementation for Ambiorix Backend library
+	pkgver = v0.1.0.r0.g7d71696
+	pkgrel = 1
+	url = https://gitlab.com/soft.at.home/ambiorix/applications/amxb-inspect.git
+	arch = any
+	license = MIT
+	depends = lib_amxb
+	provides = amxb-inspect
+	conflicts = amxb-inspect
+	source = amxb-inspect-git::git+https://gitlab.com/soft.at.home/ambiorix/applications/amxb-inspect.git#branch=master
+	md5sums = SKIP
+
+pkgname = amxb-inspect-git
+
