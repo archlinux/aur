@@ -60,6 +60,12 @@ package() {
   #install the license
   install -Dm644 "Go4License.txt" "$pkgdir/usr/share/licenses/go4/Go4License.txt"
 
+  # cp /etc and /bin
+  install -d ${pkgdir}/etc
+  install -d ${pkgdir}/bin
+  for file in ${srcdir}/build/etc/*; do install -m755 ${file} ${pkgdir}/etc/; done
+  for file in ${srcdir}/build/bin/*; do install -m755 ${file} ${pkgdir}/bin/; done
+
   #install the desktop file
   echo "
 	[Desktop Entry]
@@ -89,6 +95,4 @@ package() {
 EOF
 
   install -m755 ${srcdir}/go4.sh  ${pkgdir}/etc/profile.d/go4.sh
-
-  # Csh no longer supported. Go4 itself does not seem to support it.
 }
