@@ -1,12 +1,12 @@
 # Maintainer: Cirk2 <privat+aur at cirk2 dot de> 
 
 pkgname=sdbus-cpp-git
-pkgver=r200.dee6adc
+pkgver=r230.b190646
 pkgrel=1
 pkgdesc="sdbus-c++ is a high-level C++ D-Bus library for Linux designed to provide expressive, easy-to-use API in modern C++"
 url="https://github.com/Kistler-Group/sdbus-cpp"
 arch=('i686' 'x86_64')
-license=('LGPLv2.1')
+license=('LGPLv2.1' 'custom:sdbus-c++ LGPL Exception 1.0')
 depends=('systemd-libs')
 makedepends=('cmake' 'doxygen')
 provides=('sdbus-cpp')
@@ -31,5 +31,6 @@ build() {
 
 package() {
     make DESTDIR="$pkgdir" install
+    install -Dm644 "$srcdir/${pkgname}/COPYING-LGPL-Exception" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
