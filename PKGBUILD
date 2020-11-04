@@ -2,7 +2,7 @@
 pkgname=amxb-inspect-git
 pkgver=v0.1.0.r0.g7d71696
 pkgrel=1
-pkgdesc="Generic C-implementation for Ambiorix Backend library"
+pkgdesc="Ambiorix Backend inspector/validation tool"
 arch=('any')
 url="https://gitlab.com/soft.at.home/ambiorix/applications/amxb-inspect.git"
 license=('MIT')
