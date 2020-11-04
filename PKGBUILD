@@ -7,8 +7,8 @@
 
 pkgbase=nginx-zest-git
 pkgname=(nginx-zest-git nginx-zest-src-git)
-pkgver=1.19.4
-pkgrel=6
+pkgver=1.19.4.r0.gb3f311dd8
+pkgrel=7
 epoch=3
 pkgdesc='NGINX with beefed up security and performance'
 arch=(x86_64)
@@ -28,6 +28,8 @@ backup=(etc/nginx/fastcgi.conf
         etc/nginx/win-utf
         etc/logrotate.d/nginx)
 install=nginx.install
+provides=(nginx nginx-mainline nginx-zest)
+conflicts=(nginx)
 source=(git+$url.git
         hg+https://hg.nginx.org/nginx-tests
         service
@@ -82,6 +84,15 @@ _zest_flags=(
   --with-http_v2_hpack_enc
   --with-http_v3_module
 )
+
+pkgver() {
+  cd "$pkgname"
+  ( set -o pipefail
+    # cutting off 'release-' prefix that presents in the git tag
+    git describe --long --tags 2>/dev/null | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
 
 prepare() {
   cp -r nginx{,-src}
@@ -178,8 +189,10 @@ package_nginx-zest-git() {
 }
 
 package_nginx-zest-src-git() {
-  pkgdesc="Source code of nginx $pkgver, useful for building modules"
+  pkgdesc="Source code of Zest NGINX $pkgver, useful for building modules"
   depends=()
+  provides=(nginx-src nginx-mainline-src nginx-zest-src)
+  conflicts=()
   install -d "$pkgdir/usr/src"
-  cp -r nginx-src "$pkgdir/usr/src/nginx"
+  cp -r nginx-src "$pkgdir/usr/src/$pkgname"
 }
