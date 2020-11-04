@@ -13,6 +13,7 @@ sha512sums=('7ba3dec58dba2a1fd52ec2661cd54cc4e85b2ffbe601b9ee1c67c0402a00daf48d7
 
 package() {
     cd $pkgname-$_commit
+
     mkdir -p "$pkgdir/usr/share/fcitx/skin/aqua"
     install -Dm644 aqua/* "$pkgdir/usr/share/fcitx/skin/aqua/"
 }
