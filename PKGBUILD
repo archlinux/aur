@@ -13,7 +13,7 @@ license=('unknown')
 options=(!strip)
 depends=('gcc-libs')
 source=("http://www.numberworld.org/y-cruncher/y-cruncher%20v${pkgver}-static.tar.xz")
-sha512sums=('2f063a817cc3ab93d906dc65f8eb45b8c68b3ad9e57c590f72c6ee12de24264b191d66c33035508c58810cd30ea5d3d8f7108522f488c293bd87a1d7347a714e')
+sha512sums=('cb953f09de85c58174d5b8fc91c5dd4278bd537842fb691cee7d9d9fae32d5b3a4e1bc5e7686e2030301d3973a290d56e5be81bb52bc6a61ccbb91a2cdbe6c3c')
 package() {
 install -D -m755 ${srcdir}/y-cruncher\ v${pkgver}-static/Binaries/"05-A64 ~ Kasumi" ${pkgdir}/usr/bin/y-cruncher
 }
