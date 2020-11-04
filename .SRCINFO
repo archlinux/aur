@@ -1,7 +1,7 @@
 pkgbase = python-geoalchemy2
 	pkgdesc = Using SQLAlchemy with Spatial Databases
 	pkgver = 0.8.4
-	pkgrel = 0
+	pkgrel = 1
 	url = https://geoalchemy-2.readthedocs.io/
 	arch = any
 	license = MIT
