@@ -1,4 +1,5 @@
 *.xpi
+*.tar.zst
 *.tar.xz
 src
 pkg
