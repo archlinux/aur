@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=gfold
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="CLI tool to help keep track of Git repositories"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/nickgerace/gfold"
 license=('Apache')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('13f4fe27eedddb8be1ce77374961999cbb8a531d681bd98783527db7a408d677fb68a4bc8a52486fbdf4ac67588d0c6976092e4fcc532b0a46495780409b0d5b')
+sha512sums=('7d508e7c5b8b819e4c0b364797655a3f991838d27930b0c863d1eb41cd4fa2ee8789d3ee54af583a523442670cef8d9193e7bf9a8046590fc355a036d17575ff')
 
 build() {
   cd "$pkgname-$pkgver"
