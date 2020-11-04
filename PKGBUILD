@@ -3,7 +3,7 @@
 
 pkgname=whatweb-git
 _name=whatweb
-pkgver=v0.5.3.r28.4257078b
+pkgver=0.5.3.r28.4257078b
 pkgrel=1
 pkgdesc="Next generation web scanner that identifies what websites are running."
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ package() {
 
 pkgver() {
 	cd $_name
-	printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --tags --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 
