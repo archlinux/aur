@@ -1,6 +1,8 @@
-# Maintainer: Kyle Laker <kyle+aur at laker dot email>
+# Maintainer: PumpkinCheshire <sollyonzou@gmail.com>
+# Contributor: Kyle Laker <kyle+aur at laker dot email>
+
 pkgname=marp-cli
-pkgver=0.20.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="A CLI interface for Marp and Marpit based converters"
 arch=('any')
@@ -14,12 +16,16 @@ conflicts=('marp-cli-bin')
 replaces=('marp')
 options=('!strip')
 source=("https://registry.npmjs.org/@marp-team/$pkgname/-/$pkgname-$pkgver.tgz")
-noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('470a9cfb0d017accfa7278f80f05034b1fdb887119e845fe9c44225c2ee38a48')
+
+# I may need to extract it for install license.
+#noextract=("${pkgname}-${pkgver}.tgz")
+
+sha256sums=('e083329dcadbf06bee9e39a97829724412f391cb68eff158cc2f474db85a7da3')
 
 package() {
-    npm install -g --user root --prefix "${pkgdir}/usr" --cache "${srcdir}/npm-cache" "${srcdir}/${pkgname}-${pkgver}.tgz"
-    chmod -R go-w "$pkgdir/usr"
+    npm install -g --user root --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
+#    chmod -R go-w "$pkgdir/usr"
+    find "${pkgdir}/usr" -type d -exec chmod 755 {} +
     chown -R root:root "$pkgdir/usr"
 
     # Remove references to $pkgdir
@@ -30,10 +36,10 @@ package() {
     local pkgjson="$pkgdir/usr/lib/node_modules/@marp-team/$pkgname/package.json"
     jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
     mv "$tmppackage" "$pkgjson"
-    chmod 0644 "$pkgjson"
-    
+    chmod 644 "$pkgjson"
+
     # Install MIT license
-    install -d "$pkgdir/usr/share/licenses/$pkgname"
-    ln -s "../../../lib/node_modules/@marp-team/marp-cli/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/package/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+#    ln -s "../../../lib/node_modules/@marp-team/marp-cli/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 }
