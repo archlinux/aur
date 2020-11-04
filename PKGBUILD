@@ -1,12 +1,12 @@
 pkgname=lyriek-git
-pkgver=0.1.0.18.g15d1373
+pkgver=0.2.0.35.g257475b
 pkgrel=1
 arch=('x86_64' 'i686')
-url="https://gitlab.com/bartwillems/lyriek"
+url="https://github.com/bartwillems/lyriek/"
 license=('GPL3')
 depends=('dbus' 'gtk3')
 makedepends=('rust' 'cargo' 'git' 'desktop-file-utils')
-source=("lyriek::git+https://gitlab.com/bartwillems/lyriek.git")
+source=("lyriek::git+https://github.com/BartWillems/lyriek.git")
 sha256sums=('SKIP')
 
 pkgver() {
