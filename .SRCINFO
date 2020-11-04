@@ -1,7 +1,7 @@
 pkgbase = fisher
 	pkgdesc = A package manager for the fish shell
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jorgebucaran/fisher
 	install = fisher.install
 	arch = any

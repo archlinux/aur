@@ -4,7 +4,7 @@
 _pkgname=fisher
 pkgname=${_pkgname}
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A package manager for the fish shell"
 arch=(any)
 url="https://github.com/jorgebucaran/fisher"
@@ -22,6 +22,7 @@ package() {
 
     # install fisher into the global fish directory
     install -Dm 644 fisher.fish "${pkgdir}/usr/share/fish/vendor_functions.d/fisher.fish"
+    install -Dm 644 completions/fisher.fish "${pkgdir}/usr/share/fish/vendor_completions.d/fisher.fish"
     # README and LICENSE
     install -Dm 644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
     install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
