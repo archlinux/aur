@@ -1,7 +1,7 @@
 pkgbase = nominatim-data-tiger
 	pkgdesc = Optional tiger housenumber (US) data to use with nominatim
 	pkgver = 2019
-	pkgrel = 0
+	pkgrel = 1
 	url = https://nominatim.org
 	arch = any
 	license = unknown

@@ -5,7 +5,7 @@ pkgdesc="Optional tiger housenumber (US) data to use with nominatim"
 url="https://nominatim.org"
 
 pkgver=2019
-pkgrel=0
+pkgrel=1
 
 arch=("any")
 license=("unknown")
