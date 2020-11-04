@@ -27,8 +27,6 @@ source=(
   https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/Fix-build-with-gcc8.patch
   https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/Change-from-python2-code-to-python3.patch
   https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/add_support_new_japanese_era.patch
-  https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitxver}.patch
-  https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
   "mozcdic-ut-${_utdicdate}.${pkgrel}.tar.bz2::https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F26%2F26672%2Fmozcdic-ut-${_utdicdate}.${pkgrel}.tar.bz2"
 )
 
@@ -39,8 +37,6 @@ sha1sums=(
   '4fe935b5c2d316119cf8957b6518b3b5e7bf6ecf'
   'SKIP'
   '13f8fbbc768d5042fb55d877acf2a73fc8b5e3f0'
-  '63a2b10e7d209c6216e2d912b2629efc44c637ea'
-  '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d'
   'SKIP'
 )
 
@@ -52,7 +48,6 @@ prepare() {
   patch -Np1 -i ${srcdir}/Fix-build-with-gcc8.patch
   patch -Np1 -i ${srcdir}/Change-from-python2-code-to-python3.patch
   patch -Np1 -i ${srcdir}/add_support_new_japanese_era.patch
-  patch -Np1 -i ${srcdir}/fcitx-mozc-${_fcitxver}.patch
 
   # Avoid fcitx5 build errors
   rm -rf src/unix/fcitx5/
@@ -64,7 +59,7 @@ prepare() {
 build() {
   cd mozc-${_mozcver}+dfsg/src
 
-  _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool renderer/renderer.gyp:mozc_renderer unix/fcitx/fcitx.gyp:fcitx-mozc unix/fcitx/fcitx.gyp:gen_fcitx_mozc_i18n"
+  _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool renderer/renderer.gyp:mozc_renderer"
 
   GYP_DEFINES="use_libzinnia=1 document_dir=/usr/share/licenses/mozc" python build_mozc.py gyp --gypdir=/usr/bin --target_platform=Linux
   python build_mozc.py build -c $_bldtype $_targets

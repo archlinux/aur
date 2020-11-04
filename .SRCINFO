@@ -25,8 +25,6 @@ pkgbase = mozc-ut
 	source = https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/Fix-build-with-gcc8.patch
 	source = https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/Change-from-python2-code-to-python3.patch
 	source = https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/add_support_new_japanese_era.patch
-	source = https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-2.23.2815.102.1.patch
-	source = https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
 	source = mozcdic-ut-20200924.1.tar.bz2::https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F26%2F26672%2Fmozcdic-ut-20200924.1.tar.bz2
 	sha1sums = 7e0a39ffd5ea68ecadb792fc521c16b5be1f25cb
 	sha1sums = d0c551031828ed9c07cc683762353a67b1a17627
@@ -34,8 +32,6 @@ pkgbase = mozc-ut
 	sha1sums = 4fe935b5c2d316119cf8957b6518b3b5e7bf6ecf
 	sha1sums = SKIP
 	sha1sums = 13f8fbbc768d5042fb55d877acf2a73fc8b5e3f0
-	sha1sums = 63a2b10e7d209c6216e2d912b2629efc44c637ea
-	sha1sums = 883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d
 	sha1sums = SKIP
 
 pkgname = mozc-ut
