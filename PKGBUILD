@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('python' 'python-scipy' 'python-matplotlib' 'python-numpy'
          'python-traits' 'python-natsort' 'python-requests' 'python-tqdm'
          'python-sympy' 'python-dill' 'python-h5py' 'python-dateutil'
-         'ipython-ipyparallel' 'python-dask' 'python-scikit-image'
+         'python-ipyparallel' 'python-dask' 'python-scikit-image'
          'python-pint' 'python-statsmodels' 'python-numexpr' 'python-sparse'
          'python-imageio' 'python-pyaml' 'python-ptable' 'python-tifffile'          
          'python-numba' )
@@ -39,3 +39,4 @@ package() {
 
 # vim:set ts=2 sw=2 et:
 
+sha256sums=('942294a6a6f76ccb55c510ca07293ef93b3fe4eedd37b840b9c88366624b2026')
