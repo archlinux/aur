@@ -1,14 +1,14 @@
 # Maintainer: robertfoster
 
 pkgname=ndpi
-pkgver=3.2
+pkgver=3.4
 pkgrel=1
 pkgdesc="Open and Extensible GPLv3 Deep Packet Inspection Library"
 arch=('i686' 'x86_64')
 url="http://www.ntop.org/products/ndpi/"
 license=('GPL3')
 conflicts=('ndpi-svn')
-options=('staticlibs' '!strip')
+options=()
 source=("https://github.com/ntop/nDPI/archive/$pkgver.tar.gz")
 
 build() {
@@ -21,7 +21,6 @@ build() {
 package() {
 	cd ${srcdir}/nDPI-$pkgver
 	make DESTDIR="${pkgdir}" install
-	rm -rf "${pkgdir}/usr/sbin"
 }
 
-md5sums=('03cc0bc7488b6a498711e5d19a677a1b')
+md5sums=('4a2978b0d527a220ab46344444a1934c')
