@@ -2,7 +2,7 @@
 
 pkgname=ckb-cli
 pkgver=0.37.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Nervos CKB (Common Knowledge Base) command line tool"
 arch=('i686' 'x86_64')
 url='https://github.com/nervosnetwork/ckb-cli'
@@ -22,4 +22,5 @@ build() {
 package() {
     cd ${pkgname}
     install -Dm755 -t "${pkgdir}/usr/bin" target/release/ckb-cli
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" COPYING
 }
