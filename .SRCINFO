@@ -1,0 +1,20 @@
+pkgbase = amxrt-git
+	pkgdesc = Ambiorix application runtime
+	pkgver = v0.2.0.r0.gffbe298
+	pkgrel = 1
+	url = https://gitlab.com/soft.at.home/ambiorix/applications/amxrt.git
+	arch = any
+	license = MIT
+	depends = libevent
+	depends = lib_amxc
+	depends = lib_amxp
+	depends = lib_amxd
+	depends = lib_amxb
+	depends = lib_amxo
+	provides = amxrt
+	conflicts = amxrt
+	source = amxrt-git::git+https://gitlab.com/soft.at.home/ambiorix/applications/amxrt.git#branch=master
+	md5sums = SKIP
+
+pkgname = amxrt-git
+
