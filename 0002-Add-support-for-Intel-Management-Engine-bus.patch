@@ -1,4 +1,4 @@
-From b9a239e8e242d0f07b2023fe1b648e3abc389e06 Mon Sep 17 00:00:00 2001
+From 1b05921d0832770f31544ec252a8fedbd3b8db2c Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sat, 1 Jun 2019 21:17:15 +0200
 Subject: [PATCH 02/12] Add support for Intel Management Engine bus
@@ -36,7 +36,7 @@ index 7be5247..37ffd37 100644
  	g_assert_not_reached ();
  }
 diff --git a/libwacom/libwacom.c b/libwacom/libwacom.c
-index aa1d47f..c6551ad 100644
+index 7b97bb1..d84e8fa 100644
 --- a/libwacom/libwacom.c
 +++ b/libwacom/libwacom.c
 @@ -151,6 +151,10 @@ get_bus_vid_pid (GUdevDevice  *device,
@@ -59,7 +59,7 @@ index aa1d47f..c6551ad 100644
  		default:			g_assert_not_reached(); break;
  	}
 diff --git a/libwacom/libwacom.h b/libwacom/libwacom.h
-index 30636b4..e555be3 100644
+index 24e99cd..0eee2fd 100644
 --- a/libwacom/libwacom.h
 +++ b/libwacom/libwacom.h
 @@ -118,6 +118,7 @@ typedef enum {
@@ -71,10 +71,10 @@ index 30636b4..e555be3 100644
  
  /**
 diff --git a/test/test-tablet-validity.c b/test/test-tablet-validity.c
-index 0b117eb..58b909f 100644
+index 3883341..352bc43 100644
 --- a/test/test-tablet-validity.c
 +++ b/test/test-tablet-validity.c
-@@ -178,6 +178,7 @@ assert_vidpid(WacomBusType bus, int vid, int pid)
+@@ -180,6 +180,7 @@ assert_vidpid(WacomBusType bus, int vid, int pid)
  		case WBUSTYPE_BLUETOOTH:
  		case WBUSTYPE_I2C:
  		case WBUSTYPE_VIRTUAL:
@@ -83,5 +83,5 @@ index 0b117eb..58b909f 100644
  			g_assert_cmpint(pid, >, 0);
  			break;
 -- 
-2.28.0
+2.29.2
 

@@ -1,4 +1,4 @@
-From 958ee8b63cdcd7347a1999bb94c0226e93025fd6 Mon Sep 17 00:00:00 2001
+From 232486e70e95297ac1e5f9cb32974f69e762c93f Mon Sep 17 00:00:00 2001
 From: Dorian Stoll <dorian.stoll@tmsp.io>
 Date: Sat, 27 Jun 2020 18:21:11 +0200
 Subject: [PATCH 01/12] Add support for BUS_VIRTUAL
@@ -41,7 +41,7 @@ index 9f2657b..7be5247 100644
  	g_assert_not_reached ();
  }
 diff --git a/libwacom/libwacom.c b/libwacom/libwacom.c
-index 627354c..aa1d47f 100644
+index 062b313..7b97bb1 100644
 --- a/libwacom/libwacom.c
 +++ b/libwacom/libwacom.c
 @@ -147,6 +147,10 @@ get_bus_vid_pid (GUdevDevice  *device,
@@ -64,7 +64,7 @@ index 627354c..aa1d47f 100644
  		default:			g_assert_not_reached(); break;
  	}
 diff --git a/libwacom/libwacom.h b/libwacom/libwacom.h
-index a848133..30636b4 100644
+index 1b9bc2c..24e99cd 100644
 --- a/libwacom/libwacom.h
 +++ b/libwacom/libwacom.h
 @@ -117,6 +117,7 @@ typedef enum {
@@ -76,11 +76,11 @@ index a848133..30636b4 100644
  
  /**
 diff --git a/test/test-tablet-validity.c b/test/test-tablet-validity.c
-index 65b87c0..0b117eb 100644
+index 9e5b02f..3883341 100644
 --- a/test/test-tablet-validity.c
 +++ b/test/test-tablet-validity.c
-@@ -177,6 +177,7 @@ assert_vidpid(WacomBusType bus, int vid, int pid)
- 			/* fall through */
+@@ -179,6 +179,7 @@ assert_vidpid(WacomBusType bus, int vid, int pid)
+ 			break;
  		case WBUSTYPE_BLUETOOTH:
  		case WBUSTYPE_I2C:
 +		case WBUSTYPE_VIRTUAL:
@@ -88,5 +88,5 @@ index 65b87c0..0b117eb 100644
  			g_assert_cmpint(pid, >, 0);
  			break;
 -- 
-2.28.0
+2.29.2
 
