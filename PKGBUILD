@@ -95,10 +95,11 @@ fi
 
 # vars
 _local_qt5_repo="${local_qt5_repo}"
-_pkgvermajmin="5.15"
+#_pkgvermajmin="5.15"
+_pkgvermajmin="6.0"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
-_dev_suffix="beta1"
+_dev_suffix="beta2"
 pkgrel=0
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
@@ -145,10 +146,13 @@ case ${_piver} in
 4)
   # yuck; here lies tinkerboard until I find a better way of generalizing this
   #_toolchain="/opt/gcc-arm-8.2-2019.01-x86_64-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-"
-  _toolchain="/opt/gcc-linaro-7.1.1-2017.08-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-"
+  _toolchain="${HOME}/x-tools/aarch64-spudd-linux-gnu/bin/aarch64-spudd-linux-gnu-"
+  
+  # upstream mkspec is 32 bit
+  #_mkspec="linux-rasp-pi4-v3d-g++"
+  #_overwrite_mkspec=false
 
   _use_mesa=true
-  _mkspec="linux-tinker-g++"
 ;;
 5)
   # https://developer.nvidia.com/embedded/dlc/kernel-gcc-6-4-tool-chain
@@ -304,8 +308,8 @@ _core_configure_options=" \
                  -reduce-exports \
         "
 
-_tar_xz_sha256="94a02e3e1879f7492340de675b65b9b98a671698063d28c97e91b78098724548"
-#_tar_xz_sha256="356f42d9087718f22f03d13d0c2cdfb308f91dc3cf0c6318bed33f2094cd9d6c"
+#_tar_xz_sha256="94a02e3e1879f7492340de675b65b9b98a671698063d28c97e91b78098724548"
+_tar_xz_sha256="9c4cc2fb781d682e86d8b3754a18a4d8969e02fa8509da31e5343065ead5fbd5"
 
 source=("git://github.com/sirspudd/mkspecs.git")
 sha256sums=("SKIP")
@@ -396,15 +400,7 @@ fi
 if ! $_target_host && $_overwrite_mkspec; then
   # Get our mkspec
   rm -Rf $_mkspec_dir
-  cp -r "${srcdir}/mkspecs/${_mkspec}" $_mkspec_dir
-fi
-
-if $_patching; then
-  echo "Patching source"
-  cd ${_srcdir}/qtdeclarative
-  #patch -p1 < ${startdir}/0005-Fix-qtdeclarative-build-configured-with-qreal-float.patch
-  cd ${_srcdir}/qtwebengine
-  patch -p1 < ${startdir}/0001-Remove-super-shit-QPA-hueristics.patch
+  cp -rL "${srcdir}/mkspecs/${_mkspec}" $_mkspec_dir
 fi
 
   rm -Rf ${_bindir}
