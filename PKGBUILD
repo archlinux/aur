@@ -3,7 +3,7 @@
 pkgname=file-roller-kde-service-menu
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="File-roller 'Extract' and 'Compress' in dolphin right-click menu"
+pkgdesc="File-roller 'Extract' and 'Compress' options in dolphin right-click menu"
 arch=('any')
 url="https://codeload.github.com/gist/9fc3d96078bbc7c30333046a0117e479/zip/a195f38ba9380250e886dcb81406afb67b773c87"
 license=('Unknown')

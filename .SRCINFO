@@ -1,14 +1,14 @@
 pkgbase = file-roller-kde-service-menu
-	pkgdesc = File-roller 'Extract' and 'Compress' in dolphin right-click menu
+	pkgdesc = File-roller 'Extract' and 'Compress' options in dolphin right-click menu
 	pkgver = 1.0.0
-	pkgrel = 0
-	url = https://store.kde.org/p/998273/
+	pkgrel = 1
+	url = https://codeload.github.com/gist/9fc3d96078bbc7c30333046a0117e479/zip/a195f38ba9380250e886dcb81406afb67b773c87
 	arch = any
 	license = Unknown
 	depends = file-roller
 	depends = dolphin
 	source = file-roller-kde-service-menu-1.0.0.zip::https://gist.github.com/qbouvet/9fc3d96078bbc7c30333046a0117e479/archive/a195f38ba9380250e886dcb81406afb67b773c87.zip
-	md5sums = SKIP
+	sha256sums = 00ed0ce2b03f53fd9a076cb2a1911b5ab797f51cd28ac1231a7b9c94f5d1c966
 
 pkgname = file-roller-kde-service-menu
 
