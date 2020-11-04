@@ -1,0 +1,14 @@
+pkgbase = checksum-blister-kde-service-menu-git
+	pkgdesc = sha256/sha512/sha1/md5 checksums in dolphin right-click menu
+	pkgver = r8.44290fc
+	pkgrel = 1
+	url = https://github.com/KVAnton-WEB/Checksum-Blister
+	arch = any
+	license = GPLv3
+	depends = dolphin
+	provides = checksum-blister-kde-service-menu
+	source = checksum-blister-kde-service-menu-git-r8.44290fc::git+https://github.com/KVAnton-WEB/Checksum-Blister.git#branch=master
+	sha256sums = SKIP
+
+pkgname = checksum-blister-kde-service-menu-git
+
