@@ -3,7 +3,6 @@ pkgbase = vkbasalt
 	pkgver = 0.3.2.3
 	pkgrel = 2
 	url = https://github.com/DadSchoorse/vkBasalt
-	install = vkbasalt.install
 	arch = x86_64
 	license = zlib
 	makedepends = git
@@ -16,6 +15,7 @@ pkgbase = vkbasalt
 	sha256sums = SKIP
 
 pkgname = vkbasalt
+	install = vkbasalt.install
 	optdepends = reshade-shaders-git
 
 pkgname = lib32-vkbasalt

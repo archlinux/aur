@@ -11,7 +11,6 @@ license=('zlib')
 makedepends=('git' 'meson' 'ninja' 'glslang' 'lib32-gcc-libs' 'lib32-libx11')
 source=("git+https://github.com/DadSchoorse/vkBasalt.git#tag=v${pkgver}")
 sha256sums=(SKIP)
-install=vkbasalt.install
 
 prepare() {
   cd ${srcdir}/vkBasalt
@@ -55,6 +54,7 @@ build() {
 }
 
 package_vkbasalt() {
+  install=vkbasalt.install
   optdepends=('reshade-shaders-git')
   cd ${srcdir}/vkBasalt
 
