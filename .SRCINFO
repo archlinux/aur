@@ -1,12 +1,14 @@
 pkgbase = atkinson-hyperlegible-fonts
-	pkgdesc = typeface with greater legibility and readability for low vision readers
-	pkgver = 1
+	pkgdesc = Font that is easier to read across the entire visual-ability spectrum. Focuses on letterform distinction.
+	pkgver = 1.02
 	pkgrel = 1
 	url = https://www.brailleinstitute.org/freefont
 	arch = any
-	license = none
+	license = custom
 	source = https://www.brailleinstitute.org/wp-content/uploads/atkinson-hyperlegible-font/Atkinson-Hyperlegible-Font-Print-and-Web-2020-0514.zip
+	source = LICENSE
 	sha256sums = 9e1a65d53ddadc8253791e958a07bf5aba210ef6155ea9c91b2b4c46bbce53e3
+	sha256sums = e16e151abad1cd5f7dfaddf0b3309ba98c93daa8a7dce9d53505c4b0e5c6a1b6
 
 pkgname = atkinson-hyperlegible-fonts
 
