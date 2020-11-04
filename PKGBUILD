@@ -4,7 +4,7 @@ pkgver=v0.5.1.r0.g94d4a21
 pkgrel=1
 pkgdesc="Generic C-API for common patterns"
 arch=('any')
-url="https://gitlab.com/proj_amx_01/libraries/lib_amxp"
+url="https://gitlab.com/soft.at.home/ambiorix/libraries/libamxp"
 license=('MIT')
 
 depends=(
