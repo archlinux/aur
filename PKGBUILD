@@ -6,7 +6,7 @@ pkgdesc="Parse messy tabular data in various formats"
 url="https://github.com/frictionlessdata/tableschema-py"
 
 pkgver=1.15.0
-pkgrel=0
+pkgrel=1
 
 arch=("any")
 license=("MIT")
