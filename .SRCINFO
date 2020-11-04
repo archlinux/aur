@@ -1,6 +1,6 @@
 pkgbase = openmc-git
 	pkgdesc = Community-developed Monte Carlo neutron and photon transport simulation code
-	pkgver = r11186.8bd8af53d
+	pkgver = r11702.e91a6aac1
 	pkgrel = 1
 	url = https://github.com/openmc-dev/openmc
 	arch = any
@@ -19,6 +19,8 @@ pkgbase = openmc-git
 	provides = openmc
 	provides = libopenmc.so
 	conflicts = openmc
+	conflicts = pugixml
+	conflicts = fmt
 	source = openmc-git::git+https://github.com/openmc-dev/openmc.git
 	sha1sums = SKIP
 

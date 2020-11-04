@@ -1,6 +1,6 @@
 # Maintainer: Gavin Ridley <gavin.keith.ridley@gmail.com>
 pkgname=openmc-git
-pkgver=r11186.8bd8af53d
+pkgver=r11702.e91a6aac1
 pkgrel=1
 pkgdesc="Community-developed Monte Carlo neutron and photon transport simulation code"
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('cmake' 'git' 'python-setuptools')
 depends=('hdf5-cpp-fortran' 'python-numpy' 'python-matplotlib' 'python-scipy'
     'python-pandas' 'python-h5py' 'python-uncertainties' 'python-lxml')
 provides=("${pkgname%-git}" "libopenmc.so")
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" 'pugixml' 'fmt')
 source=("${pkgname}::git+${url}.git")
 noextract=()
 sha1sums=('SKIP')
@@ -25,10 +25,10 @@ build() {
 	cd "${srcdir}/${pkgname}"
     git submodule update --init --recursive
     python setup.py build
-    mkdir build
+    mkdir -p build
     cd build
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-	make
+    make
 }
 package() {
 	cd "${srcdir}/${pkgname}/build"
