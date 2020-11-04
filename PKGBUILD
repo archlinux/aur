@@ -2,8 +2,8 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds
 
 pkgname='glint'
-pkgdesc='A tool for creating git commits in the commitlint style'
-pkgver='6.0.2'
+pkgdesc='A tool for creating git commits in the Conventional Commits style'
+pkgver='6.1.0'
 pkgrel='1'
 arch=('x86_64')
 url='https://github.com/brigand/glint'
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 makedepends=('rust')
 checkdepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brigand/glint/archive/v${pkgver}.tar.gz")
-sha256sums=('e1a762b7e5de252b4b5bf50e4707d0e94a8f75807c673b98c4534222793e9764')
+sha256sums=('7d5c244f573246832b5c50e385054f2350c4c47f48c204f49cbd788e35bd4aac')
 
 build() {
   cd "$pkgname-$pkgver"
