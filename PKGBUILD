@@ -7,9 +7,9 @@
 
 pkgbase=nginx-zest-git
 pkgname=(nginx-zest-git nginx-zest-src-git)
-pkgver=1.19.4.r0.g27ce47d2b
-pkgrel=8
-epoch=3
+pkgver=1.19.4.r0.g5ff3e15ab
+pkgrel=1
+epoch=4
 pkgdesc='NGINX with beefed up security and performance'
 arch=(x86_64)
 url='https://github.com/ZestProjects/nginx'
