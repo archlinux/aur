@@ -16,6 +16,7 @@ pkgbase = chia-git
 	depends = python
 	depends = npm
 	depends = nodejs
+	options = !strip
 	source = git+https://github.com/Chia-Network/chia-blockchain.git
 	source = chia-gui.desktop
 	source = chia-gui.sh

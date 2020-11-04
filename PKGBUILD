@@ -22,6 +22,15 @@ pkgver() {
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	read -r -p "Install Electron GUI? [y/N]" input
+	case $input in
+	[yY][eE][sS]|[yY])
+	echo "1" > "$srcdir"/gui.choice
+	;;
+	esac
+}
+
 build() {
 	cd chia-blockchain 
 	python3 -m venv venv
@@ -31,15 +40,20 @@ build() {
 	pip install wheel
 	pip install --extra-index-url https://download.chia.net/simple/ miniupnpc==2.1 setproctitle==1.1.10 cbor2==5.1.2
 	pip install -e .
-	cd electron-react
-	npm install
-	npm audit fix
-	npm run build
+	if [[ "$(< "$srcdir"/gui.choice)" == "1" ]]; then
+	    cd electron-react
+	    npm install
+	    npm audit fix
+	    npm run build
+	fi
 }
 
 package() {
-	install -Dm644 chia-blockchain/electron-react/src/assets/img/circle-cropped.png "$pkgdir"/usr/share/pixmaps/chia.png
+	if [[ "$(< "$srcdir"/gui.choice)" == "1" ]]; then
+	    install -Dm644 chia-blockchain/electron-react/src/assets/img/circle-cropped.png "$pkgdir"/usr/share/pixmaps/chia.png
+	    install -Dm755 chia-gui.sh "$pkgdir"/usr/bin/chia-gui
+	    install -Dm644 chia-gui.desktop "$pkgdir"/usr/share/applications/chia-gui.desktop
+	fi
 	mkdir -p "$pkgdir"/opt
 	mv chia-blockchain "$pkgdir"/opt
-	install -Dm755 chia-gui.sh "$pkgdir"/usr/bin/chia-gui
 }
