@@ -1,7 +1,7 @@
 # Maintainer: Nick Cao <nickcao@nichi.co>
 pkgname=auth-thu
-pkgver=1.9.7
-pkgrel=5
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="A commandline Tunet (auth4/6.tsinghua.edu.cn, Tsinghua-IPv4) authentication tool"
 arch=('x86_64')
 url="https://github.com/z4yx/GoAuthing"
@@ -10,7 +10,7 @@ makedepends=('go')
 source=("auth-thu-$pkgver.tar.gz::https://github.com/z4yx/GoAuthing/archive/v$pkgver.tar.gz"
         "auth-thu.service"
         "auth-thu.timer")
-sha256sums=('92e7a0e14c4a9ef7a0be0016d3debc8206d356ec95946597baf29246b89af7ab'
+sha256sums=('16cf93a2695c516e3491ae593c2f5599a0112b2c20473c851c4e2aaca0b79dcd'
             'd177a5a97e9e9c40a0aa4430024a68a5a08b3ac9ab5a11ce7e2e36185d04341c'
             'a780ea89449aa17d9fafa969dcfaf2e1deaa5098c39dcf38701415ef0dee5f78')
 
@@ -25,3 +25,4 @@ package() {
     install -Dm644 "$srcdir/auth-thu.service" "$pkgdir/usr/lib/systemd/user/auth-thu.service"
     install -Dm644 "$srcdir/auth-thu.timer" "$pkgdir/usr/lib/systemd/user/auth-thu.timer"
 }
+
