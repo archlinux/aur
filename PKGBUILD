@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://software.intel.com/content/www/us/en/develop/articles/opencl-drivers.html#cpu-section"
 license=('custom')
 depends=('libxml2' 'numactl' 'tbb')
+provides=('opencl-intel' 'opencl-driver')
 source=("https://registrationcenter-download.intel.com/akdlm/irc_nas/vcp/15532/l_opencl_p_$pkgver.tgz")
 sha512sums=('8c00163df272fd6e93c249501b06e4c1de0c994c8e23426705a1c6dc4131fb06e691e98962455f386b26cbf3a21fff3042d6f1a783b97433aa5a7951c007bb36')
 
