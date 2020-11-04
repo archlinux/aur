@@ -1,0 +1,13 @@
+pkgbase = subjs
+	pkgdesc = Fetches javascript file from a list of URLS or subdomains
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/lc/subjs
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = subjs-1.0.1.tar.gz::https://github.com/lc/subjs/archive/v1.0.1.tar.gz
+	sha256sums = a1772a7cc9a46befd4465616041ff52b3375033f0ec13c48212b776fea37aa24
+
+pkgname = subjs
+
