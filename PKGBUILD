@@ -1,7 +1,9 @@
+# Maintainer PumpkinCheshire <sollyonzou@gmail.com>
 # Maintainer: robertfoster
 
 pkgname=whatweb-git
-pkgver=v0.4.9.r440.7885799c
+_name=whatweb
+pkgver=v0.5.3.r28.4257078b
 pkgrel=1
 pkgdesc="Next generation web scanner that identifies what websites are running."
 arch=('i686' 'x86_64')
@@ -10,20 +12,30 @@ conflicts=('whatweb')
 provides=('whatweb')
 url="http://www.morningstarsecurity.com/research/whatweb"
 license=('GPL')
-depends=('ruby')
-source=("whatweb::git://github.com/urbanadventurer/WhatWeb.git"
-patch)
+depends=('ruby' 'ruby-addressable')
+optdepends=('ruby-rake: development test use'
+           'ruby-rdoc: development test use'
+           'ruby-minitest: development test use'
+           'ruby-rubocop: development test use'
+           'ruby-bundler-audit: development test use'
+           'ruby-pry: debugging')
+source=("whatweb::git://github.com/urbanadventurer/WhatWeb.git")
+md5sums=('SKIP')
+
+prepare() {
+    cd $_name
+    sed -i '/bundle install/d' Makefile
+    sed -i "s|require 'lib/whatweb'|require '/usr/share/whatweb/lib/whatweb'|" whatweb
+}
 
 package() {
-	cd whatweb
-	patch -Np1 -i ../patch
+	cd $_name
 	make DESTDIR=$pkgdir install
 }
 
 pkgver() {
-	cd whatweb
+	cd $_name
 	printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
-md5sums=('SKIP'
-'0de7ce37f82d813e06275f6e08a41fa1')
+
