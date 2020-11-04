@@ -4,7 +4,7 @@ pkgver=v0.7.2.r0.gcac58c1
 pkgrel=1
 pkgdesc="Generic C-implementation of data containers"
 arch=('any')
-url="https://gitlab.com/proj_amx_01/libraries/lib_amxc"
+url="https://gitlab.com/soft.at.home/ambiorix/libraries/libamxc"
 license=('MIT')
 
 depends=(
