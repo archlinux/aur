@@ -1,21 +1,21 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=ecosim-git
-pkgver=r194.a2c2d33
+pkgver=r211.1d2cb9a
 pkgrel=1
 pkgdesc="An interactive ecosystem and evolution simulator written in C and OpenGL, for GNU/Linux."
 arch=('x86_64')
-url="http://connor-brooks.com/ecosim"
+url="https://connor-brooks.com/projects/ecosim/"
 depends=('glfw-x11' 'glew')
 optdepends=('ffmpeg' 'python' 'python-matplotlib')
 makedepends=('make' 'gcc')
 provides=("ecosim=$pkgver")
 conflicts=("ecosim")
-source=("$pkgname::git://github.com/connor-brooks/ecosim.git")
+source=("${pkgname}::git+https://github.com/connor-brooks/ecosim.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${pkgname}"
 
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
@@ -24,13 +24,14 @@ pkgver() {
 }
 
 build() {
-  cd "$pkgname/src"
+  cd "${pkgname}"
 
-  make CC="$CC" CFLAGS="$CFLAGS"
+  make -C src CC="$CC" CFLAGS="$CFLAGS"
 }
 
 package() {
-  cd "$pkgname/src"
+  cd "${pkgname}"
 
-  install -Dm0755 ecosim "${pkgdir}"/usr/bin/ecosim
+  install -Dm0755 src/ecosim "${pkgdir}/usr/bin/ecosim"
+  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
