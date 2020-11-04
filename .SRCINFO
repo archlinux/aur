@@ -1,6 +1,6 @@
 pkgbase = python-translation-finder
 	pkgdesc = Translation file finder used by weblate
-	pkgver = 2.4
+	pkgver = 2.5
 	pkgrel = 1
 	url = https://github.com/WeblateOrg/translation-finder
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-translation-finder
 	depends = python
 	depends = python-ruamel-yaml
 	depends = python-weblate-language-data
-	source = https://github.com/WeblateOrg/translation-finder/archive/2.4.tar.gz
-	sha256sums = ec64bde29b111116395b63c865a29f5a7a284316e6c646ba82998f87c391d6a4
+	source = https://github.com/WeblateOrg/translation-finder/archive/2.5.tar.gz
+	sha256sums = dfd910ad97054dace0ee69dd7fca7ac6cbafed6c8dc1dbcc65215ba517879a07
 
 pkgname = python-translation-finder
 
