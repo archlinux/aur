@@ -3,7 +3,7 @@
 _pkgname=inquirer
 pkgname="python-${_pkgname}"
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of common interactive command line user interfaces, based on Inquirer.js"
 arch=('any')
 url="https://pypi.org/project/${_pkgname}"
@@ -24,5 +24,7 @@ package() {
   cd "python-inquirer-${pkgver}"
 
   python setup.py install --root="${pkgdir}" --optimize=1
+  rm -rf "${pkgdir}/usr/lib"/python*/"site-packages/tests"
+
   install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

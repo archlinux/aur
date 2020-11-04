@@ -1,7 +1,7 @@
 pkgbase = python-inquirer
 	pkgdesc = Collection of common interactive command line user interfaces, based on Inquirer.js
 	pkgver = 2.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/inquirer
 	arch = any
 	license = MIT
