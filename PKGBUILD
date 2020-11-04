@@ -60,11 +60,13 @@ package() {
   #install the license
   install -Dm644 "Go4License.txt" "$pkgdir/usr/share/licenses/go4/Go4License.txt"
 
-  # cp /etc and /bin
+  # cp /etc and /usr/bin and /usr/lib
   install -d ${pkgdir}/etc
   install -d ${pkgdir}/usr/bin
+  install -d ${pkgdir}/usr/lib
   for file in ${srcdir}/build/etc/*; do install -m755 ${file} ${pkgdir}/etc/; done
   for file in ${srcdir}/build/bin/*; do install -m755 ${file} ${pkgdir}/usr/bin/; done
+  for file in ${srcdir}/build/lib/*; do install -m755 ${file} ${pkgdir}/usr/lib/; done
 
   #install the desktop file
   echo "
