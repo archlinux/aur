@@ -7,7 +7,7 @@ url="https://www.theleagueofmoveabletype.com/$_fnt_name"
 license=("custom:OFL")
 
 pkgver=20110526
-pkgrel=0
+pkgrel=1
 arch=("any")
 
 groups=("lmt-fonts")
