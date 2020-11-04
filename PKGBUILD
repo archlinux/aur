@@ -1,7 +1,7 @@
 # Maintainer: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
 
 pkgname='gfeeds'
-pkgver='0.13.4'
+pkgver='0.15'
 pkgrel='1'
 pkgdesc='An RSS/Atom feed reader for GNOME'
 changelog='CHANGELOG'
