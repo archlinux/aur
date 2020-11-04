@@ -1,5 +1,5 @@
 pkgname=lyriek
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://gitlab.com/bartwillems/lyriek"
@@ -7,8 +7,8 @@ license=('GPL3')
 depends=('dbus' 'gtk3')
 makedepends=('rust' 'cargo' 'git' 'desktop-file-utils')
 conflicts=('lyriek-git')
-source=("https://gitlab.com/bartwillems/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('d9d359554fcf8a1dd21f7556a953b4949616c69c536f36d106f1193358e9525b')
+source=("https://github.com/BartWillems/lyriek/archive/$pkgver.tar.gz")
+sha256sums=('7a08962a32ee59443069c4ae5d386cd82e2a7ea950789c8b0eb1c9df3a7b568c')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -25,3 +25,4 @@ package() {
 	install -D -m755 "target/release/lyriek" "$pkgdir/usr/bin/lyriek"
 	install -D -m644 "assets/logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/lyriek.svg"
 }
+
