@@ -5,7 +5,7 @@ pkgdesc="Optional Wikipedia data to use with nominatim"
 url="https://nominatim.org"
 
 pkgver=20191117
-pkgrel=0
+pkgrel=1
 
 arch=("any")
 license=("unknown")
