@@ -3,13 +3,15 @@
 
 pkgname=cri-o
 pkgver=1.19.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Container Initiative-based implementation of Kubernetes Container Runtime Interface"
 arch=('x86_64')
 url="https://github.com/cri-o/cri-o"
 license=('Apache')
-depends=('cni-plugins' 'conmon' 'conntrack-tools' 'glibc' 'runc')
-makedepends=('gpgme' 'go' 'go-md2man' 'libseccomp' 'ostree')
+depends=('cni-plugins' 'conmon' 'conntrack-tools' 'device-mapper' 'glibc'
+'runc')
+makedepends=('btrfs-progs' 'gpgme' 'go' 'go-md2man' 'libseccomp' 'ostree')
+optdepends=('btrfs-progs: for btrfs support')
 provides=('container-runtime')
 backup=('etc/crio/crio.conf')
 # configuration override and hook directories should exist
@@ -51,7 +53,7 @@ build() {
 }
 
 package() {
-  depends+=('libgpgme.so' 'libseccomp.so')
+  depends+=('libdevmapper.so' 'libgpgme.so' 'libseccomp.so')
   cd "${pkgname}-${pkgver}"
   # makefile is mixing DESTDIR and PREFIX
   make install install.systemd DESTDIR="${pkgdir}" PREFIX="${pkgdir}/usr"
