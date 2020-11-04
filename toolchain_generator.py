@@ -24,6 +24,7 @@ class CrossFileGenerator:
 		config = configparser.ConfigParser()
 		config['binaries'] = self.get_binaries_section()
 		config['properties'] = self.get_properties_section()
+		config['built-in options'] = self.get_builtin_options_section()
 		config['host_machine'] = self.get_host_machine_section()
 		with open(self.output_file, 'w') as configfile:
 			config.write(configfile)
@@ -46,11 +47,14 @@ class CrossFileGenerator:
 	def get_properties_section(self):
 		return {'root':"'{}'".format(self.arch),
 			'sys_root':"'/usr/{}'".format(self.arch),
-			'c_args':[f for f in self.cflags.split(" ") if f],
+			'needs_exe_wrapper':'true'
+			}
+
+	def get_builtin_options_section(self):
+		return {'c_args':[f for f in self.cflags.split(" ") if f],
 			'cpp_args':[f for f in self.cxxflags.split(" ") if f],
 			'c_link_args':[f for f in self.ldflags.split(" ") if f],
-			'cpp_link_args':[f for f in self.ldflags.split(" ") if f],
-			'needs_exe_wrapper':'true'
+			'cpp_link_args':[f for f in self.ldflags.split(" ") if f]
 			}
 
 	def get_host_machine_section(self):
