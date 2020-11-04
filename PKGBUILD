@@ -8,7 +8,7 @@ pkgdesc="Shell script to easily setup mu4e on Emacs"
 arch=('any')
 url=https://github.com/cemkeylan/mu-wizard
 license=('GPL3')
-depends=('isync' 'msmtp' 'mu' 'pass')
+depends=('isync' 'msmtp' 'mu' 'pass' 'sh')
 makedepends=('git')
 optdepends=('pash: alternative password manager'
             'pm: alternative password  manager')

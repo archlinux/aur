@@ -11,6 +11,7 @@ pkgbase = mu-wizard-git
 	depends = msmtp
 	depends = mu
 	depends = pass
+	depends = sh
 	optdepends = pash: alternative password manager
 	optdepends = pm: alternative password manager
 	provides = mu-wizard
