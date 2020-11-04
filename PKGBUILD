@@ -2,15 +2,16 @@
 
 _pkgname='plasma-systemmonitor'
 pkgname="${_pkgname,,}-git"
-pkgver=r248.32afb36
+pkgver=v5.20.0.r2.g0eaa8e1
 pkgrel=1
-pkgdesc='an interface for monitoring system sensors, process information and other system resources'
+pkgdesc='New version of KSysGuard built on top of the new KStats daemon and using QML for its UI, git version'
 arch=('x86_64')
 url='https://github.com/KDE/plasma-systemmonitor'
 license=('GPL3')
 depends=('ksysguard' 'libksysguard' 'qt5-quickcontrols' 'kirigami2')
 makedepends=('extra-cmake-modules' 'git' 'qt5-tools')
 provides=("${_pkgname,,}")
+conflicts=("${_pkgname,,}")
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
