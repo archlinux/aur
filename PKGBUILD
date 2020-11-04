@@ -1,15 +1,15 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=adobe-source-han-sans-classic-fonts
-pkgver=2.001
-_commit=752e11f6105adaeef241982be142f56d70141354
-pkgrel=5
-pkgdesc='Adobe Source Han Sans - Classic Style Chinese Character'
+pkgver=2.002
+_commit=f0d19d47b12ae57589d6dbc6bcb3c832a20972dd
+pkgrel=1
+pkgdesc='Adobe Source Han Sans fonts with classic orthography.'
 arch=('any')
 url="https://github.com/redchenjs/source-han-sans-classic"
 license=('custom:OFL')
 source=("https://github.com/redchenjs/source-han-sans-classic/archive/$_commit/source-han-sans-classic-$_commit.tar.gz")
-sha512sums=('9cfae760aa770829e80f4912500399473e354585e4cd41f2c9292ba4cc5aac01d71d2148d2cfe466362ad1067f0c91b8951ef0f99913d1bc6cf8de7f1009510f')
+sha512sums=('81264d58c38bb80b52bef677c378e2f0d9056eff5320ef81ec5e0337ca237face2031b0ff620451df1004557cf27c0cc40c7938a42b6093ed0a2427758181c89')
 
 package() {
     cd source-han-sans-classic-$_commit
