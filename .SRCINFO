@@ -1,5 +1,5 @@
 pkgbase = adobe-source-han-mono-classic-fonts
-	pkgdesc = Adobe Source Han Mono - Classic Style Chinese Character
+	pkgdesc = Adobe Source Han Mono fonts with classic orthography.
 	pkgver = 1.002
 	pkgrel = 6
 	url = https://github.com/redchenjs/source-han-mono-classic
