@@ -1,6 +1,6 @@
 pkgbase = app-icon-preview
 	pkgdesc = Tool for designing applications icons.
-	pkgver = 2.0.0
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/design/app-icon-preview
 	changelog = CHANGELOG
@@ -10,8 +10,8 @@ pkgbase = app-icon-preview
 	makedepends = meson
 	makedepends = git
 	depends = gtk3
-	depends = libhandy
-	source = git+https://gitlab.gnome.org/World/design/app-icon-preview.git#tag=2.0.0
+	depends = libhandy0
+	source = git+https://gitlab.gnome.org/World/design/app-icon-preview.git#tag=2.1.2
 	source = git+https://gitlab.gnome.org/Teams/Design/HIG-app-icons.git
 	sha256sums = SKIP
 	sha256sums = SKIP
