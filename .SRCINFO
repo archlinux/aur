@@ -1,13 +1,13 @@
 pkgbase = grape-bin
 	pkgdesc = Grape is a syntax-aware grep-like utility for Clojure code. It allows you to search for code patterns using Clojure data structures.
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/bfontaine/grape
 	arch = x86_64
 	license = EPL
 	provides = grape
-	source = https://github.com/bfontaine/grape/releases/download/0.5.1/grape-linux-amd64.zip
-	sha256sums = 7a38582e05a09043d82599b36a29fedc22ab7f14e2ed63f50576933abc431fa4
+	source = https://github.com/bfontaine/grape/releases/download/0.6.0/grape-linux-amd64.zip
+	sha256sums = 92c5a64596d78c09ca4abaf0c60c0df4610aab7538109f4f71717d3975ec70b1
 
 pkgname = grape-bin
 
