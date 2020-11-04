@@ -3,7 +3,7 @@
 
 _pkgname='yuzu'
 pkgname="$_pkgname-git"
-pkgver=r15523.f650cf8a9
+pkgver=r16284.4bfa411dd
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL2')
 provides=('yuzu' 'yuzu-cmd')
 conflicts=('yuzu-mainline-git' 'yuzu-canary-git')
 depends=('shared-mime-info' 'desktop-file-utils' 'sdl2' 'qt5-base' 'qt5-multimedia' 'qt5-tools' 'libxkbcommon-x11' 'libfdk-aac')
-makedepends=('git' 'cmake' 'python2' 'catch2' 'nlohmann-json' 'boost' 'fmt' 'conan')
+makedepends=('git' 'cmake' 'python2' 'catch2' 'nlohmann-json' 'boost' 'fmt' 'ffmpeg' 'conan')
 optdepends=('qt5-wayland: for Wayland support')
 source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu")
 md5sums=('SKIP')
@@ -47,11 +47,6 @@ build() {
 	  -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
 	  -DUSE_DISCORD_PRESENCE=ON
 	make
-}
-
-check() {
-	cd "$srcdir/$_pkgname/build"
-	make test
 }
 
 package() {
