@@ -10,6 +10,7 @@ pkgbase = dbus-soundrecorder
 	arch = aarch64
 	license = GPL
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = qtutilities
 	depends = c++utilities
 	depends = qt5-base
