@@ -1,0 +1,21 @@
+pkgbase = netinstall
+	pkgdesc = Mikrotik Netinstall for RouterOS
+	pkgver = 6.47.7
+	pkgrel = 1
+	url = https://www.mikrotik.com/
+	install = netinstall.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = icoutils
+	depends = wine
+	depends = libcap
+	source = https://download.mikrotik.com/routeros/6.47.7/netinstall-6.47.7.zip
+	source = netinstall.c
+	source = netinstall.desktop
+	sha256sums = c27212f20520ccdae2eb8df78b3ebe146707c9c4464d3daacc23abad5f0e1699
+	sha256sums = 0788e62837867c93147988ff3fbd8b005aa21af7a46fd0faec97fe1e38b2af95
+	sha256sums = 742b8ebf2b66697f24a27b5e6920dd4a4b92dec0fea928e8f58e499246284623
+
+pkgname = netinstall
+

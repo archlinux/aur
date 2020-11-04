@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Netinstall
+Comment=Mikrotik Netinstall for RouterOS
+Exec=/usr/bin/netinstall
+Icon=/usr/share/pixmaps/netinstall.ico
+Terminal=false
+Categories=Utility
+StartupWMClass=netinstall.exe
