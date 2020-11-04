@@ -1,0 +1,19 @@
+pkgbase = bookmark-bin
+	pkgdesc = Save URLs from the terminal and open them quickly in the browser
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Szymongib/bookmark
+	arch = x86_64
+	license = MIT
+	provides = bookmark
+	conflicts = bookmark
+	conflicts = bookmark-git
+	source_x86_64 = bookmark-0.1.0::https://github.com/Szymongib/bookmark/releases/download/v0.1.0/bookmark-linux-amd64
+	source_x86_64 = bookmark-0.1.0-LICENSE::https://github.com/Szymongib/bookmark/raw/v0.1.0/LICENSE
+	source_x86_64 = bookmark-0.1.0-README.md::https://github.com/Szymongib/bookmark/raw/v0.1.0/README.md
+	sha512sums_x86_64 = 332ccdd85a23e4a8fcbd324d9251a44b42e940dd42668da64415d611765305b57dd19f4357ae714e45065b33d5a7377ebbf973949eb61ca03ec52e70df84c5ba
+	sha512sums_x86_64 = 3f2e09ba09ef8567e5f70e20776075f952bcb4fc632c3bbe771287cd442f202b0f6f140df2870775d27d1ce5a513e29f92d9f978d8563ae16b671526a9d3c48f
+	sha512sums_x86_64 = ef77c1169d7fdb13f7afa407bba76110ac1230e845e3c0d73528ccb959bcccb493d2ebb7e24753c5852afd5ad196f59ca426d20346cc67f34eb57debec5160e4
+
+pkgname = bookmark-bin
+
