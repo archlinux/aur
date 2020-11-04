@@ -12,7 +12,7 @@
 pkgname=thunderbird-localized-beta-bin
 _pkgname=thunderbird-beta
 _product=thunderbird
-pkgver=76.0b3
+pkgver=83.0b2
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -163,7 +163,7 @@ END
           "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
   done
   
-  install -Dm644 ../$pkgname.desktop \
+  install -Dm644 $srcdir/$pkgname.desktop \
     "$pkgdir/usr/share/applications"
 
   # Use system-provided dictionaries
