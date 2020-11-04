@@ -1,0 +1,7 @@
+peercoin-*.tar.gz
+peercoin-cli-*.pkg.tar.*
+peercoin-daemon-*.pkg.tar.*
+peercoin-qt-*.pkg.tar.*
+peercoin-tx-*.pkg.tar.*
+pkg/
+src/
