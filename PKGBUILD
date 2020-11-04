@@ -5,7 +5,7 @@
 
 pkgname=charles
 pkgver=4.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Web debugging proxy application"
 arch=(any)
 url="http://www.charlesproxy.com"
@@ -46,6 +46,8 @@ package() {
     ${pkgdir}/usr/share/applications/charles-proxy.desktop
 
   sed -i 's/Icon=\.\..\+/Icon=charles/' ${pkgdir}/usr/share/applications/charles-proxy.desktop
+  #Stop ^- from appearing in home directory
+  sed -i 's/\^-/\/dev\/null/' ${pkgdir}/usr/bin/charles
+  #Use XDG_CONFIG_HOME and if unset use ~/.config/charles rather than ~/ for .charles.config
+  sed -i 's/\~\/\.charles\.config\"/$\{XDG\_CONFIG\_HOME\:\-\~\/\.config\/charles\}\"\/\.charles\.config/' ${pkgdir}/usr/bin/charles
 }
-
-# vim:set ts=2 sw=2 et:

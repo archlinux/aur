@@ -1,7 +1,7 @@
 pkgbase = charles
 	pkgdesc = Web debugging proxy application
 	pkgver = 4.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.charlesproxy.com
 	arch = any
 	license = custom
