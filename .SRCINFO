@@ -1,7 +1,7 @@
 pkgbase = nginx-zest-git
 	pkgdesc = NGINX with beefed up security and performance
-	pkgver = 1.19.4.r0.gb3f311dd8
-	pkgrel = 7
+	pkgver = 1.19.4.r0.g27ce47d2b
+	pkgrel = 8
 	epoch = 3
 	url = https://github.com/ZestProjects/nginx
 	install = nginx.install
@@ -24,7 +24,7 @@ pkgbase = nginx-zest-git
 	depends = mailcap
 	depends = libxcrypt
 	depends = brotli
-	depends = gperftools
+	depends = mimalloc
 	depends = liburing
 	depends = zstd
 	provides = nginx
@@ -62,7 +62,7 @@ pkgbase = nginx-zest-git
 pkgname = nginx-zest-git
 
 pkgname = nginx-zest-src-git
-	pkgdesc = Source code of Zest NGINX 1.19.4.r0.gb3f311dd8, useful for building modules
+	pkgdesc = Source code of Zest NGINX 1.19.4.r0.g27ce47d2b, useful for building modules
 	depends = 
 	provides = nginx-src
 	provides = nginx-mainline-src

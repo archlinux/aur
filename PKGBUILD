@@ -7,14 +7,14 @@
 
 pkgbase=nginx-zest-git
 pkgname=(nginx-zest-git nginx-zest-src-git)
-pkgver=1.19.4.r0.gb3f311dd8
-pkgrel=7
+pkgver=1.19.4.r0.g27ce47d2b
+pkgrel=8
 epoch=3
 pkgdesc='NGINX with beefed up security and performance'
 arch=(x86_64)
 url='https://github.com/ZestProjects/nginx'
 license=(custom)
-depends=(pcre openssl geoip mailcap libxcrypt brotli gperftools liburing zstd)
+depends=(pcre openssl geoip mailcap libxcrypt brotli mimalloc liburing zstd)
 makedepends=(mercurial git 'rust>=1.39')
 checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi perl-cache-memcached
               memcached ffmpeg inetutils)
@@ -111,9 +111,7 @@ build() {
   export CFLAGS="${CFLAGS//-flto=thinlto/}"  # thinlto also breaks quiche
   export CXXFLAGS="${CXXFLAGS//-fltothinlto/}"  # thinlto also breaks quiche
 
-  export CFLAGS="$CFLAGS -fno-builtin-malloc -fno-builtin-calloc -fno-builtin-realloc -fno-builtin-free"  # recommended for tcmalloc
-  export CXXFLAGS="$CXXFLAGS -fno-builtin-malloc -fno-builtin-calloc -fno-builtin-realloc -fno-builtin-free"  # recommended for tcmalloc
-  export LDFLAGS="$LDFLAGS -ltcmalloc"  # needed for tcmalloc
+  export LDFLAGS="$LDFLAGS -lmimalloc"  # use mimalloc as the memory allocator
 
   cd nginx
 
