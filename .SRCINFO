@@ -1,6 +1,6 @@
 pkgbase = barify
 	pkgdesc = Modify volume or brightness and display result as a bar via notifications
-	pkgver = r4.6734055
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/arctize/barify
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = barify
 	depends = notification-daemon
 	optdepends = dunst: for notifications on Xorg
 	optdepends = mako: for notifications on Wayland
-	source = git+https://github.com/arctize/barify.git
-	md5sums = SKIP
+	source = barify-1.0.0.tar.gz::https://github.com/arctize/barify/archive/1.0.0.tar.gz
+	sha256sums = da73176c23f10f255a10a74312e035e49f079edc59d1c45b91340c05cd87aeb7
 
 pkgname = barify
 
