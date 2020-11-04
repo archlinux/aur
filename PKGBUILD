@@ -15,13 +15,13 @@ package() {
     cd "$srcdir/l_opencl_p_$pkgver"
     bsdtar -xf rpm/intel-openclrt-$pkgver-*.rpm
 
-    mkdir -p "$pkgdir/opt/"
+    mkdir -p "$pkgdir/opt"
     mv opt/intel/opencl_compilers_and_libraries_$pkgver "$pkgdir/opt/intel-cpu-runtime"
 
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
     ln -s /opt/intel-cpu-runtime/licensing/* "$pkgdir/usr/share/licenses/$pkgname/"
 
-    mkdir -p "$pkgdir/etc/OpenCL/vendors/"
+    mkdir -p "$pkgdir/etc/OpenCL/vendors"
     sed -i 's#<INSTALLDIR>#/opt/intel-cpu-runtime#' "$pkgdir/opt/intel-cpu-runtime/linux/etc/intel64.icd"
     ln -s /opt/intel-cpu-runtime/linux/etc/intel64.icd "$pkgdir/etc/OpenCL/vendors/"
 }
