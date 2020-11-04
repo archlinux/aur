@@ -3,7 +3,7 @@
 # Contributor: Chris Clonch <chris at theclonchs dot com>
 # Contributor: Justin Dray <justin@dray.be>
 pkgname=chronograf
-pkgver=1.8.7
+pkgver=1.8.8
 pkgrel=1
 pkgdesc='Time-series data visualization tool for InfluxDB'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -19,8 +19,8 @@ source=("git+https://github.com/influxdata/chronograf#tag=${pkgver}"
 	'chronograf.tmpfiles'
 )
 sha256sums=('SKIP'
-	'594777c81e3728fe1d5033c61034fb58d26a7c79f00f2a6daa143de521cf5440'
-	'c81f81247b99928bd20428f7188c1790fff89c4521f3322a8ff148272b24bab6')
+            '594777c81e3728fe1d5033c61034fb58d26a7c79f00f2a6daa143de521cf5440'
+            'c81f81247b99928bd20428f7188c1790fff89c4521f3322a8ff148272b24bab6')
 
 build() {
 	export GOPATH="${srcdir}"
