@@ -3,7 +3,7 @@
 # Contributor: Bumsik Kim <k.bumsik@gmail.com>
 
 pkgname=nushell
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="A new type of shell."
 url="https://www.nushell.sh"
@@ -14,8 +14,8 @@ makedepends=('rust')
 arch=('x86_64' 'i686')
 source=("https://github.com/nushell/nushell/archive/${pkgver}.tar.gz")
 install=nushell.install
-sha256sums=('24598bcf6e61825fd3b6f17e083952926a4b072efff413748bbd5bc83a3158f1')
-b2sums=('b09cf833353b302479238f938a92979a6d37cb4072a945a5abbf637757c5083ccc59906ba7527bfcad5e6bf89eb9eecafc94a263597934720950833e4516bffd')
+sha256sums=('a7ee864b711d43bec1d611aa11ac70ff62f254d09ee507bbbe7aa3ceaf7b4f39')
+b2sums=('e5a0af0aa5718a4cf47a56aa26eef11b27638923a7aa7c48629c8fc13a139bb2dfb18ece4872aae5135583b93d24d0f07b76c6348cf63ae601e99c004195ead9')
 
 build() {
   cd "${pkgname}-${pkgver}"
