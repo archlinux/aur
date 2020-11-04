@@ -1,0 +1,19 @@
+pkgbase = gbutils
+	pkgdesc = Giulio Bottazzi's Command Line Econometrics
+	pkgver = 6.0
+	pkgrel = 1
+	url = http://cafim.sssup.it/~giulio/software/gbutils/
+	arch = x86_64
+	license = GPL2
+	makedepends = gawk
+	depends = gsl>=2.1
+	depends = libmatheval>=1.0.1
+	depends = zlib
+	provides = gbutils
+	conflicts = gbutils
+	noextract = $pkgname-$pkgver.tar.gz
+	source = ftp://cafed.sssup.it/packages/gbutils-6.0.tar.gz
+	md5sums = SKIP
+
+pkgname = gbutils
+
