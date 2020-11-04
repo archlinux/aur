@@ -12,7 +12,7 @@ arch=('any')
 pkgdesc='A video downloader with Qt GUI (currently only YouTube and Vimeo are maintained, mingw-w64)'
 license=('GPL')
 depends=('mingw-w64-crt' 'mingw-w64-qtutilities')
-makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg')
+makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg' 'ninja')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 sha256sums=('59adbb242250235d0e580fbb858c3eb30c724f5463defc49330015e2233927ed')
@@ -21,7 +21,7 @@ options=(!buildflags staticlibs !strip !emptydirs)
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 _configurations=()
 [[ $NO_SHARED_LIBS ]] || _configurations+=('shared')
-[[ $NO_STATIC_LIBS ]] || _configurations+=('static') makedepends+=('mingw-w64-qt5-base-static' 'mingw-w64-qt5-translations' 'mingw-w64-qt5-svg' 'breeze-icons' 'numix-icon-theme-git')
+[[ $NO_STATIC_LIBS ]] || _configurations+=('static') makedepends+=('mingw-w64-qt5-base-static' 'mingw-w64-qt5-translations' 'mingw-w64-qt5-svg-static' 'breeze-icons' 'numix-icon-theme-git')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
@@ -52,14 +52,16 @@ build() {
       msg2 "${_arch}-${_cfg}"
       mkdir -p "build-${_arch}-${_cfg}" && pushd "build-${_arch}-${_cfg}"
       ${_arch}-cmake \
+        -G Ninja \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX="/usr/${_arch}" \
         -DCONFIGURATION_NAME:STRING="${_cfg}" \
+        -DCONFIGURATION_DISPLAY_NAME="" \
         -DCONFIGURATION_PACKAGE_SUFFIX:STRING="-${_cfg}" \
-	-DENABLE_TARGETS_FOR_MINGW64_CROSS_PACKAGING:BOOL=ON \
+        -DENABLE_TARGETS_FOR_MINGW64_CROSS_PACKAGING:BOOL=ON \
         ${_config_flags[$_cfg]} \
         ../
-      make
+      ninja
       popd
     done
   done
@@ -76,7 +78,7 @@ package() {
     for _cfg in "${_configurations[@]}"; do
       msg2 "${_arch}-${_cfg}"
       pushd "build-${_arch}-${_cfg}"
-      make DESTDIR="${pkgdir}" install-mingw-w64-strip
+      DESTDIR="${pkgdir}" ninja install-mingw-w64-strip
       popd
     done
   done
