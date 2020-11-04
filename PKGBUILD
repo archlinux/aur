@@ -30,7 +30,7 @@ depends=('python'
          'python-pyaml' 
          'python-ptable' 
          'python-dill'  # AUR
-         'ipython-ipyparallel'  # AUR
+         'python-ipyparallel'  # AUR
          'python-scikit-image'  # AUR
        # 'python-imageio'  # AUR (from scikit-image)
        # 'python-pywavelets' # AUR (from scikit-image)
