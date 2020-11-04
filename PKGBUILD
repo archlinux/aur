@@ -4,8 +4,8 @@ pkgname="nominatim-data-postcodes-gb"
 pkgdesc="Optional postcode (GB) data to use with nominatim"
 url="https://nominatim.org"
 
-pkgver=20200602
-pkgrel=0
+pkgver=20200805
+pkgrel=1
 
 arch=("any")
 license=("unknown")
@@ -18,7 +18,7 @@ source=(
     "https://www.nominatim.org/data/gb_postcode_data.sql.gz"
 )
 sha256sums=(
-    "e6e45dfb2d9e99d6cb56b1b961b88dc3038e7b63d723f789b3dcee10ff109383"
+    "7cbcf8f5c4b1acf0c538c6dd254491dd5cfdca2942eb45545cd2fe4a79c0331c"
 )
 noextract=(
     "gb_postcode_data.sql.gz"
