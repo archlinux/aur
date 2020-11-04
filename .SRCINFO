@@ -1,0 +1,16 @@
+pkgbase = cspparse-git
+	pkgdesc = Tool to evaluate Content Security Policies
+	pkgver = r27.372a4b8
+	pkgrel = 1
+	url = https://github.com/lc/cspparse
+	arch = x86_64
+	license = Unknown
+	makedepends = git
+	makedepends = go
+	provides = cspparse
+	conflicts = cspparse
+	source = git+https://github.com/lc/cspparse.git
+	sha256sums = SKIP
+
+pkgname = cspparse-git
+
