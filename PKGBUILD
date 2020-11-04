@@ -5,7 +5,7 @@ pkgdesc="VADER (Valence Aware Dictionary and sEntiment Reasoner)"
 url="https://github.com/cjhutto/vaderSentiment"
 
 pkgver=3.3.2
-pkgrel=0
+pkgrel=1
 
 arch=("any")
 license=("MIT")

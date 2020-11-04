@@ -1,7 +1,7 @@
 pkgbase = python-vadersentiment
 	pkgdesc = VADER (Valence Aware Dictionary and sEntiment Reasoner)
 	pkgver = 3.3.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/cjhutto/vaderSentiment
 	arch = any
 	license = MIT
