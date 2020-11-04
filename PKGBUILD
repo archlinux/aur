@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=shy
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="Bare-bones SSH launcher"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/xvxx/shy"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b88d117158c520d773c7fa6d4a11b5afaa474a353d2ea0a376beeed55c1ea7fad4abe6666c3d3cf11b591f2c05a22958c769cf206358be73cadd4c22e4969da1')
+sha512sums=('57f999c67fc967ea924f1fc510024d7c689a7fe49d95157f3540ed7e8ea60d4aecd23f345fd9a611ca33bbb7102c60740db406cad8e715804bf24c13c0a31885')
 
 build() {
   cd "$pkgname-$pkgver"
