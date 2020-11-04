@@ -9,7 +9,7 @@ url="https://github.com/Sorixelle/envypn-powerline"
 arch=('any')
 license=('custom')
 provides=('envypn-font')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-fonts-encodings')
 source=("git+https://github.com/Sorixelle/envypn-powerline")
 sha256sums=('SKIP')
 

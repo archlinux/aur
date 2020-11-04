@@ -7,7 +7,6 @@ pkgbase = envypn-powerline-git
 	license = custom
 	depends = fontconfig
 	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
 	provides = envypn-font
 	source = git+https://github.com/Sorixelle/envypn-powerline
 	sha256sums = SKIP
