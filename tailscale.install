@@ -1,25 +1,12 @@
 # -*- mode: shell-script -*-
 
 post_install() {
-    usr/bin/systemctl daemon-reload
-    usr/bin/systemctl enable tailscaled.service
-    usr/bin/systemctl start tailscaled.service
-
     echo -e "\n\e[1m Tailscale $1\e[0m\n"
     cat <<EOF
-To start using Tailscale, log in with:
+To start using Tailscale:
 
+    sudo systemctl enable --now tailscaled.service
     sudo tailscale up
 
 EOF
-}
-
-post_upgrade() {
-    usr/bin/systemctl daemon-reload
-    usr/bin/systemctl restart tailscaled.service
-}
-
-pre_remove() {
-    usr/bin/systemctl stop tailscaled.service
-    usr/bin/systemctl disable tailscaled.service
 }
