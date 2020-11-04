@@ -3,7 +3,7 @@
 
 _pkgname=fisher
 pkgname=${_pkgname}-git
-pkgver=3.2.10.r0.gc142f61
+pkgver=4.0.0.r4.g4f2bc7b
 pkgrel=1
 pkgdesc="A package manager for the fish shell"
 arch=(any)
