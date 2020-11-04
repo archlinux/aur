@@ -1,9 +1,10 @@
 pkgbase = nodejs-nativefier
 	pkgdesc = Wrap web apps natively
 	pkgver = 10.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jiahaog/nativefier#readme
 	arch = any
+	license = MIT
 	makedepends = jq
 	makedepends = npm
 	depends = nodejs
