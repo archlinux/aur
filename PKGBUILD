@@ -1,7 +1,7 @@
 # Maintainer: Adrián Pérez de Castro <adrian@perezdecastro.org>
 pkgdesc='Portable MSX/MSX2/MSX2+ emulator'
 pkgname=fmsx
-pkgver=5.7
+pkgver=5.8
 pkgrel=1
 _dlname="fMSX${pkgver//./}"
 url=http://fms.komkon.org/fMSX
@@ -24,7 +24,7 @@ source=(fmsx.sh
         "${url}/src/KANJI.ROM"
         "https://github.com/libretro/fmsx-libretro/raw/master/fMSX/ROMs/RS232.ROM")
 sha512sums=('1c7b7485525e5798cde0fa4e82153f294ce88c358d4c0366a6266f837b2b3e5ce8540b0f5daf1d67b11e1afcf82912df8379e3a0cbe93854f0d86cb7d54d7d36'
-            'e836fffe9692cc8d17716d78c97d558efc7eab2c8bc07dcf91426582b43bee08065689c02c085bad2b25b1184ac7eae04d643d9c78740e463ef3eb88fe7ca656'
+            '871f53d9c83a79854d1a6ec29e6d1dfe5d0d98b68e858c87eb3e5ef01e45a831fbf982ab9ee350fb6ab88b4c6975f8b728eca6006f9d1a83bbe53a7a9f3dbe85'
             '617bee88a0088c25928e4b906bf7acc8ffa1847e3f7dc006117f579ad3c760e33a43d30f5b9b41ada20689c8f2f65ce5bd95a3de9662153d3deb615bff13163b'
             'f8a447906272f69cd545ed439623845cacee4ee98b8ed3fae264a26e35ef006b125b51a2c4e54e8371d53cffe730dac720b2a8d0eccdad0c3c7befdc31864f6c'
             'dc95ef9c17a28319d815780cae359b8a88b3edd5c5d582a16a916e256eb90d79b02f3240b91d2048e9d750239051473f924b807ae2583a65695fb1e18e317a54'
