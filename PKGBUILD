@@ -62,9 +62,9 @@ package() {
 
   # cp /etc and /bin
   install -d ${pkgdir}/etc
-  install -d ${pkgdir}/bin
+  install -d ${pkgdir}/usr/bin
   for file in ${srcdir}/build/etc/*; do install -m755 ${file} ${pkgdir}/etc/; done
-  for file in ${srcdir}/build/bin/*; do install -m755 ${file} ${pkgdir}/bin/; done
+  for file in ${srcdir}/build/bin/*; do install -m755 ${file} ${pkgdir}/usr/bin/; done
 
   #install the desktop file
   echo "
