@@ -7,8 +7,8 @@
 pkgbase=pipewire-gstfree
 _pkgbase=pipewire
 pkgname=(pipewire-gstfree pipewire-gstfree-docs pipewire-gstfree-jack pipewire-gstfree-pulse pipewire-gstfree-alsa)
-pkgver=0.3.14
-pkgrel=2
+pkgver=0.3.15
+pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies"
 url="https://pipewire.org"
 license=(LGPL2.1)
@@ -16,7 +16,7 @@ arch=(x86_64)
 makedepends=(git meson doxygen graphviz xmltoman valgrind jack2 libpulse
              alsa-lib sbc rtkit vulkan-icd-loader
              dbus libsndfile bluez-libs vulkan-headers ffmpeg)
-_commit=3960a884785d1f4b71302491f599ed7219f6e45a  # tags/0.3.14
+_commit=16872549e3a2433f49f27c1875dfd432377ca0be  # tags/0.3.15
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -75,7 +75,8 @@ package_pipewire-gstfree() {
 
   _pick docs usr/share/doc
 
-  _pick pulse usr/bin/pw-pulse usr/lib/pipewire-$_ver/pulse usr/lib/pipewire-$_ver/libpipewire-module-protocol-pulse.so
+  _pick pulse usr/bin/pw-pulse usr/lib/pipewire-$_ver/pulse
+  _pick pulse usr/lib/pipewire-$_ver/libpipewire-module-protocol-pulse.so
 
   _pick jack usr/bin/pw-jack usr/lib/pipewire-$_ver/jack
   _pick jack usr/lib/spa-0.2/jack

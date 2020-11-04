@@ -1,7 +1,7 @@
 pkgbase = pipewire-gstfree
 	pkgdesc = Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies
-	pkgver = 0.3.14
-	pkgrel = 2
+	pkgver = 0.3.15
+	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
 	license = LGPL2.1
@@ -22,7 +22,7 @@ pkgbase = pipewire-gstfree
 	makedepends = bluez-libs
 	makedepends = vulkan-headers
 	makedepends = ffmpeg
-	source = git+https://github.com/PipeWire/pipewire#commit=3960a884785d1f4b71302491f599ed7219f6e45a
+	source = git+https://github.com/PipeWire/pipewire#commit=16872549e3a2433f49f27c1875dfd432377ca0be
 	sha256sums = SKIP
 
 pkgname = pipewire-gstfree
