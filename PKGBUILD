@@ -1,7 +1,7 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=growlight
-pkgver=1.2.17
+pkgver=1.2.18
 pkgrel=1
 pkgdesc="Disk manipulation and system preparation tool"
 url="https://nick-black.com/dankwiki/index.php/Growlight"
@@ -43,4 +43,4 @@ package() {
   make install DESTDIR="$pkgdir"
 }
 
-sha256sums=('fa15f462a3865c29fc9879aa04f7926c268cabd6197e844c009961ea073b510f')
+sha256sums=('c6c08556e6838226b81300e177c49d7a382e9eb30cfdb19f99790106e426a032')
