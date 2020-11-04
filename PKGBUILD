@@ -86,7 +86,7 @@ _zest_flags=(
 )
 
 pkgver() {
-  cd "$pkgname"
+  cd nginx
   ( set -o pipefail
     # cutting off 'release-' prefix that presents in the git tag
     git describe --long --tags 2>/dev/null | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
