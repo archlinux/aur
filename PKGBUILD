@@ -1,163 +1,95 @@
 # Maintainer: Naoya Inada <naoina@kuune.org>
-# fcitx-mozc-ut is based on fcitx-mozc and mozc-ut.
+# Contributor: UTUMI Hirosi <utuhiro78 at yahoo dot co dot jp>
+# Contributor: Felix Yan <felixonmars@gmail.com>
+# Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
-##
-## Build configuration
-##
-## ニコニコ大百科IME辞書 (NICONICOPEDIA IME dictionary, see below)
-#_NICODIC="true"
-#
-## If you want to use an English-Japanese dictionary,
-## uncomment the following line.
-#_EJDIC="true"
-
-
-#***********************************************************************
-# License information:
-#
-# Mozc:     3-clause BSD
-#
-# Mozc-UT dictionary
-# altcanna, jinmei, skk: GPL
-# hatena: unknown
-# edict: Creative Commons Attribution-ShareAlike License (V3.0)
-# ekimei: redistributable
-# zip code: public domain
-# niconico: unknown
-# Japanese WordNet: See above
-# ruby/shell scripts: GPL
-#
-# ** CAUTION **
-# CC-BY-SA (EDICT) is incompatible with GPL (some of the other dic data).
-# You should not redistribute the binary of mozc-ut including edict
-# (and niconico which unknown license) at least.
-#
-#***********************************************************************
-# Upstreams:
-#
-# mozc
-# http://code.google.com/p/mozc/
-#
-# Japanese zip code data by Japan Post
-# http://www.post.japanpost.jp/zipcode/download.html
-#
-# Modified zip code data by Ibs
-# http://zipcloud.ibsnet.co.jp/
-#
-# Mozc UT dictionary
-# http://www.geocities.jp/ep3797/mozc_01.html
-#
-#***********************************************************************
+# NOTE: This PKGBUILD is based on https://osdn.net/downloads/users/26/26669/mozcdic-ut-20200924.1.PKGBUILD/
 
 ## Mozc compile option
 _bldtype=Release
 
-_zipcode_rel=201608
-_mozcver=2.18.2598.102
-_utdicver=20160905
-_protobuf_rev=172019c40bf548908ab09bfd276074c929d48415
-_gyp_rev=e2e928bacd07fead99a18cb08d64cb24e131d3e5
-_jsoncpp_rev=11086dd6a7eba04289944367ca82cea71299ed70
-_japanese_usage_dictionary_rev=e5b3425575734c323e1d947009dd74709437b684
-_mozc_rev=3306d3314499a54a4064b8b80bbc1bce3f6cfac4
-_fonttools_rev=5ba7d98a4153fad57258fca23b0bcb238717aec3
-
-_pkgbase=mozc
-pkgname=fcitx-mozc-ut
-pkgdesc="Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)"
-pkgver=${_mozcver}.${_utdicver}
-_fcitx_patchver=2.17.2313.102.1
+_mozcver=2.23.2815.102
+_fcitxver=2.23.2815.102.1
+_utdicdate=20200924
+pkgver=${_mozcver}.${_utdicdate}
 pkgrel=1
+
+pkgname=fcitx-mozc-ut
 arch=('i686' 'x86_64')
-url="http://www.geocities.jp/ep3797/mozc_01.html"
+url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('custom')
-depends=('qt4' 'fcitx' 'zinnia')
-makedepends=('pkg-config' 'python2' 'curl' 'gtk2' 'mesa' 'subversion' 'ninja' 'ruby' 'git' 'clang' 'unzip' 'wget')
-replaces=('mozc-fcitx' 'fcitx-mozc')
-conflicts=('mozc' 'mozc-server' 'mozc-utils-gui' 'mozc-fcitx' 'mozc-ut' 'fcitx-mozc')
-source=(mozc-${_mozcver}::git+https://github.com/google/mozc.git#commit=${_mozc_rev}
-        japanese_usage_dictionary::git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=${_japanese_usage_dictionary_rev}
-        git+https://chromium.googlesource.com/external/gyp#commit=${_gyp_rev}
-        git+https://github.com/google/protobuf.git#commit=${_protobuf_rev}
-        fontTools::git+https://github.com/googlei18n/fonttools.git#commit=${_fonttools_rev}
-        "x-ken-all${_zipcode_rel}.zip::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1605055&FileTime=131176310117130000&Build=21031"
-        "edict-${_utdicver}.gz::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1605057&FileTime=131176310119770000&Build=21031"
-        "jigyosyo-${_zipcode_rel}.zip::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1605056&FileTime=131176310118230000&Build=21031"
-        mozcdic-ut-${_utdicver}.tar.bz2::https://osdn.jp/frs/chamber_redir.php?f=%2Fusers%2F11%2F11060%2Fmozcdic-ut-${_utdicver}.tar.bz2
-        EDICT_license.html
-        mod-generate-mozc-ut.sh
-        http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitx_patchver}.patch
-        http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz)
+makedepends=('clang' 'gyp' 'ninja' 'pkg-config' 'python' 'curl' 'gtk2' 'qt5-base' 'zinnia' 'fcitx' 'libxcb' 'glib2' 'bzip2' 'unzip')
+
+source=(
+  http://ftp.jp.debian.org/debian/pool/main/m/mozc/mozc_${_mozcver}+dfsg.orig.tar.xz
+  protobuf-3.5.2.tar.gz::https://github.com/protocolbuffers/protobuf/archive/v3.5.2.tar.gz
+  https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/usage_dict.txt.patch
+  https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/Fix-build-with-gcc8.patch
+  https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/Change-from-python2-code-to-python3.patch
+  https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/add_support_new_japanese_era.patch
+  https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitxver}.patch
+  https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
+  "mozcdic-ut-${_utdicdate}.${pkgrel}.tar.bz2::https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F26%2F26672%2Fmozcdic-ut-${_utdicdate}.${pkgrel}.tar.bz2"
+)
+
+sha1sums=(
+  '7e0a39ffd5ea68ecadb792fc521c16b5be1f25cb'
+  'd0c551031828ed9c07cc683762353a67b1a17627'
+  'c6f5aac79c7e98fbda96de251d8f0d0787344ca9'
+  '4fe935b5c2d316119cf8957b6518b3b5e7bf6ecf'
+  'SKIP'
+  '13f8fbbc768d5042fb55d877acf2a73fc8b5e3f0'
+  '63a2b10e7d209c6216e2d912b2629efc44c637ea'
+  '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d'
+  'SKIP'
+)
 
 prepare() {
-  cd "${srcdir}/mozcdic-ut-${_utdicver}"
+  cd mozc-${_mozcver}+dfsg
+  mkdir -p src/third_party
+  mv ${srcdir}/protobuf-3.5.2 src/third_party/protobuf
+  patch -Np1 -i ${srcdir}/usage_dict.txt.patch
+  patch -Np1 -i ${srcdir}/Fix-build-with-gcc8.patch
+  patch -Np1 -i ${srcdir}/Change-from-python2-code-to-python3.patch
+  patch -Np1 -i ${srcdir}/add_support_new_japanese_era.patch
+  patch -Np1 -i ${srcdir}/fcitx-mozc-${_fcitxver}.patch
 
-  "${srcdir}"/mod-generate-mozc-ut.sh
-  msg "Generating UT dictionary seed..."
-  MOZCVER="$_mozcver" DICVER="$_utdicver" NICODIC="$_NICODIC" EJDIC="$_EJDIC" \
-    ./generate-mozc-ut.sh
-  msg "Done."
+  # Avoid fcitx5 build errors
+  rm -rf src/unix/fcitx5/
 
-  cd "${srcdir}/mozc-ut-${pkgver}/src"
-
-  # Apply fcitx patch
-  rm unix/fcitx -rf
-  patch -Np2 -i "$srcdir/fcitx-mozc-${_fcitx_patchver}.patch"
-
-  # Fix qt4 binary path
-  sed -i 's|(qt_dir)/bin|(qt_dir)/lib/qt4/bin|' gui/*.gyp{,i}
-  sed -i 's|(qt_dir_env)/bin|(qt_dir_env)/lib/qt4/bin|' gui/*.gyp{,i}
-
-  # Adjust to use python2
-  find . -name  \*.py        -type f -exec sed -i -e "1s|python.*$|python2|"  {} +
-  find . -regex '.*\.gypi?$' -type f -exec sed -i -e "s|'python'|'python2'|g" {} +
-
-  # Generate zip code seed
-  msg "Generating zip code seed..."
-  python2 dictionary/gen_zip_code_seed.py --zip_code="${srcdir}/x-ken-all.csv" --jigyosyo="${srcdir}/JIGYOSYO.CSV" >> data/dictionary_oss/dictionary09.txt
-  msg "Done."
-
-  # Copy third party deps
-  cd "$srcdir"
-  for dep in gyp protobuf japanese_usage_dictionary fontTools
-  do
-    cp -a $dep mozc-ut-${pkgver}/src/third_party/
-  done
+  # Add UT dictionary
+  cat ${srcdir}/mozcdic-ut-${_utdicdate}.${pkgrel}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
 }
 
 build() {
-  # Update: Fix qt4 include path too
-  # Fix compatibility with google-glog 0.3.3 (symbol conflict)
-  CFLAGS="${CFLAGS} -I/usr/include/qt4 -fvisibility=hidden"
-  CXXFLAGS="${CXXFLAGS} -I/usr/include/qt4 -fvisibility=hidden"
+  cd mozc-${_mozcver}+dfsg/src
 
-  cd "${srcdir}/mozc-ut-${pkgver}/src"
+  _targets="unix/fcitx/fcitx.gyp:fcitx-mozc unix/fcitx/fcitx.gyp:gen_fcitx_mozc_i18n"
 
-  _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool unix/fcitx/fcitx.gyp:fcitx-mozc"
-
-  QTDIR=/usr GYP_DEFINES="document_dir=/usr/share/licenses/$pkgname use_libzinnia=1" python2 build_mozc.py gyp
-  python2 build_mozc.py build -c $_bldtype $_targets
-
-  # Extract license part of mozc
-  head -n 29 server/mozc_server.cc > LICENSE
+  GYP_DEFINES="use_libzinnia=1 document_dir=/usr/share/licenses/mozc" python build_mozc.py gyp --gypdir=/usr/bin --target_platform=Linux
+  python build_mozc.py build -c $_bldtype $_targets
 }
 
-package() {
-  cd "${srcdir}/mozc-ut-${pkgver}/src"
+package_mozc-ut() {
+  pkgdesc="A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)"
+  arch=('i686' 'x86_64')
+  depends=('qt5-base' 'zinnia')
+  conflicts=('fcitx-mozc' 'mozc' 'fcitx-mozc-ut2' 'mozc-ut2' 'fcitx-mozc-neologd-ut' 'mozc-neologd-ut' 'fcitx-mozc-ut-unified' 'mozc-ut-unified')
+  cd mozc-${_mozcver}+dfsg/src
   install -D -m 755 out_linux/${_bldtype}/mozc_server "${pkgdir}/usr/lib/mozc/mozc_server"
-  install    -m 755 out_linux/${_bldtype}/mozc_tool   "${pkgdir}/usr/lib/mozc/mozc_tool"
+  install -m 755 out_linux/${_bldtype}/mozc_tool "${pkgdir}/usr/lib/mozc/mozc_tool"
 
   install -d "${pkgdir}/usr/share/licenses/$pkgname/"
-  install -m 644 LICENSE ${srcdir}/mozc-ut-${pkgver}/docs-ut/README data/installer/*.html "${pkgdir}/usr/share/licenses/${pkgname}/"
-  cd ${srcdir}/mozc-ut-${pkgver}/docs-ut/dictionaries
-  for d in *
-  do
-    install -d "${pkgdir}/usr/share/licenses/dictionary/${d}"
-    install -m 644 "${d}"/* "${pkgdir}/usr/share/licenses/dictionary/${d}"
-  done
-  install -m 644 ${srcdir}/EDICT_license.html "${pkgdir}/usr/share/licenses/dictionary/edict/license.html"
+  install -m 644 ../LICENSE data/installer/*.html "${pkgdir}/usr/share/licenses/${pkgname}/"
+}
 
-  cd "${srcdir}/mozc-ut-${pkgver}/src"
+package_fcitx-mozc-ut() {
+  pkgdesc="Fcitx engine module for Mozc with Mozc UT Dictionary"
+  arch=('i686' 'x86_64')
+  depends=("mozc-ut=${pkgver}" 'fcitx')
+  conflicts=('fcitx-mozc' 'fcitx-mozc-ut2' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-ut-unified')
+
+  cd mozc-${_mozcver}+dfsg/src
   for mofile in out_linux/${_bldtype}/gen/unix/fcitx/po/*.mo
   do
     filename=`basename $mofile`
@@ -169,28 +101,6 @@ package() {
   install -D -m 644 unix/fcitx/fcitx-mozc.conf "${pkgdir}/usr/share/fcitx/addon/fcitx-mozc.conf"
   install -D -m 644 unix/fcitx/mozc.conf "${pkgdir}/usr/share/fcitx/inputmethod/mozc.conf"
 
-  install -d "${pkgdir}/usr/share/fcitx/mozc/icon"
-  install -m 644 "$srcdir/fcitx-mozc-icons/mozc.png" "${pkgdir}/usr/share/fcitx/mozc/icon/mozc.png"
-  install -m 644 "$srcdir/fcitx-mozc-icons/mozc-alpha_full.png" "${pkgdir}/usr/share/fcitx/mozc/icon/mozc-alpha_full.png"
-  install -m 644 "$srcdir/fcitx-mozc-icons/mozc-alpha_half.png" "${pkgdir}/usr/share/fcitx/mozc/icon/mozc-alpha_half.png"
-  install -m 644 "$srcdir/fcitx-mozc-icons/mozc-direct.png" "${pkgdir}/usr/share/fcitx/mozc/icon/mozc-direct.png"
-  install -m 644 "$srcdir/fcitx-mozc-icons/mozc-hiragana.png" "${pkgdir}/usr/share/fcitx/mozc/icon/mozc-hiragana.png"
-  install -m 644 "$srcdir/fcitx-mozc-icons/mozc-katakana_full.png" "${pkgdir}/usr/share/fcitx/mozc/icon/mozc-katakana_full.png"
-  install -m 644 "$srcdir/fcitx-mozc-icons/mozc-katakana_half.png" "${pkgdir}/usr/share/fcitx/mozc/icon/mozc-katakana_half.png"
-  install -m 644 "$srcdir/fcitx-mozc-icons/mozc-dictionary.png" "${pkgdir}/usr/share/fcitx/mozc/icon/mozc-dictionary.png"
-  install -m 644 "$srcdir/fcitx-mozc-icons/mozc-properties.png" "${pkgdir}/usr/share/fcitx/mozc/icon/mozc-properties.png"
-  install -m 644 "$srcdir/fcitx-mozc-icons/mozc-tool.png" "${pkgdir}/usr/share/fcitx/mozc/icon/mozc-tool.png"
+  install -d ${pkgdir}/usr/share/fcitx/mozc/icon
+  install -m 644 ${srcdir}/fcitx-mozc-icons/*.png ${pkgdir}/usr/share/fcitx/mozc/icon/
 }
-sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'c22438acaf2f493b1adc5183e2c289a1e52ec3ecf65661b759783e38d8992b4ebfe38d075e5502deb4ea28d3efc3af696bbff15606390a81c9e9f52218f27e3b'
-            '6f6b740d7148a4f47f8bc0841bc70e5bba47f590d84b27a4ad45eacbc5e3c24e29532c3c871a4d554d1a13e69cfdd1eed1d5b8b6c4670efdd0d5177dda701596'
-            '53f711c6c23a5d7e0cf3bdf3cb141bb693d8a0e4cff1277572a1b699f95d5ff72413ca907cfc7caaa1e23878168529a840864cd49547e87dcb3b40ef21937a33'
-            'c05297b876bcbf0693465defaf09ef375ab43ab770d56ea3566b61e3b5f77553ec5796c2451594fac3e08d4754c79becdd1c993ae03368b31c6b985054ab805c'
-            '4899c7ee01e387c7c5c628356a0b32e7ba28643580701b779138361ca657864ec17ae0f38d298d60e44093e52a3dfe37d922f780b791e3bd17fc4f056f22dbbb'
-            '99707be2afd6b13cbb8c48ae438b76048b7a4d78db6fa5e85c05b9a327710eed334f2a24a2e5c86a1ad68424b22250ce38b6d4f008329ba30f7059c175dc4fe6'
-            'a9a3ca5dba636c84d216a0a3574e5132d0e6ca69e913ccd5f1a1716af238ea34d5100a4b5d42bbd0c12649780b6009f4533e848e86050e51c22dc8859badd615'
-            '5507c637e5a65c44ccf6e32118b6d16647ece865171b9a77dd3c78e6790fbd97e6b219e68d2e27750e22074eb536bccf8d553c295d939066b72994b86b2f251a')
