@@ -1,313 +1,106 @@
-# Maintainer: ponsfoot <cabezon dot hashimoto at gmail dot com>
+# Maintainer: Naoya Inada <naoina@kuune.org>
+# Contributor: UTUMI Hirosi <utuhiro78 at yahoo dot co dot jp>
+# Contributor: Felix Yan <felixonmars@gmail.com>
+# Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
-##
-## Build configuration 
-##
-## You can choose the input method framework to use either ibus and/or uim.
-## If you will not be using ibus, comment out below.
-_ibus_mozc="yes"
-## If you will be using uim, uncomment below.
-#_uim_mozc="yes"
-
-## If you will be using mozc.el on Emacs, uncomment below.
-#_emacs_mozc="yes"
-
-## If you want to use 'kill-line' feature of uim, uncomment below.
-#_kill_line="yes"
-## NOTE: This option affects only for uim users.
-##       Bcause this applies a patch to original mozc source,
-##       there is a possibility to fail depends on the mozc version.
-
-## ニコニコ大百科IME辞書 (NICONICOPEDIA IME dictionary, see below)
-#_NICODIC="true"
-
-#***********************************************************************
-# License information:
-#
-# Mozc:     3-clause BSD
-# uim-mozc: 3-clause BSD
-#
-# Mozc-UT dictionary
-# altcanna, jinmei, skk: GPL
-# hatena: unknown
-# edict: Creative Commons Attribution-ShareAlike License (V3.0)
-# ekimei: redistributable
-# zip code: public domain
-# niconico: unknown
-# ruby/shell scripts: GPL
-#
-# ** CAUTION **
-# CC-BY-SA (EDICT) is incompatible with GPL (some of the other dic data).
-# You should not redistribute the binary of mozc-ut including edict
-# (and niconico which unknown license) at least.
-#
-#***********************************************************************
-# Upstreams:
-#
-# mozc
-# http://code.google.com/p/mozc/
-#
-# Japanese zip code data by Japan Post
-# http://www.post.japanpost.jp/zipcode/download.html
-#
-# Modified zip code data by Ibs
-# http://zipcloud.ibsnet.co.jp/
-#
-# Mozc UT dictionary
-# http://www.geocities.jp/ep3797/mozc_01.html
-#
-# uim-mozc by macuim
-# http://code.google.com/p/macuim/
-#
-#***********************************************************************
-# Changes to original mozc:
-#
-# 1. Add Mozc UT Dictionary
-# 2. Add uim-mozc (optional)
-#
-#***********************************************************************
+# NOTE: This PKGBUILD is based on https://osdn.net/downloads/users/26/26669/mozcdic-ut-20200924.1.PKGBUILD/
 
 ## Mozc compile option
 _bldtype=Release
-#_bldtype=Debug
 
-_mozcrev=2315f957d1785130c2ed196e141a330b0857b065
-_utdicver=20161013
-_zipcoderel=201609
-_uimmozcrev=321.3ea28b1
-
-pkgbase=mozc-ut
-pkgname=mozc-ut
-true && pkgname=('mozc-ut')
-pkgver=2.18.2612.102.20160905
+_mozcver=2.23.2815.102
+_fcitxver=2.23.2815.102.1
+_utdicdate=20200924
+pkgver=${_mozcver}.${_utdicdate}
 pkgrel=1
+
+pkgname=mozc-ut
 arch=('i686' 'x86_64')
-url="http://www.geocities.jp/ep3797/mozc-ut.html"
-license=('BSD' 'GPL' 'CC-BY-SA' 'custom')
-makedepends=('python2' 'ruby' 'git' 'ninja' 'clang')
+url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
+license=('custom')
+makedepends=('clang' 'gyp' 'ninja' 'pkg-config' 'python' 'curl' 'gtk2' 'qt5-base' 'zinnia' 'fcitx' 'libxcb' 'glib2' 'bzip2' 'unzip')
+
 source=(
-  mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
-  http://downloads.sourceforge.net/project/pnsft-aur/mozc/mozcdic-ut-${_utdicver}.tar.bz2
-  http://downloads.sourceforge.net/project/pnsft-aur/mozc/edict-${_utdicver}.gz
-  EDICT_license.html
-  http://downloads.sourceforge.net/project/pnsft-aur/mozc/x-ken-all-${_zipcoderel}.zip
-  http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-${_zipcoderel}.zip
-  mod-generate-mozc-ut.sh
+  http://ftp.jp.debian.org/debian/pool/main/m/mozc/mozc_${_mozcver}+dfsg.orig.tar.xz
+  protobuf-3.5.2.tar.gz::https://github.com/protocolbuffers/protobuf/archive/v3.5.2.tar.gz
+  https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/usage_dict.txt.patch
+  https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/Fix-build-with-gcc8.patch
+  https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/Change-from-python2-code-to-python3.patch
+  https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/add_support_new_japanese_era.patch
+  https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitxver}.patch
+  https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
+  "mozcdic-ut-${_utdicdate}.${pkgrel}.tar.bz2::https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F26%2F26672%2Fmozcdic-ut-${_utdicdate}.${pkgrel}.tar.bz2"
 )
-sha1sums=('SKIP'
-          'cb882107dcbf7451ae71bb29d91b1c12951d12eb'
-          '9f52caa8d87a893cbeb344660345fb2651f31d5a'
-          'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
-          '7fc1c5e2487e47db84e2791a88085c1d6c8782cc'
-          '3d012569963b9359d2d267216f78c1a07a395065'
-          '66544a5b72988b3a8287cc59ff5a1e1a608673b9')
 
-
-if [[ "$_ibus_mozc" == "yes" ]]; then
-  true && pkgname+=('ibus-mozc-ut')
-  makedepends+=('ibus>=1.4.1')
-fi
-if [[ "$_uim_mozc" == "yes" ]]; then
-  true && pkgname+=('uim-mozc-ut')
-  makedepends+=('uim')
-  source+=(http://downloads.sourceforge.net/project/pnsft-aur/mozc/uim-mozc-${_uimmozcrev}.tar.xz)
-  sha1sums+=('22b7c2a5b0a7fef778ee72ebe5873a75e879d26b')
-
-fi
-
-if [[ "$_emacs_mozc" == "yes" ]]; then
-  true && pkgname+=('emacs-mozc-ut')
-fi
-
-
-mozcver() {
-  . "${srcdir}/mozc/src/data/version/mozc_version_template.bzl"
-  printf "%s.%s.%s.%s" $MAJOR $MINOR $BUILD $REVISION
-}
-
-
-pkgver() {
-  printf "%s.%s" $_mozcver "${_utdicver}"
-}
-
+sha1sums=(
+  '7e0a39ffd5ea68ecadb792fc521c16b5be1f25cb'
+  'd0c551031828ed9c07cc683762353a67b1a17627'
+  'c6f5aac79c7e98fbda96de251d8f0d0787344ca9'
+  '4fe935b5c2d316119cf8957b6518b3b5e7bf6ecf'
+  'SKIP'
+  '13f8fbbc768d5042fb55d877acf2a73fc8b5e3f0'
+  '63a2b10e7d209c6216e2d912b2629efc44c637ea'
+  '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d'
+  'SKIP'
+)
 
 prepare() {
-  cd "$srcdir"
-  ln -sf `which python2` ./python
-  PATH="${srcdir}:${PATH}"
+  cd mozc-${_mozcver}+dfsg
+  mkdir -p src/third_party
+  mv ${srcdir}/protobuf-3.5.2 src/third_party/protobuf
+  patch -Np1 -i ${srcdir}/usage_dict.txt.patch
+  patch -Np1 -i ${srcdir}/Fix-build-with-gcc8.patch
+  patch -Np1 -i ${srcdir}/Change-from-python2-code-to-python3.patch
+  patch -Np1 -i ${srcdir}/add_support_new_japanese_era.patch
+  patch -Np1 -i ${srcdir}/fcitx-mozc-${_fcitxver}.patch
 
-  cd "${srcdir}/mozc/"
+  # Avoid fcitx5 build errors
+  rm -rf src/unix/fcitx5/
 
-  git submodule update --init --recursive
-
-  # Generate zip code seed
-  msg "Generating zip code seed..."
-  PYTHONPATH="${PYTHONPATH}:${srcdir}/mozc/src/" \
-            python2 src/dictionary/gen_zip_code_seed.py \
-            --zip_code="${srcdir}/x-ken-all.csv" \
-            --jigyosyo="${srcdir}/JIGYOSYO.CSV" \
-            >> "${srcdir}/mozc/src/data/dictionary_oss/dictionary09.txt"
-  msg "Done."
-
-  cd "${srcdir}/mozcdic-ut-${_utdicver}"
-
-  _mozcver=`mozcver`
-  "${srcdir}/mod-generate-mozc-ut.sh"
-  msg "Generating UT dictionary seed..."
-  MOZCVER="$_mozcver" DICVER="$_utdicver" NICODIC="$_NICODIC" \
-    ./generate-mozc-ut.sh
-  msg "Done."
-
-  cd "${srcdir}/${pkgbase}-`pkgver`/src"
-
-  # uim-mozc
-  if [[ "$_uim_mozc" == "yes" ]]; then
-    cp -rf "${srcdir}/uim-mozc-${_uimmozcrev}/uim" unix/
-    # kill-line patch
-    if [[ "$_kill_line" == "yes" ]]; then
-      patch -p0 -i "${srcdir}/uim-mozc-${_uimmozcrev}/mozc-kill-line.diff"
-    fi
-    # Extract license part of uim-mozc
-    head -n 32 unix/uim/mozc.cc > unix/uim/LICENSE
-
-  fi
+  # Add UT dictionary
+  cat ${srcdir}/mozcdic-ut-${_utdicdate}.${pkgrel}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
 }
 
-
 build() {
-  msg2 '====================================================='
-  msg2 '               *** Build Info ***'
-  msg2 ' The following package files will be generated:'
-  for _p in ${pkgname[@]}
-  do
-    msg2 "  * ${_p}-${pkgver}-${pkgrel}-${CARCH}${PKGEXT}"
-  done
-  msg2 '====================================================='
+  cd mozc-${_mozcver}+dfsg/src
 
-  # Use Qt4
-  _rcc_loc=`pkg-config QtCore --variable=rcc_location`
-  _qt4dir=${_rcc_loc%%/bin/rcc}
-  _qt4i=`pkg-config --cflags-only-I QtGui`
-  CFLAGS+=" $_qt4i"
-  CXXFLAGS+=" $_qt4i"
+  _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool renderer/renderer.gyp:mozc_renderer unix/fcitx/fcitx.gyp:fcitx-mozc unix/fcitx/fcitx.gyp:gen_fcitx_mozc_i18n"
 
-  msg "Starting make..."
-
-  cd "${srcdir}/${pkgbase}-${pkgver}/src"
-
-  _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool "
-  [[ "$_emacs_mozc" == "yes" ]] && _targets+="unix/emacs/emacs.gyp:mozc_emacs_helper "
-  [[ "$_ibus_mozc"  == "yes" ]] && _targets+="unix/ibus/ibus.gyp:ibus_mozc renderer/renderer.gyp:mozc_renderer "
-  [[ "$_uim_mozc"   == "yes" ]] && _targets+="unix/uim/uim.gyp:uim-mozc "
-
-  unset CC CC_host CC_target CXX CXX_host CXX_target LINK AR AR_host AR_target \
-        NM NM_host NM_target READELF READELF_host READELF_target
-  QTDIR=$_qt4dir GYP_DEFINES="document_dir=/usr/share/licenses/${pkgbase}" \
-    python2 build_mozc.py gyp
-  python2 build_mozc.py build -c $_bldtype $_targets
-
-  if [[ "$_ibus_mozc" == "yes" ]]; then
-      sed -i 's|/usr/libexec/|/usr/lib/ibus-mozc/|g' \
-          out_linux/${_bldtype}/gen/unix/ibus/mozc.xml
-  fi
-
+  GYP_DEFINES="use_libzinnia=1 document_dir=/usr/share/licenses/mozc" python build_mozc.py gyp --gypdir=/usr/bin --target_platform=Linux
+  python build_mozc.py build -c $_bldtype $_targets
 }
 
 package_mozc-ut() {
-  pkgdesc="Mozc the Japanese Input Method with Mozc UT Dictionary (Discontinued)"
+  pkgdesc="A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)"
   arch=('i686' 'x86_64')
-  groups=('mozc-im')
-  depends=('qt4' 'zinnia')
-  install=mozc-ut.install
-  provides=("mozc=${_mozcver}")
-  replaces=('mozc-server-ut' 'mozc-utils-gui-ut')
-  conflicts=('mozc' 'mozc-server' 'mozc-utils-gui')
-  optdepends=('tegaki-models-zinnia-japanese: hand-writing recognition support')
-
-  cd "${srcdir}/${pkgbase}-${pkgver}/src"
+  depends=('qt5-base' 'zinnia')
+  conflicts=('fcitx-mozc' 'mozc' 'fcitx-mozc-ut2' 'mozc-ut2' 'fcitx-mozc-neologd-ut' 'mozc-neologd-ut' 'fcitx-mozc-ut-unified' 'mozc-ut-unified')
+  cd mozc-${_mozcver}+dfsg/src
   install -D -m 755 out_linux/${_bldtype}/mozc_server "${pkgdir}/usr/lib/mozc/mozc_server"
-  install    -m 755 out_linux/${_bldtype}/mozc_tool   "${pkgdir}/usr/lib/mozc/mozc_tool"
+  install -m 755 out_linux/${_bldtype}/mozc_tool "${pkgdir}/usr/lib/mozc/mozc_tool"
 
-  install -d "${pkgdir}/usr/lib/mozc/documents/"
-  install    -m 644 data/installer/*.html "${pkgdir}/usr/lib/mozc/documents/"
+  install -d "${pkgdir}/usr/share/licenses/$pkgname/"
+  install -m 644 ../LICENSE data/installer/*.html "${pkgdir}/usr/share/licenses/${pkgname}/"
+}
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
-  _licpath="${pkgdir}/usr/share/licenses/${pkgbase}"
-  install -D -m 644 LICENSE "${_licpath}/LICENSE_MOZC"
-  install    -m 644 docs-ut/README "${_licpath}/README_MOZC-UT"
-  install    -m 644 src/data/installer/*.html "$_licpath"
+package_fcitx-mozc-ut() {
+  pkgdesc="Fcitx engine module for Mozc with Mozc UT Dictionary"
+  arch=('i686' 'x86_64')
+  depends=("mozc-ut=${pkgver}" 'fcitx')
+  conflicts=('fcitx-mozc' 'fcitx-mozc-ut2' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-ut-unified')
 
-  cd docs-ut/dictionaries
-  for d in *
+  cd mozc-${_mozcver}+dfsg/src
+  for mofile in out_linux/${_bldtype}/gen/unix/fcitx/po/*.mo
   do
-    install -d "${_licpath}/dictionaries/${d}"
-    install -m 644 "${d}"/* "${_licpath}/dictionaries/${d}"
+    filename=`basename $mofile`
+    lang=${filename/.mo/}
+    install -D -m 644 "$mofile" "${pkgdir}/usr/share/locale/$lang/LC_MESSAGES/fcitx-mozc.mo"
   done
-  install -m 644 "${srcdir}/EDICT_license.html" "${_licpath}/dictionaries/edict/license.html"
+
+  install -D -m 755 out_linux/${_bldtype}/fcitx-mozc.so "${pkgdir}/usr/lib/fcitx/fcitx-mozc.so"
+  install -D -m 644 unix/fcitx/fcitx-mozc.conf "${pkgdir}/usr/share/fcitx/addon/fcitx-mozc.conf"
+  install -D -m 644 unix/fcitx/mozc.conf "${pkgdir}/usr/share/fcitx/inputmethod/mozc.conf"
+
+  install -d ${pkgdir}/usr/share/fcitx/mozc/icon
+  install -m 644 ${srcdir}/fcitx-mozc-icons/*.png ${pkgdir}/usr/share/fcitx/mozc/icon/
 }
-
-package_emacs-mozc-ut() {
-  pkgdesc="Mozc for Emacs"
-  arch=('i686' 'x86_64')
-  groups=('mozc-im')
-  depends=("mozc=${_mozcver}" 'emacs')
-  install=emacs-mozc.install
-  replaces=('emacs-mozc-bin')
-  provides=('emacs-mozc')
-  conflicts=('emacs-mozc' 'emacs-mozc-bin')
-
-  cd "${srcdir}/${pkgbase}-${pkgver}/src"
-  install -D -m 755 out_linux/${_bldtype}/mozc_emacs_helper "${pkgdir}/usr/bin/mozc_emacs_helper"
-  install -d "${pkgdir}/usr/share/emacs/site-lisp/emacs-mozc/"
-  install -m 644 unix/emacs/mozc.el "${pkgdir}/usr/share/emacs/site-lisp/emacs-mozc"
-}
-
-package_ibus-mozc-ut() {
-  pkgdesc="IBus engine module for Mozc"
-  arch=('i686' 'x86_64')
-  groups=('mozc-im')
-  depends=("mozc=${_mozcver}" 'ibus>=1.4.1')
-  provides=('ibus-mozc')
-  conflicts=('ibus-mozc')
-
-  cd "${srcdir}/${pkgbase}-${pkgver}/src"
-  install -D -m 755 out_linux/${_bldtype}/ibus_mozc       "${pkgdir}/usr/lib/ibus-mozc/ibus-engine-mozc"
-  install -D -m 644 out_linux/${_bldtype}/gen/unix/ibus/mozc.xml "${pkgdir}/usr/share/ibus/component/mozc.xml"
-  install -D -m 644 data/images/unix/ime_product_icon_opensource-32.png "${pkgdir}/usr/share/ibus-mozc/product_icon.png"
-  install    -m 644 data/images/unix/ui-tool.png          "${pkgdir}/usr/share/ibus-mozc/tool.png"
-  install    -m 644 data/images/unix/ui-properties.png    "${pkgdir}/usr/share/ibus-mozc/properties.png"
-  install    -m 644 data/images/unix/ui-dictionary.png    "${pkgdir}/usr/share/ibus-mozc/dictionary.png"
-  install    -m 644 data/images/unix/ui-direct.png        "${pkgdir}/usr/share/ibus-mozc/direct.png"
-  install    -m 644 data/images/unix/ui-hiragana.png      "${pkgdir}/usr/share/ibus-mozc/hiragana.png"
-  install    -m 644 data/images/unix/ui-katakana_half.png "${pkgdir}/usr/share/ibus-mozc/katakana_half.png"
-  install    -m 644 data/images/unix/ui-katakana_full.png "${pkgdir}/usr/share/ibus-mozc/katakana_full.png"
-  install    -m 644 data/images/unix/ui-alpha_half.png    "${pkgdir}/usr/share/ibus-mozc/alpha_half.png"
-  install    -m 644 data/images/unix/ui-alpha_full.png    "${pkgdir}/usr/share/ibus-mozc/alpha_full.png"
-
-  install -D -m 755 out_linux/${_bldtype}/mozc_renderer "${pkgdir}/usr/lib/mozc/mozc_renderer"
-}
-
-package_uim-mozc-ut() {
-  pkgdesc="uim plugin module for Mozc"
-  arch=('i686' 'x86_64')
-  groups=('mozc-im')
-  depends=("mozc=${_mozcver}" 'uim')
-  install=uim-mozc.install
-  provides=('uim-mozc')
-  conflicts=('uim-mozc')
-
-  cd "${srcdir}/${pkgbase}-${pkgver}/src"
-  install -D -m 755 out_linux/${_bldtype}/libuim-mozc.so  "${pkgdir}/usr/lib/uim/plugin/libuim-mozc.so"
-  install -d "${pkgdir}/usr/share/uim"
-  install    -m 644 ${srcdir}/uim-mozc-${_uimmozcrev}/scm/*.scm       "${pkgdir}/usr/share/uim/"
-  install -D -m 644 data/images/unix/ime_product_icon_opensource-32.png "${pkgdir}/usr/share/uim/pixmaps/mozc.png"
-  install    -m 644 data/images/unix/ui-tool.png       "${pkgdir}/usr/share/uim/pixmaps/mozc_tool_selector.png"
-  install    -m 644 data/images/unix/ui-properties.png "${pkgdir}/usr/share/uim/pixmaps/mozc_tool_config_dialog.png"
-  install    -m 644 data/images/unix/ui-dictionary.png "${pkgdir}/usr/share/uim/pixmaps/mozc_tool_dictionary_tool.png"
-
-  install -D -m 644 unix/uim/LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/uim-mozc/LICENSE"
-}
-
-# Global pkgdesc and depends are here so that they will be picked up by AUR
-pkgdesc="Mozc the Japanese Input Method with Mozc UT Dictionary (Discontinued)"
-depends=('qt4' 'zinnia')
