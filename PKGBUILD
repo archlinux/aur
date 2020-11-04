@@ -9,7 +9,7 @@ provides=("python-syncthingmanager")
 conflicts=("python-syncthingmanager")
 
 pkgver=0.2.0dev2
-pkgrel=0
+pkgrel=1
 
 arch=("any")
 license=("MIT")
