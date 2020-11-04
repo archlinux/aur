@@ -1,7 +1,7 @@
 pkgbase = python-ray
 	pkgdesc = A fast and simple framework for building and running distributed applications.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ray.io
 	arch = x86_64
 	license = Apache-2.0
@@ -49,7 +49,9 @@ pkgbase = python-ray
 	optdepends = python-scipy: for ray[rllib] module
 	source = python-ray-1.0.0.tar.gz::https://github.com/ray-project/ray/archive/ray-1.0.0.tar.gz
 	source = bazelrc.patch::https://patch-diff.githubusercontent.com/raw/ray-project/ray/pull/11238.patch
+	source = redis-py.patch::https://patch-diff.githubusercontent.com/raw/ray-project/ray/pull/11776.patch
 	sha256sums = 53aa83f6cc020a84d56192d4f4678e192a58ce33f12c5996343949d28780a788
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = python-ray

@@ -2,7 +2,7 @@
 
 pkgname=python-ray
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A fast and simple framework for building and running distributed
 applications.'
 arch=('x86_64')
@@ -32,8 +32,10 @@ optdepends=(
 makedepends=(python python-setuptools python-wheel python-pip cython bazel)
 _pkgname=ray
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz"
-        "bazelrc.patch::https://patch-diff.githubusercontent.com/raw/ray-project/ray/pull/11238.patch")
+        "bazelrc.patch::https://patch-diff.githubusercontent.com/raw/ray-project/ray/pull/11238.patch"
+        "redis-py.patch::https://patch-diff.githubusercontent.com/raw/ray-project/ray/pull/11776.patch")
 sha256sums=('53aa83f6cc020a84d56192d4f4678e192a58ce33f12c5996343949d28780a788'
+            'SKIP'
             'SKIP')
 
 prepare() {
@@ -41,6 +43,9 @@ prepare() {
 
   # https://github.com/ray-project/ray/pull/11238
   patch -Np1 -i "${srcdir}"/bazelrc.patch
+
+  # https://github.com/ray-project/ray/pull/11776
+  patch -Np1 -i "${srcdir}"/redis-py.patch
 }
 
 build() {
