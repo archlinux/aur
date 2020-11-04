@@ -1,7 +1,7 @@
 pkgbase = python-segno
 	pkgdesc = Python QR Code and Micro QR Code encoder
 	pkgver = 1.0.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://segno.readthedocs.io/
 	arch = any
 	license = BSD
