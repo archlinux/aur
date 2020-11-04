@@ -1,0 +1,17 @@
+pkgbase = subbotools
+	pkgdesc = Power Exponential estimation and random sampling
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = http://cafim.sssup.it/~giulio/software/subbotools/index.html
+	arch = x86_64
+	license = GPL2
+	makedepends = gawk
+	depends = gsl>=2.1
+	provides = subbotools
+	conflicts = subbotools
+	noextract = $pkgname-$pkgver.tar.gz
+	source = ftp://cafed.sssup.it/packages/subbotools-1.3.0.tar.gz
+	md5sums = SKIP
+
+pkgname = subbotools
+
