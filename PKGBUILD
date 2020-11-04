@@ -6,7 +6,7 @@ pkgdesc="XEP-0153: vCard-Based Avatar (MUC)"
 url="https://modules.prosody.im/mod_vcard_muc.html"
 
 pkgver=r3998.67047ed63b15
-pkgrel=0
+pkgrel=1
 
 arch=("any")
 license=("MIT")
