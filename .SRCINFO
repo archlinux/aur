@@ -1,0 +1,14 @@
+pkgbase = dolphin-squashfs-mount
+	pkgdesc = Mount squashfs archives in dolphin right-click menu
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/shvchk/dolphin-squashfs-mount
+	arch = any
+	license = GPLv3
+	depends = dolphin
+	depends = squashfuse
+	source = dolphin-squashfs-mount-1.0.tar.gz::https://github.com/shvchk/dolphin-squashfs-mount/archive/v1.0.tar.gz
+	sha256sums = d0699590502350a70c0cb2d88cf4e872e85117f6b5c37cc05b14a0e48ebee1e7
+
+pkgname = dolphin-squashfs-mount
+
