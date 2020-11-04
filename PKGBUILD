@@ -1,7 +1,7 @@
 # Maintainer: FlyInWind <2518509078@qq.com>
 
 pkgname=navicat15-premium-cs
-pkgver=15.0.20
+pkgver=15.0.21
 pkgrel=1
 pkgdesc="Navicat Premium is a multi-connection database development tool. (Chinese Simplified)"
 arch=(x86_64)
@@ -9,11 +9,11 @@ url='https://www.navicat.com/en/navicat-15-highlights'
 license=('GPL3')
 source=(
     # The download url always download latest version
-    "${navicat15-premium-cs}-${pkgver}.AppImage::http://download.navicat.com.cn/download/navicat15-premium-cs.AppImage"
+    "navicat15-premium-cs-${pkgver}.AppImage::http://download.navicat.com.cn/download/navicat15-premium-cs.AppImage"
     'navicat15.desktop'
 )
 sha256sums=(
-    '8c89151c89d853326d492f5ffa08a5e9e561eae7182b9f1dbaca28b0e03f4812'
+    '6ddce34e352f0860ac1a1909c0bd5a6e1a3c49717c933184d670f366560a2b24'
     '6477d39b5c6247a6e5769fb65ac99504ba602170794f5610a1e301cd0832032e'
 )
 
