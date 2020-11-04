@@ -1,11 +1,13 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
 # Contributor: Carl George < arch at cgtx dot us >
 # Contributor: Duy Truong <jimreynold2nd@yahoo.com>
+# Contributor: Vyacheslav Konovalov <vyachkonovalov@protonmail.com>
+
 
 pkgname='python-jira'
 pkgdesc='Python library to work with Jira APIs'
 pkgver='3.0'
-pkgrel=1
+pkgrel=2
 url='https://github.com/pycontribs/jira'
 license=('BSD 2-Clause')
 arch=('any')
