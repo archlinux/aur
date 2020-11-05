@@ -1,7 +1,7 @@
 pkgbase = bbcli-git
 	pkgdesc = inoffical Bitbucket.org command line tool
 	pkgver = r39.50a3d2f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/craftamap/bb
 	arch = x86_64
 	arch = i686

@@ -2,7 +2,7 @@
 
 pkgname=bbcli-git
 pkgver=r39.50a3d2f
-pkgrel=1
+pkgrel=2
 pkgdesc="inoffical Bitbucket.org command line tool"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/craftamap/bb"
@@ -39,7 +39,7 @@ build() {
         -mod=readonly \
         -modcacherw \
         -ldflags "-X main.Version=$pkgver -linkmode external -extldflags \"${LDFLAGS}\"" \
-        -o "${pkgname%-git}" .
+        -o "${pkgname%cli-git}" .
 
     go clean -modcache
 }
@@ -47,6 +47,6 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
 
-    install -Dm755 "${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
+    install -Dm755 "${pkgname%cli-git}" "$pkgdir/usr/bin/${pkgname%cli-git}"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
