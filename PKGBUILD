@@ -1,4 +1,4 @@
-# Maintainer: alienzj <alenchuj@gmail.com>
+# Maintainer: alienzj <alienchuj@gmail.com>
 
 pkgname=geph4-git
 pkgver=r135.45e7cf1
@@ -40,16 +40,16 @@ build() {
 package() {
     cd geph4
 
-    install -Dm755 target/release/geph4-client "$pkgdir"/usr/bin/geph4-client
-    install -Dm755 target/release/geph4-binder "$pkgdir"/usr/bin/geph4-binder
-    install -Dm755 target/release/geph4-bridge "$pkgdir"/usr/bin/geph4-bridge
-    install -Dm755 target/release/geph4-exit   "$pkgdir"/usr/bin/geph4-exit
+    install -Dm755 target/release/geph4-client "$pkgdir/usr/bin/geph4-client"
+    install -Dm755 target/release/geph4-binder "$pkgdir/usr/bin/geph4-binder"
+    install -Dm755 target/release/geph4-bridge "$pkgdir/usr/bin/geph4-bridge"
+    install -Dm755 target/release/geph4-exit   "$pkgdir/usr/bin/geph4-exit"
 
-    install -Dm 644 "$srcdir"/geph4-client.service  -t "$pkgdir"/usr/lib/systemd/system/
-    install -Dm 644 "$srcdir"/geph4-client@.service -t "$pkgdir"/usr/lib/systemd/system/
-    install -Dm 644 "$srcdir"/geph4-exit.service    -t "$pkgdir"/usr/lib/systemd/system/
+    install -Dm 644 "$srcdir/geph4-client.service"  -t "$pkgdir/usr/lib/systemd/system/"
+    install -Dm 644 "$srcdir/geph4-client@.service" -t "$pkgdir/usr/lib/systemd/system/"
+    install -Dm 644 "$srcdir/geph4-exit.service"    -t "$pkgdir/usr/lib/systemd/system/"
 
 
-    install -Dm 644 "$srcdir"/geph4-client.sysusers "$pkgdir"/usr/lib/sysusers.d/geph4-client.conf
-    install -Dm 644 "$srcdir"/geph4-exit.sysusers   "$pkgdir"/usr/lib/sysusers.d/geph4-exit.conf
+    install -Dm 644 "$srcdir/geph4-client.sysusers" "$pkgdir/usr/lib/sysusers.d/geph4-client.conf"
+    install -Dm 644 "$srcdir/geph4-exit.sysusers"   "$pkgdir/usr/lib/sysusers.d/geph4-exit.conf"
 }
