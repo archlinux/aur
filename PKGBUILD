@@ -2,7 +2,7 @@
 
 _pkgname=litex
 pkgname=python-$_pkgname
-pkgver=2020.04
+pkgver=2020.08
 pkgrel=1
 pkgdesc='Migen/MiSoC based Core/SoC builder that provides the infrastructure to easily create Cores/SoCs'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest-runner' 'python-litedram' 'python-liteeth' 'python-liteiclink' 'python-litesdcard' 'yosys'
               'python-pythondata-cpu-vexriscv' 'python-pythondata-cpu-picorv32' 'python-pythondata-cpu-lm32' 'python-pythondata-cpu-mor1kx')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('5ac44a14e0c1a122528692312a9a7927b3f2b7a506f02131ac672f35e064bf3d523c731c0e023a023bf2dc37f9396eb96b757b455632e2b2611d2e8fe2c899b3')
+sha512sums=('cf31408805947f13ae149b861e37882b809aadc8444a9a4dca0d63787721902188914e286feb3d911ff8d9893c4e51a97c00c32ea8126a71348b1ed5ae7c8552')
 
 build() {
   cd $_pkgname-$pkgver
