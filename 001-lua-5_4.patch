@@ -1,0 +1,27 @@
+diff --git a/lua/ubus.c b/lua/ubus.c
+index e2bb081..208da7d 100644
+--- a/lua/ubus.c
++++ b/lua/ubus.c
+@@ -51,6 +51,22 @@ struct ubus_lua_subscriber {
+ static int
+ ubus_lua_parse_blob(lua_State *L, struct blob_attr *attr, bool table);
+ 
++#if LUA_VERSION_NUM >= 503
++/* one can simply enable LUA_COMPAT_5_2 to be backward compatible.
++However, this does not work when we are trying to use system-installed lua,
++hence these redefines
++*/
++#define luaL_optlong(L,n,d)     ((long)luaL_optinteger(L, (n), (d)))
++#define luaL_optint(L,n,d)  	((int)luaL_optinteger(L, (n), (d)))
++#define luaL_checklong(L,n)     ((long)luaL_checkinteger(L, (n)))
++#define luaL_checkint(L,n)      ((int)luaL_checkinteger(L, (n)))
++
++#define lua_objlen(L,i)         (lua_rawlen(L, (i)))
++#define luaL_register(L,n,l)    (luaL_setfuncs(L,(l),0))
++
++#endif
++
++
+ static int
+ ubus_lua_parse_blob_array(lua_State *L, struct blob_attr *attr, size_t len, bool table)
+ {

@@ -1,0 +1,28 @@
+pkgbase = ubus-git
+	pkgdesc = OpenWrt ubus library
+	pkgver = r324.ad0cd11
+	pkgrel = 1
+	url = https://git.openwrt.org/project/ubus.git
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = LGPL 2.1
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkg-config
+	makedepends = patch
+	depends = libubox
+	depends = lua
+	provides = libubus
+	provides = ubus
+	conflicts = libubus
+	conflicts = ubus
+	source = ubus-git::git+https://git.openwrt.org/project/ubus.git#branch=master
+	source = 001-lua-5_4.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = ubus-git
+
