@@ -4,7 +4,7 @@
 
 _pkgname=ring-daemon
 pkgname=jami-daemon-git
-pkgver=4.0.0.r1526.gba95892d3
+pkgver=4.0.0.r1727.g7eb1e7373
 pkgrel=1
 pkgdesc="Free and universal communication platform which preserves the users’ privacy and freedoms (daemon component)"
 arch=(x86_64)
@@ -12,7 +12,7 @@ url="https://jami.net"
 license=(GPL3)
 groups=(jami)
 depends=(yaml-cpp alsa-lib libpulse jack jsoncpp dbus-c++ ffmpeg gnutls
-         expat libnatpmp libva libvdpau restbed libsecp256k1 util-linux
+         expat libnatpmp libva libvdpau libsecp256k1 util-linux
          opus libjsoncpp.so)
 makedepends=(git boost msgpack-c autoconf-archive)
 #checkdepends=(cppunit)
