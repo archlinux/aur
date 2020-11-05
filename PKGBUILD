@@ -1,9 +1,8 @@
-# Maintainer: Luka Perkov <luka.perkov@sartura.hr>
-
+# Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=ubus-git
 pkgver=r324.ad0cd11
 pkgrel=1
-pkgdesc='OpenWrt ubus library'
+pkgdesc='OpenWrt ubus library - system bus'
 url='https://git.openwrt.org/project/ubus.git'
 arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL 2.1')
