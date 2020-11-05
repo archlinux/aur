@@ -1,5 +1,3 @@
-/palette
-/HIG-app-icons
-/pkg
-/src
-*.tar.xz
+*
+!.SRCINFO
+!PKGBUILD
