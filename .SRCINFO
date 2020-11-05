@@ -1,0 +1,15 @@
+pkgbase = intelxed
+	pkgdesc = x86 encoder decoder
+	pkgver = 11.2.0
+	pkgrel = 1
+	url = https://intelxed.github.io
+	arch = x86_64
+	license = Apache
+	makedepends = mbuild
+	makedepends = doxygen
+	provides = intelxed
+	source = https://github.com/intelxed/xed/archive/11.2.0.tar.gz
+	sha256sums = 715355c9f996869e9a4e275d4ab2470a312fbe95169d69385b9336f03b1f82b6
+
+pkgname = intelxed
+
