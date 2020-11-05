@@ -4,14 +4,14 @@ _extname=PluggableAuth
 _extname_lowercase="${_extname,,}"
 _pkgname_base="mediawiki-extension-${_extname_lowercase}"
 
-_mediawiki_mainver=1.34
+_mediawiki_mainver=1.35
 _mediawiki_mainver_succ=${_mediawiki_mainver%.*}.$((${_mediawiki_mainver##*.}+1))
 _branch="REL${_mediawiki_mainver/./_}"
 
 pkgname="${_pkgname_base}-git"
 epoch=1
-pkgver=5.7.r10.g17fb1ea
-pkgrel=2
+pkgver=5.7.r35.g2a465ae
+pkgrel=1
 pkgdesc="MediaWiki extension providing a framework for creating authentication and authorization extensions"
 arch=('any')
 url="https://www.mediawiki.org/wiki/Extension:${_extname}"
