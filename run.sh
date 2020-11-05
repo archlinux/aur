@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VERSION=5.0.18
+VERSION=5.0.19
 
 sed -r "s/pkgver=.*/pkgver=$VERSION/" -i PKGBUILD
 # download package and let it fail
