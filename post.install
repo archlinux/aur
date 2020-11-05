@@ -25,5 +25,9 @@ $ systemctl enable --now nordvpnteams.service
 
 # To login run
 sudo --user=nordvpnteams nordvpnteams login
+
+# If you want to be able to run without sudo
+sudo usermod -a -G nordvpnteams $(whoami)
+sudo chmod 0770 /var/run/nordvpnteams/nordvpnteams.sock
 EOF
 }
