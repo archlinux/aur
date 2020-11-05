@@ -3,7 +3,7 @@ pkgbase=python-gammapy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.17
+pkgver=0.18
 pkgrel=1
 pkgdesc="A Python package for gamma-ray astronomy"
 arch=('i686' 'x86_64')
@@ -12,6 +12,7 @@ license=('BSD')
 makedepends=('cython' 'python-setuptools-scm' 'python-numpy')
 #'python-sphinx-astropy' 'python-sphinx_rtd_theme' 'python-nbsphinx' 'python-sphinx-click' 'python-click' 'python-yaml' 'python-regions' 'python-naima')
 checkdepends=('python-pytest-astropy-header'
+#             'python-pytest-remotedata'
               'python-healpy'
               'python-reproject'
               'python-regions'
@@ -23,7 +24,11 @@ checkdepends=('python-pytest-astropy-header'
               'python-click'
               'python-pydantic')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('9423c5fa2dae31101b34c9ad0ae5c679')
+md5sums=('6afb33bd320bc31d04e07dce6ca201c4')
+
+prepare() {
+    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -35,6 +40,7 @@ build() {
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
+#   cd ${srcdir}/${_pyname}-${pkgver}/build/lib.linux-${CARCH}-${_pyver}
 
     python setup.py test
 #   pytest
