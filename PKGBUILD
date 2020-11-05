@@ -48,7 +48,7 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=5.9
-_minor=5
+_minor=6
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -74,7 +74,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_lucjanpath}/arch-patches-v4-sep/0002-mac80211-fix-regression-where-EAPOL-frames-were-sent.patch"
-        "${_lucjanpath}/upstream-fixes/0001-Fix-ASoC-SOF-fix-a-runtime-pm-issue-in-SOF-when-HDMI.patch"
         "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
@@ -311,13 +310,12 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('8847b52ed368fe3fa7728e0436b3fe65f9e781ad4cb50b3461c1d4f9831bfdc05f43ce778aa83521dc447ab356177a4875b625516015205c6c25286c22ebfa68'
+sha512sums=('0a01d7d503959c20a8dd62a3fa1b44b5b4650aac2fdb8f481b81a1321fcf2565049927418422dd1013e2d54af2a0b27a82cfbe8c1cb0843d8b840adef45d5db1'
             'SKIP'
             '12a2d17f719edefc19078dc64badf7049132e053bc242546c83063400dc28a7f3f2c81c5f6d8d375e4a176659d69dd4da08d141f67e835fa8aca154e7d1c026e'
             '96427eecb0078ce57a40ef4ee78d3576216f27390ba6b9dfbb851f4d969558a82b698cc633217ad8f6b9d991e7eaebd613ed4bd5741cafe7fa40b2502dacd43a'
             '6f315551225e7d31595bfc6ff2cc0ea46d88c1d0c54024ee29da04c0d2573865d68b78bf2e9bf545e41f3231933bbe08b694d564af857ba5053ee467b6a48cb2'
             '465fb40b6574cb6a64f2975998ccb13047c424553d7ac80ed46b2d8371657a4f3003efc81ec5227e2f09724e08599443cb4b3cd1018d889631e1a215891f10c8'
-            '8b416c06417cfcd94643b4fd775b46abe9e97419d28e8f6a6e380f43ef6425214a040cc0b73ce137b4a463b04956a44a62bc53810e4ce67c939f69f648c5dadc'
             'b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6'
             '05fa26eb7ae135bbe4fdf6675d4eef95dbdf7a763a1ccc03313b8225143d9a20494f117eb2dd32a3f49c99c93b4e5d6cb47fddcaf39eebdff1528bcc11e4c047')
 
