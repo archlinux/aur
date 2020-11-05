@@ -11,7 +11,7 @@ url="http://spimsimulator.sourceforge.net/"
 license=('BSD')
 depends=('qt5-base')
 makedepends=('qt5-tools' 'subversion' 'icu')
-source=("spimsimulator::svn://svn.code.sf.net/p/spimsimulator/code/#revision=729")
+source=("spimsimulator::svn://svn.code.sf.net/p/spimsimulator/code/#revision=733")
 sha256sums=('SKIP')
 
 prepare() {

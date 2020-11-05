@@ -9,7 +9,7 @@ pkgbase = qtspim
 	makedepends = subversion
 	makedepends = icu
 	depends = qt5-base
-	source = spimsimulator::svn://svn.code.sf.net/p/spimsimulator/code/#revision=729
+	source = spimsimulator::svn://svn.code.sf.net/p/spimsimulator/code/#revision=733
 	sha256sums = SKIP
 
 pkgname = qtspim
