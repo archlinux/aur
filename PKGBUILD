@@ -7,6 +7,7 @@ pkgdesc="A simple DSP library and command-line tool for Software Defined Radio."
 arch=('i686' 'x86_64')
 url="https://github.com/jketterl/csdr"
 license=('GPL3')
+depends=('fftw')
 makedepends=('git')
 provides=('csdr')
 source=("$pkgname"::'git://github.com/jketterl/csdr.git')
@@ -31,6 +32,5 @@ build() {
 package() {
 	cd "$srcdir/$pkgname"
 	make DESTDIR="$pkgdir/" install
-	install -Dm 0755 csdr "${pkgdir}"/usr/bin/csdr
 	install -Dm 0755 nmux "${pkgdir}"/usr/bin/nmux
 }
