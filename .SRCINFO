@@ -1,0 +1,15 @@
+pkgbase = bender
+	pkgdesc = Dependency management tool for hardware design projects
+	pkgver = 0.21.0
+	pkgrel = 1
+	url = https://github.com/fabianschuiki/bender
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	source = bender-0.21.0.tar.gz::https://github.com/fabianschuiki/bender/archive/v0.21.0.tar.gz
+	sha512sums = 2bb4c1717f9eb51671950020e654d0dd73f66692f136890f55d502e8ea1e979e0b2efc83cc8285dde23f2b4f0f2c449baaa406dc3cf85409af27fa9a11fff028
+
+pkgname = bender
+
