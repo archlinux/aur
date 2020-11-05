@@ -1,0 +1,15 @@
+pkgbase = python-nagiosplugin
+	pkgdesc = a Python class library which helps writing Nagios (or Icinga) compatible plugins easily in Python
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/mpounsett/nagiosplugin
+	arch = any
+	license = ZPL2.1
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	source = git+https://github.com/mpounsett/nagiosplugin.git#tag=1.3.2
+	sha256sums = SKIP
+
+pkgname = python-nagiosplugin
+
