@@ -1,7 +1,7 @@
 # Maintainer: Michal Babik <michalb1981@o2.pl>
 
 pkgname=wallchanger
-pkgver=1.6.9
+pkgver=1.6.10
 pkgrel=1
 pkgdesc="Automatic wallpaper changer"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends_x86_64=('libcurl-gnutls')
 depends_i686=('libcurl-compat')
 optdepends=('flickcurl: Flickr support')
 source=("https://download.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('e4f61ceb2648ebef97a67489f05a278a')
+md5sums=('6850a94458f499719e19a51dd233c33a')
 build() {
         cd "$srcdir/$pkgname-$pkgver"
         ./configure --prefix=/usr
