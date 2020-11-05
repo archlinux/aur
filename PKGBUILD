@@ -6,8 +6,8 @@ _source="installer"   # if installing from .sh installer
 # _source="pkg"         # if installing from .pkg package
 
 pkgname=cisco-anyconnect
-pkgver=4.8.03052
-pkgrel=2
+pkgver=4.9.03047
+pkgrel=1
 pkgdesc='Cisco AnyConnect Secure Mobility Client'
 arch=('x86_64')
 depends=('libxml2' 'ca-certificates')
@@ -40,21 +40,21 @@ unpack_installer() {
 
 if [[ "${_source}" == "tarball" ]]; then
     _filename="anyconnect-linux64-${pkgver}-predeploy-k9.tar.gz"
-    _filehash="578130d0b7fb5cd174a712382a97b64ff54cb8fe3f991f47f30a96cea60ce62c"
+    _filehash="95d64f94ddd851ea44c6f1d43f3c5001245814ee64926487fd50a86d4662ded6"
 
     prepare() {
         tar xf "$_filename"
     }
 elif [[ "${_source}" == "installer" ]]; then
     _filename="${_installer_filename}"
-    _filehash="178b822f553623c7822b627de5a295381edcb29e46ac78e14c70afd6f38f64ca"
+    _filehash="1af54cbbd20891728866b78ec399bd8fb822237f833cb56442ac13f5ae5ab7b7"
 
     prepare() {
         unpack_installer
     }
 elif [[ "${_source}" == "pkg" ]]; then
     _filename="anyconnect-linux64-${pkgver}-webdeploy-k9.pkg"
-    _filehash="a77ee13473148df21a5760e644fbba135c5ab0bb70ab0f283930b7509bcadd57"
+    _filehash="dabea06b8ba8af3d586f4ba98dc1ba81ef19a6f9543586d5cf6824a303217297"
 
     prepare() {
         unzip -j "${_filename}" "binaries/${_installer_filename}"
@@ -66,10 +66,9 @@ else
 fi
 
 # you will have to obtain the installer yourself - it's not available publicly
-source=("file://${_filename}" "vpnagentd.service" "anyconnect.sh" "anyconnect.csh" "AnyConnectLocalPolicy.xml")
+source=("file://${_filename}" "anyconnect.sh" "anyconnect.csh" "AnyConnectLocalPolicy.xml")
 
 sha256sums=("${_filehash}"
-            '9d37640195b0fa4ffb073e1b006b4b9546595f7bd3b25a4fe9a0d43a75cd57b8'
             'dcc7a5dcbe4387f3e4a2a3f260b4197faf1b79adddf0d4dad3a02bc6041effa6'
             '0fcd62bd5d734c239bb7bda7c7e7791b9b8d76a019d2b42ff74caa998e7e9733'
             'b7c65a236e671d3eb527a3377e22b66018c450d726f71fa6344530a75255dac7')
@@ -78,7 +77,7 @@ package() {
     cd "${srcdir}/anyconnect-linux64-${pkgver}/vpn"
 
     # install binaries
-    for binary in "vpnagentd" "vpn" "vpndownloader" "vpndownloader-cli" "manifesttool_vpn" "acinstallhelper" "vpnui" "acwebhelper"; do
+    for binary in "vpnagentd" "vpn" "vpndownloader" "vpndownloader-cli" "manifesttool_vpn" "acinstallhelper" "vpnui" "acwebhelper" "load_tun.sh"; do
         install -Dm755 ${binary} "${pkgdir}/opt/cisco/anyconnect/bin/${binary}"
     done
 
@@ -125,7 +124,7 @@ package() {
     done
 
     # install systemd unit for vpnagentd
-    install -Dm644 "${srcdir}/vpnagentd.service" "${pkgdir}/usr/lib/systemd/system/vpnagentd.service"
+    install -Dm644 "vpnagentd.service" "${pkgdir}/usr/lib/systemd/system/vpnagentd.service"
 
     # install profile files - this makes sure we have all the tools in $PATH
     for profile in "anyconnect.sh" "anyconnect.csh"; do
