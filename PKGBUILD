@@ -4,7 +4,7 @@
 _pkgbase="sddm"
 pkgname="$_pkgbase-git"
 pkgver=0.19.0.8.gfc3e286
-pkgrel=1
+pkgrel=2
 pkgdesc="The Simple Desktop Display Manager"
 arch=("x86_64")
 url="https://github.com/sddm/sddm"
@@ -19,16 +19,22 @@ backup=('usr/share/sddm/scripts/Xsetup'
         'etc/pam.d/sddm-autologin'
         'etc/pam.d/sddm-greeter')
 source=("git://github.com/sddm/sddm.git#branch=master"
-sddm.sysusers sddm.tmpfiles)
+sddm.sysusers sddm.tmpfiles
+pam-faillock.patch)
 sha256sums=('SKIP'
             '9fce66f325d170c61caed57816f4bc72e9591df083e89da114a3bb16b0a0e60f'
-            'db625f2a3649d6d203e1e1b187a054d5c6263cadf7edd824774d8ace52219677')
+            'db625f2a3649d6d203e1e1b187a054d5c6263cadf7edd824774d8ace52219677'
+            '441f441fc63c16c5dbd83411a305d88b17e50836c958677db881b9b6c13c668a')
 
 pkgver() {
 	cd $_pkgbase
 	#_ver="$(cat CMakeLists.txt | grep -m3 -e _VERSION_MAJOR -e _VERSION_MINOR -e _VERSION_PATCH | grep -o "[[:digit:]]*" | paste -sd'.')"
         #echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 	git describe --tags --long | sed 's/^v//;s/-/./g'
+}
+
+prepare() {
+  patch -d $_pkgbase  -p1 -i ../pam-faillock.patch # Port away from deprecated pam_tally2
 }
 
 build() {
