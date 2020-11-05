@@ -20,7 +20,7 @@ pkgver() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "$srcdir/$_pkgname"
     install -vDm 755 $_pkgname.sh -t "${pkgdir}/usr/bin/$_pkgname"
     install -vDm 644 $_pkgname.service "$pkgdir/usr/lib/systemd/system/"
 }
