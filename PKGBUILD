@@ -4,7 +4,7 @@
 
 pkgname=insomnia
 pkgver=2020.4.2
-pkgrel=3
+pkgrel=4
 _nodeversion=12.18.3
 pkgdesc="Cross-platform HTTP and GraphQL Client"
 url="https://github.com/Kong/insomnia"
@@ -19,8 +19,7 @@ source=(
 )
 b2sums=('2527045680d99d0321ce9a29f8d3e9302bd07c79d059d0a2e9c3f963d2adb45c9566668faca817a0f4913ee22728ebb8f553463ae6cdc731793520a3371d0953'
         'd2ceeb224fa3a35551b0929648d5e066da93a451a66b73373c13ed0dd89575a2482c2dc8e7499b214d0d62cca2532189dac9a681537751a5a86b592cae5686c7'
-        '7ea4aff2779267bfc5f7be5533d70b07a3da1c8bfed424c9f6cc9806fe6567a4cd40144264a8827b016e51f31c6dbb395c90aac4d333f297070213c77a0b2c9c'
-)
+        '7ea4aff2779267bfc5f7be5533d70b07a3da1c8bfed424c9f6cc9806fe6567a4cd40144264a8827b016e51f31c6dbb395c90aac4d333f297070213c77a0b2c9c')
 
 prepare() {
   # Use local electron version
@@ -29,7 +28,9 @@ prepare() {
   cd ${pkgname}-core-${pkgver}
   electron_version=$(electron --version | sed s/v//)
   sed -i 's/"electron": ".\+"/"electron": "'"$electron_version"'"/g' packages/insomnia-app/package.json
-  source /usr/share/nvm/init-nvm.sh
+  source /usr/share/nvm/init-nvm.sh || [ -n "$NVM_BIN" ]
+  # Backup the nvm version used before
+  nvm current > "/tmp/${pkgname}-nvm-current.tmp"
   nvm install ${_nodeversion}
 }
 
@@ -37,6 +38,9 @@ build() {
   cd ${pkgname}-core-${pkgver}
   npm run bootstrap
   GIT_TAG="core@${pkgver}" npm run app-package
+
+  # Restore the previous node version so as not to interfere with a user's picked node version on each build
+  nvm use "$(cat "/tmp/${pkgname}-nvm-current.tmp")"
 }
 
 package() {
