@@ -3,7 +3,7 @@
 # Maintainer: TurboWafflz <turbowafflz@gmail.com>
 pkgname=iicalc
 pkgver=2.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An extensible calculator written in Python."
 arch=('any')
 url=""
