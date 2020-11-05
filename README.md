@@ -1,5 +1,5 @@
 # systemd-report-entropy
-some helper to diagnose early boot entropy
+report system entropy to journald during boot
 
 ## Why ?
 Because it is hard to check available entropy during system boot,

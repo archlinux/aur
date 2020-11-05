@@ -2,7 +2,7 @@
 pkgname=systemd-report-entropy
 pkgver=1
 pkgrel=1
-pkgdesc="help to diagnose shutdown sequence for systemd"
+pkgdesc="report system entropy to journald during boot"
 arch=(any)
 url="http://github.com/farseerfc/systemd-report-entropy"
 license=('custom:BSD')

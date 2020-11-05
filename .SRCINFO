@@ -1,5 +1,5 @@
 pkgbase = systemd-report-entropy
-	pkgdesc = help to diagnose shutdown sequence for systemd
+	pkgdesc = report system entropy to journald during boot
 	pkgver = 1
 	pkgrel = 1
 	url = http://github.com/farseerfc/systemd-report-entropy
