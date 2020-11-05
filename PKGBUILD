@@ -1,8 +1,9 @@
 # Maintainer: Yurii <yu.hrysh@posteo.net>
 
 pkgname=open-hexagon-git
-pkgver=2.0.preview_2.4dec917d_1d125de
+pkgver=2.0.preview.r1757.g4dec917d
 pkgrel=1
+epoch=2
 pkgdesc='Free software clone of Super Hexagon - a music-based arcade game'
 url='https://openhexagon.org/'
 arch=('any')
@@ -12,29 +13,21 @@ makedepends=('git' 'cmake' 'rsync')
 provides=('open-hexagon')
 conflicts=('open-hexagon')
 source=('git+https://github.com/SuperV1234/SSVOpenHexagon.git'
-	'git+https://github.com/SuperV1234/SSVOpenHexagonAssets.git'
+	'open-hexagon-git-assets.zip::https://github.com/SuperV1234/SSVOpenHexagonAssets/archive/master.zip'
 	'open-hexagon'
 	'open-hexagon.desktop')
 sha256sums=('SKIP'
-            'SKIP'
+            'c58bf04778d29ade2b76ea5402671f95ede634fb67f44d707b2f9580054caaa7'
             'a3558245d72250aadaaef32b087474a671a54fcca8267b5746d5bce56ce71397'
             'a3f4ef5296619903b487ccd8d894e28b2d9fad3a9152683f642b43aeb88b7928')
 
 _reponame="SSVOpenHexagon"
-_assetsname="SSVOpenHexagonAssets"
+_assetsname="SSVOpenHexagonAssets-master"
 
 pkgver() {
+	# Use the most recent un-annotated tag
 	cd "$_reponame"
-	printf "%s" "$(git describe --tags --abbrev=0 | sed 's/^-v//; s/-/./g')"
-
-	cd "../$_assetsname"
-	printf "_%s" "$(git rev-list --count HEAD)"
-
-	cd "../$_reponame"
-	printf ".%s" "$(git rev-parse --short HEAD)"
-
-	cd "../$_assetsname"
-	printf "_%s" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
