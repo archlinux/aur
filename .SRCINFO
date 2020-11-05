@@ -1,7 +1,7 @@
 pkgbase = gdal-ecw
 	pkgdesc = A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package.
 	pkgver = 3.0.4
-	pkgrel = 1.0
+	pkgrel = 2.0
 	url = http://www.gdal.org/
 	changelog = gdal-ecw.changelog
 	arch = x86_64
@@ -34,7 +34,8 @@ pkgbase = gdal-ecw
 	optdepends = postgresql: postgresql database support
 	optdepends = mariadb: mariadb database support
 	optdepends = perl: perl binding support
-	provides = gdal
+	optdepends = unixodbc: when present while building, will add odbc support
+	provides = gdal=3.0.4
 	conflicts = gdal
 	options = !emptydirs
 	source = https://download.osgeo.org/gdal/3.0.4/gdal-3.0.4.tar.xz
