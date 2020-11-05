@@ -1,0 +1,19 @@
+pkgname=python-raven-idaholab
+pkgver=2.0
+pkgrel=1
+pkgdesc="multi-purpose probabilistic risk analysis, uncertainty quantification, parameter optimization and data knowledge-discovering framework"
+license=('Apache')
+arch=('x86_64')
+url="https://raven.inl.gov"
+depends=('python-scikit-learn' 'python-matplotlib' 'python-statsmodels')
+makedepends=('swig')
+source=("https://github.com/idaholab/raven/archive/RAVENv${pkgver}.tar.gz")
+sha256sums=('e767ef8baae1d22ed332e8587890e523268faf885b80c36273998a9a27d96d38')
+
+package() {
+  cd raven-RAVENv${pkgver}
+  python setup.py install --root="$pkgdir/" --optimize=1
+  cd crow
+  python setup.py install --root="$pkgdir/" --optimize=1
+}
+
