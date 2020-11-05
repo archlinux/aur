@@ -1,0 +1,21 @@
+pkgbase = telegram-bot-api-git
+	pkgdesc = Provides an HTTP API for creating Telegram Bots.
+	pkgver = r3.551103b
+	pkgrel = 1
+	url = https://github.com/tdlib/telegram-bot-api
+	arch = x86_64
+	license = cusotm
+	makedepends = git
+	makedepends = zlib
+	makedepends = gperf
+	depends = openssl
+	depends = zlib
+	provides = telegram-bot-api
+	conflicts = telegram-bot-api
+	source = telegram-bot-api::git+https://github.com/tdlib/telegram-bot-api.git
+	source = td::git+https://github.com/tdlib/td.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = telegram-bot-api-git
+
