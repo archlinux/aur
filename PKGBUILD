@@ -3,7 +3,7 @@
 
 pkgname=gnome-control-center-git
 pkgver=3.35.91+3+ga80bbdf1a
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME's main interface to configure various aspects of the desktop"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL2)
@@ -20,7 +20,8 @@ optdepends=('system-config-printer: Printer settings'
             'gnome-user-share: Bluetooth and WebDAV file sharing'
             'rygel: media sharing'
             'vino: screen sharing'
-            'openssh: remote login')
+            'openssh: remote login'
+            'power-profiles-daemon: power profiles support')
 groups=(gnome)
 source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")

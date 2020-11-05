@@ -1,7 +1,7 @@
 pkgbase = gnome-control-center-git
 	pkgdesc = GNOME's main interface to configure various aspects of the desktop
 	pkgver = 3.35.91+3+ga80bbdf1a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center
 	arch = x86_64
 	groups = gnome
@@ -39,6 +39,7 @@ pkgbase = gnome-control-center-git
 	optdepends = rygel: media sharing
 	optdepends = vino: screen sharing
 	optdepends = openssh: remote login
+	optdepends = power-profiles-daemon: power profiles support
 	provides = gnome-control-center
 	conflicts = gnome-control-center
 	source = git+https://gitlab.gnome.org/GNOME/gnome-control-center.git
