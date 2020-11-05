@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.0.r430.49b92d956
+pkgver=1.7.0.r525.ada804741
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -33,7 +33,8 @@ makedepends=(
 )
 provides=(pcsx2)
 conflicts=(pcsx2)
-source=(git+https://github.com/PCSX2/pcsx2.git)
+source=(git+https://github.com/PCSX2/pcsx2.git
+git+https://github.com/fmtlib/fmt.git)
 sha256sums=(SKIP)
 
 pkgver() {
@@ -44,6 +45,14 @@ pkgver() {
 
 build() {
   mkdir -p build
+
+  cd $srcdir/pcsx2/3rdparty
+  git submodule init
+  git config submodule.https://github.com/fmtlib/src/fmt.git.url $srcdir/fmt
+  git submodule update
+  
+  cd ../..
+  
   cd build
 
   cmake ../pcsx2 \
