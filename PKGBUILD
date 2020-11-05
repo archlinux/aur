@@ -3,7 +3,7 @@
 pkgname=blockbench-git
 pkgver=3.7.2
 pkgrel=1
-pkgdesc="A body 3D model editor, uses system electron and is built from git"
+pkgdesc="A boxy 3D model editor, uses system electron and is built from git"
 arch=('any')
 url=https://github.com/JannisX11/blockbench
 license=('GPL3')
