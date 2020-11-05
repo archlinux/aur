@@ -4,7 +4,7 @@
 
 pkgname=insomnia
 pkgver=2020.4.2
-pkgrel=4
+pkgrel=6
 _nodeversion=12.18.3
 pkgdesc="Cross-platform HTTP and GraphQL Client"
 url="https://github.com/Kong/insomnia"
@@ -29,8 +29,9 @@ prepare() {
   electron_version=$(electron --version | sed s/v//)
   sed -i 's/"electron": ".\+"/"electron": "'"$electron_version"'"/g' packages/insomnia-app/package.json
   source /usr/share/nvm/init-nvm.sh || [ -n "$NVM_BIN" ]
-  # Backup the nvm version used before
-  nvm current > "/tmp/${pkgname}-nvm-current.tmp"
+
+  # Do not use ~/.nvm
+  export NVM_DIR=$(pwd)/.nvm
   nvm install ${_nodeversion}
 }
 
@@ -38,9 +39,6 @@ build() {
   cd ${pkgname}-core-${pkgver}
   npm run bootstrap
   GIT_TAG="core@${pkgver}" npm run app-package
-
-  # Restore the previous node version so as not to interfere with a user's picked node version on each build
-  nvm use "$(cat "/tmp/${pkgname}-nvm-current.tmp")"
 }
 
 package() {
