@@ -1,4 +1,3 @@
-/icon-library
-/pkg
-/src
-*.tar.xz
+*
+!.SRCINFO
+!PKGBUILD
