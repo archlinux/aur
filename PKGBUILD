@@ -20,7 +20,6 @@ pkgver() {
 }
 
 build() {
-  
   echo "Building ecwolf..."
   export LDFLAGS="-lvorbisfile -lopusfile -lFLAC  -lmodplug -lfluidsynth $LDFLAGS"
   cmake -B build ecwolf -DGPL=ON
@@ -36,7 +35,7 @@ package() {
   # data
   install -Dm644 ecwolf.pk3 $pkgdir/usr/share/ecwolf/ecwolf.pk3
   cd ../ecwolf
-  #icon
+  #icon and shortcut
   install -Dm644 $startdir/icon.png $pkgdir/usr/share/ecwolf/icon.png
   install -Dm755 $startdir/ecwolf.desktop $pkgdir/usr/share/applications/ECWolf.desktop
   # doc
