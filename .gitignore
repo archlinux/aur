@@ -1,5 +1,3 @@
-/app-icon-preview
-/HIG-app-icons
-/pkg
-/src
-*.tar.zst
+*
+!.SRCINFO
+!PKGBUILD

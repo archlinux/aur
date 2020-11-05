@@ -1,14 +1,13 @@
 pkgbase = app-icon-preview
-	pkgdesc = Tool for designing applications icons.
+	pkgdesc = Tool for designing applications icons
 	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/design/app-icon-preview
-	changelog = CHANGELOG
 	arch = x86_64
 	license = GPL3
-	makedepends = rust
-	makedepends = meson
 	makedepends = git
+	makedepends = meson
+	makedepends = rust
 	depends = gtk3
 	depends = libhandy0
 	source = git+https://gitlab.gnome.org/World/design/app-icon-preview.git#tag=2.1.2

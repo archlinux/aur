@@ -1,6 +1,0 @@
-v2.0.0
-======
-- Rewrite in Rust
-- Support previewing exported icons
-- Hide the template baseplate/grid layers
-- Optimize SVG when exporting
