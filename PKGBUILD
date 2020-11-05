@@ -2,9 +2,9 @@
 
 _pkgname=makepad
 pkgname=makepad-git
-pkgver=0.1.0.r360.01a43ce
+pkgver=0.1.0.r827.8dfad9ff
 pkgrel=1
-pkgdesc='A creative software development platform built around Rust'
+pkgdesc='VR, web and native collaborative shader programming environment'
 arch=('i686' 'x86_64')
 url='https://github.com/makepad/makepad'
 license=('MIT')
@@ -16,7 +16,7 @@ conflicts=('makepad')
 source=("${pkgname}::git+https://github.com/makepad/makepad#branch=master"
         'adjust-resources-path.patch')
 sha256sums=('SKIP'
-            '8162b3da86389ff26d97923ca144910c54ee982648cb5d12cd974e00741f9322')
+            '8b638b723e1b3d6f1d71a6f67cde2de48973e737d2f22fbab39bc18d2b874933')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
@@ -33,12 +33,12 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    cargo build --release --locked --package "${_pkgname}"
+    cargo build --release --package "${_pkgname}"
 }
 
 check() {
     cd "${srcdir}/${pkgname}"
-    cargo test --release --locked --package "${_pkgname}"
+    cargo test --release --package "${_pkgname}"
 }
 
 package() {

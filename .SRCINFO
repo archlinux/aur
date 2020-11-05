@@ -1,6 +1,6 @@
 pkgbase = makepad-git
-	pkgdesc = A creative software development platform built around Rust
-	pkgver = 0.1.0.r360.01a43ce
+	pkgdesc = VR, web and native collaborative shader programming environment
+	pkgver = 0.1.0.r827.8dfad9ff
 	pkgrel = 1
 	url = https://github.com/makepad/makepad
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = makepad-git
 	source = makepad-git::git+https://github.com/makepad/makepad#branch=master
 	source = adjust-resources-path.patch
 	sha256sums = SKIP
-	sha256sums = 8162b3da86389ff26d97923ca144910c54ee982648cb5d12cd974e00741f9322
+	sha256sums = 8b638b723e1b3d6f1d71a6f67cde2de48973e737d2f22fbab39bc18d2b874933
 
 pkgname = makepad-git
 
