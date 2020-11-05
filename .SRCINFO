@@ -1,6 +1,6 @@
 pkgbase = python-astroslam
 	pkgdesc = Stellar LAbel Machine (SLAM)
-	pkgver = 1.2020.718.0
+	pkgver = 1.2020.811.0
 	pkgrel = 1
 	url = https://github.com/hypergravity/astroslam
 	arch = i686
@@ -16,10 +16,11 @@ pkgbase = python-astroslam
 	depends = python-emcee
 	depends = python-astropy
 	depends = python-lmfit
-	depends = ipython-ipyparallel
-	source = https://files.pythonhosted.org/packages/source/a/astroslam/astroslam-1.2020.718.0.tar.gz
+	depends = python-ipyparallel
+	depends = python-joblib
+	source = https://files.pythonhosted.org/packages/source/a/astroslam/astroslam-1.2020.811.0.tar.gz
 	source = https://raw.githubusercontent.com/hypergravity/astroslam/master/LICENSE
-	md5sums = 7415a5329da19617c4008ccd118d646d
+	md5sums = e2cf7cf28109dd34e97a259395a3535b
 	md5sums = SKIP
 
 pkgname = python-astroslam
