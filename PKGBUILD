@@ -43,7 +43,6 @@ build() {
 
 package() {
 	mkdir -p "$pkgdir/usr/lib/"
-	mkdir -p "$pkgdir/usr/share/licences/open-hexagon"
 	mkdir -p "$pkgdir/var/lib/open-hexagon"
 
 	cd "$_reponame/_RELEASE"
