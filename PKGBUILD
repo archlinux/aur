@@ -1,7 +1,7 @@
 # Maintainer: Morgan <morganamilo@archlinux.org>
 pkgname=paru
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='AUR helper based on yay'
 url='https://github.com/morganamilo/paru'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/v$pkgver.tar.gz")
@@ -17,7 +17,7 @@ build () {
   cd "$srcdir/$pkgname-$pkgver"
 
   if pacman -T pacman-git > /dev/null; then
-    _features+="git,generate,"
+    _features+="git,"
   fi
 
   if [[ $(rustc -V) == *"nightly"* ]]; then
