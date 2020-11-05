@@ -13,10 +13,10 @@ Our default behavior continues to match the vanilla kernel.
  4 files changed, 50 insertions(+)
 
 diff --git a/init/Kconfig b/init/Kconfig
-index 6db3e310a5e4..2dd7dd1b6b0d 100644
+index 96fc45d1b686..3bc58f03a2cd 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -1083,6 +1083,22 @@ config USER_NS
+@@ -1084,6 +1084,22 @@ config USER_NS
  
  	  If unsure, say N.
  
