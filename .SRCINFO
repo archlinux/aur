@@ -1,15 +1,16 @@
 pkgbase = intelxed-git
-	pkgdesc = Software library for encoding and decoding X86 instructions.
-	pkgver = 20190821
+	pkgdesc = x86 encoder decoder
+	pkgver = 11.2.0.r187.g7573e4b
 	pkgrel = 1
-	url = https://github.com/intelxed/xed
+	url = https://intelxed.github.io
 	arch = x86_64
-	arch = i686
-	license = Apache2
+	license = Apache
 	makedepends = git
-	depends = python
+	makedepends = mbuild
+	makedepends = doxygen
+	provides = intelxed
 	conflicts = intelxed
-	source = git+https://github.com/intelxed/xed.git
+	source = intelxed-git::git+https://github.com/intelxed/xed.git
 	md5sums = SKIP
 
 pkgname = intelxed-git
