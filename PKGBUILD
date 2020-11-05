@@ -1,12 +1,16 @@
+# Maintainer: rustemb <rustemb@systemli.org>
+
 pkgname=shadowsocks-rust-git
-pkgver=r1164.f086abf
-pkgrel=1
+pkgver=r1165.b501ec6
+pkgrel=2
 pkgdesc='A Rust port of shadowsocks https://shadowsocks.org/ (git version)'
 arch=('any')
 url='https://github.com/shadowsocks/shadowsocks-rust'
 license=('MIT')
 depends=('openssl')
 makedepends=('cargo' 'libsodium' 'git')
+provides=('shadowsocks-rust')
+conflicts=('shadowsocks-rust')
 source=(
     "git+https://github.com/shadowsocks/${pkgname/-git/}.git"
     'shadowsocks-rust@.service'
@@ -30,7 +34,6 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname/-git/}"
-
     install -Dm755 "target/release/sslocal" "${pkgdir}/usr/bin/sslocal-rust"
     install -Dm755 "target/release/ssserver" "${pkgdir}/usr/bin/ssserver-rust"
     install -Dm755 "target/release/ssurl" "${pkgdir}/usr/bin/ssurl-rust"
