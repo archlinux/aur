@@ -6,6 +6,7 @@ pkgbase = kerpack-svn
 	arch = any
 	license = GPLv3
 	makedepends = svn
+	provides = kerpack
 	source = svn://kolibrios.org/programs/other/kpack/kerpack_linux
 	md5sums = SKIP
 

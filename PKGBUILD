@@ -8,7 +8,7 @@ license=('GPLv3')
 makedepends=('svn')
 source=("svn://kolibrios.org/programs/other/kpack/kerpack_linux")
 md5sums=('SKIP')
-
+provides=('kerpack')
 pkgver() 
 {
     cd $srcdir/kerpack_linux
