@@ -3,7 +3,7 @@
 
 pkgname='powerword-bin'
 pkgver=1.2
-pkgrel=6
+pkgrel=7
 pkgdesc="A Chinese-English dictionary tool."
 arch=('x86_64')
 license=('unknown')
@@ -12,7 +12,7 @@ provides=("powerword")
 depends=('sdl2_mixer' 'qtwebkit' 'qrencode' 'opencore-amr')
 optdepends=('ttf-ms-fonts: font support')
 source=("${pkgname}.deb::https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.kingsoft.powerword/com.kingsoft.powerword_${pkgver}_amd64.deb")
-sha512sums=('c4d6146858fde3eafc3f087d1c284ceeeaf0747fa93db30c86cf33319f7c18e08757b4981f410fe6bb2bcc80bbedea5931e05668ae604fa4bc491401d5079fdd')
+sha512sums=('2061365b2ed951812e459308e9f0630d76c9aa12b149a9e205ac7ac94f4d385c9972113a90d800eecc293600387f9c63b3a4866b0c9da3d19efdebadc865de81')
 
 package() {
     cd ${srcdir}
