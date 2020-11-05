@@ -1,0 +1,11 @@
+#!/bin/bash
+while true; do
+  entropy=$(cat /proc/sys/kernel/random/entropy_avail)
+  echo "ENTROPY $(date -Ins) $entropy"
+  sleep $(echo "$entropy / 10000" | bc -l)
+  echo -n "REPORT ENTROPY is-system-running: "
+  if systemctl is-system-running; then
+    echo "REPORT ENTROPY systemd boot finished, quit."
+    exit
+  fi
+done
