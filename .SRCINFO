@@ -1,0 +1,37 @@
+pkgbase = cheese-csd-headerbar
+	pkgdesc = Take photos and videos with your webcam, with fun graphical effects - With CSD headerbar patch for non-GNOME DEs
+	pkgver = 3.38.0
+	pkgrel = 2
+	url = https://wiki.gnome.org/Apps/Cheese
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	checkdepends = xorg-server-xvfb
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = git
+	makedepends = appstream-glib
+	makedepends = meson
+	makedepends = yelp-tools
+	depends = gtk3
+	depends = gstreamer
+	depends = gst-plugins-bad
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = clutter-gst
+	depends = clutter-gtk
+	depends = libcanberra
+	depends = librsvg
+	depends = gnome-desktop
+	depends = libgudev
+	depends = dconf
+	depends = gnome-video-effects
+	provides = cheese
+	conflicts = cheese
+	source = git+https://gitlab.gnome.org/GNOME/cheese.git#commit=2129dde7149bba5461590e575ce360e1dd6ef0ee
+	source = https://gitlab.gnome.org/GNOME/cheese/-/merge_requests/34.patch
+	sha256sums = SKIP
+	sha256sums = 164893fb4ee6fb6c22dd7951cb493c4ecf0e54aea3f6569f95b470bcff3f536a
+
+pkgname = cheese-csd-headerbar
+
