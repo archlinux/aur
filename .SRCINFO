@@ -1,0 +1,15 @@
+pkgbase = android-x86-pie
+	pkgdesc = This is a project to port Android open source project to x86 platform.
+	pkgver = r2
+	pkgrel = 1
+	url = https://www.android-x86.org/
+	install = android-x86-pie.install
+	arch = any
+	license = Apache
+	backup = android-9.0-r2/initrd.img
+	backup = android-9.0-r2/kernel
+	backup = android-9.0-r2/ramdisk.img
+	backup = android-9.0-r2/system.sfs
+
+pkgname = android-x86-pie
+
