@@ -1,7 +1,7 @@
 # Maintainer: Coelacanthus <liuhongwu2003@outlook.com>
 
 pkgname=lemon-lime
-pkgver=0.2.3
+pkgver=0.2.7
 pkgrel=1
 epoch=
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
@@ -29,8 +29,7 @@ source=(
     "https://github.com/Project-LemonLime/Project_LemonLime/releases/download/${pkgver}/Lemon-${pkgver}-source-all.7z"
 )
 noextract=("Lemon-${pkgver}-source-all.7z")
-sha512sums=('6eaabb89bc19e4a2a37245cc890ce32b9813652fa79c4a71816540e63ab002f5731425c0b4b8bca50ebf8776cdc8cbad7e56311fcfc9e4e2c33eebaf7bf86d3b')
-validpgpkeys=()
+b2sums=('7a2e64955efbd1ff577efbda15b8cc4940a9f0e1045ee3da541ea7cc8a97eae746b60dbcc520f8c912a1de7981d1b3050643abda514cb2f20db82ef1f1a1468b')
 
 prepare() {
     cd "$srcdir"
@@ -44,7 +43,9 @@ build() {
 		-GNinja \
 		-DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
 		-DLEMON_BUILD_INFO="Build for Arch Linux" \
-		-DLEMON_BUILD_EXTRA_INFO="Build on $(uname -a | cut -d " " -f3,13)"
+		-DLEMON_BUILD_EXTRA_INFO="Build on $(uname -a | cut -d " " -f3,13)" \
+		-DEMBED_TRANSLATIONS=OFF \
+		-DEMBED_DOCS=OFF
 	ninja
 
 }
