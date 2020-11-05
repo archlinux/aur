@@ -2,8 +2,8 @@
 
 _pkgname=okular
 pkgname=okular-no-purpose
-pkgver=20.08.2
-pkgrel=2
+pkgver=20.08.3
+pkgrel=1
 pkgdesc='Okular, a document viewer, without the dependency on purpose. This disables the share menu'
 arch=(x86_64)
 url="https://kde.org/applications/graphics/okular/"
@@ -20,18 +20,12 @@ conflicts=(okular)
 replaces=(kdegraphics-okular)
 replaces=(okular)
 provides=(okular)
-source=("https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig}
-         kdebug-421159.patch::"https://invent.kde.org/graphics/okular/commit/17c26699.patch")
-sha256sums=('6f1885ed8050a55bb2cbf05089b452f555852e003ec7fe89fe472c0dbc92e65b'
-            'SKIP'
-            '30e35102e16d708a8423c0a4056637392c1c841b92eddf38da1626109c70bdf0')
+source=("https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig})
+sha256sums=('3f4d084d738a7dfb996d5f1bb5becd2a96b0fbb35135010460f239cdd98ca9e0'
+            'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
 options=(!zipman)
-
-prepare() {
-  patch -d $_pkgname-$pkgver -p1 -i ../kdebug-421159.patch # Fix scrolling issues
-}
 
 build() {
   cmake -B build -S $_pkgname-$pkgver \
