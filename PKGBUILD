@@ -3,7 +3,7 @@
 pkgname=youtube-music-appimage
 _pkgname=YouTube-Music-Desktop-App
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
@@ -17,7 +17,7 @@ noextract=('${_pkgname}-${pkgver}.AppImage')
 options=(!strip)
 sha512sums=(
 	"7a5f9f85764d9d40957ec843bb62ddff0bf06f267dc283d7d2023278b5cf922dc8bad69f6bac004ee7ce67e7b71ebcf6a919679f16f4217c5832f7fc45c93c4b"
-	"502bdec56646a04ef6f1bfdade5b05c5fba11729ed8e28552a5607d4be45295b1709fcc121e123c0d78e51bd004eb4354b290edb598d0d79899b8cfa1d7b89b9"
+	"SKIP"
 	"42b2b37c32da575e3c79b6c5ef911c17147c371794941424b047555be00e86b79e6ee462275f2bec0380ddee09e0d3fed82182096787878a7eefb3d53542d061"
 )
  
