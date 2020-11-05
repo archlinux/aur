@@ -17,7 +17,7 @@ coredns.service
 coredns-sysusers.conf)
 
 sha256sums=('SKIP'
-            '030cd8e938c293c11a9acdb09b138f98b37874772072336792ec4bf0d9eff9b1'
+            'bbacde21632be9d7a9a758103775c768f9688372539b1b342ccf5c5db6746b4f'
             '536d03f8b20b0d2d6e8f96edd7e4e4dd7f6fef39ab0e952522d8725f3cc186b7')
 
 pkgver() {
