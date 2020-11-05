@@ -9,6 +9,7 @@ pkgbase = trickle-git
 	arch = armv7h
 	arch = aarch64
 	license = BSD
+	makedepends = git
 	depends = libevent
 	depends = libtirpc
 	provides = trickle

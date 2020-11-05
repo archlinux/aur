@@ -1,4 +1,4 @@
-# Maintainer:  Jonathon Fernyhough <jonathon at_manjaro_dot org>
+# Maintainer:  Jonathon Fernyhough <jonathon at+m2x dev>
 # Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Romain Bouchaud-Leduc <r0m1.bl@camaris.org>
 
@@ -10,6 +10,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mariusae/trickle"
 license=('BSD')
 depends=('libevent' 'libtirpc')
+makedepends=('git')
 provides=("${pkgname/-git/}")
 conflicts=("${pkgname/-git/}")
 source=("git+https://github.com/mariusae/trickle.git"
