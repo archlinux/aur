@@ -10,6 +10,7 @@ pkgbase = jellyfin
 	makedepends = dotnet-sdk>=3
 	makedepends = yarn
 	makedepends = git
+	makedepends = python2
 	backup = etc/conf.d/jellyfin
 	source = jellyfin-10.6.4.tar.gz::https://github.com/jellyfin/jellyfin/archive/v10.6.4.tar.gz
 	source = jellyfin-web-10.6.4.tar.gz::https://github.com/jellyfin/jellyfin-web/archive/v10.6.4.tar.gz
