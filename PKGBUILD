@@ -2,7 +2,7 @@
 
 pkgname=pyidm
 pkgver=2020.10.28
-pkgrel=1
+pkgrel=2
 pkgdesc="Python open source alternative to IDM (Internet Download Manager)"
 arch=('any')
 url="https://github.com/pyIDM/PyIDM"
@@ -30,5 +30,4 @@ package() {
   cd "$srcdir/PyIDM-$pkgver"
 
   python setup.py install --root="$pkgdir" --skip-build --optimize=1
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
