@@ -1,11 +1,12 @@
-# Maintainer: Benjamin Klettbach <b dot klettbach at gmail dot com >
+# Maintainer: Alice Gaudon <alice at gaudon dot pro>
+# Contributor: Benjamin Klettbach <b dot klettbach at gmail dot com >
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
-pkgname=obs-studio-git
-pkgver=25.0.7.r302.gc21fd6f27
+pkgname=obs-studio-browser
+pkgver=26.0.2
 pkgrel=1
-pkgdesc="Free and open source software for video recording and live streaming."
+pkgdesc="Free and open source software for video recording and live streaming. Built with the browser plugin."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
@@ -22,15 +23,10 @@ optdepends=("libfdk-aac: FDK AAC codec support"
             "python: Python scripting")
 provides=("obs-studio=$pkgver")
 conflicts=("obs-studio")
-source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#branch=master"
+source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
         "git+https://github.com/Mixer/ftl-sdk.git"
         "git+https://github.com/obsproject/obs-browser.git")
 md5sums=("SKIP" "SKIP" "SKIP")
-
-pkgver() {
-  cd $pkgname
-  git describe --long --tags | sed -r "s/([^-]*-g)/r\1/;s/-/./g"
-}
 
 prepare() {
   cd $pkgname
