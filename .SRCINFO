@@ -1,7 +1,7 @@
 pkgbase = chromium-extension-https-everywhere
 	pkgdesc = An extension that encrypts your communications with websites that offer HTTPS
 	pkgver = 2020.8.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eff.org/https-everywhere
 	changelog = chromium-extension-https-everywhere.changelog
 	arch = any
@@ -9,11 +9,8 @@ pkgbase = chromium-extension-https-everywhere
 	optdepends = chromium: Use it in a chromium based browser
 	replaces = https-everywhere-chrome
 	noextract = chromium-extension-https-everywhere-2020.8.13.crx
-	noextract = LICENSE-2020.8.13
 	source = chromium-extension-https-everywhere-2020.8.13.crx::https://www.eff.org/files/https-everywhere-chrome-2020.8.13.crx
-	source = LICENSE-2020.8.13::https://raw.githubusercontent.com/EFForg/https-everywhere/2d5e13146fe77968c61c8f6a500d5ad3c5d2f6a8/LICENSE.txt
 	b2sums = 8183ccf4d215ef4fb67ef193205b42bb0a62fef8a21ed84f39b9f8c01614e5b6687430e48fdf3e8307dcb4ee2d073f5e621977b20c671b86d84eed228f4b6597
-	b2sums = b7eb9e9bce264c535ce8b060ddad72a3cb8348b3c85eb3adf391fe69ea9cd8f6e2fe7848548b7467deb483a39b3d2dfb345b3cb5d22929b78f1ba6e19ea031ee
 
 pkgname = chromium-extension-https-everywhere
 
