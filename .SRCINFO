@@ -1,0 +1,17 @@
+pkgbase = sponsorblockcast-git
+	pkgdesc = Skip Youtube sponsor segments on all LAN Chromecasts
+	pkgver = r4.05b0dc1
+	pkgrel = 1
+	url = https://github.com/nichobi/sponsorblockcast
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = go-chromecast-bin
+	depends = jq
+	depends = bc
+	provides = sponsorblockcast
+	source = git+https://github.com/nichobi/sponsorblockcast
+	md5sums = SKIP
+
+pkgname = sponsorblockcast-git
+
