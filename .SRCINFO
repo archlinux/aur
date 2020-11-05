@@ -1,0 +1,21 @@
+pkgbase = python-mercantile
+	pkgdesc = Context geo-tiles in Python
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://github.com/mapbox/mercantile
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-click
+	optdepends = check-manifest: dev tools
+	optdepends = python-coveralls: test tools
+	optdepends = python-hypothesis: test tools
+	optdepends = python-pytest-cov: test tools
+	optdepends = python-pydocstyle: doc style control
+	source = https://files.pythonhosted.org/packages/source/m/mercantile/mercantile-1.1.6.tar.gz
+	source = https://github.com/mapbox/mercantile/blob/master/LICENSE.txt
+	sha256sums = 0dff4cbc2c92ceca0e0dfbb3dc74392a96d33cfa29afb1bdfcc80283d3ef4207
+	sha256sums = d89ff39f64a9287c61787591d9771b8d9fe100a393f31e906d377c4ecf694ac6
+
+pkgname = python-mercantile
+
