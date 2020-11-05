@@ -2,7 +2,7 @@
 
 pkgname=intiface-desktop
 pkgver=19.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source, cross-platform application that acts as a hub for sex hardware access"
 depends=('electron')
 makedepends=('npm' 'yarn' 'git' 'trash-cli' 'typescript')
@@ -31,7 +31,7 @@ build() {
   yarn build
   cd ../intiface
   yarn
-  yarn electron:build
+  yarn electron:build --publish never
 }
 
 package() {

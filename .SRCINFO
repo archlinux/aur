@@ -1,7 +1,7 @@
 pkgbase = intiface-desktop
 	pkgdesc = Open-source, cross-platform application that acts as a hub for sex hardware access
 	pkgver = 19.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://intiface.com/desktop/
 	arch = i686
 	arch = x86_64
