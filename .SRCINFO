@@ -1,9 +1,10 @@
 pkgbase = libyang
 	pkgdesc = A YANG data modelling language parser and toolkit written (and providing API) in C.
 	pkgver = 1.0.184
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CESNET/libyang
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	checkdepends = cmocka
 	makedepends = cmake
