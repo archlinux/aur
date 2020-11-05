@@ -1,5 +1,5 @@
 pkgbase = linux-amd
-	pkgver = 5.9.v.5
+	pkgver = 5.9.v.6
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -13,13 +13,13 @@ pkgbase = linux-amd
 	makedepends = libelf
 	makedepends = lzop
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.9.5
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.9.6
 	source = config.x86_64
 	source = linux-amd.preset
 	source = linux.install
 	source = 5013_enable-cpu-optimizations-for-gcc10.patch
 	sha256sums = SKIP
-	sha256sums = efb5be949d90228ad1925fb5e1d5fdde9c1827df25ccb2d4cf0bb762ceb0d827
+	sha256sums = af99b974f1b93b7078da5b57c832f6f8e28eafe68705da9bd2f47e89e7ce05bb
 	sha256sums = 60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = 5ab29eb64e57df83b395a29a6a4f89030d142feffbfbf73b3afc6d97a2a7fd12
