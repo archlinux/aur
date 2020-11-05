@@ -2,7 +2,7 @@
 
 _pkgname=litejesd204b
 pkgname=python-$_pkgname
-pkgver=2020.04
+pkgver=2020.08
 pkgrel=1
 pkgdesc='Small footprint and configurable JESD204B core'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-migen' 'python-litex')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest-runner')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('c4122393f8deaee01a7db30745323ef1775e208e33139adbc3980e27ff54eae9c70bc00975aa821ee4760f474f45fb3e58a2110bf95c3c6ec192b9e6534e9d64')
+sha512sums=('4958100b70e688c915ff4d0c60f067df6b512feaa47c4f384dcb91f3643c6ce36bd51cf041cc5fbba392aa8a353e46c37ba79ad560bf0e10ee48896b15e2b9b6')
 
 build() {
   cd $_pkgname-$pkgver
