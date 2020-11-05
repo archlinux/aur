@@ -1,6 +1,6 @@
 pkgbase = linux-hardened-git
 	pkgdesc = Security-Hardened Linux
-	pkgver = 5.9.1.r951396.g6738ba9cd565
+	pkgver = 5.9.6.r952626.gf86102e71f88
 	pkgrel = 1
 	url = https://github.com/anthraxx/linux-hardened
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = linux-hardened-git
 	source = linux-hardened::git+https://github.com/anthraxx/linux-hardened#branch=5.9?signed
 	source = config
 	source = sphinx-workaround.patch
+	source = mac80211-fix-regression-where-EAPOL-frames-were-sent-in-plaintext.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 65EEFE022108E2B708CBFCF7F9E712E59AF5F22A

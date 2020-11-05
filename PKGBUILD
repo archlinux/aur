@@ -6,7 +6,7 @@
 pkgbase=linux-hardened-git
 _srcname=${pkgbase/-git/}
 _gitbranch=5.9
-pkgver=5.9.1.r951396.g6738ba9cd565
+pkgver=5.9.6.r952626.gf86102e71f88
 pkgrel=1
 pkgdesc='Security-Hardened Linux'
 url='https://github.com/anthraxx/linux-hardened'
@@ -22,6 +22,7 @@ source=(
   "${_srcname}::git+https://github.com/anthraxx/linux-hardened#branch=${_gitbranch}?signed"
   config         # the main kernel config files
   sphinx-workaround.patch
+  mac80211-fix-regression-where-EAPOL-frames-were-sent-in-plaintext.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
