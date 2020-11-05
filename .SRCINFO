@@ -1,0 +1,17 @@
+pkgbase = iicalc
+	pkgdesc = An extensible calculator written in Python.
+	pkgver = 2.4.5
+	pkgrel = 1
+	install = iicalc.install
+	arch = any
+	groups = 
+	license = APLG-3.0
+	depends = bash-completion
+	depends = python-pip
+	options = !strip
+	options = !emptydirs
+	source = iicalc-2.4.5.deb::https://gitlab.com/TurboWafflz/ImaginaryInfinity-Calculator/-/jobs/artifacts/development/raw/iicalc.deb?job=debian%20packager
+	sha512sums = 3b73eaa941553f53c75057c440f8e4872a1ee21b405604fb6a3a34b1497c37093e5fde243df26dea85bce3440147dc2e2516b01f0ce9e4fc3971007a10a9582f
+
+pkgname = iicalc
+
