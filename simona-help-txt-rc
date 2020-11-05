@@ -1,0 +1,99 @@
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ {F1} get-help {F2} sysinfo {F3} clear {Shft+Ctrl+V/C} Paste/Copy {F5} update                     {F11} full screen │
+  │ {Alt+F2} app launcher {F12} Yakuake term                                                                           │
+  ├───────────────────────────────────────────────────[base]───────────────────────────────────────────────────────────┤
+  │Help     man ; cheat cmd ; cheat-sh ; pet ; (list cmds) whatis -w 'cmd*'                                            │
+  │Keyboard {Alt+Space} Runbox {Ctrl+Alt+Fn} V-term                                                                    │
+  │Base     l ls ll cls cll cllo ls_extended exa xcp exa cd cp mv mkdir rmdir touch rm srm shred cat bat icat clear    │
+  │         cliqr ; tar cvfz ; tar xvf ; realpath ; expr (calcoli matematici) ; {Ctrl+V} scancode                      │
+  │         harvest /dir ls ; shtool mkshadow -v -a . /tmp/shadow ; dynamic-colors list                                │
+  │link     ln -s|' ' ; (abs path) ln -s dest name ; (rel) ln -rs dest name                                            │
+  │fileman  dolphin ; [sudo] mc ; fff ; nnn -S                                                                         │
+  │file     file ; (.desktop) dex -c file                                                                              │
+  │spazio   broot -w ; ncda ; getrid ; du='du -h --max-depth=1 -P -x | sort -n'                                        │
+  │pulizia  bleachbit ; pkill ; Firefox cache web/cookie; .cache/ ; /usr/lib/modules/                                  │
+  │pipe     |pastebinit ; |more ; |less ; |grep "str" (sel. righe) ; |tail -n20 |sha256sum                             │
+  │edit     vi ; nano ; sudoedit (lauch kate) ; kate (launch kate) ; cmd1 | vipe | cmd2 ; vidir * ; hexitor            │
+  │ricerca  locate ; plocate ; <locatec> ; /var/lib/mlocate/ ; fd                                                      │
+  │run      <brun> (bg run) ; bash ; zsh ; nohup ; watch cmd                                                           │
+  │kill     pkill process_name ; xkill mouse_point ; killall ; fkill                                                   │
+  │dupe     (dice device pendrive) <sget-pendrive> ; pendrive-detect ; dd if=/dev/sdLN of=/dev/sdLN ; dd.. count=#blks │
+  │         dd if=..sdL | gzip -c >img.img ; gunzip -c img.img.gz | dd of=..sdL                                        │
+  │usb/img  bootiso -l ; pendrive-detect ; dd if= of= ; fuseiso                                                        │
+  │ssh      ssh usr@host -p n ; scp loc-file usr@host:/path . ; /etc/sshd/sshd_config ; systemctl restart sshd.service │
+  │         ssh-keygen (gen rsa keys /home/usr/.ssh) ; ssh-copy-id usr@host-dest ; ssh -t usr@host 'cmd' /exe rem cmd) │
+  │         ~/.ssh/known_hosts ; known_hosts ; ssh-keygen -f ~/.ssh/known_hosts" -R 192.168.1.1                        │
+  │backup   gparted                                                                                                    │
+  │android  adb connect 192.168.1.16 ; adb pull /sdcard/dir_android . ; adb push /pc /sdcard/.                         │
+  │TUI      newsboat                                                                                                   │
+  ├──────────────────────────────────────────────────[admin]───────────────────────────────────────────────────────────┤
+  │root     su - ; sudo ; /etc/sudoers ; doas ; kdesu ; kdesudo                                                        │
+  │kbd      loadkeys it (solo console) ; setxkbmap it (setup x) ; export LC_ALL=it_IT.UTF-8 ; <sget-kbd-test>          │
+  │alias    <sget*> <sset*> ; <sget-alias> ; <sget-function-list> ; alias                                              │
+  │unalias  \\\cmd o command cmd (bypass alias)                                                                          │
+  │         which alias-name                                                                                           │
+  │user     id ; groups ; /etc/passwd ..group ..sudoers ; usermod -aG add_grup username                                │
+  │         [sudo] chmod ugoa+|-rwx file o chmod 777 file (4=r 2=w 1=x) es. sudo chmod g+rw file; <sset-run> ; <sset_> │
+  │bg/fg    'cmd' (run fg) ; 'cmd &' (run bg) ; {Ctrl+Z} (susp bg) ; 'bg' (restart bg) ; 'count 2> /dev/null'          │
+  │         'jobs' (list jobs) ; 'kill %n-job' ; 'fg %n-job'                                                           │
+  │tmux     {Ctrl+B} ; ? hlp ; c new ; 0-9 sel ; w lst ; $ ren ; D dtch ; a attch ; & kill ; : prompt                  │
+  │debug    'export LANG=\"en_GB\"; cmd' ; 'LC_ALL=C strace -f cmd 2> debug.txt' ; bash -x cmd                           │
+  │monitor  <sget-top> ; bpytop ; bashtop ; top ; iotop ; htop                                                         │
+  │         nethogs ; glances ; nmon ; <sget-top-ram> ; <sget-top-cpu> ; atop ; gotop ; vtop ; saidar                  │
+  ├────────────────────────────────────────────────────[sys]───────────────────────────────────────────────────────────┤
+  │system   inxi -Fxz ; uname -a ; free ; cat /proc/swaps ; ps_mem ; vmstat ; ps -ef ; env ; sysctl -a                 │
+  │         [sudo]|[] bleachbit ; io-get-sched ; sget-kernel-list ; sget-alias ; sget-io-sched-all-device              │
+  │LogSys   journalctl -f ; ... -b 0 (bootlog) ; dmesg |tail -n20 ; systemctl status systemd-modules-load.service      │
+  │firewall systemctl enable --now firewalld ; /usr/lib/firewalld/zones/ ; --list-ports ; firewall-cmd --get-services  │
+  │         --get-active-zones ; --change-interface=enp9s0 --zone=dmz|public [--permanent]                             │
+  │         --add-port=123/tcp --zone=home ; --remove-port 123/tcp --zone=home                                         │
+  │         --add-service http --zone=home ; --remove-service --zone=home                                              │
+  │         firewall-cmd --reload ; <sset-secure> <sset-unsecure> <sget-firewall> ; --zone=home --list-all             │
+  │         --panic-on|off                                                                                             │
+  │systemd  systemctl start|enable|status serv ; systemctl list-timers ; systemctl --type swap ; /etc/systemd          │
+  │disk     df ; di ; trash-empty ; fdisk ; gdisk ; blkid ; (force)umount -fl ; gparted ; rsync ; psync ; drive ls     │
+  │         drive ls ; iostat ; lsblk ; <srun-[s]mount-img img> ; ntfsfix -db ; (sudo) ntfsfix /dev/sdXY ; photorec    │
+  │         (sudo) ntfsfix /dev/sdXY ; photorec ; testdisk ; dfrs                                                      │
+  │net      ip addr ; hostname -i ; netstat; iftop ; nload ; trafshow ; wget -c url ; iptraf-ng ; vnstat ; bashtop     │
+  │         /etc [..]hostname [..]hosts [..]resolv.conf ; bmon ; fast                                                  │
+  │remote   dynu.com ; systemctl restart ddclient ; /etc/ddclient/ddclient.conf                                        │
+  │         simonahome/carlahome.freeddns.org ; 192.168.1.10 ; ip add                                                  │
+  │share    servfile ; qrcp ; scp/rsync [-r] file/dir usr@server:/where                                                │
+  │         smbclient -L hostname ; /etc/samba/smb.conf ; systemctl restart smb.service ; gruppo shares x accesso      │
+  │         /etc/minidlna.conf ; systemctl restart minidlna.service ; iotop                                            │
+  │server   /etc/httpd/conf/httpd.conf ; /etc/php/php.ini ; systemctl start httpd.service ; (mariadb) mysql -u root -p │
+  │         systemctl restart pure-ftpd ; /etc/pure-ftp                                                                │
+  │mysql    (mariadb) mysql -u root -p ; ~/.mysql_history ; systemctl status mysqld                                    │
+  │secure   pacaudit -v ; spectre-meltdown-checker ; antivirus?                                                        │
+  │timesvr  timedatectl ; timedatectl set-ntp {true|false} ; systemctl status systemd-timesyncd                        │
+  │         /etc/systemd/timesyncd.conf                                                                                │
+  │runtime  archlinux-java status ; python -m site --user-site ; akonadictl fsck                                       │
+  │dev      bluetoothctl ; pcsc_scan ; piper                                                                           │
+  │inst     <update ..-noaur ..-syncdb[-force] ..-ask ..-install ..-S-aurfirst>                                        │
+  │         yay -Syu o yay -Sy;yay -Su ; (inst pkg) pacman/yay -S pkg ; (del) pacman -Rs pkg                           │
+  │         (del ignore dep.) pacman -Rdd pkg ; (inst. ignore dep.) pacman -Sdd ; (used by pkg...) pacman -Qo /pth/fle │
+  │         yay ; yup ; trizen ; cower ; pacui ; pcurses ; piklaur ; aurman                                            │
+  │         (inst local pkg) sudo pacman -U ; pachist [-n 100] ; (clean) sudo pacman/yay -Scc ; gpg --recv-key KEY     │
+  │         rm /var/lib/pacman/db.lck ; /var/lib/pacman/sync ; /etc/pacman.d ; /var/log/pacman.log                     │
+  │         wget -O /etc/pacman.d/mirrorlist https://www.archlinux.org/mirrorlist/all/                                 │
+  │         /usr/share/libalpm/hooks ; /etc/pacman.conf                                                                │
+  │         downgrade pgk1 pkg2 ... ; (downgrade) sudo pacman -U /var/cache/pacman/pkg/OLD-PKG-ver-x86_64.pkg.tar.xz   │
+  │         pacman-key --populate archlinux ; downgrade pkg ; getrid ; /etc/pkglist.txt                                │
+  │         errore: pkg: /usr... .so exist in filesystem > pacman -Syu --overwrite /usr...so                           │
+  │snap-fla sudo snap refresh ; flatpak {update | list | uninstall} ; flatpak remote-ls winepak                        │
+  │         flatpak install winepak tld.domain.Application ; flatpak uninstall --unused                                │
+  │A/V      xrandr -q ; alsamixer (term) ; ncpiamixer (term) ; asoundconf                                              │
+  │plasma   kquitapp5 plasmashell && kstart plasmashell ; ~/.local/share/plasma/plasmoids/ /usr/share/plasma/plasmoids │
+  │         killall plasmashell && plasmashell > /dev/null 2>&1 & disown                                               │
+  │virtbox  vdfuse ; VBoxManage convertfromraw file.img out.vdi --format vdi ; vboxmanage modifyvdi file.vdi compact   │
+  │         VBoxManage modifyhd file.cdi --resize 80000 (80Gb) ; .VirtualBox/ ; .config/VirtualBox                     │
+  ├──────────────────────────────────────────────────[Startup]─────────────────────────────────────────────────────────┤
+  │boot     (t)uptime ; /etc/fstab /etc/grub.d/.. ; /etc/default/grub.cfg ; systemd.unit=multi-user.target             │
+  │         update-grub (grub-mkconfig -o ⁄boot⁄grub⁄grub.cfg) ; sudo grub-install --target=i386-pc /dev/sdX           │
+  │         sudo mkinitcpio -P ; /etc/mkinitcpio.conf ; /etc/udev/rules.d                                              │
+  │         /etc/vconsole.conf ; loadkeys it ; /usr/share/kbd/keymaps/ ; /etc/profile .bashrc .zshrc                   │
+  │kernel   sget-kernel-list ; /usr/lib/modules/\$(uname -r)/build/.config                                              │
+  │         ./configure ; make localmodconfig ; make ; (root) ; sudo make install                                      │
+  │DsktpEnv systemctl start|enable|disable sddm ; startx ; tbsm ; chkservice ; kquitapp5|kstart5 plasmashell           │
+  │         /usr/share/xsessions ; fc-match "font"                                                                     │
+  └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘

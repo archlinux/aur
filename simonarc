@@ -1,0 +1,2358 @@
+#!/bin/bash
+#comune a .bashrc e zshrc
+
+#trap ~/.simona-logout EXIT
+
+#forza avvio senza get-sys-info all'avvio (alternativa: << FAST_BOOT=true konsole --profile "Simona_zsh" >>)
+FAST_BOOT=true
+
+#The main difference with shell config files is that some are only read by "login" shells (eg. when you login from another host, or login at the text console of a local unix machine). these are the ones called, say, .login or .profile or .zlogin (depending on which shell you're using).
+#Then you have config files that are read by "interactive" shells (as in, ones connected to a terminal (or pseudo-terminal in the case of, say, a terminal emulator running under a windowing system). these are the ones with names like .bashrc, .tcshrc, .zshrc, etc.
+#bash complicates this in that .bashrc is only read by a shell that's both interactive and non-login, so you'll find most people end up telling their .bash_profile to also read .bashrc with something like
+#[[ -r ~/.bashrc ]] && . ~/.bashrc
+#Other shells behave differently - eg with zsh, .zshrc is always read for an interactive shell, whether it's a login one or not.
+#The manual page for bash explains the circumstances under which each file is read. Yes, behaviour is generally consistent between machines.
+#.profile is simply the login script filename originally used by /bin/sh. bash, being generally backwards-compatible with /bin/sh, will read .profile if one exists.
+
+#bash
+#interactive shell when its standard input and error are connected to a terminal (for example, when run in a terminal emulator)
+#All interactive shells source /etc/bash.bashrc and ~/.bashrc, while interactive login shells also source /etc/profile and ~/.bash_profile.
+
+[[ -d /opt/scripts ]] && PATH=/opt/scripts:$PATH
+#[[ -d "$JAVA_HOME/bin" ]] && PATH="$JAVA_HOME/bin:$PATH"
+
+# ==============================================================================================================
+#                                                    linux console colors
+# ==============================================================================================================
+
+#To colorize your tty, you can for example put this line in /etc/issue on the first line:
+#\e]P0000000\e]P8928374\e]P1CC241D\e]P9FB4934\e]P298971A\e]PAB8BB26\e]P3D79921\e]PBFABD2F\e]P4458588\e]PC83A598\e]P5B16286\e]PDD3869B\e]P6689D6A\e]PE8EC07C\e]P7A89984\e]PFEBDBB2 \
+#This will use the gruvbox colorscheme (but with black background). You could also echo this in your .bashrc, but that could mess up your terminal emulators.
+
+
+if [ "$TERM" = "linux" ]; then #se terminale fisico e non virtuale
+
+  set-term-tarocchi () { #bash non sopporta lo scrivere tutta la funz<ione sulla stesa rigfa
+    #if [ "$TERM" = "linux" ]; then #se terminale fisico e non virtuale
+      echo -en "\e]P0000000"
+      echo -en "\e]P85D5D5D"
+      echo -en "\e]P1C75646"
+      echo -en "\e]P9E09690"
+      echo -en "\e]P28EB338"
+      echo -en "\e]PACDEE69"
+      echo -en "\e]P3D0B03C"
+      echo -en "\e]PBFFE377"
+      echo -en "\e]P472B3CC"
+      echo -en "\e]PC9CD9F0"
+      echo -en "\e]P5C9A0D1"
+      echo -en "\e]PDFBB1F9"
+      echo -en "\e]P6218693"
+      echo -en "\e]PE77DFD8"
+      echo -en "\e]P7B0B0B0"
+      echo -en "\e]PFF7F7F7"
+    #fi
+  }
+
+  #colori simona 2018-09-19 konsole (ecetto colore nero)
+  set-term-simona-20180919 () {
+    #if [ "$TERM" = "linux" ]; then #se terminale fisico e non virtuale
+    echo -en "\e]P0000000" #black
+    #echo -en "\e]P0474d58" #black
+    echo -en "\e]P1dc1313" #darkred
+    echo -en "\e]P20fc512" #darkgreen
+    echo -en "\e]P3cac400" #brown alias dark yellow
+    echo -en "\e]P44a4af1" #darkblue
+    echo -en "\e]P59b59b6" #darkmagenta
+    echo -en "\e]P620aeca" #darkcyan
+    echo -en "\e]P7cfcfd0" #lightgrey or white
+    echo -en "\e]P8545c5d" #darkgrey or light black
+    echo -en "\e]P9ff5837" #light red
+    echo -en "\e]PA1cdc9a" #light green
+    echo -en "\e]PBfaee45" #light yellow
+    echo -en "\e]PC4f89fd" #light blue
+    echo -en "\e]PDc75ff3" #light magenta
+    echo -en "\e]PE41defd" #light cyan
+    echo -en "\e]PFececec" #light white
+    #fi
+  }
+
+  #TO-DO sostituire eventualmente questi colori con quelli già usati sula cfg dei colori di Konsole per prova su term separato
+  set-term-ok-1 () {
+    #if [ "$TERM" = "linux" ]; then #se terminale fisico e non virtuale
+    echo -en "\e]P0000000" #black
+    #echo -en "\e]P0474d58" #black
+    echo -en "\e]P1dc1313" #darkred
+    echo -en "\e]P20fc512" #darkgreen
+    echo -en "\e]P3cac400" #brown alias dark yellow
+    echo -en "\e]P44a4af1" #darkblue
+    echo -en "\e]P59b59b6" #darkmagenta
+    echo -en "\e]P620aeca" #darkcyan
+    echo -en "\e]P7cfcfd0" #lightgrey or white
+    echo -en "\e]P8545c5d" #darkgrey or light black
+    echo -en "\e]P9ff5837" #light red
+    echo -en "\e]PA1cdc9a" #light green
+    echo -en "\e]PBfaee45" #light yellow
+    echo -en "\e]PC4f89fd" #light blue
+    echo -en "\e]PDc75ff3" #light magenta
+    echo -en "\e]PE41defd" #light cyan
+    echo -en "\e]PFececec" #light white
+    #\e]R Colors reset to default
+    #fi
+  }
+
+  set-term-totest-1 () {
+    #if [ "$TERM" = "linux" ]; then #se terminale fisico e non virtuale
+    echo -en "\e]P0000000" #black
+    echo -en "\e]P8686868" #darkgrey
+    echo -en "\e]P1DC322F" #darkred
+    echo -en "\e]P9FF6565" #red
+    echo -en "\e]P267AA00" #darkgreen
+    echo -en "\e]PA9BFF00" #green
+    echo -en "\e]P3B58900" #brown
+    echo -en "\e]PBFFED27" #yellow
+    echo -en "\e]P4016BB6" #darkblue
+    echo -en "\e]PC45B2FF" #blue
+    echo -en "\e]P5C332B7" #darkmagenta
+    echo -en "\e]PDFF00FF" #magenta
+    echo -en "\e]P627978F" #darkcyan
+    echo -en "\e]PE00EDED" #cyan
+    echo -en "\e]P7B2B2B2" #lightgrey
+    echo -en "\e]PFFFFFFF" #white
+    #fi
+  }
+
+  set-term-totest-2 () {
+    #if [ "$TERM" = "linux" ]; then #se terminale fisico e non virtuale
+    echo -en "\e]P0000000" # <008>black;
+    echo -en "\e]P1AA0000" # <018>red;
+    echo -en "\e]P200AA00" #  <028>green;
+    echo -en "\e]P3AAAA00" #  <038>yellow;
+    echo -en "\e]P40000AA" #  <048>blue;
+    echo -en "\e]P5AA00AA" #  <058>magenta;
+    echo -en "\e]P600AAAA" #  <068>cyan;
+    echo -en "\e]P7AAAAAA" #  <078>white;
+    echo -en "\e]P8555555" #  <108>light black;
+    echo -en "\e]P9FF5555" #  <118>light red;
+    echo -en "\e]PA55FF5A" #  <128>light green;
+    echo -en "\e]PBFFFF55" #  <138>light yellow;
+    echo -en "\e]PC5555FF" #  <148>light blue;
+    echo -en "\e]PDFF55FF" #  <158>light magenta;
+    echo -en "\e]PE55FFFF" #  <168>light cyan;
+    echo -en "\e]PFFFFFFF" #  <178>light white
+    #fi
+  }
+
+  set-term-totest-3-jwr () {
+    #if [ "$TERM" = "linux" ]; then #se terminale fisico e non virtuale
+    echo -en "\e]P0000000" #black
+    echo -en "\e]P83d3d3d" #darkgrey
+    echo -en "\e]P18c4665" #darkred
+    echo -en "\e]P9bf4d80" #red
+    echo -en "\e]P2287373" #darkgreen
+    echo -en "\e]PA53a6a6" #green
+    echo -en "\e]P37c7c99" #brown
+    echo -en "\e]PB9e9ecb" #yellow
+    echo -en "\e]P4395573" #darkblue
+    echo -en "\e]PC477ab3" #blue
+    echo -en "\e]P55e468c" #darkmagenta
+    echo -en "\e]PD7e62b3" #magenta
+    echo -en "\e]P631658c" #darkcyan
+    echo -en "\e]PE6096bf" #cyan
+    echo -en "\e]P7899ca1" #lightgrey
+    echo -en "\e]PFc0c0c0" #white
+    #fi
+  }
+
+  #echo "tty* term color setup...."
+  #set-term-1-tarocchi
+  set-term-simona-20180919
+  #set-term-ok-1
+  #set-term-totest-1
+  #set-term-totest-2
+  #set-term-totest-3-jwr
+
+  #clear # bring us back to default input colours
+
+
+  # e per i font per zsh??????
+fi
+
+# -------------------------------------------------------------------------------------------------------------
+# decisione se generare output durante processamento .bashrc o .zshrc
+# -------------------------------------------------------------------------------------------------------------
+
+#Attenzione: usato in .zsh
+#nome terminale software che rende disponibile il terminale virtuale
+alias sget-binterm='ps -e | grep $PPID | grep -v grep | awk '\''{print $4}'\'''
+term_sw=$(sget-binterm)
+#echo "Term sw is <$term_sw>"
+
+export count_login=$((count_login+1))
+
+#echo "Debug: User $login_user [\$(logname)], $USER [\$USER], $UID uid"
+full_display=0 #default
+full_alias=0 #default
+if [[ -n "$SSH_CLIENT" ]]; then #sessione ssh #TO-DO aggiungere detect sessione telnet
+  #login_user=$USERNAME
+  full_display=1
+  full_alias=1
+else
+  #login_user=$(logname) #Login originario
+  if [[ "$term_sw" == "dolphin" || "$term_sw" == "nemo" ]] ; then #non serve output video se terminale interno di dolphin
+    full_display=0
+    full_alias=0
+  else
+    login_user=$(logname) #Login originario (logname non funziona sotto ssh o telnet)
+    if [[ $UID -eq 0 ]] && [[ $login_user != "root" ]] ; then #se root ma veniamo da utente diverso no display
+      full_display=0
+      full_alias=1
+    elif [[ $USER == $login_user ]] ; then #se login serio display
+      full_display=1
+      full_alias=1
+    fi
+  fi
+fi
+if [[ $count_login -gt 1 ]] ; then #se shell di secondo livello (le nidificate successive)
+  full_display=0
+  full_alias=1
+fi
+
+#echo "Debug: Full Display=$full_display"
+
+#if [[ $full_display -eq 1 ]] ; then
+  #echo -e "\nSimona's scripts... "
+#else
+  #echo "User change detected from $login_user [\$(logname)] to $USER [\$USER]"
+  #echo -n "Simona's silent scripts: begin " #attenzione: NO ritorno a capo
+#fi
+
+#TO-DO mancherebbe da mettere no se cambia shell terminale
+
+# ----------------------------------------------------------------------------------------------------------
+# Funzioni x maschere avvio iniziale
+# ----------------------------------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------------------------------
+# colori schermo
+# ------------------------------------------------------------------------------------------------------
+
+ANSI_OUT_RES_EVID="\e[1;39;41m" #bianco su rosso
+ANSI_OUT_DEFAULT="\e[0m" #reset
+
+#if [[ $full_display -eq 1 ]] ; then
+
+ANSI_OUT_TXT_EVID="\e[1;36;1m" #celestino su nero
+ANSI_OUT_DEFAULT="\e[0m" #reset
+ANSI_OK="\e[32;40m[OK]${ANSI_OUT_DEFAULT}"
+ANSI_WARN="\e[33;40m[WARN]${ANSI_OUT_DEFAULT}"
+ANSI_ERR="\e[31;40m[ERR]${ANSI_OUT_DEFAULT}"
+
+ANSI_WHITE_ON_BLUE_BOLD="\e[37;44;1m"
+ANSI_WHITE_ON_BLU_LESS="\e[37;44;2m" #illeggibile
+ANSI_WHITE_ON_BLU_ITA="\e[37;44;3m"
+ANSI_WHITE_ON_BLU_UNDERL="\e[37;44;4m"
+ANSI_WHITE_ON_BLU_BLINK="\e[37;44;5m"
+ANSI_WHITE_ON_BLU_NORM="\e[37;44;6m" #su alcuni emulatori di terminale lampeggia
+ANSI_WHITE_ON_BLU_INV="\e[37;44;7m"
+ANSI_WHITE_ON_BLU_DEL="\e[37;44;9m"
+#echo -e -n "${ANSI_WHITE_ON_BLU_NORM}Test${ANSI_OUT_DEFAULT}\n"
+
+# ------------------------------------------------------------------------------------------------------
+# unused
+# ------------------------------------------------------------------------------------------------------
+
+#colore su sfondo nero
+#txtblk='\e[0;30m' # Nero - Regular
+#txtred='\e[0;31m' # Rosso
+#txtgrn='\e[0;32m' # Verde
+#txtylw='\e[0;33m' # Giallo
+#txtblu='\e[0;34m' # Blu
+#txtpur='\e[0;35m' # Viola
+#txtcyn='\e[0;36m' # Ciano
+#txtwht='\e[0;37m' # Bianco
+#bldblk='\e[1;30m' # Nero - Bold
+#bldred='\e[1;31m' # Rosso
+#bldgrn='\e[1;32m' # Verde
+#bldylw='\e[1;33m' # Giallo
+#bldblu='\e[1;34m' # Blu
+#bldpur='\e[1;35m' # Viola
+#bldcyn='\e[1;36m' # Ciano
+#bldwht='\e[1;37m' # Bianco
+#unkblk='\e[4;30m' # Nero - Underline
+#undred='\e[4;31m' # Rosso
+#undgrn='\e[4;32m' # Verde
+#undylw='\e[4;33m' # Giallo
+#undblu='\e[4;34m' # Blu
+#undpur='\e[4;35m' # Viola
+#undcyn='\e[4;36m' # Ciano
+#undwht='\e[4;37m' # Bianco
+#bakblk='\e[40m'   # Nero - Background
+#bakred='\e[41m'   # Rosso
+#badgrn='\e[42m'   # Verde
+#bakylw='\e[43m'   # Giallo
+#bakblu='\e[44m'   # Blu
+#bakpur='\e[45m'   # Viola
+#bakcyn='\e[46m'   # Ciano
+#bakwht='\e[47m'   # Bianco
+#txtrst='\e[0m'    # Text Reset
+#
+## Reset
+#Color_Off='\e[0m'        # Text Reset
+#
+## Regular Colors
+#Black='\e[0;30m'         # Nero
+#Red='\e[0;31m'           # Rosso
+#Green='\e[0;32m'        # Verde
+#Yellow='\e[0;33m'       # Giallo
+#Blue='\e[0;34m'          # Blu
+#Purple='\e[0;35m'       # Viola
+#Cyan='\e[0;36m'         # Ciano
+#White='\e[0;37m'        # Bianco
+#
+## Bold
+#BBlack='\e[1;30m'        # Nero
+#BRed='\e[1;31m'          # Rosso
+#BGreen='\e[1;32m'       # Verde
+#BYellow='\e[1;33m'      # Giallo
+#BBlue='\e[1;34m'         # Blu
+#BPurple='\e[1;35m'      # Viola
+#BCyan='\e[1;36m'        # Ciano
+#BWhite='\e[1;37m'       # Bianco
+#
+## Underline
+#UBlack='\e[4;30m'        # Nero
+#URed='\e[4;31m'          # Rosso
+#UGreen='\e[4;32m'       # Verde
+#UYellow='\e[4;33m'      # Giallo
+#UBlue='\e[4;34m'         # Blu
+#UPurple='\e[4;35m'      # Viola
+#UCyan='\e[4;36m'        # Ciano
+#UWhite='\e[4;37m'       # Bianco
+#
+## Background
+#On_Black='\e[40m'        # Nero
+#On_Red='\e[41m'          # Rosso
+#On_Green='\e[42m'       # Verde
+#On_Yellow='\e[43m'      # Giallo
+#On_Blue='\e[44m'         # Blu
+#On_Purple='\e[45m'      # Purple
+#On_Cyan='\e[46m'        # Ciano
+#On_White='\e[47m'       # Bianco
+#
+## High Intensty
+#IBlack='\e[0;90m'         # Nero
+#IRed='\e[0;91m'           # Rosso
+#IGreen='\e[0;92m'        # Verde
+#IYellow='\e[0;93m'       # Giallo
+#IBlue='\e[0;94m'          # Blu
+#IPurple='\e[0;95m'       # Viola
+#ICyan='\e[0;96m'         # Ciano
+#IWhite='\e[0;97m'        # Bianco
+#
+## Bold High Intensty
+#BIBlack='\e[1;90m'      # Nero
+#BIRed='\e[1;91m'         # Rosso
+#BIGreen='\e[1;92m'      # Verde
+#BIYellow='\e[1;93m'     # Giallo
+#BIBlue='\e[1;94m'        # Blu
+#BIPurple='\e[1;95m'     # Viola
+#BICyan='\e[1;96m'       # Ciano
+#BIWhite='\e[1;97m'      # Bianco
+#
+## High Intensty backgrounds
+#On_IBlack='\e[0;100m'    # Nero
+#On_IRed='\e[0;101m'      # Rosso
+#On_IGreen='\e[0;102m'   # Verde
+#On_IYellow='\e[0;103m'  # Giallo
+#On_IBlue='\e[0;104m'     # Blu
+#On_IPurple='\e[10;95m'  # Viola
+#On_ICyan='\e[0;106m'    # Ciano
+#On_IWhite='\e[0;107m'   # Bianco
+#
+##$ echo -e "${txtblu}test"
+##PS1="\[$txtblu\]foo\[$txtred\] bar\[$txtrst\] baz : "
+#
+#ESC(){ echo -en "\033";}                                               # escape character
+#CLEAR(){ echo -en "\033c";}                                         # the same as 'tput clear'
+#CIVIS(){ echo -en "\033[?25l";}                                      # the same as 'tput civis'
+#CNORM(){ echo -en "\033[?12l\033[?25h";}                     # the same as 'tput cnorm'
+#TPUT(){ echo -en "\033[${1};${2}H";}                              # the same as 'tput cup'
+#COLPUT(){ echo -en "\033[${1}G";}                                # put text in the same line as the specified column
+#MARK(){ echo -en "\033[7m";}                                       # the same as 'tput smso'
+#UNMARK(){ echo -en "\033[27m";}                                 # the same as 'tput rmso'
+#DRAW(){ echo -en "\033%@";echo -en "\033(0";}            # switch to 'garbage' mode
+#WRITE(){ echo -en "\033(B";}                                         # return to normal mode from 'garbage' on the screen
+#BLUE(){ echo -en "\033c\033[0;1m\033[37;44m\033[J";}   # reset screen, set background to blue and font to white
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# [F2] & sysinfo
+# ---------------------------------------------------------------------------------------------------------------
+
+get-sys-info() {
+
+  local TABS="                                         "
+
+  #in saltuari casi si può bloccare durante la lettura del numeri di pacchetti installati se questa operazione
+  #si accavalla con altre in corso relative alla gestione pacchetti
+  [[ -r /usr/bin/neofetch ]] && neofetch #cfg .config/neofetch/config.conf
+
+  #df --output=source,size,used,avail,target |grep '/$\|/home/simona/mount\|/home'
+  #--output[ 'source', 'fstype', 'itotal', 'iused', 'iavail', 'ipcent', 'size', 'used', 'avail', 'pcent', 'file' ,'target']
+
+  # -e per gestione colori su echo -n per non fare ritorno a capo alla fine
+  str=`tput colors`
+  #echo -e -n "${TABS}${ANSI_OUT_TXT_EVID}Term Cols${ANSI_OUT_DEFAULT}: ${ANSI_OUT_RES_EVID} ${str} ${ANSI_OUT_DEFAULT}\n"
+  echo -e -n "${ANSI_OUT_TXT_EVID}Term Cols${ANSI_OUT_DEFAULT}: ${ANSI_OUT_RES_EVID} ${str} ${ANSI_OUT_DEFAULT}\n"
+
+  #echo -n "$TABS"
+  if [[ -r /usr/bin/cpupower ]] ; then
+    echo -e -n "${ANSI_OUT_TXT_EVID}CPU governor${ANSI_OUT_DEFAULT}: ${ANSI_OUT_RES_EVID}"`cpupower frequency-info | grep "driver:" | awk '{ print $2 }'     `"${ANSI_OUT_DEFAULT}"
+    echo -e -n " / "
+    echo -e -n "${ANSI_OUT_RES_EVID}"`     cpupower frequency-info | grep "Il gestore" | awk '{ print $3 }'  | sed s/\"//g     `"${ANSI_OUT_DEFAULT} "
+  fi
+
+  #dmesg: read kernel buffer failed: Operazione non permessa
+  #echo -e -n "${ANSI_OUT_TXT_EVID}CPU scheduler${ANSI_OUT_DEFAULT}: ${ANSI_OUT_RES_EVID}"`dmesg | grep -i "CPU scheduler"  |  awk '{ print $6 " " $9 }'`"${ANSI_OUT_DEFAULT}"
+  echo -e -n "\n"
+
+  #echo -e -n "$TABS${ANSI_OUT_TXT_EVID}I/O sched${ANSI_OUT_DEFAULT}: "
+  echo -e -n "${ANSI_OUT_TXT_EVID}I/O sched${ANSI_OUT_DEFAULT}: "
+  if [[ -d /sys/block/nvme0n1 ]] ; then
+    for device in /sys/block/nvme*/queue/scheduler ; do
+      echo -e -n "nvme>${ANSI_OUT_RES_EVID}"   `      cat /sys/block/nvme${device:15:4}/queue/scheduler | cut -d "[" -f2 | cut -d "]" -f1     `   "${ANSI_OUT_DEFAULT} " #echo -e -n "nvme${device:15:3}"
+    done
+  fi
+  #local num_dev=0
+  if [[ -d /sys/block/sda ]] ; then
+    for device in /sys/block/sd*/queue/scheduler ; do
+      echo -e -n "sd${device:13:1}>${ANSI_OUT_RES_EVID}"   `      cat /sys/block/sd${device:13:1}/queue/scheduler | cut -d "[" -f2 | cut -d "]" -f1     `   "${ANSI_OUT_DEFAULT} "
+
+      #let num_dev++
+      #[[ $num_dev == 4 ]] && echo -e -n "${ANSI_OUT_DEFAULT}\n${TABS}           "
+    done
+  fi
+  echo -e -n "\n"
+  #}
+
+  if [[ -r /bin/laptop-detect ]]; then
+    #echo -e -n "$TABS${ANSI_OUT_TXT_EVID}Fixed/laptop pc${ANSI_OUT_DEFAULT}: "
+    echo -e -n "${ANSI_OUT_TXT_EVID}Fixed/laptop pc${ANSI_OUT_DEFAULT}: "
+    laptop-detect
+    case $? in
+      0) echo "laptop" ;;
+      1) echo "fixed" ;;
+      *) echo "unknown system" ;;
+    esac
+  fi
+
+  if [[ -r /bin/pendrive-detect ]]; then
+    #echo -e -n "\n${TABS}${ANSI_OUT_TXT_EVID}USB pendrives${ANSI_OUT_DEFAULT}: "
+    #echo -e -n "\n${ANSI_OUT_TXT_EVID}USB pendrives${ANSI_OUT_DEFAULT}: "
+    echo -e -n "${ANSI_OUT_TXT_EVID}USB pendrives${ANSI_OUT_DEFAULT}: "
+    pendrive-detect #sget-pendrive
+  fi
+
+  #echo -e -n "${TABS}${ANSI_OUT_TXT_EVID}systemd-analyze${ANSI_OUT_DEFAULT}: "
+  echo -e -n "${ANSI_OUT_TXT_EVID}systemd-analyze${ANSI_OUT_DEFAULT}: "
+  systemd-analyze
+
+  #
+  # op lente
+  #
+
+  if [[ $FAST_BOOT != "true" ]] ; then
+    if [[ -r /usr/bin/timedatectl ]]; then
+      echo -e -n "${TABS}${ANSI_OUT_TXT_EVID}Sync clock${ANSI_OUT_DEFAULT} (timedatectl status) "
+      (timedatectl status | grep -q "System clock synchronized: yes") && echo -e -n "$ANSI_OK" || echo -e -n "$ANSI_ERR"\
+        "or still in progress"
+      echo -e -n "\n"
+    fi
+  fi
+
+  if [[ $FAST_BOOT != "true" ]] ; then
+    local str=`ip addr |grep inet |grep enp |awk '{ print $2 }'` #grep sceglie riga, awk prende seconda parola
+    str=${str%/*} #rimuove tutto quello che è dopo / finale
+    echo -e -n "${TABS}${ANSI_OUT_TXT_EVID}Eth LAN IP${ANSI_OUT_DEFAULT} (ip addr enp*): "
+    [[ $str != "" ]] && echo -n "$str" || echo -n "not connected"
+    echo -e -n "\n"
+    #echo -n "\n"
+
+    str=`ip addr |grep inet |grep wlp |awk '{ print $2 }'` #grep sceglie riga, awk prende seconda parola
+    str=${str%/*} #rimuove tutto quello che è dopo / finale
+    echo -e -n "${TABS}${ANSI_OUT_TXT_EVID}Wlan IP${ANSI_OUT_DEFAULT} (ip addr wlp*): "
+    [[ $str != "" ]] && echo -n "$str" || echo -n "not connected"
+    echo -e -n "\n"
+
+    str=`ip addr |grep inet |grep tun |awk '{ print $2 }'` #grep sceglie riga, awk prende seconda parola
+    str=${str%/*} #rimuove tutto quello che è dopo / finale
+    echo -e -n "${TABS}${ANSI_OUT_TXT_EVID}Tun vpn IP${ANSI_OUT_DEFAULT} (ip addr tun*): "
+    [[ $str != "" ]] && echo -n "$str" || echo -n "not connected"
+    echo -e -n "\n"
+  fi
+
+  #op lenta
+  if [[ $FAST_BOOT != "true" ]] ; then
+    str=`wget -q -O - http://checkip.dynu.com/`
+    #Current IP Address: 82.102.21.69
+    public_ip=`echo $str |awk '{ print $4 }'`
+    str=`echo $str |awk '{ print $1 $2 $3 }'`
+    if [[ $public_ip != "" && $str == "CurrentIPAddress:" ]] ; then
+      echo -e -n "${TABS}${ANSI_OUT_TXT_EVID}Public IP${ANSI_OUT_DEFAULT} (http://checkip.dynu.com/): ${public_ip}\n"
+    fi
+  fi
+
+  #op lenta
+  if [[ $FAST_BOOT != "true" ]] ; then
+    local domain="simonahome.freeddns.org"
+    echo -e -n "${TABS}${ANSI_OUT_TXT_EVID}Domain${ANSI_OUT_DEFAULT}: "
+    str=`host ${domain}`
+    if [[ `echo $str | awk '{ print $3 $4}'` == "notfound:" ]] ; then
+      #Output: Host simonahome.freeddns.org not found: 3(NXDOMAIN)
+      echo -e -n "${domain} not found!!!\n\n"
+    else
+      local domain_ip=`echo $str | awk '{ print $4}'`
+      echo -n "${domain} found. IP: ${domain_ip}"
+      if [[ $public_ip != "" ]] ; then
+        [[ $domain_ip == $public_ip ]] && echo -e -n " ${ANSI_OK} sync" || echo -e -n " ${ANSI_ERR} sync"
+        #[[ $domain_ip == $public_ip ]] && echo -e -n " ${ANSI_OK} sync\n" || echo -e -n " ${ANSI_ERR} sync\n"
+      #else
+        #echo -e -n "\n"
+      fi
+      echo -e -n " (ddclient.service)\n"
+    fi
+
+    domain="carlahome.freeddns.org"
+    echo -e -n "${TABS}${ANSI_OUT_TXT_EVID}Domain${ANSI_OUT_DEFAULT}: "
+    str=`host ${domain}`
+    if [[ `echo $str | awk '{ print $3 $4}'` == "notfound:" ]] ; then
+      #Output: Host simonahome.freeddns.org not found: 3(NXDOMAIN)
+      echo -e -n "${domain} not found!!!\n\n"
+    else
+      echo "${domain} found. IP: `echo $str | awk '{ print $4}'`"
+    fi
+  fi
+
+  #FAST_TERM=true #per velocizzare avvio terminale
+  #op lenta
+  if [[ $FAST_BOOT != "true" ]] ; then
+    #https://www.wunderground.com/personal-weather-station/dashboard?ID=ITOSCANA239
+
+    echo -e -n "${TABS}${ANSI_OUT_TXT_EVID}Livorno °C${ANSI_OUT_DEFAULT}:"\
+      "${ANSI_OUT_RES_EVID} `curl -s 'http://api.wunderground.com/weatherstation/WXCurrentObXML.asp?ID=ITOSCANA239'\
+      | grep temp_c | sed 's/.//' | sed 's/.//' | sed 's/<temp_c>//' | sed 's/<\/temp_c>//'` ${ANSI_OUT_DEFAULT}\n"
+
+    echo -e -n "\n"
+
+    if [[ -r /usr/bin/ansiweather ]]; then
+      #ansiweather -l Livorno,it -u metric -w true -p false -s true -w true -d true -a false
+      ansiweather -l Livorno,it -u metric -f 3 -s true -a false
+      #The default config file is ~/.ansiweatherrc. The environment variable ANSIWEATHERRC can be set to override this.
+      #location:Rzeszow,PL
+      #fetch_cmd:ftp -V -o -
+      #units:metric
+      #show_daylight:true
+      alias sget-meteo='ansiweather -l Livorno,it -u metric -w true -p false -s true -w true -d true -a false; \
+        ansiweather -l Livorno,it -u metric -f 3 -s true -a false'
+    fi
+    #si blocca dal 14/01/2019?
+    #[[ -r /bin/exchange-info ]] && . exchange-info
+  fi
+  #
+  # fine op lente
+  #
+
+}
+
+#shellcmd=$(ps -p $$ | awk '{if(NR>1)print}' | awk '$0=$NF' | tr -d -)
+
+# ---------------------------------------------------------------------------------------------------------------
+# [F1] & help cmd & Help manpage more used commands
+# ---------------------------------------------------------------------------------------------------------------
+get-help () { #bash non sopporta lo scrivere tutta la funzione sulla stessa riga
+  #usato printf perché più portatile tra bash/zsh di echo
+  #line="  ciao  ";echo -n "before=<$line> ";line=$(echo "$line" | sed 's/[[:blank:]]*$//');echo -n "after=<$line>\n"
+  if [[ -r ~/.simona-help-txt-rc ]]; then
+    local stop_row_at=25
+    local count_row=0
+    #echo -e -n "${ANSI_OUT_DEFAULT}"
+    #printf "\n" #altrimenti il widget widget-get-help di .zshrc non va a capo ed inizia a scrivere subito dopo prompt
+    while read line ; do
+      line=$(printf "%s" "$line" | sed 's/[[:blank:]]*$//') #rimuove spazi alla fine della riga se presenti
+      #[[ "${#line}" -gt 40 ]] && line=${line:0:40} #|| echo "ok ${#line} < $COLUMNS"
+      local len_line="${#line}"
+      len_line=$(($len_line+2))
+      [[ "$len_line" -gt $COLUMNS ]] && line=${line:0:$COLUMNS} #|| echo "ok ${#line} < $COLUMNS"
+
+      #solo su zsh
+      if [[ -n $ZSH_VERSION ]] ; then #check bash or zsh if [[ -n $BASH_VERSION ]] if [[ -n $ZSH_VERSION ]]
+        echo -e -n "${ANSI_OUT_DEFAULT}  "
+        echo -e -n "${ANSI_WHITE_ON_BLU_NORM}"
+        printf "%s" "$line"
+        echo -e -n "${ANSI_OUT_DEFAULT}"
+        echo -n "\n"
+
+        let count_row+=1 #count_row=$[count_row + 1]
+        if [[ $count_row -eq $stop_row_at ]] ; then
+          #The –p option doesn’t mean the same thing to bash’s read built-in command and zsh’s read built-in command.
+          #In zsh’s read command, –p means –– guess –– “Input is read from the coprocess.”  I suggest that you display your prompt with echo or printf.
+          #echo -e -n "${ANSI_OUT_DEFAULT}"
+          echo -n "Press [SPACE] to continue... " ; read -d ' ' ask < /dev/tty ; echo -n "\n" #-d wait char as end of line
+          echo -e -n "\033[1A" #torna su di 1 riga
+          #echo -n "Press [ENTER] to continue, [q] to exit... " ; read ask < /dev/tty
+          #read -t 4 ask < /dev/tty ; echo -n "\n"
+          #[[ $ask == "q" ]] && break;
+        fi
+        #echo -e -n "${ANSI_OUT_DEFAULT}"
+
+      else
+        printf "  %s\n" "$line"
+      fi
+    done < ~/.simona-help-txt-rc
+  else
+    echo "Missing .simona-help-txt-rc"
+  fi
+  echo ""
+  #caratteri provati anche su terminale fisico (/dev/tty-n)
+  #printf "┌───┐\n"
+  #printf "├───┤\n"
+  #printf "│   │\n"
+  #printf "│\\\  │\n"
+  #printf "│%%  │\n"
+  #printf "│\"  │\n"
+  #printf "│\$  │\n"
+  #printf "└───┘\n"
+}
+
+#if [[ $full_display -eq 1 ]] ; then
+#fi
+
+
+# ------------------------------------------------------------------------------------------------
+# Custom colors per visualizzazione comando 'ls'
+# ------------------------------------------------------------------------------------------------
+
+#CLICOLOR will turn colors on or off. LS_COLORS is not required, and will let you customize the colors.
+export CLICOLOR=1
+
+# EIGHTBIT, followed by '1' for on, '0' for off. (8-bit output)
+#export EIGHTBIT=1
+
+#colori comando ls
+color-ls-1() {
+  LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:';
+  export LS_COLORS
+}
+
+#aur lscolors-git
+color-ls-2() {
+  [[ -r /usr/share/LS_COLORS/LS_COLORS ]] && . /usr/share/LS_COLORS/dircolors.sh
+}
+
+#pkg vivid
+color-ls-3() {
+  export LS_COLORS="$(vivid generate snazzy)"
+}
+
+#color-ls-1
+[[ -r /usr/bin/vivid ]] && color-ls-3 || color-ls-1
+
+# -------------------------------------------------------------------------------------------------------------
+# fix
+# -------------------------------------------------------------------------------------------------------------
+
+#evitare l'errore "trid: loadlocale.c:129: _nl_intern_locale_data: Assertion `cnt < (sizeof (_nl_value_type_LC_TIME) / sizeof (_nl_value_type_LC_TIME[0]))' failed."
+#alias trid='LANG=/usr/lib/locale/en_US; trid'
+#export LC_ALL=C
+#oppure sudo locale-gen
+
+#The gtk3 package has the Wayland backend enabled. GTK+ will default to the Wayland backend, but it is possible to override it to Xwayland by modifying
+#GDK_BACKEND=x11
+
+#To run a Qt 5 app with the Wayland plugin, use -platform wayland or set the
+#QT_QPA_PLATFORM=wayland-egl
+
+#Instead of using qt5ct to theme my qt apps, I found that I can use Kvantum instead:
+#Install kvantum and configure themes with kvantummanager.
+#export QT_STYLE_OVERRIDE=kvantum
+#instead of export QT_QPA_PLATFORMTHEME="qt5ct"
+
+#To run a SDL2 application on Wayland, set
+#SDL_VIDEODRIVER=wayland
+
+#export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
+#export _JAVA_OPTIONS=options exectuable
+#export _JAVA_OPTIONS='-J-Dswing.aatext=true -Dawt.useSystemAAFontSettings=on -J-Dsun.java2d.xrender=true'
+#export JAVA_HOME=/usr/lib/jvm/default
+
+#source /usr/share/doc/find-the-command/ftc.bash
+
+#command-not-found hook
+# for bash:
+#source /usr/share/doc/find-the-command/ftc.bash
+# for zsh:
+#source /usr/share/doc/find-the-command/ftc.zsh
+
+#To use, add the following command to ~/.bashrc or /etc/bash.bashrc or ~/.zshrc:
+#[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+
+#autoenv
+#bash or zsh
+#source /usr/share/autoenv/activate.sh
+#Note: autoenv auverrides cd. If you already do this, invoke autoenv_init in your custom cd after sourcing activate.sh.
+
+export GTK_USE_PORTAL=1
+
+#per cancellare messaggi
+# qt.qpa.xcb: QXcbConnection: XCB error: 5 (BadAtom), sequence: 455, resource id: 0, major code:20 (GetProperty), minor code: 0
+export QT_LOGGING_RULES='*.debug=false;qt.qpa.*=false'
+
+#function virtualenv_info(){
+#    # Get Virtual Env
+#    if [[ -n "$VIRTUAL_ENV" ]]; then
+#        # Strip out the path and just leave the env name
+#        venv="${VIRTUAL_ENV##*/}"
+#    else
+#        # In case you don't have one activated
+#        venv=''
+#    fi
+#    [[ -n "$venv" ]] && echo "(venv:$venv) "
+#}
+
+#shopt -q login_shell && echo 'Login shell' || echo 'Not login shell'
+
+#printf "\x1b[38;2;40;177;249mTRUECOLOR\x1b[0m\n"
+#The ;2 and ;5 indicate the format of the color, ultimately telling the terminal how many more sequences to pull: ;5 specifying #an 8-bit format (as Blue Ice mentioned) requiring only 1 more control segment, and ;2 specifying a full 24-bit RGB format #requiring 3 control segments.
+#echo -e "\033[38;5;208mpeach\033[0;00m"
+
+
+#The variable $COLUMNS specifies how wide the terminal session is; so running COLUMNS=200 would make it 200 columns wide.
+#If you wanted to change that permanently you should put this in your ~/.bashrc file which is run every time you start a #terminal.
+
+# some commands always in English
+#alias man='LANG=en_US.UTF-8 man'
+#alias git='LANG=en_US.UTF-8 git'
+
+# ssh compatibility
+#alias ssh='TERM=rxvt-unicode ssh'
+
+# open files via xdg-open and nohup
+#function xo { nohup xdg-open "$@" &> /dev/null & }
+
+# list all gpg keys with signatures (via colorgpg)
+#alias gpg-list='colorgpg --list-sigs'
+
+# ps shortcut
+#alias psl='ps aux | less'
+
+# ln -s with canonical path
+#function lns { ln -s `readlink -fn "$1"` "$2"; }
+
+# sudo with completion
+#alias sudo='sudo '
+
+#export TODO_DIR="$HOME/.todo"
+#export GOOGLE_API_KEY="AIzaSyCdgCanVxo5XJbXNQuR8x2JIQZev8-dt2E"
+#export OPENCV_LOG_LEVEL=ERROR
+
+# --------------------------------------------------------------------------------------------------------------
+# sudoedit
+# --------------------------------------------------------------------------------------------------------------
+
+#Run in shell "sudoedir nomefile" to edit root privileged file
+#export SUDO_EDITOR=kate
+
+#enable a sudoeditor, will be kate if X session is active, else nano
+export SUDO_EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'kate'; else echo 'nano'; fi)"
+
+#default txt administrative editor, will be kate if X session is active, else nano
+export EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'kate'; else echo 'nano'; fi)"
+
+#rimesso sotto
+#(tty | grep -q "/dev/tty") && TTY_REAL="Yes" || unset TTY_REAL #ok
+
+
+# ----------------------------------------------------------------------------------------------------
+# alias & function section
+# ----------------------------------------------------------------------------------------------------
+if [[ $full_alias -eq 1 ]] ; then
+
+
+  #If you don't want any of oh-my-zsh's aliases, but you want to keep other aliases, you can save the aliases before loading oh-my-zsh
+  #save_aliases=$(alias -L)
+  #and restore them afterwards.
+  #eval $save_aliases; unset save_aliases
+  #remove alla alias
+  #unalias -m '*'
+  #If you absolutely hate aliases and don't want to ever see one, you can make the alias builtin inoperative: unalias -m '*'; alias () { : }. Or you can simply turn off alias expansion with setopt no_aliases.
+
+
+  # ----------------------------------------------------------------------------------------------------
+  # alias & funzioni non terminale e non zshrc/bashrc (c) simona pisano
+  # ----------------------------------------------------------------------------------------------------
+
+  [[ -r ~/.aliasrc ]] && . ~/.aliasrc
+
+  #lista funzioni definite
+  # grep "()" # seleziona righe contenenti ()
+  # awk '{print $1}' # prende di tutte le righe il primo campo/parola
+  #                  dentro l'alias a ' occorre aggiungere il prefisso '\' (awk funziona SOLO con ' purtroppo)
+  # sed ":l; N; s/\n/ /; tl" # toglie tutti i \n
+  # grep -E str #ricerca stringa con regular expression: ricerca ovunque la stringa ma con ^stringa deve essere all'inizio
+  #Esempi uso:
+  #  get-function-list prompt
+  #  get-function-list prompt
+  #  get-function-list "^prompt" #prompt solo ad inizio nome funzione
+  #  get-function-list "[[:alnum:]]"
+  alias sget-function-list='sget-function-search'
+  sget-function-search() {
+    [[ -z $1 ]] && str_search="[[:alnum:]]" || str_search=$1
+    #[[ $1 == '' ]] && str_search="[[:alnum:]]" || str_search=$1
+    typeset -f | grep "()" | grep -E $str_search | awk '{print $1}' | sed ":l; N; s/\n/ /; tl"
+    #typeset -f | grep "()" | grep -E $1 | awk '{print $1}' | sed ":l; N; s/\n/ /; tl"
+  }
+
+  #lista alias definiti
+  # | awk -F= '{print $1}' # suddivide i campi usando '=' come separatore e prende il primo
+  # | sed ":l; N; s/\n/ /; tl" #tiglie tutti gli \n
+  #alias | awk -F= '{print $1}' | sed ":l; N; s/\n/ /; tl"
+  # dentro l'alias a ' occorre aggiungere il prefisso '\' (awk funziona SOLO con ' purtroppo)
+  #alias get-alias-list='alias | awk -F= '\''{print $1}'\'' | sed ":l; N; s/\n/ /; tl" '
+  alias sget-alias='sget-alias-search'
+  sget-alias-search() {
+    [[ -z $1 ]] && str_search="[[:alnum:]]" || str_search=$1
+    #[[ $1 == '' ]] && str_search="[[:alnum:]]" || str_search=$1
+    alias | grep -E $str_search | awk -F= '{print $1}' | sed ":l; N; s/\n/ /; tl"
+  }
+
+  # -------------------------------------------------------------------------------------------------------------
+  # Aggiunta sudo
+  # -------------------------------------------------------------------------------------------------------------
+
+  alias crazy='sudo crazy'
+
+  #Start a web server in any folder you'd like.
+  alias www='python -m SimpleHTTPServer 8000'
+  #Need to know your local IP address?
+  #alias ipi='ipconfig getifaddr en0'
+
+  #cancella messaggio
+  #dbus[ ... ]: Unable to set up transient service directory: XDG_RUNTIME_DIR "var/run/user/1000" is owned by uid 1000, not our uid 0
+  #alias su='su -'
+  #non serve più il fix (2018-09-21)
+
+  ANSI_SUDO_SHOW="${ANSI_OUT_RES_EVID}[sudo-activated]${ANSI_OUT_DEFAULT} "
+
+  alias chvt='echo -e "$ANSI_SUDO_SHOW"; sudo chvt'
+  alias set-tty='echo -e "$ANSI_SUDO_SHOW"; sudo chvt'
+  alias ntop='echo -e "$ANSI_SUDO_SHOW"; sudo ntop'
+  alias trafshow='echo -e "$ANSI_SUDO_SHOW"; sudo trafshow'
+  alias tuptime='echo -e "$ANSI_SUDO_SHOW"; sudo tuptime'
+  alias ps_mem='echo -e "$ANSI_SUDO_SHOW"; sudo ps_mem'
+  alias pkill='echo -e "$ANSI_SUDO_SHOW"; sudo pkill'
+  alias xkill='echo -e "$ANSI_SUDO_SHOW"; sudo xkill'
+  alias tmon='echo -e "$ANSI_SUDO_SHOW"; sudo tmon'
+  alias mkinitcpio='echo -e "$ANSI_SUDO_SHOW"; sudo mkinitcpio'
+  alias magiacian='echo -e "$ANSI_SUDO_SHOW"; sudo magician'
+  alias intel-undervolt='echo -e "$ANSI_SUDO_SHOW"; sudo intel-undervolt'
+  alias unicornscan='echo -e "$ANSI_SUDO_SHOW"; sudo unicornscan'
+  alias ufw='echo -e "$ANSI_SUDO_SHOW"; sudo ufw'
+  alias hdparm='echo -e "$ANSI_SUDO_SHOW"; sudo hdparm'
+
+  alias usbtop='echo -e "$ANSI_SUDO_SHOW"; sudo modprobe usbmon; sudo usbtop'
+
+  alias chkservice='echo -e "$ANSI_SUDO_SHOW"; sudo chkservice'
+
+  alias etc-update='echo -e "$ANSI_SUDO_SHOW"; sudo etc-update'
+  alias ventoy='echo -e "$ANSI_SUDO_SHOW"; sudo ventoy'
+
+  alias iotop='echo -e "$ANSI_SUDO_SHOW"; sudo iotop'
+
+  #sblocca partizione ntfs diventata in sola lettura su Linux
+  #indicare il device come parametro finale. esempio /dev/sda9
+  [[ -r /bin/ntffix ]] && alias srun-ntfs-make-rw='sudo ntfsfix' #/dev/sda9
+
+  # -------------------------------------------------------------------------------------------------------------
+  # Sostituzione comandi originali
+  # -------------------------------------------------------------------------------------------------------------
+
+  #\vi per vi originale come per tutti gli alias (far precedere comando da carattere '\')
+  # vi has a bug: use vim instead vi to avoid that arrow keys display A, B, C, D in insert mode
+  alias vi='vim'
+  alias more='less'
+
+  alias rm='rm -i'           # prompt before overwrite (but dangerous, see rm for a better approach)
+  alias cp='cp -i'
+  alias mv='mv -i'
+  #[[ -r /usr/bin/advcp ]] && alias cp="advcp -igR " || alias cp='cp -i' # prompt before overwrite (same general problem as the rm)
+  #[[ -r /usr/bin/advmv ]] && alias cp="advmv -ig " || alias mv='mv -i' # prompt before overwrite (same general problem as the rm)
+
+  #A normal ping will go on forever. We don't want that. Instead, let's limit that to just five pings.
+  alias ping='ping -c 5'
+
+  alias diff='diff --color=auto'
+
+  alias grep='grep --colour=auto'
+  alias egrep='egrep --colour=auto'
+  alias fgrep='fgrep --colour=auto'
+
+  alias shred="shred -zf"
+
+  alias dmesg='dmesg -T'
+  [[ -r /bin/saidar ]] && alias saidar='saidar -c'
+
+  #Want to download something but be able to resume if something goes wrong?
+  #alias wget='wget -c '
+  alias wget="wget -c -U 'noleak'"
+  alias curl="curl --user-agent 'noleak'"
+
+  #pronuncia parole
+  [[ -r /bin/picospeaker ]] && alias say='pocospeaker -l it-IT'
+
+  #alias dd='dd bs=64K conv=noerror,sync status=progress'
+  #conv=noerror,sync fa in modo che continui se trova errori senza de-sincronizzarsi
+  alias dd='dd bs=64K conv=notrunc,noerror,sync status=progress'
+  alias du='du -h --max-depth=1 -P -x | sort -n'
+  #alias du='du-nosort | sort -n'
+
+
+  # -------------------------------------------------------------------------------------------------------------
+  # shortcut
+  # -------------------------------------------------------------------------------------------------------------
+
+  alias sget-alias='alias'
+
+  #un altro modo di lanciare un comando "raw" ignorando l'alias oltre a falri precedere da \
+  na()
+  {
+     $1
+  }
+
+  alias scandisk='dosfsck -w -r -l -a -v -t'
+  #precedere i comando con \ per eseguire il comando ignorando l'alias
+  alias du-nosort='du -h --max-depth=1 -P -x'
+
+  #attivato con F3
+  alias c='clear'
+  alias tracert='traceroute'
+
+  #dando un comando tipo "ls.*rc" con il -d non entra dentro le cartelle
+  alias ls-nodir='ls -d --color=auto'
+  alias ls='ls --color'
+  alias ll='ls -alF --color=auto'
+  alias la='ls -A --color=auto'
+  alias lc='ls -CF --color=auto'
+  alias ls-line="ls -1 | tr '\n' ' '"
+  #alias ls-more= 'ls \!* | more'
+  alias ls-exa='exa --long'
+  #alias trim="sed -e 's/^[[:space:]]*//g' -e 's/[[:space:]]*\$//g'"
+
+  [[ -r /bin/colorls ]] && alias cls='colorls'
+  [[ -r /bin/colorls ]] && alias cll='colorls -d -Al'
+  [[ -r /bin/colorls ]] && alias cllo='colorls -d -Al -t -r'
+
+  #-d toglie ricorsione dentro directory
+  # ma "will create a list of all the files in the current directory, but it also lists the subdirectories in the current directory. "
+  #alias ls='ls -d --color=auto'
+  #alias ls='ls -d --color=auto'
+  #alias ..='cd ..'
+
+  #alias -='cd -'
+  #alias ...='../..'
+  #alias ....='../../..'
+  #alias .....='../../../..'
+  #alias ......='../../../../..'
+  #alias 1='cd -'
+  #alias 2='cd -2'
+  #alias 3='cd -3'
+  #alias 4='cd -4'
+  #alias 5='cd -5'
+  #alias 6='cd -6'
+  #alias 7='cd -7'
+  #alias 8='cd -8'
+  #alias 9='cd -9'
+  #alias _='sudo'
+  #alias afind='ack -il'
+  #alias chvt='sudo chvt'
+  #alias d='dirs -v | head -10'
+
+  mkcd() { #bash non sopporta lo scrivere tutta la funz<ione sulla stesa riga
+    mkdir -p $1
+    cd $1
+  }
+
+  #cp and cd in one command
+  cpcd (){
+    if [ -d "$2" ];then
+      cp $1 $2 && cd $2
+    else
+      cp $1 $2
+    fi
+  }
+
+  #mv and cd in one command
+  mvcd (){
+    if [ -d "$2" ];then
+      mv $1 $2 && cd $2
+    else
+      mv $1 $2
+    fi
+  }
+
+  if [[ -r /usr/bin/firewall-cmd ]]; then
+    alias sset-secure='firewall-cmd --change-interface=enp9s0 --zone=public'
+    alias sset-unsecure='firewall-cmd --change-interface=enp9s0 --zone=dmz'
+    alias sget-firewall='firewall-cmd --get-active-zones'
+  fi
+
+  if [ -r /bin/systemctl ];then
+    alias systemctl-IS='echo "systemd active."'
+    alias systemctl-STATUS='sudo systemctl status '
+    alias systemctl-ON='sudo systemctl start '
+    alias systemctl-OFF='sudo systemctl stop '
+    alias systemctl-FORCE-OFF='sudo systemctl kill '
+    alias systemctl-RESTART='sudo systemctl restart '
+    alias systemctl-RELOADCFG='sudo systemctl reload '
+    alias systemctl-BOOT-ON='sudo systemctl enable '
+    alias systemctl-BOOT-OFF='sudo systemctl disable '
+    alias systemctl-ON+BOOT='sudo systemctl --now start '
+  else
+    alias systemctl-IS='echo "No systemd (another initd?)."'
+  fi
+
+  alias download='cd ~/Scaricati'
+  alias Download='cd ~/Scaricati'
+
+  # create .tar.gz
+  #targz() { tar -zcvf $1.tar.gz $1; rm -r $1; }
+  #targz() { tar zcvzf $1.tar.gz $1; rm -r $1; }
+  #targz() { tar zcvzf $1.tar.gz $1 }
+  targz() { #bash non sopporta lo scrivere tutta la funz<ione sulla stesa rigfa
+    tar --create --gzip --verbose -file $1.tar.gz $1 $2 $3 $4 $5 $6
+  } #tar cvzf
+  # extra .tar.gz
+  #untargz() { tar -zxvf $1; rm -r $1; }
+  #untargz() { tar zxvf $1; rm -r $1; }
+  #untargz() { tar zxvf $1 }
+  untargz() { #bash non sopporta lo scrivere tutta la funz<ione sulla stesa rigfa
+    tar --extract --gzip --verbose -f $@
+  } #tar xvzf
+
+  srun-new-machine-id() {
+    cp /etc/machine-id /etc/machine-id.bak
+    sudo rm -f /etc/machine-id
+    sudo systemd-machine-id-setup
+    sudo mkdir /etc/ssh/bak
+    cp /etc/ssh/ssh_host* /etc/ssh/bak/.
+    sudo rm -f /etc/ssh/ssh_host*
+    sudo ssh-keygen -a
+  }
+
+  #add write glag to group (example allow user in group root to write)
+  alias sset-w='sudo chmod "g=+w" '
+  alias sset-rw='sudo chmod "g=+rw" '
+  alias sset-rwx='sudo chmod "g=+rwx" '
+  #add execute flag for all
+  alias sset-run='sudo chmod +x '
+
+  #(c) simona pisano
+  # usa comando 'datediff' e genera stringa in formato specifico con la data tra due eventi (tempo vita ratte)
+  #format: life YYYYMMDD YYYYMMDD #yuso personale simona (richiede comando datediff)
+  [[ -r /bin/datediff ]] && alias life='datediff -i "%G%m%d" -f "Life: %y years, %m months, %d days."' || echo "Install dateutils!"
+
+  #evitare l'errore "trid: loadlocale.c:129: _nl_intern_locale_data: Assertion `cnt < (sizeof (_nl_value_type_LC_TIME) / sizeof (_nl_value_type_LC_TIME[0]))' failed."
+  #alias trid='LANG=/usr/lib/locale/en_US; trid'
+  #export LC_ALL=C
+  #oppure sudo locale-gen
+
+  # -------------------------------------------------------------------------------------------------------------
+  # Run comands
+  # -------------------------------------------------------------------------------------------------------------
+
+  function su-do () {
+    args="$@"
+    /usr/bin/sudo -u "$USER" bash -i -c "$args"
+  }
+
+  # Run command (with all parameters) in the background
+  #silent_background() { #bash non sopporta lo scrivere tutta la funz<ione sulla stesa rigfa
+  brun() { #bash non sopporta lo scrivere tutta la funz<ione sulla stesa rigfa
+    if [[ -n $ZSH_VERSION ]]; then  # zsh:  https://superuser.com/a/1285272/365890
+      setopt local_options no_notify no_monitor
+      # We'd use &| to background and disown, but incompatible with bash, so:
+      "$@" &
+    elif [[ -n $BASH_VERSION ]]; then  # bash: https://stackoverflow.com/a/27340076/5353461
+      { 2>&3 "$@"& } 3>&2 2>/dev/null
+    else  # Unknownness - just background it
+      "$@" &
+    fi
+    disown &>/dev/null  # Close STD{OUT,ERR} to prevent whine if job has already completed
+  }
+
+  #simona 09/09/2020
+  restart() {
+    sudo \pkill $1 ; ( $1 &  disown ) > /dev/null 2>&1
+
+    #[[ $# eq 1 ]] && sudo \pkill $1 ; ( $1 &  disown ) > /dev/null 2>&1 ; return 0
+    #
+    #echo "2"
+    #
+    #sudo \pkill $1
+    #[[ $? -ne 0 ]] && echo -n "[$1] Can't kill. Ingoring... " ||  echo -n "[$1] Kill successfful.. "
+    #
+    #( $1 &  disown ) > /dev/null 2>&1
+    #[[ $? -ne 0 ]] && { echo "Can't restart. Error. " ; return 1; } ||  echo "Restart... "
+    #
+
+  }
+
+  srun-chroot ()  {
+    sudo mount $1 /mnt
+    for i in /dev /sys /proc ; do sudo mount -B $i /mnt/$i; done
+    sudo chroot /mnt
+  }
+
+  # -------------------------------------------------------------------------------------------------------------
+  # Alias comandi standard classici trovati a giro di altri
+  # -------------------------------------------------------------------------------------------------------------
+
+  #cdir-git pkg
+  [[ -r /bin/cdir.sh ]] && alias cdir='source cdir.sh'
+
+  #l'attivazione di zsh si trova su .bashrc e .zshrc
+
+  #export LESS=-R
+  #export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold
+  #export LESS_TERMCAP_md=$'\E[1;36m'     # begin blink
+  #export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
+  #export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
+  #export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
+  #export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
+  #export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+  # and so on
+
+  #pet configure|edit|new|list|exec|search
+  #"pet new -t" per usare tags
+  #First, you need to obtain the access token. Go to this link https://github.com/settings/tokens/new and create access token (only need “gist” scope). Github simona.pisano.70@gmail.com "simona70" token 1b566682eb194d95a44e1884839348a81944cd98  -> gist
+  #scope
+  #gistid Gist ID: 842353864736 (dopo pet sync)
+  #pet sync -u  -> upload
+  function prev() {
+    PREV=$(fc -lrn | head -n 1)
+    sh -c "pet new `printf %q "$PREV"`"
+  }
+  function prev-tag() {
+    PREV=$(fc -lrn | head -n 1)
+    sh -c "pet new -t `printf %q "$PREV"`"
+  }
+
+  # listing files in a directory without listing subdirectories and their contents in that directory
+  #function l_sup () {
+  #  [[ $1 == "" ]] && ls -alhd --color -- * | grep -v '/$' || ls -alhd --color -- $@ | grep -v '/$'
+  #}
+  alias l='function l_ext () { [[ $1 == "" ]] && ls -alhd --color --show-control-chars -- * | grep -v "/$" || ls -alhd --color --show-control-chars -- $@ | grep -v "/$" } ; l_ext'
+
+  function collapse_pwd {  #bash non sopporta lo scrivere tutta la funz<ione sulla stesa rigfa
+    echo $(pwd | sed -e "s,^$HOME,~,")
+  } # /home/simona/public -> ~/public
+
+
+  #date: data "“+%Y%m%d-%H-%M”" non valida
+  #[[ -r /bin/script ]] && alias rec=’script -aq ~/term.log-$(date “+%Y%m%d-%H-%M”)’
+
+  ls_numfiles() { #solo zsh, bo bash
+    local N="$(ls $1 | wc -l)";
+    echo "$N files in $1";
+  }
+
+  #ricerca su history
+  alias hs='history | grep'
+
+  alias countFiles='tree'
+
+  countFilesAndFoldersInFolder() { #bash non sopporta lo scrivere tutta la funz<ione sulla stesa rigfa
+    ls -1 $1 | wc -l
+  }
+
+  countFilesInFolder() { #bash non sopporta lo scrivere tutta la funz<ione sulla stesa rigfa
+    ls -1p $1 | grep -v / | wc -l
+  }
+
+  countFiles1LvInFolder() { #bash non sopporta lo scrivere tutta la funz<ione sulla stesa rigfa
+    find $1 -maxdepth 1 -type f | wc -l
+  }
+
+  # parallel make
+  export NUMCPUS=`grep -c '^processor' /proc/cpuinfo`
+  alias pmake='time nice make -j$NUMCPUS --load-average=$NUMCPUS'
+
+  # echo -e "vboxdrv\nvboxnetflt\nvboxnetadp\nvboxpci" > /etc/modules-load.d/virtualbox.conf
+
+  #export MAKEFLAGS="-j $(grep -c ^processor /proc/cpuinfo)"
+  #export MAKEFLAGS="-j2"
+  #MAKEFLAGS="-j$(expr $(nproc) \+ 1)"
+  #export MAKEFLAGS="-j$(expr $(nproc) \+ 1)"
+
+  #Fiax avvio Steam
+  #alias steam='LD_PRELOAD='/usr/$LIB/libstdc++.so.6' DISPLAY=:0 steam'
+
+  #eval "$(direnv hook bash)"
+
+  #alias ll='ls -Flas'              # long listing, alias
+  #ll () { ls -Flas "$@" ; }        # long listing, function
+
+  # Reattach tmux session or create new one
+  alias remux='if tmux has-session 2> /dev/null; then tmux attach; else tmux new; fi'
+
+  # Ricerca files e cancellazione per inode (necessario per file che contengono nel nome caratteri speciali)
+  # - -- > @ # ^ & $ *
+  alias file-ls-with-inode='ls -li'
+  alias file-del-by-inode='file-del_by-inode-func'
+  file-del_by-inode-func() {
+    [[ -z $1 ]] && echo "Inode number missing" || find . -inum $1 -delete
+    #find . -inum $1 -exec rm -i {} \;
+  }
+
+
+  # comando visualizzazione colori disponibili
+  get-colors () { #bash non sopporta lo scrivere tutta la funzione sulla stesa rigfa
+  local T='gYw'   # The test text
+  echo -e "\n                 40m     41m     42m     43m     44m     45m     46m     47m";
+  for FGs in '    m' '   1m' '  30m' '1;30m' '  31m' '1;31m' '  32m' '1;32m' '  33m' '1;33m' '  34m' '1;34m' '  35m' '1;35m' '  36m' '1;36m' '  37m' '1;37m';
+    do FG=${FGs// /}
+    echo -en " $FGs \033[$FG  $T  "
+    for BG in 40m 41m 42m 43m 44m 45m 46m 47m;
+      do echo -en "$EINS \033[$FG\033[$BG  $T \033[0m\033[$BG \033[0m";
+    done
+    echo;
+  done
+  }
+
+  #calcola distanza tra coordinate latitudine longitudine
+  latlond() {
+    awk -F"\t" -v lat1="$2" -v lon1="$3" -v lat2="$4" -v lon2="$5" 'BEGIN {pi=3.14159} NR==1 {print $0 FS "Diff"} NR>1 {printf("%s\t%.1f\n",$0,sqrt((($lat2-$lat1)*111.32)^2 + (($lon2-$lon1)*111.32*cos($lat2*(pi/180)))^2))}' "$1";
+  }
+
+  #uso: isthere "search_str" in file
+  isthere() { if (($(grep -c -m 1 "$1" "$3"))); then echo "YES"; else echo "NO"; fi; }
+
+  #svuota lo swap file e riporta tutto in ram
+  #gksudo gedit /usr/local/sbin/swap2ram.sh
+  #sudo chmod +x /usr/local/sbin/swap2ram.sh
+  #sudo /usr/local/sbin/swap2ram.sh
+  ###!/bin/sh
+  empty-swap-disk() {
+    local mem=$(LC_ALL=C free  | awk '/Mem:/ {print $4}')
+    local swap=$(LC_ALL=C free | awk '/Swap:/ {print $3}')
+
+    if [ $mem -lt $swap ]; then
+      echo "ERROR: not enough RAM to write swap back, nothing done" >&2
+      exit 1
+    fi
+
+    swapoff -a &&
+    swapon -a
+  }
+
+  alias ren-add-crea-data='for file in `ls -1 *.JPG *.jpg 2>/dev/null`; do name=`stat -c %y $file | awk -F"." '\''{ print $1 }'\'' | sed -e "s/\-//g" -e "s/\://g" -e "s/[ ]/-/g"`; mv $file "$name-$file"; done'
+
+  [[ -r /bin/exiftool ]] && alias ren-add-crea-data-exif='for f in `ls -1 *.JPG *.jpg 2>/dev/null`; do mv -n "$f" "$(exiftool -d "%Y%m%d-%H%M%S" -CreateDate "$f" | awk '\''{print $4".jpg"}'\'')-$f"; done'
+  #$ exiftool -d "%Y%m%d_%H%M%S"  -CreateDate sample.jpg
+  #Create Date                     : 20121027_181338
+  # dentro alias l'apice di awk diventa:  '\''
+
+  [[ -r /bin/openssl ]] && alias gen-random-pwd-14-1='openssl rand -base64 14'
+  [[ -r /bin/pwgen ]] && alias gen-random-pwd-14-2='pwgen -ys 14 1'
+  [[ -r /bin/gpg ]] && alias gen-random-pwd-14-3='gpg --gen-random --armor 1 14'
+
+  #for file in *; do mv "$file" `echo $file | tr ' ' '_'` ; done
+  alias ren_all_to_underscore='for file in *; do mv "$file" `echo $file | tr '\'' '\'' '\'''_\''` ; done'
+  #secondo non va:
+  alias ren_all_to_spaces='for file in *; do mv "$file" `echo $file | tr '\''_'\'' '\'' '\''` ; done'
+
+  #non va
+  #alias myip="curl http://ipecho.net/plain; echo"
+
+  # Check for root.                                                              #
+  CheckRoot()
+  {
+     [[ `id -u` != 0 ]] && { echo "No Root"; return 1; } || { echo "Root OK" ; return 0; }
+  }
+  #CheckRoot()
+  #{
+  #   # If we are not running as root we exit the program
+  #   if [ `id -u` != 0 ]
+  #   then
+  #      echo "ERROR: You must be root user to run this program"
+  #      exit
+  #   fi
+  #}
+
+  iseven () {
+    if [ $(($1 % 2)) -eq 0 ]; then
+      echo "$1 is even."
+    else
+     echo "$1 is odd."
+    fi
+  }
+
+  # -----------------------------------------------------------------------------------------------------------
+  # Fix tempoeanei miei
+  # -----------------------------------------------------------------------------------------------------------
+
+  #alias piper='PYTHONPATH=$PYTHONPATH:/usr/lib/python3.6/site-packages piper'
+
+  # ------------------------------------------------------------------------------------------------------------
+  # Alias pacman & update
+  # ------------------------------------------------------------------------------------------------------------
+
+  #conversione .deb -> .pkg.tar.zz
+  if [[ -r /bin/debtap ]] ; then
+    alias pacman-deb-prepare='sudo debtap -u'
+    alias pacman-deb-convert-deb-to-pkg='debtap '
+  else
+    echo "Install debtap!"
+  fi
+
+  update-check-orphant ()  {
+    #!/bin/bash
+    pacman -Qtdq | while read $1
+      do
+        orfano_si_no="$(pacman -Qi "$1" | egrep -i 'Richiesto da *:')"
+        echo -e $1 $orfano_si_no"\n"
+      done
+    exit 0
+  }
+
+  # ------------------------------------------------------------------------------------------------------------
+  # Funzioni ssh mie (c) simona pisano
+  # ------------------------------------------------------------------------------------------------------------
+
+  #syntax: ssh-force user@ip o ssh-force ip
+  ssh-force () {
+    if [[ $1 == *@* ]]; then
+      user=$(echo $1 | cut -f1 -d@)
+      ip=$(echo $1 | cut -f2 -d@)
+    else
+      ip=$1
+    fi
+    [[ ! -z $user ]] && user=$user"@"
+    #echo "user=$user, ip=$ip" #debug
+    #echo "ssh $user$ip"
+
+    [[ -r /bin/known_hosts ]] && know_hosts rm $ip
+    ssh simona@$ip
+  }
+
+  alias ssh-debug-connect='ssh -v '
+  [[ -r /bin/known_hosts ]] && alias ssh_know_host_erase_ip='know_hosts rm'
+  [[ -r /bin/known_hosts ]] && alias ssh_know_host_list='know_hosts ls'
+  alias ssh_client_cfg='cat ~/.ssh/config'
+  #TO-DO rendere più utili
+  alias ssh_login_root='ssh -p 22 root@192.168.1.'
+  alias ssh_login_simona='ssh -p 22 root@192.168.1.'
+  alias ssh_cp='scp file root@192.168.1.1:/tmp'
+
+  alias sshd_restart='systemctl restart sshd.service'
+  alias sshd_check='systemctl status sshd.service'
+  alias sshd_cfg='cat /etc/ssh/sshd_config'
+
+  #alias router_ssh_ex_tim='ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 root@192.168.1.8'
+  #alias router_ssh_ex_tis='ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 root@192.168.1.9'
+  #alias router_scp_ex_tim='scp -oKexAlgorithms=+diffie-hellman-group1-sha1 file root@192.168.1.8:/tmp'
+  #alias router_scp_ex_tis='scp -oKexAlgorithms=+diffie-hellman-group1-sha1 file root@192.168.1.9:/tmp'
+  #if which xdg-open > /dev/null; then
+  #  alias router_web_ex_tim='xdg-open "http://192.168.1.8"'
+  #  alias router_web_ex_tis='xdg-open "http://192.168.1.9"'
+  #fi
+
+  #TO-DO clone function ------------------------------------------------------------------------------------------------
+  #rsync -aAXv -P --stats --human-readable --exclude=/dev/* --exclude=/proc/* --exclude=/sys/* --exclude=/tmp/* --exclude=/run/* --exclude=/mnt/* --exclude=/media/* --exclude=/lost+found -e 'ssh -p 22' root@simonaremote.freeddns.org:/ /cloudatcost
+  #---------------------------------------------------------------------------------------------------------------------
+
+  #execute remote cmd with standard output in current shell
+  # ssh -t adam@webserver1.test.com 'cat /etc/hosts'
+  #generate new rsa public/private keys in /home/user/.ssh/
+  # ssh-keygen
+  #Once completed, copy the public key to the target server. (You will be asked for the password of the target server)
+  # ssh-copy-id adam@webserver1.test.com
+  #If you have set this up correctly, you won't be asked for your password next time you ssh to your target.
+  #copy
+  # scp local-file simona@192.168.1.x:/home/simona/tmp
+  # scp simona@192.168.1.x:/home/simona/tmp/remote-file .
+
+
+
+  # ------------------------------------------------------------------------------------------------------------
+  # Funzioni mie (c) simona pisano & alias miei
+  # ------------------------------------------------------------------------------------------------------------
+
+  #echo "$(pwd)fdgkfld@kg{}()~[ +//\//àòflkg" |grep -x "^$(pwd)[\+ \\\@\[\~{}()_A-Za-z0-9\/\-\.]*" --color=never
+  #/home/simonafdgkfld@kg{}()~[ +//\//àòflkg
+  #CLOSE SQUARE
+
+  ############################################################################################################
+  #passato su script esterno 'locatec' #######################################################################
+  ############################################################################################################
+
+  #shellcmd=$(ps -p $$ | awk '{if(NR>1)print}' | awk '$0=$NF' | tr -d -) #spostabile in cima
+  #case $shellcmd in
+  #  "zsh")
+  #    alias locatec='noglob locate-current'
+  #    ;;
+  #  "sh"|"ksh") #"sh"|"ksh"|"bash")
+  #    alias locatec='set -f;locatecc';locatecc(){ command locate-current "$@";set +f;}
+  #    ;;
+  #  "bash")
+  #    reset_expansion(){ CMD="$1";shift;$CMD "$@";set +f;}
+  #    alias locatec='set -f;reset_expansion locate-current'
+  #    ;;
+  #  "csh"|"tcsh")
+  #    alias locatec 'set noglob;\locate-current \!*;unset noglob'
+  #    ;;
+  #  *)
+  #    #must be used locatec "*.conf" instead locatec *.conf
+  #    alias locatec="locate-current"
+  #    ;;
+  #esac
+  #
+  ##simona 30/10/2020
+  ##updatedb /var/lib/mlocate/
+  ##plocate-build /var/lib/mlocate/mlocate.db /var/lib/mlocate/plocate.db
+  #locate-current() {
+  #  [[ -r /bin/plocate ]] && exe="/bin/plocate" || exe="/bin/locate"
+  #  [[ $1 == "-h" || $1 == "--help" ]] && { echo "Remember 'updatedb /var/lib/mlocate/' and 'plocate-build /var/lib/mlocate/mlocate.db /var/lib/mlocate/plocate.db'" ; return 0; }
+  #
+  #  search_str="$@"
+  #  [[ ${#search_str} -le 3 ]] && { echo "Search string too short or missing"; return 1; }
+  #
+  #  rm -f /tmp/locate-temp-file-1
+  #  touch /tmp/locate-temp-file-1
+  #  $exe --ignore-case "$search_str" > /tmp/locate-temp-file-1
+  #
+  #  touch /tmp/locate-temp-file-2
+  #  cat /tmp/locate-temp-file-1 | grep "^$(pwd)" --ignore-case --color=never >/tmp/locate-temp-file-2
+  #
+  #  touch /tmp/locate-temp-file-3
+  #  cat /tmp/locate-temp-file-2 | grep --ignore-case --color=never "/$search_str" >/tmp/locate-temp-file-3
+  #  cat /tmp/locate-temp-file-2 | grep --ignore-case --color=never "/$search_str\.[A-Za-z0-9]*$" >>/tmp/locate-temp-file-3
+  #
+  #  #cancellazione duplicati
+  #  touch /tmp/locate-temp-file-4
+  #  [[ -r /bin/perl ]] && perl -ne 'print unless $dup{$_}++;' /tmp/locate-temp-file-3 > /tmp/locate-temp-file-4 || sort -u /tmp/locate-temp-file-3 > /tmp/locate-temp-file-4
+  #
+  #  #se ho una /dir1/dir1/file
+  #  #seguito da /dir1/dir1/file/qualcosa1
+  #  #/dir1/dir1/file/qualcosa2
+  #  #la seconsa e terza ricorrenza le devo cancellare
+  #  rm -f /tmp/locate-temp-file-5
+  #  touch /tmp/locate-temp-file-5
+  #  pr_line=""
+  #  pr_line_len=0
+  #  st_line="off"
+  #  st_line_len=0
+  #  while read -r line ; do
+  #    line_len=${#line}
+  #    if [[ $pr_line != "" ]] ; then
+  #      if [[ $st_line == "off" ]] ; then
+  #        if [[ ${line:0:$pr_line_len} == $pr_line ]] ; then
+  #          st_line=$pr_line
+  #          st_line_len=${#st_line}
+  #        else
+  #          echo $line >>/tmp/locate-temp-file-5
+  #        fi
+  #      else
+  #        if [[ ${line:0:$st_line_len} != $st_line ]] ; then
+  #          st_line="off"
+  #          echo $line >>/tmp/locate-temp-file-5
+  #        fi
+  #      fi
+  #    else
+  #      echo $line >>/tmp/locate-temp-file-5
+  #    fi
+  #
+  #    #next loop
+  #    pr_line=$line
+  #    pr_line_len=${#pr_line}
+  #  done < /tmp/locate-temp-file-4
+  #
+  #  #--line-number
+  #  #--exlude=GLOB
+  #  #--exclude-dir=GLOB
+  #  #per colorazione
+  #  #grep --color -E $search_str /tmp/locate-temp-file-5
+  #  #grep --color -E $search_str /tmp/locate-temp-file-5 2>&-
+  #  grep --color --no-messages --extended-regexp --ignore-case "$search_str" /tmp/locate-temp-file-5
+  #
+  #  count=$(wc -l /tmp/locate-temp-file-5)
+  #  count=$(echo $count | cut -f1 -d" ")
+  #  echo "$count items found"
+  #
+  #  rm -f /tmp/locate-temp-file-1
+  #  rm -f /tmp/locate-temp-file-2
+  #  rm -f /tmp/locate-temp-file-3
+  #  rm -f /tmp/locate-temp-file-4
+  #  rm -f /tmp/locate-temp-file-5
+  #
+  #  [[ $count -gt 0 ]] && return 0 || return 1
+  #}
+
+  #MIO
+  #usage:
+  #checkforDisplay "[[:lower:]]" "password"
+  #checkforDisplay "[[:upper:]]" "password"
+  #checkforDisplay "[[:digit:]]" "password"
+  #checkforDisplay "[[:punct:]]" "password"
+  checkfor() {
+    [[ "$2" == $(echo "$2" | sed -E "s/${1}//g") ]] && return 1 || return 0
+  }
+  checkforDisplay() {
+    checkfor $1 $2; [[ $? -eq 0 ]] && echo "OK" || echo "Fail: Do not match."
+  }
+  #if [ ${#password} -lt $minlength ] ; then
+
+  #scriptino ad-hoc per rambox
+  rambox_clear_cache () {
+    for app_dir in $HOME/.config/Rambox/Partitions/* ; do [[ -d $app_dir/Cache ]] && echo ">>$app_dir/Cache"; done
+  }
+
+  #Simona 2018-04-14
+  get-reboot-required() { #bash non sopporta lo scrivere tutta la funzione sulla stesa rigfa
+    REBOOT_REQUIRED=1
+    for I in `file /boot/vmlinuz*` ; do (file $I | grep -q ` uname -r `) && REBOOT_REQUIRED=0; done
+    if [[ ! $REBOOT_REQUIRED ]]; then echo 'Reboot required.'; else echo 'No Reboot required.'; fi
+  }
+
+  # -----------------------------------------------------------------------------------------------------------
+  # Alias memo comandi info sistema (memo simona sget*, sset* srun*) & shortcut di sistema
+  # -----------------------------------------------------------------------------------------------------------
+
+  #rimette in scrittura micro sd diventata in sola lettura via flag software
+  #indicare il device, tipo /dev/sdd
+  [[ -r /bin/hdparm ]] && alias srun-microsd-make-rw='hdparm -r0 ' #/dev/sdd
+
+  [[ -r /bin/mysql ]] && alias srun-mysql='mysql -u root'
+  [[ -r /bin/ntffix ]] && alias srun-ntfs-fix='sudo ntffix -db ' #/dev/sdLn
+  [[ -r /bin/tune2fs ]] && alias srun-ext4-uuid='sudo tune2fs -U ' #uuid /dev/sdLn
+  [[ -r /bin/ntfslabel ]] && alias srun-ntfs-uuid='sudo ntfslabel --new-serial=' #uuid /dev/sdLn
+
+  [[ -r /bin/tbsm ]] && alias srun-desktop-environment='tbsm'
+
+  if [[ -r /bin/sddm ]] ; then
+    alias sset-display-manager-sddm-on='sudo systemctl enable sddm'
+    alias sset-display-manager-sddm-off='sudo systemctl disable sddm'
+  fi
+
+  #non funziona
+  #chiude ambiente grafico e torna a ambiente testo multiutente. sarà possibile riavviare kde o altro Desktop Environment
+  #alias shutdown-de='sudo systemctl start multi-user.target'
+  #alias shutdown-desktop-environment='sudo systemctl start multi-user.target'
+
+  #In KDE 4, you can do:
+  #killall plasma-desktop #to stop it
+  #kstart plasma-desktop #to restart it
+  #In KDE 5 use:
+  #killall plasmashell #to stop it
+  #kstart plasmashell #to restart it
+  #In KDE > 5.10 use:
+  #kquitapp5 plasmashell
+  #kstart5 plasmashell
+
+  #da provare non su terminale ma da ALT+F2 e dare "kquitapp5 plasmashell && kstart5 plasmashell"
+  if [[ -r /bin/kquitapp5 ]] && [[ -r /bin/kstart5 ]] && [[ -r /bin/plasmashell ]] ; then
+    alias srun-kde5-restart='kquitapp5 plasmashell ; kstart5 plasmashell'
+    alias srun-kde5-stop='kquitapp5 plasmashell'
+    alias srun-kde5-start='kstart5 plasmashell'
+  fi
+
+  #se restituisce il corretto simbolo dell'euro è ok
+  alias sget-kbd-test='perl -Mcharnames=:full -CS -wle "print \"\N{EURO SIGN}\""'
+
+  #converte da qcow2 a vdi. Per uso disco con VirtualBox.#par1 input.qcow2 par2 output.vdi
+  alias srun-vm-conv-qcow2-to-vdi='qemu-img convert -O vdi ' #input.qcow2 output.vdi'
+
+  #alias srun_vm_file_conv_vdi_to_raw='VBoxManage clonehd --format RAW' #input.vdi output.img
+
+  #alias srun_vm_file_conv_raw_to_qcow2='qemu-img convert -f raw input.img -O qcow2 output.qcow2'
+  alias srun-vm-conv-raw-to-qcow2='qemu-img convert -f raw -O qcow2 output.qcow2 ' #input.img output.qcow2
+  alias srun-vm-conv-vdi-to-qcow2='qemu-img convert -f vdi -O qcow2 ' #input.vdi output.qcow2
+
+  #compatta disco VirtualBox
+  #https://superuser.com/questions/529149/how-to-compact-virtualboxs-vdi-file-size
+  #defrag lato windows
+  #With a Windows Guest, download SDelete from Sysinternals and run this:
+  #sdelete.exe c: -z
+  alias srun-vm-compact-vdi='VBoxManage modifyhd input.vdi compact'
+
+  #resize disco VirtualBox
+  # resize in Mb... (parametro finale)
+  alias srun-vm-resize-vdi='VBoxManage modifyhd input.vdi --resize '
+  #dopo con boot gparted iso ridimensionare anche la partizione dentro il disco
+
+  #udevadm info -a -p $(udevadm info -q path -n /dev/sda)
+
+  alias sget-kernel-config='zless /proc/config.gz'
+
+  alias sget-kernel-curr-boot='cat /proc/cmdline'
+  alias sget-kernel-curr-hooks='grep HOOKS /etc/mkinitcpio.conf | grep -v "^#"'
+  alias sget-kernel-curr-swaps='lsblk -f | grep "\[SWAP\]"'
+  alias sget-kernel-curr-swaps2='swapon'
+  alias sget-kernel-curr-hibernate='qdbus --system org.freedesktop.login1 /org/freedesktop/login1 org.freedesktop.login1.Manager.CanHibernate' #should output "yes". In my case, it outputs "na".
+
+  #--no-wall   to not inform anybody
+  #sudo shutdown --poweroff hh:mm
+  #sudo shutdown --halt +m
+  #shutdown -c #A pending shutdown can be canceled by the root
+  alias srun-shutdown-hibernate='sudo systemctl hibernate' #disk
+  alias srun-shutdown-suspend='sudo systemctl suspend' #ram
+  alias srun-shutdown-hybrid-suspend='sudo systemctl hybrid-sleep' #ram + disk
+  alias srun-shutdown-halt='sudo systemctl halt'
+  alias srun-shutdown-poweroff='sudo systemctl poweroff'
+  alias srun-shutdown-poweroff-nomsg='sudo systemctl --no-wall poweroff'
+  alias srun-shutdown-reboot='sudo systemctl reboot'
+  #loginctl terminate-user "your username here" #???
+
+  alias sget-simona-install='ls /etc/System-*'
+
+  alias sset-kernel-recompile-all-images='sudo mkinitcpio -P'
+
+  #rgub ---------------------------------------------------------------------
+  #per motivi che non capisco non pare possibile inserire la path dopo il -o nel modo: sudo grub-mkconfig -o /boot/grub/grub.cfg
+  alias update-grub='cd /boot/grub; sudo grub-mkconfig -o grub.cfg'
+  alias grub-update='cd /boot/grub; sudo grub-mkconfig -o grub.cfg'
+
+  alias grub-preview='sudo grub2-theme-preview /boot/grub'
+
+  # -----------------------------------------------------------------------------------------------------------
+
+  alias sget-mac-addr='ping -w 2 -b 192.168.1.255; arp -a'
+
+  [[ -r /bin/blkid ]] && alias sget-guid='sudo /sbin/blkid | grep "$(df -h / | sed -n 2p | cut -d" " -f1):" | grep -o "UUID=\"[^\"]*\" " | sed "s/UUID=\"//;s/\"//"'
+
+  alias sget-shell='echo $SHELL'
+  alias sget-distro='cat /etc/os-release'
+  alias sget-rel='uname -a'
+  alias sget-pci='lspci'
+  alias sget-pci-withdriver='lspci -k'
+  alias sget-pci-video='lspci -v -s `lspci | awk '\''/VGA/{print $1}'\''`'  #' > '\'' lspci -v -s `lspci | awk '/VGA/{print $1}'`
+  alias sget-usb='lsusb'
+  [[ -r /bin/scanimage ]] && alias sget-scanner='scanimage -L'
+  alias sget-parts='lsblk'
+  alias sget-hw='lshw'
+  alias sget-bluetooth='lswm'
+  alias sget-hw2='lstopo-no-graphics'
+  [[ -r /bin/pcsc_scan ]] && alias sget-smartcardreader='pcsc_scan'
+  alias sget-uuid='blkid'
+  alias sget-path='echo $PATH'
+  [[ -r /bin/sensors ]] && alias sget-sensors='sensors'
+  [[ -r /bin/glances ]] && alias sget-top='glances'
+  [[ -r /bin/nethogs ]] && alias sget-top-net='sudo nethogs'
+  if [[ -r /bin/htop ]] ; then
+    alias sget-top-cpu='htop -s PERCENT_CPU'
+    alias sget-top-ram='top -o %MEM'
+  else
+    echo "Install htop!"
+  fi
+  alias sget-free='free -gt'  #g=Gb
+  alias sget-free2='vmstat -s'
+  alias sget-ram='sudo dmidecode -t 17'
+  alias sget-meminfo='egrep --color "Mem|Cache|Swap" /proc/meminfo'
+  [[ -r /bin/hdparm ]] && alias sget-hd-test-read='sudo hdparm -tT ' #aggiundere /dev/sdL
+  [[ -r /bin/xrandr ]] && alias sget-video='xrandr -q --verbose' || echo "Install xrandr!"
+
+  alias sget-cpu-clocks='   watch grep \"cpu MHz\" /proc/cpuinfo   '
+
+  #sed s/\"//g  -> toglie "
+  #echo "\"ciao\" \"ciao\"" | sed s/\"//g
+  # awk dentro alias: aggiungere '\'  prima e subito attaccato ad ' di apertura e chiusura
+
+  if [[ -r /bin/cpupower ]] ; then
+    #echo "word1 word2" | awk '{ print $2 }'
+    alias sget-governor-driver='  cpupower frequency-info | grep "driver:" | awk '\''{ print $2 }'\''     '
+    alias sget-governor='    cpupower frequency-info | grep "Il gestore" | awk '\''{ print $3 }'\''  | sed s/\"//g     '
+
+    #manca ondemand conservative userspace
+    alias sset-governor-performance='sudo cpupower frequency-set -g performance'
+    alias sset-governor-powersave='sudo cpupower frequency-set -g powersave'
+  else
+    echo "Install cpupower!"
+  fi
+  alias sget-governor-available='   cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors   '
+
+  alias sget-cpu-sched='   dmesg | grep -i "CPU scheduler"  |  awk '\''{print $6 " " $9 " " $10 " " $11 " " $12}'\''    '
+
+  alias sget-cpu-sched-avail='   dmesg | grep -i "io scheduler" |  awk '\''{print $8}'\''  | sed ":l; N; s/\n/ /; tl"    '
+
+  #ioscheduler-list.sh
+  alias sget-io-sched-all-device='echo -e -n "I/O sched: "; for device in /sys/block/nvme*/queue/scheduler ; do echo -e -n "nvme${device:15:3}>\e[1;39;41m"  ` cat /sys/block/nvme${device:15:4}/queue/scheduler | cut -d "[" -f2 | cut -d "]" -f1 ` "\e[0m " ; done; for device in /sys/block/sd*/queue/scheduler ; do echo -e -n "sd${device:13:1}>\e[1;39;41m"  `cat /sys/block/sd${device:13:1}/queue/scheduler | cut -d "[" -f2 | cut -d "]" -f1` "\e[0m "; done; echo ""'
+  #source /usr/bin/ioscheduler-list
+
+  #TO-DO apply:
+  #remove []:    sed "s/\[//" | sed "s/\]//"
+  #echo "  [ciao1] ciao2" | sed "s/\[//" | sed "s/\]//
+  #command | tr -d '[]'
+  #tr -d '[]' < /sys/block/sda/queue/scheduler
+
+  alias sget-io-sched='      cat /sys/block/sda/queue/scheduler | cut -d "[" -f2 | cut -d "]" -f1     '
+  #trovati: noop deadline cfq
+  alias sget-io-sched-avail='    cat /sys/block/sda/queue/scheduler | sed "s/\[//" | sed "s/\]//"     '
+  #echo bfq > /sys/block/sda/queue/scheduler
+  #GRUB_CMDLINE_LINUX="elevator=noop"
+
+  #$var="stringa";echo "${stringa}&resto della frase"
+  #var="123456";echo "${var:1:1}"
+
+  [[ -r /bin/timedatectl ]] && alias sget-sync-clock='(timedatectl status  |  grep -q "System clock synchronized: yes") && echo -e "Clock: \e[1;39;41mSync\e[0m" || echo -e "Clock: \e[1;39;41mNot Sync\e[0m"'
+
+  alias sget-kernel-list-simple='printf "Kernels:\n";  for file in /boot/vmlinuz* ; do info=`file $file`; ver=${info#*version}; ver=${ver%\(*}; printf "%-35s %s %25s \n" "$file" "->" "$ver"; done; '
+
+  #Redirect otput of a cmd
+  #echo "`echo "ciao"`"
+
+  #alias sget-kernel-list='search=`uname -r`; printf "Kernels:\n"; for file in /boot/vmlinuz* ; do info=`file $file`; ver=${info#*version}; ver=${ver%\(*}; [[ $ver =~ $search ]] && flag="<-used" || flag=""; printf "%-35s %s %25s %s\n" "$file" "->" "$ver" "$flag"; done; '
+
+  #rimuove tutto quello a sinistra di search seguito da spazio. Lascia tutto quello a destra di search + spazio
+  #str="parola1 search parola2"; str=${str#*search }; echo "$str"
+
+  #rimuove tutto quello a destra di search preceduto da spazio. Lascia tutto quello a sinistra di search
+  #str="parola1 search parola2"; str=${str% search*}; echo "<$str>"
+
+  #Stampa allineato
+  #str1="str allineata a sx di 35 caratteri"; str2="->"; str3="str allineata a dx di 25 caratteri"; printf "%-35s %s %25s \n" "$str1" "$str2" "$str3"
+
+  #printf "Kernels:\n";  for file in /boot/vmlinuz* ; do info=`file $file`; ver=${info#*version}; ver=${ver%\(*}; printf "%-35s %s %25s \n" "$file" "->" "$ver"; done;
+
+  #boot-bernel-list-sh
+  alias sget-kernel-list='search=`uname -r`; printf "Kernels /boot :\n"; for file in /boot/vmlinuz* ; do info=`file $file`; file="${file:6:99}"; ver=${info#*version}; ver=${ver%\(*}; [[ $ver =~ $search ]] && flag="<-used" || flag=""; printf "%-28s %s %24s %s\n" "$file" "->" "$ver" "$flag"; done; '
+  #source /usr/bin/boot-kernel-list
+
+
+  [[ -r /bin/Xorg ]] && alias sget-xorg-ver='Xorg -version 2>&1 | awk '\''/X.Org X Server/ {print $NF}'\'' '
+
+  [[ -r /bin/plasmashell ]] && alias sget-plasma-ver='plasmashell -v | awk '\''{print $2}'\''  '
+  [[ -r /bin/kwin ]] && alias sget-kwin-ver='kwin_x11 -v | awk '\''{print $2}'\''  '
+
+  alias sget-kernel-ver='uname -r'
+
+  if [[ -r /bin/glxinfo ]] ; then
+    #glxinfo | grep "OpenGL version"     -->  "OpenGL version string: 3.1 Mesa 18.1.8"
+    #OpenGL version string: 4.4 (Compatibility Profile) Mesa 18.2.0
+    #echo "word1 word2 word3 word-last" | |  awk '{print $NF}'  '
+    alias get-mesa-ver='glxinfo | grep "OpenGL version"  |  awk '\''{print $NF}'\''  '
+
+    #rimuove prima parola della stringa
+    #| awk '\''{$1= ""; print $0}'\''
+    #| awk '{$1= ""; print $0}'
+    #echo "word1 word2 word3 word-last" | awk '{$1= ""; print $0}'
+    #rimuove primo carattere della stringa
+    #sed "s/^.//"
+    #echo " word1 word2 word-last" | sed "s/^.//"
+    # estrae l'ultima parola della stringa
+    #|  awk '\''{print $NF}'\''  '
+    alias sget-video-ver='glxinfo | grep "Device" | awk '\''{$1= ""; print $0}'\'' | sed "s/^.//" '
+  else
+    echo "Install glxinfo!"
+  fi
+
+  alias sget-shell-list='chsh -l'
+  #alias sget-shell-list='cat /etc/shells'
+  alias sget-shell-default='echo $SHELL'
+
+  alias sget-term='tty'
+  alias sget-tty='(tty  |  grep -q "tty") && echo -e "Phisical tty (CTRL+ALT+Fn /dev/tty*)" || echo -e "Virtual tty (Konsole /dev/pts/*)" '
+  alias sget-term-inside-x=' [[ -n "$DISPLAY" ]] && echo "Inside X" || echo "Real terminal (No X)" '
+  alias sget-term-interactive='[[ $- == *i* ]] && echo "Interactive" || echo "Not interactive" '
+  alias sget-term-script='[[ $- != *i* ]] && echo "Script" || echo "Not script" '
+  alias sget-true-user-login='echo "$(logname)"'
+
+  alias sset-user_root='su -'
+  alias sset-user='su -' #seguito dall'user
+
+  alias sget-boot-systemctl-failed='systemctl --failed; systemctl status systemd-modules-load'
+
+
+  #da quanto secondi è partita la shell
+  alias sget-shell-started-seconds='echo $SECONDS'
+
+  #info finestra X terminale
+  #wmctrl -l | grep -i xterm | awk '{print $1}'
+  [[ -r /bin/xprop ]] && alias sget-x11infowin='xprop -id $WINDOWID'
+
+  #$(cmd)
+  #`cmd`
+
+  #converte da esadecimale a decimale
+  #echo "ibase=16; `wmctrl -l | grep -i xterm | cut -c 3-11 | tr a-z A-Z`" | bc
+
+  #report init 'systemd' or 'init'
+  alias sget-init='ps --no-headers -o comm 1'
+
+  #systemd service for all distro
+  alias sget-os-release='cat /etc/os-release'
+
+  #compilatore usato per ottenere eseguibile elf
+  [[ -r /bin/cdetect ]] && alias sget-bin-compiler='cdetect '
+  [[ -r /bin/elfinfo ]] && alias sget-bin-compiler-2='elfinfo '
+  [[ -r /bin/fc-match ]] && alias sget-font-info='fc-match '
+
+  alias sget-process-list='ps -ef'
+
+  alias sget-sysctl-service='sudo systemctl status systemd-sysctl.service'
+  alias sget-dirty='cat /proc/vmstat | egrep "dirty|writeback"'
+  alias sget-swappines='cat /proc/sys/vm/swappiness'
+  alias sget-sysctl='sysctl -a'
+  alias srun-reload-sysctl='sysctl -p'
+  alias sset-edit-sysctl='kate /etc/sysctl.d/99-sysctl.conf'
+  alias srun-setup-sysctl-1gb='sudo sysctl vm.dirty_ratio=10; sudo sysctl vm.dirty_background_ratio=5'
+  alias srun-setup-sysctl-16gb='sudo sysctl vm.dirty_ratio=3; sudo sysctl vm.dirty_background_ratio=2'
+  alias sget-vm-dirty-ratio='cat /proc/sys/vm/dirty_ratio'
+  alias sget-vm-dirty-background-ratio='cat /proc/sys/vm/dirty_background_ratio'
+
+  alias sget-devs1='ls -lF /dev/disk/by-uuid'
+  alias sget-devs2='blkid -o list -c /dev/null'
+  alias sget-devs3='df'
+  alias sget-devs4='fdisk -l'
+  alias sget-devs5='lsblk'
+
+  # symlinks -h
+  # ln -s .file file #standard absolute path: crea /dir/.file -> file
+  # ln -sr .file file #relative path: crea link .file -> file (senza path assoluta)
+  alias sset-relpath-link='ln -sr '
+  alias sset-abspath-link='ln -s '
+
+  #cerca descrizione breve comandi che iniziano con $1
+  alias sget-cmds='sget-list-cmds'
+  sget-list-cmds() {
+    #whatis -w "$1*"
+    [[ $2 == "--strict" ]] && whatis $1 || whatis -w "$1*"
+  }
+
+  #estrae majior release e minor release
+  #kver=$(uname -r | cut -d. -f2)
+  alias sget-major-rel='uname -r | cut -d. -f1'
+  alias sget-minor-rel='uname -r | cut -d. -f2'
+
+  #To enable zswap permanently, add this to your kernel boot parameters Kernel parameters#Configuration:
+  #zswap.enabled=1
+  #Tip: You can use the systemd-swap package to enable and configure zswap.
+  #compressione ram con zram
+  alias sget-zswap-ram-enabled='cat /sys/module/zswap/parameters/enabled'
+  alias sset-zswap-active='sudo systemctl start systemd-swap'
+  alias sset-zswap-enable='sudo systemctl enable systemd-swap'
+  alias sset-zswap-enable='sudo systemctl disable systemd-swap'
+
+  alias sget-check-local-www="nc -z -w2 127.0.0.1 80 2>/dev/null && echo 'available' || echo 'not respond'"
+  alias sget-check-local-ssh="nc -z -w2 127.0.0.1 22 2>/dev/null && echo 'connected' || echo 'not respond'"
+  alias sget-check-local-telnet="nc -z -w2 127.0.0.1 23 2>/dev/null && echo 'connected' || echo 'not respond'"
+  sget-check-local-port() {
+    nc -z -w2 127.0.0.1 $1 2>/dev/null && echo 'connected' || echo 'not respond'
+  }
+
+  #- standard commands: cmd nordvpn + demone nordvpnd si cfg .config/nordvpn/
+  # - https://nordvpn.com/it/tutorials/linux/openvpn/
+  #     also /etc/openvpn/ovpn_tcp and /etc/openvpn/ovpn_udp loaded by:
+  #     cd /etc/openvpn ; sudo wget https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip ;
+  #     sudo unzip ovpn.zip ; sudo rm ovpn.zip
+  alias srun-vpn-help='sudo nordnm -h'
+  alias srun-vpn-setup='sudo nordnm update --settings' #.nordnm/settings.conf
+  alias srun-vpn-setup-acct='sudo nordnm update --credentials' #.nordnm/credentials.conf
+  alias srun-vpn-server-sync='sudo nordnm sync' #.nordnm/configs/
+  alias srun-vpn-server-list='sudo nordnm list --active-server'
+  alias srun-vpn-connect-it-tcp='sudo nordnm --auto-connect IT normal tcp'
+  alias srun-vpn-connect-it-udp='sudo nordnm --auto-connect IT normal udp'
+  alias srun-vpn-connect-us-udp='sudo nordnm --auto-connect US normal udp'
+  alias srun-vpn-connect-ch-udp='sudo nordnm --auto-connect CH normal udp'
+  alias srun-vpn-reconnect-it='sudo nordnm sync; sudo nordnm --auto-connect IT normal udp'
+  alias srun-vpn-clear='sudo nordnm remove #to see'
+
+  alias sget-ipforward='cat /proc/sys/net/ipv4/ip_forward'
+  alias sset-ipforward-enable='sudo sysctl -w net.ipv4.ip_forward=1'
+  alias sset-ipforward-disable='sudo sysctl -w net.ipv4.ip_forward=0'
+  #net.ipv4.ip_forward = 1 su /etc/sysctl.d/99-sysctl.conf
+
+  alias sget-de='echo $XDG_CURRENT_DESKTOP'
+
+  if [[ -r /bin/inxi ]]; then
+    alias sget-inxi='inxi -b'
+    alias sget-inxi-sound='inxi -xx -A'
+    alias sget-inxi-hdsk='inxi -xx -D'
+    alias sget-inxi-graphic='inxi -xx -G'
+    alias sget-inxi-partitions='inxi -pl'
+    alias sget-inxi-ddr4='sudo inxi -xxx -m'
+    alias sget-inxi-sensors='inxi -s'
+    alias sget-inxi-uuid='inxi -pu'
+    alias sget-inxi-hdsk-temps='inxi -xx -D'
+  fi
+
+  alias sget-fs-list='ls /lib/modules/$(uname -r)/kernel/fs'
+
+  #Type= X11 o Wayland
+  # prima loginctl per guardare numero sessione e poi usarla qua (in questo caso 2)
+  #alias sget-serv-graf='loginctl show-session 2 -p Type'
+
+  #2019-01-22 eliminazione duplicati
+  #cancella dalla radice di una cartella i files già presenti nella cartella "/best" contenuta al suo interno
+  alias srun-erasedir-ifexistbest-test='for fl in best/*; do; fl=${fl#*/}; ls "$fl"; done;'
+  alias srun-erasedir-ifexistbest-execute='for fl in best/*; do; fl=${fl#*/}; ls "$fl"; rm -f "$fl"; done;'
+
+  alias sget-col-row='echo -e -n "$(tput cols)x$(tput lines)\n"'
+  alias sget-col-row_2='echo -e -n "${COLUMNS}x$LINES\n"'
+  alias sget-col-row_3='echo -e -n "$(stty size | cut -d" " -f2)x$(stty size | cut -d" " -f1)\n"'
+
+  alias sget-turboboost-check='grep flags /proc/cpuinfo | grep -q " ida " && echo Turbo mode is on || echo Turbo mode is off'
+
+  #data ed ora installazioen arch linux
+  alias sget-date-first-install='head -n1 /var/log/pacman.log | cut -c 2-17'
+
+  #sudo
+  alias sget-services-boot='systemctl list-unit-files --type=service --state=enabled --all'
+
+  alias sget-local-ip='ifconfig | grep -Eo "inet (addr:)?([0-9]*\.){3}[0-9]*" | grep -Eo "([0-9]*\.){3}[0-9]*" | grep -v "127.0.0.1" | grep --color=never "192.168.1"'
+
+
+  # -----------------------------------------------------------------------------------------------------------
+  # DEMO
+  # -----------------------------------------------------------------------------------------------------------
+
+  # sget-pendrive() #source /usr/bin/pendrive-detect
+
+  # #Monta disco immagine img vdi gcow2
+  # #"/home/simona/Disk No Backup/"
+  # #srun-mount-img windows10boot.qcow2
+  # #srun-umount-img windows10boot.qcow2
+  # #srun-mount-img "Windows 10boot.vdi"
+  # #srun-umount-img "Windows 10boot.vdi"
+  #
+  # #srun-mount-img "/home/simona/Disk No Backup/windows10boot.qcow2"
+  # #srun-mount-img "/home/simona/Disk No Backup/windows10boot.qcow2" 2
+  # #srun-umount-img windows10boot.qcow2
+  # #srun-mount-img "/home/simona/Disk No Backup/Windows 10boot.vdi"
+  # #srun-umount-img "Windows 10boot.vdi"
+  #
+  # #srun-mount-img "/home/simona/mount/data-w7/Dati Applicazioni/vol.vol" "/$HOME/mount/pwd-crypt"
+  # #srun-mount-img "/home/simona/Disk No Backup/vol.vol" tcrypt
+  # #srun-umount-img "/home/simona/mount/data-w7/Dati Applicazioni/vol.vol" tcrypt
+  # #srun-umount-img vol.vol tcrypt
+  #
+  # #srun-mount-img "/home/simona/Disk No Backup/ReactOS-0.4.10-RC.iso"
+  # #srun-umount-img ReactOS-0.4.10-RC.iso
+  #
+  # #srun-mount-img "/home/simona/Disk No Backup/ReactOS-0.4.10-RC.iso" --force-iso-stdmount
+  # #srun-umount-img ReactOS-0.4.10-RC.iso --force-iso-stdmount
+  #
+  # #srun-umount-img reset
+  #
+  # #if [[ -r /usr/bin/image-mount ]] ; then
+  # srun-mount-img() #source /usr/bin/image-mount
+
+  #pet search string
+  examples () {
+    #Extract specific char from string using bash base functions
+    str="0123456789"; echo "Output 2 and 67=${str:2:1} ${str:6:2}"
+    #Print commands's output, usabile anche $( ... )
+    echo "`echo "ciao"`"
+    #rimuove tutto quello che è dopo / finale
+    str="192.168.1.10/24"; str=${str%/*}; echo $str
+    #Stampa allineato
+    str1="str allineata a sx di 35 caratteri"; str2="->"; str3="str allineata a dx di 25 caratteri"; printf "%-35s %s %25s \n" "$str1" "$str2" "$str3"
+    #Carica variabile e stampa contenuto. {} servono per delimitare il nome della var se dopo non c'è spazio
+    var="str"; echo "$var"; echo "${var}"
+    #stampa la lunghezza in caratteri della variabile var
+    var="str"; echo "${#var}"
+    #Rimuove prima ed ultimo carattere di una stringa
+    str=".ciao."; echo "${str:1:${#str}-2}"
+    #testo su tipi carattere "-_./!@#=&?
+    char="a"; [[ $char =~ [a-z] || $char =~ [A-Z] || $char =~ [0-9] ]] && echo "char" || echo "symbol"
+    #converte in ascii
+    char="0"; hexchar="$(echo "$char" | xxd -ps -c1 | head -1 | tr '[a-z]' '[A-Z]')"; echo "$hexchar"
+    #Divide usando . come delimiatore e poi estra la prima parola
+    uname -r | cut -d. -f1
+    #Divide usando . come delimitatore e poi estrae la seconda parola
+    uname -r | cut -d. -f2
+    #Toglie tutti i " dalla stringa
+    echo "\"ciao\" \"ciao\"" | sed s/\"//g
+    #prende la seconda parola di una stringa. Il delimiatore usato è lo spazio. awk non accetta altro che '
+    echo "word1 word2" | awk '{ print $2 }'
+    #Prende la prima e la seconda parola di una stringa e le ricompone inserendo un - nel mezzo
+    echo "word1 word2" | awk '{ print $1 \"-\" $2 }'
+    #Toglie tutti i ritorno a capo da una stringa
+    echo -e "ciao\n ciao" | sed ':l; N; s/\\n/ /; tl'
+    #Rimuove [ e ] da stringa
+    echo "  [ciao1] ciao2" | sed "s/\\[//" | sed "s/\\]//"
+    #Output "normale" e poi "evidenziato" bianco su sfondo rosso
+    echo -e "Normale \\e[1;39;41mEvidenziato\\e[0m"
+    #carica variabile e scrive contenuto
+    var="stringa";echo "${var}&resto della frase"
+    #Estrae secondo parattere (1° par. base 0), 1 solo carattere
+    var="123456";echo "${var:1:1}"
+    #Estra l'ultima parola di una stringa. Separatore spazio.
+    echo "word1 word2 word3 word-last" |  awk '{print $NF}'
+    #Rimuove prima parola di una stringa
+    echo "word1 word2 word3 word-last" | awk '{$1= \"\"; print $0}'
+    #Rimuove il primo carattere di una stringa
+    echo " word1 word2 word-last" | sed "s/^.//"
+    #Sceglie righe la cui prima parola è alias. -E attiva le regular expression
+    cat .bashrc | grep -E "^alias"
+    #Test presenza file ! per test inverso
+    [[ -f .bashrc ]] && echo "trovato" || echo "non trovato"
+    #Test presenza directory
+    [[ -d /usr/bin ]] && echo "trovato" || echo "non trovato"
+    #Loop devices for (però se non esiste nessun /dev/nvme* da errore, qundi attenzione)
+    for drive in /dev/sd?* /dev/nvme* ; do echo "$drive";  done
+    #for con doppio comando
+    for drive in /dev/sd?* /dev/nvme* ; do { echo -n "$drive";  echo "another cmd"; } done
+    #Test con doppio comando eseguito
+    [[ -f .bashrc ]] && { echo -n "trovato "; echo "ripeto: trovato"; } || echo "non trovato"
+    #Estrae dalla stringa tutto quello che viene dopo ultimo /
+    drv="/dev/cisco/boh";echo "${drv##*/}"
+    #Toglie tutti gli spazi all'interno della stringa
+    echo " word1 word2 word3 " |tr -d ' '
+    #Cerca righe contenenti = seguito da una o più cifre numeriche
+    cat .bashrc | grep -E '=[0-9]{1,}'
+    #Incrementa contatore numerico di 1
+    var=$(( $var + 1 ))
+    #Estra estensione dal nome di un file
+    name="file.ext"; echo "${name##*.}"
+    #Test multiplo, negazione, e ricerca di stringa dentro altra stringa
+    find="rc2"; ric1="tp1 tp2"; ric2="rc1 rc2 rc3"; [[ ! $ric1 =~ $find && ! $ric2 =~ $find ]] && echo "non trovato" || echo "trovato"
+    #Test di uguaglianza con valore intero
+    var=10; [[ $var -eq 10 ]] && echo "uguale a 10" || echo "diverso da 10"
+    #Test di uguaglianza con stringa
+    str="cont"; [[ $str == "cont" ]] && echo "uguale cont" || echo "diverso da cont"
+    #Test con variabile booleana
+    flag=false; [[ flag != true ]] && echo "false" || echo "true"
+    #detect errorlevel
+    echo "ciao"; echo "errorlevel $?"
+    # if then else fi
+    var=true; if [[ $var == true ]]; then echo "vero"; else echo "falso"; fi
+    #if then elif then else fi
+    var=false; if [[ $var == true ]]; then echo "vero"; elif [[ $var == false ]]; then echo "falso"; else echo "boh"; fi
+    #Converte da minuscolo a maiuscolo (solo primo carattere) # bash>=4.4 echo $BASH_VERSION
+    a=hello ; echo ${a^} #no zsh
+    #Converte da minuscolo a maiuscolo
+    a=hello ; echo ${a^^} #no zsh
+    #Converte da minuscolo a maiuscolo (check parte sostituita)
+    a=hello ; echo ${a^^ll} #no zsh
+    #Converte da maiuscolo a minuscolo (solo primo carattere)
+    a=hello ; echo ${a,} #no zsh
+    #Converte da maiuscolo a minuscolo
+    a=hello ; echo ${a,,} #no zsh
+    #uso di variabile come puntatore
+    var=value ; pointer=var ; echo ${!pointer} #no zsh
+    #reference / alias di una variabile (-n = nameref)
+    var=no ; declare -n ref=var ; ref=yes ; echo $var #output yes
+    var=no ; local -n ref=var ; ref=yes ; echo $var #output yes #local solo dentro le funzioni
+    #default value
+    var=value ; echo ${var:-default} #output value
+    unset var ; echo ${var:-default} #output default
+    var= ; echo ${var:-default} #output default
+    #So leaving out the colon changes the test from "unset or null" to just a test for "unset"
+    var=value ; echo ${var-default} #output value
+    unset var ; echo ${var-default} #output default
+    var= ; echo ${var-default} #output ""
+    #errorlevel of a command
+    [[ $? -eq 0 ]] && echo "success" || echo "fail"
+    echo -n "Continue? (Y/N): "; read ask; [[ ! $ask =~ ^(yes|y|YES|y|s|S|si|SI|sì)$ ]] && echo "no"
+    num=0; let num++; echo "Inc $num" #let var+=1; var=$((var + 1))
+    #data stringa prop=cont estrae il contenuto a destra di =
+    str="prop=cont"; str=${str#*=}; echo "cont=$str"
+    #data stringa prop=cont estrae il nome della prop a sinistra di =
+    str="prop=cont"; str=${str%=*}; echo "prop=$str"
+    #uso del \ (rigorosamente non seguito da spazi) per proseguire una riga a capo
+    echo "prima parte della riga,"\
+    " seconda parte della riga"
+    #unione su stessa riga di 2 comandi
+    echo -n "prima parte della riga,"; echo " seconda parte della riga"
+    # function e alias assieme
+    alias function_alias_example='f() { echo "row1"; echo "Your arg was $1"; }; f'; function_alias_example ciao
+    #cancella dalla radice di una cartella i files già presenti nella cartella "/best" contenuta al suo interno
+    alias srun-erasedir-ifexistbest-execute='for fl in best/*; do; fl=${fl#*/}; ls "$fl"; rm -f "$fl"; done;'
+    #estrae caratteri da secondo al 17o
+    echo "1234567890A1234567890" |cut -c 2-17
+
+    #setting up a Listener-to-Client relay
+    #ascolto localmente su 8088 (es. web server apache offline)
+    #original host and customer portal, which is http://server1:8088
+    #vado a prendere da altra macchina rete su porta 80
+    echo "mkfifo svr1_to_svr2 ; ncat -k -l 8088 < svr1_to_svr2 | ncat 192.168.1.60 80 > svr1_to_svr2 &"
+
+    #laascia passare praticamente tutto (TO-DO manca da far passare [)
+    echo "fdgkfld@kg{}()~[ +//\//àòflkg" |grep -x "^[\+ \\\@\[\~{}()_A-Za-z0-9\/\-\.]*" --color=never
+
+    #rimuove spazi alla fine di una stringa
+    line="  ciao  ";echo -n "before=<$line> ";line=$(echo "$line" | sed 's/[[:blank:]]*$//');echo -n "after=<$line>\n"
+  }
+
+fi #if [[ $full_alias -eq 1 ]] ; then
+   #if [[ $full_display -eq 1 ]] ; then
+
+# ---------------------------------------------------------------------------------------------------------------
+# [F5] & comandi update
+# ---------------------------------------------------------------------------------------------------------------
+
+  if [[ -r /bin/pacman ]] ; then
+
+    #apt-get update upgrade remove
+    alias apt-install='pacman -S'
+    alias apt-remove='pacman -Rns'
+    alias apt-upgrade='pacman -Syu'
+
+    #alias sanitycheck='echo sane'
+
+    #pacman -Syu is equivalent to apt-get update && apt-get upgrade
+    alias pacman-update='sudo pacman -Syu'
+    alias pacman-update-safe='sudo pacman -Syu --config /etc/pacman-clean.conf' #no aur and only official repos
+
+    #installa pacchetto da file locale .pkg.tar.xz
+    alias pacman-install-local='sudo pacman -U'
+
+    alias pacman-pkg-uninstall-ignoredep='sudo pacman -Rdd '
+    alias pacman-pkg-install-ignoredep='sudo pacman -Sdd '
+
+    #pacman --------------------------------------------------------------------
+    #https://wiki.archlinux.org/index.php/Reflector_(Italiano)
+    #alias pacman-update-mirrorlist='reflector --verbose -c Italy -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
+    alias pacman-update-mirrorlist='reflector --verbose --latest 10 --country Italy --country Germany --late 72 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+
+    alias pacman-install-pkg='pacman -S'
+
+    alias pacman-install-pkg-test='sudo pacman --confirm --config /etc/pacman-test.conf -Sy'  #repository di test attivati
+    alias pacman-install-aria='sudo pacman --confirm --config /etc/pacman-aria.conf -Syu'       #usa aria come download manager
+
+    alias pacman-install-pkg-test-nodeps='sudo pacman --config /etc/pacman-test.conf -Sydd'
+
+    alias pacman-remove-pkg='pacman -Rs'
+    alias pacman-remove-pkg-forcealldeps='pacman -Rsc --confirm'
+    alias pacman-remove-pkg-ignoredeps='pacman -Rdd'
+    alias pacman-clear-cache='sudo pacaur -Scc'
+    alias pacman-log='cat /var/log/pacman.log'
+    alias pacman-pkg-get='pacman -Qo' #ottiene nome del pkg dando 1 file del pacchetto
+    alias pacman-pkg-get-files='pacman -Ql' #ottiene la lista dei files di un pacchetto
+    alias pacman-add-key='gpg --recv-key'
+
+    #esporta lista pacchetti
+    alias pacman-export-pkg-cr='     _exp () { pacman -Qqe >/home/simona/no-space/cfg/packages_cr.lst ; };  _exp     '
+    #esporta lista pacchetti (tutti di fila, senza CR)
+    alias pacman-export-pkg='     _exp () { pacman -Qqe  | sed ":l; N; s/\n/ /; tl"  >/home/simona/no-space/cfg/packages.lst  ; }; _exp    '
+
+    #Per visualizzare i pacchetti e le dipendenze non più necessarie
+    alias pacman-pkg-list-dep-noreq='pacman -Qdtq'
+    #Per rimuoverle, dopo il comando precedente o direttamente
+    alias pacman-pkg-del-dep-noreq='pacman -R $(pacman -Qdtq)'
+    #Per rimuovere gli orfani (ricorsivamente; fare attenzione!)
+    alias pacman-pkg-del-orphans='pacman -Rs $(pacman -Qtdq)'
+    #Per reinstallare tutti i pacchetti del vostro sistema (se disponibili in un repository attivo)
+    alias pacman-pkg-reinstall-all='pacman -S $(pacman -Qq | grep -v "$(pacman -Qmq)")'
+
+    #packae installati localmente (anche aur)
+    #alias pacman-pkg-list-only-local='pacman -Qm'
+    #pacman -Qqe
+    #pacman -Qqem
+
+    alias pacman-pkg-list-aur='for x in `pacman -Qm`; do yaourt -Ss "$x" | grep "aur/"; done'
+
+    # ------------------------------------------------------------------------------------------------------------
+    # Alias AUR helper
+    # ------------------------------------------------------------------------------------------------------------
+
+    #alias parametri automatici aur helpers
+    alias yaourt='yaourt --noconfirm'
+    alias pacaur='pacaur --noedit --noconfirm'
+    alias trizen='trizen --noedit --noconfirm'
+    #alias aurman='aurman --noconfirm --noedit --skip_news'
+    alias aurman-S='aurman --skip_news -S ' #--noconfirm --skip_news (evitare con -Rs)
+    alias yay='yay --noconfirm --noansweredit --noeditmenu --cleanafter --pgpfetch'
+    alias yay-default='yay'
+
+    alias update-reset='sudo rm -f /var/lib/pacman/db.lck ; rm -r -f $HOME/.cache/yay'
+    #alias update-reset='sudo rm -f /var/lib/pacman/db.lck ; rm -r -f $HOME/.cache/pacaur $HOME/.cache/aurman $HOME/.cache/yay'
+    #alias update-reset='sudo rm -f /var/lib/pacman/db.lck ; rm -r -f /home/simona/.cache/pacaur; rm -r -f /home/simona/.cache/aurman'
+    alias update-clean='rm -r -f $HOME/.cache/pacaur $HOME/.cache/aurman $HOME/.cache/yay; flatpak uninstall --unused'
+
+    alias update-pacman='sudo pacman -Syu' #no aur
+    #alias update-ignoreaur='sudo pacman -Syu' #no aur
+    #alias update-pacman-testing='pacman -Syyuu' #dopo commentato [testing] in /etc/pacman.conf
+
+    #alias update-multi='aurman --noconfirm --skip_news --skip_new_locations --noedit -Syu; sudo snap refresh; flatpak update'
+
+    #trizen -Sy
+    #update-syncdb + update-install
+    #alias update-output='yay -Sy --noconfirm ; yay -Su --noconfirm --noansweredit --noeditmenu --cleanafter --pgpfetch ; pkill octopi-notifier ; octopi-notifier &  disown '
+    alias update='yay -Sy --noconfirm ; yay -Su --noconfirm --noansweredit --noeditmenu --cleanafter --pgpfetch ; sudo \pkill octopi-notifier ; ( octopi-notifier &  disown ) > /dev/null 2>&1 '
+
+    alias update-1-pass='yay -Syu --noconfirm --noansweredit --noeditmenu --cleanafter --pgpfetch'
+    # --noanswerclean --noanswerdiff --noansweredit --noanswerupgrade
+    # --nocleanmenu --nodiffmenu --noeditmenu --noupgrademenu
+    alias update-old='trizen -Sy --noconfirm ; aurman --noconfirm --skip_news --solution_way --pgp_fetch --noedit -Su'
+
+    alias update-ask='yay -Syu --cleanafter --pgpfetch'
+    #alias update-noaur='yay -Syu --repo --noconfirm --noansweredit --noeditmenu --cleanafter --pgpfetch'
+    alias update-noaur='yay -Sy --noconfirm ; yay -Su --repo --noconfirm --noansweredit --noeditmenu --cleanafter --pgpfetch'
+
+    alias update-status='yay -P --stats'
+
+    alias update-install='yay -S --cleanafter --pgpfetch'
+    #`--skipinteg` is the combination of `--skipchecksums` and `--skippgpcheck`
+    #alias update-install-nochecksum='yay -S --cleanafter --pgpfetch --mflags --skipchecksum --skippgpcheck'
+    alias update-install-nochecksum='yay -S --cleanafter --pgpfetch --mflags --skipinteg'
+    alias update-install-aurfirst='yay -S --aur --cleanafter --pgpfetch'
+
+    #old
+    #alias update-ask='aurman --confirm --skip_news --skip_new_locations --noedit -Syu'
+    #alias update-std='aurman --noconfirm --skip_news --skip_new_locations --noedit -Syu'
+    #alias update-1-pass='aurman --noconfirm --skip_news --skip_new_locations --noedit -Syu'
+
+    alias update-us='export LANG="en_GB"; yay -Syu --cleanafter --pgpfetch'
+    alias update-it='export LANG="it_IT"; yay -Syu --cleanafter --pgpfetch'
+    #old
+    #alias update='pacaur -Syu'
+    #alias update='yaourt -Syua'
+    #alias update-us='export LANG="en_GB"; aurman --noconfirm --skip_news -Syu'
+    #alias update-us='export LANG="en_GB"; pacaur -Syu'
+    #alias update-it='export LANG="it_IT"; aurman --noconfirm --skip_news -Syu'
+    #alias update-it='export LANG="it_IT"; pacaur -Syu'
+
+    alias update-syncdb='yay -Sy'
+    alias update-syncdb-force='yay -Syy'
+    alias update-syncdb-download='yay --noconfirm --noansweredit --noeditmenu --cleanafter --pgpfetch -Syw'
+    alias update-install='yay --noconfirm --noansweredit --noeditmenu --cleanafter --pgpfetch -Su'
+    #old
+    #alias update-syncdb='aurman --noconfirm --skip_news --solution_way --pgp_fetch -Sy' #!! -y without -u is not allowed!
+    #alias update-syncdb='pacaur -Sy'
+    #alias update-syncdb='trizen -Sy'
+    #alias update-syncdb-force='aurman --noconfirm --skip_news --solution_way --pgp_fetch -Syy'
+    #alias update-syncdb-force='pacaur -Syy'
+    #alias update-syncdb-force='trizen -Syy'
+    #alias update-syncdb-download='aurman --noconfirm --skip_news --solution_way --pgp_fetch -Syw'
+    #alias update-syncdb-download='pacaur -Syw'
+    #alias update-install='aurman --skip_news --solution_way --pgp_fetch -Su'
+    #alias update-install='pacaur -Su'
+    #alias update-auronly='aurman --skip_news --solution_way --pgp_fetch -Su --aur' #funziona?
+    #alias update-auronly='pacaur -Sua'
+
+    #old
+    #alias update-aurman-nopars='aurman -Syu'
+    #alias update-aurman='aurman -Syu --color --noconfirm --noedit --skip_news'
+    #alias update-aurman='aurman -Syu --noconfirm --noedit --skip_news'
+    alias update-aurman='aurman --noconfirm --skip_news --skip_new_locations --noedit -Syu'
+
+    #update ok ----------------------------------------------------------------
+    #alias update-powerpill='sudo powerpill -Syu'
+    alias update-powerpill='sudo bauerbill -Syu'
+    alias update-bauerbill='sudo bauerbill -Syu'
+
+    alias update-yay='yay -Syu --nocleanmenu --nodiffmenu --noeditmenu --noupgrademenu '
+    alias update-pakku='pakku -Syu'
+
+    #update non ok ------------------------------------------------------------
+    alias update-pacaur='pacaur -Syu' #--noconfirm
+
+    alias update-yaourt='yaourt -Syua'
+    alias update-yaourt-confirm='yaourt -Syua --confirm'
+
+    #update boh? --------------------------------------------------------------
+    alias update-pikaur='sudo pikaur -Syu' #--noconfirm #a me non funziona bene
+    alias update-trizen='trizen -Syu --noconfirm --noedit'
+    #alias update-trizen='trizen -Syua --noconfirm --noedit' #solo aur
+    alias update-bauerbill='sudo bauerbill -Syu --aur' #aur non va?
+
+    alias update-aura='sudo aura -Syu'
+
+    #debian-like
+    alias update-deb-repos='sudo nano /etc/apt/sources.list' #/etc/pacman.conf
+    alias update-deb-sync='sudo apt-get update' #sudo pacman -Sy
+    alias updare-deb-inst='sudo apt-get install' #sudo pacman -S
+    alias updare-deb-erase='sudo apt-get remove' #sudo pacman -Rs
+    alias updare-deb-erase-withcfg='sudo apt-get remove -purge'
+    alias update-deb-upgrade='sudo apt-get dist-upgrade' #sudo pacman -Su
+    alias update-deb-clean='sudo apt-get clean' #sudo pacman -Scc
+    alias updare-deb-list-installed='sudo dpkg -list'
+    #alias update-deb-upgrade='sudo apt-get dist-upgrade -y'
+  else
+    echo "Install pacman!"
+  fi
+
+# ---------------------------------------------------------------------------------------------------------------
+# OUTPUT
+# ---------------------------------------------------------------------------------------------------------------
+
+finish() {
+  on=${ANSI_OUT_RES_EVID}
+  off=${ANSI_OUT_DEFAULT}
+  echo -n -e "< “$(tty)” ${USER}@${on}$(cat /proc/sys/kernel/hostname)${off} history:${old_term_sw}:${on}${shellcmd}${off}\n"
+  #echo -n -e "<${on}${USER}${off}@${on}$(cat /proc/sys/kernel/hostname)${off} (term:${on}$(tty)${off} history:${on}${old_term_sw}${off}:${on}${shellcmd}${off})\n\n"
+}
+trap finish EXIT
+
+
+shellcmd=$(ps -p $$ | awk '{if(NR>1)print}' | awk '$0=$NF' | tr -d -)
+old_term_sw=$all_term_sw
+[[ -z $all_term_sw ]] && export all_term_sw=$term_sw || export all_term_sw="${all_term_sw}>${term_sw}"
+
+ip_local=$(echo $(ifconfig | grep -Eo "inet (addr:)?([0-9]*\.){3}[0-9]*" | grep -Eo "([0-9]*\.){3}[0-9]*" | grep -v "127.0.0.1" | grep --color=never "192.168.1"))
+
+on=${ANSI_OUT_RES_EVID}
+off=${ANSI_OUT_DEFAULT}
+echo -n -e "> “$(tty)” ${USER}@${on}$(cat /proc/sys/kernel/hostname)${off} (${ip_local}) history:${all_term_sw}:${on}${shellcmd}${off}\n"
+#echo -n -e ">${on}${USER}${off}@${on}$(cat /proc/sys/kernel/hostname)${off} (term:${on}$(tty)${off} history:${on}${all_term_sw}${off}:${on}${shellcmd}${off})\n"
+
+if [[ $full_display -eq 1 ]] ; then
+
+  #[F2] per avviare a mano
+  [[ $FAST_BOOT != "true" ]] && get-sys-info #FAST_BOOT=true    -> per avio più rapido
+
+  #keyboard setup (function key init) is inside .bashrc and .zshrc
+  #echo -n -e "${ANSI_OUT_RES_EVID}Push [F1] get-help, [F2] get-sys-info, [F3] clear, [F5] update{ANSI_OUT_DEFAULT}\n\n"
+
+  #[[ "$term_sw" == "konsole" ]] && ansi_used=$ANSI_WHITE_ON_BLU_NORM || ansi_used=$ANSI_WHITE_ON_BLU_ITA
+
+  case $term_sw in
+    "konsole")
+      #su altri terminali lampeggia
+      ansi_used=$ANSI_WHITE_ON_BLU_NORM
+      ;;
+    "termite" | "alacritty" | "terminator" | "terminology")
+      ansi_used=$ANSI_WHITE_ON_BLU_ITA
+      ;;
+    "sshd")
+      ansi_used=$ANSI_OUT_RES_EVID
+      ;;
+    *)
+      ansi_used=$ANSI_WHITE_ON_BLU_ITA
+      ;;
+  esac
+
+  #crea sequenza spazi di lunghezza precisa
+  spaces=$(printf "%0.s " $(seq 1 $(( (($COLUMNS - 32) /2) - 12 )) ))
+
+  echo ""
+  echo -n -e "$spaces${ansi_used}┌───────────────────────────────────────────────────┐${ANSI_OUT_DEFAULT}\n"
+  echo -n -e "$spaces${ansi_used}│ {F1} get-help {F2} sysinfo {F3} clear {F5} update │${ANSI_OUT_DEFAULT}\n"
+  echo -n -e "$spaces${ansi_used}└───────────────────────────────────────────────────┘${ANSI_OUT_DEFAULT}\n"
+  #                                      01234567890123456789012345678901234567890123456789012
+  #                                               10        20         30       40        50  52
+  #echo -n -e "${ANSI_OUT_DEFAULT}\n\n"
+  #echo -n -e "${ANSI_OUT_DEFAULT}\n"
+  echo ""
+
+  # codice importantissimo. Non rimuovere -------------------------------------
+  (tty | grep -q "/dev/tty") && TTY_REAL="Yes" || unset TTY_REAL #ok
+  #echo "Debug:$TTY_REAL" #ok
+
+  #[[ -n "$TTY_REAL" ]] && echo -n -e "Hello $USER\n\n" #se non già indicato nel prompt...
+
+  if [[ -r /usr/bin/fortune ]]; then
+    fortune
+    echo " "
+  fi
+#else
+  #echo -n -e "${ANSI_OUT_RES_EVID}Push [F1] get-help, [F2] get-sys-info, [F3] clear, [F5] update{ANSI_OUT_DEFAULT}\n\n"
+fi
+
+#[[ $full_display -eq 1 ]] && sget-pendrive
+
+# ---------------------------------------------------------------------------------------------------------------
+# Test e prove
+# ---------------------------------------------------------------------------------------------------------------
+

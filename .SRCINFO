@@ -1,0 +1,22 @@
+pkgbase = my-zshrc-bashrc
+	pkgdesc = My personal zshrc-bashrc (use for hints)
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	depends = bash
+	optdepends = zsh
+	optdepends = oh-my-zsh-git
+	optdepends = powerline
+	optdepends = zsh-theme-powerlevel10k-git
+	source = bashrc
+	source = zshrc
+	source = simonarc
+	source = simona-help-txt-rc
+	md5sums = 18eb2c3b8bf5e435bc462fa96081ace6
+	md5sums = 41ede81deeea13f2128b6b666693c6e8
+	md5sums = f90c756fff1c6a29073f5f1fe880dc23
+	md5sums = d18f27cb9f2734113b29eeb97b9f0c79
+
+pkgname = my-zshrc-bashrc
+
