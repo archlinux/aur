@@ -11,7 +11,7 @@ pkgname=(
 )
 pkgver=2.0.0
 _pkgver=${pkgver/\~/-}
-pkgrel=3
+pkgrel=4
 pkgdesc="Lightweight virtual machines for containers, version 2"
 arch=('x86_64')
 url="https://katacontainers.io/"
@@ -164,6 +164,7 @@ package_kata2-agent(){
 }
 
 package_kata2-containers-image(){
+  install=kata2-guest.install
   local -r _img_filename="kata-containers-${_pkgver%%~*}-arch-systemd-image.img" _initrd_filename="kata-containers-${_pkgver%%~*}-arch-agent-initrd.img"
   install -Dm 0644 "${srcdir}/${_pkgbase}-${_pkgver}/tools/osbuilder/image-builder/kata-containers.img" "${pkgdir}/usr/share/kata-containers/${_img_filename}"
   install -Dm 0644 "${srcdir}/initrd-arch-agent.img" "${pkgdir}/usr/share/kata-containers/${_initrd_filename}"
