@@ -3,15 +3,16 @@
 
 pkgname=cri-o
 pkgver=1.19.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Open Container Initiative-based implementation of Kubernetes Container Runtime Interface"
 arch=('x86_64')
 url="https://github.com/cri-o/cri-o"
 license=('Apache')
 depends=('cni-plugins' 'conmon' 'conntrack-tools' 'device-mapper' 'glibc'
 'runc')
-makedepends=('btrfs-progs' 'gpgme' 'go' 'go-md2man' 'libseccomp' 'ostree')
-optdepends=('btrfs-progs: for btrfs support')
+makedepends=('apparmor' 'btrfs-progs' 'gpgme' 'go' 'go-md2man' 'libseccomp' 'ostree')
+optdepends=('apparmor: to integrate with apparmor'
+            'btrfs-progs: for btrfs support')
 provides=('container-runtime')
 backup=('etc/crio/crio.conf')
 # configuration override and hook directories should exist
