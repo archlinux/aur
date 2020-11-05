@@ -4,16 +4,13 @@ pkgbase = python-mplleaflet
 	pkgrel = 1
 	url = http://github.com/jwass/mplleaflet
 	arch = any
-	license = unknown
+	license = BSD
 	makedepends = python-setuptools
 	depends = python
 	depends = python-six
 	depends = python-jinja
-	source = https://pypi.python.org/packages/05/b3/e68ff575ef0872e096878c75f602e76b06ca44d7038d69d867c7b800745b/mplleaflet-0.0.5.tar.gz
-	md5sums = cf8ec819862e4486f477fb71101477f1
+	source = https://files.pythonhosted.org/packages/source/m/mplleaflet/mplleaflet-0.0.5.tar.gz
+	sha256sums = 049e0b91797ce5b462853395138161fed9e8dfc1f4723f482ebb0739a0bbd289
 
 pkgname = python-mplleaflet
-	depends = python
-	depends = python-six
-	depends = python-jinja
 
