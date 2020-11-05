@@ -1,12 +1,13 @@
 pkgbase = qmarkdown-git
 	pkgdesc = qMarkdown - minimal markdown viewer
-	pkgver = r72.769d15f
+	pkgver = r77.4de57cb
 	pkgrel = 1
 	url = https://github.com/Peterkmoss/qmarkdown
 	arch = x86_64
 	license = GPL
 	makedepends = gcc>=9
 	makedepends = git
+	makedepends = cmake>=3.1.0
 	depends = qt5-base
 	depends = qt5-webengine
 	depends = qt5-webchannel
