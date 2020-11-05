@@ -1,0 +1,14 @@
+[Unit]
+Description=Geph4 client Service
+After=network.target nss-lookup.target
+
+[Service]
+User=geph4-client
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/bin/geph4-client
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
