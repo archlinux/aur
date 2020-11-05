@@ -11,7 +11,7 @@ license=('MIT')
 # dependency for reverse lookup
 depends=('librime' 'rime-prelude')
 source=("https://github.com/rtransformation/rime-opencc_emoji_symbols/archive/$_commit/rime-opencc_emoji_symbols-$_commit.tar.gz")
-b2sums=('b688880c03b0df3fcb8bf7397a4c79f8a7eac76447ee5a0d5e1ff317e47c953963fc77ca427c1767702c77a2e34a1e42ff68f0752befcce783a2523f6bf09796')
+b2sums=('d4c1bd74da18da5665032d1ced6c53384bf686564377aaf1944ff0657c09c6cc7bb213295016bb4fc901b58323d8ad7b40a1437a51d6ffe4ab10f0f980795eaf')
 
 package() {
   cd rime-opencc_emoji_symbols-$_commit
