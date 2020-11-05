@@ -3,7 +3,7 @@
 
 pkgname=odin2-synthesizer
 pkgver=2.2.4
-pkgrel=3
+pkgrel=4
 pkgdesc='24 voice polyphonic synthesizer, with modulation and FX. (Standalone, VST3, LV2)'
 license=('GPL3')
 arch=('x86_64')
@@ -78,17 +78,15 @@ check() {
 }
 
 package() {
-    install -Dm 755 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2.vst3/Contents/x86_64-linux/Odin2.so" "${pkgdir}/usr/lib/vst3/Odin2/Odin2.so"
+    install -Dm 755 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2.vst3/Contents/x86_64-linux/Odin2.so" "${pkgdir}/usr/lib/vst3/Odin2.vst3/Odin2.so"
 
-    install -Dm 755 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2_.lv2/Odin2_.so" "${pkgdir}/usr/lib/lv2/Odin2/Odin2_.so"
-    install -Dm 644 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2_.lv2/Odin2_.ttl" "${pkgdir}/usr/lib/lv2/Odin2/Odin2_.ttl"
-    install -Dm 644 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2_.lv2/presets.ttl" "${pkgdir}/usr/lib/lv2/Odin2/presets.ttl"
-    install -Dm 644 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2_.lv2/manifest.ttl" "${pkgdir}/usr/lib/lv2/Odin2/manifest.ttl"
+    install -Dm 755 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2_.lv2/Odin2_.so" "${pkgdir}/usr/lib/lv2/Odin2.lv2/Odin2_.so"
+    install -Dm 644 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2_.lv2/Odin2_.ttl" "${pkgdir}/usr/lib/lv2/Odin2.lv2/Odin2_.ttl"
+    install -Dm 644 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2_.lv2/presets.ttl" "${pkgdir}/usr/lib/lv2/Odin2.lv2/presets.ttl"
+    install -Dm 644 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2_.lv2/manifest.ttl" "${pkgdir}/usr/lib/lv2/Odin2.lv2/manifest.ttl"
 
     install -Dm 755 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2" "${pkgdir}/usr/bin/odin2-synthesizer"
 
     mkdir -pm 777 "${pkgdir}/opt/odin2" "${pkgdir}/opt/odin2/Soundbanks/User Patches"
-    install -d "${srcdir}/odin2/Soundbanks/Factory Presets" "${pkgdir}/opt/odin2/Soundbanks/Factory Presets"
-
-    rm -rf ${srcdir}
+    cp -r "${srcdir}/odin2/Soundbanks/Factory Presets" "${pkgdir}/opt/odin2/Soundbanks/Factory Presets"
 }
