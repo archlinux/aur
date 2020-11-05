@@ -1,6 +1,6 @@
 # Maintainer: Lorenzo Debertolis <as3ii@gmail.com>
 pkgname=emptty-git
-pkgver=v0.3.0.r0.ebee8cf
+pkgver=0.3.0.r1.184d833
 pkgrel=1
 pkgdesc="Dead simple CLI Display Manager on TTY"
 arch=('x86_64')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
     printf "%s" "$(git describe --tags --long $(git rev-list --all --max-count=1) \
-        | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+        | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
