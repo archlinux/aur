@@ -12,13 +12,13 @@ pkgbase = superslicer-git
 	makedepends = libigl
 	makedepends = openvdb
 	makedepends = wxgtk2-dev-opt
-	makedepends = qhull>=2020.2-4
 	depends = cgal
 	depends = glew
 	depends = nlopt
 	depends = openvdb
 	depends = wxgtk3-dev-opt
 	depends = boost-libs-171-opt
+	depends = qhull>=2020.2-4
 	provides = superslicer
 	conflicts = superslicer
 	replaces = slic3r++

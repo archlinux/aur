@@ -8,9 +8,9 @@ pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 arch=('x86_64')
 url="https://github.com/supermerill/SuperSlicer"
 license=('AGPL3')
-depends=('cgal' 'glew' 'nlopt' 'openvdb' 'wxgtk3-dev-opt' 'boost-libs-171-opt')
+depends=('cgal' 'glew' 'nlopt' 'openvdb' 'wxgtk3-dev-opt' 'boost-libs-171-opt' 'qhull>=2020.2-4')
 replaces=('slic3r++')
-makedepends=('git' 'cereal' 'cmake' 'eigen' 'libigl' 'openvdb' 'wxgtk2-dev-opt' 'qhull>=2020.2-4') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
+makedepends=('git' 'cereal' 'cmake' 'eigen' 'libigl' 'openvdb' 'wxgtk2-dev-opt') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
 provides=('superslicer')
 conflicts=('superslicer')
 source=("SuperSlicer::git+https://github.com/supermerill/SuperSlicer.git"
