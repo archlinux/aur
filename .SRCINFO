@@ -1,14 +1,14 @@
 pkgbase = rime-opencc-emoji-symbols
 	pkgdesc = Rime 输入法 Emoji 与符号滤镜
-	pkgver = 0.0.0.20200711
+	pkgver = 0.0.0.20201105
 	pkgrel = 1
 	url = https://github.com/rtransformation/rime-opencc_emoji_symbols
 	arch = any
 	license = MIT
 	depends = librime
 	depends = rime-prelude
-	source = https://github.com/rtransformation/rime-opencc_emoji_symbols/archive/9964c86f104e331324c6393c56dd40c83f61f090/rime-opencc_emoji_symbols-9964c86f104e331324c6393c56dd40c83f61f090.tar.gz
-	sha512sums = b688880c03b0df3fcb8bf7397a4c79f8a7eac76447ee5a0d5e1ff317e47c953963fc77ca427c1767702c77a2e34a1e42ff68f0752befcce783a2523f6bf09796
+	source = https://github.com/rtransformation/rime-opencc_emoji_symbols/archive/1c46cdcec9052520ab6cf79e481f3fc1b70b30c8/rime-opencc_emoji_symbols-1c46cdcec9052520ab6cf79e481f3fc1b70b30c8.tar.gz
+	b2sums = d4c1bd74da18da5665032d1ced6c53384bf686564377aaf1944ff0657c09c6cc7bb213295016bb4fc901b58323d8ad7b40a1437a51d6ffe4ab10f0f980795eaf
 
 pkgname = rime-opencc-emoji-symbols
 
