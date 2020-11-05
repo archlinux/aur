@@ -2,7 +2,7 @@
 pkgname=rajio_gtk
 pkgver=0.2
 pkgrel=1
-pkgdesc="A radio program that focuses on Japan radio"
+pkgdesc="A radio program that focuses on Japanese radio"
 arch=("x86_64")
 url="https://github.com/Dotz0cat/rajio_gtk"
 license=('GPL3')
