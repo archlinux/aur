@@ -2,23 +2,29 @@
 # ^source?      ^taken?                     ^wat
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Henrique C. Alves <hcarvalhoalves@gmail.com>
-# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 
-pkgname=matchbox-window-manager-git
-pkgver=1.2
-pkgrel=4
+_pkgname=matchbox-window-manager
+pkgname=$_pkgname-git
+pkgver=1.2.2.5.gbc880f5
+pkgrel=1
 pkgdesc="A pretty much unique X window manager with a classic PDA management policy"
 arch=('any')
 license=('GPL')
-depends=('libmatchbox' 'startup-notification' 'gconf' 'libpng' 'libsm')
+depends=('libmatchbox' 'libxcursor' 'startup-notification' 'gconf' 'libpng' 'libsm')
 url="http://matchbox-project.org/"
 source=('matchbox-window-manager::git+https://git.yoctoproject.org/git/matchbox-window-manager.git')
 
 sha256sums=('SKIP')
 
+pkgver() {
+    cd $_pkgname
+    #git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --tags |sed 's+-+.+g' 
+}
+
 build() {
-#  cd "$srcdir"/$pkgname-$pkgver
-   cd "matchbox-window-manager"
+   cd $_pkgname
    ./autogen.sh
    ./configure --sysconfdir=/etc --prefix=/usr \
       --enable-startup-notification --enable-session \
@@ -27,6 +33,6 @@ build() {
 }
 
 package() {
-  cd "matchbox-window-manager"
+  cd $_pkgname
   make DESTDIR="$pkgdir" install
 }
