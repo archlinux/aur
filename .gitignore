@@ -1,0 +1,4 @@
+check_systemd
+*pkg* 
+src
+*~
