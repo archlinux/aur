@@ -3,7 +3,7 @@
 pkgbase=vkbasalt
 pkgname=('vkbasalt' 'lib32-vkbasalt')
 pkgver=0.3.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A Vulkan post-processing layer. Some of the effects are CAS, FXAA, SMAA, deband.'
 arch=('x86_64')
 url='https://github.com/DadSchoorse/vkBasalt'
@@ -21,8 +21,6 @@ prepare() {
     "${srcdir}/vkBasalt/config/vkBasalt.conf"
   sed -i 's|/path/to/reshade-shaders/Shaders|/usr/share/reshade/shaders|g' \
     "${srcdir}/vkBasalt/config/vkBasalt.conf"
-  sed -i 's|@ld_lib_dir_vkbasalt@libvkbasalt.so|libvkbasalt.so|g' \
-    "${srcdir}/vkBasalt/config/vkBasalt.json.in"
 }
 
 build() {
@@ -31,10 +29,10 @@ build() {
   printf -- "\n------------------\n"
   printf "|  BUILDING 64B  |\n"
   printf -- "------------------\n\n"
-  meson \
+  arch-meson \
     --buildtype=release \
-    builddir
-  ninja -C builddir
+    build64
+  ninja -C build64
 
   printf -- "\n------------------\n"
   printf "|  BUILDING 32B  |\n"
@@ -44,30 +42,28 @@ build() {
   CFLAGS=-m32 \
   CXXFLAGS=-m32 \
   PKG_CONFIG_PATH=/usr/lib32/pkgconfig \
-  meson \
-    --prefix=/usr \
+  arch-meson \
     --buildtype=release \
     --libdir=lib32 \
     -Dwith_json=false \
-    builddir.32
-  ninja -C builddir.32
+    build32
+  ninja -C build32
 }
 
 package_vkbasalt() {
   install=vkbasalt.install
+  depends=('gcc-libs' 'glslang' 'libx11')
   optdepends=('reshade-shaders-git')
   cd ${srcdir}/vkBasalt
 
-  install -Dm 755 builddir/src/libvkbasalt.so "${pkgdir}/usr/lib/libvkbasalt.so"
+  DESTDIR="${pkgdir}" ninja install -C build64
   install -Dm 644 config/vkBasalt.conf "${pkgdir}/usr/share/vkBasalt/vkBasalt.conf.example"
-  install -dm 755 "${pkgdir}/usr/share/vulkan/implicit_layer.d"
-  install -Dm 644 config/vkBasalt.json.in "${pkgdir}/usr/share/vulkan/implicit_layer.d/vkBasalt.json"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/vkBasalt"
 }
 
 package_lib32-vkbasalt() {
-  depends=('vkbasalt')
-  optdepends=('reshade-shaders-git')
+  depends=('lib32-gcc-libs' 'lib32-libx11' 'vkbasalt' )
   cd ${srcdir}/vkBasalt
 
-  install -Dm 755 builddir.32/src/libvkbasalt.so "${pkgdir}/usr/lib32/libvkbasalt.so"
+  DESTDIR="${pkgdir}" ninja install -C build32
 }
