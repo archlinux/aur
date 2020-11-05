@@ -1,11 +1,11 @@
 # Maintainer: Denys Popov <denys@denyspopov.biz>
 pkgname=rukbi
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Alternative keyboard layouts with miscellaneous useful typographic characters"
 url="http://besisland.name/rukbi"
 arch=("any")
-license=("GPL3")
+license=("MIT")
 depends=("xkeyboard-config" "python")
 source=("https://github.com/denyspopov/rukbi/releases/download/$pkgver/$pkgname-$pkgver-linux.tar.bz2")
 md5sums=('6d549c632afcb78f0c84e8ed2ec4249b')

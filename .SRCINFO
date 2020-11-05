@@ -1,11 +1,11 @@
 pkgbase = rukbi
 	pkgdesc = Alternative keyboard layouts with miscellaneous useful typographic characters
 	pkgver = 4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://besisland.name/rukbi
 	install = arch-install
 	arch = any
-	license = GPL3
+	license = MIT
 	depends = xkeyboard-config
 	depends = python
 	source = https://github.com/denyspopov/rukbi/releases/download/4.1/rukbi-4.1-linux.tar.bz2
