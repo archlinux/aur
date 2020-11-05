@@ -1,0 +1,17 @@
+post_install() {
+  cat <<EOF
+
+Due to backflips made to be able to build the Kata guest image (not initrd!)
+without root account access, rootfs has uid:gid of the builer's user account.
+
+This might have subtle security implications and if that's not acceptable,
+the user could do one of the following:
+
+- alter the build process to use upstream's \`image_builder.sh\` to build
+  the image from rootfs created via \`pacman\`, with root priviledges
+- use the \`-bin\`-suffixed package, containing upstream-built images
+
+By installing this package as-is, the user acknowledges this warning.
+
+EOF
+}

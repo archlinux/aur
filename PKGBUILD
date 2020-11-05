@@ -5,7 +5,7 @@ pkgname=(
   kata-containers-image-git
 )
 pkgver=1.12.0~rc0~agent.r0.5cfb8ec
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight virtual machines for containers (guest components, Git version)"
 arch=('x86_64')
 url="https://katacontainers.io/"
@@ -161,6 +161,7 @@ package_kata-agent-git(){
 package_kata-containers-image-git(){
   conflicts=('kata-containers-image')
   provides=('kata-containers-image')
+  install=kata-containers-guest.install
   local -r _img_filename="kata-containers-${pkgver%%~*}-arch-systemd-image.img" _initrd_filename="kata-containers-${pkgver%%~*}-arch-agent-initrd.img"
   install -Dm 0644 "${srcdir}/osbuilder/image-builder/kata-containers.img" "${pkgdir}/usr/share/kata-containers/${_img_filename}"
   install -Dm 0644 "${srcdir}/initrd-arch-agent.img" "${pkgdir}/usr/share/kata-containers/${_initrd_filename}"
