@@ -2,7 +2,7 @@
 
 pkgname=csdr-jketterl-git
 pkgver=0.17.0.r9.g64ed1aa
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple DSP library and command-line tool for Software Defined Radio."
 arch=('i686' 'x86_64')
 url="https://github.com/jketterl/csdr"
@@ -32,5 +32,4 @@ build() {
 package() {
 	cd "$srcdir/$pkgname"
 	make DESTDIR="$pkgdir/" install
-	install -Dm 0755 nmux "${pkgdir}"/usr/bin/nmux
 }
