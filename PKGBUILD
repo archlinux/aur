@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxb-inspect-git
-pkgver=v0.1.0.r0.g7d71696
+pkgver=v0.1.1.r0.ga378778
 pkgrel=1
 pkgdesc="Ambiorix Backend inspector/validation tool"
 arch=('any')
