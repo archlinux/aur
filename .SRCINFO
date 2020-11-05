@@ -1,6 +1,6 @@
 pkgbase = qmarkdown-git
 	pkgdesc = qMarkdown - minimal markdown viewer
-	pkgver = r65.68db5e4
+	pkgver = r68.0729725
 	pkgrel = 1
 	url = https://github.com/Peterkmoss/qmarkdown
 	arch = x86_64
