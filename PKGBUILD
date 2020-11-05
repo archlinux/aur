@@ -1,7 +1,7 @@
 # Mantainer: Fabrizio Pietrucci <bamlessnty5@gmail.com>
 
 pkgname=jstar
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A Lightweight Embeddable Scripting Language"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake>=3.9' 'python>=2.7')
 source=("${pkgname}-${pkgver}::https://github.com/jstar-lang/jstar/archive/v${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/jstar-lang/jstar/master/LICENSE")
 
-sha256sums=("8bb74f4419b68c43953ce960112c14a81f82b8fe3c1aebd33c668c773b9bd861"
+sha256sums=("14079b3056fda471b1b84acf1149b5762c5a95a3c2862ae776e716628a19fcd2"
             "SKIP")
 
 build() {
