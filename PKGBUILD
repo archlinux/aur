@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=lava
-_cranver=1.6.8
+_cranver=1.6.8.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,10 +10,10 @@ pkgdesc="Latent Variable Models"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
-depends=('r>=3.5' r-numderiv r-squarem)
-optdepends=(r-rgraphviz r-data.table r-ellipse r-fields r-foreach r-geepack r-graph r-knitr r-bookdown r-rmarkdown r-igraph r-lavasearch2 r-lme4 r-magritts r-optimx r-polycor r-quantreg r-rgl r-r.rsp r-testthat r-visnetwork r-zoo)
+depends=('r>=3.0' r-numderiv r-squarem)
+optdepends=(r-rgraphviz r-data.table r-ellipse r-fields r-foreach r-geepack r-graph r-knitr r-bookdown r-rmarkdown r-igraph r-lavasearch2 r-lme4 r-magrittr r-mets r-optimx r-polycor r-quantreg r-rgl r-r.rsp r-testthat r-visnetwork r-zoo)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('427db19a5af7d789ffa09bb912235e181ecf8cd2e7ffca35b3ae9284b494b549')
+sha256sums=('6d243fc86c67c78ff4763502d84ff2f0889c2e55d1a59afefb7a762887473ffa')
 
 build() {
   cd "${srcdir}"
