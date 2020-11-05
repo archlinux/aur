@@ -1,7 +1,7 @@
 pkgbase = iicalc
 	pkgdesc = An extensible calculator written in Python.
 	pkgver = 2.4.5
-	pkgrel = 1
+	pkgrel = 2
 	install = iicalc.install
 	arch = any
 	groups = 
