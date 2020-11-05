@@ -1,0 +1,5 @@
+*.bak
+*.log
+*.zst
+*.xz
+cloud_sql_proxy-*
