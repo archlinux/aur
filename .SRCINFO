@@ -1,0 +1,19 @@
+pkgbase = python-contextily
+	pkgdesc = Context geo-tiles in Python
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/geopandas/contextily
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-geopy
+	depends = python-matplotlib
+	depends = python-mercantile
+	depends = python-pillow
+	depends = python-rasterio
+	depends = python-joblib
+	source = https://files.pythonhosted.org/packages/source/c/contextily/contextily-1.0.1.tar.gz
+	sha256sums = f7dc25dbc8e01163be6cdeedb49a56da9cd0d586c838861f442ef2ee45eba9d4
+
+pkgname = python-contextily
+
