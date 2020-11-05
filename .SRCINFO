@@ -1,7 +1,7 @@
 pkgbase = python-pystray
 	pkgdesc = Allows to create a system tray icon
 	pkgver = 0.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moses-palmer/pystray
 	changelog = python-pystray.changelog
 	arch = any

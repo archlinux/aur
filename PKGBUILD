@@ -3,8 +3,8 @@
 
 pkgname="python-pystray"
 pkgver=0.17.1
-pkgrel=1
-arch=(any)
+pkgrel=2
+arch=('any')
 license=('GPL3')
 pkgdesc="Allows to create a system tray icon"
 url="https://github.com/moses-palmer/pystray"
@@ -22,5 +22,4 @@ build() {
 package_python-pystray() {
   cd "pystray-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
