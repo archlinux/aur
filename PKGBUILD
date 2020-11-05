@@ -1,8 +1,8 @@
 # Maintainer: Yurii <yu.hrysh@posteo.net>
 
 pkgname=open-hexagon-git
-pkgver=r2432_2.6f36defe_1d125de
-pkgrel=2
+pkgver=2.0.preview_2.4dec917d_1d125de
+pkgrel=1
 pkgdesc='Free software clone of Super Hexagon - a music-based arcade game'
 url='https://openhexagon.org/'
 arch=('any')
@@ -25,7 +25,7 @@ _assetsname="SSVOpenHexagonAssets"
 
 pkgver() {
 	cd "$_reponame"
-	printf "r%s" "$(git rev-list --count HEAD)"
+	printf "%s" "$(git describe --tags --abbrev=0 | sed 's/^-v//; s/-/./g')"
 
 	cd "../$_assetsname"
 	printf "_%s" "$(git rev-list --count HEAD)"
