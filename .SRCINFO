@@ -31,7 +31,6 @@ pkgbase = ess-epics
 	depends = libusb
 	depends = libusb-compat
 	depends = remake
-	depends = systemd
 	depends = linux-headers
 	depends = mercurial
 	depends = boost
