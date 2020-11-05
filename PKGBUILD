@@ -1,12 +1,12 @@
 # Maintainer: Matthias Gatto <uso.cosmo.ray at gmail dot com>
 
 pkgname=yirl-git
-pkgver=r1667.8dba298
+pkgver=r1726.c761d73
 pkgrel=1
 pkgdesc='Modular Game Engine'
 
 
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 
 url='http://github.com/cosmo-ray/yirl'
 
