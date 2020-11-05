@@ -1,25 +1,18 @@
-# Maintainer:  Vincent Grande <shoober420@gmail.com>
-# Contributor: loqs
-# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
-
 pkgname=ecwolf-git
 _pkgname=ecwolf
-pkgver=1.3.3.r359.gdee8991
+pkgver=1.3.3.r365.g0fc332d
 pkgrel=1
 pkgdesc='Advanced source port of "Wolfenstein 3D" and "Spear of Destiny" based on Wolf4SDL (development version)'
 arch=('i686' 'x86_64')
 url="http://maniacsvault.net/ecwolf"
 license=('GPL' 'custom: ID')
 provides=('ecwolf')
-conflicts=('ecwolf')
 depends=('libvorbis' 'flac' 'opusfile' 'libmodplug' 'fluidsynth' 'libjpeg' 'sdl2' 'sdl2_net')
 makedepends=('git' 'cmake' 'sdl' 'sdl2')
 optdepends=('wolf3d-shareware: Demo version of Wolfenstein 3D')
-#install=ecwolf.install
-source=("git+https://bitbucket.org/ecwolf/ecwolf"
-        "git+https://bitbucket.org/ecwolf/sdl_mixer-for-ecwolf")
-sha256sums=('SKIP'
-            'SKIP')
+
+source=("git+https://bitbucket.org/ecwolf/ecwolf")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -27,24 +20,19 @@ pkgver() {
 }
 
 build() {
-  echo "Building custom SDL_mixer..."
-  cmake -B mixer-build sdl_mixer-for-ecwolf -DMAKE_SHARED=OFF -DDYN_FLUIDSYNTH=OFF
-  make -C mixer-build SDL2_mixer
-
+  
   echo "Building ecwolf..."
-  # enable gpl licensed opl emulator and force custom SDL2_mixer with dependency libraries
   export LDFLAGS="-lvorbisfile -lopusfile -lFLAC  -lmodplug -lfluidsynth $LDFLAGS"
-  cmake -B build ecwolf -DGPL=ON \
-    -DSDL2_mixer_INCLUDE_DIRS="$srcdir/sdl_mixer-for-ecwolf" \
-    -DSDL2_mixer_LIBRARIES="$srcdir/mixer-build/libSDL_mixer.a"
+  cmake -B build ecwolf -DGPL=ON
   make -C build
 }
 
 package() {
   cd build
-
   # binaries
-  install -Dm755 ecwolf "$pkgdir"/usr/bin/ecwolf
+  mkdir -p $pkgdir/usr/bin
+  ln -s /usr/share/ecwolf/ecwolf "$pkgdir"/usr/bin/ecwolf
+  install -Dm755 ecwolf "$pkgdir"/usr/share/ecwolf/ecwolf
   # data
   install -Dm644 ecwolf.pk3 "$pkgdir"/usr/share/ecwolf/ecwolf.pk3
   cd ../ecwolf

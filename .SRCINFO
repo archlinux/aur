@@ -1,6 +1,6 @@
 pkgbase = ecwolf-git
 	pkgdesc = Advanced source port of "Wolfenstein 3D" and "Spear of Destiny" based on Wolf4SDL (development version)
-	pkgver = 1.3.3.r359.gdee8991
+	pkgver = 1.3.3.r365.g0fc332d
 	pkgrel = 1
 	url = http://maniacsvault.net/ecwolf
 	arch = i686
@@ -21,10 +21,7 @@ pkgbase = ecwolf-git
 	depends = sdl2_net
 	optdepends = wolf3d-shareware: Demo version of Wolfenstein 3D
 	provides = ecwolf
-	conflicts = ecwolf
 	source = git+https://bitbucket.org/ecwolf/ecwolf
-	source = git+https://bitbucket.org/ecwolf/sdl_mixer-for-ecwolf
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = ecwolf-git
