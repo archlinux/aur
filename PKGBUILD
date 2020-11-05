@@ -1,7 +1,9 @@
+# Maintainer: pumpkincheshire <sollyonzou@gmail.com>
 # Maintainer: jerry73204 <jerry73204 at google gmail>
 
-pkgname='python-geoplot'
-pkgver=0.2.1
+pkgname=python-geoplot
+_name=geoplot
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='High-level geospatial data visualization library for Python'
 arch=('any')
@@ -9,22 +11,34 @@ url='https://github.com/ResidentMario/geoplot'
 license=('MIT')
 makedepends=('python-setuptools')
 depends=('python-matplotlib'
-         'python-seaborn'
-         'python-pandas'
-         'python-geopandas'
-         'python-cartopy'
-         'python-descartes')
-source=("https://github.com/ResidentMario/geoplot/archive/${pkgver}.tar.gz")
-sha256sums=('e336bf84c4040a9c7e68f90ba5744d1149a19854eb0b34551def8bd7c2a299d6')
-
+  'python-seaborn'
+  'python-pandas'
+  'python-geopandas'
+  'python-cartopy'
+  'python-descartes'
+  'python-mapclassify'
+  'python-contextily')
+optdepends=('python-pytest'
+  'python-pytest-mpl'
+  'python-scipy'
+  'python-pylint'
+  'jupyter'
+  'python-sphinx'
+  'python-sphinx-gallery'
+  'python-sphinx_rtd_theme'
+  'python-mplleaflet')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
+  "https://raw.githubusercontent.com/ResidentMario/geoplot/master/LICENSE.md")
+sha256sums=('eb073436c5a1cb7f97caa217cdb109e6cad4f3774e657757005e3f0f5a3183ca'
+  'c1b05901300a8f7a4fc337b5197815e7f6444a1c2756e35f3d7e9b1df18146a6')
 build() {
-  cd "${srcdir}/geoplot-${pkgver}"
+  cd "$_name-$pkgver"
   python setup.py build
 }
 
-package_python-geoplot() {
-  cd "${srcdir}/geoplot-$pkgver"
-  python setup.py install --skip-build --prefix=/usr --root="${pkgdir}" --optimize=1
-  install -D -m644 LICENSE* "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m644 README* "${pkgdir}/usr/share/doc/${pkgname}/README"
+package() {
+  cd "$_name-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 "$srcdir/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  #  install -Dm644 $scrdir/README* "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
