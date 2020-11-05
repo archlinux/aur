@@ -3,13 +3,12 @@
 pkgname=open-hexagon-git
 pkgver=2.0.preview.r1757.g4dec917d
 pkgrel=1
-epoch=2
+epoch=1
 pkgdesc='Free software clone of Super Hexagon - a music-based arcade game'
 url='https://openhexagon.org/'
 arch=('any')
 license=('custom:AFL-3.0' 'custom')
-depends=('sfml')
-makedepends=('git' 'cmake' 'rsync')
+makedepends=('git' 'sfml' 'cmake' 'rsync')
 provides=('open-hexagon')
 conflicts=('open-hexagon')
 source=('git+https://github.com/SuperV1234/SSVOpenHexagon.git'
@@ -57,6 +56,7 @@ package() {
 	
 	# Dirty hack to allow writing data to current directory
 	cd "$pkgdir/usr/lib/open-hexagon"
+	touch "$pkgdir/var/lib/open-hexagon/log.txt"
 	ln -s "../../../var/lib/open-hexagon/log.txt"
 	mv config.json "$pkgdir/var/lib/open-hexagon/"
 	ln -s "../../../var/lib/open-hexagon/config.json"
