@@ -5,8 +5,6 @@ pkgrel=1
 pkgdesc="A radio program that focuses on Japan radio"
 arch=("any")
 url="https://github.com/Dotz0cat/rajio_gtk"
-#this program is not gpl
-#I have no idea how to lisecne it yet
 license=('GPL3')
 depends=('gtk3' 'gstreamer' 'sqlite3' 'gst-plugins-good' 'gst-plugins-bad')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/Dotz0cat/rajio_gtk/archive/$pkgver.tar.gz)
