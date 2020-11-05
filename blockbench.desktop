@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Blockbench
+Version=3.7.2
+GenericName=3D model editor
+Comment=A boxy 3D model editor
+Exec=/usr/bin/blockbench %f
+Icon=blockbench
+Type=Application
+Categories=Graphics;3DGraphics

@@ -1,0 +1,21 @@
+pkgbase = blockbench-git
+	pkgdesc = A body 3D model editor, uses system electron and is built from git
+	pkgver = 3.7.2
+	pkgrel = 1
+	url = https://github.com/JannisX11/blockbench
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = npm
+	depends = electron9
+	provides = blockbench
+	conflicts = blockbench
+	source = blockbench::git+https://github.com/JannisX11/blockbench#tag=v3.7.2
+	source = blockbench.patch
+	source = blockbench.desktop
+	sha512sums = SKIP
+	sha512sums = c31d9a35f2cb769c1d7094fb5b97639796a967f5319d19b5370bd5d72889d636ed203edeb1782e473c4f66188c88c3c300f5d19f572ce797a216a45aea7573f3
+	sha512sums = dcb8be4a330f5e56893d3238cf08e808926f6c4932328f07420b824d87a4b1ada2f1682e5af78083a2acb2b85992ce542eb96e7e3c9fea62dc265bade59dad5f
+
+pkgname = blockbench-git
+
