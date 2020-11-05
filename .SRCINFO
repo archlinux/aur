@@ -1,0 +1,12 @@
+pkgbase = little-space-git
+	pkgdesc = Small Shoot'em UP
+	pkgver = r14.b4ca8ba
+	pkgrel = 1
+	url = https://github.com/cosmo-ray/little-space/tree/little-space
+	arch = any
+	depends = yirl-git
+	source = git://github.com/cosmo-ray/little-space.git#branch=little-space
+	sha256sums = SKIP
+
+pkgname = little-space-git
+
