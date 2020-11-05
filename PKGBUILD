@@ -48,7 +48,7 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-dev
 # pkgname=('linux-bfq-dev' 'linux-bfq-dev-headers' 'linux-bfq-dev-docs')
 _major=5.9
-_minor=4
+_minor=5
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -80,6 +80,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_lucjanpath}/arch-patches-v4-sep/0002-mac80211-fix-regression-where-EAPOL-frames-were-sent.patch"
+        "${_lucjanpath}/upstream-fixes/0001-Fix-ASoC-SOF-fix-a-runtime-pm-issue-in-SOF-when-HDMI.patch"
         "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
@@ -324,13 +325,14 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('911e9b437df70f9c092e14f7daf22a62026f6aaadfcb599d27c88aaf8bbedc87cc917cff5a84c3ea3dca9f9a9e094a4228ed4480131bfa8adcf895f77518358b'
+sha512sums=('8847b52ed368fe3fa7728e0436b3fe65f9e781ad4cb50b3461c1d4f9831bfdc05f43ce778aa83521dc447ab356177a4875b625516015205c6c25286c22ebfa68'
             'SKIP'
             '7d30c34e75c2800d93c01e34ca23a00cda24d2f44bb837a48f6789c50ad69f7db4cc93d1fc75e43cfa4d4f4e9c612330dd595c56c13f8abb5d062338ea30697c'
             'cf634a9e0298adf1d05b7a8048ba2f89d4b8490cf48f1ab493cb40473116f360035b7fb3d8a54af980b1a49a1ad4dcfbc4ca69de8543b8bdf0a1d586908bd093'
             '96427eecb0078ce57a40ef4ee78d3576216f27390ba6b9dfbb851f4d969558a82b698cc633217ad8f6b9d991e7eaebd613ed4bd5741cafe7fa40b2502dacd43a'
             '6f315551225e7d31595bfc6ff2cc0ea46d88c1d0c54024ee29da04c0d2573865d68b78bf2e9bf545e41f3231933bbe08b694d564af857ba5053ee467b6a48cb2'
             '465fb40b6574cb6a64f2975998ccb13047c424553d7ac80ed46b2d8371657a4f3003efc81ec5227e2f09724e08599443cb4b3cd1018d889631e1a215891f10c8'
+            '8b416c06417cfcd94643b4fd775b46abe9e97419d28e8f6a6e380f43ef6425214a040cc0b73ce137b4a463b04956a44a62bc53810e4ce67c939f69f648c5dadc'
             'b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6'
             '0704f58ac0f4d07133408a8165247b2495fe5c74b446a7d1f4011665d03c1be6eb7f94a643438bde1bb749f109e5eb8cdbe8934b278de4373a81d6311e6ad716')
 
