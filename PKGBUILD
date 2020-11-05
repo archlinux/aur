@@ -10,7 +10,7 @@ provides=('gdal=3.0.4')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
 pkgver=3.0.4
-pkgrel=2
+pkgrel=2.0
 pkgdesc="A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=('x86_64')
 url="http://www.gdal.org/"
@@ -23,7 +23,9 @@ depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'li
 makedepends=('perl' 'swig' 'chrpath' 'doxygen' 'python-numpy' 'boost')
 optdepends=('postgresql: postgresql database support'
             'mariadb: mariadb database support'
-            'perl: perl binding support')
+            'perl: perl binding support'
+            'unixodbc: when present while building, will add odbc support'
+)
 options=('!emptydirs')
 changelog=$pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
