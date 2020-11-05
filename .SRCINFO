@@ -1,23 +1,24 @@
 pkgbase = htop-solarized
 	pkgdesc = Interactive process viewer with solarized patch
-	pkgver = 2.2.0
+	pkgver = 3.0.2
 	pkgrel = 1
-	url = http://hisham.hm/htop/
+	url = https://htop.dev/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = GPL
-	makedepends = python2
 	depends = ncurses
+	depends = libncursesw.so
+	depends = libnl
 	optdepends = lsof: show files opened by a process
 	optdepends = strace: attach to a running process
 	provides = htop
 	conflicts = htop
 	options = !emptydirs
-	source = http://hisham.hm/htop/releases/2.2.0/htop-2.2.0.tar.gz
-	source = htop-2.2.0-solarized.patch
-	sha512sums = ec1335bf0e3e0387e5e50acbc508d0effad19c4bc1ac312419dc97b82901f4819600d6f87a91668f39d429536d17304d4b14634426a06bec2ecd09df24adc62e
-	sha512sums = 5fa6d5627d3157bedb0b5d22b2d9c932af02bcf61bfed3f6f335f47eabef29d58820570c70f8babbd76ca0b938fda567cd51c6d8ec1c50f87b6d43d8b57c22dd
+	source = https://github.com/htop-dev/htop/archive/3.0.2/htop-3.0.2.tar.gz
+	source = htop-solarized.patch
+	sha256sums = b4744a3bea279f2a3725ed8e5e35ffd9cb10d66673bf07c8fe21feb3c4661305
+	sha256sums = d602046cf90caed976061a09c34c8156de5023b93245de53b6ae115651b78ccb
 
 pkgname = htop-solarized
 
