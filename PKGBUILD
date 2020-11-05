@@ -1,20 +1,20 @@
 _pkgname="kst"
 pkgname="${_pkgname}-git"
 pkgrel=1
-pkgver=2.0.8r3383.8294c2fe
+pkgver=2.0.8r3411.b2e8bcf8
 pkgdesc="Fast real-time large-dataset viewing and plotting tool for KDE"
 arch=('i686' 'x86_64')
 url="http://kst-plot.kde.org"
 license=('GPL')
-depends=('hdf5' 'gsl' 'qt5-base' 'qt5-svg' 'muparser' 'python2-scipy>=0.9' 'python2-numpy>=1.6' 'cfitsio' 'python2-pyside')
+depends=('hdf5<1.12.0' 'gsl' 'qt5-base' 'qt5-svg' 'muparser' 'python2-scipy>=0.9' 'python2-numpy>=1.6' 'cfitsio' 'python2-pyside')
 optdepends=(
   'getdata: provides support for files in the Dirfile format'
   'libmatio: provides support for Matlab binary files'
 )
 makedepends=('cmake')
 #install=$pkgname.install
-source=("git://anongit.kde.org/kst-plot.git" "0001-Fixed-HDF5-patch-for-archlinux-users.patch")
-md5sums=('SKIP' '775b873a12b1b6125bd02cad752a9306')
+source=("git+https://invent.kde.org/graphics/kst-plot.git" "0001-Fixed-HDF5-patch-for-archlinux-users.patch")
+md5sums=('SKIP' 'bcb70f7257da37e57938879ebfbd7466')
 provides=("${_pkgname}")
 pkgver() {
   cd "${srcdir}/${_pkgname}-plot"
