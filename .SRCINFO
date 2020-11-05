@@ -1,8 +1,8 @@
 pkgbase = rustscan
-	pkgdesc = Faster Nmap Scanning with Rust
-	pkgver = 1.10.0
+	pkgdesc = The Modern Port Scanner
+	pkgver = 2.0.0
 	pkgrel = 1
-	url = https://github.com/brandonskerritt/RustScan
+	url = https://github.com/rustscan/RustScan
 	arch = x86_64
 	arch = i686
 	license = GPL3
@@ -10,8 +10,8 @@ pkgbase = rustscan
 	depends = nmap
 	provides = rustscan
 	conflicts = rustscan
-	source = rustscan-1.10.0.tar.gz::https://github.com/brandonskerritt/RustScan/archive/1.10.0.tar.gz
-	sha256sums = 63c387c645826107734eb10d45b0a540a69fb3a61e478593f515adce95bad530
+	source = rustscan-2.0.0.tar.gz::https://github.com/rustscan/RustScan/archive/2.0.0.tar.gz
+	sha256sums = 94e1a825b0b063e3134d2dfb2b8a047b7527aa5a0ecd83b9627aee0dab1a55e0
 
 pkgname = rustscan
 
