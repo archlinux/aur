@@ -1,8 +1,8 @@
 # Maintainer: Jonathon Fernyhough <jonathon+m2x@dev>
 
 pkgname=hypnotix-git
-pkgver=r2.5687e0e
-pkgrel=3
+pkgver=r7.440acc1
+pkgrel=1
 pkgdesc="An IPTV app"
 arch=(any)
 url="https://github.com/linuxmint/hypnotix"
@@ -33,6 +33,6 @@ package() {
 	install -D     -t "$pkgdir"/usr/lib/hypnotix usr/lib/hypnotix/{common,hypnotix,mpv}.py
 	install -Dm644 -t "$pkgdir"/usr/share/applications usr/share/applications/hypnotix.desktop
 	install -Dm644 -t "$pkgdir"/usr/share/glib-2.0/schemas usr/share/glib-2.0/schemas/org.x.hypnotix.gschema.xml
-	install -Dm644 -t "$pkgdir"/usr/share/hypnotix usr/share/hypnotix/{hypnotix,shortcuts}.ui
+	install -Dm644 -t "$pkgdir"/usr/share/hypnotix usr/share/hypnotix/*
 	install -Dm644 -t "$pkgdir"/usr/share/icons/hicolor/scalable/apps usr/share/icons/hicolor/scalable/apps/hypnotix.svg
 }
