@@ -57,15 +57,16 @@ package() {
 	
 	# Dirty hack to allow writing data to current directory
 	cd "$pkgdir/usr/lib/open-hexagon"
+	ln -s "../../../var/lib/open-hexagon/log.txt"
 	mv config.json "$pkgdir/var/lib/open-hexagon/"
 	ln -s "../../../var/lib/open-hexagon/config.json"
-	touch "$pkgdir/var/lib/open-hexagon/log.txt"
-	ln -s "../../../var/lib/open-hexagon/log.txt"
-	rm scores.json
-	rm users.json
+	mv scores.json "$pkgdir/var/lib/open-hexagon/"
+	ln -s "../../../var/lib/open-hexagon/scores.json"
+	mv users.json "$pkgdir/var/lib/open-hexagon/"
+	ln -s "../../../var/lib/open-hexagon/users.json"
 	mkdir "$pkgdir/var/lib/open-hexagon/Profiles"
-	mkdir "$pkgdir/var/lib/open-hexagon/Replays"
 	ln -s "../../../var/lib/open-hexagon/Profiles"
+	mkdir "$pkgdir/var/lib/open-hexagon/Replays"
 	ln -s "../../../var/lib/open-hexagon/Replays"
 	chmod -R a+w "$pkgdir/var/lib/open-hexagon"
 
