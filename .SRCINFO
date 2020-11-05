@@ -1,21 +1,18 @@
 pkgbase = deepin-wine5
 	pkgdesc = Deepin Wine5
-	pkgver = 5.0.11
+	pkgver = 5.0.16
 	pkgrel = 1
 	url = http://www.deepin.org
 	arch = i686
 	arch = x86_64
 	license = Proprietary
 	makedepends = tar
-	noextract = deepin-wine5_5.0.11-1_i386.deb
-	noextract = deepin-wine5-i386_5.0.11-1_i386.deb
-	noextract = deepin-wine5-tools_5.0.11-1_i386.deb
-	source = https://community-packages.deepin.com/deepin/pool/main/d/deepin-wine5/deepin-wine5_5.0.11-1_i386.deb
-	source = https://community-packages.deepin.com/deepin/pool/main/d/deepin-wine5/deepin-wine5-i386_5.0.11-1_i386.deb
-	source = https://community-packages.deepin.com/deepin/pool/main/d/deepin-wine5/deepin-wine5-tools_5.0.11-1_i386.deb
-	md5sums = 7eac8b1924331c6204754a32b4955242
-	md5sums = 03f6b8554645fbdd59a3cf81ed1d8354
-	md5sums = 834f320cff9a4a17f3a262a2d406407c
+	noextract = deepin-wine5_5.0.16-1_i386.deb
+	noextract = deepin-wine5-i386_5.0.16-1_i386.deb
+	source = https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine5/deepin-wine5_5.0.16-1_i386.deb
+	source = https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine5/deepin-wine5-i386_5.0.16-1_i386.deb
+	sha256sums = c50f7095baa3c8f9ff330ad5215c439362a8f3e0f7621a20ecea0890e9e3c621
+	sha256sums = ea3f354438483a0f8f48e015905bc52a41a06d6ff27910c8b71f22f7fb223bdf
 
 pkgname = deepin-wine5
 	depends = deepin-wine5-i386
@@ -34,6 +31,7 @@ pkgname = deepin-wine5-i386
 	depends = lib32-libcanberra-pulse
 	depends = lib32-libudev0-shim
 	depends = lib32-libusb
+	depends = lib32-vkd3d
 	depends = lib32-libx11
 	depends = lib32-libxext
 	depends = lib32-libxml2
@@ -50,8 +48,4 @@ pkgname = deepin-wine5-i386
 	depends = lib32-libxrandr
 	depends = lib32-libxi
 	depends = lib32-glu
-
-pkgname = deepin-wine5-tools
-	depends = deepin-wine5
-	conflicts = wine
 

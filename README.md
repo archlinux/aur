@@ -15,7 +15,6 @@
 直接通过 AUR 仓库安装:
 
 ```shell
-# 目前还处于评估阶段，不建议安装deepin-wine5-tools这个包，会卸载掉 wine
 yay -S deepin-wine5
 ```
 
