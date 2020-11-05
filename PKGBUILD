@@ -8,7 +8,7 @@ pkgbase=pipewire-gstfree
 _pkgbase=pipewire
 pkgname=(pipewire-gstfree pipewire-gstfree-docs pipewire-gstfree-jack pipewire-gstfree-pulse pipewire-gstfree-alsa)
 pkgver=0.3.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies"
 url="https://pipewire.org"
 license=(LGPL2.1)
@@ -77,9 +77,11 @@ package_pipewire-gstfree() {
 
   _pick pulse usr/bin/pw-pulse usr/lib/pipewire-$_ver/pulse
   _pick pulse usr/lib/pipewire-$_ver/libpipewire-module-protocol-pulse.so
+  _pick pulse usr/share/man/man1/pw-pulse.1
 
   _pick jack usr/bin/pw-jack usr/lib/pipewire-$_ver/jack
   _pick jack usr/lib/spa-0.2/jack
+  _pick jack usr/share/man/man1/pw-jack.1
 
   # Use alsa-card-profiles built with Pulseaudio
   rm -rv "$pkgdir"/usr/share/alsa-card-profile
