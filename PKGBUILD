@@ -12,6 +12,7 @@ pkgdesc="A pretty much unique X window manager with a classic PDA management pol
 arch=('any')
 license=('GPL')
 depends=('libmatchbox' 'libxcursor' 'startup-notification' 'gconf' 'libpng' 'libsm')
+conflicts=('matchbox-window-manager')
 url="http://matchbox-project.org/"
 source=('matchbox-window-manager::git+https://git.yoctoproject.org/git/matchbox-window-manager.git')
 
