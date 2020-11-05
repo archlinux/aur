@@ -1,6 +1,6 @@
 pkgbase = plasma-systemmonitor-git
 	pkgdesc = New version of KSysGuard built on top of the new KStats daemon and using QML for its UI, git version
-	pkgver = v5.20.0.r2.g0eaa8e1
+	pkgver = v5.20.0.r4.g0973e58
 	pkgrel = 1
 	url = https://github.com/KDE/plasma-systemmonitor
 	arch = x86_64
