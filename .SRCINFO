@@ -1,0 +1,20 @@
+pkgbase = lightcord-appimage
+	pkgdesc = A simple - customizable - Discord Client
+	pkgver = 0.14
+	pkgrel = 1
+	url = https://github.com/Lightcord/Lightcord
+	arch = x86_64
+	license = MIT
+	optdepends = picom: transparency support
+	provides = lightcord
+	conflicts = lightcord-bin
+	conflicts = lightcord-git
+	source = lightcord.AppImage::https://lightcord.org/api/gh/releases/Lightcord/Lightcord/dev/lightcord-linux-x86_64.AppImage
+	source = lightcord.desktop
+	source = lightcord.png::https://raw.githubusercontent.com/Lightcord/LightcordLogos/master/lightcord/lightcord.png
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = lightcord-appimage
+
