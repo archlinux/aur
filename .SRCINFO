@@ -7,7 +7,6 @@ pkgbase = csdr-jketterl-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = python
 	provides = csdr
 	source = csdr-jketterl-git::git://github.com/jketterl/csdr.git
 	md5sums = SKIP
