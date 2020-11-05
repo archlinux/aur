@@ -3,7 +3,7 @@
 pkgname='matterircd'
 _github_path="github.com/42wim/${pkgname}"
 _go_pkg_path="src/${_github_path}"
-pkgver='0.20.0'
+pkgver='0.20.2'
 pkgrel='1'
 pkgdesc='Minimal IRC server which integrates with mattermost and slack'
 arch=('x86_64' 'armv7h')
@@ -21,10 +21,11 @@ source=(
     "${pkgname}.sysusers"
 )
 
-sha512sums=('17fd5d9ccf3e2fb04ccbf82f0816e6a5e7217ab3e940a88a4518fae71e3a81081ebab7e611b3e4916d9daddbe0993ea717eb84deca9d6da1ea6cbb8b93c6ef8c'
+sha512sums=('aa0a96439241237eed46b9562ac8fdc522cd5cf6e2f3b64fd42244e13b18d63f293ce32cd53baa06d5625ec53fd1d17efb7ca882b0cafd9a5aa2dc0e324b26ca'
             'SKIP'
             'a1c8947ca8ed510b0abd94e1eb3f049a7179a596e20975f343f1fd6a034512b3e7d5daa082ed0e7662757d416b3b10f318de5a8fe9c44923d2cfbd15742d3ba0'
             '80db251f5b087ba6bcdd6f266063fb749107a441f794678d645acf32d44aba7b53c2c9ef7a9c3962abfd6e8af20a2d29e93bde1c15358d9f2011ce98b68e56dc')
+
 
 prepare() {
     export GOPATH="${srcdir}"
