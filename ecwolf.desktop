@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/ecwolf
+GenericName=ECWolf is an advanced source port for Wolfenstein 3D, Spear of Destiny, and Super 3D Noah's Ark based off of the Wolf4SDL code base.
+Icon=/usr/share/ecwolf/icon.png
+Name=ECWolf
+StartupNotify=true
+Categories=Game;

@@ -31,14 +31,17 @@ package() {
   cd build
   # binaries
   mkdir -p $pkgdir/usr/bin
-  ln -s /usr/share/ecwolf/ecwolf "$pkgdir"/usr/bin/ecwolf
-  install -Dm755 ecwolf "$pkgdir"/usr/share/ecwolf/ecwolf
+  ln -s /usr/share/ecwolf/ecwolf $pkgdir/usr/bin/ecwolf
+  install -Dm755 ecwolf $pkgdir/usr/share/ecwolf/ecwolf
   # data
-  install -Dm644 ecwolf.pk3 "$pkgdir"/usr/share/ecwolf/ecwolf.pk3
+  install -Dm644 ecwolf.pk3 $pkgdir/usr/share/ecwolf/ecwolf.pk3
   cd ../ecwolf
+  #icon
+  install -Dm644 $startdir/icon.png $pkgdir/usr/share/ecwolf/icon.png
+  install -Dm755 $startdir/ecwolf.desktop $pkgdir/usr/share/applications/ECWolf.desktop
   # doc
-  install -d "$pkgdir"/usr/share/doc/$pkgname
-  install -Dm644 README.* "$pkgdir"/usr/share/doc/$pkgname
+  install -d $pkgdir/usr/share/doc/$pkgname
+  install -Dm644 README.* $pkgdir/usr/share/doc/$pkgname
   # license
-  install -Dm644 docs/license-id.txt "$pkgdir"/usr/share/licenses/$pkgname/license-id.txt
+  install -Dm644 docs/license-id.txt $pkgdir/usr/share/licenses/$pkgname/license-id.txt
 }
