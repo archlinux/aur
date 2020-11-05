@@ -11,7 +11,7 @@ _webview_provider=${SYNCTHING_TRAY_WEBVIEW_PROVIDER:-webengine}
 
 _reponame=syncthingtray
 pkgname=syncthingtray-lite
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing - without the KDE integrations'
@@ -25,7 +25,7 @@ checkdepends=('cppunit' 'syncthing' 'iproute2')
 conflicts=('syncthingtray' 'syncthingtray-git')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('fe8358c74862511046466d1cbfe216a255ba8d390b464369514e4404e3747b83')
+sha256sums=('50bd3a4af648e83ff8e418acf89184d921872656e3820baff9573d186b97d060')
 
 ephemeral_port() {
   comm -23 <(seq 49152 65535) <(ss -tan | awk '{print $4}' | cut -d':' -f2 | grep "[0-9]\{1,5\}" | sort | uniq) | shuf | head -n 1
