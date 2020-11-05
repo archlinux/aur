@@ -1,0 +1,13 @@
+pkgbase = kerpack-svn
+	pkgdesc = A program for compressing apps and the KolibriOS kernel using the LZMA method.
+	pkgver = r8139
+	pkgrel = 1
+	url = https://board.kolibrios.org/viewtopic.php?f=1&t=768
+	arch = any
+	license = GPLv3
+	makedepends = svn
+	source = svn://kolibrios.org/programs/other/kpack/kerpack_linux
+	md5sums = SKIP
+
+pkgname = kerpack-svn
+
