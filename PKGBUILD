@@ -2,7 +2,7 @@
 # Dizoft Team
 
 pkgname=dron
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Small command line shell executor"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/DizoftTeam/dron"
 license=('Apache')
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DizoftTeam/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('ddf8522ec99e594dad1b73e434e7eada')
+md5sums=('dd6e5d753ea88aa5f6b7803d88e87e52')
 
 build() {
   cd "$pkgname-$pkgver"
