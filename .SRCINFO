@@ -1,7 +1,7 @@
 pkgbase = python-libpysal
 	pkgdesc = Core components of Python Spatial Analysis Library.
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pysal.org/libpysal/
 	arch = any
 	license = BSD
@@ -21,7 +21,7 @@ pkgbase = python-libpysal
 	optdepends = python-numpydoc: documents
 	optdepends = python-pytest: tests
 	optdepends = python-pytest-cov: tests
-	optdepends = pytest-cov: tests
+	optdepends = python-pytest-cov: tests
 	optdepends = python-matplotlib: tests, plus conda
 	optdepends = python-codecov: tests
 	optdepends = python-geomet: plus pip

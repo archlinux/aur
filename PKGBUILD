@@ -3,7 +3,7 @@
 _name=libpysal
 pkgname=python-libpysal
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Core components of Python Spatial Analysis Library."
 arch=('any')
 url="https://pysal.org/libpysal/"
@@ -19,7 +19,7 @@ optdepends=(
   'python-numpydoc: documents'
   'python-pytest: tests'
   'python-pytest-cov: tests'
-  'pytest-cov: tests'
+  'python-pytest-cov: tests'
   'python-matplotlib: tests, plus conda'
   'python-codecov: tests'
   'python-geomet: plus pip'
