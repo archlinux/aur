@@ -25,6 +25,7 @@ pkgbase = pcsx2-git
 	source = git+https://github.com/PCSX2/pcsx2.git
 	source = git+https://github.com/fmtlib/fmt.git
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = pcsx2-git
 
