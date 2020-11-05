@@ -1,0 +1,22 @@
+pkgbase = web-xdg-open-git
+	pkgdesc = A smart browser that tries to open content in the appropriate xdg app before resorting to the browser
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/mendess/web-xdg-open
+	arch = any
+	license = GPL
+	depends = xdg-utils
+	depends = file
+	depends = curl
+	depends = youtube-dl
+	depends = coreutils
+	optdepends = libnotify
+	optdepends = mpv
+	optdepends = xclip
+	provides = web-xdg-open
+	conflicts = web-xdg-open
+	source = git+https://github.com/mendess/web-xdg-open
+	md5sums = SKIP
+
+pkgname = web-xdg-open-git
+
