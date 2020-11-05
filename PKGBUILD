@@ -1,39 +1,34 @@
+# Maintainer: PumpkinCheshire <sollyonzou@gmail.com>
 # Contributor: Ishan Arora <ishanarora@gmail.com>
 
-pkbase=python-oct2py
-pkgname=('python-oct2py' 'python2-oct2py')
-pkgver=4.0.6
+_name=oct2py
+pkgname=python-oct2py
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="Python to GNU Octave bridge."
 arch=('any')
 url="http://github.com/blink1073/oct2py"
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools' 'jupyter-octave_kernel')
-source=("https://github.com/blink1073/oct2py/archive/v${pkgver}.tar.gz")
-md5sums=('00d4a5cd3ae5d5409d6a4b0c8f286211')
+depends=('python-scipy' 'python-numpy' 'jupyter-octave_kernel' 'gnuplot')
+optdepends=('python-pytest: for test use'
+            'python-pandas: for test use'
+            'jupyter-nbconvert: for test use'
+            'python-sphinx: documentation support'
+            'python-sphinx-bootstrap-theme'
+            'python-numpydoc: documentation support')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('7e7f03724d60745b6ff49760027712a5ae22ed3c67f8d4560ba8a80c2ebdfaf0')
+
 
 build() {
-  cp -r "${srcdir}"/oct2py-$pkgver "${srcdir}"/oct2py-$pkgver-py2
-
-  cd "${srcdir}"/oct2py-$pkgver
-  python setup.py build
-
-  cd "${srcdir}"/oct2py-$pkgver-py2
-  python2 setup.py build
-} 
-
-package_python-oct2py() {
-  depends=('python-scipy' 'jupyter-octave_kernel')
-
-  cd "${srcdir}"/oct2py-$pkgver
-  python setup.py install --root="${pkgdir}" --optimize=1
+    cd "$srcdir/$_name-$pkgver"
+    python setup.py build
 }
 
-package_python2-oct2py() {
-  depends=('python2-scipy' 'octave')
-
-  cd "${srcdir}"/oct2py-$pkgver-py2
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+package() {
+	cd "$srcdir/$_name-$pkgver"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/python-$_name/LICENSE"
 }
-
 
