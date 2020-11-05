@@ -4,7 +4,7 @@
 pkgname=vivaldi-ffmpeg-codecs
 pkgver=86.0.4240.185
 _vivaldi_major_version=3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="additional support for proprietary codecs for vivaldi"
 arch=('x86_64')
 url="https://ffmpeg.org/"
