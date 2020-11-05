@@ -1,7 +1,7 @@
 pkgbase = kata-containers-guest
 	pkgdesc = Lightweight virtual machines for containers (guest components)
 	pkgver = 1.11.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://katacontainers.io/
 	arch = x86_64
 	license = Apache
@@ -44,4 +44,5 @@ pkgname = kata-agent
 pkgname = kata-linux-container
 
 pkgname = kata-containers-image
+	install = kata-containers-guest.install
 
