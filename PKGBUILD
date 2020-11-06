@@ -1,6 +1,6 @@
 # Maintainer: Marc Straube <email@marcstraube.de>
 pkgname=apacheadm
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Tool to enable and disable apache modules and virtual hosts"
 arch=('any')
@@ -22,7 +22,7 @@ backup=('etc/httpd/conf/mods-available/alias.conf'
         'etc/httpd/conf/mods-available/ssl.conf'
         'etc/httpd/conf/mods-available/unixd.conf')
 source=("https://github.com/marcstraube/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('0082ffab77840196d0b58e27896d06a8')
+sha512sums=('fc7e9382acd3e60f7815f81f236099a841d0f781dc448492f010233bae611ed8e781e60622c9b19f9e6c7cbf6c9ff74048fe9a15e84f7b30f533fedce12c9a50')
 
 package() {
     cd "$pkgname-$pkgver"
