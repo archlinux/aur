@@ -1,31 +1,28 @@
-# Maintainer: Kuan-Yen Chou <forendef2846 at gmail dot com>
+# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=bgpdump
-pkgver=1.6.0
+pkgver=1.6.2
 pkgrel=1
-pkgdesc='A C library designed to help with analyzing dump files produced by Zebra/Quagga or MRT'
-depends=('zlib' 'bzip2')
-makedepends=('autoconf')
+pkgdesc='Utility and C Library for parsing MRT files'
 arch=('x86_64')
-url="https://bitbucket.org/ripencc/bgpdump"
-license=('GPL')
-provides=('bgpdump')
-source=("https://bitbucket.org/ripencc/bgpdump/get/${pkgver}.tar.gz")
-sha512sums=('04883a01fbc2829a4298b3f280d1a6c023f57fbabca082ea8578130235a088c0f326888c523b1e59485cc889b9c18888beb1a5bc3ecd0fe1054200c390251153')
+url="https://github.com/RIPE-NCC/bgpdump"
+license=('GPL2')
+depends=('zlib' 'bzip2')
+makedepends=()
+source=("https://github.com/RIPE-NCC/bgpdump/archive/v${pkgver}.tar.gz")
+sha256sums=('415692c173a84c48b1e927a6423a4f8fd3e6359bc3008c06b7702fe143a76223')
 
 build() {
-    cd "${srcdir}"/ripencc-bgpdump-*
+    cd "${srcdir}/${pkgname}-${pkgver}"
     autoheader
     autoconf
-    ./configure \
-        --prefix="${pkgdir}/usr" \
-        --sbindir="${pkgdir}/usr/bin"
+    ./configure --prefix=/usr --sbindir=/usr/bin
     make
 }
 
 package() {
-    cd "$srcdir"/ripencc-bgpdump-*
-    make install
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
     install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 

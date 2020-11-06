@@ -1,16 +1,14 @@
 pkgbase = bgpdump
-	pkgdesc = A C library designed to help with analyzing dump files produced by Zebra/Quagga or MRT
-	pkgver = 1.6.0
+	pkgdesc = Utility and C Library for parsing MRT files
+	pkgver = 1.6.2
 	pkgrel = 1
-	url = https://bitbucket.org/ripencc/bgpdump
+	url = https://github.com/RIPE-NCC/bgpdump
 	arch = x86_64
-	license = GPL
-	makedepends = autoconf
+	license = GPL2
 	depends = zlib
 	depends = bzip2
-	provides = bgpdump
-	source = https://bitbucket.org/ripencc/bgpdump/get/1.6.0.tar.gz
-	sha512sums = 04883a01fbc2829a4298b3f280d1a6c023f57fbabca082ea8578130235a088c0f326888c523b1e59485cc889b9c18888beb1a5bc3ecd0fe1054200c390251153
+	source = https://github.com/RIPE-NCC/bgpdump/archive/v1.6.2.tar.gz
+	sha256sums = 415692c173a84c48b1e927a6423a4f8fd3e6359bc3008c06b7702fe143a76223
 
 pkgname = bgpdump
 
