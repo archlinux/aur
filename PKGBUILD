@@ -1,5 +1,5 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
-pkgname=flucoma-supercollider
+pkgname=supercollider-flucoma
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Fluid Corpus Manipulation plugins for Supercollider"

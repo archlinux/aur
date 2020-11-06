@@ -1,4 +1,4 @@
-pkgbase = flucoma-supercollider
+pkgbase = supercollider-flucoma
 	pkgdesc = Fluid Corpus Manipulation plugins for Supercollider
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = flucoma-supercollider
 	source = https://github.com/flucoma/flucoma-sc/releases/download/1.0.0-RC1/FluidCorpusManipulation_Supercollider_Linux_1_0_0-RC1.tar.gz
 	md5sums = 01884700d6f88bdc46faccc062fe4b07
 
-pkgname = flucoma-supercollider
+pkgname = supercollider-flucoma
 
