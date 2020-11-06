@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-lua
-pkgver=0.10.17
-pkgrel=2
+pkgver=0.10.19
+pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.19.3
@@ -24,7 +24,7 @@ validpgpkeys=(
 
 sha256sums=('91e5b74fa17879d2463294e93ad8f6ffc066696ae32ad0478ffe15ba0e9e8df0'
             'SKIP'
-            '1ebdcb041ca3bd238813ef6de352285e7418e6001c41a0a260b447260e37716e')
+            '242d60b97eb7459cd0c0d58083cf7f3195d46181829da45ab8b09a857bb0ed01')
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
