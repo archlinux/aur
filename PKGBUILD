@@ -1,28 +1,28 @@
 # Maintainer: Zpalmtree <https://github.com/zpalmtree>
 pkgname=violetminer-bin
-pkgver=v0.1.1
+pkgver=v0.2.2
 pkgrel=0
 pkgdesc='Argon2 CPU and Nvidia miner for TurtleCoin and WrkzCoin'
 arch=('x86_64' 'aarch64')
 url='https://github.com/turtlecoin/violetminer'
 license=('GPL3')
 conflicts=('violetminer-git')
-source_x86_64=("https://github.com/turtlecoin/violetminer/releases/download/${pkgver}/violetminer-linux.tar.gz")
-source_aarch64=("https://github.com/turtlecoin/violetminer/releases/download/${pkgver}/violetminer-armv8.tar.gz")
-sha256sums_x86_64=('81d594915160424d8aa1be96c9a5a78b4214bcf5946587e73cebd8b195a9e29f')
-sha256sums_aarch64=('0cce24bdac82e45ed8fc42809f71dff333582e4a26b8a11dad67a45a74bc6ff3')
+source_x86_64=("https://github.com/turtlecoin/violetminer/releases/download/${pkgver}/violetminer-linux-${pkgver}.tar.gz")
+source_aarch64=("https://github.com/turtlecoin/violetminer/releases/download/${pkgver}/violetminer-aarch64-${pkgver}.tar.gz")
+sha256sums_x86_64=('51c179c7f76ab0fe0ef3eefa5614cc7a878c8377b96762897e56f489653b4801')
+sha256sums_aarch64=('a3d599bbb64eb995b74b2cf611faa81ef908b81914dd8463f6eb54a93e973670')
 
 package() {
     platform='linux'
 
     if [ "$CARCH" = 'aarch64' ];
     then
-        platform='armv8'
+        platform='aarch64'
     fi
 
     # Extract from archive
-    tar -xf "violetminer-${platform}.tar.gz"
+    tar -xf "violetminer-${platform}-${pkgver}.tar.gz"
 
     # Install in /usr/bin/
-    install -D -m755 "violetminer-${platform}/violetminer" -t "$pkgdir/usr/bin/"
+    install -D -m755 "violetminer-${platform}-${pkgver}/violetminer" -t "$pkgdir/usr/bin/"
 }
