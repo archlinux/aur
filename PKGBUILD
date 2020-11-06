@@ -1,60 +1,56 @@
+# Contributor: mewmew <rnd0x00@gmail.com>
+# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
+
 pkgname=remill-git
-pkgver=20171206_ac62ffc
+pkgver=v4.0.6.r0.g63887881
 pkgrel=1
-arch=('x86_64')
-
 pkgdesc="Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode"
-url="https://github.com/trailofbits/remill"
+arch=('x86_64')
+url="https://github.com/lifting-bits/remill"
 license=('Apache')
-
-depends=('clang39' 'llvm39' 'llvm39-libs')
-makedepends=('git' 'curl' 'patchelf' 'cmake')
-
+depends=('clang' 'llvm' 'llvm-libs' 'intelxed' 'google-glog' 'gflags' 'lib32-glibc')
+makedepends=('git' 'cmake' 'gtest')
 provides=('remill')
 conflicts=('remill')
+source=("$pkgname::git+https://github.com/lifting-bits/remill.git"
+        'remove-sysdeps.patch')
+sha256sums=('SKIP'
+            '4e17d1298304b16447d4a4736dd2318a39139b95e06bf557a26e1d764ff00329')
 
-source=("${pkgname}::git+https://github.com/trailofbits/remill.git#branch=alessandro/feature/archlinux-package")
-sha1sums=('SKIP')
+prepare() {
+    cd "$srcdir/$pkgname"
+    patch -Np1 -i "$srcdir/remove-sysdeps.patch"
+}
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git log -1 --date=format:%Y%m%d --pretty=format:%ad_%h
+    cd "$srcdir/$pkgname"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  local clang_version=`clang --version | head -n 1 | awk '{ print $3 }' | tr -d '.' | cut -c -2`
-  local cxxcommon_tarball_name="libraries-llvm${clang_version}-ubuntu1604-amd64.tar.gz"
-  local cxxcommon_tarball_url="https://s3.amazonaws.com/cxx-common/${cxxcommon_tarball_name}"
-
-  if [ ! -f "${cxxcommon_tarball_name}" ] ; then
-    echo "Dowloading: ${cxxcommon_tarball_url}"
-    curl "${cxxcommon_tarball_url}" -O
-  fi
-
-  if [ ! -d "libraries" ] ; then
-    tar xzf "${cxxcommon_tarball_name}"
-
-    # use the system llvm/clang packages
-    rm -rf "libraries/llvm"
-    sed -i '/llvm/d' "libraries/cmake_modules/repository.cmake"
-  fi
-
-  export CXX=clang++
-  export CC=clang
-  export TRAILOFBITS_LIBRARIES="$(realpath libraries)"
-
-  if [ -d build ] ; then
-    rm -rf build
-  fi
-
-  mkdir build
-  cd build
-
-  cmake -DCMAKE_C_COMPILER="${CC}" -DCMAKE_CXX_COMPILER="${CXX}" -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_VERBOSE_MAKEFILE=True "${srcdir}/${pkgname}"
-  make -j `nproc`
+    cd "$srcdir/$pkgname"
+    mkdir -p build && cd build
+    cmake \
+        -DCMAKE_C_COMPILER=/usr/bin/clang \
+        -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
+        -DCMAKE_BC_COMPILER=/usr/bin/clang++ \
+        -DCMAKE_BC_LINKER=/usr/bin/llvm-link \
+        -DLLVM_Z3_INSTALL_DIR=/usr \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_VERBOSE_MAKEFILE=True \
+        "${srcdir}/${pkgname}"
+    make
+    #make test_dependencies
 }
+
+#check() {
+#    cd "$srcdir/$pkgname/build"
+#    make test
+#}
 
 package() {
-    cd build
+    cd "$srcdir/$pkgname/build"
     make DESTDIR="${pkgdir}" install
 }
+
+# vim: set sw=4 ts=4 et:

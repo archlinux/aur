@@ -1,21 +1,26 @@
 pkgbase = remill-git
 	pkgdesc = Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode
-	pkgver = 20171206_ac62ffc
+	pkgver = v4.0.6.r0.g63887881
 	pkgrel = 1
-	url = https://github.com/trailofbits/remill
+	url = https://github.com/lifting-bits/remill
 	arch = x86_64
 	license = Apache
 	makedepends = git
-	makedepends = curl
-	makedepends = patchelf
 	makedepends = cmake
-	depends = clang39
-	depends = llvm39
-	depends = llvm39-libs
+	makedepends = gtest
+	depends = clang
+	depends = llvm
+	depends = llvm-libs
+	depends = intelxed
+	depends = google-glog
+	depends = gflags
+	depends = lib32-glibc
 	provides = remill
 	conflicts = remill
-	source = remill-git::git+https://github.com/trailofbits/remill.git#branch=alessandro/feature/archlinux-package
-	sha1sums = SKIP
+	source = remill-git::git+https://github.com/lifting-bits/remill.git
+	source = remove-sysdeps.patch
+	sha256sums = SKIP
+	sha256sums = 4e17d1298304b16447d4a4736dd2318a39139b95e06bf557a26e1d764ff00329
 
 pkgname = remill-git
 

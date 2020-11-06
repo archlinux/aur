@@ -1,0 +1,197 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6e6b4f18..12b72743 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -83,11 +83,11 @@ string(REPLACE "." ";" LLVM_VERSION_LIST ${LLVM_PACKAGE_VERSION})
+ list(GET LLVM_VERSION_LIST 0 LLVM_MAJOR_VERSION)
+ list(GET LLVM_VERSION_LIST 1 LLVM_MINOR_VERSION)
+ 
+-add_library(thirdparty_llvm INTERFACE)
+-target_include_directories(thirdparty_llvm SYSTEM INTERFACE
++add_library(llvm INTERFACE)
++target_include_directories(llvm SYSTEM INTERFACE
+   ${LLVM_INCLUDE_DIRS}
+ )
+-target_compile_definitions(thirdparty_llvm INTERFACE
++target_compile_definitions(llvm INTERFACE
+   ${LLVM_DEFINITIONS}
+ )
+ 
+@@ -102,49 +102,25 @@ endforeach()
+ # These are out-of-order in `LLVM_AVAILABLE_LIBS` and should always be last.
+ list(REMOVE_ITEM LLVM_LIBRARIES LLVMMC LLVMCore LLVMSupport)
+ list(APPEND LLVM_LIBRARIES LLVMMC LLVMCore LLVMSupport)
+-target_link_libraries(thirdparty_llvm INTERFACE
++target_link_libraries(llvm INTERFACE
+   ${LLVM_LIBRARIES}
+ )
+ 
+ # Microsoft Z3
+-add_library(thirdparty_z3 INTERFACE)
++add_library(z3 INTERFACE)
+ if(Z3_FOUND)
+-  target_include_directories(thirdparty_z3 SYSTEM INTERFACE
++  target_include_directories(z3 SYSTEM INTERFACE
+     ${Z3_INCLUDE_DIR}
+   )
+-  target_link_libraries(thirdparty_z3 INTERFACE
++  target_link_libraries(z3 INTERFACE
+     ${Z3_LIBRARIES}
+   )
+ endif()
+ 
+-# Intel XED
+-find_package(XED REQUIRED)
+-add_library(thirdparty_xed INTERFACE)
+-target_include_directories(thirdparty_xed SYSTEM INTERFACE
+-  ${XED_INCLUDE_DIRS}
+-)
+-target_link_libraries(thirdparty_xed INTERFACE
+-  ${XED_LIBRARIES}
+-)
+-
+-# Google glog module
+-find_package(glog REQUIRED)
+-add_library(thirdparty_glog INTERFACE)
+-target_link_libraries(thirdparty_glog INTERFACE
+-  glog::glog
+-)
+-
+-# Google gflags
+-find_package(gflags REQUIRED)
+-add_library(thirdparty_gflags INTERFACE)
+-target_link_libraries(thirdparty_gflags INTERFACE
+-  gflags
+-)
+-
+ # Windows SDK
+-add_library(thirdparty_win32 INTERFACE)
++add_library(win32 INTERFACE)
+ if(DEFINED WIN32)
+-  target_link_libraries(thirdparty_win32 INTERFACE
++  target_link_libraries(win32 INTERFACE
+      "Kernel32.lib"
+   )
+ endif()
+@@ -266,11 +242,11 @@ target_compile_definitions(remill_settings INTERFACE
+   "REMILL_BUILD_SEMANTICS_DIR_SPARC64=\"${REMILL_BUILD_SEMANTICS_DIR_SPARC64}\""
+ )
+ 
+-set(THIRDPARTY_LIBRARY_LIST thirdparty_z3
+-  thirdparty_llvm
+-  thirdparty_xed
+-  thirdparty_glog
+-  thirdparty_gflags)
++set(THIRDPARTY_LIBRARY_LIST z3
++  llvm
++  xed
++  glog
++  gflags)
+ 
+ target_link_libraries(remill_settings INTERFACE
+   ${THIRDPARTY_LIBRARY_LIST}
+@@ -292,54 +268,6 @@ target_link_libraries(remill INTERFACE
+   ${LINKER_END_GROUP}
+ )
+ 
+-#
+-# Also install clang, libllvm and llvm-link
+-#
+-
+-set(INSTALLED_CLANG_NAME "remill-clang-${REMILL_LLVM_VERSION}${executable_extension}")
+-set(INSTALLED_LLVMLINK_NAME "remill-llvm-link-${REMILL_LLVM_VERSION}${executable_extension}")
+-
+-if("${CXX_COMMON_REPOSITORY_ROOT}" STREQUAL "" OR NOT EXISTS "${CXX_COMMON_REPOSITORY_ROOT}/llvm")
+-  set(INSTALLED_LIBLLVM_NAME "${dynamic_lib_prefix}LLVM-${REMILL_LLVM_VERSION}.${dynamic_lib_extension}")
+-
+-  # system binaries are not built statically, so we need to fix the rpath
+-  find_program("clang_location" "clang-${REMILL_LLVM_VERSION}${executable_extension}")
+-  if("${clang_location}" STREQUAL "clang_location-NOTFOUND")
+-    message(FATAL_ERROR "InstallExternalTarget: Failed to locate the clang executable")
+-  endif()
+-
+-  message("InstallExternalTarget: Found clang executable: ${clang_location}")
+-
+-  find_program("llvmlink_location" "llvm-link${executable_extension}")
+-  if("${llvmlink_location}" STREQUAL "llvmlink_location-NOTFOUND")
+-    message(FATAL_ERROR "InstallExternalTarget: Failed to locate the llvm-link executable")
+-  endif()
+-
+-  message("InstallExternalTarget: Found llvm-link executable: ${llvmlink_location}")
+-
+-  find_library("libllvm_location" "${dynamic_lib_prefix}LLVM-${REMILL_LLVM_VERSION}.${dynamic_lib_extension}")
+-  if("${libllvm_location}" STREQUAL "libllvm_location-NOTFOUND")
+-    message(FATAL_ERROR "InstallExternalTarget: Failed to locate the libLLVM dynamic library")
+-  endif()
+-  
+-  message("InstallExternalTarget: Found libLLVM location: ${libllvm_location}")
+-
+-  InstallExternalTarget("ext_clang" "${clang_location}" "${REMILL_INSTALL_BIN_DIR}"
+-    "${INSTALLED_CLANG_NAME}" "${REMILL_INSTALL_LIB_DIR}")
+-
+-  InstallExternalTarget("ext_llvmlink" "${llvmlink_location}" "${REMILL_INSTALL_BIN_DIR}"
+-    "${INSTALLED_LLVMLINK_NAME}" "${REMILL_INSTALL_LIB_DIR}")
+-
+-else()
+-  # The executable in our binary repository are statically built, meaning that we don't need
+-  # to change the rpath
+-  InstallExternalTarget("ext_clang" "${CXX_COMMON_REPOSITORY_ROOT}/llvm/bin/clang${executable_extension}"
+-    "${REMILL_INSTALL_BIN_DIR}" "${INSTALLED_CLANG_NAME}")
+-
+-  InstallExternalTarget("ext_llvmlink" "${CXX_COMMON_REPOSITORY_ROOT}/llvm/bin/llvm-link${executable_extension}"
+-    "${REMILL_INSTALL_BIN_DIR}" "${INSTALLED_LLVMLINK_NAME}")
+-endif()
+-
+ set(REMILL_BC_LIBRARY_LOCATION "${REMILL_INSTALL_LIB_DIR}/${static_lib_prefix}remill_bc.${static_lib_extension}")
+ set(REMILL_ARCH_LIBRARY_LOCATION "${REMILL_INSTALL_LIB_DIR}/${static_lib_prefix}remill_arch.${static_lib_extension}")
+ set(REMILL_ARCH_X86_LIBRARY_LOCATION "${REMILL_INSTALL_LIB_DIR}/${static_lib_prefix}remill_arch_x86.${static_lib_extension}")
+diff --git a/tests/AArch64/CMakeLists.txt b/tests/AArch64/CMakeLists.txt
+index 1e51cb78..c50d43a7 100644
+--- a/tests/AArch64/CMakeLists.txt
++++ b/tests/AArch64/CMakeLists.txt
+@@ -12,12 +12,8 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-find_package(gtest REQUIRED)
+-
+ # google gtest
+-find_package(gtest REQUIRED)
+-list(APPEND PROJECT_LIBRARIES ${gtest_LIBRARIES})
+-list(APPEND PROJECT_INCLUDEDIRECTORIES ${gtest_INCLUDE_DIRS})
++list(APPEND PROJECT_LIBRARIES gtest)
+ 
+ enable_testing()
+ enable_language(ASM)
+diff --git a/tests/X86/CMakeLists.txt b/tests/X86/CMakeLists.txt
+index ad5ef543..cd5c2269 100644
+--- a/tests/X86/CMakeLists.txt
++++ b/tests/X86/CMakeLists.txt
+@@ -41,8 +41,7 @@ function(COMPILE_X86_TESTS name address_size has_avx has_avx512)
+   
+   set_target_properties(lift-${name}-tests PROPERTIES OBJECT_DEPENDS "${X86_TEST_FILES}")
+ 
+-  target_link_libraries(lift-${name}-tests PUBLIC remill ${gtest_LIBRARIES})
+-  target_include_directories(lift-${name}-tests PUBLIC ${gtest_INCLUDE_DIRS})
++  target_link_libraries(lift-${name}-tests PUBLIC remill gtest)
+   target_compile_definitions(lift-${name}-tests PUBLIC ${PROJECT_DEFINITIONS})
+ 
+   add_custom_command(
+@@ -60,8 +59,7 @@ function(COMPILE_X86_TESTS name address_size has_avx has_avx512)
+   add_executable(run-${name}-tests EXCLUDE_FROM_ALL Run.cpp Tests.S tests_${name}.S)
+   set_target_properties(run-${name}-tests PROPERTIES OBJECT_DEPENDS "${X86_TEST_FILES}")
+ 
+-  target_link_libraries(run-${name}-tests PUBLIC remill ${gtest_LIBRARIES})
+-  target_include_directories(run-${name}-tests PUBLIC ${gtest_INCLUDE_DIRS})
++  target_link_libraries(run-${name}-tests PUBLIC remill gtest)
+   target_compile_definitions(run-${name}-tests PUBLIC ${PROJECT_DEFINITIONS})
+     
+   target_compile_options(run-${name}-tests
+@@ -73,7 +71,6 @@ function(COMPILE_X86_TESTS name address_size has_avx has_avx512)
+   add_dependencies(test_dependencies "run-${name}-tests")
+ endfunction()
+ 
+-find_package(gtest REQUIRED)
+ enable_testing()
+ 
+ if (NOT APPLE)
