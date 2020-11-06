@@ -1,6 +1,6 @@
 # Maintainer: Zpalmtree <https://github.com/zpalmtree>
 pkgname=violetminer-git
-pkgver=v0.1.1.r8.g09157ed
+pkgver=v0.2.2.r39.g3b87a2c
 pkgrel=1
 pkgdesc='Argon2 CPU and Nvidia miner for TurtleCoin and WrkzCoin'
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,6 @@ pkgver() {
 
 build() {
     cd "$srcdir/violetminer"
-
-    git checkout development
 
     git submodule update --init --recursive
 

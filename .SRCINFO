@@ -1,6 +1,6 @@
 pkgbase = violetminer-git
 	pkgdesc = Argon2 CPU and Nvidia miner for TurtleCoin and WrkzCoin
-	pkgver = v0.1.1.r8.g09157ed
+	pkgver = v0.2.2.r39.g3b87a2c
 	pkgrel = 1
 	url = https://github.com/turtlecoin/violetminer
 	arch = x86_64
