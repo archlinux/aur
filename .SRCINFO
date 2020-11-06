@@ -1,6 +1,6 @@
 pkgbase = lacap
 	pkgdesc = Memorize Catholic prayers in Latin.
-	pkgver = 0.2.2
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://gitlab.com/chrisfair/latin-catholic-prayers
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = lacap
 	depends = gtk3
 	depends = webkit2gtk
 	provides = lacap
-	source = https://gitlab.com/chrisfair/latin-catholic-prayers/-/archive/v0.2.2/latin-catholic-prayers-v0.2.2.tar.gz
-	sha256sums = 38fe17e82f816efff5b0fd95d8ce5e3de58e0a165b63a113a0eba8f0ab797edf
+	source = https://gitlab.com/chrisfair/latin-catholic-prayers/-/archive/v0.2.4/latin-catholic-prayers-v0.2.4.tar.gz
+	sha256sums = 60562bf08902ba90bcdd59220d11cef3ccc4eae732f09ef096b172c75210a1c0
 
 pkgname = lacap
 
