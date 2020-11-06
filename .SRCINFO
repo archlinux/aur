@@ -1,0 +1,20 @@
+pkgbase = anu
+	pkgdesc = Patch-based distributed version control system
+	pkgver = 1.0.0_alpha
+	pkgrel = 1
+	url = https://anu.dev
+	arch = x86_64
+	license = GPL2
+	makedepends = cargo
+	depends = gcc-libs
+	depends = openssl
+	depends = libsodium
+	depends = clang
+	depends = xxhash
+	depends = zstd
+	optdepends = libgit2: git import support
+	source = anu-1.0.0-alpha.tar.gz::https://crates.io/api/v1/crates/anu/1.0.0-alpha/download
+	sha256sums = 9127b330f2b3e6d66748e99a052ba341b469d3c780d4f659817759bca05533bc
+
+pkgname = anu
+
