@@ -6,7 +6,7 @@
 _pkgname=phpunit
 pkgname=${_pkgname}
 pkgver=9.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="PHPUnit is a programmer-oriented testing framework for PHP."
 url="https://phpunit.de"
 arch=("any")
