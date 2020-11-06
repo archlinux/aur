@@ -1,4 +1,4 @@
-# Maintainer: Sujaykumar Hublikar <sujaykumar6390@gmail.com>
+# Maintainer: Sujaykumar Hublikar <hello@sujaykumarh.com>
 _pkgname=lightdm-theme-sapphire
 pkgname=lightdm-webkit2-theme-sapphire
 pkgver=1.0.1
