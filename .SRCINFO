@@ -1,0 +1,14 @@
+pkgbase = flucoma-supercollider
+	pkgdesc = Fluid Corpus Manipulation plugins for Supercollider
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.flucoma.org/
+	arch = x86_64
+	groups = pro-audio
+	license = BSD
+	depends = supercollider
+	source = https://github.com/flucoma/flucoma-sc/releases/download/1.0.0-RC1/FluidCorpusManipulation_Supercollider_Linux_1_0_0-RC1.tar.gz
+	md5sums = 01884700d6f88bdc46faccc062fe4b07
+
+pkgname = flucoma-supercollider
+
