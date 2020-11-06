@@ -1,6 +1,6 @@
 pkgbase = liberica-jre-11-bin
 	pkgdesc = BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.
-	pkgver = 11.0.9+12
+	pkgver = 11.0.9.1+1
 	pkgrel = 1
 	url = https://bell-sw.com/
 	install = liberica-jre-11.install
@@ -38,15 +38,15 @@ pkgbase = liberica-jre-11-bin
 	backup = etc/liberica-jre-11/security/policy/unlimited/default_US_export.policy
 	backup = etc/liberica-jre-11/security/policy/unlimited/default_local.policy
 	backup = etc/liberica-jre-11/sound.properties
-	source_aarch64 = https://download.bell-sw.com/java/11.0.9+12/bellsoft-jre11.0.9+12-linux-aarch64.tar.gz
-	sha1sums_aarch64 = d2e62c8dee8bd03ebdfd1d0cee34ddc32efb49e6
-	source_armv7h = https://download.bell-sw.com/java/11.0.9+12/bellsoft-jre11.0.9+12-linux-arm32-vfp-hflt.tar.gz
-	sha1sums_armv7h = fbd2d2941188e7f5f401a5cdc27105a4b6848927
-	sha1sums_armv8h = fbd2d2941188e7f5f401a5cdc27105a4b6848927
-	source_i686 = https://download.bell-sw.com/java/11.0.9+12/bellsoft-jre11.0.9+12-linux-i586.tar.gz
-	sha1sums_i686 = 582230fd4ab781f19653a349a4eeba9f7d3460c1
-	source_x86_64 = https://download.bell-sw.com/java/11.0.9+12/bellsoft-jre11.0.9+12-linux-amd64.tar.gz
-	sha1sums_x86_64 = ae64c174bd73f1154e9c747611cc86b540f0712d
+	source_aarch64 = https://download.bell-sw.com/java/11.0.9.1+1/bellsoft-jre11.0.9.1+1-linux-aarch64.tar.gz
+	sha1sums_aarch64 = dfb7d882672f3150d6281c9f223dfefc3ca4cf4c
+	source_armv7h = https://download.bell-sw.com/java/11.0.9.1+1/bellsoft-jre11.0.9.1+1-linux-arm32-vfp-hflt.tar.gz
+	sha1sums_armv7h = 41d069b6a9c82f521d0c23fed8abe9fc57b8c4cb
+	sha1sums_armv8h = 41d069b6a9c82f521d0c23fed8abe9fc57b8c4cb
+	source_i686 = https://download.bell-sw.com/java/11.0.9.1+1/bellsoft-jre11.0.9.1+1-linux-i586.tar.gz
+	sha1sums_i686 = 73f58177d2e3f99432dc6faf65e77945c7f3dc8a
+	source_x86_64 = https://download.bell-sw.com/java/11.0.9.1+1/bellsoft-jre11.0.9.1+1-linux-amd64.tar.gz
+	sha1sums_x86_64 = 046aab26a399bab38c628cdaaa2820ec9007ec3b
 
 pkgname = liberica-jre-11-bin
 
