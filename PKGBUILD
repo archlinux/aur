@@ -21,7 +21,7 @@ depends=("flac" "gconf" "gtk2" "harfbuzz-icu" "libxss" "nss" "opus" "snappy" "tt
 optdepends=(
     "speech-dispatcher" 
     "ttf-liberation: fix fonts for some PDFs"
-    "yandex-libffmpeg"s
+    "yandex-libffmpeg"
 )
 
 source=("${pkgname}-${pkgver}.deb::http://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-beta/yandex-browser-beta_${_pkgver}_amd64.deb")
