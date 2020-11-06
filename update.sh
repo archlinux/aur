@@ -17,3 +17,6 @@ sed -i /pkgrel=/c\pkgrel=1 PKGBUILD
 sed -i /sha256sums=/c\sha256sums=\(\'$SUM\'\) PKGBUILD
 
 makepkg --printsrcinfo > .SRCINFO
+git add -A
+git commit -m "Updated to v${VERSION}"
+git push

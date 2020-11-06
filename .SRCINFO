@@ -1,13 +1,13 @@
 pkgbase = kubernetes-helmfile-bin
 	pkgdesc = Deploy Kubernetes Helm Charts
-	pkgver = 0.133.0
+	pkgver = 0.132.3
 	pkgrel = 1
 	url = https://github.com/roboll/helmfile
 	arch = x86_64
 	license = MIT
 	depends = helm
-	source = helmfile_linux_amd64_0.133.0::https://github.com/roboll/helmfile/releases/download/v0.133.0/helmfile_linux_amd64
-	sha256sums = 3c1c7244c54d5733f428df006144c46d26c86809e92cd793a61ff4d406cfa2de
+	source = helmfile_linux_amd64_0.132.3::https://github.com/roboll/helmfile/releases/download/v0.132.3/helmfile_linux_amd64
+	sha256sums = 7adbec6f575525407ac0c84d375cbefbcbeb64637c3999dbf52c3235f2082b43
 
 pkgname = kubernetes-helmfile-bin
 
