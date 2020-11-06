@@ -8,11 +8,11 @@ license=('GPL3')
 arch=('any')
 
 # version-specific information
-pkgrel=2
+pkgrel=3
 pkgver=1.0.1
 
 # dependencies are stated in https://gitlab.com/akkuscm/akku/-/blob/master/README.md
-depends=('git' 'curl' 'guile>=2.2')
+depends=('git' 'curl' 'guile>=2.2' 'guile<3')
 makedepends=('pkg-config' 'make')
 
 # source URLs for latest versions can be found at https://gitlab.com/akkuscm/akku/-/releases
