@@ -2,7 +2,7 @@
 # Contributor: 
 
 pkgname=pantheon-stable
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Meta package for the complete Pantheon desktop & apps that uses stable versions"
 arch=(any)
@@ -38,7 +38,7 @@ depends=(
 	'pantheon-polkit-agent'
 	'pantheon-print'
 	'pantheon-screenshot'
-	'pantheon-session'
+	'pantheon-session-git'
 	'pantheon-shortcut-overlay'
 	'pantheon-terminal'
 	'pantheon-videos'
@@ -81,7 +81,7 @@ depends=(
 	'wingpanel-indicator-session'
 	'wingpanel-indicator-sound'
 	)
-optdepends=('urutau-icons' 'wingpanel-indicator-a11y-stable' 'epiphany-pantheon' 'lightdm-pantheon-greeter' 'wingpanel-indicator-privacy-stable')
+optdepends=('urutau-icons' 'wingpanel-indicator-a11y-stable' 'epiphany' 'lightdm-pantheon-greeter' 'wingpanel-indicator-privacy-stable')
 makedepends=('git' 'meson' 'ninja' 'vala>=0.40.3-1')
 provides=("${pkgname}")
 conflicts=(
