@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=stalld-git
-pkgver=r32.gabe5fe5
+pkgver=r92.g4aaa57b
 pkgrel=1
 pkgdesc="A daemon to prevent the starvation of operating system threads"
 arch=('i686' 'x86_64')
@@ -33,4 +33,5 @@ package() {
   cd "stalld"
 
   make DESTDIR="$pkgdir" install
+  install -Dm644 "redhat/stalld.service" -t "$pkgdir/usr/lib/systemd/system"
 }

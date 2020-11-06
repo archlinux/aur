@@ -1,6 +1,6 @@
 pkgbase = stalld-git
 	pkgdesc = A daemon to prevent the starvation of operating system threads
-	pkgver = r32.gabe5fe5
+	pkgver = r92.g4aaa57b
 	pkgrel = 1
 	url = https://git.kernel.org/pub/scm/utils/stalld/stalld.git/
 	arch = i686
