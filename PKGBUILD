@@ -41,16 +41,17 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_extname}"
-    yarn install --frozen-lockfile --preferred-cache-folder "${srcdir}/.cache/yarn"
-    yarn pack
-    tar xvf *.tgz
-    rm *.tgz
-    cd package
-    npm install --only=production --no-lockfile --ignore-scripts --cache "${srcdir}/.cache/npm"
+    yarn install --frozen-lockfile --preferred-cache-folder "${srcdir}/.cache"
 }
 
 package() {
-    cd "${srcdir}/${_extname}/package"
+    cd "${srcdir}/${_extname}"
+    yarn pack; tar xvf *.tgz; rm *.tgz
+    cd package
+    _dependencies=$(grep -Po '"dependencies":' package.json) || _dependencies=""
+    if [ -n "${_dependencies}" ]; then
+        yarn install --production --no-lockfile --ignore-scripts --prefer-offline --preferred-cache-folder "${srcdir}/.cache"
+    fi
     find . -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
     rm -rf "${srcdir}/${_extname}/package"
