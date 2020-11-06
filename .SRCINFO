@@ -1,0 +1,14 @@
+pkgbase = brother-hl2240-lpr-bin
+	pkgdesc = LPR driver for Brother HL-2240 printer
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=hl2240_us_eu
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf005877/hl2240lpr-2.1.0-1.i386.deb
+	md5sums = fa8683bd50bdefc4a0e7e388a0a9ff68
+
+pkgname = brother-hl2240-lpr-bin
+
