@@ -2,8 +2,8 @@
 # Contributor: Sébastien Luttringer
 
 pkgname=unifi-beta
-pkgver=6.1.21
-_pkgver=4869730759
+pkgver=6.1.23
+_pkgver=091dfa86dd
 pkgrel=1
 pkgdesc='Controller for Ubiquiti UniFi accesspoints'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.zip::https://www.ubnt.com/downloads/unifi/${pkgver
         unifi.sysusers
         unifi.tmpfiles
         LICENSE)
-b2sums=('19ee00c30d8af52d1aaf0e7c89a8fb32c7b3c406b97925d491844b5e08f4a6d9de7de130b55bc84c9dfe911e71c6e0fe4909c9f0962f04cfb0a0a9ed5adbe8af'
+b2sums=('950f34ee30155c77c82886d22bf18d89473339c7b94d51381983ce1635a1c1774b702b2da6f8d6120c59e1909735ede55198225d5b0614976ef02dd8daddd711'
         '2c8d535aabe8e738a9ba375fc4ab7aaa1713c9aefffc3e652fd49bc6288d0b7d24cae64d04ded5d5052486a377edca190818874a80bafb33cf2ac94742540106'
         '6652c7bbdc8758c24cb38525bda5f3a27dfd0b58656fd7214d837cdde911f3e2141e7060fef17d9f55b362fdae1111b5b3aef1f32f93dedd4552c79a524b5d38'
         '5474a726a8a222f463f47cdca44988889406e2bee7b3c7875d45b20dc283d1d9737772d8cb63cd35c75517f3606feaadcf02c00b73e5bbab40f459d78d066c3e'
