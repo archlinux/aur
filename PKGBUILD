@@ -2,12 +2,13 @@
 
 pkgname=mimi-bachoseven-git
 _pkgname=mimi
-pkgver=r86.c8965a3
+pkgver=r92.7420aed
 pkgrel=1
 pkgdesc="Mantained fork of mimi, a minimal and lightweight xdg-open drop-in replacement most suitable for Window Manager users."
 url='https://github.com/BachoSeven/mimi'
 arch=('any')
 license=('GPL2')
+depends=('bash')
 makedepends=('git')
 source=("git+${url}.git")
 md5sums=('SKIP')
