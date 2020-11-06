@@ -1,0 +1,18 @@
+pkgbase = vim-coc-tabnine-git
+	pkgdesc = Tabnine integration of coc.nvim
+	pkgver = 1.2.2.r2.g442c829
+	pkgrel = 1
+	url = https://github.com/neoclide/coc-tabnine
+	arch = any
+	license = MIT
+	makedepends = yarn
+	makedepends = npm
+	makedepends = git
+	depends = vim-coc
+	provides = vim-coc-tabnine
+	conflicts = vim-coc-tabnine
+	source = coc-tabnine::git+https://github.com/neoclide/coc-tabnine.git
+	sha256sums = SKIP
+
+pkgname = vim-coc-tabnine-git
+
