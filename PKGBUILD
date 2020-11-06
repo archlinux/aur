@@ -2,7 +2,7 @@
 
 pkgname=rustscan
 _pkgname=RustScan
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="The Modern Port Scanner"
 arch=("x86_64" "i686")
