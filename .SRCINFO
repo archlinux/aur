@@ -1,0 +1,17 @@
+pkgbase = qgis-grass-plugin
+	pkgdesc = QGIS grass plugin resources.
+	pkgver = 3.16.0
+	pkgrel = 1
+	url = https://qgis.org/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = txt2tags
+	depends = qgis=3.16.0
+	depends = gdal
+	depends = grass
+	source = https://qgis.org/downloads/qgis-3.16.0.tar.bz2
+	sha256sums = ce8dfee5af989cfa2af4d087ab64d5e4022e928e847ee083e07cc9e8646ef1da
+
+pkgname = qgis-grass-plugin
+
