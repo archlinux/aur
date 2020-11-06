@@ -3,7 +3,7 @@ _reponame=ndn-tools
 _pkgname=ndn-tools
 pkgname=ndn-tools
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 # epoch=
 pkgdesc="A collection of basic tools for Named Data Networking"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ validpgpkeys=()
 
 prepare() {
 	cd "${srcdir}/${_reponame}-${_reponame}-${pkgver}"
-	./waf configure --prefix=/usr/local
+	./waf configure --prefix=/usr
 }
 
 build() {
@@ -38,6 +38,6 @@ build() {
 package() {
 	cd "${srcdir}/${_reponame}-${_reponame}-${pkgver}"
 	./waf install --destdir="${pkgdir}"
-  mkdir -p "${pkgdir}/usr/share/man"
-  mv "${pkgdir}/usr/local/share/man" "${pkgdir}/usr/share/"
+#  mkdir -p "${pkgdir}/usr/share/man"
+#  mv "${pkgdir}/usr/local/share/man" "${pkgdir}/usr/share/"
 }
