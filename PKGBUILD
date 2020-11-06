@@ -2,7 +2,7 @@
 # Current Maintainer : Mark Lee <mark@markelee.com>
 # Contributor: Familia < carlosfamilia at gmail dot com >
 pkgname=rstudio-server-bin
-pkgver=1.2.5042
+pkgver=1.3.1093
 pkgrel=1
 pkgdesc="A integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('x86_64')
@@ -10,13 +10,13 @@ license=('GPL')
 url="http://www.rstudio.org/"
 depends=('r>=3.0.1' 'glibc>=2.7' 'libedit' 'psmisc' 'openssl-1.0')
 conflicts=('rstudio-server' 'rstudio-server-git')
-sha256sums=('f6d212f2fdc1e1b4e605256a91b69fed6b61c046374934d262b2c3f1e234c0d6'
+sha256sums=('47022541152d0b586c810ab23c36ee2fc0d7e0d1b69c554dfcd7fe00d0fb571b'
             '24b0545aa2a576c7d7480c0ef77d7641e2ebaadae856fd2a18f57871bd25fd88'
             '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92')
 provides=("rstudio-server=${pkgver}")
 #options=(!strip)
 source=(#"https://download2.rstudio.org/server/debian9/x86_64/rstudio-server-${pkgver}-amd64.deb"
-        "https://download2.rstudio.org/server/trusty/amd64/rstudio-server-${pkgver}-amd64.deb"
+        "https://download2.rstudio.org/server/bionic/amd64/rstudio-server-${pkgver}-amd64.deb"
         "rstudio-server.service"
         "rstudio")
 install="${pkgname}".install
