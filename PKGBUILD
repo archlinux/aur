@@ -5,7 +5,7 @@
 
 pkgname=domoticz
 pkgver=2020.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Web based home automation"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://www.domoticz.com'
