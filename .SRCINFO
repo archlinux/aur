@@ -1,6 +1,6 @@
 pkgbase = jlink-software-and-documentation
 	pkgdesc = Segger JLink software & documentation pack for Linux
-	pkgver = 6.86f
+	pkgver = 6.86g
 	pkgrel = 0
 	epoch = 31
 	url = https://www.segger.com/jlink-software.html
@@ -17,12 +17,12 @@ pkgbase = jlink-software-and-documentation
 	options = !strip
 	source = 99-jlink.rules.patch
 	md5sums = a57d93b791581c1f36e4c672303bb85d
-	source_i686 = JLink_Linux_686f_i686.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V686f_i386.tgz
-	md5sums_i686 = 0d304e6c69f9cc08f833d9c4c8991a86
-	source_x86_64 = JLink_Linux_686f_x86_64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V686f_x86_64.tgz
-	md5sums_x86_64 = 7ccac04e1d8ff1ea175570327b28954d
-	source_armv7h = JLink_Linux_686f_arm.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V686f_arm.tgz
-	md5sums_armv7h = 68506140bc9ff664efaacb8d5a027e35
+	source_i686 = JLink_Linux_686g_i686.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V686g_i386.tgz
+	md5sums_i686 = 95fe6986b6b9d12ed7614f6fb9c9ffc8
+	source_x86_64 = JLink_Linux_686g_x86_64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V686g_x86_64.tgz
+	md5sums_x86_64 = 9f51e6d9eb30051518c059ca0c58b613
+	source_armv7h = JLink_Linux_686g_arm.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V686g_arm.tgz
+	md5sums_armv7h = 1fb2389ac45c49e6d2e0cace97edda04
 
 pkgname = jlink-software-and-documentation
 
