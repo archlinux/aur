@@ -1,0 +1,16 @@
+pkgbase = quicktype
+	pkgdesc = Generate types and converters from JSON, Schema, and GraphQL
+	pkgver = 15.0.258
+	pkgrel = 1
+	url = https://github.com/quicktype/quicktype
+	arch = any
+	license = Apache
+	makedepends = npm
+	depends = nodejs
+	noextract = quicktype-15.0.258.tgz
+	options = !strip
+	source = https://registry.npmjs.org/quicktype/-/quicktype-15.0.258.tgz
+	sha256sums = 22a8ce651c1eca7fb8f1e64d640c4040d66ccc0b83a97f2791bff299c5f04c2b
+
+pkgname = quicktype
+
