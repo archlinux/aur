@@ -20,10 +20,8 @@ options=(!strip)
 depends=("flac" "gconf" "gtk2" "harfbuzz-icu" "libxss" "nss" "opus" "snappy" "ttf-font" "xdg-utils" "libxkbfile" )
 optdepends=(
     "speech-dispatcher" 
-    "kdebase-kdialog: needed for file dialogs in KDE"
     "ttf-liberation: fix fonts for some PDFs"
-    "yandex-browser-ffmpeg-codecs: support for h.264 and other non-free media formats"
-    "yandex-browser-codecs-ffmpeg-extra-bin"
+    "yandex-libffmpeg"s
 )
 
 source=("${pkgname}-${pkgver}.deb::http://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-beta/yandex-browser-beta_${_pkgver}_amd64.deb")
