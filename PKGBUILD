@@ -10,7 +10,7 @@ url="https://github.com/DizoftTeam/dron"
 license=('Apache')
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DizoftTeam/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('dd6e5d753ea88aa5f6b7803d88e87e52')
+md5sums=('2b508f572839bc08bc1c04a4be7ecebd')
 
 build() {
   cd "$pkgname-$pkgver"
