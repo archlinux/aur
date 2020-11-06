@@ -1,6 +1,6 @@
 pkgbase = waypipe
 	pkgdesc = A proxy for Wayland protocol applications. WARNING: different versions are incompatible
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mstoeckl/waypipe
 	arch = i686
@@ -13,11 +13,9 @@ pkgbase = waypipe
 	checkdepends = weston
 	checkdepends = python-psutil
 	makedepends = git
-	makedepends = wayland
 	makedepends = meson
 	makedepends = ninja
 	makedepends = scdoc
-	makedepends = wayland-protocols
 	makedepends = libdrm
 	depends = lz4
 	depends = zstd
@@ -26,8 +24,8 @@ pkgbase = waypipe
 	depends = libva
 	optdepends = openssh: recommended transport
 	optdepends = systemtap: a makedepend, for tracing hooks
-	source = https://gitlab.freedesktop.org/mstoeckl/waypipe/-/archive/v0.7.0/waypipe-v0.7.0.tar.gz
-	sha256sums = ce14508af422acc212b4eee6faae4c84e082abd8b3b85655bec36e942200b9fa
+	source = https://gitlab.freedesktop.org/mstoeckl/waypipe/-/archive/v0.7.1/waypipe-v0.7.1.tar.gz
+	sha256sums = 38ac7ff16a21a18ac0bc99162dff20601654ff412ddc7450fbae4d244f57cab9
 
 pkgname = waypipe
 
