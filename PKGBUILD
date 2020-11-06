@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=osc-cli-git
-pkgver=v1.5.0.r0.gd4e7746
+pkgver=v1.5.0.r14.g04b02c8
 pkgrel=1
 pkgdesc='Outscale CLI'
 
@@ -29,4 +29,5 @@ build() {
 package() {
 	cd "${srcdir}/osc-cli"
 	python  ./setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -D "${srcdir}/osc-cli/LICENSE" "$pkgdir/usr/share/licenses/osc-cli/LICENSE"
 }
