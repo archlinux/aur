@@ -24,8 +24,9 @@ md5sums=('SKIP'
 
 package() {
     # Link icon and add Desktop
+    install -d "$pkgdir"/usr/bin
     install -Dm644 "$srcdir"/lightcord.desktop -t "$pkgdir"/usr/share/applications
-    install -Dm644 "$srcdir"/lightcord.AppImage -t "$pkgdir"/usr/bin
+    cp -a "$srcdir"/lightcord.AppImage -t "$pkgdir"/usr/bin
     install -Dm644 "$srcdir"/lightcord.png -t "$pkgdir"/usr/share/pixmaps
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     chmod 755 "$pkgdir"/usr/bin/lightcord.AppImage
