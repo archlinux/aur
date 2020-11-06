@@ -1,16 +1,17 @@
 # Maintainer: Paul Seehofer <seehofer.paul@gmail.com>
 pkgname=prometheus_wireguard_exporter
-pkgver=3.2.2
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="A prometheus exporter for wireguard stats"
 url="https://github.com/MindFlavor/prometheus_wireguard_exporter/"
+depends=('wireguard-tools')
 makedepends=('rustup')
 arch=('i686' 'x86_64')
 license=('MIT')
 source=('prometheus-wireguard-exporter.service'
 	"$pkgname-$pkgver.tar.gz::https://github.com/MindFlavor/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('f793e2cf5016dd571c04fe1bccd561ef433e8559749fa43added732df27529fb4801de26a8b3869de78a018ee8d3adfccc7cf245d79841a834704a1357bc6376'
-	'd5ee1e415f1774c8a4909695160b1c818053966770295162c2a8cf5e3612a22ee615c9c4f0a4690fa1af8c853c58cfe5aa51c97bbc112b6e1bccc35e37fe3d33')
+sha512sums=('6eab9d425f63ab73c53a321c012106fec14ce79074a760c53c2db138d75cd01069a5f18661ba20bc978f51803a597a12f0ffab13d32ca7eb9d0707549e85e909'
+	'67f5d005dcca7aa6e0bcbdd014eb84275b74a2df5a5966d54f5f1b7f552dc7eec671f9c4d6b67d7b8e034fd323a09e5c427efee430bb79db3c427327d4952eeb')
 
 build() {
 	cd "$pkgname-$pkgver"
