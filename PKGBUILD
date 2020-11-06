@@ -1,8 +1,8 @@
+# Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 # Contributor: Alexandre Dantas <eu @ alexdantas DOT net>
-# Maintainer: BachoSeven <ascoli dot minnocci at gmail dot com>
 
 pkgname=bastet-xdg-git
-pkgver=0.43.2.r5.gad5de50
+pkgver=0.43.2.r7.g591258e
 pkgrel=1
 pkgdesc="Tetris(r) clone with 'bastard' block-choosing AI - Git version with support for Xdg Base Directories"
 arch=('x86_64' 'i686')
@@ -43,3 +43,4 @@ package() {
   chmod 0664 "${pkgdir}"/var/games/bastet.scores2
   chown root:games "${pkgdir}"/var/games/bastet.scores2
 }
+# vim:set ts=2 sw=2 et:

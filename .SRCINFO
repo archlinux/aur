@@ -1,6 +1,6 @@
 pkgbase = bastet-xdg-git
 	pkgdesc = Tetris(r) clone with 'bastard' block-choosing AI - Git version with support for Xdg Base Directories
-	pkgver = 0.43.2.r5.gad5de50
+	pkgver = 0.43.2.r7.g591258e
 	pkgrel = 1
 	url = https://github.com/BachoSeven/bastet/
 	arch = x86_64
