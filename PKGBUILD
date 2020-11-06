@@ -6,7 +6,7 @@ _pkgname=browser-beta
 pkgname=yandex-${_pkgname}
 pkgver=20.9.3.189_1
 _pkgver=20.9.3.189-1
-pkgrel=2
+pkgrel=3
 #epoch=1
 
 pkgdesc="The web browser from Yandex.
