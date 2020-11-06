@@ -1,4 +1,5 @@
-# Maintainer: Obed N Munoz  <obed.n.munoz@gmail.com>
+# Maintainer: Denton Liu <liu.denton@gmail.com>
+# Contributor: Obed N Munoz  <obed.n.munoz@gmail.com>
 # Contributor: Anthony Bonafide <AnthonyMBonafide@gmail.com>
 # Contributor: fzerorubigd <fzerorubigd@gmail.com>
 # Contributor: Vesa Kaihlavirta <vegai@iki.fi>
@@ -12,9 +13,9 @@
 # Contributor: John Luebs <jkluebs@gmail.com>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
-pkgname=go-git
+pkgname=go2go-git
 epoch=1
-pkgver=go1.15beta1.r138.gba9e1088997
+pkgver=go1.15beta1.r496.g2298dab082
 pkgrel=1
 pkgrepo=go
 pkgdesc='Core compiler tools for the Go programming language'
@@ -25,7 +26,7 @@ makedepends=(git go)
 provides=(go)
 conficts=(go)
 options=(!strip staticlibs)
-source=(git+https://go.googlesource.com/go#branch=master)
+source=(git+https://go.googlesource.com/go#branch=dev.go2go)
 md5sums=('SKIP')
 
 export GOOS=linux
