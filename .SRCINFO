@@ -1,0 +1,20 @@
+pkgbase = flac123
+	pkgdesc = Command-line program for playing FLAC audio files
+	pkgver = 0.0.12
+	pkgrel = 5
+	url = https://sourceforge.net/projects/flac-tools/
+	arch = x86_64
+	license = GPL2
+	makedepends = flac
+	makedepends = libao
+	depends = glibc
+	depends = popt
+	source = https://downloads.sourceforge.net/flac-tools/flac123-0.0.12-release.tar.gz
+	sha256sums = 1976efd54a918eadd3cb10b34c77cee009e21ae56274148afa01edf32654e47d
+
+pkgname = flac123
+	depends = glibc
+	depends = popt
+	depends = libFLAC.so
+	depends = libao.so
+
