@@ -2,7 +2,7 @@
 pkgname=pangolin-desktop-git
 pkgver=r1339.b10860d
 pkgrel=1
-pkgdesc="Pangolin Desktop UI shell, designed for dahliaOS, written in Flutter."
+pkgdesc="Preview of Pangolin Desktop UI shell, designed for dahliaOS, written in Flutter."
 arch=('x86_64')
 url="https://github.com/dahlia-os/pangolin-desktop"
 license=('Apache')
