@@ -1,7 +1,7 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=linvst-x-bin
 pkgver=3.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux Windows vst wrapper/bridge"
 arch=('x86_64')
 url="https://github.com/osxmidi/LinVst-X"
@@ -11,7 +11,7 @@ depends=('wine' 'gtk3')
 conflicts=('linvstx')
 optdepends=('jack')
 source=("https://github.com/osxmidi/LinVst-X/releases/download/$pkgver/LinVst-X-$pkgver.zip")
-md5sums=('0bf7534035efa47b7c0728125ef103bf')
+md5sums=('b2a2d9cac0525e04f677cc4c3ef62c0c')
 
 package() {
 
