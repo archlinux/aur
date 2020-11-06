@@ -1,12 +1,12 @@
 # Maintainer: tuxzz <dorazzsoft@gmail.com>
 
 pkgname=fftw-amd
-pkgver=3.3.8
-pkgrel=0
+pkgver=3.3.8.amd2.2
+pkgrel=1
 pkgdesc="A library for computing the discrete Fourier transform (DFT) - AMD Zen/Zen2 Optimized Version"
 arch=('x86_64')
 license=('GPL2')
-url="http://www.fftw.org/"
+url="https://github.com/amd/amd-fftw/"
 depends=('bash' 'gcc-libs' 'glibc' 'openmpi')
 makedepends=('gcc-fortran')
 provides=('libfftw3q_threads.so' 'libfftw3q_omp.so' 'libfftw3q.so'
@@ -15,15 +15,15 @@ provides=('libfftw3q_threads.so' 'libfftw3q_omp.so' 'libfftw3q.so'
 'libfftw3_threads.so' 'libfftw3_omp.so' 'libfftw3_mpi.so' 'libfftw3.so' 'fftw=3.3.8-3')
 conflicts=('fftw')
 source=(
-  "https://github.com/amd/amd-fftw/archive/2.1.tar.gz"
+  "https://github.com/amd/amd-fftw/archive/2.2.tar.gz"
 )
 sha512sums=(
-  '7684a02589d29a2e7b2a81b08b6173ebc762348b71cb0b55e357623c6df8ef1d7507924a704a644cd84c09cc5a12e1be22c43c18712dbcb76a613e564ab71d79'
+  'ccf7e04d282df1c0dcb7dae6997e08503dae068f32fea105dc427060066c73d195c2eec7c24d0d388d36926bc7d0ca68a5ab0432a3858fad40e6e3136fbdaab8'
 )
 
 prepare() {
   rm -r "${pkgname}-${pkgver}" || true
-  mv -v amd-fftw-2.1 "${pkgname}-${pkgver}"
+  mv -v amd-fftw-2.2 "${pkgname}-${pkgver}"
   cp -av "${pkgname}-${pkgver}" "${pkgname}-${pkgver}-double"
   cp -av "${pkgname}-${pkgver}" "${pkgname}-${pkgver}-double"
   cp -av "${pkgname}-${pkgver}" "${pkgname}-${pkgver}-long-double"
