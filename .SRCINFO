@@ -1,6 +1,6 @@
 pkgbase = sdrangel-bin
 	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend.
-	pkgver = 4.21.0
+	pkgver = 4.21.2
 	pkgrel = 1
 	url = https://github.com/f4exb/sdrangel
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = sdrangel-bin
 	optdepends = dsdcc: Required for Digital Speech Decoder (DSD) demodulator
 	provides = sdrangel
 	conflicts = sdrangel-git
-	source = https://github.com/f4exb/sdrangel/releases/download/v4.21.0/sdrangel-422-master.tar.gz
-	sha256sums = 6dd17633098f227b2add7e8693efc200864ccdd2fb6e65862053938c301ef09a
+	source = https://github.com/f4exb/sdrangel/releases/download/v4.21.2/sdrangel-501-master.tar.gz
+	sha256sums = d83b7c4dcc93d16b02584e5a190b1422e08b88dfd56f305fad818abda0402453
 
 pkgname = sdrangel-bin
 
