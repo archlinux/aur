@@ -1,7 +1,7 @@
 pkgbase = deepin-wine-plugin-virtual
 	pkgdesc = Deepin Wine plugin virtual package
-	pkgver = 5.1.2
-	pkgrel = 2
+	pkgver = 5.1.13
+	pkgrel = 1
 	url = http://www.deepin.org
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = deepin-wine-plugin-virtual
 	makedepends = tar
 	depends = p7zip
 	depends = python-dbus
-	noextract = deepin-wine-plugin-virtual_5.1.2-2+rebuild_all.deb
-	source = https://community-packages.deepin.com/deepin/pool/non-free/d/deepin-wine-helper/deepin-wine-plugin-virtual_5.1.2-2+rebuild_all.deb
-	md5sums = 907c4c777fc7bebca8fdb1b8d2ac0624
+	noextract = deepin-wine-plugin-virtual_5.1.13-1_all.deb
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/d/deepin-wine-helper/deepin-wine-plugin-virtual_5.1.13-1_all.deb
+	md5sums = b0b9c97c8f0f0c48b3e5eb11d3dba942
 
 pkgname = deepin-wine-plugin-virtual
 
