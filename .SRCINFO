@@ -1,0 +1,14 @@
+pkgbase = brother-hl2240-cups-bin
+	pkgdesc = CUPS wrapper for Brother HL-2240 printer
+	pkgver = 2.0.4
+	pkgrel = 2
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=hl2240_us_eu
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf005879/cupswrapperHL2240-2.0.4-2.i386.deb
+	md5sums = 99b1a60787c271e63ca7a8924421348f
+
+pkgname = brother-hl2240-cups-bin
+
