@@ -1,6 +1,6 @@
 # Maintainer: Alexander Nicholi <me@nicholatian.com>
 pkgname=unilib
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 epoch=
 pkgdesc='unilib, the ANSI C support library'
@@ -8,12 +8,12 @@ arch=('i686' 'x86_64')
 url="https://github.com/aquefir/$pkgname"
 license=('BSD')
 depends=()
-makedepends=('slick>=1.1.0')
+makedepends=('slick>=1.2.0')
 provides=("$pkgname")
 conflicts=("$pkgname")
-_symver=1.1.0
+_symver=1.1.2
 source=("https://github.com/aquefir/$pkgname/archive/v${_symver}-$pkgver.tar.gz")
-sha1sums=('2f95b63cd63161bcfb11bd5e238978ad4ff02c09')
+sha1sums=('1fd36a646be8a647001441b1369589bb110dba43')
 
 _subprojects='arr chkmath decl endian err futils himem log str'
 
