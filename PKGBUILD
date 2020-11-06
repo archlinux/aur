@@ -3,8 +3,8 @@
 
 _gemname=pdf-core
 pkgname=ruby-$_gemname
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='PDF::Core is used by Prawn to render PDF documents'
 arch=(any)
 url='http://prawn.majesticseacreature.com'
@@ -14,7 +14,7 @@ makedepends=(ruby-rdoc)
 provides=('ruby-pdf-core=0.8.1')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha1sums=('03f0933ca9fcd3f1ccb68b5c8605370596f3be52')
+sha1sums=('02a5a8f857e383cf5e12e966f912b55bc1f44ffd')
 noextract=($_gemname-$pkgver.gem)
 
 package() {
