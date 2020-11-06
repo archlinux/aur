@@ -1,29 +1,27 @@
 # Maintainer: Benoît Rouits <brouits at free dor fr>
 pkgname=qloud-qtcharts
 _pkgname=qloud
-pkgver=1.4a
-_pkgver=1.4a
-pkgrel=1
+pkgver=1.4
+_pkgver=v1.4
+pkgrel=2
 pkgdesc="Tool to measure loudspeaker frequency response and distortions. QtCharts flavour."
 arch=('i686' 'x86_64' 'aarch64')
-url="https://github.com/be1/qloud"
+url="https://github.com/molke-productions/qloud"
 license=('GPL')
 depends=('fftw' 'jack' 'qt5-charts')
 conflicts=('qloud')
-source=("$_pkgname-$_pkgver.tar.gz::https://github.com/be1/$_pkgname/archive/$_pkgver.tar.gz")
-sha512sums=('7adbfbf83e2db8f4ed11fcee0bd5a2bdc85fa6b2f69eeccd5bc7a95f9361793b8dae060f02198e5709cf739d57a1a55ba10967b2806412bc3e42780d1dc506a9')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/molke-productions/$_pkgname/archive/$_pkgver.tar.gz")
+sha512sums=('3c10bcd8037c2759a84d25e83e611b574bcbf563acc6eed375b00a28cc782ce822889a17f02abcf5937862efe817ddccf2dbecd1cad1dd43e4f352f64a711c61')
 
 build() {
-  cd "$srcdir/$_pkgname-$_pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
   qmake -config release
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$_pkgver"
-  install -Dm755 bin/qloud $pkgdir/usr/bin/qloud
-  install -Dm644 qloud.xpm $pkgdir/usr/share/pixmaps/qloud.xpm
-  install -Dm644 qloud.desktop $pkgdir/usr/share/applications/qloud.desktop
+  cd "$srcdir/$_pkgname-$pkgver"
+  make install INSTALL_ROOT="${pkgdir}"
 }
 
 # vim:set ts=2 sw=2 et:
