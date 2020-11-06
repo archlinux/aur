@@ -1,10 +1,11 @@
 pkgbase = rtrlib
 	pkgdesc = RPKI-RTR client library
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rtrlib/rtrlib
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = MIT
 	checkdepends = cmocka
 	makedepends = cmake
