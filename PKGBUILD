@@ -13,8 +13,7 @@ conflicts=('rustscan')
 depends=("nmap")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('94e1a825b0b063e3134d2dfb2b8a047b7527aa5a0ecd83b9627aee0dab1a55e0')
-
+sha256sums=('1d458cb081cbed2db38472ff33f9546a6640632148b4396bd12f0229ca9de7eb')
 build() {
   cd ${_pkgname}-${pkgver}
   cargo build --release --locked --all-features --target-dir=target
