@@ -1,6 +1,6 @@
 pkgbase = kdepim-runtime-etesync-git
 	pkgdesc = Extends the functionality of kdepim (with etesync modules)
-	pkgver = v20.08.1.r196.ga0a134809
+	pkgver = v20.08.1.r208.g8f95c296e
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64

@@ -1,23 +1,16 @@
-From 15506f982fca6140ee8f289771749e3ae554be6d Mon Sep 17 00:00:00 2001
+From dee1969dc6a32e6697b13725ea09a11a4ebd56d4 Mon Sep 17 00:00:00 2001
 From: Tom Hacohen <tom@stosb.com>
-Date: Tue, 6 Oct 2020 13:48:39 +0300
-Subject: [PATCH 1/2] XXX: ease version requirements.
+Date: Fri, 6 Nov 2020 21:14:39 +0200
+Subject: [PATCH] XXX: ease version requirements.
 
 ---
- CMakeLists.txt | 42 +++++++++++++++++++++---------------------
- 1 file changed, 21 insertions(+), 21 deletions(-)
+ CMakeLists.txt | 40 ++++++++++++++++++++--------------------
+ 1 file changed, 20 insertions(+), 20 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index e57367da3..6489b53cc 100644
+index 0666ac551..b58e41190 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -1,5 +1,5 @@
- cmake_minimum_required(VERSION 3.5)
--set(PIM_VERSION "5.15.40")
-+set(PIM_VERSION "5.15.0")
- set(KDEPIM_RUNTIME_VERSION_NUMBER ${PIM_VERSION})
- project(kdepim-runtime VERSION ${KDEPIM_RUNTIME_VERSION_NUMBER})
- 
 @@ -48,7 +48,7 @@ set(KDEPIM_RUNTIME_VERSION "${KDEPIM_RUNTIME_VERSION_NUMBER}${KDEPIM_DEV_VERSION
  
  configure_file(kdepim-runtime-version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/kdepim-runtime-version.h @ONLY)
@@ -37,7 +30,7 @@ index e57367da3..6489b53cc 100644
 -set(IDENTITYMANAGEMENT_LIB_VERSION "5.15.40")
 -set(KMAILTRANSPORT_LIB_VERSION "5.15.40")
 -set(CALENDARUTILS_LIB_VERSION "5.15.40")
--set(KIMAP_LIB_VERSION "5.15.40")
+-set(KIMAP_LIB_VERSION "5.15.41")
 -set(KMBOX_LIB_VERSION "5.15.40")
 -set(AKONADICALENDAR_LIB_VERSION "5.15.40")
 -set(KONTACTINTERFACE_LIB_VERSION "5.15.40")
