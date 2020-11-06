@@ -1,8 +1,8 @@
-# Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
+# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=clickrouter-git
-pkgver=v2.0.1.r943.g6fa978f01
-pkgrel=2
+pkgver=v2.0.1.r951.g593d10826
+pkgrel=1
 pkgdesc='Fast modular packet processing and analysis'
 depends=('glibc' 'libpcap')
 optdepends=()
