@@ -2,7 +2,7 @@
 
 pkgname=joplin-beta
 pkgver=1.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest pre-release - open source note taking and to-do application"
 arch=('x86_64')
 depends=('nodejs>10' 'nss' 'gtk3' 'libxss' 'libsecret' 'rsync' 'libgsf' 'libexif' 'libcroco')
@@ -22,33 +22,30 @@ sha256sums=('fdda15d7eba2a8ab9a0f10191fc2a3cc9e92ab43b5a48ecf12d29672c48819dc'
 
 build() {
   cd "${srcdir}/${pkgname%-*}-${pkgver}"
+  rm -rf packages/app-mobile
+
   npm install
 
-  # Install CliClient
-  cd "${srcdir}/${pkgname%-*}-${pkgver}/CliClient"
-  npm install
-
-  # Install ElectronClient
-  cd "${srcdir}/${pkgname%-*}-${pkgver}/ElectronClient"
-  npm install
+  # Install app-desktop
+  cd "${srcdir}/${pkgname%-*}-${pkgver}/packages/app-desktop"
   npm run dist
 }
 
 package() {
   app_name=${pkgname%-*}
-  cd "${srcdir}/${app_name}-${pkgver}"
+  cd "${srcdir}/${app_name}-${pkgver}/packages"
 
   install -d ${pkgdir}/usr/share/{${app_name},${app_name}-cli}
 
-  # CliClient
-  cp -R CliClient/build/* "${pkgdir}/usr/share/${app_name}-cli"
-  cp -R CliClient/node_modules "${pkgdir}/usr/share/${app_name}-cli"
-  # ElectronClient
-  cp -R ElectronClient/dist/linux-unpacked/* "${pkgdir}/usr/share/${app_name}"
+  # App-cli
+  cp -R app-cli/build/* "${pkgdir}/usr/share/${app_name}-cli"
+  cp -R app-cli/node_modules "${pkgdir}/usr/share/${app_name}-cli"
+  # App-desktop
+  cp -R app-desktop/dist/linux-unpacked/* "${pkgdir}/usr/share/${app_name}"
 
   install -Dm755 "${srcdir}/${app_name}-desktop.sh" "${pkgdir}/usr/bin/${app_name}-desktop"
   install -m755 "${srcdir}/${app_name}.sh" "${pkgdir}/usr/bin/${app_name}"
 
   install -Dm644 "${srcdir}/${app_name}.desktop" -t "${pkgdir}/usr/share/applications"
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${app_name}"
+  install -Dm644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${app_name}"
 }
