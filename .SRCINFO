@@ -1,15 +1,16 @@
 pkgbase = slick
 	pkgdesc = Slick makefiles
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/aquefir/slick
 	arch = any
 	license = BSD
+	makedepends = python>=3.4
 	provides = slick
 	conflicts = slick
-	source = https://github.com/aquefir/slick/archive/mk-v1.1.2.tar.gz
+	source = https://github.com/aquefir/slick/archive/mk-v1.2.0.tar.gz
 	source = aquefir.sh
-	sha1sums = f9c7ad7724ef8e3df9edc6d4238987bac76e62c0
+	sha1sums = e849a4df12780765e52d0aa7c2a74c55b752ae8e
 	sha1sums = SKIP
 
 pkgname = slick
