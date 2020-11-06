@@ -2,7 +2,7 @@
 
 pkgname=flycasual-bin
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Fan-made \"Star Wars: X-Wing Miniatures Game\" simulator"
 arch=('x86_64')
 url="https://github.com/Sandrem/FlyCasual"
