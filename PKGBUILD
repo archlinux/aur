@@ -1,8 +1,8 @@
 # Maintainer: luosoy <249799588@qq.com>
 pkgname=com.qq.im.deepin
-_pkgver=9.3.2deepin9
+_pkgver=9.3.2deepin14
 pkgver=9.3.2
-pkgrel=9
+pkgrel=14
 epoch=
 pkgdesc="Deepin Wine QQ"
 arch=('i686' 'x86_64')
@@ -20,10 +20,10 @@ backup=()
 options=()
 install=
 changelog=
-#source=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${_pkgver}_i386.deb")
-source=("https://master.dl.sourceforge.net/project/deepin-wine-apps/${pkgname}_${_pkgver}_i386.deb")
+source=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${_pkgver}_i386.deb")
+#source=("https://master.dl.sourceforge.net/project/deepin-wine-apps/${pkgname}_${_pkgver}_i386.deb")
 noextract=("${pkgname}_${_pkgver}_i386.deb")
-md5sums=('2c1eed367e78d9431ca1c40f7181cd29')
+md5sums=('e12c4b26c791ca32cdc96e5441341148')
 validpgpkeys=()
 
 prepare() {
