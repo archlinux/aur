@@ -4,13 +4,13 @@
 
 
 _prefix=/opt/UnityLts
-_hash=518737b1de84
+_hash=4037e52648cd
 # hash obtained from: https://unity3d.com/unity/qa/lts-releases , you can find it by right clicking the download
 # link for any installer and then using your brain to figure otu what part looks like the hash
 
 pkgname=unity-editor-lts
-pkgver=2019.4.13f1
-pkgrel=2
+pkgver=2019.4.14f1
+pkgrel=1
 epoch=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences. (LTS)"
 arch=('x86_64')
@@ -46,7 +46,7 @@ source=("$pkgver.tar.xz::https://download.unity3d.com/download_unity/${_hash}/Li
         "${pkgname}.desktop"
         "${pkgname}-icon.png"
         "eula.txt")
-sha256sums=('e1aa37a070e724d1a90ef122ab4bd1ed6649340f7a195b90013fe33ef3081345'
+sha256sums=('124c56b4d6008dda988be9f599dd11a1f19c1ae713ea26ffe5dc248207b4821a'
             'c22d2f91c47923496d24e8be376f70305846e60c038f923d6c7b41f0741bcb4a'
             'e786f76cfe96b41300775e54fcdd7e81dbfb3b28f607a263ac7a3a73a697ae06'
             '193a3b88d7149f7eff19bbb282a836847831a842db399addbcc0cc600fd08cdb'
