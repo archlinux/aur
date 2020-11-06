@@ -10,6 +10,18 @@ provides=("${_variant}-${_extname}")
 conflicts=("${_variant}-${_extname}")
 arch=('any')
 depends=("${_variant}-coc" 'python')
+optdepends=('autopep8: autopep8 formatting plugin'
+            'python-black: black formatting plugin'
+            'yapf: yapf formatting plugin'
+            'flake8: flake8 linting plugin'
+            'bandit: bandit linting plugin'
+            'mypy: mypy linting plugin'
+            'pytype: pytype linting plugin'
+            'python-pep8: pep8 linting plugin'
+            'python-prospector: prospector linting plugin'
+            'python-pydocstyle: pydocstyle linting plugin'
+            'pylama: pylama linting plugin'
+            'python-pylint: pylint linting plugin')
 makedepends=('yarn' 'npm' 'git')
 license=('MIT')
 source=("${_extname}::git+${url}.git")
