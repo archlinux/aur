@@ -1,0 +1,16 @@
+pkgbase = gotify-dunst-git
+	pkgdesc = A simple script for receiving Gotify message notifications via dunst.
+	pkgver = r12.57d84061
+	pkgrel = 1
+	url = https://github.com/ztpnk/gotify-dunst
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python3
+	depends = python-websocket-client
+	depends = libnotify
+	source = gotify-dunst-git::git+https://github.com/ztpnk/gotify-dunst
+	md5sums = SKIP
+
+pkgname = gotify-dunst-git
+
