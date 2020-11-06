@@ -1,7 +1,7 @@
 pkgbase = emerald-gtk3
 	pkgdesc = Emerald window decorator
 	pkgver = 0.8.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/compiz/emerald/
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = emerald-gtk3
 	depends = xdg-utils
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
+	provides = emerald
 	conflicts = emerald0.9
 	options = !libtool
 	source = https://gitlab.com/compiz/emerald/-/archive/v0.8.18/emerald-v0.8.18.tar.bz2

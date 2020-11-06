@@ -10,7 +10,7 @@ _micro=""
 
 pkgname=emerald-gtk3
 pkgver="${_pkgver}${_micro}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Emerald window decorator"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/compiz/${_upstream}/"
@@ -21,6 +21,7 @@ makedepends=('intltool' 'pkg-config' 'gettext')
 groups=('compiz-fusion' 'compiz-fusion-kde' 'compiz-fusion-gtk')
 options=(!libtool)
 conflicts=('emerald0.9')
+provides=('emerald')
 source=(
   "${url}-/archive/v${pkgver}/${_upstream}-v${pkgver}.tar.bz2"
 )
