@@ -2,7 +2,7 @@
 pkgname=qloud
 pkgver=1.3a
 _pkgver=1.3-alpha
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to measure loudspeaker frequency response and distortions."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/molke-productions/qloud"
@@ -14,15 +14,13 @@ sha512sums=('4ad124da340cd4f1e3ee43da65ba78c605665be7ce05fd375b09ecd785331adee56
 
 build() {
   cd "$srcdir/$pkgname-$_pkgver"
-  qmake
+  qmake PREFIX=/usr -config release
   make
 }
 
 package() {
   cd "$srcdir/$pkgname-$_pkgver"
-  install -Dm755 bin/qloud $pkgdir/usr/bin/qloud
-  install -Dm644 qloud.xpm $pkgdir/usr/share/pixmaps/qloud.xpm
-  install -Dm644 qloud.desktop $pkgdir/usr/share/applications/qloud.desktop
+  make install INSTALL_ROOT="${pkgdir}"
 }
 
 # vim:set ts=2 sw=2 et:
