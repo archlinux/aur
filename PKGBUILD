@@ -1,10 +1,10 @@
 # Maintainer: Marcel Röthke <marcel.roethke@haw-hamburg.de>
 
 pkgname=rtrlib-git
-pkgver=r711.b0a7111
+pkgver=r732.93724e4
 pkgrel=1
 pkgdesc="RPKI-RTR client library"
-arch=(x86_64 i686)
+arch=(x86_64 i686 aarch64)
 url="https://github.com/rtrlib/rtrlib"
 license=('MIT')
 depends=(libssh)
