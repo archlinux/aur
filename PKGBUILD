@@ -6,19 +6,18 @@
 
 pkgname=libpulse-nosystemd
 pkgdesc="Client library for PulseAudio"
-pkgver=13.99.2+13+g7f4d7fcf5
+pkgver=13.99.3
 pkgrel=1
 arch=(i686 x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(LGPL)
-depends=(dbus libasyncns libcap libxtst libsm libsndfile)
-makedepends=(attr rtkit speexdsp tdb orc gtk3 libsoxr meson xmltoman
-             gst-plugins-base-libs)
+depends=(dbus libasyncns libcap libxcb libsm libsndfile)
+makedepends=(attr rtkit speexdsp tdb orc gtk3 libsoxr meson xmltoman)
 provides=("libpulse=${pkgver}" libpulse{,-simple,-mainloop-glib}.so)
 conflicts=('libpulse')
 replaces=('libpulse')
 backup=(etc/pulse/client.conf)
-_commit=7f4d7fcf5f6407913e50604c6195d0d5356195b1  # master
+_commit=daf3a3c4b08c89aa658353764c5237f0a4bef9f7  # tags/v13.99.3^0
 source=("git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#commit=$_commit")
 sha256sums=('SKIP')
 
