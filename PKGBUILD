@@ -1,7 +1,8 @@
-# Maintainer: Baron Hou <houbaron@gmail.com>
+# Maintainer: Knut Ahlers <knut@ahlers.me>
+# Contributor: Baron Hou <houbaron@gmail.com>
 
 pkgname=archisteamfarm-bin
-pkgver=4.2.4.0
+pkgver=5.0.0.5
 pkgrel=1
 pkgdesc="C# application that allows you to farm steam cards using multiple steam accounts simultaneously."
 arch=('x86_64')
@@ -13,33 +14,24 @@ noextract=('ASF-linux-x64.zip')
 options=("!strip" "staticlibs")
 
 source=(
-    "https://github.com/JustArchiNET/ArchiSteamFarm/releases/latest/download/ASF-linux-x64.zip"
-    "LICENSE-2.0.txt"
-    "ArchiSteamFarm-bin.desktop"
+	"https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/${pkgver}/ASF-linux-x64.zip"
+	"https://raw.githubusercontent.com/JustArchiNET/ArchiSteamFarm/${pkgver}/LICENSE-2.0.txt"
+	"ArchiSteamFarm-bin.desktop"
 )
 
-md5sums=(
-    'SKIP'
-    '175792518e4ac015ab6696d16c4f607e'
-    '98654afd36cae629f570ff0510669ba2'
-)
-
-pkgver() {
-    curl -s https://api.github.com/repos/JustArchiNET/ArchiSteamFarm/releases/latest | jq -r '.tag_name'
-}
+sha512sums=('a88e670545b3733509e4f16713c1196e9e19a43f7b236bd71e153b398138462a0804d8b5b0b92452b601de62d2582efdbe3e1d5dcc4f2c64cabed18ed13fa349'
+            '31cc38066678c030e8f6378dcae59add64566a977f92983c3a4c929c9b76424291915ea4283e1367ece50b9537f8d51970aa8fd5ce063037aa3a7c45f0677d25'
+            '32aaead4aacc02c9c60afef74e04cb3a30afc4d76f5e6836a05e672344c7db66cf099849cb2bc9a04454a026f99c9f60d3d7186f4a496d4626fe1a3d40d4ecf6')
 
 prepare() {
-    rm -rf "ASF"
-    unzip ASF-linux-x64.zip -d "ASF"
+	unzip ASF-linux-x64.zip -d "ASF"
 }
 
 package() {
-    install -Dm644 "LICENSE-2.0.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "ArchiSteamFarm-bin.desktop" "${pkgdir}/usr/share/applications/ArchiSteamFarm-bin.desktop"
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE-2.0.txt"
+	install -Dm644 -t "${pkgdir}/usr/share/applications" "ArchiSteamFarm-bin.desktop"
 
-    install -Dm755 "./ASF/ArchiSteamFarm" "${pkgdir}/opt/ArchiSteamFarm-bin/ArchiSteamFarm"
-    cp -r "${srcdir}/ASF"/* "${pkgdir}/opt/ArchiSteamFarm-bin/"
-
-    rm -f "$srcdir/../ASF-linux-x64.zip"
+	install -d "${pkgdir}/opt/ArchiSteamFarm-bin"
+	cp -r "${srcdir}/ASF"/* "${pkgdir}/opt/ArchiSteamFarm-bin/"
+	install -Dm755 -t "${pkgdir}/opt/ArchiSteamFarm-bin" "${srcdir}/ASF/ArchiSteamFarm"
 }
-
