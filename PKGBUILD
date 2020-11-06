@@ -2,7 +2,7 @@
 
 _pkgname=tamzen-font
 pkgname=$_pkgname-git
-pkgver=92.9ae700d
+pkgver=93.7ea70cc
 pkgrel=1
 pkgdesc="A monospaced bitmap font for the console and X11 (tamsyn-font fork)"
 arch=('any')
@@ -24,6 +24,10 @@ package () {
 
   install -d "$pkgdir/usr/share/fonts/local"
   install -m644 bdf/*.bdf "$pkgdir/usr/share/fonts/local/"
+
+  install -d "$pkgdir/usr/share/kbd/consolefonts"
+  gzip psf/*.psf
+  install -m644 psf/*.psf.gz "$pkgdir/usr/share/kbd/consolefonts/"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README"
