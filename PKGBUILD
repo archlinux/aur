@@ -1,18 +1,18 @@
 # Maintainer: Jiachen Yang <farseerfc@gmail.com>
 pkgname=systemd-report-entropy
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="report system entropy to journald during boot"
 arch=(any)
 url="http://github.com/farseerfc/systemd-report-entropy"
 license=('custom:BSD')
-depends=()
+depends=('bash' 'bc')
 source=("$pkgname"
     "$pkgname.service"
     'LICENSE'
 )
-sha512sums=('9b344e44bdd3eef9f1f07fe69f9d8a1c6248f942f71a239e0a46290ac9d915da0c11c023477a5fc51b84e39436e1cb01874e3806396bbfaf83c1417a056eb371'
-            '8c5be83a650cac8bb969091e586627cf24bbd1dc92011529541f244a589981d3e7b0973606e4af087f46034043a01f37c7cd4062fb8b5d00fc685ed0780848ad'
+sha512sums=('c96c9178f2b8716d75e6a2ff7f4674c2dd0056661000243a66de6c12790ba45123fc4dec7e1fcc7c19fe51578163a5e69b269ce8d4492247e2cc3c064628f178'
+            '847444c837ab903e46f9944352a93d76c8663d43fe9960bcf4d8533b2a647d276d870d8963594a26d0a67035499d7d88091af7ed8e6957c67f0679ee8edd3517'
             '6b75fd3686d5b4ae44c7dae0ede5caf38203bb285242e2abaa6f587f357c11138e969fead87f8362834803cea3b1a488da7bfc952545110d0c9a02cf230d4e48')
 
 package() {
