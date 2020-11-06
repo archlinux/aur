@@ -1,15 +1,14 @@
 # Maintainer: Ilango Rajagopal <ilangokul@gmail.com>
 
 pkgbase=endpoint-verification
-pkgname=(endpoint-verification endpoint-verification-chrome)
+pkgname=("endpoint-verification" "endpoint-verification-chrome")
 _pkgver="2020.10.19.c337849236-00"
 pkgver="$(tr '-' '_' <<< $_pkgver)"
-pkgrel=1
-pkgdesc="Endpoint Verification Helper for Chromium"
+pkgrel=2
+pkgdesc="Endpoint Verification Helper"
 arch=(x86_64)
 url="https://chrome.google.com/webstore/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg"
 license=(unknown)
-depends=(chromium)
 sha256sums=("da2bec1a83b3bbc55815878c8676e9bf3f8043c235059b8f13fe066ff712fb1b" "SKIP")
 source=("${pkgbase}.deb::https://packages.cloud.google.com/apt/pool/${pkgbase}_${_pkgver}_amd64_${sha256sums[0]}.deb"
 	"endpoint-verification.service")
@@ -22,6 +21,9 @@ prepare() {
 }
 
 package_endpoint-verification() {
+	pkgdesc="Endpoint Verification Helper for Chromium"
+	depends=(chromium)
+
 	cp -a "$srcdir/data/opt" "$pkgdir"
 	cp -a "$srcdir/data/usr" "$pkgdir"
 	cp -a "$srcdir/data/etc" "$pkgdir"

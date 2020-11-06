@@ -1,17 +1,18 @@
 pkgbase = endpoint-verification
-	pkgdesc = Endpoint Verification Helper for Chromium
+	pkgdesc = Endpoint Verification Helper
 	pkgver = 2020.10.19.c337849236_00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chrome.google.com/webstore/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg
 	arch = x86_64
 	license = unknown
-	depends = chromium
 	source = endpoint-verification.deb::https://packages.cloud.google.com/apt/pool/endpoint-verification_2020.10.19.c337849236-00_amd64_da2bec1a83b3bbc55815878c8676e9bf3f8043c235059b8f13fe066ff712fb1b.deb
 	source = endpoint-verification.service
 	sha256sums = da2bec1a83b3bbc55815878c8676e9bf3f8043c235059b8f13fe066ff712fb1b
 	sha256sums = SKIP
 
 pkgname = endpoint-verification
+	pkgdesc = Endpoint Verification Helper for Chromium
+	depends = chromium
 
 pkgname = endpoint-verification-chrome
 	pkgdesc = Endpoint verification Helper for Google Chrome
