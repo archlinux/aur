@@ -25,7 +25,7 @@ sed -i 's/        nodejs.start("nodejs", args);/        nodejs.start("node", arg
 build() {
   cd $srcdir/CuteTranslation-$pkgver-$pkgrel
   mkdir -p build && cd build
-  qmake ../ && make -j4
+  qmake ../ && make
 }
 
 package() {
