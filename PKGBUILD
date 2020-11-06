@@ -2,7 +2,7 @@
 
 pkgname=man-pages-nl-git
 _gitname=manpages-l10n
-pkgver=r11870.548995fe9
+pkgver=r12118.5599aefdf
 pkgrel=1
 pkgdesc="Dutch man pages (Git version)"
 arch=('any')
