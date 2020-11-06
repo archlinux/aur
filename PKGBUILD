@@ -8,7 +8,7 @@
 set -u
 pkgname='ht'
 pkgver='2.1.0'
-pkgrel='6'
+pkgrel='7'
 pkgdesc='executable file editor viewer analyzer for MZ, PE and LE. Formerly ht-editor'
 arch=('i686' 'x86_64')
 #url='http://hte.sourceforge.net/'
@@ -45,6 +45,7 @@ build() {
   fi
 
   local _mflags=()
+  _mflags+='CXXFLAGS=-Wno-narrowing'
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   if [ -z "${MAKEFLAGS:=}" ] || [ "${MAKEFLAGS//-j/}" = "${MAKEFLAGS}" ]; then
     _mflags+=('-j' "${_nproc}")
