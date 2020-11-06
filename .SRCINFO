@@ -1,7 +1,7 @@
 pkgbase = qloud-qtcharts
 	pkgdesc = Tool to measure loudspeaker frequency response and distortions. QtCharts flavour.
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/molke-productions/qloud
 	arch = i686
 	arch = x86_64

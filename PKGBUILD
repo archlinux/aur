@@ -3,7 +3,7 @@ pkgname=qloud-qtcharts
 _pkgname=qloud
 pkgver=1.4
 _pkgver=v1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to measure loudspeaker frequency response and distortions. QtCharts flavour."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/molke-productions/qloud"
@@ -15,7 +15,7 @@ sha512sums=('3c10bcd8037c2759a84d25e83e611b574bcbf563acc6eed375b00a28cc782ce8228
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
-  qmake -config release
+  qmake PREFIX=/usr -config release
   make
 }
 
