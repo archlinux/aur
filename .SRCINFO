@@ -1,6 +1,6 @@
 pkgbase = tic-80-git
 	pkgdesc = TIC-80 tiny computer emulator
-	pkgver = r1103.5b06d67
+	pkgver = r1400.c6d246e
 	pkgrel = 1
 	url = https://tic.computer/
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = tic-80-git
 	depends = glu
 	depends = freeglut>=3.0.0
 	depends = libglvnd
+	depends = lua-sdl2
 	provides = tic-80
 	source = git+https://github.com/nesbox/TIC-80.git
 	sha256sums = SKIP
