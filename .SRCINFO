@@ -1,7 +1,7 @@
 pkgbase = domoticz
 	pkgdesc = Web based home automation
 	pkgver = 2020.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.domoticz.com
 	install = domoticz.install
 	arch = i686

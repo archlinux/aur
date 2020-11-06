@@ -5,7 +5,7 @@
 
 pkgname=domoticz
 pkgver=2020.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Web based home automation"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://www.domoticz.com'
@@ -35,12 +35,10 @@ prepare() {
   cmake -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=/opt/domoticz \
   -DUSE_STATIC_OPENZWAVE=NO \
-  -DUSE_BUILTIN_LUA=NO \
   -DUSE_BUILTIN_JSONCPP=NO \
   -DUSE_BUILTIN_MINIZIP=NO \
   -DUSE_BUILTIN_MQTT=NO \
   -DUSE_BUILTIN_SQLITE=NO \
-  -DUSE_BUILTIN_ZLIB=NO \
   -DUSE_STATIC_BOOST=NO \
   -DUSE_STATIC_LIBSTDCXX=NO \
   -DUSE_OPENSSL_STATIC=NO \
