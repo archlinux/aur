@@ -14,24 +14,24 @@ makedepends=('git')
 provides=('libstrangle')
 conflicts=('libstrangle')
 license=('GPL3')
-source=("libstrangle-0.1.1.tar.gz::https://gitlab.com/torkel104/libstrangle/-/archive/${pkgver}/libstrangle-${pkgver}.tar.gz")
+source=("https://gitlab.com/torkel104/libstrangle/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('8413f260ce1ab15cd38752f67650dee2f822f858d384d6c0784a9428c23cd105')
 
 prepare() {
-    cd $_pkgname
+    cd $pkgname-$pkgver
     sed -i -e '/ldconfig/d' makefile
 }
 
 build() {
-    cd $_pkgname
+    cd $pkgname-$pkgver
     make prefix=/usr
 }
 
 package() {
-    cd $_pkgname
+    cd $pkgname-$pkgver
     make prefix=/usr DESTDIR="$pkgdir" install-common install-32 install-64 install-ld
 
     # Install the README.md locally
-    install -d "$pkgdir/usr/share/doc/$_pkgname"
-    install -m644 -t "$pkgdir/usr/share/doc/$_pkgname" README.*
+    install -d "$pkgdir/usr/share/doc/$pkgname"
+    install -m644 -t "$pkgdir/usr/share/doc/$pkgname" README.*
 }
