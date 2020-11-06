@@ -24,20 +24,21 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_extname}"
-    yarn install --frozen-lockfile --preferred-cache-folder "${srcdir}/.cache/yarn"
-    yarn pack
-    tar xvf *.tgz
-    rm *.tgz
-    cd package
-    npm install --only=production --no-lockfile --ignore-scripts --cache "${srcdir}/.cache/npm"
+    yarn install --frozen-lockfile --preferred-cache-folder "${srcdir}/.cache"
 }
 
 package() {
-    cd "${srcdir}/${_extname}/package"
+    cd "${srcdir}/${_extname}"
+    yarn pack; tar xvf *.tgz; rm *.tgz
+    cd package
+    _dependencies=$(grep -Po '"dependencies":' package.json) || _dependencies=""
+    if [ -n "${_dependencies}" ]; then
+        yarn install --production --no-lockfile --ignore-scripts --prefer-offline --preferred-cache-folder "${srcdir}/.cache"
+    fi
     find . -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
-    chmod +x "${pkgdir}/${_packdir}/node_modules/bash-language-server/bin/main.js"
     rm -rf "${srcdir}/${_extname}/package"
     find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
     chown -R root:root "${pkgdir}"
+    chmod +x "${pkgdir}/${_packdir}/node_modules/bash-language-server/bin/main.js"
 }
