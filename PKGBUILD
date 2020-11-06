@@ -5,7 +5,7 @@
 
 pkgname='catt'
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cast All The Things - Send videos from many, many online sources to your Chromecast.'
 arch=('any')
 url=https://github.com/skorokithakis/"${pkgname}"
@@ -16,7 +16,7 @@ depends=(
   'python-click'
   'python-ifaddr'
   'python-netifaces'
-  'python-pychromecast6'
+  'python-pychromecast>=7.5.0'
   'python-requests'
   'youtube-dl>=2020.06.06')
 makedepends=('python' 'python-setuptools')
