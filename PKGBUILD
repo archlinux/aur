@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=python-diagrams-git
-pkgver=v0.16.0.r13.g8f50d36
+pkgver=v0.17.0.r35.gdfd8e0a
 pkgrel=1
 pkgdesc='Diagram as Code'
 
@@ -35,4 +35,5 @@ build() {
 package() {
 	cd "${srcdir}/diagrams"
 	python  ./setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -D "${srcdir}/diagrams/LICENSE" "$pkgdir/usr/share/licenses/python-diagram/LICENSE"
 }

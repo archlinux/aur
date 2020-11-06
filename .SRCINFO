@@ -1,6 +1,6 @@
 pkgbase = python-diagrams-git
 	pkgdesc = Diagram as Code
-	pkgver = v0.16.0.r13.g8f50d36
+	pkgver = v0.17.0.r35.gdfd8e0a
 	pkgrel = 1
 	url = https://github.com/mingrammer/diagrams
 	arch = any
