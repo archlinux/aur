@@ -1,6 +1,6 @@
 # Maintainer: Roberto Bochet <robertobochet@gmail.com>
 pkgname="python-yabu"
-pkgver="0.1.3"
+pkgver="0.1.3.2"
 pkgrel=1
 pkgdesc="An utility that exploiting rsync allows to automatize backup tasks, also for remote servers."
 arch=("any")
@@ -9,7 +9,7 @@ license=("GPL3")
 depends=("rsync" "python" "python3-yamale")
 makedepends=("python" "python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/y/yabu/yabu-$pkgver.tar.gz")
-sha256sums=("f986da2590a4d36b0f95fd52c05992f68bbff0f3d726da3bedfa50a56a4b4c60")
+sha256sums=("1bb76df8925d8748ee66b89fe5954328f2032369d44544e88bab0db475c98e49")
 backup=("etc/yabu/config.yaml")
 
 build() {
