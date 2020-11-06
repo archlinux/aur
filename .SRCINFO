@@ -1,7 +1,7 @@
 pkgbase = glib
 	pkgdesc = Common C routines used by Gtk+ and other libs
 	pkgver = 1.2.10
-	pkgrel = 14
+	pkgrel = 15
 	url = http://www.gtk.org/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = glib
 	depends = glibc
 	depends = sh
 	options = !makeflags
-	source = ftp://ftp.gnome.org/pub/gnome/sources/glib/1.2/glib-1.2.10.tar.gz
+	source = https://download.gnome.org/sources/glib/1.2/glib-1.2.10.tar.gz
 	source = gcc340.patch
 	source = aclocal-fixes.patch
 	source = glib1-autotools.patch

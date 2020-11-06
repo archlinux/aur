@@ -3,14 +3,14 @@
 
 pkgname=glib
 pkgver=1.2.10
-pkgrel=14
+pkgrel=15
 pkgdesc="Common C routines used by Gtk+ and other libs"
 arch=('i686' 'x86_64')
 url="http://www.gtk.org/"
 license=('LGPL')
 depends=('glibc' 'sh')
 options=('!makeflags')
-source=(ftp://ftp.gnome.org/pub/gnome/sources/glib/1.2/${pkgname}-${pkgver}.tar.gz
+source=(https://download.gnome.org/sources/glib/1.2/${pkgname}-${pkgver}.tar.gz
 	gcc340.patch aclocal-fixes.patch glib1-autotools.patch)
 sha1sums=('e5a9361c594608d152d5d9650154c2e3260b87fa'
           'a2cc224a66aeffdcac16ebd9e8af18143cf54918'
