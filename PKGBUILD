@@ -1,15 +1,17 @@
-# Maintainer: Evan McCarthy <evan@mccarthy.mn>
+# Maintainer: Michael Riegert <michael at eowyn net>
+# Contributor: Evan McCarthy <evan@mccarthy.mn>
 # Contributor: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname='catt'
-pkgver=0.11.2
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 pkgdesc='Cast All The Things - Send videos from many, many online sources to your Chromecast.'
-arch=('x86_64')
+arch=('any')
 url=https://github.com/skorokithakis/"${pkgname}"
 license=('BSD')
 depends=(
+  'patch'
   'python'
   'python-click'
   'python-ifaddr'
@@ -18,8 +20,8 @@ depends=(
   'python-requests'
   'youtube-dl>=2020.06.06')
 makedepends=('python' 'python-setuptools')
-source=("${pkgname}"-"${pkgver}".tar.gz::https://github.com/skorokithakis/"${pkgname}"/archive/v"${pkgver}".tar.gz)
-sha256sums=('e9cdce0fb1992b3d09535cee25f557413bc5d70fb5b5e952ce660ea914933294')
+source=("${pkgname}"-"${pkgver}".tar.gz::${url}/archive/v"${pkgver}".tar.gz)
+sha256sums=('d9a4cf7171d29108a232c1c5621b1ca767e4c77d86099567763a85de1f00ac80')
 
 build(){
   cd "${srcdir}"/"${pkgname}"-"${pkgver}"
