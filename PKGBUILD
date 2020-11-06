@@ -6,9 +6,9 @@
 
 _name=sxiv
 pkgname="${_name}-bachoseven-git"
-pkgver=2020.09.12
+pkgver=2020.09.14
 pkgrel=1
-pkgdesc="Personal build of the Simple X Image Viewer"
+pkgdesc="Simple (or small or suckless) X Image Viewer"
 arch=('i686' 'x86_64')
 url="https://github.com/BachoSeven/${_name}"
 license=('GPL2')
