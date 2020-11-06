@@ -1,13 +1,13 @@
 # Maintainer: MaryJaneInChain <maryjaneinchain@gmail.com>
 
 pkgname=tic-80-git
-pkgver=r1103.5b06d67
+pkgver=r1400.c6d246e
 pkgrel=1
 pkgdesc='TIC-80 tiny computer emulator'
 arch=('any')
 url="https://tic.computer/"
 license=('MIT')
-depends=('gtk3' 'glu' 'freeglut>=3.0.0' 'libglvnd')
+depends=('gtk3' 'glu' 'freeglut>=3.0.0' 'libglvnd' 'lua-sdl2')
 makedepends=('git' 'cmake')
 provides=(tic-80)
 
@@ -35,9 +35,7 @@ build() {
 package() {
     cd "$srcdir/$_gitname/build"
 	install -Dm755 bin/tic80 "${pkgdir}/usr/bin/tic80"
-	install -Dm755 bin/tic80-sokol "${pkgdir}/usr/bin/tic80-sokol"
 	install -Dm755 bin/player-sdl "${pkgdir}/usr/bin/player-sdl"
-	install -Dm755 bin/player-sokol "${pkgdir}/usr/bin/player-sokol"
 	install -Dm755 bin/bin2txt "${pkgdir}/usr/bin/bin2txt"
 }
 
