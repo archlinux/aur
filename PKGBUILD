@@ -1,12 +1,16 @@
-# Maintainer: Cedric Roijakkers <cedric <the at sign goes here> roijakkers <the dot sign goes here> be>
-# Inspired from the PKGBUILD for vscodium-bin and code-stable-git
+# Maintainer: Cedric Roijakkers <cedric [the at sign goes here] roijakkers [the dot sign goes here] be>.
+# Inspired from the PKGBUILD for vscodium-bin and code-stable-git.
 
 pkgname=vscodium-git
-pkgver=1.50.1
+# Make sure the pkgver matches the git tags in vscodium and vscode git repo's!
+pkgver=1.51.0
 pkgrel=1
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing (git build)."
 arch=('x86_64' 'aarch64' 'armv7h')
-url='https://github.com/VSCodium/vscodium'
+# The vscodium repo that will be checked out.
+url='https://github.com/VSCodium/vscodium.git'
+# The vscode repo that will also be checked out.
+microsofturl='https://github.com/microsoft/vscode.git'
 license=('MIT')
 
 # Version of NodeJS that will be used to create the build. Check the Travis CI build to find the correct version.
@@ -41,15 +45,13 @@ makedepends=(
 )
 source=(
     "git+${url}#tag=${pkgver}"
-    "git+https://github.com/microsoft/vscode.git#tag=${pkgver}"
+    "git+${microsofturl}#tag=${pkgver}"
     'vscodium.desktop'
-    'build_sh.patch'
 )
 sha256sums=(
     'SKIP'
     'SKIP'
     '33ea43092cc895b9e6eea9056d72fbe462a450d41b6a1465da22566912110d69'
-    'd058b0e8f71f1f501320aaabc6f9ad1e2fe734bd23a13db16763a2d49ac8db21'
 )
 provides=('code')
 conflicts=(
@@ -65,7 +67,7 @@ conflicts=(
 ###############################################################################
 
 # Even though we don't officially support other archs, let's allow the
-# user to use this PKGBUILD to compile the package for his architecture.
+# user to use this PKGBUILD to compile the package for their architecture.
 case "$CARCH" in
   x86_64)
     _vscode_arch=x64
@@ -100,8 +102,8 @@ build() {
     export LATEST_MS_COMMIT=$(git rev-list --tags --max-count=1)
     export LATEST_MS_TAG=$(git describe --tags "${LATEST_MS_COMMIT}")
 
-    # Patch the build.sh script to not build DEB, RPM, and AppImage packages.
-    patch -p0 < ../build_sh.patch
+    # Disable building rpm, deb, and AppImage packages which are not needed in an AUR build
+    export SKIP_LINUX_PACKAGES="True"
 
     # Build just like Travis does: install NodeJS and run the build.sh script.
     source /usr/share/nvm/init-nvm.sh
