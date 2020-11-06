@@ -12,7 +12,7 @@ license=('MIT')
 depends=('task')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
 provides=("${pkgname%-bin}")
-source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}-x86_64-unknown-linux-gnu.tar.gz"
+source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}-x86_64-unknown-linux-gnu.tar.gz"
         "${pkgname%-bin}-$pkgver-LICENSE::$url/raw/v$pkgver/LICENSE"
         "${pkgname%-bin}-$pkgver-README.md::$url/raw/v$pkgver/README.md")
 sha256sums_x86_64=('6f9d3a2b5539a63cf9e6afeba34ef9506b9d4b87b4fee64194ba5e0185a3b0aa'
