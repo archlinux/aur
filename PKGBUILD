@@ -3,7 +3,7 @@
 _gitname=korla
 _author=bikass
 pkgname=korla-icon-theme-git
-pkgver=r523.1f28c0e0
+pkgver=r543.949ea18
 pkgrel=1
 pkgdesc="Korla icon theme is a mix of the following icon sets: Korla and Papirus"
 arch=("any")
