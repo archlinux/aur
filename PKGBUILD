@@ -5,8 +5,8 @@
 
 pkgbase=droidcam
 pkgname=('droidcam' 'v4l2loopback-dc-dkms')
-pkgver=1.5
-pkgrel=3
+pkgver=1.6
+pkgrel=1
 epoch=1
 pkgdesc='A tool for using your android device as a wireless/usb webcam'
 arch=('x86_64')
@@ -24,15 +24,11 @@ source=("${pkgbase}.desktop"
 sha512sums=('72d21aa2d7eecc9bb070aaf7059a671246feb22f9c39b934a5463a4839f9347050de00754e5031dbc44f78eb2731f58f0cd2fcf781bc241f6fbd1abb4308b7ee'
             '27848dc6825c965c0aaac8e86220c3916ba20df6d941f5f05caecbf9c329ee744ee883bd2638ba58fe0dc3f40a8ae804dafbfbbe2efc23237e2b5450606cb78d'
             '74415b349bf8b2d1bb8181906f4254416d6223c5c42951185051bf3dd3e2f780db3441078ebff4a670eb0ffc76cc08f3b36851e0824c55a7f70136ce4d0240bc'
-            '88329c9c002b2ed99bad9e88d0dfa63197774fe57e1561058536f038775516416e0aec810d4f43de165a72354f5a02ac1bab4f9ad28a4b263327a254ba8c59b3')
+            'c714f14ec25853dc74ef6272a5d6d54e1159090250af7a26a108cbd77c154c99f03e6ecb3b68f757cc144f369443b3f86cb02363039d32781b681f19bd2435f0')
 
 prepare() {
   # Generate the module loading configuration files
   echo "options v4l2loopback_dc width=640 height=480" >| "${pkgbase}.modprobe.conf"
-
-  # Ensure that 'install' script from repository does not collide with install binary used for
-  # building the package.
-  chmod -x ${pkgname}-${pkgver}/linux/install
 }
 
 build() {
