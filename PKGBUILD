@@ -1,12 +1,12 @@
 # Maintainer: printfn <printfn@users.noreply.github.com>
 
 pkgname=fend
-pkgver=0.1.7
+pkgver=0.1.9
 pkgrel=1
 epoch=
 pkgdesc="Arbitrary-precision unit-aware calculator"
 arch=('x86_64')
-url="https://github.com/printfn/fend-rs"
+url="https://github.com/printfn/fend"
 license=('GPL3' 'custom:MIT')
 groups=()
 depends=('gcc-libs')
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 noextract=()
-sha512sums=("2aa2b2a33cae3c2a39aec02cba664088377f0297eade3b29a2cd123ed10cbd801e8e3d6e82079677a253c36bf2c468b93c2ec033d0b83e4403c07bfb73f297db")
+sha512sums=("a43796ef5194d63fdc70b3e6ccd87f35412ed553da3fb2b1dfce7a71d17d20f1b44866fea39e2a2bbdd0214f0da55a2739e8380855acb77e894219c8d0ec5304")
 validpgpkeys=()
 
 build() {
