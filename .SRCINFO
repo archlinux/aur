@@ -1,0 +1,20 @@
+pkgbase = ndn-cpp
+	pkgdesc = A new implementation of a Named Data Networking client library written in C++ and C. It is wire format compatible with the NDN-TLV encoding.
+	pkgver = 0.17
+	pkgrel = 1
+	url = https://github.com/named-data/ndn-cpp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python
+	depends = boost
+	depends = sqlite
+	depends = openssl>=1.0.2
+	provides = ndn-cpp
+	conflicts = ndn-cpp
+	source = https://github.com/named-data/ndn-cpp/archive/v0.17.tar.gz
+	sha256sums = 0d0e2f17b35b887ad90383188d520eb31f12f063cb0203d5ee3b4709ed1a3c1b
+
+pkgname = ndn-cpp
+
