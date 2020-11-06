@@ -3,7 +3,7 @@ _reponame=mini-ndn
 _pkgname=mini-ndn
 pkgname=${_pkgname}
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 # epoch=
 pkgdesc="Lightweight networking emulation tool that enables testing, experimentation, and research on the NDN platform based on Mininet"
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ build() {
 
 package() {
 	cd "${srcdir}/${_reponame}-${pkgver}"
-	python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+	python2 setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1 --skip-build
   cd "$pkgdir"
   sed -i "1i#!/usr/bin/env python2" "${pkgdir}/usr/bin/minindn"
   sed -i "1i#!/usr/bin/env python2" "${pkgdir}/usr/bin/minindnedit"
