@@ -1,30 +1,28 @@
 # Maintainer: Vyacheslav Konovalov <vyachkonovalov@protonmail.com>
 
-_commit=a7b779072e5a6eb24c49af2465087f5f4657755f
+_commit=d6a18749c04ea9967b57d080f98c12e71d0a4a46
 pkgname=deemix
-pkgver=1.5.17
+pkgver=1.5.19
 pkgrel=1
 pkgdesc='A barebone deezer downloader library'
 arch=(any)
-url='https://deemix.app/'
+url='https://t.me/deemixcommunity'
 license=('GPL3')
 depends=('python>=3.6' 'python-click' 'python-pycryptodomex' 'python-mutagen' 'python-spotipy'
          'python-eventlet' 'python-dnspython<2.0.0')
 makedepends=('python-setuptools')
-source=("https://codeberg.org/RemixDev/deemix/archive/$_commit.tar.gz")
-sha256sums=('2247a3204072ea773c482c85aac4e1c662615b08520e8aec441a0f501ec3b7be')
+source=('deemix-src.zip')
+sha256sums=('afd875870478069de332c7ce7499cc89dc8306bbec3df2e009ce067c91d0fe3e')
 
 pkgver() {
-  cd deemix
   sed -En 's/^__version__ = "([0-9\.]+)"$/\1/p' deemix/__init__.py | tr -d '\n'
 }
 
 build() {
-  cd deemix
+  touch README.md
   python setup.py build
 }
 
 package() {
-  cd deemix
   python setup.py install --root="$pkgdir" --optimize=1
 }
