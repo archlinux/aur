@@ -1,7 +1,7 @@
 # Maintainer: Elias Haddad <eliasynetto at gmail dot com>
 pkgname=subbotools
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Power Exponential estimation and random sampling"
 arch=(x86_64)
 url="http://cafim.sssup.it/~giulio/software/subbotools/index.html"
@@ -12,7 +12,6 @@ source=("ftp://cafed.sssup.it/packages/$pkgname-$pkgver.tar.gz")
 noextract=('$pkgname-$pkgver.tar.gz')
 md5sums=('SKIP')
 depends=('gsl>=2.1')
-makedepends=('gawk')
 
 prepare(){
 
