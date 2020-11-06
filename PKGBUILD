@@ -2,7 +2,7 @@
 
 pkgname=sdcv-git
 _pkgname=sdcv
-pkgver=0.5.2.r23.g995bdc5
+pkgver=0.5.3.r0.ge73388c
 pkgrel=1
 pkgdesc="StarDict Console Version - Git version"
 arch=('x86_64')
