@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python /opt/getextensions/main.py
+python -m getextensions.__main__
