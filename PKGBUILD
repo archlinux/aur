@@ -15,7 +15,7 @@ conflicts=('lightcord-bin' 'lightcord-git')
 source=("lightcord.AppImage::https://lightcord.org/api/gh/releases/Lightcord/Lightcord/dev/lightcord-linux-x86_64.AppImage"
 	"lightcord.desktop"
 	"https://raw.githubusercontent.com/Lightcord/Lightcord/master/LICENSE"
-	"lightcord.png::"https://raw.githubusercontent.com/Lightcord/Lightcord/master/discord.png)
+	"lightcord.png::https://raw.githubusercontent.com/Lightcord/LightcordLogos/master/lightcord/lightcord.png")
 
 md5sums=('SKIP'
 	 'SKIP'
