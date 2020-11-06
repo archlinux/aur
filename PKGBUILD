@@ -1,5 +1,7 @@
-# Maintainer: Ramana Kumar <firstname at member.fsf.org>
+# Mantainer: Ramana Kumar <firstname at member.fsf.org>
+# Contributor: Ramana Kumar <firstname at member.fsf.org>
 # Contributor: Jesus Alvarez <jeezusjr@gmail.com>
+
 pkgname=pacnews-neovim-git
 pkgver=v1.0.r0.gd78c8ac
 pkgrel=1
