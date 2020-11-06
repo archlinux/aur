@@ -1,11 +1,13 @@
 pkgbase = firefox-nutensor
 	pkgdesc = Point and click matrix to filter net requests by source, destination and type
 	pkgver = 1.5.0b0.r1.9a577584259e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/geekprojects/nuTensor
 	arch = any
 	groups = firefox-addons
 	license = GPL3
+	makedepends = python
+	makedepends = zip
 	depends = firefox
 	source = https://github.com/geekprojects/nuTensor/archive/9a577584259ee7ff9bace6f9631e2fc980f925f1.tar.gz
 	source = https://github.com/geekprojects/nuAssets/archive/4f087e49b8acd2cb2c273bb2aaad16e95f8275bf.tar.gz
