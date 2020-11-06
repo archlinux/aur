@@ -4,23 +4,22 @@
 pkgname=vivaldi
 _rpmversion=3.4.2066.94-1
 pkgver=3.4.2066.94
-pkgrel=2
+pkgrel=4
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
 options=(!strip !zipman)
 license=('custom')
 arch=('x86_64')
 depends=('gtk3' 'libcups' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
-makedepends=('w3m')
 optdepends=(
     'vivaldi-ffmpeg-codecs: playback of proprietary video/audio'
     'pepper-flash: flash support'
-    'google-chrome: Widevine DRM Plugin'
-    'vivaldi-widevine: Widevine DRM Plugin'
     'libnotify: native notifications'
 )
-source=("https://downloads.vivaldi.com/stable/vivaldi-stable-${_rpmversion}.x86_64.rpm")
-sha512sums=('2bd8722cd73da30a40ff46cfbde476a6a58827f9bf0053a52925026c46be6969f7de576f6aa013a815093f83798feba69a42bf20bfbaf065d965bd38d688ebd1')
+source=("https://downloads.vivaldi.com/stable/vivaldi-stable-${_rpmversion}.x86_64.rpm"
+        'eula.txt')
+sha512sums=('2bd8722cd73da30a40ff46cfbde476a6a58827f9bf0053a52925026c46be6969f7de576f6aa013a815093f83798feba69a42bf20bfbaf065d965bd38d688ebd1'
+            '7cbfc3258a92ee05eeb67c5b65a92aab27f34146fd097007de5eb8e2703610c03bfa52f7ee1d6055735f927b4dcc919a79b7caf6fb5a5a9596cac11cc083e874')
 
 package() {
     cp --parents -a {opt,usr/bin,usr/share} "$pkgdir"
@@ -42,11 +41,7 @@ package() {
     done
 
     # license
-    install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-    strings "$pkgdir/opt/vivaldi/locales/en-US.pak" \
-        | tr '\n' ' ' \
-        | sed -rne 's/.*(<html lang.*>.*html>).*/\1/p' \
-        | w3m -I 'utf-8' -T 'text/html' \
-        > "$pkgdir/usr/share/licenses/$pkgname/eula.txt"
+    install -Dm644 "$srcdir/eula.txt" \
+        "$pkgdir/usr/share/licenses/$pkgname/eula.txt"
 }
 
