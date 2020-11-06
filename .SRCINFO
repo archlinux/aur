@@ -5,7 +5,6 @@ pkgbase = slick
 	url = https://github.com/aquefir/slick
 	arch = any
 	license = BSD
-	makedepends = python>=3.4
 	provides = slick
 	conflicts = slick
 	source = https://github.com/aquefir/slick/archive/mk-v1.2.0.tar.gz

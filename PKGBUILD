@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/aquefir/$pkgname"
 license=('BSD')
 depends=()
-makedepends=('python>=3.4')
+#makedepends=('python>=3.4')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://github.com/aquefir/$pkgname/archive/mk-v$pkgver.tar.gz" 'aquefir.sh')
@@ -30,7 +30,7 @@ package() {
   mkdir -p "${pkgdir}/opt/aq/lib/slick"
   mkdir -p "${pkgdir}/etc/profile.d"
   mkdir -p build
-  env python3 util/generate.py build/base.mk
+  env python3 util/generate.py > build/base.mk
   $_install -m644 -T "build/base.mk" "${pkgdir}/opt/aq/lib/slick/base.mk"
   $_install -m644 -T "src/targets.mk" "${pkgdir}/opt/aq/lib/slick/targets.mk"
   $_install -m755 -T "../aquefir.sh" "${pkgdir}/etc/profile.d/aquefir.sh"
