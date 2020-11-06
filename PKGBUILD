@@ -18,20 +18,31 @@ sha1sums=('2f95b63cd63161bcfb11bd5e238978ad4ff02c09')
 _subprojects='arr chkmath decl endian err futils himem log str'
 
 build() {
-  cd "$srcdir/$pkgname-${_symver}-$pkgver"
-  for _subproj in ${_subprojects}; do
-    cd "${_subproj}"
-    make -j$(($(nproc) * 2))
-    cd ..
-  done
+	cd "$srcdir/$pkgname-${_symver}-$pkgver"
+	if [ "$(uname -s)" = 'Darwin' ]; then
+		_make=gmake
+	else
+		_make=make
+	fi
+	for _subproj in ${_subprojects}; do
+		cd "${_subproj}"
+		${_make} -j$(($(nproc) * 2))
+		cd ..
+	done
 }
 
 package() {
-  cd "$srcdir/$pkgname-${_symver}-$pkgver"
-
-  for _subproj in ${_subprojects}; do
-    cd "${_subproj}"
-    make install PREFIX="${pkgdir}/usr"
-    cd ..
-  done
+	cd "$srcdir/$pkgname-${_symver}-$pkgver"
+	if [ "$(uname -s)" = 'Darwin' ]; then
+		_make=gmake
+		_prefix="${pkgdir}/usr/local"
+	else
+		_make=make
+		_prefix="${pkgdir}/usr"
+	fi
+	for _subproj in ${_subprojects}; do
+		cd "${_subproj}"
+		${_make} install PREFIX="${_prefix}"
+		cd ..
+	done
 }
