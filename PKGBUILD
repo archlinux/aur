@@ -130,7 +130,7 @@ build() {
   export LDFLAGS=-lX11
   export RADVD=/usr/bin/radvd
   #sed -i 's|libsystemd-daemon|libsystemd|g' configure
-  mkdir build && cd build
+  mkdir -p build && cd build
    
   meson --prefix=/usr --libexec=/usr/lib/$_pkgname --sysconfdir=/etc --sbindir=/usr/bin
   ninja
