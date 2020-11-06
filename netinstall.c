@@ -16,6 +16,9 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+#define WINE_PATH		"/usr/bin/wine"
+#define NETINSTALL_EXE_PATH	"/usr/share/netinstall/netinstall.exe"
+
 int main(int argc, char ** argv) {
   cap_value_t newcap[1];
   cap_t caps = cap_get_proc();
@@ -56,9 +59,8 @@ int main(int argc, char ** argv) {
     }
   }
 
-  const char *pathname = "/usr/bin/wine";
-  char * const newargv[] = { "wine", "/usr/share/netinstall/netinstall.exe", NULL };
-  execv(pathname, newargv);
+  char * const newargv[] = { "wine", NETINSTALL_EXE_PATH, NULL };
+  execv(WINE_PATH, newargv);
 
   /* execv() returns only on error */
   perror("execv");

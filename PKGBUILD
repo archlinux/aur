@@ -14,7 +14,7 @@ source=("https://download.mikrotik.com/routeros/${pkgver}/netinstall-${pkgver}.z
 	'netinstall.c'
 	'netinstall.desktop')
 sha256sums=('c27212f20520ccdae2eb8df78b3ebe146707c9c4464d3daacc23abad5f0e1699'
-            '0788e62837867c93147988ff3fbd8b005aa21af7a46fd0faec97fe1e38b2af95'
+            '9e96737ac5ba6c83579c7f816ed72786ef0caa9db30c7b4626379048250f5187'
             '742b8ebf2b66697f24a27b5e6920dd4a4b92dec0fea928e8f58e499246284623')
 
 build() {
