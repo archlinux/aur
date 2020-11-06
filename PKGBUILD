@@ -4,7 +4,7 @@
 pkgname=cp2k
 pkgver=7.1.0
 _dbcsrver=2.0.1
-pkgrel=4
+pkgrel=5
 # NVIDIA GPU Generation: Kepler, Pascal, or Volta;
 # please specify one closest to yours or leave unchanged
 # if CUDA isn't supposed to be used
@@ -29,10 +29,10 @@ source=("https://github.com/cp2k/cp2k/archive/v$pkgver.tar.gz"
         "lapack.patch")
 sha256sums=('e244f76d7e1e98da7e4e4b2e6cefb723fa1205cfae4f94739413be74952e8b4e'
             '1e283a3b9ce90bda321d77f4fa611b09a7eaad167d7bc579b2e9311f7b97b5ec'
-            'f1e92ff252a3ee814b63111928dfdda9f9d1fd2e18a3de7a0a3e8d3629628a44'
-            '8e130a0cd75a66efc9bd8765cf3b8e081611e8f45d1f0851d3d8e8a76d93f78c'
-            'ac1ffe638743453234e447c6996e9c0786d67efbd4c9e3ee95142eacb45d2ad1'
-            '70af5b75ef78a27ff996867dddcedd8d265ac2609cb2a0304ff45100f854af2b'
+            '7fcc5d8d743361ac41d8e2118ad2f162de5d8274018fd8f10d115db0a07d7ff4'
+            '7534ad85434cae17b7b79b1aeb5a25dbb912b6307040e0b3d3ff5e35f81e9327'
+            '4d642cc08f16dc57bc9f9815b128ec5bc70bad72d5f394296492d224d78b5bdc'
+            'b895cabd59e5429ec5763290ce02923fc04afb7e2167ed9bcc973c6da9981545'
             'f566a9941f27c9d55c528acf0aacbb8ed686067777ce48f1e206432d259ee8a1')
 
 prepare() {

@@ -18,7 +18,7 @@ INCS        = -I/usr/include                                    \
               -I/usr/include/elpa_openmp-$(_elpaver)/elpa       \
               -I/usr/include/elpa_openmp-$(_elpaver)/modules
 
-OPTFLAGS    = -O2 -march=native -fopenmp
+OPTFLAGS    = -O3 -march=native -fopenmp
 
 CFLAGS      = $(DFLAGS) $(INCS) $(OPTFLAGS)
 CXXFLAGS    = $(DFLAGS) $(INCS) $(OPTFLAGS) -std=c++11
