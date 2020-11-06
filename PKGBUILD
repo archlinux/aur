@@ -1,8 +1,8 @@
 # Maintainer: Yurii <yu.hrysh@posteo.net>
 
 pkgname=open-hexagon-git
-pkgver=2.0.preview.r1757.g4dec917d
-pkgrel=1
+pkgver=2.0.preview.r1766.gd4e93de4
+pkgrel=2
 epoch=1
 pkgdesc='Free software clone of Super Hexagon - a music-based arcade game'
 url='https://openhexagon.org/'
@@ -56,18 +56,21 @@ package() {
 	# Dirty hack to allow writing data to current directory
 	cd "$pkgdir/usr/lib/open-hexagon"
 	touch "$pkgdir/var/lib/open-hexagon/log.txt"
-	ln -s "../../../var/lib/open-hexagon/log.txt"
+	ln -s "/var/lib/open-hexagon/log.txt"
 	mv config.json "$pkgdir/var/lib/open-hexagon/"
-	ln -s "../../../var/lib/open-hexagon/config.json"
+	ln -s "/var/lib/open-hexagon/config.json"
+	mv "$srcdir/$_reponame/misc/default_config.json" "$pkgdir/var/lib/open-hexagon"
+	ln -sf "/var/lib/open-hexagon/default_config.json"
 	mv scores.json "$pkgdir/var/lib/open-hexagon/"
-	ln -s "../../../var/lib/open-hexagon/scores.json"
+	ln -s "/var/lib/open-hexagon/scores.json"
 	mv users.json "$pkgdir/var/lib/open-hexagon/"
-	ln -s "../../../var/lib/open-hexagon/users.json"
+	ln -s "/var/lib/open-hexagon/users.json"
 	mkdir "$pkgdir/var/lib/open-hexagon/Profiles"
-	ln -s "../../../var/lib/open-hexagon/Profiles"
+	ln -s "/var/lib/open-hexagon/Profiles"
 	mkdir "$pkgdir/var/lib/open-hexagon/Replays"
-	ln -s "../../../var/lib/open-hexagon/Replays"
+	ln -s "/var/lib/open-hexagon/Replays"
 	chmod -R a+w "$pkgdir/var/lib/open-hexagon"
+	
 
 	# Executables
 	cd "$srcdir"
