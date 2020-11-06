@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Icon=pangolin-desktop
+Name=Pangolin Desktop
+Exec=/opt/pangolin-desktop/pangolin_desktop
+Terminal=false
+Hidden=false
+Comment=Pangolin Desktop UI shell
