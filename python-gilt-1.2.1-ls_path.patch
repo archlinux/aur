@@ -1,0 +1,32 @@
+diff -ruN a/test/test_util.py b/test/test_util.py
+--- a/test/test_util.py	2020-02-22 22:17:38.000000000 +0100
++++ b/test/test_util.py	2020-03-18 23:01:37.713174667 +0100
+@@ -106,17 +106,20 @@
+ 
+ 
+ def test_build_sh_cmd_simple_command():
+-    cmd = util.build_sh_cmd('ls')
+-    assert b'/bin/ls' == cmd._path
++    ls = sh.ls.bake()
++    cmd = util.build_sh_cmd("ls")
++    assert ls == cmd._path.decode()
+ 
+ 
+ def test_build_sh_cmd_command_with_args():
+-    cmd = util.build_sh_cmd('ls /tmp')
+-    assert b'/bin/ls' == cmd._path
+-    assert [b'/tmp'] == cmd._partial_baked_args
++    ls = sh.ls.bake()
++    cmd = util.build_sh_cmd("ls /tmp")
++    assert ls == cmd._path.decode()
++    assert [b"/tmp"] == cmd._partial_baked_args
+ 
+ 
+ def test_build_sh_cmd_command_with_cwd(temp_dir):
+-    cmd = util.build_sh_cmd('ls', cwd=temp_dir)
+-    assert b'/bin/ls' == cmd._path
+-    assert temp_dir == cmd._partial_call_args['cwd']
++    ls = sh.ls.bake()
++    cmd = util.build_sh_cmd("ls", cwd=temp_dir)
++    assert ls == cmd._path.decode()
++    assert temp_dir == cmd._partial_call_args["cwd"]
