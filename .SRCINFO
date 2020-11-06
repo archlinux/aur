@@ -1,0 +1,24 @@
+pkgbase = cutetranslation
+	pkgdesc = Linux 系统上基于 X11 的一款取词翻译软件,帮助用户翻译多种语言的文字。
+	pkgver = 0.4.3
+	pkgrel = 2
+	url = https://github.com/jiangzc/CuteTranslation
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = xcb-util
+	makedepends = qt5-base
+	makedepends = qt5-x11extras
+	makedepends = qt5-multimedia
+	depends = tidy
+	depends = nodejs
+	depends = qt5-multimedia
+	depends = gnome-screenshot
+	optdepends = libxtst
+	source = https://github.com/jiangzc/CuteTranslation/archive/v0.4.3-2.tar.gz
+	source = cutetranslation.desktop
+	md5sums = 218ec0212bd656ea3d175fd29b6f2db0
+	md5sums = 53dc6fbd71cc3e365405d42820ea9ab5
+
+pkgname = cutetranslation
+

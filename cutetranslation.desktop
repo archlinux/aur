@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=cutetranslation
+Comment=基于 X11 的一款取词翻译软件
+Exec=/opt/CuteTranslation/CuteTranslation
+Icon=CuteTranslation.svg
+Terminal=false
+Type=Application
