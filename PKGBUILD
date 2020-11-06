@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=python-srsly
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Modern high-performance serialization utilities for Python"
 arch=(i686 x86_64 armv7 aarch64)
@@ -14,8 +14,8 @@ depends=(cython
          python-mock
          python-numpy)
 makedepends=(python-setuptools)
-source=("https://files.pythonhosted.org/packages/e6/fd/55347f5f58db5fdec748a2234d3d82978f051ac69b2371b9d8cb2a56e180/srsly-2.3.0.tar.gz")
-sha256sums=('f994a266f6e547c8ffe803cb90baed7ca566831f924e0491402564ba0d185e66')
+source=("https://files.pythonhosted.org/packages/a3/2d/c9a532776c2b08a2ffcae922d7c9d6e355a8381b00599aa677720b7763cd/srsly-2.3.1.tar.gz")
+sha256sums=('3dcce93c69ff18e8a8d7decfdfdf8e1fd44c4446cdee8d0e5d545d6b172dc377')
 
 build() {
     cd "srsly-${pkgver}"
