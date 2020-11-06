@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=osc-tui-git
-pkgver=r198.ffa72c5
+pkgver=r256.6b89c62
 pkgrel=1
 pkgdesc='Outscale Text User Interface'
 
@@ -30,4 +30,5 @@ build() {
 package() {
 	cd "${srcdir}/osc-tui"
 	python  ./setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -D "${srcdir}/osc-tui/LICENSE" "$pkgdir/usr/share/licenses/osc-tui/LICENSE"
 }
