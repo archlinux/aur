@@ -1,11 +1,11 @@
 # Maintainer: Manuel Stoeckl <com dоt mstoeckl аt wppkgb>
 pkgname=waypipe-git
-pkgver=0.7.0.r0.g5eef66b
+pkgver=0.7.1.r0.gd42475f
 pkgrel=1
 pkgdesc='A proxy for Wayland protocol applications. WARNING: unstable'
 license=('MIT')
-# minimal build: only 'wayland' 'wayland-protocols' 'meson' 'ninja'
-makedepends=('git' 'wayland' 'meson' 'ninja' 'scdoc' 'wayland-protocols' 'libdrm')
+# minimal build: only 'meson' 'ninja' + C compiler/libc
+makedepends=('git' 'meson' 'ninja' 'scdoc' 'libdrm')
 depends=('lz4' 'zstd' 'mesa' 'ffmpeg' 'libva')
 optdepends=(
 	'openssh: recommended transport'
