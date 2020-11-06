@@ -1,5 +1,5 @@
 # Maintainer: Archisman Panigrahi <apandada1[at]gmail[dot]com>
-# Contributor: Mark Wagie <mark.wagie[at]tutanota[dot]com>, Frede Hundewadt (linux-aarhus)
+# Contributor: Mark Wagie (Yochanan), Frede Hundewadt (linux-aarhus)
 _pkgname=cheese
 pkgname=$_pkgname-csd-headerbar
 pkgver=3.38.0
