@@ -14,18 +14,20 @@ provides=('lightcord')
 conflicts=('lightcord-bin' 'lightcord-git')
 source=("lightcord.AppImage::https://lightcord.org/api/gh/releases/Lightcord/Lightcord/dev/lightcord-linux-x86_64.AppImage"
 	"lightcord.desktop"
-	"lightcord.png::https://raw.githubusercontent.com/Lightcord/LightcordLogos/master/lightcord/lightcord.png")
+	"https://raw.githubusercontent.com/Lightcord/Lightcord/master/LICENSE"
+	"lightcord.png::"https://raw.githubusercontent.com/Lightcord/Lightcord/master/discord.png)
 
 md5sums=('SKIP'
+	 'SKIP'
 	 'SKIP'
 	 'SKIP')
 
 package() {
     # Link icon and add Desktop
-    ln -s /opt/lightcord/lightcord.png "$pkgdir"/usr/share/pixmaps/lightcord.png
-    install -Dm644 "$srcdir"/Lightcord.desktop -t "$pkgdir"/usr/share/applications
+    install -Dm644 "$srcdir"/lightcord.desktop -t "$pkgdir"/usr/share/applications
     install -Dm644 "$srcdir"/lightcord.AppImage -t "$pkgdir"/usr/bin
     install -Dm644 "$srcdir"/lightcord.png -t "$pkgdir"/usr/share/pixmaps
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     chmod 755 "$pkgdir"/usr/bin/lightcord.AppImage
 }
 
