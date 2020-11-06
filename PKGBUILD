@@ -1,33 +1,35 @@
 # Maintainer      : Yuu $(echo \<yuu-tutamail+com\>|sed s/\+/./g\;s/\-/@/)
 # Upstream author : Cem Keylan <https://github.com/cemkeylan>
 
-pkgname=mu-wizard-git
+_pkgname="mu-wizard"
+pkgname="${_pkgname}-git"
 pkgver=0.r42.g76f5844
 pkgrel=1
 pkgdesc="Shell script to easily setup mu4e on Emacs"
 arch=('any')
-url=https://github.com/cemkeylan/mu-wizard
+_url=https://github.com/cemkeylan/$_pkgname
+url=$_url
 license=('GPL3')
 depends=('isync' 'msmtp' 'mu' 'pass' 'sh')
 makedepends=('git')
 optdepends=('pash: alternative password manager'
             'pm: alternative password  manager')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-install="${pkgname%-git}.install"
-source=("git+$url")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+install="${_pkgname}.install"
+source=("${_pkgname}::git+${_url}")
 md5sums=('SKIP')
 
 # Git, no tags available.
 # Use number of revisions since beginning of the history.
 pkgver() {
-    cd "${pkgname%-git}"
+    cd "${_pkgname}"
     printf '0.r%s.g%s' \
            "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${_pkgname}"
     make DESTDIR="$pkgdir/" install
     install -Dm644 README.org -t "$pkgdir/usr/share/doc/${_pkgname}/"
 }
