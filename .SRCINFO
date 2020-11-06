@@ -13,3 +13,18 @@ pkgbase = unit-convert
 
 pkgname = unit-convert
 
+pkgbase = unit-convert
+	pkgdesc = Qt Unit Conversion Tool
+	pkgver = 2.2.0
+	pkgrel = 4
+	url = https://www.chronowerks.de/pub/
+	arch = x86_64
+	arch = i686
+	license = LGPL2
+	depends = qt5-base
+	depends = qt5-script
+	source = https://www.chronowerks.de/pub/unit-convert-2.2.0.tar.gz
+	sha512sums = 9623329f92746d312df9183f924074d651f86e89adf4b84bd533cb16647c3899d1a40f4845657942f8715c26afd5d5e56776ed67473c56031257c86cfb316b92
+
+pkgname = unit-convert
+
