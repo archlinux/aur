@@ -1,7 +1,7 @@
 # Maintainer: Matthew Murray <matt@compti.me>
 pkgname=mautrix-whatsapp
 pkgver=0.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A Matrix-WhatsApp puppeting bridge"
 arch=('any')
 license=('AGPL')
@@ -17,7 +17,7 @@ source=("${url}/archive/v${pkgver}.tar.gz"
 backup=("etc/${pkgname}/mautrix-whatsapp.yaml")
 md5sums=('e9b863d139ff5ed024bec13413087c0a'
          'f1fea8f4fcd101f1230031652de1c53c'
-         '6e1e73d152d8a459541fcb6c79654c4a'
+         'd4ca118ddd0fce1e6ba4f4a4fa2dcca8'
          '01bd1d42f312bebfeec6f8a71e714d1d'
          '9b4a4e7d6265ecc83cdaa83a03f1bd5b')
 
