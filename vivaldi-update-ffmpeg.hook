@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = vivaldi
+
+[Action]
+Description = Enabling proprietary media playback in Vivaldi…
+When = PostTransaction
+Exec = /opt/vivaldi/update-ffmpeg

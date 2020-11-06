@@ -1,0 +1,13 @@
+pkgbase = vivaldi-update-ffmpeg-hook
+	pkgdesc = Hook to automatically enable proprietary media playback
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/KucharczykL/vivaldi-update-ffmpeg-hook
+	arch = any
+	license = GPL
+	depends = vivaldi
+	source = vivaldi-update-ffmpeg.hook
+	sha256sums = b6e9ca230a603f7cc7636a575b629274049565b7dfcdd16073da657317d74e84
+
+pkgname = vivaldi-update-ffmpeg-hook
+
