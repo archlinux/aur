@@ -1,11 +1,11 @@
 pkgbase = mx-puppet-discord-git
 	pkgdesc = This is a Matrix bridge for Discord
 	pkgver = r219.d9615ba
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/matrix-discord/mx-puppet-discord
 	arch = x86_64
 	arch = armv7h
-	license = custom:apache2
+	license = apache
 	makedepends = git
 	makedepends = npm
 	depends = nodejs

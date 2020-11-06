@@ -1,13 +1,13 @@
 pkgname=mx-puppet-discord-git
 pkgver=r219.d9615ba
-pkgrel=9
+pkgrel=10
 # strip the -git suffix from name
 _dirname="${pkgname%-git}"
 _basename="${pkgname%-git}"
 pkgdesc='This is a Matrix bridge for Discord'
 arch=('x86_64' 'armv7h')
 url='https://github.com/matrix-discord/mx-puppet-discord'
-license=('custom:apache2')
+license=('apache')
 depends=('nodejs' 'cairo' 'pango')
 source=("git+${url}" "${_basename}.tmpfiles" "${_basename}.sysusers" "${_basename}.service")
 sha256sums=('SKIP'
@@ -53,8 +53,5 @@ package() {
 	install -Dm 644 "${srcdir}/${_basename}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_basename}.conf"
 	install -Dm 644 "${srcdir}/${_basename}.service" "${pkgdir}/usr/lib/systemd/system/${_basename}.service"
 
-	install -Dvm 644 LICENSE "${pkgdir}/usr/share/licenses/${_basename}/LICENSE"
-
 	install -Dvm 600 sample.config.yaml "${pkgdir}/etc/${_basename}/config.yaml"
-	
 }
