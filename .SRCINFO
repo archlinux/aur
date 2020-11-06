@@ -30,7 +30,6 @@ pkgbase = libvirt-git
 	depends = numactl
 	depends = polkit
 	depends = netcf
-	depends = libvirt
 	depends = glusterfs
 	depends = ceph-libs
 	depends = libiscsi
