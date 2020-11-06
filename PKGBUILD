@@ -6,7 +6,7 @@
 # Contributor: Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 
 pkgname=erlang-nox
-pkgver=23.1.1
+pkgver=23.1.2
 _docver=23.1
 pkgrel=1
 pkgdesc='General-purpose concurrent functional programming language (headless version)'
@@ -74,4 +74,3 @@ package() {
 }
 
 # getver: raw.githubusercontent.com/erlang/otp/maint/OTP_VERSION
-# vim: ts=2 sw=2 et
