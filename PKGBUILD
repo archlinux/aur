@@ -2,7 +2,7 @@
 # Upstream author : Cem Keylan <https://github.com/cemkeylan>
 
 pkgname=mu-wizard-git
-pkgver=0.r4.g97b6519
+pkgver=0.r42.g76f5844
 pkgrel=1
 pkgdesc="Shell script to easily setup mu4e on Emacs"
 arch=('any')
@@ -29,5 +29,5 @@ pkgver() {
 package() {
     cd "$srcdir/${pkgname%-git}"
     make DESTDIR="$pkgdir/" install
-    install -Dm644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}/"
+    install -Dm644 README.org -t "$pkgdir/usr/share/doc/${_pkgname}/"
 }
