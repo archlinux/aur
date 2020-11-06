@@ -2,7 +2,7 @@
 
 _gitname=spicetify-cli
 pkgname="${_gitname}-git"
-pkgver=v1.1.0.r16.gdb34ac4
+pkgver=v1.1.0.r20.g3848e0f
 pkgrel=1
 pkgdesc='Command-line tool to customize Spotify client - Git master branch'
 arch=('x86_64' 'i686')
