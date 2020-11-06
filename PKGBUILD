@@ -19,8 +19,8 @@ build() {
      export GOBIN="$srcdir"/gopath/bin
      export PATH=$GOBIN:$PATH
      cd "$srcdir/$longname-v$pkgver"
-     go get github.com/wailsapp/wails/cmd/wails
-     wails build
+     go get -u github.com/wailsapp/wails/cmd/wails
+     wails build -f
 }
 
 
