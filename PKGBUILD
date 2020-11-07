@@ -1,20 +1,20 @@
 # Maintainer: Hekuran https://github.com/narukeh
 
 pkgname=sm64pc-git
-pkgver=r504.f5005418
+pkgver=r513.57c20346
 pkgrel=1
 pkgdesc='Super Mario 64 PC (sm64ex aka. sm64pc) - OpenGL adaptation of n64decomp/sm64'
 arch=('any')
 url='https://github.com/sm64pc/sm64ex'
 license=('reverse-engineered and unlicensed')
-depends=('python' 'audiofile' 'sdl2' 'glew')
 makedepends=('git')
+depends=('python' 'audiofile' 'sdl2' 'glew')
 provides=(sm64ex)
 
 _gitname=sm64ex
 _region=us
 
-source=('git+https://github.com/sm64pc/sm64ex.git')
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,14 +23,14 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/$_gitname"
-    cp "../../baserom.${_region}.z64" . || {
-        printf "%$(stty size | awk '{print $2}')s\n" | sed "s/ /░/g"
-        printf "\\n%s\\n%s\\n\\n" \
-            "NO ROM FOUND! Copy your sm64 ROM to \"$(realpath ../../)\" and rename it to \"baserom.${_region}.z64\"." \
-            "The default ROM region is US. You have to edit the PKGBUILD if you would like to use a JP or EU version."
-        printf "%$(stty size | awk '{print $2}')s\n" | sed "s/ /░/g"
-    }
+	cd "$srcdir/$_gitname"
+	cp "../../baserom.${_region}.z64" . || {
+		printf "%$(stty size | awk '{print $2}')s\n" | sed "s/ /░/g"
+		printf "\\n%s\\n%s\\n\\n" \
+			"NO ROM FOUND! Copy your sm64 ROM to \"$(realpath ../../)\" and rename it to \"baserom.${_region}.z64\"." \
+			"The default ROM region is US. You have to edit the PKGBUILD if you would like to use a JP or EU version."
+		printf "%$(stty size | awk '{print $2}')s\n" | sed "s/ /░/g"
+	}
 }
 
 build() {
