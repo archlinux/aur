@@ -9,7 +9,7 @@ license=("GPL")
 url="http://fedoraproject.org/wiki/MinGW"
 source=("mingw-cmake.sh"
         "toolchain-mingw.cmake")
-sha256sums=('SKIP' 'SKIP' "SKIP")
+sha256sums=('SKIP' 'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
