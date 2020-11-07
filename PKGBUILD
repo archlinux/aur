@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-imageformats
-_qtver=6.0.0-beta2
+_qtver=6.0.0-beta3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -19,7 +19,7 @@ makedepends=('mingw-w64-cmake' 'qt6-base' 'ninja' 'git')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtimageformats-everywhere-src-${_qtver}"
-source=("$_pkgfqn::git://code.qt.io/qt/qtimageformats.git#commit=9d2f8c3f0825f8114a2a916dd8e305f9848d2653")
+source=("$_pkgfqn::git://code.qt.io/qt/qtimageformats.git#commit=c98a77599e01b14064277a2da4c26322bd750f54")
 sha256sums=('SKIP')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
@@ -28,10 +28,7 @@ build() {
   for _arch in ${_architectures}; do
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
     $_arch-cmake -G Ninja -B build-$_arch -S $_pkgfqn \
-      -DQT_HOST_PATH=/usr \
-      -DFEATURE_pkg_config=ON \
-      -DVulkan_LIBRARY="/usr/$_arch/lib/libvulkan.dll.a" \
-      -DVulkan_INCLUDE_DIR="/usr/$_arch/include"
+      -DFEATURE_pkg_config=ON
     cmake --build build-$_arch
   done
 }
@@ -56,5 +53,6 @@ package() {
   done
 
   install -d "$pkgdir"/usr/share/licenses
-  ln -s /usr/share/licenses/mingw-w64-qt6-base "$pkgdir"/usr/share/licenses/mingw-w64-qt6-imageformats
+  ln -s /usr/share/licenses/mingw-w64-qt6-base "$pkgdir"/usr/share/licenses/$pkgname
+
 }
