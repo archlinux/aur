@@ -1,0 +1,15 @@
+pkgbase = python-gooise
+	pkgdesc = A Google Image Search automation tool.
+	pkgver = 2020.7.18.8
+	pkgrel = 1
+	url = https://gitlab.com/scpketer/gooise.git
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = python-selenium
+	depends = python-requests
+	source = https://pypi.io/packages/source/g/gooise/gooise-2020.7.18.8.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-gooise
+
