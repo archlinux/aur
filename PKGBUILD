@@ -4,25 +4,25 @@ pkgname=rest-server-bin
 pkgdesc='Rest Server is a high performance HTTP server that implements restics REST backend API.'
 license=('BSD')
 url='https://github.com/restic/rest-server'
-pkgver=0.9.7
+pkgver=0.10.0
 pkgrel=1
-package86=rest-server-${pkgver}-linux-386.gz
-package64=rest-server-${pkgver}-linux-amd64.gz
-packagearm=rest-server-${pkgver}-linux-arm.gz
+package86=rest-server_${pkgver}_linux_386
+package64=rest-server_${pkgver}_linux_amd64
+packagearm=rest-server_${pkgver}_linux_armv7
 arch=('i686' 'x86_64' 'armv7h')
 options=(!strip)
 source_i686=(
-  "${url}/releases/download/v${pkgver}/rest-server-${pkgver}-linux-386.gz"
+  "${url}/releases/download/v${pkgver}/rest-server_${pkgver}_linux_386.tar.gz"
 )
 source_x86_64=(
-  "${url}/releases/download/v${pkgver}/rest-server-${pkgver}-linux-amd64.gz"
+  "${url}/releases/download/v${pkgver}/rest-server_${pkgver}_linux_amd64.tar.gz"
 )
 source_armv7h=(
-  "${url}/releases/download/v${pkgver}/rest-server-${pkgver}-linux-arm.gz"
+  "${url}/releases/download/v${pkgver}/rest-server_${pkgver}_linux_armv7.tar.gz"
 )
-sha256sums_i686=(3ff5cac246ef0e563c41181b930b808abcff8ffa98ea691497e2b74374afb5f5)
-sha256sums_x86_64=(390b3a396f1c3ad67f9cd8ed6ae2d3c10f7c7e3a8213046009d3a905e1ee7da6)
-sha256sums_armv7h=(b7e402852b1de7fc678fefb9e494314007c7deddec587bdb78aeba597d3219a2)
+sha256sums_i686=('93de5873151a193a16cf04637baeb8abc7465e280c587a4a2bb2225922f670c0')
+sha256sums_x86_64=('603336314d6f71a68933a0da925911d70adce3d7c57bde655c5adc2e6c9431a6')
+sha256sums_armv7h=('47e5c59e73ddb9d5df0c195cee6d80df86bbe6530b3f17909151c25597726046')
 
 package() {
   if [ "$CARCH" = "i686" ] ; then
@@ -36,8 +36,10 @@ package() {
     exit 1
   fi
 
-  mkdir -p "$pkgdir/usr/bin/"
-  gunzip -c "$package" > "$pkgdir/usr/bin/rest-server"
-  chmod +x "$pkgdir/usr/bin/rest-server"
-}
 
+  cd "$package"
+  mkdir -p "$pkgdir"/usr/share/licenses/$pkgname/
+  mkdir -p "$pkgdir/usr/bin/"
+  install -m755 rest-server "$pkgdir"/usr/bin/
+  install -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/
+}
