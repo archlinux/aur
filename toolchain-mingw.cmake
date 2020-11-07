@@ -18,6 +18,7 @@ set (CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 # Make sure Qt can be detected by CMake
 set (QT_BINARY_DIR /usr/@TRIPLE@/bin /usr/bin)
 set (QT_INCLUDE_DIRS_NO_SYSTEM ON)
+set (QT_HOST_PATH "/usr" CACHE PATH "host path for Qt")
 
 # set the resource compiler (RHBZ #652435)
 set (CMAKE_RC_COMPILER @TRIPLE@-windres)
