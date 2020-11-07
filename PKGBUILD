@@ -26,9 +26,6 @@ package() {
   for _arch in ${_architectures}; do
     install -m 644 toolchain-${_arch}.cmake "${pkgdir}"/usr/share/mingw/
     install -m 755 ${_arch}-cmake "${pkgdir}"/usr/bin/
-    for _pyver in ${_python_versions}; do
-      install -m 755 ${_arch}-cmake-py${_pyver} "${pkgdir}"/usr/bin/
-    done
   done
 }
 
