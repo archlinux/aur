@@ -44,7 +44,7 @@ pkgrel=1
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=(custom)
-provides=(ttf-font)
+# provides=(ttf-font)
 conflicts=(ttf-vista-fonts)
 
 _ttf_ms_win10_fod_zh_cn=(

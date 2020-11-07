@@ -4,7 +4,6 @@ pkgbase = ttf-ms-win10-fod-zh_cn
 	url = http://www.microsoft.com/typography/fonts/product.aspx?PID=164
 	arch = any
 	license = custom
-	provides = ttf-font
 	conflicts = ttf-vista-fonts
 	source = file://Deng.ttf
 	source = file://Dengb.ttf
