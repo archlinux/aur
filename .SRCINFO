@@ -1,22 +1,17 @@
 pkgbase = dyninst
 	pkgdesc = Tools for binary instrumentation, analysis, and modification
-	pkgver = 10.0.0
+	pkgver = 10.2.1
 	pkgrel = 1
 	url = https://dyninst.org/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = LGPL
 	makedepends = cmake
-	makedepends = boost-libs
-	makedepends = openmp
-	makedepends = libdwarf
-	makedepends = libelf
-	depends = gcc-libs
-	depends = gcc-fortran
-	depends = intel-tbb
-	depends = boost
-	source = https://github.com/dyninst/dyninst/archive/v10.0.0.tar.gz
-	md5sums = 7b426c25a163b6994f78cdaedb02fd2f
+	makedepends = boost
+	depends = libelf
+	depends = tbb
+	depends = boost-libs
+	source = https://github.com/dyninst/dyninst/archive/v10.2.1.tar.gz
+	sha256sums = 8077c6c7a12577d2ffdcd07521c1eb1b7367da94d9a7ef10bf14053aeaae7ba1
 
 pkgname = dyninst
 
