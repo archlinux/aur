@@ -1,0 +1,18 @@
+pkgbase = neovim-coc-java-git
+	pkgdesc = Java extension for coc.nvim
+	pkgver = 1.5.0.r0.g281d9e0
+	pkgrel = 1
+	url = https://github.com/neoclide/coc-java
+	arch = any
+	license = EPL
+	makedepends = yarn
+	makedepends = npm
+	makedepends = git
+	depends = neovim-coc
+	provides = neovim-coc-java
+	conflicts = neovim-coc-java
+	source = coc-java::git+https://github.com/neoclide/coc-java.git
+	sha256sums = SKIP
+
+pkgname = neovim-coc-java-git
+
