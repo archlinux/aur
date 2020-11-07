@@ -1,0 +1,37 @@
+pkgbase = bsd-games2
+	pkgdesc = Linux port of the collection of BSD command line games, "junk pile" included
+	pkgver = 2.17
+	pkgrel = 18
+	url = https://ibiblio.org/pub/linux/games/
+	install = bsd-games2.install
+	arch = x86_64
+	license = BSD
+	makedepends = flex
+	makedepends = bison
+	makedepends = m4
+	depends = gcc-libs
+	depends = words
+	depends = sh
+	provides = bsd-games
+	conflicts = bsd-games
+	source = bsd-games2-2.17.tar.gz::https://www.ibiblio.org/pub/linux/games/bsd-games-2.17.tar.gz
+	source = config.params
+	source = stdio.h.diff
+	source = gamescreen.h.diff
+	source = getline.diff
+	source = number.c.diff
+	source = bsd-games-2.17-64bit.patch
+	source = bad-ntohl-cast.diff
+	source = null-check.diff
+	md5sums = 238a38a3a017ca9b216fc42bde405639
+	md5sums = 2ea80281ee9993a9ee47323e78349a2a
+	md5sums = 784f68c796b9e099ac008aecef1af998
+	md5sums = 9c0fa6e2345bd0a7945c9a41d5ba68aa
+	md5sums = 5356bd6999ae53dd27cb2a0f837a3e70
+	md5sums = 47249a90f38ccb4dd07625b245bbc728
+	md5sums = 257813b76a41c8b2c02701571c804227
+	md5sums = 3d21a9dad2e603ddf3842972e4ff85a1
+	md5sums = a43ca0b4b9ebc4eec26372c52014ac0a
+
+pkgname = bsd-games2
+
