@@ -1,4 +1,5 @@
-# Maintainer: Stephen Argent <steve [at] tuxcon [dot] com>
+# Maintainer: chrisl echo archlinux@c2h0r1i2s4t5o6p7h8e9r-l3u4n1a.com|sed 's/[0-9]//g'
+# Contributor: Stephen Argent <steve [at] tuxcon [dot] com>
 
 pkgname=rest-server-bin
 pkgdesc='Rest Server is a high performance HTTP server that implements restics REST backend API.'
