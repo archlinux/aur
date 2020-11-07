@@ -1,0 +1,21 @@
+pkgbase = pcb-meta
+	pkgdesc = Meta package for all pcb stuff
+	pkgver = 1
+	pkgrel = 1
+	url = https://gitlab.com/soft.at.home/pcb
+	arch = any
+	license = MIT
+	depends = libsahtrace
+	depends = libusermngt
+	depends = libpcb
+	depends = pcb-ser-ddw
+	depends = pcb-ser-odl
+	depends = pcb-bus
+	depends = pcb-cli
+	depends = libmtk
+	depends = pcb-app
+	provides = pcb-meta
+	conflicts = pcb-meta
+
+pkgname = pcb-meta
+
