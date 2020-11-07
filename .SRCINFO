@@ -1,7 +1,7 @@
-pkgbase = passphraseme-git
+pkgbase = passphraseme
 	pkgdesc = A quick and simple cryptographically secure script to generate high entropy passphrases using EFF's wordlists
 	pkgver = 0.1.4
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/micahflee/passphraseme
 	arch = any
 	license = GPL3
@@ -10,5 +10,5 @@ pkgbase = passphraseme-git
 	source = git+https://github.com/micahflee/passphraseme.git#commit=cebb21bfe552c3edcb96dbbac750971faa5866c9
 	sha1sums = SKIP
 
-pkgname = passphraseme-git
+pkgname = passphraseme
 

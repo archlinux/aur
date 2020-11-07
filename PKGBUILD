@@ -1,5 +1,5 @@
-pkgname=passphraseme-git
-pkgrel=2
+pkgname=passphraseme
+pkgrel=1
 pkgver=0.1.4
 _commit=cebb21bfe552c3edcb96dbbac750971faa5866c9
 pkgdesc="A quick and simple cryptographically secure script to generate high entropy passphrases using EFF's wordlists"
