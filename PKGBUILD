@@ -2,7 +2,7 @@
 
 pkgname='gau'
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Fetch known URLs from AlienVault's Open Threat Exchange, the Wayback Machine, and Common Crawl"
 arch=('x86_64')
 url='https://github.com/lc/gau'
@@ -31,7 +31,7 @@ package() {
   cd "${pkgname}-${pkgver}"
   install -Dvm755 "${pkgname}" -t "${pkgdir}/usr/bin"
   install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
