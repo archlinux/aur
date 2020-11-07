@@ -12,7 +12,8 @@ depends=('glibc')
 makedepends=('gcc' 'make' 'm4' 'automake')
 source=("${_pkgname}::git+git://git.annexia.org/ioport.git")
 sha256sums=('SKIP')
-conflicts=("${pkgname}")
+conflicts=("${_pkgname}")
+replaces=("${_pkgname}")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"

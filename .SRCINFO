@@ -10,7 +10,8 @@ pkgbase = ioport-git
 	makedepends = m4
 	makedepends = automake
 	depends = glibc
-	conflicts = ioport-git
+	conflicts = ioport
+	replaces = ioport
 	source = ioport::git+git://git.annexia.org/ioport.git
 	sha256sums = SKIP
 
