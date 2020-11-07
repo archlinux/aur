@@ -5,7 +5,7 @@
 pkgbase=dlib
 pkgname=("dlib" "dlib-cuda")
 pkgver=19.21
-pkgrel=2
+pkgrel=3
 pkgdesc="A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques"
 arch=('x86_64')
 url="http://dlib.net"
@@ -33,7 +33,7 @@ build() {
         -DUSE_AVX_INSTRUCTIONS=ON \
         -DDLIB_USE_CUDA=OFF \
         "../${pkgbase}-${pkgver}"
-    ninja
+    ninja ${MAKEFLAGS}
 
     cd "${srcdir}"
     mkdir -p build-cuda && cd build-cuda
@@ -45,7 +45,7 @@ build() {
         -DUSE_AVX_INSTRUCTIONS=ON \
         -DDLIB_USE_CUDA=ON \
         "../${pkgbase}-${pkgver}"
-    ninja
+    ninja ${MAKEFLAGS}
 }
 
 package_dlib() {
