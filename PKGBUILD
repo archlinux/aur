@@ -1,5 +1,5 @@
 pkgname=passphraseme-git
-pkgrel=0
+pkgrel=1
 pkgver=0.1.4
 _commit=cebb21bfe552c3edcb96dbbac750971faa5866c9
 pkgdesc="A quick and simple cryptographically secure script to generate high entropy passphrases using EFF's wordlists"
@@ -7,10 +7,7 @@ url="https://github.com/micahflee/passphraseme"
 arch=('any')
 license=('GPL3')
 depends=(
-    'gtk3'
-    'libappindicator-gtk3'
     'python'
-    'openvpn'
 )
 source=(
     "git+https://github.com/micahflee/passphraseme.git#commit=${_commit}"
