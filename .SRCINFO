@@ -1,0 +1,16 @@
+pkgbase = get-media-playing-git
+	pkgdesc = Simple script to get the current media playing in the system. Useful in status bars
+	pkgver = 1.0.r2.6e8c903
+	pkgrel = 1
+	url = https://github.com/Ferryistaken/get-media-playing.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = playerctl
+	depends = bash
+	provides = get-media-playing
+	source = git+https://github.com/Ferryistaken/get-media-playing.git
+	md5sums = SKIP
+
+pkgname = get-media-playing-git
+
