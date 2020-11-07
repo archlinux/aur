@@ -1,7 +1,7 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=pcb-ser-odl-git
 pkgver=0.1.0.r0.g34ef420
-pkgrel=1
+pkgrel=2
 pkgdesc="The module libusermngt allows fast access to the user datamodel by means of a temporary file"
 arch=('any')
 url="https://gitlab.com/soft.at.home/pcb/pcb-ser-odl.git"
@@ -9,7 +9,7 @@ license=('MIT')
 
 depends=(
 	'libsahtrace'
-	'openssl'
+	'libpcb'
 	'libusermngt'
 )
 makedepends=(

@@ -1,7 +1,7 @@
 pkgbase = pcb-ser-odl-git
 	pkgdesc = The module libusermngt allows fast access to the user datamodel by means of a temporary file
 	pkgver = 0.1.0.r0.g34ef420
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/soft.at.home/pcb/pcb-ser-odl.git
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = pcb-ser-odl-git
 	makedepends = bison
 	makedepends = flex
 	depends = libsahtrace
-	depends = openssl
+	depends = libpcb
 	depends = libusermngt
 	provides = pcb-ser-odl
 	provides = pcb-ser-odl-git
