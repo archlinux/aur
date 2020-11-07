@@ -18,6 +18,10 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
   cd "${srcdir}/ParaView-v${pkgver}-RC1"
   curl -L https://gitlab.kitware.com/paraview/paraview/merge_requests/4514.patch | patch -p1
+  cd VTK
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7038.patch | patch -p1
+  cd ../ThirdParty/catalyst/vtkcatalyst/catalyst
+  curl -L https://gitlab.kitware.com/paraview/catalyst/-/merge_requests/7.patch | patch -p1
 }
 
 build() {
