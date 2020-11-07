@@ -24,7 +24,7 @@ package() {
   install -Dm 755 "${pkgname%-bin}-$pkgver" "${pkgdir}/usr/bin/$_pkgname"
   install -Dm 644 "${pkgname%-bin}-$pkgver-README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
   install -Dm 644 "${pkgname%-bin}-$pkgver-LICENSE-MIT" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE-MIT"
-  install -Dm 644 "$_pkgname.bash" -t "${pkgdir}/usr/share/bash-completion/completions"
+  install -Dm 644 "$_pkgname.bash" "${pkgdir}/usr/share/bash-completion/completions/$_pkgname"
   install -Dm 644 "$_pkgname.fish" -t "${pkgdir}/usr/share/fish/completions"
   install -Dm 644 "_$_pkgname" -t "${pkgdir}/usr/share/zsh/functions/Completion/Linux"
 }
