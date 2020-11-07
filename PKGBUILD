@@ -1,8 +1,10 @@
 # Maintainer: robertfoster
 
+msg "This PKGBUILD execute a one-line script to retrieve ModDB valid urls"
+_url=$(curl https://www.moddb.com/downloads/start/201571/all | grep -Po '(?<=href="/)[^"]*' | head -1)
 pkgname=realrtcw
 pkgver=3.1n
-pkgrel=1
+pkgrel=2
 pkgdesc="An overhaul mod for critically acclaimed Return To Castle Wolfenstein."
 arch=('i686' 'x86_64')
 url="http://www.moddb.com/mods/realrtcw-realism-mod"
@@ -13,7 +15,7 @@ install='realrtcw.install'
 _commit="d83161cbf8f3ebf5390dac3ccc0227543ec0989c"
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/${_commit}.tar.gz"
-  "$pkgname-$pkgver.zip::https://www.moddb.com/downloads/mirror/201571/125/9f598d20c7263f58fa8765d568cf020d"
+  "$pkgname-$pkgver.zip::https://www.moddb.com/${_url}"
   "$pkgname.png"
   "$pkgname.launcher"
   "$pkgname.desktop"
