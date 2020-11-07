@@ -3,8 +3,8 @@
 pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
-pkgver='0.1.16'
-pkgrel='0'
+pkgver='0.1.17'
+pkgrel='3'
 epoch=
 arch=('i686' 'x86_64')
 url='https://github.com/X3n0m0rph59/eruption-roccat-vulcan'
@@ -21,7 +21,7 @@ backup=(etc/eruption/eruption.conf usr/share/eruption/scripts/lib/themes/* usr/s
 options=()
 install='eruption.install'
 changelog=
-source=('git+https://github.com/X3n0m0rph59/eruption-roccat-vulcan.git#commit=83585b77b88729c78e864253c74eafbb0fc13e28')
+source=('git+https://github.com/X3n0m0rph59/eruption-roccat-vulcan.git#commit=284f4cd19cb1f2f3de0d094fcc769570b8f32883')
 noextract=()
 sha512sums=('SKIP')
 
@@ -48,6 +48,9 @@ package() {
     mkdir -p "$pkgdir/usr/lib/systemd/system"
     mkdir -p "$pkgdir/usr/lib/systemd/system-preset"
 
+    mkdir -p "$pkgdir/usr/lib/systemd/user"
+    mkdir -p "$pkgdir/usr/lib/systemd/user-preset"
+
     mkdir -p "$pkgdir/usr/lib/systemd/system-sleep"
 
     mkdir -p "$pkgdir/usr/lib/udev/rules.d/"
@@ -67,13 +70,18 @@ package() {
     install -m 755 "target/release/eruptionctl" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruption-netfx" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruption-debug-tool" "$pkgdir/usr/bin/"
+    install -m 755 "target/release/eruption-process-monitor" "$pkgdir/usr/bin/"
 
     install -m 755 "support/systemd/eruption-suspend.sh" "$pkgdir/usr/lib/systemd/system-sleep/eruption"
 
     install -m 644 "support/config/eruption.conf" "$pkgdir/etc/eruption/"
+    install -m 644 "support/config/process-monitor.conf" "$pkgdir/etc/eruption/"
 
     install -m 644 "support/systemd/eruption.service" "$pkgdir/usr/lib/systemd/system/"
-    install -m 644 "support/systemd/eruption.preset" "$pkgdir/usr/lib/systemd/system-preset/"
+    install -m 644 "support/systemd/eruption.preset" "$pkgdir/usr/lib/systemd/system-preset/50-eruption.preset"
+
+    install -m 644 "support/systemd/eruption-process-monitor.service" "$pkgdir/usr/lib/systemd/user/"
+    install -m 644 "support/systemd/eruption-process-monitor.preset" "$pkgdir/usr/lib/systemd/user-preset/50-eruption-process-monitor.preset"
 
     install -m 644 "support/udev/99-eruption-roccat-vulcan.rules" "$pkgdir/usr/lib/udev/rules.d/"
 
@@ -81,13 +89,13 @@ package() {
 
     install -m 644 "support/man/eruption.8" "$pkgdir/usr/share/man/man8/"
     install -m 644 "support/man/eruption.conf.5" "$pkgdir/usr/share/man/man5/"
+    install -m 644 "support/man/process-monitor.conf.5" "$pkgdir/usr/share/man/man5/"
     install -m 644 "support/man/eruptionctl.1" "$pkgdir/usr/share/man/man1/"
     install -m 644 "support/man/eruption-netfx.1" "$pkgdir/usr/share/man/man1/"
+    install -m 644 "support/man/eruption-process-monitor.1" "$pkgdir/usr/share/man/man1/"
 
     install -m 644 "eruption/src/scripts/macros.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/macros.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
-    install -m 644 "eruption/src/scripts/profiles.lua" "$pkgdir/usr/share/eruption/scripts/"
-    install -m 644 "eruption/src/scripts/profiles.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/stats.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/stats.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/afterglow.lua" "$pkgdir/usr/share/eruption/scripts/"
@@ -146,6 +154,8 @@ package() {
     install -m 644 "eruption/src/scripts/phonon.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/psychedelic.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/psychedelic.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "eruption/src/scripts/pulse.lua" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "eruption/src/scripts/pulse.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/rainbow.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/rainbow.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/raindrops.lua" "$pkgdir/usr/share/eruption/scripts/"
@@ -179,6 +189,7 @@ package() {
     install -m 644 "eruption/src/scripts/snake.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/snake.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/lib/debug.lua" "$pkgdir/usr/share/eruption/scripts/lib/"
+    install -m 644 "eruption/src/scripts/lib/easing.lua" "$pkgdir/usr/share/eruption/scripts/lib/"
     install -m 644 "eruption/src/scripts/lib/queue.lua" "$pkgdir/usr/share/eruption/scripts/lib/"
     install -m 644 "eruption/src/scripts/lib/utilities.lua" "$pkgdir/usr/share/eruption/scripts/lib/"
     install -m 644 "eruption/src/scripts/lib/declarations.lua" "$pkgdir/usr/share/eruption/scripts/lib/"
@@ -186,7 +197,6 @@ package() {
     install -m 644 "eruption/src/scripts/lib/themes/gaming.lua" "$pkgdir/usr/share/eruption/scripts/lib/themes/"
     install -m 644 "eruption/src/scripts/lib/macros/modifiers.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
     install -m 644 "eruption/src/scripts/lib/macros/user-macros.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
-    install -m 644 "eruption/src/scripts/lib/macros/user-mappings.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
     install -m 644 "eruption/src/scripts/lib/macros/starcraft2.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
     install -m 644 "eruption/src/scripts/examples/simple.lua" "$pkgdir/usr/share/eruption/scripts/examples/"
 
@@ -222,6 +232,7 @@ package() {
     install -m 644 "support/profiles/solid-wave.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/starcraft2.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/spectrum-analyzer.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/spectrum-analyzer-swirl.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/vu-meter.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/swirl-perlin.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/swirl-perlin-blue-red.profile" "$pkgdir/var/lib/eruption/profiles/"

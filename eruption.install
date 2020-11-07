@@ -1,8 +1,14 @@
 post_install() {
+    setcap cap_net_admin+ep /usr/bin/eruption-process-monitor
+
     systemctl preset eruption
     systemctl reload dbus.service
     udevadm control --reload-rules
     systemctl try-restart eruption.service || udevadm trigger -s usb
+}
+
+post_upgrade() {
+    setcap cap_net_admin+ep /usr/bin/eruption-process-monitor
 }
 
 pre_remove() {
