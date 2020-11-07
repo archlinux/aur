@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=qt6-tools
-_qtver=6.0.0-beta2
+_qtver=6.0.0-beta3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -17,7 +17,7 @@ optdepends=('clang: for qdoc and lupdate')
 groups=(qt6)
 _pkgfqn="${pkgname/6-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('06f41e6c50bcb0e278cc69d2cae9ad06a06a45ca2ed5939ccd93e101d6ebe862')
+sha256sums=('8409de28939c79dc3eb2d1bb8bac085f35f3dcc35df107633b474733aa33bba8')
 
 build() {
   cmake -G Ninja -B build -S $_pkgfqn

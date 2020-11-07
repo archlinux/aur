@@ -1,6 +1,6 @@
 % layout 'qt6-module', has_binaries => 1;
 \
-_qtver=6.0.0-beta2
+_qtver=6.0.0-beta3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
