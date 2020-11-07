@@ -1,6 +1,6 @@
 # Maintainer: rany <rany at i2pmail dot org>
 
-pkgname=popura-git
+pkgname=popura
 _pkgname="popura"
 pkgver=0.3.15+popura2
 _commit=ccc4123086b4a68b2083cb97b9b3d50bf5c7893c
