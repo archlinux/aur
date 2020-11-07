@@ -5,8 +5,8 @@
 pkgname=python-anyconfig
 _name=anyconfig
 pkgver=0.9.11
-pkgrel=1
-pkgdesc='Generic access to configuration files in any formats (to be in the future)'
+pkgrel=2
+pkgdesc='Python library provides common APIs to load and dump configuration files in various formats'
 url='https://github.com/ssato/python-anyconfig'
 arch=('any')
 license=('MIT')
