@@ -7,8 +7,8 @@ pkgbase = mmsd-git
 	license = GPL2
 	depends = dbus
 	depends = glib2
-	provides = ofono
-	conflicts = ofono
+	provides = mmsd
+	conflicts = mmsd
 	source = mmsd-git::git+https://git.kernel.org/pub/scm/network/ofono/mmsd.git
 	sha256sums = SKIP
 
