@@ -2,7 +2,7 @@
 pkgname=amxb_pcb-git
 pkgver=v0.5.3.r0.g3b3cace
 pkgrel=1
-pkgdesc="Ubus baapi back-end"
+pkgdesc="PCB baapi back-end"
 arch=('any')
 url="https://gitlab.com/soft.at.home/ambiorix/modules/amxb_backends/amxb_pcb.git"
 license=('MIT')
