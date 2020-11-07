@@ -1,9 +1,9 @@
 # Maintainer: David Santiago <demanuel@ymail.com>
 pkgname=comma-ide-community
 _pkgname=comma-ide
-_tarname=comma-community
+_tarname=comma-community-2020.10
 pkgrel=1
-pkgver=2020.07.0
+pkgver=202.6948.78
 provides=(${_pkgname})
 pkgdesc="The Integrated Development Environment for Raku (formerly Perl 6)."
 arch=('any')
@@ -12,13 +12,13 @@ license=('APACHE')
 depends=('java-runtime')
 optdepends=('rakudo-star' 'rakudo')
 source=("https://commaide.com/download/community/linux")
-sha512sums=('d340325821cd76132e7dbb575b5153eb6848d3c41c1f463a0555e1b12e3710310bf968ebac47147e8907162214b993ad9fd468a328814beb6431b6ba5ecfce5a')
+sha512sums=('8de14a1246b0a87b97f37e573368b684de5f3be2f2f10b6ebe9fad5edfa93e58a9f552ced5983439b490b7a462a6f5cce8503eb0da4058634b7cf4b3f830963b')
 install=comma-ide.install
 
 package() {
 set -xv
   mkdir -p $pkgdir/opt/ $pkgdir/usr/bin/ $pkgdir/usr/share/applications/ ${pkgdir}/usr/share/icons/
-  cp -R $srcdir/${_tarname}-${pkgver:0:7} $pkgdir/opt/
+  cp -R $srcdir/${_tarname}  $pkgdir/opt/
 
   cat <<EOF > $pkgdir/usr/share/applications/${_pkgname}.desktop
 [Desktop Entry]
@@ -34,8 +34,8 @@ Categories=Development;IDE;
 StartupWMClass=jetbrains-comma-ce
 EOF
 
-  ln -s /opt/${_tarname}-${pkgver:0:7}/bin/comma.png ${pkgdir}/usr/share/icons/${_pkgname}.png
-  ln -s /opt/${_tarname}-${pkgver:0:7}/bin/comma.sh $pkgdir/usr/bin/comma
+  ln -s /opt/${_tarname}/bin/comma.png ${pkgdir}/usr/share/icons/${_pkgname}.png
+  ln -s /opt/${_tarname}/bin/comma.sh $pkgdir/usr/bin/comma
   set +xv
 }
 
