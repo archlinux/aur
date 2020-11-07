@@ -1,23 +1,25 @@
-Description: Disables loading the previous way media was sent, so it always selects either
-photo or album by default.
-
 diff --git a/Telegram/SourceFiles/boxes/send_files_box.cpp b/Telegram/SourceFiles/boxes/send_files_box.cpp
+index e7d1f80..ffbb2ab 100644
 --- a/Telegram/SourceFiles/boxes/send_files_box.cpp
 +++ b/Telegram/SourceFiles/boxes/send_files_box.cpp
-@@ -1947,14 +1947,6 @@
- 				? SendFilesWay::Album
- 				: SendFilesWay::Photos;
- 		}
--		const auto way = Core::App().settings().sendFilesWay();
--		if (way == SendFilesWay::Files) {
--			return way;
--		} else if (way == SendFilesWay::Album) {
--			return _list.albumIsPossible
--				? SendFilesWay::Album
--				: SendFilesWay::Photos;
+@@ -424,17 +424,9 @@ void SendFilesBox::openDialogToAddFileToAlbum() {
+ 
+ void SendFilesBox::initSendWay() {
+ 	_sendWay = [&] {
+-		auto result = Core::App().settings().sendFilesWay();
+-		if (_sendLimit == SendLimit::One) {
+-			result.setGroupFiles(true);
+-			return result;
+-		} else if (_list.overrideSendImagesAsPhotos == false) {
+-			result.setSendImagesAsPhotos(false);
+-			return result;
+-		} else if (_list.overrideSendImagesAsPhotos == true) {
+-			result.setSendImagesAsPhotos(true);
+-			return result;
 -		}
--		return (_list.albumIsPossible && !_albumPhotosCount)
-+		return _list.albumIsPossible
- 			? SendFilesWay::Album
- 			: SendFilesWay::Photos;
++		auto result = SendFilesWay();
++		result.setGroupFiles(true);
++		result.setSendImagesAsPhotos(true);
+ 		return result;
  	}();
+ 	_sendWay.changes(
