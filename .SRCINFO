@@ -1,13 +1,13 @@
 pkgbase = kahlo
 	pkgdesc = RSS-based YouTube subscription download tool
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://gitlab.com/dpeukert/kahlo
 	arch = any
 	license = GPL3
 	depends = python>=3.8.0
 	depends = youtube-dl>=2020.09.14
-	source = kahlo-0.2.0-1.tar.gz::https://gitlab.com/dpeukert/kahlo/-/archive/0.2.0/kahlo-0.2.0.tar.gz
-	sha256sums = 8db8dd260d32a392d2029c9b455c1db0cc06e9ed3b8c6841527423f3f9d62a2b
+	source = kahlo-0.2.1-1.tar.gz::https://gitlab.com/dpeukert/kahlo/-/archive/0.2.1/kahlo-0.2.1.tar.gz
+	sha256sums = ebadbf367ad4c085086948834229e5f07f9a3fca547d38bab5d2b31da2db5280
 
 pkgname = kahlo
