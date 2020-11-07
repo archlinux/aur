@@ -3,15 +3,24 @@
 # - remove "-fomit-frame-pointer" which is enabled at -O3 anyway
 # - prepend "$DESTDIR" so "make install" will work as desired
 
-CC = gcc
-LD = gcc
 override CFLAGS += -O3 -Wall
 
-TARG_OBJEXTENSION = .o
-TARG_EXEXTENSION =
+OBJDIR =
+CC = gcc
+HOST_OBJEXTENSION = .o
+LD = $(CC)
+LDFLAGS =
+HOST_EXEXTENSION =
 
-HOST_OBJEXTENSION = $(TARG_OBJEXTENSION)
-HOST_EXEXTENSION = $(TARG_EXEXTENSION)
+# ...for the actual build targets.  This is the simple case for no cross-build:
+
+TARG_OBJDIR = $(OBJDIR)
+TARG_CC = $(CC)
+TARG_CFLAGS = $(CFLAGS)
+TARG_OBJEXTENSION = $(HOST_OBJEXTENSION)
+TARG_LD = $(LD)
+TARG_LDFLAGS = $(LDFLAGS)
+TARG_EXEXTENSION = $(HOST_EXEXTENSION)
 
 # -------------------------------------------------------------------------
 # directories where binaries, includes, and manpages should go during

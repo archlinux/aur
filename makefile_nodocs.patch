@@ -1,0 +1,19 @@
+*** Makefile.orig	2020-11-07 09:07:15.892839678 -0500
+--- Makefile	2020-11-07 09:10:03.862839900 -0500
+***************
+*** 22,28 ****
+  
+  include makedefs.src
+  
+! docs: docs_DE docs_EN
+  
+  $(ASLTARGET): $(ASM_OBJECTS) $(AS_OBJECTS) $(ST_OBJECTS) $(CODE_OBJECTS) $(NLS_OBJECTS)
+  	$(TARG_LD) -o $(ASLTARGET) $(ASM_OBJECTS) $(AS_OBJECTS) $(ST_OBJECTS) $(CODE_OBJECTS) $(NLS_OBJECTS) -lm $(TARG_LDFLAGS)
+--- 22,28 ----
+  
+  include makedefs.src
+  
+! docs: docs_DE_notex docs_EN_notex
+  
+  $(ASLTARGET): $(ASM_OBJECTS) $(AS_OBJECTS) $(ST_OBJECTS) $(CODE_OBJECTS) $(NLS_OBJECTS)
+  	$(TARG_LD) -o $(ASLTARGET) $(ASM_OBJECTS) $(AS_OBJECTS) $(ST_OBJECTS) $(CODE_OBJECTS) $(NLS_OBJECTS) -lm $(TARG_LDFLAGS)
