@@ -20,7 +20,7 @@ source=("git+https://github.com/caverym/$__pkgname.git")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$__pkgname"
+  cd Proton-Caller
   make
 }
 
