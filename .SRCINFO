@@ -1,0 +1,26 @@
+pkgbase = ttf-ms-win10-fod-zh_cn
+	pkgver = 10.0.18362.116
+	pkgrel = 1
+	url = http://www.microsoft.com/typography/fonts/product.aspx?PID=164
+	arch = any
+	license = custom
+	provides = ttf-font
+	conflicts = ttf-vista-fonts
+	source = file://Deng.ttf
+	source = file://Dengb.ttf
+	source = file://Dengl.ttf
+	source = file://simfang.ttf
+	source = file://simhei.ttf
+	source = file://simkai.ttf
+	source = file://license.rtf
+	sha256sums = 765be9ce80a602fca63934de9d12847743e0de6401c9306ae4416e2eabdaff06
+	sha256sums = 068c30d238a6f8426083cf77f4f4319a4dd53aff1ec53992fb428e8cef087ccd
+	sha256sums = 7b47625d0127a2772203c753be965101e75582a51b9d306982a7a72bc66ec0ad
+	sha256sums = 3e2d44b01c9a248a61bedae4f15c8aae501328b1f7adfe6e111a5da5aa5c5104
+	sha256sums = aa4560dd8fe5645745fed3ffa301c3ca4d6c03cbd738145b613303961ba733b8
+	sha256sums = 9dd76f7ab430edd091db24c3f18e71410325c1414141aad5fe67947873ffba06
+	sha256sums = SKIP
+
+pkgname = ttf-ms-win10-fod-zh_cn
+	pkgdesc = Microsoft Windows 10 Simplified Chinese Feature On Demand (FOD) Supplemental TrueType Fonts
+
