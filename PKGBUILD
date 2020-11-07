@@ -15,7 +15,7 @@ makedepends=("binutils" "tar")
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("iicalc-$pkgver.deb::https://gitlab.com/TurboWafflz/ImaginaryInfinity-Calculator/-/jobs/artifacts/development/raw/iicalc.deb?job=debian%20packager")
-sha512sums=('9c7a05cfd97a1cbf53bb8656345243b5a52fc840e2d3ff96085412725d06416d864d0bfeb1c92f4e724096d4c5558fd9f34dd4ed95fb0a5481ac8abb6c5c950d')
+sha512sums=('55b08e6762d32220ce6bafe824813155694498d6b1ff4b838cd8762555fccb56986b9a658400d7b0218e77300358cbce6f64aa05aee4d26d564cd801a51a25c4')
 
 package(){
 
