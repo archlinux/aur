@@ -3,7 +3,6 @@
 pkgname=popura-git
 _pkgname="popura"
 pkgver=0.3.15+popura2
-_commit=ccc4123086b4a68b2083cb97b9b3d50bf5c7893c
 pkgrel=1
 pkgdesc="Popura ポプラ: alternative Yggdrasil network client"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -12,7 +11,7 @@ license=('LGPLv3')
 conflicts=('popura' 'yggdrasil' 'yggdrasil-git' 'yggdrasil' 'yggdrasil-openrc')
 depends=('glibc')
 makedepends=('git' 'go')
-source=("popura::git+https://github.com/popura-network/Popura.git#commit=${_commit}"
+source=("popura::git+https://github.com/popura-network/Popura.git"
 	'popura.sysusers')
 sha512sums=('SKIP'
 	'b78d1f5efeeba184588ba7bdb2249d976aec160daa59742e032983da1aedad062d15c7c97cba3eba69412a0f7904ee123d98b58f859892d71188c25624295c32')
