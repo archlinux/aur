@@ -1,0 +1,16 @@
+pkgbase = coap-shell
+	pkgdesc = An interactive, command line interface for interacting with CoAP enabled servers
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/tzolov/coap-shell
+	arch = any
+	license = Apache
+	depends = java-runtime>=8
+	depends = bash
+	noextract = coap-shell-1.1.1.jar
+	source = coap-shell-1.1.1.jar::https://bintray.com/big-data/maven/download_file?file_path=io%2Fdatalake%2Fcoap%2Fcoap-shell%2F1.1.1%2Fcoap-shell-1.1.1.jar
+	md5sums = 8cd6d0bc0e2836ff769a372c4752d008
+	sha256sums = 608efa216888256ad58e92a72da478ea5e46b82c9e95cd3e3eff9a2f2a153dd6
+
+pkgname = coap-shell
+
