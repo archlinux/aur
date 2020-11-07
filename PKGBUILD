@@ -1,7 +1,8 @@
 # Maintainer: Milk Brewster (milkii on freenode)
+# Maintainer: David Marzal <mundolibre at tutanota dot com>
 _pkgname=studio-controls
 pkgname=${_pkgname}-git
-pkgver=2.0.9.r7.ga352067
+pkgver=2.0.9.r12.gf262522
 pkgrel=1
 pkgdesc="An JACK audio setup utility with USB device and PulseAudio bridges."
 arch=('x86_64')
@@ -10,15 +11,16 @@ license=('GPL')
 groups=()
 depends=('jack2' 'python' 'python-gobject' 'python-dbus' 'python-jack-client' 'python-pyalsaaudio' 'zita-ajbridge' 'a2jmidid')
 makedepends=(git)
-optdepends=('realtime-privileges: Realtime privileges for users'
-        'pulseaudio-jack: PulseAudio to JACK bridge'
+optdepends=('pulseaudio-jack: PulseAudio to JACK bridge'
+        'alsa-utils: ALSA - Utilities (amixer)'
         'libffado: Driver for FireWire audio devices'
-        'qastools: qasmixer desktop mixer application'
+        'realtime-privileges: Realtime privileges for users'
         'carla: Audio Plugin Host'
-        'new-session-manager: NSM server and reference GUI'
+        'pavucontrol: PulseAudio Volume Control'
+        'qastools: qasmixer desktop mixer application'
         'agordejo: NSM based music production session manager'
         'raysession: NSM based music production session manager'
-        'pavucontrol: PulseAudio Volume Control'
+        'new-session-manager: NSM server and reference GUI'
         'zita-mu1: JACK app used to organise stereo monitoring')
 provides=('studio-controls' 'studio-controls-git')
 conflicts=('studio-controls' 'studio-controls-git' 'cadence')
