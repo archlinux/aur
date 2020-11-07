@@ -1,0 +1,16 @@
+pkgbase = saka-chromium-git
+	pkgdesc = A browsing assistant for Chromium-based browsers
+	pkgver = v0.17.1.r10.6a678fb
+	pkgrel = 1
+	url = https://saka.io
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = yarn
+	provides = saka-chromium
+	conflicts = saka-chromium
+	source = saka-chromium::git+https://github.com/lusakasa/saka
+	sha256sums = SKIP
+
+pkgname = saka-chromium-git
+
