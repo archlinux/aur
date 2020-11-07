@@ -1,0 +1,29 @@
+pkgbase = neochat-git
+	pkgdesc = Resource monitor that shows usage and stats for processor, memory, disks, network and processes
+	pkgver = r941.91f82fb
+	pkgrel = 1
+	url = https://invent.kde.org/network/neochat
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmark
+	makedepends = cmake>=3.1.0
+	depends = libquotient-git
+	depends = qtkeychain
+	depends = qt5-quickcontrols2>=5.15.0
+	depends = qt5-multimedia>=5.15.0
+	depends = qt5-svg>=5.15.0
+	depends = qt5-base>=5.15.0
+	depends = kirigami2>=5.74.0
+	depends = kitemmodels>=5.74.0
+	depends = ki18n>=5.74.0
+	depends = knotifications>=5.74.0
+	depends = kconfig>=5.74.0
+	depends = kcoreaddons>=5.74.0
+	provides = neochat
+	conflicts = neochat
+	source = neochat::git+https://invent.kde.org/network/neochat.git
+	sha256sums = SKIP
+
+pkgname = neochat-git
+
