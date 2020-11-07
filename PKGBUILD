@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=qt6-shadertools
-_qtver=6.0.0-beta2
+_qtver=6.0.0-beta3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -16,7 +16,7 @@ makedepends=(cmake vulkan-headers ninja)
 groups=(qt6)
 _pkgfqn="${pkgname/6-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('2fe748a0a9106933c1520e882367d384b5766c7c6cb37e331243eedf8e545ddd')
+sha256sums=('19b0aad551711bacca19bd8184128ab38b62c62768ec694f5fa22e0e068d1728')
 
 build() {
   cmake -G Ninja -B build -S $_pkgfqn
