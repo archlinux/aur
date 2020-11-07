@@ -1,4 +1,4 @@
-# Maintainer: Patrick Ausel <TheSheepGuy1@gmail.com>
+# Maintainer: Charlotte Ausel <TheSheepGuy1@gmail.com>
 
 _pkgname=vgmtrans
 pkgname=$_pkgname-git
