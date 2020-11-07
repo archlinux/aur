@@ -1,7 +1,7 @@
 # Maintainer: Gary Wang <wzc782970009@gmail.com>
 
 pkgname=pineapple-pictures
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='Yet another lightweight image viewer'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/BLumia/pineapple-pictures/archive/${pkgver}.tar.gz"
 )
 sha256sums=(
-    '5215e30b31962dd0ceb2961819a80f9bb459329537bda90c5c2022c4260f5235'
+    '80713a954e2705cf30676c8fbeb688fabd4ae0f8e6d0bff960262f63a6803795'
 )
 
 build () {
