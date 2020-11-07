@@ -10,7 +10,7 @@ pkgbase = cine-encoder
 	depends = ffmpeg>=4.2
 	depends = libmediainfo>=20.03
 	source = https://github.com/CineEncoder/cine-encoder/archive/3.0.tar.gz
-	md5sums = afd2613a53d939e237ca53070661e6e7
+	md5sums = d2eedcea553df6f6562df103daeff138
 
 pkgname = cine-encoder
 
