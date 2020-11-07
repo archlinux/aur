@@ -1,0 +1,43 @@
+pkgname=qutebrowser-not-only-latin
+pkgver=1.14.0.r3.g6807ff569
+pkgrel=1
+pkgdesc="A keyboard-driven, vim-like browser based on PyQt5. 
+Fork to support commands in not only Latin keyboard layout"
+arch=("any")
+url="https://www.qutebrowser.org/"
+license=("GPL")
+depends=("python-attrs" "python-jinja" "python-pygments" "python-pypeg2"
+         "python-pyqt5" "python-yaml" "qt5-base" "python-pyqtwebengine"
+         "python-setuptools")
+makedepends=("asciidoc" "pygmentize" "git")
+optdepends=("gst-libav: media playback with qt5-webkit backend"
+            "gst-plugins-base: media playback with qt5-webkit backend"
+            "gst-plugins-good: media playback with qt5-webkit backend"
+            "gst-plugins-bad: media playback with qt5-webkit backend"
+            "gst-plugins-ugly: media playback with qt5-webkit backend"
+            "pdfjs: displaying PDF in-browser"
+            "qt5-webkit: alternative backend")
+options=(!emptydirs)
+conflicts=('qutebrowser')
+provides=('qutebrowser')
+source=('git+https://github.com/EmptyBucket/qutebrowser.git#branch=feature/not_only_latin')
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/qutebrowser"
+    # Minor releases are not part of the master branch
+    _tag=$(git tag --sort=v:refname | tail -n1)
+    printf '%s.r%s.g%s' "${_tag#v}" "$(git rev-list "$_tag"..HEAD --count)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "$srcdir/qutebrowser"
+    python scripts/asciidoc2html.py
+    a2x -f manpage doc/qutebrowser.1.asciidoc
+    python setup.py build
+}
+
+package() {
+    cd "$srcdir/qutebrowser"
+    make -f misc/Makefile DESTDIR="$pkgdir" PREFIX=/usr install
+}
