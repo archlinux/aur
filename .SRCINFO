@@ -1,6 +1,6 @@
 pkgbase = onefetch-git
 	pkgdesc = Git repository summary on your terminal (git)
-	pkgver = 2.6.0.r0.g2c3932c
+	pkgver = 2.7.1.r0.ge769ca2
 	pkgrel = 1
 	url = https://github.com/o2sh/onefetch
 	arch = x86_64
