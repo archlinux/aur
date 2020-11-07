@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-quicktimeline
-_qtver=6.0.0-beta2
+_qtver=6.0.0-beta3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,7 +17,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtquicktimeline-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('2544f54716ae7db3803f974360b7e299bbddc16e6f6b32dfabd19e876c79ba0b')
+sha256sums=('7c98beed81d17f153e997448be264d20453fc1eafa3f3fbbdb1080b3e3e07e89')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -25,10 +25,7 @@ build() {
   for _arch in ${_architectures}; do
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
     $_arch-cmake -G Ninja -B build-$_arch -S $_pkgfqn \
-      -DQT_HOST_PATH=/usr \
-      -DFEATURE_pkg_config=ON \
-      -DVulkan_LIBRARY="/usr/$_arch/lib/libvulkan.dll.a" \
-      -DVulkan_INCLUDE_DIR="/usr/$_arch/include"
+      -DFEATURE_pkg_config=ON
     cmake --build build-$_arch
   done
 }
@@ -53,5 +50,6 @@ package() {
   done
 
   install -d "$pkgdir"/usr/share/licenses
-  ln -s /usr/share/licenses/mingw-w64-qt6-base "$pkgdir"/usr/share/licenses/mingw-w64-qt6-quicktimeline
+  ln -s /usr/share/licenses/mingw-w64-qt6-base "$pkgdir"/usr/share/licenses/$pkgname
+
 }
