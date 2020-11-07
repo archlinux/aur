@@ -3,7 +3,7 @@
 
 pkgname=latte-dock-git
 _gitname=latte-dock
-pkgver=r4549.1fab6237
+pkgver=r4567.589b5f00
 pkgrel=1
 pkgdesc='Latte is a dock based on plasma frameworks that provides an elegant and intuitive experience for your tasks and plasmoids'
 arch=('x86_64')
@@ -29,7 +29,7 @@ build() {
 
    mkdir build && cd build
    cmake -DCMAKE_INSTALL_PREFIX=/usr \
-         -DCMAKE_BUILD_TYPE=Release ..
+         -DCMAKE_BUILD_TYPE=Master ..
 
   
 }
