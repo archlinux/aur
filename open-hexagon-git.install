@@ -1,0 +1,14 @@
+_create_files() {
+	# Ensure that these files exist and are owned by root, but the package should not own them.
+	cd /var/lib/open-hexagon/
+	touch log.txt
+	touch config.json
+	touch scores.json
+	touch users.json
+}
+post_upgrade() {
+	_create_files
+}
+post_install() {
+	_create_files
+}

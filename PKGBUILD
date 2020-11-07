@@ -2,7 +2,7 @@
 
 pkgname=open-hexagon-git
 pkgver=2.0.preview.r1766.gd4e93de4
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Free software clone of Super Hexagon - a music-based arcade game'
 url='https://openhexagon.org/'
@@ -13,10 +13,13 @@ provides=('open-hexagon')
 conflicts=('open-hexagon')
 source=('git+https://github.com/SuperV1234/SSVOpenHexagon.git'
 	'open-hexagon-git-assets.zip::https://github.com/SuperV1234/SSVOpenHexagonAssets/archive/master.zip'
+	'open-hexagon-git.install'
 	'open-hexagon'
 	'open-hexagon.desktop')
+install="$pkgname.install"
 sha256sums=('SKIP'
             'c58bf04778d29ade2b76ea5402671f95ede634fb67f44d707b2f9580054caaa7'
+            '5e147e333661b56cb13957729a9fc32660523cadccac0c429ce89b5b8b4f87d9'
             'a3558245d72250aadaaef32b087474a671a54fcca8267b5746d5bce56ce71397'
             'a3f4ef5296619903b487ccd8d894e28b2d9fad3a9152683f642b43aeb88b7928')
 
@@ -54,16 +57,16 @@ package() {
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/open-hexagon/"
 	
 	# Dirty hack to allow writing data to current directory
+	# (also see .install file)
 	cd "$pkgdir/usr/lib/open-hexagon"
-	touch "$pkgdir/var/lib/open-hexagon/log.txt"
 	ln -s "/var/lib/open-hexagon/log.txt"
-	mv config.json "$pkgdir/var/lib/open-hexagon/"
+	rm config.json
 	ln -s "/var/lib/open-hexagon/config.json"
 	mv "$srcdir/$_reponame/misc/default_config.json" "$pkgdir/var/lib/open-hexagon"
 	ln -sf "/var/lib/open-hexagon/default_config.json"
-	mv scores.json "$pkgdir/var/lib/open-hexagon/"
+	rm scores.json
 	ln -s "/var/lib/open-hexagon/scores.json"
-	mv users.json "$pkgdir/var/lib/open-hexagon/"
+	rm users.json
 	ln -s "/var/lib/open-hexagon/users.json"
 	mkdir "$pkgdir/var/lib/open-hexagon/Profiles"
 	ln -s "/var/lib/open-hexagon/Profiles"
