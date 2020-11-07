@@ -1,6 +1,6 @@
 # Maintainer: Jonas Dellinger <jonas@dellinger.dev>
 pkgname=altair
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc='A beautiful feature-rich GraphQL Client for all platforms.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('altair')
 
 source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/imolorhe/altair/releases/download/v${pkgver}/altair_${pkgver}_${arch}_linux.AppImage"
                altair)
-sha256sums_x86_64=('b79b223e47110d0e878a682a2d80f65cd6957db96dc29372efd5a1fa20105af0'
+sha256sums_x86_64=('2a45fbb581d9bed437991f2310739cd95e3a9302a63938802d70b53e5a14de82'
                    '7f02e869f8f7aa0614088afcb42456d5bae6c4a3702281900edff88ba7ee7016')
 
 prepare() {
