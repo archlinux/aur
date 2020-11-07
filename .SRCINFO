@@ -24,9 +24,7 @@ pkgbase = aws-sam-cli
 	depends = python-chevron
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/source/a/aws-sam-cli/aws-sam-cli-1.7.0.tar.gz
-	source = loosen-requirements.patch
 	sha256sums = 388802de1e79235eb769da7eb00d6f73df989e11b7d5e65260528656131597b2
-	sha256sums = b2991a10df5cab847f9f3c23cec8fb94f43ed46ab3cbfa36d416c290370a6401
 
 pkgname = aws-sam-cli
 

@@ -13,14 +13,11 @@ depends=('docker' 'python-click' 'python-flask' 'python-boto3' 'python-jmespath'
          'python-serverlessrepo' 'python-aws_lambda_builders' 'python-tomlkit' 'python-chevron')
 makedepends=('python-setuptools')
 options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
-       'loosen-requirements.patch')
-sha256sums=('388802de1e79235eb769da7eb00d6f73df989e11b7d5e65260528656131597b2'
-            'b2991a10df5cab847f9f3c23cec8fb94f43ed46ab3cbfa36d416c290370a6401')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('388802de1e79235eb769da7eb00d6f73df989e11b7d5e65260528656131597b2')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  patch -p1 -i "$srcdir/loosen-requirements.patch"
 }
 
 package() {
