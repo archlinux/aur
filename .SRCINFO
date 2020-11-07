@@ -1,0 +1,15 @@
+pkgbase = gitscover
+	pkgdesc = Discover new GitHub repositories
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://github.com/linuxhubit/gitscover
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	source = gitscover-1.2.5.tar.gz::https://github.com/linuxhubit/gitscover/archive/1.2.5.tar.gz
+	sha256sums = a0593cfcfdfe0c8bb7efe85bad18eac1d46b8ba697c6f7c5f45b97dd9de218d6
+
+pkgname = gitscover
+
