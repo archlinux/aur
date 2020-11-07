@@ -10,18 +10,21 @@ makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-
 provides=('mingw-w64-paraview')
 conflicts=('mingw-w64-paraview')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}-RC1.tar.xz")
-sha256sums=('8bb318fdf6cee14ee09c39a665908553092db3a748353e09423811e1b162823c')
+source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}-RC1.tar.xz"
+        https://gitlab.kitware.com/paraview/paraview/merge_requests/4514.patch
+        https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7038.patch
+        https://gitlab.kitware.com/paraview/catalyst/-/merge_requests/7.patch)
+sha256sums=('8bb318fdf6cee14ee09c39a665908553092db3a748353e09423811e1b162823c' SKIP SKIP SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/ParaView-v${pkgver}-RC1"
-  curl -L https://gitlab.kitware.com/paraview/paraview/merge_requests/4514.patch | patch -p1
+  patch -p1 -i "${srcdir}"/4514.patch
   cd VTK
-  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7038.patch | patch -p1
+  patch -p1 -i "${srcdir}"/7038.patch
   cd ../ThirdParty/catalyst/vtkcatalyst/catalyst
-  curl -L https://gitlab.kitware.com/paraview/catalyst/-/merge_requests/7.patch | patch -p1
+  patch -p1 -i "${srcdir}"/7.patch
 }
 
 build() {
