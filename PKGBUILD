@@ -10,7 +10,7 @@ arch=('any')
 license=('custom:AFL-3.0' 'custom')
 depends=('sfml')
 makedepends=('git' 'cmake' 'rsync')
-optdepends=('steam: Integration for those who own the game on Steam'
+optdepends=('steam: integration for those who own the game on Steam'
 'discord: Discord Rich Presence support')
 provides=('open-hexagon')
 conflicts=('open-hexagon')

@@ -1,7 +1,7 @@
 pkgbase = open-hexagon-git
 	pkgdesc = Free software clone of Super Hexagon - a music-based arcade game
 	pkgver = 2.0.preview.r1766.gd4e93de4
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://openhexagon.org/
 	install = open-hexagon-git.install
@@ -12,7 +12,7 @@ pkgbase = open-hexagon-git
 	makedepends = cmake
 	makedepends = rsync
 	depends = sfml
-	optdepends = steam: Integration for those who own the game on Steam
+	optdepends = steam: integration for those who own the game on Steam
 	optdepends = discord: Discord Rich Presence support
 	provides = open-hexagon
 	conflicts = open-hexagon
