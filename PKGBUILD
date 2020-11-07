@@ -4,7 +4,7 @@
 _pkgname="mu-wizard"
 pkgname="${_pkgname}-git"
 pkgver=0.r47.g8f54347
-pkgrel=2
+pkgrel=3
 pkgdesc="Shell script to easily setup mu4e on Emacs"
 arch=('any')
 url=https://github.com/cemkeylan/${_pkgname}

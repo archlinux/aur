@@ -1,7 +1,7 @@
 pkgbase = mu-wizard-git
 	pkgdesc = Shell script to easily setup mu4e on Emacs
 	pkgver = 0.r47.g8f54347
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cemkeylan/mu-wizard
 	install = mu-wizard.install
 	arch = any
