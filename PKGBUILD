@@ -4,7 +4,7 @@
 _pkgname="mu-wizard"
 pkgname="${_pkgname}-git"
 pkgver=0.r47.g8f54347
-pkgrel=1
+pkgrel=2
 pkgdesc="Shell script to easily setup mu4e on Emacs"
 arch=('any')
 url=https://github.com/cemkeylan/${_pkgname}
@@ -16,7 +16,7 @@ optdepends=('pash: alternative password manager'
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
-source=("${_pkgname}::git+${url}")
+source=("${_pkgname}::git+${url}.git")
 md5sums=('SKIP')
 
 # Git, no tags available.

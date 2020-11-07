@@ -16,7 +16,7 @@ pkgbase = mu-wizard-git
 	optdepends = pm: alternative password manager
 	provides = mu-wizard
 	conflicts = mu-wizard
-	source = mu-wizard::git+https://github.com/cemkeylan/mu-wizard
+	source = mu-wizard::git+https://github.com/cemkeylan/mu-wizard.git
 	md5sums = SKIP
 
 pkgname = mu-wizard-git
