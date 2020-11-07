@@ -1,0 +1,24 @@
+pkgbase = libmtk-git
+	pkgdesc = A library to allow shared object modules to be loaded dynamically into a running PCB plug-in
+	pkgver = 0.1.0.r0.g365e6ee
+	pkgrel = 1
+	url = https://gitlab.com/soft.at.home/pcb/libmtk.git
+	arch = any
+	license = MIT
+	makedepends = sah_components_config
+	makedepends = m4
+	makedepends = gcc
+	makedepends = make
+	depends = libsahtrace
+	depends = libpcb
+	provides = libmtk
+	provides = libmtk-git
+	conflicts = libmtk
+	conflicts = libmtk-git
+	source = libmtk-git::git+https://gitlab.com/soft.at.home/pcb/libmtk.git#branch=master
+	source = components.config
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libmtk-git
+
