@@ -12,7 +12,7 @@ url="http://dlib.net"
 license=('custom')
 depends=('cblas'
          'lapack'
-         'openblas'
+         'blas'
          'libjpeg-turbo'
          'libpng'
          'libx11')
