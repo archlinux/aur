@@ -7,8 +7,7 @@ pkgver=0.r42.g76f5844
 pkgrel=1
 pkgdesc="Shell script to easily setup mu4e on Emacs"
 arch=('any')
-_url=https://github.com/cemkeylan/$_pkgname
-url=$_url
+url=https://github.com/cemkeylan/${_pkgname}
 license=('GPL3')
 depends=('isync' 'msmtp' 'mu' 'pass' 'sh')
 makedepends=('git')
@@ -17,7 +16,7 @@ optdepends=('pash: alternative password manager'
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
-source=("${_pkgname}::git+${_url}")
+source=("${_pkgname}::git+${url}")
 md5sums=('SKIP')
 
 # Git, no tags available.
