@@ -1,7 +1,7 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=libsahtrace-git
 pkgver=0.1.0.r0.g37c28b2
-pkgrel=1
+pkgrel=2
 pkgdesc="Small and flexible library to enable tracing and logging"
 arch=('any')
 url="https://gitlab.com/soft.at.home/logging/libsahtrace.git"
@@ -52,4 +52,6 @@ build() {
 package() {
 	cd "${pkgname}"
 	make D="${pkgdir}/" install
+	mv ${pkgdir}/lib/libsahtrace* ${pkgdir}/usr/lib/
+	rm -Rf ${pkgdir}/lib/
 }
