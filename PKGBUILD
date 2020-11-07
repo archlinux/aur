@@ -45,4 +45,5 @@ package() {
 	 cd "${srcdir}/yirl"
 	 make install
 	 make install_extra_modules
+	 install -D "${srcdir}/yirl/LICENSE" "$pkgdir/usr/share/licenses/yirl/LICENSE"
 }
