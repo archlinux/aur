@@ -2,7 +2,7 @@
 
 pkgname=joplin-beta
 pkgver=1.4.6
-pkgrel=2
+pkgrel=3
 pkgdesc="The latest pre-release - open source note taking and to-do application"
 arch=('x86_64')
 depends=('nodejs>10' 'nss' 'gtk3' 'libxss' 'libsecret' 'rsync' 'libgsf' 'libexif' 'libcroco')
@@ -15,7 +15,7 @@ optdepends=('libappindicator-gtk3: for tray icon')
 conflicts=('joplin')
 url="https://joplinapp.org"
 license=('MIT')
-sha256sums=('fdda15d7eba2a8ab9a0f10191fc2a3cc9e92ab43b5a48ecf12d29672c48819dc'
+sha256sums=('5bb62a36566eee87a009246bdf430ad642753c0f8b2fcbffab5cbad787dfcf37'
             '1c72d30d468c532f272c9a574a0a0f96f50aeb68fdde364ebac780f951a34c83'
             'b46dd772eb1adf9327f6c07657acf3c627c6ea204f8de3a4481efa6db0071f5e'
             'e343093ca77828628957c95301624774c6b4b10fc0153c4b4d2e44f1369bcaff')
@@ -25,6 +25,10 @@ build() {
   rm -rf packages/app-mobile
 
   npm install
+
+  # Install app-cli
+  cd "${srcdir}/${pkgname%-*}-${pkgver}/packages/app-cli"
+  npm run build
 
   # Install app-desktop
   cd "${srcdir}/${pkgname%-*}-${pkgver}/packages/app-desktop"
@@ -38,8 +42,13 @@ package() {
   install -d ${pkgdir}/usr/share/{${app_name},${app_name}-cli}
 
   # App-cli
-  cp -R app-cli/build/* "${pkgdir}/usr/share/${app_name}-cli"
-  cp -R app-cli/node_modules "${pkgdir}/usr/share/${app_name}-cli"
+  cp -R app-cli/build "${pkgdir}/usr/share/${app_name}-cli/app-cli"
+  cp -R app-cli/node_modules "${pkgdir}/usr/share/${app_name}-cli/app-cli"
+  cp -R fork-htmlparser2 "${pkgdir}/usr/share/${app_name}-cli"
+  cp -R renderer "${pkgdir}/usr/share/${app_name}-cli"
+  cp -R lib "${pkgdir}/usr/share/${app_name}-cli"
+
+
   # App-desktop
   cp -R app-desktop/dist/linux-unpacked/* "${pkgdir}/usr/share/${app_name}"
 
