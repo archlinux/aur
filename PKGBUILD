@@ -1,8 +1,8 @@
 # Maintainer: lesto <lestofante88@gmail.com>
 
 pkgname=pacman-parallelizer
-pkgver=8
-pkgrel=2
+pkgver=10
+pkgrel=1
 pkgdesc="A minimal package downloader for pacman, using aria2"
 arch=(any)
 url="https://github.com/lestofante/PacmanParallelizer"

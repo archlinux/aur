@@ -1,13 +1,13 @@
 pkgbase = pacman-parallelizer
 	pkgdesc = A minimal package downloader for pacman, using aria2
-	pkgver = 8
-	pkgrel = 2
+	pkgver = 10
+	pkgrel = 1
 	url = https://github.com/lestofante/PacmanParallelizer
 	arch = any
 	license = GPL3
 	depends = aria2
 	depends = pacman-contrib
-	source = pacman-parallelizer-8::git+https://github.com/lestofante/PacmanParallelizer.git#tag=8
+	source = pacman-parallelizer-10::git+https://github.com/lestofante/PacmanParallelizer.git#tag=10
 	sha256sums = SKIP
 
 pkgname = pacman-parallelizer
