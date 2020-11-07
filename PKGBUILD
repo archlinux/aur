@@ -2,7 +2,7 @@
 
 pkgname=open-hexagon-git
 pkgver=2.0.preview.r1766.gd4e93de4
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc='Free software clone of Super Hexagon - a music-based arcade game'
 url='https://openhexagon.org/'
@@ -10,6 +10,8 @@ arch=('any')
 license=('custom:AFL-3.0' 'custom')
 depends=('sfml')
 makedepends=('git' 'cmake' 'rsync')
+optdepends=('steam: Integration for those who own the game on Steam'
+'discord: Discord Rich Presence support')
 provides=('open-hexagon')
 conflicts=('open-hexagon')
 source=('git+https://github.com/SuperV1234/SSVOpenHexagon.git'
