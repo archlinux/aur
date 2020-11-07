@@ -33,5 +33,6 @@ package() {
   env python3 util/generate.py > build/base.mk
   $_install -m644 -T "build/base.mk" "${pkgdir}/opt/aq/lib/slick/base.mk"
   $_install -m644 -T "src/targets.mk" "${pkgdir}/opt/aq/lib/slick/targets.mk"
+  [ "$(uname -s)" != 'Darwin' ] && \
   $_install -m755 -T "../aquefir.sh" "${pkgdir}/etc/profile.d/aquefir.sh"
 }
