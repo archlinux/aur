@@ -1,6 +1,6 @@
 pkgbase = fprintd-libfprint2
 	pkgdesc = D-Bus service to access fingerprint readers
-	pkgver = 1.90.1+97+gc42e627
+	pkgver = 1.90.8+3+gc6647ba
 	pkgrel = 1
 	epoch = 1
 	url = https://www.freedesktop.org/wiki/Software/fprint/fprintd
@@ -26,11 +26,7 @@ pkgbase = fprintd-libfprint2
 	provides = fprintd
 	conflicts = fprintd
 	source = git+https://gitlab.freedesktop.org/libfprint/fprintd.git
-	source = 0001-tests-Skip-a-test-if-virtual-image-driver-is-not-ena.patch
-	source = 0002-data-Remove-TasksMax.patch
 	sha256sums = SKIP
-	sha256sums = 66f5f73676bcdc36b92c23923180c0a96f70f57b643e2b5d158494f1d0fb7ce5
-	sha256sums = a1d4577633e931d58fb9b3421558b58391218abee0d93ec4c4778d29d5ccfd87
 
 pkgname = fprintd-libfprint2
 	depends = dbus

@@ -7,7 +7,7 @@
 pkgname=fprintd-libfprint2
 _pkgname=fprintd
 epoch=1
-pkgver=1.90.1+97+gc42e627
+pkgver=1.90.8+3+gc6647ba
 pkgrel=1
 pkgdesc="D-Bus service to access fingerprint readers"
 arch=(x86_64)
@@ -20,22 +20,16 @@ conflicts=(fprintd)
 makedepends=(git gtk-doc meson pam)
 checkdepends=(pam_wrapper python-cairo python-dbus python-dbusmock python-gobject)
 groups=(fprint)
-source=("git+https://gitlab.freedesktop.org/libfprint/$_pkgname.git"
-        '0001-tests-Skip-a-test-if-virtual-image-driver-is-not-ena.patch'
-        '0002-data-Remove-TasksMax.patch')
-sha256sums=('SKIP'
-            '66f5f73676bcdc36b92c23923180c0a96f70f57b643e2b5d158494f1d0fb7ce5'
-            'a1d4577633e931d58fb9b3421558b58391218abee0d93ec4c4778d29d5ccfd87')
+source=("git+https://gitlab.freedesktop.org/libfprint/$_pkgname.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --tags | sed 's/^V_//;s/_/./g;s/-/+/g'
+  git describe --tags | sed 's/^V_\|^v//;s/_/./g;s/-/+/g'
 }
 
 prepare() {
   cd $_pkgname
-  git apply < '../0001-tests-Skip-a-test-if-virtual-image-driver-is-not-ena.patch'
-  git apply < '../0002-data-Remove-TasksMax.patch'
 }
 
 build() {
