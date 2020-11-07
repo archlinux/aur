@@ -1,9 +1,8 @@
 pkgbase = sfarklib
-	pkgdesc = Original library for SoundFont compression.
-	pkgver = 20150617
+	pkgdesc = Library for decompressing sfArk soundfonts.
+	pkgver = 20200903
 	pkgrel = 1
 	url = https://github.com/raboof/sfArkLib
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git

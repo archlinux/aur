@@ -1,10 +1,10 @@
 # Maintainer: maz-1 <ohmygod19993 at gmail dot com>
 pkgname=sfarklib
 _gitname=sfArkLib
-pkgver=20150617
+pkgver=20200903
 pkgrel=1
-pkgdesc="Original library for SoundFont compression."
-arch=(i686 x86_64)
+pkgdesc="Library for decompressing sfArk soundfonts."
+arch=(x86_64)
 url="https://github.com/raboof/sfArkLib"
 license=('GPL3')
 depends=('zlib')
