@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=qt6-wayland
-_qtver=6.0.0-beta2
+_qtver=6.0.0-beta3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -16,7 +16,7 @@ makedepends=(cmake vulkan-headers ninja)
 groups=(qt6)
 _pkgfqn="${pkgname/6-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('0cab045e46a2966e1cd043e4453dedc1d29ccc1d8e748a4d3b5ee721b4c29786')
+sha256sums=('29d106a0eaecf1976b319e7fef30c8ef7b52260d56384046ac477f6974de37a3')
 
 build() {
   cmake -G Ninja -B build -S $_pkgfqn
