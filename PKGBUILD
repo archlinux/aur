@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=sah_components_config-git
-pkgver=r4.b380ec8
+pkgver=r5.89a816b
 pkgrel=1
 pkgdesc='A small python script that helps with generating config options for sah tools'
 url='https://gitlab.com/mvg_sah/sah_components_config.git'
