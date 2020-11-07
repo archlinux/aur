@@ -39,6 +39,6 @@ check() {
 
 package() {
 	cd get-media-playing
-	install -D get-media-playing.sh ${pkgdir}
+	install -D get-media-playing.sh ${pkgdir}/usr/bin/get-media-playing
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
