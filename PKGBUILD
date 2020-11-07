@@ -10,10 +10,12 @@ url=""
 license=('APLG-3.0')
 groups=('')
 depends=('bash-completion' 'python-pip')
+optdepends=("dialog: GUI elements")
+makedepends=("binutils" "tar")
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("iicalc-$pkgver.deb::https://gitlab.com/TurboWafflz/ImaginaryInfinity-Calculator/-/jobs/artifacts/development/raw/iicalc.deb?job=debian%20packager")
-sha512sums=('b7ed74533567960ae29e0bfa422ccfe38cc5619d1e312c0e3e549abfc95e5be961f1dbc0b84f81dd1bdb5af7950da2c3cd0bca00e097a43b8bb083451d2c82a2')
+sha512sums=('9c7a05cfd97a1cbf53bb8656345243b5a52fc840e2d3ff96085412725d06416d864d0bfeb1c92f4e724096d4c5558fd9f34dd4ed95fb0a5481ac8abb6c5c950d')
 
 package(){
 
