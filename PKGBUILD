@@ -4,21 +4,19 @@
 pkgname=android-google-apis-x86-64-system-image-29
 _apilevel=29
 _arch=x86_64
-pkgver=r10
+pkgver=r11
 pkgrel=1
 pkgdesc="Android with Google APIs ${_arch} Atom System Image, API-${_apilevel}"
 arch=('any')
 url='https://software.intel.com/en-us/android/tools'
 license=('custom')
-depends=("android-platform-${_apilevel}")
-optdepends=('qemu' 'libvirt')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 options=('!strip')
 source=("http://dl-ssl.google.com/android/repository/sys-img/google_apis/${_arch}-${_apilevel}_${pkgver}.zip"
         "package.xml")
-sha256sums=('bdd82da247161e4464f6016a051b74d3dddf99f2a797d8ea5437ed6ca73b4e6a'
-            '4319fe5978d989d04ce2425de6e813a59f871e39233f3ff6b030619b7e4dcd71')
+sha256sums=('5029360d33a33baba23b0f224abf42e951a5d3596eccf4ef212c11236362d223'
+            '6962710637ef177de9fb9a5f311a4d595d4cd402bba96e3fee9b44030feaa73b')
 
 prepare() {
   # Fix permissions
@@ -28,6 +26,9 @@ prepare() {
 }
 
 package() {
+  # Run dependencies
+  depends=("android-platform-${_apilevel}")
+  optdepends=('qemu' 'libvirt')
   # Install files
   install -d -m 755 "${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/google_apis"
   cp -r "${_arch}" "${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/google_apis/"
