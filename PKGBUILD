@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt-bin
 pkgver=3.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -27,10 +27,13 @@ optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online
 conflicts=('cartaodecidadao' 'cartaodecidadao-bin' 'autenticacao-gov-pt')
 replaces=('cartaodecidadao-bin')
 
-source_x86_64=("https://www.autenticacao.gov.pt/documents/20126/78595/Autenticacao.gov_Ubuntu_20_x64.deb")
+source_x86_64=("https://www.autenticacao.gov.pt/documents/20126/78595/Autenticacao.gov_Ubuntu_20_x64.deb"
+							 "autenticacao-gov-pt-bin.install")
 
-sha512sums_x86_64=('04e145bf33c9d8c6a2f60bcb7e63b1327ab4e8a0dabba6b7b460b2cc0db05476f53394f968cdcc0843b3c74ea2751234eb6da60d7dc7447a48bce55855a63921')
+sha512sums_x86_64=('04e145bf33c9d8c6a2f60bcb7e63b1327ab4e8a0dabba6b7b460b2cc0db05476f53394f968cdcc0843b3c74ea2751234eb6da60d7dc7447a48bce55855a63921'
+                   'd38b9748f386fcf64f3f0cb717eccf7936c64f0e7b6370ae3b1b079902015ce56d3057afcf2877ca4eee38776269ac3642701803ba96b24a81cfccc9a4d3245f')
 
+install='autenticacao-gov-pt-bin.install'
 prepare() {
 	tar -xf data.tar.xz
 }
@@ -39,13 +42,13 @@ package() {
 	mkdir -p "${pkgdir}/usr/local/"
 	mkdir -p "${pkgdir}/usr/share/"
 	mkdir -p "${pkgdir}/usr/lib"
-	mkdir -p "${pkgdir}/usr/share/fonts"
+	mkdir -p "${pkgdir}/usr/share/fonts/pteid/lato"
 	
 	# Move files into the correct place
 	mv "${srcdir}"/usr/local/{share,bin} "${pkgdir}/usr/local/"
 	mv "${srcdir}"/usr/local/* "${pkgdir}/usr/"
 	mv "${srcdir}"/usr/share/* "${pkgdir}/usr/share/"
-	mv "${pkgdir}/usr/local/bin/Lato-Regular.ttf" "${pkgdir}/usr/share/fonts/"
+	mv "${pkgdir}/usr/local/bin/Lato-Regular.ttf" "${pkgdir}/usr/share/fonts/pteid/lato/"
 
 	# Fix symlinks
 	ln -s libcurl.so.3 "${pkgdir}/usr/lib/libcurl-nss.so.4"
