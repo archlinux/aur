@@ -1,7 +1,7 @@
 pkgbase = wpa_supplicant-killer
 	pkgdesc = disable all wpa_supplicant dependencies
 	pkgver = 0
-	pkgrel = 0
+	pkgrel = 1
 	arch = any
 	license = unknown
 	provides = wpa_supplicant=0
