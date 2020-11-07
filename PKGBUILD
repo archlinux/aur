@@ -11,7 +11,7 @@
 # All patches are managed at https://github.com/Martchus/qtbase
 
 pkgname=mingw-w64-qt6-base
-_qtver=6.0.0-beta2
+_qtver=6.0.0-beta3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -21,7 +21,7 @@ pkgdesc='A cross-platform application and UI framework (mingw-w64)'
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-libjpeg-turbo' 'mingw-w64-sqlite'
          'mingw-w64-libpng' 'mingw-w64-openssl' 'mingw-w64-dbus' 'mingw-w64-harfbuzz'
          'mingw-w64-brotli' 'mingw-w64-pcre2' 'mingw-w64-zstd')
-makedepends=('mingw-w64-cmake' 'mingw-w64-postgresql' 'mingw-w64-mariadb-connector-c'
+makedepends=('mingw-w64-cmake>=1-35' 'mingw-w64-postgresql' 'mingw-w64-mariadb-connector-c'
              'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'mingw-w64-pkg-config'
              'qt6-base' 'ninja')
 optdepends=('mingw-w64-postgresql: PostgreSQL driver'
@@ -32,10 +32,16 @@ groups=(mingw-w64-qt6)
 _pkgfqn="qtbase-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Use-CMake-s-default-import-library-suffix.patch'
-        '0002-Fix-finding-D-Bus.patch')
-sha256sums=('1207a5ceb001d164f3cf6646fbd483a055440400c20a315f98f36e23c73f204e'
-            '10ea48221878769b7bd50328f31f16effc6789d92dd91e9cb22c0acb77ca6095'
-            '35ef8ed4f01727ef4a56b856fd91e33fd7f93e5f2813b308872231d182c5df8f')
+        '0002-Fix-finding-D-Bus.patch'
+        '0003-Fix-using-static-PCRE2-and-DBus-1.patch'
+        '0004-Fix-transitive-dependencies-of-static-libraries.patch'
+        '0005-Fix-libjpeg-workaround-for-conflict-with-rpcndr.h.patch')
+sha256sums=('37a97e30cf769b8deaa65aff585968ffb78bda20409177fe46959cb591a53268'
+            '7efec2be97836e6b6a2566e297650765db36af4812f10d98702b97f29e40de91'
+            '4135f261ee759744549c2c6dc42180a8394235f96b750cca82d98a0d5884d6c7'
+            '0d6ea42b1c302fb3b219dbd9be854045070cf9c67e039a7d248c6e632750e446'
+            'fb2a34d4557abb4dae23f2926914322d1fddecc2668ed970aad461b5ead01ab6'
+            '875c6065b1b53753d8e481a972b07027c093e8e84ed550fe34df8d6fd91c4643')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -53,7 +59,6 @@ build() {
   for _arch in ${_architectures}; do
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
     $_arch-cmake -G Ninja -B build-$_arch -S $_pkgfqn \
-      -DQT_HOST_PATH=/usr \
       -DFEATURE_pkg_config=ON \
       -DFEATURE_system_pcre2=ON \
       -DFEATURE_system_freetype=ON \
@@ -66,11 +71,7 @@ build() {
       -DINSTALL_INCLUDEDIR=include/qt6 \
       -DINSTALL_MKSPECSDIR=lib/qt6/mkspecs \
       -DINSTALL_EXAMPLESDIR=share/doc/qt6/examples \
-      -DINPUT_openssl=runtime \
-      -DVulkan_LIBRARY="/usr/$_arch/lib/libvulkan.dll.a" \
-      -DVulkan_INCLUDE_DIR="/usr/$_arch/include" \
-      -DMySQL_LIBRARIES="/usr/$_arch/lib/libmariadb.dll.a" \
-      -DMySQL_INCLUDE_DIRS="/usr/$_arch/include/mariadb"
+      -DINPUT_openssl=runtime
     VERBOSE=1 cmake --build build-$_arch
   done
 }
