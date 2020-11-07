@@ -3,8 +3,8 @@
 
 pkgname=autenticacao-gov-pt
 _pkgname=autenticacao.gov
-pkgver=3.3.0
-pkgrel=0
+pkgver=3.3.1
+pkgrel=1
 pkgdesc="Portuguese Citizen Card Application (Portugal eID)"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -35,7 +35,7 @@ source=('git+https://github.com/amagovpt/autenticacao.gov/#branch=master'
 		    'autenticacao-gov-pt.install')
 
 sha512sums=('SKIP'
-            '4a9b2405626854b744777c564f6d4254c605a0c291a8cf3d665ec9fbdfe1441be1efb77719ec5d154c60a8c65a8f73f5729c3fae5eb49a195edf846af192b35b')
+            '344a0722a4554150f17f25d49d85c8a42d5e75b2444d59b1648f7c3d0817eb93eb011680f3cccf092a5eceef7c13e8048f0d09de4f07199a33c7bd1033c3de9f')
 
 install='autenticacao-gov-pt.install'
 
@@ -57,6 +57,7 @@ package() {
 
 	# Fix upstream bug not creating path
 	mkdir -p ${pkgdir}/usr/local/lib/
+	mkdir -p ${pkgdir}/usr/share/fonts/pteid/lato/
 
 	# Install programs and libraries
 	make INSTALL_ROOT="$pkgdir" DESTDIR=$pkgdir PREFIX=/usr install
@@ -66,6 +67,11 @@ package() {
 
 	# Install desktop files
 	install -Dm644 ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/debian/pteid-mw-gui.desktop ${pkgdir}/usr/share/applications/pteid-mw-gui.desktop
+	
+  # Install fonts
+	install -Dm644 ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/eidguiV2/fonts/lato/Lato-Black.ttf ${pkgdir}/usr/share/fonts/pteid/lato/
+	install -Dm644 ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/eidguiV2/fonts/lato/Lato-Bold.ttf ${pkgdir}/usr/share/fonts/pteid/lato/
+	install -Dm644 ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/eidguiV2/fonts/lato/Lato-Regular.ttf ${pkgdir}/usr/share/fonts/pteid/lato/
 
 	# Install image files
 	install -Dm644 ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/debian/pteid-signature.png ${pkgdir}/usr/share/autenticacao-gov/pteid-signature.png

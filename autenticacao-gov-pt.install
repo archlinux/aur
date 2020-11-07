@@ -24,12 +24,18 @@ setup_icons() {
 	done
 }
 
+setup_fonts() {
+ fc-cache /usr/share/fonts/pteid/lato
+}
+
 post_upgrade() {
 	post_install
+	setup_fonts
 }
 
 post_install() {
 	setup_icons install
+	setup_fonts
 }
 
 pre_remove() {
