@@ -1,14 +1,14 @@
 pkgbase = clj-kondo-bin
 	pkgdesc = A minimal and opinionated linter for Clojure code that sparks joy.
-	pkgver = 2020.10.10
+	pkgver = 2020.11.07
 	pkgrel = 1
 	url = https://github.com/borkdude/clj-kondo
 	arch = x86_64
 	license = EPL
 	provides = clj-kondo
 	conflicts = clj-kondo
-	source = https://github.com/borkdude/clj-kondo/releases/download/v2020.10.10/clj-kondo-2020.10.10-linux-amd64.zip
-	sha256sums = 58a87022d0206543c8b4d60e82f981306fd453cd212df865eea02220ae107234
+	source = https://github.com/borkdude/clj-kondo/releases/download/v2020.11.07/clj-kondo-2020.11.07-linux-amd64.zip
+	sha256sums = a9488600db73898a937ddb5a2a58ed8e802fd5cc794e4301726c5fd9234f1f7a
 
 pkgname = clj-kondo-bin
 
