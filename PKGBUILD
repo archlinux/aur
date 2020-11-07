@@ -12,8 +12,8 @@ optdepends=("libindicator-gtk3")
 makedepends=("imagemagick" "nodejs-nativefier")
 
 source=("${pkgname}.desktop" "${pkgname}.png")
-sha256sums=("b10535d6488d742bcbb3b334e936156bb2682b748507389927399dc0fa65f1d9"
-            "8d44f32553624110623423ec3f34181c27f5b5453efbd67ca5525e446c64be3f")
+sha256sums=("d01e431584e82f1481afbb78ce00bef41862505fd478a5c76f605f5b748479af"
+            "e9cc348d123c37aaf0e903313e1b728cdf482b70abf94ae927dbb117c4cbad15")
 
 build() {
 	cd "${srcdir}"
