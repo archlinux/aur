@@ -1,6 +1,6 @@
 pkgbase = corny-jokes-git
 	pkgdesc = Corny Jokes for terminal
-	pkgver = r50.49d5e2d
+	pkgver = r61.4de261d
 	pkgrel = 1
 	url = https://github.com/kz6fittycent/corny-jokes
 	arch = any

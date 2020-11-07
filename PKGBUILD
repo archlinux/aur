@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=corny-jokes-git
-pkgver=r50.49d5e2d
+pkgver=r61.4de261d
 pkgrel=1
 pkgdesc='Corny Jokes for terminal'
 
@@ -30,4 +30,5 @@ build() {
 package() {
         cd "${srcdir}/corny-jokes"
         python  ./setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -D "${srcdir}/corny-jokes/LICENSE" "$pkgdir/usr/share/licenses/corny-jokes/LICENSE"
 }
