@@ -5,6 +5,7 @@ pkgrel=1
 pkgdesc="Read the the German Catholic Einheitsübersetzung, with annotations, from your terminal"
 arch=(any)
 depends=(bash)
+makedepends=('git')
 url="https://github.com/AlexBocken/bibel"
 license=('custom:Public Domain')
 source=('bibel::git+https://github.com/AlexBocken/bibel.git')

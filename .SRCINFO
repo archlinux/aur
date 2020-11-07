@@ -5,6 +5,7 @@ pkgbase = bibel-git
 	url = https://github.com/AlexBocken/bibel
 	arch = any
 	license = custom:Public Domain
+	makedepends = git
 	depends = bash
 	source = bibel::git+https://github.com/AlexBocken/bibel.git
 	md5sums = SKIP
