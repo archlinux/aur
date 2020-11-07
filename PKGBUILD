@@ -1,7 +1,7 @@
 # Maintainer: Philipp Hochmann <phil.hochmann[at]gmail[dot]com>
 pkgname=ccalc
-pkgver=1.5.6
-pkgrel=2
+pkgver=1.5.7
+pkgrel=0
 epoch=
 pkgdesc="Scientific calculator in which you can define new functions and constants"
 arch=('x86_64')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('757912921fe3a86d569b533537fe09c4')
+md5sums=('fae21a113df00d9c479ab8a156bf5db2')
 validpgpkeys=()
 
 prepare() {
