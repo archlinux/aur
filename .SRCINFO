@@ -1,0 +1,16 @@
+pkgbase = refind-theme-matrix-git
+	pkgdesc = Matrix-inspired rEFInd theme depicting Morpheus offering two choices
+	pkgver = r19.91e3823
+	pkgrel = 1
+	url = https://github.com/Yannis4444/Matrix-rEFInd
+	install = refind-theme-matrix.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = refind
+	backup = boot/EFI/refind/themes/Matrix-rEFInd/theme.conf
+	source = git+https://github.com/Yannis4444/Matrix-rEFInd.git
+	md5sums = SKIP
+
+pkgname = refind-theme-matrix-git
+

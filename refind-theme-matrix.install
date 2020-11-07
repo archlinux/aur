@@ -1,0 +1,6 @@
+post_install() {
+	echo 'Remember to add "include themes/Matrix-rEFInd/theme.conf" to your refind.conf file'
+}
+post_remove() {
+	echo 'Remember to remove "include themes/Matrix-rEFInd/theme.conf" from your refind.conf file'
+}
