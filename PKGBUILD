@@ -25,7 +25,6 @@ build() {
 }
 
 package() {
-  cd $_pkgname
-  install -Dm755 "./target/release/${_pkgname}" -t "${pkgdir}/usr/bin"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "${_pkgname}/target/release/${_pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dm644 "${_pkgname}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
