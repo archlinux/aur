@@ -16,7 +16,7 @@
 # Contributor: Aleksey Filippov <sarum9in@gmail.com>
 _pkgname=wheezy.template
 pkgname=python-wheezy
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A lightweight template library"
 arch=('any')
@@ -28,7 +28,7 @@ conflicts=(
     'python2-wheezy'  # /usr/bin/wheezy.template
 )
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('96240be5a7382bf4accb50bf42a49c24cd8e4c2b3131d09ec7c8e743fb18ad16')
+sha256sums=('8158c6821f759a424a0e4428c62104e78c37bc53d91be149072862d2764fe1e0')
 
 build() {
   cd "$_pkgname-$pkgver"
