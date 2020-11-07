@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=qt6-imageformats
-_qtver=6.0.0-beta2
+_qtver=6.0.0-beta3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -18,7 +18,7 @@ depends=(qt6-base jasper libwebp)
 makedepends=(cmake ninja git)
 groups=(qt6)
 _pkgfqn="${pkgname/6-/}-everywhere-src-${_qtver}"
-source=("$_pkgfqn::git://code.qt.io/qt/qtimageformats.git#commit=9d2f8c3f0825f8114a2a916dd8e305f9848d2653")
+source=("$_pkgfqn::git://code.qt.io/qt/qtimageformats.git#commit=c98a77599e01b14064277a2da4c26322bd750f54")
 sha256sums=('SKIP')
 
 build() {

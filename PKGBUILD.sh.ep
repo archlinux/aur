@@ -1,6 +1,6 @@
-% layout 'qt6-module', git_commit => '9d2f8c3f0825f8114a2a916dd8e305f9848d2653';
+% layout 'qt6-module', git_commit => 'c98a77599e01b14064277a2da4c26322bd750f54';
 \
-_qtver=6.0.0-beta2
+_qtver=6.0.0-beta3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
