@@ -4,7 +4,7 @@
 # Based on: AUR package qt6-declarative-git, official qt5-declarative package
 % end
 \
-_qtver=6.0.0-beta2
+_qtver=6.0.0-beta3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
