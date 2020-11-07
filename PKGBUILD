@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=whatami-git
-pkgver=r16.160ac54
+pkgver=r25.8e23e7a
 pkgrel=1
 pkgdesc='Get ready for some painful insults...'
 
@@ -30,4 +30,5 @@ build() {
 package() {
         cd "${srcdir}/whatami"
         python  ./setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -D "${srcdir}/whatami/LICENSE" "$pkgdir/usr/share/licenses/whatami/LICENSE"
 }
