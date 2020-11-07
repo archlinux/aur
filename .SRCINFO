@@ -1,7 +1,7 @@
 pkgbase = anvill
-	pkgdesc = Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode
+	pkgdesc = Forge beautiful LLVM bitcode out of raw machine code
 	pkgver = 0.1.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lifting-bits/remill
 	arch = x86_64
 	license = Apache
