@@ -2,11 +2,11 @@
 _pkgname=asuka
 pkgname=asuka-git
 pkgver=r47.1c6d9ad
-pkgrel=1
+pkgrel=2
 pkgdesc="a Gemini Project client written in Rust with NCurses."
 arch=("x86_64" "i686")
 url="https://git.sr.ht/~julienxx/asuka"
-license=('MIT')
+license=('custom:MIT')
 depends=('ncurses' 'openssl')
 makedepends=('git' 'rust')
 provides=("$_pkgname")
@@ -26,6 +26,6 @@ build() {
 
 package() {
   cd $_pkgname
-  mkdir -p "$pkgdir"/usr/bin
-  mv ./target/release/asuka "$pkgdir"/usr/bin/
+  install -Dm755 "./target/release/${_pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,11 +1,11 @@
 pkgbase = asuka-git
 	pkgdesc = a Gemini Project client written in Rust with NCurses.
 	pkgver = r47.1c6d9ad
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~julienxx/asuka
 	arch = x86_64
 	arch = i686
-	license = MIT
+	license = custom:MIT
 	makedepends = git
 	makedepends = rust
 	depends = ncurses
