@@ -1,0 +1,13 @@
+pkgbase = tty-qlock
+	pkgdesc = Minimal, curses-based clock, for your terminal. Inspired by the QlockTwo by Biegert&Funk
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/joshdk/tty-qlock
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	source = tty-qlock-1.0.0.tar.gz::https://github.com/joshdk/tty-qlock/archive/v1.0.0.tar.gz
+	sha256sums = 9a075e3d645910bb60946fd5d39aed1241c41868f3778a09d70099312dc39ba5
+
+pkgname = tty-qlock
+
