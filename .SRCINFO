@@ -1,6 +1,6 @@
 pkgbase = platon
 	pkgdesc = A Multipurpose Crystallographic Tool
-	pkgver = 191219
+	pkgver = 171020
 	pkgrel = 1
 	url = http://www.cryst.chem.uu.nl/spek/platon
 	arch = x86_64
