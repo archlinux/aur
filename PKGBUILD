@@ -2,8 +2,8 @@
 
 pkgname=neochat-git
 pkgver=r941.91f82fb
-pkgrel=1
-pkgdesc="Resource monitor that shows usage and stats for processor, memory, disks, network and processes"
+pkgrel=2
+pkgdesc="A glossy cross-platform Matrix client for KDE"
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/network/neochat"
 license=('GPL3')
