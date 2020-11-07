@@ -1,0 +1,16 @@
+pkgbase = docker-zfs-plugin
+	pkgdesc = Docker volume plugin for creating persistent volumes as a dedicated zfs dataset.
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/TrilliumIT/docker-zfs-plugin
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = sed
+	depends = docker
+	depends = zfs-utils
+	source = docker-zfs-plugin-1.0.5.tar.gz::https://github.com/TrilliumIT/docker-zfs-plugin/archive/v1.0.5.tar.gz
+	sha256sums = 0e36553f8b6588af40c8dd026350d3d63d015b04eb4cce388f6a106339d0d28c
+
+pkgname = docker-zfs-plugin
+
