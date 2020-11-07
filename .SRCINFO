@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-syspeek-gs-git
+	pkgdesc = A simple CPU monitor for Gnome Shell inspired by SysPeek indicator
+	pkgver = r14.bc034cd
+	pkgrel = 1
+	url = https://github.com/eugene-rom/syspeek-gs
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	source = git+https://github.com/eugene-rom/syspeek-gs
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-syspeek-gs-git
+
