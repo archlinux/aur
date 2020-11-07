@@ -4,7 +4,7 @@
 
 pkgname=insomnia
 pkgver=2020.4.2
-pkgrel=6
+pkgrel=7
 _nodeversion=12.18.3
 pkgdesc="Cross-platform HTTP and GraphQL Client"
 url="https://github.com/Kong/insomnia"
@@ -21,23 +21,36 @@ b2sums=('2527045680d99d0321ce9a29f8d3e9302bd07c79d059d0a2e9c3f963d2adb45c9566668
         'd2ceeb224fa3a35551b0929648d5e066da93a451a66b73373c13ed0dd89575a2482c2dc8e7499b214d0d62cca2532189dac9a681537751a5a86b592cae5686c7'
         '7ea4aff2779267bfc5f7be5533d70b07a3da1c8bfed424c9f6cc9806fe6567a4cd40144264a8827b016e51f31c6dbb395c90aac4d333f297070213c77a0b2c9c')
 
+_ensure_local_nvm() {
+  # lets be sure we are starting clean
+  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+
+  export NVM_DIR="${srcdir}/${pkgname}-core-${pkgver}/.nvm"
+  # The init script returns 3 if version
+  #   specified in ./.nvrc is not (yet) installed in $NVM_DIR
+  #   but nvm itself still gets loaded ok
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
 prepare() {
   # Use local electron version
   # See https://wiki.archlinux.org/index.php/Electron_package_guidelines
-
+  _ensure_local_nvm
+  
   cd ${pkgname}-core-${pkgver}
   electron_version=$(electron --version | sed s/v//)
   sed -i 's/"electron": ".\+"/"electron": "'"$electron_version"'"/g' packages/insomnia-app/package.json
-  source /usr/share/nvm/init-nvm.sh || [ -n "$NVM_BIN" ]
 
-  # Do not use ~/.nvm
-  export NVM_DIR=$(pwd)/.nvm
-  nvm install ${_nodeversion}
+  # Install .nvmrc node version 
+  nvm install 
 }
 
 build() {
+  _ensure_local_nvm
+  
   cd ${pkgname}-core-${pkgver}
-  npm run bootstrap
+  
+  npm run bootstrap  
   GIT_TAG="core@${pkgver}" npm run app-package
 }
 
