@@ -1,7 +1,7 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=pcb-cli-git
 pkgver=0.1.0.r0.g8822f59
-pkgrel=1
+pkgrel=2
 pkgdesc="This application provides a CLI (Command Line Interface) towards the PCB ecosystem it is connected to"
 arch=('any')
 url="https://gitlab.com/soft.at.home/pcb/pcb-cli.git"
