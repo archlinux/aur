@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=magicraminstaller-git
-pkgver=r22.754049b
+pkgver=r27.363d9c9
 pkgrel=1
 pkgdesc='A Magic RAM Installer'
 
@@ -25,5 +25,5 @@ sha256sums=("SKIP")
 
 package() {
 	install -Dm755 "${srcdir}/magicraminstaller/ram.py" "$pkgdir/usr/bin/ram.py"
-	install -D "${srcdir}/magicraminstaller/LICENSE" "$pkgdir/usr/share/licenses/LICENSE"
+	install -D "${srcdir}/magicraminstaller/LICENSE" "$pkgdir/usr/share/licenses/magicraminstaller/LICENSE"
 }

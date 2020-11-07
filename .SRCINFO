@@ -1,6 +1,6 @@
 pkgbase = magicraminstaller-git
 	pkgdesc = A Magic RAM Installer
-	pkgver = r22.754049b
+	pkgver = r27.363d9c9
 	pkgrel = 1
 	url = https://github.com/kz6fittycent/magicraminstaller
 	arch = any
