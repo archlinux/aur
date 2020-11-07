@@ -3,7 +3,7 @@
 # Contributor: smcdougall <simon at sjmcdougall dot com>
 pkgname=gnome-shell-extension-multi-monitors-add-on-git
 _pkgname=multi-monitors-add-on
-pkgver=20.r2.g82a28a3
+pkgver=20.r5.gb883e19
 pkgrel=1
 pkgdesc="Adds panels and thumbnails for additional monitors."
 arch=('any')
@@ -35,7 +35,7 @@ package() {
 			"${locale}/LC_MESSAGES"/*.mo
 	done
 
-	rm -rf {locale,schemas}
+	rm -rf locale
 
 	install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
 	cp -a * "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
