@@ -1,0 +1,27 @@
+pkgbase = pcb-bus-git
+	pkgdesc = This application acts as an PCB system bus. It connects all PCB plug-ins connected to the bus and forwards requests between them
+	pkgver = 0.1.0.r0.g2c34b64
+	pkgrel = 1
+	url = https://gitlab.com/soft.at.home/pcb/pcb-bus.git
+	arch = any
+	license = MIT
+	makedepends = sah_components_config
+	makedepends = m4
+	makedepends = gcc
+	makedepends = make
+	depends = libsahtrace
+	depends = openssl
+	depends = libpcb
+	depends = libusermngt
+	depends = pcb-ser-odl
+	provides = pcb-bus
+	provides = pcb-bus-git
+	conflicts = pcb-bus
+	conflicts = pcb-bus-git
+	source = pcb-bus-git::git+https://gitlab.com/soft.at.home/pcb/pcb-bus.git#branch=master
+	source = components.config
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = pcb-bus-git
+
