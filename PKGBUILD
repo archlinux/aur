@@ -2,7 +2,7 @@
 
 pkgname=kdepim-runtime-etesync-git
 _pkgname=kdepim-runtime-etesync
-pkgver=v20.08.1.r208.g8f95c296e
+pkgver=v20.08.1.r209.g779a02371
 pkgrel=1
 pkgdesc='Extends the functionality of kdepim (with etesync modules)'
 arch=(x86_64)
@@ -14,7 +14,6 @@ source=("${_pkgname}::git+https://invent.kde.org/pim/kdepim-runtime"
         "0001-XXX-Ease-version-requirements.patch"
         )
 sha512sums=('SKIP'
-        'SKIP'
         'SKIP'
         )
 
