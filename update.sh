@@ -11,4 +11,4 @@ cd "${ROOT_DIR}"
 package_version=$(grep "^pkgver" PKGBUILD | cut -d '=' -f 2)
 package_release=$(grep "^pkgrel" PKGBUILD | cut -d '=' -f 2)
 
-makepkg --printsrcinfo > .SRCINFO && git commit -am "Updated to v. ${package_version}-${package_release}" && git push origin master
+makepkg --printsrcinfo > .SRCINFO && git commit -am "Update to v. ${package_version}-${package_release}" && git push origin master
