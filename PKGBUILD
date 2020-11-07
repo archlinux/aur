@@ -1,7 +1,7 @@
 # Maintainer: Sophie Tauchert <sophie@999eagle.moe>
 
 pkgname=playlist-sync
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Tool to sync playlists between music folders."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'xz')
 makedepends=('cargo')
 provides=()
 source=("https://gitlab.com/999eagle/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('c8924c43729f3fde96a12d279867ef4d730c5edaf4ef18c2c3968b10b9dd4b9d')
+sha256sums=('865cf92fae5d954744e270d57f092eaa64082995710af763725c45b717afbe6f')
 
 build() {
 	cd "${pkgname}-v${pkgver}"
