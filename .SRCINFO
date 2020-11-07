@@ -1,0 +1,26 @@
+pkgbase = pcb-app-git
+	pkgdesc = This application is the main binary used for creating PCB plug-ins
+	pkgver = 0.1.0.r0.g1811676
+	pkgrel = 1
+	url = https://gitlab.com/soft.at.home/pcb/pcb-app.git
+	arch = any
+	license = MIT
+	makedepends = sah_components_config
+	makedepends = m4
+	makedepends = gcc
+	makedepends = make
+	depends = libsahtrace
+	depends = libpcb
+	depends = libmtk
+	depends = openssl
+	provides = pcb-app
+	provides = pcb-app-git
+	conflicts = pcb-app
+	conflicts = pcb-app-git
+	source = pcb-app-git::git+https://gitlab.com/soft.at.home/pcb/pcb-app.git#branch=master
+	source = components.config
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = pcb-app-git
+
