@@ -1,0 +1,20 @@
+pkgbase = libsahtrace
+	pkgdesc = Small and flexible library to enable tracing and logging
+	pkgver = 0.1.0.r0.g37c28b2
+	pkgrel = 1
+	url = https://gitlab.com/soft.at.home/logging/libsahtrace.git
+	arch = any
+	license = MIT
+	makedepends = sah_components_config
+	makedepends = m4
+	makedepends = gcc
+	makedepends = make
+	provides = libsahtrace
+	conflicts = libsahtrace
+	source = libsahtrace::git+https://gitlab.com/soft.at.home/logging/libsahtrace.git#branch=master
+	source = components.config
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libsahtrace
+
