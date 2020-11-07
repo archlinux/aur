@@ -1,14 +1,10 @@
-pkgname=riseup-vpn-git
-pkgver() {
-   cd "bitmask-vpn"
-   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-pkgrel=5
-pkgver=0.20.4.r0.g42593eb
+pkgname=riseup-vpn
+pkgrel=1
+pkgver=0.20.4
 _commit=42593eb08464ace7be4d5dd088a48720591575c3
 pkgdesc="RiseupVPN is a branded build of Bitmask VPN. Bitmask VPN is a minimal rewrite of the Bitmask VPN Client, written in golang, that for now lacks client authentication, and is preconfigured to use a single provider."
 url="https://0xacab.org/leap/bitmask-vpn"
-arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
+arch=('any')
 license=('GPL3')
 depends=(
     'gtk3'
