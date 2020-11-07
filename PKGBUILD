@@ -1,7 +1,7 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=libpcb-git
 pkgver=0.1.2.r0.gaebfbc1
-pkgrel=1
+pkgrel=3
 pkgdesc="Library providing common functionality to the PCB ecosystem"
 arch=('any')
 url="https://gitlab.com/soft.at.home/pcb/libpcb.git"
@@ -46,10 +46,13 @@ build() {
 	# STAGINGDIR
 	export STAGINGDIR=$(pwd)
 	cd "${pkgname}"
+	make clean
 	make
 }
 
 package() {
 	cd "${pkgname}"
 	make D="${pkgdir}/" install
+	mv ${pkgdir}/lib/* ${pkgdir}/usr/lib/
+	rm -Rf ${pkgdir}/lib/
 }
