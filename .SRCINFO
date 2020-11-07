@@ -1,0 +1,26 @@
+pkgbase = pcb-ser-ddw-git
+	pkgdesc = This library provides the code to serialize and deserialize the requests going over a PCB connection into the DDW format
+	pkgver = 0.1.0.r0.gce0915c
+	pkgrel = 1
+	url = https://gitlab.com/soft.at.home/pcb/pcb-ser-ddw.git
+	arch = any
+	license = MIT
+	makedepends = sah_components_config
+	makedepends = m4
+	makedepends = gcc
+	makedepends = make
+	makedepends = bison
+	makedepends = flex
+	depends = libsahtrace
+	depends = libpcb
+	provides = pcb-ser-ddw
+	provides = pcb-ser-ddw-git
+	conflicts = pcb-ser-ddw
+	conflicts = pcb-ser-ddw-git
+	source = pcb-ser-ddw-git::git+https://gitlab.com/soft.at.home/pcb/pcb-ser-ddw.git#branch=master
+	source = components.config
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = pcb-ser-ddw-git
+
