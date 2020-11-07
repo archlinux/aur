@@ -1,0 +1,24 @@
+pkgbase = libpcb-git
+	pkgdesc = Library providing common functionality to the PCB ecosystem
+	pkgver = 0.1.2.r0.gaebfbc1
+	pkgrel = 1
+	url = https://gitlab.com/soft.at.home/pcb/libpcb.git
+	arch = any
+	license = MIT
+	makedepends = sah_components_config
+	makedepends = m4
+	makedepends = gcc
+	makedepends = make
+	depends = libsahtrace
+	depends = openssl
+	provides = libpcb
+	provides = libpcb-git
+	conflicts = libpcb
+	conflicts = libpcb-git
+	source = libpcb-git::git+https://gitlab.com/soft.at.home/pcb/libpcb.git#branch=master
+	source = components.config
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libpcb-git
+
