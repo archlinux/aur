@@ -1,7 +1,7 @@
 pkgbase = libpcb-git
 	pkgdesc = Library providing common functionality to the PCB ecosystem
 	pkgver = 0.1.2.r0.gaebfbc1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/soft.at.home/pcb/libpcb.git
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = libpcb-git
 	makedepends = make
 	depends = libsahtrace
 	depends = openssl
+	depends = libusermngt
 	provides = libpcb
 	provides = libpcb-git
 	conflicts = libpcb
