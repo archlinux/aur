@@ -2,7 +2,7 @@
 # Contributor: yesuu zhang <yesuu79@qq.com>
 # Contributor: Tomasz Żok <tomasz.zok [at] gmail.com>
 pkgname=vim-go
-pkgver=1.23
+pkgver=1.24
 pkgrel=1
 pkgdesc="Go development plugin for Vim"
 arch=(any)
@@ -16,7 +16,7 @@ optdepends=(
 	'delve: debugger'
 )
 source=("https://github.com/fatih/vim-go/archive/v${pkgver}.tar.gz")
-sha256sums=('3d1856ea7cc3d5dc9ba4a2a5cb4411f7314f7cc9278cb0a99e606f1b55807e02')
+sha256sums=('bc40c71536907826c83550142cfb3f249e85588e29e5c6e12f0204e19bb11252')
 
 package() {
 	cd "${srcdir}/vim-go-${pkgver}/"
