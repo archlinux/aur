@@ -1,13 +1,14 @@
 pkgbase = neochat-git
 	pkgdesc = A glossy cross-platform Matrix client for KDE
 	pkgver = r941.91f82fb
-	pkgrel = 2
+	pkgrel = 3
 	url = https://invent.kde.org/network/neochat
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmark
-	makedepends = cmake>=3.1.0
+	makedepends = cmake>=3.1.0i
+	makedepends = git
 	depends = libquotient-git
 	depends = qtkeychain
 	depends = qt5-quickcontrols2>=5.15.0
