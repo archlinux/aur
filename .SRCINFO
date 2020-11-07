@@ -1,0 +1,20 @@
+pkgbase = anvill
+	pkgdesc = Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode
+	pkgver = 0.1.20
+	pkgrel = 1
+	url = https://github.com/lifting-bits/remill
+	arch = x86_64
+	license = Apache
+	makedepends = clang
+	makedepends = cmake
+	depends = remill
+	depends = python
+	source = https://github.com/lifting-bits/anvill/archive/v0.1.20.tar.gz
+	source = 00-install-specify-bitcode.patch
+	source = 01-remove-python-installation.patch
+	sha256sums = 08241cefeb3e64519c2ad23d0ba8c6c8ef983759de0cff16b0e4a68a77146d48
+	sha256sums = c97e0a015290ae72a80780898d328c59f741c735589ce40573c7a4c182938c3e
+	sha256sums = 9d6716c7aeb2c584ff201b6671b74bb1411182d5e3af9d288e219f70a8fcba63
+
+pkgname = anvill
+
