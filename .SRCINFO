@@ -1,0 +1,19 @@
+pkgbase = neovim-coc-flutter-git
+	pkgdesc = flutter support for (Neo)vim
+	pkgver = v1.0.8.r44.g1e5d473
+	pkgrel = 1
+	url = https://github.com/iamcco/coc-flutter
+	arch = any
+	license = unknown
+	makedepends = yarn
+	makedepends = npm
+	makedepends = git
+	depends = neovim-coc
+	depends = dart
+	provides = neovim-coc-flutter
+	conflicts = neovim-coc-flutter
+	source = coc-flutter::git+https://github.com/iamcco/coc-flutter.git
+	sha256sums = SKIP
+
+pkgname = neovim-coc-flutter-git
+
