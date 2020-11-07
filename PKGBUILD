@@ -1,7 +1,7 @@
 # Maintainer: Teteros <teteros at teknik dot io>
 
 pkgname=radium-bin
-pkgver=6.4.77
+pkgver=6.5.73
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker. (Demo Version)'
 arch=(x86_64)
@@ -27,7 +27,7 @@ optdepends=(
 )
 options=(!strip)
 source=("https://users.notam02.no/~kjetism/radium/demos/linux/radium_64bit_linux-$pkgver-demo.tar.xz")
-sha256sums=('e5ba8d1e3b81b88b1e6a9e3d3cb8d8cf2a54379af15ed00923e946367dfa8e03')
+sha256sums=('517e21dac423fb3ed8da240ff7b1a872a84a31df4108c2ce63b245d5ad0e3e3f')
 
 package() {
   cd radium_64bit_linux-$pkgver-demo
