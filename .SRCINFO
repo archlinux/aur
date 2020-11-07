@@ -6,6 +6,7 @@ pkgbase = exiftool
 	arch = x86_64
 	license = PerlArtistic
 	depends = perl
+	conflicts = perl-image-exiftool
 	source = exiftool-12.09.tar.gz::https://exiftool.org/Image-ExifTool-12.09.tar.gz
 	sha1sums = 077140be4533516ffe0e8891996d9c6c61bce92c
 
