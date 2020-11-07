@@ -2,7 +2,7 @@
 pkgname=pcb-ser-odl-git
 pkgver=0.1.0.r0.g34ef420
 pkgrel=2
-pkgdesc="The module libusermngt allows fast access to the user datamodel by means of a temporary file"
+pkgdesc="This library provides the code to serialize and deserialize the data model to and from an ODL file"
 arch=('any')
 url="https://gitlab.com/soft.at.home/pcb/pcb-ser-odl.git"
 license=('MIT')
