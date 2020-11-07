@@ -1,0 +1,10 @@
+[Unit]
+Description=SSH Web Front End
+
+[Service]
+User=webssh
+EnvironmentFile=/etc/conf.d/webssh
+ExecStart=/usr/bin/wssh $WEBSSH_ARGS
+
+[Install]
+WantedBy=multi-user.target

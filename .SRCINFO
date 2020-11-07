@@ -1,0 +1,23 @@
+pkgbase = python-webssh
+	pkgdesc = A SSH Web Front End
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://github.com/huashengdun/webssh
+	arch = any
+	license = Apache
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python-tornado
+	depends = python-paramiko
+	backup = etc/conf.d/webssh
+	source = https://files.pythonhosted.org/packages/source/w/webssh/webssh-1.5.3.tar.gz
+	source = webssh.conf.d
+	source = webssh.service
+	source = sysusers.conf
+	sha256sums = 02ee8f13c8d89bc2e4129d01d72996fff664ae4715d016aec2e7d09ab1cb114e
+	sha256sums = d14c4c025468b8a4801b8f93dccad10da638934ec394bf34f9523bbcfe358286
+	sha256sums = cd7f5fc4b81fc1757fca6c00b5fadf1e24954d6c21682e6a3876b0de9e7be291
+	sha256sums = 5f4eca9aeb0744f06d14e90d0aae74d91a1953056c27a186c793bc104c22f832
+
+pkgname = python-webssh
+
