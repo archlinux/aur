@@ -1,24 +1,24 @@
 # Maintainer: Sophie Tauchert <sophie@999eagle.moe>
 
 pkgname=playlist-sync
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Tool to sync playlists between music folders."
-arch=('any')
+arch=('x86_64')
 url="http://gitlab.com/999eagle/playlist-sync"
 license=('GPL3')
-depends=('python' 'python-m3u8')
-makedepends=('python-setuptools')
+depends=('gcc-libs' 'xz')
+makedepends=('cargo')
 provides=()
 source=("https://gitlab.com/999eagle/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('9bbb19561eef3a4e978b6238605f29ea33062073bc449f78d1a6f028bcf196ad')
+sha256sums=('c8924c43729f3fde96a12d279867ef4d730c5edaf4ef18c2c3968b10b9dd4b9d')
 
 build() {
 	cd "${pkgname}-v${pkgver}"
-	python -c "from setuptools import setup; setup()" build
+	cargo build --release --locked
 }
 
 package() {
 	cd "${pkgname}-v${pkgver}"
-	python -c "from setuptools import setup; setup()" install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
 }
