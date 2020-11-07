@@ -1,6 +1,6 @@
 pkgname=mingw-w64-vulkan-icd-loader
 _pkgname=Vulkan-Loader
-pkgver=1.2.158
+pkgver=1.2.159
 pkgrel=1
 pkgdesc="Vulkan Installable Client Driver (ICD) Loader (mingw-w64)"
 arch=(any)
@@ -11,15 +11,13 @@ makedepends=(mingw-w64-cmake mingw-w64-vulkan-headers python-lxml)
 depends=(mingw-w64-crt)
 options=(!buildflags staticlibs !strip)
 source=("https://github.com/KhronosGroup/${_pkgname}/archive/v${pkgver}.tar.gz"
-        "https://github.com/KhronosGroup/Vulkan-Loader/pull/496.patch"
         "https://github.com/KhronosGroup/Vulkan-Loader/pull/498.patch")
-sha256sums=('dc9e6a0b5296edb962d3dc168a257cbc1759e1d28afb8b4061a1bc5cb0fa7ede' SKIP SKIP)
+sha256sums=('a5d44f4835a0d3b191e74e1c77c420145cd965a43913e32cf83e50ecf50f6889' SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  patch -p1 -i "${srcdir}"/496.patch
   patch -p1 -i "${srcdir}"/498.patch
 }
 
@@ -27,9 +25,7 @@ build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    MINGW_CPPFLAGS="-D_WIN32_WINNT=0x0600" ${_arch}-cmake -DBUILD_TESTS=OFF \
-      -DCMAKE_ASM_MASM_COMPILER=0 -DCMAKE_ASM_MASM_COMPILER_WORKS=0 \
-      ..
+    MINGW_CPPFLAGS="-D_WIN32_WINNT=0x0600" ${_arch}-cmake -DBUILD_TESTS=OFF -DUSE_MASM=OFF ..
     make
     popd
   done
