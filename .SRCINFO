@@ -1,0 +1,13 @@
+pkgbase = bibel-git
+	pkgdesc = Read the the German Catholic Einheitsübersetzung, with annotations, from your terminal
+	pkgver = r46.061947a
+	pkgrel = 1
+	url = https://github.com/AlexBocken/bibel
+	arch = any
+	license = custom:Public Domain
+	depends = bash
+	source = bibel::git+https://github.com/AlexBocken/bibel.git
+	md5sums = SKIP
+
+pkgname = bibel-git
+
