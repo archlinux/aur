@@ -2,10 +2,11 @@
 # Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: Pieter Lenaerts <pieter dot aj dot lenaerts gmail>
 # Contributor: judd <jvinet@zeroflux.org>
+# Contributor: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 
 pkgname=alsa-lib-x205ta
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.2.4
+pkgrel=1
 pkgdesc="An alternative implementation of Linux sound support, with UCM files for the ASUS x205ta."
 arch=('x86_64')
 url="https://www.alsa-project.org"
@@ -17,7 +18,7 @@ source=(https://www.alsa-project.org/files/pub/lib/${pkgname%-x205ta}-$pkgver.ta
 	https://raw.githubusercontent.com/plbossart/UCM/c8b344ca650a62aa809242b0c9ba908eac963125/chtrt5645/chtrt5645.conf
 	https://raw.githubusercontent.com/plbossart/UCM/c7405e6f03eb2404edb38b495c27225364bf16f4/sof-chtrt5645/HiFi.conf
 	)
-sha256sums=('d8e853d8805574777bbe40937812ad1419c9ea7210e176f0def3e6ed255ab3ec'
+sha256sums=('f7554be1a56cdff468b58fc1c29b95b64864c590038dd309c7a978c7116908f7'
             '8d0ede122c8b881978af8a3cbae194129675fed59eda584931489e95b3d27f0b'
             'f206ed6bdba1c0e0266953ef76b677fa825a3965ab4b0eb265fcd1a5c629f9d7')
 
@@ -39,6 +40,7 @@ package() {
   make DESTDIR="$pkgdir" install -C doc
   install -vDm 644 {MEMORY-LEAK,TODO,NOTES,ChangeLog,doc/asoundrc.txt} \
     -t "${pkgdir}/usr/share/doc/${pkgname}"
+  mkdir -p "$pkgdir/usr/share/alsa/ucm/chtrt5645"
   cp "$srcdir/HiFi.conf" "$pkgdir/usr/share/alsa/ucm/chtrt5645/HiFi.conf"
   cp "$srcdir/chtrt5645.conf" "$pkgdir/usr/share/alsa/ucm/chtrt5645/chtrt5645.conf"
 }
