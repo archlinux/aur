@@ -4,7 +4,7 @@
 
 _gemname=fluentd
 pkgname=$_gemname
-pkgver=1.11.4
+pkgver=1.11.5
 pkgrel=1
 pkgdesc='Open source data collector designed to scale and simplify log management'
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem"
         "$pkgname.sysusers")
 noextract=("$_gemname-$pkgver.gem")
 backup=('etc/fluentd/fluentd.conf')
-b2sums=('0bf6def6de6a65d7006e7eb63cb07e85f37b61e1d335f9b2be827308af40c195bc1c7c62641042a2a9603dd1e650615cb44accc77b1302d1934c08936754269a'
+b2sums=('8a3d1415a809c84c9a28632fbba4bc3d481fc46be45765f7feb8e88a70b5dfdb7b172dc48e530a69abf239ab019f1c587ba6f97478ff86fec525ef687cdbe104'
         '73a3afc0e3692890087d03a778e26949af2d68c3eb3c0656b4d278c8f4e51f71678482a2dde58565df7ca3b9ce7d1f9dd4b1cc3f85d9c0ac2b7e6ccacd8e6ff5'
         '80b220bdee1eb18f128db3514484fcfd13c8e2a99fb43f03f4e2ebfa0ddc893a7b128f1bcbdc9f43b235c0613cdce71ef7d12120131b419d9efeb89d51860c3a'
         '8957872f805a274a56ae9e63896033a5fe175bd4d71704e62aff18524b95bf2a611bb3a4bff3c93b6d977f209e415a7d38d806341e144919022226ab1f53247d'
@@ -33,12 +33,14 @@ package() {
   cd "$pkgdir/$_gemdir"
   find extensions/ -name *.so -delete
   rm -f "cache/$_gemname-$pkgver.gem"
+  cd "$pkgdir/$_gemdir/gems/$_gemname-$pkgver"
+  rm -rf .drone.yml .travis.yml .gitlab-ci.yml .gitignore .github appveyor.yml
 
   # move documentation
-  cd "gems/$_gemname-$pkgver"
+  cd "$pkgdir/$_gemdir/gems/$_gemname-$pkgver"
   install -dm755 "$pkgdir/usr/share/doc/$pkgname"
   mv -t "$pkgdir/usr/share/doc/$pkgname" \
-    docs/SECURITY_AUDIT.pdf *.md *.yml
+    docs/SECURITY_AUDIT.pdf *.md
 
   # configuration
   install -Dm644 -t "$pkgdir/etc/fluentd" "$srcdir/$pkgname.conf"
