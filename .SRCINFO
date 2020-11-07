@@ -1,0 +1,14 @@
+pkgbase = qt6ct
+	pkgdesc = Qt 6 Configuration Utility
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/trialuser02/qt6ct
+	arch = x86_64
+	license = BSD
+	makedepends = qt6-tools
+	depends = qt6-svg
+	source = https://github.com/trialuser02/qt6ct/releases/download/0.2/qt6ct-0.2.tar.xz
+	sha256sums = e3f064071d45e59e4eaaf0f2b789351edc5b676874d98d3bd2abfed6230422ee
+
+pkgname = qt6ct
+
