@@ -2,7 +2,7 @@
 
 pkgname=joplin-beta
 pkgver=1.4.6
-pkgrel=3
+pkgrel=4
 pkgdesc="The latest pre-release - open source note taking and to-do application"
 arch=('x86_64')
 depends=('nodejs>10' 'nss' 'gtk3' 'libxss' 'libsecret' 'rsync' 'libgsf' 'libexif' 'libcroco')
@@ -16,7 +16,7 @@ conflicts=('joplin')
 url="https://joplinapp.org"
 license=('MIT')
 sha256sums=('5bb62a36566eee87a009246bdf430ad642753c0f8b2fcbffab5cbad787dfcf37'
-            '1c72d30d468c532f272c9a574a0a0f96f50aeb68fdde364ebac780f951a34c83'
+            'b5c621c425cdf0b5bb07bf0353939f6991a18db81955294a47ec42d0c5593438'
             'b46dd772eb1adf9327f6c07657acf3c627c6ea204f8de3a4481efa6db0071f5e'
             'e343093ca77828628957c95301624774c6b4b10fc0153c4b4d2e44f1369bcaff')
 
