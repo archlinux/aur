@@ -4,7 +4,7 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.10.24.a.r84.g290923c344a
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.11.06.a.r2.g1f711441835
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
