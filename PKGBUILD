@@ -32,7 +32,7 @@ build() {
    cmake .. \
          -DCMAKE_INSTALL_PREFIX=/usr \
          -DKDE_L10N_BRANCH=trunk \
-         -DCMAKE_BUILD_TYPE=Release
+         -DCMAKE_BUILD_TYPE=Master
 
 }
 
