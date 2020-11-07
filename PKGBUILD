@@ -1,21 +1,26 @@
-# Maintainer: Julien Deswaef <juego@requiem4tv.com>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Julien Deswaef <juego@requiem4tv.com>
 
-pkgbase=fork-awesome
-pkgname=(ttf-fork-awesome)
-pkgver=1.1.3
+# otfinfo --info *.ttf
+
+_pkgname='Fork-Awesome'
+pkgbase="${_pkgname,,}"
+pkgname="ttf-${_pkgname,,}"
+pkgver=1.1.7
 pkgrel=1
-pkgdesc="A fork of the iconic font and CSS toolkit"
-url="https://forkawesome.github.io"
-license=('custom:OFL')
+pkgdesc='Fork of the iconic Font Awesome font and CSS toolkit'
 arch=('any')
-depends=('fontconfig')
-conflicts=()
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ForkAwesome/Fork-Awesome/archive/$pkgver.tar.gz")
-sha256sums=('0959b252c8aa6d7741789b92f5906073c857256bc949b0c68b622c11c05d0053')
+url='https://forkaweso.me/Fork-Awesome/'
+_url_source='https://github.com/ForkAwesome/Fork-Awesome'
+license=('CCPL' 'MIT' 'OFL')
+source=("${_pkgname}-${pkgver}.tar.gz::${_url_source}/archive/${pkgver}.tar.gz")
+sha256sums=('94aff930bcb81871c91bc3167003b46c29e5939ca403dcb10e35b3e875132455')
 
-package_ttf-font-awesome-4() {
-  install -Dm644 OFL "$pkgdir/usr/share/licenses/$pkgname/OFL"
-  cd "Fork-Awesome-$pkgver/fonts"
-  install -d "$pkgdir/usr/share/fonts/TTF"
-  install -m644 *.ttf "$pkgdir/usr/share/fonts/TTF"
+package() {
+  cd "${_pkgname}-${pkgver}"
+  install -Dvm644 'fonts/'*.ttf -t "${pkgdir}/usr/share/fonts/TTF"
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dvm644 'LICENSES' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+
+# vim: ts=2 sw=2 et:
