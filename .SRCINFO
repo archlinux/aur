@@ -1,0 +1,17 @@
+pkgbase = idaholab-raven
+	pkgdesc = multi-purpose probabilistic risk analysis, uncertainty quantification, parameter optimization and data knowledge-discovering framework
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://raven.inl.gov
+	arch = x86_64
+	license = Apache
+	makedepends = swig
+	makedepends = python-setuptools
+	depends = python-scikit-learn
+	depends = python-matplotlib
+	depends = python-statsmodels
+	source = https://github.com/idaholab/raven/archive/RAVENv2.0.tar.gz
+	sha256sums = e767ef8baae1d22ed332e8587890e523268faf885b80c36273998a9a27d96d38
+
+pkgname = idaholab-raven
+
