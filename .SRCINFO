@@ -1,0 +1,18 @@
+pkgbase = ioport-git
+	pkgdesc = Direct access to I/O ports from the command line
+	pkgver = r4.af4b1b5
+	pkgrel = 1
+	url = https://people.redhat.com/rjones/ioport/
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	makedepends = make
+	makedepends = m4
+	makedepends = automake
+	depends = glibc
+	conflicts = ioport-git
+	source = ioport::git+git://git.annexia.org/ioport.git
+	sha256sums = SKIP
+
+pkgname = ioport-git
+
