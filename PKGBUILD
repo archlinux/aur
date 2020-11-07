@@ -2,14 +2,14 @@
 
 pkgname=gnome-shell-theme-viva-git
 _pkgver=3.38.0
-pkgver=3.38.0.159.d5d8602
+pkgver=3.38.0.160.204c49d
 pkgrel=1
 pkgdesc="A custom gnome-shell theme named viva (blue and orange version)"
 arch=('any')
 url="https://github.com/vivaeltopo/gnome-shell-theme-viva"
 groups=('gnome-shell-extensions')
 license=('GPL3')
-depends=('gnome-shell>=3.36' 'adobe-source-sans-pro-fonts' 'ttf-impallari-raleway-family')
+depends=('gnome-shell>=3.36' 'adobe-source-sans-pro-fonts')
 makedepends=('sassc')
 source=('git+https://github.com/vivaeltopo/gnome-shell-theme-viva.git')
 md5sums=('SKIP')
