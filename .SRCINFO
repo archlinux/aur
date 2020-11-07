@@ -1,0 +1,20 @@
+pkgbase = dyninst-git
+	pkgdesc = Tools for binary instrumentation, analysis, and modification
+	pkgver = v10.2.0.r14.g9114187ba
+	pkgrel = 1
+	url = https://dyninst.org/
+	arch = any
+	license = LGPL
+	makedepends = clang
+	makedepends = cmake
+	makedepends = boost
+	depends = libelf
+	depends = tbb
+	depends = boost-libs
+	provides = dyninst
+	conflicts = dyninst
+	source = dyninst-git::git+https://github.com/dyninst/dyninst.git#branch=clang
+	sha256sums = SKIP
+
+pkgname = dyninst-git
+
