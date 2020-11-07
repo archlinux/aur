@@ -7,7 +7,7 @@ pkgname=ice-ssb-git
 pkgver() {
   git -C "$_pkgname" describe --tags | sed 's/v\?\([^-]\+\)-/\1.r/;s/-g/./'
 }
-pkgver=6.0.8.r22.49f6b1b
+pkgver=6.0.8.r26.499b891
 pkgrel=1
 
 pkgdesc='Desktop integration for webapps'
@@ -24,7 +24,7 @@ optdepends=('brave' 'firefox' 'chromium' 'google-chrome' 'vivaldi')
 
 source=("git+$url.git" "$_pkgname.patch")
 sha256sums=('SKIP'
-            '9322f8eea7a080983825fd78cc371cfcd981e23cfee5cc19f47c84c48df8e0cf')
+            'b7ca85f38fb7dd9369d069ab1969d082fda6f23f16218fe13c3b69c9f886f8b6')
 
 
 prepare() {

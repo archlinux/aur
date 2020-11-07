@@ -12,7 +12,7 @@ diff -ru --color old/usr/bin/ice new/usr/bin/ice
  _VIVALDI_BIN = "/usr/bin/vivaldi-stable"
  _FIREFOX_BIN = "/usr/bin/firefox"
  _EPIPHANY_BIN = "/usr/bin/epiphany-browser"
-@@ -693,7 +693,7 @@
+@@ -703,7 +703,7 @@
          if self.chrome.get_active() is True:
              self.browser = "google-chrome"
          elif self.chromium.get_active() is True:
