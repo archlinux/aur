@@ -1,5 +1,5 @@
 pkgname=rustlings
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Small exercises to get you used to reading and writing Rust code!"
 arch=(x86_64)
@@ -15,14 +15,14 @@ md5sums=('SKIP')
 
 
 build() {
-        cd $pkgname-$pkgver
-        cargo build --release
+    cd $pkgname-$pkgver
+    cargo build --release
 }
 
 
 package() {
-        cd $pkgname-$pkgver
-        install -D target/release/rustlings -t "$pkgdir"/usr/bin
-        install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
-        install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+    cd $pkgname-$pkgver
+    install -D target/release/rustlings -t "$pkgdir"/usr/bin
+    install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
+    install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
