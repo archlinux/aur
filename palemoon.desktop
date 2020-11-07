@@ -175,7 +175,7 @@ Name[vi]=Mở thẻ mới
 Name[xh]=Vula ithebhu entsha
 Name[zh_CN]=打开新标签页
 Name[zh_TW]=開啟新分頁
-Exec=palemoon -new-tab https://start.palemoon.org
+Exec=palemoon --new-tab https://start.palemoon.org
 
 [Desktop Action NewWindow]
 Name=Open new window
@@ -262,7 +262,7 @@ Name[vi]=Mở cửa sổ mới
 Name[xh]=Vula iwindow entsha
 Name[zh_CN]=打开新窗口
 Name[zh_TW]=開啟新視窗
-Exec=palemoon -new-window
+Exec=palemoon --new-window
 
 [Desktop Action NewPrivateWindow]
 Name=New private window
@@ -349,5 +349,5 @@ Name[vi]=Cửa sổ riêng tư mới
 Name[xh]=Ifestile yangasese entsha
 Name[zh_CN]=新建隐私浏览窗口
 Name[zh_TW]=新增隱私視窗
-Exec=palemoon -private-window
+Exec=palemoon --private-window
 
