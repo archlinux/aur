@@ -5,7 +5,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=qt6-base
-_qtver=6.0.0-beta2
+_qtver=6.0.0-beta3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -15,7 +15,7 @@ pkgdesc='A cross-platform application and UI framework'
 depends=(libjpeg-turbo xcb-util-keysyms xcb-util-cursor libgl fontconfig xdg-utils
          shared-mime-info xcb-util-wm libxrender libxi sqlite mesa
          tslib libinput libxkbcommon-x11 libproxy libcups double-conversion md4c brotli libb2)
-makedepends=(cmake libfbclient mariadb-libs unixodbc postgresql-libs alsa-lib gst-plugins-base-libs
+makedepends=(cmake libfbclient mariadb-libs unixodbc postgresql alsa-lib gst-plugins-base-libs
              gtk3 libpulse cups freetds vulkan-headers ninja)
 optdepends=('postgresql-libs: PostgreSQL driver'
             'mariadb-libs: MariaDB driver'
@@ -27,7 +27,7 @@ optdepends=('postgresql-libs: PostgreSQL driver'
 groups=(qt6)
 _pkgfqn="${pkgname/6-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('1207a5ceb001d164f3cf6646fbd483a055440400c20a315f98f36e23c73f204e')
+sha256sums=('37a97e30cf769b8deaa65aff585968ffb78bda20409177fe46959cb591a53268')
 
 build() {
   cmake -G Ninja -B build -S $_pkgfqn \
