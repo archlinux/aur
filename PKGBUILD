@@ -1,14 +1,14 @@
 # Maintainer: Peter K. Moss <peter@moss.dk>
 pkgname=qmarkdown-git
-pkgver=r90.58bb1a4
+pkgver=r121.bc470ea
 pkgrel=1
 pkgdesc="qMarkdown - minimal markdown viewer"
 arch=("x86_64")
 url="https://github.com/Peterkmoss/qmarkdown"
 license=('GPL')
-depends=('qt5-base' 'qt5-webengine' 'qt5-webchannel')
+depends=('qt5-base>=5.9.0' 'qt5-webengine>=5.9.0' 'qt5-webchannel>=5.9.0')
 optdepends=('ttf-roboto')
-makedepends=('gcc>=9' 'git' 'cmake>=3.1.0')
+makedepends=('git' 'cmake>=3.1.0')
 provides=('qmarkdown')
 conflicts=('qmarkdown')
 source=('git+https://github.com/Peterkmoss/qmarkdown')
