@@ -1,0 +1,14 @@
+pkgbase = babelfish
+	pkgdesc = Universal translater for encodings
+	pkgver = 0.1.2
+	pkgrel = 0
+	url = https://github.com/pickfire/babelfish
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = rust
+	source = https://github.com/pickfire/babelfish/archive/v0.1.2/babelfish-v0.1.2.tar.gz
+	sha256sums = 165f5acf5108dc8e4bf6e58e4d563a7112613340fa8316af482582383e1ffe15
+
+pkgname = babelfish
+
