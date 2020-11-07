@@ -1,4 +1,5 @@
-# Maintainer: Oden S. <hello@odensc.me>
+# Maintainer: Ning Sun. <n@sunng.info>
+# Contributor: Oden S. <hello@odensc.me>
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 # Contributor: Guillaume ALAUX <guillaume at alaux dot net>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
@@ -13,7 +14,7 @@
 #   `keyserver-options auto-key-retrieve` to your `~/.gnupg/gpg.conf`
 
 pkgname=cassandra
-pkgver=3.11.8
+pkgver=3.11.9
 pkgrel=1
 pkgdesc='Apache Cassandra NoSQL database'
 arch=('any')
@@ -36,7 +37,7 @@ source=(https://www.apache.org/dist/${pkgname}/${pkgver}/apache-${pkgname}-${pkg
         'cassandra-tmpfile.conf'
         'cassandra-user.conf')
 validpgpkeys=('A4C465FEA0C552561A392A61E91335D77E3E87CB') # Mick Semb Wever <mick@semb.wever.org>
-sha256sums=('3d04e4b79c3f264cb491e1bc5127ec465102b55005a6c8f4af8548b32e74bf50'
+sha256sums=('0c90cf369e86cef10c53be2d0196ba4019150f2a84653a291547821f18536ab2'
             'SKIP'
             'bbb5dcc19cac4e19c506210da901280c3063a6a241480bf12bc874e6a5c02657'
             'abc9d54399c84eacf5922811b5480846ea1c88a73c5d214ea1db3d20c7c0422a'
