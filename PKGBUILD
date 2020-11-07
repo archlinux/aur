@@ -1,7 +1,7 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxb_ubus-git
 pkgver=v0.3.3.r0.gca31123
-pkgrel=1
+pkgrel=2
 pkgdesc="Ubus baapi back-end"
 arch=('any')
 url="https://gitlab.com/soft.at.home/ambiorix/modules/amxb_backends/amxb_ubus.git"
@@ -11,7 +11,7 @@ depends=(
 	'lib_amxc'
 	'lib_amxp'
 	'libubox'
-	'libubus'
+	'ubus'
 )
 makedepends=(
 )
