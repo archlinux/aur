@@ -1,4 +1,4 @@
-From 6a75aa37253dd04d4ba12dd72b5bb374ea0154f1 Mon Sep 17 00:00:00 2001
+From d32f28bd1737212b571dab204208cf34e6e58df2 Mon Sep 17 00:00:00 2001
 From: Maxime Gauduin <alucryd@archlinux.org>
 Date: Thu, 27 Feb 2020 17:27:37 +0100
 Subject: [PATCH] bump astral to 2.2
@@ -13,26 +13,24 @@ Subject: [PATCH] bump astral to 2.2
  6 files changed, 47 insertions(+), 34 deletions(-)
 
 diff --git a/homeassistant/components/moon/sensor.py b/homeassistant/components/moon/sensor.py
-index 3a25b68eea..20ee6c1c54 100644
+index f7914177f8..9b29b071ee 100644
 --- a/homeassistant/components/moon/sensor.py
 +++ b/homeassistant/components/moon/sensor.py
-@@ -1,7 +1,7 @@
+@@ -1,5 +1,5 @@
  """Support for tracking the moon phases."""
- import logging
- 
 -from astral import Astral
 +from astral import moon
  import voluptuous as vol
  
  from homeassistant.components.sensor import PLATFORM_SCHEMA
-@@ -91,4 +91,4 @@ class MoonSensor(Entity):
+@@ -87,4 +87,4 @@ class MoonSensor(Entity):
      async def async_update(self):
          """Get the time and updates the states."""
          today = dt_util.as_local(dt_util.utcnow()).date()
 -        self._state = Astral().moon_phase(today)
 +        self._state = moon.phase(today)
 diff --git a/homeassistant/components/sun/__init__.py b/homeassistant/components/sun/__init__.py
-index 5fb777bd32..55d86de49a 100644
+index 2d921da4a4..ec8f4b325a 100644
 --- a/homeassistant/components/sun/__init__.py
 +++ b/homeassistant/components/sun/__init__.py
 @@ -92,6 +92,7 @@ class Sun(Entity):
@@ -241,7 +239,7 @@ index 818010c341..f1f7ee1f19 100644
          return None
  
 diff --git a/homeassistant/package_constraints.txt b/homeassistant/package_constraints.txt
-index 0f88f88469..9871886a0a 100644
+index 01c2a30d2d..4951b333dc 100644
 --- a/homeassistant/package_constraints.txt
 +++ b/homeassistant/package_constraints.txt
 @@ -2,7 +2,7 @@ PyJWT==1.7.1
@@ -254,7 +252,7 @@ index 0f88f88469..9871886a0a 100644
  attrs==19.3.0
  bcrypt==3.1.7
 diff --git a/requirements.txt b/requirements.txt
-index baa48241a0..64b5a3ab89 100644
+index 498b948e47..10b5b887e8 100644
 --- a/requirements.txt
 +++ b/requirements.txt
 @@ -2,7 +2,7 @@
@@ -267,7 +265,7 @@ index baa48241a0..64b5a3ab89 100644
  attrs==19.3.0
  bcrypt==3.1.7
 diff --git a/setup.py b/setup.py
-index 0bbdf9f05a..481077b7c6 100755
+index a1794f7880..68d822a808 100755
 --- a/setup.py
 +++ b/setup.py
 @@ -33,7 +33,7 @@ PACKAGES = find_packages(exclude=["tests", "tests.*"])
@@ -280,5 +278,5 @@ index 0bbdf9f05a..481077b7c6 100755
      "attrs==19.3.0",
      "bcrypt==3.1.7",
 -- 
-2.28.0
+2.29.2
 
