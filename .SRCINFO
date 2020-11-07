@@ -1,0 +1,33 @@
+pkgbase = asammdf-git
+	pkgdesc = fast parser and editor for ASAM MDF files including GUI
+	pkgver = r2489.c3ea7216
+	pkgrel = 1
+	url = https://github.com/danielhrisca/asammdf
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pandas
+	depends = python-natsort
+	depends = python-numpy
+	depends = python-numexpr
+	depends = python-cchardet
+	depends = python-lxml
+	depends = python-lz4
+	depends = hicolor-icon-theme
+	optdepends = python-h5py: for HDF5 export
+	optdepends = python-scipy: for Matlab v4 and v5 .mat export
+	optdepends = python-hdf5storage: for Matlab v7.3 .mat export
+	optdepends = python-fastparquet: for parquet export
+	optdepends = python-pyqt5: for GUI tool
+	optdepends = python-pyqtgraph: for GUI tool and Signal plotting
+	optdepends = python-matplotlib: as fallback for Signal plotting
+	conflicts = asammdf
+	source = asammdf-git::git+https://github.com/danielhrisca/asammdf.git
+	source = asammdf.desktop
+	sha1sums = SKIP
+	sha1sums = 1de91708f408409745be839e42cca1696940df3e
+
+pkgname = asammdf-git
+
