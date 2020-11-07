@@ -1,7 +1,7 @@
 # Maintainer: Max Shaughnessy <max@mshaugh.com>
 
 pkgname=dnscontrol-git
-pkgver=3.2.0.r865.408e7eb0
+pkgver=3.4.2.r917.50d5cbce
 pkgrel=1
 pkgdesc="Synchronize your DNS to multiple providers from a simple DSL (master branch)"
 arch=('x86_64')
