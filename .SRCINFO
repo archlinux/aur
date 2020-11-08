@@ -1,0 +1,17 @@
+pkgbase = librespeaker-bin
+	pkgdesc = An audio processing library which can perform noise suppression, beamforming, echo cancellation, direction of arrival calculation, hotword searching, etc.
+	pkgver = 2.1.2.190110
+	pkgrel = 1
+	url = https://github.com/Seeed-Studio/pi_repo
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = PROPRIETARY
+	depends = libpulse
+	provides = librespeaker
+	conflicts = librespeaker
+	source = https://github.com/M0Rf30/librespeaker-bin/archive/2.1.2.190110.tar.gz
+	md5sums = 6b5a1d60215f2dec4235dee6a6f4f57e
+
+pkgname = librespeaker-bin
+
