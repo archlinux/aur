@@ -1,0 +1,17 @@
+pkgbase = tudo-falcon
+	pkgdesc = Open source instrument for real-time analysis of radio resources in public LTE/LTE-A networks.
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/falkenber9/falcon
+	arch = x86_64
+	license = AGPL3
+	makedepends = cmake
+	makedepends = boost
+	makedepends = git
+	depends = c-mnalib
+	depends = srslte-falcon-patch-git
+	source = falcon-1.3.0.tar.gz::https://github.com/falkenber9/falcon/archive/v1.3.0.tar.gz
+	sha512sums = 0667bdfdbfe18c39fbf232594e894ace8286d95a7a187f327dca22478552a2bfc39fb0c4e7543c31cf892a65e9785daf2ba8a7d9a6aabb25a60771d044cab08c
+
+pkgname = tudo-falcon
+
