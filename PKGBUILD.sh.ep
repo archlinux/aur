@@ -11,4 +11,4 @@ license=(GPL3 LGPL3 FDL custom)
 # FIXME: It doesn't actually build with MNG support at this point.
 pkgdesc='Plugins for additional image formats: TIFF, TGA, WBMP (mingw-w64)'
 depends=(<%== qt6deps qw(base) %> 'mingw-w64-jasper' 'mingw-w64-libwebp')
-makedepends=('mingw-w64-cmake' 'qt6-base' 'ninja' 'git')
+makedepends=('mingw-w64-cmake<%== $static_suffix %>' 'qt6-base' 'ninja' 'git')
