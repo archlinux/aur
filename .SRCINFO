@@ -1,6 +1,6 @@
 pkgbase = shlink
 	pkgdesc = The definitive self-hosted URL shortener
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://shlink.io
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = shlink
 	optdepends = sqlite: database
 	optdepends = apache: web server
 	optdepends = nginx: web server
-	source = https://github.com/shlinkio/shlink/releases/download/v2.3.0/shlink_2.3.0_dist.zip
-	md5sums = 1d7e43ef5822f42e29db314b0c95df54
+	source = https://github.com/shlinkio/shlink/releases/download/v2.4.0/shlink_2.4.0_dist.zip
+	md5sums = 65ab67e70cb2d97401997f99788dc5d4
 
 pkgname = shlink
 

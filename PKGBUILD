@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="shlink"
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="The definitive self-hosted URL shortener"
 url="https://shlink.io"
@@ -16,7 +16,7 @@ optdepends=("mariadb: database"
             "apache: web server"
             "nginx: web server")
 source=("https://github.com/shlinkio/shlink/releases/download/v$pkgver/${pkgname}_${pkgver}_dist.zip")
-md5sums=("1d7e43ef5822f42e29db314b0c95df54")
+md5sums=("65ab67e70cb2d97401997f99788dc5d4")
 
 package(){
  cd "${pkgname}_${pkgver}_dist"
