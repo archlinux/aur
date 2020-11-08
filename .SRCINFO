@@ -1,7 +1,7 @@
 pkgbase = python-dbg
 	pkgdesc = Python 3 debug symbols.
 	pkgver = 3.7.0
-	pkgrel = 3
+	pkgrel = 1
 	epoch = 0
 	url = http://www.python.org/
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = python-dbg
 	makedepends = make
 	makedepends = m4
 	makedepends = autoconf
+	makedepends = valgrind
 	depends = expat
 	depends = bzip2
 	depends = gdbm
