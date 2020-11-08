@@ -1,5 +1,5 @@
 pkgbase = intel-cpu-runtime
-	pkgdesc = Intel CPU Runtime for OpenCL Applications
+	pkgdesc = Intel(R) CPU Runtime for OpenCL(TM) Applications
 	pkgver = 18.1.0.015
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/articles/opencl-drivers.html#cpu-section

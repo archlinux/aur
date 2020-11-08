@@ -3,7 +3,7 @@
 pkgname=intel-cpu-runtime
 pkgver=18.1.0.015
 pkgrel=1
-pkgdesc="Intel CPU Runtime for OpenCL Applications"
+pkgdesc="Intel(R) CPU Runtime for OpenCL(TM) Applications"
 arch=('x86_64')
 url="https://software.intel.com/content/www/us/en/develop/articles/opencl-drivers.html#cpu-section"
 license=('custom')
