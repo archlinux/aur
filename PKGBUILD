@@ -2,7 +2,7 @@
 
 pkgname="librespeed-go"
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Very lightweight speed test implemented in Javascript, using XMLHttpRequest and Web Workers."
 url="https://github.com/librespeed/speedtest-go"
 license=("LGPL3")
@@ -22,6 +22,11 @@ md5sums=("4534a45a909ca9bb4fe176299dbb0deb"
         "25ec3e5a8b85467863134a68cd3e0e03"
         "0a3ae23c24688169f44931a937df8a85")
 backup=("etc/librespeed/settings.toml" "var/lib/librespeed/speedtest.db")
+
+prepare(){
+ cd "speedtest-go-$pkgver/assets"
+ sed -i "s/LibreSpeed Example/LibreSpeed/" *.html
+}
 
 build(){
  cd "speedtest-go-$pkgver"
