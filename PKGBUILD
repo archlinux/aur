@@ -21,6 +21,11 @@ package() {
     gem install --no-user-install --ignore-dependencies -i "${pkgdir}${_gemdir}" -n ${pkgdir}/usr/bin ${_gemname}-${pkgver}.gem
 
     rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
+    mkdir -p "${pkgdir}/usr/share/tmuxinator"
+    install -D -m 644 "${pkgdir}/${_gemdir}/gems/tmuxinator-${pkgver}/completion/tmuxinator.bash" "${pkgdir}/usr/share/tmuxinator/completion.bash"
+    install -D -m 644 "${pkgdir}/${_gemdir}/gems/tmuxinator-${pkgver}/completion/tmuxinator.fish" "${pkgdir}/usr/share/tmuxinator/completion.fish"
+    install -D -m 644 "${pkgdir}/${_gemdir}/gems/tmuxinator-${pkgver}/completion/tmuxinator.zsh" "${pkgdir}/usr/share/tmuxinator/completion.zsh"
+    install -D -m 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 :
