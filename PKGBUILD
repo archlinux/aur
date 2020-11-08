@@ -1,18 +1,18 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-ax-platform
-pkgver=0.1.11
+pkgver=0.1.18
 pkgrel=1
 pkgdesc='Adaptive Experimentation Platform'
 arch=('x86_64')
 url='https://ax.dev'
 license=('MIT')
 depends=('python' 'python-botorch' 'python-jinja' 'python-pandas' 'python-scipy'
-'python-scikit-learn' 'python-plotly')
+'python-scikit-learn' 'python-plotly' 'python-typeguard')
 optdepends=()
 makedepends=('python' 'python-setuptools')
 source=("$pkgname-$pkgver::https://github.com/facebook/Ax/archive/$pkgver.tar.gz")
-sha256sums=('3d83eb005fa48f3444a0eb82329326cb0417c8d2619dd9b9039c1296fc37f939')
+sha256sums=('e2e3d9be51d2572f24673299718a79004d2ab99c1b119685db7a79e69ed9659a')
 
 _pkgname=Ax
 
