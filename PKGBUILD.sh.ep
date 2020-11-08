@@ -8,4 +8,4 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Next generation user interface controls based on Qt Quick (mingw-w64)'
 depends=(<%== qt6deps qw(declarative) %>)
-makedepends=('mingw-w64-cmake' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'qt6-declarative' 'ninja')
+makedepends=('mingw-w64-cmake<%== $static_suffix %>' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'qt6-declarative' 'ninja')
