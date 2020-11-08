@@ -1,0 +1,33 @@
+pkgbase = seeed-voicecard
+	pkgdesc = DKMS module for Allwinner devices
+	pkgver = r4.1.g8cce4e8
+	pkgrel = 1
+	url = https://github.com/respeaker/seeed-voicecard
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	depends = dkms
+	depends = i2c-tools
+	source = git+https://github.com/respeaker/seeed-voicecard.git
+	source = dkms.conf
+	source = seeed-voicecard.conf
+	md5sums = SKIP
+	md5sums = bf335011fea6259d4119059e5913744e
+	md5sums = 136d43780e54a3bb15c237ca594c90a7
+
+pkgname = seeed-voicecard-dkms-git
+
+pkgname = seeed-voicecard-2mic-dkms-git
+	install = seeed-voicecard-2mic.install
+	depends = seeed-voicecard-dkms-git
+
+pkgname = seeed-voicecard-4mic-dkms-git
+	install = seeed-voicecard-4mic.install
+	depends = seeed-voicecard-dkms-git
+
+pkgname = seeed-voicecard-8mic-dkms-git
+	install = seeed-voicecard-8mic.install
+	depends = seeed-voicecard-dkms-git
+
