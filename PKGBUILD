@@ -2,7 +2,7 @@
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=chowtapemodel.lv2-git
 pkgdesc="Physical modelling signal processing for analog tape recording."
-pkgver=r114.6236290
+pkgver=r130.3f6967e
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/jatinchowdhury18/AnalogTapeModel"
@@ -30,8 +30,8 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
 
-  rm -rf Plugin/Juce
-  rm -rf Plugin/foleys_gui_magic
+  # rm -rf Plugin/Juce
+  # rm -rf Plugin/foleys_gui_magic
   git submodule init
   git config submodule.Plugin/Juce.url "${srcdir}"/JUCE
   git config submodule.Plugin/foleys_gui_magic.url "${srcdir}"/foleys_gui_magic
