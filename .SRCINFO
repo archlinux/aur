@@ -1,0 +1,50 @@
+pkgbase = linux-vanilla-selinux
+	pkgdesc = Vanilla-Linux-Kernel from kernel.org with Selinux enabled
+	pkgver = 5.9.6
+	pkgrel = 1
+	url = https://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.6.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.6.tar.sign
+	source = config
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux-vanilla-selinux.preset
+	source = sphinx-workaround.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = 6cc182fe19a8f3958c24d453f4ab68eb73fb5cfb8af4c95b02f3db049e655370
+	sha256sums = a7c0ef01b0bc1ab9aa07adce504cbadb89b3fa77cc3c59584a1c672df5bb7d58
+	sha256sums = 91b90dc594160fb78a8f3fdd2f7ec424d18ff2f221e26f437c3d06af95f36ee2
+	sha256sums = 5c7af03d9b4cade110543ba706bcbd49fc6447726258b4bfec0edff7ca9994d1
+	sha256sums = 9089c8d44982dc03b0dde47632f8aa2fda14754b911acbc266feee85da94b0f5
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = 19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a
+
+pkgname = linux-vanilla-selinux
+	pkgdesc = The Linux-vanilla-selinux kernel and modules
+	install = linux-vanilla-selinux.install
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	backup = etc/mkinitcpio.d/linux-vanilla-selinux.preset
+
+pkgname = linux-vanilla-selinux-headers
+	pkgdesc = Header files and scripts for building modules for Linux-vanilla-selinux kernel
+
+pkgname = linux-vanilla-selinux-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-vanilla-selinux kernel
+
