@@ -1,5 +1,4 @@
 pkgbase = linux-kernel-git
-	pkgdesc = Stable linux kernel, modules, headers, api-headers and docs
 	pkgver = 5.9.6
 	pkgrel = 1
 	url = https://www.kernel.org/
