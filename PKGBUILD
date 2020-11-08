@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pangolin-desktop-git
-pkgver=r1339.b10860d
+pkgver=r1359.5407801
 pkgrel=1
 pkgdesc="Preview of Pangolin Desktop UI shell, designed for dahliaOS, written in Flutter."
 arch=('x86_64')
 url="https://github.com/dahlia-os/pangolin-desktop"
 license=('Apache')
 depends=('gtk3')
-makedepends=('git' 'flutter' 'cmake' 'ninja' 'imagemagick')
+makedepends=('git' 'flutter-git' 'cmake' 'ninja' 'imagemagick')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/dahlia-os/pangolin-desktop.git'

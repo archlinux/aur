@@ -1,12 +1,12 @@
 pkgbase = pangolin-desktop-git
 	pkgdesc = Preview of Pangolin Desktop UI shell, designed for dahliaOS, written in Flutter.
-	pkgver = r1339.b10860d
+	pkgver = r1359.5407801
 	pkgrel = 1
 	url = https://github.com/dahlia-os/pangolin-desktop
 	arch = x86_64
 	license = Apache
 	makedepends = git
-	makedepends = flutter
+	makedepends = flutter-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = imagemagick
