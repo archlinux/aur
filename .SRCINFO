@@ -10,6 +10,7 @@ pkgbase = wayvnc-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = aml-git
+	makedepends = scdoc
 	depends = libglvnd
 	depends = libxkbcommon
 	depends = libuv
