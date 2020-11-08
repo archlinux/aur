@@ -1,0 +1,19 @@
+pkgbase = dog-dns-bin
+	pkgdesc = Command-line DNS client
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ogham/dog
+	arch = x86_64
+	license = custom:EUPL
+	provides = dog-dns
+	conflicts = dog-dns
+	conflicts = dog-dns-git
+	source_x86_64 = https://github.com/ogham/dog/releases/download/v0.1.0/dog-v0.1.0-x86_64-unknown-linux-gnu.zip
+	source_x86_64 = dog-0.1.0-LICENCE::https://github.com/ogham/dog/raw/v0.1.0/LICENCE
+	source_x86_64 = dog-0.1.0-README.md::https://github.com/ogham/dog/raw/v0.1.0/README.md
+	sha256sums_x86_64 = 6093525fccf5de5b7ed66f920c9b6d2d16221adde8a44589dc3e4c47245039a0
+	sha256sums_x86_64 = 6fc9e709ccbfe0d77fbffa2427a983282be2eb88e47b1cdb49f21a83b4d1e665
+	sha256sums_x86_64 = 7d877726a27905a9062981675c3946a05e676ee520b465733789c446a40b196f
+
+pkgname = dog-dns-bin
+
