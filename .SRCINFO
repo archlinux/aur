@@ -1,7 +1,7 @@
 pkgbase = babelfish
 	pkgdesc = Universal translater for encodings
 	pkgver = 0.1.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/pickfire/babelfish
 	arch = x86_64
 	license = Apache

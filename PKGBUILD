@@ -2,7 +2,7 @@
 
 pkgname=babelfish
 pkgver=0.1.2
-pkgrel=0
+pkgrel=1
 pkgdesc='Universal translater for encodings'
 arch=('x86_64')
 url=https://github.com/pickfire/babelfish
@@ -18,5 +18,7 @@ build() {
 }
 
 package() {
-  install -dm755 "$srcdir/$pkgname-$pkgver/target/release/$pkgname" "$pkgname/usr/bin/$pkgname"
+  find "$srcdir"/$pkgname-$pkgver/target/release/ -maxdepth 1 -executable -type f \
+    -exec install -Dm755 -t "$pkgdir"/usr/bin '{}' \;
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir"/$pkgname-$pkgver/LICENSE-*
 }
