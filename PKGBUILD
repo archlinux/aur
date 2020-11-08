@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Marie de Rodat  <pmderodat@kawie.fr>
 
 pkgname='python-e3-testsuite'
-pkgver='22.0.0'
+pkgver='24.0'
 pkgrel=1
 pkgdesc="Generic Testsuite Driver in Python"
 
@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 
 _name='e3-testsuite'
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('73fde0acfb6c71e5a444e24c6744235b07ac25182b5cd8fc683924e79c4267655d1ef801d45e6cefb122ce7768f255719e55d050cfca514c2290824bdc856dba')
+sha512sums=('5fdd8bd70c9b7b94685462f6a04444fd2ebdd9fb0cc9b4dab0cad9a195272ba961cf6d42687d1df9784f1fa542de64bdd9d50f1dcb7c6ff8fcc60e3219be89b5')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
