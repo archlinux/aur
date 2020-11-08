@@ -32,8 +32,6 @@ prepare() {
 
   ./autogen.sh
 
-  # Suppress RPATH
-  sed -i '/X11_LIB:%=-R%/d' graph/x11/rules.mk
 }
 
 build() {
