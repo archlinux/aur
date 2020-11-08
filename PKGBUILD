@@ -57,7 +57,7 @@ build() {
 		-Dwerror=false \
 		-Dtray=disabled \
 		-Ddgk-pixbuf=false \
-		-Dman-pages=false \
+		-Dman-pages=disabled \
 		--prefix /usr \
 		"$srcdir/build"
 	ninja -C "$srcdir/build"
