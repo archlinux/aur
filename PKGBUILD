@@ -30,19 +30,19 @@ package() {
 
     chmod +x $_filename
     mkdir -p squashfs-root/usr/share/icons/hicolor/{72x72,16x16}/apps
-    ./$_filename --appimage-extract "usr/share/icons/hicolor/*/apps/joplin.png" > /dev/null 2>&1
-    ./$_filename --appimage-extract joplin.desktop > /dev/null 2>&1
+    ./$_filename --appimage-extract "usr/share/icons/hicolor/*/apps/@joplinapp-desktop.png" > /dev/null 2>&1
+    ./$_filename --appimage-extract @joplinapp-desktop.desktop > /dev/null 2>&1
     INSTALL_PATH="/opt/appimages/Joplin.AppImage"
-    sed -i -E "s|Exec=AppRun|Exec=${INSTALL_PATH}|" squashfs-root/joplin.desktop
+    sed -i -E "s|Exec=AppRun|Exec=${INSTALL_PATH}|" squashfs-root/@joplinapp-desktop.desktop
 
     # install icons
     install -dm755 "$pkgdir/usr/share/icons"
     cp -dpr --no-preserve=ownership "squashfs-root/usr/share/icons" "$pkgdir/usr/share"
     chmod -R 755 "$pkgdir/usr/share/icons"
-    find "$pkgdir/usr/share/icons" -type f -name "joplin.png" -exec chmod 644 {} \;
+    find "$pkgdir/usr/share/icons" -type f -name "@joplinapp-desktop.png" -exec chmod 644 {} \;
 
     # install .desktop file and image file
-    install -Dm644 "squashfs-root/joplin.desktop" "$pkgdir/usr/share/applications/joplin.desktop"
+    install -Dm644 "squashfs-root/@joplinapp-desktop.desktop" "$pkgdir/usr/share/applications/joplin.desktop"
     install -Dm755 "$_filename" "$pkgdir$INSTALL_PATH"
 
     # disable AppImage integration prompt
