@@ -1,15 +1,16 @@
 pkgbase = cover-thumbnailer-git
-	pkgdesc = A Python script which generates folder thumbnails for various file browser on Linux. It displays music album covers, preview of pictures which are in a folder and more.
-	pkgver = r82.c82d816
+	pkgdesc = Generates folder thumbnails for various file browsers
+	pkgver = 0.10.0.r8.gefb375d
 	pkgrel = 1
 	url = https://github.com/flozz/cover-thumbnailer
-	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = python-pillow
+	depends = python-gobject
 	provides = cover-thumbnailer
 	conflicts = cover-thumbnailer
-	source = cover-thumbnailer::git+https://github.com/flozz/cover-thumbnailer
+	source = git+https://github.com/flozz/cover-thumbnailer.git
 	sha256sums = SKIP
 
 pkgname = cover-thumbnailer-git
