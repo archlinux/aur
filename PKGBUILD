@@ -3,7 +3,7 @@
 
 pkgname=neatvnc-git
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="VNC server library that's intended to be fast and neat"
 arch=(x86_64 i686)
 url=https://github.com/any1/neatvnc
