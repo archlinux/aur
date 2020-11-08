@@ -1,0 +1,16 @@
+pkgbase = golang-github-dustin-go-humanize
+	pkgdesc = Go Humans! (formatters for units to human friendly sizes)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dustin/go-humanize
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = go
+	options = !strip
+	options = !emptydirs
+	source = go-humanize-1.0.0-1.tar.gz::https://github.com/dustin/go-humanize/archive/v1.0.0.tar.gz
+	sha256sums = e4540bd50ac855143b4f2e509313079c50cf5d8774f09cc10dbca5ae9803d8ba
+
+pkgname = golang-github-dustin-go-humanize
+
