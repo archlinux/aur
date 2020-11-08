@@ -1,7 +1,7 @@
 # Maintainer: Simone Scalabrino <s.scalabrino9@gmail.com>
 _appname="primevideo"
 _appdesc="Standalone silo app for Amazon Primevideo"
-_gittag="0.1"
+_gittag="0.2"
 
 _gitname=silos-apps
 pkgname="silo-${_appname}"
@@ -11,7 +11,7 @@ pkgdesc="${_appdesc}"
 arch=('i686' 'x86_64')
 url="https://github.com/intersimone999/${_gitname}"
 license=('GPL3')
-depends=('silos')
+depends=('silos' 'chromium-widevine')
 makedepends=('git')
 source=("git+$url.git")
 sha256sums=('SKIP')

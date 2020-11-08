@@ -1,6 +1,6 @@
 pkgbase = silo-primevideo
 	pkgdesc = Standalone silo app for Amazon Primevideo
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/intersimone999/silos-apps
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = silo-primevideo
 	license = GPL3
 	makedepends = git
 	depends = silos
+	depends = chromium-widevine
 	source = git+https://github.com/intersimone999/silos-apps.git
 	sha256sums = SKIP
 
