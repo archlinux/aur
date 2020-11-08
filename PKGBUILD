@@ -23,7 +23,8 @@ optdepends=("libfdk-aac: FDK AAC codec support"
             "swig: Scripting"
             "luajit: Lua scripting"
             "python: Python scripting"
-            "qt5-wayland: Wayland obs window"
+            "v4l2loopback-dkms: virtual webcam"
+            "qt5-wayland: wayland obs window"
             "wlrobs-hg: screen capture on wlroots compositors")
 provides=("obs-studio=$pkgver" "obs-studio-git" "obs-studio-wayland=$pkgver")
 conflicts=("obs-studio")

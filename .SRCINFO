@@ -35,7 +35,8 @@ pkgbase = obs-studio-wayland-git
 	optdepends = swig: Scripting
 	optdepends = luajit: Lua scripting
 	optdepends = python: Python scripting
-	optdepends = qt5-wayland: Wayland obs window
+	optdepends = v4l2loopback-dkms: virtual webcam
+	optdepends = qt5-wayland: wayland obs window
 	optdepends = wlrobs-hg: screen capture on wlroots compositors
 	provides = obs-studio=26.0.2.r83.g5f6793676
 	provides = obs-studio-git
