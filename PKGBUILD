@@ -4,7 +4,9 @@
 # This is a “full-line” extended regular-expression, eg.: 'pt' if you want “pt” but not “pt-br” or “pt-pt”
 _I18N_EREGEX='.*'
 _pkgname=collabora-online-server-nodocker
-pkgver=4.2.2
+
+# taking version of loolwsd:
+pkgver=6.4.0
 pkgrel=1
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"
@@ -28,7 +30,7 @@ source=(
 )
 sha1sums=(
   'SKIP'
-  '4dea8c0bb62525f90d94d74a08c6f18f78a27ca9'
+  '9e8f1829283200e3a0b0c548d39a8373846b4cae'
   '3fe2db88f4f7ee203520c59760582103d3e41210'
   '2d271f9493ea14c675af1bfa76f6b654569dd51f'
   'f9c102a06b2582548f13121e78790237e2cb38e1'
@@ -82,10 +84,11 @@ _upstream_equiv='
   libpng12-0          = libpng12
   libssl1.0.0         = openssl-1.0
   libstdc++6          = gcc-libs
-  locales-all         = glibc
+  openssh-client      = openssh
   zlib1g              = zlib
 '
 _upstream_equiv_OLD='
+  locales-all         = glibc
 '
 
 _main_debs=
@@ -110,6 +113,7 @@ _upstream_handle_dep() {
     for seen in "${source[@]}"; do
       [ "$seen" == "$depurl" ] && return
     done
+    # when a new .DEB is needed, put it in the right array of dependencies
     [ $1 == main ] && __main_debs[$dep]="$depurl" || __i18n_debs[$dep]="$depurl"
     source+=("$depurl")
     sha1sums+=("$(sed -rn "s#^SHA1:[[:blank:]]*##p" <<<"$meta")")
@@ -131,11 +135,14 @@ if [ ${#source[*]} -eq 5 ]; then
     | sed -n 's/^Version:[[:blank:]]*\(.*\)-.*/\1/p'
   )
 
+  # first register each .DEB as an unconfirmed main (i.e. not i18n) dependency
   for d in "${_upstream_deps[@]}"; do __main_debs[$d]=_pending_; done
   if [ -z "$_I18N_EREGEX" ]; then
+    # go with that if no i18n has been requested
     pkgname=$_pkgname
     eval 'package() { _main_package; }'
   else
+    # else register the function for building the main package, and dynamically discover i18n packages
     pkgname=($_pkgname)
     eval "package_$_pkgname() { _main_package; }"
     for p in $( \
@@ -143,27 +150,34 @@ if [ ${#source[*]} -eq 5 ]; then
       | grep -ve '-en-us$' \
       | grep -E "[0-9.]+(-dict)?-($_I18N_EREGEX)\$")
     do
+      # for each .DEB file found that matches the requested i18n regex, register that .DEB as a i18n one
       __i18n_debs[$p]=_pending_
     done
     while read l; do
+      # and register the function for building each of the i18n packages
       pkgname+=(${_pkgname}_${l})
       eval "package_${_pkgname}_${l}() { _i18n_package $l; }"
     done < <( \
-      sed -nr 's#^Package: (collaboraoffice[0-9.]+-dict-|collaboraofficebasis[0-9.]+-)([a-z]{2}(-[a-z]+)?)$#\2#p' Packages \
+      sed -nr 's#^Package:[[:blank:]]*(collaboraoffice[0-9.]+-dict-|collaboraofficebasis[0-9.]+-)([a-z]{2}(-[a-z]+)?)$#\2#p' Packages \
       | grep -vxF en-us \
       | sort -u \
       | grep -Exe "$_I18N_EREGEX")
   fi
 
   for dep in "${!__main_debs[@]}"; do
+    # recursive dependencies for the main package
     _upstream_handle_dep main "$dep"
   done
   for dep in "${!__i18n_debs[@]}"; do
+    # recursive dependencies for the i18n packages
     _upstream_handle_dep i18n "$dep"
   done
   _main_debs="$(IFS='|'; echo "${__main_debs[*]}")"
   _i18n_debs="$(IFS='|'; echo "${__i18n_debs[*]}")"
 fi
+# some debug:
+echo "MAIN DEBs: $_main_debs" >&2
+echo "I18N DEBs: $_i18n_debs" >&2
 unset _upstream_handle_dep _upstream_equiv _upstream_deps __main_debs __i18n_debs
 # <<<< END OF DYNAMIC ADAPTATION OF PKGBUILD
 
@@ -212,11 +226,11 @@ _main_package() {
   mv {lib,usr/lib}
 
   # use systemd for user allocation
-  install -Dm0644 "$srcdir"/sysusers usr/lib/sysusers.d/$pkgname.conf
+  install -Dm0644 "$srcdir"/sysusers usr/lib/sysusers.d/$_pkgname.conf
 
   # replace cron with systemd
   rm -rf etc/cron.d
-  install -Dm0644 "$srcdir"/tmpfiles usr/lib/tmpfiles.d/$pkgname.conf
+  install -Dm0644 "$srcdir"/tmpfiles usr/lib/tmpfiles.d/$_pkgname.conf
 
   # add dependency on systemd
   sed -i '/^\[Unit\]/ a \
@@ -226,10 +240,10 @@ After=systemd-tmpfiles-setup.service' usr/lib/systemd/system/loolwsd.service
   install -Dm0755 "$srcdir"/mkcert_example.sh usr/share/doc/loolwsd/example.mkcert.sh
 
   # do not provide libreoffice for the desktop (seems broken…)
-  rm -rf opt/collaboraoffice6.2/share/xdg
+  rm -rf opt/collaboraoffice6.4/share/xdg
 
   # fix lib + desktop files’ permissions
-  chmod a+x opt/collaboraoffice6.2/program/lib*.so
+  chmod a+x opt/collaboraoffice6.4/program/lib*.so
 
   # https://github.com/CollaboraOnline/Docker-CODE/issues/32
   [ -d etc/sysconfig ] || mkdir etc/sysconfig
