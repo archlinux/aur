@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-libbluray
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Library to access Blu-Ray disks for video playback (mingw-w64)'
 arch=('any')
@@ -10,10 +10,11 @@ license=('LGPL2.1')
 depends=('mingw-w64-crt' 'mingw-w64-fontconfig' 'mingw-w64-freetype2' 'mingw-w64-libxml2')
 options=(!strip !buildflags !libtool staticlibs)
 makedepends=('mingw-w64-configure' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'git')
-#makedepends=('apache-ant' 'java-environment=8' 'git' 'mingw-w64-configure' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
-#optdepends=('java-runtime=8: BD-J library')
+#makedepends=('apache-ant' 'java-environment' 'git' 'mingw-w64-configure' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
+#optdepends=('java-runtime: BD-J library')
+_tag=2091174b7e6e80d5bf080a7ab1aa4e901546a29e
 source=(
-  git+https://code.videolan.org/videolan/libbluray.git#tag=tag=43059c7e3631703857358cff7666c6a11497da89
+  git+https://code.videolan.org/videolan/libbluray.git#tag=${_tag}
   git+https://code.videolan.org/videolan/libudfread.git
 )
 sha256sums=(
