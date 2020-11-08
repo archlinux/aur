@@ -56,7 +56,7 @@ build() {
 	meson \
 		-Dwerror=false \
 		-Dtray=disabled \
-		-Ddgk-pixbuf=false \
+		-Dgdk-pixbuf=disabled \
 		-Dman-pages=disabled \
 		--prefix /usr \
 		"$srcdir/build"
