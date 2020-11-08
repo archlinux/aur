@@ -2,12 +2,12 @@
 
 pkgname=anvill
 pkgver=0.1.20
-pkgrel=2
+pkgrel=3
 pkgdesc="Forge beautiful LLVM bitcode out of raw machine code"
 arch=('x86_64')
 url="https://github.com/lifting-bits/remill"
 license=('Apache')
-depends=('remill' 'python')
+depends=('remill' 'python' 'gflags' 'google-glog' 'intelxed' 'ncurses' 'zlib')
 makedepends=('clang' 'cmake')
 source=("https://github.com/lifting-bits/anvill/archive/v${pkgver}.tar.gz"
         '00-install-specify-bitcode.patch'
