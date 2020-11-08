@@ -1,0 +1,14 @@
+pkgbase = python-asyncio-glib
+	pkgdesc = GLib event loop integration for asyncio.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/jhenstridge/asyncio-glib
+	arch = any
+	license = LGPL
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/a/asyncio-glib/asyncio-glib-0.1.tar.gz
+	sha256sums = fe3ceb2ba5f541330c07ca1bd7ae792468d625bad1acf5354a3a7a0b9fd87521
+
+pkgname = python-asyncio-glib
+	depends = gobject-introspection
+
