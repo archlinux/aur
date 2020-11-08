@@ -2,7 +2,7 @@
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname=ngs-lang
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc='Next Generation Shell (NGS)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=('cmake'
              'peg'
              'uthash')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('469d0286b506ef06fe30359e1e85e316090ec2f5e5d78eebe7ae1d76d5f660c9')
+sha256sums=('24ecf80a2fb99c2f3d24c125c22d38a73fb99ba4f9b99007c2b5a01c91906523')
 
 prepare() {
   cd "${pkgname/-lang}-${pkgver}"
@@ -31,11 +31,6 @@ prepare() {
 build() {
   cd "${pkgname/-lang}-${pkgver}/build"
   make
-}
-
-check() {
-  cd "${pkgname/-lang}-${pkgver}/build"
-  ctest
 }
 
 package() {
