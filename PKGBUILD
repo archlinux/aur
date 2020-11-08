@@ -2,7 +2,7 @@
 # Contributor: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=ofono-git
-pkgver=1.23.r52.g665e9c9a
+pkgver=1.31.r72.g285fad8f
 pkgrel=1
 pkgdesc="Infrastructure for building mobile telephony (GSM/UMTS) applications"
 url="https://01.org/ofono"
@@ -11,6 +11,7 @@ license=("GPL2")
 provides=("ofono")
 conflicts=("ofono")
 depends=("bluez" "dbus" "glib2" "udev" "mobile-broadband-provider-info")
+optdepends=("phonesim" "mmsd" "upower")
 source=("$pkgname::git+https://git.kernel.org/pub/scm/network/ofono/ofono.git"
   git://git.kernel.org/pub/scm/libs/ell/ell.git)
 sha256sums=("SKIP" "SKIP")
@@ -29,7 +30,7 @@ build() {
 		--localstatedir=/var \
 		--sbindir=/usr/bin \
 		--mandir=/usr/share/man \
-		--disable-bluez4 \
+		--enable-test \
 		--enable-tools \
 		--enable-dundee
 	make
