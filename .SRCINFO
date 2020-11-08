@@ -1,21 +1,20 @@
 pkgbase = retdec
-	pkgdesc = A retargetable machine-code decompiler based on LLVM.
+	pkgdesc = A retargetable machine-code decompiler based on LLVM
 	pkgver = 4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://retdec.com/
 	arch = x86_64
 	license = MIT
-	makedepends = perl
 	makedepends = cmake
-	depends = graphviz
-	depends = bc
-	depends = upx
-	depends = wget
+	depends = openssl
 	depends = python
-	provides = retdec
-	conflicts = retdec
-	source = retdec-4.0.tar.gz::https://github.com/avast-tl/retdec/archive/v4.0.tar.gz
+	depends = zlib
+	optdepends = upx
+	optdepends = graphviz
+	source = https://github.com/avast/retdec/archive/v4.0.tar.gz
+	source = 00-fix-missing-limits.patch
 	sha256sums = b26c2f71556dc4919714899eccdf82d2fefa5e0b3bc0125af664ec60ddc87023
+	sha256sums = 2c6d3e4f6f1ef3e5f8cde37c3dad09fbd67be6fb48601327edc252be2d181c99
 
 pkgname = retdec
 

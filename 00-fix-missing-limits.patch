@@ -1,0 +1,125 @@
+diff --git a/src/fileinfo/file_information/file_information_types/data_directory.h b/src/fileinfo/file_information/file_information_types/data_directory.h
+index e14e37de..3e3d7b21 100644
+--- a/src/fileinfo/file_information/file_information_types/data_directory.h
++++ b/src/fileinfo/file_information/file_information_types/data_directory.h
+@@ -7,6 +7,7 @@
+ #ifndef FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_DATA_DIRECTORY_H
+ #define FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_DATA_DIRECTORY_H
+ 
++#include <limits>
+ #include <string>
+ 
+ namespace retdec {
+diff --git a/src/fileinfo/file_information/file_information_types/dynamic_section/dynamic_entry.h b/src/fileinfo/file_information/file_information_types/dynamic_section/dynamic_entry.h
+index 9c880914..044e96a9 100644
+--- a/src/fileinfo/file_information/file_information_types/dynamic_section/dynamic_entry.h
++++ b/src/fileinfo/file_information/file_information_types/dynamic_section/dynamic_entry.h
+@@ -9,6 +9,8 @@
+ 
+ #include "fileinfo/file_information/file_information_types/flags.h"
+ 
++#include <limits>
++
+ namespace retdec {
+ namespace fileinfo {
+ 
+diff --git a/src/fileinfo/file_information/file_information_types/file_header.h b/src/fileinfo/file_information/file_information_types/file_header.h
+index fb3444d4..fe635122 100644
+--- a/src/fileinfo/file_information/file_information_types/file_header.h
++++ b/src/fileinfo/file_information/file_information_types/file_header.h
+@@ -7,6 +7,8 @@
+ #ifndef FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_FILE_HEADER_H
+ #define FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_FILE_HEADER_H
+ 
++#include <limits>
++
+ #include "fileinfo/file_information/file_information_types/flags.h"
+ 
+ namespace retdec {
+diff --git a/src/fileinfo/file_information/file_information_types/file_section.h b/src/fileinfo/file_information/file_information_types/file_section.h
+index d9aed57a..4e024196 100644
+--- a/src/fileinfo/file_information/file_information_types/file_section.h
++++ b/src/fileinfo/file_information/file_information_types/file_section.h
+@@ -7,6 +7,8 @@
+ #ifndef FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_FILE_SECTION_H
+ #define FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_FILE_SECTION_H
+ 
++#include <limits>
++
+ #include "fileinfo/file_information/file_information_types/flags.h"
+ 
+ namespace retdec {
+diff --git a/src/fileinfo/file_information/file_information_types/file_segment.h b/src/fileinfo/file_information/file_information_types/file_segment.h
+index a4ea70e8..b187c3b0 100644
+--- a/src/fileinfo/file_information/file_information_types/file_segment.h
++++ b/src/fileinfo/file_information/file_information_types/file_segment.h
+@@ -7,6 +7,8 @@
+ #ifndef FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_FILE_SEGMENT_H
+ #define FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_FILE_SEGMENT_H
+ 
++#include <limits>
++
+ #include "fileinfo/file_information/file_information_types/flags.h"
+ 
+ namespace retdec {
+diff --git a/src/fileinfo/file_information/file_information_types/pattern/pattern_match.h b/src/fileinfo/file_information/file_information_types/pattern/pattern_match.h
+index 98017760..23d716ff 100644
+--- a/src/fileinfo/file_information/file_information_types/pattern/pattern_match.h
++++ b/src/fileinfo/file_information/file_information_types/pattern/pattern_match.h
+@@ -7,6 +7,8 @@
+ #ifndef FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_PATTERN_PATTERN_MATCH_H
+ #define FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_PATTERN_PATTERN_MATCH_H
+ 
++#include <limits>
++
+ namespace retdec {
+ namespace fileinfo {
+ 
+diff --git a/src/fileinfo/file_information/file_information_types/pdb_info.h b/src/fileinfo/file_information/file_information_types/pdb_info.h
+index d78a346c..73f0647c 100644
+--- a/src/fileinfo/file_information/file_information_types/pdb_info.h
++++ b/src/fileinfo/file_information/file_information_types/pdb_info.h
+@@ -7,6 +7,7 @@
+ #ifndef FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_PDB_INFO_H
+ #define FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_PDB_INFO_H
+ 
++#include <limits>
+ #include <string>
+ 
+ namespace retdec {
+diff --git a/src/fileinfo/file_information/file_information_types/relocation_table/relocation.h b/src/fileinfo/file_information/file_information_types/relocation_table/relocation.h
+index a773524f..8700564b 100644
+--- a/src/fileinfo/file_information/file_information_types/relocation_table/relocation.h
++++ b/src/fileinfo/file_information/file_information_types/relocation_table/relocation.h
+@@ -7,6 +7,7 @@
+ #ifndef FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_RELOCATION_TABLE_RELOCATION_H
+ #define FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_RELOCATION_TABLE_RELOCATION_H
+ 
++#include <limits>
+ #include <string>
+ 
+ namespace retdec {
+diff --git a/src/fileinfo/file_information/file_information_types/resource_table/resource.h b/src/fileinfo/file_information/file_information_types/resource_table/resource.h
+index d3299843..35752442 100644
+--- a/src/fileinfo/file_information/file_information_types/resource_table/resource.h
++++ b/src/fileinfo/file_information/file_information_types/resource_table/resource.h
+@@ -7,6 +7,7 @@
+ #ifndef FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_RESOURCE_TABLE_RESOURCE_H
+ #define FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_RESOURCE_TABLE_RESOURCE_H
+ 
++#include <limits>
+ #include <string>
+ 
+ namespace retdec {
+diff --git a/src/fileinfo/file_information/file_information_types/symbol_table/symbol.h b/src/fileinfo/file_information/file_information_types/symbol_table/symbol.h
+index 0acc90d5..e650a4a0 100644
+--- a/src/fileinfo/file_information/file_information_types/symbol_table/symbol.h
++++ b/src/fileinfo/file_information/file_information_types/symbol_table/symbol.h
+@@ -7,6 +7,7 @@
+ #ifndef FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_SYMBOL_TABLE_SYMBOL_H
+ #define FILEINFO_FILE_INFORMATION_FILE_INFORMATION_TYPES_SYMBOL_TABLE_SYMBOL_H
+ 
++#include <limits>
+ #include <string>
+ 
+ namespace retdec {
