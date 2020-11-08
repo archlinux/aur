@@ -1,0 +1,22 @@
+pkgbase = facebook-desktop-app
+	pkgdesc = Facebook Desktop built with nativefier (electron)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.facebook.com
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = facebook-desktop-app.png
+	source = facebook-desktop-app.desktop
+	sha256sums = dad893597cee2d49406c054380f9c338d1838db41083896ded6ccc6f26d8ef6a
+	sha256sums = d8e85271691a7f23fcfa7cb04b6435da4c7b0707644fddef9339ae15466e51a7
+
+pkgname = facebook-desktop-app
+
