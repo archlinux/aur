@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=sway-nosystemd-minimal-git
-_pkgname=sway
+_pkgname=sway-nosystemd-minimal
 pkgver=r6506.1be66c98
 pkgrel=1
 license=("MIT")
