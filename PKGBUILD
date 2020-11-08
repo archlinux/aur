@@ -1,6 +1,8 @@
-# Maintainer: Marek Kubica <marek@xivilization.net>
+# Maintainer: Mubashshir <ahmubashshir@gmail.com>
+# Contributor: Marek Kubica <marek@xivilization.net>
+# pkg: git
 pkgname=git-cal-git
-pkgver=0.0.r87.53fd622
+pkgver=r96.b3bb376
 pkgrel=1
 pkgdesc='github like contributions calendar on terminal'
 arch=('any')
@@ -10,12 +12,12 @@ depends=('perl>=5.10.0')
 makedepends=("git")
 options=('!emptydirs')
 source=("$pkgname"::"git+https://github.com/k4rthik/git-cal.git")
-sha512sums=(SKIP)
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
 	# git describe can't describe anything without tags
-	printf "0.0.r%d.%s\n" $(git rev-list HEAD --count) $(git rev-parse --short HEAD)
+	printf "r%d.%s\n" "$(git rev-list HEAD --count)" "$(git rev-parse --short HEAD)"
 }
 
 package() {

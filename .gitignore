@@ -3,3 +3,6 @@ src/
 *.tar.gz
 *.tar.bz2
 *.tar.xz
+!.SRCINFO
+!PKGBUILD
+!.gitignore
