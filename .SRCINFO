@@ -1,0 +1,16 @@
+pkgbase = golang-github-voxelbrain-goptions
+	pkgdesc = A flexible parser for command line options
+	pkgver = 2.5.11
+	pkgrel = 1
+	url = https://github.com/voxelbrain/goptions
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = go
+	options = !strip
+	options = !emptydirs
+	source = goptions-2.5.11-1.tar.gz::https://github.com/voxelbrain/goptions/archive/2.5.11.tar.gz
+	sha256sums = cf4df6a6a7764867f50c278c87f941ab81722566d5e1198346c65a428ab5c874
+
+pkgname = golang-github-voxelbrain-goptions
+
