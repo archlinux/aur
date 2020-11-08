@@ -1,12 +1,12 @@
 pkgbase = rig
 	pkgdesc = Random Identity Generator
-	pkgver = 1.12
-	pkgrel = 3
-	url = https://github.com/EinBaum/rig
+	pkgver = 1.11
+	pkgrel = 1
+	url = http://rig.sourceforge.net/
 	arch = any
 	license = GPL
-	source = https://github.com/EinBaum/rig/archive/1.12.tar.gz
-	sha256sums = 995229efec9982cdfd79c5ca8b35055ef46d3b7da65451ec4f375de970c57359
+	source = https://sourceforge.net/projects/rig/files/rig/1.11/rig-1.11.tar.gz
+	sha256sums = 00bfc970d5c038c1e68bc356c6aa6f9a12995914b7d4fda69897622cb5b77ab8
 
 pkgname = rig
 
