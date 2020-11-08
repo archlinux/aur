@@ -1,7 +1,7 @@
 # Maintainer: Jan Schmitt <arch@smittie.de>
 _pkgname=git-team
 pkgname=git-team-git
-pkgver=1.4.1.r3.g60d6116
+pkgver=1.5.1.r4.g895b283
 pkgrel=1
 epoch=
 pkgdesc="Command line interface for managing and enhancing git commit messages with co-authors."
@@ -33,9 +33,7 @@ pkgver(){
 build() {
     cd "${_pkgname}"
     if [[ "$GOPATH" == "" ]]; then
-        GOPATH="$HOME/go" make --jobs=1
-    else
-        make --jobs=1
+        GOPATH="$HOME/go"
     fi
 }
 
