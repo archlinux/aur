@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Name=Simple NFS GUI
+Comment=Set a machine as a client to access or as a server to share data with others machines in the same local network, with the protocol NFS.
+Exec=lxqt-sudo /usr/bin/simple-nfs-gui
+Icon=simple-nfs-gui
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Network;

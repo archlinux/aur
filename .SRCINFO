@@ -1,0 +1,26 @@
+pkgbase = simple-nfs-gui-bin
+	pkgdesc = Simple NFS GUI for Linux
+	pkgver = 1.0.17
+	pkgrel = 1
+	url = https://github.com/Philippe734/Simple.NFS.GUI
+	arch = x86_64
+	license = GPL
+	depends = gambas3-runtime
+	depends = gambas3-runtime
+	depends = gambas3-gb-form
+	depends = gambas3-gb-form
+	depends = gambas3-gb-image
+	depends = gambas3-gb-image
+	depends = gambas3-gb-qt5
+	depends = gambas3-gb-qt5
+	depends = lxqt-sudo
+	provides = simple-nfs-gui
+	conflicts = simple-nfs-gui
+	noextract = 1.0.17-0ubuntu1_all.deb
+	source = https://github.com/Philippe734/Simple.NFS.GUI/raw/master/Linux/1.0.17/simple-nfs-gui_1.0.17-0ubuntu1_all.deb
+	source = simple-nfs-gui.desktop
+	md5sums = 5b402603b493b9309b0da28d92f5f5ae
+	md5sums = 0fd3324d74f18ea329d30c6e4fe60f83
+
+pkgname = simple-nfs-gui-bin
+
