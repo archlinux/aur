@@ -1,22 +1,23 @@
-# Maintainer: Erazem Kokot <contact at erazem dot eu>
-
+# Maintainer: Héctor Molinero Fernández <hector at molinero dot dev>
+# Contributor: Erazem Kokot <contact at erazem dot eu>
 pkgname='hblock'
-pkgver=2.1.7
-pkgrel=1
-pkgdesc='An adblocker that creates a hosts file from automatically downloaded blacklists'
+pkgver='3.0.1'
+pkgrel='1'
+pkgdesc='An adblocker that creates a hosts file from automatically downloaded sources'
 arch=('any')
 url='https://github.com/hectorm/hblock'
 license=('MIT')
-depends=('bash' 'zip')
-sha256sums=('d903e516b2e077e1dd8180ad60caa14a58cf4f0f5bcd24643cdc8c883920671d')
+depends=('curl')
+checkdepends=('libidn2')
 source=("https://github.com/hectorm/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('8798c2fad8442156bf2aa7eff61260626100ab25d96a1b04265a5225b3f7c324')
 
-build() {
-  cd "${pkgname}-${pkgver}"
-  make
+check() {
+  cd -- "${pkgname:?}-${pkgver:?}"
+  make test
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}/" install
+  cd -- "${pkgname:?}-${pkgver:?}"
+  make DESTDIR="${pkgdir:?}" prefix="/usr" install
 }

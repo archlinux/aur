@@ -1,14 +1,14 @@
 pkgbase = hblock
-	pkgdesc = An adblocker that creates a hosts file from automatically downloaded blacklists
-	pkgver = 2.1.7
+	pkgdesc = An adblocker that creates a hosts file from automatically downloaded sources
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/hectorm/hblock
 	arch = any
 	license = MIT
-	depends = bash
-	depends = zip
-	source = https://github.com/hectorm/hblock/archive/v2.1.7.tar.gz
-	sha256sums = d903e516b2e077e1dd8180ad60caa14a58cf4f0f5bcd24643cdc8c883920671d
+	checkdepends = libidn2
+	depends = curl
+	source = https://github.com/hectorm/hblock/archive/v3.0.1.tar.gz
+	sha256sums = 8798c2fad8442156bf2aa7eff61260626100ab25d96a1b04265a5225b3f7c324
 
 pkgname = hblock
 
