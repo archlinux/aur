@@ -3,7 +3,7 @@
 pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=TauonMusicBox
-pkgver=6.4.0
+pkgver=6.4.1
 pkgrel=1
 pkgdesc="A modern streamlined music player"
 arch=('any')
@@ -49,7 +49,7 @@ optdepends=('p7zip: 7z archive extraction support'
             'gst-plugins-ugly: For GStreamer WMA support')
             
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v$pkgver.tar.gz")
-sha256sums=('770b28798fa722dfe4edf5fa1268ae36074b3cf5032dcbe1d3a7f0d803844d3a')
+sha256sums=('1145dd991faba961f175811718a7958f54ca95ddbf13d0efadef23e86862332f')
 
 build() {
     cd "$_gitname-$pkgver"
