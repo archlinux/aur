@@ -1,7 +1,7 @@
 # Maintainer: pryme-svg <edoc.www@gmail.com>
 
 pkgname=lightcord-git
-pkgver=r385.7512a31
+pkgver=r387.a2b3513
 pkgrel=1
 pkgdesc="A simple - customizable - Discord Client"
 arch=('x86_64')
@@ -45,7 +45,7 @@ package() {
     cp -a "$srcdir/lightcord.png" "$pkgdir"/opt/lightcord
     chmod 755 "$pkgdir"/opt/lightcord/lightcord
     # Link icon and add Desktop
-    ln -s /opt/lightcord/lightcord.png "$pkgdir"/usr/share/pixmaps/lightcord.png
+    cp "$srcdir"/lightcord.png "$pkgdir"/usr/share/pixmaps/lightcord.png
     install -Dm644 "$srcdir"/Lightcord.desktop -t "$pkgdir"/usr/share/applications
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     # Create symlink
