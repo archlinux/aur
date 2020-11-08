@@ -4,7 +4,7 @@
 
 pkgname=miniflux
 pkgver=2.0.25
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimalist Feed Reader'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://miniflux.app'
@@ -27,7 +27,7 @@ sha256sums=('be207d714c0981052de03172dfe19ca2fcbdc97d9f7d7f9bbbeae5bd8a3c16ae'
 
 prepare() {
   mkdir -p "${srcdir}/src/github.com/miniflux"
-  ln -s "${srcdir}/${_repo}-${pkgver}" "${srcdir}/src/github.com/miniflux/${pkgname}"
+  ln -sf "${srcdir}/${_repo}-${pkgver}" "${srcdir}/src/github.com/miniflux/${pkgname}"
 }
 
 case "$CARCH" in
@@ -36,7 +36,7 @@ case "$CARCH" in
   arm) _target=armv5 ;;
   armv6h) _target=armv6 ;;
   armv7h) _target=armv7 ;;
-  aarch64) _target=armv8 ;;
+  aarch64) _target=arm64 ;;
   *) return 1 ;;
 esac
 
@@ -49,7 +49,7 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  GOPATH="${srcdir}" PATH="${PATH}:${GOPATH}/bin/" make VERSION="${pkgver}" linux-$_target
+  GOPATH="${srcdir}" PATH="${PATH}:${GOPATH}/bin/" make VERSION="${pkgver}" COMMIT="${pkgver}" linux-$_target
 }
 
 package() {
