@@ -1,3 +1,4 @@
+# Maintainer: justforlxz <justforlxz@gmail.com>
 pkgname=deepin.com.wechat
 _pkgver=2.6.8.65
 pkgver=2.6.8.65
