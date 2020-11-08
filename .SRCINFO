@@ -1,0 +1,22 @@
+pkgbase = vrr-app
+	pkgdesc = VRR Fahrplanauskunft built with nativefier (electron)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.facebook.com
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = vrr-app.png
+	source = vrr-app.desktop
+	sha256sums = ce248a8392a7a7c75edc50362aec103d5f98051d0567e57170c606d41cf67ec2
+	sha256sums = 957a502cf84304617cb5e89075ea9ac86681514769e3b839bc50d1c199888d32
+
+pkgname = vrr-app
+
