@@ -1,0 +1,59 @@
+pkgbase = linux-kernel-git
+	pkgdesc = Stable linux kernel, modules, headers, api-headers and docs
+	pkgver = 5.9.6
+	pkgrel = 1
+	url = https://www.kernel.org/
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = bison
+	makedepends = flex
+	makedepends = valgrind
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = extra-cmake-modules
+	makedepends = libelf
+	makedepends = elfutils
+	makedepends = python
+	makedepends = python-appdirs
+	makedepends = python-mako
+	makedepends = python-evdev
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-graphviz
+	makedepends = clang
+	makedepends = lib32-clang
+	makedepends = bc
+	makedepends = gcc
+	makedepends = gcc-libs
+	makedepends = lib32-gcc-libs
+	makedepends = glibc
+	makedepends = lib32-glibc
+	makedepends = pahole
+	makedepends = patch
+	makedepends = gtk3
+	makedepends = kmod
+	makedepends = libmikmod
+	makedepends = lib32-libmikmod
+	makedepends = xmlto
+	makedepends = xmltoman
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = imagemagick-doc
+	makedepends = rsync
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.9.6.tar.gz
+	source = linux-kernel-git.preset
+	source = config
+	source = sphinx-workaround.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = linux-kernel-git
+
+pkgname = linux-kernel-git-headers
+
+pkgname = linux-kernel-git-api-headers
+
+pkgname = linux-kernel-git-docs
+

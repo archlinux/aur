@@ -1,0 +1,14 @@
+# mkinitcpio preset file for the 'linux-kernel-git' package
+
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux-kernel-git"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-linux-kernel-git.img"
+#default_options=""
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/boot/initramfs-linux-kernel-git-fallback.img"
+fallback_options="-S autodetect"

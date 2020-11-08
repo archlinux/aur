@@ -1,0 +1,12 @@
+post_install() {
+	sudo mkinitcpio -p linux-kernel-git
+}
+
+post_remove() {
+	sudo rm /boot/initramfs-linux-kernel-git.img /boot/initramfs-linux-kernel-git-fallback.img
+}
+
+post_upgrade() {
+	sudo rm /boot/initramfs-linux-kernel-git.img /boot/initramfs-linux-kernel-git-fallback.img
+	sudo mkinitcpio -p linux-kernel-git
+}
