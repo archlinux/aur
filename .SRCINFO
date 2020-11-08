@@ -1,0 +1,54 @@
+pkgbase = obs-studio-wayland-git
+	pkgdesc = Free, open source software for live streaming and recording (with wayland patches)
+	pkgver = 26.0.2.r83.g5f6793676
+	pkgrel = 1
+	url = https://github.com/obsproject/obs-studio
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = libfdk-aac
+	makedepends = libxcomposite
+	makedepends = x264
+	makedepends = jack
+	makedepends = vlc
+	makedepends = swig
+	makedepends = luajit
+	makedepends = python
+	makedepends = cef-minimal-3770
+	depends = ffmpeg
+	depends = jansson
+	depends = libxinerama
+	depends = libxkbcommon-x11
+	depends = mbedtls
+	depends = qt5-svg
+	depends = qt5-x11extras
+	depends = curl
+	depends = jack
+	depends = gtk-update-icon-cache
+	optdepends = libfdk-aac: FDK AAC codec support
+	optdepends = libxcomposite: XComposite capture support
+	optdepends = libva-intel-driver: hardware encoding
+	optdepends = libva-mesa-driver: hardware encoding
+	optdepends = vlc: VLC Media Source
+	optdepends = swig: Scripting
+	optdepends = luajit: Lua scripting
+	optdepends = python: Python scripting
+	optdepends = qt5-wayland: Wayland obs window
+	optdepends = wlrobs-hg: screen capture on wlroots compositors
+	provides = obs-studio=26.0.2.r83.g5f6793676
+	provides = obs-studio-git
+	provides = obs-studio-wayland=26.0.2.r83.g5f6793676
+	conflicts = obs-studio
+	source = obs-studio-wayland-git::git+https://github.com/obsproject/obs-studio.git#branch=master
+	source = git+https://github.com/Mixer/ftl-sdk.git
+	source = git+https://github.com/obsproject/obs-browser.git
+	source = git+https://aur.archlinux.org/obs-studio-wayland.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = obs-studio-wayland-git
+
