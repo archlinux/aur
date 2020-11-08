@@ -6,13 +6,13 @@
 pkgbase=python-powerline-git
 pkgname=('python2-powerline-git' 'python-powerline-git')
 pkgdesc='The ultimate statusline/prompt utility'
-pkgver=2.8.1+10+g40c3e092
+pkgver=2.8.1+17+gf401ee31
 pkgrel=1
 epoch=1
 url='https://github.com/powerline/powerline'
 license=('MIT')
 arch=('i686' 'x86_64')
-makedepends=('git' 'python2-setuptools' 'python-setuptools' 'python2-sphinx')
+makedepends=('git' 'python2-setuptools' 'python-setuptools' 'python-sphinx')
 install='powerline.install'
 source=('powerline::git+https://github.com/powerline/powerline.git#branch=develop')
 sha256sums=('SKIP')
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
 	cd powerline/docs
-	make man SPHINXBUILD=sphinx-build2
+	make man SPHINXBUILD=sphinx-build
 }
 
 package_generic() {
