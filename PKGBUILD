@@ -1,28 +1,28 @@
 # Maintainer: Benjamin Feakins <feakster at posteo dot eu>
 # Contributor: Felix Golatofski <contact at xdfr dot de>
-# Contributor: Matthew Zilvar <mattzilvar at gmail.com>
+# Contributor: Matthew Zilvar <mattzilvar at gmail dot com>
 # Contributor: Térence Clastres <t dot clastres at gmail dot com>
 # Modified PKGBUILD from https://aur.archlinux.org/packages/vivaldi/
 
 pkgname=vivaldi-arm-bin
 _pkgname=vivaldi
 pkgver=3.4.2066.94
-pkgrel=2
+pkgrel=3
 _pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind.'
 arch=('armv6h' 'armv7h' 'aarch64')
 url="https://vivaldi.com"
 license=('custom')
-provides=('www-browser' 'vivaldi')
-replaces=('vivaldi-rpi' 'vivaldi-arm64')
-depends=('gtk3' 'libcups' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
+provides=('vivaldi' 'www-browser')
+replaces=('vivaldi-arm64' 'vivaldi-rpi')
+depends=('alsa-lib' 'desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libcups' 'libxss' 'nss' 'shared-mime-info' 'ttf-font')
 optdepends=(
     'vivaldi-ffmpeg-codecs: playback of proprietary video/audio'
     'pepper-flash: flash support'
     'libnotify: native notifications'
 )
 makedepends=('w3m')
-options=('!strip' '!emptydirs')
+options=('!emptydirs' '!strip')
 source_armhf=("https://downloads.vivaldi.com/stable/vivaldi-stable_${pkgver}-${_pkgrel}_armhf.deb")
 source_armv6h=("$source_armhf")
 source_armv7h=("$source_armhf")
