@@ -1,7 +1,7 @@
 # Maintainer: Franck Stauffer <franck.stauffer@monaco.mc>
 
 pkgname='privacy-redirect'
-pkgver=1.1.42
+pkgver=1.1.43
 pkgrel=1
 pkgdesc="Redirect Youtube, Twitter, Instagram, ... to privacy friendly alternatives"
 license=('MIT')
@@ -10,7 +10,7 @@ url="https://github.com/SimonBrazell/privacy-redirect"
 makedepends=('npm' 'unzip')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SimonBrazell/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('e75ba82d8988cd14ee0fe75d4d3f48e1f9e411e5e7fedaebbcb420385705ed43756dd376ae045f15633ff1bb57eb4973210957d4ee4b66aeb51a783eff06d913')
+b2sums=('1dae67d1d20468a0ef3d1895e7f2b6cef09cd4c943ed02c569342d2d742e34d11ab5e869be8d53a81978cbaf8dec31059c32b3d37852153c2f62eb928de6a026')
 
 prepare() {
     npm install web-ext
