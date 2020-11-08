@@ -55,7 +55,7 @@ build() {
 	cd "$_pkgname"
 	meson \
 		-Dwerror=false \
-		-Dtray=false \
+		-Dtray=disabled \
 		-Ddgk-pixbuf=false \
 		-Dman-pages=false \
 		--prefix /usr \
