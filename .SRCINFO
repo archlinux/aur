@@ -1,6 +1,6 @@
 pkgbase = ryzen_smu-dkms-git
 	pkgdesc = A Linux kernel driver that exposes access to the SMU (System Management Unit) for certain AMD Ryzen Processors
-	pkgver = 89.b7f24c5
+	pkgver = 92.21da2ca
 	pkgrel = 1
 	url = https://gitlab.com/leogx9r/ryzen_smu
 	arch = x86_64
