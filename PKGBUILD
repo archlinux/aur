@@ -1,6 +1,6 @@
 # Maintainer: Alexander Nicholi <me@nicholatian.com>
 pkgname=slick
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 epoch=
 pkgdesc='Slick makefiles'
@@ -11,7 +11,7 @@ depends=()
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://github.com/aquefir/$pkgname/archive/mk-v$pkgver.tar.gz" 'aquefir.sh')
-sha1sums=('ff5f12b3533799c4c8d747eed2efc6d0f2c38d2c' 'SKIP')
+sha1sums=('77cbb7a5dbab147ef46253eb244d77b2b76099f5' 'SKIP')
 
 build() {
   cd "$srcdir/$pkgname-mk-v$pkgver"
