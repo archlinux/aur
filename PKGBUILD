@@ -1,6 +1,6 @@
 # Maintainer: beelzy
 pkgname=rstmcpp-git
-pkgver=1563069227.0f31114
+pkgver=1604771866.36928e9
 pkgrel=1
 pkgdesc="A tool that converts wav files to .bcstm or .bcwav"
 arch=('i686' 'x86_64')
