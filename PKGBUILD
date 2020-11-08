@@ -2,7 +2,6 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgbase=freetype2-git
 pkgname=(freetype2-minimal-git)
 pkgver=2.10.4+p10+g22bb0660a
 pkgrel=1

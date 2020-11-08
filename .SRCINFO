@@ -1,4 +1,4 @@
-pkgbase = freetype2-git
+pkgbase = freetype2-minimal-git
 	pkgdesc = Font rasterization library (from git)
 	pkgver = 2.10.4+p10+g22bb0660a
 	pkgrel = 1
