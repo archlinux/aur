@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-dbg
-pkgver=3.7.0
+pkgver=3.8.6
 pkgrel=1
 epoch=0
 pkgdesc="Python 3 debug symbols."
