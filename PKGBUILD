@@ -1,8 +1,8 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=dyninst-git
-pkgver=v10.2.0.r14.g9114187ba
-pkgrel=2
+pkgver=v10.2.1.r39.ge5a88825d
+pkgrel=1
 pkgdesc="Tools for binary instrumentation, analysis, and modification"
 arch=('any')
 url="https://dyninst.org/"
