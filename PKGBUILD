@@ -1,12 +1,11 @@
 # Maintainer: Leo Mao <leomaoyw at gmail dot com>
 pkgname=python-torchaudio-git
 _pkgname=audio
-pkgver=r222.bdf9255
+pkgver=r579.5e54c770
 pkgrel=1
 pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/pytorch/audio"
-_github='pytorch/audio'
 license=('BSD')
 depends=('python' 'sox' 'python-pytorch')
 optdepends=('python-kaldi-io')
