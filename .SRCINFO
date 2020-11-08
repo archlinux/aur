@@ -1,0 +1,18 @@
+pkgbase = fleur
+	pkgdesc = A full-potential linearized augmented planewave code
+	pkgver = 0.31
+	pkgrel = 1
+	url = https://www.flapw.de
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc-fortran
+	depends = libxml2
+	depends = hdf5
+	depends = spfft
+	depends = scalapack
+	source = https://www.flapw.de/pm/uploads/FLEUR/fleurMaX4.tgz
+	sha256sums = 96c6907786ea2d321ab90ab6cb4edd8d96368552f5c7f7852f08ffc75b019cb4
+
+pkgname = fleur
+
