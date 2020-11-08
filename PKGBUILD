@@ -2,7 +2,7 @@
 # Based on python-readability-lxml package from BrainDamage
 
 pkgname=python-readability-lxml-git
-pkgver=0.6.1.r59.g615ce80
+pkgver=v0.8.1.r4.gf166003
 pkgrel=1
 pkgdesc="A python port of a ruby port of arc90 readability project"
 arch=("any")
