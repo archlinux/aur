@@ -1,7 +1,7 @@
 # Maintainer: Ohio2 (Maksymilian Sęk) <ohio2.mail@zohomail.eu>
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoakanter@gmail.com>
 pkgname="ohio2-nerdfetch"
-pkgver=ohio2v4-beta
+pkgver=ohio2v4
 pkgrel=1
 pkgdesc="A POSIX fetch using NerdFonts"
 arch=('any')
