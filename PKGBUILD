@@ -18,16 +18,11 @@ replaces=()
 backup=()
 options=(!debug !strip)
 
-source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"
-        dont-make-libpython-readonly.patch)
-md5sums=('eb8c2a6b1447d50813c02714af4681f3'
-         '60c9f7d02384f22834df06de5eb9c46a')
+source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz")
+md5sums=('69e73c49eeb1a853cefd26d18c9d069d')
 
 prepare() {
     cd Python-${pkgver}
-
-    # FS#45809
-    patch -p1 -i ../dont-make-libpython-readonly.patch
 
     # FS#23997
     sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
