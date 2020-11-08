@@ -1,0 +1,25 @@
+From 60a7db7b539515ba8f0fcff6cbc31435797f4b86 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 8 Nov 2020 17:10:15 +0100
+Subject: [PATCH] windeployqt: Fix name of qt6CoreName variable
+
+---
+ src/windeployqt/main.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/windeployqt/main.cpp b/src/windeployqt/main.cpp
+index 21321457..1b331024 100644
+--- a/src/windeployqt/main.cpp
++++ b/src/windeployqt/main.cpp
+@@ -1461,7 +1461,7 @@ static DeployResult deploy(const Options &options,
+         }
+ 
+         if (options.patchQt  && !options.dryRun) {
+-            const QString qt5CoreName = QFileInfo(libraryPath(libraryLocation, "Qt6Core", qtLibInfix,
++            const QString qt6CoreName = QFileInfo(libraryPath(libraryLocation, "Qt6Core", qtLibInfix,
+                                                               options.platform, result.isDebug)).fileName();
+ #ifndef QT_RELOCATABLE
+             if (!patchQtCore(targetPath + QLatin1Char('/') + qt6CoreName, errorMessage)) {
+-- 
+2.29.2
+

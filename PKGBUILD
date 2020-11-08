@@ -16,10 +16,22 @@ makedepends=('mingw-w64-cmake' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qttools-everywhere-src-${_qtver}"
-source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('8409de28939c79dc3eb2d1bb8bac085f35f3dcc35df107633b474733aa33bba8')
+source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
+        '0001-windeployqt-Fix-name-of-qt6CoreName-variable.patch')
+sha256sums=('8409de28939c79dc3eb2d1bb8bac085f35f3dcc35df107633b474733aa33bba8'
+            '03ed0cf3fb604d773cae1de19c862e65e8a44a8245db0bfba750557e541f5620')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+
+prepare () {
+  cd $_pkgfqn
+
+  # apply patches; further descriptions can be found in patch files itself
+  for patch in "$srcdir/"*.patch; do
+    msg2 "Applying patch $patch"
+    patch -p1 -i "$patch"
+  done
+}
 
 build() {
   for _arch in ${_architectures}; do
