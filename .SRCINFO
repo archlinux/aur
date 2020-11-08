@@ -1,12 +1,12 @@
 pkgbase = zbctl
 	pkgdesc = CLI to interact with Zeebe
-	pkgver = 0.24.3
+	pkgver = 0.25.1
 	pkgrel = 1
 	url = https://github.com/zeebe-io/zeebe/tree/master/clients/go/cmd/zbctl
 	arch = x86_64
 	license = Apache
-	source = zbctl-0.24.3::https://github.com/zeebe-io/zeebe/releases/download/0.24.3/zbctl
-	sha1sums = f8f8414ab4f734563e42b7744942d06e89549650
+	source = zbctl-0.25.1::https://github.com/zeebe-io/zeebe/releases/download/0.25.1/zbctl
+	sha1sums = 0c7ac7a40f28206d1d630eb159fc21b7b5e5d681
 
 pkgname = zbctl
 
