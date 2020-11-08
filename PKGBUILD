@@ -2,7 +2,7 @@
 pkgname=gnome-shell-extension-syspeek-gs-git
 _pkgname=syspeek-gs
 
-pkgver=r14.bc034cd
+pkgver=r16.17991f8
 pkgrel=1
 pkgdesc="A simple CPU monitor for Gnome Shell inspired by SysPeek indicator"
 arch=('any')
@@ -17,11 +17,6 @@ md5sums=('SKIP')
 pkgver() {
     cd "$srcdir/$_pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "$srcdir/$_pkgname"
-    git apply "../../Makefile.patch"
 }
 
 build() {
