@@ -14,7 +14,7 @@ pkgbase = neatvnc-git
 	depends = libxkbcommon
 	depends = pixman
 	depends = aml-git
-	optdepends = libjpeg-turbo
+	depends = libjpeg-turbo
 	provides = neatvnc=0.3.2
 	conflicts = neatvnc
 	source = https://github.com/any1/neatvnc
