@@ -22,19 +22,19 @@ build() {
   cd "$srcdir/$provides-$pkgver"
   
   case "$CARCH" in
-    x86_64)
+    'x86_64')
       _arch=x86_64-unknown-linux-gnu
       ;;
-    arm)
+    'arm')
       _arch=arm-unknown-linux-gnu
       ;;
-    armv6h)
+    'armv6h')
       _arch=arm-unknown-linux-gnu
       ;;
-    armv7h)
+    'armv7h')
       _arch=arm-unknown-linux-gnu
       ;;
-    aarch64)
+    'aarch64')
       _arch=arm-unknown-linux-gnu
       ;;
     *)
