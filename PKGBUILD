@@ -9,7 +9,7 @@ url="https://github.com/TheCynicalTeam/$pkgname"
 license=('GNU General Public License v3.0')
 depends=('gtk3' 'python-gputil')
 source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=('ff2b5560a80bd9acda08d76aacb6f9128be77ba0b029ad70267d33e0d7cbae26')
+sha256sums=('9cdd9c9d7f24a38913d5942e395efc677ed6d3cdf281a4701b13b6da6d63c301')
 
 package() {
   mkdir -p $pkgdir/usr
