@@ -6,19 +6,20 @@
 
 pkgname=ovito
 pkgver=3.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Visualization Tool"
 url="http://www.ovito.org"
 arch=('x86_64')
 license=('GPL')
 depends=('fftw' 'python' 'netcdf' 'ffmpeg' 'qt5-base')
-makedepends=('cmake' 'boost' 'qscintilla-qt5' 'qt5-svg' 'libxslt')
+makedepends=('cmake' 'boost' 'qscintilla-qt5' 'qt5-svg' 'libxslt' 'git')
 conflicts=("$pkgname-git")
 source=("https://gitlab.com/stuko/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.bz2")
 sha256sums=('d904b495467c17affaf171aa1be86e9ecd37a8e7328d94d5f9a6d93563a335de')
 
 prepare() {
   mkdir "$srcdir/build"
+  sed -i "s/NOT APPLE/WIN32/" "$srcdir/$pkgname-v$pkgver/cmake/Plugins.cmake"
 }
 
 build() {
