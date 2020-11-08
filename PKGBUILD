@@ -1,7 +1,7 @@
 # Maintainer: Simone Scalabrino <s.scalabrino9@gmail.com>
 _appname="raiplay"
 _appdesc="Standalone silo app for Raiplay (Italian national TV public broadcast)"
-_gittag="0.1"
+_gittag="0.2"
 
 _gitname=silos-apps
 pkgname="silo-${_appname}"
