@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=Facebook Desktop App
 Comment="Facebook Desktop built with nativefier (electron)"
-Exec=Facebook-Desktop-App
-Icon=Facebook-Desktop-App
+Exec=facebook-desktop-app
+Icon=facebook-desktop-app
 Encoding=UTF-8
 Terminal=false
 StartupNotify=true
