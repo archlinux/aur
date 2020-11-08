@@ -1,0 +1,9 @@
+post_upgrade(){
+ echo "Shlink has been updated successfully.
+Please run \`sudo -u http php /usr/share/webapps/shlink/bin/update\`
+to migrate the database and configure new options.
+You can find more information here:
+
+https://github.com/shlinkio/shlink/#update-to-new-version
+"
+}

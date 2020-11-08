@@ -1,8 +1,9 @@
 pkgbase = shlink
 	pkgdesc = The definitive self-hosted URL shortener
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shlink.io
+	install = shlink.install
 	arch = any
 	license = MIT
 	depends = php>=7.4
