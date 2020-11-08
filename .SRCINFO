@@ -1,14 +1,16 @@
 pkgbase = mpd_cdrom
+	pkgdesc = Add songs to mpd when a CD-ROM is inserted, remove them when ejected
 	pkgver = 1.0.0
 	pkgrel = 1
+	url = https://github.com/ochurlaud/mpd_cdrom
 	install = mpd_cdrom.install
 	arch = any
 	license = MIT
 	depends = mpd
 	depends = mpc
 	depends = cdparanoia
-	source = mpd_cdrom-1.0.0::git+https://github.com/ochurlaud/mpd_cdrom.git
-	md5sums = SKIP
+	source = mpd_cdrom-1.0.0::https://github.com/ochurlaud/mpd_cdrom/archive/v1.0.0.tar.gz
+	md5sums = d81275c1948c5fd3359bad89a17fc745
 
 pkgname = mpd_cdrom
 
