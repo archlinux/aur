@@ -1,7 +1,7 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-qt5platform-plugins-git
-pkgver=5.0.18.r2.g13f3095
+pkgver=5.0.21.r0.gefe2b5e
 pkgrel=1
 pkgdesc='Qt platform plugins for DDE'
 arch=('x86_64')
