@@ -1,8 +1,8 @@
 pkgbase = deemix-pyweb-git
 	pkgdesc = This is a pywebview wrapper for deemix-webui
-	pkgver = r415.94bcc40297
+	pkgver = r424.03d7f983d6
 	pkgrel = 1
-	url = https://git.fuwafuwa.moe/RemixDev/deemix-pyweb
+	url = https://notabug.org/RemixDev/deemix-pyweb
 	arch = any
 	license = gpl3
 	makedepends = git
@@ -15,8 +15,8 @@ pkgbase = deemix-pyweb-git
 	depends = python-pyqtwebengine
 	depends = python-eventlet
 	provides = deemix-pyweb
-	source = deemix-pyweb::git+https://git.fuwafuwa.moe/RemixDev/deemix-pyweb
-	source = deemix-webui::git+https://git.fuwafuwa.moe/RemixDev/deemix-webui
+	source = deemix-pyweb::git+https://notabug.org/RemixDev/deemix-pyweb
+	source = deemix-webui::git+https://notabug.org/RemixDev/deemix-webui
 	md5sums = SKIP
 	md5sums = SKIP
 
