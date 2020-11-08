@@ -1,8 +1,8 @@
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="koalalauncher"
-pkgver="1.0.5"
+_pkgname="KoalaLauncher"
+pkgver="1.0.6"
 pkgrel=1
-commitsha="1f9091a4e87bef06769d0d6081853bbc68038e88"
 arch=('x86_64')
 pkgdesc="Koala Launcher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://koalalauncher.com"
@@ -10,27 +10,21 @@ license=('GPL3')
 makedepends=('gendesk' 'git' 'yarn' 'nodejs' 'rust' 'unzip')
 depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3')
 conflicts=('koalalauncher-bin')
-source=("koalalauncher::git+https://github.com/KoalaDevs/KoalaLauncher.git")
+source=("${pkgver}.zip::https://github.com/KoalaDevs/KoalaLauncher/archive/v${pkgver}.zip")
 md5sums=('SKIP')
 
 prepare() {
-    # clone source
-    cd "${srcdir}/${pkgname}"
-    git checkout origin/master
-    git switch master
-    git reset --hard ${commitsha}
-
     # generate .desktop
     gendesk --pkgname "Koala Launcher" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
     mv "Koala Launcher.desktop" "${pkgname}.desktop"
 
     # put yarn in testing mode
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     echo "RELEASE_TESTING=true" > .env
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     yarn
     yarn release
 }
@@ -38,17 +32,17 @@ build() {
 package() {
     # install the main files.
     install -d -m755 "${pkgdir}/opt/${pkgname}"
-    cd "${srcdir}/${pkgname}/deploy"
+    cd "${srcdir}/${_pkgname}-${pkgver}/deploy"
     mkdir ${pkgname}/
     unzip "KoalaLauncher-linux-setup.zip" -d koalalauncher
-    cp -Rr "${srcdir}/${pkgname}/deploy/${pkgname}"* "${pkgdir}/opt/"
+    cp -Rr "${srcdir}/${_pkgname}-${pkgver}/deploy/${pkgname}"* "${pkgdir}/opt/"
 
     # desktop entry
-    install -D -m644 "${srcdir}/${pkgname}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -D -m644 "${srcdir}/${_pkgname}-${pkgver}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
     # install the icon
     install -d -m755 "${pkgdir}/usr/share/icons/hicolor"
-    cp -Rr "${srcdir}/${pkgname}/public/icon.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
+    cp -Rr "${srcdir}/${_pkgname}-${pkgver}/public/icon.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
 
     # fix file permissions - all files as 644 - directories as 755
     find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
