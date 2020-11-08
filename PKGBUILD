@@ -33,7 +33,9 @@ pkgver(){
 build() {
     cd "${_pkgname}"
     if [[ "$GOPATH" == "" ]]; then
-        GOPATH="$HOME/go"
+        GOPATH="$HOME/go" make --jobs=1
+    else
+        make --jobs=1
     fi
 }
 
