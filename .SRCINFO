@@ -1,7 +1,7 @@
 pkgbase = pcloudcc-git
 	pkgdesc = A simple linux console client for pCloud cloud storage.
 	pkgver = r1464.2ecb7c9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pcloudcom/console-client
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = pcloudcc-git
 	makedepends = boost
 	makedepends = systemd
 	depends = zlib
-	depends = fuse
+	depends = fuse2
 	depends = gcc-libs
 	provides = pcloudcc
 	conflicts = pcloudcc
