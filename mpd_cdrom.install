@@ -1,0 +1,4 @@
+post_install() {
+    echo "INFO: adding user 'mpd' to the 'optical' group"
+    usermod -aG optical mpd
+}

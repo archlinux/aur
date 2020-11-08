@@ -1,0 +1,14 @@
+pkgbase = mpd_cdrom
+	pkgver = 1.0.0
+	pkgrel = 1
+	install = mpd_cdrom.install
+	arch = any
+	license = MIT
+	depends = mpd
+	depends = mpc
+	depends = cdparanoia
+	source = mpd_cdrom-1.0.0::git+https://github.com/ochurlaud/mpd_cdrom.git
+	md5sums = SKIP
+
+pkgname = mpd_cdrom
+
