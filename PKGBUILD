@@ -2,7 +2,7 @@
 
 pkgname=yabridge-git
 _pkgname=yabridge
-pkgver=2.0.0.r0.g97d1055
+pkgver=2.0.1.r0.g5f1fbcb
 pkgrel=1
 pkgdesc="Yet Another VST bridge, run Windows VST2 plugins under Linux"
 arch=('x86_64')
