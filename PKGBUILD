@@ -5,8 +5,8 @@
 
 pkgname=vivaldi-arm-bin
 _pkgname=vivaldi
-pkgver=3.1.1929.34
-_pkgver=3.1.1929.34-1
+pkgver=3.4.2066.94
+_pkgver=3.4.2066.94-1
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
@@ -14,18 +14,16 @@ options=('!strip' '!emptydirs')
 license=('custom')
 arch=('aarch64')
 provides=('vivaldi-stable')
+conflicts=('vivaldi' 'vivaldi-rpi' 'vivaldi-arm64')
 depends=('gtk3' 'libcups' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
 makedepends=('w3m')
 optdepends=(
     'vivaldi-ffmpeg-codecs: playback of proprietary video/audio'
-    'pepper-flash: flash support'
-    'google-chrome: Widevine DRM Plugin'
-    'vivaldi-widevine: Widevine DRM Plugin'
     'libnotify: native notifications'
 )
 provides=('www-browser' 'vivaldi')
 source=("https://downloads.vivaldi.com/stable/vivaldi-stable_${_pkgver}_arm64.deb")
-sha512sums=('7b8d3c5f373d05e70fbfe29750f6a7c684450beead9ef54b33758f8847f4bb3f736f323becdbf90fc24917caefb9087f6ece1b1ef7c013fc0480f1224eb05269')
+sha512sums=('d3d1a061d35c7a0fad030b7115cd365860b1f23f5397d940f1d77f7681ba54a5a49e8e90e8156efd08a845d5bcebd77f83fcff3a43f0bf980b57bfa7df9ebd5b')
 
 prepare() {
     tar -xf data.tar.xz
