@@ -1,11 +1,10 @@
-pkgbase = seeed-voicecard
+pkgbase = seeed-voicecard-dkms-git
 	pkgdesc = DKMS module for Allwinner devices
 	pkgver = r4.1.g8cce4e8
 	pkgrel = 1
 	url = https://github.com/respeaker/seeed-voicecard
-	arch = armv6h
+	arch = x86_64
 	arch = armv7h
-	arch = aarch64
 	license = GPL3
 	makedepends = git
 	depends = dkms
