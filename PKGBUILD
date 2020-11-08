@@ -3,7 +3,7 @@
 pkgname=loudgain
 pkgver=v0.6.8
 _pkgver=0.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A loudness normalizer that scans music files and calculates loudness-normalized gain and loudness peak values according to the EBU R128 standard, and can optionally write ReplayGain-compatible metadata."
 url="https://github.com/Moonbase59/loudgain"
 arch=('i686' 'x86_64')
