@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full-git
-pkgver=0.32.0.r535.g68ade4e5a5
+pkgver=0.32.0.r796.g790647314c
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
         'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'shaderc'
         'libplacebo' 'zimg'
     # AUR:
-        'ffmpeg-git' 'spirv-cross'
+        'ffmpeg-git' 'spirv-cross' 'libsixel'
 )
 makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols' 'ffnvcodec-headers')
@@ -137,6 +137,7 @@ build() {
         '--enable-gl'
         '--enable-libplacebo'
         '--enable-vulkan'
+        '--enable-sixel'
         
         '--disable-videotoolbox-gl'
         '--disable-d3d-hwaccel'
