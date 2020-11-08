@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=heirloom-doctools-git
-pkgver=160308.r143.g896c2ba.r430.896c2ba
+pkgver=191015.r4.gf3a16e2.r490.f3a16e2
 pkgrel=1
 epoch=
 pkgdesc="The Heirloom Documentation Tools provide troff, nroff, and related utilities." 
@@ -9,7 +9,7 @@ url="https://github.com/n-t-roff/heirloom-doctools"
 license=('CDDL')
 groups=()
 depends=()
-makedepends=('git')
+makedepends=('git' 'byacc')
 optdepends=()
 checkdepends=()
 provides=('heirloom-doctools')
@@ -46,6 +46,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
+  YACC=/usr/bin/byacc
+  export YACC
   make
 }
 
