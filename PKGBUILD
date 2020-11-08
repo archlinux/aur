@@ -2,13 +2,13 @@
 
 pkgname=btdu
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='sampling disk usage profiler for btrfs'
 arch=('i686' 'x86_64')
 url='https://github.com/CyberShadow/btdu'
 license=('GPL2')
 depends=('ncurses')
-makedepends=('dub' 'd-compiler')
+makedepends=('d-compiler' 'dub' 'dtools')
 
 # these should match dub.selections.json
 _d_ae_ver=0.0.2833
