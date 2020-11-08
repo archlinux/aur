@@ -6,7 +6,7 @@
 pkgname=cryptmount-arm
 pkgver=5.3.2
 _pkgver=5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Utility which allows an ordinary user to mount an encrypted file system"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://cryptmount.sourceforge.net/"
@@ -16,11 +16,11 @@ depends=(cryptsetup device-mapper glibc libgcrypt systemd util-linux)
 makedepends=(gcc)
 source=($provides-$pkgver.tar.gz::http://downloads.sourceforge.net/project/cryptmount/cryptmount/cryptmount-$_pkgver/cryptmount-$pkgver.tar.gz)
 backup=('etc/cryptmount/cmtab')
-sha512sums=('972c7fefadb86bb82cdeb96b185f45bec08ac07d39474a4c7e2a473bc2453624ffcc387b6836a02260dcd0d1176a5a743c45bdf3d7e78d2f519f02a48c62a6b8')
+b2sums=('708c6ba33060c0698361de7bcdc5e0a5932e063c9178c0a6b9cfb1cba9ec236337dbda0664e8755cc017113ee8ef0149c47fc85019a57ac84bf240790d5d798c')
 
-prepare() {
+build() {
   cd "$srcdir/$provides-$pkgver"
-
+  
   case "$CARCH" in
     x86_64)
       _arch=x86_64-unknown-linux-gnu
@@ -42,11 +42,7 @@ prepare() {
       ;;
   esac
   echo "Build: $_arch"
-}
-
-build() {
-  cd "$srcdir/$provides-$pkgver"
-
+  
   ./configure --build=$_arch --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --with-systemd=yes
   make
 }
