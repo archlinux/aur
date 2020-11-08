@@ -1,19 +1,18 @@
 # Maintainer: Static_Rocket
 
 pkgname=asus-nb-ctrl-git
-pkgver=2.0.4.r4.gf61f62c
-pkgrel=2
+pkgver=2.1.0.r4.gb496139
+pkgrel=1
 pkgdesc="Asus laptop control utilities"
 arch=('x86_64')
 url="https://gitlab.com/asus-linux/asus-nb-ctrl"
 license=('Mozilla Public License Version 2.0')
-depends=('libusb' 'udev' 'systemd')
-optdepends=('hid-asus-rog-dkms-git: fn+key combination support'
-	'asus-rog-nb-wmi-dkms-git: G14/G15 support'
+depends=('libusb' 'udev' 'systemd' 'hid-asus-rog-dkms-git')
+optdepends=('asus-rog-nb-wmi-dkms-git: G14/G15 support'
 	'acpi_call: fan control')
-makedepends=('git' 'make' 'rust' 'clang' 'glibc')
-source=('git+https://gitlab.com/asus-linux/asus-nb-ctrl.git' 'userpatch.patch')
-md5sums=('SKIP' '0add5394ceece18c95d338ec621db3c3')
+makedepends=('git' 'rust' 'clang' 'glibc')
+source=('git+https://gitlab.com/asus-linux/asus-nb-ctrl.git')
+md5sums=('SKIP')
 _gitdir=${pkgname%"-git"}
 
 pkgver() {
@@ -21,14 +20,9 @@ pkgver() {
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-	cd "$srcdir/$_gitdir"
-	patch --strip=1 --input="$srcdir/userpatch.patch"
-}
-
 build() {
 	cd "$_gitdir"
-	make
+	make build
 }
 
 package() {
