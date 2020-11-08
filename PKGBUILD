@@ -1,7 +1,7 @@
 # Maintainer: Ben Goldberg <jediben97@gmail.com>
 
 pkgname=license
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A tool to easily add a license to your project"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=(
     'fzf: required for interactive scripts: set-license, copy-header'
     'xclip: required for interactive scripts: set-license, copy-header'
 )
-sha256sums=("b3ba36750402f2794a3db6732cd449a2dc3ac011e14789bca98a0af2dc616f6b")
+sha256sums=("6ea3e0acde889f6a671998f51aff00f3fb916c8c08cd043ed19c2756f9cbe514")
 
 build() {
     tar -xf $pkgver.tar.gz
