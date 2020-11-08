@@ -2,7 +2,7 @@
 
 pkgname=stretchly-git
 _pkgname=${pkgname%-git}
-pkgver=719.6174fc7
+pkgver=723.51f05d1
 pkgrel=1
 pkgdesc="The break time reminder app"
 arch=('any')
