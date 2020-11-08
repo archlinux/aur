@@ -1,0 +1,31 @@
+pkgbase = vivaldi-arm-bin
+	pkgdesc = An advanced browser made with the power user in mind.
+	pkgver = 3.1.1929.34
+	pkgrel = 1
+	url = https://vivaldi.com
+	arch = aarch64
+	license = custom
+	makedepends = w3m
+	depends = gtk3
+	depends = libcups
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = ttf-font
+	depends = desktop-file-utils
+	depends = shared-mime-info
+	depends = hicolor-icon-theme
+	optdepends = vivaldi-ffmpeg-codecs: playback of proprietary video/audio
+	optdepends = pepper-flash: flash support
+	optdepends = google-chrome: Widevine DRM Plugin
+	optdepends = vivaldi-widevine: Widevine DRM Plugin
+	optdepends = libnotify: native notifications
+	provides = www-browser
+	provides = vivaldi
+	options = !strip
+	options = !emptydirs
+	source = https://downloads.vivaldi.com/stable/vivaldi-stable_3.1.1929.34-1_arm64.deb
+	sha512sums = 7b8d3c5f373d05e70fbfe29750f6a7c684450beead9ef54b33758f8847f4bb3f736f323becdbf90fc24917caefb9087f6ece1b1ef7c013fc0480f1224eb05269
+
+pkgname = vivaldi-arm-bin
+
