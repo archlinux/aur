@@ -1,0 +1,22 @@
+pkgbase = btdu
+	pkgdesc = sampling disk usage profiler for btrfs
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/CyberShadow/btdu
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = dub
+	makedepends = d-compiler
+	depends = ncurses
+	source = btdu-0.1.0.tar.gz::https://github.com/CyberShadow/btdu/archive/v0.1.0.tar.gz
+	source = ae-0.0.2833.tar.gz::https://github.com/CyberShadow/ae/archive/v0.0.2833.tar.gz
+	source = d-btrfs-0.0.10.tar.gz::https://github.com/CyberShadow/d-btrfs/archive/v0.0.10.tar.gz
+	source = ncurses-0.0.148.tar.gz::https://github.com/D-Programming-Deimos/ncurses/archive/v0.0.148.tar.gz
+	sha256sums = 60f9de72ae3a471a86a5b06c1eecd32bb4b41e1f9c50ca9121f17ce98a51af5b
+	sha256sums = 97f129484f7ff431d0be3430ab62d32955c17cc43e6993de4a628ea4b8574c23
+	sha256sums = 414077a05a21b910efe76d0afb6e61cb824727be5e3237a6ee1d2e67e7664029
+	sha256sums = f42b28b488a0a06e3a4e08e5603f637481686d454d1538b549d3be9c40b24e4f
+
+pkgname = btdu
+
