@@ -62,9 +62,14 @@
       "max_age": 0
     },
     "cache": {
-      "enabled": true,
-      "expiration_time": 0,
-      "max_size": 50
+      "users": {
+        "expiration_time": 0,
+        "max_size": 50
+      },
+      "mime_types": {
+        "enabled": true,
+        "max_size": 1000
+      }
     }
   },
   "data_provider": {
@@ -88,6 +93,7 @@
     "external_auth_hook": "",
     "external_auth_scope": 0,
     "credentials_path": "/var/lib/sftpgo/credentials",
+    "prefer_database_credentials": false,
     "pre_login_hook": "",
     "post_login_hook": "",
     "post_login_scope": 0,
