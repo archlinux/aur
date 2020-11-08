@@ -4,7 +4,7 @@ msg "This PKGBUILD execute a one-line script to retrieve ModDB valid urls"
 _url=$(curl https://www.moddb.com/downloads/start/201571/all | grep -Po '(?<=href="/)[^"]*' | head -1)
 pkgname=realrtcw
 pkgver=3.1n
-pkgrel=2
+pkgrel=1
 pkgdesc="An overhaul mod for critically acclaimed Return To Castle Wolfenstein."
 arch=('i686' 'x86_64')
 url="http://www.moddb.com/mods/realrtcw-realism-mod"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('freetype2' 'graphite' 'harfbuzz' 'iortcw-data' 'libjpeg-turbo' 'libogg' 'openal' 'opus' 'opusfile' 'pcre' 'sdl2' 'zlib')
 makedepends=('unzip')
 install='realrtcw.install'
-_commit="d83161cbf8f3ebf5390dac3ccc0227543ec0989c"
+_commit="559c3a7fc4dcf1fcab7405d51b987c789ad53cee"
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/${_commit}.tar.gz"
   "$pkgname-$pkgver.zip::https://www.moddb.com/${_url}"
@@ -88,7 +88,7 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/realrtcw.png"
 }
 
-md5sums=('f0d07eef3bcde761727eca023aef2b4f'
+md5sums=('8ab96775a884f39160e40a5551c0420b'
   '6f140b9df87f6fb362c323b0b5656710'
   '19ef21acfceb965f36b53b70267641d1'
   '7e3991e5f331662419ad1ed04e49366c'
