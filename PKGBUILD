@@ -3,7 +3,7 @@
 
 pkgname=remill
 pkgver=4.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode"
 arch=('x86_64')
 url="https://github.com/lifting-bits/remill"
@@ -29,7 +29,6 @@ build() {
         -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
         -DCMAKE_BC_COMPILER=/usr/bin/clang++ \
         -DCMAKE_BC_LINKER=/usr/bin/llvm-link \
-        -DLLVM_Z3_INSTALL_DIR=/usr \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_VERBOSE_MAKEFILE=True \
         "$srcdir/$pkgname-$pkgver"
