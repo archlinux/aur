@@ -1,6 +1,6 @@
 pkgbase = docker-git
 	pkgdesc = Pack, ship and run any application as a lightweight container.
-	pkgver = r35925.b8e87cfdad
+	pkgver = r39078.b5ea9abf25
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/docker/docker

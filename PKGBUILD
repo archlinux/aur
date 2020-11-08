@@ -13,7 +13,7 @@
 
 pkgname=docker-git
 _pkgname=docker
-pkgver=r35925.b8e87cfdad
+pkgver=r39078.b5ea9abf25
 pkgrel=1
 epoch=1
 pkgdesc='Pack, ship and run any application as a lightweight container.'
@@ -75,6 +75,8 @@ prepare() {
 }
 
 build() {
+  export GOPATH="$srcdir/go"
+
   # runc
   msg2 'building runc'
   ln -sf "$srcdir/runc" "$GOPATH/src/github.com/opencontainers/"
@@ -136,6 +138,8 @@ build() {
 # }
 
 package() {
+  export GOPATH="$srcdir/go"
+
   msg2 'runc binary'
   install -Dm755 "$GOPATH/src/github.com/opencontainers/runc/runc" "$pkgdir/usr/bin/runc"
 
