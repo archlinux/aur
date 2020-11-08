@@ -1,0 +1,25 @@
+pkgbase = freetype2-git
+	pkgdesc = Font rasterization library (from git)
+	pkgver = 2.10.4+p10+g22bb0660a
+	pkgrel = 1
+	epoch = 1
+	url = https://www.freetype.org/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = libx11
+	makedepends = git
+	depends = zlib
+	depends = bzip2
+	depends = sh
+	depends = libpng
+	depends = harfbuzz
+	source = git://git.sv.gnu.org/freetype/freetype2.git
+	sha256sums = SKIP
+
+pkgname = freetype2-minimal-git
+	provides = libfreetype.so
+	provides = freetype2=2.10.4+p10+g22bb0660a
+	conflicts = freetype2
+	backup = etc/profile.d/freetype2.sh
+
