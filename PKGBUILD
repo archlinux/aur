@@ -1,6 +1,6 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=amazon-corretto-8
-pkgver=8.272.10.3
+pkgver=8.275.01.1
 pkgrel=1
 pkgdesc='No-cost, multiplatform, production-ready distribution of OpenJDK'
 arch=('x86_64')
@@ -19,5 +19,5 @@ package() {
   cp -a "amazon-corretto-$pkgver-linux-x64" "$pkgdir/usr/lib/jvm/java-8-amazon-corretto"
 }
 
-md5sums=('9b9889f6907274aee4814d134beb22d9'
+md5sums=('6dc1ccea65e1112a3a8673e776c932d1'
          'SKIP')
