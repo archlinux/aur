@@ -1,21 +1,22 @@
-# Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
+# Maintainer: pumpkincheshire <sollyonzou@gmail.com>
+# Contributor: Brenton Horne <brentonhorne77 at gmail dot com>
 
 pkgname=github-release-bin
-pkgver=0.7.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Command-line app to create and edit releases on GitHub (and upload artifacts) — built from pre-compiled binary."
 arch=('x86_64')
-url="https://github.com/aktau/github-release"
+url="https://github.com/github-release/github-release"
 license=('MIT')
 conflicts=('github-release')
-source=("${url}/releases/download/v${pkgver}/linux-amd64-github-release.tar.bz2"
-"LICENSE")
-sha512sums=('16515e89c8419075c7c88df5cdaac63aa798f539a33107809adbde76e002ac0732f4732159d093e287878b956c650e90cd0fa94d4836ebcf7cd19599e1d238c3'
-            '878e698c6e40151853ab584e9004bac95335a5230789a4e6f92283f9734d4e6d3c2d676e71c359657ea15be9d3dddc65c44a88c5a48f5cf43dbd2f9df09d1ceb')
+depends=('glibc')
+source=("${url}/releases/download/v${pkgver}/linux-amd64-github-release.bz2"
+  "LICENSE::https://raw.githubusercontent.com/github-release/github-release/master/LICENSE")
+sha512sums=('9dbdd361117caedb201a1644ad2d23c53c1b647531e40c89db5a8ede9f647e1089447f282fb8945c181b520b8d58a9a681749d3fffd2522b2ac43d5a76ed5871'
+  '9d19258b39b9d1c30e7cce85c4ea38c4b818f7b0189c90f938d25134b65e22ae1cc204fb02324d1df1221b35aae3c687919c1f3d1ebd7cea91533255cb7c6da0')
 
 package() {
-  install -Dm755 $srcdir/bin/linux/amd64/github-release \
-    "${pkgdir}/usr/bin/github-release"
+  install -Dm755 $srcdir/linux-amd64-github-release "${pkgdir}/usr/bin/github-release"
 
   install -Dm755 $srcdir/LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
