@@ -1,0 +1,52 @@
+pkgbase = linux-vanilla-selinux-54
+	pkgdesc = Vanilla-Linux-Kernel (5.4) from kernel.org with Selinux enabled
+	pkgver = 5.4.75
+	pkgrel = 1
+	url = https://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.75.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.75.tar.sign
+	source = config
+	source = linux-vanilla-selinux-54.install
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux-vanilla-selinux-54.preset
+	source = sphinx.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = d2466fd6eb5433e7bf287b617b11b2640c65a7ea93a57eb7a80d7f537cbc1470
+	sha256sums = 312cfcd6c3def0f49aa535357641631e0acac3498fec5f10f8175b3261d88c88
+	sha256sums = 91b90dc594160fb78a8f3fdd2f7ec424d18ff2f221e26f437c3d06af95f36ee2
+	sha256sums = f9b13f3c00be95205ccb77ead42881ecbf0f7ba0d0ad12af294e054272859d81
+	sha256sums = 5c7af03d9b4cade110543ba706bcbd49fc6447726258b4bfec0edff7ca9994d1
+	sha256sums = 9089c8d44982dc03b0dde47632f8aa2fda14754b911acbc266feee85da94b0f5
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e
+
+pkgname = linux-vanilla-selinux-54
+	pkgdesc = The Linux-vanilla-selinux-54 kernel and modules
+	install = linux-vanilla-selinux-54.install
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	backup = etc/mkinitcpio.d/linux-vanilla-selinux-54.preset
+
+pkgname = linux-vanilla-selinux-54-headers
+	pkgdesc = Header files and scripts for building modules for Linux-vanilla-selinux-54 kernel
+
+pkgname = linux-vanilla-selinux-54-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-vanilla-selinux-54 kernel
+
