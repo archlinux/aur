@@ -1,6 +1,6 @@
 pkgbase = chromium-keepassxc-browser
 	pkgdesc = KeePassXC Browser Extension for Chrome / Chromium
-	pkgver = 1.7.1
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/keepassxreboot/keepassxc-browser
 	install = chromium-keepassxc-browser.install
@@ -10,9 +10,9 @@ pkgbase = chromium-keepassxc-browser
 	optdepends = chromium: open-source web browser by Google
 	optdepends = google-chrome: The popular and trusted web browser by Google
 	optdepends = keepassxc: cross-platform community-driven port of the Windows application 'Keepass Password Safe'
-	noextract = chromium-keepassxc-browser-1.7.1.zip
-	source = chromium-keepassxc-browser-1.7.1.zip::https://github.com/keepassxreboot/keepassxc-browser/releases/download/1.7.1/keepassxc-browser_1.7.1_chromium.zip
-	sha256sums = aa11f192912b1817d00b87a6fdb2efef65f0ff16d3c6a0455fac7d65f2c10be7
+	noextract = chromium-keepassxc-browser-1.7.3.zip
+	source = chromium-keepassxc-browser-1.7.3.zip::https://github.com/keepassxreboot/keepassxc-browser/releases/download/1.7.3/keepassxc-browser_1.7.3_chromium.zip
+	sha256sums = e84f938301fed25e79cd75129e0a779fa1b345242b3fdc63e3529ecf4c2d5403
 
 pkgname = chromium-keepassxc-browser
 
