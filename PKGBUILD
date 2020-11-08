@@ -14,6 +14,7 @@ for _p in "${pkgname[@]}"; do
 done
 pkgver=5.9.6
 pkgrel=1
+pkgdesc="Stable linux kernel, modules, headers, api-headers and docs"
 arch=(x86_64)
 url="https://www.kernel.org/"
 license=(GPL-2.0)
