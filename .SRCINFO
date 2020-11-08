@@ -1,7 +1,7 @@
 pkgbase = vrr-app
 	pkgdesc = VRR Fahrplanauskunft built with nativefier (electron)
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.facebook.com
 	arch = armv7l
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = vrr-app
 	source = vrr-app.png
 	source = vrr-app.desktop
 	sha256sums = ce248a8392a7a7c75edc50362aec103d5f98051d0567e57170c606d41cf67ec2
-	sha256sums = 957a502cf84304617cb5e89075ea9ac86681514769e3b839bc50d1c199888d32
+	sha256sums = 93be29e1faab23c478eb9dabeee3dceda920f8dcb11c055e364985bfa5eae6c7
 
 pkgname = vrr-app
 

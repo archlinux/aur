@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=VRR Fahrplanauskunft
 Comment="VRR Fahrplanauskunft built with nativefier (electron)"
-Exec=VRR-App
-Icon=VRR-App
+Exec=vrr-app
+Icon=vrr-app
 Encoding=UTF-8
 Terminal=false
 StartupNotify=true
