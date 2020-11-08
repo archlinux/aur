@@ -3,13 +3,13 @@
 pkgname=spfft
 _pkgname=SpFFT
 pkgver=0.9.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Sparse 3D FFT library with MPI, OpenMP, CUDA and ROCm support"
 arch=("x86_64")
 url="https://github.com/eth-cscs/SpFFT"
 license=('BSD')
-depends=('fftw-mpi')
-makedepends=('cmake')
+depends=('fftw' 'openmpi')
+makedepends=('cmake' 'gcc-fortran')
 optdepends=('cuda: GPU support')
 provides=('spfft')
 conflicts=('spfft-cuda-git')
