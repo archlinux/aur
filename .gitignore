@@ -1,7 +1,3 @@
-# makepkg dirs
-pkg/
-src/
-
-# source files
-*.tar.gz
-*.pkg.tar.xz
+/pkg/
+/src/
+*.tar.*
