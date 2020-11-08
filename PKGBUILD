@@ -1,4 +1,4 @@
-pkgname=qutebrowser-not-only-latin
+pkgname=qutebrowser-not-only-latin-git
 pkgver=1.14.0.r3.g6807ff569
 pkgrel=1
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5. 

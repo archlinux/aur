@@ -1,4 +1,4 @@
-pkgbase = qutebrowser-not-only-latin
+pkgbase = qutebrowser-not-only-latin-git
 	pkgdesc = A keyboard-driven, vim-like browser based on PyQt5. Fork to support commands in not only Latin keyboard layout
 	pkgver = 1.14.0.r3.g6807ff569
 	pkgrel = 1
@@ -30,5 +30,5 @@ pkgbase = qutebrowser-not-only-latin
 	source = git+https://github.com/EmptyBucket/qutebrowser.git#branch=feature/not_only_latin
 	sha256sums = SKIP
 
-pkgname = qutebrowser-not-only-latin
+pkgname = qutebrowser-not-only-latin-git
 
