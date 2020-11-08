@@ -1,7 +1,7 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-desktop-base-git
-pkgver=2020.04.12.2.r5.gffef01a
+pkgver=2020.09.08.apricot.r1.g700f486
 pkgrel=1
 pkgdesc='Base component for Deepin'
 arch=('any')
