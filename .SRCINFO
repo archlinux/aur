@@ -1,7 +1,7 @@
 pkgbase = budgie-lightpad-applet
 	pkgdesc = A stylish panel applet that displays applications in a fullscreen desktop view.
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/UbuntuBudgie/budgie-lightpad-applet
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = budgie-lightpad-applet
 	depends = libpeas
 	depends = lightpad
 	depends = budgie-desktop
-	source = budgie-lightpad-applet-0.0.2.zip::https://github.com/UbuntuBudgie/budgie-lightpad-applet/archive/master.zip
-	sha256sums = 9c8444aef500343906ce74de347403c21a01e05aa06e71fd30d2f2f0f5b717f8
+	source = budgie-lightpad-applet-0.0.2.tar.xz::https://launchpad.net/~ubuntubudgie/+archive/ubuntu/backports/+sourcefiles/budgie-lightpad-applet/0.0.2+build1~groovy/budgie-lightpad-applet_0.0.2+build1~groovy.tar.xz
+	sha256sums = 08f324a62a3396bffb642092a53d7ca6593c634f882cf58dc12f8de454f2d1fc
 
 pkgname = budgie-lightpad-applet
 
