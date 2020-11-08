@@ -1,6 +1,6 @@
 pkgbase = arch-nemesis
 	pkgdesc = AUR Package Automatic Maintainer
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/trickeydan/arch-nemesis
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = arch-nemesis
 	depends = python-requests
 	depends = python-jinja>2
 	depends = python-gitpython
-	source = https://api.github.com/repos/trickeydan/arch-nemesis/tarball/v0.2.0
-	sha512sums = 02336198549ba532952a5cd58ab8ce20fd28b99dac05573a65a67c31915baa2cbaf646573854aad8c7be2fffaba765a2acc8b697b573c341374f095109628298
+	source = https://api.github.com/repos/trickeydan/arch-nemesis/tarball/v0.2.1
+	sha512sums = dbe82e667711cf06b52db5d80840ddb1e285ba1ad9cdcf12a1f0930e1fa017aa2db0677a2764188c675176a0ab3ddbc954ac1a7acbeff73d2d425ef713fa6c19
 
 pkgname = arch-nemesis
 
