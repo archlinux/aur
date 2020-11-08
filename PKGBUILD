@@ -52,7 +52,6 @@ package_freetype2-minimal-git() {
 
   cd freetype2
   make DESTDIR="$pkgdir" install
-  install -Dt "$pkgdir/etc/profile.d" -m644 ../freetype2.sh
 }
 
 # vim:set ts=2 sw=2 et:
