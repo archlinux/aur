@@ -5,7 +5,7 @@ set -euo pipefail
 url='https://zoom.us/download?os=linux'
 
 printf "Fetching current version... "
-curver=$(curl -s "$url" | grep -oP 'Version \K[0-9.]+')
+curver=$(curl -s "$url" | grep -oP 'Version \K[0-9. ()]+' | perl -pne 's/\.\d+ /./;s/[\(\)]//g')
 printf "done!\n"
 
 printf "Reading local package version... "
