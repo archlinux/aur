@@ -1,10 +1,11 @@
 pkgbase = gpu-viewer
 	pkgdesc = A frontend to glxinfo and vulkaninfo.
 	pkgver = 1.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arunsivaramanneo/GPU-Viewer/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	depends = gtk3
 	depends = python
