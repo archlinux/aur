@@ -19,10 +19,8 @@ conflicts=('lib32-freetype2')
 source=(git://git.sv.gnu.org/freetype/freetype2.git
         0001-Enable-table-validation-modules.patch
         0002-Enable-infinality-subpixel-hinting.patch
-        0003-Enable-long-PCF-family-names.patch
-	0004-Enable-old-engines-but-keep-adobe-as-default.patch)
+        0003-Enable-long-PCF-family-names.patch)
 sha1sums=('SKIP'
-          'SKIP'
           'SKIP'
           'SKIP'
           'SKIP')
@@ -44,7 +42,6 @@ prepare() {
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
   patch -Np1 -i ../0002-Enable-infinality-subpixel-hinting.patch
   patch -Np1 -i ../0003-Enable-long-PCF-family-names.patch
-  patch -Np1 -i ../0004-Enable-old-engines-but-keep-adobe-as-default.patch
 
   ./autogen.sh
 }
