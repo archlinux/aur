@@ -8,6 +8,7 @@ pkgbase = intel-cpu-runtime
 	depends = libxml2
 	depends = numactl
 	depends = tbb
+	depends = ncurses5-compat-libs
 	provides = opencl-intel
 	provides = opencl-driver
 	source = https://registrationcenter-download.intel.com/akdlm/irc_nas/vcp/15532/l_opencl_p_18.1.0.015.tgz
