@@ -8,5 +8,5 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Experimental module providing APIs and a host tool to host tool to perform graphics and compute shader conditioning for the upcoming Qt graphics abstraction layer (mingw-w64)'
 depends=(<%== qt6deps qw(base) %>)
-makedepends=('mingw-w64-cmake' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'qt6-shadertools' 'ninja')
+makedepends=('mingw-w64-cmake<%== $static_suffix %>' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'qt6-shadertools' 'ninja')
 optdepends=('qt6-shadertools: development tools')
