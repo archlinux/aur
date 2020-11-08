@@ -2,12 +2,13 @@
 
 pkgname=autocutsel-git
 pkgver=0.10.0.r0.g35388eb
-pkgrel=1
+pkgrel=2
 pkgdesc="Synchronizes the two copy/paste buffers mainly used by X applications"
 arch=(i686 x86_64)
 url='http://www.nongnu.org/autocutsel/'
 install=autocutsel.install
 depends=('libxaw')
+makedepends=('git')
 license=('GPL')
 provides=('autocutsel')
 conflicts=('autocutsel')
