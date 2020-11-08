@@ -1,0 +1,24 @@
+pkgbase = arch-nemesis
+	pkgdesc = AUR Package Automatic Maintainer
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/trickeydan/arch-nemesis
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-dephell
+	depends = python
+	depends = python-pygithub>1.51
+	depends = python-pydantic
+	depends = python-ruamel-yaml
+	depends = python-click
+	depends = python-colorama
+	depends = python-cached-property
+	depends = python-requests
+	depends = python-jinja>2
+	depends = python-gitpython
+	source = https://api.github.com/repos/trickeydan/arch-nemesis/tarball/v0.2.0
+	sha512sums = 02336198549ba532952a5cd58ab8ce20fd28b99dac05573a65a67c31915baa2cbaf646573854aad8c7be2fffaba765a2acc8b697b573c341374f095109628298
+
+pkgname = arch-nemesis
+
