@@ -17,11 +17,26 @@ makedepends=(unzip curl)
 provides=(pleroma)
 conflicts=(pleroma-git)
 
-FLAVOUR=$(arch="$(uname -m)";if [ "$arch" = "x86_64" ];then arch="amd64";elif [ "$arch" = "armv7l" ];then arch="arm";elif [ "$arch" = "aarch64" ];then arch="arm64";else echo "Unsupported arch: $arch">&2;fi;if getconf GNU_LIBC_VERSION>/dev/null;then libc_postfix="";elif [ "$(ldd 2>&1|head -c 9)" = "musl libc" ];then libc_postfix="-musl";elif [ "$(find /lib/libc.musl*|wc -l)" ];then libc_postfix="-musl";else echo "Unsupported libc">&2;fi;echo "$arch$libc_postfix")
+FLAVOUR=$(arch="$(uname -m)";if [ "$arch" = "x86_64" ];then arch="amd64";elif [ "$arch" = "armv7l" ];then arch="arm";elif [ "$arch" = "aarch64" ];then arch="arm64";else echo "Unsupported arch: $arch">&2;fi;echo "$arch")
 
-source=("pleroma.zip::https://git.pleroma.social/api/v4/projects/2/jobs/artifacts/stable/download?job=$FLAVOUR" "pleroma.sysusers")
-md5sums=('407a758fc5546942e3b9abb1004ab6ce'
-         '0026c871dbffef09159f5fae7426868c')
+if [ "$FLAVOUR" = "amd64" ]
+then
+	download_url="https://git.pleroma.social/pleroma/pleroma/-/jobs/154862/artifacts/download";
+	zip_sum="407a758fc5546942e3b9abb1004ab6ce";
+elif [ "$FLAVOUR" = "arm" ]
+then
+	download_url="https://git.pleroma.social/pleroma/pleroma/-/jobs/154864/artifacts/download";
+	zip_sum="48bc29ba97166640e23741e9e6220686";
+elif [ "$FLAVOUR" = "arm64" ]
+then
+	download_url="https://git.pleroma.social/pleroma/pleroma/-/jobs/154866/artifacts/download";
+	zip_sum="2c2440bef65826d1529f3085bbb245a5";
+fi
+
+
+
+source=("pleroma.zip::$download_url" "pleroma.sysusers")
+md5sums=("$zip_sum" '0026c871dbffef09159f5fae7426868c')
 install=pleroma.install
 
 prepare() {

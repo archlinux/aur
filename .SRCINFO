@@ -15,7 +15,7 @@ pkgbase = pleroma
 	optdepends = certbot: For Lets Encrypt Certificates
 	provides = pleroma
 	conflicts = pleroma-git
-	source = pleroma.zip::https://git.pleroma.social/api/v4/projects/2/jobs/artifacts/stable/download?job=amd64
+	source = pleroma.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/154862/artifacts/download
 	source = pleroma.sysusers
 	md5sums = 407a758fc5546942e3b9abb1004ab6ce
 	md5sums = 0026c871dbffef09159f5fae7426868c
