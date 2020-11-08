@@ -12,6 +12,6 @@ source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.
 sha256sums=('9cdd9c9d7f24a38913d5942e395efc677ed6d3cdf281a4701b13b6da6d63c301')
 
 package() {
-  mkdir -p $pkgdir/usr
-	cp -a $srcdir/$pkgname-$pkgver-$pkgrel/usr/bin $pkgdir/usr/bin
+  cd "$pkgname-$pkgver"
+  install -Dm755 "usr/bin/$pkgname" -t "$pkgdir/usr/bin"
 }
