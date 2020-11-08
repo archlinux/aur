@@ -1,0 +1,17 @@
+pkgbase = dog-dns-git
+	pkgdesc = Command-line DNS client (git)
+	pkgver = 0.1.0.r0.g445ed98
+	pkgrel = 1
+	url = https://github.com/ogham/dog
+	arch = x86_64
+	license = custom:EUPL
+	makedepends = cargo
+	makedepends = git
+	provides = dog-dns
+	conflicts = dog-dns
+	conflicts = dog-dns-bin
+	source = git+https://github.com/ogham/dog
+	sha512sums = SKIP
+
+pkgname = dog-dns-git
+
