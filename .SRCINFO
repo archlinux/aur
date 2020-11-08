@@ -1,11 +1,10 @@
 pkgbase = gnome-games-libretro
 	pkgdesc = Libretro definitions for gnome-games
-	pkgver = 3.36.0
-	pkgrel = 2
+	pkgver = 3.38.0
+	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Games
 	arch = any
 	license = GPL3
-	makedepends = git
 	optdepends = libretro-blastem: Sega Mega Drive support
 	optdepends = libretro-bsnes-mercury-git: Super Nintendo Entertainment System support
 	optdepends = libretro-desmume: Nintendo DS support
@@ -13,14 +12,21 @@ pkgbase = gnome-games-libretro
 	optdepends = libretro-gambatte: Nintendo Game Boy/Game Boy Color support
 	optdepends = libretro-handy-git: Atari Lynx support
 	optdepends = libretro-mame-git: Arcade support
+	optdepends = libretro-beetle-ngp-git: Neo Geo Pocket Color
+	optdepends = libretro-beetle-pce-fast: TurboGrafx support
+	optdepends = libretro-beetle-saturn-git: Sega Saturn support
+	optdepends = libretro-beetle-vb-git: Nintendo Virtual Boy support
+	optdepends = libretro-beetle-wswan-git: WonderSwan support
 	optdepends = libretro-mgba: Nintendo Game Boy Advance support
 	optdepends = libretro-nestopia: Nintendo Entertainment System support
+	optdepends = libretro-parallel-n64: Nintendo 64 support
 	optdepends = libretro-pcsx-rearmed-git: Sony PlayStation support
 	optdepends = libretro-picodrive: Sega Genesis/Master System/CD/32X/Pico support
+	optdepends = libretro-prboom-git: Doom support
 	optdepends = libretro-prosystem-git: Atari 7800 support
 	optdepends = libretro-stella2014-git: Atari 2600 support
-	source = git+https://gitlab.gnome.org/GNOME/gnome-games.git#tag=3.36.0
-	sha256sums = SKIP
+	source = https://download.gnome.org/sources/gnome-games/3.38/gnome-games-3.38.0.tar.xz
+	sha256sums = 5c868fd6eb0b8d23b995039633043e90d8d93856d315832de3a315d7b1e54e48
 
 pkgname = gnome-games-libretro
 
