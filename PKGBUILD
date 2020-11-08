@@ -18,6 +18,7 @@ _srcname=linux-vailla-selinux-testing
 _origsrcname=linux-${_pkgverdown}-${_pkgreldown}
 source=(https://git.kernel.org/torvalds/t/${_origsrcname}.tar.gz
         'config'         # the main kernel config file
+        'linux-vanilla-selinux-testing.install' # Installfile
         '60-linux.hook'  # pacman hook for depmod
         '90-linux.hook'  # pacman hook for initramfs regeneration
         'linux-vanilla-selinux-testing.preset'   # standard config files for mkinitcpio ramdisk
@@ -28,6 +29,7 @@ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torva
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('7276dafa91ba23bb988ab80be6fd010059163e1539187eb7daab22d2fa2803e2'
 	    '5fcb5b8849f57906301e3a6afac646b76a052dd95c528def5f4b00c1a16c1206'
+	    'f9b13f3c00be95205ccb77ead42881ecbf0f7ba0d0ad12af294e054272859d81'
             '5c7af03d9b4cade110543ba706bcbd49fc6447726258b4bfec0edff7ca9994d1'
             '9089c8d44982dc03b0dde47632f8aa2fda14754b911acbc266feee85da94b0f5'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
