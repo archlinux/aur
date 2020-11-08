@@ -1,7 +1,7 @@
 pkgbase = linvst3-bin
 	pkgdesc = Linux Windows vst3 wrapper/bridge
 	pkgver = 2.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/osxmidi/LinVst3
 	arch = x86_64
 	groups = pro-audio
@@ -10,8 +10,8 @@ pkgbase = linvst3-bin
 	depends = gtk3
 	optdepends = jack
 	conflicts = linvst3
-	source = https://github.com/osxmidi/LinVst3/releases/download/2.15/LinVst3-2.15.zip
-	md5sums = 33cd93896177daeb833735a59e7fda60
+	source = https://github.com/osxmidi/LinVst3/releases/download/2.15/LinVst3-2.15-Debian-Stretch.zip
+	md5sums = f8b584967ec7516166b34cf183604874
 
 pkgname = linvst3-bin
 
