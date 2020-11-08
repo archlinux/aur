@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=hw-probe-git
-pkgver=1.4+11.g6a1eb65d20
+pkgver=1.6beta+27.gacf2cf2c0f
 pkgrel=1
 pkgdesc="Tool to probe for hardware, check its operability and upload result to the Linux hardware DB: http://linux-hardware.org"
 arch=('any')
@@ -16,7 +16,7 @@ provides=("hw-probe=${pkgver%+*}")
 
 pkgver() {
   cd "$srcdir/hw-probe"
-  git describe --long --abbrev=10 | sed 's/-/+/; s/-/./'
+  git describe --long --abbrev=10 | sed 's/-beta/beta/; s/-/+/; s/-/./'
 }
 
 package() {
