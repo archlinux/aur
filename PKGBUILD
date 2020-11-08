@@ -28,7 +28,7 @@ build() {
   cd "${srcdir}"/mesa-${pkgver}
   for _arch in ${_architectures}; do
     ${_arch}-meson build-${_arch} -Db_lto=false
-    ninja -C build-${_arch}
+    ninja -C build-${_arch} ${MAKEFLAGS}
   done
 }
 
