@@ -1,7 +1,7 @@
 # Maintainer: pryme-svg <edoc.www@gmail.com>
 
 pkgname=lightcord-git
-pkgver=r379.30de578
+pkgver=r385.7512a31
 pkgrel=1
 pkgdesc="A simple - customizable - Discord Client"
 arch=('x86_64')
@@ -39,7 +39,7 @@ package() {
     # Create the folder structure
     install -d "$pkgdir"/opt/lightcord
     install -d "$pkgdir"/usr/share/pixmaps
-
+    install -d "$pkgdir"/usr/bin
     # Copy files over and set rights
     cp -a "$srcdir/$pkgname/builds/linux-unpacked"/. "$pkgdir"/opt/lightcord
     cp -a "$srcdir/lightcord.png" "$pkgdir"/opt/lightcord
