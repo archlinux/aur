@@ -37,7 +37,7 @@ package() {
 
     # Install zsh completions file
     # Zsh is broken for now
-    # install -Dm644 "utils/completions/_pueue" "${pkgdir}/usr/share/zsh/site-functions/_pueue"
+    install -Dm644 "utils/completions/_pueue" "${pkgdir}/usr/share/zsh/site-functions/_pueue"
     install -Dm644 "pueue.bash" "${pkgdir}/usr/share/bash-completion/completions/pueue.bash"
     install -Dm644 "pueue.fish" "${pkgdir}/usr/share/fish/completions/pueue.fish"
 
