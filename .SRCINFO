@@ -1,7 +1,7 @@
 pkgbase = kodi-addon-pvr-stalker
 	pkgdesc = IPTV Stalker PVR client addon for Kodi
 	pkgver = 3.4.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kodi-pvr/pvr.stalker
 	arch = armv6h
 	arch = armv7h
@@ -11,14 +11,12 @@ pkgbase = kodi-addon-pvr-stalker
 	license = GPL
 	makedepends = cmake
 	makedepends = kodi-platform
+	makedepends = git
 	depends = kodi
-	depends = git
 	source = https://github.com/kodi-pvr/pvr.stalker/archive/3.4.10-Leia.tar.gz
-	source = https://github.com/xbmc/xbmc/archive/18.8-Leia.tar.gz
-	source = https://github.com/xbmc/xbmc/commit/8f714dcc7f1a1dfa9b57ef18c3f4accc62cb0652.diff
+	source = https://github.com/xbmc/xbmc/archive/18.9-Leia.tar.gz
 	sha256sums = 03eb428f21d6b8526b6671278b60ac6dc5a761a515af27172d8ac5c814cc3f65
-	sha256sums = 6deb28f725880b1ab6c5920b55ef1190a79b0684ffb30b6e13b199d23a0af296
-	sha256sums = c4ed6c685a3de5633387a8ca79c06141f643c47eace30c614223f9120f72a25a
+	sha256sums = bdf8afa9356b1f815de9984801d3e0d2b46a719e747895b75528f20995c59d2b
 
 pkgname = kodi-addon-pvr-stalker
 
