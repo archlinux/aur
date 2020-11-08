@@ -1,12 +1,12 @@
 # Maintainer: Adrien Wu <adrien.sf.wu@gmail.com>
 pkgname=python-labml
 pkgver=0.4.53
-pkgrel=1
+pkgrel=2
 pkgdesc="Monitor PyTorch & TensorFlow model training on mobile phones"
 url="https://github.com/lab-ml/labml"
 arch=('any')
 provides=('python-labml')
-depends=('python')
+depends=('python' 'python-gitpython' 'python-numpy' 'python-yaml')
 makedepends=('python-setuptools')
 _name="${pkgname#python-}"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
