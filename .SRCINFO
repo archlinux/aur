@@ -1,0 +1,22 @@
+pkgbase = libinput-minimal-git
+	pkgdesc = Input device management and event handling library
+	pkgver = 1.12.3.r8.g51ffff36
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/libinput/
+	arch = x86_64
+	license = custom:X11
+	makedepends = meson
+	depends = mtdev
+	depends = libevdev
+	depends = libwacom
+	optdepends = gtk3: libinput debug-gui
+	optdepends = python-pyudev: libinput measure
+	optdepends = python-evdev: libinput measure
+	provides = libinput
+	conflicts = libinput
+	source = git+https://gitlab.freedesktop.org/libinput/libinput
+	validpgpkeys = SKIP
+	sha512sums = SKIP
+
+pkgname = libinput-minimal-git
+
