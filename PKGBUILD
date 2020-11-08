@@ -11,7 +11,7 @@ license=('BSD 2-Clause "Simplified" License')
 depends=("taglib" "libebur128" "ffmpeg")
 makedepends=('cmake')
 provides=('loudgain' 'rgbpm')
-source=("https://github.com/Moonbase59/loudgain/archive/${pkgver}.tar.gz")
+source=("loudgain-${_pkgver}.tar.gz::https://github.com/Moonbase59/loudgain/archive/${pkgver}.tar.gz")
 sha256sums=('1137c193ad941b366e87c5d84ccc95a7aa8571affc060db0bd1cf72c489aeaee')
 
 build() {
