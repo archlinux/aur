@@ -1,0 +1,12 @@
+pkgbase = fcitx5-theme-opensuse
+	pkgdesc = Fcitx5 theme on openSUSE, including Dartmouth, Harlequin, and New Air
+	pkgver = 0.0.0.20201110
+	pkgrel = 1
+	url = https://github.com/xuzhao9/fcitx5-theme-opensuse
+	arch = any
+	license = LGPL2.1
+	source = https://github.com/xuzhao9/fcitx5-theme-opensuse/archive/62ed596f9585344e95b6e05cbb750c7f622dd82a/fcitx5-theme-opensuse-62ed596f9585344e95b6e05cbb750c7f622dd82a.tar.gz
+	b2sums = 1d41830e720293e033085e08f6f8d4c21cf04604094d414e74909ad5e7395a4afa06d81f70d8447164c0dead89a9f184606cca21832fb1887eb4a1f356ca6768
+
+pkgname = fcitx5-theme-opensuse
+
