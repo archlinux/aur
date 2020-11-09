@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 pkgname=mautrix-telegram
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A Matrix-Telegram hybrid puppeting/relaybot bridge."
 url="https://github.com/tulir/mautrix-telegram"
 depends=('python' 'python-sqlalchemy' 'python-alembic' 'python-ruamel-yaml'
@@ -43,6 +43,7 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
+	_shared_dir="/usr/share/${pkgname}"
 	python setup.py install --optimize=1 --skip-build --root="${pkgdir}/" --prefix="/usr"
 
 	# it's a semi-common failure for python packages to install tests in the main dir
@@ -50,17 +51,16 @@ package() {
 	rm -rf "${pkgdir}$(python -c 'import site; print(site.getsitepackages()[0])')/tests"
 
 	# TODO: remove this junk when ver 9 gets out of rc since it has a param data_files to chose the path
-	_shared_dir="/usr/share/${pkgname}"
 	mkdir -p "${pkgdir}${_shared_dir}"
 	mv "${pkgdir}/usr/"{alembic,alembic.ini} "${pkgdir}/${_shared_dir}"
 	mv "${pkgdir}$(python -c 'import site; print(site.getsitepackages()[0])')/${pkgname//-/_}/example-config.yaml" "${pkgdir}${_shared_dir}"
 
 	# adjust alembic script dir location so that by using an abs path it can be used in CWD
-	sed -i -e "s|script_location = alembic|script_location = /usr/share/${pkgname}/alembic/|" "${pkgdir}/usr/share/${pkgname}/alembic.ini"
+	sed -i -e "s|script_location = alembic|script_location = ${_shared_dir}/alembic/|" "${pkgdir}${_shared_dir}/alembic.ini"
 
 	install -Dvm 644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 	install -Dvm 644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 	install -Dvm 644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
-	install -Dvm 640 "${pkgdir}/usr/share/${pkgname}/example-config.yaml" "${pkgdir}/etc/${pkgname}/config.yaml"
+	install -Dvm 640 "${pkgdir}${_shared_dir}/example-config.yaml" "${pkgdir}/etc/${pkgname}/config.yaml"
 }
