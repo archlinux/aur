@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 pkgname=mautrix-telegram
 pkgver=0.8.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A Matrix-Telegram hybrid puppeting/relaybot bridge."
 url="https://github.com/tulir/mautrix-telegram"
 depends=('python' 'python-sqlalchemy' 'python-alembic' 'python-ruamel-yaml'
@@ -61,4 +61,13 @@ package() {
 	install -Dvm 644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
 	install -Dvm 640 "${pkgdir}${_shared_dir}/example-config.yaml" "${pkgdir}/etc/${pkgname}/config.yaml"
+}
+
+post_install() {
+	cat <<- EOF
+	after editing /etc/${pkgname}/config.yaml, generate a registration file using
+	# ${pkgname} -b /etc/${pkgname}/config.yaml -c /usr/share/${pkgname}/example-config.yaml -r /etc/${pkgname}registration.yaml -g
+	then update the permissions/ownership using
+	$ systemd-tmpfiles --create --prefix /etc/${pkgname}
+	EOF
 }
