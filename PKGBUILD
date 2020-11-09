@@ -6,12 +6,12 @@ pkgbase=dfatmo
 pkgname=('dfatmo' 'vdr-dfatmo' 'kodi-addon-dfatmo')
 pkgver=0.5.0
 _vdrapi=2.4.3
-pkgrel=4
+pkgrel=5
 epoch=1
 url="https://github.com/durchflieger/${pkgbase}"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
-makedepends=('libusbx' 'python2' "vdr-api=${_vdrapi}" 'zip')
+makedepends=('libusb' 'python2' "vdr-api=${_vdrapi}" 'zip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/durchflieger/${pkgbase}/archive/v${pkgver}.tar.gz"
         '45-df10ch.rules'
         "50-dfatmo.conf")
@@ -39,7 +39,7 @@ package_dfatmo() {
   pkgdesc="Analyzes the video picture and generates output data for so called 'Atmolight' controllers"
   replaces=('dfatmo-driver')
   conflicts=('dfatmo-driver')
-  depends=('libusbx' 'python2')
+  depends=('libusb' 'python2')
 
   cd "${srcdir}/DFAtmo-${pkgver}"
   make DFATMOINSTDIR="${pkgdir}/usr" ATMODRIVER=atmodriver.so dfatmoinstall
