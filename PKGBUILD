@@ -2,7 +2,7 @@
 
 pkgname=joplin-beta
 pkgver=1.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest pre-release - open source note taking and to-do application"
 arch=('x86_64')
 depends=('nodejs>10' 'nss' 'gtk3' 'libxss' 'libsecret' 'rsync' 'libgsf' 'libexif' 'libcroco')
