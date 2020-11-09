@@ -1,7 +1,7 @@
 # Maintainer: Andrew Steinke <rkcf@rkcf.me>
 
 pkgname=eslint-plugin-vue
-pkgver=6.2.2
+pkgver=7.1.0
 pkgrel=1
 pkgdesc='ESLint Plugin for Vue.js'
 arch=('any')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('eslint')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
+md5sums=('6c5a3f99efffe1390194abf49f24b55b')
 noextract=($pkgname-$pkgver.tgz)
-md5sums=('c885ad83ba3848cb407d51ec42f3c73b')
 
 package() {
 	npm install --verbose -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
