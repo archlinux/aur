@@ -5,7 +5,7 @@
 
 pkgname=mumps-seq-shared
 _pkgname=mumps
-pkgver=5.3.4
+pkgver=5.3.5
 pkgrel=1
 pkgdesc="Sparse solver library using Gaussian elimination (sequential version, shared library version)"
 url="http://mumps.enseeiht.fr"
@@ -19,7 +19,7 @@ source=("http://mumps.enseeiht.fr/${_pkgname^^}_${pkgver}.tar.gz"
         "shared-libseq.patch"
         "shared-pord.patch"
         "shared-mumps.patch")
-sha256sums=('28ab16bf4cf9e4ff67f2d987941c1b6b584dd0efa5a3ba7d3bc7f1a75bdc6f7d'
+sha256sums=('e5d665fdb7043043f0799ae3dbe3b37e5b200d1ab7a6f7b2a4e463fd89507fa4'
             '1a3d973ca91854bc2b0ab3b9813e09a598309e6c10ac65af8a139db5e1146cdc'
             '68b5b924dc1a4837b81c6efc5c36160bbd5ea5adcefb55939d7a615c16352338'
             '05e8b966828aa447a78770f8049d713f5d67bebb0137bc040b91f881c103fbb4'
