@@ -7,7 +7,7 @@ pkgdesc="An audio processing library which can perform noise suppression, beamfo
 arch=('armv6h' 'armv7h' 'aarch64')
 url="https://github.com/Seeed-Studio/pi_repo"
 license=('PROPRIETARY')
-depends=('libpulse')
+depends=('fftw' 'libpulse' 'libpulse' 'libsndfile')
 provides=('librespeaker')
 conflicts=('librespeaker')
 install=
@@ -16,6 +16,7 @@ source=("https://github.com/M0Rf30/librespeaker-bin/archive/$pkgver.tar.gz")
 package() {
   cd "$pkgname-$pkgver"
   cp -r * "$pkgdir"
+  chmod +x $pkgdir/usr/lib/*.so.*
 }
 
-md5sums=('6b5a1d60215f2dec4235dee6a6f4f57e')
+md5sums=('f3a6022dc9481ab42e6761eb98c370f2')

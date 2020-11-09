@@ -7,11 +7,14 @@ pkgbase = librespeaker-bin
 	arch = armv7h
 	arch = aarch64
 	license = PROPRIETARY
+	depends = fftw
 	depends = libpulse
+	depends = libpulse
+	depends = libsndfile
 	provides = librespeaker
 	conflicts = librespeaker
 	source = https://github.com/M0Rf30/librespeaker-bin/archive/2.1.2.190110.tar.gz
-	md5sums = 6b5a1d60215f2dec4235dee6a6f4f57e
+	md5sums = f3a6022dc9481ab42e6761eb98c370f2
 
 pkgname = librespeaker-bin
 
