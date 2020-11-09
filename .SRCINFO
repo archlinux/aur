@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_deriving
 	pkgdesc = Type-driven code generation for OCaml
 	pkgver = 5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml-ppx/ppx_deriving
 	arch = x86_64
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = ocaml-ppx_deriving
 	depends = ocaml-ppxlib>=0.18.0
 	depends = ocaml-result
 	options = !strip
-	source = ocaml-ppx_deriving-5.3-1.tar.gz::https://github.com/ocaml-ppx/ppx_deriving/archive/v5.3.tar.gz
-	sha256sums = 0042f0acd21fa2c32ab459adc47db07a0bee6e9fe526adda41d83c7262590b5a
+	source = ocaml-ppx_deriving-5.3-2.tar.gz::https://github.com/ocaml-ppx/ppx_deriving/archive/acb48690d73d15c6bf999087ed251334ecd1cb33.tar.gz
+	sha256sums = 37300e0bd22ccd7d51e918b09579d66ed36f49a6b79a6c2f901d03c0079fbc23
 
 pkgname = ocaml-ppx_deriving
