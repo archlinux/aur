@@ -44,7 +44,6 @@ pkgbase = linux-kernel
 
 pkgname = linux-kernel
 	pkgdesc = Stable linux kernel and modules
-  provides = Stable linux kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -54,12 +53,9 @@ pkgname = linux-kernel
 
 pkgname = linux-kernel-headers
 	pkgdesc = Headers and scripts for building modules for the linux-kernel package
-	provides = Headers and scripts for building modules for the linux-kernel package
 
 pkgname = linux-kernel-api-headers
 	pkgdesc = Stable linux kernel api headers
-  provides = Stable linux kernel api headers
 
 pkgname = linux-kernel-docs
   	pkgdesc = Documentation for the linux-kernel package
-    provides = Documentation for the linux-kernel package
