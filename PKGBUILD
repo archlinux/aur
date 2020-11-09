@@ -11,37 +11,36 @@ depends=('gconf' 'libnotify' 'libappindicator-gtk2' 'libxtst' 'libxss' 'nss' 'pa
 install=rto-proxy-bin.install
 
 source_x86_64=("$_pkgname-$pkgver-$arch.deb::${url}/releases/download/v$pkgver/${_pkgname}_${pkgver}_amd64.deb"
-               "https://www.dropbox.com/s/ghpvkkifaw6qrh8/app.asar"
+               "app.asar::https://github.com/varlesh/focal-packages/raw/master/rto-proxy-amd64-app.asar"
                "$_pkgname"
                "$pkgname.install"
                "$_pkgname.desktop")
 
 source_i686=("$_pkgname-$pkgver-$arch.deb::${url}/releases/download/v$pkgver/${_pkgname}_${pkgver}_i386.deb"
-             "https://www.dropbox.com/s/ghpvkkifaw6qrh8/app.asar"
+             "app.asar::https://github.com/varlesh/focal-packages/raw/master/rto-proxy-amd64-app.asar"
              "$_pkgname"
              "$pkgname.install"
              "$_pkgname.desktop")
+sha256sums_x86_64=('b4453fc26b39699d773934138be282256e3baeecad865e35502df193a79fc643'
+                   '3aa912e245fa8684cbea0240d244353463a2cc30d885c3cdc83ef160de337a75'
+                   '7605ccc2e99e0cbac0f3f9d1dacb38b88c8267dc92c930d63f9599915b9430d1'
+                   '076a2f3ae04bec5570933513592c734e3a2815b3557cb01bf8ac3866fab98d01'
+                   '5e57413fb8ead1bc5eebd56f3f4eec26a50ab222d54f6a6a283e4bb34ee32db7')
 
-md5sums_x86_64=('ba8229621770652696b07152d15d703b'
-                '97dcbd2db3810aa62b02f24a6fa06b92'
-                'ffb38c0f5a441332254c739b665f3d35'
-                'd3547df21d6cf86a2a2dcb9d96739127'
-                '9478d801cb2285b39e549268c9e17a82'
-)
-md5sums_i686=('4d7ccd828131840f15b382ce5d08ff3b'
-              '97dcbd2db3810aa62b02f24a6fa06b92'
-              'ffb38c0f5a441332254c739b665f3d35'
-              'd3547df21d6cf86a2a2dcb9d96739127'
-              '9478d801cb2285b39e549268c9e17a82'
-)
+sha256sums_i686=('b4453fc26b39699d773934138be282256e3baeecad865e35502df193a79fc643'
+                 '3aa912e245fa8684cbea0240d244353463a2cc30d885c3cdc83ef160de337a75'
+                 '7605ccc2e99e0cbac0f3f9d1dacb38b88c8267dc92c930d63f9599915b9430d1'
+                 '076a2f3ae04bec5570933513592c734e3a2815b3557cb01bf8ac3866fab98d01'
+                 '5e57413fb8ead1bc5eebd56f3f4eec26a50ab222d54f6a6a283e4bb34ee32db7')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
-  bsdtar -xf data.tar.xz -C "$pkgdir/"
+  bsdtar -xf data.tar.xz -C "${pkgdir}/"
 # FIX ERROR SEE ---> https://github.com/RutrackerOrg/rutracker-proxy/issues/9
-  install -Dm 755 "$srcdir/app.asar" "$pkgdir/opt/$_pkgname/resources/"
+# Thks varlesh for hosting (GitHub)
+  install -Dm 755 "${srcdir}/app.asar" "${pkgdir}/opt/${_pkgname}/resources/"
 # FIX ERROR SEE ---> https://github.com/RutrackerOrg/rutracker-proxy/issues/19#issuecomment-619498712
-  install -dm 755 "$pkgdir/usr/bin/"
-  install -Dm 755 "$srcdir/${_pkgname}" "$pkgdir/usr/bin/"
-  install -Dm 755 "$srcdir/${_pkgname}.desktop" "$pkgdir/usr/share/applications/"
+  install -dm 755 "${pkgdir}/usr/bin/"
+  install -Dm 755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/"
+  install -Dm 755 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/"
 }
