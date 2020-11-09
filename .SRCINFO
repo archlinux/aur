@@ -1,12 +1,13 @@
 pkgbase = wllvm-git
-	pkgdesc = A wrapper script to build whole-program LLVM bitcode files.
-	pkgver = r365.189fab4
+	pkgdesc = A wrapper script to build whole-program LLVM bitcode files
+	pkgver = r461.6d8955b
 	pkgrel = 1
 	url = https://github.com/travitch/whole-program-llvm
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = python3
+	makedepends = python-setuptools
+	depends = python
 	source = wllvm-git::git+https://github.com/travitch/whole-program-llvm.git
 	md5sums = SKIP
 
