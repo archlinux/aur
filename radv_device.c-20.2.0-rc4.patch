@@ -1,0 +1,60 @@
+--- mesa-20.2.0-rc4/src/amd/vulkan/radv_device.c	2020-09-03 10:43:01.000000000 -0400
++++ radv_device.c	2020-11-09 12:43:18.550925379 -0500
+@@ -542,6 +542,7 @@
+ 	{"pswave32", RADV_PERFTEST_PS_WAVE_32},
+ 	{"gewave32", RADV_PERFTEST_GE_WAVE_32},
+ 	{"dfsm", RADV_PERFTEST_DFSM},
++	{"aco", RADV_PERFTEST_ACO},
+ 	{NULL, 0}
+ };
+ 
+@@ -675,6 +676,8 @@
+ 	instance->debug_flags = parse_debug_string(getenv("RADV_DEBUG"),
+ 						   radv_debug_options);
+ 
++  instance->debug_flags |= RADV_DEBUG_LLVM;
++
+ 	const char *radv_perftest_str = getenv("RADV_PERFTEST");
+ 	instance->perftest_flags = parse_debug_string(radv_perftest_str,
+ 						      radv_perftest_options);
+@@ -7401,11 +7404,11 @@
+                                                         enum radeon_bo_flag ignore_flags)
+ {
+ 	/* Don't count GTT/CPU as relevant:
+-	 * 
++	 *
+ 	 * - We're not fully consistent between the two.
+ 	 * - Sometimes VRAM gets VRAM|GTT.
+ 	 */
+-	const enum radeon_bo_domain relevant_domains = RADEON_DOMAIN_VRAM | 
++	const enum radeon_bo_domain relevant_domains = RADEON_DOMAIN_VRAM |
+ 	                                               RADEON_DOMAIN_GDS |
+ 	                                               RADEON_DOMAIN_OA;
+ 	uint32_t bits = 0;
+@@ -7608,7 +7611,7 @@
+ {
+ 	RADV_FROM_HANDLE(radv_physical_device, pdevice, physicalDevice);
+ 	VkSemaphoreTypeKHR type = radv_get_semaphore_type(pExternalSemaphoreInfo->pNext, NULL);
+-	
++
+ 	if (type == VK_SEMAPHORE_TYPE_TIMELINE && pdevice->rad_info.has_timeline_syncobj &&
+ 	    pExternalSemaphoreInfo->handleType == VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT) {
+ 		pExternalSemaphoreProperties->exportFromImportedHandleTypes = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT;
+@@ -7622,7 +7625,7 @@
+ 
+ 	/* Require has_syncobj_wait_for_submit for the syncobj signal ioctl introduced at virtually the same time */
+ 	} else if (pdevice->rad_info.has_syncobj_wait_for_submit &&
+-	           (pExternalSemaphoreInfo->handleType == VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT || 
++	           (pExternalSemaphoreInfo->handleType == VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT ||
+ 	            pExternalSemaphoreInfo->handleType == VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT)) {
+ 		pExternalSemaphoreProperties->exportFromImportedHandleTypes = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT | VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT;
+ 		pExternalSemaphoreProperties->compatibleHandleTypes = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT | VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT;
+@@ -7720,7 +7723,7 @@
+ 	RADV_FROM_HANDLE(radv_physical_device, pdevice, physicalDevice);
+ 
+ 	if (pdevice->rad_info.has_syncobj_wait_for_submit &&
+-	    (pExternalFenceInfo->handleType == VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT || 
++	    (pExternalFenceInfo->handleType == VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT ||
+ 	     pExternalFenceInfo->handleType == VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT)) {
+ 		pExternalFenceProperties->exportFromImportedHandleTypes = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT | VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT;
+ 		pExternalFenceProperties->compatibleHandleTypes = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT | VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT;

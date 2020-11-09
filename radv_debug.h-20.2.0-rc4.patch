@@ -1,0 +1,10 @@
+--- mesa-20.2.0-rc4/src/amd/vulkan/radv_debug.h	2020-09-03 10:43:01.000000000 -0400
++++ radv_debug.h	2020-11-09 12:42:24.158927080 -0500
+@@ -67,6 +67,7 @@
+ 	RADV_PERFTEST_PS_WAVE_32      = 1 << 5,
+ 	RADV_PERFTEST_GE_WAVE_32      = 1 << 6,
+ 	RADV_PERFTEST_DFSM            = 1 << 7,
++	RADV_PERFTEST_ACO             = 1 << 8,
+ };
+ 
+ bool
