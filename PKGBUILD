@@ -1,35 +1,33 @@
-# Maintainer: Denis Salopek <denis.sale@gmail.com>
+# Maintainer: Henry-Joseph Audéoud <h.audeoud@gmail.com>
+#
+# From imunes-git
+# Contributor: Denis Salopek <denis.sale@gmail.com>
 # Contributor: Robin Nehls <aur@manol.is>
 
-pkgname=imunes-git
-pkgver=v2.3.0.31.gfd572f5
+pkgname=imunes
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Integrated Multiprotocol Network Emulator/Simulator"
-arch=('i686' 'x86_64')
+arch=(any)
 url="http://imunes.net/"
-license=('BSD')
-depends=('tk' 'tcllib' 'wireshark-gtk2' 'imagemagick' 'docker' 'openvswitch' 'xterm')
-makedepends=('make')
-provides=('imunes')
-source=('git+https://github.com/imunes/imunes.git'
+license=('custom')
+depends=('tk' 'tcllib' 'wireshark-qt' 'imagemagick' 'docker' 'openvswitch' 'xterm')
+makedepends=()
+provides=()
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/imunes/${pkgname}/archive/v${pkgver}.tar.gz"
         '0001-PKGBUILD-compat.patch')
-sha1sums=('SKIP'
+sha1sums=('0d1c6fd1ce4afe31735d4dc46ae2ca4ddc74156a'
           '4d68f7f685222a23bb7d54d5cff78aa2da628135')
-_gitname=imunes
-
-pkgver() {
-  cd $_gitname
-  echo $(git describe --always | sed 's/-/./g')
-}
 
 prepare() {
-  cd $_gitname
-  patch -p1 -i $srcdir/0001-PKGBUILD-compat.patch
+  cd "${pkgname}-${pkgver}" || exit
+  patch -p1 -i "${srcdir}/0001-PKGBUILD-compat.patch"
 }
 
 package() {
-  cd $_gitname
-  make PREFIX=${pkgdir}/usr REALPREFIX=/usr install
+  cd "${pkgname}-${pkgver}" || exit
+  make PREFIX="${pkgdir}/usr" REALPREFIX=/usr install
+  install -D COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
