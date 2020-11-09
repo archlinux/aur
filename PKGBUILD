@@ -4,7 +4,7 @@ _pkgname=pythondata-software-compiler_rt
 _pyname=${_pkgname//-/_}
 pkgname=python-$_pkgname
 pkgver=2020.04
-pkgrel=1
+pkgrel=2
 pkgdesc='Python module containing data files for compiler_rt software (for use with LiteX)'
 arch=('any')
 url='https://github.com/litex-hub/pythondata-software-compiler_rt'
@@ -27,4 +27,3 @@ package() {
 
   install -Dm 644 $_pyname/data/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
