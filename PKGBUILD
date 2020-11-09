@@ -2,15 +2,15 @@
 
 pkgbase=python-arabic-reshaper
 pkgname=('python-arabic-reshaper' 'python2-arabic-reshaper')
-pkgver=2.0.15
-pkgrel=3
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="Reconstruct Arabic sentences to be used in applications that don't support Arabic"
 makedepends=('python-setuptools' 'python2-setuptools' 'python-future' 'python2-future' 'python2-configparser')
 url="https://github.com/mpcabd/python-arabic-reshaper"
 license=('MIT')
 arch=('any')
 source=("$url/archive/v$pkgver.tar.gz")
-md5sums=('fadcb653c58466eb60bf8f1b4d0afd57')
+md5sums=('d1378b72ba12b1816d26710576ed0a78')
 
 prepare() {
   cp -a $pkgname-$pkgver{,-py2}
