@@ -1,12 +1,13 @@
 pkgbase = mstpd
 	pkgdesc = User-space RSTP and MSTP daemon
-	pkgver = 0.0.6
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/mstpd/mstpd
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	source = git+https://github.com/mstpd/mstpd.git#commit=76289208dcaa9b9bfdd69968e19357eb07a4b21f
+	makedepends = git
+	source = git+https://github.com/mstpd/mstpd.git#commit=03b5ebaa53fc5d2d47617de1e40d8180d18dd506
 	source = mstpd.service
 	sha256sums = SKIP
 	sha256sums = 36c03f67ca55efc2822e2bec04d62c9f43417772b7a10effcf584664ff78227b
