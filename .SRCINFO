@@ -1,0 +1,13 @@
+pkgbase = redli
+	pkgdesc = A humane alternative to the Redis-cli and TLS
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/IBM-Cloud/redli
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	source = https://github.com/IBM-Cloud/redli/archive/v0.5.2.tar.gz
+	sha256sums = 802dbb6f7ce616856fb8dc3f7352826724711dfccda25eecaa90e27a9edd33ed
+
+pkgname = redli
+
