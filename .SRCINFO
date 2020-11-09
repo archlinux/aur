@@ -1,0 +1,52 @@
+pkgbase = linux-vanilla-selinux-49
+	pkgdesc = Vanilla-Linux-Kernel (4.9) from kernel.org with Selinux enabled. Without docs. Will be fixed in the next builds (Problem with Sphinx).
+	pkgver = 4.9.241
+	pkgrel = 1
+	url = https://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.241.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.241.tar.sign
+	source = config
+	source = linux-vanilla-selinux-49.install
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux-vanilla-selinux-49.preset
+	source = sphinx-workaround.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = c4c6d04f91d881e68524bda6062b5c1835f285bd03344bf8f2eaeef3394bb32c
+	sha256sums = cb04db6d546895dc485d576742891367f6c1d07f9d81d0dccda7d7207084d60f
+	sha256sums = 91b90dc594160fb78a8f3fdd2f7ec424d18ff2f221e26f437c3d06af95f36ee2
+	sha256sums = f9b13f3c00be95205ccb77ead42881ecbf0f7ba0d0ad12af294e054272859d81
+	sha256sums = 5c7af03d9b4cade110543ba706bcbd49fc6447726258b4bfec0edff7ca9994d1
+	sha256sums = 9089c8d44982dc03b0dde47632f8aa2fda14754b911acbc266feee85da94b0f5
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = 8e471ff3740a19859c808bee885aac2f3bae3a6ab2692051e71700ee43549ffa
+
+pkgname = linux-vanilla-selinux-49
+	pkgdesc = The Linux-vanilla-selinux-49 kernel and modules
+	install = linux-vanilla-selinux-49.install
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	backup = etc/mkinitcpio.d/linux-vanilla-selinux-49.preset
+
+pkgname = linux-vanilla-selinux-49-headers
+	pkgdesc = Header files and scripts for building modules for Linux-vanilla-selinux-49 kernel
+
+pkgname = linux-vanilla-selinux-49-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-vanilla-selinux-49 kernel
+
