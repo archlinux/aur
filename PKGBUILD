@@ -1,7 +1,7 @@
 # Maintainer: Ryan Hirasaki <ryanhirasaki [plus] arch [at] gmail [dot] com>
 pkgname=libtensorflow-lite
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tensorflow Lite - Library and Headers"
 arch=('x86_64')
 url='https://github.com/tensorflow/tensorflow'
