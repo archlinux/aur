@@ -1,6 +1,6 @@
 pkgbase = ttf-work-sans
 	pkgver = 2.010
-	pkgrel = 1
+	pkgrel = 2
 	url = http://weiweihuanghuang.github.io/Work-Sans/
 	arch = any
 	license = custom:OFL
@@ -10,4 +10,7 @@ pkgbase = ttf-work-sans
 	sha512sums = 37396630564156a16ddcc386f0f8abfe41e624cd3f9dbbaf8226772b2511e311af3ccd75308c9a6562001ec2903eefaac5fec032d08b8fe3066fc30fbdf085f4
 
 pkgname = ttf-work-sans
+
+pkgname = ttf-work-sans-variable
+	provides = ttf-work-sans
 
