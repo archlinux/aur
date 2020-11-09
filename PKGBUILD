@@ -7,12 +7,12 @@ url="https://github.com/m-labs/migen"
 license=('BSD')
 makedepends=('git' 'python-setuptools')
 depends=('python')
-provides=('migen')
-options=(!emptydirs)
+provides=("${pkgname%%-git}")
+conflicts=("${pkgname%%-git}")
+replaces=('migen-git')
 source=('git+https://github.com/m-labs/migen.git')
 md5sums=('SKIP')
 pkgver=0.9.2.rcc6e76e
-provides=(python-migen)
 
 pkgver() {
   cd "${srcdir}/migen"

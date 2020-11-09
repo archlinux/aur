@@ -9,7 +9,8 @@ pkgbase = python-migen-git
 	makedepends = python-setuptools
 	depends = python
 	provides = python-migen
-	options = !emptydirs
+	conflicts = python-migen
+	replaces = migen-git
 	source = git+https://github.com/m-labs/migen.git
 	md5sums = SKIP
 
