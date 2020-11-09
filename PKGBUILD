@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=dstask
-pkgver=0.23
+pkgver=0.23.1
 pkgrel=1
 pkgdesc="Single binary terminal-based TODO manager with git-based sync + markdown notes per task"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -10,13 +10,13 @@ license=('MIT')
 depends=('git')
 makedepends=('go')
 install=dstask.install
-source=("git+$url#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('48f485c591dfaf0fd85902f826c0a6a74057aea702e7fd30a59f53e905cbfb67')
 
 build() {
-    cd $pkgname
+    _commit=$(zcat $pkgname-$pkgver.tar.gz | git get-tar-commit-id)
 
-    _commit=$(git rev-list -n1 v$pkgver)
+    cd $pkgname-$pkgver
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -35,14 +35,8 @@ build() {
         cmd/dstask.go
 }
 
-check() {
-    cd $pkgname
-    export EMAIL="${USER}@${HOST}"
-    go test -mod=vendor ./...
-}
-
 package() {
-    cd $pkgname
+    cd $pkgname-$pkgver
     install -Dm755 $pkgname -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 .dstask-bash-completions.sh "$pkgdir/usr/share/bash-completion/completions/$pkgname"
