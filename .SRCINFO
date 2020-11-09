@@ -1,8 +1,8 @@
 pkgbase = pekka-kana-2
 	pkgdesc = an oldschool 2D platformer where you control a rooster called Pekka
 	pkgver = 1.2.7
-	pkgrel = 1
-	url = https://gitlab.com/coringao/pekka-kana-2
+	pkgrel = 2
+	url = https://pistegamez.net/game_pk2.html
 	arch = i686
 	arch = x86_64
 	arch = armv7h

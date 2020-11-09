@@ -2,10 +2,10 @@
 
 pkgname=pekka-kana-2
 pkgver=1.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="an oldschool 2D platformer where you control a rooster called Pekka"
 arch=('i686' 'x86_64' 'armv7h' 'armv8')
-url="https://gitlab.com/coringao/pekka-kana-2"
+url="https://pistegamez.net/game_pk2.html"
 license=(BSD-2-Clause)
 depends=(sdl2 sdl2_image sdl2_mixer)
 source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/coringao/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
