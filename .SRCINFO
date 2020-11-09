@@ -1,0 +1,16 @@
+pkgbase = vim-vsnip-git
+	pkgdesc = VSCode(LSP)'s snippet feature in vim.
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/hrsh7th/vim-vsnip
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim
+	optdepends = vim-vsnip-integ: LSP Client support
+	source = vim-vsnip-git::git+https://github.com/hrsh7th/vim-vsnip
+	md5sums = SKIP
+
+pkgname = vim-vsnip-git
+
