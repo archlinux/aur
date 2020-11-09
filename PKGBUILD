@@ -4,8 +4,8 @@
 pkgname=1password-bin
 _pkgname=1Password
 _binname=1password
-pkgver=0.9.2
-_pkgver=0.9.2-1
+pkgver=0.9.3
+_pkgver=0.9.3
 pkgrel=1
 pkgdesc="Password manager and secure wallet (development preview)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('libxss' 'gtk3' 'nss')
 license=('custom:LicenseRef-1Password-Proprietary')
 url='https://1password.com/'
 source=("https://onepassword.s3.amazonaws.com/linux/debian/pool/main/1/1password/1password-$_pkgver.deb")
-sha256sums=('ea32a83ca7a68f06cb1057801fa9c9c7745847480d949d9145b05e28497a27ab')
+sha256sums=('ca9adc19f16dff24b4df053bff2c656a616a9bd1379d8d3dabd0cc67abf7c786')
 
 package() {
   bsdtar -xv -C "${pkgdir}" -f "${srcdir}/data.tar.xz"
