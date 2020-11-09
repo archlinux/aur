@@ -2,9 +2,9 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-cdplayer
-pkgver=1.2.4
+pkgver=1.2.5
 _vdrapi=2.4.3
-pkgrel=4
+pkgrel=1
 pkgdesc="CD-Player plugin which supports CD-Text and CDDB-Database"
 url="http://uli-eckhardt.de/vdr/cdplayer.en.shtml"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -15,8 +15,8 @@ backup=("var/lib/vdr/plugins/$_plugname/cd.mpg")
 source=("https://www.uli-eckhardt.de/vdr/download/${pkgname}-${pkgver}.tgz"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('47b97a8e076bd5f808ee23179f982f18'
-         '44d03e8a2436daab8d9f31f444d494af')
+sha256sums=('f4e565d57551790790d491bf573068cfd6ac7bdd1fa527abbb59e84d2744269f'
+            'db9505b0b84d281f0268a7ba80e829bb69a2da747c825e15ad0af78b45c883b9')
 
 build() {
   cd "${srcdir}/${_plugname}-${pkgver}"
