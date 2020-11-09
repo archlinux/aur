@@ -1,0 +1,15 @@
+pkgbase = libtensorflow-lite
+	pkgdesc = Tensorflow Lite - Library and Headers
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://github.com/tensorflow/tensorflow
+	arch = x86_64
+	license = Apache
+	depends = gcc
+	depends = flatbuffers
+	provides = libtensorflow-lite
+	source = https://github.com/tensorflow/tensorflow/archive/v2.3.1.tar.gz
+	sha256sums = ee534dd31a811f7a759453567257d1e643f216d8d55a25c32d2fbfff8153a1ac
+
+pkgname = libtensorflow-lite
+
