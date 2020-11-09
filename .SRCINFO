@@ -5,6 +5,7 @@ pkgbase = python-pynest2d-git
 	url = https://github.com/Ultimaker/pynest2d
 	arch = any
 	license = LGPL3
+	makedepends = git
 	makedepends = sip
 	depends = libnest2d
 	provides = python-pynest2d
