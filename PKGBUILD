@@ -3,7 +3,7 @@
 
 pkgname=python-freetype-py
 _pkgname=freetype-py
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="FreeType Python bindings"
 arch=('any')
@@ -11,8 +11,8 @@ url="https://github.com/rougier/freetype-py/"
 license=('BSD')
 depends=('python' 'freetype2')
 makedepends=('python-setuptools' 'python-setuptools-scm')
-source=("https://files.pythonhosted.org/packages/source/f/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha1sums=('3849229fe378526542edc52dff5b55bdb240fc38')
+source=("https://files.pythonhosted.org/packages/source/f/$_pkgname/$_pkgname-$pkgver.zip")
+sha1sums=('d7ad11b5ac66b8fd1f270f1640d5a065b197eeae')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
