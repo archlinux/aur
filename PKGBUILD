@@ -8,7 +8,7 @@ depends=('python' 'python-sqlalchemy' 'python-alembic' 'python-ruamel-yaml'
 	'python-magic-ahupp' 'python-commonmark' 'python-aiohttp' 'python-yarl'
 	'python-mautrix<0.6' 'python-telethon' 'python-telethon-session-sqlalchemy')
 makedepends=('python-setuptools')
-optdepends=('python-cryptg: Faster encryption'
+optdepends=('python-cryptg: faster encryption'
 	'python-cchardet: faster encoding detection'
 	'python-aiodns: asyncronous dns requests'
 	'python-pillow: webp conversion and qr code login'
@@ -25,6 +25,7 @@ sha256sums=('1f227f50e84f643fc7633f1a8f336aa1e51db6c12628e983783c2995a41d497f'
 	'fce0a4f792e62d9440fe431fb6ab6c458139bcc801bc2b02bc1b3d8f2ff9fcbf'
 	'e6d4565350477d180c639cc1e0805d475ef036e870db671b22374e9c91f95c7c')
 backup=("etc/${pkgname}/config.yaml")
+install="${pkgname}.install"
 
 
 prepare() {
@@ -61,13 +62,4 @@ package() {
 	install -Dvm 644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
 	install -Dvm 640 "${pkgdir}${_shared_dir}/example-config.yaml" "${pkgdir}/etc/${pkgname}/config.yaml"
-}
-
-post_install() {
-	cat <<- EOF
-	after editing /etc/${pkgname}/config.yaml, generate a registration file using
-	# ${pkgname} -b /etc/${pkgname}/config.yaml -c /usr/share/${pkgname}/example-config.yaml -r /etc/${pkgname}registration.yaml -g
-	then update the permissions/ownership using
-	$ systemd-tmpfiles --create --prefix /etc/${pkgname}
-	EOF
 }
