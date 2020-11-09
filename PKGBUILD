@@ -1,7 +1,7 @@
 # Maintainer: Simon Vikstrom <aur@devsn.se>
 
 pkgname=cinc
-pkgver=16.0.287
+pkgver=16.6.14
 pkgrel=1
 _ubuntuver=xenial
 pkgdesc="The Cinc installation package includes everything you need to start converging your machines."
@@ -11,7 +11,7 @@ license=('Apache')
 depends=()
 conflicts=(chef chef-solo chef-dk)
 source=("http://downloads.cinc.sh/files/stable/cinc/${pkgver}/ubuntu/20.04/cinc_${pkgver}-1_amd64.deb")
-sha256sums=('98aad2e4a30377c71b59147c0f90b2904505cf7c70591d868ea02003f9d8e9d5')
+sha256sums=('54ef8ad6986301796163a6655b77c6e9ad8aa785946575b089ec9462c1d11030')
 
 package() {
   cd "$srcdir"
