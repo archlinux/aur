@@ -13,8 +13,8 @@ makedepends=("bison" "flex" "valgrind" "meson" "ninja" "git" "ninjas2" "cmake" "
             "elfutils" "glslang" "libclc" "libdrm" "libglvnd" "libomxil-bellagio" "libunwind" "libva"
             "libvdpau" "libx11" "libxdamage" "libxml2" "libxrandr" "libxshmfence" "libxxf86vm" "llvm"
             "lm_sensors" "wayland" "wayland-protocols" "xorgproto" "zstd" "patch" "libxv" "libxvmc" "spirv-tools" "libepoxy" "gtk3")
-conflicts=("opencl-mesa" "libva-mesa-driver" "mesa-vdpau" "vulkan-mesa-layer" "mesa-git" "mesa-aco" "mesa-aco-rc" "mesa-llvm-rc")
-replaces=("opencl-mesa" "libva-mesa-driver" "mesa-vdpau" "vulkan-mesa-layers" "mesa-git" "mesa-aco" "mesa-aco-rc" "mesa-llvm-rc")
+conflicts=("mesa-aco" "mesa-aco-rc" "mesa-llvm-rc")
+replaces=("mesa-aco" "mesa-aco-rc" "mesa-llvm-rc")
 source=("https://archive.mesa3d.org/mesa-${pkgver}.tar.xz"
         "radv_debug.h-${pkgver}.patch"
         "radv_device.c-${pkgver}.patch"
