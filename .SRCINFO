@@ -6,6 +6,7 @@ pkgbase = ultimaker-libnest2d-git
 	arch = any
 	license = LGPL3
 	makedepends = cmake
+	makedepends = boost
 	depends = nlopt
 	depends = polyclipping
 	provides = libnest2d
