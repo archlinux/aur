@@ -3,7 +3,7 @@
 pkgname=python-case
 pkgver=1.5.3
 _commit=54341e0c8f2e41f0fcaa9d5dc325c33d4746168d
-pkgrel=4
+pkgrel=5
 pkgdesc="Python unittest Utilities"
 arch=('any')
 license=('BSD')
