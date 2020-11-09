@@ -5,7 +5,7 @@ pkgbase="${_pkg}-dkms-git"
 pkgname=("${_pkg}-dkms-git" "${_pkg}-2mic-dkms-git" "${_pkg}-4mic-dkms-git" "${_pkg}-8mic-dkms-git")
 pkgver=r4.1.g8cce4e8
 pkgrel=1
-pkgdesc="DKMS module for Allwinner devices"
+pkgdesc="The drivers of Seed Studio ReSpeaker Mic Hat and ReSpeaker Mic Arrays for Raspberry Pi."
 arch=('x86_64' 'armv7h')
 url="https://github.com/respeaker/seeed-voicecard"
 license=('GPL3')
@@ -64,6 +64,7 @@ package_seeed-voicecard-dkms-git() {
 }
 
 package_seeed-voicecard-2mic-dkms-git() {
+  pkgdesc="DTB Overlay for Seed Studio ReSpeaker Mic Hat for Raspberry Pi."
   depends=("${_pkg}-dkms-git")
   install="${_pkg}-2mic.install"
 
@@ -73,6 +74,8 @@ package_seeed-voicecard-2mic-dkms-git() {
 }
 
 package_seeed-voicecard-4mic-dkms-git() {
+  pkgdesc="DTB Overlay for Seed Studio ReSpeaker 4 Mic Array and 4-Mics Linear Array Kit for Raspberry Pi."
+
   depends=("${_pkg}-dkms-git")
   install="${_pkg}-4mic.install"
 
@@ -84,6 +87,8 @@ package_seeed-voicecard-4mic-dkms-git() {
 }
 
 package_seeed-voicecard-8mic-dkms-git() {
+  pkgdesc="DTB Overlay for Seed Studio ReSpeaker 6-Mics Circular Array Kit for Raspberry Pi."
+
   depends=("${_pkg}-dkms-git")
   install="${_pkg}-8mic.install"
  

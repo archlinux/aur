@@ -1,5 +1,5 @@
 pkgbase = seeed-voicecard-dkms-git
-	pkgdesc = DKMS module for Allwinner devices
+	pkgdesc = The drivers of Seed Studio ReSpeaker Mic Hat and ReSpeaker Mic Arrays for Raspberry Pi.
 	pkgver = r4.1.g8cce4e8
 	pkgrel = 1
 	url = https://github.com/respeaker/seeed-voicecard
@@ -19,14 +19,17 @@ pkgbase = seeed-voicecard-dkms-git
 pkgname = seeed-voicecard-dkms-git
 
 pkgname = seeed-voicecard-2mic-dkms-git
+	pkgdesc = DTB Overlay for Seed Studio ReSpeaker Mic Hat for Raspberry Pi.
 	install = seeed-voicecard-2mic.install
 	depends = seeed-voicecard-dkms-git
 
 pkgname = seeed-voicecard-4mic-dkms-git
+	pkgdesc = DTB Overlay for Seed Studio ReSpeaker 4 Mic Array and 4-Mics Linear Array Kit for Raspberry Pi.
 	install = seeed-voicecard-4mic.install
 	depends = seeed-voicecard-dkms-git
 
 pkgname = seeed-voicecard-8mic-dkms-git
+	pkgdesc = DTB Overlay for Seed Studio ReSpeaker 6-Mics Circular Array Kit for Raspberry Pi.
 	install = seeed-voicecard-8mic.install
 	depends = seeed-voicecard-dkms-git
 
