@@ -1,20 +1,20 @@
 # Maintainer: 1Conan <me@1conan.com>
 
+_pkgrel=1
+
 pkgname=libtvcontrol
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library to handle Advanced Breakout for Apple TV 4K. A library to control whether an Apple TV 4K boots to DFU or Normal mode using an Advanced Breakout."
-license=('unknown')
-url="https://checkra.in"
-conflicts=('checkra1n-cli')
-provides=('checkra1n-cli')
+license=('MIT')
+url="https://github.com/lilstevie/libtvcontrol"
 arch=('x86_64')
 depends=('libusb>=1.0.19')
 options=('!strip')
 source=(
-  https://assets.checkra.in/debian/libtvcontrol-dev_${pkgver}-${pkgrel}_amd64.deb
-  https://assets.checkra.in/debian/libtvcontrol-tools_${pkgver}-${pkgrel}_amd64.deb
-  https://assets.checkra.in/debian/libtvcontrol0_${pkgver}-${pkgrel}_amd64.deb
+  https://assets.checkra.in/debian/libtvcontrol-dev_${pkgver}-${_pkgrel}_amd64.deb
+  https://assets.checkra.in/debian/libtvcontrol-tools_${pkgver}-${_pkgrel}_amd64.deb
+  https://assets.checkra.in/debian/libtvcontrol0_${pkgver}-${_pkgrel}_amd64.deb
 )
 noextract=("${source[@]##*/}")
 sha512sums=(
