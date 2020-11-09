@@ -2,20 +2,21 @@
 # Created: 27/02/2020
 
 # The upstream software is not package friendly yet, so instead of rewriting its
-# entire build system, we just built it as is and copy it into /opt/shadered.
+# entire build system, we just built it (and its dependencies) as is and copy The
+# results into /opt/shadered.
 # If you want to help improve or maintain this package please let me know!
 
 pkgname=shadered
-pkgver=1.3.6
-pkgrel=2
+pkgver=1.4.2
+pkgrel=1
 pkgdesc="SHADERed is a lightweight tool for creating and testing HLSL and GLSL shaders."
 arch=("x86_64")
 url="https://github.com/dfranx/SHADERed"
 license=("MIT")
 depends=(assimp glew glm gtk3 sdl2 sfml)
-makedepends=(cmake git)
+makedepends=(git cmake python)
 
-source=("git+https://github.com/dfranx/SHADERed.git#commit=a91307e"
+source=("git+https://github.com/dfranx/SHADERed.git#commit=9a74bc1"
         "SHADERed.sh")
 sha256sums=('SKIP'
             'e501a371996c373988bd74733f288c8caa6b44d88439c5d52b18e14b4766420c')
