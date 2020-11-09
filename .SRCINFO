@@ -1,0 +1,15 @@
+pkgbase = inputplug
+	pkgdesc = Xinput hotplug event daemon
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/andrewshadura/inputplug
+	arch = x86_64
+	license = MIT
+	makedepends = libxi
+	makedepends = libxfixes
+	depends = libxcb
+	source = inputplug-0.3.tar.gz::https://github.com/andrewshadura/inputplug/archive/0.3.tar.gz
+	sha256sums = acac8e3972f3f10f9b6791321d2441e6b54d93d97c2de81e13eb14734a635ef7
+
+pkgname = inputplug
+
