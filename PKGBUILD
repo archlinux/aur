@@ -2,12 +2,12 @@
 
 pkgname=fpga-toolchain-bin
 pkgver=20201109
-pkgrel=2
+pkgrel=3
 pkgdesc="Nightly builds of open-source FPGA tools"
 arch=('x86_64')
 url="https://github.com/open-tool-forge/fpga-toolchain"
 license=('GPL3')
-depends=('python' 'bash')
+depends=('python' 'bash' 'rsync')
 conflicts=(
     'yosys'
     'ghdl-yosys-plugin'
@@ -22,6 +22,8 @@ conflicts=(
     'symbiyosys'
     'z3'
     'yices'
+    'prjtrellis'
+    'prjtrellis-db'
     )
 source_x86_64=($url/releases/download/nightly-$pkgver/fpga-toolchain-linux_x86_64-nightly-$pkgver.tar.xz)
 sha256sums_x86_64=('05edea76777605c099c74f51e23d108d6007cc0b88938471337265d006383611')
