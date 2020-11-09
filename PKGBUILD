@@ -2,7 +2,7 @@
 pkgname=mesa-llvm
 pkgver=20.2.2
 pkgrel=1
-pkgdesc="mesa stable release with patch to enable llvm"
+pkgdesc="Mesa stable release with patch to enable LLVM. More options are enable than the standard mesa package"
 arch=(x86_64)
 url="https://mesa3d.org/"
 license=('MIT')
