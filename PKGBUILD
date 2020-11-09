@@ -6,7 +6,7 @@ pkgver=3.38.0
 pkgrel=2
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects - With CSD headerbar patch for non-GNOME DEs"
 url="https://wiki.gnome.org/Apps/Cheese"
-arch=(x86_64)
+arch=('aarch64' 'x86_64' 'armhf')
 license=(GPL)
 depends=(gtk3 gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good clutter-gst clutter-gtk
          libcanberra librsvg gnome-desktop libgudev dconf gnome-video-effects)
