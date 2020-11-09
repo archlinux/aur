@@ -5,6 +5,7 @@ pkgbase = libtensorflow-lite
 	url = https://github.com/tensorflow/tensorflow
 	arch = x86_64
 	license = Apache
+	makedepends = bazel
 	depends = gcc
 	depends = flatbuffers
 	provides = libtensorflow-lite
