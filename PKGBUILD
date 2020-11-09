@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-mocket
-pkgver=3.9.2
+pkgver=3.9.3
 pkgrel=1
 pkgdesc="Socket Mock Framework - for all kinds of socket animals, web-clients included - with gevent/asyncio/SSL support"
 url="https://github.com/mindflayer/python-mocket"
@@ -12,7 +12,7 @@ makedepends=('python-pipenv-to-requirements' 'python-pytest-cov' 'python-setupto
 checkdepends=('pifpaf' 'python-aiohttp' 'python-gevent' 'python-mock' 'python-pook' 'python-redis'
               'python-sure' 'python-xxhash' 'redis')
 source=("https://github.com/mindflayer/python-mocket/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('15b6b7004198e6ddbf11e0fc463c4c00988c78b883753951d37582f935770ff778afb643b1b3a5b8b21e232f2f118cdf2a6a4e14538a19015ffa2de8163b2fb9')
+sha512sums=('79d0bad6d0f23c0cd432eebbc7b374f4d6f23dab7b573b8777edc8e03d7edbc7ca144738ce453d53558ab18938ec0d760f81b72966e71dc57dd53b9f8974ed71')
 
 prepare() {
   cd python-mocket-$pkgver
