@@ -3,7 +3,7 @@
 
 pkgname=fluent-bit
 
-pkgver=1.5.6
+pkgver=1.6.3
 pkgrel=1
 epoch=
 
@@ -43,6 +43,7 @@ build() {
         -DFLB_ALL=Yes \
         -DFLB_OUT_NATS=Yes \
         -DFLB_HTTP_SERVER=Yes \
+        -DMBEDTLS_FATAL_WARNINGS=Off \
         ..
     make
 }
@@ -69,4 +70,4 @@ package() {
     install -Dm 644 *.md Dockerfile* -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
-sha512sums=('c5273217ef434e538b4490daa2abbce1aebf696d3904a72be094523d95666ef9f275aeb4a1b69663acb85ebf288b26cd6ac73fd20daeec4507be924ae9816d9e')
+sha512sums=('23d4eb71109ba2c4eb4e3d345040303617d67b49c759b39ef7e984bad0c0072cdca6b404362d0960da1da8737df44c6b3ab5f07e0677bf4451ccde8b254d8cc5')
