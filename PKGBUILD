@@ -1,7 +1,7 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=pyocd
 _pkgname=pyOCD
-pkgver=0.28.2
+pkgver=0.28.3
 pkgrel=1
 pkgdesc="Python On Chip Debugger and programmer for ARM Cortex-M microcontrollers using CMSIS-DAP"
 url="https://github.com/mbedmicro/pyocd"
@@ -23,7 +23,7 @@ optdepends=()
 license=('Apache')
 arch=('any')
 source=("https://github.com/mbedmicro/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('0c23336fa6fc189fe55e6a08e52f5c99c8b08ad47410e446c3f8814bf4f35a83fc0281f3c7f18595a1a628a2464ad5aeb3debc2bc6183e2e275dd00cf3750835')
+sha512sums=('b9890cb085173aa938430becab4a24f5a051328cf83215bcd18e6fef0d2901eace2754f484d042f837f0a47d0a76b1f257396c7edb0bdbeb5e14d7da70ee861a')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
