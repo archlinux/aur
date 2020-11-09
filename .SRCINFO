@@ -1,6 +1,6 @@
 pkgbase = deemix-pyweb-git
-	pkgdesc = This is a pywebview wrapper for deemix-webui
-	pkgver = r424.03d7f983d6
+	pkgdesc = This is a pyqtwebengine wrapper for deemix-webui
+	pkgver = r425.c9125001f6
 	pkgrel = 1
 	url = https://notabug.org/RemixDev/deemix-pyweb
 	arch = any

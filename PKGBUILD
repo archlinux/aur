@@ -2,9 +2,9 @@
 
 pkgname="deemix-pyweb-git"
 _pkgname="deemix-pyweb"
-pkgver=r424.03d7f983d6
+pkgver=r425.c9125001f6
 pkgrel=1
-pkgdesc="This is a pywebview wrapper for deemix-webui"
+pkgdesc="This is a pyqtwebengine wrapper for deemix-webui"
 arch=('any')
 url="https://notabug.org/RemixDev/$_pkgname"
 license=('gpl3')
