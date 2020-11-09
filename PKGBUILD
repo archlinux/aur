@@ -1,7 +1,7 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='vdx'
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='Intuitive CLI for processing video, powered by FFmpeg'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('ffmpeg' 'nodejs')
 makedepends=('npm' 'jq')
 noextract=("${pkgname}-${pkgver}.tgz")
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('041905cea0ce69dcf091a2ea573fcfa05fe4db6525e32305fbd54d8502799840')
+sha256sums=('83461278d52df85df7c8c6bf93531a6761fd63f143d37d670da62b663c8577e2')
 
 package() {
   npm install -g \
