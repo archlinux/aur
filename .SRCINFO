@@ -1,7 +1,7 @@
 pkgbase = python-gpytorch
 	pkgdesc = A highly efficient and modular implementation of GPs, with GPU acceleration. Implemented in PyTorch.
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://gpytorch.ai
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,8 @@ pkgbase = python-gpytorch
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pytorch
+	depends = python-scikit-learn
+	depends = python-scipy
 	optdepends = python-black: for [dev] module
 	optdepends = twine: for [dev] module
 	optdepends = python-pre-commit: for [dev] module
@@ -29,8 +31,8 @@ pkgbase = python-gpytorch
 	optdepends = python-flake8-print: for [test] module
 	optdepends = python-pytest: for [test] module
 	optdepends = python-nbval: for [test] module
-	source = python-gpytorch-1.1.1::https://github.com/cornellius-gp/gpytorch/archive/v1.1.1.tar.gz
-	sha256sums = 8ef20659e3a077554a3582554ee39e4bed3b95902dfd4cac693328c387e2899c
+	source = python-gpytorch-1.2.1::https://github.com/cornellius-gp/gpytorch/archive/v1.2.1.tar.gz
+	sha256sums = 9f09c6f11dd76fdba22ba0c4523b7631c2637104e9ebfb2ea4c8a6fa556015d6
 
 pkgname = python-gpytorch
 
