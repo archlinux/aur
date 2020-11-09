@@ -2,7 +2,7 @@
 
 pkgname=cpupower-gui-git
 pkgver=1.0.0.r0.g2a9069e
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI utility to set CPU frequency limits"
 arch=(any)
 url="https://github.com/vagnum08/cpupower-gui"
@@ -15,6 +15,7 @@ optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
 makedepends=('git' 'meson' 'pkg-config' 'appstream-glib' 'desktop-file-utils')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+install=cpupower_gui.install
 source=("${pkgname%-git}::git+https://github.com/vagnum08/cpupower-gui.git")
 noextract=()
 md5sums=('SKIP')
