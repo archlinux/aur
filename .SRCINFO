@@ -1,14 +1,14 @@
 pkgbase = wmacpi
 	pkgdesc = Battery monitor dockapp for Window Maker that doesn't depend on HAL
-	pkgver = 2.3
-	pkgrel = 4
+	pkgver = 2.4
+	pkgrel = 1
 	url = http://www.docapps.net/wmacpi
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libdockapp
-	source = http://www.dockapps.net/download/wmacpi-2.3.tar.gz
-	md5sums = 15d4f559d6281f3eedb4bf7b59a6af0e
+	source = http://www.dockapps.net/download/wmacpi-2.4.tar.gz
+	md5sums = 847a051fffc3efa8d08581a64d6d49cc
 
 pkgname = wmacpi
 
