@@ -43,6 +43,7 @@ build() {
         -DFLB_ALL=Yes \
         -DFLB_OUT_NATS=Yes \
         -DFLB_HTTP_SERVER=Yes \
+        -DMBEDTLS_FATAL_WARNINGS=Off \
         ..
     make
 }
