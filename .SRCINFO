@@ -12,7 +12,7 @@ pkgbase = python-migen-git
 	provides = python-migen
 	conflicts = python-migen
 	replaces = migen-git
-	source = git+https://github.com/m-labs/migen.git
+	source = git+https://github.com/m-labs/migen
 	md5sums = SKIP
 
 pkgname = python-migen-git
