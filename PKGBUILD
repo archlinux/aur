@@ -28,7 +28,7 @@ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torva
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('9e832899ec75dbfce393c9f7a07df24183b28f0bb95ad4dd8b1fa027bc668ad9'
             '7cf7f712e721fc5fef9a43df7a173a4df3a227914484849dc45fc191b0066392'
-	    '91b90dc594160fb78a8f3fdd2f7ec424d18ff2f221e26f437c3d06af95f36ee2'
+	    '57474aff2fe1de0ee4d6444e75fd2733a9146df921005a4e0ba9777c57ebc25c'
             'f9b13f3c00be95205ccb77ead42881ecbf0f7ba0d0ad12af294e054272859d81'
             '5c7af03d9b4cade110543ba706bcbd49fc6447726258b4bfec0edff7ca9994d1'
             '9089c8d44982dc03b0dde47632f8aa2fda14754b911acbc266feee85da94b0f5'
