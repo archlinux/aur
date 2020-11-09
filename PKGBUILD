@@ -1,7 +1,7 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw
 pkgver=1.2.4
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Shadow Of The Wyrm is a single player, traditional roguelike by Julian Day."
 arch=('x86_64')
@@ -26,7 +26,7 @@ build() {
 	cd shadow-of-the-wyrm
 	git checkout master
 	premake5 --lua_include=/usr/include/lua5.1 --lua_link=lua5.1 gmake
-	sed -i -e 's/'"cp ShadowOfTheWyrm sotw/sotw"'/'"cp $(TARGETDIR)/ShadowOfTheWyrm sotw/sotw"'/g' ShadowOfTheWyrm.make
+	sed -i -e 's/'"cp ShadowOfTheWyrm sotw/sotw"'/'"cp \$(TARGETDIR)/ShadowOfTheWyrm sotw/sotw"'/g' ShadowOfTheWyrm.make
 	make config=release
 	#make config=debug
 }
