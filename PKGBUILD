@@ -24,7 +24,7 @@ build() {
 
 check() {
   cd "$srcdir"/http-parser-$pkgver
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-3.8:$PYTHONPATH" \
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-3.9:$PYTHONPATH" \
   py.test testing/
 }
 
