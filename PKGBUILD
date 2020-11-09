@@ -2,13 +2,15 @@
 
 pkgname=wllvm-git
 pkgver=r461.6d8955b
-pkgrel=1
+pkgrel=2
 pkgdesc="A wrapper script to build whole-program LLVM bitcode files"
 arch=('any')
 url="https://github.com/travitch/whole-program-llvm"
 license=('MIT')
 depends=('python')
 makedepends=('git' 'python-setuptools')
+provides=('wllvm')
+conflicts=('wllvm')
 source=("$pkgname"::'git+https://github.com/travitch/whole-program-llvm.git')
 md5sums=('SKIP')
 
