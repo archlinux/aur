@@ -2,7 +2,7 @@
 
 pkgname=itch
 pkgver=1.24.0
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="The best way to play itch.io games."
 
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/itchio/itch"
 license=('MIT')
 
-depends=('alsa-lib' 'libnotify' 'nss' 'gconf' 'gtk2' 'libxtst' 'desktop-file-utils' 'gtk-update-icon-cache' 'libxss' 'gtk3')
+depends=('alsa-lib' 'libnotify' 'nss' 'gconf' 'libxtst' 'desktop-file-utils' 'gtk-update-icon-cache' 'libxss' 'gtk3')
 makedepends=('curl')
 options=('!strip')
 install="itch.install"
