@@ -5,14 +5,13 @@ pkgbase = vkbasalt
 	url = https://github.com/DadSchoorse/vkBasalt
 	arch = x86_64
 	license = zlib
-	makedepends = git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = glslang
 	makedepends = lib32-gcc-libs
 	makedepends = lib32-libx11
-	source = git+https://github.com/DadSchoorse/vkBasalt.git#tag=v0.3.2.3
-	sha256sums = SKIP
+	source = https://github.com/DadSchoorse/vkBasalt/releases/download/v0.3.2.3/vkBasalt-0.3.2.3.tar.gz
+	sha256sums = 8cc65a69a20ac16802a8ff46629efa6540dee22daeef9db4ad0a22b63d2a4368
 
 pkgname = vkbasalt
 	install = vkbasalt.install
