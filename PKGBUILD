@@ -2,12 +2,12 @@
 
 pkgname=calindori-git
 pkgver=v1.2.r22.gc4ee655
-pkgrel=1
+pkgrel=2
 pkgdesc="Calendar for Plasma Mobile"
 arch=(x86_64)
 url="https://invent.kde.org/plasma-mobile/calindori"
 license=(GPL3)
-depends=(ki18n kcoreaddons kconfig kcalendarcore kirigami2)
+depends=(ki18n kcoreaddons kconfig kcalendarcore kirigami2 qt5-svg kdbusaddons knotifications kservice)
 makedepends=(git cmake extra-cmake-modules qt5-tools)
 provides=(calindori)
 conflicts=(calindori)
