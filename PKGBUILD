@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helmsman
-pkgver=3.4.6
-pkgrel=2
+pkgver=3.5.0
+pkgrel=1
 pkgdesc='Helm Charts as Code'
 arch=('x86_64' 'i686')
 url='https://github.com/Praqma/helmsman'
@@ -12,7 +12,7 @@ optdepends=(
   'helm-secrets: backend for secret encryption')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('53f4ced9d274f7af7efd7462c77ed5536971efe5480e7ed9e1a3cc067acfadb2')
+sha256sums=('f700de27d35324e7a848e7437faed7b0edc3c868ca931f52e314db99da4e632c')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
