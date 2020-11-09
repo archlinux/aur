@@ -2,7 +2,7 @@
 
 pkgname=sbxkb
 pkgver=0.7.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Simple tray XKB indicator"
 arch=('x86_64')
 license=('GPL2')
@@ -14,7 +14,7 @@ sha512sums=('d43cff3014f566e47080ea828910f2ab856d28dce5cc7a526726a4f1666cc9fca8d
 
 build() {
   cd "$srcdir"/${pkgname}-${pkgver}
-  export LDFLAGS=-lX11
+  LDFLAGS+=' -lX11'
   ./configure --sysconfdir=/etc --prefix=/usr
   make
 }
