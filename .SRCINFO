@@ -1,0 +1,18 @@
+pkgbase = python-migen-git
+	pkgdesc = A python toolbox for building complex digital hardware
+	pkgver = 0.9.2.rcc6e76e
+	pkgrel = 1
+	url = https://github.com/m-labs/migen
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-migen
+	options = !emptydirs
+	source = git+https://github.com/m-labs/migen.git
+	md5sums = SKIP
+
+pkgname = python-migen-git
+
