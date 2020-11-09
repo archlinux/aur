@@ -6,7 +6,7 @@
 pkgbase=klee-libc++
 pkgname=(${pkgbase}{,abi,experimental})
 pkgver=10.0.1
-pkgrel=2
+pkgrel=3
 url="https://libcxx.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 arch=('i686' 'x86_64')
@@ -50,7 +50,7 @@ build() {
 
     local libraries=("$srcdir"/build/lib/lib*.{a,so*})
     for p in "${libraries[@]}"; do
-        filetype="$(file -L "$p")"
+        filetype="$(file "$p")"
         if [[ "$filetype" == *"ar archive"* || "$filetype" == *"shared object"* ]]; then
             get-bc "$p"
         fi
@@ -74,7 +74,8 @@ package_klee-libc++() {
 
     install -Dm0644 -t "$pkgdir"/usr/share/"$pkgname"/usr/lib/ "$srcdir"/build/lib/libc++.bca
     install -Dm0644 -t "$pkgdir"/usr/share/"$pkgname"/usr/lib/ "$srcdir"/build/lib/libc++.so*.bc
-    ln -s libc++.so.1.bc "$pkgdir"/usr/share/"$pkgname"/usr/lib/libc++.so.bc
+    ln -s libc++.so.1.0.bc "$pkgdir"/usr/share/"$pkgname"/usr/lib/libc++.so.bc
+    ln -s libc++.so.1.0.bc "$pkgdir"/usr/share/"$pkgname"/usr/lib/libc++.so.1.bc
     install -Dm0644 "$srcdir"/llvm/projects/libcxx/CREDITS.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/CREDITS
     install -Dm0644 "$srcdir"/llvm/projects/libcxx/LICENSE.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
@@ -90,6 +91,8 @@ package_klee-libc++abi() {
 
     install -Dm0644 -t "$pkgdir"/usr/share/"$pkgname"/usr/lib/ "$srcdir"/build/lib/libc++abi.bca
     install -Dm0644 -t "$pkgdir"/usr/share/"$pkgname"/usr/lib/ "$srcdir"/build/lib/libc++abi.so*.bc
+    ln -s libc++abi.so.1.0.bc "$pkgdir"/usr/share/"$pkgname"/usr/lib/libc++abi.so.bc
+    ln -s libc++abi.so.1.0.bc "$pkgdir"/usr/share/"$pkgname"/usr/lib/libc++abi.so.1.bc
     install -Dm0644 "$srcdir"/llvm/projects/libcxxabi/CREDITS.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/CREDITS
     install -Dm0644 "$srcdir"/llvm/projects/libcxxabi/LICENSE.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
