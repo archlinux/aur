@@ -2,7 +2,7 @@
 
 pkgname=paradox-launcher
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Paradox Interactive Game Launcher"
 arch=('x86_64')
 url="https://play.paradoxplaza.com/"
@@ -11,7 +11,7 @@ depends=("libxi" "xdg-utils" "freetype2" "libgl" "gconf")
 source=(${pkgname}-${pkgver}.zip::http://launcher.paradoxplaza.com/linux_launcher
         ${pkgname}
         ${pkgname}.desktop)
-sha256sums=('7b20c104d20daf418cd479275de0df1d3f4e08fa36faf6aba08ea0a321aeeaa5'
+sha256sums=('8c31f964a43a29efb2a598963d4d2fbc50d191fc026c0745268240f63dee993c'
             '481ead5d9a16b532c93589c036a44b41ca7d85193c0f0158fc5ec957fc1e2c46'
             '6687c73d211ae7e50a1658e7dd7900a5f5777fe54df3a89e4f96a5b8dc210a11')
 
