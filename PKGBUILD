@@ -14,7 +14,7 @@ _minor=18441
 pkgname="komodo-edit"
 _bigname="Komodo-Edit"
 pkgver="${_major}_${_minor}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Free & Open-Source counterpart of ActiveState Komodo IDE - XUL based"
 arch=(i686 x86_64)
 url="http://www.activestate.com/komodo-edit"
@@ -22,7 +22,7 @@ license=('MPL')
 depends=('dbus-glib' 'glibc>=2.4' 'libjpeg-turbo' 'gcc-libs' 'gtk2')
 optdepends=('xterm: can be used by komodo-toolbox')
 conflicts=('komodoedit' 'komodo-ide' 'komodo-ide-nightly')
-options=('!strip')
+#options=('!strip')
 
 source=('_install.py.patch' 'activestate.py.patch')
 _srcbase="http://downloads.activestate.com/Komodo/releases"

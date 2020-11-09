@@ -1,7 +1,7 @@
 pkgbase = komodo-edit
 	pkgdesc = Free & Open-Source counterpart of ActiveState Komodo IDE - XUL based
 	pkgver = 12.0.1_18441
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.activestate.com/komodo-edit
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = komodo-edit
 	conflicts = komodoedit
 	conflicts = komodo-ide
 	conflicts = komodo-ide-nightly
-	options = !strip
 	source = _install.py.patch
 	source = activestate.py.patch
 	sha256sums = 98177ee92e13036baa0a4f61ef398c0e23ab5d250cf7aa1b1c5a557efaaec3a8
