@@ -1,7 +1,7 @@
 # Contributor: Luca Cesari < luca AT cesari DOT me>
 pkgname=tmuxinator
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Manage complex tmux sessions easily"
 arch=(any)
 url="https://github.com/aziz/tmuxinator"
@@ -36,7 +36,7 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}
   local _gemdir
-  _gemdir="$(gem env gemdir)"
+  _gemdir="$( ruby -e 'puts Gem.default_dir' )"
 
   gem install \
     --verbose \
