@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=promscale
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="An open source analytical platform for Prometheus metrics"
 arch=('x86_64')
@@ -12,7 +12,7 @@ checkdepends=()
 optdepends=(timescaledb prometheus)
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('350f004261e68d306d7ab1f3b0cd1011a403c3f45001a22a83aee9cfcaa6b7799f1107e1e4696c23915b3d0690266915fa0a2e01d0514b3d503076948b3b711f')
+b2sums=('761e00de8829fae2a6b5f2b9c6b7e1db0f3b4391076af4df2faebb02186707ed25c75ef52020b6e43eebfac414db2ee7c26bcfd535de748697ff56e7639f0408')
 
 prepare() {
   cd "$pkgname-$pkgver"
