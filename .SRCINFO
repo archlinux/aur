@@ -1,7 +1,7 @@
 pkgbase = libtensorflow-lite
 	pkgdesc = Tensorflow Lite - Library and Headers. C/C++ & Python
 	pkgver = 2.3.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/tensorflow/tensorflow
 	arch = x86_64
 	license = Apache
