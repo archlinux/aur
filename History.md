@@ -1,4 +1,61 @@
 
+uuu_1.4.43 / 2020-08-10
+=======================
+
+  * fix windows env param read terminates command
+  * fix multiple occurrence of @ variables
+  * try to fix travis build failure
+  * add parameter to modify enviroment variables
+  * add environment variable support command
+  * Fix some typo at error message
+  * Added support for 'FB:reboot' and 'FASTBOOT:reboot'
+  * Simplify notify.cpp
+  * Modernize version.cpp
+  * Minor adjustments to error handling definitions
+  * Solve leftover compiler warnings for rominfo.h
+  * Deduplicate GetFlashHeaderSize
+  * Introduce offsets to GetFlashHeaderSize
+  * Modernize CheckHeader
+  * Further simplify both search_rom_info functions
+  * Modernize search_rom_info(const char *s)
+  * Drop "using namespace std" directive from buffer.h
+  * Reduce visibility of Zip_file_info members
+  * Add missing "pragma once" to http.h
+  * Reduce visibility of Fat class members
+  * Reduce visibility of class members in fastboot.h
+  * Reduce visibility of a further few variables
+  * Reduce visibility of members of CmdBase
+  * Forbid copying CmdCtx
+  * Adjust SDPCmdBase
+  * Adjust SDPWriteCmd
+  * Adjust SDPReadMemCmd
+  * Adjust SDPDcdCmd
+  * Minor changes to help code models
+  * Make member variable of SDPSCmd private
+  * Adjust SDPWriteMemCmd
+  * Adjust SDPJumpCmd
+  * Add more override specifiers in trivial places
+  * Adjust SDPBootCmd
+  * Adjust Backfile
+  * Adjust m_socket within HttpStream
+  * Fix compiler warnings for uuu.cpp
+  * Move function prototypes to source that uses them
+  * Drop using namespace std directive from config.h
+  * Use default member initializer in HttpStream
+  * Modify HttpStream member function visibility
+  * Forbid copying TransBase
+  * Drop using namespace std directive from trans.h
+  * Make BulkTrans fields private and some const
+  * Make fields of HIDTrans private
+  * Make USBTrans::m_EPs protected
+  * Reduce visibility of TransBase::m_devhandle
+  * Drop unused m_path member from TransBase
+  * allow to pass sparse limit from command line
+  * fix #193 fb:< echo ucmd print failure
+  * fix fat_write partition parser error
+  * Update version number support build number > 255
+  * libuuu/CMakeLists.txt: don't overwrite CMAKE_CXX_FLAGS
+
 uuu_1.3.191 / 2020-05-08
 ========================
 
