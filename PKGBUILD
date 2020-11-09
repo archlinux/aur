@@ -30,7 +30,6 @@ build() {
 	patch -u mesa-${pkgver}/src/amd/vulkan/radv_debug.h -i radv_debug.h-${pkgver}.patch
 	patch -u mesa-${pkgver}/src/amd/vulkan/radv_device.c -i radv_device.c-${pkgver}.patch
 
-	# begin the build process
 	cd mesa-${pkgver}
 
 	# remove build dir if there is one
