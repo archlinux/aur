@@ -1,7 +1,7 @@
 # Maintainer: Yurii <yu hrysh at posteo dot net>
 
 pkgname=lbrynet-bin
-pkgver=0.83.0
+pkgver=0.84.0
 pkgrel=1
 pkgdesc='Implementation of the LBRY Network protocols, without the desktop app'
 arch=('x86_64')
@@ -16,5 +16,5 @@ package() {
    install -Dm755 "${srcdir}/lbrynet" -t "${pkgdir}/usr/bin/"
    install -Dm644 "${srcdir}/lbrynet-LICENSE-$pkgver" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
-b2sums=('a5e226a75c7dacbc5583f9f347f50dd3795b58c8da010b475d2d8bfee13e3571ee6711b8f11f0a757e615bf0d47d75ca8367fc338547c2be7954d54aacff111a'
+b2sums=('884b8119de5a97ac24db212057f4c162093d8f65ac06a1a85f6c9beb6ea22d10ce3c23a7681eab8adca2b2e22724b624d1bce739d77e60faafebb9e1001aef8e'
         'c17e30091ae9d3f6ad3f5a70c80ff686bdcbfc41b9b603d5693c34a006aba635968ebc67aa5ddeb607053b098ad8d3d3a03b790249ab58b9cbb6f66ba6cf5693')
