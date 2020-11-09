@@ -1,6 +1,6 @@
 pkgbase = imunes-git
 	pkgdesc = Integrated Multiprotocol Network Emulator/Simulator
-	pkgver = v2.1.0
+	pkgver = v2.3.0.31.gfd572f5
 	pkgrel = 1
 	url = http://imunes.net/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = imunes-git
 	makedepends = make
 	depends = tk
 	depends = tcllib
-	depends = wireshark-gtk
+	depends = wireshark-gtk2
 	depends = imagemagick
 	depends = docker
 	depends = openvswitch

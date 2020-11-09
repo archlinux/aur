@@ -1,13 +1,14 @@
-# Maintainer: Robin Nehls <aur@manol.is>
+# Maintainer: Denis Salopek <denis.sale@gmail.com>
+# Contributor: Robin Nehls <aur@manol.is>
 
 pkgname=imunes-git
-pkgver=v2.1.0.84.g82b01f1
+pkgver=v2.3.0.31.gfd572f5
 pkgrel=1
 pkgdesc="Integrated Multiprotocol Network Emulator/Simulator"
 arch=('i686' 'x86_64')
 url="http://imunes.net/"
 license=('BSD')
-depends=('tk' 'tcllib' 'wireshark-gtk' 'imagemagick' 'docker' 'openvswitch' 'xterm')
+depends=('tk' 'tcllib' 'wireshark-gtk2' 'imagemagick' 'docker' 'openvswitch' 'xterm')
 makedepends=('make')
 provides=('imunes')
 source=('git+https://github.com/imunes/imunes.git'
