@@ -29,7 +29,7 @@ index 3b5b6e48..00000000
 -[source.crates-io]
 -replace-with = "debian-packages"
 diff --git a/Cargo.toml b/Cargo.toml
-index 258a9bb2..99b55558 100644
+index 04240fdc..02c9034c 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -37,12 +37,12 @@ pam = "0.7"
@@ -37,14 +37,13 @@ index 258a9bb2..99b55558 100644
  percent-encoding = "2.1"
  pin-utils = "0.1.0"
 -pathpatterns = "0.1.2"
--proxmox = { version = "0.4.1", features = [ "sortable-macro", "api-macro", "websocket" ] }
+-proxmox = { version = "0.7.0", features = [ "sortable-macro", "api-macro", "websocket" ] }
 +pathpatterns = { version = "0.1.2", git = "git://git.proxmox.com/git/pathpatterns.git" }
-+proxmox = { version = "0.4.1", features = [ "sortable-macro", "api-macro" ], git = "git://git.proxmox.com/git/proxmox.git", rev = "c0a376058ad4207b3672e56cfd9bcedc0e25a601" }
- #proxmox = { git = "ssh://gitolite3@proxdev.maurer-it.com/rust/proxmox", version = "0.1.2", features = [ "sortable-macro", "api-macro" ] }
--#proxmox = { path = "../proxmox/proxmox", features = [ "sortable-macro", "api-macro", "websocket" ] }
++proxmox = { version = "0.7.0", features = [ "sortable-macro", "api-macro" ], git = "git://git.proxmox.com/git/proxmox.git", rev = "31b7620f201728cd6c1b404661131801cf1f59e0" }
+ #proxmox = { git = "git://git.proxmox.com/git/proxmox", version = "0.1.2", features = [ "sortable-macro", "api-macro" ] }
+ #proxmox = { path = "../proxmox/proxmox", features = [ "sortable-macro", "api-macro", "websocket" ] }
 -proxmox-fuse = "0.1.0"
 -pxar = { version = "0.6.1", features = [ "tokio-io", "futures-io" ] }
-+#proxmox = { path = "../proxmox/proxmox", features = [ "sortable-macro", "api-macro" ] }
 +proxmox-fuse = { version = "0.1.0", git = "git://git.proxmox.com/git/proxmox-fuse.git" }
 +pxar = { version = "0.6.1", features = [ "tokio-io", "futures-io" ] , git = "git://git.proxmox.com/git/pxar.git", rev = "4f2d271a9608b576bf2dad22672a930285b5d7dd"}
  #pxar = { path = "../pxar", features = [ "tokio-io", "futures-io" ] }
@@ -72,4 +71,3 @@ index 397ab991..f106f2da 100644
  }
 -- 
 2.28.0
-

@@ -1,6 +1,6 @@
 # Maintainer: Dominik Csapak <dominik.csapak@gmail.com>
 pkgname=proxmox-backup-client
-pkgver=0.8.21
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="Client for Proxmox Backup Server"
 arch=('x86_64' 'aarch64')
@@ -19,13 +19,14 @@ source=(
     "0002-remove-apt-dependency.patch"
 )
 sha512sums=('SKIP'
-            'c135d1abdcdce7437fef4523e916dd0902804f72508c88c7bdeeb58432e6209121b1bd7f4ec4fdfcddf1890367eb5a4293719bf52310bc4d722ade6a3c10c434'
-            'd5bd03b046990d0f31269233c0ad28f609d01e0ae056530125901c395a75f62ebbe393e7cfc54787bfdf36c79888740ef1dcfed569b6a30a182893586c4218ef')
+            '40b770784e1df7ffe2d4c8079546177220179c779d910065b79eb21d1e09b45e5a0036a75213ecd4e173b18dffceda48ca6712d1a848d6582685ea7b4f6a372c'
+            '5b1144d8d831cdcf71a17c2f0bdff5197e201b454c09fa6e35acdb2c9ee261058d85e637e8d85404a1040379cb7d73fc5d2962cbf57326913ff039034c5d71a9')
 
 prepare() {
   cd "$pkgname-$pkgver"
   patch --forward --strip=1 --input="${srcdir}/0001-adapt-cargo-toml-and-remove-systemd-linking.patch"
   patch --forward --strip=1 --input="${srcdir}/0002-remove-apt-dependency.patch"
+  rm src/api2/node/apt.rs src/tools/apt.rs src/bin/proxmox-daily-update.rs # belongs to patch 0002
 }
 
 build() {
