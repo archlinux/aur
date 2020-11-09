@@ -2,7 +2,7 @@
 # Credit: desbma
 pkgname=zoxide-git
 _pkgname=zoxide
-pkgver=0.4.3.r23.gc0a1a78
+pkgver=0.5.0.r3.g21018d5
 pkgrel=1
 pkgdesc='A fast cd command that learns your habits'
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha512sums=('SKIP')
 
 pkgver()  {
     cd "${pkgname}"
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
