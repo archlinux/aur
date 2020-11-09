@@ -1,4 +1,5 @@
 # Maintainer: Bence Hornák <bence.hornak@gmail.com>
+# Maintainer: Leon De Andrade <leondeandrade@hotmail.com>
 
 pkgname=theia-electron
 pkgver=1.6.0
