@@ -1,16 +1,17 @@
-# Maintainer: Llewelyn Trahaearn <woefulderelict [at] gmail [dot] com>
+# Contributor: Llewelyn Trahaearn <woefulderelict [at] gmail [dot] com>
 # Contributor: Daniel Micay <danielmicay [at] gmail [dot] com>
 # Contributor: MThinkCpp <mtc [dot] maintainer [at] outlook [dot] com>
+# Maintainer: Kuan-Yen Chou <kuanyenchou [at] gmail [dot] com>
 
 pkgbase=klee-libc++
 pkgname=(${pkgbase}{,abi,experimental})
 pkgver=10.0.1
-pkgrel=1
+pkgrel=2
 url="https://libcxx.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 arch=('i686' 'x86_64')
 depends=('gcc-libs')
-makedepends=('clang' 'cmake' 'llvm' 'libunwind' 'ninja' 'python' 'wllvm-git')
+makedepends=('clang' 'cmake' 'llvm' 'libunwind' 'ninja' 'python' 'gllvm-git')
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-$pkgver.src.tar.xz"
         "https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/libcxx-$pkgver.src.tar.xz"
         "https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/libcxxabi-$pkgver.src.tar.xz")
@@ -25,6 +26,7 @@ prepare() {
     bsdtar --strip-components 1 -zxf "${source[1]##*/}" -C llvm/projects/libcxx
     bsdtar --strip-components 1 -zxf "${source[2]##*/}" -C llvm/projects/libcxxabi
     sed -i 's/CREDITS.TXT/CREDITS/' llvm/projects/libcxx/LICENSE.TXT llvm/projects/libcxxabi/LICENSE.TXT
+    sed -i 's/\.hasWarningFlag/\.hasCompileFlag/' llvm/projects/libcxx/utils/libcxx/{compiler.py,test/config.py}
 }
  
 build() {
@@ -32,17 +34,16 @@ build() {
     # https://wiki.archlinux.org/index.php/Clang#Build_packages_with_Clang
     CFLAGS=${CFLAGS/-fvar-tracking-assignments}
     CXXFLAGS=${CXXFLAGS/-fvar-tracking-assignments}
-    export CC=wllvm
-    export CXX=wllvm++
-    export LLVM_COMPILER=clang
+    export CC=gclang
+    export CXX=gclang++
     export LLVM_COMPILER_PATH=/usr/bin
 
     cmake \
         -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_C_COMPILER=wllvm \
-        -DCMAKE_CXX_COMPILER=wllvm++ \
+        -DCMAKE_C_COMPILER=gclang \
+        -DCMAKE_CXX_COMPILER=gclang++ \
         -DLIBCXX_INSTALL_EXPERIMENTAL_LIBRARY=NO \
         "$srcdir/llvm"
     ninja cxx cxxabi cxx_experimental
@@ -51,45 +52,57 @@ build() {
     for p in "${libraries[@]}"; do
         filetype="$(file -L "$p")"
         if [[ "$filetype" == *"ar archive"* || "$filetype" == *"shared object"* ]]; then
-            echo -- extract-bc "$p"
-            extract-bc "$p"
-        else
-            echo -- Ignore "$p"
+            get-bc "$p"
         fi
     done
 }
 
+check() {
+    cd "$srcdir/build"
+    ninja check-cxx check-cxxabi
+}
+
 package_klee-libc++() {
     pkgdesc='LLVM C++ standard library for KLEE.'
-    depends=("libc++=$pkgver" "klee-libc++abi=$pkgver-$pkgrel")
+    depends=("klee-libc++abi=$pkgver-$pkgrel")
     options=('staticlibs' '!strip')
+    provides=('libc++')
+    conflicts=('libc++')
 
     cd "$srcdir/build"
-    install -Dm0644 -t "$pkgdir"/usr/lib/ "$srcdir"/build/lib/libc++.bca
-    install -Dm0644 -t "$pkgdir"/usr/lib/ "$srcdir"/build/lib/libc++.so*.bc
-    ln -s libc++.so.1.bc "$pkgdir"/usr/lib/libc++.so.bc
+    DESTDIR="$pkgdir" ninja install-libcxx
+
+    install -Dm0644 -t "$pkgdir"/usr/share/"$pkgname"/usr/lib/ "$srcdir"/build/lib/libc++.bca
+    install -Dm0644 -t "$pkgdir"/usr/share/"$pkgname"/usr/lib/ "$srcdir"/build/lib/libc++.so*.bc
+    ln -s libc++.so.1.bc "$pkgdir"/usr/share/"$pkgname"/usr/lib/libc++.so.bc
     install -Dm0644 "$srcdir"/llvm/projects/libcxx/CREDITS.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/CREDITS
     install -Dm0644 "$srcdir"/llvm/projects/libcxx/LICENSE.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
  
 package_klee-libc++abi() {
     pkgdesc='Low level support for the LLVM C++ standard library for KLEE.'
-    depends=("libc++abi=$pkgver")
     options=('staticlibs' '!strip')
+    provides=('libc++abi')
+    conflicts=('libc++abi')
 
     cd "$srcdir/build"
-    install -Dm0644 -t "$pkgdir"/usr/lib/ "$srcdir"/build/lib/libc++abi.bca
-    install -Dm0644 -t "$pkgdir"/usr/lib/ "$srcdir"/build/lib/libc++abi.so*.bc
+    DESTDIR="$pkgdir" ninja install-libcxxabi
+
+    install -Dm0644 -t "$pkgdir"/usr/share/"$pkgname"/usr/lib/ "$srcdir"/build/lib/libc++abi.bca
+    install -Dm0644 -t "$pkgdir"/usr/share/"$pkgname"/usr/lib/ "$srcdir"/build/lib/libc++abi.so*.bc
     install -Dm0644 "$srcdir"/llvm/projects/libcxxabi/CREDITS.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/CREDITS
     install -Dm0644 "$srcdir"/llvm/projects/libcxxabi/LICENSE.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
  
 package_klee-libc++experimental() {
     pkgdesc='LLVM C++ experimental library for KLEE.'
-    depends=("libc++experimental=$pkgver" "klee-libc++=$pkgver-$pkgrel")
+    depends=("klee-libc++=$pkgver-$pkgrel")
     options=('staticlibs' '!strip')
+    provides=('libc++experimental')
+    conflicts=('libc++experimental')
 
-    install -Dm0644 -t "$pkgdir"/usr/lib/ "$srcdir"/build/lib/libc++experimental.bca
+    install -Dm0644 -t "$pkgdir"/usr/lib/ "$srcdir"/build/lib/libc++experimental.a
+    install -Dm0644 -t "$pkgdir"/usr/share/"$pkgname"/usr/lib/ "$srcdir"/build/lib/libc++experimental.bca
     install -Dm0644 "$srcdir"/llvm/projects/libcxx/CREDITS.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/CREDITS
     install -Dm0644 "$srcdir"/llvm/projects/libcxx/LICENSE.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
