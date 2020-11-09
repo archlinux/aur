@@ -2,7 +2,7 @@
 # Contributor: archlinux.info:tdy
 
 pkgname=python-chess
-pkgver=0.31.4
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A Python chess library with move generation/validation and
          PGN/Polyglot/Gaviota/Syzygy/UCI support"
@@ -12,7 +12,7 @@ license=(GPL3)
 depends=(python)
 makedepends=(python python-setuptools)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/niklasf/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=("b1bfa9a4c5ebcfce2d17e876d4a5d7c8f9ae0d8a8278bb18a6453dc6cdcc8868")
+sha256sums=("23ad084d3dfa6c067194638511832f7b6860565a00c585e79fa7c3fd9e57c609")
 
 build() {
   cd $pkgname-$pkgver
