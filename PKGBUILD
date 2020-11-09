@@ -1,8 +1,8 @@
 # Maintainer: Felix Schindler <aur at felixschindler dot net>
 
 pkgname=netgen-git
-pkgver=v6.2.2004.4.g9af476c3
-pkgrel=1
+pkgver=6.2.2008.r82.gf97601bc
+pkgrel=2
 pkgdesc="An automatic 3d tetrahedral mesh generator."
 url=https://sourceforge.net/projects/netgen-mesher/
 license=('LGPL2.1')
@@ -19,8 +19,12 @@ source=("${pkgname%-git}::git+https://github.com/ngsolve/netgen.git#branch=maste
 md5sums=('SKIP')
 
 pkgver() {
+  # According to https://wiki.archlinux.org/index.php/VCS_package_guidelines,
+  # we are aiming for RELEASE.rREVISION (or rather RELEASE.rREVISION.GIT_HASH).
+  # Since netgen releases usually look like 6.2.2008, this should look like
+  # 6.2.2008.r82.gf97601bc
   cd "${srcdir}"/${pkgname%-git}
-  git describe --tags | sed 's/-/./g'
+  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

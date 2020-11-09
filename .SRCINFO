@@ -1,7 +1,7 @@
 pkgbase = netgen-git
 	pkgdesc = An automatic 3d tetrahedral mesh generator.
-	pkgver = v6.2.2004.4.g9af476c3
-	pkgrel = 1
+	pkgver = 6.2.2008.r82.gf97601bc
+	pkgrel = 2
 	url = https://sourceforge.net/projects/netgen-mesher/
 	arch = i686
 	arch = x86_64
