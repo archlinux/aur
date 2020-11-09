@@ -3,7 +3,7 @@
 _name=poyo
 pkgname=python-poyo
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight YAML Parser for Python"
 arch=('any')
 url="https://github.com/hackebrot/poyo"
