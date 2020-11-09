@@ -5,8 +5,8 @@
 _pkgbase='engauge-digitizer'
 pkgname=('engauge-git' 'engauge-samples-git')
 pkgbase=engauge-git
-pkgver=12.2.1.r14.g64fa52aa
-pkgrel=2
+pkgver=12.2.1.r69.g53b8077b
+pkgrel=1
 url="http://markummitchell.github.io/engauge-digitizer/"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -40,7 +40,7 @@ package_engauge-git() {
   provides=('engauge')
   cd $_pkgbase
   install -Dm755 ../${pkgbase%-git}.sh "$pkgdir"/usr/bin/${pkgbase%-git}
-  install -Dm755 bin/${pkgbase%-git} "$pkgdir"/usr/lib/$_pkgbase/${pkgbase%-git}
+  install -Dm755 bin/Engauge "$pkgdir"/usr/lib/$_pkgbase/${pkgbase%-git}
   # translations
   install -dm755 "$pkgdir"/usr/lib/$_pkgbase/translations/
   install -Dm64 translations/*.qm -t "$pkgdir"/usr/lib/$_pkgbase/translations/
