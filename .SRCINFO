@@ -1,6 +1,6 @@
 pkgbase = mousepad-git
 	pkgdesc = Simple text editor for Xfce (git checkout)
-	pkgver = 0.4.2+143+g04bffec
+	pkgver = 0.4.2+477+gc63893a
 	pkgrel = 1
 	url = http://www.xfce.org/
 	arch = x86_64
@@ -11,10 +11,9 @@ pkgbase = mousepad-git
 	makedepends = xfce4-dev-tools
 	makedepends = git
 	makedepends = intltool
-	makedepends = perl
 	depends = gtksourceview3
-	depends = dbus-glib
-	provides = mousepad=0.4.2+143+g04bffec
+	depends = xfconf
+	provides = mousepad=0.4.2+477+gc63893a
 	conflicts = mousepad
 	source = mousepad::git+https://gitlab.xfce.org/apps/mousepad
 	sha256sums = SKIP
