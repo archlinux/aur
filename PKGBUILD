@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 pkgname=mautrix-telegram
 pkgver=0.8.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A Matrix-Telegram hybrid puppeting/relaybot bridge."
 url="https://github.com/tulir/mautrix-telegram"
 depends=('python' 'python-sqlalchemy' 'python-alembic' 'python-ruamel-yaml'
@@ -44,15 +44,13 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	_shared_dir="/usr/share/${pkgname}"
-	python setup.py install --optimize=1 --skip-build --root="${pkgdir}/" --prefix="/usr"
+	python setup.py install --optimize=1 --skip-build --root="${pkgdir}/" --prefix="/usr" --install-data="${_shared_dir}"
 
 	# it's a semi-common failure for python packages to install tests in the main dir
 	# which would make them conflict eachother
 	rm -rf "${pkgdir}$(python -c 'import site; print(site.getsitepackages()[0])')/tests"
 
-	# TODO: remove this junk when ver 9 gets out of rc since it has a param data_files to chose the path
-	mkdir -p "${pkgdir}${_shared_dir}"
-	mv "${pkgdir}/usr/"{alembic,alembic.ini} "${pkgdir}/${_shared_dir}"
+	# TODO: remove this when ver 9 gets out of rc since it installs the example config to the data dir properly
 	mv "${pkgdir}$(python -c 'import site; print(site.getsitepackages()[0])')/${pkgname//-/_}/example-config.yaml" "${pkgdir}${_shared_dir}"
 
 	# adjust alembic script dir location so that by using an abs path it can be used in CWD
