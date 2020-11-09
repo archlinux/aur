@@ -1,11 +1,11 @@
 pkgname=dnf
-pkgver=4.4.0
+pkgver=4.4.2
 pkgrel=1
 pkgdesc="Package manager forked from Yum, using libsolv as a dependency resolver"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2')
-depends=('libdnf>=0.54.1' 'libcomps>=0.1.8'
+depends=('libdnf>=0.54.4' 'libcomps>=0.1.8'
          'python' 'python-gpgme' 'rpm-tools>=4.14.0')
 makedepends=('bash-completion' 'cmake>=3.13' 'python-sphinx')
 checkdepends=('python-nose')
@@ -19,7 +19,7 @@ backup=("etc/$pkgname/automatic.conf"
         "etc/logrotate.d/$pkgname")
 options=('!emptydirs')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('9c2ef7103e54e9d92bdf7c817fe73c36')
+md5sums=('086b824c3f62279165c3e4ade9085b25')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -41,12 +41,11 @@ build() {
 	make -C build doc-man
 }
 
-# Tests seem to need a non-empty RPM database installed on the system
-#check() {
-#	cd "$pkgname-$pkgver"
-#
-#	make -C build ARGS="-V" test
-#}
+check() {
+	cd "$pkgname-$pkgver"
+
+	make -C build ARGS="--output-on-failure" test
+}
 
 package() {
 	cd "$pkgname-$pkgver"
