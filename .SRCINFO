@@ -5,6 +5,7 @@ pkgbase = python-migen-git
 	url = https://github.com/m-labs/migen
 	arch = any
 	license = BSD
+	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python

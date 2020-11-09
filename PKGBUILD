@@ -7,6 +7,7 @@ url="https://github.com/m-labs/migen"
 license=('BSD')
 makedepends=('git' 'python-setuptools')
 depends=('python')
+checkdepends=('python-pytest')
 provides=("${pkgname%%-git}")
 conflicts=("${pkgname%%-git}")
 replaces=('migen-git')
@@ -17,6 +18,11 @@ pkgver=0.9.2.rcc6e76e
 pkgver() {
   cd "${srcdir}/migen"
   git describe --long --tags | sed 's/\([^-]*-g\)/r/;s/-/./g'
+}
+
+check() {
+  cd "${srcdir}/migen"
+  env PYTHONPATH=. pytest
 }
 
 package() {
