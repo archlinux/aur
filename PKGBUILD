@@ -1,7 +1,7 @@
 # Maintainer: Can Celasun <can[at]dcc[dot]im>
 
 pkgname=basemark
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Basemark GPU - Graphics performance evaluation tool"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=("libxinerama" "libxi" "xdg-utils" "hicolor-icon-theme" "freetype2" "lib
 optdepends=("vulkan-icd-loader")
 source=(https://cdn.downloads.basemark.com/BasemarkGPU-linux-${pkgver}.tar.gz
         ${pkgname} ${pkgname}.desktop ${pkgname}.png license.txt)
-sha256sums=('50f4031b028b4d403526e0be6a26cb5f83dd4c6dbd3bb274f7128aeac22df473'
+sha256sums=('51be7dbf3dfdeb96c25742b37ff654a06a517ba956cc64bcdc87efd82092c35d'
             'e45b53aec5d376cc2b26af49f640242251300a3b354661851c49094c520b3265'
             '99b4e6df0c45fd3ed71bd38c7de041d08bab45daf1e8cee183ccc070ae4b686f'
             '0f49324d4e1c761d1ef92e350a1ca667262659ecf98909c8b1d902f67dbad72b'
