@@ -1,0 +1,12 @@
+[Unit]
+Description=ReSpeaker Server
+After=avahi-daemon.service network.target
+
+[Service]
+User=respeaker
+Group=respeaker
+LimitRTPRIO=99
+ExecStart=/usr/bin/respeakerd_safe
+
+[Install]
+WantedBy=multi-user.target

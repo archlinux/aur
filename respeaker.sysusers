@@ -1,0 +1,4 @@
+u respeaker - "Respeakerd" /var/lib/respeaker /usr/bin/login
+g respeaker - -
+m respeaker audio
+m respeaker network

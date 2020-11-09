@@ -1,0 +1,2 @@
+d /var/lib/respeaker 0755 respeaker respeaker
+Z /var/lib/respeaker 0755 respeaker respeaker

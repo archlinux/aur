@@ -1,0 +1,24 @@
+pkgbase = respeakerd-git
+	pkgdesc = A server application for the microphone array solutions of SEEED, based on librespeaker which combines the audio front-end processing algorithms.
+	pkgver = v1.2.3.r11.7675a62
+	pkgrel = 1
+	url = https://github.com/respeaker/respeakerd
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = librespeaker-bin
+	provides = respeakerd
+	conflicts = respeakerd
+	source = respeakerd::git+https://github.com/respeaker/respeakerd
+	source = respeaker.sysusers
+	source = respeaker.tmpfiles
+	source = respeakerd.service
+	md5sums = SKIP
+	md5sums = ff637d610a28e1515d839c65e591cd67
+	md5sums = c17c45bd2e98befba2dab417bc9db27b
+	md5sums = b2b382f8d0e6e2190b28a7ce5e92faed
+
+pkgname = respeakerd-git
+
