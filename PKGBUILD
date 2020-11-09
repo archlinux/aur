@@ -79,7 +79,7 @@ build() {
       runtime-link=shared \
       link=shared,static \
       toolset=gcc \
-      python=3.8 \
+      python=3.9 \
       cflags="${CPPFLAGS} ${CFLAGS} -fPIC -O3" \
       cxxflags="${CPPFLAGS} ${CXXFLAGS} -std=c++14 -fPIC -O3" \
       linkflags="${LDFLAGS}" \
@@ -126,9 +126,9 @@ package_boost-libs() {
      libboost_locale.so libboost_log.so libboost_log_setup.so
      libboost_math_c99.so libboost_math_c99f.so libboost_math_c99l.so
      libboost_math_tr1.so libboost_math_tr1f.so libboost_math_tr1l.so
-     libboost_mpi.so libboost_numpy27.so libboost_numpy38.so
+     libboost_mpi.so libboost_numpy27.so libboost_numpy39.so
      libboost_prg_exec_monitor.so libboost_program_options.so
-     libboost_python27.so libboost_python38.so libboost_random.so
+     libboost_python27.so libboost_python39.so libboost_random.so
      libboost_regex.so libboost_serialization.so
      libboost_stacktrace_addr2line.so libboost_stacktrace_basic.so
      libboost_stacktrace_noop.so libboost_system.so libboost_thread.so
