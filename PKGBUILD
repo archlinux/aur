@@ -4,8 +4,9 @@ _pkgbase=prjxray
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "python-$_pkgbase-git")
 pkgver=r3288.780b7e4d
-pkgrel=1
+pkgrel=2
 pkgdesc="Documenting the Xilinx 7-series bit-stream format"
+arch=(x86_64)
 url="https://github.com/SymbiFlow/prjxray"
 license=('ISC')
 depends=()
@@ -68,7 +69,6 @@ check() {
 }
 
 package_prjxray-git() {
-	arch=(x86_64)
 	provides=("${pkgname%%-git}")
 	conflicts=("${pkgname%%-git}")
 
