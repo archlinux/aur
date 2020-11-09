@@ -1,0 +1,19 @@
+post_install() {
+    bold=$(tput bold)
+    red=$(tput setaf 1)
+    green=$(tput setaf 2)
+    normal=$(tput sgr0)
+    echo "${normal}${bold}    To use suto, edit the relevant file in /etc/pam.d/"
+    echo "    Eg. To use with sudo edit ${red}/etc/pam.d/sudo${normal}${bold} and add the following line ${red}at the top of the file.${normal}${bold}"
+    echo "${green}        auth sufficient libsuto_pam.so"
+    echo ""
+    echo "${normal}${bold}    Eg. To use with sudo edit ${red}/etc/pam.d/su${normal}${bold} and add the following line ${red}at the top of the file.${normal}${bold}"
+    echo "${green}        auth sufficient libsuto_pam.so${normal}"
+    echo ""
+    echo "${bold}    You will need to install the companion app on your Android Phone."
+    echo "    You can get the app here: ${green}https://github.com/anjanik012/suto-android${normal}"
+}
+
+post_upgrade() {
+    post_install
+}

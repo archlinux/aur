@@ -13,4 +13,5 @@ pkgbase = suto
 	sha256sums = 06832a4a521dc0871f877752af4e04effc8d1b6ee74eb9f651deaf43aab675f9
 
 pkgname = suto
+	install = suto.install
 
