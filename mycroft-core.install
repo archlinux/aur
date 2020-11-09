@@ -1,13 +1,21 @@
 post_install() {
   echo "====>  Replace this line within /etc/pulse/default.pa:"
-  echo "====     #load-module module-native-protocol-tcp"
+  echo "====     load-module module-native-protocol-unix"
   echo "====>  with:"
-  echo "====     load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1"
+  echo "====     load-module module-native-protocol-unix auth-anonymous=1 socket=/tmp/pulse-socket"
   echo "====>  Restart PulseAudio"
   echo "====>  Finally run:"
   echo "====	 systemctl start mycroft.service"
 }
 
 post_upgrade() {
-    post_install $1
+  post_install $1
+}
+
+post_remove() {
+  echo "====> Please check and, if occured, delete the following folders"
+  echo "====    /opt/mycroft/"
+  echo "====    /usr/share/mycroft-core/"
+  echo "====    /var/lib/mycroft"
+  echo "====    /var/log/mycroft/"
 }

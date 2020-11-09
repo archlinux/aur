@@ -1,4 +1,4 @@
-u mycroft - "Mycroft" /var/lib/mycroft /usr/bin/login
+u mycroft - "Mycroft" /var/lib/mycroft /bin/sh
 g mycroft - -
 m mycroft audio
 m mycroft dbus

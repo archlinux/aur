@@ -1,7 +1,7 @@
 pkgbase = mycroft-core
 	pkgdesc = The Mycroft Artificial Intelligence platform.
 	pkgver = 20.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MycroftAI/mycroft-core
 	install = mycroft-core.install
 	arch = i686
@@ -34,11 +34,15 @@ pkgbase = mycroft-core
 	source = mycroft.sysusers
 	source = mycroft.service
 	source = client.conf
+	source = mycroft.sh
+	source = mycroft.csh
 	md5sums = f6e35eedde6e1d92783f63ffcc7df7bf
 	md5sums = 39bcf2f0f30854b7b6e516d49946566a
-	md5sums = 578b9531acff7b5bf96d776bbd327d15
+	md5sums = bfe08c1d8cba053ef83cfac5a36c7910
 	md5sums = 7cbcc7b8b71d00c19a11166fbbd5ed4f
-	md5sums = 46775f06fd9d6c4ad5ff3a221d4912ff
+	md5sums = 78ae7633b181fddbeb8e5e8c6a830539
+	md5sums = 9e760b5fe356a12e126de036120c7319
+	md5sums = 6c78c4a328e1322b8155086a73a77486
 
 pkgname = mycroft-core
 
