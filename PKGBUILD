@@ -22,7 +22,7 @@ url="https://www.kernel.org/"
 license=(GPL-2.0)
 makedepends=("bison" "flex" "valgrind" "git" "cmake" "make" "extra-cmake-modules" "libelf" "elfutils"
             "python" "python-appdirs" "python-mako" "python-evdev" "python-sphinx_rtd_theme" "python-graphviz" "python-sphinx"
-            "clang" "lib32-clang" "bc" "gcc" "gcc-libs" "lib32-gcc-libs" "glibc" "lib32-glibc" "pahole" "patch" "gtk3" 
+            "clang" "lib32-clang" "bc" "gcc" "gcc-libs" "lib32-gcc-libs" "glibc" "lib32-glibc" "pahole" "patch" "gtk3"
             "kmod" "libmikmod" "lib32-libmikmod" "xmlto" "xmltoman" "graphviz" "imagemagick" "imagemagick-doc" "rsync")
 source=("https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snapshot/linux-${versiontag}.tar.gz"
         "${pkgbase}.preset"
@@ -33,7 +33,7 @@ md5sums=("SKIP"
 
 prepare(){
   cd linux-${versiontag}
-  
+
   # Apply any patch
   local src
   for src in "${source[@]}"; do
@@ -65,10 +65,9 @@ _package(){
   pkgdesc="Mainline linux kernel and modules"
   depends=("coreutils" "kmod" "initramfs" "mkinitcpio")
   optdepends=("linux-firmware" "crda")
-  provides=("Mainline linux kernel and modules")
   makedepends=("bison" "flex" "valgrind" "git" "cmake" "make" "extra-cmake-modules" "libelf" "elfutils"
             "python" "python-appdirs" "python-mako" "python-evdev" "python-sphinx_rtd_theme" "python-graphviz" "python-sphinx"
-            "clang" "lib32-clang" "bc" "gcc" "gcc-libs" "lib32-gcc-libs" "glibc" "lib32-glibc" "pahole" "patch" "gtk3" 
+            "clang" "lib32-clang" "bc" "gcc" "gcc-libs" "lib32-gcc-libs" "glibc" "lib32-glibc" "pahole" "patch" "gtk3"
             "kmod" "libmikmod" "lib32-libmikmod" "xmlto" "xmltoman" "graphviz" "imagemagick" "imagemagick-doc" "rsync")
   install=${pkgbase}.install
 
@@ -79,7 +78,7 @@ _package(){
   install -dm755 "${pkgdir}"/etc/mkinitcpio.d
 
   cd linux-${versiontag}
-  
+
   # Installing modules
   echo "Installing modules"
   make INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
@@ -108,14 +107,13 @@ _package(){
 
 _package-headers(){
   pkgdesc="Headers and scripts for building modules for the mainline-kernel package"
-  provides=("Headers and scripts for building modules for the mainline-kernel package")
 
   # Create system tree
   echo "Create system tree"
   install -dm755 "${pkgdir}"/usr/lib/modules/${modulestag}/build
-  
+
   cd linux-${versiontag}
-  
+
   local builddir="$pkgdir/usr/lib/modules/${modulestag}/build"
 
   echo "Installing build files..."
@@ -183,7 +181,7 @@ _package-headers(){
 
   echo "Stripping vmlinux..."
   strip -v $STRIP_STATIC "$builddir/vmlinux"
-  
+
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
@@ -191,10 +189,9 @@ _package-headers(){
 
 _package-api-headers(){
   pkgdesc="Mainline linux kernel api headers"
-  provides=("Mainline linux kernel api headers")
   makedepends=("bison" "flex" "valgrind" "git" "cmake" "make" "extra-cmake-modules" "libelf" "elfutils"
             "python" "python-appdirs" "python-mako" "python-evdev" "python-sphinx_rtd_theme" "python-graphviz" "python-sphinx"
-            "clang" "lib32-clang" "bc" "gcc" "gcc-libs" "lib32-gcc-libs" "glibc" "lib32-glibc" "pahole" "patch" "gtk3" 
+            "clang" "lib32-clang" "bc" "gcc" "gcc-libs" "lib32-gcc-libs" "glibc" "lib32-glibc" "pahole" "patch" "gtk3"
             "kmod" "libmikmod" "lib32-libmikmod" "xmlto" "xmltoman" "graphviz" "imagemagick" "imagemagick-doc" "rsync")
 
   # Create system tree
@@ -202,14 +199,14 @@ _package-api-headers(){
   install -dm755 "${pkgdir}"/usr
   install -dm755 "${pkgdir}"/usr/include
   install -dm755 "${pkgdir}"/usr/include/$pkgbase-api-headers
-  
+
   cd linux-${versiontag}
 
   # Create fakeinstall dir
   echo "Create fakeinstall dir"
   mkdir fakeinstall
 
-  # Installing headers to fakeinstall dir 
+  # Installing headers to fakeinstall dir
   echo "Installing headers to fakeinstall dir"
   make INSTALL_HDR_PATH="fakeinstall" -j$(nproc) headers_install
 
@@ -220,22 +217,21 @@ _package-api-headers(){
 
 _package-docs() {
   pkgdesc="Documentation for the mainline-kernel package"
-  provides=("Documentation for the mainline-kernel package")
   makedepends=("bison" "flex" "valgrind" "git" "cmake" "make" "extra-cmake-modules" "libelf" "elfutils"
             "python" "python-appdirs" "python-mako" "python-evdev" "python-sphinx_rtd_theme" "python-graphviz" "python-sphinx"
-            "clang" "lib32-clang" "bc" "gcc" "gcc-libs" "lib32-gcc-libs" "glibc" "lib32-glibc" "pahole" "patch" "gtk3" 
+            "clang" "lib32-clang" "bc" "gcc" "gcc-libs" "lib32-gcc-libs" "glibc" "lib32-glibc" "pahole" "patch" "gtk3"
             "kmod" "libmikmod" "lib32-libmikmod" "xmlto" "xmltoman" "graphviz" "imagemagick" "imagemagick-doc" "rsync")
 
   # Create system tree
   echo "Create system tree"
   install -dm755 "${pkgdir}"/usr/lib/modules/${modulestag}/build
-  
+
   cd linux-${versiontag}
-  
+
   # make -j$(nproc) htmldocs
   echo "make -j$(nproc) htmldocs"
   make -j$(nproc) htmldocs
-  
+
   local builddir="$pkgdir/usr/lib/modules/${modulestag}/build"
 
   echo "Installing documentation..."

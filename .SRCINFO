@@ -43,7 +43,6 @@ pkgbase = mainline-kernel
 
 pkgname = mainline-kernel
 	pkgdesc = Mainline linux kernel and modules
-  provides = Mainline linux kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -53,12 +52,9 @@ pkgname = mainline-kernel
 
 pkgname = mainline-kernel-headers
 	pkgdesc = Headers and scripts for building modules for the mainline-kernel package
-	provides = Headers and scripts for building modules for the mainline-kernel package
 
 pkgname = mainline-kernel-api-headers
 	pkgdesc = Mainline linux kernel api headers
-  provides = Mainline linux kernel api headers
 
 pkgname = mainline-kernel-docs
   	pkgdesc = Documentation for the mainline-kernel package
-    provides = Documentation for the mainline-kernel package
