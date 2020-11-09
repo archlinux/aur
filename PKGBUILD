@@ -3,14 +3,14 @@
 
 pkgname=gtk
 pkgver=1.2.10
-pkgrel=16
+pkgrel=17
 pkgdesc="A multi-platform toolkit (v1)"
 arch=('i686' 'x86_64')
 url="http://www.gtk.org/"
 license=('LGPL')
 depends=('libxi' 'glib')
 makedepends=('libxt')
-source=(ftp://ftp.gnome.org/pub/gnome/sources/gtk+/1.2/gtk+-${pkgver}.tar.gz
+source=(https://download.gnome.org/sources/gtk+/1.2/gtk+-${pkgver}.tar.gz
         aclocal-fixes.patch)
 sha1sums=('a5adcb909257da01ae4d4761e1d41081d06e4d7c'
           'b034e33efb85d27f3f3fb082c404e3b6ea79259f')
