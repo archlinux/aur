@@ -1,14 +1,14 @@
 pkgbase = cockpit-zfs-manager
 	pkgdesc = An interactive ZFS on Linux admin package for Cockpit
-	pkgver = 0.3.1.301
+	pkgver = 0.3.3.404
 	pkgrel = 1
 	url = https://github.com/optimans/cockpit-zfs-manager
 	arch = any
 	license = GPL3
 	depends = cockpit
 	depends = zfs
-	source = https://github.com/optimans/cockpit-zfs-manager/archive/0.3.1.301.tar.gz
-	md5sums = 81f9b3b9eb426fad458360d23e899710
+	source = https://github.com/optimans/cockpit-zfs-manager/archive/0.3.3.404.tar.gz
+	md5sums = c2c777c456349ca6d9ea28cf27b15083
 
 pkgname = cockpit-zfs-manager
 
