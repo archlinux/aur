@@ -17,7 +17,7 @@ sha256sums=('685d9b7162e61f8298f35f093bf3cda5078a5092601ca4fc4ea52c4130fbc6c2')
 
 package() {
     local _gemdir
-    _gemdir="$(gem env gemdir)"
+    _gemdir="$(ruby -e 'puts Gem.default_dir')"
     gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
     rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 }
