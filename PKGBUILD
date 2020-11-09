@@ -19,11 +19,11 @@ build() {
 
 package() {
 	cd "tensorflow-$pkgver"
-	
-	
+
+	ARCH=$(uname -m)
 
 	mkdir -p $pkgdir/usr/lib/
-	install -C tensorflow/lite/tools/make/gen/linux_x86_64/lib/libtensorflow-lite.a "$pkgdir/usr/lib"
+	install -C "tensorflow/lite/tools/make/gen/linux_$ARCH/lib/libtensorflow-lite.a" "$pkgdir/usr/lib"
 	
 	cd tensorflow/lite/
 	HEADERS=$(find . -name \*.h)
