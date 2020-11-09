@@ -6,14 +6,14 @@
 # If you want to help improve or maintain this package please let me know!
 
 pkgname=shadered-git
-pkgver=1.3.1_581.0fa7105
+pkgver=1.4.2_715.288f9c2
 pkgrel=1
 pkgdesc="SHADERed is a lightweight tool for creating and testing HLSL and GLSL shaders."
 arch=("x86_64")
 url="https://github.com/dfranx/SHADERed"
 license=("MIT")
 depends=(assimp glew glm gtk3 sdl2 sfml)
-makedepends=(cmake git)
+makedepends=(git cmake python)
 provides=('shadered')
 
 source=("git+https://github.com/dfranx/SHADERed.git"
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/SHADERed"
-    echo "1.3.1_$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    echo "1.4.2_$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
