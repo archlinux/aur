@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-reconchess
-pkgver=1.6.1
+pkgver=1.6.7
 pkgrel=1
 pkgdesc='ReconChess python implementation'
 arch=(any)
@@ -10,8 +10,8 @@ license=('BSD-3-Clause')
 depends=('python' 'python-chess' 'python-pygame' 'python-lxml'
          'python-requests')
 makedepends=('python' 'python-setuptools')
-source=("$pkgname-$pkgver::https://github.com/reconnaissanceblindchess/reconchess/archive/v$pkgver.tar.gz")
-sha256sums=('4bb454f47ff009313cf6a67b1148a88f3a898be703716d9509eb1ad3ef629ac3')
+source=("$pkgname-$pkgver::https://pypi.org/packages/source/r/reconchess/reconchess-${pkgver}.tar.gz")
+sha256sums=('b282e3c78a5df8e9557ffb994f5ec559faf3284ec14f515c00cea89b55bc288d')
 
 _pkgname=reconchess
 
