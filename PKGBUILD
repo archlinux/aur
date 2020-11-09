@@ -1,8 +1,8 @@
 pkgname=git-dit-git
 _pkgname=git-dit
 pkgdesc="Decentralized Issue Tracking for git"
-pkgrel=1
-pkgver=0.4.0.905
+pkgrel=2
+pkgver=0.4.0.923
 arch=('i686' 'x86_64')
 conflicts=("git-dit")
 provides=("git-dit")
@@ -20,8 +20,7 @@ pkgver() {
 
 build() {
 	cd $_pkgname
-	pandoc -s -f markdown+smart -t man-smart git-dit.1.md -o git-dit.1
-	env CARGO_INCREMENTAL=0 cargo build --release
+	env CARGO_INCREMENTAL=0 cargo build --release --features manpage
 }
 
 package() {
