@@ -1,0 +1,12 @@
+post_install() {
+	sudo mkinitcpio -p mainline-kernel
+}
+
+post_remove() {
+	sudo rm /boot/initramfs-mainline-kernel.img /boot/initramfs-mainline-kernel-fallback.img
+}
+
+post_upgrade() {
+	sudo rm /boot/initramfs-mainline-kernel.img /boot/initramfs-mainline-kernel-fallback.img
+	sudo mkinitcpio -p mainline-kernel
+}

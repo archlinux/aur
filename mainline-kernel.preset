@@ -1,0 +1,14 @@
+# mkinitcpio preset file for the 'mainline-kernel' package
+
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-mainline-kernel"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-mainline-kernel.img"
+#default_options=""
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/boot/initramfs-mainline-kernel-fallback.img"
+fallback_options="-S autodetect"
