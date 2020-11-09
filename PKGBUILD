@@ -6,7 +6,7 @@ pkgbase=gpgme
 pkgname=(gpgme qgpgme python-gpgme)
 pkgver=1.14.0
 pkgrel=1
-_python_ver=3.8
+_python_ver=3.9
 pkgdesc="A C wrapper library for GnuPG"
 arch=('x86_64')
 url='https://www.gnupg.org/related_software/gpgme/'
@@ -31,9 +31,9 @@ build() {
   # ensure reproducibility of .pyc files
   touch -d @$SOURCE_DATE_EPOCH lang/python/version.py
   touch -d @$SOURCE_DATE_EPOCH lang/python/python${_python_ver}-gpg/lib.linux-x86_64-${_python_ver}/gpg/gpgme.py
-  
+
   # .pyc files will be created if check() is used - generate them here
-  
+
 }
 
 check() {
