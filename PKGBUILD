@@ -1,6 +1,6 @@
 pkgname=alsa-control
 pkgver=0.2.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Easy to use ALSA default soundcard and volume configurator using Dmix and Softvol"
 arch=('any')
 url="https://github.com/sezanzeb/alsa-control/"
