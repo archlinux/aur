@@ -1,6 +1,6 @@
 /*.tar.gz
 
-/src/
+/src*
 /pkg/
 /*.pkg.tar*
 
