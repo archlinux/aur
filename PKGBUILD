@@ -36,7 +36,7 @@ sha256sums=('cbc648f5405cb2b554b7a0f23885742d9969a11d22692287ee756adf940a48d2'
             '4befd6244fd1e933519f7e589aa4dc24639500e3e911620636be5e0c0aa5f719')
 
 _kernelname=${pkgbase#}
-: ${_kernelname:=-Arch-vanilla-selinux-54}
+: ${_kernelname:=-Arch-vanilla-selinux-419}
 
 prepare() {
   cd $_origsrcname
