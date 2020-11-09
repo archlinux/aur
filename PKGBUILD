@@ -8,7 +8,7 @@ pkgdesc="A mesh VPN that makes it easy to connect your devices, wherever they ar
 arch=("x86_64")
 url="https://tailscale.com"
 license=("MIT")
-makedepends=("go")
+makedepends=("git" "go")
 depends=("glibc")
 backup=("etc/default/tailscaled")
 source=("$pkgname::git+http://github.com/tailscale/tailscale.git#tag=v$pkgver")
