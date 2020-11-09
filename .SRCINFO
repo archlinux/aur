@@ -1,7 +1,7 @@
 pkgbase = linux-vanilla-selinux-419
 	pkgdesc = Vanilla-Linux-Kernel (4.19) from kernel.org with Selinux enabled. Without docs. Will be fixed in the next builds (Problem with Sphinx).
 	pkgver = 4.19.155
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -22,6 +22,7 @@ pkgbase = linux-vanilla-selinux-419
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux-vanilla-selinux-419.preset
+	source = sphinx-workaround.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = cbc648f5405cb2b554b7a0f23885742d9969a11d22692287ee756adf940a48d2
@@ -31,6 +32,7 @@ pkgbase = linux-vanilla-selinux-419
 	sha256sums = 5c7af03d9b4cade110543ba706bcbd49fc6447726258b4bfec0edff7ca9994d1
 	sha256sums = 9089c8d44982dc03b0dde47632f8aa2fda14754b911acbc266feee85da94b0f5
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = 4befd6244fd1e933519f7e589aa4dc24639500e3e911620636be5e0c0aa5f719
 
 pkgname = linux-vanilla-selinux-419
 	pkgdesc = The Linux-vanilla-selinux-419 kernel and modules
@@ -46,5 +48,5 @@ pkgname = linux-vanilla-selinux-419-headers
 	pkgdesc = Header files and scripts for building modules for Linux-vanilla-selinux-419 kernel
 
 pkgname = linux-vanilla-selinux-419-docs
-	pkgdesc = Documentation for the Vanilla-Linux-Kernel (4.19) from kernel.org with Selinux enabled. Without docs. Will be fixed in the next builds (Problem with Sphinx). kernel
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-vanilla-selinux-419 kernel
 

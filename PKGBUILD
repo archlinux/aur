@@ -3,7 +3,7 @@
 pkgbase=linux-vanilla-selinux-419
 pkgname=linux-vanilla-selinux-419
 pkgver=4.19.155
-pkgrel=1
+pkgrel=2
 pkgdesc="Vanilla-Linux-Kernel (4.19) from kernel.org with Selinux enabled. Without docs. Will be fixed in the next builds (Problem with Sphinx)."
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -20,6 +20,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_origsrcname}.tar.{xz,sig
         '60-linux.hook'  # pacman hook for depmod
         '90-linux.hook'  # pacman hook for initramfs regeneration
         'linux-vanilla-selinux-419.preset'   # standard config files for mkinitcpio ramdisk
+        'sphinx-workaround.patch' # patch for Sphinx HTMLDOCS
 )
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
@@ -31,7 +32,8 @@ sha256sums=('cbc648f5405cb2b554b7a0f23885742d9969a11d22692287ee756adf940a48d2'
             'f9b13f3c00be95205ccb77ead42881ecbf0f7ba0d0ad12af294e054272859d81'
             '5c7af03d9b4cade110543ba706bcbd49fc6447726258b4bfec0edff7ca9994d1'
             '9089c8d44982dc03b0dde47632f8aa2fda14754b911acbc266feee85da94b0f5'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
+            '4befd6244fd1e933519f7e589aa4dc24639500e3e911620636be5e0c0aa5f719')
 
 _kernelname=${pkgbase#}
 : ${_kernelname:=-Arch-vanilla-selinux-54}
@@ -67,7 +69,7 @@ prepare() {
 build() {
   cd $_origsrcname
   make all
-  #make htmldocs
+  make htmldocs
 }
 
 _package() {
@@ -202,24 +204,32 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Documentation for the $pkgdesc kernel"
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 
   cd $_origsrcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  echo "Installing documentation..."
+  msg2 "Installing documentation..."
+  mkdir -p "$builddir"
+  cp -t "$builddir" -a Documentation
+
+  msg2 "Removing doctrees..."
+  rm -r "$builddir/Documentation/output/.doctrees"
+
+  msg2 "Moving HTML docs..."
   local src dst
   while read -rd '' src; do
-    dst="${src#Documentation/}"
-    dst="$builddir/Documentation/${dst#output/}"
-    install -Dm644 "$src" "$dst"
-  done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
+    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+    mkdir -p "${dst%/*}"
+    mv "$src" "$dst"
+    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  done < <(find "$builddir/Documentation/output" -type f -print0)
 
-  echo "Adding symlink..."
+  msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 
-  echo "Fixing permissions..."
+  msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
