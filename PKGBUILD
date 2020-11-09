@@ -8,8 +8,8 @@ else
 _arch="x86"
 fi
 
-_major="11.1.1"
-_minor=91089
+_major="12.0.1"
+_minor=91869
 
 pkgname="komodo-ide"
 _bigname="Komodo-IDE"
@@ -21,7 +21,7 @@ url="http://www.activestate.com/komodo-ide"
 license=('custom')
 depends=('dbus-glib' 'glibc>=2.4' 'libjpeg-turbo' 'gcc-libs' 'gtk2')
 optdepends=('xterm: can be used for running certain commands')
-options=('!strip')
+#options=('!strip')
 
 source=('_install.py.patch' 'activestate.py.patch')
 _srcbase="http://downloads.activestate.com/Komodo/releases"
@@ -30,8 +30,8 @@ source_x86_64=("${_srcbase}/${_major}/${_bigname}-${_major}-${_minor}-linux-x86_
 
 sha256sums=('beb35ae529bffd998784bc1e51468bf5bf64e5d8f84e3eb2c4af07c8807b101a'
             '7f6efb3d3b8959b9a85aa7056094932686b3aea60880a06a559cf12e1f2e6231')
-sha256sums_i686=('8cb1acff71138d6a57f1cc51f409a4799d458dd04637d64d122bb838a4cc607d')
-sha256sums_x86_64=('c0ac7d936f36d20d0be304d32dec8880c4fadc8b13bb581b7687860df4fed827')
+sha256sums_i686=('d00eaaec20eed86a6d7592bc47aba69934bedb1481a590fb72d20944b50e1c5d')
+sha256sums_x86_64=('5c2735e9a323ffe290425e5066dd6f72f11e5d58d732411e6648a685725e055a')
 
 prepare() {
   cd ${srcdir}/${_bigname}-${_major}-${_minor}-linux-${_arch}

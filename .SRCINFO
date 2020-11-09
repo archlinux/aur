@@ -1,6 +1,6 @@
 pkgbase = komodo-ide
 	pkgdesc = Code smarter and faster with the leading IDE for today's major web languages, including Python, PHP, Node.js, Perl, Go and Ruby. - XUL based
-	pkgver = 11.1.1_91089
+	pkgver = 12.0.1_91869
 	pkgrel = 1
 	url = http://www.activestate.com/komodo-ide
 	arch = i686
@@ -17,10 +17,10 @@ pkgbase = komodo-ide
 	source = activestate.py.patch
 	sha256sums = beb35ae529bffd998784bc1e51468bf5bf64e5d8f84e3eb2c4af07c8807b101a
 	sha256sums = 7f6efb3d3b8959b9a85aa7056094932686b3aea60880a06a559cf12e1f2e6231
-	source_i686 = http://downloads.activestate.com/Komodo/releases/11.1.1/Komodo-IDE-11.1.1-91089-linux-x86.tar.gz
-	sha256sums_i686 = 8cb1acff71138d6a57f1cc51f409a4799d458dd04637d64d122bb838a4cc607d
-	source_x86_64 = http://downloads.activestate.com/Komodo/releases/11.1.1/Komodo-IDE-11.1.1-91089-linux-x86_64.tar.gz
-	sha256sums_x86_64 = c0ac7d936f36d20d0be304d32dec8880c4fadc8b13bb581b7687860df4fed827
+	source_i686 = http://downloads.activestate.com/Komodo/releases/12.0.1/Komodo-IDE-12.0.1-91869-linux-x86.tar.gz
+	sha256sums_i686 = d00eaaec20eed86a6d7592bc47aba69934bedb1481a590fb72d20944b50e1c5d
+	source_x86_64 = http://downloads.activestate.com/Komodo/releases/12.0.1/Komodo-IDE-12.0.1-91869-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 5c2735e9a323ffe290425e5066dd6f72f11e5d58d732411e6648a685725e055a
 
 pkgname = komodo-ide
 
