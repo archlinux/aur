@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc='Allows two users behind NAT/Firewall to establish a TCP connection with each other.'
 url='https://github.com/hackerschoice/gsocket'
 arch=('any')
-license=('GPL')
+license=('custom')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/hackerschoice/gsocket#branch=master")
 md5sums=('SKIP')
