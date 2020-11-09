@@ -4,20 +4,19 @@
 # Contributor: Frederik M.J.V. <freqmod VED iskrembilen Dott kom>
 
 pkgname=python-tempita
-pkgver=0.5.3dev20170202
-_commit=47414a7c6e46a9a9afe78f0bce2ea299fa84d10d
-pkgrel=5
+pkgver=0.5.2
+pkgrel=1
+epoch=1
 pkgdesc="A lightweight unicode templating language"
 arch=('any')
 url="http://pythonpaste.org/tempita/"
 license=('custom:MIT')
 depends=('python')
-makedepends=('python-distribute' 'git')
-#source=(https://pypi.python.org/packages/source/T/Tempita/Tempita-${pkgver}.tar.gz)
-source=("$pkgname::git://github.com/gjhiggins/tempita.git#commit=${_commit}")
-sha256sums=('SKIP')
+makedepends=('python-distribute')
+source=(https://pypi.python.org/packages/source/T/Tempita/Tempita-${pkgver}.tar.gz)
+sha256sums=('cacecf0baa674d356641f1d406b8bff1d756d739c46b869a54de515d08e6fc9c')
 
 package() {
-  cd "$pkgname"
+  cd Tempita-${pkgver}
   python setup.py install --root="$pkgdir" --optimize=1
 }
