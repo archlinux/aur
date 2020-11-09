@@ -1,0 +1,20 @@
+pkgbase = python-fasm-git
+	pkgdesc = FPGA Assembly (FASM) Parser and Generation library
+	pkgver = 0.0.r47.g4857dde
+	pkgrel = 1
+	url = https://github.com/SymbiFlow/fasm
+	arch = any
+	license = ISC
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-textx
+	provides = python-fasm=0.0.r47.g4857dde
+	conflicts = fasm
+	conflicts = python-fasm
+	source = git+https://github.com/SymbiFlow/fasm.git
+	sha256sums = SKIP
+
+pkgname = python-fasm-git
+
