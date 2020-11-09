@@ -75,7 +75,6 @@ package_seeed-voicecard-2mic-dkms-git() {
 
 package_seeed-voicecard-4mic-dkms-git() {
   pkgdesc="DTB Overlay for Seed Studio ReSpeaker 4 Mic Array and 4-Mics Linear Array Kit for Raspberry Pi."
-
   depends=("${_pkg}-dkms-git")
   install="${_pkg}-4mic.install"
 
@@ -88,7 +87,6 @@ package_seeed-voicecard-4mic-dkms-git() {
 
 package_seeed-voicecard-8mic-dkms-git() {
   pkgdesc="DTB Overlay for Seed Studio ReSpeaker 6-Mics Circular Array Kit for Raspberry Pi."
-
   depends=("${_pkg}-dkms-git")
   install="${_pkg}-8mic.install"
  
