@@ -1,15 +1,15 @@
 # Maintainer: Alkindi42
 
-pkgname=dasel
+pkgname=sqlc
 pkgver=1.4.0
 pkgrel=1
-pkgdesc="Query and update data structures from the command line."
+pkgdesc="Generate type safe Go from SQL "
 arch=('x86_64')
-url="https://github.com/TomWright/dasel"
+url="https://github.com/kyleconroy/sqlc"
 license=('MIT')
 makedepends=('go' 'git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TomWright/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('5da9e38839f7dd1c578cdc5ad786aa20c0c006d07292ddd15daef9f6f3831c70')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kyleconroy/$pkgname/archive/v${pkgver}.tar.gz")
+sha256sums=('77a09f42cc88e59e6788579628c8606760851f72488133595522825695baf892')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -19,7 +19,7 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   go build -ldflags "-X main.BuildDate=$(date -u '+%Y-%m-%dT%I:%M:%S%p')" \
-    -o $pkgname ./cmd/dasel/main.go 
+    -o $pkgname ./cmd/sqlc/main.go 
 }
 
 check() {
@@ -29,6 +29,6 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 dasel "$pkgdir/usr/bin/dasel"
+  install -Dm755 sqlc "$pkgdir/usr/bin/sqlc"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

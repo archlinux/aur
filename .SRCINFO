@@ -1,14 +1,14 @@
-pkgbase = dasel
-	pkgdesc = Query and update data structures from the command line.
+pkgbase = sqlc
+	pkgdesc = Generate type safe Go from SQL
 	pkgver = 1.4.0
 	pkgrel = 1
-	url = https://github.com/TomWright/dasel
+	url = https://github.com/kyleconroy/sqlc
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = https://github.com/TomWright/dasel/archive/v1.4.0.tar.gz
-	sha256sums = 5da9e38839f7dd1c578cdc5ad786aa20c0c006d07292ddd15daef9f6f3831c70
+	source = sqlc-1.4.0.tar.gz::https://github.com/kyleconroy/sqlc/archive/v1.4.0.tar.gz
+	sha256sums = 77a09f42cc88e59e6788579628c8606760851f72488133595522825695baf892
 
-pkgname = dasel
+pkgname = sqlc
 
