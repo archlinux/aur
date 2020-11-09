@@ -1,7 +1,7 @@
 pkgbase = ruby-xdg
 	pkgdesc = Provides a Ruby implementation of the XDG Base Directory Specification
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.alchemists.io/projects/xdg
 	arch = any
 	license = Apache
