@@ -1,7 +1,7 @@
 pkgbase = libtvcontrol
 	pkgdesc = A library to handle Advanced Breakout for Apple TV 4K. A library to control whether an Apple TV 4K boots to DFU or Normal mode using an Advanced Breakout.
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lilstevie/libtvcontrol
 	arch = x86_64
 	license = MIT

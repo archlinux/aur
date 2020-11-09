@@ -4,7 +4,7 @@ _pkgrel=1
 
 pkgname=libtvcontrol
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A library to handle Advanced Breakout for Apple TV 4K. A library to control whether an Apple TV 4K boots to DFU or Normal mode using an Advanced Breakout."
 license=('MIT')
 url="https://github.com/lilstevie/libtvcontrol"
@@ -29,4 +29,7 @@ package() {
     tar -xf data.tar.xz -C $pkgdir
     rm data.tar.xz control.tar.xz
   done
+  mv $pkgdir/lib/udev $pkgdir/usr/lib
+  mv $pkgdir/usr/lib/x86_64-linux-gnu/* $pkgdir/usr/lib
+  rmdir $pkgdir/lib $pkgdir/usr/lib/x86_64-linux-gnu
 }
