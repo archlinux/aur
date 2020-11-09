@@ -11,6 +11,7 @@ license=("GPL2")
 provides=("mmsd")
 conflicts=("mmsd")
 depends=("dbus" "glib2")
+makedepends=('git')
 source=("$pkgname::git+https://git.kernel.org/pub/scm/network/ofono/mmsd.git")
 sha256sums=("SKIP")
 

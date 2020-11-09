@@ -5,6 +5,7 @@ pkgbase = mmsd-git
 	url = https://git.kernel.org/pub/scm/network/ofono/mmsd.git
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	depends = dbus
 	depends = glib2
 	provides = mmsd
