@@ -3,8 +3,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-btchip-git
-pkgver=0.1.28
-pkgrel=2
+pkgver=0.1.31
+pkgrel=1
 pkgdesc="Python library to communicate with BTChip dongle"
 arch=('any')
 depends=('python-hidapi' 'libusb-compat' 'libusb' 'libsystemd')
