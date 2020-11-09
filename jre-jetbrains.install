@@ -1,0 +1,32 @@
+# arg 1:  the new package version
+post_install() {
+    cat <<EOF
+
+    To explicitly point JetBrains IDEs to jre-jetbrains you can use environment variable(-s):
+
+      export IDEA_JDK=/usr/lib/jvm/jre-jetbrains
+      export PHPSTORM_JDK=/usr/lib/jvm/jre-jetbrains
+      export WEBIDE_JDK=/usr/lib/jvm/jre-jetbrains
+      export PYCHARM_JDK=/usr/lib/jvm/jre-jetbrains
+      export RUBYMINE_JDK=/usr/lib/jvm/jre-jetbrains
+      export CL_JDK=/usr/lib/jvm/jre-jetbrains
+      export DATAGRIP_JDK=/usr/lib/jvm/jre-jetbrains
+      export GOLAND_JDK=/usr/lib/jvm/jre-jetbrains
+
+EOF
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+    post_install
+}
+
+# arg 1:  the old package version
+post_remove() {
+    cat <<EOF
+
+    Don't forget to remove environment variable(-s): IDEA_JDK / PHPSTORM_JDK / WEBIDE_JDK / PYCHARM_JDK / RUBYMINE_JDK / CL_JDK / DATAGRIP_JDK / GOLAND_JDK
+
+EOF
+}

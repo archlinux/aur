@@ -1,8 +1,9 @@
 pkgbase = jre-jetbrains
 	pkgdesc = OpenJDK Java 11 runtime with some fixes and enhancements by JetBrains
 	pkgver = 11.0.9b1171.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bintray.com/jetbrains/intellij-jdk
+	install = jre-jetbrains.install
 	arch = x86_64
 	license = GPL2
 	depends = java-runtime-common
