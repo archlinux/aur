@@ -2,7 +2,7 @@
 
 pkgname=python-recommonmark
 pkgver=0.6.0.194.48f9d1a
-pkgrel=2
+pkgrel=3
 _gitcommit=48f9d1a6848c77a104854f556c053f3ed3c2c354
 pkgdesc='Markdown parser for docutils'
 url='https://github.com/readthedocs/recommonmark'
