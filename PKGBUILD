@@ -14,7 +14,8 @@ source_x86_64=("${pkgname%-bin}-$pkgver.tgz::$url/releases/download/$pkgver/${pk
 sha512sums_x86_64=('fb4bd61b4ac7ce048ea43f64523902557e522b61d3e2f986efba413de5c6f2ff50d64cb4e53960c4c1a097a0c3e15c4b8c4b02053a486ba707e1d4d81919b106')
 
 package() {
-  tar -xzf "${pkgname%-bin}-$pkgver.tgz" -C "$pkgdir"
-  chmod 755 "$pkgdir/usr/bin/${pkgname%-bin}"
-  chmod -R 644 "$pkgdir/usr/share/doc/${pkgname%-bin}"
+  install -Dm 755 "usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+  for f in "usr/share/doc/${pkgname%-bin}/*"; do
+    install -Dm 644 $f -t "$pkgdir/usr/share/doc/${pkgname%-bin}"
+  done
 }
