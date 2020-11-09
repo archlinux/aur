@@ -1,4 +1,5 @@
 # Maintainer: Will Price <will.price94@gmail.com>
+# Co-Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 
 pkgname=python-migen-git
 pkgver=0.9.2.rcc6e76e
