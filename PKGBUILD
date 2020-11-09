@@ -1,5 +1,5 @@
 pkgname=libdnf
-pkgver=0.54.2
+pkgver=0.55.0
 pkgrel=1
 pkgdesc="Library providing simplified C and Python API to libsolv"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=( 'hawkey')
 conflicts=('hawkey')
 replaces=( 'hawkey')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('8f73ca541dd2391d56680a80e5b12c0d')
+md5sums=('3d76c10d30949d1759952d16f3d8c91d')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -45,7 +45,7 @@ check() {
 
 	# Fails because Arch Linux's /etc/os-release does not have a
 	# VERSION_ID field
-	make -n -C build ARGS="-V" test
+	make -n -C build ARGS="--output-on-failure" test
 }
 
 package() {
