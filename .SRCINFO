@@ -1,0 +1,14 @@
+pkgbase = tc-viewer
+	pkgdesc = Watch transfers in HTB and HFSC traffic shaping classes on specified interface.
+	pkgver = 1.5
+	pkgrel = 2
+	url = https://web.archive.org/web/20100604054114/http://pawilcz.eu/tc-viewer/tc-viewer.html
+	arch = any
+	license = GPL
+	depends = iproute2
+	backup = etc/tc-viewer/tc-viewer.conf
+	source = https://gitlab.com/post-factum/tc-viewer/-/archive/v1.5/tc-viewer-v1.5.tar.gz
+	sha256sums = 3fa9019a993ca709bb512fabf971691a781426b40d7a4a6359fa5ab474c705c5
+
+pkgname = tc-viewer
+
