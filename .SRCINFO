@@ -1,7 +1,7 @@
 pkgbase = itch
 	pkgdesc = The best way to play itch.io games.
 	pkgver = 1.24.0
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/itchio/itch
 	install = itch.install
@@ -13,7 +13,6 @@ pkgbase = itch
 	depends = libnotify
 	depends = nss
 	depends = gconf
-	depends = gtk2
 	depends = libxtst
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
