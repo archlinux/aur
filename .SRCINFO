@@ -8,6 +8,7 @@ pkgbase = mingw-w64-glslang
 	makedepends = mingw-w64-cmake
 	makedepends = python
 	depends = mingw-w64-spirv-tools
+	optdepends = mingw-w64-wine: runtime support
 	options = !strip
 	options = !buildflags
 	options = staticlibs

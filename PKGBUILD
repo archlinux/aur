@@ -7,6 +7,7 @@ url='https://github.com/KhronosGroup/glslang'
 license=('BSD')
 depends=('mingw-w64-spirv-tools')
 makedepends=('mingw-w64-cmake' 'python')
+optdepends=('mingw-w64-wine: runtime support')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(https://github.com/KhronosGroup/glslang/archive/${pkgver}.tar.gz wine-glslangValidator.sh)
 sha256sums=('639ebec56f1a7402f2fa094469a5ddea1eceecfaf2e9efe361376a0f73a7ee2f' SKIP)
