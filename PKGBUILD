@@ -124,7 +124,7 @@ _package() {
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  pytorchpath="usr/lib/python3.8/site-packages/torch"
+  pytorchpath="usr/lib/python3.9/site-packages/torch"
   install -d "${pkgdir}/usr/lib"
 
   # put CMake files in correct place
