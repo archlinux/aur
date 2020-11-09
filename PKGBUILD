@@ -1,9 +1,9 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=spectre-meltdown-checker
-pkgver=0.43
+pkgver=0.44
 pkgrel=1
 epoch=
-pkgdesc="Spectre & Meltdown vulnerability/mitigation checker (CVE-2017-5753, CVE-2017-5715, CVE-2017-5754, CVE-2018-3640, CVE-2018-3639, CVE-2018-3615, CVE-2018-3620, CVE-2018-3646, CVE-2018-12126, CVE-2018-12130, CVE-2018-12127, CVE-2019-11091)"
+pkgdesc="Spectre, Meltdown, Foreshadow, Fallout, RIDL, ZombieLoad vulnerability/mitigation checker"
 arch=('any')
 url="https://github.com/speed47/spectre-meltdown-checker"
 license=('GPL3')
@@ -14,4 +14,4 @@ package() {
   install -Dm755 spectre-meltdown-checker.sh "$pkgdir/usr/bin/spectre-meltdown-checker"
 }
 
-sha256sums=('b913f08e8380403c30f20e2c8763010db81a89cb2c5474ae54df1419644ad185')
+sha256sums=('96765d765275476c36a146da123fa7e9eb310a84e84ae71b179c9ace3b6ab0c8')
