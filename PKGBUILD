@@ -6,7 +6,7 @@
 pkgbase=klee-libc++
 pkgname=(${pkgbase}{,abi,experimental})
 pkgver=10.0.1
-pkgrel=3
+pkgrel=4
 url="https://libcxx.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 arch=('i686' 'x86_64')
@@ -93,6 +93,7 @@ package_klee-libc++abi() {
     install -Dm0644 -t "$pkgdir"/usr/share/"$pkgname"/usr/lib/ "$srcdir"/build/lib/libc++abi.so*.bc
     ln -s libc++abi.so.1.0.bc "$pkgdir"/usr/share/"$pkgname"/usr/lib/libc++abi.so.bc
     ln -s libc++abi.so.1.0.bc "$pkgdir"/usr/share/"$pkgname"/usr/lib/libc++abi.so.1.bc
+    mkdir -p "$pkgdir"/usr/src/ && cp -r "$srcdir"/llvm/projects/libcxxabi "$pkgdir"/usr/src/
     install -Dm0644 "$srcdir"/llvm/projects/libcxxabi/CREDITS.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/CREDITS
     install -Dm0644 "$srcdir"/llvm/projects/libcxxabi/LICENSE.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
