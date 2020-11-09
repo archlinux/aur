@@ -8,7 +8,6 @@ pkgver=1.3.1073.r5377
 _gwtver=2.8.2
 _ginver=2.1.2
 _nodever=10.19.0
-_pandocver=2.11.0.4
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
@@ -48,6 +47,7 @@ prepare() {
     cp -r "${srcdir}/gwt-${_gwtver}/"* lib/gwt/${_gwtver}
 
     cd "${srcdir}/${_gitname}/dependencies/common"
+    _pandocver=$(grep -oP "(?<=PANDOC_VERSION=\").*(?=\"$)" install-pandoc)
     install -d pandoc/${_pandocver}
  
     ln -sfT /usr/share/myspell/dicts dictionaries
