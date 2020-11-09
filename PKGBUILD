@@ -3,17 +3,17 @@
 
 pkgname=python-eve
 _pkgname=eve
-pkgver=1.1
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="An open source Python REST API framework designed for human beings"
 arch=('any')
 url="http://python-eve.org/"
 license=('BSD')
-depends=('python-flask' 'python-simplejson' 'python-pymongo' 'python-cerberus' 'python-events')
+depends=('python-flask' 'python-simplejson' 'python-pymongo' 'python-cerberus<2.0' 'python-events')
 makedepends=('python-setuptools')
 conflicts=('python-eve-git')
 source=("https://github.com/pyeve/$_pkgname/archive/v$pkgver.tar.gz")
-md5sums=('dde409cac7af158b62c4e589145bdecc')
+md5sums=('4877afa4e26e9ba2b21d86d437ffcfd9')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"

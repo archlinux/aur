@@ -1,6 +1,6 @@
 pkgbase = python-eve
 	pkgdesc = An open source Python REST API framework designed for human beings
-	pkgver = 1.1
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = http://python-eve.org/
 	arch = any
@@ -9,11 +9,11 @@ pkgbase = python-eve
 	depends = python-flask
 	depends = python-simplejson
 	depends = python-pymongo
-	depends = python-cerberus
+	depends = python-cerberus<2.0
 	depends = python-events
 	conflicts = python-eve-git
-	source = https://github.com/pyeve/eve/archive/v1.1.tar.gz
-	md5sums = dde409cac7af158b62c4e589145bdecc
+	source = https://github.com/pyeve/eve/archive/v1.1.4.tar.gz
+	md5sums = 4877afa4e26e9ba2b21d86d437ffcfd9
 
 pkgname = python-eve
 
