@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontship-git
-pkgver=0.5.0.r62.g378e9ec
+pkgver=0.6.2.r8.gb2f4c97
 pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
@@ -13,6 +13,7 @@ depends=('diffutils'
          'gftools'
          'git'
          'libarchive'
+         'libgit2'
          'make'
          'python'
          'python-babelfont'
