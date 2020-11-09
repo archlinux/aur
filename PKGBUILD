@@ -3,8 +3,8 @@
 pkgname=certstrap-git
 _pkgname="certstrap"
 
-pkgver=v1.2.0.r32.g7cda9d4
-pkgrel=3
+pkgver=v1.2.0.r36.g14dbcb0
+pkgrel=1
 
 pkgdesc="Tools to bootstrap CAs, certificate requests, and signed certificates."
 arch=('x86_64')
@@ -24,15 +24,15 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare(){
+prepare() {
   cd "$srcdir/$_pkgname"
   go mod vendor -v
 }
 
-build(){
+build() {
   cd "$srcdir/$_pkgname"
   go build -mod=vendor -v -ldflags "-X main.release=$pkgver"
-  BUILD_TAG=$pkgver go test -v -tags=integration ./...
+  BUILD_TAG=$pkgver go test -v ./...
 }
 
 package() {
