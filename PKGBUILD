@@ -3,8 +3,8 @@
 _pkgbase=iptables
 pkgbase=iptables-fullconenat
 pkgname=(iptables-fullconenat iptables-fullconenat-nft)
-pkgver=1.8.5
-pkgrel=2
+pkgver=1.8.6
+pkgrel=1
 epoch=1
 pkgdesc='Linux kernel packet control tool with FULLCONENAT support.'
 arch=(x86_64)
@@ -20,7 +20,7 @@ source=(https://www.netfilter.org/projects/iptables/files/$_pkgbase-$pkgver.tar.
         empty.rules simple_firewall.rules empty-{filter,mangle,nat,raw,security}.rules
         {arp,eb,ip,ip6}tables.service iptables-{legacy,nft}-flush
         "libipt_FULLCONENAT.c::https://raw.githubusercontent.com/Chion82/netfilter-full-cone-nat/master/libipt_FULLCONENAT.c")
-sha1sums=('f177a58d0a71b00d68ef5792ae4676bcc0ad29e6'
+sha1sums=('95c866895a9b11387c2a633561c905148c9d0276'
           'SKIP'
           '83b3363878e3660ce23b2ad325b53cbd6c796ecf'
           'f085a71f467e4d7cb2cf094d9369b0bcc4bab6ec'
@@ -36,7 +36,7 @@ sha1sums=('f177a58d0a71b00d68ef5792ae4676bcc0ad29e6'
           'd10af7780d1634778d898c709e2d950aa1561856'
           '15c1684f3e671f4d0ede639a7c9c08e1a841511c'
           '6defc372f039b484948c9bb6d88737967818b2dd')
-validpgpkeys=('C09DB2063F1D7034BA6152ADAB4655A126D292E4') # Netfilter Core Team
+validpgpkeys=('37D964ACC04981C75500FB9BD55D978A8A1420E4') # Netfilter Core Team
 
 prepare() {
   mkdir build
@@ -83,7 +83,7 @@ package_iptables-fullconenat-nft() {
 _package() {
   DESTDIR="$pkgdir" make -C build install
 
-  for _x in {arp,eb,ip,ip6}tables{,-restore,-save} iptables-xml; do
+  for _x in {arp,eb,ip,ip6}tables{,-restore,-save} iptables-apply iptables-xml; do
     if [[ $1 = nft || $_x = ip* ]]; then
       ln -sf xtables-$1-multi "$pkgdir/usr/bin/$_x"
     else
