@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=codetools
-_cranver=0.2-16
+_cranver=0.2-18
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
 depends=('r>=2.1')
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('0f04011ff13aa9df73195efa9e71bed9')
+md5sums=('2603f5eea6378e889b198f8af5cb5985')
 
 build() {
   cd "${srcdir}"
