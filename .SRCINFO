@@ -1,7 +1,7 @@
 pkgbase = git-dit-git
 	pkgdesc = Decentralized Issue Tracking for git
-	pkgver = 0.4.0.905
-	pkgrel = 1
+	pkgver = 0.4.0.923
+	pkgrel = 2
 	url = https://github.com/neithernut/git-dit
 	arch = i686
 	arch = x86_64
