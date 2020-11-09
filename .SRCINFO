@@ -66,7 +66,7 @@ pkgbase = mesa-llvm
 	depends = libepoxy
 	depends = gtk3
 	depends = libconfig
-	provides = mesa-llvm
+	provides = mesa stable release with patch to enable llvm
 	conflicts = opencl-mesa
 	conflicts = libva-mesa-driver
 	conflicts = mesa-vdpau
@@ -93,4 +93,3 @@ pkgbase = mesa-llvm
 	md5sums = SKIP
 
 pkgname = mesa-llvm
-
