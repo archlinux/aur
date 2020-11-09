@@ -33,6 +33,8 @@ check() {
 package() {
   cd "${srcdir}/migen"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
