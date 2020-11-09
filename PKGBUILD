@@ -7,20 +7,20 @@
 # Contributor: Michai Coman <mihai@m1x.ro>
 
 pkgname='unetbootin'
-pkgver=681
-pkgrel=2
+pkgver=700
+pkgrel=1
 pkgdesc='Create bootable Live USB drives'
 arch=('x86_64')
 url='https://unetbootin.github.io'
 _url_source='https://github.com/unetbootin/unetbootin'
 license=('GPL3')
-depends=('mtools' 'p7zip' 'qt4' 'syslinux')
-makedepends=('setconf')
+depends=('hicolor-icon-theme' 'mtools' 'p7zip' 'qt5-base' 'syslinux')
+makedepends=('qt5-tools' 'setconf')
 optdepends=('polkit: run unetbootin directly from menu')
 source=("${pkgname}-${pkgver}::${_url_source}/archive/${pkgver}.tar.gz"
         "${pkgname}.sh"
 				"org.archlinux.pkexec.${pkgname}.policy")
-sha256sums=('ec62a6321c39203a096d6a778b2f1518da815ece135e5eb95ba1e42e28ec240a'
+sha256sums=('709f1ccc9f72c664d85fbaccce38c17cb8861261e2447f2000d0d753f5ffcbd0'
             '6b99405a78ac4de80e3a20e766ce993f22c8a01e4ab50f952a10bdcc26effd3f'
             '118f154e2772ff0d50d22735418fb37c9a03ecd0a1bbf2c8a4a8ed48da64160c')
 
@@ -32,9 +32,9 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}/src/${pkgname}"
-  lupdate-qt4 "${pkgname}.pro"
-  lrelease-qt4 "${pkgname}.pro"
-  qmake-qt4 "${pkgname}.pro" -config release "DEFINES += NOSTATIC" "RESOURCES -= ${pkgname}.qrc"
+  lupdate-qt5 "${pkgname}.pro"
+  lrelease-qt5 "${pkgname}.pro"
+  qmake-qt5 "${pkgname}.pro" -config release "DEFINES += NOSTATIC" "RESOURCES -= ${pkgname}.qrc"
 	make
 }
 
