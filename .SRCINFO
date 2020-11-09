@@ -1,14 +1,14 @@
 pkgbase = python-autograd-gamma
 	pkgdesc = Autograd compatible approximations to the gamma family of functions
-	pkgver = 0.4.3
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/CamDavidsonPilon/autograd-gamma
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-autograd
-	source = autograd-gamma-0.4.3.tar.gz::https://github.com/CamDavidsonPilon/autograd-gamma/archive/v0.4.3.tar.gz
-	sha512sums = 6d4ac784e15b7314677a23d781a866a614667f18b6083e4c4d7786d828fff694a7cf3ad04fbdbace375ad747965b1f4c9404c542c30aab16d6aa647e222f581f
+	source = https://files.pythonhosted.org/packages/source/a/autograd-gamma/autograd-gamma-0.5.0.tar.gz
+	sha512sums = b787fc6844717f85cb6babdb50b594f77d2509d0955b1b49a2fd6f0070f07d9ba48ae83c35b50185caac129942bc5091f8bbcd77ab23f6f22f32850b6601c488
 
 pkgname = python-autograd-gamma
 

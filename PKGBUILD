@@ -2,7 +2,7 @@
 
 _pkgname=autograd-gamma
 pkgname=python-autograd-gamma
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Autograd compatible approximations to the gamma family of functions'
 url="https://github.com/CamDavidsonPilon/autograd-gamma"
@@ -10,8 +10,8 @@ arch=('any')
 license=('MIT')
 depends=('python-autograd')
 makedepends=('python-setuptools')
-source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/CamDavidsonPilon/autograd-gamma/archive/v${pkgver}.tar.gz")
-sha512sums=('6d4ac784e15b7314677a23d781a866a614667f18b6083e4c4d7786d828fff694a7cf3ad04fbdbace375ad747965b1f4c9404c542c30aab16d6aa647e222f581f')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('b787fc6844717f85cb6babdb50b594f77d2509d0955b1b49a2fd6f0070f07d9ba48ae83c35b50185caac129942bc5091f8bbcd77ab23f6f22f32850b6601c488')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
