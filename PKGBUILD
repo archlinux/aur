@@ -1,7 +1,7 @@
 # Maintainer: Andrew Crerar <andrew (at) crerar (dot) io>
 
 pkgname=(gtk4-git)
-pkgver=3.94.0.r400.g0edec9bcae
+pkgver=3.99.4.r42.g53cd499621
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('x86_64')
@@ -9,14 +9,16 @@ url="https://www.gtk.org/"
 license=('LGPL')
 depends=('at-spi2-atk' 'cairo' 'atk' 'dconf' 'glib2' 'libepoxy'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxkbcommon' 'libxrandr' 'mesa'
-         'pango' 'wayland' 'graphene' 'json-glib'
-         'gdk-pixbuf2' 'wayland-protocols'
-         'colord' 'libcups' 'rest' 'vulkan-icd-loader' 'gst-plugins-bad')
-makedepends=('gobject-introspection' 'gtk-doc' 'git' 'meson' 'ninja' 'vulkan-headers')
+         'pango' 'graphene' 'json-glib' 'shared-mime-info' 'gdk-pixbuf2' 'colord'
+         'libcups' 'rest' 'vulkan-icd-loader' 'gst-plugins-bad')
+makedepends=('gobject-introspection' 'gtk-doc' 'git' 'meson' 'ninja' 'vulkan-headers'
+             'wayland' 'wayland-protocols')
 optdepends=('gnome-icon-theme: Default icon theme'
             'gnome-themes-standard: Default widget theme'
             'hicolor-icon-theme: Freedesktop.org Hicolor icon theme'
-            'gdk-pixbuf2: An image loading library')
+            'gdk-pixbuf2: An image loading library'
+            'wayland: A computer display server protocol'
+            'wayland-protocols: Specifications of extended Wayland protocols')
 source=('git+https://gitlab.gnome.org/GNOME/gtk.git'
         'gtk4.install'
         'gtk4-query-immodules.hook'
@@ -45,7 +47,8 @@ build() {
     --localstatedir=/var \
     --libdir=lib \
     -Dbroadway-backend=true \
-    -Dvulkan=yes \
+    -Dvulkan=enabled \
+    -Dwayland-backend=true \
     _build .
 
   cd _build
