@@ -20,6 +20,11 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r/;s/-/./g'
 }
 
+build() {
+  cd "${srcdir}/migen"
+  python setup.py build
+}
+
 check() {
   cd "${srcdir}/migen"
   env PYTHONPATH=. pytest
@@ -27,7 +32,7 @@ check() {
 
 package() {
   cd "${srcdir}/migen"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
 # vim:set ts=2 sw=2 et:
