@@ -2,17 +2,17 @@
 # Contributor: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=smartsvn
-pkgver=11.0.4
+pkgver=14.0.1
 pkgrel=1
 pkgdesc="A Subversion (SVN) GUI client written in Java"
 arch=("any")
 url="https://www.smartsvn.com"
 license=('custom')
-depends=("jre8-openjdk" "desktop-file-utils" "sh" "hunspell-en_US" "hicolor-icon-theme")
+depends=("jre11-openjdk" "desktop-file-utils" "sh" "hunspell-en_US" "hicolor-icon-theme")
 provides=("smartsvn=${pkgver}")
 source=("https://www.smartsvn.com/downloads/${pkgname}/${pkgname}-linux-${pkgver//\./_}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('781651e4d669030b6df935abf710bf86454af78f56377cc807a682c2ed242bbc'
+sha256sums=('7cbaeffda2b40ea93235e0fb45281afadf754962cf3af539f35f049b6a994a22'
             'ab0ef714cdb1ba8f188b04f4accaf661501503234b4cedd335e200498b6e3b35')
 
 package() {
