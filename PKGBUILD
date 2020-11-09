@@ -1,7 +1,7 @@
 # Maintainer: Owen D'Aprile <aur@owen.sh>
 
 pkgname=utf8info-git
-pkgver=r36.f69321e
+pkgver=r37.eb8e09e
 pkgrel=1
 pkgdesc='Small utility that reads a UTF-8 stream and prints out the raw codepoint information.'
 arch=('x86_64')
@@ -16,12 +16,8 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    sed -i "s|@unzip|@unzip -o|g" "$pkgname"/Makefile
-}
-
 build() {
-    make --directory "$pkgname"
+    make --directory="$pkgname" --jobs=1
 }
 
 package() {
