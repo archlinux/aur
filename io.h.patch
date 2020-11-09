@@ -1,0 +1,11 @@
+--- avr-libc-2.0.0/include/avr/io.h	2016-01-29 02:03:47.000000000 -0600
++++ io.h	2020-11-08 22:46:12.199753178 -0600
+@@ -250,6 +250,8 @@
+ #  include <avr/iom3250pa.h>  
+ #elif defined (__AVR_ATmega328P__) || defined (__AVR_ATmega328__)
+ #  include <avr/iom328p.h>
++#elif defined (__AVR_ATmega328PB__) || defined (__AVR_ATmega328__)
++#  include <avr/iom328pb.h>
+ #elif defined (__AVR_ATmega329__) || defined (__AVR_ATmega329A__)
+ #  include <avr/iom329.h>
+ #elif defined (__AVR_ATmega329P__) || defined (__AVR_ATmega329PA__)

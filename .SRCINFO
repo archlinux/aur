@@ -1,14 +1,23 @@
 pkgbase = avr-libc-atmega328pb
-	pkgdesc = Atmega328pb support for avr-libc
+	pkgdesc = The C runtime library for the AVR family of microcontrollers with Atmega328pb support
 	pkgver = 1.5.362
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = http://packs.download.atmel.com
 	arch = any
 	license = Apache
-	depends = avr-libc
+	provides = avr-libc
+	conflicts = avr-libc
+	options = !strip
 	source = Atmel.ATmega_DFP.1.5.362.zip::http://packs.download.atmel.com/Atmel.ATmega_DFP.1.5.362.atpack
+	source = io.h.patch
+	source = https://download.savannah.gnu.org/releases/avr-libc/avr-libc-2.0.0.tar.bz2
+	source = https://download.savannah.gnu.org/releases/avr-libc/avr-libc-2.0.0.tar.bz2.sig
+	validpgpkeys = 5E84F980C3CAFD4BB5841070F48CA81B69A85873
 	md5sums = 31f644ae9287a6ce9abd5e724f3d4661
+	md5sums = 55c28e5b0f5f55babd1a7a78afb571ab
+	md5sums = 2360981cd5d94e1d7a70dfc6983bdf15
+	md5sums = SKIP
 
 pkgname = avr-libc-atmega328pb
 
