@@ -1,11 +1,12 @@
 pkgbase = libtensorflow-lite
-	pkgdesc = Tensorflow Lite - Library and Headers
+	pkgdesc = Tensorflow Lite - Library and Headers. C/C++ & Python
 	pkgver = 2.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tensorflow/tensorflow
 	arch = x86_64
 	license = Apache
 	makedepends = bazel
+	makedepends = python-setuptools
 	depends = gcc
 	depends = flatbuffers
 	provides = libtensorflow-lite
