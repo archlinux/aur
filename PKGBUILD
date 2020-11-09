@@ -1,8 +1,8 @@
-# Maintainer: Artjom Simon <artjom.simon@gmail.com>
+# Maintainer: Artjom Simon <hello@artjomsimon.berlin>
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=flyway
-pkgver=7.1.1
+pkgver=7.2.0
 pkgrel=1
 pkgdesc="Database migration utility written Java, supporting a wide range of databases"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://flywaydb.org/"
 license=('Apache')
 depends=('java-environment>=8')
 source=(https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/$pkgver/flyway-commandline-$pkgver.tar.gz)
-sha512sums=('153abaac19bb9354ccc52c0c529fa31c449e3bb8a5825dee6294aff23feded66d380d91e1f4a0e931885f04ef23e4631ca0a1dca30c5458daa31e4b398cc5596')
+sha512sums=('b648f80859f7695907e1e5d2ae8a3eac6f973530116a12219e21ed505d7da7699d38f6ab114105facf2564f47b5569b045e12e945d157bdb786fad5e5cdb8ce0')
 
 package() {
   cd $srcdir
