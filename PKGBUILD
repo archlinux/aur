@@ -82,8 +82,8 @@ package() {
   #Disabled for now, as I don't want to introduce file conflicts during a security update 
   #python2 -m compileall -d /usr/lib/python2.7 "$pkgdir/usr/lib/python2.7"
   #python2 -O -m compileall -d /usr/lib/python2.7 "$pkgdir/usr/lib/python2.7"
-  #python -m compileall -d /usr/lib/python3.8 "$pkgdir/usr/lib/python3.8"
-  #python -O -m compileall -d /usr/lib/python3.8 "$pkgdir/usr/lib/python3.8" 
+  #python -m compileall -d /usr/lib/python3.9 "$pkgdir/usr/lib/python3.9"
+  #python -O -m compileall -d /usr/lib/python3.9 "$pkgdir/usr/lib/python3.9" 
 }
 
 # vim: ts=2 sw=2 et:
