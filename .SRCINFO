@@ -1,0 +1,14 @@
+pkgbase = drpc
+	pkgdesc = JsonRPC cli client. Small and faster
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://github.com/DizoftTeam/dron
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = git
+	source = drpc-1.0.0.tar.gz::https://github.com/DizoftTeam/drpc/archive/1.0.0.tar.gz
+	md5sums = 6a3da507c299b9e5abfee97bd685423b
+
+pkgname = drpc
+
