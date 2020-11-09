@@ -51,7 +51,7 @@ pkgname=('intel-common-libs'
          'intel-inspector')
 
 if [ -z "$FORCE_PKGEXT" ]; then
-  PKGEXT='.pkg.tar.lzo'
+  PKGEXT='.pkg.tar.zst'
   #msg "Overriding the default PKGEXT with '${PKGEXT}' to save compression time"
   #msg "(change PKGEXT in the PKGBUILD or use FORCE_PKGEXT on the command line"
   #msg " to override PKGEXT set by the package)."
@@ -88,7 +88,7 @@ _v_b='304'
 
 _update='4'
 
-pkgrel=2
+pkgrel=3
 
 _sp='cluster_edition'
 _icc_ver='19.1.3'
