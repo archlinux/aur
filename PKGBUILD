@@ -8,15 +8,15 @@
 
 _pkgname='unetbootin'
 pkgname="${_pkgname}-git"
-pkgver=681.r16.g28ffb108
-pkgrel=2
+pkgver=700.r0.g50b496c8
+pkgrel=1
 pkgdesc='Create bootable Live USB drives'
 arch=('x86_64')
 url='https://unetbootin.github.io'
 _url_source='https://github.com/unetbootin/unetbootin'
 license=('GPL3')
-depends=('mtools' 'p7zip' 'qt5-base' 'syslinux')
-makedepends=('git' 'setconf' 'qt5-tools')
+depends=('hicolor-icon-theme' 'mtools' 'p7zip' 'qt5-base' 'syslinux')
+makedepends=('git' 'qt5-tools' 'setconf')
 optdepends=('polkit: run unetbootin directly from menu')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

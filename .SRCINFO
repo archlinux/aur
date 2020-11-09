@@ -1,13 +1,14 @@
 pkgbase = unetbootin-git
 	pkgdesc = Create bootable Live USB drives
-	pkgver = 681.r16.g28ffb108
-	pkgrel = 2
+	pkgver = 700.r0.g50b496c8
+	pkgrel = 1
 	url = https://unetbootin.github.io
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = setconf
 	makedepends = qt5-tools
+	makedepends = setconf
+	depends = hicolor-icon-theme
 	depends = mtools
 	depends = p7zip
 	depends = qt5-base
