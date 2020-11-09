@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Powder Toy: Jacob1's Mod
+Type=Application
+Comment=Physics sandbox game
+Categories=Game;Simulation
+Icon=powdertoy.png
+Exec=jacobsmod

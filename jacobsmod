@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+mkdir -p ${XDG_CONFIG_HOME:-~/.config}/jacob1smod
+cd ${XDG_CONFIG_HOME:-~/.config}/jacob1smod
+exec /usr/lib/powdertoy/powder64-jacob
