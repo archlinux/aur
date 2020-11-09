@@ -2,7 +2,7 @@
 # Maintainer: Lukas Grossar <lukas.grossar@gmail.com
 _npmname=cz-emoji
 pkgname=nodejs-cz-emoji
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Commitizen plugin to use gitmojis in your commits"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('nodejs' 'nodejs-commitizen')
 makedepends=('npm' 'jq')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha512sums=('edac183fd52b3d8e4d359aee2cecca1ed1a80cb41b50c6e65eae9b8e7416d66f7699d23ea5268a1a9f37bc9e7ba045af3ea33104341c1d38da0c8849d9f13c31')
+sha512sums=('21a9f6f14f0a56a894647c7cc98d334a47a19459338be80050e4f54f0c6a947d95759e0df2229b485902f484b90b336f2f191e59679f0fba5fb927673956e39b')
 
 package() {
     npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
