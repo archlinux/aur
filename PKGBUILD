@@ -2,7 +2,7 @@
 
 pkgname=tinyobjloader
 pkgver=2.0.0rc7
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Tiny but powerful single file wavefront obj loader "
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=()
 provides=()
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6849b57d0a795e50596302ba57cba05f479669fc2d022a9968dff3e38b63f8cf')
+sha256sums=('f0246420235933d23715dd7d61e08d8b92ca896b5476dbef556d8b6270a275a3')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
