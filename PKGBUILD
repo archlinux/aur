@@ -2,7 +2,7 @@
 pkgname=python-migen-git
 pkgrel=1
 pkgdesc="A  python toolbox for building complex digital hardware"
-arch=('i686' 'x86_64')
+arch=(any)
 url="https://github.com/m-labs/migen"
 license=('BSD')
 makedepends=('git' 'python-setuptools')
