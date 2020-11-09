@@ -1,17 +1,17 @@
 # Maintainer: Antoine Viallon <antoine+aur@lesviallon.fr>
 
 pkgname=mfoc-hardnested-git
-pkgver=143.326a6e6
+pkgver=155.5c71af4
 pkgrel=1
 pkgdesc="Mifare Classic Offline Cracker. Enhanced."
 arch=('i686' 'x86_64')
 url="https://github.com/nfc-tools/mfoc"
 license=('GPL2')
 depends=('libnfc>=1.7.0')
-makedepends=('git' 'gcc9')
+makedepends=('git')
 provides=('mfoc')
 conflicts=('mfoc' 'mfoc-git')
-source=("$pkgname"::'git://github.com/vk496/mfoc.git#branch=hardnested')
+source=("$pkgname"::'git://github.com/nfc-tools/mfoc-hardnested.git')
 sha1sums=('SKIP')
 options=(!ccache)
 
@@ -23,7 +23,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${pkgname}"
 	autoreconf -vis
-	./configure CC=gcc-9 CXX=g++-9 --prefix=/usr
+	./configure --prefix=/usr
 	make
 }
 
