@@ -2,7 +2,7 @@
 
 # rename from page to page-generator to avoid conflict with https://github.com/I60R/page
 pkgname=page-generator
-pkgver=5.4
+pkgver=5.6
 pkgrel=1
 pkgdesc='Python Automatic GUI Generator'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="http://page.sourceforge.net/"
 license=('GPL')
 depends=('tk' 'python')
 source=("https://jaist.dl.sourceforge.net/project/page/page/${pkgver}/page-${pkgver}.tgz")
-sha256sums=('4de02c36f317847a839343533794bb6a22c50b01b4d0026cea5b9702b9383229')
+sha256sums=('50dad35074f410b8626ba12ac875b287e29f63e6735fe7910c6ce1ee05db91bf')
 
 package() {
 	cd "${srcdir}"
