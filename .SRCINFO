@@ -1,6 +1,6 @@
 pkgbase = python-mlflow
 	pkgdesc = An open source platform for the machine learning lifecycle
-	pkgver = 1.10.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://mlflow.org
 	arch = x86_64
@@ -28,19 +28,20 @@ pkgbase = python-mlflow
 	depends = python-docker
 	depends = python-entrypoints
 	depends = python-sqlparse
-	depends = python-sqlalchemy<=1.3.13
-	depends = python-gorilla
+	depends = python-sqlalchemy
 	depends = python-prometheus-flask-exporter
 	optdepends = python-scikit-learn
+	optdepends = python-pyarrow
 	optdepends = python-boto3
 	optdepends = python-mleap
-	optdepends = python-azure-storage-blob
 	optdepends = python-google-cloud-storage
 	optdepends = python-azureml-core
+	optdepends = python-pysftp
+	optdepends = python-kubernetes
 	optdepends = python-mlflow-dbstore
 	optdepends = python-aliyunstoreplugin
-	source = python-mlflow-1.10.0::https://github.com/mlflow/mlflow/archive/v1.10.0.tar.gz
-	sha256sums = 716b6103068f1b3bd36ddc62d595f1f6d51c5fd3e0e72d0f2a75bc8a2b4af324
+	source = python-mlflow-1.11.0::https://github.com/mlflow/mlflow/archive/v1.11.0.tar.gz
+	sha256sums = 7c127f7e0e09c774afe2cb4cb4b38ef1a4a00137e8f0fcf028b31904294f6ec4
 
 pkgname = python-mlflow
 

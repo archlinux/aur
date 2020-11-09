@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-mlflow
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='An open source platform for the machine learning lifecycle'
 arch=('x86_64')
@@ -12,14 +12,13 @@ depends=('python' 'python-alembic' 'python-azure-storage-blob' 'python-click'
     'gunicorn' 'python-flask' 'python-numpy' 'python-pandas' 'python-dateutil'
     'python-protobuf' 'python-gitpython' 'python-pyaml'
     'python-querystring-parser' 'python-docker' 'python-entrypoints'
-    'python-sqlparse' 'python-sqlalchemy<=1.3.13' 'python-gorilla'
-    'python-prometheus-flask-exporter')
-optdepends=('python-scikit-learn' 'python-boto3' 'python-mleap'
-    'python-azure-storage-blob' 'python-google-cloud-storage'
-    'python-azureml-core' 'python-mlflow-dbstore' 'python-aliyunstoreplugin')
+    'python-sqlparse' 'python-sqlalchemy' 'python-prometheus-flask-exporter')
+optdepends=('python-scikit-learn' 'python-pyarrow' 'python-boto3' 'python-mleap'
+    'python-google-cloud-storage' 'python-azureml-core' 'python-pysftp'
+    'python-kubernetes' 'python-mlflow-dbstore' 'python-aliyunstoreplugin')
 makedepends=('python' 'python-setuptools' 'npm')
 source=("$pkgname-$pkgver::https://github.com/mlflow/mlflow/archive/v$pkgver.tar.gz")
-sha256sums=('716b6103068f1b3bd36ddc62d595f1f6d51c5fd3e0e72d0f2a75bc8a2b4af324')
+sha256sums=('7c127f7e0e09c774afe2cb4cb4b38ef1a4a00137e8f0fcf028b31904294f6ec4')
 
 _pkgname=mlflow
 
