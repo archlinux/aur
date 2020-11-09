@@ -1,12 +1,12 @@
 # Maintainer: Felix Morgner <felix.morgner@gmail.com>
 
 pkgname=adwaita-extended-git
-pkgver=r112.a959a47
+pkgver=r116.16aec4c
 pkgrel=1
 pkgdesc='A modified default GNOME/GTK theme with some extras/enhancements/additions.'
 license=('GPL3')
 arch=('any')
-url='https://github.com/hardwarerusak/AdwaitaExtended'
+url='https://gitlab.com/hrdwrrsk/AdwaitaExtended'
 source=("adwaita-extended-git::git+${url}.git#branch=master")
 makedepends=('git' 'meson' 'ninja' 'sassc' 'gettext')
 sha256sums=('SKIP')

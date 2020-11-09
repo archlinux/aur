@@ -1,8 +1,8 @@
 pkgbase = adwaita-extended-git
 	pkgdesc = A modified default GNOME/GTK theme with some extras/enhancements/additions.
-	pkgver = r112.a959a47
+	pkgver = r116.16aec4c
 	pkgrel = 1
-	url = https://github.com/hardwarerusak/AdwaitaExtended
+	url = https://gitlab.com/hrdwrrsk/AdwaitaExtended
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = adwaita-extended-git
 	makedepends = ninja
 	makedepends = sassc
 	makedepends = gettext
-	source = adwaita-extended-git::git+https://github.com/hardwarerusak/AdwaitaExtended.git#branch=master
+	source = adwaita-extended-git::git+https://gitlab.com/hrdwrrsk/AdwaitaExtended.git#branch=master
 	sha256sums = SKIP
 
 pkgname = adwaita-extended-git
