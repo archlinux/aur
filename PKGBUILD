@@ -1,6 +1,6 @@
 # Maintainer: Peter K. Moss <peter@moss.dk>
 pkgname=qmarkdown
-pkgver=0.2.5
+pkgver=0.3
 pkgrel=1
 pkgdesc="qMarkdown - minimal markdown viewer"
 arch=("x86_64")
@@ -21,4 +21,4 @@ package() {
 	cd "$pkgname-$pkgver"
     make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-md5sums=('eb92b49f4866baeb733398d39ad26429')
+md5sums=('b938d1667c733380ddfa40eba37994e7')
