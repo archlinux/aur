@@ -1,8 +1,106 @@
 #Maintainer: kevall474 <kevall474@tuta.io> <https://github.com/kevall474>
-#Credits: Jan Alexander Steffens (heftig) <heftig@archlinux.org> ---> For the base PKGBUILD and config file
-#Credits: Andreas Radke <andyrtr@archlinux.org> ---> For the base PKGBUILD and config file
+#Credits: Jan Alexander Steffens (heftig) <heftig@archlinux.org> ---> For the base PKGBUILD, config file, sphinx-workaround.patch
+#and 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
+#Credits: Andreas Radke <andyrtr@archlinux.org> ---> For the base PKGBUILD, config file and sphinx-workaround.patch
 #Credits: Bartłomiej Piotrowski <bpiotrowski@archlinux.org> ---> For the base api-headers package
 #Credits: Linus Torvalds ---> For the linux kernel
+#Credits: Joan Figueras <ffigue at gmail dot com> ---> For the base PKFBUILD, choose-gcc-optimization.sh and how to enable features
+
+#Choose CPU microarchtectures
+
+#Available CPU microarchitectures:
+#0) Generic (default)
+#1) AMD K6/K6-II/K6-III
+#2) AMD Athlon/Duron/K7
+#3) AMD Opteron/Athlon64/Hammer/K8
+#4) AMD Opteron/Athlon64/Hammer/K8 with SSE3
+#5) AMD 61xx/7x50/PhenomX3/X4/II/K10
+#6) AMD Family 10h (Barcelona)
+#7) AMD Family 14h (Bobcat)
+#8) AMD Family 16h (Jaguar)
+#9) AMD Family 15h (Bulldozer)
+#10) AMD Family 15h (Piledriver)
+#11) AMD Family 15h (Steamroller)
+#12) AMD Family 15h (Excavator)
+#13) AMD Family 17h (Zen)
+#14) AMD Family 17h (Zen 2)
+#15) Transmeta Crusoe
+#16) Transmeta Efficeon
+#17) IDT Winchip C6
+#18) Winchip-2/Winchip-2A/Winchip-3
+#19) AMD Elan
+#20) Geode GX1 (Cyrix MediaGX)
+#21) AMD Geode GX and LX
+#22) Cyrix III or C3
+#23) VIA C3 "Nehemiah"
+#24) VIA C7
+#25) Intel Pentium 4, Pentium D and older Nocona/Dempsey Xeon CPUs with Intel 64bit
+#26) Intel Atom
+#27) Intel Core 2 and newer Core 2 Xeons (Xeon 51xx and 53xx)
+#28) Intel 1st Gen Core i3/i5/i7-family (Nehalem)
+#29) Intel 1.5 Gen Core i3/i5/i7-family (Westmere)
+#30) Intel Silvermont
+#31) Intel Goldmont (Apollo Lake and Denverton)
+#32) Intel Goldmont Plus (Gemini Lake)
+#33) Intel 2nd Gen Core i3/i5/i7-family (Sandybridge)
+#34) Intel 3rd Gen Core i3/i5/i7-family (Ivybridge)
+#35) Intel 4th Gen Core i3/i5/i7-family (Haswell)
+#36) Intel 5th Gen Core i3/i5/i7-family (Broadwell)
+#37) Intel 6th Gen Core i3/i5/i7-family (Skylake)
+#38) Intel 6th Gen Core i7/i9-family (Skylake X)
+#39) Intel 8th Gen Core i3/i5/i7-family (Cannon Lake)
+#40) Intel 8th Gen Core i7/i9-family (Ice Lake)
+#41) Xeon processors in the Cascade Lake family
+#42) Native optimizations autodetected by GCC
+
+if [ -z ${_microarchitecture+x} ]; then
+  _microarchitecture=0
+fi
+
+#Disable/enable NUMA
+
+## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
+## Archlinux and Xanmod enable it by default.
+## Set variable "use_numa" to: n to disable (possibly increase performance)
+##                             y to enable  (stock default)
+# NUMA is optimized for multi-socket motherboards.
+# A single multi-core CPU actually runs slower with NUMA enabled.
+
+if [ -z ${use_numa+x} ]; then
+  use_numa=n
+fi
+
+#Disable/enable FUNCTION_TRACER/GRAPH_TRACER
+
+## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
+## Stock Archlinux and Xanmod have this enabled.
+## Set variable "use_tracers" to: n to disable (possibly increase performance)
+##                                y to enable  (stock default)
+
+if [ -z ${use_tracers+x} ]; then
+  use_tracers=n
+fi
+
+#Enable/disable CONFIG_USER_NS_UNPRIVILEGED
+
+## Enable CONFIG_USER_NS_UNPRIVILEGED flag
+## Set variable "use_ns" to: n to disable (stock Xanmod)
+##                           y to enable (stock Archlinux)
+
+if [ -z ${use_ns+x} ]; then
+  use_ns=n
+fi
+
+#Enable/disable PDS CPU scheduler
+
+## Enable PDS CPU scheduler by default https://gitlab.com/alfredchen/linux-pds
+## Set variable "use_pds" to: n to disable (stock Xanmod)
+##                            y to enable
+if [ -z ${use_pds+x} ]; then
+  use_pds=y
+fi
+
+#use env _microarchitecture=(0-42) use_numa=(y/n) use_tracers=(y/n) use_ns=(y/n) use_pds=(y/n) makepkg -s ---> to overwhrite the default variables
 
 pkgbase=mainline-kernel
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-api-headers" "$pkgbase-docs")
@@ -13,7 +111,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 pkgver=5.10_rc3
-pkgrel=1
+pkgrel=2
 versiontag=5.10-rc3
 modulestag=5.10.0-rc3
 pkgdesc="Mainline linux kernel, modules, headers, api-headers and docs"
@@ -26,8 +124,12 @@ makedepends=("bison" "flex" "valgrind" "git" "cmake" "make" "extra-cmake-modules
             "kmod" "libmikmod" "lib32-libmikmod" "xmlto" "xmltoman" "graphviz" "imagemagick" "imagemagick-doc" "rsync" "cpio" "inetutils")
 source=("https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snapshot/linux-${versiontag}.tar.gz"
         "${pkgbase}.preset"
-        "config")
+        "config"
+        "choose-gcc-optimization.sh"
+        "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch")
 md5sums=("SKIP"
+        "SKIP"
+        "SKIP"
         "SKIP"
         "SKIP")
 
@@ -44,9 +146,42 @@ prepare(){
     patch -Np1 < "../$src"
   done
 
+  # cpopy the config file first
   # Copy "${srcdir}"/config to linux-${pkgver}/.config
-  echo "Copy "${srcdir}"/config to linux-${pkgver}/.config"
+  echo "Copy "${srcdir}"/config to linux-${versiontag}/.config"
   cp "${srcdir}"/config .config
+
+  # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
+  scripts/config --enable CONFIG_STACK_VALIDATION
+
+  # Enable IKCONFIG following Arch's philosophy
+  scripts/config --enable CONFIG_IKCONFIG \
+                 --enable CONFIG_IKCONFIG_PROC
+
+  # User set. See at the top of this file
+  if [ "$use_tracers" = "n" ]; then
+    msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER..."
+    scripts/config --disable CONFIG_FUNCTION_TRACER \
+                   --disable CONFIG_STACK_TRACER
+  fi
+
+  if [ "$use_numa" = "n" ]; then
+    msg2 "Disabling NUMA..."
+    scripts/config --disable CONFIG_NUMA
+  fi
+
+  if [ "$use_ns" = "n" ]; then
+    msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
+    scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
+  fi
+
+  if [ "$use_pds" = "y" ]; then
+    msg2 "Enabling PDS CPU scheduler by default..."
+    scripts/config --enable CONFIG_SCHED_PDS
+  fi
+
+  # Let's user choose microarchitecture optimization in GCC
+  sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
   # make olddefconfig
   echo "make olddefconfig"
@@ -62,7 +197,7 @@ build(){
 }
 
 _package(){
-  pkgdesc="Mainline linux kernel and modules"
+  pkgdesc="Mainline linux kernel and modules witch patch. NUMA disabled, FUNCTION_TRACER/GRAPH_TRACER disabled, CONFIG_USER_NS_UNPRIVILEGED disabled and PDS CPU scheduler enabled."
   depends=("coreutils" "kmod" "initramfs" "mkinitcpio")
   optdepends=("linux-firmware" "crda")
   install=${pkgbase}.install

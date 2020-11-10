@@ -1,7 +1,7 @@
 pkgbase = mainline-kernel
 	pkgdesc = Mainline linux kernel, modules, headers, api-headers and docs
 	pkgver = 5.10_rc3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL-2.0
@@ -38,13 +38,15 @@ pkgbase = mainline-kernel
 	source = mainline-kernel.preset
 	source = mainline-kernel.install
   source = config
+	source = choose-gcc-optimization.sh
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = mainline-kernel
-	pkgdesc = Mainline linux kernel and modules
+	pkgdesc = Mainline linux kernel and modules witch patch. NUMA disabled, FUNCTION_TRACER/GRAPH_TRACER disabled, CONFIG_USER_NS_UNPRIVILEGED disabled and PDS CPU scheduler enabled.
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
