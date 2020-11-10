@@ -26,11 +26,11 @@ build() {
 
 check(){
   cd pythonocc-core-${pkgver}/build
-  #mkdir tmp
-  #make DESTDIR=tmp install
-  #cd pythonocc-core-${pkgver}/test
+  mkdir tmp
+  make DESTDIR=tmp install
+  _i_dir="$(python -c 'import sys; print(sys.path[-1])')"
   
-  #python run_tests.py
+  PYTHONPATH="tmp/${_i_dir}" python "${srcdir}/pythonocc-core-${pkgver}/test/run_tests.py"
 }
 
 
