@@ -26,10 +26,10 @@ build() {
 
 check(){
   cd pythonocc-core-${pkgver}/build
+  # yeah, this is a hack, but I can't easily get to a testable state otherwise
   mkdir tmp
   make DESTDIR=tmp install
   _i_dir="$(python -c 'import sys; print(sys.path[-1])')"
-  
   PYTHONPATH="tmp/${_i_dir}" python "${srcdir}/pythonocc-core-${pkgver}/test/run_tests.py"
 }
 
