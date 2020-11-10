@@ -4,7 +4,7 @@
 # pkg: git
 pkgname=hsandbox-git
 pkgver=1.1.r28.gc43f92f
-pkgrel=1
+pkgrel=2
 pkgdesc="The Hacking Sandbox"
 arch=('any')
 url="http://labix.org/hsandbox"
@@ -26,6 +26,6 @@ pkgver()
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	install -Dm755 "$srcdir/$pkgname/hsandbox" "$pkgdir/usr/bin/hsandbox"
 }

@@ -1,7 +1,7 @@
 pkgbase = hsandbox-git
 	pkgdesc = The Hacking Sandbox
 	pkgver = 1.1.r28.gc43f92f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://labix.org/hsandbox
 	arch = any
 	license = unknown
