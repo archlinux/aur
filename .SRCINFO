@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-development-utility
+	pkgdesc = An extension that provides utilities to help with GNOME Shell extensions development
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/maoschanz/gnome-extension-development-utility
+	arch = any
+	license = GPL
+	depends = gnome-shell
+	conflicts = gnome-shell-extension-development-utility-git
+	source = gnome-shell-extension-development-utility-2.tar.gz::https://github.com/maoschanz/gnome-extension-development-utility/archive/2.tar.gz
+	md5sums = befb01c84162d97345ce171947074aa8
+
+pkgname = gnome-shell-extension-development-utility
+
