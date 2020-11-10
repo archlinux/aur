@@ -1,11 +1,11 @@
 pkgbase = pacproxy
 	pkgdesc = A no-frills local HTTP proxy server powered by a proxy auto-config (PAC) file
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	arch = x86_64
 	license = Apache
-	source = https://github.com/williambailey/pacproxy/releases/download/v2.0.3/pacproxy_2.0.3_linux_amd64.tar.gz
-	sha256sums = b8f5d488c13a244e3e927fce3a3f8907e2d9f6b4827ce7ba653005c568dd4a38
+	source = https://github.com/williambailey/pacproxy/releases/download/v.2.0.4/pacproxy_2.0.4_linux_amd64.tar.gz
+	sha256sums = e0836759847a0e69c3625f1fcd87fc324a19f5fb98771ab8da2e545ca82e4975
 
 pkgname = pacproxy
 
