@@ -1,3 +1,16 @@
+2020.11.10:
+- Set youtube-dl as the default video extractor, still can select youtube-dlc as an alternative extractor.
+- fixed youtube-dl update, used pypi .whl file as an update source
+- [playlist window] added master quality (stream) selection
+- fixed youtube-dlc not imported correctly during app startup
+- [critical] convert slashes to backslashes to fix ffmpeg error on windows issue #185
+- [GUI] moved video extractor menu under update section
+- Fixed manual dash audio, when selecting first stream.
+
+2020.10.28:
+- hotfix for pycurl.error:
+  (43, 'CURLOPT_SSL_VERIFYHOST no longer supports 1 as value!'), issue #183.
+
 2020.10.28:
 - Added youtube_dlc support.
 - Double click and open the player, issue #174

@@ -1,8 +1,8 @@
 # Maintainer: Franck Stauffer <franck.stauffer@monaco.mc>
 
 pkgname=pyidm
-pkgver=2020.10.28
-pkgrel=2
+pkgver=2020.11.10
+pkgrel=1
 pkgdesc="Python open source alternative to IDM (Internet Download Manager)"
 arch=('any')
 url="https://github.com/pyIDM/PyIDM"
@@ -19,7 +19,7 @@ depends=('ffmpeg'
 makedepends=('python-setuptools')
 changelog=$pkgname.changelog
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pyIDM/PyIDM/archive/$pkgver.tar.gz")
-b2sums=('2e4eb2411b35bd0f67cfb12953037baa7b41d3a8311f87136aa7e27fba9aa7546a4b3921c8fa92933a6970092527eaec2f3efbe817b8bcc2f92352c3dcef20e4')
+b2sums=('25af00984a84f69c6967debebea40fbb453157e6dbc5fd4ea6c834aed2f8225b4bb443a65b4118bd2b22a6128308db49b4f9d7f84377b4363e47fa2099a31733')
 
 build() {
   cd "$srcdir/PyIDM-$pkgver"
