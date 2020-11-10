@@ -1,17 +1,16 @@
 pkgbase = python-occ
 	pkgdesc = A python library whose purpose is to provide 3D modeling features
-	pkgver = 7.4.0
+	pkgver = 7.4.1
 	pkgrel = 1
 	url = https://github.com/tpaviot/pythonocc-core
-	arch = i686
 	arch = x86_64
 	license = GPLv3
 	makedepends = cmake
 	makedepends = swig
-	depends = oce
+	depends = opencascade
 	depends = python
-	source = https://github.com/tpaviot/pythonocc-core/archive/7.4.0.tar.gz
-	md5sums = 3cf3401e4912c0303ebab144e4f5234c
+	source = https://github.com/tpaviot/pythonocc-core/archive/7.4.1.tar.gz
+	sha256sums = 6d62002244a0e7f4e5c1ad590d332a60601c44b2501ad017361443b54371e667
 
 pkgname = python-occ
 
