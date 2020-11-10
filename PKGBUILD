@@ -1,7 +1,7 @@
 # Maintainer: Alkindi42
 
 pkgname=sqlc
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Generate type safe Go from SQL "
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/kyleconroy/sqlc"
 license=('MIT')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kyleconroy/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('77a09f42cc88e59e6788579628c8606760851f72488133595522825695baf892')
+sha256sums=('9000a71974c0327e6fda5f46421bb6d58b102164046d271c6f174dd5f437e99e')
 
 build() {
   cd "$pkgname-$pkgver"
