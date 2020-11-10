@@ -6,7 +6,7 @@
 # Maintainer: nbebaw
 pkgname=boostchanger-appimage
 pkgver=1.0
-pkgrel=0
+pkgrel=2
 pkgdesc="Control your CPU Turbo Boost with this App"
 arch=('any')
 url="https://gitlab.com/nbebaw/boostchanger"
@@ -15,10 +15,16 @@ makedepends=('git')
 source=("git+https://gitlab.com/nbebaw/boostchanger.git")
 md5sums=('SKIP')
 
+prepare() {
+	rm -rf /home/${USER}/boostchanger
+}
+
 package() {
+		
+	mkdir /home/${USER}/boostchanger
 	cd boostchanger/app
-	install -Dm755 boostchanger.AppImage ${pkgdir}/usr/bin/boostchanger
-	install -Dm755 boostchangerrunner.sh ${pkgdir}/usr/bin/boostchangerrunner
+	cp boostchanger.AppImage /home/${USER}/boostchanger
+	install -Dm755 boostchangerrunner.sh ${pkgdir}/iusr/bin/boostchangerrunner
 	install -Dm644 boostchanger.desktop ${pkgdir}/usr/share/applications/boostchanger.desktop
 	install -Dm644 boostchanger.png ${pkgdir}/usr/share/pixmaps/boostchanger.png
 }
