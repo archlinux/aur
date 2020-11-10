@@ -5,8 +5,8 @@
 
 # Maintainer: nbebaw
 pkgname=boostchanger-appimage
-pkgver=1.0
-pkgrel=8
+pkgver=1.2
+pkgrel=0
 pkgdesc="Control your CPU Turbo Boost with this App"
 arch=('any')
 url="https://gitlab.com/nbebaw/boostchanger"
