@@ -1,0 +1,14 @@
+pkgbase = keysmith-git
+        pkgdesc = An application to generate two-factor authentication (2FA) tokens
+        pkgver = v0.1.r165.g8d1a88b
+        pkgrel = 1
+        url = https://github.com/KDE/keysmith
+        arch = i686
+        arch = x86_64
+        license = GPL3
+        makedepends = cmake
+        makedepends = git
+	depends = qt5-base
+        source = keysmith::git://github.com/KDE/keysmith.git
+
+pkgname = keysmith-git
