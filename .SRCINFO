@@ -1,0 +1,13 @@
+pkgbase = beancount-ethereum-importer
+	pkgdesc = Ethereum transaction importer for Beancount
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/xuhcc/beancount-ethereum-importer
+	arch = any
+	license = GPL
+	depends = beancount
+	source = beancount-ethereum-importer-1.1.0.tar.gz::https://github.com/xuhcc/beancount-ethereum-importer/archive/v1.1.0.tar.gz
+	sha256sums = 2e5a87f6e41d6555366ce82908d45993de3866978222b399cb6c5977912cfeda
+
+pkgname = beancount-ethereum-importer
+
