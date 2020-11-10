@@ -137,7 +137,7 @@ prepare(){
     patch -Np1 < "../$src"
   done
   
-  # cpopy the config file first to Disabling CONFIG_USER_NS_UNPRIVILEGED if chosen
+  # cpopy the config file first
   # Copy "${srcdir}"/config to linux-${pkgver}/.config
   echo "Copy "${srcdir}"/config to linux-${pkgver}/.config"
   cp "${srcdir}"/config .config
