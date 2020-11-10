@@ -25,11 +25,7 @@ pkgver() {
 prepare() {
     cd cairo
 
-  # Update gtk-doc
-    cp /usr/share/aclocal/gtk-doc.m4 build/aclocal.gtk-doc.m4
-    cp /usr/share/gtk-doc/data/gtk-doc.make build/Makefile.am.gtk-doc
-
-  # Fix typo
+    # Fix typo
     sed -i 's/have_png/use_png/g' configure.ac
 
     NOCONFIGURE=1 ./autogen.sh
