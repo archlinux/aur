@@ -3,7 +3,7 @@
 _name=aiohttp-cors
 pkgname=python-aiohttp-cors
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='CORS support for aiohttp'
 depends=('python-aiohttp')
 makedepends=('python-setuptools')
