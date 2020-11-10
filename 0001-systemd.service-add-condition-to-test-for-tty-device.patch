@@ -1,0 +1,24 @@
+From 2c424e08c01d55278aabbf66568d57f15cb8dfe0 Mon Sep 17 00:00:00 2001
+From: tinywrkb <tinywrkb@gmail.com>
+Date: Wed, 21 Oct 2020 00:00:22 +0300
+Subject: [PATCH] systemd.service: add condition to test for tty device
+
+---
+ console-solarized@.service | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/console-solarized@.service b/console-solarized@.service
+index c488625..7aa054e 100644
+--- a/console-solarized@.service
++++ b/console-solarized@.service
+@@ -16,6 +16,7 @@ Description=Solarized color palette for the Linux console
+ Documentation=https://github.com/adeverteuil/console-solarized
+ Documentation=http://ethanschoonover.com/solarized
+ After=getty@%i.service
++ConditionPathExists=/dev/%i
+ 
+ [Service]
+ Type=oneshot
+-- 
+2.29.2
+
