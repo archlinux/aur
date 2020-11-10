@@ -1,42 +1,52 @@
-# GnuPG2 GIT version
+# Maintainer: Stephanie Wilde-Hobbs <git@stephanie.is>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: alphazo@gmail.com
-# Based on official package
-# Cleanup from @holos
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
+# Contributor: Judd Vinet <jvinet@zeroflux.org>
+# Contributor: @holos
 
-_gitname=gnupg
-pkgname=gnupg-git
-pkgver=2.2.0+12+g9f5e50e7c
-pkgrel=2
-pkgdesc='Complete and free implementation of the OpenPGP standard - development'
-url="http://www.gnupg.org/"
+_pkgname=gnupg
+pkgname=${_pkgname}-git
+pkgver=2.2.7+1227+gf9bbc7516
+pkgrel=1
+pkgdesc='Complete and free implementation of the OpenPGP standard'
+url='https://www.gnupg.org/'
 license=('GPL')
-arch=('i686' 'x86_64')
-optdepends=('libldap: gpg2keys_ldap'
-            'libusb-compat: scdaemon')
-makedepends=('git' 'libldap' 'libusb-compat')
+arch=('x86_64')
+conflicts=(${_pkgname})
+provides=(${_pkgname}=2.2)
 checkdepends=('openssh')
-depends=('npth-git' 'libgpg-error' 'libgcrypt-git' 'libksba' 'libassuan-git'
-         'pinentry' 'bzip2' 'readline' 'gnutls' 'sqlite')
-provides=("gnupg=${pkgver}" 'dirmngr')
-conflicts=('gnupg2' 'gnupg' 'dirmngr')
-install=${pkgname}.install
-source=("git://git.gnupg.org/gnupg.git")
-sha1sums=('SKIP')
+makedepends=('libldap' 'libusb-compat' 'pcsclite' 'git' 'fig2dev' 'imagemagick' 'librsvg')
+depends=('npth' 'libgpg-error' 'libgcrypt' 'libksba' 'libassuan'
+         'pinentry' 'bzip2' 'readline' 'libreadline.so' 'gnutls'
+         'sqlite' 'zlib' 'glibc')
+optdepends=('libldap: gpg2keys_ldap'
+            'libusb-compat: scdaemon'
+            'pcsclite: scdaemon')
+source=("git://git.gnupg.org/gnupg.git"
+        'drop-import-clean.patch')
+sha256sums=('SKIP'
+            '7ae777b0f4c6d3301768149f66f1d5b723841f3a4a2f0d4c601a0b2114bb7fe1')
+install=gnupg-git.install
 
 pkgver() {
-	cd "$_gitname"
+	cd "${srcdir}/${_pkgname}"
 	git describe --tags | sed 's/gnupg-//;s/-/+/g'
 }
 
 prepare() {
-	cd "${_gitname}"
+	cd "${srcdir}/${_pkgname}"
+	patch -p1 -i ../drop-import-clean.patch
+
 	./autogen.sh
-	sed '/noinst_SCRIPTS = gpg-zip/c sbin_SCRIPTS += gpg-zip' -i tools/Makefile.in
 }
 
 build() {
-	cd "${_gitname}"
+	cd "${srcdir}/${_pkgname}"
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \
@@ -48,19 +58,18 @@ build() {
 	make
 }
 
-check() {
-	cd "${_gitname}"
-	make check
-}
+# check() {
+# 	cd "${srcdir}/${_pkgname}"
+# 	make check
+# }
 
 package() {
-	cd "${_gitname}"
+	cd "${srcdir}/${_pkgname}"
 	make DESTDIR="${pkgdir}" install
 	ln -s gpg "${pkgdir}"/usr/bin/gpg2
 	ln -s gpgv "${pkgdir}"/usr/bin/gpgv2
 
-	cd doc/examples/systemd-user
-	for i in *.*; do
-		install -Dm644 "$i" "${pkgdir}/usr/lib/systemd/user/$i"
-	done
+	install -Dm 644 doc/examples/systemd-user/*.* -t "${pkgdir}/usr/lib/systemd/user"
 }
+
+# vim: ts=2 sw=2 noet:
