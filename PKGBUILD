@@ -28,14 +28,14 @@ sha256sums=('60f9de72ae3a471a86a5b06c1eecd32bb4b41e1f9c50ca9121f17ce98a51af5b'
 prepare() {
   ln -sf ae-${_d_ae_ver} "${srcdir}/ae" # directory name must be "ae" for --rdmd
   cd "${srcdir}/${pkgname}-${pkgver}"
-  dub add-local ../ae ${_d_ae_ver}
-  dub add-local ../d-btrfs-${_d_btrfs_ver} ${_d_btrfs_ver}
-  dub add-local ../ncurses-${_d_ncurses_ver} ${_d_ncurses_ver}
+  HOME="${srcdir}" dub add-local ../ae ${_d_ae_ver}
+  HOME="${srcdir}" dub add-local ../d-btrfs-${_d_btrfs_ver} ${_d_btrfs_ver}
+  HOME="${srcdir}" dub add-local ../ncurses-${_d_ncurses_ver} ${_d_ncurses_ver}
 }
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  dub --skip-registry=all build -b release --rdmd # --rdmd creates smaller binaries
+  HOME="${srcdir}" dub --skip-registry=all build -b release --rdmd # --rdmd creates smaller binaries
 }
 
 package() {
