@@ -1,19 +1,20 @@
 # Maintainer: yjun <jerrysteve1101@gmail.com>
 
 pkgname=stm32cubemonitor
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="graphical software for helping debug and diagnose STM32 applications while they are running by reading and displaying their variables in real-time"
 arch=('x86_64')
-url="https://my.st.com/content/my_st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-performance-and-debuggers/stm32cubemonitor.html"
+url="https://www.st.com/en/development-tools/stm32cubemonitor.html"
 license=('custom')
-depends=('gtk3' 'nodejs' 'nss' 'libxss' 'libnotify' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libutil-linux')
+depends=('gtk3' 'nss' 'libxss' 'libnotify' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libutil-linux')
+optdepends=('stlink: stlink udev files provide')
 provides=("${pkgname}-bin")
 conflicts=("${pkgname}-bin")
 options=('!strip')
-_pkg_file_name=en.STM32CubeMonitor_lin.zip
+_pkg_file_name=en.STM32CubeMonitor_lin_v${pkgver//./-}.zip
 source=("local://${_pkg_file_name}")
-sha256sums=('d82c5282b8d3f64c68b58426bacd1b2139e3984bdb6df6262d3efa67712c9dfd')
+sha256sums=('22689b693e3e00f36c1e71e9f052fb926827c372ba9a9d78789ad563cdb10707')
 
 _DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
 if [ ! -f ${PWD}/${_pkg_file_name} ]; then
@@ -26,6 +27,17 @@ if [ ! -f ${PWD}/${_pkg_file_name} ]; then
 		msg2 ""
 	fi
 fi
+
+#    Extracted Files from ${_pkg_file_name}
+#    ├── driver
+#    │   └── st-stlink-udev-rules-1.0.2-3-linux-all.deb
+#    ├── licenses
+#    │   ├── Gnu Arm Embedded Toolchain EULA.txt
+#    │   ├── LICENSES.chromium.html
+#    │   ├── licenses_list_STM32CubeMonitor.txt
+#    │   └── SLA0048 rev4.pdf
+#    ├── snapshot_embedded_SW.zip
+#    └── stm32cubemonitor_${pkgver}_amd64.deb
 
 prepare() {
   install -dm755 build
@@ -44,7 +56,10 @@ package() {
   ln -fs /opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 
   # license
-  install -Dm644 STM32CubeMonitor_lin/licenses/licenses_list_STM32CubeMonitor.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  for license in ${srcdir}/STM32CubeMonitor_lin/licenses/*
+  do
+    install -Dm644 "${license}" -t ${pkgdir}/usr/share/licenses/${pkgname}/
+  done 
 }
 
 # vim: set sw=2 ts=2 et:
