@@ -3,16 +3,16 @@
 
 _pipname=panflute
 pkgname=python-$_pipname-git
-pkgver=1.12.5
-pkgrel=2
+pkgver=2.0.4
+pkgrel=1
 pkgdesc='A Pythonic alternative to John MacFarlane’s pandocfilters'
 url="https://github.com/sergiocorreia/$_pipname"
 arch=('any')
 license=('BSD')
 _pydeps=('click'
-         'shutilwhich'
          'yaml')
-depends=('pandoc' 'python' "${_pydeps[@]/#/python-}")
+depends=('pandoc>=2.11.0.4' 'python' "${_pydeps[@]/#/python-}")
+optdepends=('python-shutils' 'python-shlex')
 makedepends=('git' 'python-setuptools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
