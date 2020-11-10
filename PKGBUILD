@@ -2,7 +2,6 @@
 
 pkgbase=deepin-anything-git
 pkgname=(deepin-anything-git deepin-anything-dkms-git)
-_pkgname=deepin-anything
 pkgver=0.1.0.r3.g344c3f7
 _extramodules=extramodules-ARCH
 pkgrel=1
@@ -11,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/linuxdeepin/deepin-anything"
 license=('GPL3')
 makedepends=('git' 'dtkcore-git' 'udisks2-qt5')
-source=("$_pkgname::git://github.com/linuxdeepin/deepin-anything"
+source=("$pkgbase::git://github.com/linuxdeepin/deepin-anything"
         '0001-linux-5.6.patch'
         deepin-anything-server.sysusers)
 sha512sums=('SKIP'
@@ -19,18 +18,18 @@ sha512sums=('SKIP'
             '0ff6a6de1fbfb0c33eaac511b989da321a9e43ece92708af88aee34ad1a05e55572713b1290bc2705d70b91dc7bec4fb4abd3dc664a0abe01de27d88bd9e9c85')
 
 pkgver() {
-    cd $_pkgname
+    cd $pkgbase
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd $_pkgname
+  cd $pkgbase
   patch -Np1 < ../0001-linux-5.6.patch
   sed -i 's|^systemd_service.path.*|systemd_service.path = /usr/lib/systemd/system|' server/monitor/src/src.pro server/tool/tool.pro
 }
 
 build() {
-	cd $_pkgname
+	cd $pkgbase
   make VERSION=$pkgver
 }
 
@@ -39,7 +38,7 @@ package_deepin-anything-dkms-git() {
   provides=('DEEPIN-ANYTHING-MODULE' 'deepin-anything')
   conflicts=('DEEPIN-ANYTHING-MODULE' 'deepin-anything')
 
-  cd $_pkgname
+  cd $pkgbase
   install -dm 755 "$pkgdir"/usr/src
   cp -r kernelmod "$pkgdir"/usr/src/deepin-anything-$pkgver
   install -m644 debian/deepin-anything-dkms.dkms "$pkgdir"/usr/src/deepin-anything-$pkgver/dkms.conf
@@ -49,7 +48,7 @@ package_deepin-anything-git() {
   depends=('DEEPIN-ANYTHING-MODULE' 'dtkcore-git' 'udisks2-qt5')
   groups=('deepin-git')
 
-  cd $_pkgname
+  cd $pkgbase
   make VERSION=$pkgver DESTDIR="$pkgdir" install
   rm -r "$pkgdir"/usr/src
 
