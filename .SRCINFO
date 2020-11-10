@@ -1,4 +1,4 @@
-pkgbase = ttf-bobco
+pkgbase = bobco-ttf
 	pkgdesc = The true Subgenius symbol font iconography!! Dingbats
 	pkgver = 1.0
 	pkgrel = 1
@@ -8,5 +8,5 @@ pkgbase = ttf-bobco
 	source = http://www.subgenius.com/SUBFONTS/BobCo10-Mac/BOBCO10.ttf.zip
 	sha256sums = 98b6ff8275ae0cef9bed1b4edb88973e48b2cfbb5b891dcf9ab29fdbe61da2ab
 
-pkgname = ttf-bobco
+pkgname = bobco-ttf
 
