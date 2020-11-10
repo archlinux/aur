@@ -29,8 +29,8 @@ _GUID="EA4BB293-2D7F-4456-A681-1F22F42CD0BC"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-git"
 
-pkgver=26946.edk2.stable201903.1209.gf8dd7c7018
-pkgrel=1
+pkgver=28256.edk2.stable201903.2519.g1366cd58cd
+pkgrel=2
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - GIT Version"
 url="https://github.com/tianocore/edk2"
 arch=('x86_64' 'i686')
@@ -62,6 +62,9 @@ _setup_env_vars() {
 
 _prepare_tianocore_sources() {
 	cd "${_UDK_DIR}/"
+
+	msg "Updating submodules"
+	git submodule update --init
 
 	msg "Cleanup UDK config files"
 	rm -rf "${_UDK_DIR}/Build/" || true
