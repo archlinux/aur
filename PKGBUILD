@@ -21,7 +21,7 @@ pkgver() {
 build() {
   cd "${srcdir}/JDim"
   autoreconf -i
-  ./configure --prefix=/usr 
+  ./configure --prefix=/usr --with-native --with-tls=openssl --with-alsa --with-pangolayout
   make
 }
 
