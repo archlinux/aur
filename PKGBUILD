@@ -30,9 +30,13 @@ build() {
 }
 
 package() {
-    mkdir -p "${pkgdir}/usr/bin/"
-    mkdir -p "${pkgdir}/usr/share/man/man6/"
-    cp -v "${pkgname}/netris"       "${pkgdir}/usr/bin/netris"
-    cp -v "${pkgname}/sr"           "${pkgdir}/usr/bin/netris-sr"
-    cp -v "${pkgname}/netris.6.man" "${pkgdir}/usr/share/man/man6/"
+    local binpath="/usr/bin"
+    local manpath="/usr/share/man/man6"
+
+    mkdir -p "${pkgdir}/${binpath}" "${pkgdir}/${manpath}"
+
+    cp -v "${pkgname}/netris" "${pkgdir}/${binpath}/netris"
+    cp -v "${pkgname}/sr"     "${pkgdir}/${binpath}/netris-sr"
+
+    gzip -c "${pkgname}/netris.6.man" > "${pkgdir}/${manpath}/netris.6.gz"
 }
