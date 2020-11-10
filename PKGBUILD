@@ -3,7 +3,7 @@ _reponame=ndn-cpp
 _pkgname=ndn-cpp
 pkgname=${_pkgname}-git
 pkgver=v0.17.r66.g6d789adb
-pkgrel=1
+pkgrel=2
 # epoch=
 pkgdesc="A new implementation of a Named Data Networking client library written in C++ and C. It is wire format compatible with the NDN-TLV encoding."
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_reponame}"
-	configure --prefix=/usr
+  ./configure --prefix=/usr
 }
 
 build() {

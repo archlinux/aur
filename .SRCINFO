@@ -1,7 +1,7 @@
 pkgbase = ndn-cpp-git
 	pkgdesc = A new implementation of a Named Data Networking client library written in C++ and C. It is wire format compatible with the NDN-TLV encoding.
 	pkgver = v0.17.r66.g6d789adb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/named-data/ndn-cpp
 	arch = i686
 	arch = x86_64
