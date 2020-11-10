@@ -38,6 +38,8 @@ pkgbase = linux-kernel
 	source = linux-kernel.preset
 	source = linux-kernel.install
   source = sphinx-workaround.patch
+	source = choose-gcc-optimization.sh
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
   source = config
 	md5sums = SKIP
 	md5sums = SKIP
@@ -45,7 +47,7 @@ pkgbase = linux-kernel
 	md5sums = SKIP
 
 pkgname = linux-kernel
-	pkgdesc = Stable linux kernel and modules
+	pkgdesc = Stable linux kernel and modules with some patch
 	depends = coreutils
 	depends = kmod
 	depends = initramfs

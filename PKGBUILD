@@ -1,8 +1,97 @@
 #Maintainer: kevall474 <kevall474@tuta.io> <https://github.com/kevall474>
-#Credits: Jan Alexander Steffens (heftig) <heftig@archlinux.org> ---> For the base PKGBUILD, config file and sphinx-workaround.patch
+#Credits: Jan Alexander Steffens (heftig) <heftig@archlinux.org> ---> For the base PKGBUILD, config file, sphinx-workaround.patch
+#and 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
 #Credits: Andreas Radke <andyrtr@archlinux.org> ---> For the base PKGBUILD, config file and sphinx-workaround.patch
 #Credits: Bartłomiej Piotrowski <bpiotrowski@archlinux.org> ---> For the base api-headers package
 #Credits: Linus Torvalds ---> For the linux kernel
+#Credits: Joan Figueras <ffigue at gmail dot com> ---> For the base PKFBUILD, choose-gcc-optimization.sh and how to enable features
+
+#Choose CPU microarchtectures
+
+#Available CPU microarchitectures:
+#0) Generic (default)
+#1) AMD K6/K6-II/K6-III
+#2) AMD Athlon/Duron/K7
+#3) AMD Opteron/Athlon64/Hammer/K8
+#4) AMD Opteron/Athlon64/Hammer/K8 with SSE3
+#5) AMD 61xx/7x50/PhenomX3/X4/II/K10
+#6) AMD Family 10h (Barcelona)
+#7) AMD Family 14h (Bobcat)
+#8) AMD Family 16h (Jaguar)
+#9) AMD Family 15h (Bulldozer)
+#10) AMD Family 15h (Piledriver)
+#11) AMD Family 15h (Steamroller)
+#12) AMD Family 15h (Excavator)
+#13) AMD Family 17h (Zen)
+#14) AMD Family 17h (Zen 2)
+#15) Transmeta Crusoe
+#16) Transmeta Efficeon
+#17) IDT Winchip C6
+#18) Winchip-2/Winchip-2A/Winchip-3
+#19) AMD Elan
+#20) Geode GX1 (Cyrix MediaGX)
+#21) AMD Geode GX and LX
+#22) Cyrix III or C3
+#23) VIA C3 "Nehemiah"
+#24) VIA C7
+#25) Intel Pentium 4, Pentium D and older Nocona/Dempsey Xeon CPUs with Intel 64bit
+#26) Intel Atom
+#27) Intel Core 2 and newer Core 2 Xeons (Xeon 51xx and 53xx)
+#28) Intel 1st Gen Core i3/i5/i7-family (Nehalem)
+#29) Intel 1.5 Gen Core i3/i5/i7-family (Westmere)
+#30) Intel Silvermont
+#31) Intel Goldmont (Apollo Lake and Denverton)
+#32) Intel Goldmont Plus (Gemini Lake)
+#33) Intel 2nd Gen Core i3/i5/i7-family (Sandybridge)
+#34) Intel 3rd Gen Core i3/i5/i7-family (Ivybridge)
+#35) Intel 4th Gen Core i3/i5/i7-family (Haswell)
+#36) Intel 5th Gen Core i3/i5/i7-family (Broadwell)
+#37) Intel 6th Gen Core i3/i5/i7-family (Skylake)
+#38) Intel 6th Gen Core i7/i9-family (Skylake X)
+#39) Intel 8th Gen Core i3/i5/i7-family (Cannon Lake)
+#40) Intel 8th Gen Core i7/i9-family (Ice Lake)
+#41) Xeon processors in the Cascade Lake family
+#42) Native optimizations autodetected by GCC
+
+if [ -z ${_microarchitecture+x} ]; then
+  _microarchitecture=0
+fi
+
+#Disable/enable NUMA
+
+## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
+## Archlinux and Xanmod enable it by default.
+## Set variable "use_numa" to: n to disable (possibly increase performance)
+##                             y to enable  (stock default)
+# NUMA is optimized for multi-socket motherboards.
+# A single multi-core CPU actually runs slower with NUMA enabled.
+
+if [ -z ${use_numa+x} ]; then
+  use_numa=n
+fi
+
+#Disable/enable FUNCTION_TRACER/GRAPH_TRACER
+
+## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
+## Stock Archlinux and Xanmod have this enabled. 
+## Set variable "use_tracers" to: n to disable (possibly increase performance)
+##                                y to enable  (stock default)
+
+if [ -z ${use_tracers+x} ]; then
+  use_tracers=n
+fi
+
+#Enable/disable CONFIG_USER_NS_UNPRIVILEGED
+
+## Enable CONFIG_USER_NS_UNPRIVILEGED flag
+## Set variable "use_ns" to: n to disable (stock Xanmod)
+##                           y to enable (stock Archlinux)
+
+if [ -z ${use_ns+x} ]; then
+  use_ns=n
+fi
+  
+#use env _microarchitecture=(0-42) use_numa=(y/n) use_tracers=(y/n) use_ns=(y/n) makepkg -s ---> to overwhrite the default variables
 
 pkgbase=linux-kernel
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-api-headers" "$pkgbase-docs")
@@ -20,20 +109,24 @@ url="https://www.kernel.org/"
 license=(GPL-2.0)
 makedepends=("bison" "flex" "valgrind" "git" "cmake" "make" "extra-cmake-modules" "libelf" "elfutils"
             "python" "python-appdirs" "python-mako" "python-evdev" "python-sphinx_rtd_theme" "python-graphviz" "python-sphinx"
-            "clang" "lib32-clang" "bc" "gcc" "gcc-libs" "lib32-gcc-libs" "glibc" "lib32-glibc" "pahole" "patch" "gtk3"
+            "clang" "lib32-clang" "bc" "gcc" "gcc-libs" "lib32-gcc-libs" "glibc" "lib32-glibc" "pahole" "patch" "gtk3" 
             "kmod" "libmikmod" "lib32-libmikmod" "xmlto" "xmltoman" "graphviz" "imagemagick" "imagemagick-doc" "rsync" "cpio" "inetutils")
 source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.gz"
         "${pkgbase}.preset"
         "config"
-        "sphinx-workaround.patch")
+        "sphinx-workaround.patch"
+        "choose-gcc-optimization.sh"
+        "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch")
 md5sums=("SKIP"
+        "SKIP"
+        "SKIP"
         "SKIP"
         "SKIP"
         "SKIP")
 
 prepare(){
   cd linux-${pkgver}
-
+  
   # Apply any patch
   local src
   for src in "${source[@]}"; do
@@ -43,10 +136,38 @@ prepare(){
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
-
+  
+  # cpopy the config file first to Disabling CONFIG_USER_NS_UNPRIVILEGED if chosen
   # Copy "${srcdir}"/config to linux-${pkgver}/.config
   echo "Copy "${srcdir}"/config to linux-${pkgver}/.config"
   cp "${srcdir}"/config .config
+  
+  # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
+  scripts/config --enable CONFIG_STACK_VALIDATION
+
+  # Enable IKCONFIG following Arch's philosophy
+  scripts/config --enable CONFIG_IKCONFIG \
+                 --enable CONFIG_IKCONFIG_PROC
+
+  # User set. See at the top of this file
+  if [ "$use_tracers" = "n" ]; then
+    msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER..."
+    scripts/config --disable CONFIG_FUNCTION_TRACER \
+                   --disable CONFIG_STACK_TRACER
+  fi
+
+  if [ "$use_numa" = "n" ]; then
+    msg2 "Disabling NUMA..."
+    scripts/config --disable CONFIG_NUMA
+  fi
+  
+  if [ "$use_ns" = "n" ]; then
+    msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
+    scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
+  fi
+  
+  # Let's user choose microarchitecture optimization in GCC
+  sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
   # make olddefconfig
   echo "make olddefconfig"
@@ -62,7 +183,7 @@ build(){
 }
 
 _package(){
-  pkgdesc="Stable linux kernel and modules"
+  pkgdesc="Stable linux kernel and modules with some patch"
   depends=("coreutils" "kmod" "initramfs" "mkinitcpio")
   optdepends=("linux-firmware" "crda")
   install=${pkgbase}.install
@@ -72,9 +193,9 @@ _package(){
   install -dm755 "${pkgdir}"/usr
   install -dm755 "${pkgdir}"/boot
   install -dm755 "${pkgdir}"/etc/mkinitcpio.d
-
+  
   cd linux-${pkgver}
-
+  
   # Installing modules
   echo "Installing modules"
   make INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
@@ -108,9 +229,9 @@ _package-headers(){
   # Create system tree
   echo "Create system tree"
   install -dm755 "${pkgdir}"/usr/lib/modules/${pkgver}/build
-
+  
   cd linux-${pkgver}
-
+  
   local builddir="$pkgdir/usr/lib/modules/${pkgver}/build"
 
   echo "Installing build files..."
@@ -178,7 +299,7 @@ _package-headers(){
 
   echo "Stripping vmlinux..."
   strip -v $STRIP_STATIC "$builddir/vmlinux"
-
+  
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
@@ -193,14 +314,14 @@ _package-api-headers(){
   install -dm755 "${pkgdir}"/usr
   install -dm755 "${pkgdir}"/usr/include
   install -dm755 "${pkgdir}"/usr/include/$pkgbase-api-headers
-
+  
   cd linux-${pkgver}
 
   # Create fakeinstall dir
   echo "Create fakeinstall dir"
   mkdir fakeinstall
 
-  # Installing headers to fakeinstall dir
+  # Installing headers to fakeinstall dir 
   echo "Installing headers to fakeinstall dir"
   make INSTALL_HDR_PATH="fakeinstall" -j$(nproc) headers_install
 
@@ -216,13 +337,13 @@ _package-docs() {
   # Create system tree
   echo "Create system tree"
   install -dm755 "${pkgdir}"/usr/lib/modules/${pkgver}/build
-
+  
   cd linux-${pkgver}
-
+  
   # make -j$(nproc) htmldocs
   echo "make -j$(nproc) htmldocs"
   make -j$(nproc) htmldocs
-
+  
   local builddir="$pkgdir/usr/lib/modules/${pkgver}/build"
 
   echo "Installing documentation..."
