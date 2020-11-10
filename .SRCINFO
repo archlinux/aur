@@ -4,8 +4,9 @@ pkgbase = nrfutil
 	pkgrel = 1
 	url = https://github.com/NordicSemiconductor/pc-nrfutil
 	arch = any
-	license = MIT
-	depends = python-pip
+	license = BSD
+	makedepends = python-pip
+	depends = python
 	options = !emptydirs
 
 pkgname = nrfutil
