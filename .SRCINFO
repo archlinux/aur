@@ -1,0 +1,22 @@
+pkgbase = gitreleasemanager
+	pkgdesc = Tool for creating and exporting releases for software applications hosted on GitHub
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/GitTools/GitReleaseManager
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = mono
+	makedepends = openssl-1.0
+	makedepends = dos2unix
+	makedepends = dotnet-sdk
+	depends = dotnet-runtime
+	source = gitreleasemanager::git+https://github.com/GitTools/GitReleaseManager#tag=0.11.0
+	source = 0001-Fix-building-of-GRM.patch
+	source = 0002-Re-Target-to-.NET-Core-3.1.patch
+	sha512sums = SKIP
+	sha512sums = 79e4b5aba93b67f40906132058a68387ef4e7ad32e5acf590e8beccd12f31895c95db4ca60b4337004dd82852a7bc7190b8f8d47d7718189c62e33952c0ed06e
+	sha512sums = d72f2c6c44f196e461dfc09e5e668ce4aa4d0de935e41904e0ac1b5587a335a6c1ae3b394b2dcab42a1a7f4d1e3f75b6970e45a6727ddb674da2d3501c1775e6
+
+pkgname = gitreleasemanager
+

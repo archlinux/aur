@@ -1,0 +1,140 @@
+From 6b21b679d5b388adc8b4f1dd71d914f61618ea61 Mon Sep 17 00:00:00 2001
+From: AdmiringWorm <kim.nordmo@gmail.com>
+Date: Tue, 10 Nov 2020 09:53:06 +0100
+Subject: [PATCH 2/2] Re-Target to .NET Core 3.1
+
+---
+ .../GitReleaseManager.Cli.csproj              |  4 +-
+ .../GitReleaseManager.Tool.csproj             | 43 -------------------
+ .../GitReleaseManager.IntegrationTests.csproj |  4 +-
+ .../GitReleaseManager.Tests.csproj            |  4 +-
+ Source/GitReleaseManager.sln                  |  2 -
+ 5 files changed, 6 insertions(+), 51 deletions(-)
+ delete mode 100644 Source/GitReleaseManager.Cli/GitReleaseManager.Tool.csproj
+
+diff --git a/Source/GitReleaseManager.Cli/GitReleaseManager.Cli.csproj b/Source/GitReleaseManager.Cli/GitReleaseManager.Cli.csproj
+index 25a08ca..32c71ac 100644
+--- a/Source/GitReleaseManager.Cli/GitReleaseManager.Cli.csproj
++++ b/Source/GitReleaseManager.Cli/GitReleaseManager.Cli.csproj
+@@ -3,7 +3,7 @@
+         <LangVersion>8.0</LangVersion>
+         <OutputType>Exe</OutputType>
+         <AssemblyName>GitReleaseManager</AssemblyName>
+-        <TargetFrameworks>netcoreapp2.0;net461</TargetFrameworks>
++        <TargetFrameworks>netcoreapp3.1;net461</TargetFrameworks>
+         <Title>GitReleaseManager.Cli</Title>
+         <Description>Create release notes in markdown given a milestone</Description>
+         <IsPackable>false</IsPackable>
+@@ -20,4 +20,4 @@
+         <PackageReference Include="Octokit" Version="0.44.0" />
+         <PackageReference Include="seriloganalyzer" Version="0.15.0" />
+     </ItemGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+diff --git a/Source/GitReleaseManager.Cli/GitReleaseManager.Tool.csproj b/Source/GitReleaseManager.Cli/GitReleaseManager.Tool.csproj
+deleted file mode 100644
+index 06ba2bb..0000000
+--- a/Source/GitReleaseManager.Cli/GitReleaseManager.Tool.csproj
++++ /dev/null
+@@ -1,43 +0,0 @@
+-<Project Sdk="Microsoft.NET.Sdk">
+-
+-    <PropertyGroup>
+-        <LangVersion>8.0</LangVersion>
+-        <OutputType>Exe</OutputType>
+-        <AssemblyName>GitReleaseManager</AssemblyName>
+-
+-        <PackAsTool>true</PackAsTool>
+-        <TargetFrameworks>netcoreapp2.1;netcoreapp3.0</TargetFrameworks>
+-        <ToolCommandName>dotnet-gitreleasemanager</ToolCommandName>
+-        <PackageId>GitReleaseManager.Tool</PackageId>
+-
+-        <Title>GitReleaseManager Tool</Title>
+-        <Authors>GitTools Contributors</Authors>
+-        <PackageProjectUrl>https://github.com/GitTools/GitReleaseManager</PackageProjectUrl>
+-        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+-        <PackageTags>github release notes create export</PackageTags>
+-        <Description>Tool for creating and exporting releases for software applications from online Version Control Systems</Description>
+-        <Copyright>Copyright (c) 2015 - Present - GitTools Contributors</Copyright>
+-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+-        <PackageIcon>package_icon.png</PackageIcon>
+-        <PackageReleaseNotes>https://github.com/GitTools/GitReleaseManager/releases</PackageReleaseNotes>
+-        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+-        <RepositoryType>git</RepositoryType>
+-        <RepositoryUrl>https://github.com/GitTools/GitReleaseManager.git</RepositoryUrl>
+-    </PropertyGroup>
+-    <ItemGroup>
+-        <Compile Include="..\SolutionInfo.cs" Link="SolutionInfo.cs" />
+-    </ItemGroup>
+-    <ItemGroup>
+-        <ProjectReference Include="..\GitReleaseManager\GitReleaseManager.Core.csproj" />
+-    </ItemGroup>
+-    <ItemGroup>
+-        <PackageReference Include="CommandLineParser" Version="2.7.82" />
+-        <PackageReference Include="Octokit" Version="0.44.0" />
+-    </ItemGroup>
+-    <ItemGroup>
+-        <None Include="../../Icons/package_icon.png">
+-            <Pack>True</Pack>
+-            <PackagePath></PackagePath>
+-        </None>
+-    </ItemGroup>
+-</Project>
+\ No newline at end of file
+diff --git a/Source/GitReleaseManager.IntegrationTests/GitReleaseManager.IntegrationTests.csproj b/Source/GitReleaseManager.IntegrationTests/GitReleaseManager.IntegrationTests.csproj
+index 8b066ec..9f7915b 100644
+--- a/Source/GitReleaseManager.IntegrationTests/GitReleaseManager.IntegrationTests.csproj
++++ b/Source/GitReleaseManager.IntegrationTests/GitReleaseManager.IntegrationTests.csproj
+@@ -1,7 +1,7 @@
+ <Project Sdk="Microsoft.NET.Sdk">
+     <PropertyGroup>
+         <LangVersion>8.0</LangVersion>
+-        <TargetFrameworks>net472;netcoreapp2.2</TargetFrameworks>
++        <TargetFrameworks>net472;netcoreapp3.1</TargetFrameworks>
+         <Title>GitReleaseManager.IntegrationTests</Title>
+         <Description>Integration Test Project for GitReleaseManager</Description>
+         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+@@ -20,4 +20,4 @@
+         <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+         <PackageReference Include="TextCopy" Version="3.0.1" />
+     </ItemGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+diff --git a/Source/GitReleaseManager.Tests/GitReleaseManager.Tests.csproj b/Source/GitReleaseManager.Tests/GitReleaseManager.Tests.csproj
+index 93c8516..1b66d76 100644
+--- a/Source/GitReleaseManager.Tests/GitReleaseManager.Tests.csproj
++++ b/Source/GitReleaseManager.Tests/GitReleaseManager.Tests.csproj
+@@ -1,7 +1,7 @@
+ <Project Sdk="Microsoft.NET.Sdk">
+     <PropertyGroup>
+         <LangVersion>8.0</LangVersion>
+-        <TargetFrameworks>net472;netcoreapp2.2</TargetFrameworks>
++        <TargetFrameworks>net472;netcoreapp3.1</TargetFrameworks>
+         <Title>GitReleaseManager.Tests</Title>
+         <Description>Test Project for GitReleaseManager</Description>
+         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+@@ -20,4 +20,4 @@
+         <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+         <PackageReference Include="Octokit" Version="0.44.0" />
+     </ItemGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+diff --git a/Source/GitReleaseManager.sln b/Source/GitReleaseManager.sln
+index b095203..373f633 100644
+--- a/Source/GitReleaseManager.sln
++++ b/Source/GitReleaseManager.sln
+@@ -10,8 +10,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitReleaseManager.Cli", "Gi
+ EndProject
+ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitReleaseManager.Core", "GitReleaseManager\GitReleaseManager.Core.csproj", "{B02A026E-CA3A-48F4-BBA9-EB337B0A2035}"
+ EndProject
+-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitReleaseManager.Tool", "GitReleaseManager.Cli\GitReleaseManager.Tool.csproj", "{56F96DA7-E286-46C7-88DB-068F4BE96538}"
+-EndProject
+ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C87778A7-B100-4D05-A050-BA37BD59058C}"
+ 	ProjectSection(SolutionItems) = preProject
+ 		Directory.Build.props = Directory.Build.props
+-- 
+2.29.2
+

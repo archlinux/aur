@@ -1,0 +1,67 @@
+From f1ea82b3a867a674828aa82a45095293a88ea790 Mon Sep 17 00:00:00 2001
+From: AdmiringWorm <kim.nordmo@gmail.com>
+Date: Tue, 10 Nov 2020 09:39:22 +0100
+Subject: [PATCH 1/2] Fix building of GRM
+
+---
+ build.sh              | 2 +-
+ recipe.cake           | 9 +++------
+ tools/packages.config | 4 ++--
+ 3 files changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/build.sh b/build.sh
+index 73b9719..4af0a95 100755
+--- a/build.sh
++++ b/build.sh
+@@ -121,4 +121,4 @@ if [ ! -f "$CAKE_EXE" ]; then
+ fi
+ 
+ # Start Cake
+-exec mono "$CAKE_EXE" $SCRIPT "${CAKE_ARGUMENTS[@]}"
+\ No newline at end of file
++(exec mono "$CAKE_EXE" $SCRIPT --bootstrap) && (exec mono "$CAKE_EXE" $SCRIPT "${CAKE_ARGUMENTS[@]}")
+diff --git a/recipe.cake b/recipe.cake
+index 0c1de52..4715e4a 100644
+--- a/recipe.cake
++++ b/recipe.cake
+@@ -1,8 +1,6 @@
+-#load nuget:https://www.myget.org/F/cake-contrib/api/v2?package=Cake.Recipe&version=2.0.0-unstable0023&prerelease
++#load nuget:?package=Cake.Recipe&version=2.0.1
+ 
+-Environment.SetVariableNames(githubUserNameVariable: "GITTOOLS_GITHUB_USERNAME",
+-                            githubPasswordVariable: "GITTOOLS_GITHUB_PASSWORD",
+-                            githubTokenVariable: "GITTOOLS_GITHUB_TOKEN");
++Environment.SetVariableNames(githubTokenVariable: "GITTOOLS_GITHUB_TOKEN");
+ 
+ BuildParameters.SetParameters(context: Context,
+                             buildSystem: BuildSystem,
+@@ -11,7 +9,6 @@ BuildParameters.SetParameters(context: Context,
+                             repositoryOwner: "GitTools",
+                             repositoryName: "GitReleaseManager",
+                             appVeyorAccountName: "GitTools",
+-                            shouldRunGitVersion: true,
+                             shouldRunDotNetCorePack: true,
+                             shouldRunIntegrationTests: true,
+                             integrationTestScriptPath: "./tests/integration/tests.cake",
+@@ -49,4 +46,4 @@ BuildParameters.Tasks.CreateReleaseNotesTask
+ BuildParameters.Tasks.PublishPreReleasePackagesTask.IsDependentOn(BuildParameters.Tasks.PublishGitHubReleaseTask);
+ BuildParameters.Tasks.PublishReleasePackagesTask.IsDependentOn(BuildParameters.Tasks.PublishGitHubReleaseTask);
+ 
+-Build.RunDotNetCore();
+\ No newline at end of file
++Build.RunDotNetCore();
+diff --git a/tools/packages.config b/tools/packages.config
+index 7740eb4..a36acb6 100644
+--- a/tools/packages.config
++++ b/tools/packages.config
+@@ -1,4 +1,4 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <packages>
+-    <package id="Cake" version="0.33.0" />
+-</packages>
+\ No newline at end of file
++    <package id="Cake" version="0.38.4" />
++</packages>
+-- 
+2.29.2
+
