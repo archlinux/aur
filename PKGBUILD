@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fotoxx-test
-pkgver=21.25
+pkgver=21.26
 pkgrel=1
 pkgdesc="A program for improving image files made with a digital camera, test version"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
@@ -14,7 +14,7 @@ optdepends=('rawtherapee: for raw image processing'
 conflicts=('fotoxx')
 provides=('fotoxx')
 source=("http://www.kornelix.net/downloads/downloads/${pkgname%-test}-$pkgver-test.tar.gz")
-sha512sums=('fe94c8e45b9a61095f180046dac802231284d01aa8c545a72d2fb1d04f5b7b9e3ba014c7fd485c56a0354380c90714d6e682717b06c65afb7c52acc9a7b7d995')
+sha512sums=('0f3a58eb3ab45fbcdfeb75dfe24a18473e433d2de938c1849cf5ff9d3e2d778368eefddb45fe4631d14d377c6d9bd05d9e3b8384fc9fb47705d448e485b5f276')
 
 prepare() {
   cd ${pkgname%-test}
