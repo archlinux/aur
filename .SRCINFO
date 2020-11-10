@@ -1,12 +1,12 @@
 pkgbase = ubuntu-themes
 	pkgdesc = Ubuntu monochrome icon theme, Ambiance and Radiance themes, and Ubuntu artwork
 	pkgver = 20.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/ubuntu-themes
 	arch = any
 	groups = unity-extra
 	license = CCPL
-	makedepends = python2
+	makedepends = python
 	makedepends = imagemagick
 	makedepends = icon-naming-utils
 	depends = humanity-icon-theme
