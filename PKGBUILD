@@ -1,5 +1,5 @@
 _pkgname=tree-sitter
-pkgname=$_pkgname-langauges-git
+pkgname=$_pkgname-languages-git
 pkgver=ca69cdf.8ece09c.99151b1.35863bf.fb8250e.23f2cb9.dadfd9c.7f442e1.f7b62ac.3d9fe97.77e7785.d3976b2.6a0863f.4ec9ee4.b0c0367.c4282ba.a0d688d.be2e415.df5e502.cf47ff8.211bb72.73afadb
 pkgrel=0
 pkgdesc='An incremental parsing system for programming tools'
