@@ -1,6 +1,6 @@
 pkgbase = platypush-git
 	pkgdesc = Universal multi-platform command executor and automation manager
-	pkgver = .r0.
+	pkgver = 0.13.8.r0.43f71ed4
 	pkgrel = 1
 	url = https://github.com/BlackLight/platypush
 	arch = any
