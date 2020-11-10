@@ -7,7 +7,7 @@ pkgdesc="graphical software for helping debug and diagnose STM32 applications wh
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubemonitor.html"
 license=('custom')
-depends=('gtk3' 'nss' 'libxss' 'libnotify' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libutil-linux')
+depends=('gtk3' 'nss' 'libxss' 'libnotify' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs')
 optdepends=('stlink: stlink udev files provide')
 provides=("${pkgname}-bin")
 conflicts=("${pkgname}-bin")
@@ -21,10 +21,10 @@ if [ ! -f ${PWD}/${_pkg_file_name} ]; then
 	if [ -f $_DOWNLOADS_DIR/${_pkg_file_name} ]; then
 		ln -sfn $_DOWNLOADS_DIR/${_pkg_file_name} ${PWD}
 	else
-		msg2 ""
-		msg2 "The package can be downloaded here: "
-		msg2 "Please remember to put a downloaded package ${_pkg_file_name} into the build directory ${PWD} or $_DOWNLOADS_DIR"
-		msg2 ""
+		echo ""
+		echo "The package can be downloaded here: "
+		echo "Please remember to put a downloaded package ${_pkg_file_name} into the build directory ${PWD} or $_DOWNLOADS_DIR"
+		echo ""
 	fi
 fi
 
