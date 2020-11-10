@@ -53,20 +53,23 @@ _submod_path["MdeModulePkg/Universal/RegularExpressionDxe/oniguruma"]="oniguruma
 _submod_path["MdeModulePkg/Library/BrotliCustomDecompressLib/brotli"]="brotli"
 _submod_path["BaseTools/Source/C/BrotliCompress/brotli"]="brotli"
 
-source=("${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=master"
-        brotli::git+https://github.com/google/brotli
-        softfloat::git+https://github.com/ucb-bar/berkeley-softfloat-3.git
-        cmocka::git+https://git.cryptomilk.org/projects/cmocka.git
-        oniguruma::git+https://github.com/kkos/oniguruma
-        openssl::git+https://github.com/openssl/openssl
-        )
+source=(
+	"${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=master"
+	"brotli::git+https://github.com/google/brotli"
+	"softfloat::git+https://github.com/ucb-bar/berkeley-softfloat-3.git"
+	"cmocka::git+https://git.cryptomilk.org/projects/cmocka.git"
+	"oniguruma::git+https://github.com/kkos/oniguruma"
+	"openssl::git+https://github.com/openssl/openssl"
+)
 
-sha1sums=('SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP')
+sha1sums=(
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+)
 
 pkgver() {
 	cd "${srcdir}/${_TIANO_DIR_}/"
