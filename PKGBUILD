@@ -4,8 +4,8 @@
 
 _pkgname=pandoc
 pkgname=$_pkgname-sile-git
-_pkgver=2.10.1
-pkgver=2.9.2.r347.gc2764508e
+_pkgver=2.11.1.1
+pkgver=2.11.1.1.r8.g9c04c2e
 pkgrel=1
 pkgdesc='Conversion between markup formats (sile fork, static build)'
 url='https://pandoc.org'
@@ -16,19 +16,19 @@ optdepends=('pandoc-citeproc: for citation rendering with pandoc-citeproc filter
             'texlive-core: for pdf output')
 conflicts=('haskell-pandoc' "$_pkgname")
 replaces=('haskell-pandoc')
-provides=("$_pkgname")
+provides=("$_pkgname=$_pkgver")
 makedepends=('stack')
 source=("git://github.com/alerque/$_pkgname.git#branch=sile-${_pkgver}")
 sha512sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 --always HEAD |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     cd "$_pkgname"
-
     # TODO: find a better solution
     sed -i "s|let env' = dynlibEnv ++ |let env' = dynlibEnv ++ [(\"LD_LIBRARY_PATH\", \"$PWD/dist/build\")] ++ |" test/Tests/Command.hs
 }
