@@ -1,7 +1,7 @@
 pkgbase = uefi-shell-git
 	pkgdesc = UEFI Shell v2 - from Tianocore EDK2 - GIT Version
-	pkgver = 28256.edk2.stable201903.2519.g1366cd58cd
-	pkgrel = 2
+	pkgver = 28272.edk2.stable201903.2535.gd150439b72
+	pkgrel = 3
 	url = https://github.com/tianocore/edk2
 	install = uefi-shell.install
 	arch = x86_64
@@ -16,6 +16,16 @@ pkgbase = uefi-shell-git
 	options = !strip
 	options = !makeflags
 	source = edk2::git+https://github.com/tianocore/edk2.git#branch=master
+	source = brotli::git+https://github.com/google/brotli
+	source = softfloat::git+https://github.com/ucb-bar/berkeley-softfloat-3.git
+	source = cmocka::git+https://git.cryptomilk.org/projects/cmocka.git
+	source = oniguruma::git+https://github.com/kkos/oniguruma
+	source = openssl::git+https://github.com/openssl/openssl
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
 	sha1sums = SKIP
 
 pkgname = uefi-shell-git
