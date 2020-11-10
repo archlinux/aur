@@ -2,7 +2,7 @@
 
 pkgname=travis
 pkgver=200504
-pkgrel=1
+pkgrel=2
 pkgdesc="Trajectory Analyzer and Visualizer"
 arch=('i686' 'x86_64')
 url="http://www.travis-analyzer.de"
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
 	_cdsrcdir
-	export CFLAGS="-g -ansi -O3 -march=native"
+	export CFLAGS="$CFLAGS -g -ansi -O3 -march=native"
 	make
 }
 
