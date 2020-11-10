@@ -10,18 +10,12 @@ license=('BSD')
 url="https://github.com/celery/case"
 depends=('python-nose')
 makedepends=('git')
-checkdepends=('python-coverage')
 source=("git+https://github.com/celery/case.git#commit=$_commit")
 sha512sums=('SKIP')
 
 build() {
   cd "$srcdir"/case
   python setup.py build
-}
-
-check() {
-  cd "$srcdir"/case
-  nosetests3
 }
 
 package() {
