@@ -3,12 +3,14 @@
 # Contributor: agnotek <agnostic.sn [at]gmail.com>
 
 pkgname=telegram-desktop-bin
-pkgver=2.4.4
+pkgver=2.4.7
 pkgrel=1
 pkgdesc="Official desktop version of Telegram messaging app - Static binaries"
-arch=('i686' 'x86_64')
+# After 2.4.4 i686 has no official binary
+# Try with: curl -iL https://telegram.org/dl/desktop/linux32
+arch=(x86_64)
 url="https://desktop.telegram.org"
-license=('GPL3')
+license=(GPL3)
 depends=(
     desktop-file-utils
     glib2
@@ -24,9 +26,9 @@ optdepends=(
     'libappindicator-gtk3: to hide Telegram in the tray bar in GTK3-based desktop environment'
     'xdg-utils: for automatic opening of URLs, files and directories in proper applications'
 )
-conflicts=('telegram-desktop')
-provides=('telegram-desktop')
-replaces=('telegram-bin')
+conflicts=(telegram-desktop)
+provides=(telegram-desktop)
+replaces=(telegram-bin)
 
 # Sources
 source=(
@@ -34,8 +36,13 @@ source=(
 	tg.protocol
 	https://github.com/telegramdesktop/tdesktop/raw/master/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png
 )
-source_i686=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tsetup32.${pkgver}.tar.xz")
-source_x86_64=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tsetup.${pkgver}.tar.xz")
+source_x86_64=("https://updates.tdesktop.com/tlinux/tsetup.${pkgver}.tar.xz")
+# If your ISP blocks the official Telegram Desktop sources, GitHub works as alternative
+#source_x86_64=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tsetup.${pkgver}.tar.xz")
+# Old 32-bit sources:
+#source_i686=("https://updates.tdesktop.com/tlinux32/tsetup32.${pkgver}.tar.xz")
+#source_i686=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tsetup32.${pkgver}.tar.xz")
+
 # Checksums
 sha256sums=('32d1597d67a7ef519367e499fcc978da4cce104e370b3787853446d93b1533d6'
             'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
@@ -46,8 +53,7 @@ sha256sums=('32d1597d67a7ef519367e499fcc978da4cce104e370b3787853446d93b1533d6'
             '83e3e8eeecadcb3429704626d4ac80ef61ef4e06ba2c6ca2b105a4a436f33032'
             '871f2a6d3bd9d657f8379196e51fd3117c1586e0042e9e993ae138f78b2bcd76'
             'a9eb77ca5a428b32f6e01f62b859cce788c4c9a170dc2cd080800a9de59faa3d')
-sha256sums_i686=('0779c5d46218ec53dc3caf450093c7537e40c06c876da77270c57667e5df6589')
-sha256sums_x86_64=('6d29fa738207b2bf6bc608c8de4a47e8c0111dce6946c53165852d6517b33473')
+sha256sums_x86_64=('015bf426242f0f3ed8522528ebac5c4451087d5ebc998a4d5632566c891eb186')
 # Some installation information
 install="$pkgname.install"
 
