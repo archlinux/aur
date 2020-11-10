@@ -5,6 +5,7 @@ pkgbase = vim-vimtex
 	url = https://github.com/lervag/vimtex
 	arch = any
 	license = MIT
+	depends = vim
 	source = https://github.com/lervag/vimtex/archive/v1.5.tar.gz
 	sha256sums = f6614c535421f9f0dccabb12b5e2cc19c0ce0358d776da28f6413405b3ac2a9f
 
