@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=sonorem
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Record sound 24/7 with Raspberry Pi"
 url='https://efanomars.com/utilities/sonorem'
@@ -16,8 +16,8 @@ optdepends=()
 #replaces=("sonorem")
 #conflicts=("sonorem")
 
-source=('https://efanomars.com/sources/sonorem-0.3.tar.gz')
-sha256sums=('3a82d1f5864feaa667736f0fbd90b9225acad7ffdeb3c8e75967a4094e4fd632')
+source=('https://efanomars.com/sources/sonorem-0.4.tar.gz')
+sha256sums=('a1fdea5934ab3f10e81859456d76326352dc6e187d4f150a928511c605a0d7e2')
 
 build() {
   cd "${srcdir}/sonorem"
