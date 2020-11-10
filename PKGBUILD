@@ -8,12 +8,11 @@ arch=(x86_64)
 url="https://mesa3d.org/"
 license=('MIT')
 depends=("libdrm" "libelf" "libglvnd" "libomxil-bellagio" "libunwind" "libxdamage" "libxxf86vm" "llvm-libs"
-            "lm_sensors" "wayland" "zstd" "libxv" "libxvmc" "libepoxy" "gtk3" "libconfig")
-makedepends=("bison" "flex" "valgrind" "meson" "ninja" "git" "ninjas2" "cmake" "make" "extra-cmake-modules" "samurai"
-            "python" "python-appdirs" "python-mako" "python-evdev" "spirv-tools" "spirv-llvm-translator" "clang"
-            "elfutils" "glslang" "libclc" "libdrm" "libglvnd" "libomxil-bellagio" "libunwind" "libva"
-            "libvdpau" "libx11" "libxdamage" "libxml2" "libxrandr" "libxshmfence" "libxxf86vm" "llvm"
-            "lm_sensors" "wayland" "wayland-protocols" "xorgproto" "zstd" "patch" "libxv" "libxvmc" "spirv-tools" "libepoxy" "gtk3")
+	       "lm_sensors" "wayland" "zstd" "libxshmfence" "libclc" "expat" "vulkan-icd-loader")
+makedepends=("bison" "flex" "valgrind" "meson" "ninja" "git" "ninjas2" "spirv-tools" "spirv-llvm-translator" "clang" "libxvmc"
+            "python" "python-appdirs" "python-mako" "python-evdev" "elfutils" "glslang" "libva" "libepoxy" "libxv" "libvdpau"
+            "libx11" "libxml2" "libxrandr"  "llvm" "libconfig" "gtk3" "wayland-protocols" "xorgproto" "patch" "libxv" "libxvmc"
+            "libepoxy" "gtk3")
 conflicts=("mesa-aco" "mesa-aco-rc" "mesa-llvm")
 replaces=("mesa-aco" "mesa-aco-rc" "mesa-llvm")
 source=("https://archive.mesa3d.org/mesa-${versiontag}.tar.xz"
