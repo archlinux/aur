@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-vault
-pkgver=5.20.2
+pkgver=5.20.3
 pkgrel=1
 pkgdesc="Plasma applet and services for creating encrypted vaults"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(plasma-workspace networkmanager-qt)
 makedepends=(extra-cmake-modules)
 optdepends=('encfs: to use encFS for encryption' 'cryfs: to use cryFS for encryption' 'gocryptfs: to use gocryptfs for encryption')
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('13468ca59d26569bd6590af508ca76ffe4bd52042fc0789588cd130cc384c4cd'
+sha256sums=('53e67798ae324ef3c2048bdabe1331f5a17c6e046aaf35b8a1742561714fb031'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
