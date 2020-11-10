@@ -3,7 +3,7 @@
 # Contributor: Adam Hose <adis@blad.is>
 
 pkgname=opensnitch-git
-pkgver=1.0.1.r3.544ce11
+pkgver=1.2.0.r0.6a8670c
 pkgrel=1
 pkgdesc="A GNU/Linux application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -26,10 +26,6 @@ pkgver() {
 }
 
 prepare() {
-    mkdir -p gopath/src/github.com/gustavo-iniguez-goya
-    ln -rTsf "$srcdir/${pkgname%-git}" \
-        "gopath/src/github.com/gustavo-iniguez-goya/${pkgname%-git}"
-
     export GOPATH="$srcdir/gopath"
     go clean -modcache
 
@@ -38,22 +34,26 @@ prepare() {
 }
 
 build() {
-    cd "gopath/src/github.com/gustavo-iniguez-goya/${pkgname%-git}/daemon"
+    cd "$srcdir/${pkgname%-git}"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external"
+    pushd daemon
     make
+    popd
 
     # Clean mod cache for makepkg -C
     go clean -modcache
 
-    cd "$srcdir/${pkgname%-git}/proto"
+    pushd proto
     make
+    popd
 
-    cd "$srcdir/${pkgname%-git}/ui"
+    pushd ui
     python setup.py build
+    popd
 }
 
 package() {
@@ -66,6 +66,7 @@ package() {
     install -Dm644 "debian/${pkgname%-git}.logrotate" \
         "$pkgdir/etc/logrotate.d/${pkgname%-git}"
 
-    cd "$srcdir/${pkgname%-git}/ui"
+    pushd ui
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    popd
 }
