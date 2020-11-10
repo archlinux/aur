@@ -1,6 +1,6 @@
 pkgbase = runelite-launcher-appimage
 	pkgdesc = Open source Old School RuneScape client. (AppImage Launcher)
-	pkgver = 2.1.3
+	pkgver = 2.1.5
 	pkgrel = 2
 	url = https://github.com/runelite/launcher
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = runelite-launcher-appimage
 	optdepends = gvfs: enable links
 	conflicts = runelite-launcher
 	options = !strip
-	source = RuneLite_2.1.3.AppImage::https://github.com/runelite/launcher/releases/download/2.1.3/RuneLite.AppImage
+	source = RuneLite_2.1.5.AppImage::https://github.com/runelite/launcher/releases/download/2.1.5/RuneLite.AppImage
 	source = runelite-launcher.desktop
-	sha256sums = b41e7f3b764a0ce4da9867249c42311581719d7d521650561e14cc646cd9ba23
+	sha256sums = 1205d26d84cfb75a4eb75fd8346a2ad78de6b6289c69afc99e51949b936d6fa8
 	sha256sums = SKIP
 
 pkgname = runelite-launcher-appimage
