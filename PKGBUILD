@@ -2,7 +2,7 @@
 
 pkgname=python-sphinx-jinja
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A sphinx extension to include jinja based templates based documentation into a sphinx doc'
 arch=(any)
 url='https://github.com/tardyp/sphinx-jinja'
