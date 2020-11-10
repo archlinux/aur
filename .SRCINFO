@@ -1,4 +1,4 @@
-pkgbase = boostchanger
+pkgbase = boostchanger-appimage
 	pkgdesc = Control your CPU Turbo Boost with this App
 	pkgver = 1.0
 	pkgrel = 0
@@ -9,5 +9,5 @@ pkgbase = boostchanger
 	source = git+https://gitlab.com/nbebaw/boostchanger.git
 	md5sums = SKIP
 
-pkgname = boostchanger
+pkgname = boostchanger-appimage
 
