@@ -1,6 +1,6 @@
 pkgbase = deepin-launcher-git
 	pkgdesc = Deepin desktop-environment - Launcher module
-	pkgver = 5.3.0.35.r11.gfdaf8290
+	pkgver = 5.3.0.35.r12.gc2a18267
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-launcher
 	arch = x86_64
