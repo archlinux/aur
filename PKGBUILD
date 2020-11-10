@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('java-runtime>=8' 'bash')
 makedepends=('gendesk')
 source=("${pkgname}-${pkgver}.jar::https://github.com/bernarpa/pdfjuggler/releases/download/v${pkgver}/pdfjuggler-${pkgver}.jar"
-  "${pkgname}.png::https://github.com/bernarpa/pdfjuggler/raw/main/graphics/icon-256.png")
+        "${pkgname}.png::https://github.com/bernarpa/pdfjuggler/raw/main/graphics/icon-256.png")
 sha256sums=('d2cf2647dcb14814e80deed17f0c3fd70e2f87bed376512a3ee2e4dd3f7fadb7'
             'a4a8891791ec582e27bdcf8149a01340494c0613e9728f37d285fb56dc1a73b1')
 
