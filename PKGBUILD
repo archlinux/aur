@@ -1,18 +1,23 @@
-# Maintainer: Andy Kluger <AndyKluger@gmail.com>
+# Maintainer: Andy Kluger <https://t.me/andykluger>
 # Contributor: Markus Weimar <mail@markusweimar.de>
-pkgname=ttf-iosevka-git
-pkgver=r2050.075dd6e4
+_pkgname=ttf-iosevka
+pkgname=${_pkgname}-git
+pkgver=r2089.115f5b19
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
-makedepends=('git' 'nodejs' 'npm' 'ttfautohint')
+makedepends=('git' 'nodejs>=12.16.0' 'npm' 'ttfautohint')
 depends=()
-conflicts=('ttf-iosevka')
-provides=('ttf-iosevka')
-source=('git+https://github.com/be5invis/Iosevka')
-sha256sums=('SKIP')
+conflicts=(${_pkgname})
+provides=(${_pkgname})
+source=(
+  'git+https://github.com/be5invis/Iosevka'
+)
+sha256sums=(
+  'SKIP'
+)
 
 pkgver() {
   cd Iosevka
@@ -23,7 +28,7 @@ build() {
   cd Iosevka
   npm install
   npm update
-  npm run build -- ttf::iosevka
+  npm run build -- ttf::${_pkgname#*-}
 }
 
 package() {
