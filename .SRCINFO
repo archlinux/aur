@@ -6,10 +6,10 @@ pkgbase = cinc
 	arch = x86_64
 	license = Apache
 	conflicts = chef
+	conflicts = chef-client
 	conflicts = chef-solo
 	conflicts = chef-dk
 	source = http://downloads.cinc.sh/files/stable/cinc/16.6.14/ubuntu/20.04/cinc_16.6.14-1_amd64.deb
 	sha256sums = 54ef8ad6986301796163a6655b77c6e9ad8aa785946575b089ec9462c1d11030
 
 pkgname = cinc
-
