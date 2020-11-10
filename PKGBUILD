@@ -68,12 +68,12 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.9
-_minor=7
+_minor=8
 _srcname=linux-${_major}
 _clr=${_major}.6-998
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -355,7 +355,7 @@ done
 
 sha256sums=('3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06'
             'SKIP'
-            '2fd295318a3de15954cf4f4012b64de899538c4d5eba9192c98f9aba8f94bcab'
+            'e7f7801ee9c422ddea719a19c91c22dd392c0707fb9116aa3fb10c5125fc5b95'
             'SKIP'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
             '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e'
