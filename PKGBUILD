@@ -1,26 +1,46 @@
-# Maintainer: Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
+# Maintainer: Filipe Nascimento <flipee at tuta dot io>
+# Contributor: Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
 
 pkgname=gotify-cli
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
-pkgdesc='A command line interface for pushing messages to gotify/server.'
+pkgdesc="A command line interface for pushing messages to gotify/server"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/gotify/cli'
 license=('MIT')
-makedepends=('go-pie' 'make' 'git')
-provides=("${pkgname}")
-conflicts=("${pkgname}-git")
-source=("https://github.com/gotify/cli/archive/v${pkgver}.tar.gz")
-sha256sums=('b2cb3ff9164a73ded51452c054703825b429e7c83753414f6a438ca1ac449f53')
+depends=('glibc')
+makedepends=('git' 'go')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('d4e6fbc087c6cc4b320b3fcae4c28d65d514b7e55c95e4c0e764abb3a6c94064')
 
 build() {
-  cd "${srcdir}/cli-${pkgver}"
-  export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow -ldflags=-X=main.Version=${pkgver}"
-  go build -o build/gotify cli.go
+    _commit=$(zcat $pkgname-$pkgver.tar.gz | git get-tar-commit-id)
+
+    cd cli-$pkgver
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+
+    go build \
+        -trimpath \
+        -buildmode=pie \
+        -mod=readonly \
+        -modcacherw \
+        -ldflags "-linkmode=external
+            -X \"main.Version=$pkgver\"
+            -X \"main.BuildDate=$(date -d@"$SOURCE_DATE_EPOCH" +%FT%TZ)\"
+            -X \"main.Commit=$_commit\"" \
+        -o gotify
+}
+
+check() {
+    cd cli-$pkgver
+    go test -v ./...
 }
 
 package() {
-  cd "${srcdir}/cli-${pkgver}"
-  install -D -m755 build/gotify "${pkgdir}/usr/bin/gotify"
+    cd cli-$pkgver
+    install -Dm755 gotify -t "$pkgdir/usr/bin"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
-
