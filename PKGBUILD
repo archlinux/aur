@@ -5,7 +5,7 @@
 
 set -u
 pkgname='evdi-git'
-pkgver=1.7.0.r6.g9b124a6
+pkgver=1.8.0.r7.g90e9679
 _pkgver="${pkgver%%.r*}"
 pkgrel=1
 pkgdesc='kernel module that enables management of multiple screens, primarily for DisplayLink USB VGA DVI HDMI DisplayPort video'
@@ -26,7 +26,7 @@ source=(
   #'https://crazy.dev.frugalware.org/evdi-all-in-one-fixes.patch'
   #'relro.patch'
 )
-source[0]+='#branch=master'
+source[0]+='#branch=devel'
 md5sums=('SKIP')
 sha256sums=('SKIP')
 
