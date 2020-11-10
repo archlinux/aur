@@ -1,7 +1,7 @@
 pkgbase = mautrix-telegram
 	pkgdesc = A Matrix-Telegram hybrid puppeting/relaybot bridge.
 	pkgver = 0.8.2
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/tulir/mautrix-telegram
 	install = mautrix-telegram.install
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mautrix-telegram
 	depends = python-sqlalchemy
 	depends = python-alembic
 	depends = python-ruamel-yaml
-	depends = python-magic-ahupp
+	depends = python-magic
 	depends = python-commonmark
 	depends = python-aiohttp
 	depends = python-yarl
