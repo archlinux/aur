@@ -1,7 +1,7 @@
 # Maintainer: Yu-Hsuan Tu <dobe0331 at gmail dot com>
 _pkgname=metashape
 pkgname=agisoft-${_pkgname}
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="Phtogrammetric processing of digital images and 3D spatial data generation software. Standard edition"
 arch=('x86_64')
@@ -11,14 +11,14 @@ makedepends=('imagemagick')
 provides=('agisoft-metashape')
 options=('!strip')
 install=${pkgname}.install
-source=("http://download.agisoft.com/${_pkgname}_${pkgver//./_}_amd64.tar.gz"
+source=("https://s3-eu-west-1.amazonaws.com/download.agisoft.com/${_pkgname}_${pkgver//./_}_amd64.tar.gz"
         "agisoft-metashape-icon-encoded.txt"
         "agisoft-psx-mime-icon-encoded.txt"
 	"agisoft-psz-mime-icon-encoded.txt")
-sha256sums=('45c4c206b95e3686f24b3dca2cb5f34dae40511e721dc3d2ad3da1e10b7f7ec1'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('e17fe7cb83c93e9547fb1c0cfdc45bd3ef4e8e936f6d7e60239ab8fcaf6aa556'
+            '959eb21ce482a5b1f84a0e04ec6f0d53aaf679c84bce9f813b350afe5dd201ba'
+            '627df01b98f9f22b31d62ba039127b7809650990d1633e4190f1d9844830a0ff'
+            'd44fb70962175505fd3bfc0e96670e5bf4092c80446e0142cc91a3e0033e1009')
 
 build() {
 	# Create desktop entries
