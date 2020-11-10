@@ -1,17 +1,22 @@
 pkgbase = crark
-	pkgdesc = A command-line utility for RAR 2.x-3.x password cracking, uses Password Cracking Library 2.0 that supports special password recovery language. Highly optimized for all modern processors.
-	pkgver = 5.0
+	pkgdesc = A command-line utility for RAR 2.x-3.x password cracking, uses Password Cracking Library 2.0 that supports special password recovery language. Highly optimized for all modern processors. with CUDA support
+	pkgver = 5.5
 	pkgrel = 1
 	url = http://www.crark.net/
-	install = install
-	arch = i686
 	arch = x86_64
 	license = unknown
 	makedepends = unrar
-	depends = unrar
+	optdepends = cuda
+	optdepends = opencl
 	provides = crark
-	source = http://www.crark.net/download/crark50.rar
-	md5sums = af126eb34546258e15740a0929f82bb6
+	noextract = crark55-linux.rar
+	options = !strip
+	source = http://www.crark.net/download/crark55-linux.rar
+	source = crark
+	source = crark-ocl
+	md5sums = a906db19b88baf63042abaa3847b77f1
+	md5sums = f471d3db1066f47d1ed23a73d7ac7221
+	md5sums = f44d74487e4a1ee973a292e70720468f
 
 pkgname = crark
 
