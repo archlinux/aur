@@ -2,7 +2,7 @@
 
 pkgname=mdview
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Markdown View"
 arch=('x86_64')
 url="https://github.com/mapitman/mdview"
@@ -17,7 +17,9 @@ build() {
   make VERSION=${pkgver} bin/linux-${arch}/mdview
 }
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}/bin/linux-${arch}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}-${pkgver}
+  install -D -m 644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  cd bin/linux-${arch}/${pkgname}-${pkgver}
   install -D -m 755 mdview ${pkgdir}/usr/bin/mdview
   install -D -m 644 mdview.1 ${pkgdir}/usr/share/man/man1/mdview.1
 }
