@@ -3,7 +3,7 @@
 pkgname=semgrep-bin
 _name=semgrep
 pkgver=0.30.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and syntax-aware semantic code pattern search for many languages: like grep but for code"
 arch=(x86_64)
 url=https://github.com/returntocorp/semgrep
@@ -33,4 +33,7 @@ package() {
 
   cd "${_name}-${pkgver}"
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+
+  # solve conflict with python-hypothesis
+  rm -rf "${pkgdir}/usr/lib/python3.8/site-packages/tests"
 }
