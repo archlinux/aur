@@ -1,13 +1,13 @@
 # Maintainer: Ryan Hirasaki <ryanhirasaki [plus] arch [at] gmail [dot] com>
 pkgname=libtensorflow-lite
 pkgver=2.3.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Tensorflow Lite - Library and Headers. C/C++ & Python"
 arch=('x86_64')
 url='https://github.com/tensorflow/tensorflow'
 license=('Apache')
-depends=('gcc' 'flatbuffers')
-makedepends=('bazel' 'python-setuptools')
+depends=('gcc' 'flatbuffers' 'pybind11')
+makedepends=('bazel' 'python-setuptools' 'git' 'python-numpy')
 provides=('libtensorflow-lite')
 source=("https://github.com/tensorflow/tensorflow/archive/v$pkgver.tar.gz")
 sha256sums=('ee534dd31a811f7a759453567257d1e643f216d8d55a25c32d2fbfff8153a1ac')
@@ -17,8 +17,6 @@ prepare() {
 	echo "*" > .bazelversion
 
 	# Fetch Build only sources
-	bazel fetch //tensorflow/lite:libtensorflowlite.so
-	bazel fetch //tensorflow/lite/c:libtensorflowlite_c.so
 	./tensorflow/lite/tools/make/download_dependencies.sh
 
 	# Setup python enviorment
@@ -36,8 +34,8 @@ prepare() {
 
 build() {
 	cd "tensorflow-$pkgver"
-	bazel build --nofetch //tensorflow/lite/c:libtensorflowlite_c.so # C Shared Library
-	bazel build --nofetch //tensorflow/lite:libtensorflowlite.so	 # C++ Shared library
+	bazel build //tensorflow/lite/c:libtensorflowlite_c.so # C Shared Library
+	bazel build //tensorflow/lite:libtensorflowlite.so	 # C++ Shared library
 	make -j `nproc` -C . -f tensorflow/lite/tools/make/Makefile # C++ Static Library
 	cd ./tensorflow/lite/tools/pip_package/gen/tflite_pip/python3
 		export PACKAGE_VERSION="$pkgver"
