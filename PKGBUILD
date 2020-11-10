@@ -1,6 +1,6 @@
 # Maintainer: Andrea Corsini <andrea dot corsini at outlook dot com>
 pkgname=devour
-pkgver=11.0
+pkgver=12
 pkgrel=1
 pkgdesc="Window Manager agnostic swallowing feature for terminal emulators"
 arch=('x86_64')
@@ -10,13 +10,13 @@ depends=('libx11')
 makedepends=('git')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/salman-abedin/devour/archive/v$pkgver.tar.gz")
-sha256sums=('e537c614cdf3e7376db1a94f1665d1d27f128d4927f4a0d1cce26ed8b910a217')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/salman-abedin/devour/archive/$pkgver.tar.gz")
+sha256sums=('5e9ddfee23d33557ba0b72affed6816d7b66ff06ef00aecdf0813b32f09b6eb4')
 
-prepare() {
-        cd "$srcdir/$pkgname-$pkgver"
-        patch < devour-shellalias-10.0.diff
-}
+#prepare() {
+#        cd "$srcdir/$pkgname-$pkgver"
+#        patch -s < devour-shellalias-10.0.diff
+#}
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
