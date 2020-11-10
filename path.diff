@@ -1,0 +1,79 @@
+--- openmarias.orig/default.ini	2020-11-10 23:55:09.448722821 +0000
++++ openmarias/default.ini	2020-11-10 23:55:27.708658171 +0000
+@@ -4,8 +4,8 @@
+ revision=0
+ 
+ [cards]
+-images=img/classic7/
+-rub=img/rub.png
++images=/usr/share/openmarias/img/classic7/
++rub=/usr/share/openmarias/img/rub.png
+ 
+ [players]
+ front=HumanPlayer	
+@@ -20,7 +20,7 @@
+ light_type=simple
+ 
+ [i18n]
+-dir=i18n/
++dir=/usr/share/openmarias/i18n/
+ lang=sk
+ 
+ [intro]
+--- openmarias.orig/src/deskview.cpp	2020-11-10 23:28:23.883162932 +0000
++++ openmarias/src/deskview.cpp	2020-11-11 00:19:59.970049431 +0000
+@@ -10,7 +10,7 @@
+ 	graphicsView = ui->graphicsView;
+ 	graphicsScene = new QGraphicsScene(graphicsView->sceneRect());
+ 	graphicsView->setScene(graphicsScene);
+-	settings = new QSettings("marias.ini", QSettings::IniFormat);
++	settings = new QSettings("/usr/share/openmarias/marias.ini", QSettings::IniFormat);
+ 
+         //INIT IMAGES
+ 
+--- openmarias.orig/src/game.cpp	2020-11-10 23:28:23.883162932 +0000
++++ openmarias/src/game.cpp	2020-11-11 00:19:53.980052101 +0000
+@@ -4,7 +4,7 @@
+ Game::Game(Marias* m)
+ {
+ 	marias = m;
+-	settings = new QSettings("marias.ini", QSettings::IniFormat);
++	settings = new QSettings("/usr/share/openmarias/marias.ini", QSettings::IniFormat);
+ 	bd = new BiddingDialog(this);
+ 	profiler = new Profiler();
+     for(int i=0;i<3;i++)stats[i]=0;
+--- openmarias.orig/src/main.cpp	2020-11-10 23:28:24.186495552 +0000
++++ openmarias/src/main.cpp	2020-11-11 00:19:28.960063396 +0000
+@@ -10,9 +10,7 @@
+ 	QCoreApplication::setOrganizationName("Mišo Kováè");
+ 	QCoreApplication::setApplicationName("OpenMarias");
+ 
+-	if(!QFile::exists("marias.ini"))
+-		QFile::copy("default.ini","marias.ini");
+-	QSettings* settings = new QSettings("marias.ini", QSettings::IniFormat);
++	QSettings* settings = new QSettings("/usr/share/openmarias/marias.ini", QSettings::IniFormat);
+ 	QTranslator translator(0);
+ 	translator.load(settings->value("i18n/lang","sk").toString(),settings->value("i18n/dir","i18n/").toString());
+ 	a.installTranslator(&translator);
+--- openmarias.orig/src/marias.cpp	2020-11-10 23:28:23.883162932 +0000
++++ openmarias/src/marias.cpp	2020-11-11 00:20:07.226712879 +0000
+@@ -46,7 +46,7 @@
+ 
+ void Marias::on_actionAbout_triggered()
+ {
+-    QSettings* settings = new QSettings("marias.ini", QSettings::IniFormat);
++    QSettings* settings = new QSettings("/usr/share/openmarias/marias.ini", QSettings::IniFormat);
+ 	QMessageBox::about(this, "About...",
+ 	"<b>OpenMarias</b>, free OPENsource Marias<br/>"
+ 	"2009-2011 by Miso Kovac<br/>"
+--- openmarias.orig/src/settingsdialog.cpp	2020-11-10 23:28:24.183162226 +0000
++++ openmarias/src/settingsdialog.cpp	2020-11-11 00:18:58.536744117 +0000
+@@ -28,7 +28,7 @@
+ }
+ 
+ void SettingsDialog::show(){
+-    settings = new QSettings("marias.ini", QSettings::IniFormat);
++    settings = new QSettings("/usr/share/openmarias/marias.ini", QSettings::IniFormat);
+     ui->spinBox->setValue(settings->value("graphics/delay",100).toInt());
+ 	ui->lineEdit_4->setText(settings->value("shuffling/seed",47).toString());
+ 	ui->checkBox->setChecked(settings->value("shuffling/random",1)==1);

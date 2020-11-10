@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!qt5_fix.diff
+!path.diff
+!openmarias.desktop

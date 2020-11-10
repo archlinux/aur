@@ -1,0 +1,50 @@
+Index: marias.pro
+===================================================================
+--- marias.pro	(revision 222)
++++ marias.pro	(working copy)
+@@ -1,7 +1,8 @@
+ # -------------------------------------------------
+ # Project created by QtCreator 2009-10-30T19:04:56
+ # -------------------------------------------------
+-QT += xml
++QT += xml core widgets gui
++DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x000000
+ TARGET = openmarias
+ TEMPLATE = app
+ CONFIG += qt \
+Index: src/main.cpp
+===================================================================
+--- src/main.cpp	(revision 222)
++++ src/main.cpp	(working copy)
+@@ -1,4 +1,4 @@
+-#include <QtGui/QApplication>
++#include <QtWidgets/QApplication>
+ #include <QTranslator>
+ #include <QSettings>
+ #include <QFile>
+Index: src/marias.h
+===================================================================
+--- src/marias.h	(revision 222)
++++ src/marias.h	(working copy)
+@@ -7,7 +7,7 @@
+   */
+ class Marias;
+ 
+-#include <QtGui/QMainWindow>
++#include <QtWidgets/QMainWindow>
+ #include <QRect>
+ #include "game.h"
+ #include "settingsdialog.h"
+Index: src/players/minimax/rozdania.h
+===================================================================
+--- src/players/minimax/rozdania.h	(revision 222)
++++ src/players/minimax/rozdania.h	(working copy)
+@@ -2,7 +2,7 @@
+ #define ROZDANIA_H
+ 
+ #include <QList>
+-#include <QtConcurrentFilter>
++#include <QtConcurrent/QtConcurrentFilter>
+ #include "../../stav.h"
+ #include "../../profiler.h"
+ 

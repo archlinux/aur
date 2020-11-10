@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=OpenMarias
+Comment=Marias card game
+Exec=openmarias
+Icon=openmarias
+Terminal=false
+Categories=Qt;Game;CardGame;
