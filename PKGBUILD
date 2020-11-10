@@ -2,7 +2,7 @@
 
 pkgname=python-django-q
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A multiprocessing distributed task queue for Django'
 arch=(any)
 url=https://github.com/Koed00/django-q
@@ -43,4 +43,3 @@ package() {
 }
 
 # vim: ts=2 sw=2 et:
-
