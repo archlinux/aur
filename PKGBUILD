@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libdeflate
-pkgver=1.6
-pkgrel=2
+pkgver=1.7
+pkgrel=1
 pkgdesc="Heavily optimized library for DEFLATE/zlib/gzip compression and decompression"
 arch=('i686' 'x86_64')
 url="https://github.com/ebiggers/libdeflate"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/ebiggers/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('60748f3f7b22dae846bc489b22a4f1b75eab052bf403dd8e16c8279f16f5171e')
+sha256sums=('a5e6a0a9ab69f40f0f59332106532ca76918977a974e7004977a9498e3f11350')
 
 
 build() {
@@ -28,6 +28,9 @@ check() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  make \
+    DESTDIR="$pkgdir" \
+    PREFIX="/usr" \
+    install
   install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
