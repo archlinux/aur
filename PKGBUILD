@@ -31,7 +31,7 @@ prepare() {
 build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
   export CFLAGS="-I/usr/include/libtiff32 $CFLAGS"
 
   arch-meson gdk-pixbuf build \
@@ -39,7 +39,8 @@ build() {
     -D installed_tests=false \
     -D man=false \
     -D gir=false \
-    -D docs=false
+    -D gtk_doc=false \
+    -D introspection=disabled
   ninja -C build
 }
 
