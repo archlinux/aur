@@ -21,7 +21,7 @@ license=(GPL-2.0)
 makedepends=("bison" "flex" "valgrind" "git" "cmake" "make" "extra-cmake-modules" "libelf" "elfutils"
             "python" "python-appdirs" "python-mako" "python-evdev" "python-sphinx_rtd_theme" "python-graphviz" "python-sphinx"
             "clang" "lib32-clang" "bc" "gcc" "gcc-libs" "lib32-gcc-libs" "glibc" "lib32-glibc" "pahole" "patch" "gtk3"
-            "kmod" "libmikmod" "lib32-libmikmod" "xmlto" "xmltoman" "graphviz" "imagemagick" "imagemagick-doc" "rsync")
+            "kmod" "libmikmod" "lib32-libmikmod" "xmlto" "xmltoman" "graphviz" "imagemagick" "imagemagick-doc" "rsync" "cpio" "inetutils")
 source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.gz"
         "${pkgbase}.preset"
         "config"
@@ -103,6 +103,7 @@ _package(){
 
 _package-headers(){
   pkgdesc="Headers and scripts for building modules for the linux-kernel package"
+  depends=("linux-kernel")
 
   # Create system tree
   echo "Create system tree"
@@ -185,6 +186,7 @@ _package-headers(){
 
 _package-api-headers(){
   pkgdesc="Stable linux kernel api headers"
+  depends=("linux-kernel")
 
   # Create system tree
   echo "Create system tree"
@@ -209,6 +211,7 @@ _package-api-headers(){
 
 _package-docs() {
   pkgdesc="Documentation for the linux-kernel package"
+  depends=("linux-kernel")
 
   # Create system tree
   echo "Create system tree"

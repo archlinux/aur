@@ -32,6 +32,8 @@ pkgbase = linux-kernel
 	makedepends = imagemagick
 	makedepends = imagemagick-doc
 	makedepends = rsync
+	makedepends = cpio
+	makedepends = inetutils
   source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.9.7.tar.gz
 	source = linux-kernel.preset
 	source = linux-kernel.install
@@ -53,9 +55,12 @@ pkgname = linux-kernel
 
 pkgname = linux-kernel-headers
 	pkgdesc = Headers and scripts for building modules for the linux-kernel package
+	depends = linux-kernel
 
 pkgname = linux-kernel-api-headers
 	pkgdesc = Stable linux kernel api headers
+	depends = linux-kernel
 
 pkgname = linux-kernel-docs
   	pkgdesc = Documentation for the linux-kernel package
+		depends = linux-kernel
