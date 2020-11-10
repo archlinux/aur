@@ -6,9 +6,9 @@ pkgrel=1
 pkgdesc="A python library whose purpose is to provide 3D modeling features"
 url="https://github.com/tpaviot/pythonocc-core"
 arch=(x86_64)
-license=('LGPL3')
-makedepends=('cmake' 'swig')
-depends=('opencascade' 'python')
+license=(LGPL3)
+makedepends=(cmake swig)
+depends=(opencascade python libxi libxmu)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tpaviot/pythonocc-core/archive/${pkgver}.tar.gz")
 sha256sums=('6d62002244a0e7f4e5c1ad590d332a60601c44b2501ad017361443b54371e667')
 
