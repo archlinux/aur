@@ -1,7 +1,7 @@
 # Maintainer: Protesilaos Stavrou <info@protesilaos.com>, archjo
 
 pkgname=ubuntu-mate-icon-themes
-pkgver=20.10.0
+pkgver=20.10.1
 pkgrel=1
 pkgdesc='The official icon themes for Ubuntu MATE'
 arch=('any')
