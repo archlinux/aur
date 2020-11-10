@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.3.beta0.r0.g2c87dc16f2
+pkgver=9.3.beta1.r0.g222059565b
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -52,7 +52,7 @@ sha256sums=('SKIP'
             '34f06f9776f84f6998b1350555316e0ffea76ed16e149916970f19ef750a467f'
             '5d00b24c1d36b41b8ea3f07b93fc0e00b42dd84d9bc4e9b3d26e5f2cfeba6405'
             'dc507eeb75eae1109273879771b4eb56172b7417e87a0693381106afd7554e04'
-            'a285ab97c4342c1d050db3493c03807a0162ced74a67bea9eb2794f52ce439fc')
+            'd7e6fdba6b10c13d68bfe07601459aecb32bfa4125fa6d435f6b0e9281177967')
 
 pkgver() {
   cd sage
@@ -62,7 +62,7 @@ pkgver() {
 prepare(){
   cd sage
 
-  sed -e '/sage-env/d' -i src/setup.py # Don't try to install sage-env
+  sed -e '/sage-env-config/d' -i src/setup.py # Don't try to install sage-env
 
 # Upstream patches
 # Fixes for singular 4.1.2 https://trac.sagemath.org/ticket/25993
@@ -129,7 +129,7 @@ package_sagemath-jupyter-git() {
   python -c "from sage.repl.ipython_kernel.install import SageKernelSpec; SageKernelSpec.update(prefix='$pkgdir/usr')"
 # fix symlinks to assets
   _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
-  for _i in $(ls ext/notebook-ipython); do
+  for _i in $(ls sage/ext_data/notebook-ipython); do
     rm "$pkgdir"/usr/share/jupyter/kernels/sagemath/$_i
     ln -s $_pythonpath/sage/ext_data/notebook-ipython/$_i "$pkgdir"/usr/share/jupyter/kernels/sagemath/
   done

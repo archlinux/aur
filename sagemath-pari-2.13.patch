@@ -1,5 +1,5 @@
 diff --git a/src/sage/arith/misc.py b/src/sage/arith/misc.py
-index 6e041e65fe..b12fa25251 100644
+index ba100c4a83..8aa96d8e14 100644
 --- a/src/sage/arith/misc.py
 +++ b/src/sage/arith/misc.py
 @@ -1458,13 +1458,13 @@ def divisors(n):
@@ -229,6 +229,22 @@ index 3dcedeb7e3..48747e4870 100644
          """
          return self._orig_gens
  
+diff --git a/src/sage/groups/fqf_orthogonal.py b/src/sage/groups/fqf_orthogonal.py
+index 3c5190589b..c536f03064 100644
+--- a/src/sage/groups/fqf_orthogonal.py
++++ b/src/sage/groups/fqf_orthogonal.py
+@@ -156,9 +156,9 @@ class FqfOrthogonalGroup(AbelianGroupAutomorphismGroup_subgroup):
+         sage: S2 = 9 * T
+         sage: Q = S1/S2
+         sage: G = T.orthogonal_group()
+-        sage: g = G(matrix(ZZ, 2, [8, 0, 0, 1]))
++        sage: g = G(matrix(ZZ, 2, [7, 12, 8, 19]))
+         sage: Q.1 * g
+-        (0, 2)
++        (0, 1)
+     """
+     Element = FqfIsometry
+ 
 diff --git a/src/sage/lfunctions/pari.py b/src/sage/lfunctions/pari.py
 index c45f3bfd5c..233905dd87 100644
 --- a/src/sage/lfunctions/pari.py
@@ -242,8 +258,27 @@ index c45f3bfd5c..233905dd87 100644
  
      .. RUBRIC:: Number field
  
+diff --git a/src/sage/libs/pari/__init__.py b/src/sage/libs/pari/__init__.py
+index 77eda66097..3fa4618631 100644
+--- a/src/sage/libs/pari/__init__.py
++++ b/src/sage/libs/pari/__init__.py
+@@ -161,12 +161,12 @@ exact object. Therefore, you should set the precision for each method
+ call individually::
+ 
+     sage: e = pari([0,0,0,-82,0]).ellinit()
+-    sage: eta1 = e.elleta(precision=100)[0]
++    sage: eta1 = e.elleta(precision=50)[0]
+     sage: eta1.sage()
+     3.6054636014326520859158205642077267748
+     sage: eta1 = e.elleta(precision=180)[0]
+     sage: eta1.sage()
+-    3.60546360143265208591582056420772677481026899659802474544
++    3.605463601432652085915820564207726774810268996598024745444380641429820491740
+ 
+ """
+ 
 diff --git a/src/sage/libs/pari/convert_sage.pyx b/src/sage/libs/pari/convert_sage.pyx
-index 4e9dc06dd6..7446a91864 100644
+index 33aa4d2d46..b506227cff 100644
 --- a/src/sage/libs/pari/convert_sage.pyx
 +++ b/src/sage/libs/pari/convert_sage.pyx
 @@ -144,6 +144,20 @@ cpdef gen_to_sage(Gen z, locals=None):
@@ -362,18 +397,6 @@ index 415a707fe8..6a3626f308 100644
  
      sage: pari(2).gammah()
      1.32934038817914
-@@ -866,11 +866,6 @@ Transcendental functions::
-     sage: pari(2).sqrt()
-     1.41421356237310
- 
--    sage: pari(8).sqrtint()
--    2
--    sage: pari(10^100).sqrtint()
--    100000000000000000000000000000000000000000000000000
--
-     sage: pari(2).tan()
-     -2.18503986326152
-     sage: C.<i> = ComplexField()
 @@ -1629,7 +1624,7 @@ General number fields::
  
      sage: x = QQ['x'].0; nf = pari(x^2 + 2).nfinit()
@@ -406,10 +429,23 @@ index 415a707fe8..6a3626f308 100644
      sage: eta1 = e.elleta(precision=100)[0]
      sage: eta1.sage()
 -    3.6054636014326520859158205642077267748
-+    3.6054636014326520859158205642077267748...
++    3.60546360143265208591582056420772677481026899659802474544
      sage: eta1 = e.elleta(precision=180)[0]
      sage: eta1.sage()
      3.60546360143265208591582056420772677481026899659802474544
+diff --git a/src/sage/matrix/matrix1.pyx b/src/sage/matrix/matrix1.pyx
+index 689195dc85..6bca9e19ca 100644
+--- a/src/sage/matrix/matrix1.pyx
++++ b/src/sage/matrix/matrix1.pyx
+@@ -87,7 +87,7 @@ cdef class Matrix(Matrix0):
+             [1.000000000, 2.000000000; 3.000000000, 1.000000000] # 32-bit
+             [1.00000000000000, 2.00000000000000; 3.00000000000000, 1.00000000000000] # 64-bit
+             sage: b[0][0].precision()    # in words
+-            3
++            19
+         """
+         from sage.libs.pari.all import pari
+         return pari.matrix(self._nrows, self._ncols, self._list())
 diff --git a/src/sage/modular/local_comp/liftings.py b/src/sage/modular/local_comp/liftings.py
 index 5d7be71f16..5ed77f1785 100644
 --- a/src/sage/modular/local_comp/liftings.py
@@ -456,7 +492,7 @@ index 7a91d353e3..b71fc8aac4 100644
              True
          """
 diff --git a/src/sage/modular/multiple_zeta.py b/src/sage/modular/multiple_zeta.py
-index 540e29d0e5..d534ac776b 100644
+index 540e29d0e5..9083303db3 100644
 --- a/src/sage/modular/multiple_zeta.py
 +++ b/src/sage/modular/multiple_zeta.py
 @@ -455,7 +455,7 @@ class MultizetaValues(UniqueRepresentation):
@@ -464,7 +500,7 @@ index 540e29d0e5..d534ac776b 100644
          self.prec = int(prec)
          self.max_weight = int(max_weight)
 -        self._data = pari.zetamultall(self.max_weight, self.prec)
-+        self._data = pari.zetamultall(self.max_weight, 0, self.prec)
++        self._data = pari.zetamultall(self.max_weight, precision=self.prec)
  
      def update(self, max_weight, prec):
          """
@@ -939,7 +975,7 @@ index cd4c2212c3..007a68e4c0 100644
              sage: c = OK(a)
              sage: b = k(a); b
 diff --git a/src/sage/rings/integer.pyx b/src/sage/rings/integer.pyx
-index d9c83f3e3c..31d0e61efb 100644
+index 4c835d0697..650669e1e1 100644
 --- a/src/sage/rings/integer.pyx
 +++ b/src/sage/rings/integer.pyx
 @@ -5451,7 +5451,7 @@ cdef class Integer(sage.structure.element.EuclideanDomainElement):
@@ -952,7 +988,7 @@ index d9c83f3e3c..31d0e61efb 100644
          from sage.rings.rational_field import QQ
          return QQ(self)._bnfisnorm(K, proof=proof, extra_primes=extra_primes)
 diff --git a/src/sage/rings/number_field/S_unit_solver.py b/src/sage/rings/number_field/S_unit_solver.py
-index 5df5526445..45c59e7e4f 100644
+index 270c696e5b..41009a07a9 100644
 --- a/src/sage/rings/number_field/S_unit_solver.py
 +++ b/src/sage/rings/number_field/S_unit_solver.py
 @@ -24,10 +24,10 @@ EXAMPLES::
@@ -1061,7 +1097,7 @@ index 46d0ca8c9d..1ad6d583a8 100644
          if isinstance(args[0], FractionalIdealClass):
              return self.element_class(self, None, self._number_field.ideal(args[0].ideal()))
 diff --git a/src/sage/rings/number_field/number_field.py b/src/sage/rings/number_field/number_field.py
-index b1de87b926..0123ea2c13 100644
+index 9bb756cc82..0b7cc29d83 100644
 --- a/src/sage/rings/number_field/number_field.py
 +++ b/src/sage/rings/number_field/number_field.py
 @@ -3422,7 +3422,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
@@ -1073,27 +1109,6 @@ index b1de87b926..0123ea2c13 100644
              sage: M.ideal(K.ideal(2, a)) == M.ideal(a*(b - c)/2)
              True
  
-@@ -4128,20 +4128,6 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
-             Traceback (most recent call last):
-             ...
-             RuntimeError: Unable to factor discriminant with trial division
--
--        Next, we illustrate the ``maximize_at_primes`` and ``assume_disc_small``
--        parameters of the ``NumberField`` constructor. The following would take
--        a very long time without the ``maximize_at_primes`` option::
--
--            sage: K.<a> = NumberField(x^2 - p*q, maximize_at_primes=[p])
--            sage: K.pari_nf()
--            [y^2 - 100000000000000000000...]
--
--        Since the discriminant is square-free, this also works::
--
--            sage: K.<a> = NumberField(x^2 - p*q, assume_disc_small=True)
--            sage: K.pari_nf()
--            [y^2 - 100000000000000000000...]
-         """
-         try:
-             return self._pari_nf
 @@ -4590,7 +4576,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
               1/13*a^2 + 7/13*a - 332/13,
               -1/13*a^2 + 6/13*a + 345/13,
@@ -1122,6 +1137,74 @@ index b1de87b926..0123ea2c13 100644
              sage: gens[5] in (1/13*a^2 - 19/13*a - 7/13, 1/13*a^2 + 20/13*a - 7/13)
              True
              sage: gens[6] in (-1/13*a^2 + 45/13*a - 97/13, 1/13*a^2 - 45/13*a + 97/13)
+@@ -5930,28 +5930,37 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+         try:
+             return self._integral_basis_dict[v]
+         except (AttributeError, KeyError):
+-            f = self.pari_polynomial("y")
+-            if v:
+-                B = f.nfbasis(fa=v)
+-            elif self._assume_disc_small:
+-                B = f.nfbasis(1)
+-            elif not important:
+-                # Trial divide the discriminant with primes up to 10^6
+-                m = self.pari_polynomial().poldisc().abs().factor(limit=10**6)
+-                # Since we only need a *squarefree* factorization for
+-                # primes with exponent 1, we need trial division up to D^(1/3)
+-                # instead of D^(1/2).
+-                trialdivlimit2 = pari(10**12)
+-                trialdivlimit3 = pari(10**18)
+-                if all(p < trialdivlimit2 or (e == 1 and p < trialdivlimit3) or p.isprime() for p, e in zip(m[0], m[1])):
+-                    B = f.nfbasis(fa = m)
+-                else:
+-                    raise RuntimeError("Unable to factor discriminant with trial division")
++            pass
++
++        f = self.pari_polynomial("y")
++        if v:
++            # NOTE: here we make pari know about potentially big primes factors of
++            # the discriminant, see
++            # https://pari.math.u-bordeaux.fr/cgi-bin/bugreport.cgi?bug=2257
++            primelimit = pari.default("primelimit")
++            primes = [p for p in v if p > primelimit]
++            if primes:
++                pari.addprimes(primes)
++            B = f.nfbasis(fa=v)
++        elif self._assume_disc_small:
++            B = f.nfbasis(1)
++        elif not important:
++            # Trial divide the discriminant with primes up to 10^6
++            m = self.pari_polynomial().poldisc().abs().factor(limit=10**6)
++            # Since we only need a *squarefree* factorization for
++            # primes with exponent 1, we need trial division up to D^(1/3)
++            # instead of D^(1/2).
++            trialdivlimit2 = pari(10**12)
++            trialdivlimit3 = pari(10**18)
++            if all(p < trialdivlimit2 or (e == 1 and p < trialdivlimit3) or p.isprime() for p, e in zip(m[0], m[1])):
++                B = f.nfbasis(fa = m)
+             else:
+-                B = f.nfbasis()
++                raise RuntimeError("Unable to factor discriminant with trial division")
++        else:
++            B = f.nfbasis()
+ 
+-            self._integral_basis_dict[v] = B
+-            return B
++        self._integral_basis_dict[v] = B
++        return B
+ 
+     def reduced_basis(self, prec=None):
+         r"""
+@@ -6637,7 +6646,8 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+         """
+         Return generators for the unit group modulo torsion.
+ 
+-        ALGORITHM: Uses PARI's :pari:`bnfunit` command.
++        ALGORITHM: Uses PARI's :pari:`bnfinit` command (that computes fundamental units
++        among other things).
+ 
+         INPUT:
+ 
 @@ -6659,7 +6645,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: A = x^4 - 10*x^3 + 20*5*x^2 - 15*5^2*x + 11*5^3
              sage: K = NumberField(A, 'a')
@@ -1161,6 +1244,24 @@ index b1de87b926..0123ea2c13 100644
          """
          proof = proof_flag(proof)
  
+@@ -6704,7 +6714,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+                 pass
+ 
+         # get PARI to compute the units
+-        B = self.pari_bnf(proof).bnfunit()
++        B = self.pari_bnf(proof).bnf_get_fu()
+         B = tuple(self(b, check=False) for b in B)
+         if proof:
+             # cache the provable results and return them
+@@ -6719,7 +6729,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+         """
+         Return the unit group (including torsion) of this number field.
+ 
+-        ALGORITHM: Uses PARI's :pari:`bnfunit` command.
++        ALGORITHM: Uses PARI's :pari:`bnfinit` and :pari:`bnfunits`.
+ 
+         INPUT:
+ 
 @@ -6765,7 +6751,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: U.gens()
              (u0, u1, u2, u3, u4, u5, u6, u7, u8)
@@ -1179,8 +1280,37 @@ index b1de87b926..0123ea2c13 100644
          """
          from .S_unit_solver import solve_S_unit_equation
          return solve_S_unit_equation(self, S, prec, include_exponents, include_bound, proof)
+@@ -10792,9 +10802,9 @@ class NumberField_cyclotomic(NumberField_absolute):
+         EXAMPLES::
+ 
+             sage: k5.<z> = CyclotomicField(5)
+-            sage: gap('E(5)^7 + 3')
++            sage: w = libgap.eval('E(5)^7 + 3')
++            sage: w
+             -3*E(5)-2*E(5)^2-3*E(5)^3-3*E(5)^4
+-            sage: w = gap('E(5)^7 + 3')
+             sage: z^7 + 3
+             z^2 + 3
+             sage: k5(w) # indirect doctest
+@@ -10805,7 +10815,7 @@ class NumberField_cyclotomic(NumberField_absolute):
+ 
+             sage: F = CyclotomicField(8)
+             sage: z = F.gen()
+-            sage: a = gap(z+1/z); a
++            sage: a = libgap(z+1/z); a
+             E(8)-E(8)^3
+             sage: F(a)
+             -zeta8^3 + zeta8
+@@ -10819,6 +10829,7 @@ class NumberField_cyclotomic(NumberField_absolute):
+ 
+         It also works with the old pexpect interface to GAP::
+ 
++            sage: a = gap(z + 1/z)
+             sage: b = gap(Matrix(F,[[z^2,1],[0,a+1]])); b
+             [ [ E(4), 1 ], [ 0, 1+E(8)-E(8)^3 ] ]
+             sage: b[1,2]
 diff --git a/src/sage/rings/number_field/number_field_element.pyx b/src/sage/rings/number_field/number_field_element.pyx
-index 5f62c93af6..6aeed4998e 100644
+index 811edde5f0..80ac1604da 100644
 --- a/src/sage/rings/number_field/number_field_element.pyx
 +++ b/src/sage/rings/number_field/number_field_element.pyx
 @@ -1629,7 +1629,7 @@ cdef class NumberFieldElement(FieldElement):
@@ -1259,6 +1389,35 @@ index 4671b71fd2..4cf6b4c658 100644
      sage: K.fractional_ideal(G).absolute_norm().factor()
      7^2
  """
+diff --git a/src/sage/rings/number_field/number_field_rel.py b/src/sage/rings/number_field/number_field_rel.py
+index c8760280d1..6b72eff4a0 100644
+--- a/src/sage/rings/number_field/number_field_rel.py
++++ b/src/sage/rings/number_field/number_field_rel.py
+@@ -397,18 +397,18 @@ class NumberField_relative(NumberField_generic):
+             sage: K.<c> = F.extension(Y^2 - (1 + a)*(a + b)*a*b)
+             sage: K.subfields(2)
+             [
+-            (Number Field in c0 with defining polynomial x^2 - 24*x + 72, Ring morphism:
+-              From: Number Field in c0 with defining polynomial x^2 - 24*x + 72
++            (Number Field in c0 with defining polynomial x^2 - 24*x + 96, Ring morphism:
++              From: Number Field in c0 with defining polynomial x^2 - 24*x + 96
+               To:   Number Field in c with defining polynomial Y^2 + (-2*b - 3)*a - 2*b - 6 over its base field
+-              Defn: c0 |--> -6*a + 12, None),
++              Defn: c0 |--> -4*b + 12, None),
+             (Number Field in c1 with defining polynomial x^2 - 24*x + 120, Ring morphism:
+               From: Number Field in c1 with defining polynomial x^2 - 24*x + 120
+               To:   Number Field in c with defining polynomial Y^2 + (-2*b - 3)*a - 2*b - 6 over its base field
+               Defn: c1 |--> 2*b*a + 12, None),
+-            (Number Field in c2 with defining polynomial x^2 - 24*x + 96, Ring morphism:
+-              From: Number Field in c2 with defining polynomial x^2 - 24*x + 96
++            (Number Field in c2 with defining polynomial x^2 - 24*x + 72, Ring morphism:
++              From: Number Field in c2 with defining polynomial x^2 - 24*x + 72
+               To:   Number Field in c with defining polynomial Y^2 + (-2*b - 3)*a - 2*b - 6 over its base field
+-              Defn: c2 |--> -4*b + 12, None)
++              Defn: c2 |--> -6*a + 12, None)
+             ]
+             sage: K.subfields(8, 'w')
+             [
 diff --git a/src/sage/rings/number_field/order.py b/src/sage/rings/number_field/order.py
 index 82e2cd2d07..f15fe4ad17 100644
 --- a/src/sage/rings/number_field/order.py
@@ -1405,6 +1564,60 @@ index 5c94f7407d..47a2755e36 100644
  
              sage: K.<z> = CyclotomicField(13)
              sage: UK = K.unit_group(); UK
+@@ -323,34 +323,31 @@ class UnitGroup(AbelianGroupWithValues_class):
+             self.__S = S
+             self.__pS = pS = [P.pari_prime() for P in S]
+ 
+-        # compute the fundamental units via pari:
+-        fu = [K(u, check=False) for u in pK.bnfunit()]
+-        self.__nfu = len(fu)
+-
+-        # compute the additional S-unit generators:
++        # compute units
++        # NOTE: old pari syntax for S-units (< 2.13.0): pK.bnfsunit(pS)
++        # NOTE: pari >= 2.13.0: the first component of the result of bnfunits
++        # are *all* units starting with S-units, followed by fundamental units
++        # followed by the torsion unit.
+         if S:
+-            self.__S_unit_data = pK.bnfsunit(pS)
+-            su = [K(u, check=False) for u in self.__S_unit_data[0]]
++            self.__S_unit_data = pK.bnfunits(pS)
+         else:
+-            su = []
+-        self.__nsu = len(su)
++            self.__S_unit_data = pK.bnfunits()
++        # TODO: converting the factored matrix representation of bnfunits into polynomial
++        # form is a *big* waste of time
++        su_fu_tu = [pK.nfbasistoalg(pK.nffactorback(z)) for z in self.__S_unit_data[0]]
++
++        self.__nfu = len(pK.bnf_get_fu())           # number of fundamental units
++        self.__nsu = len(su_fu_tu) - self.__nfu - 1 # number of S-units
++        self.__ntu = pK.bnf_get_tu()[0]             # order of torsion
+         self.__rank = self.__nfu + self.__nsu
+ 
+-        # compute a torsion generator and pick the 'simplest' one:
+-        n, z = pK[7][3] # number of roots of unity and bnf.tu as in pari documentation
+-        n = ZZ(n)
+-        self.__ntu = n
+-        z = K(z, check=False)
+-
+-        # If we replaced z by another torsion generator we would need
+-        # to allow for this in the dlog function!  So we do not.
++        # Move the torsion unit first, then fundamental units then S-units
++        gens = [K(u, check=False) for u in su_fu_tu]
++        gens = [gens[-1]] + gens[self.__nsu:-1] + gens[:self.__nsu]
+ 
+-        # Store the actual generators (torsion first):
+-        gens = [z] + fu + su
+-        values = Sequence(gens, immutable=True, universe=self, check=False)
+         # Construct the abtract group:
+-        gens_orders = tuple([ZZ(n)]+[ZZ(0)]*(self.__rank))
+-        AbelianGroupWithValues_class.__init__(self, gens_orders, 'u', values, number_field)
++        gens_orders = tuple([ZZ(self.__ntu)]+[ZZ(0)]*(self.__rank))
++        AbelianGroupWithValues_class.__init__(self, gens_orders, 'u', gens, number_field)
+ 
+     def _element_constructor_(self, u):
+         """
 @@ -375,7 +375,7 @@ class UnitGroup(AbelianGroupWithValues_class):
              sage: UK.gens()
              (u0, u1)
@@ -1414,6 +1627,29 @@ index 5c94f7407d..47a2755e36 100644
              sage: UK.ngens()
              2
              sage: [UK(u) for u in UK.gens()]
+@@ -394,8 +391,8 @@ class UnitGroup(AbelianGroupWithValues_class):
+         except TypeError:
+             raise ValueError("%s is not an element of %s"%(u,K))
+         if self.__S:
+-            m = pK.bnfissunit(self.__S_unit_data, pari(u)).mattranspose()
+-            if m.ncols()==0:
++            m = pK.bnfisunit(pari(u), self.__S_unit_data).mattranspose()
++            if m.ncols() == 0:
+                 raise ValueError("%s is not an S-unit"%u)
+         else:
+             if not u.is_integral() or u.norm().abs() != 1:
+@@ -405,9 +402,8 @@ class UnitGroup(AbelianGroupWithValues_class):
+         # convert column matrix to a list:
+         m = [ZZ(m[0,i].sage()) for i in range(m.ncols())]
+ 
+-        # NB pari puts the torsion after the fundamental units, before
+-        # the extra S-units but we have the torsion first:
+-        m = [m[self.__nfu]] + m[:self.__nfu] + m[self.__nfu+1:]
++        # NOTE: pari ordering for the units is (S-units, fundamental units, torsion unit)
++        m = [m[-1]] + m[self.__nsu:-1] + m[:self.__nsu]
+ 
+         return self.element_class(self, m)
+ 
 @@ -527,9 +527,9 @@ class UnitGroup(AbelianGroupWithValues_class):
              sage: U.zeta(2, all=True)
              [-1]
@@ -1445,7 +1681,7 @@ index 5c94f7407d..47a2755e36 100644
             (3, 1, 4, 1, 5, 9, 2)
             sage: SUK.log(u) == v
 diff --git a/src/sage/rings/polynomial/multi_polynomial_ring.py b/src/sage/rings/polynomial/multi_polynomial_ring.py
-index 20f1574..bf4b831 100644
+index 20f1574e90..bf4b831a75 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_ring.py
 +++ b/src/sage/rings/polynomial/multi_polynomial_ring.py
 @@ -526,6 +526,8 @@ class MPolynomialRing_polydict( MPolynomialRing_macaulay2_repr, PolynomialRing_s
@@ -1456,11 +1692,12 @@ index 20f1574..bf4b831 100644
 +                return self.zero()
              v = self.gens_dict_recursive()[str(x.variable())]
              return sum(self(x[i]) * v ** i for i in range(x.poldegree() + 1))
- diff --git a/src/sage/rings/polynomial/polynomial_element.pyx b/src/sage/rings/polynomial/polynomial_element.pyx
-index 9855ad13e9..6d13f3cc9e 100644
+ 
+diff --git a/src/sage/rings/polynomial/polynomial_element.pyx b/src/sage/rings/polynomial/polynomial_element.pyx
+index d562a46088..761d22c785 100644
 --- a/src/sage/rings/polynomial/polynomial_element.pyx
 +++ b/src/sage/rings/polynomial/polynomial_element.pyx
-@@ -7528,7 +7528,7 @@ cdef class Polynomial(CommutativeAlgebraElement):
+@@ -7550,7 +7550,7 @@ cdef class Polynomial(CommutativeAlgebraElement):
              [(-3.5074662110434039?e451, 1)]
              sage: p = bigc*x + 1
              sage: p.roots(ring=RR)
@@ -1470,10 +1707,10 @@ index 9855ad13e9..6d13f3cc9e 100644
              [(-2.8510609648967059?e-452, 1)]
              sage: p.roots(ring=QQbar)
 diff --git a/src/sage/rings/polynomial/polynomial_quotient_ring.py b/src/sage/rings/polynomial/polynomial_quotient_ring.py
-index 230dea7fdf..56487f3f4a 100644
+index 66af8957b9..8d6dfe1e6e 100644
 --- a/src/sage/rings/polynomial/polynomial_quotient_ring.py
 +++ b/src/sage/rings/polynomial/polynomial_quotient_ring.py
-@@ -1307,7 +1307,16 @@ class PolynomialQuotientRing_generic(CommutativeRing):
+@@ -1306,7 +1306,16 @@ class PolynomialQuotientRing_generic(CommutativeRing):
          fixed in :trac:`14489`)::
  
              sage: S.S_class_group([K.ideal(a)])
@@ -1532,7 +1769,7 @@ index b41ea4f6b6..588988f2c9 100644
          PARI no longer requires that the `j`-invariant has negative `p`-adic valuation::
  
 diff --git a/src/sage/schemes/elliptic_curves/ell_number_field.py b/src/sage/schemes/elliptic_curves/ell_number_field.py
-index e1111c1c55..c0e91c4f8e 100644
+index e1111c1c55..41a9c67214 100644
 --- a/src/sage/schemes/elliptic_curves/ell_number_field.py
 +++ b/src/sage/schemes/elliptic_curves/ell_number_field.py
 @@ -215,9 +215,9 @@ class EllipticCurve_number_field(EllipticCurve_field):
@@ -1575,8 +1812,19 @@ index e1111c1c55..c0e91c4f8e 100644
                m1 = 1
                m2 = 1
              #S(E/K)[2]    = 2
+@@ -299,8 +299,8 @@ class EllipticCurve_number_field(EllipticCurve_field):
+             sage: E.simon_two_descent()  # long time (4s on sage.math, 2013)
+             (3,
+              3,
+-             [(0 : 0 : 1),
+-              (-1/2*zeta43_0^2 - 1/2*zeta43_0 + 7 : -3/2*zeta43_0^2 - 5/2*zeta43_0 + 18 : 1)...)
++             [(5/8*zeta43_0^2 + 17/8*zeta43_0 - 9/4 : -27/16*zeta43_0^2 - 103/16*zeta43_0 + 39/8 : 1),
++              (0 : 0 : 1)])
+         """
+         verbose = int(verbose)
+         if known_points is None:
 diff --git a/src/sage/schemes/elliptic_curves/ell_rational_field.py b/src/sage/schemes/elliptic_curves/ell_rational_field.py
-index 003c910374..15b4d32dd0 100644
+index 61074f21b9..9a19def280 100644
 --- a/src/sage/schemes/elliptic_curves/ell_rational_field.py
 +++ b/src/sage/schemes/elliptic_curves/ell_rational_field.py
 @@ -5403,9 +5403,9 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
@@ -1608,10 +1856,10 @@ index 7178da3685..ea0a7e88bc 100644
      F = E.base_field()
      if E.j_invariant() != 0:
 diff --git a/src/sage/schemes/elliptic_curves/period_lattice.py b/src/sage/schemes/elliptic_curves/period_lattice.py
-index 0fad45efe2..faff12a17c 100644
+index 42793dc1b3..6ae1dd593d 100644
 --- a/src/sage/schemes/elliptic_curves/period_lattice.py
 +++ b/src/sage/schemes/elliptic_curves/period_lattice.py
-@@ -1627,7 +1627,7 @@ class PeriodLattice_ell(PeriodLattice):
+@@ -1626,7 +1626,7 @@ class PeriodLattice_ell(PeriodLattice):
              sage: embs = K.embeddings(CC)
              sage: Lambda = E.period_lattice(embs[0])
              sage: Lambda.elliptic_logarithm(P+3*Q, 100)
@@ -1621,9 +1869,18 @@ index 0fad45efe2..faff12a17c 100644
              sage: K.<a> = NumberField(x^2 + x + 5)
              sage: E = EllipticCurve(K, [0,0,1,-3,-5])
 diff --git a/src/sage/schemes/toric/chow_group.py b/src/sage/schemes/toric/chow_group.py
-index 89e82467b0..b4ff15dc37 100644
+index 89e82467b0..78730f930a 100644
 --- a/src/sage/schemes/toric/chow_group.py
 +++ b/src/sage/schemes/toric/chow_group.py
+@@ -62,7 +62,7 @@ EXAMPLES::
+     7
+     sage: a = sum( A.gen(i) * (i+1) for i in range(A.ngens()) )   # an element of A
+     sage: a  # long time (2s on sage.math, 2011)
+-    ( 3 | 1 mod 7 | 0 mod 2, 1 mod 2, 4, 5, 6, 7, 8 | 9 )
++    ( 3 | 1 mod 7 | 1 mod 2, 0 mod 2, 4, 5, 6, 7, 8 | 9 )
+ 
+ The Chow group elements are printed as ``( a0 | a1 mod 7 | a2 mod 2,
+ a3 mod 2, a4, a5, a6, a7, a8 | a9 )``, which denotes the element of
 @@ -93,13 +93,13 @@ Cones of toric varieties can determine their own Chow cycle::
      sage: cone = X.fan(dim=2)[3]; cone
      2-d cone of Rational polyhedral fan in 3-d lattice N
@@ -1923,3 +2180,23 @@ index 6c25aa5dc5..8bdceb9424 100644
      ]
  
  ~~~~~~~~~~~~~~~~~~~~~~ ::
+diff --git a/src/sage/tests/parigp.py b/src/sage/tests/parigp.py
+index c118b6eb37..f567ade058 100644
+--- a/src/sage/tests/parigp.py
++++ b/src/sage/tests/parigp.py
+@@ -2,15 +2,6 @@ r"""
+ This file is meant to catch errors in the PARI/GP package which are not
+ caught by any other tests.
+ 
+-Check that :trac:`9876` has been fixed, this test comes from PARI's
+-self-test :pari:`rnfkummer` but was modified such that the answer is
+-canonical::
+-
+-    sage: pari('addprimes([31438243, 238576291, 18775387483, 24217212463267, 1427657500359111961, 135564809928627323997297867381959])')
+-    [31438243, 238576291, 18775387483, 24217212463267, 1427657500359111961, 135564809928627323997297867381959]
+-    sage: pari('K = bnfinit(y^4-52*y^2+26,1); pol = rnfkummer(bnrinit(K,3,1),Mat(5)); L = rnfinit(K, pol); polredabs(polredbest(L.polabs))')  # long time
+-    x^20 - 112*x^18 + 5108*x^16 - 123460*x^14 + 1724337*x^12 - 14266996*x^10 + 69192270*x^8 - 188583712*x^6 + 260329852*x^4 - 141461008*x^2 + 19860776
+-
+ Check that :trac:`10195` (PARI bug 1153) has been fixed::
+ 
+     sage: print(gp.eval("mathnf([0,0,0,0,0,0,0,0,0,13;0,0,0,0,0,0,0,0,23,6;0,0,0,0,0,0,0,23,-4,-7;0,0,0,0,0,0,17,-3,5,-5;0,0,0,0,0,56,16,-16,-15,-17;0,0,0,0,57,24,-16,-25,2,-21;0,0,0,114,9,56,51,-52,25,-55;0,0,113,-31,-11,24,0,28,34,-16;0,50,3,2,16,-6,-2,7,-19,-21;118,43,51,23,37,-52,18,38,51,28],0)"))
