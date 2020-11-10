@@ -37,7 +37,7 @@ package() {
 	install -Dm755 Aqua\ MODIS\ Extractor/AQUA-MODIS-Extractor "${pkgdir}"/usr/bin/AQUA-MODIS-Extractor
 	install -Dm755 CADU\ Synchroderand/CADU-Synchroderand "${pkgdir}"/usr/bin/CADU-Synchroderand
 	install -Dm755 ELEKTRO-L\ Decoder/ELEKTRO-L-Decoder "${pkgdir}"/usr/bin/ELEKTRO-L-Decoder
-	install -Dm755 FengYun\ 3D\ Decoder/FengYun-3D-Decoder "${pkgdir}"/usr/bin/FY3-D-Decoder
+	install -Dm755 FengYun\ 3D\ Decoder/FengYun-3D-Decoder "${pkgdir}"/usr/bin/FengYun-3D-Decoder
 	install -Dm755 FengYun\ MPT\ Decoder/FengYun-MPT-Decoder "${pkgdir}"/usr/bin/FengYun-MPT-Decoder
 	install -Dm755 FengYun\ MERSI-2\ Decoder/FengYun-MERSI-2-Decoder "${pkgdir}"/usr/bin/FengYun-MERSI-2-Decoder
 	install -Dm755 FengYun\ MERSI-1\ Decoder/FengYun-MERSI-1-Decoder "${pkgdir}"/usr/bin/FengYun-MERSI-1-Decoder
