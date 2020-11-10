@@ -32,6 +32,8 @@ pkgbase = mainline-kernel
 	makedepends = imagemagick
 	makedepends = imagemagick-doc
 	makedepends = rsync
+	makedepends = cpio
+	makedepends = inetutils
   source = https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snapshot/linux-5.10-rc3.tar.gz
 	source = mainline-kernel.preset
 	source = mainline-kernel.install
@@ -52,9 +54,12 @@ pkgname = mainline-kernel
 
 pkgname = mainline-kernel-headers
 	pkgdesc = Headers and scripts for building modules for the mainline-kernel package
+	depends = mainline-kernel
 
 pkgname = mainline-kernel-api-headers
 	pkgdesc = Mainline linux kernel api headers
+	depends = mainline-kernel
 
 pkgname = mainline-kernel-docs
   	pkgdesc = Documentation for the mainline-kernel package
+		depends = mainline-kernel
