@@ -1,165 +1,323 @@
-# docs:
-# https://github.com/be5invis/Iosevka/blob/master/private-build-plans.sample.toml
-# https://github.com/be5invis/Iosevka
-# https://github.com/be5invis/Iosevka#build-your-own-style
+[buildPlans.iosevka-custom]
+family = "Iosevka Custom"
 
-# ss## stylistic sets:
-# https://raw.githubusercontent.com/be5invis/Iosevka/master/images/stylesets.png
+# [buildPlans.iosevka-custom.variants]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#stylistic-sets
+# inherits = "ss14"
 
-# cv## and VX__ character variants:
-# https://raw.githubusercontent.com/be5invis/Iosevka/master/images/charvars.png
+[buildPlans.iosevka-custom.variants.design]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-character-variants
+# https://github.com/be5invis/Iosevka/raw/dev-v4/images/charvars.png
+turn-v = "curly"
+capital-b = "more-asymmetric"
+capital-d = "more-rounded"
+capital-g = "toothless"
+capital-j = "serifless"
+capital-k = "curly"
+capital-m = "hanging"
+capital-q = "crossing"
+capital-r = "curly"
+capital-y = "curly"
+a = "doublestorey-tailed"
+b = "toothless-corner"
+d = "tailed"
+f = "tailed"
+g = "opendoublestorey"
+h = "straight"
+i = "hooky"
+j = "straight"
+k = "curly"
+l = "tailed"
+m = "shortleg"
+n = "earless-corner-tailed"
+p = "eared"
+q = "earless-corner-tailed"
+r = "earless-corner"
+t = "standard"
+u = "toothless-rounded"
+v = "curly"
+w = "curly"
+x = "curly"
+y = "curly"
+z = "with-crossbar"
+eszet = "longs-s-lig"
+lambda = "curly"
+zero = "reverse-slashed"
+one = "nobase"
+three = "flattop"
+four = "semi-open"
+six = "open-contour"
+seven = "noserif"
+nine = "straight-bar"
+tilde = "low"
+asterisk = "hexhigh"
+underscore = "high"
+paragraph-sign = "low"
+caret = "high"
+paren = "normal"
+brace = "curly"
+number-sign = "upright"
+ampersand = "flat-top"
+at = "short"
+dollar = "opencap"
+percent = "rings"
+bar = "v-bar-natural-slope"
+lig-ltgteq = "flat"
+ascii-single-quote = "raised-comma"
+ascii-grave = "straight"
 
-# ligset-* ligature sets:
-# https://raw.githubusercontent.com/be5invis/Iosevka/master/images/ligations.png
+# Override above variants for each slope:
+# [buildPlans.iosevka-custom.variants.upright]
+# [buildPlans.iosevka-custom.variants.italic]
+# [buildPlans.iosevka-custom.variants.oblique]
 
-[buildPlans.iosevka-custom]        # Plan name
-family = "Iosevka Custom"          # Font menu family name
-design = [                         # Common styles
+# [buildPlans.iosevka-custom.ligations]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-ligations
+# https://github.com/be5invis/Iosevka/tree/dev-v4#ligations
+# inherits = "calt"
+# disables = []
+# enables = []
 
-  "cv05",                          # hooky i
-  "cv23",                          # lower ¶
-  "cv24",                          # open double story g
-  "cv26",                          # short legged m
-  "cv27",                          # tailed l
-  "cv33",                          # short @
-  "cv46",                          # flat top 3
-  "cv53",                          # tailed f
-  "cv54",                          # open short $
-  "cv60",                          # hex *
-  "cv69",                          # curly kK
-  "cv72",                          # curly vV
-  "cv74",                          # curly A
-  "cv76",                          # curly wW
-  "cv78",                          # curly xX
-  "cv79",                          # curly y
-  "cv81",                          # curly Y
-  "cv83",                          # curly R
-  "cv90",                          # toothless u
-  "cv92",                          # toothless G
-  "cv93",                          # backslash 0
-  "cv95",                          # curly λ
-  "cv98",                          # sans j
-  "VXAF",                          # open curved 6
-  "VXAL",                          # flat top &
-  "VXAT",                          # semi open 4
-  "VXAQ",                          # bottom heavy B
-  "VXBC",                          # straight 9
-  "VXBE",                          # crossed zZ
-  "VXBH",                          # rounder D
-  "VXBL",                          # toothless cornered b
-  "VXBQ",                          # tailed d
-  "VXBU",                          # tailed a
-  "VXBY",                          # hatless J
-  "VXCA",                          # crossing Q
-  "VXCT",                          # cornered tailed q
-  "VXDH",                          # comma-like '
-  "VXDP",                          # cornered tailed n
-  "VXDS",                          # cornered r
+[buildPlans.iosevka-term-custom]
+family = "Iosevka Term Custom"
+spacing = "term"
 
-]
+# [buildPlans.iosevka-term-custom.variants]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#stylistic-sets
+# inherits = "ss14"
 
-# upright = []                     # Upright-only styles
-# italic = []                      # Italic-only styles
-# oblique = []                     # Oblique-only styles
+[buildPlans.iosevka-term-custom.variants.design]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-character-variants
+# https://github.com/be5invis/Iosevka/raw/dev-v4/images/charvars.png
+turn-v = "curly"
+capital-b = "more-asymmetric"
+capital-d = "more-rounded"
+capital-g = "toothless"
+capital-j = "serifless"
+capital-k = "curly"
+capital-m = "hanging"
+capital-q = "crossing"
+capital-r = "curly"
+capital-y = "curly"
+a = "doublestorey-tailed"
+b = "toothless-corner"
+d = "tailed"
+f = "tailed"
+g = "opendoublestorey"
+h = "straight"
+i = "hooky"
+j = "straight"
+k = "curly"
+l = "tailed"
+m = "shortleg"
+n = "earless-corner-tailed"
+p = "eared"
+q = "earless-corner-tailed"
+r = "earless-corner"
+t = "standard"
+u = "toothless-rounded"
+v = "curly"
+w = "curly"
+x = "curly"
+y = "curly"
+z = "with-crossbar"
+eszet = "longs-s-lig"
+lambda = "curly"
+zero = "reverse-slashed"
+one = "nobase"
+three = "flattop"
+four = "semi-open"
+six = "open-contour"
+seven = "noserif"
+nine = "straight-bar"
+tilde = "low"
+asterisk = "hexhigh"
+underscore = "high"
+paragraph-sign = "low"
+caret = "high"
+paren = "normal"
+brace = "curly"
+number-sign = "upright"
+ampersand = "flat-top"
+at = "short"
+dollar = "opencap"
+percent = "rings"
+bar = "v-bar-natural-slope"
+lig-ltgteq = "flat"
+ascii-single-quote = "raised-comma"
+ascii-grave = "straight"
 
-[buildPlans.iosevka-fixed-custom]  # Plan name
-family = "Iosevka Fixed Custom"    # Font menu family name
-design = [                         # Common styles
+# Override above variants for each slope:
+# [buildPlans.iosevka-term-custom.variants.upright]
+# [buildPlans.iosevka-term-custom.variants.italic]
+# [buildPlans.iosevka-term-custom.variants.oblique]
 
-  "sp-fixed",                      # strict mono; no ligatures
+# [buildPlans.iosevka-term-custom.ligations]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-ligations
+# https://github.com/be5invis/Iosevka/tree/dev-v4#ligations
+# inherits = "calt"
+# disables = []
+# enables = []
 
-  "cv05",                          # hooky i
-  "cv23",                          # lower ¶
-  "cv24",                          # open double story g
-  "cv26",                          # short legged m
-  "cv27",                          # tailed l
-  "cv33",                          # short @
-  "cv46",                          # flat top 3
-  "cv53",                          # tailed f
-  "cv54",                          # open short $
-  "cv60",                          # hex *
-  "cv69",                          # curly kK
-  "cv72",                          # curly vV
-  "cv74",                          # curly A
-  "cv76",                          # curly wW
-  "cv78",                          # curly xX
-  "cv79",                          # curly y
-  "cv81",                          # curly Y
-  "cv83",                          # curly R
-  "cv90",                          # toothless u
-  "cv92",                          # toothless G
-  "cv93",                          # backslash 0
-  "cv95",                          # curly λ
-  "cv98",                          # sans j
-  "VXAF",                          # open curved 6
-  "VXAL",                          # flat top &
-  "VXAT",                          # semi open 4
-  "VXAQ",                          # bottom heavy B
-  "VXBC",                          # straight 9
-  "VXBE",                          # crossed zZ
-  "VXBH",                          # rounder D
-  "VXBL",                          # toothless cornered b
-  "VXBQ",                          # tailed d
-  "VXBU",                          # tailed a
-  "VXBY",                          # hatless J
-  "VXCA",                          # crossing Q
-  "VXCT",                          # cornered tailed q
-  "VXDH",                          # comma-like '
-  "VXDP",                          # cornered tailed n
-  "VXDS",                          # cornered r
+[buildPlans.iosevka-force-monospace-custom]
+family = "Iosevka Force Monospace Custom"
+spacing = "force-monospace"
 
-]
-# upright = []                     # Upright-only styles
-# italic = []                      # Italic-only styles
-# oblique = []                     # Oblique-only styles
+# [buildPlans.iosevka-force-monospace-custom.variants]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#stylistic-sets
+# inherits = "ss14"
 
-[buildPlans.iosevka-term-custom]   # Plan name
-family = "Iosevka Term Custom"     # Font menu family name
-design = [                         # Common styles
+[buildPlans.iosevka-force-monospace-custom.variants.design]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-character-variants
+# https://github.com/be5invis/Iosevka/raw/dev-v4/images/charvars.png
+turn-v = "curly"
+capital-b = "more-asymmetric"
+capital-d = "more-rounded"
+capital-g = "toothless"
+capital-j = "serifless"
+capital-k = "curly"
+capital-m = "hanging"
+capital-q = "crossing"
+capital-r = "curly"
+capital-y = "curly"
+a = "doublestorey-tailed"
+b = "toothless-corner"
+d = "tailed"
+f = "tailed"
+g = "opendoublestorey"
+h = "straight"
+i = "hooky"
+j = "straight"
+k = "curly"
+l = "tailed"
+m = "shortleg"
+n = "earless-corner-tailed"
+p = "eared"
+q = "earless-corner-tailed"
+r = "earless-corner"
+t = "standard"
+u = "toothless-rounded"
+v = "curly"
+w = "curly"
+x = "curly"
+y = "curly"
+z = "with-crossbar"
+eszet = "longs-s-lig"
+lambda = "curly"
+zero = "reverse-slashed"
+one = "nobase"
+three = "flattop"
+four = "semi-open"
+six = "open-contour"
+seven = "noserif"
+nine = "straight-bar"
+tilde = "low"
+asterisk = "hexhigh"
+underscore = "high"
+paragraph-sign = "low"
+caret = "high"
+paren = "normal"
+brace = "curly"
+number-sign = "upright"
+ampersand = "flat-top"
+at = "short"
+dollar = "opencap"
+percent = "rings"
+bar = "v-bar-natural-slope"
+lig-ltgteq = "flat"
+ascii-single-quote = "raised-comma"
+ascii-grave = "straight"
 
-  "sp-term",                       # strict mono; with ligatures
+# Override above variants for each slope:
+# [buildPlans.iosevka-force-monospace-custom.variants.upright]
+# [buildPlans.iosevka-force-monospace-custom.variants.italic]
+# [buildPlans.iosevka-force-monospace-custom.variants.oblique]
 
-  "cv05",                          # hooky i
-  "cv23",                          # lower ¶
-  "cv24",                          # open double story g
-  "cv26",                          # short legged m
-  "cv27",                          # tailed l
-  "cv33",                          # short @
-  "cv46",                          # flat top 3
-  "cv53",                          # tailed f
-  "cv54",                          # open short $
-  "cv60",                          # hex *
-  "cv69",                          # curly kK
-  "cv72",                          # curly vV
-  "cv74",                          # curly A
-  "cv76",                          # curly wW
-  "cv78",                          # curly xX
-  "cv79",                          # curly y
-  "cv81",                          # curly Y
-  "cv83",                          # curly R
-  "cv90",                          # toothless u
-  "cv92",                          # toothless G
-  "cv93",                          # backslash 0
-  "cv95",                          # curly λ
-  "cv98",                          # sans j
-  "VXAF",                          # open curved 6
-  "VXAL",                          # flat top &
-  "VXAT",                          # semi open 4
-  "VXAQ",                          # bottom heavy B
-  "VXBC",                          # straight 9
-  "VXBE",                          # crossed zZ
-  "VXBH",                          # rounder D
-  "VXBL",                          # toothless cornered b
-  "VXBQ",                          # tailed d
-  "VXBU",                          # tailed a
-  "VXBY",                          # hatless J
-  "VXCA",                          # crossing Q
-  "VXCT",                          # cornered tailed q
-  "VXDH",                          # comma-like '
-  "VXDP",                          # cornered tailed n
-  "VXDS",                          # cornered r
+# [buildPlans.iosevka-force-monospace-custom.ligations]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-ligations
+# https://github.com/be5invis/Iosevka/tree/dev-v4#ligations
+# inherits = "calt"
+# disables = []
+# enables = []
 
-]
-# upright = []                     # Upright-only styles
-# italic = []                      # Italic-only styles
-# oblique = []                     # Oblique-only styles
+[buildPlans.iosevka-fixed-custom]
+family = "Iosevka Fixed Custom"
+spacing = "fixed"
+
+# [buildPlans.iosevka-fixed-custom.variants]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#stylistic-sets
+# inherits = "ss14"
+
+[buildPlans.iosevka-fixed-custom.variants.design]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-character-variants
+# https://github.com/be5invis/Iosevka/raw/dev-v4/images/charvars.png
+turn-v = "curly"
+capital-b = "more-asymmetric"
+capital-d = "more-rounded"
+capital-g = "toothless"
+capital-j = "serifless"
+capital-k = "curly"
+capital-m = "hanging"
+capital-q = "crossing"
+capital-r = "curly"
+capital-y = "curly"
+a = "doublestorey-tailed"
+b = "toothless-corner"
+d = "tailed"
+f = "tailed"
+g = "opendoublestorey"
+h = "straight"
+i = "hooky"
+j = "straight"
+k = "curly"
+l = "tailed"
+m = "shortleg"
+n = "earless-corner-tailed"
+p = "eared"
+q = "earless-corner-tailed"
+r = "earless-corner"
+t = "standard"
+u = "toothless-rounded"
+v = "curly"
+w = "curly"
+x = "curly"
+y = "curly"
+z = "with-crossbar"
+eszet = "longs-s-lig"
+lambda = "curly"
+zero = "reverse-slashed"
+one = "nobase"
+three = "flattop"
+four = "semi-open"
+six = "open-contour"
+seven = "noserif"
+nine = "straight-bar"
+tilde = "low"
+asterisk = "hexhigh"
+underscore = "high"
+paragraph-sign = "low"
+caret = "high"
+paren = "normal"
+brace = "curly"
+number-sign = "upright"
+ampersand = "flat-top"
+at = "short"
+dollar = "opencap"
+percent = "rings"
+bar = "v-bar-natural-slope"
+lig-ltgteq = "flat"
+ascii-single-quote = "raised-comma"
+ascii-grave = "straight"
+
+# Override above variants for each slope:
+# [buildPlans.iosevka-fixed-custom.variants.upright]
+# [buildPlans.iosevka-fixed-custom.variants.italic]
+# [buildPlans.iosevka-fixed-custom.variants.oblique]
+
+# [buildPlans.iosevka-fixed-custom.ligations]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-ligations
+# https://github.com/be5invis/Iosevka/tree/dev-v4#ligations
+# inherits = "calt"
+# disables = []
+# enables = []
+
