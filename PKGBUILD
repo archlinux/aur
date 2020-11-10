@@ -23,8 +23,6 @@ build() {
 
 package() {
   cp -ax "usr" "${pkgdir}"
-  # use system QT5 libs for HiDPI scaling support
-  rm -rf opt/ivideon/${pkgname}/libQt5*
   cp -ax "opt" "${pkgdir}"
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
