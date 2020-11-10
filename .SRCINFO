@@ -1,0 +1,13 @@
+pkgbase = tuf-controller
+	pkgdesc = A simple GUI to change keyboard led color, led intensity and fan modes in asus TUF laptops
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kailasneupane/tuf-controller
+	arch = i386
+	arch = x86_64
+	depends = java-runtime
+	source = https://github.com/kailasneupane/tuf-controller/releases/download/1.0.0/tuf-controller-1.0.0.tar.gz
+	md5sums = SKIP
+
+pkgname = tuf-controller
+
