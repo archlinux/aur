@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-pylint
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='pytest plugin to check source code with pylint'
 arch=('any')
 license=('MIT')
