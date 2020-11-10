@@ -1,14 +1,12 @@
 pkgbase = getit
 	pkgdesc = Application to send HTTP requests to test your API endpoints.
 	pkgver = 4.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bartkessels/GetIt
 	arch = any
 	license = GPL
 	makedepends = git
-	makedepends = gcc
 	makedepends = meson
-	makedepends = gettext
 	depends = webkit2gtk
 	depends = gtksourceview3
 	provides = getit

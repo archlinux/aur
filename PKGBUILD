@@ -1,14 +1,14 @@
 # Maintainer: HaoCheng <ch1994@outlook.com>
 pkgname=getit
 pkgver=4.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Application to send HTTP requests to test your API endpoints."
 arch=('any')
 url="https://github.com/bartkessels/GetIt"
 license=('GPL')
 groups=()
 depends=('webkit2gtk' 'gtksourceview3')
-makedepends=('git' 'gcc' 'meson' 'gettext') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git' 'meson') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 replaces=()
