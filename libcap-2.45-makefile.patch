@@ -1,0 +1,21 @@
+diff -ruN a/Make.Rules b/Make.Rules
+--- a/Make.Rules	2020-11-03 02:38:59.000000000 +0100
++++ b/Make.Rules	2020-11-06 16:55:10.149893784 +0100
+@@ -37,7 +37,7 @@
+ # Target directories
+ 
+ MANDIR=$(man_prefix)/man
+-SBINDIR=$(exec_prefix)/sbin
++SBINDIR=$(exec_prefix)/bin
+ INCDIR=$(inc_prefix)/include
+ LIBDIR=$(lib_prefix)/$(lib)
+ PKGCONFIGDIR=$(LIBDIR)/pkgconfig
+@@ -79,7 +79,7 @@
+ SYSTEM_HEADERS = /usr/include
+ INCS=$(topdir)/libcap/include/sys/capability.h
+ LDFLAGS += -L$(topdir)/libcap
+-CFLAGS += -Dlinux $(WARNINGS) $(DEBUG)
++CFLAGS += $(CPPFLAGS) -Dlinux $(WARNINGS) $(DEBUG)
+ INDENT := $(shell if [ -n "$$(which indent 2>/dev/null)" ]; then echo "| indent -kr" ; fi)
+ 
+ # SHARED tracks whether or not the SHARED libraries (libcap.so,
