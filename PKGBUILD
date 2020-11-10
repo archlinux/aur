@@ -4,7 +4,7 @@
 _corpname=glaxnimate
 _pkgname='glaxnimate'
 pkgname="$_pkgname-bin"
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Simple vector animation program."
 url="https://glaxnimate.mattbas.org/"
@@ -16,7 +16,7 @@ conflicts=()
 source=(
     "$_pkgname-$pkgver.deb::https://gitlab.com/mattbas/$_pkgname/-/jobs/artifacts/${pkgver}/raw/build/$_pkgname.deb?job=linux%3Adeb"
 )
-sha1sums=('0795271dd66fa541d6a959fa9f9fe0aa50438432')
+sha1sums=('22fdf7cabdad2440536adc56db0cfa9f4fbfb277')
 prepare() {
     cd $srcdir/
 }
