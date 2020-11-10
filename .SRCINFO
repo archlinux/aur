@@ -1,0 +1,20 @@
+pkgbase = lightdm-qt5-greeter-git
+	pkgdesc = lightdm-qt5-greeter is a simple frontend for the lightdm displaymanager, written in c++ and qt5.
+	pkgver = r111.ddba411
+	pkgrel = 1
+	url = https://github.com/rezso/lightdm-qt5-greeter
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	depends = liblightdm-qt5
+	depends = lightdm
+	provides = lightdm-qt5-greeter
+	conflicts = lightdm-qt5-greeter
+	backup = etc/lightdm/lightdm-qt5-greeter.conf
+	source = lightdm-qt5-greeter::git+https://github.com/rezso/lightdm-qt5-greeter.git
+	sha512sums = SKIP
+
+pkgname = lightdm-qt5-greeter-git
+
