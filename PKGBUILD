@@ -1,23 +1,24 @@
-# Maintainer: Andy Kluger <AndyKluger@gmail.com>
+# Maintainer: Andy Kluger <https://t.me/andykluger>
 # Contributor: Markus Weimar <mail@markusweimar.de>
-pkgname=ttf-iosevka-custom-git
-pkgver=r2050.075dd6e4
+_pkgname=ttf-iosevka-custom
+pkgname=${_pkgname}-git
+pkgver=r2089.115f5b19
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
-makedepends=('git' 'nodejs' 'npm' 'ttfautohint')
+makedepends=('git' 'nodejs>=12.16.0' 'npm' 'ttfautohint')
 depends=()
-conflicts=('ttf-iosevka-custom')
-provides=('ttf-iosevka-custom')
+conflicts=(${_pkgname})
+provides=(${_pkgname})
 source=(
   'git+https://github.com/be5invis/Iosevka'
   'private-build-plans.toml.example'
 )
 sha256sums=(
   'SKIP'
-  'af64725b342f402bedf6338343a6983f7b5c36a0a6ac2ecae1d492613956f9eb'
+  '132530ab6290715e1b31b7743c13e8e06af2df189739bf5ef29d3558f615a154'
 )
 
 pkgver() {
@@ -39,7 +40,7 @@ build() {
   cd Iosevka
   npm install
   npm update
-  npm run build -- ttf::iosevka-custom
+  npm run build -- ttf::${_pkgname#*-}
 }
 
 package() {
