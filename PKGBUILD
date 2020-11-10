@@ -3,7 +3,7 @@
 _name=mapclassify
 pkgname=python-mapclassify
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Classification schemes for choropleth mapping."
 arch=('any')
 url="https://github.com/pysal/mapclassify"
@@ -15,11 +15,11 @@ optdepends=('python-sphinx: documents'
   'python-sphinxcontrib-bibtex: documents'
   'python-numpydoc: documents'
   'python-pytest: tests'
-  'pytest-cov: tests'
+  'python-pytest-cov: tests'
   'python-codecov: tests'
   'python-geopandas: tests'
-  'libpysal: tests'
-  'palettable: tests')
+  'python-libpysal: tests'
+  'python-palettable: tests')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('bfe1ec96afe7f866560d25f9f00e5c4dae97d5b69dfe758dbe02c4993261365b')
