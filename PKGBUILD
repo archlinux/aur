@@ -64,7 +64,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.9.6
+pkgver=5.9.7
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -83,20 +83,18 @@ source=(
   "http://ck.kolivas.org/patches/5.0/5.9/5.9-ck${_ckpatchversion}/$_ckpatch.xz"
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-mac80211-fix-regression-where-EAPOL-frames-were-sent.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('c1a547d4af558bf364f2c1699e529deefeb5bd9322b7cfe8c034a0414d9e69dc96e27bd4011ce105f02d9787ca0e18e4c3d9c7581ccc486e45995f4fc493d932'
+b2sums=('27fa82f1b174a43e1771ec322521c1f1425a042da2cbf1aa4b76bf0ac66172c8e104c1bf942ee0ecf3c3da1b16906c4d007bf45dbb7d2013b2326a592da3547e'
         'SKIP'
         '834e3290b80055fb99855cebb175152d42800c0e4750e7e1c1e65448783772174c4b6d9194fea7d59a6b41dca8a438628b2692a308ccdfd2d1ced3e0af422d4c'
         'c8d0697f99fe6105815217b8ec059d8f587415ea8dd2b88a65e1087feedf697341a64cd56810fde9e7aeada79125fc8235faccc7e7b06492c099e27a8abbe99c'
         'c19099ad66168db4608dee44e1913c07c035bc002a91267abc2e1eadf1788ddb5be3b17e3fdfeddcba96526dfa2b9fcc43a5dd0f8236d94c864e6477924a6718'
         'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95'
-        '065c46b01678f8f177e93652600bd0967592a5962a78ba1c77f7e0e4028ddaf0ad05ccacdce50d33176330e7e9adb5083ca747d86c01dc11a3bbabb3ac7e9f24'
-        'c159ba9bfe9b400a604d1ee0b74aa19ee2e5fea96d0781fef48bb92c09909566a879ff9a68e101f0878d8dbd86d7bb6dfee91802ec837dfcc745237869bc1a1e')
+        '065c46b01678f8f177e93652600bd0967592a5962a78ba1c77f7e0e4028ddaf0ad05ccacdce50d33176330e7e9adb5083ca747d86c01dc11a3bbabb3ac7e9f24')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
