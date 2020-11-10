@@ -1,0 +1,4 @@
+pkg/
+src/
+tree-sitter-*/
+tree-sitter-langauges-git-*.tar.*
