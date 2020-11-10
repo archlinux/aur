@@ -1,7 +1,7 @@
 pkgbase = netris-git
 	pkgdesc = Mark H. Weaver's Netris - A networked terminal version of Tetris. This is my fork, which itself is based on Nathan Aclander's fork.
-	pkgver = 0.55g
-	pkgrel = 2
+	pkgver = 0.56g_1
+	pkgrel = 1
 	url = https://github.com/gammy/netris.git
 	arch = i686
 	arch = x86_64
