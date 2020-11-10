@@ -1,7 +1,7 @@
 pkgbase = nodejs-nativefier
 	pkgdesc = Wrap web apps natively
-	pkgver = 10.1.0
-	pkgrel = 2
+	pkgver = 10.1.5
+	pkgrel = 1
 	url = https://github.com/jiahaog/nativefier#readme
 	arch = any
 	license = MIT
@@ -9,9 +9,9 @@ pkgbase = nodejs-nativefier
 	makedepends = npm
 	depends = nodejs
 	depends = unzip
-	noextract = nativefier-10.1.0.tgz
-	source = http://registry.npmjs.org/nativefier/-/nativefier-10.1.0.tgz
-	sha1sums = 8535ce7c640d291edfaa4c6a6e2ea04951334aa5
+	noextract = nativefier-10.1.5.tgz
+	source = http://registry.npmjs.org/nativefier/-/nativefier-10.1.5.tgz
+	sha1sums = ec3dd6832746142861bb1eb1d8e4274522bbb662
 
 pkgname = nodejs-nativefier
 
