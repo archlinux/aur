@@ -11,6 +11,7 @@ pkg/
 *.sig
 *.asc
 *.swp
+*.log
 
 *.c
 *.cpp

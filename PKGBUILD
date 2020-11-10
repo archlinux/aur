@@ -3,7 +3,7 @@
 
 _basename=gperftools
 pkgname=lib32-$_basename
-pkgver=2.7
+pkgver=2.8
 pkgrel=1
 pkgdesc="Fast, multi-threaded malloc and nifty performance analysis tools (32-bit)"
 arch=('x86_64')
