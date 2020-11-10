@@ -5,7 +5,7 @@ _pyname=${_pkgname//-/_}
 pkgname=python-$_pkgname
 _vexriscv=1.0.1
 pkgver=2020.04
-pkgrel=1
+pkgrel=2
 pkgdesc='Python module containing verilog files for vexriscv cpu (for use with LiteX)'
 arch=('any')
 url="https://github.com/litex-hub/$_pkgname"
@@ -38,4 +38,3 @@ package() {
 
   install -Dm 644 $_pyname/verilog/ext/VexRiscv/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
