@@ -3,7 +3,7 @@
 _pkgname=ttf-iosevka-term-custom
 pkgname=${_pkgname}-git
 pkgver=r2089.115f5b19
-pkgrel=1
+pkgrel=2
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
@@ -19,7 +19,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '132530ab6290715e1b31b7743c13e8e06af2df189739bf5ef29d3558f615a154'
+  '98d70ae136a1307a80aa52ec06abf7cd44dce17b0427ecf3c9b0767ffd91c28d'
 )
 
 pkgver() {
