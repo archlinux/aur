@@ -6,7 +6,7 @@
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-wayland-git
 pkgver=26.0.2.r83.g5f6793676
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source software for live streaming and recording (with wayland patches)"
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -45,9 +45,10 @@ prepare() {
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git submodule update
 
-  for patch in $srcdir/obs-studio-wayland/*.patch; do
+  [ ! -e patched ] && for patch in $srcdir/obs-studio-wayland/*.patch; do
     patch -Np1 -i "$patch"
   done
+  touch patched
 }
 
 build() {

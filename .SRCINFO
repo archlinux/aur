@@ -1,7 +1,7 @@
 pkgbase = obs-studio-wayland-git
 	pkgdesc = Free, open source software for live streaming and recording (with wayland patches)
 	pkgver = 26.0.2.r83.g5f6793676
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
 	arch = x86_64
