@@ -1,0 +1,68 @@
+pkgbase = dotnet-core-3.1
+	pkgver = 3.1.10.sdk404
+	pkgrel = 1
+	url = https://www.microsoft.com/net/core
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	options = staticlibs
+	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/ec187f12-929e-4aa7-8abc-2f52e147af1d/56b0dbb5da1c191bff2c271fcd6e6394/dotnet-sdk-3.1.404-linux-x64.tar.gz
+	sha512sums_x86_64 = 94d8eca3b4e2e6c36135794330ab196c621aee8392c2545a19a991222e804027f300d8efd152e9e4893c4c610d6be8eef195e30e6f6675285755df1ea49d3605
+	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/2ebe1f4b-4423-4694-8f5b-57f22a315d66/4bceeffda88fc6f19fad7dfb2cd30487/dotnet-sdk-3.1.404-linux-arm.tar.gz
+	sha512sums_armv7h = 0aaed20c96c97fd51b8e0f525caf75ab95c5a51de561e76dc89dad5d3c18755c0c773b51be6f1f5b07dda02d2bb426c5b9c45bb5dd59914beb90199f41e5c59e
+	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/de47cbe2-f75f-44c5-8250-7960a36d6591/76cfdbfb7bf17cce27378a9fddd969a6/dotnet-sdk-3.1.404-linux-arm64.tar.gz
+	sha512sums_aarch64 = b22b60a06f4a1a409eb8eb8f5aec26454ff393bef9677294f0a9d61367caeb2a55fff1e4e282af5250365d27cee3b5cf7c31db8ff1c224f1c7225263b0e4a9aa
+
+pkgname = aspnet-runtime-3.1
+	pkgdesc = The ASP.NET Core runtime 3.1 (binary)
+	depends = dotnet-runtime-3.1
+	provides = aspnet-runtime=3.1.10
+	provides = aspnet-runtime-3.1
+	conflicts = aspnet-runtime=3.1.10
+	conflicts = aspnet-runtime-3.1
+
+pkgname = dotnet-runtime-3.1
+	pkgdesc = The .NET Core runtime 3.1 (binary)
+	depends = dotnet-host
+	depends = glibc
+	depends = icu
+	depends = krb5
+	depends = libcurl.so
+	depends = libunwind
+	depends = openssl
+	depends = zlib
+	optdepends = lttng-ust: CoreCLR tracing
+	provides = dotnet-runtime=3.1.10
+	provides = dotnet-runtime-3.1
+	conflicts = dotnet-runtime=3.1.10
+	conflicts = dotnet-runtime-3.1
+
+pkgname = dotnet-sdk-3.1
+	pkgdesc = The .NET Core SDK 3.1 (binary)
+	depends = dotnet-runtime-3.1
+	depends = glibc
+	depends = dotnet-targeting-pack-3.1
+	depends = netstandard-targeting-pack-2.1
+	optdepends = aspnet-targeting-pack-bin: Build ASP.NET Core applications
+	provides = dotnet-sdk=3.1.10.sdk404
+	provides = dotnet-sdk-3.1
+	conflicts = dotnet-sdk=3.1.10.sdk404
+	conflicts = dotnet-sdk-3.1
+
+pkgname = dotnet-targeting-pack-3.1
+	pkgdesc = The .NET Core targeting pack 3.1 (binary)
+	depends = netstandard-targeting-pack-2.1
+	provides = dotnet-targeting-pack=3.1.10
+	provides = dotnet-targeting-pack-3.1
+	conflicts = dotnet-targeting-pack=3.1.10
+	conflicts = dotnet-targeting-pack-3.1
+
+pkgname = aspnet-targeting-pack-3.1
+	pkgdesc = The ASP.NET Core targeting pack 3.1 (binary)
+	depends = dotnet-targeting-pack-3.1
+	provides = aspnet-targeting-pack=3.1.10
+	provides = aspnet-targeting-pack-3.1
+	conflicts = aspnet-targeting-pack=3.1.10
+	conflicts = aspnet-targeting-pack-3.1
+
