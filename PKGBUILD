@@ -50,8 +50,6 @@ build() {
  
    cmake ../ \
   -DCMAKE_BUILD_TYPE=Release \
-  -DCMAKE_CXX_FLAGS="$CXXFLAGS -fPIC" \
-  -DCMAKE_C_FLAGS="$CFLAGS -fPIC" \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DOTB_USE_CURL=ON \
   -DBUILD_EXAMPLES=OFF \
@@ -74,6 +72,7 @@ build() {
   -DOTB_USE_QWT=ON \
   -DOTB_USE_GLUT=ON \
   -DOTB_USE_SPTW=ON \
+  -DOTB_USE_SHARK=ON \
   -DCMAKE_CXX_STANDARD=14
          
   make
