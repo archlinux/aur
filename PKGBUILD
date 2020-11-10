@@ -11,7 +11,7 @@ optdepends=('ubuntu-mate-themes: GTK2, GTK3, Unity and Metacity themes from Ubun
             'mate-icon-theme: MATE default icon theme')
 groups=('mate-extra')
 source=("https://mirrors.edge.kernel.org/ubuntu/pool/universe/u/ubuntu-mate-artwork/${pkgname}_${pkgver}_all.deb")
-sha256sums=('c089a3d57669a86e7882487e91818aa4f992141b1f0298edf7f761646bf99660')
+sha256sums=('25574f53178fa9f53b819b270003da9e416f9b0394b20e7923ba19707d35ac38')
 
 package() {
     tar xf data.tar.xz
