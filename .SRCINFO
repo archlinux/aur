@@ -1,0 +1,16 @@
+pkgbase = hsandbox-git
+	pkgdesc = The Hacking Sandbox
+	pkgver = 0
+	pkgrel = 1
+	url = http://labix.org/hsandbox
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python
+	depends = python-pyinotify
+	provides = hsandbox
+	source = hsandbox-git::git+https://github.com/niemeyer/hsandbox
+	sha256sums = SKIP
+
+pkgname = hsandbox-git
+
