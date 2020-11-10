@@ -4,7 +4,7 @@ pkgver=0.2.5
 pkgrel=3
 pkgdesc="Simple tool that enable you to create your own usb stick with Windows installer."
 arch=('any')
-url="github.com/WoeUSB/WoeUSB-ng"
+url="https://github.com/WoeUSB/WoeUSB-ng"
 license=('GPL3')
 depends=(
     'parted'
