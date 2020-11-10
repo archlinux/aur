@@ -1,23 +1,22 @@
 # Maintainer: Franck Lucien Duriez <franck.lucien.duriez@gmail.com>
 
 pkgname=nrfutil
-pkgver=5.2.0
+pkgver=6.1
 pkgrel=1
 pkgdesc="nrfutil command line utility and the nordicsemi library"
 arch=('any')
 url="https://github.com/NordicSemiconductor/pc-nrfutil"
 license=('MIT')
-depends=('python2')
+depends=('python')
+depends=('python-pip')
 options=(!emptydirs)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/NordicSemiconductor/pc-nrfutil/archive/v$pkgver.tar.gz")
-sha256sums=(SKIP)
-
-build() {
-  cd "$srcdir/pc-$pkgname-$pkgver"
-  python2 setup.py build
-}
+source=()
+sha256sums=()
 
 package() {
-  cd "$srcdir/pc-$pkgname-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir"/usr/lib/nrfutil-bundle --ignore-installed nrfutil==$pkgver
+	install -dm0755 "$pkgdir"/usr/bin
+	echo "#!/bin/bash
+PYTHONPATH=/usr/lib/nrfutil-bundle/usr/lib/python3.8/site-packages/ exec /usr/lib/nrfutil-bundle/usr/bin/nrfutil \$*" >"$pkgdir"/usr/bin/nrfutil
+	chmod a+x "$pkgdir"/usr/bin/nrfutil
 }
