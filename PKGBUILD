@@ -73,7 +73,7 @@ fi
 #Disable/enable FUNCTION_TRACER/GRAPH_TRACER
 
 ## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
-## Stock Archlinux and Xanmod have this enabled. 
+## Stock Archlinux and Xanmod have this enabled.
 ## Set variable "use_tracers" to: n to disable (possibly increase performance)
 ##                                y to enable  (stock default)
 
@@ -90,8 +90,17 @@ fi
 if [ -z ${use_ns+x} ]; then
   use_ns=n
 fi
-  
-#use env _microarchitecture=(0-42) use_numa=(y/n) use_tracers=(y/n) use_ns=(y/n) makepkg -s ---> to overwhrite the default variables
+
+#Enable/disable PDS CPU scheduler
+
+## Enable PDS CPU scheduler by default https://gitlab.com/alfredchen/linux-pds
+## Set variable "use_pds" to: n to disable (stock Xanmod)
+##                            y to enable
+if [ -z ${use_pds+x} ]; then
+  use_pds=y
+fi
+
+#use env _microarchitecture=(0-42) use_numa=(y/n) use_tracers=(y/n) use_ns=(y/n) use_pds=(y/n) makepkg -s ---> to overwhrite the default variables
 
 pkgbase=linux-kernel
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-api-headers" "$pkgbase-docs")
@@ -102,14 +111,14 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 pkgver=5.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Stable linux kernel, modules, headers, api-headers and docs"
 arch=(x86_64)
 url="https://www.kernel.org/"
 license=(GPL-2.0)
 makedepends=("bison" "flex" "valgrind" "git" "cmake" "make" "extra-cmake-modules" "libelf" "elfutils"
             "python" "python-appdirs" "python-mako" "python-evdev" "python-sphinx_rtd_theme" "python-graphviz" "python-sphinx"
-            "clang" "lib32-clang" "bc" "gcc" "gcc-libs" "lib32-gcc-libs" "glibc" "lib32-glibc" "pahole" "patch" "gtk3" 
+            "clang" "lib32-clang" "bc" "gcc" "gcc-libs" "lib32-gcc-libs" "glibc" "lib32-glibc" "pahole" "patch" "gtk3"
             "kmod" "libmikmod" "lib32-libmikmod" "xmlto" "xmltoman" "graphviz" "imagemagick" "imagemagick-doc" "rsync" "cpio" "inetutils")
 source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.gz"
         "${pkgbase}.preset"
@@ -126,7 +135,7 @@ md5sums=("SKIP"
 
 prepare(){
   cd linux-${pkgver}
-  
+
   # Apply any patch
   local src
   for src in "${source[@]}"; do
@@ -136,12 +145,12 @@ prepare(){
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
-  
+
   # cpopy the config file first
   # Copy "${srcdir}"/config to linux-${pkgver}/.config
   echo "Copy "${srcdir}"/config to linux-${pkgver}/.config"
   cp "${srcdir}"/config .config
-  
+
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
   scripts/config --enable CONFIG_STACK_VALIDATION
 
@@ -160,12 +169,17 @@ prepare(){
     msg2 "Disabling NUMA..."
     scripts/config --disable CONFIG_NUMA
   fi
-  
+
   if [ "$use_ns" = "n" ]; then
     msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
     scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
   fi
-  
+
+  if [ "$use_pds" = "y" ]; then
+    msg2 "Enabling PDS CPU scheduler by default..."
+    scripts/config --enable CONFIG_SCHED_PDS
+  fi
+
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
@@ -183,7 +197,7 @@ build(){
 }
 
 _package(){
-  pkgdesc="Stable linux kernel and modules with some patch"
+  pkgdesc="Stable linux kernel and modules with patch. NUMA disabled, FUNCTION_TRACER/GRAPH_TRACER disabled, CONFIG_USER_NS_UNPRIVILEGED disabled and PDS CPU scheduler enabled."
   depends=("coreutils" "kmod" "initramfs" "mkinitcpio")
   optdepends=("linux-firmware" "crda")
   install=${pkgbase}.install
@@ -193,9 +207,9 @@ _package(){
   install -dm755 "${pkgdir}"/usr
   install -dm755 "${pkgdir}"/boot
   install -dm755 "${pkgdir}"/etc/mkinitcpio.d
-  
+
   cd linux-${pkgver}
-  
+
   # Installing modules
   echo "Installing modules"
   make INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
@@ -229,9 +243,9 @@ _package-headers(){
   # Create system tree
   echo "Create system tree"
   install -dm755 "${pkgdir}"/usr/lib/modules/${pkgver}/build
-  
+
   cd linux-${pkgver}
-  
+
   local builddir="$pkgdir/usr/lib/modules/${pkgver}/build"
 
   echo "Installing build files..."
@@ -299,7 +313,7 @@ _package-headers(){
 
   echo "Stripping vmlinux..."
   strip -v $STRIP_STATIC "$builddir/vmlinux"
-  
+
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
@@ -314,14 +328,14 @@ _package-api-headers(){
   install -dm755 "${pkgdir}"/usr
   install -dm755 "${pkgdir}"/usr/include
   install -dm755 "${pkgdir}"/usr/include/$pkgbase-api-headers
-  
+
   cd linux-${pkgver}
 
   # Create fakeinstall dir
   echo "Create fakeinstall dir"
   mkdir fakeinstall
 
-  # Installing headers to fakeinstall dir 
+  # Installing headers to fakeinstall dir
   echo "Installing headers to fakeinstall dir"
   make INSTALL_HDR_PATH="fakeinstall" -j$(nproc) headers_install
 
@@ -337,13 +351,13 @@ _package-docs() {
   # Create system tree
   echo "Create system tree"
   install -dm755 "${pkgdir}"/usr/lib/modules/${pkgver}/build
-  
+
   cd linux-${pkgver}
-  
+
   # make -j$(nproc) htmldocs
   echo "make -j$(nproc) htmldocs"
   make -j$(nproc) htmldocs
-  
+
   local builddir="$pkgdir/usr/lib/modules/${pkgver}/build"
 
   echo "Installing documentation..."
