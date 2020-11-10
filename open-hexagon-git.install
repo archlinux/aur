@@ -2,9 +2,13 @@ _create_files() {
 	# Ensure that these files exist and are owned by root, but the package should not own them.
 	cd /var/lib/open-hexagon/
 	touch log.txt
+	chmod a+w log.txt
 	touch config.json
+	chmod a+w config.json
 	touch scores.json
+	chmod a+w scores.json
 	touch users.json
+	chmod a+w users.json
 }
 post_upgrade() {
 	_create_files
