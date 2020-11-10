@@ -93,6 +93,10 @@ post_install() {
     
     echo 'cma_offline_start=' >> /boot/config.txt
     echo 'hdmi_force_hotplug=1' >> /boot/config.txt
+
+    # https://github.com/raspberrypi/firmware/issues/1167
+    echo 'awb_auto_is_greyworld=1' >> /boot/config.txt
+
     echo 'Loading bcm2835 module'
     echo 'bcm2835-v4l2' > /etc/modules-load.d/picamera.conf
    

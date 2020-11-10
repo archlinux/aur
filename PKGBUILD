@@ -27,12 +27,16 @@ package() {
   
   #setting python3 branch
   cd "${srcdir}/${pkgname}"
-  git checkout python3.7
-
+  git checkout dev
+  
   #cp node server and node updater
   cd "${srcdir}"
   cp -R --no-dereference --preserve=mode,links -v * "${pkgdir}/opt/${pkgname}"
   ln -s /opt/ethoscope-device/scripts/ethoscope_updater "${pkgdir}/opt/"
+
+  #changing the remote GIT source to local BARE created during installation
+  cd "${pkgdir}/opt/${pkgname}"
+  git remote set-url origin /srv/git/ethoscope.git
   
   #install python package
   #cd "${srcdir}/${pkgname}/src"
