@@ -12,7 +12,7 @@ pkgbase=boost
 pkgname=('boost-libs' 'boost')
 pkgver=1.72.0
 _boostver=${pkgver//./_}
-pkgrel=3
+pkgrel=4
 pkgdesc='Free peer-reviewed portable C++ source libraries'
 url='https://www.boost.org/'
 arch=('x86_64')
@@ -144,7 +144,7 @@ package_boost-libs() {
    # https://github.com/boostorg/python/issues/203#issuecomment-391477685
    for _lib in python numpy; do
      ln -srL "${pkgdir}"/usr/lib/libboost_${_lib}{27,}.so
-     ln -srL "${pkgdir}"/usr/lib/libboost_${_lib}3{8,}.so
+     ln -srL "${pkgdir}"/usr/lib/libboost_${_lib}3{9,}.so
    done
 
    install -Dm644 "${srcdir}/"${pkgbase}_${_boostver}/LICENSE_1_0.txt \
