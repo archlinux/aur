@@ -2,7 +2,7 @@
 
 pkgname=linode-cli-git
 pkgver=3.1.3.r4.d7bd3b4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Linode Command Line Interface"
 arch=(any)
 url="https://github.com/linode/linode-cli"
@@ -11,6 +11,7 @@ depends=('python-colorclass'
 	 'python-terminaltables'
 	 'python-requests'
 	 'python-yaml')
+optdepends=('python-boto: for obj plugin')
 makedepends=('git' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

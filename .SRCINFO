@@ -1,7 +1,7 @@
 pkgbase = linode-cli-git
 	pkgdesc = The Linode Command Line Interface
 	pkgver = 3.1.3.r4.d7bd3b4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linode/linode-cli
 	arch = any
 	license = BSD
@@ -11,6 +11,7 @@ pkgbase = linode-cli-git
 	depends = python-terminaltables
 	depends = python-requests
 	depends = python-yaml
+	optdepends = python-boto: for obj plugin
 	provides = linode-cli
 	conflicts = linode-cli
 	source = linode-cli::git+https://github.com/linode/linode-cli.git
