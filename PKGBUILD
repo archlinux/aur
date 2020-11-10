@@ -2,14 +2,14 @@
 # Contributor: Antonio Rojas
 
 pkgname=kwayland-git
-pkgver=v5.71.0.r1.g396d014
+pkgver=v5.76.0.rc1.r0.g6710f4b
 pkgrel=1
 pkgdesc='Qt-style Client and Server library wrapper for the Wayland libraries'
 arch=('i686' 'x86_64')
 url='http://www.kde.org'
 license=('LGPL')
-depends=('qt5-base')
-makedepends=('extra-cmake-modules-git' 'git')
+depends=('qt5-wayland')
+makedepends=('extra-cmake-modules-git' 'git' 'wayland-protocols' 'plasma-wayland-protocols-git')
 provides=('kwayland')
 conflicts=('kwayland')
 source=('git+https://github.com/KDE/kwayland.git')
