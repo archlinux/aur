@@ -5,15 +5,18 @@
 
 pkgbase=openal-git
 pkgname=(openal-git openal-examples-git)
-pkgver=1.18.1.r84.g5ec11a01
+pkgver=1.21.0.r11.g7e767702
 pkgrel=1
 pkgdesc="Cross-platform 3D audio library, software implementation"
 arch=(i686 x86_64)
 url="https://github.com/kcat/openal-soft"
 license=(LGPL)
-depends=(glibc)
-makedepends=(alsa-lib libpulse fluidsynth portaudio jack qt5-base sdl2 sdl_sound ffmpeg
-             git cmake ninja)
+depends=(gcc-libs)
+makedepends=(alsa-lib libpulse fluidsynth portaudio jack qt5-base sdl2
+             libsndfile ffmpeg libmysofa git cmake)
+optdepends=('qt5-base: alsoft-config GUI Configurator'
+            'fluidsynth: MIDI rendering'
+            'libmysofa: makemhr tool')
 source=("git+https://github.com/kcat/openal-soft")
 md5sums=('SKIP')
 
@@ -23,34 +26,35 @@ pkgver() {
 }
 
 build() {
-  mkdir -p build examples
-  cd build
-  cmake ../openal-soft -G Ninja \
+  cmake -S openal-soft -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_LIBDIR=lib
-  ninja
+  cmake --build build
 }
 
 package_openal-git() {
-  optdepends=('qt5-base: alsoft-config GUI Configurator'
-              'fluidsynth: MIDI rendering')
   provides=("openal=$pkgver")
   conflicts=("openal")
 
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" cmake --install build
   install -Dt "$pkgdir/usr/share/doc/openal" -m644 openal-soft/docs/*
 
 ### Split openal-examples
-  mv -v "$pkgdir"/usr/bin/al{ffplay,hrtf,latency,loopback,record,reverb,stream} examples/
+  mkdir -p examples/usr/bin
+  for f in \
+    alffplay alhrtf allatency alloopback almultireverb alplay alrecord \
+    alreverb alstream altonegen
+  do
+    mv -v "$pkgdir/usr/bin/$f" examples/usr/bin/$f
+  done
 }
 
 package_openal-examples-git() {
   pkgdesc+=" (example programs)"
-  depends=("openal-git=$pkgver-$pkgrel" sdl2 sdl_sound ffmpeg)
+  depends=("openal-git=$pkgver-$pkgrel" sdl2 libsndfile ffmpeg)
   provides=("openal-examples=$pkgver")
   conflicts=("openal-examples")
 
-  mkdir "$pkgdir/usr"
-  mv -v examples "$pkgdir/usr/bin"
+  mv examples/* "$pkgdir"
 }
