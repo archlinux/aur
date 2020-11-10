@@ -1,6 +1,6 @@
 pkgbase = lxqt-desktop-git
 	pkgdesc = The LXQt desktop
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = http://lxqt.org
 	arch = i686
