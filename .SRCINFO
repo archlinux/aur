@@ -1,5 +1,5 @@
 pkgbase = dog-dns
-	pkgdesc = Command-line DNS client
+	pkgdesc = Command-line DNS client like dig
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/ogham/dog
