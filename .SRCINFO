@@ -1,12 +1,13 @@
 pkgbase = dotcopter
 	pkgdesc = A small tool to manage dotfile installation.
-	pkgver = 0.4.5
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/bomgar/dotcopter
 	arch = x86_64
 	license = Apache-2.0
-	source = https://github.com/bomgar/dotcopter/releases/download/0.4.5/dotcopter
-	sha256sums = 64e98d4fd5e2b9aa796dd9701ea655154d76d146c759b3c376462a9478ea5c1b
+	makedepends = cargo
+	source = dotcopter-0.5.0.tar.gz::https://github.com/bomgar/dotcopter/archive/v0.5.0.tar.gz
+	sha256sums = 009a83748c0b72dc052d93e26d0267f8a93bbdb77487e91bd8c54ae635d5fbea
 
 pkgname = dotcopter
 
