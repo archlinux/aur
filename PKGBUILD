@@ -1,6 +1,7 @@
 # Maintainer: Michael von Domaros <mvondomaros at gmail dot com>
+
 pkgname=travis
-pkgver=180604
+pkgver=200504
 pkgrel=1
 pkgdesc="Trajectory Analyzer and Visualizer"
 arch=('i686' 'x86_64')
@@ -8,15 +9,25 @@ url="http://www.travis-analyzer.de"
 license=('GPL3')
 depends=('gcc-libs')
 options=('!strip')
-source=($url/files/$pkgname-src-$pkgver.tar.gz)
-md5sums=('44b3bfc36d40707a991ab6ebfc7ce84c')
+source=($url/files/$pkgname-src-$pkgver-hf2.tar.gz)
+md5sums=('c724e4170080db8f6e1cf5c0bc8d5013')
+
+_cdsrcdir() {
+	cd "$srcdir/$pkgname-src-$pkgver-hf2"
+}
+
+prepare() {
+	_cdsrcdir
+	sed -i '/CFLAGS \+=/d' Makefile
+}
 
 build() {
-	cd "$srcdir/$pkgname-src-$pkgver"
-	make CFLAGS="$CFLAGS -ansi"
+	_cdsrcdir
+	export CFLAGS="-g -ansi -O3 -march=native"
+	make
 }
 
 package() {
-	cd "$srcdir/$pkgname-src-$pkgver"
+	_cdsrcdir
 	install -Dm 755 exe/travis $pkgdir/usr/bin/travis
 }
