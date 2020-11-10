@@ -1,0 +1,20 @@
+pkgbase = deckmaster-git
+	pkgdesc = An application to control your Elgato Stream Deck
+	pkgver = r51.61d81d1
+	pkgrel = 1
+	url = https://github.com/muesli/deckmaster
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = deckmaster
+	conflicts = deckmaster
+	source = deckmaster-git::git://github.com/muesli/deckmaster.git
+	sha256sums = SKIP
+
+pkgname = deckmaster-git
+
