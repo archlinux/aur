@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-vaapi
-pkgver=86.0.4240.183
+pkgver=86.0.4240.193
 pkgrel=1
 _launcher_ver=6
 _gcc_patchset=6
@@ -33,7 +33,7 @@ optdepends=('pepper-flash: support for Flash content'
 provides=('chromium')
 conflicts=('chromium')
 install=chromium.install
-source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
+source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         fix-invalid-end-iterator-usage-in-CookieMonster.patch
@@ -43,7 +43,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         xproto-fix-underflow-in-Fp1616ToDouble.patch
         wayland-egl.patch
         chromium-skia-harmony.patch)
-sha256sums=('aa12c6665c33275f3edffb6f127f97f84fa0bb69c644b4b023d51d2d058a69bc'
+sha256sums=('203dd5097f5873cb4881e2e838034f0dac5ff13e7fafa286baf87937f8eca534'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '6f9ab35fa2c9e6e34ec454b829b7b87adaebc10cacecd1ac1daa67035ee44aba'
             '69d8b7a439db1af4713245ddf5f44ca647283ba833a8733e848033ebdaf03cdc'
