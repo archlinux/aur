@@ -2,13 +2,13 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/frostworx/steamtinkerlaunch"
 license=('GPL3')
-depends=('bash' 'git' 'procps-ng' 'unzip' 'wget' 'which' 'wmctrl' 'xdotool' 'xorg-xprop' 'xorg-xrandr' 'xorg-xwininfo' 'yad')
+depends=('bash' 'git' 'procps-ng' 'unzip' 'wget' 'which' 'xdotool' 'xorg-xprop' 'xorg-xrandr' 'xorg-xwininfo' 'yad')
 optdepends=(
     'strace: write a strace log of the launched game'
     'gamemode: for using GameMode per game'
@@ -25,14 +25,13 @@ optdepends=(
     'gameconqueror: for optional cheating'
     'gamescope: for optional GameScope support'
     'libnotify: for optional Notifier'
-    'zenity: optional for the Editor Dialog'
     'cabextract: optional for extracting the wmp10 setup archive'
     'usbutils: optional for a quick VR HMD presence check'
     'jq: optional for extracting game names from the steam api'
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9a1635f4cc08c07ca8b2e58ac2332d3b5b2f76e001c09093aaba78538ef4b9b8')
+sha256sums=('1b9b4f0a1f8cce727d1951d42fcc5a5cad3b44f1cf970607e7eccdadce369086')
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}"
