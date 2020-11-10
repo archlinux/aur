@@ -1,0 +1,19 @@
+# Maintainer: Karrq
+# base: https://aur.archlinux.org/packages/ttf-iosevka-term/
+pkgname=ttf-iosevka-ss02-term
+pkgver=3.7.1
+pkgrel=1
+pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
+arch=('any')
+url='https://typeof.net/Iosevka/'
+license=('OFL')
+source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/ttf-iosevka-term-ss02-${pkgver}.zip"
+        "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v${pkgver}/LICENSE.md")
+sha256sums=('f2769fde0a2a28c8324cf8d885a8f0153b49c88eed6428aeb5b8da480f34c7b2'
+            'e61c0988bb231a321f14cce1b119a468f279ea86826c32e943ab16dbf08c1ba9')
+
+package() {
+    install -d ${pkgdir}/usr/share/fonts/TTF/
+    install -m644 ttf/*.ttf ${pkgdir}/usr/share/fonts/TTF/
+    install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
+}
