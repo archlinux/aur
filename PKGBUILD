@@ -3,7 +3,7 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 # pkg: git
 pkgname=hsandbox-git
-pkgver=0
+pkgver=1.1.r28.gc43f92f
 pkgrel=1
 pkgdesc="The Hacking Sandbox"
 arch=('any')
