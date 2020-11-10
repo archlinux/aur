@@ -1,15 +1,14 @@
 # Maintainer: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=fastgame-git
-pkgver=0.0.3.r0.gd243c97
+pkgver=0.0.9.r53.g43786aa
 pkgrel=1
 pkgdesc='Optimize system performance for games'
 arch=(x86_64 i686)
 url='https://github.com/wwmm/fastgame'
 license=('GPL3')
-depends=('boost-libs')
-makedepends=('meson' 'boost')
-optdepends=('libxnvctrl: nvidia overclock')
+depends=('boost-libs' 'gtk3' 'gtkmm3' 'glibmm' 'libsigc++')
+makedepends=('meson' 'boost' 'itstool')
 source=("git+https://github.com/wwmm/fastgame.git")
 conflicts=(fastgame)
 provides=(fastgame)
