@@ -1,8 +1,8 @@
 # Maintainer: naniwakun <radio.naniwa[atmark]gmail.com>
 
 pkgname=jdim-git
-pkgver=r2787.1d1f767e
-pkgrel=4
+pkgver=r3302.c70da7b5
+pkgrel=1
 pkgdesc="A 2channel browser written in C++ using gtkmm3. This is public beta version."
 arch=('i686' 'x86_64')
 url="https://github.com/JDimproved/JDim/tree/master"
@@ -21,7 +21,7 @@ pkgver() {
 build() {
   cd "${srcdir}/JDim"
   autoreconf -i
-  ./configure --prefix=/usr --with-gtkmm3 --with-thread=std --with-tls=openssl
+  ./configure --prefix=/usr 
   make
 }
 
