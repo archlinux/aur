@@ -68,9 +68,9 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.9
-_minor=6
+_minor=7
 _srcname=linux-${_major}
-_clr=${_major}.3-994
+_clr=${_major}.4-995
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -89,6 +89,7 @@ source=(
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   'pci-enable-overrides-for-missing-acs-capabilities.patch'
   '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch'
+  'nvidia-5.9-uvm-fix.patch'
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -114,13 +115,14 @@ prepare() {
         patch -Np1 -i "$srcdir/clearlinux/${i}"
         done
 
-    ### Add acs patch
-        echo "Applying pci-enable-overrides-for-missing-acs-capabilities.patch ..."
-        patch -Np1 -i "$srcdir/pci-enable-overrides-for-missing-acs-capabilities.patch"
-
-    ### disable USER_NS for non-root users by default
-        echo "Applying 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch ..."
-        patch -Np1 -i "$srcdir/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+    local src
+        for src in "${source[@]}"; do
+        src="${src%%::*}"
+        src="${src##*/}"
+        [[ $src = *.patch ]] || continue
+        echo "Applying patch $src..."
+        patch -Np1 < "../$src"
+    done
 
     ### Setting config
         echo "Setting config..."
@@ -155,7 +157,8 @@ prepare() {
                        --enable SND_OSSEMUL \
                        --module-after SND_OSSEMUL SND_MIXER_OSS \
                        --module-after SND_MIXER_OSS SND_PCM_OSS \
-                       --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS
+                       --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS \
+                       --module AGP --module-after AGP AGP_INTEL --module-after AGP_INTEL AGP_VIA
 
         # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
         scripts/config --enable SECTION_MISMATCH_WARN_ONLY
@@ -352,11 +355,12 @@ done
 
 sha256sums=('3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06'
             'SKIP'
-            '05c34bad1f3ed02494322637b2a246f7d666a118e5e77b85b4b0b24f063d2055'
+            '2fd295318a3de15954cf4f4012b64de899538c4d5eba9192c98f9aba8f94bcab'
             'SKIP'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
             '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e'
-            '261574aeee09864929d44a5f9896ad2645fe4539d9ee8a86575bd19a07eed865')
+            '261574aeee09864929d44a5f9896ad2645fe4539d9ee8a86575bd19a07eed865'
+            '19dee9da3b2827493324c669cdead506e90fe4e967ec76937dc46f43ce81f5f7')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
