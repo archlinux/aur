@@ -5,7 +5,7 @@
 set -u
 pkgname="miller"
 #pkgname+='-git'
-pkgver='5.8.0'
+pkgver='5.9.1'
 pkgrel='1'
 pkgdesc='sed, awk, cut, join, and sort for name-indexed data such as CSV and tabular JSON.'
 arch=('x86_64' 'i686')
@@ -17,8 +17,8 @@ _verwatch=("${url}/releases" ".*/mlr-\([0-9.]\+\)\.tar\.gz.*" 'f') # mlr RSS is 
 _srcdir="mlr-${pkgver%.r*}"
 source=("${url}/releases/download/v${pkgver%.r*}/mlr-${pkgver%.r*}.tar.gz")
 #source[0]='https://github.com/johnkerl/miller/archive/master.tar.gz'; _srcdir='miller-master'
-md5sums=('c57bac2fe25ebec56de3264e6a731316')
-sha256sums=('7e476caf9c1ce45e36dd826f3ab3a73b036a60cb30bbded34edacfb435ffff83')
+md5sums=('6c0c05a1ab1b7b6d03b3c374f894dcf9')
+sha256sums=('fb531efe5759b99935ce420c8ad763099cf11c2db8d32e8524753f4271454b57')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
   md5sums[0]='SKIP'
