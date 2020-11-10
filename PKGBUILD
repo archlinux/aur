@@ -6,8 +6,8 @@ pkgname=('lib32-wxbase-light'
          'lib32-wxgtk3-light'
          'lib32-wxcommon-light'
          )
-pkgver=3.0.4
-pkgrel=2
+pkgver=3.0.5
+pkgrel=1
 pkgdesc="wxWidgets suite for Base and GTK2 and GTK3 toolkits (GNOME/GStreamer free!) (32 bits)"
 arch=('x86_64')
 url='http://wxwidgets.org'
@@ -32,8 +32,6 @@ sha256sums=('SKIP'
 
 prepare() {
   mkdir -p build-{base,gtk{2,3}}
-
-  patch -d wxwidgets -p1 -i "${srcdir}/lib32-wxwidgets-collision.patch"
 
   # C++ ABI check is too strict and breaks with GCC 5.1
   # https://bugzilla.redhat.com/show_bug.cgi?id=1200611
