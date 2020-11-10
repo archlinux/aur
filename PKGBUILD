@@ -1,7 +1,7 @@
 # Maintainer: Yu-Hsuan Tu <dobe0331 at gmail dot com>
 _pkgname=metashape-pro
 pkgname=agisoft-${_pkgname}
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="Phtogrammetric processing of digital images and 3D spatial data generation software. Professional edition"
 arch=('x86_64')
@@ -12,20 +12,20 @@ provides=('agisoft-metashape-pro' 'agisoft-network-monitor' 'agisoft-viewer')
 replaces=('metashape-pro')
 options=('!strip')
 install=${pkgname}.install
-source=("http://download.agisoft.com/${_pkgname}_${pkgver//./_}_amd64.tar.gz"
+source=("https://s3-eu-west-1.amazonaws.com/download.agisoft.com/${_pkgname}_${pkgver//./_}_amd64.tar.gz"
         "agisoft-metashape-pro-icon-encoded.txt"
         "agisoft-network-monitor-icon-encoded.txt"
         "agisoft-viewer-icon-encoded.txt"
         "agisoft-psx-mime-icon-encoded.txt"
         "agisoft-psz-mime-icon-encoded.txt"
         "agisoft-3dv-mime-icon-encoded.txt")
-sha256sums=('8ca52767f2dcfd4b531a85bd2224ea8d9bd8aec64c0d0e5fee0990903f733e70'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('cad3e5c7f27657c57b8308b37e01ad7ea8243c880b96312a6e301868a5c51948'
+            '959eb21ce482a5b1f84a0e04ec6f0d53aaf679c84bce9f813b350afe5dd201ba'
+            'ef484e2a60966a722d7989abdbb85464054c47dd56b2ce182b2c0c5602476599'
+            'a5e29a00393d55a9b589e1fb30acb57a96ef26756507d2793e7f3494d5778ae3'
+            '627df01b98f9f22b31d62ba039127b7809650990d1633e4190f1d9844830a0ff'
+            'd44fb70962175505fd3bfc0e96670e5bf4092c80446e0142cc91a3e0033e1009'
+            '047225857a8b30362bab61f916ab1ddb19c0906959bf57c4ab5e499b8a9c4fc8')
 
 build() {
 	# Create desktop entries
