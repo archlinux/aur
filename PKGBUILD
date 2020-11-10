@@ -1,6 +1,6 @@
 # Maintainer: acedron <acedrons@yahoo.co.jp>
 pkgname=abstouch-nux
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="An absolute touchpad input client for GNU/Linux."
 arch=('any')
