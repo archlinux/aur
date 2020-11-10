@@ -1,7 +1,7 @@
 # Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
 pkgname=com.qq.weixin.spark
 pkgver=3.0.0.57spark0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Tencent WeChat Client on Deepin Wine 5 (from Spark Store)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://weixin.qq.com/"
 license=('unknown')
 groups=()
 depends=('deepin-wine5' 'deepin-wine-helper' 'xdg-utils')
-makedepends=('tar')
+#makedepends=('tar')
 checkdepends=()
 optdepends=('ttf-ms-fonts: Microsoft Core fonts'
 			'noto-fonts-cjk: Google Noto CJK fonts')
@@ -26,9 +26,11 @@ validpgpkeys=()
 
 package() {
 	cd ${pkgdir}
-	tar xpvf ${srcdir}/data.tar.xz --xattrs-include='*' --numeric-owner
+	#tar xpvf ${srcdir}/data.tar.xz --xattrs-include='*' --numeric-owner
+	bsdtar -xpvf ${srcdir}/data.tar.xz
 	install -d usr/share
 	mv opt/apps/${pkgname}/entries/* usr/share
+	sed -i 's/WeChat.exe/wechat.exe/' usr/share/applications/${pkgname}.desktop
 	rmdir opt/apps/${pkgname}/entries/
 	rm -rf usr/share/doc
 	rm opt/apps/${pkgname}/info
