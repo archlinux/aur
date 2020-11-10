@@ -1,0 +1,17 @@
+pkgbase = plasma-wayland-protocols-git
+	pkgdesc = Plasma Specific Protocols for Wayland
+	pkgver = r1019.314fb1c
+	pkgrel = 1
+	url = https://kde.org/plasma-desktop
+	arch = any
+	license = LGPL
+	makedepends = qt5-base
+	makedepends = extra-cmake-modules
+	makedepends = git
+	provides = plasma-wayland-protocols
+	conflicts = plasma-wayland-protocols
+	source = git+https://invent.kde.org/libraries/plasma-wayland-protocols
+	sha256sums = SKIP
+
+pkgname = plasma-wayland-protocols-git
+
