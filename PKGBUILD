@@ -1,6 +1,6 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helmsman
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc='Helm Charts as Code'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ optdepends=(
   'helm-secrets: backend for secret encryption')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f700de27d35324e7a848e7437faed7b0edc3c868ca931f52e314db99da4e632c')
+sha256sums=('33dedea0a3d862fc949b2343dcb81d34552c7f00105967dc7023e36ed39c0aa1')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -28,7 +28,7 @@ build() {
   export CGO_CXXFLAGS="$CXXFLAGS"
   export GOFLAGS='-buildmode=pie -modcacherw -mod=readonly -trimpath'
   # man makepkg(8), https://github.com/Praqma/helmsman/blob/master/Makefile
-  TZ=UTC printf -v _date '%(%d%m%y)T' ${SOURCE_DATE_EPOCH:-}
+  TZ=UTC printf -v _date '%(%d%m%y)T' ${SOURCE_DATE_EPOCH:- -1}
   go build -o "$pkgname" -ldflags "-linkmode=external -X main.version=v${pkgver}-${_date}" ./cmd/helmsman
 }
 
