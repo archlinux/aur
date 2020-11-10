@@ -24,7 +24,7 @@ package() {
 	mkdir /home/${USER}/boostchanger
 	cd boostchanger/app
 	cp boostchanger.AppImage /home/${USER}/boostchanger
-	install -Dm755 boostchangerrunner.sh ${pkgdir}/iusr/bin/boostchangerrunner
+	install -Dm755 boostchangerrunner.sh ${pkgdir}/usr/bin/boostchangerrunner
 	install -Dm644 boostchanger.desktop ${pkgdir}/usr/share/applications/boostchanger.desktop
 	install -Dm644 boostchanger.png ${pkgdir}/usr/share/pixmaps/boostchanger.png
 }
