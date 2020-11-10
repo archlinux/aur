@@ -7,7 +7,7 @@
 
 
 pkgname=kdenlive-release-git
-pkgver=.r13038.bbbbb509c
+pkgver=.r13465.952d777f5
 pkgrel=1
 pkgdesc="A non-linear video editor. Following latest released branch in git."
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ conflicts=('kdenlive')
 #Source repo has changed recently. To save yourself from downloading the entire repo again
 #run the following command in the kdenlive repo directory:
 #git remote set-url origin https://invent.kde.org/multimedia/kdenlive 
-source=('git+https://invent.kde.org/multimedia/kdenlive#branch=release/20.08')
+source=('git+https://invent.kde.org/multimedia/kdenlive#branch=release/20.12')
 sha1sums=('SKIP')
 install=$pkgname.install
 options=(debug !strip)
