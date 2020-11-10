@@ -10,24 +10,24 @@ pkgname=(
   'dotnet-targeting-pack-bin'
   'aspnet-targeting-pack-bin'
  )
-pkgver=3.1.9.sdk403
-_runtimever=3.1.9
-_sdkver=3.1.403
+pkgver=5.0.0.sdk100
+_runtimever=5.0.0
+_sdkver=5.0.100
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
 options=('staticlibs')
-source_armv7h=('https://download.visualstudio.microsoft.com/download/pr/8a2da583-cac8-4490-bcca-2a3667d51142/6a0f7fb4b678904cdb79f3cd4d4767d5/dotnet-sdk-3.1.403-linux-arm.tar.gz')
-source_aarch64=('https://download.visualstudio.microsoft.com/download/pr/7a027d45-b442-4cc5-91e5-e5ea210ffc75/68c891aaae18468a25803ff7c105cf18/dotnet-sdk-3.1.403-linux-arm64.tar.gz')
-source_x86_64=('https://download.visualstudio.microsoft.com/download/pr/fdd9ecec-56b4-40f4-b762-d7efe24fc3cd/ffef51844c92afa6714528e10609a30f/dotnet-sdk-3.1.403-linux-x64.tar.gz')
-sha512sums_armv7h=('9f1293ef8f3abf5c6a8da7f963de4408d5aed6a9ee29a2c84655871574041980d8a4bb5b608ea129b1bd392890dc577d11c138bd54ce91745cb4960be697cb4e')
-sha512sums_aarch64=('c0f5070deca932d67a80b06268a69146ca403f1657e49d509513b5fe15cb5224cdfb5bec9cd2e63db6c83a48f3cb64d23d8cc30fcd98c620d9936544dbb6ce0b')
-sha512sums_x86_64=('0a0319ee8e9042bf04b6e83211c2d6e44e40e604bff0a133ba0d246d08bff76ebd88918ab5e10e6f7f0d2b504ddeb65c0108c6539bc4fbc4f09e4af3937e88ea')
+source_armv7h=('https://download.visualstudio.microsoft.com/download/pr/e8912d3b-483b-4d6f-bd3a-3066b3194313/20f2261fe4e16e55df4bbe03c65a7648/dotnet-sdk-5.0.100-linux-arm.tar.gz')
+source_aarch64=('https://download.visualstudio.microsoft.com/download/pr/27840e8b-d61c-472d-8e11-c16784d40091/ae9780ccda4499405cf6f0924f6f036a/dotnet-sdk-5.0.100-linux-arm64.tar.gz')
+source_x86_64=('https://download.visualstudio.microsoft.com/download/pr/820db713-c9a5-466e-b72a-16f2f5ed00e2/628aa2a75f6aa270e77f4a83b3742fb8/dotnet-sdk-5.0.100-linux-x64.tar.gz')
+sha512sums_armv7h=('c61a0910e34a5d7bffee46835242c24a153bf346e0ef1b048a47d12e60408aa722cec0a08fa1461ab615a4f0d09ef470c479d393f93929837f18699c745c1314')
+sha512sums_aarch64=('5fceac0a9468097d66af25516da597eb4836b294ed1647ba272ade5c8faea2ed977a95d9ce720c44d71607fa3a0cf9de55afe0e66c0c89ab1cc6736945978204')
+sha512sums_x86_64=('bec37bfb327c45cc01fd843ef93b22b556f753b04724bba501622df124e7e144c303a4d7e931b5dbadbd4f7b39e5adb8f601cb6293e317ad46d8fe7d52aa9a09')
 
 package_dotnet-host-bin() {
   pkgdesc='A generic driver for the .NET Core Command Line Interface (binary)'
-  provides=("dotnet-host")
+  provides=("dotnet-host" "dotnet-host=${_runtimever}")
   conflicts=('dotnet-host')
 
   install -dm 755 "${pkgdir}"/usr/{bin,lib,share/{dotnet,licenses/dotnet-host}}
@@ -39,7 +39,7 @@ package_dotnet-host-bin() {
 
 package_dotnet-runtime-bin() {
   pkgdesc='The .NET Core runtime (binary)'
-  depends=('dotnet-host'
+  depends=("dotnet-host>=${_runtimever}"
            'glibc'
            'icu' 
            'krb5'
@@ -49,8 +49,8 @@ package_dotnet-runtime-bin() {
            'zlib'
   )
   optdepends=('lttng-ust: CoreCLR tracing')
-  provides=("dotnet-runtime-bin" "dotnet-runtime=${_runtimever}" "dotnet-runtime-3.1")
-  conflicts=("dotnet-runtime-bin" "dotnet-runtime=${_runtimever}" "dotnet-runtime-3.1")
+  provides=("dotnet-runtime-bin" "dotnet-runtime=${_runtimever}" "dotnet-runtime-5.0")
+  conflicts=("dotnet-runtime-bin" "dotnet-runtime=${_runtimever}" "dotnet-runtime-5.0")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -60,8 +60,8 @@ package_dotnet-runtime-bin() {
 package_aspnet-runtime-bin() {
   pkgdesc='The ASP.NET Core runtime (binary)'
   depends=('dotnet-runtime-bin')
-  provides=("aspnet-runtime-bin" "aspnet-runtime=${_runtimever}" "aspnet-runtime-3.1")
-  conflicts=("aspnet-runtime-bin" "aspnet-runtime=${_runtimever}" "aspnet-runtime-3.1")
+  provides=("aspnet-runtime-bin" "aspnet-runtime=${_runtimever}" "aspnet-runtime-5.0")
+  conflicts=("aspnet-runtime-bin" "aspnet-runtime=${_runtimever}" "aspnet-runtime-5.0")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -70,9 +70,15 @@ package_aspnet-runtime-bin() {
 
 package_dotnet-sdk-bin() {
   pkgdesc='The .NET Core SDK (binary)'
-  depends=('dotnet-runtime-bin' 'glibc')
-  provides=("dotnet-sdk-bin" "dotnet-sdk=${pkgver}" "dotnet-sdk-3.1")
-  conflicts=("dotnet-sdk-bin" "dotnet-sdk=${pkgver}" "dotnet-sdk-3.1")
+  depends=(
+    'dotnet-runtime-bin'
+    'glibc'
+    'dotnet-targeting-pack-bin'
+    'netstandard-targeting-pack-2.1')
+  optdepends=('aspnet-targeting-pack-bin: Build ASP.NET Core applications')
+  provides=("dotnet-sdk-bin" "dotnet-sdk=${pkgver}" "dotnet-sdk-5.0")
+  conflicts=("dotnet-sdk-bin" "dotnet-sdk=${pkgver}" "dotnet-sdk-5.0")
+
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   cp -dr --no-preserve='ownership' sdk templates "${pkgdir}"/usr/share/dotnet/
   ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-sdk-bin
@@ -91,8 +97,8 @@ package_netstandard-targeting-pack-bin() {
 package_dotnet-targeting-pack-bin() {
   pkgdesc='The .NET Core targeting pack (binary)'
   depends=(netstandard-targeting-pack-2.1)
-  provides=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-3.1)
-  conflicts=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-3.1)
+  provides=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-5.0)
+  conflicts=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-5.0)
 
   if [ $CARCH = 'x86_64' ]; then msarch=x64;
   elif [ $CARCH = 'armv7h' ]; then msarch=arm;
@@ -106,8 +112,8 @@ package_dotnet-targeting-pack-bin() {
 package_aspnet-targeting-pack-bin() {
   pkgdesc='The ASP.NET Core targeting pack (binary)'
   depends=(dotnet-targeting-pack-bin)
-  provides=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-3.1)
-  conflicts=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-3.1)
+  provides=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-5.0)
+  conflicts=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-5.0)
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
   cp -dr --no-preserve='ownership' packs/Microsoft.AspNetCore.App.Ref "${pkgdir}"/usr/share/dotnet/packs/
