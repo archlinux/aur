@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan dot steffens at gmail dot com>
 
 pkgbase=linux-covolunablu-gaming
-pkgver=5.8.3.arch1
+pkgver=5.9.6.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -21,7 +21,8 @@ source=(
   "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
   config         # the main kernel config file
   bfq-default.patch
-  futex-wait-multiple-5.2.1.patch
+  0001-futex-wait-multiple.patch
+  0002-futex-wait-multiple-proton-compatibility.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -32,7 +33,8 @@ sha256sums=('SKIP'
             '457d5c9717048cd5334ba3d14dfb37699ac1d2c6dc2fd1df93adb487d6921f2f'
             # -- covolunablu-gaming patches --
             '136fd376e27fd8503f0ea2c7c3df645fea60a9c05286b53e2bceb7ff8c1d0201'
-            'b8a9225b4b5cbabac26398d11cc26566e4407d150dacb92f3411c9bb8cc23942')
+            'cb37801751ea51bc7e784331132f9390b61e477491f103bec3b48f1e751c79b7'
+            'bbbbc90c25659c16f2697b509a15a3969bf0dd277e81b44718a8149e61b51dbc')
 
 export KBUILD_BUILD_HOST=covolunablu
 export KBUILD_BUILD_USER=$pkgbase
