@@ -6,6 +6,7 @@ pkgbase = utf8info-git
 	arch = x86_64
 	license = unknown
 	makedepends = curl
+	makedepends = git
 	source = utf8info-git::git+https://github.com/lunasorcery/utf8info.git
 	sha256sums = SKIP
 

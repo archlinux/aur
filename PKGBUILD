@@ -7,7 +7,7 @@ pkgdesc='Small utility that reads a UTF-8 stream and prints out the raw codepoin
 arch=('x86_64')
 url=https://github.com/lunasorcery/utf8info
 license=('unknown')
-makedepends=('curl')
+makedepends=('curl' 'git')
 source=("$pkgname"::"git+$url.git")
 sha256sums=('SKIP')
 
