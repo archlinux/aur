@@ -1,8 +1,6 @@
 post_install() {
 	cat <<- 'EOF'
 		after editing /etc/mautrix-telegram/config.yaml, generate a registration file using:
-		# mautrix-telegram -b /etc/mautrix-telegram/config.yaml -c /usr/share/mautrix-telegram/example-config.yaml -r /etc/mautrix-telegram/registration.yaml -g
-		then update the permissions/ownership using:
-		# systemd-tmpfiles --create --prefix /etc/mautrix-telegram
+		# mautrix-telegram -b /usr/share/mautrix-telegram/example-config.yaml -c /etc/mautrix-telegram/config.yaml -r /etc/mautrix-telegram/registration.yaml -g
 	EOF
 }

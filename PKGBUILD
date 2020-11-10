@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 pkgname=mautrix-telegram
 pkgver=0.8.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A Matrix-Telegram hybrid puppeting/relaybot bridge."
 url="https://github.com/tulir/mautrix-telegram"
 depends=('python' 'python-sqlalchemy' 'python-alembic' 'python-ruamel-yaml'
@@ -24,7 +24,7 @@ sha256sums=('1f227f50e84f643fc7633f1a8f336aa1e51db6c12628e983783c2995a41d497f'
 	'7d947a08bff4bf172346682d68af6071e5df556d16065b439aa312edc57e5e84'
 	'fce0a4f792e62d9440fe431fb6ab6c458139bcc801bc2b02bc1b3d8f2ff9fcbf'
 	'e6d4565350477d180c639cc1e0805d475ef036e870db671b22374e9c91f95c7c')
-backup=("etc/${pkgname}/config.yaml")
+backup=("etc/${pkgname}/config.yaml" "etc/${pkgname}/registration.yaml")
 install="${pkgname}.install"
 
 
@@ -35,6 +35,9 @@ prepare() {
 	# to prevent a nightmare during updates while tracking stable releases
 	sed -i -E 's/,?<[[:digit:]]*\.?[[:digit:]]+,?//g' requirements.txt
 	sed -i -E 's/,?<[[:digit:]]*\.?[[:digit:]]+,?//g' optional-requirements.txt
+	# create an empty registration file so that permissions get written properly from the get go
+	# this way secret keys are never world readable
+	touch registration.yaml
 }
 
 build() {
@@ -62,4 +65,5 @@ package() {
 	install -Dvm 644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
 	install -Dvm 640 "${pkgdir}${_shared_dir}/example-config.yaml" "${pkgdir}/etc/${pkgname}/config.yaml"
+	install -Dvm 640 registration.yaml "${pkgdir}/etc/${pkgname}/registration.yaml"
 }
