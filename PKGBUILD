@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=assemblyscript
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="TypeScript to WebAssembly compiler"
 arch=('any')
@@ -10,7 +10,7 @@ license=('apache')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/assemblyscript/-/assemblyscript-$pkgver.tgz")
-sha256sums=('40c94350e13bc2943950d4607aeac2aed33c4abc4a2c5559ba272dde2005dea1')
+sha256sums=('49d4c03c417e41c8b60cdd6fb511ad5d322240539e4d88828162636d2fe7ff1c')
 
 
 package() {
