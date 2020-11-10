@@ -19,10 +19,9 @@
 # Maintainer: sp1rit <sp1ritCS@protonmail.com>
 
 _basename=czkawka
-_releasever=1.0.0
 pkgname=${_basename}-git
-pkgver=1.0.0.8d263fd
-pkgrel=3
+pkgver=1.4.0.r0.gc62617d
+pkgrel=1
 pkgdesc="Multi functional app to find duplicates, empty folders etc."
 arch=(any)
 url="https://github.com/qarmin/czkawka"
@@ -35,7 +34,7 @@ md5sums=("SKIP" "bbc480c6106a7bd7dc73c3cc49a76961")
 
 pkgver() {
 	cd "$srcdir/${_basename}"
-	echo "${_releasever}.$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
