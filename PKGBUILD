@@ -1,14 +1,14 @@
-# Maintainer: Fabian Köhler <fabian2804 (AT) googlemail (DOT) com >
+# Maintainer: Fabian Köhler <fabian.koehler (AT) protonmail.ch>
 
 pkgname=dieharder
 pkgver=3.31.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A Random Number Test Suite"
 arch=('i686' 'x86_64')
 depends=('gsl')
 url="http://www.phy.duke.edu/~rgb/General/dieharder.php"
 license=('GPL')
-source=("http://www.phy.duke.edu/~rgb/General/dieharder/${pkgname}-${pkgver}.tgz"
+source=("http://webhome.phy.duke.edu/~rgb/General/dieharder/${pkgname}-${pkgver}.tgz"
         'autogen.patch'
         'stdint.patch')
 sha256sums=('6cff0ff8394c553549ac7433359ccfc955fb26794260314620dfa5e4cd4b727f'
