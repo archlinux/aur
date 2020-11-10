@@ -2,7 +2,7 @@
 
 pkgname=igb
 pkgver=5.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Driver for Intel ethernet network connection"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/e1000/files/igb%20stable/"
@@ -14,13 +14,13 @@ sha256sums=('18a12e6fb9e7719b28aec14f0bbe2f7093823f7bb2c47b3c622f1ad2baa861dd')
 
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   make -C "src"
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   _kernver="$(< /usr/src/linux/version)"
 
