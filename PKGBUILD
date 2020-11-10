@@ -9,8 +9,8 @@ _lang='EN'
 set -u
 pkgname=$(echo "konica-minolta-bizhub-${_driver}" | tr '[:upper:]' '[:lower:]')
 pkgver='1.23';
-pkgrel=1
-pkgdesc='CUPS PostScript printer driver for bizhub C658 C558 C458 C368 C308 C258'
+pkgrel=2
+pkgdesc='CUPS PostScript printer driver for bizhub (423 4750 4752 5020I 554E 652 750I 754 C35 C360 C360I C368 C3850 C3851 C650I C652D C658 C754 C759 WPH)'
 arch=('any')
 url='https://www.konicaminolta.eu/en/business-solutions/support/download-center.html'
 license=('custom:konica minolta commercial license')
