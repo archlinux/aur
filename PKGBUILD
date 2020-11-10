@@ -3,7 +3,7 @@
 
 pkgname=gotify-cli
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line interface for pushing messages to gotify/server"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/gotify/cli'
@@ -29,7 +29,7 @@ build() {
         -modcacherw \
         -ldflags "-linkmode=external
             -X \"main.Version=$pkgver\"
-            -X \"main.BuildDate=$(date -d@"$SOURCE_DATE_EPOCH" +%FT%TZ)\"
+            -X \"main.BuildDate=$(date -u -d@"$SOURCE_DATE_EPOCH" +%FT%TZ)\"
             -X \"main.Commit=$_commit\"" \
         -o gotify
 }
