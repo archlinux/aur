@@ -13,10 +13,12 @@ pkgbase = apm_planner
 	depends = qt5-declarative
 	depends = sdl2
 	depends = flite1
+	depends = alsa-lib
 	depends = libsndfile
 	depends = python
 	depends = python-pexpect
-	source = https://github.com/diydrones/apm_planner/archive/2.0.26.tar.gz
+	depends = openssl-1.0
+	source = apm_planner-2.0.26.tar.gz::https://github.com/diydrones/apm_planner/archive/2.0.26.tar.gz
 	sha256sums = 3ea1f3c55afc686b543a5f22e494558229aa807ed99696c90de60f00ff321021
 
 pkgname = apm_planner
