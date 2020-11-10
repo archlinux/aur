@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Hex-a-Hop
+Comment=A puzzle game based on hexagonal tiles
+Exec=hex-a-hop
+Icon=/usr/share/icons/hex-a-hop.png
+Terminal=false
+Type=Application
+Categories=Game;LogicGame;
+StartupNotify=false

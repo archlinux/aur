@@ -1,0 +1,20 @@
+pkgbase = hex-a-hop
+	pkgdesc = A puzzle game based on hexagonal tiles
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://hexahop.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sdl
+	depends = sdl_mixer
+	depends = sdl_ttf
+	source = https://downloads.sourceforge.net/project/hexahop/1.1.0/hex-a-hop-1.1.0.tar.gz
+	source = hex-a-hop.desktop
+	source = hex-a-hop.png
+	md5sums = cc8d065c2cc0fce9e08852b8c465175e
+	md5sums = 67da57b51973a20e11d94c4f557d8b1f
+	md5sums = 2198fd14ecc349f89e39b21eef012431
+
+pkgname = hex-a-hop
+
