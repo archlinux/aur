@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=kmdr
-pkgver=1.2.12
+pkgver=1.2.15
 pkgrel=1
 pkgdesc="The CLI tool for explaining commands from your terminal"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ediardo/kmdr-cli/archive/v$pkgver.tar.gz")
-sha256sums=('a79319f233f1d1f0bafce126aa1abba27ffaba2ac7c7b31e79c5309ac88bcb69')
+sha256sums=('8c9328f83e8b263dbae4a957ad61834eb1e78ebcc997cc46395cdf1686f6f71c')
 
 package() {
 	cd "$pkgname-cli-$pkgver"
