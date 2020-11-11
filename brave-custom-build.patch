@@ -152,3 +152,15 @@ index de984233dc..9414da92a3 100644
  
  #include "url/gurl.h"
  #include "extensions/common/url_pattern.h"
+diff --git a/brave/components/ipfs/browser/translate_ipfs_uri.cc b/brave/components/ipfs/browser/translate_ipfs_uri.cc
+index d3bf012a5f..794ba63eb7 100644
+--- a/brave/components/ipfs/browser/translate_ipfs_uri.cc
++++ b/brave/components/ipfs/browser/translate_ipfs_uri.cc
+@@ -6,6 +6,7 @@
+ #include "brave/components/ipfs/browser/translate_ipfs_uri.h"
+ 
+ #include <string>
++#include <algorithm>
+ 
+ #include "base/logging.h"
+ #include "brave/components/ipfs/common/ipfs_constants.h"

@@ -28,7 +28,7 @@ fi
 
 pkgname=brave
 pkgver=1.16.72
-pkgrel=1
+pkgrel=2
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
 url='https://www.brave.com/download'
@@ -68,7 +68,7 @@ sha256sums=('963a0a5f9da9e73333f9282a441374b4e1dee1c7bb91cae351c9cdfb995fe129'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '6f9ab35fa2c9e6e34ec454b829b7b87adaebc10cacecd1ac1daa67035ee44aba'
-            '3c0eb4433d1da4bca25f1f2bcd912986bc1eee123291395005587124a2293b9d'
+            'a6ab368b3e8f1768501cebdf0fe4bab331d16eb0aff581b42fa32b208081acf7'
             '69d8b7a439db1af4713245ddf5f44ca647283ba833a8733e848033ebdaf03cdc'
             '7514c6c81a64a5457b66494a366fbb39005563eecc48d1a39033dd06aec4e300'
             '7cace84d7494190e7882d3e637820646ec8d64808f0a2128c515bd44991a3790'
@@ -101,12 +101,11 @@ _unwanted_bundled_libs=(
   $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
 )
 
-depends+=(${_system_libs[@]})
-
 # Add depends if user wants a release with custom cflags and system libs
 if [ "$COMPONENT" = "4" ]; then
   depends+=('libpulse' 'pciutils')
-  makedepends+=('lld' 'libva' 'libpipewire02' 'python2-xcb-proto')
+  depends+=(${_system_libs[@]})
+  makedepends+=('lld' 'libva' 'libpipewire02' 'python2-xcb-proto' 'python2-setuptools')
 else
   makedepends+=('ncurses5-compat-libs')
 fi
