@@ -1,7 +1,7 @@
 # Maintainer: Thomas Mashos <thomas at mashos dot com>
 pkgname=syrinscape-online-player
-pkgver=1.4.8_p2
-pkgrel=2
+pkgver=1.4.10_p0
+pkgrel=1
 pkgdesc="Soundscape creator and sound design app for online games"
 arch=('x86_64')
 url="https://www.syrinscape.com"
@@ -13,7 +13,7 @@ options=(!strip)
 source=("syrinscape-${pkgver//_/-}-linux-online.tar.gz::https://www.syrinscape.com/online/"
         "local://syrinscape-online-player.desktop"
         )
-sha256sums=('c3d3bdad18de36060e536fae88b2cc2aa6474c3c9f2478f51d7b8a1dc4d674e8'  ## syrinscape-${pkgver//_/-}-linux-online.tar.gz
+sha256sums=('2cb55b12b5916d87ba510d11e311f2badc0e2a4ce957e623c45569b93816fe84'  ## syrinscape-${pkgver//_/-}-linux-online.tar.gz
             'SKIP'  ## syrinscape-online-player.desktop
           ) 
 
