@@ -3,7 +3,7 @@
 _pkgname=flake8-eradicate
 pkgname=python-$_pkgname
 
-pkgver=0.4.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Flake8 plugin to find commented out or dead code"
 
@@ -13,8 +13,13 @@ license=('MIT')
 
 depends=('python' 'python-setuptools' 'python-dephell' 'python-eradicate')
 
-source=("https://files.pythonhosted.org/packages/52/b5/ad7fce3e56fd4d9ff77ddcd4cebb8568a639bdbbbfa4b94eaae214d22d29/flake8-eradicate-0.4.0.tar.gz")
-sha512sums=('0e766dbe73b8d9879153517f69e882e9be7afaea6f6af87c8830496981203460ceeadeb2016f4785ba8af299433d5ce18125f853677c3a4d7403c3f655160f88')
+source=("https://github.com/sobolevn/$_pkgname/archive/$pkgver.zip")
+sha512sums=('2f83540ec278d9a6b7e72a82358c6bea31986c0d59a67e846e08cbf42a23998d7d8661911fa5e14c85fa839a1d27f65bbe7fef7b96e42113d29e393b76273130')
+
+prepare() {
+    cd "$_pkgname-$pkgver"
+    dephell deps convert --from pyproject.toml --to setup.py
+}
 
 package() {
     cd "$_pkgname-$pkgver"
