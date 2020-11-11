@@ -1,13 +1,13 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot' 'foot-terminfo')
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
 makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols')
 checkdepends=('check')
-depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'freetype2')
+depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'freetype2' 'foot-terminfo')
 source=(https://codeberg.org/dnkl/foot/archive/1.5.3.tar.gz
         https://codeberg.org/dnkl/tllist/archive/1.0.4.tar.gz
         https://codeberg.org/dnkl/fcft/archive/2.3.1.tar.gz)
@@ -54,7 +54,6 @@ check() {
 
 package_foot() {
   pkgdesc="Wayland terminal emulator - fast, lightweight and minimalistic"
-  optdepends=('foot-terminfo: terminfo for foot')
 
   cd foot
   DESTDIR="${pkgdir}/" ninja -C build install
