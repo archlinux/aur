@@ -3,7 +3,7 @@
 _pkgname=darglint
 pkgname=python-$_pkgname
 
-pkgver=1.5.3
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="A python documentation linter which checks that the docstring description matches the definition."
 
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('python')
 
 source=("https://github.com/terrencepreilly/$_pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('9e5463a39eff53ce55b1def3b09c7d703dfed80eb7990bc48be109b074d7ccf2ecef5cdc54b1aa09ff9a6cf0e802a851579fc612f3b230e9a3c556e8e4434f0d')
+sha512sums=('7f93da8922049fd1666e8873e7c01434dfaee8f999603fe212a2c3f86064e7d75a840c347dfb3b7c378c5a1b6f7df91a7975694d3f1e351965da44452dc57aae')
 
 package() {
     cd "$_pkgname-$pkgver"
