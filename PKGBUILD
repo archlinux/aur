@@ -91,16 +91,7 @@ if [ -z ${use_ns+x} ]; then
   use_ns=n
 fi
 
-#Enable/disable PDS CPU scheduler
-
-## Enable PDS CPU scheduler by default https://gitlab.com/alfredchen/linux-pds
-## Set variable "use_pds" to: n to disable (stock Xanmod)
-##                            y to enable
-if [ -z ${use_pds+x} ]; then
-  use_pds=y
-fi
-
-#use env _microarchitecture=(0-42) use_numa=(y/n) use_tracers=(y/n) use_ns=(y/n) use_pds=(y/n) makepkg -s ---> to overwhrite the default variables
+#use env _microarchitecture=(0-42) use_numa=(y/n) use_tracers=(y/n) use_ns=(y/n) makepkg -s ---> to overwhrite the default variables
 
 pkgbase=mainline-kernel
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-api-headers" "$pkgbase-docs")
@@ -175,11 +166,6 @@ prepare(){
     scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
   fi
 
-  if [ "$use_pds" = "y" ]; then
-    msg2 "Enabling PDS CPU scheduler by default..."
-    scripts/config --enable CONFIG_SCHED_PDS
-  fi
-
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
@@ -197,7 +183,7 @@ build(){
 }
 
 _package(){
-  pkgdesc="Mainline linux kernel and modules witch patch. NUMA disabled, FUNCTION_TRACER/GRAPH_TRACER disabled, CONFIG_USER_NS_UNPRIVILEGED disabled and PDS CPU scheduler enabled."
+  pkgdesc="Mainline linux kernel and modules witch patch. NUMA disabled, FUNCTION_TRACER/GRAPH_TRACER disabled and CONFIG_USER_NS_UNPRIVILEGED disabled."
   depends=("coreutils" "kmod" "initramfs" "mkinitcpio")
   optdepends=("linux-firmware" "crda")
   install=${pkgbase}.install
