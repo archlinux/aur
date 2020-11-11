@@ -10,7 +10,7 @@ depends=()
 makedepends=('rust' 'cargo')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 
-source=("https://github.com/wfxr/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 md5sums=('{{MD5SUM}}')
 
 build() {
