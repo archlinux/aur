@@ -1,7 +1,7 @@
 # Maintainer: Sampson Crowley <sampsonsprojects@gmail.com>
 
 pkgname=heroku-cli-bin
-pkgver=7.47.0
+pkgver=7.47.2
 pkgrel=1
 _builddir=cli-$pkgver-$pkgrel
 pkgdesc="CLI to Manage Heroku apps with forced auto-update removed. Packaged before release to save time and bandwidth."
@@ -13,8 +13,8 @@ makedepends=('npm')
 optdepends=('git: Deploying to Heroku')
 conflicts=('heroku-cli' 'heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
 source=("https://github.com/SampsonCrowley/heroku-cli-bin/raw/v$pkgver-$pkgrel/heroku-cli-bin-v$pkgver-$pkgrel.tar.xz")
-sha256sums=('6c549dd4dbb7202eb21bece4beacfad2c5b118d14a3819120e76a500a82fbd62')
-sha512sums=('5c06b5cdf46bb0061b3a0a4f99af325133d83a62925369036e36e41023029b4efb02645bf95cd32fa552a1738fbddc3fb4e034f4ffcb2583c7ab228e01588ee9')
+sha256sums=('0f9263eedc67b7ecd4113231ba1ef008c7fbd737f82657e50bed3350c9dcd34f')
+sha512sums=('838b9417b37af0512c2a8a22f18d04ace293a644833ba93c06975593d01f0878b83012f4c85207428c60d9ab2b2155c52af4ea589f251b719381d1ea2bd7f193')
 options=('!strip')
 provides=('heroku' 'heroku-cli')
 
