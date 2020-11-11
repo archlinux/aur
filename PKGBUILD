@@ -1,7 +1,7 @@
 # Maintainer: Yngve Levinsen <yngve.levinsen@ess.eu>
 
 pkgname=madx-git
-pkgver=5.06.01.r0.gf3764bce
+pkgver=5.06.01.r83.g5660e420
 pkgrel=1
 pkgdesc="Accelerator Optics simulation code, git master version"
 url="http://cern.ch/mad"
