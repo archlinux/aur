@@ -1,12 +1,13 @@
 pkgbase = carbon-ir-git
 	pkgdesc = The carbon intermediate representation language.
 	pkgver = r142.95caf18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RobbeDGreef/carbon-ir
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = make
+	depends = nasm
 	provides = libcarbon-ir.a
 	conflicts = carbon-ir
 	replaces = carbon-ir
