@@ -1,11 +1,12 @@
 pkgbase = pydance-git
 	pkgdesc = python ddr game (git)
 	pkgver = r978.29a3d0f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mbenkmann/pydance
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	depends = python2-pygame
 	provides = pydance
 	conflicts = pydance
