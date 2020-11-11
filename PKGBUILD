@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-tools
-_qtver=6.0.0-beta3
+_qtver=6.0.0-beta4
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,8 +18,8 @@ groups=(mingw-w64-qt6)
 _pkgfqn="qttools-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-windeployqt-Fix-name-of-qt6CoreName-variable.patch')
-sha256sums=('8409de28939c79dc3eb2d1bb8bac085f35f3dcc35df107633b474733aa33bba8'
-            '03ed0cf3fb604d773cae1de19c862e65e8a44a8245db0bfba750557e541f5620')
+sha256sums=('cd15384ed635fc9efa0f5f6679040082f138f28748a17f65b4b415a3d2e639ca'
+            '1f428c44520364d9a0dd03c4f017739fcaccec13a6800e69183c08c91a8d2f57')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
