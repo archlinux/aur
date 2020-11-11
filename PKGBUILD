@@ -1,4 +1,4 @@
-# Maintainer: Jonathon Fernyhough <jonathon at_manjaro dot_org>
+# Maintainer: Jonathon Fernyhough <jonathon at_m2x+dev>
 # Contributor: Aleksej Komarov <stylemistake@gmail.com>
 # Contributor: MKzero <info[at]linux-web-development[dot]de>
 # Upstream: Bitwig GmbH <support@bitwig.com>
@@ -13,7 +13,7 @@
 pkgname=bitwig-studio-beta
 _pkgname=bitwig-studio
 _pkgver=3.3
-pkgver=${_pkgver}beta1
+pkgver=${_pkgver}beta3
 pkgrel=1
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
 arch=('x86_64')
@@ -27,8 +27,9 @@ optdepends=('alsa-lib' 'oss' 'ffmpeg: MP3 support')
 provides=('bitwig-studio')
 options=(!strip)
 #source=("https://downloads.bitwig.com/secure/beta/${_pkgver}/bitwig-studio-${pkgver}.deb")
-source=("local://bitwig-studio-${pkgver}.deb")
-sha256sums=('e026d7ef896bbd575ee632a9dc1f1ce31773ca02251e5ef2d2fb09cde1793721')
+#source=("local://bitwig-studio-${pkgver}.deb")
+source=("$pkgname-$pkgver.deb::https://www.bitwig.com/dl/?id=422&os=installer_linux")
+b2sums=('171f5bd79cb64068b2ba4fc3c5aca69abd6fdc1ce93039395a04df3338772546b296d3103f84985251fd8883f74f273dcf7651a38c8ab052472fbde487c12902')
 
 prepare() {
 	msg2 "Unpacking archive contents..."
