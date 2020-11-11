@@ -1,7 +1,7 @@
 pkgbase = domoticz
 	pkgdesc = Web based home automation
 	pkgver = 2020.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.domoticz.com
 	install = domoticz.install
 	arch = i686
@@ -22,6 +22,7 @@ pkgbase = domoticz
 	depends = minizip
 	depends = cereal
 	depends = mosquitto
+	depends = jsoncpp
 	depends = python
 	source = https://github.com/domoticz/domoticz/archive/2020.2.tar.gz
 	source = domoticz.service
