@@ -7,8 +7,12 @@ pkgbase = wowup
 	license = GPL3
 	makedepends = nodejs
 	makedepends = npm
-	source = wowup-2.0.0.beta.9.tar.gz::https://github.com/jliddev/WowUp/archive/v2.0.0-beta.9.tar.gz
+	source = WowUp-2.0.0-beta.9.tar.gz::https://github.com/jliddev/WowUp/archive/v2.0.0-beta.9.tar.gz
+	source = wowup.desktop
+	source = run_wowup.sh
 	sha256sums = f40951174f5b04f4251fb73247258f7af342269908060d15bb26a702d1db18de
+	sha256sums = f8e0bbe6c138997f1dc1d9dfb83773cc6a8c4f6af254a73194a8874e078746b9
+	sha256sums = 154da83623df19a3224f9777db0375f386ea1b9c108ba0fe84213be1cef56493
 
 pkgname = wowup
 
