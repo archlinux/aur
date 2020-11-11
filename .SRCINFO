@@ -1,0 +1,17 @@
+pkgbase = agda-categories
+	pkgdesc = A new Categories library for Agda
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/agda/agda-categories
+	arch = x86_64
+	license = MIT
+	depends = agda=2.6.1.2
+	depends = agda-stdlib
+	options = staticlibs
+	source = agda-categories-0.1.4.tar.gz::https://github.com/agda/agda-categories/archive/v0.1.4.tar.gz
+	source = agda-categories.agda-lib.in
+	sha512sums = 42597d207507cd77f033857079fb4d4d6f5b1771c26a4f9441c4a3968c2eedf4e12cb33ca91d0ecf5d49c965a79a8f5c6435caf97e26319fb389d765f11d63fe
+	sha512sums = b5695a41517a58624caadfce121a57ed9cedc9570935bd84bc8b13fafc372c45e010239f7ea31ccd22ac6d605418f9160c7c62b5d43b9d8f76af9a264a7ff6cc
+
+pkgname = agda-categories
+
