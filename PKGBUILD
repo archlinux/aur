@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=qt6-quickcontrols2
-_qtver=6.0.0-beta3
+_qtver=6.0.0-beta4
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -16,7 +16,7 @@ makedepends=(cmake vulkan-headers ninja)
 groups=(qt6)
 _pkgfqn="${pkgname/6-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('7a36413613b6173ec92b42ef012f33b16686333c39fd5e064482774a17111846')
+sha256sums=('6b069eec4cbacec74c1ba8fd71d0e15edbe8e4ad5a37cca60e5b706b79d7f0e3')
 
 build() {
   cmake -G Ninja -B build -S $_pkgfqn
