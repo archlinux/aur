@@ -12,8 +12,7 @@ pkgdesc="Dynamic mathematics software with interactive graphics, algebra and spr
 arch=('any')
 url='https://www.geogebra.org/'
 license=('GPL3' 'CCPL:by-sa' 'CCPL:by-nc')
-depends=('desktop-file-utils' 'gsl' 'hicolor-icon-theme' 'java-runtime'
-         'shared-mime-info' 'xdg-utils')
+depends=('hicolor-icon-theme' 'java-runtime' 'xdg-utils')
 provides=("${pkgname//-5/}")
 conflicts=("${pkgname//-5/}")
 source=("https://download.geogebra.org/installers/5.0/GeoGebra-Linux-Portable-${pkgver//./-}.tar.bz2"
