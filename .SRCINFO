@@ -1,6 +1,6 @@
 pkgbase = microsoft-edge-dev-bin
 	pkgdesc = A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier
-	pkgver = 88.0.685.3
+	pkgver = 88.0.692.0
 	pkgrel = 1
 	url = https://www.microsoftedgeinsider.com/en-us/download
 	arch = x86_64
@@ -29,10 +29,10 @@ pkgbase = microsoft-edge-dev-bin
 	conflicts = edge
 	options = !strip
 	options = !zipman
-	source = https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_88.0.685.3-1_amd64.deb
+	source = https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_88.0.692.0-1_amd64.deb
 	source = microsoft-edge-dev.sh
 	source = Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf
-	sha256sums = 5ce078e08424d05e30df5eefe134f8a0ab6a0bd2127809724038bbf9415464a7
+	sha256sums = 15ea4753311191cf22c23b86ff49d5aca10e4a9664e9be812a9984a56e9c177a
 	sha256sums = 285afe53b2cd617ae7f4930a1d0befe12a97ae31c30cfad74e97bf695c6f6a8a
 	sha256sums = edf2ed596eb068f168287fc76aa713ad5e0afb59f0a0a47a4f29c0c124ade15e
 
