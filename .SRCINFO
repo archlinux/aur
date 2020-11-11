@@ -1,7 +1,7 @@
 pkgbase = aerc
 	pkgdesc = Email Client for your Terminal
-	pkgver = 0.4.0
-	pkgrel = 3
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/aerc
 	arch = x86_64
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = aerc
 	optdepends = dante: proxy support
 	provides = aerc
 	conflicts = aerc
-	source = aerc-0.4.0.tar.gz::https://git.sr.ht/~sircmpwn/aerc/archive/0.4.0.tar.gz
-	sha256sums = d369462cc0f76c33d804e586463e4d35d81fba9396ec08c3d3d0579e26091e17
+	source = aerc-0.5.1.tar.gz::https://git.sr.ht/~sircmpwn/aerc/archive/0.5.1.tar.gz
+	sha256sums = 8feb7f87aa210ab7d8b271c34ad39af13f553447994341b3c25e7a659ce37d46
 
 pkgname = aerc
 

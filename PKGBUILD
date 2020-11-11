@@ -3,8 +3,8 @@
 # Contributor: Drew DeVault <sir@cmpwn.com>
 
 pkgname=aerc
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.5.1
+pkgrel=1
 pkgdesc='Email Client for your Terminal'
 arch=('x86_64' 'i686')
 url='https://git.sr.ht/~sircmpwn/aerc'
@@ -15,7 +15,7 @@ optdepends=('w3m: html viewer support' 'dante: proxy support')
 provides=('aerc')
 conflicts=('aerc')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~sircmpwn/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('d369462cc0f76c33d804e586463e4d35d81fba9396ec08c3d3d0579e26091e17')
+sha256sums=('8feb7f87aa210ab7d8b271c34ad39af13f553447994341b3c25e7a659ce37d46')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
