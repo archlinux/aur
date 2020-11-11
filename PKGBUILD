@@ -1,6 +1,6 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='kahlo'
-pkgver='0.2.1'
+pkgver='0.2.2'
 pkgrel='1'
 pkgdesc='RSS-based YouTube subscription download tool'
 arch=('any')
@@ -8,7 +8,7 @@ url="https://gitlab.com/dpeukert/$pkgname"
 license=('GPL3')
 depends=('python>=3.8.0' 'youtube-dl>=2020.09.14')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('ebadbf367ad4c085086948834229e5f07f9a3fca547d38bab5d2b31da2db5280')
+sha256sums=('4db527abb3fe2dca8dce4cf9d951ba9acf20e5c06dcb5d40f330fd920adecb85')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver/"
