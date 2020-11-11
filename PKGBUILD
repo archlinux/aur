@@ -2,7 +2,7 @@
 
 pkgname=python-testflo
 pkgver=1.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple flow-based testing framework"
 url="https://github.com/OpenMDAO/testflo"
 license=('Apache')
