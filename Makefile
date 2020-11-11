@@ -3,7 +3,7 @@ REPO = rust-script
 PKGDESC = Run Rust files and expressions without any setup or compilation necessary
 PKGURL = https://rust-script.org
 PKGVER = 0.9.0
-PKGREL = 2
+PKGREL = 3
 
 MAINTAINER = $(shell git config user.name) <$(shell git config user.email)>
 PKGNAME = $(REPO)

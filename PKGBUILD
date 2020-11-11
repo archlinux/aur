@@ -2,7 +2,7 @@
 _pkgname=rust-script
 pkgname=rust-script
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Run Rust files and expressions without any setup or compilation necessary'
 arch=(i686 x86_64)
 url='https://rust-script.org'
@@ -12,8 +12,8 @@ makedepends=('rust>=1.47')
 conflicts=("rust-script-git" "rust-script-bin")
 provides=()
 
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fornwall/rust-script/archive/v${pkgver}.tar.gz")
+md5sums=('07f7feee49da7470f45aa0d83180e766')
 
 build() {
 	cd "$srcdir/${_pkgname}-${pkgver}"
