@@ -9,6 +9,7 @@ pkgbase = scrt-sfx
 	depends = glibc
 	depends = qt5-base
 	depends = icu63
+	depends = python2
 	options = !strip
 	source = local://scrt-sfx-8.7.3.2279.ubuntu19-64.tar.gz
 	md5sums = 013d9c16163ef344628db444c38c0384
