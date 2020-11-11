@@ -1,18 +1,18 @@
 #Maintainer: kevall474 <kevall474@tuta.io> <https://github.com/kevall474>
 pkgname=mesa-aco-rc
-pkgver=20.2.0_rc4
+pkgver=20.3.0_rc1
 pkgrel=1
-versiontag=20.2.0-rc4
+versiontag=20.3.0-rc1
 pkgdesc="Mesa rc release. ACO enable by default. More options are enable than the standard mesa package"
 arch=(x86_64)
 url="https://mesa3d.org/"
-license=('MIT')
+license=('MIT') 
 depends=("libdrm" "libelf" "libglvnd" "libomxil-bellagio" "libunwind" "libxdamage" "libxxf86vm" "llvm-libs"
-	       "lm_sensors" "wayland" "zstd" "libxshmfence" "libclc" "expat" "vulkan-icd-loader")
+	"lm_sensors" "wayland" "zstd" "libxshmfence" "libclc" "expat" "vulkan-icd-loader")
 makedepends=("bison" "flex" "valgrind" "meson" "ninja" "git" "ninjas2" "spirv-tools" "spirv-llvm-translator" "clang" "libxvmc"
-            "python" "python-appdirs" "python-mako" "python-evdev" "elfutils" "glslang" "libva" "libepoxy" "libxv" "libvdpau"
-            "libx11" "libxml2" "libxrandr"  "llvm" "libconfig" "gtk3" "wayland-protocols" "xorgproto" "patch" "libxv" "libxvmc"
-            "libepoxy" "gtk3")
+            "python" "python-appdirs" "python-mako" "python-evdev" "elfutils" "glslang" "libva" "libepoxy" "libxv" "libvdpau" 
+	    "libx11" "libxml2" "libxrandr"  "llvm" "libconfig" "gtk3" "wayland-protocols" "xorgproto" "patch" "libxv" "libxvmc" 
+	    "libepoxy" "gtk3")
 conflicts=("mesa-llvm" "mesa-llvm-rc" "mesa-aco")
 replaces=("mesa-llvm" "mesa-llvm-rc" "mesa-aco")
 source=("https://archive.mesa3d.org/mesa-${versiontag}.tar.xz"
@@ -50,6 +50,7 @@ build() {
 	-Dgallium-opencl=standalone \
 	-Dopencl-spirv=true \
 	-Dvulkan-drivers=amd,intel \
+	-Dfreedreno-kgsl=true \
 	-Dshader-cache=enabled \
 	-Dvulkan-overlay-layer=true \
 	-Dvulkan-device-select-layer=true \
@@ -68,6 +69,7 @@ build() {
 	-Dlmsensors=enabled \
 	-Dbuild-tests=true \
 	-Dbuild-aco-tests=true \
+	-Dinstall-intel-gpu-tests=true \
 	-Dselinux=false \
 	-Dosmesa=gallium \
 	-Dswr-arches=avx,avx2,knl,skx \
