@@ -1,16 +1,16 @@
-# Current Maintainer : Brian Filarsky <first initial last name at gmail>
+# Maintainer : Brian Filarsky <first initial last name at gmail>
 # Contributor: Mark Lee <mark@markelee.com>
 # Contributor: Familia < carlosfamilia at gmail dot com >
 pkgname=rstudio-server-preview-bin
-pkgver=1.4.1010
+pkgver=1.4.1013
 pkgrel=1
 pkgdesc="A integrated development environment (IDE) for R (binary preview version from RStudio official website)"
 arch=('x86_64')
 license=('GPL')
 url="http://www.rstudio.org/"
-depends=('r>=3.0.1' 'glibc>=2.7' 'libedit' 'psmisc' 'openssl-1.0')
+depends=('r>=3.0.1' 'sqlite' 'pam' 'postgresql-libs')
 conflicts=('rstudio-server' 'rstudio-server-git' 'rstudio-server-bin')
-sha256sums=('8527fa8d95235c1ca513a0f616caea151bde7dcca6441e24822847f77612ab64'
+sha256sums=('9568b183c1694471fa07b27cb562c07bc2a5ab1a8e0dda5b996c32f0739a2a29'
             '24b0545aa2a576c7d7480c0ef77d7641e2ebaadae856fd2a18f57871bd25fd88'
             '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92')
 provides=("rstudio-server=${pkgver}")
@@ -20,7 +20,7 @@ source=("https://s3.amazonaws.com/rstudio-ide-build/server/bionic/amd64/rstudio-
 install="${pkgname}".install
 
 package() {
-    msg "Converting debian package..."
+    printf "Converting debian package..."
 
     cd "${srcdir}"
     tar xf data.tar.xz -C "${pkgdir}"
