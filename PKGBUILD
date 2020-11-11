@@ -101,8 +101,8 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.9.7
-pkgrel=2
+pkgver=5.9.8
+pkgrel=1
 pkgdesc="Stable linux kernel, modules, headers, api-headers and docs"
 arch=(x86_64)
 url="https://www.kernel.org/"
