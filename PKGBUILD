@@ -10,7 +10,7 @@ _mozcver=2.25.4180.102
 _fcitxver=20201110
 _utdicdate=20201110
 pkgver=${_mozcver}.${_utdicdate}
-pkgrel=1
+pkgrel=2
 
 pkgname=mozc-ut-unified
 true && pkgname=('mozc-ut-unified' 'fcitx-mozc-ut-unified')
@@ -29,7 +29,7 @@ source=(
   https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
   https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip
   https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
-  'https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F26%2F26897%2Fmozcdic-ut-20201110.1.tar.bz2'
+  'https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F26%2F26897%2Fmozcdic-ut-20201110.1.tar.bz2'
 )
 
 sha1sums=(
@@ -67,7 +67,7 @@ prepare() {
   sed -i -e 's/-lc++//' src/gyp/common.gypi
 
   # Add UT dictionary
-  cat ${srcdir}/mozcdic-ut-${_utdicdate}.${pkgrel}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
+  cat ${srcdir}/mozcdic-ut-${_utdicdate}.*/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
 }
 
 build() {
@@ -80,10 +80,10 @@ build() {
 }
 
 package_mozc-ut-unified() {
-  pkgdesc="A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with NEologd UT dictionary and UT2 dictionary (all dictionaries enabled.)"
+  pkgdesc="A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with NEologd UT dictionary and UT2 dictionary (default dictionaries.)"
   arch=('i686' 'x86_64')
   depends=('qt5-base')
-  conflicts=('fcitx-mozc' 'mozc' 'fcitx-mozc-ut2' 'mozc-ut2' 'fcitx-mozc-ut' 'mozc-ut' 'fcitx-mozc-neologd-ut' 'mozc-neologd-ut' 'fcitx-mozc-neologd-ut+ut2')
+  conflicts=('fcitx-mozc' 'mozc' 'fcitx-mozc-ut2' 'mozc-ut2' 'fcitx-mozc-ut' 'mozc-ut' 'fcitx-mozc-neologd-ut' 'mozc-neologd-ut' 'fcitx-mozc-neologd-ut+ut2' 'mozc-ut-unified-full' 'fcitx-mozc-ut-unified-full')
   cd mozc-${_mozcver}/src
   install -D -m 755 out_linux/${_bldtype}/mozc_server "${pkgdir}/usr/lib/mozc/mozc_server"
   install -m 755 out_linux/${_bldtype}/mozc_tool "${pkgdir}/usr/lib/mozc/mozc_tool"
@@ -93,10 +93,10 @@ package_mozc-ut-unified() {
 }
 
 package_fcitx-mozc-ut-unified() {
-  pkgdesc="Fcitx engine module for Mozc with NEologd UT dictionary and UT2 dictionary (all dictionaries enabled.)"
+  pkgdesc="Fcitx engine module for Mozc with NEologd UT dictionary and UT2 dictionary (default dictionaries.)"
   arch=('i686' 'x86_64')
   depends=("mozc-ut-unified=${pkgver}" 'fcitx')
-  conflicts=('fcitx-mozc' 'mozc' 'fcitx-mozc-ut2' 'mozc-ut2' 'fcitx-mozc-ut' 'mozc-ut' 'fcitx-mozc-neologd-ut' 'mozc-neologd-ut' 'fcitx-mozc-neologd-ut+ut2')
+  conflicts=('fcitx-mozc' 'mozc' 'fcitx-mozc-ut2' 'mozc-ut2' 'fcitx-mozc-ut' 'mozc-ut' 'fcitx-mozc-neologd-ut' 'mozc-neologd-ut' 'fcitx-mozc-neologd-ut+ut2' 'mozc-ut-unified-full' 'fcitx-mozc-ut-unified-full')
 
   cd mozc-${_mozcver}/src
   for mofile in out_linux/${_bldtype}/gen/unix/fcitx/po/*.mo
