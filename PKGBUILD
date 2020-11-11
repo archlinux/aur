@@ -14,7 +14,6 @@ provides=('xdg-utils')
 conflicts=('xdg-utils')
 source=('git+https://github.com/karabaja4/mimejs.git')
 md5sums=('SKIP')
-options=('!strip')
 
 pkgver() {
   cd $_pkgname
