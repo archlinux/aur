@@ -1,7 +1,7 @@
 pkgbase = pydance
 	pkgdesc = python ddr game
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://icculus.org/pyddr/
 	arch = i686
 	arch = x86_64

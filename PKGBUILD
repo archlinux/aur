@@ -3,7 +3,7 @@
 
 pkgname=pydance
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="python ddr game"
 url="http://icculus.org/pyddr/"
 arch=('i686' 'x86_64')
@@ -34,6 +34,12 @@ md5sums=('b509dbcd29630f8fb96559c55a995402'
          '89baa4d0af462938256222269412df33'
          '70156d4215aa26ad2a823a36a12a7627'
          '66df8b9049aad5bb3a1689a7943e9108')
+
+prepare() {
+cd ${srcdir}/$pkgname-$pkgver
+sed -i '/env LOCALESDIR/s/\$(DESTDIR)//' Makefile.posix
+}
+
 build() {
 cd ${srcdir}/$pkgname-$pkgver
 find . -type f -perm 600 -exec chmod 644 '{}' \;
