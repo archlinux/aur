@@ -3,26 +3,27 @@
 
 pkgname=python-locust
 _name=${pkgname#python-}
-pkgver=1.0.3
-pkgrel=3
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="Developer friendly load testing framework"
 arch=('any')
 url='https://locust.io/'
 license=('MIT')
 depends=(
-	'python-gevent'
-	'python-flask'
-	'python-requests'
-	'python-msgpack'
-	'python-pyzmq'
-	'python-geventhttpclient'
 	'python-configargparse'
-	'python-psutil'
+	'python-flask'
 	'python-flask-basicauth'
+	'python-gevent'
+	'python-geventhttpclient'
+	'python-msgpack'
+	'python-psutil'
+	'python-pyzmq'
+	'python-requests'
+	'python-werkzeug'
 )
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('7c2e850a84275b6f7c5ad4a8abde3488df94c08d3b52e619d9c71cc6b8c853cb')
+sha256sums=('5da627e68b7830074c1eb3d37b6b58b429100d0c7d523e7876c7fe02be6d12cc')
 provides=("$pkgname")
 conflicts=("$pkgname")
 
