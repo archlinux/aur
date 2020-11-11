@@ -42,7 +42,7 @@ optdepends=(
 )
 provides=(lib32-sdl2)
 conflicts=(lib32-sdl2 lib32-sdl2-minimal-hg)
-source=("hg+http://hg.libsdl.org/SDL#branch=default")
+source=("hg+https://hg.libsdl.org/SDL#branch=default")
 sha512sums=('SKIP')
 
 pkgver() {
