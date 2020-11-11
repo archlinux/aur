@@ -1,14 +1,14 @@
 # Maintainer: a821
 
 pkgname=shiny-server
-pkgver=1.5.14.948
+pkgver=1.5.15.953
 pkgrel=1
 pkgdesc="Host Shiny applications over the web"
 arch=('x86_64')
 url="https://rstudio.com/shiny/server"
 license=('AGPL3')
-depends=('python' 'r')
-makedepends=('git' 'cmake' 'wget')
+depends=('r')
+makedepends=('git' 'cmake' 'wget' 'python')
 optdepends=(
     'r-shiny: build interactive web apps with R' # AUR
     'r-rmarkdown: convert R markdown docs to various formats' # AUR
