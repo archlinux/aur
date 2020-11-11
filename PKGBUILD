@@ -1,4 +1,4 @@
-# Maintainer: lefrade <lefrade@pm.me>
+# Maintainer: lefrade <lefrade@protonmail.com>
 
 _pkgname=kadimus
 pkgname="$_pkgname-git"
@@ -20,6 +20,11 @@ pkgver() {
   git describe --long --tags | sed -r 's/^v//g;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "$_pkgname"
+  sed -i "s/\.\/resource/\/usr\/share\/$pkgname/g" src/scan/scan.c
+}
+
 build() {
   cd "$_pkgname"
 	make
@@ -29,4 +34,6 @@ package() {
   cd "$_pkgname"
   install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 'license.txt' "$pkgdir/usr/share/licenses/$pkgname/license.txt"
+  install -Dm644 'resource/common_files.txt' "$pkgdir/usr/share/$pkgname/common_files.txt"
+  install -Dm644 'resource/errors.txt' "$pkgdir/usr/share/$pkgname/errors.txt"
 }
