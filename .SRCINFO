@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod
 	pkgdesc = Linux Xanmod
-	pkgver = 5.9.7
+	pkgver = 5.9.8
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -18,14 +18,14 @@ pkgbase = linux-xanmod
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.9.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.9.tar.sign
-	source = https://github.com/xanmod/linux/releases/download/5.9.7-xanmod1/patch-5.9.7-xanmod1.xz
+	source = https://github.com/xanmod/linux/releases/download/5.9.8-xanmod1/patch-5.9.8-xanmod1.xz
 	source = choose-gcc-optimization.sh
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06
 	sha256sums = SKIP
-	sha256sums = 41cef6becd35234e2689d619f4ec2b87d28d32677fa54a5cf5c00f2e57070a19
+	sha256sums = 79ab831897b6ef2ee6d56f7bc2e2c789aeaa56604a53ae93848fa7848b8756c4
 	sha256sums = 2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511
 	sha256sums = 6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991
 
