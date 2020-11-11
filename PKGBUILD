@@ -11,7 +11,7 @@
 # All patches are managed at https://github.com/Martchus/qtbase
 
 pkgname=mingw-w64-qt6-base-static
-_qtver=6.0.0-beta3
+_qtver=6.0.0-beta4
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -38,14 +38,14 @@ source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/s
         '0005-Fix-libjpeg-workaround-for-conflict-with-rpcndr.h.patch'
         '0006-Support-finding-MariaDB.patch'
         '0007-Allow-overriding-CMAKE_FIND_LIBRARY_SUFFIXES-to-pref.patch')
-sha256sums=('37a97e30cf769b8deaa65aff585968ffb78bda20409177fe46959cb591a53268'
-            '272d7231b65b6af60c897ff9ac645929976f75c30a9229670da98333fa598811'
-            'f95f407ce4ec738ee98b9219e197d4c1e0926cca35f63179114d598b2591e80a'
-            'cb8f9ef03daf86444572f21e38b514794aa23e4419983edde1118e93287750bf'
-            '399b81b9fd5bedfe135f60b1e91721a8edbaf267539754e27849532130b7077b'
-            '4311c05baf1da78f5acec304dbc53c402542aaa81268939251bda81cc004afd0'
-            '1200b9c57290fcb9e54e0bddf88536fe58b39ae2a24a3e2fd802cd16c7bfeb62'
-            '45201209696cce59d9e4f0358889eafb68c8e10b314892fac05692b24c301db7')
+sha256sums=('5cb57bf0c513eb48cf57115dc1f1792eb3092a412806b46b836b960f82e31b3e'
+            'bb9bec76506c3425d6fa2394c2c15cf8c8e84d6ce090f8cd9136c77e7a286d8f'
+            '9ba0563f3c47327ca2f51c864fc1916a4355f56f82da77dea81c8a90cf315579'
+            '37e533855b3b498bd1e93879aac05cc77dad3b2df64f9a61440aa2bcb73e9847'
+            '3bdb93179f5258aa87ce3c2b8e560e2ff9fc9446bfd4688b2faf46c5deb45fc8'
+            'f2f64e7b6bc2a3b7c4414fc4c857b206c597ee7174cdaadaccc51ca4c0f5ada1'
+            'bd3a50b6a034e647a36cc4bf6a37532d892561255cda3e6cbdaf5849e710b657'
+            'df804bde0b39e507f07cbedc18001ea8eb939497c89586e93dc1cbb8c878fbed')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
