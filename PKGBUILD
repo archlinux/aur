@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-utils'
-pkgver='1.11'
+pkgver='1.14'
 pkgrel='1'
 pkgdesc="Useful mathematical functions not in Perl."
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl>=0')
 makedepends=()
 url='https://metacpan.org/release/Math-Utils'
-source=('http://search.cpan.org/CPAN/authors/id/J/JG/JGAMBLE/Math-Utils-1.11.tar.gz')
-md5sums=('c9210ba57bf6a4290c717cdd8f399948')
-sha512sums=('047cb1a1e4bc7794dba4bd2d50cc0092b6cd6f5bf4567a693a386009ab9b104c2b56e82cff98bd1e3567311e7e1438addb5e88a09157c075705a00ade349bf9f')
-_distdir="Math-Utils-1.11"
+source=("http://search.cpan.org/CPAN/authors/id/J/JG/JGAMBLE/Math-Utils-${pkgver}.tar.gz")
+md5sums=('be0504c2d0e6c08bf59c9b7754eddb70')
+sha512sums=('b9e011a4b17eaa452de4ab978c87c593bf0195124fbc2d30a322bc4a571960686cc1b4b6a98ec5c90739569b77324bf0a239dafe52bdea28e0b0c7af18aca753')
+_distdir="Math-Utils-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
