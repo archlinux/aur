@@ -1,7 +1,7 @@
 pkgbase = suto
 	pkgdesc = suto is a Linux PAM authenticator which uses Android phone biometrics to verify user credentials for granting super-user access.
-	pkgver = 1.3.3
-	pkgrel = 2
+	pkgver = v1.4.0
+	pkgrel = 3
 	url = https://github.com/anjanik012/suto
 	arch = x86_64
 	license = GPL3
@@ -9,8 +9,8 @@ pkgbase = suto
 	makedepends = boost
 	depends = pam
 	depends = boost-libs
-	source = https://github.com/anjanik012/suto/releases/download/1.3.3/suto-1.3.3.tar.gz
-	sha256sums = 06832a4a521dc0871f877752af4e04effc8d1b6ee74eb9f651deaf43aab675f9
+	source = https://github.com/anjanik012/suto/releases/download/v1.4.0/suto-v1.4.0.tar.gz
+	sha256sums = 5781a5a5d2dcf8b958a7c25e1e6d37504b95e32f32f1b4ea3dc03099f9b580f6
 
 pkgname = suto
 	install = suto.install

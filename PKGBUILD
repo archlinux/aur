@@ -1,7 +1,7 @@
 # Maintainer: Shailesh Aanand <anaandshailu@gmail.com>
 pkgname=suto
-pkgver=1.3.3
-pkgrel=2
+pkgver=v1.4.0
+pkgrel=3
 pkgdesc="suto is a Linux PAM authenticator which uses Android phone biometrics to verify user credentials for granting super-user access."
 arch=('x86_64')
 url='https://github.com/anjanik012/suto'
@@ -17,7 +17,7 @@ replaces=()
 backup=()
 options=()
 source=("https://github.com/anjanik012/suto/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('06832a4a521dc0871f877752af4e04effc8d1b6ee74eb9f651deaf43aab675f9')
+sha256sums=('5781a5a5d2dcf8b958a7c25e1e6d37504b95e32f32f1b4ea3dc03099f9b580f6')
 
 prepare() {
 	cd "$pkgname-$pkgver"
