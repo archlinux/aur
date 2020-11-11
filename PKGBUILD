@@ -1,4 +1,5 @@
 # Maintainer: core_contingency <ccontingency(at)gmail(dot)com>
+# Maintainer: Quentin Bouvet <qbouvet[at]outlook(dot)com>
 # Contributor: ScarecrowDM <diego(dot)busnelli@hotmail(dot)com>
 # Contributor: Alex Xu (Hello71) <alex_y_xu@yahoo.ca>
 # Contributor: pyamsoft <pyam(dot)soft(at)gmail(dot)com>
