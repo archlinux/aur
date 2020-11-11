@@ -3,7 +3,7 @@
 pkgname=hepmc
 _pkgname=HepMC3
 pkgver=3.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A particle physics package for storing collision events from Monte Carlo generators"
 arch=('x86_64')
 url="http://hepmc.web.cern.ch/"
