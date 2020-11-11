@@ -9,6 +9,7 @@ pkgbase = libdesqwl-git
 	makedepends = git
 	depends = qt5-base
 	depends = wayfire
+	depends = wayland-protocols
 	provides = libdesqwl
 	conflicts = libdesqwl
 	source = git+https://gitlab.com/Desq/libdesqwl.git
