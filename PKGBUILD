@@ -11,7 +11,7 @@ depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 source_x86_64=("https://github.com/pineappleEA/pineappleEA.github.io/releases/download/EA-${pkgver}/Yuzu-EA-${pkgver}.AppImage")
 noextract=("Yuzu-EA-${pkgver}.AppImage")
-sha256sums_x86_64=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums_x86_64=('9816208f3a958c9ecae0615286ce7954187f5b4973fcb3845da564aa05954d53')
 
 prepare() {
     chmod +x "Yuzu-EA-${pkgver}.AppImage"
