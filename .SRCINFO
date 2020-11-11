@@ -1,6 +1,6 @@
 pkgbase = spqr
 	pkgdesc = Generate a QR code payload for initiating a SEPA transfer
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/aureooms/spqr
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = spqr
 	depends = grep
 	depends = sed
 	depends = bc
-	source = https://github.com/aureooms/spqr/archive/v1.0.0.tar.gz
+	source = https://github.com/aureooms/spqr/archive/v1.0.1.tar.gz
 	md5sums = SKIP
 
 pkgname = spqr
