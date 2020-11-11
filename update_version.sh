@@ -10,10 +10,10 @@ sink_version=$(curl -sSfL "https://lv.luzifer.io/catalog-api/obs-v4l2sink/latest
 }
 
 # First update OBS version
-grep -q "^obsver=${obs_version}$" PKGBUILD || {
+grep -q "^_obsver=${obs_version}$" PKGBUILD || {
 	pkgrel=$(($(awk -F '=' '/^pkgrel=/{print $2}' PKGBUILD) + 1))
 	sed -i \
-		-e "s/^obsver=.*/obsver=${obs_version}/" \
+		-e "s/^_obsver=.*/_obsver=${obs_version}/" \
 		-e "s/pkgrel=.*/pkgrel=${pkgrel}/" \
 		PKGBUILD
 }
