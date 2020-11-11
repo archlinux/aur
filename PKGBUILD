@@ -3,13 +3,13 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=pulseaudio-control
 _reponame="polybar-$pkgname" # expected to change
-pkgver=2.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Control PulseAudio from the polybar status bar'
 url="https://github.com/marioortizmanero/${_reponame}"
 license=('custom:MIT')
 source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('c806b6ea0d30079dd1f6f2c4a659ddca')
+md5sums=('e3498611f71361d3792455bb99f00854')
 arch=('any')
 depends=(
     'bash'
