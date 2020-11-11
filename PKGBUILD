@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=qt6-translations
-_qtver=6.0.0-beta3
+_qtver=6.0.0-beta4
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -16,7 +16,7 @@ makedepends=(cmake qt6-tools ninja)
 groups=(qt6)
 _pkgfqn="${pkgname/6-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('d3c661d33964f797794058af5fa593774f96b06cf2126b1a868839727b4d670f')
+sha256sums=('63ffd26df581cef6b2a47122917a241f6d4568f193a2907c9b57dd3013dce47e')
 
 build() {
   cmake -G Ninja -B build -S $_pkgfqn
