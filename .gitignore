@@ -1,5 +1,6 @@
 *.pkg.tar*
 *.src.tar*
-*.gz
+/eternity/
+/libADLMIDI/
 src
 pkg

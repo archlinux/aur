@@ -1,20 +1,21 @@
 pkgbase = eternity-engine
 	pkgdesc = An advanced Doom port with vanilla compatibility
-	pkgver = 4.00.00
-	pkgrel = 2
+	pkgver = 4.01.00
+	pkgrel = 1
 	url = http://eternity.youfailit.net/
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = cmake
 	depends = sdl2
 	depends = sdl2_mixer
 	depends = sdl2_net
 	depends = zlib
-	source = https://github.com/team-eternity/eternity/archive/4.00.00.tar.gz
-	source = 0001-Fix-crashes-under-SDL-2.0.9-for-Linux.patch
-	sha512sums = 1d78e8db65d8d2da4bea00944304ec4d6bbfab90d6ef913c1e1d64f7cbf6162284f5861e3356c501731ab3b8708e8310286f16e8430aeb50d79cfc2bd8ff7a9f
-	sha512sums = 1eeeefe1dd2fba0a1cb8799dc6eaaaa8989b84d0c79107ba792387fbba14a5453eb23aa83b3635f86e137dd305abf5c7f21fe1a761daaca955fc07bedcf87228
+	source = eternity::git+https://github.com/team-eternity/eternity.git#tag=4.01.00
+	source = git+https://github.com/Wohlstand/libADLMIDI.git
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = eternity-engine
 
