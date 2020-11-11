@@ -4,7 +4,7 @@
 
 pkgname=python-schedutils
 pkgver=0.6
-pkgrel=8
+pkgrel=9
 pkgdesc="Python interface for the Linux scheduler functions etc."
 arch=('x86_64')
 url="https://git.kernel.org/cgit/libs/python/python-schedutils/python-schedutils.git/"
