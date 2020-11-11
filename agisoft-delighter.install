@@ -1,28 +1,8 @@
 post_install() {
-    # Set the correct permission
-    chmod -R g=u /opt/agisoft/delighter
-    chmod -R o=u /opt/agisoft/delighter
-    chmod -R g-w /opt/agisoft/delighter
-    chmod -R o-w /opt/agisoft/delighter
-    chmod -R g=u /usr/share/licenses/agisoft-delighter/licenses
-    chmod -R o=u /usr/share/licenses/agisoft-delighter/licenses
-    chmod -R g-w /usr/share/licenses/agisoft-delighter/licenses
-    chmod -R o-w /usr/share/licenses/agisoft-delighter/licenses
+    # Display the name of executable
     echo
     echo "The launcher is called agisoft-delighter"
     echo
-}
-
-post_upgrade() {
-    # Set the correct permission
-    chmod -R g=u /opt/agisoft/delighter
-    chmod -R o=u /opt/agisoft/delighter
-    chmod -R g-w /opt/agisoft/delighter
-    chmod -R o-w /opt/agisoft/delighter
-    chmod -R g=u /usr/share/licenses/agisoft-delighter/licenses
-    chmod -R o=u /usr/share/licenses/agisoft-delighter/licenses
-    chmod -R g-w /usr/share/licenses/agisoft-delighter/licenses
-    chmod -R o-w /usr/share/licenses/agisoft-delighter/licenses
 }
 
 post_remove() {

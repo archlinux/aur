@@ -2,7 +2,7 @@
 _pkgname=delighter
 pkgname=agisoft-${_pkgname}
 pkgver=1.6.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A free stand-alone tool designed to remove shadows from model textures"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -17,8 +17,8 @@ sha256sums=('f645dd91dacf90dcac5ef60f2f2429a292219108852ad3ce4e7af3660ce16ecb'
             '6cc74a4ac8ec776ebea5eff2383ddaf2520bb0a47f7d2135a62277dbd9206921')
 
 build() {
-	# Create desktop entries
-	echo "[Desktop Entry]
+    # Create desktop entries
+    echo "[Desktop Entry]
 Type=Application
 Name=Agisoft De-Lighter
 Comment=Remove shadows from model textures
@@ -86,4 +86,14 @@ package() {
     
     # Create executables in /usr/bin
     install -Dm755 "$srcdir/agisoft-delighter" "$pkgdir/usr/bin/agisoft-delighter"
+
+    # Set correct permission
+    chmod -R g=u "$pkgdir/opt/agisoft/${_pkgname}"
+    chmod -R o=u "$pkgdir/opt/agisoft/${_pkgname}"
+    chmod -R g-w "$pkgdir/opt/agisoft/${_pkgname}"
+    chmod -R o-w "$pkgdir/opt/agisoft/${_pkgname}"
+    chmod -R g=u "$pkgdir/usr/share/licenses/$pkgname/licenses"
+    chmod -R o=u "$pkgdir/usr/share/licenses/$pkgname/licenses"
+    chmod -R g-w "$pkgdir/usr/share/licenses/$pkgname/licenses"
+    chmod -R o-w "$pkgdir/usr/share/licenses/$pkgname/licenses"
 }
