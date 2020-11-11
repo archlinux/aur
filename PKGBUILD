@@ -3,14 +3,14 @@
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
-# NOTE: This PKGBUILD is based on https://osdn.net/downloads/users/26/26921/fcitx-mozc-ut-2.25.4190.102.20201110.1.PKGBUILD/
+# NOTE: This PKGBUILD is based on https://osdn.net/downloads/users/26/26962/fcitx-mozc-ut-2.26.4206.102.20201129.1.PKGBUILD/
 
 ## Mozc compile option
 _bldtype=Release
 
-_mozcver=2.25.4190.102
+_mozcver=2.26.4206.102
 _fcitxver=20201111
-_utdicdate=20201110
+_utdicdate=20201129
 pkgver=${_mozcver}.${_utdicdate}
 pkgrel=1
 
@@ -26,18 +26,18 @@ source=(
   googletest-release-1.10.0.tar.gz::https://github.com/google/googletest/archive/release-1.10.0.tar.gz
   protobuf-3.13.0.tar.gz::https://github.com/protocolbuffers/protobuf/archive/v3.13.0.tar.gz
   https://osdn.net/users/utuhiro/pf/utuhiro/dl/fcitx-mozc-${_fcitxver}.patch
-  https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
+  https://osdn.net/users/utuhiro/pf/utuhiro/dl/fcitx-mozc-icons.tar.gz
   https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozcdic-ut-${_utdicdate}.${pkgrel}.tar.bz2
 )
 
 sha1sums=(
-  'adf4968191ea1f9837b1f9d5d0aa47ac1e2ddee2'
+  'a6bd5f40b623aef4e77c20fdcc208ba7ee75e1ee'
   '1dd3f0a937c3678437646d26ca6784bd6a9b2b26'
   '9c89be7df9c5e8cb0bc20b3c4b39bf7e82686770'
   '2160cfb354148da3fb3891b267c2edc7e3eb5c30'
   '38de276494e299dc7e4816dfd95403fd0fdf8601'
-  '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d'
-  'e91e7f67c48f59cd67787e5e6af98946e9a53b1c'
+  'e930c580ecd0c9e0cecb57d148122c9122d4859c'
+  'eb6fc52789044238b81596479107239e491c4f25'
 )
 
 prepare() {
