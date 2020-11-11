@@ -5,7 +5,7 @@
 
 pkgname=libxml2
 pkgver=2.9.10
-pkgrel=6
+pkgrel=7
 pkgdesc='XML parsing library, version 2'
 url='http://www.xmlsoft.org/'
 arch=(x86_64)
