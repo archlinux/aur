@@ -3,7 +3,7 @@
 
 pkgname=sencha-cmd
 pkgver=7.3.0.19
-pkgrel=1
+pkgrel=2
 pkgdesc='Sencha Cmd provides a collection of powerful, time-saving features that work together and in conjunction with the Sencha Ext JS and Sencha Touch frameworks'
 url='https://www.sencha.com/products/extjs/cmd-download/'
 arch=('x86_64')
@@ -17,6 +17,7 @@ sha512sums=(
 	'e04cb4a5cddf618ba1192b22dc655da5269cf0133358de9dff6448ddf60ee310717f0a93a063465e849206457dc5e06a1ef77943cb6f8a51277577ac0f0bdf4a'
 	'fda827d9cae0859f37c4b588ae4e1ad3e8e5b6316d23f070691db566291d5a10d17c03934c90d17a9ed9a88a6b80be9e2f4c74fcb25112fe0a3fce3154495915'
 )
+options=(!strip)
 
 prepare() {
 	rm -rf Sencha

@@ -1,7 +1,7 @@
 pkgbase = sencha-cmd
 	pkgdesc = Sencha Cmd provides a collection of powerful, time-saving features that work together and in conjunction with the Sencha Ext JS and Sencha Touch frameworks
 	pkgver = 7.3.0.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sencha.com/products/extjs/cmd-download/
 	arch = x86_64
 	license = custom
@@ -11,6 +11,7 @@ pkgbase = sencha-cmd
 	provides = sencha-cmd-7
 	conflicts = sencha-cmd-5
 	conflicts = sencha-cmd-6
+	options = !strip
 	source = https://cdn.sencha.com/cmd/7.3.0.19/no-jre/SenchaCmd-7.3.0.19-linux-amd64.sh.zip
 	source = LICENSE
 	sha512sums = e04cb4a5cddf618ba1192b22dc655da5269cf0133358de9dff6448ddf60ee310717f0a93a063465e849206457dc5e06a1ef77943cb6f8a51277577ac0f0bdf4a
