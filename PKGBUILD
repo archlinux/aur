@@ -2,7 +2,7 @@
 _pkgname=metashape-pro
 pkgname=agisoft-${_pkgname}
 pkgver=1.6.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Phtogrammetric processing of digital images and 3D spatial data generation software. Professional edition"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -28,8 +28,8 @@ sha256sums=('cad3e5c7f27657c57b8308b37e01ad7ea8243c880b96312a6e301868a5c51948'
             '047225857a8b30362bab61f916ab1ddb19c0906959bf57c4ab5e499b8a9c4fc8')
 
 build() {
-	# Create desktop entries
-	echo "[Desktop Entry]
+    # Create desktop entries
+    echo "[Desktop Entry]
 Type=Application
 Name=Agisoft MetaShape Pro
 Comment=Photogrammetric processing software
@@ -39,7 +39,7 @@ Icon=agisoft-metashape-pro
 Terminal=false
 Categories=Science;ImageProcessing" > "$srcdir/agisoft-metashape-pro.desktop"
 
-	echo "[Desktop Entry]
+    echo "[Desktop Entry]
 Type=Application
 Name=Agisoft Network Monitor
 Comment=Monitor the network cluster of MetaShape
@@ -48,7 +48,7 @@ Icon=agisoft-network-monitor
 Terminal=false
 Categories=Science;ImageProcessing" > "$srcdir/agisoft-network-monitor.desktop"
 
-	echo "[Desktop Entry]
+    echo "[Desktop Entry]
 Type=Application
 Name=Agisoft Viewer
 Comment=Visualise the MetaShape output 3D data
@@ -112,41 +112,51 @@ Categories=Science;ImageProcessing" > "$srcdir/agisoft-viewer.desktop"
 
 package() {
     # Move extracted folder to opt
-	cd "$pkgdir"
-	mkdir -p "opt/agisoft"
-	mv "${srcdir}/${_pkgname}" "${pkgdir}/opt/agisoft/"
-	
-	# Install licenses
-	cd opt/agisoft/${_pkgname}
-	install -Dm644 eula.txt "$pkgdir/usr/share/licenses/$pkgname/eula.txt"
-	mv licenses "$pkgdir/usr/share/licenses/$pkgname"
-	rm eula.txt
-	
-	# Move desktop entries
-	mkdir -p "${pkgdir}/usr/share/applications/"
-	mv "${srcdir}/agisoft-metashape-pro.desktop" "${pkgdir}/usr/share/applications/"
-	mv "${srcdir}/agisoft-network-monitor.desktop" "${pkgdir}/usr/share/applications/"
-	mv "${srcdir}/agisoft-viewer.desktop" "${pkgdir}/usr/share/applications/"
-	
-	# Create MIME type
-	mkdir -p "${pkgdir}/usr/share/mime/packages"
-	mv "${srcdir}/${pkgname}-mime.xml" "${pkgdir}/usr/share/mime/packages"
-	
-	# Move icons
-	for _res in 16x16 32x32 48x48 64x64 128x128; do
-	    mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/"
-	    mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/"
-	    mv "$srcdir/agisoft-metashape-pro_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/agisoft-metashape-pro.png"
-	    mv "$srcdir/agisoft-network-monitor_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/agisoft-network-monitor.png"
-	    mv "$srcdir/agisoft-viewer_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/agisoft-viewer.png"
-	    mv "$srcdir/application-agisoft-psx_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-pro-psx.png"
-	    mv "$srcdir/application-agisoft-psz_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-pro-psz.png"
-	    mv "$srcdir/application-agisoft-3dv_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-pro-3dv.png"
+    cd "$pkgdir"
+    mkdir -p "opt/agisoft"
+    mv "${srcdir}/${_pkgname}" "${pkgdir}/opt/agisoft/"
+
+    # Install licenses
+    cd opt/agisoft/${_pkgname}
+    install -Dm644 eula.txt "$pkgdir/usr/share/licenses/$pkgname/eula.txt"
+    mv licenses "$pkgdir/usr/share/licenses/$pkgname"
+    rm eula.txt
+
+    # Move desktop entries
+    mkdir -p "${pkgdir}/usr/share/applications/"
+    mv "${srcdir}/agisoft-metashape-pro.desktop" "${pkgdir}/usr/share/applications/"
+    mv "${srcdir}/agisoft-network-monitor.desktop" "${pkgdir}/usr/share/applications/"
+    mv "${srcdir}/agisoft-viewer.desktop" "${pkgdir}/usr/share/applications/"
+
+    # Create MIME type
+    mkdir -p "${pkgdir}/usr/share/mime/packages"
+    mv "${srcdir}/${pkgname}-mime.xml" "${pkgdir}/usr/share/mime/packages"
+
+    # Move icons
+    for _res in 16x16 32x32 48x48 64x64 128x128; do
+        mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/"
+        mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/"
+        mv "$srcdir/agisoft-metashape-pro_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/agisoft-metashape-pro.png"
+        mv "$srcdir/agisoft-network-monitor_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/agisoft-network-monitor.png"
+        mv "$srcdir/agisoft-viewer_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/agisoft-viewer.png"
+        mv "$srcdir/application-agisoft-psx_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-pro-psx.png"
+        mv "$srcdir/application-agisoft-psz_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-pro-psz.png"
+        mv "$srcdir/application-agisoft-3dv_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-pro-3dv.png"
     done
     
     # Create executables in /usr/bin
     install -Dm755 "$srcdir/agisoft-metashape-pro" "$pkgdir/usr/bin/agisoft-metashape-pro"
     install -Dm755 "$srcdir/agisoft-network-monitor" "$pkgdir/usr/bin/agisoft-network-monitor"
     install -Dm755 "$srcdir/agisoft-viewer" "$pkgdir/usr/bin/agisoft-viewer"
+
+    # Set correct permission
+    chmod -R g=u "$pkgdir/opt/agisoft/${_pkgname}"
+    chmod -R o=u "$pkgdir/opt/agisoft/${_pkgname}"
+    chmod -R g-w "$pkgdir/opt/agisoft/${_pkgname}"
+    chmod -R o-w "$pkgdir/opt/agisoft/${_pkgname}"
+    chmod -R g=u "$pkgdir/usr/share/licenses/$pkgname/licenses"
+    chmod -R o=u "$pkgdir/usr/share/licenses/$pkgname/licenses"
+    chmod -R g-w "$pkgdir/usr/share/licenses/$pkgname/licenses"
+    chmod -R o-w "$pkgdir/usr/share/licenses/$pkgname/licenses"
 }
 
