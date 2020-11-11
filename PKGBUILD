@@ -27,7 +27,7 @@ _cfg=qt6
 pkgname=syncthingtray-$_cfg
 _name=${pkgname%-$_cfg}
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing (using Qt 6)'
 license=('GPL')
@@ -39,7 +39,7 @@ depends=('qtutilities-qt6' 'qt6-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
 [[ $_js_provider == qml ]] && depends+=('qt6-declarative')
 [[ $_enable_kio_plugin ]] && optdepends+=('kio: KIO plugin for Syncthing actions in Dolphin')
 [[ $_enable_plasmoid ]] && optdepends+=('plasma-workspace: Plasmoid for Plasma 6 desktop')
-makedepends=('cmake' 'ninja' 'qt6-tools' 'mesa')
+makedepends=('cmake' 'ninja' 'qt6-tools' 'clang' 'mesa')
 checkdepends=('cppunit' 'syncthing' 'iproute2')
 [[ $_enable_kio_plugin ]] && makedepends+=('kio')
 [[ $_enable_plasmoid ]] && makedepends+=('plasma-framework' 'extra-cmake-modules')
@@ -73,7 +73,7 @@ build() {
     -DSYNCTHINGCTL_CONFIGURATION_TARGET_SUFFIX:STRING="$_cfg" \
     -DSYNCTHINGTRAY_CONFIGURATION_TARGET_SUFFIX:STRING="$_cfg" \
     -DQT_PACKAGE_PREFIX:STRING='Qt6' \
-    -DENABLE_QT_TRANSLATIONS:BOOL=OFF \
+    -DBUILTIN_TRANSLATIONS:BOOL=ON \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DWEBVIEW_PROVIDER="${_webview_provider}" \
     -DJS_PROVIDER="${_js_provider}" \
