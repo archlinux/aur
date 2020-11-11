@@ -4,7 +4,7 @@
 # Maintainer: whezzel <whezzel at gmail dot com>
 
 pkgname=brave-beta-bin
-pkgver=1.17.66
+pkgver=1.17.64
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default (beta binary release).'
 arch=('x86_64')
@@ -16,7 +16,6 @@ optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support')
 provides=("${pkgname}" 'brave-browser')
 conflicts=('brave' 'brave-git' 'brave-bin' 'brave-dev-bin' 'brave-nightly-bin')
-#source=("${pkgname}-${pkgver}.zip::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-v${pkgver}-linux-x64.zip"
 source=("${pkgname}-${pkgver}.zip::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-beta-${pkgver}-linux-amd64.zip"
         "LICENSE::https://raw.githubusercontent.com/brave/brave-browser/master/LICENSE"
         "${pkgname}.sh"
