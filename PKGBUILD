@@ -11,15 +11,15 @@ makedepends=(go)
 _org=github.com/OpenBazaar
 _repo=openbazaar-go
 source=("https://github.com/OpenBazaar/openbazaar-go/archive/v${pkgver}.tar.gz"
-  $pkgname.service
-  $pkgname.conf
-  $pkgname.sysuser.conf
+  "$pkgname.service"
+  "$pkgname.conf"
+  "$pkgname.sysuser.conf"
 )
 
 prepare() {
   cd "$srcdir"
   mkdir -p "src/${_org}"
-  if [ ! -e "src/${org}/${_repo}" ]; then
+  if [ ! -e "src/${_org}/${_repo}" ]; then
     ln -sf "${srcdir}/${_repo}-${pkgver}" "src/${_org}/${_repo}"
   fi
 }
