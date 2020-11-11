@@ -1,16 +1,17 @@
-# Maintainer: Andy Kluger <https://t.me/andykluger>
+# Maintainer: David Ellis <david@alantechnologies.com>
+# Thanks to Andy Kluger <https://t.me/andykluger> for the initial version of this!
 pkgname=alan
-pkgver=0.1.9
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="The Alan programming language compiler and runtime"
 url="https://github.com/alantech/alan"
 license=('AGPL3' 'Apache')
 arch=('x86_64')
 depends=()
-makedepends=(git nodejs-lts-erbium rust python2)
+makedepends=(git nodejs-lts-erbium rust python2 yarn)
 # optdepends=()
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('167335ee013d02eda97f0e8147dfbfa1a64428ab305f70c373b329f9fe5339b6')
+sha256sums=('13a92999cfb0a1e58538952019a3c5fa51f7cd093638b0ab9575a63b9817016f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

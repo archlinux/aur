@@ -1,6 +1,6 @@
 pkgbase = alan
 	pkgdesc = The Alan programming language compiler and runtime
-	pkgver = 0.1.9
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://github.com/alantech/alan
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = alan
 	makedepends = nodejs-lts-erbium
 	makedepends = rust
 	makedepends = python2
-	source = alan-0.1.9.tar.gz::https://github.com/alantech/alan/archive/v0.1.9.tar.gz
-	sha256sums = 167335ee013d02eda97f0e8147dfbfa1a64428ab305f70c373b329f9fe5339b6
+	source = alan-0.1.14.tar.gz::https://github.com/alantech/alan/archive/v0.1.14.tar.gz
+	sha256sums = 13a92999cfb0a1e58538952019a3c5fa51f7cd093638b0ab9575a63b9817016f 
 
 pkgname = alan
 
