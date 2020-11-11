@@ -13,7 +13,7 @@ arch=('x86_64')
 url="http://www.vandyke.com/products/securecrt/"
 license=('custom')
 
-depends=('openssl' 'glibc' 'qt5-base' 'icu63')
+depends=('openssl' 'glibc' 'qt5-base' 'icu63' 'python2')
 		
 source=("local://${pkgname}-${pkgver}.${incrver}.ubuntu19-64.tar.gz")
 md5sums=('013d9c16163ef344628db444c38c0384')
