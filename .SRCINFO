@@ -9,6 +9,7 @@ pkgbase = openbazaar
 	license = MIT
 	makedepends = npm
 	depends = electron6
+	optdepends = openbazaard: server daemon occasionally needed by front-end
 	options = !strip
 	source = https://github.com/OpenBazaar/openbazaar-desktop/archive/v2.4.8.tar.gz
 	source = openbazaar.js

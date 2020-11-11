@@ -8,6 +8,7 @@ arch=(i686 x86_64)
 url="https://github.com/OpenBazaar/openbazaar-desktop"
 license=('MIT')
 depends=('electron6')
+optdepends=('openbazaard: server daemon occasionally needed by front-end')
 makedepends=('npm')
 source=("https://github.com/OpenBazaar/openbazaar-desktop/archive/v$pkgver.tar.gz"
     "$pkgname.js"
