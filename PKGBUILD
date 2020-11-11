@@ -22,3 +22,4 @@ package() {
     make PREFIX=/usr DESTDIR="$pkgdir" install
 }
 md5sums=('b938d1667c733380ddfa40eba37994e7')
+md5sums=('b938d1667c733380ddfa40eba37994e7')
