@@ -3,7 +3,7 @@
 
 pkgname=pydance
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="python ddr game"
 url="http://icculus.org/pyddr/"
 arch=('i686' 'x86_64')
@@ -44,11 +44,15 @@ python2 setup.py
 package() {
 mkdir -p ${pkgdir}/etc
 cd ${srcdir}/$pkgname-$pkgver
-make  install DESTDIR=${pkgdir} PREFIX=/usr
+make install DESTDIR=${pkgdir} PREFIX=/usr
+find "${pkgdir}" -type f -exec chmod 644 '{}' \;
+find "${pkgdir}" -type d -exec chmod 755 '{}' \;
 rm -fr ${pkgdir}/usr/games
-install -D -m755 desktop.pydance ${pkgdir}/usr/share/applications/pydance.desktop
-install -D -m644 icon.png ${pkgdir}/usr/share/pixmaps/pydance.png
-install -D -m755 pydance.py ${pkgdir}/usr/bin/pydance
+install -Dm755 desktop.pydance ${pkgdir}/usr/share/applications/pydance.desktop
+install -Dm644 icon.png ${pkgdir}/usr/share/pixmaps/pydance.png
+install -Dm755 pydance.py ${pkgdir}/usr/bin/pydance
+chmod 755 "${pkgdir}/usr/share/games/pydance/pydance.py"
+
 cd $srcdir
 cp *.ogg *.dance *.png *.jpg ${pkgdir}/usr/share/games/pydance/songs/
 rm $pkgdir/usr/bin/pydance
