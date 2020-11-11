@@ -1,0 +1,9 @@
+12c12
+< everything:    	tmt example test_exc nl_ex sl_ex garch 
+---
+> everything:    	libnewmat.so tmt example test_exc nl_ex sl_ex garch 
+14a15,18
+> 
+> libnewmat.so: CXXFLAGS += -fPIC
+> libnewmat.so:   $(newmat_lobj)
+> 		gcc -shared $(newmat_lobj) -o $@

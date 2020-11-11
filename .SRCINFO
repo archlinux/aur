@@ -1,4 +1,4 @@
-pkgbase = newmat
+pkgbase = newmat-shared
 	pkgdesc = C++ matrix library
 	pkgver = 10
 	pkgrel = 1
@@ -6,11 +6,14 @@ pkgbase = newmat
 	arch = i686
 	arch = x86_64
 	license = custom
-	options = staticlibs
+	provides = newmat
+	conflicts = newmat
 	source = http://www.robertnz.net/ftp/newmat10.tar.gz
 	source = filelist
+	source = makefile.patch
 	sha256sums = 637d18c0363b8bb99c48eb04cce8c182ccbff771df0bf1e2d541e95f6eb34e7b
 	sha256sums = b707dfdf6f64c7bcea1f288845b967349aaa76b6b8fb43559138a9f70307ceee
+	sha256sums = 57a4875047ea1a4a71d70509cc1e7018c13e0a71bde8f0d7d16ba1cabbec30aa
 
-pkgname = newmat
+pkgname = newmat-shared
 
