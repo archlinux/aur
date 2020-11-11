@@ -1,6 +1,6 @@
 pkgbase = mozc-ut-unified-full
 	pkgver = 2.25.4180.102.20201110
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = i686
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = mozc-ut-unified-full
 	source = https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
 	source = https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip
 	source = https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
-	source = https://osdn.net/frs/chamber_redir.php?m=osdn&f=%2Fusers%2F26%2F26898%2Fmozcdic-ut-20201110.1.tar.bz2
+	source = https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F26%2F26898%2Fmozcdic-ut-20201110.1.tar.bz2
 	sha1sums = 96f5f005c8083533ba42c70570e85c5ca1a207a3
 	sha1sums = 824ae3a8fdd2c2bf2e667212e41312ffb2560640
 	sha1sums = 9c89be7df9c5e8cb0bc20b3c4b39bf7e82686770
