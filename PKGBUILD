@@ -2,36 +2,12 @@
 
 pkgname=openmarias
 pkgver=1.1.0.svn.r222
-pkgrel=3
+pkgrel=4
 pkgdesc="A Qt-based Marias card game."
 arch=('x86_64')
 url='https://sourceforge.net/projects/openmarias/'
 license=('GNU')
-depends=('bzip2'
-         'freetype2'
-         'gcc-libs'
-         'glib2'
-         'glibc'
-         'graphite'
-         'harfbuzz'
-         'icu'
-         'libgcrypt'
-         'libgpg-error'
-         'libpng'
-         'libx11'
-         'libxau'
-         'libxcb'
-         'libxdmcp'
-         'lz4'
-         'pcre'
-         'pcre2'
-         'qt5-base'
-         'systemd-libs'
-         'xz'
-         'zlib'
-         'zstd'
-         )
-makedepends=()
+depends=('qt5-base')
 source=('openmarias::svn+https://svn.code.sf.net/p/openmarias/code'
         'qt5_fix.diff'
         'path.diff'
