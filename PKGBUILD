@@ -1,6 +1,6 @@
 # Maintainer: acedron <acedrons@yahoo.co.jp>
 pkgname=abstouch-nux
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="An absolute touchpad input client for GNU/Linux."
 arch=('any')
@@ -21,5 +21,5 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  make PREFIX="${pkgdir}/usr" install
+  make PREFIX="${pkgdir}/usr" PREFIX_ETC="${pkgdir}/etc" install
 }
