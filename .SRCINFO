@@ -1,5 +1,5 @@
 pkgbase = qhull-7
-	pkgdesc = A general dimension code for computing convex hulls and related structures
+	pkgdesc = A general dimension code for computing convex hulls and related structures (shared lib in version 7)
 	pkgver = 2019.1
 	pkgrel = 1
 	url = http://www.qhull.org/
