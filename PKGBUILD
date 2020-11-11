@@ -40,7 +40,7 @@ prepare() {
 build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
-  export PKG_CONFIG"i686-pc-linux-gnu-pkg-config"
+  export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
   cd freetype2
   ./configure --prefix=/usr --disable-static --libdir=/usr/lib32
