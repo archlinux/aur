@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.9.5
+pkgver=5.9.8
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -42,9 +42,7 @@ source=(
   "0000-sphinx-workaround.patch"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=6ff12b302d01132b62eb35b1bb17a6d4a205b159"
-  "0002-mac80211_fix_regression_where_EAPOL_frames_were_sent.patch::https://git.archlinux.org/linux.git/patch/?id=a8d1c6536492648fdb3b44c7bc67f4b0c1128dc9"
-  "0003-ASOC-SOF-Intel-hda-codec-move-unused-label-to-correc.patch::https://git.archlinux.org/linux.git/patch/?id=5b1b8c64d5a2acbed265d40cb994b4ff2535bdae"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=b182b41dde931e1a8e9e2756f1934b3a1c62dc17"
   "bmq-fix-compilation-nr_cpus.patch::https://gitlab.com/alfredchen/linux-prjc/-/commit/c6e352a26de8e46f5737fed2b876516df82adad1.patch"
 )
 validpgpkeys=(
@@ -52,15 +50,13 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('8a0923b68ea2f3c846c34611d63f63b34fe697c30438df2979ae01f87d3e82e0'
+sha256sums=('7656733b316562662026ac82a7c0be41440e16bbf1bdc5447b119e34ff3b86a6'
             'SKIP'
-            '0e2eaf594442e56040ae67a0fc5becd523fbeafddf83dd3f28c18db27ca0a094'
+            '1c9a38f2cc7fea22ea51c9fd5c5715cb3aea37bd3b6a58766318a2e123518fcc'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
             'a18dee6e4eeb677adef61b4e695cbb800a9aa88e3f6673a6dcfef8a840dee0cc'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
             '7f4dda74fe07166c79348cff056ea1f0996be379887d86397dc46efc6c10d461'
-            'c5701c71e53c3516077af0fd8431c6d7e1a46e0bd917bc8545a0916c2cfa1e4d'
-            '1e75f300c97873ede9f0a4d4ec1d6ece9e8fe9cfa0400b59140aa9c1faefd549'
             '7cc22759cb74e884b2dcd603d760adb451fd1f2e5d24d472c32811b254566b7a')
 
 _kernelname=${pkgbase#linux}
