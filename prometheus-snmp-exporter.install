@@ -1,0 +1,5 @@
+post_install() {
+    echo "The generator is installed to /usr/bin/prometheus-snmp-generator"
+    echo ""
+    echo "Documentation is available in /usr/share/doc/prometheus-snmp-exporter"
+}

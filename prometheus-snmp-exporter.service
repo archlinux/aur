@@ -1,0 +1,17 @@
+[Unit]
+Description=Prometheus exporter for SNMP metrics
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+EnvironmentFile=-/etc/conf.d/prometheus-snmp-exporter
+ExecStart=/usr/bin/prometheus-snmp-exporter $SNMP_EXPORTER_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+User=snmp-exporter
+Group=snmp-exporter
+Restart=on-failure
+NoNewPrivileges=true
+ProtectSystem=true
+
+[Install]
+WantedBy=multi-user.target
