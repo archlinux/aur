@@ -1,0 +1,4 @@
+*.pkg.tar*
+cryptobox
+pkg
+src
