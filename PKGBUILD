@@ -10,7 +10,7 @@ pkgver=5.0.612.0
 pkgrel=1
 pkgdesc="Dynamic mathematics software with interactive graphics, algebra and spreadsheet"
 arch=('any')
-url='http://www.geogebra.org/'
+url='https://www.geogebra.org/'
 license=('GPL3' 'CCPL:by-sa' 'CCPL:by-nc')
 depends=('desktop-file-utils' 'gsl' 'hicolor-icon-theme' 'java-runtime'
          'shared-mime-info' 'xdg-utils')
