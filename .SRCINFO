@@ -17,6 +17,7 @@ pkgbase = foot-git
 	depends = pixman
 	depends = fontconfig
 	depends = freetype2
+	depends = foot-terminfo
 	source = git+https://codeberg.org/dnkl/foot.git
 	source = git+https://codeberg.org/dnkl/tllist.git
 	source = git+https://codeberg.org/dnkl/fcft.git
@@ -26,7 +27,6 @@ pkgbase = foot-git
 
 pkgname = foot-git
 	pkgdesc = Wayland terminal emulator - fast, lightweight and minimalistic
-	optdepends = foot-terminfo: terminfo for foot
 	provides = foot
 	conflicts = foot
 

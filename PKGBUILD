@@ -7,7 +7,7 @@ url=https://codeberg.org/dnkl/foot
 license=(mit)
 makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols')
 checkdepends=('check')
-depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'freetype2')
+depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'freetype2' 'foot-terminfo')
 source=(git+https://codeberg.org/dnkl/foot.git
         git+https://codeberg.org/dnkl/tllist.git
         git+https://codeberg.org/dnkl/fcft.git)
@@ -58,7 +58,6 @@ check() {
 
 package_foot-git() {
   pkgdesc="Wayland terminal emulator - fast, lightweight and minimalistic"
-  optdepends=('foot-terminfo: terminfo for foot')
   conflicts=('foot')
   provides=('foot')
 
