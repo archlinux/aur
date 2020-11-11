@@ -1,12 +1,12 @@
 _pkgname=libdesq
 pkgname=${_pkgname}-git
-pkgver=r48.f64f6b0
+pkgver=r70.070b841
 pkgrel=1
 pkgdesc="The DesQ library to handle X11 protocols, system calls, classes and functions to be used across the DesQ project."
 arch=('any')
 url="https://gitlab.com/DesQ"
 license=('none')
-depends=('qt5-base' 'qt5-x11extras' 'libxcomposite')
+depends=('qt5-base')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
