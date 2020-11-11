@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=eternity-engine-git
-pkgver=4.00.00.r852.a1b14298
+pkgver=4.01.00.r65.76d93cb3
 pkgrel=1
 pkgdesc="An advanced Doom port with vanilla compatibility"
 url="http://eternity.youfailit.net/"
@@ -11,9 +11,9 @@ depends=('sdl2' 'sdl2_mixer' 'sdl2_net' 'zlib')
 makedepends=('git' 'cmake')
 conflicts=(${pkgname%-git})
 source=(eternity::git+https://github.com/team-eternity/eternity.git
-       git+https://github.com/Wohlstand/libADLMIDI.git)
-sha512sums=('SKIP'
-            'SKIP')
+        git+https://github.com/Wohlstand/libADLMIDI.git)
+b2sums=('SKIP'
+        'SKIP')
 
 pkgver() {
   cd "${srcdir}/eternity"
