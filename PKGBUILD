@@ -2,12 +2,12 @@
 
 pkgname=etebase
 _pkgname=${pkgname}
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Etebase C library"
 arch=(x86_64)
 url="https://github.com/etesync/libetebase"
-license=('LGPL')
+license=('BSD-3-Clause')
 depends=('openssl')
 makedepends=('cargo' 'git')
 source=("${_pkgname}::git+https://github.com/etesync/libetebase.git?tag=v$pkgver")
