@@ -3,7 +3,7 @@
 _pkgname=duniterpy
 pkgname=python-$_pkgname
 
-pkgver=0.57.0
+pkgver=0.60.1
 pkgrel=1
 pkgdesc="Python APIs library to implement Duniter clients software"
 
@@ -15,7 +15,7 @@ provides=('duniterpy')
 depends=('python' 'python-setuptools' 'python-dephell' 'python-aiohttp' 'python-scrypt' 'python-libnacl' 'python-base58' 'attr')
 
 source=("https://git.duniter.org/clients/python/$_pkgname/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz")
-sha512sums=('b646c74413280aca1cf4825ef3b949235651dd34a810aa4b7b0961a1c2b4094501283a8b37012add84fbcfdd1fd5de8d47ea5438eed43689b212fb48e8d6273d')
+sha512sums=('3763470ca20d6de94f8516fd33f7fdd4013f7585475cc8e826ab557e7f4fa924dbf090f83465d382e6bf0b08266318367dcb0d7d0540a6c3ac5071440cb88956')
 
 prepare() {
     cd "$_pkgname-$pkgver"
