@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: nbebaw
-pkgname=boostchanger-appimage
+pkgname=boostchanger-git
 pkgver=1.4
 pkgrel=0
 pkgdesc="Control your CPU Turbo Boost with this App"
