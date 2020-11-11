@@ -1,6 +1,6 @@
-% layout 'mingw-w64-qt6-module', git_commit => 'c98a77599e01b14064277a2da4c26322bd750f54';
+% layout 'mingw-w64-qt6-module', git_commit => '1cca5f2fdbabbfca96978b8cc18e80135e0a9406';
 \
-_qtver=6.0.0-beta3
+_qtver=6.0.0-beta4
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
