@@ -3,14 +3,14 @@
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
-# NOTE: This PKGBUILD is based on https://osdn.net/downloads/users/26/26669/mozcdic-ut-20200924.1.PKGBUILD/
+# NOTE: This PKGBUILD is based on https://osdn.net/downloads/users/26/26669/mozcdic-ut-20201110.1.PKGBUILD/
 
 ## Mozc compile option
 _bldtype=Release
 
-_mozcver=2.23.2815.102
-_fcitxver=2.23.2815.102.1
-_utdicdate=20200924
+_mozcver=2.25.4180.102
+_fcitxver=20201110
+_utdicdate=20201110
 pkgver=${_mozcver}.${_utdicdate}
 pkgrel=1
 
@@ -18,69 +18,49 @@ pkgname=fcitx-mozc-ut
 arch=('i686' 'x86_64')
 url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('custom')
-makedepends=('clang' 'gyp' 'ninja' 'pkg-config' 'python' 'curl' 'gtk2' 'qt5-base' 'zinnia' 'fcitx' 'libxcb' 'glib2' 'bzip2' 'unzip')
+makedepends=('clang' 'gyp' 'ninja' 'pkg-config' 'python' 'curl' 'gtk2' 'qt5-base' 'fcitx' 'libxcb' 'glib2' 'bzip2' 'unzip')
 
 source=(
-  http://ftp.jp.debian.org/debian/pool/main/m/mozc/mozc_${_mozcver}+dfsg.orig.tar.xz
-  protobuf-3.5.2.tar.gz::https://github.com/protocolbuffers/protobuf/archive/v3.5.2.tar.gz
-  https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/usage_dict.txt.patch
-  https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/Fix-build-with-gcc8.patch
-  https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/Change-from-python2-code-to-python3.patch
-  https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/add_support_new_japanese_era.patch
-  https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitxver}.patch
+  https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozc-${_mozcver}.tar.bz2
+  abseil-cpp-20200923.1.tar.gz::https://github.com/abseil/abseil-cpp/archive/20200923.1.tar.gz
+  googletest-release-1.10.0.tar.gz::https://github.com/google/googletest/archive/release-1.10.0.tar.gz
+  protobuf-3.13.0.tar.gz::https://github.com/protocolbuffers/protobuf/archive/v3.13.0.tar.gz
+  https://osdn.net/users/utuhiro/pf/utuhiro/dl/fcitx-mozc-${_fcitxver}.patch
   https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
-  "mozcdic-ut-${_utdicdate}.${pkgrel}.tar.bz2::https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F26%2F26672%2Fmozcdic-ut-${_utdicdate}.${pkgrel}.tar.bz2"
+  "mozcdic-ut-${_utdicdate}.${pkgrel}.tar.bz2::https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F26%2F26897%2Fmozcdic-ut-${_utdicdate}.${pkgrel}.tar.bz2"
 )
 
 sha1sums=(
-  '7e0a39ffd5ea68ecadb792fc521c16b5be1f25cb'
-  'd0c551031828ed9c07cc683762353a67b1a17627'
-  'c6f5aac79c7e98fbda96de251d8f0d0787344ca9'
-  '4fe935b5c2d316119cf8957b6518b3b5e7bf6ecf'
-  'SKIP'
-  '13f8fbbc768d5042fb55d877acf2a73fc8b5e3f0'
-  '63a2b10e7d209c6216e2d912b2629efc44c637ea'
+  '96f5f005c8083533ba42c70570e85c5ca1a207a3'
+  '824ae3a8fdd2c2bf2e667212e41312ffb2560640'
+  '9c89be7df9c5e8cb0bc20b3c4b39bf7e82686770'
+  '2160cfb354148da3fb3891b267c2edc7e3eb5c30'
+  '8978279546e0a7297c6baa74ec7a7e437332a5c6'
   '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d'
-  'SKIP'
+  'e91e7f67c48f59cd67787e5e6af98946e9a53b1c'
 )
 
 prepare() {
-  cd mozc-${_mozcver}+dfsg
-  mkdir -p src/third_party
-  mv ${srcdir}/protobuf-3.5.2 src/third_party/protobuf
-  patch -Np1 -i ${srcdir}/usage_dict.txt.patch
-  patch -Np1 -i ${srcdir}/Fix-build-with-gcc8.patch
-  patch -Np1 -i ${srcdir}/Change-from-python2-code-to-python3.patch
-  patch -Np1 -i ${srcdir}/add_support_new_japanese_era.patch
+  cd mozc-${_mozcver}
+  rm -rf src/third_party
+  mkdir src/third_party
+  mv ${srcdir}/abseil-cpp-20200923.1 src/third_party/abseil-cpp
+  mv ${srcdir}/googletest-release-1.10.0 src/third_party/gtest
+  mv ${srcdir}/protobuf-3.13.0 src/third_party/protobuf
   patch -Np1 -i ${srcdir}/fcitx-mozc-${_fcitxver}.patch
 
-  # Avoid fcitx5 build errors
-  rm -rf src/unix/fcitx5/
-
-  # Add UT dictionary
-  cat ${srcdir}/mozcdic-ut-${_utdicdate}.${pkgrel}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
+  # Avoid build errors
+  sed -i -e 's/-stdlib=libc++//' src/gyp/common.gypi
+  sed -i -e 's/-lc++//' src/gyp/common.gypi
 }
 
 build() {
-  cd mozc-${_mozcver}+dfsg/src
+  cd mozc-${_mozcver}/src
 
   _targets="unix/fcitx/fcitx.gyp:fcitx-mozc unix/fcitx/fcitx.gyp:gen_fcitx_mozc_i18n"
 
-  GYP_DEFINES="use_libzinnia=1 document_dir=/usr/share/licenses/mozc" python build_mozc.py gyp --gypdir=/usr/bin --target_platform=Linux
+  GYP_DEFINES="document_dir=/usr/share/licenses/mozc" python build_mozc.py gyp --gypdir=/usr/bin --target_platform=Linux
   python build_mozc.py build -c $_bldtype $_targets
-}
-
-package_mozc-ut() {
-  pkgdesc="A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)"
-  arch=('i686' 'x86_64')
-  depends=('qt5-base' 'zinnia')
-  conflicts=('fcitx-mozc' 'mozc' 'fcitx-mozc-ut2' 'mozc-ut2' 'fcitx-mozc-neologd-ut' 'mozc-neologd-ut' 'fcitx-mozc-ut-unified' 'mozc-ut-unified')
-  cd mozc-${_mozcver}+dfsg/src
-  install -D -m 755 out_linux/${_bldtype}/mozc_server "${pkgdir}/usr/lib/mozc/mozc_server"
-  install -m 755 out_linux/${_bldtype}/mozc_tool "${pkgdir}/usr/lib/mozc/mozc_tool"
-
-  install -d "${pkgdir}/usr/share/licenses/$pkgname/"
-  install -m 644 ../LICENSE data/installer/*.html "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
 package_fcitx-mozc-ut() {
@@ -89,7 +69,7 @@ package_fcitx-mozc-ut() {
   depends=("mozc-ut=${pkgver}" 'fcitx')
   conflicts=('fcitx-mozc' 'fcitx-mozc-ut2' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-ut-unified')
 
-  cd mozc-${_mozcver}+dfsg/src
+  cd mozc-${_mozcver}/src
   for mofile in out_linux/${_bldtype}/gen/unix/fcitx/po/*.mo
   do
     filename=`basename $mofile`

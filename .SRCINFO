@@ -1,5 +1,5 @@
 pkgbase = fcitx-mozc-ut
-	pkgver = 2.23.2815.102.20200924
+	pkgver = 2.25.4180.102.20201110
 	pkgrel = 1
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = i686
@@ -13,36 +13,31 @@ pkgbase = fcitx-mozc-ut
 	makedepends = curl
 	makedepends = gtk2
 	makedepends = qt5-base
-	makedepends = zinnia
 	makedepends = fcitx
 	makedepends = libxcb
 	makedepends = glib2
 	makedepends = bzip2
 	makedepends = unzip
-	source = http://ftp.jp.debian.org/debian/pool/main/m/mozc/mozc_2.23.2815.102+dfsg.orig.tar.xz
-	source = protobuf-3.5.2.tar.gz::https://github.com/protocolbuffers/protobuf/archive/v3.5.2.tar.gz
-	source = https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/usage_dict.txt.patch
-	source = https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/Fix-build-with-gcc8.patch
-	source = https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/Change-from-python2-code-to-python3.patch
-	source = https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/add_support_new_japanese_era.patch
-	source = https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-2.23.2815.102.1.patch
+	source = https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozc-2.25.4180.102.tar.bz2
+	source = abseil-cpp-20200923.1.tar.gz::https://github.com/abseil/abseil-cpp/archive/20200923.1.tar.gz
+	source = googletest-release-1.10.0.tar.gz::https://github.com/google/googletest/archive/release-1.10.0.tar.gz
+	source = protobuf-3.13.0.tar.gz::https://github.com/protocolbuffers/protobuf/archive/v3.13.0.tar.gz
+	source = https://osdn.net/users/utuhiro/pf/utuhiro/dl/fcitx-mozc-20201110.patch
 	source = https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
-	source = mozcdic-ut-20200924.1.tar.bz2::https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F26%2F26672%2Fmozcdic-ut-20200924.1.tar.bz2
-	sha1sums = 7e0a39ffd5ea68ecadb792fc521c16b5be1f25cb
-	sha1sums = d0c551031828ed9c07cc683762353a67b1a17627
-	sha1sums = c6f5aac79c7e98fbda96de251d8f0d0787344ca9
-	sha1sums = 4fe935b5c2d316119cf8957b6518b3b5e7bf6ecf
-	sha1sums = SKIP
-	sha1sums = 13f8fbbc768d5042fb55d877acf2a73fc8b5e3f0
-	sha1sums = 63a2b10e7d209c6216e2d912b2629efc44c637ea
+	source = mozcdic-ut-20201110.1.tar.bz2::https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F26%2F26897%2Fmozcdic-ut-20201110.1.tar.bz2
+	sha1sums = 96f5f005c8083533ba42c70570e85c5ca1a207a3
+	sha1sums = 824ae3a8fdd2c2bf2e667212e41312ffb2560640
+	sha1sums = 9c89be7df9c5e8cb0bc20b3c4b39bf7e82686770
+	sha1sums = 2160cfb354148da3fb3891b267c2edc7e3eb5c30
+	sha1sums = 8978279546e0a7297c6baa74ec7a7e437332a5c6
 	sha1sums = 883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d
-	sha1sums = SKIP
+	sha1sums = e91e7f67c48f59cd67787e5e6af98946e9a53b1c
 
 pkgname = fcitx-mozc-ut
 	pkgdesc = Fcitx engine module for Mozc with Mozc UT Dictionary
 	arch = i686
 	arch = x86_64
-	depends = mozc-ut=2.23.2815.102.20200924
+	depends = mozc-ut=2.25.4180.102.20201110
 	depends = fcitx
 	conflicts = fcitx-mozc
 	conflicts = fcitx-mozc-ut2
