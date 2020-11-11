@@ -1,6 +1,6 @@
 pkgbase = qt6-quicktimeline
 	pkgdesc = Qt module for keyframe-based timeline construction
-	pkgver = 6.0.0beta3
+	pkgver = 6.0.0beta4
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = qt6-quicktimeline
 	makedepends = vulkan-headers
 	makedepends = ninja
 	depends = qt6-declarative
-	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-beta3/submodules/qtquicktimeline-everywhere-src-6.0.0-beta3.tar.xz
-	sha256sums = 7c98beed81d17f153e997448be264d20453fc1eafa3f3fbbdb1080b3e3e07e89
+	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-beta4/submodules/qtquicktimeline-everywhere-src-6.0.0-beta4.tar.xz
+	sha256sums = b3f6859cef67f0b2e21f75672b72110f9636b084dd0987ec1b2f54bc8212b322
 
 pkgname = qt6-quicktimeline
 
