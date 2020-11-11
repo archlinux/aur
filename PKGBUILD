@@ -2,7 +2,7 @@
 
 pkgname=carbon-ir-git
 pkgver=r142.95caf18
-pkgrel=2
+pkgrel=3
 pkgdesc="The carbon intermediate representation language."
 arch=(x86_64)
 url="https://github.com/RobbeDGreef/carbon-ir"
@@ -33,7 +33,7 @@ package() {
   mkdir -p ${pkgdir}/usr/{bin,lib,share}
   cp carbon-ir ${pkgdir}/usr/bin
   cp libcarbon-ir.a ${pkgdir}/usr/lib
-  mkdir -p ${pkdir}/usr/share/carbon-ir
-  cp LICENSE ${pkdir}/usr/share/carbon-ir
-  cp -r docs ${pkdir}/usr/share/carbon-ir
+  mkdir -p ${pkgdir}/usr/share/carbon-ir
+  cp LICENSE ${pkgdir}/usr/share/carbon-ir
+  cp -r docs ${pkgdir}/usr/share/carbon-ir
 }
