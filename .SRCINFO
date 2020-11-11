@@ -1,0 +1,15 @@
+pkgbase = qhull-7
+	pkgdesc = A general dimension code for computing convex hulls and related structures
+	pkgver = 2019.1
+	pkgrel = 1
+	url = http://www.qhull.org/
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = ninja
+	depends = glibc
+	source = http://www.qhull.org/download/qhull-2019-src-7.3.2.tgz
+	sha256sums = 2b7990558c363076261564f61b74db4d0d73b71869755108a469038c07dc43fb
+
+pkgname = qhull-7
+
