@@ -2,7 +2,7 @@
 _pkgname=metashape
 pkgname=agisoft-${_pkgname}
 pkgver=1.6.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Phtogrammetric processing of digital images and 3D spatial data generation software. Standard edition"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -21,8 +21,8 @@ sha256sums=('e17fe7cb83c93e9547fb1c0cfdc45bd3ef4e8e936f6d7e60239ab8fcaf6aa556'
             'd44fb70962175505fd3bfc0e96670e5bf4092c80446e0142cc91a3e0033e1009')
 
 build() {
-	# Create desktop entries
-	echo "[Desktop Entry]
+    # Create desktop entries
+    echo "[Desktop Entry]
 Type=Application
 Name=Agisoft MetaShape
 Comment=Photogrammetric processing software
@@ -70,33 +70,43 @@ Categories=Science;ImageProcessing" > "$srcdir/agisoft-metashape.desktop"
 
 package() {
     # Move extracted folder to opt
-	cd "$pkgdir"
-	mkdir -p "opt/agisoft"
-	mv "${srcdir}/${_pkgname}" "${pkgdir}/opt/agisoft/"
-	
-	# Install licenses
-	cd opt/agisoft/${_pkgname}
-	install -Dm644 eula.txt "$pkgdir/usr/share/licenses/$pkgname/eula.txt"
-	mv licenses "$pkgdir/usr/share/licenses/$pkgname"
-	rm eula.txt
-	
-	# Move desktop entries
-	mkdir -p "${pkgdir}/usr/share/applications/"
-	mv "${srcdir}/agisoft-metashape.desktop" "${pkgdir}/usr/share/applications/"
-	
-	# Create MIME type
-	mkdir -p "${pkgdir}/usr/share/mime/packages"
-	mv "${srcdir}/${pkgname}-mime.xml" "${pkgdir}/usr/share/mime/packages"
-	
-	# Move icons
-	for _res in 16x16 32x32 48x48 64x64 128x128; do
-	    mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/"
-	    mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/"
-	    mv "$srcdir/agisoft-metashape_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/agisoft-metashape.png"
-	    mv "$srcdir/application-agisoft-psx_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-psx.png"
-	    mv "$srcdir/application-agisoft-psz_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-psz.png"
+    cd "$pkgdir"
+    mkdir -p "opt/agisoft"
+    mv "${srcdir}/${_pkgname}" "${pkgdir}/opt/agisoft/"
+
+    # Install licenses
+    cd opt/agisoft/${_pkgname}
+    install -Dm644 eula.txt "$pkgdir/usr/share/licenses/$pkgname/eula.txt"
+    mv licenses "$pkgdir/usr/share/licenses/$pkgname"
+    rm eula.txt
+
+    # Move desktop entries
+    mkdir -p "${pkgdir}/usr/share/applications/"
+    mv "${srcdir}/agisoft-metashape.desktop" "${pkgdir}/usr/share/applications/"
+
+    # Create MIME type
+    mkdir -p "${pkgdir}/usr/share/mime/packages"
+    mv "${srcdir}/${pkgname}-mime.xml" "${pkgdir}/usr/share/mime/packages"
+
+    # Move icons
+    for _res in 16x16 32x32 48x48 64x64 128x128; do
+        mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/"
+        mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/"
+        mv "$srcdir/agisoft-metashape_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/agisoft-metashape.png"
+        mv "$srcdir/application-agisoft-psx_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-psx.png"
+        mv "$srcdir/application-agisoft-psz_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-psz.png"
     done
     
     # Create executables in /usr/bin
     install -Dm755 "$srcdir/agisoft-metashape" "$pkgdir/usr/bin/agisoft-metashape"
+
+    # Set correct permission
+    chmod -R g=u "$pkgdir/opt/agisoft/${_pkgname}"
+    chmod -R o=u "$pkgdir/opt/agisoft/${_pkgname}"
+    chmod -R g-w "$pkgdir/opt/agisoft/${_pkgname}"
+    chmod -R o-w "$pkgdir/opt/agisoft/${_pkgname}"
+    chmod -R g=u "$pkgdir/usr/share/licenses/$pkgname/licenses"
+    chmod -R o=u "$pkgdir/usr/share/licenses/$pkgname/licenses"
+    chmod -R g-w "$pkgdir/usr/share/licenses/$pkgname/licenses"
+    chmod -R o-w "$pkgdir/usr/share/licenses/$pkgname/licenses"
 }

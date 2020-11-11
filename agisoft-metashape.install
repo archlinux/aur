@@ -1,13 +1,5 @@
 post_install() {
-    # Set the correct permission
-    chmod -R g=u /opt/agisoft/metashape
-    chmod -R o=u /opt/agisoft/metashape
-    chmod -R g-w /opt/agisoft/metashape
-    chmod -R o-w /opt/agisoft/metashape
-    chmod -R g=u /usr/share/licenses/agisoft-metashape/licenses
-    chmod -R o=u /usr/share/licenses/agisoft-metashape/licenses
-    chmod -R g-w /usr/share/licenses/agisoft-metashape/licenses
-    chmod -R o-w /usr/share/licenses/agisoft-metashape/licenses
+    # Remind the user to activate the product
     echo
     echo "The launcher is called agisoft-metashape"
     echo
@@ -17,18 +9,6 @@ post_install() {
     echo
     echo "NOTE: the number after "--activate" is your node-locked license"
     echo
-}
-
-post_upgrade() {
-    # Set the correct permission
-    chmod -R g=u /opt/agisoft/metashape
-    chmod -R o=u /opt/agisoft/metashape
-    chmod -R g-w /opt/agisoft/metashape
-    chmod -R o-w /opt/agisoft/metashape
-    chmod -R g=u /usr/share/licenses/agisoft-metashape/licenses
-    chmod -R o=u /usr/share/licenses/agisoft-metashape/licenses
-    chmod -R g-w /usr/share/licenses/agisoft-metashape/licenses
-    chmod -R o-w /usr/share/licenses/agisoft-metashape/licenses
 }
 
 pre_remove() {
