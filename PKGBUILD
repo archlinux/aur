@@ -102,7 +102,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 pkgver=5.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Stable linux kernel, modules, headers, api-headers and docs"
 arch=(x86_64)
 url="https://www.kernel.org/"
@@ -169,6 +169,11 @@ prepare(){
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
+  # Setting version/localversion
+  echo "Setting localversion..."
+  scripts/setlocalversion --save-scmversion
+  echo "-${pkgbase}" > localversion
+
   # make olddefconfig
   echo "make olddefconfig"
   make olddefconfig
@@ -208,9 +213,9 @@ _package(){
   echo "Copy System.map to "${pkgdir}"/boot/System.map-${pkgbase}"
   cp System.map "${pkgdir}"/boot/System.map-${pkgbase}
 
-  # Copy bzImage to "${pkgdir}"/usr/lib/modules/${pkgver}/vmlinuz
-  echo "Copy bzImage to "${pkgdir}"/usr/lib/modules/${pkgver}/vmlinuz"
-  cp arch/x86/boot/bzImage "${pkgdir}"/usr/lib/modules/${pkgver}/vmlinuz
+  # Copy bzImage to "${pkgdir}"/usr/lib/modules/${pkgver}-${pkgbase}/vmlinuz
+  echo "Copy bzImage to "${pkgdir}"/usr/lib/modules/${pkgver}-${pkgbase}/vmlinuz"
+  cp arch/x86/boot/bzImage "${pkgdir}"/usr/lib/modules/${pkgver}-${pkgbase}/vmlinuz
 
   # Copy linux-kernel.preset to "${pkgdir}"/etc/mkinitcpio.d/
   echo "Copy linux-kernel-git.preset to "${pkgdir}"/etc/mkinitcpio.d/"
@@ -218,8 +223,8 @@ _package(){
 
   # Remove build dir and source dir
   echo "Remove build dir and source dir"
-  rm -rf "${pkgdir}"/usr/lib/modules/${pkgver}/build
-  rm -rf "${pkgdir}"/usr/lib/modules/${pkgver}/source
+  rm -rf "${pkgdir}"/usr/lib/modules/${pkgver}-${pkgbase}/build
+  rm -rf "${pkgdir}"/usr/lib/modules/${pkgver}-${pkgbase}/source
 }
 
 _package-headers(){
@@ -228,14 +233,14 @@ _package-headers(){
 
   # Create system tree
   echo "Create system tree"
-  install -dm755 "${pkgdir}"/usr/lib/modules/${pkgver}/build
+  install -dm755 "${pkgdir}"/usr/lib/modules/${pkgver}-${pkgbase}/build
 
   cd linux-${pkgver}
 
-  local builddir="$pkgdir/usr/lib/modules/${pkgver}/build"
+  local builddir="$pkgdir/usr/lib/modules/${pkgver}-${pkgbase}/build"
 
   echo "Installing build files..."
-  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map vmlinux
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map vmlinux localversion
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
@@ -336,7 +341,7 @@ _package-docs() {
 
   # Create system tree
   echo "Create system tree"
-  install -dm755 "${pkgdir}"/usr/lib/modules/${pkgver}/build
+  install -dm755 "${pkgdir}"/usr/lib/modules/${pkgver}-${pkgbase}/build
 
   cd linux-${pkgver}
 
@@ -344,7 +349,7 @@ _package-docs() {
   echo "make -j$(nproc) htmldocs"
   make -j$(nproc) htmldocs
 
-  local builddir="$pkgdir/usr/lib/modules/${pkgver}/build"
+  local builddir="$pkgdir/usr/lib/modules/${pkgver}-${pkgbase}/build"
 
   echo "Installing documentation..."
   local src dst
