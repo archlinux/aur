@@ -8,6 +8,7 @@ pkgbase = czkawka-gui-bin
 	makedepends = gendesk
 	depends = gtk3
 	provides = czkawka-gui
+	provides = czkawka
 	source = czkawka-gui-bin-1.4.0::https://github.com/qarmin/czkawka/releases/download/1.4.0/linux_czkawka_gui
 	source = LICENSE::https://github.com/qarmin/czkawka/raw/master/LICENSE
 	source = czkawka-gui.png::https://github.com/qarmin/czkawka/raw/master/icon.png
