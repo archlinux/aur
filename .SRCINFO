@@ -1,13 +1,12 @@
 pkgbase = rhvoice-git
 	pkgdesc = Free and open source speech synthesizer for Russian and other languages. (development version)
-	pkgver = 1.0.0.r4.d96020c
+	pkgver = 1.2.3.r37.2dc35bc
 	pkgrel = 1
 	url = https://github.com/Olga-Yakovleva/RHVoice
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = scons
-	makedepends = python-lxml
 	depends = libpulse
 	optdepends = rhvoice-dictionary-git: extended russian dictionary
 	optdepends = speech-dispatcher: for speech-dispatcher module support
@@ -16,7 +15,7 @@ pkgbase = rhvoice-git
 	provides = rhvoice
 	conflicts = rhvoice
 	backup = etc/RHVoice/RHVoice.conf
-	source = git+https://github.com/Olga-Yakovleva/RHVoice.git
+	source = rhvoice::git+https://github.com/Olga-Yakovleva/RHVoice.git
 	md5sums = SKIP
 
 pkgname = rhvoice-git
