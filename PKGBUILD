@@ -3,7 +3,7 @@
 pkgname=monocypher
 _pkgname=monocypher
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Monocypher is an easy to use crypto library inspired by libsodium and TweetNaCl"
 arch=('i686' 'x86_64')
 url="https://monocypher.org/"
@@ -25,4 +25,6 @@ package() {
   install -d -m 755 "$pkgdir/usr/share/man/man3"
   install -m 644 doc/man/man3/*.3monocypher "$pkgdir/usr/share/man/man3/"
   install -m 644 doc/man/man3/optional/* "$pkgdir/usr/share/man/man3/"
+  install -d -m 755 "$pkgdir/usr/lib/pkgconfig"
+  install -m 644 monocypher.pc "$pkgdir/usr/lib/pkgconfig/"
 }
