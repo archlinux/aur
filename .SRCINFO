@@ -1,0 +1,19 @@
+pkgbase = ncgopher-git
+	pkgdesc = A gemini and gopher console client
+	pkgver = v0.1.5.r32.g16c9515
+	pkgrel = 1
+	url = https://github.com/jansc/ncgopher
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = ncurses
+	depends = openssl
+	depends = sqlite
+	source = ncgopher::git+https://github.com/jansc/ncgopher
+	sha256sums = SKIP
+
+pkgname = ncgopher-git
+
