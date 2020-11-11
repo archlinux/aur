@@ -1,7 +1,7 @@
 # Maintainer: Thomas Mashos <thomas at mashos dot com>
 pkgname=syrinscape-scifi-player
 pkgver=1.4.10_p0
-pkgrel=1
+pkgrel=2
 pkgdesc="Soundscape creator and sound design app for Sci-Fi games"
 arch=('x86_64')
 url="https://www.syrinscape.com"
@@ -25,6 +25,7 @@ export -f download_func; export pkgver; DLAGENTS=('https::/bin/bash -c download_
 prepare() {
   mkdir -p "${srcdir}/usr/share/applications"
   cp "syrinscape-scifi-player.desktop" "${srcdir}/usr/share/applications/syrinscape-scifi-player.desktop"
+  sed -i "s/VERSIONNUM/${pkgver//_/-}/g" "${srcdir}/usr/share/applications/syrinscape-scifi-player.desktop"
 }
 
 package() {

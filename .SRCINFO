@@ -1,7 +1,7 @@
 pkgbase = syrinscape-scifi-player
 	pkgdesc = Soundscape creator and sound design app for Sci-Fi games
 	pkgver = 1.4.10_p0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.syrinscape.com
 	arch = x86_64
 	license = Proprietary
