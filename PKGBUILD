@@ -2,7 +2,7 @@
 pkgname=famistudio-bin
 _pkgname=FamiStudio
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A very simple music editor for the Nintendo Entertainment System or Famicom"
 arch=(x86_64)
@@ -25,10 +25,10 @@ source=("https://github.com/BleuBleu/FamiStudio/releases/download/$pkgver/$_pkgn
 noextract=()
 
 md5sums=("cb90fc1a9faabffdbf87039cbe8ea8a3"
-         "0cd09f49a8decc3d9662383c58fdad08"
+         "7cecbef97612ec8cf56a84e966382c87"
          "a1156aa440fcc359acc3d43dbfd2d6f9")
 sha256sums=("cad4a216b61be0c1123c29e850c2a61befcfac57fed8c694c8a101671088ea05"
-            "ac1dfe1899aac2f3fbdd9c591d6203ccb912be0fe617a337166efb59957a66b5"
+            "2c25b53b8a287ef5c29a1f32c32ad8cc56f093cb08f02cf0d09550a1bcd19537"
             "f8c86d1a851dd1321d3bf3ac3f704abc398d5297b620ef444d2eea0de5e58bf8")
 
 validpgpkeys=()
@@ -37,9 +37,11 @@ package() {
     mkdir -p $pkgdir/usr/share/applications $pkgdir/usr/share/famistudio/ \
         $pkgdir/usr/bin
     cp famistudio.desktop $pkgdir/usr/share/applications/
-    cp -r "Demo Songs" FamiStudio.exe FamiStudio.exe.config libNesSndEmu.so \
-        libNotSoFatso.so libopenal32.so librtmidi.so LICENSE LinuxReadme.txt \
+    cp -Lr "Demo Songs" FamiStudio.exe FamiStudio.exe.config libNesSndEmu.so \
+        libNotSoFatso.so libopenal32.so librtmidi.so LinuxReadme.txt \
         OpenTK.dll Resources FamiStudio.svg "$pkgdir/usr/share/famistudio"
+    mkdir -p $pkgdir/usr/share/licenses/${pkgname}/
+    cp LICENSE $pkgdir/usr/share/licenses/${pkgname}/
     echo -e "#!/bin/sh\n\nmono /usr/share/famistudio/FamiStudio.exe" > $pkgdir/usr/bin/famistudio
     chmod +x $pkgdir/usr/bin/famistudio
 }
