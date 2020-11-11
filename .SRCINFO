@@ -1,6 +1,6 @@
 pkgbase = qmarkdown
 	pkgdesc = qMarkdown - minimal markdown viewer
-	pkgver = 0.3
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/Peterkmoss/qmarkdown
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = qmarkdown
 	depends = qt5-base
 	optdepends = ttf-roboto
 	provides = qmarkdown
-	source = https://github.com/Peterkmoss/qmarkdown/archive/v0.3.tar.gz
-	md5sums = b938d1667c733380ddfa40eba37994e7
+	source = https://github.com/Peterkmoss/qmarkdown/archive/v0.3.1.tar.gz
+	md5sums = 37af849cf6952bf170c967763e32153b
 
 pkgname = qmarkdown
 
