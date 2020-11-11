@@ -32,7 +32,7 @@ prepare() {
 build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
   arch-meson pango build --libdir=/usr/lib32 -D introspection=disabled -D libthai=disabled
   ninja -C build
