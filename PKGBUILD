@@ -1,31 +1,40 @@
 # Maintainer: Wenxuan <wenxuangm@gmail.com>
+
 pkgname=code-minimap
 pkgver=0.6.4
 pkgrel=1
-pkgdesc='A high performance code minimap render'
-arch=(i686 x86_64)
-url="https://github.com/wfxr/code-minimap"
-license=('MIT' 'APACHE')
-depends=()
-makedepends=('rust' 'cargo')
-conflicts=("${pkgname}-git" "${pkgname}-bin")
+pkgdesc='High performance code minimap render'
+arch=(x86_64)
+url=https://github.com/wfxr/code-minimap
+license=('Apache-2.0 OR MIT')
+depends=(gcc-libs)
+makedepends=(
+  git
+  rust
+)
+source=("git+$url.git#tag=v$pkgver")
+b2sums=('8b3e10a6222b7c6feb9151f83b37f4ca40adeac12b17fbb2d6a8ef75abfe1f7ed40cccf2ca8da0c9a3662e98804c8f2392c5fd98c2a586b70e0edfb76e7891cc')
 
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('55142250405bceb914623342f59094b7')
+prepare() {
+  cd $pkgname
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
-	cd "$srcdir/${pkgname}-${pkgver}"
-	cargo build --release --locked
+  cd $pkgname
+  SHELL_COMPLETIONS_DIR=completions cargo build --release --locked --offline
 }
 
+check() {
+  cd $pkgname
+  cargo test --locked --offline
+}
 package() {
-	cd "$srcdir/${pkgname}-${pkgver}"
-	install -Dm755 "target/release/${pkgname}"        "$pkgdir/usr/bin/${pkgname}"
-	install -Dm644 "completions/fish/${pkgname}.fish" "$pkgdir/usr/share/fish/vendor_completions.d/${pkgname}.fish"
-	install -Dm644 "completions/zsh/_${pkgname}"      "$pkgdir/usr/share/zsh/site-functions/_${pkgname}"
-	install -Dm644 "README.md"                        "$pkgdir/usr/share/doc/${pkgname}/README.md"
-	install -Dm644 "LICENSE-MIT"                      "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-MIT"
-	install -Dm644 "LICENSE-APACHE"                   "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-APACHE"
+  cd $pkgname
+  install -Dt "$pkgdir"/usr/bin target/release/$pkgname
+  install -Dm644 -t "$pkgdir"/usr/share/fish/vendor_completions.d \
+    completions/fish/$pkgname.fish
+  install -Dm644 -t "$pkgdir"/usr/share/zsh/site-functions \
+    completions/zsh/_$pkgname
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE-MIT
 }
-
-# vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
