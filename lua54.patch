@@ -1,0 +1,83 @@
+Index: src/QtLua/qtluastate.hh
+===================================================================
+--- src/QtLua/qtluastate.hh	(revision 227)
++++ src/QtLua/qtluastate.hh	(working copy)
+@@ -66,6 +66,7 @@
+       OsLib,		//< standard lua os library
+       DebugLib,		//< standard lua debug library
+       Bit32Lib,		//< standard lua bit library
++      Utf8Lib,		//< standard lua utf8 library
+       JitLib,		//< luajit jit library
+       FfiLib,		//< luajit ffi library
+       QtLuaLib,		//< lua library with base functions, see the @xref{Predefined lua functions} section.
+Index: src/qtluastate.cc
+===================================================================
+--- src/qtluastate.cc	(revision 227)
++++ src/qtluastate.cc	(working copy)
+@@ -1021,12 +1021,18 @@
+       QTLUA_LUA_CALL(_lst, luaopen_debug, "debug");
+       return true;
+ 
+-#if LUA_VERSION_NUM >= 502
++#if LUA_VERSION_NUM == 502
+     case Bit32Lib:
+       QTLUA_LUA_CALL(_lst, luaopen_bit32, "bit32");
+       return true;
+ #endif
+ 
++#if LUA_VERSION_NUM >= 503
++    case Utf8Lib:
++      QTLUA_LUA_CALL(_lst, luaopen_utf8, "utf8");
++      return true;
++#endif
++
+ #ifdef HAVE_LUA_JITLIB
+     case JitLib:
+       QTLUA_LUA_CALL(_lst, luaopen_jit, "jit");
+@@ -1041,8 +1047,13 @@
+     case AllLibs:
+ #if LUA_VERSION_NUM >= 502
+       QTLUA_LUA_CALL(_lst, luaopen_coroutine, "coroutine");
++#endif
++#if LUA_VERSION_NUM == 502
+       QTLUA_LUA_CALL(_lst, luaopen_bit32, "bit32");
+ #endif
++#if LUA_VERSION_NUM >= 503
++      QTLUA_LUA_CALL(_lst, luaopen_utf8, "utf8");
++#endif
+ #ifdef HAVE_LUA_OSLIB
+       QTLUA_LUA_CALL(_lst, luaopen_os, "os");
+ #endif
+Index: src/qtluatabletreemodel.cc
+===================================================================
+--- src/qtluatabletreemodel.cc	(revision 227)
++++ src/qtluatabletreemodel.cc	(working copy)
+@@ -223,7 +223,7 @@
+ 
+     TableTreeKeys *t = static_cast<TableTreeKeys*>(index.internalPointer());
+ 
+-    Qt::ItemFlags res = (Qt::ItemFlag)(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
++    Qt::ItemFlags res = (Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+ 
+     if (t->_attr & Editable)
+       {
+Index: src/qtluavaluebase.cc
+===================================================================
+--- src/qtluavaluebase.cc	(revision 227)
++++ src/qtluavaluebase.cc	(working copy)
+@@ -158,10 +158,12 @@
+ 	  v.push_value(th);
+ 
+ 	_st->_lst = th; // switch current thread State pointer
+-#if LUA_VERSION_NUM < 502
++#if LUA_VERSION_NUM >= 504
++	int r = lua_resume(th, _st->_lst, args.size(), nullptr);
++#elif LUA_VERSION_NUM >= 502
++	int r = lua_resume(th, _st->_lst, args.size());
++#else
+ 	int r = lua_resume(th, args.size());
+-#else
+-	int r = lua_resume(th, _st->_lst, args.size());
+ #endif
+ 	_st->_lst = lst;
+ 
