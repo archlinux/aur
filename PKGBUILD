@@ -7,7 +7,7 @@ pkgdesc="Multi functional app to find duplicates, empty folders, similar images 
 arch=('x86_64')
 url='https://github.com/qarmin/czkawka'
 license=('MIT')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}" 'czkawka')
 depends=('gcc-libs')
 source=("${pkgname}-${pkgver}::https://github.com/qarmin/czkawka/releases/download/${pkgver}/linux_czkawka_cli"
         "LICENSE::https://github.com/qarmin/czkawka/raw/master/LICENSE")

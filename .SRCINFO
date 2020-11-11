@@ -7,6 +7,7 @@ pkgbase = czkawka-cli-bin
 	license = MIT
 	depends = gcc-libs
 	provides = czkawka-cli
+	provides = czkawka
 	source = czkawka-cli-bin-1.4.0::https://github.com/qarmin/czkawka/releases/download/1.4.0/linux_czkawka_cli
 	source = LICENSE::https://github.com/qarmin/czkawka/raw/master/LICENSE
 	sha256sums = 5bb28c941e0c2ae8ce187b40587629eb484a7ca4ef08d1de260efa1e4bbacd2d
