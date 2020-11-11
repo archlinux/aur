@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=Azure Storage Explorer
 Comment=
-Exec=azure-storage-explorer
-Icon=azure-storage-explorer
+Exec=StorageExplorer
+Icon=StorageExplorer
 Type=Application
 StartupNotify=false
 StartupWMClass=azure-storage-explorer
