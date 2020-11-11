@@ -19,6 +19,7 @@ sha512sums=(
 )
 
 prepare() {
+	rm -rf Sencha
 	./SenchaCmd-$pkgver-linux-amd64.sh -q \
 		-Dall=true \
 		-V'addToPath$Integer'=1 \
