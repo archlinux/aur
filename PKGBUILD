@@ -2,7 +2,7 @@
 _pkgname=delighter
 pkgname=agisoft-${_pkgname}
 pkgver=1.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A free stand-alone tool designed to remove shadows from model textures"
 arch=('x86_64')
 url="https://www.agisoft.com/"
