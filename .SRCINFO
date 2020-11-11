@@ -1,6 +1,6 @@
 pkgbase = gulkan
 	pkgdesc = GLib library for Vulkan abstraction
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xrdesktop/gulkan
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = gulkan
 	optdepends = glew
 	optdepends = glfw
 	optdepends = libdrm
-	source = https://gitlab.freedesktop.org/xrdesktop/gulkan/-/archive/0.14.0/gulkan-0.14.0.tar.bz2
-	sha256sums = cee02cebf133eb57e49b20229b1ba40bf56232b48fd00003fb01fc889e0e8a74
+	source = https://gitlab.freedesktop.org/xrdesktop/gulkan/-/archive/0.15.0/gulkan-0.15.0.tar.bz2
+	sha256sums = 18c67d8e13b2596e90f931479b1e41058ab768eb3503a4415a998dc3d76215d9
 
 pkgname = gulkan
 
