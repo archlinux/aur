@@ -1,18 +1,18 @@
 #Maintainer: kevall474 <kevall474@tuta.io> <https://github.com/kevall474>
 pkgname=mesa-llvm-rc
-pkgver=20.2.0_rc4
+pkgver=20.3.0_rc1
 pkgrel=1
-versiontag=20.2.0-rc4
+versiontag=20.3.0-rc1
 pkgdesc="Mesa rc release with patch to enable LLVM. More options are enable than the standard mesa package"
 arch=(x86_64)
 url="https://mesa3d.org/"
 license=('MIT')
 depends=("libdrm" "libelf" "libglvnd" "libomxil-bellagio" "libunwind" "libxdamage" "libxxf86vm" "llvm-libs"
-	       "lm_sensors" "wayland" "zstd" "libxshmfence" "libclc" "expat" "vulkan-icd-loader")
+	"lm_sensors" "wayland" "zstd" "libxshmfence" "libclc" "expat" "vulkan-icd-loader")
 makedepends=("bison" "flex" "valgrind" "meson" "ninja" "git" "ninjas2" "spirv-tools" "spirv-llvm-translator" "clang" "libxvmc"
-            "python" "python-appdirs" "python-mako" "python-evdev" "elfutils" "glslang" "libva" "libepoxy" "libxv" "libvdpau"
-            "libx11" "libxml2" "libxrandr"  "llvm" "libconfig" "gtk3" "wayland-protocols" "xorgproto" "patch" "libxv" "libxvmc"
-            "libepoxy" "gtk3")
+            "python" "python-appdirs" "python-mako" "python-evdev" "elfutils" "glslang" "libva" "libepoxy" "libxv" "libvdpau" 
+	    "libx11" "libxml2" "libxrandr"  "llvm" "libconfig" "gtk3" "wayland-protocols" "xorgproto" "patch" "libxv" "libxvmc" 
+	    "libepoxy" "gtk3")
 conflicts=("mesa-aco" "mesa-aco-rc" "mesa-llvm")
 replaces=("mesa-aco" "mesa-aco-rc" "mesa-llvm")
 source=("https://archive.mesa3d.org/mesa-${versiontag}.tar.xz"
@@ -25,7 +25,7 @@ md5sums=("SKIP"
         "SKIP")
 
 build() {
-  # patching for llvm
+  	# patching for llvm
 	echo " patching radv_debug.h and radv_device.c to enable llvm"
 	patch -u mesa-${versiontag}/src/amd/vulkan/radv_debug.h -i radv_debug.h-${versiontag}.patch
 	patch -u mesa-${versiontag}/src/amd/vulkan/radv_device.c -i radv_device.c-${versiontag}.patch
@@ -59,6 +59,7 @@ build() {
 	-Dgallium-opencl=standalone \
 	-Dopencl-spirv=true \
 	-Dvulkan-drivers=amd,intel \
+	-Dfreedreno-kgsl=true \
 	-Dshader-cache=enabled \
 	-Dvulkan-overlay-layer=true \
 	-Dvulkan-device-select-layer=true \
@@ -77,6 +78,7 @@ build() {
 	-Dlmsensors=enabled \
 	-Dbuild-tests=true \
 	-Dbuild-aco-tests=true \
+	-Dinstall-intel-gpu-tests=true \
 	-Dselinux=false \
 	-Dosmesa=gallium \
 	-Dswr-arches=avx,avx2,knl,skx \
