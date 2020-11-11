@@ -3,8 +3,8 @@
 
 pkgname=sqlectron-gui
 _electron=electron6
-pkgver=1.32.0
-pkgrel=2
+pkgver=1.32.1
+pkgrel=1
 pkgdesc="A simple and lightweight SQL client with cross database and platform support"
 arch=('x86_64')
 url="https://sqlectron.github.io/"
@@ -13,7 +13,6 @@ depends=($_electron)
 makedepends=(
 	'asar'
 	'libsass'
-	'nodejs'
 	'npm'
 	'python2'
 )
@@ -22,8 +21,15 @@ source=(
 	'sqlectron-gui.desktop'
 )
 
-sha1sums=('f8a7c8a8367518d9acb25277a7734e7ea8e61fe8'
+sha1sums=('4798e9597d79c5bab2aa2915ffa42297668876b1'
           'b9fb3bc29a17dee5de9295e2fdb2b3025ed51d1f')
+
+case "$CARCH" in
+	i686)    _arch=ia32;;
+	x86_64)  _arch=x64;;
+	aarch64) _arch=arm64;;
+	*)       _arch=DUMMY;;
+esac
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -43,10 +49,10 @@ build() {
 	cd "$pkgname-$pkgver"
 
 	export PATH="$srcdir/bin:$PATH"
+	export SKIP_SASS_BINARY_DOWNLOAD_FOR_CI=1
 	export SASS_FORCE_BUILD=1
 	export LIBSASS_EXT=auto
 	export npm_config_optional=false
-	export npm_config_scripts_prepend_node_path=false
 	export npm_config_build_from_source=true
 	export npm_config_sqlite=/usr
 
@@ -61,8 +67,8 @@ build() {
 
 	cd app
 
-	export npm_config_arch=x64
-	export npm_config_target_arch=x64
+	export npm_config_arch=$_arch
+	export npm_config_target_arch=$_arch
 	export npm_config_runtime=electron
 	export npm_config_target=$(</usr/lib/$_electron/version)
 	export npm_config_disturl=https://electronjs.org/headers
@@ -85,5 +91,4 @@ package() {
 	install -Dm0644 -t "${pkgdir}/usr/lib/sqlectron-gui" app.asar
 	install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 	install -Dm0644 build/app.png "${pkgdir}/usr/share/pixmaps/sqlectron-gui.png"
-
 }
