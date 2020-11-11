@@ -1,0 +1,17 @@
+pkgbase = agda-cubical
+	pkgdesc = An experimental library for Cubical Agda
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/agda/cubical
+	arch = x86_64
+	license = MIT
+	makedepends = ghc-libs
+	depends = agda=2.6.1.2
+	options = staticlibs
+	source = agda-cubical-0.2.tar.gz::https://github.com/agda/cubical/archive/v0.2.tar.gz
+	source = cubical.agda-lib.in
+	sha512sums = 19defe1e9645e9c259eb619549412587f29f2f1463ccf8a620d45b0a940faa84754fb8795c3d2eafc9feb4e503d1a24e26ae4dbcd02e30af2597ef2f91b4daba
+	sha512sums = 721438844cd3c8f1b4b015ba55e548705ace58870ce8eadbaa280b7f34119d24a7f7d1fb7545c9ab121043cb542e7dc55ee0f06fe075caa5b69adabafc0c84fc
+
+pkgname = agda-cubical
+
