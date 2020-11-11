@@ -1,15 +1,15 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=mustache-d
-pkgver=0.1.4
-pkgrel=6
+pkgver=0.1.5
+pkgrel=1
 pkgdesc='Moustache template engine for D'
 arch=('x86_64')
 url='https://github.com/repeatedly/mustache-d'
 license=('Boost')
 makedepends=('meson' 'ldc' 'liblphobos')
 source=("$pkgname-$pkgver::https://github.com/repeatedly/mustache-d/archive/v$pkgver.tar.gz")
-sha512sums=('764da71092f0def69c168597eb720d3b122a0addf516739c35fc79910b7709a220d7c901cd3afaa66164472df1178e395696b36c9b3d4e84472da7220add7b2c')
+sha512sums=('f6a84e69c5345ebe1c8aae3e6a214fd0b57055180f8c689468decab9d4e3cb92d88b1ca51b918eaec2134e2f7f86a17a69b07dfa58783286a66286fefa206eec')
 
 prepare() {
   mkdir -p build
