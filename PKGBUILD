@@ -26,11 +26,11 @@ build() {
 
     # Angular may ask for sharing anonymous usage data during `npm install`.
     # Say “no” to it.
-    # npm install <<<"N"
+    npm install <<<"N"
 
     # or use miorrors
-    export ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"
-    npm --registry https://registry.npm.taobao.org install <<<"N"
+    # export ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"
+    # npm --registry https://registry.npm.taobao.org install <<<"N"
 
     npm run build:prod
     ./node_modules/.bin/electron-builder --linux dir
