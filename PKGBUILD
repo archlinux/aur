@@ -1,7 +1,7 @@
 # Maintainer: Wenxuan <wenxuangm@gmail.com>
 pkgname=code-minimap
-pkgver=0.4.2
-pkgrel=3
+pkgver=0.4.3
+pkgrel=1
 pkgdesc='A high performance code minimap render'
 arch=(i686 x86_64)
 url="https://github.com/wfxr/code-minimap"
@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('3fece54f3539602477321493f6736a7d')
+md5sums=('df73273f8593a4c8d449db554796e0c5')
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
