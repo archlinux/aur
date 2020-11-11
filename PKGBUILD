@@ -17,7 +17,7 @@ depends=(lib32-expat lib32-freetype2 $_pkgbasename)
 makedepends=(git autoconf-archive gperf python-lxml python-six lib32-json-c)
 install=lib32-fontconfig.install
 #_commit=5f5ec5676c61b9773026a9335c9b0dfa73a73353  # master
-source=("git+https://anongit.freedesktop.org/git/fontconfig"
+source=("git+https://gitlab.freedesktop.org/fontconfig/fontconfig"
         fontconfig-32.hook)
 sha256sums=('SKIP'
             'd97c0c5b88023da5a2acf64cf560265390a9365305c43b8e86b4f89348e727b3')
