@@ -6,7 +6,7 @@ pkgver=60.3
 pkgrel=1
 pkgdesc="International Components for Unicode library"
 arch=('i686' 'x86_64')
-url="http://www.icu-project.org/"
+url="http://site.icu-project.org/"
 license=('custom:"icu"')
 depends=('gcc-libs>=4.7.1-5')
 source=(https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/${_pkgname}4c-${pkgver//./_}-src.tgz)
