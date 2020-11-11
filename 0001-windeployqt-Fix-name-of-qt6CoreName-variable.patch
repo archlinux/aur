@@ -1,4 +1,4 @@
-From 60a7db7b539515ba8f0fcff6cbc31435797f4b86 Mon Sep 17 00:00:00 2001
+From b675d7e907c0a0cd415322879fa1738e5f7323c8 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 8 Nov 2020 17:10:15 +0100
 Subject: [PATCH] windeployqt: Fix name of qt6CoreName variable
