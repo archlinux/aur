@@ -26,6 +26,7 @@ build() {
     ${_arch}-configure \
                  --enable-lto \
                  --disable-source-highlight \
+                 --disable-tui \
                  --with-system-readline \
                  --with-expat ..
     make
