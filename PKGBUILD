@@ -12,7 +12,7 @@ makedepends=('rust' 'cargo')
 conflicts=("csview-git" "csview-bin")
 provides=()
 
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 md5sums=('f97909c070d2dacaeba8fc5f98926a12')
 
 build() {

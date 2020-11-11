@@ -11,7 +11,7 @@ pkgbase = csview
 	makedepends = cargo
 	conflicts = csview-git
 	conflicts = csview-bin
-	source = https://github.com/wfxr/csview/archive/v0.3.5.tar.gz
+	source = csview-0.3.5.tar.gz::https://github.com/wfxr/csview/archive/v0.3.5.tar.gz
 	md5sums = f97909c070d2dacaeba8fc5f98926a12
 
 pkgname = csview
