@@ -1,7 +1,7 @@
 pkgbase = devscripts
 	pkgdesc = Scripts to make the life of a Debian Package maintainer easier
-	pkgver = 2.19.7
-	pkgrel = 2
+	pkgver = 2.20.4
+	pkgrel = 1
 	url = https://tracker.debian.org/pkg/devscripts
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = devscripts
 	makedepends = help2man
 	makedepends = git
 	makedepends = perl-file-desktopentry
-	makedepends = perl-file-homedir
 	makedepends = perl-file-basedir
 	makedepends = perl-git-wrapper
 	makedepends = perl-libwww
@@ -27,12 +26,14 @@ pkgbase = devscripts
 	depends = perl
 	depends = debianutils
 	depends = debhelper
+	depends = perl-file-homedir
 	depends = perl-timedate
 	depends = sensible-utils
+	optdepends = debian-keyring: Required for commands interacting with the system / user keyring
 	options = !makeflags
-	source = devscripts::git+https://salsa.debian.org/debian/devscripts.git#tag=v2.19.7
+	source = https://deb.debian.org/debian/pool/main/d/devscripts/devscripts_2.20.4.tar.xz
 	source = fixes.patch
-	sha256sums = SKIP
+	sha256sums = f94fe99c1e70443d9e2dcd58c1e530c182840a8b890c5f9a4f0d4af3bf521b9c
 	sha256sums = e5fef21e1d8aee3128c6499078bc2f38e8f80189b30882df817637388f1e7717
 
 pkgname = devscripts
