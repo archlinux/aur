@@ -2,13 +2,13 @@
 
 pkgname=carbon-ir-git
 pkgver=r142.95caf18
-pkgrel=3
+pkgrel=4
 pkgdesc="The carbon intermediate representation language."
 arch=(x86_64)
 url="https://github.com/RobbeDGreef/carbon-ir"
 license=('MIT')
 depends=(nasm)
-makedepends=(cmake make)
+makedepends=(cmake git)
 provides=('libcarbon-ir.a')
 conflicts=(carbon-ir)
 replaces=(carbon-ir)
@@ -34,6 +34,6 @@ package() {
   cp carbon-ir ${pkgdir}/usr/bin
   cp libcarbon-ir.a ${pkgdir}/usr/lib
   mkdir -p ${pkgdir}/usr/share/carbon-ir
-  cp LICENSE ${pkgdir}/usr/share/carbon-ir
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname/-git//}/LICENSE"
   cp -r docs ${pkgdir}/usr/share/carbon-ir
 }
