@@ -1,7 +1,7 @@
 # Maintainer: CrocoDuck <crocoduck dot oducks at gmail dot com>
 
 pkgname=gmsh-bin
-pkgver=4.6.0
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="A free 3D finite element grid generator with a build-in CAD engine and post-processor. Includes SDK."
 arch=('i686' 'x86_64')
@@ -15,10 +15,10 @@ conflicts=("${pkgname%-*}")
 # Define Download data:
 if [ $CARCH == 'x86_64' ]; then
     _archvar=64
-    _downsha256sum=0de0c9741cd5dbbf6becd7de60ff446f344f763567146227c7e4c5648a2a8609
+    _downsha256sum=75f659d8f3af4d60617f6c1f423ac34e473da586511c8be3f9b7e1cd0f1c8bee
 else
     _archvar=32
-    _downsha256sum=864307ba8e08889602f027f79aa99ea7e323f1e0a7e32556f5c1f29914aa6552
+    _downsha256sum=28e437c038d5e9da76c51281f261e4c789e154fa56aeee1bf3beac018622b849
 fi
 
 prepare() {
