@@ -28,9 +28,11 @@ build() {
 
 package() {
   cd $_pkgname
+  mkdir -p "${pkgdir}/etc"
   mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/usr/lib/mimejs"
-  mv "node_modules" "lib" "main.js" "${pkgdir}/usr/lib/mimejs"
+  install -m 755 "main.js" "${pkgdir}/usr/lib/mimejs"
+  cp -r "node_modules" "lib" "${pkgdir}/usr/lib/mimejs"
   ln -s "/usr/lib/mimejs/main.js" "${pkgdir}/usr/bin/xdg-open"
-  install -Dm644 "mime.json" "${pkgdir}/etc/mime.json"
+  install -m 644 "mime.json" "${pkgdir}/etc/mime.json"
 }
