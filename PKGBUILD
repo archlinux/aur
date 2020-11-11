@@ -3,13 +3,13 @@
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
-# NOTE: This PKGBUILD is based on https://osdn.net/downloads/users/26/26669/mozcdic-ut-20201110.1.PKGBUILD/
+# NOTE: This PKGBUILD is based on https://osdn.net/downloads/users/26/26921/fcitx-mozc-ut-2.25.4190.102.20201110.1.PKGBUILD/
 
 ## Mozc compile option
 _bldtype=Release
 
-_mozcver=2.25.4180.102
-_fcitxver=20201110
+_mozcver=2.25.4190.102
+_fcitxver=20201111
 _utdicdate=20201110
 pkgver=${_mozcver}.${_utdicdate}
 pkgrel=1
@@ -22,31 +22,31 @@ makedepends=('clang' 'gyp' 'ninja' 'pkg-config' 'python' 'curl' 'gtk2' 'qt5-base
 
 source=(
   https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozc-${_mozcver}.tar.bz2
-  abseil-cpp-20200923.1.tar.gz::https://github.com/abseil/abseil-cpp/archive/20200923.1.tar.gz
+  abseil-cpp-20200923.2.tar.gz::https://github.com/abseil/abseil-cpp/archive/20200923.2.tar.gz
   googletest-release-1.10.0.tar.gz::https://github.com/google/googletest/archive/release-1.10.0.tar.gz
   japanese-usage-dictionary-master.zip::https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/master.zip
   protobuf-3.13.0.tar.gz::https://github.com/protocolbuffers/protobuf/archive/v3.13.0.tar.gz
+  https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozcdic-ut-${_utdicdate}.${pkgrel}.tar.bz2
   https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip
   https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
-  "mozcdic-ut-${_utdicdate}.${pkgrel}.tar.bz2::https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F26%2F26897%2Fmozcdic-ut-${_utdicdate}.${pkgrel}.tar.bz2"
 )
 
 sha1sums=(
-  '96f5f005c8083533ba42c70570e85c5ca1a207a3'
-  '824ae3a8fdd2c2bf2e667212e41312ffb2560640'
+  'adf4968191ea1f9837b1f9d5d0aa47ac1e2ddee2'
+  '1dd3f0a937c3678437646d26ca6784bd6a9b2b26'
   '9c89be7df9c5e8cb0bc20b3c4b39bf7e82686770'
   'bf15e8ff92cbde3c102cbf4ad50c2090a7165495'
   '2160cfb354148da3fb3891b267c2edc7e3eb5c30'
-  'SKIP'
-  'SKIP'
   'e91e7f67c48f59cd67787e5e6af98946e9a53b1c'
+  'SKIP'
+  'SKIP'
 )
 
 prepare() {
   cd mozc-${_mozcver}
   rm -rf src/third_party
   mkdir src/third_party
-  mv ${srcdir}/abseil-cpp-20200923.1 src/third_party/abseil-cpp
+  mv ${srcdir}/abseil-cpp-20200923.2 src/third_party/abseil-cpp
   mv ${srcdir}/googletest-release-1.10.0 src/third_party/gtest
   mv ${srcdir}/japanese-usage-dictionary-master src/third_party/japanese_usage_dictionary
   mv ${srcdir}/protobuf-3.13.0 src/third_party/protobuf
