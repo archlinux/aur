@@ -14,7 +14,7 @@ makedepends=('alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'l
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver')
-source=("hg+http://hg.libsdl.org/SDL#branch=default")
+source=("hg+https://hg.libsdl.org/SDL#branch=default")
 provides=(sdl2)
 conflicts=(sdl2 sdl2-minimal-hg)
 sha512sums=('SKIP')
