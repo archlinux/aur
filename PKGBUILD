@@ -34,10 +34,13 @@ build() {
   for _arch in ${_architectures}; do
     export QTDIR=/usr/${_arch}/lib/qt6
     export PATH=${QTDIR}/bin:${PATH}
+    export QMAKESPEC=${QTDIR}/mkspecs/win32-g++
+
     mkdir -p "${srcdir}/qwt-build-${_arch}"
     cd "${srcdir}"
-    cp -r "qwt-6.2" "qwt-build-${_arch}"
-    cd "${srcdir}/qwt-build-${_arch}/qwt-6.2"
+    rm -rf qwt-build-${_arch}
+    cp -r "qwt-6.2" qwt-build-${_arch}
+    cd qwt-build-${_arch}
 
     # This is a mingw build, so Windows prefix is used. Let's change it:
     sed -i "s|C:/Qwt-\$\$QWT_VERSION|/usr/${_arch}|" qwtconfig.pri
