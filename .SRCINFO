@@ -1,14 +1,14 @@
 pkgbase = microstorm
 	pkgdesc = minimal cursor theme without shadows
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/nullgemm/cursoryx
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = custom:WTFPL
 	makedepends = unzip
-	source = https://github.com/nullgemm/cursoryx/releases/download/v0.1.0/microstorm.zip
+	source = https://github.com/nullgemm/cursoryx/releases/download/v0.2.0/microstorm_linux.zip
 	sha256sums = SKIP
 
 pkgname = microstorm
