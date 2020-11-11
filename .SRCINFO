@@ -6,6 +6,7 @@ pkgbase = neopo-git
 	arch = x86_64
 	arch = aarch64
 	license = custom
+	makedepends = python-setuptools
 	depends = python
 	depends = vim
 	depends = git
