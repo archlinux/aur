@@ -1,0 +1,18 @@
+pkgbase = libdesqwl-git
+	pkgdesc = Wayland support for DesQ
+	pkgver = r6.cd1bdb6
+	pkgrel = 1
+	url = https://gitlab.com/DesQ
+	arch = any
+	groups = desq-git
+	license = none
+	makedepends = git
+	depends = qt5-base
+	depends = wayfire
+	provides = libdesqwl
+	conflicts = libdesqwl
+	source = git+https://gitlab.com/Desq/libdesqwl.git
+	md5sums = SKIP
+
+pkgname = libdesqwl-git
+
