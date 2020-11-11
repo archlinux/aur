@@ -8,7 +8,7 @@
 _pkgbase=vlc
 pkgname=vlc-nox
 pkgver=3.0.11.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (without X support)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
@@ -26,7 +26,8 @@ makedepends=('live-media' 'libbluray' 'flac' 'libdc1394' 'libavc1394' 'libcaca'
              'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
              'libx265.so' 'libx264.so' 'zvbi' 'libass' 'libkate' 'libtiger'
              'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
-             'lirc' 'libgoom2' 'projectm' 'chromaprint' 'aom' 'srt' 'dav1d')
+             'lirc' 'libgoom2' 'projectm' 'chromaprint' 'aom' 'srt' 'dav1d'
+             'aribb24' 'aribb25' 'pcsclite')
 optdepends=('avahi: service discovery using bonjour protocol'
             'aom: AOM AV1 codec'
             'dav1d: dav1d AV1 decoder'
@@ -86,7 +87,10 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'libgoom2: Goom visualization'
             'projectm: ProjectM visualisation'
             'ncurses: ncurses interface'
-            'libnotify: notification plugin')
+            'libnotify: notification plugin'
+            'aribb24: aribsub support'
+            'aribb25: aribcam support'
+            'pcsclite: aribcam support')
 conflicts=('vlc' 'vlc-plugin' 'vlc-git')
 replaces=('vlc' 'vlc-plugin' 'vlc-git')
 options=('!emptydirs')
@@ -209,6 +213,7 @@ build() {
               --enable-libplacebo \
               --enable-vlc \
               --enable-aribsub \
+              --enable-aribcam \
               --enable-aom \
               --enable-srt \
               --enable-dav1d
