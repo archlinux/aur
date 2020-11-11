@@ -11,7 +11,7 @@ sha1sums=('SKIP'
           'SKIP')
 makedepends=(git)
 depends=('mingw-w64-qt5-base' 'mingw-w64-vulkan-icd-loader')
-makedepends=('mingw-w64-gcc')
+makedepends=('mingw-w64-gcc' 'git')
 options=('staticlibs' '!strip' '!buildflags')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
