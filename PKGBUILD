@@ -22,7 +22,7 @@ optdepends=('alsa-lib: ALSA audio driver'
             'wayland-protocols: wayland support'
             'hidapi: hidapi support'
             'mesa: open source graphics support')
-source=("hg+http://hg.libsdl.org/SDL#branch=default")
+source=("hg+https://hg.libsdl.org/SDL#branch=default")
 provides=(sdl2)
 conflicts=(sdl2 sdl2-hg)
 sha512sums=('SKIP')

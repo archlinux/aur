@@ -36,7 +36,7 @@ pkgbase = sdl2-minimal-hg
 	provides = sdl2
 	conflicts = sdl2
 	conflicts = sdl2-hg
-	source = hg+http://hg.libsdl.org/SDL#branch=default
+	source = hg+https://hg.libsdl.org/SDL#branch=default
 	sha512sums = SKIP
 
 pkgname = sdl2-minimal-hg
