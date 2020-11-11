@@ -2,8 +2,8 @@
 
 pkgname=python-geventhttpclient
 _name=${pkgname#python-}
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.4.4
+pkgrel=1
 pkgdesc="A high performance, concurrent HTTP client library for python using gevent"
 arch=('any')
 url='http://github.com/gwik/geventhttpclient'
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('967b11c4a37032f98c08f58176e4ac8de10473ab0c1f617acb8202d44b97fe21')
+sha256sums=('f59e5153f22e4a0be27b48aece8e45e19c1da294f8c49442b1c9e4d152c5c4c3')
 provides=()
 conflicts=()
 
