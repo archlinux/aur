@@ -4,7 +4,7 @@
 
 pkgname=youtube-dl
 pkgver=2020.11.01.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A command-line program to download videos from YouTube.com and a few more sites"
 arch=('any')
 url="https://yt-dl.org"
