@@ -24,7 +24,7 @@ sha256sums=('f224f1da1e4fc1bd1096025dbb0eea9b4392422abb77810338ecb226b4497aa8'
             'SKIP'
             'SKIP'
             'SKIP'
-            '23a807d100b96cd2b1a618a044583101a521de6d79e29330fed7a9f600501823')
+            'b56ba8ca4a9f0fef6e0c636a4ee26a9c6a17f1e7ba301aef56fc7ddc0854be42')
 
 build() {
     cd "${srcdir}"
