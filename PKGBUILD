@@ -13,6 +13,19 @@ source=("git+https://github.com/Ohio2/NerdFetch")
 noextract=()
 md5sums=('SKIP')
 
+ask(){
+  echo 'What distro do you use? (1. Arch, 2.Manjaro)'
+  read dist
+  if [ dist=1 ]
+  then
+    set dist-file=nerdfetch
+  elif [ dist=2 ]
+  then 
+    set dist-file=nerdfetch-manj
+  else
+    echo 'Invalid input... Halting!'
+    stop
+}
 pkgver() {
 	cd NerdFetch
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
