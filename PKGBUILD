@@ -2,7 +2,7 @@
 _pkgname=metashape
 pkgname=agisoft-${_pkgname}
 pkgver=1.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Phtogrammetric processing of digital images and 3D spatial data generation software. Standard edition"
 arch=('x86_64')
 url="https://www.agisoft.com/"
