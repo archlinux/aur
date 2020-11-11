@@ -5,7 +5,7 @@
 
 pkgname=libxml2
 pkgver=2.9.10
-pkgrel=5
+pkgrel=6
 pkgdesc='XML parsing library, version 2'
 url='http://www.xmlsoft.org/'
 arch=(x86_64)
@@ -20,6 +20,7 @@ source=("git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
         libxml2-2.9.10-CVE-2020-7595.patch
         libxml2-2.9.10-parenthesize-type-checks.patch
         libxml2-2.9.10-CVE-2020-24977.patch
+        libxml2-2.9.10-fix-integer-overflow.patch
         https://www.w3.org/XML/Test/xmlts20130923.tar.gz)
 sha256sums=('SKIP'
             '37eb81a8ec6929eed1514e891bff2dd05b450bcf0c712153880c485b7366c17c'
@@ -27,6 +28,7 @@ sha256sums=('SKIP'
             'cfe1b3e0f026df6f979dbd77c1dcd1268e60acf3d7a8ff3f480b4e67bfcc19d6'
             'c6105ff40d7b1b140fcd821b5d64ab8c7b596708071c26964727e7352b07ac7e'
             'b63c161e4c8a6f0a65ba091c3d3ed09d3110d21f997ee61077c782b311fd4b33'
+            '62eafffc2b4949489c261c63883d27c2e83d688f1d4c899000b283e4c2a682be'
             'fd227780ad5699bebca7ef412d2d50fb1d21a54f6e3fdcad0bda5bdc8f8b2525'
             '9b61db9f5dbffa545f4b8d78422167083a8568c59bd1129f94138f936cf6fc1f')
 
@@ -46,6 +48,7 @@ prepare() {
   patch -Np1 -i ../libxml2-2.9.10-CVE-2020-7595.patch
   patch -Np1 -i ../libxml2-2.9.10-parenthesize-type-checks.patch
   patch -Np1 -i ../libxml2-2.9.10-CVE-2020-24977.patch
+  patch -Np1 -i ../libxml2-2.9.10-fix-integer-overflow.patch
 
   NOCONFIGURE=1 ./autogen.sh
 }
