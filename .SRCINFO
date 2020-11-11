@@ -1,0 +1,16 @@
+pkgbase = nodejs-csvtojson
+	pkgdesc = Blazing fast and Comprehensive CSV Parser
+	pkgver = 2.0.10
+	pkgrel = 1
+	url = https://github.com/Keyang/node-csvtojson
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	noextract = csvtojson-2.0.10.tgz
+	source = https://registry.npmjs.org/csvtojson/-/csvtojson-2.0.10.tgz
+	sha256sums = 41ab7fecdc9cf7007696196d927560741cecdf7fc28c47565221178bfb3ae592
+
+pkgname = nodejs-csvtojson
+
