@@ -1,0 +1,15 @@
+pkgbase = python-bioservices
+	pkgdesc = Access Bioinformatices Web Services and framework for WSDL/SOAP and REST wrappers
+	pkgver = 1.7.9
+	pkgrel = 1
+	url = https://bioservices.readthedocs.io/
+	arch = any
+	license = GPL
+	depends = python-soappy
+	depends = python-easydev
+	depends = python-beautifulsoup4
+	source = https://pypi.io/packages/source/b/bioservices/bioservices-1.7.9.tar.gz
+	sha256sums = 1711589cdd250e0ea043ee95d111def35aa20febb111aa32914e22728791c670
+
+pkgname = python-bioservices
+
