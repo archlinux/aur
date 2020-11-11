@@ -3,7 +3,7 @@
 pkgname=librewolf-bin
 provides=(${pkgname//-bin/""})
 conflicts=(${pkgname//-bin/""})
-pkgver=82.0.2
+pkgver=82.0.3
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -18,14 +18,14 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs)
 
-_uploadh_aarch64='17f09044aaad91086e1ad2032e4a7480'
-_uploadh_x86_64='076c1d1a54f9ad93904d0bbf23d34faa'
+_uploadh_aarch64='91d06f3f93d9c7280d0f4f4656ddd0d3'
+_uploadh_x86_64='090452230454b73e64537d2cbf0ac90d'
 _uploadpath_aarch64="https://gitlab.com/${pkgname//-bin/""}-community/browser/linux/uploads/${_uploadh_aarch64}/${pkgname//-bin/""}-${pkgver}-${pkgrel}-aarch64.pkg.tar.zst"
 _uploadpath_x86_64="https://gitlab.com/${pkgname//-bin/""}-community/browser/linux/uploads/${_uploadh_x86_64}/${pkgname//-bin/""}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
 source_aarch64=("${_uploadpath_aarch64}")
 source_x86_64=("${_uploadpath_x86_64}")
-sha256sums_x86_64=('3f34e6e269e2ed332b9bebdb6f6b3555e7a8795fbbf4b06b32556466eb18b8b5')
-sha256sums_aarch64=('ff8a722c0b39ecba5174c99df52e111bc5c3e2cf48200d3178d12cabef0bb2c2')
+sha256sums_x86_64=('fa7c54ac2481243f7f8f87e03352336094837fa03f94c184baed267dbf0e5c9d')
+sha256sums_aarch64=('c37b704a3466ac5553896d196469d993470674b4d04091655ad2754615608762')
 
 package() {
   # Yep, that's somewhat redundant. But it works.
