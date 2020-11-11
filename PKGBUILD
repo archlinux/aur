@@ -11,7 +11,7 @@ license=("MIT")
 makedepends=("git" "go")
 depends=("glibc")
 backup=("etc/default/tailscaled")
-source=("$pkgname::git+http://github.com/tailscale/tailscale.git#tag=v$pkgver")
+source=("$pkgname::git+https://github.com/tailscale/tailscale.git#tag=v$pkgver")
 sha256sums=('SKIP')
 install="tailscale.install"
 
