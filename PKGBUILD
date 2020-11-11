@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=blink-bin
-pkgver=1.4
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Instant code search, source files locator. Index management for multiple projects"
 arch=('x86_64')
@@ -11,12 +11,12 @@ provides=("${pkgname%-bin}")
 options=('!strip')
 makedepends=('gendesk')
 source=("${pkgname%-bin}-${pkgver}.AppImage::https://github.com/ychclone/blink/releases/download/${pkgver}/Blink-x86_64.AppImage")
-sha256sums=('8587692dcb24f7087aa2f7ec7da02a6f1dd9fe80206ace0b453affb58dfe6124')
+sha256sums=('49754b3f940d6e1439a02357fcf2813aae4603dced9bfadb1ce993c5cc4e8355')
 
 package() {
   chmod 755 ./${pkgname%-bin}-${pkgver}.AppImage
   ./${pkgname%-bin}-${pkgver}.AppImage --appimage-extract
-  install -Dm644 /home/crow/Git/AUR/blink-bin/src/squashfs-root/usr/share/icons/hicolor/256x256/${pkgname%-bin}.png "${pkgdir}/usr/share/pixmaps/blink.png"
+  install -Dm644 squashfs-root/usr/share/icons/hicolor/128x128/${pkgname%-bin}.png "${pkgdir}/usr/share/pixmaps/blink.png"
   gendesk -f -n --pkgname "${pkgname%-bin}" \
           --pkgdesc "$pkgdesc" \
           --name "Blink" \
