@@ -1,0 +1,12 @@
+// Allow the OpenVPN user to manage DNS via systemd-resolved
+// as part of the openvpn-update-systemd-resolved package
+polkit.addRule(function(action, subject) {
+    if (action.id == 'org.freedesktop.resolve1.set-dns-servers' ||
+        action.id == 'org.freedesktop.resolve1.set-domains' ||
+    //  action.id == 'org.freedesktop.resolve1.set-default-route' ||
+        action.id == 'org.freedesktop.resolve1.set-dnssec') {
+        if (subject.user == 'openvpn') {
+            return polkit.Result.YES;
+        }
+    }
+});
