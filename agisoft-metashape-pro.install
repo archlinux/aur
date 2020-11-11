@@ -19,6 +19,18 @@ post_install() {
     echo
 }
 
+post_upgrade() {
+    # Set the correct permission
+    chmod -R g=u /opt/agisoft/metashape-pro
+    chmod -R o=u /opt/agisoft/metashape-pro
+    chmod -R g-w /opt/agisoft/metashape-pro
+    chmod -R o-w /opt/agisoft/metashape-pro
+    chmod -R g=u /usr/share/licenses/agisoft-metashape-pro/licenses
+    chmod -R o=u /usr/share/licenses/agisoft-metashape-pro/licenses
+    chmod -R g-w /usr/share/licenses/agisoft-metashape-pro/licenses
+    chmod -R o-w /usr/share/licenses/agisoft-metashape-pro/licenses
+}
+
 pre_remove() {
     echo "Deactivating the product..."
     agisoft-metashape-pro --deactivate 2>/dev/null
