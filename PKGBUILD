@@ -8,8 +8,8 @@ pkgdesc='A replacement for xdg-open written in Node.js'
 arch=('i686' 'x86_64')
 url="https://github.com/karabaja4/mimejs"
 license=('MIT')
-depends=('file' 'bash')
-makedepends=('nodejs-lts-fermium' 'npm')
+depends=('file' 'bash' 'nodejs')
+makedepends=('npm')
 provides=('xdg-utils')
 conflicts=('xdg-utils')
 source=('git+https://github.com/karabaja4/mimejs.git')
@@ -24,11 +24,13 @@ pkgver() {
 build() {
   cd $_pkgname
   npm install
-  node_modules/pkg/lib-es5/bin.js --targets linux main.js
 }
 
 package() {
   cd $_pkgname
-  install -Dm755 "main" "${pkgdir}/usr/bin/xdg-open"
+  mkdir -p "${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}/usr/lib/mimejs"
+  mv "node_modules" "lib" "main.js" "${pkgdir}/usr/lib/mimejs"
+  ln -s "/usr/lib/mimejs/main.js" "${pkgdir}/usr/bin/xdg-open"
   install -Dm644 "mime.json" "${pkgdir}/etc/mime.json"
 }
