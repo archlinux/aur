@@ -25,7 +25,7 @@ optdepends=('lib32-alsa-lib: ALSA audio driver'
             'lib32-mesa: open source graphics support')
 provides=(lib32-sdl2)
 conflicts=(lib32-sdl2 lib32-sdl2-hg)
-source=("hg+http://hg.libsdl.org/SDL#branch=default")
+source=("hg+https://hg.libsdl.org/SDL#branch=default")
 sha512sums=('SKIP')
 
 pkgver() {
