@@ -15,13 +15,32 @@ source=("$pkgname::git+http://github.com/tailscale/tailscale.git#tag=v$pkgver")
 sha256sums=('SKIP')
 install="tailscale.install"
 
+prepare() {
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    cd "$srcdir/tailscale"
+    go mod vendor
+}
+
+build() {
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    cd "$srcdir/tailscale"
+    eval "$(./version/version.sh)"
+    GO_LDFLAGS="\
+        -X tailscale.com/version.Long=${VERSION_LONG} \
+        -X tailscale.com/version.Short=${VERSION_SHORT} \
+        -X tailscale.com/version.GitCommit=${VERSION_GIT_HASH}"
+    go build -v -tags xversion -ldflags "$GO_LDFLAGS" ./cmd/tailscale
+    go build -v -tags xversion -ldflags "$GO_LDFLAGS" ./cmd/tailscaled
+}
+
 package() {
-    cd tailscale
-    eval $(./version/version.sh)
-    go build -tags xversion -ldflags "-X tailscale.com/version.Long=${VERSION_LONG} -X tailscale.com/version.Short=${VERSION_SHORT} -X tailscale.com/version.GitCommit=${VERSION_GIT_HASH}" ./cmd/tailscale
-    go build -tags xversion -ldflags "-X tailscale.com/version.Long=${VERSION_LONG} -X tailscale.com/version.Short=${VERSION_SHORT} -X tailscale.com/version.GitCommit=${VERSION_GIT_HASH}" ./cmd/tailscaled
-    mkdir -p "$pkgdir/usr/bin" "$pkgdir/etc/default" "$pkgdir/usr/lib/systemd/system"
-    install -m755 tailscale tailscaled "$pkgdir/usr/bin"
-    install -m644 cmd/tailscaled/tailscaled.defaults "$pkgdir/etc/default/tailscaled"
-    install -m644 cmd/tailscaled/tailscaled.service "$pkgdir/usr/lib/systemd/system"
+    cd "$srcdir/tailscale"
+    install -Dm755 tailscale tailscaled -t "$pkgdir/usr/bin"
+    install -Dm644 cmd/tailscaled/tailscaled.defaults "$pkgdir/etc/default/tailscaled"
+    install -Dm644 cmd/tailscaled/tailscaled.service -t "$pkgdir/usr/lib/systemd/system"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
