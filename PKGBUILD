@@ -1,7 +1,7 @@
 # Maintainer: Robert Sprunk <arch-aur@sprunk.me>
 # Contributor: Bryn Edwards <bryn.edwards@gmail.com>
 pkgname=supysonic
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A Python implementation of the Subsonic server API."
 arch=('any')
@@ -15,6 +15,7 @@ depends=(
   'python-mutagen'
   'python-watchdog'
   'python-zipstream'
+  'python-mediafile'
 )
 makedepends=(
   'git'
@@ -34,7 +35,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/spl0k/$pkgname/archive/$pkg
         "$pkgname.tmpfiles"
         "$pkgname-daemon.service"
         "apache-wsgi.conf")
-sha256sums=('5bc10c8928228bc0534c66b9b620fe300b8ac18693b3ae110ae3271184f5ddfe'
+sha256sums=('1de6d2d4945a984c854d51c55145f673f25acb58a0f5930348ecaa2723a8e361'
             'e8a10b2be1c3b6757cee8928f2e585351da9e9b6eadfa68c8905913108a26b80'
             'b4b723d30fb45f86a15ec218910cd3935aac4546d5e2f9a1e1bc79cccfb98480'
             '430eba10de5381a425074b89d0a46fb770be5112b26e81ac6a2b55765675cb13'
