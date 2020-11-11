@@ -7,8 +7,8 @@
 
 pkgname=qaac-wine
 _pkgname=qaac
-pkgver=2.70
-pkgrel=2
+pkgver=2.71
+pkgrel=1
 pkgdesc="QuickTime AAC/ALAC encoder (wine version)"
 arch=('x86_64')
 url="https://sites.google.com/site/qaacpage/"
@@ -20,7 +20,7 @@ source=("https://github.com/nu774/qaac/releases/download/v${pkgver}/qaac_${pkgve
         "https://raw.githubusercontent.com/nu774/qaac/master/COPYING"
         "https://www.apple.com/legal/sla/docs/iTunesWindows.pdf"
         "wrapper.sh")
-sha256sums=('200ca3e4e7f8b4f27ae35d6fd5f0ed78440e9424710ab26086a590b298799873'
+sha256sums=('f224f1da1e4fc1bd1096025dbb0eea9b4392422abb77810338ecb226b4497aa8'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -32,8 +32,8 @@ build() {
     export WINEPREFIX=$PWD/wineprefix
     export WINEARCH=win64
     wineserver -k || true
-    winetricks win7
-    msiexec /i "${srcdir}/iTunes64.msi" /qn
+    DISPLAY= winetricks win7
+    WINEDLLOVERRIDES=winemenubuilder.exe=d msiexec /i "${srcdir}/iTunes64.msi" /qn
     wineserver -k || true
 }
 
