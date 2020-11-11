@@ -7,7 +7,7 @@ pkgrel=1
 arch=('x86_64')
 url='https://starship.rs/'
 license=('ISC')
-depends=('zlib' 'gcc-libs' 'openssl')
+depends=('zlib' 'openssl')
 optdepends=('powerline-fonts: powerline symbols for terminals'
             'noto-fonts-emoji: emoji support for terminals')
 makedepends=('rust' 'gcc')
@@ -19,12 +19,12 @@ sha256sums=('39301c8118239eda7b6d8dbcae498f28bfd901932e69003c249d99ee7989c1bb')
 
 build() {
     cd "$pkgname-$pkgver"
-    cargo build --release --locked
+    RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable} cargo build --release --locked
 }
 
 check() {
     cd "$pkgname-$pkgver"
-    cargo test --locked
+    RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable} cargo test --locked
 }
 
 package() {
