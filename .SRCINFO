@@ -1,8 +1,8 @@
 pkgbase = openmarias
 	pkgdesc = A Qt-based Marias card game.
 	pkgver = 1.1.0.svn.r222
-	pkgrel = 2
-	url = http://openmarias.sourceforge.net
+	pkgrel = 3
+	url = https://sourceforge.net/projects/openmarias/
 	arch = x86_64
 	license = GNU
 	depends = bzip2

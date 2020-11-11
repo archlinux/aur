@@ -2,10 +2,10 @@
 
 pkgname=openmarias
 pkgver=1.1.0.svn.r222
-pkgrel=2
+pkgrel=3
 pkgdesc="A Qt-based Marias card game."
 arch=('x86_64')
-url='http://openmarias.sourceforge.net'
+url='https://sourceforge.net/projects/openmarias/'
 license=('GNU')
 depends=('bzip2'
          'freetype2'
