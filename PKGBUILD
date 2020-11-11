@@ -17,12 +17,15 @@ prepare() {
 }
 
 build() {
-    "$srcdir/node_modules/web-ext/bin/web-ext" build -s "$srcdir/$pkgname-$pkgver" -i README.md LICENSE
+    cd "$srcdir/$pkgname-$pkgver"
+    "$srcdir/node_modules/web-ext/bin/web-ext" build
 }
 
 package() {
+    cd "$srcdir/$pkgname-$pkgver"
+
     install -dm755 "$pkgdir/usr/share/$pkgname"
     unzip -d "$pkgdir/usr/share/$pkgname" "web-ext-artifacts/privacy_redirect-$pkgver.zip"
 
-    install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
