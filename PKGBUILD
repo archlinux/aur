@@ -1,8 +1,8 @@
 # Maintainer: Alkindi42
 
 pkgname=joplin-beta
-pkgver=1.4.7
-pkgrel=3
+pkgver=1.4.9
+pkgrel=1
 pkgdesc="The latest pre-release - open source note taking and to-do application"
 arch=('x86_64')
 depends=('nodejs>10' 'nss' 'gtk3' 'libxss' 'libsecret' 'rsync' 'libgsf' 'libexif' 'libcroco')
@@ -18,7 +18,7 @@ license=('MIT')
 sha256sums=('18cca699f52f884980646359631bb59a77d190b9f91e9e3e71efa62166772557'
             'b5c621c425cdf0b5bb07bf0353939f6991a18db81955294a47ec42d0c5593438'
             'b46dd772eb1adf9327f6c07657acf3c627c6ea204f8de3a4481efa6db0071f5e'
-            'ba6a7aecb598b072cb1dd6c47dd8b41c944113416eb905f814aa96735ec0e380')
+            'daa0c17cac7ece08ca1d8301d592de20d067245af4054c126c76ee49f32a7860')
 
 build() {
   cd "${srcdir}/${pkgname%-*}-${pkgver}"
