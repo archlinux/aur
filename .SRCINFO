@@ -1,4 +1,4 @@
-pkgbase = nerdfetch-ohio2
+pkgbase = ohio2-nerdfetch
 	pkgdesc = A POSIX fetch using NerdFonts
 	pkgver = 4
 	pkgrel = 3
