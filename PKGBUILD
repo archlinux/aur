@@ -3,8 +3,6 @@
 # Contributor: Steven She <mintcoffee@gmail.com>
 # Contributor: vbPadre <vbPadre@gmail.com>
 
-# TODO: cndrvcups-common-lb and cndrvcups-lb should be a single split package
-
 set -u
 #if [ ! -z "${BUILDDIR:-}" ] && [ "${BUILDDIR// /}" != "${BUILDDIR}" ]; then
 #  BUILDDIR="/tmp/makepkg.${USER// /}"
@@ -114,6 +112,7 @@ build() {
 
   cd "${_srcdir}"
   local _vars; _setvars
+  CFLAGS+=' -fcommon'
   # Bash does not recognize var assigments hidden by array expansion so we use env.
   env "${_vars[@]}" \
   sh -e -u -x 'make.Arch'
