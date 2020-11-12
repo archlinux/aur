@@ -1,7 +1,7 @@
 pkgbase = wf-shell
 	pkgdesc = GTK3-based panel for the Wayfire compositor
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://wayfire.org
 	arch = x86_64
 	license = custom:MIT
@@ -12,12 +12,12 @@ pkgbase = wf-shell
 	makedepends = git
 	makedepends = gobject-introspection
 	depends = gtk-layer-shell>=0.1
-	depends = wayfire>=0.5
+	depends = wayfire>=0.6
 	depends = libpulse
 	depends = gtkmm3
 	conflicts = wf-shell-git
-	source = https://github.com/WayfireWM/wf-shell/releases/download/0.5.0/wf-shell-0.5.0.tar.xz
-	sha256sums = fa481e867784b94b08857ec7bd27bf43251490d5d50c1e834e7ea64d908792f0
+	source = https://github.com/WayfireWM/wf-shell/releases/download/0.6.0/wf-shell-0.6.0.tar.xz
+	sha256sums = 4e2a4e5497f97bfbde86b4afbb9c186402e134e9f8c578c51af48bfc9b8f4f3b
 
 pkgname = wf-shell
 
