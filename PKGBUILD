@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=sabnzbd
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc='A web-interface based binary newsgrabber with NZB file support'
 url='http://www.sabnzbd.org'
@@ -44,7 +44,7 @@ source=(
   'sabnzbd.tmpfiles'
 )
         
-sha256sums=('3df7a563b8c01cf61bfeee8198ee1ed5f4b0fdb0dcfc0d03040479ddfe9f3328'
+sha256sums=('3682ee411f5649796f912c5fed9ffd314772df86bf41cee9c2459d53742b7125'
             'c1bcdb5ce7787aab5ab4f07508c1451441f42df0ec7be85a5dedda0a5ee70014'
             '4c4ff2882de744d1b5435470ed829d58defcc84fafc56e6211d1298c0b22813f'
             '525f294372963fde09db08b0368c80078a16d4cefcb34f8179706336709afdf7'
