@@ -25,8 +25,8 @@ package() {
   # Install resources and binary
   install -dm 755 "$pkgdir/usr/share/$pkgname"
   cp -r build/linux-unpacked/* "$pkgdir/usr/share/$pkgname"
-  install -dm 755 "$pkgdir/usr/local/bin"
-  ln -s "/usr/share/$pkgname/$_pkgname" "$pkgdir/usr/local/bin/$_pkgname"
+  install -dm 755 "$pkgdir/usr/bin"
+  ln -s "/usr/share/$pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 
   # Install pixmaps and fonts
