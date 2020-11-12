@@ -3,7 +3,7 @@
 
 pkgname=ttf-crosextra
 pkgver=2013.02.14
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Chrome OS Extra fonts featuring Carlito (Calibri clone) and Caladea (Cambria clone)'
 arch=('any')
@@ -12,7 +12,6 @@ license=('custom:OFL')
 
 depends=(
     'fontconfig'
-    'xorg-font-utils'
     'ttf-caladea'
     'ttf-carlito'
 )
