@@ -1,5 +1,5 @@
 # Maintainer: Jona Miller <miller.jona at yandex dot com>
-pkgname=onhold
+pkgname=chromecast_mpris
 pkgver=0.3.3
 pkgrel=1
 pkgdesc="Control Chromecasts from Linux and D-Bus "
