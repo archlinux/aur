@@ -3,7 +3,7 @@
 pkgname=python-librabbitmq
 pkgver=2.0.0
 _librabbitmqver=0.8.0
-pkgrel=4
+pkgrel=5
 pkgdesc="AMQP Client using the rabbitmq-c library"
 arch=('x86_64')
 url="https://pypi.python.org/pypi/librabbitmq"
