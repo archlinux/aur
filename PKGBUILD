@@ -20,6 +20,8 @@ build() {
   go build \
     -trimpath
     -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
     -ldflags "-extldflags $LDFLAGS" \
     -o build/"$pkgname" .
 }
