@@ -1,11 +1,12 @@
 # Maintainer: Arctic Ice Studio <development@arcticicestudio.com>
+# Contributor: Arctic Ice Studio <development@arcticicestudio.com>
 pkgname=nord-emacs
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="An arctic, north-bluish clean and elegant Emacs theme"
 arch=("any")
 url="https://github.com/arcticicestudio/nord-emacs"
-license=("Apache", "CC-BY-SA-4.0")
+license=("MIT")
 depends=("emacs>=23")
 makedepends=("git")
 source=("$pkgname::git+https://github.com/arcticicestudio/nord-emacs.git#tag=v$pkgver")
