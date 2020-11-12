@@ -1,0 +1,26 @@
+pkgbase = otf-sansita-swashed
+	pkgdesc = An ornate version of Sansita from Omnibus-Type.
+	pkgver = 20200828
+	pkgrel = 1
+	url = https://www.omnibus-type.com/fonts/sansita-swashed/
+	arch = any
+	license = OFL
+	source = otf-sansita-swashed-20200828-1-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/OFL.txt
+	source = https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/fonts/otf/SansitaSwashed-Black.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/fonts/otf/SansitaSwashed-Bold.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/fonts/otf/SansitaSwashed-ExtraBold.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/fonts/otf/SansitaSwashed-Light.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/fonts/otf/SansitaSwashed-Medium.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/fonts/otf/SansitaSwashed-Regular.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/fonts/otf/SansitaSwashed-SemiBold.otf
+	sha256sums = e0513f56a7710b94b459ccb7ef77bb7a464e24c777fb2f7023b78af8915dbb86
+	sha256sums = eed1232ae70fe117059c56a14162869c85b1ebc277c2ff30221016a591bc9496
+	sha256sums = c1e8dd713e922a7d3be833a7b2a1783ca314811abd838d3fed924abca2ad889f
+	sha256sums = c9aea651864485223cbe63a6b5585ff1a8b5823cf73f091a0ee6c53bb06b30a5
+	sha256sums = c103961edf8b3e96b8009242914786d1c77baef03b98523526a83ec19641818d
+	sha256sums = d1fb836d981ce62f24b9c6ece6e100133f0a5c514253a21188a6eb30d200bc65
+	sha256sums = 57c63932ccf028ca6c3c1e2b7edaa962bf44a56d226ebf3fe6f34353207e2a88
+	sha256sums = a6be670bce6c2834755b34dec41e1a11e4c64bc5ceff94a60bb510d8e6857d90
+
+pkgname = otf-sansita-swashed
+
