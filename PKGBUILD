@@ -13,8 +13,8 @@ pkgname=(
   'xorg-server-common-hidpi-git'
   'xorg-server-devel-hidpi-git')
 _pkgbase='xserver'
-pkgver=1.20.0.r719.g727df0a74
-pkgrel=2
+pkgver=1.20.0.r755.g28ed4b95e
+pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -211,6 +211,7 @@ package_xorg-server-xwayland-hidpi-git() {
            nettle libtirpc)
 
   _install fakeinstall/usr/bin/Xwayland
+  _install fakeinstall/usr/share/man/man1/Xwayland.1
 
   # license
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
