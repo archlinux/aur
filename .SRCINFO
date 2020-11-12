@@ -1,14 +1,14 @@
 pkgbase = goweight
 	pkgdesc = A tool to analyze and troubleshoot a Go binary size
-	pkgver = 1.0.2
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/jondot/goweight
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go-pie
-	source = goweight-1.0.2.tar.gz::https://github.com/jondot/goweight/archive/v1.0.2.tar.gz
-	sha256sums = d82cc3eb4210e38425e67aa5beaf003c2bcef01107a981dc5540de973fbb46a6
+	source = goweight-1.0.5.tar.gz::https://github.com/jondot/goweight/archive/v1.0.5.tar.gz
+	sha256sums = 42b9ed74053d3c84bce2226744a8d93981dc1eaa60e6372346d2ba4df5a5dfca
 
 pkgname = goweight
 
