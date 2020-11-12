@@ -1,0 +1,19 @@
+pkgbase = plasma-disks-git
+	pkgdesc = Monitors S.M.A.R.T. capable devices for imminent failure
+	pkgver = r141.5e5a091
+	pkgrel = 1
+	url = https://www.kde.org/workspaces/plasmadesktop/
+	arch = x86_64
+	groups = plasma
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = smartmontools
+	depends = kdeclarative-git
+	provides = plasma-disks
+	conflicts = plasma-disks
+	source = git+https://invent.kde.org/plasma/plasma-disks.git
+	sha256sums = SKIP
+
+pkgname = plasma-disks-git
+
