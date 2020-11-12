@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-celery
 pkgver=0.0.0a1
-pkgrel=2
+pkgrel=3
 pkgdesc='A shim pytest plugin to enable celery.contrib.pytest'
 arch=('any')
 license=('BSD')
