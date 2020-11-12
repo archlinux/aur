@@ -3,7 +3,7 @@
 _pkgbase=PyDrive
 pkgname=python-pydrive
 pkgver=1.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Google Drive API Python wrapper library"
 arch=('any')
 url="https://github.com/gsuitedevs/PyDrive"
