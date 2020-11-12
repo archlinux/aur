@@ -7,7 +7,7 @@
 
 pkgname=impressive
 pkgver=0.13.0_r306
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple presentation program that displays slideshows of PDF, image or video files'
 arch=('any')
 url='http://impressive.sourceforge.net'
@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/${pkgname}"
-  make
+  make ${pkgname}.py man
 }
 
 package() {

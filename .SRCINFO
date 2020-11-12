@@ -1,7 +1,7 @@
 pkgbase = impressive
 	pkgdesc = A simple presentation program that displays slideshows of PDF, image or video files
 	pkgver = 0.13.0_r306
-	pkgrel = 1
+	pkgrel = 2
 	url = http://impressive.sourceforge.net
 	arch = any
 	license = GPL2
