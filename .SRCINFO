@@ -1,6 +1,6 @@
 pkgbase = recidia-audio-visualizer
 	pkgdesc = A highly customizable real time audio visualizer
-	pkgver = 0.1.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/GhostNaN/recidia-audio-visualizer
 	arch = i686
@@ -8,14 +8,16 @@ pkgbase = recidia-audio-visualizer
 	license = GPL3
 	makedepends = meson
 	makedepends = ninja
+	makedepends = vulkan-headers
 	depends = gsl
 	depends = fftw
 	depends = ncurses
 	depends = libconfig
+	depends = shaderc
 	optdepends = pulseaudio: Audio data collection - PICK ONE/BOTH
 	optdepends = portaudio: Audio data collection (Input Only) - PICK ONE/BOTH
-	source = recidia-audio-visualizer-0.1.1.tar.gz::https://github.com/GhostNaN/recidia-audio-visualizer/archive/0.1.1.tar.gz
-	sha256sums = edb796a51a3ba7080e2e455cd571fa4d7ac6e32316d980bb6ee688c5e1b3ec6e
+	source = recidia-audio-visualizer-0.2.tar.gz::https://github.com/GhostNaN/recidia-audio-visualizer/archive/0.2.tar.gz
+	sha256sums = b1e7aa7a30737d22dfe8581c3032e366d8d3d61160b3ef74875ccb55487192eb
 
 pkgname = recidia-audio-visualizer
 
