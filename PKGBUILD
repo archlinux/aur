@@ -1,45 +1,36 @@
-# Maintainer: Aimilius <aimilius at protonmail dot com>
+# Maintainer: Martin Stolpe <martin dot stolpe at gmail dot com>
+# Contributor Aimilius <aimilius at protonmail dot com>
 # Contributor: Antonio Rojas <arojas@archlinux.org> 
 
+_pkgname=discover
 pkgname=discover-git
-pkgver=r5530.7aeec871
+pkgver=r7860.34d82541
 pkgrel=1
 pkgdesc='KDE and Plasma resources management GUI'
-arch=(i686 x86_64)
-url='https://projects.kde.org/projects/kde/workspace/discover'
+arch=(x86_64)
+url='https://userbase.kde.org/Discover'
 license=(LGPL)
-depends=(knewstuff kdeclarative kitemmodels qt5-graphicaleffects appstream-qt archlinux-appstream-data
-         hicolor-icon-theme kirigami2)
-makedepends=(extra-cmake-modules-git git python plasma-framework packagekit-qt5)
-optdepends=('packagekit-qt5: To install packages from Arch repositories')
-conflicts=(muon discover muon-git)
-provides=(discover)
-replaces=(muon-git)
-source=('git://anongit.kde.org/discover.git')
+depends=(knewstuff-git kitemmodels-git kdeclarative-git qt5-graphicaleffects appstream-qt archlinux-appstream-data
+         hicolor-icon-theme kirigami-git discount kuserfeedback)
+makedepends=(extra-cmake-modules plasma-framework-git packagekit-qt5 flatpak fwupd git)
+optdepends=('packagekit-qt5: to manage packages from Arch Linux repositories' 'flatpak: Flatpak packages support'
+            'fwupd: firmware update support')
 groups=(plasma)
-md5sums=('SKIP')
+source=("git+https://invent.kde.org/plasma/$_pkgname.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd discover
+  cd $srcdir/$_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../discover \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_LIBEXECDIR=lib \
+  cmake -B build -S cd $srcdir/$_pkgname \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
