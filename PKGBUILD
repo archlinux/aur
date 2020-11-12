@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Kyle Laker <kyle@laker.email>
 pkgname=warpinator-git
-pkgver=1.0.7.r3.g7a44020
+pkgver=1.0.8.r10.gd4865f8
 pkgrel=1
 pkgdesc="Share files across the LAN"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/linuxmint/warp"
 license=('GPL3')
 depends=('gtk3' 'python-cryptography' 'python-gobject' 'python-grpcio'
          'python-protobuf' 'python-pynacl' 'python-setproctitle' 'python-zeroconf'
-         'python-xapp' 'xapps' 'python-packaging')
+         'python-xapp' 'xapps-git' 'python-packaging')
 makedepends=('git' 'meson' 'python-grpcio-tools' 'gobject-introspection' 'polkit')
 optdepends=('ufw: Configure firewall rules')
 provides=("${pkgname%-git}")
@@ -26,8 +26,7 @@ prepare() {
 	cd "$srcdir/warp"
 
 	# Fix hard-coded libexec dir
-	sed -i 's/libexec/lib/g' \
-		"bin/${pkgname%-git}.in" \
+	sed -i 's/libexec/lib/g' "bin/${pkgname%-git}.in" \
 		install-scripts/meson_generate_and_install_protobuf_files.py
 }
 
