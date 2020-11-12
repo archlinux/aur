@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-archivo-narrow
-pkgver=2.000
-pkgrel=3
+pkgver=3.000
+pkgrel=1
 pkgdesc='A grotesque sans-serif typeface family from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/archivo-narrow/'
