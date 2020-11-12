@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=noto-fonts-main
-pkgver=20190926
+pkgver=20201112
 pkgrel=1
 pkgdesc='Google Noto fonts: Sans, Sans Display, Sans Mono, Serif, Serif Display'
 arch=('any')
@@ -9,7 +9,7 @@ license=('OFL')
 conflicts=('noto-fonts'
            'noto-fonts-extra')
 source=("https://www.markusweimar.de/public/noto-fonts-main-${pkgver}.tar.zst")
-sha256sums=('3ddbdfe8568314e073084b9c956e72957fc217b0875c9c34835b4423315e0f50')
+sha256sums=('ace3a5d91d1ac2a7c4549ad54149563b91586863b86a28e794055e116b826030')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF/
