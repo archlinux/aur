@@ -2,7 +2,7 @@
 
 pkgname=python-chai
 pkgver=1.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Easy to use mocking, stubbing and spying framework."
 arch=('any')
 url="https://github.com/agoragames/chai"
