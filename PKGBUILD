@@ -4,7 +4,7 @@
 
 pkgname=python-flickrapi
 pkgver=2.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="The official Python interface to the Flickr API"
 arch=('any')
 url="https://stuvel.eu/flickrapi"
