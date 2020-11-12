@@ -1,18 +1,19 @@
-# Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
+# Maintainer: PumpkinCheshire <sollyonzou@gmail.com>
+# Contributor: Brenton Horne <brentonhorne77 at gmail dot com>
 
 pkgname=github-release
 _name=github-release
 _author=github-release
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line app to create and edit releases on GitHub (and upload artifacts)"
 arch=('i686' 'x86_64')
 url="https://github.com/github-release/${pkgname}"
-makedepends=('go')
-depends=('glibc' 'git' 'golang-github-dustin-go-humanize' 'golang-github-voxelbrain-goptions')
+makedepends=('go' 'golang-github-dustin-go-humanize' 'golang-github-voxelbrain-goptions')
+depends=('glibc' 'git')
 conflicts=("${pkgname}-bin")
 license=('MIT')
-source=("$_name-$pkgver::${url}/archive/v${pkgver}.tar.gz")
+source=("$_name-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha512sums=('e215215bbb16ac8b275fd710c400b5ac1125b84250f05b276a75830536494f8b9db374021d135a952a456e9419bac952fd2258ef79d1175d539f70cf8a4c1cb8')
 
 prepare() {
