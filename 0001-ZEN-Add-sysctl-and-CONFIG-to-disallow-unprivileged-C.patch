@@ -40,7 +40,7 @@ index 96fc45d1b686..3bc58f03a2cd 100644
  	bool "PID Namespaces"
  	default y
 diff --git a/kernel/fork.c b/kernel/fork.c
-index e3d5963d8c6f..26bca4170e37 100644
+index 419fff8eb9e5..70da21e5c06a 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
 @@ -106,6 +106,11 @@
