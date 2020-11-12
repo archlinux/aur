@@ -1,6 +1,6 @@
 pkgbase = foot
 	pkgver = 1.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/dnkl/foot
 	arch = x86_64
 	arch = aarch64
@@ -17,7 +17,6 @@ pkgbase = foot
 	depends = pixman
 	depends = fontconfig
 	depends = freetype2
-	depends = foot-terminfo
 	source = https://codeberg.org/dnkl/foot/archive/1.5.3.tar.gz
 	source = https://codeberg.org/dnkl/tllist/archive/1.0.4.tar.gz
 	source = https://codeberg.org/dnkl/fcft/archive/2.3.1.tar.gz
@@ -27,6 +26,13 @@ pkgbase = foot
 
 pkgname = foot
 	pkgdesc = Wayland terminal emulator - fast, lightweight and minimalistic
+	changelog = CHANGELOG.md
+	depends = libxkbcommon
+	depends = wayland
+	depends = pixman
+	depends = fontconfig
+	depends = freetype2
+	depends = foot-terminfo
 
 pkgname = foot-terminfo
 	pkgdesc = Terminfo files for the foot terminal emulator
