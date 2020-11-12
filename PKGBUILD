@@ -3,8 +3,8 @@
 pkgname='python-mercantile'
 _name=mercantile
 pkgver=1.1.6
-pkgrel=2
-pkgdesc='Context geo-tiles in Python'
+pkgrel=3
+pkgdesc='Spherical mercator tile and coordinate utilities'
 arch=('any')
 url='https://github.com/mapbox/mercantile'
 license=('MIT')
