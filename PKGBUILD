@@ -28,9 +28,7 @@ check() {
   cd "${_name}-${pkgver}"
   local _py3_ver=$(python --version | cut -d " " -f2)
   export PYTHONPATH="build/lib.linux-$CARCH-${_py3_ver%"."*}:${PYTHONPATH}"
-  py.test -k 'not test_etherinfo_objects \
-              and not test_get_interface_info_active \
-              and not test_get_interface_info_all'
+  py.test -k 'not test_etherinfo_objects and not test_get_interface_info_active and not test_get_interface_info_all'
 }
 
 package() {
