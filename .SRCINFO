@@ -1,5 +1,5 @@
 pkgbase = soundux-git
-	pkgdesc = A universal soundboard in Qt for linux using pulseaudio modules
+	pkgdesc = A cross-platform soundboard in QtQuick
 	pkgver = r63.265f318
 	pkgrel = 1
 	epoch = 1
