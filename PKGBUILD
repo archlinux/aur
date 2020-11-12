@@ -4,7 +4,7 @@
 _pkgname=exa
 pkgname=${_pkgname}-git
 pkgver=0.9.0.r184.g39c8c67
-pkgrel=1
+pkgrel=2
 pkgdesc='Replacement for ls written in Rust'
 arch=('i686' 'x86_64')
 url="https://github.com/ogham/exa"
@@ -34,11 +34,11 @@ package() {
     install -Dm755 "target/release/$_pkgname" \
         -t "$pkgdir/usr/bin"
     install -Dm644 completions/completions.bash \
-        "$pkgdir/etc/bash_completion.d/$pkgname"
+        "$pkgdir/etc/bash_completion.d/$_pkgname"
     install -Dm644 completions/completions.zsh \
-        "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+        "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
     install -Dm644 completions/completions.fish \
-        "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+        "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
     install -Dm644 LICEN?E \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "target/release/man/$_pkgname.1" \
