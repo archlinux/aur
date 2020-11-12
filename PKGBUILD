@@ -5,7 +5,7 @@
 pkgname=python-pytddmon
 pkgver=1.0.8
 _commit=4b2875cfda88050537af58a4103ea8809c27ee1c
-pkgrel=6
+pkgrel=7
 pkgdesc='Continuous unit testing in Python'
 arch=('any')
 url='https://pytddmon.org'
