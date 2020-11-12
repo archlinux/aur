@@ -1,33 +1,34 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
+# Contributor: Librewish <librewish@gmail.com>
 pkgname=ofono
 pkgver=1.31
-pkgrel=2
+pkgrel=3
 pkgdesc="Infrastructure for building mobile telephony (GSM/UMTS) applications"
 url="https://01.org/ofono"
-arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
+arch=("any")
 license=("GPL2")
-depends=("bluez" "dbus" "modemmanager" "glib2" "udev" "mobile-broadband-provider-info")
+depends=("bluez" "dbus" "glib2" "udev" "mobile-broadband-provider-info")
+optdepends=("phonesim" "mmsd" "upower")
 source=(
 	"https://www.kernel.org/pub/linux/network/ofono/$pkgname-$pkgver.tar.xz"
-	"https://www.kernel.org/pub/linux/network/ofono/$pkgname-$pkgver.tar.sign"
+#	"https://www.kernel.org/pub/linux/network/ofono/$pkgname-$pkgver.tar.sign"
 )
-sha256sums=(
-	"a15c5d28096c10eb30e47a68b6dc2e7c4a5a99d7f4cfedf0b69624f33d859e9b"
-	"SKIP"
-)
-validpgpkeys=(
-	"E932D120BC2AEC444E558F0106CA9F5D1DCF2659"  # Marcel Holtmann <marcel@holtmann.org>
-)
+sha256sums=('a15c5d28096c10eb30e47a68b6dc2e7c4a5a99d7f4cfedf0b69624f33d859e9b'
+#            'SKIP'
+            )
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \
+		--localstatedir=/var \
 		--sbindir=/usr/bin \
-		--disable-bluez4
-
+		--mandir=/usr/share/man \
+		--enable-test \
+		--enable-tools \
+		--enable-dundee
 	make
 }
 
