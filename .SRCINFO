@@ -1,6 +1,6 @@
 pkgbase = pulse-secure
 	pkgdesc = Pulse Connect Secure (PCS) Client
-	pkgver = 9.1r8.0_b165
+	pkgver = 9.1r9.0_b255
 	pkgrel = 1
 	url = https://www.pulsesecure.net/
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = pulse-secure
 	source = PulseClient-Arch.patch
 	md5sums = d81155461e2666c2b9d669c1b76f85fe
 	md5sums = 261848a28201e5386ec4bf587473a48b
-	md5sums = 42b2893beacf0ff7ac6a7b82125ff335
-	source_x86_64 = http://ccnet.ntu.edu.tw/vpn/Download/ps-pulse-linux-9.1r8.0-b165-centos-rhel-64-bit-installer.rpm
-	md5sums_x86_64 = 2ee69c1689a471115cb5a023577e1a9a
+	md5sums = 2748e1b68097d297e3ac58ca893d0b61
+	source_x86_64 = http://webdev.web3.technion.ac.il/docs/cis/public/ssl-vpn/v.9.1R9.0/ps-pulse-linux-9.1r9.0-b255-centos-rhel-64-bit-installer.rpm
+	md5sums_x86_64 = f727a1d286baba9311be2bc6a7e77293
 
 pkgname = pulse-secure
 
