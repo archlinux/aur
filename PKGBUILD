@@ -1,5 +1,5 @@
-# Maintainer: Arctic Ice Studio <development@arcticicestudio.com>
-# Contributor: Sven Greb <development@svengreb.de>
+# Maintainer: Sven Greb <development@svengreb.de>
+# Contributor: Arctic Ice Studio <development@arcticicestudio.com>
 #
 # This package is built according to the AUR Go packaging guidelines:
 # https://wiki.archlinux.org/index.php/Go_package_guidelines
