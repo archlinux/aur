@@ -1,7 +1,7 @@
 # Maintainer: nekgem2 <nekgem2@firemail.cc>
 pkgname=lokinet
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Anonymous, decentralized and IP based overlay network for the internet."
 arch=('x86_64' 'aarch64')
 url="https://lokinet.org"
@@ -12,7 +12,7 @@ conflicts=('lokimq')
 install='lokinet.install'
 source=("https://github.com/loki-project/loki-network/releases/download/v$pkgver/lokinet-v$pkgver.tar.xz"{,.sig}
         'lokinet.service'
-        'lokinet-vpn.service'
+        'lokinet-vpn@.service'
         'lokinet-bootstrap.service'
         'lokinet-default-config.service'
         'lokinet-resume.service'
@@ -21,7 +21,7 @@ source=("https://github.com/loki-project/loki-network/releases/download/v$pkgver
 sha256sums=('08f76a119141e15aa12fbce20e05e01b70782c7917aa80347d8677c7d0ab6ba1'
             'SKIP'
             '3c2fcd2be74a989bdb19383dd3421f7654584b53e4b7e0692b752bfbe60903f4'
-            '66adce25edd3323a3a6d07691bb886800f506944bf4fa0918eb42a033e344384'
+            'd3d1b95b794284a1e4e5915d96510aca68fcf09ebbd347a721c93e8af57cd838'
             '21c9bc83f8466ab17fa927561d7f24f930f97c996a8aa0fbbbbb2b65cb97b342'
             '6ef779170b72856bbb8df40c34a808acffddd156684bdb66a55e71d50cf95841'
             'bcf4bd7b38d2f054e25cc243353d3c9a56d1948b42ad07ee5c0260de06e8dd6c'
@@ -65,7 +65,7 @@ package() {
 	rm -r "$pkgdir/usr/include"
 
 	install -D -m 644 "$srcdir/lokinet.service"                "$pkgdir/usr/lib/systemd/system/lokinet.service"
-	install -D -m 644 "$srcdir/lokinet-vpn.service"            "$pkgdir/usr/lib/systemd/system/lokinet-vpn.service"
+	install -D -m 644 "$srcdir/lokinet-vpn@.service"           "$pkgdir/usr/lib/systemd/system/lokinet-vpn@.service"
 	install -D -m 644 "$srcdir/lokinet-bootstrap.service"      "$pkgdir/usr/lib/systemd/system/lokinet-bootstrap.service"
 	install -D -m 644 "$srcdir/lokinet-default-config.service" "$pkgdir/usr/lib/systemd/system/lokinet-default-config.service"
 	install -D -m 644 "$srcdir/lokinet-resume.service"         "$pkgdir/usr/lib/systemd/system/lokinet-resume.service"

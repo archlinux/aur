@@ -5,7 +5,7 @@ After=lokinet.service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/lokinet-vpn --up
+ExecStart=/usr/bin/lokinet-vpn --up --exit %i.loki
 ExecStop=/usr/bin/lokinet-vpn --down
 RemainAfterExit=true
 
