@@ -2,7 +2,7 @@
 
 pkgname=python-iocapture
 pkgver=0.1.2
-pkgrel=7
+pkgrel=8
 pkgdesc="Capture stdout, stderr easily"
 arch=('any')
 license=('MIT')
