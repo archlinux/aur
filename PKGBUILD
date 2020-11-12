@@ -2,9 +2,9 @@
 
 pkgname=sugarmaker
 pkgver=2.5.0_sugar4
-pkgrel=1
+pkgrel=2
 pkgdesc='A multi-threaded CPU miner for Sugarchain'
-arch=('x86_64')
+arch=('x86_64' 'armv7h')
 url="https://github.com/decryp2kanon/sugarmaker"
 licence=('GPL2')
 depends=()
