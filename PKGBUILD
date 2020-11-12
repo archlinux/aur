@@ -3,7 +3,7 @@
 
 pkgname=kubeadm-bin
 pkgdesc="Kubernetes.io kubeadm binary"
-pkgver=1.19.3
+pkgver=1.19.4
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="http://kubernetes.io"
@@ -18,13 +18,13 @@ sha256sums=('8af7f7910fd8710ce02af03170e109c6dc6d4d74eb2cc06f90530be4f0090b65')
 
 case "$CARCH" in
   arm*) _pkgarch="arm"
-    sha256sums+=('522358c8596d10cac1a04a9e52f0ae59a1c06ca122292429d36773e7f6ad0a01')
+    sha256sums+=('9b83c9dcda775e9b5a20d7254218e8b70cea8a37266d254b6289faa1d5602cd9')
     ;;
   aarch64) _pkgarch="arm64"
-    sha256sums+=('c398c23019f988514ac0f2c1e32a388cf11ca9d48634530092dbf54d9e00eaa6')
+    sha256sums+=('1357ce6314a2b4a2303a96c33c996e7e9e8269cf4cc464557e7fa09f9a6ade34')
     ;;
   x86_64) _pkgarch="amd64"
-    sha256sums+=('0a7581fdebe05fb101ce30d4e1f85e865e18f5c034e4f7cc785c786e861f9be2')
+    sha256sums+=('e1977c6ba7acc7b2b3896202c93a73dbdf1c649b93843350e0f10172e26cf59d')
     ;;
 esac
 
