@@ -3,7 +3,7 @@
 _pkgname=litepcie
 pkgname=python-$_pkgname
 pkgver=2020.08
-pkgrel=2
+pkgrel=3
 pkgdesc='Small footprint and configurable PCIe core'
 arch=('any')
 url="https://github.com/enjoy-digital/$_pkgname"
