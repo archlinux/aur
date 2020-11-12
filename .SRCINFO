@@ -1,0 +1,18 @@
+pkgbase = plasma-workspace-wallpapers-git
+	pkgdesc = Additional wallpapers for the Plasma Workspace
+	pkgver = 5.20.3
+	pkgrel = 1
+	url = https://www.kde.org/workspaces/plasmadesktop/
+	arch = any
+	groups = plasma
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-base
+	makedepends = git
+	provides = plasma-workspace-wallpapers
+	conflicts = plasma-workspace-wallpapers
+	source = git+https://invent.kde.org/plasma/plasma-workspace-wallpapers.git
+	sha256sums = SKIP
+
+pkgname = plasma-workspace-wallpapers-git
+
