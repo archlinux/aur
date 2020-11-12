@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-grenze
-pkgver=1.001
-pkgrel=3
+pkgver=1.002
+pkgrel=1
 pkgdesc='A hybrid typeface family between Roman and Blackletter styles from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/grenze/'

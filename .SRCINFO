@@ -1,11 +1,11 @@
 pkgbase = otf-grenze
 	pkgdesc = A hybrid typeface family between Roman and Blackletter styles from Omnibus-Type.
-	pkgver = 1.001
-	pkgrel = 3
+	pkgver = 1.002
+	pkgrel = 1
 	url = https://www.omnibus-type.com/fonts/grenze/
 	arch = any
 	license = OFL
-	source = otf-grenze-1.001-3-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/OFL.txt
+	source = otf-grenze-1.002-1-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/OFL.txt
 	source = https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts/otf/Grenze-Black.otf
 	source = https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts/otf/Grenze-BlackItalic.otf
 	source = https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts/otf/Grenze-Bold.otf
