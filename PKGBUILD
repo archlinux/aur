@@ -3,14 +3,14 @@
 
 pkgname=imgcat
 pkgdesc="Output images as RGB ANSI graphics on the terminal"
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/trashhalo/imgcat"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('43993adbc46fffacc1ef0bcf2729d1d125928051995ceed3c7c54247501673df10679310c6ab07c03abf11d300d4ad474e000f1c77b04d39b07617d354dade10')
+sha512sums=('712ad518e9145613eba2f87816f5dd217bbb0782941818f68fbaf929feddd5d2b915123481dca868cc09855333064101f752e2903f00278a68f8a88c092c89b7')
 
 build() {
   cd "$pkgname-$pkgver"
