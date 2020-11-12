@@ -2,7 +2,7 @@
 
 pkgname="gr-framework-git"
 pkgver="0.53.0.r3.ga2074e9c"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="A universal framework for cross-platform visualization applications."
 arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
 url="https://gr-framework.org"
@@ -30,7 +30,6 @@ build() {
           -S . \
           -B build && \
     cmake --build build && \
-    make realclean && \
     /usr/lib/emscripten/emmake make -C js
 }
 
