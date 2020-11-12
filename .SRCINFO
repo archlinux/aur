@@ -1,0 +1,15 @@
+pkgbase = xidel-bin
+	pkgdesc = Command line tool to process HTML/XML/JSON locally or from online sources
+	pkgver = 0.9.8
+	pkgrel = 1
+	url = http://videlibri.sourceforge.net/xidel.html
+	arch = x86_64
+	license = GPL3
+	optdepends = openssl: https connections
+	provides = xidel
+	conflicts = xidel
+	source = xidel-0.9.8.deb::https://sourceforge.net/projects/videlibri/files/Xidel/Xidel 0.9.8/xidel_0.9.8-1_amd64.deb/download
+	sha256sums = f6a6e29b77547d5ae38383440bd653b3eaf9eeb470def14cc48154a4f6925f69
+
+pkgname = xidel-bin
+
