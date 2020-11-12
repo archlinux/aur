@@ -5,7 +5,7 @@
 pkgname=archey3
 # the PKGBUILD at https://github.com/lclarkmichalek/archey3/blob/master/PKGBUILD says 0.5
 pkgver=0.5
-pkgrel=10
+pkgrel=11
 pkgdesc='Output a logo and various system information'
 arch=('any')
 url='https://lclarkmichalek.github.io/archey3/'
