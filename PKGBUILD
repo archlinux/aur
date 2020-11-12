@@ -30,6 +30,6 @@ build() {
 
 package() {
   cd "${pkgname%-git}/cmd/${pkgname%-git}"
-  install -Dm 755 "${pkgname%-git}" "$pkgdir/usr/local/bin/${pkgname%-git}"
+  install -Dm 755 "${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
   install -Dm 644 "../../README.md" -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 }
