@@ -1,0 +1,24 @@
+pkgbase = kuserfeedback-git
+	pkgdesc = Framework for collecting user feedback for applications via telemetry and surveys
+	pkgver = r704.83982f1
+	pkgrel = 1
+	url = https://kde.org/products/frameworks/
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = clang
+	makedepends = qt5-charts
+	makedepends = qt5-svg
+	makedepends = qt5-declarative
+	depends = qt5-base
+	optdepends = qt5-declarative: QML bindings
+	optdepends = qt5-charts: User Feedback console
+	optdepends = qt5-svg: User Feedback console
+	provides = discover
+	conflicts = discover
+	source = git+https://invent.kde.org/libraries/kuserfeedback.git
+	sha256sums = SKIP
+
+pkgname = kuserfeedback-git
+
