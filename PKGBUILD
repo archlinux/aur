@@ -1,8 +1,9 @@
-# Maintainer: Amal Karunarathna <nasashinega@gmail.com>
+# Maintainer: Nico <d3sox at protonmail dot com>
+# Contributor: Amal Karunarathna <nasashinega@gmail.com>
 
 _gitname=applet-window-appmenu
 pkgname=plasma5-applets-window-appmenu-git
-pkgver=0.2.r10.g761a33a
+pkgver=0.6.0.r41.g1ab27f9
 pkgrel=1
 pkgdesc="Plasma 5 applet in order to show the window appmenu"
 arch=(x86_64)
@@ -16,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${_gitname}
-  git describe --long | sed 's/^[v-]//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
