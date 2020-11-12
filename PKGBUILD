@@ -3,7 +3,7 @@
 _name=git-url-parse
 pkgname=python-git-url-parse
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple GIT URL parser"
 arch=('any')
 url="https://github.com/coala/git-url-parse"
