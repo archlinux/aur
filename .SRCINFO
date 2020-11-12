@@ -1,6 +1,6 @@
 pkgbase = the-libs
 	pkgdesc = Common libraries for the- applications by Victor Tran
-	pkgver = 2.2
+	pkgver = 3.0
 	pkgrel = 0
 	url = https://github.com/vicr123/the-libs
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = the-libs
 	depends = qt5-svg
 	depends = qt5-x11extras
 	depends = gsettings-qt
-	source = the-libs-2.2::https://github.com/vicr123/the-libs/archive/v2.2.tar.gz
-	sha256sums = ea24a40adb8e5dcf63335ed4ffa273deb240df232ef06d6da8951a3683489caa
+	source = the-libs-3.0::https://github.com/vicr123/the-libs/archive/v3.0.tar.gz
+	sha256sums = d58dc201f97b762029043d6074fb3d947f511f7049dc295283315e966dec4443
 
 pkgname = the-libs
 
