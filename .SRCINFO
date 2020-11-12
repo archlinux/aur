@@ -1,0 +1,21 @@
+pkgbase = dav1d-git-optimized
+	pkgdesc = AV1 cross-platform Decoder, focused on speed and correctness -- latest git version compiled with optimizations
+	pkgver = r1489.ffd052b
+	pkgrel = 1
+	url = https://code.videolan.org/videolan/dav1d
+	arch = x86_64
+	license = BSD
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	makedepends = nasm
+	provides = dav1d
+	provides = libdav1d.so
+	conflicts = dav1d
+	conflicts = dav1d-git
+	options = !buildflags
+	source = git+https://code.videolan.org/videolan/dav1d.git
+	sha256sums = SKIP
+
+pkgname = dav1d-git-optimized
+
