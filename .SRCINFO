@@ -1,0 +1,20 @@
+pkgbase = kwayland-integration-git
+	pkgdesc = Provides integration plugins for various KDE frameworks for the wayland windowing system
+	pkgver = 5.20.3
+	pkgrel = 1
+	url = https://www.kde.org/workspaces/plasmadesktop/
+	arch = x86_64
+	groups = plasma
+	license = LGPL
+	makedepends = extra-cmake-modules
+	depends = kwindowsystem
+	depends = kidletime
+	depends = kwayland
+	depends = kguiaddons
+	provides = kwayland-integration
+	conflicts = kwayland-integration
+	source = git+https://invent.kde.org/plasma/kwayland-integration.git
+	sha256sums = SKIP
+
+pkgname = kwayland-integration-git
+
