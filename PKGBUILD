@@ -3,7 +3,7 @@
 
 pkgname=xjdwm
 pkgver=6.2+tracker.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
@@ -15,6 +15,7 @@ depends=('libx11'
 	'fossil'
 	'plan9port'
 	'xorg-xsetroot'
+	'xorg-xrandr'
 	'profanity'
 	'evolution'
 	'evolution-rss'
