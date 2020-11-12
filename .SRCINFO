@@ -1,0 +1,21 @@
+pkgbase = pappl-git
+	pkgdesc = PAPPL - Printer Application Framework
+	pkgver = r512.cae4783
+	pkgrel = 1
+	url = https://www.msweet.org/pappl/index.html
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = avahi
+	makedepends = libcups
+	makedepends = gnutls
+	makedepends = libjpeg-turbo
+	makedepends = pam
+	makedepends = libpng
+	makedepends = zlib
+	makedepends = libusb
+	source = git+https://github.com/michaelrsweet/pappl.git
+	md5sums = SKIP
+
+pkgname = pappl-git
+
