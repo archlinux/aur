@@ -23,7 +23,7 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S "$srcdir/$_pkgname" \
+  cmake -B build -S $_pkgname \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
