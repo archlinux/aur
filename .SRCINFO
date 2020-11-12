@@ -1,0 +1,16 @@
+pkgbase = timeliner-git
+	pkgdesc = Personal data aggregation utility
+	pkgver = 20191213.b54071f
+	pkgrel = 1
+	url = https://github.com/mholt/timeliner
+	arch = x86_64
+	license = AGPL
+	makedepends = git
+	makedepends = go
+	provides = timeliner
+	conflicts = timeliner
+	source = git+https://github.com/mholt/timeliner.git
+	sha256sums = SKIP
+
+pkgname = timeliner-git
+
