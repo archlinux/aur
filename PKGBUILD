@@ -3,7 +3,7 @@
 _name=publicsuffix
 pkgname=python-publicsuffix
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Get the public suffix of a domain name using the Public Suffix List"
 arch=('any')
 url="https://publicsuffix.org/"
