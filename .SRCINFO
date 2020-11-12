@@ -1,21 +1,21 @@
 pkgbase = ros-noetic-rqt-topic
 	pkgdesc = ROS - rqt_topic provides a GUI plugin for displaying debug information about ROS topics including publishers, subscribers, publishing rate, and ROS Messages.
-	pkgver = 0.4.10
-	pkgrel = 2
+	pkgver = 0.4.12
+	pkgrel = 1
 	url = https://wiki.ros.org/rqt_topic
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-noetic-catkin
+	depends = ros-noetic-python-qt-binding
+	depends = ros-noetic-rostopic
+	depends = ros-noetic-rqt-gui
 	depends = ros-noetic-rqt-gui-py
 	depends = ros-noetic-std-msgs
-	depends = ros-noetic-rostopic
-	depends = ros-noetic-python-qt-binding
-	depends = ros-noetic-rqt-gui
 	depends = python-rospkg
-	source = ros-noetic-rqt-topic-0.4.10.tar.gz::https://github.com/ros-visualization/rqt_topic/archive/0.4.10.tar.gz
-	sha256sums = 7188a185e7b513a74f0eae313424fb1b977022d2fea778b81232082ee6879f0a
+	source = ros-noetic-rqt-topic-0.4.12.tar.gz::https://github.com/ros-visualization/rqt_topic/archive/0.4.12.tar.gz
+	sha256sums = 4fed90cac465351061a4439cdfee217ed15cd65ee4b7662aa35e7fe16ed01402
 
 pkgname = ros-noetic-rqt-topic
 
