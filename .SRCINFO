@@ -1,0 +1,23 @@
+pkgbase = paperdesktop-git
+	pkgdesc = An awesome Desktop Environment built on top of Qt/Wayland and wayfire.
+	pkgver = r127.960ff1e
+	pkgrel = 1
+	url = https://gitlab.com/cubocore/paper/
+	arch = any
+	groups = paperdesktop-git
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-wayland
+	depends = qt5-connectivity
+	depends = qt5-svg
+	depends = udisks2
+	depends = wayfire
+	depends = libdbusmenu-qt5
+	provides = paperdesktop
+	conflicts = paperdesktop
+	source = git+https://gitlab.com/cubocore/paper/paperdesktop.git
+	md5sums = SKIP
+
+pkgname = paperdesktop-git
+
