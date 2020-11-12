@@ -1,7 +1,7 @@
 # Maintainer: Thomas Mashos <thomas at mashos dot com>
 pkgname=remote-desktop-manager-free
 pkgver=2020.3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Devolutions Remote Desktop Manager Free centralizes all remote connections on a single platform that is securely shared between users and across the entire team."
 arch=('x86_64')
 url="https://remotedesktopmanager.com/"
@@ -17,8 +17,8 @@ prepare() {
   tar -xf ${srcdir}/data.tar.xz
   sed -i "s/usr\/lib/opt/" "${srcdir}/bin/remotedesktopmanager.free"
   sed -i "s/usr\/lib/opt/" "${srcdir}/usr/share/applications/remotedesktopmanager.free.desktop"
-  sed -i "s/RemoteDesktopManager\/RemoteDesktopManager/RemoteDesktopManager\/RemoteDesktopManager %u/" "${srcdir}/usr/share/applications/remotedesktopmanager.desktop"
-  echo "MimeType=x-scheme-handler/rdm;" >> "${srcdir}/usr/share/applications/remotedesktopmanager.desktop"
+  sed -i "s/RemoteDesktopManager\/RemoteDesktopManager/RemoteDesktopManager\/RemoteDesktopManager %u/" "${srcdir}/usr/share/applications/remotedesktopmanager.free.desktop"
+  echo "MimeType=x-scheme-handler/rdm;" >> "${srcdir}/usr/share/applications/remotedesktopmanager.free.desktop"
 }
 
 package() {
