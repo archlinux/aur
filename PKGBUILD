@@ -1,12 +1,12 @@
 # Maintainer: Arctic Ice Studio <development@arcticicestudio.com>
 # Contributor: Arctic Ice Studio <development@arcticicestudio.com>
 pkgname=nord-vim-lightline
-pkgver=0.8.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="An arctic, north-bluish clean and elegant Vim lightline theme"
 arch=("any")
 url="https://github.com/arcticicestudio/nord-vim"
-license=("Apache", "CC-BY-SA-4.0")
+license=("MIT")
 depends=("vim")
 makedepends=("git")
 source=("$pkgname::git+https://github.com/arcticicestudio/nord-vim.git#tag=v$pkgver")
