@@ -3,7 +3,7 @@
 
 pkgname=obs-studio
 pkgver=26.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
 url="https://obsproject.com"
