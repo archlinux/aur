@@ -1,6 +1,6 @@
 # Maintainer: Sandelinos
 pkgname=sugarchain-bin
-pkgver=0.16.3.24_bloomy
+pkgver=0.16.3.34_starboy
 pkgrel=1
 pkgdesc="Sugarchain: one-CPU-one-vote, the world's fastest PoW blockchain"
 arch=('x86_64')
@@ -11,12 +11,13 @@ optdepends=('qt5-base')
 
 _signatures="https://github.com/sugarchain-project/sugarchain/releases/download/v${pkgver//_/-}/SHA256SUMS.asc"
 source=("https://github.com/sugarchain-project/sugarchain/releases/download/v${pkgver//_/-}/sugarchain-${pkgver//_/-}-x86_64-linux-gnu.tar.gz")
-sha256sums=('e972db66eb0e373469dbdb526fefd4e77006ef696adf565974b66c4f81c05e86')
+sha256sums=('4a79d2bb85c306fa37b57ab5790931103e4311b7dc8edeca4c86c3ec26590b62')
 
 check() {
   msg 'Validating GPG signature...'
   msg2 '(To disable: remove/rename check() function from PKGBUILD)'
-  gpg --recv-key B9DDBDE2AAADC421
+  curl https://keybase.io/decryp2kanon/pgp_keys.asc | gpg --import
+#  gpg --recv-key B9DDBDE2AAADC421 # this is Cryptozeny's key
   curl -sL $_signatures -o SHA256SUMS.asc
   msg2 "Downloading $_signatures"
   gpg --verify 'SHA256SUMS.asc'
