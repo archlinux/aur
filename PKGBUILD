@@ -3,7 +3,7 @@
 
 pkgname='eclint'
 pkgver=0.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc='EditorConfig linter'
 url='https://gitlab.com/greut/eclint'
 arch=('x86_64' 'i686')
@@ -22,7 +22,7 @@ sha256sums=(
   'cfc8c27507a52da1cab9a9f520a7b885b5dcc377331b0033a68fc32e14584137'
   'SKIP'
 )
-validpgpkey=('9E2D407EAFEE50863F42B9D16058CF4574298812')
+validpgpkeys=('9E2D407EAFEE50863F42B9D16058CF4574298812')
 
 build() {
   export CGO_LDFLAGS="$LDFLAGS"
