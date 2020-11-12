@@ -2,7 +2,7 @@
 
 pkgname="python-sepaxml"
 pkgver="2.2.0"
-pkgrel=3
+pkgrel=4
 pkgdesc="SEPA Direct Debit XML generation in python"
 arch=(any)
 url="https://github.com/raphaelm/python-sepaxml"
