@@ -4,7 +4,7 @@
 
 pkgname=wakatime
 pkgver=13.0.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Command line interface used by all WakaTime text editor plugins"
 arch=('any')
 url="https://github.com/${pkgname}/${pkgname}"
