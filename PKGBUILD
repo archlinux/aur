@@ -1,4 +1,4 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _target='compass-isolated'
 _edition=' Isolated Edition'
 pkgname="mongodb-$_target"
@@ -17,7 +17,7 @@ source=(
 	'hadron-build.diff'
 )
 sha256sums=('36069b92121d63e7c470ac90d0db997b04dcac2fc643f4ff4d77956583089d03'
-            'fb0acd9dfb1b64253e79da5ef79e57225f0e687d98bb486e7e20d75224712133')
+            '6adbd892ef2603c556e50b8f300fff87b5481dcec1b3ae741be0fbd250ad4c93')
 
 _sourcedirectory="compass-$_pkgver"
 _homedirectory="$pkgname-$pkgver-$pkgrel-home"
@@ -46,7 +46,8 @@ build() {
 	# and let electron-packager use it for building
 	# https://github.com/electron/electron-packager/issues/187
 
-	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npm run release "${_target%-beta}"
+	[[ $_target =~ .*-beta ]] && _releasescriptsuffix='-evergreen' || _releasescriptsuffix=''
+	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npm run "release$_releasescriptsuffix" "${_target%-beta}"
 }
 
 package() {
