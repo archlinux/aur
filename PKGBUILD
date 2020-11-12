@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-sansita-swashed
-pkgver=20200828
-pkgrel=1
+pkgver=1.003
+pkgrel=2
 pkgdesc='An ornate version of Sansita from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/sansita-swashed/'

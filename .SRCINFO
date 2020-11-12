@@ -1,11 +1,11 @@
 pkgbase = otf-sansita-swashed
 	pkgdesc = An ornate version of Sansita from Omnibus-Type.
-	pkgver = 20200828
-	pkgrel = 1
+	pkgver = 1.003
+	pkgrel = 2
 	url = https://www.omnibus-type.com/fonts/sansita-swashed/
 	arch = any
 	license = OFL
-	source = otf-sansita-swashed-20200828-1-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/OFL.txt
+	source = otf-sansita-swashed-1.003-2-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/OFL.txt
 	source = https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/fonts/otf/SansitaSwashed-Black.otf
 	source = https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/fonts/otf/SansitaSwashed-Bold.otf
 	source = https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/fonts/otf/SansitaSwashed-ExtraBold.otf
