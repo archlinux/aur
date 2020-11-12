@@ -1,0 +1,19 @@
+pkgbase = qtasksmanager
+	pkgdesc = Graphical work packages manager written in Qt
+	pkgver = 14f9f911f66caa95e024c491fede06da2517e9a2
+	pkgrel = 1
+	url = https://github.com/bbilas/QTasksManager
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	source = qtasksmanager-14f9f911f66caa95e024c491fede06da2517e9a2::git+https://github.com/bbilas/QTasksManager.git
+	sha256sums = SKIP
+
+pkgname = qtasksmanager
+
