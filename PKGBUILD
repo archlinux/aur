@@ -4,7 +4,7 @@
 _pkgname=PyFxA
 pkgname=python-fxa
 pkgver=0.7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for interacting with the Firefox Accounts ecosystem"
 arch=(any)
 url="https://github.com/mozilla/PyFxA"
