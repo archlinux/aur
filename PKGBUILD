@@ -2,7 +2,7 @@
 
 pkgname=python-pynamodb
 pkgver=4.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A pythonic interface to Amazon's DynamoDB"
 arch=(any)
 url='https://pynamodb.readthedocs.io/'
