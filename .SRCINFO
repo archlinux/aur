@@ -1,0 +1,30 @@
+pkgbase = otf-grenze-gotisch
+	pkgdesc = A peculiar version of Grenze from Omnibus-Type.
+	pkgver = 1.001
+	pkgrel = 1
+	url = https://www.omnibus-type.com/fonts/grenze-gotisch/
+	arch = any
+	license = OFL
+	source = otf-grenze-gotisch-1.001-1-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/OFL.txt
+	source = https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-Black.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-Bold.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-ExtraBold.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-ExtraLight.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-Light.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-Medium.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-Regular.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-SemiBold.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-Thin.otf
+	sha256sums = bca29af2c3c9e142d11f523f414902ab8fb9ab8ffa3c34c63b6b72aa4e7d6acc
+	sha256sums = 16626b530fdb5e1a4e1030b7832d625729223ad08d88a500f6d18f4e531a6060
+	sha256sums = baf548f7e9030ac67e383b01ea8090bb19f8c4e09f5dcbfb6be1ae25f721e587
+	sha256sums = af8a12c9fcab8019b197b6c6bac76712021405d82320fd90bddd05f37bb5fcf8
+	sha256sums = f625301cd4e8e4adab07659ab9bb6f53716d9cc3b07867786be701f2e1d32417
+	sha256sums = 0a5db0a015cc1c804083e630c8ca176e3e8d76de6faf964baac18dd90ad9a53b
+	sha256sums = 4e2f21fdf9578f9f0982d1619d96923a370b782919d9afe367ffd19b8297edf8
+	sha256sums = 805d89f53d634434cc8c9b97b49f55983f33f3e7a84fbabc9f59193e454f7900
+	sha256sums = 1d4088afea223bc3860ca2e2ca08132278f3c347f66d57cd9cf81355939ede23
+	sha256sums = 3b89a564925f1ee4835cd13c8c11e0fa5e0576133533fb4732698958f474650f
+
+pkgname = otf-grenze-gotisch
+
