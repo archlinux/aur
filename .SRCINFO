@@ -1,5 +1,5 @@
 pkgbase = kde1-kteatime-git
-	pkgdesc = ssh://aur@aur.archlinux.org/kde1-ktip-git.git
+	pkgdesc = Historical copy of kteatime for KDE 1, adapted to compile on modern systems
 	pkgver = 1.r2.01826a4
 	pkgrel = 1
 	url = https://github.com/sandsmark/kde1-kteatime

@@ -3,7 +3,7 @@
 pkgname=kde1-kteatime-git
 pkgver=1.r2.01826a4
 pkgrel=1
-pkgdesc="ssh://aur@aur.archlinux.org/kde1-ktip-git.git"
+pkgdesc="Historical copy of kteatime for KDE 1, adapted to compile on modern systems"
 arch=(i686 x86_64)
 url="https://github.com/sandsmark/kde1-kteatime"
 license=("GPL2")
