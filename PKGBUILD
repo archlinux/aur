@@ -1,14 +1,14 @@
 # Maintainer: Ohio2 <sekmartyna4@gmail.com>
 # (forked from)Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoakanter@gmail.com>
 pkgname="nerdfetch-ohio2"
-pkgver=4
-pkgrel=3
+pkgver=r184.1b2448b
+pkgrel=1
 pkgdesc="A POSIX fetch using NerdFonts"
 arch=('any')
 optdepends=('bc: memory percent')
 url="https://github.com/Ohio2/NerdFetch-Ohio2"
 license=('GPL')
-makedepends=('git''gzip')
+makedepends=('git' 'gzip')
 source=("git+https://github.com/Ohio2/NerdFetch")
 noextract=()
 md5sums=('SKIP')
@@ -24,6 +24,6 @@ prepare() {
 
 package() {
   install -Dm755 "$srcdir"/NerdFetch/"Arch and Arch-based"/nerdfetch "$pkgdir"/usr/bin/nerdfetch-ohio2
-  cp doc /usr/local/man/man1/nerdfetch-ohio2.1
-  gzip /usr/local/man/man1/nerdfetch-ohio2.1
+  sudo cp "$srcdir"/NerdFetch/doc /usr/local/man/man1/nerdfetch-ohio2.1
+  sudo gzip /usr/local/man/man1/nerdfetch-ohio2.1
 }
