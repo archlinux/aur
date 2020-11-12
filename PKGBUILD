@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@protonmail.com>
 
 pkgname=kdreports
-pkgver=1.8.2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='A Qt library for generating printable and exportable reports from code and from XML descriptions'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL' 'LGPL' 'custom')
 depends=('qt5-base')
 makedepends=('cmake>=2.8.12')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KDAB/KDReports/releases/download/kdreports-${pkgver}/kdreports-${pkgver}.tar.gz")
-sha512sums=('a5d4e9a88c583007ea02bd3c91680b7f44a41bee02a1b5d00f50ef2c41ec868f1c0fad16f7bb7338fe274d2d60e9f0a7ab3e2d0895f19a60306ee2d68c8d8805')
+sha512sums=('48c0fadf0e0e86a915f13c98ec698c4c5540137e7412b748f306ebd2dd3bfeaba3deb077816fbedad75d7753c69beec40550f9b1d966a6d41ea8cc42593e75a1')
 
 prepare() {
   mkdir -p build
@@ -34,7 +34,5 @@ package() {
   make -C build DESTDIR="${pkgdir}" install
   cd ${pkgname}-${pkgver}
   install -Dm644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
-  install -Dm644 LICENSE.US.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.US.txt
-  install -Dm644 LICENSE.GPL.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.GPL.txt
-  install -Dm644 LICENSE.LGPL.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.LGPL.txt
+  install -Dm644 LICENSES/*.txt ${pkgdir}/usr/share/licenses/${pkgname}/
 }
