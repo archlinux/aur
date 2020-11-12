@@ -1,49 +1,44 @@
-# Contributor: Caleb Maclennan <caleb@alerque.com>
-# Contributor: Jacob Mischka <jacob@mischka.me>
-# Contributor: Manuel Mazzuola <origin.of@gmail.com>
-# Maintainer: whezzel <whezzel at gmail dot com>
+# Contributor: Greg White <gwhite@kupulau.com>
+# Maintainer: Greg White <gwhite@kupulau.com>
 
 pkgname=brave-beta-bin
-pkgver=1.17.64
+pkgver=1.18.51
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default (beta binary release).'
 arch=('x86_64')
 url='https://brave.com/download-beta'
-license=("MPL2" "BSD" "custom:chromium")
+license=('MPL2')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font')
 optdepends=('cups: Printer support'
-            'libgnome-keyring: Enable GNOME keyring support'
-            'pepper-flash: Adobe Flash support')
-provides=("${pkgname}" 'brave-browser')
-conflicts=('brave' 'brave-git' 'brave-bin' 'brave-dev-bin' 'brave-nightly-bin')
-source=("${pkgname}-${pkgver}.zip::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-beta-${pkgver}-linux-amd64.zip"
-        "LICENSE::https://raw.githubusercontent.com/brave/brave-browser/master/LICENSE"
-        "${pkgname}.sh"
-        "brave-browser.desktop"
-        "logo.png")
+            'pepper-flash: Adobe Flash support'
+            'mesa: Hardware accelerated rendering'
+            'libglvnd: Support multiple different OpenGL drivers at any given time'
+	    'libgnome-keyring: gnome keyriung support')
+provides=("${pkgname}" 'brave-beta-browser')
+conflicts=("${pkgname}" 'brave-bin')
+source=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-beta_${pkgver}_amd64.deb"
+        'MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt'
+        "$pkgname.sh")
 options=(!strip)
-sha512sums=('b4cf796c2dd4c8ddef165cef355c6d4d278f7f1c3672d48369266a29222dcedd62c11fbdaca027705b7198577d2bb5f0733a2f14cd551925b8b7b1f2f4ac9893'
-            '239dbc27d68e0a03e92c68fb746602d8183084c9624a533fe92a991b8a4658d5154c901ff64826992eabcf89a5b52cb32f9cf29fd25a42bef2b5d3932010d806'
-            'dee61e98ab61ebe78f3d9a55f33150efdd851644113970afada5758f2fceb3329e9f1e49438304e03358242e893ea50e0d2afb6a18dac3f4c5b26f04cf8e508c'
-            '44809972e3980856494659b15d033b02c63dd1743293dc079d90d022904160532bbf82e70686dea20a46431981bf147cc5392ecc483c61378908b4a92a3d7515'
-            'd7bef52e336bd908d24bf3a084a1fc480831d27a3c80af4c31872465b6a0ce39bdf298e620ae9865526c974465807559cc75610b835e60b4358f65a8a8ff159e')
-noextract=("${pkgname}-${pkgver}.zip")
+sha512sums=('c8389c70aeb314682b054d39e9573beea0edb6711cab6af77cd7274c4037165097d3b70de71bf922aa5923cf39e4d117c47c32650ac5d3f12674e2bbaefd6d30'
+            'b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f'
+            'b4aa6d6faf2b879d14310141dd92dc7144ff5b45a1075ee54451427029a01812a25f8249540d6bc9f0e9bbe6efc4d8913cc90d4c9546566b19fd1f605cf1a883')
 
 prepare() {
   mkdir -p brave
-  cat ${pkgname}-${pkgver}.zip | bsdtar -xf- -C brave
-  chmod +x brave/brave
+  tar xf data.tar.xz -C brave
+  # Delete unneeded cron job
+  rm -rf brave/opt/brave.com/brave-beta/cron
+  # Use our script to launch (allows overriding flags, sets up data dir)
+  sed -i "s/\/usr\/bin\/brave-browser-beta/\/usr\/bin\/brave-beta/g" brave/usr/share/applications/brave-browser-beta.desktop    
 }
 
-_bsdtardir="brave"
-
 package() {
-    install -d -m0755 "${pkgdir}/usr/lib"
-    cp -a --reflink=auto ${_bsdtardir} "${pkgdir}/usr/lib/${pkgname}"
+    cp -a --reflink=auto brave/opt "$pkgdir/opt"
+    cp -a --reflink=auto brave/usr "$pkgdir/usr"
+    
+    install -Dm0755 "$pkgname.sh" "$pkgdir/usr/bin/brave-beta"
+    install -Dm0644 "brave/opt/brave.com/brave-beta/product_logo_128_beta.png" "$pkgdir/usr/share/pixmaps/brave-browser-beta.png"
 
-    install -Dm0755 "${pkgname}.sh" "${pkgdir}/usr/bin/brave-beta"
-    install -Dm0644 -t "${pkgdir}/usr/share/applications" "brave-browser.desktop"
-    install -Dm0644 "logo.png" "${pkgdir}/usr/share/pixmaps/brave-beta.png"
-    install -Dm0664 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE"
-    ln -s /usr/lib/PepperFlash "${pkgdir}/usr/lib/pepperflashplugin-nonfree"
+    install -Dm0664 -t "$pkgdir/usr/share/licenses/$pkgname" "brave/opt/brave.com/brave-beta/LICENSE"
 }
