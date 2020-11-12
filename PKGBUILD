@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=jetbrains-toolbox
-pkgver=1.18.7455
+pkgver=1.18.7609
 pkgrel=1
 pkgdesc='Manage all your JetBrains Projects and Tools'
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ source=("https://download.jetbrains.com/toolbox/${pkgname}-${pkgver}.tar.gz"
         jetbrains-toolbox.desktop
         icon.svg
         LICENSE)
-b2sums=('d1e7025138a328ff4b8bb45c999809e195a3fa520fb5bbb45e283afae69ebb7d49f13cae0de7ead5577ce6dabd47cfc1de83c7d7d08e6c5a3401a09dfa5b6181'
+b2sums=('d7c1a646b7ed34de696571f0a0bcc5648e88d043ce0128e3432e492fd68fcf81d4cebd76970d37ebf0cdf07cc18d0a33fb586efb0138288899b4d39d2f5ba9ac'
         'e3a7dd500d539a1c34db143860e924b1c9772984e3cbad579829171105bfba2f779d7e5ae7a272dfa903775f5959d6beb4cf075a8668980763828aed19036d88'
         '4b10487746fcb7f328cbdc8b17432f82618c5695baee4ef30e23ff3c4d4b6096daf2fcdfb4c1e2e179e2e61f68bbd88104e5df5a2e6e969aad0a68a75cfff496'
         'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
