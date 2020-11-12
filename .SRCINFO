@@ -1,0 +1,16 @@
+pkgbase = adol-c-git
+	pkgdesc = ADOL-C automatic differentiation library
+	pkgver = 20201112
+	pkgrel = 1
+	url = https://github.com/coin-or/ADOL-C
+	arch = x86_64
+	license = EPL
+	depends = colpack
+	depends = boost-libs
+	provides = adol-c
+	conflicts = adol-c
+	source = git+https://github.com/coin-or/ADOL-C
+	sha1sums = SKIP
+
+pkgname = adol-c-git
+
