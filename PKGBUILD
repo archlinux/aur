@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Inkscape extension for Axidraw."
 provides=('inkscape-axidraw' 'inkscape-eggbot')
 url="https://github.com/evil-mad/EggBot/"
-depends=('python' 'inkscape' )
+depends=('python' 'inkscape>=1.0.0' )
 license=('GPLv3')
 arch=('any')
 source=("https://cdn.evilmadscientist.com/dl/ad/public/ad-ink_270.zip")
