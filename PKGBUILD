@@ -2,7 +2,7 @@
 pkgname=weechat-matrix
 pkgver=0.2.0
 _tag=16d8e979166aec92cb55cd7e946e84606fffa8f4 # git show-ref "$pkgver"
-pkgrel=2
+pkgrel=3
 pkgdesc='Weechat Matrix protocol script written in Python'
 arch=('any')
 url='https://github.com/poljar/weechat-matrix'
