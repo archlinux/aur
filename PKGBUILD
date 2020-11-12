@@ -1,12 +1,12 @@
 # Maintainer: Angelo Theodorou <encelo@users.sourceforge.net>
 pkgname=lives
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Video Editing System"
 arch=('i686' 'x86_64')
 url="http://lives-video.com"
 license=('GPL')
-depends=('libtirpc' 'mplayer' 'imagemagick' 'gtk3' 'sox' 'libvisual' 'mjpegtools' 'python' 'ffmpeg' 'jack' 'fftw' 'glu' 'schroedinger')
+depends=('libtirpc' 'mplayer' 'imagemagick' 'gtk3' 'sox' 'libvisual' 'mjpegtools' 'python' 'ffmpeg' 'jack2' 'fftw' 'glu' 'schroedinger')
 optdepends=('sdl' 'libogg' 'mkvtoolnix-cli' 'libmatroska' 'ogmtools' 'libavc1394' 'dvgrab' 'cdrkit' 'lame' 'youtube-dl' 'opencv')
 makedepends=('pkg-config')
 options=(!emptydirs)

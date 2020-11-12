@@ -1,7 +1,7 @@
 pkgbase = lives
 	pkgdesc = A Video Editing System
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lives-video.com
 	changelog = lives.changelog
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = lives
 	depends = mjpegtools
 	depends = python
 	depends = ffmpeg
-	depends = jack
+	depends = jack2
 	depends = fftw
 	depends = glu
 	depends = schroedinger
