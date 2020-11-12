@@ -1,7 +1,7 @@
 pkgbase = ohio2-nerdfetch
 	pkgdesc = A POSIX fetch using NerdFonts
-	pkgver = 4
-	pkgrel = 3
+	pkgver = 4.02.1
+	pkgrel = 00
 	url = https://github.com/Ohio2/NerdFetch-Ohio2
 	arch = any
 	license = GPL
