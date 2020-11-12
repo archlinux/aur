@@ -2,7 +2,7 @@
 
 pkgname=python-compiler
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The compiler package from Python 2, ported to Python 3'
 arch=(any)
 url='https://github.com/pfalcon/python-compiler'
