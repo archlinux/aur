@@ -24,6 +24,6 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver/cmd/$pkgname"
-  install -Dm 755 "$pkgname" "$pkgdir/usr/local/bin/$pkgname"
+  install -Dm 755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm 644 "../../README.md" -t "$pkgdir/usr/share/doc/$pkgname"
 }
