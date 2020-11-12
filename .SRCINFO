@@ -1,6 +1,6 @@
 pkgbase = paru-git
 	pkgdesc = AUR helper based on yay
-	pkgver = 1.0.2.r8.g5e910d9
+	pkgver = 1.1.0.r0.g0cb55b4
 	pkgrel = 1
 	url = https://github.com/morganamilo/paru
 	arch = i686
@@ -23,3 +23,4 @@ pkgbase = paru-git
 	sha256sums = SKIP
 
 pkgname = paru-git
+
