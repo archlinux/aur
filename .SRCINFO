@@ -1,6 +1,6 @@
 pkgbase = foot-git
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/dnkl/foot
 	arch = x86_64
 	arch = aarch64
@@ -17,7 +17,6 @@ pkgbase = foot-git
 	depends = pixman
 	depends = fontconfig
 	depends = freetype2
-	depends = foot-terminfo
 	source = git+https://codeberg.org/dnkl/foot.git
 	source = git+https://codeberg.org/dnkl/tllist.git
 	source = git+https://codeberg.org/dnkl/fcft.git
@@ -27,6 +26,12 @@ pkgbase = foot-git
 
 pkgname = foot-git
 	pkgdesc = Wayland terminal emulator - fast, lightweight and minimalistic
+	depends = libxkbcommon
+	depends = wayland
+	depends = pixman
+	depends = fontconfig
+	depends = freetype2
+	depends = foot-terminfo
 	provides = foot
 	conflicts = foot
 
