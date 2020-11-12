@@ -1,17 +1,17 @@
-From 9f26c483bbc0e96967963905ea824e20a0f30778 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 29 Aug 2016 08:43:10 +0200
-Subject: [PATCH 2/3] Enable infinality subpixel hinting
+Subject: [PATCH] Enable infinality subpixel hinting
 
 ---
  include/freetype/config/ftoption.h | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index 426806d2e..1cadffe8a 100644
+index e5de62e35..acb4d6d6a 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
-@@ -674,8 +674,8 @@ FT_BEGIN_HEADER
+@@ -672,8 +672,8 @@ FT_BEGIN_HEADER
     * https://www.microsoft.com/typography/cleartype/truetypecleartype.aspx
     */
  /* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  1         */
@@ -22,6 +22,3 @@ index 426806d2e..1cadffe8a 100644
  
  
    /**************************************************************************
--- 
-2.26.2
-

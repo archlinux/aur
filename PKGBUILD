@@ -11,7 +11,7 @@
 # Contributor: freedom
 
 pkgname=freetype2-cleartype
-pkgver=2.10.2
+pkgver=2.10.4
 pkgrel=1
 pkgdesc="Font rasterization library with ClearType patch"
 arch=('x86_64')
@@ -27,16 +27,16 @@ backup=('etc/profile.d/freetype2.sh')
 install=freetype2.install
 source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.xz{,.sig}
         0001-Enable-table-validation-modules.patch
-        0002-Enable-infinality-subpixel-hinting.patch
-        0003-Enable-long-PCF-family-names.patch
-        0007-cleartype.patch
+        0002-Enable-subpixel-rendering.patch
+        0003-Enable-infinality-subpixel-hinting.patch
+        0004-Enable-long-PCF-family-names.patch
         freetype2.sh)
-sha1sums=('b074d5c34dc0e3cc150be6e7aa6b07c9ec4ed875'
+sha1sums=('0181862673f7216ad2b5074f95fc131209e30b27'
           'SKIP'
-          '43919bfbf8fcc0e8df2659af6a1f09d338286fcf'
-          'a3267cfeb115a06ad5dd6e4a74b44778e3e6bbb6'
-          'c3903dc78dd0c233075fb33077d1e134b9d148d8'
-          '769ee34c98e78d1e6182476704ddec85f92da394'
+          '0d8d5af8ebb00cf46fd4c5db7703c88e1268a9e7'
+          'fb8a18f66edf23f7b83d6694687ac7d80cc7715a'
+          '9164a2060b03359dd51c2c4db04e3af455600c52'
+          'ec79f93276ff4e2b365029276aca3b73885b0427'
           'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
@@ -44,11 +44,9 @@ prepare() {
 	cd freetype-${pkgver}
 	# Patches from [extra]
 	patch -Np1 -i ../0001-Enable-table-validation-modules.patch
-	patch -Np1 -i ../0002-Enable-infinality-subpixel-hinting.patch
-	patch -Np1 -i ../0003-Enable-long-PCF-family-names.patch
-
-	# Enable ClearType
-	patch -Np1 -i ../0007-cleartype.patch
+	patch -Np1 -i ../0002-Enable-subpixel-rendering.patch
+	patch -Np1 -i ../0003-Enable-infinality-subpixel-hinting.patch
+	patch -Np1 -i ../0004-Enable-long-PCF-family-names.patch
 }
 
 build() {
