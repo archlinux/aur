@@ -3,7 +3,7 @@
 _pkgname=raspotify
 pkgname=raspotify-git
 pkgver=0.14.0.r0.822c0d8
-pkgrel=1
+pkgrel=2
 pkgdesc="A spotify connect client that just works"
 arch=('any')
 url="https://github.com/dtcooper/raspotify"
@@ -15,8 +15,8 @@ source=("raspotify::git+https://github.com/dtcooper/raspotify.git"
         "raspotify.sysusers"
         "raspotify.tmpfiles")
 md5sums=('SKIP'
-	'd84a7ef3935010c2e00d783dc307933f'
-        '719300eb8f7d4f933c56c06a6ebaa9c1')
+         'bb71e0a799defd18c6b07694aa7b3658'
+         '719300eb8f7d4f933c56c06a6ebaa9c1')
 
 pkgver() {
   cd "$_pkgname"
