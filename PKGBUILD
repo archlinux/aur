@@ -1,4 +1,5 @@
 # Maintainer:
+# Contributor: Vladislav Glinsky <cl0ne@mithril.org.ua>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
@@ -8,7 +9,7 @@
 
 pkgname=pgadmin3
 pkgver=1.22.2
-pkgrel=8
+pkgrel=9
 pkgdesc='Comprehensive design and management interface for PostgreSQL (legacy)'
 url='https://www.pgadmin.org'
 arch=('x86_64')
@@ -41,6 +42,7 @@ build() {
     --prefix=/usr \
     --with-wx-version=3.0 \
     --with-libgcrypt
+  sed -i 's/-fno-plt/-fno-plt -Wno-narrowing/' pgadmin/Makefile
   make
 }
 
