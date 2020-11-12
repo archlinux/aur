@@ -35,7 +35,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  HOME="${srcdir}" dub --skip-registry=all build -b release --rdmd # --rdmd creates smaller binaries
+  HOME="${srcdir}" dub --skip-registry=all build -b release --rdmd || # --rdmd creates smaller binaries
+  HOME="${srcdir}" dub --skip-registry=all build -b release # retry without --rdmd - https://github.com/dlang/dub/pull/2033
 }
 
 package() {
