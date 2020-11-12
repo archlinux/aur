@@ -4,7 +4,7 @@
 _pkgname=hawkauthlib
 pkgname=python-hawkauthlib
 pkgver=2.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Low-level library for implementing MAC Access Authentication"
 arch=('any')
 url="https://github.com/mozilla-services/hawkauthlib"
