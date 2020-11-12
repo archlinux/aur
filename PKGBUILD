@@ -2,7 +2,7 @@
 pkgname=bluebubbles-desktop-app
 pkgver=1.0.2
 pkgrel=1
-pkgdesc="Cross-platform iMessage client"
+pkgdesc="Open source cross-platform iMessage client"
 arch=('x86_64')
 url="https://bluebubbles.app/"
 license=('unknown')
@@ -19,10 +19,15 @@ package() {
     install -d "${pkgdir}/opt/BlueBubbles"
     cp -a "./opt/BlueBubbles/." "${pkgdir}/opt/BlueBubbles"
 
-    # Install desktop shortcut
-	install -Dm644 "./usr/share/applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    # Install desktop shortcut and bin
+    install -Dm644 "./usr/share/applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -d "${pkgdir}/usr/bin"
+    ln -s "/opt/BlueBubbles/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
     # Create symbolic link to the icon
     install -d "${pkgdir}/usr/share/pixmaps"
     ln -s "/opt/BlueBubbles/resources/resources/icon1024.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+
+    # Create tray icon to temporarily fix close button bug
+    ln -s "/opt/BlueBubbles/resources/resources/icon1024.png" "${pkgdir}/opt/BlueBubbles/resources/resources/67bdc3519553d5530a5ee09ba21f7602.png"
 }
