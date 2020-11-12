@@ -1,11 +1,11 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/um 5.9.0 Kernel Configuration
+# Linux/um 5.9.8 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 10.2.0"
 CONFIG_CC_IS_GCC=y
 CONFIG_GCC_VERSION=100200
-CONFIG_LD_VERSION=235000000
+CONFIG_LD_VERSION=235010000
 CONFIG_CLANG_VERSION=0
 CONFIG_CC_CAN_LINK=y
 CONFIG_CC_CAN_LINK_STATIC=y
@@ -1508,6 +1508,7 @@ CONFIG_RUNTIME_TESTING_MENU=y
 # CONFIG_TEST_MEMCAT_P is not set
 # CONFIG_TEST_STACKINIT is not set
 # CONFIG_TEST_MEMINIT is not set
+# CONFIG_TEST_FREE_PAGES is not set
 # CONFIG_MEMTEST is not set
 # end of Kernel Testing and Coverage
 # end of Kernel hacking
