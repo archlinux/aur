@@ -3,7 +3,7 @@
 
 _pkgname=drkonqi
 pkgname=drkonqi-git
-pkgver=5.20.3
+pkgver=r558.eb87f953
 pkgrel=1
 pkgdesc='The KDE crash handler'
 arch=(x86_64)
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S $srcdir/$_pkgname \
+  cmake -B build -S $_pkgname \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build
