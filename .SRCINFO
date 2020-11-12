@@ -10,7 +10,6 @@ pkgbase = soundux-git
 	makedepends = git
 	depends = qt5-base
 	depends = qt5-x11extras
-	optdepends = mpg123: mp3 support
 	provides = soundux
 	conflicts = soundux
 	source = git+https://github.com/D3SOX/Soundux.git

@@ -9,7 +9,6 @@ url="https://github.com/D3SOX/Soundux"
 license=('GPL3')
 depends=('qt5-base' 'qt5-x11extras')
 makedepends=('qt5-tools' 'git')
-optdepends=('mpg123: mp3 support')
 conflicts=('soundux')
 provides=('soundux')
 source=("git+https://github.com/D3SOX/Soundux.git" "soundux.desktop")
