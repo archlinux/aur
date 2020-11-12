@@ -28,5 +28,5 @@ package() {
   make DESTDIR="$pkgdir/" install-all
   make DESTDIR="$pkgdir/" install-config
   make DESTDIR="$pkgdir/" install-systemd
-  msg "Disable your DM and run 'systemctl enable emptty' to enable emptty at the next boot"
+  echo "Disable your DM and run 'systemctl enable emptty' to enable emptty at the next boot"
 }
