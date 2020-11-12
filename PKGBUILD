@@ -3,7 +3,7 @@
 _pkgname=Flask-HTMLmin
 pkgname=python-flask-htmlmin
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Flask html response minifier'
 url='https://github.com/hamidfzm/Flask-HTMLmin'
 arch=('any')
