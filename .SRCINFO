@@ -1,6 +1,6 @@
 pkgbase = shadowsocks-rust
 	pkgdesc = A Rust port of shadowsocks https://shadowsocks.org/
-	pkgver = v1.8.12.7.gd3e2922
+	pkgver = 1.8.23
 	pkgrel = 1
 	url = https://github.com/shadowsocks/shadowsocks-rust
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = shadowsocks-rust
 	makedepends = cargo
 	makedepends = libsodium
 	depends = openssl
-	source = git+https://github.com/shadowsocks/shadowsocks-rust.git
+	source = shadowsocks-rust-1.8.23.tar.gz::https://github.com/shadowsocks/shadowsocks-rust/archive/v1.8.23.tar.gz
 	source = shadowsocks-rust@.service
 	source = shadowsocks-rust-server@.service
-	sha512sums = SKIP
-	sha512sums = 3f56e02462ba8fa0a1cf62eaae5b796d7efb31ae1a8383a1132878244c1ab834ca3e23befa4c0c14c461c9883522d4f54f80aba45cd6331061bdd42618cbcfc6
-	sha512sums = 770c50dd191f29e4fb42d3273970b9c49c33fc1ca347b0f73fc34e04955f98ce1ca9486435c809bbb535fe79edb54c0107f37501e771a9cc9cc6ab727b596c6d
+	md5sums = 4490d81e006f66fc263dcbbad64b724d
+	md5sums = 86165927273bb5efbfda1eb6fdf09315
+	md5sums = 9fc8b2c0cadb01ab6b38a95766877a20
 
 pkgname = shadowsocks-rust
 
