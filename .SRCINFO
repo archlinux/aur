@@ -1,6 +1,6 @@
 pkgbase = sugarchain-bin
 	pkgdesc = Sugarchain: one-CPU-one-vote, the world's fastest PoW blockchain
-	pkgver = 0.16.3.24_bloomy
+	pkgver = 0.16.3.34_starboy
 	pkgrel = 1
 	url = https://sugarchain.org
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = sugarchain-bin
 	depends = zeromq
 	depends = libevent
 	optdepends = qt5-base
-	source = https://github.com/sugarchain-project/sugarchain/releases/download/v0.16.3.24-bloomy/sugarchain-0.16.3.24-bloomy-x86_64-linux-gnu.tar.gz
-	sha256sums = e972db66eb0e373469dbdb526fefd4e77006ef696adf565974b66c4f81c05e86
+	source = https://github.com/sugarchain-project/sugarchain/releases/download/v0.16.3.34-starboy/sugarchain-0.16.3.34-starboy-x86_64-linux-gnu.tar.gz
+	sha256sums = 4a79d2bb85c306fa37b57ab5790931103e4311b7dc8edeca4c86c3ec26590b62
 
 pkgname = sugarchain-bin
 
