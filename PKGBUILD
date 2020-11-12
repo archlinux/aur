@@ -18,11 +18,11 @@ sha256sums=('d56505b67884b1d443fe3560004d0a644c20034b4196d1a08a4c29138fe7092b'
 build() {
   cd "${srcdir}"
   cmake -B build -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_INSTALL_PREFIX=/usr "${srcdir}/AusweisApp2-${pkgver}"
-  make -C build
+  cmake --build build
 }
 
 package() {
   cd "${srcdir}"
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
   install -Dm644 "${srcdir}/AusweisApp2-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
