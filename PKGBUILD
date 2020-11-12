@@ -8,7 +8,7 @@
 
 pkgname=asterisk
 pkgver=18.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A complete PBX solution'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url='https://www.asterisk.org'
@@ -27,7 +27,6 @@ depends=('alsa-lib'
 makedepends=('gsm'
              'sqlite3')
 optdepends=('dahdi'
-            'iksemel'
             'libpri'
             'libsrtp'
             'libss7'
