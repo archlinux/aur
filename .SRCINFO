@@ -1,6 +1,6 @@
-pkgbase = 1px-git
+pkgbase = 1px
 	pkgdesc = Useful small-space widgets for my X11 desktop
-	pkgver = r14.8356bdcbc7be
+	pkgver = r15.5ea28b0fdc14
 	pkgrel = 1
 	url = https://github.com/diresi/1px
 	arch = i686

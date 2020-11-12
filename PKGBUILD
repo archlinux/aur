@@ -1,6 +1,7 @@
 # Maintainer: Christoph Rissner <resi@rissner.net>
-pkgname=1px-git
-pkgver=r14.8356bdcbc7be
+pkgbase=1px
+pkgname=${pkgbase}-git
+pkgver=r15.5ea28b0fdc14
 pkgrel=1
 pkgdesc="Useful small-space widgets for my X11 desktop"
 arch=('i686' 'x86_64')
