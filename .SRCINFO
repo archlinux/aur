@@ -1,7 +1,7 @@
 pkgbase = gmsh
 	pkgdesc = An automatic 3D finite element mesh generator with pre and post-processing facilities.
 	pkgver = 4.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gmsh.info/
 	arch = x86_64
 	license = custom
@@ -41,6 +41,7 @@ pkgname = gmsh
 	optdepends = gmsh-docs: docs for gmsh
 	optdepends = python2: for onelab.py
 	optdepends = python: for onelab.py
+	optdepends = julia: for gmsh.jl
 
 pkgname = gmsh-docs
 	pkgdesc = TXT, HMTL and PDF doc for Gmsh
