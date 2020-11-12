@@ -2,7 +2,7 @@
 
 pkgname=python-vine
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Promises, promises, promises"
 arch=('any')
 license=('BSD')
