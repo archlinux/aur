@@ -1,0 +1,15 @@
+pkgbase = python-kubernetes-git
+	pkgdesc = Python Kubernetes-client git version.
+	pkgver = r809.140af57f9
+	pkgrel = 1
+	url = https://github.com/kubernetes-client/python
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	provides = python-kubernetes
+	conflicts = python-kubernetes
+	source = python-kubernetes::git+https://github.com/kubernetes-client/python#branch=master
+	md5sums = SKIP
+
+pkgname = python-kubernetes-git
+
