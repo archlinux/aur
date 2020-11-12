@@ -2,8 +2,8 @@
 # Maintainer: xj9 <aur@xj-ix.luxe>
 
 pkgname=xjdwm
-pkgver=6.2+tracker.1
-pkgrel=3
+pkgver=6.2+tracker.2
+pkgrel=1
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
@@ -13,6 +13,12 @@ depends=('libx11'
 	'cantata'
 	'yggdrasil'
 	'fossil'
+	'feh'
+	'chicken'
+	'clang'
+	'compton'
+	'network-manager-applet'
+	'pasystray'
 	'busybox'
 	'redshift'
 	'keepassxc'
@@ -31,7 +37,7 @@ depends=('libx11'
 install=dwm.install
 source=($pkgname-$pkgver.tar.gz::http://git.hackers.town/xj9/xjdwm/archive/$pkgver.tar.gz
 	dwm.desktop)
-sha256sums=('302a87ed86c61532dd1673d6b6c5db49dbf333c8404b09df96bacbadd4717100'
+sha256sums=('f71415563eb16e447d31893e5173dcbad2c851472d660f1a2ce54be6bee59d03'
             'bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81')
 
 prepare() {
