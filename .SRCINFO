@@ -1,7 +1,7 @@
 pkgbase = xjdwm
 	pkgdesc = A dynamic window manager for X
 	pkgver = 6.2+tracker.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dwm.suckless.org
 	install = dwm.install
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = xjdwm
 	depends = cantata
 	depends = yggdrasil
 	depends = fossil
+	depends = xorg-xsetroot
 	depends = feh
 	depends = chicken
 	depends = clang
