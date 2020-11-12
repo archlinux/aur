@@ -13,7 +13,7 @@ pkgname=(
   'xorg-server-common-git'
   'xorg-server-devel-git')
 _pkgbase='xserver'
-pkgver=1.20.0.r680.g5188603ff
+pkgver=1.20.0.r755.g28ed4b95e
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -204,6 +204,7 @@ package_xorg-server-xwayland-git() {
            nettle libtirpc)
 
   _install fakeinstall/usr/bin/Xwayland
+  _install fakeinstall/usr/share/man/man1/Xwayland.1
 
   # license
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
