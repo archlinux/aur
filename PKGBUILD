@@ -1,9 +1,9 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _target='compass'
 _edition=''
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='1.22.0.r3297.g89cefad0'
+pkgver='1.24.0.r3346.g40bff9a4'
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -19,7 +19,7 @@ source=(
 	'hadron-build.diff'
 )
 sha256sums=('SKIP'
-            'd6771bf2fc0efb0ae4c3e20ce51e0a8d65c3e702afe8a5333e9ada109ee5e190')
+            '6adbd892ef2603c556e50b8f300fff87b5481dcec1b3ae741be0fbd250ad4c93')
 
 _sourcedirectory="$pkgname"
 _homedirectory="$pkgname-home"
@@ -59,7 +59,7 @@ build() {
 	# and let electron-packager use it for building
 	# https://github.com/electron/electron-packager/issues/187
 
-	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npm run release "$_target"
+	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npm run release-evergreen "$_target"
 }
 
 package() {
