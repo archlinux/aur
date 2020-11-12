@@ -1,0 +1,21 @@
+pkgbase = drkonqi-git
+	pkgdesc = The KDE crash handler
+	pkgver = r558.eb87f953
+	pkgrel = 1
+	url = https://www.kde.org/workspaces/plasmadesktop/
+	arch = x86_64
+	groups = plasma
+	license = GPL2
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kidletime-git
+	depends = kio-git
+	depends = syntax-highlighting
+	depends = gdb
+	provides = drkonqi
+	conflicts = drkonqi
+	source = git+https://invent.kde.org/plasma/drkonqi.git
+	sha256sums = SKIP
+
+pkgname = drkonqi-git
+
