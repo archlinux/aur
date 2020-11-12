@@ -2,7 +2,7 @@
 # Maintainer: xj9 <aur@xj-ix.luxe>
 
 pkgname=xjdwm
-pkgver=6.2+tracker
+pkgver=6.2+tracker.1
 pkgrel=2
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
@@ -25,7 +25,7 @@ depends=('libx11'
 	'otf-font-awesome'
 	'otf-hermit')
 install=dwm.install
-source=($pkgname-$pkgver.tar.gz::http://git.hackers.town/xj9/xjdwm/archive/$pkgver.$pkgrel.tar.gz
+source=($pkgname-$pkgver.tar.gz::http://git.hackers.town/xj9/xjdwm/archive/$pkgver.tar.gz
 	dwm.desktop)
 sha256sums=('302a87ed86c61532dd1673d6b6c5db49dbf333c8404b09df96bacbadd4717100'
             'bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81')
