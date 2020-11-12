@@ -2,14 +2,14 @@
 # Patch to v2.6.0 supplied by Sean Anderson <seanga2 AT gmail DOT com>
 # See also the 'agda' package in the 'community' repository.
 pkgname=agda-git
-pkgver=2.5.1.r8151.g4108da695
+pkgver=2.5.1.r8948.g45bc89357
 pkgrel=1
 pkgdesc="A dependently typed functional programming language and proof assistant: development version"
 arch=('x86_64')
 url="http://wiki.portal.chalmers.se/agda/"
 license=('custom')
 groups=()
-depends=('ghc-libs' 'haskell-async' 'haskell-bifunctors' 'haskell-blaze-html' 'haskell-boxes'
+depends=('ghc-libs' 'haskell-async' 'haskell-bifunctors' 'haskell-blaze-html' 'haskell-boxes' 'haskell-case-insensitive'
          'haskell-cpphs' 'haskell-data-hash' 'haskell-edisonapi' 'haskell-edisoncore'
          'haskell-edit-distance' 'haskell-equivalence' 'haskell-filemanip' 'haskell-aeson'
          'haskell-geniplate-mirror' 'haskell-gitrev' 'haskell-hashable' 'haskell-hashtables'
