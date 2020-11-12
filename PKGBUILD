@@ -5,15 +5,15 @@ _cranname=pillar
 _cranver=1.4.6
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Coloured Formatting for Columns"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
-depends=(r r-cli 'r-crayon>=1.3.4' r-ellipsis r-fansi 'r-rlang>=0.3.0' 'r-utf8>=1.1.0' 'r-vctrs>=0.2.0')
+depends=(r r-cli 'r-crayon>=1.3.4' r-ellipsis r-fansi 'r-rlang>=0.3.0' 'r-utf8>=1.1.0' 'r-vctrs>=0.2.0' r-lifecycle)
 optdepends=(r-bit64 r-knitr r-lubridate r-testthat r-withr)
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('105f002efcf426ab347aca6e217fcaa6')
+source=("${pkgname}-${pkgver}.tar.gz::https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+sha256sums=('d21d3f729619942db8cfa64b445f1b46f0187ed408bd21d78a89c98fe3479305')
 
 build() {
   cd "${srcdir}"
