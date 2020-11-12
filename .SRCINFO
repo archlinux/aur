@@ -1,8 +1,8 @@
-pkgbase = ohio2-nerdfetch
+pkgbase = nerdfetch-ohio2
 	pkgdesc = A POSIX fetch using NerdFonts
-	pkgver = 4.01
+	pkgver = r183.607d660
 	pkgrel = 1
-	url = https://github.com/Ohio2/NerdFetch
+	url = https://github.com/Ohio2/NerdFetch-Ohio2
 	arch = any
 	license = GPL
 	makedepends = git
@@ -10,5 +10,5 @@ pkgbase = ohio2-nerdfetch
 	source = git+https://github.com/Ohio2/NerdFetch
 	md5sums = SKIP
 
-pkgname = ohio2-nerdfetch
+pkgname = nerdfetch-ohio2
 
