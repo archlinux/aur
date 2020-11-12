@@ -1,8 +1,8 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _target='compass-beta'
 _edition=' Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.23.0-beta.4'
+_pkgver='1.24.0-beta.0'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - beta version'
@@ -16,8 +16,8 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'hadron-build.diff'
 )
-sha256sums=('9d68fa6a6c9e5c0aa09f85024b69677f469a61ef251b88672e0f69c4952af010'
-            'fb0acd9dfb1b64253e79da5ef79e57225f0e687d98bb486e7e20d75224712133')
+sha256sums=('865af74c258732ca4f8971b0080f91c72d048b3e05ed3c17c8fb31a5715a2874'
+            '6adbd892ef2603c556e50b8f300fff87b5481dcec1b3ae741be0fbd250ad4c93')
 
 _sourcedirectory="compass-$_pkgver"
 _homedirectory="$pkgname-$pkgver-$pkgrel-home"
@@ -46,7 +46,8 @@ build() {
 	# and let electron-packager use it for building
 	# https://github.com/electron/electron-packager/issues/187
 
-	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npm run release "${_target%-beta}"
+	[[ $_target =~ .*-beta ]] && _releasescriptsuffix='-evergreen' || _releasescriptsuffix=''
+	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npm run "release$_releasescriptsuffix" "${_target%-beta}"
 }
 
 package() {
