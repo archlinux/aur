@@ -3,7 +3,7 @@
 _name=etesync
 pkgname=python-etesync
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python API to interact with an EteSync server"
 arch=('any')
 url="https://github.com/etesync/pyetesync"
