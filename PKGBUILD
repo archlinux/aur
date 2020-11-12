@@ -16,6 +16,8 @@ makedepends=(extra-cmake-modules plasma-framework-git packagekit-qt5 flatpak fwu
 optdepends=('packagekit-qt5: to manage packages from Arch Linux repositories' 'flatpak: Flatpak packages support'
             'fwupd: firmware update support')
 groups=(plasma)
+conflicts=(discover)
+provides=(discover)
 source=("git+https://invent.kde.org/plasma/$_pkgname.git")
 sha256sums=('SKIP')
 
