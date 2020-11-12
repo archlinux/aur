@@ -1,8 +1,8 @@
 diff --git a/commands/release.js b/commands/release.js
-index ea6b71e..6f77a55 100644
+index fbbc423..cf85826 100644
 --- a/commands/release.js
 +++ b/commands/release.js
-@@ -561,9 +561,7 @@ exports.run = (argv, done) => {
+@@ -566,9 +566,7 @@ exports.run = (argv, done) => {
      task('create module cache', createModuleCache),
      task('create packaged styles', createPackagedStyles),
      task('remove development files', removeDevelopmentFiles),
@@ -13,7 +13,7 @@ index ea6b71e..6f77a55 100644
    ]);
  
    return async.series(tasks, (_err) => {
-@@ -577,9 +575,5 @@ exports.run = (argv, done) => {
+@@ -582,9 +580,5 @@ exports.run = (argv, done) => {
  exports.handler = (argv) => {
    exports.run(argv, (_err, CONFIG) => {
      cli.abortIfError(_err);
@@ -24,19 +24,19 @@ index ea6b71e..6f77a55 100644
    });
  };
 diff --git a/lib/target.js b/lib/target.js
-index b796546..822cd1e 100644
+index 610546f..c4e151a 100644
 --- a/lib/target.js
 +++ b/lib/target.js
-@@ -6,8 +6,6 @@ const semver = require('semver');
+@@ -4,8 +4,6 @@ const semver = require('semver');
  const path = require('path');
  const normalizePkg = require('normalize-package-data');
  const parseGitHubRepoURL = require('parse-github-repo-url');
 -const ffmpegAfterExtract = require('electron-packager-plugin-non-proprietary-codecs-ffmpeg')
 -  .default;
  const debug = require('debug')('hadron-build:target');
-
+ 
  const notary = require('mongodb-notary-service-client');
-@@ -176,8 +174,7 @@ class Target {
+@@ -174,8 +172,7 @@ class Target {
        platform: this.platform,
        arch: this.arch,
        electronVersion: this.electronVersion,
@@ -44,5 +44,5 @@ index b796546..822cd1e 100644
 -      afterExtract: [ffmpegAfterExtract]
 +      sign: null
      };
-
+ 
      if (this.platform === 'win32') {
