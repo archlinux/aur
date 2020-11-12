@@ -27,8 +27,8 @@ fi
 ##
 
 pkgname=brave
-pkgver=1.16.72
-pkgrel=2
+pkgver=1.16.75
+pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
 url='https://www.brave.com/download'
@@ -64,7 +64,7 @@ done
 # VAAPI patches from chromium-vaapi in AUR
 #source+=("vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=7c05464a8700b1a6144258320b2b33b352385f77")
 
-sha256sums=('963a0a5f9da9e73333f9282a441374b4e1dee1c7bb91cae351c9cdfb995fe129'
+sha256sums=('4427318374e6f27f61fbe61630f1b3e0d45e8dd9dc8a9fe7387c30224c5f9928'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '6f9ab35fa2c9e6e34ec454b829b7b87adaebc10cacecd1ac1daa67035ee44aba'
