@@ -2,7 +2,7 @@
 
 pkgname=fusesoc
 pkgver=1.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Package manager and build abstraction tool for FPGA/ASIC development'
 arch=('any')
 url='https://github.com/olofk/fusesoc'
