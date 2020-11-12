@@ -2,7 +2,7 @@
 
 pkgname=python-aioconsole
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Asynchronous console and interfaces for asyncio"
 url="https://github.com/vxgmichel/aioconsole"
 license=('GPL')
