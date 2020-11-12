@@ -1,8 +1,8 @@
 pkgname=openmodelica-omc
-pkgver=1.14.2
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="The Open Source Modelica Suite - OpenModelica Compiler"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://openmodelica.org"
 license=('OSMC-PL')
 groups=(openmodelica)
