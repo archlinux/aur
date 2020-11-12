@@ -1,6 +1,6 @@
 pkgbase = wcm
 	pkgdesc = Wayfire Configuration Manager
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://wayfire.org
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = wcm
 	makedepends = wayland-protocols
 	makedepends = meson
 	makedepends = ninja
-	depends = wayfire>=0.5
-	depends = wf-shell>=0.5
+	depends = wayfire>=0.6
+	depends = wf-shell>=0.6
 	depends = gtk3
-	source = wcm-0.5.0.tar.gz::https://github.com/WayfireWM/wcm/archive/v0.5.0.tar.gz
-	sha512sums = c06e97fa3b22f33bb7f05efda380484377596cce83b7874d42b6f3795f275faee2fdd2f2a6a6f24ebbb7e339a0dd3e526a3d02a2e1d4c45b34f76d627896bc53
+	source = wcm-0.6.0.tar.gz::https://github.com/WayfireWM/wcm/archive/v0.6.0.tar.gz
+	sha512sums = a0ce6541ea1416585d3102a07f8ccc73d53345cdab472a9f1a839af652ccaa3b7c4ef26dbe3c24d3ff4bfb5be9a1c61a7922170dafa9a66082c0de90ebcba3d9
 
 pkgname = wcm
 
