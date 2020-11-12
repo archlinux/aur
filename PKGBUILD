@@ -6,8 +6,8 @@ pkgdesc="Control Chromecasts from Linux and D-Bus "
 arch=('any')
 url="https://github.com/alexdelorenzo/chromecast_mpris"
 license=('AGPL3')
-depends=('python>=3.6.0')
-makedepends=('git' 'python-pip' 'python-gobject')
+depends=('python>=3.6.0' 'python-gobject')
+makedepends=('git' 'python-pip')
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
 md5sums=('SKIP')
 
