@@ -1,0 +1,15 @@
+pkgbase = cppcoro-cmake-git
+	pkgdesc = A coroutine library for C++
+	pkgver = heads.makepkg.r0.g297ee38
+	pkgrel = 1
+	url = https://github.com/Garcia6l20/cppcoro.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	source = cppcoro-cmake-git::git+https://github.com/Garcia6l20/cppcoro.git
+	sha256sums = SKIP
+
+pkgname = cppcoro-cmake-git
+
