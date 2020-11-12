@@ -1,0 +1,18 @@
+pkgbase = sugarmaker
+	pkgdesc = A multi-threaded CPU miner for Sugarchain
+	pkgver = 2.5.0_sugar4
+	pkgrel = 1
+	url = https://github.com/decryp2kanon/sugarmaker
+	arch = x86_64
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = make
+	makedepends = gcc
+	makedepends = curl
+	provides = sugarmaker
+	conflicts = sugarmaker
+	source = https://github.com/decryp2kanon/sugarmaker/archive/v2.5.0-sugar4.tar.gz
+	sha256sums = 70a0b94dabcbacea1ec2c028ad382b905d070967dfa0773031bbd6784308f4fd
+
+pkgname = sugarmaker
+
