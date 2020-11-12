@@ -1,3 +1,5 @@
+# Maintainer: Serhii Hordiienko <phrippy2@gmail.com>
+
 pkgname=mythes-uk
 _srcver=7.0.1
 _srcrel=1
