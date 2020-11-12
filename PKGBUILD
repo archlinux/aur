@@ -3,13 +3,27 @@
 
 pkgname=xjdwm
 pkgver=6.2+tracker
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
 license=('MIT')
 options=(zipman)
-depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'st' 'dmenu')
+depends=('libx11'
+	'cantata'
+	'keepassxc'
+	'tmux'
+	'vim'
+	'mpv'
+	'syncthing'
+	'syncthing-gtk'
+	'libxinerama'
+	'libxft'
+	'freetype2'
+	'xfce4-terminal'
+	'dmenu'
+	'otf-font-awesome'
+	'otf-hermit')
 install=dwm.install
 source=($pkgname-$pkgver.tar.gz::http://git.hackers.town/xj9/xjdwm/archive/$pkgver.$pkgrel.tar.gz
 	dwm.desktop)
