@@ -9,8 +9,8 @@
 # Contributor: Steven Nance <steven@devtrw.com>
 
 pkgname=vagrant
-pkgver=2.2.10
-pkgrel=2
+pkgver=2.2.13
+pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
@@ -22,8 +22,8 @@ makedepends=('git' 'go')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
-        "git+https://github.com/mitchellh/vagrant-installers.git#commit=d299bd3")
-md5sums=('b6f4fba99d5f82c654e6409bc3eeda3a'
+        "git+https://github.com/mitchellh/vagrant-installers.git#commit=b9e0cc2")
+md5sums=('fafa997b489f74cce0d97e8cdcf7f8f1'
          'SKIP')
 
 build() {
@@ -56,7 +56,7 @@ package() {
 
   GEM_PATH="$EMBEDDED_DIR"/gems/$pkgver GEM_HOME="$GEM_PATH" \
   GEMRC="$EMBEDDED_DIR"/etc/gemrc \
-    gem install $pkgname-$pkgver.gem --no-document
+    gem install $pkgname-$pkgver.gem --no-document --prerelease
 
   install -Dm755 "$INSTALLERS_DIR"/launcher/vagrant \
     "$pkgdir"/opt/$pkgname/bin/$pkgname
