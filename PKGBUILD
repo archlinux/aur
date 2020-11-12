@@ -8,7 +8,7 @@ pkgbase=pipewire-gstfree
 _pkgbase=pipewire
 pkgname=(pipewire-gstfree pipewire-gstfree-docs pipewire-gstfree-jack pipewire-gstfree-pulse pipewire-gstfree-alsa)
 pkgver=0.3.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies"
 url="https://pipewire.org"
 license=(LGPL2.1)
@@ -27,6 +27,8 @@ pkgver() {
 
 prepare() {
   cd $_pkgbase
+  # Fix Chrome
+  git cherry-pick -n b8c7b36d3b8be16593f554964cf2f852c21b5c2c
 }
 
 build() {
