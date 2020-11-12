@@ -1,7 +1,7 @@
 # Maintainer: Maxwell Fortney <maxwellfortney@gmail.com>
 pkgname=bluebubbles-desktop-app
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source cross-platform iMessage client"
 arch=('x86_64')
 url="https://bluebubbles.app/"
