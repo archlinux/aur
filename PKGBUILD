@@ -1,7 +1,7 @@
 # @Author: archer
 # @Date:   2019-08-02T13:11:00+01:00
 # @Last modified by:   archer
-# @Last modified time: 2020-11-12T23:08:39+00:00
+# @Last modified time: 2020-11-12T23:17:41+00:00
 
 # Maintainer: George Raven <GeorgeRavenCommunity AT pm dot me>
 pkgname=python-kubernetes-git
@@ -9,13 +9,16 @@ _pkgsrcname="python-kubernetes"
 pkgver=r809.140af57f9
 pkgrel=1
 pkgdesc="Python Kubernetes-client git version."
-arch=('x86_64')
+arch=("x86_64")
 url="https://github.com/kubernetes-client/python"
 _branch="master"
 license=("Apache-2.0")
 groups=()
-depends=()
-makedepends=('git')
+depends=("python" "python-certifi" "python-six" "python-dateutil"
+         "python-urllib3" "python-yaml" "python-google-auth"
+         "python-websocket-client" "python-requests" "python-requests-oauthlib"
+         "python-adal")
+makedepends=("git")
 optdepends=()
 provides=("python-kubernetes")
 conflicts=("python-kubernetes")

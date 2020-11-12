@@ -6,6 +6,17 @@ pkgbase = python-kubernetes-git
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
+	depends = python
+	depends = python-certifi
+	depends = python-six
+	depends = python-dateutil
+	depends = python-urllib3
+	depends = python-yaml
+	depends = python-google-auth
+	depends = python-websocket-client
+	depends = python-requests
+	depends = python-requests-oauthlib
+	depends = python-adal
 	provides = python-kubernetes
 	conflicts = python-kubernetes
 	source = python-kubernetes::git+https://github.com/kubernetes-client/python#branch=master
