@@ -5,7 +5,7 @@
 pkgname=python-biopython
 _pkgname=biopython
 pkgver=1.78
-pkgrel=1
+pkgrel=2
 pkgdesc="Freely available Python tools for computational molecular biology"
 arch=('x86_64')
 url="http://www.biopython.org"
