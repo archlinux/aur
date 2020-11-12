@@ -3,7 +3,7 @@
 
 _gitname=applet-window-appmenu
 pkgname=plasma5-applets-window-appmenu-git
-pkgver=0.6.0.r41.g1ab27f9
+pkgver=r134.1ab27f9
 pkgrel=1
 pkgdesc="Plasma 5 applet in order to show the window appmenu"
 arch=(x86_64)
