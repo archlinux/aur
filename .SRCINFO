@@ -1,0 +1,15 @@
+pkgbase = prometheus-cpp-git
+	pkgdesc = Prometheus Client Library for Modern C++
+	pkgver = v0.r11.g250deb5
+	pkgrel = 1
+	url = https://github.com/jupp0r/prometheus-cpp.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = clang
+	source = prometheus-cpp-git::git+https://github.com/jupp0r/prometheus-cpp.git
+	sha256sums = SKIP
+
+pkgname = prometheus-cpp-git
+
