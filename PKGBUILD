@@ -3,7 +3,7 @@
 
 pkgname=xjdwm
 pkgver=6.2+tracker.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
@@ -11,6 +11,10 @@ license=('MIT')
 options=(zipman)
 depends=('libx11'
 	'cantata'
+	'yggdrasil'
+	'fossil'
+	'busybox'
+	'redshift'
 	'keepassxc'
 	'tmux'
 	'vim'
