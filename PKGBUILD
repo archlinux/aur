@@ -1,7 +1,8 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=soundux-git
-pkgver=r60.362d830
-pkgrel=3
+pkgver=r63.265f318
+pkgrel=1
+epoch=1
 pkgdesc="A universal soundboard in Qt for linux using pulseaudio modules"
 arch=('any')
 url="https://github.com/D3SOX/Soundux"
