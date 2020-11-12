@@ -13,8 +13,8 @@ depends=()
 makedepends=(qt5-base extra-cmake-modules git)
 source=("git+https://invent.kde.org/libraries/${_pkgname}")
 sha256sums=('SKIP')
-provides=(${_pkgname})
-conflicts=(${_pkgname})
+provides=(plasma-wayland-protocols)
+conflicts=(plasma-wayland-protocols)
 
 pkgver() {
   cd ${_pkgname}
