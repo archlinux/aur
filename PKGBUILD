@@ -1,41 +1,37 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Martin Stolpe <martin dot stolpe at gmail dot com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
+_pkgname=oxygen
 pkgname=oxygen-git
-pkgver=r4045.d885ff0
-pkgrel=2
 pkgdesc='KDE Oxygen style'
-arch=(i686 x86_64)
-url='https://projects.kde.org/projects/kde/kde-workspace'
+pkgver=r4395.fb1d2c2f
+pkgrel=1
+arch=(x86_64)
+url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
-depends=(frameworkintegration-git kdecoration-git kcmutils-git)
-makedepends=(extra-cmake-modules-git git kdoctools-git python)
-optdepends=("oxygen-kde4-git: Oxygen widget style for KDE4 applications")
-conflicts=(oxygen oxygen-cursors kdebase-workspace)
-provides=(oxygen oxygen-cursors)
-source=('git://anongit.kde.org/oxygen.git')
-groups=('plasma')
-md5sums=('SKIP')
+depends=(frameworkintegration-git kdecoration-git kwayland-git hicolor-icon-theme)
+makedepends=(extra-cmake-modules kdoctools-git kcmutils-git git)
+optdepends=('kcmutils: for oxygen-settings5')
+groups=(plasma)
+conflicts=(oxygen)
+provides=(oxygen)
+source=("git+https://invent.kde.org/plasma/$_pkgname.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd oxygen
+  cd $srcdir/$_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../oxygen \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build -S $_pkgname \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+  cd ..
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
