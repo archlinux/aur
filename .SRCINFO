@@ -1,0 +1,15 @@
+pkgbase = function2-git
+	pkgdesc = fu2::function an improved drop-in replacement to std::function
+	pkgver = 4.1.0.r8.gfb903bb
+	pkgrel = 1
+	url = https://github.com/Naios/function2.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = clang
+	source = function2-git::git+https://github.com/Naios/function2.git
+	sha256sums = SKIP
+
+pkgname = function2-git
+
