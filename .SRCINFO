@@ -1,0 +1,17 @@
+pkgbase = lesbar
+	pkgdesc = A status bar with decent font rendering
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://git.sr.ht/~salmiak/lesbar
+	arch = x86_64
+	license = MIT
+	makedepends = scdoc
+	depends = cairo
+	depends = glib2
+	depends = pango
+	depends = libx11
+	source = lesbar-0.3.1.tar.gz::https://git.sr.ht/~salmiak/lesbar/archive/v0.3.1.tar.gz
+	md5sums = c5bfdb177d8907237b49111b4833ef48
+
+pkgname = lesbar
+
