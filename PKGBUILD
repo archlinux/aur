@@ -1,14 +1,14 @@
 # Maintainer: Ohio2 <sekmartyna4@gmail.com>
 # (forked from)Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoakanter@gmail.com>
 pkgname="nerdfetch-ohio2"
-pkgver=r183.607d660
-pkgrel=1
+pkgver=4
+pkgrel=3
 pkgdesc="A POSIX fetch using NerdFonts"
 arch=('any')
 optdepends=('bc: memory percent')
 url="https://github.com/Ohio2/NerdFetch-Ohio2"
 license=('GPL')
-makedepends=('git')
+makedepends=('git''gzip')
 source=("git+https://github.com/Ohio2/NerdFetch")
 noextract=()
 md5sums=('SKIP')
