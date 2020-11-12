@@ -1,6 +1,6 @@
 # Maintainer: Aurélien Ooms <aurelien.ooms@gmail.com>
 pkgname=gifify
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 epoch=
 pkgdesc="Convert videos to GIFs"
