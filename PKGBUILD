@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Martin Stolpe <martin dot stolpe at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
@@ -26,22 +26,14 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd $srcdir/$_pkgname
-  mkdir -p build
-}
 
 build() {
-  cd $srcdir/$_pkgname/build
-  cmake ../ \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_TESTING=OFF
-  make
+  cmake -B build -S $_pkgname \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
 }
 
 package() {
-  cd $srcdir/$_pkgname/build
-  make DESTDIR="$pkgdir" install
-  install -Dm644 ../COPYING.LIB "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  DESTDIR="$pkgdir" cmake --install build
 }
