@@ -1,7 +1,7 @@
 # Maintainer: Francisco Demartino <demartino.francisco@gmail.com>
 pkgname=deflemask
 pkgver=0.12.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A Multi-System music tracker (Genesis/MegaDrive, NES/Famicom (nsf), Commodore 64 (sid), and many others)"
 arch=('i686' 'x86_64')
 url='https://deflemask.com'

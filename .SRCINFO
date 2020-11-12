@@ -1,7 +1,7 @@
 pkgbase = deflemask
 	pkgdesc = A Multi-System music tracker (Genesis/MegaDrive, NES/Famicom (nsf), Commodore 64 (sid), and many others)
 	pkgver = 0.12.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://deflemask.com
 	arch = i686
 	arch = x86_64
