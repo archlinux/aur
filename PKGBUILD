@@ -27,7 +27,7 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S cd $srcdir/$_pkgname \
+  cmake -B build -S $_pkgname \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build
