@@ -5,7 +5,7 @@ _cranname=pillar
 _cranver=1.4.6
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Coloured Formatting for Columns"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
@@ -18,7 +18,7 @@ sha256sums=('d21d3f729619942db8cfa64b445f1b46f0187ed408bd21d78a89c98fe3479305')
 build() {
   cd "${srcdir}"
 
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${pkgname}-${pkgver}.tar.gz -l ${srcdir}
 }
 
 package() {
