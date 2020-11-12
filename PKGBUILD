@@ -3,7 +3,7 @@
 
 pkgname=jackett-runit.git
 _alias=jackett
-pkgver=0.16.2139
+pkgver=0.16.2142
 pkgrel=1
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -22,7 +22,7 @@ source=("run"
 b2sums=('fed3336e07fe1d88a65bad5fb4f3e081ec16b24c07cc2a96462e7cecc3962b9742897455c0ce7f7fdbe04ecb337c575d54194d2dedad865f72572a5158cc6ef4'
         '6b0534e5f3320e70cff1cc59b0c4de202451d6bc240c0659749929a72223fcb8e636508b14905e3d449c854ae6774c4349480039dd50e35d1d01ac13fa15eea3'
         '4837363802330a33153e8b1560074d3af1c24c393287d295083dc41c82d6667ef0eb1dbcabc6afd180082405762bfed749adc7483d0c6fab0be431f944b4c001'
-        'c44b5bac53973b8e21a2493098f33ca62118f87bbe331dfae6ccf0d609c68f41afeda47fed94386ee14972a10395e5ad2828dca01953bb058c78244ea4042a24')
+        'a8d5dd493403392d51a7bfbd6c9a257852ec7d4d77af3d45babba3d03808cec411286060545dd6e00ac5bbf914801ff3dab0aeca4b858d5d64b9bb364be307d0')
 
 build() {
   cd ${_alias^}-${pkgver}
