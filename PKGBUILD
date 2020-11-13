@@ -147,7 +147,7 @@ prepare(){
   scripts/config --enable CONFIG_STACK_VALIDATION
 
   # Enable IKCONFIG following Arch's philosophy
-  msg2 "enable CONFIG_IKCONFIG/CONFIG_IKCONFIG_PROC"
+  msg2 "enable CONFIG_IKCONFIG/CONFIG_IKCONFIG_PROC following Arch's philosophy"
   scripts/config --enable CONFIG_IKCONFIG \
                  --enable CONFIG_IKCONFIG_PROC
 
