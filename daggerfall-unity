@@ -1,16 +1,23 @@
 #!/bin/bash
 DATA_DIR="/opt/daggerfall-unity/data"
 CONFIG_DIR="$HOME/.config/unity3d/Daggerfall Workshop/Daggerfall Unity"
+SAVE_DIR="$HOME/.local/share/daggerfall-unity/save"
 CONFIG_FILE="settings.ini"
 CONFIG_TEMPLATE="/usr/share/daggerfall-unity/settings-template.ini"
 
 if [[ ! -f $CONFIG_DIR/$CONFIG_FILE  ]]; then
 	echo "No existing config file found. Creating default"
 	if [[ ! -d "$CONFIG_DIR" ]]; then
-		echo "No directory for storing the user data. Creating folder"
+		echo "No directory for storing the user configuration. Creating folder"
 		mkdir -p "$CONFIG_DIR"
 	fi
 	cp "$CONFIG_TEMPLATE" "$CONFIG_DIR/$CONFIG_FILE"
+	#Set to save in user home directory
+	if [[ ! -d "$SAVE_DIR" ]]; then
+		echo "No directory for storing save data. Creating folder"
+		mkdir -p "$SAVE_DIR"
+	fi
+	sed -i "s:MyDaggerfallUnitySavePath = :MyDaggerfallUnitySavePath = $SAVE_DIR:g" "$CONFIG_DIR/$CONFIG_FILE"
 fi
 
 /opt/daggerfall-unity/engine/DaggerfallUnity.x86_64
