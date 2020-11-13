@@ -1,7 +1,7 @@
 # Maintainer: Danny Grove <dgrove@hashbang.sh>
 pkgname=mtls
-pkgver=0.14.4
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="A short-lived certificate tool based on the Zero Trust network model"
 url="https://github.com/drgrove/mtls-cli"
 license=("Apache")
@@ -15,7 +15,7 @@ depends=("nss"
          "python-urllib3")
 makedepends=("python-setuptools" "python-setuptools-scm")
 source=("https://pypi.io/packages/source/m/mtls/${pkgname}-${pkgver}.tar.gz"{,.asc})
-sha256sums=('1831b617ff780071bbbd3f74a843490d69f1bbb0e490e8249c67733f033b3662'
+sha256sums=('97747fc0fbf0835f2ae8d010a7a4788deb8aff0d368c000de4fdb4bc66a5a944'
             'SKIP')
 validpgpkeys=('C92FE5A3FBD58DD3EC5AA26BB10116B8193F2DBD') # Danny Grove <dgrove@hashbang.sh>
 
