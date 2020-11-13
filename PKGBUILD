@@ -2,7 +2,7 @@
 
 pkgname=xunlei-bin
 pkgver=1.0.0.1
-pkgrel=2
+pkgrel=4
 pkgdesc="Xunlei download, 迅雷"
 arch=("x86_64" "aarch64")
 url="https://www.xunlei.com/"
@@ -10,20 +10,20 @@ license=("custom")
 depends=('dbus-glib' 'nodejs' 'libxtst' 'gtk2' 'alsa-lib' 'nss' 'libxss')
 
 source=("license.html::https://i.xunlei.com/xluser/privacy.html")
-source_x86_64=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.xunlei.download/com.xunlei.download_${pkgver}_amd64.deb")
-source_aarch64=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.xunlei.download/com.xunlei.download_${pkgver}_arm64.deb")
+source_x86_64=("http://archive.kylinos.cn/kylin/partner/pool/com.xunlei.download_${pkgver}_amd64.deb")
+source_aarch64=("http://archive.kylinos.cn/kylin/partner/pool/com.xunlei.download_${pkgver}_arm64.deb")
 
-sha512sums=('9164999cc42beb183ffbdd9b09441dac9af84a40593c781bce835fc93b4a0f835e161ab5fb55f8346d801f1bc071be4aff4408575d9ecd55e929120269e938fc')
+sha512sums=('7b3868f61d225e90617096859d1ab40a86bacab9b1b1e1c0a350c4946b64a4f1af2722046857602c84ea96ec7ea5ccc2f9592798f5061c91ac10cfc1f89ddfdd')
 sha512sums_x86_64=(
-    'e4957652d04188d960a04f969e1d31642ca9b421892de0b69c0623726ff3e9bc0095fff5f4037ad2e23d80becc2e91e6bc9dae5a4ba3121526ac6a8a8dc094c5'
+    '8ed010593eb2d6cf94b8b5591c1bb69e259be501d3f1925874359058226c4bd3aebdbcbc3bf4b6c4c09f028db8e3d465fc939fd0bf710065a8593ffbc325f066'
 )
 sha512sums_aarch64=(
-    '4e3ef94451c9fdbb1b8c6127108f5598c144801edca8f8347832c40a02858f11c9b04ebfe351ed72052f86016925f9d230cc2f002cc96d5c8b0062e9e7ce9314'
+    'c656df9aeeab938a4e8e0cb2cbf9a2ad09dfddead081bb5f3d53cebd98492363164220aa3b9fab2bc187e3c54cc437ce4708367b2dd410bd2cea34646a0116ef'
 )
 
 prepare(){
     cd ${srcdir}
-    tar -zxf data.tar.gz -C "${srcdir}"
+    tar -Jxvf data.tar.xz -C "${srcdir}"
 
 }
 
