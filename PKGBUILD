@@ -12,7 +12,7 @@ source=(
     "https://snapshot.debian.org/archive/debian/20191014T030756Z/pool/main/g/gconf/libgconf-2-4_3.2.6-6_amd64.deb"
 )
 sha256sums=(
-    '550628034c464c95e2b1ea3e933503a519e556ccac95d755179e6509a223b73e'
+    '7fe71660af3cc92a066d84c97ad380d7c4ab066ed1f5c7002d35e4be6c276980'
     '57a77787a3b29cef92470e2ffdf6582924bfdab2f38d089c490c5ac8511c60cd'
 )
 noextract=("${source[@]##*/}")
