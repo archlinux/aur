@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.32.0.r776.g925d6e1205
+pkgver=0.32.0.r810.gf85de9e6d6
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -145,7 +145,7 @@ optdepends=(
             'zsh-completions: Additional completion definitions for Zsh users'
             )
 provides=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git' 'libmpv.so')
-conflicts=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git')
+conflicts=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git' 'libmpv.so')
 replaces=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git' 'libmpv.so')
 options=('!emptydirs')
 source=('mpv-build::git+https://github.com/mpv-player/mpv-build.git'
