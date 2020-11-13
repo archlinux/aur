@@ -1,12 +1,13 @@
 pkgbase = nodejs-color-convert
 	pkgdesc = Plain color conversion functions in JavaScript.
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Qix-/color-convert
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
+	depends = nodejs-color-name
 	noextract = color-convert-2.0.1.tar.gz
 	source = color-convert-2.0.1.tar.gz::https://github.com/Qix-/color-convert/archive/2.0.1.tar.gz
 	sha256sums = 9cfbd705bb3db600a9b1b61a55bc1e36f10636682e0f5ffa88ab9162eaa9acd0

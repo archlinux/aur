@@ -4,12 +4,12 @@
 pkgname=nodejs-color-convert
 _pkgname=${pkgname#*-}
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Plain color conversion functions in JavaScript.'
 arch=('any')
 url='https://github.com/Qix-/color-convert'
 license=('MIT')
-depends=('nodejs')
+depends=('nodejs' 'nodejs-color-name')
 makedepends=('npm')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Qix-/$_pkgname/archive/$pkgver.tar.gz")
 noextract=("$_pkgname-$pkgver.tar.gz")
