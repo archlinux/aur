@@ -84,8 +84,8 @@ fi
 #Enable/disable CONFIG_USER_NS_UNPRIVILEGED
 
 ## Enable CONFIG_USER_NS_UNPRIVILEGED flag
-## Set variable "use_ns" to: n to disable
-##                           y to enable
+## Set variable "use_ns" to: n to disable (stock Xanmod)
+##                           y to enable (stock Archlinux)
 
 if [ -z ${use_ns+x} ]; then
   use_ns=n
@@ -143,11 +143,11 @@ prepare(){
   cp "${srcdir}"/config .config
 
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
-  msg2 "enable CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team"
+  msg2 "Enable CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team"
   scripts/config --enable CONFIG_STACK_VALIDATION
 
   # Enable IKCONFIG following Arch's philosophy
-  msg2 "enable CONFIG_IKCONFIG/CONFIG_IKCONFIG_PROC following Arch's philosophy"
+  msg2 "Enable CONFIG_IKCONFIG CONFIG_IKCONFIG_PROC following Arch's philosophy"
   scripts/config --enable CONFIG_IKCONFIG \
                  --enable CONFIG_IKCONFIG_PROC
 
@@ -186,7 +186,7 @@ build(){
   cd linux-${pkgver}
 
   # make -j$(nproc) all
-  echo "make -j$(nproc) all"
+  msg2 "make -j$(nproc) all"
   make -j$(nproc) all
 }
 
