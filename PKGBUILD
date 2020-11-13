@@ -1,46 +1,38 @@
+# Maintainer: Christoph Haag <christoph.haag@collabora.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Laurent Carlier <lordheavym@gmail.com>
+
 pkgname=lib32-libepoxy-git
-_name=libepoxy
-pkgver=1.2.25.r229.ga2a5190
+pkgver=1.5.4.r20.g34ecb90
 pkgrel=1
-pkgdesc="Epoxy is a library for handling OpenGL function pointer management for you"
-url="https://github.com/anholt/libepoxy"
+pkgdesc='Library handling OpenGL function pointer management'
 arch=('x86_64')
-license=('BSD')
-depends=() # ???
-makedepends=("xorg-util-macros" "libx11" "python" "git")
+url='https://github.com/anholt/libepoxy'
+license=('MIT')
+depends=('lib32-glibc')
+makedepends=('git' 'lib32-libgl' 'lib32-systemd' 'meson')
 provides=("lib32-libepoxy")
 conflicts=("lib32-libepoxy")
-options=('!libtool')
 source=("git+https://github.com/anholt/libepoxy.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_name
-  #echo $(git rev-list --count HEAD).$(git describe --tags --long | tr -d v | tr - .)
-  echo $(git describe --long --tags | cut -d 'g' -f1)r$(git rev-list HEAD --count).g$(git describe --always) | tr -d v | tr - .
+  cd libepoxy
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  #  export CFLAGS="-Og -ggdb"
-  #  export CXXFLAGS="-Og -ggdb"
-
   export CC='gcc -m32'
-  export CXX='/bin/false'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
 
-  cd "$_name"
-
-    ./autogen.sh --prefix=/usr --libdir='/usr/lib32'
+  arch-meson libepoxy build \
+    --libdir='/usr/lib32'
+  ninja -C build
 }
-
-#check() {
-#  cd "$_name"
-#  make -k check
-#}
 
 package() {
-  cd "$_name"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir}" meson install -C build
   rm -rf "${pkgdir}"/usr/include
+  install -dm 755 "${pkgdir}"/usr/share/licenses
+  ln -s libepoxy "${pkgdir}"/usr/share/licenses/lib32-libepoxy
 }
-
-md5sums=('SKIP')
