@@ -15,7 +15,7 @@ makedepends=('python')
 provides=('wireshark-cli' 'wireshark-gtk')
 conflicts=('wireshark-cli' 'wireshark-common' 'wireshark-qt')
 install=wireshark-gtk2.install
-source=(https://www.wireshark.org/download/src/${_pkgbase}-${pkgver}.tar.xz
+source=(https://www.wireshark.org/download/src/all-versions/${_pkgbase}-${pkgver}.tar.xz
         wireshark.sysusers
         do_not_use_svn_version.patch)
 sha512sums=('0e49e807b578368478e912970e7b4434cffcf499b803f62dbff64281c1400db5be8e96b69872270f2f52276c5fd8aee75ad3f175e8c1979dbe721a2d77f8cb13'
