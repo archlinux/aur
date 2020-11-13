@@ -3,7 +3,7 @@
 pkgname=yabridgectl-git
 _pkgname=yabridgectl
 _yabridge=yabridge
-pkgver=2.0.1.r0.g5f1fbcb
+pkgver=2.0.1.r5.g08ea0d2
 pkgrel=1
 pkgdesc="Optional utility to help set up and manage yabridge"
 epoch=
@@ -13,6 +13,7 @@ license=('GPL3')
 makedepends=('cargo')
 provides=('yabridgectl')
 conflicts=('yabridge-bin')
+options=('!strip')
 source=('git+https://github.com/robbert-vdh/yabridge')
 sha256sums=('SKIP')
 
