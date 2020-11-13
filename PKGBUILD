@@ -1,7 +1,7 @@
 # Maintainer: George Macon <george dot macon at gmail dot com>
 _name=tarsnapper
 pkgname=${_name}
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Manages tarsnap backups"
 arch=(any)
@@ -12,7 +12,7 @@ depends=("python-argparse>=1.1"
          "python-dateutil>=2.4.0"
          "python-pexpect>=3.1")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=(49668986a47317943fd6ff109b32809c)
+sha256sums=(b129b0fba3a24b2ce80c8a2ecd4375e36b6c7428b400e7b7ab9ea68ec9bb23ec)
 
 package() {
 	cd "$pkgname-$pkgver"
