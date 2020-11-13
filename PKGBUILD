@@ -1,16 +1,16 @@
 # Maintainer: Petri Lehtinen <petri@digip.org>
 pkgname=ultimatetapankaikki
-_sprel=2
-_commit=e8927fbbb6c135cfe5cddfb59db09199b8dc59af
+_sprel=3
+_commit=56ec1f224ed78a6db59f38f0ad4b5a224bfc7fda
 pkgver=3.21+sp${_sprel}
-pkgrel=2
+pkgrel=1
 pkgdesc="Classic 90s shoot-em-up game"
 arch=(x86_64)
 url="https://github.com/suomipelit/ultimatetapankaikki"
 license=('GPL')
 depends=(sdl2 sdl2_image sdl2_mixer sdl2_net)
 source=("https://github.com/suomipelit/ultimatetapankaikki/archive/${_commit}.tar.gz")
-md5sums=('032397fe1cfcb810580a4d3206bd9f78')
+md5sums=('d5103208e827930aa7dc530f0c95752d')
 
 build() {
   cd "$pkgname-$_commit"
