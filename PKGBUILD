@@ -2,7 +2,6 @@ pkgbase=pipewire-git
 pkgname=('pipewire-git'
          'pipewire-docs-git'
          'pipewire-jack-git'
-         'pipewire-pulse-git'
          'pipewire-alsa-git'
          )
 pkgver=0.3.15.71.g13a1049a
@@ -92,7 +91,6 @@ package_pipewire-git() {
            )
   optdepends=('pipewire-docs-git: Documentation'
               'pipewire-jack-git: JACK support'
-              'pipewire-pulse-git: PulseAudio support'
               'pipewire-alsa-git: ALSA support'
               )
   provides=('pipewire'
@@ -138,18 +136,6 @@ package_pipewire-jack-git() {
 
   mv jack/* "${pkgdir}"
 }
-
-package_pipewire-pulse-git() {
-  pkgdesc='Server and user space API to deal with multimedia pipelines. (Pulse support)(GIT version)'
-  depends=("libpipewire-${pkgver:0:3}.so"
-           'libglib-2.0.so'
-           )
-  provides=('pipewire-pulse')
-  conflicts=('pipewire-pulse')
-
-  mv pulse/* "${pkgdir}"
-}
-
 
 package_pipewire-alsa-git() {
   pkgdesc="ALSA Configuration for PipeWire (ALSA support)(GIT version)"

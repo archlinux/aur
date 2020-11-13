@@ -42,7 +42,6 @@ pkgname = pipewire-git
 	depends = libgobject-2.0.so
 	optdepends = pipewire-docs-git: Documentation
 	optdepends = pipewire-jack-git: JACK support
-	optdepends = pipewire-pulse-git: PulseAudio support
 	optdepends = pipewire-alsa-git: ALSA support
 	provides = pipewire
 	provides = libpipewire-0.3.so
@@ -61,13 +60,6 @@ pkgname = pipewire-jack-git
 	depends = libjack.so
 	provides = pipewire-jack
 	conflicts = pipewire-jack
-
-pkgname = pipewire-pulse-git
-	pkgdesc = Server and user space API to deal with multimedia pipelines. (Pulse support)(GIT version)
-	depends = libpipewire-0.3.so
-	depends = libglib-2.0.so
-	provides = pipewire-pulse
-	conflicts = pipewire-pulse
 
 pkgname = pipewire-alsa-git
 	pkgdesc = ALSA Configuration for PipeWire (ALSA support)(GIT version)
