@@ -3,7 +3,7 @@
 pkgname=python-http3
 _name=${pkgname#python-}
 _py=py3
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="The next generation HTTP client for Python 3."
 arch=('any')
@@ -18,7 +18,7 @@ depends=('python>=3.6.0'
          'python-rfc3986>=1.0.0' 'python-rfc3986<2.0.0')
 makedepends=('python-pip' 'curl')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-$pkgver.tar.gz")
-sha256sums=("28da5a7737cd6f4fe5e97e7b7e02d65e2c9d19ae11bc3534e2bfa70f331002d9")
+sha256sums=("dbf9beedc58d8bbcf6e681a9d63d9e7cd8da346e1ffb512e02e9bf097d91f0bf")
 
 package() {
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.tar.gz || exit
