@@ -1,7 +1,7 @@
 # Maintainer: Danny Grove <dgrove@hashbang.sh>
 pkgname=mtls
 pkgver=0.14.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A short-lived certificate tool based on the Zero Trust network model"
 url="https://github.com/drgrove/mtls-cli"
 license=("Apache")
@@ -22,9 +22,15 @@ validpgpkeys=('C92FE5A3FBD58DD3EC5AA26BB10116B8193F2DBD') # Danny Grove <dgrove@
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py build
+  _MTLS_COMPLETE=source_zsh python -c 'import sys;from mtls.cli import cli;sys.argv[0]="mtls";cli()' > completion.zsh || true
+  _MTLS_COMPLETE=source_bash python -c 'import sys;from mtls.cli import cli;sys.argv[0]="mtls";cli()' > completion.bash || true
+  _MTLS_COMPLETE=source_fish python -c 'import sys;from mtls.cli import cli;sys.argv[0]="mtls";cli()' > completion.fish || true
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm644 completion.bash "$pkgdir/usr/share/bash-completion/completions/mtls"
+  install -Dm644 completion.fish "$pkgdir/usr/share/fish/vendor_completions.d/mtls.fish"
+  install -Dm644 completion.zsh "$pkgdir/usr/share/zsh/site-functions/_mtls"
 }
