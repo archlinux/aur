@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=ksubdomain
-pkgver=0.5.1
+pkgver=0.6
 pkgrel=1
 pkgdesc="无状态子域名爆破工具"
 arch=("x86_64" "i686")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("libpcap")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('61e664c8027dc2e25eaaef6850a90092734df951e3974c7beca14ddb0f284641')
+sha256sums=('bdeb5c21c36773487d462d2335b9e29466a6d0be7428f97315a8d34fc1684262')
 
 build() {
   cd ${pkgname}-${pkgver}/cmd
@@ -27,4 +27,3 @@ package() {
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
   install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
 }
-
