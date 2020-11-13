@@ -2,7 +2,7 @@
 
 pkgname="python-fints"
 pkgver="3.0.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal pure-python FinTS (formerly known as HBCI) implementation"
 arch=(any)
 url="https://github.com/raphaelm/python-fints"
