@@ -1,0 +1,16 @@
+pkgbase = nodejs-widest-line
+	pkgdesc = Get the visual width of the widest line in a string.
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/sindresorhus/widest-line
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = nodejs-string-width
+	noextract = widest-line-3.1.0.tar.gz
+	source = widest-line-3.1.0.tar.gz::https://github.com/sindresorhus/widest-line/archive/v3.1.0.tar.gz
+	sha256sums = a3a58d82404a33fa1ec75f9d43b9b8f33a64a1468f6b74b5200dfabdecccd2c0
+
+pkgname = nodejs-widest-line
+
