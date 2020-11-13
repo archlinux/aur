@@ -1,5 +1,5 @@
 pkgname=python-assimulo
-pkgver=3.2.3
+pkgver=3.2.4
 pkgrel=1
 pkgdesc="A package for solving ordinary differential equations and differential algebraic equations"
 url="http://www.jmodelica.org/assimulo"
