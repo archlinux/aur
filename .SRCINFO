@@ -1,0 +1,15 @@
+pkgbase = nodejs-ansi-regex
+	pkgdesc = Regular expression for matching ANSI escape codes
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/chalk/ansi-regex
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = ansi-regex-5.0.0.tar.gz
+	source = ansi-regex-5.0.0.tar.gz::https://github.com/chalk/ansi-regex/archive/v5.0.0.tar.gz
+	sha256sums = f50f18d89e81b834ebad89fa1dcbc1d1d77a5b22599636942f0dfaac2ad4fbef
+
+pkgname = nodejs-ansi-regex
+
