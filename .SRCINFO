@@ -1,0 +1,15 @@
+pkgbase = nodejs-is-fullwidth-code-point
+	pkgdesc = Check if the character represented by a given Unicode code point is fullwidth
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/sindresorhus/is-fullwidth-code-point
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = is-fullwidth-code-point-3.0.0.tar.gz
+	source = is-fullwidth-code-point-3.0.0.tar.gz::https://github.com/sindresorhus/is-fullwidth-code-point/archive/v3.0.0.tar.gz
+	sha256sums = ec125a33475157729216e222f1f300e5413b6815d8f6fe710a8372c3f211ea17
+
+pkgname = nodejs-is-fullwidth-code-point
+
