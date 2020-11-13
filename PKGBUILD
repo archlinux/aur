@@ -2,11 +2,11 @@
 # Maintainer: Maksym Sheremet <msheremet at sheremets dot com>
 
 pkgname=upwork
-pkgver=5.4.7.1
+pkgver=5.4.9.6
 _rawver=${pkgver//./_}
-_hashver='81f361962c74427d'
+_hashver='2565cdd0547940a2'
 _pkgupname='Upwork'
-pkgrel=2
+pkgrel=1
 pkgdesc='Desktop Application'
 arch=(x86_64)
 url='https://www.upwork.com/downloads/'
@@ -16,7 +16,7 @@ depends=(alsa-lib gtk3 libp11-kit libutil-linux libxss nss)
 source=(https://updates-desktopapp.upwork.com/binaries/v${_rawver}_${_hashver}/upwork_${pkgver}_amd64.deb
 	LICENSE
 	upwork)
-sha256sums=('c443724d37bca942ca126b8b207846a5adb94a92ff9490370f2fe055feee347b'
+sha256sums=('ff6246b3b4a1ed79cc9bca2934652fefb40bdac4b7e95997f3a46e354ce52456'
             '793d8d7bc0f088c48798bda3d5483972636c6b8c5dcd9aeaf85411f7d4547b38'
             '53bbbd18d7dbbcc27a1405ce9745d95f08be64a234b8fb3312cc2e6ef70e3e9b')
 
