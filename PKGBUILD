@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Panteleev <arch-pkg at thecybershadow.net>
 
 pkgname=btdu
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='sampling disk usage profiler for btrfs'
 arch=('i686' 'x86_64')
