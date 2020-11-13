@@ -3,7 +3,7 @@
 
 pkgname=faint-git
 pkgdesc="Extensible TUI fuzzy file explorer (git)"
-pkgver=0.97.r0.gadfb5a3
+pkgver=0.97.r3.g3194c12
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/salman-abedin/faint"
