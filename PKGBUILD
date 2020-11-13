@@ -1,9 +1,9 @@
 # Maintainer: Jurriaan Pruis <email@jurriaanpruis.nl>
 
 pkgname=deconz
-arch=('x86_64' 'armv6h' 'armv7h')
+arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgver=2.05.86
-pkgrel=1
+pkgrel=2
 pkgdesc="A generic ZigBee monitoring and control tool"
 url="https://www.dresden-elektronik.de"
 license=('custom:"Copyright (c) dresden elektronik ingenieurtechnik GmbH"')
@@ -27,10 +27,12 @@ changelog=
 source_x86_64=($pkgname-$pkgver-x86_64.deb::https://deconz.dresden-elektronik.de/ubuntu/beta/$pkgname-$pkgver-qt5.deb)
 source_armv6h=($pkgname-$pkgver-armv6h.deb::https://deconz.dresden-elektronik.de/raspbian/beta/$pkgname-$pkgver-qt5.deb)
 source_armv7h=($pkgname-$pkgver-armv7h.deb::https://deconz.dresden-elektronik.de/raspbian/beta/$pkgname-$pkgver-qt5.deb)
+source_aarch64=(${pkgname}_${pkgver}-debian-stretch-beta_arm64.deb::https://deconz.dresden-elektronik.de/debian/beta/${pkgname}_${pkgver}-debian-stretch-beta_arm64.deb)
 noextract=()
-sha256sums_x86_64=('4d46993fdac03c7afb2298db06beccf82f941891c3b9c577b8b00551def8f1ab')
-sha256sums_armv6h=('e6fe3f44bb72912ed53a088d363cb7cdc668acac3011eaef5373a6f5b48f4ae7')
-sha256sums_armv7h=('e6fe3f44bb72912ed53a088d363cb7cdc668acac3011eaef5373a6f5b48f4ae7')
+sha256sums_x86_64=('028ea8f951bd7604837ef8ea4764abd17f88ec062b320c6a07a20548229cd9bb')
+sha256sums_armv6h=('f9964d244516bac01f9b744119f23d3cbe332bce1f7030cf1d32f8de49a4e901')
+sha256sums_armv7h=('f9964d244516bac01f9b744119f23d3cbe332bce1f7030cf1d32f8de49a4e901')
+sha256sums_aarch64=('64cf0e4d18d34f5ef17915446308c3c787d55a9439f3b88edfbbc49ece82d11e')
 
 package() {
   cd "${srcdir}"
