@@ -1,4 +1,4 @@
-# Maintainer: Carlo Cabanilla <carlo.cabanilla@gmail.com>
+# Maintainer: Oliver Ford <dev.aur@ojford.com>
 
 pkgname=cyberark-summon
 pkgver=0.8.3
