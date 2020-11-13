@@ -4,12 +4,12 @@
 pkgname=nodejs-supports-color
 _pkgname=${pkgname#*-}
 pkgver=7.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Detect whether a terminal supports color.'
 arch=('any')
 url='https://github.com/chalk/supports-color'
 license=('MIT')
-depends=('nodejs')
+depends=('nodejs' 'nodejs-has-flag')
 makedepends=('npm')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/chalk/$_pkgname/archive/v$pkgver.tar.gz")
 noextract=("$_pkgname-$pkgver.tar.gz")
