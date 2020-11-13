@@ -8,6 +8,7 @@ pkgbase = luminancehdr-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
+	makedepends = eigen
 	makedepends = gtest
 	makedepends = qt5-tools
 	makedepends = patch
@@ -29,7 +30,9 @@ pkgbase = luminancehdr-git
 	conflicts = luminancehdr
 	options = !emptydirs
 	source = git+https://github.com/LuminanceHDR/LuminanceHDR.git
-	sha512sums = SKIP
+	source = cmake-build-type.patch
+	b2sums = SKIP
+	b2sums = d4b4002428819601978c3ed9e765594a4cf0e08d7ddb1d3b4193bc7af72dceb5fb6a2af2bd19a2bd94ce6d44cdc37a0b31397fb36d679d85283ba616a8ffb799
 
 pkgname = luminancehdr-git
 
