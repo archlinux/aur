@@ -1,0 +1,50 @@
+From 7f5a11dccf6b6272e38ac91e760a1eaf49423cae Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@archlinux.org>
+Date: Thu, 12 Nov 2020 22:47:03 -0500
+Subject: [PATCH] Do not build WIP espeak plugin before it is ready.
+
+Introduced in https://github.com/kovidgoyal/calibre/commit/c027aaff750ff73fa6affe909af911e8918b8316
+but as of the time of writing (November 12) it contains no public
+functions at all. Eventually, it will be runtime-optional in the viewer.
+
+Until this is a bit more advanced, let's just delete it from being
+compiled in order to avoid the build-time dependency. Watch this space
+for more news...
+---
+ setup/extensions.json    | 6 ------
+ src/calibre/constants.py | 2 +-
+ 2 files changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/setup/extensions.json b/setup/extensions.json
+index 38421c258f..2c9d5187de 100644
+--- a/setup/extensions.json
++++ b/setup/extensions.json
+@@ -179,12 +179,6 @@
+         "sources": "calibre/utils/cocoa.m calibre/utils/cocoa_wrapper.c",
+         "ldflags": "-framework Cocoa"
+     },
+-    {
+-        "name": "espeak",
+-        "only": "linux haiku",
+-        "sources": "calibre/utils/tts/espeak.cpp",
+-        "libraries": "espeak-ng"
+-    },
+     {
+         "name": "libusb",
+         "only": "macos linux haiku",
+diff --git a/src/calibre/constants.py b/src/calibre/constants.py
+index 36a4478a4d..3cc4682c24 100644
+--- a/src/calibre/constants.py
++++ b/src/calibre/constants.py
+@@ -253,7 +253,7 @@ def __init__(self):
+         elif ismacos:
+             extra = ('usbobserver', 'cocoa', 'libusb', 'libmtp')
+         elif isfreebsd or ishaiku or islinux:
+-            extra = ('libusb', 'libmtp', 'espeak')
++            extra = ('libusb', 'libmtp')
+         else:
+             extra = ()
+         self.calibre_extensions = frozenset(extensions + extra)
+-- 
+2.29.2
+
