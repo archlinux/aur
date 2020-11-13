@@ -13,6 +13,7 @@ pkgbase = yabridge-bin
 	provides = yabridgectl
 	conflicts = yabridge
 	conflicts = yabridgectl-git
+	options = !strip
 	source = https://github.com/robbert-vdh/yabridge/releases/download/2.0.1/yabridge-2.0.1.tar.gz
 	source = https://github.com/robbert-vdh/yabridge/releases/download/2.0.1/yabridgectl-2.0.1.tar.gz
 	sha256sums = 5b6dcdb1c507ef578dc8dbacd41f191c53f9e9348f94cacb80b617b210e69a7d

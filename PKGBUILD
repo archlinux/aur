@@ -14,6 +14,7 @@ depends=('wine' 'libxcb' 'lib32-libxcb')
 makedepends=()
 provides=('yabridge' 'yabridgectl')
 conflicts=('yabridge' 'yabridgectl-git')
+options=('!strip')
 install=yabridge.install
 source=("https://github.com/robbert-vdh/yabridge/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz"
         "https://github.com/robbert-vdh/yabridge/releases/download/$pkgver/$_yabridgectl-$pkgver.tar.gz")
