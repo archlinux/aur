@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gmail-desktop
-pkgver=2.20.3
+pkgver=2.20.4
 pkgrel=1
 pkgdesc="Unofficial Gmail desktop app"
 arch=('x86_64')
@@ -10,10 +10,10 @@ depends=('electron')
 makedepends=('yarn')
 optdepends=('libnotify: desktop notifications'
             'libappindicator-gtk3: tray icon')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('fc6f1ab56bb31dda3a951648b25544b3a4d9e1311d34399a6daaca52d022d461'
+sha256sums=('ae26f919432eb63e779b019547b8d600f2fc01727c701fcfcf98e5c10cca4060'
             'a1f2eb9525dd10556ffde37a4dc9e06636a81d1d9ce815d1167e48954abee1dc'
             '8c30e207fe88455f63f4c0b2ae9087a2ca2bbeaa68b9be244c31a9ec392373c4')
 
@@ -40,7 +40,7 @@ package() {
 		"$pkgdir/usr/lib/$pkgname"
 
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-	install -Dm644 build/_icon.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	install -Dm644 build/icon.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 	install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
 }
