@@ -1,6 +1,6 @@
 pkgbase = gfeeds-git
 	pkgdesc = News reader for GNOME
-	pkgver = 0.16.r0.g9e1b1eb
+	pkgver = 0.16.1.r0.gda4dc2d
 	pkgrel = 1
 	url = https://gitlab.com/gabmus/gnome-feeds
 	arch = any
