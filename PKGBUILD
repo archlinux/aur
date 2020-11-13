@@ -1,7 +1,7 @@
 # Maintainer: Pierre Mavro <pmavro@qovery.com>
 pkgname=qovery-cli
 pkgver=0.32.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Qovery Command Line Interface"
 arch=(x86_64)
 url="https://github.com/Qovery/qovery-cli"
@@ -11,7 +11,6 @@ source=("https://github.com/Qovery/qovery-cli/archive/v$pkgver.tar.gz")
 
 build() {
 	cd "$pkgname-$pkgver"
-    export CGO_LDFLAGS="${LDFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
