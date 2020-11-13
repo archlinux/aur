@@ -102,7 +102,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 pkgver=5.10_rc3
-pkgrel=1
+pkgrel=3
 versiontag=5.10-rc3
 modulestag=5.10.0-rc3
 pkgdesc="Mainline linux kernel, modules, headers, api-headers and docs"
