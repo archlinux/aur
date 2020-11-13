@@ -1,30 +1,41 @@
-# Maintainer : GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributer : GI_Jack <iamjacksemail@hackermail.com>
 # Contributer: Kniyl   <mathias@mettinger.fr>
-
 pkgname=touchegg-gce-git
-_pkgname=touchegg-gce
-pkgver=1.1
-pkgrel=4
-pkgdesc="GUI for touchegg"
-arch=('i686' 'x86_64')
+pkgver=1.3.1.r10.g6f75e4c
+pkgrel=1
+pkgdesc="A graphical user interface for touchégg"
+arch=('x86_64')
 url="https://github.com/Raffarti/Touchegg-gce"
-license=('CC-BY')
-depends=('qt4' 'libx11' 'touchegg')
-makedepends=('libx11' 'git' )
-source=("git://github.com/Raffarti/Touchegg-gce.git")
+license=('GPL3')
+depends=('touchegg' 'qt5-base')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+backup=("etc/${pkgname%-git}.conf")
+source=("${pkgname%-git}::git+https://github.com/Raffarti/Touchegg-gce.git")
 sha256sums=('SKIP')
- 
-build() {
-  [[ -d "${srcdir}/Touchegg-build" ]] && rm -rf "${srcdir}/Touchegg-build"
-  cp -r "${srcdir}/Touchegg-gce" "${srcdir}/Touchegg-build"
-  cd "${srcdir}/Touchegg-build"
-  qmake-qt4
-  make
+
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
- 
+
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+	mkdir -p build
+}
+
+build() {
+	cd "$srcdir/${pkgname%-git}/build"
+	qmake \
+		PREFIX=/usr \
+		CONFIG_PATH=/etc \
+		..
+	make
+}
+
 package() {
-  cd "${srcdir}/Touchegg-build"
-  install -Dm755 touchegg-gce "${pkgdir}/usr/bin/touchegg-gce"
-  install -d "${pkgdir}/usr/share/touchegg-gce/Dictionaries"
-  cp Dictionaries/*.qm Dictionaries/*.ts "${pkgdir}/usr/share/touchegg-gce/Dictionaries"
+	cd "$srcdir/${pkgname%-git}/build"
+	make INSTALL_ROOT="$pkgdir" install
 }
