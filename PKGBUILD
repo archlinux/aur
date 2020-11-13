@@ -2,7 +2,7 @@
 
 pkgname=graywolf-git
 pkgver=0.1.6.r184.6c5e24f
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc='An opensource placement tool'
 arch=('i686' 'x86_64')
@@ -22,7 +22,13 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname%-git}"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -B build
+    # Define C_FLAGS and CXX_FLAGS for ignoring a problem with global
+    # variables
+    # See https://github.com/rubund/graywolf/issues/43
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_C_FLAGS="-fcommon" \
+        -DCMAKE_CXX_FLAGS="-fcommon" \
+        -B build
     cmake --build build
 }
 
