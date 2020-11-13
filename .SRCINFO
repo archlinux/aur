@@ -1,0 +1,15 @@
+pkgbase = nodejs-ansi-styles
+	pkgdesc = ANSI escape codes for styling strings in the terminal.
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = https://github.com/chalk/ansi-styles
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = ansi-styles-4.3.0.tar.gz
+	source = ansi-styles-4.3.0.tar.gz::https://github.com/chalk/ansi-styles/archive/v4.3.0.tar.gz
+	sha256sums = 8454510b9ca987137f1718b05325be89f11903d347fd0ba7e8a091dc7061ff18
+
+pkgname = nodejs-ansi-styles
+
