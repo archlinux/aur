@@ -4,12 +4,12 @@
 pkgname=nodejs-chalk
 _pkgname=${pkgname#*-}
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal string styling done right.'
 arch=('any')
 url='https://github.com/chalk/chalk'
 license=('MIT')
-depends=('nodejs')
+depends=('nodejs' 'nodejs-ansi-styles' 'nodejs-supports-color')
 makedepends=('npm')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/chalk/$_pkgname/archive/v$pkgver.tar.gz")
 noextract=("$_pkgname-$pkgver.tar.gz")
