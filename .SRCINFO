@@ -1,0 +1,15 @@
+pkgbase = nodejs-emoji-regex
+	pkgdesc = Align-text with ANSI support for CLIs.
+	pkgver = 9.2.0
+	pkgrel = 1
+	url = https://mths.be/emoji-regex
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = emoji-regex-9.2.0.tar.gz
+	source = emoji-regex-9.2.0.tar.gz::https://github.com/mathiasbynens/emoji-regex/archive/v9.2.0.tar.gz
+	sha256sums = 02bc5e9016ecef3985e2c552a66e2684d1d8fbf9ef8b454d97b9911c31f253a2
+
+pkgname = nodejs-emoji-regex
+
