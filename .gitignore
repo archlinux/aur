@@ -1,0 +1,9 @@
+# path:       /home/klassiker/.local/share/repos/rxvt-unicode-truecolor-wide-glyphs/.gitignore
+# author:     klassiker [mrdotx]
+# github:     https://aur.archlinux.org/packages/rxvt-unicode-truecolor-wide-glyphs
+# date:       2020-11-13T13:23:15+0100
+
+/pkg/
+/src/
+rxvt-unicode-*.bz2
+*.pkg.tar*
