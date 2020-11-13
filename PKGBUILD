@@ -1,7 +1,7 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=kcc
 pkgver=5.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Kindle Comic Converter converts comic files or folders to ePub or Panel View MOBI"
 arch=(any)
 url="https://github.com/ciromattia/kcc"
@@ -11,6 +11,7 @@ optdepends=(
   'kindlegen>=2.9: for .mobi generation'
   'p7zip: for zip/CBZ, rar/CBZ, 7z/CB7 support'
 )
+makedepends=('python-setuptools')
 source=(kindlecomicconverter.desktop
         https://github.com/ciromattia/$pkgname/archive/$pkgver.tar.gz)
 md5sums=('f25b30fbc1bc1db491173215fe411789'
