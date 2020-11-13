@@ -1,12 +1,13 @@
 pkgbase = nodejs-strip-ansi
 	pkgdesc = Strip ANSI escape codes from a string
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chalk/strip-ansi
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
+	depends = nodejs-ansi-regex
 	noextract = strip-ansi-6.0.0.tar.gz
 	source = strip-ansi-6.0.0.tar.gz::https://github.com/chalk/strip-ansi/archive/v6.0.0.tar.gz
 	sha256sums = 4ec0debe7b2d9935a0a6933ae6db8d3d9efc51e576abdd8b23857aa616e9ebeb

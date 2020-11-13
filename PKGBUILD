@@ -4,12 +4,12 @@
 pkgname=nodejs-strip-ansi
 _pkgname=${pkgname#*-}
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Strip ANSI escape codes from a string'
 arch=('any')
 url='https://github.com/chalk/strip-ansi'
 license=('MIT')
-depends=('nodejs')
+depends=('nodejs' 'nodejs-ansi-regex')
 makedepends=('npm')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/chalk/$_pkgname/archive/v$pkgver.tar.gz")
 noextract=("$_pkgname-$pkgver.tar.gz")
