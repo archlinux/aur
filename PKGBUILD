@@ -2,7 +2,7 @@
 
 pkgname=yabridge-git
 _pkgname=yabridge
-pkgver=2.0.1.r0.g5f1fbcb
+pkgver=2.0.1.r5.g08ea0d2
 pkgrel=1
 pkgdesc="Yet Another VST bridge, run Windows VST2 plugins under Linux"
 arch=('x86_64')
@@ -13,6 +13,7 @@ makedepends=('meson' 'ninja')
 optdepends=('yabridgectl: utility for setting up and managing yabridge')
 provides=('yabridge')
 conflicts=('yabridge')
+options=('!strip')
 install=yabridge.install
 source=('git+https://github.com/robbert-vdh/yabridge')
 sha256sums=('SKIP')
