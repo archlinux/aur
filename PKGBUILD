@@ -1,4 +1,4 @@
-# Maintainer: ROllerozxa (temporaryemail4meh@gmail.com)
+# Maintainer: ROllerozxa (temporaryemail4meh [gee mail])
 pkgname=apksigner
 pkgver=1.9
 pkgrel=1
