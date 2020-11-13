@@ -1,5 +1,5 @@
 pkgbase = python-hyperspy-nua
-	pkgdesc = Multidimensional data analysis toolbox (non uniform axis branch)
+	pkgdesc = Multidimensional data analysis toolbox (non uniform axis development branch)
 	pkgver = 1.7.0.dev0.55ab1e6b9
 	pkgrel = 1
 	url = http://hyperspy.org
