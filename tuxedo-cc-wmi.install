@@ -1,0 +1,22 @@
+pkgname=tuxedo-cc-wmi
+
+post_install() {
+	echo
+	echo "==> If the module loads not correctly after boot:"
+	echo "==> Add ${pkgname} to 'MODULES' in '/etc/mkinitcpio.conf' and run mkinitcpio"
+	echo
+}
+
+post_upgrade() {
+	echo
+	echo "==> If the module loads not correctly after boot:"
+	echo "==> Add ${pkgname} to 'MODULES' in '/etc/mkinitcpio.conf' and run mkinitcpio"
+	echo
+}
+
+post_remove() {
+	echo
+	echo "==> If you added ${pkgname} to 'MODULES' in '/etc/mkinitcpio.conf"
+	echo "==> Don't forget to remove it and run mkinitcpio"
+	echo
+}
