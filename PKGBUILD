@@ -32,7 +32,7 @@ sha512sums=("SKIP")
 
 pkgver() {
 	cd "${srcdir}/${pkginst-master}/"
-  rel_ver=$(grep -E "^__version__" ${pkginst}/version.py | awk '{print $3}' | tr -d \")
+  rel_ver=$(grep -E "^__version__" ${pkginst-master}/version.py | awk '{print $3}' | tr -d \")
   commit=$(git rev-parse --short HEAD)
 	echo "${rel_ver}.${commit}"
 }
