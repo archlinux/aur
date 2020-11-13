@@ -1,20 +1,18 @@
 pkgbase = xbrzscale
 	pkgdesc = New Generation Image Upscaling Tool
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/atheros/xbrzscale
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	depends = sdl2_image
-	options = buildflags
-	source = xbrzscale.tar.gz::https://github.com/atheros/xbrzscale/tarball/master
-	source = xbrz-1.8.zip::https://sourceforge.net/projects/xbrz/files/xBRZ/xBRZ_1.8.zip/download
+	noextract = xbrzscale.zip
+	source = xbrzscale.zip::https://github.com/atheros/xbrzscale/archive/ef36908831c058df7a202c8175d575a1fdfaf156.zip
 	source = 001-makefile.patch
-	sha256sums = d9175f17781608f472de47265a5c399fc003cc468fd584c11de08b17385d488e
-	sha256sums = e4e2513801c7097fe9a391b481a48b1890f80e696549d8cf27884bd223a4cba9
-	sha256sums = 1fcd854678da773a1ef87d8e94da1d71604bc64f62d84bdd70339e2945480ebf
+	sha256sums = 5b418a271d79f5e7b7add2cc487785c05dbbfd8342e3c18ed7c0a4f70e121bfa
+	sha256sums = 3c6fabff0ce6b6f988aaec4dcc0a350d10c11753fed8729936dab2fc87fbb051
 
 pkgname = xbrzscale
 
