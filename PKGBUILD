@@ -2,7 +2,7 @@
 
 pkgname=cyberark-summon
 pkgver=0.8.3
-pkgrel=3
+pkgrel=4
 pkgdesc='CLI that provides on-demand secrets access for common DevOps tools'
 arch=('x86_64' 'i686')
 url='https://github.com/cyberark/summon'
@@ -24,6 +24,6 @@ package() {
 
   mkdir -p "${pkgdir}/usr/local/lib/summon/"
   if [ -f /usr/bin/gopass ]; then
-    ln -s /usr/bin/gopass "$pkgdir/usr/local/lib/summon/gopass"
+    ln -s /usr/bin/gopass-summon-provider "$pkgdir/usr/local/lib/summon/gopass"
   fi
 }

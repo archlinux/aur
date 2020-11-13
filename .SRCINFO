@@ -1,7 +1,7 @@
 pkgbase = cyberark-summon
 	pkgdesc = CLI that provides on-demand secrets access for common DevOps tools
 	pkgver = 0.8.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/cyberark/summon
 	arch = x86_64
 	arch = i686
