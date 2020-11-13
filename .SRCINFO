@@ -1,0 +1,23 @@
+pkgbase = swayshot-no-bash-git
+	pkgdesc = Sway screenshots: screen, window or region - removed bashisms
+	pkgver = r21.b6f87b8
+	pkgrel = 1
+	url = https://gitlab.com/neon64/swayshot
+	arch = any
+	license = Apache
+	depends = sway
+	depends = xdg-user-dirs
+	depends = grim
+	depends = slurp
+	depends = jq
+	optdepends = wl-clipboard: copy the full path to clipboard
+	optdepends = xsel: copy the full path to clipboard
+	optdepends = xclip: copy the full path to clipboard
+	provides = swayshot
+	conflicts = swaygrab-helper
+	conflicts = swayshot
+	source = git+https://gitlab.com/neon64/swayshot.git
+	sha256sums = SKIP
+
+pkgname = swayshot-no-bash-git
+
