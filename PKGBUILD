@@ -21,11 +21,18 @@ checkdepends=('python-asynctest' 'python-beautifulsoup4' 'python-parver' 'python
 provides=('pathod')
 conflicts=('pathod')
 replaces=('pathod')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mitmproxy/mitmproxy/archive/v$pkgver.tar.gz")
-sha512sums=('6073c73b24618d6f64c4e99f199ebb6bc4157a3f83bfa7aff10a113f8dde823715e95bdf4202a1526dc0856d120858d32842b814327c3b98452b629fccb1790d')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mitmproxy/mitmproxy/archive/v$pkgver.tar.gz"
+        $pkgname-python3.9.patch::https://github.com/mhils/mitmproxy/commit/8e5e43de24c9bc93092b63efc67fbec029a9e7fe.patch
+        $pkgname-openssl1.1.1h.patch::https://github.com/mitmproxy/mitmproxy/pull/4255.patch)
+sha512sums=('6073c73b24618d6f64c4e99f199ebb6bc4157a3f83bfa7aff10a113f8dde823715e95bdf4202a1526dc0856d120858d32842b814327c3b98452b629fccb1790d'
+            '95aa05d664501ac0ff6c00852f262d11aeaf33d3f1309d38307cb77b34fbbd72870637c2f230b7e065beade4785f5e8f4e89d74b5ade0f4ea73d51a0ff654bb5'
+            'f1834ce0bcc1109add836f2af53420f09a9ff07aebd7b817e9096b5e1f2b13ad57e24cb035694f2ad5d2a8ebba68b1804a8ece60360bd3f34a45a7793aeb8851')
 
 prepare() {
   cd $pkgname-$pkgver
+
+  patch -p1 -i ../$pkgname-python3.9.patch
+  patch -p1 -i ../$pkgname-openssl1.1.1h.patch || :
 
   # Let's remove all the upper bounds and use system ca-certificatescate store
   # urwid is pinned because the issue seems to affect Mac only
