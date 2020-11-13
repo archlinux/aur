@@ -1,6 +1,6 @@
 pkgbase = frece-git
 	pkgdesc = Frecency sorted database
-	pkgver = 1.0.3.r5.g19ad727
+	pkgver = 1.0.4.r0.g8f40889
 	pkgrel = 1
 	url = https://github.com/YodaEmbedding/frece
 	arch = x86_64

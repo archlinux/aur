@@ -1,7 +1,7 @@
 # Maintainer: Mateen Ulhaq <mulhaq2005+aur at gmail dot com>
 
 pkgname=frece-git
-pkgver=1.0.3.r6.g19ad727
+pkgver=1.0.4.r0.g8f40889
 pkgrel=1
 pkgdesc="Frecency sorted database"
 arch=("x86_64")
