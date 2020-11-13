@@ -91,6 +91,42 @@ if [ -z ${use_ns+x} ]; then
   use_ns=n
 fi
 
+############################
+##### Config variables #####
+############################
+
+#nconfig
+
+if [ -z ${use_nconfig+x} ]; then
+  use_nconfig=n
+fi
+
+#menuconfig
+
+if [ -z ${use_menuconfig+x} ]; then
+  use_menuconfig=n
+fi
+
+#xconfig
+
+if [ -z ${use_xconfig+x} ]; then
+  use_xconfig=n
+fi
+
+#gconfig
+
+if [ -z ${use_gconfig+x} ]; then
+  use_gconfig=n
+fi
+
+#olddefconfig
+
+if [ -z ${use_olddefconfig+x} ]; then
+  use_olddefconfig=y
+fi
+
+############################
+
 #use env _microarchitecture=(0-42) use_numa=(y/n) use_tracers=(y/n) use_ns=(y/n) makepkg -s ---> to overwrite the default variables
 
 pkgbase=linux-kernel
@@ -102,7 +138,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 pkgver=5.9.8
-pkgrel=2
+pkgrel=1
 pkgdesc="Stable linux kernel, modules, headers, api-headers and docs"
 arch=(x86_64)
 url="https://www.kernel.org/"
@@ -174,9 +210,33 @@ prepare(){
   scripts/setlocalversion --save-scmversion
   echo "-${pkgbase}" > localversion
 
-  # make olddefconfig
-  echo "make olddefconfig"
+
+  # config
+  
+  if [ "$use_nconfig" = "y" ]; then
+  msg2 "make nconfig"
+  make nconfig
+  fi
+  
+  if [ "$use_menuconfig" = "y" ]; then
+  msg2 "make menuconfig"
+  make menuconfig
+  fi
+  
+  if [ "$use_xconfig" = "y" ]; then
+  msg2 "make xconfig"
+  make xconfig
+  fi
+
+  if [ "$use_gconfig" = "y" ]; then
+  msg2 "make gconfig"
+  make gconfig
+  fi
+  
+  if [ "$use_olddefconfig" = "y" ]; then
+  msg2 "make olddefconfig"
   make olddefconfig
+  fi
 }
 
 build(){
