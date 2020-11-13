@@ -1,13 +1,17 @@
 # Maintainer: sgar <swhaat in github>
 
 pkgname=veyon
-pkgver=4.4.2
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="Open Source computer monitoring and classroom management"
 arch=('i686' 'x86_64')
 url="https://github.com/veyon"
 license=('GPLv2')
 depends=('qt5-base'
+	'libfakekey'
+	'kitemmodels'
+	'libxcomposite'
+	'qca'
 	'libxrandr'
 	'libxtst'
 	'pam'
@@ -21,26 +25,19 @@ depends=('qt5-base'
 	'libsasl')
 optdepends=('kldap: KDE support')
 makedepends=('git' 'gcc' 'cmake' 'qt5-tools' 'procps-ng' 'kldap')
-source=("git+${url}/veyon.git#tag=v${pkgver}"
-    "git+${url}/ultravnc.git"
-    "git+${url}/libvncserver.git"
-    "git+${url}/x11vnc.git"
-    "git+https://anongit.kde.org/kldap.git")
+source=("git+${url}/veyon.git#tag=v${pkgver}")
 
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+sha256sums=('SKIP')
 
 prepare() {
     mkdir -p build
-    for file in ultravnc libvncserver x11vnc kldap
-    do
-        cp -a --no-preserve=ownership "${srcdir}/$file" "${srcdir}/${pkgname}/3rdparty/"
-    done
-    cd "${pkgname}"
+
+    cd "${srcdir}/${pkgname}"
     git submodule update --init
+
+    cd "${srcdir}/${pkgname}/3rdparty/qthttpserver/"
+    git submodule update --init
+
 }
 
 build() {
