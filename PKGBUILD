@@ -1,16 +1,17 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname=waybackpack
-pkgver=0.3.6
+pkgname='waybackpack'
+pkgver=0.3.7
 pkgrel=1
 pkgdesc='Download the entire Wayback Machine archive for a given URL'
 arch=('any')
 url='https://github.com/jsvine/waybackpack'
+_url_pypi='https://pypi.org/project/waybackpack'
 license=('MIT')
-depends=('python-requests')
+depends=('python' 'python-requests')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('85b36d8bf7a17fd7d0ac39a112e078f97a2d1fa7d67c53414690efa2cb203fc6')
+sha256sums=('2445a142932b74816d4ef0e136877c2f0ae0e95a1c07d79f81df06504b210e1e')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -20,8 +21,8 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 'README.md' "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 'LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dvm644 'LICENSE.txt' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
