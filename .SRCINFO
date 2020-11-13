@@ -1,6 +1,6 @@
 pkgbase = hornet-bin
 	pkgdesc = Powerful, community driven IOTA fullnode software written in Go (official precompiled binary)
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://github.com/gohornet/hornet
 	install = hornet.install
@@ -14,10 +14,10 @@ pkgbase = hornet-bin
 	backup = var/lib/hornet/peering.json
 	backup = var/lib/hornet/profiles.json
 	backup = etc/default/hornet
-	source_x86_64 = https://github.com/gohornet/hornet/releases/download/v0.5.4/hornet_0.5.4_amd64.deb
-	sha256sums_x86_64 = 37ebc3b0b608c766b6edc46112eb4040adb5538e420366b3bebc032292317839
-	source_aarch64 = https://github.com/gohornet/hornet/releases/download/v0.5.4/hornet_0.5.4_arm64.deb
-	sha256sums_aarch64 = 482a5f0dd848bff60e270da12598e1ccb8a830efeb21a871afe8d1697895eefe
+	source_x86_64 = https://github.com/gohornet/hornet/releases/download/v0.5.5/hornet_0.5.5_amd64.deb
+	sha256sums_x86_64 = 68a5524e52564316943b0bd071383ec0ac9b3ef5816996717cf086dfa3cf79b8
+	source_aarch64 = https://github.com/gohornet/hornet/releases/download/v0.5.5/hornet_0.5.5_arm64.deb
+	sha256sums_aarch64 = 7f277e19daba6ac11bfc45c0e01e23553e98be8cf98323afe14b51cdbd80e8d0
 
 pkgname = hornet-bin
 
