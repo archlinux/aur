@@ -1,0 +1,13 @@
+pkgbase = speedtest-netperf
+	pkgdesc = Measure network performance and bufferbloat
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://github.com/openwrt/packages/tree/master/net/speedtest-netperf/files
+	arch = any
+	license = GPL
+	depends = netperf
+	source = https://raw.githubusercontent.com/openwrt/packages/463590e2bcf94e09890f7ba98e910ff58090e29b/net/speedtest-netperf/files/speedtest-netperf.sh
+	b2sums = 9ecf41fe126ebda17d323d07eceab6447e6a388244c50c09e0768fe680bf014969e846c81313967f2be504cbb8fd0abc63aa3c078f5ba78e41993ffe23b29ece
+
+pkgname = speedtest-netperf
+
