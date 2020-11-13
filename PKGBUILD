@@ -260,7 +260,7 @@ prepare() {
     '--enable-libfdk-aac'
     '--enable-libfreetype'
     '--enable-libfribidi'
-    '--enable-libglslang'
+    '--disable-libglslang'
     '--enable-libgme'
     '--enable-libgsm'
     '--enable-libiec61883'
