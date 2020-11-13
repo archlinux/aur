@@ -3,7 +3,7 @@
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 
 pkgname=leatherman
-pkgver=1.12.0
+pkgver=1.12.2
 pkgrel=1
 pkgdesc="Collection of C++ and CMake utility libraries"
 arch=('x86_64')
@@ -25,9 +25,12 @@ provides=(
   leatherman_util.so
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/puppetlabs/leatherman/archive/${pkgver}.tar.gz"
-        librapidjson-1.1.patch)
-sha512sums=('2ceb16f94bf3d06bfe477a40e15db5a1d3d3999eaa7023245a08ab4e0054179f28308d9bf6ba73a839ca3a68130259894593fc8e77664b672ac5f3d20511a4d2'
-            'bf05009e466ea62282a78c16fe23e8cfacfbb6e5da9fdf118bf7b1b257a3b48c5c5665ef080bfdf12c9088cb4e180358d11a5bd05e2e658bdbe8f35e0bba4969')
+        librapidjson-1.1.patch
+        1.12.2-shared_nowide.patch)
+
+sha512sums=('9be8333b616bd9772f234474ae874c7214fa0c1bc4658ff042233d6e1683cc61b63d666d750297c79a8058490e42c8b2ff8999cb7f04aa329644f52540e43bde'
+            'bf05009e466ea62282a78c16fe23e8cfacfbb6e5da9fdf118bf7b1b257a3b48c5c5665ef080bfdf12c9088cb4e180358d11a5bd05e2e658bdbe8f35e0bba4969'
+            '1f95d6e0ac1000d2eb8cdfee6184ca74d2bb96a9dec50cdd1539cb7e3060decbf1e4863fa2594ce1cf3405b1edf270b94b82f1c9ca79aaeb6f32f11d10c7eece')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -37,6 +40,8 @@ prepare() {
     $( grep -rl rb_data_object_alloc ruby)
 
   patch -Np1 < ../librapidjson-1.1.patch
+  # Boost 1.74 provides nowide, and since leatherman vendors nowide it has to be patched out.
+  #patch -Np1 < ../1.12.2-shared_nowide.patch
 }
 
 build() {
