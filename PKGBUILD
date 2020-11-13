@@ -6,7 +6,7 @@
 
 pkgname=mitmproxy
 pkgver=5.2
-pkgrel=2
+pkgrel=3
 pkgdesc='SSL-capable man-in-the-middle HTTP proxy'
 arch=('any')
 url='https://mitmproxy.org'
