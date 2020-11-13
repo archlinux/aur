@@ -37,6 +37,8 @@ build() {
   go build \
     -trimpath \
     -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
     -ldflags "-X \"github.com/magefile/mage/mage.timestamp=$build_date\" \
               -X \"github.com/magefile/mage/mage.commitHash=$git_commit_hash\" \
               -X \"github.com/magefile/mage/mage.gitTag=$git_tag\" \
