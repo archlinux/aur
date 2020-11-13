@@ -389,9 +389,9 @@ _package-api-headers(){
   echo "Installing headers to fakeinstall dir"
   make INSTALL_HDR_PATH="fakeinstall" -j$(nproc) headers_install
 
-  # Move headers from fakeinstall dir to "${pkgdir}"/usr/include/$pkgbase-api-headers/
-  echo "Move headers from fakeinstall dir to "${pkgdir}"/usr/include/$pkgbase-api-headers/"
-  mv fakeinstall/include/* "${pkgdir}"/usr/include/$pkgbase-api-headers/
+  # Move headers from fakeinstall dir to "${pkgdir}"/usr/include/${pkgbase}-api-headers/
+  echo "Move headers from fakeinstall dir to "${pkgdir}"/usr/include/${pkgbase}-api-headers/"
+  mv fakeinstall/include/* "${pkgdir}"/usr/include/${pkgbase}-api-headers/
 }
 
 _package-docs() {
