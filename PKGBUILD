@@ -10,7 +10,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs
          python-buildbot-wsgi-dashboards python-buildbot-badges)
 pkgver=2.8.4
 _bb_contrib_commit=ada3c8f30ca7e1b6bb260e2e5971053fbd254333
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
