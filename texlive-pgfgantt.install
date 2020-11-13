@@ -1,0 +1,14 @@
+post_install() {
+  post_remove
+  echo "The file was installed in:"
+  kpsewhich pgfgantt.sty
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "Upgrading package database..."
+  mktexlsr
+}

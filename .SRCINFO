@@ -1,0 +1,14 @@
+pkgbase = texlive-pgfgantt
+	pkgdesc = A LaTeX package that provides the ganttchart environment, which draws a Gantt chart within a TikZ picture.
+	pkgver = 5.0
+	pkgrel = 1
+	url = https://www.ctan.org/pkg/pgfgantt?lang=en
+	install = texlive-pgfgantt.install
+	arch = any
+	license = LPPL
+	depends = texlive-core
+	source = http://mirrors.ctan.org/graphics/pgf/contrib/pgfgantt.zip
+	sha256sums = 94644bc77cfc38e7d6062794e79a08d30b1835e690d846fb429826fe25f37df3
+
+pkgname = texlive-pgfgantt
+
