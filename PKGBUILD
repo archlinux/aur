@@ -1,7 +1,7 @@
 # Maintainer: Dian M Fay <dian.m.fay@gmail.com>
 _name=cobs
 pkgname=python-cobs
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Python library for Consistent Overhead Byte Stuffing (COBS)"
 arch=("any")
@@ -11,7 +11,7 @@ depends=("python")
 makedepends=("python-setuptools")
 conflicts=("${pkgname}" "${pkgname}-git")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=("ae3319b5704d9269d1ca60787d2e5b79322bb9f440215ea086b986ed8d2a8405")
+sha256sums=('c4fc36e3e1d3ff57670982a1b0856ca15255ab56c73c6f915ed6a45b51fa341c')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
