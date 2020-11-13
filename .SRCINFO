@@ -1,9 +1,8 @@
 pkgbase = python-pyfmi
 	pkgdesc = A package for working with dynamic models compliant with the FMI standard.
-	pkgver = 2.8
+	pkgver = 2.8.2
 	pkgrel = 1
 	url = http://www.pyfmi.org
-	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = python-setuptools
@@ -12,8 +11,8 @@ pkgbase = python-pyfmi
 	depends = python-scipy
 	depends = python-lxml
 	depends = python-assimulo
-	source = https://github.com/modelon/PyFMI/archive/PyFMI-2.8.tar.gz
-	sha256sums = b00e967a5bbe0325e28ae20bbc147320b695baf6a1cfa2c384731dcc0488e273
+	source = https://github.com/modelon/PyFMI/archive/PyFMI-2.8.2.tar.gz
+	sha256sums = 7398ae1c0141734769450857e892243b9f32a92dce155a475ec62c83c58b914b
 
 pkgname = python-pyfmi
 
