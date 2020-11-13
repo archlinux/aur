@@ -2,7 +2,7 @@
 
 pkgname=cyberark-summon
 pkgver=0.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI that provides on-demand secrets access for common DevOps tools'
 arch=('x86_64' 'i686')
 url='https://github.com/cyberark/summon'
@@ -17,5 +17,6 @@ conflicts=(
 package() {
   mkdir -p "${pkgdir}/usr/bin/"
   tar -xzf $pkgname-$pkgver.tar.gz -C "${pkgdir}/usr/bin/"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   chmod 0755 "${pkgdir}/usr/bin/summon"
 }
