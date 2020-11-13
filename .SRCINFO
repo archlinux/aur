@@ -1,0 +1,15 @@
+pkgbase = nodejs-camelcase
+	pkgdesc = Convert a dash/dot/underscore/space separated string to camelCase.
+	pkgver = 6.2.0
+	pkgrel = 1
+	url = https://github.com/sindresorhus/camelcase
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = camelcase-6.2.0.tar.gz
+	source = camelcase-6.2.0.tar.gz::https://github.com/sindresorhus/camelcase/archive/v6.2.0.tar.gz
+	sha256sums = 17e74571ccbf2521c2dfc22427c594cfe434e27bc78a410c5e7c33128f17b04b
+
+pkgname = nodejs-camelcase
+
