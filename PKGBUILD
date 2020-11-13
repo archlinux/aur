@@ -38,6 +38,7 @@ depends=('python'
          'python-sparse'  # AUR 
        # 'python-numba'  # AUR (from python-sparse)
        # 'python-llvmlite' # AUR (from python-numba)
+         'python-llvmlite-bin' # AUR (from python-numba, but require bin package to avoid version mismatches)
          )
 
 optdepends=('python-scikit-learn: machine learning features'

@@ -29,6 +29,7 @@ pkgbase = python-hyperspy-git
 	depends = python-ipyparallel
 	depends = python-scikit-image
 	depends = python-sparse
+	depends = python-llvmlite-bin
 	optdepends = python-scikit-learn: machine learning features
 	optdepends = python-hyperspy-gui-ipywidgets: GUI components for Jupyter
 	optdepends = python-hyperspy-gui-traitsui: GUI components for desktop
