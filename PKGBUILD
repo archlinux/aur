@@ -25,7 +25,9 @@ build() {
   # file that is recommended by the author.
   # The file builds mage when mage itself is not installed on the target system yet and included metadata information
   # for the binary.
-  # See https://github.com/magefile/mage/blob/master/magefile.go#L47
+  # See:
+  #   - https://github.com/magefile/mage/blob/5bc3a8ab/magefile.go#L55
+  #   - https://github.com/magefile/mage/blob/5bc3a8ab/magefile.go#L95
   local build_date git_commit_hash git_tag
   build_date=$(command date --rfc-3339=seconds)
   git_commit_hash=$(git rev-parse --short HEAD)
@@ -42,7 +44,7 @@ build() {
     -ldflags "-X \"github.com/magefile/mage/mage.timestamp=$build_date\" \
               -X \"github.com/magefile/mage/mage.commitHash=$git_commit_hash\" \
               -X \"github.com/magefile/mage/mage.gitTag=$git_tag\" \
-              -extldflags $LDFLAGS" \
+              -extldflags \"${LDFLAGS}\"" \
     -o build/"$pkgname" .
 }
 
