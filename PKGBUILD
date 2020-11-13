@@ -28,6 +28,7 @@ build() {
   # See:
   #   - https://github.com/magefile/mage/blob/5bc3a8ab/magefile.go#L55
   #   - https://github.com/magefile/mage/blob/5bc3a8ab/magefile.go#L95
+  #   - https://github.com/magefile/mage/blob/5bc3a8ab/.goreleaser.yml#L29
   local build_date git_commit_hash git_tag
   build_date=$(command date --rfc-3339=seconds)
   git_commit_hash=$(git rev-parse --short HEAD)
@@ -36,6 +37,7 @@ build() {
     git_tag="dev"
   fi
 
+  export CGO_ENABLED=0
   go build \
     -trimpath \
     -buildmode=pie \
