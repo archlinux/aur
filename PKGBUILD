@@ -4,12 +4,17 @@
 pkgname=nodejs-string-width
 _pkgname=${pkgname#*-}
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Get the visual width of a string.'
 arch=('any')
 url='https://github.com/sindresorhus/string-width'
 license=('MIT')
-depends=('nodejs')
+depends=(
+    'nodejs'
+    'nodejs-emoji-regex'
+    'nodejs-is-fullwidth-code-point'
+    'nodejs-strip-ansi'
+)
 makedepends=('npm')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/sindresorhus/$_pkgname/archive/v$pkgver.tar.gz")
 noextract=("$_pkgname-$pkgver.tar.gz")
