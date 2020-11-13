@@ -4,12 +4,22 @@
 pkgname=nodejs-boxen
 _pkgname=${pkgname#*-}
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Create boxes in the terminal.'
 arch=('any')
 url='https://github.com/sindresorhus/boxen'
 license=('MIT')
-depends=('nodejs')
+depends=(
+    'nodejs'
+    'nodejs-ansi-align'
+    'nodejs-string-width'
+    'nodejs-camelcase'
+    'nodejs-chalk'
+    'nodejs-cli-boxes'
+    'nodejs-term-size'
+    'nodejs-type-fest'
+    'nodejs-widest-line'
+)
 makedepends=('npm')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/sindresorhus/$_pkgname/archive/v$pkgver.tar.gz")
 noextract=("$_pkgname-$pkgver.tar.gz")
