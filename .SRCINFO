@@ -1,6 +1,6 @@
 pkgbase = 1px
 	pkgdesc = Useful small-space widgets for my X11 desktop (battery level)
-	pkgver = r15.5ea28b0fdc14
+	pkgver = r17.6b0066c706d1
 	pkgrel = 1
 	url = https://github.com/diresi/1px
 	arch = i686
@@ -8,7 +8,6 @@ pkgbase = 1px
 	license = MIT
 	makedepends = git
 	makedepends = meson
-	makedepends = gcc
 	depends = cairo
 	depends = libxfixes
 	depends = libx11
