@@ -8,7 +8,7 @@
 _localepurge=
 
 pkgname=sigil-git
-pkgver=1.1.0.r32.gecf560a5
+pkgver=1.4.0.r1.g1fa94e92
 pkgrel=1
 pkgdesc="A WYSIWYG ebook editor"
 arch=('i686' 'x86_64')
@@ -56,6 +56,7 @@ build() {
         -DUSE_SYSTEM_LIBS=1 \
         -DSYSTEM_LIBS_REQUIRED=1 \
         -DINSTALL_BUNDLED_DICTS=0 \
+        -DINSTALL_HICOLOR_ICONS=1 \
         -DMATHJAX_DIR=/usr/share/mathjax2 \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
@@ -68,11 +69,6 @@ build() {
 package() {
     cd "${srcdir}/${pkgname%-git}/build"
     make install DESTDIR="${pkgdir}"
-
-    for _pic in 16 32 48 128 256; do
-        install -D -m 0644 ../src/Resource_Files/icon/app_icon_${_pic}.png \
-            "${pkgdir}"/usr/share/icons/hicolor/${_pic}x${_pic}/apps/sigil.png
-    done
 
     # Compile python bytecode
     python -m compileall "${pkgdir}"/usr/share/sigil/{plugin_launchers/python/,python3lib}
