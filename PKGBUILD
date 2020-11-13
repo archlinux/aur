@@ -2,22 +2,24 @@
 # Contributor: Chris Brendel <cdbrendel@gmail.com>
 
 pkgname=python-blis
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Fast matrix-multiplication as a self-contained Python library"
 arch=(i686 x86_64 armv7h aarch64)
 url="https://github.com/explosion/cython-blis"
 license=(MIT)
-depends=(cython
-         python-numpy
-         python-pytest
-         python-hypothesis)
+depends=(
+     cython
+     python-numpy
+     python-pytest
+     python-hypothesis
+)
 makedepends=(python-setuptools)
-source=("https://files.pythonhosted.org/packages/d2/85/b96045fcbd87c8e2e06c7dcd069ccb97e1bf5b6778e0e609a7f965b87e39/blis-0.7.1.tar.gz")
-sha256sums=('014771a0f753a64ef5610c5b3d4a090b263073bdd59b8ad0d872ce1e06e7315a')
+source=("https://files.pythonhosted.org/packages/06/43/345e98e2895aaabda2992b9c1c5fbbd0a89d9443d825ce49583086f9bba6/blis-0.7.2.tar.gz")
+sha256sums=('c14fb9ec3f5ed7c4940c132c7691469ac5d3e302891d95e935623bf1d4e17fbb')
 
 
-build(){
+build() {
     cd "blis-${pkgver}"
     python setup.py build
 }
