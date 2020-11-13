@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.0.r525.ada804741
+pkgver=1.7.0.r596.319287dbe
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -21,6 +21,7 @@ depends=(
   lib32-libpcap
   lib32-libpulse
   lib32-portaudio
+  lib32-libsamplerate
   lib32-sdl2
   lib32-soundtouch
   lib32-wxgtk3
@@ -63,7 +64,6 @@ build() {
     -DPLUGIN_DIR=/usr/lib32/pcsx2 \
     -DGAMEINDEX_DIR=/usr/share/pcsx2 \
     -GNinja \
-    -DGTK3_API=on\
     -DPACKAGE_MODE=ON \
     -DXDG_STD=TRUE
   ninja
