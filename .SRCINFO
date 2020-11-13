@@ -1,7 +1,7 @@
 pkgbase = fpga-toolchain-bin
 	pkgdesc = Nightly builds of open-source FPGA tools
-	pkgver = 20201112
-	pkgrel = 3
+	pkgver = 20201113
+	pkgrel = 1
 	url = https://github.com/open-tool-forge/fpga-toolchain
 	arch = x86_64
 	license = GPL3
@@ -23,8 +23,8 @@ pkgbase = fpga-toolchain-bin
 	conflicts = yices
 	conflicts = prjtrellis
 	conflicts = prjtrellis-db
-	source_x86_64 = https://github.com/open-tool-forge/fpga-toolchain/releases/download/nightly-20201112/fpga-toolchain-linux_x86_64-nightly-20201112.tar.xz
-	sha256sums_x86_64 = fadcb87157878a4d54cbd274209d4807fedb622061d025c3d267c2735001e879
+	source_x86_64 = https://github.com/open-tool-forge/fpga-toolchain/releases/download/nightly-20201113/fpga-toolchain-linux_x86_64-nightly-20201113.tar.xz
+	sha256sums_x86_64 = 72fc6aa07c40dfaf0e0d39b55af6e5f06d697c3f70fd7efaa7529ae835a3ad16
 
 pkgname = fpga-toolchain-bin
 
