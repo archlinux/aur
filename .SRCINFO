@@ -1,0 +1,15 @@
+pkgbase = nodejs-has-flag
+	pkgdesc = Check if argv has a specific flag.
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/sindresorhus/has-flag
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = has-flag-4.0.0.tar.gz
+	source = has-flag-4.0.0.tar.gz::https://github.com/sindresorhus/has-flag/archive/v4.0.0.tar.gz
+	sha256sums = ffdabbbfcc87e9e363c4a93df49dbec1a0cbff2a69ff22d0d435bdeaf0e78731
+
+pkgname = nodejs-has-flag
+
