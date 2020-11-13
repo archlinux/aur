@@ -5,7 +5,7 @@ pkgname=('pipewire-git'
          'pipewire-pulse-git'
          'pipewire-alsa-git'
          )
-pkgver=0.3.13.99.ge1fc51d9
+pkgver=0.3.15.71.g13a1049a
 pkgrel=1
 pkgdesc='Server and user space API to deal with multimedia pipelines. (GIT version)'
 arch=('x86_64')
@@ -111,10 +111,9 @@ package_pipewire-git() {
 
   _pick docs usr/share/doc
 
-  _pick pulse usr/bin/pw-pulse usr/lib/pipewire-${pkgver:0:3}/pulse
-
   _pick jack usr/bin/pw-jack usr/lib/pipewire-${pkgver:0:3}/jack
   _pick jack usr/lib/spa-0.2/jack
+  _pick jack usr/share/man/man1/pw-jack.1
 
   # Use alsa-card-profiles built with Pulseaudio
   rm -rv "$pkgdir"/usr/share/alsa-card-profile
