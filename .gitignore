@@ -1,0 +1,5 @@
+/*.pkg.tar.zst
+/binutils-*.tar.xz
+/binutils-*.tar.xz.sig
+/pkg
+/src
