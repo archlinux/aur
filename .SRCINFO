@@ -13,6 +13,7 @@ pkgbase = xunlei-bin
 	depends = alsa-lib
 	depends = nss
 	depends = libxss
+	provides = xunlei
 	source = license.html::https://i.xunlei.com/xluser/privacy.html
 	sha512sums = 7b3868f61d225e90617096859d1ab40a86bacab9b1b1e1c0a350c4946b64a4f1af2722046857602c84ea96ec7ea5ccc2f9592798f5061c91ac10cfc1f89ddfdd
 	source_x86_64 = http://archive.kylinos.cn/kylin/partner/pool/com.xunlei.download_1.0.0.1_amd64.deb

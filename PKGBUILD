@@ -8,7 +8,7 @@ arch=("x86_64" "aarch64")
 url="https://www.xunlei.com/"
 license=("custom")
 depends=('dbus-glib' 'nodejs' 'libxtst' 'gtk2' 'alsa-lib' 'nss' 'libxss')
-
+provides=('xunlei')
 source=("license.html::https://i.xunlei.com/xluser/privacy.html")
 source_x86_64=("http://archive.kylinos.cn/kylin/partner/pool/com.xunlei.download_${pkgver}_amd64.deb")
 source_aarch64=("http://archive.kylinos.cn/kylin/partner/pool/com.xunlei.download_${pkgver}_arm64.deb")
