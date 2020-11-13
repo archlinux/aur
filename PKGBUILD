@@ -1,7 +1,8 @@
 # Maintainer: TurboPunk <turbopunk@telenet.be>
+# Contributor: José San Juan <josesj@gmail.com>
 pkgname=snapmaker-luban
 pkgver=3.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Snapmaker Luban is an easy-to-use 3-in-1 software tailor-made for Snapmaker machines."
 url="http://www.snapmaker.com"
 license=('AGPL v3')
