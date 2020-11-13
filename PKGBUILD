@@ -2,7 +2,7 @@
 
 pkgname=lacap
 longname=latin-catholic-prayers
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Memorize Catholic prayers in Latin."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('npm')
 depends=('gtk3' 'webkit2gtk')
 provides=('lacap')
 source=("https://gitlab.com/chrisfair/latin-catholic-prayers/-/archive/v${pkgver}/latin-catholic-prayers-v${pkgver}.tar.gz")
-sha256sums=('f36eca7d74345df26c6341df8501d6ed8157be870cb59b2c4df42f14b39300c5')
+sha256sums=('16363e82a969e034abf3d0a4340b5b6549db9e3dff0f40a9c979b76356945696')
 
 build() {
      export GOPATH="$srcdir"/gopath
