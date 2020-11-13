@@ -20,7 +20,7 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/CyberShadow/${pkgname}/a
 		d-btrfs-${_d_btrfs_ver}.tar.gz::https://github.com/CyberShadow/d-btrfs/archive/v${_d_btrfs_ver}.tar.gz
 		ncurses-${_d_ncurses_ver}.tar.gz::https://github.com/D-Programming-Deimos/ncurses/archive/v${_d_ncurses_ver}.tar.gz
 	   )
-sha256sums=('5e60ee7fcda13b4ba7191947979579f657ca6e69101ae87a1244afca435ade2c'
+sha256sums=('501f2b6d337db8fdc4d91d9e447691c17d4382c26a79974a4d155ed30e7caab0'
             '97f129484f7ff431d0be3430ab62d32955c17cc43e6993de4a628ea4b8574c23'
             '061df12548e09535e897031ce7de3854d287be0afcced9f59df972d9a08afe61'
             '2c8497f5dd93f9d3a05ca7ed57c4fcaee1e988fd25a24de106917ddf72f34646')
