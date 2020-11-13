@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 8ff498d0..50103111 100644
+index 8ff498d0..270e4aa4 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -5,18 +5,8 @@ CMAKE_POLICY(SET CMP0054 NEW)
@@ -18,8 +18,8 @@ index 8ff498d0..50103111 100644
 -    message(STATUS "Adding definitions: -DQT_NO_DEBUG_OUTPUT")
 -    add_definitions("-DQT_NO_DEBUG_OUTPUT")
 -endif()
-+message(STATUS "Adding definitions: -DQT_NO_DEBUG_OUTPUT")
-+add_definitions("-DQT_NO_DEBUG_OUTPUT")
++message(STATUS "Adding definitions: -DQT_NO_DEBUG_OUTPUT -DNDEBUG")
++add_definitions(-DQT_NO_DEBUG_OUTPUT -DNDEBUG)
  
  # assume built-in pthreads on MacOS
  IF(APPLE)

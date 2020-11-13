@@ -20,7 +20,7 @@ options=('!emptydirs')
 source=('git+https://github.com/LuminanceHDR/LuminanceHDR.git'
         'cmake-build-type.patch')
 b2sums=('SKIP'
-        'd4b4002428819601978c3ed9e765594a4cf0e08d7ddb1d3b4193bc7af72dceb5fb6a2af2bd19a2bd94ce6d44cdc37a0b31397fb36d679d85283ba616a8ffb799')
+        '759f5b096f4b72cb9a11e24d5e31983ba26d0b84d67e85d25551f482b88e0366ac0996020b6ae5f2a3340c8be9e6f2ed5fb5b52d59754ff3d7e9829796910c82')
 
 pkgver() {
   cd "${srcdir}"/LuminanceHDR
@@ -36,8 +36,6 @@ build() {
   mkdir -p build
   cd build
 
-  CFLAGS+=" -DNDEBUG"
-  CXXFLAGS+=" -DNDEBUG"
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
