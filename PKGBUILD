@@ -80,6 +80,8 @@ sha256sums=('20b57dbb8f6c6d7323f573c111a11640603a422c5f9da7b302a4981e4adc37c4')
 build() {
   cd gtkhash-$pkgver
 
+  echo "${pkgname[@]}"
+
 #build with Caja support only
 if [[ $(xdg-mime query default inode/directory) = caja-folder-handler.desktop ]]; then
 
