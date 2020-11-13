@@ -4,12 +4,12 @@
 pkgname=nodejs-ansi-align
 _pkgname=${pkgname#*-}
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Align-text with ANSI support for CLIs.'
 arch=('any')
 url='https://github.com/nexdrew/ansi-align'
 license=('ISC')
-depends=('nodejs')
+depends=('nodejs' 'nodejs-string-width')
 makedepends=('npm')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/nexdrew/$_pkgname/archive/v$pkgver.tar.gz")
 noextract=("$_pkgname-$pkgver.tar.gz")
