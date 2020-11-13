@@ -35,8 +35,7 @@ build() {
   fi
 
   go build \
-    -gcflags "all=-trimpath=$PWD" \
-    -asmflags "all=-trimpath=$PWD" \
+    -trimpath \
     -ldflags "-X \"github.com/magefile/mage/mage.timestamp=$build_date\" \
               -X \"github.com/magefile/mage/mage.commitHash=$git_commit_hash\" \
               -X \"github.com/magefile/mage/mage.gitTag=$git_tag\" \
