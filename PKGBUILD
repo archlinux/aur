@@ -5,43 +5,38 @@
 
 
 pkgname=pianoteq-stage
-pkgver=6.7.3
-pkgrel=2
+pkgver=7.0.3
+pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('i686' 'x86_64')
 url="https://www.pianoteq.com/pianoteq"
 license=('LGPL')
-depends=('alsa-lib' 'freetype2' 'ttf-font' 'libxext')
-makedepends=('gendesk' 'wget' 'p7zip')
+depends=('alsa-lib' 'freetype2' 'ttf-font' 'libx11')
+makedepends=('gendesk' 'p7zip')
 optdepends=()
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" "pianoteq-stage-bin" "pianoteq-standard-trial-bin")
 # the source package must be downloaded manually
 # this can be done by going to the link here:
-# https://www.pianoteq.com/download?file=pianoteq_stage_linux_v673.7z
+# https://www.pianoteq.com/download?file=pianoteq_stage_linux_v703.7z
 source=("local://pianoteq_stage_linux_v${pkgver//./}.7z"
         'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-b2sums=('b0fed5617e413add5c7b03b9e3c25f9443b5c0a6f6ceb5ee18e7ca3e17bff43682e482daae61de47668117f2fccf735d9cac6438a4e79999e405b918f36c8348'
+b2sums=('780006f6087759d374f983e1c8fbca519135044870cf688c69d021bd11201f03d1cb82207ff0005e34431d91ef621b8522e61011380bc3bb4867674fe34dd5ab'
         'bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d')
 
 prepare(){
-	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='pianoteq 6' --exec='"pianoteq 6"' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
+	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='pianoteq 7' --exec='"pianoteq 7"' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
 }
 
 package(){
-	_pianoteq_type="Pianoteq 6 STAGE"
-	# Define architecture specific file directory:
-	if [[ "$CARCH" == i686 ]]; then
-		archdir=i386
-	else
-		archdir=amd64
-	fi
+	_pianoteq_type="Pianoteq 7 STAGE"
+	archdir=x86-64bit
 	# Install program files:
-	install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type" "$pkgdir/usr/bin/pianoteq 6"
-	install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type.so" "$pkgdir/usr/lib/vst/pianoteq 6.so"
+	install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type" "$pkgdir/usr/bin/pianoteq 7"
+	install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type.so" "$pkgdir/usr/lib/vst/pianoteq 7.so"
 	cd "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type.lv2"
 	for i in *; do
-		install -D "$i" "$pkgdir/usr/lib/lv2/Pianoteq 6.lv2/$i"
+		install -D "$i" "$pkgdir/usr/lib/lv2/Pianoteq 7.lv2/$i"
 	done
 	cd $srcdir
 	# Install desktop launcher:
