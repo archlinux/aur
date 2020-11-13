@@ -1,0 +1,2 @@
+#!/bin/sh
+java -jar /usr/lib/android-sdk/build-tools/debian/apksigner.jar "$@"

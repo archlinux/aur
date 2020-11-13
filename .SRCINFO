@@ -1,0 +1,15 @@
+pkgbase = apksigner
+	pkgdesc = command line tool to sign and verify Android APKs (from Debian)
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://android.googlesource.com/platform/tools/apksig
+	arch = i686
+	arch = x86_64
+	license = apache
+	source = apksigner.deb::http://ftp.debian.org/debian/pool/main/a/android-platform-tools-apksig/apksigner_0.9-1~bpo10+1_all.deb
+	source = apksigner
+	sha256sums = bea36248d31a517f3cf606ae0c537688c5be16fd16851014651c5a880e54097c
+	sha256sums = 2667306bc9c26b7896413cdd59622d488950cef88c0f9bf6dff0bf571274c13b
+
+pkgname = apksigner
+
