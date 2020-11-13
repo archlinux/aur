@@ -1,0 +1,15 @@
+pkgbase = nodejs-color-name
+	pkgdesc = A JSON with CSS color names.
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/colorjs/color-name
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = color-name-1.1.4.tar.gz
+	source = color-name-1.1.4.tar.gz::https://github.com/colorjs/color-name/archive/v1.1.4.tar.gz
+	sha256sums = cddf05f67ddc8d112ae0e60f4b52fa7e049d288635324b5fa5e385b7ade94fc7
+
+pkgname = nodejs-color-name
+
