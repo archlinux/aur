@@ -1,6 +1,6 @@
 pkgbase = asyncly-git
 	pkgdesc = This library implements task executors and higher level primitives built on them
-	pkgver = heads.makepkg.r0.ga0dad4a
+	pkgver = heads.makepkg.r0.g2698c97
 	pkgrel = 1
 	url = https://github.com/erikzenker/asyncly.git
 	arch = i686
@@ -11,6 +11,8 @@ pkgbase = asyncly-git
 	depends = boost
 	depends = function2-git
 	depends = prometheus-cpp-git
+	depends = gmock
+	depends = gtest
 	source = asyncly-git::git+https://github.com/erikzenker/asyncly.git
 	sha256sums = SKIP
 
