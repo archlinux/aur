@@ -1,0 +1,25 @@
+pkgbase = adsklicensing
+	pkgdesc = Autodesk Licensing Checking Software
+	pkgver = 9.2.1.2399
+	pkgrel = 1
+	url = https://www.autodesk.com/
+	install = adsklicensing.install
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = libglvnd
+	depends = libx11
+	depends = libxau
+	depends = libxcb
+	depends = libxdmcp
+	depends = pcre
+	options = !strip
+	source = manual://adsklicensing9.2.1.2399-0-0.x86_64.rpm
+	source = adsklicensing.service
+	sha256sums = d9404416708ce2ad5c1f88dbd2bb26fa799440a6b15217be7f85028b0d23c476
+	sha256sums = e5612c0dd6297dd959d93369e899fa3fc85a08a2e42358c81b970a3a7d85ce7d
+
+pkgname = adsklicensing
+
