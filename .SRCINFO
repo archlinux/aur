@@ -1,0 +1,15 @@
+pkgbase = nodejs-ansi-align
+	pkgdesc = Align-text with ANSI support for CLIs.
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/nexdrew/ansi-align
+	arch = any
+	license = ISC
+	makedepends = npm
+	depends = nodejs
+	noextract = ansi-align-3.0.0.tar.gz
+	source = ansi-align-3.0.0.tar.gz::https://github.com/nexdrew/ansi-align/archive/v3.0.0.tar.gz
+	sha256sums = edee2f3733ed7a1983f703f6fa4772a5278063df7bcff5bfab8bf1d9ccba97d0
+
+pkgname = nodejs-ansi-align
+
