@@ -4,12 +4,12 @@
 pkgname=nodejs-ansi-styles
 _pkgname=${pkgname#*-}
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='ANSI escape codes for styling strings in the terminal.'
 arch=('any')
 url='https://github.com/chalk/ansi-styles'
 license=('MIT')
-depends=('nodejs')
+depends=('nodejs' 'nodejs-color-convert')
 makedepends=('npm')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/chalk/$_pkgname/archive/v$pkgver.tar.gz")
 noextract=("$_pkgname-$pkgver.tar.gz")
