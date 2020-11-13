@@ -73,7 +73,7 @@ fi
 #Disable/enable FUNCTION_TRACER/GRAPH_TRACER
 
 ## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
-## Stock Archlinux and Xanmod have this enabled. 
+## Stock Archlinux and Xanmod have this enabled.
 ## Set variable "use_tracers" to: n to disable (possibly increase performance)
 ##                                y to enable  (stock default)
 
@@ -111,7 +111,7 @@ url="https://www.kernel.org/"
 license=(GPL-2.0)
 makedepends=("bison" "flex" "valgrind" "git" "cmake" "make" "extra-cmake-modules" "libelf" "elfutils"
             "python" "python-appdirs" "python-mako" "python-evdev" "python-sphinx_rtd_theme" "python-graphviz" "python-sphinx"
-            "clang" "lib32-clang" "bc" "gcc" "gcc-libs" "lib32-gcc-libs" "glibc" "lib32-glibc" "pahole" "patch" "gtk3" 
+            "clang" "lib32-clang" "bc" "gcc" "gcc-libs" "lib32-gcc-libs" "glibc" "lib32-glibc" "pahole" "patch" "gtk3"
             "kmod" "libmikmod" "lib32-libmikmod" "xmlto" "xmltoman" "graphviz" "imagemagick" "imagemagick-doc" "rsync" "cpio" "inetutils")
 source=("https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snapshot/linux-${versiontag}.tar.gz"
         "${pkgbase}.preset"
@@ -126,7 +126,7 @@ md5sums=("SKIP"
 
 prepare(){
   cd linux-${versiontag}
-  
+
   # Apply any patch
   local src
   for src in "${source[@]}"; do
@@ -136,18 +136,18 @@ prepare(){
     msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
-  
+
   # cpopy the config file first
   # Copy "${srcdir}"/config to linux-${pkgver}/.config
   msg2 "Copy "${srcdir}"/config to linux-${versiontag}/.config"
   cp "${srcdir}"/config .config
-  
+
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
-  msg2 "enable CONFIG_STACK_VALIDATION"
+  msg2 "enable CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team"
   scripts/config --enable CONFIG_STACK_VALIDATION
 
   # Enable IKCONFIG following Arch's philosophy
-  msg2 "enable CONFIG_IKCONFIG/CONFIG_IKCONFIG_PROC"
+  msg2 "enable CONFIG_IKCONFIG/CONFIG_IKCONFIG_PROC following Arch's philosophy"
   scripts/config --enable CONFIG_IKCONFIG \
                  --enable CONFIG_IKCONFIG_PROC
 
@@ -162,12 +162,12 @@ prepare(){
     msg2 "Disabling NUMA..."
     scripts/config --disable CONFIG_NUMA
   fi
-  
+
   if [ "$use_ns" = "n" ]; then
     msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
     scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
   fi
-  
+
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
@@ -202,13 +202,13 @@ _package(){
   install -dm755 "${pkgdir}"/etc/mkinitcpio.d
 
   cd linux-${versiontag}
-  
+
   # Installing modules
   msg2 "Installing modules"
   make INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
 
   # Copy bzImage to "${pkgdir}"/boot/vmlinuz-${pkgbase}
-  echo "Copy bzImage to "${pkgdir}"/boot/vmlinuz-${pkgbase}"
+  msg2 "Copy bzImage to "${pkgdir}"/boot/vmlinuz-${pkgbase}"
   cp arch/x86/boot/bzImage "${pkgdir}"/boot/vmlinuz-${pkgbase}
 
   # Copy System.map to "${pkgdir}"/boot/System.map-${pkgbase}
@@ -236,9 +236,9 @@ _package-headers(){
   # Create system tree
   msg2 "Create system tree"
   install -dm755 "${pkgdir}"/usr/lib/modules/${modulestag}-${pkgbase}/build
-  
+
   cd linux-${versiontag}
-  
+
   local builddir="$pkgdir/usr/lib/modules/${modulestag}-${pkgbase}/build"
 
   msg2 "Installing build files..."
@@ -306,7 +306,7 @@ _package-headers(){
 
   msg2 "Stripping vmlinux..."
   strip -v $STRIP_STATIC "$builddir/vmlinux"
-  
+
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
@@ -315,20 +315,20 @@ _package-headers(){
 _package-api-headers(){
   pkgdesc="Mainline linux kernel api headers"
   depends=("mainline-kernel")
-  
+
   # Create system tree
   msg2 "Create system tree"
   install -dm755 "${pkgdir}"/usr
   install -dm755 "${pkgdir}"/usr/include
   install -dm755 "${pkgdir}"/usr/include/$pkgbase-api-headers
-  
+
   cd linux-${versiontag}
 
   # Create fakeinstall dir
   msg2 "Create fakeinstall dir"
   mkdir fakeinstall
 
-  # Installing headers to fakeinstall dir 
+  # Installing headers to fakeinstall dir
   msg2 "Installing headers to fakeinstall dir"
   make INSTALL_HDR_PATH="fakeinstall" -j$(nproc) headers_install
 
@@ -344,13 +344,13 @@ _package-docs() {
   # Create system tree
   msg2 "Create system tree"
   install -dm755 "${pkgdir}"/usr/lib/modules/${modulestag}-${pkgbase}/build
-  
+
   cd linux-${versiontag}
-  
+
   # make -j$(nproc) htmldocs
   msg2 "make -j$(nproc) htmldocs"
   make -j$(nproc) htmldocs
-  
+
   local builddir="$pkgdir/usr/lib/modules/${modulestag}-${pkgbase}/build"
 
   msg2 "Installing documentation..."
