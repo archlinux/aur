@@ -10,13 +10,13 @@ depends=('wget' 'unzip')
 source=(daggerfall-unity
   daggerfall.desktop
   settings-template.ini)
-sha256sums=(397221cfaa2e30f90b67aa8338608f601bed26c6c1b78b6e6a9e534e94f8d3c6
+sha256sums=(0b312ea87a391da827da5296a59f6c19412a408d497ce06bbe68b45be98c3bcb
   1015b75af1876313bf8727cc57dc3c033e82b0904ee623a6944c333d6e4de1ae
   f8c7e4de325a5a25add4b2404cfdaa59f490a7cc43c89f4b72ed12db66e52ff5
 )
 
 #Package Variables
-INC_DATA_FILES=TRUE
+INC_DATA_FILES=FALSE
 
 #Directory Names
 DEST_DIR="opt/daggerfall-unity"
@@ -50,6 +50,15 @@ build() {
   wget -O engine.zip "$TMP_ENGINE_LINK"
   echo "Done."
 
+  #Download game data if not already downloaded
+  if [ ! -d "/$DEST_DIR/$DATA_DIR" ]; then
+    echo "Data files not found at /$DEST_DIR/$DATA_DIR/. Flagging for Download."
+    INC_DATA_FILES="TRUE"
+  else
+    echo "Data files found at /$DEST_DIR/$DATA_DIR/. Skipping download."
+    INC_DATA_FILES="FALSE"
+  fi
+
   if [ $INC_DATA_FILES == "TRUE" ]; then
     echo "Downloading game data..."
     #Get link for game data
@@ -63,12 +72,17 @@ build() {
     #Download the data
     wget --load-cookies cookies.txt -O data.zip "https://drive.google.com/$TMP_LINK_DATA"
     echo "Done."
-  else
-    echo "Include data flag not set. Skipping data download."
   fi
 }
 
 check() {
+  #Check if data files need checking
+  if [ ! -d "/$DEST_DIR/$DATA_DIR" ]; then
+    INC_DATA_FILES="TRUE"
+  else
+    INC_DATA_FILES="FALSE"
+  fi
+
   if [ $INC_DATA_FILES == "TRUE" ]; then
     echo "Checking data files integrity"
     DATA_VALID=$(echo "$DATA_HASH ${srcdir}/data.zip" | sha256sum -c | grep -o OK)
@@ -87,6 +101,13 @@ check() {
 }
 
 package() {
+  #Check if data files need packaging
+  if [ ! -d "/$DEST_DIR/$DATA_DIR" ]; then
+    INC_DATA_FILES="TRUE"
+  else
+    INC_DATA_FILES="FALSE"
+  fi
+
   echo "Making the required package directories..."
   #Make required package directories
   if [ $INC_DATA_FILES == "TRUE" ]; then
@@ -125,11 +146,7 @@ package() {
   #Set permissions
   find ${pkgdir}/* -type d -exec chmod 755 {} \;
   find ${pkgdir}/* -type f -exec chmod 644 {} \;
-  if [ $INC_DATA_FILES == "TRUE" ]; then
-    chmod +x ${pkgdir}/${DEST_DIR}/${ENGINE_DIR}/DaggerfallUnity.x86_64
-  else
-    echo "Include data flag not set. Skipping data permissions."
-  fi
+  chmod +x ${pkgdir}/${DEST_DIR}/${ENGINE_DIR}/DaggerfallUnity.x86_64
   chmod +x ${pkgdir}/usr/local/bin/daggerfall-unity 
   echo "Done."
 }
