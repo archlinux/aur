@@ -5,10 +5,10 @@
 
 # Maintainer: Derek Taylor <derek@distrotube.com>
 pkgname=dmenu-distrotube-git
-pkgver=4.9
+pkgver=5.0
 pkgrel=1
 epoch=
-pkgdesc="This is my personal build of dmenu that is patched for fonts, centering, borders, etc."
+pkgdesc="A build of dmenu patched for centering, borders, grids, numbers, line height, mouse support, fuzzy matching and highlighting."
 arch=(x86_64 i686)
 url="https://www.gitlab.com/dwt1/dmenu-distrotube.git"
 license=('MIT')
@@ -31,7 +31,7 @@ validpgpkeys=()
 
 pkgver() {
 	cd "${_pkgname}"
-    printf "4.9.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "5.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -45,5 +45,5 @@ package() {
     cp -rf * ${pkgdir}/opt/${pkgname}
     make PREFIX=/usr DESTDIR="${pkgdir}" install
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 README.org "${pkgdir}/usr/share/doc/${pkgname}/README.org"
 }
