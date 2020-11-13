@@ -20,6 +20,9 @@ pkgver() {
 }
 
 prepare() {
+	if ! which dc &> /dev/null; then
+		echo "Looks like you don't have bc (or your path is wonky)! The program will work, but you won't get the memory percent."
+	fi
 	cd NerdFetch
 }
 
