@@ -1,6 +1,6 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=git-annex-standalone
-pkgver=8.20200309
+pkgver=8.20201008
 pkgrel=1
 pkgdesc="Manage files with git, without checking their contents into git. Standalone version, with no Haskell dependency."
 arch=(x86_64)
