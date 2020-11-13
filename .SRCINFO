@@ -1,13 +1,12 @@
 pkgbase = intelxed-git
 	pkgdesc = x86 encoder decoder
-	pkgver = 11.2.0.r187.g7573e4b
+	pkgver = 12.0.1.r0.g5976632
 	pkgrel = 1
 	url = https://intelxed.github.io
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	makedepends = mbuild
-	makedepends = doxygen
 	provides = intelxed
 	conflicts = intelxed
 	source = intelxed-git::git+https://github.com/intelxed/xed.git
