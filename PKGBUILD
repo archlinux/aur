@@ -1,3 +1,5 @@
+# Maintainer: William Tang <galaxyking0419@gmail.com>
+
 pkgname=adlmapps
 pkgver=17.0.49
 pkgrel=1
@@ -17,3 +19,4 @@ install='adlmapps.install'
 package() {
 	cp -a $srcdir/opt $srcdir/var $pkgdir/
 }
+
