@@ -1,20 +1,21 @@
 pkgbase = libepoxy-git
-	pkgdesc = Epoxy is a library for handling OpenGL function pointer management for you
-	pkgver = 1.5.4.r20.g34ecb90
+	pkgdesc = Library handling OpenGL function pointer management
+	pkgver = 1.5.4+20+g34ecb90
 	pkgrel = 1
 	url = https://github.com/anholt/libepoxy
-	arch = i686
 	arch = x86_64
-	license = BSD
-	makedepends = xorg-util-macros
-	makedepends = libx11
+	license = MIT
 	makedepends = python
+	makedepends = mesa-libgl
 	makedepends = git
 	makedepends = meson
+	makedepends = doxygen
+	makedepends = graphviz
+	depends = glibc
 	provides = libepoxy
 	conflicts = libepoxy
 	source = git+https://github.com/anholt/libepoxy.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = libepoxy-git
 
