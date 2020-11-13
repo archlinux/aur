@@ -1,0 +1,15 @@
+pkgbase = nodejs-cli-boxes
+	pkgdesc = Boxes for use in the terminal.
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/sindresorhus/cli-boxes
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = cli-boxes-2.2.1.tar.gz
+	source = cli-boxes-2.2.1.tar.gz::https://github.com/sindresorhus/cli-boxes/archive/v2.2.1.tar.gz
+	sha256sums = 4c07409e120a8713347503ba7a3c567b20b3df12ea8d1cd5377b5ede764402fc
+
+pkgname = nodejs-cli-boxes
+
