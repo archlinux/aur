@@ -19,10 +19,10 @@ _commit="9f7807548537"
 _commit=$(echo ${_commit} | cut -c1-7)
 
 
-pkgver=${_majorver}_${_buildver}
-#pkgver=${_majorver}_${_commit}
+#pkgver=${_majorver}_${_buildver}
+pkgver=${_majorver}_${_commit}
 
-pkgrel=1
+pkgrel=2
 # must stick to use epoch as the old upstream broke version comparisons
 epoch=46
 

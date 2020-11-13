@@ -1,7 +1,7 @@
 pkgbase = java-openjdk-loom-ea-bin
 	pkgdesc = Java Project Loom OpenJDK 16 Early-Access Build
-	pkgver = 16_7_285
-	pkgrel = 1
+	pkgver = 16_9f78075
+	pkgrel = 2
 	epoch = 46
 	url = https://jdk.java.net/loom/
 	arch = x86_64
