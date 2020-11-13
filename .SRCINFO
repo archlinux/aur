@@ -1,0 +1,15 @@
+pkgbase = nodejs-term-size
+	pkgdesc = Reliably get the terminal window size.
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/sindresorhus/term-size
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = term-size-2.2.1.tar.gz
+	source = term-size-2.2.1.tar.gz::https://github.com/sindresorhus/term-size/archive/v2.2.1.tar.gz
+	sha256sums = e58b9c4ce85bd5aece93bf5bc70e36f494202cdab742ce8606e7772e80457312
+
+pkgname = nodejs-term-size
+
