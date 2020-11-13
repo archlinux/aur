@@ -1,13 +1,13 @@
 # Maintainer: Aleksander Boiko <contact at via dot aur>
 pkgname=bgerp
 pkgver=3.0.1367
-pkgrel=1
+pkgrel=2
 pkgdesc="Open ERP system"
 arch=('i686' 'x86_64') 
 url='https://bgerp.ru'
 license=('GPL')
-depends=('jdk11-openjdk')
-optdepends=('pwgen' 'libmariadbclient' 'mariadb')
+depends=('pwgen' 'jdk11-openjdk')
+optdepends=('libmariadbclient' 'mariadb' 'nginx')
 source=("$url/download/3.0/${pkgname}.zip"
         'environment'
         'sysusers')
