@@ -84,8 +84,8 @@ fi
 #Enable/disable CONFIG_USER_NS_UNPRIVILEGED
 
 ## Enable CONFIG_USER_NS_UNPRIVILEGED flag
-## Set variable "use_ns" to: n to disable (stock Xanmod)
-##                           y to enable (stock Archlinux)
+## Set variable "use_ns" to: n to disable
+##                           y to enable
 
 if [ -z ${use_ns+x} ]; then
   use_ns=n
@@ -133,19 +133,21 @@ prepare(){
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
+    msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
 
   # cpopy the config file first
   # Copy "${srcdir}"/config to linux-${pkgver}/.config
-  echo "Copy "${srcdir}"/config to linux-${pkgver}/.config"
+  msg2 "Copy "${srcdir}"/config to linux-${pkgver}/.config"
   cp "${srcdir}"/config .config
 
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
+  msg2 "enable CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team"
   scripts/config --enable CONFIG_STACK_VALIDATION
 
   # Enable IKCONFIG following Arch's philosophy
+  msg2 "enable CONFIG_IKCONFIG/CONFIG_IKCONFIG_PROC"
   scripts/config --enable CONFIG_IKCONFIG \
                  --enable CONFIG_IKCONFIG_PROC
 
@@ -170,7 +172,7 @@ prepare(){
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
   # Setting version/localversion
-  echo "Setting localversion..."
+  msg2 "Setting localversion..."
   scripts/setlocalversion --save-scmversion
   echo "-${pkgbase}" > localversion
 
@@ -195,7 +197,7 @@ _package(){
   install=${pkgbase}.install
 
   # Create system tree
-  echo "Create system tree"
+  msg2 "Create system tree"
   install -dm755 "${pkgdir}"/usr
   install -dm755 "${pkgdir}"/boot
   install -dm755 "${pkgdir}"/etc/mkinitcpio.d
@@ -203,27 +205,27 @@ _package(){
   cd linux-${pkgver}
 
   # Installing modules
-  echo "Installing modules"
+  msg2 "Installing modules"
   make INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
 
   # Copy bzImage to "${pkgdir}"/boot/vmlinuz-${pkgbase}
-  echo "Copy bzImage to "${pkgdir}"/boot/vmlinuz-${pkgbase}"
+  msg2 "Copy bzImage to "${pkgdir}"/boot/vmlinuz-${pkgbase}"
   cp arch/x86/boot/bzImage "${pkgdir}"/boot/vmlinuz-${pkgbase}
 
   # Copy System.map to "${pkgdir}"/boot/System.map-${pkgbase}
-  echo "Copy System.map to "${pkgdir}"/boot/System.map-${pkgbase}"
+  msg2 "Copy System.map to "${pkgdir}"/boot/System.map-${pkgbase}"
   cp System.map "${pkgdir}"/boot/System.map-${pkgbase}
 
   # Copy bzImage to "${pkgdir}"/usr/lib/modules/${pkgver}-${pkgbase}/vmlinuz
-  echo "Copy bzImage to "${pkgdir}"/usr/lib/modules/${pkgver}-${pkgbase}/vmlinuz"
+  msg2 "Copy bzImage to "${pkgdir}"/usr/lib/modules/${pkgver}-${pkgbase}/vmlinuz"
   cp arch/x86/boot/bzImage "${pkgdir}"/usr/lib/modules/${pkgver}-${pkgbase}/vmlinuz
 
   # Copy linux-kernel.preset to "${pkgdir}"/etc/mkinitcpio.d/
-  echo "Copy linux-kernel-git.preset to "${pkgdir}"/etc/mkinitcpio.d/"
+  msg2 "Copy linux-kernel-git.preset to "${pkgdir}"/etc/mkinitcpio.d/"
   cp "${srcdir}"/${pkgbase}.preset "${pkgdir}"/etc/mkinitcpio.d/
 
   # Remove build dir and source dir
-  echo "Remove build dir and source dir"
+  msg2 "Remove build dir and source dir"
   rm -rf "${pkgdir}"/usr/lib/modules/${pkgver}-${pkgbase}/build
   rm -rf "${pkgdir}"/usr/lib/modules/${pkgver}-${pkgbase}/source
 }
@@ -233,14 +235,14 @@ _package-headers(){
   depends=("linux-kernel")
 
   # Create system tree
-  echo "Create system tree"
+  msg2 "Create system tree"
   install -dm755 "${pkgdir}"/usr/lib/modules/${pkgver}-${pkgbase}/build
 
   cd linux-${pkgver}
 
   local builddir="$pkgdir/usr/lib/modules/${pkgver}-${pkgbase}/build"
 
-  echo "Installing build files..."
+  msg2 "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map vmlinux localversion
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
@@ -252,7 +254,7 @@ _package-headers(){
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
 
-  echo "Installing headers..."
+  msg2 "Installing headers..."
   cp -t "$builddir" -a include
   cp -t "$builddir/arch/x86" -a arch/x86/include
   install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
@@ -268,27 +270,27 @@ _package-headers(){
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-  echo "Installing KConfig files..."
+  msg2 "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-  echo "Removing unneeded architectures..."
+  msg2 "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
     [[ $arch = */x86/ ]] && continue
-    echo "Removing $(basename "$arch")"
+    msg2 "Removing $(basename "$arch")"
     rm -r "$arch"
   done
 
-  echo "Removing documentation..."
+  msg2 "Removing documentation..."
   rm -r "$builddir/Documentation"
 
-  echo "Removing broken symlinks..."
+  msg2 "Removing broken symlinks..."
   find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-  echo "Removing loose objects..."
+  msg2 "Removing loose objects..."
   find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-  echo "Stripping build tools..."
+  msg2 "Stripping build tools..."
   local file
   while read -rd '' file; do
     case "$(file -bi "$file")" in
@@ -303,10 +305,10 @@ _package-headers(){
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-  echo "Stripping vmlinux..."
+  msg2 "Stripping vmlinux..."
   strip -v $STRIP_STATIC "$builddir/vmlinux"
 
-  echo "Adding symlink..."
+  msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
@@ -316,7 +318,7 @@ _package-api-headers(){
   depends=("linux-kernel")
 
   # Create system tree
-  echo "Create system tree"
+  msg2 "Create system tree"
   install -dm755 "${pkgdir}"/usr
   install -dm755 "${pkgdir}"/usr/include
   install -dm755 "${pkgdir}"/usr/include/$pkgbase-api-headers
@@ -324,15 +326,15 @@ _package-api-headers(){
   cd linux-${pkgver}
 
   # Create fakeinstall dir
-  echo "Create fakeinstall dir"
+  msg2 "Create fakeinstall dir"
   mkdir fakeinstall
 
   # Installing headers to fakeinstall dir
-  echo "Installing headers to fakeinstall dir"
+  msg2 "Installing headers to fakeinstall dir"
   make INSTALL_HDR_PATH="fakeinstall" -j$(nproc) headers_install
 
   # Move headers from fakeinstall dir to "${pkgdir}"/usr/include/${pkgbase}-api-headers/
-  echo "Move headers from fakeinstall dir to "${pkgdir}"/usr/include/${pkgbase}-api-headers/"
+  msg2 "Move headers from fakeinstall dir to "${pkgdir}"/usr/include/${pkgbase}-api-headers/"
   mv fakeinstall/include/* "${pkgdir}"/usr/include/${pkgbase}-api-headers/
 }
 
@@ -341,18 +343,18 @@ _package-docs() {
   depends=("linux-kernel")
 
   # Create system tree
-  echo "Create system tree"
+  msg2 "Create system tree"
   install -dm755 "${pkgdir}"/usr/lib/modules/${pkgver}-${pkgbase}/build
 
   cd linux-${pkgver}
 
   # make -j$(nproc) htmldocs
-  echo "make -j$(nproc) htmldocs"
+  msg2 "make -j$(nproc) htmldocs"
   make -j$(nproc) htmldocs
 
   local builddir="$pkgdir/usr/lib/modules/${pkgver}-${pkgbase}/build"
 
-  echo "Installing documentation..."
+  msg2 "Installing documentation..."
   local src dst
   while read -rd '' src; do
     dst="${src#Documentation/}"
@@ -360,7 +362,7 @@ _package-docs() {
     install -Dm644 "$src" "$dst"
   done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
 
-  echo "Adding symlink..."
+  msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
