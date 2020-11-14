@@ -9,7 +9,6 @@ pkgbase = st-distrotube-git
 	makedepends = git
 	depends = ttf-hack
 	depends = ttf-joypixels
-	depends = nerd-fonts-source-code-pro
 	provides = st
 	conflicts = st
 	source = git+https://gitlab.com/dwt1/st-distrotube.git
