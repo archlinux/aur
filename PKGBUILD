@@ -2,7 +2,7 @@
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
 
 pkgname=ghidra-git
-pkgver=9.1.2+r831+gd9701df6d
+pkgver=9.2+r57+g8f1be0932
 _d2j=2.0
 _yajsw=12.12
 _hfsx=0.21
@@ -14,7 +14,7 @@ _git=https://github.com/NationalSecurityAgency/ghidra
 license=(Apache)
 provides=(ghidra)
 conflicts=(ghidra)
-depends=('java-environment>=11' bash hicolor-icon-theme)
+depends=(java-runtime-common jdk11-openjdk bash hicolor-icon-theme)
 makedepends=(git gradle unzip fop)
 source=(
   git+$_git
@@ -24,6 +24,7 @@ source=(
   https://sourceforge.net/projects/yajsw/files/yajsw/yajsw-stable-$_yajsw/yajsw-stable-$_yajsw.zip
   https://sourceforge.net/projects/catacombae/files/HFSExplorer/$_hfsx/hfsexplorer-${_hfsx/./_}-bin.zip
   ghidra.desktop
+  2443.patch
 )
 noextract=(
   AXMLPrinter2.jar
@@ -36,7 +37,8 @@ sha512sums=('SKIP'
             'c1168ec913f1fbb0675915d4fd865ec9a8e8573f6c8aedcb6e68166f61f11aeaececc7548d54d78134843c0102c57d6350973f6d3027d0ffdae52a5c57a7f601'
             '0ff5a228ae1c5251c8ba59f9bcd9b4a199b0caaf688f6eccba42c3d227784d8f56f9164b2fad73fc173ec314340c036144123ce152fe911013df5598bd708944'
             'b85b4316115695acc78cc7c675c673058c05a238451562be0c6a48b2d11a28e5645a42cb62cdf063be015369df26201dfab6cf2e60f39e6468d1d53b23f94415'
-            'a85b8b3276e2ff4ed8bda6470c15d02711ebaa48463c775cd2a36549fad738e9fe073dab80f8c57646490ffc959cdc27e9d25b1dc2a5810b0ddb249b5dc99a9b')
+            'a85b8b3276e2ff4ed8bda6470c15d02711ebaa48463c775cd2a36549fad738e9fe073dab80f8c57646490ffc959cdc27e9d25b1dc2a5810b0ddb249b5dc99a9b'
+            'f659c42f50213fcd08770952292de23344a7e13e8412f538ffce8beea89bae0b260e0d0e88119f95218be56557db31ceb7365308657dc2bbb3d6af4a05321ec7')
 
 pkgver() {
   cd ghidra
@@ -45,13 +47,13 @@ pkgver() {
 
 prepare() {
   # HFSExplorer isn't archived in a folder, so let's make one to extract it into
-  mkdir hfsx
-  unzip hfsexplorer-${_hfsx/./_}-bin.zip -d hfsx
+  mkdir -p hfsx
+  unzip -o hfsexplorer-${_hfsx/./_}-bin.zip -d hfsx
 
   cd ghidra
 
   # Copy needed libraries into a flat repo
-  mkdir flatRepo
+  mkdir -p flatRepo
   cp ../dex2jar-$_d2j/lib/dex-*.jar \
     ../AXMLPrinter2.jar \
     ../hfsx/lib/{csframework,hfsx*,iharder-base64}.jar \
@@ -59,13 +61,16 @@ prepare() {
   cp ../yajsw-stable-$_yajsw.zip Ghidra/Features/GhidraServer
 
   # YAJSW expects this symlink
-  ln -s ghidra ../ghidra.bin
+  ln -nsf ghidra ../ghidra.bin
 
   # Add FID datasets
   install -Dm 644 ../ghidra-data/FunctionID/*.fidb -t Ghidra/Features/FunctionID/src/main/fidb
 
   # Ignore lack of licensing for YAJSW zip, packed FID datasets, and the native binaries
   sed -i '/FileTree tree/a\\t\texclude "yajsw-stable-**.zip"\n\t\texclude "src/main/fidb/**.fidb"\n\t\texclude "os/linux64/**"' gradle/support/ip.gradle
+
+  # Patch for https://github.com/NationalSecurityAgency/ghidra/issues/2443
+  patch -Np1 -i "$srcdir"/2443.patch
 }
 
 build() {
