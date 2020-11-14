@@ -1,9 +1,12 @@
 pkgbase = aml
 	pkgdesc = Another Main Loop
 	pkgver = 0.1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/any1/aml
 	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
 	license = custom:ISC
 	makedepends = meson
 	makedepends = ninja

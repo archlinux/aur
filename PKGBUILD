@@ -2,9 +2,9 @@
 
 pkgname=aml
 pkgver=0.1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Another Main Loop"
-arch=(x86_64)
+arch=(x86_64 i686 aarch64 armv7h)
 url=https://github.com/any1/aml
 license=(custom:ISC)
 depends=()
