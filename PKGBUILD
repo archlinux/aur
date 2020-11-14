@@ -1,7 +1,7 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=elastix
-pkgver=5.0.0
-pkgrel=2
+pkgver=5.0.1
+pkgrel=1
 pkgdesc='Toolbox for rigid and nonrigid registration of images'
 arch=('x86_64')
 url='http://elastix.isi.uu.nl/'
@@ -9,14 +9,14 @@ license=('apache')
 provides=()
 depends=(
 	'ann'
-	'insight-toolkit>=5.0.1'
+	'insight-toolkit>=5.1.1'
 	'openjpeg2'
 )
 makedepends=('cmake')
 optdepends=()
 conflicts=('elastix-git' 'elastix-bin')
 source=("https://github.com/SuperElastix/elastix/archive/${pkgver}.tar.gz")
-sha256sums=('a377ae0307231bf70c474e87ebbf07d649faca211febf1c1d981a2039fcfcd0e')
+sha256sums=('83a7a82f9c814c439d9d00f47926b3f45f7962b402be20c4e7b905ad3f954d70')
 
 prepare() {
 	_build_dir="${srcdir}/${pkgname}-${pkgver}/build"
@@ -34,7 +34,6 @@ prepare() {
 		-DELASTIX_IMAGE_4D_PIXELTYPES:STRING="unsigned char;short;float" \
 		-DELASTIX_IMAGE_DIMENSIONS:STRING="2;3;4" \
 		-DELASTIX_USER_COMPONENT_DIRS:PATH="" \
-		-DELASTIX_BUILD_EXECUTABLE:BOOL=ON \
 		-DELASTIX_USE_OPENCL:BOOL=OFF \
 		-DELASTIX_USE_OPENMP:BOOL=ON \
 		-DELASTIX_USE_EIGEN:BOOL=OFF \
