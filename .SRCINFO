@@ -1,7 +1,7 @@
 pkgbase = insteadman
 	pkgdesc = Manager for INSTEAD interpreter.
 	pkgver = 3.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jhekasoft/insteadman
 	arch = i686
 	arch = x86_64
