@@ -1,3 +1,4 @@
 pkg/
 src/
+aiohttp-proxy-*/
 *.tar*
