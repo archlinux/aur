@@ -7,14 +7,14 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-aarch64-git
 pkgname=(julia-aarch64-git julia-aarch64-git-docs)
-pkgver=1.6.0.DEV.r46933.g4e2fb5c72c2
+pkgver=1.6.0.DEV.r48221.gba06f439d18
 pkgrel=1
 arch=(aarch64)
 pkgdesc='High-level, high-performance, dynamic programming language'
 url='https://julialang.org/'
 license=(MIT)
 depends=(cblas hicolor-icon-theme libgit2 libunwind libutf8proc openblas icu
-         suitesparse mbedtls mpfr openlibm pcre2 libssh2 curl zlib p7zip
+         suitesparse mbedtls mpfr openlibm pcre2 libssh2 curl zlib
          xdg-utils desktop-file-utils gtk-update-icon-cache patchelf llvm)
 makedepends=(cmake gcc-fortran gmp python git)
 # Needed if building the documentation
@@ -25,7 +25,7 @@ source=(git+https://github.com/JuliaLang/julia.git#branch=master
         libunwind-version.patch
         make-install-no-build.patch)
 sha256sums=('SKIP'
-            'e0b30ecca13c8fd29147fefc8b11ae14a0d1c12ae01471a9d7e551f8e3af6c14'
+            '66302108f04242392379677e70ba9b9eb8961e35dc87915a738137aaa67db231'
             'd4c8fe9eec1bc416549924ae328ceb3f63cc736ecd5e67886faa924e7c14bc5d'
             '856dab2da8124df95e4fbd17f1164bebe1b10e99852fedf38f9dfe31f8ae295c'
             '0b57e0bc6e25c92fde8a6474394f7a99bfb57f9b5d0f7b53f988622ae67de8b7')
@@ -56,11 +56,20 @@ prepare() {
 
   # Don't build again in install
   patch -p1 -i ../make-install-no-build.patch
+
+  # For some reason during build time julia tries to load
+  # libgcc_s and libopenlibm from build directory instead of system ones
+  mkdir usr
+  mkdir usr/lib
+  cp /usr/lib/libgcc_s.so.1 usr/lib
+  cp /usr/lib/libopenlibm.so* usr/lib
 }
 
 build() {
   # See FS#58221 for why USE_SYSTEM_ARPACK=0 is used, for now
   export PATH="$srcdir/bin:$PATH"
+  #hack to build stringreplace, otherwise install will fail
+  cp "$_pkgbase"/Makefile{.orig,}
   env CFLAGS="-O2 -pipe -fstack-protector-strong -w" CXXFLAGS="-O2 -pipe -fstack-protector-strong -w" make VERBOSE=1 -C "$_pkgbase"
 
   # Building doc
