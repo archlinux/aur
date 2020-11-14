@@ -12,21 +12,21 @@ pkgname=(
   kata-linux-container-bin
 )
 epoch=1
-pkgver="1.11.4"
+pkgver="1.12.0"
 _pkgver=${pkgver/\~/-}
-pkgrel=3
+pkgrel=1
 pkgdesc="Lightweight virtual machines for containers (binary version)"
 arch=(x86_64)
 url="https://katacontainers.io"
 license=('Apache')
 
-_bin_pkg_root="/usr"  # `/usr` for f30 packages, `/opt/kata` for static packages
+_bin_pkg_root="/opt/kata"  # `/usr` for f30 packages, `/opt/kata` for static packages
 
 if [ "${_bin_pkg_root}" = "/opt/kata" ]; then
   #pkgname+=(kata-containers-static)
   source=("https://github.com/kata-containers/runtime/releases/download/${_pkgver}/kata-static-${_pkgver}-${CARCH}.tar.xz")
-  sha512sums=(a201f14d4e88307a8959b158aeaa2789906a913c0463aa60a6124befcb5f6e6c9b107c6cd30e0f3392901c6727972083b9261ec1b4d2d4755c58fa6c6106eca9)
-  b2sums=(7bd43eb6facb6012b9c02613588683bea6fe8b3e1cbeb828bdabb7df815acd7c6c6cd9dc85ccc8956d1c304c342a33b356706947f4801c28b3f035b1403d2936)
+  sha512sums=(6a2835ef324de0c295e0ea009e7b66eb2008f02ee518b02a7f39dde50550f0a073c0ea2ab37b11c453c8812a2e10f422c6050aa40bcc04eb4d6e7c91d025822b)
+  b2sums=(de16963cd4ddaa83f9da677dff1c6b6b7ba2a14c8b9ed85228d8dc73074a66438806cc6998a0222cc7cfaddd0a2f35ff52c49d94513ca19cb452720b4d68d896)
 else
   _kata_kernel_ver="5.4.32.76"
   _default_suffix="-8.1"  # f30 package build revision
@@ -37,7 +37,7 @@ else
   #_runtime_suffix="-6.1"
   #_shim_suffix="-6.1"
 
-  pkgname+=(kata-ksm-throttler-bin)
+  #pkgname+=(kata-ksm-throttler-bin)
   source=(
     "https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-containers-image-${pkgver}${_image_suffix:-${_default_suffix}}.${CARCH}.rpm"
     "https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-ksm-throttler-${pkgver}${_ksm_suffix:-${_default_suffix}}.${CARCH}.rpm"
@@ -79,8 +79,12 @@ package_kata-runtime-bin() {
     "${srcdir}${_bin_pkg_root}/bin/containerd-shim-kata-v2" \
     "${srcdir}${_bin_pkg_root}/bin/kata-runtime" \
     "${srcdir}${_bin_pkg_root}/bin/kata-collect-data.sh"
-  install -D -m 0755 "${srcdir}${_bin_pkg_root}/libexec/kata-containers/kata-netmon" "${pkgdir}/usr/lib/kata-containers/kata-netmon"
-  install -D -m 0644 "${srcdir}${_bin_pkg_root}/share/bash-completion/completions/kata-runtime" "${pkgdir}/usr/share/bash-completion/completions/kata-runtime"
+  install -D -m 0755 \
+    "${srcdir}${_bin_pkg_root}/libexec/kata-containers/kata-netmon" \
+    "${pkgdir}/usr/lib/kata-containers/kata-netmon"
+  install -D -m 0644 \
+    "${srcdir}${_bin_pkg_root}/share/bash-completion/completions/kata-runtime" \
+    "${pkgdir}/usr/share/bash-completion/completions/kata-runtime"
   install -D -m 0644 -t "${pkgdir}/usr/share/defaults/kata-containers" \
     ${srcdir}${_bin_pkg_root}/share/defaults/kata-containers/*.toml
 
@@ -97,13 +101,17 @@ package_kata-runtime-bin() {
 package_kata-proxy-bin() {
   conflicts=('kata-proxy')
   provides=('kata-proxy')
-  install -D -m 0755 "${srcdir}${_bin_pkg_root}/libexec/kata-containers/kata-proxy" "${pkgdir}/usr/lib/kata-containers/kata-proxy"
+  install -D -m 0755 \
+    "${srcdir}${_bin_pkg_root}/libexec/kata-containers/kata-proxy" \
+    "${pkgdir}/usr/lib/kata-containers/kata-proxy"
 }
 
 package_kata-shim-bin() {
   conflicts=('kata-shim')
   provides=('kata-shim')
-  install -D -m 0755 "${srcdir}${_bin_pkg_root}/libexec/kata-containers/kata-shim" "${pkgdir}/usr/lib/kata-containers/kata-shim"
+  install -D -m 0755 \
+    "${srcdir}${_bin_pkg_root}/libexec/kata-containers/kata-shim" \
+    "${pkgdir}/usr/lib/kata-containers/kata-shim"
 }
 
 package_kata-containers-image-bin(){
@@ -142,9 +150,16 @@ package_kata-ksm-throttler-bin() {
   sed -i 's/libexec/lib/' \
     "${pkgdir}/usr/lib/systemd/system/kata-ksm-throttler.service" \
     "${pkgdir}/usr/lib/systemd/system/kata-vc-throttler.service"
-  install -D -m 0755 "${srcdir}/usr/libexec/kata-ksm-throttler/kata-ksm-throttler" "${pkgdir}/usr/lib/kata-ksm-throttler/kata-ksm-throttler"
-  install -D -m 0755 "${srcdir}/usr/libexec/kata-ksm-throttler/trigger/virtcontainers/vc" "${pkgdir}/usr/lib/kata-ksm-throttler/trigger/virtcontainers/vc"
-  install -d -m 0755 "${pkgdir}/var/lib/vc/firecracker" "${pkgdir}/var/lib/vc/sbs" "${pkgdir}/var/lib/vc/uuid"
+  install -D -m 0755 \
+    "${srcdir}/usr/libexec/kata-ksm-throttler/kata-ksm-throttler" \
+    "${pkgdir}/usr/lib/kata-ksm-throttler/kata-ksm-throttler"
+  install -D -m 0755 \
+    "${srcdir}/usr/libexec/kata-ksm-throttler/trigger/virtcontainers/vc" \
+    "${pkgdir}/usr/lib/kata-ksm-throttler/trigger/virtcontainers/vc"
+  install -d -m 0755 \
+    "${pkgdir}/var/lib/vc/firecracker" \
+    "${pkgdir}/var/lib/vc/sbs" \
+    "${pkgdir}/var/lib/vc/uuid"
 }
 
 package_kata-containers-static(){
