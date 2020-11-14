@@ -1,9 +1,9 @@
 # Author: butaford <butaford@gmail.com>
 pkgname=rcon-git
 pkgver=0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Rcon is a command line application that can be used as a Source RCON client. It will send commands to the given server, and print the reply to stdout."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/n0la/rcon"
 license=('BSD 2-Clause')
 depends=()
@@ -23,8 +23,8 @@ build() {
     cmake "$srcdir/${pkgname%-git}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-		-DINSTALL_BASH_COMPLETION=ON
-		-DCOMPLETIONS_DIR=/etc/bash_completion.d
+		-DINSTALL_BASH_COMPLETION=ON \
+		-DCOMPLETIONS_DIR=/usr/share/bash-completion/completions
     make
 }
 
