@@ -2,26 +2,22 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=piler
-pkgver=1.3.7
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="Open source email archiving solution with all the necessary features for your enterprise"
 arch=('i686' 'x86_64')
 url="http://www.mailpiler.org/"
 license=('GPL')
-depends=('tre' 'libzip' 'mariadb-libs')
-makedepends=('mariadb' 'poppler' 'catdoc' 'unrtf' 'tnef')
-optdepends=('sphinx: for indexing emails'
-            'poppler: for reading attachments'
+depends=('tre' 'libzip' 'mariadb-libs' 'python-sphinx' 'unrtf' 'python-mysqlclient' 'python-mysql-connector')
+makedepends=('mariadb' 'poppler' 'catdoc' 'php' 'sysstat' 'openssl')
+optdepends=('poppler: for reading attachments'
             'catdoc: for reading attachments'
-            'unrtf: for reading attachments'
             'tnef: for reading attachments')
 options=('!emptydirs')
 source=(https://bitbucket.org/jsuto/piler/downloads/$pkgname-$pkgver.tar.gz
-        piler.service
         piler-user.conf
         piler-tmpfile.conf)
-sha256sums=('21c0db70827b2bf6b6c9c5b467f748ea90adf7b4c2c38408edeee331e101925e'
-            'a552d39f949888d14106b64946e20d565e290d4dea93a2562f2a0644ae2a92d6'
+sha256sums=('eed041507fd9b16f59002570fde34b004980be70362efdec6f90b5f05face867'
             '78e33088c1d0be9b5a04d85cdd4f593dd6c91e48b7241065e2dc7ee15d8c0a64'
             '40fd91c33118d6104c721db5efa4ab5cc577aa8e3311648fb1c10a6d49678d3e')
 backup=('etc/piler/piler.conf')
@@ -32,14 +28,15 @@ build() {
 		--prefix=/usr \
 		--sysconfdir=/etc \
 		--sbindir=/usr/bin \
-		--localstatedir=/var/lib \
+		--localstatedir=/var \
 		--libexecdir=/usr/share \
 		--with-database=mysql \
 		--with-piler-user=root \
+		--enable-memcached
 		# --enable-clamd \
-		# --enable-memcached \
 
-	make
+	#Alert! It's needed to make as single thread, multithread have problems at build.
+	make -j1
 }
 
 package() {
@@ -57,10 +54,14 @@ package() {
 	cd "$pkgdir"
 	cp etc/piler/piler.conf.dist etc/piler/piler.conf
 	cp etc/piler/sphinx.conf.dist etc/piler/sphinx.conf
-	sed -r 's#pidfile=.*#pidfile=/run/piler/piler.pid#' etc/piler/piler.conf
-	chmod 644 /etc/piler/*
+	sed -ir 's#pidfile=.*#pidfile=/run/piler/piler.pid#' etc/piler/piler.conf
+	rm -rf etc/piler/piler.confr
+	chmod 644 etc/piler/*
 
-	install -Dm644 "$srcdir"/piler.service usr/lib/systemd/system/piler.service
+	mkdir -p usr/lib/systemd/system/
+	install -Dm644 "$srcdir"/piler-$pkgver/systemd/*.service usr/lib/systemd/system/
+	sed -ir 's#PIDFile=/var/run/#PIDFile=/run/#' usr/lib/systemd/system/*.service
+	rm -rf usr/lib/systemd/system/*.servicer
 	install -Dm644 "$srcdir"/piler-user.conf usr/lib/sysusers.d/piler.conf
 	install -Dm644 "$srcdir"/piler-tmpfile.conf usr/lib/tmpfiles.d/piler.conf
 }
