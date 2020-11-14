@@ -11,8 +11,8 @@ license=('GPL3')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
 provides=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/$pkgver/${pkgname%-bin}-$pkgver.tar.gz"{,.sig}
-               "${pkgname%-bin}-$pkgver-LICENSE::$url/raw/$pkgver/LICENSE"
-               "${pkgname%-bin}-$pkgver-README.md::$url/raw/$pkgver/README.md")
+               "$pkgname-$pkgver-LICENSE::$url/raw/$pkgver/LICENSE"
+               "$pkgname-$pkgver-README.md::$url/raw/$pkgver/README.md")
 sha512sums_x86_64=('13fa805228957b56a4849cee92814533648be843b5b8a29709c33b8c8e240922735439c6dc48832da6c182a3c5d50f7406a1c6a37f090502dd9eeebf4142a0b8'
                    'SKIP'
                    'd361e5e8201481c6346ee6a886592c51265112be550d5224f1a7a6e116255c2f1ab8788df579d9b8372ed7bfd19bac4b6e70e00b472642966ab5b319b99a2686'
@@ -21,6 +21,6 @@ validpgpkeys=('39E678DF63BE20EA5A175156B928720AEC532117') # orhun <orhunparmaksi
 
 package() {
   install -Dm 755 "${pkgname%-bin}" -t "$pkgdir/usr/bin"
-  install -Dm 644 "${pkgname%-bin}-$pkgver-README.md" "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
-  install -Dm 644 "${pkgname%-bin}-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
+  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
+  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
 }
