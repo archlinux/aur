@@ -1,13 +1,13 @@
 # Maintainer: Derek Taylor (DistroTube) <derek@distrotube.com>
 pkgname=st-distrotube-git
-pkgver=0.8.2
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="A heavily-patched and customized build of st (the Suckless simple terminal) from DistroTube."
 arch=(x86_64 i686)
 url="https://gitlab.com/dwt1/st-distrotube.git"
 license=('MIT')
 groups=()
-depends=(ttf-hack ttf-joypixels)
+depends=(ttf-hack ttf-joypixels nerd-fonts-source-code-pro)
 makedepends=(git)
 checkdepends=()
 optdepends=()
@@ -23,7 +23,7 @@ validpgpkeys=()
 
 pkgver() {
   cd "${_pkgname}"
-  printf "0.8.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "0.8.4.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -37,6 +37,6 @@ package() {
   cp -rf * ${pkgdir}/opt/${pkgname}
   make PREFIX=/usr DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 README.org "${pkgdir}/usr/share/doc/${pkgname}/README.org"
 }
 
