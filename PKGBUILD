@@ -2,13 +2,13 @@
 
 pkgname=anvill
 pkgver=0.1.20
-pkgrel=3
+pkgrel=4
 pkgdesc="Forge beautiful LLVM bitcode out of raw machine code"
 arch=('x86_64')
-url="https://github.com/lifting-bits/remill"
+url="https://github.com/lifting-bits/anvill"
 license=('Apache')
-depends=('remill' 'python' 'gflags' 'google-glog' 'intelxed' 'ncurses' 'zlib')
-makedepends=('clang' 'cmake')
+depends=('cxx-common=0.0.14' 'remill' 'python' 'ncurses' 'zlib')
+makedepends=('python-setuptools')
 source=("https://github.com/lifting-bits/anvill/archive/v${pkgver}.tar.gz"
         '00-install-specify-bitcode.patch'
         '01-remove-python-installation.patch')
@@ -23,11 +23,14 @@ prepare() {
 }
 
 build() {
+    export TRAILOFBITS_LIBRARIES="/opt/cxx-common/libraries"
+    export PATH="${TRAILOFBITS_LIBRARIES}/cmake/bin:${TRAILOFBITS_LIBRARIES}/llvm/bin:${PATH}"
+
     cd "$srcdir/$pkgname-$pkgver"
     mkdir -p build && cd build
-    cmake \
-        -DCMAKE_C_COMPILER=/usr/bin/clang \
-        -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
+    "${TRAILOFBITS_LIBRARIES}/cmake/bin/cmake" \
+        -DCMAKE_C_COMPILER="${TRAILOFBITS_LIBRARIES}/llvm/bin/clang" \
+        -DCMAKE_CXX_COMPILER="${TRAILOFBITS_LIBRARIES}/llvm/bin/clang++" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_VERBOSE_MAKEFILE=True \
         "$srcdir/$pkgname-$pkgver"
@@ -40,6 +43,7 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver/build"
     make DESTDIR="${pkgdir}" install
+    rm -rf "$pkgdir/usr/share"
 
     cd "$srcdir/$pkgname-$pkgver"
     python setup.py install \

@@ -1,17 +1,14 @@
 pkgbase = anvill
 	pkgdesc = Forge beautiful LLVM bitcode out of raw machine code
 	pkgver = 0.1.20
-	pkgrel = 3
-	url = https://github.com/lifting-bits/remill
+	pkgrel = 4
+	url = https://github.com/lifting-bits/anvill
 	arch = x86_64
 	license = Apache
-	makedepends = clang
-	makedepends = cmake
+	makedepends = python-setuptools
+	depends = cxx-common=0.0.14
 	depends = remill
 	depends = python
-	depends = gflags
-	depends = google-glog
-	depends = intelxed
 	depends = ncurses
 	depends = zlib
 	source = https://github.com/lifting-bits/anvill/archive/v0.1.20.tar.gz
