@@ -1,17 +1,20 @@
 pkgbase = ltspice
-	pkgdesc = SPICE simulator, schematic capture and waveform viewer of electronic circuits.
-	pkgver = 17.0.18.0
+	pkgdesc = SPICE simulator, schematic capture and waveform viewer. Installation based on Field Update Utility.
+	pkgver = 17.20201112.2
 	pkgrel = 1
 	url = http://www.linear.com/designtools/software/
 	arch = x86_64
 	license = custom
 	makedepends = git
+	makedepends = curl
+	makedepends = gzip
+	makedepends = sed
+	makedepends = awk
+	makedepends = cksfv
 	depends = wine
-	source = ltspice::git+https://github.com/jhbruhn/ltspice#branch=17.0.18.0
 	source = ltspice.sh
 	source = ltspice-help.sh
-	sha256sums = SKIP
-	sha256sums = 7556a06775c73e4aaa48e200803baad6310c1dfc150d86a40b197f0ab8eaf11c
+	sha256sums = 2a2a222c0264af58913d629d58513ead7230861bbed8638f863e48d4ebfe295a
 	sha256sums = 04fb3968b8572d02a69ee61590c038a9560809160b4c6260ded5f802e9ef859a
 
 pkgname = ltspice
