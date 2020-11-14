@@ -1,6 +1,6 @@
 # Maintainer: Manuel Stoeckl <com dоt mstoeckl аt wppkgb>
 pkgname=waypipe-git
-pkgver=0.7.1.r0.gd42475f
+pkgver=0.7.1.r2.g3d67676
 pkgrel=1
 pkgdesc='A proxy for Wayland protocol applications. WARNING: unstable'
 license=('MIT')
@@ -16,7 +16,7 @@ url='https://gitlab.freedesktop.org/mstoeckl/waypipe'
 source=('git+https://gitlab.freedesktop.org/mstoeckl/waypipe.git')
 sha512sums=('SKIP')
 options=(debug !strip)
-arch=('any')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 provides=('waypipe')
 conflicts=('waypipe')
 
