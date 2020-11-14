@@ -15,14 +15,16 @@ source=("https://notabug.org/RemixDev/deemix/archive/$_commit.tar.gz")
 sha256sums=('789fa6a825716d0daef294fa1f70d0f992ec9b13817d4e3e0b81d60a9cd2e47b')
 
 pkgver() {
+  cd deemix
   sed -En 's/^__version__ = "([0-9\.]+)"$/\1/p' deemix/__init__.py | tr -d '\n'
 }
 
 build() {
-  touch README.md
+  cd deemix
   python setup.py build
 }
 
 package() {
+  cd deemix
   python setup.py install --root="$pkgdir" --optimize=1
 }
