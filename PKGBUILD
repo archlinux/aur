@@ -1,7 +1,7 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=golang-github-linuxdeepin-go-x11-client-git
-pkgver=0.6.2.r0.gfe50ee5
+pkgver=0.6.2.r1.g6d7b662
 pkgrel=1
 pkgdesc='X11 protocol go language binding'
 arch=('any')
