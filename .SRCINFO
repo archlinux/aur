@@ -5,13 +5,12 @@ pkgbase = remill
 	url = https://github.com/lifting-bits/remill
 	arch = x86_64
 	license = Apache
+	depends = cxx-common=0.0.14
 	depends = ncurses
 	depends = zlib
 	depends = lib32-glibc
 	source = https://github.com/lifting-bits/remill/archive/v4.0.8.tar.gz
-	source = https://github.com/trailofbits/cxx-common/releases/download/v0.0.14/libraries-llvm1100-ubuntu20.04-amd64.tar.xz
 	sha256sums = b20cb536ac4107910f9b0da6d7fffa36510e2ec93da993f594d55aa6164546af
-	sha256sums = 7a680ea1185dfb83bc8a2c3bdb7930e5c1dfc7d78e3af16da65ca525e82ade39
 
 pkgname = remill
 

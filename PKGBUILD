@@ -3,22 +3,19 @@
 
 pkgname=remill
 pkgver=4.0.8
-pkgrel=1
-_cxxcommonver=0.0.14
+pkgrel=2
 pkgdesc="Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode"
 arch=('x86_64')
 url="https://github.com/lifting-bits/remill"
 license=('Apache')
-depends=('ncurses' 'zlib' 'lib32-glibc')
+depends=('cxx-common=0.0.14' 'ncurses' 'zlib')
 makedepends=()
 checkdepends=()
-source=("https://github.com/lifting-bits/remill/archive/v${pkgver}.tar.gz"
-        "https://github.com/trailofbits/cxx-common/releases/download/v${_cxxcommonver}/libraries-llvm1100-ubuntu20.04-amd64.tar.xz")
-sha256sums=('b20cb536ac4107910f9b0da6d7fffa36510e2ec93da993f594d55aa6164546af'
-            '7a680ea1185dfb83bc8a2c3bdb7930e5c1dfc7d78e3af16da65ca525e82ade39')
+source=("https://github.com/lifting-bits/remill/archive/v${pkgver}.tar.gz")
+sha256sums=('b20cb536ac4107910f9b0da6d7fffa36510e2ec93da993f594d55aa6164546af')
 
 build() {
-    export TRAILOFBITS_LIBRARIES="$srcdir/libraries"
+    export TRAILOFBITS_LIBRARIES="/opt/cxx-common/libraries"
     export PATH="${TRAILOFBITS_LIBRARIES}/cmake/bin:${TRAILOFBITS_LIBRARIES}/llvm/bin:${PATH}"
 
     cd "$srcdir/$pkgname-$pkgver"
@@ -35,7 +32,7 @@ build() {
 }
 
 check() {
-    export TRAILOFBITS_LIBRARIES="$srcdir/libraries"
+    export TRAILOFBITS_LIBRARIES="/opt/cxx-common/libraries"
     export PATH="${TRAILOFBITS_LIBRARIES}/cmake/bin:${TRAILOFBITS_LIBRARIES}/llvm/bin:${PATH}"
 
     cd "$srcdir/$pkgname-$pkgver/build"
