@@ -1,12 +1,12 @@
 pkgbase = adol-c
-	pkgdesc = ADOL-C automatic differentiation library
-	pkgver = 2.6.3
+	pkgdesc = Automatic Differentiation of Algorithms written in C/C++
+	pkgver = 2.7.2
 	pkgrel = 1
-	url = https://projects.coin-or.org/ADOL-C
+	url = https://github.com/coin-or/ADOL-C
 	arch = x86_64
 	license = EPL
-	source = https://www.coin-or.org/download/source/ADOL-C/ADOL-C-2.6.3.tgz
-	sha1sums = d65e4d1ed3d1cd8c22f43d5c3a92477c5c0a1539
+	source = adol-c-2.7.2.tar.gz::https://github.com/coin-or/ADOL-C/archive/releases/2.7.2.tar.gz
+	sha256sums = 701e0856baae91b98397960d5e0a87a549988de9d4002d0e9a56fa08f5455f6e
 
 pkgname = adol-c
 

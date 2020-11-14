@@ -1,41 +1,26 @@
-# Maintainer: Kristof Szalay <krszalay at gmail dot com>
+# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Contributor: Kristof Szalay <krszalay at gmail dot com>
+
 pkgname=adol-c
-pkgver=2.6.3
+_pkgname=ADOL-C
+pkgver=2.7.2
 pkgrel=1
-epoch=
-pkgdesc="ADOL-C automatic differentiation library"
-arch=("x86_64")
-url="https://projects.coin-or.org/ADOL-C"
+pkgdesc='Automatic Differentiation of Algorithms written in C/C++'
+arch=('x86_64')
+url="https://github.com/coin-or/${_pkgname}"
 license=('EPL')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://www.coin-or.org/download/source/ADOL-C/ADOL-C-$pkgver.tgz")
-noextract=()
-sha1sums=("d65e4d1ed3d1cd8c22f43d5c3a92477c5c0a1539")
-validpgpkeys=()
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/releases/${pkgver}.tar.gz")
+sha256sums=('701e0856baae91b98397960d5e0a87a549988de9d4002d0e9a56fa08f5455f6e')
 
 build() {
-	cd "ADOL-C-$pkgver"
-	./configure --prefix=/usr --libdir=/usr/lib
-	make
-}
+  cd "${_pkgname}-releases-${pkgver}"
 
-check() {
-	cd "ADOL-C-$pkgver"
-	make -k check
+  ./configure --prefix=/usr --libdir=/usr/lib
+  make
 }
 
 package() {
-	cd "ADOL-C-$pkgver"
-	make DESTDIR="$pkgdir/" install
+  cd "${_pkgname}-releases-${pkgver}"
+
+  make DESTDIR="$pkgdir/" install
 }
