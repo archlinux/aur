@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot' 'foot-terminfo')
 pkgver=1.5.3  # Don’t forget to update CHANGELOG.md
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
@@ -26,8 +26,7 @@ build() {
 
   # makepkg uses -O2 by default, but we *really* want -O3
   # -Wno-missing-profile since we're not exercising everything when doing PGO builds
-  # -fno-plt because performance (this is the default in makepkg anyway)
-  export CFLAGS+=" -O3 -Wno-missing-profile -fno-plt"
+  export CFLAGS+=" -O3 -Wno-missing-profile"
 
   # TODO: add -Dfcft:test-text-shaping=false
   meson --prefix=/usr --buildtype=release --wrap-mode=forcefallback -Db_lto=true -Dfcft:text-shaping=disabled -Dfcft:test-text-shaping=false . build
