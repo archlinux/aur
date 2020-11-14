@@ -1,7 +1,7 @@
 # Maintainer: Aanok <aanok.aur@gmail.com>
 # Contributor: therealfarfetchd
 pkgname='ripcord'
-pkgver=0.4.26
+pkgver=0.4.27
 pkgrel=1
 pkgdesc='Qt-based Discord and Slack client'
 arch=('x86_64')
@@ -12,7 +12,7 @@ validpgpkeys=('ABBAD1CB484F53024CF5868B69332F9203F21F5C')
 
 _file="Ripcord-$pkgver-x86_64.AppImage"
 source=("https://cancel.fm/dl/$_file"{,.asc} LICENSE)
-sha256sums=('784602ca1d8f86f7e8bb01603bc31682ad8d2c8be6e26fa33a423dec5f103445' 'SKIP' 'd7b2d483acceaebebfa068223efd8fb5e0f5d66f642fa234484ca50974c9fa2c')
+sha256sums=('c63d3e682ba7dbacd9c69122b72c75f51de0fea12ef4ce5e9e63d7549c63e41d' 'SKIP' 'd7b2d483acceaebebfa068223efd8fb5e0f5d66f642fa234484ca50974c9fa2c')
 
 # !! AppImage is emptied if symbols are stripped away !!
 # But beyond that, the program is deployed with symbols on purpose
