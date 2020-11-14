@@ -1,6 +1,6 @@
 pkgbase = deepin-daemon-git
 	pkgdesc = Daemon handling the DDE session settings
-	pkgver = 5.12.0.25.r11.g33771418
+	pkgver = 5.12.0.25.r19.g411fbfe1
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-daemon
 	install = deepin-daemon-git.install
@@ -40,6 +40,7 @@ pkgbase = deepin-daemon-git
 	depends = org.freedesktop.secrets
 	depends = noto-fonts
 	depends = imwheel
+	depends = gdk-pixbuf-xlib
 	optdepends = networkmanager: for network management support
 	optdepends = bluez: for bluetooth support
 	optdepends = iw: for miracast module

@@ -1,7 +1,7 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-daemon-git
-pkgver=5.12.0.25.r11.g33771418
+pkgver=5.12.0.25.r19.g411fbfe1
 pkgrel=1
 pkgdesc='Daemon handling the DDE session settings'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('deepin-desktop-schemas-git' 'ddcutil' 'deepin-api-git' 'gvfs' 'iso-cod
          'mobile-broadband-provider-info' 'deepin-polkit-agent-git'
          'deepin-polkit-agent-ext-gnomekeyring' 'udisks2' 'upower'
          'libxkbfile' 'accountsservice' 'deepin-desktop-base-git' 'bamf' 'pulseaudio'
-         'org.freedesktop.secrets' 'noto-fonts' 'imwheel')
+         'org.freedesktop.secrets' 'noto-fonts' 'imwheel' 'gdk-pixbuf-xlib')
 makedepends=('golang-github-linuxdeepin-go-dbus-factory-git' 'golang-deepin-gir-git' 'golang-deepin-lib-git'
              'deepin-api-git' 'golang-github-nfnt-resize' 'golang-gopkg-yaml.v2' 'sqlite' 'deepin-gettext-tools-git'
              'git' 'mercurial' 'python-gobject' 'networkmanager' 'bluez' 'go')
