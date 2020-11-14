@@ -5,7 +5,7 @@
 # (at your option) any later version.
 pkgname=simtrace2
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Traces the communication between phones and SIM cards with second generation simtrace hardware."
 arch=('armv7h' 'i686' 'x86_64')
 url="https://osmocom.org/projects/simtrace2"
@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 build() {
   cd "$srcdir/$pkgname/host"
   autoreconf -fi
-  ./configure
+  ./configure --prefix=/usr
   make
 }
 
