@@ -3,7 +3,7 @@
 pkgname=lacap
 longname=latin-catholic-prayers
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Memorize Catholic prayers in Latin."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/chrisfair/latin-catholic-prayers"
@@ -20,7 +20,7 @@ build() {
      export PATH=$GOBIN:$PATH
      cd "$srcdir/$longname-v$pkgver"
      go get -u github.com/wailsapp/wails/cmd/wails
-     wails build -f
+     wails build -f >/dev/null 2>&1
 }
 
 
