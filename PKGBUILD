@@ -1,7 +1,7 @@
 # Maintainer: libertylocked <libertylocked@disroot.org>
 # Contributor: Stephen Brown II <Stephen [dot] Brown2 [at] gmail.com>
 pkgname=bitwarden-cli
-pkgver=1.13.0
+pkgver=1.13.1
 _jslibcommit='4cd20f0fa8c040989e8b9e8037c00bbafeb9b653'
 _nodeversion='10.20.1'
 pkgrel=1
@@ -15,7 +15,7 @@ conflicts=('bitwarden-cli-git')
 options=('!strip')
 source=("bitwarden-cli-${pkgver}.tar.gz::https://github.com/bitwarden/cli/archive/v${pkgver}.tar.gz"
         "jslib-${_jslibcommit}.tar.gz::https://github.com/bitwarden/jslib/archive/${_jslibcommit}.tar.gz")
-sha512sums=('40ad7993d7114c91662e9ef44ad8455d586d57e6a25e8052eff8516adc39869ce2677f3a1141efcdd0a7ad665e4b8145064128bfd30fb69bcd51ac07f4d3f830'
+sha512sums=('cf065c37d6e94686fbf891a8996bc59cffb15dd7730021687920a8cb4510de1444148d254ae9c90c0653cbdb4ff58e6844c9ff110a48c4f09f6d9ef105b0ff33'
             '1e609cc7cd7889f3ab27af119ee909ee285d53c551b96499d9aa1ec1c46907953b00978865e6892edb9813f85517fcb5fd618e722534a0d28c347002f3548eba')
 
 prepare() {
