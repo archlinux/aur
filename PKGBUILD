@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=prosopopee
-pkgver=1.0.1
+pkgver=1.1.4
 pkgrel=1
 pkgdesc='A static website generator to make beautiful customizable pictures galleries that tell a story'
 arch=('any')
@@ -10,13 +10,13 @@ license=('GPL3')
 conflicts=('prosopopee-git')
 depends=('python-jinja'
          'python-path'
-         'python-docopt'
+         'python-babel'
          'python-ruamel-yaml'
          'python-future'
          'python-pillow')
 makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Psycojoker/prosopopee/archive/${pkgver}.tar.gz")
-sha256sums=('f0e46b200cddb37ac3890f8ae8293e2f59583ada2fe646d9e42138a49fab558c')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/e2/29/6f79de8bf7a26572744658d66c0e047a46b53feaab52af66e0a1badd8496/prosopopee-1.1.4.tar.gz")
+sha256sums=('94fe17a6dcd173dfadf7ffb1ff4797348ee081f7b5e8f9b253fa0add7ab4a60b')
 
 build() {
   cd "${pkgname}-${pkgver}"
