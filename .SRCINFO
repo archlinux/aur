@@ -1,12 +1,14 @@
 pkgbase = sqlc-bin
 	pkgdesc = Generate type safe Go from SQL
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kyleconroy/sqlc
 	arch = x86_64
 	license = MIT
 	source = https://github.com/kyleconroy/sqlc/releases/download/v1.5.0/sqlc-v1.5.0-linux-amd64.tar.gz
+	source = https://raw.githubusercontent.com/kyleconroy/sqlc/d191365b0af92dead317a87633bd666c3bd20f6c/LICENSE
 	sha256sums = ce9cb631489b81fa979bec0de93506eb894c65e03694173478a158c4d7115a7e
+	sha256sums = b18ed0937de93cf24dd372fe1b59ba578d183588ed087cc63772930b80ce57aa
 
 pkgname = sqlc-bin
 

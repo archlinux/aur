@@ -1,5 +1,6 @@
 /src
 /pkg
 /*.pkg.tar.zst
+/LICENSE
 
 /sqlc-v*-linux-amd64.tar.gz
