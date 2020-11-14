@@ -1,32 +1,36 @@
-# Maintainer: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
+# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Contributor: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
 
-pkgname='gfeeds'
-pkgver='0.15'
-pkgrel='1'
+pkgname=gfeeds
+_pkgname=gnome-feeds
+pkgver=0.16.1
+pkgrel=1
 pkgdesc='An RSS/Atom feed reader for GNOME'
-changelog='CHANGELOG'
 arch=('x86_64')
-url='https://gabmus.gitlab.io/gnome-feeds'
+url="https://gabmus.gitlab.io/${_pkgname}"
 license=('GPL3')
-depends=('python-html5lib' 'webkit2gtk' 'python-gobject' 'python-pillow' 'python-feedparser'
-         'python-listparser' 'python-readability-lxml' 'libhandy' 'python-dateutil' 'python-pytz'
-         'python-beautifulsoup4' 'python-pygments')
-makedepends=('meson' 'git' 'gobject-introspection')
-provides=('gnome-feeds')
-conflicts=('gnome-feeds' 'gnome-feeds-git' 'gfeeds-git')
-source=("git+https://gitlab.gnome.org/World/${pkgname}.git#tag=${pkgver}")
-sha256sums=('SKIP')
+depends=('appstream' 'python-html5lib' 'webkit2gtk' 'python-gobject' 'python-pillow' 'python-feedparser' 'python-listparser' 'python-lxml' 'python-readability-lxml' 'libhandy' 'python-dateutil' 'python-pytz' 'python-beautifulsoup4' 'python-pygments')
+makedepends=('meson' 'gobject-introspection')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-git" "${pkgname}-git")
+source=("https://gitlab.com/gabmus/${_pkgname}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('11f150fa7fb743ded928db29efd8abcf59f068237cf3b27bc60061719b47a55c')
 
-pkgver () {
-    cd ${pkgname}
-    git describe --tags | sed 's/-/.r/; s/-/./'
+prepare () {
+  cd "${_pkgname}-${pkgver}"
+
+  mkdir build
 }
 
 build () {
-    arch-meson ${pkgname} build
-    ninja -C build
+  cd "${_pkgname}-${pkgver}/build"
+
+  meson --prefix=/usr ..
+  ninja
 }
 
 package () {
-    DESTDIR="${pkgdir}" ninja -C build install
+  cd "${_pkgname}-${pkgver}/build"
+
+  DESTDIR="${pkgdir}" ninja install
 }
