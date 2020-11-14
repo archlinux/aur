@@ -8,7 +8,7 @@ pkgdesc="EteSync (end-to-end encrypted sync) plugin for Evolution"
 arch=(x86_64)
 url="https://gitlab.gnome.org/GNOME/evolution-etesync/"
 license=('LGPL')
-depends=(libgee json-glib evolution-data-server evolution etebase)
+depends=(libgee json-glib evolution-data-server evolution libetebase)
 makedepends=(cmake meson ninja vala git intltool)
 source=("${_pkgname}::git+https://gitlab.gnome.org/nourmat/evolution-etesync.git#branch=EteSync-2.0")
 sha512sums=('SKIP')

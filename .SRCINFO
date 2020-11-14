@@ -15,7 +15,7 @@ pkgbase = evolution-etesync-git
 	depends = json-glib
 	depends = evolution-data-server
 	depends = evolution
-	depends = etebase
+	depends = libetebase
 	source = evolution-etesync::git+https://gitlab.gnome.org/nourmat/evolution-etesync.git#branch=EteSync-2.0
 	sha512sums = SKIP
 
