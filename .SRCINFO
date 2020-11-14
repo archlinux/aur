@@ -1,0 +1,17 @@
+pkgbase = dapnetgateway-git
+	pkgdesc = Gateway linking the MMDVM to the DAPNET.
+	pkgver = r133.8893f25
+	pkgrel = 1
+	url = https://github.com/g4klx/DAPNETGateway
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	provides = dapnetgateway
+	conflicts = dapnetgateway
+	backup = etc/DAPNETGateway.ini
+	source = dapnetgateway::git+https://github.com/g4klx/DAPNETGateway.git
+	md5sums = SKIP
+
+pkgname = dapnetgateway-git
+
