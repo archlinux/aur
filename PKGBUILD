@@ -3,12 +3,12 @@
 
 pkgname=remill
 pkgver=4.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode"
 arch=('x86_64')
 url="https://github.com/lifting-bits/remill"
 license=('Apache')
-depends=('cxx-common=0.0.14' 'ncurses' 'zlib')
+depends=('cxx-common=0.0.14' 'ncurses' 'zlib' 'lib32-glibc')
 makedepends=()
 checkdepends=()
 source=("https://github.com/lifting-bits/remill/archive/v${pkgver}.tar.gz")
@@ -43,6 +43,8 @@ check() {
 package() {
     cd "$srcdir/$pkgname-$pkgver/build"
     make DESTDIR="${pkgdir}" install
+    sed -i "$pkgdir/usr/lib/cmake/remill/remillConfig.cmake" \
+        -e "s|$srcdir/$pkgname-$pkgver/build/lib|/usr/include/remill|g"
 }
 
 # vim: set sw=4 ts=4 et:
