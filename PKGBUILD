@@ -1,5 +1,5 @@
 pkgname=keymap-sandsmark
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="console keymap equivalent to 'us altgr-intl compose:rctrl ctrl:nocaps' in X11"
 arch=(any)
