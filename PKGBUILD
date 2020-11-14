@@ -1,11 +1,11 @@
 pkgname=dosbox-x-sdl2
 pkgver=0.83.7
-pkgrel=1
+pkgrel=2
 pkgdesc="x86 emulator with builtin DOS, with patches and more features"
-arch=(i686 x86_64)
+arch=(i686 x86_64 aarch64)
 url="http://dosbox-x.com"
 license=(GPL)
-depends=(fluidsynth libxkbfile libpng libxrandr mesa ffmpeg sdl2)
+depends=(fluidsynth libxkbfile libpng libxrandr ffmpeg sdl2)
 makedepends=(glu)
 optdepends=()
 conflicts=('dosbox-x-git' 'dosbox-x')
