@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0.1
+Type=Application
+Name=mtodo
+Icon=/opt/mtodo/mtodo.png
+Exec=/opt/mtodo/bin/mtodo
+Comment=Simple Todo Software for GNU/Linux
+Categories=utility
+Terminal=false

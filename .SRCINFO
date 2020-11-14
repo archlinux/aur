@@ -1,0 +1,17 @@
+pkgbase = mtodo
+	pkgdesc = Simple Todo Software for GNU/Linux
+	pkgver = 20190223
+	pkgrel = 1
+	url = https://github.com/mortymacs/mtodo
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python3
+	depends = python-gobject
+	depends = gtk3
+	source = git+https://github.com/mortymacs/mtodo
+	sha256sums = SKIP
+
+pkgname = mtodo
+
