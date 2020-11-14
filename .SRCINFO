@@ -8,8 +8,8 @@ pkgbase = gfold-bin
 	provides = gfold
 	conflicts = gfold
 	conflicts = gfold-git
-	source_x86_64 = gfold-0.7.0::https://github.com/nickgerace/gfold/releases/download/0.7.0/gfold-linux-gnu-amd64
-	source_x86_64 = gfold-0.7.0-README.md::https://github.com/nickgerace/gfold/raw/0.7.0/README.md
+	source_x86_64 = gfold-bin-0.7.0::https://github.com/nickgerace/gfold/releases/download/0.7.0/gfold-linux-gnu-amd64
+	source_x86_64 = gfold-bin-0.7.0-README.md::https://github.com/nickgerace/gfold/raw/0.7.0/README.md
 	sha512sums_x86_64 = f9f3cc454e6ae97dfc5ceace1c4e9f5ba9036de26bb1e84ef36fc8bebf59d436c090f00cfb040bbd4204ddb0585c337e8692bba7c954b83cf83b9488197ee132
 	sha512sums_x86_64 = 07858acee0ea812aefbb0c181c7d2bf9bce4a9a675b51e802898343db20fda1538a4f3ad32064757e7e5485e154a6622092324dfd08cd264c1feff4920e5429f
 
