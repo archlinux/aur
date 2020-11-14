@@ -5,6 +5,7 @@ pkgbase = gping-bin
 	url = https://github.com/orf/gping
 	arch = x86_64
 	license = MIT
+	depends = iputils
 	provides = gping
 	conflicts = gping
 	conflicts = gping-git
