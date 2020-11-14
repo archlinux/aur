@@ -1,14 +1,16 @@
-pkgbase = kwin-effects-yet-another-magic-lamp
-	pkgdesc = Just Yet Another Magic Lamp effect
-	pkgver = 4.1.1
+pkgbase = kwin-effects-yet-another-magic-lamp-git
+	pkgdesc = Just Yet Another Magic Lamp effect. (Git version)
+	pkgver = 4.1.2.r0.g1e38dd1
 	pkgrel = 1
 	url = https://github.com/zzag/kwin-effects-yet-another-magic-lamp
 	arch = x86_64
 	license = GPL3
 	makedepends = extra-cmake-modules
-	depends = kwin>=5.18.0
-	source = kwin-effects-yet-another-magic-lamp-4.1.1.tar.gz::https://github.com/zzag/kwin-effects-yet-another-magic-lamp/archive/4.1.1.tar.gz
-	sha256sums = d2425034e299237a94536377a8648817280f9c293add184b295eb169c97e8faa
+	depends = kwin
+	provides = kwin-effects-yet-another-magic-lamp
+	conflicts = kwin-effects-yet-another-magic-lamp
+	source = kwin-effects-yet-another-magic-lamp-git::git+https://github.com/zzag/kwin-effects-yet-another-magic-lamp
+	sha256sums = SKIP
 
-pkgname = kwin-effects-yet-another-magic-lamp
+pkgname = kwin-effects-yet-another-magic-lamp-git
 
