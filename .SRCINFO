@@ -23,7 +23,7 @@ pkgbase = kdepim-runtime-etesync-git
 	depends = qca
 	depends = qt5-networkauth
 	depends = kdepim-runtime
-	depends = etebase
+	depends = libetebase
 	source = kdepim-runtime-etesync::git+https://invent.kde.org/pim/kdepim-runtime?branch=release/20.12
 	source = 0001-XXX-Ease-version-requirements.patch
 	sha512sums = SKIP

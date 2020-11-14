@@ -8,7 +8,7 @@ pkgdesc='Extends the functionality of kdepim (with etesync modules)'
 arch=(x86_64)
 url='https://kontact.kde.org'
 license=(GPL LGPL FDL)
-depends=(libkolabxml kdav akonadi-calendar knotifyconfig kalarmcal kmbox pimcommon akonadi-notes akonadi qca qt5-networkauth kdepim-runtime etebase)
+depends=(libkolabxml kdav akonadi-calendar knotifyconfig kalarmcal kmbox pimcommon akonadi-notes akonadi qca qt5-networkauth kdepim-runtime libetebase)
 makedepends=(extra-cmake-modules kdoctools boost git)
 source=("${_pkgname}::git+https://invent.kde.org/pim/kdepim-runtime?branch=release/20.12"
         "0001-XXX-Ease-version-requirements.patch"
