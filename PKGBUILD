@@ -1,9 +1,9 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
 pkgname=pacwatch
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
-pkgdesc='A utility which helps you watch important package updates in pacman'
+pkgdesc='A pacman wrapper which helps you watch important package updates'
 arch=('any')
 url="https://github.com/ouuan/pacwatch"
 license=('Apache')
@@ -13,7 +13,7 @@ depends=(
   'python-termcolor'
 )
 source=("https://github.com/ouuan/pacwatch/raw/$pkgver/pacwatch.py")
-sha256sums=(d032c2b5d40a5ca92ada4f92937aefa925877c5449d4f7ac72d3d83c2221c3b9)
+sha256sums=(0b53fc6a28da43aa28991b3b85456a7d300a30860ebe198d0c73b0047a88042b)
 
 package() {
     install -Dm755 pacwatch.py "$pkgdir"/usr/bin/$pkgname
