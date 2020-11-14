@@ -120,7 +120,7 @@ def parse_config(config_file: Path) -> Tuple[str, Dict[str, Set[str]], Optional[
 def store_fonts(dest: Path, source: Path):
     dest.mkdir(parents=True, exist_ok=True)
     for font in filter(lambda f: f.is_file(), source.glob("*.ttf")):
-        shutil.move(source / font, dest / font.name)
+        shutil.move(str(source / font), dest / font.name)
 
     subprocess.run(["fc-cache", "--force"]).check_returncode()
 
