@@ -6,6 +6,7 @@ pkgbase = qlcplus
 	install = qlcplus.install
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = APACHE
 	makedepends = qt5-tools
 	depends = qt5-script
