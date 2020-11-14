@@ -4,7 +4,7 @@
 _pkgname=xpadneo
 pkgname=xpadneo-dkms-git
 pkgver=0.8.r57.g2126928
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced Linux Driver for Xbox One Wireless Gamepad'
 arch=('x86_64')
 url='https://github.com/atar-axis/xpadneo'
