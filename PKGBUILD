@@ -1,8 +1,8 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="roundcubemail-plugin-carddav"
-pkgver=4.0.1
-pkgrel=2
+pkgver=4.0.2
+pkgrel=1
 pkgdesc="CardDAV plugin for RoundCube Webmailer"
 url="https://github.com/blind-coder/rcmcarddav"
 license=("GPL2")
@@ -12,14 +12,8 @@ replaces=("roundcube-rcmcarddav")
 depends=("roundcubemail")
 makedepends=("composer")
 source=("$url/releases/download/v$pkgver/carddav-v$pkgver.tgz")
-md5sums=("e1b801837689eb18a1703265ee07ac91")
+md5sums=("2b137a69c0d0c65900b3451d656e72c6")
 backup=("etc/webapps/roundcubemail/plugins/carddav/config.inc.php")
-
-prepare(){
- cd "carddav"
- # Waiting for https://github.com/blind-coder/rcmcarddav/pull/312 to be released
- sed -i 's|"dealerdirect/phpcodesniffer-composer-installer": "^0.6.0"|"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0"|' "composer.json"
-}
 
 build(){
  cd "carddav"
