@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	qmake .
+	qmake DDCToolbox.pro
 	make PREFIX=/usr
 }
 
