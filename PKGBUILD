@@ -3,7 +3,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=radium
-pkgver=6.5.73
+pkgver=6.5.77
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
@@ -33,8 +33,8 @@ depends=(
 )
 makedepends=(
   boost
-  clang
   cmake
+  gcc9
   ladspa
   libxcursor
   libxinerama
@@ -51,8 +51,16 @@ optdepends=(
   'vst-plugins: more plugins'
 )
 options=(!strip)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/$pkgver.tar.gz" add-vstsdk-location-var.patch)
-sha256sums=('afde359439b579045f61eda264fe6351cd1ebfeefb6b630352770ce8649808e4'
+source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/$pkgver.tar.gz"
+        "https://github.com/grame-cncm/faust/releases/download/2.27.2/faust-2.27.2.tar.gz"
+        downgrade-gcc-libpd.patch
+        use-updated-faust.patch
+        add-vstsdk-location-var.patch
+)
+sha256sums=('e92c2bfd4331587098bad32e8f0be45afc81f7b4703ed9615f9a9788f57cb223'
+            'c9b21de69253d5a02a779c2eed74491fc62209d86c24724b429f68098191c39c'
+            '88d5a8d2d8074f7993e6fd8bafc84355bf0d1bb6405b391caa3d94f23755c1a0'
+            '8e6865eff42e0d1797a363f3ce6debfcdeab3aa0a4700f1bbca47916735ea8fd'
             '2466b88e345c48be43a835ee0001aac55189ce74b4181d3c4275e459089e7ccc')
 
 prepare() {
@@ -60,6 +68,12 @@ prepare() {
 
   # Add VST2SDK env var so we can use VST2 headers from steinberg-vst36 in AUR
   patch -p1 < "$srcdir/add-vstsdk-location-var.patch"
+
+  # https://github.com/kmatheussen/radium/issues/1298
+  patch -p1 < "$srcdir/downgrade-gcc-libpd.patch"
+
+  # https://github.com/kmatheussen/radium/pull/1299
+  patch -p1 < "$srcdir/use-updated-faust.patch"
 
   # This tweak edits new file template and demo songs to be compatible with chorus plugin from calf-ladspa package
   # !! NOTE TO LMMS USERS !!

@@ -1,3 +1,4 @@
+.ccls-cache
 *.tar.*
 *.log
 pkg/
