@@ -5,13 +5,13 @@
 # (at your option) any later version.
 pkgname=simtrace2
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Traces the communication between phones and SIM cards with second generation simtrace hardware."
 arch=('armv7h' 'i686' 'x86_64')
 url="https://osmocom.org/projects/simtrace2"
 license=('GPL2') # GPLv2-only according to the source files headers
 depends=('libosmocore' 'libusb' 'lksctp-tools' 'talloc')
-makedepends=('make' 'gcc' 'git' 'pkg-config')
+makedepends=('git')
 source=("git://git.osmocom.org/simtrace2#tag=$pkgver")
 sha512sums=('SKIP')
 
