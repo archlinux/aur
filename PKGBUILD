@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=imcompressor
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Simple & lossless image compressor."
 arch=('any')
@@ -9,11 +9,15 @@ license=('GPL3')
 depends=('gtk3' 'python-gobject' 'jpegoptim' 'optipng' 'pngquant')
 makedepends=('meson')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('fa53b73e1134dea17c3f44473d8df2ce5db382ae3d2b639993fcba7c970a5012')
+sha256sums=('2557b8dea3787f426b487982b7af79b104ac1233e226012bd64e4c56da67bd47')
 
 build() {
 	arch-meson "ImCompressor-$pkgver" build
 	meson compile -C build
+}
+
+check() {
+	meson test -C build
 }
 
 package() {
