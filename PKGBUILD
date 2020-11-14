@@ -8,6 +8,7 @@ pkgdesc="Ping, but with a graph"
 arch=('x86_64')
 url="https://github.com/orf/gping"
 license=('MIT')
+depends=('iputils')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname-$pkgver-LICENSE::$url/raw/master/LICENSE") # TODO: Remove on the upcoming release

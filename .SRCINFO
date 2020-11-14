@@ -6,6 +6,7 @@ pkgbase = gping
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	depends = iputils
 	source = gping-0.1.6.tar.gz::https://github.com/orf/gping/archive/v0.1.6.tar.gz
 	source = gping-0.1.6-LICENSE::https://github.com/orf/gping/raw/master/LICENSE
 	sha512sums = a4dc1d2dd330c9fe111023fe519ca8cc6689e8a7eef61e5734600090f22e26e43a39fd1d5dc3ceba4eec9a635b92596a5886c4790a11a4df86334423da5d3602
