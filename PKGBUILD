@@ -1,9 +1,8 @@
-# Maintaner: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=libnetconf2
-_pkgver=0.12-r1
-pkgver=${_pkgver/-/}
+pkgver=1.1.26
 pkgrel=1
 pkgdesc='A NETCONF library in C intended for building NETCONF clients and servers.'
 url='https://github.com/CESNET/libnetconf2'
@@ -12,13 +11,11 @@ license=('BSD')
 depends=('libssh' 'libyang' 'openssl' 'libxcrypt')
 makedepends=('cmake' 'doxygen')
 conflicts=('libnetconf2-git')
-_pkgsrc=$pkgname-$_pkgver
-source=("https://github.com/CESNET/libnetconf2/archive/v$_pkgver.tar.gz")
-sha256sums=('86269d3f1bc85bb17d8823d214f9a676ee3b14ee18a0b87a230380df8503e8f5')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/CESNET/libnetconf2/archive/v$pkgver.tar.gz")
+sha256sums=('2ce2b819f3544fd46a3a4c8ba6dd0a3798cab2a63aa347bc1eb5275a2c89b7bd')
 
 prepare() {
     mkdir -p "build"
-    sed -i -e 's, -lssh_threads , ,' $pkgname-$_pkgver/CMakeLists.txt
 }
 
 build() {
@@ -26,14 +23,14 @@ build() {
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=Release \
-        "$srcdir/$_pkgsrc"
+        "../$pkgname-$pkgver"
     make
 }
 
 package() {
     cd "build"
     make DESTDIR="$pkgdir" install
-    install -Dm644 "$srcdir/$_pkgsrc/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "../$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim: set sw=4 ts=4 et:
