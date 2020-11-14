@@ -1,20 +1,20 @@
 pkgbase = remill-git
 	pkgdesc = Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode
 	pkgver = v4.0.8.r0.g71c4d067
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lifting-bits/remill
 	arch = x86_64
 	license = Apache
 	makedepends = git
+	depends = cxx-common=0.0.14
 	depends = ncurses
 	depends = zlib
 	depends = lib32-glibc
+	depends = lib32-gcc-libs
 	provides = remill
 	conflicts = remill
 	source = remill-git::git+https://github.com/lifting-bits/remill.git
-	source = https://github.com/trailofbits/cxx-common/releases/download/v0.0.14/libraries-llvm1100-ubuntu20.04-amd64.tar.xz
 	sha256sums = SKIP
-	sha256sums = 7a680ea1185dfb83bc8a2c3bdb7930e5c1dfc7d78e3af16da65ca525e82ade39
 
 pkgname = remill-git
 
