@@ -4,7 +4,7 @@
 pkgname=vivaldi-stable
 _rpmversion=3.4.2066.94-1
 pkgver=3.4.2066.94
-pkgrel=2
+pkgrel=3
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
 options=(!strip !zipman)
@@ -26,7 +26,7 @@ package() {
     cp --parents -a {opt,usr/bin,usr/share} "$pkgdir"
 
 
-    mkdir $pkgdir/opt/$pkgname/vivaldi-sandbox
+    mkdir -p $pkgdir/opt/$pkgname/vivaldi-sandbox
     # suid sandbox
     chmod 4755 "$pkgdir/opt/$pkgname/vivaldi-sandbox"
 
