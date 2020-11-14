@@ -2,7 +2,7 @@
 
 pkgname='dnsx'
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast and multi-purpose DNS toolkit'
 arch=('x86_64')
 url='https://github.com/projectdiscovery/dnsx'
@@ -21,7 +21,7 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  #export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "${pkgname}-${pkgver}/cmd/${pkgname}"
