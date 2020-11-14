@@ -1,6 +1,6 @@
 # Maintainer: ftilde <ftilde at protonmail dot com>
 pkgname=ugdb
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="An alternative TUI for gdb"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gdb')
 makedepends=('cargo' 'git' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ftilde/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('c1df16f849b753dd853420b37725e7521d0d31d1fc225087c0870a4d315b499b1b13742321a5887f225005f850c0934418844e75670d34e37b0808b5d618a588')
+sha512sums=('dddabc29162af6c223b16d8c5e2ca4df275a95c06f9445417da92470dc59cb408ffd80fe3d78a55fe659c9887968217ae26c0bf5d2c6be1938561ae6ab048183')
 options=('!strip') #Required to print helpful backtraces in case of crashes
 
 build() {
