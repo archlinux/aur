@@ -2,11 +2,13 @@
 
 pkgname=b00merang-haiku-git
 pkgver=r31.9fa6424
-pkgrel=1
+pkgrel=2
 pkgdesc='GTK theme based on the appearance of the open source operating system Haiku, the successor to BeOS.'
 arch=('any')
 url='https://github.com/B00merang-Project/Haiku'
 license=('GPL3')
+depends=('gtk-engine-murrine')
+optdepends=('lib32-gtk-engine-murrine: Required for 32-bit apps in 64-bit environments')
 makedepends=('git')
 source=("${pkgname}::git+$url.git")
 sha256sums=(SKIP)
