@@ -7,7 +7,7 @@
 
 pkgname=mathics
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose computer algebra system."
 arch=('any')
 url="https://mathics.github.io/"
