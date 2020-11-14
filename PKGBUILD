@@ -3,21 +3,22 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-pkgname=simtrace
-pkgver=1.5
+pkgname=simtrace2
+pkgver=0.7.0
 pkgrel=1
-pkgdesc="Traces the communication between phones and SIM cards with first generation simtrace hardware."
+pkgdesc="Traces the communication between phones and SIM cards with second generation simtrace hardware."
 arch=('armv7h' 'i686' 'x86_64')
-url="https://osmocom.org/projects/simtrace/wiki/SIMtrace"
+url="https://osmocom.org/projects/simtrace2"
 license=('GPL2') # GPLv2-only according to the source files headers
-replaces=('simtrace-git')
 depends=('libosmocore' 'libusb' 'lksctp-tools' 'talloc')
 makedepends=('make' 'gcc' 'git' 'pkg-config')
-source=("git://git.osmocom.org/simtrace.git#tag=v$pkgver")
+source=("git://git.osmocom.org/simtrace2#tag=$pkgver")
 sha512sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname/host"
+  autoreconf -fi
+  ./configure
   make
 }
 
