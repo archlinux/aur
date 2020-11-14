@@ -1,10 +1,10 @@
 pkgbase = libgeneral-git
 	pkgdesc = General stuff for tihmstar's projects - git version
-	pkgver = r26.4c96389
-	pkgrel = 1
+	pkgver = r33.f571dc2
+	pkgrel = 2
 	url = https://github.com/tihmstar/libgeneral
 	arch = x86_64
-	license = unknown
+	license = LGPL
 	makedepends = git
 	provides = libgeneral
 	conflicts = libgeneral

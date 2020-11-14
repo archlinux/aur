@@ -2,12 +2,12 @@
 
 _pkgname=libgeneral
 pkgname=$_pkgname-git
-pkgver=r26.4c96389
-pkgrel=1
+pkgver=r33.f571dc2
+pkgrel=2
 pkgdesc="General stuff for tihmstar's projects - git version"
 arch=('x86_64')
 url="https://github.com/tihmstar/$_pkgname"
-license=('unknown')
+license=('LGPL')
 makedepends=('git')
 provides=('libgeneral')
 conflicts=('libgeneral')
