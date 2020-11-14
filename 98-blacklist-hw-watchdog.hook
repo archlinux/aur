@@ -1,0 +1,10 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/modprobe.d/blacklist-hw-watchdog.conf
+
+[Action]
+Description = Rebuild Initram to apply of hardware watchdoge
+When = PostTransaction
+Exec = /usr/bin/mkinitcpio -P

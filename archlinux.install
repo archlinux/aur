@@ -1,0 +1,25 @@
+post_install()
+{
+    if [[ $(/usr/bin/tail -n 1 /usr/lib/os-release | /usr/bin/cut -d= -f2) != "archlinux" ]];
+        then 
+            printf "==>\tUNSUPPORTED DISTRO DETECTED.\n";
+            printf "==>\tTHIS PACKAGE ONLY SUPPORTS Arch Linux.\n";
+            printf "==>\tPLEASE DO NOT ASK FOR SUPPORT ON THE AUR, YOU ARE ON YOUR OWN.\n\n"; 
+    fi
+    printf  "\nWatchdog will be blacklisted with the next boot of your system\n"
+    printf  "Thanks for using my pkg :)\n\n"
+}
+
+pre_remove()
+{
+post_upgrade() {
+    if [[ $(/usr/bin/tail -n 1 /usr/lib/os-release | /usr/bin/cut -d= -f2) != "archlinux" ]];
+        then 
+            printf "==>\tUNSUPPORTED DISTRO DETECTED.\n";
+            printf "==>\tTHIS PACKAGE ONLY SUPPORTS Arch Linux.\n";
+            printf "==>\tPLEASE DO NOT ASK FOR SUPPORT ON THE AUR, YOU ARE ON YOUR OWN.\n\n"; 
+    fi
+
+    printf  "\nThanks for still using my pkg :)\n\n"
+    }
+}
