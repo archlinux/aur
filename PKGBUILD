@@ -2,7 +2,7 @@
 
 _npmname=bunyan
 pkgname=nodejs-$_npmname
-pkgver=1.8.1
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="A simple and fast JSON logging module for node.js services."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs' 'npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('d35b9a8a68d526e854088891b1f3ddb8578d0d5d891174acb082cffeca1def90')
+sha256sums=('941925b4d696d74ec99e2d12f19ac4522c86acb833177e9d9c0fcb4e181acb21')
 
 package() {
     cd "$srcdir"
