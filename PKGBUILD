@@ -9,7 +9,7 @@
 pkgname='dashcore-git'
 _gitname='dash'
 _gitbranch='master'
-pkgver=v0.16.0.1.r0.gb3c8306867
+pkgver=v0.16.1.0.r0.g67624ec21b
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/dashpay/dash"
@@ -28,7 +28,7 @@ sha512sums=('87c8fbe782a66222fd1121d61bde967d89e6ddda2f1a4dfc7f17eabfce1502ce172
 
 prepare () {
   cd "$_gitname"
-  git pull origin v0.15.x
+  git pull origin v0.16.x
  #deque patch 2020-02-12 == http: add missing header bootlegged by boost < 1.72
  #inlcude deque library in src/httpserver.cpp found in https://github.com/bitcoin/bitcoin/commit/a5929130223973636f3fd25fbfaf2953f2ec96a9 and #inlcude deque.h library in httpserver.cpp found in https://github.com/dogecoin/dogecoin/pull/1626
  #will delete when dash fixes/commits this. 
