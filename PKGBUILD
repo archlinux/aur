@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-native
-_srctag=5.13-1b
+_srctag=5.13-2
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
@@ -191,19 +191,8 @@ prepare() {
     local dxvk_cflags="$CFLAGS"
     local dxvk_ldflags="$LDFLAGS"
     # Filter known bad flags before applying optimizations
-    # If using -march=native and the CPU supports AVX, launching a d3d9
-    # game can cause an Unhandled exception. The cause seems to be the
-    # combination of AVX instructions and tree vectorization (implied by O3),
-    # all tested archictures from sandybridge to haswell are affected.
-    # Disabling either AVX (and AVX2 as a side-effect) or tree
-    # vectorization fixes the issue.
-    # Relevant Wine issues
-    # https://bugs.winehq.org/show_bug.cgi?id=45289
-    # https://bugs.winehq.org/show_bug.cgi?id=43516
-    dxvk_cflags+=" -mno-avx"
     # Filter fstack-protector{ ,-all,-strong} flag for MingW.
     # https://github.com/Joshua-Ashton/d9vk/issues/476
-    #dxvk_cflags+=" -fno-stack-protector"
     dxvk_cflags="${dxvk_cflags// -fstack-protector*([\-all|\-strong])/}"
     # Doesn't compile with these flags in MingW so remove them.
     # They are also filtered in Wine PKGBUILDs so remove them
@@ -211,17 +200,31 @@ prepare() {
     dxvk_cflags="${dxvk_cflags/ -fno-plt/}"
     dxvk_ldflags="${dxvk_ldflags/,-z,now/}"
     dxvk_ldflags="${dxvk_ldflags/,-z,relro/}"
+    # If using -march=native and the CPU supports AVX, launching a d3d9
+    # game can cause an Unhandled exception. The cause seems to be the
+    # combination of AVX instructions and tree vectorization (implied by O3),
+    # all tested archictures from sandybridge to haswell are affected.
+    # Disabling AVX (and AVX2 as a side-effect).
+    # Since Wine 5.16 AVX is supported. Testing showed 32bit applications
+    # crashing with AVX regardless, but 64bit applications worked just fine.
+    # So disable AVX only for the 32bit binaries and AVX2 for the 64bit.
+    # Relevant Wine issues
+    # https://bugs.winehq.org/show_bug.cgi?id=45289
+    # https://bugs.winehq.org/show_bug.cgi?id=43516
+    dxvk64_cflags="$dxvk_cflags -mno-avx"
+    dxvk32_cflags="$dxvk_cflags -mno-avx"
+
     sed -i dxvk/build-win64.txt \
-        -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
+        -e "s|@CARGS@|\'${dxvk64_cflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
     sed -i dxvk/build-win32.txt \
-        -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
+        -e "s|@CARGS@|\'${dxvk32_cflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
     sed -i vkd3d-proton/build-win64.txt \
-        -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
+        -e "s|@CARGS@|\'${dxvk64_cflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
     sed -i vkd3d-proton/build-win32.txt \
-        -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
+        -e "s|@CARGS@|\'${dxvk32_cflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
 }
 
