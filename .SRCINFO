@@ -1,0 +1,13 @@
+pkgbase = wattsi
+	pkgdesc = Preprocessor for the HTML Standard
+	pkgver = r126.7f2fb37
+	pkgrel = 1
+	url = https://github.com/whatwg/wattsi
+	arch = x86_64
+	license = custom
+	makedepends = fpc
+	source = git+https://github.com/whatwg/wattsi
+	sha512sums = SKIP
+
+pkgname = wattsi
+
