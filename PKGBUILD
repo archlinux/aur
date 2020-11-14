@@ -1,7 +1,7 @@
-# Maintainer: spikecodes <19519553+spikecodes@users.noreply.github.com>
+# Maintainer: curlpipe <11898833+curlpipe@users.noreply.github.com>
 pkgname=ox-git
 _pkgname=${pkgname%-git}
-pkgver=0.2.3
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="An independent Rust text editor that runs in your terminal!"
 arch=('any')
