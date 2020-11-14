@@ -1,6 +1,6 @@
 # Maintainer: Karmanyaah Malhotra <karmanyaahm@gmail.com>
 pkgname=gotify-dunst-git
-pkgver=r12.57d84061
+pkgver=r14.72d83a9f
 pkgrel=1
 pkgdesc="A simple script for receiving Gotify message notifications via dunst."
 arch=('any')
