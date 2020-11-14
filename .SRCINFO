@@ -1,6 +1,6 @@
 pkgbase = atomix-git
 	pkgdesc = Build molecules out of single atoms
-	pkgver = 3.34.0.r8.gf17ff7c
+	pkgver = 3.34.0.r11.gbfe0acc
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Atomix
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = atomix-git
 	makedepends = git
 	depends = gtk3
 	depends = libgnome-games-support
-	provides = atomix=3.34.0.r8.gf17ff7c
+	provides = atomix=3.34.0.r11.gbfe0acc
 	conflicts = gnome-games
 	conflicts = atomix
 	replaces = gnome-games
