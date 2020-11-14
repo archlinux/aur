@@ -3,7 +3,7 @@
 
 pkgname=faint-git
 pkgdesc="Extensible TUI fuzzy file explorer (git)"
-pkgver=0.97.r3.g3194c12
+pkgver=0.99.r0.g1e52e2e
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/salman-abedin/faint"
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags $(git rev-list --tags --max-count=1) | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
