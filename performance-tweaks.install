@@ -34,7 +34,18 @@ add_group() {
 }
 
 post_install() {
-post_upgrade
+  systemctl enable haveged
+  systemctl enable systemd-swap
+  systemctl enable irqbalance
+  systemctl enable nohang-desktop
+  systemctl enable memavaild
+  systemctl enable prelockd
+  systemctl enable ananicy
+  systemctl enable auto-cpufreq
+  systemctl enable thermald
+  systemctl enable grub-btrfs.path
+  systemctl enable fstrim.timer
+  systemctl enable btrfs-scrub@-.timer
 }
 
 post_upgrade() {
