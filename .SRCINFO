@@ -1,0 +1,17 @@
+pkgbase = freebloks-3d-git
+	pkgdesc = Clone of the Blokus board game in 3D with network support
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://www.saschahlusiak.de/freebloks-3d/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libxpm
+	depends = glu
+	conflicts = freebloks-3d
+	replaces = freebloks-3d
+	source = freebloks-3d::git+https://github.com/shlusiak/Freebloks-3D.git
+	sha256sums = SKIP
+
+pkgname = freebloks-3d-git
+
