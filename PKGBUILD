@@ -3,7 +3,7 @@
 # Contributor: Adam Hose <adis@blad.is>
 
 pkgname=opensnitch-git
-pkgver=1.2.0.r0.6a8670c
+pkgver=1.2.0.r7.8b7e761
 pkgrel=1
 pkgdesc="A GNU/Linux application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -63,6 +63,7 @@ package() {
         "$pkgdir/usr/lib/systemd/system"
     install -dm755 "$pkgdir/etc/${pkgname%-git}d/rules"
     install -Dm644 daemon/default-config.json -t "$pkgdir/etc/${pkgname%-git}d"
+    install -Dm644 daemon/system-fw.json -t "$pkgdir/etc/${pkgname%-git}d"
     install -Dm644 "debian/${pkgname%-git}.logrotate" \
         "$pkgdir/etc/logrotate.d/${pkgname%-git}"
 
