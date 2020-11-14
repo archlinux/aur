@@ -1,6 +1,6 @@
 pkgbase = pteros
 	pkgdesc = C++ library for molecular modeling.
-	pkgver = 2.7
+	pkgver = 2.8.r125.g16923940
 	pkgrel = 1
 	url = https://github.com/yesint/pteros
 	arch = any
@@ -10,6 +10,8 @@ pkgbase = pteros
 	depends = pybind11
 	depends = boost
 	depends = eigen
+	depends = libfmt.so
+	depends = libspdlog.so
 	options = !strip
 	options = !buildflags
 	options = staticlibs
