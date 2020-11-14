@@ -34,7 +34,10 @@ def install_iosevka(repo_dir: Path):
     print("Installing iosevka...", file=sys.stderr)
     try:
         subprocess.run(["npm", "install"], cwd=repo_dir).check_returncode()
-        subprocess.run(["npm", "install", "--package-lock-only"], cwd=repo_dir).check_returncode()
+        subprocess.run(
+            ["npm", "install", "--package-lock-only"],
+            cwd=repo_dir,
+        ).check_returncode()
         subprocess.run(["npm", "audit", "fix"], cwd=repo_dir).check_returncode()
     except subprocess.CalledProcessError:
         print("Failed to install iosevka", file=sys.stderr)
@@ -72,7 +75,10 @@ def generate_font(iosevka_dir: Path, font_name: str) -> None:
 
 
 def nerdfont_patch(
-    font_dir: Path, repo_dir: Path, options: Iterable[str] = [], mono: bool = True
+    font_dir: Path,
+    repo_dir: Path,
+    options: Iterable[str] = [],
+    mono: bool = True,
 ) -> None:
     get_repo(repo_dir, NERDFONT_REPO)
 
