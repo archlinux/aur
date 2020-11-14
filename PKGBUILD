@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="roundcubemail-plugin-carddav-git"
-pkgver=v4.0.1.r5.g7203f50
+pkgver=v4.0.2.r1.gd9afea0
 pkgrel=1
 pkgdesc="CardDAV plugin for RoundCube Webmailer"
 url="https://github.com/blind-coder/rcmcarddav"
@@ -10,7 +10,7 @@ arch=("any")
 provides=("roundcubemail-plugin-carddav")
 conflicts=("roundcube-rcmcarddav" "roundcube-rcmcarddav-git" "roundcubemail-plugin-carddav")
 replaces=("roundcube-rcmcarddav")
-#depends=("roundcubemail")
+depends=("roundcubemail")
 makedepends=("composer")
 source=("$pkgname::git+$url.git")
 md5sums=("SKIP")
