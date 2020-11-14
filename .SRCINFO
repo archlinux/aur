@@ -1,0 +1,26 @@
+pkgbase = pentobi-git
+	pkgdesc = Computer opponent for the board game Blokus.
+	pkgver = 18.3.r129.ge10599e9
+	pkgrel = 1
+	url = https://pentobi.sourceforge.io
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = appstream
+	makedepends = cmake
+	makedepends = docbook-xsl
+	makedepends = extra-cmake-modules
+	makedepends = itstool
+	makedepends = kio
+	makedepends = qt5-tools
+	depends = qt5-quickcontrols2
+	depends = qt5-webview
+	depends = kio
+	optdepends = kio: KDE thumbnailer
+	conflicts = pentobi
+	replaces = pentobi
+	source = pentobi::git+https://github.com/enz/pentobi.git
+	sha256sums = SKIP
+
+pkgname = pentobi-git
+
