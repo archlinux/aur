@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/curlpipe/ox"
 license=("GPLv2")
 makedepends=("git" "cargo")
+depends=("ttf-nerd-fonts-symbols-mono")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${_pkgname}::git+${url}")

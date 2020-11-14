@@ -7,6 +7,7 @@ pkgbase = ox-git
 	license = GPLv2
 	makedepends = git
 	makedepends = cargo
+	depends = ttf-nerd-fonts-symbols-mono
 	provides = ox
 	conflicts = ox
 	source = ox::git+https://github.com/curlpipe/ox
