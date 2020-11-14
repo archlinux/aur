@@ -1,0 +1,11 @@
+--- src/Makefile.orig	2020-11-14 09:46:59.388177849 +0300
++++ src/Makefile	2020-11-14 09:47:31.466721073 +0300
+@@ -41,7 +41,7 @@
+ # The following option is only used by developers
+ # CFLAGS += -D DEBUGMSG
+ 
+-CFLAGS += -W -Wall
++CFLAGS += -fcommon
+ 
+ # The following enables logfile size more than 2GB
+ CFLAGS += -D_FILE_OFFSET_BITS=64
