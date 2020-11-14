@@ -1,5 +1,5 @@
 # Maintainer: Cullen Ross <cullenrss@gmail.com>
-pkgver=0.4.0.0
+pkgver=0.5.0.0
 pkgrel=1
 sha256sums=('d4a50e431776fa6480684e838ad6fd51cec0ec5f40b4fca180dee77aac2f00ac')
 
