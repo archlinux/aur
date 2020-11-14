@@ -1,6 +1,6 @@
 pkgbase = spectacle-git
 	pkgdesc = KDE screenshot capture utility
-	pkgver = 20.07.80.r7.g7931ff8
+	pkgver = 20.08.2.r47.g89e9eed
 	pkgrel = 1
 	url = https://kde.org/applications/utilities/org.kde.spectacle
 	arch = i686
@@ -17,6 +17,7 @@ pkgbase = spectacle-git
 	depends = knewstuff
 	depends = kwayland
 	depends = qt5-tools
+	depends = kimageannotator
 	optdepends = kipi-plugins: export to various online services
 	provides = spectacle
 	conflicts = spectacle
@@ -24,4 +25,3 @@ pkgbase = spectacle-git
 	md5sums = SKIP
 
 pkgname = spectacle-git
-

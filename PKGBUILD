@@ -3,13 +3,13 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=spectacle-git
-pkgver=20.07.80.r7.g7931ff8
+pkgver=20.08.2.r47.g89e9eed
 pkgrel=1
 pkgdesc='KDE screenshot capture utility'
 arch=(i686 x86_64)
 url=https://kde.org/applications/utilities/org.kde.spectacle
 license=(GPL)
-depends=(xcb-util-cursor libkipi purpose knewstuff kwayland qt5-tools)
+depends=(xcb-util-cursor libkipi purpose knewstuff kwayland qt5-tools kimageannotator)
 makedepends=(extra-cmake-modules kdoctools git)
 optdepends=('kipi-plugins: export to various online services')
 conflicts=("${pkgname%-git}")
@@ -19,16 +19,15 @@ source=(git+https://invent.kde.org/graphics/spectacle.git)
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git -C "${pkgname%-git}" describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cmake -B build -S "${pkgname%-git}" \
-   -DBUILD_TESTING=OFF
-  cmake --build build
+    cmake -B build -S "${pkgname%-git}" \
+        -DBUILD_TESTING=OFF
+    cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+    DESTDIR="$pkgdir" cmake --install build
 }
