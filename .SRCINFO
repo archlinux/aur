@@ -1,7 +1,7 @@
 pkgbase = upmpdcli
 	pkgdesc = A UPnP Media Renderer front-end for the Music Player Daemon (MPD)
 	pkgver = 1.4.12
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.lesbonscomptes.com/upmpdcli/
 	install = upmpdcli.install
 	arch = i686
@@ -38,7 +38,7 @@ pkgbase = upmpdcli
 	source = upmpdcli-streamproxy-cpp-fix.patch::https://framagit.org/medoc92/upmpdcli/-/commit/4fd8a07b560dcd4ad5706684d512d33707de3da0.patch
 	source = upmpdcli.service
 	sha256sums = bffc78c140ad688987894ea5a1e162e6dcbc7dcae7d2cc322a894f5ea2a2f53b
-	sha256sums = 1004133922fa908b9c8990737bcd363345283649311eac6d3a7262289b5d1778
+	sha256sums = a7d764cf0bf0949bd2f18cc4149cd5356b9dc60d91874bda879be8bbcd01092b
 	sha256sums = 53da5e4e40a1987e3c137270b315f8c0ba9521539c563e75e254f48449ce0ae9
 
 pkgname = upmpdcli
