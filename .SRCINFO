@@ -1,0 +1,21 @@
+pkgbase = med-memory-editor
+	pkgdesc = Linux alternative game memory editor
+	pkgver = 3.6.1
+	pkgrel = 1
+	url = https://github.com/allencch/med
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = jsoncpp
+	depends = qt5-base
+	depends = polkit
+	source = https://github.com/allencch/med/archive/3.6.1.tar.gz
+	source = org.archlinux.pkexec.med.policy
+	source = med.desktop
+	md5sums = d71767293163e4525f95c9cefcf28b83
+	md5sums = 6f6f9b3d4f242bf06f9d5e4b150fc96a
+	md5sums = b9ab16446697880e1878aafc77e6b463
+
+pkgname = med-memory-editor
+
