@@ -1,0 +1,3 @@
+#!/bin/sh
+export pkgname=whatsapp-nativefier
+exec electron /opt/"$pkgname"/resources/app
