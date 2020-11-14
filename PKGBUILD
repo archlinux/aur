@@ -1,6 +1,6 @@
 pkgname=mx-puppet-discord-git
 pkgver=r219.d9615ba
-pkgrel=11
+pkgrel=12
 # strip the -git suffix from name
 _dirname="${pkgname%-git}"
 _basename="${pkgname%-git}"
@@ -15,7 +15,7 @@ sha256sums=('SKIP'
             '9be3c27669b6d9fbca8b7da9d8b1227cbbacc3435424f2389581ee60f8ac8bd4'
             '5bef61fa580963970ba3d889c1085dfd370f13c72c77bbfa70c81535f1d0eb8d')
 backup=("etc/${_basename}/config.yaml" "etc/${_basename}/registration.yaml" )
-install="${pkgname}.install"
+install="${_basename}.install"
 makedepends+=('git' 'npm')
 # conflict/provide the same package as the non -git version
 provides=("${_basename}")
