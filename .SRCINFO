@@ -1,6 +1,6 @@
 pkgbase = steam-buddy
 	pkgdesc = A web interface for managing Steam remotely
-	pkgver = 0.7.3
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/gamer-os/steam-buddy
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = steam-buddy
 	depends = python-pygame
 	depends = python-bcrypt
 	depends = python-psutil
+	depends = python-pillow
 	depends = steam-tweaks
 	depends = retroarch
 	depends = libretro-genesis-plus-gx
@@ -33,10 +34,11 @@ pkgbase = steam-buddy
 	depends = ponymix
 	depends = libretro-picodrive
 	depends = legendary
+	depends = ttf-dejavu
 	optdepends = libretro-mame-git
 	optdepends = libretro-stella2014-git
-	source = https://github.com/gamer-os/steam-buddy/archive/0.7.3.tar.gz
-	md5sums = 0699fb6dcf7066d3ea046468aeaefbbf
+	source = https://github.com/gamer-os/steam-buddy/archive/0.8.0.tar.gz
+	md5sums = 4455917eda7f0f22ec441de0c7531469
 
 pkgname = steam-buddy
 
