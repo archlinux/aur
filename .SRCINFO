@@ -1,6 +1,6 @@
 pkgbase = libpfm4
 	pkgdesc = Library to encode performance events for use by perf tool
-	pkgver = 4.11.0
+	pkgver = 4.10.1
 	pkgrel = 1
 	url = http://perfmon2.sourceforge.net/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = libpfm4
 	license = MIT
 	depends = glibc
 	conflicts = libpfm3
-	source = http://downloads.sourceforge.net/project/perfmon2/libpfm4/libpfm-4.11.0.tar.gz
-	sha256sums = 5da5f8872bde14b3634c9688d980f68bda28b510268723cc12973eedbab9fecc
+	source = http://downloads.sourceforge.net/project/perfmon2/libpfm4/libpfm-4.10.1.tar.gz
+	sha256sums = c61c575378b5c17ccfc5806761e4038828610de76e2e34fac9f7fa73ba844b49
 
 pkgname = libpfm4
 
