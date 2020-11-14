@@ -66,25 +66,25 @@ build() {
   # only build plpython3 for now
   ./configure ${options[@]} \
     PYTHON=/usr/bin/python
-  make -C src/pl/plpython all
-  make -C contrib/hstore_plpython all
-  make -C contrib/ltree_plpython all
+  make -sC src/pl/plpython all
+  make -sC contrib/hstore_plpython all
+  make -sC contrib/ltree_plpython all
 
   # save plpython3 build and Makefile.global
   cp -a src/pl/plpython{,3}
   cp -a contrib/hstore_plpython{,3}
   cp -a contrib/ltree_plpython{,3}
   cp -a src/Makefile.global{,.python3}
-  make distclean
+  make -s distclean
 
   # regular build with everything
   ./configure ${options[@]} \
     PYTHON=/usr/bin/python2
-  make world
+  make -s world
 }
 
 _postgres_check() {
-  make "${1}" || (find . -name regression.diffs | \
+  make -s "${1}" || (find . -name regression.diffs | \
     while read -r line; do
       error "make ${1} failure: ${line}"
       cat "${line}"
@@ -110,7 +110,7 @@ package_postgresql-lts-libs() {
 
   # install libs and non-server binaries
   for dir in src/interfaces src/bin/pg_config src/bin/pg_dump src/bin/psql src/bin/scripts; do
-    make -C ${dir} DESTDIR="${pkgdir}" install
+    make -sC ${dir} DESTDIR="${pkgdir}" install
   done
 
   for util in pg_config pg_dump pg_dumpall pg_restore psql \
@@ -147,7 +147,7 @@ package_postgresql-lts-docs() {
 
   install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  make -C doc/src/sgml DESTDIR="${pkgdir}" install-html
+  make -sC doc/src/sgml DESTDIR="${pkgdir}" install-html
   chown -R root:root "${pkgdir}/usr/share/doc/postgresql/html"
 
   # clean up
@@ -172,21 +172,21 @@ package_postgresql-lts() {
   cd postgresql-${pkgver}
 
   # install
-  make DESTDIR="${pkgdir}" install
-  make -C contrib DESTDIR="${pkgdir}" install
-  make -C doc/src/sgml DESTDIR="${pkgdir}" install-man
+  make -s DESTDIR="${pkgdir}" install
+  make -sC contrib DESTDIR="${pkgdir}" install
+  make -sC doc/src/sgml DESTDIR="${pkgdir}" install-man
 
   # install plpython3
   mv src/Makefile.global src/Makefile.global.save
   cp src/Makefile.global.python3 src/Makefile.global
   touch -r src/Makefile.global.save src/Makefile.global
-  make -C src/pl/plpython3 DESTDIR="${pkgdir}" install
-  make -C contrib/hstore_plpython3 DESTDIR="${pkgdir}" install
-  make -C contrib/ltree_plpython3 DESTDIR="${pkgdir}" install
+  make -sC src/pl/plpython3 DESTDIR="${pkgdir}" install
+  make -sC contrib/hstore_plpython3 DESTDIR="${pkgdir}" install
+  make -sC contrib/ltree_plpython3 DESTDIR="${pkgdir}" install
 
   # we don't want these, they are in the -libs package
   for dir in src/interfaces src/bin/pg_config src/bin/pg_dump src/bin/psql src/bin/scripts; do
-    make -C ${dir} DESTDIR="${pkgdir}" uninstall
+    make -sC ${dir} DESTDIR="${pkgdir}" uninstall
   done
   for util in pg_config pg_dump pg_dumpall pg_restore psql \
       clusterdb createdb createuser dropdb dropuser pg_isready reindexdb vacuumdb; do
