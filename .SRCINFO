@@ -1,0 +1,25 @@
+pkgbase = libftdi-git
+	pkgdesc = A library to talk to FTDI chips, optional python bindings.
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://www.intra2net.com/en/developer/libftdi/download.php
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = boost
+	makedepends = cmake
+	makedepends = python
+	makedepends = swig
+	depends = libusb
+	depends = confuse
+	optdepends = python: library bindings
+	provides = libftdi
+	conflicts = libftdi
+	source = https://www.intra2net.com/en/developer/libftdi/download/libftdi1-1.5.tar.bz2
+	source = https://www.intra2net.com/en/developer/libftdi/download/libftdi1-1.5.tar.bz2.sig
+	validpgpkeys = 3CEA9B8868BC3852618EB5B4707F91A424F006F5
+	sha1sums = 0b4dc9763342d094d2b5e74ced7d10d574b4758d
+	sha1sums = SKIP
+
+pkgname = libftdi-git
+
