@@ -2,7 +2,7 @@
 pkgname="koalalauncher-bin"
 _pkgname="koalalauncher"
 pkgver="1.0.9"
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 pkgdesc="Koala Launcher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://koalalauncher.com"

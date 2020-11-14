@@ -1,7 +1,7 @@
 pkgbase = koalalauncher-bin
 	pkgdesc = Koala Launcher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience
 	pkgver = 1.0.9
-	pkgrel = 1
+	pkgrel = 3
 	url = https://koalalauncher.com
 	arch = x86_64
 	license = GPL3
