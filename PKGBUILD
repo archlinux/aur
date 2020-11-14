@@ -3,30 +3,23 @@
 # Maintainer: Denis Yantarev <denis dot yantarev at gmail dot com>
 
 pkgname=greylistd
-pkgver=0.8.8.7
+pkgver=0.9.0.2
 pkgrel=1
 pkgdesc="Simple greylisting system for mail transport agents"
 url="https://packages.debian.org/sid/greylistd"
-depends=('python2' 'start-stop-daemon')
+depends=('start-stop-daemon')
 source=(http://ftp.debian.org/debian/pool/main/g/greylistd/${pkgname}_${pkgver}.tar.xz
 	greylistd.service
 	greylistd.tmpfiles
-	greylistd.install
-	python2.patch)
-md5sums=('a97720a78299554f2a190f7fa6dfd39e'
+	greylistd.install)
+md5sums=('1c6d6342a34784fff00eb77254058a82'
          'ad1f516bdb732982fec38f492134d5b8'
          '5c76ca975a41ef967f6a1f8bfc760446'
-         '7c309496b15079820b852c7140194d8c'
-         '6947ebf9d170801b86db013b3521e1af')
+         '7c309496b15079820b852c7140194d8c')
 backup=(etc/greylistd/config)
 install=greylistd.install
 arch=('x86_64' 'i686')
 license=('GPL')
-
-build() {
-	cd $srcdir/$pkgname-$pkgver || return 1
-	patch -p0 < ../python2.patch || return 1
-}
 
 package() {
 	cd $srcdir
