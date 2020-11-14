@@ -2,15 +2,15 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor-wide-glyphs
 pkgver=9.22
-pkgrel=1
+pkgrel=2
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with truecolor and wide glyphs support'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
 license=('GPL')
 depends=('libxft' 'perl' 'startup-notification')
 optdepends=('gtk2-perl: to use the urxvt-tabbed')
-provides=('rxvt-unicode' 'rxvt-unicode-terminfo')
-conflicts=('rxvt-unicode' 'rxvt-unicode-terminfo')
+provides=('rxvt-unicode' 'rxvt-unicode-terminfo' 'urxvt-resize-font')
+conflicts=('rxvt-unicode' 'rxvt-unicode-terminfo' 'urxvt-resize-font')
 source=(http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2
     'urxvt.desktop'
     'urxvtc.desktop'
@@ -96,7 +96,7 @@ package() {
         install -Dm 644 $_f.desktop "$pkgdir/usr/share/applications/$_f.desktop"
     done
 
-    # install perl script resize-font
+    # install perl script resize-font (https://github.com/simmel/urxvt-resize-font)
     install -Dm 644 resize-font "$pkgdir/usr/lib/urxvt/perl/resize-font"
 
     cd $_pkgname-$pkgver
