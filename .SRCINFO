@@ -15,7 +15,7 @@ pkgbase = wtftw-git
 	provides = wtftw
 	conflicts = wtftw
 	source = git+https://github.com/Kintaro/wtftw
-	source = wtftw-r347.14f3d1e-LICENSE::https://github.com/Kintaro/wtftw/raw/master/LICENSE
+	source = wtftw-git-r347.14f3d1e-LICENSE::https://github.com/Kintaro/wtftw/raw/master/LICENSE
 	sha256sums = SKIP
 	sha256sums = d2fff178c328ba155cf3eddcdf7533c9aca0b415a4f748a251ea1c32656700a1
 

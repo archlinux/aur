@@ -18,7 +18,7 @@ install=wtftw.install
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}"
-        "${pkgname%-git}-$pkgver-LICENSE::$url/raw/master/LICENSE")
+        "$pkgname-$pkgver-LICENSE::$url/raw/master/LICENSE")
 sha256sums=('SKIP'
             'd2fff178c328ba155cf3eddcdf7533c9aca0b415a4f748a251ea1c32656700a1')
 
@@ -37,5 +37,5 @@ package() {
   install -Dm 755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
   install -Dm 644 config/config.rs -t "$pkgdir/usr/share/${pkgname%-git}"
-  install -Dm 644 "../${pkgname%-git}-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
+  install -Dm 644 "../$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
