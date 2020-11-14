@@ -1,0 +1,21 @@
+pkgbase = netopeer2-git
+	pkgdesc = A set of network configuration tools based on the NETCONF protocol.
+	pkgver = 1.1.39.r29.g63be3b5
+	pkgrel = 1
+	url = https://github.com/CESNET/netopeer2
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = libnetconf2
+	depends = sysrepo
+	depends = zlib
+	depends = curl
+	provides = netopeer2=1.1.39-1
+	conflicts = netopeer2
+	source = netopeer2-git::git+https://github.com/CESNET/netopeer2#branch=devel
+	sha256sums = SKIP
+
+pkgname = netopeer2-git
+
