@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=dktools
-pkgver=4.30.4
+pkgver=4.30.5
 pkgrel=1
 pkgdesc="Collection of tools by Dirk Krause, including converters, daemons, Perl modules, development tools, administration tools and printing tools."
 arch=('i686' 'x86_64')
@@ -11,9 +11,9 @@ license=('custom')
 depends=('wxgtk3' 'netpbm' 'net-snmp')
 makedepends=('wxgtk3') # also optional runtime dependency for wxbmpp, wxdkct and wximgsz
 optdepends=('wxgtk3: for wxbmpp, wxdkct and wximgsz'
-	    'libmariadbclient: for itadmin')
+	    'mariadb-libs: for itadmin')
 source=(http://sourceforge.net/projects/dktools/files/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('1025c45ace30c6ae4df213e148d83e4241b28bb42fb94d7e479a5d4ccd9dda6b')
+sha256sums=('f14101a1c30c78abccc6d28f5db05fe1fc78428e1fbb7d86b0179e14c85b0997')
 
 build() {
   cd $pkgname-$pkgver
@@ -27,5 +27,5 @@ package() {
   rm -r "$pkgdir"/var
   install -Dm755 -t "$pkgdir"/usr/bin/ "$pkgdir"/usr/sbin/*
   rm -r "$pkgdir"{/lib,/usr/sbin/}
-  install -Dm644 bsdlic.txt "$pkgdir"/usr/share/licenses/$pkgname/bsdlic.txt
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
