@@ -1,7 +1,7 @@
 pkgbase = vivaldi-stable
 	pkgdesc = An advanced browser made with the power user in mind.
 	pkgver = 3.4.2066.94
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vivaldi.com
 	arch = x86_64
 	license = custom
