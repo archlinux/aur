@@ -1,18 +1,18 @@
 # Maintainer: Juhani Numminen <juhaninumminen0@gmail.com>
 
 pkgname=pentobi
-pkgver=17.3
+pkgver=18.3
 pkgrel=1
 pkgdesc="computer opponent for the board game Blokus"
 arch=('x86_64')
 url="https://pentobi.sourceforge.io"
 license=('GPL3')
-depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-webview')
+depends=('qt5-quickcontrols2' 'qt5-webview' 'kio')
 makedepends=('appstream' 'cmake' 'docbook-xsl' 'extra-cmake-modules'
              'itstool' 'kio' 'qt5-tools')
 optdepends=('kio: KDE thumbnailer')
 source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
-md5sums=('e68a44af164f9af02ff4cababd89625c'
+md5sums=('c4a4f46771052955d85a543352261e3f'
          'SKIP')
 validpgpkeys=('CF7C1AEE933D1A03C6D13FF922922BFEEB0F9942') # Markus Enzenberger
 
