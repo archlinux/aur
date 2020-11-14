@@ -43,7 +43,11 @@ def install_iosevka(repo_dir: Path):
         print("Iosevka installed.", file=sys.stderr)
 
 
-def generate_font(iosevka_dir: Path, font_name: str, font_styles: Dict[str, Set[str]]):
+def generate_font_plan(
+    iosevka_dir: Path,
+    font_name: str,
+    font_styles: Dict[str, Set[str]],
+):
     family_name = f"Iosevka {inflection.titleize(font_name)}"
     print(f"Building font with family name: {family_name}")
 
@@ -60,6 +64,8 @@ def generate_font(iosevka_dir: Path, font_name: str, font_styles: Dict[str, Set[
         print(f"Building iosevka conf:\n{conf}", file=sys.stderr)
         fp.write(dedent(conf))
 
+
+def generate_font(iosevka_dir: Path, font_name: str) -> None:
     subprocess.run(
         ["npm", "run", "build", "--", f"ttf::{font_name}"], cwd=iosevka_dir
     ).check_returncode()
@@ -121,8 +127,10 @@ def store_fonts(dest: Path, source: Path):
     dest.mkdir(parents=True, exist_ok=True)
     for font in filter(lambda f: f.is_file(), source.glob("*.ttf")):
         shutil.move(str(source / font), dest / font.name)
+    print(f"Fonts installed to {dest}", file=sys.stderr)
 
     subprocess.run(["fc-cache", "--force"]).check_returncode()
+    print("Fonts re-cached", file=sys.stderr)
 
 
 if __name__ == "__main__":
@@ -132,16 +140,25 @@ if __name__ == "__main__":
     font_dir = Path(xdg_data_home) / "fonts"
 
     install_iosevka(install_dir)
-    for conf in Path(config_dir).glob("*.ini"):
-        name, styles, nerdfont_opts = parse_config(conf)
+    print(f"Loading font configurations in {config_dir}", file=sys.stderr)
+    for conf in filter(
+        lambda p: p.suffix in {".ini", ".toml"},
+        Path(config_dir).glob("*"),
+    ):
+        print(f"Found {conf.stem}", file=sys.stderr)
 
-        generate_font(install_dir, name, styles)
+        if conf.suffix == ".ini":
+            name, styles, nerdfont_opts = parse_config(conf)
+            generate_font_plan(install_dir, name, styles)
+        else:
+            name, styles, nerdfont_opts = conf.stem, {}, None
+            shutil.copy(conf, install_dir / "private-build-plans.toml")
+
+        generate_font(install_dir, name)
         gen_dir = install_dir / "dist" / name / "ttf"
 
         if nerdfont_opts is not None:
-            mono = any(
-                filter(lambda o: o in styles["common"], ("sp-term", "sp-fixed"))
-            )
+            mono = any(filter(lambda o: o in styles["common"], ("sp-term", "sp-fixed")))
 
             nerdfont_patch(
                 gen_dir, cache_dir / "nerdfont", options=nerdfont_opts, mono=mono

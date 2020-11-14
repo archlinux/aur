@@ -4,14 +4,14 @@ Iosevka Generate is a tool to generate your own [Iosevka][Iosevka] font for you.
 
 [Iosevka][Iosevka] is a fantastic 'for code from code' font, for which all credit goes to [Belleve Invis][Invis] - this repo is merely a helper script to leverage others' hard work.
 
-NB: Iosevka itself now has a similar TOML spec for font building. The remaining value in iosevka generate is:
+NB: Iosevka itself now has a TOML spec for font building, which can now be used as the input to `iosevka-generate`. The remaining added value is:
   - handle acquiring & installing repo and dependencies automatically
-  - cleaner config format (`<letter> = <style>` lines vs. `["v-<letter>-<style>", ...]` on one)
-  - patch with [nerd font][NerdFont]
+  - similarly auto-storing/re-caching the generated font
+  - patch with [nerd font][NerdFont] (currently in INI format only, cf. #8)
 
 ## Usage
 
-In your `$XDG_CONFIG_HOME` (or `$HOME/.config`) create `iosevka/config.ini`, in INI format such as:
+In your `$XDG_CONFIG_HOME` (or `$HOME/.config`) create `iosevka/my-font.toml` in Iosevka's 'private-build-plans' TOML format, or `iosevka/config.ini`, in INI format such as:
 ```ini
 [options]
     name = myosevka
