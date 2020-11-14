@@ -3,12 +3,12 @@
 
 pkgname=remill
 pkgver=4.0.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode"
 arch=('x86_64')
 url="https://github.com/lifting-bits/remill"
 license=('Apache')
-depends=('cxx-common=0.0.14' 'ncurses' 'zlib' 'lib32-glibc')
+depends=('cxx-common=0.0.14' 'ncurses' 'zlib' 'lib32-glibc' 'lib32-gcc-libs')
 makedepends=()
 checkdepends=()
 source=("https://github.com/lifting-bits/remill/archive/v${pkgver}.tar.gz")

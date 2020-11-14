@@ -1,7 +1,7 @@
 pkgbase = remill
 	pkgdesc = Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode
 	pkgver = 4.0.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/lifting-bits/remill
 	arch = x86_64
 	license = Apache
@@ -9,6 +9,7 @@ pkgbase = remill
 	depends = ncurses
 	depends = zlib
 	depends = lib32-glibc
+	depends = lib32-gcc-libs
 	source = https://github.com/lifting-bits/remill/archive/v4.0.8.tar.gz
 	sha256sums = b20cb536ac4107910f9b0da6d7fffa36510e2ec93da993f594d55aa6164546af
 
