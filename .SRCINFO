@@ -1,32 +1,5 @@
 pkgbase = r-httr
 	pkgdesc = Useful tools for working with HTTP organised by HTTP verbs (GET(), POST(), etc). Configuration functions make it easy to control additional request components
-	pkgver = 1.4.1
-	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/httr/
-	arch = any
-	license = GPL
-	makedepends = r-testthat
-	depends = r
-	depends = r-curl
-	depends = r-jsonlite
-	depends = r-mime
-	depends = r-openssl
-	depends = r-r6
-	optdepends = r-covr
-	optdepends = r-httpuv
-	optdepends = r-jpeg
-	optdepends = r-knitr
-	optdepends = r-png
-	optdepends = r-readr
-	optdepends = r-xml2
-	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/httr_1.4.1.tar.gz
-	sha512sums = 708984effcec7603ebcbc2a2f81b57500887084a5144855921119e32bc1bb3a01c1871d3144fd34850bc771ef5fddc1ce9d40dd4bdc4325e01c7a4315a463641
-
-pkgname = r-httr
-
-pkgbase = r-httr
-	pkgdesc = Useful tools for working with HTTP organised by HTTP verbs (GET(), POST(), etc). Configuration functions make it easy to control additional request components
 	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://cran.r-project.org/web/packages/httr/
