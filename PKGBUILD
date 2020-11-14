@@ -4,8 +4,8 @@
 
 _gemname=ascii85
 pkgname=ruby-$_gemname
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Ascii85 encoder/decoder'
 arch=('any')
 url='https://github.com/datawraith/ascii85gem'
@@ -14,7 +14,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/${_gemname//a/A}-$pkgver.gem)
 noextract=(${_gemname//a/A}-$pkgver.gem)
-sha256sums=('7ae3f2eb83ef5962016802caf0ce7db500c1cc25f385877f6ec64a29cfa8a818')
+sha256sums=('9ce694467bd69ab2349768afd27c52ad721cdc6f642aeaa895717bfd7ada44b7')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
