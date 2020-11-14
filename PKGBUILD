@@ -1,7 +1,7 @@
 # Maintainer: Cullen Ross <cullenrss@gmail.com>
 pkgver=0.5.0.0
 pkgrel=1
-sha256sums=('d4a50e431776fa6480684e838ad6fd51cec0ec5f40b4fca180dee77aac2f00ac')
+sha256sums=('7e8c4e3190b6be4cd092c319ef6c9e26a49df40a87fbd74eca52adf19def50d1')
 
 pkgname=hascard
 pkgdesc="A TUI for reviewing notes using 'flashcards' written with markdown-like syntax."
