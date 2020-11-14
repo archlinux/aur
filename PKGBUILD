@@ -1,7 +1,7 @@
 # Maintainer: Edvin Hultberg <hultberg@mittnett.net>
 
 pkgname=git-fresh
-pkgver=1.12.1
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Keep your repo fresh with one command.'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/imsky/git-fresh'
 license=('MIT')
 depends=('bash')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/imsky/git-fresh/archive/v$pkgver.tar.gz")
-sha256sums=('48be2629113ba77a2a6d8fd478b7186f7237669e9495e768b9d3133704c49dde')
+sha256sums=('7043aaf2bf66dade7d06ebcf96e5d368c4910c002b7b00962bd2bd24490ce2dc')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
