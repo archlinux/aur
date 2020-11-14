@@ -2,9 +2,9 @@
 
 pkgname=wayvnc
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='VNC server for wlroots-based Wayland compositors'
-arch=(x86_64)
+arch=(x86_64 i686 aarch64 armv7h)
 url=https://github.com/any1/wayvnc
 license=(custom:ISC)
 depends=(libdrm libxkbcommon aml pixman 'neatvnc>=0.3.0' wayland)
