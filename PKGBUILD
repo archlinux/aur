@@ -6,7 +6,7 @@
 pkgname=lynis3
 _pkgname="${pkgname%[0-9]*}"
 
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 
 pkgdesc='Security and system auditing tool to harden Unix/Linux systems'
@@ -26,7 +26,7 @@ optdepends=('net-tools: networking tests'
 changelog=CHANGELOG.md
 backup=("etc/$_pkgname/default.prf")
 source=("https://downloads.cisofy.com/$_pkgname/$_pkgname-$pkgver.tar.gz"{,.asc})
-sha512sums=('2f156002ff1cfcd2333c95b57e82e76260364fa58419b9414f2bb461aa77a22c2f1af57a6a934e88030baeb69aa9c274045cfcef359eb496d10acd5b886cb856'
+sha512sums=('e237984b404752bd0856e1cbb884d0191a1177023780d9d0f885538846e419fcb75302a33320ba41e5895cabca0ead094e1c49865677906e547e255b4f5aab41'
             'SKIP')
 validpgpkeys=('73AC9FC55848E977024D1A61429A566FD5B79251')  # CISOfy (Software Signing Key) <security@cisofy.com>
 
