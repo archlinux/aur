@@ -1,5 +1,5 @@
 pkgbase = st-distrotube-git
-	pkgdesc = A heavily-patched and customized build of st (the Suckless simple terminal) from DistroTube.
+	pkgdesc = A heavily-patched and customized build of st the Suckless simple terminal from DistroTube.
 	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://gitlab.com/dwt1/st-distrotube.git

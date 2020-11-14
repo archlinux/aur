@@ -2,7 +2,7 @@
 pkgname=st-distrotube-git
 pkgver=0.8.4
 pkgrel=1
-pkgdesc="A heavily-patched and customized build of st (the Suckless simple terminal) from DistroTube."
+pkgdesc="A heavily-patched and customized build of st the Suckless simple terminal from DistroTube."
 arch=(x86_64 i686)
 url="https://gitlab.com/dwt1/st-distrotube.git"
 license=('MIT')
