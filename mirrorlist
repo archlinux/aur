@@ -13,6 +13,10 @@ Server = https://repo.kitsuna.net/$arch
 ## By: Var Bhat and LiteServer
 Server = https://chaotic.tn.dedyn.io/$arch
 
+# Borgos, Spain
+## By: JKANetwork
+Server = https://repo.jkanetwork.com/repo/$repo/$arch
+
 # Germany
 ## By: ParanoidBangL
 Server = http://chaotic.bangl.de/$repo/$arch
