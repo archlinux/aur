@@ -1,14 +1,17 @@
 pkgbase = novnc-git
-	pkgdesc = javascript vnc client
-	pkgver = 20150614.1
+	pkgdesc = HTML VNC Client Library and Application
+	pkgver = 1.2.0.r20.g90456db
 	pkgrel = 1
 	url = https://github.com/kanaka/noVNC
 	arch = any
-	license = GPL
-	optdepends = websockify: for vnc servers without websocket support
+	license = custom
+	makedepends = git
+	depends = bash
+	depends = websockify
+	optdepends = python-numpy: better HyBi protocol performance
 	provides = novnc
 	conflicts = novnc
-	source = novnc::git://github.com/kanaka/noVNC.git
+	source = novnc::git+https://github.com/novnc/noVNC.git
 	md5sums = SKIP
 
 pkgname = novnc-git
