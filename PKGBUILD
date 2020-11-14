@@ -1,37 +1,34 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=mcsema
-pkgver=3.0.10
-pkgrel=3
+pkgver=3.0.12
+pkgrel=1
 pkgdesc="Framework for lifting program binaries to LLVM bitcode"
 arch=('x86_64')
 url="https://github.com/lifting-bits/mcsema"
 license=('AGPL3')
-depends=('remill' 'anvill' 'clang' 'gflags' 'google-glog' 'intelxed' 'ncurses'
-         'protobuf' 'zlib' 'python' 'python-protobuf' 'python-ccsyspath'
-         'dyninst=9.3.2')
-makedepends=('cmake' 'boost' 'llvm' 'python-setuptools')
+depends=('cxx-common=0.0.14' 'remill' 'anvill' 'python' 'ncurses' 'zlib')
+makedepends=('python-setuptools')
 source=("https://github.com/lifting-bits/mcsema/archive/v${pkgver}.tar.gz")
-sha256sums=('1f803540649187a856c6e16ec3f40fb6d2c63365ae05a12795cf2a09ff88f6aa')
+sha256sums=('41ff3a44c2361101408244b47a23605e34b8f94cb3315b73260aa647ef44a516')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
-    sed -i cmake/modules/FindProtobuf.cmake \
-        -e 's|set(LIBRARY_ROOT .*)|set(LIBRARY_ROOT "/usr")|' \
-        -e 's|\(libproto[a-z]*\)\.a|\1.so|'
     sed -i tools/setup_launcher_py{2,3}.sh \
         -e "s|\(setup\.py install.*--prefix=[^ ]*\)|\1 --root='$pkgdir' --optimize=1|"
 }
 
 build() {
+    export TRAILOFBITS_LIBRARIES="/opt/cxx-common/libraries"
+    export PATH="${TRAILOFBITS_LIBRARIES}/cmake/bin:${TRAILOFBITS_LIBRARIES}/llvm/bin:${PATH}"
+
     cd "$srcdir/$pkgname-$pkgver"
     mkdir -p build && cd build
-    cmake \
-        -DCMAKE_C_COMPILER=/usr/bin/clang \
-        -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
+    "${TRAILOFBITS_LIBRARIES}/cmake/bin/cmake" \
+        -DCMAKE_C_COMPILER="${TRAILOFBITS_LIBRARIES}/llvm/bin/clang" \
+        -DCMAKE_CXX_COMPILER="${TRAILOFBITS_LIBRARIES}/llvm/bin/clang++" \
         -DMCSEMA_INSTALL_PYTHON2_LIBS=OFF \
         -DMCSEMA_INSTALL_PYTHON3_LIBS=ON \
-        -DBUILD_MCSEMA_DYNINST_DISASS=1 \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_VERBOSE_MAKEFILE=True \
         "$srcdir/$pkgname-$pkgver"
