@@ -1,4 +1,8 @@
-# Contributor: Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
+# Copyright (C) 2019 Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 pkgname=simtrace-git
 _pkgname=simtrace
 pkgver=0.1.r89.g6fde8e1
