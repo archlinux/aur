@@ -1,13 +1,14 @@
+# Mantainer: David Rubio Escares <david.alejandro.rubio at gmail dot com>
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 # Contributor: Kazutoshi Noguchi <noguchi.kazutosi+lGlcOenS [at] gmail [dot] com>
 # Contributor: Marco Kundt <mrckndt [at] gmail [dot] com>
 
 pkgname=lib32-libgtk3-nocsd-git
-pkgver=r55.82ff5a0
-pkgrel=6
+pkgver=r72.4e1c45d
+pkgrel=1
 pkgdesc="A hack to disable gtk+ 3 client side decoration (32-bit library)"
 arch=("x86_64")
-url="https://github.com/PCMan/gtk3-nocsd"
+url="https://github.com/ZaWertun/gtk3-nocsd"
 license=("LGPL")
 
 depends=(
@@ -23,7 +24,7 @@ makedepends=(
 )
 
 source=(
-    "git+https://github.com/PCMan/gtk3-nocsd.git"
+    "git+https://github.com/ZaWertun/gtk3-nocsd.git"
 )
 
 sha512sums=(
