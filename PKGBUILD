@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	qmake
+	qmake .
 	make PREFIX=/usr
 }
 
