@@ -7,7 +7,6 @@ pkgbase = dmrgateway-git
 	arch = i686
 	license = GPL2
 	makedepends = git
-	optdepends = mmdvmhost-git: MMDVM hardware support
 	provides = dmrgateway
 	conflicts = dmrgateway
 	backup = etc/DMRGateway.ini
