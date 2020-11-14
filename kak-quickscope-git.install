@@ -1,0 +1,7 @@
+post_install() {
+	echo
+	echo If you use a custom autoload directory, create a \
+	     symbolic link inside it to /usr/share/kak/rc/addons.
+	echo Open Kakoune and type “:doc quickscope” to learn how to use quickscope.
+	echo
+}
