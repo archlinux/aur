@@ -1,21 +1,22 @@
-# Maintainer: Hao Zhang <theivorytower [at] gmail [dot] com>
+# Maintainer: Hao Zhang <hao [at] hao-zhang [dot] com>
 
 pkgname=python-quantlib
 _pkgname=QuantLib-SWIG
-pkgver=1.15
+pkgver=1.20
 pkgrel=1
 pkgdesc="A Python binding for QuantLib."
 arch=("i686" "x86_64")
 url="http://quantlib.org"
 license=("BSD")
 options=(!libtool)
-depends=("quantlib>=1.11" "python")
-makedepends=("make"  "gcc")
+depends=("quantlib>=1.20" "python")
+makedepends=("make"  "gcc" "boost")
 source=(https://bintray.com/quantlib/releases/download_file?file_path=$_pkgname-$pkgver.tar.gz)
-sha256sums=("bb177822d473c8bd87579ef39b261ca32227fb5492ebd5e21db2e8f090cbc8c6")
+sha256sums=("00b01e4e30906dcc4ef2b8768bd2ad3dd7e08b248a6ff5743253802c027728f8")
 
 build() {
   cd "$srcdir"/"$_pkgname-$pkgver"/
+  sed -i "s#boost::dynamic_pointer_cast#ext::dynamic_pointer_cast#g" Python/QuantLib/quantlib_wrap.cpp
   ./configure --prefix=/usr
   make -C Python
 }
