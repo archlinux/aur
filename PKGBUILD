@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/romis2012/aiohttp-socks"
 license=("Apache")
 
-depends=("python" "python-aiohttp" "python-pysocks")
+depends=("python" "python-aiohttp" "python-socks")
 makedepends=("git" "python-setuptools")
 provides=("python-aiohttp-socks")
 conflicts=("python-aiohttp-socks")
