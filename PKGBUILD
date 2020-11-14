@@ -39,9 +39,9 @@ build() {
   # only build plpython3 for now
   ./configure ${options[@]} \
     PYTHON=/usr/bin/python
-  make -C src/pl/plpython all
-  make -C contrib/hstore_plpython all
-  make -C contrib/ltree_plpython all
+  make -sC src/pl/plpython all
+  make -sC contrib/hstore_plpython all
+  make -sC contrib/ltree_plpython all
 
   # save plpython3 build and Makefile.global
   cp -a src/pl/plpython{,3}
@@ -53,22 +53,22 @@ build() {
   # regular build with everything
   ./configure ${options[@]} \
     PYTHON=/usr/bin/python2
-  make -C src all
-  make -C contrib all
+  make -sC src all
+  make -sC contrib all
 }
 
 package() {
   cd postgresql-${pkgver}
-  make -C src DESTDIR="${pkgdir}" install
-  make -C contrib DESTDIR="${pkgdir}" install
+  make -sC src DESTDIR="${pkgdir}" install
+  make -sC contrib DESTDIR="${pkgdir}" install
 
   # install plpython3
   mv src/Makefile.global src/Makefile.global.save
   cp src/Makefile.global.python3 src/Makefile.global
   touch -r src/Makefile.global.save src/Makefile.global
-  make -C src/pl/plpython3 DESTDIR="${pkgdir}" install
-  make -C contrib/hstore_plpython3 DESTDIR="${pkgdir}" install
-  make -C contrib/ltree_plpython3 DESTDIR="${pkgdir}" install
+  make -sC src/pl/plpython3 DESTDIR="${pkgdir}" install
+  make -sC contrib/hstore_plpython3 DESTDIR="${pkgdir}" install
+  make -sC contrib/ltree_plpython3 DESTDIR="${pkgdir}" install
 
   install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
