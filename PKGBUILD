@@ -1,8 +1,9 @@
 # Maintainer: Luke Street <luke@street.dev>
 # Based on AUR ghidra, .desktop from ghidra-bin
+# Original Darcula patch from https://digmi.org/2019/03/26/ghidracula/
 
 pkgname=ghidra-darcula
-pkgver=9.1.2
+pkgver=9.2
 _ghidra_data=60529abb6c1e28b689f539384a1ebd1fe13d6528
 _darcula=08c13c5f1a12624f4d8df8723b39061e11c93241
 _darcula_version=2019.09
@@ -14,7 +15,7 @@ pkgdesc='Software reverse engineering framework (with dark theme)'
 arch=('x86_64')
 url='https://ghidra-sre.org/'
 license=('Apache')
-depends=('java-environment>=11' 'bash')
+depends=('java-runtime-common' 'jdk11-openjdk' 'bash')
 provides=('ghidra')
 conflicts=('ghidra' 'ghidra-bin' 'ghidra-git')
 makedepends=('git' 'gradle' 'unzip')
@@ -38,13 +39,13 @@ sha512sums=('SKIP'
             'c1168ec913f1fbb0675915d4fd865ec9a8e8573f6c8aedcb6e68166f61f11aeaececc7548d54d78134843c0102c57d6350973f6d3027d0ffdae52a5c57a7f601'
             '0ff5a228ae1c5251c8ba59f9bcd9b4a199b0caaf688f6eccba42c3d227784d8f56f9164b2fad73fc173ec314340c036144123ce152fe911013df5598bd708944'
             'b85b4316115695acc78cc7c675c673058c05a238451562be0c6a48b2d11a28e5645a42cb62cdf063be015369df26201dfab6cf2e60f39e6468d1d53b23f94415'
-            'SKIP'
-            'SKIP'
+            '4cf019d5bfde5265d667400111fb0c2473caa2457756c9c73e33d6128da3b116bf8d1b8cbb4092bbe27ea65ea5ab46f922e05a1e53ff36b90f76d8fcc4bfc1e7'
+            '833fc176889f7682028f167b3093d1828b79805aa58d7f8ed8387b4baeeec1da2f30e5d607aebdb460580b939ea9dceb35e4aabf03b0a0f29f328efaa58e2f82'
             'SKIP')
 
 prepare() {
   install -d hfsx
-  unzip -u hfsexplorer-${_hfsx/./_}-bin.zip -d hfsx
+  unzip -o hfsexplorer-${_hfsx/./_}-bin.zip -d hfsx
 
   cd ghidra
 
@@ -55,7 +56,7 @@ prepare() {
     -t flatRepo
 
   # YAJSW expects this symlink
-  ln -sf ghidra ../ghidra.bin
+  ln -nsf ghidra ../ghidra.bin
   install -Dm 644 ../yajsw-stable-${_yajsw}.zip -t Ghidra/Features/GhidraServer
 
   # Add FID datasets
@@ -68,6 +69,9 @@ prepare() {
   patch -Np1 -i "$srcdir"/darcula.patch
   sed -i "/dependencies {/a\\\\tcompile ':darcula-laf:${_darcula_version}'" Ghidra/Framework/Docking/build.gradle
   echo "MODULE FILE LICENSE: lib/darcula-laf-${_darcula_version}.jar Apache License 2.0" >> Ghidra/Framework/Docking/Module.manifest
+
+  # Set release to PUBLIC
+  sed -i 's/application\.release\.name=.*/application.release.name=PUBLIC/' Ghidra/application.properties
 }
 
 build() {
@@ -87,7 +91,7 @@ package() {
   _appver=$(grep -oP '(?<=^application.version=).*$' Ghidra/application.properties)
   _relname=$(grep -oP '(?<=^application.release.name=).*$' Ghidra/application.properties)
   unzip -u "build/dist/ghidra_${_appver}_${_relname}_$(date +"%Y%m%d")_linux64.zip" -d "${pkgdir}"/opt
-  mv "${pkgdir}"/opt/ghidra{"_${_appver}_DEV",}
+  mv "${pkgdir}"/opt/ghidra{"_${_appver}_PUBLIC",}
   ln -s /opt/ghidra/ghidraRun "${pkgdir}"/usr/bin/ghidra
   ln -s /opt/ghidra/support/analyzeHeadless "${pkgdir}"/usr/bin/ghidra-analyzeHeadless
   install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/ghidra

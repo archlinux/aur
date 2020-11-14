@@ -1,5 +1,5 @@
 diff --git a/Ghidra/Framework/Docking/src/main/java/docking/widgets/AbstractGCellRenderer.java b/Ghidra/Framework/Docking/src/main/java/docking/widgets/AbstractGCellRenderer.java
-index cf5711f3..dc40ec85 100644
+index 48c057437..253eb3b5d 100644
 --- a/Ghidra/Framework/Docking/src/main/java/docking/widgets/AbstractGCellRenderer.java
 +++ b/Ghidra/Framework/Docking/src/main/java/docking/widgets/AbstractGCellRenderer.java
 @@ -4,9 +4,9 @@
@@ -22,7 +22,7 @@ index cf5711f3..dc40ec85 100644
 +	private static final Color ALTERNATE_BACKGROUND_COLOR = new Color(0x32, 0x32, 0x32);
 +	private static final Color REGULAR_BACKGROUND_COLOR = new Color(0x2b, 0x2b, 0x2b);
  
- 	/** Allows the user to disable alternating row colors on JLists & JTables */
+ 	/** Allows the user to disable alternating row colors on JLists and JTables */
  	private static final String DISABLE_ALTERNATING_ROW_COLORS_PROPERTY =
 @@ -156,7 +157,7 @@ public abstract class AbstractGCellRenderer extends GDHtmlLabel {
  	}
@@ -34,7 +34,7 @@ index cf5711f3..dc40ec85 100644
  
  	protected Color getBackgroundColorForRow(int row) {
 diff --git a/Ghidra/Framework/Docking/src/main/java/docking/widgets/filter/FilterTextField.java b/Ghidra/Framework/Docking/src/main/java/docking/widgets/filter/FilterTextField.java
-index 1bcfba73..7f8ce8db 100644
+index 6ec44132e..7a878c64d 100644
 --- a/Ghidra/Framework/Docking/src/main/java/docking/widgets/filter/FilterTextField.java
 +++ b/Ghidra/Framework/Docking/src/main/java/docking/widgets/filter/FilterTextField.java
 @@ -42,7 +42,7 @@ public class FilterTextField extends JPanel {
@@ -47,7 +47,7 @@ index 1bcfba73..7f8ce8db 100644
  
  	private Color noFlashColor;
 diff --git a/Ghidra/Framework/Docking/src/main/java/docking/widgets/table/GTableHeaderRenderer.java b/Ghidra/Framework/Docking/src/main/java/docking/widgets/table/GTableHeaderRenderer.java
-index 778efa24..eea383b1 100644
+index 778efa242..eea383b15 100644
 --- a/Ghidra/Framework/Docking/src/main/java/docking/widgets/table/GTableHeaderRenderer.java
 +++ b/Ghidra/Framework/Docking/src/main/java/docking/widgets/table/GTableHeaderRenderer.java
 @@ -38,10 +38,10 @@ import resources.icons.TranslateIcon;
@@ -66,7 +66,7 @@ index 778efa24..eea383b1 100644
  	private static final Icon UP_ICON =
  		ResourceManager.getScaledIcon(Icons.SORT_ASCENDING_ICON, 14, 14);
 diff --git a/Ghidra/Framework/Docking/src/main/java/ghidra/docking/util/DockingWindowsLookAndFeelUtils.java b/Ghidra/Framework/Docking/src/main/java/ghidra/docking/util/DockingWindowsLookAndFeelUtils.java
-index 93420150..0f15e299 100644
+index 1d9ef7bb9..3dcb3834b 100644
 --- a/Ghidra/Framework/Docking/src/main/java/ghidra/docking/util/DockingWindowsLookAndFeelUtils.java
 +++ b/Ghidra/Framework/Docking/src/main/java/ghidra/docking/util/DockingWindowsLookAndFeelUtils.java
 @@ -30,6 +30,9 @@ import ghidra.framework.Platform;
