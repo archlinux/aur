@@ -3,8 +3,9 @@ pkgname=('pipewire-git'
          'pipewire-docs-git'
          'pipewire-jack-git'
          'pipewire-alsa-git'
+         'pipewire-pulse-git'
          )
-pkgver=0.3.15.71.g13a1049a
+pkgver=0.3.15.75.g80e063c6
 pkgrel=1
 pkgdesc='Server and user space API to deal with multimedia pipelines. (GIT version)'
 arch=('x86_64')
@@ -92,6 +93,7 @@ package_pipewire-git() {
   optdepends=('pipewire-docs-git: Documentation'
               'pipewire-jack-git: JACK support'
               'pipewire-alsa-git: ALSA support'
+              'pipewire-pulse-git: PulseAudio support'
               )
   provides=('pipewire'
             "libpipewire-${pkgver:0:3}.so"
@@ -115,6 +117,8 @@ package_pipewire-git() {
 
   # Use alsa-card-profiles built with Pulseaudio
   rm -rv "$pkgdir"/usr/share/alsa-card-profile
+
+  _pick pulse usr/bin/pipewire-pulse usr/lib/systemd/user/pipewire-pulse*
 }
 
 package_pipewire-docs-git() {
@@ -146,4 +150,15 @@ package_pipewire-alsa-git() {
 
   mkdir -p "${pkgdir}/etc/alsa/conf.d"
   ln -st "${pkgdir}/etc/alsa/conf.d" /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf
+}
+
+package_pipewire-pulse-git() {
+  pkgdesc='Server and user space API to deal with multimedia pipelines. (Pulse support)(GIT version)'
+  depends=("libpipewire-${pkgver:0:3}.so"
+           'libglib-2.0.so'
+           )
+  provides=('pipewire-pulse')
+  conflicts=('pipewire-pulse')
+
+  mv pulse/* "${pkgdir}"
 }
