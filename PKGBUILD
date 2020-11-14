@@ -2,7 +2,7 @@
 
 pkgname=python-paver
 pkgver=1.3.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Python-based project scripting"
 url="https://github.com/paver/paver"
 license=('BSD')
