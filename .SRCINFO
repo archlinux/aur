@@ -1,0 +1,18 @@
+pkgbase = python-timebudget-git
+	pkgdesc = A Python package for ASN.1 parsing, encoding and decoding
+	pkgver = 0.7.r2.ge58b712
+	pkgrel = 1
+	url = https://github.com/leopd/timebudget
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-pip
+	depends = python
+	depends = licenses
+	provides = python-timebudget
+	conflicts = python-timebudget
+	source = git+git://github.com/leopd/timebudget.git
+	md5sums = SKIP
+
+pkgname = python-timebudget-git
+
