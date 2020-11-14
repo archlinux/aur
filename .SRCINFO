@@ -1,0 +1,18 @@
+pkgbase = dmrgateway-git
+	pkgdesc = A multi-network DMR gateway for the MMDVM.
+	pkgver = r322.5ca0d6e
+	pkgrel = 1
+	url = https://github.com/g4klx/DMRGateway
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	optdepends = mmdvmhost-git: MMDVM hardware support
+	provides = dmrgateway
+	conflicts = dmrgateway
+	backup = etc/DMRGateway.ini
+	source = dmrgateway::git+https://github.com/g4klx/DMRGateway.git
+	md5sums = SKIP
+
+pkgname = dmrgateway-git
+
