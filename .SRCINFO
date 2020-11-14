@@ -1,16 +1,13 @@
 pkgbase = simtrace
 	pkgdesc = Traces the communication between phones and SIM cards with first generation simtrace hardware.
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osmocom.org/projects/simtrace/wiki/SIMtrace
 	arch = armv7h
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = make
-	makedepends = gcc
 	makedepends = git
-	makedepends = pkg-config
 	depends = libosmocore
 	depends = libusb
 	depends = lksctp-tools
