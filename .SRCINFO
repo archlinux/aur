@@ -1,0 +1,21 @@
+pkgbase = protonmail-import-export-app-bin
+	pkgdesc = The Import-Export app helps you to migrate your emails from local files or remote IMAP servers to ProtonMail or simply export emails to local folder.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://www.protonmail.com/ie
+	arch = x86_64
+	license = GPLv3
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = libsecret
+	depends = ttf-dejavu
+	optdepends = pass: pass support
+	optdepends = gnome-keyring: gnome-keyring support
+	provides = protonmail-import-export-app
+	conflicts = protonmail-import-export-app
+	conflicts = protonmail-import-export-app-beta-bin
+	source = https://protonmail.com/download/ie/protonmail-import-export-app_1.1.2-1_amd64.deb
+	sha256sums = 8c08e5dd2f0f60bd2fedf552c9fbb11bf00a5927848844eb9e2fc50295b1f573
+
+pkgname = protonmail-import-export-app-bin
+
