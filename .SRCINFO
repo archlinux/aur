@@ -1,4 +1,4 @@
-pkgbase = vivaldi
+pkgbase = vivaldi-stable
 	pkgdesc = An advanced browser made with the power user in mind.
 	pkgver = 3.4.2066.94
 	pkgrel = 1
@@ -25,5 +25,5 @@ pkgbase = vivaldi
 	source = https://downloads.vivaldi.com/stable/vivaldi-stable-3.4.2066.94-1.x86_64.rpm
 	sha512sums = 2bd8722cd73da30a40ff46cfbde476a6a58827f9bf0053a52925026c46be6969f7de576f6aa013a815093f83798feba69a42bf20bfbaf065d965bd38d688ebd1
 
-pkgname = vivaldi
+pkgname = vivaldi-stable
 

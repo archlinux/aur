@@ -1,7 +1,7 @@
 # Maintainer: ChristopherFair<christopherpfair@comcast.net> 
 # Contributor: TZ86
 
-pkgname=vivaldi
+pkgname=vivaldi-stable
 _rpmversion=3.4.2066.94-1
 pkgver=3.4.2066.94
 pkgrel=1
