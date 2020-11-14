@@ -1,7 +1,7 @@
 # Maintainer: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 
 pkgname=yaml-bindings-git
-pkgver=r393.879eac8
+pkgver=r481.ab5a73f
 pkgrel=1
 pkgdesc='Tooling for devicetree validation using YAML and jsonschema'
 arch=(any)
