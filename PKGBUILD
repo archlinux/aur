@@ -2,7 +2,7 @@
 
 pkgname=qlcplus
 pkgver=4.12.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Q Light Controller Plus - The open DMX lighting desk software for controlling professional lighting fixtures."
 arch=('i686' 'x86_64' 'armv7h')
 url="http://qlcplus.org/"
@@ -18,7 +18,7 @@ sha512sums=("f25601a44a81d2fd15c54a05588e687fa1f0c0473d0e2188fa0c052b905df806b05
 build() {
   cd "${srcdir}/qlcplus-QLC-_${pkgver}"
   ./translate.sh ui
-  qmake-qt5
+  qmake-qt5 QMAKE_CXXFLAGS=-Wno-deprecated-declarations
   make
 }
 
