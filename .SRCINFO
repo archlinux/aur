@@ -1,7 +1,7 @@
 pkgbase = cawbird-git
 	pkgdesc = A fork of the Corebird GTK Twitter client that continues to work with Twitter
 	pkgver = 1.2.1.r39.g67457ee3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ibboard/cawbird/
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = cawbird-git
 	makedepends = intltool
 	depends = gspell
 	depends = gstreamer
+	depends = liboauth
 	optdepends = noto-fonts-emoji: Emoji support
 	provides = corebird
 	conflicts = corebird
