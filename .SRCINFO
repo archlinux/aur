@@ -1,0 +1,13 @@
+pkgbase = b00merang-haiku-git
+	pkgdesc = GTK theme based on the appearance of the open source operating system Haiku, the successor to BeOS.
+	pkgver = r31.9fa6424
+	pkgrel = 1
+	url = https://github.com/B00merang-Project/Haiku
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = b00merang-haiku-git::git+https://github.com/B00merang-Project/Haiku.git
+	sha256sums = SKIP
+
+pkgname = b00merang-haiku-git
+
