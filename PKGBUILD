@@ -2,9 +2,9 @@
 
 pkgname=neatvnc
 pkgver=0.3.2
-pkgrel=0
+pkgrel=1
 pkgdesc='Fast and neat VNC server library'
-arch=(x86_64)
+arch=(x86_64 i686 aarch64 armv7h)
 url=https://github.com/any1/neatvnc
 license=(custom:ISC)
 depends=(aml pixman gnutls libjpeg-turbo)
