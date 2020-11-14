@@ -2,7 +2,7 @@
 
 pkgname=xunlei-bin
 pkgver=1.0.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Xunlei download, 迅雷"
 arch=("x86_64" "aarch64")
 url="https://www.xunlei.com/"
@@ -43,6 +43,7 @@ package(){
     install -Dm644 license.html ${pkgdir}/usr/share/licenses/xunlei/license.html
     
     sed -i '4c Exec=xunlei %U' ${pkgdir}/usr/share/applications/com.xunlei.download.desktop
+    sed -i '5c Icon=com.xunlei.download' ${pkgdir}/usr/share/applications/com.xunlei.download.desktop
     sed -i '7c Categories=Network' ${pkgdir}/usr/share/applications/com.xunlei.download.desktop
     
     
@@ -50,7 +51,7 @@ package(){
 
 export LD_LIBRARY_PATH=/opt/xunlei:$LD_LIBRARY_PATH
 /opt/xunlei/thunder -start $1
-''' > ${pkgdir}/opt/xunlei/start.sh
+''' >  ${pkgdir}/opt/xunlei/start.sh
     mkdir -p ${pkgdir}/usr/bin
     ln -s /opt/xunlei/start.sh ${pkgdir}/usr/bin/xunlei
     
