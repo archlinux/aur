@@ -1,24 +1,15 @@
 # Maintainer: Spencer Harmon
 
 pkgname="vendor-reset-git"
-pkgver=0.0.11
-pkgrel=1
+pkgver=0
+pkgrel=2
 epoch=
 pkgdesc="reset routines for navi et al."
 arch=('any')
 url="https://github.com/gnif/vendor-reset"
 license=('GPL-2.0')
 groups=()
-depends=('make'
-  'gcc'
-  'gcc49'
-  'binutils'
-  'perl'
-  'sdl'
-  'sdl_image'
-  'sdl_ttf'
-  'perl-crypt-openssl-rsa'
-  'perl-capture-tiny')
+depends=()
 makedepends=('make'
   'git')
 checkdepends=()
@@ -27,7 +18,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=('!buildflags' '!makeflags')
+options=('!buildflags' '!makeflags' '!emptydirs')
 install=
 changelog=
 source=("git://github.com/gnif/vendor-reset")
@@ -44,5 +35,10 @@ build() {
 
 package() {
   cd vendor-reset
-  make INSTALL_MOD_PATH="pkgdir/"
+  OUTDIR=$pkgdir/usr/lib/modules/$(uname -r)/
+  mkdir -p $OUTDIR
+  cp /lib/modules/$(uname -r)/modules.order $OUTDIR 
+  cp /lib/modules/$(uname -r)/modules.builtin $OUTDIR 
+  make INSTALL_MOD_PATH="$pkgdir/usr/" install
+  rm $OUTDIR/modules*
 }

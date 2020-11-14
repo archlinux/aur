@@ -1,24 +1,15 @@
 pkgbase = vendor-reset-git
 	pkgdesc = reset routines for navi et al.
-	pkgver = 0.0.11
-	pkgrel = 1
+	pkgver = 0
+	pkgrel = 2
 	url = https://github.com/gnif/vendor-reset
 	arch = any
 	license = GPL-2.0
 	makedepends = make
 	makedepends = git
-	depends = make
-	depends = gcc
-	depends = gcc49
-	depends = binutils
-	depends = perl
-	depends = sdl
-	depends = sdl_image
-	depends = sdl_ttf
-	depends = perl-crypt-openssl-rsa
-	depends = perl-capture-tiny
 	options = !buildflags
 	options = !makeflags
+	options = !emptydirs
 	source = git://github.com/gnif/vendor-reset
 	md5sums = SKIP
 
