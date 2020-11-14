@@ -3,7 +3,7 @@
 pkgname=lacap
 longname=latin-catholic-prayers
 pkgver=0.4.7
-pkgrel=3
+pkgrel=1
 pkgdesc="Memorize Catholic prayers in Latin."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/chrisfair/latin-catholic-prayers"
