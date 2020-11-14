@@ -6,7 +6,7 @@
 # Contributor: mefistofeles
 
 pkgname=mathics
-pkgver=1.1.0rc1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A general-purpose computer algebra system."
 arch=('any')
@@ -16,15 +16,15 @@ depends=('python' 'python-sympy' 'python-django' 'python-mpmath' 'python-numpy'
          'python-palettable' 'python-pint' 'python-dateutil' 'python-llvmlite'
          'python-requests' 'cython')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mathics/Mathics/releases/download/$pkgver/Mathics-$pkgver.tar.gz")
-sha256sums=('330846db1c7c0620db8699c77ece4a9763d2f110fbb2b92b5686bf442563a602')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mathics/Mathics/releases/download/$pkgver/Mathics3-$pkgver.tar.gz")
+sha256sums=('272b35be879302e0bc5943101c57e7d93d9974050588dca06a03580a5822aa63')
 
 build() {
-  cd "${srcdir}/Mathics-${pkgver}"
+  cd "${srcdir}/Mathics3-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/Mathics-${pkgver}"
+  cd "${srcdir}/Mathics3-${pkgver}"
   python setup.py install --root=${pkgdir} --optimize=1
 }
