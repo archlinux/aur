@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-pop-shell-git
 	pkgdesc = Pop Shell - Tiling window management in Gnome (WIP)
-	pkgver = r594.d1d2b0e
+	pkgver = r601.e1a9db9
 	pkgrel = 1
 	url = https://github.com/pop-os/shell
 	install = pop-shell.install
@@ -12,7 +12,7 @@ pkgbase = gnome-shell-extension-pop-shell-git
 	depends = pop-shell-shortcuts-git
 	optdepends = gnome-shell-extensions: native-window extension for improved window placement
 	conflicts = gnome-shell-extension-pop-shell
-	source = shell::git+https://github.com/pop-os/shell.git#branch=master_groovy
+	source = shell::git+https://github.com/pop-os/shell.git#branch=master
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-pop-shell-git
