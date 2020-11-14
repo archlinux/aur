@@ -1,0 +1,4 @@
+pkg/
+src/
+aiohttp-socks/
+*.tar*
