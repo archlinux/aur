@@ -1,7 +1,7 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-file-manager-git
-pkgver=5.2.0.73.r82.g455f649ad
+pkgver=5.2.0.76.r105.gf64bbdc6d
 pkgrel=1
 pkgdesc='Deepin File Manager'
 arch=('x86_64')
