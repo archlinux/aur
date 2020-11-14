@@ -5,10 +5,6 @@ ACTION!="add", GOTO="runtime_pm_rules_end"
 ## Blacklisted Devices (USB Keyboard/Mouse, etc.)
 # Logitec Unifying Reciever (occasionally disabled ?)
 ATTR{idVendor}=="046d", ATTR{idProduct}=="c52b", GOTO="runtime_pm_rules_end"
-# Standard Microsystems Corp. 2 Port Hub (doesn't charge with runtime pm ?)
-ATTR{idVendor}=="0424", ATTR{idProduct}=="a700", GOTO="runtime_pm_rules_end"
-# Charge Sixaxis/Dualshock 3 (disconnect or charge too slowly with runtime pm ?)
-ATTR{idVendor}=="054c", ATTR{idProduct}=="0268", GOTO="runtime_pm_rules_end"
 
 # Asynchronous power transitions
 SUBSYSTEMS=="*" ATTR{power/async}=="disabled", ATTR{power/async}="enabled"

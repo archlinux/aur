@@ -93,8 +93,8 @@ while (( "$#" )); do
         ht-off) HYPERTHREADS="0" ;; esac
       [[ -z "${HYPERTHREADS}" ]] && \
         case "${2}" in \
-          off|powersave|start) HYPERTHREADS="0"; SHIFT="2" ;; \
-          on|performance|stop) HYPERTHREADS="1";  SHIFT="2" ;; \
+          cut|off|powersave|start) HYPERTHREADS="0"; SHIFT="2" ;; \
+          full|on|performance|stop) HYPERTHREADS="1";  SHIFT="2" ;; \
           check|status) check_ht; SHIFT="2" ;; esac
       [[ -n "${HYPERTHREADS}" ]] && throttle_ht
       [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
@@ -106,8 +106,8 @@ while (( "$#" )); do
         gov-cut) GOVERNOR="powersave" ;; esac
       [[ -z "${GOVERNOR}" ]] && \
         case "${2}" in \
-          cut|powersave|start) GOVERNOR="powersave"; SHIFT="2" ;; \
-          full|performance|stop) GOVERNOR="performance"; SHIFT="2" ;; \
+          cut|off|powersave|start) GOVERNOR="powersave"; SHIFT="2" ;; \
+          full|on|performance|stop) GOVERNOR="performance"; SHIFT="2" ;; \
           check|status) check_gov; SHIFT="2" ;; esac
       [[ -n "${GOVERNOR}" ]] && throttle_gov
       [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
@@ -119,8 +119,8 @@ while (( "$#" )); do
         turbo-off) XPSTURBO="1" ;; esac
       [[ -z "${XPSTURBO}" ]] && \
         case "${2}" in \
-          off|powersave|start) XPSTURBO="1"; SHIFT="2" ;; \
-          on|performance|stop) XPSTURBO="0"; SHIFT="2" ;; \
+          cut|off|powersave|start) XPSTURBO="1"; SHIFT="2" ;; \
+          full|on|performance|stop) XPSTURBO="0"; SHIFT="2" ;; \
           check|status) check_turbo; SHIFT="2" ;; esac
       [[ -n "${XPSTURBO}" ]] && throttle_turbo
       [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
@@ -128,8 +128,8 @@ while (( "$#" )); do
     ;;
     backlight)
       case "${2}" in \
-        off|0|powersave|start) BACKLIGHT="0"; SHIFT="2" ;; \
-        on|1|performance|stop) BACKLIGHT="1"; SHIFT="2" ;; \
+        cut|off|0|powersave|start) BACKLIGHT="0"; SHIFT="2" ;; \
+        full|on|1|performance|stop) BACKLIGHT="1"; SHIFT="2" ;; \
         2) BACKLIGHT="2"; SHIFT="2" ;; \
         check|status) check_backlight; SHIFT="2" ;; esac
       [[ -n "${BACKLIGHT}" ]] && throttle_backlight
@@ -142,8 +142,8 @@ while (( "$#" )); do
         gpu-cut) NVPM="0" ;; esac
       [[ -z "${NVPM}" ]] && \
         case "${2}" in \
-          full|performance|stop) NVPM="1"; SHIFT="2" ;; \
-          cut|powersave|start) NVPM="0"; SHIFT="2" ;; \
+          cut|off|powersave|start) NVPM="0"; SHIFT="2" ;; \
+          full|on|performance|stop) NVPM="1"; SHIFT="2" ;; \
           check|status) check_nvpm; SHIFT="2" ;; esac
       [[ -n "${NVPM}" ]] && [[ -z "$(command -v nvidia-settings)" ]] && \
             throttle_nvpm
@@ -205,21 +205,13 @@ while (( "$#" )); do
         [[ "${CONTROL}" == "auto" ]] && \
           [[ -n "$(printf ${i} | grep msr[${CORES}-$((${CORES} * 2 - 1))])" || \
              -n "$(printf ${i} | grep machinecheck[${CORES}-$((${CORES} * 2 - 1))])" || \
-             -n "$(ls $(printf ${i} | sed 's|power.*||g')/*/ | grep 046D\:C52B)" || \
-             -n "$(ls $(printf ${i} | sed 's|power.*||g')/*/ | grep 054C\:0268)" || \
-             -f "$(printf ${i} | sed 's|/power.*|/idVendor|g')" && \
-             "$(cat $(printf ${i} | sed 's|/power.*|/idVendor|g'))" == "0424" && \
-             "$(cat $(printf ${i} | sed 's|/power.*|/idProduct|g'))" == "a700" ]] && \
+             -n "$(ls $(printf ${i} | sed 's|power.*||g')/*/ | grep 046D\:C52B)" ]] && \
             continue ; printf "${CONTROL}" > "${i}" & done &
 
       # USB Autosuspend (with exceptions for devices by VID:PID)
       for i in /sys/bus/usb/devices/*/power/autosuspend{,_delay_ms}; do \
         [[ "${AUTOSUSPEND}" == "1" ]] && \
-          [[ -n "$(ls $(printf ${i} | sed 's|power.*||g')/*/ | grep 046D\:C52B)" || \
-             -n "$(ls $(printf ${i} | sed 's|power.*||g')/*/ | grep 054C\:0268)" || \
-             -f "$(printf ${i} | sed 's|/power.*|/idVendor|g')" && \
-             "$(cat $(printf ${i} | sed 's|/power.*|/idVendor|g'))" == "0424" && \
-             "$(cat $(printf ${i} | sed 's|/power.*|/idProduct|g'))" == "a700" ]] && \
+          [[ -n "$(ls $(printf ${i} | sed 's|power.*||g')/*/ | grep 046D\:C52B)" ]] && \
             continue ; printf -- "${AUTOSUSPEND}" > "${i}" & done &
 
       # Powersaving for modules
