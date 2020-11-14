@@ -3,13 +3,13 @@
 
 pkgname=novnc
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="HTML VNC Client Library and Application"
 arch=('any')
 url="https://github.com/novnc/noVNC"
 license=('custom')
-depends=('bash')
-optdepends=('websockify: WebSockets support for any application/server, also depend by novnc launch script.')
+depends=('bash' 'websockify')
+optdepends=('python-numpy: better HyBi protocol performance')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/noVNC/noVNC/archive/v${pkgver}.tar.gz")
 sha512sums=('461490da7bb983e9c94b8ce39f8455ee6609b5a9df8d88254bcc37ebaa5153f5ee9db6afbd88b51762d6d55661bc5cde6fbe70616597583bfce1203e337adf75')
 
@@ -35,5 +35,5 @@ package() {
   install -Dm755 utils/launch.sh "$pkgdir/usr/bin/novnc"
 
   install -dm755 "$pkgdir/usr/share/webapps/novnc"
-  cp -a app core vendor vnc.html "$pkgdir/usr/share/webapps/novnc"
+  cp -a app core po vendor vnc.html karma.conf.js package.json vnc_lite.html "$pkgdir/usr/share/webapps/novnc"
 }

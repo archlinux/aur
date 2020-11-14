@@ -1,12 +1,13 @@
 pkgbase = novnc
 	pkgdesc = HTML VNC Client Library and Application
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/novnc/noVNC
 	arch = any
 	license = custom
 	depends = bash
-	optdepends = websockify: WebSockets support for any application/server, also depend by novnc launch script.
+	depends = websockify
+	optdepends = python-numpy: better HyBi protocol performance
 	source = novnc-1.2.0.tar.gz::https://github.com/noVNC/noVNC/archive/v1.2.0.tar.gz
 	sha512sums = 461490da7bb983e9c94b8ce39f8455ee6609b5a9df8d88254bcc37ebaa5153f5ee9db6afbd88b51762d6d55661bc5cde6fbe70616597583bfce1203e337adf75
 
