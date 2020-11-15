@@ -1,7 +1,7 @@
 # Maintainer: Simone Scalabrino <s.scalabrino9@gmail.com>
 _appname="vvvvid"
 _appdesc="Standalone silo app for VVVVID"
-_gittag="0.1"
+_gittag="0.2"
 
 _gitname=silos-apps
 pkgname="silo-${_appname}"
