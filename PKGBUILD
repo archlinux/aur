@@ -1,13 +1,13 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=golang-deepin-lib-git
-pkgver=5.6.0.4.r8.g63cf812
+pkgver=5.6.0.4.r9.ga1b16c4
 pkgrel=1
 pkgdesc='A library containing many useful go routines for things such as glib, gettext, archive, graphic,etc.'
 arch=('any')
 url="https://github.com/linuxdeepin/go-lib"
 license=('GPL3')
-depends=('dbus' 'libpulse' 'gdk-pixbuf2' 'mobile-broadband-provider-info' 'libx11'
+depends=('dbus' 'libpulse' 'gdk-pixbuf2' 'gdk-pixbuf-xlib' 'mobile-broadband-provider-info' 'libx11'
          'golang-gopkg-alecthomas-kingpin.v2' 'golang-deepin-gir-git'
          'golang-github-linuxdeepin-go-x11-client-git' 'golang-golang-x-net' 'golang-golang-x-image')
          # 'golang-github-cryptix-wav' not packaged yet, paused until our go packaging standards formed
