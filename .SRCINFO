@@ -1,0 +1,20 @@
+pkgbase = yorick-z-git
+	pkgdesc = Yorick support for zlib, png, jpeg and mpeg
+	pkgver = 20201115
+	pkgrel = 1
+	url = https://github.com/LLNL/yorick-z
+	arch = i686
+	arch = x86_64
+	groups = science
+	groups = yorick-all
+	license = GPL
+	makedepends = git
+	makedepends = yorick
+	makedepends = zlib
+	makedepends = libpng
+	makedepends = libjpeg-turbo
+	makedepends = ffmpeg
+	depends = yorick
+
+pkgname = yorick-z-git
+
