@@ -1,0 +1,21 @@
+pkgbase = yorick-spydr-git
+	pkgdesc = Image display tool in yorick
+	pkgver = 20201115
+	pkgrel = 1
+	url = https://github.com/frigaut/yorick-spydr
+	arch = any
+	groups = science
+	groups = yorick-all
+	license = GPL
+	makedepends = git
+	makedepends = yorick
+	depends = yorick
+	depends = pygtk
+	depends = yorick-yao-git
+	depends = python2
+	provides = yorick-spydr
+	conflicts = yorick-spydr
+	replaces = yorick-spydr
+
+pkgname = yorick-spydr-git
+
