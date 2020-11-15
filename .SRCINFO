@@ -1,6 +1,6 @@
 pkgbase = vendor-reset-git
 	pkgdesc = reset routines for navi et al.
-	pkgver = 0.0.13
+	pkgver = 0.0.17.r94
 	pkgrel = 1
 	url = https://github.com/gnif/vendor-reset
 	arch = any

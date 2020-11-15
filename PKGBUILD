@@ -1,8 +1,8 @@
 # Maintainer: Spencer Harmon
 
 pkgname="vendor-reset-git"
-pkgver=0
-pkgrel=2
+pkgver=0.0.17.r94
+pkgrel=1
 epoch=
 pkgdesc="reset routines for navi et al."
 arch=('any')
@@ -25,7 +25,8 @@ source=("git://github.com/gnif/vendor-reset")
 noextract=()
 md5sums=('SKIP')
 pkgver(){
-  . $srcdir/vendor-reset/dkms.conf; echo $PACKAGE_VERSION
+  cd $srcdir/vendor-reset
+  printf '%s.r%s' $(. dkms.conf; echo $PACKAGE_VERSION) $(git rev-list --count HEAD)
 }
 
 build() {
