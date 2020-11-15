@@ -1,7 +1,7 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 
 pkgname=sphobjinv
-pkgver=2.0.1
+pkgver=2.1b1
 pkgrel=1
 pkgdesc='Toolkit for manipulation and inspection of Sphinx objects.inv files'
 arch=(any)
@@ -17,7 +17,7 @@ makedepends=(install-wheel-scripts)
 _pyarch=py3
 _wheel="${pkgname/-/_}-$pkgver-$_pyarch-none-any.whl"
 source=("https://files.pythonhosted.org/packages/$_pyarch/${pkgname::1}/$pkgname/$_wheel")
-sha256sums=('57fcf0672882ce542ce4c6773416c804eeb31c99e5bb83599a12032bd053cad9')
+sha256sums=('c2b3bd06fcd37ee77a71e081551584a6cc38044c815253ac2396824a4d900bb9')
 noextract=("$_wheel")
 
 package() {
