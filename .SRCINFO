@@ -1,0 +1,18 @@
+pkgbase = gsubs
+	pkgdesc = A desktop app that finds you the perfect subtitle match
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://cholaware.com/gsubs
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = electron9
+	source = gsubs-1.0.3.tar.gz::https://github.com/sanjevirau/gsubs/archive/v1.0.3.tar.gz
+	source = gsubs.desktop
+	source = gsubs.sh
+	sha256sums = c75c59f273fa8fe8bc98182f50486552defb91dff247571509e436809b76a245
+	sha256sums = 977b34d613aeac66d6009033e03c6d5138135be079bb5c6ab1442c91251683bf
+	sha256sums = 01eb6b7b04403e5d8df76ba0ad4601e22054d25f922d7cab3b7f8a9d9877804c
+
+pkgname = gsubs
+

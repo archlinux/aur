@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=gSubs
+Comment=Finds you the perfect subtitle match
+Exec=gsubs
+Terminal=false
+Type=Application
+Icon=gsubs
+Categories=Utility;
