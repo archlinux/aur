@@ -6,8 +6,8 @@
 
 pkgname=libftdi-aur
 pkgver=1.5
-pkgrel=1
-pkgdesc="A library to talk to FTDI chips, optional python bindings."
+pkgrel=2
+pkgdesc="A library to talk to FTDI chips, optional python bindings. (From source, updated version - 1.5)"
 arch=('x86_64')
 url="https://www.intra2net.com/en/developer/libftdi/download.php"
 license=('GPL2' 'LGPL2.1')

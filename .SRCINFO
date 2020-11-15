@@ -1,7 +1,7 @@
 pkgbase = libftdi-aur
-	pkgdesc = A library to talk to FTDI chips, optional python bindings.
+	pkgdesc = A library to talk to FTDI chips, optional python bindings. (From source, updated version - 1.5)
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.intra2net.com/en/developer/libftdi/download.php
 	arch = x86_64
 	license = GPL2
