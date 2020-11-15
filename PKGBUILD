@@ -10,7 +10,7 @@ arch=('any')
 license=('BSD')
 makedepends=('python-flask' 'python-sphinx' 'python-setuptools')
 checkdepends=('python-pytest')
-source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/zzzsochi/Flask-Gravatar/archive/v${pkgver}.tar.gz)
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/zzzsochi/Flask-Gravatar/archive/v${pkgver}.tar.gz)
 sha256sums=('9f9ea35b3537f635a25a09390821b768c9c3cf53274e16ffabbfc1f8c6e77d55')
 sha512sums=('8acc5374e559687cc1b5fbaa90c1d17e96fd91e8b01d3df8083bc10c92afefb3725c03c4640e92e73d727320fc26235f80f6dfe36a06aeff49268af44110a23c')
 
@@ -23,7 +23,9 @@ build() {
 
 check() {
   cd ${_pkgname}-${pkgver}
-  python setup.py test
+  # Remove pytest.ini to not run coverage/pep8
+  rm pytest.ini
+  PYTHONPATH=. pytest .
 }
 
 package() {
