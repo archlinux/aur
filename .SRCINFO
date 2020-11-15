@@ -1,12 +1,11 @@
 pkgbase = gamescope
 	pkgdesc = The micro-compositor formerly known as steamcompmgr
-	pkgver = 3.7
+	pkgver = 3.7.1
 	pkgrel = 0
 	url = https://github.com/Plagman/gamescope
 	arch = x86_64
 	license = BSD
 	license = custom:BSD 2-Clause "Simplified" License
-	makedepends = git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = cmake
@@ -34,12 +33,12 @@ pkgbase = gamescope
 	conflicts = gamescope-git
 	conflicts = libliftoff
 	replaces = steamcompmgr
-	source = https://github.com/Plagman/gamescope/archive/3.7.tar.gz
-	source = git+https://github.com/emersion/libliftoff.git#commit=95da3ee649fe42bb147789d5092e95c8f61fab77
-	source = git+https://github.com/swaywm/wlroots.git#commit=751a21d94f1b4f0345d040ddfd54b723631d5991
-	md5sums = 9c2d2fcb89cf772d1a93bbafdf5d11f4
-	md5sums = SKIP
-	md5sums = SKIP
+	source = https://github.com/Plagman/gamescope/archive/3.7.1.tar.gz
+	source = https://github.com/emersion/libliftoff/archive/24abeb923f52176808461e664776b56d52960d3e.tar.gz
+	source = https://github.com/swaywm/wlroots/archive/238d1c078fb03338e9f271d98f7bf6b1fc399285.tar.gz
+	sha256sums = 044f7969b796e678415ca7762fb21c04ecb331660b442b4fdcc389410ef36c6f
+	sha256sums = eccaafc0a007e61189e6cc5c0f2b6455aadc80a0dd81a79b73be4ba8f5149ab8
+	sha256sums = fa2282ccf49bea061b11927bbe908b2c80806d9318f6f5e4eb3e3008e7f6410a
 
 pkgname = gamescope
 
