@@ -11,3 +11,15 @@ post_install() {
     echo ""
     echo ""
 }
+
+post_upgrade() {
+    fix_scaling=$(vercmp 7.4.1-2 $2)
+    if [[ $fix_scaling -lt 0 ]]
+    then
+        echo ""
+        echo ">>> The _JAVA_OPTIONS variable is now set at launch to improve the UI-scaling."
+        echo ">>> You may want to reconsider enabliung UI-scaling if you had issues."
+        echo ">>> The setting is at Options -> Preferences -> General."
+        echo ""
+    fi
+}

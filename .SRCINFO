@@ -1,7 +1,7 @@
 pkgbase = xmlmind-xmleditor
 	pkgdesc = IDE for editing XML files
 	pkgver = 9.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xmlmind.com/xmleditor
 	install = xxe.install
 	arch = any

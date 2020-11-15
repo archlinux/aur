@@ -4,7 +4,7 @@ pkgname=xmlmind-xmleditor
 _pkgname=xxe
 pkgver=9.4.1
 _pkgver=9_4_1
-pkgrel=1
+pkgrel=2
 pkgdesc="IDE for editing XML files"
 license=('Custom')
 url="https://www.xmlmind.com/xmleditor"
@@ -28,6 +28,25 @@ prepare() {
       --startupnotify=True \
       --exec=xxe \
       --categories='Development;IDE;Java'
+
+  # Set Java options with a launch script
+
+  cat << EOF > xxe.sh
+#!/bin/sh
+
+# Useful Java options:
+# -Dawt.useSystemAAFontSettings=on -> Required for proper scaling
+# -Dswing.aatext=true -> Optional
+# -Dsun.java2d.opengl=true -> Would probably cause issues with the context menus
+# -Djdk.gtk.version=3 -> Use gtk3 instead of gtk2 when using the GTK LAF
+# -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -> Set LAF
+
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
+
+exec /opt/xxe/bin/xxe
+EOF
+
+
 
   # Save license in plain text format
   # (downloading, using consistent headings, removing website navigation stuff and website footer)
@@ -56,7 +75,6 @@ package() {
 
   cp -a xxe-perso-${_pkgver} "${pkgdir}"/opt/xxe/
 
-  ln -s /opt/xxe/bin/xxe "${pkgdir}"/usr/bin/xxe
   ln -s /opt/xxe/bin/xxetool "${pkgdir}"/usr/bin/xxetool
   ln -s /opt/xxe/bin/xmltool "${pkgdir}"/usr/bin/xmltool
   ln -s /opt/xxe/bin/csscheck "${pkgdir}"/usr/bin/csscheck
@@ -75,6 +93,7 @@ package() {
         "${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/apps/xxe.png
   done
 
+  install -Dm755 xxe.sh "${pkgdir}"/usr/bin/xxe
   install -Dm644 xxe.desktop -t "${pkgdir}"/usr/share/applications/
 
   install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${_pkgname}/
