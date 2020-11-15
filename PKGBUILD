@@ -1,7 +1,7 @@
 # Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 pkgname=3proxy
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiny crossplatform proxy server"
 arch=('any')
 url="http://www.3proxy.ru/"
@@ -28,7 +28,7 @@ prepare() {
     cd "$srcdir/$pkgname-$pkgver"
     echo -e "  \e[1;34m->\033[0m \e[1;37mPatching Makefile for Linux...\033[0m"
     # O2 and march should be dound in makepkg.conf, so let's remove them. Install should not really perform anything but calling another targets
-    sed --follow-symlinks -i.bak -e 's| -O2||g;s|CFLAGS = -g|CFLAGS =|;s|CC = gcc|CC ?= gcc|;s|LN = gcc|LN ?= gcc|;137,$d' Makefile.Linux
+    sed --follow-symlinks -i.bak -e 's| -O2||g;s|CFLAGS = -g|CFLAGS =|;s|CC = gcc|CC ?= gcc|;s|LN = gcc|LN ?= gcc|' Makefile.Linux
 }
 
 build() {
@@ -39,7 +39,7 @@ build() {
 package() {
     cd "$srcdir/3proxy-$pkgver"
     make prefix="$_prefix" install DESTDIR="$pkgdir" ETCDIR="$pkgdir$_etcdir" INITDIR="$pkgdir$_initdir" RUNBASE="$pkgdir$_runbase" LOGBASE="$pkgdir$_logbase" -f Makefile.Linux
-    mkdir "$pkgdir/usr/lib"
+    #mkdir "$pkgdir/usr/lib"
     mv "$pkgdir"/usr/local/3proxy/libexec/*.so "$pkgdir"/usr/lib/
     rm -rf "$pkgdir/usr/local"
     ( cd ${pkgdir}${_prefix}/bin && mv proxy 3proxy-proxy ) || return 1
