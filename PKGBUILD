@@ -1,6 +1,5 @@
 pkgname=gnucobol
-pkgver=3.1rc1
-_tarver="3.1-rc1"
+pkgver=3.1
 pkgdesc="A free, open source and modern COBOL compiler"
 pkgrel=1
 arch=("x86_64")
@@ -10,11 +9,11 @@ depends=("db" "gmp")
 makedepends=("gcc" "help2man")
 options=("!libtool")
 source=(
-	"https://alpha.gnu.org/gnu/gnucobol/$pkgname-$_tarver.tar.xz"
-	"https://alpha.gnu.org/gnu/gnucobol/$pkgname-$_tarver.tar.xz.sig"
+	"https://ftp.gnu.org/gnu/gnucobol/$pkgname-$pkgver.tar.xz"
+	"https://ftp.gnu.org/gnu/gnucobol/$pkgname-$pkgver.tar.xz.sig"
 )
 sha256sums=(
-	"c2e41c2ba520681a67c570d7246d25c31f7f55c8a145aaec3f6273a500a93a76"
+	"28890804ada74dee1433b5c46f6774ce9740edd2ba047443c3e634217fa0c21a"
 	"SKIP"
 )
 validpgpkeys=(
@@ -22,14 +21,14 @@ validpgpkeys=(
 )
 
 build() {
-	cd "$srcdir/$pkgname-$_tarver"
+	cd "$srcdir/$pkgname-$pkgver"
 
 	./configure --prefix=/usr --infodir=/usr/share/info
 	make
 }
 
 package() {
-	cd "$srcdir/$pkgname-$_tarver"
+	cd "$srcdir/$pkgname-$pkgver"
 	make DESTDIR="$pkgdir" install
 }
 
