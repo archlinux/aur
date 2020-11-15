@@ -1,7 +1,7 @@
 pkgbase = med-memory-editor
 	pkgdesc = Linux alternative game memory editor
 	pkgver = 3.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/allencch/med
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = med-memory-editor
 	source = https://github.com/allencch/med/archive/3.6.1.tar.gz
 	source = org.archlinux.pkexec.med.policy
 	source = med.desktop
-	md5sums = d71767293163e4525f95c9cefcf28b83
-	md5sums = 6f6f9b3d4f242bf06f9d5e4b150fc96a
-	md5sums = b9ab16446697880e1878aafc77e6b463
+	sha256sums = 8aaedfc257e950b9fe512c9134cecc6ccb2df4a62b4f0781962a8e21ae254884
+	sha256sums = f09800e12134df7e65c7336cf9851be4013cb8795778941dbf97d5868894e76e
+	sha256sums = dbaa52dd26fff0c1665773de587e62ef755391e1183cc001b6fe1a2658939448
 
 pkgname = med-memory-editor
 
