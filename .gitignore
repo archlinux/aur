@@ -1,3 +1,5 @@
+*.xz
+*.zst
 /*.tar.xz
 /c64-debugger
 /pkg
