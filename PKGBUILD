@@ -3,7 +3,7 @@
 pkgbase=python-remind-git
 pkgname=python-remind-git
 _module='remind'
-pkgver=0.15.0.r3.g8891d75
+pkgver=0.15.0.r4.g4aa08e8
 pkgrel=1
 pkgdesc="Remind Python library"
 url="https://github.com/jspricke/python-remind"
