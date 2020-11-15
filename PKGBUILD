@@ -5,12 +5,12 @@
 _gitname=tinyMediaManager
 pkgname=tiny-media-manager
 pkgver=4.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-OS media managment tool"
 arch=('any')
 url="https://www.tinymediamanager.org/"
 license=('Apache')
-depends=('libmediainfo' 'java-runtime')
+depends=('libmediainfo' 'java-runtime>=11')
 install=tinyMediaManager.install
 noextract=("tmm_${pkgver}_linux.tar.gz")
 source=("tmm_${pkgver}_linux.tar.gz::https://gitlab.com/tinyMediaManager/tinyMediaManager/-/package_files/4147080/download"
