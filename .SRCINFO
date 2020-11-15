@@ -1,6 +1,6 @@
 pkgbase = qv2ray-plugin-command-git
 	pkgdesc = Qv2ray Plugin: Command
-	pkgver = 20200425.r5.59450df
+	pkgver = 20201115.r10.c47fd64
 	pkgrel = 1
 	url = https://github.com/Qv2ray/QvPlugin-Command
 	arch = x86_64
