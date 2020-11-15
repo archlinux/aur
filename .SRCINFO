@@ -1,6 +1,6 @@
 pkgbase = grafana-bin
 	pkgdesc = A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb - binary version
-	pkgver = 7.3.1
+	pkgver = 7.3.2
 	pkgrel = 1
 	url = http://grafana.org
 	install = grafana.install
@@ -14,14 +14,14 @@ pkgbase = grafana-bin
 	backup = etc/grafana/grafana.ini
 	source = grafana.service
 	sha256sums = 07512df687b1cf622c1a71b67f3cdf286ba02d7b87a844a4c51f89e0228074f2
-	source_x86_64 = https://dl.grafana.com/oss/release/grafana-7.3.1.linux-amd64.tar.gz
-	sha256sums_x86_64 = 2521bcb612d3038afcb167d097d35c0a7e5d66956982b1239c582ff423bf1167
-	source_armv6h = https://dl.grafana.com/oss/release/grafana-7.3.1.linux-armv6.tar.gz
-	sha256sums_armv6h = 7a014238d423b56d7c5bb3c6ed0cde06f5477e5400a383ab0ad3fd8e844aca1e
-	source_armv7h = https://dl.grafana.com/oss/release/grafana-7.3.1.linux-armv7.tar.gz
-	sha256sums_armv7h = 0f87d16076b64989dd3f2da99f60c870370b88097799600ce0522a485b7f3982
-	source_aarch64 = https://dl.grafana.com/oss/release/grafana-7.3.1.linux-arm64.tar.gz
-	sha256sums_aarch64 = fecd43333c59ec50dbd8d11dc108f8973c6a53fb653734a47f1e55acdf986ae9
+	source_x86_64 = https://dl.grafana.com/oss/release/grafana-7.3.2.linux-amd64.tar.gz
+	sha256sums_x86_64 = 8a49de45b78a928757b0ffc7d65613074efc03cf2aac1bec8ba34a83586b5523
+	source_armv6h = https://dl.grafana.com/oss/release/grafana-7.3.2.linux-armv6.tar.gz
+	sha256sums_armv6h = 4b46920fd36c7364954cc3bfa22461558505fcc52a6db20fbf37f7dc435d66ff
+	source_armv7h = https://dl.grafana.com/oss/release/grafana-7.3.2.linux-armv7.tar.gz
+	sha256sums_armv7h = 7f2e5510a476cf57c56b7ea7668cc1fb07afe62477343b5de7e058554f7bfee0
+	source_aarch64 = https://dl.grafana.com/oss/release/grafana-7.3.2.linux-arm64.tar.gz
+	sha256sums_aarch64 = 385c4606d876dbd61579197dd2be86eac03add2d39b15fd58b06a5106da3667e
 
 pkgname = grafana-bin
 
