@@ -1,0 +1,21 @@
+pkgbase = python-bitbox02
+	pkgdesc = Python code to communicate with BitBox02 cryptocurrency wallet
+	pkgver = 9.2.1
+	pkgrel = 1
+	url = https://github.com/digitalbitbox/bitbox02-firmware
+	arch = any
+	license = Apache
+	depends = python
+	depends = bitbox-udev
+	depends = python-tzlocal
+	depends = python-pyserial
+	depends = python-requests
+	depends = python-base58
+	depends = python-semver
+	depends = python-noiseprotocol-git
+	options = !emptydirs
+	source = bitbox02-firmware-firmware-btc-only-v9.2.1::https://github.com/digitalbitbox/bitbox02-firmware/archive/firmware-btc-only/v9.2.1.tar.gz
+	sha256sums = 0036a13b114760adc1fdb719cc97033a9dabe44f1a713e120ded4a917d905a2a
+
+pkgname = python-bitbox02
+
