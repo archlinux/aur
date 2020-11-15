@@ -1,0 +1,15 @@
+pkgbase = cbr2pdf-git
+	pkgdesc = cbr2pdf is a bash script will convert all .cbr and .cbz files to .pdf
+	pkgver = 1.r16.0b5762f
+	pkgrel = 1
+	url = https://gitlab.com/airatb1508/cbr2pdf
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = img2pdf
+	depends = p7zip
+	source = git+https://gitlab.com/airatb1508/cbr2pdf.git
+	sha1sums = SKIP
+
+pkgname = cbr2pdf-git
+
