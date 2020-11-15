@@ -2,7 +2,7 @@
 
 pkgname=python-pook
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Versatile and expressive HTTP traffic mocking and testing made simple in Python"
 url="https://github.com/h2non/pook"
 license=('MIT')
@@ -35,4 +35,7 @@ package() {
   python setup.py install --root="$pkgdir" --optimize=1
 
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+
+  # It's only present when tests are enabled, so adding -f
+  rm -rf "$pkgdir"/usr/lib/python3.9/site-packages/tests
 }
