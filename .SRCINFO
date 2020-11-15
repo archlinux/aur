@@ -1,0 +1,23 @@
+pkgbase = python-blue-loader
+	pkgdesc = Python tools to communicate with Ledger Blue, Nano S and Nano X
+	pkgver = 0.1.34
+	pkgrel = 1
+	url = https://github.com/LedgerHQ/blue-loader-python
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-ecpy
+	depends = python
+	depends = python-hidapi
+	depends = python-protobuf
+	depends = python-pycryptodomex
+	depends = python-future
+	depends = python-pillow
+	depends = python-websocket-client
+	depends = python-u2flib-host
+	optdepends = python-pyscard: smartcard
+	source = python-blue-loader-0.1.34.tar.gz::https://github.com/LedgerHQ/blue-loader-python/archive/0.1.34.tar.gz
+	sha256sums = 46c22c8ca4961f5a471bb8eae9d4a681737aa345e8f8760e3a00bae66f4a733e
+
+pkgname = python-blue-loader
+
