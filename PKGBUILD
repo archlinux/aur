@@ -2,7 +2,7 @@
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
 pkgname=coreboot-utils-git
-pkgver=4.12.r2683.g8e1ea525d1e
+pkgver=4.12.r4034.g17cd9058284
 pkgrel=1
 pkgdesc='Tools and utilities to work with coreboot firmware'
 url='https://www.coreboot.org/'
@@ -27,9 +27,11 @@ source=(git+https://review.coreboot.org/coreboot
         git+https://review.coreboot.org/cmocka
         git+https://review.coreboot.org/qc_blobs
         git+https://review.coreboot.org/9esec-security-tooling
+        git+https://review.coreboot.org/STM
         # vboot provides vb2_api.h needed by cbfstool
         autoport-tool-paths.patch)
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -76,6 +78,7 @@ prepare() {
   git config -f .gitmodules 'submodule.3rdparty/cmocka.url' "$srcdir/cmocka"
   git config -f .gitmodules 'submodule.3rdparty/qc_blobs.url' "$srcdir/qc_blobs"
   git config -f .gitmodules 'submodule.3rdparty/intel-sec-tools.url' "$srcdir/9esec-security-tooling"
+  git config -f .gitmodules 'submodule.3rdparty/stm.url' "$srcdir/STM"
 
   git submodule update --init
 
