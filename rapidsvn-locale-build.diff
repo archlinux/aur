@@ -1,0 +1,24 @@
+Description: Fix wrong conditional.
+--- a/src/locale/Makefile.in
++++ b/src/locale/Makefile.in
+@@ -405,8 +405,7 @@
+ distclean: clean
+ clean:
+ 	for i in $(RAPIDSVN_LANGUAGES) ; do \
+-		test -f $(srcdir)/$$i/rapidsvn.mo && rm $(srcdir)/$$i/rapidsvn.mo ; \
+-		fi ; \
++		test -f $(srcdir)/$$i/rapidsvn.mo && rm $(srcdir)/$$i/rapidsvn.mo || true; \
+ 	done
+ .PHONY: all-mo
+ 
+--- a/src/locale/Makefile.am
++++ b/src/locale/Makefile.am
+@@ -38,7 +38,6 @@
+ distclean: clean
+ clean:
+ 	for i in $(RAPIDSVN_LANGUAGES) ; do \
+-		test -f $(srcdir)/$$i/rapidsvn.mo && rm $(srcdir)/$$i/rapidsvn.mo ; \
+-		fi ; \
++		test -f $(srcdir)/$$i/rapidsvn.mo && rm $(srcdir)/$$i/rapidsvn.mo || true; \
+ 	done
+ .PHONY: all-mo

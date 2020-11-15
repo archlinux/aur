@@ -1,0 +1,32 @@
+Description: Link libsvncpp with dependent libraries.
+--- a/src/svncpp/Makefile.in
++++ b/src/svncpp/Makefile.in
+@@ -75,7 +75,9 @@
+   }
+ am__installdirs = "$(DESTDIR)$(libdir)"
+ LTLIBRARIES = $(lib_LTLIBRARIES)
+-libsvncpp_la_LIBADD =
++am__DEPENDENCIES_1 =
++libsvncpp_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
++	$(am__DEPENDENCIES_1)
+ am_libsvncpp_la_OBJECTS = apr.lo client.lo client_annotate.lo \
+ 	client_cat.lo client_diff.lo client_ls.lo client_modify.lo \
+ 	client_property.lo client_status.lo context.lo datetime.lo \
+@@ -243,6 +245,7 @@
+ noinst_HEADERS = ${wildcard *.hpp}
+ lib_LTLIBRARIES = libsvncpp.la
+ libsvncpp_la_LDFLAGS = -version-info 3:0:0
++libsvncpp_la_LIBADD = $(SVN_LIBS) $(APR_LIBS)
+ libsvncpp_la_SOURCES = \
+ 	apr.cpp \
+ 	client.cpp \
+--- a/src/svncpp/Makefile.am
++++ b/src/svncpp/Makefile.am
+@@ -3,6 +3,7 @@
+ lib_LTLIBRARIES=libsvncpp.la
+ 
+ libsvncpp_la_LDFLAGS=-version-info 3:0:0
++libsvncpp_la_LIBADD=$(SVN_LIBS) $(APR_LIBS)
+ libsvncpp_la_SOURCES= \
+ 	apr.cpp \
+ 	client.cpp \
