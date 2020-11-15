@@ -40,7 +40,6 @@ pkgbase = deepin-daemon-git
 	depends = org.freedesktop.secrets
 	depends = noto-fonts
 	depends = imwheel
-	depends = gdk-pixbuf-xlib
 	optdepends = networkmanager: for network management support
 	optdepends = bluez: for bluetooth support
 	optdepends = iw: for miracast module

@@ -11,7 +11,7 @@ depends=('deepin-desktop-schemas-git' 'ddcutil' 'deepin-api-git' 'gvfs' 'iso-cod
          'mobile-broadband-provider-info' 'deepin-polkit-agent-git'
          'deepin-polkit-agent-ext-gnomekeyring' 'udisks2' 'upower'
          'libxkbfile' 'accountsservice' 'deepin-desktop-base-git' 'bamf' 'pulseaudio'
-         'org.freedesktop.secrets' 'noto-fonts' 'imwheel' 'gdk-pixbuf-xlib')
+         'org.freedesktop.secrets' 'noto-fonts' 'imwheel')
 makedepends=('golang-github-linuxdeepin-go-dbus-factory-git' 'golang-deepin-gir-git' 'golang-deepin-lib-git'
              'deepin-api-git' 'golang-github-nfnt-resize' 'golang-gopkg-yaml.v2' 'sqlite' 'deepin-gettext-tools-git'
              'git' 'mercurial' 'python-gobject' 'networkmanager' 'bluez' 'go')
