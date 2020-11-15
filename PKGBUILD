@@ -30,25 +30,14 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  make NO_STEAMWORKS=true RELEASE=true
+  make NO_STEAMWORKS=true RELEASE=true ENABLE_LOCAL_USER_DIR=true DATA_DIR=/usr/share/keeperrl
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
 
-  local instdir="/opt/keeperrl"
-
-  install -dm775 "$pkgdir/$instdir"
-  install -Dm755 keeper "$pkgdir/$instdir/"
-  install -Dm644 appconfig.txt "$pkgdir/$instdir/"
-  cp -a data* "$pkgdir/$instdir/"
-  
-  install -dm755 "$pkgdir/usr/bin"
-  cat >"$pkgdir/usr/bin/keeperrl" <<EOF
-#!/bin/sh
-cd $instdir/
-exec ./keeper "\$@"
-EOF
-  chmod 755 "$pkgdir/usr/bin/keeperrl"
+  install -Dm755 keeper "$pkgdir/usr/bin/keeperrl"
+  install -Dm644 appconfig.txt -t "$pkgdir/usr/share/keeperrl"
+  cp -a data* "$pkgdir/usr/share/keeperrl/"
 }
 
