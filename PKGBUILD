@@ -2,7 +2,7 @@
 
 pkgname=nordselect
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Select the ideal NordVPN server"
 arch=('any')
 url="https://github.com/editicalu/nordselect"
@@ -12,7 +12,6 @@ makedepends=('rustup')
 provides=('nordselect')
 source=("https://github.com/editicalu/$pkgname/archive/$pkgver.tar.gz")
 sha512sums=("6b41f39ac4f62b75b123ea6d4516a788983cee856e6fd036c63763c6c0fb53208d1887d3f4f789a733c8fb2792228b5c9c8c3766ad7fb8c5ed2b902fe57d6626")
-validpgpkeys=("CC0B7CE9604A8A91F0D70B778489DB248465FDD7")
 
 build() {
 	cd "$pkgname-$pkgver"
