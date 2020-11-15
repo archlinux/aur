@@ -1,7 +1,7 @@
 # Maintainer: Pierre Mavro <pmavro@qovery.com>
 pkgname=qovery-cli
 pkgver=0.32.10
-pkgrel=2
+pkgrel=1
 pkgdesc="Qovery Command Line Interface"
 arch=(x86_64)
 url="https://github.com/Qovery/qovery-cli"
