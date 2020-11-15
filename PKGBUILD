@@ -26,5 +26,3 @@ package() {
   install -D -m644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
 }
 
-
-
