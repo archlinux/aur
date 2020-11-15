@@ -4,7 +4,7 @@
 pkgname=naev-git
 _pkgname=naev
 pkgdesc="2d action/rpg space game similar to Escape Velocity, development branch"
-pkgver=0.8.0.beta1
+pkgver=v0.8.0.beta.3
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed -r 's/^naev-//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags --exclude=nightly | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
