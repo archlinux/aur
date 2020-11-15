@@ -1,0 +1,11 @@
+post_install() {
+   echo " ==> Groops detects optional dependencies at compile time. If you"
+   echo " ==> want to use them, you must recompile groops after installing"
+   echo " ==> these dependencies. You will probably want the groopsgui-git"
+   echo " ==> package as well. Post-installation guide and info at"
+   echo " ==> https://github.com/groops-devs/groops."
+}
+
+post_upgrade() {
+  post_install $1 $2
+}
