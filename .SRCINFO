@@ -1,6 +1,6 @@
 pkgbase = qv2ray-plugin-trojan-go-git
 	pkgdesc = Qv2ray Plugin: Trojan-Go (Stable Build)
-	pkgver = 20200715.r18.a86ffd6
+	pkgver = 20201115.r28.7a0c3c9
 	pkgrel = 1
 	url = https://github.com/Qv2ray/QvPlugin-Trojan-Go
 	arch = x86_64
