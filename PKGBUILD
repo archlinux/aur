@@ -4,7 +4,7 @@ pkgname=ambertools
 pkgver=20
 _releasever=20
 _gccver=9.3.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Biomolecular simulation package (tools only)"
 url="http://ambermd.org/"
 license=(GPL LGPL)
@@ -26,19 +26,23 @@ source=("local://AmberTools${pkgver}.tar.bz2"
         "sander"
         "sander.MPI"
         "sander.OMP"
-        ".version")
+        ".version"
+        "cuda-11.1.patch")
 sha256sums=('b1e1f8f277c54e88abc9f590e788bbb2f7a49bcff5e8d8a6eacfaf332a4890f9'
             '030bde940d83a9f3f44abfb0a412e2866c181fb9c5890bf808d6d7868c099b2a'
             '141187b3a2f4fa6e198d87515174e429ebd8e495f1452ef2f79b9415249f1b1b'
             'd99716e83d04217fd653d3a44b348e0d948ba671fb246480cf2b764fd4c07280'
             '675895e85b2ac518aee4d196f5162d8110e3c4a4d147f566bc2160f174a65c1c'
             '37e8c94c7d1ed88ace6a67eba5bcc146f030db0a8b230794b0b246cb635bb44c'
-            '0736c740ec86bbe1545df3b66566d6fcffdd78368e457bb96fca2501d124de18')
+            '0736c740ec86bbe1545df3b66566d6fcffdd78368e457bb96fca2501d124de18'
+            'b666b2f186c5fd40b0be71a52b854060deea690205dbca24606c13c97cbf07de')
 
 prepare() {
   cd ${srcdir}/amber${_releasever}_src
 
   ./update_amber --update
+
+  patch -Np0 -i "${srcdir}/cuda-11.1.patch"
 }
 
 build() {
