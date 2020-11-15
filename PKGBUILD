@@ -1,7 +1,7 @@
 # Maintainer: Simone Scalabrino <s.scalabrino9@gmail.com>
 _appname="office365"
 _appdesc="Standalone silo app for Microsoft Office365 suite"
-_gittag="0.2"
+_gittag="0.3"
 
 _gitname=silos-apps
 pkgname="silo-${_appname}"
