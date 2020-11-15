@@ -1,7 +1,7 @@
 # Maintainer: Desmond Kabus <desmond.kabus@protonmail.com>
 
 pkgname=remind-agenda-git
-pkgver=r5.298b9c8
+pkgver=r6.8fa2d63
 pkgrel=1
 pkgdesc="Interactive terminal interface for the calendar program 'remind'"
 arch=('any')
