@@ -1,7 +1,7 @@
 # Maintainer: DuckSoft <realducksoft at gmail dot com>
 pkgname=qv2ray-plugin-command-dev-git
 _pkgname=qv2ray-plugin-command
-pkgver=20200517.r6.9ab40d3
+pkgver=20201115.r21.566fe69
 pkgrel=1
 pkgdesc="Qv2ray Plugin: Command (Development Build)"
 arch=('x86_64')
@@ -30,13 +30,14 @@ build() {
     cd "$srcdir"/"$_pkgname"
     mkdir -p build && cd build
     cmake .. \
+        -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -GNinja
-    ninja
+    cmake --build .
 }
 package() {
     cd "$srcdir"/"$_pkgname"/build
-    install -Dm644 libQvCommandPlugin.so "$pkgdir"/usr/share/qv2ray/plugins/libQvCommandPlugin.so
+    cmake --install .
     # NOTE: This virtual dependency will be introduced after Qv2ray stablize its interface.
     #     depends+=(${_virtualdepends[@]})
 } 

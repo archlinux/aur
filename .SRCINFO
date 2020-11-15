@@ -1,6 +1,6 @@
 pkgbase = qv2ray-plugin-command-dev-git
 	pkgdesc = Qv2ray Plugin: Command (Development Build)
-	pkgver = 20200425.r5.59450df
+	pkgver = 20201115.r21.566fe69
 	pkgrel = 1
 	url = https://github.com/Qv2ray/QvPlugin-Command
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = qv2ray-plugin-command-dev-git
 	depends = qv2ray
 	provides = qv2ray-plugin-command
 	conflicts = qv2ray-plugin-command
-	source = qv2ray-plugin-command::git+https://github.com/Qv2ray/QvPlugin-Command
+	source = qv2ray-plugin-command::git+https://github.com/Qv2ray/QvPlugin-Command#branch=dev
 	sha512sums = SKIP
 
 pkgname = qv2ray-plugin-command-dev-git
