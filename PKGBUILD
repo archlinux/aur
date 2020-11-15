@@ -24,23 +24,6 @@ changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LedgerHQ/blue-loader-python/archive/${pkgver}.tar.gz")
 sha256sums=('46c22c8ca4961f5a471bb8eae9d4a681737aa345e8f8760e3a00bae66f4a733e')
 
-#prepare() {
-#	cd "$pkgname-$pkgver"
-#	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-#}
-
-#build() {
-#	cd "$pkgname-$pkgver"
-#	./configure --prefix=/usr
-#	make
-#}
-
-#check() {
-#	cd "$pkgname-$pkgver"
-#	make -k check
-#}
-
-
 package() {
   cd blue-loader-python-${pkgver}
   python setup.py install -O1 --root="${pkgdir}" --prefix=/usr
