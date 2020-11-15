@@ -1,7 +1,7 @@
 # Maintainer: DuckSoft <realducksoft at gmail dot com>
 pkgname=qv2ray-plugin-trojan-git
 _pkgname=qv2ray-plugin-trojan
-pkgver=20200429.r26.3305c41
+pkgver=20200719.r44.56b7da0
 pkgrel=1
 pkgdesc="Qv2ray Plugin: Trojan"
 arch=('x86_64')
@@ -30,14 +30,15 @@ build() {
     cd "$srcdir"/"$_pkgname"
     mkdir -p build && cd build
     cmake .. \
+        -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DFORCE_TCP_FASTOPEN=ON \
         -GNinja
-    ninja
+    cmake --build .
 }
 package() {
     cd "$srcdir"/"$_pkgname"/build
-    install -Dm644 libQvTrojanPlugin.so "$pkgdir"/usr/share/qv2ray/plugins/libQvTrojanPlugin.so
+    cmake --install .
     # NOTE: This virtual dependency will be introduced after Qv2ray stablize its interface.
     #     depends+=(${_virtualdepends[@]})
 } 

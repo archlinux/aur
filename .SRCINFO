@@ -1,6 +1,6 @@
 pkgbase = qv2ray-plugin-trojan-git
 	pkgdesc = Qv2ray Plugin: Trojan
-	pkgver = 20200429.r26.3305c41
+	pkgver = 20200719.r44.56b7da0
 	pkgrel = 1
 	url = https://github.com/Qv2ray/QvPlugin-Trojan
 	arch = x86_64
