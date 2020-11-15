@@ -8,6 +8,7 @@ pkgbase = i3-gaps-next-git
 	groups = i3
 	groups = i3-vcs
 	license = BSD
+	makedepends = git
 	makedepends = bison
 	makedepends = flex
 	makedepends = asciidoc

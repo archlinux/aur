@@ -13,7 +13,7 @@ groups=('i3' 'i3-vcs')
 depends=('xcb-util-keysyms' 'xcb-util-wm' 'libev' 'yajl'
          'startup-notification' 'pango' 'perl' 'xcb-util-cursor' 'xcb-util-xrm'
          'libxkbcommon-x11')
-makedepends=('bison' 'flex' 'asciidoc' 'xmlto' 'meson')
+makedepends=('git' 'bison' 'flex' 'asciidoc' 'xmlto' 'meson')
 optdepends=('i3lock: For locking your screen.'
             'i3status: To display system information with a bar.')
 options=('docs')
