@@ -2,7 +2,7 @@
 
 pkgname=google-cloud-cpp
 pkgver=1.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ Client Libraries for Google Cloud Services"
 arch=('i686' 'x86_64')
 url="https://github.com/googleapis/google-cloud-cpp/"
@@ -16,13 +16,6 @@ build() {
   cd "$pkgname-$pkgver"
   cmake \
       -DBUILD_TESTING=OFF \
-      -DGOOGLE_CLOUD_CPP_ENABLE_STORAGE=OFF \
-      -DGOOGLE_CLOUD_CPP_ENABLE_BIGQUERY=OFF \
-      -DGOOGLE_CLOUD_CPP_ENABLE_BIGTABLE=OFF \
-      -DGOOGLE_CLOUD_CPP_ENABLE_SPANNER=OFF \
-      -DGOOGLE_CLOUD_CPP_ENABLE_FIRESTORE=ON \
-      -DGOOGLE_CLOUD_CPP_ENABLE_PUBSUB=ON \
-      -DGOOGLE_CLOUD_CPP_ENABLE_GENERATOR=OFF \
       -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/local" \
       -H. -Bcmake-out
   cmake --build cmake-out -- -j "${NCPU:-4}"
