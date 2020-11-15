@@ -1,0 +1,23 @@
+pkgbase = rest-client-bin
+	pkgdesc = Tool to test HTTP/RESTful webservices
+	pkgver = 3.7.1
+	pkgrel = 1
+	url = https://github.com/wiztools/rest-client
+	arch = any
+	license = APACHE
+	makedepends = imagemagick
+	depends = hicolor-icon-theme
+	depends = java-runtime
+	provides = rest-client
+	conflicts = rest-client
+	noextract = restclient-cli-fat-3.7.1.jar
+	noextract = restclient-ui-fat-3.7.1.jar
+	source = https://github.com/wiztools/rest-client/releases/download/3.7.1/restclient-cli-fat-3.7.1.jar
+	source = https://github.com/wiztools/rest-client/releases/download/3.7.1/restclient-ui-fat-3.7.1.jar
+	source = rest-client.png
+	sha256sums = f85f2c0d516f1834745e50567f6f347b30de0531a2aca8f5476f0f973f9fe819
+	sha256sums = ea575df3f96841fbe6a294c04e0357a75f3541dab8d418e0f49e43a393a3daee
+	sha256sums = 6a00823d6a558919ff9c003546d09acab7f0b5b85bc003ebca9694618925e23d
+
+pkgname = rest-client-bin
+
