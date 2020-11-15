@@ -2,8 +2,8 @@
 # Contributor: Utsob Roy <uroybd(at)gmail(dot)com>
 
 pkgname=franz-bin
-pkgver=5.5.0
-pkgrel=2
+pkgver=5.6.0
+pkgrel=1
 pkgdesc='Franz is a free messaging app for services like WhatsApp, Slack, Messenger and many more'
 arch=('x86_64')
 url='https://meetfranz.com'
@@ -14,7 +14,7 @@ conflicts=('franz')
 options=('!strip' '!emptydirs')
 source=("https://github.com/meetfranz/franz/releases/download/v${pkgver//_/-}/franz_${pkgver//_/-}_amd64.deb"
         "${pkgname}.patch")
-sha256sums=('9583941485ef4fe2357b7ec8a0415753e47f145c70d8aafbba0ffc0ba292ee4d'
+sha256sums=('1b82bf5c654b5344ebabaf1ffc1ec128db543d5cf808643e0c71df6bbb51352a'
             'a5a35da27f2cb51bc07e973b443437e4d4cfae4a081f6d2a264363ce550a6be0')
 
 package() {

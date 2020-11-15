@@ -1,7 +1,7 @@
 pkgbase = franz-bin
 	pkgdesc = Franz is a free messaging app for services like WhatsApp, Slack, Messenger and many more
-	pkgver = 5.5.0
-	pkgrel = 2
+	pkgver = 5.6.0
+	pkgrel = 1
 	url = https://meetfranz.com
 	arch = x86_64
 	license = Apache
@@ -15,9 +15,9 @@ pkgbase = franz-bin
 	conflicts = franz
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/meetfranz/franz/releases/download/v5.5.0/franz_5.5.0_amd64.deb
+	source = https://github.com/meetfranz/franz/releases/download/v5.6.0/franz_5.6.0_amd64.deb
 	source = franz-bin.patch
-	sha256sums = 9583941485ef4fe2357b7ec8a0415753e47f145c70d8aafbba0ffc0ba292ee4d
+	sha256sums = 1b82bf5c654b5344ebabaf1ffc1ec128db543d5cf808643e0c71df6bbb51352a
 	sha256sums = a5a35da27f2cb51bc07e973b443437e4d4cfae4a081f6d2a264363ce550a6be0
 
 pkgname = franz-bin
