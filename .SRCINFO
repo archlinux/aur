@@ -1,4 +1,4 @@
-pkgbase = yorick-hdf5
+pkgbase = yorick-hdf5-git
 	pkgdesc = HDF5 wrappers for yorick
 	pkgver = 20201115
 	pkgrel = 1
@@ -13,5 +13,5 @@ pkgbase = yorick-hdf5
 	depends = yorick-yutils-git
 	depends = hdf5_18
 
-pkgname = yorick-hdf5
+pkgname = yorick-hdf5-git
 

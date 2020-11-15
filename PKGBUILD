@@ -1,6 +1,6 @@
 # Maintainer: Francois Rigaut <frigaut at gmail dot com>
 
-pkgname=yorick-hdf5
+pkgname=yorick-hdf5-git
 pkgver=20201115
 pkgrel=1
 pkgdesc="HDF5 wrappers for yorick"
