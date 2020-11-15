@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=oha
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Ohayou(おはよう), HTTP load generator, inspired by rakyll/hey with tui animation"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('openssl')
 makedepends=('rust')
 source=($pkgname-$pkgver.tar.gz::https://github.com/hatoo/oha/archive/v${pkgver}.tar.gz)
-sha512sums=('848d4a7d09e05c4afe14eaf76d4aba0d5c142aeb98f47dff4a0d3775b69224d0bcbb17c9c08c120d4c7f74dae0706bc443362452a893336e3e231a8649255dd3')
+sha512sums=('cf77a0af4b4fb14bed3b884759a541fc71b16359b27f7bd2e598946d850569ed9f8f4b94fbad6961b82ea0b942bb65e146a41b59da0d71066a3b11cb86ade361')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
