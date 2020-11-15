@@ -1,0 +1,17 @@
+pkgbase = yorick-imutil-git
+	pkgdesc = Image manipulation routines for yorick
+	pkgver = 20201115
+	pkgrel = 1
+	url = https://github.com/frigaut/yorick-imutil
+	arch = i686
+	arch = x86_64
+	groups = science
+	groups = yorick-all
+	license = GPL
+	makedepends = git
+	makedepends = yorick
+	depends = yorick
+	depends = yorick-yutils-git
+
+pkgname = yorick-imutil-git
+
