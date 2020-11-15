@@ -1,0 +1,27 @@
+pkgbase = fxxk-xuexiqiangguo-git
+	pkgdesc = 一款帮助成年人（或许未来包括小朋友）自动学刁的软件
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/fuck-xuexiqiangguo/fuck-xuexiqiangguo
+	arch = aarch64
+	arch = x86_64
+	arch = i686
+	arch = armv7l
+	makedepends = yarn
+	makedepends = git
+	makedepends = jq
+	depends = wget
+	depends = unzip
+	depends = gtk3
+	depends = xorg-server-xvfb
+	depends = libxss
+	depends = alsa-lib
+	source = fxxk-xuexiqiangguo-git::git+https://hub.fastgit.org/fuck-xuexiqiangguo/source-code
+	source = arguments.json::https://raw.fastgit.org/zhanghua000/fuck-xuexiqiangguo-aur/main/arguments.json
+	source = fuck-xuexiqiangguo.desktop::https://raw.fastgit.org/zhanghua000/fuck-xuexiqiangguo-aur/main/fuck-xuexiqiangguo.desktop
+	md5sums = SKIP
+	md5sums = 1dc893ed808ef14e0950a676342438e0
+	md5sums = 98884597ddd91fffc2c3e6e7b10137fc
+
+pkgname = fxxk-xuexiqiangguo-git
+
