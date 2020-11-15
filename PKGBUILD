@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=rstudioapi
-_cranver=0.11
+_cranver=0.13
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(r)
 optdepends=(r-testthat r-knitr r-rmarkdown r-clipr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('ab1bb707fa7c94e0647ef4fe8cd0dd13')
+sha256sums=('aac35bbdcb4a8e8caba943bc8a2b98120e8940b80cd1020224bb1a26ff776d8b')
 
 build() {
   cd "${srcdir}"
