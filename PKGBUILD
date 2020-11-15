@@ -2,7 +2,7 @@
 # Maintainer: David Marzal <mundolibre at tutanota dot com>
 _pkgname=studio-controls
 pkgname=${_pkgname}-git
-pkgver=2.0.9.r12.gf262522
+pkgver=2.0.9.r16.gce84d5f
 pkgrel=1
 pkgdesc="An JACK audio setup utility with USB device and PulseAudio bridges."
 arch=('x86_64')
