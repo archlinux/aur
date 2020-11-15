@@ -7,8 +7,8 @@
 
 pkgname=notekit-clatexmath-git
 basename=${pkgname%-clatexmath-git}
-pkgver=r116.4f5374a
-pkgrel=1
+pkgver=r124.354a611
+pkgrel=2
 pkgdesc="A GTK3 hierarchical markdown notetaking application with tablet support."
 arch=('x86_64')
 url="https://github.com/blackhole89/notekit"
@@ -28,9 +28,6 @@ pkgver() {
 }
 
 prepare(){
-	#workaround for "sub-command STRIP requires two arguments" error
-	sed -i 's/${CL_TMP_VAR}/"${CL_TMP_VAR}"/g' "$srcdir"/notekit/CMakeLists.txt
-	
 	ln -sf $srcdir/cLaTeXMath $srcdir/$basename
 	echo 'add_library(clatexmath STATIC ${SRC})' >> $srcdir/$basename/cLaTeXMath/CMakeLists.txt
 }
@@ -38,11 +35,11 @@ prepare(){
 build() {
 	cd "$srcdir/$basename"
 
-	cd cLaTeXMath
+	pushd cLaTeXMath
 	cmake -DCMAKE_BUILD_TYPE=Release -DHAVE_LOG=OFF -DGRAPHICS_DEBUG=OFF .
 	make
 	cp -r res $srcdir/$basename/data/latex
-	cd ..
+	popd
 		
 	cmake -DHAVE_CLATEXMATH=ON -DCMAKE_BUILD_TYPE=Release .
 	make
