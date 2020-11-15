@@ -3,7 +3,7 @@
 # Python package author: Mikhail Korobov <kmike84@gmail.com>
 
 pkgname=python-pymorphy2-dicts-ru
-pkgver=2.4.404381.4453942
+pkgver=2.4.417127.4579844
 pkgrel=1
 pkgdesc="Russian dictionaries for pymorphy2"
 arch=(any)
