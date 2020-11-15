@@ -2,8 +2,8 @@
 
 pkgname=xmlmind-xmleditor
 _pkgname=xxe
-pkgver=9.2.0
-_pkgver=9_2_0
+pkgver=9.4.1
+_pkgver=9_4_1
 pkgrel=1
 pkgdesc="IDE for editing XML files"
 license=('Custom')
@@ -13,7 +13,7 @@ depends=('java-runtime>=8')
 makedepends=('libicns' 'gendesk' 'elinks')
 install=${_pkgname}.install
 source=("http://www.xmlmind.com/xmleditor/_download/xxe-perso-${_pkgver}.zip")
-sha256sums=('78e35604b6d6754ad47c02a2b7d71802bd82c60b6c2621a281dc9b1dc493279a')
+sha256sums=('7387309eef8ece02f1379d721991884b7a68d5861d78595cabeaa43d22b3f70a')
 
 prepare() {
   # use better icons
@@ -26,20 +26,21 @@ prepare() {
       --genericname="XML IDE" \
       --comment="Edit XML files" \
       --startupnotify=True \
-      --exec=/usr/bin/xxe \
+      --exec=xxe \
       --categories='Development;IDE;Java'
 
   # Save license in plain text format
-  # (downloading, using consistent headings, removing website navigation stuff)
+  # (downloading, using consistent headings, removing website navigation stuff and website footer)
   curl https://www.xmlmind.com/xmleditor/license_xxe_perso.html | \
   sed -r -e   's/(<h)2([^>]*>)/\11\2/' | \
   sed -r -e 's/(<\/h)2([^>]*>)/\11\2/' | \
   elinks -dump -no-references -no-home | \
-  sed '1,/Dictionary Builder/d' \
+  sed '1,/Dictionary Builder/d' | \
+  sed '/══════════════════════════════════════════════════════════════════════════/,$ d' \
   > LICENSE
 
   # If this fails, either the license or the website might have changed
-  if [ "$(md5sum LICENSE)" != "a92dfcdeecdaacc853a4b551ca223154  LICENSE" ]; then
+  if [ "$(md5sum LICENSE)" != "a577425d88ff73d99c5f951f1932dc93  LICENSE" ]; then
     echo ""
     echo ">>> License file needs to be reviewed"
     echo ""
