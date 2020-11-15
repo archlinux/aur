@@ -1,6 +1,6 @@
 # Maintainer: Jose Lopes <josemslopes at gmail dot com>
 pkgname=sipsak-git
-pkgver=r493.976c052
+pkgver=r507.c2ecf76
 pkgrel=1
 pkgdesc='A small command line tool for developers and administrators of Session Initiation Protocol (SIP) applications.'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/nils-ohlmeier/sipsak'
 license=('GPL2')
 groups=('voip')
 depends=('gnutls' 'openssl' 'c-ares')
-makedepends=('git')
+makedepends=('git' 'gcc9')
 source=("${pkgname}::git+https://github.com/nils-ohlmeier/sipsak.git")
 noextract=()
 md5sums=('SKIP')
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    ./configure --prefix=/usr
+    ./configure CC=gcc-9 --prefix=/usr
     make
 }
 
