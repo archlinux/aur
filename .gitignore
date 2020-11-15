@@ -1,4 +1,4 @@
 pkg/
 src/
 aiohttp-socks/
-*.tar*
+python-aiohttp-socks-git*.tar*
