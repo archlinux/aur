@@ -19,7 +19,7 @@ source=("$pkgname.sh"
         "$pkgname-help.sh")
 sha256sums=('2a2a222c0264af58913d629d58513ead7230861bbed8638f863e48d4ebfe295a'
             '04fb3968b8572d02a69ee61590c038a9560809160b4c6260ded5f802e9ef859a')
-_curl_opts="-s --connect-timeout 5 --max-time 10 --retry 3 --retry-delay 0 --retry-max-time 40"
+_curl_opts="--silent --connect-timeout 60 --retry 3 --retry-delay 1"
 
 _download_file() {
     file=$1
@@ -35,24 +35,29 @@ _download_file() {
     fi
 
     if [ "$_download" = true ]; then
-        echo "Download $file"
         mkdir -p "${pkgname}/$(dirname $file)"
 
         # first try compressed path and decompress
         url="${_update_url}${file}.gz"
         output="$pkgname/$file"
         compressed="${pkgname}/${file}.gz"
-        curl -f $_curl_opts $url -o $compressed || true
-        if [ -s "$compressed" ]; then
-            echo "Compressed found! $output"
+        
+        curl -f $_curl_opts $url -o $compressed && curlcode=$? || curlcode=$?
+        if [ -s "$compressed" ] && [ $curlcode -eq 0 ]; then
+            echo "compressed: $output"
             cat $compressed | gunzip > $output
             rm $compressed
         fi 
         # download uncompressed file if compressed was not found
         if [ ! -s "$output" ]; then
-            echo "no compressed: $output"
+            echo "uncompressed: $output"
             url="${_update_url}${file}"
             curl $_curl_opts $url > $output
+        fi
+
+        if [ ! -s "$output" ]; then
+            echo "Download error: $output"
+            return 1
         fi
     fi
 
@@ -87,8 +92,7 @@ prepare() {
 
     _download_file "/Changelog.txt" ""
 }
-
-N=$(($(nproc) * 4))
+N=$(($(nproc) * 2))
 open_sem $N
 build() {
     release_logs="$_update_url/release.log.gz"
