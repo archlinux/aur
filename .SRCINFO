@@ -1,0 +1,20 @@
+pkgbase = yorick-soy-git
+	pkgdesc = Sparse Operations with Yorick
+	pkgver = 20201115
+	pkgrel = 1
+	url = https://github.com/frigaut/yorick-soy
+	arch = i686
+	arch = x86_64
+	groups = science
+	groups = yorick-all
+	license = GPL
+	makedepends = git
+	makedepends = yorick
+	depends = yorick
+	depends = yorick-yutils-git
+	provides = yorick-soy
+	conflicts = yorick-soy
+	replaces = yorick-soy
+
+pkgname = yorick-soy-git
+
