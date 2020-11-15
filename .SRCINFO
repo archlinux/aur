@@ -1,6 +1,6 @@
 pkgbase = c64-debugger-git
 	pkgdesc = Commodore 64 and Atari XL/XE debugger that works in real time
-	pkgver = 0.64.58.2rc2.r55.74a8461
+	pkgver = 0.64.58.2_gl1b.r58.508076f
 	pkgrel = 1
 	url = https://sourceforge.net/projects/c64-debugger/
 	arch = x86_64
