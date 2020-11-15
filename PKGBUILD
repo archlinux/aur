@@ -3,7 +3,7 @@
 pkgname=popcorntime-ru-bin
 _pkgname=popcorntime-ru
 pkgver=0.4.4
-pkgrel=0
+pkgrel=1
 pkgdesc="Stream free movies and TV shows from torrents with Russian translation"
 arch=('x86_64')
 url="https://popcorn-ru.tk"
