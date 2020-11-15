@@ -3,11 +3,11 @@
 
 pkgname=python-hpilo
 pkgver=4.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Accessing the HP iLO XML interface from python'
 arch=('any')
 url='https://github.com/seveas/python-hpilo'
-license=('GPL')
+license=('Apache' 'GPL')
 depends=('python')
 makedepends=('python-setuptools')
 options=(!emptydirs)
@@ -17,5 +17,6 @@ md5sums=('6e261f94eaaf230c88fd857500ab0e0b')
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/license"
 }
 
