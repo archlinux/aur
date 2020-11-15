@@ -31,3 +31,15 @@
  #include <sys/types.h>
  #include <unistd.h>
  #include <pwd.h>
+--- cnijfilter-source-3.40-1/cngpijmon/cnijnpr/cnijnpr/cnijnpr.c     2010-03-11 01:33:21.000000000 +0000
++++ cnijfilter-source-3.40-1.new/cngpijmon/cnijnpr/cnijnpr/cnijnpr.c     2020-11-15 14:45:55.968773500 +0000
+@@ -33,7 +33,7 @@
+ #include <signal.h>
+ #include <sys/ioctl.h>
+ #include <net/if.h>
+-#include <sys/sysctl.h>
++#include <linux/sysctl.h>
+ #include <config.h>
+ 
+ #include <dlfcn.h>
+
