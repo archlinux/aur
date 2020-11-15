@@ -1,6 +1,6 @@
 pkgbase = qv2ray-plugin-naiveproxy-git
 	pkgdesc = Qv2ray Plugin: NaiveProxy (for Qv2ray v2.6.0-rc2+ only)
-	pkgver = 20200612.r12.d924872
+	pkgver = 20201115.r29.932bb06
 	pkgrel = 1
 	url = https://github.com/Qv2ray/QvPlugin-NaiveProxy
 	arch = x86_64

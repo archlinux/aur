@@ -2,7 +2,7 @@
 
 pkgname=qv2ray-plugin-naiveproxy-git
 _pkgname=qv2ray-plugin-naiveproxy
-pkgver=20200612.r12.d924872
+pkgver=20201115.r29.932bb06
 pkgrel=1
 pkgdesc="Qv2ray Plugin: NaiveProxy (for Qv2ray v2.6.0-rc2+ only)"
 arch=('x86_64')
@@ -32,13 +32,14 @@ build() {
     cd "$srcdir"/"$_pkgname"
     mkdir -p build && cd build
     cmake .. \
+        -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -GNinja
-    ninja
+    cmake --build .
 }
 package() {
     cd "$srcdir"/"$_pkgname"/build
-    install -Dm644 -t "$pkgdir"/usr/share/qv2ray/plugins/ libQvPlugin-NaiveProxy.so
+    cmake --install .
     # NOTE: This virtual dependency will be introduced after Qv2ray stablize its interface.
     #     depends+=(${_virtualdepends[@]})
 } 
