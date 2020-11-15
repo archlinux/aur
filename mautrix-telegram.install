@@ -1,22 +1,12 @@
 post_install() {
-cat << 'EOM'
-  #
-  # change the configuration file /etc/mautrix-telegram/config.yaml and execute the commands:
-  #
-  cd /etc/mautrix-telegram/
-  alembic upgrade head
-  /usr/bin/mautrix-telegram -b /etc/mautrix-telegram/config.yaml -c /etc/mautrix-telegram/config.yaml -r /etc/mautrix-telegram/registration.yaml -g
-EOM
-}
+  if [ ! -f /etc/mautrix-telegram/config.yaml ]; then
+    cp /usr/lib/python3.8/site-packages/mautrix_telegram/example-config.yaml /etc/mautrix-telegram/config.yaml
+    sed -i -e "s|database: sqlite:///mautrix-telegram.db|database: sqlite:////var/lib/mautrix-telegram/mautrix-telegram.db|" /etc/mautrix-telegram/config.yaml
+  fi
 
-post_upgrade() {
-cat << 'EOM'
-  #
-  # update your database with the following commands:
-  #
-  cd /etc/mautrix-telegram/
-  alembic upgrade head
-EOM
+  if [ ! -f /etc/mautrix-telegram/registration.yaml ]; then
+    python -m mautrix_telegram -g -c /etc/mautrix-telegram/config.yaml -r /etc/mautrix-telegram/registration.yaml
+  fi
 }
 
 # vim: ts=2 sw=2 et:
