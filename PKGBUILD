@@ -2,7 +2,7 @@
 
 pkgname=rss2email-git
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for delivering news from RSS feeds to your email program (development version)"
 arch=('i686' 'x86_64')
 url="https://pypi.python.org/pypi/rss2email"
@@ -17,8 +17,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "${srcdir}"/rss2email
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   )
 }
 
