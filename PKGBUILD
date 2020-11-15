@@ -6,7 +6,7 @@
 # Contributor: Marcel O'Neil <marcel@marceloneil.com>
 
 pkgname=electrum-git
-pkgver=4.0.3.r15.g9380b331e
+pkgver=4.0.4.r70.gec0f91942
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -15,25 +15,21 @@ license=('MIT')
 depends=('hicolor-icon-theme'
          'libsecp256k1'
          'python'
-         'python-dnspython'
          'python-ecdsa'
-         'python-protobuf'
-         'python-pyaes'
-         'python-pyqt5'
-         'python-pysocks'
-         'python-qdarkstyle'
          'python-qrcode'
+         'python-protobuf'
+         'python-dnspython'
+         'python-qdarkstyle'
+         'python-aiorpcx-git'
+         'python-aiohttp'
+         'python-aiohttp-socks'
+         'python-certifi'
+         'python-bitstring'
+         'python-attrs'
+         'python-cryptography'
          'python-requests'
          'python-six'
-         'python-websocket-client'
-	 'python-aiohttp-socks'
-	 'python-certifi'
-	 'python-aiorpcx-git'
-	 'python-aiohttp'
-	 'python-bitstring'
-	 'python-pycryptodomex'
-	 'python-jsonrpcserver'
-	 'python-jsonrpcclient'
+         'python-pyqt5'
          'qt5-base')
 checkdepends=('python-tox')
 makedepends=('gettext'
@@ -43,16 +39,17 @@ makedepends=('gettext'
              'python-setuptools')
 optdepends=('desktop-file-utils: update desktop icon'
             'gtk-update-icon-cache: update desktop icon'
-            'python-amodem: air-gapped transaction signing over audio modem'
+            'python-hidapi: Digital Bitbox hardware wallet support'
+            'python-trezor: Trezor hardware wallet support'
+            'python-safet: Archos Safe-T hardware wallet support'
+            'python-keepkey: KeepKey hardware wallet support'
             'python-btchip: Ledger hardware wallet support'
             'python-ckcc-protocol: Coldcard wallet hardware support'
-            'python-hidapi: Digital Bitbox hardware wallet support'
-            'python-keepkey: KeepKey hardware wallet support'
+            'python-bitbox02: BitBox wallet hardware support'
             'python-matplotlib: plot transaction history in graphical mode'
             'python-rpyc: send commands to Electrum Python console from an external script'
-            'python-safet: Archos Safe-T hardware wallet support'
-            'python-trezor: Trezor hardware wallet support'
             'xdg-utils: update desktop icon'
+            'python-amodem: air-gapped transaction signing over audio modem'
             'zbar: QR code reading support')
 source=(git+https://github.com/spesmilo/electrum)
 sha256sums=('SKIP')
