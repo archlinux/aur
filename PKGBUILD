@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Collects, pre-processes, and forwards log files from remote sources (precompiled)'
 arch=('i686' 'x86_64')
 url="https://www.elastic.co/products/beats"
-license=('APACHE')
+license=('custom:Elastic')
 backup=("etc/$_pkgbase/$_pkgbase.yml")
 optdepends=('elasticsearch: for running standalone installation')
 install="$_pkgbase.install"
@@ -48,6 +48,9 @@ package() {
     for f in NOTICE.txt README.md ; do
       install -D -m644 $f "$pkgdir/usr/share/$_pkgbase/$f"
     done
+
+    install -D -m644 LICENSE.txt \
+                     "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
 
     cp -r kibana "$pkgdir/usr/share/$_pkgbase"
     cp -r module "$pkgdir/usr/share/$_pkgbase"
