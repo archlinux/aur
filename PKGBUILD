@@ -4,7 +4,7 @@
 
 pkgname=('dash-daemon' 'dash-cli' 'dash-qt')
 pkgbase=dash
-pkgver=0.16.0.1
+pkgver=0.16.1.0
 pkgrel=1
 arch=('x86_64')
 url="http://www.dash.org/"
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dashpay/dash/archive/v$
         'dashd@.service'
         'deque.patch'
         'qpainterpath.patch::https://github.com/bitcoin/bitcoin/commit/79b0a69e09c1a912122e6431ea3c530cc292c690.patch')
-sha512sums=('d57dd2b459be70c31471a5c4e18f77d3476e58768dc154cc754566bc5d0bf77bedf497ee81a069cfc0bce9aeb9c498babc59e1bb4fb29332d1258e27242eebba'
+sha512sums=('84a52aa42fb7259f3f51d10acf20e68ce50e5d0104ee1f6310d2e5ffde87f0ccc961c6cbee766f8d5773572e5555ab3fefbf60d26ede5efdeb904bb18b21fed2'
             'b5c59efacbe85de0292590af12e35d8c001c2b71eebda9829754be48e61a70ad7e8ed99662ed4e8da53006eb72e1994c435813b35c16a9c566ddf455efe81b5b'
             'f558e938285fbf14c2f1773b2b23018e52ee03d4d2c89c2e1c73dc5f84180b77acc229a2c041f2f058e3a0ea329302d3bd9ef683c5c88570f3d2c4ab5a7050a6'
             '1eda9a1d5616a0602f85b0d04838657fe5fa75746a2da7a4614124e6081eeb1997e845d61a7d7a9a52a9d5ef9215617205924811cfef32132bf7fce9c3c603fb')
