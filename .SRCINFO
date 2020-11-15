@@ -1,0 +1,24 @@
+pkgbase = yorick-yao-git
+	pkgdesc = Adaptive Optics simulation tool in yorick
+	pkgver = 20201115
+	pkgrel = 1
+	url = https://frigaut.github.io/yao/
+	arch = i686
+	arch = x86_64
+	groups = science
+	groups = yorick-all
+	license = GPL
+	makedepends = git
+	makedepends = yorick
+	depends = yorick
+	depends = pygtk
+	depends = yorick-imutil-git
+	depends = fftw
+	depends = yorick-soy-git
+	depends = python2
+	provides = yorick-yao
+	conflicts = yorick-yao
+	replaces = yorick-yao
+
+pkgname = yorick-yao-git
+
