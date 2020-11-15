@@ -2,7 +2,7 @@
 
 pkgname=cubbit
 pkgdesc='Cubbit desktop-sync application'
-pkgver=7.1.2
+pkgver=7.2.3
 pkgrel=1
 arch=('x86_64')
 url='https://www.cubbit.io/'
@@ -10,7 +10,7 @@ license=('custom')
 depends=('gtk2' 'hicolor-icon-theme' 'libxss' 'libxtst')
 options=('!strip')
 source=("https://get.cubbit.io/desktop/linux/Cubbit-${pkgver}.AppImage")
-sha256sums=('fd1007d7bec9bcbf72b6f8c5ea764344ecd4105ac9e09375b1828ccb3c838e46')
+sha256sums=('2c8d8f8a243f6525b2d76dbcd313c86200cadc412af9f7e432e1d0d0bcfed50d')
 
 prepare() {
   chmod +x Cubbit-${pkgver}.AppImage
@@ -23,7 +23,7 @@ prepare() {
 package() {
   install -dm755 "$pkgdir"/usr/share/
 
-  for i in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 400x400; do
+  for i in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 400x400; do
     install -Dm644 "$srcdir"/squashfs-root/usr/share/icons/hicolor/${i}/apps/@cubbitdesktop.png \
                    "$pkgdir"/usr/share/icons/hicolor/$i/apps/@cubbitdesktop.png
   done
