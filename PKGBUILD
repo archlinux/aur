@@ -1,8 +1,8 @@
 # Maintainer: libertylocked <libertylocked@disroot.org>
 # Contributor: Stephen Brown II <Stephen [dot] Brown2 [at] gmail.com>
 pkgname=bitwarden-cli
-pkgver=1.13.1
-_jslibcommit='4cd20f0fa8c040989e8b9e8037c00bbafeb9b653'
+pkgver=1.13.2
+_jslibcommit='85faee21eec7602eecc3a5368be4c8fb7bab1e67'
 _nodeversion='10.20.1'
 pkgrel=1
 pkgdesc="The command line vault (Windows, macOS, & Linux). bitwarden.com"
@@ -15,8 +15,8 @@ conflicts=('bitwarden-cli-git')
 options=('!strip')
 source=("bitwarden-cli-${pkgver}.tar.gz::https://github.com/bitwarden/cli/archive/v${pkgver}.tar.gz"
         "jslib-${_jslibcommit}.tar.gz::https://github.com/bitwarden/jslib/archive/${_jslibcommit}.tar.gz")
-sha512sums=('cf065c37d6e94686fbf891a8996bc59cffb15dd7730021687920a8cb4510de1444148d254ae9c90c0653cbdb4ff58e6844c9ff110a48c4f09f6d9ef105b0ff33'
-            '1e609cc7cd7889f3ab27af119ee909ee285d53c551b96499d9aa1ec1c46907953b00978865e6892edb9813f85517fcb5fd618e722534a0d28c347002f3548eba')
+sha512sums=('5fa28716c5e10f5df0983a13ccf162c2f035d351e590f6d4580c115ca1c08b9d3f71bfced085521afc6885a78276ef108d5fe185e89674076c3265f21a0e7b58'
+            '50d8f222a208252630e47e365325a5c0a9875c9fb52415f380749951773c76159120355f3579a18ccc8582fbe07588f5afcd62eedc20d17ff4247ba28ef8c1cd')
 
 prepare() {
   rmdir "${srcdir}/cli-${pkgver}/jslib"
