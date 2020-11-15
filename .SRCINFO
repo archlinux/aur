@@ -1,6 +1,6 @@
 pkgbase = silo-raiplay
 	pkgdesc = Standalone silo app for Raiplay (Italian national TV public broadcast)
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/intersimone999/silos-apps
 	arch = i686
