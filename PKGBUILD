@@ -2,24 +2,18 @@
 # Some parts of this file inspired from czmq-git, ansible-core-git, and spotify packages.
 
 pkgname=mtodo
-pkgver=20190223
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Simple Todo Software for GNU/Linux'
 arch=('i686' 'x86_64')
 url='https://github.com/mortymacs/mtodo'
 license=('GPL')
 depends=('python3' 'python-gobject' 'gtk3')
-makedepends=('git')
-source=('git+https://github.com/mortymacs/mtodo')
-sha256sums=('SKIP')
-
-pkgver() {
-  cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g"
-}
+source=("https://github.com/mortymacs/mtodo/archive/v${pkgver}.tar.gz")
+sha256sums=('b617f14339fcf7a69f2f063f87825095704a0ea69e4216ca89c93f1a9f8bac0b')
 
 package() {
-  cd ${pkgname%-git}
+  cd "$pkgname-$pkgver"
 
   echo "installing license..."
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/mtodo"
@@ -33,8 +27,4 @@ package() {
   install -Dm 644 mtodo.png "${pkgdir}/usr/share/pixmaps/mtodo.png"
   install -Dm 644 mtodo.png "${pkgdir}/opt/mtodo/mtodo.png"
   install -Dm 644 ../../mtodo.desktop "${pkgdir}/usr/share/applications/mtodo.desktop"
-
-  echo 'cleaning up pkgdir...'
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
-  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
