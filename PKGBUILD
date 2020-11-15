@@ -10,7 +10,7 @@
 
 pkgname=python37
 pkgver=3.7.9
-pkgrel=3
+pkgrel=4
 _pybasever=${pkgver%.*}
 _pymajver=3
 pkgdesc="Major release 3.7 of the Python high-level programming language"
@@ -101,6 +101,10 @@ package() {
 
   # Add missing pkgconfig stuff
   ln -s "python${_pybasever}m-config" "${pkgdir}/usr/bin/python${_pybasever}-config"
+
+  # Clean-up reference to build directory
+  sed -i "s|$srcdir/Python-${pkgver}:||" \
+    "$pkgdir/usr/lib/python${_pybasever}/config-${_pybasever}m-${CARCH}-linux-gnu/Makefile"
 
   # some useful "stuff" FS#46146
   install -dm755 "${pkgdir}"/usr/lib/python${_pybasever}/Tools/{i18n,scripts}
