@@ -1,58 +1,40 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kde-gtk-config-git
-_srcname=kde-gtk-config
-pkgver=5.13.90a.r18.g6628e53
+pkgver=5.19.90.r10.g0e51688
 pkgrel=1
-pkgdesc='GTK2 and GTK3 Configurator for KDE'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/kde/workspace/kde-gtk-config'
+pkgdesc='GTK2 and GTK3 Configurator for KDE (git version)'
+arch=('x86_64')
+url='https://www.kde.org/workspaces/plasmadesktop/'
 license=('LGPL')
-depends=('systemsettings' 'gtk2' 'gtk3')
-makedepends=('git' 'extra-cmake-modules')
+depends=('qt5-svg'  'kdecoration'  'kconfigwidgets'  'kdbusaddons')
+optdepends=('gtk2: GTK2 apps support'
+            'gtk3: GTK3 apps support'
+            'xsettingsd: apply settings to GTK applications on the fly')
+makedepends=('git' 'extra-cmake-modules' 'gtk2' 'gtk3' 'sassc')
 conflicts=('kde-gtk-config')
 provides=('kde-gtk-config')
 source=('git+https://anongit.kde.org/kde-gtk-config.git')
-groups=('plasma')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_srcname"
-    
-    # git, tags available
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
-}
-
-prepare() {
-    cd "$_srcname"
-    
-    mkdir -p build
+    git -C kde-gtk-config describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "${_srcname}/build"
-    
-    cmake \
+    cmake -B build -S kde-gtk-config \
         -DCMAKE_INSTALL_PREFIX='/usr' \
-        -DLIB_INSTALL_DIR='lib' \
         -DLIBEXEC_INSTALL_DIR='lib' \
-        -DKDE_INSTALL_USE_QT_SYS_PATHS='ON' \
         -DBUILD_TESTING='ON' \
-        -Wno-dev \
-        ..
-        
-    make
+        -Wno-dev
+    make -C build
 }
 
 check() {
-    cd "${_srcname}/build"
-    
-    make test
+    make -C build test
 }
 
 package() {
-    cd "${_srcname}/build"
-    
-    make DESTDIR="$pkgdir" install
+    make -C build DESTDIR="$pkgdir" install
 }
