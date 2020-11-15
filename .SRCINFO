@@ -1,0 +1,17 @@
+pkgbase = yorick-hdf5
+	pkgdesc = HDF5 wrappers for yorick
+	pkgver = 20201115
+	pkgrel = 1
+	url = https://github.com/frigaut/yorick-hdf5
+	arch = i686
+	arch = x86_64
+	groups = science
+	groups = yorick-all
+	license = GPL
+	makedepends = yorick
+	depends = yorick
+	depends = yorick-yutils-git
+	depends = hdf5_18
+
+pkgname = yorick-hdf5
+
