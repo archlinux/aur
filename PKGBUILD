@@ -3,36 +3,30 @@
 # Previous maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=rr-multilib
-pkgver=5.2.0
-pkgrel=3
+pkgver=5.4.0
+pkgrel=1
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64)
 url='http://rr-project.org/'
 license=('custom')
+depends=('gdb' 'capnproto' 'lib32-gcc-libs')
+makedepends=('git' 'cmake' 'gdb' 'ninja')
+options=(!strip)
 conflicts=(rr)
 provides=(rr)
-replaces=()
-depends=('python2-pexpect' 'gdb' 'capnproto' 'lib32-gcc-libs')
-makedepends=('git' 'cmake' 'gdb' 'ninja')
+
 source=(
-	rr-${pkgver}.tar.gz::https://github.com/mozilla/rr/archive/${pkgver}.tar.gz
-	https://github.com/mozilla/rr/commit/53c5bd72bae089616a3ca626b8af240481d70e6f.patch
-	file://0001-avoid-overriding-external-opt-debug-flags.patch
+	rr-$pkgver.tar.gz::https://github.com/rr-debugger/rr/archive/${pkgver}.tar.gz
 )
-sha1sums=('55040be15a87dd93012d7cdbeb8a3fc428ea4b6b'
-          '9fcafcc3f4474b4352402b39002869a51e77f6df'
-          'SKIP')
+sha1sums=('b4716dd10b01ae4b8d35ae08f4f67fc46f0693d9')
 
 prepare() {
-	mv rr-$pkgver $pkgname-$pkgver
-	cd $pkgname-$pkgver
+	cd rr-$pkgver
 	mkdir -p build
-	patch -Np1 -i "$srcdir/53c5bd72bae089616a3ca626b8af240481d70e6f.patch"
-	patch -Np1 -i "$srcdir/0001-avoid-overriding-external-opt-debug-flags.patch"
 }
 
 build() {
-	cd $pkgname-$pkgver/build
+	cd rr-$pkgver/build
 	cmake \
 		-GNinja \
 		-DCMAKE_BUILD_TYPE=plain \
@@ -47,8 +41,11 @@ build() {
 }
 
 package() {
-	cd $pkgname-$pkgver/build
+	cd rr-$pkgver/build
 	DESTDIR="${pkgdir}" cmake --build . -- -v install
+	if check_option 'debug' n; then
+		find "${pkgdir}/usr/bin" -type f -executable -exec strip $STRIP_BINARIES {} + || :
+	fi
 	cd ..
 	install -D LICENSE "${pkgdir}/usr/share/licenses/rr/LICENSE"
 }

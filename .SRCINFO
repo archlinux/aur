@@ -1,7 +1,7 @@
 pkgbase = rr-multilib
 	pkgdesc = Record and Replay framework: lightweight recording and deterministic debugging
-	pkgver = 5.2.0
-	pkgrel = 3
+	pkgver = 5.4.0
+	pkgrel = 1
 	url = http://rr-project.org/
 	arch = i686
 	arch = x86_64
@@ -10,18 +10,14 @@ pkgbase = rr-multilib
 	makedepends = cmake
 	makedepends = gdb
 	makedepends = ninja
-	depends = python2-pexpect
 	depends = gdb
 	depends = capnproto
 	depends = lib32-gcc-libs
 	provides = rr
 	conflicts = rr
-	source = rr-5.2.0.tar.gz::https://github.com/mozilla/rr/archive/5.2.0.tar.gz
-	source = https://github.com/mozilla/rr/commit/53c5bd72bae089616a3ca626b8af240481d70e6f.patch
-	source = file://0001-avoid-overriding-external-opt-debug-flags.patch
-	sha1sums = 55040be15a87dd93012d7cdbeb8a3fc428ea4b6b
-	sha1sums = 9fcafcc3f4474b4352402b39002869a51e77f6df
-	sha1sums = SKIP
+	options = !strip
+	source = rr-5.4.0.tar.gz::https://github.com/rr-debugger/rr/archive/5.4.0.tar.gz
+	sha1sums = b4716dd10b01ae4b8d35ae08f4f67fc46f0693d9
 
 pkgname = rr-multilib
 
