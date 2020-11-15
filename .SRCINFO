@@ -1,16 +1,16 @@
 pkgbase = mirror-sync
 	pkgdesc = A tool for real-time, two-way sync for remote (e.g. desktop/laptop) development
-	pkgver = 1.3.9
+	pkgver = 1.3.10
 	pkgrel = 1
 	url = https://github.com/stephenh/mirror
 	arch = x86_64
 	license = APACHE
 	depends = jre8-openjdk-headless
 	depends = watchman
-	noextract = mirror-1.3.9.jar
-	source = mirror-1.3.9.jar::https://github.com/stephenh/mirror/releases/download/1.3.9/mirror-all.jar
+	noextract = mirror-1.3.10.jar
+	source = mirror-1.3.10.jar::https://github.com/stephenh/mirror/releases/download/1.3.10-1-g1742452/mirror-all.jar
 	source = mirror
-	sha256sums = 3d271957a9d5f6cff225b01d4af019a4a0e762706535f87f2ac25dbab9aea2ee
+	sha256sums = 313b58d6f1638c272dd1a38b952be2c9332f00baf4207c3159fb26101f9ed53c
 	sha256sums = 026dde44b41c2f21d3cfe36ce957928f1f89bce18cf8bbea49f3407af7ed05a1
 
 pkgname = mirror-sync
