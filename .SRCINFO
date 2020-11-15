@@ -1,0 +1,52 @@
+pkgbase = llvm11
+	pkgver = 11.0.0
+	pkgrel = 3
+	url = https://llvm.org/
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = libffi
+	makedepends = libedit
+	makedepends = ncurses
+	makedepends = libxml2
+	makedepends = ocaml>=4.11.1
+	makedepends = ocaml-ctypes
+	makedepends = ocaml-findlib
+	makedepends = python-setuptools
+	makedepends = python-psutil
+	makedepends = python-sphinx
+	makedepends = python-recommonmark
+	provides = llvm
+	provides = llvm-libs
+	provides = llvm-ocaml
+	options = staticlibs
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.0/llvm11-11.0.0.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.0/llvm11-11.0.0.src.tar.xz.sig
+	source = llvm-config.h
+	validpgpkeys = B6C8F98282B944E3B0D5C2530FC3042E345AD05D
+	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
+	sha256sums = 913f68c898dfb4a03b397c5e11c6a2f39d0f22ed7665c9cefa87a34423a72469
+	sha256sums = SKIP
+	sha256sums = 597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48
+
+pkgname = llvm11
+	pkgdesc = Collection of modular and reusable compiler and toolchain technologies
+	depends = llvm-libs
+	depends = perl
+
+pkgname = llvm11-libs
+	pkgdesc = LLVM runtime libraries
+	depends = gcc-libs
+	depends = zlib
+	depends = libffi
+	depends = libedit
+	depends = ncurses
+	depends = libxml2
+
+pkgname = llvm11-ocaml
+	pkgdesc = OCaml bindings for LLVM
+	depends = llvm
+	depends = ocaml=4.11.1
+	depends = ocaml-ctypes
+
