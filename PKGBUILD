@@ -14,7 +14,7 @@ conflicts=(mapset-verifier)
 options=("staticlibs")
 
 source=(
-    "https://github.com/Naxesss/MapsetVerifier/releases/download/$pkgver/mapsetverifier-$pkgver.tar.gz"
+    "https://github.com/Naxesss/MapsetVerifier/releases/download/v$pkgver/mapsetverifier-$pkgver.tar.gz"
     "mapsetverifier"
     "mapsetverifier.desktop"
 )
