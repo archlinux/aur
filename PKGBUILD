@@ -2,7 +2,7 @@
 # Python package author: Mikhail Korobov <kmike84@gmail.com>
 
 pkgname=python-pymorphy2
-pkgver=0.8
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Morphological analyzer (POS tagger + inflection engine) for Russian language."
 arch=(any)
@@ -15,7 +15,7 @@ optdepends=("python-pymorphy2-dicts-ru: russian language"
             "python-pymorphy2-dicts-uk: ukraine language")
 makedepends=("python")
 source=(https://github.com/kmike/pymorphy2/archive/$pkgver.tar.gz)
-md5sums=('f83cfd1d482772e055bdd3c2e3547e03')
+md5sums=('4bb4419174860f8535a098bf166f80cc')
 
 build()
   {
