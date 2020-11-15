@@ -1,0 +1,321 @@
+--- cnijfilter-source-3.40-1/cngpij/cngpij/bjcups.c	2020-11-15 00:06:47.760527827 +0000
++++ cnijfilter-source-3.40-1.new/cngpij/cngpij/bjcups.c	2020-11-15 12:37:44.040169706 +0000
+@@ -689,8 +689,8 @@
+ 	else {
+ 		pRequest = ippNew();
+ 		
+-		pRequest->request.op.operation_id = CUPS_GET_PRINTERS;
+-		pRequest->request.op.request_id   = 1;
++		ippSetOperation(pRequest, CUPS_GET_PRINTERS);
++		ippSetRequestId(pRequest, 1);
+ 		
+ 		pLanguage = bjcupsLangDefault();	// cupsLangDefault() -> bjcupsLangDefault() for cups-1.1.19
+ 		
+@@ -699,29 +699,29 @@
+ 		ippAddString(pRequest, IPP_TAG_OPERATION, IPP_TAG_URI, "printer-uri", NULL, NULL);
+ 		
+ 		if ((pResponse = cupsDoRequest(pHTTP, pRequest, "/")) != NULL) {
+-			if (pResponse->request.status.status_code > IPP_OK_CONFLICT) {
++			if (ippGetStatusCode(pResponse) > IPP_OK_CONFLICT) {
+ 				fputs("ERROR: IPP ERROR\n", stderr);
+ 				goto onErr;
+ 			}
+ 			else {
+-				pAttribute = pResponse->attrs;
++				pAttribute = ippFirstAttribute(pResponse);
+ 
+ 				while (pAttribute != NULL) {
+-					while (pAttribute != NULL && pAttribute->group_tag != IPP_TAG_PRINTER) {
+-						pAttribute = pAttribute->next;
++					while (pAttribute != NULL && ippGetGroupTag(pAttribute) != IPP_TAG_PRINTER) {
++						pAttribute = ippNextAttribute(pResponse);
+ 					}
+ 					if (pAttribute == NULL) {
+ 						break;
+ 					}
+ 					
+-					while (pAttribute != NULL && pAttribute->group_tag == IPP_TAG_PRINTER) {
+-						if (strcmp(pAttribute->name, "printer-name") == 0 && pAttribute->value_tag == IPP_TAG_NAME) {
+-							pPrinter = pAttribute->values[0].string.text;
++					while (pAttribute != NULL && ippGetGroupTag(pAttribute) == IPP_TAG_PRINTER) {
++						if (strcmp(ippGetName(pAttribute), "printer-name") == 0 && ippGetValueTag(pAttribute) == IPP_TAG_NAME) {
++							pPrinter = ippGetString(pAttribute, 0, NULL);
+ 						}
+-						if (strcmp(pAttribute->name, "device-uri") == 0 && pAttribute->value_tag == IPP_TAG_URI) {
+-							pDUri = pAttribute->values[0].string.text;
++						if (strcmp(ippGetName(pAttribute), "device-uri") == 0 && ippGetValueTag(pAttribute) == IPP_TAG_URI) {
++							pDUri = ippGetString(pAttribute, 0, NULL);
+ 						}
+-						pAttribute = pAttribute->next;
++						pAttribute = ippNextAttribute(pResponse);
+ 					}
+ 
+ 					if (strcasecmp(pDestName, pPrinter) == 0) {
+@@ -730,7 +730,7 @@
+ 					}
+ 					
+ 					if (pAttribute != NULL)
+-						 pAttribute = pAttribute->next;
++						 pAttribute = ippNextAttribute(pResponse);
+ 				}
+ 			}
+ 			
+--- cnijfilter-source-3.40-1/cngpijmon/src/bjcupsmon_cups.c	2020-11-15 00:06:47.760527827 +0000
++++ cnijfilter-source-3.40-1.new/cngpijmon/src/bjcupsmon_cups.c	2020-11-15 14:18:56.138749785 +0000
+@@ -216,8 +216,8 @@
+ 	else {
+ 		pRequest = ippNew();
+ 		
+-		pRequest->request.op.operation_id = IPP_GET_PRINTER_ATTRIBUTES;
+-		pRequest->request.op.request_id   = 1;
++		ippSetOperation(pRequest, IPP_GET_PRINTER_ATTRIBUTES);
++		ippSetRequestId(pRequest, 1);
+ 		
+ 		pLanguage = bjcupsLangDefault();			// cupsLangDefault() -> bjcupsLangDefault() for cups-1.1.19 
+ 				
+@@ -226,12 +226,12 @@
+ 		ippAddString(pRequest, IPP_TAG_OPERATION, IPP_TAG_URI, "printer-uri", NULL, pURI);
+ 
+ 		if ((pResponse = cupsDoRequest(pHTTP, pRequest, "/")) != NULL) {
+-			if (pResponse->request.status.status_code > IPP_OK_CONFLICT) {
++			if (ippGetStatusCode(pResponse) > IPP_OK_CONFLICT) {
+ 				retVal = ID_ERR_CUPS_API_FAILED;
+ 			}
+ 			else {
+ 				if ((pAttribute = ippFindAttribute(pResponse, "printer-state", IPP_TAG_ENUM)) != NULL) {
+-					printerState = (ipp_state_t)pAttribute->values[0].integer;
++					printerState = ippGetInteger(pAttribute, 0);
+ 				}
+ 			}
+ 			
+@@ -289,8 +289,8 @@
+ 		else {
+ 			pRequest = ippNew();
+ 			
+-			pRequest->request.op.operation_id = IPP_GET_PRINTER_ATTRIBUTES;
+-			pRequest->request.op.request_id   = 1;
++			ippSetOperation(pRequest, IPP_GET_PRINTER_ATTRIBUTES);
++			ippSetRequestId(pRequest, 1);
+ 			
+ 			pLanguage = bjcupsLangDefault();		// cupsLangDefault() -> bjcupsLangDefault() for cups-1.1.19
+ 			
+@@ -299,7 +299,7 @@
+ 			ippAddString(pRequest, IPP_TAG_OPERATION, IPP_TAG_URI, "printer-uri", NULL, printerURI);
+ 			
+ 			if ((pResponse = cupsDoRequest(pHTTP, pRequest, "/")) != NULL) {
+-				if (pResponse->request.status.status_code > IPP_OK_CONFLICT) {
++				if (ippGetStatusCode(pResponse) > IPP_OK_CONFLICT) {
+ 					retVal = ID_ERR_CUPS_API_FAILED;
+ 				}
+ 				else {
+@@ -311,7 +311,7 @@
+ 					//}
+ 					pAttribute = ippFindAttribute(pResponse, "printer-state-message", IPP_TAG_TEXT);
+ 					if (pAttribute != NULL) {
+-						strncpy(pStatus, pAttribute->values[0].string.text, bufSize);
++						strncpy(pStatus, ippGetString(pAttribute, 0, NULL), bufSize);
+ 					}
+ 				}
+ 				ippDelete(pResponse);
+@@ -370,8 +370,8 @@
+ 			else {
+ 				pRequest = ippNew();
+ 				
+-				pRequest->request.op.operation_id = IPP_CANCEL_JOB;
+-				pRequest->request.op.request_id   = 1;
++				ippSetOperation(pRequest, IPP_CANCEL_JOB);
++				ippSetRequestId(pRequest, 1);
+ 				
+ 				pLanguage = bjcupsLangDefault();		// cupsLangDefault() -> bjcupsLangDefault() for cups-1.1.19
+ 				
+@@ -382,7 +382,7 @@
+ 				ippAddString(pRequest, IPP_TAG_OPERATION, IPP_TAG_NAME, "requesting-user-name", NULL, cupsUser());
+ 				
+ 				if ((pResponse = cupsDoRequest(pHTTP, pRequest, "/jobs/")) != NULL) {
+-					if (pResponse->request.status.status_code > IPP_OK_CONFLICT) {
++					if (ippGetStatusCode(pResponse) > IPP_OK_CONFLICT) {
+ 						retVal = ID_ERR_CUPS_API_FAILED;
+ 					}
+ 					ippDelete(pResponse);
+@@ -445,8 +445,8 @@
+ 	else {
+ 		pRequest = ippNew();
+ 		
+-		pRequest->request.op.operation_id = IPP_GET_JOBS;
+-		pRequest->request.op.request_id   = 1;
++		ippSetOperation(pRequest, IPP_GET_JOBS);
++		ippSetRequestId(pRequest, 1);
+ 		
+ 		pLanguage = bjcupsLangDefault();	// cupsLangDefault() -> bjcupsLangDefault() for cups-1.1.19
+ 		
+@@ -457,31 +457,31 @@
+ 		ippAddStrings(pRequest, IPP_TAG_OPERATION, IPP_TAG_KEYWORD, "requested-attributes",(int)(sizeof(jobattrs) / sizeof(jobattrs[0])), NULL, jobattrs);
+ 		
+ 		if ((pResponse = cupsDoRequest(pHTTP, pRequest, "/")) != NULL) {
+-			if (pResponse->request.status.status_code > IPP_OK_CONFLICT) {
++			if (ippGetStatusCode(pResponse) > IPP_OK_CONFLICT) {
+ 				retVal = ID_ERR_CUPS_API_FAILED;
+ 			}
+ 			else {
+-				pAttribute = pResponse->attrs;
++				pAttribute = ippFirstAttribute(pResponse);
+ 
+ 				while (pAttribute != NULL) {
+-					while (pAttribute != NULL && pAttribute->group_tag != IPP_TAG_JOB) {
+-						pAttribute = pAttribute->next;
++					while (pAttribute != NULL && ippGetGroupTag(pAttribute) != IPP_TAG_JOB) {
++						pAttribute = ippNextAttribute(pResponse);
+ 					}
+ 					if (pAttribute == NULL) {
+ 						break;
+ 					}
+ 					
+-					while (pAttribute != NULL && pAttribute->group_tag == IPP_TAG_JOB) {
+-						if (strcmp(pAttribute->name, "job-id") == 0 && pAttribute->value_tag == IPP_TAG_INTEGER) {
+-							jobID = pAttribute->values[0].integer;
++					while (pAttribute != NULL && ippGetGroupTag(pAttribute) == IPP_TAG_JOB) {
++						if (strcmp(ippGetName(pAttribute), "job-id") == 0 && ippGetValueTag(pAttribute) == IPP_TAG_INTEGER) {
++							jobID = ippGetInteger(pAttribute, 0);
+ 						}
+-						if (strcmp(pAttribute->name, "job-state") == 0 && pAttribute->value_tag == IPP_TAG_ENUM) {
+-							jobState = (ipp_jstate_t)pAttribute->values[0].integer;
++						if (strcmp(ippGetName(pAttribute), "job-state") == 0 && ippGetValueTag(pAttribute) == IPP_TAG_ENUM) {
++							jobState = (ipp_jstate_t)ippGetInteger(pAttribute, 0);
+ 						}
+-						if (strcmp(pAttribute->name, "job-originating-user-name") == 0 && pAttribute->value_tag == IPP_TAG_NAME) {
+-							pJobUserName = pAttribute->values[0].string.text;
++						if (strcmp(ippGetName(pAttribute), "job-originating-user-name") == 0 && ippGetValueTag(pAttribute) == IPP_TAG_NAME) {
++							pJobUserName = ippGetString(pAttribute, 0, NULL);
+ 						}
+-						pAttribute = pAttribute->next;
++						pAttribute = ippNextAttribute(pResponse);
+ 					}
+ 					if (jobState == IPP_JOB_PROCESSING) {
+ 						if (pJobUserName != NULL) {
+@@ -498,7 +498,7 @@
+ 					}
+ 
+ 					if (pAttribute != NULL)
+-						pAttribute = pAttribute->next;
++						pAttribute = ippNextAttribute(pResponse);
+ 				}
+ 			}
+ 			
+@@ -556,8 +556,8 @@
+ 	else {
+ 		pRequest = ippNew();
+ 		
+-		pRequest->request.op.operation_id = CUPS_GET_PRINTERS;
+-		pRequest->request.op.request_id   = 1;
++		ippSetOperation(pRequest, CUPS_GET_PRINTERS);
++		ippSetRequestId(pRequest, 1);
+ 		
+ 		pLanguage = bjcupsLangDefault();	// cupsLangDefault() -> bjcupsLangDefault() for cups-1.1.19
+ 		
+@@ -566,28 +566,28 @@
+ 		ippAddStrings(pRequest, IPP_TAG_OPERATION, IPP_TAG_KEYWORD, "requested-attributes", sizeof(attributes) / sizeof(attributes[0]), NULL, attributes);
+ 		
+ 		if ((pResponse = cupsDoRequest(pHTTP, pRequest, "/")) != NULL) {
+-			if (pResponse->request.status.status_code > IPP_OK_CONFLICT) {
++			if (ippGetStatusCode(pResponse) > IPP_OK_CONFLICT) {
+ 				retVal = ID_ERR_CUPS_API_FAILED;
+ 			}
+ 			else {
+-				pAttribute = pResponse->attrs;
++				pAttribute = ippFirstAttribute(pResponse);
+ 
+ 				while (pAttribute != NULL) {
+-					while (pAttribute != NULL && pAttribute->group_tag != IPP_TAG_PRINTER) {
+-						pAttribute = pAttribute->next;
++					while (pAttribute != NULL && ippGetGroupTag(pAttribute) != IPP_TAG_PRINTER) {
++						pAttribute = ippNextAttribute(pResponse);
+ 					}
+ 					if (pAttribute == NULL) {
+ 						break;
+ 					}
+ 					
+-					while (pAttribute != NULL && pAttribute->group_tag == IPP_TAG_PRINTER) {
+-						if (strcmp(pAttribute->name, "printer-name") == 0 && pAttribute->value_tag == IPP_TAG_NAME) {
+-							pPrinter = pAttribute->values[0].string.text;
++					while (pAttribute != NULL && ippGetGroupTag(pAttribute) == IPP_TAG_PRINTER) {
++						if (strcmp(ippGetName(pAttribute), "printer-name") == 0 && ippGetValueTag(pAttribute) == IPP_TAG_NAME) {
++							pPrinter = ippGetString(pAttribute, 0, NULL);
+ 						}
+-						if (strcmp(pAttribute->name, "printer-uri-supported") == 0 && pAttribute->value_tag == IPP_TAG_URI) {
+-							pUri = pAttribute->values[0].string.text;
++						if (strcmp(ippGetName(pAttribute), "printer-uri-supported") == 0 && ippGetValueTag(pAttribute) == IPP_TAG_URI) {
++							pUri = ippGetString(pAttribute, 0, NULL);
+ 						}
+-						pAttribute = pAttribute->next;
++						pAttribute = ippNextAttribute(pResponse);
+ 					}
+ 					
+ 					// Tora 020418: Compare two printer names ignoring the character case.
+@@ -604,7 +604,7 @@
+ 					}
+ 
+ 					if (pAttribute != NULL)
+-						 pAttribute = pAttribute->next;
++						 pAttribute = ippNextAttribute(pResponse);
+ 				}
+ 			}
+ 			
+@@ -659,8 +659,8 @@
+ 	else {
+ 		pRequest = ippNew();
+ 		
+-		pRequest->request.op.operation_id = CUPS_GET_PRINTERS;
+-		pRequest->request.op.request_id   = 1;
++		ippSetOperation(pRequest, IPP_GET_PRINTER_ATTRIBUTES);
++		ippSetRequestId(pRequest, 1);
+ 		
+ 		pLanguage = bjcupsLangDefault();	// cupsLangDefault() -> bjcupsLangDefault() for cups-1.1.19
+ 		
+@@ -669,28 +669,28 @@
+ 		ippAddString(pRequest, IPP_TAG_OPERATION, IPP_TAG_URI, "printer-uri", NULL, NULL);
+ 		
+ 		if ((pResponse = cupsDoRequest(pHTTP, pRequest, "/")) != NULL) {
+-			if (pResponse->request.status.status_code > IPP_OK_CONFLICT) {
++			if (ippGetStatusCode(pResponse) > IPP_OK_CONFLICT) {
+ 				retVal = ID_ERR_CUPS_API_FAILED;
+ 			}
+ 			else {
+-				pAttribute = pResponse->attrs;
++				pAttribute = ippFirstAttribute(pResponse);
+ 
+ 				while (pAttribute != NULL) {
+-					while (pAttribute != NULL && pAttribute->group_tag != IPP_TAG_PRINTER) {
+-						pAttribute = pAttribute->next;
++					while (pAttribute != NULL && ippGetGroupTag(pAttribute) != IPP_TAG_PRINTER) {
++						pAttribute = ippNextAttribute(pResponse);
+ 					}
+ 					if (pAttribute == NULL) {
+ 						break;
+ 					}
+ 					
+-					while (pAttribute != NULL && pAttribute->group_tag == IPP_TAG_PRINTER) {
+-						if (strcmp(pAttribute->name, "printer-name") == 0 && pAttribute->value_tag == IPP_TAG_NAME) {
+-							pPrinter = pAttribute->values[0].string.text;
++					while (pAttribute != NULL && ippGetGroupTag(pAttribute) == IPP_TAG_PRINTER) {
++						if (strcmp(ippGetName(pAttribute), "printer-name") == 0 && ippGetValueTag(pAttribute) == IPP_TAG_NAME) {
++							pPrinter = ippGetString(pAttribute, 0, NULL);
+ 						}
+-						if (strcmp(pAttribute->name, "device-uri") == 0 && pAttribute->value_tag == IPP_TAG_URI) {
+-							pDUri = pAttribute->values[0].string.text;
++						if (strcmp(ippGetName(pAttribute), "device-uri") == 0 && ippGetValueTag(pAttribute) == IPP_TAG_URI) {
++							pDUri = ippGetString(pAttribute, 0, NULL);
+ 						}
+-						pAttribute = pAttribute->next;
++						pAttribute = ippNextAttribute(pResponse);
+ 					}
+ 
+ 					if (strcasecmp(pDestName, pPrinter) == 0) {
+@@ -699,7 +699,7 @@
+ 					}
+ 					
+ 					if (pAttribute != NULL)
+-						 pAttribute = pAttribute->next;
++						 pAttribute = ippNextAttribute(pResponse);
+ 				}
+ 			}
+
