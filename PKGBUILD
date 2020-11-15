@@ -6,7 +6,6 @@ pkgdesc="ObinsKit for Anne Pro and Anne Pro 2"
 arch=('x86_64')
 url="http://en.obins.net/obinskit"
 license=(custom)
-groups=('')
 depends=('desktop-file-utils' 'gconf' 'hicolor-icon-theme' 'libappindicator-gtk2' 'libnotify' 'libxss' 'libxtst' 'nss' 'libxkbcommon-x11')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
