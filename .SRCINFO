@@ -1,7 +1,7 @@
 pkgbase = qv2ray-plugin-ssr-git
 	pkgdesc = Qv2ray Plugin: ShadowsocksR
-	pkgver = 20200422.r43.3428f7d
-	pkgrel = 2
+	pkgver = 20200923.r84.adae383
+	pkgrel = 1
 	url = https://github.com/Qv2ray/QvPlugin-SSR
 	arch = x86_64
 	groups = qv2ray-plugin
