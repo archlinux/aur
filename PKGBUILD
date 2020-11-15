@@ -1,7 +1,7 @@
 # Maintainer: Simone Scalabrino <s.scalabrino9@gmail.com>
 pkgname=silos
 _gitname=pyqtws
-_gittag=0.1.45
+_gittag=0.1.46
 pkgver=$_gittag
 pkgrel=1
 pkgdesc='Web-app container, with multimedia apps (YouTube, Netflix, Twitch, VVVVID, and RaiPlay),  productivity suites (Microsoft Office 365, Skype, Google Office, Trello, and Gmail), and others (WhatsApp web and Wikipedia)'
@@ -22,5 +22,7 @@ build() {
 package() {
     depends+=()
     cd "${srcdir}/${_gitname}"
+    install -Dm755 "silos.desktop" "${pkgdir}/usr/share/applications/silos.desktop"
+    install -Dm755 "silos-options.desktop" "${pkgdir}/usr/share/applications/silos-options.desktop"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
