@@ -1,6 +1,6 @@
 pkgbase = vivaldi-arm-bin
 	pkgdesc = An advanced browser made with the power user in mind.
-	pkgver = 3.4.2066.99
+	pkgver = 3.4.2066.106
 	pkgrel = 1
 	url = https://vivaldi.com
 	arch = armv6h
@@ -26,11 +26,11 @@ pkgbase = vivaldi-arm-bin
 	replaces = vivaldi-rpi
 	options = !emptydirs
 	options = !strip
-	source_armv6h = https://downloads.vivaldi.com/stable/vivaldi-stable_3.4.2066.99-1_armhf.deb
+	source_armv6h = https://downloads.vivaldi.com/stable/vivaldi-stable_3.4.2066.106-1_armhf.deb
 	b2sums_armv6h = 434bde84b90ea9a612881679ad5f600930ff25b8346608b6f0aed5537ab55214d84a59f4ce7a7f07ddbb21cc5f5832d5a9138c32f2b6ca74355f2737e8825cc3
-	source_armv7h = https://downloads.vivaldi.com/stable/vivaldi-stable_3.4.2066.99-1_armhf.deb
+	source_armv7h = https://downloads.vivaldi.com/stable/vivaldi-stable_3.4.2066.106-1_armhf.deb
 	b2sums_armv7h = 434bde84b90ea9a612881679ad5f600930ff25b8346608b6f0aed5537ab55214d84a59f4ce7a7f07ddbb21cc5f5832d5a9138c32f2b6ca74355f2737e8825cc3
-	source_aarch64 = https://downloads.vivaldi.com/stable/vivaldi-stable_3.4.2066.99-1_arm64.deb
+	source_aarch64 = https://downloads.vivaldi.com/stable/vivaldi-stable_3.4.2066.106-1_arm64.deb
 	b2sums_aarch64 = 037a51c7ec98c3dfb63afc52c60f30bce70b8755b4b435aedce878a53ae441b9b85230b349a9bd75a8bc4d03cd34d9020be03c4496ec8546ff54ce5ede7b5cf3
 
 pkgname = vivaldi-arm-bin
