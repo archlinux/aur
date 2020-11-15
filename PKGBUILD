@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=19.0a3
 #_major=18.7.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -60,7 +60,7 @@ _tag="$pkgver-Matrix"
 _libdvdcss_version="1.4.2-Leia-Beta-5"
 _libdvdnav_version="6.0.0-Leia-Alpha-3"
 _libdvdread_version="6.0.0-Leia-Alpha-3"
-_ffmpeg_version="4.3.1-Matrix-Alpha1-2"
+_ffmpeg_version="4.3.1-Matrix-Beta1"
 _fmt_version="6.1.2"
 _crossguid_version="8f399e8bd4"
 _fstrcmp_version="0.7.D001"
@@ -95,7 +95,7 @@ b2sums=('2672e8ec243e59ae31ce1a0a4d1bfadc4dddfe3ae5eb0e7560ad2c9452d3ad238be9d7e
         '283aa2cec0a2200d3569bc280cb9659e9224a6b3a77db8a35b269cd8caf1337ac9d8b92b806df66f63ef7458a46bd6261f0b8b14678b10e26644a79dcbeea5da'
         '7573434a0ae8e8ccabf48173f81fcde29074eb138e119a2ae9156cde3c3d8bfd716f5d0e605b97f2dcac21f570781137c8533c5ae306b51e3905822fda318355'
         '0c206acdaf0776841ab792c74e023af07d9539eb72e03ae164382a31ed950f60e5e15f1d055979d28f1398924471b294d11f064b11b8373353b3962a3777ff3c'
-        'c33a2aad8b895be3ea5be76de238680284487d38a8c22ce57f17c3944a6ba214c0dfa9ef1e4717244ff8f70f6dd640b36715842d61ddaed65867a6c096470283'
+        '49415f76fd2a888b0efadb19597bd89db65c3d9e1224ab529ff0d73ab5734a23982b4d4905ddeb105ce59a816c4642cdb9f5568b0c39c29f5fb9431f9623d4ec'
         '36e7451a8732c62dcbf47e6d287ea582827b6196a468b8648803ea1bc9a37a5f681d87488f748d749183d97783ac7fb47a3f2aeed64fc6a684f9ee85b67ae28d'
         'e6f1f495adf541102e3b5ac11dfd14b770a52e23ef9d613bc6204f6493ff4df4da9ba290ad6c3a7e5c7fcf159cafdf355bfe668a4ddceb4329df934c65966d19'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
