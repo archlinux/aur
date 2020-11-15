@@ -1,6 +1,6 @@
 pkgbase = youtube-dl-git
 	pkgdesc = A small command-line program to download videos from YouTube.com and a few more sites (git version)
-	pkgver = 2020.03.24.r16.00eb865b3
+	pkgver = 2020.11.12.r0.28f9568a8
 	pkgrel = 1
 	url = http://ytdl-org.github.io/youtube-dl/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = youtube-dl-git
 	optdepends = phantomjs: for openload support
 	provides = youtube-dl
 	conflicts = youtube-dl
-	source = git+https://github.com/ytdl-org/youtube-dl.git
+	source = git+https://gitlab.com/dstftw/youtube-dl.git
 	md5sums = SKIP
 
 pkgname = youtube-dl-git
