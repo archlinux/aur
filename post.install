@@ -1,0 +1,11 @@
+post_install() {
+   echo " ==> This package provides the GUI only. Install groops-git"
+   echo " ==> for the actual processing software. On first launch you"
+   echo " ==> will be asked for a schema file and documentation directory."
+   echo " ==> The xml schema file is located at /usr/share/groopsgui-git."
+   echo " ==> The documentation directory is at /usr/share/doc/groopsgui-git."
+}
+
+post_upgrade() {
+  post_install $1 $2
+}
