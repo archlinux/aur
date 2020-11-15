@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=EDMarketConnector
+Comment=Downloads commodity market and other station data from the game Elite: Dangerous for use with all popular online and offline trading tools.
+Exec=edmarketconnector.sh
+Icon=application-rss+xml-symbolic
+Terminal=false
+Categories=Games;
