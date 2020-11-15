@@ -39,7 +39,9 @@ package() {
     # NOTE: Working around extra-x86_64-build
     depends+=('qv2ray' 'trojan-go')
     cd "$srcdir"/"$_pkgname"/build
-    cmake --install .
+    # cmake --install .
+    install -Dm644 libQvTrojanGoPlugin.so "$pkgdir"/usr/share/qv2ray/plugins/libQvGoTrojanPlugin.so
+
     # NOTE: This virtual dependency will be introduced after Qv2ray stablize its interface.
     #     depends+=(${_virtualdepends[@]})
 } 
