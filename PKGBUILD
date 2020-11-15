@@ -9,8 +9,9 @@ url="https://github.com/LedgerHQ/blue-loader-python"
 license=('Apache')
 # missing: python-u2flib-host
 depends=('python' 'python-hidapi' 'python-protobuf' 'python-pycryptodomex'
-         'python-future' 'python-pillow' 'python-websocket-client' 'python-u2flib-host')
-makedepends=('python-setuptools' 'python-ecpy')
+         'python-future' 'python-pillow' 'python-websocket-client' 'python-u2flib-host'
+         'python-ecpy')
+makedepends=('python-setuptools')
 checkdepends=()
 optdepends=('python-pyscard: smartcard')
 provides=()
