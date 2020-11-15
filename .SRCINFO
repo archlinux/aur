@@ -1,0 +1,25 @@
+pkgbase = yorick-yeti-git
+	pkgdesc = Yorick extension for hash tables, more math operators, TIFF etc
+	pkgver = 20201115
+	pkgrel = 1
+	url = https://github.com/emmt/Yeti
+	arch = i686
+	arch = x86_64
+	groups = science
+	groups = yorick-all
+	license = GPL
+	makedepends = git
+	makedepends = yorick
+	makedepends = libtiff
+	makedepends = fftw
+	makedepends = zlib
+	makedepends = ffmpeg
+	makedepends = libjpeg
+	makedepends = libpng
+	depends = yorick
+	provides = yorick-z-git
+	conflicts = yorick-z-git
+	replaces = yorick-z-git
+
+pkgname = yorick-yeti-git
+
