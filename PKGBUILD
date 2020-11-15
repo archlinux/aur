@@ -11,14 +11,14 @@ _neovim="n"
 
 _name='deoplete'
 pkgname="${_name}"
-pkgver=5.2
+pkgver=6.0
 pkgrel=1
 pkgdesc="deoplete completion plugin for neovim"
 arch=('any')
 url="https://github.com/Shougo/deoplete.nvim"
 license=('MIT')
 groups=()
-depends=('python-neovim' 'python-msgpack<1.0.0')
+depends=('python-pynvim')
 optdepends=('vim: vim support' 
             'neovim: neovim support' 
             'nvim-yarp: vim support' 
@@ -32,7 +32,7 @@ options=()
 install="${_name}.install"
 source=("$_name-$pkgver.tar.gz::${url}/archive/${pkgver}.tar.gz")
 noextract=()
-sha512sums=('9cb33db8d64e3021aabfd044d9ea42413b676e23c2014be00a2891240035f2db97e27968a99104c1d302d413bb6df5664e314075c78d2d4f62f08fcbf26bdfc0')
+sha512sums=('1dcb4a972e0d18fb10aeede84b7c7121c55588c57b7bd6454361f4feabf7a9e4c0fa268af8e77a6e8eed901530718d4270b62cb972d33503989b8ed57e6f0ae0')
 
 prepare() {
   mv "${pkgname}.nvim-${pkgver}" "${pkgname}"

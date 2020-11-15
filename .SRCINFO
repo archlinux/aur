@@ -1,14 +1,13 @@
 pkgbase = deoplete
 	pkgdesc = deoplete completion plugin for neovim
-	pkgver = 5.2
+	pkgver = 6.0
 	pkgrel = 1
 	url = https://github.com/Shougo/deoplete.nvim
 	install = deoplete.install
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = python-neovim
-	depends = python-msgpack<1.0.0
+	depends = python-pynvim
 	optdepends = vim: vim support
 	optdepends = neovim: neovim support
 	optdepends = nvim-yarp: vim support
@@ -16,8 +15,8 @@ pkgbase = deoplete
 	provides = deoplete
 	conflicts = deoplete-git
 	replaces = 
-	source = deoplete-5.2.tar.gz::https://github.com/Shougo/deoplete.nvim/archive/5.2.tar.gz
-	sha512sums = 9cb33db8d64e3021aabfd044d9ea42413b676e23c2014be00a2891240035f2db97e27968a99104c1d302d413bb6df5664e314075c78d2d4f62f08fcbf26bdfc0
+	source = deoplete-6.0.tar.gz::https://github.com/Shougo/deoplete.nvim/archive/6.0.tar.gz
+	sha512sums = 1dcb4a972e0d18fb10aeede84b7c7121c55588c57b7bd6454361f4feabf7a9e4c0fa268af8e77a6e8eed901530718d4270b62cb972d33503989b8ed57e6f0ae0
 
 pkgname = deoplete
 
