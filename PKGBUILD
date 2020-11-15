@@ -1,7 +1,7 @@
 # Maintainer: Simone Scalabrino <s.scalabrino9@gmail.com>
 _appname="google-photos"
 _appdesc="Standalone silo app for Google Photos"
-_gittag="0.1"
+_gittag="0.2"
 
 _gitname=silos-apps
 pkgname="silo-${_appname}"
