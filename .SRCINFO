@@ -1,0 +1,15 @@
+pkgbase = yorick-usleep
+	pkgdesc = usleep function
+	pkgver = 20201115
+	pkgrel = 1
+	url = https://github.com/frigaut/yorick-usleep
+	arch = i686
+	arch = x86_64
+	groups = science
+	groups = yorick-all
+	license = GPL
+	makedepends = yorick
+	depends = yorick
+
+pkgname = yorick-usleep
+
