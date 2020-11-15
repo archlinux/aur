@@ -1,7 +1,7 @@
 # Maintainer: Clément Dommerc <clement.dommerc@gmail.com>
 pkgname='qlstatus'
 pkgver=1.0.9
-pkgrel=10
+pkgrel=1
 pkgdesc='Light and modular status bar for tiling window managers'
 arch=('x86_64')
 url='https://github.com/qlem/qlstatus'
