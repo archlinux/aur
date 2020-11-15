@@ -8,7 +8,7 @@ url="https://github.com/eoli3n/$pkgname"
 license=('UNLICENSE')
 source=("up"
 		"UNLICENSE")
-sha256sums=("32987e5f3547a041930a6ddfc3bfe440489b23bb1cd70948b63168d93797b960"
+sha256sums=("65bb9054a584a0006a052cd1bfb8fe1617b3536df4ba8d812ec3b43e247f21d4"
 "6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e")
 
 package() {

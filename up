@@ -94,7 +94,7 @@ function autocopy(){
     # Else if wl-clipboard is installed
     elif which wl-copy &> /dev/null
     then
-      wl-copy "$1"
+      wl-copy -p "$1"
     fi
   fi
 }
@@ -124,6 +124,8 @@ function main(){
     if [ -z "$1" ]
     then
       url=$(x0)
+      # Force a newline at the end
+      echo -e "\n"
     # Else upload argument to x0.at and save url
     else
       # Test if file exists and is a regular file
