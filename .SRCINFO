@@ -1,7 +1,7 @@
 pkgbase = sherlock-git
 	pkgdesc = Hunt down social media accounts by username across social networks
 	pkgver = r1480.9d824d1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sherlock-project/sherlock
 	arch = any
 	license = MIT
