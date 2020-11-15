@@ -6,7 +6,7 @@ _ltspice_ver="17"
 
 pkgname=ltspice
 pkgver=17.20201112.2
-pkgrel=1
+pkgrel=2
 pkgdesc="SPICE simulator, schematic capture and waveform viewer. Installation based on Field Update Utility."
 arch=('x86_64')
 url="http://www.linear.com/designtools/software/"
@@ -27,7 +27,7 @@ _download_file() {
         
     _download=true
     # check whether cached file with correct CRC exists
-    if [ -f "$pkgname/$file" ]; then
+    if [ -s "$pkgname/$file" ]; then
         f_crc=$(cksfv -c "$pkgname/$file" | sed '/^;/d' | awk '{print $2}')
         if [ "$crc" = "$f_crc" ]; then
             _download=false
@@ -39,19 +39,20 @@ _download_file() {
         mkdir -p "${pkgname}/$(dirname $file)"
 
         # first try compressed path and decompress
-        compressed_found=false 
         url="${_update_url}${file}.gz"
+        output="$pkgname/$file"
         compressed="${pkgname}/${file}.gz"
         curl -f $_curl_opts $url -o $compressed || true
-        if [ -f "$compressed" ]; then
-            cat $compressed | gunzip > $pkgname/$file
+        if [ -s "$compressed" ]; then
+            echo "Compressed found! $output"
+            cat $compressed | gunzip > $output
             rm $compressed
-            compressed_found=true
         fi 
         # download uncompressed file if compressed was not found
-        if [ "$compressed_found" = false ]; then
+        if [ ! -s "$output" ]; then
+            echo "no compressed: $output"
             url="${_update_url}${file}"
-            curl $_curl_opts $url -o "$pkgname/$file"
+            curl $_curl_opts $url > $output
         fi
     fi
 
