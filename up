@@ -1,0 +1,161 @@
+#!/usr/bin/env bash
+
+# Bash file uploader
+
+# Install: sudo wget $raw_url -O /usr/bin/up && sudo chmod +x /usr/bin/up
+
+# Use with fish:
+# echo "\
+# function up
+#   /usr/bin/up $argv;
+# end
+# " > $HOME/.config/fish/functions/up.fish
+
+# Vars
+
+AUTOCOPY=1
+
+# Functions
+
+function usage(){
+  filename=$(basename "$0")
+  cat <<- EOF
+Bash file uploader
+
+Usage :
+
+# Upload a file
+$ $filename [OPTIONS] file
+$ cat file.ext | $filename [OPTIONS]
+
+# Upload text
+$ echo "upaste rocks" | up
+$ up
+upaste
+really
+rocks
+C-d C-d
+
+Options :
+    -h    Print this usage
+    -a    Disable autocopy in clipboard
+EOF
+}
+
+function x0(){
+  # x0 will be used for file upload and stdin upload
+  # It correctly set filetype for imgs, ix does not
+
+  # If argument is empty, upload stdin
+  if [ -z "$1" ]
+  then
+    curl -s -F "file=@-" 'https://x0.at/'
+  # Else upload filename
+  else
+    curl -s -F "file=@\"$1\"" 'https://x0.at/'
+  fi
+}
+
+function ix(){
+  # ix.io will be used for piped data upload
+  curl -s -F 'f:1=<-' 'http://ix.io'
+}
+
+# Arguments
+
+function arguments(){
+  while getopts "ha" arg
+  do
+    case $arg in
+      a)
+        AUTOCOPY=0
+        ;;
+      h)
+        usage
+        exit
+        ;;
+      *)
+        usage
+        exit 1
+        ;;
+    esac
+  done
+  shift $((OPTIND-1))
+}
+
+function autocopy(){
+  # If xorg or wayland is running
+  if grep 'DISPLAY' <(env) &> /dev/null
+  then
+    # If xclip is installed
+    if which xclip &> /dev/null
+    then
+      xclip "$1"
+    # Else if wl-clipboard is installed
+    elif which wl-copy &> /dev/null
+    then
+      wl-copy "$1"
+    fi
+  fi
+}
+
+function is_file(){
+  # Test if first argument is an existing file
+  if [ ! -f "$1" ]
+  then
+    echo "File \"$1\" does not exist or is not a regular file"
+    exit 2
+  fi
+}
+
+function main(){
+
+  # Vars
+  local url
+
+  # Getopts
+  arguments "$@"
+
+  # If no piped data
+  if [ -t 0 ]
+  then
+  
+    # If no argument, read stdin and save url
+    if [ -z "$1" ]
+    then
+      url=$(x0)
+    # Else upload argument to x0.at and save url
+    else
+      # Test if file exists and is a regular file
+      if [ -n "$1" ]
+      then
+        is_file "$1"
+      fi
+      url=$(x0 "$1")
+    fi
+  
+  # Else if piped data
+  else
+    # Test if argument exists
+    if [ -n "$1" ]
+    then
+      echo "Warning: ignoring file $1..."
+    fi
+    # Upload to ix.io and save url
+    url=$(ix)
+  fi
+  
+  # Print url
+  echo "$url"
+
+  # If autocopy is set
+  if [ "$AUTOCOPY" == "1" ]
+  then
+    # Autocopy url
+    autocopy "$url"
+  fi
+}
+
+# Main
+
+main "$1"
