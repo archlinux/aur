@@ -1,6 +1,8 @@
---- CMakeLists.txt	2019-05-27 12:15:30.212133672 -0500
-+++ CMakeLists.txt	2019-05-27 12:16:01.995437956 -0500
-@@ -845,7 +845,7 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 72c38fa13..8a876da64 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -854,7 +854,7 @@ find_package (FFTW3 COMPONENTS single threads REQUIRED)
  # libhamlib setup
  #
  set (hamlib_STATIC 1)
@@ -9,27 +11,7 @@
  find_program (RIGCTL_EXE rigctl)
  find_program (RIGCTLD_EXE rigctld)
  find_program (RIGCTLCOM_EXE rigctlcom)
-@@ -1305,7 +1305,8 @@
-       )
-   endif ()
- endif ()
--qt5_use_modules (wsjtx SerialPort) # not sure why the interface link library syntax above doesn't work
-+find_package (Qt5SerialPort)
-+target_link_libraries (wsjtx Qt5::SerialPort)
- 
- # make a library for WSJT-X UDP servers
- # add_library (wsjtx_udp SHARED ${UDP_library_CXXSRCS})
-@@ -1326,7 +1327,8 @@
-   )
- target_compile_definitions (wsjtx_udp-static PUBLIC UDP_STATIC_DEFINE)
- #qt5_use_modules (wsjtx_udp Network)
--qt5_use_modules (wsjtx_udp-static Network Gui)
-+target_link_libraries (wsjtx_udp-static Qt5::Network Qt5::Gui)
-+
- generate_export_header (wsjtx_udp-static BASE_NAME udp)
- 
- add_executable (udp_daemon UDPExamples/UDPDaemon.cpp UDPExamples/udp_daemon.rc ${WSJTX_ICON_FILE})
-@@ -1418,13 +1420,6 @@
+@@ -1549,13 +1549,6 @@ install (PROGRAMS
    RENAME rigctld-wsjtx${CMAKE_EXECUTABLE_SUFFIX}
    )
  
@@ -43,22 +25,3 @@
  install (FILES
    README
    COPYING
-
---- a/qt_helpers.hpp    2019-11-26 09:22:32.000000000 -0500
-+++ b/qt_helpers.hpp    2020-02-03 11:30:07.488214336 -0500
-@@ -83,6 +83,7 @@
-   // std::hash<> specialization for QString based on the dbj2
-   // algorithm <http://www.cse.yorku.ca/~oz/hash.html> because qHash()
-   // is poor on 64-bit platforms due to being a 32-bit hash value
-+  #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-   template<>
-   struct hash<QString>
-   {
-@@ -96,6 +97,7 @@
-       return hash;
-     }
-   };
-+#endif
- }
-
- // Register some useful Qt types with QMetaType
