@@ -1,13 +1,13 @@
 pkgbase = gping-git
 	pkgdesc = Ping, but with a graph
-	pkgver = v0.1.5.r1.g7e8b360
+	pkgver = 0.1.6.r9.g3179477
 	pkgrel = 1
 	url = https://github.com/orf/gping
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	depends = gcc-libs
+	depends = iputils
 	provides = gping
 	conflicts = gping
 	source = gping-git::git+https://github.com/orf/gping

@@ -1,32 +1,32 @@
 # Maintainer: Mateen Ulhaq <mulhaq2005+aur at gmail dot com>
 
 pkgname=gping-git
-pkgver=v0.1.5.r1.g7e8b360
+pkgver=0.1.6.r9.g3179477
 pkgrel=1
 pkgdesc="Ping, but with a graph"
 arch=("x86_64")
 url="https://github.com/orf/gping"
 license=("MIT")
-depends=("gcc-libs")
+depends=("iputils")
 makedepends=("cargo" "git")
-provides=("gping")
-conflicts=("gping")
-source=("$pkgname::git+https://github.com/orf/gping")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+$url")
 sha256sums=("SKIP")
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     cd "$pkgname"
-    cargo build --release
+    cargo build --release --locked
 }
 
 package() {
     cd "$pkgname"
-    install -Dm755 "target/release/gping" "$pkgdir/usr/bin/gping"
-    # install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/gping/LICENSE"
-    install -Dm644 "readme.md" "$pkgdir/usr/share/doc/gping/README.md"
+    install -Dm755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
+    install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+    install -Dm644 "readme.md" -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 }
