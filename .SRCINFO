@@ -21,7 +21,6 @@ pkgbase = deepin-api-git
 	depends = fontconfig
 	depends = glib2
 	depends = gdk-pixbuf2
-	depends = gdk-pixbuf-xlib
 	depends = gtk3
 	depends = libcanberra-pulse
 	depends = librsvg
