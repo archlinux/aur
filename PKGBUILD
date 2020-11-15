@@ -1,7 +1,7 @@
 # Maintainer: DuckSoft <realducksoft at gmail dot com>
 pkgname=qv2ray-plugin-ssr-dev-git
 _pkgname=qv2ray-plugin-ssr
-pkgver=20200517.r55.1cba7de
+pkgver=20201015.r94.b8c44ca
 pkgrel=1
 pkgdesc="Qv2ray Plugin: ShadowsocksR (Development Build)"
 arch=('x86_64')
@@ -31,6 +31,7 @@ build() {
     cd "$srcdir"/"$_pkgname"
     mkdir -p build && cd build
     cmake .. \
+        -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DSSR_UVW_WITH_QT=1 \
         -DUSE_SYSTEM_SODIUM=ON \
@@ -38,11 +39,11 @@ build() {
         -DSTATIC_LINK_LIBUV=OFF \
         -DSTATIC_LINK_SODIUM=OFF \
         -GNinja
-    ninja
+    cmake --build .
 }
 package() {
     cd "$srcdir"/"$_pkgname"/build
-    install -Dm644 libQvSSRPlugin.so "$pkgdir"/usr/share/qv2ray/plugins/libQvSSRPlugin.so
+    cmake --install .
     # NOTE: This virtual dependency will be introduced after Qv2ray stablize its interface.
     #     depends+=(${_virtualdepends[@]})
 } 
