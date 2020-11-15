@@ -2,8 +2,8 @@
 
 _name=pytest-html
 pkgname=python-pytest-html
-pkgver=2.1.1
-pkgrel=2
+pkgver=3.0.0
+pkgrel=0
 pkgdesc="Plugin for generating HTML reports for pytest results"
 arch=('any')
 url="https://github.com/pytest-dev/pytest-html"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools-scm')
 checkdepends=('python-ansi2html' 'python-pytest-mock'
 'python-pytest-rerunfailures' 'python-pytest-xdist')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('a35eb141d90b82e713e11b022a788adb9f097910dd267f207afdf3b6fc06f40fc6ca308e70098d7aa48d866aad8495aad25bbf566c301f789749f1791a7fa802')
+sha512sums=('1db78a0ec3114da9b2268fab37935349063d67f18a473939979499ddf8b1b228b9c879ce1fe2c1740166c63be56edbc4f8de8e9878790954426d344525dbc55f')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "$pkgname-$pkgver"
