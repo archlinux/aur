@@ -1,0 +1,16 @@
+pkgbase = yorick-ml4-git
+	pkgdesc = yorick I/O to matlab4 data format
+	pkgver = 20201115
+	pkgrel = 1
+	url = https://github.com/LLNL/yorick-ml4
+	arch = i686
+	arch = x86_64
+	groups = science
+	groups = yorick-all
+	license = GPL
+	makedepends = yorick
+	depends = yorick
+	depends = yorick-yutils-git
+
+pkgname = yorick-ml4-git
+
