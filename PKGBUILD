@@ -1,7 +1,7 @@
 # Maintainer: DuckSoft <realducksoft at gmail dot com>
 pkgname=qv2ray-plugin-trojan-go-git
 _pkgname=qv2ray-plugin-trojan-go
-pkgver=20200715.r18.a86ffd6
+pkgver=20200929.r27.f83b72d
 pkgrel=1
 pkgdesc="Qv2ray Plugin: Trojan-Go (Stable Build)"
 arch=('x86_64')
@@ -30,15 +30,16 @@ build() {
     cd "$srcdir"/"$_pkgname"
     mkdir -p build && cd build
     cmake .. \
+        -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -GNinja
-    ninja
+    cmake --build .
 }
 package() {
     # NOTE: Working around extra-x86_64-build
     depends+=('qv2ray' 'trojan-go')
     cd "$srcdir"/"$_pkgname"/build
-    install -Dm644 libQvTrojanGoPlugin.so "$pkgdir"/usr/share/qv2ray/plugins/libQvGoTrojanPlugin.so
+    cmake --install .
     # NOTE: This virtual dependency will be introduced after Qv2ray stablize its interface.
     #     depends+=(${_virtualdepends[@]})
 } 
