@@ -1,9 +1,9 @@
 # Maintainer: Kian Kasad <kian@kasad.com>
 # Upstream Maintainer: Andy Kluger <https://t.me/andykluger>
 # Contributor: Markus Weimar <mail@markusweimar.de>
-_pkgname=ttf-iosevka-kian
-pkgname=${_pkgname}-git
-pkgver=r2111.deaa6933
+pkgname=ttf-iosevka-kian-git
+_pkgname=${pkgname%-git}
+pkgver=r2118.922ca29a
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
@@ -11,14 +11,14 @@ url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
 makedepends=('git' 'nodejs>=12.16.0' 'npm' 'ttfautohint')
 depends=()
-conflicts=(${_pkgname})
-provides=(${_pkgname})
+conflicts=('ttf-iosevka' ${pkgname%-git})
+provides=('ttf-iosevka' ${pkgname%-git})
 source=(
   'git+https://github.com/be5invis/Iosevka'
   'private-build-plans.toml'
 )
 sha256sums=('SKIP'
-            'dc5bb8044eec0e931945862321f3e6c5aa438d95a8d12af68a3250dbcf223653')
+            'd65212417700b466177f1ec233366ba7525b69606ffb0439071e3463deeced44')
 
 pkgver() {
   cd Iosevka
@@ -29,7 +29,7 @@ prepare() {
   cp -T private-build-plans.toml Iosevka/private-build-plans.toml
 }
 
-configurations=("iosevka-custom" "iosevka-term-custom")
+configurations=("iosevka-kian" "iosevka-term-kian")
 
 build() {
   cd Iosevka
