@@ -17,8 +17,10 @@ pkgbase = adsklicensing
 	depends = pcre
 	options = !strip
 	source = manual://adsklicensing9.2.1.2399-0-0.x86_64.rpm
+	source = adsklicensing.install
 	source = adsklicensing.service
 	sha256sums = d9404416708ce2ad5c1f88dbd2bb26fa799440a6b15217be7f85028b0d23c476
+	sha256sums = da398f067c4ffe98e31b96b804f64fae31c442a0f86f56e76c8b460255207fb9
 	sha256sums = e5612c0dd6297dd959d93369e899fa3fc85a08a2e42358c81b970a3a7d85ce7d
 
 pkgname = adsklicensing
