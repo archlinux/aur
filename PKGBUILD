@@ -2,7 +2,7 @@
 pkgname=smrender-git
 pkgver=19cfbd8
 pkgrel=1
-pkgdesc="smrender"
+pkgdesc="A rule-based renderer for OSM data"
 arch=('any')
 url="http://www.abenteuerland.at/smrender/"
 license=('GPLv3')
