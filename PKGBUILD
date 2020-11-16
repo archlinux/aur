@@ -3,7 +3,7 @@
 # Contributor: Adam Hose <adis@blad.is>
 
 pkgname=opensnitch-git
-pkgver=1.2.0.r7.8b7e761
+pkgver=1.2.0.r11.a517ebe
 pkgrel=1
 pkgdesc="A GNU/Linux application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -58,6 +58,11 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
+    pushd ui
+    export PYTHONHASHSEED=0
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    popd
+
     install -Dm755 "daemon/${pkgname%-git}d" -t "$pkgdir/usr/bin"
     install -Dm644 "daemon/${pkgname%-git}d.service" -t \
         "$pkgdir/usr/lib/systemd/system"
@@ -66,8 +71,4 @@ package() {
     install -Dm644 daemon/system-fw.json -t "$pkgdir/etc/${pkgname%-git}d"
     install -Dm644 "debian/${pkgname%-git}.logrotate" \
         "$pkgdir/etc/logrotate.d/${pkgname%-git}"
-
-    pushd ui
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    popd
 }
