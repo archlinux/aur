@@ -6,10 +6,10 @@ pkgdesc="GStreamer plugins written in Rust"
 arch=("x86_64")
 url="https://gstreamer.freedesktop.org/"
 license=(LGPL MIT Apache)
-depends=(csound gstreamer)
+depends=(csound gstreamer libsodium)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-makedepends=(rust git libsodium meson)
+makedepends=(rust git meson)
 source=("${pkgname%-git}::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs")
 
 pkgver() {
