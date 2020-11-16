@@ -1,0 +1,32 @@
+pkgbase = haskell-tidal-git
+	pkgdesc = A domain specific language for live coding pattern.
+	pkgver = latest
+	pkgrel = 1
+	url = https://tidalcycles.org/
+	arch = x86_64
+	groups = pro-audio
+	license = GPL3
+	checkdepends = haskell-microspec
+	depends = ghc
+	depends = ghc-libs
+	depends = glibc
+	depends = haskell-bifunctors
+	depends = haskell-clock
+	depends = haskell-colour
+	depends = haskell-hosc
+	depends = haskell-mwc-random
+	depends = haskell-network
+	depends = haskell-primitive
+	depends = haskell-random
+	depends = haskell-vector
+	depends = supercollider
+	optdepends = sc3-plugins: Examples using special UGens
+	conflicts = tidalcycles
+	conflicts = haskell-tidal
+	replaces = tidalcycles
+	replaces = haskell-tidal
+	source = haskell-tidal-git::git+https://github.com/tidalcycles/Tidal.git
+	sha512sums = SKIP
+
+pkgname = haskell-tidal-git
+
