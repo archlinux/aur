@@ -2,7 +2,7 @@
 
 pkgname=rankmirrors-systemd
 pkgver=1
-pkgrel=1
+pkgrel=2
 
 license=('MIT')
 pkgdesc='Rank Pacman mirrors based on the speed related to the host network'
@@ -21,6 +21,4 @@ package() {
 
   install -m 444 "${srcdir}/rankmirrors.service" "${pkgdir}/usr/lib/systemd/system/"
   install -m 544 "${srcdir}/rankmirrors" "${pkgdir}/opt/"
-
-  systemctl daemon-reload
 }
