@@ -6,6 +6,12 @@ This AUR package provides Systemd unit and timer for ranking Pacman mirrors base
 
 The package is on [AUR](https://aur.archlinux.org/packages/rankmirrors-systemd) so use your favorite tool for installing it.
 
-```
+```shell
 yay -S rankmirrors-systemd
+```
+
+Then remember to enable the Systemd timer to rank mirrors automatically every day at midnight.
+
+```
+sudo systemctl enable --now rankmirrors.timer
 ```
