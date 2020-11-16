@@ -4,8 +4,9 @@ pkgname=('pipewire-git'
          'pipewire-jack-git'
          'pipewire-alsa-git'
          'pipewire-pulse-git'
+         'pipewire-ffmpeg-git'
          )
-pkgver=0.3.15.75.g80e063c6
+pkgver=0.3.15.92.g573e2afd
 pkgrel=1
 pkgdesc='Server and user space API to deal with multimedia pipelines. (GIT version)'
 arch=('x86_64')
@@ -119,6 +120,9 @@ package_pipewire-git() {
   rm -rv "$pkgdir"/usr/share/alsa-card-profile
 
   _pick pulse usr/bin/pipewire-pulse usr/lib/systemd/user/pipewire-pulse*
+
+  _pick ffmpeg usr/lib/spa-0.2/ffmpeg/libspa-ffmpeg.so
+
 }
 
 package_pipewire-docs-git() {
@@ -157,8 +161,21 @@ package_pipewire-pulse-git() {
   depends=("libpipewire-${pkgver:0:3}.so"
            'libglib-2.0.so'
            )
-  provides=('pipewire-pulse')
+  provides=('pipewire-pulse'
+            'pulseaudio'
+            )
   conflicts=('pipewire-pulse')
 
   mv pulse/* "${pkgdir}"
+}
+
+package_pipewire-ffmpeg-git() {
+  pkgdesc='Server and user space API to deal with multimedia pipelines. (FFmpeg SPA plugin)(GIT version)'
+  depends=("libpipewire-${pkgver:0:3}.so"
+           'ffmpeg'
+           )
+  provides=('pipewire-ffmpeg')
+  conflicts=('pipewire-ffmpeg')
+
+  mv ffmpeg/* "${pkgdir}"
 }
