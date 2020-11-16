@@ -4,7 +4,7 @@
 
 
 pkgname=obsidian-icon-theme
-pkgver=4.13
+pkgver=4.14
 pkgrel=1
 pkgdesc="Obsidian Icon Theme"
 arch=('any')
@@ -14,7 +14,7 @@ options=(!strip)
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/madmaxms/iconpack-obsidian/archive/v$pkgver.tar.gz"
 )
-sha256sums=('7d442fc1dc720a294ccfe13069d0235c8924e2096abf13381fec61590c6a554e')
+sha256sums=('2a27bd45eb84315a08c715802d78c9bb7d41a098f316f6c813e2937709c4ca94')
 
 package() {
 	install -d ${pkgdir}/usr/share/icons
