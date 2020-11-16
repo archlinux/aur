@@ -3,7 +3,7 @@
 
 _name=matlab_kernel
 pkgname="jupyter-${_name}-git"
-pkgver=0.16.9.r0.gab41f9b
+pkgver=0.16.11.r0.g1bc5c76
 pkgrel=1
 pkgdesc="A Jupyter/IPython kernel for Matlab"
 arch=('any')
@@ -17,7 +17,7 @@ conflicts=("jupyter-${_name}")
 source=("git+https://github.com/Calysto/${_name}.git"
         'matlab_kernel.install')
 sha256sums=('SKIP'
-            '1e38965cb9e4b08d253262c0d4cf04a6a420f5924c3823a043138fb3fc0fbded')
+            '75b428259fe22704a5ba61b6b9915b55245549d53a1dfdeed95fa3c93a2beac1')
 
 pkgver() {
     # Get git version name
