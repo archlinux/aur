@@ -1,8 +1,10 @@
+# Maintainer: Gladyshev Ilya <fixfromdarkness@cock.li>
+
 pkgname=nix-bin
-pkgver=2.3.1
+pkgver=2.3.8
 pkgrel=1
 pkgdesc="A purely functional package manager - /nix/store multi-user edition"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://nixos.org/nix"
 license=('LGPL')
 makedepends=('xz')
@@ -10,6 +12,7 @@ conflicts=('nix')
 install=nix.install
 source_x86_64=("https://nixos.org/releases/nix/nix-$pkgver/nix-$pkgver-x86_64-linux.tar.xz")
 source_i686=("https://nixos.org/releases/nix/nix-$pkgver/nix-$pkgver-i686-linux.tar.xz")
+source_aarch64=("https://nixos.org/releases/nix/nix-$pkgver/nix-$pkgver-aarch64-linux.tar.xz")
 source=(nix.install nix.tmpfiles nix.conf nix-channels)
 backup=('etc/nix/nix.conf' 'root/.nix-channels')
 options=('!strip' 'staticlibs' 'libtool' 'emptydirs')
@@ -73,6 +76,7 @@ package() {
     ln -s /nix/store/$(basename $f) $pkgdir/nix/var/nix/gcroots/pacman/
   done
 }
-sha256sums=(SKIP SKIP SKIP SKIP)
-sha256sums_i686=('a5d3f26d4a449616bf654286f2fe29c1c1df4f029b7e29fa3ccf8494d598bfee')
-sha256sums_x86_64=('107310e95a57f502b7ada41aa2c76a3d4aec18847ad864d0b233ca8f4452e9fc')
+sha256sums=(24bc9995ca2efdf107b03b6ed31b18f8efc1ab3e8d496e7c6a0eee4099b5a35b 2691263b3e32cf6a8aa7f3e537d09ad601772b41a89f3b6e45675621bfd1c0fd c5bfe41ce026651945f06efd55e600b0cd67248ef4993cb1b56ab6c05262f228 0799ce2f8b5fda245eb0131349ba6c0a46974602cd8ef5b41446a54337a68f13)
+sha256sums_i686=('b6e100a704065728ce10408df3ccb2b97c68e4aa033efe5ec9c6d3346f98f011')
+sha256sums_aarch64=('0b35f0d3b480e15ca4bf57ee0d90c5dd209f8bf6ab0c429a2e4aca6565b9d9a6')
+sha256sums_x86_64=('0c8a432993d06e4d882ad48cde81d9bef23842cf6d7432cd93ef1a99c8d4ef43')
