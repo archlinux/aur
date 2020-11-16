@@ -10,12 +10,12 @@ url="https://github.com/emmt/Yeti"
 groups=('science' 'yorick-all')
 depends=('yorick')
 makedepends=('git' 'yorick' 'libtiff' 'fftw' 'zlib' 'ffmpeg' 'libjpeg' 'libpng')
-provides=('yorick-z-git')
-conflicts=('yorick-z-git')
-replaces=('yorick-z-git')
+provides=('yorick-yeti')
+conflicts=('yorick-yeti')
+replaces=('yorick-yeti')
 
-_gitroot="git://github.com/LLNL/yorick-z.git"
-_gitname="yorick-z"
+_gitroot="git://github.com/emmt/Yeti.git"
+_gitname="Yeti"
 
 build() {
   cd ${srcdir}
@@ -33,9 +33,8 @@ build() {
   git clone $_gitname $_gitname-build
   cd ${srcdir}/$_gitname-build
 
-  ./configure --dl-avcodec
-  yorick -batch make.i || return 1
-  make
+  ./configure --with-fftw=no --with-tiff=yes --with-regex=yes
+  make all
 }
 
 package() {

@@ -17,9 +17,9 @@ pkgbase = yorick-yeti-git
 	makedepends = libjpeg
 	makedepends = libpng
 	depends = yorick
-	provides = yorick-z-git
-	conflicts = yorick-z-git
-	replaces = yorick-z-git
+	provides = yorick-yeti
+	conflicts = yorick-yeti
+	replaces = yorick-yeti
 
 pkgname = yorick-yeti-git
 
