@@ -1,10 +1,13 @@
 # Maintainer: robertfoster
-
+# Contributor: tuxsavvy
 msg "This PKGBUILD execute a one-line script to retrieve ModDB valid urls"
-_url=$(curl https://www.moddb.com/downloads/start/201571/all | grep -Po '(?<=href="/)[^"]*' | head -1)
+_mainid=201571
+_addonsid=201574
+_urlmain=$(curl https://www.moddb.com/downloads/start/${_mainid}/all | grep -Po '(?<=href="/)[^"]*' | head -1)
+_urladdons=$(curl https://www.moddb.com/downloads/start/${_addonsid}/all | grep -Po '(?<=href="/)[^"]*' | head -1)
 pkgname=realrtcw
 pkgver=3.1n
-pkgrel=1
+pkgrel=3
 pkgdesc="An overhaul mod for critically acclaimed Return To Castle Wolfenstein."
 arch=('i686' 'x86_64')
 url="http://www.moddb.com/mods/realrtcw-realism-mod"
@@ -12,10 +15,17 @@ license=('GPL')
 depends=('freetype2' 'graphite' 'harfbuzz' 'iortcw-data' 'libjpeg-turbo' 'libogg' 'openal' 'opus' 'opusfile' 'pcre' 'sdl2' 'zlib')
 makedepends=('unzip')
 install='realrtcw.install'
-_commit="559c3a7fc4dcf1fcab7405d51b987c789ad53cee"
+md5sums=('b0f5e7c4986f59ac28b0f78180f28988'
+         'db1682d588cf8556b2574f435f1610e7'
+         'da5b75e49061fb87f940dceaa10ca250'
+         '19ef21acfceb965f36b53b70267641d1'
+         '7e3991e5f331662419ad1ed04e49366c'
+         '88752202a0da9bc9cb467b6f0f201132')
+_commit="a1344ab17a53bda530e1f34c1a80bca7afcadcf4"
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/${_commit}.tar.gz"
-  "$pkgname-$pkgver.zip::https://www.moddb.com/${_url}"
+  "$pkgname-$pkgver.zip::https://www.moddb.com/${_urlmain}"
+  "$pkgname-$pkgver-addons.zip::https://www.moddb.com/${_urladdons}"
   "$pkgname.png"
   "$pkgname.launcher"
   "$pkgname.desktop"
@@ -64,6 +74,9 @@ package() {
       "$pkgdir/opt/realrtcw/main"
   done
 
+  # Installing RealRTCW Addons Pack
+  cp -R "$srcdir/copy this folder content into rtcw root directory/"* "$pkgdir/opt/realrtcw"
+
   # Modify Launcher Scripts
   if [ "$CARCH" = "x86_64" ]; then
     # x86_64 Systems
@@ -87,9 +100,3 @@ package() {
   install -Dm 644 "$srcdir/realrtcw.png" \
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/realrtcw.png"
 }
-
-md5sums=('8ab96775a884f39160e40a5551c0420b'
-  '6f140b9df87f6fb362c323b0b5656710'
-  '19ef21acfceb965f36b53b70267641d1'
-  '7e3991e5f331662419ad1ed04e49366c'
-  '88752202a0da9bc9cb467b6f0f201132')
