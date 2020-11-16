@@ -63,7 +63,7 @@ function upload(){
 # Arguments
 
 function arguments(){
-  while getopts "hat:" arg
+  while getopts "hat:" arg "$@"
   do
     case $arg in
       a)
