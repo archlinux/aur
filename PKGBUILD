@@ -3,7 +3,7 @@
 
 pkgname=python-torchaudio
 _pkgname=audio
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('python-kaldi-io')
 makedepends=('git' 'python-setuptools')
 conflicts=('python-torchaudio-git')
 source=("$url/archive/v${pkgver}.tar.gz")
-sha512sums=('4dfe7f2b3112f851143c6a0114240b61c5feab3258d06b222ab5df21baf9644b0219f09946a5d09ea385f739dfd9aaddd970648f8cf555fb1d9d468aa10e2cf8')
+sha512sums=('160ed573bfc6dfed80b24c3a13bb163f192f9fd413a7189b039d5b94a15eb9d8f2e6c716f8668af8aaca0af3896379994ae93d60f6cf09f959dcc305912491bd')
 
 build() {
   cd "$srcdir/${_pkgname}-${pkgver}"
