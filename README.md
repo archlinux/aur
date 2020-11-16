@@ -1,12 +1,7 @@
 # upaste
-Paste and upload files on ix.io and x0.at  
+x0.at paste client.  
 
 ### Usage
-
-Bash file uploader  
-
-Usage :
-
 # Upload a file
 ```
 $ up [OPTIONS] file  
@@ -25,3 +20,4 @@ C-d C-d
 Options :  
     -h    Print this usage  
     -a    Disable autocopy in clipboard  
+    -t    Set extension, without dot
