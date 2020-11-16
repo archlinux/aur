@@ -2,15 +2,15 @@
 
 pkgname='hwpviewer'
 pkgver=9.20.0.1573
-pkgrel=1
+pkgrel=2
 pkgdesc='An official HWP viewer for Linux by Hancom'
 arch=('x86_64')
 url='https://www.hancom.com/'
 license=('custom:hwpviewer')
-depends=('gtk3' 'webkitgtk' 'gvfs')
+depends=('gtk3' 'webkitgtk' 'gvfs' 'icu64')
 optdepends=()
 source=(
-	'hancomoffice-hwpviewer-Ubuntu-amd64.deb'
+	'local://hancomoffice-hwpviewer-Ubuntu-amd64.deb'
 	'license.txt'
 )
 sha512sums=(
