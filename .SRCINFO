@@ -1,0 +1,15 @@
+pkgbase = sunxi-tools-f1c100s-spiflash-git
+	pkgdesc = tools to help hacking Allwinner SoC devices
+	pkgver = v1.1.r441.g11a9d20
+	pkgrel = 1
+	url = https://github.com/Icenowy/sunxi-tools/tree/f1c100s-spiflash
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libusb
+	conflicts = sunxi-tools
+	source = sunxi-tools-f1c100s-spiflash::git+https://github.com/Icenowy/sunxi-tools.git#branch=f1c100s-spiflash
+	sha256sums = SKIP
+
+pkgname = sunxi-tools-f1c100s-spiflash-git
+
