@@ -5,6 +5,7 @@ pkgbase = flowee-git
 	url = https://flowee.org/
 	install = flowee.install
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = boost
 	makedepends = cmake
@@ -13,7 +14,7 @@ pkgbase = flowee-git
 	depends = libevent
 	depends = openssl
 	provides = flowee-hub
-+	provides = flowee-libs
+	provides = flowee-libs
 	backup = etc/flowee/flowee.conf
 	source = git+https://gitlab.com/FloweeTheHub/thehub.git#branch=master
 	source = flowee.logrotate
