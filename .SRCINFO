@@ -12,6 +12,9 @@ pkgbase = yorick-imutil-git
 	makedepends = yorick
 	depends = yorick
 	depends = yorick-yutils-git
+	provides = yorick-imutil
+	conflicts = yorick-imutil
+	replaces = yorick-imutil
 
 pkgname = yorick-imutil-git
 
