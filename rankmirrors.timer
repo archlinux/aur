@@ -1,0 +1,9 @@
+[Unit]
+Description=Rank Pacman mirrors every day at midnight
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target
