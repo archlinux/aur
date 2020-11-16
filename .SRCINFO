@@ -10,6 +10,7 @@ pkgbase = deezer
 	makedepends = prettier
 	makedepends = imagemagick
 	makedepends = npm
+	makedepends = nodejs-lts-fermium
 	depends = electron6
 	provides = deezer
 	source = deezer-4.27.0-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/4.27.0
