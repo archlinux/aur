@@ -1,7 +1,7 @@
 # Maintainer: Gary Wang <wzc782970009@gmail.com>
 
 pkgname=pineapple-pictures-git
-pkgver=r88.d64e9cf
+pkgver=r118.e97dfe3
 pkgrel=1
 pkgdesc='Yet another lightweight image viewer'
 arch=('x86_64')
@@ -9,6 +9,7 @@ url='https://github.com/BLumia/pineapple-pictures/'
 license=('MIT')
 depends=(
     'qt5-svg'
+    'exiv2'
 )
 makedepends=(
     'git'
