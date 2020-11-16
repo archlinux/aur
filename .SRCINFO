@@ -1,7 +1,7 @@
 pkgbase = mainline-kernel
 	pkgdesc = Mainline linux kernel, modules, headers, api-headers and docs
-	pkgver = 5.10_rc3
-	pkgrel = 3
+	pkgver = 5.10_rc4
+	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL-2.0

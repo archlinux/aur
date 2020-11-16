@@ -101,10 +101,10 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.10_rc3
-pkgrel=3
-versiontag=5.10-rc3
-modulestag=5.10.0-rc3
+pkgver=5.10_rc
+pkgrel=1
+versiontag=5.10-rc4
+modulestag=5.10.0-rc4
 pkgdesc="Mainline linux kernel, modules, headers, api-headers and docs"
 arch=(x86_64)
 url="https://www.kernel.org/"
