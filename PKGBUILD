@@ -1,13 +1,13 @@
 # Maintainer: Jona Miller <miller.jona at yandex dot com>
 pkgname=onhold
-pkgver=0.3.12
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A command-line utility that allows you to play music while a long job completes"
 arch=('any')
 url="https://github.com/alexdelorenzo/onhold"
 license=('AGPL3')
 depends=('python>=3.6.0')
-makedepends=('git' 'python-pip')
+makedepends=('python-pip')
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
 md5sums=('SKIP')
 
