@@ -2,7 +2,7 @@
 
 pkgbase=libjpeg-xl-git
 pkgname=('libjpeg-xl-git' 'libjpeg-xl-doc-git')
-pkgver=r26.g4d70bd5
+pkgver=r28.gd5ab3c6
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
@@ -19,10 +19,10 @@ source=('git+https://gitlab.com/wg1/jpeg-xl.git'
         'git+https://github.com/google/brunsli.git'
         'git+https://github.com/webmproject/sjpeg.git'
         'git+https://skia.googlesource.com/skcms.git'
-        'git+https://github.com/meganz/mingw-std-threads.git'
         'git+https://github.com/veluca93/IQA-optimization.git'
         'git+https://github.com/Netflix/vmaf.git'
         'git+https://github.com/thorfdbg/difftest_ng.git'
+        'git+https://github.com/google/highway.git'
         '010-libjpeg-xl-git-fix-highway-build.patch')
 sha256sums=('SKIP'
             'SKIP'
@@ -39,10 +39,6 @@ sha256sums=('SKIP'
             'f783be03afe7094e21281097da0c727a83317dad118f15d36691f7f14163efa5')
 
 prepare() {
-    local _mingw_commit
-    _mingw_commit="$(git -C jpeg-xl submodule | awk '/mingw-std-threads/ { sub(/^-/, "", $1); print $1 }')"
-    git -C mingw-std-threads remote add upstream https://github.com/meganz/mingw-std-threads.git
-    git -C mingw-std-threads fetch upstream "$_mingw_commit"
     git -C jpeg-xl submodule init
     git -C jpeg-xl config --local submodule.third_party/brotli.url "${srcdir}/brotli"
     git -C jpeg-xl config --local submodule.third_party/lodepng.url "${srcdir}/lodepng"
@@ -55,6 +51,7 @@ prepare() {
     git -C jpeg-xl config --local submodule.third_party/IQA-optimization.url "${srcdir}/IQA-optimization"
     git -C jpeg-xl config --local submodule.third_party/vmaf.url "${srcdir}/vmaf"
     git -C jpeg-xl config --local submodule.third_party/difftest_ng.url "${srcdir}/difftest_ng"
+    git -C jpeg-xl config --local submodule.third_party/highway.url "${srcdir}/highway"
     git -C jpeg-xl submodule update
     patch -d jpeg-xl -Np1 -i "${srcdir}/010-libjpeg-xl-git-fix-highway-build.patch"
 }
@@ -74,6 +71,8 @@ build() {
         -DJPEGXL_ENABLE_PLUGINS:BOOL='true' \
         -DJPEGXL_ENABLE_VIEWERS:BOOL='false' \
         -DJPEGXL_WARNINGS_AS_ERRORS:BOOL='false' \
+        -DGTEST_LIBRARY:FILEPATH='/usr/lib/libgtest.so' \
+        -DGTEST_MAIN_LIBRARY:FILEPATH='/usr/lib/libgtest_main.so' \
         -Wno-dev
     make -C build all doc
 }
