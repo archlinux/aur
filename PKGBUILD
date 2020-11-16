@@ -1,8 +1,8 @@
 # Maintainer: David Anderson <dave@natulte.net>
 
 pkgname="tailscale-bin"
-_version="1.2.6"
-pkgver="1.2.6"
+_version="1.2.7"
+pkgver="1.2.7"
 pkgrel="1"
 pkgdesc="A mesh VPN that makes it easy to connect your devices, wherever they are."
 arch=("x86_64")
@@ -13,7 +13,7 @@ provides=("tailscale")
 conflicts=("tailscale")
 backup=("etc/default/tailscaled")
 source=("$pkgname-$pkgver.tgz::https://pkgs.tailscale.com/stable/tailscale_${_version}_amd64.tgz")
-sha256sums=('ba4402d1ccfc282acc96f04deb44aba4baf6e7a21c533be9272c23f2463dfee8')
+sha256sums=('1acc5cd9a3a250be41bfadd5b526bacbd8d4cbc6b6b4805c55f1439131aee758')
 install="tailscale.install"
 
 package() {
