@@ -1,11 +1,11 @@
 #
-# Maintainer : Romain Gautier <romain.gautier@nimamoh.net>
-# Contributor : Jameson Pugh <imntreal@gmail.com>
+# Maintainer : Caleb McKay <caleb@candj.us>
+# Contributor : Romain Gautier <romain.gautier@nimamoh.net>,Jameson Pugh <imntreal@gmail.com>
 #
 
 pkgname=btrfsmaintenance
-pkgver=0.4.1
-pkgrel=3
+pkgver=0.5
+pkgrel=1
 pkgdesc='btrfs maintenance scripts'
 arch=('any')
 url='https://github.com/kdave/btrfsmaintenance'
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('bash')
 conflicts=("${pkgname}-git")
 source=("https://github.com/kdave/btrfsmaintenance/archive/v${pkgver}.tar.gz")
-sha256sums=('32f70c3667231ace8c4218f2dbf7e76b5451907adfb0798323d14ad1455b1fac')
+sha256sums=('0de747e630155ecbc438dfac23ffee00cb3f2ee4d01bb67724ef81826709cacb')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
