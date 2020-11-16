@@ -15,14 +15,14 @@ options=(!strip)
 
 source=(
 	$pkgname-$pkgver.tar.gz::https://github.com/rr-debugger/${pkgname}/archive/${pkgver}.tar.gz
-	https://patch-diff.githubusercontent.com/raw/rr-debugger/rr/pull/2726.diff
+	rr-2726.diff::https://patch-diff.githubusercontent.com/raw/rr-debugger/rr/pull/2726.diff
 )
 sha1sums=('b4716dd10b01ae4b8d35ae08f4f67fc46f0693d9'
           '80abae19e4486df97e922dcc7a906b96a1e00bc3')
 
 prepare() {
 	cd $pkgname-$pkgver
-	patch -Np1 -i $srcdir/2726.patch
+	patch -Np1 -i $srcdir/rr-2726.diff
 	mkdir -p build
 }
 
