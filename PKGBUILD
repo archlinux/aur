@@ -10,6 +10,10 @@ url="https://github.com/frigaut/yorick-hdf5"
 groups=('science' 'yorick-all')
 depends=('yorick' 'yorick-yutils-git' 'hdf5_18')
 makedepends=('yorick')
+provides=('yorick-hdf5')
+conflicts=('yorick-hdf5')
+replaces=('yorick-hdf5')
+
 
 _gitroot="git://github.com/frigaut/yorick-hdf5.git"
 _gitname="yorick-hdf5"

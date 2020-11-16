@@ -12,6 +12,9 @@ pkgbase = yorick-hdf5-git
 	depends = yorick
 	depends = yorick-yutils-git
 	depends = hdf5_18
+	provides = yorick-hdf5
+	conflicts = yorick-hdf5
+	replaces = yorick-hdf5
 
 pkgname = yorick-hdf5-git
 
