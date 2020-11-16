@@ -17,7 +17,9 @@ pkgbase = adlmapps
 	depends = pcre
 	options = !strip
 	source = manual://adlmapps17-17.0.49-0.x86_64.rpm
+	source = adlmapps.install
 	sha256sums = ee98f7d23f389ef1c6f4eba438e1470c69fea9a8e3be760f05cf2c38dc4ec92a
+	sha256sums = 7bc66c8c907f68fadc7d1ef51032dc77234f70996c310381b14f10acc7b9b5b9
 
 pkgname = adlmapps
 
