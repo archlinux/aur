@@ -8,7 +8,7 @@ pkgname=mullvad-vpn-beta
 _pkgver=2020.7
 _channel=beta
 pkgver=${_pkgver}.${_channel}2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -18,16 +18,16 @@ makedepends=('git' 'go' 'rust' 'npm' 'python')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
-_commit='b82a3e9a7717b8b15c339bc78d4a2f3c6d90ea50'
+_commit='cef267fadf707b6c59f3637685cc854ea09ee927'
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}2?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "${pkgname%-beta}.sh")
 sha256sums=('SKIP'
             'SKIP'
             'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
-validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
+validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87')
               # Linus Färnstrand (code signing key) <linus at mullvad dot net>
-              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
+#              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
               # David Lönnhager (code signing) <david dot l at mullvad dot net>
 
 prepare() {
