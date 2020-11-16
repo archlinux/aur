@@ -1,17 +1,21 @@
 pkgbase = lightpad
 	pkgdesc = A lightweight, simple and powerful application launcher. Writen in GTK+ 3.0. It is also Wayland compatible.
 	pkgver = 0.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/libredeb/lightpad
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = ninja
-	makedepends = vala
-	depends = gtk3
-	depends = gnome-menus
-	depends = libgee
+	makedepends = vala>=0.28.0
+	depends = cairo>=1.15.0
+	depends = gdk-pixbuf2>=2.36.0
+	depends = glib2>=2.50.0
+	depends = glibc>=2.28.0
+	depends = gtk3>=3.22.0
+	depends = gnome-menus>=3.13.0
+	depends = libgee>=0.18.0
 	source = lightpad-0.0.8.tar.gz::https://github.com/libredeb/lightpad/releases/download/v0.0.8/lightpad-0.0.8.tar.gz
 	sha256sums = 59b4328c5c140c948f83007d003ad47486d1ba8c90842462a904574cf0e5dfe5
 
