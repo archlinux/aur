@@ -57,13 +57,13 @@ function upload(){
   args="$file;$extension"
 
   url=$(curl -s -F "$args" 'https://x0.at/')
-  return $url
+  return "$url"
 }
 
 # Arguments
 
 function arguments(){
-  while getopts "hat:" arg "$@"
+  while getopts "hat:" arg "$args"
   do
     case $arg in
       a)
@@ -162,4 +162,5 @@ function main(){
 
 # Main
 
-main "$@"
+args="$@"
+main "$args"
