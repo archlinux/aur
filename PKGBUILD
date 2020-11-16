@@ -10,9 +10,9 @@ url="https://github.com/frigaut/yorick-yutils"
 groups=('science' 'yorick-all')
 depends=('yorick')
 makedepends=('git' 'yorick')
-# provides=('yorick-yutils')
-# conflicts=('yorick-yutils')
-# replaces=('yorick-yutils')
+provides=('yorick-yutils')
+conflicts=('yorick-yutils')
+replaces=('yorick-yutils')
 
 _gitroot="git://github.com/frigaut/yorick-yutils.git"
 _gitname="yorick-yutils"

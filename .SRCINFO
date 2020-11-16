@@ -10,6 +10,9 @@ pkgbase = yorick-yutils-git
 	makedepends = git
 	makedepends = yorick
 	depends = yorick
+	provides = yorick-yutils
+	conflicts = yorick-yutils
+	replaces = yorick-yutils
 
 pkgname = yorick-yutils-git
 
