@@ -60,6 +60,7 @@ pkgbase = zimbra
 	depends = perl-io-compress
 	depends = perl-io-html
 	depends = perl-io-sessiondata
+	depends = perl-ldap
 	depends = perl-io-socket-inet6
 	depends = perl-io-socket-ip
 	depends = perl-io-socket-ssl

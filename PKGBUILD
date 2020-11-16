@@ -26,7 +26,7 @@ depends=(
 'perl-date-calc' 'perl-date-manip' 'perl-db-file' 'perl-dbd-mysql' 'perl-dbd-sqlite' 'perl-dbi' 'perl-digest-hmac' 'perl-digest-sha1'
 'perl-email-date-format' 'perl-encode-detect' 'perl-encode-locale' 'perl-error' 'perl-exporter-tiny' 'perl-extutils-constant' 'perl-file-grep'
 'perl-file-libmagic' 'perl-file-listing' 'perl-file-tail' 'perl-filesys-df' 'perl-geography-countries' 'perl-html-parser' 'perl-http-cookies'
-'perl-http-daemon' 'perl-http-date' 'perl-http-message' 'perl-http-negotiate' 'perl-io-compress' 'perl-io-html' 'perl-io-sessiondata'
+'perl-http-daemon' 'perl-http-date' 'perl-http-message' 'perl-http-negotiate' 'perl-io-compress' 'perl-io-html' 'perl-io-sessiondata' 'perl-ldap'
 'perl-io-socket-inet6' 'perl-io-socket-ip' 'perl-io-socket-ssl' 'perl-io-stringy' 'perl-ip-country' 'perl-json-pp' 'perl-libwww' 'perl-list-moreutils'
 'perl-lwp-mediatypes' 'perl-lwp-protocol-https' 'perl-mail-dkim' 'perl-mail-spamassassin' 'perl-mail-spf' 'perl-mailtools' 'perl-math-bigint'
 'perl-mime-lite' 'perl-mime-tools' 'perl-mime-types' 'perl-mozilla-ca' 'perl-net-cidr' 'perl-net-cidr-lite' 'perl-net-dns' 'perl-net-dns-resolver-programmable'
