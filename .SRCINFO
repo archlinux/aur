@@ -1,6 +1,6 @@
 pkgbase = python-sseclient
 	pkgdesc = Client library for reading Server Sent Event streams
-	pkgver = 0.0.26
+	pkgver = 0.0.27
 	pkgrel = 1
 	url = https://github.com/btubbs/sseclient
 	arch = any
@@ -9,10 +9,8 @@ pkgbase = python-sseclient
 	makedepends = git
 	depends = python-requests>=2.0.0
 	depends = python-six
-	source = git+https://github.com/btubbs/sseclient.git#tag=v0.0.26
-	source = version.patch::https://github.com/btubbs/sseclient/commit/a59411431415586db8a46ad9fb8c398a37ee0543.patch
+	source = git+https://github.com/btubbs/sseclient.git#tag=v0.0.27
 	sha512sums = SKIP
-	sha512sums = 6eabcb54fb125cfe7b50c8eff970ead747f696d956cf3b25b13ef082fd4946dc837d376cf761a94dc120c395b315e628e41f230dcbd376e3c8ae69e0064e7f21
 
 pkgname = python-sseclient
 
