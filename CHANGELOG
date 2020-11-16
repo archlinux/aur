@@ -1,9 +1,28 @@
+4.4
+---
+
+ - New module :py:mod:`pyteomics.usi` implements a minimal Universal Spectrum Identifier parser and PROXI client
+   (`#11 <https://github.com/levitsky/pyteomics/pull/11>`_ by Joshua Klein).
+
+ - Support peak annotations in MGF (`#12 <https://github.com/levitsky/pyteomics/pull/12>`_ by Julian Müller).
+
+ - Provide version information in :py:mod:`pyteomics.version` (`#14 <https://github.com/levitsky/pyteomics/pull/14>`_).
+
+ - Make the order of isoforms reproducible in :py:func:`pyteomics.parser.isoforms`
+   (`#15 <https://github.com/levitsky/pyteomics/issues/15>`_).
+
+ - Rename `types` keyword argument to `ion_types` in :py:func:`pyteomics.pylab_aux.annotate_spectrum`.
+
+ - Fix `#16 <https://github.com/levitsky/pyteomics/issues/16>`_, a bug introduced in 4.3.3.
+
+
 4.3.3
 -----
 
- - Add :py:func:`pyteomics.electrochem.gravy` (`#9 <https://github.com/levitsky/pyteomics/pull/9>`_).
+ - Add :py:func:`pyteomics.electrochem.gravy` (`#9 <https://github.com/levitsky/pyteomics/pull/9>`_ by Vladimir Gorshkov).
 
- - Fixes and improvements in :py:func:`pyteomics.pepxml.roc_curve` (`#10 <https://github.com/levitsky/pyteomics/pull/10>`_).
+ - Fixes and improvements in :py:func:`pyteomics.pepxml.roc_curve` (`#10 <https://github.com/levitsky/pyteomics/pull/10>`_
+   by Andrey Rozenberg).
 
  - Changes in guessing behavior of :py:func:`read` functions.
 
