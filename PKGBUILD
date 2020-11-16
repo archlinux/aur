@@ -12,9 +12,9 @@ arch=(x86_64)
 url=https://github.com/CadQuery/OCP
 license=('Apache')
 depends=(python opencascade)
-makedepends=(gcc8 gcc8-libs clang python-joblib python-click python-pandas python-path pybind11 python-setuptools ninja cmake python-logzero python-tqdm python-toposort python-cymbal python-schema)
-source=("https://github.com/CadQuery/OCP/archive/${_pkgver}.tar.gz"
-        "https://github.com/CadQuery/pywrap/archive/${_pywrap_hash}.tar.gz")
+makedepends=(gcc8 gcc8-libs clang python-joblib python-click python-pandas python-path pybind11 python-setuptools ninja cmake python-logzero python-tqdm python-toposort python-cymbal python-schema rapidjson)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CadQuery/OCP/archive/${_pkgver}.tar.gz"
+        "pywrap-${pkgver}.tar.gz::https://github.com/CadQuery/pywrap/archive/${_pywrap_hash}.tar.gz")
 sha256sums=('38941daeecd374c2a070516811b66e42b5a67f4f856f3bddb4e4e1156b67ee06'
             '3d04a575d15446d12379c16f57c5c143a81611d75a2b9dd0ca73d22eac9b046d')
 
@@ -23,15 +23,15 @@ prepare(){
   
   # pywrap is a submodule so it doesn't come in with the main source tarball
   rm -rf pywrap
-  ln -s ../pywrap* pywrap
+  ln -s ../pywrap-${_pywrap_hash} pywrap
 
   # pywrap assdumes I'm using clang 8.0.0...
   sed -i "s,rv.append(Path(prefix) / 'lib/clang/8.0.0/include/'),rv.append(Path(prefix) / 'lib/clang/$(pacman -Q clang | awk '{print $2}' | cut -f1 -d"-")/include/'),g" pywrap/bindgen/utils.py
 
   # don't use the opencascade headers packaged here
   # instead use the ones from the installed opencascade package
-  rm -rf opencascade
-  ln -s /usr/include/opencascade .
+  #rm -rf opencascade
+  #ln -s /usr/include/opencascade .
 }
 
 build() {

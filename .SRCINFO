@@ -21,10 +21,11 @@ pkgbase = python-ocp
 	makedepends = python-toposort
 	makedepends = python-cymbal
 	makedepends = python-schema
+	makedepends = rapidjson
 	depends = python
 	depends = opencascade
-	source = https://github.com/CadQuery/OCP/archive/7.5-RC1.tar.gz
-	source = https://github.com/CadQuery/pywrap/archive/530890da875ca33fe954e9de285674232d3b759f.tar.gz
+	source = python-ocp-7.5.RC1.tar.gz::https://github.com/CadQuery/OCP/archive/7.5-RC1.tar.gz
+	source = pywrap-7.5.RC1.tar.gz::https://github.com/CadQuery/pywrap/archive/530890da875ca33fe954e9de285674232d3b759f.tar.gz
 	sha256sums = 38941daeecd374c2a070516811b66e42b5a67f4f856f3bddb4e4e1156b67ee06
 	sha256sums = 3d04a575d15446d12379c16f57c5c143a81611d75a2b9dd0ca73d22eac9b046d
 
