@@ -1,0 +1,22 @@
+post_install() {
+    :
+#!/bin/bash
+
+# Link to the binary
+ln -sf '/opt/Gopass UI/gopass-ui' '/usr/bin/gopass-ui'
+
+# SUID chrome-sandbox for Electron 5+
+chmod 4755 '/opt/Gopass UI/chrome-sandbox' || true
+
+update-mime-database /usr/share/mime || true
+update-desktop-database /usr/share/applications || true
+
+}
+post_remove() {
+    :
+#!/bin/bash
+
+# Delete the link to the binary
+rm -f '/usr/bin/gopass-ui'
+
+}

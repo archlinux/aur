@@ -1,0 +1,31 @@
+pkgbase = gopass-ui-bin
+	pkgdesc = Awesome UI for the gopass CLI – a password manager for your daily business
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/codecentric/gopass-ui
+	install = gopass-ui-bin.install
+	arch = x86_64
+	license = MIT
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = http-parser
+	depends = libevent
+	depends = libvpx
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
+	depends = libnotify
+	depends = libappindicator-gtk3
+	depends = gopass
+	provides = gopass-ui
+	source = https://github.com/codecentric/gopass-ui/releases/download/v0.7.0/gopass-ui-0.7.0.pacman
+	source = LICENSE
+	sha256sums = 207c8fc34fd1f5cf6fa5aad69ea4966dc3edc94f0da75da8f96c3be15e31d0ab
+	sha256sums = 21852b19d5c49c5d36f2c23cc60a299beeb94a64ec197dab5a57065fd73ecac3
+
+pkgname = gopass-ui-bin
+
