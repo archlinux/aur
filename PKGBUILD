@@ -1,11 +1,11 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
 
 pkgname=cryptobox
-pkgver=20201111.r11.da853cb
+pkgver=20201115.r12.2f7067c
 pkgrel=1
 pkgdesc='A script that makes it easy to create, mount and unmount encrypted images in Linux using LUKS'
 url='https://github.com/prurigro/cryptobox'
-license=('GPL3')
+license=('MIT')
 depends=('coreutils' 'cryptsetup' 'util-linux')
 makedepends=('git')
 arch=('any')
@@ -18,5 +18,7 @@ pkgver() {
 }
 
 package() {
-  install -Dm755 $pkgname/$pkgname "$pkgdir/usr/bin/$pkgname"
+  cd $pkgname
+  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
