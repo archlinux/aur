@@ -2,7 +2,7 @@
 
 pkgname=libsocketcan2-git
 pkgver=r92.df01f01
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to control some basic functions in SocketCAN from userspace"
 arch=('i686' 'x86_64')
 url="http://git.pengutronix.de/?p=tools/libsocketcan.git"
@@ -22,11 +22,11 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
   ./autogen.sh
-  ./configure
+  ./configure --prefix=/usr
   make
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}/" install
 }

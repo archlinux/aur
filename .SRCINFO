@@ -1,7 +1,7 @@
 pkgbase = libsocketcan2-git
 	pkgdesc = Library to control some basic functions in SocketCAN from userspace
 	pkgver = r92.df01f01
-	pkgrel = 1
+	pkgrel = 2
 	url = http://git.pengutronix.de/?p=tools/libsocketcan.git
 	arch = i686
 	arch = x86_64
