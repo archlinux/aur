@@ -1,0 +1,15 @@
+pkgbase = python-emailthreads-git
+	pkgdesc = Python library to parse and format email threads
+	pkgver = 0.1.3.r0.g99f1a04fa0dd
+	pkgrel = 1
+	url = https://github.com/emersion/python-emailthreads
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	provides = python-emailthreads
+	conflicts = python-emailthreads
+	source = python-emailthreads-git::git+https://github.com/emersion/python-emailthreads
+	sha256sums = SKIP
+
+pkgname = python-emailthreads-git
+
