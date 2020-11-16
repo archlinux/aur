@@ -7,7 +7,7 @@
 pkgname=mullvad-vpn-beta
 _pkgver=2020.7
 _channel=beta
-pkgver=${_pkgver}.${_channel}1
+pkgver=${_pkgver}.${_channel}2
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
@@ -19,7 +19,7 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
 _commit='b82a3e9a7717b8b15c339bc78d4a2f3c6d90ea50'
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}1?signed"
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}2?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "${pkgname%-beta}.sh")
 sha256sums=('SKIP'
@@ -150,7 +150,7 @@ package() {
 
 	# Install desktop file & icons from deb
 	cd dist
-	ar x "MullvadVPN-${_pkgver}.0-${_channel}1_amd64.deb"
+	ar x "MullvadVPN-${_pkgver}.0-${_channel}2_amd64.deb"
 	bsdtar -xf data.tar.xz
 	install -Dm644 "usr/share/applications/${pkgname%-beta}.desktop" -t \
 		"$pkgdir/usr/share/applications"
