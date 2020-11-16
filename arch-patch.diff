@@ -1,0 +1,12 @@
+--- zm-build/instructions/bundling-scripts/utils.sh	2020-11-16 19:10:10.207776349 +0100
++++ zm-build/instructions/bundling-scripts/utils.sh	2020-11-16 19:10:03.064930426 +0100
+@@ -47,6 +47,9 @@
+     elif [[ $1 == RHEL* ]]
+     then
+         CreateRhelPackage
++    elif [[ $1 == ARCH ]]
++    then
++        echo "Build on Arch Linux done"
+     else
+         echo "OS not supported. Run using UBUNTU or RHEL system. "
+         exit 1

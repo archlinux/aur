@@ -11,6 +11,7 @@ pkgbase = zimbra
 	makedepends = jdk8-openjdk
 	makedepends = junit
 	makedepends = lsb-release
+	makedepends = perl-devel-checklib
 	makedepends = rsync
 	makedepends = ruby
 	depends = java-runtime>=11
@@ -57,7 +58,9 @@ pkgbase = zimbra
 	depends = perl-http-negotiate
 	depends = perl-io-compress
 	depends = perl-io-html
+	depends = perl-io-multiplex
 	depends = perl-ldap
+	depends = perl-list-moreutils-xs
 	depends = perl-io-socket-inet6
 	depends = perl-io-socket-ip
 	depends = perl-io-socket-ssl
@@ -90,6 +93,7 @@ pkgbase = zimbra
 	depends = perl-proc-processtable
 	depends = perl-soap-lite
 	depends = perl-socket
+	depends = perl-socket6
 	depends = perl-storable
 	depends = perl-task-weaken
 	depends = perl-term-readkey
@@ -102,6 +106,7 @@ pkgbase = zimbra
 	depends = perl-xml-sax-expat
 	optdepends = innotop
 	source = git+https://github.com/Zimbra/zm-build#tag=9.0.0
+	source = git+https://github.com/M0Rf30/zimbra-package-stub
 	source = git+https://github.com/Zimbra/ant-1.7.0-ziputil-patched#tag=9.0.0
 	source = git+https://github.com/Zimbra/ant-tar-patched#tag=9.0.0
 	source = git+https://github.com/Zimbra/ical4j-0.9.16-patched#tag=9.0.0
@@ -142,7 +147,7 @@ pkgbase = zimbra
 	source = git+https://github.com/Zimbra/zm-nginx-conf#tag=9.0.0.p9
 	source = git+https://github.com/Zimbra/zm-nginx-lookup-store#tag=9.0.0
 	source = git+https://github.com/Zimbra/zm-openid-consumer-store#tag=9.0.0
-	source = git+https://github.com/Zimbra/zm-pkg-tool#tag=9.0.0.p7
+	source = git+https://github.com/M0Rf30/zm-pkg-tool#tag=9.0.0.arch.p7
 	source = git+https://github.com/Zimbra/zm-postfix#tag=9.0.0
 	source = git+https://github.com/Zimbra/zm-proxy-config-admin-zimlet#tag=9.0.0
 	source = git+https://github.com/Zimbra/zm-ssdb-ephemeral-store#tag=9.0.0
@@ -162,6 +167,8 @@ pkgbase = zimbra
 	source = zimbra.sysusers
 	source = zimbra.tmpfiles
 	source = localconfig.xml
+	source = arch-patch.diff
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -223,6 +230,7 @@ pkgbase = zimbra
 	md5sums = 21b3bdbcb2d23357104122df3de217b5
 	md5sums = 84ad300287d602d4d6b2601748ddbaac
 	md5sums = 66f2930f13484ae782a162e8e7da28c1
+	md5sums = a33b2181aa9bd50470192727bab7d3fa
 
 pkgname = zimbra
 

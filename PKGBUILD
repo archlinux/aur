@@ -3,6 +3,7 @@
 # perl-geography-countries
 # perl-socket-linux
 # perl-unix-getrusage
+# perl-ipc-cmd
 # perl-io-sessiondata
 # perl-mail-spamassassin
 # perl-swatchdog
@@ -20,21 +21,21 @@ arch=(x86_64)
 url="https://www.zimbra.com/open-source-email-overview/"
 license=(CPAL)
 depends=(
-'java-runtime>=11' 'perl-archive-zip' 'perl-berkeleydb' 'perl-bit-vector' 'perl-cache-fastmmap' 'perl-canary-stability' 'perl-carp-clan'
-'perl-class-inspector' 'perl-compress-raw-bzip2' 'perl-compress-raw-zlib' 'perl-config-inifiles' 'perl-convert-asn1' 'perl-convert-binhex'
-'perl-convert-tnef' 'perl-convert-uulib' 'perl-crypt-openssl-random' 'perl-crypt-openssl-rsa' 'perl-data-uuid'
-'perl-date-calc' 'perl-date-manip' 'perl-dbd-mysql' 'perl-dbd-sqlite' 'perl-dbi' 'perl-digest-hmac' 'perl-digest-sha1'
-'perl-email-date-format' 'perl-encode-detect' 'perl-encode-locale' 'perl-error' 'perl-exporter-tiny' 'perl-extutils-constant' 'perl-file-grep'
-'perl-file-libmagic' 'perl-file-listing' 'perl-file-tail' 'perl-filesys-df' 'perl-html-parser' 'perl-http-cookies'
-'perl-http-daemon' 'perl-http-date' 'perl-http-message' 'perl-http-negotiate' 'perl-io-compress' 'perl-io-html' 'perl-ldap'
-'perl-io-socket-inet6' 'perl-io-socket-ip' 'perl-io-socket-ssl' 'perl-io-stringy' 'perl-ip-country' 'perl-json-pp' 'perl-libwww' 'perl-list-moreutils'
-'perl-lwp-mediatypes' 'perl-lwp-protocol-https' 'perl-mail-dkim' 'perl-mail-spf' 'perl-mailtools' 'perl-math-bigint'
-'perl-mime-lite' 'perl-mime-tools' 'perl-mime-types' 'perl-mozilla-ca' 'perl-net-cidr' 'perl-net-cidr-lite' 'perl-net-dns' 'perl-net-dns-resolver-programmable'
-'perl-net-http' 'perl-net-ldapapi' 'perl-net-libidn' 'perl-net-server' 'perl-net-ssleay' 'perl-netaddr-ip' 'perl-parent' 'perl-proc-processtable'
-'perl-soap-lite' 'perl-socket' 'perl-storable' 'perl-task-weaken' 'perl-term-readkey' 'perl-timedate'
-'perl-unix-syslog' 'perl-uri' 'perl-xml-parser' 'perl-xml-sax' 'perl-xml-sax-base' 'perl-xml-sax-expat')
+  'java-runtime>=11' 'perl-archive-zip' 'perl-berkeleydb' 'perl-bit-vector' 'perl-cache-fastmmap' 'perl-canary-stability' 'perl-carp-clan'
+  'perl-class-inspector' 'perl-compress-raw-bzip2' 'perl-compress-raw-zlib' 'perl-config-inifiles' 'perl-convert-asn1' 'perl-convert-binhex'
+  'perl-convert-tnef' 'perl-convert-uulib' 'perl-crypt-openssl-random' 'perl-crypt-openssl-rsa' 'perl-data-uuid'
+  'perl-date-calc' 'perl-date-manip' 'perl-dbd-mysql' 'perl-dbd-sqlite' 'perl-dbi' 'perl-digest-hmac' 'perl-digest-sha1'
+  'perl-email-date-format' 'perl-encode-detect' 'perl-encode-locale' 'perl-error' 'perl-exporter-tiny' 'perl-extutils-constant' 'perl-file-grep'
+  'perl-file-libmagic' 'perl-file-listing' 'perl-file-tail' 'perl-filesys-df' 'perl-html-parser' 'perl-http-cookies'
+  'perl-http-daemon' 'perl-http-date' 'perl-http-message' 'perl-http-negotiate' 'perl-io-compress' 'perl-io-html' 'perl-io-multiplex' 'perl-ldap' 'perl-list-moreutils-xs'
+  'perl-io-socket-inet6' 'perl-io-socket-ip' 'perl-io-socket-ssl' 'perl-io-stringy' 'perl-ip-country' 'perl-json-pp' 'perl-libwww' 'perl-list-moreutils'
+  'perl-lwp-mediatypes' 'perl-lwp-protocol-https' 'perl-mail-dkim' 'perl-mail-spf' 'perl-mailtools' 'perl-math-bigint'
+  'perl-mime-lite' 'perl-mime-tools' 'perl-mime-types' 'perl-mozilla-ca' 'perl-net-cidr' 'perl-net-cidr-lite' 'perl-net-dns' 'perl-net-dns-resolver-programmable'
+  'perl-net-http' 'perl-net-ldapapi' 'perl-net-libidn' 'perl-net-server' 'perl-net-ssleay' 'perl-netaddr-ip' 'perl-parent' 'perl-proc-processtable'
+  'perl-soap-lite' 'perl-socket' 'perl-socket6' 'perl-storable' 'perl-task-weaken' 'perl-term-readkey' 'perl-timedate'
+  'perl-unix-syslog' 'perl-uri' 'perl-xml-parser' 'perl-xml-sax' 'perl-xml-sax-base' 'perl-xml-sax-expat')
 optdepends=('innotop')
-makedepends=('maven' 'ant' 'java-hamcrest' 'jdk8-openjdk' 'junit' 'lsb-release' 'rsync' 'ruby')
+makedepends=('maven' 'ant' 'java-hamcrest' 'jdk8-openjdk' 'junit' 'lsb-release' 'perl-devel-checklib' 'rsync' 'ruby')
 install=
 
 # Zimbra Configuration Variables
@@ -42,14 +43,15 @@ _buildtype="FOSS"
 _major=$(echo "${pkgver}" | cut -d'.' -f1)
 _micro=$(echo "${pkgver}" | cut -d'.' -f3)
 _minor=$(echo "${pkgver}" | cut -d'.' -f2)
-_os="Arch"
-_ostag="urolling"
+_os="ARCH"
+_ostag="arch"
 _rc="GA"
 _release="KEPLER"
 _releaseno="${pkgver%.*}"
 _timestamp=$(date +'%Y%m%d')
 
 source=("git+https://github.com/Zimbra/zm-build#tag=${_releaseno}" # Repo list is synced with instructions/FOSS_repo_list.pl
+  "git+https://github.com/M0Rf30/zimbra-package-stub"              # A fork of mine to detect Arch
   "git+https://github.com/Zimbra/ant-1.7.0-ziputil-patched#tag=${_releaseno}"
   "git+https://github.com/Zimbra/ant-tar-patched#tag=${_releaseno}"
   "git+https://github.com/Zimbra/ical4j-0.9.16-patched#tag=${_releaseno}"
@@ -90,7 +92,7 @@ source=("git+https://github.com/Zimbra/zm-build#tag=${_releaseno}" # Repo list i
   "git+https://github.com/Zimbra/zm-nginx-conf#tag=${_releaseno}.p9"
   "git+https://github.com/Zimbra/zm-nginx-lookup-store#tag=${_releaseno}"
   "git+https://github.com/Zimbra/zm-openid-consumer-store#tag=${_releaseno}"
-  "git+https://github.com/Zimbra/zm-pkg-tool#tag=${_releaseno}.p7"
+  "git+https://github.com/M0Rf30/zm-pkg-tool#tag=${_releaseno}.arch.p7" # A fork of mine to support Arch
   "git+https://github.com/Zimbra/zm-postfix#tag=${_releaseno}"
   "git+https://github.com/Zimbra/zm-proxy-config-admin-zimlet#tag=${_releaseno}"
   "git+https://github.com/Zimbra/zm-ssdb-ephemeral-store#tag=${_releaseno}"
@@ -110,6 +112,7 @@ source=("git+https://github.com/Zimbra/zm-build#tag=${_releaseno}" # Repo list i
   "zimbra.sysusers"
   "zimbra.tmpfiles"
   "localconfig.xml"
+  "arch-patch.diff"
 )
 noextract=()
 
@@ -119,20 +122,8 @@ prepare() {
   # Bypass build.pl git checkout
   sed -i 's/Checkout($all_repos)/#Checkout($all_repos)/g' \
     zm-build/build.pl
-
-  # Bypass deb generation
-  sed -i 's/Die("Unknown PACKAGING format");/print("Arch Linux PACKAGING format\n");/g' \
-    zm-pkg-tool/pkg-build.pl
-  sed -i 's/return "deb"/return "tar.xz"/g' \
-    zm-pkg-tool/pkg-build.pl
-  sed -i '/echo "OS not supported./{n;s/.*//}' \
-    zm-build/instructions/bundling-scripts/utils.sh
-
-  # Fix zimbra-package-stub RELEASE descriptors
-  mkdir -p zimbra-package-stub/version
-  echo "${_major}" >zimbra-package-stub/version/MAJOR
-  echo "${_minor}" >zimbra-package-stub/version/MINOR
-  echo "${_micro}_${_rc}" >zimbra-package-stub/version/MICRO
+  # Add support for Arch in some scripts
+  patch -Np0 -i arch-patch.diff
 }
 
 build() {
@@ -172,63 +163,65 @@ package() {
 }
 
 md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         '21b3bdbcb2d23357104122df3de217b5'
-         '84ad300287d602d4d6b2601748ddbaac'
-         '66f2930f13484ae782a162e8e7da28c1')
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  '21b3bdbcb2d23357104122df3de217b5'
+  '84ad300287d602d4d6b2601748ddbaac'
+  '66f2930f13484ae782a162e8e7da28c1'
+  'a33b2181aa9bd50470192727bab7d3fa')
