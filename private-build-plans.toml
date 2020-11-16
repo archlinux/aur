@@ -1,0 +1,190 @@
+[buildPlans.iosevka-custom]
+family = "Iosevka Custom"
+
+[buildPlans.iosevka-custom.variants]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#stylistic-sets
+inherits = "ss14"
+
+[buildPlans.iosevka-custom.variants.design]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-character-variants
+# https://github.com/be5invis/Iosevka/raw/dev-v4/images/charvars.png
+turn-v = "curly"
+capital-d = "more-rounded"
+capital-g = "toothless"
+capital-k = "curly"
+capital-r = "curly"
+b = "toothless-corner"
+d = "toothless-corner"
+f = "serifless"
+g = "earless-corner"
+i = "serifed-tailed"
+k = "curly"
+p = "earless-corner"
+q = "earless-corner-tailed"
+v = "curly"
+w = "curly"
+x = "curly"
+y = "cursive"
+lambda = "curly"
+zero = "slashed"
+three = "twoarcs"
+dollar = "open"
+
+# Override above variants for each slope:
+# [buildPlans.iosevka-custom.variants.upright]
+# [buildPlans.iosevka-custom.variants.italic]
+# [buildPlans.iosevka-custom.variants.oblique]
+
+[buildPlans.iosevka-custom.ligations]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-ligations
+# https://github.com/be5invis/Iosevka/tree/dev-v4#ligations
+inherits = "clik"
+# disables = []
+# enables = []
+
+
+
+
+
+[buildPlans.iosevka-term-custom]
+family = "Iosevka Term Custom"
+spacing = "term"
+
+[buildPlans.iosevka-term-custom.variants]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#stylistic-sets
+inherits = "ss14"
+
+[buildPlans.iosevka-term-custom.variants.design]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-character-variants
+# https://github.com/be5invis/Iosevka/raw/dev-v4/images/charvars.png
+turn-v = "curly"
+capital-d = "more-rounded"
+capital-g = "toothless"
+capital-k = "curly"
+capital-r = "curly"
+b = "toothless-corner"
+d = "toothless-corner"
+f = "serifless"
+g = "earless-corner"
+i = "serifed-tailed"
+k = "curly"
+p = "earless-corner"
+q = "earless-corner-tailed"
+v = "curly"
+w = "curly"
+x = "curly"
+y = "cursive"
+lambda = "curly"
+zero = "slashed"
+three = "twoarcs"
+dollar = "open"
+
+# Override above variants for each slope:
+# [buildPlans.iosevka-term-custom.variants.upright]
+# [buildPlans.iosevka-term-custom.variants.italic]
+# [buildPlans.iosevka-term-custom.variants.oblique]
+
+[buildPlans.iosevka-term-custom.ligations]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-ligations
+# https://github.com/be5invis/Iosevka/tree/dev-v4#ligations
+inherits = "clik"
+# disables = []
+# enables = []
+
+
+
+
+
+[buildPlans.iosevka-force-monospace-custom]
+family = "Iosevka Force Monospace Custom"
+spacing = "force-monospace"
+
+[buildPlans.iosevka-force-monospace-custom.variants]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#stylistic-sets
+inherits = "ss14"
+
+[buildPlans.iosevka-force-monospace-custom.variants.design]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-character-variants
+# https://github.com/be5invis/Iosevka/raw/dev-v4/images/charvars.png
+turn-v = "curly"
+capital-d = "more-rounded"
+capital-g = "toothless"
+capital-k = "curly"
+capital-r = "curly"
+b = "toothless-corner"
+d = "toothless-corner"
+f = "serifless"
+g = "earless-corner"
+i = "serifed-tailed"
+k = "curly"
+p = "earless-corner"
+q = "earless-corner-tailed"
+v = "curly"
+w = "curly"
+x = "curly"
+y = "cursive"
+lambda = "curly"
+zero = "slashed"
+three = "twoarcs"
+dollar = "open"
+
+# Override above variants for each slope:
+# [buildPlans.iosevka-force-monospace-custom.variants.upright]
+# [buildPlans.iosevka-force-monospace-custom.variants.italic]
+# [buildPlans.iosevka-force-monospace-custom.variants.oblique]
+
+[buildPlans.iosevka-force-monospace-custom.ligations]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-ligations
+# https://github.com/be5invis/Iosevka/tree/dev-v4#ligations
+inherits = "clik"
+# disables = []
+# enables = []
+
+
+
+
+
+[buildPlans.iosevka-fixed-custom]
+family = "Iosevka Fixed Custom"
+spacing = "fixed"
+
+[buildPlans.iosevka-fixed-custom.variants]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#stylistic-sets
+inherits = "ss14"
+
+[buildPlans.iosevka-fixed-custom.variants.design]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-character-variants
+# https://github.com/be5invis/Iosevka/raw/dev-v4/images/charvars.png
+turn-v = "curly"
+capital-d = "more-rounded"
+capital-g = "toothless"
+capital-k = "curly"
+capital-r = "curly"
+b = "toothless-corner"
+d = "toothless-corner"
+f = "serifless"
+g = "earless-corner"
+i = "serifed-tailed"
+k = "curly"
+p = "earless-corner"
+q = "earless-corner-tailed"
+v = "curly"
+w = "curly"
+x = "curly"
+y = "cursive"
+lambda = "curly"
+zero = "slashed"
+three = "twoarcs"
+dollar = "open"
+
+# Override above variants for each slope:
+# [buildPlans.iosevka-fixed-custom.variants.upright]
+# [buildPlans.iosevka-fixed-custom.variants.italic]
+# [buildPlans.iosevka-fixed-custom.variants.oblique]
+
+[buildPlans.iosevka-fixed-custom.ligations]
+# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-ligations
+# https://github.com/be5invis/Iosevka/tree/dev-v4#ligations
+inherits = "clik"
+# disables = []
+# enables = []
