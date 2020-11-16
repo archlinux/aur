@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-pinyin-chinese-idiom
 pkgver=20200930
-pkgrel=2
+pkgrel=3
 _commit='0c1b605e7797d7cf509c45fba308cdd25dfe9a26'
 pkgdesc="Fcitx 5 Pinyin Chinese Idiom Dictionary"
 url='https://github.com/Kienyew/fcitx5-pinyin-chinese-idiom'
@@ -24,5 +24,6 @@ build() {
 }
 
 package() {
-  install -Dm644 idioms.dict $pkgdir/usr/share/fcitx5/pinyin/dictionaries/idioms.dict
+  install -Dm644 idioms.dict "$pkgdir/usr/share/fcitx5/pinyin/dictionaries/idioms.dict"
+  install -Dm644 "$srcdir/$pkgname-v1.0/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
