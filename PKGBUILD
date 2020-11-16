@@ -15,6 +15,7 @@ sha256sums=("SKIP")
 
 package() {
     bsdtar -O -xf ${pkgname}-amd64-linux.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
+    mkdir $pkgdir/usr/bin
     ln -sf $pkgdir/opt/Binance/binance $pkgdir/usr/bin/binance
     # Permission fix
     find "${pkgdir}" -type d -exec chmod 755 {} +
