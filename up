@@ -1,15 +1,6 @@
 #!/usr/bin/env bash
 
-# Bash file uploader
-
-# Install: sudo wget $raw_url -O /usr/bin/up && sudo chmod +x /usr/bin/up
-
-# Use with fish:
-# echo "\
-# function up
-#   /usr/bin/up $argv;
-# end
-# " > $HOME/.config/fish/functions/up.fish
+# x0.at paste client
 
 # Vars
 
@@ -20,7 +11,7 @@ AUTOCOPY=1
 function usage(){
   filename=$(basename "$0")
   cat <<- EOF
-Bash file uploader
+x0.at paste client
 
 Usage :
 
@@ -39,32 +30,40 @@ C-d C-d
 Options :
     -h    Print this usage
     -a    Disable autocopy in clipboard
+    -t    Set extension, without dot
 EOF
 }
 
-function x0(){
-  # x0 will be used for file upload and stdin upload
-  # It correctly set filetype for imgs, ix does not
+function upload(){
 
-  # If argument is empty, upload stdin
+  # Set vars
+  local args
+  local url
+
   if [ -z "$1" ]
   then
-    curl -s -F "file=@-" 'https://x0.at/'
-  # Else upload filename
+    # If argument is empty, upload stdin
+    local file="file=@-"
   else
-    curl -s -F "file=@\"$1\"" 'https://x0.at/'
+    # Else upload filename
+    local file="file=@\"$1\""
   fi
-}
 
-function ix(){
-  # ix.io will be used for piped data upload
-  curl -s -F 'f:1=<-' 'http://ix.io'
+  if [ -z "$EXTENSION" ]
+  then
+    local extension="filename=$EXTENSION"
+  fi
+
+  args="$file;$extension"
+
+  url=$(curl -s -F "$args" 'https://x0.at/')
+  return $url
 }
 
 # Arguments
 
 function arguments(){
-  while getopts "ha" arg
+  while getopts "hat:" arg
   do
     case $arg in
       a)
@@ -73,6 +72,9 @@ function arguments(){
       h)
         usage
         exit
+        ;;
+      t)
+        EXTENSION=${OPTARG}
         ;;
       *)
         usage
@@ -123,17 +125,17 @@ function main(){
     # If no argument, read stdin and save url
     if [ -z "$1" ]
     then
-      url=$(x0)
+      url=$(upload)
       # Force a newline at the end
       echo -e "\n"
-    # Else upload argument to x0.at and save url
+    # Else upload argument and save url
     else
       # Test if file exists and is a regular file
       if [ -n "$1" ]
       then
         is_file "$1"
       fi
-      url=$(x0 "$1")
+      url=$(upload "$1")
     fi
   
   # Else if piped data
@@ -143,8 +145,8 @@ function main(){
     then
       echo "Warning: ignoring file $1..."
     fi
-    # Upload to ix.io and save url
-    url=$(ix)
+    # Upload and save url
+    url=$(upload)
   fi
   
   # Print url
@@ -160,4 +162,4 @@ function main(){
 
 # Main
 
-main "$1"
+main "$@"

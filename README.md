@@ -1,5 +1,7 @@
 # upaste
-Paste and upload files on ix.io and x0.at  
+Paste and upload files on ix.io and x0.at  .
+ix.io is used for piped text.  
+x0.at is used for stdin upload and file upload because it correctly set filetype.
 
 ### Usage
 
