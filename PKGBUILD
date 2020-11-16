@@ -22,17 +22,17 @@ license=(CPAL)
 depends=(
 'java-runtime>=11' 'perl-archive-zip' 'perl-berkeleydb' 'perl-bit-vector' 'perl-cache-fastmmap' 'perl-canary-stability' 'perl-carp-clan'
 'perl-class-inspector' 'perl-compress-raw-bzip2' 'perl-compress-raw-zlib' 'perl-config-inifiles' 'perl-convert-asn1' 'perl-convert-binhex'
-'perl-convert-tnef' 'perl-convert-uulib' 'perl-crypt-openssl-random' 'perl-crypt-openssl-rsa' 'perl-crypt-saltedhash' 'perl-data-uuid'
-'perl-date-calc' 'perl-date-manip' 'perl-db-file' 'perl-dbd-mysql' 'perl-dbd-sqlite' 'perl-dbi' 'perl-digest-hmac' 'perl-digest-sha1'
+'perl-convert-tnef' 'perl-convert-uulib' 'perl-crypt-openssl-random' 'perl-crypt-openssl-rsa' 'perl-data-uuid'
+'perl-date-calc' 'perl-date-manip' 'perl-dbd-mysql' 'perl-dbd-sqlite' 'perl-dbi' 'perl-digest-hmac' 'perl-digest-sha1'
 'perl-email-date-format' 'perl-encode-detect' 'perl-encode-locale' 'perl-error' 'perl-exporter-tiny' 'perl-extutils-constant' 'perl-file-grep'
-'perl-file-libmagic' 'perl-file-listing' 'perl-file-tail' 'perl-filesys-df' 'perl-geography-countries' 'perl-html-parser' 'perl-http-cookies'
-'perl-http-daemon' 'perl-http-date' 'perl-http-message' 'perl-http-negotiate' 'perl-io-compress' 'perl-io-html' 'perl-io-sessiondata' 'perl-ldap'
+'perl-file-libmagic' 'perl-file-listing' 'perl-file-tail' 'perl-filesys-df' 'perl-html-parser' 'perl-http-cookies'
+'perl-http-daemon' 'perl-http-date' 'perl-http-message' 'perl-http-negotiate' 'perl-io-compress' 'perl-io-html' 'perl-ldap'
 'perl-io-socket-inet6' 'perl-io-socket-ip' 'perl-io-socket-ssl' 'perl-io-stringy' 'perl-ip-country' 'perl-json-pp' 'perl-libwww' 'perl-list-moreutils'
-'perl-lwp-mediatypes' 'perl-lwp-protocol-https' 'perl-mail-dkim' 'perl-mail-spamassassin' 'perl-mail-spf' 'perl-mailtools' 'perl-math-bigint'
+'perl-lwp-mediatypes' 'perl-lwp-protocol-https' 'perl-mail-dkim' 'perl-mail-spf' 'perl-mailtools' 'perl-math-bigint'
 'perl-mime-lite' 'perl-mime-tools' 'perl-mime-types' 'perl-mozilla-ca' 'perl-net-cidr' 'perl-net-cidr-lite' 'perl-net-dns' 'perl-net-dns-resolver-programmable'
 'perl-net-http' 'perl-net-ldapapi' 'perl-net-libidn' 'perl-net-server' 'perl-net-ssleay' 'perl-netaddr-ip' 'perl-parent' 'perl-proc-processtable'
-'perl-soap-lite' 'perl-socket' 'perl-socket-linux' 'perl-storable' 'perl-swatchdog' 'perl-task-weaken' 'perl-term-readkey' 'perl-timedate'
-'perl-unix-getrusage' 'perl-unix-syslog' 'perl-uri' 'perl-xml-parser' 'perl-xml-sax' 'perl-xml-sax-base' 'perl-xml-sax-expat')
+'perl-soap-lite' 'perl-socket' 'perl-storable' 'perl-task-weaken' 'perl-term-readkey' 'perl-timedate'
+'perl-unix-syslog' 'perl-uri' 'perl-xml-parser' 'perl-xml-sax' 'perl-xml-sax-base' 'perl-xml-sax-expat')
 optdepends=('innotop')
 makedepends=('maven' 'ant' 'java-hamcrest' 'jdk8-openjdk' 'junit' 'lsb-release' 'rsync' 'ruby')
 install=
