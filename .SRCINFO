@@ -1,9 +1,10 @@
 pkgbase = cpp-taskflow-git
 	pkgdesc = Modern C++ Parallel Task Programming Library
-	pkgver = r1311.ccf1711
+	pkgver = r1609.e406e95b
 	pkgrel = 1
 	url = https://github.com/taskflow/taskflow
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
