@@ -2,7 +2,7 @@
 
 _pkgname=rofi-bluetooth
 pkgname="${_pkgname}-git"
-pkgver=r6.ff1dc72
+pkgver=r11.f928f85
 pkgrel=1
 pkgdesc='A script that generates a rofi menu that uses bluetoothctl to connect to bluetooth devices and display status info'
 arch=('any')
