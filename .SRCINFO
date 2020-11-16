@@ -1,0 +1,14 @@
+pkgbase = prism-bin
+	pkgdesc = An RTMP stream recaster / splitter
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/muesli/prism
+	arch = x86_64
+	license = MIT
+	provides = prism
+	conflicts = prism
+	source_x86_64 = https://github.com/muesli/prism/releases/download/v0.1.0/prism_0.1.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = e0b25dd65bf1bbc80a18e9be3f95fe4ad633d373f75321ba86731d7c15d4018b
+
+pkgname = prism-bin
+
