@@ -151,7 +151,7 @@ build() {
     --build-prod-flag --disable-bundle --ant-options="-DskipTests=1"
 }
 
-package_zimbra() {
+package() {
   cd "$srcdir"
   cd .staging/${_os}-${_release}-${_major}${_minor}${_micro}-${_timestamp}-${_buildtype}-${pkgrel}
   find . -type d -name "opt" -exec rsync -av {} "$pkgdir" \;
