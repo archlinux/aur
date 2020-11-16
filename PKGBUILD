@@ -3,7 +3,7 @@
 
 pkgname=vidcutter
 pkgver=6.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Modern, simple to use, constantly evolving and hella fast media cutter + joiner with frame-accurate SmartCut technology'
 arch=(x86_64)
 url='https://github.com/ozmartian/vidcutter'
