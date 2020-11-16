@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=safekeep
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A client/server backup system which enhances the power of rdiff-backup"
 arch=('any')
@@ -13,7 +13,7 @@ install=$pkgname.install
 backup=('etc/safekeep/safekeep.conf'
         'etc/cron.daily/safekeep')
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('128e15f0e76355d7aa6056d044dc248f86317dee474c549bc73cede28947d0a0')
+sha256sums=('23f1a86895eee6ca5f261324dc7167e87df26f310a9f156d3228ec4039282af9')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
