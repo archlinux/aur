@@ -2,12 +2,14 @@
 
 pkgname=abseil-cpp
 pkgver=20200923.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Abseil Common Libraries (C++)"
-arch=('any')
+# check occasionally arch support status
+# https://github.com/abseil/abseil-cpp/blob/master/absl/random/internal/platform.h#L54
+arch=('x86_64' 'i686' 'arm' 'aarch64' 'ppc')
 url="https://github.com/abseil/abseil-cpp"
 license=('Apache')
-makedepends=('cmake' 'git')
+makedepends=('cmake')
 source=("$url/archive/$pkgver.tar.gz")
 sha256sums=('bf3f13b13a0095d926b25640e060f7e13881bd8a792705dd9e161f3c2b9aa976')
 
