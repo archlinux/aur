@@ -1,13 +1,13 @@
 # Maintainer: Alice Gaudon <alice at gaudon dot pro>
 
 pkgname='tabs-app'
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Persistent and separate browser tabs in one window'
 arch=('x86_64')
-url='https://gitlab.com/ArisuOngaku/tabs'
+url='https://eternae.ink/arisu/tabs'
 license=('GPL3')
-source=("tabs-src::git://github.com/ArisuOngaku/tabs.git#tag=v$pkgver"
+source=("tabs-src::git+https://eternae.ink/arisu/tabs.git#tag=v$pkgver"
   'tabs-app'
   'tabs-app.desktop')
 sha512sums=('SKIP'
