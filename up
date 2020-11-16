@@ -162,5 +162,5 @@ function main(){
 
 # Main
 
-args="$@"
+args=( "$@" )
 main "${args[@]}"
