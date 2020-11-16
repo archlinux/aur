@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phoc
-pkgver=0.4.4
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Wlroots based Phone compositor"
 url="https://source.puri.sm/Librem5/phoc"
@@ -15,7 +15,7 @@ makedepends=(ctags
              vala)
 checkdepends=(xorg-server-xvfb)
 source=("https://source.puri.sm/Librem5/phoc/-/archive/v${pkgver}/phoc-v${pkgver}.tar.gz")
-sha256sums=('49e418ebe0389d325a53306e538947d71f9fdce5bdd0ba3675c05e6b0577ea64')
+sha256sums=('6a31381cf25a2a6098cbc2ec67baddf04f01550a41d8b02cfb9db91ebea44c4e')
 
 build() {
     arch-meson phoc-v${pkgver} build -Dembed-wlroots=disabled
