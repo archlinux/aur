@@ -1,13 +1,13 @@
 pkgbase = adwaita-dark-darose
 	pkgdesc = Adwaita theme hacked to use my custom color scheme. (Dark blues instead of greys.)
-	pkgver = 3.22.3
-	pkgrel = 10
+	pkgver = 3.28
+	pkgrel = 1
 	url = none
 	arch = any
 	license = GPL
 	makedepends = glib2
 	makedepends = gtk3
-	depends = gnome-themes-standard
+	depends = gnome-themes-extra
 	source = no-source.txt
 	md5sums = SKIP
 
