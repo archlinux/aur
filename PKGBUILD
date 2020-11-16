@@ -1,7 +1,7 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='spectator'
-pkgver=0.5.5
+pkgver=0.5.7
 pkgrel=1
 pkgdesc='Comfortably test your REST APIs'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('duktape' 'granite' 'gtksourceview3' 'webkit2gtk')
 makedepends=('meson' 'vala')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('da3a4768f25a51ca830ad861b6727b611bd64f48356e3cc50cd7660c4d77691c')
+sha256sums=('fbc02427d39c386823ab39e6e46a42520b67215b0dc173ec6fe391a58123c76e')
 
 build() {
   arch-meson "${pkgname}-${pkgver}" 'build'

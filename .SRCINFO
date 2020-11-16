@@ -1,6 +1,6 @@
 pkgbase = spectator
 	pkgdesc = Comfortably test your REST APIs
-	pkgver = 0.5.5
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://github.com/treagod/spectator
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = spectator
 	depends = granite
 	depends = gtksourceview3
 	depends = webkit2gtk
-	source = spectator-0.5.5.tar.gz::https://github.com/treagod/spectator/archive/0.5.5.tar.gz
-	sha256sums = da3a4768f25a51ca830ad861b6727b611bd64f48356e3cc50cd7660c4d77691c
+	source = spectator-0.5.7.tar.gz::https://github.com/treagod/spectator/archive/0.5.7.tar.gz
+	sha256sums = fbc02427d39c386823ab39e6e46a42520b67215b0dc173ec6fe391a58123c76e
 
 pkgname = spectator
 
