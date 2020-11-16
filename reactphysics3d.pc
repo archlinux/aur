@@ -4,6 +4,6 @@ includedir=${prefix}/include/reactphysics3d
 
 Name: reactphysics3d
 Description: ReactPhysics3D headers
-Version: 0.7.1
+Version: 0.8.0
 Cflags: -I${includedir}
 Libs: -L${libdir} -lreactphysics3d
