@@ -11,7 +11,7 @@ optdepends=('wl-clipboard: Command-line copy/paste utilities for Wayland',
 depends=('curl')
 source=("up"
 		"UNLICENSE")
-sha256sums=("4e668585d0424b86aa98f7349177339966955adb1aeb39ca34205c468d5b3c1c"
+sha256sums=("4775536bcc695a19e1559fbed27479a309d062cae8f1cd3fd125fb8ed1eec012"
 "6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e")
 
 package() {

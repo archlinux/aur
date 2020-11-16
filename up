@@ -36,11 +36,6 @@ EOF
 
 upload () {
 
-  # Set vars
-  local args
-  local ext
-  local file
-
   # If extension is set with -t option, set curl ext
   if [ -n "$extension" ]
   then
@@ -50,7 +45,7 @@ upload () {
   if [ -z "$1" ]
   then
     # If argument is empty, upload stdin
-    local file="file=@-"
+    file="file=@-"
 
     # If curl ext not set, set it to .txt
     if [ -z "$ext" ]
@@ -60,7 +55,7 @@ upload () {
 
   else
     # Else upload filename
-    local file="file=@\"$1\""
+    file="file=@\"$1\""
   fi
 
   args="$file;$ext"
@@ -71,7 +66,7 @@ upload () {
 
 autocopy () {
   # If xorg or wayland is running
-  if [ -n 'DISPLAY' ]
+  if [ -n "$DISPLAY" ]
   then
     # If xclip is installed
     if which xclip >/dev/null 2>&1
@@ -87,7 +82,7 @@ autocopy () {
 
 is_file () {
   # Test if first argument is an existing file
-  if [ ! -f "$(readlink $1)" ]
+  if [ ! -f "$(realpath "$1")" ]
   then
     echo "File \"$1\" does not exist or is not a regular file"
     exit 2
@@ -95,9 +90,6 @@ is_file () {
 }
 
 main () {
-
-  # Vars
-  local url
 
   # If no piped data
   if [ -t 0 ]
@@ -147,7 +139,7 @@ while getopts "hat:" arg
 do
   case $arg in
     a)
-      AUTOCOPY=0
+      autocopy=0
       ;;
     h)
       usage

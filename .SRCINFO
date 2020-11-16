@@ -10,7 +10,7 @@ pkgbase = upaste
 	optdepends = xclip: Command line interface to the X11 clipboard
 	source = up
 	source = UNLICENSE
-	sha256sums = 4e668585d0424b86aa98f7349177339966955adb1aeb39ca34205c468d5b3c1c
+	sha256sums = 4775536bcc695a19e1559fbed27479a309d062cae8f1cd3fd125fb8ed1eec012
 	sha256sums = 6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e
 
 pkgname = upaste
