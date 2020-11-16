@@ -1,7 +1,7 @@
 # Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
 
 pkgname=groff-git
-pkgver=1.22.4.66.g324977c5
+pkgver=1.23.0.rc1.23.g11f79d67
 pkgrel=1
 pkgdesc="GNU Troff. Official git trunk."
 arch=('i686' 'x86_64')
@@ -9,7 +9,6 @@ url="http://www.gnu.org/software/groff/"
 license=('GPL')
 depends=('perl' 'uchardet')
 makedepends=('git' 'netpbm' 'psutils' 'ghostscript' 'libxaw')
-makedepends=('git' 'libxaw')
 conflicts=('groff')
 provides=('groff')
 source=(
@@ -46,6 +45,7 @@ build() {
   local _configopts=(
     --prefix=/usr
     --disable-rpath
+    --with-uchardet
     --with-x
     --with-appresdir=/usr/share/X11/app-defaults
     --with-doc=yes

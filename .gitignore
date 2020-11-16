@@ -12,5 +12,6 @@ src/
 *.tar
 *.jar
 *.zip
+*.zst
 groff-git
 gnulib-git
