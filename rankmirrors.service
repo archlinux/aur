@@ -1,0 +1,8 @@
+[Unit]
+Description=Rank Pacman mirrors based on the speed related to the host network
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/opt/rankmirrors
