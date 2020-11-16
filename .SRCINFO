@@ -1,6 +1,6 @@
 pkgbase = font-v
 	pkgdesc = Font version string reporting and modification library + executable tool
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/source-foundry/font-v
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = font-v
 	depends = python
 	depends = python-gitpython
 	depends = python-fonttools
-	source = font-v-1.0.4.tar.gz::https://github.com/source-foundry/font-v/archive/v1.0.4.tar.gz
-	sha256sums = 909bd2325ab053c873e59beebcef4e3c9038d056354a36618b6fd7c1e6e76092
+	source = font-v-1.0.5.tar.gz::https://github.com/source-foundry/font-v/archive/v1.0.5.tar.gz
+	sha256sums = c54bd0db89e308c196bc48f34c0fc4db6286bfa9e07d56c2c5ba3d5dd9f520b3
 
 pkgname = font-v
 
