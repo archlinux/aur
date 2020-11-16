@@ -1,0 +1,15 @@
+--- Makefile.orig	2020-11-16 18:49:21.443000000 +0000
++++ Makefile	2020-11-16 18:49:32.763553998 +0000
+@@ -16,9 +16,9 @@
+ 	armv6k/fpu/3dsx_crt0.o
+ 
+ install: all
+-	@mkdir -p $(DESTDIR)/opt/devkitpro/devkitARM/arm-none-eabi/lib
+-	@cp -v *.specs *.ld *.mem $(DESTDIR)/opt/devkitpro/devkitARM/arm-none-eabi/lib
+-	@cp -rv thumb armv6k *.o $(DESTDIR)/opt/devkitpro/devkitARM/arm-none-eabi/lib
++	@mkdir -p $(DESTDIR)/devkitARM/arm-none-eabi/lib
++	@cp -v *.specs *.ld *.mem $(DESTDIR)/devkitARM/arm-none-eabi/lib
++	@cp -rv thumb armv6k *.o $(DESTDIR)/devkitARM/arm-none-eabi/lib
+ 
+ clean:
+ 	rm -fr thumb armv6k *.o

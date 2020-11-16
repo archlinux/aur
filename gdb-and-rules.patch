@@ -1,0 +1,223 @@
+diff --unified --recursive --text buildscripts.old/dkarm-eabi/patches/gdb-8.2.1.patch buildscripts-20201105/dkarm-eabi/patches/gdb-8.2.1.patch
+--- buildscripts.old/dkarm-eabi/patches/gdb-8.2.1.patch	2020-11-16 17:16:10.393390113 +0000
++++ buildscripts-20201105/dkarm-eabi/patches/gdb-8.2.1.patch	2020-11-16 17:19:23.040287837 +0000
+@@ -595,3 +595,198 @@
+  
+  /* Attach or detach a single observer, according to ATTACH.  */
+  
++diff --git a/sim/arm/armemu.c b/sim/arm/armemu.c
++index 76f398b..3a72277 100644
++--- a/sim/arm/armemu.c
+++++ b/sim/arm/armemu.c
++@@ -1140,10 +1140,6 @@ 
++ 
++ /* EMULATION of ARM6.  */
++ 
++-/* The PC pipeline value depends on whether ARM
++-   or Thumb instructions are being executed.  */
++-ARMword isize;
++-
++ ARMword
++ #ifdef MODE32
++ ARMul_Emulate32 (ARMul_State * state)
++diff --git a/sim/arm/arminit.c b/sim/arm/arminit.c
++index 851d356..3a626c8 100644
++--- a/sim/arm/arminit.c
+++++ b/sim/arm/arminit.c
++@@ -40,6 +40,10 @@ 
++ ARMword ARMul_ImmedTable[4096];	/* immediate DP LHS values */
++ char ARMul_BitList[256];	/* number of bits in a byte table */
++ 
+++/* The PC pipeline value depends on whether ARM
+++   or Thumb instructions are being executed.  */
+++ARMword isize;
+++
++ /***************************************************************************\
++ *         Call this routine once to set up the emulator's tables.           *
++ \***************************************************************************/
++diff --git a/sim/arm/maverick.c b/sim/arm/maverick.c
++index c112692..bae8c47 100644
++--- a/sim/arm/maverick.c
+++++ b/sim/arm/maverick.c
++@@ -19,6 +19,7 @@ 
++ #include "armdefs.h"
++ #include "ansidecl.h"
++ #include "armemu.h"
+++#include "maverick.h"
++ 
++ /*#define CIRRUS_DEBUG 1	*/
++ #if CIRRUS_DEBUG
++@@ -30,36 +31,10 @@ 
++ #define POS64(i) ( (~(i)) >> 63 )
++ #define NEG64(i) ( (i) >> 63 )
++ 
++-/* Define Co-Processor instruction handlers here.  */
++-
++-/* Here's ARMulator's DSP definition.  A few things to note:
++-   1) it has 16 64-bit registers and 4 72-bit accumulators
++-   2) you can only access its registers with MCR and MRC.  */
++-
++-/* We can't define these in here because this file might not be linked
++-   unless the target is arm9e-*.  They are defined in wrapper.c.
++-   Eventually the simulator should be made to handle any coprocessor
++-   at run time.  */
++-struct maverick_regs
++-{
++-  union
++-  {
++-    int i;
++-    float f;
++-  } upper;
++-
++-  union
++-  {
++-    int i;
++-    float f;
++-  } lower;
++-};
++-
++-union maverick_acc_regs
++-{
++-  long double ld;		/* Acc registers are 72-bits.  */
++-};
++-
+++/* These variables are defined here and made extern in maverick.h for use
+++   in wrapper.c for now.
+++   Eventually the simulator should be made to handle any coprocessor at run
+++   time.  */
++ struct maverick_regs DSPregs[16];
++ union maverick_acc_regs DSPacc[4];
++ ARMword DSPsc;
++diff --git a/sim/arm/maverick.h b/sim/arm/maverick.h
++new file mode 100644
++index 0000000..2549d21
++--- /dev/null
+++++ b/sim/arm/maverick.h
++@@ -0,0 +1,46 @@ 
+++/*  maverick.h -- Cirrus/DSP co-processor interface header
+++    Copyright (C) 2003-2019 Free Software Foundation, Inc.
+++    Contributed by Aldy Hernandez (aldyh@redhat.com).
+++
+++    This program is free software; you can redistribute it and/or modify
+++    it under the terms of the GNU General Public License as published by
+++    the Free Software Foundation; either version 3 of the License, or
+++    (at your option) any later version.
+++
+++    This program is distributed in the hope that it will be useful,
+++    but WITHOUT ANY WARRANTY; without even the implied warranty of
+++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+++    GNU General Public License for more details.
+++
+++    You should have received a copy of the GNU General Public License
+++    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
+++
+++/* Define Co-Processor instruction handlers here.  */
+++
+++/* Here's ARMulator's DSP definition.  A few things to note:
+++   1) it has 16 64-bit registers and 4 72-bit accumulators
+++   2) you can only access its registers with MCR and MRC.  */
+++
+++struct maverick_regs
+++{
+++  union
+++  {
+++    int i;
+++    float f;
+++  } upper;
+++
+++  union
+++  {
+++    int i;
+++    float f;
+++  } lower;
+++};
+++
+++union maverick_acc_regs
+++{
+++  long double ld;		/* Acc registers are 72-bits.  */
+++};
+++
+++extern struct maverick_regs DSPregs[16];
+++extern union maverick_acc_regs DSPacc[4];
+++extern ARMword DSPsc;
++diff --git a/sim/arm/wrapper.c b/sim/arm/wrapper.c
++index fde5d8c..78a9192 100644
++--- a/sim/arm/wrapper.c
+++++ b/sim/arm/wrapper.c
++@@ -37,6 +37,7 @@ 
++ #include "gdb/signals.h"
++ #include "libiberty.h"
++ #include "iwmmxt.h"
+++#include "maverick.h"
++ 
++ /* TODO: This should get pulled from the SIM_DESC.  */
++ host_callback *sim_callback;
++@@ -101,38 +102,6 @@ 
++   fprintf (stderr, " %*s\n", size, opbuf);
++ }
++ 
++-/* Cirrus DSP registers.
++-
++-   We need to define these registers outside of maverick.c because
++-   maverick.c might not be linked in unless --target=arm9e-* in which
++-   case wrapper.c will not compile because it tries to access Cirrus
++-   registers.  This should all go away once we get the Cirrus and ARM
++-   Coprocessor to coexist in armcopro.c-- aldyh.  */
++-
++-struct maverick_regs
++-{
++-  union
++-  {
++-    int i;
++-    float f;
++-  } upper;
++-
++-  union
++-  {
++-    int i;
++-    float f;
++-  } lower;
++-};
++-
++-union maverick_acc_regs
++-{
++-  long double ld;		/* Acc registers are 72-bits.  */
++-};
++-
++-struct maverick_regs     DSPregs[16];
++-union maverick_acc_regs  DSPacc[4];
++-ARMword DSPsc;
++-
++ static void
++ init (void)
++ {
++@@ -236,7 +205,7 @@ 
++ {
++   int argvlen = 0;
++   int mach;
++-  char **arg;
+++  char * const *arg;
++ 
++   init ();
++ 
+diff --unified --recursive --text buildscripts.old/dkarm-eabi/scripts/build-crtls.sh buildscripts-20201105/dkarm-eabi/scripts/build-crtls.sh
+--- buildscripts.old/dkarm-eabi/scripts/build-crtls.sh	2020-11-16 17:16:10.393390113 +0000
++++ buildscripts-20201105/dkarm-eabi/scripts/build-crtls.sh	2020-11-16 17:24:46.781920373 +0000
+@@ -14,7 +14,8 @@
+ mkdir -p rules
+ cd rules
+ tar -xvf $SRCDIR/devkitarm-rules-$DKARM_RULES_VER.tar.xz
+-make install
++patch -u Makefile -i "$SRCDIR"/../rules-makefile.patch
++DESTDIR=$DEVKITPRO make install
+ 
+ #---------------------------------------------------------------------------------
+ # Install and build the crt0 files
+@@ -24,5 +25,6 @@
+ mkdir -p crtls
+ cd crtls
+ tar -xvf $SRCDIR/devkitarm-crtls-$DKARM_CRTLS_VER.tar.xz
+-make install
++patch -u Makefile -i "$SRCDIR"/../crtls-makefile.patch
++DESTDIR=$DEVKITPRO make install
+ 
