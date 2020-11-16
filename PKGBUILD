@@ -9,7 +9,7 @@
 # TODO: Build and package praat-nogui and sendpraat, as in Debian.
 
 pkgname=praat
-pkgver=6.1.31
+pkgver=6.1.32
 pkgrel=1
 pkgdesc='Doing Phonetics by computer (speech analysis)'
 arch=('x86_64' 'i686')
@@ -22,7 +22,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v
         "$pkgname.desktop"
         "$pkgname.svg"
         "$pkgname.xpm")
-sha256sums=('aa2ce29b8b7228d6e39449565e976e6ed3e5670fe7a078662593aea3b0017229'
+sha256sums=('73196b7c7c25a97a2f1ccd177d702163cbe124cc10b1d4bf7afa9ac6db0d1fbc'
             '21ee03cae45be634c57c167c2dfbdfd9d9b7feadb98e0124413d9426c199e81c'
             '94720aedc8e9c9e9d53b3230d79ccaae551b5bc5e6986528664311d55f3cce5a'
             'db6c7568f6e13b4ce7c37bd9fcf289832867f79ba7d7fc48c4f13f0045ad98f1'
