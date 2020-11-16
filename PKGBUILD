@@ -8,6 +8,8 @@ url='https://bgerp.ru'
 license=('GPL')
 depends=('pwgen' 'jdk11-openjdk')
 optdepends=('libmariadbclient' 'mariadb' 'nginx')
+provides=("bgerp")
+conflicts=("bgerp-git")
 source=("$url/download/3.0/${pkgname}.zip"
         'environment'
         'sysusers')
