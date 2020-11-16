@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # x0.at paste client
 
@@ -8,7 +8,7 @@ AUTOCOPY=1
 
 # Functions
 
-function usage(){
+usage () {
   filename=$(basename "$0")
   cat <<- EOF
 x0.at paste client
@@ -34,74 +34,58 @@ Options :
 EOF
 }
 
-function upload(){
+upload () {
 
   # Set vars
   local args
-  local url
+  local extension
+  local file
+
+  # Set extension
+  if [ -n "$EXTENSION" ]
+  then
+    extension="filename=.$EXTENSION"
+  fi
 
   if [ -z "$1" ]
   then
     # If argument is empty, upload stdin
     local file="file=@-"
+
+    # If extension not set, set .txt
+    if [ -z "$extension" ]
+    then
+      extension="filename=.txt"
+    fi
+
   else
     # Else upload filename
     local file="file=@\"$1\""
   fi
 
-  if [ -z "$EXTENSION" ]
-  then
-    local extension="filename=$EXTENSION"
-  fi
-
   args="$file;$extension"
 
-  url=$(curl -s -F "$args" 'https://x0.at/')
-  return "$url"
+  # Curl call
+  curl -s -F "$args" 'https://x0.at/'
 }
 
-# Arguments
-
-function arguments(){
-  while getopts "hat:" arg "${args[@]}"
-  do
-    case $arg in
-      a)
-        AUTOCOPY=0
-        ;;
-      h)
-        usage
-        exit
-        ;;
-      t)
-        EXTENSION=${OPTARG}
-        ;;
-      *)
-        usage
-        exit 1
-        ;;
-    esac
-  done
-  shift $((OPTIND-1))
-}
-
-function autocopy(){
+autocopy () {
   # If xorg or wayland is running
-  if grep 'DISPLAY' <(env) &> /dev/null
+  if env | grep 'DISPLAY' >/dev/null 2>&1
   then
     # If xclip is installed
-    if which xclip &> /dev/null
+    if which xclip >/dev/null 2>&1
     then
       xclip "$1"
     # Else if wl-clipboard is installed
-    elif which wl-copy &> /dev/null
+    elif which wl-copy >/dev/null 2>&1
     then
       wl-copy -p "$1"
     fi
   fi
 }
 
-function is_file(){
+is_file () {
   # Test if first argument is an existing file
   if [ ! -f "$1" ]
   then
@@ -110,13 +94,10 @@ function is_file(){
   fi
 }
 
-function main(){
+main () {
 
   # Vars
   local url
-
-  # Getopts
-  arguments "$@"
 
   # If no piped data
   if [ -t 0 ]
@@ -126,7 +107,7 @@ function main(){
     if [ -z "$1" ]
     then
       url=$(upload)
-      # Force a newline at the end
+      # Force a newline
       echo -e "\n"
     # Else upload argument and save url
     else
@@ -162,5 +143,25 @@ function main(){
 
 # Main
 
-args=( "$@" )
-main "${args[@]}"
+while getopts "hat:" arg
+do
+  case $arg in
+    a)
+      AUTOCOPY=0
+      ;;
+    h)
+      usage
+      exit
+      ;;
+    t)
+      EXTENSION=${OPTARG}
+      ;;
+    *)
+      usage
+      exit 1
+      ;;
+  esac
+done
+shift $((OPTIND-1))
+
+main "$@"

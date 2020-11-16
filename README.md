@@ -1,14 +1,7 @@
 # upaste
-Paste and upload files on ix.io and x0.at  .
-ix.io is used for piped text.  
-x0.at is used for stdin upload and file upload because it correctly set filetype.
+x0.at paste client.  
 
 ### Usage
-
-Bash file uploader  
-
-Usage :
-
 # Upload a file
 ```
 $ up [OPTIONS] file  
@@ -27,3 +20,4 @@ C-d C-d
 Options :  
     -h    Print this usage  
     -a    Disable autocopy in clipboard  
+    -t    Set extension, without dot
