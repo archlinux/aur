@@ -6,8 +6,9 @@ pkgdesc="Paste and upload files on x0.at"
 arch=('any')
 url="https://github.com/eoli3n/$pkgname"
 license=('UNLICENSE')
-optdepends=('wl-clipboard: Command-line copy/paste utilities for Wayland'
+optdepends=('wl-clipboard: Command-line copy/paste utilities for Wayland',
             'xclip: Command line interface to the X11 clipboard')
+depends=('curl')
 source=("up"
 		"UNLICENSE")
 sha256sums=("4e668585d0424b86aa98f7349177339966955adb1aeb39ca34205c468d5b3c1c"

@@ -1,11 +1,12 @@
 pkgbase = upaste
 	pkgdesc = Paste and upload files on x0.at
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/eoli3n/upaste
 	arch = any
 	license = UNLICENSE
-	optdepends = wl-clipboard: Command-line copy/paste utilities for Wayland
+	depends = curl
+	optdepends = wl-clipboard: Command-line copy/paste utilities for Wayland,
 	optdepends = xclip: Command line interface to the X11 clipboard
 	source = up
 	source = UNLICENSE
