@@ -1,10 +1,13 @@
 pkgbase = abseil-cpp-git
 	pkgdesc = An open-source collection of C++ code to augment the C++ standard library
-	pkgver = r268.f951790
+	pkgver = r629.0bbebc8
 	pkgrel = 1
 	url = https://github.com/abseil/abseil-cpp
-	arch = i686
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = aarch64
+	arch = ppc
 	license = Apache
 	makedepends = cmake
 	makedepends = git
