@@ -17,10 +17,6 @@ pkgver() {
 }
 build() {
   arch-meson ${pkgname%-git} build \
-    -D doc=disabled \
-    -D ptp-helper-permissions=capabilities \
-    -D dbghelp=disabled \
-    -D gobject-cast-checks=disabled \
     -D package-name="GStreamer Rust Plugins (Arch Linux)" \
     -D package-origin="https://www.archlinux.org/"
   meson compile -C build
