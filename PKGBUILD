@@ -1,29 +1,39 @@
-# Maintainer: Sosthène Guédon <sosthene.gued@gmail.com>
-pkgname=arm-linux-gnueabi-gcc75-linaro-bin
-_name="gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf"
-pkgver=7.5
+# Maintainer: yjun <jerrysteve1101@gmail.com>
+# Contributor: Sosthène Guédon <sosthene.gued@gmail.com>
+
+_prefix=arm-linux-gnueabi
+pkgname=${_prefix}-gcc75-linaro-bin
+_pkgname=${pkgname%-bin}
+_date='2019.12'
+pkgver=7.5.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection - cross compiler for 32-bit Armv7 Cortex-A"
 arch=('x86_64')
 url="https://www.linaro.org/downloads/"
 license=('GPL')
-depends=()
-makedepends=()
-md5sums=('7e5a330aed9dfbe69c79589911db29d9')
+conflicts=('arm-linux-gnueabihf-gcc' 'arm-linux-gnueabihf-binutils')
 options=(!strip)
-
-source=("$pkgname-v$pkgver::https://releases.linaro.org/components/toolchain/binaries/latest-7/arm-linux-gnueabihf/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf.tar.xz")
-
+_filename="gcc-linaro-${pkgver}-${_date}-x86_64_${_prefix}"
+source=("$pkgname-$pkgver.tar.xz::https://releases.linaro.org/components/toolchain/binaries/latest-7/${_prefix}/${_filename}.tar.xz")
+sha256sums=('dda99cf2fc0a8b6d54440121c47645ab0b4dc921cc2d24f88707ea9741adc933')
 
 package() {
-    cd $_name
-    mkdir -p "$pkgdir"/usr/lib/gcc
-    mkdir -p "$pkgdir"/usr/share
-    cp -r bin/ "$pkgdir"/usr/bin
-    cp -r libexec/ "$pkgdir"/usr/libexec
-    cp -r arm-linux-gnueabihf "$pkgdir"/usr/arm-linux-gnueabihf
-    cp -r lib/gcc/arm-linux-gnueabihf "$pkgdir"/usr/lib/gcc/arm-linux-gnueabihf
-    cp -r share/man/man1 "$pkgdir"/usr/share/man1
-    cp -r share/man/man5 "$pkgdir"/usr/share/man5
-    chmod -R 755 "$pkgdir"/usr
+    cd $_filename
+
+    mkdir -p "$pkgdir"/opt/${_pkgname}/
+
+    cp -r ${_prefix} ${pkgdir}/opt/${_pkgname}/
+    cp -r bin ${pkgdir}/opt/${_pkgname}/
+    cp -r include ${pkgdir}/opt/${_pkgname}/
+    cp -r lib ${pkgdir}/opt/${_pkgname}/
+    cp -r libexec ${pkgdir}/opt/${_pkgname}/
+    cp -r share ${pkgdir}/opt/${_pkgname}/
+    
+    install -dm755 ${pkgdir}/usr/bin
+    for bin in ${pkgdir}/opt/${_pkgname}/bin/*;
+    do
+        ln -sf /opt/${_pkgname}/bin/$(basename ${bin}) ${pkgdir}/usr/bin/$(basename ${bin})
+    done
 }
+
+# vim: set sw=2 ts=2 et:
