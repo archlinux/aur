@@ -6,6 +6,7 @@ pkgbase = python-emailthreads-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = git
 	provides = python-emailthreads
 	conflicts = python-emailthreads
 	source = python-emailthreads-git::git+https://github.com/emersion/python-emailthreads
