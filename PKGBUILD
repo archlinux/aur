@@ -2,15 +2,15 @@
 # Dizoft Team
 
 pkgname=drpc
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=0
 pkgdesc="JsonRPC cli client. Small and faster"
 arch=('x86_64')
 url="https://github.com/DizoftTeam/dron"
-license=('Apache')
+license=('MIT')
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DizoftTeam/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('07b7fcdcd583b8e8a7ef337756d3d883')
+md5sums=('2c055eb4a047fa0ecb46458f4e2376b9')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -18,5 +18,6 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-$pkgver/"drpc "$pkgdir"/usr/local/bin/drpc
+  install -Dm755 "$pkgname-$pkgver/$pkgname" "${pkgdir}/usr/local/bin/${pkgname}"
+  install -Dm644 "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
