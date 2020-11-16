@@ -1,0 +1,15 @@
+pkgbase = perl-net-ldap
+	pkgdesc = Use LDAP over a UNIX domain socket
+	pkgver = 0.66
+	pkgrel = 1
+	url = https://metacpan.org/release/perl-ldap
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MA/MARSCHAP/perl-ldap-0.66.tar.gz
+	sha256sums = 09263ce6166e80c98d689d41d09995b813389fd069b784601f6dc57f8e2b4102
+
+pkgname = perl-net-ldap
+
