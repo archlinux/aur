@@ -1,13 +1,13 @@
 pkgbase = kube-linter-bin
 	pkgdesc = KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure the applications represented in them adhere to best practices.
 	pkgver = 0.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/stackrox/kube-linter
 	arch = x86_64
 	license = APACHE
 	conflicts = kube-linter
 	conflicts = kube-linter-git
-	source = https://github.com/stackrox/kube-linter/releases/download/0.1.3/kube-linter-linux.tar.gz
+	source = kube-linter-0.1.3.tar.gz::https://github.com/stackrox/kube-linter/releases/download/0.1.3/kube-linter-linux.tar.gz
 	sha512sums = a714d71eef7c5b544afd9021593ddf1e82996f864a81bdf2a152958f45355ce366af25feaa2556b6e82cf616ed8c5ccb690f0f14498a89e6587eba0ba1c5345c
 
 pkgname = kube-linter-bin
