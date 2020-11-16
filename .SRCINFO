@@ -15,6 +15,9 @@ pkgbase = yorick-z-git
 	makedepends = libjpeg-turbo
 	makedepends = ffmpeg
 	depends = yorick
+	provides = yorick-z
+	conflicts = yorick-z
+	replaces = yorick-z
 
 pkgname = yorick-z-git
 

@@ -10,9 +10,9 @@ url="https://github.com/LLNL/yorick-z"
 groups=('science' 'yorick-all')
 depends=('yorick')
 makedepends=('git' 'yorick' 'zlib' 'libpng' 'libjpeg-turbo' 'ffmpeg')
-# provides=('yorick-z')
-# conflicts=('yorick-imutil')
-# replaces=('yorick-imutil')
+provides=('yorick-z')
+conflicts=('yorick-z')
+replaces=('yorick-z')
 
 _gitroot="git://github.com/LLNL/yorick-z.git"
 _gitname="yorick-z"
