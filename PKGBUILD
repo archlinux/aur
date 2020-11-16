@@ -2,8 +2,8 @@
 # Contributor: eagleeyetom <eagleeyetom@gmail.com>
 # Original Maintainer: raininja <dandenkijin@gmail.com>
 pkgname=slimjet
-pkgver=27.0.7.0
-pkgrel=2
+pkgver=28.0.3.0
+pkgrel=1
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('i686' 'x86_64')
 url="http://www.slimjet.com"
@@ -16,8 +16,8 @@ source_i686=("${pkgname}-${pkgver}_i386.deb::http://www.slimjet.com/${_channel}/
 source_x86_64=("${pkgname}-${pkgver}_amd64.deb::http://www.slimjet.com/${_channel}/${pkgname}_amd64.deb")
 source=('LICENSE')
 md5sums=('e2f3d75bbf4ea8cef106adb30c6b4c83')
-md5sums_i686=('ac53bf154e77c32374c24bfd44a057fe')
-md5sums_x86_64=('f48a3e90c2f52af45032ed51fe307ab9')
+md5sums_i686=('55e77b008b5395ddc240967606f1c2d2')
+md5sums_x86_64=('14fe261cef850860aa62fc6e981edfe1')
 
 prepare() {
     bsdtar -xf data.tar.xz
