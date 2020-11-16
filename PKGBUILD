@@ -2,7 +2,7 @@
 
 pkgname=joplin-appimage
 pkgver=1.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest pre-released AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
 url="https://github.com/laurent22/joplin"
@@ -34,6 +34,7 @@ package() {
     ./$_filename --appimage-extract @joplinapp-desktop.desktop > /dev/null 2>&1
     INSTALL_PATH="/opt/appimages/Joplin.AppImage"
     sed -i -E "s|Exec=AppRun|Exec=${INSTALL_PATH}|" squashfs-root/@joplinapp-desktop.desktop
+    sed -i -E "s|Icon=joplin|Icon=@joplinapp-desktop|" squashfs-root/@joplinapp-desktop.desktop
 
     # install icons
     install -dm755 "$pkgdir/usr/share/icons"
