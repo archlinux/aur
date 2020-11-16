@@ -1,7 +1,7 @@
 pkgbase = gnat-gps
 	pkgdesc = GNAT Programming Studio for Ada
 	pkgver = 2020
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/AdaCore/gps
 	arch = i686
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = gnat-gps
 	depends = gnome-icon-theme
 	depends = gnome-icon-theme-extras
 	depends = gnome-icon-theme-symbolic
-	depends = python2-gobject
+	depends = python2-gobject2
 	optdepends = python2-jedi
 	source = gps-21.0w-20200427-15496-src.tar.gz::https://community.download.adacore.com/v1/bfa68dd61a9288c79e9c08676878cac95e0fe628?filename=
 	source = als-21.0w-20200427-156B6-src.tar.gz::https://community.download.adacore.com/v1/05e31f6e36e2ff4313013d27f0551416de5a1b4e?filename=

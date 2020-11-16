@@ -5,7 +5,7 @@
 
 pkgname=gnat-gps
 pkgver=2020
-pkgrel=7
+pkgrel=8
 pkgdesc="GNAT Programming Studio for Ada"
 
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ depends=("clang" "libadalang"
          "gnatcoll-xref" "gnatcoll-python2" "gnatcoll-db2ada"
          "gnatcoll-gnatinspect" "gtkada"
          "gnome-icon-theme" "gnome-icon-theme-extras" "gnome-icon-theme-symbolic" 
-         "python2-gobject")
+         "python2-gobject2")
 optdepends=('python2-jedi')
 makedepends=('gprbuild' 'texlive-latexextra' 'graphviz')
 
