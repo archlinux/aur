@@ -1,0 +1,15 @@
+pkgbase = perl-file-grep
+	pkgdesc = Find matches to a pattern in a series of files and related functions
+	pkgver = 0.02
+	pkgrel = 1
+	url = https://metacpan.org/release/File-Grep
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MN/MNEYLON/File-Grep-0.02.tar.gz
+	sha256sums = 462e15274eb6278521407ea302d9eea7252cd44cab2382871f7de833d5f85632
+
+pkgname = perl-file-grep
+
