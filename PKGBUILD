@@ -3,7 +3,7 @@
 # Maintainer: Max Ulidtko <ulidtko@gmail.com>
 pkgname=owasp-threat-dragon
 pkgver=v1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Electron Threat Modelling and diagramming tool by Mike Goodwin @ OWASP"
 arch=('any')
 url="https://threatdragon.org"
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 groups=()
 depends=('electron5')
 optdepends=('hunspell-en_US: spell checking')
-makedepends=('git' 'npm') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git' 'npm' 'jq')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
