@@ -1,7 +1,7 @@
 # Maintainer: Dmytro Meleshko <dmytro.meleshko@gmail.com>
 _pkgname=mindustry-server
 pkgname=${_pkgname}-bin
-_build=113.2
+_build=114
 pkgver="6.0_${_build}"
 pkgrel=1
 epoch=1
@@ -17,7 +17,7 @@ source=("${pkgname}-${_build}.jar::https://github.com/Anuken/Mindustry/releases/
         "${pkgname}.icns::https://github.com/Anuken/Mindustry/raw/v${_build}/core/assets/icons/icon.icns"
         "${pkgname}.sh"
         "${pkgname}.desktop")
-sha256sums=('a72c296be247c8f38ade67d570d5b14d2ab26c7414d425b5c82c448a9b551039'
+sha256sums=('d107c59cb3688fb84b6c27f15c44042cb458fab874d54a75c5cf263bb01dfd3f'
             '16fcae782b13a8460e631d265c505f56393acd14700b016904744bd44aa290eb'
             '679727847ba70773cee4f902114345e095b27f425aa00c4d3860d247705ed1f0'
             '053030932334f40145e927f6c7e9ebf01bd28ddd1e7b9fba6234b51cc83ad241')
