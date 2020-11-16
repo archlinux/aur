@@ -4,7 +4,7 @@
 
 # Vars
 
-AUTOCOPY=1
+autocopy=1
 
 # Functions
 
@@ -38,13 +38,13 @@ upload () {
 
   # Set vars
   local args
-  local extension
+  local ext
   local file
 
-  # Set extension
-  if [ -n "$EXTENSION" ]
+  # If extension is set with -t option, set curl ext
+  if [ -n "$extension" ]
   then
-    extension="filename=.$EXTENSION"
+    ext="filename=.$extension"
   fi
 
   if [ -z "$1" ]
@@ -52,10 +52,10 @@ upload () {
     # If argument is empty, upload stdin
     local file="file=@-"
 
-    # If extension not set, set .txt
-    if [ -z "$extension" ]
+    # If curl ext not set, set it to .txt
+    if [ -z "$ext" ]
     then
-      extension="filename=.txt"
+      ext="filename=.txt"
     fi
 
   else
@@ -63,7 +63,7 @@ upload () {
     local file="file=@\"$1\""
   fi
 
-  args="$file;$extension"
+  args="$file;$ext"
 
   # Curl call
   curl -s -F "$args" 'https://x0.at/'
@@ -71,7 +71,7 @@ upload () {
 
 autocopy () {
   # If xorg or wayland is running
-  if env | grep 'DISPLAY' >/dev/null 2>&1
+  if [ -n 'DISPLAY' ]
   then
     # If xclip is installed
     if which xclip >/dev/null 2>&1
@@ -87,7 +87,7 @@ autocopy () {
 
 is_file () {
   # Test if first argument is an existing file
-  if [ ! -f "$1" ]
+  if [ ! -f "$(readlink $1)" ]
   then
     echo "File \"$1\" does not exist or is not a regular file"
     exit 2
@@ -108,7 +108,7 @@ main () {
     then
       url=$(upload)
       # Force a newline
-      echo -e "\n"
+      printf "\n"
     # Else upload argument and save url
     else
       # Test if file exists and is a regular file
@@ -134,7 +134,7 @@ main () {
   echo "$url"
 
   # If autocopy is set
-  if [ "$AUTOCOPY" == "1" ]
+  if [ "$autocopy" = "1" ]
   then
     # Autocopy url
     autocopy "$url"
@@ -154,7 +154,7 @@ do
       exit
       ;;
     t)
-      EXTENSION=${OPTARG}
+      extension=${OPTARG}
       ;;
     *)
       usage
