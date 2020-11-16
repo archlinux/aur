@@ -1,6 +1,6 @@
 pkgbase = zimbra
 	pkgdesc = An enterprise-class email calendar and collaboration solution built for the cloud both public and private
-	pkgver = 8.8.15.p5
+	pkgver = 9.0.0.p9
 	pkgrel = 1
 	url = https://www.zimbra.com/open-source-email-overview/
 	arch = x86_64
@@ -14,70 +14,161 @@ pkgbase = zimbra
 	makedepends = rsync
 	makedepends = ruby
 	depends = java-runtime>=11
+	depends = perl-archive-zip
+	depends = perl-berkeleydbperl-bit-vector
+	depends = perl-cache-fastmmap
+	depends = perl-canary-stability
+	depends = perl-carp-clan
+	depends = perl-class-inspector
+	depends = perl-compress-raw-bzip2
+	depends = perl-compress-raw-zlib
+	depends = perl-config-inifiles
+	depends = perl-convert-asn1
+	depends = perl-convert-binhex
+	depends = perl-convert-tnef
+	depends = perl-convert-uulib
+	depends = perl-crypt-openssl-random
+	depends = perl-crypt-openssl-rsa
+	depends = perl-crypt-saltedhash
 	depends = perl-data-uuid
-	depends = perl-net-ldap-server
-	source = https://github.com/Zimbra/zm-build/archive/8.8.15.p5.tar.gz
-	source = git+https://github.com/Zimbra/ant-1.7.0-ziputil-patched
-	source = git+https://github.com/Zimbra/ant-tar-patched
-	source = git+https://github.com/Zimbra/ical4j-0.9.16-patched
+	depends = perl-date-calc
+	depends = perl-date-manip
+	depends = perl-db-file
+	depends = perl-dbd-mysql
+	depends = perl-dbd-sqlite
+	depends = perl-dbi
+	depends = perl-digest-hmac
+	depends = perl-digest-sha1
+	depends = perl-email-date-format
+	depends = perl-encode-detect
+	depends = perl-encode-locale
+	depends = perl-error
+	depends = perl-exporter-tiny
+	depends = perl-extutils-constant
+	depends = perl-file-grep
+	depends = perl-file-libmagic
+	depends = perl-file-listing
+	depends = perl-file-tail
+	depends = perl-filesys-df
+	depends = perl-geography-countries
+	depends = perl-html-parser
+	depends = perl-http-cookies
+	depends = perl-http-daemon
+	depends = perl-http-date
+	depends = perl-http-message
+	depends = perl-http-negotiate
+	depends = perl-io-compress
+	depends = perl-io-html
+	depends = perl-io-sessiondata
+	depends = perl-io-socket-inet6
+	depends = perl-io-socket-ip
+	depends = perl-io-socket-ssl
+	depends = perl-io-stringy
+	depends = perl-ip-country
+	depends = perl-json-pp
+	depends = perl-libwww
+	depends = perl-list-moreutils
+	depends = perl-lwp-mediatypes
+	depends = perl-lwp-protocol-https
+	depends = perl-mail-dkim
+	depends = perl-mail-spamassassin
+	depends = perl-mail-spf
+	depends = perl-mailtools
+	depends = perl-math-bigint
+	depends = perl-mime-lite
+	depends = perl-mime-tools
+	depends = perl-mime-types
+	depends = perl-mozilla-ca
+	depends = perl-net-cidr
+	depends = perl-net-cidr-lite
+	depends = perl-net-dns
+	depends = perl-net-dns-resolver-programmable
+	depends = perl-net-http
+	depends = perl-net-ldapapi
+	depends = perl-net-libidn
+	depends = perl-net-server
+	depends = perl-net-ssleay
+	depends = perl-netaddr-ip
+	depends = perl-parent
+	depends = perl-proc-processtable
+	depends = perl-soap-lite
+	depends = perl-socket
+	depends = perl-socket-linux
+	depends = perl-storable
+	depends = perl-swatchdog
+	depends = perl-task-weaken
+	depends = perl-term-readkey
+	depends = perl-timedate
+	depends = perl-unix-getrusage
+	depends = perl-unix-syslog
+	depends = perl-uri
+	depends = perl-xml-parser
+	depends = perl-xml-sax
+	depends = perl-xml-sax-base
+	depends = perl-xml-sax-expat
+	optdepends = innotop
+	source = git+https://github.com/Zimbra/zm-build#tag=9.0.0
+	source = git+https://github.com/Zimbra/ant-1.7.0-ziputil-patched#tag=9.0.0
+	source = git+https://github.com/Zimbra/ant-tar-patched#tag=9.0.0
+	source = git+https://github.com/Zimbra/ical4j-0.9.16-patched#tag=9.0.0
 	source = git+https://github.com/kohlschutter/junixsocket#tag=junixsocket-parent-2.0.4
-	source = git+https://github.com/Zimbra/nekohtml-1.9.13
-	source = git+https://github.com/Zimbra/java-html-sanitizer-release-20190610.1
-	source = git+https://github.com/Zimbra/antisamy#branch=develop
-	source = git+https://github.com/Zimbra/zm-admin-console
-	source = git+https://github.com/Zimbra/zm-admin-help-common
-	source = git+https://github.com/Zimbra/zm-ajax
-	source = git+https://github.com/Zimbra/zm-admin-ajax
-	source = git+https://github.com/Zimbra/zm-amavis
-	source = git+https://github.com/Zimbra/zm-aspell
-	source = git+https://github.com/Zimbra/zm-bulkprovision-admin-zimlet
-	source = git+https://github.com/Zimbra/zm-bulkprovision-store
-	source = git+https://github.com/Zimbra/zm-certificate-manager-admin-zimlet
-	source = git+https://github.com/Zimbra/zm-certificate-manager-store
-	source = git+https://github.com/Zimbra/zm-charset
-	source = git+https://github.com/Zimbra/zm-clam-scanner-store
-	source = git+https://github.com/Zimbra/zm-clientuploader-admin-zimlet
-	source = git+https://github.com/Zimbra/zm-clientuploader-store
-	source = git+https://github.com/Zimbra/zm-core-utils
-	source = git+https://github.com/Zimbra/zm-db-conf
-	source = git+https://github.com/Zimbra/zm-dnscache
-	source = git+https://github.com/Zimbra/zm-downloads
-	source = git+https://github.com/Zimbra/zm-freshclam
-	source = git+https://github.com/Zimbra/zm-help
-	source = git+https://github.com/Zimbra/zm-helptooltip-zimlet
-	source = git+https://github.com/Zimbra/zm-jetty-conf
-	source = git+https://github.com/Zimbra/zm-jython
-	source = git+https://github.com/Zimbra/zm-launcher
-	source = git+https://github.com/Zimbra/zm-ldap-utilities
-	source = git+https://github.com/Zimbra/zm-ldap-utils-store
-	source = git+https://github.com/Zimbra/zm-licenses
-	source = git+https://github.com/Zimbra/zm-mailbox
-	source = git+https://github.com/Zimbra/zm-migration-tools
-	source = git+https://github.com/Zimbra/zm-mta
-	source = git+https://github.com/Zimbra/zm-nginx-conf
-	source = git+https://github.com/Zimbra/zm-nginx-lookup-store
-	source = git+https://github.com/Zimbra/zm-openid-consumer-store
-	source = git+https://github.com/Zimbra/zm-pkg-tool
-	source = git+https://github.com/Zimbra/zm-postfix
-	source = git+https://github.com/Zimbra/zm-proxy-config-admin-zimlet
-	source = git+https://github.com/Zimbra/zm-ssdb-ephemeral-store
-	source = git+https://github.com/Zimbra/zm-taglib
-	source = git+https://github.com/Zimbra/zm-timezones
-	source = git+https://github.com/Zimbra/zm-versioncheck-admin-zimlet
-	source = git+https://github.com/Zimbra/zm-versioncheck-store
-	source = git+https://github.com/Zimbra/zm-versioncheck-utilities
-	source = git+https://github.com/Zimbra/zm-viewmail-admin-zimlet
-	source = git+https://github.com/Zimbra/zm-web-client
-	source = git+https://github.com/Zimbra/zm-webclient-portal-example
-	source = git+https://github.com/Zimbra/zm-zcs
-	source = git+https://github.com/Zimbra/zm-zcs-lib
-	source = git+https://github.com/Zimbra/zm-zimlets
-	source = git+https://github.com/Zimbra/zm-oauth-social
-	source = git+https://github.com/Zimbra/zm-gql
+	source = git+https://github.com/Zimbra/nekohtml-1.9.13#tag=9.0.0
+	source = git+https://github.com/Zimbra/java-html-sanitizer-release-20190610.1#tag=9.0.0
+	source = git+https://github.com/Zimbra/antisamy#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-admin-console#tag=9.0.0.p9
+	source = git+https://github.com/Zimbra/zm-admin-help-common#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-ajax#tag=9.0.0.p9
+	source = git+https://github.com/Zimbra/zm-admin-ajax#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-amavis#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-aspell#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-bulkprovision-admin-zimlet#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-bulkprovision-store#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-certificate-manager-admin-zimlet#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-certificate-manager-store#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-charset#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-clam-scanner-store#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-clientuploader-admin-zimlet#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-clientuploader-store#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-core-utils#tag=9.0.0.p9
+	source = git+https://github.com/Zimbra/zm-db-conf#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-dnscache#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-downloads#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-freshclam#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-help#tag=9.0.0.p9
+	source = git+https://github.com/Zimbra/zm-helptooltip-zimlet#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-jetty-conf#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-jython#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-launcher#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-ldap-utilities#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-ldap-utils-store#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-licenses#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-mailbox#tag=9.0.0.p9
+	source = git+https://github.com/Zimbra/zm-migration-tools#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-mta#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-nginx-conf#tag=9.0.0.p9
+	source = git+https://github.com/Zimbra/zm-nginx-lookup-store#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-openid-consumer-store#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-pkg-tool#tag=9.0.0.p7
+	source = git+https://github.com/Zimbra/zm-postfix#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-proxy-config-admin-zimlet#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-ssdb-ephemeral-store#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-taglib#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-timezones#tag=9.0.0.p9
+	source = git+https://github.com/Zimbra/zm-versioncheck-admin-zimlet#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-versioncheck-store#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-versioncheck-utilities#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-viewmail-admin-zimlet#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-web-client#tag=9.0.0.p9
+	source = git+https://github.com/Zimbra/zm-webclient-portal-example#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-zcs#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-zcs-lib#tag=9.0.0.p4
+	source = git+https://github.com/Zimbra/zm-zimlets#tag=9.0.0.p9
+	source = git+https://github.com/Zimbra/zm-oauth-social#tag=9.0.0.p7
+	source = git+https://github.com/Zimbra/zm-gql#tag=9.0.0
 	source = zimbra.sysusers
 	source = zimbra.tmpfiles
 	source = localconfig.xml
-	md5sums = 0be0a8118803e607245bbd66404fd58c
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -140,6 +231,4 @@ pkgbase = zimbra
 	md5sums = 66f2930f13484ae782a162e8e7da28c1
 
 pkgname = zimbra
-
-pkgname = zimbra-packages
 
