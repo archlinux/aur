@@ -41,7 +41,7 @@ build() {
 package() {
   cd ${srcdir}/$_gitname-build
   make DESTDIR=${pkgdir} install || return 1
-  sed -i -e "s|env python|env python2|" ${pkgdir}/usr/share/yorick/2.2/python/yao.py
+  # sed -i -e "s|env python|env python2|" ${pkgdir}/usr/share/yorick/2.2/python/yao.py
   mkdir -p ${pkgdir}/usr/bin
   echo 's=sum(strtok(Y_VERSION,".",3)(1)+"."+strtok(Y_VERSION,".",3)(2))' > /tmp/get_yversion
   echo 'f=open("/tmp/yversion","w"); write,f,format="%s",s; close,f;' >> /tmp/get_yversion
