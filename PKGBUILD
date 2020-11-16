@@ -1,6 +1,6 @@
 # Maintainer: Harm Müller <harm[DOT]mueller[AT]gmail[DOT]com>
 pkgname='perl-rex'
-pkgver='1.13.0'
+pkgver='1.13.1'
 pkgrel='1'
 pkgdesc="(R)?ex, the friendly automation framework"
 arch=('any')
@@ -40,10 +40,10 @@ optdepends=(
 )
 makedepends=()
 url='https://www.rexify.org/'
-source=('https://cpan.metacpan.org/authors/id/F/FE/FERKI/Rex-1.13.0.tar.gz')
-md5sums=('685d5f1394fec4543546138863bb11e0')
-sha256sums=('341c1f52c75b40ba73745beeea284b18c1770e4c395147af6547ac1d4e9c5b09')
-_distdir="Rex-1.13.0"
+source=('https://cpan.metacpan.org/authors/id/F/FE/FERKI/Rex-1.13.1.tar.gz')
+md5sums=('642a2cea87c68cb6b0f031f5cb001dd2')
+sha256sums=('0ca8e0a4e302aea536a5be1d0e0372a5d9ac0c9bbfe04e9d8f70e6b6965f8a7e')
+_distdir="Rex-1.13.1"
 
 build()
 (
