@@ -16,9 +16,9 @@ depends=("clang" "libadalang"
          "gnatcoll-xref" "gnatcoll-python2" "gnatcoll-db2ada"
          "gnatcoll-gnatinspect" "gtkada"
          "gnome-icon-theme" "gnome-icon-theme-extras" "gnome-icon-theme-symbolic" 
-         "python2-gobject2")
+         "python2-gobject")
 optdepends=('python2-jedi')
-makedepends=('gprbuild' 'python2-sphinx' 'texlive-latexextra' 'graphviz')
+makedepends=('gprbuild' 'texlive-latexextra' 'graphviz')
 
 _gps_version=21.0w-20200427-15496
 _gps_checksum=bfa68dd61a9288c79e9c08676878cac95e0fe628
@@ -66,6 +66,14 @@ prepare()
   # Link libadalang-tools and ada_language_server into the GPS source tree
   ln -sf "$srcdir/libadalang-tools-$_laltools_ver-src" "$srcdir/gps-$_gps_version-src/laltools"
   ln -sf "$srcdir/als-$_als_ver-src"                   "$srcdir/gps-$_gps_version-src/ada_language_server"
+
+  # Install missing (obsolete) python2 packages from archives.
+  sudo pacman -U https://archive.archlinux.org/packages/p/python2-babel/python2-babel-2.8.0-5-any.pkg.tar.zst
+  sudo pacman -U https://archive.archlinux.org/packages/p/python2-imagesize/python2-imagesize-1.2.0-1-any.pkg.tar.xz
+  sudo pacman -U https://archive.archlinux.org/packages/p/python2-snowballstemmer/python2-snowballstemmer-2.0.0-3-any.pkg.tar.xz
+  sudo pacman -U https://archive.archlinux.org/packages/p/python2-sphinx-alabaster-theme/python2-sphinx-alabaster-theme-0.7.12-3-any.pkg.tar.xz
+  sudo pacman -U https://archive.archlinux.org/packages/p/python2-sphinxcontrib-websupport/python2-sphinxcontrib-websupport-1.1.2-3-any.pkg.tar.xz
+  sudo pacman -U https://archive.archlinux.org/packages/p/python2-sphinx/python2-sphinx-1.8.5-5-any.pkg.tar.zst
 }
 
 

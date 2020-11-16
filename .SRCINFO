@@ -7,7 +7,6 @@ pkgbase = gnat-gps
 	arch = x86_64
 	license = GPL
 	makedepends = gprbuild
-	makedepends = python2-sphinx
 	makedepends = texlive-latexextra
 	makedepends = graphviz
 	depends = clang
@@ -20,7 +19,7 @@ pkgbase = gnat-gps
 	depends = gnome-icon-theme
 	depends = gnome-icon-theme-extras
 	depends = gnome-icon-theme-symbolic
-	depends = python2-gobject2
+	depends = python2-gobject
 	optdepends = python2-jedi
 	source = gps-21.0w-20200427-15496-src.tar.gz::https://community.download.adacore.com/v1/bfa68dd61a9288c79e9c08676878cac95e0fe628?filename=
 	source = als-21.0w-20200427-156B6-src.tar.gz::https://community.download.adacore.com/v1/05e31f6e36e2ff4313013d27f0551416de5a1b4e?filename=
