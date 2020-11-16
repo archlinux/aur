@@ -1,6 +1,6 @@
 pkgbase = python-ocp
 	pkgdesc = Python wrapper for OCCT generated using pywrap
-	pkgver = 7.4.RC2
+	pkgver = 7.5.RC1
 	pkgrel = 1
 	url = https://github.com/CadQuery/OCP
 	arch = x86_64
@@ -23,10 +23,10 @@ pkgbase = python-ocp
 	makedepends = python-schema
 	depends = python
 	depends = opencascade
-	source = https://github.com/CadQuery/OCP/archive/7.4-RC2.tar.gz
-	source = https://github.com/CadQuery/pywrap/archive/45cf3240ededaead2e7ea60dcecc9c5cb157e0c6.tar.gz
-	sha256sums = cd04ad30d38a4836ed2cd0c7ba77174aa41f42f487ba42baf7094624802194d5
-	sha256sums = 1cdc071e4c731d853efbb14f00a7a40ebbf01c189a5c11c83a7f74af96d6c265
+	source = https://github.com/CadQuery/OCP/archive/7.5-RC1.tar.gz
+	source = https://github.com/CadQuery/pywrap/archive/530890da875ca33fe954e9de285674232d3b759f.tar.gz
+	sha256sums = 38941daeecd374c2a070516811b66e42b5a67f4f856f3bddb4e4e1156b67ee06
+	sha256sums = 3d04a575d15446d12379c16f57c5c143a81611d75a2b9dd0ca73d22eac9b046d
 
 pkgname = python-ocp
 

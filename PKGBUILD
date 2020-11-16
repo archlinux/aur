@@ -1,10 +1,10 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-ocp
-_pkgver="7.4-RC2"
+_pkgver="7.5-RC1"
 _stubs_hash=372b103b4079ffe1a54e66310ea579040892c5dd
 #TODO: add stubs
-_pywrap_hash=45cf3240ededaead2e7ea60dcecc9c5cb157e0c6
+_pywrap_hash=530890da875ca33fe954e9de285674232d3b759f
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
@@ -15,8 +15,8 @@ depends=(python opencascade)
 makedepends=(gcc8 gcc8-libs clang python-joblib python-click python-pandas python-path pybind11 python-setuptools ninja cmake python-logzero python-tqdm python-toposort python-cymbal python-schema)
 source=("https://github.com/CadQuery/OCP/archive/${_pkgver}.tar.gz"
         "https://github.com/CadQuery/pywrap/archive/${_pywrap_hash}.tar.gz")
-sha256sums=('cd04ad30d38a4836ed2cd0c7ba77174aa41f42f487ba42baf7094624802194d5'
-            '1cdc071e4c731d853efbb14f00a7a40ebbf01c189a5c11c83a7f74af96d6c265')
+sha256sums=('38941daeecd374c2a070516811b66e42b5a67f4f856f3bddb4e4e1156b67ee06'
+            '3d04a575d15446d12379c16f57c5c143a81611d75a2b9dd0ca73d22eac9b046d')
 
 prepare(){
   cd "OCP-${_pkgver}"
