@@ -5,7 +5,7 @@ _pkgname=motionbox
 pkgver=1.6.0.8
 majver=1.6.0
 subver=8
-pkgrel=3
+pkgrel=4
 pkgdesc="MotionBox is a Video Browser for Motion Freedom"
 arch=("x86_64")
 url="http://omega.gg/MotionBox/"
@@ -18,7 +18,7 @@ source=(
     https://github.com/G-P-L/AUR/raw/master/MotionBox/MotionBox.desktop
     https://github.com/G-P-L/AUR/raw/master/MotionBox/MotionBox.png
 )
-sha256sums=('2069052a7080cec084e4f8720241ac68f08f2305ad6e7ed446a47b7e21ad891f'
+sha256sums=('bec2bd8a9ac0d87c0bee7e4c73d8a68f6330a979795ff3a94b385b511d85c6b1'
             'c531f06e8777a2f6327ead793b6dc16c2b4780fdb16be354f8e68ddbe32138e7'
             '7b0f4fb92e7bc5d23fbef1a0bb9381a63fa979f28a36b2f0b4b4619b13039b72')
 
