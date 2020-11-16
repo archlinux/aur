@@ -2,8 +2,8 @@
 
 pkgname=waybind-git
 _pkgname=waybind
-pkgver=v0.1.1.r3.g3db32b7
-pkgrel=1
+pkgver=v0.1.1.r8.g86b4fb9
+pkgrel=2
 pkgdesc='Simple Key rebinder'
 arch=('x86_64')
 url='https://github.com/arnarg/waybind'
