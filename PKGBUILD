@@ -3,7 +3,7 @@
 # Maintainer: Max Ulidtko <ulidtko@gmail.com>
 pkgname=owasp-threat-dragon
 pkgver=v1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Electron Threat Modelling and diagramming tool by Mike Goodwin @ OWASP"
 arch=('any')
 url="https://threatdragon.org"
@@ -36,8 +36,10 @@ pkgver() {
 prepare() {
     cd "$srcdir/${pkgname}"
     patch -p1 -i "$srcdir/relax-coverage-thresholds.patch"
+}
 
-    # Removing local references
+prune_absolute_paths() {
+    # somehow, sshpk package hardcodes absolute paths into its package.json
     for module in sshpk; do
         local target="node_modules/${module}/package.json"
         jq 'del(.man)' "$target" >tmp.json
@@ -50,6 +52,7 @@ build() {
     npm install --no-audit --no-progress --no-fund
     npm install --no-audit --no-progress --no-fund \
         electron@"$(</usr/lib/electron5/version)"
+    prune_absolute_paths
     npm run-script pretest
     npm run-script build-content
     npx electron-builder build --linux --dir \

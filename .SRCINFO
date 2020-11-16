@@ -1,7 +1,7 @@
 pkgbase = owasp-threat-dragon
 	pkgdesc = Electron Threat Modelling and diagramming tool by Mike Goodwin @ OWASP
 	pkgver = v1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://threatdragon.org
 	arch = any
 	license = Apache-2.0
