@@ -1,0 +1,17 @@
+pkgbase = xd-rs
+	pkgdesc = xd - A tool to dump binary input in a variety of formats
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://bitbucket.org/delan/xd
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = xd
+	source = git+https://bitbucket.org/delan/xd.git#tag=0.0.2
+	sha512sums = SKIP
+
+pkgname = xd-rs
+
