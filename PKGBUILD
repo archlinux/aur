@@ -1,7 +1,7 @@
 # Maintainer: "strahe"
 
 pkgname=binance
-pkgver=0.0.3
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="The Binance Desktop Application"
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha256sums=("SKIP")
 
 package() {
     bsdtar -O -xf ${pkgname}-amd64-linux.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
-
+    ln -sf /opt/Binance/binance /usr/bin/binance
     # Permission fix
     find "${pkgdir}" -type d -exec chmod 755 {} +
 }

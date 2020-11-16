@@ -1,6 +1,6 @@
 pkgbase = binance
 	pkgdesc = The Binance Desktop Application
-	pkgver = 0.0.3
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://www.binance.com/en/download
 	arch = x86_64
