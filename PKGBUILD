@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=qogir-gtk-theme
 _pkgname=Qogir-theme
-_pkgver=2020-02-26
+_pkgver=2020-11-16
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Qogir is a flat Design theme for GTK"
