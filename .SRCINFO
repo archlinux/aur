@@ -7,6 +7,7 @@ pkgbase = python-asttokens
 	license = Apache 2.0
 	makedepends = python-setuptools
 	depends = python
+	depends = python-six
 	source = https://files.pythonhosted.org/packages/source/a/asttokens/asttokens-2.0.3.tar.gz
 	md5sums = 8a9211d70cb5630207b74c1e40b2134d
 
