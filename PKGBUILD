@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=gping
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Ping, but with a graph"
 arch=('x86_64')
@@ -10,10 +10,8 @@ url="https://github.com/orf/gping"
 license=('MIT')
 depends=('iputils')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "$pkgname-$pkgver-LICENSE::$url/raw/master/LICENSE") # TODO: Remove on the upcoming release
-sha512sums=('a4dc1d2dd330c9fe111023fe519ca8cc6689e8a7eef61e5734600090f22e26e43a39fd1d5dc3ceba4eec9a635b92596a5886c4790a11a4df86334423da5d3602'
-            '372499ab23419bfb2f1644f523d8ba1ce9c280e87795db6bf62673e7891394c51846e3f427c52e0603837b82dbc9399d0f4a25fac016a812e09fc54cf6c3a88d')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha512sums=('acdf605d6f2fc32c6e468abf287caa7569d5f018d4d2cdec47de77a065db1c99311e2caa786fb4fa2705db362df1fbbdfc7c9f4d88628cec3afdafb7ca1911c2')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -29,5 +27,5 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
   install -Dm 644 readme.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 "../$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
