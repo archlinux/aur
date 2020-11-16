@@ -1,22 +1,24 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Michael Greene <mgreene@securityinnovation.com>
 
-_pkgname=solid
+_pkgname='solid'
 pkgname="python-${_pkgname}"
-pkgver=1.0.2
-pkgrel=2
+
+pkgver=1.0.3
+pkgrel=1
+_commit_readme='9c7a308628b791b36b3bc3693caba60b587db2b3'
+
 pkgdesc='Python interface to the OpenSCAD declarative geometry language'
 arch=('any')
 url='https://github.com/SolidCode/SolidPython'
-_rawurl="https://raw.githubusercontent.com/${url##*github.com/}"
+_url_pypi='https://pypi.org/project/solidpython'
 license=('GPL2')
 depends=('python' 'python-euclid3' 'python-prettytable' 'python-pypng' 'python-regex')
 makedepends=('python-setuptools')
-provides=("${pkgname}")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}python/${_pkgname}python-${pkgver}.tar.gz"
-        "${_pkgname}-${pkgver}-README.rst::${_rawurl}/master/README.rst")
-sha256sums=('b298ba3a2e9bd999fdb9cd95dc347aa3b92bce88c83d2e9527a77779ddef8940'
-            'SKIP')
+        "${_pkgname}-readme-${_commit_readme}::${url}/raw/${_commit_readme}/README.rst")
+sha256sums=('85c7e1cbe6bc532a0df1207ead1ff3d814c477641cb2c8874fc6cd6ba5bf717c'
+            '911560bc58a0bb793ed0c3da4faa5258ab558afb79d8036280f50b1c0b3b25ff')
 
 build() {
   cd "${_pkgname}python-${pkgver}"
@@ -24,7 +26,7 @@ build() {
 }
 
 package() {
-  install -Dm644 "${_pkgname}-${pkgver}-README.rst" "${pkgdir}/usr/share/doc/${_pkgname}/README.rst"
+  install -Dvm644 "${_pkgname}-readme-${_commit_readme}" "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
   cd "${_pkgname}python-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
