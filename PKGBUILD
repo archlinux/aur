@@ -6,7 +6,7 @@ pkgdesc="XQuery/XPath/CSS/JSONiq engine and webscraper"
 arch=('x86_64')
 url="http://www.videlibri.de/xidel.html"
 license=('GPL')
-makedepends=('git' 'subversion' 'fpc-pie')
+makedepends=('git' 'subversion' 'fpc')
 source=(
 	'git+https://github.com/benibela/xidel.git'
 	'git+https://github.com/benibela/flre.git'
