@@ -15,7 +15,8 @@ pkgbase = zimbra
 	makedepends = ruby
 	depends = java-runtime>=11
 	depends = perl-archive-zip
-	depends = perl-berkeleydbperl-bit-vector
+	depends = perl-berkeleydb
+	depends = perl-bit-vector
 	depends = perl-cache-fastmmap
 	depends = perl-canary-stability
 	depends = perl-carp-clan

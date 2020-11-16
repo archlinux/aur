@@ -20,7 +20,7 @@ arch=(x86_64)
 url="https://www.zimbra.com/open-source-email-overview/"
 license=(CPAL)
 depends=(
-'java-runtime>=11' 'perl-archive-zip' 'perl-berkeleydb''perl-bit-vector' 'perl-cache-fastmmap' 'perl-canary-stability' 'perl-carp-clan'
+'java-runtime>=11' 'perl-archive-zip' 'perl-berkeleydb' 'perl-bit-vector' 'perl-cache-fastmmap' 'perl-canary-stability' 'perl-carp-clan'
 'perl-class-inspector' 'perl-compress-raw-bzip2' 'perl-compress-raw-zlib' 'perl-config-inifiles' 'perl-convert-asn1' 'perl-convert-binhex'
 'perl-convert-tnef' 'perl-convert-uulib' 'perl-crypt-openssl-random' 'perl-crypt-openssl-rsa' 'perl-crypt-saltedhash' 'perl-data-uuid'
 'perl-date-calc' 'perl-date-manip' 'perl-db-file' 'perl-dbd-mysql' 'perl-dbd-sqlite' 'perl-dbi' 'perl-digest-hmac' 'perl-digest-sha1'
