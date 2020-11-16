@@ -7,6 +7,7 @@ pkgbase = sunxi-tools-f1c100s-spiflash-git
 	license = GPL
 	makedepends = git
 	depends = libusb
+	depends = zlib
 	conflicts = sunxi-tools
 	source = sunxi-tools-f1c100s-spiflash::git+https://github.com/Icenowy/sunxi-tools.git#branch=f1c100s-spiflash
 	sha256sums = SKIP
