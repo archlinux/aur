@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=conserve-git
-pkgver=0.6.8.r2.g44af4e7
+pkgver=0.6.9.r3.g8a3b1b8
 pkgrel=1
 pkgdesc="Robust portable backup tool written in Rust (git)"
 arch=('x86_64')
