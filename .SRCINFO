@@ -1,6 +1,6 @@
 pkgbase = taskwarrior-tui-bin
 	pkgdesc = A Terminal User Interface for Taskwarrior
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://github.com/kdheepak/taskwarrior-tui
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = taskwarrior-tui-bin
 	provides = taskwarrior-tui
 	conflicts = taskwarrior-tui
 	conflicts = taskwarrior-tui-git
-	source_x86_64 = taskwarrior-tui-bin-0.9.3.tar.gz::https://github.com/kdheepak/taskwarrior-tui/releases/download/v0.9.3/taskwarrior-tui-x86_64-unknown-linux-gnu.tar.gz
-	source_x86_64 = taskwarrior-tui-bin-0.9.3-LICENSE::https://github.com/kdheepak/taskwarrior-tui/raw/v0.9.3/LICENSE
-	source_x86_64 = taskwarrior-tui-bin-0.9.3-README.md::https://github.com/kdheepak/taskwarrior-tui/raw/v0.9.3/README.md
-	sha256sums_x86_64 = 6f9d3a2b5539a63cf9e6afeba34ef9506b9d4b87b4fee64194ba5e0185a3b0aa
+	source_x86_64 = taskwarrior-tui-bin-0.9.4.tar.gz::https://github.com/kdheepak/taskwarrior-tui/releases/download/v0.9.4/taskwarrior-tui-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = taskwarrior-tui-bin-0.9.4-LICENSE::https://github.com/kdheepak/taskwarrior-tui/raw/v0.9.4/LICENSE
+	source_x86_64 = taskwarrior-tui-bin-0.9.4-README.md::https://github.com/kdheepak/taskwarrior-tui/raw/v0.9.4/README.md
+	sha256sums_x86_64 = abef6bae7a091e71dc4aa1122c18cd4b81b8fc2f178c4e0089f63159405f39d2
 	sha256sums_x86_64 = 0591178e63904cfbcd6c5efc0490d59637aaede5e2e14e79e978a8162981a755
-	sha256sums_x86_64 = 8d5487f4929c9b2bbe43c600f6842a8eb6aa158f5e71baef01ab2680f0dd3cc7
+	sha256sums_x86_64 = 5d89d633f0fdfc0319fdbf7460397b3874a0d34119ae66c0a572c3131054615f
 
 pkgname = taskwarrior-tui-bin
 
