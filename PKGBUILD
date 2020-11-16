@@ -1,7 +1,7 @@
 # Maintainer: alienzj <alienchuj@gmail.com>
 
 pkgname=geph4-git
-pkgver=r135.45e7cf1
+pkgver=r141.c162877
 pkgrel=1
 pkgdesc='A command-line Geph4 tools'
 arch=('x86_64')
