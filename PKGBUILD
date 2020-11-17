@@ -4,7 +4,7 @@ pkgdesc="ROS - A set of packages that include controller interfaces, controller 
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-melodic-ros-control'
-pkgver='0.18.1'
+pkgver='0.18.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -25,9 +25,9 @@ ros_makedepends=(ros-melodic-catkin)
 depends=(${ros_depends[@]}
     )
 
-_dir="ros_control-release-release-melodic-ros_control"
-source=("${pkgname}-${pkgver}-.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/melodic/ros_control/${pkgver}.tar.gz")
-sha256sums=('01304c4a4bac866c6dd472236bd531714781b8febb5c48ea91abbdd5cd45da22')
+_dir="ros_control-${pkgver}/ros_control"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_control/archive/${pkgver}.tar.gz")
+sha256sums=('3fcc5b4648c8395755e8c8d136d774ebed427243fe8082214993ac76eabf6a8f')
 
 build() {
     # Use ROS environment variables
