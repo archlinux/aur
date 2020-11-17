@@ -1,6 +1,6 @@
 pkgbase = dngconverter
 	pkgdesc = Adobe DNG Converter
-	pkgver = 12.4
+	pkgver = 13.0
 	pkgrel = 1
 	url = http://www.adobe.com/go/dng_converter_win/
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = dngconverter
 	provides = dngconverter
 	conflicts = dngconverter
 	options = !strip
-	source = http://download.adobe.com/pub/adobe/dng/win/DNGConverter_12_4.exe
+	source = http://download.adobe.com/pub/adobe/dng/win/DNGConverter_13_0.exe
 	source = dngconverter
 	source = _dngconverter
-	sha1sums = c391e59f04c9855dd79ddd72e354aec3c9785319
+	sha1sums = f13e96f38fbd00c65f4b181294a71812ffd09d70
 	sha1sums = SKIP
 	sha1sums = SKIP
 

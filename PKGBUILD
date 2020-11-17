@@ -1,6 +1,6 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 pkgname=dngconverter
-pkgver=12.4
+pkgver=13.0
 pkgrel=1
 pkgdesc='Adobe DNG Converter'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${pkgname}")
 source=("http://download.adobe.com/pub/adobe/dng/win/DNGConverter_${pkgver/./_}.exe"
         'dngconverter'
         '_dngconverter')
-sha1sums=('c391e59f04c9855dd79ddd72e354aec3c9785319'
+sha1sums=('f13e96f38fbd00c65f4b181294a71812ffd09d70'
           'SKIP'
           'SKIP')
 
@@ -22,6 +22,7 @@ build() {
     install -m755 -d "$srcdir"/tmp "$srcdir"/tmp/env "$srcdir"/tmp/local
     export WINEPREFIX="$srcdir"/tmp/env
     export XDG_DATA_HOME="$srcdir"/tmp/local
+    winetricks win10
     wine "${srcdir}"/DNGConverter_${pkgver/./_}.exe /S
     pkill -f 'C\:\\windows\\system32\\explorer\.exe C:\\Program Files\\Adobe'
 }
