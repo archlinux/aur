@@ -23,7 +23,6 @@ pkgbase = deepin-launcher-git
 	depends = xdg-user-dirs
 	provides = deepin-launcher
 	conflicts = deepin-launcher
-	replaces = deepin-launcher
 	source = deepin-launcher-git::git://github.com/linuxdeepin/dde-launcher.git
 	sha512sums = SKIP
 
