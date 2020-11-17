@@ -4,8 +4,8 @@
 
 pkgname=franz
 #pkgver=${_pkgver//-/_} # Leaving it here for possible dev/beta package :)
-pkgver=5.5.0
-pkgrel=4
+pkgver=5.6.1
+pkgrel=1
 # Due to the previous "_beta" naming
 epoch=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
@@ -16,17 +16,15 @@ license=(Apache)
 # Expected one is 'electron9' (Electron 9). May change soon.
 # This is automatically replaced in `franz.sh` with the package name, as
 # the executable matches the package name (as of 2020-11-15).
-_electron='electron9'
+_electron='electron'
 depends=($_electron)
 makedepends=(expac git npm python python2)
 source=("git+https://github.com/meetfranz/$pkgname#tag=v$pkgver"
         franz.desktop
-        franz.sh.in
-        'electron-9.patch::https://github.com/archlinuxcn/repo/raw/eb2e113ff042ef5353450c0ec4f4f621689a23d7/archlinuxcn/franz/0001-.patch')
+        franz.sh.in)
 sha512sums=('SKIP'
             '049c4bf2e0f362f892e8eef28dd18a6c321251c686a9c9e49e4abfb778057de2fc68b95b4ff7bb8030a828a48b58554a56b810aba078c220cb01d5837083992e'
-            '7ccf058421b173830493f35417d204e3a735fc20f801283dad3f658abeb484f6244bc535634c2f02ab2cb8e35a0e1a92dd3d06be5943e121ddccbbee7ad74b48'
-            '463b07949c789d2be7568b93e0c7f79ab5fc753aef4c869c40ba29444ba10c12db4ad1bc0353d8b73a51619bcd8666ed3c72c070cb24b05087604e04791bda52')
+            '7ccf058421b173830493f35417d204e3a735fc20f801283dad3f658abeb484f6244bc535634c2f02ab2cb8e35a0e1a92dd3d06be5943e121ddccbbee7ad74b48')
 
 prepare() {
   # Small patching
@@ -37,9 +35,6 @@ prepare() {
   electron_version="`expac %v $_electron | cut -d'-' -f1`"
   sed -i -E "s|(\s+\"electron\":).*,|\1 \"$electron_version\",|" package.json
 
-  # Thanks @yuyichao from archlinuxcn for this! :)
-  patch -Np1 -i "$srcdir/electron-9.patch"
-
   # Prevent franz from being launched in dev mode
   sed -i \
     "s|export const isDevMode = .*|export const isDevMode = false;|g" \
@@ -47,10 +42,6 @@ prepare() {
   sed -i \
     "s|import isDevMode from 'electron-is-dev'|export const isDevMode = false|g" \
     src/index.js
-
-  # Fix tricky dependencies versions before-hand
-  node_sass_version="4.14.1"
-  sed -i -E "s|(\s+\"node-sass\":).*,|\1 \"$node_sass_version\",|" package.json
 
   # Better configuration for npm cache and calling installed binaries
   export npm_config_cache="$srcdir/npm_cache"

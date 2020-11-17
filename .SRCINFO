@@ -1,7 +1,7 @@
 pkgbase = franz
 	pkgdesc = Free messaging app for services like WhatsApp, Slack, Messenger and many more.
-	pkgver = 5.5.0
-	pkgrel = 4
+	pkgver = 5.6.1
+	pkgrel = 1
 	epoch = 1
 	url = https://meetfranz.com
 	arch = x86_64
@@ -12,16 +12,14 @@ pkgbase = franz
 	makedepends = npm
 	makedepends = python
 	makedepends = python2
-	depends = electron9
-	source = git+https://github.com/meetfranz/franz#tag=v5.5.0
+	depends = electron
+	source = git+https://github.com/meetfranz/franz#tag=v5.6.1
 	source = franz.desktop
 	source = franz.sh.in
-	source = electron-9.patch::https://github.com/archlinuxcn/repo/raw/eb2e113ff042ef5353450c0ec4f4f621689a23d7/archlinuxcn/franz/0001-.patch
 	sha512sums = SKIP
 	sha512sums = 049c4bf2e0f362f892e8eef28dd18a6c321251c686a9c9e49e4abfb778057de2fc68b95b4ff7bb8030a828a48b58554a56b810aba078c220cb01d5837083992e
 	sha512sums = 7ccf058421b173830493f35417d204e3a735fc20f801283dad3f658abeb484f6244bc535634c2f02ab2cb8e35a0e1a92dd3d06be5943e121ddccbbee7ad74b48
-	sha512sums = 463b07949c789d2be7568b93e0c7f79ab5fc753aef4c869c40ba29444ba10c12db4ad1bc0353d8b73a51619bcd8666ed3c72c070cb24b05087604e04791bda52
 
 pkgname = franz
-	depends = electron9=
+	depends = electron=
 
