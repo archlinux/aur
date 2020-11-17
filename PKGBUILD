@@ -1,37 +1,36 @@
-# Maintainer: Caleb Jamison <cbjamo@gmail.com> 
-pkgname=liteeth-git
-pkgver=115
-pkgrel=2
-pkgdesc="A small footprint and configurable Ethernet core for litex"
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+
+_srcname=liteeth
+pkgname="python-$_srcname-git"
+pkgver=2020.04.r34.g0624256
+pkgrel=1
+pkgdesc="A small footprint and configurable Ethernet core for LiteX"
 arch=(any)
 url="https://github.com/enjoy-digital/liteeth"
 license=('MIT')
-groups=()
-depends=('python' 'migen' 'litex')
-provides=('liteeth')
-options=(!emptydirs)
-install=
-source=("git+https://github.com/enjoy-digital/liteeth")
+depends=(python python-migen python-litex)
+makedepends=(git python-setuptools)
+provides=("${pkgname%%-git}=$pkgver")
+conflicts=("${pkgname%%-git}")
+replaces=("$_srcname-git")
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%%-git}"
-  git rev-list --count HEAD
-}
-
-prepare() {
-  cd "${srcdir}/${pkgname%%-git}"
-  rm -rf test/__init__.py
-  rm -rf example_designs/__init__.py
+  cd "$_srcname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname%%-git}"
+  cd "$_srcname"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname%%-git}"
-  python setup.py install --root="$pkgdir/" --skip-build --optimize=1
+  cd "$_srcname"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
+# vim:set et ts=2 syntax=PKGBUILD:

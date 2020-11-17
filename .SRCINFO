@@ -1,17 +1,20 @@
-pkgbase = liteeth-git
-	pkgdesc = A small footprint and configurable Ethernet core for litex
-	pkgver = 115
-	pkgrel = 2
+pkgbase = python-liteeth-git
+	pkgdesc = A small footprint and configurable Ethernet core for LiteX
+	pkgver = 2020.04.r34.g0624256
+	pkgrel = 1
 	url = https://github.com/enjoy-digital/liteeth
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
 	depends = python
-	depends = migen
-	depends = litex
-	provides = liteeth
-	options = !emptydirs
+	depends = python-migen
+	depends = python-litex
+	provides = python-liteeth=2020.04.r34.g0624256
+	conflicts = python-liteeth
+	replaces = liteeth-git
 	source = git+https://github.com/enjoy-digital/liteeth
 	sha256sums = SKIP
 
-pkgname = liteeth-git
+pkgname = python-liteeth-git
 
