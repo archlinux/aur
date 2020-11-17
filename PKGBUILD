@@ -6,8 +6,8 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=0.117.5
-pkgrel=2
+pkgver=0.117.6
+pkgrel=1
 arch=(any)
 url=https://home-assistant.io/
 license=(APACHE)
@@ -43,9 +43,10 @@ makedepends=(
 optdepends=(
   'net-tools: Nmap host discovery'
   'openzwave: Z-Wave integration'
+  'python-dtlssocket: Ikea Tradfri integration'
   'python-lxml: Meteo France integration'
 )
-_tag=22f16759e5911dbfa6eb79d65e1219977d5a06fc
+_tag=7c783dc1b45ca63f071da9d3fc97d85b1b7039b7
 source=(
   git+https://github.com/home-assistant/home-assistant.git#tag=${_tag}
   home-assistant.service
