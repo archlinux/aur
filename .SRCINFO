@@ -1,17 +1,21 @@
-pkgbase = litedram-git
+pkgbase = python-litedram-git
 	pkgdesc = A small footprint and configurable DRAM core for LiteX
-	pkgver = 181
-	pkgrel = 2
+	pkgver = 2020.08.r101.g1117068
+	pkgrel = 1
 	url = https://github.com/enjoy-digital/litedram
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-yaml
 	depends = python
-	depends = migen
-	depends = litex
-	provides = litedram
-	options = !emptydirs
+	depends = python-migen
+	depends = python-litex
+	provides = python-litedram=2020.08.r101.g1117068
+	conflicts = python-litedram
+	replaces = litedram-git
 	source = git+https://github.com/enjoy-digital/litedram
 	sha256sums = SKIP
 
-pkgname = litedram-git
+pkgname = python-litedram-git
 

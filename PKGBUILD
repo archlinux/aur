@@ -1,36 +1,36 @@
-# Maintainer: Caleb Jamison <cbjamo@gmail.com> 
-pkgname=litedram-git
-pkgver=181
-pkgrel=2
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+
+_srcname=litedram
+pkgname="python-$_srcname-git"
+pkgver=2020.08.r101.g1117068
+pkgrel=1
 pkgdesc="A small footprint and configurable DRAM core for LiteX"
 arch=(any)
 url="https://github.com/enjoy-digital/litedram"
 license=('MIT')
-groups=()
-depends=('python' 'migen' 'litex')
-provides=('litedram')
-options=(!emptydirs)
-install=
-source=("git+https://github.com/enjoy-digital/litedram")
+depends=(python-yaml python python-migen python-litex)
+makedepends=(git python-setuptools)
+provides=("${pkgname%%-git}=$pkgver")
+conflicts=("${pkgname%%-git}")
+replaces=("$_srcname-git")
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%%-git}"
-  git rev-list --count HEAD
-}
-
-prepare() {
-  cd "${srcdir}/${pkgname%%-git}"
-  rm -rf test/__init__.py
+  cd "$_srcname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname%%-git}"
+  cd "$_srcname"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname%%-git}"
-  python setup.py install --root="$pkgdir/" --skip-build --optimize=1
+  cd "$_srcname"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
+# vim:set et ts=2 syntax=PKGBUILD:
