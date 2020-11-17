@@ -4,7 +4,7 @@ pkgdesc="ROS - This package implements the franka gripper of type Franka Hand fo
 url='h'
 
 pkgname='ros-melodic-franka-gripper'
-pkgver='0.6.0'
+pkgver='0.7.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('Apache 2.0')
@@ -42,9 +42,9 @@ depends=(
   ${ros_depends[@]}
 )
 
-_dir="franka_ros-release-release-melodic-franka_gripper"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/frankaemika/franka_ros-release/archive/release/melodic/franka_gripper/${pkgver}.tar.gz")
-sha256sums=('78c34c548940938a502ddf9f6fd010d9906b4dbc1c9f4eb46dd9dcdc6c6deee3')
+_dir="franka_ros-${pkgver}/franka_gripper"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/frankaemika/franka_ros/archive/${pkgver}.tar.gz")
+sha256sums=('5250d6d05c8535a6a19f13a3ed454e9c28ea1d111c4cbd048a394cb346390f44')
 
 
 build() {
