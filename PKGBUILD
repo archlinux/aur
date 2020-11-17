@@ -2,8 +2,8 @@
 
 pkgname=hsphfpd-git
 pkgdesc="Prototype implementation for connecting Bluetooth devices with HSP and HFP profiles"
-pkgver=r12.e254c6a
-pkgrel=3
+pkgver=r13.601bf8f
+pkgrel=1
 arch=(x86_64)
 url=https://github.com/pali/hsphfpd-prototype
 license=(unknown)
