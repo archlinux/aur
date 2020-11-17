@@ -14,8 +14,13 @@
 #
 
 _pkgname=codelite
+_commit=34fed7b8599e0cc62c2cd3b836c3c972ddcebeb6
+
+pkg_name_ver="${_pkgname}-${_commit}"
+#pkg_name_ver="${_pkgname}-${pkgver//_/-}"
+
 pkgname=${_pkgname}-unstable
-pkgver=14.0.2
+pkgver=14.0.4
 pkgrel=1
 pkgdesc="Cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
@@ -40,18 +45,29 @@ optdepends=('graphviz: callgraph visualization'
             )
 conflicts=('codelite')
 
-#source=(https://github.com/eranif/${_pkgname}/archive/${pkgver//_/-}.tar.gz
-#        http://repos.codelite.org/wxCrafterLibs/wxgui.zip)
-#noextract=('wxgui.zip')
+
+#source=(
+#    https://github.com/eranif/${_pkgname}/archive/${pkgver//_/-}.tar.gz
+#    http://repos.codelite.org/wxCrafterLibs/wxgui.zip
+#  )
+
+
+#source=(
+#    "${_pkgname}-${pkgver}.tar.gz::https://github.com/eranif/${_pkgname}/archive/${pkgver//_/-}.tar.gz"
+#    http://repos.codelite.org/wxCrafterLibs/wxgui.zip
+#  )
+
 
 
 source=(
-    "${_pkgname}-${pkgver}.tar.gz::https://github.com/eranif/${_pkgname}/archive/${pkgver//_/-}.tar.gz"
+    "${_pkgname}-${pkgver}.tar.gz::https://github.com/eranif/${_pkgname}/archive/${_commit}.tar.gz"
     http://repos.codelite.org/wxCrafterLibs/wxgui.zip
   )
 
-md5sums=('3dc1654139d515521105e76f5516473a'
+md5sums=('2976daeaa7410569df2a0784113123e6'
          '20f3428eb831c3ff2539a7228afaa3b4')
+
+noextract=('wxgui.zip')
 
 #if [[ "$CARCH" == 'i686' ]]; then
 #  source+=(http://repos.codelite.org/wxCrafterLibs/ArchLinux/32/wxCrafter.so)
@@ -63,8 +79,10 @@ md5sums=('3dc1654139d515521105e76f5516473a'
 
 
 BUILD_DIR="_build"
-pkg_name_ver="${_pkgname}-${pkgver//_/-}"
 
+#
+#
+#
 
 prepare()
 {
@@ -87,7 +105,7 @@ export WX_CONFIG
 mkdir -p "${BUILD_DIR}"
 #cd "${BUILD_DIR}"
 
-cmake -B "${BUILD_DIR}" -S . -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DWITH_WX_CONFIG=${WX_CONFIG} -DENABLE_LLDB=1 -DWITH_MYSQL=1 -DCMAKE_INSTALL_LIBDIR=lib
+cmake -B "${BUILD_DIR}" -S . -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DWITH_WX_CONFIG=${WX_CONFIG} -DENABLE_LLDB=1 -DWITH_MYSQL=0 -DCMAKE_INSTALL_LIBDIR=lib
 make -C "${BUILD_DIR}"
 
 }
