@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-franka-ros
 	pkgdesc = ROS - franka_ros is a metapackage for all Franka Emika ROS packages.
-	pkgver = 0.6.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = h
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = ros-melodic-franka-ros
 	depends = ros-melodic-franka-msgs
 	depends = ros-melodic-franka-visualization
 	depends = ros-melodic-franka-hw
-	source = ros-melodic-franka-ros-0.6.0.tar.gz::https://github.com/frankaemika/franka_ros-release/archive/release/melodic/franka_ros/0.6.0.tar.gz
-	sha256sums = 98d7bdd1b163b10f0e9ff3242b393bb61fa04feb7a23def2a44b127391843d96
+	source = ros-melodic-franka-ros-0.7.1.tar.gz::https://github.com/frankaemika/franka_ros/archive/0.7.1.tar.gz
+	sha256sums = 5250d6d05c8535a6a19f13a3ed454e9c28ea1d111c4cbd048a394cb346390f44
 
 pkgname = ros-melodic-franka-ros
 

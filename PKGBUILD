@@ -4,7 +4,7 @@ pkgdesc="ROS - franka_ros is a metapackage for all Franka Emika ROS packages."
 url='h'
 
 pkgname='ros-melodic-franka-ros'
-pkgver='0.6.0'
+pkgver='0.7.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('Apache 2.0')
@@ -33,9 +33,9 @@ depends=(
   ${ros_depends[@]}
 )
 
-_dir="franka_ros-release-release-melodic-franka_ros"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/frankaemika/franka_ros-release/archive/release/melodic/franka_ros/${pkgver}.tar.gz")
-sha256sums=('98d7bdd1b163b10f0e9ff3242b393bb61fa04feb7a23def2a44b127391843d96')
+_dir="franka_ros-${pkgver}/franka_ros"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/frankaemika/franka_ros/archive/${pkgver}.tar.gz")
+sha256sums=('5250d6d05c8535a6a19f13a3ed454e9c28ea1d111c4cbd048a394cb346390f44')
 
 
 build() {
