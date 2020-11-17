@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains visualization tools for Franka Emika."
 url='h'
 
 pkgname='ros-melodic-franka-visualization'
-pkgver='0.6.0'
+pkgver='0.7.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('Apache 2.0')
@@ -33,9 +33,9 @@ depends=(
   ${ros_depends[@]}
 )
 
-_dir="franka_ros-release-release-melodic-franka_visualization"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/frankaemika/franka_ros-release/archive/release/melodic/franka_visualization/${pkgver}.tar.gz")
-sha256sums=('74659416dd5d061686760d255f3d424a0372ff6b2f1cdf8260b954f392043d71')
+_dir="franka_ros-${pkgver}/franka_visualization"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/frankaemika/franka_ros/archive/${pkgver}.tar.gz")
+sha256sums=('5250d6d05c8535a6a19f13a3ed454e9c28ea1d111c4cbd048a394cb346390f44')
 
 
 build() {
