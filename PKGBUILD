@@ -3,21 +3,22 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=v12.0.10.r1164.gc53af8dc8
+pkgver=14.0.2.r61.g2b75baba8
 pkgrel=1
 pkgdesc="A cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://www.codelite.org/"
 license=('GPL')
 install=codelite-git.install
-makedepends=('pkgconfig' 'cmake' 'clang' 'git')
+makedepends=('pkgconfig' 'cmake' 'ninja' 'clang' 'git')
 depends=(
   'wxgtk'
   'libedit'
   'libssh'
-  'libmariadbclient'
+  'mariadb-libs'
   'ncurses'
   'xterm'
+  'wget'
   'curl'
   'python2'
   'clang'
@@ -60,18 +61,18 @@ build() {
 
   CXXFLAGS="${CXXFLAGS} -fno-devirtualize"
 
-  cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release \
-    -DENABLE_CLANG=1 -DENABLE_LLDB=1 -DWITH_MYSQL=1 \
+  cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release \
+    -DENABLE_CLANG=1 -DENABLE_LLDB=1 -DWITH_MYSQL=0 \
     -DCMAKE_INSTALL_LIBDIR=lib \
     ..
 
-  make
+  ninja
 }
 
 package() {
   cd "${srcdir}/${_gitname}/build"
 
-  make -j1 DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
   install -m 644 -D "${srcdir}/wxgui.zip" "${pkgdir}/usr/share/codelite/wxgui.zip"
   install -m 644 -D "${srcdir}/${_gitname}/LICENSE" "${pkgdir}/usr/share/licenses/codelite/LICENSE"
 }
