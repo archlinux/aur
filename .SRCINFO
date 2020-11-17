@@ -17,6 +17,7 @@ pkgbase = flowee
 	provides = flowee-hub
 	provides = flowee-libs
 	backup = etc/flowee/flowee.conf
+	backup = etc/flowee/rest-service.conf
 	source = https://gitlab.com/FloweeTheHub/thehub/-/archive/2020.07.2/thehub-2020.07.2.tar.gz
 	source = flowee.logrotate
 	source = flowee.conf

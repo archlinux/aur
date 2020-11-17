@@ -11,7 +11,7 @@ depends=('boost-libs' 'libevent' 'openssl')
 makedepends=('boost' 'cmake' 'pkgconf')
 optdepends=('miniupnpc')
 provides=('flowee-hub' 'flowee-libs')
-backup=("etc/flowee/flowee.conf")
+backup=("etc/flowee/flowee.conf" "etc/flowee/rest-service.conf")
 install=flowee.install
 source=("https://gitlab.com/FloweeTheHub/thehub/-/archive/$pkgver/thehub-$pkgver.tar.gz"
     "flowee.logrotate"
