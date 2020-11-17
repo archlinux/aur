@@ -11,6 +11,7 @@ pkgbase = vramfs-git
 	depends = ocl-icd
 	depends = opencl-driver
 	depends = fuse3
+	provides = vramfs
 	source = git+https://github.com/Overv/vramfs.git
 	md5sums = SKIP
 
