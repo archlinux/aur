@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-google-cloud-storage
-pkgver=1.32.0
+pkgver=1.33.0
 pkgrel=1
 pkgdesc='Google Cloud Storage API client library'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-google-auth' 'python-google-cloud-core'
          'python-google-api-core')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/googleapis/python-storage/archive/v$pkgver.tar.gz")
-sha256sums=('6dc451f18ab24a99fabba5c265419263accc670b42c797256e0aa71fa6671fa2')
+sha256sums=('b464acc68994d941a0307a8ed29b124490411a2ee68f84404396f9d52668b548')
 
 _pkgname=python-storage
 
