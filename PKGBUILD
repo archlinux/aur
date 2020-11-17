@@ -6,7 +6,7 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=3.1.0.r2429.g1373b9565
+pkgver=3.3.0.r1655.gecd7e2cbf
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
@@ -45,17 +45,19 @@ build() {
   cd $_gitdir
   [[ ! -d build ]] && mkdir -p build
   cd build
-  cmake \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DBINARY_PACKAGE_BUILD=1 \
-      -DUSE_LIBSECRET=On \
-      -DUSE_LUA=On \
-      -DBUILD_USERMANUAL=False \
-      -DUSE_COLORD=On \
-      -DCMAKE_INSTALL_LIBDIR=lib \
-      -DRAWSPEED_ENABLE_LTO=ON \
-      -DCMAKE_C_FLAGS="-Wno-error=deprecated-declarations -Wno-error=unused-result" \
+    cmake \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+        -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBINARY_PACKAGE_BUILD=1 \
+        -DBUILD_USERMANUAL=False \
+        -DUSE_LIBSECRET=ON \
+        -DUSE_LUA=ON \
+        -DUSE_COLORD=ON \
+        -DBUILD_CURVE_TOOLS=ON \
+        -DBUILD_NOISE_TOOLS=ON \
+        -DRAWSPEED_ENABLE_LTO=ON \
       ..
   make
 
@@ -67,5 +69,6 @@ build() {
 package() {
   cd $srcdir/$_gitname/build
   make DESTDIR=$pkgdir install
+  ln -s darktable/libdarktable.so "${pkgdir}"/usr/lib/libdarktable.so
   mv "${pkgdir}/usr/share/doc/darktable" "${pkgdir}/usr/share/doc/${pkgname}-${pkgver}"
 }
