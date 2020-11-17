@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 url="https://stimmtausch.com"
 license=('MIT')
 makedepends=('go' 'git')
-source=("$pkgname::git+https://github.com/makyo/stimmtausch.git")
+source=("$pkgname::git+https://github.com/makyo/${pkgname/-git/}.git")
 b2sums=('SKIP')
 
 pkgver() {
