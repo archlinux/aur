@@ -1,16 +1,14 @@
 # Maintainer: r4v3n6101 <raven6107@gmail.com>
 
 pkgname=hlbsp
-pkgver=0.4.0
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Half-Life's .BSP maps viewer."
 arch=('any')
 url="https://github.com/r4v3n6101/hlbsp"
 license=('GPL')
 makedepends=('rust' 'cargo' 'git')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
-source=("git+https://github.com/r4v3n6101/hlbsp")
+source=("${pkgname}::git+https://github.com/r4v3n6101/hlbsp#tag=v${pkgver}")
 md5sums=('SKIP')
 
 prepare() {
