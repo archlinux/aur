@@ -3,7 +3,7 @@
 _srcname=fortune-zh-data
 pkgname=fortune-mod-gushiwen
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Chinese gushiwen for fortune-mod"
 url="https://github.com/shenyunhang/${_srcname}"
 license=("GPL3")
@@ -20,7 +20,7 @@ build() {
   mv '先秦' 'Qin'
   mv '两汉' 'Han'
   mv '魏晋' 'Wei'
-  mv '南北朝' 'NS'
+  mv '南北朝' 'SN'
   mv '隋代' 'Sui'
   mv '唐代' 'Tang'
   mv '五代' 'Five'
@@ -30,13 +30,13 @@ build() {
   mv '明代' 'Ming'
   mv '清代' 'Qing'
   mv '近代' 'Recent'
-  mv '现代' 'Morden'
-  mv '未知' 'Unkown'
+  mv '现代' 'Modern'
+  mv '未知' 'Unknown'
 
   mv '先秦.dat' 'Qin.dat'
   mv '两汉.dat' 'Han.dat'
   mv '魏晋.dat' 'Wei.dat'
-  mv '南北朝.dat' 'NS.dat'
+  mv '南北朝.dat' 'SN.dat'
   mv '隋代.dat' 'Sui.dat'
   mv '唐代.dat' 'Tang.dat'
   mv '五代.dat' 'Five.dat'
@@ -46,8 +46,8 @@ build() {
   mv '明代.dat' 'Ming.dat'
   mv '清代.dat' 'Qing.dat'
   mv '近代.dat' 'Recent.dat'
-  mv '现代.dat' 'Morden.dat'
-  mv '未知.dat' 'Unkown.dat'
+  mv '现代.dat' 'Modern.dat'
+  mv '未知.dat' 'Unknown.dat'
 }
 
 package(){
