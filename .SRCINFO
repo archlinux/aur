@@ -1,9 +1,8 @@
 pkgbase = eccodes-git
 	pkgdesc = ECMWF decoding library for GRIB, BUFR and GTS
-	pkgver = 2020.10.0
+	pkgver = 2020.10.1.r0.g929aee77
 	pkgrel = 1
-	url = https://software.ecmwf.int/wiki/display/ECC/ecCodes+Home
-	arch = i686
+	url = https://github.com/ecmwf/eccodes
 	arch = x86_64
 	license = Apache
 	makedepends = gcc-fortran
@@ -12,14 +11,14 @@ pkgbase = eccodes-git
 	makedepends = cmake
 	depends = openjpeg
 	depends = libpng
-	depends = python2
+	depends = python3
 	depends = netcdf
 	optdepends = libaec: for compression
 	optdepends = jasper: as an alternative to openjpeg
 	conflicts = grib_api
 	conflicts = libbufr-ecmwf
-	source = https://github.com/ecmwf/eccodes-git/archive/2020.10.0.tar.gz
-	md5sums = 215860f56dc1599883624fc1f4acab15
+	source = eccodes::git+https://github.com/ecmwf/eccodes#branch=master
+	md5sums = SKIP
 
 pkgname = eccodes-git
 
