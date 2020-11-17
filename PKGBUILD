@@ -1,10 +1,10 @@
 # Maintainer: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
 
 pkgname=python-qiling-git
-pkgver=1.1.3.r155.g57d1ce25
-pkgrel=1
-pkgdesc="Advanced binary emulation framework"
-url='https://qiling.io'
+pkgver=1.2.r3.gc29e9add
+pkgrel=2
+pkgdesc="An advanced binary emulation framework"
+url='https://qiling.io/'
 arch=('x86_64')
 license=('GPL2')
 depends=('python' 'python-capstone' 'python-unicorn' 'python-pefile' 'python-registry' 'python-keystone' 'python-pyelftools')
