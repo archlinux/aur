@@ -1,8 +1,8 @@
 # Maintainer: Christopher P. Fair  
 
 pkgname=triplea
-pkgver=2.1.20730
-pkgrel=2
+pkgver=2.5.22294
+pkgrel=1
 pkgdesc='An online multiplayer turn based strategy game and board game engine.'
 arch=('any')
 appname="triplea-game-headed-${pkgver}"
@@ -11,10 +11,9 @@ license=('GPL')
 install=${pkgname}.install
 depends=('gtk-update-icon-cache' 'java-runtime')
 source=( "https://github.com/triplea-game/triplea/releases/download/${pkgver}/${appname}.zip")
-sha256sums=('0c97cce9486ed50f72e16d8b630a0e519fdb66984b1a6a45042dd724c7a83446')
+sha256sums=('b478da60ccf187e1bda55f23e8a139e7fa624e739a4ee173668a8d3b2a03f304')
 
 package() {
-    echo ${source}
     install -d ${pkgdir}/usr/share/${pkgname}
     install -d ${pkgdir}/usr/bin
     cp -rfpv ${srcdir}/* ${pkgdir}/usr/share/${pkgname}
