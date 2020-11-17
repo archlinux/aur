@@ -10,7 +10,8 @@ pkgbase = chromecast_mpris
 	depends = python>=3.6.0
 	depends = python-gobject
 	depends = python-pydbus
-	source = chromecast_mpris-0.3.3.tar.gz::https://github.com/alexdelorenzo/chromecast_mpris/archive/v0.3.12.tar.gz
+	depends = python-click
+	source = chromecast_mpris-0.3.3.tar.gz::https://github.com/alexdelorenzo/chromecast_mpris/archive/v0.3.3.tar.gz
 	md5sums = SKIP
 
 pkgname = chromecast_mpris
