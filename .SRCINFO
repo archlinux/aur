@@ -1,5 +1,5 @@
 pkgbase = k0s-bin
-	pkgdesc = zero friction kubernetes
+	pkgdesc = k0s - Zero Friction Kubernetes
 	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/k0sproject/k0s

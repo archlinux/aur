@@ -4,7 +4,7 @@
 pkgname=k0s-bin
 pkgver=0.7.0
 pkgrel=1
-pkgdesc="zero friction kubernetes"
+pkgdesc="k0s - Zero Friction Kubernetes"
 arch=('x86_64')
 url="https://github.com/k0sproject/k0s"
 license=('Apache')
