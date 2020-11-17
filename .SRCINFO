@@ -1,17 +1,20 @@
-pkgbase = litejesd204b-git
+pkgbase = python-litejesd204b-git
 	pkgdesc = A small footprint and configurable JESD204B core for LiteX
-	pkgver = 259
-	pkgrel = 2
+	pkgver = 2020.08.r1.g1e88fa8
+	pkgrel = 1
 	url = https://github.com/enjoy-digital/litejesd204b
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
 	depends = python
-	depends = migen
-	depends = litex
-	provides = litejesd204b
-	options = !emptydirs
+	depends = python-migen
+	depends = python-litex
+	provides = python-litejesd204b=2020.08.r1.g1e88fa8
+	conflicts = python-litejesd204b
+	replaces = litejesd204b-git
 	source = git+https://github.com/enjoy-digital/litejesd204b
 	sha256sums = SKIP
 
-pkgname = litejesd204b-git
+pkgname = python-litejesd204b-git
 
