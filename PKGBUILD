@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontship
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
@@ -13,6 +13,7 @@ depends=('diffutils'
          'gftools'
          'git'
          'libarchive'
+         'libgit2'
          'make'
          'python'
          'python-babelfont'
@@ -35,7 +36,7 @@ depends=('diffutils'
          'zsh')
 makedepends=('cargo' 'rust')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('2733d8c59da67ca37b05ffaa613929577228835fd66b6587c4bc1ba095ea4baa')
+sha256sums=('4dad65ce8b5257b03d772c00596ab7b7ddffb9b33ddc00a26d39d16ab3e7ee10')
 
 prepare() {
     cd "$pkgname-$pkgver"
