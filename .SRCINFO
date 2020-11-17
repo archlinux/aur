@@ -1,6 +1,6 @@
 pkgbase = opencv3-opt
 	pkgdesc = Open Source Computer Vision Library (Legacy Version & /opt directory version)
-	pkgver = 3.4.11
+	pkgver = 3.4.12
 	pkgrel = 1
 	url = http://opencv.org/
 	arch = x86_64
@@ -31,12 +31,10 @@ pkgbase = opencv3-opt
 	optdepends = hdf5: support for HDF5 format
 	optdepends = opencl-icd-loader: For coding with OpenCL
 	optdepends = python-numpy: Python interface
-	source = opencv-3.4.11.tar.gz::https://github.com/opencv/opencv/archive/3.4.11.zip
-	source = opencv_contrib-3.4.11.tar.gz::https://github.com/opencv/opencv_contrib/archive/3.4.11.tar.gz
-	source = jpeg2000_jasper.patch
-	sha256sums = eb2bdd90bc4099f28595170c0f9dc0d371733e1229046a9b98ba580377a2e82c
-	sha256sums = d92e3e3740196f20b5a47ef578aed471b975ef7104ae186ef7f738fcc732be96
-	sha256sums = a56c8646eea058260b87a041f291682dcdf93f6557f2714ff377a46eca842aea
+	source = opencv-3.4.12.tar.gz::https://github.com/opencv/opencv/archive/3.4.12.zip
+	source = opencv_contrib-3.4.12.tar.gz::https://github.com/opencv/opencv_contrib/archive/3.4.12.tar.gz
+	sha256sums = 1d9ed46728ecfab579c540f9da4e0cc599a822b49ca406edeee7fefceea6be34
+	sha256sums = b207024589674dd2efc7c25740ef192ee4f3e0783e773e2d49a198c37e3e7570
 
 pkgname = opencv3-opt
 	provides = opencv3
@@ -44,6 +42,6 @@ pkgname = opencv3-opt
 
 pkgname = opencv3-opt-samples
 	pkgdesc = Open Source Computer Vision Library (Legacy Version & /opt directory version) (samples)
-	depends = opencv3-opt=3.4.11
+	depends = opencv3-opt=3.4.12
 	provides = opencv3-samples
 

@@ -4,7 +4,7 @@
 
 pkgbase=opencv3-opt
 pkgname=($pkgbase $pkgbase-samples)
-pkgver=3.4.11
+pkgver=3.4.12
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library (Legacy Version & /opt directory version)"
 arch=(x86_64)
@@ -18,16 +18,15 @@ optdepends=('opencv-samples: samples'
             'hdf5: support for HDF5 format'
             'opencl-icd-loader: For coding with OpenCL'
             'python-numpy: Python interface')
-source=("opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
-        "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz"
-        "jpeg2000_jasper.patch")
-sha256sums=('eb2bdd90bc4099f28595170c0f9dc0d371733e1229046a9b98ba580377a2e82c'
-            'd92e3e3740196f20b5a47ef578aed471b975ef7104ae186ef7f738fcc732be96'
-            'a56c8646eea058260b87a041f291682dcdf93f6557f2714ff377a46eca842aea')
+source=(
+"opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
+"opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz"
+)
+sha256sums=('1d9ed46728ecfab579c540f9da4e0cc599a822b49ca406edeee7fefceea6be34'
+            'b207024589674dd2efc7c25740ef192ee4f3e0783e773e2d49a198c37e3e7570')
 
 prepare() {
   mkdir -p build
-  patch -p0 < jpeg2000_jasper.patch # credit: @Windfisch https://github.com/Windfisch/pkgbuild-opencv3-opt/blob/master/jpeg2000_jasper.patch
 }
 
 build() {
