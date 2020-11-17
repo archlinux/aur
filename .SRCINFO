@@ -7,6 +7,7 @@ pkgbase = python-js8py-git
 	license = GPL3
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-nose
 	depends = python
 	provides = js8py
 	source = python-js8py-git::git://github.com/jketterl/js8py.git
