@@ -4,18 +4,18 @@
 
 pkgbase=gpgme
 pkgname=(gpgme qgpgme python-gpgme)
-pkgver=1.14.0
-pkgrel=3
-_python_ver=3.9
+pkgver=1.15.0
+pkgrel=1
+_python_ver=3.8
 pkgdesc="A C wrapper library for GnuPG"
 arch=('x86_64')
 url='https://www.gnupg.org/related_software/gpgme/'
 license=('LGPL')
 makedepends=('libgpg-error' 'gnupg' 'qt5-base' 'python' 'swig')
+validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA') # Werner Koch (dist signing 2020)
 source=("https://www.gnupg.org/ftp/gcrypt/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2"{,.sig})
-sha256sums=('cef1f710a6b0d28f5b44242713ad373702d1466dcbe512eb4e754d7f35cd4307'
+sha256sums=('0b472bc12c7d455906c8a539ec56da0a6480ef1c3a87aa5b74d7125df68d0e5b'
             'SKIP')
-validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
 
 build() {
   cd ${pkgbase}-${pkgver}
