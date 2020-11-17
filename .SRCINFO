@@ -2,16 +2,14 @@ pkgbase = swift-language
 	pkgdesc = The Swift programming language and debugger
 	pkgver = 5.4
 	pkgrel = 1
-	url = http://swift.org/
-	arch = i686
+	url = https://swift.org/
 	arch = x86_64
-	license = apache
+	license = apache2
 	makedepends = clang
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
 	makedepends = python-six
-	makedepends = python2
 	makedepends = rsync
 	makedepends = swig
 	depends = icu
@@ -20,56 +18,51 @@ pkgbase = swift-language
 	depends = python
 	depends = libbsd
 	depends = ncurses
-	source = swift-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz::https://github.com/apple/swift/archive/swift-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz
-	source = indexstore-db-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz::https://github.com/apple/indexstore-db/archive/swift-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz
-	source = llvm-project-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz::https://github.com/apple/llvm-project/archive/swift-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz
-	source = sourcekit-lsp-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz::https://github.com/apple/sourcekit-lsp/archive/swift-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz
-	source = swift-argument-parser-0.3.1.tar.gz::https://github.com/apple/swift-argument-parser/archive/0.3.1.tar.gz
-	source = swift-format-0.50300.0.tar.gz::https://github.com/apple/swift-format/archive/0.50300.0.tar.gz
-	source = swift-cmark-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz::https://github.com/apple/swift-cmark/archive/swift-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz
-	source = swift-driver-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz::https://github.com/apple/swift-driver/archive/swift-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz
-	source = swift-corelibs-foundation-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz
-	source = swift-corelibs-libdispatch-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz
-	source = swift-corelibs-xctest-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz
-	source = swift-integration-tests-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz
-	source = swift-llbuild-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz::https://github.com/apple/swift-llbuild/archive/swift-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz
-	source = swift-package-manager-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz
-	source = swift-xcode-playground-support-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz::https://github.com/apple/swift-xcode-playground-support/archive/swift-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz
-	source = swift-tools-support-core-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz::https://github.com/apple/swift-tools-support-core/archive/swift-DEVELOPMENT-SNAPSHOT-2020-10-29-a.tar.gz
-	source = 0001-arch-aur-pachtes.patch
-	source = tensorflow-swift-apis-v0.2.tar.gz::https://github.com/tensorflow/swift-apis/archive/v0.2.tar.gz
-	source = yams-3.0.1.tar.gz::https://github.com/jpsim/Yams/archive/3.0.1.tar.gz
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-
-pkgname = swift
-	pkgdesc = The Swift programming language compiler and tools
-	optdepends = swift-lldb: Swift REPL and debugger
 	provides = swift-language
-	conflicts = swift-git
-	conflicts = swift-bin
+	source = git+https://github.com/apple/swift#tag=swift-DEVELOPMENT-SNAPSHOT-2020-11-13-a
+	source = cmark::git+https://github.com/apple/swift-cmark#tag=swift-DEVELOPMENT-SNAPSHOT-2020-11-13-a
+	source = llbuild::git+https://github.com/apple/swift-llbuild#tag=swift-DEVELOPMENT-SNAPSHOT-2020-11-13-a
+	source = swift-argument-parser::git+https://github.com/apple/swift-argument-parser#tag=0.3.1
+	source = swift-driver::git+https://github.com/apple/swift-driver#tag=swift-DEVELOPMENT-SNAPSHOT-2020-11-13-a
+	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=swift-DEVELOPMENT-SNAPSHOT-2020-11-13-a
+	source = swiftpm::git+https://github.com/apple/swift-package-manager#tag=swift-DEVELOPMENT-SNAPSHOT-2020-11-13-a
+	source = swift-syntax::git+https://github.com/apple/swift-syntax#tag=swift-DEVELOPMENT-SNAPSHOT-2020-11-13-a
+	source = swift-stress-tester::git+https://github.com/apple/swift-stress-tester#tag=swift-DEVELOPMENT-SNAPSHOT-2020-11-13-a
+	source = swift-corelibs-xctest::git+https://github.com/apple/swift-corelibs-xctest#tag=swift-DEVELOPMENT-SNAPSHOT-2020-11-13-a
+	source = swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation#tag=swift-DEVELOPMENT-SNAPSHOT-2020-11-13-a
+	source = swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch#tag=swift-DEVELOPMENT-SNAPSHOT-2020-11-13-a
+	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests#tag=swift-DEVELOPMENT-SNAPSHOT-2020-11-13-a
+	source = llvm-project::git+https://github.com/apple/llvm-project#tag=swift-DEVELOPMENT-SNAPSHOT-2020-11-13-a
+	source = 0001-arch-aur-pachtes.patch
+	source = indexstore-db::git+https://github.com/apple/indexstore-db#tag=swift-DEVELOPMENT-SNAPSHOT-2020-11-13-a
+	source = yams::git+https://github.com/jpsim/Yams#tag=3.0.1
+	source = sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#tag=swift-DEVELOPMENT-SNAPSHOT-2020-11-13-a
+	source = swift-format::git+https://github.com/apple/swift-format#tag=0.50300.0
+	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=swift-DEVELOPMENT-SNAPSHOT-2020-11-13-a
+	source = swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#tag=swift-DEVELOPMENT-SNAPSHOT-2020-11-13-a
+	source = tensorflow-swift-apis::git+https://github.com/tensorflow/swift-apis.git#tag=v0.2
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
-pkgname = swift-lldb
-	pkgdesc = The Swift programming language debugger (LLDB) and REPL
-	depends = swift
-	provides = lldb
-	conflicts = lldb
-	options = !strip
+pkgname = swift-language
 

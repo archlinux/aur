@@ -1,49 +1,56 @@
 # Maintainer: Michael Hansen <zrax0111 gmail com>
-# Contributor: Andrew Sun <adsun701@gmail.com>
+# Maintainer: soloturn@gmail.com
+# Contributor: Theo Tosini <theo.tosini@theoduino.me>
 # Contributor: Gábor Sebestyén <segabor@gmail.com>
-# Contributor: soloturn@gmail.com
+# Contributor: Andrew Sun <adsun701@gmail.com>
 
-pkgbase=swift-language
-pkgname=(swift swift-lldb)
-#_swiftver=5.3-RELEASE
-#pkgver=${_swiftver//-RELEASE/}
-#_swiftver=5.3-DEVELOPMENT-SNAPSHOT-2020-11-01-a
-_swiftver=DEVELOPMENT-SNAPSHOT-2020-10-29-a
+pkgname=swift-language
+#pkgname=(swift swift-lldb)
+_swiftver=swift-DEVELOPMENT-SNAPSHOT-2020-11-13-a
 pkgver=5.4
 pkgrel=1
 swiftargumentparserversion=0.3.1
 swiftformatversion=0.50300.0
-tensorflowswiftapisversion=0.2
+tensorflowswiftapisversion=v0.2
 yamsver=3.0.1
 
 pkgdesc="The Swift programming language and debugger"
-arch=('i686' 'x86_64')
-url="http://swift.org/"
-license=('apache')
+arch=('x86_64')
+url="https://swift.org/"
+license=('apache2')
 depends=('icu' 'libedit' 'libxml2' 'python' 'libbsd' 'ncurses' )
-makedepends=('clang' 'cmake' 'git' 'ninja' 'python-six' 'python2' 'rsync' 'swig')
+makedepends=('clang' 'cmake' 'git' 'ninja' 'python-six' 'rsync' 'swig')
+provides=('swift-language')
 source=(
-    "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
-    "indexstore-db-${_swiftver}.tar.gz::https://github.com/apple/indexstore-db/archive/swift-${_swiftver}.tar.gz"
-    "llvm-project-${_swiftver}.tar.gz::https://github.com/apple/llvm-project/archive/swift-${_swiftver}.tar.gz"
-    "sourcekit-lsp-${_swiftver}.tar.gz::https://github.com/apple/sourcekit-lsp/archive/swift-${_swiftver}.tar.gz"
-    "swift-argument-parser-${swiftargumentparserversion}.tar.gz::https://github.com/apple/swift-argument-parser/archive/${swiftargumentparserversion}.tar.gz"
-    "swift-format-${swiftformatversion}.tar.gz::https://github.com/apple/swift-format/archive/${swiftformatversion}.tar.gz"
-    "swift-cmark-${_swiftver}.tar.gz::https://github.com/apple/swift-cmark/archive/swift-${_swiftver}.tar.gz"
-    "swift-driver-${_swiftver}.tar.gz::https://github.com/apple/swift-driver/archive/swift-${_swiftver}.tar.gz"
-    "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
-    "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
-    "swift-corelibs-xctest-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-${_swiftver}.tar.gz"
-    "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
-    "swift-llbuild-${_swiftver}.tar.gz::https://github.com/apple/swift-llbuild/archive/swift-${_swiftver}.tar.gz"
-    "swift-package-manager-${_swiftver}.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-${_swiftver}.tar.gz"
-    "swift-xcode-playground-support-${_swiftver}.tar.gz::https://github.com/apple/swift-xcode-playground-support/archive/swift-${_swiftver}.tar.gz"
-    "swift-tools-support-core-${_swiftver}.tar.gz::https://github.com/apple/swift-tools-support-core/archive/swift-${_swiftver}.tar.gz"
-    '0001-arch-aur-pachtes.patch'
-    "tensorflow-swift-apis-v${tensorflowswiftapisversion}.tar.gz::https://github.com/tensorflow/swift-apis/archive/v${tensorflowswiftapisversion}.tar.gz"
-    "yams-${yamsver}.tar.gz::https://github.com/jpsim/Yams/archive/${yamsver}.tar.gz"
+    "git+https://github.com/apple/swift#tag=${_swiftver}"
+    "cmark::git+https://github.com/apple/swift-cmark#tag=${_swiftver}"
+    "llbuild::git+https://github.com/apple/swift-llbuild#tag=${_swiftver}"
+    "swift-argument-parser::git+https://github.com/apple/swift-argument-parser#tag=${swiftargumentparserversion}"
+    "swift-driver::git+https://github.com/apple/swift-driver#tag=${_swiftver}"
+    "swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=${_swiftver}"
+    "swiftpm::git+https://github.com/apple/swift-package-manager#tag=${_swiftver}"
+    "swift-syntax::git+https://github.com/apple/swift-syntax#tag=${_swiftver}"
+    "swift-stress-tester::git+https://github.com/apple/swift-stress-tester#tag=${_swiftver}"
+    "swift-corelibs-xctest::git+https://github.com/apple/swift-corelibs-xctest#tag=${_swiftver}"
+    "swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation#tag=${_swiftver}"
+    "swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch#tag=${_swiftver}"
+    "swift-integration-tests::git+https://github.com/apple/swift-integration-tests#tag=${_swiftver}"
+    "llvm-project::git+https://github.com/apple/llvm-project#tag=${_swiftver}"
+    "0001-arch-aur-pachtes.patch"
+    # swift src to check afterwards
+    "indexstore-db::git+https://github.com/apple/indexstore-db#tag=${_swiftver}"
+    "yams::git+https://github.com/jpsim/Yams#tag=${yamsver}"
+    "sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#tag=${_swiftver}"
+    "swift-format::git+https://github.com/apple/swift-format#tag=${swiftformatversion}"
+    "swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=${_swiftver}"
+    "swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#tag=${_swiftver}"
+    "tensorflow-swift-apis::git+https://github.com/tensorflow/swift-apis.git#tag=${tensorflowswiftapisversion}"
 )
-sha256sums=(
+noextract=()
+md5sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -65,49 +72,22 @@ sha256sums=(
     'SKIP'
 )
 
-prepare() {
-    # Use directory names which build-script expects
-    for sdir in indexstore-db llvm-project sourcekit-lsp swift
-    do
-        rm -rf ${sdir}
-        mv ${sdir}-swift-${_swiftver} ${sdir}
-    done
-    for sdir in cmark llbuild
-    do
-        rm -rf ${sdir}
-        mv swift-${sdir}-swift-${_swiftver} ${sdir}
-    done
-    for sdir in corelibs-xctest corelibs-foundation corelibs-libdispatch \
-                driver integration-tests xcode-playground-support tools-support-core
-    do
-        rm -rf swift-${sdir}
-        mv swift-${sdir}-swift-${_swiftver} swift-${sdir}
-    done
 
-    rm -rf swiftpm && mv swift-package-manager-swift-${_swiftver} swiftpm
-    rm -rf swift-argument-parser && mv swift-argument-parser-${swiftargumentparserversion} swift-argument-parser
-    rm -rf swift-format && mv swift-format-${swiftformatversion} swift-format
-    rm -rf tensorflow-swift-apis && mv swift-apis-${tensorflowswiftapisversion} tensorflow-swift-apis
-    rm -rf yams && mv Yams-${yamsver} yams
+# By default makepkg runs strip on binaries. This seems to cause issues with the Swift REPL.
+# Disable it in the PKGBUILD with:
+# from https://github.com/RLovelett/swift-aur/blob/master/PKGBUILD, not sure if necessary
+# termux had no trouble up to now, strip all executables and shared objects:
+# https://github.com/termux/termux-packages/blob/master/scripts/build/termux_step_massage.sh#L24
+#options=(!strip)
 
+prepare () {
     ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-pachtes.patch" )
 }
 
-_common_build_params=(
-    --install-prefix=/usr
-    --lldb
-    --llbuild
-    --swiftpm
-    --xctest
-    --foundation
-    --libdispatch
-    --extra-cmake-options="-DSWIG_EXECUTABLE=/usr/bin/swig"
-)
-
-_build_script_wrapper() {
-    export SWIFT_SOURCE_ROOT="$srcdir"
-    ./utils/build-script "$@"
-}
+#pkgver() {
+#    cd "$srcdir/swift"
+#    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+#}
 
 build() {
     cd "$srcdir"
@@ -115,69 +95,16 @@ build() {
     find "$srcdir/swift/stdlib/public/SwiftShims" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
     find "$srcdir/llvm-project/clang" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
     find "$srcdir/llvm-project/clang-tools-extra" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
-#    _build_script_wrapper -R "${_common_build_params[@]}"
 
-    # by default in /etc/makepkg.conf this is "-D_FORTIFY_SOURCE=2"
-    # which will break `compiler-rt`, so unset
+    # By default in /etc/makepkg.conf this is "-D_FORTIFY_SOURCE=2"
+    # Which will break `compiler-rt`
     unset CPPFLAGS
-    python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="$srcdir/build"
+
+    python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="$pkgdir"
 }
 
-check() {
-    cd "$srcdir/swift"
-#    _build_script_wrapper -R -t
+package() {
+  ls -la
 }
 
-package_swift() {
-    pkgdesc='The Swift programming language compiler and tools'
-    provides=('swift-language')
-    conflicts=('swift-git' 'swift-bin')
-    optdepends=('swift-lldb: Swift REPL and debugger')
-
-    cd "$srcdir/swift"
-
-    _build_script_wrapper -R "${_common_build_params[@]}" \
-        --install-destdir="$pkgdir" \
-        --install-llbuild --install-swiftpm --install-xctest \
-        --install-foundation --install-libdispatch
-
-    cd "$srcdir/build/Ninja-ReleaseAssert"
-
-    # Some projects' install targets don't work correctly :(
-    (
-        cd swift-linux-$CARCH
-        install -m755 bin/swift bin/swift-{demangle,ide-test} "$pkgdir/usr/bin"
-        ln -s swift "$pkgdir/usr/bin/swiftc"
-        ln -s swift "$pkgdir/usr/bin/swift-autolink-extract"
-
-        install -m644 lib/libsourcekitdInProc.so "$pkgdir/usr/lib"
-
-        install -dm755 "$pkgdir/usr/share/man/man1"
-        install -m644 docs/tools/swift.1 "$pkgdir/usr/share/man/man1"
-
-        umask 0022
-        cp -rL lib/swift/{clang,linux,shims} "$pkgdir/usr/lib/swift/"
-    )
-
-    # License file
-    install -dm755 "$pkgdir/usr/share/licenses/swift"
-    install -m644 "$srcdir/swift/LICENSE.txt" "$pkgdir/usr/share/licenses/swift"
-}
-
-package_swift-lldb() {
-    pkgdesc='The Swift programming language debugger (LLDB) and REPL'
-    depends=('swift')
-    provides=('lldb')
-    conflicts=('lldb')
-    options=('!strip')  # Don't strip repl_swift -- we need its symbols
-
-    cd "$srcdir/swift"
-
-    _build_script_wrapper -R "${_common_build_params[@]}" \
-        --install-destdir="$pkgdir" \
-        --install-lldb
-
-    # This should be provided from python2-six
-    rm "$pkgdir/usr/lib/python2.7/site-packages/six.py"
-    rm "$pkgdir/usr/lib/python2.7/site-packages/six.pyc"
-}
+# vim:set ts=2 sw=2 et:
