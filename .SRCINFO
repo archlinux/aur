@@ -3,7 +3,6 @@ pkgbase = codelite-git
 	pkgver = 14.0.2.r61.g2b75baba8
 	pkgrel = 1
 	url = http://www.codelite.org/
-	install = codelite-git.install
 	arch = i686
 	arch = x86_64
 	arch = aarch64

@@ -9,7 +9,6 @@ pkgdesc="A cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://www.codelite.org/"
 license=('GPL')
-install=codelite-git.install
 makedepends=('pkgconfig' 'cmake' 'ninja' 'clang' 'git')
 depends=(
   'wxgtk'
@@ -62,7 +61,7 @@ build() {
   CXXFLAGS="${CXXFLAGS} -fno-devirtualize"
 
   cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release \
-    -DENABLE_CLANG=1 -DENABLE_LLDB=1 -DWITH_MYSQL=0 \
+    -DENABLE_LLDB=1 -DWITH_MYSQL=0 \
     -DCMAKE_INSTALL_LIBDIR=lib \
     ..
 
