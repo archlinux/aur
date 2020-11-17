@@ -4,7 +4,7 @@ pkgdesc="ROS - franka_control provides a hardware node to control a Franka Emika
 url='h'
 
 pkgname='ros-melodic-franka-control'
-pkgver='0.6.0'
+pkgver='0.7.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('Apache 2.0')
@@ -59,9 +59,9 @@ depends=(
   ${ros_depends[@]}
 )
 
-_dir="franka_ros-release-release-melodic-franka_control"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/frankaemika/franka_ros-release/archive/release/melodic/franka_control/${pkgver}.tar.gz")
-sha256sums=('dcef118fcabee9c503fb1446031fd5d548fe171fd7dff2cead17e40c39e66080')
+_dir="franka_ros-${pkgver}/franka_control"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/frankaemika/franka_ros/archive/${pkgver}.tar.gz")
+sha256sums=('5250d6d05c8535a6a19f13a3ed454e9c28ea1d111c4cbd048a394cb346390f44')
 
 
 build() {
