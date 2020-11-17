@@ -13,7 +13,7 @@
 pkgname=blhost
 pkgver=2.6.2
 pkgname_pkgver=${pkgname}_$pkgver
-pkgrel=2
+pkgrel=3
 pkgdesc="Bootloader Host Application for NXP MCUs"
 url="https://www.nxp.com/design/software/development-software/mcuxpresso-software-and-tools-/mcuboot-mcu-bootloader-for-nxp-microcontrollers:MCUBOOT"
 # could also support 32-bit with some more work
@@ -45,4 +45,9 @@ build() {
 package() {
   bld=$srcdir/$pkgname_pkgver/proj/blhost/gcc/Release
   install -Dm 755 $bld/$pkgname -t $pkgdir/usr/bin
+
+  # documentation
+  install -Dm 644 \
+    $srcdir/$pkgname_pkgver/docs/"blhost User's Guide.pdf" \
+	$pkgdir/usr/share/doc/$pkgname/MCUBLHOSTUG-rev7-20200429.pdf
 }
