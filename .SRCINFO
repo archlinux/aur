@@ -1,6 +1,6 @@
 pkgbase = switchboard-plug-keyboard-git
 	pkgdesc = Switchboard Keyboard Plug
-	pkgver = 2.4.0.r21.g967ff9a
+	pkgver = 2.4.1.r120.gbb59a6b
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-keyboard
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = switchboard-plug-keyboard-git
 	depends = libxklavier
 	depends = libxml2
 	depends = ibus
+	depends = libhandy
 	depends = libgranite.so
 	depends = libswitchboard-2.0.so
 	provides = switchboard-plug-keyboard
