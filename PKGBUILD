@@ -10,7 +10,6 @@ license=('GPL3')
 depends=('dconf' 'deepin-gtk-theme' 'deepin-icon-theme' 'deepin-sound-theme')
 makedepends=('git' 'python' 'go' 'golang-deepin-lib')
 conflicts=('deepin-artwork-themes' 'deepin-desktop-schemas')
-replaces=('deepin-artwork-themes' 'deepin-desktop-schemas')
 provides=('deepin-desktop-schemas')
 groups=('deepin-git')
 source=("$pkgname::git://github.com/linuxdeepin/deepin-desktop-schemas"
