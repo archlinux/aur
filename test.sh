@@ -49,4 +49,24 @@ if [[ $helloWorld != 'Hello, world!' ]]; then
     exit 1
 fi
 
+printf '%s\n' 'Testing GraalWASM...'
+
+PATH=$PATH:/usr/lib/emscripten
+
+cat > hello.c << 'EOF'
+#include <stdio.h>
+
+int main() {
+  printf("Hello, WASM!\n");
+  return 0;
+}
+EOF
+emcc -o hello.wasm hello.c || exit
+
+helloWorld=$(wasm --Builtins=wasi_snapshot_preview1 hello.wasm) || exit
+if [[ $helloWorld != 'Hello, WASM!' ]]; then
+    printf 'expected "Hello, WASM!", got %q\n' "$helloWorld"
+    exit 1
+fi
+
 printf '%s\n' 'Done.'
