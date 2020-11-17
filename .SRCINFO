@@ -1,0 +1,24 @@
+pkgbase = python-enaml-git
+	pkgdesc = Declarative User Interfaces for Python
+	pkgver = 0.12.0.r2.g6554c803
+	pkgrel = 1
+	url = https://github.com/nucleic/enaml
+	arch = x86_64
+	license = custom
+	checkdepends = python-pytest
+	checkdepends = python-pytest-qt
+	checkdepends = python-pytest-cov
+	makedepends = python-setuptools
+	makedepends = python-cppy
+	depends = python-qtpy
+	depends = python-future
+	depends = python-ply
+	depends = python-kiwisolver
+	depends = python-atom
+	provides = python-enaml
+	conflicts = python-enaml
+	source = python-enaml::git+https://github.com/nucleic/enaml
+	md5sums = SKIP
+
+pkgname = python-enaml-git
+
