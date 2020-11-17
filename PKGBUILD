@@ -2,7 +2,7 @@
 
 pkgdesc='A Nextcloud server app providing digital sticky notes to users.'
 pkgname=nextcloud-app-carnet
-pkgver=0.22.3
+pkgver=0.23.7
 pkgrel=1
 arch=('any')
 license=('AGPL')
@@ -17,4 +17,4 @@ package() {
 	cp -a "${srcdir}/carnet" "${pkgdir}/usr/share/webapps/nextcloud/apps/carnet"
 }
 
-sha256sums=('cfe41ad0d77c2831695154c195b4a2bb07fafa17e594eb27533cd8fe62ebf3de')
+sha256sums=('fdb30751c63c8a469520e47505513adb0be6926e7b3736454dd6a65895f83baf')
