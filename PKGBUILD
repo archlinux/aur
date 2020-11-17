@@ -4,9 +4,9 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 
-# https://jlk.fjfi.cvut.cz/arch/manpages/man/PKGBUILD.5
-pkgname=popcorntime-git
-pkgver=v0.4.2+r6586+gef22f16d
+_pkgname=popcorntime
+pkgname="${_pkgname}-git"
+pkgver=0.4.2.r527.g7e39bad5
 pkgrel=1
 pkgdesc='Popcorn Time is a multi-platform, free software BitTorrent client that includes an integrated media player.'
 arch=(i686 x86_64)
@@ -17,18 +17,19 @@ makedepends=(git yarn npm)
 provides=(popcorntime)
 conflicts=(popcorntime popcorntime-bin)
 options=(!emptydirs)
-source=(git+https://github.com/popcorn-official/popcorn-desktop#branch=development
+source=("$_pkgname"::git+https://github.com/popcorn-official/popcorn-desktop#branch=development
         popcorntime.desktop)
 sha512sums=('SKIP'
             '81a447cd3365b439964c1b9eba14bcf31de05e62123ce032590ac2109a447c5db0306bf4c593fe30f075d2b3674a1611a81b7554e43acba152ef34652c819a33')
 
 pkgver() {
-  cd popcorn-desktop
-  echo "$(git describe --abbrev=0)+r$(git rev-list --count HEAD)+g$(git rev-parse --short HEAD)"
+  # https://wiki.archlinux.org/index.php/VCS_package_guidelines#The_pkgver()_function
+  cd "$_pkgname"
+  echo "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
-  cd popcorn-desktop
+  cd "$_pkgname"
   yarn config set yarn-offline-mirror ./node_modules/
   yarn install --ignore-engines
   yarn build
@@ -36,21 +37,18 @@ build() {
 
 # https://wiki.archlinux.org/index.php/creating_packages
 package() {
-  cd popcorn-desktop
+  cd "$_pkgname"
 
-  install -d "$pkgdir"/usr/{share,bin}
+  # create directories
+  install --directory --mode='755' "$pkgdir"/usr/{share,bin}/
 
-  cp -a build/Popcorn-Time/$([ $CARCH = x86_64 ] && echo linux64 || echo linux32) \
-    "$pkgdir/usr/share/popcorntime"
-
-  # Fix file permissions
-  find "$pkgdir/usr/share/popcorntime" -type f -not -name 'Popcorn-Time' -exec chmod 644 {} +
-  find "$pkgdir/usr/share/popcorntime" -type d -exec chmod 755 {} +
+  # copy everything to pkgdir
+  cp --archive build/Popcorn-Time/* "$pkgdir/usr/share/${_pkgname}"
 
   # Symlink binary to /usr/bin/popcorntime
-  # See: https://bbs.archlinux.org/viewtopic.php?id=143970
-  ln -sv /usr/share/popcorntime/Popcorn-Time "$pkgdir/usr/bin/popcorntime"
+  ln --symbolic "../share/${_pkgname}/Popcorn-Time" "$pkgdir/usr/bin/${_pkgname}"
 
-  install -Dm 644 "$srcdir/popcorntime.desktop" -t "$pkgdir/usr/share/applications"
-  install -Dm 644 src/app/images/icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/popcorntime.png"
+  install -D --mode='644' "$srcdir/popcorntime.desktop" -t "$pkgdir/usr/share/applications"
+  # https://specifications.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html#directory_layout
+  install -D --mode='644' './src/app/images/icon.png' "$pkgdir/usr/share/icons/hicolor/256x256/apps/popcorntime.png"
 }
