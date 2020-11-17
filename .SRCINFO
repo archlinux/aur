@@ -1,0 +1,12 @@
+pkgbase = amigaos-xfwm4-themes
+	pkgdesc = Amiga OS Themes for XFCE (XFWM4)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/lordwolfchild/amigaos_xfwm4_themes
+	arch = any
+	license = Unlicense
+	source = https://github.com/lordwolfchild/amigaos_xfwm4_themes/archive/main.zip
+	sha256sums = 264744554c8329fd911864acb85b5d6c024e8d569466b9783d64b6536ffb9148
+
+pkgname = amigaos-xfwm4-themes
+
