@@ -14,8 +14,8 @@ pkgbase = yorick-git
 	provides = yorick
 	conflicts = yorick
 	replaces = yorick
-	source = https://raw.githubusercontent.com/frigaut/frigaut-arch-abs-files/master/yorick-cvs-xft-2012sep11.patch
-	md5sums = 3cbd67fed39230c6a859ae601c1557f5
+	source = https://raw.githubusercontent.com/frigaut/frigaut-arch-abs-files/master/yorick-git-xft.patch
+	md5sums = ada3b2618196bb908f23175f79970b48
 
 pkgname = yorick-git
 

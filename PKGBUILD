@@ -14,11 +14,8 @@ makedepends=('git')
 provides=('yorick')
 conflicts=('yorick')
 replaces=('yorick')
-source=(.AURINFO)
-
-source=(https://raw.githubusercontent.com/frigaut/frigaut-arch-abs-files/master/yorick-cvs-xft-2012sep11.patch)
-
-md5sums=('3cbd67fed39230c6a859ae601c1557f5')
+source=(https://raw.githubusercontent.com/frigaut/frigaut-arch-abs-files/master/yorick-git-xft.patch)
+md5sums=('ada3b2618196bb908f23175f79970b48')
 
 _gitroot="git://github.com/LLNL/yorick.git"
 _gitname="yorick"
@@ -39,8 +36,9 @@ build() {
   git clone $_gitname $_gitname-build
   cd ${srcdir}/$_gitname-build
 
-# XFT patch. 2010nov02 version. Fixed some bugs.
+  # XFT patch. 2010nov02 version. Fixed some bugs.
   # patch -p1 < ../yorick-cvs-xft-2012sep11.patch
+  patch -p1 < /home/frigaut/xft.patch
 
   make prefix=/usr ysite || return 1
 
