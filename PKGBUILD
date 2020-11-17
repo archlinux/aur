@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kiconthemes-git
-pkgver=v4.100.0.rc1.r364.g19d2ec4
+pkgver=v4.100.0.rc1.r387.g3830e19
 pkgrel=1
 pkgdesc='KIconThemes'
 arch=('i686' 'x86_64')
