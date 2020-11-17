@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kguiaddons-git
-pkgver=v5.71.0.r1.gddc2c55
+pkgver=v5.76.0.r5.g43e657c
 pkgrel=1
 pkgdesc='KGuiAddons'
 arch=('i686' 'x86_64')
