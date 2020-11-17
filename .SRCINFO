@@ -10,6 +10,7 @@ pkgbase = ktextwidgets-git
 	makedepends = extra-cmake-modules-git
 	makedepends = git
 	makedepends = python
+	makedepends = qt5-tools
 	depends = kcompletion-git
 	depends = kservice-git
 	depends = kiconthemes-git
