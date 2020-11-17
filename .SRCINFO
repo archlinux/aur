@@ -1,0 +1,13 @@
+pkgbase = renoise-redux-beta
+	pkgdesc = A sampler VST plugin from Renoise
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://www.renoise.com/products/redux
+	arch = x86_64
+	license = custom:redux
+	options = !strip
+	source = file://rns_rdx_114_linux.tar.gz
+	md5sums = SKIP
+
+pkgname = renoise-redux-beta
+
