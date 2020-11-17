@@ -4,9 +4,13 @@ pkgbase = rm-improved-git
 	pkgrel = 1
 	url = https://github.com/nivekuil/rip
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0
+	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
+	provides = rm-improved
+	conflicts = rm-improved
 	source = rip::git+https://github.com/nivekuil/rip
 	sha512sums = SKIP
 

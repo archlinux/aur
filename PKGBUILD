@@ -1,10 +1,10 @@
-# Maintainer: Luis Martinez
+# Maintainer: lmartinez-mirror
 pkgname=rm-improved-git
 _pkgname=rip
 pkgver=0.13.1.r8.gc528ce9
 pkgrel=1
 pkgdesc='A safe and ergonomic alternative to rm'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/nivekuil/rip'
 license=('GPL-3.0')
 depends=('gcc-libs')
