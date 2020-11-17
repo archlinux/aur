@@ -1,5 +1,5 @@
 pkgbase = lcarswm
-	pkgdesc = LCARS Window Manager
+	pkgdesc = LCARS Window Manager for lcarsde
 	pkgver = 20.3
 	pkgrel = 1
 	url = https://lcarsde.github.io

@@ -2,7 +2,7 @@
 pkgname='lcarswm'
 pkgver=20.3
 pkgrel=1
-pkgdesc="LCARS Window Manager"
+pkgdesc="LCARS Window Manager for lcarsde"
 arch=('any')
 url="https://lcarsde.github.io"
 license=('GPL2')
