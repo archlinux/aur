@@ -1,6 +1,6 @@
 pkgbase = superslicer-git
 	pkgdesc = G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
-	pkgver = 2.2.54.2.r5.gf7bf94840
+	pkgver = 2.3.55.r19.gb686b8956
 	pkgrel = 1
 	url = https://github.com/supermerill/SuperSlicer
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer-git
-pkgver=2.2.54.2.r5.gf7bf94840
+pkgver=2.3.55.r19.gb686b8956
 _pkgtag=$pkgver
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
@@ -25,7 +25,7 @@ sha512sums=('SKIP'
 pkgver()
 {
 	cd "$srcdir/SuperSlicer"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed -E 's,^([0-9\.]+)([^0-9\.].*)?-([0-9]+)-(g[0-9a-f]+)$,\1.r\3.\4,'
 }
 
 prepare()
