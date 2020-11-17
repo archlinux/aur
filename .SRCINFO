@@ -1,0 +1,17 @@
+pkgbase = python-pythondata-cpu-picorv32-git
+	pkgdesc = Python module containing verilog files for picorv32 cpu (for use with LiteX)
+	pkgver = 2020.08.r1.g8bdce32
+	pkgrel = 1
+	url = https://github.com/litex-hub/pythondata-cpu-picorv32
+	arch = any
+	license = ISC
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-pythondata-cpu-picorv32=2020.08.r1.g8bdce32
+	conflicts = python-pythondata-cpu-picorv32
+	source = git+https://github.com/litex-hub/pythondata-cpu-picorv32
+	sha256sums = SKIP
+
+pkgname = python-pythondata-cpu-picorv32-git
+
