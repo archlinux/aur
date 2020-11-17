@@ -1,37 +1,36 @@
-# Maintainer: Caleb Jamison <cbjamo@gmail.com> 
-pkgname=liteiclink-git
-pkgver=99
-pkgrel=2
-pkgdesc="Small footprint and configurable Inter-Chip communication cores for LiteX"
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+
+_srcname=liteiclink
+pkgname="python-$_srcname-git"
+pkgver=2020.08.r83.g3d1165b
+pkgrel=1
+pkgdesc="Small footprint and configurable inter chip communication cores for LiteX"
 arch=(any)
 url="https://github.com/enjoy-digital/liteiclink"
 license=('MIT')
-groups=()
-depends=('python' 'migen' 'litex')
-provides=('liteiclink')
-options=(!emptydirs)
-install=
-source=("git+https://github.com/enjoy-digital/liteiclink")
+depends=(python python-migen python-litex)
+makedepends=(git python-setuptools)
+provides=("${pkgname%%-git}=$pkgver")
+conflicts=("${pkgname%%-git}")
+replaces=("$_srcname-git")
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%%-git}"
-  git rev-list --count HEAD
-}
-
-prepare() {
-  cd "${srcdir}/${pkgname%%-git}"
-  rm -rf test/__init__.py
-  rm -rf example_designs/__init__.py
+  cd "$_srcname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname%%-git}"
+  cd "$_srcname"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname%%-git}"
-  python setup.py install --root="$pkgdir/" --skip-build --optimize=1
+  cd "$_srcname"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
+# vim:set et ts=2 syntax=PKGBUILD:
