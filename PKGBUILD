@@ -17,8 +17,4 @@ package(){
 
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
-
-	install -D -m644 "/usr/lib/TXM-0.8.1/plugins/org.txm.statsengine.r.core.linux_1.0.0.202006290905/res/linux64/share/licenses/license.db" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m644 "/usr/share/doc/txm-0.8.1/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
-
 }
