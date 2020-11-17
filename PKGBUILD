@@ -2,7 +2,7 @@
 
 _pkgname=rssguard
 pkgname=$_pkgname-git
-pkgver=3.3.5.1.gd1192a3
+pkgver=3.5.9.8.gf12c395e
 pkgrel=1
 pkgdesc='Simple, lightweight and easy-to-use RSS/ATOM feed aggregator developed using Qt'
 arch=('i686' 'x86_64')
@@ -24,10 +24,7 @@ pkgver() {
 build() {
   rm -Rf build && mkdir build
   cd build
-  qmake $srcdir/$_pkgname/$_pkgname.pro \
-        CONFIG+=debug \
-        INSTALL_ROOT=$pkgdir \
-        PREFIX=/usr
+  qmake $srcdir/$_pkgname/ -r CONFIG+=debug PREFIX=/usr
   make
 }
 
