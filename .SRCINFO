@@ -1,0 +1,19 @@
+pkgbase = dict-cedict
+	pkgdesc = A port of CC-CEDICT database for Dictd
+	pkgver = 20201115
+	pkgrel = 1
+	url = https://www.mdbg.net/chinese/dictionary?page=cc-cedict
+	install = dict-cedict.install
+	arch = any
+	license = CCPL
+	makedepends = dictd
+	makedepends = git
+	makedepends = python
+	makedepends = curl
+	makedepends = gzip
+	depends = dictd
+	source = git+https://github.com/tuberry/dict-cedict
+	sha512sums = SKIP
+
+pkgname = dict-cedict
+
