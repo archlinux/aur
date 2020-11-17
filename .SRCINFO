@@ -1,17 +1,20 @@
-pkgbase = litevideo-git
+pkgbase = python-litevideo-git
 	pkgdesc = Small footprint and configurable video cores for LiteX
-	pkgver = 201
-	pkgrel = 2
+	pkgver = 2020.04.r0.g41f3014
+	pkgrel = 1
 	url = https://github.com/enjoy-digital/litevideo
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
 	depends = python
-	depends = migen
-	depends = litex
-	provides = litevideo
-	options = !emptydirs
+	depends = python-migen
+	depends = python-litex
+	provides = python-litevideo=2020.04.r0.g41f3014
+	conflicts = python-litevideo
+	replaces = litevideo-git
 	source = git+https://github.com/enjoy-digital/litevideo
 	sha256sums = SKIP
 
-pkgname = litevideo-git
+pkgname = python-litevideo-git
 

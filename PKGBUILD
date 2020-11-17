@@ -1,36 +1,36 @@
-# Maintainer: Caleb Jamison <cbjamo@gmail.com> 
-pkgname=litevideo-git
-pkgver=201
-pkgrel=2
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+
+_srcname=litevideo
+pkgname="python-$_srcname-git"
+pkgver=2020.04.r0.g41f3014
+pkgrel=1
 pkgdesc="Small footprint and configurable video cores for LiteX"
 arch=(any)
 url="https://github.com/enjoy-digital/litevideo"
 license=('MIT')
-groups=()
-depends=('python' 'migen' 'litex')
-provides=('litevideo')
-options=(!emptydirs)
-install=
-source=("git+https://github.com/enjoy-digital/litevideo")
+depends=(python python-migen python-litex)
+makedepends=(git python-setuptools)
+provides=("${pkgname%%-git}=$pkgver")
+conflicts=("${pkgname%%-git}")
+replaces=("$_srcname-git")
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%%-git}"
-  git rev-list --count HEAD
-}
-
-prepare() {
-  cd "${srcdir}/${pkgname%%-git}"
-  rm -rf test/__init__.py
+  cd "$_srcname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname%%-git}"
+  cd "$_srcname"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname%%-git}"
-  python setup.py install --root="$pkgdir/" --skip-build --optimize=1
+  cd "$_srcname"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
+# vim:set et ts=2 syntax=PKGBUILD:
