@@ -1,17 +1,20 @@
-pkgbase = litesata-git
+pkgbase = python-litesata-git
 	pkgdesc = A small footprint and configurable SATA core for LiteX
-	pkgver = 162
-	pkgrel = 2
+	pkgver = 2020.08.r66.ge850b72
+	pkgrel = 1
 	url = https://github.com/enjoy-digital/litesata
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
 	depends = python
-	depends = migen
-	depends = litex
-	provides = litesata
-	options = !emptydirs
+	depends = python-migen
+	depends = python-litex
+	provides = python-litesata=2020.08.r66.ge850b72
+	conflicts = python-litesata
+	replaces = litesata-git
 	source = git+https://github.com/enjoy-digital/litesata
 	sha256sums = SKIP
 
-pkgname = litesata-git
+pkgname = python-litesata-git
 
