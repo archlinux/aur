@@ -1,6 +1,6 @@
 pkgbase = plasma-desktop-git
 	pkgdesc = KDE Plasma Desktop
-	pkgver = r7932.d5a68ae77
+	pkgver = r7992.105369274
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/kde-workspace
 	arch = i686
@@ -25,10 +25,6 @@ pkgbase = plasma-desktop-git
 	depends = ksysguard-git
 	depends = baloo-git
 	depends = accountsservice
-	provides = plasma-desktop
-	provides = knetattach
-	conflicts = plasma-desktop
-	conflicts = knetattach
 	source = git+https://github.com/KDE/plasma-desktop.git
 	md5sums = SKIP
 
@@ -47,9 +43,13 @@ pkgname = plasma-desktop-git
 	optdepends = ibus: kimpanel IBUS support
 	optdepends = scim: kimpanel SCIM support
 	optdepends = kaccounts-integration: OpenDesktop integration plugin
+	provides = plasma-desktop
+	conflicts = plasma-desktop
 	replaces = user-manager
 
 pkgname = knetattach-git
 	pkgdesc = Wizard which makes it easier to integrate network resources with the Plasma Desktop
 	depends = kdelibs4support-git
+	provides = knetattach
+	conflicts = knetattach
 

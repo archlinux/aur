@@ -3,7 +3,7 @@
 
 pkgbase=plasma-desktop-git
 pkgname=(plasma-desktop-git knetattach-git)
-pkgver=r7932.d5a68ae77
+pkgver=r7992.105369274
 pkgrel=1
 pkgdesc='KDE Plasma Desktop'
 arch=(i686 x86_64)
@@ -11,8 +11,6 @@ url='https://projects.kde.org/projects/kde/kde-workspace'
 license=(LGPL)
 depends=(polkit-kde-agent-git libxkbfile kmenuedit-git systemsettings-git ksysguard-git baloo-git accountsservice)
 makedepends=(extra-cmake-modules-git kdoctools-git xf86-input-evdev xf86-input-synaptics xf86-input-libinput xorg-server-devel scim kdesignerplugin kaccounts-integration intltool git)
-conflicts=(plasma-desktop knetattach)
-provides=(plasma-desktop knetattach)
 source=("git+https://github.com/KDE/plasma-desktop.git")
 groups=(plasma)
 md5sums=('SKIP')
@@ -33,6 +31,8 @@ build() {
 }
 
 package_plasma-desktop-git() {
+  conflicts=(plasma-desktop)
+  provides=(plasma-desktop)
   depends+=(knetattach)
   optdepends=('plasma-nm: Network manager applet'
               'powerdevil: power management, suspend and hibernate support'
@@ -50,6 +50,8 @@ package_plasma-desktop-git() {
 
 package_knetattach-git() {
   pkgdesc='Wizard which makes it easier to integrate network resources with the Plasma Desktop'
+  conflicts=(knetattach)
+  provides=(knetattach)
   depends=(kdelibs4support-git)
 
   DESTDIR="$pkgdir" cmake --install build/knetattach
