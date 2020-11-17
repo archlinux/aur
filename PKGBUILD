@@ -1,26 +1,26 @@
 # U-Boot: Raspberry Pi 4
-# Maintainer: Greyson Christoforo
+# Maintainer: Greyson Christoforo <first name at last name dot net>
 
 buildarch=8
 
 pkgname=uboot-raspberrypi4-rc
-pkgver=2020.10rc5
+pkgver=2021.01rc2
 pkgrel=1
 pkgdesc="U-Boot for Raspberry Pi 4"
-arch=('aarch64')
+arch=(aarch64)
 url='http://www.denx.de/wiki/U-Boot/WebHome'
-license=('GPL')
+license=(LGPL MIT BSD GPL2 custom)
 backup=('boot/boot.txt' 'boot/boot.scr' 'boot/config.txt')
-makedepends=('bc' 'dtc' 'git')
-depends=('linux-aarch64')
-optdepends=('uboot-tools-rc')
+makedepends=(bc dtc git)
+depends=(linux-aarch64)
+optdepends=(uboot-tools-rc)
 options=('!strip' '!makeflags' !buildflags 'staticlibs')
-source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver/rc/-rc}.tar.bz2"
+source=("${pkgname}-${pkgver}.tar.bz2::ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver/rc/-rc}.tar.bz2"
         'boot.txt'
         'mkscr')
-md5sums=('96675a44190df17f2083c348e574b79c'
-         '364b0d31dfa497efa18ee71676a73145'
-         '96d327ad1824134515d3ec25b4ffd7c6')
+sha256sums=('acdfc246cf68cb3c4022c455713d6405abb53f1ff730445361a6ebd4a2a9a3ec'
+            '4ae414a388383046f28ebd249a2c74045b4f2e14131cada9e9ce0c4f341f63f1'
+            '6fa9a67367836fc9e96670881ea3fc8eede828f2182cd9bf08366bfcb1bfa0cb')
 
 prepare() {
   cd u-boot-${pkgver/rc/-rc}
