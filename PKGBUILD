@@ -15,8 +15,8 @@ makedepends=(
 optdepends=('portaudio: portaudio backend'
             'qt5-base: for embedding qt5 plugin UIs')
 conflicts=('zrythm-git')
-source=("https://www.zrythm.org/releases/$pkgname-$pkgver-alpha.4.0.1.tar.xz"{,.asc})
-sha256sums=('f7ae33d57b326d1f9f99d2d0b2661e70702e6f13dbd0aa770eb7b83012aba878' 'SKIP')
+source=("https://www.zrythm.org/releases/$pkgname-$pkgver-alpha.5.0.1.tar.xz"{,.asc})
+sha256sums=('089251987b3f0fdd378ac2014aa01904669fd70d89774bdc4358cc7bfc206cf1' 'SKIP')
 validpgpkeys=('48132384AD3DF7D86E254B83022EAE42313D70F3')
 build() {
   cd "$pkgname-$pkgver-alpha.4.0.1"
