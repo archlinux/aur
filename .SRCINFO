@@ -1,0 +1,17 @@
+pkgbase = python-pythondata-cpu-lm32-git
+	pkgdesc = Python module containing verilog files for lm32 cpu (for use with LiteX)
+	pkgver = 2020.08.r1.g6344000
+	pkgrel = 1
+	url = https://github.com/litex-hub/pythondata-cpu-lm32
+	arch = any
+	license = custom:Lattice
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-pythondata-cpu-lm32=2020.08.r1.g6344000
+	conflicts = python-pythondata-cpu-lm32
+	source = git+https://github.com/litex-hub/pythondata-cpu-lm32
+	sha256sums = SKIP
+
+pkgname = python-pythondata-cpu-lm32-git
+
