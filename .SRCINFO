@@ -1,13 +1,13 @@
 pkgbase = graalwasm-jdk11-bin
 	pkgdesc = GraalVM-based, high-performance WebAssembly platform, Java 11 version
-	pkgver = 20.2.0
+	pkgver = 20.3.0
 	pkgrel = 1
 	url = https://github.com/oracle/graal
 	arch = x86_64
 	license = custom
 	depends = jdk11-graalvm-bin
-	source = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-20.2.0/wasm-installable-svm-java11-linux-amd64-20.2.0.jar
-	sha256sums = 05736786a605b40e83b47062ae6ee03499395943c3df45059200fe2dafee5c83
+	source = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-20.3.0/wasm-installable-svm-java11-linux-amd64-20.3.0.jar
+	sha256sums = 13cf6fee93313beee36fd9d3ab4e627b05855e142a4172d228dc70efe5731fe9
 
 pkgname = graalwasm-jdk11-bin
 
