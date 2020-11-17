@@ -1,0 +1,14 @@
+pkgbase = yang-vim
+	pkgdesc = YANG syntax plugin for vim
+	pkgver = r40.0edaeb6
+	pkgrel = 1
+	url = http://github.com/nathanalderson/yang.vim
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = vim
+	source = yang-vim::git+https://github.com/nathanalderson/yang.vim
+	md5sums = SKIP
+
+pkgname = yang-vim
+
