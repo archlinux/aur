@@ -5,6 +5,7 @@ pkgbase = renoise-redux
 	url = https://www.renoise.com/products/redux
 	arch = x86_64
 	license = custom:redux
+	conflicts = renoise-redux-beta
 	options = !strip
 	source = file://rns_rdx_112_linux.tar.gz
 	md5sums = SKIP

@@ -1,11 +1,4 @@
-# Maintainer: Jack Random <jack (at) random.to>
-
-# Contributors from demo package:
-# Samæ <eeva.samæ@marvid.fr>
-# Kristaps Karlsons <kristaps.karlsons@gmail.com>
-# Max Pray a.k.a. Synthead <synthead@gmail.com>
-# berkus <berkus@madfire.net>
-# hm_b <holger@music-nerds.net>
+# Maintainer: David Holland <info (at) dustvoice.de>
 
 # You have to
 #  login to https://backstage.renoise.com
@@ -23,7 +16,7 @@ depends=()
 optdepends=()
 makedepends=()
 options=("!strip")
-conflicts=()
+conflicts=("renoise-redux-beta")
 
 source=("file://rns_rdx_${pkgver//./}_linux.tar.gz")
 md5sums=('SKIP')
@@ -36,14 +29,14 @@ package() {
     cd "$srcdir/rns_rdx_${pkgver//./}_linux"
 
     cd "64bit"
-    mkdir -p "$pkgdir/usr/lib/vst/$pkgname.vst"
-    cp -r "renoise_redux.so" "renoise_redux.res" "$pkgdir/usr/lib/vst/$pkgname.vst"
-    chmod -R 755 "$pkgdir/usr/lib/vst/$pkgname.vst"
+    mkdir -p "$pkgdir/usr/lib/vst/renoise-redux.vst"
+    cp -r "renoise_redux.so" "renoise_redux.res" "$pkgdir/usr/lib/vst/renoise-redux.vst"
+    chmod -R 755 "$pkgdir/usr/lib/vst/renoise-redux.vst"
 
     cd "$srcdir/rns_rdx_${pkgver//./}_linux"
 
     cd "32bit"
-    mkdir -p "$pkgdir/usr/lib32/vst/$pkgname.vst"
-    cp -r "renoise_redux.so" "renoise_redux.res" "$pkgdir/usr/lib32/vst/$pkgname.vst"
-    chmod -R 755 "$pkgdir/usr/lib32/vst/$pkgname.vst"
+    mkdir -p "$pkgdir/usr/lib32/vst/renoise-redux.vst"
+    cp -r "renoise_redux.so" "renoise_redux.res" "$pkgdir/usr/lib32/vst/renoise-redux.vst"
+    chmod -R 755 "$pkgdir/usr/lib32/vst/renoise-redux.vst"
 }
