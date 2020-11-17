@@ -9,6 +9,7 @@ pkgbase = kguiaddons-git
 	license = LGPL
 	makedepends = extra-cmake-modules-git
 	makedepends = git
+	makedepends = qt5-wayland
 	depends = qt5-x11extras
 	provides = kguiaddons
 	conflicts = kguiaddons
