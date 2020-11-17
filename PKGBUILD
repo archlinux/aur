@@ -9,11 +9,11 @@ _lang='de_DE'
 pkgname=cewe-fotobuch
 conflicts=(cewe-fotoservice)
 pkgdesc='an offline client for creating photobooks, uploading and ordering them at cewe.de'
-md5sums=('7455b3f268dc9045d86014349b0ebf29'
+md5sums=('a0eda6a28004658e5c58d5a42fc98db2'
 # template start; name=cewe; version=7.0.3;
          '11e395d7c48d7f340435eeb938bcb502')
 
-pkgver=7.0.3
+pkgver=7.1.1
 pkgrel=1
 url="http://www.cewe.de/"
 license=("custom:eula")
