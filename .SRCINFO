@@ -1,0 +1,18 @@
+pkgbase = bibata-rainbow-cursor-theme
+	pkgdesc = Material Based Cursor Theme: Rainbow
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ful1e5/Bibata_Cursor
+	arch = any
+	license = GPL3
+	makedepends = python-clickgen
+	depends = libxcursor
+	depends = libpng
+	noextract = bibata-rainbow-cursor-theme-bitmaps-1.0.0.zip
+	source = bibata-rainbow-cursor-theme-1.0.0.tar.gz::https://github.com/ful1e5/Bibata_Cursor/archive/v1.0.0.br.tar.gz
+	source = bibata-rainbow-cursor-theme-bitmaps-1.0.0.zip::https://github.com/ful1e5/Bibata_Cursor/releases/download/v1.0.0.br/bitmaps.zip
+	sha256sums = aac6b66909ec32b17be3cb6f4603cfe674e50022053fec268c15413b100b4c5c
+	sha256sums = efd03ab61d077d7a3b93bfef135a6a061e41373656c05cdf5851bf516101b261
+
+pkgname = bibata-rainbow-cursor-theme
+
