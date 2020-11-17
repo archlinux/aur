@@ -13,6 +13,9 @@ post_install() {
   echo "  # echo 'user_allow_other # added by CernVM-FS' >> /etc/fuse.conf"
   echo "Alternatively, if you plan on using AutoFS (read about the problems on the cvmfs AUR page), please run:"
   echo "  # cvmfs_config setup"
+  echo " You should modify '/etc/cvmfs/default.local' file and use : "
+  echo "  # cvmfs_config chksetup"
+  echo " to check the configuration is correct. Finally execute :"
   echo "  # systemctl restart autofs"
 }
 
