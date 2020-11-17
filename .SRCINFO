@@ -1,0 +1,17 @@
+pkgbase = python-pythondata-cpu-rocket-git
+	pkgdesc = Python module containing verilog files for rocket cpu (for use with LiteX)
+	pkgver = 2020.08.r1.gfe810b8
+	pkgrel = 1
+	url = https://github.com/litex-hub/pythondata-cpu-rocket
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-pythondata-cpu-rocket=2020.08.r1.gfe810b8
+	conflicts = python-pythondata-cpu-rocket
+	source = git+https://github.com/litex-hub/pythondata-cpu-rocket
+	sha256sums = SKIP
+
+pkgname = python-pythondata-cpu-rocket-git
+
