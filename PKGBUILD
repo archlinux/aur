@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname='slap-cli-bin'
-pkgver='1.3.0'
+pkgver='1.3.1'
 pkgrel='1'
 pkgdesc='Painless shell argument parsing and dependency check'
 arch=('x86_64')

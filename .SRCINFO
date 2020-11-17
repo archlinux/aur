@@ -1,6 +1,6 @@
 pkgbase = slap-cli-bin
 	pkgdesc = Painless shell argument parsing and dependency check
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/agnipau/slap
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = slap-cli-bin
 	license = MIT
 	provides = slap-cli
 	conflicts = slap-cli
-	source = https://github.com/agnipau/slap/releases/download/1.3.0/slap-1.3.0-x86_64-unknown-linux-musl.tar.gz
+	source = https://github.com/agnipau/slap/releases/download/1.3.1/slap-1.3.1-x86_64-unknown-linux-musl.tar.gz
 	sha512sums = SKIP
 
 pkgname = slap-cli-bin
