@@ -1,0 +1,16 @@
+pkgbase = fortune-mod-mingju
+	pkgdesc = Chinese mingju for fortune-mod
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/xuchunyang/mingju
+	arch = any
+	groups = fortune-mods
+	license = CCPL
+	makedepends = git
+	makedepends = fortune-mod
+	depends = fortune-mod
+	source = git+https://github.com/xuchunyang/mingju
+	md5sums = SKIP
+
+pkgname = fortune-mod-mingju
+
