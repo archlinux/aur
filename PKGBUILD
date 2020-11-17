@@ -1,8 +1,8 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='dnsx'
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Fast and multi-purpose DNS toolkit'
 arch=('x86_64')
 url='https://github.com/projectdiscovery/dnsx'
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go')
 provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('112f81c2e5efc73103bebfb9e8f7db0c7e7e9a95ba432625a5469cfe0a104d06')
+sha256sums=('cd8111d27333d8f71904befdea7c362babca6698531327b55d8c5c79203c9d75')
 
 prepare() {
   export GOPATH="${srcdir}/gopath"
