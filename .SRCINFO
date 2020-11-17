@@ -21,7 +21,6 @@ pkgbase = deepin-dock-git
 	depends = libdbusmenu-qt5
 	provides = deepin-dock
 	conflicts = deepin-dock
-	replaces = deepin-dock
 	source = deepin-dock-git::git://github.com/linuxdeepin/dde-dock
 	sha512sums = SKIP
 

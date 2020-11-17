@@ -12,7 +12,6 @@ depends=('qt5-svg' 'deepin-daemon-git' 'deepin-qt5integration-git'
          'deepin-qt-dbus-factory-git' 'deepin-network-utils-git' 'libdbusmenu-qt5')
 makedepends=('git' 'cmake' 'ninja' 'qt5-tools' 'deepin-qt5integration-git' 'deepin-qt-dbus-factory' 'deepin-network-utils-git')
 conflicts=('deepin-dock')
-replaces=('deepin-dock')
 provides=('deepin-dock')
 groups=('deepin-git')
 source=("$pkgname::git://github.com/linuxdeepin/dde-dock")
