@@ -13,7 +13,7 @@ source=("git+https://github.com/akiirui/play-with-mpv-handler.git")
 b2sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "${srcdir}/$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
