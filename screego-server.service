@@ -1,0 +1,22 @@
+[Unit]
+Description=Screego Server – screen sharing for developers
+ConditionFileIsExecutable=/var/lib/screego-server/screego-server
+After=syslog.target network-online.target
+
+[Service]
+User=screego
+Group=screego
+
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+StartLimitInterval=5
+StartLimitBurst=10
+EnvironmentFile=/etc/screego/server.config
+ExecStart=/var/lib/screego-server/screego-server serve
+
+WorkingDirectory=/var/lib/screego-server
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
