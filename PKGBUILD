@@ -2,7 +2,7 @@
 pkgbase=python-gwcs
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A python package for managing the World Coordinate System (WCS) of astronomical data"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools-scm')
 checkdepends=('python-pytest-doctestplus' 'python-asdf' 'python-astropy')
 #'python-pytest-astropy'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('2f6fb0a88a6c67081925ddbd7e8f1d0d')
+md5sums=('5a671684305860a734f790ab312d32f7')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -27,7 +27,7 @@ check() {
 }
 
 package_python-gwcs() {
-    depends=('python>=3.6' 'python-astropy>=4.0' 'python-asdf')
+    depends=('python>=3.6' 'python-astropy>=4.1' 'python-asdf')
     optdepends=('python-gwcs-doc: Documentation for Python-GWCS')
 #               'python-pytest-astropy: For testing')
     cd ${srcdir}/${_pyname}-${pkgver}
