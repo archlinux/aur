@@ -2,7 +2,7 @@
 
 pkgname="gr-framework-git"
 pkgver="0.53.0.r9.gd45e725a"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A universal framework for cross-platform visualization applications."
 arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
 url="https://gr-framework.org"
