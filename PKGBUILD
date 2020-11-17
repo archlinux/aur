@@ -7,7 +7,7 @@ _srcname=linux-5.9
 _major=5.9
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=6
+_minor=8
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -30,20 +30,18 @@ source=(
   config         # the main kernel config file
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-mac80211-fix-regression-where-EAPOL-frames-were-sent.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('70ee643a889254bad15dde8446f3fbaa83c3c173a724e3a40027e56ce3a57529f6af8f2829a75b9e4a8b04b35eba755e131133c1221fb976637c1938bf2e92ef'
+b2sums=('3f3f05b9a23cd65fcf8d9a49f0259dd82b95cc139a13ac2e1f1ea072688db2ab336be4e27f2c3dcf57fac1b40b0202ee6e81b35e18d36a23bb8f5432f559e1da'
         'SKIP'
-        'c1a547d4af558bf364f2c1699e529deefeb5bd9322b7cfe8c034a0414d9e69dc96e27bd4011ce105f02d9787ca0e18e4c3d9c7581ccc486e45995f4fc493d932'
+        '27b8820bbd7ea278b47e1c208efeeb41c890276ae59d33971ab0d8ba0081d45e57c579f9390c5e3019a4f3beebaf17a29a959e1b6cadb9e1824ea4e568f90205'
         'SKIP'
-        '040cd9c2871f38537f5acac43baff091f46b8143fe66552238484b584456afd7f2862337056e27d3d8e034bcd68e030a4e47a059e9c92e4a416443bab2bc59db'
+        '834e3290b80055fb99855cebb175152d42800c0e4750e7e1c1e65448783772174c4b6d9194fea7d59a6b41dca8a438628b2692a308ccdfd2d1ced3e0af422d4c'
         'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95'
-        '3c5cdf6da7ff5312bfe2a8dcd18e58c8e1a3408e1612be60417ed33866e9e70da77db88435fe49483c907c5ff45d4b9ed979aaa96d485cef976c6aa6fdaa834c'
-        'c159ba9bfe9b400a604d1ee0b74aa19ee2e5fea96d0781fef48bb92c09909566a879ff9a68e101f0878d8dbd86d7bb6dfee91802ec837dfcc745237869bc1a1e')
+        '3c5cdf6da7ff5312bfe2a8dcd18e58c8e1a3408e1612be60417ed33866e9e70da77db88435fe49483c907c5ff45d4b9ed979aaa96d485cef976c6aa6fdaa834c')
 
 
 export KBUILD_BUILD_HOST=archlinux
@@ -72,7 +70,17 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
+
+  # disable CONFIG_DEBUG_INFO=y at build time otherwise memory usage blows up
+  # and can easily overwhelm a system with 32 GB of memory using a tmpfs build
+  # partition ... this was introduced by FS#66260, see:
+  # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
+  sed -i -e 's/CONFIG_DEBUG_INFO=y/# CONFIG_DEBUG_INFO is not set/' \
+      -i -e '/CONFIG_DEBUG_INFO_DWARF4=y/d' \
+      -i -e '/CONFIG_DEBUG_INFO_BTF=y/d' ./.config
+
   make olddefconfig
+ # make nconfig
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -180,8 +188,8 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-  echo "Stripping vmlinux..."
-  strip -v $STRIP_STATIC "$builddir/vmlinux"
+  #echo "Stripping vmlinux..."
+  #strip -v $STRIP_STATIC "$builddir/vmlinux"
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
