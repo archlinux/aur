@@ -2,12 +2,12 @@
 
 pkgname=growlight
 pkgver=1.2.19
-pkgrel=2
+pkgrel=3
 pkgdesc="Disk manipulation and system preparation tool"
 url="https://nick-black.com/dankwiki/index.php/Growlight"
 license=('GPL3')
 arch=('x86_64')
-# ncurses and readline are found without our help. Don't explicitly list them.
+# readline is found without our help. Don't explicitly list it.
 # The same goes for device-mapper.
 depends=('cryptsetup' 'libatasmart' 'libpciaccess' 'pciutils' 'notcurses>=2.0.1')
 makedepends=('cunit' 'cmake' 'pandoc')
@@ -24,7 +24,9 @@ source=("https://github.com/dankamongmen/growlight/archive/v${pkgver}.tar.gz")
 
 prepare() {
   mkdir -p "${pkgname}-${pkgver}/build"
-  cd "${pkgname}-${pkgver}/build"
+  cd "${pkgname}-${pkgver}"
+  sed -i -e 's/sbin/bin/g' CMakeLists.txt
+  cd "build"
   if pkg-config --modversion libzfs > /dev/null 2>&1 ; then
     cmake .. -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=RelWithDebInfo
   else
