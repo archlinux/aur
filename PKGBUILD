@@ -4,10 +4,10 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=2.4.7
+pkgver=2.4.10
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
-arch=(i686 x86_64)
+arch=(x86_64)
 url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
@@ -27,9 +27,6 @@ _commit="tag=v$pkgver"
 # git submodule foreach --quiet 'echo \"${name##*/}::git+`git remote get-url origin`\"' | sort
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop#$_commit"
-    "https://raw.githubusercontent.com/archlinux/svntogit-community/packages/telegram-desktop/trunk/Use-tg_owt-webrtc-fork.patch"
-    "Update-webrtc-packaged-build-for-tg_owt.patch::https://github.com/desktop-app/cmake_helpers/commit/d955882cb4d4c94f61a9b1df62b7f93d3c5bff7d.patch"
-    "Add_external_jpeg.patch::https://github.com/desktop-app/cmake_helpers/commit/ed9fa2e798a1f175840479417d760c51181959b8.patch"
     "Catch::git+https://github.com/philsquared/Catch"
     "cmake::git+https://github.com/desktop-app/cmake_helpers.git"
     "codegen::git+https://github.com/desktop-app/codegen.git"
@@ -63,9 +60,6 @@ source=(
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
 )
 sha512sums=('SKIP'
-            '071591c6bb71435f8186dcaf570703718051f00366dbbe3f13c4df3706d3de1f168bff4bfa707ad1d6f09f5505c925f0b01d76fd65efe904f3ba7db693d63f43'
-            'b3c44e76a3907f7acc197746b471564577e912bf0561e9576dc8459211c88f400716437bcaa10967376461c69c8a98a56477d26d3feb9ca34747d9208bf5f6c6'
-            '3891f191f720e77d463365d1415ff8c20866d0d898909dcbe757d334c582c38975d47c33e82ae54e3cfbce7f46c257e9f2eb76b673a76c37446ecf1e9a9c681b'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -149,10 +143,7 @@ prepare() {
 
     # Official package patches
     cd cmake
-    patch -R -Np1 -i ${srcdir}/Add_external_jpeg.patch
-    patch -R -Np1 -i ${srcdir}/Update-webrtc-packaged-build-for-tg_owt.patch
-    patch -R -Np1 -i ${srcdir}/Use-tg_owt-webrtc-fork.patch
-    sed 's|set(webrtc_build_loc ${webrtc_loc}/out/$<CONFIG>/obj)|set(webrtc_build_loc /usr/lib)|' -i external/webrtc/CMakeLists.txt
+    echo "target_link_libraries(external_webrtc INTERFACE jpeg)" | tee -a external/webrtc/CMakeLists.txt
 }
 
 build() {
@@ -171,8 +162,7 @@ build() {
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c \
         -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME=ON \
         -DTDESKTOP_LAUNCHER_BASENAME="telegram-desktop" \
-        -DDESKTOP_APP_SPECIAL_TARGET="" \
-        -DDESKTOP_APP_WEBRTC_LOCATION=/usr/include/libwebrtc
+        -DDESKTOP_APP_SPECIAL_TARGET=""
     ninja -C build
 }
 
