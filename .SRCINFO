@@ -1,0 +1,15 @@
+pkgbase = nodejs-git-file-history
+	pkgdesc = Quickly browse the history of a file from any git repository.
+	pkgver = 1.0.1
+	pkgrel = 0
+	url = https://github.com/pomber/git-history/tree/master/cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = git-file-history-1.0.1.tgz
+	source = https://registry.npmjs.org/git-file-history/-/git-file-history-1.0.1.tgz
+	sha256sums = 0a2705cfd57021c715b3bef53a2bfbc564923afa739374802a54d94c75c85592
+
+pkgname = nodejs-git-file-history
+
