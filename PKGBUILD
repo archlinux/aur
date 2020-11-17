@@ -2,7 +2,7 @@
 # Contributor: Christoph Gysin <christoph.gysin@gmail.com>
 
 _npmname=@feathersjs/cli
-_npmver=4.4.0
+_npmver=4.4.2
 _srcname="v${_npmver}.tar.gz"
 pkgname=nodejs-feathers-cli
 pkgver=${_npmver}
@@ -15,7 +15,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(https://github.com/feathersjs/cli/archive/v${_npmver}.tar.gz)
 noextract=(${_srcname})
-sha256sums=('93c7598f257571a88ec021090b7288ce9a9f4bfeebaeb44fc996b297c8f11eb2')
+sha256sums=('ca60760c5dab29d5aa59bacb5c375baea41a892ea50b9f759a438220b0892b28')
 
 package() {
   npm install --cache "${srcdir}/npm-cache" -g --user root --prefix "$pkgdir/usr" "$srcdir/${_srcname}"
