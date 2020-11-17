@@ -13,7 +13,6 @@ pkgbase = deepin-gettext-tools-git
 	depends = perl-xml-libxml
 	provides = deepin-gettext-tools
 	conflicts = deepin-gettext-tools
-	replaces = deepin-gettext-tools
 	source = deepin-gettext-tools-git::git://github.com/linuxdeepin/deepin-gettext-tools/
 	sha512sums = SKIP
 
