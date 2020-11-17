@@ -19,7 +19,7 @@ source=("https://www.zrythm.org/releases/$pkgname-$pkgver-alpha.5.0.1.tar.xz"{,.
 sha256sums=('089251987b3f0fdd378ac2014aa01904669fd70d89774bdc4358cc7bfc206cf1' 'SKIP')
 validpgpkeys=('48132384AD3DF7D86E254B83022EAE42313D70F3')
 build() {
-  cd "$pkgname-$pkgver-alpha.4.0.1"
+  cd "$pkgname-$pkgver-alpha.5.0.1"
   meson build --buildtype=release --prefix=/usr \
     -Denable_tests=true -Duser_manual=true \
     -Dmanpage=true
@@ -27,12 +27,12 @@ build() {
 }
 
 check() {
-  cd "$pkgname-$pkgver-alpha.4.0.1"
+  cd "$pkgname-$pkgver-alpha.5.0.1"
   ninja -C build test
 }
 
 package() {
-  cd "$pkgname-$pkgver-alpha.4.0.1"
+  cd "$pkgname-$pkgver-alpha.5.0.1"
   install -vDm 644 AUTHORS CONTRIBUTING.md \
     CHANGELOG.md README.md THANKS TRANSLATORS \
     -t "${pkgdir}/usr/share/doc/${pkgname}/"
