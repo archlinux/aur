@@ -1,0 +1,26 @@
+pkgbase = lcarswm
+	pkgdesc = LCARS Window Manager
+	pkgver = 20.3
+	pkgrel = 1
+	url = https://lcarsde.github.io
+	arch = any
+	groups = lcarsde
+	license = GPL2
+	makedepends = ncurses5-compat-libs
+	depends = jdk-openjdk
+	depends = libx11
+	depends = libxpm
+	depends = libxrandr
+	depends = pango
+	depends = icu
+	depends = libxml2
+	depends = glib2
+	depends = libxft
+	depends = harfbuzz
+	depends = freetype2
+	optdepends = ttf-ubuntu-font-family
+	source = lcarswm-20.3.tar.gz::https://github.com/lcarsde/lcarswm/archive/20.3.tar.gz
+	md5sums = c5757a63ea9c901d84f5ab46fedcf3a1
+
+pkgname = lcarswm
+
