@@ -1,6 +1,6 @@
 pkgbase = libinput-gestures
 	pkgdesc = Actions gestures on your touchpad using libinput
-	pkgver = 2.53
+	pkgver = 2.54
 	pkgrel = 1
 	url = https://github.com/bulletmark/libinput-gestures
 	install = install.sh
@@ -9,11 +9,13 @@ pkgbase = libinput-gestures
 	depends = python>=3.5
 	depends = libinput
 	depends = hicolor-icon-theme
+	optdepends = wmctrl: required for _internal command, as per default configuration
+	optdepends = xdotool: simulates keyboard and mouse actions for Xorg or XWayland based apps
 	conflicts = libinput-gestures-git
 	replaces = libinput-gestures-git
 	backup = etc/libinput-gestures.conf
-	source = libinput-gestures-2.53.tar.gz::https://github.com/bulletmark/libinput-gestures/archive/2.53.tar.gz
-	md5sums = c54af7b112e13d597bcadfd12e8c4c46
+	source = libinput-gestures-2.54.tar.gz::https://github.com/bulletmark/libinput-gestures/archive/2.54.tar.gz
+	md5sums = 187f0e6bb66b103cddc5805dc32ed0c0
 
 pkgname = libinput-gestures
 
