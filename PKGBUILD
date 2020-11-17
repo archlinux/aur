@@ -1,18 +1,17 @@
 # Maintainer: Franck Stauffer <franck.stauffer@monaco.mc>
 
 pkgname='chromium-extension-https-everywhere'
-pkgver=2020.8.13
-pkgrel=2
+pkgver=2020.11.17
+pkgrel=1
 pkgdesc='An extension that encrypts your communications with websites that offer HTTPS'
 license=('GPL2')
 arch=('any')
 url='https://www.eff.org/https-everywhere'
-optdepends=('chromium: Use it in a chromium based browser')
+depends=('chromium')
 changelog="$pkgname.changelog"
-replaces=('https-everywhere-chrome')
 source=("$pkgname-$pkgver.crx::https://www.eff.org/files/https-everywhere-chrome-$pkgver.crx")
 noextract=("$pkgname-$pkgver.crx")
-b2sums=('8183ccf4d215ef4fb67ef193205b42bb0a62fef8a21ed84f39b9f8c01614e5b6687430e48fdf3e8307dcb4ee2d073f5e621977b20c671b86d84eed228f4b6597')
+b2sums=('cf2a0e9debc0839bfb6f48a891da8950767586efa4a229b861b0ff79ba17ce7dacc2d31de24ab164aba071c15077055797bfcda59191084589a0d7ba8c926c15')
 
 build() {
   echo "{ \"external_crx\": \"/usr/share/$pkgname/$pkgname.crx\", \"external_version\": \"$pkgver\" }" > gcbommkclmclpchllfjekcdonpmejbdp.json
