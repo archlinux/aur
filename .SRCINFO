@@ -1,0 +1,14 @@
+pkgbase = python-dnspython1.16
+	pkgdesc = A DNS toolkit for Python
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://pypi.org/project/dnspython/1.16.0
+	arch = any
+	license = Apache
+	provides = python-dnspython
+	conflicts = python-dnspython
+	source = https://files.pythonhosted.org/packages/ec/c5/14bcd63cb6d06092a004793399ec395405edf97c2301dfdc146dfbd5beed/dnspython-1.16.0.zip
+	md5sums = bc9ca3b3a82164667d5730ec6d5248a2
+
+pkgname = python-dnspython1.16
+
