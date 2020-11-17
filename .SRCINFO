@@ -1,6 +1,6 @@
 pkgbase = uno-calculator-bin
 	pkgdesc = Uno port of Windows Calculator
-	pkgver = 1.2.4
+	pkgver = 1.2.4.725
 	pkgrel = 1
 	url = https://platform.uno/blog/windows-calculator-on-linux-via-uno-platform/
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = uno-calculator-bin
 	depends = hicolor-icon-theme
 	provides = uno-calculator
 	conflicts = uno-calculator
-	noextract = uno-calculator-1.2.4-x86_64.snap
+	noextract = uno-calculator-1.2.4.725-x86_64.snap
 	options = staticlibs
-	source_x86_64 = uno-calculator-1.2.4-x86_64.snap::https://api.snapcraft.io/api/v1/snaps/download/ZZjSue7jjdQXHsNz5RI9BH3Pf3UnRo0V_9.snap
-	sha256sums_x86_64 = 55c3dcf572ae0b91e484a64b2319078e7ed7e08d84b54e961d51ab0199d62023
+	source_x86_64 = uno-calculator-1.2.4.725-x86_64.snap::https://api.snapcraft.io/api/v1/snaps/download/ZZjSue7jjdQXHsNz5RI9BH3Pf3UnRo0V_15.snap
+	sha256sums_x86_64 = dbeef8687f3fa4404bd35f57aa4c86034f89d89f71fab0152e69817f16ed5c03
 
 pkgname = uno-calculator-bin
 

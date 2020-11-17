@@ -1,15 +1,12 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-# https://snapcraft.io/uno-calculator
-# curl -H 'Snap-Device-Series: 16' http://api.snapcraft.io/v2/snaps/info/uno-calculator | jq
-
 _name='Uno Calculator'
 _pkgname='uno-calculator'
 pkgname="${_pkgname}-bin"
 
-pkgver=1.2.4
+pkgver=1.2.4.725
 pkgrel=1
-_dl_hash='ZZjSue7jjdQXHsNz5RI9BH3Pf3UnRo0V_9'
+_snap_id='ZZjSue7jjdQXHsNz5RI9BH3Pf3UnRo0V_15'
 
 pkgdesc='Uno port of Windows Calculator'
 arch=('x86_64')
@@ -22,11 +19,14 @@ options=('staticlibs')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 noextract=("${_pkgname}-${pkgver}-x86_64.snap")
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.snap::${_url_source}/${_dl_hash}.snap")
-sha256sums_x86_64=('55c3dcf572ae0b91e484a64b2319078e7ed7e08d84b54e961d51ab0199d62023')
+
+# https://snapcraft.io/uno-calculator
+# curl -H 'Snap-Device-Series: 16' http://api.snapcraft.io/v2/snaps/info/uno-calculator | jq
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.snap::${_url_source}/${_snap_id}.snap")
+sha256sums_x86_64=('dbeef8687f3fa4404bd35f57aa4c86034f89d89f71fab0152e69817f16ed5c03')
 
 prepare() {
-  echo -e "#!/bin/sh\ncd /opt/${_pkgname} && exec ./Calculator.Skia.Gtk" > "${_pkgname}"
+  echo -e "#!/bin/sh\ncd /opt/${_pkgname} && exec ./Calculator.Skia.Gtk \"\$@\"" > "${_pkgname}"
   gendesk -f -n \
     --pkgname="${_pkgname}" \
     --pkgdesc="${pkgdesc}" \
