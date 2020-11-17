@@ -1,0 +1,17 @@
+pkgbase = python-pythondata-cpu-cv32e40p-git
+	pkgdesc = Python module containing system_verilog files for cv32e40p cpu (for use with LiteX)
+	pkgver = 2020.08.r1.gb8fe3c4
+	pkgrel = 1
+	url = https://github.com/litex-hub/pythondata-cpu-cv32e40p
+	arch = any
+	license = custom:Solderpad
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-pythondata-cpu-cv32e40p=2020.08.r1.gb8fe3c4
+	conflicts = python-pythondata-cpu-cv32e40p
+	source = git+https://github.com/litex-hub/pythondata-cpu-cv32e40p
+	sha256sums = SKIP
+
+pkgname = python-pythondata-cpu-cv32e40p-git
+
