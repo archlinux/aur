@@ -1,6 +1,6 @@
 pkgbase = munge-git
 	pkgdesc = An authentication service for creating and validating credentials. It is designed to be highly scalable for use in an HPC cluster environment.
-	pkgver = 0.5.13.r25.g5a2fddf
+	pkgver = 0.5.14.r16.gcdfdf73
 	pkgrel = 1
 	url = https://github.com/dun/munge/wiki
 	install = munge-git.install
@@ -15,7 +15,11 @@ pkgbase = munge-git
 	optdepends = bzip2: bzip2 compression support
 	provides = munge
 	conflicts = munge
+	source = munge.sysusers
+	source = munge.tmpfiles
 	source = munge-git::git+https://github.com/dun/munge.git
+	sha512sums = 0f24af038db5924d483e12f884830636c5611aa6b2486cfdec2c47fa80eb47cefaa550e9be88207fb00a98fe77902504e019b87f384381cd3b2987bfda143c1b
+	sha512sums = 33e3210634c1d5aa14597d70ec73c49aa83e9e0cea5c98a656099016876d2bf4dc8e1ec20426ee0baba9522be2e6a4422fa67a028ebf5e7c04f72f7daf0fd53f
 	sha512sums = SKIP
 
 pkgname = munge-git
