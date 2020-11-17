@@ -2,19 +2,19 @@
 pkgbase=python-sncosmo
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=2.1.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Python library for supernova cosmology"
 arch=('i686' 'x86_64')
-url="https://sncosmo.readthedocs.io/"
+url="https://sncosmo.readthedocs.io"
 license=('BSD')
 makedepends=('cython' 'python-numpy')
 checkdepends=('python-pytest-astropy' 'python-astropy' 'python-extinction' 'python-iminuit')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('9b82f54cef1ffb45c3114e09b6af9b91')
+md5sums=('e33ecd2c59a3cb4d254d96a01084ac49')
 
 prepare() {
-    export _pyver=$(python -V | cut -c 8-10)
+    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
 build() {
@@ -26,13 +26,12 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-#   python setup.py test
     cp "build/lib.linux-${CARCH}-${_pyver}/${_pyname}/salt2utils.cpython-${_pyver/./}-${CARCH}-linux-gnu.so" "${_pyname}"
-    pytest
+    pytest || warning "Tests failed"
 }
 
 package() {
-    depends=('python>=3.4' 'python-astropy' 'python-extinction')
+    depends=('python>=3.5' 'python-astropy>=1.0.0' 'python-extinction>=0.2.2')
     optdepends=('python-matplotlib: For plotting functions'
                 'python-iminuit: For light curve fitting using the Minuit minimizer in sncosmo.fit_lc'
                 'python-emcee: For MCMC light curve parameter estimation in sncosmo.mcmc_lc'
