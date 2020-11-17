@@ -1,0 +1,14 @@
+pkgbase = librnnoise-nu
+	pkgdesc = A noise suppression library based on a recurrent neural network with mods for general purpose usage.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/GregorR/rnnoise-nu
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	license = Revised
+	source = librnnoise-nu.tar.gz::https://github.com/GregorR/rnnoise-nu/archive/26269304e120499485438cd93acf5127c6908c68.tar.gz
+	md5sums = c753e7f7a3e73073cfdded735af25dfb
+
+pkgname = librnnoise-nu
+
