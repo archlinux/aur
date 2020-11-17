@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee
-pkgver=2020.07.1
+pkgver=2020.07.2
 pkgrel=1
 pkgdesc="Flowee provides the shortest path to Bitcoin Cash"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ source=("https://gitlab.com/FloweeTheHub/thehub/-/archive/$pkgver/thehub-$pkgver
     "flowee.logrotate"
     "flowee.conf")
 
-sha256sums=("6f74a4629f77824554008c9c87666bf6e8f9414e3e2d2210297ad1ba400aa196"
+sha256sums=("5e858eed27b06123846bee309cad12a3953ed7133e8358502b86848239f14cb5"
     "aff02b3312c88113fe7316152c15f1545233dc8c2062ee8c36d2dbcad4a9f5bf"
     "bc14acf0d1b4064553756a1e81c0b943e842296f2a2af6442e480b846392e6bc")
 
