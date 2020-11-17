@@ -1,0 +1,17 @@
+pkgbase = kak-mediawiki-git
+	pkgdesc = MediaWiki syntax highlighting for Kakoune
+	pkgver = r1.a3c1492
+	pkgrel = 1
+	url = https://github.com/Ordoviz/mediawiki.kak
+	install = kak-mediawiki-git.install
+	arch = any
+	license = Unlicense
+	makedepends = git
+	depends = kakoune
+	provides = kak-mediawiki
+	conflicts = kak-mediawiki
+	source = git+https://github.com/Ordoviz/mediawiki.kak
+	sha256sums = SKIP
+
+pkgname = kak-mediawiki-git
+
