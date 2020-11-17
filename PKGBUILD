@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20200716.cccdd578e
+pkgver=20201117.40d687558
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=('i686' 'x86_64' 'armv7h')
@@ -50,6 +50,9 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
+
+	# fix memento.h confusion
+	export CFLAGS+=' -I./include/mupdf'
 
 	export USE_SYSTEM_LIBS=yes
 	make release
