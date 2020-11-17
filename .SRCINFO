@@ -1,6 +1,6 @@
 pkgbase = mysql-shell
 	pkgdesc = An interface supporting development and administration for the MySQL Server
-	pkgver = 8.0.21
+	pkgver = 8.0.22
 	pkgrel = 1
 	url = https://dev.mysql.com/downloads/shell/
 	arch = x86_64
@@ -16,14 +16,14 @@ pkgbase = mysql-shell
 	depends = openssl
 	depends = curl
 	optdepends = mysql-clients: login-path secret store support
-	source = https://dev.mysql.com/get/Downloads/MySQL-Shell/mysql-shell-8.0.21-src.tar.gz
-	source = mysql-shell-8.0.21-src.tar.gz.asc::https://dev.mysql.com/downloads/gpg/?file=mysql-shell-8.0.21-src.tar.gz&p=43
-	source = https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-boost-8.0.21.tar.gz
-	source = mysql-boost-8.0.21.tar.gz.asc::https://dev.mysql.com/downloads/gpg/?file=mysql-boost-8.0.21.tar.gz&p=23
+	source = https://dev.mysql.com/get/Downloads/MySQL-Shell/mysql-shell-8.0.22-src.tar.gz
+	source = mysql-shell-8.0.22-src.tar.gz.asc::https://dev.mysql.com/downloads/gpg/?file=mysql-shell-8.0.22-src.tar.gz&p=43
+	source = https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-boost-8.0.22.tar.gz
+	source = mysql-boost-8.0.22.tar.gz.asc::https://dev.mysql.com/downloads/gpg/?file=mysql-boost-8.0.22.tar.gz&p=23
 	validpgpkeys = A4A9406876FCBD3C456770C88C718D3B5072E1F5
-	md5sums = b640347f0f5d5ccbcc69b3ca6e4f649d
+	md5sums = 6408ffea4947ca052b89f94656fd6395
 	md5sums = SKIP
-	md5sums = 06005d53f6a49ddde909c2dda149bc34
+	md5sums = 2b2d93e8a3c1a29d875daf534ea87c81
 	md5sums = SKIP
 
 pkgname = mysql-shell
