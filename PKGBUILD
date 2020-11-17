@@ -14,7 +14,6 @@ makedepends=('cmake' 'coffeescript' 'golang-github-linuxdeepin-go-dbus-factory-g
 optdepends=('deepin-wm: Legacy 3D window manager'
             'deepin-metacity: Legacy 2D window manager'
             'deepin-kwin: Preferred window manager')
-replaces=('deepin-wm-switcher' 'startdde')
 provides=('startdde')
 conflicts=('startdde')
 groups=('deepin-git')

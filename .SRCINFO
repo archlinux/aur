@@ -23,8 +23,6 @@ pkgbase = startdde-git
 	optdepends = deepin-kwin: Preferred window manager
 	provides = startdde
 	conflicts = startdde
-	replaces = deepin-wm-switcher
-	replaces = startdde
 	source = startdde-git::git://github.com/linuxdeepin/startdde
 	sha512sums = SKIP
 
