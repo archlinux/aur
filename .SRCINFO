@@ -1,0 +1,18 @@
+pkgbase = python-runcommands
+	pkgdesc = Simple command/task runner that uses Python's standard library argparse under the hood
+	pkgver = 1.0a61
+	pkgrel = 1
+	url = https://github.com/wylee/runcommands
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = flake8
+	makedepends = python-tox
+	depends = python-jinja
+	depends = python-pyaml
+	source = python-runcommands-1.0a61.tar.gz::https://github.com/wylee/runcommands/archive/1.0a61.tar.gz
+	sha512sums = 612ad156e66a3d3b9d2e8cd929c692dead8739bd8497d983ae588d039b6556c324273b160e553394fb2c558111b797e41f6ccc7d99edcf135022da4eae344b56
+
+pkgname = python-runcommands
+
