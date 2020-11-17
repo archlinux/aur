@@ -4,7 +4,7 @@
 
 pkgname=heroku-cli
 pkgver=7.47.2
-pkgrel=1
+pkgrel=3
 _builddir=cli-$pkgver-$pkgrel
 pkgdesc="CLI to manage Heroku apps and services with forced auto-update removed"
 arch=('any')
