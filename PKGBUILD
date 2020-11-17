@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/Overv/vramfs"
 license=('MIT')
 depends=('ocl-icd' 'opencl-driver' 'fuse3')
-makedepends=('git' 'opencl-headers')
+makedepends=('git' 'opencl-clhpp' 'opencl-headers')
 source=("git+https://github.com/Overv/vramfs.git")
 md5sums=("SKIP")
 

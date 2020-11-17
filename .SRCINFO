@@ -6,6 +6,7 @@ pkgbase = vramfs-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = opencl-clhpp
 	makedepends = opencl-headers
 	depends = ocl-icd
 	depends = opencl-driver
