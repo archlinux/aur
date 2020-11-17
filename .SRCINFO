@@ -1,0 +1,17 @@
+pkgbase = python-pythondata-cpu-minerva-git
+	pkgdesc = Python module containing sources files for minerva cpu (for use with LiteX)
+	pkgver = 2020.08.r4.g2a69b7f
+	pkgrel = 1
+	url = https://github.com/litex-hub/pythondata-cpu-minerva
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-pythondata-cpu-minerva=2020.08.r4.g2a69b7f
+	conflicts = python-pythondata-cpu-minerva
+	source = git+https://github.com/litex-hub/pythondata-cpu-minerva
+	sha256sums = SKIP
+
+pkgname = python-pythondata-cpu-minerva-git
+
