@@ -2,7 +2,7 @@
 
 pkgname=deepin-control-center-git
 _pkgname=deepin-control-center
-pkgver=5.3.0.68.r30.g74cd8c74b
+pkgver=5.3.0.68.r32.g66efb38f6
 pkgrel=1
 pkgdesc='New control center for linux deepin'
 arch=('x86_64')
@@ -21,7 +21,6 @@ optdepends=('redshift: automatic color temperature support'
             'network-manager-sstp: for SSTP support')
 # Not packaged: network-manager-l2tp
 conflicts=('deepin-control-center')
-replaces=('deepin-control-center')
 provides=('deepin-control-center')
 groups=('deepin-git')
 source=("$pkgname::git://github.com/linuxdeepin/dde-control-center/"

@@ -1,6 +1,6 @@
 pkgbase = deepin-control-center-git
 	pkgdesc = New control center for linux deepin
-	pkgver = 5.3.0.68.r30.g74cd8c74b
+	pkgver = 5.3.0.68.r32.g66efb38f6
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-control-center
 	arch = x86_64
@@ -38,7 +38,6 @@ pkgbase = deepin-control-center-git
 	optdepends = network-manager-sstp: for SSTP support
 	provides = deepin-control-center
 	conflicts = deepin-control-center
-	replaces = deepin-control-center
 	source = deepin-control-center-git::git://github.com/linuxdeepin/dde-control-center/
 	source = deepin-control-center-systeminfo-deepin-icon.patch
 	sha512sums = SKIP
