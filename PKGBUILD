@@ -3,8 +3,8 @@
 _pkgbase=prjxray
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "python-$_pkgbase-git")
-pkgver=r3288.780b7e4d
-pkgrel=2
+pkgver=r3290.0f939808
+pkgrel=1
 pkgdesc="Documenting the Xilinx 7-series bit-stream format"
 arch=(x86_64)
 url="https://github.com/SymbiFlow/prjxray"
@@ -39,6 +39,10 @@ pkgver() {
 
 prepare() {
 	cd "$_pkgbase"
+
+	# include fasm2frames in python package
+	mv utils/fasm2frames.py prjxray/
+	sed -E 's/(fasm2frames=)utils/\1prjxray/' -i setup.py
 
 	local _mods=(sanitizers-cmake googletest gflags cctz abseil-cpp yaml-cpp)
 
