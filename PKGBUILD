@@ -6,14 +6,14 @@
 
 pkgname=neovim-nightly-git
 _upcoming_version=0.5.0
-pkgver=0.5.0.r637.g43202964f
-pkgrel=1
+pkgver=0.5.0.r828.g0a95549d6
+pkgrel=2
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs (pre-release build)'
 arch=('x86_64')
 url='https://neovim.io'
 backup=('etc/xdg/nvim/sysinit.vim')
 license=('custom:neovim')
-depends=('libtermkey' 'libuv' 'msgpack-c' 'unibilium' 'libvterm' 'luajit' 'libluv')
+depends=('libtermkey' 'msgpack-c' 'libvterm' 'libluv' 'libtree-sitter.so')
 makedepends=('git' 'cmake' 'ninja' 'lua51-mpack' 'lua51-lpeg' 'gperf')
 optdepends=('python-neovim: for Python 3 plugin support (see :help python)'
             'xclip: for clipboard support on X11 (or xsel) (see :help clipboard)'
@@ -23,7 +23,6 @@ source=("${pkgname}::git+https://github.com/neovim/neovim.git")
 sha256sums=('SKIP')
 provides=("neovim=${_upcoming_version}" 'vim-plugin-runtime')
 conflicts=('neovim')
-options=(!strip)
 
 # Checkout the latest `nightly` tag without messing up `yay`
 prepare() {
