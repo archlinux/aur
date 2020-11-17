@@ -1,6 +1,6 @@
 pkgbase = ktextwidgets-git
 	pkgdesc = KTextWidgets
-	pkgver = v4.100.0.rc1.r284.gf8e301e
+	pkgver = v4.100.0.rc1.r302.g8b89dcc
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/ktextwidgets
 	arch = i686

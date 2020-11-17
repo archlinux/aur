@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ktextwidgets-git
-pkgver=v4.100.0.rc1.r284.gf8e301e
+pkgver=v4.100.0.rc1.r302.g8b89dcc
 pkgrel=1
 pkgdesc='KTextWidgets'
 arch=('i686' 'x86_64')
