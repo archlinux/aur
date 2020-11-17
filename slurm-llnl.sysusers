@@ -1,0 +1,1 @@
+u slurm 64030 "slurm daemon" /var/log/slurm-llnl /bin/nologin
