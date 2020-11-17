@@ -3,7 +3,7 @@
 
 pkgname=bitcoin-gold-git
 _gitname=BTCGPU
-pkgver=0.17.1
+pkgver=0.17.3
 pkgrel=1
 pkgdesc="A peer-to-peer network based digital currency. This package provides bitcoin-gold-core binaries: bgoldd, bgold-qt, bgold-tx, and bgold-cli"
 arch=('any')
@@ -15,9 +15,11 @@ provides=('bgold' 'bgold-qt' 'bgoldd' 'bgold-tx' 'bgold-cli')
 
 # Use the 0.15 branch because master is the staging branch according to h4x3rotab on Slack channel.
 source=('git://github.com/BTCGPU/BTCGPU.git#branch=0.17'
-        'deque.patch')
+        'deque.patch'
+        'qpainterpath.patch::https://github.com/bitcoin/bitcoin/commit/79b0a69e09c1a912122e6431ea3c530cc292c690.patch')
 sha256sums=('SKIP'
-            '45e0f557f46ba5769e3aaaf91599b8190e5844bba65a3a83b40e3a8cf411b62d')
+            '45e0f557f46ba5769e3aaaf91599b8190e5844bba65a3a83b40e3a8cf411b62d'
+            '475b6c0e7bc8d797020bdfc048a6b66e0513482fd469d6da2a599d3811f81f52')
 
 pkgver() {
   cd "$srcdir/$_gitname"
@@ -30,6 +32,11 @@ prepare() {
  #inlcude deque.h library in httpserver.cpp found in https://github.com/dogecoin/dogecoin/pull/1626
  #will delete when upstream fixes/commits this.
   patch --forward --strip=1 --input="../../deque.patch"
+
+ #QPainterPath 2020-10-12 == Add missing QPainterPath include
+ #include QPainterPath library in src/qt/trafficgraphwidget.cpp found in https://github.com/bitcoin/bitcoin/commit/79b0a69e09c1a912122e6431ea3c530cc292c690
+ #will delete when dash fixes/commits this. This happens because dash is compiling against older versions of qt5-base
+  patch --forward --strip=1 --input="../../qpainterpath.patch"
 }
 
 build() {

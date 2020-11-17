@@ -1,6 +1,6 @@
 pkgbase = bitcoin-gold-git
 	pkgdesc = A peer-to-peer network based digital currency. This package provides bitcoin-gold-core binaries: bgoldd, bgold-qt, bgold-tx, and bgold-cli
-	pkgver = 0.17.1
+	pkgver = 0.17.3
 	pkgrel = 1
 	url = https://bitcoingold.org/
 	arch = any
@@ -31,8 +31,10 @@ pkgbase = bitcoin-gold-git
 	provides = bgold-cli
 	source = git://github.com/BTCGPU/BTCGPU.git#branch=0.17
 	source = deque.patch
+	source = qpainterpath.patch::https://github.com/bitcoin/bitcoin/commit/79b0a69e09c1a912122e6431ea3c530cc292c690.patch
 	sha256sums = SKIP
 	sha256sums = 45e0f557f46ba5769e3aaaf91599b8190e5844bba65a3a83b40e3a8cf411b62d
+	sha256sums = 475b6c0e7bc8d797020bdfc048a6b66e0513482fd469d6da2a599d3811f81f52
 
 pkgname = bitcoin-gold-git
 
