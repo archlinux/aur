@@ -1,0 +1,17 @@
+pkgbase = yambar
+	pkgdesc = Modular status panel for X11 and Wayland, inspired by polybar
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://codeberg.org/dnkl/yambar
+	arch = x86_64
+	license = MIT
+	makedepends = ninja
+	makedepends = meson
+	makedepends = cmake
+	depends = xcb-util-cursor
+	provides = yambar
+	source = yambar-1.5.0.tar.gz::https://codeberg.org/dnkl/yambar/archive/1.5.0.tar.gz
+	md5sums = eed0ff5c884d8019116549e8305c3ed1
+
+pkgname = yambar
+
