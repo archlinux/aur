@@ -1,7 +1,7 @@
 # Maintainer: Cédric Connes <cedric.connes@gmail.com>
 
 pkgname=chisel-tunnel
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="A fast TCP tunnel over HTTP"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -15,14 +15,14 @@ source_x86_64=("chisel_${pkgver}_x86_64.gz::https://github.com/jpillora/chisel/r
 source_armv6h=("chisel_${pkgver}_armv6h.gz::https://github.com/jpillora/chisel/releases/download/v$pkgver/chisel_${pkgver}_linux_armv6.gz")
 source_armv7h=("chisel_${pkgver}_armv7h.gz::https://github.com/jpillora/chisel/releases/download/v$pkgver/chisel_${pkgver}_linux_armv7.gz")
 source_aarch64=("chisel_${pkgver}_aarch64.gz::https://github.com/jpillora/chisel/releases/download/v$pkgver/chisel_${pkgver}_linux_arm64.gz")
-sha256sums=('7b214f2da30a9586ee9db8a4d300641bfff869a9a7fcc04947a3d6fe205e8be0'
+sha256sums=('04f71edb45d72e8da8fa1748d1dc53109f375ba0fce4f133b0e7a0a33c01954b'
             'b3cb23ef88fcf4f39ee057289e7d2a92a03b2f33ec05caa4d70cd15a2ca60acd'
             '1edfe3540212ff667e460e212b31178e405139fdff18d643bdd49b05623ac3ac')
-sha256sums_i686=('550168d7c4f722b95288f8402f9ac3422dbbae250a3f36e3a10a985ac7f1c84a')
-sha256sums_x86_64=('542bee76ffdd8095a8d134b6eea2fa001c4af43c1e6cd4e296c2b8d52571c16c')
-sha256sums_armv6h=('1464a0e12ee6eacddcc2bc879ad601918412b0d64f3cdceb04c216d6a5485052')
-sha256sums_armv7h=('1a661c04442e03afed5683e5d92798b9be628e197ba047ac45b7d831444fc3fe')
-sha256sums_aarch64=('d815672bd8c68dd861dac2266be662d32c22c7d07f13214ea84fd0cbd775ab92')
+sha256sums_i686=('7a6b32cadac1e4193540c181b169ce4e73dc69a5bb185b9e98842a4e4205cc81')
+sha256sums_x86_64=('6da346eecac1a1bb11f834be0ef0b08539fb0f9ec7d8cc415ae9e301f53a536e')
+sha256sums_armv6h=('3688991da39646b2fb375ce860fc34e29341598abb35e10ddc9f4650460a1f2c')
+sha256sums_armv7h=('7ac42abfb232c1b9f235969fcebf54bad0078e724552cdd89b5f32805b77a4ef')
+sha256sums_aarch64=('1c841d5d1d34538febdda50a60f9e4f7a9df773a40dccacbd6aaa75595babfdb')
 
 package() {
   install -D -m755 "chisel_${pkgver}_$CARCH" "$pkgdir/usr/bin/chisel"
