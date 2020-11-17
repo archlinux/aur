@@ -1,0 +1,17 @@
+pkgbase = python-pythondata-cpu-serv-git
+	pkgdesc = Python module containing verilog files for serv cpu (for use with LiteX)
+	pkgver = 2020.08.r38.g2428c0c
+	pkgrel = 1
+	url = https://github.com/litex-hub/pythondata-cpu-serv
+	arch = any
+	license = ISC
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-pythondata-cpu-serv=2020.08.r38.g2428c0c
+	conflicts = python-pythondata-cpu-serv
+	source = git+https://github.com/litex-hub/pythondata-cpu-serv
+	sha256sums = SKIP
+
+pkgname = python-pythondata-cpu-serv-git
+
