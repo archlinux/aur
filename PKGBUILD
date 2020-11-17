@@ -4,7 +4,7 @@
 # Repository for PR: https://gitlab.com/phnx47-aur/ledger-live
 
 pkgname=ledger-live
-pkgver=2.15.0
+pkgver=2.16.0
 pkgrel=3
 pkgdesc="Ledger Live - Desktop"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=(yarn python nodejs)
 
 source=("https://github.com/LedgerHQ/ledger-live-desktop/archive/v${pkgver}.tar.gz"
         "ledger-live.desktop")
-sha512sums=('9270380ef9d078fe1f7ad03d4e4e8b843c8ccf27ea35d21c61789c5649fd60927d7385ffd04d3c151e75adf28fb503ac962cd61a2b423d24413780d735f41db6'
+sha512sums=('999ab7399f5db4a1fb91eda2ead3cd8afe1f19edf40c58045b1633b843eeb49b4aa0941dd1c932bd6adbc1a35ee3e0ce66841f5d4167d2bd5ce0d80e6c6dd877'
             'bfdf0295b7225380c78ef1a3e1351529bd5ee0cecc17b1591ef20bd144d38e3c4aba0a4115c97131517c109698cf8d6db55c0744c7c6f194e8c61a0576c64fab')
 
 extractedFolder=ledger-live-desktop-$pkgver
