@@ -1,6 +1,6 @@
 pkgbase = gog-stellaris
 	pkgdesc = A strategy game with space exploration at its core
-	pkgver = 2.8.0
+	pkgver = 2.8.0.5
 	pkgrel = 1
 	url = https://www.gog.com/game/stellaris
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = gog-stellaris
 	depends = libx11
 	depends = libglvnd
 	depends = gcc-libs
-	optdepends = gog-stellaris-anniversary-portraits=2.8.0
-	optdepends = gog-stellaris-horizon-signal=2.8.0
-	source = stellaris_2_8_0.sh::gogdownloader://1508702879/en3installer0
+	optdepends = gog-stellaris-anniversary-portraits=2.8.0.5
+	optdepends = gog-stellaris-horizon-signal=2.8.0.5
+	source = stellaris_2_8_0_5.sh::gogdownloader://1508702879/en3installer0
 	source = Stellaris.desktop
 	source = start-stellaris.sh
 	sha512sums = 483c03b53c5aa2f8d8d68e63f0627d3ca84622e5c5e3860f6a2938ac1fa4437238cf46f38cc5e4a809acfba4f9568a1478467b98e7bc74a233cacfddba8b280c
