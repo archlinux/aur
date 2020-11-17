@@ -29,7 +29,6 @@ source=(
     'swift-integration-tests::git+https://github.com/apple/swift-integration-tests#branch=main'
     'llvm-project::git+https://github.com/apple/llvm-project#branch=swift/main'
     '0001-arch-aur-pachtes.patch'
-    '0003-linux_load_commands-test-sourcekit-lsp-are-python2.patch'
     # swift src to check afterwards
     'indexstore-db::git+https://github.com/apple/indexstore-db#branch=main'
 #    'yams::git+https://github.com/jpsim/Yams'
@@ -64,7 +63,6 @@ md5sums=(
     'SKIP'
     'SKIP'
     'SKIP'
-    'SKIP'
 )
 
 
@@ -77,7 +75,6 @@ md5sums=(
 
 prepare () {
     ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-pachtes.patch" )
-    ( cd swift-integration-tests && patch -p1 -i "$srcdir/0003-linux_load_commands-test-sourcekit-lsp-are-python2.patch" )
 }
 
 pkgver() {

@@ -34,7 +34,6 @@ pkgbase = swift-language-git
 	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests#branch=main
 	source = llvm-project::git+https://github.com/apple/llvm-project#branch=swift/main
 	source = 0001-arch-aur-pachtes.patch
-	source = 0003-linux_load_commands-test-sourcekit-lsp-are-python2.patch
 	source = indexstore-db::git+https://github.com/apple/indexstore-db#branch=main
 	source = yams::git+https://github.com/jpsim/Yams#commit=3.0.1
 	source = sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#branch=main
@@ -42,7 +41,6 @@ pkgbase = swift-language-git
 	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#branch=main
 	source = swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#branch=main
 	source = tensorflow-swift-apis::git+https://github.com/tensorflow/swift-apis.git
-	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
