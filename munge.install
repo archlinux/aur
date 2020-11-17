@@ -1,78 +1,13 @@
-_user="munge"
-
 post_install() {
-	# The installation process is described at https://github.com/dun/munge/wiki/Installation-Guide
-
-	# Create munge /var/run/munge dir and secure it
-	mkdir -p /var/run/munge
-	chmod 0755 /var/run/munge
-
-	getent group "${_user}" &>/dev/null
-	if [ $? -ne 0 ]; then
-		echo "Adding ${_user} system group..."
-		groupadd -r ${_user} 1>/dev/null
-	fi
-
-	getent passwd "${_user}" &>/dev/null
-	if [ $? -ne 0 ]; then
-		echo "Adding ${_user} system user..."
-		useradd -r -g ${_user} -d "/var/log/munge" -c "Munge Daemon" ${_user} 1>/dev/null
-	fi
-
-	echo "Locking Munge User Account..."
-	passwd -l munge &>/dev/null
-
-	# Create munge key
 	if [[ ! -e /etc/munge/munge.key && -c /dev/urandom ]]; then
-		echo "Creating random munge key at /etc/munge/munge.key ..."
+		echo "Creating random munge key at /etc/munge/munge.key"
 		dd if=/dev/urandom bs=1 count=1024 of=/etc/munge/munge.key
 		chmod 0400 /etc/munge/munge.key
 	else
 		if [[ -c /dev/urandom ]]; then
-			echo "No munge key is generated since /etc/munge/munge.key already exists."
+			echo "No munge key generated since /etc/munge/munge.key already exists."
 		else
 			echo "Did not create /etc/munge/munge.key since /dev/urandom can not be found."
 		fi
-	fi
-
-	# Set permissions
-	chown ${_user}:${_user} -R /etc/munge
-	chown ${_user}:${_user} -R /var/log/munge
-	chown ${_user}:${_user} -R /var/lib/munge
-	chown ${_user}:${_user} -R /var/run/munge
-}
-
-post_upgrade() {
-	# Set permissions
-	chown ${_user}:${_user} -R /etc/munge
-	chown ${_user}:${_user} -R /var/log/munge
-	chown ${_user}:${_user} -R /var/lib/munge
-	chown ${_user}:${_user} -R /var/run/munge
-
-	if [[ -e /etc/munge/munge.key ]]; then
-		chmod 0400 /etc/munge/munge.key
-	fi
-}
-
-pre_remove() {
-	echo "Stopping and disabling munge using SystemD..."
-	systemctl stop munge
-	systemctl disable munge.service
-}
-
-post_remove() {
-	# Removing obsolete directory
-	rm -rf /var/run/munge
-
-	# Notifying the user of kept dirs and change owner
-	[[ -d /etc/munge ]] && chown root:root -R /etc/munge && echo "Custom configuration-file(s) in /etc/munge/ were kept on your system."
-	[[ -d /var/log/munge ]] && chown root:root -R /var/log/munge && echo "Logfiles were preserved. They reside under /var/log/munge ."
-
-	echo "Removing ${_user} system user and group..."
-	if getent passwd ${_user} >/dev/null 2>&1; then
-		userdel ${_user} 2>/dev/null
-	fi
-	if getent group ${_user} >/dev/null 2>&1; then
-		groupdel ${_user}
 	fi
 }
