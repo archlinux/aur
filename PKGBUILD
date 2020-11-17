@@ -1,14 +1,15 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=libhandy-git
-pkgver=1.0.0.r15.ge52a8be
+pkgver=1.0.2.r8.g8f6c3f6
 pkgrel=1
 pkgdesc="Library full of GTK+ widgets for mobile phones"
 url="https://gitlab.gnome.org/GNOME/libhandy"
-license=(LGPL2.1)
+license=(LGPL)
 arch=(i686 x86_64 armv7h aarch64)
 depends=(gtk3)
 makedepends=(git glade gobject-introspection meson vala)
+checkdepends=(xorg-server-xvfb)
 provides=(libhandy libhandy-1.so)
 conflicts=(libhandy)
 source=("git+$url.git")
@@ -21,11 +22,13 @@ pkgver() {
 
 build() {
     arch-meson libhandy build -Dgtk_doc=true -Dexamples=false
-    ninja -C build
+    meson compile -C build
 }
 
 check() {
-    meson test -C build --print-errorlogs
+    dbus-run-session xvfb-run \
+        -s '-screen 0 1920x1080x24 -nolisten local' \
+        meson test -C build --print-errorlogs
 }
 
 package() {
