@@ -35,11 +35,11 @@ package() {
 
   yorick -batch make.i || return 1
   make DESTDIR=${pkgdir} install || return 1
-  sed -i -e "s|env python|env python2|" ${pkgdir}/usr/share/yorick/2.2/python/spydr.py
+  # sed -i -e "s|env python|env python2|" ${pkgdir}/usr/share/yorick/2.2/python/spydr.py
   mkdir -p ${pkgdir}/usr/bin
   echo 's=sum(strtok(Y_VERSION,".",3)(1)+"."+strtok(Y_VERSION,".",3)(2))' > /tmp/get_yversion
   echo 'f=open("/tmp/yversion","w"); write,f,format="%s",s; close,f;' >> /tmp/get_yversion
   yorick -batch /tmp/get_yversion
   yversion=`cat /tmp/yversion`
-  ln -s /usr/lib/yorick/${yversion}/bin/${_pkgshonam} ${pkgdir}/usr/bin/${_pkgshonam}
+  ln -s /usr/lib/yorick/${yversion}/bin/spydr ${pkgdir}/usr/bin/spydr
 }
