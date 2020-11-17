@@ -1,0 +1,47 @@
+pkgbase = txm-bin
+	pkgdesc = Analyse textométrique de corpus textuels.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://textometrie.ens-lyon.fr
+	install = txm-bin.install
+	arch = x86_64
+	license = GPL
+	depends = blas
+	depends = bzip2
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc>=2.15
+	depends = gtk2-perl
+	depends = hicolor-icon-theme
+	depends = jdk7-openjdk
+	depends = lapack
+	depends = gcc-fortran
+	depends = libjpeg
+	depends = libpaper
+	depends = libpng
+	depends = libpng12
+	depends = libtiff
+	depends = ncurses5-compat-libs
+	depends = libx11
+	depends = libxt
+	depends = pcre
+	depends = po-debconf
+	depends = readline
+	depends = tcl
+	depends = tk
+	depends = unzip
+	depends = webkit2gtk
+	depends = xdg-utils
+	depends = xz
+	depends = zenity
+	depends = zip
+	depends = zlib
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://gitlab.huma-num.fr/txm/txm-software/-/raw/master/files/software/TXM/0.8.1/TXM_0.8.1_2020-06-29_Linux64_installer.deb
+	sha512sums_x86_64 = 63f8df5d686453557f1ae8a2c45d3999b5228b9854bdf01b46c46d365eb087928428103a7db21d2e8b6d0b5c9d2af18f74cc374faa0766380e6c2dc74a8ad48b
+
+pkgname = txm-bin
+

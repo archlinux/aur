@@ -1,0 +1,125 @@
+pre_install() {
+	VERSION=-0.8.1
+
+
+	echo "removing /usr/lib/TXM${VERSION}"
+	if [ -d "/usr/lib/TXM${VERSION}" ]; then
+		rm -rf "/usr/lib/TXM${VERSION}"
+	fi
+
+	echo "removing /usr/share/doc/txm${VERSION}"
+	if [ -d "/usr/share/doc/txm${VERSION}" ]; then
+		rm -rf "/usr/share/doc/txm${VERSION}"
+	fi
+
+	if [ -d "/usr/share/TXM${VERSION}" ]; then
+		rm -rf "/usr/share/TXM${VERSION}"
+	fi
+
+	echo "removing /usr/share/applications/TXM${VERSION}.desktop"
+	if [ -f "/usr/share/applications/TXM${VERSION}.desktop" ]; then
+		rm "/usr/share/applications/TXM${VERSION}.desktop"
+	fi
+
+	echo "removing /usr/share/applications/TXM${VERSION} debug.desktop"
+	if [ -f "/usr/share/applications/TXM${VERSION}.desktop" ]; then
+		rm "/usr/share/applications/TXM${VERSION} debug.desktop"
+	fi
+
+	echo "removing /usr/bin/TXM${VERSION}"
+	if [ -f "/usr/bin/TXM${VERSION}" ]; then
+		rm "/usr/bin/TXM${VERSION}"
+	fi
+
+}
+
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	VERSION=-0.8.1
+
+	TXMINSTALLDIR="/usr/lib/TXM${VERSION}"
+
+	# create txm group
+	cat /etc/group | grep txm
+	if [ $? != 0 ]; then
+		sudo groupadd txm
+		if [ $? != 0 ]; then
+			echo "** TXM install: failed to create 'txm' group" >&2
+		exit 1;
+	fi
+	fi
+
+	# set 'txm' group to TXM install files
+	sudo chgrp -R txm $TXMINSTALLDIR
+	if [ $? != 0 ]; then
+		echo "** TXM install: failed to set the 'txm' group to TXM install files" >&2
+		exit 1;
+	fi
+
+	# and add 'txm' group to the current SUDO_USER
+	for user in `users`
+	do
+		sudo usermod -a -G txm $user
+
+		if [ $? != 0 ]; then
+			echo "usermod -a -G txm $user"
+			echo "** TXM install: failed to set 'txm' group to $user" >&2
+		exit 1;
+	fi
+	done
+
+	# set 'txm' group rights
+	chmod -R g+w $TXMINSTALLDIR
+
+
+	# set CQP executable rights
+	chmod +x $TXMINSTALLDIR/plugins/org.txm.libs.cqp.linux_*/res/linux64/*
+	if [ $? != 0 ]; then
+		echo "** TXM install: Failed to set org.txm.libs.cqp.linux plugin file rights : $TXMINSTALLDIR/plugins/org.txm.libs.cqp.linux_*/res/linux64/*" >&2
+		exit 1;
+	fi
+
+	# set R executable rights
+	chmod -R +x $TXMINSTALLDIR/plugins/org.txm.statsengine.r.core.linux_*/res/linux64/*
+	if [ $? != 0 ]; then
+		echo "** TXM install: Failed to set org.txm.statsengine.r.core.linux plugin file rights : $TXMINSTALLDIR/plugins/org.txm.statsengine.r.core.linux_*/res/linux64/*" >&2
+		exit 1;
+	fi
+
+	# create stamp file
+	touch "$TXMINSTALLDIR/STAMP"
+	if [ $? != 0 ]; then
+		echo "** TXM install: Failed to create install TIMESTAMP file : $TXMINSTALLDIR/STAMP" >&2
+		exit 1;
+	fi
+
+	echo "** TXM install: done, type TXM${VERSION}& in a terminal to launch the application or use your desktop application launcher."
+
+	update-desktop-database -q
+}
+
+pre_upgrade() {
+	pre_install
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+
+	# Remove my changes to the db.
+
+	VERSION=-0.8.1
+
+
+	#echo "removing /usr/lib/TXM${VERSION}"
+	#if [ -d "/usr/lib/TXM${VERSION}" ]; then
+	#	rm -rf "/usr/lib/TXM${VERSION}"
+	#fi
+
+	update-desktop-database -q
+}
