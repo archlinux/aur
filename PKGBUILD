@@ -16,7 +16,7 @@ depends=()
 optdepends=()
 makedepends=()
 options=("!strip")
-conflicts=()
+conflicts=("renoise-redux")
 
 source=("file://rns_rdx_${pkgver//./}_linux.tar.gz")
 md5sums=('SKIP')
@@ -29,14 +29,14 @@ package() {
     cd "$srcdir/rns_rdx_${pkgver//./}_linux"
 
     cd "64bit"
-    mkdir -p "$pkgdir/usr/lib/vst/$pkgname.vst"
-    cp -r "renoise_redux.so" "renoise_redux.res" "$pkgdir/usr/lib/vst/$pkgname.vst"
-    chmod -R 755 "$pkgdir/usr/lib/vst/$pkgname.vst"
+    mkdir -p "$pkgdir/usr/lib/vst/renoise-redux.vst"
+    cp -r "renoise_redux.so" "renoise_redux.res" "$pkgdir/usr/lib/vst/renoise-redux.vst"
+    chmod -R 755 "$pkgdir/usr/lib/vst/renoise-redux.vst"
 
     cd "$srcdir/rns_rdx_${pkgver//./}_linux"
 
     cd "32bit"
-    mkdir -p "$pkgdir/usr/lib32/vst/$pkgname.vst"
-    cp -r "renoise_redux.so" "renoise_redux.res" "$pkgdir/usr/lib32/vst/$pkgname.vst"
-    chmod -R 755 "$pkgdir/usr/lib32/vst/$pkgname.vst"
+    mkdir -p "$pkgdir/usr/lib32/vst/renoise-redux.vst"
+    cp -r "renoise_redux.so" "renoise_redux.res" "$pkgdir/usr/lib32/vst/renoise-redux.vst"
+    chmod -R 755 "$pkgdir/usr/lib32/vst/renoise-redux.vst"
 }
