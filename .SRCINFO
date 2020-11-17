@@ -1,6 +1,6 @@
 pkgbase = deepin-daemon-git
 	pkgdesc = Daemon handling the DDE session settings
-	pkgver = 5.12.0.25.r22.g884264fc
+	pkgver = 5.12.0.25.r24.ge4a82afc
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-daemon
 	install = deepin-daemon-git.install
@@ -46,7 +46,6 @@ pkgbase = deepin-daemon-git
 	optdepends = proxychains-ng: for proxy configuration module
 	provides = deepin-daemon
 	conflicts = deepin-daemon
-	replaces = deepin-daemon
 	source = deepin-daemon-git::git://github.com/linuxdeepin/dde-daemon
 	source = dde-daemon.patch
 	source = deepin-daemon.sysusers

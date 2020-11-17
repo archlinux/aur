@@ -1,7 +1,7 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-daemon-git
-pkgver=5.12.0.25.r22.g884264fc
+pkgver=5.12.0.25.r24.ge4a82afc
 pkgrel=1
 pkgdesc='Daemon handling the DDE session settings'
 arch=('x86_64')
@@ -20,7 +20,6 @@ optdepends=('networkmanager: for network management support'
             'iw: for miracast module'
             'proxychains-ng: for proxy configuration module')
 conflicts=('deepin-daemon')
-replaces=('deepin-daemon')
 provides=('deepin-daemon')
 groups=('deepin-git')
 install="$pkgname.install"
