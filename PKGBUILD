@@ -2,9 +2,9 @@
 
 pkgname="adwaita-dark-darose"
 pkgver=3.28
-pkgrel=1
-pkgdesc="Adwaita theme hacked to use my custom color scheme.  (Dark blues instead of greys.)"
-url="none"
+pkgrel=2
+pkgdesc="Adwaita theme hacked to use my custom color scheme.  (Dark blues instead of greys. Works nicely with wallpaper-lightning)"
+url="http://darose.net/theme-adwaita-dark-darose.png"
 license=('GPL')
 arch=('any')
 makedepends=('glib2' 'gtk3')
