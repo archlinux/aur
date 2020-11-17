@@ -1,14 +1,14 @@
 pkgbase = configuradorfnmt
 	pkgdesc = Tool for request keys and certificates of FNMT
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sede.fnmt.gob.es/descargas/descarga-software/instalacion-software-generacion-de-claves
 	arch = x86_64
 	license = custom
 	depends = java-runtime
 	optdepends = pcsclite: Use smartcard readers
 	noextract = configuradorfnmt-1.0.1-amd64.deb
-	source = configuradorfnmt-1.0.1-amd64.deb::https://www.sede.fnmt.gob.es/documents/10445900/10786525/Configurador_FNMT_1.0.1_amd64.deb
+	source = configuradorfnmt-1.0.1-amd64.deb::https://descargas.cert.fnmt.es/Linux/configuradorfnmt_1.0.1-0_amd64.deb
 	source = configuradorfnmt.desktop
 	source = configuradorfnmt
 	sha256sums = 1c3af58017f2532bb9fdf661fce47c751f8cdb1ee88c6b72864ad75c6f74f338

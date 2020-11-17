@@ -2,14 +2,14 @@
 
 pkgname=configuradorfnmt
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for request keys and certificates of FNMT"
 arch=('x86_64')
 url="https://www.sede.fnmt.gob.es/descargas/descarga-software/instalacion-software-generacion-de-claves"
 license=('custom')
 depends=('java-runtime')
 optdepends=('pcsclite: Use smartcard readers')
-source=("${pkgname}-${pkgver}-amd64.deb::https://www.sede.fnmt.gob.es/documents/10445900/10786525/Configurador_FNMT_${pkgver}_amd64.deb"
+source=("${pkgname}-${pkgver}-amd64.deb::https://descargas.cert.fnmt.es/Linux/configuradorfnmt_${pkgver}-0_amd64.deb"
         "${pkgname}.desktop"
         "${pkgname}")
 noextract=("${pkgname}-${pkgver}-amd64.deb")
