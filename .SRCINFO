@@ -1,0 +1,16 @@
+pkgbase = dynbsp-git
+	pkgdesc = Application for automatically adding, removing and renaming desktops in BSPWM
+	pkgver = 1.0.0.r0.gb3c75bb
+	pkgrel = 1
+	url = https://github.com/j-waters/dynbsp
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-click
+	depends = python-yaml
+	source = dynbsp::git+https://github.com/j-waters/dynbsp.git
+	md5sums = SKIP
+
+pkgname = dynbsp-git
+
