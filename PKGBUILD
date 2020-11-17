@@ -4,7 +4,7 @@ pkgdesc="ROS - franka_description contains URDF files and meshes of Franka Emika
 url='h'
 
 pkgname='ros-melodic-franka-description'
-pkgver='0.6.0'
+pkgver='0.7.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('Apache 2.0')
@@ -26,9 +26,9 @@ depends=(
   ${ros_depends[@]}
 )
 
-_dir="franka_ros-release-release-melodic-franka_description"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/frankaemika/franka_ros-release/archive/release/melodic/franka_description/${pkgver}.tar.gz")
-sha256sums=('e4d3322ea002ca83c536e9c251faaf8e5814fdd6913a90432471e4af75ab57bf')
+_dir="franka_ros-${pkgver}/franka_description"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/frankaemika/franka_ros/archive/${pkgver}.tar.gz")
+sha256sums=('5250d6d05c8535a6a19f13a3ed454e9c28ea1d111c4cbd048a394cb346390f44')
 
 
 build() {
