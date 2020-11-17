@@ -24,23 +24,23 @@ case "$CARCH" in
         source=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-c2-linux_${_arch}.tar.gz")
         ;;
     aarch64) _arch='aarch64'
-        _build=15.28.13
+        _build=15.28.51
         pkgver=15.0.1
-        sha256sums=('4BC0368DBFCC17A7263C60DB1F82DE424D0F8B0BEED4C80139BC65F983DB4FA5')
+        sha256sums=('4EBEE3BB161B03FC4CC470B9BF569B936E6FB9160D9C614DD2C9FF5EA86C8764')
         source=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
         provides=("java-environment=13" "java-runtime=13")
         ;;
     i686) _arch='i686'
-        _build=15.28.13
+        _build=15.28.51
         pkgver=15.0.1
-        sha256sums=('458913990AE85635E5C6E2FCB18490EC6F6DA5DCD54ECA1FC23E91DB602B2262')
+        sha256sums=('97952DCE54084F3831F229D856C5956197530473DCE7031454AE93C87F73CE68')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
         provides=("java-environment=14" "java-runtime=14")
         ;;
     x86_64) _arch='x64'
-        _build=15.28.13
+        _build=15.28.51
         pkgver=15.0.1
-        sha256sums=('F0CB5492B8544A77AE7BCCA50FBF41A4CE538A3AC4AB8BA123A5E1E58D685D1B')
+        sha256sums=('1A3E66F90D2911DC2D4D32BB753622E1F5D629B3A0E3888E8F5EADD4B52E79EE')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
         provides=("java-environment=14" "java-runtime=14")
         ;;
