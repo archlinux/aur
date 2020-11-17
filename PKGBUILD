@@ -3,9 +3,9 @@ starting the SLAM"
 url='https://wiki.ros.org/turtlebot3_slam'
 
 pkgname='ros-melodic-turtlebot3-slam'
-pkgver='1.2.2'
+pkgver='1.2.4'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('Apache-2.0')
 
 ros_makedepends=(
@@ -30,7 +30,7 @@ depends=(
 
 _dir="turtlebot3-${pkgver}/turtlebot3_slam"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ROBOTIS-GIT/turtlebot3/archive/${pkgver}.tar.gz")
-sha256sums=('c652438109ea99008f6d2e950e6cb7f6e67653b8daa1079c825b77d9f52a4e1d')
+sha256sums=('a75bd9e8f007cafcd3a0a7fd80a5428dfec69d13dcbd0a5bc018fac3154649fc')
 
 build() {
 	# Use ROS environment variables.
