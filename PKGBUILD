@@ -1,42 +1,36 @@
-# Maintainer: Caleb Jamison <cbjamo@gmail.com> 
-pkgname=litex-git
-pkgver=4782
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+
+_srcname=litex
+pkgname="python-$_srcname-git"
+pkgver=2020.04.r867.g5097b7ae
 pkgrel=1
-pkgdesc="Migen based SoC"
+pkgdesc="A Migen/MiSoC based Core/SoC builder"
 arch=(any)
 url="https://github.com/enjoy-digital/litex"
 license=('MIT')
-groups=()
-depends=('python' 'migen')
-optdepends=('lm32-elf-binutils: lm32 soft core'
-			'lm32-elf-gcc: lm32 soft core'
-			'riscv64-unknown-elf-binutils: picorv32 and vexriscv soft cores'
-			'riscv64-unknown-elf-gcc: picorv32 and vexriscv soft cores')
-provides=('litex')
-options=(!emptydirs)
-install=
-source=("git+https://github.com/enjoy-digital/litex")
+depends=(python-pyserial python-requests python-pythondata-software-compiler_rt python python-migen python-litex)
+makedepends=(git python-setuptools)
+provides=("${pkgname%%-git}=$pkgver")
+conflicts=("${pkgname%%-git}")
+replaces=("$_srcname-git")
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%%-git}"
-  git rev-list --count HEAD
-}
-
-prepare() {
-  cd "${srcdir}/${pkgname%%-git}"
-  rm -rf test/__init__.py
-  git submodule init
-  git submodule update
+  cd "$_srcname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname%%-git}"
+  cd "$_srcname"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname%%-git}"
-  python setup.py install --root="$pkgdir/" --skip-build --optimize=1
+  cd "$_srcname"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
+# vim:set et ts=2 syntax=PKGBUILD:

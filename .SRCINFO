@@ -1,20 +1,23 @@
-pkgbase = litex-git
-	pkgdesc = Migen based SoC
-	pkgver = 4782
+pkgbase = python-litex-git
+	pkgdesc = A Migen/MiSoC based Core/SoC builder
+	pkgver = 2020.04.r867.g5097b7ae
 	pkgrel = 1
 	url = https://github.com/enjoy-digital/litex
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-pyserial
+	depends = python-requests
+	depends = python-pythondata-software-compiler_rt
 	depends = python
-	depends = migen
-	optdepends = lm32-elf-binutils: lm32 soft core
-	optdepends = lm32-elf-gcc: lm32 soft core
-	optdepends = riscv64-unknown-elf-binutils: picorv32 and vexriscv soft cores
-	optdepends = riscv64-unknown-elf-gcc: picorv32 and vexriscv soft cores
-	provides = litex
-	options = !emptydirs
+	depends = python-migen
+	depends = python-litex
+	provides = python-litex=2020.04.r867.g5097b7ae
+	conflicts = python-litex
+	replaces = litex-git
 	source = git+https://github.com/enjoy-digital/litex
 	sha256sums = SKIP
 
-pkgname = litex-git
+pkgname = python-litex-git
 
