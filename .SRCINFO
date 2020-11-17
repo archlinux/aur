@@ -1,17 +1,20 @@
-pkgbase = litescope-git
-	pkgdesc = A small footprint and configurable Logic Analyzer for LiteX
-	pkgver = 95
-	pkgrel = 2
+pkgbase = python-litescope-git
+	pkgdesc = A small footprint and configurable embedded logic analyzer for LiteX
+	pkgver = 2020.08.r10.g94e2d15
+	pkgrel = 1
 	url = https://github.com/enjoy-digital/litescope
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
 	depends = python
-	depends = migen
-	depends = litex
-	provides = litescope
-	options = !emptydirs
+	depends = python-migen
+	depends = python-litex
+	provides = python-litescope=2020.08.r10.g94e2d15
+	conflicts = python-litescope
+	replaces = litescope-git
 	source = git+https://github.com/enjoy-digital/litescope
 	sha256sums = SKIP
 
-pkgname = litescope-git
+pkgname = python-litescope-git
 
