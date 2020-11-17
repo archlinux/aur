@@ -2,13 +2,13 @@
 pkgname=python-bytecode-git
 _shortname="${pkgname%-git}"
 pkgver=0.11.0.r22.g7aa2df5
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module to modify bytecode"
 arch=(x86_64)
 url="https://github.com/vstinner/bytecode"
 license=('MIT')
 depends=('python-aenum')
-checkdepends=('python-tox')
+checkdepends=('python-pytest')
 provides=("$_shortname")
 conflicts=("$_shortname")
 source=("$_shortname::git+$url")
