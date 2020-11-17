@@ -4,19 +4,22 @@ pkgdesc="ROS - franka_hw provides hardware interfaces for using Franka Emika res
 url='h'
 
 pkgname='ros-melodic-franka-hw'
-pkgver='0.6.0'
+pkgver='0.7.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('Apache 2.0')
 
 ros_makedepends=(
-  ros-melodic-urdf
+  ros-melodic-actionlib
+  ros-melodic-actionlib-msgs
+  ros-melodic-combined-robot-hw
   ros-melodic-controller-interface
+  ros-melodic-franka-msgs
   ros-melodic-hardware-interface
   ros-melodic-joint-limits-interface
-  ros-melodic-roscpp
   ros-melodic-libfranka
-  ros-melodic-catkin
+  ros-melodic-roscpp
+  ros-melodic-urdf
 )
 
 makedepends=(
@@ -25,12 +28,16 @@ makedepends=(
 )
 
 ros_depends=(
-  ros-melodic-urdf
+  ros-melodic-actionlib
+  ros-melodic-actionlib-msgs
+  ros-melodic-combined-robot-hw
   ros-melodic-controller-interface
+  ros-melodic-franka-msgs
   ros-melodic-hardware-interface
   ros-melodic-joint-limits-interface
-  ros-melodic-roscpp
   ros-melodic-libfranka
+  ros-melodic-roscpp
+  ros-melodic-urdf
 )
 
 depends=(
@@ -39,7 +46,7 @@ depends=(
 
 _dir="franka_ros-release-release-melodic-franka_hw"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/frankaemika/franka_ros-release/archive/release/melodic/franka_hw/${pkgver}.tar.gz")
-sha256sums=('92cf7a1b82b71b7248b8ad7ee40f2076bc398bdde9f7733d84ad5fa1d1caa960')
+sha256sums=('1dded229fa715d667606e83727b6a1538d800d5c34f9263ac9ab2d05d447699e')
 
 
 build() {
