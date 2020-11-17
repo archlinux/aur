@@ -2,7 +2,7 @@
 
 _pkgname=mpvqc-gtk
 pkgname=${_pkgname}-git
-pkgver=v0.9.0.g224c0ba
+pkgver=v1.0.2.g7713a1c
 pkgrel=1
 pkgdesc="mpvQC is a libmpv based application for the creation of quality control reports of video files. (GTK version)"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/mpvqc/mpvQC-gtk"
 license=('AGPL3')
 depends=('mpv'
          'python'
-         'python-opengl'
+         'python-glfw'
          'python-gobject'
          )
 makedepends=('git'
