@@ -1,28 +1,35 @@
-# Maintainer: Artem Senichev <artemsen@gmail.com>
+# Maintainer: lmartinez-mirror
+# Contributor: Artem Senichev <artemsen@gmail.com>
 
-pkgname=swayimg
-pkgver=1.1
+pkgname=swayimg-git
+pkgver=1.1.r10.gf0bd709
 pkgrel=1
 pkgdesc='Image viewer for Sway/Wayland'
 arch=('x86_64')
 license=('MIT')
-makedepends=('meson' 'ninja' 'wayland-protocols')
+provides=('swayimg')
+conflicts=('swayimg')
+makedepends=('git' 'meson' 'ninja' 'wayland-protocols')
 depends=('wayland' 'cairo' 'json-c')
 optdepends=('libjpeg: JPEG images support'
             'giflib: GIF images support'
             'librsvg: SVG images support'
-            'libwebp: WebP images support')
+            'libwebp: WebP images support'
+            'bash-completion: bash autocomplete support')
 url='https://github.com/artemsen/swayimg'
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('f30c1b2a4991178daeb9aee886ee212e')
+source=("$pkgname-$pkgver::git+$url.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname-$pkgver"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    meson --prefix=/usr "${srcdir}/build"
-    ninja -C "${srcdir}/build"
+    meson --prefix=/usr build "$pkgname-$pkgver"
+    ninja -C build
 }
 
 package(){
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}/build" install
+    DESTDIR="${pkgdir}" ninja -C build install
 }
