@@ -32,7 +32,6 @@ pkgbase = deepin-api-git
 	depends = blur-effect
 	provides = deepin-api
 	conflicts = deepin-api
-	replaces = deepin-api
 	source = deepin-api-git::git://github.com/linuxdeepin/dde-api/
 	source = deepin-api.sysusers
 	sha512sums = SKIP
