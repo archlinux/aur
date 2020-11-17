@@ -1,7 +1,7 @@
 pkgbase = sunloginclient-cli
 	pkgdesc = Sunlogin Remote Control is a software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(CLI version)
 	pkgver = 10.1.1.28779
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sunlogin.oray.com
 	install = .INSTALL
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = sunloginclient-cli
 	source = http://dl-cdn.oray.com/sunlogin/linux/sunloginclientshell-10.1.1.28779-amd64.deb
 	source = LICENSE::https://service.oray.com/question/1820.html
 	sha256sums = 923a8bfdb1194ee50d8c6dd7b51a0f16ab34b3414c768f5ffa2b49d80874eed5
-	sha256sums = c3ae6883c1f213aa2e6d1204ee698a5eed39efc8cca3016d9553fe9953631e27
+	sha256sums = SKIP
 
 pkgname = sunloginclient-cli
 
