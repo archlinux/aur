@@ -109,7 +109,7 @@ pkgbase = sagemath-git
 	sha256sums = 34f06f9776f84f6998b1350555316e0ffea76ed16e149916970f19ef750a467f
 	sha256sums = 5d00b24c1d36b41b8ea3f07b93fc0e00b42dd84d9bc4e9b3d26e5f2cfeba6405
 	sha256sums = dc507eeb75eae1109273879771b4eb56172b7417e87a0693381106afd7554e04
-	sha256sums = d7e6fdba6b10c13d68bfe07601459aecb32bfa4125fa6d435f6b0e9281177967
+	sha256sums = 84875c90268436cb6a740a4e1bffd70b4895458ef9e1ee268a3c4aa0564e893f
 
 pkgname = sagemath-git
 	optdepends = cython: to compile cython code
