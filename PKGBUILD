@@ -45,10 +45,10 @@ package() {
   # copy everything to pkgdir
   cp --archive build/Popcorn-Time/* "$pkgdir/usr/share/${_pkgname}"
 
-  # Symlink binary to /usr/bin/popcorntime
-  ln --symbolic "../share/${_pkgname}/Popcorn-Time" "$pkgdir/usr/bin/${_pkgname}"
+  # link binary to /usr/bin/popcorntime
+  ln --force --symbolic "../share/${_pkgname}/Popcorn-Time" "$pkgdir/usr/bin/${_pkgname}"
 
-  install -D --mode='644' "$srcdir/popcorntime.desktop" -t "$pkgdir/usr/share/applications"
+  install -D --mode='644' "$srcdir/popcorntime.desktop" --target-directory="$pkgdir/usr/share/applications"
   # https://specifications.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html#directory_layout
   install -D --mode='644' './src/app/images/icon.png' "$pkgdir/usr/share/icons/hicolor/256x256/apps/popcorntime.png"
 }
