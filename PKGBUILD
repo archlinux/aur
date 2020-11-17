@@ -6,11 +6,12 @@ url='h'
 pkgname='ros-melodic-franka-msgs'
 pkgver='0.6.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('Apache 2.0')
 
 ros_makedepends=(
   ros-melodic-message-generation
+  ros-melodic-actionlib-msgs
   ros-melodic-std-msgs
   ros-melodic-catkin
 )
@@ -22,6 +23,7 @@ makedepends=(
 
 ros_depends=(
   ros-melodic-message-runtime
+  ros-melodic-actionlib-msgs
   ros-melodic-std-msgs
 )
 
@@ -31,7 +33,7 @@ depends=(
 
 _dir="franka_ros-release-release-melodic-franka_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/frankaemika/franka_ros-release/archive/release/melodic/franka_msgs/${pkgver}.tar.gz")
-sha256sums=('9d6974c64dcba4efe527816c15b1eaa3334d1eead4d22923e0cba7625710f397')
+sha256sums=('02518bd4ac55e7272a1c5005df9d6ab06de6c6c180db8ec189b483512dc00e42')
 
 
 build() {
