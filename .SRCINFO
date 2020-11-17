@@ -1,0 +1,15 @@
+pkgbase = gnome-backgrounds-lakeside-git
+	pkgdesc = Beautiful dynamic lakeside wallpaper for Gnome
+	pkgver = r3.88323e3
+	pkgrel = 1
+	url = https://github.com/dbasinge/lakeside-dynamic-wallpaper
+	arch = any
+	license = custom
+	makedepends = git
+	depends = gnome-backgrounds
+	provides = gnome-backgrounds-lakeside
+	source = git+https://github.com/dbasinge/lakeside-dynamic-wallpaper
+	md5sums = SKIP
+
+pkgname = gnome-backgrounds-lakeside-git
+
