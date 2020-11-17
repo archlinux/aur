@@ -1,0 +1,17 @@
+pkgbase = python-pythondata-cpu-vexriscv-git
+	pkgdesc = Python module containing verilog files for vexriscv cpu (for use with LiteX)
+	pkgver = 2020.08.r1.g2962f4a
+	pkgrel = 1
+	url = https://github.com/litex-hub/pythondata-cpu-vexriscv
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-pythondata-cpu-vexriscv=2020.08.r1.g2962f4a
+	conflicts = python-pythondata-cpu-vexriscv
+	source = git+https://github.com/litex-hub/pythondata-cpu-vexriscv
+	sha256sums = SKIP
+
+pkgname = python-pythondata-cpu-vexriscv-git
+
