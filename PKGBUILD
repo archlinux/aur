@@ -3,7 +3,7 @@
 # Contributor: Christian Höppner <chris@mkaito.com>
 
 pkgname=drone-cli
-pkgver=1.2.2
+pkgver=1.2.4
 pkgrel=1
 pkgdesc='Drone CLI'
 arch=('any')
@@ -12,7 +12,7 @@ url='http://docs.drone.io/cli-installation/'
 license=('Apache')
 makedepends=('go')
 source=("https://github.com/drone/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('b4058332a822ed189b4198e8dc712d62e303af7407d20afac8a6943b90ff1085')
+sha256sums=('a69cec4c134270a79d877621a7fcbbfbcb4c18a5afa00f902b16a638963af2fe')
 
 build() {
   cd "${pkgname}-${pkgver}"
