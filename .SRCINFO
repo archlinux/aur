@@ -1,0 +1,17 @@
+pkgbase = screego-server
+	pkgdesc = screen sharing for developers
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/screego/server
+	arch = x86_64
+	arch = arm64
+	license = GPL3
+	makedepends = go
+	makedepends = yarn
+	optdepends = nginx: to allow reverse proxy connections
+	provides = screego-server
+	source = https://github.com/screego/server/archive/v1.1.1.tar.gz
+	sha256sums = 8f698e8546bf3b21011d75fd498e770c104ee8a7783f93aaa72571708be0e30a
+
+pkgname = screego-server
+
