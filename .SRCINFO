@@ -10,7 +10,7 @@ pkgbase = tailscale
 	makedepends = go
 	depends = glibc
 	backup = etc/default/tailscaled
-	source = tailscale::git+http://github.com/tailscale/tailscale.git#tag=v1.2.8
+	source = tailscale::git+https://github.com/tailscale/tailscale.git#tag=v1.2.8
 	sha256sums = SKIP
 
 pkgname = tailscale
