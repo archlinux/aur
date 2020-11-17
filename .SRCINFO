@@ -1,6 +1,6 @@
 pkgbase = qualcoder
 	pkgdesc = Qualitative data analysis software written in python3 and pyqt5
-	pkgver = 1.9
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/ccbogel/QualCoder
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = qualcoder
 	depends = python-chardet
 	depends = python-openpyxl
 	depends = python-ebooklib
-	source = qualcoder-1.9.deb::https://github.com/ccbogel/QualCoder/releases/download/1.9/qualcoder-1.9.deb
-	sha256sums = f6b0538e0793ce2bf0c61fed516ad3851b2287c5cba8c2dc7c7cb4dc945e43fc
+	source = qualcoder-2.1.deb::https://github.com/ccbogel/QualCoder/releases/download/2.1/qualcoder-2.1.deb
+	sha256sums = 4a47ae07558b0180126c84d29d2a35044cb5a3aaef7ec7f4612323793f30f466
 
 pkgname = qualcoder
 
