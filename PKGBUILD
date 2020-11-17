@@ -1,37 +1,36 @@
-# Maintainer: Caleb Jamison <cbjamo@gmail.com> 
-pkgname=litesdcard-git
-pkgver=188
-pkgrel=2
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+
+_srcname=litesdcard
+pkgname="python-$_srcname-git"
+pkgver=2020.08.r14.g9e267a5
+pkgrel=1
 pkgdesc="A small footprint and configurable SDCard core for LiteX"
 arch=(any)
 url="https://github.com/enjoy-digital/litesdcard"
 license=('MIT')
-groups=()
-depends=('python' 'migen' 'litex')
-provides=('litesdcard')
-options=(!emptydirs)
-install=
-source=("git+https://github.com/enjoy-digital/litesdcard")
+depends=(python python-migen python-litex)
+makedepends=(git python-setuptools)
+provides=("${pkgname%%-git}=$pkgver")
+conflicts=("${pkgname%%-git}")
+replaces=("$_srcname-git")
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%%-git}"
-  git rev-list --count HEAD
-}
-
-prepare() {
-  cd "${srcdir}/${pkgname%%-git}"
-  rm -rf test/__init__.py
-  rm -rf example_designs/__init__.py
+  cd "$_srcname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname%%-git}"
+  cd "$_srcname"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname%%-git}"
-  python setup.py install --root="$pkgdir/" --skip-build --optimize=1
+  cd "$_srcname"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
+# vim:set et ts=2 syntax=PKGBUILD:

@@ -1,17 +1,20 @@
-pkgbase = litesdcard-git
+pkgbase = python-litesdcard-git
 	pkgdesc = A small footprint and configurable SDCard core for LiteX
-	pkgver = 188
-	pkgrel = 2
+	pkgver = 2020.08.r14.g9e267a5
+	pkgrel = 1
 	url = https://github.com/enjoy-digital/litesdcard
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
 	depends = python
-	depends = migen
-	depends = litex
-	provides = litesdcard
-	options = !emptydirs
+	depends = python-migen
+	depends = python-litex
+	provides = python-litesdcard=2020.08.r14.g9e267a5
+	conflicts = python-litesdcard
+	replaces = litesdcard-git
 	source = git+https://github.com/enjoy-digital/litesdcard
 	sha256sums = SKIP
 
-pkgname = litesdcard-git
+pkgname = python-litesdcard-git
 
