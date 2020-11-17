@@ -1,40 +1,30 @@
-# Maintainer: bbbb mxk1 at protonmail dot com
+# Maintainer: bbbb mxk1 (at) protonmail (dot) com
 # Contributor: ----
 
 pkgname=btrustbiss
-pkgver=2.18
-pkgrel=4
+pkgver=2.22
+pkgrel=1
 pkgdesc="B-Trust browser independent signing service."
 arch=('any')
 url="https://www.b-trust.org"
 license=('GPL')
-groups=()
 backup=('etc/xdg/autostart/btrust_biss.desktop')
+source=("https://www.b-trust.bg/attachments/BtrustPrivateFile/24/docs/B-TrustBISS.tar")
+sha256sums=('01584bac48f764a228d30143e43cbef9d102b5f408c48a786cd697967ce975c9')
+depends=('fakeroot' 'binutils' 'pcsclite')
 options=('!strip' '!emptydirs' '!makeflags')
-source=("https://www.b-trust.bg/attachments/BtrustPrivateFile/61/docs/Ubuntu-18-04-v-2-18.tar")
-sha256sums=('2d89ff9d9f86e24932f237c9e91fcc560d676befc26e68b96b4ea22b67f91e1e')
-noextract=()
-depends=('pcsclite')
-conflicts=()
-replaces=()
-backup=()
 
 package(){
-
     # Extract package
-    tar xvf Ubuntu-18-04-v-2-18.tar
-    ar xv "Ubuntu_18.04 v.2.18/Ubuntu_18.04 v.2.18"/btrustbiss.deb
+    tar xvf B-TrustBISS.tar
+    ar xv btrustbiss.deb
 
-    # Extract package data
+    # Install package
     tar Jxf data.tar.xz -C "$pkgdir"
-
-    # fix for wrong permissions on subdirs:
-    find "$pkgdir" -type d -exec chmod 755 {} \;
     
-    # install package
-    install -dm644 "$pkgdir" "$pkgdir"/$pkgname
+    # Fix for wrong permissions on subdirs
+    find "$pkgdir" -type d -exec chmod 755 {} \;
 
-    # edit btrust_biss file
-    sed -i "s|/x86_64-linux-gnu||g" ""$pkgdir"/usr/bin/btrust_biss"
-	
+    # Edit btrust_biss file
+    sed -i "s|/x86_64-linux-gnu||g" "$pkgdir/usr/bin/btrust_biss"
 }
