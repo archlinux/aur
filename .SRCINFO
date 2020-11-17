@@ -1,0 +1,15 @@
+pkgbase = stimmtausch-git
+	pkgdesc = terminal-based MUCK client written in Go
+	pkgver = r246.575a286
+	pkgrel = 1
+	url = https://stimmtausch.com
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = stimmtausch-git::git+https://github.com/makyo/stimmtausch.git
+	b2sums = SKIP
+
+pkgname = stimmtausch-git
+
