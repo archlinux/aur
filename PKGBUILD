@@ -10,7 +10,7 @@
 
 pkgbase=calibre-git
 pkgname=calibre-git
-pkgver=5.5.0.r2.g2d9dd81f46
+pkgver=5.5.0.r16.g989577736f
 pkgrel=1
 _dictionaries_commit="d6160c5e006089c711f3fec6eb4e2ade60a4150c"
 pkgdesc="Ebook management application"
@@ -33,12 +33,10 @@ replaces=('calibre-common-git' 'calibre-python3-git')
 source=("git+https://github.com/kovidgoyal/${pkgbase%-git}.git?signed"
         "git+https://github.com/kovidgoyal/${pkgbase%-git}-translations.git?signed"
         "dictionaries-${_dictionaries_commit}.tar.gz::https://github.com/LibreOffice/dictionaries/archive/${_dictionaries_commit}.tar.gz"
-        "0001-Do-not-build-WIP-espeak-plugin-before-it-is-ready.patch"
         "user-agent-data.json")
 sha256sums=('SKIP'
             'SKIP'
             '7b48eda270f1ba3cbc20462f56c04d964bb36ecaf6237740e06c57f8f2cc0fc5'
-            '8ed4a9578d3dbbc4ada4dd08f318c861012f45260cdd68caadbeb29b12d58a05'
             'd17a1fff7bf441db8d1ec826afd8661352869ec4e5edd2a17f917ef2fbf01043')
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
 
@@ -55,9 +53,6 @@ prepare(){
 
     # Link translations to build dir
     ln -sfT ../calibre-translations translations
-
-    # wait until this is functional before building it
-    patch -p1 -i ../0001-Do-not-build-WIP-espeak-plugin-before-it-is-ready.patch
 
     # Desktop integration (e.g. enforce arch defaults)
     # Use uppercase naming scheme, don't delete config files under fakeroot.
@@ -99,7 +94,10 @@ check() {
     #
     # test_ajax_book segfaults on qt >=5.15.1 inside of qt itself, but only in nspawn containers
     # see https://github.com/kovidgoyal/calibre/commit/28ef780d9911d598314d98bdfc3b1c88a94681df
-    LANG='en_US.UTF-8' xvfb-run python setup.py test --exclude-test-name=test_ajax_book
+    #
+    # test_speech_dispatcher is merely testing if a runtime-optional feature works, but is not
+    # operative yet e.g. only tries checking if the optdepend is importable
+    LANG='en_US.UTF-8' xvfb-run python setup.py test --exclude-test-name=ajax_book --exclude-test-name=speech_dispatcher
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = calibre-git
 	pkgdesc = Ebook management application
-	pkgver = 5.5.0.r2.g2d9dd81f46
+	pkgver = 5.5.0.r16.g989577736f
 	pkgrel = 1
 	url = https://calibre-ebook.com/
 	arch = i686
@@ -61,13 +61,11 @@ pkgbase = calibre-git
 	source = git+https://github.com/kovidgoyal/calibre.git?signed
 	source = git+https://github.com/kovidgoyal/calibre-translations.git?signed
 	source = dictionaries-d6160c5e006089c711f3fec6eb4e2ade60a4150c.tar.gz::https://github.com/LibreOffice/dictionaries/archive/d6160c5e006089c711f3fec6eb4e2ade60a4150c.tar.gz
-	source = 0001-Do-not-build-WIP-espeak-plugin-before-it-is-ready.patch
 	source = user-agent-data.json
 	validpgpkeys = 3CE1780F78DD88DF45194FD706BC317B515ACE7C
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 7b48eda270f1ba3cbc20462f56c04d964bb36ecaf6237740e06c57f8f2cc0fc5
-	sha256sums = 8ed4a9578d3dbbc4ada4dd08f318c861012f45260cdd68caadbeb29b12d58a05
 	sha256sums = d17a1fff7bf441db8d1ec826afd8661352869ec4e5edd2a17f917ef2fbf01043
 
 pkgname = calibre-git
