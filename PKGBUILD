@@ -2,13 +2,15 @@
 
 pkgname=hlbsp-git
 _pkgbase=hlbsp
-pkgver=0.4.5
-pkgrel=2
+pkgver=0.4.6
+pkgrel=1
 pkgdesc="Half-Life's .BSP maps viewer."
 arch=('any')
 url="https://github.com/r4v3n6101/hlbsp"
 license=('GPL')
 makedepends=('rust' 'cargo' 'git')
+provides=("${_pkgbase}")
+conflicts=("${_pkgbase}")
 source=("${pkgname}::git+https://github.com/r4v3n6101/hlbsp")
 md5sums=('SKIP')
 
