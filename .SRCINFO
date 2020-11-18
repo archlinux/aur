@@ -23,6 +23,7 @@ pkgbase = sway-nosystemd-minimal-git
 	optdepends = grim: Screenshot utility
 	optdepends = i3status: Status line
 	optdepends = mako: Lightweight notification daemon
+	optdepends = polkit: polkit support
 	optdepends = slurp: Select a region
 	optdepends = swayidle: Idle management daemon
 	optdepends = swaylock: Screen locker
