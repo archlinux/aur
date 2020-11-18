@@ -3,19 +3,27 @@
 
 pkgbase=python-tarantool
 pkgname=(python-tarantool python2-tarantool)
-pkgver=0.6.6
+pkgver=0.6.6.r25.gb267643
+_commit=b267643a242e2e6abc013539395b89dd235b798f
 pkgrel=1
 pkgdesc='Python client library for Tarantool 1.6 Database'
 arch=('any')
 url='https://github.com/tarantool/tarantool-python'
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-msgpack' 'python2-msgpack'
-             'python-yaml' 'python2-yaml' 'python-six' 'python2-six')
+             'python-yaml' 'python2-yaml' 'python-six' 'python2-six' 'git')
 checkdepends=('tarantool')
-source=("https://pypi.io/packages/source/t/tarantool/tarantool-$pkgver.tar.gz")
-sha512sums=('8b1776a1d4df050b7cd831f81787972de3b4a20a9d1f2883f6b969fad4a354896f088328806134d119f8120f252140333fcb9d555500bc814fbd3aea215d5f6b')
+#source=("https://pypi.io/packages/source/t/tarantool/tarantool-$pkgver.tar.gz")
+source=("git+https://github.com/tarantool/tarantool-python#commit=$_commit")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd tarantool-$pkgver
+  git describe | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
+  mv tarantool-python tarantool-$pkgver
   sed -i 's/msgpack-python/msgpack/g' tarantool-$pkgver/setup.py
   cp -a tarantool-$pkgver{,-py2}
 }
