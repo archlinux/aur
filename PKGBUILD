@@ -10,7 +10,7 @@ license=('APACHE')
 depends=('libnotify' 'libxtst' 'nss' 'libxss')
 
 source=(
-    "https://github.com/klinker24/messenger-desktop/releases/download/v${pkgver}/pulse-sms-${pkgver}-amd64.deb"
+    "https://github.com/maplemedia/pulse-sms-desktop/releases/download/v${pkgver}/pulse-sms-${pkgver}-amd64.deb"
 )
 sha512sums=(
     "bd27817cbe5819f557ca3c212c2726a2f742bc0f6d0a5a073edd0b038b124617d973c384c2ed76530d071404b77dd0bf404d255198885e649c35582f4305672d"
