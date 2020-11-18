@@ -1,8 +1,8 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=lib32-libcap-ng
 _pkgbasename=libcap-ng
-pkgver=0.8
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Library making programming with POSIX capabilities easier than traditional libcap (32-bit)'
 url='https://people.redhat.com/sgrubb/libcap-ng/'
@@ -11,7 +11,7 @@ license=('LGPL2.1')
 depends=('lib32-glibc' 'libcap-ng')
 makedepends=('gcc-multilib')
 source=(https://github.com/stevegrubb/libcap-ng/archive/v${pkgver}/${_pkgbasename}-${pkgver}.tar.gz)
-sha512sums=('47b079849ee051544e74b006bcfff1f7965c79099db52f39f49e3f138137748712df2ef88f3fbd9715d44d9f2d118593f557dba1ede45a0168e7c813a4e65f46')
+sha512sums=('a246fbaabb0f9a203ce8395c9e968e6ea09be24ecbadeff7bc7c0e2f0f20cecd3bacb90e3ba6c4d13e58609751717f29b6a956715d0865bda8dd6c8b996d11cc')
 
 prepare() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
