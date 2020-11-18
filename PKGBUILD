@@ -12,12 +12,6 @@ makedepends=('gcc8' 'imagemagick' 'cloc' 'cmake' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/terminalpp/terminalpp/archive/v${pkgver}.tar.gz")
 sha256sums=('f3153676f17404589c0299a726b7f36de2a8183b4e497d02133a0e547b72fd56')
 
-prepare() {
-  cd "${pkgname}-${pkgver}"
-  sed -i "4s|.*|Icon=terminalpp.png|" resources/terminalpp.desktop
-  sed -i "9s|.*|Comment=$pkgdesc|" resources/terminalpp.desktop
-}
-
 build() {
   cd "${pkgname}-${pkgver}"
   mkdir -p build/release
