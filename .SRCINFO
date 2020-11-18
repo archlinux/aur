@@ -35,6 +35,7 @@ pkgbase = xmobar-alsa-git
 	depends = haskell-extensible-exceptions
 	provides = xmobar
 	conflicts = xmobar
+	conflicts = xmobar-git
 	source = xmobar-alsa-git::git+https://github.com/jaor/xmobar.git
 	sha512sums = SKIP
 

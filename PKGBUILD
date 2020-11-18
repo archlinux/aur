@@ -20,7 +20,7 @@ depends=('libxft' 'libxinerama' 'libxrandr' 'libxpm' 'ghc-libs' 'haskell-x11'
          'wireless_tools' 'haskell-text' 'haskell-async' 'haskell-alsa-core'
          'haskell-alsa-mixer' 'haskell-extensible-exceptions')
 makedepends=('git' 'ghc')
-conflicts=('xmobar')
+conflicts=('xmobar' 'xmobar-git')
 provides=('xmobar')
 source=(${pkgname}::git+https://github.com/jaor/xmobar.git)
 sha512sums=('SKIP')
