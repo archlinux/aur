@@ -3,7 +3,7 @@
 
 pkgname=dataloader
 pkgver=50.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An easy to use graphical tool that helps you to get your data into Salesforce objects"
 arch=('i686' 'x86_64')
 url="https://developer.salesforce.com/page/Data_Loader"
@@ -22,7 +22,7 @@ md5sums_x86_64=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git checkout "tags/V$pkgver"
+  git checkout "tags/v$pkgver"
   echo "$pkgver"
 }
 
