@@ -4,11 +4,12 @@
 
 _pkgname='osmnx'
 pkgname="python-${_pkgname}"
-pkgver=0.16.1
+pkgver=0.16.2
 pkgrel=1
 pkgdesc='Retrieve, model, analyze, and visualize OpenStreetMap street networks and other spatial data'
 arch=('any')
 url='https://github.com/gboeing/osmnx'
+_url_pypi='https://pypi.org/project/osmnx'
 license=('MIT')
 depends=('python'
         'python-descartes'
@@ -25,9 +26,8 @@ depends=('python'
         'python-scipy'
         'python-shapely')
 makedepends=('python-setuptools')
-provides=("${_pkgname}")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('92b12a5a15e77eaa0e9822e1ebcb323eb8603257978c1fd394f9f33f508e59b3')
+sha256sums=('45c94896ca068653b2c233db459d03d8070a813df6cd8d95143f0714f8e0e7d6')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -37,8 +37,8 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
-  install -Dm644 'LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dvm644 'LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
