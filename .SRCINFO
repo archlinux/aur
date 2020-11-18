@@ -13,7 +13,6 @@ pkgbase = sway-nosystemd-minimal-git
 	depends = cairo
 	depends = json-c
 	depends = pango
-	depends = polkit
 	depends = pcre
 	depends = swaybg-git
 	depends = ttf-font

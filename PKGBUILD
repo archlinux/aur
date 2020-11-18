@@ -19,7 +19,7 @@ depends=(
 #	"gdk-pixbuf2"
 	"json-c"
 	"pango"
-	"polkit"
+#	"polkit"
 	"pcre"
 	"swaybg-git"
 	"ttf-font"
