@@ -1,7 +1,7 @@
 # Maintainer: DingYuan <justforlxz@gmail.com>
 
 pkgname=golang-github-linuxdeepin-go-dbus-factory-git
-pkgver=1.8.0.26.r3.ga395637
+pkgver=1.8.0.26.r4.g0796ed5
 pkgrel=1
 pkgdesc='GO DBus factory for DDE'
 arch=('any')
