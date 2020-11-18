@@ -9,7 +9,7 @@ pkgdesc="Simple terminal image viewer"
 arch=('x86_64')
 url="https://github.com/atanunq/viu"
 license=('MIT')
-makedepends=('cargo')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('22d8a4260552d49e8cf269a52262b40f02f4be84e799aab111cdac4ff57e2998ed6c61975ed7e90ecd25ad163aee4c3c9662720c119fb9134452396b76c21665')
 
