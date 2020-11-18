@@ -1,8 +1,9 @@
 # Maintainer: Ian Young <ian at iangreenleaf dot com>
 
 pkgname=gigalixir-cli
-pkgver=1.2.0
-pkgrel=2
+_name=gigalixir
+pkgver=1.2.1
+pkgrel=1
 epoch=
 pkgdesc="CLI tool for Gigalixir hosting service"
 arch=('any')
@@ -18,29 +19,24 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest-runner'
   'python-httpretty'
   'python-sure')
-source=("https://github.com/gigalixir/$pkgname/archive/v$pkgver.tar.gz"
-  "gigalixir_test.patch")
-sha256sums=("b536afcc8bb96cadf8d9172180450677d2146fdbd4bc43cc4245d04210e3eabf"
-  "4a5164f799d7206057a6438c3bf8909a9142c3350f250b5cd12951711bdcceeb")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=("3c1b11813487504edb8f19dd3f1c643d8524da5c45e038258eed041807968f60")
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_name-$pkgver"
   GIGALIXIR_ENV=test python setup.py test
 }
 
 prepare() {
-  cd "$pkgname-$pkgver"
-  sed -e 's/stripe~=1.51/stripe>=1.28/g' -i setup.py
-  sed -e 's/~=/>=/g' -i setup.py
-  patch --strip=1 < ../gigalixir_test.patch
+  cd "$_name-$pkgver"
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$_name-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$_name-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
