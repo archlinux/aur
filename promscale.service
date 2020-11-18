@@ -1,0 +1,19 @@
+[Unit]
+Description=Promscale service
+Documentation=https://github.com/timescale/promscale
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=promscale
+Group=promscale
+Restart=on-failure
+EnvironmentFile=-/etc/conf.d/promscale
+ExecStart=/usr/bin/promscale $PROMSCALE_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+NoNewPrivileges=true
+ProtectSystem=true
+
+[Install]
+WantedBy=multi-user.target
+
