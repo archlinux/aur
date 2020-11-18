@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=mevn-cli
-pkgver=1.7.5
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Light speed setup for MEVN(Mongo Express Vue Node) Apps"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 noextract=("v${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/madlabsinc/mevn-cli/archive/v${pkgver}.tar.gz")
-sha256sums=('24f717bdc64c29370bcbcbbd70108c7e417b36bc03f6a2e12056c82c5a3e0397')
+sha256sums=('f2479f65f19210657e209b3581f6ef52ee77b1b207fe90511f47c15c82521896')
 
 package() {
   npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
