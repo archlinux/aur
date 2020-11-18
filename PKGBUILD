@@ -2,7 +2,7 @@
 
 _pkgname='QRit'
 pkgname="${_pkgname,,}"
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Create awesome QR codes'
 arch=('x86_64')
@@ -11,16 +11,16 @@ license=('GPL3')
 depends=('granite' 'qrencode')
 makedepends=('meson' 'vala')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('d624b86b1f631c3f31c256d072f31a6c3f9af8d0ecba22d52f30beb96c6f6cb5')
+sha256sums=('337c59edf403339e0e8e67d71dffc2d20bc2fc1d2ad76fa9ba1bf7edde0cc6b3')
 
 build() {
-  arch-meson "${_pkgname}-${pkgver}" build
-  meson compile -C build
+  arch-meson "${_pkgname}-${pkgver}" 'build'
+  meson compile -C 'build'
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${_pkgname}-${pkgver}/README.md"
+  DESTDIR="${pkgdir}" meson install -C 'build'
+  install -Dvm644 "${_pkgname}-${pkgver}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
