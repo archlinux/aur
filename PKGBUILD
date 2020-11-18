@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/kdheepak/taskwarrior-tui"
 license=('MIT')
 depends=('task')
-makedepends=('cargo')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('f6571b53392e417449ea41c707266edc62ffea1dabfcde876fdaa8ee25a53ba1404981ed774ee55515c79575c9ca49e5aa9acc6fdd927520a74831c33fdae4e8')
 
