@@ -1,6 +1,6 @@
 pkgbase = grav
 	pkgdesc = Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS (without Admin plugin)
-	pkgver = 1.7.0.rc.10
+	pkgver = 1.6.28
 	pkgrel = 1
 	url = https://getgrav.org
 	install = grav.install
@@ -15,8 +15,8 @@ pkgbase = grav
 	optdepends = php-fpm: FastCGI Process Manager
 	optdepends = php-apache: Apache SAPI for PHP
 	provides = grav
-	source = grav-1.7.0.rc.10.zip::https://github.com/getgrav/grav/archive/1.7.0-rc.10/grav-v1.7.0-rc.10.zip
-	sha256sums = 1afed34286e5c84a9f7c8f04499deb0ff8aa4b75786e0933eeccc64ba532a66a
+	source = grav-1.6.28.zip::https://github.com/getgrav/grav/archive/1.6.28/grav-v1.6.28.zip
+	sha256sums = 633ca76365e76c8ff0be7d58ad7ce1db5ab51e3b64ff9d1d5a5659561191489d
 
 pkgname = grav
 
