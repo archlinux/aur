@@ -1,0 +1,14 @@
+pkgbase = python-pyminiracer
+	pkgdesc = Python Mini Racer
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/sqreen/PyMiniRacer
+	arch = any
+	license = ISC
+	makedepends = python-setuptools
+	depends = python
+	source = python-pyminiracer-0.4.0.tar.gz::https://github.com/sqreen/PyMiniRacer/archive/v0.4.0.zip
+	sha256sums = 1142ff18846a37342a248169804c1d52079ac9bc4305fd64cfeab4ceaafb1493
+
+pkgname = python-pyminiracer
+
