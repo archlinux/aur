@@ -6,7 +6,7 @@
 
 pkgname=ocaml-sqlite3
 _pkgname=sqlite3-ocaml
-pkgver=5.0.1
+pkgver=5.0.2
 pkgrel=1
 arch=('x86_64')
 license=('MIT')
@@ -15,7 +15,7 @@ url='https://github.com/mmottl/sqlite3-ocaml'
 depends=('ocaml' 'ocaml-base' 'ocaml-stdio' 'sqlite3')
 makedepends=('ocaml-findlib' 'dune')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mmottl/sqlite3-ocaml/archive/${pkgver}.tar.gz")
-sha256sums=('f535982dac06801a0ffd0eb7242323ea72c23e093e0397c73b5ac58f6564d57d')
+sha256sums=('345811e9f6dc0478e0b5cc82bd75fc2859fab2a96e8fde424c95df23f4267f9c')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
