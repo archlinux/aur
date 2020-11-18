@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=flipt-bin
-pkgver=0.13.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A modern feature flag solution'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://flipt.io"
 license=('GPL3')
 provides=('flipt')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/markphelps/flipt/releases/download/v${pkgver}/flipt_${pkgver}_linux_x86_64.tar.gz")
-sha256sums=('38cc981d99be7b5a86ec195ea74af7959f7ef0b9fe7e93c7f4591071c17213a4')
+sha256sums=('bd1712ff824aa4162d8a61cc201bef9ff994ccdda8d5e0e1df4531e7e58d5175')
 
 package() {
   install -Dm755 "${srcdir}"/flipt "${pkgdir}/usr/bin/flipt"
