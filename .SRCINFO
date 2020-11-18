@@ -1,24 +1,22 @@
 pkgbase = retdec-git
-	pkgdesc = RetDec is a retargetable machine-code decompiler based on LLVM.
-	pkgver = 20200417_bc01f3b0
+	pkgdesc = A retargetable machine-code decompiler based on LLVM
+	pkgver = v4.0.r251.g31ffc7c8
 	pkgrel = 1
 	url = https://retdec.com/
-	arch = x86
+	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = perl
 	makedepends = cmake
-	makedepends = flex
-	makedepends = bison
-	depends = graphviz
-	depends = bc
-	depends = upx
-	depends = wget
+	depends = openssl
 	depends = python
+	depends = zlib
+	optdepends = upx
+	optdepends = graphviz
 	provides = retdec
 	conflicts = retdec
 	source = retdec-git::git+https://github.com/avast/retdec.git
-	sha1sums = SKIP
+	sha256sums = SKIP
 
 pkgname = retdec-git
+
