@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=werckmeister-bin
-pkgver=0.1.53
+pkgver=0.1.55
 pkgrel=1
 pkgdesc="An open source Sheet Music MIDI Compiler"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('lua'
          'jack'
          'alsa-lib')
 source=("${pkgname}-${pkgver}.sh::https://github.com/werckme/werckmeister/releases/download/v${pkgver}/werckmeister-${pkgver}-Linux.sh")
-sha256sums=('a739e76fbcbfe52a9b37f648003f864c0b234425de30c9fd185ad28d69b9ccd6')
+sha256sums=('34adb67a1a35d488084da4afe55a97548ac37add5d7934bcba2b0c21388f92e0')
 
 package () {
   install -d "${pkgdir}/usr"
