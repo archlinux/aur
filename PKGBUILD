@@ -2,8 +2,8 @@
 
 pkgname='imgcat-bin'
 _pkgname='imgcat'
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='Tool to output images in the terminal'
 url='https://github.com/trashhalo/imgcat'
 arch=('x86_64' 'i686')
@@ -18,10 +18,10 @@ source_i686=(
 )
 
 sha256sums_x86_64=(
-  '6ef8069c995bee68b0ee1a23abb6f4d69e96980c66b12707d81feb9a974d4a80'
+  'c116bc543ab0d08a1b594c79c929802f5e245f96a5d93abf41fd77d729596393'
 )
 sha256sums_i686=(
-  '4ac20c7db042b73bd22219b47794b8f4333ec22cec1d8547f6dc4dc7f76c2ba7'
+  '69e38197c34969cec0edcb7d05a4e041e46c2f1400dfa19ea4bb26826f4c6b91'
 )
 
 package() {
