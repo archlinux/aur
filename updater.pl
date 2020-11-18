@@ -10,7 +10,7 @@ my $installer = "";
 
 GetOptions("installer=s" => \$installer);
 
-unless ($installer =~ /(cewe-fotoservice|Mein_CEWE_FOTOBUCH)/){
+unless ($installer =~ /(CEWE_Fotowelt|Mein_CEWE_FOTOBUCH)/){
 	print "\033[1;31mNo AUR package available for this update ('$installer').\033[0m"
 }else{
 
