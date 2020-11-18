@@ -1,0 +1,795 @@
+From 5f3ff81f0bae6912ffc4a947b9ba40893eab4829 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Valentin=20H=C4=83loiu?= <valentin.haloiu@gmail.com>
+Date: Tue, 20 Oct 2020 20:24:52 +0200
+Subject: [PATCH] fix: add Wayland support (#26022)
+
+---
+ chromium_src/BUILD.gn                         |  13 +-
+ filenames.gni                                 |  27 +-
+ shell/browser/api/electron_api_base_window.cc |   2 +-
+ shell/browser/electron_browser_main_parts.cc  |  46 +++-
+ shell/browser/electron_browser_main_parts.h   |   3 +
+ shell/browser/native_window.cc                |   2 +-
+ shell/browser/native_window_views.cc          | 260 ++++++++++--------
+ shell/browser/ui/file_dialog_gtk.cc           |  23 +-
+ shell/browser/ui/gtk/menu_util.cc             |  18 +-
+ shell/browser/ui/message_box_gtk.cc           |  24 +-
+ shell/browser/ui/views/menu_bar.cc            |   6 +-
+ shell/browser/ui/views/menu_bar.h             |   2 +-
+ 12 files changed, 269 insertions(+), 157 deletions(-)
+
+diff --git a/chromium_src/BUILD.gn b/chromium_src/BUILD.gn
+index 19271e18c..b0f5f9ee6 100644
+--- a/chromium_src/BUILD.gn
++++ b/chromium_src/BUILD.gn
+@@ -93,9 +93,18 @@ static_library("chrome") {
+ 
+   if (is_linux) {
+     sources += [ "//chrome/browser/icon_loader_auralinux.cc" ]
++    if (use_x11) {
++      sources += [
++        "//chrome/browser/extensions/global_shortcut_listener_x11.cc",
++        "//chrome/browser/extensions/global_shortcut_listener_x11.h",
++      ]
++    } else if (use_ozone) {
++      sources += [
++        "//chrome/browser/extensions/global_shortcut_listener_ozone.cc",
++        "//chrome/browser/extensions/global_shortcut_listener_ozone.h",
++      ]
++    }
+     sources += [
+-      "//chrome/browser/extensions/global_shortcut_listener_x11.cc",
+-      "//chrome/browser/extensions/global_shortcut_listener_x11.h",
+       "//chrome/browser/ui/views/status_icons/concat_menu_model.cc",
+       "//chrome/browser/ui/views/status_icons/concat_menu_model.h",
+       "//chrome/browser/ui/views/status_icons/status_icon_linux_dbus.cc",
+diff --git a/filenames.gni b/filenames.gni
+index 4284a4ef5..764dcdaf4 100644
+--- a/filenames.gni
++++ b/filenames.gni
+@@ -1,3 +1,5 @@
++import("//build/config/ui.gni")
++
+ filenames = {
+   default_app_ts_sources = [
+     "default_app/default_app.ts",
+@@ -22,20 +24,10 @@ filenames = {
+   ]
+ 
+   lib_sources_linux = [
+-    "chromium_src/chrome/browser/ui/views/frame/global_menu_bar_registrar_x11.cc",
+-    "chromium_src/chrome/browser/ui/views/frame/global_menu_bar_registrar_x11.h",
+     "shell/browser/ui/file_dialog_gtk.cc",
+     "shell/browser/ui/message_box_gtk.cc",
+     "shell/browser/ui/tray_icon_gtk.cc",
+     "shell/browser/ui/tray_icon_gtk.h",
+-    "shell/browser/ui/views/global_menu_bar_x11.cc",
+-    "shell/browser/ui/views/global_menu_bar_x11.h",
+-    "shell/browser/ui/x/event_disabler.cc",
+-    "shell/browser/ui/x/event_disabler.h",
+-    "shell/browser/ui/x/window_state_watcher.cc",
+-    "shell/browser/ui/x/window_state_watcher.h",
+-    "shell/browser/ui/x/x_window_utils.cc",
+-    "shell/browser/ui/x/x_window_utils.h",
+     "shell/browser/browser_linux.cc",
+     "shell/browser/lib/power_observer_linux.cc",
+     "shell/browser/lib/power_observer_linux.h",
+@@ -633,6 +625,21 @@ filenames = {
+     "shell/utility/electron_content_utility_client.h",
+   ]
+ 
++  if (use_x11) {
++    lib_sources_linux += [
++      "chromium_src/chrome/browser/ui/views/frame/global_menu_bar_registrar_x11.cc",
++      "chromium_src/chrome/browser/ui/views/frame/global_menu_bar_registrar_x11.h",
++      "shell/browser/ui/views/global_menu_bar_x11.cc",
++      "shell/browser/ui/views/global_menu_bar_x11.h",
++      "shell/browser/ui/x/event_disabler.cc",
++      "shell/browser/ui/x/event_disabler.h",
++      "shell/browser/ui/x/window_state_watcher.cc",
++      "shell/browser/ui/x/window_state_watcher.h",
++      "shell/browser/ui/x/x_window_utils.cc",
++      "shell/browser/ui/x/x_window_utils.h",
++    ]
++  }
++
+   lib_sources_nss = [
+     "chromium_src/chrome/browser/certificate_manager_model.cc",
+     "chromium_src/chrome/browser/certificate_manager_model.h",
+diff --git a/shell/browser/api/electron_api_base_window.cc b/shell/browser/api/electron_api_base_window.cc
+index 24ed27c08..35ab75c3b 100644
+--- a/shell/browser/api/electron_api_base_window.cc
++++ b/shell/browser/api/electron_api_base_window.cc
+@@ -999,7 +999,7 @@ void BaseWindow::SetIcon(gin::Handle<NativeImage> icon) {
+   static_cast<NativeWindowViews*>(window_.get())
+       ->SetIcon(icon->GetHICON(GetSystemMetrics(SM_CXSMICON)),
+                 icon->GetHICON(GetSystemMetrics(SM_CXICON)));
+-#elif defined(USE_X11)
++#elif defined(OS_LINUX)
+   static_cast<NativeWindowViews*>(window_.get())
+       ->SetIcon(icon->image().AsImageSkia());
+ #endif
+diff --git a/shell/browser/electron_browser_main_parts.cc b/shell/browser/electron_browser_main_parts.cc
+index 92f3e93c4..fb4c4c94f 100644
+--- a/shell/browser/electron_browser_main_parts.cc
++++ b/shell/browser/electron_browser_main_parts.cc
+@@ -57,20 +57,32 @@
+ #include "ui/wm/core/wm_state.h"
+ #endif
+ 
+-#if defined(USE_X11)
++#if defined(OS_LINUX)
+ #include "base/environment.h"
+ #include "base/nix/xdg_util.h"
+ #include "base/threading/thread_task_runner_handle.h"
++#include "ui/gtk/gtk_ui.h"
++#include "ui/gtk/gtk_ui_delegate.h"
++#include "ui/gtk/gtk_util.h"
++#include "ui/views/linux_ui/linux_ui.h"
++
++#if defined(USE_OZONE)
++#include "ui/ozone/public/ozone_platform.h"
++#endif
++
++#if defined(USE_X11)
+ #include "ui/base/x/x11_util.h"
+ #include "ui/events/devices/x11/touch_factory_x11.h"
+ #include "ui/gfx/color_utils.h"
+ #include "ui/gfx/x/x11_types.h"
+ #include "ui/gfx/x/xproto_util.h"
+-#include "ui/gtk/gtk_ui.h"
+-#include "ui/gtk/gtk_ui_delegate.h"
+-#include "ui/gtk/gtk_util.h"
+ #include "ui/gtk/x/gtk_ui_delegate_x11.h"
+-#include "ui/views/linux_ui/linux_ui.h"
++#endif
++
++#if defined(USE_OZONE) || defined(USE_X11)
++#include "ui/base/ui_base_features.h"
++#endif
++
+ #endif
+ 
+ #if defined(OS_WIN)
+@@ -425,11 +437,15 @@ void ElectronBrowserMainParts::PostDestroyThreads() {
+ 
+ void ElectronBrowserMainParts::ToolkitInitialized() {
+ #if defined(USE_X11)
+-  // In Aura/X11, Gtk-based LinuxUI implementation is used.
+-  gtk_ui_delegate_ =
+-      std::make_unique<ui::GtkUiDelegateX11>(x11::Connection::Get());
+-  ui::GtkUiDelegate::SetInstance(gtk_ui_delegate_.get());
+-  views::LinuxUI* linux_ui = BuildGtkUi(gtk_ui_delegate_.get());
++  if (!features::IsUsingOzonePlatform()) {
++    // In Aura/X11, Gtk-based LinuxUI implementation is used.
++    gtk_ui_delegate_ =
++        std::make_unique<ui::GtkUiDelegateX11>(x11::Connection::Get());
++    ui::GtkUiDelegate::SetInstance(gtk_ui_delegate_.get());
++  }
++#endif
++#if defined(OS_LINUX)
++  views::LinuxUI* linux_ui = BuildGtkUi(ui::GtkUiDelegate::instance());
+   views::LinuxUI::SetInstance(linux_ui);
+   linux_ui->Initialize();
+ 
+@@ -491,7 +507,8 @@ void ElectronBrowserMainParts::PreMainMessageLoopRun() {
+ #endif
+ 
+ #if defined(USE_X11)
+-  ui::TouchFactory::SetTouchDeviceListFromCommandLine();
++  if (!features::IsUsingOzonePlatform())
++    ui::TouchFactory::SetTouchDeviceListFromCommandLine();
+ #endif
+ 
+   content::WebUIControllerFactory::RegisterFactory(
+@@ -533,6 +550,13 @@ void ElectronBrowserMainParts::PostMainMessageLoopStart() {
+   // main message loop has started. This will allow us to exit cleanly
+   // if X exits before us.
+   ui::SetX11ErrorHandlers(BrowserX11ErrorHandler, BrowserX11IOErrorHandler);
++#elif defined(USE_OZONE)
++  if (features::IsUsingOzonePlatform()) {
++    auto shutdown_cb =
++        base::BindOnce(base::RunLoop::QuitCurrentWhenIdleClosureDeprecated());
++    ui::OzonePlatform::GetInstance()->PostMainMessageLoopStart(
++        std::move(shutdown_cb));
++  }
+ #endif
+ #if defined(OS_LINUX)
+   bluez::DBusBluezManagerWrapperLinux::Initialize();
+diff --git a/shell/browser/electron_browser_main_parts.h b/shell/browser/electron_browser_main_parts.h
+index 3d084c926..e9dba3c0a 100644
+--- a/shell/browser/electron_browser_main_parts.h
++++ b/shell/browser/electron_browser_main_parts.h
+@@ -134,6 +134,9 @@ class ElectronBrowserMainParts : public content::BrowserMainParts {
+ 
+ #if defined(USE_X11)
+   std::unique_ptr<ui::GtkUiDelegate> gtk_ui_delegate_;
++#endif
++
++#if defined(OS_LINUX)
+   // Used to notify the native theme of changes to dark mode.
+   std::unique_ptr<DarkThemeObserver> dark_theme_observer_;
+ #endif
+diff --git a/shell/browser/native_window.cc b/shell/browser/native_window.cc
+index 72bdc6b6a..2506198ab 100644
+--- a/shell/browser/native_window.cc
++++ b/shell/browser/native_window.cc
+@@ -109,7 +109,7 @@ void NativeWindow::InitFromOptions(const gin_helper::Dictionary& options) {
+   } else {
+     SetSizeConstraints(size_constraints);
+   }
+-#if defined(OS_WIN) || defined(USE_X11)
++#if defined(OS_WIN) || defined(OS_LINUX)
+   bool resizable;
+   if (options.Get(options::kResizable, &resizable)) {
+     SetResizable(resizable);
+diff --git a/shell/browser/native_window_views.cc b/shell/browser/native_window_views.cc
+index 01b7b80ec..6ae21cd32 100644
+--- a/shell/browser/native_window_views.cc
++++ b/shell/browser/native_window_views.cc
+@@ -44,13 +44,17 @@
+ #include "ui/wm/core/shadow_types.h"
+ #include "ui/wm/core/window_util.h"
+ 
+-#if defined(USE_X11)
++#if defined(OS_LINUX)
+ #include "base/strings/string_util.h"
+ #include "shell/browser/browser.h"
+ #include "shell/browser/linux/unity_service.h"
+ #include "shell/browser/ui/views/frameless_view.h"
+-#include "shell/browser/ui/views/global_menu_bar_x11.h"
+ #include "shell/browser/ui/views/native_frame_view.h"
++#include "ui/views/widget/desktop_aura/desktop_window_tree_host_linux.h"
++#include "ui/views/window/native_frame_view.h"
++
++#if defined(USE_X11)
++#include "shell/browser/ui/views/global_menu_bar_x11.h"
+ #include "shell/browser/ui/x/event_disabler.h"
+ #include "shell/browser/ui/x/window_state_watcher.h"
+ #include "shell/browser/ui/x/x_window_utils.h"
+@@ -58,8 +62,12 @@
+ #include "ui/gfx/x/shape.h"
+ #include "ui/gfx/x/x11_atom_cache.h"
+ #include "ui/gfx/x/x11_types.h"
+-#include "ui/views/widget/desktop_aura/desktop_window_tree_host_linux.h"
+-#include "ui/views/window/native_frame_view.h"
++#endif
++
++#if defined(USE_OZONE) || defined(USE_X11)
++#include "ui/base/ui_base_features.h"
++#endif
++
+ #elif defined(OS_WIN)
+ #include "shell/browser/ui/views/win_frame_view.h"
+ #include "shell/browser/ui/win/electron_desktop_native_widget_aura.h"
+@@ -211,45 +219,56 @@ NativeWindowViews::NativeWindowViews(const gin_helper::Dictionary& options,
+   options.Get(options::kType, &window_type);
+ 
+ #if defined(USE_X11)
+-  // Start monitoring window states.
+-  window_state_watcher_ = std::make_unique<WindowStateWatcher>(this);
+-
+-  // Set _GTK_THEME_VARIANT to dark if we have "dark-theme" option set.
+-  bool use_dark_theme = false;
+-  if (options.Get(options::kDarkTheme, &use_dark_theme) && use_dark_theme) {
+-    SetGTKDarkThemeEnabled(use_dark_theme);
++  if (!features::IsUsingOzonePlatform()) {
++    // Start monitoring window states.
++    window_state_watcher_ = std::make_unique<WindowStateWatcher>(this);
++
++    // Set _GTK_THEME_VARIANT to dark if we have "dark-theme" option set.
++    bool use_dark_theme = false;
++    if (options.Get(options::kDarkTheme, &use_dark_theme) && use_dark_theme) {
++      SetGTKDarkThemeEnabled(use_dark_theme);
++    }
+   }
++#endif
+ 
+-  // Before the window is mapped the SetWMSpecState can not work, so we have
+-  // to manually set the _NET_WM_STATE.
+-  std::vector<x11::Atom> state_atom_list;
+-  bool skip_taskbar = false;
+-  if (options.Get(options::kSkipTaskbar, &skip_taskbar) && skip_taskbar) {
+-    state_atom_list.push_back(gfx::GetAtom("_NET_WM_STATE_SKIP_TASKBAR"));
+-  }
++#if defined(OS_LINUX)
++  if (parent)
++    SetParentWindow(parent);
++#endif
+ 
+-  // Before the window is mapped, there is no SHOW_FULLSCREEN_STATE.
+-  if (fullscreen) {
+-    state_atom_list.push_back(gfx::GetAtom("_NET_WM_STATE_FULLSCREEN"));
+-  }
++#if defined(USE_X11)
++  if (!features::IsUsingOzonePlatform()) {
++    // Before the window is mapped the SetWMSpecState can not work, so we have
++    // to manually set the _NET_WM_STATE.
++    std::vector<x11::Atom> state_atom_list;
++    bool skip_taskbar = false;
++    if (options.Get(options::kSkipTaskbar, &skip_taskbar) && skip_taskbar) {
++      state_atom_list.push_back(gfx::GetAtom("_NET_WM_STATE_SKIP_TASKBAR"));
++    }
+ 
+-  if (parent) {
+-    SetParentWindow(parent);
+-    // Force using dialog type for child window.
+-    window_type = "dialog";
+-    // Modal window needs the _NET_WM_STATE_MODAL hint.
+-    if (is_modal())
+-      state_atom_list.push_back(gfx::GetAtom("_NET_WM_STATE_MODAL"));
+-  }
++    // Before the window is mapped, there is no SHOW_FULLSCREEN_STATE.
++    if (fullscreen) {
++      state_atom_list.push_back(gfx::GetAtom("_NET_WM_STATE_FULLSCREEN"));
++    }
+ 
+-  if (!state_atom_list.empty())
+-    ui::SetAtomArrayProperty(static_cast<x11::Window>(GetAcceleratedWidget()),
+-                             "_NET_WM_STATE", "ATOM", state_atom_list);
++    if (parent) {
++      // Force using dialog type for child window.
++      window_type = "dialog";
+ 
+-  // Set the _NET_WM_WINDOW_TYPE.
+-  if (!window_type.empty())
+-    SetWindowType(static_cast<x11::Window>(GetAcceleratedWidget()),
+-                  window_type);
++      // Modal window needs the _NET_WM_STATE_MODAL hint.
++      if (is_modal())
++        state_atom_list.push_back(gfx::GetAtom("_NET_WM_STATE_MODAL"));
++    }
++
++    if (!state_atom_list.empty())
++      ui::SetAtomArrayProperty(static_cast<x11::Window>(GetAcceleratedWidget()),
++                               "_NET_WM_STATE", "ATOM", state_atom_list);
++
++    // Set the _NET_WM_WINDOW_TYPE.
++    if (!window_type.empty())
++      SetWindowType(static_cast<x11::Window>(GetAcceleratedWidget()),
++                    window_type);
++  }
+ #endif
+ 
+ #if defined(OS_WIN)
+@@ -331,14 +350,11 @@ NativeWindowViews::~NativeWindowViews() {
+ 
+ void NativeWindowViews::SetGTKDarkThemeEnabled(bool use_dark_theme) {
+ #if defined(USE_X11)
+-  if (use_dark_theme) {
++  if (!features::IsUsingOzonePlatform()) {
++    const std::string color = use_dark_theme ? "dark" : "light";
+     ui::SetStringProperty(static_cast<x11::Window>(GetAcceleratedWidget()),
+                           gfx::GetAtom("_GTK_THEME_VARIANT"),
+-                          gfx::GetAtom("UTF8_STRING"), "dark");
+-  } else {
+-    ui::SetStringProperty(static_cast<x11::Window>(GetAcceleratedWidget()),
+-                          gfx::GetAtom("_GTK_THEME_VARIANT"),
+-                          gfx::GetAtom("UTF8_STRING"), "light");
++                          gfx::GetAtom("UTF8_STRING"), color);
+   }
+ #endif
+ }
+@@ -395,7 +411,7 @@ void NativeWindowViews::Show() {
+   NotifyWindowShow();
+ 
+ #if defined(USE_X11)
+-  if (global_menu_bar_)
++  if (!features::IsUsingOzonePlatform() && global_menu_bar_)
+     global_menu_bar_->OnWindowMapped();
+ #endif
+ }
+@@ -406,7 +422,7 @@ void NativeWindowViews::ShowInactive() {
+   NotifyWindowShow();
+ 
+ #if defined(USE_X11)
+-  if (global_menu_bar_)
++  if (!features::IsUsingOzonePlatform() && global_menu_bar_)
+     global_menu_bar_->OnWindowMapped();
+ #endif
+ }
+@@ -420,7 +436,7 @@ void NativeWindowViews::Hide() {
+   NotifyWindowHide();
+ 
+ #if defined(USE_X11)
+-  if (global_menu_bar_)
++  if (!features::IsUsingOzonePlatform() && global_menu_bar_)
+     global_menu_bar_->OnWindowUnmapped();
+ #endif
+ }
+@@ -432,8 +448,14 @@ bool NativeWindowViews::IsVisible() {
+ bool NativeWindowViews::IsEnabled() {
+ #if defined(OS_WIN)
+   return ::IsWindowEnabled(GetAcceleratedWidget());
+-#elif defined(USE_X11)
+-  return !event_disabler_.get();
++#elif defined(OS_LINUX)
++#if defined(USE_X11)
++  if (!features::IsUsingOzonePlatform()) {
++    return !event_disabler_.get();
++  }
++#endif
++  NOTIMPLEMENTED();
++  return true;
+ #endif
+ }
+ 
+@@ -470,15 +492,17 @@ void NativeWindowViews::SetEnabledInternal(bool enable) {
+ #if defined(OS_WIN)
+   ::EnableWindow(GetAcceleratedWidget(), enable);
+ #elif defined(USE_X11)
+-  views::DesktopWindowTreeHostPlatform* tree_host =
+-      views::DesktopWindowTreeHostLinux::GetHostForWidget(
+-          GetAcceleratedWidget());
+-  if (enable) {
+-    tree_host->RemoveEventRewriter(event_disabler_.get());
+-    event_disabler_.reset();
+-  } else {
+-    event_disabler_ = std::make_unique<EventDisabler>();
+-    tree_host->AddEventRewriter(event_disabler_.get());
++  if (!features::IsUsingOzonePlatform()) {
++    views::DesktopWindowTreeHostPlatform* tree_host =
++        views::DesktopWindowTreeHostLinux::GetHostForWidget(
++            GetAcceleratedWidget());
++    if (enable) {
++      tree_host->RemoveEventRewriter(event_disabler_.get());
++      event_disabler_.reset();
++    } else {
++      event_disabler_ = std::make_unique<EventDisabler>();
++      tree_host->AddEventRewriter(event_disabler_.get());
++    }
+   }
+ #endif
+ }
+@@ -584,7 +608,7 @@ bool NativeWindowViews::IsFullscreen() const {
+ }
+ 
+ void NativeWindowViews::SetBounds(const gfx::Rect& bounds, bool animate) {
+-#if defined(OS_WIN) || defined(USE_X11)
++#if defined(OS_WIN) || defined(OS_LINUX)
+   // On Linux and Windows the minimum and maximum size should be updated with
+   // window size when window is not resizable.
+   if (!resizable_) {
+@@ -675,11 +699,13 @@ bool NativeWindowViews::MoveAbove(const std::string& sourceId) {
+                  0, 0, 0,
+                  SWP_NOACTIVATE | SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
+ #elif defined(USE_X11)
+-  if (!IsWindowValid(static_cast<x11::Window>(id.id)))
+-    return false;
++  if (!features::IsUsingOzonePlatform()) {
++    if (!IsWindowValid(static_cast<x11::Window>(id.id)))
++      return false;
+ 
+-  electron::MoveWindowAbove(static_cast<x11::Window>(GetAcceleratedWidget()),
+-                            static_cast<x11::Window>(id.id));
++    electron::MoveWindowAbove(static_cast<x11::Window>(GetAcceleratedWidget()),
++                              static_cast<x11::Window>(id.id));
++  }
+ #endif
+ 
+   return true;
+@@ -695,8 +721,10 @@ void NativeWindowViews::MoveTop() {
+                  size.width(), size.height(),
+                  SWP_NOACTIVATE | SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
+ #elif defined(USE_X11)
+-  electron::MoveWindowToForeground(
+-      static_cast<x11::Window>(GetAcceleratedWidget()));
++  if (!features::IsUsingOzonePlatform()) {
++    electron::MoveWindowToForeground(
++        static_cast<x11::Window>(GetAcceleratedWidget()));
++  }
+ #endif
+ }
+ 
+@@ -881,8 +909,10 @@ void NativeWindowViews::SetSkipTaskbar(bool skip) {
+     taskbar_host_.RestoreThumbarButtons(GetAcceleratedWidget());
+   }
+ #elif defined(USE_X11)
+-  SetWMSpecState(static_cast<x11::Window>(GetAcceleratedWidget()), skip,
+-                 gfx::GetAtom("_NET_WM_STATE_SKIP_TASKBAR"));
++  if (!features::IsUsingOzonePlatform()) {
++    SetWMSpecState(static_cast<x11::Window>(GetAcceleratedWidget()), skip,
++                   gfx::GetAtom("_NET_WM_STATE_SKIP_TASKBAR"));
++  }
+ #endif
+ }
+ 
+@@ -972,23 +1002,27 @@ void NativeWindowViews::SetIgnoreMouseEvents(bool ignore, bool forward) {
+     SetForwardMouseMessages(forward);
+   }
+ #elif defined(USE_X11)
+-  auto* connection = x11::Connection::Get();
+-  if (ignore) {
+-    x11::Rectangle r{0, 0, 1, 1};
+-    connection->shape().Rectangles({
+-        .operation = x11::Shape::So::Set,
+-        .destination_kind = x11::Shape::Sk::Input,
+-        .ordering = x11::ClipOrdering::YXBanded,
+-        .destination_window = static_cast<x11::Window>(GetAcceleratedWidget()),
+-        .rectangles = {r},
+-    });
+-  } else {
+-    connection->shape().Mask({
+-        .operation = x11::Shape::So::Set,
+-        .destination_kind = x11::Shape::Sk::Input,
+-        .destination_window = static_cast<x11::Window>(GetAcceleratedWidget()),
+-        .source_bitmap = x11::Pixmap::None,
+-    });
++  if (!features::IsUsingOzonePlatform()) {
++    auto* connection = x11::Connection::Get();
++    if (ignore) {
++      x11::Rectangle r{0, 0, 1, 1};
++      connection->shape().Rectangles({
++          .operation = x11::Shape::So::Set,
++          .destination_kind = x11::Shape::Sk::Input,
++          .ordering = x11::ClipOrdering::YXBanded,
++          .destination_window =
++              static_cast<x11::Window>(GetAcceleratedWidget()),
++          .rectangles = {r},
++      });
++    } else {
++      connection->shape().Mask({
++          .operation = x11::Shape::So::Set,
++          .destination_kind = x11::Shape::Sk::Input,
++          .destination_window =
++              static_cast<x11::Window>(GetAcceleratedWidget()),
++          .source_bitmap = x11::Pixmap::None,
++      });
++    }
+   }
+ #endif
+ }
+@@ -1016,22 +1050,24 @@ void NativeWindowViews::SetFocusable(bool focusable) {
+ 
+ void NativeWindowViews::SetMenu(ElectronMenuModel* menu_model) {
+ #if defined(USE_X11)
+-  // Remove global menu bar.
+-  if (global_menu_bar_ && menu_model == nullptr) {
+-    global_menu_bar_.reset();
+-    root_view_->UnregisterAcceleratorsWithFocusManager();
+-    return;
+-  }
+-
+-  // Use global application menu bar when possible.
+-  if (ShouldUseGlobalMenuBar()) {
+-    if (!global_menu_bar_)
+-      global_menu_bar_ = std::make_unique<GlobalMenuBarX11>(this);
+-    if (global_menu_bar_->IsServerStarted()) {
+-      root_view_->RegisterAcceleratorsWithFocusManager(menu_model);
+-      global_menu_bar_->SetMenu(menu_model);
++  if (!features::IsUsingOzonePlatform()) {
++    // Remove global menu bar.
++    if (global_menu_bar_ && menu_model == nullptr) {
++      global_menu_bar_.reset();
++      root_view_->UnregisterAcceleratorsWithFocusManager();
+       return;
+     }
++
++    // Use global application menu bar when possible.
++    if (ShouldUseGlobalMenuBar()) {
++      if (!global_menu_bar_)
++        global_menu_bar_ = std::make_unique<GlobalMenuBarX11>(this);
++      if (global_menu_bar_->IsServerStarted()) {
++        root_view_->RegisterAcceleratorsWithFocusManager(menu_model);
++        global_menu_bar_->SetMenu(menu_model);
++        return;
++      }
++    }
+   }
+ #endif
+ 
+@@ -1096,11 +1132,13 @@ void NativeWindowViews::SetParentWindow(NativeWindow* parent) {
+   NativeWindow::SetParentWindow(parent);
+ 
+ #if defined(USE_X11)
+-  ui::SetProperty(static_cast<x11::Window>(GetAcceleratedWidget()),
+-                  x11::Atom::WM_TRANSIENT_FOR, x11::Atom::WINDOW,
+-                  parent
+-                      ? static_cast<x11::Window>(parent->GetAcceleratedWidget())
+-                      : ui::GetX11RootWindow());
++  if (!features::IsUsingOzonePlatform()) {
++    ui::SetProperty(
++        static_cast<x11::Window>(GetAcceleratedWidget()),
++        x11::Atom::WM_TRANSIENT_FOR, x11::Atom::WINDOW,
++        parent ? static_cast<x11::Window>(parent->GetAcceleratedWidget())
++               : ui::GetX11RootWindow());
++  }
+ #elif defined(OS_WIN)
+   // To set parentship between windows into Windows is better to play with the
+   //  owner instead of the parent, as Windows natively seems to do if a parent
+@@ -1175,14 +1213,16 @@ void NativeWindowViews::SetVisibleOnAllWorkspaces(bool visible,
+ 
+ bool NativeWindowViews::IsVisibleOnAllWorkspaces() {
+ #if defined(USE_X11)
+-  // Use the presence/absence of _NET_WM_STATE_STICKY in _NET_WM_STATE to
+-  // determine whether the current window is visible on all workspaces.
+-  x11::Atom sticky_atom = gfx::GetAtom("_NET_WM_STATE_STICKY");
+-  std::vector<x11::Atom> wm_states;
+-  ui::GetAtomArrayProperty(static_cast<x11::Window>(GetAcceleratedWidget()),
+-                           "_NET_WM_STATE", &wm_states);
+-  return std::find(wm_states.begin(), wm_states.end(), sticky_atom) !=
+-         wm_states.end();
++  if (!features::IsUsingOzonePlatform()) {
++    // Use the presence/absence of _NET_WM_STATE_STICKY in _NET_WM_STATE to
++    // determine whether the current window is visible on all workspaces.
++    x11::Atom sticky_atom = gfx::GetAtom("_NET_WM_STATE_STICKY");
++    std::vector<x11::Atom> wm_states;
++    ui::GetAtomArrayProperty(static_cast<x11::Window>(GetAcceleratedWidget()),
++                             "_NET_WM_STATE", &wm_states);
++    return std::find(wm_states.begin(), wm_states.end(), sticky_atom) !=
++           wm_states.end();
++  }
+ #endif
+   return false;
+ }
+diff --git a/shell/browser/ui/file_dialog_gtk.cc b/shell/browser/ui/file_dialog_gtk.cc
+index 9a7675227..aa342ecf8 100644
+--- a/shell/browser/ui/file_dialog_gtk.cc
++++ b/shell/browser/ui/file_dialog_gtk.cc
+@@ -15,9 +15,16 @@
+ #include "shell/browser/unresponsive_suppressor.h"
+ #include "shell/common/gin_converters/file_path_converter.h"
+ #include "ui/base/glib/glib_signal.h"
+-#include "ui/events/platform/x11/x11_event_source.h"
+ #include "ui/gtk/gtk_util.h"
+ 
++#if defined(USE_X11)
++#include "ui/events/platform/x11/x11_event_source.h"
++#endif
++
++#if defined(USE_OZONE) || defined(USE_X11)
++#include "ui/base/ui_base_features.h"
++#endif
++
+ namespace file_dialog {
+ 
+ DialogSettings::DialogSettings() = default;
+@@ -135,11 +142,15 @@ class FileChooserDialog {
+                      this);
+     gtk_widget_show_all(dialog_);
+ 
+-    // We need to call gtk_window_present after making the widgets visible to
+-    // make sure window gets correctly raised and gets focus.
+-    x11::Time time = ui::X11EventSource::GetInstance()->GetTimestamp();
+-    gtk_window_present_with_time(GTK_WINDOW(dialog_),
+-                                 static_cast<uint32_t>(time));
++#if defined(USE_X11)
++    if (!features::IsUsingOzonePlatform()) {
++      // We need to call gtk_window_present after making the widgets visible to
++      // make sure window gets correctly raised and gets focus.
++      x11::Time time = ui::X11EventSource::GetInstance()->GetTimestamp();
++      gtk_window_present_with_time(GTK_WINDOW(dialog_),
++                                   static_cast<uint32_t>(time));
++    }
++#endif
+   }
+ 
+   void RunSaveAsynchronous(
+diff --git a/shell/browser/ui/gtk/menu_util.cc b/shell/browser/ui/gtk/menu_util.cc
+index e3e778e9d..c119515e2 100644
+--- a/shell/browser/ui/gtk/menu_util.cc
++++ b/shell/browser/ui/gtk/menu_util.cc
+@@ -22,6 +22,10 @@
+ #include "ui/events/event_constants.h"
+ #include "ui/events/keycodes/keyboard_code_conversion_x.h"
+ 
++#if defined(USE_OZONE) || defined(USE_X11)
++#include "ui/base/ui_base_features.h"
++#endif
++
+ namespace electron {
+ 
+ namespace gtkui {
+@@ -222,12 +226,14 @@ void BuildSubmenuFromModel(ui::MenuModel* model,
+     }
+ 
+ #if defined(USE_X11)
+-    ui::Accelerator accelerator;
+-    if (model->GetAcceleratorAt(i, &accelerator)) {
+-      gtk_widget_add_accelerator(menu_item, "activate", nullptr,
+-                                 GetGdkKeyCodeForAccelerator(accelerator),
+-                                 GetGdkModifierForAccelerator(accelerator),
+-                                 GTK_ACCEL_VISIBLE);
++    if (!features::IsUsingOzonePlatform()) {
++      ui::Accelerator accelerator;
++      if (model->GetAcceleratorAt(i, &accelerator)) {
++        gtk_widget_add_accelerator(menu_item, "activate", nullptr,
++                                   GetGdkKeyCodeForAccelerator(accelerator),
++                                   GetGdkModifierForAccelerator(accelerator),
++                                   GTK_ACCEL_VISIBLE);
++      }
+     }
+ #endif
+ 
+diff --git a/shell/browser/ui/message_box_gtk.cc b/shell/browser/ui/message_box_gtk.cc
+index 1b0f859c8..b74d6d0c5 100644
+--- a/shell/browser/ui/message_box_gtk.cc
++++ b/shell/browser/ui/message_box_gtk.cc
+@@ -13,10 +13,17 @@
+ #include "shell/browser/native_window_views.h"
+ #include "shell/browser/unresponsive_suppressor.h"
+ #include "ui/base/glib/glib_signal.h"
+-#include "ui/events/platform/x11/x11_event_source.h"
+ #include "ui/gfx/image/image_skia.h"
+ #include "ui/gtk/gtk_util.h"
+ 
++#if defined(USE_X11)
++#include "ui/events/platform/x11/x11_event_source.h"
++#endif
++
++#if defined(USE_OZONE) || defined(USE_X11)
++#include "ui/base/ui_base_features.h"
++#endif
++
+ #define ANSI_FOREGROUND_RED "\x1b[31m"
+ #define ANSI_FOREGROUND_BLACK "\x1b[30m"
+ #define ANSI_TEXT_BOLD "\x1b[1m"
+@@ -133,11 +140,16 @@ class GtkMessageBox : public NativeWindowObserver {
+ 
+   void Show() {
+     gtk_widget_show(dialog_);
+-    // We need to call gtk_window_present after making the widgets visible to
+-    // make sure window gets correctly raised and gets focus.
+-    x11::Time time = ui::X11EventSource::GetInstance()->GetTimestamp();
+-    gtk_window_present_with_time(GTK_WINDOW(dialog_),
+-                                 static_cast<uint32_t>(time));
++
++#if defined(USE_X11)
++    if (!features::IsUsingOzonePlatform()) {
++      // We need to call gtk_window_present after making the widgets visible to
++      // make sure window gets correctly raised and gets focus.
++      x11::Time time = ui::X11EventSource::GetInstance()->GetTimestamp();
++      gtk_window_present_with_time(GTK_WINDOW(dialog_),
++                                   static_cast<uint32_t>(time));
++    }
++#endif
+   }
+ 
+   int RunSynchronous() {
+diff --git a/shell/browser/ui/views/menu_bar.cc b/shell/browser/ui/views/menu_bar.cc
+index e0259ac13..c6be05620 100644
+--- a/shell/browser/ui/views/menu_bar.cc
++++ b/shell/browser/ui/views/menu_bar.cc
+@@ -17,7 +17,7 @@
+ #include "ui/views/layout/box_layout.h"
+ #include "ui/views/widget/widget.h"
+ 
+-#if defined(USE_X11)
++#if defined(OS_LINUX)
+ #include "ui/gtk/gtk_util.h"
+ #endif
+ 
+@@ -282,7 +282,7 @@ void MenuBar::ButtonPressed(views::Button* source, const ui::Event& event) {
+ void MenuBar::RefreshColorCache() {
+   const ui::NativeTheme* theme = GetNativeTheme();
+   if (theme) {
+-#if defined(USE_X11)
++#if defined(OS_LINUX)
+     background_color_ = gtk::GetBgColor("GtkMenuBar#menubar");
+     enabled_color_ =
+         gtk::GetFgColor("GtkMenuBar#menubar GtkMenuItem#menuitem GtkLabel");
+@@ -319,7 +319,7 @@ void MenuBar::UpdateViewColors() {
+   // set child colors
+   if (menu_model_ == nullptr)
+     return;
+-#if defined(USE_X11)
++#if defined(OS_LINUX)
+   const auto& textColor = has_focus_ ? enabled_color_ : disabled_color_;
+   for (auto* child : GetChildrenInZOrder()) {
+     auto* button = static_cast<SubmenuButton*>(child);
+diff --git a/shell/browser/ui/views/menu_bar.h b/shell/browser/ui/views/menu_bar.h
+index 20becd52a..d2411a0a9 100644
+--- a/shell/browser/ui/views/menu_bar.h
++++ b/shell/browser/ui/views/menu_bar.h
+@@ -90,7 +90,7 @@ class MenuBar : public views::AccessiblePaneView,
+ 
+   void RefreshColorCache();
+   SkColor background_color_;
+-#if defined(USE_X11)
++#if defined(OS_LINUX)
+   SkColor enabled_color_;
+   SkColor disabled_color_;
+ #endif
+-- 
+2.29.2
+

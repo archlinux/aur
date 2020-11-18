@@ -3,11 +3,11 @@
 # Contributor: Valentin Hăloiu <vially.ichb@gmail.com>
 
 pkgname=electron-ozone
-pkgver=10.1.5
+pkgver=11.0.1
 provides=('electron')
 conflicts=('electron')
-_commit=1df0ea58d53cec71d8263289ea755ee24f9fbd4c
-_chromiumver=85.0.4183.121
+_commit=4f281e3d31710a72f8922419a28c82210b581d28
+_chromiumver=87.0.4280.60
 pkgrel=1
 pkgdesc='Electron compiled with wayland support via Ozone'
 arch=('x86_64')
@@ -15,7 +15,7 @@ url='https://electronjs.org/'
 license=('MIT' 'custom')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libxslt' 'minizip'
          'nss' 'snappy')
-makedepends=('git' 'gn-m85' 'gperf' 'harfbuzz-icu' 'java-runtime-headless'
+makedepends=('git' 'gn<0.1865' 'gperf' 'harfbuzz-icu' 'java-runtime-headless'
              'jsoncpp' 'libnotify' 'lld' 'llvm' 'ninja' 'npm' 'pciutils' 'yarn'
              'python2' 'wget' 'yasm' 'python2-setuptools' 'libpipewire02' 'nodejs'
              'openh264')
@@ -29,16 +29,7 @@ source=('git+https://github.com/electron/electron.git'
         'default_app-icon.patch'
         'use-system-libraries-in-node.patch'
         'chromium-skia-harmony.patch'
-        'media-Set-allocation-limit-compatible-with-FFmpeg-4.3.patch'
-        '0001-fix-use-ozone-version-of-global_shortcut_listener-wh.patch'
-        '0002-fix-don-t-include-global_menu_bar_x11-sources-in-ozo.patch'
-        '0003-fix-fix-ifdefs-and-add-NOTIMPLEMENTEDs-to-make-nativ.patch'
-        '0004-fix-remove-various-x11-sources-from-filenames.gni-in.patch'
-        '0005-fix-atom_browser_main_parts-move-non-X11-specific-th.patch'
-        '0006-fix-add-ifdefs-around-some-X11-specific-code-to-focu.patch'
-        '0007-stop-initializing-gtk_ui_delegate_-on-ozone.patch'
-        '0008-fix-change-some-X11-specific-ifdefs-to-linux.patch'
-        '0009-Remove-unnecessary-ozone-ifdefs-in-native-window-vie.patch'
+        '0001-fix-add-Wayland-support-26022.patch'
        )
 sha256sums=('SKIP'
             'SKIP'
@@ -46,16 +37,7 @@ sha256sums=('SKIP'
             '00b21418b9468064f6f275566d3cf64c6b014e596acc650100a5a46da31efbfa'
             '50884820e07f7ce5ce55ee1ecdf610367a737e076c5029da0ab0d23154e7661d'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
-            '0f041d655335cd2a4773ae7ca5e301a0ff12c6c53f57b7cf6651c268e0420a1c'
-            '1f93ae4176cdb6ee6c3517b35a2a34fbebdcfaa387e6a0fb5de701785ec17313'
-            '960ad1f120ffe5737ffa89eeb7086651b29fe766c085a863ff8effe92e7bac5d'
-            '1a1ae23cabd98c248e75288ef55b517e23c5ca0a262953598179a2d0fbf82e18'
-            '322f5228f50a53223fba5bdadc7a0032a661336f13c714b921241ae3965e7d36'
-            '3d035ca6fb14f5e9042bb0b4cff23b5ef3e6ca51b97a0569b45e13740c518942'
-            'b77f1aa5884108dfaf70d0cb321017adc289f805378c84d12d76ec9bea47f6f5'
-            '2b5d233350e42db67db39bfce712b7465313bef25a751af94f0c6fac79f56059'
-            '48545645d6d42a7034badf9130752dbd271d0de4cf3a188f2604a89064767978'
-            'b85f7edf92be4678849196208e464028cb73f564b8adea98f191abf0995ed5c6')
+            '7d5a92aa58858d82a756c7b0c266484ac9dbc299127205bae93ba4e7030bfd3c')
 
 _system_libs=('ffmpeg'
               'flac'
@@ -105,15 +87,7 @@ prepare() {
 
   cd src/electron
   echo "Applying local electron patches"
-  patch -Np1 -i ../../0001-fix-use-ozone-version-of-global_shortcut_listener-wh.patch
-  patch -Np1 -i ../../0002-fix-don-t-include-global_menu_bar_x11-sources-in-ozo.patch
-  patch -Np1 -i ../../0003-fix-fix-ifdefs-and-add-NOTIMPLEMENTEDs-to-make-nativ.patch
-  patch -Np1 -i ../../0004-fix-remove-various-x11-sources-from-filenames.gni-in.patch
-  patch -Np1 -i ../../0005-fix-atom_browser_main_parts-move-non-X11-specific-th.patch
-  patch -Np1 -i ../../0006-fix-add-ifdefs-around-some-X11-specific-code-to-focu.patch
-  patch -Np1 -i ../../0007-stop-initializing-gtk_ui_delegate_-on-ozone.patch
-  patch -Np1 -i ../../0008-fix-change-some-X11-specific-ifdefs-to-linux.patch
-  patch -Np1 -i ../../0009-Remove-unnecessary-ozone-ifdefs-in-native-window-vie.patch
+  patch -Np1 -i ../../0001-fix-add-Wayland-support-26022.patch
   cd ../../
 
   sed -e "s/'am'/'apply'/" -i src/electron/script/lib/git.py
@@ -140,6 +114,11 @@ prepare() {
     --local_state=src/chrome/android/profiles/local.txt \
     --output_name=src/chrome/android/profiles/afdo.prof \
     --gs_url_base=chromeos-prebuilt/afdo-job/llvm
+  vpython \
+    src/tools/update_pgo_profiles.py \
+    --target=linux \
+    update \
+    --gs-url-base=chromium-optimization-profiles/pgo_profiles
   python2 src/electron/script/apply_all_patches.py \
       src/electron/patches/config.json
   cd src/electron
@@ -148,8 +127,7 @@ prepare() {
 
   echo "Applying local Chromium patches..."
   patch -Np0 -i ../chromium-skia-harmony.patch
-  patch -Np1 -i ../media-Set-allocation-limit-compatible-with-FFmpeg-4.3.patch
-  patch -Np1 -i ../use-system-libraries-in-node.patch
+  # patch -Np1 -i ../use-system-libraries-in-node.patch
   patch -Np1 -i ../default_app-icon.patch  # Icon from .desktop file
 
   # Force script incompatible with Python 3 to use /usr/bin/python2
@@ -207,7 +185,7 @@ build() {
     _flags+=('symbol_level=1')
   fi
 
-  gn-m85 gen out/Release \
+  gn gen out/Release \
       --args="import(\"//electron/build/args/release.gn\") ${_flags[*]}" \
       --script-executable=/usr/bin/python2
   ninja -C out/Release electron
