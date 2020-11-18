@@ -1,7 +1,7 @@
 # Maintainer: Philipp Schaffrath <philipp dot schaffrath at gmail dot com>
 
 pkgname=giph-git
-pkgver=1.1.r0.gb0ddda6
+pkgver=1.1.r4.gf49ba20
 pkgrel=1
 pkgdesc='video recorder that records the desktop, a window or a selection'
 url='https://github.com/phisch/giph'
@@ -27,6 +27,6 @@ pkgver() {
 
 package() {
     cd "$pkgname"
-    make DESTDIR="${pkgdir}" install
+    make DESTDIR="${pkgdir}" PREFIX="/usr" install
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
