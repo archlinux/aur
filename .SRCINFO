@@ -10,7 +10,6 @@ pkgbase = pulseaudio-virtualmic
 	depends = ffmpeg
 	optdepends = coreutils: mktemp not needed when virtualmic is run with -p filename
 	source = git+https://github.com/MatthiasCoppens/pulseaudio-virtualmic.git#tag=v0.1
-	validpgpkeys = SKIP
 	sha512sums = SKIP
 
 pkgname = pulseaudio-virtualmic

@@ -12,7 +12,6 @@ makedepends=('git')
 optdepends=('coreutils: mktemp not needed when virtualmic is run with -p filename')
 source=("git+${url}.git#tag=${pkgver}")
 sha512sums=('SKIP')
-validpgpkeys=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
