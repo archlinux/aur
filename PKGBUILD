@@ -9,7 +9,7 @@ pkgdesc="Accessible image processing and conversion from the terminal"
 arch=('x86_64')
 url="https://github.com/foresterre/sic"
 license=('MIT')
-makedepends=('cargo')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$url/releases/download/v$pkgver/shell_completions.zip")
 sha512sums=('dffd61d089fa83b13cfbc0083a0528df68feb39a3f9c8d307289e0cfb6372a507c0c7789d0a1beba144424fff15445f7689d2c8ff7093a984244b9d1fd506aad'
