@@ -1,6 +1,6 @@
 pkgbase = wlstreamer-git
 	pkgdesc = Wrapper around wf-recorder and ffmpeg that automatically switches the screen being recorded based on current window focus. Works with sway.
-	pkgver = 0.2.0.11.525aa029
+	pkgver = 0.3.0.14.g93a3822
 	pkgrel = 1
 	url = https://git.b12f.io/b12f/wlstreamer
 	arch = i686
