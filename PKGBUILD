@@ -23,9 +23,9 @@ source=(
     "$(cat Packages | grep 'linux-headers-current-rockchip.*deb' | head -n 1 | sed -r 's#Filename: #https://apt.armbian.com/#')"
 )
 sha512sums=(
-    '0ec3bafb51e4476d6499e9e243501b677637a4218f2f425faa39689e999a364c1d0fda6f3f0ec392611262d086dcb9e1ee5314567e6a7746ab7d98816ce12328'
+    'c7a00e379d723d90c28c70069043a29800be40f120e36527b3aefe5b7acfbcd5680417c2cbf5ff2979c765456d4d5022ac10f01cfc65ab2e7cfb3a104bb670ce'
     '905c31481d2d6c5da65f58270e0c165b62d795d85bacf117faf1934007464696a2a5589f8a0d1cd3c12bf3ff13385ba43b20416f9ad2b199038fdb9208a6416b'
-    'a98abd5e200089925b1d1efa7a43284960afe38b7c4b07c517fd4b7d2dc31096089d6abd55d55cb8ff0f5c0b740247e6a0a810e4b9e5509b9e15b843b9224f09'
+    '61120b67b38adfe0588d948cbc0b765795a5201daa47145d7f1088626dad82e6dbb207f9279397d4935175689dbf075da6f01d0d89aafaccc4d3ca68bf1d3b7f'
     "$(cat Packages | grep 'linux-dtb-current-rockchip.*deb' -A 5 | grep SHA512 | head -n 1 | sed -r 's#SHA512: ##')"
     "$(cat Packages | grep 'linux-image-current-rockchip.*deb' -A 5 | grep SHA512 | head -n 1 | sed -r 's#SHA512: ##')"
     "$(cat Packages | grep 'linux-headers-current-rockchip.*deb' -A 5 | grep SHA512 | head -n 1 | sed -r 's#SHA512: ##')"

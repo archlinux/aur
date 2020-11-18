@@ -4,5 +4,5 @@ ALL_kver="$(dd if=/boot/zImage skip=$(grep -a -b -o $'\x1f\x8b\x08\x00\x00\x00\x
 PRESETS=('default')
 
 #default_config="/etc/mkinitcpio.conf"
-default_image="/boot/initramfs-linux.img"
+default_image="/boot/initramfs-linux-rockchip.img"
 #default_options=""
