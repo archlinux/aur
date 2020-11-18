@@ -3,13 +3,13 @@
 
 pkgname=globe-cli-git
 _pkgname=globe
-pkgver=0.2.0.r1.gbbd11b7
+pkgver=0.2.0.r5.g95413f2
 pkgrel=1
 pkgdesc="ASCII globe generator (git)"
 arch=('x86_64')
 url="https://github.com/adamsky/globe"
 license=('GPL3')
-makedepends=('cargo' 'git')
+makedepends=('rust' 'git')
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 provides=("${pkgname%-git}")
 source=("git+${url}")
@@ -22,6 +22,8 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
+  # TODO: Use `--locked` flag for reproducibility.
+  # Tracking issue: https://github.com/adamsky/globe/pull/21#issuecomment-729935054
   cargo build --release
 }
 
