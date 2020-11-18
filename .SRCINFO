@@ -1,8 +1,9 @@
 pkgbase = htop-temperature
 	pkgdesc = Interactive process viewer with added support for CPU temperature
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://htop.dev/
+	install = htop.install
 	arch = i686
 	arch = x86_64
 	arch = aarch64
@@ -20,8 +21,10 @@ pkgbase = htop-temperature
 	options = !emptydirs
 	source = https://github.com/htop-dev/htop/archive/3.0.2/htop-3.0.2.tar.gz
 	source = htop-temperature.patch
+	source = htop.install
 	sha256sums = b4744a3bea279f2a3725ed8e5e35ffd9cb10d66673bf07c8fe21feb3c4661305
 	sha256sums = 1d6e3e4fde8dc3d8f5e093b64c0eb8544f80cc2e0291d6558bdba158359d9f06
+	sha256sums = 2596ba7a4f8cd920d0cb93d7ac53f3ed052b322f6ea51e970833332319525a23
 
 pkgname = htop-temperature
 
