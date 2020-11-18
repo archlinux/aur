@@ -2,7 +2,7 @@
 
 _pkgname='Sherlock'
 pkgname="elementary-${_pkgname,,}"
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Find information about public IP address'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('granite')
 makedepends=('meson' 'vala')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('6327fbf3f684e18da695ed4c7a7b8a764dd8c895b3c263034d1248b4c0939325')
+sha256sums=('d7b6d26f3db439a1f6c587bd53ea7453eafbdddcc90eda36642b187ca6186fb5')
 
 build() {
   arch-meson "${_pkgname}-${pkgver}" 'build'

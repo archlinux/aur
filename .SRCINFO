@@ -1,6 +1,6 @@
 pkgbase = elementary-sherlock
 	pkgdesc = Find information about public IP address
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/sergius02/Sherlock
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = elementary-sherlock
 	makedepends = meson
 	makedepends = vala
 	depends = granite
-	source = Sherlock-1.0.2.tar.gz::https://github.com/sergius02/Sherlock/archive/1.0.2.tar.gz
-	sha256sums = 6327fbf3f684e18da695ed4c7a7b8a764dd8c895b3c263034d1248b4c0939325
+	source = Sherlock-1.1.0.tar.gz::https://github.com/sergius02/Sherlock/archive/1.1.0.tar.gz
+	sha256sums = d7b6d26f3db439a1f6c587bd53ea7453eafbdddcc90eda36642b187ca6186fb5
 
 pkgname = elementary-sherlock
 
