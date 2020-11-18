@@ -1,12 +1,12 @@
 # Maintainer: Spiros Georgaras <sng@hellug.gr>
 pkgname=ttf-linex-fonts
 pkgver=2.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Fonts suitable for education and institutional use"
 arch=('any')
 license=('GPL2')
 url="http://gata.linex.org/trac/browser/fonts-linex/"
-depends=('fontconfig')
+depends=()
 makedepends=('sed' 'binutils')
 source=('http://httpredir.debian.org/debian/pool/main/f/fonts-linex/fonts-linex_2.2-8_all.deb')
 md5sums=('221f578edc0816b19335c373e0400ee3')
