@@ -1,16 +1,16 @@
 pkgbase = genact-bin
 	pkgdesc = A nonsense activity generator
-	pkgver = 0.7.0
-	pkgrel = 2
+	pkgver = 0.10.0
+	pkgrel = 1
 	url = https://svenstaro.github.io/genact/
 	arch = x86_64
 	license = MIT
 	provides = genact
 	options = !strip
-	source = genact-bin-0.7.0::https://github.com/svenstaro/genact/releases/download/0.7.0/genact-linux
+	source = genact-bin-0.10.0::https://github.com/svenstaro/genact/releases/download/v0.10.0/genact-v0.10.0-linux-x86_64
 	source = LICENSE::https://raw.githubusercontent.com/svenstaro/genact/master/LICENSE
-	sha256sums = a2373a9e5a2276622b6fab35e3f75df9e227b9bbf6e21a7898d921d97ab35f78
-	sha256sums = 5eaf192f4eff70cd91400195a7f791a2a6d6be2e04780f8ebb3bd5e75e3a2ce0
+	sha256sums = 95f5a55d7a0892c54c2d291b7887f301d1be6cad0d4221c6ecd70455e679ac32
+	sha256sums = 4367524e5000757d2fe3660ebfa9efbfdfb69df3a7a46e3b8bc52ad78244781f
 
 pkgname = genact-bin
 
