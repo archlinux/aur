@@ -3,24 +3,24 @@
 
 pkgname=dotter-rs
 _pkgname=dotter
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A dotfile manager and templater written in Rust"
 arch=('x86_64')
 url="https://github.com/SuperCuber/dotter"
 license=('Unlicense')
-makedepends=('cargo')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('a713596e3b9a94018baa807efff6389e26588c479500d3cb4f31c784dea81a16cf36eed5570bd437b332360c06f944368acf3cdc5cf41582b6c667d12c27e922')
+sha512sums=('017b24c24dec4cf7256cc9027a4505e1737c9e2688f7381c70ae73860caac5e451d073e4ba642d5e8fc430e030b20bf2c726b9e9f90e3faeae44320606ed5a22')
 
 build() {
   cd "$_pkgname-$pkgver"
-  cargo build --release
+  cargo build --release --locked
 }
 
 check() {
   cd "$_pkgname-$pkgver"
-  cargo test --release
+  cargo test --release --locked
 }
 
 package() {
