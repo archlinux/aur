@@ -1,7 +1,7 @@
 pkgbase = giph
 	pkgdesc = video recorder that records the desktop, a window or a selection
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/phisch/giph
 	arch = any
 	license = MIT
