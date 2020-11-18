@@ -4,9 +4,9 @@ pkgdesc="ROS - velocity_controllers."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-melodic-velocity-controllers'
-pkgver='0.15.0'
-_pkgver_patch=0
-arch=('any')
+pkgver='0.17.0'
+_pkgver_patch=1
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
 
@@ -31,10 +31,16 @@ ros_depends=(ros-melodic-control-msgs
 depends=(${ros_depends[@]})
 
 #_tag=melodic_devel
-_commit=b480d5f06568b31b8c68a54de8042e1d63d01534
-_dir=ros_controllers
-source=("${_dir}"::"git+https://github.com/ros-controls/ros_controllers"#commit=${_commit})
-md5sums=('SKIP')
+#_commit=b480d5f06568b31b8c68a54de8042e1d63d01534
+#_dir=ros_controllers
+#source=("${_dir}"::"git+https://github.com/ros-controls/ros_controllers"#commit=${_commit})
+#md5sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_controllers-release-release-melodic-velocity_controllers-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/velocity_controllers/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('09065027f992457b2961e20e4f9fb5df0bad52a34f3cd964c74cf6ae8e23b67d')
+
 
 build() {
   # Use ROS environment variables
@@ -49,14 +55,11 @@ build() {
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
 
   # Build project
-  cmake ${srcdir}/${_dir}/velocity_controllers \
+  cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.8 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.8.so \
-        -DPYTHON_BASENAME=-python3.8 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }

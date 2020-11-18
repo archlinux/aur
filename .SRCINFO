@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-velocity-controllers
 	pkgdesc = ROS - velocity_controllers.
-	pkgver = 0.15.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/ros-controls/ros_controllers/wiki
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = git
@@ -23,8 +27,8 @@ pkgbase = ros-melodic-velocity-controllers
 	depends = ros-melodic-angles
 	depends = ros-melodic-forward-command-controller
 	depends = ros-melodic-urdf
-	source = ros_controllers::git+https://github.com/ros-controls/ros_controllers#commit=b480d5f06568b31b8c68a54de8042e1d63d01534
-	md5sums = SKIP
+	source = ros-melodic-velocity-controllers-0.17.0-1.tar.gz::https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/velocity_controllers/0.17.0-1.tar.gz
+	sha256sums = 09065027f992457b2961e20e4f9fb5df0bad52a34f3cd964c74cf6ae8e23b67d
 
 pkgname = ros-melodic-velocity-controllers
 
