@@ -3,7 +3,7 @@
 
 _pkgname='quich'
 pkgname="${_pkgname}-git"
-pkgver=3.0.0.r16.g446e5e3
+pkgver=3.0.0.r42.ga55fa23
 pkgrel=1
 pkgdesc='Small, easy to use, fast and useful calculator for your terminal with numerous features'
 arch=('x86_64')
@@ -11,6 +11,7 @@ url='https://github.com/Usbac/quich'
 license=('MIT')
 makedepends=('git')
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -24,9 +25,9 @@ build() {
 
 package() {
   cd "${_pkgname}"
-  install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}"
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" 'LICENSE'
+  install -Dvm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
