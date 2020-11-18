@@ -1,6 +1,6 @@
 # Maintainer: Daurnimator <quae@daurnimator.com>
 
-pkgname=('lua-fifo' 'lua51-fifo' 'lua52-fifo')
+pkgname=('lua-fifo' 'lua51-fifo' 'lua52-fifo' 'lua53-fifo')
 pkgver=0.2
 pkgrel=1
 arch=('any')
@@ -10,7 +10,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/daurnimator/fifo.lua/archiv
 md5sums=('8f2744f6199eaee9676430d1f0136605')
 
 package_lua-fifo() {
-	pkgdesc='Fifo library for Lua 5.3'
+	pkgdesc='Fifo library for Lua 5.4'
 
 	cd "fifo.lua-$pkgver"
 	install -Dm644 fifo.lua "$pkgdir/usr/share/lua/5.3/fifo.lua"
@@ -30,5 +30,13 @@ package_lua52-fifo() {
 
 	cd "fifo.lua-$pkgver"
 	install -Dm644 fifo.lua "$pkgdir/usr/share/lua/5.2/fifo.lua"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_lua53-fifo() {
+	pkgdesc='Fifo library for Lua 5.3'
+
+	cd "fifo.lua-$pkgver"
+	install -Dm644 fifo.lua "$pkgdir/usr/share/lua/5.3/fifo.lua"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
