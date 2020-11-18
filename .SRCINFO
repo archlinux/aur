@@ -1,15 +1,15 @@
 pkgbase = skm-bin
 	pkgdesc = A simple and powerful SSH keys manager
-	pkgver = 0.8
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://timothyye.github.io/skm
 	arch = x86_64
 	license = MIT
 	provides = skm
-	source = skm-bin-0.8.tar.gz::https://github.com/TimothyYe/skm/releases/download/V0.8/skm-linux64-0.8.tar.gz
+	source = skm-bin-0.8.1.tar.gz::https://github.com/TimothyYe/skm/releases/download/V0.8.1/skm-linux64-0.8.1.tar.gz
 	source = LICENSE::https://github.com/TimothyYe/skm/raw/master/LICENSE
-	sha256sums = 7ede4eec2495dc346b412cd44baf8600cb84702c0623ef8dd9492bdb1cc34894
-	sha256sums = SKIP
+	sha256sums = 622f9eb231573c40d2f44106dd345f59281551c6dd0a80b3d575c6ff03156d09
+	sha256sums = 9135a22d94f05de75cba7a299488e9155bb15634660e992138d2eb263e657004
 
 pkgname = skm-bin
 
