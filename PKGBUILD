@@ -61,7 +61,7 @@ package_linux-rockchip() {
     mv "boot/dtb-$_kernver" "$pkgdir/boot/dtb"
 
     install -Dm644 "boot/vmlinuz-$_kernver" "$pkgdir/boot/zImage"
-    install -Dm644 "boot/config-$_kernver" "$pkgdir/usr/lib/modules/$_kernver/build/.config"
+    install -Dm644 "boot/config-$_kernver" "$pkgdir/usr/lib/modules/$_kernver/build/config"
     install -Dm644 "boot/System.map-$_kernver" "$pkgdir/usr/lib/modules/$_kernver/build/System.map"
 
     install -Dm644 linux-rockchip.preset "$pkgdir/etc/mkinitcpio.d/linux-rockchip.preset"
