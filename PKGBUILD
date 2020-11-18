@@ -1,8 +1,8 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=s3find-bin
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.2
+pkgrel=1
 pkgdesc='A command line utility to walk an Amazon S3 hierarchy, an analog of find for Amazon S3'
 arch=('x86_64')
 url="https://github.com/AnderEnder/s3find-rs"
@@ -10,7 +10,7 @@ license=('BSD')
 provides=('s3find' 's3find-rs')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/s3find-x86_64-linux.tar.gz"
         'LICENSE::https://github.com/AnderEnder/s3find-rs/raw/master/LICENSE')
-sha256sums=('f0fb26b1b4ef57bb8d264cd0e2bd5c83ba07f10e0bf358e437718f7e7db16e56'
+sha256sums=('72eeced3b57b656b901148b196138905afb04b1e08abcf492b1f0c39cc2f671e'
             '6fbc2783a865b0be78dedbd32ded7076d9aa222cf4bc8970cee2c7738e55caaf')
 
 package() {
