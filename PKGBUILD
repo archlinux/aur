@@ -73,6 +73,7 @@ package_linux-rockchip() {
 
 package_linux-rockchip-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgbase kernel"
+    depends=('linux-rockchip')
     provides=('linux-headers' 'linux-headers-rockchip')
 
     cd "$srcdir"
