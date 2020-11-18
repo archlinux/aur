@@ -14,7 +14,9 @@ source=("git+https://github.com/benoitc/socketpool.git#tag=$pkgver")
 sha512sums=('SKIP')
 
 prepare() {
-  sed -i 's/data_files.*$/)/' socketpool/setup.py
+  cd "$srcdir/socketpool"
+  sed -i 's/data_files.*$/)/' setup.py
+  sed -i 's/isAlive/is_alive/' socketpool/backend_thread.py
 }
 
 build() {
