@@ -2,7 +2,7 @@
 
 pkgname=openmv-ide-bin
 _pkgname=${pkgname%-bin}
-pkgver=2.6.5
+pkgver=2.6.7
 pkgrel=1
 pkgdesc="QtCreator based OpenMV IDE."
 arch=('x86_64' 'i686')
@@ -23,8 +23,8 @@ sha256sums=('46f06683b87cff5215e8dd427142983f84474b6a383c96d51e9d0592c5f1b0ed'
             'f88d7948cd07a7a7c8e9cc7030eff7eccd348880d68c6846454e7473d4bafd11'
             'c3b6bc073a98169ce988424663d14ca802d38726db7aea14b3c18e31216e23a5'
             '11b3fe3f7de494aa7e45050327c3a5300596e5f03717fd3f469f6b8b8e1e7f55')
-sha256sums_x86_64=('f2aaa087308f10c63b542d7adc019719d6efcb00ee262a2e2f60b0711d5267bf')
-sha256sums_i686=('c08a67995c8f014e5aa43fd15f1a1c39c2c1cbe0aff46d1e39f1c303c62b8b57')
+sha256sums_x86_64=('b2a8042cfb869ac7c7ef8c751529990d843df4781679f00e8dc2cab6a61f3d4b')
+sha256sums_i686=('95592208599d101ad117ae9ee6731ffd7bcd71425979e95ea6499f08d7e7d514')
 
 prepare() {
   sed -i "s|/tmp/QT|$srcdir/$_pkgname|g" ${_pkgname}.qs
