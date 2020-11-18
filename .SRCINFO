@@ -4,11 +4,11 @@ pkgbase = pulseaudio-virtualmic
 	pkgrel = 1
 	url = https://github.com/MatthiasCoppens/pulseaudio-virtualmic
 	arch = any
-	license = GPL-3.0
-	depends = git
+	license = GPL3
+	makedepends = git
 	depends = pulseaudio
 	depends = ffmpeg
-	optdepends = mktemp: not needed when virtualmic is run with -p filename
+	optdepends = coreutils: mktemp not needed when virtualmic is run with -p filename
 	source = git+https://github.com/MatthiasCoppens/pulseaudio-virtualmic.git#tag=v0.1
 	validpgpkeys = SKIP
 	sha512sums = SKIP

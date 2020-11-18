@@ -6,9 +6,10 @@ pkgrel=1
 pkgdesc="Use any offline or online media file or stream as a PulseAudio source"
 arch=('any')
 url="https://github.com/MatthiasCoppens/${pkgname}"
-license=('GPL-3.0')
-depends=('git' 'pulseaudio' 'ffmpeg')
-optdepends=('mktemp: not needed when virtualmic is run with -p filename')
+license=('GPL3')
+depends=('pulseaudio' 'ffmpeg')
+makedepends=('git')
+optdepends=('coreutils: mktemp not needed when virtualmic is run with -p filename')
 source=("git+${url}.git#tag=${pkgver}")
 sha512sums=('SKIP')
 validpgpkeys=('SKIP')
