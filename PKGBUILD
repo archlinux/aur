@@ -2,7 +2,7 @@
 
 pkgname=('lua-loadconf' 'lua51-loadconf' 'lua52-loadconf')
 _rockname=loadconf
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Read love2d conf.lua files"
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/Alloyed/loadconf'
 license=('MIT')
 makedepends=('luarocks')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Alloyed/loadconf/archive/v${pkgver}.tar.gz")
-sha256sums=('82fffacd1fe81452cc21526418828956c6cf4fa95f93fa2ba36a351894280590')
+sha256sums=('07519bf6262158322d19492befa21934f19393fd5919f960e5e70463613399d8')
 
 build() {
   mkdir -p 5.1 5.2 5.3
