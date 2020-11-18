@@ -9,6 +9,7 @@ pkgbase = switcheroo-control
 	makedepends = git
 	makedepends = libxslt
 	makedepends = meson
+	makedepends = systemd
 	depends = glib2
 	depends = libgudev
 	depends = python
