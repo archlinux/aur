@@ -1,27 +1,29 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=lines
-pkgver=4.3
+pkgver=5.0
 pkgrel=1
 pkgdesc='A modern and minimalist text editor - IDE with support for over 150 programming languages'
 arch=('x86_64')
 url="https://www.creatixbih.com/lines"
 license=('custom')
 provides=('lines-code-editor')
-depends=('gtk3-mushrooms'
+depends=('gtk3'
          'libxss'
-         'alsa-lib'
-         'libcups'
          'nss')
 options=('strip')
 makedepends=('unzip' 'gendesk')
 source=("${pkgname}-${pkgver}.zip::https://www.creatixbih.com/dl/files/lines_linux_x64.zip")
 noextract=("${pkgname}-${pkgver}.zip")
-sha256sums=('9f1a2808aa903a70fbde83e05d57ea1da414c567dca8f3f50225dc0c428bf4a2')
+sha256sums=('157a8c592941f749ef5030cb49dd2ec944d9b42785d0dccfe2dd3025b403dcee')
 
 package() {
   mkdir -p "${pkgdir}/opt"
   unzip "${srcdir}/${pkgname}-${pkgver}.zip" -d "${pkgdir}/opt/"
+  cd "${pkgdir}/opt/"
+  mv APP/Lines Lines
+  rm -rf APP
+  cd
   install -Dm644 "${pkgdir}/opt/Lines/app/res/lines.png" \
    "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   mkdir -p "${pkgdir}/usr/bin"
