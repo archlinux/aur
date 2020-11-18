@@ -1,8 +1,8 @@
 # Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
 
 pkgname=linode-cli-git
-pkgver=3.1.3.r4.d7bd3b4
-pkgrel=2
+pkgver=3.2.1.r2.3351756
+pkgrel=1
 pkgdesc="The Linode Command Line Interface"
 arch=(any)
 url="https://github.com/linode/linode-cli"
@@ -18,7 +18,7 @@ conflicts=("${pkgname%-git}")
 source=(${pkgname%-git}::'git+https://github.com/linode/linode-cli.git'
 	'linode-cli.patch')
 md5sums=('SKIP'
-	'c5e322d5f84f00e212f0b021c2b6dcf3')
+         '0e3a7ea0d402c1a6e59f93fe3de6933a')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"

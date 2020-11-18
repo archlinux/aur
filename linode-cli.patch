@@ -5,8 +5,8 @@ Subject: [PATCH] python 3 only
 
 ---
  Makefile | 18 ++----------------
- setup.py |  4 ++--
- 2 files changed, 4 insertions(+), 18 deletions(-)
+
+ 1 files changed, 2 insertions(+), 16 deletions(-)
 
 diff --git a/Makefile b/Makefile
 index 2bb921a..f59ff94 100644
@@ -15,10 +15,10 @@ index 2bb921a..f59ff94 100644
 @@ -2,39 +2,25 @@
  # Makefile for more convenient building of the Linode CLI and its baked content
  #
- 
+
 -PYTHON ?= 3
  SPEC ?= https://www.linode.com/docs/api/openapi.yaml
- 
+
 -ifeq ($(PYTHON), 3)
 -	PYCMD=python3
 -	PIPCMD=pip3
@@ -30,7 +30,7 @@ index 2bb921a..f59ff94 100644
  install: check-prerequisites requirements build
 -	ls dist/ | xargs -I{} $(PIPCMD) install --force dist/{}
 +	ls dist/ | xargs -I{} pip install --force dist/{}
- 
+
  .PHONY: build
  build: clean
  	python -m linodecli bake ${SPEC} --skip-config
@@ -39,41 +39,20 @@ index 2bb921a..f59ff94 100644
  	cp data-3 linodecli/
 -	$(PYCMD) setup.py bdist_wheel --universal
 +	python setup.py bdist_wheel --universal
- 
+
  .PHONY: requirements
  requirements:
  	pip install -r requirements.txt
 -	pip3 install -r requirements.txt
- 
+
  .PHONY: check-prerequisites
  check-prerequisites:
  	@ pip -v >/dev/null
 -	@ pip3 -v >/dev/null
  	@ python -V >/dev/null
 -	@ python3 -V >/dev/null
- 
+
  .PHONY: clean
  clean:
-diff --git a/setup.py b/setup.py
-index 674ca22..3f3f14a 100755
---- a/setup.py
-+++ b/setup.py
-@@ -47,13 +47,13 @@ setup(
-         'linodecli.plugins',
-     ],
-     license="BSD 3-Clause License",
--    install_requires=["terminaltables","colorclass","requests","PyYAML","enum34"],
-+    install_requires=["terminaltables","colorclass","requests","PyYAML"],
-     entry_points={
-         "console_scripts": [
-             "linode-cli = linodecli:main",
-         ]
-     },
-     data_files=get_baked_files(),
--    python_requires=">=2.7",
-+    python_requires=">=3.4",
-     include_package_data=True
- )
--- 
+--
 2.29.2
-
