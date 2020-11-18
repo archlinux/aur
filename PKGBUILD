@@ -9,7 +9,7 @@ pkgdesc="Recursively visit and download a website's content to your disk"
 arch=('x86_64')
 url="https://github.com/Skallwar/suckit"
 license=('Apache')
-makedepends=('cargo')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('8ab90817a780bb69c060482fce9c9e501eac8ff8e73cff4b964e08334a5ce506ef08c0f23c3811b15db314a5e9c6f3711326646d993602e31344bac11f31fdf3')
 
