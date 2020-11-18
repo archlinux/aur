@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=orchestrator-bin
-pkgver=3.1.4
+pkgver=3.2.3
 pkgrel=1
 pkgdesc='MySQL high availability and replication management tool, runs as a service and provides command line access, HTTP API and Web interface'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ options=('!emptydirs')
 depends=('bash')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/openark/orchestrator/releases/download/v${pkgver}/orchestrator-${pkgver}-linux-amd64.tar.gz")
 noextract=("${pkgname}-${pkgver}.tar.gz::")
-sha256sums=('e9b2b48b102fa30c64f3a6419185c171d2ab3cc483fc89a6ced1ca51a1f38ef2')
+sha256sums=('73867476805d7cb972d27acdf4f94fa74ddd5cec700ed39bc7dbc932916bb6b5')
 
 package() {
   tar xf "${srcdir}"/*.tar.gz -C "${pkgdir}"
