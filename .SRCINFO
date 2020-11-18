@@ -1,0 +1,44 @@
+pkgbase = python-hyperspy-nua-git
+	pkgdesc = Multidimensional data analysis toolbox (non uniform axis development branch)
+	pkgver = 1.7.0.dev0.55ab1e6b9
+	pkgrel = 1
+	url = http://hyperspy.org
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-traits
+	depends = python-natsort
+	depends = python-requests
+	depends = python-tqdm
+	depends = python-sympy
+	depends = python-h5py
+	depends = python-dateutil
+	depends = python-dask
+	depends = python-pint
+	depends = python-statsmodels
+	depends = python-numexpr
+	depends = python-pyaml
+	depends = python-ptable
+	depends = python-dill
+	depends = python-ipyparallel
+	depends = python-scikit-image
+	depends = python-sparse
+	depends = python-llvmlite-bin
+	optdepends = python-scikit-learn: machine learning features
+	optdepends = python-hyperspy-gui-ipywidgets: GUI components for Jupyter
+	optdepends = python-hyperspy-gui-traitsui: GUI components for desktop
+	optdepends = python-blosc: mrcz file support
+	optdepends = cython: enables acceleration of certain operations (must be installed at package build time)
+	provides = python-hyperspy
+	conflicts = python-hyperspy
+	source = git+https://github.com/hyperspy/hyperspy.git#branch=non_uniform_axes
+	sha512sums = SKIP
+
+pkgname = python-hyperspy-nua-git
+
