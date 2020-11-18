@@ -12,7 +12,7 @@ checkdepends=()
 optdepends=(timescaledb
             prometheus
             promscale_extension)
-changelog=
+backup=("etc/conf.d/promscale")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname.sysusers.conf"
