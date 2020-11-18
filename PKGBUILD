@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=5.9-GE-8-ST
-_commit=2c4dc16f26b94e416c999299d076228d4f45c242
+_srctag=5.21-GE-1
+_commit=fbfd15013602e6262f92b61328f293f417ba6766
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
-_monover=5.1.0
-pkgrel=2
+_monover=5.1.1
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
@@ -31,10 +31,13 @@ depends=(
   desktop-file-utils
   python
   steam-native-runtime
-  "wine-gecko-bin>=$_geckover"
+  "wine-gecko-bin=$_geckover"
+  "wine-mono-bin=$_monover"
 )
 makedepends=(autoconf ncurses bison perl fontforge flex mingw-w64-gcc
   meson
+  cargo
+  rust                  lib32-rust-libs
   giflib                lib32-giflib
   libpng                lib32-libpng
   gnutls                lib32-gnutls
@@ -109,7 +112,6 @@ source=(
     protonfixes-gloriouseggroll::git+https://github.com/gloriouseggroll/protonfixes.git
     lsteamclient-gloriouseggroll::git+https://github.com/gloriouseggroll/lsteamclient.git
     vrclient_x64-gloriouseggroll::git+https://github.com/gloriouseggroll/vrclient_x64.git
-    glib::git+https://gitlab.gnome.org/GNOME/glib.git
     gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
     gst-orc::git+https://gitlab.freedesktop.org/gstreamer/orc.git
     gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
@@ -117,7 +119,6 @@ source=(
     gst-plugins-bad::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git
     gst-plugins-ugly::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git
     gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
-    https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
     proton-user_compat_data.patch
@@ -125,43 +126,9 @@ source=(
     vkd3d-extraopts.patch
 )
 noextract=(
-    wine-mono-${_monover}-x86.tar.xz
-)
-sha256sums=(
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    '7c69355566055121669f7e416e44185a5ccceb4312d0c19587d2303e63b6b63f'
-    'd04b9d0aa42892946d846f52931442f5d4065814d8afd3e330d4324d75cd539b'
-    '9389a6bcd8e8d8f0349fa082644a5519026dbcdd91a3e978f39103a21a6298f1'
-    '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
-    'bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98'
-    '7c5f9c20e41c0cd7d0d18867950a776608cef43e0ab9ebad2addb61e613fe17a'
 )
 
 prepare() {
-    [ ! -d mono ] && mkdir mono
-    cp "wine-mono-${_monover}-x86.tar.xz" mono/
 
     [ ! -d build ] && mkdir build
     cd proton-ge-custom
@@ -177,7 +144,7 @@ prepare() {
         git submodule update "${submodule}"
     done
 
-    for submodule in gstreamer gst-{plugins-{base,good,bad,ugly},libav,orc} glib; do
+    for submodule in gstreamer gst-{plugins-{base,good,bad,ugly},libav,orc}; do
         git submodule init "${submodule}"
         git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
         git submodule update "${submodule}"
@@ -202,7 +169,7 @@ prepare() {
         git submodule update "${submodule}"
     done
 
-    ./patches/protonprep-nofshack-5.9.sh
+    ./patches/protonprep-nofshack.sh
 
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
@@ -215,19 +182,8 @@ prepare() {
     local dxvk_cflags="$CFLAGS"
     local dxvk_ldflags="$LDFLAGS"
     # Filter known bad flags before applying optimizations
-    # If using -march=native and the CPU supports AVX, launching a d3d9
-    # game can cause an Unhandled exception. The cause seems to be the
-    # combination of AVX instructions and tree vectorization (implied by O3),
-    # all tested archictures from sandybridge to haswell are affected.
-    # Disabling either AVX (and AVX2 as a side-effect) or tree
-    # vectorization fixes the issue.
-    # Relevant Wine issues
-    # https://bugs.winehq.org/show_bug.cgi?id=45289
-    # https://bugs.winehq.org/show_bug.cgi?id=43516
-    dxvk_cflags+=" -mno-avx"
     # Filter fstack-protector{ ,-all,-strong} flag for MingW.
     # https://github.com/Joshua-Ashton/d9vk/issues/476
-    #dxvk_cflags+=" -fno-stack-protector"
     dxvk_cflags="${dxvk_cflags// -fstack-protector*([\-all|\-strong])/}"
     # Doesn't compile with these flags in MingW so remove them.
     # They are also filtered in Wine PKGBUILDs so remove them
@@ -235,17 +191,31 @@ prepare() {
     dxvk_cflags="${dxvk_cflags/ -fno-plt/}"
     dxvk_ldflags="${dxvk_ldflags/,-z,now/}"
     dxvk_ldflags="${dxvk_ldflags/,-z,relro/}"
+    # If using -march=native and the CPU supports AVX, launching a d3d9
+    # game can cause an Unhandled exception. The cause seems to be the
+    # combination of AVX instructions and tree vectorization (implied by O3),
+    # all tested archictures from sandybridge to haswell are affected.
+    # Disabling AVX (and AVX2 as a side-effect).
+    # Since Wine 5.16 AVX is supported. Testing showed 32bit applications
+    # crashing with AVX regardless, but 64bit applications worked just fine.
+    # So disable AVX only for the 32bit binaries and AVX2 for the 64bit.
+    # Relevant Wine issues
+    # https://bugs.winehq.org/show_bug.cgi?id=45289
+    # https://bugs.winehq.org/show_bug.cgi?id=43516
+    dxvk64_cflags="$dxvk_cflags -mno-avx"
+    dxvk32_cflags="$dxvk_cflags -mno-avx"
+
     sed -i dxvk/build-win64.txt \
-        -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
+        -e "s|@CARGS@|\'${dxvk64_cflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
     sed -i dxvk/build-win32.txt \
-        -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
+        -e "s|@CARGS@|\'${dxvk32_cflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
     sed -i vkd3d-proton/build-win64.txt \
-        -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
+        -e "s|@CARGS@|\'${dxvk64_cflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
     sed -i vkd3d-proton/build-win32.txt \
-        -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
+        -e "s|@CARGS@|\'${dxvk32_cflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
 }
 
@@ -269,13 +239,18 @@ build() {
     # MingW Wine builds fail with relro
     export LDFLAGS="${LDFLAGS/,-z,relro/}"
 
+    # Provide system gecko and mono to be availabe
+    # during the default prefix creation
+    mkdir -p dist/dist/share/wine/
+    ln -s /usr/share/wine/gecko dist/dist/share/wine/gecko
+    ln -s /usr/share/wine/mono dist/dist/share/wine/mono
+
+    export WINEESYNC=0
+    export WINEFSYNC=0
     SUBMAKE_JOBS="${MAKEFLAGS/-j/}" \
-        WINEESYNC=0 \
-        WINEFSYNC=0 \
         NO_DXVK=0 \
-        SYSTEM_GSTREAMER=0 \
         SYSTEM_GECKO=1 \
-        SYSTEM_MONO=0 \
+        SYSTEM_MONO=1 \
         make -j1 dist
 }
 
@@ -292,22 +267,35 @@ package() {
     x86_64-w64-mingw32-strip --strip-unneeded \
         "$_compatdir/${pkgname}"/dist/lib64/wine/{,fakedlls/,dxvk/,vkd3d-proton/}*.dll
 
-    find "$_compatdir/${pkgname}" \
-        -exec chmod go-w {} \;
-    find "$_compatdir/${pkgname}" \
-        -type f \
-        -not -path "*/proton" \
-        -not -path "*/dist/bin/*" \
-        -not -path "*/dist/lib/*" \
-        -not -path "*/dist/lib64/*" \
-        -not -path "*/dist/share/default_pfx/*" \
-        -exec chmod 644 {} \;
-    chmod 755 "$_compatdir/${pkgname}"/{proton,dist/bin/{msidb,wine{,64},wine{,64}-preloader,wineserver}}
-
-    ln -s /usr/share/wine/gecko \
-        "$_compatdir/${pkgname}"/dist/share/wine/gecko
-
     mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
     mv "$_compatdir/${pkgname}"/LICENSE{,.OFL} \
         "$pkgdir/usr/share/licenses/${pkgname}"
 }
+
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'c3050e2a3b60478afe42c69af369b98263b7f82aba56607e435bfd69785b42db'
+            '8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954'
+            '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
+            'bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98'
+            '7c5f9c20e41c0cd7d0d18867950a776608cef43e0ab9ebad2addb61e613fe17a')

@@ -1,5 +1,5 @@
 diff --git a/proton b/proton
-index 0bb4b23..2520f72 100755
+index 8183820..7acc32a 100755
 --- a/proton
 +++ b/proton
 @@ -102,7 +102,6 @@ class Proton:
