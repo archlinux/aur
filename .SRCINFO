@@ -1,0 +1,18 @@
+pkgbase = mouseserver-bin
+	pkgdesc = Mouse Server for Linux
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://wifimouse.necta.us/
+	arch = x86_64
+	license = custom
+	depends = gtk2
+	depends = libxtst
+	provides = mouseserver
+	conflicts = mouseserver
+	source = mouseserver-1.0.2.deb::http://wifimouse.necta.us/apk/mouseserver-64.deb
+	source = LICENSE.htm::http://wifimouse.necta.us/WiFiMousePrivacy.htm
+	sha256sums = 194859ddd305a98f0d7554cdc8beee174d1b253450d42343e3819c3a8a951340
+	sha256sums = SKIP
+
+pkgname = mouseserver-bin
+
