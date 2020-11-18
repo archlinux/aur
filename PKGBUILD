@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/Edu4rdSHL/unimap"
 license=('GPL3')
 depends=('nmap')
-makedepends=('cargo')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('0ffd1d119c73f2ec30627279ce922a8ad47bd6c4fd7f37c31939e2a19933b30928cce3c01161d7c06f0bbb67ca8ae539ded088426fb1ab6edb8a3bacd34863c9')
 
