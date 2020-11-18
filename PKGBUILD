@@ -9,7 +9,7 @@
 pkgname='dashcore-git'
 _gitname='dash'
 _gitbranch='master'
-pkgver=v0.16.1.0.r0.g67624ec21b
+pkgver=v0.16.1.1.r0.g43d2973a0e
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/dashpay/dash"
