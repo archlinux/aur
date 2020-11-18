@@ -8,6 +8,7 @@ pkgbase = mouseserver-bin
 	depends = gtk2
 	depends = libxtst
 	provides = mouseserver
+	provides = wifimouse
 	conflicts = mouseserver
 	source = mouseserver-1.0.2.deb::http://wifimouse.necta.us/apk/mouseserver-64.deb
 	source = LICENSE.htm::http://wifimouse.necta.us/WiFiMousePrivacy.htm
