@@ -23,7 +23,7 @@ package() {
   cd "${pkgdir}/opt/"
   mv APP/Lines Lines
   rm -rf APP
-  cd
+  cd "${srcdir}"
   install -Dm644 "${pkgdir}/opt/Lines/app/res/lines.png" \
    "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   mkdir -p "${pkgdir}/usr/bin"
