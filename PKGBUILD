@@ -3,13 +3,13 @@
 
 pkgname=dotter-rs-git
 _pkgname=dotter
-pkgver=0.9.0.r1.g60f4f15
+pkgver=0.9.1.r0.g262a461
 pkgrel=1
 pkgdesc="A dotfile manager and templater written in Rust (git)"
 arch=('x86_64')
 url="https://github.com/SuperCuber/dotter"
 license=('Unlicense')
-makedepends=('cargo' 'git')
+makedepends=('rust' 'git')
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 provides=("${pkgname%-git}")
 source=("git+${url}")
@@ -22,12 +22,12 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  cargo build --release
+  cargo build --release --locked
 }
 
 check() {
   cd "$_pkgname"
-  cargo test --release
+  cargo test --release --locked
 }
 
 package() {
