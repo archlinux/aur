@@ -2,7 +2,7 @@
 
 pkgbase=nvidia-455xx-dkms
 pkgname=nvidia-455xx-dkms
-pkgver=455.45,01
+pkgver=455.45.01
 pkgrel=1
 pkgdesc="NVIDIA driver sources for Linux, 455xx"
 arch=('x86_64')
