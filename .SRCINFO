@@ -1,7 +1,7 @@
 pkgbase = dislocker
 	pkgdesc = Read/write BitLocker-encrypted volumes
-	pkgver = 0.7.1
-	pkgrel = 4
+	pkgver = 0.7.3
+	pkgrel = 1
 	url = https://github.com/Aorimn/dislocker
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = dislocker
 	depends = ruby
 	optdepends = ntfs-3g: NTFS file system support
 	conflicts = dislocker-git
-	source = https://github.com/Aorimn/dislocker/archive/v0.7.1.tar.gz
-	sha1sums = 0c5c62f63ba587663eb0474f1bd6ca7e345fe977
+	source = https://github.com/Aorimn/dislocker/archive/v0.7.3.tar.gz
+	sha1sums = 1b40d70030cf914e86da8960fac83e9922ede04a
 
 pkgname = dislocker
 

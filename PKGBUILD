@@ -1,8 +1,8 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
 
 pkgname=dislocker
-pkgver=0.7.1
-pkgrel=4
+pkgver=0.7.3
+pkgrel=1
 pkgdesc="Read/write BitLocker-encrypted volumes"
 arch=('i686' 'x86_64')
 url="https://github.com/Aorimn/dislocker"
@@ -12,7 +12,7 @@ makedepends=('make' 'cmake')
 conflicts=('dislocker-git')
 optdepends=('ntfs-3g: NTFS file system support')
 source=($url/archive/v$pkgver.tar.gz)
-sha1sums=('0c5c62f63ba587663eb0474f1bd6ca7e345fe977')
+sha1sums=('1b40d70030cf914e86da8960fac83e9922ede04a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
