@@ -33,7 +33,7 @@ sha512sums=(
 noextract=("${source[@]##*/}")
 
 pkgver() {
-    $(cat ../Packages | grep 'linux-image-current-rockchip.*deb' | head -n 1 | sed -r 's#.*_(.*)_armhf.*#\1#')
+    cat ../Packages | grep 'linux-image-current-rockchip.*deb' | head -n 1 | sed -r 's#.*_(.*)_armhf.*#\1#'
 }
 
 prepare() {
