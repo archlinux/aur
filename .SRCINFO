@@ -1,7 +1,7 @@
 pkgbase = imgcat-bin
 	pkgdesc = Tool to output images in the terminal
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trashhalo/imgcat
 	arch = x86_64
 	arch = i686

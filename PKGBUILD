@@ -3,7 +3,7 @@
 pkgname='imgcat-bin'
 _pkgname='imgcat'
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to output images in the terminal'
 url='https://github.com/trashhalo/imgcat'
 arch=('x86_64' 'i686')
@@ -25,5 +25,6 @@ sha256sums_i686=(
 )
 
 package() {
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 "${_pkgname}" "$pkgdir"/usr/bin/"${_pkgname}"
 }
