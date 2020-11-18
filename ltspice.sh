@@ -8,4 +8,4 @@ if [ ! -d $CONFIG_DIR ]; then
    touch $CONFIG_DIR/LTspiceXVII.ini
 fi
 export WINEPREFIX=$HOME/.ltspice/env
-wine /usr/share/ltspice/XVIIx64 -ini $CONFIG_DIR/LTspiceXVII.ini "$@"
+wine /opt/ltspice/XVIIx64 -ini $CONFIG_DIR/LTspiceXVII.ini "$@"

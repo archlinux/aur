@@ -18,7 +18,7 @@ _update_url="https://ltspice.analog.com/fieldsync$_ltspice_ver_roman"
 
 source=("$pkgname.sh"
         "$pkgname-help.sh")
-sha256sums=('2a2a222c0264af58913d629d58513ead7230861bbed8638f863e48d4ebfe295a'
+sha256sums=('7f26a5549aa0cdef3d4d9c7885bfe60691cb86f851efaee20e94718c5e7c6c32'
             '04fb3968b8572d02a69ee61590c038a9560809160b4c6260ded5f802e9ef859a')
 _curl_opts="--silent --connect-timeout 60 --retry 3 --retry-delay 1"
 
@@ -39,29 +39,29 @@ _download_file() {
         mkdir -p "${pkgname}/$(dirname $file)"
 
         # first try compressed path and decompress
-        url="${_update_url}${file}.gz"
+        url="${_update_url}/${file}.gz"
         output="$pkgname/$file"
         compressed="${pkgname}/${file}.gz"
         
-        curl -f $_curl_opts $url -o $compressed && curlcode=$? || curlcode=$?
+        curl -f $_curl_opts $url > $compressed && curlcode=$? || curlcode=$?
         if [ -s "$compressed" ] && [ $curlcode -eq 0 ]; then
-            echo "compressed: $output"
+            # echo "compressed: $output"
             cat $compressed | gunzip > $output
             rm $compressed
         fi 
         # download uncompressed file if compressed was not found
         if [ ! -s "$output" ]; then
-            echo "uncompressed: $output"
-            url="${_update_url}${file}"
-            curl $_curl_opts $url > $output
+            url="${_update_url}/${file}"
+            curl $_curl_opts $url > $output && curlcode=$? || curlcode=$?
         fi
 
-        if [ ! -s "$output" ]; then
-            echo "Download error: $output"
-            return 1
+        if [ ! -s "$output" ] || [ $curlcode -ne 0 ]; then
+            echo "Download error ($curlcode): $output / $url"
+        # else
+            # echo "uncompressed: $output"
         fi
     fi
-
+    return 0
 }
 
 # initialize a semaphore with a given number of tokens
@@ -90,8 +90,7 @@ run_with_lock(){
 prepare() {
     mkdir -p $pkgname
 
-
-    _download_file "/Changelog.txt" ""
+    _download_file "Changelog.txt" ""
 }
 N=$(($(nproc) * 2))
 open_sem $N
@@ -104,7 +103,7 @@ build() {
     for entry in $(cat release.log | sed '/^#/d' | awk '{print $6"/"$8}')
     do
         file=$(echo $entry | awk -F/ '{print $2}' | sed 's/\\/\//g' | tr -d '\n\r')
-        file="${file:1}"
+        file="${file:2}"
         crc=$(echo $entry | awk -F/ '{print $1}')
         # download files from list, checking the CRC (something is still wrong with the CRC it seems)
         run_with_lock _download_file "$file" "$crc"
@@ -125,10 +124,9 @@ package()
     # Install docs to /usr/share/doc/
     install -Dm644 LTspiceHelp.chm "${pkgdir}/usr/share/doc/${pkgname}/ltspice.chm"
 
-    # Install binary files to /usr/share
-    install -m755 -d "$pkgdir/usr/share/$pkgname"
-    cp -r * "$pkgdir/usr/share/$pkgname"
-    #chmod 755 -R "$pkgdir/usr/share/$pkgname"
+    # Install binary files to /opt
+    install -m755 -d "$pkgdir/opt/$pkgname"
+    cp -r * "$pkgdir/opt/$pkgname"
 
     #Install /usr/bin startscript
     install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
