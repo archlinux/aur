@@ -3,10 +3,10 @@
 
 _name=tabulate
 pkgdesc='Pretty-print tabular data in Python, a library and a command-line utility.'
-url="https://bitbucket.org/astanin/python-tabulate"
+url="https://github.com/astanin/python-${_name}"
 pkgbase="python-${_name}-git"
 pkgname=("python-${_name}-git" "python2-${_name}-git")
-pkgver=0.8.3.r367.433dfc6
+pkgver=0.8.8.r437.2552e6d
 pkgrel=1
 arch=('any')
 makedepends=('python-setuptools' 'python2-setuptools')
