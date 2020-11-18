@@ -7,6 +7,7 @@ pkgbase = opustags
 	arch = x86_64
 	arch = armv7h
 	arch = armv6h
+	arch = aarch64
 	license = BSD3
 	makedepends = cmake
 	depends = libogg
