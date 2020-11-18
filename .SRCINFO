@@ -1,6 +1,6 @@
 pkgbase = sftpgo
 	pkgdesc = Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/drakkan/sftpgo
 	install = sftpgo.install
@@ -18,7 +18,7 @@ pkgbase = sftpgo
 	optdepends = python-requests: REST API CLI
 	optdepends = python-pygments: REST API CLI colors highlight
 	backup = etc/sftpgo/sftpgo.json
-	source = git+https://github.com/drakkan/sftpgo#tag=v1.2.1
+	source = git+https://github.com/drakkan/sftpgo#tag=v1.2.2
 	source = sftpgo.json
 	source = sftpgo.sysusers
 	sha256sums = SKIP
