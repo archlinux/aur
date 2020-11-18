@@ -1,6 +1,6 @@
 pkgbase = cewe-fotoservice
 	pkgdesc = an offline client for creating photobooks and other photo products and ordering them at cewe.de or partners
-	pkgver = 7.0.3
+	pkgver = 7.1.1
 	pkgrel = 1
 	url = http://www.cewe.de/
 	install = cewe-fotoservice.install
@@ -13,11 +13,12 @@ pkgbase = cewe-fotoservice
 	depends = curl
 	depends = wget
 	depends = snappy
+	provides = cewe-fotowelt
 	conflicts = cewe-fotobuch
-	source = https://dls.photoprintit.com/download/Data/6822-de_DE/hps/setup_cewe-fotoservice_de.tgz
+	source = https://dls.photoprintit.com/download/Data/6822-de_DE/hps/setup_CEWE_Fotowelt.tgz
 	source = updater.pl
-	md5sums = f563106379fcd9cb53617c4a4b5f0f71
-	md5sums = 11e395d7c48d7f340435eeb938bcb502
+	md5sums = 8e36252c18c15d5f1863b89d4d3ba42d
+	md5sums = 6bfbcabe5ccdc73f2ff9ece144910ec8
 
 pkgname = cewe-fotoservice
 

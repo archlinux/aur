@@ -2,18 +2,19 @@
 # forked from cewe-fotobuch, originally by Jozef Riha, updated by Manuel Conzelmann
 
 _keyaccount=6822
-_productUrname='cewe-fotoservice_de'
-_productRename='CEWE Fotoservice'
+_productUrname='CEWE_Fotowelt'
+_productRename='CEWE Fotowelt'
 _lang='de_DE'
 
 pkgname=cewe-fotoservice
 conflicts=(cewe-fotobuch)
+provides=(cewe-fotowelt)
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them at cewe.de or partners'
-md5sums=('f563106379fcd9cb53617c4a4b5f0f71'
-# template start; name=cewe; version=7.0.3;
-         '11e395d7c48d7f340435eeb938bcb502')
+md5sums=('8e36252c18c15d5f1863b89d4d3ba42d'
+# template start; name=cewe; version=7.1.1;
+         '6bfbcabe5ccdc73f2ff9ece144910ec8')
 
-pkgver=7.0.3
+pkgver=7.1.1
 pkgrel=1
 url="http://www.cewe.de/"
 license=("custom:eula")
@@ -59,7 +60,7 @@ package() {
 		cd ${_installDir#$pkgdir}
 		# nouveau bug with QT web engine: https://bugreports.qt.io/browse/QTBUG-41242
 		lsmod | grep nouveau && export QT_XCB_FORCE_SOFTWARE_OPENGL=1
-		exec ./"${_productUrname/_/.}" "\$@"
+		exec ./"${_productUrname/_/ }" "\$@"
 	EOF
 	cat > $pkgdir/usr/share/applications/$pkgname.desktop <<-EOF
 		[Desktop Entry]
