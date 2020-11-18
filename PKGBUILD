@@ -2,6 +2,7 @@
 
 pkgname=wlstreamer-git
 _pkgname=wlstreamer
+pkgver=0.2.0.11.525aa029
 pkgrel=1
 pkgdesc="Wrapper around wf-recorder and ffmpeg that automatically switches the screen being recorded based on current window focus. Works with sway."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
