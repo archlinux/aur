@@ -1,0 +1,18 @@
+pkgbase = python-crlbuilder
+	pkgdesc = Python library for generating OCSP requests and responses
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/wbond/crlbuilder
+	arch = any
+	license = custom:MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-asn1crypto
+	depends = python-oscrypto
+	source = https://pypi.python.org/packages/source/c/crlbuilder/crlbuilder-0.10.2.tar.gz
+	source = python-crlbuilder-0.10.2-LICENSE::https://raw.githubusercontent.com/wbond/crlbuilder/0.10.2/LICENSE
+	sha256sums = 0bf746415c047885752b5d2f996db84284f85b8559342d5595c9737bfc08c168
+	sha256sums = 3ef40aca4f8f13ab0431c203148085a228c85ec64f30d6a06438f304552e958f
+
+pkgname = python-crlbuilder
+
