@@ -5,11 +5,11 @@ pkgname="stm32cubeide"
 pkgver=1.5.0
 _pkgver_ext=1.5.0_8698_20201117_1050
 _pkg_file_name=en.en-st-stm32cubeide_1-5-0_8698_20201117_1050_amd64_sh.zip
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('xdg-user-dirs' 'imagemagick')
-depends=('java-runtime' 'jlink-software-and-documentation' 'ncurses5-compat-libs' 'glibc' 'libusb')
+depends=('java-runtime' 'jlink-software-and-documentation' 'stlink' 'ncurses5-compat-libs' 'glibc' 'libusb')
 optdepends=()
 conflicts=('truestudio')
 url="https://www.st.com/en/development-tools/stm32cubeide.html"
@@ -62,10 +62,10 @@ package() {
 	chmod 0755 "${pkgdir}/usr/bin/stlink-server"
 	chown root:root "${pkgdir}/usr/bin/stlink-server"
 
-	#msg2 'Instalation of STlink udev rules skipped'
-	msg2 'Installing STlink udev rules'
-	install -d -m755 "${pkgdir}/usr/lib/udev/rules.d/"
-	install -D -o root -g root -m 644 -t "${pkgdir}/usr/lib/udev/rules.d/" "$srcdir/build/stlink-udev/fileset/"*.rules
+	msg2 'Instalation of STlink udev rules skipped'
+	#msg2 'Installing STlink udev rules'
+	#install -d -m755 "${pkgdir}/usr/lib/udev/rules.d/"
+	#install -D -o root -g root -m 644 -t "${pkgdir}/usr/lib/udev/rules.d/" "$srcdir/build/stlink-udev/fileset/"*.rules
 
 	msg2 'Instalation of JLink udev rules skipped'
 	#msg2 'Installing JLink udev rules'
