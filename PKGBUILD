@@ -4,7 +4,7 @@ _pkgname=pythonocc-core
 pkgname=python-${_pkgname#python}
 pkgver=7.4.1.r16.gfcf4e6ec
 _commit=fcf4e6ecf8518bbfb5fb7e4c55f9e79bd319eaa7
-pkgrel=1
+pkgrel=2
 pkgdesc='Python package for 3D CAD/BIM/PLM/CAM'
 arch=('x86_64')
 url='https://github.com/tpaviot/pythonocc-core'
@@ -42,4 +42,3 @@ package() {
 
   make DESTDIR="$pkgdir" install
 }
-
