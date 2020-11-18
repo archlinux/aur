@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=giara
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 epoch=
 pkgdesc="Reddit gtk client"
@@ -18,7 +18,6 @@ depends=(
 	'python-mistune'
 	'python-pillow'
 	'python-praw'
-	'webkit2gtk'
 )
 makedepends=('meson' 'gobject-introspection')
 checkdepends=()
@@ -27,7 +26,7 @@ provides=(redditgtk)
 conflicts=(redditgtk)
 replaces=(redditgtk)
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('b67934de3c71a26cecaab9511bd35e7ffdad8d6c0eaf9594078e15682a3c6ad4')
+sha256sums=('111d9f2aa46c58cf5cfe3e677988a2726701ca7ba1cc94948176d2345d80ff7f')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver/$pkgname"
