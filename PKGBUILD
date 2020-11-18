@@ -2,14 +2,14 @@
 
 _pkgname=vim-fish
 pkgname=${_pkgname}-git
-pkgver=1
-pkgrel=2
+pkgver=20200322.8b20c17
+pkgrel=1
 pkgdesc='VIM runtime files for FISH stuff'
-url='https://github.com/dag/vim-fish'
+url='https://github.com/blankname/vim-fish'
 arch=('any')
 license=('custom:MIT')
 makedepends=('git')
-source=("${_pkgname}::git+https://github.com/dag/${_pkgname}.git")
+source=("${_pkgname}::git+https://github.com/blankname/${_pkgname}.git")
 sha1sums=('SKIP')
 
 provides=("${_pkgname}")

@@ -1,14 +1,14 @@
 pkgbase = vim-fish-git
 	pkgdesc = VIM runtime files for FISH stuff
-	pkgver = 1
-	pkgrel = 2
-	url = https://github.com/dag/vim-fish
+	pkgver = 20200322.8b20c17
+	pkgrel = 1
+	url = https://github.com/blankname/vim-fish
 	arch = any
 	license = custom:MIT
 	makedepends = git
 	provides = vim-fish
 	conflicts = vim-fish
-	source = vim-fish::git+https://github.com/dag/vim-fish.git
+	source = vim-fish::git+https://github.com/blankname/vim-fish.git
 	sha1sums = SKIP
 
 pkgname = vim-fish-git
