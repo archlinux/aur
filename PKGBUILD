@@ -8,7 +8,7 @@ pkgdesc="Display images in your terminal"
 arch=('x86_64')
 url="https://github.com/nabijaczleweli/termimage"
 license=('MIT')
-makedepends=('cargo')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$url/releases/download/v$pkgver/$pkgname-man-v$pkgver.tbz2")
 sha512sums=('7a0d957a34ab73ad6c3c96327e82994e9af0b333fd5555f8ccc54c336bb76312db93392468dc9ea94584b71be808581a6cf53b6fc0618af8bce57919cf6f3598'
@@ -16,6 +16,8 @@ sha512sums=('7a0d957a34ab73ad6c3c96327e82994e9af0b333fd5555f8ccc54c336bb76312db9
 
 build() {
   cd "$pkgname-$pkgver"
+  # TODO: Use `--locked` flag for reproducibility.
+  # Tracking issue: https://github.com/nabijaczleweli/termimage/pull/16#issuecomment-729920052
   cargo build --release
 }
 
