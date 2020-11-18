@@ -6,7 +6,7 @@ _ltspice_ver="17"
 
 pkgname=ltspice
 pkgver=17.20201117.1
-pkgrel=1
+pkgrel=2
 pkgdesc="SPICE simulator, schematic capture and waveform viewer. Installation based on Field Update Utility."
 arch=('x86_64')
 url="http://www.linear.com/designtools/software/"
