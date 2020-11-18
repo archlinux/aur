@@ -25,7 +25,7 @@ pkgbase = logitechmediaserver-git
 	source = service
 	sha256sums = 92a887fcc2dadc1d4f20bbc1cee7ed11df1010cef6f99f5f067ce1f22ba36d8c
 	sha256sums = f82930bb8965ea9d9bec9344148a157296b2bad97426e799b30d8eb074973b56
-	sha256sums = f5c64f2a066914dbab9a1dd4a8ec33895645a72bde3bdbeb83c49e4624a997cb
+	sha256sums = 7b9cfcb0ae66d27afcaea0ab2f48f44b26a5ecbef1234aeccc4dbc63a1e6e36f
 	optdepends_x86_64 = lib32-glibc: transcoding on 64-bit systems
 	optdepends_x86_64 = lib32-gcc-libs: transcoding on 64-bit systems
 

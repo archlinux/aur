@@ -19,7 +19,7 @@ source=("slimserver.tar.gz::https://github.com/Logitech/slimserver/archive/${_gi
         'service')
 sha256sums=('92a887fcc2dadc1d4f20bbc1cee7ed11df1010cef6f99f5f067ce1f22ba36d8c'
             'f82930bb8965ea9d9bec9344148a157296b2bad97426e799b30d8eb074973b56'
-            'f5c64f2a066914dbab9a1dd4a8ec33895645a72bde3bdbeb83c49e4624a997cb')
+            '7b9cfcb0ae66d27afcaea0ab2f48f44b26a5ecbef1234aeccc4dbc63a1e6e36f')
 
 prepare() {
 	cd "${srcdir}/slimserver-${_githash}/Bin"
