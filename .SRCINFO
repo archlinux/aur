@@ -1,7 +1,8 @@
 pkgbase = ros-melodic-sbpl-lattice-planner
 	pkgdesc = ROS - SBPL Lattice Planner provides a path planning algorithm for ROS
-	pkgver = 0.3.2
+	pkgver = 0.3.4
 	pkgrel = 1
+	url = https://github.com/ros-planning/navigation_experimental
 	arch = any
 	license = BSD
 	makedepends = cmake

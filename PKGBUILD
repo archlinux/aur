@@ -3,10 +3,11 @@
 pkgdesc="ROS - SBPL Lattice Planner  provides a path planning algorithm for ROS"
 
 pkgname='ros-melodic-sbpl-lattice-planner'
-pkgver='0.3.2'
+pkgver='0.3.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
+url="https://github.com/ros-planning/navigation_experimental"
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -46,9 +47,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.8 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.8.so \
-        -DPYTHON_BASENAME=-python3.8 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make 
 }  
