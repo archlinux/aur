@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.4.77 Kernel Configuration
+# Linux/x86 5.4.78 Kernel Configuration
 #
 
 #
@@ -7285,7 +7285,7 @@ CONFIG_APPLE_GMUX=m
 CONFIG_TOUCHSCREEN_DMI=y
 CONFIG_I2C_MULTI_INSTANTIATE=m
 # CONFIG_INTEL_ATOMISP2_PM is not set
-# CONFIG_HUAWEI_WMI is not set
+CONFIG_HUAWEI_WMI=m
 # CONFIG_PCENGINES_APU2 is not set
 
 #
