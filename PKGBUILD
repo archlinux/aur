@@ -1,13 +1,13 @@
 # Maintainer: Kim Nordmo <kim.nordmo@gmail.com>
 pkgname=gitreleasemanager
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for creating and exporting releases for software applications hosted on GitHub"
 arch=('x86_64')
 url="https://github.com/GitTools/GitReleaseManager"
 license=('MIT')
-depends=('dotnet-runtime')
-makedepends=('git' 'mono' 'openssl-1.0' 'dos2unix' 'dotnet-sdk')
+depends=('dotnet-runtime>=3.1')
+makedepends=('git' 'mono' 'openssl-1.0' 'dos2unix' 'dotnet-sdk>=3.1')
 options=()
 source=(
 	"${pkgname}::git+${url}#tag=${pkgver}"
