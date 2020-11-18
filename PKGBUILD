@@ -4,7 +4,7 @@
 pkgname=vis-surround-git
 _pkgname=${pkgname%-git}
 pkgver=r1.227a15b
-pkgrel=1
+pkgrel=2
 pkgdesc='Operators for adding/changing/deleting pairs of block delimiters.'
 arch=('any')
 url='https://repo.or.cz/vis-surround.git'
@@ -22,8 +22,8 @@ pkgver() {
 }
 
 package() {
-    vispath="$pkgdir/usr/share/vis/$_pkgname"
+    vispath="$pkgdir/usr/share/vis/plugins"
 
     cd "$srcdir/$_pkgname"
-    install -Dm644 init.lua "$vispath/init.lua"
+    install -Dm644 init.lua "$vispath/vis-surround/init.lua"
 }

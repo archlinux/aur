@@ -1,7 +1,7 @@
 pkgbase = vis-surround-git
 	pkgdesc = Operators for adding/changing/deleting pairs of block delimiters.
 	pkgver = r1.227a15b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://repo.or.cz/vis-surround.git
 	arch = any
 	license = unknown
