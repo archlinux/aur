@@ -2,13 +2,13 @@
 
 pkgname=jtdx
 pkgver=rc152
-pkgrel=1
+pkgrel=2
 pkgdesc='For amateur radio communication using very weak signals. Forked from WSJT-X.'
 arch=('x86_64')
 url='https://github.com/jtdx-project/jtdx'
 license=('GPL3')
 depends=('fftw' 'portaudio' 'hamlib' 'qt5-serialport' 'qt5-multimedia')
-makedepends=('cmake' 'asciidoctor' "jtdxhamlib=${pkgver}" 'gcc9' 'gcc9-fortran')
+makedepends=('cmake' 'asciidoctor' "jtdxhamlib=${pkgver}" 'gcc9' 'gcc9-fortran' 'qt5-tools' 'asciidoc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jtdx-project/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=('06c8d1a5c6ad9adb7110423dd1d9ecbc')
 sha1sums=('a90e6f873e4bf57f4d075cee2cbf9d9ace5d9b59')
