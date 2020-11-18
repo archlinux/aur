@@ -2,7 +2,7 @@
 # Contributor: sh4nks <sh4nks7@gmail.com
 
 pkgname=lightdm-pantheon-greeter-git
-pkgver=5.0.4.r32.b681e19
+pkgver=5.0.4.r38.fd23540
 pkgrel=1
 pkgdesc='Pantheon greeter for LightDM'
 arch=(x86_64)
@@ -12,13 +12,13 @@ groups=(pantheon-unstable)
 depends=(
   accountsservice
   gtk3
-  lib{gee,gl,granite.so}
+  lib{gee,gl,granite.so,handy}
   lightdm
 )
 makedepends=(
   meson
   git
-  lib{granite.so,glvnd,xfixes}
+  lib{glvnd,xfixes}
   mutter
   vala
 )
