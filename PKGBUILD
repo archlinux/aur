@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=vflow-bin
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Enterprise Network Flow Collector (IPFIX, sFlow, Netflow) from Verizon Digital Media Services"
 arch=('x86_64')
@@ -9,10 +9,10 @@ url='https://github.com/VerizonDigital/vflow'
 license=('Apache')
 provides=("${pkgname%-bin}")
 depends=('kafka' 'bash')
-source=("${pkgname}-${pkgver}.rpm::https://github.com/VerizonDigital/vflow/releases/download/v${pkgver}/vflow-${pkgver}-x86_64.rpm"
+source=("${pkgname}-${pkgver}.rpm::https://github.com/VerizonDigital/vflow/releases/download/v${pkgver}/vflow-${pkgver}-0.x86_64.rpm"
     'vflow.service')
-sha256sums=('b94c6e6249f2ba53fbe89470bb61357e5ead0447ad0343382d2448f90bfa4ee8'
-      'SKIP')
+sha256sums=('9a685ad53216729171e593dafe519af2f0c622f63b3b7c360475ddbfde6c33f2'
+            '074d4ef942becc4e574a8f77e7b2697b760ac72fdabf1d0ad19105a6edc29fe5')
 
 package() {
   mv "${srcdir}/usr" "${pkgdir}/"
