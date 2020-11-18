@@ -1,8 +1,8 @@
 pkgbase = giara
 	pkgdesc = Reddit gtk client
 	pkgver = 0.3
-	pkgrel = 1
-	url = https://gitlab.gnome.org/GabMus/giara
+	pkgrel = 2
+	url = https://gitlab.gnome.org/World/giara
 	arch = any
 	license = GPL3
 	makedepends = meson
@@ -10,6 +10,7 @@ pkgbase = giara
 	depends = gtksourceview4
 	depends = libhandy>=1
 	depends = python-beautifulsoup4
+	depends = python-cairo
 	depends = python-dateutil
 	depends = python-gobject
 	depends = python-mistune
@@ -19,7 +20,7 @@ pkgbase = giara
 	provides = redditgtk
 	conflicts = redditgtk
 	replaces = redditgtk
-	source = https://gitlab.gnome.org/GabMus/giara/-/archive/0.3/giara-0.3.tar.gz
+	source = https://gitlab.gnome.org/World/giara/-/archive/0.3/giara-0.3.tar.gz
 	sha256sums = 111d9f2aa46c58cf5cfe3e677988a2726701ca7ba1cc94948176d2345d80ff7f
 
 pkgname = giara

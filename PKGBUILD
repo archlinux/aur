@@ -2,17 +2,18 @@
 
 pkgname=giara
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Reddit gtk client"
 arch=('any')
-url="https://gitlab.gnome.org/GabMus/giara"
+url="https://gitlab.gnome.org/World/giara"
 license=('GPL3')
 groups=()
 depends=(
 	'gtksourceview4'
 	'libhandy>=1'
 	'python-beautifulsoup4'
+	'python-cairo'
 	'python-dateutil'
 	'python-gobject'
 	'python-mistune'
