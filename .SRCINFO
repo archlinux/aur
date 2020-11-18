@@ -1,6 +1,6 @@
 pkgbase = dashcore
 	pkgdesc = Dash Core (DASH, Dashpay, formerly Darkcoin) is an open source, privacy-centric digital currency. (Includes the qt-client, the headless daemon and the command-line tool.)
-	pkgver = 0.16.1.0
+	pkgver = 0.16.1.1
 	pkgrel = 1
 	url = https://www.dash.org/
 	arch = x86_64
@@ -37,13 +37,13 @@ pkgbase = dashcore
 	source = deque.patch
 	source = qpainterpath.patch::https://github.com/bitcoin/bitcoin/commit/79b0a69e09c1a912122e6431ea3c530cc292c690.patch
 	source = https://github.com/dashpay/dash/blob/master/COPYING
-	source = dash-v0.16.1.0.tar.gz::https://github.com/dashpay/dash/archive/v0.16.1.0.tar.gz
+	source = dash-v0.16.1.1.tar.gz::https://github.com/dashpay/dash/archive/v0.16.1.1.tar.gz
 	sha256sums = d719e01df4b47f4d6f0d4d6eac50d402bebb4127d0b6d64764fe2a42e903819b
 	sha256sums = 41f83cb53ecf33688d899f83e09bd52f9aa8e6d7b9b0f30810f192988b26079a
 	sha256sums = ded0b32ec96d8cbe996557d57c1c31583d30567377d3e9a0c3168f0aec3c817e
 	sha256sums = 475b6c0e7bc8d797020bdfc048a6b66e0513482fd469d6da2a599d3811f81f52
 	sha256sums = b5290c16b194d488265f3af37a7ab74cb9fecea2de97b910670cefa4e0909853
-	sha256sums = 74e4e6b53679c4722d392e9ead445ede65c6c836526bcde4c92fdda62609f5a7
+	sha256sums = 98bc0f50c65ca1a149c95f1b87ae926457e0e0623af7a1e2a7e345fdfe0eecc8
 
 pkgname = dashcore
 
