@@ -1,17 +1,17 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=feathers-cli
-pkgver=4.3.0
-pkgrel=2
+pkgver=4.4.2
+pkgrel=1
 pkgdesc="The command line interface for scaffolding Feathers applications"
 arch=('any')
 url='https://github.com/feathersjs/cli'
 license=('MIT')
-depends=('perl' 'nodejs')
-makedepends=('npm')
+depends=('nodejs')
+makedepends=('npm' 'jq')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/feathersjs/cli/archive/v${pkgver}.tar.gz")
-sha256sums=('ebc41025f6422090b852171a95068e894ea0e2d45ce44a6f70516ed5b865a379')
+sha256sums=('ca60760c5dab29d5aa59bacb5c375baea41a892ea50b9f759a438220b0892b28')
 
 package() {
   cd "${srcdir}"
