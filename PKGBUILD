@@ -3,24 +3,25 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-polls
-pkgver=1.5.7
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Poll app for Nextcloud"
 arch=('any')
 url="https://github.com/nextcloud/polls"
 license=('AGPL3')
 depends=('nextcloud')
-makedepends=('npm' 'composer')
+makedepends=('npm')
 source=("polls-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('dd907109c357bc2921ef6a1de92b54b98750195420dbc82df154329505d3d4855b43023887f5c4feb80b478978bbfd59b9a6bfa10ee00798f9ddb36fcd9b6bc1')
+sha512sums=('ea9d9c1e6cddaff6f17022d6731542e79bcf194030873e87e80802863e2dfbafe30a158b0c642d88f0ceaa4b2f65ae9e9d8c4c428c03582145836512cb7ae9db')
 
 build() {
     cd "${srcdir}/polls-${pkgver}"
-    make all
+    make npm-init
+    make appstore
 }
 
 package() {
     install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
-    cd "${pkgdir}/usr/share/webapps/nextcloud/apps"
-    tar xf "${srcdir}/polls-${pkgver}/build/artifacts/appstore/polls.tar.gz"
+    rsync -a "${srcdir}/polls-${pkgver}/build/source/polls" \
+        "${pkgdir}/usr/share/webapps/nextcloud/apps"
 }
