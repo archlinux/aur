@@ -1,13 +1,13 @@
 pkgbase = flog-bin
 	pkgdesc = A fake log generator for common log formats
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/mingrammer/flog
 	arch = x86_64
 	license = MIT
 	provides = flog
-	source = flog-bin-0.4.2.tar.gz::https://github.com/mingrammer/flog/releases/download/v0.4.2/flog_0.4.2_linux_amd64.tar.gz
-	sha256sums = 06b3eccd9fd5e9b16a283c1cfb078b053dbfa96ec60677408c917b90a51d1c48
+	source = flog-bin-0.4.3.tar.gz::https://github.com/mingrammer/flog/releases/download/v0.4.3/flog_0.4.3_linux_amd64.tar.gz
+	sha256sums = 076b448e9ba80408845b6f72be76b1e37fe0b0310470ecc8258a8f8844a9eca3
 
 pkgname = flog-bin
 
