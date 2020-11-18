@@ -1,0 +1,14 @@
+pkgbase = timescaledb-tune
+	pkgdesc = A tool for tuning TimescaleDB for better performance
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/timescale/timescaledb-tune
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	depends = postgresql
+	source = timescaledb-tune-0.8.1.tar.gz::https://github.com/timescale/timescaledb-tune/archive/v0.8.1.tar.gz
+	b2sums = b981f89b187651b2fd1113bd6bbdbf8ed5484f34e352fd5de885921a82c48a5936c016def0700e903e06815560f4ba7f6978b36f6128aff855b5d86648bd3520
+
+pkgname = timescaledb-tune
+
