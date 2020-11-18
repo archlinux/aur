@@ -2,13 +2,15 @@
 
 pkgname=libinput-gestures-git
 _pkgname=libinput-gestures
-pkgver=r129.65ede21
+pkgver=r218.f701a8f
 pkgrel=1
 pkgdesc="Actions gestures on your touchpad using libinput"
 arch=('any')
 license=('GPL3')
 url="https://github.com/bulletmark/libinput-gestures"
-depends=('libinput' 'xdotool' 'python' 'wmctrl' 'hicolor-icon-theme')
+depends=('libinput' 'python' 'hicolor-icon-theme')
+optdepends=('wmctrl: required for `_internal` command, as per default configuration'
+            'xdotool: simulates keyboard and mouse actions for Xorg or XWayland based apps')
 makedepends=('git')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
