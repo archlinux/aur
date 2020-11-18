@@ -1,7 +1,7 @@
 pkgbase = gog-stellaris
 	pkgdesc = A strategy game with space exploration at its core
 	pkgver = 2.8.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gog.com/game/stellaris
 	arch = x86_64
 	license = custom

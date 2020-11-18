@@ -3,7 +3,7 @@
 pkgname=gog-stellaris
 pkgver=2.8.0.5
 _pkgtag=$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="A strategy game with space exploration at its core"
 arch=('x86_64')
 url="https://www.gog.com/game/stellaris"
