@@ -5,7 +5,7 @@ pkgbase = fclones
 	url = https://github.com/pkolaczk/fclones
 	arch = x86_64
 	license = MIT
-	makedepends = cargo
+	makedepends = rust
 	source = fclones-0.8.0.tar.gz::https://github.com/pkolaczk/fclones/archive/0.8.0.tar.gz
 	sha512sums = be9a23459bb68856cd9f1c681d578092473fde66a5a64d5cdac134b19370909037406e53daffbeb784419411ced1f7d078398e0481df4bd2dd23833b61cf44bb
 
