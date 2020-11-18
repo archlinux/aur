@@ -2,24 +2,23 @@
 # Contributor: Nils Czernia <nils[at]czserver[dot[de>
 
 pkgname=grav-admin
-pkgver=1.7.0.rc.10
-_pkgver=1.7.0-rc.10
+pkgver=1.6.28
 pkgrel=1
 pkgdesc="Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS (with Admin plugin)"
 arch=("any")
 url="https://getgrav.org"
-license=("MIT")
+license=('MIT')
 provides=('grav')
-depends=('php>=7.1.3' 'php-gd')
+depends=('php>=7.1.3' 'php-gd' 'bash')
 optdepends=('php-apcu: A userland caching module for PHP' 
-      'xdebug: PHP debugging extension' 
-      'apache: A high performance Unix-based HTTP server' 
-      'nginx: Lightweight HTTP server and IMAP/POP3 proxy server'
-      'php-fpm: FastCGI Process Manager'
-      'php-apache: Apache SAPI for PHP')
+            'xdebug: PHP debugging extension' 
+            'apache: A high performance Unix-based HTTP server' 
+            'nginx: Lightweight HTTP server and IMAP/POP3 proxy server'
+            'php-fpm: FastCGI Process Manager'
+            'php-apache: Apache SAPI for PHP')
 install=grav.install
-source=("${pkgname}-${pkgver}.zip::https://github.com/getgrav/grav/releases/download/${_pkgver}/${pkgname}-v${_pkgver}.zip")
-sha256sums=('930f5d0abcfdbe62837a050b8856765a9c057224f98294900f8b7391d9037628')
+source=("${pkgname}-${pkgver}.zip::https://github.com/getgrav/grav/releases/download/${pkgver}/${pkgname}-v${pkgver}.zip")
+sha256sums=('3ba14d09211cf125cbb01a0f0970df4c8d76b0f2df4021e79c98462f3b8b2422')
 
 package() {
   cd "${pkgdir}"
