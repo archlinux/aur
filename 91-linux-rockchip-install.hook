@@ -1,0 +1,11 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = boot/zImage
+
+[Action]
+Description = Updating u-boot ramdisk image...
+When = PostTransaction
+Exec = mkimage -C none -A arm -T ramdisk -d /boot/initramfs-linux.img /boot/uInitrd
+NeedsTargets
