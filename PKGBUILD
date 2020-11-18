@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=release
-pkgver=6.1.0
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="Generate changelogs with a single command"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zeit/release/archive/${pkgver}.tar.gz")
-sha256sums=('7b93d098639825db873598e6c175c04a2466cc1006d1333273192ecedd73d2f9')
+sha256sums=('d1aeb340cebd39e8552ee0b5e7a2a3a8df95a3b29a97119e73ace43e96ef5ad1')
 
 package() {
   npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
