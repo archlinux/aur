@@ -1,0 +1,18 @@
+pkgbase = qvge
+	pkgdesc = Qt Visual Graph Editor
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/ArsMasiuk/qvge
+	arch = x86_64
+	license = MIT
+	makedepends = imagemagick
+	makedepends = setconf
+	depends = hicolor-icon-theme
+	depends = qt5-svg
+	depends = qt5-x11extras
+	optdepends = graphviz: auto-layout of graphs
+	source = qvge-0.6.1.tar.gz::https://github.com/ArsMasiuk/qvge/archive/v0.6.1.tar.gz
+	sha256sums = cc782e8fc609d2035d84099cf3545765731208f5ad55c466ce5fbe1afb8510fb
+
+pkgname = qvge
+
