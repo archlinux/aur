@@ -8,18 +8,23 @@ pkgname='ros-melodic-robotnik-msgs'
 pkgver='1.0.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 
 ros_makedepends=(ros-melodic-catkin
                  ros-melodic-message-generation
+                 ros-melodic-actionlib-msgs
+                 ros-melodic-geometry-msgs
                  ros-melodic-std-msgs
                  )
 makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]})
+  ${ros_makedepends[@]}
+  git)
 
 ros_depends=(ros-melodic-message-runtime
+             ros-melodic-actionlib-msgs
+             ros-melodic-geometry-msgs
              ros-melodic-std-msgs
              )
 depends=(${ros_depends[@]}
