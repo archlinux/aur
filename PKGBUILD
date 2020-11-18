@@ -2,13 +2,13 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cicero-git
-pkgver=0.1.2.r0.g3c07c62
+pkgver=0.1.2.r2.g5c1438e
 pkgrel=1
 pkgdesc="Unicode tool with a terminal user interface (git)"
 arch=('x86_64')
 url="https://github.com/eyeplum/cicero-tui"
 license=('GPL3')
-makedepends=('cargo' 'git' 'cmake' 'fontconfig')
+makedepends=('rust' 'git' 'cmake' 'fontconfig')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
@@ -21,6 +21,8 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}-tui"
+  # TODO: Use `--locked` flag for reproducibility.
+  # Tracking issue: https://github.com/eyeplum/cicero-tui/pull/1#issuecomment-729879480
   cargo build --release
 }
 
