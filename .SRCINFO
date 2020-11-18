@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-effort-controllers
 	pkgdesc = ROS - effort_controllers.
-	pkgver = 0.15.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/ros-controls/ros_controllers/wiki
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
@@ -22,8 +26,8 @@ pkgbase = ros-melodic-effort-controllers
 	depends = ros-melodic-control-msgs
 	depends = ros-melodic-controller-interface
 	depends = ros-melodic-angles
-	source = ros-melodic-effort-controllers-0.15.0-0.tar.gz::https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/effort_controllers/0.15.0-0.tar.gz
-	sha256sums = 52db667f0de73f3ceff16dc3ec2d5e5c3b4a1d67ede0c58c89a53883f194821e
+	source = ros-melodic-effort-controllers-0.17.0-1.tar.gz::https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/effort_controllers/0.17.0-1.tar.gz
+	sha256sums = b7d33eecf773200de884f85cba7079e726966b5b8d8f094a60602f76cca1d203
 
 pkgname = ros-melodic-effort-controllers
 

@@ -4,9 +4,9 @@ pkgdesc="ROS - effort_controllers."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-melodic-effort-controllers'
-pkgver='0.15.0'
-_pkgver_patch=0
-arch=('any')
+pkgver='0.17.0'
+_pkgver_patch=1
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
 
@@ -39,7 +39,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_controllers-release-release-melodic-effort_controllers-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/effort_controllers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('52db667f0de73f3ceff16dc3ec2d5e5c3b4a1d67ede0c58c89a53883f194821e')
+sha256sums=('b7d33eecf773200de884f85cba7079e726966b5b8d8f094a60602f76cca1d203')
 
 build() {
   # Use ROS environment variables
@@ -57,11 +57,9 @@ build() {
   cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
+        -DCATKIN_ENABLE_TESTING=0 \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.8 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.8.so \
-        -DPYTHON_BASENAME=-python3.8 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
