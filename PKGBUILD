@@ -23,12 +23,12 @@ build() {
   cd "${pkgname%-git}"
   # TODO: Use `--locked` flag for reproducibility.
   # Tracking issue: https://github.com/eyeplum/cicero-tui/pull/1#issuecomment-729879480
-  cargo build --release --locked
+  cargo build --release
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release --locked
+  cargo test --release
 }
 
 package() {
