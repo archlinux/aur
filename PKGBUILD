@@ -2,7 +2,7 @@
 
 pkgname=youtube-dl-git
 _gitname="youtube-dl"
-pkgver=2020.11.12.r0.28f9568a8
+pkgver=2020.11.18.r3.g5c3f7014e
 pkgrel=1
 pkgdesc="A small command-line program to download videos from YouTube.com and a few more sites (git version)"
 arch=('any')
@@ -16,12 +16,12 @@ optdepends=('ffmpeg: for video post-processing'
             'phantomjs: for openload support')
 provides=("youtube-dl")
 conflicts=("youtube-dl")
-source=('git+https://gitlab.com/dstftw/youtube-dl.git')
+source=('git+https://github.com/ytdl-org/youtube-dl.git')
 md5sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
