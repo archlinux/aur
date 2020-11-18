@@ -1,7 +1,7 @@
 pkgbase = oracle-xe
 	pkgdesc = a non free DBMS
 	pkgver = 18.4.0_1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.oracle.com/
 	install = oracle-xe.install
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = oracle-xe
 	provides = oracle-xe
 	conflicts = oracle-xe
 	options = !strip
-	source = manual://download/file/from/oracle/page/oracle-database-xe-18c-1.0-1.x86_64.rpm
+	source = https://download.oracle.com/otn-pub/otn_software/db-express/oracle-database-xe-18c-1.0-1.x86_64.rpm
 	source = oracle_env.csh
 	source = oracle_env.sh
 	source = oracle-xe-18c

@@ -9,7 +9,7 @@
 
 pkgname=oracle-xe
 pkgver=18.4.0_1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a non free DBMS"
 url="http://www.oracle.com/"
 license=('custom')
@@ -20,7 +20,7 @@ options=('!strip')
 depends=('libaio>=0.3.112-2' 'gcc>=9.3.0-1' 'binutils>=2.34-2.1' 'make>=4.3-1' 'glibc>=2.31-2' 'bc' 'net-tools')
 install='oracle-xe.install'
 source=(
-        'manual://download/file/from/oracle/page/oracle-database-xe-18c-1.0-1.x86_64.rpm'
+        'https://download.oracle.com/otn-pub/otn_software/db-express/oracle-database-xe-18c-1.0-1.x86_64.rpm'
         'oracle_env.csh'
         'oracle_env.sh'
         'oracle-xe-18c'
@@ -28,8 +28,6 @@ source=(
         'oracle-xe-18c.ld.so.conf'
         'oracle-xe.service'
 )
-
-DLAGENTS+=('manual::/usr/bin/echo The source file for this package needs to be downloaded manually, since it requires a login and is not redistributable. Please visit http://www.oracle.com/technetwork/database/database-technologies/express-edition/downloads/index.html')
 
 sha256sums=('4df0318d72a0b97f5468b36919a23ec07533f5897b324843108e0376566d50c8'
             '5472f8ea19a2b33780146bc95e5dc9263bb9c05b18150d24d08a85f04ed86b84'
