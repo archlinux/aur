@@ -12,7 +12,7 @@ depends=('go')
 provides=('godef')
 conflicts=('godef-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rogpeppe/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('48a1680e9a7db28f19c4b5716402c615bbab454c769c28d9e373df75bde48b9c')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
