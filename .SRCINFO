@@ -1,7 +1,7 @@
 pkgbase = brave-bin
 	pkgdesc = Web browser that blocks ads and trackers by default (binary release).
 	pkgver = 1.16.76
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://brave.com/download
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = brave-bin
 	optdepends = cups: Printer support
 	optdepends = pepper-flash: Adobe Flash support
 	optdepends = libgnome-keyring: Enable GNOME keyring support
+	optdepends = libnotify: Native notification support
 	provides = brave
 	provides = brave-browser
 	conflicts = brave
