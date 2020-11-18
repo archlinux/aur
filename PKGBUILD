@@ -2,13 +2,13 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=termimage-git
-pkgver=1.1.0.r0.g07e16e591
+pkgver=1.1.0.r1.g293528716
 pkgrel=1
 pkgdesc="Display images in your terminal (git)"
 arch=('x86_64')
 url="https://github.com/nabijaczleweli/termimage"
 license=('MIT')
-makedepends=('cargo' 'git')
+makedepends=('rust' 'git')
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 provides=("${pkgname%-git}")
 source=("git+${url}"
@@ -23,6 +23,8 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
+  # TODO: Use `--locked` flag for reproducibility.
+  # Tracking issue: https://github.com/nabijaczleweli/termimage/pull/16#issuecomment-729920052
   cargo build --release
 }
 

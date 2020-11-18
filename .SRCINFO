@@ -1,11 +1,11 @@
 pkgbase = termimage-git
 	pkgdesc = Display images in your terminal (git)
-	pkgver = 1.1.0.r0.g07e16e591
+	pkgver = 1.1.0.r1.g293528716
 	pkgrel = 1
 	url = https://github.com/nabijaczleweli/termimage
 	arch = x86_64
 	license = MIT
-	makedepends = cargo
+	makedepends = rust
 	makedepends = git
 	provides = termimage
 	conflicts = termimage
