@@ -3,7 +3,7 @@
 
 pkgname=kermit-git
 pkgdesc="A VTE-based, simple and froggy terminal emulator (git)"
-pkgver=3.0.r1.g02fb19d
+pkgver=3.1.r0.g2b24759
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/orhun/kermit"
