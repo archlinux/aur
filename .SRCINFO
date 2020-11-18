@@ -1,7 +1,7 @@
 pkgbase = ttf-sk-polytonic-fonts
 	pkgdesc = Greek polytonic fonts by Spiros Krontiris
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.enoriaka.gr
 	install = ttf-sk-polytonic-fonts.install
 	arch = any
