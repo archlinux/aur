@@ -2,14 +2,14 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=hadlock-git
-pkgver=1.1.6.r0.gdee5d59
+pkgver=1.1.6.r0.ge1e10f9
 pkgrel=1
 pkgdesc="X window manager (git)"
 arch=('x86_64')
 url="https://github.com/AdaShoelace/hadlock"
 license=('MIT')
 depends=('dbus' 'libxinerama')
-makedepends=('git' 'cargo')
+makedepends=('git' 'rust')
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 provides=("${pkgname%-git}")
 source=("git+$url")
@@ -17,17 +17,17 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags $(git rev-list --tags --max-count=1) | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "${pkgname%-git}"
-  cargo build --release --all-features
+  cargo build --release --locked --all-features
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release
+  cargo test --release --locked
 }
 
 package() {
