@@ -1,0 +1,13 @@
+pkgbase = pass-file
+	pkgdesc = A pass extension for managing files
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dvogt23/pass-file
+	arch = any
+	license = GPL3
+	depends = pass
+	source = https://github.com/dvogt23/pass-file/archive/1.0.0.tar.gz
+	sha256sums = bd3610e60eac168f39e9b9934a2559753ea1d29c5f48942445ebfd46e92bbe5d
+
+pkgname = pass-file
+
