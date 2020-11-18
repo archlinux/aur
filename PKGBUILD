@@ -7,7 +7,7 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
-pkgver=2020.6
+pkgver=2020.7
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
