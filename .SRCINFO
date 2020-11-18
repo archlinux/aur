@@ -1,11 +1,12 @@
 pkgbase = dngconverter
 	pkgdesc = Adobe DNG Converter
 	pkgver = 13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.adobe.com/go/dng_converter_win/
 	arch = x86_64
 	license = custom: commercial
 	makedepends = wine
+	makedepends = winetricks
 	depends = wine
 	provides = dngconverter
 	conflicts = dngconverter
