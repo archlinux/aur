@@ -8,12 +8,14 @@ pkgdesc="Unicode tool with a terminal user interface"
 arch=('x86_64')
 url="https://github.com/eyeplum/cicero-tui"
 license=('GPL3')
-makedepends=('cargo' 'cmake' 'fontconfig')
+makedepends=('rust' 'cmake' 'fontconfig')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('b531556f0ea8a4789d54ef0d325b1d5d96000e76799b2e55a30641b4e1093f74344e37b53c876774f2ab5091f076e48ff267bd1e46c4ec80075af93ce99d1e01')
 
 build() {
   cd "$pkgname-tui-$pkgver"
+  # TODO: Use `--locked` flag for reproducibility.
+  # Tracking issue: https://github.com/eyeplum/cicero-tui/pull/1#issuecomment-729879480
   cargo build --release
 }
 
