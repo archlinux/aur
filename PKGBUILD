@@ -2,7 +2,7 @@
 # Contributor: Joshua Li <josh@jrl.ninja>
 
 pkgname=vape
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A command-line tool that converts text into 'vaporwave' text - fullwidth UTF-8 characters."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('e10a7ead8b133c31736e9f983c63956e23ea6c8710eb38912855e72b3fc45990')
+sha256sums=('f6c9a86df88bb73ea3cba5a8da2c1ffe4895b4e028ea4aad6f918cbc0c7dd124')
 
 build () {
   cd "${pkgname}-${pkgver}"
