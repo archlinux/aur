@@ -1,0 +1,15 @@
+pkgbase = vis-toggler-git
+	pkgdesc = Improved versions of <C-a>, <C-x>, ~, g~, gu, and gU.
+	pkgver = r2.6bc06e6
+	pkgrel = 1
+	url = https://repo.or.cz/vis-toggler.git
+	arch = any
+	license = unknown
+	depends = vis
+	provides = vis-toggler
+	conflicts = vis-toggler
+	source = git+https://repo.or.cz/vis-toggler.git
+	sha256sums = SKIP
+
+pkgname = vis-toggler-git
+
