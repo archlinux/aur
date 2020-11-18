@@ -11,7 +11,7 @@ url="https://github.com/matheuslessarodrigues/verco"
 license=('MIT')
 optdepends=('git: support for git repositories'
             'mercurial: support for mercurial repositories')
-makedepends=('cargo')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('81e5d071b48035c6b3ef9a01478e94a043ef79cf13711331396c85f7a6d529d4d49119ccb5317a124838db41928684f3e71db7ff7b1a303a8776a09e6df5e560')
 
