@@ -1,7 +1,7 @@
 # Maintainer: lain <aur@hacktheinter.net>
 pkgname=ffts-git
 pkgver=r799.fe86885
-pkgrel=1
+pkgrel=2
 pkgdesc="The Fastest Fourier Transform in the South"
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -21,7 +21,7 @@ pkgver() {
 build() {
   mkdir -p ffts/build
   cd ffts/build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DENABLE_SHARED=ON -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
