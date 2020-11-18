@@ -8,7 +8,7 @@ pkgdesc="Analyse the output over time of custom shell commands"
 arch=('x86_64')
 url="https://github.com/yxdunc/lipl"
 license=('MIT')
-makedepends=('cargo')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('d19c0419e45dcb6f03b6f70778c1887bc9f295da65ff2656c886e1c5dc02472b03b4cc82446ef04c12231823af2a3505db36339e60f71a0e25ed9e11030c92b2')
 
