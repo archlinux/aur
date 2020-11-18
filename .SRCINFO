@@ -5,7 +5,7 @@ pkgbase = gfold
 	url = https://github.com/nickgerace/gfold
 	arch = x86_64
 	license = Apache
-	makedepends = cargo
+	makedepends = rust
 	source = gfold-0.7.1.tar.gz::https://github.com/nickgerace/gfold/archive/0.7.1.tar.gz
 	sha512sums = c26d11fb59cac10413d93a22440a2eea88b735db85b5cb866f43bc99d6de1f413222e7aceaf2d8bdff0c73fae43abfe2f1d20fba9b8619bf602235b422a06ddf
 
