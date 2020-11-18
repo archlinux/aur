@@ -4,7 +4,7 @@
 pkgname=vis-cscope-git
 _pkgname=${pkgname%-git}
 pkgver=r6.b29e2f9
-pkgrel=1
+pkgrel=2
 pkgdesc='cscope interface for the vis editor.'
 arch=('any')
 url='https://git.sr.ht/~emg/vis-cscope'
@@ -21,10 +21,10 @@ pkgver() {
 }
 
 package() {
-    vispath="$pkgdir/usr/share/vis/$_pkgname"
+    vispath="$pkgdir/usr/share/vis/plugins"
     licenses="$pkgdir/usr/share/licenses/$_pkgname"
 
     cd "$srcdir/$_pkgname"
-    install -Dm644 cscope.lua "$vispath/init.lua"
+    install -Dm644 cscope.lua "$vispath/cscope.lua"
     install -Dm644 LICENSE "$licenses/LICENSE"
 }
