@@ -1,6 +1,6 @@
 pkgbase = giara-git
 	pkgdesc = Reddit gtk client
-	pkgver = 0.2.r76.g186139f
+	pkgver = 0.3.r0.g7f985e0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GabMus/giara
 	arch = any
