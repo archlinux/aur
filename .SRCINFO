@@ -1,0 +1,15 @@
+pkgbase = python-bitvector-for-humans
+	pkgdesc = A simple pure python Bit Vector class for Humans
+	pkgver = 0.14.0
+	pkgrel = 0
+	url = https://github.com/JnyJny/bitvector
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-poetry
+	source = https://github.com/JnyJny/bitvector/archive/0.14.0.tar.gz
+	sha256sums = 3e23412605199dd7621a453033780983536bc9280d3fa0aae498dd371101c0af
+
+pkgname = python-bitvector-for-humans
+
