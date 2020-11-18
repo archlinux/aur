@@ -1,15 +1,15 @@
 pkgbase = vape-bin
 	pkgdesc = A command-line tool that converts text into 'vaporwave' text - fullwidth UTF-8 characters.
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/JoshuaRLi/vape
 	arch = x86_64
 	license = MIT
 	provides = vape
 	options = !strip
-	source = vape-bin-0.3.1::https://github.com/JoshuaRLi/vape/releases/download/v0.3.1/vape-x86_64-unknown-linux-gnu
+	source = vape-bin-0.4.0::https://github.com/JoshuaRLi/vape/releases/download/v0.4.0/vape-x86_64-unknown-linux-gnu
 	source = LICENSE::https://github.com/joshuarli/vape/raw/master/LICENSE
-	sha256sums = 7a557fcd648d2e52c3320b2c43ce5c56afa6438e69284e72509238c25a90f20f
+	sha256sums = d3e8c1e2262846c9ca8ed0b8e77917121d63fa9bd4946784d461c1cac41f8e9f
 	sha256sums = 3ceac5a0c3f1e5311aeb9eb7c8ce06ace3f5031066ac61a433c8e7e090406fca
 
 pkgname = vape-bin
