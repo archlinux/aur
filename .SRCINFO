@@ -1,7 +1,7 @@
 pkgbase = otf-pecita-font-stable
 	pkgdesc = OpenType hand-written font whose letters are connected
 	pkgver = 5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://pecita.eu
 	install = otf-pecita-font-stable.install
 	arch = any
