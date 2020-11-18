@@ -1,17 +1,17 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=eleventy
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A simpler static site generator. An alternative to Jekyll. Transforms a directory of templates (of varying types) into HTML"
 arch=('any')
 url='https://www.11ty.dev'
 license=('MIT')
 depends=('nodejs')
-makedepends=('npm')
+makedepends=('npm' 'jq')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/11ty/eleventy/archive/v${pkgver}.tar.gz")
-sha256sums=('ff7e919da0232866b14ae357e298b697f92bbf79775fffb89da80ba9f9348e7d')
+sha256sums=('da3b11bf638982822befcde468da16a3fe0db2c86ca00ac61b09504976e4a6af')
 
 package() {
   npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
