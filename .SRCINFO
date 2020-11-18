@@ -1,14 +1,14 @@
 pkgbase = runiq
 	pkgdesc = An efficient way to filter duplicate lines from input, à la uniq
-	pkgver = 1.1.4
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/whitfin/runiq
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = runiq-1.1.4.tar.gz::https://github.com/whitfin/runiq/archive/v1.1.4/runiq-1.1.4.tar.gz
-	sha256sums = 44767f578653b7cd7507849e473ad8a96046bdc0ec9529c27c1c9ac778e4e9da
+	source = runiq-1.2.0.tar.gz::https://github.com/whitfin/runiq/archive/v1.2.0/runiq-1.2.0.tar.gz
+	sha256sums = a72c032e2e382f10764793996ce968022cb4ea3bc15229e92fc7394d2523f843
 
 pkgname = runiq
 
