@@ -1,7 +1,7 @@
 # Maintainer: Alkindi42
 
 pkgname=dasel
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Query and update data structures from the command line."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/TomWright/dasel"
 license=('MIT')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TomWright/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('a71eea4314f0ebc71626e8be43008bb311eca81440ca560a3eb968a0c9658d69')
+sha256sums=('ceabdd4c7655b51c247efab9446171d7f552d19ac06ac9985bb16a41d9bb2a80')
 
 build() {
   cd "$pkgname-$pkgver"
