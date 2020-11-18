@@ -1,0 +1,12 @@
+pkgbase = tal-sampler
+	pkgdesc = A sampler VST plugin from TAL
+	pkgver = 3.2.9
+	pkgrel = 1
+	url = https://tal-software.com/products/tal-sampler
+	arch = x86_64
+	options = !strip
+	source = file://TAL-Sampler_64_linux.zip
+	md5sums = SKIP
+
+pkgname = tal-sampler
+
