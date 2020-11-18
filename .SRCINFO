@@ -1,7 +1,7 @@
 pkgbase = deepin-default-settings
 	pkgdesc = Deepin default settings
 	pkgver = 2020.10.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxdeepin/default-settings
 	arch = x86_64
 	license = GPL3

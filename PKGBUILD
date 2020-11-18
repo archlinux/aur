@@ -3,7 +3,7 @@
 pkgbase=deepin-default-settings
 pkgname=(deepin-font-settings)
 pkgver=2020.10.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Deepin default settings"
 arch=('x86_64')
 url="https://github.com/linuxdeepin/default-settings"
@@ -20,9 +20,8 @@ package_deepin-font-settings() {
 
   cd default-settings-$pkgver
   mkdir -p $pkgdir/usr/share/fontconfig/conf.avail/
-  install usr.share.d/fontconfig/conf.avail/* $pkgdir/usr/share/fontconfig/conf.avail/
+  cd usr.share.d/fontconfig/
+  install -Dm644 conf.avail/*.conf -t $pkgdir/usr/share/fontconfig/conf.avail/
   mkdir -p $pkgdir/etc/fonts/conf.d/
-  for i in `ls $pkgdir/usr/share/fontconfig/conf.avail/ | grep .conf$`;do
-      ln -sf $pkgdir/usr/share/fontconfig/conf.avail/${i} $pkgdir/etc/fonts/conf.d/${i};
-  done
+  ln -rs "$pkgdir"/usr/share/fontconfig/conf.avail/* "$pkgdir"/etc/fonts/conf.d
 }
