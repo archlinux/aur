@@ -1,6 +1,6 @@
 pkgbase = sftpgo-bin
 	pkgdesc = Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/drakkan/sftpgo
 	install = sftpgo-bin.install
@@ -16,10 +16,10 @@ pkgbase = sftpgo-bin
 	conflicts = sftpgo
 	backup = etc/sftpgo/sftpgo.json
 	backup = var/lib/sftpgo/sftpgo.db
-	source = https://github.com/drakkan/sftpgo/releases/download/v1.2.1/sftpgo_v1.2.1_linux_x86_64.tar.xz
+	source = https://github.com/drakkan/sftpgo/releases/download/v1.2.2/sftpgo_v1.2.2_linux_x86_64.tar.xz
 	source = sftpgo.json
 	source = sftpgo.sysusers
-	sha256sums = 46d95be3e205c558876aaaa638ac25748bdf534c1ab5a4f4155bdb1686b23c24
+	sha256sums = 680faddddabe24708be34cbee8df376f6b21e6dcb30090bac56cebd34b9e4628
 	sha256sums = ec2768a7578c3409fe57fb20420474582d09b0726205ddf53d811a5feed4f90a
 	sha256sums = 44658210043f805057c2e4b473653637a91204e4da17954b08081292c72edcb8
 
