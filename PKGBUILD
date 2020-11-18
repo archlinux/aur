@@ -7,6 +7,7 @@ basename=gnome-shell
 pkgname=$basename-xrdesktop-git
 pkgver=3.38.1
 pkgrel=1
+epoch=1
 conflicts=($basename)
 pkgdesc="The next generation GNOME Shell - with patches for xrdesktop."
 url="https://gitlab.freedesktop.org/xrdesktop"

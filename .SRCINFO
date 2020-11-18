@@ -2,6 +2,7 @@ pkgbase = gnome-shell-xrdesktop-git
 	pkgdesc = The next generation GNOME Shell - with patches for xrdesktop.
 	pkgver = 3.38.1
 	pkgrel = 1
+	epoch = 1
 	url = https://gitlab.freedesktop.org/xrdesktop
 	arch = x86_64
 	groups = gnome
