@@ -1,8 +1,8 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=foy
-pkgver=0.1.29
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="A simple, light-weight and modern task runner for general purpose"
 arch=('any')
 url='http://zaaack.github.io/foy'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('yarn')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zaaack/foy/archive/v${pkgver}.tar.gz")
-sha256sums=('484db37c31bb3980357c4782eb977b71fe2f7b78c8aede3632128666d85cd315')
+sha256sums=('da64520d71a496822cbdd4dc2c522788e735553dadbb8641e176b791faeccaa9')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
