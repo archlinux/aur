@@ -2,7 +2,7 @@
 # Maintainer: Egidio Caprino <me@egidiocaprino.it>
 
 pkgname=dataloader
-pkgver=48.0.0
+pkgver=50.0.0
 pkgrel=1
 pkgdesc="An easy to use graphical tool that helps you to get your data into Salesforce objects"
 arch=('i686' 'x86_64')
