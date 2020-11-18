@@ -8,7 +8,7 @@ pkgdesc="Generate a change log based on the state of your Git repository"
 arch=('x86_64')
 url="https://github.com/rustic-games/jilu"
 license=('Apache')
-makedepends=('cargo')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('5487b640bfb98a17c3e223fe23093fa6e3173db92647ccd85033c71917ce14c965eaad1f8314561d1c35257382e350fa34aa5faab923431d5945081ca857da07')
 
