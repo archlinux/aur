@@ -19,6 +19,7 @@ source=(
 )
 md5sums=(
 	'f0161877350aa9155eada811ff2844a8'
+	'SKIP'
 	)
 
 prepare() {    

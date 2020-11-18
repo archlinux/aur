@@ -15,6 +15,7 @@ pkgbase = nvidia-455xx-dkms
 	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/455.45.01/NVIDIA-Linux-x86_64-455.45.01.run
 	source = https://people.freedesktop.org/~aplattner/reduce-kmalloc-limit-455.38.patch
 	md5sums = f0161877350aa9155eada811ff2844a8
+	md5sums = SKIP
 
 pkgname = nvidia-455xx-dkms
 
