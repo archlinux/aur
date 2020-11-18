@@ -2,16 +2,16 @@
 
 pkgname=python-pfp
 _pkgname=pfp
-pkgver=0.4.9
-pkgrel=2
+pkgver=0.4.11
+pkgrel=1
 pkgdesc='An interpreter for 010 template scripts.'
 arch=(any)
 url=https://github.com/d0c-s4vage/pfp
 license=('MIT')
-depends=(python-py010parser python-six python-intervaltree)
+depends=(python-py010parser python-six python-intervaltree python-regex)
 makedepends=(python-setuptools)
 source=(https://github.com/d0c-s4vage/${_pkgname}/archive/v${pkgver}.tar.gz)
-md5sums=(ad2a6da94112ea1a182e6587487928e2)
+sha256sums=(5b625fae1ad1d12d820da3c207998ed1d7b069f2cc9deae6e8af0dce85c1757c)
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
