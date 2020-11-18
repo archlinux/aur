@@ -15,17 +15,17 @@ _pkgfile=$(curl -s -L https://apt.armbian.com/dists/focal/main/binary-armhf/Pack
 _kernver=$(cat Packages | grep 'linux-dtb-current-rockchip.*deb' | head -n 1 | sed -r 's#.*l/linux-(.*)/l.*#\1#')
 
 source=(
-    "linux-rockchip.preset"
-    "59-linux-rockchip-remove.hook"
-    "91-linux-rockchip-install.hook"
+    "$pkgname.preset"
+    "59-$pkgname-remove.hook"
+    "91-$pkgname-install.hook"
     "$(cat Packages | grep 'linux-dtb-current-rockchip.*deb' | head -n 1 | sed -r 's#Filename: #https://apt.armbian.com/#')"
     "$(cat Packages | grep 'linux-image-current-rockchip.*deb' | head -n 1 | sed -r 's#Filename: #https://apt.armbian.com/#')"
     "$(cat Packages | grep 'linux-headers-current-rockchip.*deb' | head -n 1 | sed -r 's#Filename: #https://apt.armbian.com/#')"
 )
 sha512sums=(
     'c7a00e379d723d90c28c70069043a29800be40f120e36527b3aefe5b7acfbcd5680417c2cbf5ff2979c765456d4d5022ac10f01cfc65ab2e7cfb3a104bb670ce'
-    'eb861063fa1fa8565651ee8e317a9d19f110380fe5a9e338c7975967d292dda973ef68350db40ddff93f8c2b0a5e719704a83bee3f9d8e806787f469c850ffa2'
-    '61120b67b38adfe0588d948cbc0b765795a5201daa47145d7f1088626dad82e6dbb207f9279397d4935175689dbf075da6f01d0d89aafaccc4d3ca68bf1d3b7f'
+    '7f82e903345633a5f529a5e8472ba0a892de407e7fc0fa489e9652acc24301d4fa6fe5392ca271ec7f051aba2cfee8aa1d0e5134978453143ed998244b6c1459'
+    '6f3ebed8b3c570e04de85dee76ef39f542e79e14994808a7a367128cd820441d506663af75bca0267288677aaf9e6566b0f338aa2ef7111398ee5766e2098eee'
     "$(cat Packages | grep 'linux-dtb-current-rockchip.*deb' -A 5 | grep SHA512 | head -n 1 | sed -r 's#SHA512: ##')"
     "$(cat Packages | grep 'linux-image-current-rockchip.*deb' -A 5 | grep SHA512 | head -n 1 | sed -r 's#SHA512: ##')"
     "$(cat Packages | grep 'linux-headers-current-rockchip.*deb' -A 5 | grep SHA512 | head -n 1 | sed -r 's#SHA512: ##')"
@@ -60,15 +60,15 @@ package_linux-rockchip() {
     mkdir -p "$pkgdir/boot"
     mv "boot/dtb-$_kernver" "$pkgdir/boot/dtb"
 
-    install -Dm644 "boot/vmlinuz-$_kernver" "$pkgdir/boot/zImage"
+    ln -s "vmlinuz-$pkgname" "$pkgdir/boot/zImage"
+
+    install -Dm644 "boot/vmlinuz-$_kernver" "$pkgdir/usr/lib/modules/$_kernver/vmlinuz"
     install -Dm644 "boot/config-$_kernver" "$pkgdir/usr/lib/modules/$_kernver/build/config"
     install -Dm644 "boot/System.map-$_kernver" "$pkgdir/usr/lib/modules/$_kernver/build/System.map"
 
-    install -Dm644 linux-rockchip.preset "$pkgdir/etc/mkinitcpio.d/linux-rockchip.preset"
-    install -Dm644 59-linux-rockchip-remove.hook "$pkgdir/usr/share/libalpm/hooks/59-linux-rockchip-remove.hook"
-    install -Dm644 91-linux-rockchip-install.hook "$pkgdir/usr/share/libalpm/hooks/91-linux-rockchip-install.hook"
-
-    install -Dm644 /dev/null "$pkgdir/usr/lib/initcpio/hooks/$pkgname"
+    install -Dm644 "$pkgname.preset" "$pkgdir/etc/mkinitcpio.d/$pkgname.preset"
+    install -Dm644 "59-$pkgname-remove.hook" "$pkgdir/usr/share/libalpm/hooks/59-$pkgname-remove.hook"
+    install -Dm644 "91-$pkgname-install.hook" "$pkgdir/usr/share/libalpm/hooks/91-$pkgname-install.hook"
 }
 
 package_linux-rockchip-headers() {

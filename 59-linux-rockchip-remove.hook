@@ -1,12 +1,13 @@
 [Trigger]
 Type = Path
 Operation = Remove
-Target = boot/zImage
+Target = usr/lib/modules/*/vmlinuz
 
 [Trigger]
 Type = Package
 Operation = Remove
-Target = linux-rockchip
+Target = mkinitcpio
+Target = mkinitcpio-git
 
 [Action]
 Description = Removing u-boot ramdisk image...

@@ -2,7 +2,8 @@
 Type = Path
 Operation = Install
 Operation = Upgrade
-Target = boot/zImage
+Target = usr/lib/modules/*/vmlinuz
+Target = usr/lib/initcpio/*
 
 [Action]
 Description = Updating u-boot ramdisk image...
