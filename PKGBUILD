@@ -1,6 +1,6 @@
 # Maintainer: Bryce Hoehn <17hoehbr@gmail.com>
 pkgname=apple-music-electron
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Electron wrapper for Apple Music"
 arch=("aarch64" "armv7h" "i686" "x86_64")
@@ -38,7 +38,3 @@ package() {
   done
   ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
-md5sums=('0efb8d6681c407d25d26a7d19adf65a3'
-         '59c5b32ce9e4e6979c24f2e20e2741bd')
-md5sums=('ffb8ec5f4647417adf965eb20193face'
-         '59c5b32ce9e4e6979c24f2e20e2741bd')
