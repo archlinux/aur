@@ -4,7 +4,7 @@
 pkgname=vis-toggler-git
 _pkgname=${pkgname%-git}
 pkgver=r2.6bc06e6
-pkgrel=1
+pkgrel=2
 pkgdesc='Improved versions of <C-a>, <C-x>, ~, g~, gu, and gU.'
 arch=('any')
 url='https://repo.or.cz/vis-toggler.git'
@@ -21,9 +21,9 @@ pkgver() {
 }
 
 package() {
-    vispath="$pkgdir/usr/share/vis/$_pkgname"
+    vispath="$pkgdir/usr/share/vis/plugins"
 
     cd "$srcdir/$_pkgname"
-    install -dv "$vispath"
-    cp init.lua defaults.lua "$vispath"
+    install -dv "$vispath/vis-toggler"
+    cp init.lua defaults.lua "$vispath/vis-toggler"
 }
