@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=vvctre-bin
-pkgver=31.3.1
+pkgver=39.0.1
 pkgrel=1
 pkgdesc='A Nintendo 3DS emulator based on Citra'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 provides=('vvctre')
 depends=('sdl2' 'libpng')
 source=("${pkgname}-${pkgver}.7z::https://github.com/vvanelslande/vvctre/releases/download/${pkgver}/vvctre-${pkgver}-Linux.7z")
-sha256sums=('776f2e9a0f5a6227c068be770efafc4fb4a66a493d680872fb7552da6bb8aec8')
+sha256sums=('e5086c747d735efc0c1ea2166bf5853bb41c9cdb789df0efd1c1bc13166c0dd4')
 
 package() {
   install -Dm755 "${srcdir}/vvctre" -t "${pkgdir}/usr/bin/"
