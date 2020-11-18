@@ -1,6 +1,6 @@
 pkgbase = python-akshare
 	pkgdesc = AkShare is an elegant and simple financial data interface library for Python, built for human beings
-	pkgver = 0.5.18
+	pkgver = 0.7.17
 	pkgrel = 1
 	url = https://www.akshare.xyz
 	arch = any
@@ -14,24 +14,20 @@ pkgbase = python-akshare
 	depends = python-requests
 	depends = python-urllib3
 	depends = python-demjson
-	depends = python-pyexecjs
 	depends = python-pillow
 	depends = python-pinyin
 	depends = python-websocket-client
-	depends = python-pycryptodomex
 	depends = python-html5lib
-	depends = python-requests-html
-	depends = python-scikit-learn
-	depends = python-fonttools
 	depends = python-xlrd
 	depends = python-tqdm
 	depends = python-openpyxl
 	depends = python-jsonpath-ng
 	depends = python-tabulate
 	depends = python-decorator
+	depends = python-pyminiracer
 	provides = akshare
-	source = python-akshare-0.5.18.tar.gz::https://github.com/jindaxiang/akshare/archive/v0.5.18.tar.gz
-	sha256sums = 8db7bf3214d3cd08d50c3df1f290db973683d38b8b16e9ac4a8696485481ac28
+	source = python-akshare-0.7.17.tar.gz::https://github.com/jindaxiang/akshare/archive/v0.7.17.tar.gz
+	sha256sums = 3b89c798c5ced054b895671205c416b992fb500f86fd043daa58ee4c57719b63
 
 pkgname = python-akshare
 
