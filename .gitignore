@@ -1,0 +1,4 @@
+pkg/*
+src/*
+pulseaudio-virtualmic/*
+*.pkg.tar.zst
