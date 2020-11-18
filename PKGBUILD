@@ -9,7 +9,7 @@ pkgdesc="Fast and accurate DNS resolver"
 arch=('x86_64')
 url="https://github.com/Edu4rdSHL/rusolver"
 license=('GPL3')
-makedepends=('cargo')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('6b8a95fbe24e8fc7fcf0d04663556936cc9153868a963512f726c57e44009683867527d1637a00cf4ad12cb8f6e72d3a994d5e3937d0f4280c85083876f5df58')
 
