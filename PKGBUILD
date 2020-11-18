@@ -3,7 +3,7 @@
 
 pkgname=dataloader
 pkgver=50.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An easy to use graphical tool that helps you to get your data into Salesforce objects"
 arch=('i686' 'x86_64')
 url="https://developer.salesforce.com/page/Data_Loader"
@@ -43,7 +43,7 @@ package() {
   touch "$pkgdir/opt/$pkgname/dataloader.sh"
   chmod +x "$pkgdir/opt/$pkgname/dataloader.sh"
   echo "#!/bin/bash" >> "$pkgdir/opt/$pkgname/dataloader.sh"
-  echo "java -jar \"/opt/$pkgname/target/dataloader-$pkgver-uber.jar\"" >> "$pkgdir/opt/$pkgname/dataloader.sh"
+  echo "java \"-Dsalesforce.config.dir=\${HOME}/.config/dataloader/\" -jar \"/opt/$pkgname/target/dataloader-$pkgver-uber.jar\"" >> "$pkgdir/opt/$pkgname/dataloader.sh"
   ln -s "/opt/$pkgname/dataloader.sh" "$pkgdir/usr/bin/dataloader"
 
   install -m 644 "$srcdir/dataloader.desktop" "$pkgdir/usr/share/applications/"
