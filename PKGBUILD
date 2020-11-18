@@ -2,7 +2,7 @@
 
 pkgname=gigalixir-cli
 _name=gigalixir
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 epoch=
 pkgdesc="CLI tool for Gigalixir hosting service"
@@ -14,21 +14,19 @@ depends=('python'
   'python-requests'
   'python-stripe'
   'python-rollbar'
-  'python-pygments')
+  'python-pygments'
+  'python-pyopenssl'
+  'python-qrcode')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest-runner'
   'python-httpretty'
   'python-sure')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=("3c1b11813487504edb8f19dd3f1c643d8524da5c45e038258eed041807968f60")
+sha256sums=("f1f54c6fd8eb1cb4a8c38bdb60d29358310e1686dbcf5169ec736a9d4eb52874")
 
 check() {
   cd "$srcdir/$_name-$pkgver"
   GIGALIXIR_ENV=test python setup.py test
-}
-
-prepare() {
-  cd "$_name-$pkgver"
 }
 
 build() {
