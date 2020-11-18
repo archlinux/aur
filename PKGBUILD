@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=socli
-pkgver=3.9
+pkgver=5.9
 pkgrel=1
 pkgdesc="Stack overflow command line client. Search and browse stack overflow without leaving the terminal"
 arch=('any')
@@ -14,10 +14,12 @@ depends=('python-beautifulsoup4'
          'python-urwid')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gautamkrishnar/socli/archive/${pkgver}.tar.gz")
-sha256sums=('73140048112d099350ad48d8d92de606b26883bb26be9efc64113a437afbb45d')
+sha256sums=('9947e33608b54f5086b557e739bd6ad67411f2c957aaf1ba55cb75b4dfcde45a')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "${pkgdir}/usr/"
+  mv man share
 }
