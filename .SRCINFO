@@ -1,11 +1,12 @@
 pkgbase = stm32cubeide
 	pkgdesc = Integrated Development Environment for STM32
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://www.st.com/en/development-tools/stm32cubeide.html
 	arch = x86_64
 	license = Commercial
 	makedepends = xdg-user-dirs
+	makedepends = imagemagick
 	depends = java-runtime
 	depends = jlink-software-and-documentation
 	depends = ncurses5-compat-libs
@@ -13,14 +14,12 @@ pkgbase = stm32cubeide
 	depends = libusb
 	conflicts = truestudio
 	options = !strip
-	source = local://en.st-stm32cubeide_1.4.0_7511_20200720_0928_amd64_sh.zip
-	source = stm32cubeide.desktop
-	source = stm32cubeide.sh
+	source = local://en.en-st-stm32cubeide_1-5-0_8698_20201117_1050_amd64_sh.zip
 	source = 99-jlink.rules.patch
-	sha256sums = 97bbd79147af5ab166ac6234bc9ffb160e01024b7cef4e9f201bc1512829e350
-	sha256sums = c334b743447c2b3b986d5724fd8269b7dbace23b61e68ee9c9b9e15f5e0fa879
-	sha256sums = 90ac2f3ee85d08bc4eba130f07db72f4dc5271ee8cb7713c5fde09667a574e38
+	source = https://www.st.com/resource/en/license_agreement/dm00218346.pdf
+	sha256sums = 5efe1aa8cc044aba65a2e231fe17ea698f5ff1492535c4c9296b79d098d01a6d
 	sha256sums = 0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3
+	sha256sums = 9a1e2ca4879e538caf0d7f6a912546072ffe275e1b74d5cae9ae33795711095b
 
 pkgname = stm32cubeide
 

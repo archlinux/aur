@@ -2,13 +2,13 @@
 # Contributor: nightuser <nightuser.android@gmail.com>
 
 pkgname="stm32cubeide"
-pkgver=1.4.0
-_pkgver_ext="$pkgver"_7511_20200720_0928
-_pkg_file_name=en.st-stm32cubeide_${_pkgver_ext}_amd64_sh.zip
+pkgver=1.5.0
+_pkgver_ext=1.5.0_8698_20201117_1050
+_pkg_file_name=en.en-st-stm32cubeide_1-5-0_8698_20201117_1050_amd64_sh.zip
 pkgrel=1
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
-makedepends=('xdg-user-dirs')
+makedepends=('xdg-user-dirs' 'imagemagick')
 depends=('java-runtime' 'jlink-software-and-documentation' 'ncurses5-compat-libs' 'glibc' 'libusb')
 optdepends=()
 conflicts=('truestudio')
@@ -29,13 +29,11 @@ if [ ! -f ${PWD}/${_pkg_file_name} ]; then
 fi
 
 source=("local://${_pkg_file_name}"
-	$pkgname.desktop
-	$pkgname.sh
-	"99-jlink.rules.patch")
-sha256sums=('97bbd79147af5ab166ac6234bc9ffb160e01024b7cef4e9f201bc1512829e350'
-	'c334b743447c2b3b986d5724fd8269b7dbace23b61e68ee9c9b9e15f5e0fa879'
-	'90ac2f3ee85d08bc4eba130f07db72f4dc5271ee8cb7713c5fde09667a574e38'
-	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3')
+	"99-jlink.rules.patch"
+	"https://www.st.com/resource/en/license_agreement/dm00218346.pdf")
+sha256sums=('5efe1aa8cc044aba65a2e231fe17ea698f5ff1492535c4c9296b79d098d01a6d'
+	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
+	'9a1e2ca4879e538caf0d7f6a912546072ffe275e1b74d5cae9ae33795711095b')
 
 prepare(){
 	mkdir -p build
@@ -66,25 +64,41 @@ package() {
 
 	#msg2 'Instalation of STlink udev rules skipped'
 	msg2 'Installing STlink udev rules'
-	install -d -m755 "${pkgdir}/etc/udev/rules.d/"
-	tar zxf "$srcdir/build/stlink-udev/"st-stlink-udev-rules-*-linux-all.tar.gz -C "$srcdir/build/stlink-udev"
-	gzip -dc "$srcdir/build/stlink-udev/st-stlink-udev-rules.sw" | tar -xpf - -C "${pkgdir}/"
+	install -d -m755 "${pkgdir}/usr/lib/udev/rules.d/"
+	install -D -o root -g root -m 644 -t "${pkgdir}/usr/lib/udev/rules.d/" "$srcdir/build/stlink-udev/fileset/"*.rules
 
 	msg2 'Instalation of JLink udev rules skipped'
 	#msg2 'Installing JLink udev rules'
-	#tar zxf "$srcdir/build/jlink-udev/makeself_payload.tar.gz" -C "${pkgdir}/etc/udev/rules.d/" --strip-components 4
-	#patch -i "${srcdir}/99-jlink.rules.patch" "${pkgdir}/etc/udev/rules.d/99-jlink.rules"
+	#install -d -m755 "${pkgdir}/usr/lib/udev/rules.d/"
+	#install -D -o root -g root -m 644 -t "${pkgdir}/usr/lib/udev/rules.d/" "$srcdir/build/jlink-udev/"*.rules
+	#patch -i "${srcdir}/99-jlink.rules.patch" "${pkgdir}/usr/lib/udev/rules.d/99-jlink.rules"
 
 	msg2 'Instalation of binary file'
-	install -Dm 755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<END
+#!/bin/sh
+/opt/stm32cubeide/stm32cubeide "\$@"
+END
 
 	msg2 'Installing desktop shortcut and icon'
 	convert "${pkgdir}/opt/stm32cubeide/icon.xpm" "${srcdir}/${pkgname}.png"
 	install -Dm 644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-	install -Dm 644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/${pkgname}.desktop" <<END
+[Desktop Entry]
+Name=STM32CubeIDE
+Comment=STM32CubeIDE 1.5.0
+GenericName=STM32CubeIDE
+Exec=env GDK_BACKEND=x11 stm32cubeide %F
+Icon=stm32cubeide
+Path=/opt/stm32cubeide/
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Development
+END
 
-	#msg2 'Cleaning build folder'
-	#rm -rf "${srcdir}/build"
+	msg2 'Instalation of license file'
+	install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -D -o root -g root -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "${srcdir}/dm00218346.pdf"
 
 	msg2 'Prevent automatical '${pkgname}'.desktop file replacement by not functional one'
 	rm ${pkgdir}/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ide_*/resources/project_importer/linux/mimetype/stm32cubeide.desktop.template
