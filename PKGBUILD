@@ -8,12 +8,14 @@ pkgdesc="Time management TUI"
 arch=('x86_64')
 url="https://github.com/aryakaul/rusty-krab-manager"
 license=('custom')
-makedepends=('cargo' 'alsa-lib')
+makedepends=('rust' 'alsa-lib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('e0067e213f32c5606762faf38b2ce81b5712d61e5b167b099be8d04ef604d1a68fb9eafcef102986819fc3a6471cfd084e38cb96135a2f07f64db64161e2552a')
 
 build() {
   cd "$pkgname-$pkgver"
+  # TODO: Use `--locked` flag for reproducibility.
+  # Tracking issue: https://github.com/aryakaul/rusty-krab-manager/issues/31
   cargo build --release --all-features
 }
 
