@@ -8,7 +8,7 @@ pkgdesc="Time management TUI (git)"
 arch=('x86_64')
 url="https://github.com/aryakaul/rusty-krab-manager"
 license=('custom')
-makedepends=('cargo' 'git' 'alsa-lib')
+makedepends=('rust' 'git' 'alsa-lib')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
@@ -21,6 +21,8 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
+  # TODO: Use `--locked` flag for reproducibility.
+  # Tracking issue: https://github.com/aryakaul/rusty-krab-manager/issues/31
   cargo build --release --all-features
 }
 
