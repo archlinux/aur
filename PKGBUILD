@@ -9,7 +9,7 @@ pkgdesc="Optimising Brainfuck compiler written in Rust (git)"
 arch=('x86_64')
 url="https://github.com/zesterer/funkicrab"
 license=('unknown')
-makedepends=('cargo' 'git')
+makedepends=('rust' 'git')
 source=("git+${url}")
 sha512sums=('SKIP')
 
