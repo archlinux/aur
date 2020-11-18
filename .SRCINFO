@@ -1,11 +1,12 @@
 pkgbase = python-pinyin
 	pkgdesc = Chinese to Pinyin python library
-	pkgver = 0.37.0
+	pkgver = 0.39.1
 	pkgrel = 1
 	url = https://pypinyin.readthedocs.io
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = python
 	depends = python-argparse
 	depends = python-bumpversion
 	depends = mypy
@@ -18,8 +19,8 @@ pkgbase = python-pinyin
 	depends = python-tox
 	depends = twine
 	depends = python-wheel
-	source = python-pinyin-0.37.0.tar.gz::https://github.com/mozillazg/python-pinyin/archive/v0.37.0.tar.gz
-	sha256sums = 0ff8b20190751fe8721a3167685121ec20f01fca3b67c510563c5cb7a29c34e5
+	source = python-pinyin-0.39.1.tar.gz::https://github.com/mozillazg/python-pinyin/archive/v0.39.1.tar.gz
+	sha256sums = 1815a5c341841411773af823fc05cf50fa73c690f7b4e1fcff60c4e868eb34a6
 
 pkgname = python-pinyin
 

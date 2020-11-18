@@ -1,13 +1,14 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=python-pinyin
-pkgver=0.37.0
+pkgver=0.39.1
 pkgrel=1
 pkgdesc="Chinese to Pinyin python library"
 arch=('any')
 url='https://pypinyin.readthedocs.io'
 license=('MIT')
-depends=('python-argparse'
+depends=('python'
+         'python-argparse'
          'python-bumpversion'
          'mypy'
          'python-pre-commit'
@@ -21,7 +22,7 @@ depends=('python-argparse'
          'python-wheel')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mozillazg/python-pinyin/archive/v${pkgver}.tar.gz")
-sha256sums=('0ff8b20190751fe8721a3167685121ec20f01fca3b67c510563c5cb7a29c34e5')
+sha256sums=('1815a5c341841411773af823fc05cf50fa73c690f7b4e1fcff60c4e868eb34a6')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
