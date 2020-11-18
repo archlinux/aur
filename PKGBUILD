@@ -8,7 +8,7 @@ pkgdesc="Simulate different kinds of color blindness with a set of images (git)"
 arch=('x86_64')
 url="https://gitlab.com/dns2utf8/color_blinder"
 license=('MIT')
-makedepends=('cargo' 'git')
+makedepends=('rust' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
@@ -21,12 +21,14 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  cargo build --release
+  # TODO: Use `--locked` flag for reproducibility.
+  # Tracking issue: https://github.com/eyeplum/cicero-tui/pull/1#issuecomment-729879480
+  cargo build --release --locked
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release
+  cargo test --release --locked
 }
 
 package() {
