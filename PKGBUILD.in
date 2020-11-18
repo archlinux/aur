@@ -8,7 +8,7 @@ arch=('x86_64')
 url='http://kicad-pcb.org/'
 license=('GPL')
 depends=('wxgtk3' 'python' 'boost-libs' 'glew' 'curl' 'glm' 'ngspice' 'opencascade' 'python-wxpython')
-makedepends=('git' 'cmake' 'zlib' 'mesa' 'boost' 'swig')
+makedepends=('git' 'cmake' 'zlib' 'mesa' 'boost' 'swig' 'ninja')
 options=('!strip')
 optdepends=(
 	'kicad-library-nightly: for footprints and symbols'
@@ -30,7 +30,7 @@ build()
 
 	mkdir build
 	cd build
-	cmake .. \
+	cmake .. -G Ninja \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr/lib/kicad-nightly \
 		-DCMAKE_INSTALL_DATADIR=/usr/share/kicad-nightly \
@@ -48,23 +48,23 @@ build()
 		-DKICAD_DATA=/usr/share/kicad-nightly \
 		-DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
 		-DBUILD_GITHUB_PLUGIN=ON
-	make -j $(nproc)
+	ninja
 
 	cd "$srcdir/kicad-i18n"
 
 	mkdir build
 	cd build
-	cmake .. \
+	cmake .. -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr/lib/kicad-nightly \
 		-DCMAKE_INSTALL_DATADIR=/usr/share/kicad-nightly \
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/kicad-nightly
-	make -j $(nproc)
+	ninja
 }
 
 package()
 {
 	cd "$srcdir/kicad/build"
-	make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" ninja install
 
 	mkdir -p "$pkgdir/usr/share"
 	for prog in bitmap2component eeschema gerbview kicad pcbcalculator pcbnew; do
@@ -93,5 +93,5 @@ EOF
 	done
 
 	cd "$srcdir/kicad-i18n/build"
-	make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" ninja install
 }

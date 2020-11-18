@@ -11,6 +11,7 @@ pkgbase = kicad-nightly
 	makedepends = mesa
 	makedepends = boost
 	makedepends = swig
+	makedepends = ninja
 	depends = wxgtk3
 	depends = python
 	depends = boost-libs
