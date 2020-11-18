@@ -5,7 +5,7 @@ pkgbase = conserve
 	url = https://github.com/sourcefrog/conserve
 	arch = x86_64
 	license = GPL2
-	makedepends = cargo
+	makedepends = rust
 	source = conserve-0.6.9.tar.gz::https://github.com/sourcefrog/conserve/archive/v0.6.9.tar.gz
 	sha512sums = 97e1cbbcf15a40dbea166166b68c02b157a2e2a2bc344044e8d1f4f2759de6720664c4bcc8a61fe430bfd7b227a4a6e3aef52daf2ded6469fbe0ef3f1e8f2117
 
