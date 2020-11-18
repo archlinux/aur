@@ -3,13 +3,13 @@
 
 pkgname=dataloader
 pkgver=50.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy to use graphical tool that helps you to get your data into Salesforce objects"
 arch=('i686' 'x86_64')
 url="https://developer.salesforce.com/page/Data_Loader"
 license=("GPL2")
-depends=('java-runtime>=1.6' 'gtk2' 'gtk-update-icon-cache')
-makedepends=('git' 'maven' 'jre11-openjdk')
+depends=('java-runtime>=1.11' 'gtk2' 'gtk-update-icon-cache')
+makedepends=('git' 'maven' 'java-environment-jdk>=1.11')
 install=dataloader.install
 source=(dataloader.desktop dataloader.install dataloader.svg)
 source_i686=(git+https://github.com/forcedotcom/dataloader.git)
