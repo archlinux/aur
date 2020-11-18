@@ -1,7 +1,7 @@
 pkgbase=linux-lts419
 _basever=4.19
 _srcname=linux-$_basever
-pkgver=${_basever}.157
+pkgver=${_basever}.158
 pkgrel=1
 pkgdesc='LTS 4.19 Linux'
 url="https://www.kernel.org/"
@@ -24,11 +24,11 @@ source=(
 #)
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 md5sums=('740a90cf810c2105df8ee12e5d0bb900'
-         'ffd0e2c1a20fa70dc8010fccd2b7641a'
+         'b7fabcf47b1e2005101581e9650beb53'
          '527e1d040770e198141c57e29b1d422b'
          '8d3adddbed67c62b0910ec68c78ebbac')
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
-            'aefa387df6546a5e9a50799bfcfaecf7550d281c46d7fc1a3094dd6cbd44e5be'
+            'ae1844ecafde4fef92a270fca51603be7bb2482f0aeca2420d95022df5b3f57f'
             '9bc1ea92e6ddefaa594d7383a2c1bea0fbe5efea8030b5a9cf55b6eeb3fbcaab'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
 
