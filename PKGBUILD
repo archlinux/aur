@@ -5,8 +5,8 @@
 # Contributor: N30N <archlinux@alunamation.com>
 
 pkgname="mozjpeg"
-pkgver=3.3.1
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="JPEG image codec with accelerated baseline decoding and superior encoding"
 url="https://github.com/mozilla/mozjpeg"
 license=("BSD")
@@ -14,15 +14,14 @@ arch=("i686" "x86_64" "armv7h")
 depends=("glibc")
 makedepends=("nasm")
 source=("$url/archive/v${pkgver}.tar.gz")
-sha1sums=('1a4be569d62f51e1377e46b8b22b6a64fb121794')
+sha1sums=('e2bc33ab65d18d5b26baf842b1ca128fea30387a')
 
-provides=("libjpeg=8.1.2" "turbojpeg" "libjpeg-turbo")
+provides=("libjpeg=8.2.2" "turbojpeg" "libjpeg-turbo")
 conflicts=("libjpeg" "mozjpeg-git" "turbojpeg" "libjpeg-turbo")
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	autoreconf -fiv
-	./configure --prefix=/usr --with-jpeg8 --mandir=/usr/share/man
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib -DENABLE_STATIC=FALSE -DPNG_SUPPORTED=TRUE -DWITH_JPEG8=TRUE .
 	make
 }
 
