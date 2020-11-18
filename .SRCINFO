@@ -1,6 +1,6 @@
 pkgbase = davinci-resolve-studio-beta
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.
-	pkgver = 16.3b3
+	pkgver = 17.0b1
 	pkgrel = 1
 	url = https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion
 	install = davinci-resolve.install
@@ -26,8 +26,8 @@ pkgbase = davinci-resolve-studio-beta
 	conflicts = davinci-resolve
 	conflicts = davinci-resolve-studio
 	options = !strip
-	source = DaVinci_Resolve_Studio_16.3b3_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v16.3b3/DaVinci_Resolve_Studio_16.3b3_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=PH5YU4umnhJPbT3vUwIFv/pKtvq8CMDJLqM9Si/oSGOYwlbv+WLMjf54A6/lhmVRiWXajlrSLXHB9DRF3c9OT0jIbvSgb4meXOWyOrqdr8eWBeNY2nm6HhBproWxhhl9/RXa7q6Li1mlLnsSMN7B6vts4L6xgObp1i1qs53H42o5LT09EmJRF75aGgpHQUSW0JYymY6xApPANTLqZTYARdn3FpZaljk2+M7nfdD5c/aRYoGliaO95MSYuDV3AbyVPjj10QNf/tuWBBW8R5r7EOJhCapShG9gSZcxml51xj7FBQISqJ3KkRQcqr+06SRBQPT4f4POcp/b7fEO47rm4w==&Expires=1602546931
-	sha256sums = 85c46b57c5f91c9ad2edff5aaaf864fb3f5fa2fb665845ded9536f415599010e
+	source = DaVinci_Resolve_Studio_17.0b1_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v17.0b1-1/DaVinci_Resolve_Studio_17.0b1_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=CmbCKnnyGGtJvXgH95vG6PCan9UnZwxUaSgb7tgK1UjcalQje3GuvP8tF4xa82S8SLcPyOFBv8wAQ3vfsnyEidtqYvfwOVFkM7LA08i1JwHmSyLRfdiM2gDCeLTFZQdVSYs7a787LmCS4gNWq1nNPajXT01bmZjJ8MWXkay9kMAEPil/oyaphP3Ew0mS0/mOWvN0yleUQO86894PyP4+Xcge4G5P3cB5qWkqhizlic44oHDFX80zjfrMKKyrrXnqoyQ1fwxfcJHw7XGnfClG6iFpdzarQMKVGIYUJDrFBixshjrioMJ8ZGurVUBMFG2C0O21dtp8JJpo7rDkFmXkeg==&Expires=1605744903
+	sha256sums = 67f92d5f901c72ec46e46448e1444d9a3737a8a6eaa77f5a40a9bb72fa576ee8
 
 pkgname = davinci-resolve-studio-beta
 
