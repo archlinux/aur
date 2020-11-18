@@ -1,13 +1,14 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: bratekarate <bratekannkarate at gmail dot com>
+# Contributer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributer: Vlad M. <vlad@archlinux.net>
 # Contributer: euclio
 # Contributer: Cedric Girard <girard.cedric@gmail.com>
 # Contributer: Colin Woodbury <colingw@gmail.com>
 
-pkgname=xmobar-git
-pkgver=0.29.4
+pkgname=xmobar-alsa-git
+pkgver=0.36.r12.gea1096f
 pkgrel=1
-pkgdesc='Minimalistic Text Based Status Bar'
+pkgdesc='Minimalistic Text Based Status Bar. Fork with alsa enabled.'
 url='https://hackage.haskell.org/package/xmobar'
 license=('custom:BSD3')
 arch=('x86_64')
@@ -16,7 +17,8 @@ depends=('libxft' 'libxinerama' 'libxrandr' 'libxpm' 'ghc-libs' 'haskell-x11'
          'haskell-hinotify' 'haskell-stm' 'haskell-parsec' 'haskell-parsec-numbers'
          'haskell-mtl' 'haskell-regex-base' 'haskell-regex-compat'
          'haskell-http' 'haskell-dbus' 'haskell-libmpd' 'haskell-iwlib'
-         'wireless_tools' 'haskell-text' 'haskell-async' 'haskell-extensible-exceptions')
+         'wireless_tools' 'haskell-text' 'haskell-async' 'haskell-alsa-core'
+         'haskell-alsa-mixer' 'haskell-extensible-exceptions')
 makedepends=('git' 'ghc')
 conflicts=('xmobar')
 provides=('xmobar')
@@ -40,7 +42,7 @@ build() {
     --prefix=/usr \
     --enable-executable-dynamic \
     --disable-library-vanilla \
-    --flags="with_utf8 with_xft with_iwlib with_xpm with_inotify with_mpd with_dbus with_mpris"
+    --flags="with_utf8 with_xft with_iwlib with_xpm with_inotify with_mpd with_dbus with_mpris with_alsa"
   runhaskell setup build
 }
 
