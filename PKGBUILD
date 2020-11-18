@@ -1,7 +1,7 @@
 # Maintainer: Johan Brandhorst <jbrandhorst@buf.build>
 # Contributor: Alexander Menzhinsky <amenzhinsky@gmail.com>
 pkgname=buf
-pkgver=0.31.0
+pkgver=0.31.1
 pkgrel=1
 pkgdesc="A new way of working with Protocol Buffers"
 arch=("any")
@@ -25,4 +25,4 @@ package() {
 	install -Dm644 "${pkgname}-${pkgver}/completion.zsh" "${pkgdir}/usr/share/zsh/site-functions/_buf"
 }
 
-sha256sums=('f191423ebc988d31db44aec307b2884178750f9da94ba91e9a12acc6e2d3c214')
+sha256sums=('b4b2364b551db21b84b37fd6462c6eb64c4d865fbc312a581a127d05557273a8')
