@@ -1,8 +1,8 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=cds-bin
-pkgver=0.45.2
-pkgrel=2
+pkgver=0.47.0
+pkgrel=1
 pkgdesc='Enterprise-Grade Continuous Delivery & DevOps Automation Open Source Platform'
 arch=('x86_64')
 url="https://ovh.github.io/cds/"
@@ -15,10 +15,10 @@ source=("${pkgname}-${pkgver}::https://github.com/ovh/cds/releases/download/${pk
     "SQL-Examples.tar.gz::https://github.com/ovh/cds/releases/download/${pkgver}/sql.tar.gz"
     "cdsctl::https://github.com/ovh/cds/releases/download/${pkgver}/cdsctl-linux-amd64"
     'LICENSE::https://raw.githubusercontent.com/ovh/cds/master/LICENSE')
-sha256sums=('3a877b3c80c7cd5d7b2989fd1524dac9bd3ea73ade0268afb4111f0a440fa0be'
-      'ab83ac54c61b5059983cc88a3d407de7e32cf34b9828b9d67b194f34c36cb852'
-      '942eb7d4faa4ff4506e857055857eadc76a901abae246f4f6d0de37bb7da36c3'
-      '921f21fa54ed0af9769ec53c985558e835d935046d4c704d7b39f133a72efbd2')
+sha256sums=('0fd487d962602052e064e813116f932cdaa007e0e5680d75b007be18a0532278'
+            'b35a4d1986b16f47a7860817bc5b94bcd4705e6f3a9a69682d262b81fc2ff94a'
+            '8fd610c35cb59eab30906448519f7c91f70997c4982992fc09789377511ff817'
+            '921f21fa54ed0af9769ec53c985558e835d935046d4c704d7b39f133a72efbd2')
 
 package() {
   install -Dm755 ${srcdir}/${pkgname}-${pkgver} "${pkgdir}/usr/bin/cds-engine"
