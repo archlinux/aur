@@ -1,0 +1,16 @@
+Description: Add support to Ruby 2.7
+Author: Thomas Andrejak <thomas.andrejak@gmail.com>
+Last-Update: 2020-03-23
+Forwarded: yes, privately
+
+--- libprelude-5.2.0/bindings/ruby/Prelude.cxx	2019-10-15 05:33:03.117000000 +0900
++++ libprelude-5.2.0/bindings/ruby/Prelude.cxx	2020-01-19 20:13:37.324557838 +0900
+@@ -1260,7 +1260,7 @@ SWIGRUNTIME void SWIG_RubyInitializeTrac
+     swig_ruby_trackings = (st_table*)NUM2SWIG(trackings_value);
+   }
+ 
+-  rb_define_virtual_variable("SWIG_TRACKINGS_COUNT", swig_ruby_trackings_count, NULL);
++  rb_define_virtual_variable("SWIG_TRACKINGS_COUNT", swig_ruby_trackings_count, (rb_gvar_setter_t *)NULL);
+ }
+ 
+ /* Add a Tracking from a C/C++ struct to a Ruby object */

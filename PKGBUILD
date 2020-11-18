@@ -3,7 +3,7 @@
 # Contributor: Thomas Andrejak <thomas.andrejak@gmail.com>
 
 pkgname=libprelude
-pkgver=5.1.1
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="Provides the framework for using the Prelude system"
 arch=('i686' 'x86_64')
@@ -14,11 +14,9 @@ backup=('etc/prelude/default/client.conf'
         'etc/prelude/default/global.conf'
         'etc/prelude/default/idmef-client.conf'
 	'etc/prelude/default/tls.conf')
-source=("https://www.prelude-siem.org/pkg/src/5.1.0/$pkgname-$pkgver.tar.gz"
-	"libprelude-5.1.0-fix_awk_error.patch"
-	"libprelude-5.1.0-fix_gtkdoc_1.32.patch"
-	"libprelude-5.1.0-fix_py38.patch"
-	)
+source=("https://www.prelude-siem.org/pkg/src/5.2.0/$pkgname-$pkgver.tar.gz"
+        "libprelude-5.1.0-fix_gtkdoc_1.32.patch"
+        "libprelude-5.2.0-fix_ruby27.patch")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -26,10 +24,9 @@ build() {
   make
 }
 
-prepare() {
-  patch -p0 <libprelude-5.1.0-fix_awk_error.patch
+prepare () {
   patch -p0 <libprelude-5.1.0-fix_gtkdoc_1.32.patch
-  patch -p0 <libprelude-5.1.0-fix_py38.patch
+  patch -p0 <libprelude-5.2.0-fix_ruby27.patch
 }
 
 package() {
@@ -37,4 +34,6 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-md5sums=('9302c68e1c84a847f77574ab048177e6' '6e68405705b75b0ce25b8165db8c4e2e' '25529ffd018e827c07d5dc2b4a5d44ae' 'b63554f1057f054a96d470d70056c668')
+md5sums=('4db429af160450dc37c7ade001abf8c4'
+         '005972ce0674e45ad048c547d37f9f37'
+         'd72321076622b5e3129c6cd52ed86b28')
