@@ -1,10 +1,10 @@
 # Maintainer: Yann Büchau <nobodyinperson@posteo.de>
 pkgname=python-thunar-plugins-git
 pkgver=0.2.1.r1.g686f518
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Thunar plugins"
-arch=('any')
+arch=(x86_64 aarch64)
 url="https://gitlab.com/nobodyinperson/thunar-plugins"
 license=('GPL')
 groups=()
