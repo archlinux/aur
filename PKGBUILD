@@ -8,7 +8,7 @@ pkgdesc="Filter out duplicates on the command line (git)"
 arch=('x86_64')
 url="https://github.com/koraa/huniq"
 license=('BSD')
-makedepends=('cargo' 'git')
+makedepends=('rust' 'git')
 source=("git+${url}")
 sha512sums=('SKIP')
 
@@ -20,12 +20,12 @@ pkgver() {
 build() {
   cd "${pkgname%-git}"
   sed -n '/Copyright/,//p' readme.md > LICENSE
-  cargo build --release
+  cargo build --release --locked
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release
+  cargo test --release --locked
 }
 
 package() {
