@@ -1,0 +1,16 @@
+pkgbase = vis-cscope-git
+	pkgdesc = cscope interface for the vis editor.
+	pkgver = r6.b29e2f9
+	pkgrel = 1
+	url = https://git.sr.ht/~emg/vis-cscope
+	arch = any
+	license = MIT
+	depends = vis
+	depends = cscope
+	provides = vis-cscope
+	conflicts = vis-cscope
+	source = git+https://git.sr.ht/~emg/vis-cscope
+	sha256sums = SKIP
+
+pkgname = vis-cscope-git
+
