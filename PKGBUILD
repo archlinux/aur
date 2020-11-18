@@ -5,7 +5,7 @@
 pkgname=cura-appimage-bin
 _pkgname=Ultimaker_Cura
 _shortname=cura
-pkgver=4.7.1
+pkgver=4.8.0
 pkgrel=1
 pkgdesc='Ultimakers 3D printer / slicing GUI built on top of the Uranium framework'
 arch=('x86_64')
@@ -17,11 +17,11 @@ conflicts=('cura' 'cura-appimage-git')
 options=(!strip)
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 noextract=('${_pkgname}-${pkgver}.AppImage')
-source=("${_pkgname}-${pkgver}.AppImage::https://github.com/Ultimaker/Cura/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
+source=("${_pkgname}-${pkgver}.AppImage::https://github.com/Ultimaker/Cura/releases/download/4.8/${_pkgname}-${pkgver}.AppImage"
     "cura.sh"
     "cura.desktop.patch")
 
-sha256sums=("0fff584332e7868e090ac05dfc6b715cdc1e7c2c5684857f2306fefc73d78a3e"
+sha256sums=("1628a9708763b41a271b4e5a6dbceeb54989aadf6f8b685d049498b0c89da5ce"
     "9b9c7215655ff4469c3c59679aa7f57cbd1f5153e628fe2375866ac94d8ffd96"
     "c950da916ead034a4ce871c25ca20c5d3f0fc5d65492a082dcaf7897af357aa3"
     )
