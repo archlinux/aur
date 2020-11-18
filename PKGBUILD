@@ -8,7 +8,7 @@ pkgdesc="Terminal chat through the LAN"
 arch=('x86_64')
 url="https://github.com/lemunozm/termchat"
 license=('Apache')
-makedepends=('cargo')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('0ad9654ebcada15ff525d03acbab33544b0b904956622034bb8e5d13c016df633b4e799b0c1470805f7d519f8fe7f9589c54231b78b5d085465d81870231e0c0')
 

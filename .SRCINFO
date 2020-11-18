@@ -5,7 +5,7 @@ pkgbase = termchat
 	url = https://github.com/lemunozm/termchat
 	arch = x86_64
 	license = Apache
-	makedepends = cargo
+	makedepends = rust
 	source = termchat-1.0.0.tar.gz::https://github.com/lemunozm/termchat/archive/v1.0.0.tar.gz
 	sha512sums = 0ad9654ebcada15ff525d03acbab33544b0b904956622034bb8e5d13c016df633b4e799b0c1470805f7d519f8fe7f9589c54231b78b5d085465d81870231e0c0
 
