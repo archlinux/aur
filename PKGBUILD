@@ -6,7 +6,7 @@ _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.1.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 arch=(x86_64)
@@ -31,7 +31,8 @@ depends=(
   desktop-file-utils
   python
   steam-native-runtime
-  "wine-gecko-bin>=$_geckover"
+  "wine-gecko-bin=$_geckover"
+  "wine-mono-bin=$_monover"
 )
 makedepends=(autoconf ncurses bison perl fontforge flex mingw-w64-gcc
   meson
@@ -110,7 +111,6 @@ source=(
     gst-orc::git+https://gitlab.freedesktop.org/gstreamer/orc.git
     gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
     gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
-    https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
     proton-user_compat_data.patch
@@ -118,34 +118,9 @@ source=(
     vkd3d-extraopts.patch
 )
 noextract=(
-    wine-mono-${_monover}-x86.tar.xz
-)
-sha256sums=(
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    'b17ac815afbf5eef768c4e8d50800be02af75c8b230d668e239bad99616caa82'
-    '37ca48c0b64b94155e0af1ae06921e120db05817f3dcb6c44d4c55c03a28d595'
-    '8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954'
-    '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
-    'bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98'
-    '7c5f9c20e41c0cd7d0d18867950a776608cef43e0ab9ebad2addb61e613fe17a'
 )
 
 prepare() {
-    [ ! -d mono ] && mkdir mono
-    cp "wine-mono-${_monover}-x86.tar.xz" mono/
 
     [ ! -d build ] && mkdir build
     cd proton
@@ -248,13 +223,18 @@ build() {
     # MingW Wine builds fail with relro
     export LDFLAGS="${LDFLAGS/,-z,relro/}"
 
+    # Provide system gecko and mono to be availabe
+    # during the default prefix creation
+    mkdir -p dist/dist/share/wine/
+    ln -s /usr/share/wine/gecko dist/dist/share/wine/gecko
+    ln -s /usr/share/wine/mono dist/dist/share/wine/mono
+
+    export WINEESYNC=0
+    export WINEFSYNC=0
     SUBMAKE_JOBS="${MAKEFLAGS/-j/}" \
-        WINEESYNC=0 \
-        WINEFSYNC=0 \
         NO_DXVK=0 \
-        SYSTEM_GSTREAMER=0 \
         SYSTEM_GECKO=1 \
-        SYSTEM_MONO=0 \
+        SYSTEM_MONO=1 \
         make -j1 dist
 }
 
@@ -271,10 +251,27 @@ package() {
     x86_64-w64-mingw32-strip --strip-unneeded \
         "$_compatdir/${pkgname}"/dist/lib64/wine/{,fakedlls/,dxvk/,vkd3d-proton/}*.dll
 
-    ln -s /usr/share/wine/gecko \
-        "$_compatdir/${pkgname}"/dist/share/wine/gecko
-
     mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
     mv "$_compatdir/${pkgname}"/LICENSE{,.OFL} \
         "$pkgdir/usr/share/licenses/${pkgname}"
 }
+
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '37ca48c0b64b94155e0af1ae06921e120db05817f3dcb6c44d4c55c03a28d595'
+            '8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954'
+            '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
+            'bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98'
+            '7c5f9c20e41c0cd7d0d18867950a776608cef43e0ab9ebad2addb61e613fe17a')
