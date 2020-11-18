@@ -1,20 +1,19 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=sulis-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Turn based tactical RPG with several campaigns, written in Rust"
 arch=('x86_64')
 url="https://www.sulisgame.com"
 license=('GPL3')
-depends=('bash')
 provides=('sulis')
+depends=('bash' 'alsa-lib')
 makedepends=('gendesk')
-provides=('sulis')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Grokmoo/sulis/releases/download/${pkgver}/sulis-${pkgver}-linux64.zip"
-    'sulis.png')
-sha256sums=('d55887dc613ff477f9571e72eb76aa37bb0e0ce152a45d2a2e4712954f1bde75'
-            'SKIP')
+        'sulis.png')
+sha256sums=('4d3b0ab40e466679040ab20738f86519305c4e11c16f24c3bb509e1cd05c276b'
+            '7bffe4886ea6dc139135790f8711611a1cccdc8d3b318ae18ff3227e915c604d')
 
 prepare() {
   cd "${srcdir}/sulis"
