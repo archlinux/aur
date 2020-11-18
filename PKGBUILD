@@ -24,7 +24,7 @@ source=(
 )
 sha512sums=(
     'c7a00e379d723d90c28c70069043a29800be40f120e36527b3aefe5b7acfbcd5680417c2cbf5ff2979c765456d4d5022ac10f01cfc65ab2e7cfb3a104bb670ce'
-    '905c31481d2d6c5da65f58270e0c165b62d795d85bacf117faf1934007464696a2a5589f8a0d1cd3c12bf3ff13385ba43b20416f9ad2b199038fdb9208a6416b'
+    'eb861063fa1fa8565651ee8e317a9d19f110380fe5a9e338c7975967d292dda973ef68350db40ddff93f8c2b0a5e719704a83bee3f9d8e806787f469c850ffa2'
     '61120b67b38adfe0588d948cbc0b765795a5201daa47145d7f1088626dad82e6dbb207f9279397d4935175689dbf075da6f01d0d89aafaccc4d3ca68bf1d3b7f'
     "$(cat Packages | grep 'linux-dtb-current-rockchip.*deb' -A 5 | grep SHA512 | head -n 1 | sed -r 's#SHA512: ##')"
     "$(cat Packages | grep 'linux-image-current-rockchip.*deb' -A 5 | grep SHA512 | head -n 1 | sed -r 's#SHA512: ##')"

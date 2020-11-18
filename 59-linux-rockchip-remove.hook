@@ -11,5 +11,5 @@ Target = linux-rockchip
 [Action]
 Description = Removing u-boot ramdisk image...
 When = PreTransaction
-Exec = rm -f /boot/uInitrd
+Exec = /usr/bin/rm -f /boot/uInitrd /boot/initramfs-linux-rockchip.img
 NeedsTargets
