@@ -3,7 +3,7 @@
 pkgbase=nvidia-455xx-dkms
 pkgname=nvidia-455xx-dkms
 pkgver=455.45.01
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA driver sources for Linux, 455xx"
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -15,15 +15,17 @@ options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=(
         "http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
-       )
+        "https://people.freedesktop.org/~aplattner/reduce-kmalloc-limit-455.38.patch"
+)
 md5sums=(
 	'f0161877350aa9155eada811ff2844a8'
 	)
 
-prepare() {
+prepare() {    
+    bash "${_pkg}.run" --apply-patch "reduce-kmalloc-limit-455.38.patch"
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
-
+    
     cd kernel
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf
