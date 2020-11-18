@@ -7,7 +7,7 @@ arch=('any')
 url='https://github.com/daurnimator/fifo.lua'
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/daurnimator/fifo.lua/archive/$pkgver.tar.gz")
-md5sums=('8f2744f6199eaee9676430d1f0136605')
+sha256sums=('85cad0c2f9eac1cd3e08c5134feb655e0b928e1e22363c3ef3293a194c0eb53f')
 
 package_lua-fifo() {
 	pkgdesc='Fifo library for Lua 5.4'
