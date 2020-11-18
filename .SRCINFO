@@ -5,6 +5,7 @@ pkgbase = mpv-handler-git
 	url = https://github.com/akiirui/play-with-mpv-handler/
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = mpv
 	depends = youtube-dl
 	source = git+https://github.com/akiirui/play-with-mpv-handler.git
