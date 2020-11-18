@@ -1,0 +1,16 @@
+pkgbase = libtpms-git
+	pkgdesc = Library providing a software emulation of a Trusted Platform Module (TPM 1.2 and TPM 2.0)
+	pkgver = 0.7.0.r304.2e2f854
+	pkgrel = 1
+	url = https://github.com/stefanberger/libtpms
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = openssl
+	provides = libtpms
+	conflicts = libtpms
+	source = git+https://github.com/stefanberger/libtpms.git
+	sha512sums = SKIP
+
+pkgname = libtpms-git
+
