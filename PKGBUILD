@@ -10,14 +10,14 @@ arch=('i686' 'x86_64')
 url="https://github.com/orhun/wtftw"
 license=('custom')
 depends=('xorg-xmessage' 'libxinerama')
-makedepends=('cargo')
+makedepends=('rust')
 install=wtftw.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.1.tar.gz")
 md5sums=('fc937342074634cf348a7a1a6aa85bdc')
 
 build() {
   cd "$pkgname-$pkgver.1"
-  cargo build --release --all-features
+  cargo build --release --locked --all-features
 }
 
 package() {
