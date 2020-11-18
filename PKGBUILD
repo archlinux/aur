@@ -4,7 +4,7 @@
 pkgname=vis-go-git
 _pkgname=${pkgname%-git}
 pkgver=r3.34e2e3c
-pkgrel=1
+pkgrel=2
 pkgdesc='A Go plugin for Vis editor.'
 arch=('any')
 url='https://gitlab.com/timoha/vis-go'
@@ -21,10 +21,10 @@ pkgver() {
 }
 
 package() {
-    vispath="$pkgdir/usr/share/vis/$_pkgname"
+    vispath="$pkgdir/usr/share/vis/plugins"
     licenses="$pkgdir/usr/share/licenses/$_pkgname"
 
     cd "$srcdir/$_pkgname"
-    install -Dm644 vis-go.lua "$vispath/init.lua"
+    install -Dm644 vis-go.lua "$vispath/vis-go.lua"
     install -Dm644 LICENSE "$licenses/LICENSE"
 }

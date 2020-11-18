@@ -1,7 +1,7 @@
 pkgbase = vis-go-git
 	pkgdesc = A Go plugin for Vis editor.
 	pkgver = r3.34e2e3c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/timoha/vis-go
 	arch = any
 	license = MIT
