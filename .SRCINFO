@@ -5,7 +5,7 @@ pkgbase = color_blinder
 	url = https://gitlab.com/dns2utf8/color_blinder
 	arch = x86_64
 	license = MIT
-	makedepends = cargo
+	makedepends = rust
 	source = color_blinder-1.0.0.tar.gz::https://gitlab.com/dns2utf8/color_blinder/-/archive/1.0.0/color_blinder-1.0.0.tar.gz
 	sha512sums = SKIP
 

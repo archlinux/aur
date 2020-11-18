@@ -8,7 +8,7 @@ pkgdesc="Simulate different kinds of color blindness with a set of images"
 arch=('x86_64')
 url="https://gitlab.com/dns2utf8/color_blinder"
 license=('MIT')
-makedepends=('cargo')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha512sums=('SKIP')
 
