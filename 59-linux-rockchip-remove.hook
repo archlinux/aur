@@ -12,5 +12,5 @@ Target = mkinitcpio-git
 [Action]
 Description = Removing u-boot ramdisk image...
 When = PreTransaction
-Exec = /usr/bin/rm -f /boot/uInitrd /boot/initramfs-linux-rockchip.img
+Exec = /usr/bin/rm -f /boot/uInitrd
 NeedsTargets
