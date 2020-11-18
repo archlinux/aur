@@ -5,7 +5,7 @@ pkgbase = globe-cli
 	url = https://github.com/adamsky/globe
 	arch = x86_64
 	license = GPL3
-	makedepends = cargo
+	makedepends = rust
 	source = globe-cli-0.2.0.tar.gz::https://github.com/adamsky/globe/archive/v0.2.0.tar.gz
 	sha512sums = 1d2c1f9c480b16971fa093d81254cf61cadda44c2ee94ba7c4e48b20994f0340839443473614be751bd4ce23b84fa7652df9a1437ae61e552278795481c3ba14
 
