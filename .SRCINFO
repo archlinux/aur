@@ -1,7 +1,7 @@
 pkgbase = python-ocspbuilder
 	pkgdesc = Python library for generating OCSP requests and responses
 	pkgver = 0.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wbond/ocspbuilder
 	arch = any
 	license = custom:MIT
@@ -10,7 +10,9 @@ pkgbase = python-ocspbuilder
 	depends = python-asn1crypto
 	depends = python-oscrypto
 	source = https://pypi.python.org/packages/source/o/ocspbuilder/ocspbuilder-0.10.2.tar.gz
+	source = python-ocspbuilder-0.10.2-LICENSE::https://raw.githubusercontent.com/wbond/ocspbuilder/0.10.2/LICENSE
 	sha256sums = 945629537ac6d6960a7413fd32fc49448a442f9dfd87f6de5c239e89ed853a0d
+	sha256sums = 3ef40aca4f8f13ab0431c203148085a228c85ec64f30d6a06438f304552e958f
 
 pkgname = python-ocspbuilder
 
