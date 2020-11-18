@@ -6,6 +6,7 @@ pkgbase = linux-nitrous
 	license = GPL2
 	makedepends = bison
 	makedepends = clang
+	makedepends = llvm
 	makedepends = xmlto
 	makedepends = docbook-xsl
 	makedepends = kmod
