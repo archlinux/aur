@@ -1,0 +1,15 @@
+pkgbase = godef
+	pkgdesc = Print where symbols are defined in Go source code.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/rogpeppe/godef
+	arch = x86_64
+	license = BSD
+	depends = go
+	provides = godef
+	conflicts = godef-git
+	source = godef-1.1.2.tar.gz::https://github.com/rogpeppe/godef/archive/v1.1.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = godef
+
