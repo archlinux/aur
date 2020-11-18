@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=backdrop
-pkgver=1.15.1
+pkgver=1.17.2
 pkgrel=1
 pkgdesc="The free and Open Source CMS that helps you build websites for businesses and non-profits."
 arch=("any")
@@ -12,7 +12,7 @@ optdepends=('apache: A high performance Unix-based HTTP server (recommended)'
       'nginx: Lightweight HTTP server and IMAP/POP3 proxy server')
 install=backdrop.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/backdrop/backdrop/archive/${pkgver}.tar.gz")
-sha256sums=('7d5496a3927eee26a8879f40cc53204d2a32ab3e9a5d901941902c7c04918e62')
+sha256sums=('da66154ad40501bf8e037b4032aa24a5259149ff3c0eb1a6be653d3165b73066')
 
 package() {
   cd "${pkgdir}"

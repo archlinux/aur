@@ -1,6 +1,6 @@
 pkgbase = backdrop
 	pkgdesc = The free and Open Source CMS that helps you build websites for businesses and non-profits.
-	pkgver = 1.15.1
+	pkgver = 1.17.2
 	pkgrel = 1
 	url = https://backdropcms.org/
 	install = backdrop.install
@@ -11,8 +11,8 @@ pkgbase = backdrop
 	depends = php-gd
 	optdepends = apache: A high performance Unix-based HTTP server (recommended)
 	optdepends = nginx: Lightweight HTTP server and IMAP/POP3 proxy server
-	source = backdrop-1.15.1.tar.gz::https://github.com/backdrop/backdrop/archive/1.15.1.tar.gz
-	sha256sums = 7d5496a3927eee26a8879f40cc53204d2a32ab3e9a5d901941902c7c04918e62
+	source = backdrop-1.17.2.tar.gz::https://github.com/backdrop/backdrop/archive/1.17.2.tar.gz
+	sha256sums = da66154ad40501bf8e037b4032aa24a5259149ff3c0eb1a6be653d3165b73066
 
 pkgname = backdrop
 
