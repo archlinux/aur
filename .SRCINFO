@@ -5,7 +5,7 @@ pkgbase = stegano
 	url = https://github.com/steganogram/stegano-rs
 	arch = x86_64
 	license = GPL3
-	makedepends = cargo
+	makedepends = rust
 	source = stegano-0.4.1.tar.gz::https://github.com/steganogram/stegano-rs/archive/v0.4.1.tar.gz
 	sha512sums = 1f5dd7bf0200848c914f271807f6313cf32495a2b0cfcf95f9ad99f1c9a85f3e31aa0b8275e30fdfb0d20945aee1a35707cadb9e751129c501d8b7357d0e99e8
 

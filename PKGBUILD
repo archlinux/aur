@@ -8,7 +8,7 @@ pkgdesc="CLI tool for steganography. Supports hiding data in PNG images via LSB 
 arch=('x86_64')
 url="https://github.com/steganogram/stegano-rs"
 license=('GPL3')
-makedepends=('cargo')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('1f5dd7bf0200848c914f271807f6313cf32495a2b0cfcf95f9ad99f1c9a85f3e31aa0b8275e30fdfb0d20945aee1a35707cadb9e751129c501d8b7357d0e99e8')
 
