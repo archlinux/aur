@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=wing-personal
-pkgver=7.2.2.0
+pkgver=7.2.7.0
 pkgrel=1
 pkgdesc="IDE designed from the ground up for Python, to bring you a more productive development experience"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('python'
 provides=('wing')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.bz2::https://wingware.com/pub/wing-personal/${pkgver}/wing-personal-${pkgver}-linux-x64.tar.bz2")
-sha256sums=('a33fdc849ed7075332fe87f111389811d2aacb4a4ab10a5717316880c8998267')
+sha256sums=('88e34e260ef232493a30a968ffdc4bdde6a28cda28d39db77314b8bf867a31bd')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}-linux-x64"
