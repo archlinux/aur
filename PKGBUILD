@@ -2,8 +2,7 @@
 
 _name=squirrel-battle
 pkgname=python-squirrel-battle-git
-pkgver=3.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch out for squirrel's knives!"
 arch=('any')
 url="https://gitlab.crans.org/ynerant/squirrel-battle"
@@ -14,6 +13,11 @@ depends=('noto-fonts-emoji')
 checkdepends=('python-tox')
 source=("git+https://gitlab.crans.org/ynerant/squirrel-battle.git")
 sha256sums=("SKIP")
+
+pkgver() {
+  cd $_name
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
 
 build() {
   cd $_name
