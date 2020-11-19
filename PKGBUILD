@@ -4,7 +4,7 @@
 # Contributor: Ashwin Vishnu <ashuwish+arch at gmail dot com>
 
 pkgname=sendanywhere
-pkgver=20.3.13
+pkgver=20.11.6
 pkgrel=1
 arch=('x86_64')
 
@@ -15,7 +15,7 @@ depends=('electron8')
 makedepends=('asar')
 
 source=("${pkgname}-${pkgver}.deb::https://update.send-anywhere.com/linux_downloads/sendanywhere_latest_amd64.deb" "LICENSE")
-sha512sums=('2ad10e770ea84150845b3033177da4125a5c93651a14969566a43a305a8cc6c2c338c10d04ea10b3b48a225cc331170732589b5805d67486cc02b0e84ab5eb56'
+sha512sums=('1da80fa5f054dcb2a0d7717c1544baff884164d933d643dca52d1bda677bd989bb676f20e19db64f629d7d6324af430f192a52dad2868d6dad4ae978ed6871e7'
             'aeb97a12f246d78cbf202354148b429a037997d68087bceed5d5ce5036443d779c2535138b54347579ddf05994a61b9333913f9261733f367d02e0e9cf7d0b5e')
 # If validity check fails, please leave a comment to remind me to update the package version
 
