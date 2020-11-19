@@ -3,7 +3,7 @@
 
 pkgname=dotter-rs
 _pkgname=dotter
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="A dotfile manager and templater written in Rust"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/SuperCuber/dotter"
 license=('Unlicense')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('017b24c24dec4cf7256cc9027a4505e1737c9e2688f7381c70ae73860caac5e451d073e4ba642d5e8fc430e030b20bf2c726b9e9f90e3faeae44320606ed5a22')
+sha512sums=('25898bcf511345304bb3e54cdcddc0f194dbbb19c3d448b7483c5bc5463def288caaf3a0c89c0a469001e0d38ff43577d174ffafba6a3aa5a11bca5ce40439a0')
 
 build() {
   cd "$_pkgname-$pkgver"
