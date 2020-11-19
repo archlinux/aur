@@ -1,8 +1,8 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=kara
-pkgver=1.2.0.beta
-_pkgver=1.2.0-beta
+pkgver=1.2.2.beta
+_pkgver=1.2.2-beta
 pkgrel=1
 pkgdesc='Open Source Voice Assistant'
 arch=('any')
@@ -19,7 +19,7 @@ depends=('python-speechrecognition'
          'python-geocoder')
 makedepends=('python-setuptools')
 source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/emileclarkb/Kara/archive/v${_pkgver}.tar.gz")
-sha256sums=('8c712059650a8f4ee3ef35b5f8f5ab38e84b5ae9edb8e340931bc964a86c4a9e')
+sha256sums=('d0d286708ca079946408388e88fe8cca2f7d1856075d82df2e92f022db54e04d')
 
 build() {
   cd "Kara-${_pkgver}"
