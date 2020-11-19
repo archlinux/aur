@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=hyperkeys-bin
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="Unleash you keyboard shorcuts"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 provides=('hyperkeys')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/xurei/hyperkeys/releases/download/v${pkgver}/HyperKeys-${pkgver}.AppImage")
-sha256sums=('21391eda00318d1397b14b736d10f6619af84385281a7fa10699c06ad8a016ae')
+sha256sums=('4d0a608da3393990db8b592c5645fde507c6ccade497c96530bbb5a71f69f2e6')
 
 package() {
   chmod 755 ./${pkgname}-${pkgver}.AppImage
