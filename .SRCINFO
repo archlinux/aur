@@ -1,6 +1,6 @@
 pkgbase = cloudbeaver-ce
 	pkgdesc = Cloud Database Manager
-	pkgver = 1.0.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/dbeaver/cloudbeaver
 	install = cloudbeaver-ce.install
@@ -10,8 +10,8 @@ pkgbase = cloudbeaver-ce
 	depends = java-runtime
 	options = !strip
 	options = !emptydirs
-	source = cloudbeaver-ce-1.0.2.zip::https://github.com/dbeaver/cloudbeaver/releases/download/1.0.2/cloudbeaver-ce-1.0.2.zip
-	sha256sums = 4d1bde0d5220b4b778ed6fcd728f4111372d8fe633c59911c015c12246b827b5
+	source = cloudbeaver-ce-1.2.0.zip::https://github.com/dbeaver/cloudbeaver/releases/download/1.2.0/cloudbeaver-ce-1.2.0.zip
+	sha256sums = b80690fe8793ebaeab599e4969aa139e47cde1d03a5f8e479b688d9de0b61cd9
 
 pkgname = cloudbeaver-ce
 

@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=cloudbeaver-ce
-pkgver=1.0.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Cloud Database Manager"
 arch=('any')
@@ -11,7 +11,7 @@ install=cloudbeaver-ce.install
 depends=('bash' 'java-runtime')
 options=('!strip' '!emptydirs')
 source=("${pkgname}-${pkgver}.zip::https://github.com/dbeaver/cloudbeaver/releases/download/${pkgver}/cloudbeaver-ce-${pkgver}.zip")
-sha256sums=('4d1bde0d5220b4b778ed6fcd728f4111372d8fe633c59911c015c12246b827b5')
+sha256sums=('b80690fe8793ebaeab599e4969aa139e47cde1d03a5f8e479b688d9de0b61cd9')
 
 package() {
   install -d "${pkgdir}/usr/share/" "${pkgdir}/usr/bin/"
@@ -22,6 +22,6 @@ package() {
   fi
   cd /usr/share/cloudbeaver-ce/
   ./run-server.sh" > cloudbeaver-ce.sh
-  cp -aR "${pkgname}-${pkgver}" "${pkgdir}/usr/share/${pkgname}"
+  cp -aR "${pkgname}-1.4.0" "${pkgdir}/usr/share/${pkgname}"
   install -Dm755 cloudbeaver-ce.sh "${pkgdir}/usr/bin/cloudbeaver-ce"
 }
