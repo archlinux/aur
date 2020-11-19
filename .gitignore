@@ -6,6 +6,6 @@
 !PKGBUILD
 !.SRCINFO
 !goverlay.1.gz
-!goverlay.desktop
-!goverlay.metainfo.xml
+!io.github.benjamimgois.goverlay.desktop
+!io.github.benjamimgois.goverlay.metainfo.xml
 !goverlay.png
