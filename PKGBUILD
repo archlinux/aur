@@ -1,4 +1,4 @@
-# Maintainer: Mikhail Swift <mikhail.swift@gmail.com>
+# Maintainer: Pieter Joost van de Sande <pj@born2code.net>
 pkgname=whatscli
 pkgver=0.6.5
 pkgrel=1
