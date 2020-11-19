@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-3d
-_qtver=5.15.1
+_qtver=5.15.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('vulkan-headers')
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('29aac2c38b6b2fb1e7d54829ff8b4c9aae12a70ffab9707c7388f1e134dd9411')
+sha256sums=('03ed6a48c813c75296c19f5d721184ab168280b69d2656cf16f877d3d4c55c1d')
 
 prepare() {
   mkdir -p build
