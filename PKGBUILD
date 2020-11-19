@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=python-munge
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Data manipulation client/library'
 arch=('any')
@@ -12,8 +12,8 @@ depends=('python-yaml'
          'python-future'
          'python-requests')
 makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/93/df/26c480d579fc4e6818cc5d8e5eccec4aa80acd341bfe1c1d2bd0072cac80/munge-${pkgver}.tar.gz")
-sha256sums=('e531dd74f9fa7279d39914dd7576e49c781dd89a1eadfba67ea450e72b308361')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/58/8e/bff3f079540a0727dfd126512eec0b3f7c4b23fb01c9cb0e1cf335509dff/munge-1.1.0.tar.gz")
+sha256sums=('a5ec65d880a7e7fdfb3c8a4ff05e0826250f94d866c88be6191a80da6344020d')
 
 package() {
   cd "munge-${pkgver}"
