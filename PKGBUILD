@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Hans-Nikolai Viessmann <hv15 AT hw.ac.uk>
 # Contributor: Vladimir Protasov <eoranged@ya.ru>
 # Contributor: Eric Bélanger <eric@archlinux.org>
@@ -6,35 +5,39 @@
 pkgname='moc-pulse'
 _pkgname='moc'
 pkgver=2.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc='An ncurses console audio player with support for pulseaudio'
 arch=('x86_64')
-url="http://moc.daper.net/"
+url="https://moc.daper.net/"
 license=('GPL')
 depends=('libmad' 'libid3tag' 'jack' 'curl' 'libltdl' 'file' 'pulseaudio')
 makedepends=('speex' 'ffmpeg' 'taglib' 'libmpcdec' 'wavpack' 'libmodplug' 'faad2')
 optdepends=('speex: for using the speex plugin'
-	        'ffmpeg: for using the ffmpeg plugin'
-	        'taglib: for using the musepack plugin'
-	        'libmpcdec: for using the musepack plugin'
+	          'ffmpeg: for using the ffmpeg plugin'
+	          'taglib: for using the musepack plugin'
+	          'libmpcdec: for using the musepack plugin'
             'wavpack: for using the wavpack plugin'
             'faad2: for using the aac plugin'
-	        'libmodplug: for using the modplug plugin')
+	          'libmodplug: for using the modplug plugin')
 provides=('moc')
 conflicts=('moc')
 source=(http://ftp.daper.net/pub/soft/moc/stable/${_pkgname}-${pkgver}.tar.bz2{,.sig}
         'pulseaudio.patch'
-        'moc-ffmpeg4.patch')
+        'moc-ffmpeg4.patch'
+        'moc-https.patch')
 sha1sums=('9d27a929b63099416263471c16367997c0ae6dba'
           'SKIP'
           '5c6385760ba40ee8a330d28d520c44eac2cbbae1'
-          '007a0580ac754e1c318a0d0b6f0d403883797eaf')
+          '007a0580ac754e1c318a0d0b6f0d403883797eaf'
+          'e3362ddd41126e2be874cd372a053fdaccf0f616')
 validpgpkeys=('59359B80406D9E73E80599BEF3121E4F2885A7AA')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
   # Fix build with ffmpeg 4 (taken from official release on ArchLinux)
   patch -p0 -i ../moc-ffmpeg4.patch
+  # Allow https for urls https://moc.daper.net/node/1872 (taken from official release on ArchLinux)
+  patch -p0 -i ../moc-https.patch
   # Add pulseaudio backend
   patch -p1 -i ../pulseaudio.patch
 }
@@ -42,12 +45,10 @@ prepare() {
 build() {
   cd "${_pkgname}-${pkgver}"
 
-  msg "Re-creating ./configure script"
   aclocal
   automake --add-missing
   autoreconf
 
-  msg "Begin configuring"
   ./configure --prefix=/usr --without-rcc \
     --with-pulse --with-oss --with-alsa --with-jack --with-aac \
     --with-mp3 --with-musepack --with-vorbis --with-flac \
