@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=gopium
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Smart Go Structures Optimizer and Manager"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ccd66eac9be284ae91ff898a85338114678e2a65ac4180faf26af72d52ee858c')
+sha256sums=('011918f30e0458443175b3d6aa988e0f5af71e7f9b15e818595a0f6e4d65403c')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

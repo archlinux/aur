@@ -1,14 +1,14 @@
 pkgbase = gopium
 	pkgdesc = Smart Go Structures Optimizer and Manager
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/1pkg/gopium
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = gopium-1.1.0.tar.gz::https://github.com/1pkg/gopium/archive/v1.1.0.tar.gz
-	sha256sums = ccd66eac9be284ae91ff898a85338114678e2a65ac4180faf26af72d52ee858c
+	source = gopium-1.1.1.tar.gz::https://github.com/1pkg/gopium/archive/v1.1.1.tar.gz
+	sha256sums = 011918f30e0458443175b3d6aa988e0f5af71e7f9b15e818595a0f6e4d65403c
 
 pkgname = gopium
 
