@@ -2,10 +2,11 @@
 pkgname=python-crochet
 _pkgname=${pkgname/python-/}
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Crochet is a library that makes it easier to use Twisted from regular blocking code'
 url="https://github.com/itamarst/crochet"
-depends=('python' 'python-twisted')
+depends=('python' 'python-twisted' 'python-wrapt')
+makedepends=('python-setuptools')
 optdepends=()
 license=('MIT')
 arch=('any')
@@ -20,6 +21,10 @@ build() {
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 
-    rm -rf ${pkgdir}/usr/lib/python*/site-packages/tests/
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    local site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
+    rm -rf "${pkgdir}${site_packages}/tests"
 }
 
