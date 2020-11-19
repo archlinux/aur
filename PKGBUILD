@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=moonmodeler
-pkgver=2.3.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="Data modeling tool for MongoDB, MariaDB & GraphQL (Trial)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=("custom:${pkgname}")
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://www.datensen.com/downloads/Moon%20Modeler-${pkgver}.AppImage")
-sha256sums=('7bc1b70ab8a3dceb8363f50c29e00d48f4bcb6624a3d5eb0b8e4635e1b7668c2')
+sha256sums=('3cc3123657624de20eeaa4956fe9c69d2059aa81722434f0dd25ac482346b903')
 
 package() {
   chmod 755 ./${pkgname}-${pkgver}.AppImage
