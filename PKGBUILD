@@ -1,13 +1,14 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=vaping
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='A healthy alternative to SmokePing'
 arch=('any')
 url="https://github.com/20c/vaping"
 license=('Apache')
-depends=('python-click'
+depends=('python'
+         'python-click'
          'python-gevent'
          'python-pid'
          'python-daemon'
@@ -17,7 +18,7 @@ depends=('python-click'
          'python-subprocess32')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/20c/vaping/archive/${pkgver}.tar.gz")
-sha256sums=('fd824ebf16a1f4f149323f15b2c6924975e1187861def6f4696be9bdffb6fc6f')
+sha256sums=('1d3b166d376a40ce9b582878feaf804ff38a492d8358d1a1934fceddd33b493c')
 
 prepare(){
   cd "vaping-${pkgver}"
