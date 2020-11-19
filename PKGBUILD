@@ -1,17 +1,17 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=release-it
-pkgver=13.6.3
+pkgver=14.2.1
 pkgrel=1
 pkgdesc="Automate versioning and package publishing"
 arch=('any')
 url='https://github.com/release-it/release-it'
 license=('MIT')
 depends=('nodejs')
-makedepends=('npm')
+makedepends=('npm' 'jq')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('11ab23660299325b75d2b71397a7c02202a123889af873e4d453c3e6dab62f1e')
+sha256sums=('b7021e6ebb08e8e33d897889c2445b244c164669ee920cf6231812f029d74f10')
 
 package() {
   npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"

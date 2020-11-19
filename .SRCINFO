@@ -1,15 +1,16 @@
 pkgbase = release-it
 	pkgdesc = Automate versioning and package publishing
-	pkgver = 13.6.3
+	pkgver = 14.2.1
 	pkgrel = 1
 	url = https://github.com/release-it/release-it
 	arch = any
 	license = MIT
 	makedepends = npm
+	makedepends = jq
 	depends = nodejs
-	noextract = release-it-13.6.3.tar.gz
-	source = release-it-13.6.3.tar.gz::https://github.com/release-it/release-it/archive/13.6.3.tar.gz
-	sha256sums = 11ab23660299325b75d2b71397a7c02202a123889af873e4d453c3e6dab62f1e
+	noextract = release-it-14.2.1.tar.gz
+	source = release-it-14.2.1.tar.gz::https://github.com/release-it/release-it/archive/14.2.1.tar.gz
+	sha256sums = b7021e6ebb08e8e33d897889c2445b244c164669ee920cf6231812f029d74f10
 
 pkgname = release-it
 
