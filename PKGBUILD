@@ -89,31 +89,7 @@ package() {
   # License
   install -Dm644 LICENSE.md $pkgdir/usr/share/licenses/UnrealEngine/LICENSE.md
   
-  # Engine
-  install -dma+rwX "$pkgdir/$dir/Engine"
-  mv Engine/Binaries "$pkgdir/$dir/Engine/Binaries"
-  mv Engine/Build "$pkgdir/$dir/Engine/Build"
-  mv Engine/Config "$pkgdir/$dir/Engine/Config"
-  mv Engine/Content "$pkgdir/$dir/Engine/Content"
-  mv Engine/Documentation "$pkgdir/$dir/Engine/Documentation"
-  mv Engine/Extras "$pkgdir/$dir/Engine/Extras"
-  mv Engine/Plugins "$pkgdir/$dir/Engine/Plugins"
-  mv Engine/Programs "$pkgdir/$dir/Engine/Programs"
-  mv Engine/Shaders "$pkgdir/$dir/Engine/Shaders"
-  mv Engine/Source "$pkgdir/$dir/Engine/Source"
-  
-  # Required folders
-  install -d "$pkgdir/$dir/Engine/DerivedDataCache"
-  install -d "$pkgdir/$dir/Engine/Intermediate"
-  install -d "$pkgdir/$dir/Engine/Saved"
-  
-  # Content
-  mv FeaturePacks "$pkgdir/$dir/FeaturePacks"
-  mv Samples "$pkgdir/$dir/Samples"
-  mv Templates "$pkgdir/$dir/Templates"
-
-  # Build scripts, used by some plugins (CLion)
-  install -Dm755 GenerateProjectFiles.sh "$pkgdir/$dir/GenerateProjectFiles.sh"
-  install -Dm755 Setup.sh "$pkgdir/$dir/Setup.sh"
-  install -Dm644 .ue4dependencies "$pkgdir/$dir/.ue4dependencies"
+  # Engine files (we have to copy it with all the compiled cache)
+  install -dma+rwX "$pkgdir/$dir"
+  mv * "$pkgdir/$dir"
 }
