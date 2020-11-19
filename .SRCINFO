@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-ndi
 	pkgdesc = Complete solution to record, convert and stream audio and video with NDI restored and enabled
 	pkgver = 4.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ffmpeg.org/
 	arch = x86_64
 	license = custom: nonfree and unredistributable
@@ -85,6 +85,7 @@ pkgbase = ffmpeg-ndi
 	source = libndi_newtek_common.h::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_common.h?inline=false
 	source = libndi_newtek_dec.c::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_dec.c?inline=false
 	source = libndi_newtek_enc.c::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_enc.c?inline=false
+	source = LICENSE
 	sha256sums = SKIP
 	sha256sums = 8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d
 	sha256sums = 960fd930955cd126e33c543eb5bf300fc050efdd4238626ee4aad2a50d353fa7
@@ -92,6 +93,7 @@ pkgbase = ffmpeg-ndi
 	sha256sums = 462e984a7cb3d0af17b0ea0eb2a010aee2f79a3e77c2055fdfd760163dd75fa4
 	sha256sums = 3c6dea7583d79911e9ea198c35b1b56830b85eea84e49d63c2d5c03af5210eca
 	sha256sums = 83cc714edc8d1c37ffabd2ee17960d6ed91a1d019bd43d01383f84eea28e4fbb
+	sha256sums = 04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36
 
 pkgname = ffmpeg-ndi
 

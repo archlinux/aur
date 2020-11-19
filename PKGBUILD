@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-ndi
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video with NDI restored and enabled'
 arch=(x86_64)
 url=https://ffmpeg.org/
@@ -99,6 +99,7 @@ source=(
   'libndi_newtek_common.h'::'https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_common.h?inline=false'
   'libndi_newtek_dec.c'::'https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_dec.c?inline=false'
   'libndi_newtek_enc.c'::'https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_enc.c?inline=false'
+  LICENSE
 )
 sha256sums=(
   SKIP
@@ -108,6 +109,7 @@ sha256sums=(
   462e984a7cb3d0af17b0ea0eb2a010aee2f79a3e77c2055fdfd760163dd75fa4
   3c6dea7583d79911e9ea198c35b1b56830b85eea84e49d63c2d5c03af5210eca
   83cc714edc8d1c37ffabd2ee17960d6ed91a1d019bd43d01383f84eea28e4fbb
+  04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36
 )
 
 pkgver() {
@@ -192,6 +194,7 @@ build() {
 package() {
   make DESTDIR="${pkgdir}" -C ffmpeg install install-man
   install -Dm 755 ffmpeg/tools/qt-faststart "${pkgdir}"/usr/bin/
+  install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
