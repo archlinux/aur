@@ -1,35 +1,27 @@
 pkgbase = oracle-xe
-	pkgdesc = a non free DBMS
-	pkgver = 18.4.0_1.0
-	pkgrel = 2
-	url = http://www.oracle.com/
+	pkgdesc = Oracle Database Express Edition
+	pkgver = 18.4.0.0.0
+	pkgrel = 1
+	url = https://www.oracle.com/database/
 	install = oracle-xe.install
 	arch = x86_64
 	license = custom
-	depends = libaio>=0.3.112-2
-	depends = gcc>=9.3.0-1
-	depends = binutils>=2.34-2.1
-	depends = make>=4.3-1
-	depends = glibc>=2.31-2
-	depends = bc
-	depends = net-tools
-	provides = oracle-xe
-	conflicts = oracle-xe
+	depends = bzip2
+	depends = expat
+	depends = gcc-libs
+	depends = glibc
+	depends = libaio
 	options = !strip
 	source = https://download.oracle.com/otn-pub/otn_software/db-express/oracle-database-xe-18c-1.0-1.x86_64.rpm
 	source = oracle_env.csh
 	source = oracle_env.sh
-	source = oracle-xe-18c
-	source = oracle-xe-18c.conf
-	source = oracle-xe-18c.ld.so.conf
+	source = oracle-xe.install
 	source = oracle-xe.service
 	sha256sums = 4df0318d72a0b97f5468b36919a23ec07533f5897b324843108e0376566d50c8
 	sha256sums = 5472f8ea19a2b33780146bc95e5dc9263bb9c05b18150d24d08a85f04ed86b84
 	sha256sums = 9b584b6403ec0a3c8567d1720347769c92ba9f02ee460979506d641a5aa32f8b
-	sha256sums = 5e8296afc2c6402146cec06c3c1f73516e340f3104581c59e0f66af12f80b8e8
-	sha256sums = 2d96e23869665f3648e54c85f004bf1b99f22ca227d7b148727b239135ae0e6b
-	sha256sums = 067e68295e4e2bcefe290ba0b8fcbe6594adc89de66875cc79c5e9f1190f8932
-	sha256sums = dc59dd2abd55678abd4566af7b0cabfe7837d5c43db6612905c3f8c7b498c992
+	sha256sums = bc5cb49b6e8809b5f69aaef144b23d3a00e00cd10dbadee22d6b8adffb1d4872
+	sha256sums = 332a48069e5019ef5b9efb2308da2738e37d46d848b7e0f993f76a125c48c5fc
 
 pkgname = oracle-xe
 
