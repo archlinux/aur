@@ -3,32 +3,32 @@
 # Maintainer: Shatur95 <genaloner@gmail.com>
 
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
-pkgname='unreal-engine'
+pkgname=unreal-engine
 pkgver=4.25.4
 pkgrel=1
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
-arch=('x86_64')
-url='https://www.unrealengine.com/'
-makedepends=('mono' 'dos2unix' 'git' 'openssh')
-depends=('icu' 'sdl2' 'python' 'lld' 'xdg-user-dirs')
+arch=(x86_64)
+url=https://www.unrealengine.com/
+makedepends=(mono dos2unix git openssh)
+depends=(icu sdl2 python lld xdg-user-dirs)
 optdepends=('qt5-base: qmake build system for projects'
             'cmake: build system for projects'
             'qtcreator: IDE for projects'
             'codelite: IDE for projects'
             'kdevelop: IDE for projects'
             'clion: IDE for projects')
-license=('custom:UnrealEngine')
-source=('com.unrealengine.UE4Editor.desktop'
-        'use-arch-mono.patch')
-sha256sums=('fa4bd19ab53e91cc8b4ae6208452a7fe986a08047617213d6250b43e7a140bf3'
-            'e891f07bf7294cd5fde8eb6de92e6d47ed004847ea8afd7c944e9b9b2bacaff4')
+license=(custom:UnrealEngine)
+source=(com.unrealengine.UE4Editor.desktop
+        use-arch-mono.patch)
+sha256sums=(fa4bd19ab53e91cc8b4ae6208452a7fe986a08047617213d6250b43e7a140bf3
+            e891f07bf7294cd5fde8eb6de92e6d47ed004847ea8afd7c944e9b9b2bacaff4)
 options=(!strip staticlibs)
 
 prepare() {
   # Check access to the repository
   if ! git ls-remote git@github.com:EpicGames/UnrealEngine &>-
   then
-    error "You must register at unrealengine.com and link your github account to access this private repo. See the wiki for more info: https://wiki.archlinux.org/index.php/Unreal_Engine_4"
+    error 'You must register at unrealengine.com and link your github account to access this private repo. See the wiki for more info: https://wiki.archlinux.org/index.php/Unreal_Engine_4'
     exit 1
   fi
 
