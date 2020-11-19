@@ -1,6 +1,6 @@
 pkgbase = cicero
 	pkgdesc = Unicode tool with a terminal user interface
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/eyeplum/cicero-tui
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = cicero
 	makedepends = rust
 	makedepends = cmake
 	makedepends = fontconfig
-	source = cicero-0.1.2.tar.gz::https://github.com/eyeplum/cicero-tui/archive/v0.1.2.tar.gz
-	sha512sums = b531556f0ea8a4789d54ef0d325b1d5d96000e76799b2e55a30641b4e1093f74344e37b53c876774f2ab5091f076e48ff267bd1e46c4ec80075af93ce99d1e01
+	source = cicero-0.1.3.tar.gz::https://github.com/eyeplum/cicero-tui/archive/v0.1.3.tar.gz
+	sha512sums = 2d4d060b12705b7d4f1b9e5f86754b73e46d21f37321f8b4707af8c56c52ad8450809158263b7ed39fecf3cc291efd7e572eaa91480c5f1a22871e1e6137508e
 
 pkgname = cicero
 
