@@ -1,5 +1,7 @@
+# mkinitcpio preset file for the 'linux-rockchip' package
+
 ALL_config="/etc/mkinitcpio.conf"
-ALL_kver="$(dd if=/boot/zImage skip=$(grep -a -b -o $'\x1f\x8b\x08\x00\x00\x00\x00\x00' /boot/zImage | head -n 1 | cut -d ':' -f 1) iflag=skip_bytes 2>&1 | zcat -q | grep -a 'Linux version [0-9]' | sed -r 's#.*([0-9]+.[0-9]+.[0-9]+-[a-zA-Z]+).*#\1#')"
+ALL_kver="$(dd if=/boot/vmlinuz-linux-rockchip skip=$(grep -a -b -o $'\x1f\x8b\x08\x00\x00\x00\x00\x00' /boot/vmlinuz-linux-rockchip | head -n 1 | cut -d ':' -f 1) iflag=skip_bytes 2>&1 | zcat -q | grep -a 'Linux version [0-9]' | sed -r 's#.*([0-9]+.[0-9]+.[0-9]+-[a-zA-Z]+).*#\1#')"
 
 PRESETS=('default')
 
