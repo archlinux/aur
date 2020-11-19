@@ -7,7 +7,7 @@ arch=('any')
 url='https://github.com/aiq/basexx'
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aiq/basexx/archive/v$pkgver.tar.gz")
-md5sums=('c931e3abdb788be95c319be4fa0ac79f')
+sha256sums=('f87570e849253d69cbda6dbdcbf1227f416e1dd3d145df341a397b858717a6fe')
 
 package_lua-basexx() {
 	pkgdesc='A Lua library which provides base2(bitfield), base16(hex), base32(crockford/rfc), base64(rfc/url), base85(z85) decoding and encoding for Lua 5.4'
