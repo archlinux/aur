@@ -9,13 +9,13 @@ pkgname=(
 )
 pkgver=1.12.0
 _pkgver=${pkgver/\~/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight virtual machines for containers (guest components)"
 arch=('x86_64')
 url="https://katacontainers.io/"
 license=('Apache')
 makedepends=(
-  'go<2:1.15'  # thanks Intel, love you big time: https://github.com/kata-containers/runtime/issues/2982
+  'go'
   'yq2-bin'  # quietly pulled by Kata's codebase to read versions.yaml from repo
   'mkinitcpio'  # initrd build
   'pacman' 'udisks2'  # rootless image build
