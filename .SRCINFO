@@ -8,11 +8,14 @@ pkgbase = lua-basexx
 	md5sums = c931e3abdb788be95c319be4fa0ac79f
 
 pkgname = lua-basexx
-	pkgdesc = A Lua library which provides base2(bitfield), base16(hex), base32(crockford/rfc), base64(rfc/url), base85(z85) decoding and encoding for Lua 5.3
+	pkgdesc = A Lua library which provides base2(bitfield), base16(hex), base32(crockford/rfc), base64(rfc/url), base85(z85) decoding and encoding for Lua 5.4
 
 pkgname = lua51-basexx
 	pkgdesc = A Lua library which provides base2(bitfield), base16(hex), base32(crockford/rfc), base64(rfc/url), base85(z85) decoding and encoding for Lua 5.1
 
 pkgname = lua52-basexx
 	pkgdesc = A Lua library which provides base2(bitfield), base16(hex), base32(crockford/rfc), base64(rfc/url), base85(z85) decoding and encoding for Lua 5.2
+
+pkgname = lua53-basexx
+	pkgdesc = A Lua library which provides base2(bitfield), base16(hex), base32(crockford/rfc), base64(rfc/url), base85(z85) decoding and encoding for Lua 5.3
 
