@@ -3,28 +3,20 @@
 
 pkgname=sge
 pkgver=8.1.9
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="The Son of Grid Engine is a community project to continue Sun's old gridengine."
 arch=('x86_64')
 url="https://arc.liv.ac.uk/trac/SGE"
 license=('custom')
 depends=(
-	'awk'
-	'fakeroot'
-	'file'
-	'gcc'
-	'grep'
 	'hwloc'
-	'inetutils'
-	'libtirpc'
-	'libxt'
-	'make'
 	'openmotif'
 	'openssl-1.0'
-	'patch'
+	'python2'
 	'tcsh'
 )
+makedepends=('make')
 install=${pkgname}.install
 source=(
 	"https://arc.liv.ac.uk/downloads/SGE/releases/${pkgver}/${pkgname}_${pkgver}.tar.xz"
@@ -39,9 +31,9 @@ md5sums=('a2f03ca8b803ca4da7d2dedadeca74bb'
 prepare() {
 	cd "${pkgname}-${pkgver}"
 
-	sed \
-		-e 's/} drmaa2_\(dict\|list\)_s;/};/g' \
-		-i source/libs/japi/drmaa2_list_dict.h
+	sed 's/} drmaa2_\(dict\|list\)_s;/};/g' -i source/libs/japi/drmaa2_list_dict.h
+
+	sed '1s/python$/python2/' -i source/dist/util/resources/{jsv/jsv,monitoring/check_sge}.py
 
 	# https://www.linuxquestions.org/questions/programming-9/union-wait-problem-269024
 	sed 's|union wait w;|int w;|g' -i source/3rdparty/qtcsh/sh.proc.c
@@ -78,4 +70,8 @@ package() {
 
 	mkdir -p "${pkgdir}/usr/share/licenses"
 	mv "${srcdir}/${pkgname}-${pkgver}/LICENCES" "${pkgdir}/usr/share/licenses/${pkgname}"
+
+	find "${SGE_ROOT}/man" -type f -exec gzip {} \;
+	find "${SGE_ROOT}/man" -type l -exec sh -c 'ln -sf $(readlink {}).gz {}.gz && rm {}' \;
+	mv "${SGE_ROOT}/man" "${pkgdir}/usr/share/"
 }
