@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rusty-krab-manager-git
-pkgver=1.1.3.r0.g446140c
+pkgver=1.1.4.r0.g5bc9315
 pkgrel=1
 pkgdesc="Time management TUI (git)"
 arch=('x86_64')
@@ -21,9 +21,7 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  # TODO: Use `--locked` flag for reproducibility.
-  # Tracking issue: https://github.com/aryakaul/rusty-krab-manager/issues/31
-  cargo build --release --all-features
+  cargo build --release --locked --all-features
 }
 
 package() {
