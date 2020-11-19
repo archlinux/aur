@@ -8,8 +8,8 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.16.3_0.6.1.51-1"
-_minecraft_ver_latest="1.16.3"
+_ver="1.16.4_0.6.1.51-1"
+_minecraft_ver_latest="1.16.4"
 
 IFS="-" read -ra _ver_temp <<< "$_ver"
 IFS="_" read -ra _pkgver_temp <<< "${_ver_temp[0]}"
