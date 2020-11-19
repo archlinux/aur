@@ -1,30 +1,30 @@
 # Maintainer: Vyacheslav Konovalov <vyachkonovalov@protonmail.com>
 
-_commit=13f6eab17231b99abe33ff37cd309545f01729a9
+_path=a9/59/07c16836f593a0993f725ab9230a2af43599935ad1151c45229fcfdc90f3
 pkgname=deemix
 pkgver=1.5.20
-pkgrel=1
+pkgrel=2
 pkgdesc='A barebone deezer downloader library'
 arch=(any)
 url='https://t.me/deemixcommunity'
 license=('GPL3')
 depends=('python>=3.6' 'python-click' 'python-pycryptodomex' 'python-mutagen' 'python-spotipy'
-         'python-eventlet' 'python-dnspython<2.0.0')
+         'python-eventlet' 'python-dnspython')
 makedepends=('python-setuptools')
-source=("https://notabug.org/RemixDev/deemix/archive/$_commit.tar.gz")
-sha256sums=('789fa6a825716d0daef294fa1f70d0f992ec9b13817d4e3e0b81d60a9cd2e47b')
+source=("https://files.pythonhosted.org/packages/$_path/deemix-$pkgver.tar.gz")
+sha256sums=('a6c9a330e62d37b78bf7411089a63facbafc19ac3c7fb5634c03896d5c3db6fd')
 
 pkgver() {
-  cd deemix
+  cd deemix-$pkgver
   sed -En 's/^__version__ = "([0-9\.]+)"$/\1/p' deemix/__init__.py | tr -d '\n'
 }
 
 build() {
-  cd deemix
+  cd deemix-$pkgver
   python setup.py build
 }
 
 package() {
-  cd deemix
+  cd deemix-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
 }
