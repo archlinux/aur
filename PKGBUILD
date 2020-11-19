@@ -2,7 +2,7 @@
 
 _name=Av1an
 pkgname=python-av1an
-pkgver=1.13.post9
+pkgver=2
 pkgrel=1
 pkgdesc='A cross-platform all-in-one tool for streamlining AV1 encoding'
 arch=('any')
@@ -19,9 +19,13 @@ optdepends=('svt-av1: SVT-AV1 encoder support'
             'vmaf: VMAF calculation support'
             'x265: x265 encoder support'
             'x264: x264 encoder support'
+            'vapoursynth: Vapoursynth support'
+            'mkvtoolnix-cli: mkvmerge support'
+            'ffms2'
+            'l-smash'
             )
 source=("av1an-${pkgver}.tar.gz"::"https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('e6627d350debec006a541bb77bca49a8cafdb2cb496b930a42fdf015a33f57ec')
+sha256sums=('5552282d8063e3739ae9765056c2a06fda0ecd6a34cbbe11e178698d8973c4c1')
 
 
 package() {
