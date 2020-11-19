@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=goxygen
-pkgver=0.3.1
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Generate a modern Web project with Go, Angular/React/Vue, and MongoDB in seconds"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('docker'
          'npm')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f9ceab92aaa3b55aa9874f45f16b6add24b1d8b50a26999fe173c142fdc6837d')
+sha256sums=('9c3bce5352fdd334e5e9ef9f5208c71a2e8d010d8364fce133714429036527a6')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

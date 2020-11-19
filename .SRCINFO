@@ -1,6 +1,6 @@
 pkgbase = goxygen
 	pkgdesc = Generate a modern Web project with Go, Angular/React/Vue, and MongoDB in seconds
-	pkgver = 0.3.1
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/Shpota/goxygen
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = goxygen
 	depends = docker-compose
 	depends = nodejs
 	depends = npm
-	source = goxygen-0.3.1.tar.gz::https://github.com/Shpota/goxygen/archive/v0.3.1.tar.gz
-	sha256sums = f9ceab92aaa3b55aa9874f45f16b6add24b1d8b50a26999fe173c142fdc6837d
+	source = goxygen-0.3.4.tar.gz::https://github.com/Shpota/goxygen/archive/v0.3.4.tar.gz
+	sha256sums = 9c3bce5352fdd334e5e9ef9f5208c71a2e8d010d8364fce133714429036527a6
 
 pkgname = goxygen
 
