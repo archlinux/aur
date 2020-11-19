@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=godbledger-bin
-pkgver=0.2.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Accounting Software with GRPC endpoints and SQL Backends"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('glibc')
 provides=('godbledger')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/darcys22/godbledger/releases/download/v${pkgver}/godbledger-linux-x64-v${pkgver}.tar.gz")
-sha256sums=('2482b77aa254bb33e15ae2aeb4fd21cb029e19dd53081e9160184c90e37e4710')
+sha256sums=('bf5730563abaec6fbc17602f0a1169f64c1735c4210c49ff775a20c88097f8bd')
 
 package() {
   cd godbledger-linux-x64-v${pkgver}
