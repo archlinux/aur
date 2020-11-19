@@ -1,8 +1,8 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppxlib'
 pkgname="ocaml-$_projectname"
-pkgver='0.19.0'
+pkgver='0.20.0'
 pkgrel='1'
 pkgdesc='Standard library for ppx rewriters'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz"
 	'ocaml-migrate-parsetree2.diff'
 )
-sha256sums=('7a58d4f8decd0b3b49267f67b58638295d9144a859f36f37e5607ab73eb1af71'
+sha256sums=('39aa7d9177230b92974d1978c55d904b23d6da98983fd845ee1dcb94e8002f09'
             'cf9c23418e0a6b166b147462278c594e5e48ffd933a3703daf6aa38bc77f666a')
 
 _sourcedirectory="$_projectname-$pkgver"
