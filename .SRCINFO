@@ -1,15 +1,15 @@
 pkgbase = gocity
 	pkgdesc = Code City metaphor for visualizing Go source code in 3D
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://go-city.github.io
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
 	provides = gocity
-	source = gocity-1.0.0.tar.gz::https://github.com/rodrigo-brito/gocity/archive/v1.0.0.tar.gz
-	sha256sums = dfe6cc9b7845f47d4850b1d30fe5246a40e2635d71824a29dbb13bffce2d40a2
+	source = gocity-1.0.2.tar.gz::https://github.com/rodrigo-brito/gocity/archive/v1.0.2.tar.gz
+	sha256sums = 74e8c0e409ce261cdf74f43db7d44ddb5acd8e348b1c497f93455485c5826867
 
 pkgname = gocity
 

@@ -1,8 +1,8 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=gocity
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Code City metaphor for visualizing Go source code in 3D"
 arch=('x86_64')
 url='https://go-city.github.io'
@@ -11,7 +11,7 @@ provides=('gocity')
 depends=('glibc')
 makedepends=('go')
 source=("gocity-${pkgver}.tar.gz::https://github.com/rodrigo-brito/gocity/archive/v${pkgver}.tar.gz")
-sha256sums=('dfe6cc9b7845f47d4850b1d30fe5246a40e2635d71824a29dbb13bffce2d40a2')
+sha256sums=('74e8c0e409ce261cdf74f43db7d44ddb5acd8e348b1c497f93455485c5826867')
 
 prepare() {
   cd "${srcdir}/gocity-${pkgver}"
