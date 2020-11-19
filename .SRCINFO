@@ -1,7 +1,7 @@
 pkgbase = scala-dotty
 	pkgdesc = The Scala 3 compiler, also known as Dotty.
 	pkgver = 3.0.0M1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://dotty.epfl.ch
 	arch = any
 	license = Apache
@@ -12,10 +12,7 @@ pkgbase = scala-dotty
 	sha512sums = c074b821a315722066f6f11b9931361b4e4e8923f2f8ca3f3e58a85b6fe8b2abef159770ae377a3d1520d6704723a3230c9ee8d19e47a8b4593163cac1bfa54d
 
 pkgname = scala-dotty
+	depends = scala3
 
 pkgname = scala3
-	pkgdesc = Symlinks for using Scala 3 instead of Scala 2.
-	depends = scala-dotty
-	provides = scala=3.0.0M1
-	conflicts = scala
 
