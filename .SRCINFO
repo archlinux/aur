@@ -1,0 +1,17 @@
+pkgbase = randr-notify
+	pkgdesc = subscribe to randr xevents
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/pjvds/randr-notify
+	arch = 1686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	makedepends = go
+	makedepends = git
+	source = randr-notify-0.1.0.tar.gz::https://github.com/pjvds/randr-notify/archive/0.1.0.tar.gz
+	sha1sums = 6ab96e2deda52aa86b6d6f946a46f9f2ef0ba03e
+
+pkgname = randr-notify
+
