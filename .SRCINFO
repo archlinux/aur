@@ -5,6 +5,7 @@ pkgbase = linux-rockchip
 	arch = armv7h
 	license = GPL2
 	makedepends = coreutils
+	makedepends = findutils
 	makedepends = curl
 	makedepends = grep
 	makedepends = sed

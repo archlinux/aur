@@ -7,7 +7,7 @@ pkgrel=1
 arch=('armv7h')
 url="https://apt.armbian.com"
 license=('GPL2')
-makedepends=('coreutils' 'curl' 'grep' 'sed')
+makedepends=('coreutils' 'findutils' 'curl' 'grep' 'sed')
 options=('!strip')
 
 _pkgfile=$(curl -s -L https://apt.armbian.com/dists/focal/main/binary-armhf/Packages -o Packages)
