@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=ops
-pkgver=0.1.10
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="Build and run nanos unikernels"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nanovms/ops/archive/${pkgver}.tar.gz")
-sha256sums=('c45d094e3fe8fb51878e0befeefce90d7492cce03f9d17cf0f47420cc6c40d73')
+sha256sums=('4c12a3c135c6c4f802e72d39180df95ebf87a1293b82b3adf69f404b83e4f12f')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
