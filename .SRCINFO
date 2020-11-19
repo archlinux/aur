@@ -9,12 +9,12 @@ pkgbase = eccodes-git
 	makedepends = python
 	makedepends = python-numpy
 	makedepends = cmake
+	makedepends = ecbuild-git
 	depends = openjpeg
 	depends = libpng
 	depends = python3
 	depends = netcdf
-	optdepends = libaec: for compression
-	optdepends = jasper: as an alternative to openjpeg
+	depends = libaec
 	conflicts = grib_api
 	conflicts = libbufr-ecmwf
 	source = eccodes::git+https://github.com/ecmwf/eccodes#branch=master
