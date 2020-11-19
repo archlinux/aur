@@ -1,6 +1,6 @@
 pkgbase = snmptt
 	pkgdesc = This is an SNMP trap handler written in Perl for use with the Net-SNMP / UCD-SNMP snmptrapd program.
-	pkgver = 1.4
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = http://snmptt.sourceforge.net/
 	install = snmptt.install
@@ -13,8 +13,8 @@ pkgbase = snmptt
 	optdepends = perl-dbd-mysql: To add support for MySQL database
 	optdepends = perl-dbd-pg: To add support for PostGres database
 	optdepends = perl-dbd-odbc: To add support for ODBC driver
-	source = https://sourceforge.net/projects/snmptt/files/snmptt/snmptt_1.4/snmptt_1.4.tgz
-	md5sums = 43f8ee246256354f41402f46b4bb1b82
+	source = https://sourceforge.net/projects/snmptt/files/snmptt/snmptt_1.4.2/snmptt_1.4.2.tgz
+	md5sums = 4aba8b70bdd11e0cecca90fd9d979fd0
 
 pkgname = snmptt
 

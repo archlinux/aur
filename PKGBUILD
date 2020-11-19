@@ -6,7 +6,7 @@
 #      docs on what additional setup is needed.
 
 pkgname=snmptt
-pkgver=1.4
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="This is an SNMP trap handler written in Perl for use with the Net-SNMP / UCD-SNMP snmptrapd program."
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
 install="${pkgname}.install"
 changelog='CHANGELOG.md'
 source=("https://sourceforge.net/projects/${pkgname}/files/snmptt/${pkgname}_${pkgver}/${pkgname}_${pkgver}.tgz")
-md5sums=('43f8ee246256354f41402f46b4bb1b82')
+md5sums=('4aba8b70bdd11e0cecca90fd9d979fd0')
 
 package() {
   cd "${srcdir}/${pkgname}_${pkgver}"
@@ -40,9 +40,9 @@ package() {
   # install docs
   install -d "$pkgdir/usr/share/doc/snmptt"
   install -Dm644 README "$pkgdir/usr/share/doc/snmptt"
-  cp -r docs "$pkgdir/usr/share/doc/snmptt" 
-  cp -r examples "$pkgdir/usr/share/doc/snmptt" 
-  cp -r contrib "$pkgdir/usr/share/doc/snmptt" 
+  cp -r docs "$pkgdir/usr/share/doc/snmptt"
+  cp -r examples "$pkgdir/usr/share/doc/snmptt"
+  cp -r contrib "$pkgdir/usr/share/doc/snmptt"
 }
 
 # vim:ts=2:sw=2
