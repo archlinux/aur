@@ -49,6 +49,13 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}-linux"
+  mkdir -p bin
+  mkdir -p lib
+  mkdir -p docs
+  mkdir -p bindings/java
+  mkdir -p bindings/csharp
+  mkdir -p bindings/python
+  mkdir -p bindings/processing
   export PYVER=$(python -c 'import sys; print(".".join(list(map(str, sys.version_info[:2]))))')
   install -d "${pkgdir}"/usr/bin
   install -d "${pkgdir}"/usr/lib
@@ -65,11 +72,9 @@ package() {
   install COPYING -m 644 "${pkgdir}"/usr/share/licenses/psmoveapi/LICENSE
   install bin/* -m 755 "${pkgdir}"/usr/bin/.
   install lib/* -m 755 "${pkgdir}"/usr/lib/.
-  install lib/* -m 755 "${pkgdir}"/usr/lib/.
   install bindings/java/libpsmove_java.so -m 755 "${pkgdir}"/usr/lib/.
   install bindings/csharp/psmoveapi_csharp.so -m 755 "${pkgdir}"/usr/lib/.
   install bindings/python/_psmove.so -m 755 "${pkgdir}"/usr/lib/.
-  install bindings/python/_psmove.so -m 755 "${pkgdir}"/usr/lib/python${PYVER}/site-packages
   install bindings/python/_psmove.so -m 755 "${pkgdir}"/usr/lib/python${PYVER}/site-packages
   install bindings/python/psmove.py -m 755 "${pkgdir}"/usr/lib/python${PYVER}/site-packages
   install bindings/python/psmoveapi.py -m 755 "${pkgdir}"/usr/lib/python${PYVER}/site-packages
