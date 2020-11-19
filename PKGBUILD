@@ -2,8 +2,8 @@
 
 _pkgbase=akvcam
 pkgname=${_pkgbase}-dkms-git
-pkgver=1.1.0.r0.gce8c98e
-pkgrel=3
+pkgver=1.1.1.r0.gbfe8549
+pkgrel=1
 pkgdesc="Virtual camera for Linux"
 url="https://github.com/webcamoid/akvcam"
 arch=('any')
@@ -25,14 +25,13 @@ pkgver() {
 }
 
 package() {
-    cd "${srcdir}/${_pkgbase}"
-    mkdir -p "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
-    cp -vf COPYING "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
-    mkdir -p "${pkgdir}/usr/share/licenses/${_pkgbase}"
-    cp -vf COPYING "${pkgdir}/usr/share/licenses/${_pkgbase}"
-    mkdir -p "${pkgdir}/etc/${_pkgbase}/examples"
-    cp -vf share/config_example.ini "${pkgdir}/etc/${_pkgbase}"
-    cp -vf share/examples/output.c "${pkgdir}/etc/${_pkgbase}/examples"
     cd "${srcdir}/${_pkgbase}/src"
-    cp -ar * "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
+
+    make install INSTALLDIR="${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
+    cp -vf "${srcdir}/${_pkgbase}/COPYING" "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
+    mkdir -p "${pkgdir}/usr/share/licenses/${_pkgbase}"
+    cp -vf "${srcdir}/${_pkgbase}/COPYING" "${pkgdir}/usr/share/licenses/${_pkgbase}"
+    mkdir -p "${pkgdir}/etc/${_pkgbase}/examples"
+    cp -vf "${srcdir}/${_pkgbase}/share/config_example.ini" "${pkgdir}/etc/${_pkgbase}"
+    cp -vf "${srcdir}/${_pkgbase}/share/examples/output.c" "${pkgdir}/etc/${_pkgbase}/examples"
 }
