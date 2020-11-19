@@ -1,0 +1,10 @@
+# mkinitcpio preset file for the '$pkgbase' package
+
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="$(dd if=/boot/vmlinuz-$pkgbase skip=$(grep -a -b -o $'\x1f\x8b\x08\x00\x00\x00\x00\x00' /boot/vmlinuz-$pkgbase | head -n 1 | cut -d ':' -f 1) iflag=skip_bytes 2>&1 | zcat -q | grep -a 'Linux version [0-9]' | sed -r 's#.*([0-9]+.[0-9]+.[0-9]+-[a-z0-9]+).*#\1#')"
+
+PRESETS=('default')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-$pkgbase.img"
+#default_options=""

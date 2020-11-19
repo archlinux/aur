@@ -14,13 +14,13 @@ _pkgfile=$(curl -s -L https://apt.armbian.com/dists/focal/main/binary-armhf/Pack
 _kernver=$(cat Packages | grep 'linux-dtb-current-rockchip.*deb' | head -n 1 | sed -r 's#.*l/linux-(.*)/l.*#\1#')
 
 source=(
-    "$pkgbase.preset"
+    "mkinitcpio.preset"
     "$(cat Packages | grep 'linux-dtb-current-rockchip.*deb' | head -n 1 | sed -r 's#Filename: #https://apt.armbian.com/#')"
     "$(cat Packages | grep 'linux-image-current-rockchip.*deb' | head -n 1 | sed -r 's#Filename: #https://apt.armbian.com/#')"
     "$(cat Packages | grep 'linux-headers-current-rockchip.*deb' | head -n 1 | sed -r 's#Filename: #https://apt.armbian.com/#')"
 )
 sha512sums=(
-    '966a57dc6ea894b5b74b5f6c3ca0f8ee2ceb6ca8782f7cb0ae56a449f8f178d638ed455c022493fb339d1b685c282c06e30aec602078c3bb3302e1aa4bd810ea'
+    '4e479e5c010c5cd6105b104419bbf1886a60174535d17a34ae457f2744598d0f1c4e2b24dc989c038fa2c51b3d076e0acd3210e1492a87db68b1d43840e11e8a'
     "$(cat Packages | grep 'linux-dtb-current-rockchip.*deb' -A 5 | grep SHA512 | head -n 1 | sed -r 's#SHA512: ##')"
     "$(cat Packages | grep 'linux-image-current-rockchip.*deb' -A 5 | grep SHA512 | head -n 1 | sed -r 's#SHA512: ##')"
     "$(cat Packages | grep 'linux-headers-current-rockchip.*deb' -A 5 | grep SHA512 | head -n 1 | sed -r 's#SHA512: ##')"
@@ -58,7 +58,8 @@ package_linux-rockchip() {
     echo "$pkgbase" > "$pkgdir/usr/lib/modules/$_kernver/pkgbase"
     install -Dm644 "boot/vmlinuz-$_kernver" "$pkgdir/usr/lib/modules/$_kernver/vmlinuz"
 
-    install -Dm644 "$pkgbase.preset" "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
+    install -Dm644 "mkinitcpio.preset" "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
+    sed -r -i "s#\\\$pkgbase#$pkgbase#g" "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
 }
 
 package_linux-rockchip-headers() {
