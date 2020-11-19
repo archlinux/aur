@@ -2,6 +2,7 @@
 
 _name=squirrel-battle
 pkgname=python-squirrel-battle-git
+pkgver=3.14
 pkgrel=2
 pkgdesc="Watch out for squirrel's knives!"
 arch=('any')
