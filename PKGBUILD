@@ -16,9 +16,9 @@ depends=("clang" "libadalang"
          "gnatcoll-xref" "gnatcoll-python2" "gnatcoll-db2ada"
          "gnatcoll-gnatinspect" "gtkada"
          "gnome-icon-theme" "gnome-icon-theme-extras" "gnome-icon-theme-symbolic" 
-         "python2-gobject2")
+         "python2-gobject" "python2-gobject2")
 optdepends=('python2-jedi')
-makedepends=('gprbuild' 'texlive-latexextra' 'graphviz')
+makedepends=('gprbuild' 'texlive-latexextra' 'graphviz' "python2-pip")
 
 _gps_version=21.0w-20200427-15496
 _gps_checksum=bfa68dd61a9288c79e9c08676878cac95e0fe628
@@ -49,6 +49,24 @@ sha1sums=("$_gps_checksum"
 
 prepare()
 {
+  # Ensure python2 sphinx is installed. 
+  if test -f "/usr/bin/sphinx-build2"; then
+      # Sphinx has already been installed via pacman.
+      mkdir -p "$srcdir/.local/bin"
+      ln -sfT /usr/bin/sphinx-build2 "$srcdir/.local/bin/sphinx-build"
+  else
+      # Install obsolete python2 packages that can no longer be auto-installed via makedepends.
+      # Note that exports made here are visible in build() and package() as well.
+      # Use a persistent but package-specific download cache.
+      export PYTHONUSERBASE="$srcdir/.local"
+      pip2 install --user --cache-dir "$startdir/.cache/pip2" sphinx
+  fi
+  export PATH="$srcdir/.local/bin:$PATH"
+
+  # Destination directory already populated by pip2 install.
+  ln -sfT /usr/bin/python2        "$srcdir/.local/bin/python"
+  ln -sfT /usr/bin/python2-config "$srcdir/.local/bin/python-config"
+  
   cd "$srcdir/gps-$_gps_version-src"
 
   patch -p1 < "$srcdir/0002-Ignore-absence-of-version-number-in-user_guide.patch"
@@ -56,24 +74,9 @@ prepare()
   patch -p1 < "$srcdir/0004-Honour-GPRBUILD_FLAGS-in-cli-Makefile.patch"
   patch -p1 < "$srcdir/0005-Fix-recursive-make-in-docs.patch"
 
-  # Force use of python2
-  rm -fr temp_bin
-  mkdir  temp_bin
-  ln -s /usr/bin/python2        temp_bin/python
-  ln -s /usr/bin/python2-config temp_bin/python-config
-  ln -s /usr/bin/sphinx-build2  temp_bin/sphinx-build
-
-  # Link libadalang-tools and ada_language_server into the GPS source tree
+  # Link libadalang-tools and ada_language_server into the GPS source tree.
   ln -sf "$srcdir/libadalang-tools-$_laltools_ver-src" "$srcdir/gps-$_gps_version-src/laltools"
   ln -sf "$srcdir/als-$_als_ver-src"                   "$srcdir/gps-$_gps_version-src/ada_language_server"
-
-  # Install missing (obsolete) python2 packages from archives.
-  sudo pacman -U https://archive.archlinux.org/packages/p/python2-babel/python2-babel-2.8.0-5-any.pkg.tar.zst
-  sudo pacman -U https://archive.archlinux.org/packages/p/python2-imagesize/python2-imagesize-1.2.0-1-any.pkg.tar.xz
-  sudo pacman -U https://archive.archlinux.org/packages/p/python2-snowballstemmer/python2-snowballstemmer-2.0.0-3-any.pkg.tar.xz
-  sudo pacman -U https://archive.archlinux.org/packages/p/python2-sphinx-alabaster-theme/python2-sphinx-alabaster-theme-0.7.12-3-any.pkg.tar.xz
-  sudo pacman -U https://archive.archlinux.org/packages/p/python2-sphinxcontrib-websupport/python2-sphinxcontrib-websupport-1.1.2-3-any.pkg.tar.xz
-  sudo pacman -U https://archive.archlinux.org/packages/p/python2-sphinx/python2-sphinx-1.8.5-5-any.pkg.tar.zst
 }
 
 
@@ -83,16 +86,13 @@ build()
 
   export OS=unix
 
-  # Force use of python2
-  export PATH="$srcdir/gps-$_gps_version-src/temp_bin:$PATH"
-
   ./configure --prefix=/usr
 
-  # the release tarball contains a bunch of sphinx build artefacts
+  # The release tarball contains a bunch of sphinx build artefacts.
   make -C docs clean
   make -C gnatdoc/docs/users_guide clean
 
-  # GPS uses a lot of Unchecked_Conversion (too many to patch), so we have to build with -fno-strict-aliasing
+  # GPS uses a lot of Unchecked_Conversion (too many to patch), so we have to build with -fno-strict-aliasing.
   # https://gcc.gnu.org/onlinedocs/gcc-10.2.0/gnat_ugn/Optimization-and-Strict-Aliasing.html
   make PROCESSORS=0 Build=Production GPRBUILD_FLAGS="-R -cargs $CFLAGS -fno-strict-aliasing -largs $LDFLAGS -gargs"
   make -C docs all
@@ -104,9 +104,6 @@ package()
   cd "$srcdir/gps-$_gps_version-src"
 
   export OS=unix
-
-  # Force use of python2
-  export PATH="$srcdir/gps-$_gps_version/temp_bin:$PATH"
 
   make DESTDIR="$pkgdir/" install
 
