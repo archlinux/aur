@@ -2,7 +2,7 @@
 
 pkgname=dblatexpy3
 pkgver=0.3.12
-pkgrel=1
+pkgrel=2
 pkgdesc='DocBook (XML and SGML) to DVI, PDF, PostScript converter using latex with python3 support.'
 arch=('any')
 url='http://dblatex.sourceforge.net/'
@@ -21,6 +21,6 @@ package() {
 	cd "${srcdir}/${conflicts}-${pkgver}pre1"
 
 	python3 setup.py install --root "${pkgdir}" --catalogs=/etc/xml/docbook-xml
-	sed -i -e "s,${pkgdir},," -e "s,#!/usr/bin/env python,#!/usr/bin/env python3," \
+	sed -i -e "s,${pkgdir},," -e "s,#!/usr/bin/env python,#!/usr/bin/env python," \
 		"${pkgdir}/usr/bin/dblatex"
 }
