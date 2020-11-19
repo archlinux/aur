@@ -41,20 +41,11 @@ build(){
 	yarn electron-builder build
 }
 package(){
-	if [ "$CARCH" == "aarch64" ];then
-		electron_arch=arm64
-	elif [ "$CARCH" == "x86_64" ];then
-		electron_arch=x64
-	elif [ "$CARCH" == "i686" ];then
-		electron_arch=ia32
-	else
-		electron_arch=$CARCH
-	fi
 	cd "${srcdir}/${pkgname}"
 	install -d -m755 ${pkgdir}/usr/bin
 	install -d -m755 ${pkgdir}/usr/share/{applications,pixmaps}
 	install -d -m755 ${pkgdir}/opt/fuck-xuexiqiangguo-git 
-	cp -r dist/linux-${electron_arch}-unpacked/* ${pkgdir}/opt/fuck-xuexiqiangguo-git
+	cp -r dist/`ls dist | grep linux\*unpacked`/* ${pkgdir}/opt/fuck-xuexiqiangguo-git
 	install -D ${srcdir}/fuck-xuexiqiangguo.desktop ${pkgdir}/usr/share/applications/fuck-xuexiqiangguo.desktop
 	install -D build/logo.png ${pkgdir}/usr/share/pixmaps/fuck-xuexiqiangguo.png
 	ln -s /opt/fuck-xuexiqiangguo-git/fuck-xuexiqiangguo ${pkgdir}/usr/bin/fuck-xuexiqiangguo
