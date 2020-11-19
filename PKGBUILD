@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=77
+_minor=78
 _srcname=linux-${_major}
 _clr=${_major}.75-75
 pkgbase=linux-clear-lts2019
@@ -73,7 +73,7 @@ url="https://github.com/clearlinux-pkgs/linux-lts2019"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_wrg_snap='1.0.20200908'
+_wrg_snap='1.0.20201112'
 _gcc_more_v='20200615'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
@@ -82,7 +82,6 @@ source=(
   "clearlinux-lts2019::git+https://github.com/clearlinux-pkgs/linux-lts2019.git#tag=${_clr}"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-${_wrg_snap}.tar.xz"
-  'linux-5.4.76-fix.patch'
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -90,7 +89,6 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-    patch -Np0 -i "$srcdir/linux-5.4.76-fix.patch"
     cd ${_srcname}
 
     ### Add upstream patches
@@ -329,11 +327,10 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '0b63a75f07f235a895438f8483ed38509e2b60f43ec2b91dc19e01828a33a930'
+            'daf11c33fa8a53a06b7e9a2ff5ba30e5104f18b8e1e19bc9672fb07085bcc2d8'
             'SKIP'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
-            'ad33b2d2267a37e0f65c97e65e7d4d926d5aef7d530c251b63fbf919048eead9'
-            '40512118e30e26486b94026caac3d4a35dd55cbd244472ec1adb91878f4c12b3')
+            '89eae7f0c0bd6c8df3ba2e090984974ff68741a9f26aa0922890f8ca727897e1')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
