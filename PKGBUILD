@@ -2,12 +2,12 @@
 
 pkgname=dnsvi
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Edit dynamic DNS zones in vi"
 arch=("any")
 url="https://github.com/ChristophBerg/dnsvi"
 license=("GPL3")
-depends=("perl" "bind-tools")
+depends=("perl" "bind-tools" "perl-sort-naturally")
 
 source=("https://github.com/ChristophBerg/dnsvi/archive/${pkgver}.tar.gz")
 sha512sums=("931e25527ceb7d4e4ddebb56f3dfdfe9dfaeb0e7c308817bff212f69157f32c66a853c250d89176a8cc3135a2770c284ccfa372403daf59821fefd85cbd4809d")
