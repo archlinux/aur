@@ -1,3 +1,16 @@
+diff --git a/src/glinject/CMakeLists.txt b/src/glinject/CMakeLists.txt
+index 157ee9c..79690ef 100644
+--- a/src/glinject/CMakeLists.txt
++++ b/src/glinject/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ include(GNUInstallDirs)
+ add_library(glinject SHARED glinject.c glx_events.c x_events.c)
+ add_dependencies(glinject elfhacks)
+-target_link_libraries(glinject dl rt luajit elfhacks m)
++target_link_libraries(glinject dl rt luajit elfhacks m X11)
+ set_target_properties(glinject PROPERTIES LIBRARY_OUTPUT_NAME glxosd-glinject)
+ set_target_properties(glinject PROPERTIES VERSION ${GLXOSD_VERSION_STRING}
+                                           SOVERSION ${GLXOSD_VERSION_MAJOR})
 diff --git a/src/glinject/glinject.c b/src/glinject/glinject.c
 index 6917439..2c8200a 100644
 --- a/src/glinject/glinject.c
