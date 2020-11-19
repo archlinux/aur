@@ -1,6 +1,6 @@
 pkgname=gnome-keyring-git
 _pkgname=gnome-keyring
-pkgver=3.35.1+8+gfd130b33
+pkgver=3.36.0+12+g4f531000
 pkgrel=1
 epoch=1
 pkgdesc="Stores passwords and encryption keys"
@@ -14,8 +14,10 @@ conflicts=('gnome-keyring')
 groups=('gnome')
 install=gnome-keyring.install
 source=("git+https://gitlab.gnome.org/GNOME/gnome-keyring.git"
+        33.patch
         add-cinnamon.diff)
 sha256sums=('SKIP'
+            '23294d6569bb7c8297cc2f95071576fac48ee82ec1ead1b818dd69fbbc72b069'
             'd05210f5b0a7d4b22c0dff2854854af2eb5708aa2b296095e070dca68e9f815a')
 
 pkgver() {
@@ -25,7 +27,14 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
+
+  # https://bugs.archlinux.org/task/68664
+  # https://gitlab.gnome.org/GNOME/gnome-keyring/-/merge_requests/33
+  git apply -3 ../33.patch
+
+  # Autolaunch in Cinnamon
   git apply -3 ../add-cinnamon.diff
+
   NOCONFIGURE=1 ./autogen.sh
 }
 

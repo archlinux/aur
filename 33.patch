@@ -1,0 +1,109 @@
+From dad072e1f7f6d640f4d6b52408b485ea34229f15 Mon Sep 17 00:00:00 2001
+From: Steve Grubb <sgrubb@redhat.com>
+Date: Thu, 29 Oct 2020 16:26:21 -0400
+Subject: [PATCH] Update libcap-ng capability handling
+
+There is a change coming in libcap-ng-0.8.1 that causes gnome-keyring to
+not work correctly. The capng_apply function now returns an error if it
+cannot change the bounding set. Previously this was ignored. Which means
+now gnome-keyring exits when it shouldn't.
+
+The new patch adds troubleshooting info to the error message. And it checks
+to see if we have CAP_SETPCAP. If we do not, then we cannot change the
+capabilities so we just bypass the whole thing that was causing an error.
+On the setuid side, it now drops the bounding set and clears any
+supplemental groups that may be left over as an accident.
+---
+ daemon/gkd-capability.c | 44 +++++++++++++++++++++++------------------
+ 1 file changed, 25 insertions(+), 19 deletions(-)
+
+diff --git a/daemon/gkd-capability.c b/daemon/gkd-capability.c
+index 9afe3039..9ceaecee 100644
+--- a/daemon/gkd-capability.c
++++ b/daemon/gkd-capability.c
+@@ -1,7 +1,7 @@
+ /* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 8; tab-width: 8 -*- */
+ /* gkd-capability.c - the security-critical initial phase of the daemon
+  *
+- * Copyright (C) 2011 Steve Grubb
++ * Copyright (C) 2011,2020 Steve Grubb
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU Lesser General Public License as
+@@ -35,9 +35,10 @@
+ 
+ /* No logging, no gettext */
+ static void
+-early_error (const char *err_string)
++early_error (const char *err_string, int rc)
+ {
+-	fprintf (stderr, "gnome-keyring-daemon: %s, aborting\n", err_string);
++	fprintf (stderr, "gnome-keyring-daemon: %s - %d, aborting\n",
++		err_string, rc);
+ 	exit (1);
+ }
+ 
+@@ -64,6 +65,8 @@ void
+ gkd_capability_obtain_capability_and_drop_privileges (void)
+ {
+ #ifdef HAVE_LIBCAPNG
++	int rc;
++
+ 	capng_get_caps_process ();
+ 	switch (capng_have_capabilities (CAPNG_SELECT_CAPS))
+ 	{
+@@ -73,32 +76,35 @@ gkd_capability_obtain_capability_and_drop_privileges (void)
+ 			capng_update (CAPNG_ADD,
+ 					CAPNG_EFFECTIVE|CAPNG_PERMITTED,
+ 					CAP_IPC_LOCK);
+-			if (capng_change_id (getuid (), getgid (), 0))
+-				early_error ("failed dropping capabilities");
++			if ((rc = capng_change_id (getuid (), getgid (),
++						   CAPNG_DROP_SUPP_GRP|
++						   CAPNG_CLEAR_BOUNDING)))
++				early_error ("failed dropping capabilities",
++					     rc);
+ 			break;
+ 		case CAPNG_FAIL:
+-			early_error ("error getting process capabilities");
++			early_error ("error getting process capabilities", 0);
+ 			break;
+ 		case CAPNG_NONE:
+ 			early_warning ("insufficient process capabilities, insecure memory might get used");
+ 			break;
+ 		case CAPNG_PARTIAL: /* File system based capabilities */
+-			if (!capng_have_capability (CAPNG_EFFECTIVE, CAP_IPC_LOCK)) {
++			if (!capng_have_capability (CAPNG_EFFECTIVE,
++							    CAP_IPC_LOCK))
+ 				early_warning ("insufficient process capabilities, insecure memory might get used");
+-				/* Drop all capabilities */
++
++			/* If we don't have CAP_SETPCAP, we can't do anything */
++			if (capng_have_capability (CAPNG_EFFECTIVE,
++								CAP_SETPCAP)) {
++				 /* Drop all capabilities except ipc_lock */
+ 				capng_clear (CAPNG_SELECT_BOTH);
+-				capng_apply (CAPNG_SELECT_BOTH);
+-				break;
++				if ((rc = capng_update (CAPNG_ADD,
++						CAPNG_EFFECTIVE|CAPNG_PERMITTED,
++						CAP_IPC_LOCK)) != 0)
++					early_error ("error updating process capabilities", rc);
++				if ((rc = capng_apply (CAPNG_SELECT_BOTH)) != 0)
++					early_error ("error dropping process capabilities", rc);
+ 			}
+-
+-			/* Drop all capabilities except ipc_lock */
+-			capng_clear (CAPNG_SELECT_BOTH);
+-			if (capng_update (CAPNG_ADD,
+-					  CAPNG_EFFECTIVE|CAPNG_PERMITTED,
+-					  CAP_IPC_LOCK) != 0)
+-				early_error ("error dropping process capabilities");
+-			if (capng_apply (CAPNG_SELECT_BOTH) != 0)
+-				early_error ("error dropping process capabilities");
+ 			break;
+ 	}
+ #endif /* HAVE_LIBCAPNG */
+-- 
+GitLab
+
