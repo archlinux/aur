@@ -61,7 +61,7 @@ url="https://www.mozilla.org/en-US/firefox/channel/#beta"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg 'nss>=3.55' ttf-font libpulse)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
              autoconf2.13 rust clang llvm jack gtk2 nodejs cbindgen nasm
-             python-setuptools python-psutil lld)
+             python-setuptools python-psutil python-zstandard lld)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
