@@ -22,5 +22,11 @@ pkgbase = qt5-singleapplication
 pkgname = qt5-singleapplication
 
 pkgname = qt5-singlecoreapplication
-	pkgdesc = Qt library to start applications only once per user (for non-GUI applications)
+	pkgdesc = Qt library to start applications only once per user, for non-GUI apps
+
+pkgname = qt5-singleapplication-doc
+	pkgdesc = Qt library to start applications only once per user (Documentation)
+
+pkgname = qt5-singlecoreapplication-doc
+	pkgdesc = Qt library to start applications only once per user, for non-GUI apps (Documentation)
 

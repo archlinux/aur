@@ -1,6 +1,6 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
-pkgname=('qt5-singleapplication' 'qt5-singlecoreapplication')
+pkgname=('qt5-singleapplication' 'qt5-singlecoreapplication' 'qt5-singleapplication-doc' 'qt5-singlecoreapplication-doc')
 pkgver=2.6_20170914
 _commit=a8dda66d7738cde9042b87db27993f710ae3eeeb
 pkgrel=1
@@ -58,15 +58,12 @@ package_qt5-singleapplication() {
   mkdir -p "${pkgdir}/usr/lib/qt5/mkspecs/features"
   cp "${srcdir}/qtsingleapplication.prf" "${pkgdir}/usr/lib/qt5/mkspecs/features"
 
-  mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
-  cp -rp ./doc/html ./examples "${pkgdir}/usr/share/doc/${pkgname}"
-
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   cp -p LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_qt5-singlecoreapplication() {
-  pkgdesc="Qt library to start applications only once per user (for non-GUI applications)"
+  pkgdesc="Qt library to start applications only once per user, for non-GUI apps"
 
   cd qt-solutions-${_commit}/qtsingleapplication
 
@@ -83,6 +80,23 @@ package_qt5-singlecoreapplication() {
 
   mkdir -p "${pkgdir}/usr/lib/qt5/mkspecs/features"
   cp "${srcdir}/qtsinglecoreapplication.prf" "${pkgdir}/usr/lib/qt5/mkspecs/features"
+
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  cp -p LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+
+package_qt5-singleapplication-doc() {
+  pkgdesc="Qt library to start applications only once per user (Documentation)"
+
+  mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
+  cp -rp ./doc/html ./examples "${pkgdir}/usr/share/doc/${pkgname}"
+
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  cp -p LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+
+package_qt5-singlecoreapplication-doc() {
+  pkgdesc="Qt library to start applications only once per user, for non-GUI apps (Documentation)"
 
   mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
   cp -rp ./doc/html ./examples "${pkgdir}/usr/share/doc/${pkgname}"
