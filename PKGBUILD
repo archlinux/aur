@@ -6,7 +6,7 @@ _commit=fbfd15013602e6262f92b61328f293f417ba6766
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.1.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
@@ -294,7 +294,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'c3050e2a3b60478afe42c69af369b98263b7f82aba56607e435bfd69785b42db'
+            'd7f1d1c82b84eb13d2d05f08be9f499fc719e666a18adacc7ebeba78fd78adf7'
             '8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
             'bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98'

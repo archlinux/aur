@@ -1,5 +1,5 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index e685cdd..980340a 100755
+index e685cdd..f98cad8 100755
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -69,7 +69,7 @@ endif
@@ -335,7 +335,7 @@ index e685cdd..980340a 100755
  		cmake $(abspath $(FAUDIO)) \
  			-DCMAKE_INSTALL_PREFIX="$(abspath $(TOOLS_DIR32))" \
  			$(FAUDIO_CMAKE_FLAGS)
-@@ -1539,7 +1554,12 @@ $(WINE_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
+@@ -1539,7 +1554,13 @@ $(WINE_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
  $(WINE_CONFIGURE_FILES64): $(MAKEFILE_DEP) | faudio64 jxrlib64 gst_base64 $(WINE_OBJ64)
  	cd $(dir $@) && \
  		../$(WINE)/configure \
@@ -343,12 +343,13 @@ index e685cdd..980340a 100755
 +			--with-gstreamer \
 +			--with-faudio \
  			--without-curses \
++			--without-vkd3d \
 +			--without-oss \
 +			--disable-win16 \
  			--enable-win64 \
  			--disable-tests \
  			--prefix=$(abspath $(DST_DIR)) \
-@@ -1547,7 +1567,7 @@ $(WINE_CONFIGURE_FILES64): $(MAKEFILE_DEP) | faudio64 jxrlib64 gst_base64 $(WINE
+@@ -1547,7 +1568,7 @@ $(WINE_CONFIGURE_FILES64): $(MAKEFILE_DEP) | faudio64 jxrlib64 gst_base64 $(WINE
  			STRIP=$(STRIP_QUOTED) \
  			CFLAGS="-I$(abspath $(TOOLS_DIR64))/include -g $(COMMON_FLAGS)" \
  			CROSSCFLAGS="-g $(COMMON_FLAGS)" \
@@ -357,7 +358,7 @@ index e685cdd..980340a 100755
  			PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR64))/lib/pkgconfig \
  			JXRLIB_CFLAGS=-I$(abspath $(TOOLS_DIR64))/include/jxrlib \
  			CC=$(CC_QUOTED) \
-@@ -1559,14 +1579,19 @@ $(WINE_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
+@@ -1559,14 +1580,20 @@ $(WINE_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
  $(WINE_CONFIGURE_FILES32): $(MAKEFILE_DEP) | faudio32 jxrlib32 gst_base32 $(WINE_OBJ32)
  	cd $(dir $@) && \
  		../$(WINE)/configure \
@@ -365,6 +366,7 @@ index e685cdd..980340a 100755
 +			--with-gstreamer \
 +			--with-faudio \
  			--without-curses \
++			--without-vkd3d \
 +			--without-oss \
 +			--disable-win16 \
  			--disable-tests \
@@ -378,7 +380,7 @@ index e685cdd..980340a 100755
  			PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR32))/lib/pkgconfig \
  			JXRLIB_CFLAGS=-I$(abspath $(TOOLS_DIR32))/include/jxrlib \
  			CC=$(CC_QUOTED) \
-@@ -1762,7 +1787,7 @@ dxvk_configure32: $(DXVK_CONFIGURE_FILES32)
+@@ -1762,7 +1789,7 @@ dxvk_configure32: $(DXVK_CONFIGURE_FILES32)
  dxvk: dxvk32 dxvk64
  
  dxvk64: $(DXVK_CONFIGURE_FILES64)
@@ -387,7 +389,7 @@ index e685cdd..980340a 100755
  	mkdir -p "$(DST_DIR)/lib64/wine/dxvk"
  	cp -f "$(DXVK_OBJ64)"/bin/dxgi.dll "$(DST_DIR)"/lib64/wine/dxvk/
  	cp -f "$(DXVK_OBJ64)"/bin/d3d11.dll "$(DST_DIR)"/lib64/wine/dxvk/
-@@ -1775,7 +1800,7 @@ dxvk64: $(DXVK_CONFIGURE_FILES64)
+@@ -1775,7 +1802,7 @@ dxvk64: $(DXVK_CONFIGURE_FILES64)
  
  
  dxvk32: $(DXVK_CONFIGURE_FILES32)
@@ -396,7 +398,7 @@ index e685cdd..980340a 100755
  	mkdir -p "$(DST_DIR)"/lib/wine/dxvk
  	cp -f "$(DXVK_OBJ32)"/bin/dxgi.dll "$(DST_DIR)"/lib/wine/dxvk/
  	cp -f "$(DXVK_OBJ32)"/bin/d3d11.dll "$(DST_DIR)"/lib/wine/dxvk/
-@@ -1805,7 +1830,7 @@ $(VKD3D_CONFIGURE_FILES32): $(VKD3D)/meson.build $(VKD3D)/build-win32.txt | $(VK
+@@ -1805,7 +1832,7 @@ $(VKD3D_CONFIGURE_FILES32): $(VKD3D)/meson.build $(VKD3D)/build-win32.txt | $(VK
  
  vkd3d32: SHELL = $(CONTAINER_SHELL32)
  vkd3d32: $(VKD3D_CONFIGURE_FILES32)
@@ -405,7 +407,7 @@ index e685cdd..980340a 100755
  	mkdir -p "$(DST_DIR)"/lib/wine/vkd3d-proton
  	cp -af "$(VKD3D_OBJ32)/bin/d3d12.dll" "$(DST_DIR)"/lib/wine/vkd3d-proton/
  	rm -f "$(DST_DIR)"/lib/wine/vkd3d-proton/version && if test -e $(SRCDIR)/.git; then ( cd $(SRCDIR) && git submodule status -- vkd3d-proton ) > "$(DST_DIR)"/lib/wine/vkd3d-proton/version; fi
-@@ -1822,7 +1847,7 @@ $(VKD3D_CONFIGURE_FILES64): $(VKD3D)/meson.build $(VKD3D)/build-win64.txt | $(VK
+@@ -1822,7 +1849,7 @@ $(VKD3D_CONFIGURE_FILES64): $(VKD3D)/meson.build $(VKD3D)/build-win64.txt | $(VK
  
  vkd3d64: SHELL = $(CONTAINER_SHELL64)
  vkd3d64: $(VKD3D_CONFIGURE_FILES64)
@@ -414,7 +416,7 @@ index e685cdd..980340a 100755
  	mkdir -p "$(DST_DIR)"/lib64/wine/vkd3d-proton
  	cp -af "$(VKD3D_OBJ64)/bin/d3d12.dll" "$(DST_DIR)"/lib64/wine/vkd3d-proton/
  	rm -f "$(DST_DIR)"/lib64/wine/vkd3d-proton/version && if test -e $(SRCDIR)/.git; then ( cd $(SRCDIR) && git submodule status -- vkd3d-proton ) > "$(DST_DIR)"/lib64/wine/vkd3d-proton/version; fi
-@@ -1852,75 +1877,6 @@ mediaconv64: $(MAKEFILE_DEP) gstreamer64 | $(MEDIACONV_OBJ64)
+@@ -1852,75 +1879,6 @@ mediaconv64: $(MAKEFILE_DEP) gstreamer64 | $(MEDIACONV_OBJ64)
  
  mediaconv: mediaconv32 mediaconv64
  
