@@ -3,10 +3,10 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Robosky <fangyuhao0612 at gmail dot com>
 
-pkgname=anbox-image-gapps-magisk
+pkgname=anbox-image-gapps-magisk-xposed
 pkgver=2018.07.19
-pkgrel=17
-pkgdesc="Android image for running in Anbox, with OpenGApps, Houdini and Magisk (Bootless)"
+pkgrel=1
+pkgdesc="Android image for running in Anbox, with OpenGApps, Houdini, Xposed Framework and Magisk (Bootless)"
 arch=('x86_64')
 url="https://anbox.io"
 license=('custom')
@@ -28,6 +28,8 @@ source=(
     "https://github.com/redchenjs/aur-packages/raw/master/anbox-image/houdini_y.sfs"
     "https://github.com/redchenjs/aur-packages/raw/master/anbox-image/houdini_z.sfs"
     "https://github.com/topjohnwu/Magisk/releases/download/v20.4/Magisk-v20.4.zip"
+    "https://github.com/youling257/XposedTools/files/1931996/xposed-x86_64.zip"
+    "XposedInstaller_3.1.5.apk::https://forum.xda-developers.com/attachment.php?attachmentid=4393082&d=1516301692"
     "magisk-init-rc.patch"
     "init-magisk.sh"
     "https://xnopyt.info/busybox"
@@ -37,11 +39,16 @@ source=(
     "media_codecs_google_telephony.xml"
     "$_gapps_src"
 )
+
+noextract=('XposedInstaller_3.1.5.apk')
+
 md5sums=(
     '26874452a6521ec2e37400670d438e33'
     '7ebf618b1af94a02322d9f2d2610090b'
     '5ca37e1629edb7d13b18751b72dc98ad'
     '9503fc692e03d60cb8897ff2753c193f'
+    '86ffee229b724a8019cc78c5e221c24f'
+    '315362d994986e6584203fca282f4472'
     '52959db8bc730ee3b7ab2cff7d41b299'
     '4720f9c1a7df7cf05cbbeecdd43797e4'
     'bc3143a5e334402261bf0c703db5deac'
@@ -126,6 +133,28 @@ build () {
         tar --lzip -xvf ./Core/$i.tar.lz
         cp -r ./$i/nodpi/priv-app/* ./squashfs-root/system/priv-app/
     done
+
+    # install xposed
+    install -Dm 644 ./xposed.prop ./squashfs-root/system/xposed.prop
+    install -Dm 644 ./framework/XposedBridge.jar ./squashfs-root/system/framework/XposedBridge.jar
+    install -Dm 755 ./bin/app_process32_xposed ./squashfs-root/system/bin/app_process32
+    install -Dm 755 ./bin/dex2oat ./squashfs-root/system/bin/dex2oat
+    install -Dm 755 ./bin/oatdump ./squashfs-root/system/bin/oatdump
+    install -Dm 755 ./bin/patchoat ./squashfs-root/system/bin/patchoat
+    install -Dm 644 ./lib/libart.so ./squashfs-root/system/lib/libart.so
+    install -Dm 644 ./lib/libart-compiler.so ./squashfs-root/system/lib/libart-compiler.so
+    install -Dm 644 ./lib/libsigchain.so ./squashfs-root/system/lib/libsigchain.so
+    install -Dm 644 ./lib/libxposed_art.so ./squashfs-root/system/lib/libxposed_art.so
+    install -Dm 755 ./bin/app_process64_xposed ./squashfs-root/system/bin/app_process64
+    install -Dm 644 ./lib64/libart.so ./squashfs-root/system/lib64/libart.so
+    install -Dm 644 ./lib64/libart-compiler.so ./squashfs-root/system/lib64/libart-compiler.so
+    install -Dm 644 ./lib64/libart-disassembler.so ./squashfs-root/system/lib64/libart-disassembler.so
+    install -Dm 644 ./lib64/libsigchain.so ./squashfs-root/system/lib64/libsigchain.so
+    install -Dm 644 ./lib64/libxposed_art.so ./squashfs-root/system/lib64/libxposed_art.so
+    
+    mkdir -p ./squashfs-root/system/app/XposedInstaller
+    chmod 755 ./squashfs-root/system/app/XposedInstaller
+    install -Dm 644 XposedInstaller_3.1.5.apk ./squashfs-root/system/app/XposedInstaller/XposedInstaller.apk
 
     # install magisk
     rm -f ./squashfs-root/system/bin/su
