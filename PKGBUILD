@@ -29,8 +29,6 @@ package(){
     # HACKS FOR SYSTEM ELECTRON
     asar e resources/app.asar resources/app
     sed -i "s|,\"paprika.node\"|,\"/usr/lib/$pkgname/paprika.node\"|" resources/app/src/main/main.prod.js
-    export electronVersion=$(tail -1 /usr/lib/electron8/version | cut -d '.' -f 1,2)
-    ln -s electron-v8.0-linux-x64 resources/app/node_modules/sqlite3/lib/binding/electron-v$electronVersion-linux-x64  
 
     # Copy Relevanat data
     cp -r resources/*  $pkgdir/usr/lib/$pkgname/
