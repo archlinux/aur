@@ -3,7 +3,7 @@
 
 pkgname=dotter-rs-bin
 _pkgname=dotter
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="A dotfile manager and templater written in Rust"
 arch=('x86_64')
@@ -13,8 +13,8 @@ conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname"
                "$pkgname-$pkgver-README.md::$url/raw/v$pkgver/README.md")
-sha512sums_x86_64=('6dd1b28698695fe1688c1adf1b2453d66d35e4d8f2c8d7d91d6cbf824c528c1ac7d2c27301fceff6605f4fbe4ebb74728d49d3ed1ddfdca48eeff5ce8a552fa6'
-                   'f2962e611ed9de14d3caf4b93982ec87bb858a55cf4b1dd2f9c9ba6300c4e6deb19ee7f0f4a30040ed10c06ef2cdb024b0e8541aeef15bd625ddebed5a786829')
+sha512sums_x86_64=('986df03c98b8c3d4a48a43a283272530d7f98859e76cd97c633de163e0c276554b86a30ac1834c9eef2cf094ae6c7009b0ae5597c1d200e810a6b0c0342076de'
+                   'ee2e4d92e68993ead92cb965f0f9d22e47b3cc4c17926e1aa74f829a82cee536491fb211809d046d6651e87275471e151da41dd3f43bb9a613f5b8372ec00361')
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "${pkgdir}/usr/bin/$_pkgname"
