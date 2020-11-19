@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r463.ff13906
+pkgver=r464.9aa8c29
 pkgrel=1
 pkgdesc='A dmenu-inspired native client for web services. Supports youtube, nyaa.si, 4chan, matrix and several manga sites.'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
 provides=('QuickMedia')
 conflicts=('QuickMedia')
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.tar.gz")
-sha512sums=('b20bf9c872b4ae6eb0039c33de6b63b5e9e0a51492685d4fb8d416fd8968113abbce8bfecc6bbeca93589ba250bf02485283efbd6cc22d3bdf6b3773e9a24d17')
+sha512sums=('5e8920e4363bf7431ece2e9a4e91ee803a82b08ce98e050d21cc5effdf967f5b6fc557c60432b2d6addb7f72d7579d8ff311bc4120ec7f782e1c517748e068ca')
 
 build() {
   cd "$srcdir"
