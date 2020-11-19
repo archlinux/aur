@@ -3,7 +3,7 @@
 _pkgname=bitvector-for-humans
 pkgname=python-${_pkgname}
 pkgver=0.14.0
-pkgrel=0
+pkgrel=1
 pkgdesc='A simple pure python Bit Vector class for Humans'
 arch=('i686' 'x86_64')
 url='https://github.com/JnyJny/bitvector'
@@ -13,12 +13,13 @@ source=("${url}/archive/${pkgver}.tar.gz")
 sha256sums=('3e23412605199dd7621a453033780983536bc9280d3fa0aae498dd371101c0af')
 
 build() {
+  cd "${srcdir}/bitvector-${pkgver}/bitvector"
+  POETRY_CACHE_DIR=${srcdir}/poetry-cache poetry build -f sdist
+
   cd "${srcdir}/bitvector-${pkgver}"
-
-  poetry build
   tar xf dist/${_pkgname}-${pkgver}.tar.gz
-  cd "${_pkgname}-${pkgver}"
 
+  cd "${_pkgname}-${pkgver}"
   python setup.py build
 }
 

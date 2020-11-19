@@ -1,7 +1,7 @@
 pkgbase = python-bitvector-for-humans
 	pkgdesc = A simple pure python Bit Vector class for Humans
 	pkgver = 0.14.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/JnyJny/bitvector
 	arch = i686
 	arch = x86_64
