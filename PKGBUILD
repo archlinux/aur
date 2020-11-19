@@ -4,7 +4,7 @@
 
 pkgname=gtk4
 pkgver=3.99.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject-based multi-platform GUI toolkit"
 arch=('i686' 'x86_64')
 url="https://www.gtk.org/"
@@ -24,7 +24,7 @@ depends=('hicolor-icon-theme'
          'libxkbcommon'
          'libxrandr'
          'mesa'
-         'pango-git'
+         'pango'
          'wayland'
          'graphene'
          'json-glib'
