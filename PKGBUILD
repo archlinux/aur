@@ -22,7 +22,7 @@ source=('com.unrealengine.UE4Editor.desktop'
         'use-arch-mono.patch')
 sha256sums=('fa4bd19ab53e91cc8b4ae6208452a7fe986a08047617213d6250b43e7a140bf3'
             'e891f07bf7294cd5fde8eb6de92e6d47ed004847ea8afd7c944e9b9b2bacaff4')
-options=(strip staticlibs) # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
+options=(!strip staticlibs)
 
 prepare() {
   # Check access to the repository
