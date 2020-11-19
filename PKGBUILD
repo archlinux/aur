@@ -3,7 +3,7 @@
 
 pkgname=nodejs-type-fest
 _pkgname=${pkgname#*-}
-pkgver=0.18.1
+pkgver=0.19.0
 pkgrel=1
 pkgdesc='A collection of essential TypeScript types.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/sindresorhus/$_pkgname/archive/v$pkgver.tar.gz")
 noextract=("$_pkgname-$pkgver.tar.gz")
-sha256sums=('8597fdbe83a49a997390844ba99778621678ed01d17448874eea67c4fd436e66')
+sha256sums=('ea58c72402539a06a21c5608ecd69ad3f153153e271695c4ee70f60cec9d8ce5')
 
 package() {
     cd "$srcdir"

@@ -1,15 +1,15 @@
 pkgbase = nodejs-type-fest
 	pkgdesc = A collection of essential TypeScript types.
-	pkgver = 0.18.1
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/sindresorhus/type-fest
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = type-fest-0.18.1.tar.gz
-	source = type-fest-0.18.1.tar.gz::https://github.com/sindresorhus/type-fest/archive/v0.18.1.tar.gz
-	sha256sums = 8597fdbe83a49a997390844ba99778621678ed01d17448874eea67c4fd436e66
+	noextract = type-fest-0.19.0.tar.gz
+	source = type-fest-0.19.0.tar.gz::https://github.com/sindresorhus/type-fest/archive/v0.19.0.tar.gz
+	sha256sums = ea58c72402539a06a21c5608ecd69ad3f153153e271695c4ee70f60cec9d8ce5
 
 pkgname = nodejs-type-fest
 
