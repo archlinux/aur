@@ -1,14 +1,14 @@
 pkgbase = gomason
 	pkgdesc = A tool for testing, building, signing, and publishing binaries
-	pkgver = 2.6.4
-	pkgrel = 2
+	pkgver = 2.6.6
+	pkgrel = 1
 	url = https://github.com/nikogura/gomason
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = gomason-2.6.4.tar.gz::https://github.com/nikogura/gomason/archive/v2.6.4.tar.gz
-	sha256sums = c6e63b8f92aa10b13f44f32bfc41e1c79b2be913ca19b7e41f25f42f8cbeff9d
+	source = gomason-2.6.6.tar.gz::https://github.com/nikogura/gomason/archive/2.6.6.tar.gz
+	sha256sums = a528613c329c84d2b85456b8ab9380da01e109307551362aeba3bb23af91c7b6
 
 pkgname = gomason
 
