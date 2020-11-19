@@ -10,7 +10,7 @@ pkgver() {
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgver=r419.9050f0c
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Search and play songs from Youtube, Soundcloud, Spotify and more from your terminal'
 arch=('any')
@@ -19,7 +19,7 @@ license=('MIT')
 
 makedepends=('git' 'python-setuptools')
 depends=('chromium' 'mpv' 'youtube-dl' 'python-selenium' 'python-requests' 'python-beautifulsoup4'
-         'python-numpy' 'python-youtube-search-git')  # 'python-youtube-search'
+         'python-numpy' 'python-youtube-search')
 
 provides=("$_prjname")
 conflicts=("$_prjname")
