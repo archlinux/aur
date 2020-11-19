@@ -1,10 +1,10 @@
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
 
-_cudaarch="5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6"
+_CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6"
 _pkgname=mxnet
 pkgname=('mxnet-git' 'mxnet-cuda-git')
 _pkgver=2.0.0
-pkgver=2.0.0.r11368.defaafe078
+pkgver=2.0.0.r11442.dbcd6a19f1
 pkgrel=1
 pkgdesc='A flexible and efficient library for deep learning'
 arch=('x86_64')
@@ -98,7 +98,7 @@ build() {
     -DCMAKE_C_COMPILER=/opt/cuda/bin/gcc \
     -DCMAKE_CXX_COMPILER=/opt/cuda/bin/g++ \
     -DCMAKE_CUDA_HOST_COMPILER=/opt/cuda/bin/g++ \
-    -DMXNET_CUDA_ARCH=${_cudaarch} \
+    -DMXNET_CUDA_ARCH=${_CUDA_ARCH_LIST} \
     -DUSE_CUDA:BOOL=ON \
     -DUSE_CUDNN:BOOL=ON \
     -DUSE_NCCL:BOOL=ON \
