@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=vy
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc='A vim-like text editor in python, made from scratch'
 arch=('any')
@@ -17,7 +17,7 @@ depends=('python-vulture'
          'python-untwisted')
 makedepends=('python-setuptools' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vyapp/vy/archive/v${pkgver}.tar.gz")
-sha256sums=('bdb5baa3274cb3348354e0a4e734366232780cd2a3f00293fce108d3af50d733')
+sha256sums=('d8004e4298049c73625270deb49f47ab650f48af333b87ff279839c042b90246')
 
 package() {
   cd "vy-${pkgver}"

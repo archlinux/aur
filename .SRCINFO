@@ -1,6 +1,6 @@
 pkgbase = vy
 	pkgdesc = A vim-like text editor in python, made from scratch
-	pkgver = 4.2.0
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/vyapp/vy
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = vy
 	depends = python-rope
 	depends = mypy
 	depends = python-untwisted
-	source = vy-4.2.0.tar.gz::https://github.com/vyapp/vy/archive/v4.2.0.tar.gz
-	sha256sums = bdb5baa3274cb3348354e0a4e734366232780cd2a3f00293fce108d3af50d733
+	source = vy-4.3.0.tar.gz::https://github.com/vyapp/vy/archive/v4.3.0.tar.gz
+	sha256sums = d8004e4298049c73625270deb49f47ab650f48af333b87ff279839c042b90246
 
 pkgname = vy
 
