@@ -6,7 +6,7 @@ _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.1.1
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 arch=(x86_64)
@@ -270,7 +270,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '37ca48c0b64b94155e0af1ae06921e120db05817f3dcb6c44d4c55c03a28d595'
+            'a112c6a16d8a53a6be4719d44b91a017170a26c328176dbab6c926ffccb442c6'
             '8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
             'bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98'

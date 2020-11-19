@@ -1,7 +1,7 @@
 pkgbase = proton-native
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution
 	pkgver = 5.13.2
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton
 	arch = x86_64
@@ -103,7 +103,8 @@ pkgbase = proton-native
 	makedepends = desktop-file-utils
 	makedepends = python
 	makedepends = steam-native-runtime
-	makedepends = wine-gecko-bin>=2.47.1
+	makedepends = wine-gecko-bin=2.47.1
+	makedepends = wine-mono-bin=5.1.1
 	depends = fontconfig
 	depends = lib32-fontconfig
 	depends = lcms2
@@ -137,7 +138,8 @@ pkgbase = proton-native
 	depends = desktop-file-utils
 	depends = python
 	depends = steam-native-runtime
-	depends = wine-gecko-bin>=2.47.1
+	depends = wine-gecko-bin=2.47.1
+	depends = wine-mono-bin=5.1.1
 	optdepends = giflib
 	optdepends = lib32-giflib
 	optdepends = libpng
@@ -209,7 +211,7 @@ pkgbase = proton-native
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 37ca48c0b64b94155e0af1ae06921e120db05817f3dcb6c44d4c55c03a28d595
+	sha256sums = a112c6a16d8a53a6be4719d44b91a017170a26c328176dbab6c926ffccb442c6
 	sha256sums = 8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954
 	sha256sums = 20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3
 	sha256sums = bc17f1ef1e246db44c0fa3874290ad0a5852b0b3fe75902b39834913e3811d98
