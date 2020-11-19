@@ -1,8 +1,8 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=razorsql
-pkgver=9.1.3
-_pkgver=9_1_3
+pkgver=9.2.4
+_pkgver=9_2_4
 pkgrel=1
 pkgdesc="An SQL query tool, database browser, SQL editor, and database administration tool (Trial)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=('java-runtime>=8'
 makedepends=('unzip' 'gendesk')
 noextract=("${pkgname}-${pkgver}.zip")
 source=("${pkgname}-${pkgver}.zip::https://s3.dualstack.us-east-1.amazonaws.com/downloads.razorsql.com/downloads/${_pkgver}/razorsql${_pkgver}_linux_x64.zip")
-sha256sums=('404bab02801839ffa0e7f197d35f359b18d5c610babe1d13a79909b1be21f48e')
+sha256sums=('46ce85666bf1f25938a653deb0a3af3afdb07720ffba7e04f2861f9f8e0872b8')
 
 package() {
   install -d "${pkgdir}/opt"
