@@ -1,6 +1,6 @@
-# Maintainer: Jona Miller <miller.jona at yandex dot com>
+# Maintainer: Alex DeLorenzo <alex at alexdelorenzo dot dev>
 pkgname=chromecast_mpris
-pkgver=0.3.3
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Control Chromecasts from Linux and D-Bus "
 arch=('any')
