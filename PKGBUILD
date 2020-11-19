@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=finalcrypt
-pkgver=6.3.8
+pkgver=6.5.0
 pkgrel=1
 pkgdesc="The World's Strongest Encryption"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('java-runtime>=8'
          'gtk3')
 makedepends=('tar')
 source=("${pkgname}-${pkgver}.deb::http://www.finalcrypt.org/downloads/linux/finalcrypt_linux_x86_64_debian_based.deb")
-sha256sums=('e44a18990c793eff06580757bd66be777f052cc10d13dfc9be187f6157129c87')
+sha256sums=('65b3bafe0989e46577c3d73bc8828f722b5a0772a51c74b8e6d5f907789cd3aa')
 
 package() {
   tar xvf data.tar.xz -C "${pkgdir}/"
