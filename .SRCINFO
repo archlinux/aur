@@ -1,0 +1,19 @@
+pkgbase = pyambientmixer-git
+	pkgdesc = a Python player with Pygame to play ambient-mixer.com mixes locally
+	pkgver = r7.b188d8f
+	pkgrel = 1
+	url = https://github.com/Philooz/pyambientmixer
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-pygame
+	depends = python-untangle
+	depends = python-docopt
+	provides = pyambientmixer
+	conflicts = pyambientmixer
+	source = git+https://github.com/Philooz/pyambientmixer.git
+	sha256sums = SKIP
+
+pkgname = pyambientmixer-git
+
