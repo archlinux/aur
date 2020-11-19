@@ -1,14 +1,13 @@
 # Maintainer: Nico Rittstieg <nico dot rittstieg at gmx dot de>
 pkgname=ntag
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="Audio file tag editor, created with JavaFX"
 arch=('x86_64')
 url="https://github.com/nrittsti/ntag"
 license=('GPL3')
-depends=('jre-openjdk')
 source=("https://github.com/nrittsti/ntag/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux_bin.tar.gz")
-md5sums=('b01cd806eba27758a3acfb803d1ee4d4')
+md5sums=('1d1f336f6d097cad098a47f6342fdd95')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -17,4 +16,6 @@ package() {
 	install -Dm644 *.{jar,png,txt,pdf,properties} "${pkgdir}/opt/ntag"
 	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+	install -dm755 "${pkgdir}/opt/ntag/jre"
+	cp -r --no-preserve=ownership --preserve=mode jre/* "$pkgdir"/opt/ntag/jre/
 }
