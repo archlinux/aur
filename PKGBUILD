@@ -1,12 +1,12 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=ffmpeg-ndi
-pkgver=4.2.3
-pkgrel=2
-pkgdesc='Complete solution to record, convert and stream audio and video with NDI added and enabled'
+pkgver=4.3.1
+pkgrel=1
+pkgdesc='Complete solution to record, convert and stream audio and video with NDI restored and enabled'
 arch=(x86_64)
 url=https://ffmpeg.org/
-license=(GPL3)
+license=('custom: nonfree and unredistributable')
 depends=(
   alsa-lib
   aom
@@ -29,6 +29,7 @@ depends=(
   libmodplug
   libomxil-bellagio
   libpulse
+  librav1e.so
   libraw1394
   libsoxr
   libssh
@@ -60,15 +61,19 @@ depends=(
   vmaf
   xz
   zlib
+
+# AUR:
   ndi-sdk
 )
 makedepends=(
+  avisynthplus
   ffnvcodec-headers
   git
   ladspa
   nasm
 )
 optdepends=(
+  'avisynthplus: AviSynthPlus support'
   'intel-media-sdk: Intel QuickSync support'
   'ladspa: LADSPA filters'
   'nvidia-utils: Nvidia NVDEC/NVENC support'
@@ -84,13 +89,25 @@ provides=(
   libswresample.so
   libswscale.so
 )
-source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=d3b963cc41824a3c5b2758ac896fb23e20a87875
-        vmaf-model-path.patch
-        0001-Revert-lavd-Remove-libndi_newtek.patch)
+conflicts=('ffmpeg')
+_tag=6b6b9e593dd4d3aaf75f48d40a13ef03bdef9fdb
+source=(
+  git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
+  vmaf-model-path.patch
+  '016-ffmpeg-srt-1.4.2-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/7c59e1b0f285cd7c7b35fcd71f49c5fd52cf9315'
+  '0001-Revert-lavd-Remove-libndi_newtek.patch'::'https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/0001-Revert-lavd-Remove-libndi_newtek.patch?inline=false'
+  'libndi_newtek_common.h'::'https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_common.h?inline=false'
+  'libndi_newtek_dec.c'::'https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_dec.c?inline=false'
+  'libndi_newtek_enc.c'::'https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_enc.c?inline=false'
+)
 sha256sums=(
   SKIP
   8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d
-  7a6ac8aa7d4183b810d13a6c75e80f451c6efbf251589d89049e245b45fdb9ae
+  960fd930955cd126e33c543eb5bf300fc050efdd4238626ee4aad2a50d353fa7
+  aa1ad340630bf5794a15025c7235ed8b17fc0296dfbe1e017ce60472f924fc6e
+  462e984a7cb3d0af17b0ea0eb2a010aee2f79a3e77c2055fdfd760163dd75fa4
+  3c6dea7583d79911e9ea198c35b1b56830b85eea84e49d63c2d5c03af5210eca
+  83cc714edc8d1c37ffabd2ee17960d6ed91a1d019bd43d01383f84eea28e4fbb
 )
 
 pkgver() {
@@ -102,12 +119,12 @@ pkgver() {
 prepare() {
   cd ffmpeg
 
-  # lavf/mp3dec: don't adjust start time; packets are not adjusted
-  # https://crbug.com/1062037
-  git cherry-pick -n 460132c9980f8a1f501a1f69477bca49e1641233
-
   patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
-  patch -Np1 -i "${srcdir}/0001-Revert-lavd-Remove-libndi_newtek.patch"
+  patch -Np1 -i "${srcdir}"/016-ffmpeg-srt-1.4.2-fix.patch
+  patch -Np1 -i "${srcdir}"/0001-Revert-lavd-Remove-libndi_newtek.patch
+
+  printf 'Copying libndi missing file'
+  cp "${srcdir}"/libndi_newtek_* libavdevice/
 }
 
 build() {
@@ -142,6 +159,7 @@ build() {
     --enable-libopenjpeg \
     --enable-libopus \
     --enable-libpulse \
+    --enable-librav1e \
     --enable-libsoxr \
     --enable-libspeex \
     --enable-libsrt \
