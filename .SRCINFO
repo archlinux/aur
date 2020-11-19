@@ -1,5 +1,5 @@
 pkgbase = linux-rockchip
-	pkgver = 20.08.14
+	pkgver = 5.8.16
 	pkgrel = 1
 	url = https://apt.armbian.com
 	arch = armv7h

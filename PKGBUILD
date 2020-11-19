@@ -2,7 +2,7 @@
 
 pkgbase=linux-rockchip
 pkgname=('linux-rockchip' 'linux-rockchip-headers')
-pkgver=20.08.14
+pkgver=5.8.16
 pkgrel=1
 arch=('armv7h')
 url="https://apt.armbian.com"
@@ -28,13 +28,13 @@ sha512sums=(
 noextract=("${source[@]##*/}")
 
 pkgver() {
-    cat ../Packages | grep 'linux-image-current-rockchip.*deb' | head -n 1 | sed -r 's#.*_(.*)_armhf.*#\1#'
+    echo "$_kernver" | sed -r 's#-.*##'
 }
 
 prepare() {
     cd "$srcdir"
 
-    rm -rf boot etc lib usr
+    rm -rf $(find -mindepth 1 -maxdepth 1 -type d)
 }
 
 package_linux-rockchip() {
