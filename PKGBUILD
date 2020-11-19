@@ -1,18 +1,17 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=tutti-quanti-shelf
-pkgver=1.13.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Collection of miscellaneous developer-oriented utilities wrapped into one single app, built with Electron"
 arch=('x86_64')
 url='https://github.com/tonton-pixel/tutti-quanti-shelf'
 license=('MIT')
 depends=('nss'
-         'libxss'
          'gtk3')
 makedepends=('npm' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tonton-pixel/tutti-quanti-shelf/archive/v${pkgver}.tar.gz")
-sha256sums=('23d3d2a1e91302da82f7378cd3354f1faee1281f42751df4efc4cce6def3097e')
+sha256sums=('9859085f1ac526725a072d8919aea038cc0b6f185f6656ad7500b88dc46041e3')
 
 build() {
   cd "${pkgname}-${pkgver}"
