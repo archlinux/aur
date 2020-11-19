@@ -10,7 +10,10 @@ arch=('x86_64')
 url="https://arc.liv.ac.uk/trac/SGE"
 license=('custom')
 depends=(
+	'awk'
+	'grep'
 	'hwloc'
+	'libtirpc'
 	'openmotif'
 	'openssl-1.0'
 	'python2'
