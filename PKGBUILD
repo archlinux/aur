@@ -1,9 +1,9 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='core_kernel'
 pkgname="ocaml-$_projectname"
-pkgver='0.14.0'
-pkgrel='2'
+pkgver='0.14.1'
+pkgrel='1'
 epoch='1'
 pkgdesc="Industrial strength alternative to OCaml's standard library (system-independent part)"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ depends=('ocaml>=4.08.0' 'ocaml-base>=0.14.0' 'ocaml-base_bigstring>=0.14.0' 'oc
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f191f320cce868930182f3f193ed515d0b17a3de4afdd60b300a46e6dbc773dd')
+sha256sums=('1d91a0d58e9a98809eb3bc888ae716e786c68ad5d07a874c37d9c1ef9fd24438')
 
 _sourcedirectory="$_projectname-$pkgver"
 
