@@ -1,14 +1,14 @@
 pkgbase = dasel
 	pkgdesc = Query and update data structures from the command line.
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/TomWright/dasel
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = dasel-1.6.1.tar.gz::https://github.com/TomWright/dasel/archive/v1.6.1.tar.gz
-	sha256sums = ceabdd4c7655b51c247efab9446171d7f552d19ac06ac9985bb16a41d9bb2a80
+	source = dasel-1.6.2.tar.gz::https://github.com/TomWright/dasel/archive/v1.6.2.tar.gz
+	sha256sums = 5995dc3d8038d0512bc1ed59dc2383d9f6457468635519160a31997fa1a4e86c
 
 pkgname = dasel
 
