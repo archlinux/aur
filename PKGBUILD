@@ -11,14 +11,9 @@ license=('GPLv3')
 depends=('python')
 makedepends=('python-setuptools')
 depends=('noto-fonts-emoji')
-checkdepends=('python-pytest')
+checkdepends=('python-tox')
 source=("git+https://gitlab.crans.org/ynerant/squirrel-battle.git")
 sha256sums=("SKIP")
-
-pkgver() {
-  cd $_name
-  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-}
 
 build() {
   cd $_name
@@ -27,7 +22,8 @@ build() {
 
 check() {
   cd $_name
-  pytest squirrelbattle/
+  tox -e py3
+  tox -e linters
 }
 
 package() {
