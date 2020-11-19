@@ -1,0 +1,14 @@
+post_install() {
+	cat <<-EOF
+	---------------------------------------------------
+	„CEWE Fotowelt“ ist ein Produkt und Eigentum der
+	CEWE Stiftung & Co. KGaA, Meerweg 30-32,
+	26133 Oldenburg. Die Nutzungsbedingen sind
+	in /usr/share/licenses/cewe-fotowelt/EULA.txt.
+	WENN SIE DIESE SOFTWARE INSTALLIEREN, ERKLÄREN SIE
+	SICH MIT DEN BEDINGUNGEN DIESES LIZENZABKOMMENS
+	EINVERSTANDEN
+	---------------------------------------------------
+	EOF
+
+}
