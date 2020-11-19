@@ -1,7 +1,7 @@
 pkgbase = busylight
 	pkgdesc = Control USB connected presence lights from multiple vendors
 	pkgver = 0.7.6
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/JnyJny/busylight
 	arch = i686
 	arch = x86_64
