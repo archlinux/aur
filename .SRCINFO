@@ -1,6 +1,8 @@
 pkgbase = gba-tools
+	pkgdesc = Collection of tools for Game Boy Advance development
 	pkgver = 1.2.0
 	pkgrel = 1
+	url = https://github.com/devkitPro/gba-tools
 	arch = all
 	license = GPL3
 	source = https://github.com/devkitPro/gba-tools/archive/v1.2.0.tar.gz
