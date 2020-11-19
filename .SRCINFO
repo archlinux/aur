@@ -1,6 +1,6 @@
 pkgbase = dnss-git
 	pkgdesc = DNSS is a daemon for using DNS over HTTPS
-	pkgver = 2020.11.19
+	pkgver = r126.c98400d
 	pkgrel = 1
 	url = https://github.com/albertito/dnss
 	arch = any
@@ -9,6 +9,8 @@ pkgbase = dnss-git
 	makedepends = git
 	provides = dnss
 	conflicts = dnss
+	source = git+https://github.com/albertito/dnss.git
+	sha256sums = SKIP
 
 pkgname = dnss-git
 

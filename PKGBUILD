@@ -1,7 +1,7 @@
 # Maintainer: Dawid Weglarz <dawid.weglarz95@gmail.com>
 
 pkgname=dnss-git
-pkgver=2020.11.19
+pkgver=r126.c98400d
 pkgrel=1
 pkgdesc="DNSS is a daemon for using DNS over HTTPS"
 arch=(any)
@@ -10,16 +10,20 @@ license=('Apache-2.0')
 makedepends=('go' 'git')
 conflicts=('dnss')
 provides=('dnss')
+source=("git+https://github.com/albertito/dnss.git")
+_gitdir=dnss
+sha256sums=('SKIP')
 
-prepare() {
-  git clone --single-branch --no-tags --branch master https://github.com/albertito/dnss dnss-git
+pkgver() {
+  cd ${_gitdir}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd dnss-git
+  cd ${_gitdir}
   go build blitiri.com.ar/go/dnss
 }
 
 package() {
-  install -Dvm755 "${pkgname}/dnss" -t "${pkgdir}/usr/bin"
+  install -Dvm755 "${_gitdir}/dnss" -t "${pkgdir}/usr/bin"
 }
