@@ -1,12 +1,12 @@
 # Maintainer: Spider.007 <aur@spider007.net>
 pkgname=graylog
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Graylog is an open source syslog implementation that stores your logs in ElasticSearch and MongoDB"
 arch=('any')
 url="https://www.graylog.org/"
 license=(SSPL)
-depends=('java-runtime-headless=8')
+depends=('java-runtime-headless=11')
 optdepends=('elasticsearch' mongodb)
 install=graylog.install
 changelog=UPGRADING.rst
