@@ -2,10 +2,10 @@
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 # Contributor: Carl George < carl at george dot computer >
 
-pkgname='pop-gtk-theme'
-pkgver=5.1.2
+pkgname=pop-gtk-theme
+pkgver=5.3.1
 pkgrel=1
-pkgdesc='System76 Pop GTK+ Theme'
+pkgdesc="System76 Pop GTK+ Theme"
 arch=('any')
 url='https://github.com/pop-os/gtk-theme'
 license=('LGPL2.1' 'CCPL' 'GPL3')
@@ -16,8 +16,8 @@ makedepends=('inkscape'
              'meson'
              'glib2'
              'ninja')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('aa28139ac028eacfe60c6b3cdec6421bc40e36329a6f4846e71fb76711a3fbe8')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pop-os/gtk-theme/archive/v${pkgver}.tar.gz")
+sha256sums=('5e51f9b8d0e904d401a434cd0254766d2e461ff0e9d1f09e8b6a02fe030f4763')
 
 build() {
   cd "gtk-theme-${pkgver}"
