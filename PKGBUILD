@@ -5,7 +5,7 @@
 # Original Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-macbook
-_srcver=5.8.3-arch1
+_srcver=5.9.9-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -34,12 +34,12 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'd57308ac4d40fb0a4fc3825070583218b07be2ccf6bb219429a8b13b8e96efa8'
+            '958333f18de79c19ccf9eccb4e16e2a217a0619a1d96c2c65ccba23628815bab'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'c5a714823c3418692bc5c212dd5d094a0e2ae6147d6726822911f1c26e3a1d1b'
-            '1c39ef4524ef6edf7bf465075cca899bae779160b3cc04e1b2a39bf1bda710e3'
+            'c597fc0244b19c34666e2985b9e93fecd6666123a1c4cfc7e53aecc2d0daef14'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
