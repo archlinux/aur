@@ -7,7 +7,6 @@
 pkgname=wtftw-git
 pkgver=r347.14f3d1e
 pkgrel=1
-epoch=1
 pkgdesc='Window Tiling For The Win. A tiling window manager written in Rust (git)'
 arch=('i686' 'x86_64')
 url="https://github.com/Kintaro/wtftw"
