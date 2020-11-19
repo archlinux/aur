@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rusty-krab-manager
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Time management TUI"
 arch=('x86_64')
@@ -10,13 +10,11 @@ url="https://github.com/aryakaul/rusty-krab-manager"
 license=('custom:ETHICAL')
 makedepends=('rust' 'alsa-lib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('e0067e213f32c5606762faf38b2ce81b5712d61e5b167b099be8d04ef604d1a68fb9eafcef102986819fc3a6471cfd084e38cb96135a2f07f64db64161e2552a')
+sha512sums=('c7af5435075ce9f848908a952eb22bb5aeb5b3c011d90d1af2cd55d9f4f03f11d32e601f0c96e5cdd2dac3ef0a43682f04c9849d62a2c2a1734a4090e85ab925')
 
 build() {
   cd "$pkgname-$pkgver"
-  # TODO: Use `--locked` flag for reproducibility.
-  # Tracking issue: https://github.com/aryakaul/rusty-krab-manager/issues/31
-  cargo build --release --all-features
+  cargo build --release --locked --all-features
 }
 
 package() {
