@@ -1,3 +1,8 @@
+## 10.1.0 (2020-11-14)
+
+* #671 Don't hang if no file or stdin provided. Thanks @arbovm for improving the CLI experience.
+* #664 Add force-onetime-secrets option. Run yopass-server with --force-onetime-secrets=true enforce that all stored secrets are one time downloads only.
+
 ## 10.0.0 (2020-10-02)
 
 Yopass CLI support was added: <https://github.com/jhaals/yopass/pull/580>.
