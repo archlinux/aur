@@ -88,6 +88,8 @@ package_qt5-singlecoreapplication() {
 package_qt5-singleapplication-doc() {
   pkgdesc="Qt library to start applications only once per user (Documentation)"
 
+  cd qt-solutions-${_commit}/qtsingleapplication
+
   mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
   cp -rp ./doc/html ./examples "${pkgdir}/usr/share/doc/${pkgname}"
 
@@ -97,6 +99,8 @@ package_qt5-singleapplication-doc() {
 
 package_qt5-singlecoreapplication-doc() {
   pkgdesc="Qt library to start applications only once per user, for non-GUI apps (Documentation)"
+
+  cd qt-solutions-${_commit}/qtsingleapplication
 
   mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
   cp -rp ./doc/html ./examples "${pkgdir}/usr/share/doc/${pkgname}"
