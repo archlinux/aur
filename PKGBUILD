@@ -31,7 +31,7 @@ source=(https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_comm
 sha256sums=('ca3859830a497d1e44bfa6d3f4fa974cc48cdfdcec806dca5a8873a89f0b34b1'
             'e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d'
             '33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208'
-            '3bb7463471fb43b2163a705a79a13a3003d70fff4bbe44f467807ca056de9a75'
+            'e0eaec8ddd24bbebf4956563ebc6d7a56f8dada5835975ee4d320dd3d0c9c442'
             '6ce4eeddc1d73110721d9db6817634bbc453971c578a950e1386dc3819b85b1f')
 
 prepare() {
