@@ -14,7 +14,7 @@ pkgbase = pam-selinux
 	depends = libtirpc
 	depends = audit
 	depends = libselinux
-	optdepends = pambase-selinux: SELinux aware base PAM configuration
+	depends = pambase-selinux
 	provides = pam=1.4.0-3
 	provides = selinux-pam=1.4.0-3
 	conflicts = pam

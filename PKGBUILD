@@ -14,9 +14,8 @@ pkgdesc="SELinux aware PAM (Pluggable Authentication Modules) library"
 arch=('x86_64')
 license=('GPL2')
 url="http://linux-pam.org"
-depends=('glibc' 'libtirpc' 'audit' 'libselinux')
+depends=('glibc' 'libtirpc' 'audit' 'libselinux' 'pambase-selinux')
 makedepends=('flex' 'w3m' 'docbook-xml>=4.4' 'docbook-xsl')
-optdepends=('pambase-selinux: SELinux aware base PAM configuration')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
