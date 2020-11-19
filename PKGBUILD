@@ -2,17 +2,17 @@
 # Contributor: rawkode <rawkode@pm.me>
 
 pkgname=openfaas-cli
-pkgdesc="Official CLI for OpenFaaS"
-pkgver=0.12.4
+pkgver=0.12.14
 pkgrel=1
+pkgdesc="Official CLI for OpenFaaS"
 arch=('i686' 'x86_64' 'arm64')
 url="https://github.com/openfaas/faas-cli"
 license=('MIT')
+provides=('faas-cli')
 depends=('glibc')
 makedepends=('go' 'git')
-provides=('faas-cli')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('97b160056033b53103318def3a10735297a28afc52a50da0105e3aad4f570055')
+sha256sums=('b6d894bac6936c146d41365b149bd22853ef364512c80bf9b0ed21b263526ae2')
 
 prepare() {
   cd "${srcdir}/faas-cli-${pkgver}"
@@ -32,6 +32,6 @@ build() {
 
 package() {
   cd "${srcdir}/faas-cli-${pkgver}"
-  install -Dm755 build/faas-cli-${pkgver} "${pkgdir}/usr/bin/faas-cli"
+  install -Dm755 build/faas-cli "${pkgdir}/usr/bin/faas-cli"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
