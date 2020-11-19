@@ -1,10 +1,11 @@
 pkgbase = discord_arch_electron
 	pkgdesc = Discord (popular voice + video app) using the system provided electron for increased security and performance
 	pkgver = 0.0.12
-	pkgrel = 3
+	pkgrel = 4
 	url = https://discordapp.com
 	arch = x86_64
 	license = custom
+	makedepends = asar
 	depends = electron
 	optdepends = libpulse: Pulseaudio support
 	optdepends = xdg-utils: Open files

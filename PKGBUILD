@@ -1,10 +1,10 @@
 # Maintained by johnnyapol (arch@johnnyapol.me)
+# Contributors: huyizheng
 # Based off the discord community repo PKGBUILD by Filipe Laíns (FFY00) <lains@archlinux.org>
-
 pkgname=discord_arch_electron
 _pkgname=discord
 pkgver=0.0.12
-pkgrel=3
+pkgrel=4
 pkgdesc="Discord (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
 provides=('discord')
@@ -12,6 +12,7 @@ conflicts=('discord')
 url='https://discordapp.com'
 license=('custom')
 depends=('electron')
+makedepends=('asar')
 optdepends=('libpulse: Pulseaudio support'
             'xdg-utils: Open files')
 source=("https://dl.discordapp.net/apps/linux/$pkgver/$_pkgname-$pkgver.tar.gz"
@@ -30,31 +31,26 @@ prepare() {
 
 package() {
   # Install the app
-  install -d "$pkgdir"/opt/$_pkgname
-
-  # Copy Relevanat data
-  cp -r Discord/resources  "$pkgdir"/opt/$_pkgname/
-  cp    Discord/discord.png "$pkgdir"/opt/$_pkgname/
-  cp 	Discord/discord.desktop "$pkgdir"/opt/$_pkgname/
-
-  # Create starter script for discord
-  echo "#!/bin/sh" >> "$pkgdir"/opt/$_pkgname/$_pkgname
-  echo "exec electron /opt/$_pkgname/resources/app.asar \$@" >> "$pkgdir"/opt/$_pkgname/$_pkgname
-
-  # Set Permissions, symlinks
-  chmod 755 "$pkgdir"/opt/$_pkgname/$_pkgname
-
-  install -d "$pkgdir"/usr/{bin,share/{pixmaps,applications}}
-  install -d "$pkgdir"/usr/lib/electron
-  install -d "$pkgdir"/usr/lib/electron/resources
-
-  ln -s /opt/$_pkgname/$_pkgname "$pkgdir"/usr/bin/$_pkgname
-  ln -sf /opt/$_pkgname/discord.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
-  ln -sf /opt/$_pkgname/$_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
+  install -d "$pkgdir"/usr/lib/$_pkgname
 
   # HACKS FOR SYSTEM ELECTRON
-  ln -s /opt/$_pkgname/resources/build_info.json "$pkgdir"/usr/lib/electron/resources/
-  ln -s /opt/$_pkgname/discord.png        "$pkgdir"/usr/lib/electron
+  asar e Discord/resources/app.asar Discord/resources/app
+  sed -i "s|process.resourcesPath|'/usr/lib/$_pkgname'|" Discord/resources/app/app_bootstrap/buildInfo.js
+  sed -i "s|exeDir,|'/usr/share/pixmaps',|" Discord/resources/app/app_bootstrap/autoStart/linux.js
+
+  # Copy Relevanat data
+  cp -r Discord/resources/*  "$pkgdir"/usr/lib/$_pkgname/
+  rm "$pkgdir"/usr/lib/$_pkgname/app.asar
+
+  # Create starter script for discord
+  echo "#!/bin/sh" >> "$srcdir"/$_pkgname
+  echo "exec electron /usr/lib/$_pkgname/app \$@" >> "$srcdir"/$_pkgname
+
+  install -d "$pkgdir"/usr/{bin,share/{pixmaps,applications}}
+  install -Dm 755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
+
+  cp Discord/discord.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
+  cp Discord/discord.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
 
   # Licenses
   install -Dm 644 LICENSE.html "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.html
