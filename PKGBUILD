@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=goverlay-git
-pkgver=0.4.r15.g8020010
+pkgver=0.4.1.r2.gb394304
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
 license=('GPL3')
-depends=('gtk2')
+depends=('qt5pas')
 makedepends=('git' 'lazarus')
 checkdepends=('appstream')
 optdepends=('mangohud: Configure MangoHUD'
@@ -23,6 +23,11 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+	sed -i 's/lazbuild -B goverlay.lpi/lazbuild -B goverlay.lpi --ws=qt5/g' Makefile
 }
 
 build() {
