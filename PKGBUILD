@@ -1,78 +1,57 @@
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer: AnoGP <anogp at pm dot me>
 
 pkgname=tribler
-pkgver=7.4.4
-pkgrel=4
-pkgdesc='Privacy enhanced BitTorrent client with P2P content discovery'
-url='https://www.tribler.org'
-arch=('any')
-license=('LGPL3')
-depends=('python-pyqt5' 'python-aiohttp' 'python-aiohttp-apispec' 'libtorrent-rasterbar'
-         'python-cryptography' 'python-libnacl' 'python-pony' 'python-lz4'
-         'python-psutil' 'python-networkx' 'python-pyqtgraph' 'python-chardet'
-         'python-cherrypy' 'python-configobj' 'python-netifaces' 'python-bitcoinlib'
-         'python-twisted' 'python-pyopenssl' 'python-pyasn1' 'vlc')
-makedepends=('git')
-#checkdepends=('python-pytest-runner')
-source=("https://github.com/Tribler/tribler/releases/download/v$pkgver/Tribler-v$pkgver.tar.xz")
-sha512sums=('931dff82bb7f83de8d5b63ab8a712cf371a7361a75e8bbb7c490d8b56aa55d1586586ae6e14f28c3c8ad5daf938eb2bbc05b67f74bcc9a3a23e38f8fc909d722')
+_pkgname=tribler
+pkgver=7.5.4
+pkgrel=0
+pkgdesc="P2P/Bittorrent/YouTube client"
+arch=("x86_64")
+url="http://tribler.org"
+license=("GPL3")
+provides=("tribler")
+conflicts=("tribler")
+depends=(libtorrent-rasterbar
+python-aiohttp
+python-aiohttp-apispec
+python-bitcoinlib
+python-chardet
+python-cherrypy
+python-configobj
+python-cryptography
+python-libnacl
+python-lz4
+python-netifaces
+python-networkx
+python-pony
+python-psutil
+python-pyasn1
+python-pyopenssl
+python-pyqt5
+python-pyqtgraph
+python-twisted
+vlc)
+source=(
+https://github.com/Tribler/tribler/releases/download/v$pkgver/Tribler-v$pkgver.tar.xz
+https://github.com/G-P-L/AUR/raw/master/Tribler/Tribler.desktop
+https://github.com/G-P-L/AUR/raw/master/Tribler/tribler.sh)
 
-prepare() {
-  cd $pkgname
-
-  # Fix tribler path
-  sed -i '/PYTHONPATH/d
-          s|/opt/tribler|/usr/share/tribler|g
-          s|ExecStart=.*|ExecStart=tribler|' systemd/anontunnel_helper@.service
-  sed -i 's|/opt/tribler|/usr/share/tribler|g' systemd/tribler.service
-
-  # Fix version info
-  sed -e "s|version_id =.*|version_id = \"${pkgver%_*}\"|g" \
-      -e "s|build_date =.*|build_date = \"$SOURCE_DATE_EPOCH\"|g" \
-        -i src/tribler/tribler-core/tribler_core/version.py
-}
-
-build () {
-  cd $pkgname
-
-  python setup.py build
-}
-
-#check() {
-#  cd $pkgname
-#
-#  python setup.py test
-#}
+sha256sums=('9b9e4707c02426241297a878e6d87b808b1b72197c6f49edccf8d22ca3c81c73'
+            '6b7ae61a0679a468860e5cc735f30185883088b1668c4193fcc05382cdd5173f'
+            'b357229d5decc3ff3d0e5ec25907258b2372a5ee93462950e4283c664cdcc776')
 
 package() {
-  cd $pkgname
+    install -d "$pkgdir/opt/Tribler"
+    install -d "$pkgdir/usr/bin"
+    install -d "$pkgdir/usr/share/applications"
 
-  # Install python modules
-  python setup.py install --root="$pkgdir" --optimize=1
+    # Copy files from the source tarball to /opt/Tribler/.
+    cp -r "$srcdir/tribler/src/"{anydex,pyipv8,tribler-common,tribler-core,tribler-gui,requirements.txt,run_tribler.py} "$pkgdir/opt/Tribler/"
+    cp -r "$srcdir/tribler/build/debian/tribler/usr/share/pixmaps/tribler_big.xpm" "$pkgdir/opt/Tribler/"
+    cp -r "tribler.sh" "$pkgdir/opt/Tribler/"
+        
+    # Copy desktop launcher to /usr/share/applications/.
+    cp -r "Tribler.desktop" "$pkgdir/usr/share/applications/Tribler.desktop"
 
-  # Install binary files/assets
-  install -dm 755 "$pkgdir"/usr/{bin,share/tribler}
-  cp -dr --no-preserve=ownership Tribler "$pkgdir"/usr/share/tribler
-  cp -dr --no-preserve=ownership TriblerGUI "$pkgdir"/usr/share/tribler
-  ln -s Tribler/Core/CacheDB/schema_sdb_v*.sql "$pkgdir"/usr/share/tribler/Tribler
-
-  install -dm 755 "$pkgdir"/usr/share/{applications,pixmaps}
-  install -Dm 644 Tribler/Main/Build/Ubuntu/tribler.desktop "$pkgdir"/usr/share/applications
-  install -Dm 644 Tribler/Main/Build/Ubuntu/tribler.xpm "$pkgdir"/usr/share/pixmaps
-  install -Dm 644 Tribler/Main/Build/Ubuntu/tribler_big.xpm "$pkgdir"/usr/share/pixmaps
-  install -Dm 755 debian/bin/tribler "$pkgdir"/usr/bin
-  install -Dm 644 logger.conf "$pkgdir"/usr/share/tribler/
-  install -Dm 644 run_tribler.py "$pkgdir"/usr/share/tribler/
-  install -Dm 644 check_os.py "$pkgdir"/usr/share/tribler/
-
-  cp -dr --no-preserve=ownership twisted "$pkgdir"/usr/share/tribler
-
-  # Remove test folders
-  rm -rf "$pkgdir"/usr/lib/python*/site-packages/Tribler/Test
-  rm -rf "$pkgdir"/usr/share/tribler/Tribler/Test
-
-  # Install systemd files
-  install -Dm 644 systemd/anontunnel_helper@.service "$pkgdir"/usr/lib/systemd/system/anontunnel_helper@.service
-  install -Dm 644 systemd/tribler.service "$pkgdir"/usr/lib/systemd/system/tribler.service
+    # Create binary symlink to /usr/bin/.
+    ln -s /opt/Tribler/tribler.sh $pkgdir/usr/bin/tribler
 }
-
