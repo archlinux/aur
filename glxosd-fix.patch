@@ -1,0 +1,79 @@
+diff --git a/src/glinject/glinject.c b/src/glinject/glinject.c
+index 6917439..2c8200a 100644
+--- a/src/glinject/glinject.c
++++ b/src/glinject/glinject.c
+@@ -23,6 +23,13 @@
+ #include <stdbool.h>
+ #include <pthread.h>
+ 
++GLINJECT_DEFINE_REAL_SYMBOL(dlopen, void*, (const char *, int));
++
++GLINJECT_DEFINE_REAL_SYMBOL(dlsym, void*, (const void *, const char *));
++
++GLINJECT_DEFINE_REAL_SYMBOL(dlvsym, void*,
++		(const void *, const char *, const char *));
++
+ // Mutex used for synchronising Lua API calls.
+ pthread_mutex_t glinject_mutex = PTHREAD_MUTEX_INITIALIZER;
+ 
+diff --git a/src/glinject/glinject.h b/src/glinject/glinject.h
+index 7f35f95..7603764 100644
+--- a/src/glinject/glinject.h
++++ b/src/glinject/glinject.h
+@@ -21,6 +21,10 @@
+ 		typedef ret (*glinject_##name##_type) param;\
+ 		glinject_##name##_type glinject_real_##name;
+ 
++#define GLINJECT_DEFINE_REAL_SYMBOL_EXT(name, ret, param)\
++		typedef ret (*glinject_##name##_type) param;\
++		extern glinject_##name##_type glinject_real_##name;
++
+ #define GLINJECT_DEFINE_AND_OVERLOAD(name, ret, param)\
+ 		GLINJECT_DEFINE_REAL_SYMBOL(name, ret, param);\
+ 		ret name param
+@@ -41,11 +45,11 @@ typedef __GLXextFuncPtr (*gl_function_provider_type)(const GLubyte* name);
+ /*
+  * Real symbol definitions
+  */
+-GLINJECT_DEFINE_REAL_SYMBOL(dlopen, void*, (const char *, int));
++GLINJECT_DEFINE_REAL_SYMBOL_EXT(dlopen, void*, (const char *, int));
+ 
+-GLINJECT_DEFINE_REAL_SYMBOL(dlsym, void*, (const void *, const char *));
++GLINJECT_DEFINE_REAL_SYMBOL_EXT(dlsym, void*, (const void *, const char *));
+ 
+-GLINJECT_DEFINE_REAL_SYMBOL(dlvsym, void*,
++GLINJECT_DEFINE_REAL_SYMBOL_EXT(dlvsym, void*,
+ 		(const void *, const char *, const char *));
+ 
+ /*
+diff --git a/src/glinject/glx_events.c b/src/glinject/glx_events.c
+index 4012d4b..8bc3857 100644
+--- a/src/glinject/glx_events.c
++++ b/src/glinject/glx_events.c
+@@ -21,6 +21,10 @@ void glXDestroy##name (Display *dpy, type drawable) { \
+ 	glinject_real_glXDestroy##name(dpy, drawable); \
+ }
+ 
++
++GLINJECT_DEFINE_REAL_SYMBOL(glXGetProcAddressARB, __GLXextFuncPtr, (const GLubyte*));
++GLINJECT_DEFINE_REAL_SYMBOL(glXGetProcAddress, __GLXextFuncPtr, (const GLubyte*));
++
+ DEFINE_GLX_DESTRUCTION_HANDLER(GLXPixmap, GLXPixmap)
+ DEFINE_GLX_DESTRUCTION_HANDLER(Pixmap, GLXPixmap)
+ DEFINE_GLX_DESTRUCTION_HANDLER(Pbuffer, GLXPbuffer)
+diff --git a/src/glinject/glx_events.h b/src/glinject/glx_events.h
+index 377cf8c..e5688c9 100644
+--- a/src/glinject/glx_events.h
++++ b/src/glinject/glx_events.h
+@@ -12,9 +12,9 @@
+ #include "glinject.h"
+ typedef __GLXextFuncPtr (*gl_function_provider_type)(const GLubyte* name);
+ 
+-GLINJECT_DEFINE_REAL_SYMBOL(glXGetProcAddressARB, __GLXextFuncPtr, (const GLubyte*));
++GLINJECT_DEFINE_REAL_SYMBOL_EXT(glXGetProcAddressARB, __GLXextFuncPtr, (const GLubyte*));
+ 
+-GLINJECT_DEFINE_REAL_SYMBOL(glXGetProcAddress, __GLXextFuncPtr, (const GLubyte*));
++GLINJECT_DEFINE_REAL_SYMBOL_EXT(glXGetProcAddress, __GLXextFuncPtr, (const GLubyte*));
+ 
+ void glinject_load_glx_event_real_symbols(const char* path);
+ 

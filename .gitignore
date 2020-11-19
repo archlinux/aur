@@ -1,0 +1,5 @@
+*.tar.xz
+/pkg
+/src
+/GLXOSD
+*.tar.gz
