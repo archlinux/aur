@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Autodesk Maya 2020
+Name=Autodesk Maya 2020.3
 GenericName=Maya
-Comment=3D modeling, animation, rendering and post-production
+Comment=Autodesk Maya 3D Animation, Modelling, Simulation and Rendering Software
 Keywords=3d;cg;modeling;animation;painting;sculpting;texturing;rendering;render engine;python;
 Exec=/usr/autodesk/maya2020/bin/maya2020
 Icon=/usr/autodesk/maya2020/icons/mayaico.png
