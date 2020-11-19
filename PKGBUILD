@@ -1,11 +1,11 @@
 # Maintainer: Spider.007 <aur@spider007.net>
 pkgname=graylog
-pkgver=3.3.8
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Graylog is an open source syslog implementation that stores your logs in ElasticSearch and MongoDB"
 arch=('any')
 url="https://www.graylog.org/"
-license=(GPL)
+license=(SSPL)
 depends=('java-runtime-headless=8')
 optdepends=('elasticsearch' mongodb)
 install=graylog.install
@@ -19,12 +19,12 @@ source=(
 	graylog.service
 )
 
-sha256sums=('37c795ffc516115c7d1d1e0fb805f49473a0f6dce86c7a41b90272dd9e3eac78'
+sha256sums=('72582ca0df8ce2dda4ecc4227e632378020cd7e6ad0273450f6e58219b0789b1'
             'SKIP'
             'SKIP')
 
 prepare() {
-	curl -O https://raw.githubusercontent.com/Graylog2/graylog2-server/3.2/UPGRADING.rst
+	curl -O https://raw.githubusercontent.com/Graylog2/graylog2-server/4.0/UPGRADING.rst
 }
 
 package() {
@@ -41,7 +41,7 @@ package() {
 	install -Dm644 "$srcdir/graylog-tmpfiles.conf" usr/lib/tmpfiles.d/graylog-server.conf
 	install -Dm644 "$srcdir/graylog.service" usr/lib/systemd/system/graylog.service
 
-	for f in README.markdown COPYING; do
+	for f in README.markdown LICENSE; do
 		install -Dm644 "$srcdir/$pkgname-${pkgver/_/-}/$f" usr/share/doc/$pkgname/${f##*/}
 	done
 
