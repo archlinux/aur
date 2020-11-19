@@ -2,7 +2,7 @@
 
 pkgname=zecwallet-lite
 pkgver=1.3.3
-pkgrel=2
+pkgrel=1
 pkgdesc="Z-Addr first, Sapling compatible lightwallet client for Zcash"
 arch=('any')
 url="https://github.com/adityapk00/zecwallet-lite"
