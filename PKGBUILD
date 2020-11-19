@@ -6,11 +6,11 @@
 ## Mozc compile option
 _bldtype=Release
 
-_mozcver=2.25.4180.102
-_fcitxver=20201110
+_mozcver=2.25.4190.102
+_fcitxver=20201111
 _utdicdate=20201110
 pkgver=${_mozcver}.${_utdicdate}
-pkgrel=2
+pkgrel=1
 
 pkgname=mozc-ut-unified-full
 true && pkgname=('mozc-ut-unified-full' 'fcitx-mozc-ut-unified-full')
@@ -21,7 +21,7 @@ makedepends=('clang' 'gyp' 'ninja' 'pkg-config' 'python' 'curl' 'gtk2' 'qt5-base
 
 source=(
   https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozc-${_mozcver}.tar.bz2
-  abseil-cpp-20200923.1.tar.gz::https://github.com/abseil/abseil-cpp/archive/20200923.1.tar.gz
+  abseil-cpp-20200923.2.tar.gz::https://github.com/abseil/abseil-cpp/archive/20200923.2.tar.gz
   googletest-release-1.10.0.tar.gz::https://github.com/google/googletest/archive/release-1.10.0.tar.gz
   japanese-usage-dictionary-master.zip::https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/master.zip
   protobuf-3.13.0.tar.gz::https://github.com/protocolbuffers/protobuf/archive/v3.13.0.tar.gz
@@ -33,12 +33,12 @@ source=(
 )
 
 sha1sums=(
-  '96f5f005c8083533ba42c70570e85c5ca1a207a3'
-  '824ae3a8fdd2c2bf2e667212e41312ffb2560640'
+  'adf4968191ea1f9837b1f9d5d0aa47ac1e2ddee2'
+  '1dd3f0a937c3678437646d26ca6784bd6a9b2b26'
   '9c89be7df9c5e8cb0bc20b3c4b39bf7e82686770'
   'bf15e8ff92cbde3c102cbf4ad50c2090a7165495'
   '2160cfb354148da3fb3891b267c2edc7e3eb5c30'
-  '8978279546e0a7297c6baa74ec7a7e437332a5c6'
+  '38de276494e299dc7e4816dfd95403fd0fdf8601'
   '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d'
   'SKIP'
   'SKIP'
@@ -49,7 +49,7 @@ prepare() {
   cd mozc-${_mozcver}
   rm -rf src/third_party
   mkdir src/third_party
-  mv ${srcdir}/abseil-cpp-20200923.1 src/third_party/abseil-cpp
+  mv ${srcdir}/abseil-cpp-20200923.2 src/third_party/abseil-cpp
   mv ${srcdir}/googletest-release-1.10.0 src/third_party/gtest
   mv ${srcdir}/japanese-usage-dictionary-master src/third_party/japanese_usage_dictionary
   mv ${srcdir}/protobuf-3.13.0 src/third_party/protobuf
