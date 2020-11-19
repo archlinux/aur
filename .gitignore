@@ -1,0 +1,5 @@
+src/
+pkg/
+squirrel-battle/
+*.zst
+*.tar.gz
