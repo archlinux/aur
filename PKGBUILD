@@ -1,7 +1,7 @@
 # Maintainer: Pavel Sibal <entexsoft@gmail.com>
 pkgname=xfce4-theme-switcher
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="simple application for working with the xfce4 desktop themes."
 arch=('any')
 url="https://gitlab.com/linux-stuffs/xfce4-theme-switcher"
@@ -11,10 +11,10 @@ groups=('xfce4-goodies' 'xfce4-goodies-devel')
 
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-depends=('bash' 'xfce4-whiskermenu-plugin' 'coreutils' 'grep' 'sed' 'python3' 'conky' 'plank' 'xfce4-panel' 'gtk3')
+depends=('bash' 'xfce4-whiskermenu-plugin' 'coreutils' 'grep' 'sed' 'python3' 'conky' 'plank' 'xfce4-panel' 'gtk3' 'python-gobject>=3.38')
 options=('!strip' '!emptydirs')
 
-source=('https://gitlab.com/linux-stuffs/xfce4-theme-switcher/raw/master/distrib/xfce4-theme-switcher-0.1-2.tar.gz')
+source=('https://gitlab.com/linux-stuffs/xfce4-theme-switcher/raw/master/distrib/xfce4-theme-switcher-0.1-3.tar.gz')
 sha256sums=('SKIP')
 
 package() {
