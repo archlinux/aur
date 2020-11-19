@@ -3,7 +3,7 @@
 pkgname=facebook-desktop-app
 _pkgname=Facebook-Desktop-App
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Facebook Desktop built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
 url="https://www.facebook.com"
