@@ -1,6 +1,6 @@
 pkgbase = mozc-ut-unified
-	pkgver = 2.25.4180.102.20201110
-	pkgrel = 2
+	pkgver = 2.25.4190.102.20201110
+	pkgrel = 1
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = i686
 	arch = x86_64
@@ -18,26 +18,26 @@ pkgbase = mozc-ut-unified
 	makedepends = glib2
 	makedepends = bzip2
 	makedepends = unzip
-	source = https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozc-2.25.4180.102.tar.bz2
-	source = abseil-cpp-20200923.1.tar.gz::https://github.com/abseil/abseil-cpp/archive/20200923.1.tar.gz
+	source = https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozc-2.25.4190.102.tar.bz2
+	source = abseil-cpp-20200923.2.tar.gz::https://github.com/abseil/abseil-cpp/archive/20200923.2.tar.gz
 	source = googletest-release-1.10.0.tar.gz::https://github.com/google/googletest/archive/release-1.10.0.tar.gz
 	source = japanese-usage-dictionary-master.zip::https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/master.zip
 	source = protobuf-3.13.0.tar.gz::https://github.com/protocolbuffers/protobuf/archive/v3.13.0.tar.gz
-	source = https://osdn.net/users/utuhiro/pf/utuhiro/dl/fcitx-mozc-20201110.patch
+	source = https://osdn.net/users/utuhiro/pf/utuhiro/dl/fcitx-mozc-20201111.patch
 	source = https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
+	source = https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozcdic-ut-20201110.1.tar.bz2
 	source = https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip
 	source = https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
-	source = https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F26%2F26897%2Fmozcdic-ut-20201110.1.tar.bz2
-	sha1sums = 96f5f005c8083533ba42c70570e85c5ca1a207a3
-	sha1sums = 824ae3a8fdd2c2bf2e667212e41312ffb2560640
+	sha1sums = adf4968191ea1f9837b1f9d5d0aa47ac1e2ddee2
+	sha1sums = 1dd3f0a937c3678437646d26ca6784bd6a9b2b26
 	sha1sums = 9c89be7df9c5e8cb0bc20b3c4b39bf7e82686770
 	sha1sums = bf15e8ff92cbde3c102cbf4ad50c2090a7165495
 	sha1sums = 2160cfb354148da3fb3891b267c2edc7e3eb5c30
-	sha1sums = 8978279546e0a7297c6baa74ec7a7e437332a5c6
+	sha1sums = 38de276494e299dc7e4816dfd95403fd0fdf8601
 	sha1sums = 883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d
-	sha1sums = SKIP
-	sha1sums = SKIP
 	sha1sums = e91e7f67c48f59cd67787e5e6af98946e9a53b1c
+	sha1sums = SKIP
+	sha1sums = SKIP
 
 pkgname = mozc-ut-unified
 	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with NEologd UT dictionary and UT2 dictionary (default dictionaries.)
@@ -60,7 +60,7 @@ pkgname = fcitx-mozc-ut-unified
 	pkgdesc = Fcitx engine module for Mozc with NEologd UT dictionary and UT2 dictionary (default dictionaries.)
 	arch = i686
 	arch = x86_64
-	depends = mozc-ut-unified=2.25.4180.102.20201110
+	depends = mozc-ut-unified=2.25.4190.102.20201110
 	depends = fcitx
 	conflicts = fcitx-mozc
 	conflicts = mozc
