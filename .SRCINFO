@@ -1,7 +1,7 @@
 pkgbase = giph
 	pkgdesc = video recorder that records the desktop, a window or a selection
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/phisch/giph
 	arch = any
 	license = MIT
@@ -14,8 +14,8 @@ pkgbase = giph
 	optdepends = procps-ng: for pgrep used in the --stop flag
 	provides = giph
 	conflicts = giph
-	source = https://github.com/phisch/giph/archive/1.1.tar.gz
-	sha256sums = 8aea6c6dd59e66e8911b9aab04fe71fa995ffe885684113586be37944ceb7982
+	source = https://github.com/phisch/giph/archive/1.1.1.tar.gz
+	sha256sums = 138ee2b6a023a2d61ff8ad3d0be0228914140d2d0f18d90202ab5e46bec3a22a
 
 pkgname = giph
 
