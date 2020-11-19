@@ -1,17 +1,16 @@
 pkgbase = omniawrite
 	pkgdesc = A next-generation cross-platform plain text editor engineered for creative writing
-	pkgver = 1.0.4
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://omniawrite.com
 	arch = x86_64
 	license = custom:omniawrite
 	depends = gtk3
-	depends = libxss
 	depends = nss
-	source = omniawrite-1.0.4.rpm::https://external.omniawrite.com/download/rpm
+	source = omniawrite-1.2.0.rpm::https://external.omniawrite.com/download/rpm
 	source = LICENSE
-	sha256sums = 946ed60e34661da1cdd5247d3b40faf817db61bcf75ab9e224b8f58f5d40156d
-	sha256sums = SKIP
+	sha256sums = 85f139a4e4e45fe711e39ab316d6efab7a8c94615f97de8ed47dba7a00b4868b
+	sha256sums = dbc3c7b9f55c9230e503fcafce4a0453fbbcfcca2e598f74e5fb29b538671402
 
 pkgname = omniawrite
 
