@@ -4,3 +4,4 @@ git-secret-*
 pkg
 src
 *.orig
+LICENSE
