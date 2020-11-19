@@ -3,8 +3,8 @@
 pkgname=komikku
 _author=valos
 _gitname=Komikku
-pkgver=0.21.1
-pkgrel=2
+pkgver=0.22.1
+pkgrel=1
 pkgdesc='Online/offline Manga reader for GNOME, built for the Librem 5'
 arch=(any)
 url=https://gitlab.com/valos/Komikku
@@ -30,7 +30,7 @@ makedepends=(
   meson
 )
 source=("https://gitlab.com/$_author/$_gitname/-/archive/v$pkgver/$_gitname-v$pkgver.tar.gz")
-sha256sums=('eacbb0bc7f1436def568810da52f29afc9ec26c1354b184a848e59343deffbbd')
+sha256sums=('c09726b0bf7f51412e98b193389d8de9554ec807916c99c170cda3b9e362fc6c')
 
 prepare() {
   cd $_gitname-v$pkgver
