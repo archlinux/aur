@@ -2,14 +2,14 @@
 
 pkgname=platon
 pkgver=171020
-pkgrel=1
+pkgrel=2
 pkgdesc="A Multipurpose Crystallographic Tool"
 arch=("x86_64")
-url="http://www.cryst.chem.uu.nl/spek/platon"
+url="https://www.platonsoft.nl"
 license=('custom')
 depends=('gcc-libs' 'libx11')
 makedepends=('gcc-fortran' 'gzip' 'tar')
-source=("https://www.platonsoft.nl/spek/xraysoft/unix/$pkgname.tar.gz")
+source=($pkgname-$pkgver.tar.gz::"$url/spek/xraysoft/unix/$pkgname.tar.gz")
 sha256sums=('SKIP')
 
 prepare() {
