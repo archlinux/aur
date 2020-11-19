@@ -1,0 +1,33 @@
+From c56af73d3d142125e0712028be0b9e179e0ff957 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fabiano=20Fid=C3=AAncio?= <fidencio@redhat.com>
+Date: Wed, 18 Nov 2020 17:42:04 +0100
+Subject: [PATCH] virtcontainers: Don't set Ctty
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The https://go-review.googlesource.com/c/go/+/231638/ commit on Golang
+introduced a failure on Kata Containers when the runtime is built with
+golang 15.2+.
+
+Fixes: #2982
+
+Signed-off-by: Fabiano Fidêncio <fidencio@redhat.com>
+---
+ virtcontainers/shim.go | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/virtcontainers/shim.go b/virtcontainers/shim.go
+index 8ec7458b6..d0c891dd5 100644
+--- a/virtcontainers/shim.go
++++ b/virtcontainers/shim.go
+@@ -208,9 +208,6 @@ func startShim(args []string, params ShimParams) (int, error) {
+ 		cmd.Stderr = f
+ 		// Create Session
+ 		cmd.SysProcAttr.Setsid = true
+-		// Set Controlling terminal to Ctty
+-		cmd.SysProcAttr.Setctty = true
+-		cmd.SysProcAttr.Ctty = int(f.Fd())
+ 	}
+ 	defer func() {
+ 		if f != nil {
