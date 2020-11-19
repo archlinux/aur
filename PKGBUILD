@@ -51,7 +51,7 @@ _major=5.9
 _minor=9
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,7 +72,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v5/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v6-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v6-sep/0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch"
         "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
@@ -313,7 +314,8 @@ sha512sums=('8d61c3cea48862e394a9d54902f7845f604151ad56f796e2d371a4f5b55560d5717
             'SKIP'
             '12a2d17f719edefc19078dc64badf7049132e053bc242546c83063400dc28a7f3f2c81c5f6d8d375e4a176659d69dd4da08d141f67e835fa8aca154e7d1c026e'
             '96427eecb0078ce57a40ef4ee78d3576216f27390ba6b9dfbb851f4d969558a82b698cc633217ad8f6b9d991e7eaebd613ed4bd5741cafe7fa40b2502dacd43a'
-            '31832ebf999c88e86a00e01261d3d8ebbe6577c4a2619714bc36d58d97d110c9ebf616ed7d6a6509dd6e995256a54975ff0b0d5fed9f6e14381a9688857e51bf'
+            '495ff776eac1fd43a87ab6099d1cb7737b96038e9d28c42bf554c58b0f2632ac383aea0551e9700988a5cd4ed20b9127c8a9ac298ff0616cee6b0e7fd21d1469'
+            'da9f7cf27a3932ad12f971cd6637a01e93a381c1762cbaf406c125467267bf27ea4ae753071c2a111105e7b8d4d79d1a7b9b153d11f7faca7ecd921b3ae36efe'
             'b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6'
             'defb54e4f0dc5aeeb9a927b6b73d870d697c60d21692429ee318a5ecb39e080a1aadc2b0a586db393014ba264cfc5d58ddf3929090259aa77789c7e2210edd09')
 
