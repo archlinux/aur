@@ -2,7 +2,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=qt5-lottie
-_qtver=5.15.1
+_qtver=5.15.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('845987860c7990035a7cd9a0e7581d210f786e551882df8b5be69f08987f2ba0')
+sha256sums=('cec6095ab8f714e609d2ad3ea8c4fd819461ce8793adc42abe37d0f6dc432517')
 
 prepare() {
   mkdir -p build
