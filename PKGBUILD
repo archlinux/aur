@@ -2,7 +2,7 @@
 
 pkgname=giph
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='video recorder that records the desktop, a window or a selection'
 url='https://github.com/phisch/giph'
 license=('MIT')
@@ -15,7 +15,7 @@ makedepends=('git')
 provides=('giph')
 conflicts=('giph')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('138ee2b6a023a2d61ff8ad3d0be0228914140d2d0f18d90202ab5e46bec3a22a')
+sha256sums=('09fc964cc3cfcd942d5d2983667b65bf126fbfbba53cdcfb80fe3d87d1240667')
 
 package() {
     cd "$pkgname-${pkgver}"
