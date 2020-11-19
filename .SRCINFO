@@ -1,0 +1,13 @@
+pkgbase = validdesk
+	pkgdesc = Valid Desk is a free signature tool developed by Intesi Group for all users who need to digitally sign documents from their desktop quickly and easily.
+	pkgver = 1.0_338
+	pkgrel = 1
+	url = https://www.intesigroup.com/en/validdesk/
+	arch = x86_64
+	noextract = validdesk-1.0_338-x86_64.AppImage
+	options = !strip
+	source_x86_64 = https://www.intesigroup.com/wp-content/apps/pub/validdesk-1.0_338-x86_64.AppImage
+	sha256sums_x86_64 = 4c7f0b06fbabfe7964b7a98b02de12d7cdb7b942d93be8e8a74398a1a9f8fc76
+
+pkgname = validdesk
+
