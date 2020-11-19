@@ -1,8 +1,8 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=fmedia-bin
-pkgver=1.17
-pkgrel=2
+pkgver=1.20
+pkgrel=1
 pkgdesc='Fast media player/recorder/converter'
 arch=('i686' 'x86_64')
 url='https://stsaz.github.io/fmedia'
@@ -14,7 +14,7 @@ depends=('gtk3'
          'libpulse')
 makedepends=('gendesk' 'imagemagick')
 source=("${pkgname}-${pkgver}.tar.xz::https://github.com/stsaz/fmedia/releases/download/v${pkgver}/fmedia-${pkgver}-linux-amd64.tar.xz")
-sha256sums=('d2267fe868f38c4387eadab626a9b740cdf831601126db5f067f46c5b3a9946a')
+sha256sums=('a181c4d0d1b882892a0aa32eb9097b329efc9e1cf08dc095996ca388d5fc02f0')
 
 package() {
   install -Dm755 ${srcdir}/fmedia-1/fmedia -t "${pkgdir}/opt/fmedia"
