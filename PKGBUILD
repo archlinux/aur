@@ -1,7 +1,13 @@
 # Maintainer: Deepjyoti <deep.barman30@gmail.com>
 pkgname=python-youtube-search-git
+
+pkgver() {
+  cd "$pkgname"
+  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 pkgver=1.1.0
 pkgrel=0
+
 pkgdesc="Perform YouTube video searches without the API"
 arch=("any")
 url="https://github.com/joetats/youtube_search"
@@ -12,8 +18,8 @@ depends=(
 		)
 makedepends=("git" "python-setuptools")
 optdepends=()
-provides=()
-conflicts=()
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()

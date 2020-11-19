@@ -9,6 +9,8 @@ pkgbase = python-youtube-search-git
 	makedepends = python-setuptools
 	depends = python>=3.6
 	depends = python-requests
+	provides = python-youtube-search
+	conflicts = python-youtube-search
 	source = https://github.com/joetats/youtube_search/archive/master.zip
 	md5sums = SKIP
 
