@@ -2,7 +2,7 @@
 
 pkgname=vrr-app
 pkgver=1.0
-pkgrel=2
+pkgrel=4
 pkgdesc="VRR Fahrplanauskunft built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
 url="https://www.facebook.com"
