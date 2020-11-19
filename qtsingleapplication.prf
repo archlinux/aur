@@ -1,0 +1,5 @@
+INCLUDEPATH *= $$[QT_INSTALL_HEADERS]/QtSolutions
+LIBS *= -lQt5olutions_SingleApplication-2.6
+QT *= widgets
+QT *= network
+CONFIG *= qtlockedfile

@@ -1,0 +1,3 @@
+INCLUDEPATH *= $$[QT_INSTALL_HEADERS]/QtSolutions
+LIBS *= -lQt5olutions_SingleCoreApplication-2.6
+QT *= network

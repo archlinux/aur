@@ -1,0 +1,26 @@
+pkgbase = qt5-singleapplication
+	pkgdesc = Qt library to start applications only once per user
+	pkgver = 2.6_20170914
+	pkgrel = 1
+	url = https://doc.qt.io/archives/qtextended4.4/qtopiadesktop/qtsingleapplication.html
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = BSD
+	depends = qt5-base
+	source = https://github.com/qtproject/qt-solutions/archive/a8dda66d7738cde9042b87db27993f710ae3eeeb.tar.gz
+	source = qtsingleapplication-build-qtsinglecoreapplication.patch
+	source = qtsingleapplication-qupzilla.patch
+	source = qtsingleapplication.prf
+	source = qtsinglecoreapplication.prf
+	sha512sums = SKIP
+	sha512sums = a459cc42e98cd6b1e58d464fb28861ed4453b9d2f96a11cd8ac68e06c74083ef05452aabe08c4625229aa19de865522cec3cb994504e9eff796ee1033bc38ad2
+	sha512sums = d8b2b27380a407b84a461fa93ca68751f503a495200e2204b576e6f27b9768ab6e77a1a47c63c90fa5803a9a055b7c0546f8ae4aa9f0fa5cc5969af3e889d4f2
+	sha512sums = 9495604598221ed94a0d5be486468bc0fc936bbe8a22d3c7c23738d48e67a5516bd496e24b7678c1a05ed7b8e3cd0578d6272629e23cd74c4a360f20cf3b663b
+	sha512sums = 580fbaf9c7e0c9813e0aeb2c62522aa1c2baccbf384b3ca780441313612b9be0e0df220cd8b186ec7a0b5d30aaed8249f7c9ebb93ef8e0ec46793d4eaf2a9bf7
+
+pkgname = qt5-singleapplication
+
+pkgname = qt5-singlecoreapplication
+	pkgdesc = Qt library to start applications only once per user (for non-GUI applications)
+

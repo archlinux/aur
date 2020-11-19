@@ -1,0 +1,132 @@
+# Features for unbundling in Qupzilla, https://github.com/QupZilla/qupzilla/issues/1503
+
+diff -rup qt-solutions.orig/qtsingleapplication/src/qtlocalpeer.cpp qt-solutions.new/qtsingleapplication/src/qtlocalpeer.cpp
+--- qt-solutions.orig/qtsingleapplication/src/qtlocalpeer.cpp	2017-09-14 11:21:57.000000000 -0300
++++ qt-solutions.new/qtsingleapplication/src/qtlocalpeer.cpp	2020-11-19 13:32:40.561575205 -0300
+@@ -169,6 +169,10 @@ bool QtLocalPeer::sendMessage(const QStr
+     return res;
+ }
+ 
++void QtLocalPeer::removeLockedFile()
++{
++    lockFile.remove();
++}
+ 
+ void QtLocalPeer::receiveConnection()
+ {
+diff -rup qt-solutions.orig/qtsingleapplication/src/qtlocalpeer.h qt-solutions.new/qtsingleapplication/src/qtlocalpeer.h
+--- qt-solutions.orig/qtsingleapplication/src/qtlocalpeer.h	2017-09-14 11:21:57.000000000 -0300
++++ qt-solutions.new/qtsingleapplication/src/qtlocalpeer.h	2020-11-19 13:33:15.771796746 -0300
+@@ -57,6 +57,7 @@ public:
+     bool sendMessage(const QString &message, int timeout);
+     QString applicationId() const
+         { return id; }
++    void removeLockedFile();
+ 
+ Q_SIGNALS:
+     void messageReceived(const QString &message);
+diff -rup qt-solutions.orig/qtsingleapplication/src/qtsingleapplication.cpp qt-solutions.new/qtsingleapplication/src/qtsingleapplication.cpp
+--- qt-solutions.orig/qtsingleapplication/src/qtsingleapplication.cpp	2017-09-14 11:21:57.000000000 -0300
++++ qt-solutions.new/qtsingleapplication/src/qtsingleapplication.cpp	2020-11-19 13:36:09.492889864 -0300
+@@ -153,6 +153,8 @@ void QtSingleApplication::sysInit(const
+ 
+ QtSingleApplication::QtSingleApplication(int &argc, char **argv, bool GUIenabled)
+     : QApplication(argc, argv, GUIenabled)
++    , peer(0)
++    , actWin(0)
+ {
+     sysInit();
+ }
+@@ -166,6 +168,8 @@ QtSingleApplication::QtSingleApplication
+ 
+ QtSingleApplication::QtSingleApplication(const QString &appId, int &argc, char **argv)
+     : QApplication(argc, argv)
++    , peer(0)
++    , actWin(0)
+ {
+     sysInit(appId);
+ }
+@@ -239,9 +243,13 @@ QtSingleApplication::QtSingleApplication
+ 
+ bool QtSingleApplication::isRunning()
+ {
+-    return peer->isClient();
++    return (peer && peer->isClient());
+ }
+ 
++void QtSingleApplication::setAppId(const QString &id)
++{
++    sysInit(id);
++}
+ 
+ /*!
+     Tries to send the text \a message to the currently running
+@@ -258,7 +266,7 @@ bool QtSingleApplication::isRunning()
+ */
+ bool QtSingleApplication::sendMessage(const QString &message, int timeout)
+ {
+-    return peer->sendMessage(message, timeout);
++    return (peer && peer->sendMessage(message, timeout));
+ }
+ 
+ 
+@@ -268,7 +276,7 @@ bool QtSingleApplication::sendMessage(co
+ */
+ QString QtSingleApplication::id() const
+ {
+-    return peer->applicationId();
++    return (peer ? peer->applicationId() : QString());
+ }
+ 
+ 
+@@ -287,6 +295,10 @@ QString QtSingleApplication::id() const
+ void QtSingleApplication::setActivationWindow(QWidget* aw, bool activateOnMessage)
+ {
+     actWin = aw;
++    if (!peer) {
++        return;
++    }
++
+     if (activateOnMessage)
+         connect(peer, SIGNAL(messageReceived(const QString&)), this, SLOT(activateWindow()));
+     else
+@@ -305,6 +317,11 @@ QWidget* QtSingleApplication::activation
+     return actWin;
+ }
+ 
++void QtSingleApplication::removeLockFile()
++{
++    peer->removeLockedFile();
++}
++
+ 
+ /*!
+   De-minimizes, raises, and activates this application's activation window.
+@@ -326,6 +343,7 @@ void QtSingleApplication::activateWindow
+         actWin->setWindowState(actWin->windowState() & ~Qt::WindowMinimized);
+         actWin->raise();
+         actWin->activateWindow();
++        actWin->setFocus();
+     }
+ }
+ 
+diff -rup qt-solutions.orig/qtsingleapplication/src/qtsingleapplication.h qt-solutions.new/qtsingleapplication/src/qtsingleapplication.h
+--- qt-solutions.orig/qtsingleapplication/src/qtsingleapplication.h	2017-09-14 11:21:57.000000000 -0300
++++ qt-solutions.new/qtsingleapplication/src/qtsingleapplication.h	2020-11-19 13:23:40.558177282 -0300
+@@ -78,6 +78,7 @@ public:
+ #endif // QT_VERSION < 0x050000
+ 
+     bool isRunning();
++    void setAppId(const QString &id);
+     QString id() const;
+ 
+     void setActivationWindow(QWidget* aw, bool activateOnMessage = true);
+@@ -87,6 +88,8 @@ public:
+     void initialize(bool dummy = true)
+         { isRunning(); Q_UNUSED(dummy) }
+ 
++    void removeLockFile();
++
+ public Q_SLOTS:
+     bool sendMessage(const QString &message, int timeout = 5000);
+     void activateWindow();

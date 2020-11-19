@@ -1,0 +1,79 @@
+# Proposed upstream in https://codereview.qt-project.org/#/c/92416/
+
+diff -rupN qt-solutions.orig/qtsingleapplication/buildlib/buildcorelib.pro qt-solutions.new/qtsingleapplication/buildlib/buildcorelib.pro
+--- qt-solutions.orig/qtsingleapplication/buildlib/buildcorelib.pro	1969-12-31 21:00:00.000000000 -0300
++++ qt-solutions.new/qtsingleapplication/buildlib/buildcorelib.pro	2020-11-19 11:21:45.644066793 -0300
+@@ -0,0 +1,13 @@
++TEMPLATE=lib
++CONFIG += qt dll qtsinglecoreapplication-buildlib
++mac:CONFIG += absolute_library_soname
++win32|mac:!wince*:!win32-msvc:!macx-xcode:CONFIG += debug_and_release build_all
++include(../src/qtsinglecoreapplication.pri)
++TARGET = $$QTSINGLECOREAPPLICATION_LIBNAME
++DESTDIR = $$QTSINGLEAPPLICATION_LIBDIR
++win32 {
++    DLLDESTDIR = $$[QT_INSTALL_BINS]
++    QMAKE_DISTCLEAN += $$[QT_INSTALL_BINS]\\$${QTSINGLECOREAPPLICATION_LIBNAME}.dll
++}
++target.path = $$DESTDIR
++INSTALLS += target
+diff -rupN qt-solutions.orig/qtsingleapplication/common.pri qt-solutions.new/qtsingleapplication/common.pri
+--- qt-solutions.orig/qtsingleapplication/common.pri	2017-09-14 11:21:57.000000000 -0300
++++ qt-solutions.new/qtsingleapplication/common.pri	2020-11-19 11:21:45.644066793 -0300
+@@ -5,10 +5,12 @@ greaterThan(QT_MAJOR_VERSION, 5)|\
+   if(equals(QT_MAJOR_VERSION, 5):greaterThan(QT_MINOR_VERSION, 4))|\
+   if(equals(QT_MAJOR_VERSION, 5):equals(QT_MINOR_VERSION, 4):greaterThan(QT_PATCH_VERSION, 1)) {
+     QTSINGLEAPPLICATION_LIBNAME = $$qt5LibraryTarget(QtSolutions_SingleApplication-head)
++    QTSINGLECOREAPPLICATION_LIBNAME = $$qt5LibraryTarget(QtSolutions_SingleCoreApplication-head)
+ } else {
+     QTSINGLEAPPLICATION_LIBNAME = $$qtLibraryTarget(QtSolutions_SingleApplication-head)
++    QTSINGLECOREAPPLICATION_LIBNAME = $$qtLibraryTarget(QtSolutions_SingleCoreApplication-head)
+ }
+ TEMPLATE -= fakelib
+ 
+ QTSINGLEAPPLICATION_LIBDIR = $$PWD/lib
+-unix:qtsingleapplication-uselib:!qtsingleapplication-buildlib:QMAKE_RPATHDIR += $$QTSINGLEAPPLICATION_LIBDIR
++QTSINGLECOREAPPLICATION_LIBDIR = $$PWD/lib
+diff -rupN qt-solutions.orig/qtsingleapplication/qtsingleapplication.pro qt-solutions.new/qtsingleapplication/qtsingleapplication.pro
+--- qt-solutions.orig/qtsingleapplication/qtsingleapplication.pro	2017-09-14 11:21:57.000000000 -0300
++++ qt-solutions.new/qtsingleapplication/qtsingleapplication.pro	2020-11-19 11:21:45.644066793 -0300
+@@ -1,5 +1,4 @@
+ TEMPLATE=subdirs
+ CONFIG += ordered
+ include(common.pri)
+-qtsingleapplication-uselib:SUBDIRS=buildlib
+-SUBDIRS+=examples
++qtsingleapplication-uselib:SUBDIRS=buildlib/buildlib.pro buildlib/buildcorelib.pro
+diff -rupN qt-solutions.orig/qtsingleapplication/QtSingleCoreApplication qt-solutions.new/qtsingleapplication/QtSingleCoreApplication
+--- qt-solutions.orig/qtsingleapplication/QtSingleCoreApplication	1969-12-31 21:00:00.000000000 -0300
++++ qt-solutions.new/qtsingleapplication/QtSingleCoreApplication	2020-11-19 11:21:45.644066793 -0300
+@@ -0,0 +1 @@
++#include "qtsinglecoreapplication.h"
+diff -rupN qt-solutions.orig/qtsingleapplication/src/qtsinglecoreapplication.pri qt-solutions.new/qtsingleapplication/src/qtsinglecoreapplication.pri
+--- qt-solutions.orig/qtsingleapplication/src/qtsinglecoreapplication.pri	2017-09-14 11:21:57.000000000 -0300
++++ qt-solutions.new/qtsingleapplication/src/qtsinglecoreapplication.pri	2020-11-19 12:06:03.841115300 -0300
+@@ -1,10 +1,18 @@
+-INCLUDEPATH	+= $$PWD
+-DEPENDPATH      += $$PWD
+-HEADERS		+= $$PWD/qtsinglecoreapplication.h $$PWD/qtlocalpeer.h
+-SOURCES		+= $$PWD/qtsinglecoreapplication.cpp $$PWD/qtlocalpeer.cpp
++include(../common.pri)
++INCLUDEPATH += $$PWD
++DEPENDPATH += $$PWD
+ 
+ QT *= network
++QT -= gui
+ 
+-win32:contains(TEMPLATE, lib):contains(CONFIG, shared) {
+-    DEFINES += QT_QTSINGLECOREAPPLICATION_EXPORT=__declspec(dllexport)
++qtsinglecoreapplication-uselib:!qtsinglecoreapplication-buildlib {
++    LIBS += -L$$QTSINGLECOREAPPLICATION_LIBDIR -l$$QTSINGLECOREAPPLICATION_LIBNAME
++} else {
++    SOURCES += $$PWD/qtsinglecoreapplication.cpp $$PWD/qtlocalpeer.cpp
++    HEADERS += $$PWD/qtsinglecoreapplication.h $$PWD/qtlocalpeer.h
++}
++
++win32 {
++    contains(TEMPLATE, lib):contains(CONFIG, shared):DEFINES += QT_QTSINGLECOREAPPLICATION_EXPORT
++    else:qtsinglecoreapplication-uselib:DEFINES += QT_QTSINGLECOREAPPLICATION_IMPORT
+ }
