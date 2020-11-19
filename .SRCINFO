@@ -10,6 +10,12 @@ pkgbase = glxosd-fix-git
 	makedepends = gcc
 	makedepends = git
 	makedepends = boost
+	source = git://github.com/nickguletskii/GLXOSD.git
+	source = GLXOSD32::git://github.com/Phitherek/GLXOSD.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = glxosd-fix-git
 	depends = mesa
 	depends = glu
 	depends = fontconfig
@@ -18,8 +24,14 @@ pkgbase = glxosd-fix-git
 	depends = libxext
 	provides = glxosd
 	conflicts = glxosd
-	source = git://github.com/nickguletskii/GLXOSD.git
-	md5sums = SKIP
 
-pkgname = glxosd-fix-git
+pkgname = lib32-glxosd-fix-git
+	depends = lib32-mesa
+	depends = lib32-glu
+	depends = lib32-fontconfig
+	depends = lib32-freetype2
+	depends = lib32-lm_sensors
+	depends = lib32-libxext
+	provides = lib32-glxosd
+	conflicts = lib32-glxosd
 
