@@ -10,7 +10,7 @@ _mozcver=2.25.4190.102
 _fcitxver=20201111
 _utdicdate=20201110
 pkgver=${_mozcver}.${_utdicdate}
-pkgrel=1
+pkgrel=2
 
 pkgname=mozc-ut-unified-full
 true && pkgname=('mozc-ut-unified-full' 'fcitx-mozc-ut-unified-full')
@@ -29,7 +29,7 @@ source=(
   https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
   https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip
   https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
-  'https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F26%2F26898%2Fmozcdic-ut-20201110.1.tar.bz2'
+  'https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F26%2F26940%2Fmozcdic-ut-20201110.2.tar.bz2'
 )
 
 sha1sums=(
@@ -42,7 +42,7 @@ sha1sums=(
   '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d'
   'SKIP'
   'SKIP'
-  'cce854aec2506ff17499b3b3a75a01fbecc50066'
+  'a490dc446223547c88b47fa3ec267e7629a34af0'
 )
 
 prepare() {
