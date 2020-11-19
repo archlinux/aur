@@ -1,0 +1,14 @@
+pkgbase = ecbuild-git
+	pkgdesc = ecbuild - ECMWF build system
+	pkgver = 3.4.1.r0.gd4347cf
+	pkgrel = 1
+	url = https://github.com/ecmwf/ecbuild
+	arch = any
+	license = APACHE
+	makedepends = git
+	makedepends = cmake
+	source = git+https://github.com/ecmwf/ecbuild#branch=master
+	sha256sums = SKIP
+
+pkgname = ecbuild-git
+
