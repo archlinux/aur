@@ -2,9 +2,9 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=hdf5-java
-_pkgname=hdf5
 pkgver=1.12.0
-pkgrel=1
+_pkgver=${pkgver%.*}
+pkgrel=2
 pkgdesc="General purpose library and file format for storing scientific data , w/java bindings"
 arch=(x86_64)
 url="https://www.hdfgroup.org/hdf5"
@@ -14,67 +14,39 @@ makedepends=(cmake time gcc-fortran jre-openjdk)
 replaces=(hdf5-cpp-fortran)
 provides=(hdf5-cpp-fortran hdf5)
 conflicts=(hdf5)
-options=(staticlibs)
-source=("https://support.hdfgroup.org/ftp/HDF5/releases/${_pkgname}-${pkgver:0:4}/${_pkgname}-${pkgver/_/-}/src/${_pkgname}-${pkgver/_/-}.tar.bz2"
+options=('staticlibs')
+source=("${pkgname}-${pkgver}.tar.gz::https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-${_pkgver}/hdf5-${pkgver}/src/CMake-hdf5-${pkgver}.tar.gz"
         hdf5-1.12.0-compat-1.6.patch)
-sha256sums=('97906268640a6e9ce0cde703d5a71c9ac3092eded729591279bf2e3ca9765f61'
+sha256sums=('01b9c01c45cc8c66da86e69c510e17f3cff0706a65d8683cd86af405eaf75397'
             '72ad497c56760bb3af8193c88d3fa264125829850b843697de55d934c56f7f44')
 
-build() {
-    # Crazy workaround: run CMake to generate pkg-config file
-    mkdir -p build && cd build
-    JAVADOC='javadoc -Xdoclint:none' \
-    cmake ../${_pkgname}-${pkgver/_/-} \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DBUILD_SHARED_LIBS=ON \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DHDF5_BUILD_HL_LIB=ON \
-        -DHDF5_BUILD_CPP_LIB=ON \
-        -DHDF5_BUILD_FORTRAN=ON \
-        -DHDF5_BUILD_JAVA=ON \
-        -DHDF5_ENABLE_Z_LIB_SUPPORT=ON \
-        -DHDF5_ENABLE_SZIP_SUPPORT=ON \
-        -DHDF5_ENABLE_SZIP_ENCODING=ON
-    # But don’t build with it, it’s quite broken
-    cd ../${_pkgname}-${pkgver/_/-}
-    ./configure \
-        JAVADOC='javadoc -Xdoclint:none' \
-        --prefix=/usr \
-        --docdir=/usr/share/doc/hdf5/ \
-        --with-examplesdir='${DESTDIR}/${prefix}/share/doc/hdf5/examples' \
-        --enable-static \
-        --disable-sharedlib-rpath \
-        --enable-build-mode=production \
-        --enable-hl \
-        --enable-cxx \
-        --enable-fortran \
-        --enable-java \
-        --with-pic \
-        --with-zlib \
-        --with-szlib
-    make
+prepare(){
+  cd CMake-hdf5-${pkgver}
+
+  # enable java
+  sed -i 's,^set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_JAVA:BOOL=OFF"),#set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_JAVA:BOOL=OFF"),g' -i HDF5options.cmake
+  sed -i 's,^#set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_JAVA:BOOL=ON"),set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_JAVA:BOOL=ON"),g' -i HDF5options.cmake
+
+  # enable fortran
+  sed -i 's,^set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_FORTRAN:BOOL=OFF"),#set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_FORTRAN:BOOL=OFF"),g' -i HDF5options.cmake
+  sed -i 's,^#set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_FORTRAN:BOOL=ON"),set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_FORTRAN:BOOL=ON"),g' -i HDF5options.cmake
+
+  #sed '/HDF5_BUILD_JAVA/c\set(ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_JAVA:BOOL=ON")' -i HDF5options.cmake
+  #echo 'set(ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DCMAKE_INSTALL_PREFIX=/usr")' >> HDF5options.cmake
 }
 
-check() {
-    cd ${_pkgname}-${pkgver/_/-}
-    # Without this, checks are failing with messages like “error while loading shared libraries: libhdf5.so.101: cannot open shared object file: No such file or directory”
-    export LD_LIBRARY_PATH="${srcdir}"/${_pkgname}-${pkgver/_/-}/src/.libs/
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH":"${srcdir}"/${_pkgname}-${pkgver/_/-}/c++/src/.libs/
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH":"${srcdir}"/${_pkgname}-${pkgver/_/-}/fortran/src/.libs/
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH":"${srcdir}"/${_pkgname}-${pkgver/_/-}/hl/src/.libs/
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH":"${srcdir}"/${_pkgname}-${pkgver/_/-}/hl/c++/src/.libs/
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH":"${srcdir}"/${_pkgname}-${pkgver/_/-}/hl/fortran/src/.libs/
-    make check
+build(){
+  cd CMake-hdf5-${pkgver}
+  ctest -S HDF5config.cmake,BUILD_GENERATOR=Unix,INSTALLDIR=/usr -C Release -V -O hdf5.log
+  #./build-unix.sh
+  cd build
+  make
 }
 
 package() {
-    cd ${_pkgname}-${pkgver/_/-}
-    make DESTDIR="${pkgdir}" install
-    install -Dm644 COPYING -t "${pkgdir}"/usr/share/licenses/${_pkgname}
-    # Install pkg-config files from CMake tree
-    install -Dm644 ../build/CMakeFiles/hdf5{,_hl}{,_cpp}-${pkgver}.pc -t "${pkgdir}"/usr/lib/pkgconfig/
-    # Fix 1.6 compatibility for h5py
-    cd "${pkgdir}"/usr/include/
-    patch -p1 -i "${srcdir}"/hdf5-1.12.0-compat-1.6.patch
+  cd CMake-hdf5-${pkgver}/build
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 ../hdf5-${pkgver}/COPYING -t "${pkgdir}"/usr/share/licenses/${pkgname}
+  install -Dm644 ../hdf5-${pkgver}/COPYING -t "${pkgdir}"/usr/share/licenses/${pkgname}
 }
 
