@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=docker-shell
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A simple interactive prompt for docker"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a21a027c09da823e19e1a3b22d6356df4483b993217e5f5aa40110601ece8f07')
+sha256sums=('636340e2e23e31389e54925fcaaadde15a4789ffdc661d61b94b9c49f5c0f046')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
