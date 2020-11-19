@@ -10,6 +10,7 @@ pkgbase = eccodes-git
 	makedepends = python-numpy
 	makedepends = cmake
 	makedepends = ecbuild-git
+	makedepends = git
 	depends = openjpeg
 	depends = libpng
 	depends = python3
@@ -17,7 +18,7 @@ pkgbase = eccodes-git
 	depends = libaec
 	conflicts = grib_api
 	conflicts = libbufr-ecmwf
-	source = eccodes::git+https://github.com/ecmwf/eccodes#branch=master
+	source = git+https://github.com/ecmwf/eccodes#branch=master
 	md5sums = SKIP
 
 pkgname = eccodes-git
