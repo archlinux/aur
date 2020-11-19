@@ -1,24 +1,20 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=gsubs-bin
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A desktop app that finds you the perfect subtitle match"
 arch=('x86_64')
 url='https://cholaware.com/gsubs'
 license=('MIT')
 provides=('gsubs')
-depends=('gconf'
-         'alsa-lib'
-         'gtk2'
-         'libxtst'
+depends=('gtk3'
          'nss'
-         'libxss'
-         'pango-legacy')
+         'libxss')
 makedepends=('tar')
 source=("${pkgname}-${pkgver}.deb::https://github.com/sanjevirau/gsubs/releases/download/v${pkgver}/gsubs_${pkgver}_amd64.deb"
         'LICENSE::https://github.com/sanjevirau/gsubs/raw/master/LICENSE')
-sha256sums=('4ee26200acd919b7c86ae94c91b39df5ba9dec157faaba66f803a0478f658cac'
+sha256sums=('8a11af1f208c37ba0c72078c427a669de6ab330897ee24b52691169bad652855'
             '6d36933ec352f97ed680a03fa8267ee496a4985e151cfcfff43eb7cd6902d4c2')
 
 package() {
