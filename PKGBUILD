@@ -3,7 +3,7 @@
 
 pkgname=sge
 pkgver=8.1.9
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="The Son of Grid Engine is a community project to continue Sun's old gridengine."
 arch=('x86_64')
@@ -45,6 +45,12 @@ prepare() {
 
 	# https://www.linuxquestions.org/questions/programming-9/union-wait-problem-269024
 	sed 's|union wait w;|int w;|g' -i source/3rdparty/qtcsh/sh.proc.c
+
+	# https://stackoverflow.com/questions/51675200/install-older-version-of-gnu-make-in-ubuntu-18-04
+	sed 's/^\(# if _GNU_GLOB_INTERFACE_VERSION\) == \(GLOB_INTERFACE_VERSION\)/\1 >= \2/' -i source/3rdparty/qmake/glob/glob.c
+
+	# https://svnweb.freebsd.org/ports/head/devel/kBuild/files/patch-src_kmk_make.h?view=markup&pathrev=539776
+	sed '/^struct rlimit stack_limit;$/s/^/extern /' -i source/3rdparty/qmake/make.h
 }
 
 build() {
