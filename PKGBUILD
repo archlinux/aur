@@ -1,10 +1,11 @@
 # Maintainer: Tim Cooper <tim.cooper@layeh.com>
 pkgname=kjv-git
-pkgver=r12.996c670
+pkgver=r29.068b373
 pkgrel=1
 pkgdesc="Read the Bible, God's Word, from your terminal"
-arch=(any)
-depends=(bash)
+arch=(x86_64)
+depends=(less readline)
+makedepends=(git)
 url="https://github.com/bontibon/kjv"
 license=('custom:Public Domain')
 source=('kjv::git+https://github.com/bontibon/kjv.git')
