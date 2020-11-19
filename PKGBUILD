@@ -14,21 +14,22 @@ _utdicdate=20201110
 _utdicrel=1
 _bldtype=Release
 
-pkgbase='ibus-mozc-ut'
-pkgname=('ibus-mozc-ut' 'mozc-ut-common')
+pkgname='ibus-mozc-ut'
 pkgver=${_mozcver}.${_utdicdate}
 pkgrel=1
+pkgdesc='Mozc module for IBus bundled with the UT dictionary'
 arch=('i686' 'x86_64')
 url='https://github.com/google/mozc'
 license=('custom')
-makedepends=('git' 'clang' 'ninja' 'pkg-config' 'python' 'gtk2' 'qt5-base' 'ibus>=1.4.1')
-source=("${pkgbase}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
-        "https://osdn.net/downloads/users/26/26897/mozcdic-ut-${_utdicdate}.${_utdicrel}.tar.bz2")
-sha256sums=('SKIP'
-            'bc40c1f4798a8d5c39325201376277289f8228491101195c85d748efbf3e0ffc')
+depends=('ibus>=1.4.1' 'mozc-ut-common' )
+makedepends=('clang' 'git' 'gtk2' 'ninja' 'pkgconf' 'python' 'qt5-base')
+conflicts=('ibus-mozc' 'ibus-mozc-ut2' 'ibus-mozc-ut-united')
+provides=("ibus-mozc=${_mozcver}")
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}")
+sha256sums=('SKIP')
 
 prepare() {
-    cd ${pkgbase}-git
+    cd ${pkgname}-git
 
     git submodule update --init --recursive
 
@@ -36,15 +37,12 @@ prepare() {
     # These should probably be included as options in GYP_DEFINES
     sed -i -e 's/-stdlib=libc++//' src/gyp/common.gypi
     sed -i -e 's/-lc++//' src/gyp/common.gypi
-
-    # Add the UT dictionary
-    cat ${srcdir}/mozcdic-ut-${_utdicdate}.${_utdicrel}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
 }
 
 build() {
-    cd ${pkgbase}-git/src
+    cd ${pkgname}-git/src
 
-    _targets='server/server.gyp:mozc_server gui/gui.gyp:mozc_tool renderer/renderer.gyp:mozc_renderer unix/ibus/ibus.gyp:ibus_mozc'
+    _targets='renderer/renderer.gyp:mozc_renderer unix/ibus/ibus.gyp:ibus_mozc'
 
     GYP_DEFINES='document_dir=/usr/share/licenses/mozc ibus_mozc_path=/usr/lib/ibus-mozc/ibus-engine-mozc ibus_mozc_icon_path=/usr/share/ibus-mozc/icons/ibus-mozc.png'
 
@@ -52,13 +50,11 @@ build() {
     python build_mozc.py build -c ${_bldtype} ${_targets}
 }
 
-package_ibus-mozc-ut() {
-    pkgdesc='Mozc module for IBus bundled with the UT dictionary'
-    depends=('mozc-ut-common' 'ibus>=1.4.1')
-    conflicts=('ibus-mozc' 'ibus-mozc-ut2' 'ibus-mozc-ut-united')
-    provides=("ibus-mozc=${_mozcver}")
+package() {
+    cd ${pkgname}-git/src
 
-    cd ${pkgbase}-git/src
+    install -Dm644 ../LICENSE                                           ${pkgdir}/usr/share/licenses/mozc/ibus-mozc
+    install -Dm644 data/installer/credits_en.html                       ${pkgdir}/usr/share/licenses/mozc/ibus-mozc-submodules
 
     install -Dm755 out_linux/${_bldtype}/mozc_renderer                  ${pkgdir}/usr/lib/mozc/mozc_renderer
 
@@ -75,21 +71,4 @@ package_ibus-mozc-ut() {
     install -Dm644 data/images/unix/ui-katakana_full.png                ${pkgdir}/usr/share/ibus-mozc/icons/katakana_full.png
     install -Dm644 data/images/unix/ui-alpha_half.png                   ${pkgdir}/usr/share/ibus-mozc/icons/alpha_half.png
     install -Dm644 data/images/unix/ui-alpha_full.png                   ${pkgdir}/usr/share/ibus-mozc/icons/alpha_full.png
-}
-
-package_mozc-ut-common() {
-    pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
-    depends=('qt5-base')
-    conflicts=('mozc' 'mozc-ut' 'mozc-ut2' 'mozc-neologd-ut' 'mozc-neologd-ut+ut2' 'mozc-ut-unified' 'mozc-ut-united')
-    provides=("mozc=${_mozcver}" "mozc-ut=${_mozcver}")
-
-    install -Dm644 mozcdic-ut-${_utdicdate}.${_utdicrel}/COPYING        ${pkgdir}/usr/share/licenses/mozc/UT_Dictionary
-
-    cd ${pkgbase}-git/src
-
-    install -Dm644 ../LICENSE                                           ${pkgdir}/usr/share/licenses/mozc/Mozc
-    install -Dm644 data/installer/credits_en.html                       ${pkgdir}/usr/share/licenses/mozc/Submodules
-
-    install -Dm755 out_linux/${_bldtype}/mozc_server                    ${pkgdir}/usr/lib/mozc/mozc_server
-    install -Dm755 out_linux/${_bldtype}/mozc_tool                      ${pkgdir}/usr/lib/mozc/mozc_tool
 }
