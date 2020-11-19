@@ -1,0 +1,25 @@
+pkgbase = emacs-mozc-ut
+	pkgdesc = Mozc module for Emacs bundled with the UT dictionary
+	pkgver = 2.25.4190.102.20201110
+	pkgrel = 1
+	url = https://github.com/google/mozc
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = clang
+	makedepends = git
+	makedepends = gtk2
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = python
+	makedepends = qt5-base
+	depends = emacs
+	depends = mozc-ut-common
+	provides = emacs-mozc=2.25.4190.102
+	conflicts = emacs-mozc
+	conflicts = emacs-mozc-ut2
+	source = emacs-mozc-ut-git::git+https://github.com/google/mozc.git#commit=cfd05a0907d4ff95a15cc6fe2d4d56ed480f4002
+	sha256sums = SKIP
+
+pkgname = emacs-mozc-ut
+
