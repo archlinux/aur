@@ -1,6 +1,6 @@
 pkgbase = lua-love-release
 	pkgdesc = Lua script that makes LÖVE game release easier
-	pkgver = 2.0.15
+	pkgver = 2.0.16
 	pkgrel = 1
 	url = https://github.com/MisterDA/love-release
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = lua-love-release
 	depends = lua-filesystem
 	depends = lua-middleclass
 	provides = love-release
-	source = lua-love-release-2.0.15.tar.gz::https://github.com/MisterDA/love-release/archive/v2.0.15.tar.gz
-	sha256sums = 4c065f12a6057cee8d6b1ff1d2bc0816e009a6f4722e970dc98c8dddf59fb982
+	source = lua-love-release-2.0.16.tar.gz::https://github.com/MisterDA/love-release/archive/v2.0.16.tar.gz
+	sha256sums = 2fc266254a6312d7227e2880f89f9593d6f4be6377a0b97d41327dd0d67d1dee
 
 pkgname = lua-love-release
 
