@@ -3,7 +3,7 @@
 
 pkgbase=scala-dotty
 pkgname=('scala-dotty' 'scala3')
-_reltag=3.0.0-M2
+_reltag=3.0.0-M3
 pkgver=${_reltag//-/}
 pkgrel=1
 pkgdesc='The Scala 3 compiler, also known as Dotty.'
@@ -12,9 +12,9 @@ url='http://dotty.epfl.ch'
 license=('Apache')
 depends=('java-environment>=8')
 source=("https://github.com/lampepfl/dotty/releases/download/${_reltag}/scala3-${_reltag}.tar.gz")
-sha1sums=('99139c746d5e61aed7ca5268630e11c0ab97d16f')
-sha256sums=('ec71104112749d0efdf1127f9c2ce9722f732181518be7e983a9f754a698c281')
-sha512sums=('d42fd39e12677aae702b50642a656b25cb9b5e34f325bb0d3d603d5b1836ecd2e5fa29b60143b0b3ac82aeaf880b9464f0645501ec90dccba4b2b81cf4eee672')
+sha1sums=('1052ab812daff674089207406195392431a913f9')
+sha256sums=('1ca46231ee8abea770c1328c99010475efa9f2be5faf5c5ce9b8fb8c40345f94')
+sha512sums=('e309036079364d7760227c30df9196ab0cdb1fa2085ebc801592c3af2eb4f87b0194f1cfb8c2aaac2e6b7d128a2bdc218ed5cefda89e241a15412a12eecc3500')
 
 package_scala3() {
 	install -d "${pkgdir}/usr/bin" "${pkgdir}/usr/share/scala3/bin"
