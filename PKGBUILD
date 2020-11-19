@@ -4,11 +4,11 @@ arch=('i686' 'x86_64')
 depends=('gpgme' 'icu' 'libeno' 'ncurses')
 license=('GPL3')
 makedepends=('meson')
-md5sums=('fbf4de6725a18b85beecfbe504fb8db6')
+md5sums=('5b27c42f5e4b6328481bfe90bc3c4041')
 pkgdesc="Minimal plaintext password store"
 pkgname=sicuit
 pkgrel=1
-pkgver=8.0
+pkgver=9.0
 url="https://fdpl.io/sicuit/"
 
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/simonrepp/sicuit/archive/${pkgver}.tar.gz")
