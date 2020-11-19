@@ -1,0 +1,10 @@
+pkgbase = gba-tools
+	pkgver = 1.2.0
+	pkgrel = 1
+	arch = all
+	license = GPL3
+	source = https://github.com/devkitPro/gba-tools/archive/v1.2.0.tar.gz
+	sha256sums = 1249fad1da0bc02ba33701357b28768cb8e9e00498a715753b95f00257490c32
+
+pkgname = gba-tools
+
