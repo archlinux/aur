@@ -16,7 +16,7 @@ provides=(hdf5-cpp-fortran hdf5)
 conflicts=(hdf5)
 options=('staticlibs')
 source=("${pkgname}-${pkgver}.tar.gz::https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-${_pkgver}/hdf5-${pkgver}/src/CMake-hdf5-${pkgver}.tar.gz"
-        hdf5-1.12.0-compat-1.6.patch)
+	"hdf5-1.12.0-compat-1.6.patch")
 sha256sums=('01b9c01c45cc8c66da86e69c510e17f3cff0706a65d8683cd86af405eaf75397'
             '72ad497c56760bb3af8193c88d3fa264125829850b843697de55d934c56f7f44')
 
@@ -24,15 +24,24 @@ prepare(){
   cd CMake-hdf5-${pkgver}
 
   # enable java
-  sed -i 's,^set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_JAVA:BOOL=OFF"),#set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_JAVA:BOOL=OFF"),g' -i HDF5options.cmake
-  sed -i 's,^#set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_JAVA:BOOL=ON"),set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_JAVA:BOOL=ON"),g' -i HDF5options.cmake
+  sed -i '/^set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_JAVA:BOOL=OFF")/s/^/#/g' -i HDF5options.cmake
+  sed -i '/^#set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_JAVA:BOOL=ON")/s/^#//g' -i HDF5options.cmake
+
+  #sed -i 's,^set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_JAVA:BOOL=OFF"),#set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_JAVA:BOOL=OFF"),g' -i HDF5options.cmake
+  #sed -i 's,^#set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_JAVA:BOOL=ON"),set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_JAVA:BOOL=ON"),g' -i HDF5options.cmake
 
   # enable fortran
-  sed -i 's,^set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_FORTRAN:BOOL=OFF"),#set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_FORTRAN:BOOL=OFF"),g' -i HDF5options.cmake
-  sed -i 's,^#set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_FORTRAN:BOOL=ON"),set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_FORTRAN:BOOL=ON"),g' -i HDF5options.cmake
+  sed -i '/^set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_FORTRAN:BOOL=OFF")/s/^/#/g' -i HDF5options.cmake
+  sed -i '/^#set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_FORTRAN:BOOL=ON")/s/^#//g' -i HDF5options.cmake
 
-  #sed '/HDF5_BUILD_JAVA/c\set(ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_JAVA:BOOL=ON")' -i HDF5options.cmake
-  #echo 'set(ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DCMAKE_INSTALL_PREFIX=/usr")' >> HDF5options.cmake
+  #sed -i 's,^set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_FORTRAN:BOOL=OFF"),#set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_FORTRAN:BOOL=OFF"),g' -i HDF5options.cmake
+  #sed -i 's,^#set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_FORTRAN:BOOL=ON"),set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_BUILD_FORTRAN:BOOL=ON"),g' -i HDF5options.cmake
+
+  # I don't know why I wouldn't want thread safety...but this doesn't build. missing pthread dep?
+  #sed -i '/^#set (ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DHDF5_ENABLE_THREADSAFE:BOOL=ON")/s/^#//g' -i HDF5options.cmake 
+
+  # use legacy API
+  #echo 'set(ADD_BUILD_OPTIONS "${ADD_BUILD_OPTIONS} -DDEFAULT_API_VERSION:STRING=v110")' >> HDF5options.cmake
 }
 
 build(){
@@ -47,6 +56,9 @@ package() {
   cd CMake-hdf5-${pkgver}/build
   make DESTDIR="${pkgdir}" install
   install -Dm644 ../hdf5-${pkgver}/COPYING -t "${pkgdir}"/usr/share/licenses/${pkgname}
-  install -Dm644 ../hdf5-${pkgver}/COPYING -t "${pkgdir}"/usr/share/licenses/${pkgname}
+  
+  # Fix 1.6 compatibility for h5py, is this still needed?
+  #cd "${pkgdir}"/usr/include/
+  #patch -p1 -i "${srcdir}"/hdf5-1.12.0-compat-1.6.patch
 }
 
