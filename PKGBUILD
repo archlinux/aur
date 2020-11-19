@@ -41,13 +41,13 @@ build(){
 	yarn electron-builder build
 }
 package(){
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}/dist"
 	install -d -m755 ${pkgdir}/usr/bin
 	install -d -m755 ${pkgdir}/usr/share/{applications,pixmaps}
 	install -d -m755 ${pkgdir}/opt/fuck-xuexiqiangguo-git 
-	cp -r dist/`ls dist | grep linux\*unpacked`/* ${pkgdir}/opt/fuck-xuexiqiangguo-git
+	cp -r `ls | grep linux*unpacked`/* ${pkgdir}/opt/fuck-xuexiqiangguo-git
 	install -D ${srcdir}/fuck-xuexiqiangguo.desktop ${pkgdir}/usr/share/applications/fuck-xuexiqiangguo.desktop
-	install -D build/logo.png ${pkgdir}/usr/share/pixmaps/fuck-xuexiqiangguo.png
+	install -D ${srcdir}/${pkgname}/build/logo.png ${pkgdir}/usr/share/pixmaps/fuck-xuexiqiangguo.png
 	ln -s /opt/fuck-xuexiqiangguo-git/fuck-xuexiqiangguo ${pkgdir}/usr/bin/fuck-xuexiqiangguo
 }
 
