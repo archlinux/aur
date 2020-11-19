@@ -1,8 +1,8 @@
 ## Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer-embedded
-_debpkgver=4.19.1-53
-pkgver=4.19.1
+_debpkgver=4.20.0-54
+pkgver=4.20.0
 pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
@@ -12,7 +12,7 @@ arch=('x86_64' 'aarch64')
 url="http://www.signalyst.com/custom.html"
 license=('custom')
 depends=('alsa-lib' 'glibc' 'flac' 'gcc-libs' 'libgmpris' 'glib2' 'rygel' 'adduser-deb' 'zip' 'unzip')
-source_x86_64=("https://www.signalyst.eu/bins/hqplayerd/bionic/hqplayerd_"$_debpkgver"_amd64.deb" 'hqplayerd.service'  'hqplayerd2.service')
+source_x86_64=("https://www.signalyst.eu/bins/hqplayerd/focal/hqplayerd_"$_debpkgver"_amd64.deb" 'hqplayerd.service'  'hqplayerd2.service')
 install=install
 source_aarch64=("https://www.signalyst.eu/bins/hqplayerd/buster/hqplayerd_"$_debpkgver"_arm64.deb" 'hqplayerd.service'  'hqplayerd2.service')
 sha256sums_x86_64=('SKIP'
