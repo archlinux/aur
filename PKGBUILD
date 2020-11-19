@@ -2,7 +2,7 @@
 
 pkgname="mpv-handler-git"
 _pkgname="play-with-mpv-handler"
-pkgver=2020.11.18.1.r0.g63ebaae
+pkgver=2020.11.19.r0.g10879df
 pkgrel=1
 pkgdesc="Play website videos and songs with mpv & youtube-dl."
 arch=("any")
