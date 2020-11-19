@@ -1,7 +1,7 @@
 pkgbase = python-hpilo
 	pkgdesc = Accessing the HP iLO XML interface from python
-	pkgver = 4.4.1
-	pkgrel = 2
+	pkgver = 4.4.2
+	pkgrel = 1
 	url = https://github.com/seveas/python-hpilo
 	arch = any
 	license = Apache
@@ -9,7 +9,7 @@ pkgbase = python-hpilo
 	makedepends = python-setuptools
 	depends = python
 	options = !emptydirs
-	source = https://github.com/seveas/python-hpilo/archive/4.4.1.tar.gz
+	source = https://github.com/seveas/python-hpilo/archive/4.4.2.tar.gz
 	md5sums = 6e261f94eaaf230c88fd857500ab0e0b
 
 pkgname = python-hpilo

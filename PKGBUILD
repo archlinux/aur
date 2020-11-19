@@ -2,8 +2,8 @@
 # Contributor: Philipp Schmitt <philipp@schmitt.co>
 
 pkgname=python-hpilo
-pkgver=4.4.1
-pkgrel=2
+pkgver=4.4.2
+pkgrel=1
 pkgdesc='Accessing the HP iLO XML interface from python'
 arch=('any')
 url='https://github.com/seveas/python-hpilo'
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/seveas/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('6e261f94eaaf230c88fd857500ab0e0b')
+md5sums=('1544a6c1b90ec9b0953f5084583e8cc2')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
