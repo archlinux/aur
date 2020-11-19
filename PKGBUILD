@@ -66,7 +66,7 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-anbox
-pkgver=5.9.8
+pkgver=5.9.9
 _major=5.9
 _branch=5.x
 xanmod=1
@@ -100,15 +100,15 @@ done
 
 sha256sums=('3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06'
             'SKIP'
-            '79ab831897b6ef2ee6d56f7bc2e2c789aeaa56604a53ae93848fa7848b8756c4'
+            '4980bd1f7583a353b3fa595080878bad0b102cb90e43473fd620e0edcbae420c'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991')
 
 # If use_cachy=y then download cachy patch
-if [ "$use_cachy" = "y" ]; then
-   source+=("https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-cachy/patch-${pkgver}-xanmod${xanmod}-cachy.xz")
-   sha256sums+=('66b05c60d91d444a35d2ce1ceb46e3325197c05911767049aac68e7e6d31185f')
-fi
+#if [ "$use_cachy" = "y" ]; then
+#   source+=("https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-cachy/patch-${pkgver}-xanmod${xanmod}-cachy.xz")
+#   sha256sums+=('66b05c60d91d444a35d2ce1ceb46e3325197c05911767049aac68e7e6d31185f')
+#fi
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
@@ -118,11 +118,11 @@ prepare() {
   cd linux-${_major}
 
   # Apply Xanmod patch
-  if [ "$use_cachy" = "y" ]; then
-    patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}-cachy
-  else
+#  if [ "$use_cachy" = "y" ]; then
+#    patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}-cachy
+#  else
     patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
-  fi
+#  fi
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
