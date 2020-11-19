@@ -14,8 +14,7 @@ arch=('any')
 url="https://www.archlinux.org"
 license=('GPL')
 groups=('selinux')
-depends=('pam-selinux>=1.4.0') # For module pam_faillock.so
-conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
+conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}" 'pam-selinux<1.4.0')
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 source=('system-auth'
