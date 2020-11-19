@@ -2,7 +2,7 @@
 
 pkgname=giara
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Reddit gtk client"
 arch=('any')
@@ -19,6 +19,7 @@ depends=(
 	'python-mistune'
 	'python-pillow'
 	'python-praw'
+	'webkit2gtk'
 )
 makedepends=('meson' 'gobject-introspection')
 checkdepends=()
