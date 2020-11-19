@@ -2,11 +2,13 @@
 pkgname=python-youtube-search-git
 
 pkgver() {
-  cd "$pkgname"
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "youtube_search-master"
+    printf '%s.r%s.%s' \
+    "$(grep version= setup.py | sed 's/^\s*version="\(.*\)".*/\1/')" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=1.1.0
-pkgrel=0
+pkgver=1.1.1.r4.d199773
+pkgrel=1
 
 pkgdesc="Perform YouTube video searches without the API"
 arch=("any")
