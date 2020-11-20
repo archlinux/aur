@@ -3,7 +3,7 @@
 
 pkgname=ifuse-git
 epoch=2
-pkgver=1.1.3.r4.gdf048a1
+pkgver=1.1.4.r1.g38c9f45
 pkgrel=1
 pkgdesc='A fuse filesystem to access the contents of an iPhone or iPod Touch'
 url='http://libimobiledevice.org/'
@@ -13,13 +13,13 @@ depends=('libimobiledevice-git' 'libplist-git' 'fuse')
 makedepends=('git')
 provides=('ifuse')
 conflicts=('ifuse')
-source=("git+https://git.libimobiledevice.org/ifuse.git")
+source=("git+https://github.com/libimobiledevice/ifuse")
 md5sums=('SKIP')
 
 pkgver() {
 	cd ifuse
 
-	git describe --long | sed 's/-/.r/;s/-/./'
+	git describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 build() {
