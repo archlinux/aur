@@ -1,7 +1,7 @@
 pkgbase = dustforce-hib-dustmod
 	pkgdesc = A fast-paced 2D action platformer (Humble Bundle version, with Dustmod)
-	pkgver = 1.0+h20141222_20.8.1
-	pkgrel = 3
+	pkgver = 1.0+h20141222_20.11.1
+	pkgrel = 1
 	url = http://dustmod.com/
 	arch = x86_64
 	license = custom:commercial
@@ -24,8 +24,8 @@ pkgbase = dustforce-hib-dustmod
 	source = dustforce-hib-dustmod.desktop
 	md5sums = e2fa7efd5b9ec64fc453f32480f63ad4
 	md5sums = fed1b6d82bdbea66d242eaaaf7d3a2f2
-	md5sums = 8e2af31c34c88b0411dd03bf2bfc2e0f
-	md5sums = fc43d6e2d60a26f5aa387fb6998c2772
+	md5sums = d5b913b2c56cafb396e469270946897c
+	md5sums = 0b91e18fdfdadb2bda58348deed41481
 	md5sums = 7b30db080ff59c0eba443b14da7c39bc
 	md5sums = cc98a6127bc6d6cbdcfced14c69327cf
 

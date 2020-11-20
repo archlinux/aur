@@ -6,10 +6,10 @@
 # URL used for version checking: http://dustkid.com/backend8/dustmod_version.php
 
 pkgname=dustforce-hib-dustmod
-pkgver=1.0+h20141222_20.8.1
+pkgver=1.0+h20141222_20.11.1
 _hibver=2014-12-22
 _hibver_windows=07012015
-pkgrel=3
+pkgrel=1
 pkgdesc='A fast-paced 2D action platformer (Humble Bundle version, with Dustmod)'
 url='http://dustmod.com/'
 arch=('x86_64')
@@ -29,8 +29,8 @@ source=("hib://${_installer}"
         'dustforce-hib-dustmod.desktop')
 md5sums=('e2fa7efd5b9ec64fc453f32480f63ad4'
          'fed1b6d82bdbea66d242eaaaf7d3a2f2'
-         '8e2af31c34c88b0411dd03bf2bfc2e0f'
-         'fc43d6e2d60a26f5aa387fb6998c2772'
+         'd5b913b2c56cafb396e469270946897c'
+         '0b91e18fdfdadb2bda58348deed41481'
          '7b30db080ff59c0eba443b14da7c39bc'
          'cc98a6127bc6d6cbdcfced14c69327cf')
 # zip with no top-level directory - will extract manually
