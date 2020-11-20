@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.20.1.r88.gc70b3e04
-pkgrel=2
+pkgver=1.20.1.r131.ge10a40d4
+pkgrel=1
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
 url='http://www.ipxe.org/'
@@ -56,6 +56,9 @@ prepare() {
 
 	# enable ping command
 	sed -i "/PING_CMD/c #define PING_CMD" config/general.h
+
+	# enable HTTPS
+	sed -i "/DOWNLOAD_PROTO_HTTPS/c #define DOWNLOAD_PROTO_HTTPS" config/general.h
 
 	# enable reboot and poweroff
 	sed -i -e "/REBOOT_CMD/c #define REBOOT_CMD" \
