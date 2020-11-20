@@ -1,7 +1,7 @@
 pkgbase = hdf5-java
 	pkgdesc = General purpose library and file format for storing scientific data , w/java bindings
 	pkgver = 1.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.hdfgroup.org/hdf5
 	arch = x86_64
 	license = custom
