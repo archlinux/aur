@@ -4,7 +4,7 @@
     url='http://www.ros.org/'
 
     pkgname='ros-melodic-mbf-msgs'
-    pkgver='0.2.5'
+    pkgver='0.3.3'
     arch=('any')
     pkgrel=1
     license=('3-Clause BSD')
@@ -32,7 +32,7 @@
     # Tarball version (faster download)
     _dir="move_base_flex-release-release-melodic-mbf_msgs"
     source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_msgs/${pkgver}.tar.gz")
-    sha256sums=('603939164770a585198e17467e10dd17862d11a7f1ec7af8dbdee5041d29f027')
+sha256sums=('3654c14d56f12ad002e85fc03e1f6ec8315e52bd715f0ba2fc597445b928d8fb')
 
     build() {
         # Use ROS environment variables
