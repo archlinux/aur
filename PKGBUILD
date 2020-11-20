@@ -6,8 +6,8 @@
 
 _pkgname=kile
 pkgname=kile-git
-pkgver=v3.0b2.r90.g5b83c2a0
-pkgrel=2
+pkgver=v3.0b2.r122.g8635d0ff
+pkgrel=1
 pkgdesc="A TeX/LaTeX frontend for KDE"
 arch=('i686' 'x86_64')
 url="http://kile.sourceforge.net/"
@@ -17,7 +17,7 @@ makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'python')
 conflicts=('kile')
 provides=('kile')
 replaces=('kile-svn')
-source=("git://anongit.kde.org/kile")
+source=("kile::git+https://invent.kde.org/office/kile")
 md5sums=('SKIP')
 
 pkgver() {
