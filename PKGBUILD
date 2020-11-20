@@ -9,7 +9,7 @@ arch=('any')
 url="https://www.mdbg.net/chinese/dictionary?page=cc-cedict"
 license=('CCPL')
 optdepends=('dictd: dict client and server')
-makedepends=('dictd' 'git' 'python' 'curl' 'gzip')
+makedepends=('dictd' 'git' 'python' 'curl')
 provides=('dict-cedict')
 conflicts=('dict-cedict')
 install=${pkgname}.install

@@ -10,7 +10,6 @@ pkgbase = dict-cedict-git
 	makedepends = git
 	makedepends = python
 	makedepends = curl
-	makedepends = gzip
 	optdepends = dictd: dict client and server
 	provides = dict-cedict
 	conflicts = dict-cedict
