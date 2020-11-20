@@ -4,11 +4,12 @@
 
 pkgname=fbxkb
 pkgver=0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Keyboard indicator and switcher"
 arch=('i686' 'x86_64')
 url="http://fbxkb.sourceforge.net/"
 depends=('gtk2' 'libxmu')
+depends_x86_64=('gdk-pixbuf-xlib')
 license=('GPL')
 source=(http://download.sourceforge.net/fbxkb/${pkgname}-${pkgver}.tgz
 	fbxkb.patch)
@@ -23,7 +24,7 @@ prepare() {
 build() {
   cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr
-  make LDFLAGS=
+  make LDFLAGS="-Wl,-O1,--sort-common,-z,relro,-z,now"
 }
 
 package() {

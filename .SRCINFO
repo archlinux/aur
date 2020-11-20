@@ -1,7 +1,7 @@
 pkgbase = fbxkb
 	pkgdesc = Keyboard indicator and switcher
 	pkgver = 0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://fbxkb.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = fbxkb
 	source = fbxkb.patch
 	md5sums = fa768bbb07aac8a4ae590633499cce15
 	md5sums = 33171c56c308eb68cb5035762fbb8aa0
+	depends_x86_64 = gdk-pixbuf-xlib
 
 pkgname = fbxkb
 
