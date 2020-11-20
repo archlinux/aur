@@ -1,13 +1,13 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=soundux-git
 pkgver=r63.265f318
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A cross-platform soundboard in QtQuick"
 arch=('any')
 url="https://github.com/D3SOX/Soundux"
 license=('GPL3')
-depends=('qt5-base' 'qt5-x11extras')
+depends=('qt5-base' 'qt5-x11extras' 'qt5-quickcontrols' 'qt5-quickcontrols2')
 makedepends=('qt5-tools' 'git' 'cmake')
 conflicts=('soundux')
 provides=('soundux')
