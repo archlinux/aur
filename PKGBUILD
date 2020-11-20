@@ -97,8 +97,6 @@ package() {
 	cd "${pkgdir}/opt/amdgpu/share/libdrm"
 	ln -s /usr/share/libdrm/amdgpu.ids amdgpu.ids
 
-	mv "${srcdir}/opencl/opt/amdgpu-pro/amdgcn" "${pkgdir}/opt/amdgpu/amdgcn"
-
 	rm -r "${srcdir}/opencl"
 	rm -r "${srcdir}/libdrm"
 }
