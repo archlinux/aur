@@ -1,7 +1,7 @@
 # Maintainer: aps42 <arch@andre-sterba.de>
 pkgname=waybar-issues
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Get your open issues and merge/pull requests into waybar.'
 arch=('x86_64')
 url='https://github.com/andresterba/waybar-issues'
@@ -18,4 +18,6 @@ build(){
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+

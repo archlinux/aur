@@ -1,7 +1,7 @@
 pkgbase = waybar-issues
 	pkgdesc = Get your open issues and merge/pull requests into waybar.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andresterba/waybar-issues
 	arch = x86_64
 	license = MIT
