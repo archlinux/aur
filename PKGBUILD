@@ -6,7 +6,7 @@ url='https://github.com/PickNikRobotics/rosparam_shortcuts'
 pkgname='ros-melodic-rosparam-shortcuts'
 pkgver='0.4.0'
 arch=('x86_64')
-pkgrel=2
+pkgrel=3
 license=('unknown')
 
 _ros_makedepends=(
@@ -14,17 +14,19 @@ _ros_makedepends=(
   ros-melodic-cmake-modules
   ros-melodic-eigen-conversions
   ros-melodic-roslint
+  ros-melodic-roscpp
 )
 
 makedepends=(
 	'cmake'
 	'ros-build-tools'
+        eigen
 	${_ros_makedepends[@]}
 )
 
 _ros_depends=(
-	ros-melodic-rosparam
-  ros-melodic-rosout
+  ros-melodic-eigen-conversions
+  ros-melodic-roscpp
 )
 
 depends=(
