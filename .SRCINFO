@@ -20,6 +20,7 @@ pkgbase = hotspot
 	depends = kitemmodels
 	depends = kconfigwidgets
 	depends = solid
+	depends = rustc-demangle
 	provides = hotspot
 	conflicts = hotspot-git
 	source = https://github.com/KDAB/hotspot/releases/download/v1.3.0/hotspot-v1.3.0.tar.gz

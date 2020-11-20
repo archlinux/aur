@@ -7,7 +7,7 @@ pkgdesc="The Linux perf GUI for performance analysis"
 arch=('any')
 url="https://github.com/KDAB/hotspot"
 license=('GPL2')
-depends=('qt5-base>=5.6.0' 'libelf' 'elfutils' 'threadweaver' 'ki18n' 'kconfig' 'kio' 'kitemviews' 'kcoreaddons' 'kitemmodels' 'kconfigwidgets' 'solid')
+depends=('qt5-base>=5.6.0' 'libelf' 'elfutils' 'threadweaver' 'ki18n' 'kconfig' 'kio' 'kitemviews' 'kcoreaddons' 'kitemmodels' 'kconfigwidgets' 'solid' 'rustc-demangle')
 makedepends=('cmake>=3.1.0' 'extra-cmake-modules' 'desktop-file-utils')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
@@ -16,7 +16,9 @@ sha1sums=('3fe86a97291a6c9cefc2d0a16e9b5379aa1a831c')
 
 build() {
     cd "${pkgname}-v${pkgver}"
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr \
+          -DRUSTC_DEMANGLE_INCLUDE_DIR=/usr/include/rustc-demangle \
+          -DRUSTC_DEMANGLE_LIBRARY=/usr/lib/rustc-demangle/librustc_demangle.so
     make
 }
 
