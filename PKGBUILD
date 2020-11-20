@@ -8,12 +8,10 @@ arch=("x86_64")
 url="https://pypi.org/project/discover-overlay/"
 license=("GPL3")
 makedepends=("python-setuptools")
-depends=("gtk3" "python-gobject" "python-pyxdg" "python-websocket-client" "python-pidfile" "python-cairo" "python-pillow")
+depends=("gtk3" "python-gobject" "python-pyxdg" "python-requests" "python-websocket-client" "python-pidfile" "python-cairo" "python-pillow")
 conflicts=("discover-overlay-git")
 provides=("discover-overlay")
-optdepends=("discord: Discord client Stable"
-            "discord-ptb: Discord client Public Test Build"
-            "discord-canary: Discord client Nightly")
+optdepends=("gtk-layer-shell: Wayland support")
 source=("${pkgname}-${pkgver}.tar.gz::https://pypi.io/packages/source/d/discover-overlay/${pkgname}-${pkgver}.tar.gz")
 sha512sums=("1e145b64d1d0ea4d094dc16fc7871d9177604fd72991c06c6067d08bb49c95b8b4e1e84121b61c6393ddd45bb307eb5796c8a83ce708e30ec2a93c9043e971a3")
 
