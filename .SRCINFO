@@ -1,6 +1,6 @@
 pkgbase = komikku
 	pkgdesc = Online/offline Manga reader for GNOME, built for the Librem 5
-	pkgver = 0.22.1
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://gitlab.com/valos/Komikku
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = komikku
 	depends = python-pillow
 	depends = python-pure-protobuf
 	depends = python-unidecode
-	source = https://gitlab.com/valos/Komikku/-/archive/v0.22.1/Komikku-v0.22.1.tar.gz
-	sha256sums = c09726b0bf7f51412e98b193389d8de9554ec807916c99c170cda3b9e362fc6c
+	source = https://gitlab.com/valos/Komikku/-/archive/v0.23.0/Komikku-v0.23.0.tar.gz
+	sha256sums = a37d91a23ae6ddbff0784557d74b0c502b31c3504b673f248456786502c7ab4f
 
 pkgname = komikku
 
