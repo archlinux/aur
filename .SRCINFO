@@ -7,6 +7,7 @@ pkgbase = eureka
 	arch = x86_64
 	license = GPL2
 	depends = fltk
+	depends = glu
 	source = https://download.sourceforge.net/eureka-editor/eureka-1.27b-source.tar.gz
 	source = eureka.patch
 	md5sums = ded6495c09e23bfe55513eb47abf17ea

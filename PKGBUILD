@@ -10,7 +10,7 @@ pkgdesc="A map editor for the classic DOOM games"
 arch=("i686" "x86_64")
 url="http://${pkgname}-editor.sourceforge.net/"
 license=("GPL2")
-depends=("fltk")
+depends=("fltk" "glu")
 source=(
   "https://download.sourceforge.net/${pkgname}-editor/${pkgname}-${pkgver}-source.tar.gz"
   "${pkgname}.patch"
