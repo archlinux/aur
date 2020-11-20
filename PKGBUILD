@@ -45,7 +45,7 @@ pkgrel=1
 arch=(x86_64)
 url="http://www.xanmod.org/"
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf python-sphinx graphviz)
+makedepends=(xmlto kmod inetutils bc libelf)
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
