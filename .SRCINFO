@@ -29,7 +29,7 @@ pkgbase = ytmdl
 	optdepends = tensorflow: Trim Support
 	provides = ytmdl
 	conflicts = ytmdl-git
-	source = https://github.com/deepjyoti30/ytmdl/archive/2020.11.20.tar.gz
+	source = https://files.pythonhosted.org/packages/4b/cf/e93b65904ce2392c1e8a6979975f1c05622828690565fb672c5d13ba829e/ytmdl-2020.11.20.tar.gz
 	md5sums = SKIP
 
 pkgname = ytmdl
