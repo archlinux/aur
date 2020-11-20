@@ -1,5 +1,5 @@
 pkgbase = rxvt-unicode-truecolor-wide-glyphs
-	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt) with truecolor and wide glyphs support
+	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt) with true color and enhanced glyphs support
 	pkgver = 9.22
 	pkgrel = 2
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
