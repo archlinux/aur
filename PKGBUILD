@@ -1,7 +1,7 @@
 # Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=finalcut
-pkgver=0.6.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A text-based widget toolkit."
 arch=('x86_64')
@@ -10,11 +10,10 @@ license=('LGPL3')
 depends=('gpm')
 makedepends=('autoconf-archive')
 source=("${url}/archive/$pkgver.tar.gz")
-sha256sums=('8c2260104ba918a83748f6af0f01e33c35bbc4591f49567839e45cf1555b9f2f')
+sha256sums=('d85bfffa9481ac4647e07c4a6d824da5560509541966db69f59ebc214efcbee2')
 
 prepare() {
     cd "$pkgname-$pkgver"
-
     autoreconf -if
     ./configure --prefix=/usr
 }
