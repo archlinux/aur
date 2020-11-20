@@ -1,12 +1,12 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Taijian <taijian@posteo.de>
 # Contributor: Alberto Casademunt <alberto.casademunt at protonmail dot ch>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org> (gnome-control-center PKGBUILD)
 # Contributor: Jan de Groot <jgc@archlinux.org> (gnome-control-center PKGBUILD)
 _pkgname='gnome-control-center'
 pkgname="$_pkgname-nocheese"
-pkgver='3.38.1'
-_gvccommit='468022b708fc1a56154f3b0cc5af3b938fb3e9fb'
+pkgver='3.38.2'
+_gvccommit='7a621180b46421e356b33972e3446775a504139c'
 pkgrel='1'
 pkgdesc="GNOME's main interface to configure various aspects of the desktop - without Cheese dependency"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -36,8 +36,8 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz"
 	"$pkgname-$pkgver-$pkgrel-gvc.tar.gz::https://gitlab.gnome.org/GNOME/libgnome-volume-control/-/archive/$_gvccommit/libgnome-volume-control-$_gvccommit.tar.gz"
 )
-sha256sums=('3855a3122d9e2396870e7a448741f9b778d5fac2faf239184b19bf8305fda5c8'
-            '3ab63b0073bf21cab80b3974c9f6aa969ff1a4c4911aae6a09681c7d1b2b785f')
+sha256sums=('cea0eb0505ada8424a091680ebef8a413077e495547938823cc7846774f168e4'
+            '0bd8bb754ce3fb82b29c83e2186b2a84517be772acdba28d15eb928a44cadec3')
 
 _sourcedirectory="$_pkgname-$pkgver"
 
