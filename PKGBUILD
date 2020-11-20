@@ -3,7 +3,7 @@ _name=umps
 _ver=3
 pkgname=$_name$_ver-git
 pkgver=3.0.4.r2.gb7cb8af
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual machine simulator based around the MIPS R2/3000 microprocessor."
 arch=('x86_64')
 url="https://github.com/virtualsquare/umps3"
@@ -20,7 +20,8 @@ pkgver() {
 
 build() {
   cmake -B build -S $pkgname \
-  	-DCMAKE_BUILD_TYPE=Release
+  	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_PREFIX=/usr
   make -C build
 }
 
