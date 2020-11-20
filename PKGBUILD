@@ -125,7 +125,7 @@ check() {
 }
 
 package_jre11-jetbrains-headless-imfix() {
-  pkgdesc="JetBrains Java ${_majorver} headless runtime environment"
+  pkgdesc="JetBrains Java ${_majorver} headless runtime environment (With patch that allows the IME window follow the cursor)"
   depends=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'libnet' 'freetype2')
   optdepends=('java-rhino: for some JavaScript support')
   provides=("java-runtime-headless=${_majorver}" "java-runtime-headless-jetbrains=${_majorver}" "jre${_majorver}-jetbrains-headless=${pkgver}-${pkgrel}")
@@ -183,7 +183,7 @@ package_jre11-jetbrains-headless-imfix() {
 }
 
 package_jre11-jetbrains-imfix() {
-  pkgdesc="JetBrains Java ${_majorver} full runtime environment"
+  pkgdesc="JetBrains Java ${_majorver} full runtime environment (With patch that allows the IME window follow the cursor)"
   depends=("jre${_majorver}-jetbrains-headless=${pkgver}-${pkgrel}" 'giflib')
   optdepends=('alsa-lib: for basic sound support'
               'gtk2: for the Gtk+ 2 look and feel - desktop usage'
@@ -207,7 +207,7 @@ package_jre11-jetbrains-imfix() {
 }
 
 package_jdk11-jetbrains-imfix() {
-  pkgdesc="JetBrains Java ${_majorver} development kit"
+  pkgdesc="JetBrains Java ${_majorver} development kit (With patch that allows allow the IME window follow the cursor)"
   depends=("jre${_majorver}-jetbrains=${pkgver}-${pkgrel}" 'java-environment-common=3' 'hicolor-icon-theme' 'libelf')
   provides=("java-environment=${_majorver}" "java-environment-jetbrains=${_majorver}" "jdk${_majorver}-jetbrains=${pkgver}-${pkgrel}")
   conflicts=("jdk11-jetbrains")
