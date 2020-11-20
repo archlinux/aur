@@ -28,8 +28,8 @@ source=(
 	#"${pkgname}.sh"
 )
 md5sums=('a2f03ca8b803ca4da7d2dedadeca74bb'
-         '0f4d29ce1dd17af61f48e61431020ea7'
-         'b3e8d5b14639e1f16773f468dabec7de')
+         '9f9084c196f22394654263eb651a7a2c'
+         '9fb0825053a203802836735741b15007')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
