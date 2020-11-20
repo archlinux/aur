@@ -10,6 +10,7 @@ import time
 import argparse
 import subprocess
 import hashlib
+import daemon
 
 logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s', level=logging.INFO)
 
@@ -141,12 +142,13 @@ class ClashUp:
         args = parser.parse_args()
         self.load_conf()
         if args.pre:
-            if self.config.get('mmdb_version_url') and self.config.get('mmdb_file_url'):
-                self.update_mmdb()
             if self.config['is_subscribe_banned']:
                 logging.info('Subscribe is banned, pass this run')
             else:
                 self.update(False)
+            if self.config.get('mmdb_version_url') and self.config.get('mmdb_file_url'):
+                with daemon.DaemonContext():
+                    self.update_mmdb()
         elif args.post:
             if self.config['is_subscribe_banned']:
                 if self.update_time_cache():
