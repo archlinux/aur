@@ -1,0 +1,14 @@
+pkgbase = python-deezer-py
+	pkgdesc = Read metadata (tags) of mp3, mp4, wma, ogg, flac and aiff files (python3 version)
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://pypi.org/project/deezer-py/
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.org/packages/source/d/deezer-py/deezer-py-0.0.9.tar.gz
+	sha256sums = 8dfc96109fa51b6b2a35f5dc2e3615b6c4c5966c7263f8516a6c5a10a4e1ec99
+
+pkgname = python-deezer-py
+
