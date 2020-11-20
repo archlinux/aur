@@ -1,0 +1,21 @@
+pkgbase = epsonscan2
+	pkgdesc = Epson scanner management utility
+	pkgver = 6.6.2.1
+	pkgrel = 1
+	url = http://support.epson.net/linux/en/epsonscan2.php
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	makedepends = cmake
+	depends = boost-libs
+	depends = libharu
+	depends = qt5-singlecoreapplication
+	depends = rapidjson
+	depends = sane
+	source = http://support.epson.net/linux/src/scanner/epsonscan2/epsonscan2-6.6.2.1-1.src.tar.gz
+	sha512sums = 6bb2ec6d776000cc87ccfcfab1df2392c4bd8c0538888ea9e051938cddc356560b657d5c8a8473a93be4b219683995c8eae69c49aef6bef4473c96ddda32cbf6
+
+pkgname = epsonscan2
+
