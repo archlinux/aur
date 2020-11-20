@@ -32,3 +32,5 @@ build() {
 package() {
   install -Dm755 "${srcdir}/${_pkgname}/${_pkgname}" ${pkgdir}/usr/bin/${pkgname}
 }
+
+# vim: ft=sh ts=2 sw=2 et
