@@ -1,13 +1,14 @@
 pkgbase = python-dpkt
-	pkgdesc = This is a Python library for interacting with and creating packets.
-	pkgver = 1.9.2
+	pkgdesc = Fast, simple packet creation / parsing, with definitions for the basic TCP/IP protocols
+	pkgver = 1.9.4
 	pkgrel = 1
-	url = https://github.com/kbandla/dpkt
+	url = https://github.com/kbandla/dpkty
 	arch = any
-	license = custom
+	license = BSD
+	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/d/dpkt/dpkt-1.9.2.tar.gz
-	sha512sums = c5004c61ea19b4a76f278904d4f5efb447a2a0f292f7d917d7b0e11953ee09ae52226a19218f690b2958ef9eb4ac0676f8465ed41fd200b4c6ac01f1ffd8e28c
+	source = https://files.pythonhosted.org/packages/source/d/dpkt/dpkt-1.9.4.tar.gz
+	sha256sums = f4e579cbaf6e2285ebf3a9e84019459b4367636bac079ba169527e582fca48b4
 
 pkgname = python-dpkt
 

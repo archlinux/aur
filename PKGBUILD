@@ -1,20 +1,32 @@
-# Maintainer: Mark Weiman <mark.weiman@markzz.com>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Mark Weiman <mark.weiman@markzz.com>
 # Contributor: brent s. <bts[at]square-r00t[dot]net>
 # Contributor: Wes Brown <wesbrown18@gmail.com>
 
-pkgname=python-dpkt
-_pkgname=dpkt
-pkgver=1.9.2
+_pkgname='dpkt'
+pkgname="python-${_pkgname}"
+pkgver=1.9.4
 pkgrel=1
-pkgdesc="This is a Python library for interacting with and creating packets."
+pkgdesc='Fast, simple packet creation / parsing, with definitions for the basic TCP/IP protocols'
 arch=('any')
-url="https://github.com/kbandla/dpkt"
-license=('custom')
+url='https://github.com/kbandla/dpkty'
+_url_pypi='https://pypi.org/project/dpkt'
+license=('BSD')
 depends=('python')
-source=("https://files.pythonhosted.org/packages/source/d/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('c5004c61ea19b4a76f278904d4f5efb447a2a0f292f7d917d7b0e11953ee09ae52226a19218f690b2958ef9eb4ac0676f8465ed41fd200b4c6ac01f1ffd8e28c')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('f4e579cbaf6e2285ebf3a9e84019459b4367636bac079ba169527e582fca48b4')
+
+build() {
+  cd "${_pkgname}-${pkgver}"
+  python setup.py build
+}
 
 package() {
-  cd "${srcdir}/dpkt-${pkgver}"
-  python setup.py build install --root="${pkgdir}"
+  cd "${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dvm644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+
+# vim: ts=2 sw=2 et:
