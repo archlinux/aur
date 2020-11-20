@@ -1,14 +1,16 @@
 pkgbase = w3m-imgcat
 	pkgdesc = A simple script to print images to stdout
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = MIT
 	depends = w3m
 	conflicts = imgcat-bin
 	conflicts = imgcat-git
 	source = imgcat
+	source = LICENSE
 	md5sums = 99258484cb9ccb0bf6a951891a4e8eb0
+	md5sums = 2786fa3697f2142cf1adf11552dec8eb
 
 pkgname = w3m-imgcat
 
