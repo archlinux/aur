@@ -1,6 +1,6 @@
 pkgbase = preserve-git
 	pkgdesc = Efficiency oriented media player/jellyfin frontend
-	pkgver = 0.2.2.r0.g467867c
+	pkgver = 0.3.5.r0.g87156f6
 	pkgrel = 1
 	url = https://gitlab.com/tonyfinn/preserve
 	arch = any

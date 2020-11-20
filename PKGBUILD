@@ -1,7 +1,7 @@
 # Maintainer: Tony Finn <aur@tonyfinn.com>
 
 pkgname=preserve-git
-pkgver=0.2.2.r0.g467867c
+pkgver=0.3.5.r0.g87156f6
 pkgrel=1
 pkgdesc="Efficiency oriented media player/jellyfin frontend"
 arch=(any)
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 prepare() {
     cd "$srcdir/preserve"
-    make node_modules
+    make preserve-ui/node_modules
 }
 
 build() {
