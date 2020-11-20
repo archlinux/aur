@@ -1,7 +1,7 @@
 # Maintainer: Thomas Andrejak <thomas.andrejak@gmail.com>
 
 pkgname=prelude-correlator
-pkgver=5.1.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="Real time correlator of events received by Prelude Manager"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPLv2')
 depends=('python3' 'libprelude')
 makedepends=('python-setuptools')
 optdepends=('python36-netaddr')
-source=("https://www.prelude-siem.org/pkg/src/5.1.0/$pkgname-$pkgver.tar.gz"
+source=("https://www.prelude-siem.org/pkg/src/5.2.0/$pkgname-$pkgver.tar.gz"
         "prelude-correlator.run"
 	"prelude-correlator.service")
 install="$pkgname.install"
@@ -41,4 +41,4 @@ package() {
   install -D -m 0644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 }
 
-md5sums=('0916b2391a35ed7a4808ba7c8656d833' 'a0b86827d99078b61db8361f4acad285' 'a2009c2dbcfb995ca01e9ad1b371a3fb')
+md5sums=('9daad16e86ece6b353020e405f9d0e70' 'a0b86827d99078b61db8361f4acad285' 'a2009c2dbcfb995ca01e9ad1b371a3fb')
