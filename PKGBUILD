@@ -5,20 +5,6 @@
 # Contributor: johnnybash <georgpfahler at wachenzell dot org>
 # Contributor: grmat <grmat at sub dot red>
 
-pkgname=opencl-amd
-pkgdesc="OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack."
-pkgver=20.45.1164792
-pkgrel=1
-arch=('x86_64')
-url='http://www.amd.com'
-license=('custom:AMD')
-makedepends=('wget')
-depends=('libdrm' 'ocl-icd' 'gcc-libs')
-conflicts=('amdgpocl' 'opencl-amdgpu-pro-orca' 'opencl-amdgpu-pro-comgr' 'opencl-amdgpu-pro-pal' 'rocm-opencl-runtime')
-provides=('opencl-driver' "opencl-amdgpu-pro-orca=${pkgver}" "opencl-amdgpu-pro-pal=${pkgver}" "opencl-amdgpu-pro-comgr=${pkgver}") # this package provides both drivers, and installs them in a different location
-
-DLAGENTS='https::/usr/bin/wget --referer https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-45 -N %u'
-
 prefix='amdgpu-pro-'
 postfix='-ubuntu-20.04'
 major='20.45'
@@ -28,12 +14,28 @@ shared="opt/amdgpu-pro/lib/x86_64-linux-gnu"
 shared2="opt/amdgpu/lib/x86_64-linux-gnu"
 tarname="${prefix}${major}-${minor}${postfix}"
 
+pkgname=opencl-amd
+pkgdesc="OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack."
+pkgver=${major}.${minor}
+pkgrel=2
+arch=('x86_64')
+url='http://www.amd.com'
+license=('custom:AMD')
+makedepends=('wget')
+depends=('libdrm' 'ocl-icd' 'gcc-libs' 'linux>=5.9' 'numactl')
+conflicts=('amdgpocl' 'opencl-amdgpu-pro-orca' 'opencl-amdgpu-pro-comgr' 'opencl-amdgpu-pro-pal' 'rocm-opencl-runtime')
+provides=('opencl-driver' "opencl-amdgpu-pro-orca=${pkgver}" "opencl-amdgpu-pro-pal=${pkgver}" "opencl-amdgpu-pro-comgr=${pkgver}") # this package provides both drivers, and installs them in a different location
+optdepends=('clinfo')
+
+DLAGENTS='https::/usr/bin/wget --referer https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-45 -N %u'
+
 source=("https://drivers.amd.com/drivers/linux/$tarname.tar.xz")
 sha256sums=('482e7a1f8dc41839aa720bb62730f1176b9d608117f94dc2f7e2bd2cf1a5ac1a')
 
 package() {
 	mkdir -p "${srcdir}/opencl"
 	cd "${srcdir}/opencl"
+
 	# roc*
 	ar x "${srcdir}/$tarname/opencl-rocr-amdgpu-pro_${major}-${minor}_amd64.deb"
 	tar xJf data.tar.xz
@@ -53,6 +55,7 @@ package() {
 	# orca
 	ar x "${srcdir}/$tarname/opencl-orca-amdgpu-pro-icd_${major}-${minor}_amd64.deb"
 	tar xJf data.tar.xz
+
 	cd ${shared}
 	sed -i "s|libdrm_amdgpu|libdrm_amdgpo|g" libamdocl-orca64.so
 
@@ -93,6 +96,8 @@ package() {
 	mkdir -p "${pkgdir}/opt/amdgpu/share/libdrm"
 	cd "${pkgdir}/opt/amdgpu/share/libdrm"
 	ln -s /usr/share/libdrm/amdgpu.ids amdgpu.ids
+
+	mv "${srcdir}/opencl/opt/amdgpu-pro/amdgcn" "${pkgdir}/opt/amdgpu/amdgcn"
 
 	rm -r "${srcdir}/opencl"
 	rm -r "${srcdir}/libdrm"
