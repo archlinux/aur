@@ -2,7 +2,7 @@
 # Contributor: ProFfeSsoRr <evvsoft at gmail dot com>
 
 pkgname=crictl
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="CLI tool for Kubelet Container Runtime Interface (CRI)"
 arch=(x86_64)
