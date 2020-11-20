@@ -2,14 +2,14 @@
 
 pkgname=libssh2-git
 pkgver=1.9.0.r83.gcfe0bf6
-pkgrel=1
+pkgrel=2
 pkgdesc="Client-side C library implementing the SSH2 protocol"
 arch=('i686' 'x86_64')
 url="https://www.libssh2.org/"
 license=('BSD')
 depends=('glibc' 'openssl' 'zlib')
 makedepends=('git')
-provides=('libssh2')
+provides=('libssh2' 'libssh2.so')
 conflicts=('libssh2')
 source=("git+https://github.com/libssh2/libssh2.git")
 sha256sums=('SKIP')
