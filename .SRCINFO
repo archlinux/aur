@@ -1,0 +1,15 @@
+pkgbase = python-cleantoots
+	pkgdesc = Cleanup your toot history
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://gabnotes.org/cleantoots-clean-your-toot-history/
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-mastodon
+	depends = python-click
+	depends = python-html2text
+	depends = python-pendulum
+
+pkgname = python-cleantoots
+
