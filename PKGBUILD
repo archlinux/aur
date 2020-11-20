@@ -2,8 +2,8 @@
 # Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 
 pkgname=freecad-git
-pkgver=0.18.r6973.gc4d42a1f74
-pkgrel=2
+pkgver=0.19_pre.r4405.gc4d42a1f74
+pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('x86_64')
@@ -20,9 +20,8 @@ source=("git+https://github.com/FreeCAD/FreeCAD.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/FreeCAD"
-    # upstream recyles the "pre" and "staging" tags so they do not produce stable commit counts
-    git describe --long --tags --exclude '*pre*' --exclude '*staging*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_//'
+  cd FreeCAD
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
