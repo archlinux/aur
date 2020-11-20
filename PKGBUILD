@@ -1,6 +1,6 @@
 # Maintainer: Pierre Mavro <pmavro@qovery.com>
 pkgname=helm-freeze
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Freeze your charts in the wished versions"
 arch=(x86_64)
@@ -24,4 +24,4 @@ package() {
     install -Dm755 "$pkgname" "$pkgdir/usr/bin/helm-freeze"
 }
 
-md5sums=('c9fe24f2b9e70a2b4d7e97cfc3e8627d')
+md5sums=('61c33ae3eca531de12b90e377460f0b0')
