@@ -1,17 +1,17 @@
 pkgbase = cacher
 	pkgdesc = The code snippet organizer for professional developers
-	pkgver = 2.31.1
+	pkgver = 2.33.4
 	pkgrel = 1
 	url = https://www.cacher.io
 	arch = x86_64
 	license = custom:cacher
 	makedepends = gendesk
-	noextract = cacher-2.31.1.AppImage
+	noextract = cacher-2.33.4.AppImage
 	options = !strip
-	source = cacher-2.31.1.AppImage::https://s3.amazonaws.com/download.cacher.io/Cacher-2.31.1.AppImage
+	source = cacher-2.33.4.AppImage::https://s3.amazonaws.com/download.cacher.io/Cacher-2.33.4.AppImage
 	source = LICENSE
-	sha256sums = bfc579716b34ec3a65c9dcc56eb11f79dfb0985e5e1b9c94c2c9f533882541a6
-	sha256sums = SKIP
+	sha256sums = 1fa76bda2685fc58c87b49017c21dd56007b43a2861bb246472ce7e071bd40de
+	sha256sums = 3a634ac8342a95cadb1bb2f1f84242f49ad142e495ef8e55ea02439ea9af4a9e
 
 pkgname = cacher
 

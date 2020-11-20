@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=cacher
-pkgver=2.31.1
+pkgver=2.33.4
 pkgrel=1
 pkgdesc='The code snippet organizer for professional developers'
 arch=('x86_64')
@@ -12,8 +12,8 @@ options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://s3.amazonaws.com/download.cacher.io/Cacher-${pkgver}.AppImage"
         'LICENSE')
-sha256sums=('bfc579716b34ec3a65c9dcc56eb11f79dfb0985e5e1b9c94c2c9f533882541a6'
-            'SKIP')
+sha256sums=('1fa76bda2685fc58c87b49017c21dd56007b43a2861bb246472ce7e071bd40de'
+            '3a634ac8342a95cadb1bb2f1f84242f49ad142e495ef8e55ea02439ea9af4a9e')
 
 package() {
   chmod 755 ./${pkgname}-${pkgver}.AppImage
