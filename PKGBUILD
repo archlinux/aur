@@ -2,7 +2,7 @@
 
 pkgname=cado-git
 _gitname=cado
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 
 pkgdesc="Capability DO (like a sudo providing users with just the
@@ -14,16 +14,18 @@ makedepends=('make' 'cmake' 'git')
 depends=('libcap' 'pam' 'mhash' 's2argv-execs-git')
 provides=('cado' 'caprint')
 conflicts=('cado' 'caprint')
-source=("git://github.com/rd235/cado.git" "cado-0.9.4-arch.patch")
+source=("git://github.com/rd235/cado.git")
 install="cado-git.install"
-md5sums=('SKIP' '387d5a7653e8b9fb08823f56b8e04b13')
+md5sums=('SKIP')
 
 build() {
 	cd "$srcdir/$_gitname"
-	patch -p1 < ../../cado-0.9.4-arch.patch
 	mkdir -p build
 	cd build
-	cmake -D CMAKE_INSTALL_PREFIX="/usr" ..
+	cmake \
+		-DCMAKE_INSTALL_PREFIX="/usr" \
+		-DCMAKE_BUILD_TYPE=release    \
+		..
 	make
 }
 

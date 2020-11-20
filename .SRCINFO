@@ -1,6 +1,6 @@
 pkgbase = cado-git
 	pkgdesc = Capability DO (like a sudo providing users with just the capabilities they need))
-	pkgver = 0.9.4
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/rd235/cado
 	install = cado-git.install
@@ -20,9 +20,7 @@ pkgbase = cado-git
 	conflicts = cado
 	conflicts = caprint
 	source = git://github.com/rd235/cado.git
-	source = cado-0.9.4-arch.patch
 	md5sums = SKIP
-	md5sums = 387d5a7653e8b9fb08823f56b8e04b13
 
 pkgname = cado-git
 
