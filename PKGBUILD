@@ -1,7 +1,7 @@
 # Maintainer: Nicola Hinssen <nicola.hinssen@gmail.com>
 
 pkgname=ombi-v4
-pkgver=4.0.643
+pkgver=4.0.710
 pkgrel=1
 pkgdesc="Ombi V4 branch. Gives Plex or Emby users the ability to request content by themselves"
 jobid=
@@ -23,12 +23,12 @@ provides=('ombi')
 conflicts=('ombi')
 options=('staticlibs')
 install='ombi.install'
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tidusjar/Ombi.Releases/releases/download/v4.0.643/linux-x64.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tidusjar/Ombi.Releases/releases/download/v4.0.710/linux-x64.tar.gz"
         'ombi.service'
         'ombi.sysusers'
         'ombi.tmpfiles')
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0a5b6a59d7230274489074fd88a90d53c7b6c7eb39fceb2d7e7e0bb83e0e54cf'
+sha256sums=('4ab2985cd109e09aa06ed668f219b7aef5da35948576c41bb6e0221a9a7bd661'
             '64e7170dcf8648dca99831c139fecfa6505bc61d9e9188346af931e137d067dc'
             '6efc381990e1113737686d4f61795095fa8edbc176daa877fd755f1ddb3a40fa'
             'afb971692d313d988096cb4447033f8ca2234016ccc2b3590afd5cbcb36a8e56')
