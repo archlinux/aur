@@ -1,7 +1,7 @@
 pkgbase = deemix
 	pkgdesc = A barebone deezer downloader library
-	pkgver = 1.5.20
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://t.me/deemixcommunity
 	arch = any
 	license = GPL3
@@ -12,9 +12,9 @@ pkgbase = deemix
 	depends = python-mutagen
 	depends = python-spotipy
 	depends = python-eventlet
-	depends = python-dnspython
-	source = https://files.pythonhosted.org/packages/a9/59/07c16836f593a0993f725ab9230a2af43599935ad1151c45229fcfdc90f3/deemix-1.5.20.tar.gz
-	sha256sums = a6c9a330e62d37b78bf7411089a63facbafc19ac3c7fb5634c03896d5c3db6fd
+	depends = python-deezer-py
+	source = https://files.pythonhosted.org/packages/8d/5e/bc67b3df35d182dae2ebdb8d18c3d52fe6a4052d547b009d8354dd34b173/deemix-2.0.1.tar.gz
+	sha256sums = 47cb8abeb6ddb7566b1945119a653a51f551d2c279ef255b5abb716fbf1aa350
 
 pkgname = deemix
 

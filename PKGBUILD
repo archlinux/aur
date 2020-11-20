@@ -1,18 +1,18 @@
 # Maintainer: Vyacheslav Konovalov <vyachkonovalov@protonmail.com>
 
-_path=a9/59/07c16836f593a0993f725ab9230a2af43599935ad1151c45229fcfdc90f3
+_path=8d/5e/bc67b3df35d182dae2ebdb8d18c3d52fe6a4052d547b009d8354dd34b173
 pkgname=deemix
-pkgver=1.5.20
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='A barebone deezer downloader library'
 arch=(any)
 url='https://t.me/deemixcommunity'
 license=('GPL3')
 depends=('python>=3.6' 'python-click' 'python-pycryptodomex' 'python-mutagen' 'python-spotipy'
-         'python-eventlet' 'python-dnspython')
+         'python-eventlet' 'python-deezer-py')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/$_path/deemix-$pkgver.tar.gz")
-sha256sums=('a6c9a330e62d37b78bf7411089a63facbafc19ac3c7fb5634c03896d5c3db6fd')
+sha256sums=('47cb8abeb6ddb7566b1945119a653a51f551d2c279ef255b5abb716fbf1aa350')
 
 pkgver() {
   cd deemix-$pkgver
