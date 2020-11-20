@@ -1,6 +1,6 @@
 pkgbase = bitwarden-server
 	pkgdesc = Open source password management solutions for individuals, teams, and business organizations.
-	pkgver = 1.33.1
+	pkgver = 1.38.1
 	pkgrel = 1
 	url = https://github.com/bitwarden
 	install = bitwarden.install

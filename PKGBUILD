@@ -3,7 +3,7 @@
 # Contributor: Antoine Detante <antoine.detante@gmail.com>
 
 pkgname=bitwarden-server
-pkgver=1.33.1
+pkgver=1.38.1
 pkgrel=1
 pkgdesc="Open source password management solutions for individuals, teams, and business organizations."
 arch=('x86_64')
