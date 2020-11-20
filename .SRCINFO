@@ -1,7 +1,7 @@
 pkgbase = tensorflow-opt-native
 	pkgdesc = Library for computation using data flow graphs for scalable machine learning (with CFLAGS)
 	pkgver = 2.3.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.tensorflow.org/
 	arch = x86_64
 	license = APACHE

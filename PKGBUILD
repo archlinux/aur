@@ -8,7 +8,7 @@ pkgbase=tensorflow-opt-native
 pkgname=(tensorflow-opt-native tensorflow-opt-native-cuda python-tensorflow-opt-native python-tensorflow-opt-native-cuda)
 pkgver=2.3.1
 _pkgver=2.3.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Library for computation using data flow graphs for scalable machine learning (with CFLAGS)"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -107,6 +107,27 @@ prepare() {
 	COMPUTE_CAPABILITIES=5.2,5.3,6.0,6.1,6.2,7.0,7.2,7.5,8.0,8.6
   else
     echo -e "\e[1mCUDA compute capabilites overriden by env: \e[0m${COMPUTE_CAPABILITIES}"
+    if [[ "${COMPUTE_CAPABILITIES}" =~ "3.0" ]]; then
+		export TF_ENABLE_XLA=0
+		echo -e "\e[1mDisabling XLA because compute capability 3.0 is requested\e[0m"
+	fi
+	CC_ARR=($(echo "$COMPUTE_CAPABILITIES" | tr ',' '\n'))
+	echo "Compute capabilities: ${CC_ARR[@]}"
+	FIXED_CC=""
+    for cc in "${CC_ARR[@]}"; do
+		#echo "Testing $cc..."
+		if [[ $(echo "$cc < 3" | bc -l) == 1 ]]; then
+			echo -e "\e[1mWarning, compute capability $cc is not compatible with tensorflow, REMOVING\e[0m"
+		else
+			if [[ -z "$FIXED_CC" ]]; then
+				FIXED_CC+="$cc"
+			else
+				FIXED_CC+=",$cc"
+			fi
+		fi
+	done
+	echo -e "Fixed compute capabilities: \e[1m$FIXED_CC\e[0m"
+	COMPUTE_CAPABILITIES="$FIXED_CC"
   fi
   export TF_CUDA_COMPUTE_CAPABILITIES=$COMPUTE_CAPABILITIES
 
@@ -120,7 +141,7 @@ prepare() {
 build() {
   echo "Building without cuda and with native optimizations"
   cd "${srcdir}"/tensorflow-${_pkgver}-opt-native
-  export CC_OPT_FLAGS="$CFLAGS -O3 -funsafe-math-optimizations"
+  export CC_OPT_FLAGS="$CFLAGS -O3 -funsafe-math-optimizations -Wno-deprecated-gpu-targets"
 
   _copts=()
   for copt in $CC_OPT_FLAGS; do
