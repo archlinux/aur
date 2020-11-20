@@ -1,7 +1,7 @@
 # Maintainer: Nathaniel Chin <thegamingorangutans+aur at gmail.com>
 
 pkgname=python-av1an-git
-pkgver=1.12.r317.g51cb13c
+pkgver=1.12.r378.g51e865f
 pkgrel=1
 pkgdesc='A cross-platform all-in-one tool for streamlining AV1 encoding'
 arch=('any')
@@ -18,6 +18,10 @@ optdepends=('svt-av1: SVT-AV1 encoder support'
             'vmaf: VMAF calculation support'
             'x265: x265 encoder support'
             'x264: x264 encoder support'
+            'vapoursynth: Vapoursynth support'
+            'mkvtoolnix-cli: mkvmerge support'
+            'ffms2'
+            'vapoursynth-plugin-lsmashsource'
             )
 provides=('python-av1an')
 conflicts=('python-av1an')
