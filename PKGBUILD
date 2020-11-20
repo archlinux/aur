@@ -24,16 +24,3 @@ package_ttf-impallari-libre-franklin() {
   install -Dm644 -t "$pkgdir"/usr/share/fonts/TTF/impallari fonts/TTF/*.ttf
   install -Dm644 OFL.txt "$pkgdir"/usr/share/licenses/${pkgname[1]}/LICENSE
 }
-
-# package() {
-
-
-#   install -dm755 "${pkgdir}/usr/share/fonts/OTF/${_group}"
-#   install -Dpm644 fonts/OTF/*.otf "${pkgdir}/usr/share/fonts/OTF/${_group}"
-
-#   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-#   install -Dpm644 OFL.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
-
-#   install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
-#   install -Dpm644 FONTLOG.txt README.md "${pkgdir}/usr/share/doc/${pkgname}/"
-# }
