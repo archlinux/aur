@@ -1,6 +1,6 @@
 pkgbase = hypnotix-git
 	pkgdesc = An IPTV app
-	pkgver = r7.440acc1
+	pkgver = r18.2b0cc8e
 	pkgrel = 1
 	url = https://github.com/linuxmint/hypnotix
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = hypnotix-git
 	depends = dconf
 	depends = hicolor-icon-theme
 	depends = lua51
+	depends = python-imdbpy
 	depends = python-requests
 	depends = python-setproctitle
 	depends = mpv
