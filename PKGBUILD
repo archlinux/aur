@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=hoverfly
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Lightweight service virtualization/API simulation tool for developers and testers"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('hoverfly-bin' 'hoverfly-git')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SpectoLabs/hoverfly/archive/v${pkgver}.tar.gz")
-sha256sums=('48fe07d44eb6070e84f5670155d4aa5783ff0500522cc9ab1c7396f2ed9c73a8')
+sha256sums=('950bcda9aac38406053ff732fffebb23a2117a50e4fcc0bb10a5dac93e1545bf')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
