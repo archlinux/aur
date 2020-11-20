@@ -77,7 +77,6 @@ arch=(x86_64)
 license=(GPL2)
 makedepends=(
   xmlto kmod inetutils bc libelf cpio git
-  python-sphinx python-sphinx_rtd_theme graphviz imagemagick
 )
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
