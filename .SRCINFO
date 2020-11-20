@@ -1,7 +1,7 @@
 pkgbase = quaternion
 	pkgdesc = Qt5-based IM client for the Matrix protocol
 	pkgver = 0.0.9.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://matrix.org/docs/projects/client/quaternion.html
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = quaternion
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = libquotient>=0.6
+	optdepends = qtkeychain
 	provides = quaternion
 	conflicts = quaternion-git
 	source = https://github.com/quotient-im/Quaternion/archive/0.0.9.5-beta2.tar.gz

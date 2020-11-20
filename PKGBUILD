@@ -7,12 +7,13 @@ _appname=Quaternion
 pkgname=quaternion
 pkgver=0.0.9.5
 _beta_suffix="beta2"
-pkgrel=2
+pkgrel=3
 pkgdesc='Qt5-based IM client for the Matrix protocol'
 url='https://matrix.org/docs/projects/client/quaternion.html'
 arch=('x86_64' 'aarch64')
 license=('GPL3')
 depends=('qt5-tools' 'qt5-multimedia' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'libquotient>=0.6')
+optdepends=('qtkeychain')
 makedepends=('cmake')
 provides=('quaternion')
 conflicts=('quaternion-git')
