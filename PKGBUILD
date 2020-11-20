@@ -1,6 +1,6 @@
 # Maintainer: Clément Dommerc <clement.dommerc@gmail.com>
 pkgname='qlstatus'
-pkgver=1.0.9
+pkgver=1.1
 pkgrel=1
 pkgdesc='Light and modular status bar for tiling window managers'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc' 'libpulse' 'libnl' 'libnotify')
 makedepends=('make' 'cmake' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/qlem/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('7b0f42a8495f8821c96e4dd692744a51')
+md5sums=('aa11a8f6e44127385b5ba61b398882ca')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
