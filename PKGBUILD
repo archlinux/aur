@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/KDAB/hotspot"
 license=('GPL2')
 depends=('qt5-base>=5.6.0' 'libelf' 'elfutils' 'threadweaver' 'ki18n' 'kconfig' 'kio' 'kitemviews' 'kcoreaddons' 'kitemmodels' 'kconfigwidgets' 'solid')
-makedepends=('cmake>=3.1.0' 'extra-cmake-modules')
+makedepends=('cmake>=3.1.0' 'extra-cmake-modules' 'desktop-file-utils')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("https://github.com/KDAB/hotspot/releases/download/v${pkgver}/hotspot-v${pkgver}.tar.gz")
@@ -23,4 +23,5 @@ build() {
 package() {
     cd "${pkgname}-v${pkgver}"
     make DESTDIR="${pkgdir}/" install
+    desktop-file-install hotspot.desktop --dir="${pkgdir}/usr/share/applications/"
 }
