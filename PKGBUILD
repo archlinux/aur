@@ -23,6 +23,7 @@ conflicts=('discord-canary')
 url='https://canary.discordapp.com'
 license=('custom')
 depends=('electron' 'gtk3' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'xdg-utils' 'libcups')
+makedepends=('asar')
 optdepends=('libpulse: Pulseaudio support'
             'xdg-utils: Open files'
             'noto-fonts-emoji: Google font for emoji support.'
@@ -50,32 +51,8 @@ prepare() {
 
 package() {
   # Install the app
-  install -d "$pkgdir"/opt/$_pkgname
-
-  # Copy relevant data
-  cp -r "$_tarname"/resources  "$pkgdir"/opt/$_pkgname/
-  cp    "$_tarname"/discord.png "$pkgdir"/opt/$_pkgname/
-  cp 	"$_tarname"/$_pkgname.desktop "$pkgdir"/opt/$_pkgname/
-
-  # Create starter script for discord
-  echo "#!/bin/sh" >> "$pkgdir"/opt/$_pkgname/$_pkgname
-  echo "exec electron /opt/$_pkgname/resources/app.asar \$@" >> "$pkgdir"/opt/$_pkgname/$_pkgname
-
-  # Set permissions
-  chmod 755 "$pkgdir"/opt/$_pkgname/$_pkgname
-
-  # Install.
-  install -d "$pkgdir"/usr/{bin,share/{pixmaps,applications}}
-  install -d "$pkgdir"/usr/lib/electron
-  install -d "$pkgdir"/usr/lib/electron/resources
-
-  # Create a symbolic link to the binary itself (discord-canary)
-  ln -s /opt/$_pkgname/$_pkgname "$pkgdir"/usr/bin/$_pkgname
-  # Create a symbolic link to the icon.
-  ln -sf /opt/$_pkgname/discord.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
-  # Create a symbolic link to the .desktop file.
-  ln -sf /opt/$_pkgname/$_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
-
+  install -d "$pkgdir"/usr/lib/$_pkgname
+  
   # HACKS FOR SYSTEM ELECTRON
   # Without this it'd fail to launch saying it's missing build_info.json.
   # Then fail saying it's missing discord.png
@@ -84,9 +61,25 @@ package() {
   # When their own electron is quite broken, to be fair. At least under linux.
   # No offense to them, though. I still enjoy the app, propietary and all.
   # Thanks to the discord_arch_electron guy for this ;)
-  ln -s /opt/$_pkgname/resources/build_info.json "$pkgdir"/usr/lib/electron/resources/
-  ln -s /opt/$_pkgname/discord.png        "$pkgdir"/usr/lib/electron
-
+  # Thanks to https://aur.archlinux.org/packages/discord_arch_electron/#comment-776307 for the less-hacky fix.
+  asar e $_tarname/resources/app.asar $_tarname/resources/app
+  sed -i "s|process.resourcesPath|'/usr/lib/$_pkgname'|" $_tarname/resources/app/app_bootstrap/buildInfo.js
+  sed -i "s|exeDir,|'/usr/share/pixmaps',|" $_tarname/resources/app/app_bootstrap/autoStart/linux.js
+  
+  # Copy relevant data
+  cp -r "$_tarname"/resources/*  "$pkgdir"/usr/lib/$_pkgname/
+  rm "$pkgdir"/usr/lib/$_pkgname/app.asar
+  
+  # Create starter script for discord
+  echo "#!/bin/sh" >> "$srcdir"/$_pkgname
+  echo "exec electron /usr/lib/$_pkgname/app \$@" >> "$srcdir"/$_pkgname
+  
+  install -d "$pkgdir"/usr/{bin,share/{pixmaps,applications}}
+  install -Dm 755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
+  
+  cp $_tarname/discord.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
+  cp $_tarname/$_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
+  
   # Licenses
   install -Dm 644 LICENSE.html "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.html
   install -Dm 644 OSS-LICENSES.html "$pkgdir"/usr/share/licenses/$pkgname/OSS-LICENSES.html
