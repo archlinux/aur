@@ -1,11 +1,11 @@
 # Maintainer: L.G. Sarmiento <lgsarmientop-ala-unal.edu.co>
 pkgname=daemonize-git
 _pkgname=daemonize
-pkgver=r77.6b10308
+pkgver=r81.18869a7
 pkgrel=1
 pkgdesc="Command-line utility for running any arbitrary program as a Unix daemon"
 url="http://software.clapper.org/daemonize/"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 makedepends=('git')
 depends=('glibc')
 license=('BSD')
