@@ -4,12 +4,13 @@
 _pkgbasename=sdl_image
 pkgname=lib32-$_pkgbasename
 pkgver=1.2.12
-pkgrel=6
+pkgrel=7
 pkgdesc="A simple library to load images of various formats as SDL surfaces (32-bit)"
 url="https://www.libsdl.org/projects/SDL_image/"
 arch=(x86_64)
 license=(custom)
-depends=('lib32-sdl>=1.2.13' lib32-libpng 'lib32-libjpeg>=7' lib32-libtiff lib32-zlib "$_pkgbasename")
+depends=('lib32-sdl>=1.2.13' lib32-libpng 'lib32-libjpeg-turbo' lib32-libtiff lib32-zlib "$_pkgbasename")
+provides=('libSDL_image-1.2.so')
 source=(https://www.libsdl.org/projects/SDL_image/release/SDL_image-${pkgver}.tar.gz)
 sha256sums=('0b90722984561004de84847744d566809dbb9daf732a9e503b91a1b5a84e5699')
 
