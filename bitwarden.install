@@ -23,14 +23,14 @@ post_install() {
 	sed -i "s/#FQDN#/$FQDN/" /var/lib/bitwarden/web/app-id.json
 
   # Pull docker images
-  docker pull bitwarden/mssql:1.19.0
-  docker pull bitwarden/web:1.19.0
-  docker pull bitwarden/attachments:1.19.0
-  docker pull bitwarden/api:1.19.0
-  docker pull bitwarden/identity:1.19.0
-  docker pull bitwarden/admin:1.19.0
-  docker pull bitwarden/icons:1.19.0
-  docker pull bitwarden/nginx:1.19.0
+  docker pull bitwarden/mssql:1.38.1
+  docker pull bitwarden/web:1.38.1
+  docker pull bitwarden/attachments:1.38.1
+  docker pull bitwarden/api:1.38.1
+  docker pull bitwarden/identity:1.38.1
+  docker pull bitwarden/admin:1.38.1
+  docker pull bitwarden/icons:1.38.1
+  docker pull bitwarden/nginx:1.38.1
 
   # Create docker network
   docker network create bitwarden-net --driver bridge
