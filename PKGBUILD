@@ -1,10 +1,9 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 
 _pkgname=rust
-_cargo=0.48.0
 
 pkgname=mingw-w64-rust-bin
-pkgver=1.47.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (PLEASE READ COMMENTS FIRST) (official build, mingw-w64)"
 arch=('x86_64')
@@ -20,20 +19,20 @@ provides=("mingw-w64-rust=${pkgver}")
 conflicts=('mingw-w64-rust')
 options=('!strip' 'staticlibs' '!buildflags')
 
-source=("https://static.rust-lang.org/dist/cargo-${_cargo}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
+source=("https://static.rust-lang.org/dist/cargo-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rustc-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-i686-pc-windows-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-pc-windows-gnu.tar.xz"{,.asc})
-sha256sums=('6958f9797b7acacb708423c61f5e8b23c63d9e96fdc7c07fdb0a3feafeaf27e9'
+sha256sums=('b11d595581e2580c069b5039214e1031a0e4f87ff6490ac39f92f77857e37055'
             'SKIP'
-            '6effe67c3461335eabba2334f4747260bd479c938e635899a60ed094beec7481'
+            'fc4d292a52cbb6b84fb9f065d0d7596064a9b957381d639d5a750d6e2bf02483'
             'SKIP'
-            'a469db59f7df3a5e4003421d853b274e828b537d2d56fd5ce6bba8ba73266f02'
+            '1c00a6a0dabbf6290728b09f9307d9fa6cc985487f727075c68acd4a600ef3f8'
             'SKIP'
-            '441abb95fb607a17fa249302f530282ce11c02597deb6d9ad2cfb4136291cd6d'
+            '455dc2f6b3bf699de9435f2c6b774cfb00e9f7a35f0974b72983f8067d7f72d5'
             'SKIP'
-            '5c598edc6810bb8bc6439d8b49ce2e837ecd4295bd3bdcf4f6d580e177cdad85'
+            '1f0bbb31a9a181e5cb1ed12f1d30c65f980b8fd64c459ce3a429f6f5eaa686d7'
             'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
@@ -42,10 +41,10 @@ backup=("opt/${_pkgname}/cargo/config")
 prepare() {
   cd ${srcdir}
   mkdir -p "rust-${pkgver}-x86_64-unknown-linux-gnu"
-  cp "cargo-${_cargo}-x86_64-unknown-linux-gnu/install.sh" "rust-${pkgver}-x86_64-unknown-linux-gnu"
+  cp "cargo-${pkgver}-x86_64-unknown-linux-gnu/install.sh" "rust-${pkgver}-x86_64-unknown-linux-gnu"
 
-  mv "cargo-${_cargo}-x86_64-unknown-linux-gnu/cargo" "rust-${pkgver}-x86_64-unknown-linux-gnu"
-  cat "cargo-${_cargo}-x86_64-unknown-linux-gnu/components" >> "rust-${pkgver}-x86_64-unknown-linux-gnu/components"
+  mv "cargo-${pkgver}-x86_64-unknown-linux-gnu/cargo" "rust-${pkgver}-x86_64-unknown-linux-gnu"
+  cat "cargo-${pkgver}-x86_64-unknown-linux-gnu/components" >> "rust-${pkgver}-x86_64-unknown-linux-gnu/components"
 
   mv "rustc-${pkgver}-x86_64-unknown-linux-gnu/rustc" "rust-${pkgver}-x86_64-unknown-linux-gnu"
   cat "rustc-${pkgver}-x86_64-unknown-linux-gnu/components" >> "rust-${pkgver}-x86_64-unknown-linux-gnu/components"
