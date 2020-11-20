@@ -3,7 +3,7 @@
 
 pkgname=sge
 pkgver=8.1.9
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc="The Son of Grid Engine is a community project to continue Sun's old gridengine."
 arch=('x86_64')
@@ -37,6 +37,8 @@ prepare() {
 	sed 's/} drmaa2_\(dict\|list\)_s;/};/g' -i source/libs/japi/drmaa2_list_dict.h
 
 	sed '1s/python$/python2/' -i source/dist/util/resources/{jsv/jsv,monitoring/check_sge}.py
+
+	sed '/AddSGEStartUpScript/s/^/#/' -i source/dist/inst_sge
 
 	# https://www.linuxquestions.org/questions/programming-9/union-wait-problem-269024
 	sed 's|union wait w;|int w;|g' -i source/3rdparty/qtcsh/sh.proc.c
