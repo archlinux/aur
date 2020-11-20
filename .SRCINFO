@@ -1,6 +1,6 @@
 pkgbase = ytmdl
 	pkgdesc = Download songs from YouTube with metadata from sources like Itunes and Gaana
-	pkgver = 2020.11.20
+	pkgver = 2020.11.20.post1
 	pkgrel = 0
 	url = https://github.com/deepjyoti30/ytmdl
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = ytmdl
 	optdepends = tensorflow: Trim Support
 	provides = ytmdl
 	conflicts = ytmdl-git
-	source = https://files.pythonhosted.org/packages/4b/cf/e93b65904ce2392c1e8a6979975f1c05622828690565fb672c5d13ba829e/ytmdl-2020.11.20.tar.gz
+	source = https://files.pythonhosted.org/packages/64/2f/dfc2a1ad86993e0385397dabbc7445d52470a26c8496e09f70c79cb4902c/ytmdl-2020.11.20.post1.tar.gz
 	md5sums = SKIP
 
 pkgname = ytmdl
