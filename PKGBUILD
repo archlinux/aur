@@ -11,6 +11,7 @@ depends=('libusb' 'udev' 'systemd' 'hid-asus-rog-dkms-git')
 optdepends=('asus-rog-nb-wmi-dkms-git: G14/G15 support'
 	'acpi_call: fan control')
 makedepends=('git' 'rust' 'clang' 'glibc')
+provides=('asus-nb-ctrl')
 source=('git+https://gitlab.com/asus-linux/asus-nb-ctrl.git')
 md5sums=('SKIP')
 _gitdir=${pkgname%"-git"}
