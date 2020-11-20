@@ -5,7 +5,7 @@
 pkgname=qt5-webengine-595
 _qtver=5.9.5
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('LGPL3' 'LGPL2.1' 'BSD')
@@ -21,14 +21,16 @@ source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submo
         "QTBUG-77037.diff"
         "WEBRTC-7857.diff"
         "qtwebengine-ffmpeg4.patch"
-        "fix-building-with-system-icu.diff")
+        "fix-building-with-system-icu.diff"
+        "QTBUG-86018.patch")
 sha256sums=('70d26db4e7944291c5f843b875916fb95ceec0f0a8fea3daea8004990199fc07'
             'ae6b783f6dc8a6b6b97e44101a685aeca858bd5948e083ce442821b5d8db8c74'
             '3510f53302c6147882f43855da448b4f08cbdb10297b91474849ddbd359d5e9d'
             '5f1b988568f57bff1b64341d0a447d1e43189215a7c0689540f45bedcf969119'
             'ddd8d8b64fb2f81bbc5acd3d77cc6aeb79df44db451c3fed94f0e05b73c7b078'
             '0be352f23946a41cddae941ecedfe1bceb62b23e2a1225dd5469e77e251ccf42'
-            'cef22eeef1dedd484dec4cf94bb0aed2881ea7b2ee6d563e6940f4362e26604f')
+            'cef22eeef1dedd484dec4cf94bb0aed2881ea7b2ee6d563e6940f4362e26604f'
+            '382ab1774b458a366deac45e38173147cc42f5edbbfb6b93e905c59c5c4abb46')
 
 prepare() {
   mkdir -p build
@@ -45,6 +47,7 @@ prepare() {
   patch -p1 -i ../WEBRTC-7857.diff 
   patch -p1 -i ../qtwebengine-ffmpeg4.patch
   patch -p1 -i ../fix-building-with-system-icu.diff
+  patch -p1 -i ../QTBUG-86018.patch
 }
 
 build() {
