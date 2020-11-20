@@ -1,6 +1,6 @@
 # Maintainer: relrel <relrelbachar@gmail.com>
 pkgname=ruffle-bin
-pkgver=nightly.2020.11.13
+pkgver=nightly.2020.11.20
 pkgrel=1
 pkgdesc="A Flash Player emulator written in Rust"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://ruffle.rs/"
 license=('Apache' 'MIT')
 conflicts=(ruffle-git)
 source=("https://github.com/ruffle-rs/ruffle/releases/download/${pkgver//./-}/ruffle_${pkgver//./_}_linux.tar.gz")
-sha512sums=('badca40841b93ffdc74cf891f9bb7acc1c422c0f8be7e1dea2d7ae44cef265d4b56853dca772761387498ee4317bb88ff60ce2199a73eb0148690812f86ff8fb')
+sha512sums=('1d402f03ba8f256f15be951f850388a0ed79556fcddc64cdd2fed208c80785e5e9684c5e018553517ba3ab924047d4ed8f25bcbfaab99becd139b53783e356b4')
 
 package() {
 	cd "$srcdir/"
