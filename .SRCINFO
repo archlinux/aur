@@ -1,7 +1,7 @@
 pkgbase = yabridge-bin
 	pkgdesc = Yet Another VST bridge, run Windows VST2 plugins under Linux
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/robbert-vdh/yabridge
 	install = yabridge.install
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = yabridge-bin
 	provides = yabridge
 	provides = yabridgectl
 	conflicts = yabridge
+	conflicts = yabridgectl
 	conflicts = yabridgectl-git
 	options = !strip
 	source = https://github.com/robbert-vdh/yabridge/releases/download/2.0.2/yabridge-2.0.2.tar.gz
