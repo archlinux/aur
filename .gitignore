@@ -1,0 +1,6 @@
+pkg
+src
+rtl8821ce
+*.zst
+*.xz
+git.sh

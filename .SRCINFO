@@ -1,0 +1,20 @@
+pkgbase = rtl8821ce-dkms-lts
+	pkgdesc = rtl8821CE driver for lts kernel with firmware
+	pkgver = 1.0.5.r110.gd95376d
+	pkgrel = 1
+	url = https://github.com/MounirErhili/rtl8821ce.git
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = bc
+	makedepends = linux-lts-headers
+	depends = dkms
+	depends = bc
+	depends = linux-lts-headers
+	conflicts = rtl8821ce
+	source = git+https://github.com/MounirErhili/rtl8821ce.git
+	sha256sums = SKIP
+
+pkgname = rtl8821ce-dkms-lts
+
