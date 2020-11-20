@@ -39,7 +39,7 @@ pkgbase = java11-jetbrains-imfix
 	sha256sums = c0c01fcc02dc18ed96ef697b3bedce0e8336b212cb1fcee90b2129987f4ae8ec
 
 pkgname = jre11-jetbrains-headless-imfix
-	pkgdesc = JetBrains Java 11 headless runtime environment
+	pkgdesc = JetBrains Java 11 headless runtime environment (With patch that allows the IME window follow the cursor)
 	install = install_jre-jetbrains-headless.sh
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
@@ -52,7 +52,6 @@ pkgname = jre11-jetbrains-headless-imfix
 	provides = java-runtime-headless=11
 	provides = java-runtime-headless-jetbrains=11
 	provides = jre11-jetbrains-headless=11.0.9.b1183.9-1
-	provides = jre11-jetbrains-headless=11.0.9.b1183.9
 	backup = etc/java11-jetbrains/logging.propertopenjdkies
 	backup = etc/java11-jetbrains/management/jmxremote.access
 	backup = etc/java11-jetbrains/management/jmxremote.password.template
@@ -69,7 +68,7 @@ pkgname = jre11-jetbrains-headless-imfix
 	backup = etc/java11-jetbrains/sound.properties
 
 pkgname = jre11-jetbrains-imfix
-	pkgdesc = JetBrains Java 11 full runtime environment
+	pkgdesc = JetBrains Java 11 full runtime environment (With patch that allows the IME window follow the cursor)
 	install = install_jre-jetbrains.sh
 	depends = jre11-jetbrains-headless=11.0.9.b1183.9-1
 	depends = giflib
@@ -79,11 +78,10 @@ pkgname = jre11-jetbrains-imfix
 	provides = java-runtime=11
 	provides = java-runtime-jetbrains=11
 	provides = jre11-jetbrains=11.0.9.b1183.9-1
-	provides = jre11-jetbrains=11.0.9.b1183.9
 	conflicts = jre11-jetbrains
 
 pkgname = jdk11-jetbrains-imfix
-	pkgdesc = JetBrains Java 11 development kit
+	pkgdesc = JetBrains Java 11 development kit (With patch that allows allow the IME window follow the cursor)
 	install = install_jdk-jetbrains.sh
 	depends = jre11-jetbrains=11.0.9.b1183.9-1
 	depends = java-environment-common=3
@@ -92,5 +90,4 @@ pkgname = jdk11-jetbrains-imfix
 	provides = java-environment=11
 	provides = java-environment-jetbrains=11
 	provides = jdk11-jetbrains=11.0.9.b1183.9-1
-	provides = jdk11-jetbrains=11.0.9.b1183.9
 	conflicts = jdk11-jetbrains
