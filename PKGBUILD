@@ -1,13 +1,13 @@
 # Contributor: derfenix <derfenix@gmail.com>
 
 pkgname=neochat-git
-pkgver=r941.91f82fb
-pkgrel=5
+pkgver=r1061.2c7e7f4
+pkgrel=1
 pkgdesc="A glossy cross-platform Matrix client for KDE"
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/network/neochat"
 license=('GPL3')
-depends=('libquotient-git' 'qtkeychain' 'qt5-quickcontrols2>=5.15.0' 'qt5-multimedia>=5.15.0' 'qt5-svg>=5.15.0' 'qt5-base>=5.15.0' 'kirigami2>=5.74.0' 'kitemmodels>=5.74.0' 'ki18n>=5.74.0' 'knotifications>=5.74.0' 'kconfig>=5.74.0' 'kcoreaddons>=5.74.0')
+depends=('libquotient' 'qtkeychain' 'qt5-quickcontrols2>=5.15.0' 'qt5-multimedia>=5.15.0' 'qt5-svg>=5.15.0' 'qt5-base>=5.15.0' 'kirigami2>=5.74.0' 'kitemmodels>=5.74.0' 'ki18n>=5.74.0' 'knotifications>=5.74.0' 'kconfig>=5.74.0' 'kcoreaddons>=5.74.0')
 makedepends=('cmark' 'cmake>=3.1.0' 'git' 'extra-cmake-modules') 
 source=("neochat::git+https://invent.kde.org/network/neochat.git")
 conflicts=('neochat')
