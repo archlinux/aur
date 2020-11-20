@@ -10,21 +10,21 @@ arch=(x86_64)
 url="https://mesa3d.org/"
 license=('MIT')
 depends=("libdrm" "libelf" "libglvnd" "libomxil-bellagio" "libunwind" "libxdamage" "libxxf86vm" "llvm-libs"
-	       "lm_sensors" "wayland" "zstd" "libxshmfence" "libclc" "expat" "vulkan-icd-loader")
+					"lm_sensors" "wayland" "zstd" "libxshmfence" "libclc" "expat" "vulkan-icd-loader")
 makedepends=("bison" "flex" "valgrind" "meson" "ninja" "git" "ninjas2" "clang" "libxvmc"
-             "python" "python-appdirs" "python-mako" "python-evdev" "elfutils" "glslang" "libva" "libepoxy" "libxv" "libvdpau"
-	           "libx11" "libxml2" "libxrandr"  "llvm" "libconfig" "gtk3" "wayland-protocols" "xorgproto" "patch" "libxv" "libxvmc"
-	           "libepoxy")
+							"python" "python-appdirs" "python-mako" "python-evdev" "elfutils" "glslang" "libva" "libepoxy" "libxv" "libvdpau"
+							"libx11" "libxml2" "libxrandr"  "llvm" "libconfig" "gtk3" "wayland-protocols" "xorgproto" "patch" "libxv" "libxvmc"
+							"libepoxy")
 conflicts=("mesa" "opencl-mesa" "vulkan-intel" "vulkan-radeon" "vulkan-mesa-layer" "libva-mesa-driver" "mesa-vdpau" "libglvnd" "ocl-icd"
-	         "mesa-aco-rc" "mesa-llvm" "mesa-llvm-rc" "mesa-git")
+						"mesa-aco-rc" "mesa-llvm" "mesa-llvm-rc" "mesa-git")
 replaces=("mesa" "opencl-mesa" "vulkan-intel" "vulkan-radeon" "vulkan-mesa-layer" "libva-mesa-driver" "mesa-vdpau" "libglvnd" "ocl-icd"
-          "mesa-aco-rc" "mesa-llvm" "mesa-llvm-rc" "mesa-git")
+						"mesa-aco-rc" "mesa-llvm" "mesa-llvm-rc" "mesa-git")
 provides=("mesa" "opencl-mesa" "vulkan-intel" "vulkan-radeon" "vulkan-driver" "vulkan-mesa-layer" "libva-mesa-driver" "mesa-vdpau" "opengl-driver"
-	        "opencl-driver" "mesa-libgl" "libglvnd" "libgl" "libegl" "libgles" "ocl-icd" "opencl-icd-loader")
+						"opencl-driver" "mesa-libgl" "libglvnd" "libgl" "libegl" "libgles" "ocl-icd" "opencl-icd-loader")
 source=("https://archive.mesa3d.org/mesa-${pkgver}.tar.xz"
-        "LICENSE")
+				"LICENSE")
 md5sums=("SKIP"
-         "SKIP")
+					"SKIP")
 
 package() {
 	cd mesa-${pkgver}
@@ -42,7 +42,7 @@ package() {
 	# build
 	msg2 "Build with meson"
 	meson build/ \
-  -D b_ndebug=true \
+	-D b_ndebug=true \
   -D b_lto=true \
 	-Dprefix=/usr \
 	-Dplatforms=x11,wayland \
