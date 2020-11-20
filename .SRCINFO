@@ -1,6 +1,6 @@
 pkgbase = python-bayesian-optimization
 	pkgdesc = Bayesian global optimization with gaussian processes
-	pkgver = 1.0.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/fmfn/BayesianOptimization
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-bayesian-optimization
 	depends = python-numpy
 	depends = python-scikit-learn
 	depends = python-scipy
-	source = git+https://github.com/fmfn/BayesianOptimization#tag=v1.0.1
+	source = git+https://github.com/fmfn/BayesianOptimization#tag=1.2.0
 	md5sums = SKIP
 
 pkgname = python-bayesian-optimization
