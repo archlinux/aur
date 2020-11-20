@@ -1,7 +1,7 @@
 # Maintainer: Marco Giannini 
 # Contributor:
 pkgname=dike
-pkgver=20201120-versione-7.3.0
+pkgver=20201120-versione-7-3-0
 pkgrel=1
 pkgdesc="Tool di firma e rinnovo online per i certificati digitali emessi da InfoCert S.p.A."
 arch=('x86_64')
