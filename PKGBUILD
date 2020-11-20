@@ -3,7 +3,7 @@
 pkgname=tribler
 _pkgname=tribler
 pkgver=7.5.4
-pkgrel=0
+pkgrel=1
 pkgdesc="P2P/Bittorrent/YouTube client"
 arch=("x86_64")
 url="http://tribler.org"
@@ -47,10 +47,11 @@ package() {
     # Copy files from the source tarball to /opt/Tribler/.
     cp -r "$srcdir/tribler/src/"{anydex,pyipv8,tribler-common,tribler-core,tribler-gui,requirements.txt,run_tribler.py} "$pkgdir/opt/Tribler/"
     cp -r "$srcdir/tribler/build/debian/tribler/usr/share/pixmaps/tribler_big.xpm" "$pkgdir/opt/Tribler/"
-    cp -r "tribler.sh" "$pkgdir/opt/Tribler/"
+    install -Dm644 tribler.sh "$pkgdir/opt/Tribler/"
+    chmod +x "$pkgdir/opt/Tribler/tribler.sh"
         
     # Copy desktop launcher to /usr/share/applications/.
-    cp -r "Tribler.desktop" "$pkgdir/usr/share/applications/Tribler.desktop"
+    install -Dm644 Tribler.desktop "$pkgdir/usr/share/applications/Tribler.desktop"
 
     # Create binary symlink to /usr/bin/.
     ln -s /opt/Tribler/tribler.sh $pkgdir/usr/bin/tribler
