@@ -1,40 +1,40 @@
 #Maintainer: kevall474 <kevall474@tuta.io> <https://github.com/kevall474>
 pkgname=mesa-aco-rc
-pkgver=20.3.0_rc1
+pkgver=20.3.0_rc2
 pkgrel=1
-versiontag=20.3.0-rc1
+versiontag=20.3.0-rc2
 pkgdesc="Mesa rc release. ACO enable by default. More options are enable than the standard mesa package"
 arch=(x86_64)
 url="https://mesa3d.org/"
 license=('MIT') 
 depends=("libdrm" "libelf" "libglvnd" "libomxil-bellagio" "libunwind" "libxdamage" "libxxf86vm" "llvm-libs"
-	"lm_sensors" "wayland" "zstd" "libxshmfence" "libclc" "expat" "vulkan-icd-loader")
+	 "lm_sensors" "wayland" "zstd" "libxshmfence" "libclc" "expat" "vulkan-icd-loader")
 makedepends=("bison" "flex" "valgrind" "meson" "ninja" "git" "ninjas2" "spirv-tools" "spirv-llvm-translator" "clang" "libxvmc"
-            "python" "python-appdirs" "python-mako" "python-evdev" "elfutils" "glslang" "libva" "libepoxy" "libxv" "libvdpau" 
-	    "libx11" "libxml2" "libxrandr"  "llvm" "libconfig" "gtk3" "wayland-protocols" "xorgproto" "patch" "libxv" "libxvmc" 
-	    "libepoxy" "gtk3")
+             "python" "python-appdirs" "python-mako" "python-evdev" "elfutils" "glslang" "libva" "libepoxy" "libxv" "libvdpau" 
+	     "libx11" "libxml2" "libxrandr"  "llvm" "libconfig" "gtk3" "wayland-protocols" "xorgproto" "patch" "libxv" "libxvmc" 
+	     "libepoxy" "gtk3")
 conflicts=("mesa-llvm" "mesa-llvm-rc" "mesa-aco")
 replaces=("mesa-llvm" "mesa-llvm-rc" "mesa-aco")
 source=("https://archive.mesa3d.org/mesa-${versiontag}.tar.xz"
         "LICENSE")
 md5sums=("SKIP"
-        "SKIP")
+         "SKIP")
 
 build() {
 	cd mesa-${versiontag}
 
 	# remove build dir if there is one
-	echo "remove build dir if there is one"
+	msg2 "remove build dir if there is one"
 	if dir build; then
 	rm -rf build
 	fi
 
 	# create build dir
-	echo "create build dir"
-	mkdir build
+	msg2 "create build dir"
+	mkdir -p -v build
 
 	# build
-	echo "build with meson"
+	msg2 "build with meson"
 	meson build/ \
 	-Dplatforms=x11,wayland,drm,surfaceless \
 	-Ddri3=enabled \
@@ -83,11 +83,12 @@ build() {
 
 package() {
 	# compiling mesa and installing to "$pkgdir"
-	echo "compiling mesa and installing to "$pkgdir""
+	msg2 "compiling mesa and installing to "$pkgdir""
 	DESTDIR="$pkgdir" ninja $NINJAFLAGS -C mesa-${versiontag}/build/ install
 
 	# installing licencse
-	echo "installing license"
+	msg2 "installing license"
 	install -dm755 "${pkgdir}"/usr/local/share/licenses/${pkgname}-${versiontag}/
-	cp "${srcdir}"/LICENSE "${pkgdir}"/usr/local/share/licenses/${pkgname}-${versiontag}/
+	msg2 "Installing license to "${pkgdir}"/usr/local/share/licenses/${pkgname}-${versiontag}/"
+	cp -v -r "${srcdir}"/LICENSE "${pkgdir}"/usr/local/share/licenses/${pkgname}-${versiontag}/
 }

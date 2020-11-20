@@ -1,6 +1,6 @@
 pkgbase = mesa-aco-rc
 	pkgdesc = Mesa rc release. ACO enable by default. More options are enable than the standard mesa package
-	pkgver = 20.3.0_rc1
+	pkgver = 20.3.0_rc2
 	pkgrel = 1
 	url = https://mesa3d.org/
 	arch = x86_64
@@ -60,7 +60,7 @@ pkgbase = mesa-aco-rc
 	replaces = mesa-llvm
 	replaces = mesa-llvm-rc
 	replaces = mesa-aco
-	source = https://archive.mesa3d.org/mesa-20.3.0-rc1.tar.xz
+	source = https://archive.mesa3d.org/mesa-20.3.0-rc2.tar.xz
 	source = LICENSE
 	md5sums = SKIP
 	md5sums = SKIP
