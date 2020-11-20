@@ -4,7 +4,7 @@
     url='http://wiki.ros.org/move_base_flex/mbf_costmap_core'
 
     pkgname='ros-melodic-mbf-costmap-core'
-    pkgver='0.2.5'
+    pkgver='0.3.3'
     arch=('any')
     pkgrel=1
     license=('BSD')
@@ -34,7 +34,7 @@
     # Tarball version (faster download)
     _dir="move_base_flex-release-release-melodic-mbf_costmap_core"
     source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_costmap_core/${pkgver}.tar.gz")
-    sha256sums=('c2b57cc71f4830be91ee6fd3b4d00b7e1c8026557714870b8a686260c4ad010a')
+sha256sums=('be6f806ed2987d692778f50c9580f1ba02728748aabde2a32a257cd417905424')
 
     build() {
         # Use ROS environment variables
