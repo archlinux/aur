@@ -3,8 +3,11 @@
 
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
-pkgver=1.20.9
-pkgrel=3
+
+_commit=5c400cae1f9817045378966effa6bca91e45aead # server-1.20-branch 2020-11-09
+
+pkgver=1.20.9.r21.g5c400cae1
+pkgrel=2
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -14,12 +17,12 @@ makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
              'libxmu' 'libxrender' 'libxi' 'libxaw' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
-             'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols' 'egl-wayland' 'meson') # 'git')
-source=(https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2{,.sig}
+             'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols' 'egl-wayland' 'meson' 'git')
+source=(#https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2{,.sig}
+        "git+https://gitlab.freedesktop.org/xorg/xserver#commit=$_commit"
         xserver-autobind-hotplug.patch
         0001-v2-FS-58644.patch
         0002-fix-libshadow-2.patch
-        0001-xfree86-Take-second-reference-for-SavedCursor-in-xf8.patch
         xvfb-run # with updates from FC master
         xvfb-run.1
         freedesktop-bug-865.patch)
@@ -28,18 +31,22 @@ validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3'
               ''
               '3BB639E56F861FA2E86505690FDD682D974CA72A')
-sha512sums=('d9b5f93e1b9763a89187d8b272aa7d4ce9709641b8539f4536708af153310e5a4931bffd4229c51a3b0e3b12da7838750aa71b635751fb4c0bb27438cce4e5e6'
-            'SKIP'
-            'd84f4d63a502b7af76ea49944d1b21e2030dfd250ac1e82878935cf631973310ac9ba1f0dfedf10980ec6c7431d61b7daa4b7bbaae9ee477b2c19812c1661a22'
-            '74e1aa0c101e42f0f25349d305641873b3a79ab3b9bb2d4ed68ba8e392b4db2701fcbc35826531ee2667d3ee55673e4b4fecc2a9f088141af29ceb400f72f363'
-            '3d3be34ad9fa976daec53573d3a30a9f1953341ba5ee27099af0141f0ef7994fa5cf84dc08aae848380e6abfc10879f9a67f07601c7a437abf8aef13a3ec9fe1'
-            '7511af2aa99e2f6398987350ad0ff089c22c10017d40981ab610201b953ca4b29cd24aa1ff201ba792f03bdcca7d59d34c2809f4691f84bd86e8ec8016dd279d'
-            '4154dd55702b98083b26077bf70c60aa957b4795dbf831bcc4c78b3cb44efe214f0cf8e3c140729c829b5f24e7466a24615ab8dbcce0ac6ebee3229531091514'
-            'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22'
-            '81be7b0ecd9de850f0c740762d37c7489f12b34eb6adb19b3d3077f66d66e48e1206eff4bd29e50f5640509390a08fa138a4664b60d90878d4d17cb1f6919baf')    
+sha256sums=('SKIP'
+            'cae1b7f296c18177de38f9b1215a4f916da2288b85f1fcb9e80373a42e2892b8'
+            '6253fb5cf06cf650539be585d6ca13cfa00217b51ca9825476c8fd55c09341a4'
+            'd07b2fe55828dad61517a80c77f6f183113916f5e1fce30ff43041550d58bd6e'
+            'd709078f5658576931655c7a46ff90b3586a2643a9124075d00ff3a567937845'
+            '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
+            '460615227a7e42d124639d4ae02e55d1b2a250c7bdf539e018b46de71230364f')
+
+pkgver() {
+  cd xserver
+  git describe --tags | sed 's/^xorg.server.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-  cd "xorg-server-${pkgver}"
+  #cd "xorg-server-${pkgver}"
+  cd xserver
 
   # patch from Fedora, not yet merged
   patch -Np1 -i ../xserver-autobind-hotplug.patch
@@ -50,9 +57,6 @@ prepare() {
 
   # Fix libshadow.so: libfb.so => not found - merge in master
   patch -Np1 -i ../0002-fix-libshadow-2.patch
-
-  # Fix FS#67774 - merged upstream
-  patch -Np1 -i ../0001-xfree86-Take-second-reference-for-SavedCursor-in-xf8.patch
 
   # The patch for freedesktop bug 865
   patch -Np1 -i "${srcdir}/freedesktop-bug-865.patch"
@@ -66,7 +70,8 @@ build() {
   export CXXFLAGS=${CXXFLAGS/-fno-plt}
   export LDFLAGS=${LDFLAGS/,-z,now}
 
-  arch-meson xorg-server-$pkgver build \
+  #arch-meson xorg-server-$pkgver build \
+  arch-meson xserver build \
     -D os_vendor="Arch Linux" \
     -D ipv6=true \
     -D xvfb=true \
@@ -125,5 +130,6 @@ package_xorg-server-bug865() {
   install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d"
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "xorg-server-${pkgver}"/COPYING
+  #install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "xorg-server-${pkgver}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
 }
