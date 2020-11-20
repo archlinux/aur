@@ -1,7 +1,7 @@
 # Maintainer: Lucas Declercq <lucas.declercq@hoohoot.org>
 pkgname=f5epi
 pkgver=7183.2020.0108.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Endpoint inspection application. It provide capabilities to check machines software processes and files'
 arch=('x86_64')
 source=('LICENSE')
