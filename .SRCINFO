@@ -1,8 +1,8 @@
 pkgbase = java-openjdk-loom-ea-bin
 	pkgdesc = Java Project Loom OpenJDK 16 Early-Access Build
-	pkgver = 16_9f78075
-	pkgrel = 2
-	epoch = 46
+	pkgver = 16_04222bb
+	pkgrel = 1
+	epoch = 47
 	url = https://jdk.java.net/loom/
 	arch = x86_64
 	license = GPL2
@@ -20,8 +20,8 @@ pkgbase = java-openjdk-loom-ea-bin
 	provides = java-runtime-openjdk=16
 	provides = java-runtime-headless=16
 	provides = java-runtime-headless-openjdk=16
-	source = https://github.com/Anlon-Burke/openjdk-loom-bin/releases/download/46/jdk-16-loom-linux.tar.gz
-	sha256sums = 77447842c1ae9ab013660e27194ead6f3202814a251a3575d1e1f8eee9315eb3
+	source = https://github.com/Anlon-Burke/openjdk-loom-bin/releases/download/47/jdk-16-loom-linux.tar.gz
+	sha256sums = f3eb22b94441a4f6c0b6233372663c5623223e537fc28d590e0776dc73422dcc
 
 pkgname = java-openjdk-loom-ea-bin
 
