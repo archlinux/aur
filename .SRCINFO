@@ -1,14 +1,14 @@
 pkgbase = dron
 	pkgdesc = Small command line shell executor
-	pkgver = 1.3.2
-	pkgrel = 1
+	pkgver = 1.3.3
+	pkgrel = 0
 	url = https://github.com/DizoftTeam/dron
 	arch = x86_64
-	license = Apache
+	license = MIT
 	makedepends = go
 	makedepends = git
-	source = dron-1.3.2.tar.gz::https://github.com/DizoftTeam/dron/archive/1.3.2.tar.gz
-	md5sums = 7873f97d101432c59778c0b884ab8296
+	source = dron-1.3.3.tar.gz::https://github.com/DizoftTeam/dron/archive/1.3.3.tar.gz
+	md5sums = 8c8e5cb91a7d47701084edfba0e19131
 
 pkgname = dron
 
