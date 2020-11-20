@@ -1,6 +1,6 @@
 pkgbase = lightgbm
 	pkgdesc = Distributed gradient boosting framework based on decision tree algorithms.
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/Microsoft/LightGBM
 	arch = x86_64
@@ -12,13 +12,12 @@ pkgbase = lightgbm
 	depends = boost-libs
 	depends = ocl-icd
 	depends = openmpi
-	source = https://github.com/Microsoft/LightGBM/archive/v3.0.0.tar.gz
-	sha256sums = 940563ece81d94eb843c2d1dc702da5af7c2a67fb1ccf31d64b39e00262d35b5
+	source = https://github.com/Microsoft/LightGBM/archive/v3.1.0.tar.gz
+	sha256sums = 5575c5abc4630b1ecb5990363bdaf25118efbd48416dda930f390689cfc58040
 
 pkgname = lightgbm
 
 pkgname = python-lightgbm
-	arch = any
 	depends = lightgbm
 	depends = python-numpy
 	depends = python-scipy

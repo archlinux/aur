@@ -3,7 +3,7 @@
 _pkgname=LightGBM
 pkgbase=lightgbm
 pkgname=("${pkgbase}" "python-${pkgbase}")
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Distributed gradient boosting framework based on decision tree algorithms."
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('boost-libs' 'ocl-icd' 'openmpi')
 makedepends=('boost' 'cmake' 'opencl-headers' 'python-setuptools')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('940563ece81d94eb843c2d1dc702da5af7c2a67fb1ccf31d64b39e00262d35b5')
+sha256sums=('5575c5abc4630b1ecb5990363bdaf25118efbd48416dda930f390689cfc58040')
 
 build() {
     cd "${_pkgname}-${pkgver}"
@@ -24,7 +24,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_OPENMP=ON \
         -DUSE_GPU=ON \
-        -DUSE_MPI=ON \
+        -DUSE_MPI=ON
 
     cmake --build build
 }
@@ -37,7 +37,6 @@ package_lightgbm() {
 
 package_python-lightgbm() {
     depends=('lightgbm' 'python-numpy' 'python-scipy' 'python-scikit-learn')
-    arch=('any')
 
     cd "${_pkgname}-${pkgver}/python-package"
     # use library from /usr/lib instead of making a copy
