@@ -1,27 +1,27 @@
 # Maintainer: X3n0m0rph59 <x3n0m0rph59@gmail.com>
 
-pkgname='eruption-roccat-vulcan-git'
-_pkgname='eruption-roccat-vulcan'
-pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
-pkgver='0.1.17'
-pkgrel='4'
+pkgname='eruption-git'
+_pkgname='eruption'
+pkgdesc='Linux user-mode input and LED driver for keyboards, mice and other devices'
+pkgver='0.1.18'
+pkgrel='3'
 epoch=
 arch=('i686' 'x86_64')
-url='https://github.com/X3n0m0rph59/eruption-roccat-vulcan'
+url='https://github.com/X3n0m0rph59/eruption'
 license=('GPL3+')
 groups=()
 depends=('libevdev' 'hidapi' 'systemd-libs' 'dbus' 'libpulse' 'luajit' 'lua51-socket')
 makedepends=('git' 'rust' 'xorg-server-devel' 'libxrandr')
 checkdepends=()
 optdepends=()
-provides=('eruption-roccat-vulcan')
-conflicts=('eruption-roccat-vulcan')
+provides=('eruption')
+conflicts=('eruption-roccat-vulcan' 'eruption-roccat-vulcan-git')
 replaces=()
 backup=(etc/eruption/eruption.conf usr/share/eruption/scripts/lib/themes/* usr/share/eruption/scripts/lib/macros/*)
 options=()
 install='eruption.install'
 changelog=
-source=('git+https://github.com/X3n0m0rph59/eruption-roccat-vulcan.git#commit=652c0a36759b687963d954630f51695ebb4cf394')
+source=('git+https://github.com/X3n0m0rph59/eruption.git#commit=5ffe6dfe6e104a27645d4a9993e15a5d19f0cf52')
 noextract=()
 sha512sums=('SKIP')
 
@@ -83,7 +83,7 @@ package() {
     install -m 644 "support/systemd/eruption-process-monitor.service" "$pkgdir/usr/lib/systemd/user/"
     install -m 644 "support/systemd/eruption-process-monitor.preset" "$pkgdir/usr/lib/systemd/user-preset/50-eruption-process-monitor.preset"
 
-    install -m 644 "support/udev/99-eruption-roccat-vulcan.rules" "$pkgdir/usr/lib/udev/rules.d/"
+    install -m 644 "support/udev/99-eruption.rules" "$pkgdir/usr/lib/udev/rules.d/"
 
     install -m 644 "support/dbus/org.eruption.control.conf" "$pkgdir/etc/dbus-1/system.d/"
 

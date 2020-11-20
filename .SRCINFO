@@ -1,8 +1,8 @@
-pkgbase = eruption-roccat-vulcan-git
-	pkgdesc = Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards
-	pkgver = 0.1.17
-	pkgrel = 4
-	url = https://github.com/X3n0m0rph59/eruption-roccat-vulcan
+pkgbase = eruption-git
+	pkgdesc = Linux user-mode input and LED driver for keyboards, mice and other devices
+	pkgver = 0.1.18
+	pkgrel = 3
+	url = https://github.com/X3n0m0rph59/eruption
 	install = eruption.install
 	arch = i686
 	arch = x86_64
@@ -18,13 +18,14 @@ pkgbase = eruption-roccat-vulcan-git
 	depends = libpulse
 	depends = luajit
 	depends = lua51-socket
-	provides = eruption-roccat-vulcan
+	provides = eruption
 	conflicts = eruption-roccat-vulcan
+	conflicts = eruption-roccat-vulcan-git
 	backup = etc/eruption/eruption.conf
 	backup = usr/share/eruption/scripts/lib/themes/*
 	backup = usr/share/eruption/scripts/lib/macros/*
-	source = git+https://github.com/X3n0m0rph59/eruption-roccat-vulcan.git#commit=652c0a36759b687963d954630f51695ebb4cf394
+	source = git+https://github.com/X3n0m0rph59/eruption.git#commit=5ffe6dfe6e104a27645d4a9993e15a5d19f0cf52
 	sha512sums = SKIP
 
-pkgname = eruption-roccat-vulcan-git
+pkgname = eruption-git
 
