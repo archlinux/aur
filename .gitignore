@@ -1,5 +1,4 @@
-*.pkg.tar
-*.pkg.tar.*
-pkg/
-src/
-hsaudiotag3k-*.tar.gz
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
