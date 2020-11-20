@@ -2,19 +2,20 @@
 
 pkgbase=libssh-gnutls
 pkgname=(${pkgbase} ${pkgbase}-docs)
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
-pkgdesc="Library for accessing ssh client services through C libraries - compiled with gnutls (libgcrypt), documentation for libssh"
+pkgdesc="Library for accessing ssh client services through C libraries - compiled with gnutls (libgcrypt), documentation for ${pkgbase%-gnutls}"
 arch=("x86_64")
-url="http://www.libssh.org/"
+url="http://www.${pkgbase%-gnutls}.org/"
 license=("LGPL")
-makedepends=("cmake" "cmocka" "doxygen" "python")
-source=("https://www.libssh.org/files/${pkgver%.*}/${pkgname%-gnutls}-${pkgver}.tar.xz"{,.asc})
-sha256sums=("150897a569852ac05aac831dc417a7ba8e610c86ca2e0154a99c6ade2486226b" "SKIP")
+makedepends=("cmake" "cmocka" "doxygen" "openssh" "python")
+source=("https://www.${pkgbase%-gnutls}.org/files/${pkgver%.*}/${pkgbase%-gnutls}-${pkgver}.tar.xz"{,.asc})
+sha256sums=("acffef2da98e761fc1fd9c4fddde0f3af60ab44c4f5af05cd1b2d60a3fa08718" "SKIP")
 validpgpkeys=("8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D") # Andreas Schneider <asn@cryptomilk.org>
 
 prepare() {
   cd "${srcdir}"
+
   mkdir -p "${srcdir}/build"
 }
 
@@ -25,7 +26,7 @@ build() {
     -DWITH_GSSAPI=OFF \
     -DWITH_GCRYPT=ON \
     -DUNIT_TESTING=ON \
-    "${srcdir}/${pkgname%-gnutls}-${pkgver}"
+    "${srcdir}/${pkgbase%-gnutls}-${pkgver}"
   make
   make docs
 }
@@ -38,7 +39,7 @@ check() {
 package_libssh-gnutls() {
   pkgdesc="Library for accessing ssh client services through C libraries - compiled with gnutls (libgcrypt)"
   arch=("${CARCH}")
-  provides=("${pkgname/-gnutls/}")
+  provides=("${pkgname/-gnutls/}" "${pkgname/-gnutls/}.so")
   conflicts=("${pkgname/-gnutls/}")
   depends=("libgcrypt" "zlib")
 
@@ -47,11 +48,11 @@ package_libssh-gnutls() {
 }
 
 package_libssh-gnutls-docs() {
-  pkgdesc="Documentation for libssh"
+  pkgdesc="Documentation for ${pkgbase}"
   arch=("any")
   provides=("${pkgname/-gnutls/}")
   conflicts=("${pkgname/-gnutls/}")
 
-  mkdir -p "${pkgdir}/usr/share/doc/libssh"
-  cp -r "${srcdir}/build/doc/html" "${pkgdir}/usr/share/doc/libssh"
+  mkdir -p "${pkgdir}/usr/share/doc/${pkgbase%-gnutls}"
+  cp -r "${srcdir}/build/doc/html" "${pkgdir}/usr/share/doc/${pkgbase%-gnutls}"
 }
