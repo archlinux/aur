@@ -7,8 +7,9 @@ pkgdesc="Asus laptop control utilities"
 arch=('x86_64')
 url="https://gitlab.com/asus-linux/asus-nb-ctrl"
 license=('Mozilla Public License Version 2.0')
-depends=('libusb' 'udev' 'systemd' 'hid-asus-rog-dkms-git')
-optdepends=('asus-rog-nb-wmi-dkms-git: G14/G15 support'
+depends=('libusb' 'udev' 'systemd')
+optdepends=('hid-asus-rog-dkms-git: fn+key combination support'
+	'asus-rog-nb-wmi-dkms-git: G14/G15 support'
 	'acpi_call: fan control')
 makedepends=('git' 'rust' 'clang' 'glibc')
 provides=('asus-nb-ctrl')
