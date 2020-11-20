@@ -1,13 +1,14 @@
 pkgbase = ros-melodic-rosparam-shortcuts
 	pkgdesc = ROS - rosparam wrapper with improved error checking.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PickNikRobotics/rosparam_shortcuts
 	arch = x86_64
 	license = unknown
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-cmake-modules
 	makedepends = ros-melodic-eigen-conversions
 	makedepends = ros-melodic-roslint
 	depends = ros-melodic-rosparam
