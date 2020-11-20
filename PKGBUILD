@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.9.8
+pkgver=5.9.9
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -33,7 +33,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_bmqversion=5.9-r1
+_bmqversion=5.9-r2
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v='20200615'
 source=(
@@ -42,22 +42,22 @@ source=(
   "0000-sphinx-workaround.patch"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=b182b41dde931e1a8e9e2756f1934b3a1c62dc17"
-  "bmq-fix-compilation-nr_cpus.patch::https://gitlab.com/alfredchen/linux-prjc/-/commit/c6e352a26de8e46f5737fed2b876516df82adad1.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=727065d1ff38991dd7a734fe69d55a8fabbf6f54"
+  "0002-Bluetooth_Fix_LL_PRivacy_BLE_device_fails_to_connect.patch::https://git.archlinux.org/linux.git/patch/?id=b2e41088d2a2b3dd99f268833d8079d1a98ee3ea"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('7656733b316562662026ac82a7c0be41440e16bbf1bdc5447b119e34ff3b86a6'
+sha256sums=('a302d386af1278e7a8c0c2cd9a3b2119a18620eccc1f069b0f23e405bcf61fad'
             'SKIP'
             '1c9a38f2cc7fea22ea51c9fd5c5715cb3aea37bd3b6a58766318a2e123518fcc'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
-            'a18dee6e4eeb677adef61b4e695cbb800a9aa88e3f6673a6dcfef8a840dee0cc'
+            '11d2343174e5486e8ea1a1e98f9f6f1a1625043f6547484f5a729a83f94336eb'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
-            '7f4dda74fe07166c79348cff056ea1f0996be379887d86397dc46efc6c10d461'
-            '7cc22759cb74e884b2dcd603d760adb451fd1f2e5d24d472c32811b254566b7a')
+            'fc54211c5a8482408e829637a42e9d44ff8de67d21b9f20910f0dd9d23ea121b'
+            '9fecc2766e8afd23862db5874cd994669109995527b6a586e290d906bf5cbb1d')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -92,8 +92,6 @@ prepare() {
 
   echo "Applying patch ${_bmq_patch}..."
   patch -Np1 -i "$srcdir/${_bmq_patch}"
-  echo "Applying patch bmq-fix-compilation-nr_cpus.patch..."
-  patch -Np1 -i "$srcdir/bmq-fix-compilation-nr_cpus.patch"
 
   # non-interactively apply ck1 default options
   # this isn't redundant if we want a clean selection of subarch below
