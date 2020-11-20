@@ -1,12 +1,12 @@
 # Maintainer: Matthew Murray <matt@compti.me>
 pkgname=python-exif-git
 _pkgname=exif
-pkgver=r46.16c306c
+pkgver=r57.7a3aafd
 pkgrel=1
 pkgdesc="Read and modify image EXIF metadata using Python without any third-party software dependencies"
 arch=('any')
 license=('MIT')
-depends=("python")
+depends=("python" "python-plum-py")
 makedepends=("python" "python-setuptools")
 conflicts=("python-${_pkgname}")
 provides=("python-${_pkgname}")
