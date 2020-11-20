@@ -1,12 +1,12 @@
 pkgbase = cmake-doc-qch
 	pkgdesc = CMake documentation in Qt Help format
-	pkgver = 3.18.5
+	pkgver = 3.19.0
 	pkgrel = 1
 	url = http://www.cmake.org/documentation/
 	arch = any
 	license = CCPL:cc-by
-	source = CMake-3.18.5.qch::https://www.cmake.org/cmake/help/v3.18/CMake.qch
-	md5sums = 3e157f7ef871771795e6ff61237e58ff
+	source = CMake-3.19.0.qch::https://www.cmake.org/cmake/help/v3.19/CMake.qch
+	md5sums = 1f148a85d7390db9a7aae3b1a9455599
 
 pkgname = cmake-doc-qch
 
