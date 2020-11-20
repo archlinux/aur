@@ -23,6 +23,7 @@ pkgbase = zulu-embedded-jdk
 	depends = libelf
 	provides = java-environment=13
 	provides = java-runtime=13
+	conflicts = zulu-embedded-jdk11
 	replaces = zulu-embedded-jdk11
 	options = !strip
 	source = https://cdn.azul.com/zulu-embedded/bin/zulu13.33.38-ca-jdk13.0.4-c2-linux_aarch32hf.tar.gz

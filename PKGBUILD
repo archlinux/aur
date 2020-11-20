@@ -13,6 +13,7 @@ provides=("java-environment=13" "java-runtime=13")
 depends=('java-runtime-common>=3' 'java-environment-common>=3'
          'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'libnet'
          'freetype2' 'giflib' 'libelf')
+conflicts=('zulu-embedded-jdk11')
 replaces=('zulu-embedded-jdk11')
 
 #CARCH=armv7h
@@ -40,7 +41,7 @@ case "$CARCH" in
     x86_64) _arch='x64'
         _build=15.28.51
         pkgver=15.0.1
-        sha256sums=('1A3E66F90D2911DC2D4D32BB753622E1F5D629B3A0E3888E8F5EADD4B52E79EE')
+        sha256sums=('1A266AF1A4D04B70BF9EA2CEA576C9FAAA1315D376994746E123538081C56D78')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
         provides=("java-environment=14" "java-runtime=14")
         ;;
