@@ -4,7 +4,7 @@
     url='http://wiki.ros.org/move_base_flex/mbf_utility'
 
     pkgname='ros-melodic-mbf-utility'
-    pkgver='0.2.5'
+    pkgver='0.3.3'
     arch=('any')
     pkgrel=1
     license=('BSD')
@@ -32,7 +32,7 @@
     # Tarball version (faster download)
     _dir="move_base_flex-release-release-melodic-mbf_utility"
     source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_utility/${pkgver}.tar.gz")
-    sha256sums=('5d3b5448047614fe5b44d63c5196abd360f69e657efabae1ef83e301f298c69c')
+sha256sums=('afa64427a96bbf4da0e25ef4d157fc51aa31938b8b2f5aa7a31e2c928062a544')
 
     build() {
         # Use ROS environment variables
