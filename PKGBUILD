@@ -20,10 +20,9 @@ package() {
 
     install -Dm644 "com.f5.${pkgname}.desktop" "${pkgdir}/usr/share/applications/com.f5.${pkgname}.desktop"
     install -dm755 "${pkgdir}/usr/bin/"
-    install -dm755 "${pkgdir}/usr/local/lib/F5Networks/SSLVPN/var/run" # For svpn.pid
 
-    for executable in $pkgname svpn tunnelserver; do
-        ln -s "/opt/f5/vpn/${executable}" "${pkgdir}"/usr/bin/${executable}
+    for executable in $pkgname f5PolicyServer; do
+        ln -s "/opt/f5/epi/${executable}" "${pkgdir}"/usr/bin/${executable}
     done
 
     # Use system Qt libraries
