@@ -1,0 +1,15 @@
+pkgbase = python-norminette
+	pkgdesc = Open source norminette
+	pkgver = 2.52
+	pkgrel = 1
+	url = https://github.com/42School/norminette
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-argparse
+	source = python-norminette::git+https://github.com/42School/norminette.git
+	md5sums = SKIP
+
+pkgname = python-norminette
+
