@@ -1,11 +1,13 @@
 pkgbase = kjv-git
 	pkgdesc = Read the Bible, God's Word, from your terminal
-	pkgver = r12.996c670
+	pkgver = r29.068b373
 	pkgrel = 1
 	url = https://github.com/bontibon/kjv
-	arch = any
+	arch = x86_64
 	license = custom:Public Domain
-	depends = bash
+	makedepends = git
+	depends = less
+	depends = readline
 	source = kjv::git+https://github.com/bontibon/kjv.git
 	md5sums = SKIP
 
