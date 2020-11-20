@@ -1,35 +1,33 @@
 # Maintainer: Guillaume Dolle  <dev at gdolle.com>
 pkgname=spack
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers."
 arch=('i686' 'x86_64')
 url="https://spack.io/"
 license=('MIT')
 depends=('python' 'polkit')
 optdepends=( 'env-modules-tcl' 'lmod' ) 
-source=(https://github.com/spack/spack/archive/v${pkgver}.tar.gz
+source=(spack-${pkgver}.tar.gz::https://github.com/spack/spack/archive/v${pkgver}.tar.gz
         spack.sysusers
         spack.tmpfiles
         spack.pkaction
         spack.pkrules
         spack.sh
-        spack.csh
-        spack.binsh)
+        spack.csh)
 sha256sums=('064b2532c70916c7684d4c7c973416ac32dd2ea15f5c392654c75258bfc8c6c2'
             'e6d46e8f5140b4e86596d38f23af379d9adce8e9afc66f800571d7a4d9211e19'
-            '1d0a241779d3d165ddf7c1350091eb96c6dec7cf1fa6141485585f4b72c968ea'
-            'c9d79463721f5006ae6129e175ca8038bb13b9beb9b584a890662110fcf0579a'
+            'db0cc4a4ab32e6ee2e5c32898c69a0f0ce05b4e3c605beb024b5463c46e3710f'
+            '884ea4009335a0e0b1a0332a8d954aaedd47b16c48e27bd91e29be5c6d64e651'
             '7f593b7f9289972ae83ad11e0dd3281faf1c56bffa0428dd69641b36b8b94356'
-            '163202be92788f98283d1b0b7c365d736a1675b16ef91f27d2a58617f17030f7'
-            '7fb67101a9095a05006862e478cedf1a5771725ae2c8420c248e1ad5d3b504e2'
-            'a82a14f51519f8f3ea594845e5f9bf61988f3ba79d55099409acd7730debb6a0')
+            'bae7372b6347801746547174607f442a7af7352541945083d596916ac61e04ea'
+            '091234fbca78d638ae63867cac0178be574e057dae478ea86fd2a583ecc86499')
 _spackroot=/opt/spack
 _spackcfg=etc/spack/defaults/config.yaml
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  sed -i "s/install_tree:.*/install_tree: \/var\/lib\/spack\/packages/g" ${_spackcfg}
+  sed -i "s/root: *\$spack.*/root: \/var\/lib\/spack\/packages/g" ${_spackcfg}
   sed -i "s/source_cache:.*/source_cache: \/var\/lib\/spack\/cache\/source/g" ${_spackcfg}
   sed -i "s/misc_cache:.*/misc_cache: \/var\/lib\/spack\/cache\/misc/g" ${_spackcfg}
   sed -i "s/tcl:.*/tcl: \/var\/lib\/spack\/modules\/tcl/g" ${_spackcfg}
@@ -41,11 +39,10 @@ prepare() {
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
   mkdir -p ${pkgdir}/${_spackroot}/
-  mkdir -p ${pkgdir}/${_spackroot}/libexec/
   mkdir -p ${pkgdir}/${_spackroot}/bin/
   cp -dr --no-preserve=ownership share ${pkgdir}/${_spackroot}
   cp -dr --no-preserve=ownership lib ${pkgdir}/${_spackroot}
-  cp -dr --no-preserve=ownership bin/* ${pkgdir}/${_spackroot}/libexec
+  cp -dr --no-preserve=ownership bin ${pkgdir}/${_spackroot}
   cp -dr --no-preserve=ownership etc ${pkgdir}/${_spackroot}
   cp -dr --no-preserve=ownership var ${pkgdir}/${_spackroot}
   find ./* -maxdepth 0 -type f \( ! -name ".*" \) -exec install -Dm 644 "{}" "${pkgdir}/${_spackroot}/{}" \;
@@ -61,8 +58,6 @@ package() {
   install -Dm 644 ${pkgname}.pkaction ${pkgdir}/usr/share/polkit-1/actions/org.archlinux.pkexec.spack.policy
   # Fix mode to match polkit.
   install -d -o root -g 102 -m 750 ${pkgdir}/usr/share/polkit-1/rules.d
-  
-  # Script using polkit.
-  install -Dm 755 ${pkgname}.binsh ${pkgdir}/${_spackroot}/bin/${pkgname}
+
 }
 
