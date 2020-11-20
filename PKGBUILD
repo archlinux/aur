@@ -64,7 +64,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.9.8
+pkgver=5.9.9
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -75,7 +75,7 @@ makedepends=(
 )
 options=('!strip')
 _ckpatch="patch-5.9-ck${_ckpatchversion}"
-_gcc_more_v='20200615'
+_gcc_more_v='20201113'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
@@ -88,10 +88,10 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('27b8820bbd7ea278b47e1c208efeeb41c890276ae59d33971ab0d8ba0081d45e57c579f9390c5e3019a4f3beebaf17a29a959e1b6cadb9e1824ea4e568f90205'
+b2sums=('39a9a7438d8399d4e4b863e725b1b5a1ddda0c0b8b02f9fc9a4153f6dbd2ed267aaa6acaac5c0b80c8e3c122c240a82458079fcf83d639047c6372d109b2b4fe'
         'SKIP'
         '834e3290b80055fb99855cebb175152d42800c0e4750e7e1c1e65448783772174c4b6d9194fea7d59a6b41dca8a438628b2692a308ccdfd2d1ced3e0af422d4c'
-        'c8d0697f99fe6105815217b8ec059d8f587415ea8dd2b88a65e1087feedf697341a64cd56810fde9e7aeada79125fc8235faccc7e7b06492c099e27a8abbe99c'
+        '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
         'c19099ad66168db4608dee44e1913c07c035bc002a91267abc2e1eadf1788ddb5be3b17e3fdfeddcba96526dfa2b9fcc43a5dd0f8236d94c864e6477924a6718'
         'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95'
         '942add319120f9b20df7a4b9b6c5fed2c028db71686647b98b787d8459e6528bbfa51275900856f633875a8ce1bd6669405454f7d5e7385af28271c99b1dccaa')
@@ -120,6 +120,14 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
 
+  # disable CONFIG_DEBUG_INFO=y at build time otherwise memory usage blows up
+  # and can easily overwhelm a system with 32 GB of memory using a tmpfs build
+  # partition ... this was introduced by FS#66260, see:
+  # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
+  sed -i -e 's/CONFIG_DEBUG_INFO=y/# CONFIG_DEBUG_INFO is not set/' \
+      -i -e '/CONFIG_DEBUG_INFO_DWARF4=y/d' \
+      -i -e '/CONFIG_DEBUG_INFO_BTF=y/d' ./.config
+
   # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
   sed -i -e 's/# CONFIG_PSI_DEFAULT_DISABLED is not set/CONFIG_PSI_DEFAULT_DISABLED=y/' ./.config
 
@@ -133,11 +141,6 @@ prepare() {
 
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
-
-  # disable CONFIG_DEBUG_INFO=y at build time introduced in this commit
-  # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
-  sed -i -e 's/CONFIG_DEBUG_INFO=y/# CONFIG_DEBUG_INFO is not set/' \
-      -i -e '/CONFIG_DEBUG_INFO_DWARF4=y/d' -i -e '/CONFIG_DEBUG_INFO_BTF=y/d' ./.config
 
   # ck patchset itself
   echo "Patching with ck patchset..."
