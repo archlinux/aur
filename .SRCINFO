@@ -1,0 +1,11 @@
+pkgbase = motivewave
+	pkgdesc = MotiveWave for Linux
+	pkgver = 6.3.0
+	pkgrel = 1
+	url = https://www.motivewave.com
+	arch = x86_64
+	source = https://www.motivewave.com/update/download.do?file_type=LINUX
+	sha512sums = 9d27f0eb279db7bfe413aef105d4a095a1b40aadde401892d2a5e5829d7aa352794bd4f8914854763c5c70c57feed6e53dc0fe0e54c3573350f7c746c0c7770d
+
+pkgname = motivewave
+
