@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Gsänger <sebastian_gsaenger@web.de>
 pkgname=xeus-cling
 pkgver=0.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A C++ jupyter kernel based on xeus and cling"
 arch=('x86_64')
 url="https://github.com/jupyter-xeus/xeus-cling"
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('xtl' 'xproperty' 'xeus' 'nlohmann-json'
          'jupyter' 'jupyter-widgetsnbextension'
          'cling-dev' 'pugixml' 'cxxopts')
-makedepends=()
+makedepends=('cmake' 'cppzmq')
 source=("https://github.com/jupyter-xeus/$pkgname/archive/$pkgver.tar.gz"
         "0001-Rename-kernels.patch"
         "0002-Use-llvm-from-cling.patch")
