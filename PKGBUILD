@@ -1,12 +1,13 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.20.1.r131.ge10a40d4
+pkgver=1.20.1.r132.gb6eb17cb
 pkgrel=1
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
 url='http://www.ipxe.org/'
 license=('GPL')
+depends=('bash')
 makedepends=('git' 'libisoburn' 'mtools' 'syslinux' 'xz')
 provides=('ipxe')
 conflicts=('ipxe')
