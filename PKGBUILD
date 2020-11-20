@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=mixo
-pkgver=latest
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Connect your DJ software, sync your library to all your devices, listen to your sets on your phone, and backup your library to the cloud"
 arch=('x86_64')
@@ -10,10 +10,10 @@ license=("custom:${pkgname}")
 makedepends=('gendesk')
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
-source=("${pkgname}-${pkgver}.AppImage::https://www.mixo.tech/download/beta/MIXO-linux.AppImage"
+source=("${pkgname}-${pkgver}.AppImage::https://www.mixo.tech/download/beta/MIXO-${pkgver}.AppImage"
         'LICENSE')
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('2ea4c21b5d62014a51602f6dc869b4efdd118ebcab931ab9c14122a2602bd145'
+            '3ef95533dcac842af147bc12911270438deb91b7ea616adcdc28ffd38ebe46b8')
 
 package() {
   chmod 755 ./${pkgname}-${pkgver}.AppImage
