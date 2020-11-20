@@ -2,20 +2,18 @@
 # Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 
 pkgname=freecad-git
-pkgver=0.18.r4841.ga2aab9d17f
-pkgrel=1
+pkgver=0.18.r6973.gc4d42a1f74
+pkgrel=2
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('x86_64')
 url='https://www.freecadweb.org/'
 license=('LGPL')
-depends=('boost-libs' 'curl' 'desktop-file-utils' 'glew' 'hicolor-icon-theme'
-         'jsoncpp' 'libspnav' 'med' 'opencascade' 'openmpi' 'shiboken2' 'xerces-c'
-         'pyside2' 'pyside2-tools' 'python-matplotlib' 'python-netcdf4' 'python-pivy'
-         'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-base')
-makedepends=('boost' 'cmake' 'eigen' 'git' 'gcc-fortran'
-             'pyside2-tools' 'swig' 'qt5-tools')
-optdepends=('pycollada: Create, edit and load COLLADA documents.')
+depends=(boost-libs glew jsoncpp libspnav med netcdf opencascade openmpi
+         pyside2-tools python-matplotlib python-pivy python-pyside2 qt5-svg
+         qt5-tools qt5-webkit qt5-x11extras shared-mime-info xerces-c)
+makedepends=(boost cmake coin eigen gcc-fortran gendesk git ninja pyside2
+             python-shiboken2 shiboken2 swig)
 provides=('freecad')
 conflicts=('freecad' 'freecad-appimage' 'freecad-appimage-git')
 source=("git+https://github.com/FreeCAD/FreeCAD.git")
@@ -34,35 +32,56 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/FreeCAD"
+  # OpenCascade requires that /bin comes before /usr/bin in $PATH
+  export PATH="/usr/bin:$PATH"
 
-    cmake \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX="/usr/lib/freecad" \
-        -DCMAKE_INSTALL_DATAROOTDIR="/usr/share" \
-        -DCMAKE_INSTALL_DOCDIR="/usr/share/freecad/doc" \
-        -DFREECAD_USE_OCC_VARIANT="Official Version" \
-        -DBUILD_QT5=ON \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        .
-    make
+  mkdir -p build
+  cd build
+  cmake -Wno-dev ../FreeCAD \
+    -D BUILD_QT5=ON \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_C_FLAGS="$CFLAGS -fPIC -w" \
+    -D CMAKE_CXX_FLAGS="$CXXFLAGS -fPIC -w" \
+    -D CMAKE_INSTALL_DATADIR="/usr/share/freecad" \
+    -D CMAKE_INSTALL_DOCDIR="/usr/share/freecad/doc" \
+    -D CMAKE_INSTALL_PREFIX="/usr/lib/freecad" \
+    -D FREECAD_USE_EXTERNAL_PIVY=ON \
+    -D FREECAD_USE_OCC_VARIANT="Official Version" \
+    -D FREECAD_USE_QT_FILEDIALOG=ON \
+    -D PYTHON_EXECUTABLE=/usr/bin/python \
+    -G Ninja
+  ninja
 }
 
 package() {
-    cd "${srcdir}/FreeCAD"
+  DESTDIR="$pkgdir" ninja -C build install
 
-    make DESTDIR="${pkgdir}" install
+  # Create desktop shortcut
+  gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name FreeCAD \
+    --mimetypes='application/x-extension-fcstd' --startupnotify=true
 
-    local bin="FreeCAD"
-    local bin_cmd="FreeCADCmd"
-    # Symlink binaries to /usr/bin.
-    mkdir -p "${pkgdir}/usr/bin"
-    ln -s "/usr/lib/freecad/bin/${bin}" "${pkgdir}/usr/bin/${bin}"
-    ln -s "/usr/lib/freecad/bin/${bin_cmd}" "${pkgdir}/usr/bin/${bin_cmd}"
-    # Lowercase aliases for convenience.
-    ln -s "/usr/bin/${bin}" "${pkgdir}/usr/bin/${bin,,}"
-    ln -s "/usr/bin/${bin_cmd}" "${pkgdir}/usr/bin/${bin_cmd,,}"
+  # Package desktop shortcut
+  install -Dm644 freecad.desktop \
+    "$pkgdir/usr/share/applications/freecad.desktop"
 
-    # do we actually need this line?
-    echo "Path=/usr/lib/freecad" >> "${pkgdir}/usr/share/applications/org.freecadweb.FreeCAD.desktop"
+  # Package MIME info
+  #install -Dm644 freecad.xml "$pkgdir/usr/share/mime/packages/freecad.xml"
+
+  cd FreeCAD/src/Gui/Icons
+
+  # Package icons
+  for i in 16 32 48 64; do
+    install -Dm644 "freecad-icon-$i.png" \
+      "$pkgdir/usr/share/icons/hicolor/${i}x$i/apps/freecad.png"
+  done
+  install -Dm644 freecad.svg \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/freecad.svg"
+
+
+  # Package symlinks in /usr/bin
+  install -d "$pkgdir/usr/bin"
+  ln -sf /usr/lib/freecad/bin/FreeCAD "$pkgdir/usr/bin/freecad"
+  ln -sf /usr/lib/freecad/bin/FreeCAD "$pkgdir/usr/bin/FreeCAD"
+  ln -sf /usr/lib/freecad/bin/FreeCADCmd "$pkgdir/usr/bin/freecadcmd"
+  ln -sf /usr/lib/freecad/bin/FreeCADCmd "$pkgdir/usr/bin/FreeCADCmd"
 }
