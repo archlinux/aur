@@ -88,6 +88,7 @@ package() {
 
   # License
   install -Dm644 LICENSE.md $pkgdir/usr/share/licenses/UnrealEngine/LICENSE.md
+  rm LICENSE.md
   
   # Engine files (we have to copy it with all the compiled cache)
   install -dma+rwX "$pkgdir/$dir"
