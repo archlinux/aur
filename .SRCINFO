@@ -1,6 +1,6 @@
 pkgbase = prewikka
 	pkgdesc = Graphical front-end analysis console for the Prelude Framework
-	pkgver = 5.1.1
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://www.prelude-siem.org
 	arch = i686
@@ -10,6 +10,8 @@ pkgbase = prewikka
 	makedepends = python-lesscpy
 	makedepends = gettext
 	depends = python3
+	depends = python-passlib
+	depends = python-requests
 	depends = python-mako
 	depends = python-yaml
 	depends = python-werkzeug
@@ -24,8 +26,8 @@ pkgbase = prewikka
 	depends = python-voluptuous
 	depends = python-gevent
 	backup = etc/prewikka/prewikka.conf
-	source = https://www.prelude-siem.org/pkg/src/5.1.0/prewikka-5.1.1.tar.gz
-	md5sums = aa5f3621ec027211f8e4bb4474821562
+	source = https://www.prelude-siem.org/pkg/src/5.2.0/prewikka-5.2.0.tar.gz
+	md5sums = e1102494dfa50c9df91d5db08ffe51af
 
 pkgname = prewikka
 
