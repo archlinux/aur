@@ -6,7 +6,6 @@ pkgbase = whatscli-git
 	arch = i686
 	arch = x86_64
 	arch = armv7h
-	license = MIT
 	makedepends = git
 	depends = go
 	depends = git

@@ -6,7 +6,6 @@ pkgrel=1
 pkgdesc='A command line interface for whatsapp, based on go-whatsapp and tview'
 url='https://github.com/normen/whatscli'
 arch=('i686' 'x86_64' 'armv7h')
-license=('MIT')
 makedepends=('git')
 depends=('go' 'git')
 source=('git://github.com/normen/whatscli.git')
