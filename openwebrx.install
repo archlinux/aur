@@ -1,3 +1,0 @@
-post_install() {
-    ln -sf /etc/openwebrx/config_webrx.py /usr/lib/python2.7/openwebrx/config_webrx.py
-}
