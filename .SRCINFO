@@ -1,6 +1,6 @@
 pkgbase = perl-algorithm-checkdigits
 	pkgdesc = Perl extension to generate and test check digits
-	pkgver = 1.3.4
+	pkgver = 1.3.5
 	pkgrel = 1
 	url = https://metacpan.org/release/Algorithm-CheckDigits
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = perl-algorithm-checkdigits
 	depends = perl-module-build
 	depends = perl-probe-perl
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/M/MA/MAMAWE/Algorithm-CheckDigits-v1.3.4.tar.gz
-	sha512sums = b2e5cba170e0fb81c5f9aded2dc72af2646d2a1fdfa6dee5bcf943093357387de705795524523bb813810c598e3510bb7ac6fd94e3031d683acf7b50499031b1
+	source = https://cpan.metacpan.org/authors/id/M/MA/MAMAWE/Algorithm-CheckDigits-v1.3.5.tar.gz
+	sha512sums = dca6a5a26656dcf7cee305fd791dcf8b81eb5b33cf97bc7e6675549225274bd265c0ce456eebed9d129aac0e39b368a9400438c37e204b6597fa33f95a4c3476
 
 pkgname = perl-algorithm-checkdigits
 
