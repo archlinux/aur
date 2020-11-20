@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=reflex
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Run a command when files change"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cespare/reflex/archive/v${pkgver}.tar.gz")
-sha256sums=('528ef2a0160528d8514f86ce0353497ade0219017a6407e4c08878264b87d4a4')
+sha256sums=('cadb2d439bedc81df0f14e33ef14e3dfc088b95965bf7a6b2e880eb5220a39d5')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -33,6 +33,6 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -Dm755 build/${pkgname}-${pkgver} "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 build/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
