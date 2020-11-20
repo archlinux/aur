@@ -2,7 +2,7 @@
 
 pkgbase=python-cryptolyzer
 pkgname=('python2-cryptolyzer' 'python-cryptolyzer')
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Fast and flexible server cryptographic (TLS/SSL) settings analyzer library for Python 2.7/3.4+ with CLI'
 arch=('any')
@@ -10,8 +10,8 @@ url='https://gitlab.com/coroner/cryptolyzer'
 license=('MPL2')
 conflicts=('python2-cryptolyzer-git' 'python-cryptolyzer-git')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("cryptolyzer-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/6c/e0/9d77119b1a5bc7b494c1cee95783bc47e54a52c88c07a11750bd6acefa0a/cryptolyzer-0.3.0.tar.gz")
-sha256sums=('4bd2c8aafe960e04285d1bab36873f97c42ff7c77f2aff7a1bb4965d30a7b3a9')
+source=("cryptolyzer-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/fc/87/4058ec84584656bb0c3792a04a2badbf601690c219b442cf6bd8a518aed2/cryptolyzer-0.3.1.tar.gz")
+sha256sums=('6e34659fdcfbabab2181fec7f07833ebfa6b19f3ef5c4f213ed4fcde95686a37')
 
 build_python-cryptolyzer() {
   cd "cryptolyzer-${pkgver}"
