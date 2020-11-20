@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=JetBrains Java 11 Runtime
+Name[fi]=JetBrains Java 11 - ajonaikainen ympäristö
+Comment=JetBrains Java 11 Runtime
+Comment[fi]=JetBrains Java 11 - ajonaikainen ympäristö
+Keywords=java;runtime
+Exec=/usr/lib/jvm/java-11-jetbrains/bin/java -jar
+Terminal=false
+Type=Application
+Icon=java11-jetbrains
+MimeType=application/x-java-archive;application/java-archive;application/x-jar;
+NoDisplay=true
