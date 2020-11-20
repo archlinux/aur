@@ -2,7 +2,7 @@
 
 pkgname="deemix-pyweb-git"
 _pkgname="deemix-pyweb"
-pkgver=r433.a25298580e
+pkgver=r439.2a277db76a
 pkgrel=1
 pkgdesc="This is a pyqtwebengine wrapper for deemix-webui"
 arch=('any')
