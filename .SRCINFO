@@ -1,0 +1,14 @@
+pkgbase = python-plum-py
+	pkgdesc = Classes and utility functions to efficiently pack and unpack bytes
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://pypi.org/project/plum-py
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	source = https://files.pythonhosted.org/packages/py3/p/plum-py/plum_py-0.3.1-py3-none-any.whl
+	md5sums = afa75d700e2285f0c0dafac56c3658d9
+
+pkgname = python-plum-py
+
