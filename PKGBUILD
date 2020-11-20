@@ -1,4 +1,4 @@
-# Maintainer: hitori <hitori.gm at gmail dot com>
+# Maintainer: hitori <hitori.gm@gmail.com>
 # Contributor: Roshless
 pkgname=evhz-git
 pkgver=r28.2c94d6f
