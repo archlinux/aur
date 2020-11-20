@@ -12,7 +12,6 @@ pkgbase = mmwm-git
 	depends = xcb-util
 	depends = xcb-util-wm
 	depends = xcb-util-keysyms
-	options = zipman
 	source = git+https://github.com/kaugm/mmwm
 	sha256sums = SKIP
 

@@ -8,7 +8,6 @@ pkgdesc="Modern Minimalistic Window Manager (git)"
 url="https://github.com/kaugm/mmwm"
 arch=('i686' 'x86_64')
 license=('custom:MIT/X')
-options=(zipman)
 depends=('libx11' 'xcb-util' 'xcb-util-wm' 'xcb-util-keysyms')
 makedepends=('git')
 install=mmwm.install
