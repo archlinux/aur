@@ -2,7 +2,7 @@
 
 pkgname=cocoalib
 pkgver=0.99711
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ library for doing Computations in Commutative Algebra. Also includes the CoCoA-5 Interpreter."
 arch=('i686' 'x86_64')
 url="http://cocoa.dima.unige.it/"
@@ -35,6 +35,8 @@ package() {
   for file in src/CoCoA-5/packages/*; do
       install "$file" "$pkgdir/usr/lib/CoCoA/packages"
   done
+  install -d "$pkgdir/usr/lib/CoCoA/CoCoAManual"
+  install src/CoCoA-5/CoCoAManual/CoCoAHelp.xml "$pkgdir/usr/lib/CoCoA/CoCoAManual/CoCoAHelp.xml"
   install -d "$pkgdir/usr/lib/CoCoA/examples"
   for file in examples/*; do
       install "$file" "$pkgdir/usr/lib/CoCoA/examples"
