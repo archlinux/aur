@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=universal-data-tool-bin
-pkgver=0.10.34
+pkgver=0.14.9
 pkgrel=1
 pkgdesc="Collaborate & label any type of data, images, text, or documents, in an easy web interface or desktop app"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/UniversalDataTool/universal-data-tool/releases/download/v${pkgver}/Universal-Data-Tool-${pkgver}.AppImage"
         'LICENSE::https://github.com/UniversalDataTool/universal-data-tool/raw/master/LICENSE')
-sha256sums=('b5aab849064b51b9c116d6fb28c90538da4bf534f4fb002cfc682c0580f52294'
+sha256sums=('1e0a52d6aca50673a0c6e12e0fe8cc05a9c18865d5d96747a4057c8a762df05a'
             '7c65062117526f7cec40896a71b8dfab96da54194f61b18b95816920839da172')
 
 package() {
