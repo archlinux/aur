@@ -16,7 +16,7 @@ _bldtype=Release
 
 pkgname='mozc-ut-common'
 pkgver=${_mozcver}.${_utdicdate}
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
 arch=('i686' 'x86_64')
 url='https://github.com/google/mozc'
@@ -27,12 +27,12 @@ conflicts=('mozc' 'mozc-ut' 'mozc-ut2' 'mozc-neologd-ut' 'mozc-neologd-ut+ut2' '
 provides=("mozc=${_mozcver}" "mozc-ut=${_mozcver}.${_utdicdate}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
         "https://osdn.net/downloads/users/26/26897/mozcdic-ut-${_utdicdate}.${_utdicrel}.tar.bz2"
-        "https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
-        "https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip")
+        "https://osdn.net/projects/ponsfoot-aur/storage/mozc/ken_all-202010.zip"
+        "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-202010.zip")
 sha256sums=('SKIP'
             'bc40c1f4798a8d5c39325201376277289f8228491101195c85d748efbf3e0ffc'
-            'SKIP'
-            'SKIP')
+            '95e68670e52baab93f804a643a454840079ba7d6522b21c83e01dd6dfc7b75b8'
+            '57fbd2fdf5023dc1158260e6ac9ed98e63609cd14f86e74ae223f1bcb5ca852b')
 
 prepare() {
     cd ${pkgname}-git

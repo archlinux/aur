@@ -1,7 +1,7 @@
 pkgbase = mozc-ut-common
 	pkgdesc = The Open Source edition of Google Japanese Input bundled with the UT dictionary
 	pkgver = 2.25.4190.102.20201110
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/mozc
 	arch = i686
 	arch = x86_64
@@ -24,12 +24,12 @@ pkgbase = mozc-ut-common
 	conflicts = mozc-ut-united
 	source = mozc-ut-common-git::git+https://github.com/google/mozc.git#commit=cfd05a0907d4ff95a15cc6fe2d4d56ed480f4002
 	source = https://osdn.net/downloads/users/26/26897/mozcdic-ut-20201110.1.tar.bz2
-	source = https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip
-	source = https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
+	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/ken_all-202010.zip
+	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-202010.zip
 	sha256sums = SKIP
 	sha256sums = bc40c1f4798a8d5c39325201376277289f8228491101195c85d748efbf3e0ffc
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 95e68670e52baab93f804a643a454840079ba7d6522b21c83e01dd6dfc7b75b8
+	sha256sums = 57fbd2fdf5023dc1158260e6ac9ed98e63609cd14f86e74ae223f1bcb5ca852b
 
 pkgname = mozc-ut-common
 
