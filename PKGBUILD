@@ -16,7 +16,7 @@ optdepends=('qt5ct: Qt5 Configuration Utility'
             'qt5gtk2: another GTK+2.0 integration plugins for Qt5'
             'qt5-styleplugins: additional style plugins for Qt5')
 source=("https://gitea.artixlinux.org/linuxer/camera-control-webcam-switch-indicator/raw/branch/master/CameraControl-$_pkgver.tar.bz2")
-b2sums=('b60862f8b5d0a735af08bc8f3771dbd000917c244f06ae5bdec1f4291c287b64faf4e3021157acfa7bf632addc407bffa3d3b89299700deaa68a3620a31347e4')
+b2sums=('hkjhkjhkjhhkuixxbaksxbascjbascowdhwiadhwaldkwhda')
 
 
 package() {
