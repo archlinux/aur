@@ -1,7 +1,7 @@
 pkgbase = drpc
 	pkgdesc = JsonRPC cli client. Small and faster
 	pkgver = 1.3.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/DizoftTeam/dron
 	arch = x86_64
 	license = MIT
