@@ -1,6 +1,6 @@
 pkgbase = switch-lan-play
 	pkgdesc = Make you and your friends play games like in a LAN
-	pkgver = 0.2.1
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/spacemeowx2/switch-lan-play
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = switch-lan-play
 	license = GPL3
 	makedepends = cmake
 	depends = libpcap
-	source = git+https://github.com/spacemeowx2/switch-lan-play.git#tag=v0.2.1
+	source = git+https://github.com/spacemeowx2/switch-lan-play.git#tag=v0.2.3
 	sha256sums = SKIP
 
 pkgname = switch-lan-play

@@ -1,7 +1,7 @@
 # Maintainer: base64 --decode <<< Q8OpZHJpYyBDb25uZXMgPGNlZHJpYy5jb25uZXNAZ21haWwuY29tPgo=
 
 pkgname=switch-lan-play
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Make you and your friends play games like in a LAN'
 arch=('i686' 'x86_64')
