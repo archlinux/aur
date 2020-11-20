@@ -1,17 +1,24 @@
 pkgbase = cxx-common
 	pkgdesc = Common dependency management for various Trail of Bits C++ codebases
 	pkgver = 0.0.14
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/trailofbits/cxx-common
 	arch = x86_64
 	license = Apache
+	makedepends = python-setuptools
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	depends = python
 	depends = openssl
 	depends = ncurses
+	depends = libxml2
 	depends = zlib
 	options = staticlibs
 	options = !strip
-	source = https://github.com/trailofbits/cxx-common/releases/download/v0.0.14/libraries-llvm1000-ubuntu20.04-amd64.tar.xz
-	sha256sums = 1d6f576978b7aa4ab52133d3ee587e2c2b84893aa5b77c2f869be00113d31acd
+	source = https://github.com/trailofbits/cxx-common/archive/v0.0.14.tar.gz
+	sha256sums = 1f7c3de3fa491cfba52abd4ae5fe5cc00112309239737b89ecc8c00a9b6cb2c2
 
 pkgname = cxx-common
 
