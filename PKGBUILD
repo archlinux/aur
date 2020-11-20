@@ -1,6 +1,6 @@
 # Maintainer: Deepjyoti <deep.barman30@gmail.com>
 pkgname=ytmdl
-pkgver=2020.07.26
+pkgver=2020.11.20
 pkgrel=0
 pkgdesc="Download songs from YouTube with metadata from sources like Itunes and Gaana"
 arch=("any")
@@ -23,22 +23,28 @@ depends=(
 		"python-wheel"
 		"python-youtube-search-git"
 		"python-unidecode"
+		"python-simber"
+		"python-pydes"
+		"python-urllib3"
 		)
 makedepends=("git" "python-setuptools")
-optdepends=(
-			"tensorflow: Trim Support"
-			)
-provides=()
-conflicts=()
+optdepends=("tensorflow: Trim Support")
+provides=("${pkgname}")
+conflicts=("${pkgname}-git")
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/deepjyoti30/ytmdl/archive/2020.07.26.tar.gz")
+source=("https://files.pythonhosted.org/packages/4b/cf/e93b65904ce2392c1e8a6979975f1c05622828690565fb672c5d13ba829e/ytmdl-2020.11.20.tar.gz")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
+
+prepare() {
+	cd "${pkgname}-${pkgver}"
+  	sed -i 's|etc/bash_completion.d|share/bash-completion/completions|' setup.py
+}
 
 build() {
 	cd "ytmdl-${pkgver}"
@@ -48,5 +54,8 @@ build() {
 package() {
 	cd "ytmdl-${pkgver}"
 	python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	mv "${pkgdir}/share/bash-completion/completions/ytmdl.bash" \
+    	"${pkgdir}/usr/share/bash-completion/completions/ytmdl"
+	install -Dm644 "${pkgdir}/usr/share/zsh/functions/Completion/Unix/ytmdl.zsh" \
+		"${pkgdir}/usr/share/zsh/site-functions/_ytmdl"
 }
