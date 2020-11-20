@@ -1,6 +1,6 @@
 pkgbase = steam-buddy
 	pkgdesc = A web interface for managing Steam remotely
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/gamer-os/steam-buddy
 	arch = any
@@ -37,8 +37,8 @@ pkgbase = steam-buddy
 	depends = ttf-dejavu
 	optdepends = libretro-mame-git
 	optdepends = libretro-stella2014-git
-	source = https://github.com/gamer-os/steam-buddy/archive/0.8.0.tar.gz
-	md5sums = 4455917eda7f0f22ec441de0c7531469
+	source = https://github.com/gamer-os/steam-buddy/archive/0.8.1.tar.gz
+	md5sums = 44ce2aef829ac5a65e07a26f06fe9676
 
 pkgname = steam-buddy
 
