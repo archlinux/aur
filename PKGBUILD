@@ -1,7 +1,8 @@
 # Maintainer: David Scholl <djscholl at gmail dot com>
 pkgname=elog
 _pkgver=3.1.4
-pkgver=$_pkgver.1
+_pkgver2=2
+pkgver=$_pkgver.$_pkgver2
 pkgrel=1
 pkgdesc="Electronic logbook w/ attached file support, doesn't use a database."
 arch=('i686' 'x86_64')
@@ -12,22 +13,26 @@ optdepends=('imagemagick: inline thumbnail support'
             'ghostscript: inline thumbnail support')
 install=elog.install
 backup=('etc/elog/elogd.cfg')
-source=(https://elog.psi.ch/elog/download/tar/elog-3.1.4-1.tar.gz elogd.service)
-sha256sums=('4bfa2bef6cfa20aba73c9c6c044a4c83f20cf03e7de3c0dda4a4477f28b7b72e'
+source=(https://elog.psi.ch/elog/download/tar/${pkgname}-${_pkgver}-${_pkgver2}.tar.gz
+        elogd.service)
+sha256sums=('80f4f82217d3c7e828408e8f4eb7ee3d1473ecb6a8f448f0822eb6a7eeb0fb0a'
             'deb0a58546262562ecaa89886e7ec18e4382d76718fb1afdcd9f384e96fb079e')
 
 build() {
-  cd $srcdir/$pkgname-$_pkgver
+
+  cd $srcdir/${pkgname}-${_pkgver}-${_pkgver2}
   # make things more Arch-friendly
   sed -i '/^ELOGDIR/s/$(PREFIX)\/elog/\/etc\/elog/' Makefile
   sed -i '/^BINOWNER/s/bin/root/' Makefile
   sed -i '/^BINGROUP/s/bin/root/' Makefile
   # make
   make PREFIX=/usr
+
 }
 
 package() {
-  cd $srcdir/$pkgname-$_pkgver
+
+  cd $srcdir/${pkgname}-${_pkgver}-${_pkgver2}
   # install
   make PREFIX=/usr ROOT=$pkgdir MANDIR=$pkgdir/usr/share/man install
   # substitute an elogd.service file in place of the default init script
@@ -48,4 +53,5 @@ package() {
     $pkgdir/etc/elog/elogd.cfg
   sed -i '/\[global\]/s/$/\nResource dir = \/usr\/share\/elog/' \
     $pkgdir/etc/elog/elogd.cfg
+
 }
