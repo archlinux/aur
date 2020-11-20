@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=mavproxy
-pkgver=1.8.22
+pkgver=1.8.23
 pkgrel=1
 pkgdesc='MAVLink proxy and command line ground station.'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=(python python-pymavlink)
 makedepends=(python python-setuptools)
 source=("$pkgname-$pkgver::https://pypi.org/packages/source/M/MAVProxy/MAVProxy-${pkgver}.tar.gz")
-sha256sums=('87d7f9c0b8f4f1db3ce3521f67cd244fe3b89ffead797e92f35a7f71bbe8b958')
+sha256sums=('46c70e013d3e465daae5523f6a1aad553e6ee0f4db137bb935a3273f7ffcc22e')
 
 _pkgname=MAVProxy
 
