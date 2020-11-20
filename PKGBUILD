@@ -2,7 +2,7 @@
 # derived from cling-git
 pkgname=(cling-dev cling-jupyter-dev)
 pkgver=v0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive C++ interpreter (includes custom clang and llvm for dev)."
 arch=('i686' 'x86_64')
 url="https://root.cern.ch/cling"
@@ -10,7 +10,7 @@ license=('custom:Cling Release License')
 makedepends=('cmake' 'libffi' 'git' 'python' 'python2' 'jupyter')
 source=(
     "llvm::git+http://root.cern.ch/git/llvm.git#branch=cling-patches"
-    "clang::git+http://root.cern.ch/git/clang.git#branch=cling-patches"
+    "clang::git+http://root.cern.ch/git/clang.git#tag=cling-v0.7"
     "cling::git+http://root.cern.ch/git/cling.git#tag=v0.7"
 )
 sha256sums=(
