@@ -2,13 +2,13 @@
 
 pkgname="deemix-git"
 _pkgname="deemix"
-pkgver=r525.f53c991622
+pkgver=r527.94f3bc95c3
 pkgrel=1
 pkgdesc="a deezer downloader built from the ashes of Deezloader Remix."
 arch=('any')
 url="https://git.rip/RemixDev/$_pkgname"
 license=('gpl3')
-depends=('python>=3.6' 'python-click' 'python-pycryptodomex' 'python-mutagen' 'python-requests'  'python-spotipy' 'python-eventlet')
+depends=('python>=3.6' 'python-click' 'python-pycryptodomex' 'python-mutagen' 'python-requests'  'python-spotipy' 'python-eventlet' 'python-deezer-py')
 conflicts=('deemix')
 makedepends=('git')
 provides=('deemix')
