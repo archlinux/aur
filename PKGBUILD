@@ -2,13 +2,13 @@
 # Based on work by Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ> and Beini <bane aτ iki dot fi>
 
 pkgname=eddie-cli-git
-pkgver=2.19.6
+pkgver=2.19.7
 pkgrel=1
-pkgdesc='Eddie - VPN tunnel - beta version'
+pkgdesc='Eddie - VPN tunnel - CLI - beta'
 arch=('i686' 'x86_64')
 url=https://eddie.website
 license=(GPLv3)
-depends=(mono openvpn sudo desktop-file-utils libnotify libappindicator-gtk2)
+depends=(mono openvpn sudo)
 optdepends=('stunnel: VPN over SSL' 'openssh: VPN over SSH')
 makedepends=('cmake')
 provides=('eddie-cli')
