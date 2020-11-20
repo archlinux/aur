@@ -68,6 +68,8 @@ prepare() {
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-opt-native
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-opt-native-cuda
 
+  export TMP=/tmp
+
   # These environment variables influence the behavior of the configure call below.
   export PYTHON_BIN_PATH=/usr/bin/python
   export USE_DEFAULT_PYTHON_LIB_PATH=1
