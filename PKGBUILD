@@ -1,8 +1,8 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='dimemas'
 pkgdesc='High-abstracted network simulator for message-passing programs (from BSC).'
-pkgver='5.4.2.20200414'
-pkgrel='2'
+pkgver='5.4.2.20201120'
+pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
