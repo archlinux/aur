@@ -3,7 +3,7 @@
 
 _prjname=libQuotient
 pkgname=${_prjname,,}
-pkgver=0.5.3.2
+pkgver=0.6.2
 pkgrel=1
 epoch=1
 pkgdesc="A Qt5 library to write cross-platform clients for Matrix"
@@ -16,7 +16,7 @@ makedepends=("git" "cmake" "make" "gcc")
 provides=("libquotient")
 conflicts=("libquotient")
 source=("https://github.com/quotient-im/libQuotient/archive/${pkgver}.tar.gz")
-sha512sums=("b887432ba7fb2b89c72ae5342fbd11b0066770851e8d0ea85ae4d6375bca726a5ee601c4f3d35a11fa1f2ef679ad5436917c08139e114f91516ccb370321e428")
+sha512sums=("6388b142675b1f11864c8f0388b0039311a6306feeb6e053060b0ccc737e4e3f97698268314d8802cac2402ea5f2b90a3fce5a10c4966b98e67c7d97bb2b39db")
 
 build() {
     cd "$srcdir/${_prjname}-${pkgver}"
