@@ -1,0 +1,25 @@
+pkgbase = ros-melodic-industrial-msgs
+	pkgdesc = ROS - The industrial message package containes industrial specific messages definitions.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = http://ros.org/wiki/industrial_msg
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-trajectory-msgs
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-message-generation
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-trajectory-msgs
+	source = ros-melodic-industrial-msgs-0.7.1.tar.gz::https://github.com/ros-industrial/industrial_core/archive/0.7.1.tar.gz
+	sha256sums = 73fdca1965713e746c38fbcf691476288d2876c36222a97f0725835ac8548783
+
+pkgname = ros-melodic-industrial-msgs
+
