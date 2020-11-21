@@ -3,7 +3,7 @@
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-git
-pkgver=r2043.ec255b56
+pkgver=r2054.c5ecfe71
 pkgrel=1
 epoch=1
 pkgdesc='The open source, cross platform level editor for id Tech-derivated games, heir of GtkRadiant.'
@@ -47,10 +47,10 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}/"
 
-    cmake --build build -- install
+    cmake --install build
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
+    
     # Map mime type doesn't work and produces a pacman warning
     rm -r ${pkgdir}/usr/share/mime/
 }
