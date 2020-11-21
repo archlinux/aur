@@ -4,7 +4,7 @@ pkgdesc="ROS - swri_serial_util."
 url='https://github.com/swri-robotics/marti_common'
 
 pkgname='ros-melodic-swri-serial-util'
-pkgver='2.11.0'
+pkgver='2.14.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -20,7 +20,7 @@ depends=(${ros_depends[@]}
 
 _dir=marti_common-release-release-melodic-swri_serial_util
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/swri-robotics-gbp/marti_common-release/archive/release/melodic/swri_serial_util/${pkgver}.tar.gz")
-sha256sums=('b73e57b3ce0fa9d4fbfc55598b66bff8f9c17292e8a8d72bd21bfc90b62f5697')
+sha256sums=('33b5b9cb450bdb4f3a2ea0d4d797ad7d1badbee200382c06e7e4105395dda66b')
 
 build() {
     # Use ROS environment variables
