@@ -346,7 +346,7 @@ prepare(){
   msg2 "Set CONFIG_HZ"
   #Enable one, disable the others
   scripts/config --enable CONFIG_HZ_1000  #Have to match the set-val command
-  scripts/config --set-val CONFIG_HZ 1000 #You can put any of these value 100, 300, 750, 1000 (750 is only for the base or full patch level)
+  scripts/config --set-val CONFIG_HZ 1000 #You can put any of these value 100, 300, 750, 1000
   scripts/config --disable CONFIG_HZ_300
   scripts/config --disable CONFIG_HZ_750  #You can set this value only in the base or full patch level
   scripts/config --disable CONFIG_HZ_250
