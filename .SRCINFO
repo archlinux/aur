@@ -1,7 +1,7 @@
 pkgbase = remill
 	pkgdesc = Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode
 	pkgver = 4.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lifting-bits/remill
 	arch = x86_64
 	license = Apache
@@ -12,9 +12,11 @@ pkgbase = remill
 	depends = lib32-gcc-libs
 	depends = libunwind
 	source = https://github.com/lifting-bits/remill/archive/v4.0.9.tar.gz
-	source = 00-fix-inst-CVTSI2SS.patch
+	source = 00-fix-CONVERT-instructions.patch
+	source = 01-show-instruction.patch
 	sha256sums = facb3c9c1d9f47167150b92f08eac3e73af4db6d6115dafe204f8bd1c270102b
-	sha256sums = fdec38eee1c770df5625f93ac1e017449e6d76455bf279f6865887aef0d8ee7a
+	sha256sums = b2ab3e9c6b047eddac5cffb189b260fa0c1f6e21c88b343fcaef79110544f9e6
+	sha256sums = 16009715ef4e2546349238120ab9ad0c04ef1ed77cc360e64f599aeb4a0ad987
 
 pkgname = remill
 

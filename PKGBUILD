@@ -3,7 +3,7 @@
 
 pkgname=remill
 pkgver=4.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode"
 arch=('x86_64')
 url="https://github.com/lifting-bits/remill"
@@ -13,13 +13,16 @@ depends=('cxx-common=0.0.14' 'ncurses' 'zlib' 'lib32-glibc' 'lib32-gcc-libs'
 makedepends=()
 checkdepends=()
 source=("https://github.com/lifting-bits/remill/archive/v${pkgver}.tar.gz"
-        '00-fix-inst-CVTSI2SS.patch')
+        '00-fix-CONVERT-instructions.patch'
+        '01-show-instruction.patch')
 sha256sums=('facb3c9c1d9f47167150b92f08eac3e73af4db6d6115dafe204f8bd1c270102b'
-            'fdec38eee1c770df5625f93ac1e017449e6d76455bf279f6865887aef0d8ee7a')
+            'b2ab3e9c6b047eddac5cffb189b260fa0c1f6e21c88b343fcaef79110544f9e6'
+            '16009715ef4e2546349238120ab9ad0c04ef1ed77cc360e64f599aeb4a0ad987')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
-    patch -Np1 -i "$srcdir/00-fix-inst-CVTSI2SS.patch"
+    patch -Np1 -i "$srcdir/00-fix-CONVERT-instructions.patch"
+    patch -Np1 -i "$srcdir/01-show-instruction.patch"
 }
 
 build() {

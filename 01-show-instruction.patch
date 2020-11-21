@@ -1,0 +1,66 @@
+--- a/lib/BC/InstructionLifter.cpp
++++ b/lib/BC/InstructionLifter.cpp
+@@ -538,7 +538,8 @@
+   } else {
+     CHECK(arg_type->isIntegerTy() || arg_type->isFloatingPointTy())
+         << "Expected " << arch_reg.name << " to be an integral or float type "
+-        << "for instruction at " << std::hex << inst.pc;
++        << "for instruction at " << std::hex << inst.pc << std::endl
++        << "inst.Serialize(): " << inst.Serialize();
+ 
+     auto val = LoadRegValue(block, state_ptr, arch_reg.name);
+ 
+@@ -552,12 +553,14 @@
+       if (arg_type->isIntegerTy()) {
+         CHECK(val_type->isIntegerTy())
+             << "Expected " << arch_reg.name << " to be an integral type "
+-            << "for instruction at " << std::hex << inst.pc;
++            << "for instruction at " << std::hex << inst.pc << std::endl
++            << "inst.Serialize(): " << inst.Serialize();
+ 
+         CHECK(word_size == arg_size)
+             << "Expected integer argument to be machine word size ("
+             << word_size << " bits) but is is " << arg_size << " instead "
+-            << "in instruction at " << std::hex << inst.pc;
++            << "in instruction at " << std::hex << inst.pc << std::endl
++            << "inst.Serialize(): " << inst.Serialize();
+ 
+         val = new llvm::ZExtInst(val, impl->word_type,
+                                  llvm::Twine::createNull(), block);
+@@ -565,7 +568,8 @@
+       } else if (arg_type->isFloatingPointTy()) {
+         CHECK(val_type->isFloatingPointTy())
+             << "Expected " << arch_reg.name << " to be a floating point type "
+-            << "for instruction at " << std::hex << inst.pc;
++            << "for instruction at " << std::hex << inst.pc << std::endl
++            << "inst.Serialize(): " << inst.Serialize();
+ 
+         val = new llvm::FPExtInst(val, arg_type, llvm::Twine::createNull(),
+                                   block);
+@@ -575,12 +579,14 @@
+       if (arg_type->isIntegerTy()) {
+         CHECK(val_type->isIntegerTy())
+             << "Expected " << arch_reg.name << " to be an integral type "
+-            << "for instruction at " << std::hex << inst.pc;
++            << "for instruction at " << std::hex << inst.pc << std::endl
++            << "inst.Serialize(): " << inst.Serialize();
+ 
+         CHECK(word_size == arg_size)
+             << "Expected integer argument to be machine word size ("
+             << word_size << " bits) but is is " << arg_size << " instead "
+-            << "in instruction at " << std::hex << inst.pc;
++            << "in instruction at " << std::hex << inst.pc << std::endl
++            << "inst.Serialize(): " << inst.Serialize();
+ 
+         val = new llvm::TruncInst(val, arg_type, llvm::Twine::createNull(),
+                                   block);
+@@ -588,7 +594,8 @@
+       } else if (arg_type->isFloatingPointTy()) {
+         CHECK(val_type->isFloatingPointTy())
+             << "Expected " << arch_reg.name << " to be a floating point type "
+-            << "for instruction at " << std::hex << inst.pc;
++            << "for instruction at " << std::hex << inst.pc << std::endl
++            << "inst.Serialize(): " << inst.Serialize();
+ 
+         val = new llvm::FPTruncInst(val, arg_type, llvm::Twine::createNull(),
+                                     block);
