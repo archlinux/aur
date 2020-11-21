@@ -3,7 +3,7 @@
 # Contributor: Sam Whited <sam@samwhited.com>
 
 pkgname=stripe-cli
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc='CLI for Stripe'
 arch=(x86_64)
@@ -15,7 +15,7 @@ source=(
   $pkgname-$pkgver.tar.gz::https://github.com/stripe/stripe-cli/archive/v$pkgver.tar.gz
   reproducible-image-flags.patch
 )
-sha512sums=('6dc8aef2edee22c46ce43f4f0a86070b1d5c36f3a2f6648ac737acfdfe90fe07a88c630c9e0f325d5f141059275d6e89454cbfc23c93cfba91e424a7bbb6ad53'
+sha512sums=('27667682412613cac17cbaf64de8b9b028262406f498396a07199999bb05ae2af4bd8926718004278cb358921bb1732d5e199e2c35c7fbc5d1822f67cf7e3d8f'
             '4f5ff8662f5e4bce1ded88a055e652c41dd6492cda5aee74795752abf0e97cc269ec1fef84df2247f62809f0c8cc1a88dd12104e07090cc224bbc5ad46b33f37')
 
 prepare() {
