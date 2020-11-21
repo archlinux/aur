@@ -1,7 +1,7 @@
 pkgbase = opencl-amd
 	pkgdesc = OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack.
 	pkgver = 20.45.1164792
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.amd.com
 	arch = x86_64
 	license = custom:AMD
@@ -9,7 +9,6 @@ pkgbase = opencl-amd
 	depends = libdrm
 	depends = ocl-icd
 	depends = gcc-libs
-	depends = linux>=5.9
 	depends = numactl
 	optdepends = clinfo
 	provides = opencl-driver
