@@ -4,10 +4,10 @@ pkgdesc="ROS - opencv_apps provides various nodes that run internally OpenCVs fu
 url='http://www.ros.org/'
 
 pkgname='ros-melodic-opencv-apps'
-pkgver='1.12.0'
+pkgver='2.0.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-std-srvs
