@@ -1,7 +1,7 @@
 # Maintainer: Anes Belfodil <ans.belfodil@gmail.com>
 pkgname=randwall-bin
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Randomly changes desktop wallpaper'
 arch=('x86_64')
 url='https://github.com/arch-anes/randwall'
@@ -13,6 +13,12 @@ sha256sums=('SKIP')
 package() {
   install -d $pkgdir/usr/bin
   install -Dm755 $srcdir/randwall $pkgdir/usr/bin
+
+  install -d $pkgdir/usr/share/licenses/$pkgname
+  install -Dm644 $srcdir/../LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
+  install -Dm644 $srcdir/../randwall.service $pkgdir/usr/lib/systemd/system/randwall.service
+  install -Dm644 $srcdir/../randwall.service $pkgdir/usr/lib/systemd/system/randwall.service
   install -Dm644 $srcdir/../randwall.service $pkgdir/usr/lib/systemd/system/randwall.service
   install -Dm644 $srcdir/../randwall@.service $pkgdir/usr/lib/systemd/system/randwall@.service
 }
