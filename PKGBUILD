@@ -4,7 +4,7 @@ pkgdesc="ROS - Move Base Flex (MBF) is a backwards-compatible replacement for mo
 url='http://wiki.ros.org/move_base_flex'
 
 pkgname='ros-melodic-move-base-flex'
-pkgver='0.2.5'
+pkgver='0.3.3'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -25,7 +25,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="move_base_flex-release-release-melodic-move_base_flex"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/move_base_flex/${pkgver}.tar.gz")
-sha256sums=('fc73fa9140760f6f07648762b894e2dd563edd14673fb5fce77770c41baf8dad')
+sha256sums=('bdedcae27f508ed6d302bd7fe790b7743304b1191cda1cf508109c706a63e9d0')
 build() {
         # Use ROS environment variables
         source /usr/share/ros-build-tools/clear-ros-env.sh
