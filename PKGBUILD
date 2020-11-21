@@ -2,7 +2,7 @@
 
 pkgname=nordvpn-configs
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="openvpn config files for NordVPN"
 arch=('any')
 url='https://nordvpn.com/'
@@ -19,8 +19,8 @@ sha256sums=(
 	'SKIP'
 )
 package() {
-	install --mode=750 --directory "$pkgdir/etc/openvpn/client"
-	install -D --mode=644 **/*.ovpn "$pkgdir/etc/openvpn/client"
+    mkdir --parents --mode=750 "${pkgdir}/etc/openvpn"
+    cp --archive **/ "${pkgdir}/etc/openvpn/"
 }
 
 # https://support.nordvpn.com/Connectivity/Linux/1047409422/How-can-I-connect-to-NordVPN-using-Linux-Terminal.htm
