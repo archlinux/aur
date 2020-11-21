@@ -8,7 +8,7 @@ pkgver=v1.4.2.r503.g7f2003e
 pkgrel=1
 pkgdesc="The Linux Thermal Daemon program from 01.org"
 arch=('i686' 'x86_64')
-url="https://github.com/01org/thermal_daemon"
+url="https://github.com/intel/thermal_daemon"
 license=('GPL2')
 depends=('dbus-glib>=0.94' 'libxml2>=2.4')
 backup=('etc/thermald/thermal-conf.xml')
@@ -17,7 +17,7 @@ makedepends=('git'
   'autoconf-archive')
 conflicts=('thermald')
 provides=('thermald')
-source=("$_pkgname::git://github.com/01org/thermal_daemon.git"
+source=("$_pkgname::git://github.com/intel/thermal_daemon.git"
 		'modules-load-msr.conf')
 md5sums=('SKIP'
          '3f8abd21c1be92e631fd9f557c61355b')
