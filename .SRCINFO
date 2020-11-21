@@ -1,0 +1,16 @@
+pkgbase = timestamp
+	pkgdesc = Prefix each line with a date/time stamp
+	pkgver = 0.3.1
+	pkgrel = 0
+	url = https://github.com/kseistrup/timestamp
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL3
+	makedepends = scdoc
+	source = https://github.com/kseistrup/timestamp/releases/download/v0.3.1/timestamp-0.3.1.tar.xz
+	md5sums = f9f0fb3cd188a6261f8ebe1c0e9c14d8
+	sha256sums = b2394a5abc0249d1e469a20ff67c5f7da1292b910fe8364e41d490942bafab9c
+
+pkgname = timestamp
+
