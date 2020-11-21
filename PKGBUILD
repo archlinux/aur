@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=golinx
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A client for linx-server written in Go"
 url="https://github.com/mutantmonkey/golinx"
 arch=('i686' 'x86_64')
@@ -11,9 +11,20 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mutantmonkey/${pkgname}
 sha256sums=('a5a0b1ff433d8a9b66b3c9115b574472ffa0aeb8c0e929d19fe67c24a3bc2a53')
 
 build() {
+  export GOPATH="$srcdir"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+
   cd "$srcdir/$pkgname-$pkgver"
-  GOPATH="$srcdir" go get -v -d
-  GOPATH="$srcdir" go build
+  go get -v -d
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    .
 }
 
 package() {

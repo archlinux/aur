@@ -1,7 +1,7 @@
 pkgbase = golinx
 	pkgdesc = A client for linx-server written in Go
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mutantmonkey/golinx
 	arch = i686
 	arch = x86_64
