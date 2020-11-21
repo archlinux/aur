@@ -4,12 +4,12 @@
 pkgname=sidequest-bin
 _pkgname=sidequest
 pkgver=0.10.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily sideload apps onto your standalone android VR headset"
 arch=('x86_64')
 url="https://github.com/SideQuestVR/SideQuest"
 license=('MIT')
-depends=(gtk3 libxss nss)
+depends=(gtk3 libxss nss android-udev)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("https://github.com/SideQuestVR/SideQuest/releases/download/v${pkgver}/SideQuest-${pkgver}.tar.xz"
