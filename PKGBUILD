@@ -4,7 +4,7 @@
 _pkgname="lua-language-server"
 pkgname="$_pkgname-git"
 pkgver=r3080.02b37394
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='Lua Language Server coded by Lua'
 url='https://github.com/sumneko/lua-language-server'
@@ -52,8 +52,8 @@ package() {
   install -dm0755 "${pkgdir}/usr/share/${_pkgname}"
 
   cp -a main.lua script "${pkgdir}/usr/share/${_pkgname}"
-
   cp -a locale platform.lua "${pkgdir}/usr/share/${_pkgname}"
+  cp -a debugger.lua "${pkgdir}/usr/share/${_pkgname}"
 
   install -Dm0755 ../wrapper "${pkgdir}/usr/bin/${_pkgname}"
 }

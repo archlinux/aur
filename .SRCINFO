@@ -1,7 +1,7 @@
 pkgbase = lua-language-server-git
 	pkgdesc = Lua Language Server coded by Lua
 	pkgver = r3080.02b37394
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sumneko/lua-language-server
 	arch = x86_64
 	license = MIT
