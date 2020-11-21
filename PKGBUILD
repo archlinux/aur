@@ -12,7 +12,8 @@ pkgdesc='An intelligent archive extraction tool'
 arch=('any')
 url='http://github.com/verhovsky/dtrx'
 license=('GPL3')
-depends=('python3')
+depends=('python')
+makedepends=('python-setuptools')
 optdepends=(
   'tar: to extract tar, deb, and gem archives'
   'unzip: to extract zip archives'
