@@ -4,7 +4,7 @@
 pkgname=gedit-menubar
 pkgver=3.38.1
 pkgrel=1
-pkgdesc="GNOME Text Editor"
+pkgdesc="GNOME Text Editor (Patched to show menubar)"
 url="https://wiki.gnome.org/Apps/Gedit"
 arch=(x86_64)
 license=(GPL)
