@@ -1,7 +1,7 @@
 # Maintainer: 3ED <krzysztof1987 at gmail>
 
 pkgname=seamonkey-i18n-sv-se
-pkgver=2.53.2
+pkgver=2.53.5
 pkgrel=1
 _lang=sv-SE
 pkgdesc="Swedish language pack for SeaMonkey"
@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha256sums=('38224cdfa09a7c1ed747611c8a3f451123d17aad014edf353a0de3f0027b6c42')
+sha256sums=('21e653a4f515dc2e127ea8af011444db95ec3dc3a901bf2ffb78348e7593ce37')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
