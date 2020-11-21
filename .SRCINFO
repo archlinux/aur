@@ -1,0 +1,21 @@
+pkgbase = ros-melodic-industrial-robot-status-interface
+	pkgdesc = ROS - Exposes ROS-Industrials RobotStatus info from hardware_interfaces for consumption by ros_control controllers.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = Apache 2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-hardware-interface
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-hardware-interface
+	source = ros-melodic-industrial-robot-status-interface-0.1.2.tar.gz::https://github.com/gavanderhoorn/industrial_robot_status_controller-release/archive/release/melodic/industrial_robot_status_interface/0.1.2.tar.gz
+	sha256sums = ff076f7a873df95de7b5c3b93780a56288634f86085f6a11d7f1f20490d679cb
+
+pkgname = ros-melodic-industrial-robot-status-interface
+
