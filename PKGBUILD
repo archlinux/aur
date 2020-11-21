@@ -1,6 +1,6 @@
 # Maintainer: Ignacy Kuchcinski <ignacykuchcinski@gmail.com>
 pkgname=cxxmatrix-git
-pkgver=r51.1aa2cd8
+pkgver=r56.69a73ed
 pkgrel=1
 pkgdesc="A C++ based scrolling Matrix digital rain along with other scenes."
 arch=('x86_64')
@@ -25,6 +25,5 @@ build() {
 
 package() {
   cd "cxxmatrix"
-  install -D "cxxmatrix" "$pkgdir/usr/bin/cxxmatrix"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/cxxmatrix/LICENSE.md"
+  make PREFIX="$pkgdir/usr/" install
 }
