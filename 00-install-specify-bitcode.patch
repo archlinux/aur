@@ -2,7 +2,7 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 29f3648..14e5e3d 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -197,6 +197,10 @@ install(
+@@ -198,6 +198,10 @@ install(
    TARGETS ${DECOMPILE_JSON}
    RUNTIME DESTINATION "${install_folder}/bin")
  
