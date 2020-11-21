@@ -22,11 +22,7 @@ sha256sums=('a5743d6b0589e136b236cbfd815d7b7cb5c7331c1ca63cbd38e7b93d52c930fe'
 build() {
 	cd "OpenRGB-release_$pkgver"
 	qmake OpenRGB.pro
-	make -j$(nproc)
-}
-
-check() {
-	mkdir -p $HOME/.config/OpenRGB
+	make 
 }
 
 package() {
