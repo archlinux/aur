@@ -1,4 +1,4 @@
-From f6042da88367558cd294c2593c8cc3a6e8949667 Mon Sep 17 00:00:00 2001
+From 520b519d962852792bd4ac3c2d1206afa329b65e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:48:51 +0200
 Subject: [PATCH 03/31] Fix too many sections assemler error in OpenGL factory
@@ -25,5 +25,5 @@ index 24758afdeb..aa04b4a672 100644
      HEADERS += opengl/qopengl.h \
                 opengl/qopengl_p.h \
 -- 
-2.28.0
+2.29.2
 
