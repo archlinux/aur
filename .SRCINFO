@@ -1,0 +1,27 @@
+pkgbase = ros-melodic-lms1xx
+	pkgdesc = ROS - The lms1xx package contains a basic ROS driver for the SICK LMS1xx line of LIDARs.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://ros.org/wiki/LMS1xx
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = LGPL
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-roscpp-serialization
+	makedepends = ros-melodic-rosconsole-bridge
+	makedepends = ros-melodic-sensor-msgs
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-roscpp-serialization
+	depends = ros-melodic-rosconsole-bridge
+	depends = ros-melodic-sensor-msgs
+	depends = ros-melodic-roscpp
+	source = ros-melodic-lms1xx-0.2.0.tar.gz::https://github.com/clearpathrobotics/lms1xx/archive/0.2.0.tar.gz
+	sha256sums = 502318ae6f5fb496f2e6e03e2570dc3ae2b29a926098d6ee2ff37794b6397a13
+
+pkgname = ros-melodic-lms1xx
+
