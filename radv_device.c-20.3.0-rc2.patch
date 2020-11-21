@@ -1,5 +1,5 @@
---- mesa-20.3.0-rc1/src/amd/vulkan/radv_device.c	2020-11-10 12:26:16.000000000 -0500
-+++ radv_device.c	2020-11-10 22:10:07.661976127 -0500
+--- mesa-20.3.0-rc2/src/amd/vulkan/radv_device.c	2020-11-19 13:19:06.000000000 -0500
++++ radv_device.c	2020-11-20 21:56:24.981971238 -0500
 @@ -571,6 +571,7 @@
  	{"pswave32", RADV_PERFTEST_PS_WAVE_32},
  	{"gewave32", RADV_PERFTEST_GE_WAVE_32},
