@@ -8,6 +8,7 @@ pkgbase = kibom-git
 	license = Apache2.0
 	makedepends = git
 	makedepends = python
+	makedepends = python-setuptools
 	depends = python
 	provides = kibom
 	conflicts = kibom
