@@ -11,8 +11,8 @@ source=("randwall.tar.xz::https://github.com/arch-anes/randwall/releases/downloa
 sha256sums=('SKIP')
 
 package() {
-  cd ${srcdir}
-
   install -d $pkgdir/usr/bin
-  install -Dm755 randwall $pkgdir/usr/bin
+  install -Dm755 $srcdir/randwall $pkgdir/usr/bin
+  install -Dm644 $srcdir/../randwall.service $pkgdir/usr/lib/systemd/system/randwall.service
+  install -Dm644 $srcdir/../randwall@.service $pkgdir/usr/lib/systemd/system/randwall@.service
 }

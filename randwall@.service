@@ -1,0 +1,12 @@
+[Unit]
+Description=random wallpaper service for %i
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=%i
+Group=users
+ExecStart=/usr/bin/randwall
+
+[Install]
+WantedBy=multi-user.target
