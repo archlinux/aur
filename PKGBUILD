@@ -1,15 +1,15 @@
 # Maintainer: Robert Cegliński <rob.ceglinski@gmail.com>
 
 pkgname=firefox-clearurls
-pkgver=1.19.0
-pkgrel=2
+pkgver=1.20.0
+pkgrel=1
 pkgdesc='Firefox addon that removes tracking elements from URLs'
 arch=('any')
-url='https://gitlab.com/KevinRoebert/ClearUrls'
+url='https://clearurls.xyz/'
 license=('LGPL3')
-source=("https://addons.mozilla.org/firefox/downloads/file/3612592/clearurls-${pkgver}.xpi")
+source=("https://github.com/ClearURLs/Addon/releases/download/$pkgver/clearurls-$pkgver-firefox.xpi")
 noextract=("${source##*/}")
-sha256sums=('378204ec10b7560966b757c4b24937073ee3cc98b147b61fbdabd5669ed99c21')
+sha256sums=('d6b4bdb79197e3a0edb8e96d9e8f49147e12b8b6f48021a8613d7f08eec6bda4')
 
 prepare() {
   mkdir tmp && cd tmp
@@ -24,5 +24,5 @@ prepare() {
 }
 
 package() {
-  install -Dm644 tmp/clearurls.zip "$pkgdir"/usr/lib/firefox/browser/extensions/'{74145f27-f039-47ce-a470-a662b129930a}.xpi'
+  install -Dm644 tmp/clearurls.zip "$pkgdir/usr/lib/firefox/browser/extensions/{74145f27-f039-47ce-a470-a662b129930a}.xpi"
 }
