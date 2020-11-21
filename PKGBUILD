@@ -23,4 +23,5 @@ package() {
 	install -D --mode=644 **/*.ovpn "$pkgdir/etc/openvpn/client"
 }
 
+# https://support.nordvpn.com/Connectivity/Linux/1047409422/How-can-I-connect-to-NordVPN-using-Linux-Terminal.htm
 # https://jlk.fjfi.cvut.cz/arch/manpages/man/PKGBUILD
