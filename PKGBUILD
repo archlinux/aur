@@ -15,7 +15,9 @@ depends=("php>=7.0.0")
 install="${_pkgname}.install"
 source=("https://phar.phpunit.de/phpunit-${pkgver}.phar"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/sebastianbergmann/phpunit/${pkgver}/LICENSE")
-sha512sums=('0a3b9c4d234a39713dd99614f0c13e3739f44efb4280b8f90808e6158aeb22c1fce0d794bac81aaf8abf0e2ec631971f21ac5ad293f38a50889e0a36c7720ed3'
+sha256sums=('208bd799e935bf6690b103f4e3765f2200b486e8ccc4756f4818d2547a6b326e'
+            'SKIP')
+sha512sums=('SKIP'
             '8e9e4a876a6b08ad44a60599ad23b3fad5b827925121f2daa427c4a682c6dd2b535151f3cf4f866231722bfb09866f1559fc3e82757a4e64405393ef7e0382cc')
 
 package() {
