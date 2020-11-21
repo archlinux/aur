@@ -4,7 +4,7 @@
     url='http://wiki.ros.org/move_base_flex'
 
     pkgname='ros-melodic-mbf-costmap-nav'
-    pkgver='0.2.5'
+    pkgver='0.3.3'
     arch=('any')
     pkgrel=1
     license=('3-Clause BSD')
@@ -54,7 +54,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="move_base_flex-release-release-melodic-mbf_costmap_nav"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_costmap_nav/${pkgver}.tar.gz")
-sha256sums=('b423dd99b2a2d0e523be9377251726e786489aa9545e6430c4cf7734f96be540')
+sha256sums=('ce50ae3e4680f916d8091f5ba11d3273c80c5447537031acaf840d5c8c45564b')
     build() {
         # Use ROS environment variables
         source /usr/share/ros-build-tools/clear-ros-env.sh
