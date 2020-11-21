@@ -4,7 +4,7 @@ pkgdesc="ROS - marti_common_msgs."
 url='https://github.com/swri-robotics/marti_messages'
 
 pkgname='ros-melodic-marti-common-msgs'
-pkgver='0.8.0'
+pkgver='0.10.0'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -21,7 +21,7 @@ depends=(${ros_depends[@]})
 
 _dir=marti_messages-release-release-melodic-marti_common_msgs
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/swri-robotics-gbp/marti_messages-release/archive/release/melodic/marti_common_msgs/${pkgver}.tar.gz")
-sha256sums=('f55b0fa995a1e790ab27710ae2731eafa5ce43683fc9731e89674dd0542a58cb')
+sha256sums=('c2159e6028ec9c1eaf3a5e646010bc71f150abf0d6f1a8daaeb2871f69c5298b')
 
 build() {
     # Use ROS environment variables
