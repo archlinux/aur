@@ -1,0 +1,21 @@
+pkgbase = skywire
+	pkgdesc = Skywire Mainnet Node implementation. Develop Banch. Debian package
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/skycoin/skywire
+	arch = any
+	makedepends = dpkg
+	makedepends = git
+	makedepends = go
+	makedepends = skycoin-keyring
+	source = git+https://github.com/skycoin/skywire.git#branch=develop
+	source = skywire-deb-scripts.tar.gz
+	source = deb.PKGBUILD.sig
+	source = deb.PKGBUILD
+	sha256sums = SKIP
+	sha256sums = 61122b39103760f4543b8a4c3da1ce695333ff4915cf76199ba8fb337cb13774
+	sha256sums = SKIP
+	sha256sums = e58d1f3cdace9330ca821275e48eb2b9a35bf871db23c2d843e8bbeca82be35f
+
+pkgname = skywire
+
