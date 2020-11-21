@@ -1,6 +1,8 @@
+#Maintainer: Dylan Delgado <dylan1496 at live dot com>
+
 pkgname=reduze
 pkgver=2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Computer program for reducing Feynman integrals to master integrals employing a variant of Laporta's reduction algorithm."
 arch=('i686' 'x86_64')
 url="https://reduze.hepforge.org/"
@@ -17,7 +19,7 @@ sha256sums=('107d6875104f464d677410aebee6d06737c11c5ba21c2bc85e8fab7d500076f6')
 build() {
 cd ${srcdir}/reduze-"${pkgver}"
 cmake -DCMAKE_INSTALL_PREFIX=${srcdir}/reduze-"${pkgver}" -DUSE_MPI=ON -DUSE_DATABASE=ON -DUSE_FERMAT=ON -S ${srcdir}/reduze-"${pkgver}"
-make -j1
+make -j
 make check
 }
 
