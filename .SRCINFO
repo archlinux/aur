@@ -1,4 +1,4 @@
-pkgbase = wattsi
+pkgbase = wattsi-git
 	pkgdesc = Preprocessor for the HTML Standard
 	pkgver = r126.7f2fb37
 	pkgrel = 1
@@ -9,5 +9,5 @@ pkgbase = wattsi
 	source = git+https://github.com/whatwg/wattsi
 	sha512sums = SKIP
 
-pkgname = wattsi
+pkgname = wattsi-git
 
