@@ -1,14 +1,14 @@
 pkgbase = seamonkey-i18n-en-gb
 	pkgdesc = English (United Kingdom) language pack for SeaMonkey
-	pkgver = 2.53.2
+	pkgver = 2.53.5
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.53.2
-	noextract = seamonkey-2.53.2.en-GB.langpack.xpi
-	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.53.2/langpack/seamonkey-2.53.2.en-GB.langpack.xpi
-	sha256sums = 31f214313f98641390086721b853b826943a6a3de4f166f0da3458780cb1761d
+	depends = seamonkey>=2.53.5
+	noextract = seamonkey-2.53.5.en-GB.langpack.xpi
+	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.53.5/langpack/seamonkey-2.53.5.en-GB.langpack.xpi
+	sha256sums = 2033e6e953ea8162adb1c3077424005c65858d0afcfafcba14c37b2e8bf17070
 
 pkgname = seamonkey-i18n-en-gb
 
