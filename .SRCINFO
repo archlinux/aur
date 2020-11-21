@@ -1,0 +1,23 @@
+pkgbase = ros-melodic-ddynamic-reconfigure
+	pkgdesc = ROS - The ddynamic_reconfigure package.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-dynamic-reconfigure
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-roscpp
+	depends = ros-melodic-dynamic-reconfigure
+	depends = ros-melodic-roscpp
+	source = ros-melodic-ddynamic-reconfigure-0.3.2.tar.gz::https://github.com/pal-robotics/ddynamic_reconfigure/archive/0.3.2.tar.gz
+	sha256sums = 2c2f0bafe67df617f5bf6955bff75a71b5b475e9fd7d3f00baae9a0e8fee149a
+
+pkgname = ros-melodic-ddynamic-reconfigure
+
