@@ -140,24 +140,24 @@ index 67bd13c94d..5e8e8736f5 100644
  
  namespace ads {
  
-diff --git a/brave/components/ipfs/common/ipfs_utils.cc b/brave/components/ipfs/common/ipfs_utils.cc
+diff --git a/brave/components/ipfs/ipfs_utils.cc b/brave/components/ipfs/ipfs_utils.cc
 index de984233dc..9414da92a3 100644
---- a/brave/components/ipfs/common/ipfs_utils.cc
-+++ b/brave/components/ipfs/common/ipfs_utils.cc
+--- a/brave/components/ipfs/ipfs_utils.cc
++++ b/brave/components/ipfs/ipfs_utils.cc
 @@ -6,6 +6,7 @@
- #include "brave/components/ipfs/common/ipfs_utils.h"
+ #include "brave/components/ipfs/ipfs_utils.h"
  
  #include <vector>
 +#include <algorithm>
  
  #include "url/gurl.h"
  #include "extensions/common/url_pattern.h"
-diff --git a/brave/components/ipfs/browser/translate_ipfs_uri.cc b/brave/components/ipfs/browser/translate_ipfs_uri.cc
+diff --git a/brave/components/ipfs/translate_ipfs_uri.cc b/brave/components/ipfs/translate_ipfs_uri.cc
 index d3bf012a5f..794ba63eb7 100644
---- a/brave/components/ipfs/browser/translate_ipfs_uri.cc
-+++ b/brave/components/ipfs/browser/translate_ipfs_uri.cc
+--- a/brave/components/ipfs/translate_ipfs_uri.cc
++++ b/brave/components/ipfs/translate_ipfs_uri.cc
 @@ -6,6 +6,7 @@
- #include "brave/components/ipfs/browser/translate_ipfs_uri.h"
+ #include "brave/components/ipfs/translate_ipfs_uri.h"
  
  #include <string>
 +#include <algorithm>
