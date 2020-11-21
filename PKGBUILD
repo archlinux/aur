@@ -5,9 +5,9 @@
 # Contributor: Felix Yan <felixonmars [AT] gmail.com>
 
 pkgname=fcitx-sogoupinyin
-pkgver=2.3.2.07
-_time=1598240917
-pkgrel=3
+pkgver=2.4.0.2732
+_time=1605612770
+pkgrel=1
 pkgdesc="Sogou Pinyin for Linux"
 arch=("x86_64")
 url="https://pinyin.sogou.com/linux/"
@@ -17,7 +17,7 @@ depends=("fcitx" "opencc" "libidn11" "lsb-release" "xorg-xprop" "qt5-declarative
 source=("sogou-autostart"
 	"http://cdn2.ime.sogou.com/dl/index/${_time}/sogoupinyin_${pkgver}_amd64.deb")
 sha256sums=("4357c28ba35d9441e47cc5c9a4c5f1ccbb8957cb3434212a609201aee485c092"
-           "7d740223747a5fc3c2044b97ac81916d78b687ce7d2ed5bd76d012167ab7b2c9")
+            "2ec8a0d937b1d8ae987a1a5684b444918524c93d32cdef84228d5a0ff8ac5b2f")
 
 package(){
     cd ${srcdir}
