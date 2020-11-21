@@ -10,7 +10,7 @@
 
 _qt_module=qtwebsockets
 pkgname=mingw-w64-qt5-websockets
-pkgver=5.15.1
+pkgver=5.15.2
 pkgrel=1
 arch=('any')
 pkgdesc="Provides WebSocket communication compliant with RFC 6455 (mingw-w64)"
@@ -22,7 +22,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('5f30053a0a794676ce7d7521f6b789409cc449a7e90cab547d871fc07a61dd7e')
+sha256sums=('a0b42d85dd34ff6e2d23400e02f83d8b85bcd80e60efd1521d12d9625d4a233f')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
