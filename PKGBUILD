@@ -1,7 +1,7 @@
 # Maintainer: Fanch
 # Co-Maintainer: Mark Wagie <mark.wagie at tutanota dot com>
 pkgname=x-tile-git
-pkgver=3.1.r0.g2e5f3db
+pkgver=3.3.r0.gb1b372f
 pkgrel=1
 pkgdesc="Allows you to select a number of windows and tile them in different ways"
 arch=('any')
