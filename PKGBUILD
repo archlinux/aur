@@ -3,7 +3,7 @@
 pkgname=lacap
 longname=latin-catholic-prayers
 pkgver=0.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Memorize Catholic prayers in Latin."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/chrisfair/latin-catholic-prayers"
@@ -25,10 +25,10 @@ build() {
 
 
 package() {
-	install -Dm755 $srcdir/$longname-v$pkgver/build/$longname $pkgdir/opt/chrisfair/$longname/$pkgname
-	rsync -av --no-o --no-g $srcdir/$longname-v$pkgver/Prayers $pkgdir/opt/chrisfair/$longname/ >/dev/null 2>&1
-	rsync -av --no-o --no-g $srcdir/$longname-v$pkgver/Sounds $pkgdir/opt/chrisfair/$longname/ >/dev/null 2>&1
-	install -Dm755 $srcdir/$longname-v$pkgver/config_default.json $pkgdir/etc/$longname/config.json
+	install -Dm755 $srcdir/$longname-V$pkgver/build/$longname $pkgdir/opt/chrisfair/$longname/$pkgname
+	rsync -av --no-o --no-g $srcdir/$longname-V$pkgver/Prayers $pkgdir/opt/chrisfair/$longname/ >/dev/null 2>&1
+	rsync -av --no-o --no-g $srcdir/$longname-V$pkgver/Sounds $pkgdir/opt/chrisfair/$longname/ >/dev/null 2>&1
+	install -Dm755 $srcdir/$longname-V$pkgver/config_default.json $pkgdir/etc/$longname/config.json
      mkdir -p $pkgdir/usr/bin/
      cd $pkgdir/usr/bin
      ln -s /opt/chrisfair/$longname/$pkgname
