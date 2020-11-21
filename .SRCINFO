@@ -1,0 +1,14 @@
+pkgbase = tsunami-udp
+	pkgdesc = Ultra-Fast UDPDTP
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/forcegk/tsunami-udp
+	arch = any
+	license = Copyright 2002 Indiana University
+	provides = tsunami-udp
+	conflicts = tsunami-udp
+	source = git+https://github.com/forcegk/tsunami-udp.git#branch=master
+	sha256sums = SKIP
+
+pkgname = tsunami-udp
+
