@@ -12,7 +12,7 @@
 
 _qt_module=qtmultimedia
 pkgname=mingw-w64-qt5-multimedia
-pkgver=5.15.1
+pkgver=5.15.2
 pkgrel=1
 arch=('any')
 pkgdesc='Classes for audio, video, radio and camera functionality (mingw-w64)'
@@ -27,10 +27,10 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/subm
         '0001-Recorder-includes-to-prevent-conflict-with-vsnprintf.patch'
         '0002-Fix-build-with-ANGLE.patch'
         '0003-Workaround-multiple-definition-errors-with-amstrmid-.patch')
-sha256sums=('ed6e75bec9c98559c0fbc91ff746185b1e1845139b2c7a5a843e1e8880697d99'
-            '98d1157f57558204355b94b2f1fba7cbd9bd9bb561a5d66a0a48ffaab2894569'
-            '8e189a64fd15bf2267cb58f3d3c23d0d2ad9eb8c5f07723546d5a6620c5915c3'
-            '63860dba39d8c30dad59c0d9b4fc17e4da6e1e212e41520dbb8912e034974a40')
+sha256sums=('0c3758810e5131aabcf76e4965e4c18b8911af54d9edd9305d2a8278d8346df5'
+            '36bbaf9842fb930b4f17ae7ad2349b5dc9216492caeb7292f54d8fd7c0d66399'
+            'b733514a287d915d74ddbbb901b2fae1a0c169becbadaf9bb63738392e383064'
+            '5ba3a72643af5e16b9f51ac9e5317d2f7e41dcb177f2201ac38ef0d0cd9a66e5')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
