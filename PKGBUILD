@@ -1,7 +1,7 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
 _github_url=https://github.com/lopsided98/dnsupdate
 pkgname=dnsupdate-git
-pkgver=0.3.r3.g34da062
+pkgver=0.4.r0.g34001f0
 pkgrel=1
 pkgdesc="The last dynamic DNS client you'll ever need"
 arch=('any')
@@ -48,6 +48,7 @@ package() {
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
 
     install -Dm644 dnsupdate.service -t "${pkgdir}/usr/lib/systemd/system/"
+    install -Dm644 dnsupdate.timer -t "${pkgdir}/usr/lib/systemd/system/"
 
     cd build/docs/man
     install -Dm644 "dnsupdate.1" -t "${pkgdir}/usr/share/man/man1/"
