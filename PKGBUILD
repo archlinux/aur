@@ -4,7 +4,7 @@ pkgdesc="ROS - swri_roscpp."
 url='http://www.ros.org/'
 
 pkgname='ros-melodic-swri-roscpp'
-pkgver='2.11.0'
+pkgver='2.14.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 
 _dir=marti_common-release-release-melodic-swri_roscpp
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/swri-robotics-gbp/marti_common-release/archive/release/melodic/swri_roscpp/${pkgver}.tar.gz")
-sha256sums=('2fca22980b77828c4c7a4ce024123a82ebc4b3f513ca147c384751a03e6396a3')
+sha256sums=('9d2aa92b0197aba7d5580f2c08f8ca0d17c072ee0a1ad32f9f0aadb02a5f525e')
 
 build() {
     # Use ROS environment variables

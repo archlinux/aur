@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-swri-roscpp
 	pkgdesc = ROS - swri_roscpp.
-	pkgver = 2.11.0
+	pkgver = 2.14.2
 	pkgrel = 1
 	url = http://www.ros.org/
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = ros-melodic-swri-roscpp
 	depends = ros-melodic-std-srvs
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-diagnostic-updater
-	source = ros-melodic-swri-roscpp-2.11.0.tar.gz::https://github.com/swri-robotics-gbp/marti_common-release/archive/release/melodic/swri_roscpp/2.11.0.tar.gz
-	sha256sums = 2fca22980b77828c4c7a4ce024123a82ebc4b3f513ca147c384751a03e6396a3
+	source = ros-melodic-swri-roscpp-2.14.2.tar.gz::https://github.com/swri-robotics-gbp/marti_common-release/archive/release/melodic/swri_roscpp/2.14.2.tar.gz
+	sha256sums = 9d2aa92b0197aba7d5580f2c08f8ca0d17c072ee0a1ad32f9f0aadb02a5f525e
 
 pkgname = ros-melodic-swri-roscpp
 
