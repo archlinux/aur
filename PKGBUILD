@@ -31,7 +31,12 @@ md5sums=("SKIP"
 build(){
   cd mesa-${pkgver}
 
+  #Patching for llvm
+
+  msg2 "Patching src/amd/vulkan/radv_debug.h with radv_debug.h-${pkgver}.patch"
   patch -u src/amd/vulkan/radv_debug.h -i ../radv_debug.h-${pkgver}.patch
+
+  msg2 "Patching src/amd/vulkan/radv_device.c with radv_device.c-${pkgver}.patch"
   patch -u src/amd/vulkan/radv_device.c -i ../radv_device.c-${pkgver}.patch
 
   # remove build dir if there is one
