@@ -1,6 +1,6 @@
 pkgbase = funkwhale
 	pkgdesc = A self-hosted, modern free and open-source music server, heavily inspired by Grooveshark.
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://funkwhale.audio/
 	install = funkwhale.install
@@ -66,18 +66,18 @@ pkgbase = funkwhale
 	optdepends = certbot-apache: for the server to be accessible from outside
 	optdepends = nginx: to use nginx web server
 	optdepends = python-daphne: an alternative web server
-	source = funkwhale-1.0-api.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.0/download?job=build_api
-	source = funkwhale-1.0-front.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.0/download?job=build_front
-	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.0/deploy/funkwhale_proxy.conf
-	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.0/deploy/nginx.template
+	source = funkwhale-1.0.1-api.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.0.1/download?job=build_api
+	source = funkwhale-1.0.1-front.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.0.1/download?job=build_front
+	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.0.1/deploy/funkwhale_proxy.conf
+	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.0.1/deploy/nginx.template
 	source = funkwhale-beat.service
 	source = funkwhale-worker.service
 	source = funkwhale-server.service
 	source = apache-funkwhale.conf
 	source = env-template
 	source = funkwhale.service
-	sha256sums = d8a91f57aebd218c30c2bc08a4c665fe25a7906ae95b07c07f5296e19f3d5844
-	sha256sums = f062d7485325a78f08afaf2c641d8616e983d82d11dfc1e656cbc09a113c4202
+	sha256sums = 5c0689c0e05d3271d161c13e8063e5053f4ecb582e3a7e3d6973d1c46be23887
+	sha256sums = 0b77367cb4e8d1b57af59282af90ac41e0915de85cf5337b02f16e6aa0bd0129
 	sha256sums = 2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2
 	sha256sums = f56a2e8947809db4325a6c65141f6eb87e7428cc0e5a57032fc7ce050bf396fa
 	sha256sums = a964a7802252d20a3319e2131c27ec307ad4f454921c2db31971c080150d7c9b

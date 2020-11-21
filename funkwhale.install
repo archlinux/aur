@@ -5,6 +5,5 @@ post_install() {
 
 post_upgrade() {
   echo "Follow instructions on the upstream page or on the Arch Wiki for updating"
-  echo "If updating from v0.18, the apache and nginx configuration files have been changed, make sure to update them from the templates."
 }
 

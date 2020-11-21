@@ -1,7 +1,7 @@
 # Maintainer: getzze <getzze at gmail dot com>
 
 pkgname=funkwhale
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A self-hosted, modern free and open-source music server, heavily inspired by Grooveshark."
 arch=(any)
@@ -78,8 +78,8 @@ source=("${pkgname}-${pkgver}-api.zip::${_source_api}build_api"
         "env-template"
         "funkwhale.service"
 )
-sha256sums=('d8a91f57aebd218c30c2bc08a4c665fe25a7906ae95b07c07f5296e19f3d5844'
-            'f062d7485325a78f08afaf2c641d8616e983d82d11dfc1e656cbc09a113c4202'
+sha256sums=('5c0689c0e05d3271d161c13e8063e5053f4ecb582e3a7e3d6973d1c46be23887'
+            '0b77367cb4e8d1b57af59282af90ac41e0915de85cf5337b02f16e6aa0bd0129'
             '2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2'
             'f56a2e8947809db4325a6c65141f6eb87e7428cc0e5a57032fc7ce050bf396fa'
             'a964a7802252d20a3319e2131c27ec307ad4f454921c2db31971c080150d7c9b'
