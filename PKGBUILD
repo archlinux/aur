@@ -7,7 +7,7 @@ pkgname='ros-melodic-geodesy'
 pkgver='0.5.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-uuid-msgs
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="geographic_info-release-release-melodic-geodesy"
+_dir="geographic_info-release-release-melodic-geodesy-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-geographic-info/geographic_info-release/archive/release/melodic/geodesy/${pkgver}-${_pkgver_patch}.tar.gz")
 sha256sums=('58e20388e22a583385b39acf097e80a508617623d484f29a30f31ee96558f58b')
 
@@ -55,7 +55,7 @@ build() {
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
 
   # Build project
-  cmake ${srcdir}/${_dir}-${pkgver}-0 \
+  cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \

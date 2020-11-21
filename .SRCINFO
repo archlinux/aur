@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-geodesy
 	pkgdesc = ROS - Python and C++ interfaces for manipulating geodetic coordinates.
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/geodesy
 	arch = any
 	license = BSD
