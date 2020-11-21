@@ -1,4 +1,4 @@
-From 323393dab8e135dbfbba3e82b164765ac1c82a56 Mon Sep 17 00:00:00 2001
+From bd22c9c095f87d358ea2269bfdd19cc31078b0b1 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
 Subject: [PATCH 18/31] Merge shared and static library trees
@@ -17,10 +17,10 @@ Change-Id: I1de08df42d83d411aae519691cd3cde1fd6f3d1d
  7 files changed, 74 insertions(+), 11 deletions(-)
 
 diff --git a/configure.pri b/configure.pri
-index 3dedffcace..89938dfc32 100644
+index 49755f7abf..53c67f885b 100644
 --- a/configure.pri
 +++ b/configure.pri
-@@ -654,7 +654,12 @@ defineTest(qtConfOutput_machineTuple) {
+@@ -659,7 +659,12 @@ defineTest(qtConfOutput_machineTuple) {
  
  defineTest(qtConfOutput_commitOptions) {
      # qdevice.pri needs to be written early, because the compile tests require it.
@@ -34,7 +34,7 @@ index 3dedffcace..89938dfc32 100644
  }
  
  # type (empty or 'host'), option name, default value
-@@ -1393,3 +1398,12 @@ defineTest(createConfigStatus) {
+@@ -1398,3 +1403,12 @@ defineTest(createConfigStatus) {
  
  QMAKE_POST_CONFIGURE += \
      "createConfigStatus()"
@@ -204,5 +204,5 @@ index c0ce0972ef..5a2deaf31d 100644
  mkspecs.files -= $$PWD/mkspecs/modules $$PWD/mkspecs/modules-inst
  INSTALLS += mkspecs
 -- 
-2.28.0
+2.29.2
 
