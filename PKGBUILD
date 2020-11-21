@@ -14,7 +14,7 @@
 
 _qt_module=qtdeclarative
 pkgname=mingw-w64-qt5-declarative-static
-pkgver=5.15.1
+pkgver=5.15.2
 pkgrel=1
 arch=('any')
 pkgdesc='Classes for QML and JavaScript languages (mingw-w64)'
@@ -27,10 +27,12 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Ensure-static-plugins-are-exported.patch'
-        '0002-Prevent-exporting-QML-parser-symbols-on-static-build.patch')
-sha256sums=('7e30f0ccba61f9d71720b91d7f7523c23677f23cd96065cb71df1b0df329d768'
-            'accdeab4cb49857442f680a6013a648108ec4f00078e492475794aa6cc98257e'
-            '7ff5093753aa819c6039de796e6ebffa235b51f57403e827b31a90e8c2ffbf60')
+        '0002-Prevent-exporting-QML-parser-symbols-on-static-build.patch'
+        '0003-Disable-d3d12-requiring-fxc.exe.patch')
+sha256sums=('c600d09716940f75d684f61c5bdaced797f623a86db1627da599027f6c635651'
+            '0ba64350a82e050cf86ab507999ed2d813496cc2ab1c738f3aa8da6cb6502460'
+            'e476a3f619163911aab103304e271ad33194f1ddb9ef25d554f89994077ad792'
+            '83ed9816e4581ffe9c67ab2bd28488c5e3ba04c06e6ff558da8844c4a265c9f5')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
