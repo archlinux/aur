@@ -1,52 +1,29 @@
-# Maintainer: Shen-Ta Hsieh <ibmibmibm(at)gmail(dot)com>
+# Maintainer: Bernd Amend <bernd.amend(at)gmail(dot)com>
 # Contributor: Shen-Ta Hsieh <ibmibmibm(at)gmail(dot)com>
 
-_pkgbase=r8125
-pkgname=(r8125 r8125-dkms)
-pkgver=9.003.05
+_pkgname=r8125
+pkgname=${_pkgname}-dkms
+pkgver=9.004.01
 pkgrel=1
-pkgdesc="r8125 kernel driver for linux"
-arch=('x86_64')
-url="https://www.realtek.com/"
+url="https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software"
+pkgdesc="Kernel module for RTL8125"
 license=('GPL2')
-makedepends=(linux-headers)
-source=("https://github.com/ibmibmibm/r8125/archive/${pkgver}.tar.gz"
-        'dkms.conf')
-sha256sums=('75196ec98afcefbb6706307104d32131a27abba24ac333633790264968d548d6'
-            '7a6b42b6ebbd76ae3c40e10f824c2dae88448fab3ba074916b3be5c2b4bef448')
+arch=('x86_64')
+depends=('dkms')
+conflicts=("${_pkgname}")
+optdepends=('linux-headers: Build the module for Arch kernel'
+            'linux-lts-headers: Build the module for LTS Arch kernel')
+source=("https://github.com/ibmibmibm/r8125/archive/master.tar.gz" 'dkms.conf')
+sha256sums=('c25ec4ea817bd00108b023afbc19383ea177c042e6ee52c8c386c17615bb9b98'
+            '63e20350f30195f02c4b09c26540a5c369b4d8c46f002a10ffcaf6b1acd5da92')
 
-build() {
-  _kernver=$(</usr/src/linux/version)
+package() {
+  dir_name="${_pkgname}-${pkgver}"
+  install -Dm644 dkms.conf "${pkgdir}/usr/src/${dir_name}/dkms.conf"
 
-  tar -xf "${pkgver}.tar.gz"
-  cd "${_pkgbase}-${pkgver}"/src
-  make -C "/lib/modules/${_kernver}/build" M="$(pwd)" modules
-}
+  sed -e "s/@_PKGNAME@/${_pkgname}/g" \
+      -e "s/@PKGVER@/${pkgver}/g" \
+      -i "${pkgdir}/usr/src/${dir_name}/dkms.conf"
 
-package_r8125() {
-  # Install
-  _kernver=$(</usr/src/linux/version)
-
-  msg2 "Starting make install..."
-  install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/extramodules" -m644 "${_pkgbase}-${pkgver}/src/r8125.ko"
-  find "${pkgdir}" -name '*.ko' -exec gzip -n {} +
-}
-
-package_r8125-dkms() {
-  pkgdesc="r8125 kernel driver sources for linux"
-  depends=('dkms')
-  optdepends=('linux-headers: Build the module for Arch kernel'
-              'linux-lts-headers: Build the module for LTS Arch kernel')
-  provides=("8125=$pkgver")
-  conflicts+=(r8125)
-  # Copy dkms.conf
-  install -Dm644 dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
-
-  # Set name and version
-  sed -e "s/@_PKGBASE@/${_pkgbase}/" \
-      -e "s/@PKGVER@/${pkgver}/" \
-      -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
-
-  # Copy sources (including Makefile)
-  cp -r ${_pkgbase}-${pkgver}/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+  cp -r "${_pkgname}-master"/* "${pkgdir}/usr/src/${dir_name}/"
 }
