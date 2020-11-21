@@ -1,11 +1,11 @@
 # Maintainer: acedron <acedrons@yahoo.co.jp>
 pkgname=abstouch-nux
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="An absolute touchpad input client for GNU/Linux."
 arch=('any')
 url="https://github.com/acedron/${pkgname}"
-license=('MIT')
+license=('GPL3' 'LGPL3')
 makedepends=(
   'rust'
   'gcc'
@@ -15,11 +15,11 @@ md5sums=('SKIP')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make PREFIX="${pkgdir}/usr" build
+  make build
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  make PREFIX="${pkgdir}/usr" PREFIX_ETC="${pkgdir}/etc" install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  make DESTDIR="${pkgdir}" PREFIX="/usr" install
 }

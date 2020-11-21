@@ -1,13 +1,14 @@
 pkgbase = abstouch-nux
 	pkgdesc = An absolute touchpad input client for GNU/Linux.
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/acedron/abstouch-nux
 	arch = any
-	license = MIT
+	license = GPL3
+	license = LGPL3
 	makedepends = rust
 	makedepends = gcc
-	source = abstouch-nux-1.1.1.tar.xz::https://github.com/acedron/abstouch-nux/releases/download/v1.1.1/abstouch-nux-1.1.1.tar.xz
+	source = abstouch-nux-1.1.2.tar.xz::https://github.com/acedron/abstouch-nux/releases/download/v1.1.2/abstouch-nux-1.1.2.tar.xz
 	md5sums = SKIP
 
 pkgname = abstouch-nux
