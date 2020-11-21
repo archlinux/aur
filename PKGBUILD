@@ -4,7 +4,7 @@ pkgdesc="ROS - octomap_ros provides conversion functions between ROS and OctoMap
 url='http://ros.org/wiki/octomap_ros'
 
 pkgname='ros-melodic-octomap-ros'
-pkgver='0.4.0'
+pkgver='0.4.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,9 +31,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="octomap_ros-release-release-melodic-octomap_ros-${pkgver}-${_pkgver_patch}"
+_dir="octomap_ros-release-release-melodic-octomap_ros"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/octomap_ros-release/archive/release/melodic/octomap_ros/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('50dca555a5c7883b74068ae676db17671fa15da854f2985ed4999feff70089fd')
+sha256sums=('a98ca796060418ec08813c8e69e73a376e9108194f9e626db5f56e8172dab4b9')
 
 build() {
   # Use ROS environment variables

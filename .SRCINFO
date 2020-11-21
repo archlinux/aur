@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-octomap-ros
 	pkgdesc = ROS - octomap_ros provides conversion functions between ROS and OctoMaps native types.
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = http://ros.org/wiki/octomap_ros
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = ros-melodic-octomap-ros
 	depends = ros-melodic-tf
 	depends = ros-melodic-octomap-msgs
 	depends = ros-melodic-sensor-msgs
-	source = ros-melodic-octomap-ros-0.4.0-0.tar.gz::https://github.com/ros-gbp/octomap_ros-release/archive/release/melodic/octomap_ros/0.4.0-0.tar.gz
-	sha256sums = 50dca555a5c7883b74068ae676db17671fa15da854f2985ed4999feff70089fd
+	source = ros-melodic-octomap-ros-0.4.1-0.tar.gz::https://github.com/ros-gbp/octomap_ros-release/archive/release/melodic/octomap_ros/0.4.1-0.tar.gz
+	sha256sums = a98ca796060418ec08813c8e69e73a376e9108194f9e626db5f56e8172dab4b9
 
 pkgname = ros-melodic-octomap-ros
 
