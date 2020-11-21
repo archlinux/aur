@@ -9,7 +9,7 @@
 
 _qt_module=qtdatavis3d
 pkgname=mingw-w64-qt5-datavis3d
-pkgver=5.15.1
+pkgver=5.15.2
 pkgrel=1
 arch=('any')
 pkgdesc="Qt Data Visualization module (mingw-w64)"
@@ -22,7 +22,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('89ed596ea452a8dd8223d094690606bcccc92962776584aceefcc13f56538c06')
+sha256sums=('226a6575d573ad78aca459709722c496c23aee526aa0c38eb7c93b0bea1eb6fd')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
