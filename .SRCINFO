@@ -1,7 +1,7 @@
 pkgbase = dike
 	pkgdesc = Tool di firma e rinnovo online per i certificati digitali emessi da InfoCert S.p.A.
-	pkgver = 20202011
-	pkgrel = 1
+	pkgver = 20201121
+	pkgrel = 0
 	url = https://www.infocert.it
 	install = dike.install
 	arch = x86_64
