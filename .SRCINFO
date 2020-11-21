@@ -1,0 +1,14 @@
+pkgbase = python-anyconfig-msgpack-backend
+	pkgdesc = a backend module for python-anyconfig to support to load and dump MessagePack data files.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ssato/python-anyconfig-msgpack-backend
+	arch = any
+	license = MIT
+	depends = python-anyconfig
+	depends = python-msgpack
+	source = https://files.pythonhosted.org/packages/source/a/anyconfig-msgpack-backend/anyconfig-msgpack-backend-0.1.1.tar.gz
+	sha256sums = 223c3619dbb4eb433360494b0560f3694e5fa0dd69032db65e8c5318597bb348
+
+pkgname = python-anyconfig-msgpack-backend
+
