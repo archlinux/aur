@@ -28,9 +28,7 @@ build() {
     python setup.py build
 
     # Build man pages
-    #python setup.py build_docs -b man
-    # The previous line is broken in 0.3, because sphinx changed its internals
-    sphinx-build -b man docs build/docs/man
+    python setup.py build_docs -b man
 }
 
 check() {
