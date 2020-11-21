@@ -4,7 +4,7 @@ pkgdesc="ROS - Metapackage allowing easy installation of Velodyne simulation com
 url='http://wiki.ros.org/velodyne_simulator'
 
 pkgname='ros-melodic-velodyne-simulator'
-pkgver='1.0.9'
+pkgver='1.0.10'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
