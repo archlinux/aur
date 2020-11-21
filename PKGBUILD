@@ -5,7 +5,7 @@
 
 _pkgname=qtpass
 pkgname=$_pkgname-git
-pkgver=1.3.2.r272.793a499e
+pkgver=1.3.2.r326.6a6c4f61
 pkgrel=1
 pkgdesc='A multi-platform GUI for pass'
 url='https://qtpass.org'
