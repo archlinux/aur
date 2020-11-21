@@ -5,13 +5,13 @@
 pkgname=ssvnc-nojava
 _pkgname=ssvnc
 pkgver=1.0.29
-pkgrel=8
+pkgrel=9
 pkgdesc="SSL/SSH VNC viewer no java"
 arch=('i686' 'x86_64')
 url="http://www.karlrunge.com/x11vnc/ssvnc.html"
 license=('GPL')
 groups=('network')
-depends=('libjpeg>=7' 'libxaw' 'openssl' 'tk' 'tcl')
+depends=('libjpeg.so>=7' 'libxaw' 'openssl' 'tk' 'tcl')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 makedepends=('imake')

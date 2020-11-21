@@ -1,14 +1,14 @@
 pkgbase = ssvnc-nojava
 	pkgdesc = SSL/SSH VNC viewer no java
 	pkgver = 1.0.29
-	pkgrel = 8
+	pkgrel = 9
 	url = http://www.karlrunge.com/x11vnc/ssvnc.html
 	arch = i686
 	arch = x86_64
 	groups = network
 	license = GPL
 	makedepends = imake
-	depends = libjpeg>=7
+	depends = libjpeg.so>=7
 	depends = libxaw
 	depends = openssl
 	depends = tk
