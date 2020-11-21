@@ -1,0 +1,14 @@
+pkgbase = python-anyconfig-bson-backend
+	pkgdesc = A parser backend module for python-anyconfig to load and dump BSON files using pymongo.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/ssato/python-anyconfig-bson-backend
+	arch = any
+	license = MIT
+	depends = python-anyconfig
+	depends = python-pymongo
+	source = https://files.pythonhosted.org/packages/source/a/anyconfig-bson-backend/anyconfig-bson-backend-0.1.2.tar.gz
+	sha256sums = 8e719d6297544dab92458e4f3d03e4421af5de5546a699a12699f3db0c453e09
+
+pkgname = python-anyconfig-bson-backend
+
