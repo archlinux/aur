@@ -1,0 +1,16 @@
+--- a/lib/Arch/X86/Semantics/CONVERT.cpp
++++ b/lib/Arch/X86/Semantics/CONVERT.cpp
+@@ -333,10 +333,10 @@
+ 
+ namespace {
+ template <typename S2>
+-DEF_SEM(CVTSI2SS, V128W dst_src1, S2 src2) {
+-  auto src1_vec = FReadV32(dst_src1);
++DEF_SEM(CVTSI2SS, V128W dst, V128 src1, S2 src2) {
++  auto src1_vec = FReadV32(src1);
+   auto conv_val = Float32(Signed(Read(src2)));
+-  FWriteV32(dst_src1, FInsertV32(src1_vec, 0, conv_val));
++  FWriteV32(dst, FInsertV32(src1_vec, 0, conv_val));
+   return memory;
+ }
+ 
