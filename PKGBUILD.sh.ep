@@ -18,8 +18,8 @@
 
 % end
 \
-pkgver=5.15.1
-pkgrel=<%== stash('pkgrel') // '1' %>
+pkgver=5.15.2
+pkgrel=1
 arch=(<%== include 'fragments/mingw-w64-qt5-non_any_archs' %>)
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
 depends=(<%== qt5deps qw(declarative) %>)
