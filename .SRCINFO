@@ -1,7 +1,7 @@
 pkgbase = unreal-engine
 	pkgdesc = A 3D game engine by Epic Games which can be used non-commercially for free.
 	pkgver = 4.25.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.unrealengine.com/
 	arch = x86_64
 	license = custom:UnrealEngine
@@ -24,7 +24,7 @@ pkgbase = unreal-engine
 	options = staticlibs
 	source = com.unrealengine.UE4Editor.desktop
 	source = use-arch-mono.patch
-	sha256sums = fa4bd19ab53e91cc8b4ae6208452a7fe986a08047617213d6250b43e7a140bf3
+	sha256sums = 15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58
 	sha256sums = e891f07bf7294cd5fde8eb6de92e6d47ed004847ea8afd7c944e9b9b2bacaff4
 
 pkgname = unreal-engine

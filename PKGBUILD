@@ -5,7 +5,7 @@
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 pkgname=unreal-engine
 pkgver=4.25.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=(x86_64)
 url=https://www.unrealengine.com/
@@ -20,7 +20,7 @@ optdepends=('qt5-base: qmake build system for projects'
 license=(custom:UnrealEngine)
 source=(com.unrealengine.UE4Editor.desktop
         use-arch-mono.patch)
-sha256sums=(fa4bd19ab53e91cc8b4ae6208452a7fe986a08047617213d6250b43e7a140bf3
+sha256sums=(15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58
             e891f07bf7294cd5fde8eb6de92e6d47ed004847ea8afd7c944e9b9b2bacaff4)
 options=(!strip staticlibs)
 
@@ -78,6 +78,7 @@ package() {
   if [ "$dir" != "opt/$pkgname" ] # Set new path if dir changed
   then
     sed -i "5c\Path=/$dir/Engine/Binaries/Linux/" com.unrealengine.UE4Editor.desktop
+    sed -i "6c\Exec=/$dir/Engine/Binaries/Linux/UE4Editor %F" com.unrealengine.UE4Editor.desktop
   fi
   install -Dm644 com.unrealengine.UE4Editor.desktop $pkgdir/usr/share/applications/com.unrealengine.UE4Editor.desktop
   
