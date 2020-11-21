@@ -6,7 +6,7 @@ pkgbase = nordvpn-configs
 	arch = any
 	optdepends = openvpn: Run the client configs with systemd and openvpn
 	source = nordvpn-configs.zip::https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip
-	sha256sums = 385c7c9437efa33f44df08b5771a017bd7ee377e0fe50eec1a0926450ac591bb
+	sha256sums = SKIP
 
 pkgname = nordvpn-configs
 

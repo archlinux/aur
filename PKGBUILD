@@ -13,7 +13,7 @@ source=(
 	"$pkgname.zip::https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip"
 )
 sha256sums=(
-	'385c7c9437efa33f44df08b5771a017bd7ee377e0fe50eec1a0926450ac591bb'
+	'SKIP'
 )
 package() {
 	install --mode=755 --directory "$pkgdir/etc/openvpn/client"
