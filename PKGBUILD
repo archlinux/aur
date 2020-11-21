@@ -5,10 +5,10 @@ url='http://wiki.ros.org/twist_mux'
 
 
 pkgname='ros-melodic-twist-mux'
-pkgver='3.1.0'
+pkgver='3.1.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 
