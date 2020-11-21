@@ -9,7 +9,7 @@ post_install(){
     >>>
     >>> 2) Connect the printer to your computer, turn it on and start CUPS, or restart it if it was already running
     >>> eg.
-    >>> systemctl restart org.cups.cupsd.service
+    >>> systemctl restart cups.service
     >>>
     >>> 3) /usr/bin/lpadmin -p <name> -m <corresponding ppd> -v ccp://localhost:59687 -E 
     >>> eg.

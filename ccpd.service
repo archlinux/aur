@@ -1,7 +1,7 @@
 [Unit]
 Description=Canon CAPT daemon
-Requires=org.cups.cupsd.service
-After=org.cups.cupsd.service
+Requires=cups.service
+After=cups.service
 
 [Service]
 Type=forking
