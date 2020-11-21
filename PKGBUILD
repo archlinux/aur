@@ -4,7 +4,7 @@ pkgdesc="ROS - Python and C++ interfaces for manipulating geodetic coordinates."
 url='http://wiki.ros.org/geodesy'
 
 pkgname='ros-melodic-geodesy'
-pkgver='0.5.2'
+pkgver='0.5.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -40,7 +40,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geographic_info-release-release-melodic-geodesy"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-geographic-info/geographic_info-release/archive/release/melodic/geodesy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e813b9ed6e334823b0a65b5b57edbd642daea0165b01549113b7ef0b407fc991')
+sha256sums=('58e20388e22a583385b39acf097e80a508617623d484f29a30f31ee96558f58b')
 
 build() {
   # Use ROS environment variables
@@ -55,7 +55,7 @@ build() {
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake ${srcdir}/${_dir}-${pkgver}-0 \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
