@@ -5,7 +5,7 @@
 _lang=deu-fra
 _pkgname=dict-freedict-${_lang}
 pkgname=${_pkgname}-bin
-pkgver=2020.02.08
+pkgver=2020.10.04
 pkgrel=1
 pkgdesc="German -> French dictionary for dictd et al. from Freedict.org"
 arch=('any')
@@ -16,7 +16,7 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 install=${pkgname}.install
 source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}/freedict-${_lang}-${pkgver}.dictd.tar.xz")
-sha512sums=('adda3a1c703f8108897ba2fdd31dfcceb6fba77c84bdd3bdbb655a4b7334c72ea1210bae3b6f48f4db5e760b964f6446d56740bbf8a434e241360bfd6e5cffcb')
+sha512sums=('b287a7462c39c05e4fce33fefa6fcc4260c1e18f90a5ebe3777700ce4e0eaee19b5beec170dddf2571002236323c6fb243a96f594900585558178b2407ed3acd')
 
 package()
 {
