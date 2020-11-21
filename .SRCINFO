@@ -1,6 +1,6 @@
 pkgbase = lms
 	pkgdesc = Lightweight Music Server. Access your self-hosted music using a web interface
-	pkgver = 3.21.1
+	pkgver = 3.22.0
 	pkgrel = 1
 	url = http://lms.demo.poupon.io
 	install = lms.install
@@ -15,8 +15,8 @@ pkgbase = lms
 	depends = libconfig
 	depends = taglib
 	depends = wt
-	source = lms-3.21.1.tar.xz::https://github.com/epoupon/lms/archive/v3.21.1.tar.gz
-	sha256sums = 369389368d37c3552fd4d74e4ddd03885625b2536f428fdfb1a8baa415ce5184
+	source = lms-3.22.0.tar.xz::https://github.com/epoupon/lms/archive/v3.22.0.tar.gz
+	sha256sums = a0fece258aec3f197d6e9f292f9c2496369c452b49df791e3f8ed25012314ac4
 
 pkgname = lms
 
