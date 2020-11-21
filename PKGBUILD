@@ -1,19 +1,21 @@
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 # Contributor: Christian Neukirchen <chneukirchen@gmail.com>
 pkgname=knc
-pkgver=1.10.r231.geffa13c
+pkgver=1.12.r263.gc498ccf
 pkgrel=1
 pkgdesc="kerberised netcat, provides mutually authenticated tunnel"
 arch=('i686' 'x86_64')
 url="http://oskt.secure-endpoints.com/knc.html"
 license=('MIT')
 depends=('krb5')
-source=('git+https://github.com/elric1/knc.git')
+_commit=c498ccf95b96a63e495b13434c876481cb824e41 # 1.12
+source=("git+https://github.com/elric1/knc.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/knc"
 
+  #git tag -f 1.12 c498ccf95b96a63e495b13434c876481cb824e41
   #git tag -f 1.10 effa13c08b9aa6e4c10336a3cf118eea289ca14d
   #git tag -f 1.8 712fc0fb1fc3b9de0200dee9bcdd7f8a1fc1aa78
   #git describe --tags | sed "s/-/.r/; s/-/./"
