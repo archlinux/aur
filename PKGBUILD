@@ -7,15 +7,14 @@
 # installation.
 
 pkgname=jabref-git
-pkgver=5.0.r927.gc617d341ce
+pkgver=5.1.r275.g74ca49422e
 pkgrel=1
 epoch=2
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
 arch=('any')
 url="https://www.jabref.org"
-depends=('java-runtime=14')
 license=('MIT')
-makedepends=('git' 'java-environment=14') # tested with openjdk 14 from official repos,
+makedepends=('git' 'java-environment=15') # tested with zulu-15
 # openjfx must not be installed
 optdepends=('gsettings-desktop-schemas: For web search support')
 provides=('jabref')
@@ -36,10 +35,6 @@ build() {
   cd ${pkgname%-git}
   [[ -d "$srcdir"/gradle ]] && install -d "$srcdir"/gradle
   export GRADLE_USER_HOME="$srcdir"/gradle
-  
-#  export JAVA_HOME=/usr/lib/jvm/liberica-jdk-full
-  export JAVA_HOME=/usr/lib/jvm/java-14-openjdk
-  echo "Using JDK from $JAVA_HOME to build JabRef."
   
   ./gradlew --no-daemon -PprojVersion="${pkgver}" \
 	    -PprojVersionInfo="${pkgver}--ArchLinux--${pkgrel}" assemble
