@@ -1,14 +1,14 @@
 pkgbase = seamonkey-i18n-pt-pt
 	pkgdesc = Portuguese (Portugal) language pack for SeaMonkey
-	pkgver = 2.53.2
+	pkgver = 2.53.5
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.53.2
-	noextract = seamonkey-2.53.2.pt-PT.langpack.xpi
-	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.53.2/langpack/seamonkey-2.53.2.pt-PT.langpack.xpi
-	sha256sums = cfa94b2dba7a01eb0dae2c39de0627d12ee3c027ca55bf0e510ec79ced7202ab
+	depends = seamonkey>=2.53.5
+	noextract = seamonkey-2.53.5.pt-PT.langpack.xpi
+	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.53.5/langpack/seamonkey-2.53.5.pt-PT.langpack.xpi
+	sha256sums = 6a5fe9b7defc8f9c1c9c92b9bb2bb67e9002bc52ede602e391a57e342732e079
 
 pkgname = seamonkey-i18n-pt-pt
 
