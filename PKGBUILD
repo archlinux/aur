@@ -4,7 +4,7 @@ pkgdesc="ROS - The mbf_abstract_nav package contains the abstract navigation ser
 url='http://wiki.ros.org/move_base_flex'
 
 pkgname='ros-melodic-mbf-abstract-nav'
-pkgver='0.2.5'
+pkgver='0.3.3'
 _pkgrev=1
 arch=('any')
 pkgrel=1
@@ -49,7 +49,7 @@ _dir="move_base_flex-release-release-melodic-mbf_abstract_nav"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_abstract_core/${pkgver}.tar.gz")
 
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_abstract_nav/{pkgver}-{_pkgrev}.tar.gz")
-sha256sums=('d6a26dae9990c6d0d6af97c72716d87f5206d11107ae9ce4dab77b57efee3841')
+sha256sums=('9e8581a8b94f86417f422af9399fc0165c0f45bb2143a1cfe536dcb541400ab4')
 
 
 build() {

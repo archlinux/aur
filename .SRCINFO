@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-mbf-abstract-nav
 	pkgdesc = ROS - The mbf_abstract_nav package contains the abstract navigation server implementation of Move Base Flex (MBF).
-	pkgver = 0.2.5
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = http://wiki.ros.org/move_base_flex
 	arch = any
@@ -34,8 +34,8 @@ pkgbase = ros-melodic-mbf-abstract-nav
 	depends = ros-melodic-actionlib
 	depends = ros-melodic-dynamic-reconfigure
 	depends = ros-melodic-actionlib-msgs
-	source = ros-melodic-mbf-abstract-nav-0.2.5.tar.gz::https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_abstract_nav/{pkgver}-{_pkgrev}.tar.gz
-	sha256sums = d6a26dae9990c6d0d6af97c72716d87f5206d11107ae9ce4dab77b57efee3841
+	source = ros-melodic-mbf-abstract-nav-0.3.3.tar.gz::https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_abstract_nav/{pkgver}-{_pkgrev}.tar.gz
+	sha256sums = 9e8581a8b94f86417f422af9399fc0165c0f45bb2143a1cfe536dcb541400ab4
 
 pkgname = ros-melodic-mbf-abstract-nav
 
