@@ -14,7 +14,7 @@ md5sums=('f9dbae7902b5edecbd601339bbb0ac3a')
 package() {
         local dir=$srcdir/figlet-fonts-2f821cf9b4d20ab5f392f8b7627adbb4e8531831
 
-	install -dm755 ${pkgdir}/usr/share/figlet/fonts/
+        install -dm755 ${pkgdir}/usr/share/figlet/fonts/
 
         msg 'Removing figlets which are already in official distribution...'
         for f in ${excluded[@]}; do
@@ -22,7 +22,6 @@ package() {
         done
 
         cp $dir/* ${pkgdir}/usr/share/figlet/fonts/
-
 }
 
 excluded=(
