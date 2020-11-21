@@ -1,34 +1,32 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
-pkgname=openssl
+pkgbase=openssl
+pkgname=(openssl openssl-doc openssl-perl)
 _ver=1.1.1h
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=1
-pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
+pkgrel=2
 arch=('x86_64')
 url='https://www.openssl.org'
 license=('custom:BSD')
-depends=('perl')
-optdepends=('ca-certificates')
-backup=('etc/ssl/openssl.cnf')
+makedepends=('perl')
 source=("https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz"{,.asc}
         'ca-dir.patch')
 sha256sums=('5c9ca8774bd7b03e5784f26ae9e9e6d749c9da2438545077e6b3d755a06595d9'
             'SKIP'
-            '0938c8d68110768db4f350a7ec641070686904f2fe7ba630ac94399d7dc8cc5e')
+            '75aa8c2c638c8a3ebfd9fa146fc61c7ff878fc997dc6aa10d39e4b2415d669b2')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
               '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
 
 prepare() {
-	cd "$srcdir/$pkgname-$_ver"
+	cd "$srcdir/$pkgbase-$_ver"
 
 	# set ca dir to /etc/ssl by default
 	patch -p0 -i "$srcdir/ca-dir.patch"
 }
 
 build() {
-	cd "$srcdir/$pkgname-$_ver"
+	cd "$srcdir/$pkgbase-$_ver"
 
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
@@ -40,18 +38,53 @@ build() {
 }
 
 check() {
-	cd "$srcdir/$pkgname-$_ver"
+	cd "$srcdir/$pkgbase-$_ver"
+
 	# the test fails due to missing write permissions in /etc/ssl
 	# revert this patch for make test
 	patch -p0 -R -i "$srcdir/ca-dir.patch"
+
 	make test
+	
 	patch -p0 -i "$srcdir/ca-dir.patch"
 	# re-run make to re-generate CA.pl from th patched .in file.
 	make apps/CA.pl
 }
 
-package() {
-	cd "$srcdir/$pkgname-$_ver"
-	make DESTDIR=$pkgdir MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
+package_openssl() {
+	pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
+	depends=('glibc')
+	optdepends=('ca-certificates')
+	backup=('etc/ssl/openssl.cnf')
+
+	cd "$srcdir/$pkgbase-$_ver"
+
+	make DESTDIR=$pkgdir MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs
+
+	rm -rf $pkgdir/etc/ssl/misc $pkgdir/usr/bin/c_rehash
 	install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+}
+
+package_openssl-doc() {
+	pkgdesc='Documentation provided with OpenSSL'
+	depends=('openssl')
+
+	cd "$srcdir/$pkgbase-$_ver"
+
+	make DESTDIR=$pkgdir MANDIR=/usr/share/man MANSUFFIX=ssl install_man_docs
+
+	install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+}
+
+package_openssl-perl() {
+	pkgdesc='Perl scripts provided with OpenSSL'
+	depends=('openssl' 'perl')
+
+	cd "$srcdir/$pkgbase-$_ver"
+
+	make DESTDIR=$pkgdir MANDIR=/usr/share/man MANSUFFIX=ssl install_programs install_ssldirs
+
+	install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	mv $pkgdir/etc/ssl/misc/* $pkgdir/usr/bin/
+	rm -rf $pkgdir/{etc,usr/lib} $pkgdir/usr/bin/openssl
 }
