@@ -1,0 +1,25 @@
+pkgbase = doom2df-bin-git
+	pkgdesc = Doom 2D Forever: A Doom 2D remake with multiplayer
+	pkgver = 185
+	pkgrel = 0
+	url = http://doom2d.org/
+	arch = x86_64
+	license = GPL3
+	depends = sdl2_mixer
+	depends = sdl2
+	depends = enet
+	depends = libgl
+	conflicts = doom2df-git
+	source = https://deadsoftware.ru/files/deaddoomer/d2df/win32-d2df-latest.zip
+	source = https://deadsoftware.ru/files/deaddoomer/d2df/linux-amd64-d2df-latest-bin.zip
+	source = https://deadsoftware.ru/files/deaddoomer/d2df/linux-amd64-d2df-latest-version.txt
+	source = doom2df.desktop
+	source = doom2df.png
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = a529aca738b79f2099fcef6e583fbed3
+	md5sums = 191cd29a6994ab257abf6c0b1060b2fd
+
+pkgname = doom2df-bin-git
+
