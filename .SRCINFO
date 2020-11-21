@@ -1,7 +1,7 @@
 pkgbase = timestamp
 	pkgdesc = Prefix each line with a date/time stamp
 	pkgver = 0.3.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/kseistrup/timestamp
 	arch = i686
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname=timestamp
 pkgver=0.3.1
-pkgrel=0
+pkgrel=1
 pkgdesc='Prefix each line with a date/time stamp'
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/kseistrup/timestamp"
