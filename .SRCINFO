@@ -1,0 +1,25 @@
+pkgbase = ros-melodic-robot-controllers-msgs
+	pkgdesc = ROS - Messages for use with robot_controllers framework.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-actionlib-msgs
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-message-generation
+	depends = ros-melodic-actionlib-msgs
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-std-msgs
+	source = ros-melodic-robot-controllers-msgs-0.6.0.tar.gz::https://github.com/fetchrobotics-gbp/robot_controllers-release/archive/release/melodic/robot_controllers_msgs/0.6.0.tar.gz
+	sha256sums = 5fe69f250c4281e0a06227bf6ea0f381d8849087a05ec8744f08db4bda5e3856
+
+pkgname = ros-melodic-robot-controllers-msgs
+
