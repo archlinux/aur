@@ -3,17 +3,17 @@
 
 _pkgname='addict'
 pkgname="python-${_pkgname}"
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='A Python Dict whos keys can be set both using attribute and item syntax'
 arch=('any')
 url='https://github.com/mewwts/addict'
+_url_pypi='https://pypi.org/project/addict'
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-provides=("${_pkgname}")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('e8085624d18a9eecd7ec8a427f378f1e5036dfafba34c33fa29f0be8cd3a80b2')
+sha256sums=('b3b2210e0e067a281f5646c8c5db92e99b7231ea8b0eb5f74dbdf9e259d4e494')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -23,8 +23,8 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" 'LICENSE'
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
