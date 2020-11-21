@@ -9,6 +9,7 @@ pkgbase = callaudiod
 	arch = aarch64
 	license = GPL3
 	makedepends = meson
+	depends = alsa-lib
 	depends = glib2
 	depends = libpulse
 	source = https://gitlab.com/mobian1/callaudiod/-/archive/0.0.4/callaudiod-0.0.4.tar.gz
