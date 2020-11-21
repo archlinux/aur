@@ -11,7 +11,7 @@ conflicts=(doom2df-git)
 source=(
   'https://deadsoftware.ru/files/deaddoomer/d2df/win32-d2df-latest.zip'
   'https://deadsoftware.ru/files/deaddoomer/d2df/linux-amd64-d2df-latest-bin.zip'
-  'https://deadsoftware.ru/files/deaddoomer/d2df/linux-amd64-d2df-latest-version.txt '
+  'https://deadsoftware.ru/files/deaddoomer/d2df/linux-amd64-d2df-latest-version.txt'
   'doom2df.desktop'
   'doom2df.png'
 )
