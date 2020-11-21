@@ -3,7 +3,7 @@
 
 pkgname=rocketchat-server
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Ultimate Open Source WebChat Platform"
 arch=("any")
 url="https://rocket.chat"
@@ -20,7 +20,7 @@ source=("rocketchat-${pkgver}::https://releases.rocket.chat/${pkgver}/download"
     "rocketchat-server.conf"
     "rocketchat-user.conf"
 "rocketchat.service")
-sha512sums=('7f376814d1df7a171d12bafcc6242a584c44ca53a52653451559ad34a803e2a9ef5569a25d9f6965383103c783ff85eeda8ffed64065c9725cc912c8b91854d5'
+sha512sums=('1720f0d05bb99cf48ad98b9e0baf4f8134c152ace7787d43e47d64d26598ba2c000448fda32c9978a1e7f08ff8560702a3e5abb75a2641f9735df810040e096c'
     '6700fae043f59881c0c8821db176a8d9cbbf7f047bd48750dbcd7abd7c531831436f910a28745b40d4d2fcbb7d2081b5512a5ee23ea6355bb065fde3b0672edc'
     '4ff8899a47612a81f73c1c6449fb30a7ddfb0b199756db7f73e0a3078cf818b88e481fd828296b148a348d137ae529ce591d6c2bd6b57ae9278188e715086b59'
     '0086f72f16a594116586d4b6783b104f7bba779e4f8e31e5988c7fa67e1c7d9fc95215d0a04c4f24c72b4183774a9768a29b05c828990125dd4a3379a69aa648'
