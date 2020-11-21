@@ -7,6 +7,7 @@ pkgbase = kiauto-git
 	arch = x86_64
 	license = Apache2.0
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	depends = kicad
 	depends = xdotool
