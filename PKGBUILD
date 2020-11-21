@@ -4,7 +4,7 @@ pkgdesc="ROS - slam_gmapping contains a wrapper around gmapping which provides S
 url='http://ros.org/wiki/slam_gmapping'
 
 pkgname='ros-melodic-slam-gmapping'
-pkgver='1.4.0'
+pkgver='1.4.1'
 _pkgver_patch=1
 arch=('any')
 pkgrel=1
