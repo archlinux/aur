@@ -13,8 +13,8 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation15
-pkgver=15.5.6
-_buildver=16341506
+pkgver=15.5.7
+_buildver=17171714
 _pkgver=${pkgver}_${_buildver}
 pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
@@ -93,7 +93,7 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  'a62d89bfb29aefd0e3d4d60f31b3734aa7ba3adc48cbc612cfc032593d3c7593'
+  'ed4d4b2345595de729049ac142c4cc39b7618061873a296d36e42feb9c37ce40'
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
@@ -134,7 +134,7 @@ _isovirtualprinterimages=(Linux Windows)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=11.5.6_16696540
+_vmware_fusion_ver=11.5.7_17130923
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
 _unlocker_ver=3.0.3
@@ -142,17 +142,18 @@ _efi_unlocker_ver=1.0.0
 
 makedepends+=(
   python
-  unzip
+  dmg2img
+  p7zip
   uefitool-git
 )
 
 source+=(
-  "VMware-Fusion-${_vmware_fusion_ver/_/-}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/core/com.vmware.fusion.zip.tar"
+  "https://download3.vmware.com/software/fusion/file/VMware-Fusion-${_vmware_fusion_ver/_/-}.dmg"
   "unlocker-${_unlocker_ver}.py::https://raw.githubusercontent.com/paolo-projects/unlocker/${_unlocker_ver}/unlocker.py"
   "efi-unlocker-patch-${_efi_unlocker_ver}.txt"
 )
 sha256sums+=(
-  '8205f598be56ebbe5ddf23e2484ff067fd4a0a8543cd5408c390ea6bb1ae0364'
+  'c7d58ca44510de6c1ddffe86129ed19982114e742d71e7d81e4a5882036e06e3'
   '1c27547dcf6fb2f436c96ee62ae8c7f5cfd14b40d8bbd35dc385e247c4fb7e0f'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
@@ -195,12 +196,8 @@ prepare() {
     --extract "$extracted_dir"
 
 if [ -n "$_enable_macOS_guests" ]; then
-  unzip -q com.vmware.fusion.zip
-  for isoimage in ${_fusion_isoimages[@]}
-  do
-    install -Dm 644 "$srcdir/payload/VMware Fusion.app/Contents/Library/isoimages/$isoimage.iso" "$srcdir/fusion-isoimages/$isoimage.iso"
-  done
-  rm -rf __MACOSX payload manifest.plist preflight postflight
+  dmg2img VMware-Fusion-${_vmware_fusion_ver/_/-}.dmg VMware-Fusion-${_vmware_fusion_ver/_/-}.iso > /dev/null
+  7z e -y VMware-Fusion-${_vmware_fusion_ver/_/-}.iso VMware\ Fusion/VMware\ Fusion.app/Contents/Library/isoimages/\* -o"fusion-isoimages" > /dev/null 2>&1 || true
 
   sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker-${_unlocker_ver}.py"
 fi

@@ -1,6 +1,6 @@
 pkgbase = vmware-workstation15
 	pkgdesc = The industry standard for running multiple operating systems as virtual machines on a single Linux PC.
-	pkgver = 15.5.6
+	pkgver = 15.5.7
 	pkgrel = 1
 	url = https://www.vmware.com/products/workstation-for-linux.html
 	install = vmware-workstation.install
@@ -18,7 +18,7 @@ pkgbase = vmware-workstation15
 	depends = gcr
 	depends = vmware-keymaps
 	optdepends = linux-headers: build modules against Arch kernel
-	provides = vmware-workstation=15.5.6
+	provides = vmware-workstation=15.5.7
 	provides = vmware-ovftool
 	conflicts = vmware-workstation
 	conflicts = vmware-modules-dkms
@@ -38,7 +38,7 @@ pkgbase = vmware-workstation15
 	backup = etc/vmware/ssl/hostd.ssl.config
 	backup = etc/pam.d/vmware-authd
 	backup = etc/conf.d/vmware
-	source = https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-15.5.6-16341506.x86_64.bundle
+	source = https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-15.5.7-17171714.x86_64.bundle
 	source = vmware-bootstrap
 	source = vmware-vix-bootstrap
 	source = config
@@ -60,7 +60,7 @@ pkgbase = vmware-workstation15
 	source = Makefile
 	source = vmmon.patch
 	source = vmnet.patch
-	sha256sums = a62d89bfb29aefd0e3d4d60f31b3734aa7ba3adc48cbc612cfc032593d3c7593
+	sha256sums = ed4d4b2345595de729049ac142c4cc39b7618061873a296d36e42feb9c37ce40
 	sha256sums = 12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e
 	sha256sums = da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141
 	sha256sums = d4ff92c41f56e886eca08cdc0307747a9b35723534fa266ed44449812425ae12
