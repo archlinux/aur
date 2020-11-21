@@ -8,7 +8,7 @@ pkgname='ros-melodic-twist-mux'
 pkgver='3.1.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 
@@ -22,7 +22,7 @@ ros_makedepends=(ros-melodic-catkin
                  ros-melodic-rospy
                  ros-melodic-rostopic
                  )
-makedepends=('cmake' 'ros-build-tools'
+makedepends=('git' 'cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-melodic-roscpp
