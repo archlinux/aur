@@ -41,6 +41,14 @@ install="install.sh"
 # avoid caching in makepkg!
 SRCDEST=$startdir
 
+_msg() {
+    printf '%s\n' "$*"
+}
+
+_err() {
+    printf '\e[1;31mError:\e[m %s\n' "$*" >&2
+}
+
 _verify_repo() {
     if (( SKIPPGPCHECK )); then
         return 0
@@ -52,62 +60,62 @@ _verify_repo() {
     local jagexpgpkey=${validpgpkeys[0]}
     local _out
 
-    msg2 "Verifying 'Release' file (PGP)..."
+    _msg "Verifying 'Release' file (PGP)..."
     if ! _out=$(gpg --batch --status-fd 1 \
                     --trust-model always \
                     --verify "$Release.gpg" "$Release" \
                     2>&1); then
-        error "PGP signature of 'Release' could not be verified"
+        _err "PGP signature of 'Release' could not be verified"
         echo "$_out" | grep -v "^\\[GNUPG:\\]"
         return 1
     elif ! egrep -qs "^\\[GNUPG:\\] VALIDSIG $jagexpgpkey " <<< "$_out"; then
-        error "PGP signature of 'Release' was not made by Jagex"
+        _err "PGP signature of 'Release' was not made by Jagex"
         echo "$_out" | grep -v "^\\[GNUPG:\\]"
         return 1
     fi
 
-    msg2 "Parsing 'Release' file..."
+    _msg "Parsing 'Release' file..."
     _out=$(awk 'ok && $3 == "non-free/binary-amd64/Packages" {print $1; exit}
                 /^[^[:space:]]/ {ok=0}
                 /^SHA256:$/ {ok=1}' < "$Release")
     if ! [[ $_out =~ ^[0-9a-f]{64}$ ]]; then
-        error "Could not find hash of 'Packages' in Release file"
+        _err "Could not find hash of 'Packages' in Release file"
         return 1
     fi
 
-    msg2 "Verifying 'Packages' file (SHA256)..."
+    _msg "Verifying 'Packages' file (SHA256)..."
     if ! sha256sum --quiet --check <<< "$_out *$Packages"; then
-        error "Hash sum of 'Packages' did not match expected"
+        _err "Hash sum of 'Packages' did not match expected"
         return 1
     fi
 
-    msg2 "Parsing 'Packages' file..."
+    _msg "Parsing 'Packages' file..."
     _out=$(awk 'ok && /^SHA256:/ {print $2; exit}
                 /^Package:/ {ok=0}
                 /^Package: runescape-launcher$/ {ok=1}' < "$Packages")
     if ! [[ $_out =~ ^[0-9a-f]{64}$ ]]; then
-        error "Could not find hash of $debfile in Packages file"
+        _err "Could not find hash of $debfile in Packages file"
         return 1
     fi
 
-    msg2 "Verifying '$debfile' (SHA256)..."
+    _msg "Verifying '$debfile' (SHA256)..."
     if ! sha256sum --quiet --check <<< "$_out *$debfile"; then
-        error "Hash sum of '$debfile' did not match expected"
+        _err "Hash sum of '$debfile' did not match expected"
         return 1
     fi
 }
 
 prepare() {
-    _verify_repo || return
+    _verify_repo
 
     rm -rf "$srcdir/$pkgname-$pkgver"
     mkdir "$srcdir/$pkgname-$pkgver"
     cd "$srcdir/$pkgname-$pkgver"
 
-    msg2 "Extracting control files..."
+    _msg "Extracting control files..."
     bsdtar xvf ../control.tar.xz
 
-    msg2 "Extracting data files..."
+    _msg "Extracting data files..."
     bsdtar xvf ../data.tar.xz
 }
 
