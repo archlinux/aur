@@ -6,15 +6,15 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=amule-remote-tools
-pkgver=11047
+pkgver=11057
 pkgrel=1
 pkgdesc="aMule Remote Tools CLI and GUI"
 arch=('x86_64')
 url="http://www.amule.org"
 license=('GPL')
 conflicts=('amule')
-depends=('wxgtk2' 'geoip' 'boost-libs')
-makedepends=('crypto++' 'git' 'ccache' 'boost')
+depends=('wxgtk2' 'geoip' 'crypto++')
+makedepends=('git' 'boost')
 source=("git://repo.or.cz/amule.git#tag=amule-svn-r$pkgver")
 md5sums=('SKIP')
 
@@ -33,7 +33,6 @@ build() {
               --disable-webserver \
               --disable-debug \
               --enable-optimize \
-              --enable-ccache \
               --enable-geoip \
               --disable-upnp \
               --disable-monolithic \
@@ -44,7 +43,6 @@ build() {
               --disable-static \
               --disable-kde-in-home \
               --with-boost
-
   make
 }
 

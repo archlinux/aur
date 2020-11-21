@@ -1,19 +1,17 @@
 pkgbase = amule-remote-tools
 	pkgdesc = aMule Remote Tools CLI and GUI
-	pkgver = 11047
+	pkgver = 11057
 	pkgrel = 1
 	url = http://www.amule.org
 	arch = x86_64
 	license = GPL
-	makedepends = crypto++
 	makedepends = git
-	makedepends = ccache
 	makedepends = boost
 	depends = wxgtk2
 	depends = geoip
-	depends = boost-libs
+	depends = crypto++
 	conflicts = amule
-	source = git://repo.or.cz/amule.git#tag=amule-svn-r11047
+	source = git://repo.or.cz/amule.git#tag=amule-svn-r11057
 	md5sums = SKIP
 
 pkgname = amule-remote-tools
