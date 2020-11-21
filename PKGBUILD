@@ -23,8 +23,8 @@
 
 _qt_module=qttools
 pkgname=mingw-w64-qt5-tools-static
-pkgver=5.15.1
-pkgrel=2
+pkgver=5.15.2
+pkgrel=1
 arch=('any')
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
 depends=('mingw-w64-qt5-declarative-static')
@@ -36,8 +36,8 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Fix-linguist-macro.patch')
-sha256sums=('c98ee5f0f980bf68cbf0c94d62434816a92441733de50bd9adbe9b9055f03498'
-            '23243c0326d63474a293cec35cb0b64795e46b90ddc631d240b128274c030421')
+sha256sums=('c189d0ce1ff7c739db9a3ace52ac3e24cb8fd6dbf234e49f075249b38f43c1cc'
+            'e2ce8a553c78fd0dc6934be7d58a9bb90fe465619ac20a567d579c4c90bc01ab')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
