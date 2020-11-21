@@ -2,8 +2,8 @@
 
 pkgname=neochat-git
 pkgver=r1061.2c7e7f4
-pkgrel=1
-pkgdesc="A glossy cross-platform Matrix client for KDE"
+pkgrel=2
+pkgdesc="A client for matrix, the decentralized communication protocol"
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/network/neochat"
 license=('GPL3')
