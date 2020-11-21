@@ -3,7 +3,7 @@
 
 pkgbase=python-feedparser-dev
 pkgname=('python-feedparser-dev' 'python-sgmllib3k')
-pkgver=6.0.0b3
+pkgver=6.0.2
 pkgrel=1
 pkgdesc="Parse RSS and Atom feeds in Python: development version"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('python' 'libxml2' 'python-setuptools')
 depends=('python' 'libxml2')
 source=(feedparser-${pkgver}.tar.gz::https://github.com/kurtmckee/feedparser/archive/${pkgver}.tar.gz
         https://files.pythonhosted.org/packages/source/s/sgmllib3k/sgmllib3k-1.0.0.tar.gz)
-sha256sums=('1387970fb350a084ad31a55c2a1a5646214b7fd3b726a7f9c6e5d9bd63412710'
+sha256sums=('b211cfb80c4daefca64b773ade77340727187564fad9c2c94b37da8e1f03788f'
             '7868fb1c8bfa764c1ac563d3cf369c381d1325d36124933a726f29fcdaa812e9')
 
 
