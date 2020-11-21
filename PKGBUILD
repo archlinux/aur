@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Corey Mwamba <contact.me@coreymwamba.co.uk>
 pkgname=jwm-git
-pkgver=s1685.r8.71c1549
+pkgver=s1685.r11.3a35c63
 pkgrel=1
 pkgdesc="JWM is a light-weight window manager for the X11 Window System. Git version."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 groups=('x11')
 provides=('jwm')
 conflicts=('jwm' 'jwm-snapshot' 'jwm-flashfixed' 'jwm-snapshot-lite')
-depends=('libx11' 'libxft' 'libjpeg>=7' 'libxpm' 'libxinerama' 'libpng' 'cairo' 'librsvg' 'fribidi')
+depends=('libx11' 'libxft' 'libjpeg.so>=7' 'libxpm' 'libxinerama' 'libpng' 'cairo' 'librsvg' 'fribidi')
 backup=('etc/system.jwmrc')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/joewing/jwm.git"
