@@ -2,7 +2,7 @@
 
 _npmname=rofi-search
 pkgname=rofi-search-git
-pkgver=r24.adb44cf
+pkgver=r27.f5bccda
 pkgrel=1
 pkgdesc="Search engine plugin for rofi"
 arch=('any')
