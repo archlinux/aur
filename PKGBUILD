@@ -5,8 +5,8 @@ _ltspice_ver_roman="XVII"
 _ltspice_ver="17"
 
 pkgname=ltspice
-pkgver=17.20201117.1
-pkgrel=2
+pkgver=17.20201120.2
+pkgrel=1
 pkgdesc="SPICE simulator, schematic capture and waveform viewer. Installation based on Field Update Utility."
 arch=('x86_64')
 url="http://www.linear.com/designtools/software/"
@@ -38,11 +38,13 @@ _download_file() {
     if [ "$_download" = true ]; then
         mkdir -p "${pkgname}/$(dirname $file)"
 
+        output="$pkgname/$file"
+        if [ -f "$output" ]; then
+            rm -f $output
+        fi
         # first try compressed path and decompress
         url="${_update_url}/${file}.gz"
-        output="$pkgname/$file"
         compressed="${pkgname}/${file}.gz"
-        
         curl -f $_curl_opts $url > $compressed && curlcode=$? || curlcode=$?
         if [ -s "$compressed" ] && [ $curlcode -eq 0 ]; then
             # echo "compressed: $output"
@@ -97,7 +99,7 @@ open_sem $N
 build() {
     release_logs="$_update_url/release.log.gz"
     
-    curl "$release_logs" | gunzip > ./release.log
+    curl $_curl_opts "$release_logs" | gunzip > ./release.log
 
     echo "Checking cache and downloading using $N threads."
     for entry in $(cat release.log | sed '/^#/d' | awk '{print $6"/"$8}')
