@@ -18,7 +18,7 @@ sha256sums=('cdedb2b2a4854e917f43b0c6379efefda9d7ff4e58dec2a3159a80ee8288f298')
 build() {
   cd "${srcdir}"
 
-  R CMD INSTALL ${pkgname}-${pkgver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
 }
 
 package() {
