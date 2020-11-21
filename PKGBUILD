@@ -4,7 +4,7 @@ pkgname=pmemd
 pkgver=20
 _toolsver=20
 _gccver=9.3.0
-pkgrel=5
+pkgrel=6
 pkgdesc="PMEMD module of AMBER software package"
 url="http://ambermd.org/"
 license=(custom)
@@ -25,18 +25,22 @@ source=("local://AmberTools${_toolsver}.tar.bz2"
         "pmemd"
         "pmemd.MPI"
         "pmemd.cuda"
-        "pmemd.cuda.MPI")
-md5sums=('8c1fe81833796a9cb823019e02c522e0'
-         '559d5b7b872344c268a62ebd5d33f71d'
-         '44632310820b4d915a169d13d6a60be2'
-         '9e030fb76a31f133a59b33734e674ac1'
-         'eba440f07f04c80d2cb22752bea01d65'
-         '14a2068da46e104553224fb523ea5bd4')
+        "pmemd.cuda.MPI"
+        "cuda-11.1.patch")
+sha256sums=('b1e1f8f277c54e88abc9f590e788bbb2f7a49bcff5e8d8a6eacfaf332a4890f9'
+            'a4c53639441c8cc85adee397933d07856cc4a723c82c6bea585cd76c197ead75'
+            '8bd1f818e0b55e866b906ecd497831f674b9a7b995c85899f6c4adc77a908f51'
+            'd454d03f3c88efe231a2282758c0e6b655396d00af40fd4b3ecfb1d8641009b7'
+            '2a4a139923fcecbe319ae6728a860e8e64835c1dd2d9e626eb5125116a0d790c'
+            'df8b260dc4782a0fd0935ba1fdec8eb013b17c1082cfecff60e933a38a38d5a0'
+            'b666b2f186c5fd40b0be71a52b854060deea690205dbca24606c13c97cbf07de')
 
 prepare() {
   cd ${srcdir}/amber${pkgver}_src
 
   ./update_amber --update
+
+  patch -Np0 -i "${srcdir}/cuda-11.1.patch"
 }
 
 build() {
