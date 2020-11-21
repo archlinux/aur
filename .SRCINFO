@@ -1,7 +1,7 @@
 pkgbase = qt5-webengine-595
 	pkgdesc = Provides support for web applications using the Chromium browser project (v5.9.5)
 	pkgver = 5.9.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://qt-project.org/
 	arch = i686
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgbase = qt5-webengine-595
 	sha256sums = ddd8d8b64fb2f81bbc5acd3d77cc6aeb79df44db451c3fed94f0e05b73c7b078
 	sha256sums = 0be352f23946a41cddae941ecedfe1bceb62b23e2a1225dd5469e77e251ccf42
 	sha256sums = cef22eeef1dedd484dec4cf94bb0aed2881ea7b2ee6d563e6940f4362e26604f
-	sha256sums = 7849a944b63fbdcab3e15bce6158fa74d213f4f61bce7e870f05060fa00e2638
+	sha256sums = 1eaef6c3ae167c75eec42713a6c7301f0781610d24019b5241b5f77fc207d2ed
 
 pkgname = qt5-webengine-595
 

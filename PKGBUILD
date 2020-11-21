@@ -5,7 +5,7 @@
 pkgname=qt5-webengine-595
 _qtver=5.9.5
 pkgver=${_qtver/-/}
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('LGPL3' 'LGPL2.1' 'BSD')
@@ -30,7 +30,7 @@ sha256sums=('70d26db4e7944291c5f843b875916fb95ceec0f0a8fea3daea8004990199fc07'
             'ddd8d8b64fb2f81bbc5acd3d77cc6aeb79df44db451c3fed94f0e05b73c7b078'
             '0be352f23946a41cddae941ecedfe1bceb62b23e2a1225dd5469e77e251ccf42'
             'cef22eeef1dedd484dec4cf94bb0aed2881ea7b2ee6d563e6940f4362e26604f'
-            '382ab1774b458a366deac45e38173147cc42f5edbbfb6b93e905c59c5c4abb46')
+            '1eaef6c3ae167c75eec42713a6c7301f0781610d24019b5241b5f77fc207d2ed')
 
 prepare() {
   mkdir -p build
