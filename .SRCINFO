@@ -1,0 +1,15 @@
+pkgbase = folderpreview-git
+	pkgdesc = Generates folder preview thumb
+	pkgver = 0.3.0.r1.gc46d126
+	pkgrel = 1
+	url = https://gitlab.com/hxss-linux/folderpreview
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = folderpreview
+	source = folderpreview-git::git+https://gitlab.com/hxss-linux/folderpreview
+	md5sums = SKIP
+
+pkgname = folderpreview-git
+
