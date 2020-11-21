@@ -1,7 +1,7 @@
 # Maintainer: brunorro <br1.rdgz@gmail.com>
 _pkgname=wterm
 pkgname=$_pkgname-git
-pkgver=0ae42717
+pkgver=18864b6d
 pkgrel=1
 epoch=
 pkgdesc="xterm for wayland (simple wayland st suckless terminal)"
@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/majestrate/wterm"
 license=('MIT')
 groups=()
-depends=('libdrm' 'fontconfig' 'wayland' 'libxkbcommon' 'pixman')
+depends=('libdrm' 'fontconfig' 'wayland' 'libxkbcommon' 'pixman' 'git')
 makedepends=()
 checkdepends=()
 optdepends=('ttf-liberation: Red Hats liberation fonts')
@@ -43,7 +43,7 @@ build() {
 
 package() {
 	cd "$_pkgname"
-	make BIN_PREFIX="$pkgdir/usr/local" SHARE_PREFIX="$pkgdir/usr/local" install
+	make BIN_PREFIX="$pkgdir/usr/" SHARE_PREFIX="$pkgdir/usr/" install
 	mkdir -p "$pkgdir/usr/share/terminfo/w/"
 	cp wterm.info "$pkgdir/usr/share/terminfo/w/"
 }

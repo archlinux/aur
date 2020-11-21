@@ -1,6 +1,6 @@
 pkgbase = wterm-git
 	pkgdesc = xterm for wayland (simple wayland st suckless terminal)
-	pkgver = 0ae42717
+	pkgver = 18864b6d
 	pkgrel = 1
 	url = https://github.com/majestrate/wterm
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = wterm-git
 	depends = wayland
 	depends = libxkbcommon
 	depends = pixman
+	depends = git
 	optdepends = ttf-liberation: Red Hats liberation fonts
 	provides = wterm
 	conflicts = wterm
