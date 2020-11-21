@@ -1,0 +1,20 @@
+pkgbase = hdf5110
+	pkgdesc = General purpose library and file format for storing scientific data, legacy 1.10 branch w/java bindings
+	pkgver = 1.10.7
+	pkgrel = 1
+	url = https://www.hdfgroup.org/hdf5
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = time
+	makedepends = gcc-fortran
+	makedepends = jre-openjdk
+	depends = zlib
+	depends = libaec
+	depends = bash
+	options = staticlibs
+	source = hdf5110-1.10.7.tar.gz::https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.7/src/CMake-hdf5-1.10.7.tar.gz
+	sha256sums = 651bb79a4b19b60ab9f99092f7c4cf61b7c6ca2c9bd545717746a5a47839a5bb
+
+pkgname = hdf5110
+
