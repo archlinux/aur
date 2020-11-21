@@ -11,7 +11,7 @@
 
 _qt_module=qtgraphicaleffects
 pkgname=mingw-w64-qt5-graphicaleffects-static
-pkgver=5.15.1
+pkgver=5.15.2
 pkgrel=1
 arch=('any')
 pkgdesc="Graphical effects for use with Qt Quick 2 (mingw-w64)"
@@ -23,7 +23,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('f4a4d3e1c6d8b0b200b6759ebb615344275957d56d2ef6a33641f853120466d1')
+sha256sums=('ec8d67f64967d5046410490b549c576f9b9e8b47ec68594ae84aa8870173dfe4')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
