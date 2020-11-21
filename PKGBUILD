@@ -1,5 +1,5 @@
 pkgname=mock-core-configs
-pkgver=33.2
+pkgver=33.3
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL2')
 depends=('distribution-gpg-keys>=1.41')
 source=("$url/archive/$_pkgtag.tar.gz")
-md5sums=('e4a5ed7a5cc5c4a708a614b3dc401cfb')
+md5sums=('79cc4304879cbc70973149a2afebdb25')
 
 # Uncomment to not package configs for EOLed versions of distributions
 #_without_eol=1
