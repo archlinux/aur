@@ -4,7 +4,7 @@
 _pkgname=r8125
 pkgname=${_pkgname}-dkms
 pkgver=9.004.01
-pkgrel=1
+pkgrel=2
 url="https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software"
 pkgdesc="Kernel module for RTL8125"
 license=('GPL2')
@@ -15,7 +15,7 @@ optdepends=('linux-headers: Build the module for Arch kernel'
             'linux-lts-headers: Build the module for LTS Arch kernel')
 source=("https://github.com/ibmibmibm/r8125/archive/master.tar.gz" 'dkms.conf')
 sha256sums=('c25ec4ea817bd00108b023afbc19383ea177c042e6ee52c8c386c17615bb9b98'
-            '63e20350f30195f02c4b09c26540a5c369b4d8c46f002a10ffcaf6b1acd5da92')
+            '5239f254a131900d1b7344b6272fb552ed4d0a5a8cd6b389a4d6475c0dcb2d95')
 
 package() {
   dir_name="${_pkgname}-${pkgver}"
