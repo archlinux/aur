@@ -1,6 +1,6 @@
 pkgbase = alan
 	pkgdesc = The Alan programming language compiler and runtime
-	pkgver = 0.1.18
+	pkgver = 0.1.19
 	pkgrel = 1
 	url = https://github.com/alantech/alan
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = alan
 	makedepends = python2
   makedepends = yarn
   makedepends = npm
-	source = alan-0.1.18.tar.gz::https://github.com/alantech/alan/archive/v0.1.18.tar.gz
-	sha256sums = dc0efa68e9dcd4268faf11cbc16f5d9d52f978396a39e09be49a37c030d2dc48
+	source = alan-0.1.19.tar.gz::https://github.com/alantech/alan/archive/v0.1.19.tar.gz
+	sha256sums = f13787d10eaad24886c0cae53cacbe62085889178f947af835f2fa48f6cd608a
 
 pkgname = alan
 
