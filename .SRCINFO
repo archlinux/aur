@@ -1,0 +1,13 @@
+pkgbase = words-nl
+	pkgdesc = A wordlist of dutch words for /usr/share/dict/.
+	pkgver = 20201121
+	pkgrel = 1
+	url = https://github.com/OpenTaal/opentaal-wordlist
+	arch = any
+	license = CCPL:by-sa
+	makedepends = git
+	source = git+https://github.com/OpenTaal/opentaal-wordlist.git#branch=master
+	md5sums = SKIP
+
+pkgname = words-nl
+
