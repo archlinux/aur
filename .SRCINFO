@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-swri-math-util
 	pkgdesc = ROS - swri_math_util.
-	pkgver = 2.11.0
+	pkgver = 2.14.2
 	pkgrel = 1
 	url = https://github.com/swri-robotics/marti_common
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ros-melodic-swri-math-util
 	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-roscpp
 	depends = ros-melodic-roscpp
-	source = ros-melodic-swri-math-util-2.11.0.tar.gz::https://github.com/swri-robotics-gbp/marti_common-release/archive/release/melodic/swri_math_util/2.11.0.tar.gz
-	sha256sums = e4be3db0df752a6aa949bbe8ed2ea43fcdd64a34013efd9eaf3709be291de456
+	source = ros-melodic-swri-math-util-2.14.2.tar.gz::https://github.com/swri-robotics-gbp/marti_common-release/archive/release/melodic/swri_math_util/2.14.2.tar.gz
+	sha256sums = df17bb789c4f2869d00a96a7406edfdb4fd4f32a80d8097bca42db824a7e5ad3
 
 pkgname = ros-melodic-swri-math-util
 

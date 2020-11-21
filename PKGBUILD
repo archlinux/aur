@@ -4,7 +4,7 @@ pkgdesc="ROS - swri_math_util."
 url='https://github.com/swri-robotics/marti_common'
 
 pkgname='ros-melodic-swri-math-util'
-pkgver='2.11.0'
+pkgver='2.14.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -19,7 +19,7 @@ depends=(${ros_depends[@]})
 
 _dir=marti_common-release-release-melodic-swri_math_util
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/swri-robotics-gbp/marti_common-release/archive/release/melodic/swri_math_util/${pkgver}.tar.gz")
-sha256sums=('e4be3db0df752a6aa949bbe8ed2ea43fcdd64a34013efd9eaf3709be291de456')
+sha256sums=('df17bb789c4f2869d00a96a7406edfdb4fd4f32a80d8097bca42db824a7e5ad3')
 
 build() {
     # Use ROS environment variables
