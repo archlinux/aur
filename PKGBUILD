@@ -6,7 +6,7 @@
     pkgname='ros-melodic-interactive-marker-twist-server'
     pkgver='1.2.0'
     arch=('any')
-    pkgrel=1
+    pkgrel=2
     license=('BSD')
 
     ros_makedepends=(ros-melodic-interactive-markers
@@ -26,9 +26,9 @@
     )
 
     # Tarball version (faster download)
-_dir="interactive_marker_twist_server-release-release-melodic-interactive_marker_twist_server"
+_dir="interactive_marker_twist_server-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/interactive_marker_twist_server/archive/${pkgver}.tar.gz")
-sha256sums=('bb3d497978c2841c8f5a667aad7208e21475ea31269532712b8db05170d804e3')
+sha256sums=('00fda96ab6adf73e8f61299334443a00a9d1eb00ff0727fe49dea6c6189bf889')
 
 
     build() {
