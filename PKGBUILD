@@ -4,7 +4,7 @@ pkgdesc="ROS - The mbf_simple_nav package contains a simple navigation server im
 url='http://wiki.ros.org/move_base_flex'
 
 pkgname='ros-melodic-mbf-simple-nav'
-pkgver='0.2.5'
+pkgver='0.3.3'
 arch=('any')
 pkgrel=1
 license=('3-Clause BSD')
@@ -50,7 +50,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="move_base_flex-release-release-melodic-mbf_simple_nav"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_simple_nav/${pkgver}.tar.gz")
-sha256sums=('f719ffb7f4e627f11aeedaee53d0d69844c7a28870a40434ae2dd2f0a13d65fc')
+sha256sums=('2a0591954b43fe557083ed623c77a608b2fb58eed03b5620edfec621a4bbc504')
 
 build() {
         # Use ROS environment variables
