@@ -1,0 +1,12 @@
+diff --git a/gedit/gedit-app.c b/gedit/gedit-app.c
+index 5532d5975..671208c35 100644
+--- a/gedit/gedit-app.c
++++ b/gedit/gedit-app.c
+@@ -627,6 +627,7 @@ add_accelerator (GtkApplication *app,
+ static gboolean
+ show_menubar (void)
+ {
++	return TRUE;
+ 	GtkSettings *settings = gtk_settings_get_default ();
+ 	gboolean result;
+ 
