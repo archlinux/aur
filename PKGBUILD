@@ -2,18 +2,48 @@
 # Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 
 pkgname=freecad-git
-pkgver=0.19_pre.r4405.gc4d42a1f74
+pkgver=0.19_pre.r4408.g20649ec529
 pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('x86_64')
 url='https://www.freecadweb.org/'
 license=('LGPL')
-depends=(boost-libs glew jsoncpp libspnav med netcdf opencascade openmpi
-         pyside2-tools python-matplotlib python-pivy python-pyside2 qt5-svg
-         qt5-tools qt5-webkit qt5-x11extras shared-mime-info xerces-c)
-makedepends=(boost cmake coin eigen gcc-fortran gendesk git ninja pyside2
-             python-shiboken2 shiboken2 swig)
+depends=(
+boost-libs
+glew
+jsoncpp
+libspnav
+med
+netcdf
+opencascade
+openmpi
+pyside2-tools
+python-matplotlib
+python-pivy
+python-pyside2
+qt5-svg
+qt5-tools
+qt5-webkit
+qt5-x11extras
+qt5-xmlpatterns
+shared-mime-info
+xerces-c
+)
+makedepends=(
+boost
+cmake
+coin
+eigen
+gcc-fortran
+gendesk
+git
+ninja
+pyside2
+python-shiboken2
+shiboken2
+swig
+)
 provides=('freecad')
 conflicts=('freecad' 'freecad-appimage' 'freecad-appimage-git')
 source=("git+https://github.com/FreeCAD/FreeCAD.git")
