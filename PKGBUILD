@@ -1,7 +1,7 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
 pkgname=('python-rospkg')
-pkgver='1.2.8'
+pkgver='1.2.9'
 pkgrel=1
 pkgdesc='Standalone Python library for the ROS package system'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 
 conflicts=('python2-rospkg')
 source=("https://github.com/ros-infrastructure/rospkg/archive/${pkgver}.tar.gz")
-sha256sums=('39e801b104e4c31ddc60a0c1a526197429cfbbe72b574a3cad851e624ff54249')
+sha256sums=('518205cddc3259b3cb410466f70af832cb7ea8222862fc14831e2ea7f8970c44')
 
 _module='rospkg'
 
