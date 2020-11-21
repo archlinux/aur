@@ -1,4 +1,4 @@
-From 5652ce8e4225793cb4041be6aadee82d4ac84c27 Mon Sep 17 00:00:00 2001
+From 7b74ca5cb9fb9077eb26e73a84822850e8608c50 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 17:21:08 +0200
 Subject: [PATCH 2/2] Handle win64 in dumpcpp and
@@ -11,7 +11,7 @@ See https://bugreports.qt.io/browse/QTBUG-46827
  2 files changed, 12 insertions(+)
 
 diff --git a/src/activeqt/container/qaxbase.cpp b/src/activeqt/container/qaxbase.cpp
-index 3203096..6adf9eb 100644
+index 2903cdf..12e3801 100644
 --- a/src/activeqt/container/qaxbase.cpp
 +++ b/src/activeqt/container/qaxbase.cpp
 @@ -2202,6 +2202,10 @@ void MetaObjectGenerator::readClassInfo()
@@ -26,11 +26,11 @@ index 3203096..6adf9eb 100644
                      break;
              }
 diff --git a/tools/dumpcpp/main.cpp b/tools/dumpcpp/main.cpp
-index 780d41b..029e10b 100644
+index 55aa80b..a1282f2 100644
 --- a/tools/dumpcpp/main.cpp
 +++ b/tools/dumpcpp/main.cpp
-@@ -1580,6 +1580,10 @@ int main(int argc, char **argv)
-             typeLib = settings.value(QLatin1Char('/') + codes.at(c) + QLatin1String("/0/win32/.")).toString();
+@@ -1586,6 +1586,10 @@ int main(int argc, char **argv)
+             typeLib = settings.value(keyPrefix + QLatin1String("win32/.")).toString();
              if (QFile::exists(typeLib))
                  break;
 +            typeLib = settings.value(QLatin1String("/") + codes.at(c) + QLatin1String("/0/win64/.")).toByteArray();
@@ -40,8 +40,8 @@ index 780d41b..029e10b 100644
          }
  
          if (!typeLib.isEmpty())
-@@ -1639,6 +1643,10 @@ int main(int argc, char **argv)
-                                      + QLatin1String("/win32/.")).toString();
+@@ -1650,6 +1654,10 @@ int main(int argc, char **argv)
+             typeLib = settings.value(keyPrefix + QLatin1String("win32/.")).toString();
              if (QFile::exists(typeLib))
                  break;
 +            typeLib = settings.value(key + QLatin1String("/") + codes.at(c) + QLatin1String("/win64/.")).toByteArray();
@@ -52,5 +52,5 @@ index 780d41b..029e10b 100644
      }
  
 -- 
-2.28.0
+2.29.2
 
