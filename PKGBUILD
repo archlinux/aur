@@ -2,12 +2,15 @@
 
 pkgname=nordvpn-configs
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="openvpn config files for NordVPN"
 arch=('any')
 url='https://nordvpn.com/'
 optdepends=(
 	'openvpn: Run the client configs with systemd and openvpn'
+)
+options=(
+	!strip
 )
 source=(
 	"$pkgname.zip::https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip"
@@ -16,7 +19,7 @@ sha256sums=(
 	'SKIP'
 )
 package() {
-	install --mode=755 --directory "$pkgdir/etc/openvpn/client"
+	install --mode=750 --directory "$pkgdir/etc/openvpn/client"
 	install -D --mode=644 **/*.ovpn "$pkgdir/etc/openvpn/client"
 }
 
