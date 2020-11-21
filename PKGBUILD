@@ -4,8 +4,8 @@
 
 _pkgname=thermald
 pkgname=thermald-git
-pkgver=v1.4.2.r503.g7f2003e
-pkgrel=1
+pkgver=v1.4.2.r528.gfe026aa
+pkgrel=2
 pkgdesc="The Linux Thermal Daemon program from 01.org"
 arch=('i686' 'x86_64')
 url="https://github.com/intel/thermal_daemon"
