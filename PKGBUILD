@@ -1,7 +1,7 @@
 # Maintainer: 3ED <krzysztof1987 at gmail>
 
 pkgname=seamonkey-i18n-de
-pkgver=2.53.2
+pkgver=2.53.5
 pkgrel=1
 _lang=de
 pkgdesc="German language pack for SeaMonkey"
@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha256sums=('b5a899eaf64652381dd5742d1739987a1265e61826bace5ea4b2568f59aacc8c')
+sha256sums=('c2bc97cf5768e00c3088041ea5e692df30fe08dbe31b94b9068c7a5670c70d28')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
