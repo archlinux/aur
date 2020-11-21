@@ -1,0 +1,19 @@
+pkgbase = kde1-amor-git
+	pkgdesc = KDE1 version of Amor, with extra themes (only works with the KDE1 window manager
+	pkgver = 0.5r9.ce19b63
+	pkgrel = 1
+	url = https://github.com/sandsmark/kde1-amor
+	arch = i686
+	arch = x86_64
+	groups = kde1
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = kde1-kdelibs
+	provides = kde1-amor
+	conflicts = kde1-amor
+	source = git+https://github.com/sandsmark/kde1-amor.git
+	md5sums = SKIP
+
+pkgname = kde1-amor-git
+
