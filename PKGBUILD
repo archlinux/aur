@@ -2,12 +2,12 @@
 
 pkgname=anvill
 pkgver=0.1.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Forge beautiful LLVM bitcode out of raw machine code"
 arch=('x86_64')
 url="https://github.com/lifting-bits/anvill"
 license=('Apache')
-depends=('cxx-common=0.0.14' 'remill' 'python' 'ncurses' 'zlib')
+depends=('cxx-common=0.0.14' 'remill' 'python' 'ncurses' 'libunwind' 'zlib')
 makedepends=('python-setuptools')
 source=("https://github.com/lifting-bits/anvill/archive/v${pkgver}.tar.gz"
         '00-install-specify-bitcode.patch'
