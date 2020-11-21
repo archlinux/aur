@@ -1,6 +1,6 @@
 pkgbase = onefetch-bin
 	pkgdesc = Git repository summary on your terminal
-	pkgver = 2.7.1
+	pkgver = 2.7.3
 	pkgrel = 1
 	url = https://github.com/o2sh/onefetch
 	arch = x86_64
@@ -9,14 +9,14 @@ pkgbase = onefetch-bin
 	provides = onefetch
 	conflicts = onefetch
 	conflicts = onefetch-git
-	source_x86_64 = onefetch-bin-2.7.1.tar.gz::https://github.com/o2sh/onefetch/releases/download/v2.7.1/onefetch-linux.tar.gz
-	source_x86_64 = onefetch-bin-2.7.1-LICENSE.md::https://github.com/o2sh/onefetch/raw/v2.7.1/LICENSE.md
-	source_x86_64 = onefetch-bin-2.7.1-README.md::https://github.com/o2sh/onefetch/raw/v2.7.1/README.md
-	source_x86_64 = onefetch-bin-2.7.1-man.1::https://github.com/o2sh/onefetch/raw/master/onefetch.1
-	sha512sums_x86_64 = cd6c1642b39a78799246c453f177349bfba83a82a08117a9b3b97f2126156948765dc4f995f20c87cae760a7d1fa44f7845d8b20d85cc5608c91b809b50b99f9
+	source_x86_64 = onefetch-bin-2.7.3.tar.gz::https://github.com/o2sh/onefetch/releases/download/v2.7.3/onefetch-linux.tar.gz
+	source_x86_64 = onefetch-bin-2.7.3-LICENSE.md::https://github.com/o2sh/onefetch/raw/v2.7.3/LICENSE.md
+	source_x86_64 = onefetch-bin-2.7.3-README.md::https://github.com/o2sh/onefetch/raw/v2.7.3/README.md
+	source_x86_64 = onefetch-bin-2.7.3-man.1::https://github.com/o2sh/onefetch/raw/master/onefetch.1
+	sha512sums_x86_64 = 770ab738b53d018ecb29120bedee984e70a44be1beddc23614e2a43beabf41472e00a7e46f6bdf8bd9a7eb7dc6da293da2f2787c8167c09c1c99ab6a37758f2e
 	sha512sums_x86_64 = 57e2b42cf721a6a4e6643ad5084cf5149e2639a9e91ac643e0f55adf77f0af36204ca74857fb0debbb22b34123c86e2ec8020aa41c19d8d7b7463a9f85a0e87d
-	sha512sums_x86_64 = 5a11d5149d0ccf5ad3710add746243b65d881f2883cd0e01d91f7c50208625fd4ecc284284264090d1996cf859345f296370ebc4930d38586de2bd573a655386
-	sha512sums_x86_64 = 72ad74e2b740e43a9c7a063d8b289590d4b67c891d2b8c49e46f08173403ee03dff1f5d0917d6a59d79deea8901676c0bcc2253b9c1ad220d7d4ae3b5f1daa67
+	sha512sums_x86_64 = a03f15eef94e309db544d6105c8954912984b34dbd9c19138407a4b93494aa9fd574d7406810c0b102b993a77e842075e857c8e2cb9591157290a1e35da68d5e
+	sha512sums_x86_64 = 93157123ec5dedcc0c036615b2cd3dd706adcdbc9e35b5b8f90c2e9abe78358a3e8bea1e7b19cb418ceadd6f30165a06438219746c1a0852bc6488bdcd3c4660
 
 pkgname = onefetch-bin
 
