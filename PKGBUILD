@@ -231,6 +231,7 @@ build() {
 
     export WINEESYNC=0
     export WINEFSYNC=0
+    export CARGO_HOME="$srcdir/build/cargo"
     SUBMAKE_JOBS="${MAKEFLAGS/-j/}" \
         NO_DXVK=0 \
         SYSTEM_GECKO=1 \
