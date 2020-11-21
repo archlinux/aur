@@ -3,14 +3,14 @@
 
 pkgname=azure-cli
 pkgver=2.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tools for Azure."
 arch=('any')
 url="https://github.com/Azure/azure-cli"
 license=('MIT')
 depends=("python")
 conflicts=("python-azure-cli")
-source=("https://raw.githubusercontent.com/Azure/azure-cli/azure-cli-$pkgver/scripts/curl_install_pypi/install.py"
+source=("install-$pkgver.py::https://raw.githubusercontent.com/Azure/azure-cli/azure-cli-$pkgver/scripts/curl_install_pypi/install.py"
         "install.response"
         "az")
 sha256sums=("1b2f3c77c9bc4b0027d930c5dd39abe9ef4a72eea198289bcdaa2f68e5650166"
@@ -20,7 +20,7 @@ options=(!strip)
 
 prepare() {
   rm -rf "$srcdir/azure-cli"
-  grep -v -E '^===>|^$' install.response | python "$srcdir/install.py"
+  grep -v -E '^===>|^$' install.response | python "$srcdir/install-$pkgver.py"
   find "$srcdir/azure-cli/bin" -type f -print0 | xargs -0 sed -i -e "s|$srcdir|/opt|g"
 }
 
