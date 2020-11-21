@@ -1,0 +1,14 @@
+pkgbase = nodeeditor
+	pkgdesc = Qt-based library aimed at graph-controlled data processing
+	pkgver = 2.1.3
+	pkgrel = 1
+	url = https://github.com/paceholder/nodeeditor
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = qt5-base
+	source = https://github.com/paceholder/nodeeditor/archive/a939cf865933d797483694f797e06e1f1c8cdb27.zip
+	sha256sums = 51f10275e61451f18cf3c4fc1a9954bf691bb9786459ae30cff8765b4e909288
+
+pkgname = nodeeditor
+
