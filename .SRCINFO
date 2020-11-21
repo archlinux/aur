@@ -1,0 +1,27 @@
+pkgbase = ros-melodic-robot-controllers-interface
+	pkgdesc = ROS - Generic framework for robot controls.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-actionlib
+	makedepends = ros-melodic-robot-controllers-msgs
+	makedepends = ros-melodic-pluginlib
+	depends = ros-melodic-actionlib
+	depends = ros-melodic-robot-controllers-msgs
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-pluginlib
+	source = ros-melodic-robot-controllers-interface-0.6.0.tar.gz::https://github.com/fetchrobotics/robot_controllers/archive/0.6.0.tar.gz
+	sha256sums = 2af57b1a21ce2e47e4aae212425d7664272536de9360218c8603a1a470806157
+
+pkgname = ros-melodic-robot-controllers-interface
+
