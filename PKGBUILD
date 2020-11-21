@@ -19,6 +19,5 @@ build() {
 package() {
   cd "${srcdir}"
 
-  mkdir -p "$pkgdir/usr/bin"
-  cp xcat "$pkgdir/usr/bin/xcat"
+  install -Dm755 xcat "$pkgdir/usr/bin/xcat"
 }
