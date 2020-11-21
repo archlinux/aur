@@ -1,7 +1,7 @@
 pkgbase = pmbw
 	pkgdesc = Parallel Memory Bandwidth Benchmark / Measurement
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://panthema.net/2013/pmbw/
 	arch = i686
 	arch = x86_64
