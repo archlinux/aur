@@ -14,8 +14,8 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
-pkgver=16.0.0
-_buildver=16894299
+pkgver=16.1.0
+_buildver=17198959
 _pkgver=${pkgver}_${_buildver}
 pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
@@ -52,7 +52,6 @@ makedepends=(
 )
 backup=(
   'etc/vmware/config'
-  'etc/pam.d/vmware-authd'
   'etc/conf.d/vmware'
 )
 source=(
@@ -61,11 +60,9 @@ source=(
   'vmware-bootstrap'
   'vmware-vix-bootstrap'
   'config'
-  'pam.d-vmware-authd'
   'configure-initscript.sh'
   'vmware-environment.sh'
 
-  'vmware-authd.service'
   'vmware-networks-configuration.service'
   'vmware-networks.service'
   'vmware-usbarbitrator.service'
@@ -76,16 +73,14 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  '8db6237d3271fe57ddcce0bcc17befbb49eb378e784bde120f1a516cbd0f69cb'
+  '985f9992702874ecee2518b57fb73d5228d8cb065d4435fc3015870a49e91194'
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
   'bfd2aa7d85d9fd029b8bc59072d5102458a21a9b03b1c835ac4901e0787c09f5'
-  'd50aa0a3fe94025178965d988e18d41eb60aa1ce2b28ee6e3ca15edeabfa2ca7'
   '48d203450db426e8780f3696a2cf85ee08db004e93f8aca50a9aa24129b1e839'
   'b94959a11b28e51b541321be0588190eb10825e9ff55cbd16eb01483a839a69f'
 
-  'e4c2e97acf07c52de570dd4333d67acfb593db719937a563c6075ab773dcce33'
   '9b4fbe0ba83f761a2eb9ecd05d48428f8b0a5b3abd8404ccbd928408e682f02b'
   'c0a5aea785db06921fb350d36d5e0fd9a14f5eee0c835686ec6fea1af8c92245'
   'd7a9fbf39a0345ae2f14f7f389f30b1110f605d187e0c241e99bbb18993c250d'
@@ -109,7 +104,7 @@ _isovirtualprinterimages=(Linux Windows)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=12.0.0_16880131
+_vmware_fusion_ver=12.1.0_17195230
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
 _unlocker_ver=3.0.3
@@ -128,7 +123,7 @@ source+=(
   "efi-unlocker-patch-${_efi_unlocker_ver}.txt"
 )
 sha256sums+=(
-  'b7ce08983c1aab3218327a1a14343a77f23b4acfb3b9dd178594048b12eb63d8'
+  '75a54777ddc759babe84d276156dafa8822bdc5ece7b751de8ac1948b13af136'
   '1c27547dcf6fb2f436c96ee62ae8c7f5cfd14b40d8bbd35dc385e247c4fb7e0f'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
@@ -283,12 +278,9 @@ if [ -z "$_remove_vmware_keymaps_dependency" ]; then
   rm -r "$pkgdir/usr/lib/vmware/xkeymap" # these files are provided by vmware-keymaps package
 fi
 
-  install -Dm 644 "$srcdir/pam.d-vmware-authd" "$pkgdir/etc/pam.d/vmware-authd"
-
   echo -e "vmw_vmci\nvmmon" > "$pkgdir/usr/lib/modules-load.d/vmware.conf"
 
   for service_file in \
-    vmware-authd.service \
     vmware-networks-configuration.service \
     vmware-networks.service \
     vmware-usbarbitrator.service
