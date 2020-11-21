@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/paul-nameless/tg"
 license=('Unlicense')
 depends=('python-telegram' 'python3')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 optdepends=(
 	'libnotify: for notifications, you could also use other programs: see config'
 	'ffmpeg: to record voice msgs and upload videos correctly'

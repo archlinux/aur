@@ -6,6 +6,7 @@ pkgbase = telegram-tg-git
 	arch = any
 	license = Unlicense
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python-telegram
 	depends = python3
 	optdepends = libnotify: for notifications, you could also use other programs: see config
