@@ -2,7 +2,7 @@
 
 _module='i3-balance-workspace'
 pkgname="$_module"
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Balance windows and workspaces in i3wm"
 url='https://github.com/atreyasha/i3-balance-workspace'
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module:0:1}/${_module}/${_module}-${pkgver}.tar.gz")
-md5sums=('2b2265ebf9bab64a9919e07e450e2577')
+md5sums=('e6f52e43479a5269f5404a9b46a87ce6')
 
 build() {
     cd "$_module-$pkgver"
