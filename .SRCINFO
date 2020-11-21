@@ -1,0 +1,17 @@
+pkgbase = container-logs
+	pkgdesc = Print logs of docker containers on stdout
+	pkgver = 0.1.0
+	pkgrel = 0
+	url = https://git.cryptic.systems/volker.raschek/container-logs
+	arch = x86_64
+	arch = armv7h
+	license = Apache 2.0
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	depends = docker
+	source = https://git.cryptic.systems/volker.raschek/container-logs/archive/v0.1.0.tar.gz
+	sha512sums = a58945d67f58da882e4a00b122e217997f08e5fcbb0f2c555a1ccd16eb77df25fafcd65e23f001930acf45306d474791d0f4ced79d26f2cc0e4f2fdd87007cc6
+
+pkgname = container-logs
+
