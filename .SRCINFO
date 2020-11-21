@@ -1,0 +1,14 @@
+pkgbase = python-anyconfig-cbor-backend
+	pkgdesc = This is a backend module for python-anyconfig to support to load and dump CBOR files with using cbor.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/ssato/python-anyconfig-cbor-backend
+	arch = any
+	license = MIT
+	depends = python-anyconfig
+	depends = python-cbor
+	source = https://files.pythonhosted.org/packages/source/a/anyconfig-cbor-backend/anyconfig-cbor-backend-0.1.2.tar.gz
+	sha256sums = 095a01db7057b808cd29c5b63a6a808aedc5d97b7fd58c1ddb310e1b8c9a1a05
+
+pkgname = python-anyconfig-cbor-backend
+
