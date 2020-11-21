@@ -1,13 +1,14 @@
 pkgbase = python-expiringdict
 	pkgdesc = Dictionary with auto-expiring values for caching purposes
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mailgun/expiringdict
 	arch = any
 	license = Apache
 	checkdepends = python-nose
 	checkdepends = python-mock
 	checkdepends = python-coverage
+	checkdepends = python-dill
 	makedepends = python-setuptools
 	depends = python
 	source = python-expiringdict-1.2.1.tar.gz::https://github.com/mailgun/expiringdict/archive/v1.2.1.tar.gz

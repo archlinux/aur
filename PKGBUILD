@@ -4,14 +4,14 @@
 
 pkgname=python-expiringdict
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Dictionary with auto-expiring values for caching purposes'
 arch=(any)
 url=https://github.com/mailgun/expiringdict
 license=(Apache)
 depends=(python)
 makedepends=(python-setuptools)
-checkdepends=(python-nose python-mock python-coverage)
+checkdepends=(python-nose python-mock python-coverage python-dill)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
 sha512sums=('21c6c91cfe427e8f14b0b67fadca2fe27b430daee0a40135fe8a610d5539c672440c8eafc4e325f866fb6b01d12643b1110a19381b85cfebf1dcdb29edc444d7')
 
