@@ -1,0 +1,15 @@
+pkgbase = vivaldi-autoinject-custom-js-ui
+	pkgdesc = manage custom js UI mods for the vivaldi web browser
+	pkgver = 2020.11.22.9
+	pkgrel = 1
+	url = https://github.com/budlabs/vivaldi-autoinject-custom-js-ui
+	arch = any
+	license = BSD
+	depends = bash
+	depends = sed
+	depends = vivaldi
+	source = https://github.com/budlabs/vivaldi-autoinject-custom-js-ui/archive/2020.11.22.9/vivaldi-autoinject-custom-js-ui-2020.11.22.9.tar.gz
+	sha256sums = 5450c80514fc92b3824c7eac81e6a07b76c20ed5c3e225f40e480a46bda8f477
+
+pkgname = vivaldi-autoinject-custom-js-ui
+
