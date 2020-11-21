@@ -1,7 +1,7 @@
 # Maintainer: Danil Yarantsev <tiberiumk12 at gmail dot com>
 pkgname=doom2df-bin-git
 pkgver=185
-pkgrel=0
+pkgrel=1
 pkgdesc="Doom 2D Forever: A Doom 2D remake with multiplayer"
 arch=(x86_64)
 url="http://doom2d.org/"
