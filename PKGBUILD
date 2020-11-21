@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides a simple script to write simple launch file
 url='http://www.ros.org/'
 
 pkgname='ros-melodic-swri-nodelet'
-pkgver='2.11.0'
+pkgver='2.14.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -24,7 +24,7 @@ depends=(${ros_depends[@]})
 
 _dir=marti_common-release-release-melodic-swri_nodelet
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/swri-robotics-gbp/marti_common-release/archive/release/melodic/swri_nodelet/${pkgver}.tar.gz")
-sha256sums=('53018c3484a9d55d9153e56aa9ba2fc33abcdb23db12808055f41696b8301449')
+sha256sums=('a20a93c8e1979519486eef3a2246f85908adeddce554c21ee52c380532108e1a')
 
 build() {
     # Use ROS environment variables
