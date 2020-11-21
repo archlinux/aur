@@ -221,15 +221,15 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.t
         "${patchsource_base_patches}0001-block-patches.patch"
         "${patchsource_base_patches}0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
         "${patchsource_base_patches}0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch")
-md5sums=("d7155cfac43b2f21d8aa4e159809c256"   #linux-5.9.9.tar.xz
-          "3f8fc418c35db69ecc839e9c5bd4b3dc"  #linux-kernel.preset
-          "e1f2fa957d481d0ca9e737bb92528b67"  #config version 5.9.4
-          "b3f0a4804b6fe031f674988441c1af35"  #choose-gcc-optimization.sh
-          "a724ee14cb7aee1cfa6e4d9770c94723"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
-          "2cebdad39da582fd6a0c01746c8adb42"  #sphinx-workaround.patch
-          "35db7bfb80ed2867b2e8d5ed92cadb31"  #0001-block-patches.patch
-          "d15597054a4c5e405f980d07d5eac11a"  #0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch
-          "f99b82d6f424d1a729a9b8c5a1be2b84") #0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch
+md5sums=("d7155cfac43b2f21d8aa4e159809c256"  #linux-5.9.9.tar.xz
+         "3f8fc418c35db69ecc839e9c5bd4b3dc"  #linux-kernel.preset
+         "e1f2fa957d481d0ca9e737bb92528b67"  #config version 5.9.4
+         "b3f0a4804b6fe031f674988441c1af35"  #choose-gcc-optimization.sh
+         "a724ee14cb7aee1cfa6e4d9770c94723"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
+         "2cebdad39da582fd6a0c01746c8adb42"  #sphinx-workaround.patch
+         "35db7bfb80ed2867b2e8d5ed92cadb31"  #0001-block-patches.patch
+         "d15597054a4c5e405f980d07d5eac11a"  #0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch
+         "f99b82d6f424d1a729a9b8c5a1be2b84") #0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch
 #sirlucjan patches
 if [[ "$_project_lucjan_patches" = "y" ]]; then
 source+=("${patchsource_project_lucjan_patches}0001-bfq-dev-patches.patch"
@@ -348,7 +348,7 @@ prepare(){
   scripts/config --enable CONFIG_HZ_1000  #Have to match the set-val command
   scripts/config --set-val CONFIG_HZ 1000 #You can put any of these value 100, 300, 750, 1000
   scripts/config --disable CONFIG_HZ_300
-  scripts/config --disable CONFIG_HZ_750  #You can set this value only in the base or full patch level
+  scripts/config --disable CONFIG_HZ_750
   scripts/config --disable CONFIG_HZ_250
   scripts/config --disable CONFIG_HZ_100
 
