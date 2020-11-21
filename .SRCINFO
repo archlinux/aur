@@ -1,0 +1,14 @@
+pkgbase = cargo-aoc
+	pkgdesc = A simple CLI tool that aims to be a helper for the Advent of Code
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/gobanos/cargo-aoc
+	arch = x86_64
+	license = MIT
+	license = Apache
+	depends = cargo
+	source = cargo-aoc-0.3.2.tar.gz::https://github.com/gobanos/cargo-aoc/archive/0.3.2.tar.gz
+	sha256sums = 2a33a861a03087690cc2ab690567c3ab906c5b31a53d96159e9d552e14ecc960
+
+pkgname = cargo-aoc
+
