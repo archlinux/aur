@@ -1,5 +1,5 @@
 pkgbase = openxr-loader-git
-	pkgver = 1.0.10.r2.gaf531e9
+	pkgver = 1.0.12.r22.g06b5b7f
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/OpenXR-SDK-Source
 	arch = i686
@@ -39,4 +39,11 @@ pkgname = openxr-utils-git
 	depends = vulkan-icd-loader
 	depends = libx11
 	provides = openxr-utils
+
+pkgname = openxr-git
+	depends = openxr-loader-git
+	depends = openxr-headers-git
+	depends = openxr-utils-git
+	depends = openxr-layers-git
+	provides = openxr
 

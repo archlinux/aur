@@ -1,8 +1,8 @@
 # Maintainer: Christoph Haag <christoph.haag@collabora.com>
 
-pkgname=("openxr-loader-git" "openxr-headers-git" "openxr-layers-git" "openxr-utils-git")
+pkgname=("openxr-loader-git" "openxr-headers-git" "openxr-layers-git" "openxr-utils-git" "openxr-git")
 _dirname="openxr-loader"
-pkgver=1.0.10.r2.gaf531e9
+pkgver=1.0.12.r22.g06b5b7f
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/KhronosGroup/OpenXR-SDK-Source'
@@ -93,3 +93,9 @@ package_openxr-utils-git() {
   rm -rf "$pkgdir"/usr/share/
   rm -rf "$pkgdir"/usr/lib/
 }
+
+package_openxr-git() {
+  provides=("openxr")
+  depends=("openxr-loader-git" "openxr-headers-git" "openxr-utils-git" "openxr-layers-git")
+}
+
