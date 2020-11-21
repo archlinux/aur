@@ -2,19 +2,27 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=remill-git
-pkgver=v4.0.8.r0.g71c4d067
-pkgrel=2
+pkgver=v4.0.9.r0.gbf69d9ca
+pkgrel=1
 pkgdesc="Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode"
 arch=('x86_64')
 url="https://github.com/lifting-bits/remill"
 license=('Apache')
-depends=('cxx-common=0.0.14' 'ncurses' 'zlib' 'lib32-glibc' 'lib32-gcc-libs')
+depends=('cxx-common=0.0.14' 'ncurses' 'zlib' 'lib32-glibc' 'lib32-gcc-libs'
+         'libunwind')
 makedepends=('git')
 checkdepends=()
 provides=('remill')
 conflicts=('remill')
-source=("$pkgname::git+https://github.com/lifting-bits/remill.git")
-sha256sums=('SKIP')
+source=("$pkgname::git+https://github.com/lifting-bits/remill.git"
+        '00-fix-inst-CVTSI2SS.patch')
+sha256sums=('SKIP'
+            'fdec38eee1c770df5625f93ac1e017449e6d76455bf279f6865887aef0d8ee7a')
+
+prepare() {
+    cd "$srcdir/$pkgname"
+    patch -Np1 -i "$srcdir/00-fix-inst-CVTSI2SS.patch"
+}
 
 pkgver() {
     cd "$srcdir/$pkgname"
@@ -51,7 +59,7 @@ package() {
     cd "$srcdir/$pkgname/build"
     make DESTDIR="${pkgdir}" install
     sed -i "$pkgdir/usr/lib/cmake/remill/remillConfig.cmake" \
-        -e "s|$srcdir/$pkgname-$pkgver/build/lib|/usr/include/remill|g"
+        -e "s|$srcdir/$pkgname/build/lib|/usr/include/remill|g"
 }
 
 # vim: set sw=4 ts=4 et:
