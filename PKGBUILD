@@ -1,49 +1,31 @@
-# Maintainer:  Joakim Hernberg <jbh@alchemy.lu>
-# Contributor: David Runge <dvzrv@archlinux.org>
+# Maintainer: David Runge <dvzrv@archlinux.org>
+# Contributor:  Joakim Hernberg <jbh@alchemy.lu>
 
-_pkgver=5.4.70
-_rtpatchver=40
 pkgbase=linux-rt-lts
-pkgver=${_pkgver}.${_rtpatchver}
+pkgver=5.4.77.43.rt1
 pkgrel=1
 pkgdesc='Linux RT LTS'
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
 license=('GPL2')
-makedepends=('bc' 'graphviz' 'imagemagick' 'kmod' 'libelf' 'python-sphinx'
+makedepends=('bc' 'git' 'graphviz' 'imagemagick' 'kmod' 'libelf' 'python-sphinx'
 'python-sphinx_rtd_theme' 'xmlto')
 options=('!strip')
-_srcname=linux-${_pkgver}
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v${_pkgver%%.*}.x/linux-${_pkgver}.tar."{xz,sign}
-  "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch."{xz,sign}
+  "git+https://gitlab.archlinux.org/dvzrv/linux-rt-lts.git/#tag=v${pkgver}?signed"
   'config'
-  '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch'
-  0002-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
-  0003-i2c-core-Restore-acpi_walk_dep_device_list-getting-c.patch
   'sphinx-workaround.patch'
 )
-sha512sums=('ab356476eb68ac1b2c172be97286418be307303e11ddd21e2d15cfa978a5d47b2bfec5cc61a306b48e0587e5b78cb02cec856981db9013112f4cd895374a5f21'
-            'SKIP'
-            '9a325cbeaa783ddfc3e0ceafecebcf55caf65245d3beeac652db9793af064a0ab49608b2c39371ea33b058ae90fc427aeb6a300e27a716482f31a1c2226b6439'
-            'SKIP'
-            'addc00cb54d7fea6539a4b5a46b0e3d5dec9a967357bbddd09376a83647f740e2f4cea34de659550498834aafb57f3f450815119e2c4ed69dc5241838593d393'
-            '5f196378d50dd737d727e424d8f31b7fa8a6b92ba88f0a1467ef79bc37a097160da1fc1fd5cfb4b8983f36f2afdf27eb229ec61b35a15ac2343d660eb416a230'
-            '315aaf31af7b869ba64e324ab33ffa5050b761ecbd7aa6b9a900b8b2ca655d80f840fca9973d4f12ec067519ba4ab2ebdd41d518a9fda4586377ee9c9e9a2fda'
-            '0f69e98f934bec92b6bea535241b6a7e21eba8df055c26f970c47e424b06053953737336de6f5b81266f30be211f27f9cbbf678aa4ec9fb968a3c290c9726ac1'
+sha512sums=('SKIP'
+            '4b138cee6d785d75dcdf4caeeedfe4673ab286239f2d52408f14b6cfbfdbcecc40f36d08ac2d62c53359dbb9f9747262ea3095044061dadc490f5563e38e177e'
             '8081673a6594e5fc2fddc98fa434e99817aa822f7136d3c14c8d465fa7b93c9ac5d3a4150a5b632e25b1dc76a814dfa19d8aede37d58b935db288465b6585c58')
-b2sums=('2db07e8ed76feba1dbbb697f959540ec7a050098022a460b4251802a99f71c01a76f9cbf81806cf4bd5b814a0e6b1e9f36364fcf099cf44d90780e6e0dc9ecfe'
-        'SKIP'
-        '0f911652bedb74d40bfd42a2ef0e0b7309c31152f6d94a8cb6c91e0a16e8f5af007de6f3e41145b8c1248aba34f3ee90e024b40558de073419bb70e4d12749d9'
-        'SKIP'
-        'c7811fb148f4353f8f90053d4746433c91456925c7d086c9af070bcd9c047530694a92a41ce1f1eb5606eb2968682e4a98b48a0b744b661fb982e67943c54d5e'
-        '3c3be0e85347bf3825f855a0a399ed60497cd0376f4b8ee1fe89df9bd90fe01cdd97fb3f4c4eea3918ba3769fc79961b6c58ba997326cbdf9dd7fb9540d8f6d6'
-        '4ca82850b654f94378fe6c35c1903830b7ca58dfd8c482a36b193edb78785e7a8cca146fa5aee9f372f14fd5e01e716cf74ec40e773b7e1327df64b768d7a3a2'
-        '4fdc4b2beb36fc042a1747e07863b12e762b30951eb3bfc012f440d5ea2217180bf5eff25bd48e90e3d4953bf4119f5e7a280095fa9138de79480eedbcc639b5'
+b2sums=('SKIP'
+        '70ec984681c56a80a2692848e1967d09cfe1959d6b282bcc30a9cc22858fa20cba820a39f9ad8e45d010e30581ca291e7b6331c2f541588c370ed8ddfdd420ce'
         '657fd0e70d29eee5518c27af7eec73a18f399215d2a21cf7b92c9914bee16d1e0981c00065ccb12f0534e57af906af63b17221c65a61146ec8894c88420fa56c')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@linuxfoundation.org>
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt (Der Hacker) <rostedt@goodmis.org>
+  'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -51,7 +33,7 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  cd $_srcname
+  cd "${pkgbase}"
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -79,7 +61,7 @@ prepare() {
 }
 
 build() {
-  cd $_srcname
+  cd "${pkgbase}"
   make all
   make htmldocs
 }
@@ -90,7 +72,7 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
 
-  cd $_srcname
+  cd "${pkgbase}"
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -112,7 +94,7 @@ _package() {
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
 
-  cd $_srcname
+  cd "${pkgbase}"
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing build files..."
@@ -187,7 +169,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel"
 
-  cd $_srcname
+  cd "${pkgbase}"
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing documentation..."
