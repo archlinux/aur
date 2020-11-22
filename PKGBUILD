@@ -1,18 +1,18 @@
 # Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
 
 pkgname=timestamp
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc='Prefix each line with a date/time stamp'
 arch=('i686' 'x86_64')
 url="https://github.com/kseistrup/timestamp"
 license=('GPL3')
-makedepends=('scdoc')
+optdepends=('scdoc: for recompiling manual pages')
 source=(
   "https://github.com/kseistrup/timestamp/releases/download/v$pkgver/timestamp-$pkgver.tar.xz"
 )
-md5sums=('f9f0fb3cd188a6261f8ebe1c0e9c14d8')
-sha256sums=('b2394a5abc0249d1e469a20ff67c5f7da1292b910fe8364e41d490942bafab9c')
+md5sums=('35e4f67b3f0de337354df63b5ef5be6f')
+sha256sums=('141fe4f566011e681959e5f6a512991b6c630abe79d69800ed77db82490a7e77')
 
 build() {
   cd "$pkgname-$pkgver"
