@@ -2,10 +2,10 @@
 
 pkgname=kbd-neo
 pkgver=3
-pkgrel=3
+pkgrel=4
 pkgdesc="NEO 2 terminal keyboard layout"
 arch=('any')
-url="http://www.neo-layout.org/"
+url="https://www.neo-layout.org/"
 license=('CC-BY-SA')
 depends=('kbd')
 source=(https://raw.githubusercontent.com/neo-layout/neo-layout/master/linux/console/neo.map)

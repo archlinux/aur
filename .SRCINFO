@@ -1,8 +1,8 @@
 pkgbase = kbd-neo
 	pkgdesc = NEO 2 terminal keyboard layout
 	pkgver = 3
-	pkgrel = 3
-	url = http://www.neo-layout.org/
+	pkgrel = 4
+	url = https://www.neo-layout.org/
 	arch = any
 	license = CC-BY-SA
 	depends = kbd
