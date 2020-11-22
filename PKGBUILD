@@ -10,7 +10,7 @@ arch=('x86_64')
 url='https://curl.haxx.se'
 license=('MIT')
 provides=(lib32-libcurl-gnutls)
-conflcits=(lib32-libcurl-gnutls)
+conflicts=(lib32-libcurl-gnutls)
 depends=('lib32-curl' 'lib32-glibc' 'lib32-gnutls' 'lib32-libidn2'
          'lib32-libpsl' 'lib32-nettle' 'lib32-zlib'
          'lib32-zstd' 'libcurl-gnutls')
