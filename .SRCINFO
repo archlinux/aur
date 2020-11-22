@@ -1,6 +1,6 @@
 pkgbase = rusty-tags-git
 	pkgdesc = Create ctags/etags for a cargo project and all of its dependencies
-	pkgver = 3.5.1.r17.gc18ae34
+	pkgver = 3.8.1.r0.gca08d2a
 	pkgrel = 1
 	url = https://github.com/dan-t/rusty-tags
 	arch = x86_64
@@ -11,9 +11,7 @@ pkgbase = rusty-tags-git
 	provides = rusty-tags
 	conflicts = rusty-tags
 	source = rusty-tags-git::git+https://github.com/dan-t/rusty-tags
-	source = lto.patch
 	sha1sums = SKIP
-	sha1sums = dd652e1f20291e60e5f4e2fc773c35990168c768
 
 pkgname = rusty-tags-git
 
