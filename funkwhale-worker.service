@@ -7,6 +7,7 @@ PartOf=funkwhale.service
 User=funkwhale
 # adapt this depending on the path of your funkwhale installation
 EnvironmentFile=/srv/funkwhale/config/env
+WorkingDirectory=/usr/share/webapps/funkwhale/api
 # Celery workers handle background tasks (such file imports or federation
 # messaging). The more processes a worker gets, the more tasks
 # can be processed in parallel. However, more processes also means
@@ -15,7 +16,7 @@ EnvironmentFile=/srv/funkwhale/config/env
 # of CPUs. You can adjust this, by explicitly setting the --concurrency
 # flag:
 #   celery -A funkwhale_api.taskapp worker -l INFO --concurrency=4
-ExecStart=/usr/bin/celery -A funkwhale_api.taskapp worker -l INFO --workdir=/usr/share/webapps/funkwhale/api
+ExecStart=/usr/bin/celery --workdir=/usr/share/webapps/funkwhale/api -A funkwhale_api.taskapp worker -l INFO
 
 [Install]
 WantedBy=multi-user.target

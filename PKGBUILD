@@ -2,7 +2,7 @@
 
 pkgname=funkwhale
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hosted, modern free and open-source music server, heavily inspired by Grooveshark."
 arch=(any)
 url="https://funkwhale.audio/"
@@ -82,8 +82,8 @@ sha256sums=('5c0689c0e05d3271d161c13e8063e5053f4ecb582e3a7e3d6973d1c46be23887'
             '0b77367cb4e8d1b57af59282af90ac41e0915de85cf5337b02f16e6aa0bd0129'
             '2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2'
             'f56a2e8947809db4325a6c65141f6eb87e7428cc0e5a57032fc7ce050bf396fa'
-            'a964a7802252d20a3319e2131c27ec307ad4f454921c2db31971c080150d7c9b'
-            '0e6d7c96b7c1ec63794214decb1f2e7dd112a22b02e55555cf98c2a573014af6'
+            '812c9a49436725e18768c5eb772c7207c184cdcf3a057432dc998387c481bd8d'
+            '57c17dbd033fff76b344c90114d3b1f9eae3aaaa49128b61fcd1b5e808561dc3'
             '9d5a6f2cae6f18e22c5423247570519e8c772a9447ec2d92bd2fe5d69e519470'
             'f37b1b6257c5b92272f36773041c83fc72276ff4040100fba92db8136cc9177d'
             'cea307055e9f8001a1507c507e1be91352d896cab17260a221f4ab8c298506d8'
