@@ -4,14 +4,15 @@
         "hsts": {
             "enable": false
         },
-        "uploadsPath": "/var/lib/codimd/uploads"
+        "uploadsPath": "/var/lib/codimd/uploads",
+        "tmpPath": "/tmp"
     },
     "production": {
         "loglevel": "info",
         "hsts": {
             "enable": true,
             "maxAgeSeconds": 31536000,
-            "includeSubdomains": true,
+            "includeSubDomains": true,
             "preload": true
         },
         "csp": {
@@ -23,6 +24,7 @@
             "addDisqus": false,
             "addGoogleAnalytics": false
         },
-        "uploadsPath": "/var/lib/codimd/uploads"
+        "uploadsPath": "/var/lib/codimd/uploads",
+        "tmpPath": "/tmp"
     }
 }

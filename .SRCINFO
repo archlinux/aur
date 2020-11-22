@@ -1,6 +1,6 @@
 pkgbase = codimd-bin
 	pkgdesc = Realtime collaborative markdown notes
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/codimd/server
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = codimd-bin
 	source = sysusers.conf
 	source = environment
 	source = config.json
-	sha256sums = dcb7d3a23b8d3be3a5b1067dc71e0e25046962c8bcf4e90e808cd9005fb32241
+	sha256sums = f1d514be9079c82a915689d4b7b043ffe9bb939fb24189ab13acf50968db5bed
 	sha256sums = 25e696ca1202b9df1287e23f40ffa8b909a629f4b3916c572561d953e44e3b22
 	sha256sums = 523ccf9d8c1795bd70523f22b0268be3efdc42a3e8bed7008285bc3b894e53c2
-	sha256sums = befaec00c6bfd3e6472659ae52639cd94ddd8d10edb5c7d0301ede6d9a817917
+	sha256sums = 306724434e97ff7d9ae557cda0b905f6946aab19d5621bd47195599edbd098b5
 
 pkgname = codimd-bin
 
