@@ -62,7 +62,7 @@ build() {
 }
 
 package() {
-  cd curl-${pkgver}
+  cd curl
 
   make -C lib DESTDIR="${pkgdir}" install
 
