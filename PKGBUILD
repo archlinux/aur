@@ -17,7 +17,7 @@ pkgrel=12
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
-makedepends=('bison' 'clang' 'llvm' 'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf' 'coreutils')
+makedepends=('bison' 'clang' 'llvm' 'lld' 'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf' 'coreutils')
 options=('!strip')
 source=('git+https://gitlab.com/xdevs23/linux-nitrous.git#branch=v'"$pkgver"
         # standard config files for mkinitcpio ramdisk
