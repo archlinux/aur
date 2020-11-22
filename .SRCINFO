@@ -1,0 +1,12 @@
+pkgbase = rssg
+	pkgdesc = rssg is an RSS feed generator written in shell.
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.romanzolotarev.com/
+	arch = any
+	license = ISC
+	source = https://www.romanzolotarev.com//bin/rssg
+	md5sums = e94ae13f3d6fceba3ce8f43ff4f4d76b
+
+pkgname = rssg
+
