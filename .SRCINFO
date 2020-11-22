@@ -1,0 +1,33 @@
+pkgbase = opendkim-git
+	pkgdesc = An open source implementation of the DKIM sender authentication system (with ed25519 support)
+	pkgver = 2.11.beta4093.835834ea
+	pkgrel = 1
+	url = https://github.com/trusteddomainproject/OpenDKIM/blob/develop/README
+	arch = x86_64
+	license = BSD
+	license = custom:Sendmail
+	makedepends = libmilter
+	depends = db
+	depends = openssl
+	depends = libbsd
+	depends = opendbx
+	depends = libldap
+	optdepends = perl: for opendkim-genkey
+	provides = opendkim
+	conflicts = opendkim
+	options = !emptydirs
+	backup = etc/conf.d/opendkim
+	source = git://github.com/trusteddomainproject/OpenDKIM.git#branch=develop
+	source = opendkim.conf
+	source = opendkim.sysusers
+	source = opendkim.tmpfiles
+	source = opendkim.service
+	validpgpkeys = 5CDD574C22FF4D2480ACABDF5254B96BC608B511
+	sha256sums = SKIP
+	sha256sums = a3b5ecf4f4fe4a79392a75f7c4b6cc93a51ef8503215bb0f64d795f8754d4b68
+	sha256sums = 525ac5df345e753461efa8f6528f5532a00ecf2562f985a3c6c7169235170499
+	sha256sums = ab66c9fdcb8913f2a550289dd44d56d17b960cf5275839ffd03cba70a27ab6ed
+	sha256sums = 3e1cb3a3ddb794253d5a1c59673c40687bbc2b1bf878e70ccd03356f6d1e6735
+
+pkgname = opendkim-git
+
