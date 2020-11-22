@@ -8,7 +8,6 @@ arch=('x86_64')
 url='https://github.com/projectdiscovery/dnsprobe'
 license=('MIT')
 makedepends=('go')
-provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('ab57f348177594018cc5b5b5e808710c88e597888c6d504cb10554d60627eae1')
 
@@ -30,9 +29,9 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -Dm755 -t "${pkgdir}/usr/bin" "${pkgname}"
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
-  install -Dm644 'LICENSE.md' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dvm755 "${pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dvm644 'LICENSE.md' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
