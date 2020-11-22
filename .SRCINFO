@@ -1,0 +1,26 @@
+pkgbase = saluto-lightdm-theme-dwm
+	pkgdesc = Saluto: Litarvan LightDM Theme Fork, with added support for DWM
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/Demonstrandum/Saluto
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = npm
+	depends = lightdm
+	depends = lightdm-webkit2-greeter
+	conflicts = saluto-lightdm-theme
+	conflicts = saluto-lightdm-theme-git
+	source = git+https://github.com/Demonstrandum/Saluto
+	source = dwm.desktop
+	source = dwm-lightdm.diff
+	source = dwm-vue.diff
+	source = dwm.png
+	md5sums = SKIP
+	md5sums = ce22e273cd2eed939cd2e33b9f773c75
+	md5sums = 6db4d11c5632c5b41bad0ac1b3b581b1
+	md5sums = c7a7e64586bebde20886cc731bf2d38c
+	md5sums = 8f007861efc61ced5abf9ee74030afb9
+
+pkgname = saluto-lightdm-theme-dwm
+
