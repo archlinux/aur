@@ -81,7 +81,11 @@ pkgbase = mesa-aco
 	replaces = mesa-llvm-rc
 	replaces = mesa-git
 	source = https://archive.mesa3d.org/mesa-20.2.2.tar.xz
+	source = 0001-util-workaround-LTO-compilation-break-since-18cb8f23.patch
+	source = 0003-evergreen-big-endian.patch
 	source = LICENSE
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
