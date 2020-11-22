@@ -2,13 +2,13 @@
 
 pkgname=quikey-git
 _gitname=quikey
-pkgver=0.1.1.r4.g40a82ba
+pkgver=0.1.3.r0.ga4181ba
 pkgrel=1
 pkgdesc="A keyboard macro tool."
 arch=('any')
 url="https://github.com/bostrt/quikey"
 license=('MIT')
-depends=('python-click' 'python-colored' 'python-daemon' 'python-inotify-simple' 'python-tinydb' 'python-pynput' 'python-terminaltables' 'python-xdg' 'python-humanize')
+depends=('python-click' 'python-colored' 'python-daemon' 'python-inotify-simple' 'python-tinydb' 'python-pynput' 'python-terminaltables' 'python-xdg' 'python-humanize' 'python-pick')
 makedepends=('python-setuptools')
 provides=('quikey')
 conflicts=('quikey')
