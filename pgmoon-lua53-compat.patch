@@ -1,0 +1,201 @@
+diff --git a/pgmoon-dev-1.rockspec b/pgmoon-dev-1.rockspec
+index 52f505e..f672764 100644
+--- a/pgmoon-dev-1.rockspec
++++ b/pgmoon-dev-1.rockspec
+@@ -15,7 +15,6 @@ description = {
+ 
+ dependencies = {
+   "lua >= 5.1",
+-  "luabitop",
+   "lpeg",
+ }
+ 
+@@ -24,6 +23,7 @@ build = {
+   modules = {
+     ["pgmoon"] = "pgmoon/init.lua",
+     ["pgmoon.arrays"] = "pgmoon/arrays.lua",
++    ["pgmoon.bit"] = "pgmoon/bit.lua",
+     ["pgmoon.cqueues"] = "pgmoon/cqueues.lua",
+     ["pgmoon.crypto"] = "pgmoon/crypto.lua",
+     ["pgmoon.hstore"] = "pgmoon/hstore.lua",
+diff --git a/pgmoon/bit.lua b/pgmoon/bit.lua
+new file mode 100644
+index 0000000..102f944
+--- /dev/null
++++ b/pgmoon/bit.lua
+@@ -0,0 +1,55 @@
++local rshift, lshift, band, ok, _
++local string_loader
++string_loader = function(str)
++  local sent = false
++  return function()
++    if sent then
++      return nil
++    end
++    sent = true
++    return str
++  end
++end
++ok, band = pcall(load(string_loader([[  return function(a,b)
++    a = a & b
++    if a > 0x7FFFFFFF then
++      -- extend the sign bit
++      a = ~0xFFFFFFFF | a
++    end
++    return a
++  end
++]])))
++if ok then
++  _, lshift = pcall(load(string_loader([[    return function(x,y)
++      -- limit to 32-bit shifts
++      y = y % 32
++      x = x << y
++      if x > 0x7FFFFFFF then
++        -- extend the sign bit
++        x = ~0xFFFFFFFF | x
++      end
++      return x
++    end
++  ]])))
++  _, rshift = pcall(load(string_loader([[    return function(x,y)
++      y = y % 32
++      -- truncate to 32-bit before applying shift
++      x = x & 0xFFFFFFFF
++      x = x >> y
++      if x > 0x7FFFFFFF then
++        x = ~0xFFFFFFFF | x
++       end
++      return x
++    end
++  ]])))
++else
++  do
++    local _obj_0 = require("bit")
++    rshift, lshift, band = _obj_0.rshift, _obj_0.lshift, _obj_0.band
++  end
++end
++return {
++  rshift = rshift,
++  lshift = lshift,
++  band = band
++}
+diff --git a/pgmoon/bit.moon b/pgmoon/bit.moon
+new file mode 100644
+index 0000000..f2a2cc6
+--- /dev/null
++++ b/pgmoon/bit.moon
+@@ -0,0 +1,70 @@
++local rshift, lshift, band, ok, _
++local string_loader
++
++
++-- lua5.1 has separate 'loadstring' and 'load'
++-- functions ('load' doesn't accept strings).
++-- This provides a function that 'load' can use,
++-- and will work on all versions of lua
++
++string_loader = (str) ->
++  sent = false
++  return ->
++    if sent then
++      return nil
++    sent = true
++    return str
++
++
++-- use load to treat as a string to prevent
++-- parse errors under lua < 5.3
++
++-- luajit uses 32-bit integers for bitwise ops, but lua5.3+
++-- uses 32-bit or 64-bit integers, so these wrappers will
++-- truncate results and/or extend the sign, as appropriate
++-- to match luajit's behavior.
++ok, band = pcall(load(string_loader([[
++  return function(a,b)
++    a = a & b
++    if a > 0x7FFFFFFF then
++      -- extend the sign bit
++      a = ~0xFFFFFFFF | a
++    end
++    return a
++  end
++]])))
++
++if ok then
++  _, lshift = pcall(load(string_loader([[
++    return function(x,y)
++      -- limit to 32-bit shifts
++      y = y % 32
++      x = x << y
++      if x > 0x7FFFFFFF then
++        -- extend the sign bit
++        x = ~0xFFFFFFFF | x
++      end
++      return x
++    end
++  ]])))
++  _, rshift = pcall(load(string_loader([[
++    return function(x,y)
++      y = y % 32
++      -- truncate to 32-bit before applying shift
++      x = x & 0xFFFFFFFF
++      x = x >> y
++      if x > 0x7FFFFFFF then
++        x = ~0xFFFFFFFF | x
++       end
++      return x
++    end
++  ]])))
++else
++  import rshift, lshift, band from require "bit"
++
++return {
++  rshift: rshift
++  lshift: lshift
++  band: band
++}
++
+diff --git a/pgmoon/init.lua b/pgmoon/init.lua
+index 4ebe466..9dce4c3 100644
+--- a/pgmoon/init.lua
++++ b/pgmoon/init.lua
+@@ -3,7 +3,7 @@ local insert
+ insert = table.insert
+ local rshift, lshift, band
+ do
+-  local _obj_0 = require("bit")
++  local _obj_0 = require("pgmoon.bit")
+   rshift, lshift, band = _obj_0.rshift, _obj_0.lshift, _obj_0.band
+ end
+ local unpack = table.unpack or unpack
+@@ -362,7 +362,7 @@ do
+       local command, affected_rows
+       if command_complete then
+         command = command_complete:match("^%w+")
+-        affected_rows = tonumber(command_complete:match("%d+%z$"))
++        affected_rows = tonumber(command_complete:match("(%d+)%z$"))
+       end
+       if row_desc then
+         if not (data_rows) then
+diff --git a/pgmoon/init.moon b/pgmoon/init.moon
+index c9f91a4..a21641d 100644
+--- a/pgmoon/init.moon
++++ b/pgmoon/init.moon
+@@ -1,6 +1,7 @@
+ socket = require "pgmoon.socket"
+ import insert from table
+-import rshift, lshift, band from require "bit"
++
++import rshift, lshift, band from require "pgmoon.bit"
+ 
+ unpack = table.unpack or unpack
+ 
+@@ -330,7 +331,7 @@ class Postgres
+ 
+     if command_complete
+       command = command_complete\match "^%w+"
+-      affected_rows = tonumber command_complete\match "%d+%z$"
++      affected_rows = tonumber command_complete\match "(%d+)%z$"
+ 
+     if row_desc
+       return {} unless data_rows
