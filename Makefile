@@ -1,5 +1,5 @@
 update::
-	./generate_pkgbuild.sh > PKGBUILD
+	./generate-pkgbuild.sh > PKGBUILD
 	makepkg --printsrcinfo > .SRCINFO
 
 install::
