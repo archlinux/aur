@@ -21,6 +21,7 @@ pkgbase = hotspot-git
 	depends = kitemmodels
 	depends = kconfigwidgets
 	depends = solid
+	depends = rustc-demangle
 	provides = hotspot
 	conflicts = hotspot
 	source = git+https://github.com/KDAB/hotspot.git
