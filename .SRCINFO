@@ -1,13 +1,13 @@
 pkgbase = musixmatch-bin
 	pkgdesc = Lyrics for your music
 	pkgver = 3.10.4043
-	pkgrel = 1
+	pkgrel = 2
 	url = https://about.musixmatch.com/apps
 	arch = x86_64
 	license = custom
 	depends = dconf
 	depends = desktop-file-utils
-	depends = electron
+	depends = electron9
 	depends = hicolor-icon-theme
 	depends = libnotify
 	depends = libxtst

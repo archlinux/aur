@@ -4,7 +4,7 @@ pkgname=musixmatch-bin
 _pkgname=${pkgname%-bin}
 pkgver=3.10.4043
 _pkgver=master.20200211001
-pkgrel=1
+pkgrel=2
 pkgdesc='Lyrics for your music'
 arch=('x86_64')
 url='https://about.musixmatch.com/apps'
@@ -12,7 +12,7 @@ license=('custom')
 depends=(
 	'dconf'
 	'desktop-file-utils'
-	'electron'
+	'electron9'
 	'hicolor-icon-theme'
 	'libnotify'
 	'libxtst'
@@ -39,5 +39,5 @@ prepare() {
 package() {
 	mv usr "$pkgdir"
 	install -D eula.md -t "$pkgdir/usr/share/licenses/$_pkgname"
-	echo -e '#!/bin/sh\n\nexec electron /usr/lib/musixmatch/app.asar "$@"' | install -Dm 755 /dev/stdin "$pkgdir/usr/bin/$_pkgname"
+	echo -e '#!/bin/sh\n\nexec electron9 /usr/lib/musixmatch/app.asar "$@"' | install -Dm 755 /dev/stdin "$pkgdir/usr/bin/$_pkgname"
 }
