@@ -64,6 +64,8 @@ pkgbase = lv2-plugins-aur-meta
 	depends = bharvestr.lv2-git
 	depends = x42-sisco-cv-git
 	depends = stegosaurus-lv2-git
+	depends = odin2-synthesizer
+	depends = poly.lv2-git
 
 pkgname = lv2-plugins-aur-meta
 
