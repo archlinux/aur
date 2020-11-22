@@ -3,7 +3,7 @@
 _srcname='ss-tproxy'
 pkgname=ss-tproxy-git
 pkgver=r836.0f45dd0
-pkgrel=1
+pkgrel=2
 pkgdesc='A rudimentary script for building SS/SSR/V2Ray/Socks5 transparent proxy environments'
 arch=('i686' 'x86_64')
 url="https://github.com/zfl9/${_srcname}"
@@ -18,7 +18,9 @@ optdepends=('iptables: support IPv4/IPv6 tproxy rules'
             'chinadns-ng: provides DNS server for chnroute mode'
             'dns2tcp: convert DNS query from udp to tcp, require zfl9/dns2tcp in tcponly mode'
             'shadowsocks-libev: provides ss-redir')
-backup=(etc/${_srcname}/${_srcname}.conf)
+backup=(etc/${_srcname}/${_srcname}.conf
+        etc/${_srcname}/gfwlist.ext
+        etc/${_srcname}/ignlist.ext)
 source=("git+${url}")
 sha512sums=('SKIP')
 
