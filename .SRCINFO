@@ -1,6 +1,6 @@
 pkgbase = extract-xiso-git
 	pkgdesc = xdvdfs (xbox iso) file creation and extraction utility (git package)
-	pkgver = v2.7.1.r32.f6d8223
+	pkgver = 2.7.1.r32.f6d8223
 	pkgrel = 1
 	url = https://github.com/XboxDev/extract-xiso
 	arch = x86_64
