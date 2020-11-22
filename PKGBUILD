@@ -1,14 +1,15 @@
 # Maintainer: Brandon 'Inco' Little <drinco@posteo.net>
 pkgname=ssg5
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='static site generator written on POSIX shell'
 
 arch=('any')
-license=('custom')
+license=('ISC')
+depends=('cpio')
 
 url=https://www.romanzolotarev.com
-md5sums=('SKIP')
+md5sums=('abf6c59327e7649a85cffaf95b904def')
 source=($url/bin/ssg5)
 
 build() {
