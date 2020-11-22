@@ -7,9 +7,9 @@ pkgbase = python-confuse
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/c/confuse/confuse-1.1.0.tar.gz
+	source = confuse-1.1.0.tar.gz::https://files.pythonhosted.org/packages/source/c/confuse/confuse-1.1.0.tar.gz
 	source = confuse-1.1.0-LICENSE::https://github.com/beetbox/confuse/raw/v1.1.0/LICENSE
-	sha256sums = adc1979ea6f4c0dd3d6fe06020c189843a649082ab8f6fb54db16f4ac5e5e1da
+	sha256sums = 92fc0451c6e2c2732ac363d0f59d7ea608abddbed062dda8e98e9a8c986ce464
 	sha256sums = 0b308ae66aaa1412ebbe645bec4002fd262d91e9cdf67b6f198026677ddfafcc
 
 pkgname = python-confuse
