@@ -3,7 +3,7 @@
 _pkgname=cadmus
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="A GUI frontend for @werman's Pulse Audio real-time noise suppression plugin "
 arch=("x86_64")
@@ -18,7 +18,7 @@ source_x86_64=("${_appimage}::https://github.com/josh-richardson/cadmus/releases
                "https://raw.githubusercontent.com/josh-richardson/cadmus/${pkgver}/LICENSE"
               )
 noextract=("${_appimage}")
-sha256sums_x86_64=('46a1bbc1d8377ff2016b654f7137c9897d97c6dd89a7dc838b59adffa90be2c2'
+sha256sums_x86_64=('530ce58c10cdfa1fafef5e0fda5e8d72c58670edfdf2b161245c005c3b6dccaa'
                    '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 prepare() {
     chmod +x "${_appimage}"
