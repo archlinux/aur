@@ -1,0 +1,58 @@
+From ac258391261e9c7ce26b0542599009b443255f05 Mon Sep 17 00:00:00 2001
+From: kevall474 <kevall474@tuta.io>
+Date: Sat, 21 Nov 2020 12:41:12 -0500
+Subject: [PATCH] ENABLE LLVM BY DEFAULT
+
+---
+ src/amd/vulkan/radv_debug.h  | 3 ++-
+ src/amd/vulkan/radv_device.c | 5 ++++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/amd/vulkan/radv_debug.h b/src/amd/vulkan/radv_debug.h
+index 9e74df77f40..2c0d39c33ca 100644
+--- a/src/amd/vulkan/radv_debug.h
++++ b/src/amd/vulkan/radv_debug.h
+@@ -1,4 +1,4 @@
+-/*
++﻿/*
+  * Copyright © 2017 Google.
+  *
+  * Permission is hereby granted, free of charge, to any person obtaining a
+@@ -67,6 +67,7 @@ enum {
+ 	RADV_PERFTEST_PS_WAVE_32      = 1 << 5,
+ 	RADV_PERFTEST_GE_WAVE_32      = 1 << 6,
+ 	RADV_PERFTEST_DFSM            = 1 << 7,
++	RADV_PERFTEST_ACO             = 1 << 8,
+ };
+ 
+ bool
+diff --git a/src/amd/vulkan/radv_device.c b/src/amd/vulkan/radv_device.c
+index f9a58a73dab..c4547b22f52 100644
+--- a/src/amd/vulkan/radv_device.c
++++ b/src/amd/vulkan/radv_device.c
+@@ -1,4 +1,4 @@
+-/*
++﻿/*
+  * Copyright © 2016 Red Hat.
+  * Copyright © 2016 Bas Nieuwenhuizen
+  *
+@@ -532,6 +532,7 @@ static const struct debug_control radv_perftest_options[] = {
+ 	{"pswave32", RADV_PERFTEST_PS_WAVE_32},
+ 	{"gewave32", RADV_PERFTEST_GE_WAVE_32},
+ 	{"dfsm", RADV_PERFTEST_DFSM},
++	{"aco", RADV_PERFTEST_ACO},
+ 	{NULL, 0}
+ };
+ 
+@@ -665,6 +666,8 @@ VkResult radv_CreateInstance(
+ 	instance->debug_flags = parse_debug_string(getenv("RADV_DEBUG"),
+ 						   radv_debug_options);
+ 
++	instance->debug_flags |= RADV_DEBUG_LLVM;
++
+ 	const char *radv_perftest_str = getenv("RADV_PERFTEST");
+ 	instance->perftest_flags = parse_debug_string(radv_perftest_str,
+ 						      radv_perftest_options);
+-- 
+2.29.2.windows.2
+
