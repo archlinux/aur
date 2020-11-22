@@ -1,7 +1,7 @@
 pkgbase = lib32-lilv
 	pkgdesc = A C library interface to the LV2 plug-in standard (32-bit)
-	pkgver = 0.24.8
-	pkgrel = 2
+	pkgver = 0.24.10
+	pkgrel = 1
 	url = https://drobilla.net/software/lilv/
 	arch = x86_64
 	license = custom:ISC
@@ -10,13 +10,13 @@ pkgbase = lib32-lilv
 	makedepends = waf
 	depends = lib32-sratom
 	depends = lilv
-	source = https://download.drobilla.net/lilv-0.24.8.tar.bz2
-	source = https://download.drobilla.net/lilv-0.24.8.tar.bz2.sig
-	source = lilv-0.24.8-fix_translations.patch
+	source = https://download.drobilla.net/lilv-0.24.10.tar.bz2
+	source = https://download.drobilla.net/lilv-0.24.10.tar.bz2.sig
 	validpgpkeys = 907D226E7E13FA337F014A083672782A9BF368F3
-	sha512sums = f2b2638372a8280041f6e88e2077f2109f89dad6feedb9d07a88c6b5a05c37b62112f5d03282da4335ddd0d14339cfb49ad96a3df3de310265a40c24718be192
+	sha512sums = 1dfd4fef19537686b63a4e7df45e3b1a7c4a658acc21d5646daba4d3bd5676513857b3f437b89f1a06232516433ef155772d19625c33d49d13ada37a965982cf
 	sha512sums = SKIP
-	sha512sums = 71a38be9d33a21e2d2a9500e37efee9825124bab817c8e459790c00c28b9b27a1c9a3b611955790542b55253ae656dad58be934199a854cd7a5e16daed485b68
+	b2sums = a316c0aae8f93a6104ad46e9e93cd3948b4596920a9bb7f1ab5bfe596428aa43e45413f79cd9e7c094ca3239e4811bd391015f17be5c059a54b0a050aff1e964
+	b2sums = SKIP
 
 pkgname = lib32-lilv
 
