@@ -5,11 +5,13 @@
 
 # Maintainer: Kevin Wilms <niemandausduisburg@gmx.net>
 # picpgm author: Darron M Broad
-pkgname=pickle
-pkgver=5.01
+pkgname=pickle-beta
+_srcname=pickle
+_buildversion=553bdcf35bdf
+pkgver=5.02
 pkgrel=1
 epoch=
-pkgdesc="The project was renamed from k8048. Is a programm for programm PICS."
+pkgdesc="The project was renamed from k8048. Is a programm for programm PICS. Beta Version."
 arch=( "i686" "x86_64" )
 url="http://wiki.kewl.org/"
 license=('custom')
@@ -19,26 +21,26 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=()
-replaces=()
+conflicts=('pickle')
+replaces=('pickle')
 backup=()
 options=()
 install=
 changelog=
-source_x86_64=("http://wiki.kewl.org/downloads/pickle-${pkgver}.tgz")
+source_x86_64=("http://hg.kewl.org/pub/pickle/archive/tip.tar.gz")
 #source=("pickle.tar.xz")
 noextract=()
-sha256sums_x86_64=("3729a5a217757a59884d21b632c8e60e1637d94c282bcf5138d00260450f2b89")
+sha256sums_x86_64=("5e6e78f07804b925bbd42944436877ce4b776438dcd36c3a0b8d730af402b126")
 #md5sums=("SKIP")
 validpgpkeys=()
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_srcname-$_buildversion"
   #cd "$srcdir/pickle/src"
   make linux
   }
 package() {
-	cd "$srcdir/$pkgname/src"
+	cd "$srcdir/$_srcname-$_buildversion/src"
 	#sudo make DESTDIR="${pkgdir} linux-install"
 	install -Dm755 pickle "$pkgdir/usr/local/bin/pickle"
 	install -Dm755 pctrl "$pkgdir/usr/local/bin/pctrl"

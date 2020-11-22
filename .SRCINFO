@@ -1,13 +1,15 @@
-pkgbase = pickle
-	pkgdesc = The project was renamed from k8048. Is a programm for programm PICS.
-	pkgver = 5.01
+pkgbase = pickle-beta
+	pkgdesc = The project was renamed from k8048. Is a programm for programm PICS. Beta Version.
+	pkgver = 5.02
 	pkgrel = 1
 	url = http://wiki.kewl.org/
 	arch = i686
 	arch = x86_64
 	license = custom
-	source_x86_64 = http://wiki.kewl.org/downloads/pickle-5.01.tgz
-	sha256sums_x86_64 = 3729a5a217757a59884d21b632c8e60e1637d94c282bcf5138d00260450f2b89
+	conflicts = pickle
+	replaces = pickle
+	source_x86_64 = http://hg.kewl.org/pub/pickle/archive/tip.tar.gz
+	sha256sums_x86_64 = 5e6e78f07804b925bbd42944436877ce4b776438dcd36c3a0b8d730af402b126
 
-pkgname = pickle
+pkgname = pickle-beta
 
