@@ -1,0 +1,15 @@
+pkgbase = mobile-config-firefox
+	pkgdesc = Mobile and privacy friendly configuration for Firefox
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://gitlab.com/postmarketOS/mobile-config-firefox
+	arch = x86_64
+	license = GPL
+	depends = firefox
+	source = git+https://gitlab.com/postmarketOS/mobile-config-firefox
+	source = 0001-Update-links-for-ArchLinux.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mobile-config-firefox
+
