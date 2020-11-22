@@ -1,16 +1,16 @@
 pkgbase = lib32-gupnp-igd
 	pkgdesc = A library to handle UPnP IGD port mapping (32-bit)
-	pkgver = 0.2.5+3+gedd78a6
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GUPnP
 	arch = x86_64
 	license = LGPL
 	makedepends = git
 	makedepends = gobject-introspection
-	makedepends = gtk-doc
+	makedepends = meson
 	depends = lib32-gupnp
 	depends = gupnp-igd
-	source = git+https://gitlab.gnome.org/GNOME/gupnp-igd.git#commit=edd78a6561fc1a6e6769342157f0e4db62705fa3
+	source = git+https://gitlab.gnome.org/GNOME/gupnp-igd.git#commit=a0aafc79ac8e258f849cdb2924cb11ec9162d0c5
 	sha256sums = SKIP
 
 pkgname = lib32-gupnp-igd
