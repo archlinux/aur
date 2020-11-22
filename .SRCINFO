@@ -1,0 +1,21 @@
+pkgbase = mysql-connector-odbc
+	pkgdesc = A standardized, LGPL licensed ODBC database driver for a not-shit mysql fork
+	pkgver = 8.0.22
+	pkgrel = 1
+	url = .
+	arch = x86_64
+	arch = armv7h
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	depends = unixodbc
+	depends = openssl
+	depends = zlib
+	depends = libmysqlclient
+	replaces = mariadb-connector-odbc-bin
+	replaces = mariadb-connector-odbc
+	source = https://dev.mysql.com/get/Downloads/Connector-ODBC/8.0/mysql-connector-odbc-8.0.22-src.tar.gz
+	sha256sums = 8c3894d072cad5866cf07d09e05890bcce960dd2c23501b90952505f3ae5f4e8
+
+pkgname = mysql-connector-odbc
+
