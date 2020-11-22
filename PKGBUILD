@@ -4,12 +4,12 @@
 
 pkgname=gamess
 pkgver=2020R2
-pkgrel=1
+pkgrel=2
 pkgdesc="The General Atomic and Molecular Electronic Structure System"
 arch=('x86_64')
 url="https://www.msg.chem.iastate.edu/gamess/gamess.html"
 license=('custom')
-depends=('tcsh' 'openblas' 'python')
+depends=('tcsh' 'blas' 'python')
 makedepends=('python-jinja' 'gcc-fortran')
 checkdepends=('inetutils')
 install=${pkgname}.install
@@ -20,7 +20,7 @@ source=("local://gamess-current.tar.gz"
         "opt.patch"
         "tests.patch")
 sha256sums=('5eb9242751159b6de244055e1bbb5987e052f913d47ce5eb8a4c6d262361cdc3'
-            '4858916a9d55b0ec2dac896db6adc9f54a357b38804b6773ea6bfbbdd3b0030e'
+            '4ed0f7c17df595c02a7cc42b777cf64005eb84fedb5b6306936241b20dd523e3'
             '38a14c4d428b54838b55ed19cc9aa6741992c2e7b66a0180994d264de71c6bf2')
 
 prepare() {
@@ -28,16 +28,15 @@ prepare() {
 
   patch -p1 < "$srcdir/tests.patch"
   
-  # You may comment out two lines below to let GAMESS choose compiler options.
+  # You may comment out the following line to let GAMESS choose compiler options.
   patch -p1 < "$srcdir/opt.patch"
-  msg2 "Compiler flags '-O3 -march=native -mno-fma' are enabled by default."
   
-  # Optimizations can safely be more aggressive.
-  sed -i 's/ -fno-aggressive-loop-optimizations//g' comp
-  
-  # Fixes for GCC Fortran 10.1
+  # Fixes for GCC Fortran 10
   sed -i 's/-ffree-line-length-none/-ffree-line-length-none -fallow-argument-mismatch/g' comp
   sed -i 's/-Ofast -ffast-math/-Ofast -ffast-math -fallow-argument-mismatch/g' comp
+  
+  # Now GAMESS is blas-agnostic
+  sed -i 's/lopenblas/lblas/g' lked
 }
 
 build() {
@@ -52,8 +51,8 @@ build() {
 }
 
 check() {
-  msg2 "Please, wait for the computation of 47 test examples to finish."
-  msg2 "It is going to take about 5 min depending on your CPU frequency."
+  echo "Please, wait for the computation of 48 test examples to finish."
+  echo "It is going to take about 5 min depending on your CPU frequency."
   cd "$srcdir/$pkgname"
   
   # Prepare the launch script "rungms" to testing.
