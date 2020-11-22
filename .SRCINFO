@@ -1,14 +1,33 @@
 pkgbase = libcutensor
 	pkgdesc = GPU-accelerated tensor linear algebra library
-	pkgver = 1.2.0
+	pkgver = 1.2.1.7
 	pkgrel = 1
 	url = https://developer.nvidia.com/cutensor
 	arch = x86_64
 	license = custom:NVIDIA
-	depends = gcc-libs
-	depends = cuda
-	source = local://libcutensor-linux-x86_64-1.2.0.tar.gz
+	source = local://libcutensor-linux-x86_64-1.2.1.7.tar.gz
 	sha256sums = SKIP
 
 pkgname = libcutensor
+	depends = gcc-libs
+	depends = cuda
+
+pkgname = libcutensor-common
+	pkgdesc = GPU-accelerated tensor linear algebra library (Common bits)
+	arch = any
+
+pkgname = libcutensor-cuda10.1
+	pkgdesc = GPU-accelerated tensor linear algebra library (CUDA 10.1)
+	depends = gcc-libs
+	depends = cuda-10.1
+
+pkgname = libcutensor-cuda10.2
+	pkgdesc = GPU-accelerated tensor linear algebra library (CUDA 10.2)
+	depends = gcc-libs
+	depends = cuda-10.2
+
+pkgname = libcutensor-cuda11.0
+	pkgdesc = GPU-accelerated tensor linear algebra library (CUDA 11.0)
+	depends = gcc-libs
+	depends = cuda-11.0
 
