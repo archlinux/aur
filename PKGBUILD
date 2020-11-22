@@ -4,7 +4,7 @@
 _basename=wildmidi
 pkgname="lib32-$_basename"
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Source MIDI Synthesizer (32-bit)'
 arch=('x86_64')
 url="http://www.mindwerks.net/projects/wildmidi/"
@@ -41,4 +41,6 @@ package() {
     mv bin/wildmidi bin/wildmidi32
     mv lib lib32
     rm -r share include
+
+    ln -s wildmidi.pc "$pkgdir/usr/lib32/pkgconfig/WildMIDI.pc"
 }
