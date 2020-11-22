@@ -4,7 +4,7 @@
 _name=confuse
 pkgbase=python-confuse
 pkgname=( python-$_name python2-$_name)
-pkgver=1.1.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Configuration library for Python that uses YAML'
 url="https://github.com/beetbox/$_name"

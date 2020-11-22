@@ -1,14 +1,14 @@
 pkgbase = python-confuse
 	pkgdesc = Configuration library for Python that uses YAML
-	pkgver = 1.1.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/beetbox/confuse
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = confuse-1.1.0.tar.gz::https://files.pythonhosted.org/packages/source/c/confuse/confuse-1.1.0.tar.gz
-	source = confuse-1.1.0-LICENSE::https://github.com/beetbox/confuse/raw/v1.1.0/LICENSE
+	source = confuse-1.4.0.tar.gz::https://files.pythonhosted.org/packages/source/c/confuse/confuse-1.4.0.tar.gz
+	source = confuse-1.4.0-LICENSE::https://github.com/beetbox/confuse/raw/v1.4.0/LICENSE
 	sha256sums = 92fc0451c6e2c2732ac363d0f59d7ea608abddbed062dda8e98e9a8c986ce464
 	sha256sums = 0b308ae66aaa1412ebbe645bec4002fd262d91e9cdf67b6f198026677ddfafcc
 
