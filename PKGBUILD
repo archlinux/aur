@@ -40,7 +40,7 @@ build() {
       --disable-dependency-tracking \
       --disable-ldap \
       --disable-ldaps \
-      --disable-ipv6 \
+      --enable-ipv6 \
       --enable-manual \
       --enable-versioned-symbols \
       --enable-threaded-resolver \
