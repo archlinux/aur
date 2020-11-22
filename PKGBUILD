@@ -14,7 +14,7 @@ package() {
   cd "${pkgname}-${pkgver}"
   install -Dvm755 "${pkgname}" -t "${pkgdir}/usr/bin"
   install -Dvm644 "${pkgname}.1" -t "${pkgdir}/usr/share/man/man1"
-  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
