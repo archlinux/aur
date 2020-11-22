@@ -1,0 +1,16 @@
+pkgbase = clatexmath-git
+	pkgdesc = A dynamic, cross-platform, and embeddable LaTeX rendering library
+	pkgver = r211.44ea337
+	pkgrel = 1
+	url = https://github.com/NanoMichael/cLaTeXMath
+	arch = any
+	license = MIT
+	makedepends = meson
+	depends = gtkmm3
+	depends = gtksourceviewmm
+	provides = clatexmath
+	source = clatexmath::git+https://github.com/NanoMichael/cLaTeXMath.git
+	sha256sums = SKIP
+
+pkgname = clatexmath-git
+
