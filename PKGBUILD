@@ -11,16 +11,9 @@ source=("$pkgname::git+https://github.com/Lanjelin/NBNO.py.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
+	cd "${pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
-# prepare() {
-#	cd "$srcdir/$pkgname"
-#	rm README.md
-#	rm LICENSE
-#	rm nbno27.py
-#}
 
 package() {
 	cd "${srcdir}"/${pkgname}
