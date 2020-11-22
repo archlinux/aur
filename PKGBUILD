@@ -1,15 +1,15 @@
 # Maintainer: Maxwell Fortney <maxwellfortney@gmail.com>
 pkgname=bluebubbles-desktop-app
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Open source cross-platform iMessage client"
 arch=('x86_64')
 url="https://bluebubbles.app/"
 license=('unknown')
 optdepends=('noto-fonts-emoji')
 changelog=
-sha256sums=('5850b62567f600cb5cbf4d51a094fe385672a4029585a12efdd47d925d22eb25')
-source=("$pkgname-$pkgver.deb::https://github.com/BlueBubblesApp/BlueBubbles-Desktop-App/releases/download/$pkgver/$pkgname-$pkgver.deb")
+sha256sums=('87848a927167d0235fe6b60bd4c327033f7784a197906ae94b59e431b7bf4032')
+source=("$pkgname-$pkgver.deb::https://github.com/BlueBubblesApp/BlueBubbles-Desktop-App/releases/download/v$pkgver/$pkgname-$pkgver.deb")
 
 package() {
     #Get the data from the deb

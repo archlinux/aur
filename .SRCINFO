@@ -1,13 +1,13 @@
 pkgbase = bluebubbles-desktop-app
 	pkgdesc = Open source cross-platform iMessage client
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.0.3
+	pkgrel = 1
 	url = https://bluebubbles.app/
 	arch = x86_64
 	license = unknown
 	optdepends = noto-fonts-emoji
-	source = bluebubbles-desktop-app-1.0.2.deb::https://github.com/BlueBubblesApp/BlueBubbles-Desktop-App/releases/download/1.0.2/bluebubbles-desktop-app-1.0.2.deb
-	sha256sums = 5850b62567f600cb5cbf4d51a094fe385672a4029585a12efdd47d925d22eb25
+	source = bluebubbles-desktop-app-1.0.3.deb::https://github.com/BlueBubblesApp/BlueBubbles-Desktop-App/releases/download/v1.0.3/bluebubbles-desktop-app-1.0.3.deb
+	sha256sums = 87848a927167d0235fe6b60bd4c327033f7784a197906ae94b59e431b7bf4032
 
 pkgname = bluebubbles-desktop-app
 
