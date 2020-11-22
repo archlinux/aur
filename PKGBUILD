@@ -21,9 +21,27 @@ replaces=("mesa" "opencl-mesa" "vulkan-intel" "vulkan-radeon" "vulkan-mesa-layer
 provides=("mesa" "opencl-mesa" "vulkan-intel" "vulkan-radeon" "vulkan-driver" "vulkan-mesa-layer" "libva-mesa-driver" "mesa-vdpau" "opengl-driver" "opencl-driver"
           "mesa-libgl")
 source=("https://archive.mesa3d.org/mesa-${versiontag}.tar.xz"
+        "0001-util-workaround-LTO-compilation-break-since-18cb8f23.patch"
+        "0003-evergreen-big-endian.patch"
         "LICENSE")
 md5sums=("SKIP"
+         "SKIP"
+         "SKIP"
          "SKIP")
+
+prepare(){
+  cd mesa-${versiontag}
+  
+  # Apply any patch
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    msg2 "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
+}
 
 build(){
   cd mesa-${versiontag}
