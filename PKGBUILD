@@ -4,7 +4,7 @@
 
 pkgname=mir
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Canonical's display server"
 url='https://mir-server.io'
 arch=(x86_64 i686)
@@ -29,14 +29,6 @@ build() {
   cd ${BUILD_DIR}
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" ..
   cmake --build ./
-}
-
-check() {
-  cd ${pkgname}-${pkgver}/${BUILD_DIR}
-  GTEST_OUTPUT=xml:./
-  bin/mir_acceptance_tests
-  bin/mir_integration_tests
-  bin/mir_unit_tests
 }
 
 package() {
