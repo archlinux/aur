@@ -6,9 +6,9 @@
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
-pkgname=lib32-curl-git
+pkgname=lib32-curl-minimal-git
 _pkgname=curl
-pkgver=7.72.0
+pkgver=7.73.0
 pkgrel=1
 pkgdesc="An URL retrieval utility and library (32-bit)"
 arch=('x86_64')

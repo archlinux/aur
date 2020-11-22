@@ -1,6 +1,6 @@
-pkgbase = lib32-curl-git
+pkgbase = lib32-curl-minimal-git
 	pkgdesc = An URL retrieval utility and library (32-bit)
-	pkgver = 7.72.0
+	pkgver = 7.73.0
 	pkgrel = 1
 	url = https://curl.haxx.se
 	arch = x86_64
@@ -17,5 +17,5 @@ pkgbase = lib32-curl-git
 	source = git+https://github.com/curl/curl
 	sha512sums = SKIP
 
-pkgname = lib32-curl-git
+pkgname = lib32-curl-minimal-git
 
