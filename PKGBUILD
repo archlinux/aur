@@ -14,8 +14,7 @@ depends=('curl' 'glibc' 'gnutls' 'libidn2' 'libidn2.so' 'libnghttp2'
          'zlib' 'zstd')
 options=('strip')
 source=("git+https://github.com/curl/curl")
-sha512sums=('SKIP'
-            'SKIP')
+sha512sums=('SKIP')
 validpgpkeys=('SKIP') # Daniel Stenberg
 
 pkgver() {
@@ -26,6 +25,7 @@ pkgver() {
 build() {
   cd curl
 
+  ./buildconf
   ./configure \
     --prefix='/usr' \
     --disable-ldap \

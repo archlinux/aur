@@ -21,7 +21,6 @@ pkgbase = libcurl-gnutls-minimal-git
 	source = git+https://github.com/curl/curl
 	validpgpkeys = SKIP
 	sha512sums = SKIP
-	sha512sums = SKIP
 
 pkgname = libcurl-gnutls-minimal-git
 
