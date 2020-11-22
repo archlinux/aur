@@ -10,6 +10,7 @@ pkgdesc="xdvdfs (xbox iso) file creation and extraction utility (git package)"
 arch=('x86_64')
 url="https://github.com/XboxDev/extract-xiso"
 license=('custom')
+makedepends=('cmake' 'ninja')
 conflicts=('extract-xiso' 'extract-xiso-somski')
 provides=('extract-xiso')
 source=('git+https://github.com/XboxDev/extract-xiso.git')
