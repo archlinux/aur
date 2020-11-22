@@ -36,4 +36,3 @@ pkgname = linux-rockchip-headers
 	pkgdesc = Headers and scripts for building modules for the linux-rockchip kernel
 	provides = linux-headers
 	provides = linux-headers-rockchip
-
