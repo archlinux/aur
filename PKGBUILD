@@ -1,17 +1,17 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _pkgname='rage'
 pkgname="rust-$_pkgname"
-pkgver='0.4.0'
+pkgver='0.5.0'
 pkgrel='1'
 pkgdesc='Rust implementation of the age encryption tool'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/str4d/$_pkgname"
 license=('Apache' 'MIT')
-depends=('fuse2')
+depends=('fuse2' 'pcsclite')
 makedepends=('cargo')
 optdepends=('bash-completion: Bash completion')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('612754f0a78517dd3ac490a9860b996317dbabcc745e307b9c6e6cab4379c1e7')
+sha256sums=('8b2b9daada1ebf324050be565f284f96b1f5b72f896fb4d1772797dc11bc4400')
 
 _sourcedirectory="$_pkgname-$pkgver"
 
