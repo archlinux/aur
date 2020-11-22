@@ -8,6 +8,7 @@ pkgbase = cozy-audiobooks
 	license = GPL3
 	makedepends = meson
 	makedepends = ninja
+	makedepends = libhandy
 	depends = appstream-glib
 	depends = desktop-file-utils
 	depends = gst-python
@@ -24,6 +25,7 @@ pkgbase = cozy-audiobooks
 	depends = python-packaging
 	depends = file
 	depends = gst-plugins-good
+	depends = libhandy
        source = https://github.com/geigi/cozy/archive/0.7.5.tar.gz
         sha256sums = bb43d3f277c643cc082cfd30769e17287f6f642f6710d6ab776089418276ad9c
 
