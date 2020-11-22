@@ -3,7 +3,7 @@
 # Contributor: Felix Schindler <ftschindler at aur dot archlinux>
 
 pkgname=webmin
-pkgver=1.960
+pkgver=1.962
 pkgrel=1
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(any)
@@ -181,7 +181,7 @@ package() {
 }
 
 
-sha256sums=('1fa13a7b0c9563e2452d8919ab9bf915f2455193b8fdb81c66dc0ec156c0ab65'
+sha256sums=('357642af9d753435e999adfe40772b998bfcb21852993081239948e9216bc6fd'
             '3c27a52679607c73cdaa00c0735bea04cf66cf92ca4af6a7ac906eaed537b910'
             '21b24cbbf88593f9da727e8f36dea283c8765002a378b3d4e55e6332387c43c6'
             'd326da95233341ed0a6d51c6c28d9b47b5bbe8c1ae8e03e2578c24191dd14383'
