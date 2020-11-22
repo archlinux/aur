@@ -1,14 +1,11 @@
 pkgbase = linux-rockchip
 	pkgver = 5.8.18
 	pkgrel = 1
-	url = https://github.com/armbian/build
+	url = https://github.com/redchenjs/armbian-kernel
 	arch = armv7h
 	license = GPL2
-	makedepends = coreutils
 	makedepends = findutils
 	makedepends = curl
-	makedepends = grep
-	makedepends = sed
 	noextract = mkinitcpio.preset
 	noextract = linux-dtb-current-rockchip_20.11.0-trunk_armhf.deb
 	noextract = linux-image-current-rockchip_20.11.0-trunk_armhf.deb

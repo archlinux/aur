@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=('findutils' 'curl')
 options=('!strip')
 _kernver=$pkgver-rockchip
-_armbian=20.11
+_armbian=20.11.0-trunk
 source=(
     "mkinitcpio.preset"
     "https://github.com/redchenjs/armbian-kernel/releases/download/v$_kernver/linux-dtb-current-rockchip_${_armbian}_armhf.deb"
