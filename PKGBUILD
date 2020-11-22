@@ -2,7 +2,7 @@
 # Contributor: Nils Kvist <robstenklippa@gmail.com>
 
 pkgname=genmonify
-pkgver=2020.11.16.7
+pkgver=2020.11.22.0
 pkgrel=1
 pkgdesc='precision control for xfce4-panels genmon plugin'
 arch=('any')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$url/archive/$pkgver/${pkgname}-$pkgver.tar.gz")
 noextract=()
-sha256sums=('be6b63626da18ad7cad3e3144d3bd379c0526b1c7560437d656f3f60b2e19244')
+sha256sums=('6ffb26b43f5cd1b923447125917b5ab7709ba056a18d87fc11b38dca25b82cf2')
 
 package() {
   cd "$pkgname-$pkgver"
