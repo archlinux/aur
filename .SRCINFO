@@ -1,7 +1,7 @@
 pkgbase = mysql-connector-odbc
 	pkgdesc = ODBC connector for MySQL instead of that mariadb nonsense
-	pkgver = 8.0.22
-	pkgrel = 2
+	pkgver = 8.0.21
+	pkgrel = 0
 	url = .
 	arch = x86_64
 	arch = armv7h
@@ -14,8 +14,8 @@ pkgbase = mysql-connector-odbc
 	depends = libmysqlclient
 	replaces = mariadb-connector-odbc-bin
 	replaces = mariadb-connector-odbc
-	source = https://dev.mysql.com/get/Downloads/Connector-ODBC/8.0/mysql-connector-odbc-8.0.22-src.tar.gz
-	sha256sums = 8c3894d072cad5866cf07d09e05890bcce960dd2c23501b90952505f3ae5f4e8
+	source = https://dev.mysql.com/get/Downloads/Connector-ODBC/8.0/mysql-connector-odbc-8.0.21-src.tar.gz
+	sha256sums = c9e64754937f4b991144d6d58c6749df67556769369543faa9ee02b93289f9b5
 
 pkgname = mysql-connector-odbc
 

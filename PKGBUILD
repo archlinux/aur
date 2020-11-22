@@ -1,7 +1,7 @@
 pkgname=mysql-connector-odbc
 replaces=('mariadb-connector-odbc-bin' 'mariadb-connector-odbc')
-pkgver=8.0.22
-pkgrel=2
+pkgver=8.0.21
+pkgrel=0
 pkgdesc="ODBC connector for MySQL instead of that mariadb nonsense"
 arch=('x86_64' 'armv7h')
 url="."
@@ -10,7 +10,7 @@ depends=('unixodbc' 'openssl' 'zlib' 'libmysqlclient')
 makedepends=('git' 'cmake')
 source=("https://dev.mysql.com/get/Downloads/Connector-ODBC/8.0/mysql-connector-odbc-${pkgver}-src.tar.gz")
 
-sha256sums=('8c3894d072cad5866cf07d09e05890bcce960dd2c23501b90952505f3ae5f4e8')
+sha256sums=('c9e64754937f4b991144d6d58c6749df67556769369543faa9ee02b93289f9b5')
 
 prepare() {
     rm -Rf build
