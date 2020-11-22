@@ -2,7 +2,7 @@
 
 _plug=mvtools_sf
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r10_pre.6.gbc15acb
+pkgver=r10_pre.7.g38dadba
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
