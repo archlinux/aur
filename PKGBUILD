@@ -1,67 +1,52 @@
+# Arch PKGBUILD for NoteKit
+# Copyright (C) 2020 sp1rit <sp1ritCS@protonmail.com>
+# 
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+# 
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
-# specfile for the obs build of notekit
-#
-# Copyright (c) 2020 github.com/blackhole89 (Developer) & github.com/sp1ritCS (OBS Package Maintainer)
-# Based on the work of AUR user atemu (notekit-git, https://aur.archlinux.org/packages/notekit-git/)
-#
+# Maintainer: sp1rit <sp1ritCS@protonmail.com>
 
-pkgname=notekit-clatexmath-git
-basename=${pkgname%-clatexmath-git}
-pkgver=r124.354a611
-pkgrel=2
+_basename=notekit
+pkgname="${_basename}-clatexmath-git"
+pkgver=r141.7709276
+pkgrel=1
 pkgdesc="A GTK3 hierarchical markdown notetaking application with tablet support."
-arch=('x86_64')
+arch=("any")
 url="https://github.com/blackhole89/notekit"
-license=('GPL3')
-depends=('gtkmm3>=3.2' 'gtksourceviewmm>=3.18' 'jsoncpp' 'zlib')
-makedepends=('gcc' 'make' 'cmake')
-provides=("${basename}")
-conflicts=("${basename}" "${basename}-git")
-source=('git+https://github.com/blackhole89/notekit.git'
-	'git+https://github.com/NanoMichael/cLaTeXMath.git')
-sha256sums=('SKIP'
-	    'SKIP')
+license=("GPL-3.0")
+depends=("clatexmath" "gtkmm3>=3.2" "gtksourceviewmm>=3.18" "jsoncpp" "zlib")
+makedepends=("meson")
+provides=("${_basename}")
+conflicts=("${_basename}" "${_basename}-git")
+source=("${_basename}::git+https://github.com/blackhole89/notekit.git")
+sha256sums=("SKIP")
 
 pkgver() {
-	cd "$srcdir/$basename"
+	cd "${srcdir}/${_basename}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare(){
-	ln -sf $srcdir/cLaTeXMath $srcdir/$basename
-	echo 'add_library(clatexmath STATIC ${SRC})' >> $srcdir/$basename/cLaTeXMath/CMakeLists.txt
+prepare() {
+	cd "${srcdir}/${_basename}"
+	arch-meson . _build
 }
 
 build() {
-	cd "$srcdir/$basename"
-
-	pushd cLaTeXMath
-	cmake -DCMAKE_BUILD_TYPE=Release -DHAVE_LOG=OFF -DGRAPHICS_DEBUG=OFF .
-	make
-	cp -r res $srcdir/$basename/data/latex
-	popd
-		
-	cmake -DHAVE_CLATEXMATH=ON -DCMAKE_BUILD_TYPE=Release .
-	make
+	cd "${srcdir}/${_basename}"
+	ninja -C _build
 }
 
 package() {
-	#install binary
-	install -Dm755 "$srcdir"/notekit/cmake-build-Release/output/notekit -t "$pkgdir"/usr/bin/
-	
-	#install doc
-	install -Dm644 "$srcdir"/notekit/README.md -t "$pkgdir"/usr/share/doc/notekit/
-
-	#install license
-	install -Dm644 "$srcdir"/notekit/LICENSE -t "$pkgdir"/usr/share/licenses/notekit/
-
-	#install "data" and "sourceview"
-	mkdir -p "$pkgdir"/usr/share/notekit/
-	cp -r "$srcdir"/notekit/data "$srcdir"/notekit/sourceview "$pkgdir"/usr/share/notekit/
-
-	#install application icons
-	install -Dm644 "$srcdir/notekit/freedesktop/notekit.png" -t "$pkgdir/usr/share/icons/hicolor/128x128/apps/"
-	install -Dm644 "$srcdir/notekit/freedesktop/notekit.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
-	#install desktop shortcut
-	install -Dm644 "$srcdir/notekit/freedesktop/notekit.desktop" -t "$pkgdir/usr/share/applications/"
+	cd "${srcdir}/${_basename}"
+	DESTDIR="${pkgdir}" meson install -C _build
 }
