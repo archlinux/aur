@@ -9,6 +9,7 @@ pkgbase = saluto-lightdm-theme-dwm
 	makedepends = npm
 	depends = lightdm
 	depends = lightdm-webkit2-greeter
+	provides = saluto-lightdm-theme
 	conflicts = saluto-lightdm-theme
 	conflicts = saluto-lightdm-theme-git
 	source = git+https://github.com/Demonstrandum/Saluto

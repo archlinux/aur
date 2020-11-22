@@ -10,6 +10,7 @@ license=('MIT')
 depends=('lightdm' 'lightdm-webkit2-greeter')
 makedepends=('git' 'npm')
 conflicts=("saluto-lightdm-theme" "saluto-lightdm-theme-git")
+provides=("saluto-lightdm-theme")
 md5sums=(
 	'SKIP' # git repo
 	'ce22e273cd2eed939cd2e33b9f773c75' # dwm.desktop
