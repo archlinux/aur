@@ -5,6 +5,7 @@ pkgbase = rss-bridge-git
 	url = https://github.com/RSS-Bridge/rss-bridge/wiki
 	arch = any
 	license = Unlicense
+	makedepends = git
 	depends = php
 	provides = rss-bridge
 	conflicts = rss-bridge
