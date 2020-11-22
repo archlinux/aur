@@ -1,11 +1,11 @@
 pkgbase = mysql-connector-odbc
-	pkgdesc = A standardized, LGPL licensed ODBC database driver for a not-shit mysql fork
+	pkgdesc = ODBC connector for MySQL instead of that mariadb nonsense
 	pkgver = 8.0.22
 	pkgrel = 1
 	url = .
 	arch = x86_64
 	arch = armv7h
-	license = LGPL
+	license = GPL
 	makedepends = git
 	makedepends = cmake
 	depends = unixodbc
