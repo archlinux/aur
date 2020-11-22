@@ -2,18 +2,19 @@
 
 pkgname=mympd
 _pkgname=myMPD
-pkgver=6.6.2
+pkgver=6.8.0
 pkgrel=1
 pkgdesc="A standalone and lightweight MPD web client."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/jcorporation/myMPD"
 license=('GPL2')
-optdepends=('openssl' 'libid3tag' 'flac' 'lua')
-makedepends=('cmake' 'perl' 'jre-openjdk-headless')
+# jre-openjdk-headless is only needed for the build of mympd and can be removed afterwards.
+optdepends=('openssl' 'libid3tag' 'flac' 'lua' 'jre-openjdk-headless')
+makedepends=('cmake' 'perl')
 backup=('etc/webapps/mympd/mympd.conf')
 install=mympd.install
-source=("git+https://github.com/jcorporation/myMPD.git")
-sha256sums=('SKIP')
+source=("https://github.com/jcorporation/myMPD/archive/v$pkgver.tar.gz")
+sha256sums=('ff02f6c9a7ada882324692e4cf3fb839bba6e939d04db57e0affd6088c597915')
 
 build() {
     cd $srcdir/$_pkgname
