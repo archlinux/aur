@@ -1,12 +1,12 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=giara-git
-pkgver=0.3.r0.g7f985e0
+pkgver=0.3.r3.g98045cf
 pkgrel=1
 epoch=
 pkgdesc="Reddit gtk client"
 arch=('any')
-url="https://gitlab.gnome.org/GabMus/giara"
+url="https://gitlab.gnome.org/World/giara"
 license=('GPL3')
 groups=()
 depends=(
@@ -19,7 +19,6 @@ depends=(
 	'python-mistune'
 	'python-pillow'
 	'python-praw'
-	'webkit2gtk'
 )
 makedepends=('meson' 'git' 'gobject-introspection')
 checkdepends=()

@@ -1,8 +1,8 @@
 pkgbase = giara-git
 	pkgdesc = Reddit gtk client
-	pkgver = 0.3.r0.g7f985e0
+	pkgver = 0.3.r3.g98045cf
 	pkgrel = 1
-	url = https://gitlab.gnome.org/GabMus/giara
+	url = https://gitlab.gnome.org/World/giara
 	arch = any
 	license = GPL3
 	makedepends = meson
@@ -17,13 +17,12 @@ pkgbase = giara-git
 	depends = python-mistune
 	depends = python-pillow
 	depends = python-praw
-	depends = webkit2gtk
 	optdepends = ffmpeg: For video
 	provides = giara
 	conflicts = giara
 	conflicts = redditgtk
 	replaces = redditgtk
-	source = giara-git::git+https://gitlab.gnome.org/GabMus/giara.git
+	source = giara-git::git+https://gitlab.gnome.org/World/giara.git
 	sha256sums = SKIP
 
 pkgname = giara-git
