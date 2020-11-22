@@ -2,7 +2,7 @@
 
 _plug=vsfilterscript
 pkgname=vapoursynth-lib-${_plug}-git
-pkgver=r93.aa00068
+pkgver=r119.fc6f2fc
 pkgrel=1
 pkgdesc="Library for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('git'
              )
 provides=("vapoursynth-lib-${_plug}")
 conflicts=("vapoursynth-lib-${_plug}")
-source=("${_plug}::git+https://github.com/IFeelBloated/vsFilterScript.git")
+source=("${_plug}::git+https://github.com/IFeelBloated/vsFilterScript.git#branch=stable")
 sha256sums=('SKIP')
 
 pkgver() {
