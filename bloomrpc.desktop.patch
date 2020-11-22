@@ -1,0 +1,8 @@
+@@ -4,6 +4,6 @@
+ Terminal=false
+ Type=Application
+ Icon=bloomrpc
+-StartupWMClass=BloomRPC
++StartupWMClass=bloom-rpc-client
+ Comment=GRPC GUI client
+ Categories=Development;
