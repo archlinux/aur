@@ -1,5 +1,6 @@
 *
-!.gitignore
-!PKGBUILD
 !.SRCINFO
+!.gitignore
+!Makefile
+!PKGBUILD
 !generate-pkgbuild.sh
