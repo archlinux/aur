@@ -4,7 +4,7 @@ pkgname=musixmatch-bin
 _pkgname=${pkgname%-bin}
 pkgver=3.10.4043
 _pkgver=master.20200211001
-pkgrel=2
+pkgrel=3
 pkgdesc='Lyrics for your music'
 arch=('x86_64')
 url='https://about.musixmatch.com/apps'
@@ -25,7 +25,7 @@ source=(
 )
 sha256sums=(
 	'f1dbb249f5622a7b5bb62bc53616c5579b79029aee8c7ff7ecc27f11c12e7bd1'
-	'98debf3d134d676f8188406d03b880c0ccde743b882b8d1e0bcaf02dd2eb0705'
+	'9fe25570f514c1a9349769bedbbff9e48ad8c09ee4d77fa9492e46e6e9eb9eaf'
 )
 
 prepare() {

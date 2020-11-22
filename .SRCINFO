@@ -1,7 +1,7 @@
 pkgbase = musixmatch-bin
 	pkgdesc = Lyrics for your music
 	pkgver = 3.10.4043
-	pkgrel = 2
+	pkgrel = 3
 	url = https://about.musixmatch.com/apps
 	arch = x86_64
 	license = custom
@@ -16,7 +16,7 @@ pkgbase = musixmatch-bin
 	source = https://download-app.musixmatch.com/download/musixmatch_3.10.4043-master.20200211001_amd64.deb
 	source = eula.md
 	sha256sums = f1dbb249f5622a7b5bb62bc53616c5579b79029aee8c7ff7ecc27f11c12e7bd1
-	sha256sums = 98debf3d134d676f8188406d03b880c0ccde743b882b8d1e0bcaf02dd2eb0705
+	sha256sums = 9fe25570f514c1a9349769bedbbff9e48ad8c09ee4d77fa9492e46e6e9eb9eaf
 
 pkgname = musixmatch-bin
 
