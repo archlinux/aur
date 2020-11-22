@@ -7,13 +7,10 @@ pkgrel=1
 arch=('armv7h')
 url="https://github.com/armbian/build"
 license=('GPL2')
-makedepends=('coreutils' 'findutils' 'curl' 'grep' 'sed')
+makedepends=('findutils' 'curl')
 options=('!strip')
-
-_pkgfile=$(curl -s -L https://api.github.com/repos/redchenjs/armbian-kernel/releases/latest -o release)
-_kernver=$(cat release | grep tag_name | sed -r 's#.*"v(.*)".*$#\1#')
-_armbian=$(cat release | grep body | sed -r 's#.*"(.*)".*$#\1#')
-
+_kernver=$pkgver-rockchip
+_armbian=20.11
 source=(
     "mkinitcpio.preset"
     "https://github.com/redchenjs/armbian-kernel/releases/download/v$_kernver/linux-dtb-current-rockchip_${_armbian}_armhf.deb"
@@ -27,10 +24,6 @@ sha512sums=(
     "$(curl -s -L https://github.com/redchenjs/armbian-kernel/releases/download/v$_kernver/linux-headers-current-rockchip_${_armbian}_armhf.deb.sha512sum)"
 )
 noextract=("${source[@]##*/}")
-
-pkgver() {
-    echo "$_kernver" | sed -r 's#-.*##'
-}
 
 prepare() {
     cd "$srcdir"
