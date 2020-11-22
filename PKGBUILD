@@ -1,7 +1,7 @@
 pkgname=asterisk-odbc-mysql
 _pkgname=asterisk
 pkgver=18.1.0
-pkgrel=0
+pkgrel=1
 pkgdesc='A complete PBX solution'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 provides=('asterisk')
@@ -15,7 +15,7 @@ depends=('alsa-lib'
          'libxml2'
          'libxslt'
          'popt'
-         'unixodbc')
+         'myodbc')
 makedepends=('gsm'
              'sqlite3')
 optdepends=('dahdi'

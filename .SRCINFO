@@ -1,7 +1,7 @@
 pkgbase = asterisk-odbc-mysql
 	pkgdesc = A complete PBX solution
 	pkgver = 18.1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.asterisk.org
 	install = asterisk.install
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = asterisk-odbc-mysql
 	depends = libxml2
 	depends = libxslt
 	depends = popt
-	depends = unixodbc
+	depends = myodbc
 	optdepends = dahdi
 	optdepends = opus
 	optdepends = libvorbis
