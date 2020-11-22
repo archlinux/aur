@@ -1,6 +1,6 @@
 pkgbase = c-mnalib
 	pkgdesc = C library for easy access and configuration of cellular network modems
-	pkgver = 0.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/falkenber9/c-mnalib
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = c-mnalib
 	depends = glib2
 	depends = systemd-libs
 	options = staticlibs
-	source = c-mnalib-falcon_v0.1.tar.gz::https://github.com/falkenber9/c-mnalib/archive/falcon_v0.1.tar.gz
-	sha512sums = 768e44b18016e97377ff4414a6674f2be3d93f05cbe2d6d252f7796745173f4c90b7d71b5fa442fd2c5cf12e524cabf8a6e971a1126a9a0e7baa41e4cf7c27d5
+	source = c-mnalib-1.0.0.tar.gz::https://github.com/falkenber9/c-mnalib/archive/v1.0.0.tar.gz
+	sha512sums = dbccefda3e1a2c8dab970a092b6cf91fbf8ead275a958c1e732769fb1220ccc18248ec4677de10d4e2cf33e9966806861b5f898d4e64d28959948725170aafba
 
 pkgname = c-mnalib
 
