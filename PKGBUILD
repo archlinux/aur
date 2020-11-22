@@ -7,10 +7,10 @@
 
 pkgname=alarm-clock-applet
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A fully-featured alarm clock for GTK panel"
 arch=('x86_64' 'i686')
-alias=alarm-clock
+_alias=alarm-clock
 url="http://alarm-clock.pseudoberries.com"
 license=('GPL2')
 depends=('autoconf' 'automake' 'gnome-common' 'gconf>=2.0' 'gnome-icon-theme' 'gstreamer>=1.0' 'libnotify>=0.4.1' 'libunique>=1.0' 'libappindicator-gtk3')
@@ -20,14 +20,14 @@ source=(https://gitea.artixlinux.org/linuxer/alarm-clock/archive/${pkgver}.tar.g
 sha512sums=('SKIP')
 
 build() {
-  cd "$srcdir/$alias"
+  cd "$srcdir/$_alias"
   ./autogen.sh
   autoreconf -i
-  ./configure 
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$alias"
+  cd "$srcdir/$_alias"
   make DESTDIR="$pkgdir/" install
 }
