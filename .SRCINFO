@@ -1,17 +1,18 @@
 pkgbase = lib32-gd
 	pkgdesc = Library for the dynamic creation of images by programmers (32-bit)
-	pkgver = 2.2.5
-	pkgrel = 2
-	url = http://www.libgd.org/
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://libgd.github.io/
 	arch = x86_64
 	license = custom
+	checkdepends = ttf-liberation
 	depends = lib32-fontconfig
 	depends = lib32-libtiff
 	depends = lib32-libwebp
 	depends = lib32-libxpm
 	depends = gd
-	source = https://github.com/libgd/libgd/releases/download/gd-2.2.5/libgd-2.2.5.tar.xz
-	sha256sums = 8c302ccbf467faec732f0741a859eef4ecae22fea2d2ab87467be940842bde51
+	source = https://github.com/libgd/libgd/releases/download/gd-2.3.0/libgd-2.3.0.tar.xz
+	sha1sums = ec75c84aa6326a7ade3302d5c18471f440b2ca1e
 
 pkgname = lib32-gd
 
