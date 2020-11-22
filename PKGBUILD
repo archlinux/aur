@@ -34,7 +34,7 @@ build() {
       --disable-ldap \
       --disable-ldaps \
       --disable-manual \
-      --disable-ipv6 \
+      --enable-ipv6 \
       --enable-versioned-symbols \
       --enable-threaded-resolver \
       --with-gssapi \
