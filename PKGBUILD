@@ -1,16 +1,16 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=quikey
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A keyboard macro tool."
 arch=('any')
 url="https://github.com/bostrt/quikey"
 license=('MIT')
-depends=('python-click' 'python-colored' 'python-daemon' 'python-inotify-simple' 'python-tinydb' 'python-pynput' 'python-terminaltables' 'python-xdg' 'python-humanize')
+depends=('python-click' 'python-colored' 'python-daemon' 'python-inotify-simple' 'python-tinydb' 'python-pynput' 'python-terminaltables' 'python-xdg' 'python-humanize' 'python-pick')
 makedepends=('python-setuptools')
 source=("https://github.com/bostrt/quikey/archive/$pkgver.tar.gz")
-md5sums=('b6251708ba1c63a767653d137ca6edea')
+md5sums=('0c821cfd7e6a0f03bc3d6a26e8541bfb')
 
 package() {
   cd "$pkgname-$pkgver"
