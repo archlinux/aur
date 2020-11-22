@@ -1,6 +1,7 @@
-#   Maintainer: GordonGR <ntheo1979@gmail.com>
-#   Contributor: Thomas Baechler <thomas@archlinux.org>
-#   Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
+# Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
+# Contributor: GordonGR <ntheo1979@gmail.com>
+# Contributor: Thomas Baechler <thomas@archlinux.org>
+# Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 
 _basename=a52dec
 pkgname=lib32-a52dec
