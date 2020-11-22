@@ -2,7 +2,7 @@
 #Credits: Lone_Wolf <lone_wolf@klaas-de-kat.nl> ---> For the base PKGBULD
 #Credits: Laurent Carlier <lordheavym@gmail.com> ---> For the base PKGBUILD
 
-pkgname=lib32-mesa-llvm
+pkgname=lib32-mesa-llvm-rc
 pkgver=20.3.0_rc2
 pkgrel=1
 versiontag=20.3.0-rc2
