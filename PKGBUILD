@@ -1,7 +1,7 @@
 pkgname=postfix-mysql
 _pkgname=postfix
 pkgver=3.5.8
-pkgrel=3
+pkgrel=0
 url="http://www.postfix.org/"
 pkgdesc='Fast, easy to administer, secure mail server'
 license=('EPL')
@@ -10,7 +10,7 @@ depends=('db' 'glibc' 'libldap' 'libnsl' 'libsasl' 'openssl' 'pcre'
 'postgresql-libs' 'sqlite' 'tinycdb' 'zlib')
 makedepends=('icu' 'libmysqlclient')
 optdepends=('perl: for postfix-collate.pl and qshape')
-conflicts=('smtp-server' 'smtp-forwarder' 'postfix-tools')
+conflicts=('smtp-server' 'smtp-forwarder' 'postfix-tools' 'postfix')
 provides=('smtp-server' 'smtp-forwarder' 'postfix-tools')
 replaces=('postfix-tools')
 backup=('etc/postfix/'{access,aliases,canonical,generic,header_checks,main.cf,master.cf,relocated,transport,virtual})
