@@ -1,4 +1,4 @@
-# Maintainer: coderkun <olli@coderkun.de>
+# Maintainer: coderkun <olli@suruatoel.xyz
 
 pkgname=kbd-neo
 pkgver=3
