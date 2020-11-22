@@ -1,6 +1,6 @@
 pkgbase = tagspaces
 	pkgdesc = An offline, open source, document manager with tagging support
-	pkgver = 3.6.1
+	pkgver = 3.7.7
 	pkgrel = 1
 	url = http://tagspaces.org
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = tagspaces
 	depends = gtk3
 	depends = nss
 	depends = libxss
-	source = tagspaces-3.6.1.tar.gz::https://github.com/tagspaces/tagspaces/archive/v3.6.1.tar.gz
-	sha256sums = c68b746341dfd414d36ba9384c960a83a2992c07ea04089f028ce7e5be10eb5b
+	source = tagspaces-3.7.7.tar.gz::https://github.com/tagspaces/tagspaces/archive/v3.7.7.tar.gz
+	sha256sums = c854388270b1a6591fe4896b4dcff9f492a84d63e4a28aa55350ef0cf67fd7d9
 
 pkgname = tagspaces
 

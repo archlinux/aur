@@ -2,7 +2,7 @@
 # Contributor: Samuel Walladge <samuel at swalladge dot id dot au>
 
 pkgname=tagspaces
-pkgver=3.6.1
+pkgver=3.7.7
 pkgrel=1
 pkgdesc='An offline, open source, document manager with tagging support'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('gtk3'
          'libxss')
 makedepends=('yarn' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tagspaces/tagspaces/archive/v${pkgver}.tar.gz")
-sha256sums=('c68b746341dfd414d36ba9384c960a83a2992c07ea04089f028ce7e5be10eb5b')
+sha256sums=('c854388270b1a6591fe4896b4dcff9f492a84d63e4a28aa55350ef0cf67fd7d9')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
