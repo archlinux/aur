@@ -8,7 +8,7 @@ Subject: [PATCH] Enable long PCF family names
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index acb4d6d6a..efa13b9c6 100644
+index acb4d6d6aa..efa13b9c66 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
 @@ -861,7 +861,7 @@ FT_BEGIN_HEADER
