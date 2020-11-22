@@ -1,6 +1,6 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=yoda
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="A particle physics package for data analysis (specifically histogramming) classes."
 arch=('x86_64' 'i686')
@@ -9,22 +9,19 @@ license=('GPL3')
 depends=('python')
 optdepends=('python2: For Python2 module in addition to Python3')
 makedepends=('cython')
-source=(http://www.hepforge.org/archive/yoda/YODA-$pkgver.tar.gz)
-md5sums=('8a86bd9895be9f0e33c0a41222b2ff46')
+source=(http://www.hepforge.org/archive/yoda/YODA-$pkgver.tar.gz yoda-pyroot.patch)
+md5sums=('428c8bf244cb9f0e5179c1fa18ae9706'
+         '1c0789c6e701dde0c1b28a9b30a21120')
 
 package() {
   cd "$srcdir/YODA-$pkgver"
+
+  ## patch for apparent building problems with new ROOT structure?
+  patch -p1 < $srcdir/yoda-pyroot.patch
+
   # ## need to rebuild Python extension code with up-to-date Cython for Python 3.7
   # ## will eventually be fixed upstream (1.9.x)
   touch pyext/yoda/*.pyx
-
-  # If python2 is present, also build a library for it
-  # Have to do this first, such that files like yoda-config get overwritten with the "proper" Python3 version
-  if [ -x /usr/bin/python2 ]; then
-    PYTHON=/usr/bin/python2 ./configure --prefix=/usr
-    make DESTDIR="$pkgdir/" install
-    make clean
-  fi
 
   ./configure --prefix=/usr
   make DESTDIR="$pkgdir/" install
