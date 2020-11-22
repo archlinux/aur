@@ -1,4 +1,4 @@
-pkgbase = lib32-ffmpeg
+pkgbase = lib32-ffmpeg-compat-57
 	pkgdesc = Complete solution to record, convert and stream audio and video (32 bit)
 	pkgver = 3.4.2
 	pkgrel = 2
@@ -63,5 +63,5 @@ pkgbase = lib32-ffmpeg
 	sha256sums = SKIP
 	sha256sums = 7fdfacfe805b7f2c2c38de45c94772e49eca54fbb71918f74cd1226cfff8e9d2
 
-pkgname = lib32-ffmpeg
+pkgname = lib32-ffmpeg-compat-57
 

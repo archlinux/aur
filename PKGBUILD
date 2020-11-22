@@ -1,11 +1,12 @@
-# Maintainer: Alexandre Demers <alexandre.f.demers@gmail.com>
+# Maintainer: Alexander Georgievskiy <galeksandrp@gmail.com>
+# Contributor: Alexandre Demers <alexandre.f.demers@gmail.com>
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 _pkgbasename=ffmpeg
-pkgname=lib32-$_pkgbasename
+pkgname=lib32-$_pkgbasename-compat-57
 pkgver=3.4.2
 pkgrel=2
 epoch=1
