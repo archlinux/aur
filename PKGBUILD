@@ -2,7 +2,7 @@
 
 pkgname=intiface-desktop
 pkgver=19.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source, cross-platform application that acts as a hub for sex hardware access"
 depends=('electron')
 makedepends=('npm' 'yarn' 'git' 'trash-cli' 'typescript')
@@ -37,9 +37,10 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
 
-  install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-  cp -r packages/intiface/dist_electron/linux-unpacked/resources \
-    "${pkgdir}/usr/lib/${pkgname}"
+  install -dm755 "${pkgdir}/usr/lib/${pkgname}/resources"
+  install -m644 \
+    packages/intiface/dist_electron/linux-unpacked/resources/app.asar \
+    "${pkgdir}/usr/lib/${pkgname}/resources/app.asar"
 
   install -dm755 "${pkgdir}/usr/bin"
   install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
