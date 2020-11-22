@@ -1,14 +1,14 @@
 pkgbase = cordless-bin
-	pkgdesc = Discord TUI client
-	pkgver = 2020_10_24
+	pkgdesc = Discord TUI client written in Go
+	pkgver = 2020_11_22
 	pkgrel = 1
 	url = https://github.com/Bios-Marcel/cordless
 	arch = x86_64
 	license = BSD
 	provides = cordless
 	conflicts = cordless
-	noextract = cordless-bin-2020_10_24
-	source = cordless-bin-2020_10_24::https://github.com/Bios-Marcel/cordless/releases/download/2020-10-24/cordless_linux_64
+	noextract = cordless-bin-2020_11_22
+	source = cordless-bin-2020_11_22::https://github.com/Bios-Marcel/cordless/releases/download/2020-11-22/cordless_linux_64
 	sha256sums = SKIP
 
 pkgname = cordless-bin
