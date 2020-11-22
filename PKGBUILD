@@ -1,15 +1,15 @@
 # Maintainer: dalz <aur @t alsd d0t eu>
 pkgname=gemget
-pkgver=1.6.0
-_commit=6262222a6c35d98e1e15fe43cd3a0b136b078949
-pkgrel=2
+pkgver=1.7.0
+_commit=3bcb9e511eac67b9c69fc0196eedbbc3d2b21bc4
+pkgrel=1
 pkgdesc='Command line downloader for the Gemini protocol'
 arch=('x86_64')
 url='https://github.com/makeworld-the-better-one/gemget'
 license=('MIT')
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/makeworld-the-better-one/gemget/archive/v$pkgver.tar.gz")
-sha256sums=('2a435af153272c53e82508a1e294142c15259224e94294d15f09c8a0c6f10f7b')
+sha256sums=('271e89cf4bf76a78c6efffce4b307c24edae4a04147a3ec3aed2bf0289cc4e12')
 
 prepare() {
     cd "$pkgname-$pkgver"
