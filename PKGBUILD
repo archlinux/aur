@@ -38,6 +38,4 @@ build() {
 package() {
   cd build
   make DESTDIR="$pkgdir/" install
-#  install -Dm755 "$srcdir/build/app/olive-editor" \
-#                 "$pkgdir/usr/bin/olive-editor"
 }
