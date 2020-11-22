@@ -3,4 +3,4 @@
 !.gitignore
 !Makefile
 !PKGBUILD
-!generate_pkgbuild.sh
+!generate-pkgbuild.sh
