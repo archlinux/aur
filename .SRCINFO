@@ -1,6 +1,6 @@
 pkgbase = poly.lv2-git
 	pkgdesc = A collection of LV2 plugins designed for modular / eurorack style use.
-	pkgver = r1.177f6bf
+	pkgver = r2.3fd1dd4
 	pkgrel = 1
 	url = https://github.com/polyeffects/PolyLV2
 	arch = x86_64
