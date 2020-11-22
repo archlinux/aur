@@ -12,7 +12,7 @@ pkgdesc="An URL retrieval utility and library"
 arch=('x86_64')
 url="https://curl.haxx.se"
 license=('MIT')
-depends=('ca-certificates' 'krb5' 'libssh2' 'libssh2.so' 'openssl' 'zlib'
+depends=('ca-certificates' 'krb5' 'openssl' 'zlib'
          'libpsl' 'libpsl.so' 'libnghttp2' 'libidn2' 'libidn2.so' 'zstd')
 provides=('libcurl.so' curl)
 conflicts=(curl)
