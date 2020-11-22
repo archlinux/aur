@@ -1,7 +1,7 @@
 pkgname=mysql-connector-odbc
 replaces=('mariadb-connector-odbc-bin' 'mariadb-connector-odbc')
 pkgver=8.0.21
-pkgrel=0
+pkgrel=1
 pkgdesc="ODBC connector for MySQL instead of that mariadb nonsense"
 arch=('x86_64' 'armv7h')
 url="."
@@ -33,4 +33,5 @@ package() {
     mkdir -p ${pkgdir}/usr/lib ${pkgdir}/usr/bin
     install -m755 -o root -g root lib/*.so ${pkgdir}/usr/lib/
     install -m755 -o root -g root bin/* ${pkgdir}/usr/bin/
+    rm -f ${pkgdir}/usr/bin/dltest
 }

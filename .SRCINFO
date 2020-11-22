@@ -1,7 +1,7 @@
 pkgbase = mysql-connector-odbc
 	pkgdesc = ODBC connector for MySQL instead of that mariadb nonsense
 	pkgver = 8.0.21
-	pkgrel = 0
+	pkgrel = 1
 	url = .
 	arch = x86_64
 	arch = armv7h
