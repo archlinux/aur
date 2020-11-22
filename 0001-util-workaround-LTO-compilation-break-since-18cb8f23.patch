@@ -1,0 +1,27 @@
+From ddb159f7b8ead04b8ebfda0796bea8e9c6aee788 Mon Sep 17 00:00:00 2001
+From: Thomas Crider <gloriouseggroll@gmail.com>
+Date: Thu, 16 Jul 2020 21:43:19 -0600
+Subject: [PATCH] util: workaround LTO compilation break since 18cb8f23
+To: wine-devel <wine-devel@winehq.org>
+
+Signed-off-by: Thomas Crider <gloriouseggroll@gmail.com>
+---
+ src/util/format/u_format.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/util/format/u_format.h b/src/util/format/u_format.h
+index 4b182ff558d..1d7e50d5bc9 100644
+--- a/src/util/format/u_format.h
++++ b/src/util/format/u_format.h
+@@ -406,7 +406,7 @@ struct util_format_description
+ 
+ 
+ const struct util_format_description *
+-util_format_description(enum pipe_format format) ATTRIBUTE_CONST;
++util_format_description(enum pipe_format format);
+ 
+ 
+ /*
+-- 
+2.26.2
+
