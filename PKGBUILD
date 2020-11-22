@@ -57,9 +57,6 @@ package(){
   make DESTDIR="$pkgdir" install
   make DESTDIR="$pkgdir" install-headers
 
-  # Note you must build the package before you can update meta data!
-  backup=($(cd "$pkgdir" && echo "etc/$_pkgname/"*))
-
   sed -i -e 's,/var/run,/run,' "$pkgdir/etc/asterisk/asterisk.conf"
 
   mv "$pkgdir/var/run" "$pkgdir"

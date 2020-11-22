@@ -42,5 +42,4 @@ pkgbase = asterisk-odbc-mysql
 	sha256sums = 673c0c55bce8068c297f9cdd389402c2d5d5a25e2cf84732cb071198bd6fa78a
 
 pkgname = asterisk-odbc-mysql
-	backup = 
 
