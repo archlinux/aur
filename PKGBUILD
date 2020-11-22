@@ -9,6 +9,8 @@ pkgdesc='An URL retrieval library (linked against gnutls)'
 arch=('x86_64')
 url='https://curl.haxx.se'
 license=('MIT')
+provides=(libcurl-gnutls)
+conflicts=(libcurl-gnutls)
 depends=('curl' 'glibc' 'gnutls' 'libidn2' 'libidn2.so' 'libnghttp2'
          'libpsl' 'libpsl.so' 'nettle' 'libnettle.so'
          'zlib' 'zstd')
