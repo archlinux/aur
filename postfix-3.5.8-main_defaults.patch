@@ -1,0 +1,19 @@
+diff -ruN a/conf/main.cf b/conf/main.cf
+--- a/conf/main.cf	2019-06-16 02:33:53.000000000 +0200
++++ b/conf/main.cf	2020-11-09 18:22:06.436205639 +0100
+@@ -401,6 +401,7 @@
+ #alias_maps = hash:/etc/aliases
+ #alias_maps = hash:/etc/aliases, nis:mail.aliases
+ #alias_maps = netinfo:/aliases
++alias_maps = hash:/etc/postfix/aliases
+ 
+ # The alias_database parameter specifies the alias database(s) that
+ # are built with "newaliases" or "sendmail -bi".  This is a separate
+@@ -411,6 +412,7 @@
+ #alias_database = dbm:/etc/mail/aliases
+ #alias_database = hash:/etc/aliases
+ #alias_database = hash:/etc/aliases, hash:/opt/majordomo/aliases
++alias_database = $alias_maps
+ 
+ # ADDRESS EXTENSIONS (e.g., user+foo)
+ #
