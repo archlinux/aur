@@ -11,8 +11,31 @@ pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
 url=https://github.com/CadQuery/OCP
 license=('Apache')
-depends=(python opencascade)
-makedepends=(gcc8 gcc8-libs clang python-joblib python-click python-pandas python-path pybind11 python-setuptools ninja cmake python-logzero python-tqdm python-toposort python-cymbal python-schema rapidjson)
+depends=(
+python
+opencascade
+)
+makedepends=(
+gcc8
+gcc8-libs
+clang
+python-joblib
+python-click
+python-pandas
+python-path
+pybind11
+python-setuptools
+ninja
+cmake
+python-logzero
+python-tqdm
+python-toposort
+python-cymbal
+python-schema
+rapidjson
+python-jinja
+python-toml
+)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CadQuery/OCP/archive/${_pkgver}.tar.gz"
         "pywrap-${pkgver}.tar.gz::https://github.com/CadQuery/pywrap/archive/${_pywrap_hash}.tar.gz")
 sha256sums=('38941daeecd374c2a070516811b66e42b5a67f4f856f3bddb4e4e1156b67ee06'
