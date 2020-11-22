@@ -1,0 +1,16 @@
+pkgbase = beanstalk-client-git
+	pkgdesc = C/C++ beanstalkd client that is blocking by default.
+	pkgver = r119.d012ba8
+	pkgrel = 1
+	url = https://github.com/deepfryed/beanstalk-client
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = git
+	provides = beanstalk-client
+	conflicts = beanstalk-client
+	source = beanstalk-client-git::git+https://github.com/deepfryed/beanstalk-client.git
+	sha256sums = SKIP
+
+pkgname = beanstalk-client-git
+
