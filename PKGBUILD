@@ -65,7 +65,7 @@ _localmodcfg=
 
 pkgbase=linux-ck
 pkgver=5.9.10
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -83,6 +83,7 @@ source=(
   "http://ck.kolivas.org/patches/5.0/5.9/5.9-ck${_ckpatchversion}/$_ckpatch.xz"
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -94,7 +95,8 @@ b2sums=('423d0e2fea39d54c9bbda532dce95f67c2736646b88515e72a3cea97842a25f4b2b4ef0
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
         'c19099ad66168db4608dee44e1913c07c035bc002a91267abc2e1eadf1788ddb5be3b17e3fdfeddcba96526dfa2b9fcc43a5dd0f8236d94c864e6477924a6718'
         'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95'
-        '942add319120f9b20df7a4b9b6c5fed2c028db71686647b98b787d8459e6528bbfa51275900856f633875a8ce1bd6669405454f7d5e7385af28271c99b1dccaa')
+        '1647fc2b71cf7e01806369b436f000eace66f1004e399321b45046196149e2768539ca72ffa7660ec801dd1c6532a10a2dd40a2329fd65aea1e404530b75d539'
+        '2e68bde14361ab367a3ad682a8f4f7d6b0df2516073f7645d2d1183b6063f440a79644037f9a577bad2182fcfd03e16846becc297dd9b0e3ca0b43afd00bf5e1')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

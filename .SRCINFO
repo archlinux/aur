@@ -1,6 +1,6 @@
 pkgbase = linux-ck
 	pkgver = 5.9.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
@@ -15,6 +15,7 @@ pkgbase = linux-ck
 	source = http://ck.kolivas.org/patches/5.0/5.9/5.9-ck1/patch-5.9-ck1.xz
 	source = 0000-sphinx-workaround.patch
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+	source = 0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	b2sums = 423d0e2fea39d54c9bbda532dce95f67c2736646b88515e72a3cea97842a25f4b2b4ef0aa2896d623bbc89eb6e8ca14f5b447030f190677601048816ae4a76e1
@@ -23,7 +24,8 @@ pkgbase = linux-ck
 	b2sums = 7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127
 	b2sums = c19099ad66168db4608dee44e1913c07c035bc002a91267abc2e1eadf1788ddb5be3b17e3fdfeddcba96526dfa2b9fcc43a5dd0f8236d94c864e6477924a6718
 	b2sums = b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95
-	b2sums = 942add319120f9b20df7a4b9b6c5fed2c028db71686647b98b787d8459e6528bbfa51275900856f633875a8ce1bd6669405454f7d5e7385af28271c99b1dccaa
+	b2sums = 1647fc2b71cf7e01806369b436f000eace66f1004e399321b45046196149e2768539ca72ffa7660ec801dd1c6532a10a2dd40a2329fd65aea1e404530b75d539
+	b2sums = 2e68bde14361ab367a3ad682a8f4f7d6b0df2516073f7645d2d1183b6063f440a79644037f9a577bad2182fcfd03e16846becc297dd9b0e3ca0b43afd00bf5e1
 
 pkgname = linux-ck
 	pkgdesc = The Linux-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler
