@@ -1,6 +1,6 @@
 # Maintainer: Famiu Haque <famiuhaque@gmail.com>
 pkgname=goneovim-bin
-pkgver=0.4.6
+pkgver=0.4.8.1
 pkgrel=1
 pkgdesc='Neovim GUI written in Golang, using a Golang qt backend'
 arch=('x86_64')
@@ -16,7 +16,7 @@ package()
 {
 	install -Dm644 "${srcdir}/goneovim.ico" "${pkgdir}/usr/share/pixmaps/goneovim.ico"
 	install -Dm644 "${srcdir}/goneovim.desktop" "${pkgdir}/usr/share/applications/goneovim.desktop"
-	
+
 	mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/bin"
 	cp -r "${srcdir}/Goneovim-${pkgver}-linux" "${pkgdir}/opt/goneovim"
 	ln -snf "/opt/goneovim/goneovim" "${pkgdir}/usr/bin/goneovim"

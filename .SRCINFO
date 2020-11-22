@@ -1,6 +1,6 @@
 pkgbase = goneovim-bin
 	pkgdesc = Neovim GUI written in Golang, using a Golang qt backend
-	pkgver = 0.4.6
+	pkgver = 0.4.8.1
 	pkgrel = 1
 	url = https://github.com/akiyosi/goneovim
 	arch = x86_64
