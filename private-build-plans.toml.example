@@ -8,10 +8,12 @@ family = "Iosevka Custom"
 [buildPlans.iosevka-custom.variants.design]
 # https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-character-variants
 # https://github.com/be5invis/Iosevka/raw/dev-v4/images/charvars.png
+digit-form = "lining"
 turn-v = "curly"
 capital-b = "more-asymmetric"
 capital-d = "more-rounded"
 capital-g = "toothless"
+capital-i = "serifless"
 capital-j = "serifless"
 capital-k = "curly"
 capital-m = "hanging"
@@ -21,13 +23,13 @@ capital-y = "curly"
 a = "doublestorey-tailed"
 b = "toothless-corner"
 d = "tailed"
-f = "tailed"
+f = "flat-hook-tailed"
 g = "opendoublestorey"
 h = "straight"
 i = "hooky"
-j = "straight"
+j = "serifless"
 k = "curly"
-l = "tailed"
+l = "flat-tailed"
 m = "shortleg"
 n = "earless-corner-tailed"
 p = "eared"
@@ -89,10 +91,12 @@ spacing = "term"
 [buildPlans.iosevka-term-custom.variants.design]
 # https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-character-variants
 # https://github.com/be5invis/Iosevka/raw/dev-v4/images/charvars.png
+digit-form = "lining"
 turn-v = "curly"
 capital-b = "more-asymmetric"
 capital-d = "more-rounded"
 capital-g = "toothless"
+capital-i = "serifless"
 capital-j = "serifless"
 capital-k = "curly"
 capital-m = "hanging"
@@ -102,13 +106,13 @@ capital-y = "curly"
 a = "doublestorey-tailed"
 b = "toothless-corner"
 d = "tailed"
-f = "tailed"
+f = "flat-hook-tailed"
 g = "opendoublestorey"
 h = "straight"
 i = "hooky"
-j = "straight"
+j = "serifless"
 k = "curly"
-l = "tailed"
+l = "flat-tailed"
 m = "shortleg"
 n = "earless-corner-tailed"
 p = "eared"
@@ -159,21 +163,23 @@ ascii-grave = "straight"
 # disables = []
 # enables = []
 
-[buildPlans.iosevka-force-monospace-custom]
-family = "Iosevka Force Monospace Custom"
-spacing = "force-monospace"
+[buildPlans.iosevka-fontconfig-mono-custom]
+family = "Iosevka Fontconfig Mono Custom"
+spacing = "fontconfig-mono"
 
-# [buildPlans.iosevka-force-monospace-custom.variants]
+# [buildPlans.iosevka-fontconfig-mono-custom.variants]
 # https://github.com/be5invis/Iosevka/tree/dev-v4#stylistic-sets
 # inherits = "ss14"
 
-[buildPlans.iosevka-force-monospace-custom.variants.design]
+[buildPlans.iosevka-fontconfig-mono-custom.variants.design]
 # https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-character-variants
 # https://github.com/be5invis/Iosevka/raw/dev-v4/images/charvars.png
+digit-form = "lining"
 turn-v = "curly"
 capital-b = "more-asymmetric"
 capital-d = "more-rounded"
 capital-g = "toothless"
+capital-i = "serifless"
 capital-j = "serifless"
 capital-k = "curly"
 capital-m = "hanging"
@@ -183,13 +189,13 @@ capital-y = "curly"
 a = "doublestorey-tailed"
 b = "toothless-corner"
 d = "tailed"
-f = "tailed"
+f = "flat-hook-tailed"
 g = "opendoublestorey"
 h = "straight"
 i = "hooky"
-j = "straight"
+j = "serifless"
 k = "curly"
-l = "tailed"
+l = "flat-tailed"
 m = "shortleg"
 n = "earless-corner-tailed"
 p = "eared"
@@ -229,11 +235,11 @@ ascii-single-quote = "raised-comma"
 ascii-grave = "straight"
 
 # Override above variants for each slope:
-# [buildPlans.iosevka-force-monospace-custom.variants.upright]
-# [buildPlans.iosevka-force-monospace-custom.variants.italic]
-# [buildPlans.iosevka-force-monospace-custom.variants.oblique]
+# [buildPlans.iosevka-fontconfig-mono-custom.variants.upright]
+# [buildPlans.iosevka-fontconfig-mono-custom.variants.italic]
+# [buildPlans.iosevka-fontconfig-mono-custom.variants.oblique]
 
-# [buildPlans.iosevka-force-monospace-custom.ligations]
+# [buildPlans.iosevka-fontconfig-mono-custom.ligations]
 # https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-ligations
 # https://github.com/be5invis/Iosevka/tree/dev-v4#ligations
 # inherits = "calt"
@@ -251,10 +257,12 @@ spacing = "fixed"
 [buildPlans.iosevka-fixed-custom.variants.design]
 # https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-character-variants
 # https://github.com/be5invis/Iosevka/raw/dev-v4/images/charvars.png
+digit-form = "lining"
 turn-v = "curly"
 capital-b = "more-asymmetric"
 capital-d = "more-rounded"
 capital-g = "toothless"
+capital-i = "serifless"
 capital-j = "serifless"
 capital-k = "curly"
 capital-m = "hanging"
@@ -264,13 +272,13 @@ capital-y = "curly"
 a = "doublestorey-tailed"
 b = "toothless-corner"
 d = "tailed"
-f = "tailed"
+f = "flat-hook-tailed"
 g = "opendoublestorey"
 h = "straight"
 i = "hooky"
-j = "straight"
+j = "serifless"
 k = "curly"
-l = "tailed"
+l = "flat-tailed"
 m = "shortleg"
 n = "earless-corner-tailed"
 p = "eared"

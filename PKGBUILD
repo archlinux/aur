@@ -2,8 +2,8 @@
 # Contributor: Markus Weimar <mail@markusweimar.de>
 _pkgname=ttf-iosevka-fixed-custom
 pkgname=${_pkgname}-git
-pkgver=r2089.115f5b19
-pkgrel=2
+pkgver=r2134.9eff02f3
+pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '98d70ae136a1307a80aa52ec06abf7cd44dce17b0427ecf3c9b0767ffd91c28d'
+  'e4c6f7a0d8d171906e9c42857932b7ef8af903d96681afc404f658acf84c6ed4'
 )
 
 pkgver() {
