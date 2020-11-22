@@ -1,7 +1,7 @@
 # Maintainer: AsamK <asamk ät gmx de>
 
 pkgname=signal-cli
-pkgver=0.6.11
+pkgver=0.6.12
 pkgrel=1
 pkgdesc="Provides a commandline and dbus interface for secure Signal messaging."
 arch=('any')
@@ -9,14 +9,12 @@ url="https://github.com/AsamK/signal-cli"
 license=('GPL3')
 depends=('java-runtime>=11' 'java-commons-logging' 'sh')
 makedepends=('java-environment>=11' 'gradle' 'asciidoc')
-replaces=('textsecure-cli')
-conflicts=('textsecure-cli')
 source=("https://github.com/AsamK/${pkgname}/archive/v${pkgver}.tar.gz"
         "https://github.com/AsamK/${pkgname}/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc"
         "${pkgname}.sh"
         "${pkgname}.sysusers.conf"
         "${pkgname}.tmpfiles.conf")
-sha512sums=('c162589f2da5317386d346fe735caa769cbbe9e7e3210887ae159604e77593d93d08c9300dabe645a6707df378e396d43abc66ce128b85df1fd7634acb1ffbe2'
+sha512sums=('ec00081a0135d1747b6705573155c3dbd5b1c1f0889ef44a6893323828c16ca2b832f91e5ffe2ca674090b59a72f37fb977d8e2b2ff8780678386c254246bb68'
             'SKIP'
             'f8d75536e1db3de0ca89c3edd5fe6e04d40f6edcbd899e3f80b4d175502a4e98ba49bcef443653bb17ab50bb6396cc2bb9b6838890337b887d25671fe096ba21'
             'b4db42e18c957edb274637eee1ea5feb5d5f94e16ff0ced63788c8285e0c31c17e5414c6b93b1c2a6ffacca4888b177d33d1878727780e9a0e937b323e332021'
@@ -58,7 +56,6 @@ package() {
 
 	cd "build/install/${pkgname}"
 
-	rm -f lib/unix-*.jar
 	rm -f lib/commons-logging-*.jar
 	install -m644 lib/*.jar "${pkgdir}/usr/share/java/${pkgname}/"
 }
