@@ -1,19 +1,19 @@
 pkgbase = lib32-libheif
 	pkgdesc = HEIF file format decoder and encoder (32-bit)
-	pkgver = 1.7.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/strukturag/libheif
 	arch = x86_64
 	license = GPL3
 	makedepends = lib32-libjpeg
 	makedepends = lib32-libpng
-	makedepends = x265
 	depends = lib32-gdk-pixbuf2
+	depends = lib32-aom
 	depends = lib32-libde265
 	depends = lib32-x265
 	depends = libheif
-	source = https://github.com/strukturag/libheif/releases/download/v1.7.0/libheif-1.7.0.tar.gz
-	sha256sums = 842a9ab4b8d6f0faf5a6dc5e8507321199ec44c0b1d8eb199f2de9b49e2db092
+	source = https://github.com/strukturag/libheif/releases/download/v1.9.1/libheif-1.9.1.tar.gz
+	sha256sums = 5f65ca2bd2510eed4e13bdca123131c64067e9dd809213d7aef4dc5e37948bca
 
 pkgname = lib32-libheif
 
