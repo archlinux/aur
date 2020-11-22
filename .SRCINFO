@@ -1,6 +1,6 @@
 pkgbase = nomad-bin
 	pkgdesc = A distributed, highly available, datacenter-aware scheduler
-	pkgver = 0.12.5
+	pkgver = 0.12.9
 	pkgrel = 1
 	url = https://nomadproject.io
 	arch = x86_64
@@ -25,14 +25,14 @@ pkgbase = nomad-bin
 	sha256sums = c3650a0f88cb6c511731e26f25dddfe531de3cb833fa1780ec68273faef97c97
 	sha256sums = 1ddf845cfbb2beff7162bd7299705338cf1611fc9f7dfe6a093e4c9cce43e0d2
 	sha256sums = 428c929e205e6ed4da1668534f413fb7e9484ab88c26f8f866d49f8f6ae207e8
-	source_x86_64 = nomad-bin-0.12.5.zip::https://releases.hashicorp.com/nomad/0.12.5/nomad_0.12.5_linux_amd64.zip
-	sha256sums_x86_64 = dece264c86a5898a18d62d6ecca469fee71329e444b284416c57bd1e3d76f253
-	source_i686 = nomad-bin-0.12.5.zip::https://releases.hashicorp.com/nomad/0.12.5/nomad_0.12.5_linux_386.zip
-	sha256sums_i686 = 38a1565b3abb25dd633f9b99d24ac75ab1bdecf68d140ed8266ab9932ce713d2
-	source_armv7h = nomad-bin-0.12.5.zip::https://releases.hashicorp.com/nomad/0.12.5/nomad_0.12.5_linux_arm.zip
-	sha256sums_armv7h = bb133b8dd0442fe59a884a0db19373d0680f27af00d5b1ae73d4487a586327db
-	source_aarch64 = nomad-bin-0.12.5.zip::https://releases.hashicorp.com/nomad/0.12.5/nomad_0.12.5_linux_arm64.zip
-	sha256sums_aarch64 = d6ed34e3152dd7c38f6208e6231b38f1cbf8d19eb0486ffe83f277a94ac014f3
+	source_x86_64 = nomad-bin-0.12.9.zip::https://releases.hashicorp.com/nomad/0.12.9/nomad_0.12.9_linux_amd64.zip
+	sha256sums_x86_64 = 4d14053b1fc3cfcfca81e8914f9f5b559025fbc07ee94c5a87bdc114826d7145
+	source_i686 = nomad-bin-0.12.9.zip::https://releases.hashicorp.com/nomad/0.12.9/nomad_0.12.9_linux_386.zip
+	sha256sums_i686 = 0a87381138194fba78f639968a882d5683cbcb5800e6c884dd908e1bce135784
+	source_armv7h = nomad-bin-0.12.9.zip::https://releases.hashicorp.com/nomad/0.12.9/nomad_0.12.9_linux_arm.zip
+	sha256sums_armv7h = 2c6accc829d2eaf4ed3ad227f915cc1f10bf691445aed406a0782a6eee2708d9
+	source_aarch64 = nomad-bin-0.12.9.zip::https://releases.hashicorp.com/nomad/0.12.9/nomad_0.12.9_linux_arm64.zip
+	sha256sums_aarch64 = 13311848b9db9931662173c9ddb03623403b99c1bb991a2032927eecb7d8b15d
 
 pkgname = nomad-bin
 
