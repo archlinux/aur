@@ -1,0 +1,17 @@
+pkgbase = pystring
+	pkgdesc = C++ functions matching the interface and behavior of python string methods with std::string
+	pkgver = 1.1.3+7+g281419d
+	pkgrel = 1
+	url = https://github.com/imageworks/pystring
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = BSD
+	depends = gcc-libs
+	source = https://github.com/imageworks/pystring/archive/281419de2f91f9e0f2df6acddfea3b06a43436be.tar.gz
+	source = makefile.patch
+	sha512sums = SKIP
+	sha512sums = dc5f94cc062023d138ab9cab92081323c576b9e03d853b615981f2bc89dd5de96bd9a19c420bbd23eac5248b7949b337fe858622aae0751fbc0b16f59db77fdd
+
+pkgname = pystring
+
