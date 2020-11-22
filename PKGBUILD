@@ -81,8 +81,8 @@ package() {
 		StartupNotify=true
 		StartupWMClass=jetbrains-pycharm-ce
 	EOF
-	ln -s "/opt/$pkgname/bin/pycharm.sh" "$pkgdir/usr/bin/pycharm-ce"
-	ln -s "/opt/$pkgname/bin/pycharm.png" "$pkgdir/usr/share/pixmaps/"
+	ln -sv "/opt/$pkgname/bin/pycharm.sh" "$pkgdir/usr/bin/pycharm-ce"
+	ln -sv "/opt/$pkgname/bin/pycharm.png" "$pkgdir/usr/share/pixmaps/"
 }
 
 
