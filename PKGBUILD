@@ -1,7 +1,7 @@
 # Maintainer: r4v3n6101 <raven6107@gmail.com>
 
 pkgname=hlbsp
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=2
 pkgdesc="Half-Life's .BSP maps viewer."
 arch=('any')
