@@ -1,14 +1,14 @@
 # Maintainer: Buce <dmbuce@gmail.com>
 
 pkgname=mcexplore
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="Use a minecraft server to generate a square of land."
 arch=(any)
 url="https://github.com/DMBuce/mcexplore"
 license=('CCPL:by-sa')
 groups=()
-depends=(python2 python2-nbt)
+depends=(python python-nbt)
 makedepends=('git' 'asciidoc')
 source=("$pkgname::git://github.com/DMBuce/${pkgname}.git#tag=$pkgver")
 #source=("$pkgname::git+ssh://git@mantrid/~/${pkgname}.git#tag=$pkgver")
@@ -17,8 +17,6 @@ md5sums=('SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname"
-
-  sed -i '1s/python/python2/' mcexplore.py
 }
 
 package() {
