@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=GeForce NOW
+Comment=GeForce NOW for desktop built with nativefier (electron)
+Exec=geforcenow-nativefier
+Icon=geforcenow-nativefier
+Encoding=UTF-8
+StartupWMClass=geforcenow-nativefier
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Game;Application;

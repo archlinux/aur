@@ -1,0 +1,22 @@
+pkgbase = geforcenow-nativefier
+	pkgdesc = GeForce NOW desktop app built with nativefier (electron)
+	pkgver = 20201122
+	pkgrel = 1
+	url = https://play.geforcenow.com/mall/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = geforcenow-nativefier.png
+	source = geforcenow-nativefier.desktop
+	md5sums = 52b3c84a5b609b61acab623cc52007b4
+	md5sums = f3715ff82faf28c158fc7f3bf8348217
+
+pkgname = geforcenow-nativefier
+
