@@ -2,7 +2,7 @@
 
 pkgbase=linux-vanilla-selinux-49
 pkgname=linux-vanilla-selinux-49
-pkgver=4.9.244
+pkgver=4.9.245
 pkgrel=1
 pkgdesc="Vanilla-Linux-Kernel (4.9) from kernel.org with Selinux enabled. Without docs. Will be fixed in the next builds (Problem with Sphinx)."
 arch=('x86_64')
@@ -26,8 +26,8 @@ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torva
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
               )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
-sha256sums=('997af5a1558dd72ce49b87bf710359ad1fca5af777616a8baa98000f6edff109'
-            '8ae3a19122573f13226c2e436d2d6cf370740870ec10b4bbf81112295df78928'
+sha256sums=('cbda6be621cac3ec89db987d8c8e81c8a00b22553849eb6a9e7e6d93de68baef'
+            '87c002313c8cc788d408ed8d2360863a3d900bcf5f553da1ac9ca4e63ee80040'
 	    '05b70d01904c80a1f15721e9df721307f3067309a1ee9645b669640b473f552d'
             'f9b13f3c00be95205ccb77ead42881ecbf0f7ba0d0ad12af294e054272859d81'
             '5c7af03d9b4cade110543ba706bcbd49fc6447726258b4bfec0edff7ca9994d1'
