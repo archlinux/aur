@@ -1,7 +1,7 @@
 pkgbase = webkitgtk2
 	pkgdesc = Legacy Web content engine for GTK+ 2
 	pkgver = 2.4.11
-	pkgrel = 19
+	pkgrel = 20
 	epoch = 3
 	url = https://webkitgtk.org/
 	install = webkitgtk.install
@@ -38,11 +38,13 @@ pkgbase = webkitgtk2
 	source = enchant-2.x.patch
 	source = icu59.patch
 	source = pkgconfig-enchant-2.patch
+	source = grammar.patch
 	sha256sums = 588aea051bfbacced27fdfe0335a957dca839ebe36aa548df39c7bbafdb65bf7
 	sha256sums = e40f1e08665e1646ebc490141678f26c9c4a2792207fdf7c05978547eae9f61c
 	sha256sums = 7e37e059f071aaef93e387675de1a0c6a3dcf61ef67a3221a078caca69e22079
 	sha256sums = 4e94e35b036f8a87a64e02d747d4103c0553dfe637fda372785c2b95211445ca
 	sha256sums = a1e2f24b28273746b2fbaecef42495f6314c76b16a446c22dc123e6a3afb58c8
+	sha256sums = 24b49319500a79feb014ce2decd41db8ba7769c471bc8bfb42f761e2bc4d1ffb
 
 pkgname = webkitgtk2
 

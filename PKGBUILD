@@ -5,7 +5,7 @@
 
 pkgname=webkitgtk2
 pkgver=2.4.11
-pkgrel=19
+pkgrel=20
 epoch=3
 pkgdesc="Legacy Web content engine for GTK+ 2"
 arch=("armv7h" "i686" "x86_64")
@@ -29,6 +29,7 @@ source=(
   "enchant-2.x.patch"
   "icu59.patch"
   "pkgconfig-enchant-2.patch"
+  "grammar.patch"
 )
 sha256sums=(
   "588aea051bfbacced27fdfe0335a957dca839ebe36aa548df39c7bbafdb65bf7"
@@ -36,6 +37,7 @@ sha256sums=(
   "7e37e059f071aaef93e387675de1a0c6a3dcf61ef67a3221a078caca69e22079"
   "4e94e35b036f8a87a64e02d747d4103c0553dfe637fda372785c2b95211445ca"
   "a1e2f24b28273746b2fbaecef42495f6314c76b16a446c22dc123e6a3afb58c8"
+  "24b49319500a79feb014ce2decd41db8ba7769c471bc8bfb42f761e2bc4d1ffb"
 )
 
 prepare() {
@@ -51,6 +53,9 @@ prepare() {
 
   # Needed as autotools-related files are patched
   autoreconf -ifv
+
+  # https://www.linuxquestions.org/questions/slackware-14/sbo-scripts-not-building-on-current-read-1st-post-pls-4175561999/page195.html#post6160562
+  patch -Np1 -i "${srcdir}/grammar.patch"
 }
 
 build() (
