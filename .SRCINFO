@@ -22,6 +22,7 @@ pkgbase = postfix-mysql
 	provides = smtp-server
 	provides = smtp-forwarder
 	provides = postfix-tools
+	provides = postfix
 	conflicts = smtp-server
 	conflicts = smtp-forwarder
 	conflicts = postfix-tools
