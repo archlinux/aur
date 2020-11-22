@@ -43,6 +43,7 @@ _create_links() {
 package_libcutensor() {
   depends=('gcc-libs'
            'cuda'
+           'libcutensor-common'
            )
   cd libcutensor
   install -Dm644 "lib/11.0/libcutensor_static.a" "${pkgdir}/opt/cuda/lib64/libcutensor_static.a"
@@ -58,6 +59,7 @@ package_libcutensor-cuda10.1() {
   pkgdesc="GPU-accelerated tensor linear algebra library (CUDA 10.1)"
   depends=('gcc-libs'
            'cuda-10.1'
+           'libcutensor-common'
            )
 
   cd libcutensor
@@ -74,6 +76,7 @@ package_libcutensor-cuda10.2() {
   pkgdesc="GPU-accelerated tensor linear algebra library (CUDA 10.2)"
   depends=('gcc-libs'
            'cuda-10.2'
+           'libcutensor-common'
            )
 
   cd libcutensor
@@ -90,6 +93,7 @@ package_libcutensor-cuda11.0() {
   pkgdesc="GPU-accelerated tensor linear algebra library (CUDA 11.0)"
   depends=('gcc-libs'
            'cuda-11.0'
+           'libcutensor-common'
            )
 
   cd libcutensor

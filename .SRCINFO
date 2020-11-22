@@ -11,6 +11,7 @@ pkgbase = libcutensor
 pkgname = libcutensor
 	depends = gcc-libs
 	depends = cuda
+	depends = libcutensor-common
 
 pkgname = libcutensor-common
 	pkgdesc = GPU-accelerated tensor linear algebra library (Common bits)
@@ -20,14 +21,17 @@ pkgname = libcutensor-cuda10.1
 	pkgdesc = GPU-accelerated tensor linear algebra library (CUDA 10.1)
 	depends = gcc-libs
 	depends = cuda-10.1
+	depends = libcutensor-common
 
 pkgname = libcutensor-cuda10.2
 	pkgdesc = GPU-accelerated tensor linear algebra library (CUDA 10.2)
 	depends = gcc-libs
 	depends = cuda-10.2
+	depends = libcutensor-common
 
 pkgname = libcutensor-cuda11.0
 	pkgdesc = GPU-accelerated tensor linear algebra library (CUDA 11.0)
 	depends = gcc-libs
 	depends = cuda-11.0
+	depends = libcutensor-common
 
