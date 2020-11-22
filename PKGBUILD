@@ -2,7 +2,7 @@
 
 pkgname="jquake"
 pkgver="1.6.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="JQuake provides real-time earthquake sensor map of Japan"
 arch=('x86_64')
 url="https://jquake.net/?home"
@@ -28,14 +28,14 @@ package() {
         "JQuake.jar"
     )
 
-    mkdir -p "${pkgdir}/usr/lib/jquake" "${pkgdir}/usr/bin" "${pkgdir}/usr/share/licenses/qjuake" "${pkgdir}/usr/share/pixmaps" "${pkgdir}/usr/share/applications"
+    mkdir -p "${pkgdir}/usr/lib/jquake" "${pkgdir}/usr/bin" "${pkgdir}/usr/share/licenses/jquake" "${pkgdir}/usr/share/pixmaps" "${pkgdir}/usr/share/applications"
 
     # Library
     cp -r ${lib[@]} "${pkgdir}/usr/lib/jquake/"
 
     # Documents
-    cp -r "${srcdir}/LICENSE"* "${pkgdir}/usr/share/licenses/qjuake"
-    cp -r "${srcdir}/readme.txt" "${pkgdir}/usr/share/licenses/qjuake"
+    cp -r "${srcdir}/LICENSE"* "${pkgdir}/usr/share/licenses/jquake"
+    cp -r "${srcdir}/readme.txt" "${pkgdir}/usr/share/licenses/jquake"
 
     # Icon
     cp "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/jquake.png"
