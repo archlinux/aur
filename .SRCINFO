@@ -1,0 +1,23 @@
+pkgbase = brother-dcpj972n
+	pkgdesc = Driver for the Brother DCP-J972N wifi multifuncional printer
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://support.brother.com/g/s/id/linux/en/index.html
+	install = brother-dcpj972n.install
+	arch = x86_64
+	license = custom:brother
+	depends = a2ps
+	depends = cups
+	depends = lib32-glibc
+	depends = lib32-gcc-libs
+	source = https://download.brother.com/welcome/dlf103649/dcpj972npdrv-1.0.5-0.i386.rpm
+	source = fix_lp.patch
+	source = LICENSE_ENG.txt
+	source = LICENSE_JPN.txt
+	md5sums = 670e1505eec025a17a9e4426a27edaae
+	md5sums = 57d1f1131984e93214e9df3ae877c80b
+	md5sums = 1aa8c90610f85487d8073a415deaeac3
+	md5sums = 0a60d679656698a305b6ccf17237d6ba
+
+pkgname = brother-dcpj972n
+
