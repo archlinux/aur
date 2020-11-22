@@ -10,6 +10,7 @@ url="https://github.com/r4v3n6101/hlbsp"
 license=('GPL')
 makedepends=('rust' 'cargo' 'git')
 provides=("${_pkgbase}")
+conflicts=("${_pkgbase}")
 source=("${pkgname}::git+https://github.com/r4v3n6101/hlbsp")
 md5sums=('SKIP')
 
