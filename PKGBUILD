@@ -20,24 +20,32 @@ replaces=("mesa" "opencl-mesa" "vulkan-intel" "vulkan-radeon" "vulkan-mesa-layer
 provides=("mesa" "opencl-mesa" "vulkan-intel" "vulkan-radeon" "vulkan-driver" "vulkan-mesa-layer" "libva-mesa-driver" "mesa-vdpau" "opengl-driver" "opencl-driver"
           "mesa-libgl")
 source=("https://archive.mesa3d.org/mesa-${pkgver}.tar.xz"
-        "radv_debug.h-${pkgver}.patch"
-        "radv_device.c-${pkgver}.patch"
+        "0001-ENABLE-LLVM-BY-DEFAULT.patch"
+        "0001-util-workaround-LTO-compilation-break-since-18cb8f23.patch"
+        "0003-evergreen-big-endian.patch"
         "LICENSE")
 md5sums=("SKIP"
          "SKIP"
          "SKIP"
+         "SKIP"
          "SKIP")
+
+prepare(){
+  cd mesa-${pkgver}
+  
+  # Apply any patch
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    msg2 "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
+}
 
 build(){
   cd mesa-${pkgver}
-
-  #Patching for llvm
-
-  msg2 "Patching src/amd/vulkan/radv_debug.h with radv_debug.h-${pkgver}.patch"
-  patch -u src/amd/vulkan/radv_debug.h -i ../radv_debug.h-${pkgver}.patch
-
-  msg2 "Patching src/amd/vulkan/radv_device.c with radv_device.c-${pkgver}.patch"
-  patch -u src/amd/vulkan/radv_device.c -i ../radv_device.c-${pkgver}.patch
 
   # remove build dir if there is one
   msg2 "remove build dir if there is one"
