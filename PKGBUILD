@@ -1,45 +1,64 @@
 pkgname=flatpak-git
-pkgver=0.6.2.r1.gcb41e1b
+_pkgname=flatpak
+pkgver=1.9.2+1+ge08e8344
 pkgrel=1
-pkgdesc="Application deployment framework for desktop apps"
-url="http://flatpak.org"
-arch=(i686 x86_64)
-license=(GPL)
-depends=(dbus systemd glib2 libsoup polkit xorg-xauth libgsystem ostree fuse
-         json-glib libseccomp libarchive libelf libcap)
-makedepends=(intltool python libxslt gobject-introspection gtk-doc git)
-source=("flatpak-git::git+https://github.com/flatpak/flatpak"
-        "git+https://git.gnome.org/browse/libglnx"
-        "git+https://github.com/projectatomic/bubblewrap")
-sha256sums=('SKIP'
+pkgdesc="Linux application sandboxing and distribution framework (formerly xdg-app)"
+url="https://flatpak.org"
+arch=(x86_64)
+license=(LGPL2.1)
+depends=('dbus' 'glib2' 'libsoup' 'polkit' 'libxau' 'ostree' 'json-glib' 'libseccomp' 'libarchive'
+         'python' 'bubblewrap' 'appstream-glib' 'xdg-dbus-proxy')
+makedepends=('intltool' 'systemd' 'gobject-introspection' 'gtk-doc' 'git' 'docbook-xsl' 'xmlto')
+checkdepends=('valgrind' 'socat')
+provides=('flatpak')
+conflicts=('flatpak')
+source=("git+https://github.com/flatpak/flatpak"
+        "git+https://gitlab.gnome.org/GNOME/libglnx.git"
+        "git+https://github.com/projectatomic/bubblewrap"
+        "git+https://github.com/flatpak/xdg-dbus-proxy"
+        https://dl.flathub.org/repo/flathub.flatpakrepo
+        flatpak-bindir.sh)
+sha512sums=('SKIP'
             'SKIP'
-            'SKIP')
-
-provides=(flatpak)
-conflicts=(flatpak)
-
-pkgver() {
-  cd $pkgname
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
+            'SKIP'
+            'SKIP'
+            '752cdb2f0f4774ac6966033edc989456764cf8fe9a2a97918c75ecfd47b2dacb567e98ede00168f780a8fc97ae6e413bb550ebd2323cb4aefb578469d9338a4d'
+            'aaff4de2496e7102826eacd3b7d1246f147c4524cae87bdd2ca8ff2ee80b2563157662708025393ea449203ee44826b5c5cfa7fe6bbd2223d4e890a4fce1c35a')
 
 prepare() {
-  cd $pkgname
+  cd $_pkgname
 
   git submodule init
-  git config --local submodule.libglnx.url "$srcdir/libglnx"
   git config --local submodule.bubblewrap.url "$srcdir/bubblewrap"
+  git config --local submodule.libglnx.url "$srcdir/libglnx"
+  git config --local submodule.dbus-proxy.url "$srcdir/xdg-dbus-proxy"
   git submodule update
+
+  # https://github.com/flatpak/flatpak/issues/267
+  sed -i '/locale\/C\./d' tests/make-test-runtime.sh
 
   NOCONFIGURE=1 ./autogen.sh
 }
 
-build() {
-  cd $pkgname
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's/-/+/g'
+}
 
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --sbindir=/usr/bin --libexecdir=/usr/lib --disable-static \
-    --enable-gtk-doc --with-priv-mode=setuid
+build() {
+  cd $_pkgname
+
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --sbindir=/usr/bin \
+    --libexecdir=/usr/lib \
+    --disable-static \
+    --enable-gtk-doc \
+    --with-system-bubblewrap \
+    --with-system-dbus-proxy \
+    --with-dbus-config-dir=/usr/share/dbus-1/system.d
 
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
@@ -47,14 +66,19 @@ build() {
 }
 
 check() {
-  cd $pkgname
-  make -k check
+  cd $_pkgname
+  make -k check || :
 }
 
 package() {
-  cd $pkgname
+  depends+=(xdg-desktop-portal)
 
+  cd $_pkgname
   make DESTDIR="$pkgdir" install
+  rm -rf "$pkgdir/usr/share/selinux"
+
+  install -Dm644 "$srcdir/flatpak-bindir.sh" "$pkgdir/etc/profile.d/flatpak-bindir.sh"
+  install -Dm644 "$srcdir/flathub.flatpakrepo" "$pkgdir/etc/flatpak/remotes.d/flathub.flatpakrepo"
 
   # Fixup mode to match polkit
   install -d -o root -g 102 -m 750 "$pkgdir/usr/share/polkit-1/rules.d"
