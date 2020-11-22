@@ -4,7 +4,7 @@ pkgver=18.1.0
 pkgrel=1
 pkgdesc='A complete PBX solution'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
-provides=('asterisk')
+provides=("asterisk=${pkgver}")
 conflicts=('asterisk')
 url='https://www.asterisk.org'
 license=('GPL')
@@ -56,13 +56,11 @@ package(){
   cd "$_pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
   make DESTDIR="$pkgdir" install-headers
-  make DESTDIR="$pkgdir" samples
 
   # Note you must build the package before you can update meta data!
   backup=($(cd "$pkgdir" && echo "etc/$_pkgname/"*))
 
   sed -i -e 's,/var/run,/run,' "$pkgdir/etc/asterisk/asterisk.conf"
-  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/examples" "$pkgdir/etc/asterisk/"*
 
   mv "$pkgdir/var/run" "$pkgdir"
 
