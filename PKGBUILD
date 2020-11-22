@@ -3,7 +3,7 @@
 
 _basename=imagemagick
 pkgname=lib32-imagemagick
-pkgver=7.0.10.26
+pkgver=7.0.10.41
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (32-bit)"
 url="https://www.imagemagick.org/"
@@ -16,12 +16,10 @@ checkdepends=(ttf-dejavu)
 _relname=ImageMagick-${pkgver%%.*}
 _tarname=ImageMagick-${pkgver%.*}-${pkgver##*.}
 source=(https://imagemagick.org/download/releases/$_tarname.tar.xz{,.asc}
-        arch-fonts.diff
-        imagemagick-inkscape-1.0.patch)
-sha256sums=('7bd6c9e9f18093630ff2cb5992b3f4e190f105f73eabf3de1093542f0da8f32b'
+        arch-fonts.diff)
+sha256sums=('fa0b0092b919c76571c1ca0bded832fce989d1d20645025d36dbb3b66af50264'
             'SKIP'
-            'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73'
-            'dd856b0d7b5b98535d2bc61dfa995f4162677486c1eac14b384668a28a60af30')
+            'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 validpgpkeys=(D8272EF51DA223E4D05B466989AB63D48277377A)  # Lexie Parsimoniae
 
 shopt -s extglob
@@ -31,9 +29,6 @@ prepare() {
 
     # Fix up typemaps to match our packages, where possible
     patch -p1 -i ../arch-fonts.diff
-
-    # Use correct parameter for inkscape 1.0
-    patch -p1 -i ../imagemagick-inkscape-1.0.patch
 }
 
 build() {
@@ -41,7 +36,7 @@ build() {
 
     export CC='gcc -m32'
     export CXX='g++ -m32'
-    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+    export PKG_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config'
 
     ./configure \
         --build=i686-pc-linux-gnu \
