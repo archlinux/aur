@@ -8,7 +8,6 @@ pkgbase = subfinder
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	provides = subfinder
 	source = subfinder-2.4.5.tar.gz::https://github.com/projectdiscovery/subfinder/archive/v2.4.5.tar.gz
 	sha256sums = 1adbd9c180f7ca6378796748491e23a808e423268bc61fe63af0206877f0ba68
 
