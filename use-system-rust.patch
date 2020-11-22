@@ -1,14 +1,14 @@
 --- a/qa/zcash/full_test_suite.py
 +++ b/qa/zcash/full_test_suite.py
-@@ -133,9 +133,9 @@
+@@ -149,9 +149,9 @@
+         return False
  
-     if os.path.isdir(depends_dir):
-         rust_env = os.environ.copy()
--        rust_env['RUSTC'] = os.path.join(depends_dir, 'native', 'bin', 'rustc')
-+        rust_env['RUSTC'] = 'rustc'
-         return subprocess.call([
--            os.path.join(depends_dir, 'native', 'bin', 'cargo'),
-+            'cargo',
-             'test',
-             '--manifest-path',
-             os.path.join(REPOROOT, 'Cargo.toml'),
+     rust_env = os.environ.copy()
+-    rust_env['RUSTC'] = os.path.join(arch_dir, 'native', 'bin', 'rustc')
++    rust_env['RUSTC'] = 'rustc'
+     return subprocess.call([
+-        os.path.join(arch_dir, 'native', 'bin', 'cargo'),
++        'cargo',
+         'test',
+         '--manifest-path',
+         os.path.join(REPOROOT, 'Cargo.toml'),
