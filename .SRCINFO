@@ -1,0 +1,12 @@
+pkgbase = ttf-ipa-mona
+	pkgdesc = Extended Japanese Mona Font
+	pkgver = 1.0.8
+	pkgrel = 2
+	url = https://web.archive.org/web/20120403102610/https://www.geocities.jp/ipa_mona/
+	arch = any
+	license = custom:Jun Kobayashi
+	source = https://web.archive.org/web/20111108024313if_/http://www.geocities.jp/ipa_mona/opfc-ModuleHP-1.1.1_withIPAMonaFonts-1.0.8.tar.gz
+	md5sums = f9ef7fdbea1e30e778379fd945aec6ef
+
+pkgname = ttf-ipa-mona
+
