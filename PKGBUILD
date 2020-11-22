@@ -77,7 +77,6 @@ package() {
 
   install -Dm644 ../COPYING.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  mkdir -p ${pkgdir}/usr/lib
   ln -s /usr/lib/libSDL2-2.0.so ${pkgdir}/usr/lib/libSDL2-2.0.so.0
 }
 
