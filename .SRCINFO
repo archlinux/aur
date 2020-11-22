@@ -1,0 +1,22 @@
+pkgbase = duolingo-nativefier
+	pkgdesc = Duolingo desktop app built with nativefier (electron)
+	pkgver = 20201122
+	pkgrel = 1
+	url = https://duolingo.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = duolingo-nativefier.png
+	source = duolingo-nativefier.desktop
+	md5sums = 30d2e79f379cf86917c77ad3767fe86b
+	md5sums = 7604d993ebd90b80ff38e74bc3775396
+
+pkgname = duolingo-nativefier
+

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Duolingo
+Comment=Duolingo for desktop built with nativefier (electron)
+Exec=duolingo-nativefier
+Icon=duolingo-nativefier
+Encoding=UTF-8
+StartupWMClass=duolingo-nativefier-e662a9
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Education;Languages;Application;
