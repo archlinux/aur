@@ -2,9 +2,9 @@
 
 pkgname=timestamp
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Prefix each line with a date/time stamp'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/kseistrup/timestamp"
 license=('GPL3')
 optdepends=('scdoc: for recompiling manual pages')

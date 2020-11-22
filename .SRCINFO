@@ -1,10 +1,11 @@
 pkgbase = timestamp
 	pkgdesc = Prefix each line with a date/time stamp
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kseistrup/timestamp
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = GPL3
 	optdepends = scdoc: for recompiling manual pages
 	source = https://github.com/kseistrup/timestamp/releases/download/v0.3.2/timestamp-0.3.2.tar.xz
