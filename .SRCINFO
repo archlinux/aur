@@ -1,7 +1,7 @@
 pkgbase = asterisk-odbc-mysql
 	pkgdesc = A complete PBX solution
 	pkgver = 18.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.asterisk.org
 	install = asterisk.install
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = asterisk-odbc-mysql
 	optdepends = postgresql
 	optdepends = speex
 	optdepends = libmysqlclient
-	provides = asterisk
+	provides = asterisk=18.1.0
 	conflicts = asterisk
 	source = https://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-18.1.0.tar.gz
 	source = asterisk.sysusers
