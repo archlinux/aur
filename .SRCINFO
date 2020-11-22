@@ -1,0 +1,24 @@
+pkgbase = remhind-git
+	pkgdesc = A notification daemon of events stored in directories
+	pkgver = 21.25f6e83
+	pkgrel = 1
+	url = https://github.com/nicoe/remhind
+	arch = any
+	license = GPL3
+	checkdepends = python-freezegun
+	makedepends = python-setuptools
+	makedepends = python-pytest
+	depends = python
+	depends = python-aionotify
+	depends = python-icalendar
+	depends = python-dateutil
+	depends = python-pyinotify
+	depends = python-gobject
+	depends = python-toml
+	depends = python-tzlocal
+	depends = python-pyxdg
+	source = git+https://github.com/nicoe/remhind
+	b2sums = SKIP
+
+pkgname = remhind-git
+
