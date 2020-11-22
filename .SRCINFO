@@ -1,0 +1,27 @@
+pkgbase = libcurl-gnutls-minimal-git
+	pkgdesc = An URL retrieval library (linked against gnutls)
+	pkgver = 7.73.0
+	pkgrel = 1
+	url = https://curl.haxx.se
+	arch = x86_64
+	license = MIT
+	depends = curl
+	depends = glibc
+	depends = gnutls
+	depends = libidn2
+	depends = libidn2.so
+	depends = libnghttp2
+	depends = libpsl
+	depends = libpsl.so
+	depends = nettle
+	depends = libnettle.so
+	depends = zlib
+	depends = zstd
+	options = strip
+	source = git+https://github.com/curl/curl
+	validpgpkeys = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = libcurl-gnutls-minimal-git
+
