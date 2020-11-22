@@ -1,6 +1,6 @@
 pkgbase = ttf-adobe-source-fonts
-	pkgdesc = TTF versions of Adobe's Source fonts (includes non-variable versions of Source Sans Pro, Source Serif Pro, and Source Code Pro). Now includes Source Sans Pro (3.006R) and Source Sans 3 (3.028R).
-	pkgver = 3.028R+3.001R+2.032R+ro+1.052R+it
+	pkgdesc = TTF versions of Adobe's Source fonts (includes variable and non-variable versions of Source Sans Pro, Source Serif Pro, and Source Code Pro). Now includes Source Sans Pro (3.006R) and Source Sans 3 (3.028R).
+	pkgver = 3.028R+3.001R+2.032R+ro+1.052R+it+1.012R+VAR
 	pkgrel = 5
 	url = https://github.com/adobe-fonts
 	arch = any
