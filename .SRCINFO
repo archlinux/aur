@@ -1,12 +1,14 @@
 pkgbase = sublime-music-git
 	pkgdesc = A native Subsonic/Airsonic/*sonic client for Linux. Built using Python and GTK+.
-	pkgver = v0.11.9.r0.gd454b90
-	pkgrel = 4
+	pkgver = v0.11.10.r13.g8fef15b
+	pkgrel = 1
 	url = https://sublimemusic.app
 	arch = any
 	license = GPL3
-	makedepends = python-setuptools
+	makedepends = python-pip
+	makedepends = python-poetry
 	makedepends = python-sphinx
+	makedepends = tar
 	depends = python
 	depends = python-bleach
 	depends = python-dataclasses-json

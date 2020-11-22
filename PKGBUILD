@@ -3,8 +3,8 @@
 pkgbase='sublime-music-git'
 pkgname=('sublime-music-git')
 _module='sublime-music'
-pkgver=v0.11.9.r0.gd454b90
-pkgrel=4
+pkgver=v0.11.10.r13.g8fef15b
+pkgrel=1
 pkgdesc='A native Subsonic/Airsonic/*sonic client for Linux. Built using Python and GTK+.'
 url='https://sublimemusic.app'
 provides=('sublime-music')
@@ -31,8 +31,10 @@ optdepends=(
     'python-bottle: support for casting downloaded files to Chromecasts on the same LAN'
 )
 makedepends=(
-    'python-setuptools'
+    'python-pip'
+    'python-poetry'
     'python-sphinx'
+    'tar'
 )
 license=('GPL3')
 arch=('any')
@@ -49,12 +51,12 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    python setup.py build
+    poetry build
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    pip install dist/sublime_music-*.tar.gz --root="${pkgdir}"
 
     # Move all of the package data resources to ${pkgdir}/usr/share/sublime-music
     data_dir=${pkgdir}/usr/share/sublime-music
