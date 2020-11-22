@@ -8,7 +8,6 @@ pkgbase = ssh-chat
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	provides = ssh-chat
 	source = ssh-chat-1.10.1.tar.gz::https://github.com/shazow/ssh-chat/archive/v1.10.1.tar.gz
 	sha256sums = 425db6cb85e3771385d94f64ab1c7b9beadd2943653ce3352592cbbb9aebc20d
 

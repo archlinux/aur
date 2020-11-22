@@ -8,7 +8,6 @@ arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/shazow/ssh-chat'
 license=('MIT')
 makedepends=('go')
-provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('425db6cb85e3771385d94f64ab1c7b9beadd2943653ce3352592cbbb9aebc20d')
 
