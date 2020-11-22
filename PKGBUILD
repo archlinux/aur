@@ -8,7 +8,7 @@
 
 pkgname=pambase-selinux
 pkgver=20200721.1
-pkgrel=2
+pkgrel=3
 pkgdesc="SELinux aware base PAM configuration for services"
 arch=('any')
 url="https://www.archlinux.org"
