@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rotors_hil_interface'
 pkgname='ros-melodic-rotors-hil-interface'
 pkgver='2.2.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('ASL 2.0')
 
 ros_makedepends=(
@@ -23,6 +23,7 @@ ros_makedepends=(
 makedepends=(
     cmake
     ros-build-tools
+    geographiclib
 	${ros_makedepends[@]}
 )
 
@@ -36,6 +37,7 @@ ros_depends=(
 )
 
 depends=(
+    geographiclib
 	${ros_depends[@]}
 )
 
