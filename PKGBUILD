@@ -9,6 +9,7 @@ arch=("any")
 url="https://github.com/RSS-Bridge/rss-bridge/wiki"
 license=("Unlicense")
 depends=(php)
+makedepends=(git)
 backup=(
   "etc/webapps/$pkgname/config.ini.php"
   "usr/share/webapps/$pkgname/whitelist.txt"
