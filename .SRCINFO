@@ -1,0 +1,14 @@
+pkgbase = nbno-git
+	pkgdesc = A Python script that downloads books from nb.no (Nasjonalbiblioteket)
+	pkgver = r32.b08c399
+	pkgrel = 1
+	url = https://github.com/Lanjelin/NBNO.py
+	arch = any
+	license = GPL3
+	depends = python>=3.7
+	depends = python-pillow>=6.0
+	source = nbno-git::git+https://github.com/Lanjelin/NBNO.py.git
+	md5sums = SKIP
+
+pkgname = nbno-git
+
