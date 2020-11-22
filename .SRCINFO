@@ -1,8 +1,8 @@
-pkgbase = asterisk-g729
+pkgbase = asterisk-g729-odbc-mysql
 	pkgdesc = G.729 codec for Asterisk open source PBX
 	pkgver = 1.4.3.r4.3855cec2ef26
 	pkgrel = 1
-	epoch = 1
+	epoch = 0
 	url = http://asterisk.hosting.lv/
 	arch = x86_64
 	license = IPP
@@ -11,5 +11,5 @@ pkgbase = asterisk-g729
 	source = asterisk-g72x-1.4.3.r4.3855cec2ef26.tar.bz2::https://bitbucket.org/arkadi/asterisk-g72x/get/3855cec2ef2667f3e9224006dbaf179575752218.tar.bz2
 	sha256sums = 25f46b332bec3dfb51e7a44dcfb3b0aa04cdf2fd50caea44f0eeca4e1c83a9b0
 
-pkgname = asterisk-g729
+pkgname = asterisk-g729-odbc-mysql
 
