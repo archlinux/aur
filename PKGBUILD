@@ -1,14 +1,15 @@
 # Maintainer: coderkun <olli@suruatoel.xyz
 
 pkgname=kbd-neo
-pkgver=3
-pkgrel=4
+pkgver=4
+pkgrel=1
 pkgdesc="NEO 2 terminal keyboard layout"
 arch=('any')
 url="https://www.neo-layout.org/"
 license=('CC-BY-SA')
 depends=('kbd')
-source=(https://raw.githubusercontent.com/neo-layout/neo-layout/master/linux/console/neo.map)
+source=(https://git.neo-layout.org/neo/neo-layout/raw/branch/master/linux/console/neo.map)
+sha256sums=('f9ae14b0e52248bfe628b895d85ccbe5eda580885ebff7991c3c6d69ef81eab9')
 
 build() {
     cd $srcdir
@@ -19,5 +20,3 @@ package() {
     cd $srcdir
     install -m 664 -D neo.map.gz $pkgdir/usr/share/kbd/keymaps/i386/qwertz/neo.map.gz
 }
-
-sha256sums=('8f64e076a89178960e98e6e77e426be56bb040ed50dfc37894fafe1d46cbaea6')

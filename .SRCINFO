@@ -6,8 +6,8 @@ pkgbase = kbd-neo
 	arch = any
 	license = CC-BY-SA
 	depends = kbd
-	source = https://raw.githubusercontent.com/neo-layout/neo-layout/master/linux/console/neo.map
-	sha256sums = 8f64e076a89178960e98e6e77e426be56bb040ed50dfc37894fafe1d46cbaea6
+	source = https://git.neo-layout.org/neo/neo-layout/raw/branch/master/linux/console/neo.map
+	sha256sums = f9ae14b0e52248bfe628b895d85ccbe5eda580885ebff7991c3c6d69ef81eab9
 
 pkgname = kbd-neo
 
