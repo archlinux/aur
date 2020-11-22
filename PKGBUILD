@@ -16,7 +16,7 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 package() {
-	cd "$pkgname"
+	cd "dmenu-gtu"
 	make PREFIX=/usr DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
