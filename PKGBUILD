@@ -46,8 +46,8 @@ package_libcutensor() {
            'libcutensor-common'
            )
   cd libcutensor
-  install -Dm644 "lib/11.0/libcutensor_static.a" "${pkgdir}/opt/cuda/lib64/libcutensor_static.a"
-  install -Dm755 "lib/11.0/libcutensor.so.${pkgver//.7/}" "${pkgdir}/opt/cuda/lib64/libcutensor.so.${pkgver//.7/}"
+  install -Dm644 "lib/11.0/libcutensor_static.a" "${pkgdir}/opt/cuda/x86_64-linux/lib/libcutensor_static.a"
+  install -Dm755 "lib/11.0/libcutensor.so.${pkgver//.7/}" "${pkgdir}/opt/cuda/targets/x86_64-linux/lib/libcutensor.so.${pkgver//.7/}"
 
   _create_links
 
@@ -63,8 +63,8 @@ package_libcutensor-cuda10.1() {
            )
 
   cd libcutensor
-  install -Dm644 "lib/10.1/libcutensor_static.a" "${pkgdir}/opt/cuda-10.1/lib64/libcutensor_static.a"
-  install -Dm755 "lib/10.1/libcutensor.so.${pkgver//.7/}" "${pkgdir}/opt/cuda-10.1/lib64/libcutensor.so.${pkgver//.7/}"
+  install -Dm644 "lib/10.1/libcutensor_static.a" "${pkgdir}/opt/cuda-10.1/x86_64-linux/lib/libcutensor_static.a"
+  install -Dm755 "lib/10.1/libcutensor.so.${pkgver//.7/}" "${pkgdir}/opt/x86_64-linux/lib/libcutensor.so.${pkgver//.7/}"
 
   _create_links
 
@@ -80,8 +80,8 @@ package_libcutensor-cuda10.2() {
            )
 
   cd libcutensor
-  install -Dm644 "lib/10.2/libcutensor_static.a" "${pkgdir}/opt/cuda-10.2/lib64/libcutensor_static.a"
-  install -Dm755 "lib/10.2/libcutensor.so.${pkgver//.7/}" "${pkgdir}/opt/cuda-10.2/lib64/libcutensor.so.${pkgver//.7/}"
+  install -Dm644 "lib/10.2/libcutensor_static.a" "${pkgdir}/opt/cuda-10.2/x86_64-linux/lib/libcutensor_static.a"
+  install -Dm755 "lib/10.2/libcutensor.so.${pkgver//.7/}" "${pkgdir}/opt/cuda-10.2/x86_64-linux/lib/libcutensor.so.${pkgver//.7/}"
 
   _create_links
 
@@ -97,8 +97,8 @@ package_libcutensor-cuda11.0() {
            )
 
   cd libcutensor
-  install -Dm644 "lib/11.0/libcutensor_static.a" "${pkgdir}/opt/cuda-11.0/lib64/libcutensor_static.a"
-  install -Dm755 "lib/11.0/libcutensor.so.${pkgver//.7/}" "${pkgdir}/opt/cuda-11.0/lib64/libcutensor.so.${pkgver//.7/}"
+  install -Dm644 "lib/11.0/libcutensor_static.a" "${pkgdir}/opt/cuda-11.0/x86_64-linux/lib/libcutensor_static.a"
+  install -Dm755 "lib/11.0/libcutensor.so.${pkgver//.7/}" "${pkgdir}/opt/cuda-11.0/x86_64-linux/lib/libcutensor.so.${pkgver//.7/}"
 
   _create_links
 
