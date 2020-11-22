@@ -10,7 +10,8 @@ pkgbase = simple-stocks-git
 	makedepends = vala
 	depends = granite
 	provides = simple-stocks
-	source = git+https://github.com/brendanperry/stocks.git
+	conflicts = simple-stocks
+	source = simple-stocks::git+https://github.com/brendanperry/stocks.git
 	sha256sums = SKIP
 
 pkgname = simple-stocks-git
