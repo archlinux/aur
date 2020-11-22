@@ -1,7 +1,7 @@
 pkgname=mysql-connector-odbc
 replaces=('mariadb-connector-odbc-bin' 'mariadb-connector-odbc')
 pkgver=8.0.22
-pkgrel=1
+pkgrel=2
 pkgdesc="ODBC connector for MySQL instead of that mariadb nonsense"
 arch=('x86_64' 'armv7h')
 url="."
@@ -25,11 +25,12 @@ build() {
 	-DWITH_UNIXODBC=1 \
 	-DDISABLE_GUI=1 \
         ../$pkgname-$pkgver-src
-    make myodbc8a myodbc8w
+    make
 }
 
 package() {
     cd build
-    mkdir -p ${pkgdir}/usr/lib
-    install -m744 -o root -g root lib/*.so ${pkgdir}/usr/lib/
+    mkdir -p ${pkgdir}/usr/lib ${pkgdir}/usr/bin
+    install -m755 -o root -g root lib/*.so ${pkgdir}/usr/lib/
+    install -m755 -o root -g root bin/* ${pkgdir}/usr/bin/
 }
