@@ -1,13 +1,13 @@
 pkgname='ruffle-git'
 _pkgname="ruffle"
-pkgver=0.1.0.1.gbf639e1
+pkgver=0.1.0.3210.g7ac53be2
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/ruffle-rs/ruffle"
 pkgdesc="A Flash Player emulator written in Rust"
 license=('Apache' 'MIT')
-depends=()
-makedepends=('rust' 'cargo' 'git')
+depends=('openssl' 'libxcb' 'zlib' 'alsa-lib' 'xz')
+makedepends=('rust' 'cargo' 'git' 'libx11' 'python')
 provides=('ruffle')
 conflicts=('ruffle')
 source=("$_pkgname::git+https://github.com/ruffle-rs/ruffle.git")
