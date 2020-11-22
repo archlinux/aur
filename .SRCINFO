@@ -8,7 +8,6 @@ pkgbase = simple-stocks
 	makedepends = meson
 	makedepends = vala
 	depends = granite
-	provides = simple-stocks
 	source = stocks-1.0.9.tar.gz::https://github.com/brendanperry/stocks/archive/1.0.9.tar.gz
 	sha256sums = 7af56cce94c55cd1398847b83f1ad46b467c9e9cb969a059735aaf562942296c
 
