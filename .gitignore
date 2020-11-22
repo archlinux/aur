@@ -1,0 +1,6 @@
+*
+!.SRCINFO
+!.gitignore
+!Makefile
+!PKGBUILD
+!generate_pkgbuild.sh
