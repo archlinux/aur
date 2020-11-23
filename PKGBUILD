@@ -1,10 +1,10 @@
 # Maintainer: NobodyDBG <niemandausduisburg@gmx.net>
 
-pkgbase=linux-vanilla-selinux
-pkgname=linux-vanilla-selinux
-pkgver=5.9.10
+pkgbase=linux-vanilla-next-selinux
+pkgname=linux-vanilla-next-selinux
+pkgver=20201123
 pkgrel=1
-pkgdesc="Vanilla-Linux-Kernel from kernel.org with Selinux enabled"
+pkgdesc="Vanilla-Linux-Next-Kernel (Daily Build) from kernel.org with Selinux enabled"
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -12,31 +12,28 @@ makedepends=(bc kmod libelf
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git)
 options=('!strip')
-_srcname=linux-vailla-selinux${pkgver}
-_origsrcname=linux-${pkgver}
-source=(https://www.kernel.org/pub/linux/kernel/v5.x/${_origsrcname}.tar.{xz,sign}
+_srcname=linux-vailla-next-selinux${pkgver}
+_origsrcname=linux-next-next-${pkgver}
+source=(https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/snapshot/${_origsrcname}.tar.gz
         'config'         # the main kernel config file
-        'linux-vanilla-selinux.install' # Installfile
+        'linux-vanilla-next-selinux.install' # Installfile
         '60-linux.hook'  # pacman hook for depmod
         '90-linux.hook'  # pacman hook for initramfs regeneration
-        'linux-vanilla-selinux.preset'   # standard config files for mkinitcpio ramdisk
-        'sphinx-workaround.patch' # patch for Sphinx HTMLDOCS
+        'linux-vanilla-next-selinux.preset'   # standard config files for mkinitcpio ramdisk
 )
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
               )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
-sha256sums=('f591b2f2e939ae6bd35cae2dc3cb87f9472e439695df7f23ed0a341a2c66f030'
-            'aa10bf208d2ab0eb8276ae6fd524c4150e4c5eed8948f2386548bbacd6cb3451'
+sha256sums=('b9cd5c50fb9b31842dd2111b8335a028b849d47933f8329f4416826ec8eb578e'
 	    'e87dd18b7f5f1948b194f3c348da9811143f4b340fc76cc39b5e83fc0e66f8d0'
 	    'f9b13f3c00be95205ccb77ead42881ecbf0f7ba0d0ad12af294e054272859d81'
             '5c7af03d9b4cade110543ba706bcbd49fc6447726258b4bfec0edff7ca9994d1'
             '9089c8d44982dc03b0dde47632f8aa2fda14754b911acbc266feee85da94b0f5'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a')
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
 _kernelname=${pkgbase#}
-: ${_kernelname:=-Arch-vanilla-selinux}
+: ${_kernelname:=-Arch-vanilla-next-selinux}
 
 prepare() {
   cd $_origsrcname
