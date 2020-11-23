@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=squeekboard
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Virtual keyboard supporting Wayland, built primarily for the Librem 5 phone"
 url="https://source.puri.sm/Librem5/squeekboard"
@@ -15,8 +15,8 @@ makedepends=('pkg-config'
              'intltool'
              'rust'
              'gtk-doc')
-source=("https://source.puri.sm/Librem5/squeekboard/-/archive/v${pkgver}/squeekboard-v${pkgver}.tar.gz")
-sha256sums=('3eddb4e152a83214ef485825ea5bfbc7bd382a867c8e5c8c23c9346529eddbed')
+source=("${url}/-/archive/v${pkgver}/squeekboard-v${pkgver}.tar.gz")
+sha256sums=('52838b2223c2031b4a1b0cf0d5680582b950e5ac3f820d8a3ade1bc476194804')
 
 
 build() {
