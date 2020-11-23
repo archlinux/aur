@@ -16,9 +16,9 @@ pkgbase = linux-rockchip
 	source = https://github.com/redchenjs/armbian-ci/releases/download/v5.8.18-rockchip/linux-image-current-rockchip_20.11.0-trunk_armhf.deb
 	source = https://github.com/redchenjs/armbian-ci/releases/download/v5.8.18-rockchip/linux-headers-current-rockchip_20.11.0-trunk_armhf.deb
 	sha512sums = 4e479e5c010c5cd6105b104419bbf1886a60174535d17a34ae457f2744598d0f1c4e2b24dc989c038fa2c51b3d076e0acd3210e1492a87db68b1d43840e11e8a
-	sha512sums = 7c6bb0e693ae97a5d1d7255c7656ec7558a23bac2258d004524c9e2320d92406ad739d974f1ab74c066285cd707f48e0a30935a3f1f16dd0d44ee6f08b8be031
-	sha512sums = 7b37d88234484bad01a065fe5bf35d894b27c9bacc736cbf8d421708d7a0a958e43cb73b44adc9348c284d53828495f0d3c053c8bec06fbcd161e12472d0ae16
-	sha512sums = f6614c1f51177e1113b471f69deee389a4e5a989c21759fb0aed0f493878c508114847567a5a866c22e8d8beaf2b84523f7ad5adc998fc324c51cf3a83556cb9
+	sha512sums = Not Found
+	sha512sums = Not Found
+	sha512sums = Not Found
 
 pkgname = linux-rockchip
 	pkgdesc = Rockchip Linux kernel and modules from Armbian
@@ -33,3 +33,4 @@ pkgname = linux-rockchip-headers
 	pkgdesc = Headers and scripts for building modules for the linux-rockchip kernel
 	provides = linux-headers
 	provides = linux-headers-rockchip
+
