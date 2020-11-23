@@ -1,6 +1,6 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
 pkgname=ripme
-pkgver=1.7.93
+pkgver=1.7.94
 pkgrel=1
 pkgdesc="Downloads albums in bulk"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('java-runtime')
 makedepends=('maven')
 source=("https://github.com/RipMeApp/ripme/archive/$pkgver.tar.gz")
-sha256sums=('7ca95a3752eac6f3b6f46b3143822e32306aec9fdfd5d0c46ea3be46e7f6b6d0')
+sha256sums=('af229bd6ed7cbba36b612eaa12ecd658503da2a0a59b01d57499a0b0e657b728')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
