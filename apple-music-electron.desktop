@@ -9,4 +9,4 @@ Icon=apple-music-electron
 Categories=AudioVideo;Audio;
 Terminal=false
 StartupNotify=true
-Version=1.2.2
+Version=1.2.3
