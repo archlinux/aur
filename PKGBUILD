@@ -2,16 +2,16 @@
 # Contributor: Zeph <zeph33@gmail.com>
 # Based on the PKGBUILD created by Zeph <zeph33@gmail.com>
 
-pkgname=('pamac-aur-git' 'pamac-aur-tray-appindicator-git')
+pkgname=('pamac-aur-git') #'pamac-aur-tray-appindicator-git')
 _pkgname=pamac
-pkgver=9.5.12.r0.g96fe5ad
+pkgver=9.5.12.r19.g128d022
 _pkgver=9.5.12
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - git version"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
-depends=('dbus-glib' 'vte3>=0.38' 'libnotify' 'pacman>=5.2' 'pacman<5.3' 'appstream-glib' 'archlinux-appstream-data' 'libappindicator-gtk3' 'git')
+depends=('dbus-glib' 'vte3>=0.38' 'libnotify' 'pacman>=5.2' 'pacman<5.3' 'appstream-glib' 'archlinux-appstream-data-pamac' 'libappindicator-gtk3' 'git')
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
             'lxsession: needed for authentification in Xfce, LXDE etc.'
             'pamac-aur-tray-appindicator-git: tray icon for KDE')
@@ -45,7 +45,8 @@ build() {
   ninja
 }
 
-package_pamac-aur-git() {
+#package_pamac-aur-git() {
+package() {
   backup=('etc/pamac.conf')
   conflicts=('pamac-aur')
   install=pamac.install
@@ -54,17 +55,17 @@ package_pamac-aur-git() {
   DESTDIR="$pkgdir" ninja install
   # removed pamac-mirrorlist-timer, useless for Archlinux
   # remove pamac-tray-appindicator
-  rm "$pkgdir/usr/bin/pamac-tray-appindicator"
-  rm "$pkgdir/etc/xdg/autostart/pamac-tray-appindicator.desktop"
+  # rm "$pkgdir/usr/bin/pamac-tray-appindicator"
+  # rm "$pkgdir/etc/xdg/autostart/pamac-tray-appindicator.desktop"
 }
 
-package_pamac-aur-tray-appindicator-git() {
-  pkgdesc="Tray icon using appindicator which fits better in KDE - git version"
-  conflicts=('pamac-aur-tray-indicator')
-  depends=('pamac-aur-git' 'libappindicator-gtk3')
-  cd $_pkgname
-  install -Dm755 "builddir/src/pamac-tray-appindicator" "$pkgdir/usr/bin/pamac-tray-appindicator"
-  install -Dm644 "data/applications/pamac-tray-appindicator.desktop" "$pkgdir/etc/xdg/autostart/pamac-tray-appindicator.desktop"
-}
+#package_pamac-aur-tray-appindicator-git() {
+#  pkgdesc="Tray icon using appindicator which fits better in KDE - git version"
+#  conflicts=('pamac-aur-tray-indicator')
+#  depends=('pamac-aur-git' 'libappindicator-gtk3')
+#  cd $_pkgname
+#  install -Dm755 "builddir/src/pamac-tray-appindicator" "$pkgdir/usr/bin/pamac-tray-appindicator"
+#  install -Dm644 "data/applications/pamac-tray-appindicator.desktop" "$pkgdir/etc/xdg/autostart/pamac-#tray-appindicator.desktop"
+#}
 
 #vim:set ts=2 sw=2 et:

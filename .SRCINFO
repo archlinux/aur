@@ -1,6 +1,6 @@
 pkgbase = pamac-aur-git
 	pkgdesc = A Gtk3 frontend for libalpm - git version
-	pkgver = 9.5.12.r0.g96fe5ad
+	pkgver = 9.5.12.r19.g128d022
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = pamac-aur-git
 	depends = pacman>=5.2
 	depends = pacman<5.3
 	depends = appstream-glib
-	depends = archlinux-appstream-data
+	depends = archlinux-appstream-data-pamac
 	depends = libappindicator-gtk3
 	depends = git
 	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
@@ -40,10 +40,4 @@ pkgname = pamac-aur-git
 	install = pamac.install
 	conflicts = pamac-aur
 	backup = etc/pamac.conf
-
-pkgname = pamac-aur-tray-appindicator-git
-	pkgdesc = Tray icon using appindicator which fits better in KDE - git version
-	depends = pamac-aur-git
-	depends = libappindicator-gtk3
-	conflicts = pamac-aur-tray-indicator
 
