@@ -10,12 +10,12 @@ _micro=""
 
 pkgname=compiz-fusion-plugins-main
 pkgver="${_pkgver}${_micro}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Compiz Main plugins"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/compiz/${_upstream}/"
 license=('GPL')
-depends=("compiz-core>=${_pkgver}" 'libjpeg>=7' 'librsvg' 'compiz-bcop' 'libxdamage' 'libxcomposite'
+depends=("compiz-core>=${_pkgver}" 'libjpeg-turbo' 'librsvg' 'compiz-bcop' 'libxdamage' 'libxcomposite'
 	'libxinerama' 'startup-notification')
 makedepends=('intltool' 'pkgconfig' 'gettext')
 groups=('compiz-fusion')
