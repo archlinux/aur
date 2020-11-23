@@ -3,8 +3,9 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=lib32-pipewire
-pkgname=(lib32-pipewire lib32-pipewire-jack lib32-pipewire-pulse)
-pkgver=0.3.13
+_pkgbase=pipewire
+pkgname=(lib32-pipewire lib32-pipewire-jack lib32-gst-plugin-pipewire)
+pkgver=0.3.16
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines (32-bit client libraries)"
 url="https://pipewire.org"
@@ -12,19 +13,22 @@ license=(LGPL2.1)
 arch=(x86_64)
 makedepends=(git meson valgrind lib32-jack2 lib32-libpulse lib32-alsa-lib
              lib32-gstreamer lib32-gst-plugins-base lib32-sbc rtkit
-             lib32-vulkan-icd-loader dbus lib32-libsndfile lib32-bluez-libs
+             lib32-vulkan-icd-loader lib32-dbus lib32-libsndfile lib32-bluez-libs
              vulkan-headers)
-_commit=d7714f734dcf2a346f939e11e1e3f6a2373c8632  # tags/0.3.13
+_commit=09d373f094f0e6797aef3d97cde2c0167dccc986  # tags/0.3.16
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd pipewire
+  cd $_pkgbase
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd pipewire
+  cd $_pkgbase
+
+  # fix kwin
+  git cherry-pick -n fc2b0b20ad4271b0c6f258451a82311b792b7a57
 }
 
 build() {
@@ -32,7 +36,7 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  arch-meson pipewire build \
+  arch-meson $_pkgbase build \
     --libdir /usr/lib32 \
     -D docs=false \
     -D tests=false \
@@ -55,37 +59,35 @@ _pick() {
 }
 
 _ver=${pkgver:0:3}
+_spaver="0.2"
 
 package_lib32-pipewire() {
-  depends=(lib32-gstreamer lib32-gst-plugins-base lib32-sbc rtkit
-           lib32-vulkan-icd-loader lib32-bluez-libs
-           lib32-dbus lib32-libsndfile lib32-libudev0-shim lib32-alsa-lib
-           lib32-systemd lib32-glib2)
-  optdepends=('lib32-pipewire-jack: JACK support'
-              'lib32-pipewire-pulse: PulseAudio support')
+  depends=(lib32-sbc rtkit lib32-vulkan-icd-loader lib32-bluez-libs
+           alsa-card-profiles lib32-dbus lib32-libsndfile lib32-libudev0-shim
+           lib32-alsa-lib lib32-systemd lib32-glib2)
+  optdepends=('lib32-pipewire-jack: JACK support')
 
   DESTDIR="$srcdir/install" meson install -C build
 
-  _pick $srcdir/install/usr/lib32/spa-0.2/jack
+  _pick "$srcdir"/install/usr/lib32/spa-$_spaver/jack
   mv $pkgdir/usr $srcdir/jack
 
-  _pick $srcdir/install/usr/lib32/libpipewire-$_ver.so*
-  _pick $srcdir/install/usr/lib32/alsa-lib/*
-  _pick $srcdir/install/usr/lib32/gstreamer-1.0/*
-  _pick $srcdir/install/usr/lib32/pipewire-0.3/libpipewire-module-*.so
-  _pick $srcdir/install/usr/lib32/pkgconfig/*
-  _pick $srcdir/install/usr/lib32/spa-0.2/*
+  _pick "$srcdir"/install/usr/lib32/libpipewire-$_ver.so*
+  _pick "$srcdir"/install/usr/lib32/alsa-lib/*
+  _pick "$srcdir"/install/usr/lib32/pipewire-$_ver/libpipewire-module-*.so
+  _pick "$srcdir"/install/usr/lib32/pkgconfig/*
+  _pick "$srcdir"/install/usr/lib32/spa-$_spaver/*
 }
 
 package_lib32-pipewire-jack() {
   pkgdesc+=" (JACK support)"
   depends=(lib32-pipewire=$pkgver lib32-jack2)
-  _pick $srcdir/install/usr/lib32/pipewire-$_ver/jack/*
-  mv $srcdir/jack/lib32/spa-0.2 $pkgdir/usr/lib32/spa-0.2
+  _pick "$srcdir"/install/usr/lib32/pipewire-$_ver/jack/*
+  mv "$srcdir"/jack/lib32/spa-$_spaver "$pkgdir"/usr/lib32/spa-$_spaver
 }
 
-package_lib32-pipewire-pulse() {
-  pkgdesc+=" (PulseAudio support)"
-  depends=(lib32-pipewire=$pkgver lib32-glib2)
-  _pick $srcdir/install/usr/lib32/pipewire-$_ver/pulse/*
+package_lib32-gst-plugin-pipewire() {
+  pkgdesc="Multimedia graph framework - pipewire plugin (32-bit version)"
+  depends=(lib32-pipewire=$pkgver lib32-gst-plugins-base-libs)
+  _pick "$srcdir"/install/usr/lib32/gstreamer-1.0
 }
