@@ -1,13 +1,13 @@
 # Maintainer: Pieter Joost van de Sande <pj@born2code.net>
 pkgname=whatscli
-pkgver=0.8.0
+pkgver=0.8.3
 pkgrel=1
 pkgdesc='A command line interface for whatsapp, based on go-whatsapp and tview'
 arch=('1686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/normen/whatscli'
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/normen/whatscli/archive/v${pkgver}.tar.gz")
-sha1sums=('c1ec469dba8018654d6fac07c86ac53d79d6ef57')
+sha1sums=('f261f22b91bff6547638e63172272b24a83731b5')
 
 build() {
     cd "${pkgname}-${pkgver}"
