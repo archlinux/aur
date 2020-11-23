@@ -1,7 +1,8 @@
+# Maintainer: jaltek <post@ezod.de>
 # Owner: Daniel Mason (idanoo) <daniel@m2.nz>
 pkgbase=element-desktop-git
-_vers=v1.7.12
-pkgver=v1.7.12.r0.gcc7e6437
+_vers=v1.7.14-rc.1
+pkgver=v1.7.14.rc.1.r0.g0ed6c550
 pkgrel=1
 pkgname=(element-web-git element-desktop-git)
 pkgdesc="A glossy Matrix collaboration client for the desktop."
@@ -13,14 +14,17 @@ makedepends=('git' 'nodejs' 'jq' 'yarn' 'npm' 'python' 'rust' 'sqlcipher' 'elect
 provides=('element-desktop')
 backup=("etc/element/config.json")
 _giturl='git://github.com/vector-im'
-source=("element-web::${_giturl}/riot-web.git#tag=${_vers}"
-        "element-desktop::${_giturl}/riot-desktop.git#tag=${_vers}"
+source=("element-web::${_giturl}/element-web#tag=${_vers}"
+        "element-desktop::${_giturl}/element-desktop.git#tag=${_vers}"
         "element-desktop.desktop"
-        "element-desktop.sh")
+        "element-desktop.sh"
+	"element-web-reskindex.patch")
 sha256sums=('SKIP'
             'SKIP'
             '81354e663e354bd66b3f2bb303314b790bdf6d61c3d8e2df7407eb500885647d'
-            'e4965abefbd609cf88349437b811bc4433d671f5ec5cd51992fd6179d483925f')
+            'e4965abefbd609cf88349437b811bc4433d671f5ec5cd51992fd6179d483925f'
+            'f4497e40fecb224ca8f1af5187250f77000e5ff9f811d24390b18d37851b4460')
+
 
 pkgver() {
   cd "$srcdir/element-web"
@@ -37,10 +41,13 @@ prepare() {
   sed -i 's/"target": "deb"/"target": "dir"/g' package.json
   sed -i 's@"https://packages.riot.im/desktop/update/"@null@g' element.io/release/config.json
   yarn install
-
+  
   cd ../element-web
   # Disable auto updating
   sed -i 's@"https://packages.riot.im/desktop/update/"@null@g' element.io/app/config.json
+
+  #Patch for reskindex: https://github.com/vector-im/element-web/issues/15751#issuecomment-731247116
+  patch --forward --strip=1 --input="${srcdir}/element-web-reskindex.patch"
 
   yarn install
 }
