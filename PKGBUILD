@@ -1,14 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=goverlay-git
 pkgver=0.4.2.r0.gf712f20
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
 license=('GPL3')
 depends=('qt5pas')
 makedepends=('git' 'lazarus')
-checkdepends=('appstream')
+checkdepends=('appstream' 'desktop-file-utils')
 optdepends=('mangohud: Configure MangoHUD'
             'vkbasalt: Configure vkBasalt'
             'mesa-demos: OpenGL preview'
