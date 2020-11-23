@@ -13,12 +13,12 @@ conflicts=("arch-silence-grub-theme-git")
 provides=("artix-silence-grub-theme")
 md5sums=(
 	'SKIP' # git repo
-	'ede81ceaf8f3305ef0929a8f4b95c704' # artix logo
+	'8ff2e03bd8f2d97278bfa91b3a91e470' # artix logo
 )
 
 source=(
 	"git+https://github.com/fghibellini/arch-silence"
-	"https://artixlinux.org/img/artix-logo.png"
+	"artix-logo.png"
 )
 
 prepare() {

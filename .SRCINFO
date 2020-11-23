@@ -10,9 +10,9 @@ pkgbase = artix-silence-grub-theme-git
 	provides = artix-silence-grub-theme
 	conflicts = arch-silence-grub-theme-git
 	source = git+https://github.com/fghibellini/arch-silence
-	source = https://artixlinux.org/img/artix-logo.png
+	source = artix-logo.png
 	md5sums = SKIP
-	md5sums = ede81ceaf8f3305ef0929a8f4b95c704
+	md5sums = 8ff2e03bd8f2d97278bfa91b3a91e470
 
 pkgname = artix-silence-grub-theme-git
 
