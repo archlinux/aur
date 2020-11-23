@@ -15,7 +15,7 @@ _makenconfig=
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=y
+_localmodcfg=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
