@@ -1,0 +1,8 @@
+post_install() {
+  if ! grep "br_netfilter" /proc/modules; then
+    echo "Load the br_netfilter kernel module or reboot: modprobe br_netfilter."
+  fi
+  if ! grep "overlay" /proc/modules; then
+    echo "Load the overlay kernel module (if required) or reboot: modprobe overlay."
+  fi
+}
