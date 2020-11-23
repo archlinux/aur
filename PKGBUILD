@@ -11,7 +11,7 @@ makedepends=('findutils' 'curl')
 options=('!strip')
 _armbian=20.11.0
 source=(
-    "mkinitcpio.preset"
+    'mkinitcpio.preset'
     "https://github.com/redchenjs/armbian-ci/releases/download/v$pkgver-rockchip/linux-dtb-current-rockchip_$_armbian-trunk_armhf.deb"
     "https://github.com/redchenjs/armbian-ci/releases/download/v$pkgver-rockchip/linux-image-current-rockchip_$_armbian-trunk_armhf.deb"
     "https://github.com/redchenjs/armbian-ci/releases/download/v$pkgver-rockchip/linux-headers-current-rockchip_$_armbian-trunk_armhf.deb"
