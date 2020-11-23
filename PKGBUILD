@@ -4,7 +4,7 @@
 
 pkgname=python-pycapnp
 _pkgname=pycapnp
-pkgver=1.0.0b2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Cython wrapper for the C++ Cap'n Proto serialization library"
 arch=(x86_64)
@@ -14,7 +14,7 @@ depends=(python capnproto)
 makedepends=(python-setuptools python-pkgconfig cython)
 checkdepends=(python-pytest)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/capnproto/pycapnp/archive/v${pkgver}.tar.gz")
-sha256sums=('3a4018c29e88b8f2d439b90159d4076807a2afa5951372343dec6e7d30ef038a')
+sha256sums=('4bc4e948b02c159eb7c268e3179a1b6709351281f4758245d700012e0ff0bc75')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -32,5 +32,5 @@ package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
