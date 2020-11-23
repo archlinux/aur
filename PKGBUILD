@@ -12,7 +12,6 @@ depends=('libx11')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('e87ed351e934c1dd31e17a2c00aa3bfd6fdb21e8a9ed814b370324d55029747b1cbee678a7d640e20acc50d6a9e43c72b715a0a2d3312955c01ac9253b28ff00')
-validpgpkeys=('9965F7E78C54A004D475D6FA53F218C35C1DC8B1') # menyoki <menyoki.cli@protonmail.com>
 
 build() {
   cd "$pkgname-$pkgver"
