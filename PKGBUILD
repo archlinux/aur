@@ -4,15 +4,15 @@
 pkgname=textext-git
 pkgver=1.2.0
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc="An inkscape extension which lets you add LaTeX equations to your drawings"
 arch=('any')
 license=('custom:BSD')
 url="https://github.com/textext/textext.git"
 provides=('textext')
 conflicts=('textext')
-makedepends=('mercurial')
-depends=('inkscape' 'python' 'texlive-core')
+makedepends=('git')
+depends=('inkscape' 'python-gobject' 'texlive-core')
 source=("git+$url")
 md5sums=('SKIP')
 
