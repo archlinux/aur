@@ -37,9 +37,9 @@ package_linux-rockchip() {
 
     cd "$srcdir"
 
-    ar x linux-dtb-current-rockchip_$_armbian-trunk_armhf.deb
+    ar x "linux-dtb-current-rockchip_$_armbian-trunk_armhf.deb"
     tar -xf data.tar.xz
-    ar x linux-image-current-rockchip_$_armbian-trunk_armhf.deb
+    ar x "linux-image-current-rockchip_$_armbian-trunk_armhf.deb"
     tar -xf data.tar.xz
 
     mkdir -p "$pkgdir/usr"
@@ -61,9 +61,9 @@ package_linux-rockchip-headers() {
 
     cd "$srcdir"
 
-    ar x linux-image-current-rockchip_$_armbian-trunk_armhf.deb
+    ar x "linux-image-current-rockchip_$_armbian-trunk_armhf.deb"
     tar -xf data.tar.xz
-    ar x linux-headers-current-rockchip_$_armbian-trunk_armhf.deb
+    ar x "linux-headers-current-rockchip_$_armbian-trunk_armhf.deb"
     tar -xf data.tar.xz
 
     mkdir -p "$pkgdir/usr/lib/modules/$pkgver-rockchip"
