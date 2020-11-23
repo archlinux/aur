@@ -15,10 +15,12 @@ _ubuntu=trunk
 _kernel=5.8.18
 source=(
     "$pkgname.install"
+    "https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/armbian-firmware_$pkgver-trunk_all.deb"
     "https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-$_ubuntu-root-current-tinkerboard_$pkgver-trunk_armhf.deb"
 )
 sha512sums=(
     'ae127fb7c2c8e49347d6cf0e959da28c8ac2c7d3971005b5b66eb84ddaa594196194a126d8e9a088f04138102208e9575f22f2ceccd959f69572ef77c98b65e0'
+    "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/armbian-firmware_$pkgver-trunk_all.deb.sha512sum)"
     "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-$_ubuntu-root-current-tinkerboard_$pkgver-trunk_armhf.deb.sha512sum)"
 )
 noextract=("${source[@]##*/}")
@@ -32,7 +34,9 @@ prepare() {
 package() {
     cd "$srcdir"
 
-    ar x linux-$_ubuntu-root-current-tinkerboard_$pkgver-trunk_armhf.deb
+    ar x "armbian-firmware_$pkgver-trunk_all.deb"
+    tar -xf data.tar.xz
+    ar x "linux-$_ubuntu-root-current-tinkerboard_$pkgver-trunk_armhf.deb"
     tar -xf data.tar.xz
 
     install -Dm644 "lib/systemd/system/tinker-bluetooth.service" "$pkgdir/usr/lib/systemd/system/tinker-bluetooth.service"
@@ -41,5 +45,7 @@ package() {
     install -Dm755 "usr/local/bin/start_bt.sh" "$pkgdir/usr/bin/start_bt.sh"
     sed -r -i "s#usr/local/bin#usr/bin#g" "$pkgdir/usr/bin/start_bt.sh"
 
+    install -Dm644 "lib/firmware/rtlbt/rtl8723b_config" "$pkgdir/usr/lib/firmware/rtlbt/rtl8723b_config"
+    install -Dm644 "lib/firmware/rtlbt/rtl8723b_fw" "$pkgdir/usr/lib/firmware/rtlbt/rtl8723b_fw"
     install -Dm755 "usr/bin/rtk_hciattach" "$pkgdir/usr/bin/rtk_hciattach"
 }

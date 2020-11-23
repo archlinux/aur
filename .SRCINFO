@@ -11,11 +11,14 @@ pkgbase = tinkerboard-bluetooth
 	depends = bash
 	depends = systemd
 	noextract = tinkerboard-bluetooth.install
+	noextract = armbian-firmware_20.11.0-trunk_all.deb
 	noextract = linux-trunk-root-current-tinkerboard_20.11.0-trunk_armhf.deb
 	options = !strip
 	source = tinkerboard-bluetooth.install
+	source = https://github.com/redchenjs/armbian-ci/releases/download/v5.8.18-rockchip/armbian-firmware_20.11.0-trunk_all.deb
 	source = https://github.com/redchenjs/armbian-ci/releases/download/v5.8.18-rockchip/linux-trunk-root-current-tinkerboard_20.11.0-trunk_armhf.deb
 	sha512sums = ae127fb7c2c8e49347d6cf0e959da28c8ac2c7d3971005b5b66eb84ddaa594196194a126d8e9a088f04138102208e9575f22f2ceccd959f69572ef77c98b65e0
+	sha512sums = Not Found
 	sha512sums = Not Found
 
 pkgname = tinkerboard-bluetooth
