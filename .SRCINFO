@@ -1,6 +1,6 @@
 pkgbase = opendkim-git
 	pkgdesc = An open source implementation of the DKIM sender authentication system (with ed25519 support)
-	pkgver = 2.11.beta4093.835834ea
+	pkgver = 2.11beta4093.835834ea
 	pkgrel = 1
 	url = https://github.com/trusteddomainproject/OpenDKIM/blob/develop/README
 	arch = x86_64

@@ -4,7 +4,7 @@
 
 pkgname=opendkim-git
 _branch=develop
-pkgver=2.11.beta4093.835834ea
+pkgver=2.11beta4093.835834ea
 pkgrel=1
 pkgdesc="An open source implementation of the DKIM sender authentication system (with ed25519 support)"
 arch=(x86_64)
@@ -31,7 +31,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/OpenDKIM"
-  printf "2.11.beta%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "2.11beta%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
