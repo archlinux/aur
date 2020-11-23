@@ -4,10 +4,10 @@
 
 pkgname=opendds
 _pkgname=OpenDDS
-pkgver=3.14.0
-pkgrel=2
+pkgver=3.14.1
+pkgrel=1
 _opendds_version=$(echo $pkgver | sed -e 's/\.0$//g')
-_ace_tao_version=6.5.11
+_ace_tao_version=6.5.12
 pkgdesc="Open source C++ implementation of OMG Data Distribution Service (DDS)"
 arch=('i686' 'x86_64')
 url="http://www.opendds.org/"
@@ -21,10 +21,12 @@ source=(
   build.patch
 )
 md5sums=(
-  '09f4281db7a398b20dddcbfa787ac04f'
-  '604aca1898673a7ce5af0f72a0fda8cf'
+  'ae54336fbbec7a5d2e197c4b0dc0d5b8'
+  'bfbb96e6cfe1304e60c778fb7a6bc278'
   'c44b0c8d7ebccc2b9be0a040ec9f8c2b'
 )
+
+_strip_pl="$(realpath strip.pl)"
 
 prepare() {
   cd "$srcdir"
@@ -39,7 +41,8 @@ build() {
     --configh '#define ACE_LACKS_READDIR_R' \
     --configh '#define ACE_DISABLE_MKTEMP' \
     --configh '#define ACE_DISABLE_TEMPNAM' \
-    --no-tests
+    --no-tests \
+    --no-debug
   make
 }
 
@@ -51,6 +54,10 @@ package() {
   install -Dm644 "$DDS_ROOT/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/OpenDDS_LICENSE"
   install -Dm644 ACE_wrappers/COPYING "$pkgdir/usr/share/licenses/$pkgname/ACE_TAO_LICENSE"
   # TODO Other licences
+
+  # Strip $srcdir from Generated Files
+  cd "$pkgdir"
+  perl "$_strip_pl" "$srcdir"
 }
 
 # vim:set ts=2 sw=2 et:
