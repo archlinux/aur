@@ -1,6 +1,6 @@
 /pkg/
 /src/
 /*.tar.gz
-/*.xz
+/*.pkg.tar.zst
 /*.swp
 /tflint*.zip
