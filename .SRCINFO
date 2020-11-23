@@ -1,0 +1,14 @@
+pkgbase = mixbench-cuda-git
+	pkgdesc = GPU benchmark tool for evaluating GPUs on mixed operational intensity kernels (CUDA implementation)
+	pkgver = 0.193.v0.03.8.gbab3fb7
+	pkgrel = 1
+	url = https://github.com/ekondis/mixbench
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	source = mixbench-cuda-git::git+https://github.com/ekondis/mixbench.git#branch=master
+	sha256sums = SKIP
+
+pkgname = mixbench-cuda-git
+
