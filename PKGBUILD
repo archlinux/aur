@@ -14,12 +14,15 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/gpio_lib_c"
+
     printf "%s.r%s.%s" "$(<VERSION)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
     cd "$srcdir/gpio_lib_c"
-    sed -i 's#$(DESTDIR)$(PREFIX)/lib/libwiringPiDev.so.$(VERSION)	$(DESTDIR)#libwiringPiDev.so.$(VERSION)	$(DESTDIR)$(PREFIX)#g' */Makefile
+
+    sed -i 's#$(DESTDIR)/lib#$(DESTDIR)$(PREFIX)/lib#' */Makefile
+    sed -i 's#$ln -sf $(DESTDIR)$(PREFIX)/lib/#ln -sf #' */Makefile
 }
 
 package() {
