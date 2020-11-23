@@ -7,7 +7,7 @@ pkgrel=3
 pkgdesc="Etebase Python library"
 arch=(x86_64)
 url="https://github.com/etesync/etebase-py"
-license=('LGPL')
+license=('BSD')
 depends=('openssl' 'python-msgpack')
 makedepends=('cargo' 'git' 'python-setuptools' 'python-setuptools-rust')
 source=("${_pkgname}::git+https://github.com/etesync/etebase-py.git?tag=v$pkgver" "0001-Dynamically-link-against-libssl.patch")
