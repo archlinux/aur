@@ -252,6 +252,10 @@ AvoidDiskWrites 1
 ## Try to use built-in (static) crypto hardware acceleration when available.
 HardwareAccel 1
 
+## If set to 1, Tor will attempt to lock all current and future memory pages,
+## so that memory cannot be paged out.
+DisableAllSwap 1
+
 ## Configuration options can be imported from files or folders using the %include
 ## option with the value being a path. This path can have wildcards. Wildcards are
 ## expanded first, using lexical order. Then, for each matching file or folder, the following

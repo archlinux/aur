@@ -14,6 +14,7 @@ Restart=on-failure
 RestartSec=1
 WatchdogSec=1m
 LimitNOFILE=32768
+LimitMEMLOCK=infinity
 
 # Hardening
 PrivateTmp=yes
@@ -22,10 +23,11 @@ DeviceAllow=/dev/null rw
 DeviceAllow=/dev/urandom r
 ProtectHome=yes
 ProtectSystem=full
-ProtectKernelTunables=yes
+NoNewPrivileges=true
+MemoryDenyWriteExecute=true
 ReadOnlyDirectories=/
-ReadWriteDirectories=-/var/lib/tor -/var/log/tor
-NoNewPrivileges=yes
+ReadWriteDirectories=-/var/lib/tor
+ReadWriteDirectories=-/var/log/tor
 CapabilityBoundingSet=CAP_SETUID CAP_SETGID CAP_NET_BIND_SERVICE CAP_DAC_READ_SEARCH
 
 [Install]
