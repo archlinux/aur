@@ -9,7 +9,7 @@
 
 pkgname=pycharm-community-eap
 
-_buildver=203.5600.33
+_buildver=203.5981.52
 _pkgver=2020.3
 _eap=y
 pkgver="$_pkgver.$_buildver"
@@ -25,7 +25,7 @@ provides=('pycharm-community-edition')
 conflicts=('pycharm-community-edition')
 
 makedepends=('python-setuptools')  # 'python2-setuptools'
-depends=('python' 'glib2' 'libdbusmenu-glib')
+depends=('python' 'glib2' 'dbus' 'libdbusmenu-glib')
 optdepends=('python2: Support for Python 2 language'
 			'ipython: Alternative Python shell'
 			'ipython2: Alternative Python 2 shell')
@@ -81,8 +81,8 @@ package() {
 		StartupNotify=true
 		StartupWMClass=jetbrains-pycharm-ce
 	EOF
-	ln -sv "/opt/$pkgname/bin/pycharm.sh" "$pkgdir/usr/bin/pycharm-ce"
-	ln -sv "/opt/$pkgname/bin/pycharm.png" "$pkgdir/usr/share/pixmaps/"
+	ln -sfv "/opt/$pkgname/bin/pycharm.sh"  "$pkgdir/usr/bin/pycharm-ce"
+	ln -sfv "/opt/$pkgname/bin/pycharm.png" "$pkgdir/usr/share/pixmaps/pycharm.png"
 }
 
 
