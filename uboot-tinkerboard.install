@@ -1,0 +1,7 @@
+post_install() {
+  mkimage -C none -A arm -T script -d /boot/boot.cmd /boot/boot.scr
+}
+
+pre_remove() {
+  rm -f /boot/boot.scr
+}
