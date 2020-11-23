@@ -10,9 +10,9 @@ license=('GPL2')
 makedepends=('findutils' 'curl')
 depends=('bash' 'systemd')
 options=('!strip')
-_kernel=5.8.18
-_ubuntu=trunk
 install=$pkgname.install
+_ubuntu=trunk
+_kernel=5.8.18
 source=(
     "$pkgname.install"
     "https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-$_ubuntu-root-current-tinkerboard_$pkgver-trunk_armhf.deb"
