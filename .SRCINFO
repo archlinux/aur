@@ -1,33 +1,33 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = Repackaging of the Arch kernel with a unique package name for each version
-	pkgver = 5.9.8.arch1
+	pkgver = 5.9.9.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.9.8-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.9.9-arch1
 	arch = x86_64
 	license = GPL2
 	options = !strip
-	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-5.9.8.arch1-1-x86_64.pkg.tar.zst
-	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-headers-5.9.8.arch1-1-x86_64.pkg.tar.zst
-	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-docs-5.9.8.arch1-1-x86_64.pkg.tar.zst
-	sha256sums = daf20dad2162eac97ccf5b90c42d4756bb47968c2d02d1790376b09bb446c08c
-	sha256sums = 77e720c0cff6b0df6a5bdbea73d150d4150c4b6f736873d4b5ca3bb728c4ac38
-	sha256sums = 4094392aa72601159b12f2bea4d6c276c776ce3be3230182033c250a1857f15a
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-5.9.9.arch1-1-x86_64.pkg.tar.zst
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-headers-5.9.9.arch1-1-x86_64.pkg.tar.zst
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-docs-5.9.9.arch1-1-x86_64.pkg.tar.zst
+	sha256sums = 5b3dae20b0bb3b02a4c45496abfc5404412af25ace941225d8d30c2651a93160
+	sha256sums = d423c3db77c6b8e961cdfde6e911e896e80d0a8e2f02173b212d78788396315c
+	sha256sums = e3d44db708eb1879627bcb7ee6561d97fe2e9514d2395d803226f2e62b261dc7
 
 pkgname = linux-versioned-bin
-	pkgdesc = Dummy package depending on linux5.9.8.arch1-1-bin
-	depends = linux5.9.8.arch1-1-bin
+	pkgdesc = Dummy package depending on linux5.9.9.arch1-1-bin
+	depends = linux5.9.9.arch1-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.9.8.arch1-1-headers-bin
-	depends = linux5.9.8.arch1-1-headers-bin
+	pkgdesc = Dummy package depending on linux5.9.9.arch1-1-headers-bin
+	depends = linux5.9.9.arch1-1-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.9.8.arch1-1-docs-bin
-	depends = linux5.9.8.arch1-1-docs-bin
+	pkgdesc = Dummy package depending on linux5.9.9.arch1-1-docs-bin
+	depends = linux5.9.9.arch1-1-docs-bin
 
-pkgname = linux5.9.8.arch1-1-bin
-	pkgdesc = The Linux kernel and modules, version 5.9.8-arch1-1
+pkgname = linux5.9.9.arch1-1-bin
+	pkgdesc = The Linux kernel and modules, version 5.9.9-arch1-1
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -39,11 +39,11 @@ pkgname = linux5.9.8.arch1-1-bin
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux5.9.8.arch1-1-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.9.8-arch1-1
+pkgname = linux5.9.9.arch1-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.9.9-arch1-1
 	conflicts = linux-headers
 
-pkgname = linux5.9.8.arch1-1-docs-bin
-	pkgdesc = Documentation for the Linux kernel 5.9.8-arch1-1
+pkgname = linux5.9.9.arch1-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 5.9.9-arch1-1
 	conflicts = linux-docs
 
