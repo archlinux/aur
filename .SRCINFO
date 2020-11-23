@@ -22,4 +22,3 @@ pkgbase = tinkerboard-bluetooth
 	sha512sums = a8bd6628ab6f59c6a66f2a7127299416ac02a66b29c9fc3d3d2fa852e0f92b3d966f3867296818ecf1a8bfea82f62968d0c75e4c3a1e328321e888f292a6d941
 
 pkgname = tinkerboard-bluetooth
-
