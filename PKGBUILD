@@ -38,6 +38,6 @@ package() {
 	cd "${pkgname}-${pkgver}/src"
 	install -dm 755 "${pkgdir}/usr/lib"
 	install -dm 755 "${pkgdir}/usr/bin"
-	install -m 755 "${provides}" "${pkgdir}/usr/lib"
+	install -m 755 "${provides[@]}" "${pkgdir}/usr/lib"
 	install -m 755 "efivar-static" "${pkgdir}/usr/bin"
 }
