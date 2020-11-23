@@ -4,12 +4,12 @@
 # symlink in post_install, and hence does not remove it properly
 # when it gets removed due to our conflicts entry.
 pkgname=jamm-bin
-pkgver=0.3.59
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Jamm is a lightweight video collaboration app for remote teams"
-arch=('x86_64')
+arch=("x86_64")
 url="https://jamm.app/download"
-license=('custom')
+license=("custom")
 makedepends=("wget")
 depends=(
   "c-ares" ffmpeg gtk3 http-parser libevent libvpx libxslt libxss
@@ -19,11 +19,11 @@ provides=("jamm")
 conflicts=("jamm")
 DLAGENTS=("https::/usr/bin/wget --content-disposition %u")
 source=(
-  # -> "https://graffiti-app-one-tusk.s3-us-west-1.amazonaws.com/alpha/jamm-0.3.59.pacman"
-  "jamm-0.3.59.pacman::https://jamm.app/api/download/pacman?channel=alpha"
+  # -> "https://graffiti-app-one-tusk.s3-us-west-1.amazonaws.com/alpha/jamm-${pkgver}.pacman"
+  "jamm-${pkgver}.pacman::https://jamm.app/api/download/pacman?channel=alpha"
 )
 sha256sums=(
-  "a0b9999ce9385844b93d841a787e7b80f2166b03fcf38f858eab4e3383d929c5"
+  "224f2e492f39a09435bcd5d890d58f93f278cce4d1f48f8d5b28ef979d7d7279"
 )
 
 prepare() {
