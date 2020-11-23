@@ -1,5 +1,5 @@
 pkgname=julia-bin
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 arch=('x86_64')
 pkgdesc='High-level, high-performance, dynamic programming language - official binaries'
@@ -8,7 +8,7 @@ conflicts=(julia)
 url='https://julialang.org/'
 license=('MIT')
 source=("https://julialang-s3.julialang.org/bin/linux/x64/${pkgver:0:3}/julia-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('6da704fadcefa39725503e4c7a9cfa1a570ba8a647c4bd8de69a118f43584630')
+sha256sums=('f190c938dd6fed97021953240523c9db448ec0a6760b574afd4e9924ab5615f1')
 options=(!strip)
 
 package() {
