@@ -14,6 +14,7 @@ provides=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}-$pkgver-x86_64-unknown-linux-gnu.tar.gz"{,.sig})
 sha512sums_x86_64=('c7b6e178980e54317f2617bdaebf5a277593e7d967870c572b57c30736b2bbb47d004f9c619949292277f8a89e5579a6c29d453bb12edfa9ca80e30bd5e622fa'
                    'SKIP')
+validpgpkeys=('9965F7E78C54A004D475D6FA53F218C35C1DC8B1') # menyoki <menyoki.cli@protonmail.com>
 
 package() {
   cd "${pkgname%-bin}-$pkgver"
