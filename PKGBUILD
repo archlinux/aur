@@ -3,13 +3,12 @@
 pkgname=tinkerboard-bluetooth
 pkgver=20.11.0
 pkgrel=1
-pkgdesc="Tinkerboard Bluetooth support from Armbian"
+pkgdesc="Tinker Board / S Bluetooth support from Armbian"
 arch=('armv7h')
 url="https://github.com/redchenjs/armbian-ci"
 license=('GPL2')
 makedepends=('findutils' 'curl')
 depends=('bash' 'systemd')
-options=('!strip')
 install=$pkgname.install
 _ubuntu=focal
 _kernel=5.8.18

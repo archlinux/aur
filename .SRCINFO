@@ -1,5 +1,5 @@
 pkgbase = tinkerboard-bluetooth
-	pkgdesc = Tinkerboard Bluetooth support from Armbian
+	pkgdesc = Tinker Board / S Bluetooth support from Armbian
 	pkgver = 20.11.0
 	pkgrel = 1
 	url = https://github.com/redchenjs/armbian-ci
@@ -13,7 +13,6 @@ pkgbase = tinkerboard-bluetooth
 	noextract = tinkerboard-bluetooth.install
 	noextract = armbian-firmware_20.11.0-trunk_all.deb
 	noextract = linux-focal-root-current-tinkerboard_20.11.0-trunk_armhf.deb
-	options = !strip
 	source = tinkerboard-bluetooth.install
 	source = https://github.com/redchenjs/armbian-ci/releases/download/v5.8.18-rockchip/armbian-firmware_20.11.0-trunk_all.deb
 	source = https://github.com/redchenjs/armbian-ci/releases/download/v5.8.18-rockchip/linux-focal-root-current-tinkerboard_20.11.0-trunk_armhf.deb
