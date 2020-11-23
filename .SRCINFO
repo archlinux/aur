@@ -6,7 +6,6 @@ pkgbase = k6
 	arch = x86_64
 	arch = i686
 	license = AGPL3
-	makedepends = mercurial
 	depends = go
 	options = !strip
 	options = !emptydirs
