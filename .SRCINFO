@@ -1,13 +1,13 @@
 pkgbase = fnotifystat
 	pkgdesc = file activity monitoring tool
-	pkgver = 0.02.06
+	pkgver = 0.02.07
 	pkgrel = 1
 	url = https://kernel.ubuntu.com/~cking/fnotifystat/
 	arch = x86_64
 	license = GPL2
 	optdepends = bash-completion: bash completion support
-	source = https://kernel.ubuntu.com/~cking/tarballs/fnotifystat/fnotifystat-0.02.06.tar.gz
-	sha256sums = 3e5a2795da012940621e15543712f12c335aa688ec61f2153c18a38ce0c722d7
+	source = https://kernel.ubuntu.com/~cking/tarballs/fnotifystat/fnotifystat-0.02.07.tar.gz
+	sha256sums = 8023a8139c43177b84e260591c51906526e4c52d58874ef13afdadea9f78ee46
 
 pkgname = fnotifystat
 
