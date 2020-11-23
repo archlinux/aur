@@ -5,7 +5,7 @@ pkgname=('linux-rockchip' 'linux-rockchip-headers')
 pkgver=5.8.18
 pkgrel=1
 arch=('armv7h')
-url="https://github.com/redchenjs/armbian-kernel"
+url="https://github.com/redchenjs/armbian-ci"
 license=('GPL2')
 makedepends=('findutils' 'curl')
 options=('!strip')
@@ -13,15 +13,15 @@ _kernver=$pkgver-rockchip
 _armbian=20.11.0-trunk
 source=(
     "mkinitcpio.preset"
-    "https://github.com/redchenjs/armbian-kernel/releases/download/v$_kernver/linux-dtb-current-rockchip_${_armbian}_armhf.deb"
-    "https://github.com/redchenjs/armbian-kernel/releases/download/v$_kernver/linux-image-current-rockchip_${_armbian}_armhf.deb"
-    "https://github.com/redchenjs/armbian-kernel/releases/download/v$_kernver/linux-headers-current-rockchip_${_armbian}_armhf.deb"
+    "https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-dtb-current-rockchip_${_armbian}_armhf.deb"
+    "https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-image-current-rockchip_${_armbian}_armhf.deb"
+    "https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-headers-current-rockchip_${_armbian}_armhf.deb"
 )
 sha512sums=(
     '4e479e5c010c5cd6105b104419bbf1886a60174535d17a34ae457f2744598d0f1c4e2b24dc989c038fa2c51b3d076e0acd3210e1492a87db68b1d43840e11e8a'
-    "$(curl -s -L https://github.com/redchenjs/armbian-kernel/releases/download/v$_kernver/linux-dtb-current-rockchip_${_armbian}_armhf.deb.sha512sum)"
-    "$(curl -s -L https://github.com/redchenjs/armbian-kernel/releases/download/v$_kernver/linux-image-current-rockchip_${_armbian}_armhf.deb.sha512sum)"
-    "$(curl -s -L https://github.com/redchenjs/armbian-kernel/releases/download/v$_kernver/linux-headers-current-rockchip_${_armbian}_armhf.deb.sha512sum)"
+    "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-dtb-current-rockchip_${_armbian}_armhf.deb.sha512sum)"
+    "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-image-current-rockchip_${_armbian}_armhf.deb.sha512sum)"
+    "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-headers-current-rockchip_${_armbian}_armhf.deb.sha512sum)"
 )
 noextract=("${source[@]##*/}")
 
