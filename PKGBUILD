@@ -2,33 +2,31 @@
 
 pkgname=fluffychat
 _gitname=${pkgname}-flutter
-pkgver=0.21.1
-pkgrel=5
+pkgver=0.22.1
+pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
 url="https://fluffychat.im/"
 license=('AGPL3')
 makedepends=('clang'
              'ninja'
-             'flutter'
+             'flutter-dev'
              'cmake')
 optdepends=('pantalaimon: used for E2E encryption')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("fluffychat-flutter-v0.21.1.tar.gz::https://gitlab.com/ChristianPauly/fluffychat-flutter/-/archive/v0.21.1/fluffychat-flutter-v0.21.1.tar.gz")
-sha256sums=('fb667f64b013b94ccb22a23a033b1f152ec429a38af3bacaa4f70d253771b8c0')
+source=("fluffychat-flutter-v0.22.1.tar.gz::https://gitlab.com/ChristianPauly/fluffychat-flutter/-/archive/v0.22.1/fluffychat-flutter-v0.22.1.tar.gz")
+sha256sums=('4bf5846b6deedd5037085ae535cd67ca911ac4ebd3a3d1f4d21987e6a700abdf')
 
 
 prepare() {
-  flutter channel dev
-  flutter upgrade
   flutter config --enable-linux-desktop
 }
 
 build() {
   cd ${_gitname}-v$pkgver
 
-  flutter build linux --release
+  flutter build linux --release --verbose
 }
 
 package() {  
