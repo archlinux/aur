@@ -1,7 +1,7 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=tinkerboard-bluetooth
-pkgver=20.11
+pkgver=20.11.0
 pkgrel=1
 pkgdesc="Tinkerboard Bluetooth support from Armbian"
 arch=('armv7h')
@@ -11,7 +11,7 @@ makedepends=('findutils' 'curl' 'systemd')
 depends=('bash')
 options=('!strip')
 _kernel=5.8.18
-_ubuntu=focal
+_ubuntu=trunk
 install=$pkgname.install
 source=(
     "$pkgname.install"
