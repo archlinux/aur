@@ -1,5 +1,6 @@
 
 post_install() {
+  ln -s "/etc/opt/chrome/native-messaging-hosts/ru.rtlabs.ifcplugin.json" "/etc/chromium/native-messaging-hosts"
   # Add VIDs and PIDs to CCID Boundle
   cd /etc/update_ccid_boundle
   bash ./update_ccid_boundle.sh
@@ -7,6 +8,7 @@ post_install() {
 
 
 post_upgrade() {
+  ln -s "/etc/opt/chrome/native-messaging-hosts/ru.rtlabs.ifcplugin.json" "/etc/chromium/native-messaging-hosts"
   # Add VIDs and PIDs to CCID Boundle
   cd /etc/update_ccid_boundle
   bash ./update_ccid_boundle.sh
