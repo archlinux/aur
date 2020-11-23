@@ -36,10 +36,10 @@ package() {
     tar -xf data.tar.xz
 
     install -Dm644 "lib/systemd/system/tinker-bluetooth.service" "$pkgdir/usr/lib/systemd/system/tinker-bluetooth.service"
-    sed -r -i "s#local/usr/bin#usr/bin#g" "$pkgdir/usr/lib/systemd/system/tinker-bluetooth.service"
+    sed -r -i "s#usr/local/bin#usr/bin#g" "$pkgdir/usr/lib/systemd/system/tinker-bluetooth.service"
 
-    install -Dm755 "local/usr/bin/start_bt.sh" "$pkgdir/usr/bin/start_bt.sh"
-    sed -r -i "s#local/usr/bin#usr/bin#g" "$pkgdir/usr/bin/start_bt.sh"
+    install -Dm755 "usr/local/bin/start_bt.sh" "$pkgdir/usr/bin/start_bt.sh"
+    sed -r -i "s#usr/local/bin#usr/bin#g" "$pkgdir/usr/bin/start_bt.sh"
 
     install -Dm755 "usr/bin/rtk_hciattach" "$pkgdir/usr/bin/rtk_hciattach"
 }
