@@ -6,7 +6,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/Jan200101/polecat'
 license=('MIT')
 depends=('wine')
-makedepends=('libcurl-devel' 'json-c-devel' 'libarchive-devel' 'cmake' 'gcc' 'c++' 'git')
+makedepends=('curl' 'json-c' 'libarchive' 'cmake' 'gcc' 'git')
 provides=('polecat')
 conflicts=('polecat')
 source=('git+https://github.com/Jan200101/polecat.git#tag=0.1.9')
