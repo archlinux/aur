@@ -1,13 +1,12 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
-_wafver=2.0.9
-
 pkgname=mpv-full
-pkgver=0.32.0
+pkgver=0.33.0
 pkgrel=1
+_wafver=2.0.20
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('x86_64')
-license=('GPL3')
+license=('GPL')
 url='https://mpv.io/'
 depends=(
     # official repositories:
@@ -15,10 +14,10 @@ depends=(
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'mujs'
         'libdvdnav' 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
-        'smbclient' 'zlib' 'vapoursynth' 'sndio' 'openal' 'vulkan-icd-loader'
-        'shaderc' 'libplacebo' 'zimg'
+        'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'shaderc'
+        'libplacebo' 'zimg'
     # AUR:
-        'rsound' 'spirv-cross'
+        'spirv-cross' 'libsixel'
 )
 makedepends=('mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols' 'ffnvcodec-headers')
@@ -27,14 +26,14 @@ optdepends=('youtube-dl: for video-sharing websites playback'
 provides=('mpv')
 conflicts=('mpv')
 options=('!emptydirs')
+BUILDENV=('!check')
 source=("mpv-${pkgver}.tar.gz"::"https://github.com/mpv-player/mpv/archive/v${pkgver}.tar.gz"
         "https://waf.io/waf-${_wafver}")
-sha256sums=('9163f64832226d22e24bbc4874ebd6ac02372cd717bef15c28a0aa858c5fe592'
-            '2a8e0816f023995e557f79ea8940d322bec18f286917c8f9a6fa2dc3875dfa48')
+sha256sums=('f1b9baf5dc2eeaf376597c28a6281facf6ed98ff3d567e3955c95bf2459520b4'
+            'bf971e98edc2414968a262c6aa6b88541a26c3cd248689c89f4c57370955ee7f')
 
 prepare() {
-    cd "mpv-${pkgver}"
-    install -m755 "${srcdir}/waf-${_wafver}" waf
+    install -D -m755 "waf-${_wafver}" "mpv-${pkgver}/waf"
 }
 
 build() {
@@ -63,11 +62,8 @@ build() {
         '--disable-uwp'
         '--disable-win32-internal-pthreads'
         '--enable-iconv'
-        '--enable-libsmbclient'
         '--enable-lua'
         '--enable-javascript'
-        '--enable-libass'
-        '--enable-libass-osd'
         '--enable-zlib'
         '--enable-libbluray'
         '--enable-dvdnav'
@@ -86,9 +82,6 @@ build() {
         '--lua=52arch'
         
         '--enable-sdl2-audio'
-        '--enable-oss-audio'
-        '--enable-rsound'
-        '--enable-sndio'
         '--enable-pulse'
         '--enable-jack'
         '--enable-openal'
@@ -101,7 +94,6 @@ build() {
         '--enable-sdl2-video'
         '--disable-cocoa'
         '--enable-drm'
-        '--enable-drmprime'
         '--enable-gbm'
         '--enable-wayland-scanner'
         '--enable-wayland-protocols'
@@ -138,6 +130,7 @@ build() {
         '--enable-gl'
         '--enable-libplacebo'
         '--enable-vulkan'
+        '--enable-sixel'
         
         '--disable-videotoolbox-gl'
         '--disable-d3d-hwaccel'
@@ -161,33 +154,30 @@ build() {
     ./waf configure --disable-tests "${_common_opts[@]}"
     ./waf build
     
+    ## tests currently requires ffmpeg git master, disabling for the time being
     # build with tests on the mpv binary (for tests only)
-    printf '%s\n' ' -> Building the test files (with tests)...'
-    export WAFLOCK='.lock-waf_linux_build-tests'
-    ./waf distclean configure --enable-tests "${_common_opts[@]}"
-    ./waf build
+    #printf '%s\n' ' -> Building the test files (with tests)...'
+    #export WAFLOCK='.lock-waf_linux_build-tests'
+    #./waf distclean configure --enable-tests "${_common_opts[@]}"
+    #./waf build
 }
 
 check() {
     cd "mpv-${pkgver}"
-    
     local _test
     export LD_LIBRARY_PATH="${srcdir}/mpv-${pkgver}/build-tests"
-    
-    # skip problematic 'img_format' test, and the 'all-simple' special value that runs all tests
     while read -r -d '' _test
     do
         printf '%s\n' "  -> Running test '${_test}'..."
         build-tests/mpv --unittest="$_test"
-    done < <(build-tests/mpv --unittest='help' | awk 'FNR == 1 { next } !/img_format|all-simple/ { printf "%s\0", $1 }')
+    done < <(build-tests/mpv --unittest='help' |
+        awk 'FNR == 1 { next } !/all-simple|img_format|repack(|_zimg)$/ { printf "%s\0", $1 }')
 }
 
 package() {
     cd "mpv-${pkgver}"
-    
     export WAFLOCK='.lock-waf_linux_build'
     ./waf install --destdir="$pkgdir"
-    
     install -D -m644 DOCS/{encoding.rst,tech-overview.txt} "${pkgdir}/usr/share/doc/mpv"
     install -D -m644 TOOLS/lua/* -t "${pkgdir}/usr/share/mpv/script"
 }
