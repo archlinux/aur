@@ -1,0 +1,16 @@
+pkgbase = efivar-static
+	pkgdesc = static libraries and executable to work with EFI variables
+	pkgver = 37
+	pkgrel = 4
+	url = https://github.com/rhboot/efivar
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	depends = glibc
+	provides = libefiboot.a
+	provides = libefivar.a
+	source = git+https://github.com/rhinstaller/efivar.git#tag=37
+	sha512sums = SKIP
+
+pkgname = efivar-static
+
