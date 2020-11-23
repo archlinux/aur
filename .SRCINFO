@@ -1,6 +1,6 @@
 pkgbase = fcitx5-pinyin-zhwiki
 	pkgdesc = Fcitx 5 Pinyin Dictionary from zh.wikipedia.org
-	pkgver = 20201101
+	pkgver = 20201120
 	pkgrel = 1
 	url = https://github.com/felixonmars/fcitx5-pinyin-zhwiki
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = fcitx5-pinyin-zhwiki
 	makedepends = opencc
 	makedepends = pypinyin
 	source = https://github.com/felixonmars/fcitx5-pinyin-zhwiki/archive/0.2.1/fcitx5-pinyin-zhwiki-0.2.1.tar.gz
-	source = https://dumps.wikimedia.org/zhwiki/20201101/zhwiki-20201101-all-titles-in-ns0.gz
+	source = https://dumps.wikimedia.org/zhwiki/20201120/zhwiki-20201120-all-titles-in-ns0.gz
 	md5sums = 2d01f45a73b7c686fef5c44472a9572b
-	md5sums = cbaacd14c86294e2069c94033ab79eb1
+	md5sums = a0c7707cc4f8d0aeddf5250878f25cef
 
 pkgname = fcitx5-pinyin-zhwiki
 
