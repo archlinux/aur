@@ -1,8 +1,8 @@
 pkgbase = ifcplugin
-	pkgdesc = Crypto Interface Web Browser Plugin for https://gosuslugi.ru
-	pkgver = 2.0.6.0
+	pkgdesc = Crypto Interface Web Browser Plugin for https://gosuslugi.ru/
+	pkgver = 3.1.1.0
 	pkgrel = 1
-	url = https://esia.gosuslugi.ru
+	url = https://ds-plugin.gosuslugi.ru/plugin/upload/Index.spr
 	install = ifcplugin.install
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,10 @@ pkgbase = ifcplugin
 	depends = pcsc-tools
 	depends = glibc
 	depends = acsccid
-	source = https://ds-plugin.gosuslugi.ru/plugin/htdocs/plugin/IFCPlugin-i386.deb
-	sha512sums = b7d50ddc35c1e0b81f564b08a8cb58d903fcbf003dab91c02e5db2404dd6493e25b7c7cb2061b8d112ab4c0109d482855c438a479e328d7fe5ebda830c5af510
+	source_i686 = ifcplugin-3.1.1.0.rpm::https://ds-plugin.gosuslugi.ru/plugin/upload/assets/distrib/IFCPlugin-i386.rpm
+	sha256sums_i686 = 92c9253417a01bbb143fdb34448febf6e264b6b7d64aad3b47e3ece8bd181d57
+	source_x86_64 = ifcplugin-3.1.1.0.rpm::https://ds-plugin.gosuslugi.ru/plugin/upload/assets/distrib/IFCPlugin-x86_64.rpm
+	sha256sums_x86_64 = 7fa0df9cda6c0b2352d5cf1530289cc8fe93e961f9f135178cef12aa8ad19957
 
 pkgname = ifcplugin
 
