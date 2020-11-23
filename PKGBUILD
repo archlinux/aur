@@ -7,13 +7,13 @@
 _upstream="compiz-plugins-main"
 
 pkgname=compiz-fusion-plugins-main-git
-pkgver=0.8.14.r17.g5723352
+pkgver=0.8.18.r27.g5b6ecb5
 pkgrel=1
 pkgdesc="Compiz Fusion Main plugins"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/compiz/${_upstream}"
 license=('GPL')
-depends=('compiz-core-git' 'libjpeg>=7' 'librsvg' 'compiz-bcop-git' 'libxdamage' 'libxcomposite'
+depends=('compiz-core-git' 'libjpeg-turbo' 'librsvg' 'compiz-bcop-git' 'libxdamage' 'libxcomposite'
 	'libxinerama' 'startup-notification')
 makedepends=('intltool' 'pkgconfig' 'gettext')
 groups=('compiz-fusion' 'compiz-fusion-kde' 'compiz-fusion-gtk')
