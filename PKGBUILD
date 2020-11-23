@@ -2,7 +2,7 @@
 # Maintainer: Leihu Xi <leihuxi@gmail.com>
 
 pkgname=mitalk
-pkgver=4.0.100
+pkgver=4.0.101
 pkgrel=1
 pkgdesc="MiTalk Messenger"
 arch=('x86_64')
