@@ -4,7 +4,7 @@
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 pkgname=guix-installer
-pkgver=v1.1.0
+pkgver=v1.2.0
 pkgrel=1
 pkgdesc="A command line installer for Guix"
 arch=(any)
@@ -23,10 +23,10 @@ depends=('coreutils'
 source=("https://git.savannah.gnu.org/cgit/guix.git/plain/etc/guix-install.sh?h=${pkgver}"
         "https://git.savannah.gnu.org/cgit/guix.git/plain/COPYING?h=${pkgver}")
 
-sha256sums=('5e037ad198fe02455b309f05bdf80c166c468c06666a46910dd25cdf37bd1fd3'
-	    '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
-sha512sums=('afd946a4ea6fbf5fa44d6d90a3689f74291ba02df6c03d86922d26d809926c509cc761ed8743d26e03f20c588c71c2f73a1c27f34609bdcb527218798ba73d7e'
-	    '7633623b66b5e686bb94dd96a7cdb5a7e5ee00e87004fab416a5610d59c62badaf512a2e26e34e2455b7ed6b76690d2cd47464836d7d85d78b51d50f7e933d5c')
+sha256sums=('cef7d941742661a5f9a89865a1389c19d3eeb0fe28da3f49eeac7a90d27f6cff'
+            '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
+sha512sums=('6c3b68fd4f4cca43f72da51b1473db75c0015db9079fbfe78f97fdf08a1f5dcc4da41f1ead4d0f76ad0cf7d999fc1090406be2c27514d2b6362476213f3989e1'
+            '7633623b66b5e686bb94dd96a7cdb5a7e5ee00e87004fab416a5610d59c62badaf512a2e26e34e2455b7ed6b76690d2cd47464836d7d85d78b51d50f7e933d5c')
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}"
