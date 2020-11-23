@@ -1,10 +1,8 @@
 #Maintainer: kevall474 <kevall474@tuta.io> <https://github.com/kevall474>
-#Credits: Jan Alexander Steffens (heftig) <heftig@archlinux.org> ---> For the base PKGBUILD, config file, sphinx-workaround.patch
-#and 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
-#Credits: Andreas Radke <andyrtr@archlinux.org> ---> For the base PKGBUILD, config file and sphinx-workaround.patch
-#Credits: Bartłomiej Piotrowski <bpiotrowski@archlinux.org> ---> For the base api-headers package
+#Credits: Jan Alexander Steffens (heftig) <heftig@archlinux.org> ---> For the base PKGBUILD
+#Credits: Andreas Radke <andyrtr@archlinux.org> ---> For the base PKGBUILD
 #Credits: Linus Torvalds ---> For the linux kernel
-#Credits: Joan Figueras <ffigue at gmail dot com> ---> For the base PKFBUILD, choose-gcc-optimization.sh and how to enable features
+#Credits: Joan Figueras <ffigue at gmail dot com> ---> For the base PKFBUILD
 #Credits: Piotr Gorski <lucjan.lucjanov@gmail.com> <https://github.com/sirlucjan/kernel-patches> ---> For the patches and the base pkgbuild
 #Credits: Tk-Glitch <https://github.com/Tk-Glitch> ---> For some patches
 
