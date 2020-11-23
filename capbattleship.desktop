@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=CAP: Pirate Battleship
+GenericName=CAP: Pirate Battleship
+Keywords=chat;talk;im;message;xmpp;jabber;
+Exec=capbattleship
+Icon=capbattleship
+Terminal=false
+Type=Application
+Categories=Game;
