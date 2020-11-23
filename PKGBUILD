@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=arrayfire
-pkgver=3.7.2
-pkgrel=2
+pkgver=3.7.3
+pkgrel=1
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 arch=('x86_64')
 url='https://arrayfire.com'
@@ -15,7 +15,7 @@ optdepends=('cuda: Required for using CUDA backend'
 options=('!buildflags')
 # source=("http://arrayfire.com/arrayfire_source/arrayfire-full-${pkgver}.tar.bz2")
 source=("http://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-full-${pkgver}.tar.bz2")
-sha512sums=('733f5931cca9397dd45945fde05d887207d11891fcc5ff0d2b5f30ac6bd4881240c595bd24d1d7b8f89c74e249b3fe16a15c2640586940bf101cd0fbaec998a6')
+sha512sums=('e94545b9e02c95ceff863ff73717250a8a7dd818d9c598f3e18f9aedb808977ee5062a6a1da212bd8c22996d2324153b2d1dfc9ecb4114a07b4927383881e230')
 
 build() {
   cd "${srcdir}/arrayfire-full-${pkgver}"
