@@ -9,7 +9,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=86.0.4240.183
+pkgver=86.0.4240.198
 pkgrel=1
 _launcher_ver=6
 _gcc_patchset=6
@@ -18,7 +18,7 @@ _pkgver=$(echo $pkgver | cut -d\. -f1-4)
 # ungoogled chromium variables
 _uc_ver=$pkgver-1
 _uc_usr=Eloston
-_uc_sum='a2355a4c0e569795feb4d334a29f6727f2336653eddec8f649ecda857ed84157'
+_uc_sum='cdc16588e774bcc7c3c0503ca0d3c47edb15874a22267381d55443d55c871b17'
 _uc_url="$_pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz"
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
@@ -51,7 +51,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         xproto-fix-underflow-in-Fp1616ToDouble.patch
         wayland-egl.patch
         chromium-skia-harmony.patch)
-sha256sums=('aa12c6665c33275f3edffb6f127f97f84fa0bb69c644b4b023d51d2d058a69bc'
+sha256sums=('a0ab825e527becab4ab3e11ef889e842436fe11a4fb7874419d1970e680c7a44'
             $_uc_sum
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
