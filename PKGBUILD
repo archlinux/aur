@@ -1,7 +1,7 @@
 # Maintainer: David Rodriguez <dissonant.tech@gmail.com>
 
 pkgname=argo-bin
-pkgver=2.11.7
+pkgver=2.11.8
 pkgrel=1
 pkgdesc="Argo Workflows: Get stuff done with Kubernetes"
 arch=('x86_64')
@@ -16,4 +16,4 @@ package() {
   install -Dm644 argo.zsh "$pkgdir/usr/share/zsh/site-functions/_argo"
   install -Dm644 argo.bash "$pkgdir/usr/share/bash-completion/completions/argo"
 }
-sha256sums=('76a08d265e7ac17c52458896e522e6cca043d39ca782781ab51eea9ee821a8b7')
+md5sums=('04b6c5e3c76d66bb75022da6ddc9ec16')
