@@ -2,7 +2,7 @@
 # Contributor:  Joakim Hernberg <jbh@alchemy.lu>
 
 pkgbase=linux-rt-lts
-pkgver=5.4.77.43.rt1
+pkgver=5.4.78.44.rt1
 pkgrel=1
 pkgdesc='Linux RT LTS'
 arch=('x86_64')
@@ -17,10 +17,10 @@ source=(
   'sphinx-workaround.patch'
 )
 sha512sums=('SKIP'
-            '4b138cee6d785d75dcdf4caeeedfe4673ab286239f2d52408f14b6cfbfdbcecc40f36d08ac2d62c53359dbb9f9747262ea3095044061dadc490f5563e38e177e'
+            'f6f0a9973c97ca0856a86f590e2402412a6296a964166dcfae0bf23656e40f0014df8d72dfc2caf8e0331e2c9a83cbc02b92f5e531d4671158fdd3180e586434'
             '8081673a6594e5fc2fddc98fa434e99817aa822f7136d3c14c8d465fa7b93c9ac5d3a4150a5b632e25b1dc76a814dfa19d8aede37d58b935db288465b6585c58')
 b2sums=('SKIP'
-        '70ec984681c56a80a2692848e1967d09cfe1959d6b282bcc30a9cc22858fa20cba820a39f9ad8e45d010e30581ca291e7b6331c2f541588c370ed8ddfdd420ce'
+        '5038bc0a9e2afcec0d1e98624f9c79b09abd510ed9d63696b4787a70f786d5a31b0ed7f62c3cce2d9b2994229dcf618d65e7856f9502d3dc85ae690e5809c1cf'
         '657fd0e70d29eee5518c27af7eec73a18f399215d2a21cf7b92c9914bee16d1e0981c00065ccb12f0534e57af906af63b17221c65a61146ec8894c88420fa56c')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@linuxfoundation.org>
