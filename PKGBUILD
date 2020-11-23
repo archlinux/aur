@@ -8,8 +8,8 @@ pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
-pkgver=2.47.1
-pkgrel=2
+pkgver=2.48
+pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -18,7 +18,7 @@ conflicts=('snap-confine')
 options=('!strip' 'emptydirs')
 install=snapd.install
 source=("$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz")
-sha256sums=('4f9666cd15d588017d4287aafdb3e7855748509afaa3002e6d149db1424e032f')
+sha256sums=('111b0ac81fdff702c953fe8249db269b5318a97ae3db10c1938c8afa9490228a')
 
 _gourl=github.com/snapcore/snapd
 
@@ -47,6 +47,12 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   export GOPATH="$srcdir/go"
+
+  # GOFLAGS may be modified by CI tools
+  # GOFLAGS are the go build flags for all binaries, GOFLAGS_SNAP are for snap
+  # build only.
+  GOFLAGS=""
+  GOFLAGS_SNAP="-tags nomanagers"
   # snapd does not support modules yet, explicitly disable Go modules
   export GO111MODULE=off
 
@@ -64,14 +70,14 @@ build() {
   flags=(-buildmode=pie -ldflags "-s -linkmode external -extldflags '$LDFLAGS'" -trimpath)
   staticflags=(-buildmode=pie -ldflags "-s -linkmode external -extldflags '$LDFLAGS -static'" -trimpath)
   # Build/install snap and snapd
-  go build "${flags[@]}" -o "$srcdir/go/bin/snap" "${_gourl}/cmd/snap"
-  go build "${flags[@]}" -o "$srcdir/go/bin/snapd" "${_gourl}/cmd/snapd"
-  go build "${flags[@]}" -o "$srcdir/go/bin/snap-seccomp" "${_gourl}/cmd/snap-seccomp"
-  go build "${flags[@]}" -o "$srcdir/go/bin/snap-failure" "${_gourl}/cmd/snap-failure"
+  go build "${flags[@]}" -o "$srcdir/go/bin/snap" $GOFLAGS_SNAP "${_gourl}/cmd/snap"
+  go build "${flags[@]}" -o "$srcdir/go/bin/snapd" $GOFLAGS "${_gourl}/cmd/snapd"
+  go build "${flags[@]}" -o "$srcdir/go/bin/snap-seccomp" $GOFLAGS "${_gourl}/cmd/snap-seccomp"
+  go build "${flags[@]}" -o "$srcdir/go/bin/snap-failure" $GOFLAGS "${_gourl}/cmd/snap-failure"
   # build snap-exec and snap-update-ns completely static for base snaps
-  go build "${staticflags[@]}" -o "$srcdir/go/bin/snap-update-ns" "${_gourl}/cmd/snap-update-ns"
-  go build "${staticflags[@]}" -o "$srcdir/go/bin/snap-exec" "${_gourl}/cmd/snap-exec"
-  go build "${staticflags[@]}" -o "$srcdir/go/bin/snapctl" "${_gourl}/cmd/snapctl"
+  go build "${staticflags[@]}" -o "$srcdir/go/bin/snap-update-ns" $GOFLAGS "${_gourl}/cmd/snap-update-ns"
+  go build "${staticflags[@]}" -o "$srcdir/go/bin/snap-exec" $GOFLAGS "${_gourl}/cmd/snap-exec"
+  go build "${staticflags[@]}" -o "$srcdir/go/bin/snapctl" $GOFLAGS "${_gourl}/cmd/snapctl"
 
   # Generate data files such as real systemd units, dbus service, environment
   # setup helpers out of the available templates
@@ -152,6 +158,8 @@ package() {
   install -dm755 "$pkgdir/var/cache/snapd"
   install -dm755 "$pkgdir/var/lib/snapd/apparmor"
   install -dm755 "$pkgdir/var/lib/snapd/assertions"
+  install -dm755 "$pkgdir/var/lib/snapd/dbus-1/services"
+  install -dm755 "$pkgdir/var/lib/snapd/dbus-1/system-services"
   install -dm755 "$pkgdir/var/lib/snapd/desktop/applications"
   install -dm755 "$pkgdir/var/lib/snapd/device"
   install -dm755 "$pkgdir/var/lib/snapd/hostfs"
