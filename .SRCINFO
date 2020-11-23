@@ -1,7 +1,7 @@
 pkgbase = cadence-claudia
 	pkgdesc = JACK toolbox for audio production. (With Claudia)
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kxstudio.linuxaudio.org/Applications:Cadence
 	arch = x86_64
 	license = GPL2
