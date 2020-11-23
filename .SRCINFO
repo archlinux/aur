@@ -18,7 +18,7 @@ pkgbase = tinkerboard-bluetooth
 	source = https://github.com/redchenjs/armbian-ci/releases/download/v5.8.18-rockchip/armbian-firmware_20.11.0-trunk_all.deb
 	source = https://github.com/redchenjs/armbian-ci/releases/download/v5.8.18-rockchip/linux-focal-root-current-tinkerboard_20.11.0-trunk_armhf.deb
 	sha512sums = ae127fb7c2c8e49347d6cf0e959da28c8ac2c7d3971005b5b66eb84ddaa594196194a126d8e9a088f04138102208e9575f22f2ceccd959f69572ef77c98b65e0
-	sha512sums = Not Found
-	sha512sums = a8bd6628ab6f59c6a66f2a7127299416ac02a66b29c9fc3d3d2fa852e0f92b3d966f3867296818ecf1a8bfea82f62968d0c75e4c3a1e328321e888f292a6d941
+	sha512sums = 5f5dcb8a3aca49474239572bf811d5e39a9ab575512ac7292d51fdcee46f8f6aa4e10209fe1c16e78fc86daa1f7e3ade1c995e3a546c7f3ccf3dda2c5da5a244
+	sha512sums = 1bd8bcf85334a9b410f8769e38fbc013d12887604d3be50b85860ef8d4e9e6e643f2306f1086b159789c01cf0dac607094c37370dd45dfea3af05cc8b3283f98
 
 pkgname = tinkerboard-bluetooth
