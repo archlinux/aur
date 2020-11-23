@@ -1,0 +1,2306 @@
+Differences from Debian's njam_1.25.orig.tar.gz to the originally used njam-1.25-src.tar.gz
+
+The following differences have been removed from this patch:
+
+# diff --git a/MacOSX/.DS_Store b/MacOSX/.DS_Store
+# deleted file mode 100644
+# index 5008ddf..0000000
+# Binary files a/MacOSX/.DS_Store and /dev/null differ
+#
+# diff --git a/MacOSX/English.lproj/.DS_Store b/MacOSX/English.lproj/.DS_Store
+# deleted file mode 100644
+# index 5008ddf..0000000
+# Binary files a/MacOSX/English.lproj/.DS_Store and /dev/null differ
+#
+# diff --git a/contrib/njam.sh b/contrib/njam.sh
+# old mode 100644
+# new mode 100755
+#
+# diff --git a/levels/CASE.COOP b/levels/CASE.COOP
+# new file mode 100644
+# index 0000000..76713c0
+# Binary files /dev/null and b/levels/CASE.COOP differ
+#
+# diff --git a/levels/CAT.COOP b/levels/CAT.COOP
+# new file mode 100644
+# index 0000000..cdae932
+# Binary files /dev/null and b/levels/CAT.COOP differ
+#
+# diff --git a/levels/CLAASSYM.DUEL b/levels/CLAASSYM.DUEL
+# new file mode 100644
+# index 0000000..893868d
+# Binary files /dev/null and b/levels/CLAASSYM.DUEL differ
+#
+# diff --git a/levels/PACMAN.DUEL b/levels/PACMAN.DUEL
+# new file mode 100644
+# index 0000000..3fc7c92
+# Binary files /dev/null and b/levels/PACMAN.DUEL differ
+#
+# diff --git a/levels/ROOMS.COOP b/levels/ROOMS.COOP
+# new file mode 100644
+# index 0000000..79e871a
+# Binary files /dev/null and b/levels/ROOMS.COOP differ
+#
+# diff --git a/levels/RUN.COOP b/levels/RUN.COOP
+# new file mode 100644
+# index 0000000..e31e5f4
+# Binary files /dev/null and b/levels/RUN.COOP differ
+#
+# diff --git a/levels/SNERTGAME.DUEL b/levels/SNERTGAME.DUEL
+# new file mode 100644
+# index 0000000..8b7071f
+# Binary files /dev/null and b/levels/SNERTGAME.DUEL differ
+#
+# diff --git a/levels/TIME.COOP b/levels/TIME.COOP
+# new file mode 100644
+# index 0000000..f72a186
+# Binary files /dev/null and b/levels/TIME.COOP differ
+#
+# diff --git a/levels/TOTALY_IMPOSSIBLE.COOP b/levels/TOTALY_IMPOSSIBLE.COOP
+# new file mode 100644
+# index 0000000..77d86ec
+# Binary files /dev/null and b/levels/TOTALY_IMPOSSIBLE.COOP differ
+#
+# diff --git a/levels/WEISSBIER.COOP b/levels/WEISSBIER.COOP
+# new file mode 100644
+# index 0000000..35a1660
+# Binary files /dev/null and b/levels/WEISSBIER.COOP differ
+#
+# diff --git a/missing b/missing
+# old mode 100644
+# new mode 100755
+#
+# diff --git a/src/njam.o b/src/njam.o
+# new file mode 100644
+# index 0000000..272501f
+# Binary files /dev/null and b/src/njam.o differ
+#
+# diff --git a/src/njamedit.o b/src/njamedit.o
+# new file mode 100644
+# index 0000000..73ff5dd
+# Binary files /dev/null and b/src/njamedit.o differ
+#
+# diff --git a/src/njamfont.o b/src/njamfont.o
+# new file mode 100644
+# index 0000000..3267281
+# Binary files /dev/null and b/src/njamfont.o differ
+#
+# diff --git a/src/njamgame.o b/src/njamgame.o
+# new file mode 100644
+# index 0000000..11a4c80
+# Binary files /dev/null and b/src/njamgame.o differ
+#
+# diff --git a/src/njammap.o b/src/njammap.o
+# new file mode 100644
+# index 0000000..b7b6a74
+# Binary files /dev/null and b/src/njammap.o differ
+#
+# diff --git a/src/njamnet.o b/src/njamnet.o
+# new file mode 100644
+# index 0000000..0465d70
+# Binary files /dev/null and b/src/njamnet.o differ
+#
+# diff --git a/src/njamutils.o b/src/njamutils.o
+# new file mode 100644
+# index 0000000..53c5654
+# Binary files /dev/null and b/src/njamutils.o differ
+
+diff --git a/html/doc-editor.html b/html/doc-editor.html
+index 9f4b16b..e13565c 100644
+--- a/html/doc-editor.html
++++ b/html/doc-editor.html
+@@ -30,7 +30,8 @@ documentation</font></big></big></b><br>
+       <td valign="top"><b><font face="Helvetica, Arial, sans-serif"
+  color="#ffffff">&nbsp;Njam is a full-featured cross-platform pacman-like game
+ written in C++ using SDL library</font></b></td>
+-      <td valign="top" align="right"><small><a href="index.html"><b><small><font
++      <td valign="top" align="right"><small><a
++ href="http://njam.sourceforge.net/"><b><small><font
+  face="Helvetica, Arial, sans-serif" color="white">HOME&nbsp; &gt;&gt;</font></small></b></a></small><br>
+       </td>
+     </tr>
+diff --git a/levels/readme.txt b/levels/readme.txt
+index 98b55fa..8e1c30f 100644
+--- a/levels/readme.txt
++++ b/levels/readme.txt
+@@ -18,7 +18,6 @@ Maps  Filename             Difficulty Contributors
+    8  ALLSFAIR.DUEL        -          Daniel Whigham
+    4  BEAMTEAM.DUEL        -          M.Diener & B.Stryi (aka BeaM-Team)
+    3  DULIO.DUEL           -          Dario Dulic
+-
+   10  LA_GINECAL.COOP      medium     Sean Austin
+   13  KILLER.DUEL          -          Thomas Buch
+   13  KILLER.COOP          medium     Thomas Buch
+@@ -26,6 +25,14 @@ Maps  Filename             Difficulty Contributors
+   20  BUCHI.COOP           easy       Thomas Buch
+   11  BEAS.DUEL            -          Tischler Lukas
+    9  STEPHANE.DUEL        -          Stéphane Galtier & Karoline
++  20  CAT.COOP             medium     Kristin Langli
++  20  CASE.COOP            easy       Kristin Langli
++  17  RUN.COOP             medium     Kristin Langli
++  20  ROOMS.COOP           hard       ?
++   6  TIME.COOP            hard       Haaris Jamil
++  13  SNERTGAME.DUEL       -          Laurens Vonder
++   1  PACMAN.DUEL          -          Laurens Vonder
++   6  CLAASSYM.DUEL        -          Claas Teichmann
+ 
+ Original levels:
+ 
+@@ -40,4 +47,4 @@ Maps  Filename             Difficulty
+                                        "ghost hunt" level of original.duel set
+                                        great fun for 4 players
+ 
+-Total: 18 levelsets, 262 levels.
++Total: 22 levelsets, 339 levels.
+diff --git a/src/njam.cpp b/src/njam.cpp
+index 4faf77e..a6b7b18 100644
+--- a/src/njam.cpp
++++ b/src/njam.cpp
+@@ -1,13 +1,13 @@
+ //-----------------------------------------------------------------------------
+-//	Filename:	njam.cpp
+-//	Created:	30. May 2003. by Milan Babuskov
++//  Filename:   njam.cpp
++//  Created:    30. May 2003. by Milan Babuskov
+ //
+-//  Purpose:	Initialization of the game
+-//				Managing resources
+-//				Handling Main Menu
++//  Purpose:    Initialization of the game
++//              Managing resources
++//              Handling Main Menu
+ //
+-//	The order of functions in this file is alphabetical
+-//	Except for main() and NjamEngine's ctor and destructor.
++//  The order of functions in this file is alphabetical
++//  Except for main() and NjamEngine's ctor and destructor.
+ //
+ //  Tabs should be at 4 spaces.
+ //  Each section is separated with line: //-------...
+@@ -32,6 +32,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ -----------------------------------------------------------------------------*/
+ // needed for chdir
+ #ifdef __linux__
++/* this must be done before the first include of unistd.h for setresgid */
++#define _GNU_SOURCE
+ #include <unistd.h>
+ #include <defaults.h>
+ #endif
+@@ -47,285 +49,307 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ #include "njamfont.h"
+ #include "njammap.h"
+ #include "njam.h"
++
++static FILE* highscore_fp;
++
+ //-----------------------------------------------------------------------------
+ int main(int argc, char *argv[])
+ {
+- 	bool Fullscreen = true;
+- 	bool SWSurface = true;
+-	bool UseDGA = false;
+- 	if (argc > 1)
+- 	{
+- 		for (int i=1; i<argc; i++)
+-	 	{
+-	 		bool ok = true;
+-	 		if (argv[i][0] == '-')
+-			{
+-				if (argv[i][1] == 'w')
+-					Fullscreen = false;	// use njam.exe -w windowed mode
+-				else if (argv[i][1] == 'h')
+-					SWSurface = false;	// use -h for hardware surfaces
+-				else if (argv[i][1] == 'd')
+-					UseDGA = true;
+-				else
+-					ok = false;
+-			}
+-			else
+-				ok = false;
+-
+-			if (!ok)
+-			{
+-				printf("Usage:  njam -[w|d|h]\n\n");
+-				printf("-w  start in Windowed mode (as opposed to fullscreen).\n");;
+-				printf("-h  use Hardware surfaces (faster, doesn't work well with all graphic cards).\n");
+-				printf("-d  use DGA driver on Linux, (much faster, but must run as root).\n");
+-				return 1;
+-			}
+-		}
+-	}
+-
+-	// cd to game directory
++    bool Fullscreen = true;
++    bool SWSurface = true;
++    bool UseDGA = false;
+ #ifdef __linux__
+-/*	int i=0, l=0;
+-	while (argv[0][i])
+-	{
+-		if (argv[0][i] == '/')
+-			l = i;
+-		i++;
+-	}
+-
+-	if (l)
+-	{
+-		argv[0][l] = '\0';
+-		chdir(argv[0]);
+-		argv[0][l] = '/';
+-	}*/
+-	char path[30];
+-	sprintf(path, "%s/%s", DEFAULT_LIBDIR, PACKAGE);
+-	printf("%s",path);
+-	chdir(path);
++    gid_t realgid;
++
++    highscore_fp = fopen("/var/lib/games/njam.hs", "r+");
++    realgid = getgid();
++    if (setresgid(-1, realgid, realgid) != 0)
++    {
++        perror("Could not drop setgid privileges.  Aborting.");
++        return 1;
++    }
+ #endif
+ 
+-	NjamEngine Engine;
+-	if (!Engine.Init(Fullscreen, SWSurface, UseDGA))
+-	{
+-		LogFile("Failed.\n");
+-		return 1;
+-	}
++    if (argc > 1)
++    {
++        for (int i=1; i<argc; i++)
++        {
++            bool ok = true;
++            if (argv[i][0] == '-')
++            {
++                if (argv[i][1] == 'w')
++                    Fullscreen = false; // use njam.exe -w windowed mode
++                else if (argv[i][1] == 'h')
++                    SWSurface = false;  // use -h for hardware surfaces
++                else if (argv[i][1] == 'd')
++                    UseDGA = true;
++                else
++                    ok = false;
++            }
++            else
++                ok = false;
++
++            if (!ok)
++            {
++                printf("Usage:  njam -[w|d|h]\n\n");
++                printf("-w  start in Windowed mode (as opposed to fullscreen).\n");;
++                printf("-h  use Hardware surfaces (faster, doesn't work well with all graphic cards).\n");
++                printf("-d  use DGA driver on Linux, (much faster, but must run as root).\n");
++                return 1;
++            }
++        }
++    }
+ 
+-	Engine.Start();
+-	return 0;
++    // cd to game directory
++#ifdef __linux__
++/*  int i=0, l=0;
++    while (argv[0][i])
++    {
++        if (argv[0][i] == '/')
++            l = i;
++        i++;
++    }
++
++    if (l)
++    {
++        argv[0][l] = '\0';
++        chdir(argv[0]);
++        argv[0][l] = '/';
++    }*/
++    char path[300];    // should be enough
++    sprintf(path, "%s/%s", DEFAULT_LIBDIR, PACKAGE);
++    printf("%s",path);
++    chdir(path);
++#endif
++
++    NjamEngine Engine;
++    if (!Engine.Init(Fullscreen, SWSurface, UseDGA))
++    {
++        LogFile("Failed.\n");
++        return 1;
++    }
++
++    try
++    {
++        Engine.Start();
++    }
++    catch (...)
++    {
++        printf("Caught exception.\n");
++    }
++    return 0;
+ }
+ //-----------------------------------------------------------------------------
+ NjamEngine::NjamEngine()
+ {
+-	m_LastHiscore = -1;
+-
+- 	m_Skins = NULL;
+- 	m_ScriptDelay = -350;	// when it's less than 100, the InfoWindow is empty
+-	script_file = NULL;
+- 	m_ScriptFilePos = 0;
+- 	m_ScriptLastPos = 0;
+- 	m_ScrollOffset = 810;
+- 	m_Screen = NULL;
+- 	m_FontBlue = NULL;
+- 	m_FontYellow = NULL;
+-	m_AudioAvailable = false;
+-	m_NetworkAvailable = false;
+-	m_ServerSocket = NULL;
+-	m_SDL = false;
+-
+- 	m_Icon = NULL;
+-	m_MainMenuImage = NULL;
+-	m_OptionsMenuImage = NULL;
+-	m_StatsImage = NULL;
+-	m_SpriteImage = NULL;
+-	m_HiScoresImage = NULL;
+-	m_LevelsetImage = NULL;
+-	m_NetSendImage = NULL;
+-	m_NetEnterImage = NULL;
+-	m_NetLobbyImage = NULL;
+-	m_GameOverImage = NULL;
++    m_LastHiscore = -1;
++
++    m_Skins = NULL;
++    m_ScriptDelay = -350;   // when it's less than 100, the InfoWindow is empty
++    script_file = NULL;
++    m_ScriptFilePos = 0;
++    m_ScriptLastPos = 0;
++    m_ScrollOffset = 810;
++    m_Screen = NULL;
++    m_FontBlue = NULL;
++    m_FontYellow = NULL;
++    m_AudioAvailable = false;
++    m_NetworkAvailable = false;
++    m_ServerSocket = NULL;
++    m_SDL = false;
++
++    m_Icon = NULL;
++    m_MainMenuImage = NULL;
++    m_OptionsMenuImage = NULL;
++    m_StatsImage = NULL;
++    m_SpriteImage = NULL;
++    m_HiScoresImage = NULL;
++    m_LevelsetImage = NULL;
++    m_NetSendImage = NULL;
++    m_NetEnterImage = NULL;
++    m_NetLobbyImage = NULL;
++    m_GameOverImage = NULL;
+ 
+     m_MainMenuMusic = NULL;
+     m_GameMusic1 = NULL;
+     m_GameMusic2 = NULL;
+ 
+-	// default values for game options (Init() overrides if njam.conf file exists)
+-	m_GameOptions.PlayMusic = true;
+-	m_GameOptions.PlaySound = true;
+-	m_GameOptions.UsedSkin = 0;
+-	m_GameOptions.ServerIP[0] = 0;
++    // default values for game options (Init() overrides if njam.conf file exists)
++    m_GameOptions.PlayMusic = true;
++    m_GameOptions.PlaySound = true;
++    m_GameOptions.UsedSkin = 0;
++    m_GameOptions.ServerIP[0] = 0;
+ }
+ //-----------------------------------------------------------------------------
+ NjamEngine::~NjamEngine()
+ {
+ #ifdef __linux__
+-	char bufsdl[30];
+-	sprintf(bufsdl, "SDL_VIDEODRIVER=%s", linux_sdl_driver);
+-	putenv(bufsdl);
++    char bufsdl[30];
++    sprintf(bufsdl, "SDL_VIDEODRIVER=%s", linux_sdl_driver);
++    putenv(bufsdl);
+ #endif
+ 
+- 	if (script_file)
+-		fclose(script_file);
+-
+- 	if (m_Skins)
+- 	{
+-		for (int i=0; i<m_NumberOfSkins; i++)
+-			SDL_FreeSurface(m_Skins[i]);
+- 		delete[] m_Skins;
+- 	}
+-
+-	if (m_Icon)
+-		SDL_FreeSurface(m_Icon);
+-	if (m_MainMenuImage)
+-		SDL_FreeSurface(m_MainMenuImage);
+-	if (m_OptionsMenuImage)
+-		SDL_FreeSurface(m_OptionsMenuImage);
+-	if (m_GameOverImage)
+-		SDL_FreeSurface(m_GameOverImage);
+-	if (m_StatsImage)
+-		SDL_FreeSurface(m_StatsImage);
+-	if (m_SpriteImage)
+-		SDL_FreeSurface(m_SpriteImage);
+-	if (m_HiScoresImage)
+-		SDL_FreeSurface(m_HiScoresImage);
+-	if (m_LevelsetImage)
+-		SDL_FreeSurface(m_LevelsetImage);
+-	if (m_NetSendImage)
+-		SDL_FreeSurface(m_NetSendImage);
+-	if (m_NetEnterImage)
+-		SDL_FreeSurface(m_NetEnterImage);
+-	if (m_NetLobbyImage)
+-		SDL_FreeSurface(m_NetLobbyImage);
+-
+- 	if (m_FontBlue)
+- 		delete m_FontBlue;
+- 	if (m_FontYellow)
+- 		delete m_FontYellow;
+-
+-	for (int i=0; i<17; i++)
+-		if (m_Sounds[i])
+-			Mix_FreeChunk(m_Sounds[i]);
+-
+-	if (m_MainMenuMusic)
+-		Mix_FreeMusic(m_MainMenuMusic);
+-	if (m_GameMusic1)
+-		Mix_FreeMusic(m_GameMusic1);
+-	if (m_GameMusic2)
+-		Mix_FreeMusic(m_GameMusic2);
+-
+- 	if (m_AudioAvailable)
+-		Mix_CloseAudio();
+-
+-	if (m_NetworkAvailable)
+-		SDLNet_Quit();
+-
+-	// write configuration options
++    if (script_file)
++        fclose(script_file);
++
++    if (m_Skins)
++    {
++        for (int i=0; i<m_NumberOfSkins; i++)
++            SDL_FreeSurface(m_Skins[i]);
++        delete[] m_Skins;
++    }
++
++    if (m_Icon)
++        SDL_FreeSurface(m_Icon);
++    if (m_MainMenuImage)
++        SDL_FreeSurface(m_MainMenuImage);
++    if (m_OptionsMenuImage)
++        SDL_FreeSurface(m_OptionsMenuImage);
++    if (m_GameOverImage)
++        SDL_FreeSurface(m_GameOverImage);
++    if (m_StatsImage)
++        SDL_FreeSurface(m_StatsImage);
++    if (m_SpriteImage)
++        SDL_FreeSurface(m_SpriteImage);
++    if (m_HiScoresImage)
++        SDL_FreeSurface(m_HiScoresImage);
++    if (m_LevelsetImage)
++        SDL_FreeSurface(m_LevelsetImage);
++    if (m_NetSendImage)
++        SDL_FreeSurface(m_NetSendImage);
++    if (m_NetEnterImage)
++        SDL_FreeSurface(m_NetEnterImage);
++    if (m_NetLobbyImage)
++        SDL_FreeSurface(m_NetLobbyImage);
++
++    if (m_FontBlue)
++        delete m_FontBlue;
++    if (m_FontYellow)
++        delete m_FontYellow;
++
++    for (int i=0; i<17; i++)
++        if (m_Sounds[i])
++            Mix_FreeChunk(m_Sounds[i]);
++
++    if (m_MainMenuMusic)
++        Mix_FreeMusic(m_MainMenuMusic);
++    if (m_GameMusic1)
++        Mix_FreeMusic(m_GameMusic1);
++    if (m_GameMusic2)
++        Mix_FreeMusic(m_GameMusic2);
++
++    if (m_AudioAvailable)
++        Mix_CloseAudio();
++
++    if (m_NetworkAvailable)
++        SDLNet_Quit();
++
++    // write configuration options
+     LogFile("Opening njam.conf file.\n");
+     char *home = getenv("HOME");
+     std::string njamconf("njam.conf");
+     if (home)
+         njamconf = std::string(home) + "/.njamconf";
+-	FILE *fp = fopen(njamconf.c_str(), "w+");
+-	if (fp)
+-	{
+-		fprintf(fp, "M=%d\n", (m_GameOptions.PlayMusic ? 1 : 0));
+-		fprintf(fp, "S=%d\n", (m_GameOptions.PlaySound ? 1 : 0));
+-		fprintf(fp, "U=%d\n", m_GameOptions.UsedSkin);
+-		fprintf(fp, "I=%s\n", m_GameOptions.ServerIP);
+-		fclose(fp);
+-	}
+-
+-		// format: NAME#POINTS#LEVEL#
+-	fp = fopen("hiscore.dat", "w+");
+-	if (fp)
+-	{
+-		for (int i=0; i<10; i++)
+-			fprintf(fp, "%s#%d#%d#\n", TopTenScores[i].name, TopTenScores[i].points, TopTenScores[i].level);
+-		fclose(fp);
+-	}
+-
+-	if (m_SDL)
+-		SDL_Quit();
++    FILE *fp = fopen(njamconf.c_str(), "w+");
++    if (fp)
++    {
++        fprintf(fp, "M=%d\n", (m_GameOptions.PlayMusic ? 1 : 0));
++        fprintf(fp, "S=%d\n", (m_GameOptions.PlaySound ? 1 : 0));
++        fprintf(fp, "U=%d\n", m_GameOptions.UsedSkin);
++        fprintf(fp, "I=%s\n", m_GameOptions.ServerIP);
++        fclose(fp);
++    }
++
++        // format: NAME#POINTS#LEVEL#
++    if (highscore_fp)
++    {
++        rewind(highscore_fp);
++        for (int i=0; i<10; i++)
++            fprintf(highscore_fp, "%s#%d#%d#\n", TopTenScores[i].name, TopTenScores[i].points, TopTenScores[i].level);
++        fclose(highscore_fp);
++    }
++
++    if (m_SDL)
++        SDL_Quit();
+ }
+ //---------------------------------------------------------------------------
+-void NjamEngine::DoScript(void)		// loads script.txt file, and show data on main-menu screen
++void NjamEngine::DoScript(void)     // loads script.txt file, and show data on main-menu screen
+ {
+-	if (m_ScriptDelay < -100)	// initial delay, so screen isn't too full when the game is loaded
+-	{
+-		m_ScriptDelay++;
+-		return;
+-	}
+-
+- 	m_ScriptDelay--;
+-	if (m_ScriptDelay <= 0)		// change the script
+-	{
+-    	m_ScriptDelay = 400;	// delay change for 400 cycles
+-		m_ScriptFilePos = m_ScriptLastPos;
+-	}
+-
+-	if (script_file == NULL)
+-	    script_file = fopen("data/script.txt", "rb");
+-	if (script_file == NULL)
+-		return;
++    if (m_ScriptDelay < -100)   // initial delay, so screen isn't too full when the game is loaded
++    {
++        m_ScriptDelay++;
++        return;
++    }
++
++    m_ScriptDelay--;
++    if (m_ScriptDelay <= 0)     // change the script
++    {
++        m_ScriptDelay = 400;    // delay change for 400 cycles
++        m_ScriptFilePos = m_ScriptLastPos;
++    }
++
++    if (script_file == NULL)
++        script_file = fopen("data/script.txt", "rb");
++    if (script_file == NULL)
++        return;
+ 
+     fseek(script_file, m_ScriptFilePos, SEEK_SET);
+ 
+     char buffer[80];
+-    for (int i=0; i<80; i++)	// empty buffer
+-    	buffer[i] = 0;
++    for (int i=0; i<80; i++)    // empty buffer
++        buffer[i] = 0;
+ 
+-	// first line of text
+-	int Row = 175 / m_FontBlue->GetCharHeight();
+-	int Column = 440 / m_FontBlue->GetCharWidth();
++    // first line of text
++    int Row = 175 / m_FontBlue->GetCharHeight();
++    int Column = 440 / m_FontBlue->GetCharWidth();
+ 
+     while (true)
+     {
+         fgets(buffer, 79, script_file);
+         if (feof(script_file))
+-		{
+-			printf("njam.cpp: ERROR: Script.txt not terminated with -- line.");
+-			m_ScriptLastPos = 0;
+-			break;
+-		}
+-
+-		if (buffer[0] == '-' && buffer[1] == '-')	// -- end of script
+-		{
++        {
++            printf("njam.cpp: ERROR: Script.txt not terminated with -- line.");
++            m_ScriptLastPos = 0;
++            break;
++        }
++
++        if (buffer[0] == '-' && buffer[1] == '-')   // -- end of script
++        {
+             m_ScriptLastPos = 0;
+-			break;
+-		}
++            break;
++        }
+ 
+-		if (buffer[0] == '-')					// end of part
+-		{
+-			m_ScriptLastPos = ftell(script_file);
+-			break;
+-		}
++        if (buffer[0] == '-')                   // end of part
++        {
++            m_ScriptLastPos = ftell(script_file);
++            break;
++        }
+ 
+-        if (buffer[0] == '<')   				// image
++        if (buffer[0] == '<')                   // image
+         {
+-            int i = (int)(buffer[2] - '0');		// image index
++            int i = (int)(buffer[2] - '0');     // image index
+ 
+-            if (buffer[1] == 'G')				// image of a ghost
++            if (buffer[1] == 'G')               // image of a ghost
+             {
+-            	SDL_Rect src, dest;
++                SDL_Rect src, dest;
+                 NjamSetRect(dest, 440, 120);
+                 NjamSetRect(src, i*25,   0, 25, 25);
+                 SDL_BlitSurface(m_SpriteImage, &src, m_Screen, &dest);
+             }
+-            else								// image of a map-data
++            else                                // image of a map-data
+             {
+                 i+=2;
+ 
+                 for (int j=0; j<m_NumberOfSkins; j++)
+                 {
+-	            	SDL_Rect src, dest;
+-	                NjamSetRect(dest, 440 + j*30, 120);
+-	                NjamSetRect(src,        i*25,   0, 25, 25);
+-	                SDL_BlitSurface(m_Skins[j], &src, m_Screen, &dest);
++                    SDL_Rect src, dest;
++                    NjamSetRect(dest, 440 + j*30, 120);
++                    NjamSetRect(src,        i*25,   0, 25, 25);
++                    SDL_BlitSurface(m_Skins[j], &src, m_Screen, &dest);
+                 }
+             }
+         }
+-        else	// text
++        else    // text
+         {
+             m_FontBlue->WriteTextColRow(m_Screen, Column, Row, buffer);
+             Row++;
+@@ -336,415 +360,420 @@ void NjamEngine::DoScript(void)		// loads script.txt file, and show data on main
+ bool NjamEngine::Init(bool Fullscreen, bool SoftwareSurface, bool UseDGA)
+ {
+ #ifdef __linux__
+-	sprintf(linux_sdl_driver, "x11\0");
+-	char *driver_name = getenv("SDL_VIDEODRIVER");
+-	if (driver_name)
+-		sprintf(linux_sdl_driver, "%s\0", driver_name);
+-
+-	if (UseDGA)
+-	{
+-		printf("You must be root to run DGA\nType ./njam -? for help\n");
+-		putenv("SDL_VIDEODRIVER=dga");
+-	}
++    // Check if $HOME/.njam-levels exists and if it doesn't create it
++    char buf[512];
++    char *home = NjamGetHomeDir();
++    snprintf(buf, sizeof(buf), "%s/.njam-levels", home? home:"");
++    NjamCheckAndCreateDir(buf);
++
++    sprintf(linux_sdl_driver, "x11\0");
++    char *driver_name = getenv("SDL_VIDEODRIVER");
++    if (driver_name)
++        sprintf(linux_sdl_driver, "%s\0", driver_name);
++
++    if (UseDGA)
++    {
++        printf("You must be root to run DGA\nType ./njam -? for help\n");
++        putenv("SDL_VIDEODRIVER=dga");
++    }
+ #else
+-	if (UseDGA)
+-		printf("Parameter -d is ignored for non-Linux platforms.\n");
++    if (UseDGA)
++        printf("Parameter -d is ignored for non-Linux platforms.\n");
+ #endif
+ 
+- 	LogFile("Initializing SDL: VIDEO & AUDIO...", true);
+-	if ( SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_TIMER ) < 0 )
+-	{
+-		fprintf(stderr, "Error initializing SDL: %s\n", SDL_GetError());
+-		return false;
+-	}
+-	else
++    LogFile("Initializing SDL: VIDEO & AUDIO...", true);
++    if ( SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_TIMER ) < 0 )
++    {
++        fprintf(stderr, "Error initializing SDL: %s\n", SDL_GetError());
++        return false;
++    }
++    else
+         m_SDL = true;
+ 
+-	LogFile("OK.\nSetting window title...");
+-	SDL_WM_SetCaption("Njam     http://njam.sourceforge.net", NULL);
+-
+- 	// load .bmp for icon
+- 	LogFile("done.\nLoading icon...");
+- 	m_Icon = SDL_LoadBMP("data/njamicon.bmp");
+- 	if (!m_Icon)
+- 	{
+- 		LogFile("FAILED.\n");
+-		LogFile((const char *)SDL_GetError());
+- 		return false;
+- 	}
+- 	LogFile("OK.\n");
+-	SDL_WM_SetIcon(m_Icon, NULL);
+-
+-	LogFile("Setting video mode: 800x600x16...");
+-	Uint32 flags = SDL_ANYFORMAT;
+-
+-	if (Fullscreen)
+-		flags |= SDL_FULLSCREEN;
+-
+-	if (SoftwareSurface)
+-		flags |= SDL_SWSURFACE;
+-	else
+-		flags |= SDL_HWSURFACE|SDL_DOUBLEBUF;
+-
+-	m_Screen = SDL_SetVideoMode(800, 600, 16, flags);
++    LogFile("OK.\nSetting window title...");
++    SDL_WM_SetCaption("Njam     http://njam.sourceforge.net", NULL);
++
++    // load .bmp for icon
++    LogFile("done.\nLoading icon...");
++    m_Icon = SDL_LoadBMP("data/njamicon.bmp");
++    if (!m_Icon)
++    {
++        LogFile("FAILED.\n");
++        LogFile((const char *)SDL_GetError());
++        return false;
++    }
++    LogFile("OK.\n");
++    SDL_WM_SetIcon(m_Icon, NULL);
++
++    LogFile("Setting video mode: 800x600x16...");
++    Uint32 flags = SDL_ANYFORMAT;
++
++    if (Fullscreen)
++        flags |= SDL_FULLSCREEN;
++
++    if (SoftwareSurface)
++        flags |= SDL_SWSURFACE;
++    else
++        flags |= SDL_HWSURFACE|SDL_DOUBLEBUF;
++
++    m_Screen = SDL_SetVideoMode(800, 600, 16, flags);
+     if ( m_Screen == NULL )
+-	{
++    {
+         fprintf(stderr, "Couldn't set 800x600x16 video mode: %s\n", SDL_GetError());
+         return false;
+     }
+-	else
+-		LogFile("OK\n");
+-
+-	// hide mouse cursor in fullscreen
+-	if (Fullscreen)
+-		SDL_ShowCursor(SDL_DISABLE);
+-
+-	// check & output capabilites:
+-	const SDL_VideoInfo *info = SDL_GetVideoInfo();
+-	printf("VIDEO INFORMATION:\n");
+-	printf("  hw_available = %d\n", info->hw_available);
+-	printf("  wm_available = %d\n", info->wm_available);
+-	printf("  blit_hw = %d\n", info->blit_hw);
+-	printf("  blit_hw_CC = %d\n", info->blit_hw_CC);
+-	printf("  blit_hw_A = %d\n", info->blit_hw_A);
+-	printf("  blit_sw = %d\n", info->blit_sw);
+-	printf("  blit_sw_CC = %d\n", info->blit_sw_CC);
+-	printf("  blit_sw_A = %d\n", info->blit_sw_A);
+-	printf("END VIDEO INFORMATION.\n");
+-
+-	// Loading various resources...
+-	LogFile("Loading resources:\n");
+-
+- 	// load .bmp for main menu
+- 	SDL_Surface *temp;
+- 	LogFile("Loading Main Menu image...");
+- 	temp = IMG_Load("data/mainmenu.jpg");
+- 	if (!temp)
+- 	{
+- 		LogFile("FAILED.\n");
+-		LogFile((const char *)SDL_GetError());
+- 		return false;
+- 	}
+- 	LogFile("OK.\n");
+-
+-	// Convert image to video format
+-	m_MainMenuImage = SDL_DisplayFormat(temp);
+-	SDL_FreeSurface(temp);
+-	if ( m_MainMenuImage == NULL )
+-	{
+-		fprintf(stderr, "Couldn't convert main menu image: %s\n",	SDL_GetError());
+-		return false;
+-	}
+-
+- 	// load .bmp for options menu
+- 	LogFile("Loading Options Menu image...");
+- 	temp = IMG_Load("data/options.jpg");
+- 	if (!temp)
+- 	{
+- 		LogFile("FAILED.\n");
+-		LogFile((const char *)SDL_GetError());
+- 		return false;
+- 	}
+- 	LogFile("OK.\n");
+-
+-	// Convert image to video format
+-	m_OptionsMenuImage = SDL_DisplayFormat(temp);
+-	SDL_FreeSurface(temp);
+-	if ( m_OptionsMenuImage == NULL )
+-	{
+-		fprintf(stderr, "Couldn't convert options menu image: %s\n", SDL_GetError());
+-		return false;
+-	}
+-
+- 	// load .bmp for network-send screen
+- 	LogFile("Loading Net-send image...");
+- 	m_NetSendImage = IMG_Load("data/netsend.jpg");
+- 	if (!m_NetSendImage)
+- 	{
+- 		LogFile("FAILED.\n");
+-		LogFile((const char *)SDL_GetError());
+- 		return false;
+- 	}
+- 	LogFile("OK.\n");
+-
+- 	LogFile("Loading Hi-score image...");
+- 	m_HiScoresImage = IMG_Load("data/hiscore.jpg");
+- 	if (!m_HiScoresImage)
+- 	{
+- 		LogFile("FAILED.\n");
+-		LogFile((const char *)SDL_GetError());
+- 		return false;
+- 	}
+- 	LogFile("OK.\n");
+-
+- 	LogFile("Loading levelset entry image...");
+- 	m_LevelsetImage = IMG_Load("data/levelset.jpg");
+- 	if (!m_LevelsetImage)
+- 	{
+- 		LogFile("FAILED.\n");
+-		LogFile((const char *)SDL_GetError());
+- 		return false;
+- 	}
+- 	LogFile("OK.\n");
+-
+- 	LogFile("Loading Gameover image...");
+- 	m_GameOverImage = IMG_Load("data/gameover.jpg");
+- 	if (!m_GameOverImage)
+- 	{
+- 		LogFile("FAILED.\n");
+-		LogFile((const char *)SDL_GetError());
+- 		return false;
+- 	}
+- 	LogFile("OK.\n");
+-
+- 	// load .bmp for network-send screen
+- 	LogFile("Loading Net-lobby image...");
+- 	m_NetLobbyImage = SDL_LoadBMP("data/network.bmp");
+- 	if (!m_NetLobbyImage)
+- 	{
+- 		LogFile("FAILED.\n");
+-		LogFile((const char *)SDL_GetError());
+- 		return false;
+- 	}
+- 	LogFile("OK.\n");
+-
+- 	// load .bmp for enter server IP screen
+- 	LogFile("Loading enter server IP image...");
+- 	m_NetEnterImage = IMG_Load("data/enter-ip.jpg");
+- 	if (!m_NetEnterImage)
+- 	{
+- 		LogFile("FAILED.\n");
+-		LogFile((const char *)SDL_GetError());
+- 		return false;
+- 	}
+- 	LogFile("OK.\n");
+-
+- 	// load .bmp for stats screen
+- 	LogFile("Loading Stats screen image...");
+- 	temp = IMG_Load("data/stats.jpg");
+- 	if (!temp)
+- 	{
+- 		LogFile("FAILED.\n");
+-		LogFile((const char *)SDL_GetError());
+- 		return false;
+- 	}
+- 	LogFile("OK.\n");
+-
+-	// Convert image to video format
+-	m_StatsImage = SDL_DisplayFormat(temp);
+-	SDL_FreeSurface(temp);
+-	if ( m_StatsImage == NULL )
+-	{
+-		fprintf(stderr, "Couldn't convert stats screen image: %s\n", SDL_GetError());
+-		return false;
+-	}
+-
+- 	// load .bmp for sprites and menu selector
+- 	LogFile("Loading Sprites image...");
+- 	temp = SDL_LoadBMP("data/sprites.bmp");
+- 	if (!temp)
+- 	{
+- 		LogFile("FAILED.\n");
+-		LogFile((const char *)SDL_GetError());
+- 		return false;
+- 	}
+-
+- 	// setting color key for sprites: black is transparent
+- 	Uint32 black = SDL_MapRGB(temp->format, 0, 0, 0);
+- 	SDL_SetColorKey(temp, SDL_SRCCOLORKEY, black);
+- 	LogFile("OK.\n");
+-
+-	// Convert image to video format
+-	m_SpriteImage = SDL_DisplayFormat(temp);
+-	SDL_FreeSurface(temp);
+-	if ( m_SpriteImage == NULL )
+-	{
+-		fprintf(stderr, "Couldn't convert sprite image: %s\n", SDL_GetError());
+-		return false;
+-	}
+-
+-	// loading skins, first check how many is there
+-	char Filename[18];
+-	m_NumberOfSkins = 0;
+-	while (true)
+-	{
+-		sprintf(Filename, "skins/Back%03d.bmp\0", m_NumberOfSkins);
+-		FILE *fp = fopen(Filename, "r");
+-		if (!fp)
+-			break;
+-
+-		fclose(fp);
++    else
++        LogFile("OK\n");
++
++    // hide mouse cursor in fullscreen
++    if (Fullscreen)
++        SDL_ShowCursor(SDL_DISABLE);
++
++    // check & output capabilites:
++    const SDL_VideoInfo *info = SDL_GetVideoInfo();
++    printf("VIDEO INFORMATION:\n");
++    printf("  hw_available = %d\n", info->hw_available);
++    printf("  wm_available = %d\n", info->wm_available);
++    printf("  blit_hw = %d\n", info->blit_hw);
++    printf("  blit_hw_CC = %d\n", info->blit_hw_CC);
++    printf("  blit_hw_A = %d\n", info->blit_hw_A);
++    printf("  blit_sw = %d\n", info->blit_sw);
++    printf("  blit_sw_CC = %d\n", info->blit_sw_CC);
++    printf("  blit_sw_A = %d\n", info->blit_sw_A);
++    printf("END VIDEO INFORMATION.\n");
++
++    // Loading various resources...
++    LogFile("Loading resources:\n");
++
++    // load .bmp for main menu
++    SDL_Surface *temp;
++    LogFile("Loading Main Menu image...");
++    temp = IMG_Load("data/mainmenu.jpg");
++    if (!temp)
++    {
++        LogFile("FAILED.\n");
++        LogFile((const char *)SDL_GetError());
++        return false;
++    }
++    LogFile("OK.\n");
++
++    // Convert image to video format
++    m_MainMenuImage = SDL_DisplayFormat(temp);
++    SDL_FreeSurface(temp);
++    if ( m_MainMenuImage == NULL )
++    {
++        fprintf(stderr, "Couldn't convert main menu image: %s\n",   SDL_GetError());
++        return false;
++    }
++
++    // load .bmp for options menu
++    LogFile("Loading Options Menu image...");
++    temp = IMG_Load("data/options.jpg");
++    if (!temp)
++    {
++        LogFile("FAILED.\n");
++        LogFile((const char *)SDL_GetError());
++        return false;
++    }
++    LogFile("OK.\n");
++
++    // Convert image to video format
++    m_OptionsMenuImage = SDL_DisplayFormat(temp);
++    SDL_FreeSurface(temp);
++    if ( m_OptionsMenuImage == NULL )
++    {
++        fprintf(stderr, "Couldn't convert options menu image: %s\n", SDL_GetError());
++        return false;
++    }
++
++    // load .bmp for network-send screen
++    LogFile("Loading Net-send image...");
++    m_NetSendImage = IMG_Load("data/netsend.jpg");
++    if (!m_NetSendImage)
++    {
++        LogFile("FAILED.\n");
++        LogFile((const char *)SDL_GetError());
++        return false;
++    }
++    LogFile("OK.\n");
++
++    LogFile("Loading Hi-score image...");
++    m_HiScoresImage = IMG_Load("data/hiscore.jpg");
++    if (!m_HiScoresImage)
++    {
++        LogFile("FAILED.\n");
++        LogFile((const char *)SDL_GetError());
++        return false;
++    }
++    LogFile("OK.\n");
++
++    LogFile("Loading levelset entry image...");
++    m_LevelsetImage = IMG_Load("data/levelset.jpg");
++    if (!m_LevelsetImage)
++    {
++        LogFile("FAILED.\n");
++        LogFile((const char *)SDL_GetError());
++        return false;
++    }
++    LogFile("OK.\n");
++
++    LogFile("Loading Gameover image...");
++    m_GameOverImage = IMG_Load("data/gameover.jpg");
++    if (!m_GameOverImage)
++    {
++        LogFile("FAILED.\n");
++        LogFile((const char *)SDL_GetError());
++        return false;
++    }
++    LogFile("OK.\n");
++
++    // load .bmp for network-send screen
++    LogFile("Loading Net-lobby image...");
++    m_NetLobbyImage = SDL_LoadBMP("data/network.bmp");
++    if (!m_NetLobbyImage)
++    {
++        LogFile("FAILED.\n");
++        LogFile((const char *)SDL_GetError());
++        return false;
++    }
++    LogFile("OK.\n");
++
++    // load .bmp for enter server IP screen
++    LogFile("Loading enter server IP image...");
++    m_NetEnterImage = IMG_Load("data/enter-ip.jpg");
++    if (!m_NetEnterImage)
++    {
++        LogFile("FAILED.\n");
++        LogFile((const char *)SDL_GetError());
++        return false;
++    }
++    LogFile("OK.\n");
++
++    // load .bmp for stats screen
++    LogFile("Loading Stats screen image...");
++    temp = IMG_Load("data/stats.jpg");
++    if (!temp)
++    {
++        LogFile("FAILED.\n");
++        LogFile((const char *)SDL_GetError());
++        return false;
++    }
++    LogFile("OK.\n");
++
++    // Convert image to video format
++    m_StatsImage = SDL_DisplayFormat(temp);
++    SDL_FreeSurface(temp);
++    if ( m_StatsImage == NULL )
++    {
++        fprintf(stderr, "Couldn't convert stats screen image: %s\n", SDL_GetError());
++        return false;
++    }
++
++    // load .bmp for sprites and menu selector
++    LogFile("Loading Sprites image...");
++    temp = SDL_LoadBMP("data/sprites.bmp");
++    if (!temp)
++    {
++        LogFile("FAILED.\n");
++        LogFile((const char *)SDL_GetError());
++        return false;
++    }
++
++    // setting color key for sprites: black is transparent
++    Uint32 black = SDL_MapRGB(temp->format, 0, 0, 0);
++    SDL_SetColorKey(temp, SDL_SRCCOLORKEY, black);
++    LogFile("OK.\n");
++
++    // Convert image to video format
++    m_SpriteImage = SDL_DisplayFormat(temp);
++    SDL_FreeSurface(temp);
++    if ( m_SpriteImage == NULL )
++    {
++        fprintf(stderr, "Couldn't convert sprite image: %s\n", SDL_GetError());
++        return false;
++    }
++
++    // loading skins, first check how many is there
++    char Filename[18];
++    m_NumberOfSkins = 0;
++    while (true)
++    {
++        sprintf(Filename, "skins/Back%03d.bmp\0", m_NumberOfSkins);
++        FILE *fp = fopen(Filename, "r");
++        if (!fp)
++            break;
++
++        fclose(fp);
+         m_NumberOfSkins++;
+-	}
+-
+-	LogFile("Loading skins:\n");
+-	if (m_NumberOfSkins > 0)		// alloc memory for pointers
+-	    m_Skins = new SDL_Surface *[m_NumberOfSkins];
+-
+-	for (int i=0; i<m_NumberOfSkins; i++)
+-	{
+-		sprintf(Filename, "skins/Back%03d.bmp\0", i);
+-		LogFile((const char*)Filename);
+-		temp = SDL_LoadBMP(Filename);
+-	 	if (!temp)
+-	 	{
+-	 		LogFile("...FAILED.\n");
+-			LogFile((const char *)SDL_GetError());
+-	 		return false;
+-	 	}
+-
+-		m_Skins[i] = SDL_DisplayFormat(temp);
+-		SDL_FreeSurface(temp);
+-		if ( m_Skins[i] == NULL )
+-		{
+-			fprintf(stderr, "Couldn't convert skin image: %s\n", SDL_GetError());
+-			return false;
+-		}
+-
+-	 	LogFile("...OK.\n");
+-	}
+-
+-	LogFile("Loading Fonts:\n");
+-	m_FontBlue = new NjamFont("data/font-blue.bmp", 6, 9);
+-	m_FontYellow = new NjamFont("data/font-yellow.bmp", 10, 15);
+-
+-	// Load user settings from .conf file
++    }
++
++    LogFile("Loading skins:\n");
++    if (m_NumberOfSkins > 0)        // alloc memory for pointers
++        m_Skins = new SDL_Surface *[m_NumberOfSkins];
++
++    for (int i=0; i<m_NumberOfSkins; i++)
++    {
++        sprintf(Filename, "skins/Back%03d.bmp\0", i);
++        LogFile((const char*)Filename);
++        temp = SDL_LoadBMP(Filename);
++        if (!temp)
++        {
++            LogFile("...FAILED.\n");
++            LogFile((const char *)SDL_GetError());
++            return false;
++        }
++
++        m_Skins[i] = SDL_DisplayFormat(temp);
++        SDL_FreeSurface(temp);
++        if ( m_Skins[i] == NULL )
++        {
++            fprintf(stderr, "Couldn't convert skin image: %s\n", SDL_GetError());
++            return false;
++        }
++
++        LogFile("...OK.\n");
++    }
++
++    LogFile("Loading Fonts:\n");
++    m_FontBlue = new NjamFont("data/font-blue.bmp", 6, 9);
++    m_FontYellow = new NjamFont("data/font-yellow.bmp", 10, 15);
++
++    // Load user settings from .conf file
+     LogFile("Opening njam.conf file.\n");
++#ifndef __linux__
+     char *home = getenv("HOME");
++#endif
+     std::string njamconf("njam.conf");
+     if (home)
+         njamconf = std::string(home) + "/.njamconf";
+-	FILE *fp = fopen(njamconf.c_str(), "r");
+-	if (fp)
+-	{
+-		LogFile("Reading njam.conf file.\n");
+-		char buff[20];
+-		while (true)
+-		{
+-			fgets(buff, 20, fp);
+-			if (feof(fp))
+-				break;
+-
+-			if (buff[1] == '=')
+-			{
+-				int i;
+-				switch (buff[0])
+-				{
+-					case 'M':	m_GameOptions.PlayMusic = (buff[2] == '1');		break;
+-					case 'S':	m_GameOptions.PlaySound = (buff[2] == '1');		break;
+-					case 'U':	m_GameOptions.UsedSkin = (buff[2] - '0');	break;
+-					case 'I':	// serverIP
+-						for (i=2; buff[i] != '\n' && buff[i] && i<17; i++)
+-							m_GameOptions.ServerIP[i-2] = buff[i];
+-						m_GameOptions.ServerIP[i] = '\0';
+-						break;
+-					default:
+-						printf("Unknown configuration file option: %c\n", buff[0]);
+-				}
+-			}
+-		}
+-		fclose(fp);
+-	}
++    FILE *fp = fopen(njamconf.c_str(), "r");
++    if (fp)
++    {
++        LogFile("Reading njam.conf file.\n");
++        char buff[20];
++        while (true)
++        {
++            fgets(buff, 20, fp);
++            if (feof(fp))
++                break;
++
++            if (buff[1] == '=')
++            {
++                int i;
++                switch (buff[0])
++                {
++                    case 'M':   m_GameOptions.PlayMusic = (buff[2] == '1');     break;
++                    case 'S':   m_GameOptions.PlaySound = (buff[2] == '1');     break;
++                    case 'U':   m_GameOptions.UsedSkin = (buff[2] - '0');   break;
++                    case 'I':   // serverIP
++                        for (i=2; buff[i] != '\n' && buff[i] && i<17; i++)
++                            m_GameOptions.ServerIP[i-2] = buff[i];
++                        m_GameOptions.ServerIP[i] = '\0';
++                        break;
++                    default:
++                        printf("Unknown configuration file option: %c\n", buff[0]);
++                }
++            }
++        }
++        fclose(fp);
++    }
+     else
+         LogFile("Failed to open conf file.\n");
+ 
+-	// create default hiscore
++    // create default hiscore
+     LogFile("Creating default hiscore.\n");
+-	char DefaultNames[10][10] = {
+-		"MILAN", 		"TANJA",
+-		"DULIO", 		"DJORDJE",
+-		"CLAUS",		"ENZO",
+-		"JOLAN",		"JAAP",
+-		"MARTIN", 		"RICHARD"	};
+-	for (int i=0; i<10; i++)
+-	{
+-		TopTenScores[i].points = (int)(18 - 1.8*i) * 220;
+-		TopTenScores[i].level = 18 - (int)(1.9*i);
+-		sprintf(TopTenScores[i].name, "%s\0", DefaultNames[i]);
+-	}
+-
+-	// load hiscore from file (if any)
+-	// format: NAME#POINTS#LEVEL#
+-	fp = fopen("hiscore.dat", "r");
+-	if (fp)
+-	{
+-		LogFile("Reading hiscore.dat\n");
+-		char buff[40];
+-		int number = 0;
+-		while (!feof(fp) && number < 10)
+-		{
+-			fgets(buff, 40, fp);
+-			int i = 0, last;
+-
+-			// name
+-			while (buff[i] != '#' && i < 9)
+-			{
+-				TopTenScores[number].name[i] = buff[i];
+-				i++;
+-			}
+-			TopTenScores[number].name[i] = '\0';
+-
+-			i++;
+-			last = i;
+-			while (buff[i] != '#' && i < 40)
+-				i++;
+-			if (i >= 40)
+-				break;
+-			buff[i] = '\0';
+-			TopTenScores[number].points = atoi(buff+last);
+-			i++;
+-			last = i;
+-			while (buff[i] != '#' && i < 40)
+-				i++;
+-			if (i >= 40)
+-				break;
+-			buff[i] = '\0';
+-			TopTenScores[number].level = atoi(buff+last);
+-
+-			number++;
+-		}
+-
+-		fclose(fp);
+-	}
++    char DefaultNames[10][10] = {
++        "MILAN",        "TANJA",
++        "DULIO",        "DJORDJE",
++        "CLAUS",        "ENZO",
++        "JOLAN",        "JAAP",
++        "MARTIN",       "RICHARD"   };
++    for (int i=0; i<10; i++)
++    {
++        TopTenScores[i].points = (int)(18 - 1.8*i) * 220;
++        TopTenScores[i].level = 18 - (int)(1.9*i);
++        sprintf(TopTenScores[i].name, "%s\0", DefaultNames[i]);
++    }
++
++    // load hiscore from file (if any)
++    // format: NAME#POINTS#LEVEL#
++    if (highscore_fp)
++    {
++        LogFile("Reading /var/games/njam.hs\n");
++        char buff[40];
++        int number = 0;
++        while (!feof(highscore_fp) && number < 10)
++        {
++            fgets(buff, 40, highscore_fp);
++            int i = 0, last;
++
++            // name
++            while (buff[i] != '#' && i < 9)
++            {
++                TopTenScores[number].name[i] = buff[i];
++                i++;
++            }
++            TopTenScores[number].name[i] = '\0';
++
++            i++;
++            last = i;
++            while (buff[i] != '#' && i < 40)
++                i++;
++            if (i >= 40)
++                break;
++            buff[i] = '\0';
++            TopTenScores[number].points = atoi(buff+last);
++            i++;
++            last = i;
++            while (buff[i] != '#' && i < 40)
++                i++;
++            if (i >= 40)
++                break;
++            buff[i] = '\0';
++            TopTenScores[number].level = atoi(buff+last);
++
++            number++;
++        }
++    }
+ 
+     LogFile("Opening audio...");
+     if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 1, 2048) == -1)
+-	{
+-		m_GameOptions.PlayMusic = false;
+-		m_GameOptions.PlaySound = false;
+-		LogFile("Failed.\n");
++    {
++        m_GameOptions.PlayMusic = false;
++        m_GameOptions.PlaySound = false;
++        LogFile("Failed.\n");
+         printf("Mix_OpenAudio: %s\n", Mix_GetError());
+- 	}
+- 	else
+- 	{
+- 		m_AudioAvailable = true;
+- 		LogFile("OK.\n");
+-
+-		printf("Reserving 4 channels for sfx...\n");
+-		int reserved = Mix_ReserveChannels(4);
+-		if(reserved != 4)
+-		{
+-		    printf("Reserved %d channels from default mixing.\n",reserved);
+-		    printf("4 channels were not reserved!\n");
+-		}
+-
+-	   	printf("Loading song: data/satisfy.xm...\n");
+-	    m_MainMenuMusic = Mix_LoadMUS("data/satisfy.xm");;
+-	    if(!m_MainMenuMusic)
+-	    	printf("ERROR: Mix_LoadMUS(): %s\n", Mix_GetError());
+-
+-	   	printf("Loading song: data/ritam.s3m...\n");
+-	    m_GameMusic1 = Mix_LoadMUS("data/ritam.s3m");;
+-	    if(!m_GameMusic1)
+-	    	printf("ERROR: Mix_LoadMUS(): %s\n", Mix_GetError());
+-
+-	   	printf("Loading song: data/dali.xm...\n");
+-	    m_GameMusic2 = Mix_LoadMUS("data/dali.xm");;
+-	    if(!m_GameMusic2)
+-	    	printf("ERROR: Mix_LoadMUS(): %s\n", Mix_GetError());
+-
+-	    printf("Loading samples...");
+-		m_Sounds[0] = Mix_LoadWAV("data/dead.wav");
++    }
++    else
++    {
++        m_AudioAvailable = true;
++        LogFile("OK.\n");
++
++        printf("Reserving 4 channels for sfx...\n");
++        int reserved = Mix_ReserveChannels(4);
++        if(reserved != 4)
++        {
++            printf("Reserved %d channels from default mixing.\n",reserved);
++            printf("4 channels were not reserved!\n");
++        }
++
++        printf("Loading song: data/satisfy.xm...\n");
++        m_MainMenuMusic = Mix_LoadMUS("data/satisfy.xm");;
++        if(!m_MainMenuMusic)
++            printf("ERROR: Mix_LoadMUS(): %s\n", Mix_GetError());
++
++        printf("Loading song: data/ritam.s3m...\n");
++        m_GameMusic1 = Mix_LoadMUS("data/ritam.s3m");;
++        if(!m_GameMusic1)
++            printf("ERROR: Mix_LoadMUS(): %s\n", Mix_GetError());
++
++        printf("Loading song: data/dali.xm...\n");
++        m_GameMusic2 = Mix_LoadMUS("data/dali.xm");;
++        if(!m_GameMusic2)
++            printf("ERROR: Mix_LoadMUS(): %s\n", Mix_GetError());
++
++        printf("Loading samples...");
++        m_Sounds[0] = Mix_LoadWAV("data/dead.wav");
+         m_Sounds[1] = Mix_LoadWAV("data/dead2.wav");
+         m_Sounds[2] = Mix_LoadWAV("data/dead3.wav");
+         m_Sounds[3] = Mix_LoadWAV("data/kill.wav");
+@@ -762,251 +791,253 @@ bool NjamEngine::Init(bool Fullscreen, bool SoftwareSurface, bool UseDGA)
+         m_Sounds[15] = Mix_LoadWAV("data/bonus.wav");
+         m_Sounds[16] = Mix_LoadWAV("data/50pts.wav");
+         for (int i=0; i<17; i++)
+-        	if (!m_Sounds[i])
+-        		printf("ERROR loading sample nr. %d\n", i);
++            if (!m_Sounds[i])
++                printf("ERROR loading sample nr. %d\n", i);
+         printf("done.\n");
+- 	}
++    }
+ 
+- 	return true;
++    return true;
+ }
+ //-----------------------------------------------------------------------------
+ bool NjamEngine::MenuItemSelected(int& SelectedMenuItem)
+ {
+-	if (SelectedMenuItem == m_NumberOfMenuItems-1)		// last menu item = EXIT
+-	{
+-		m_ActiveMenu = mtMainMenu;						// return to main menu...
+-		m_NumberOfMenuItems = 8;						// ...which has 7 items
+-		SelectedMenuItem = 0;
+-		return true;
+-	}
+-
+-	if (m_ActiveMenu == mtMainMenu)						// process all items in main menu
+-	{
+-		if (SelectedMenuItem == 6)						// "LevelEditor" selected
+-		{
+-			LevelEditor();
+-			return true;
+-		}
+-
+-		if (SelectedMenuItem == 5)						// "Options" menu item selected
+-		{
+-			m_ActiveMenu = mtOptionsMenu;
+-			m_NumberOfMenuItems = 4;					// Options menu has 4 items
+-			SelectedMenuItem = 0;
+-			return true;
+-		}
+-		else											// some of the games is selected
+-		{												// also other menu items can get here...
+-			// play the game
+-			StartGame((GameType)SelectedMenuItem);
+-			if (m_NetworkAvailable)
+-				Disconnect();		// safe to call - checks everthing
+-
+-			// play music again (if not playing already)
+-			if (m_AudioAvailable && m_MainMenuMusic && m_GameOptions.PlayMusic && !Mix_PlayingMusic() && Mix_PlayMusic(m_MainMenuMusic, -1)==-1)
+-		        printf("ERROR: njam.cpp: MenuItemSelected: Mix_PlayMusic: %s\n", Mix_GetError());
+-
+-			return true;
+-		}
+-	}
+-
+-	if (m_ActiveMenu == mtOptionsMenu)					// process all items in Options menu
+-	{
+-		if (SelectedMenuItem == 0)		// music on/off
+-		{
+-			m_GameOptions.PlayMusic = !m_GameOptions.PlayMusic;
+-			if (!m_AudioAvailable)
+-				m_GameOptions.PlayMusic = false;
+-
+-			if (m_GameOptions.PlayMusic)
+-			{
+-				if (m_AudioAvailable && m_MainMenuMusic && Mix_PlayMusic(m_MainMenuMusic, -1)==-1)
+-			        printf("ERROR: njam.cpp: MenuItemSelected: Mix_PlayMusic: %s\n", Mix_GetError());
+-			}
+-			else if (m_AudioAvailable && m_MainMenuMusic && Mix_PlayingMusic())
+-				Mix_HaltMusic();
+-		}
+-		else if (SelectedMenuItem == 1)		// sound on/off
+-		{
+-			m_GameOptions.PlaySound = !m_GameOptions.PlaySound;
+-			if (!m_AudioAvailable)
+-				m_GameOptions.PlaySound = false;
+-		}
+-		else if (SelectedMenuItem == 2)		// skins on/off
+-		{
+-			m_GameOptions.UsedSkin++;
+-			if (m_GameOptions.UsedSkin > m_NumberOfSkins)
+-				m_GameOptions.UsedSkin = 0;
+-		}
+-	}
+-
+-	return true;
++    if (SelectedMenuItem == m_NumberOfMenuItems-1)      // last menu item = EXIT
++    {
++        m_ActiveMenu = mtMainMenu;                      // return to main menu...
++        m_NumberOfMenuItems = 8;                        // ...which has 7 items
++        SelectedMenuItem = 0;
++        return true;
++    }
++
++    if (m_ActiveMenu == mtMainMenu)                     // process all items in main menu
++    {
++        if (SelectedMenuItem == 6)                      // "LevelEditor" selected
++        {
++            LevelEditor();
++            return true;
++        }
++
++        if (SelectedMenuItem == 5)                      // "Options" menu item selected
++        {
++            m_ActiveMenu = mtOptionsMenu;
++            m_NumberOfMenuItems = 4;                    // Options menu has 4 items
++            SelectedMenuItem = 0;
++            return true;
++        }
++        else                                            // some of the games is selected
++        {                                               // also other menu items can get here...
++            // play the game
++            StartGame((GameType)SelectedMenuItem);
++            if (m_NetworkAvailable)
++                Disconnect();       // safe to call - checks everthing
++
++            // play music again (if not playing already)
++            if (m_AudioAvailable && m_MainMenuMusic && m_GameOptions.PlayMusic && !Mix_PlayingMusic() && Mix_PlayMusic(m_MainMenuMusic, -1)==-1)
++                printf("ERROR: njam.cpp: MenuItemSelected: Mix_PlayMusic: %s\n", Mix_GetError());
++
++            return true;
++        }
++    }
++
++    if (m_ActiveMenu == mtOptionsMenu)                  // process all items in Options menu
++    {
++        if (SelectedMenuItem == 0)      // music on/off
++        {
++            m_GameOptions.PlayMusic = !m_GameOptions.PlayMusic;
++            if (!m_AudioAvailable)
++                m_GameOptions.PlayMusic = false;
++
++            if (m_GameOptions.PlayMusic)
++            {
++                if (m_AudioAvailable && m_MainMenuMusic && Mix_PlayMusic(m_MainMenuMusic, -1)==-1)
++                    printf("ERROR: njam.cpp: MenuItemSelected: Mix_PlayMusic: %s\n", Mix_GetError());
++            }
++            else if (m_AudioAvailable && m_MainMenuMusic && Mix_PlayingMusic())
++                Mix_HaltMusic();
++        }
++        else if (SelectedMenuItem == 1)     // sound on/off
++        {
++            m_GameOptions.PlaySound = !m_GameOptions.PlaySound;
++            if (!m_AudioAvailable)
++                m_GameOptions.PlaySound = false;
++        }
++        else if (SelectedMenuItem == 2)     // skins on/off
++        {
++            m_GameOptions.UsedSkin++;
++            if (m_GameOptions.UsedSkin > m_NumberOfSkins)
++                m_GameOptions.UsedSkin = 0;
++        }
++    }
++
++    return true;
+ }
+ //---------------------------------------------------------------------------
+ void NjamEngine::ScrollText()
+ {
+     const char scroll_text[] = "NJAM BY MILAN BABUSKOV               USE ARROW KEYS TO NAVIGATE MENU            HIT ENTER TO SELECT MENU ITEM               VISIT  NJAM.SOURCEFORGE.NET  ONLINE                NJAM IS A FREE GAME, BUT IF YOU WISH TO SUPPORT DEVELOPMENT YOU ARE WELCOME TO SEND SOME MONEY. FIVE USD OR EURO IS QUITE ENOUGH. CONTACT ME AT MBABUSKOV@YAHOO.COM FOR MORE INFO.      ";
+-	m_ScrollOffset-=2;
++    m_ScrollOffset-=2;
+ 
+-	if (m_ScrollOffset < -3600)		// end of message
+-		m_ScrollOffset = 820;
++    if (m_ScrollOffset < -3600)     // end of message
++        m_ScrollOffset = 820;
+ 
+-	m_FontYellow->WriteTextXY(m_Screen, m_ScrollOffset, 10, scroll_text);
++    m_FontYellow->WriteTextXY(m_Screen, m_ScrollOffset, 10, scroll_text);
+ }
+ //-----------------------------------------------------------------------------
+ void NjamEngine::Start()
+ {
+- 	// play main menu .mod
+- 	if (m_AudioAvailable && m_GameOptions.PlayMusic && Mix_PlayMusic(m_MainMenuMusic, -1) == -1)
++    // play main menu .mod
++    if (m_AudioAvailable && m_GameOptions.PlayMusic && Mix_PlayMusic(m_MainMenuMusic, -1) == -1)
+         printf("ERROR: njam.cpp: Mix_PlayMusic: %s\n", Mix_GetError());
+ 
+-	int SelectedMenuItem = 0;
+-	m_NumberOfMenuItems = 8;	// 7 options in main menu (can be different for other menus, but last option must be: Exit or Back)
+-	m_ActiveMenu = mtMainMenu;	// MainMenu is active (I used enum to make code readable)
+-
+-	while (true)	// loop main menu
+-	{
+-		// this screen has animations, so we want it to look the same on all machines
+-		Uint32 StartTime = SDL_GetTicks();
+-
+-	    if (0 != SDL_BlitSurface(m_MainMenuImage, NULL, m_Screen, NULL))	// draw main image
+-	    {
+-	    	LogFile("Failed to blit main menu image.\n");
+-			LogFile((const char *)SDL_GetError());
+-			return;
+-		}
+-
+-		// if options -- draw options
+-		if (m_ActiveMenu == mtOptionsMenu)
+-		{
+-			SDL_Rect src,dest;
+-			dest.x = 50;
+-			dest.y = 120;
+-		    if (0 != SDL_BlitSurface(m_OptionsMenuImage, NULL, m_Screen, &dest))
+-		    {
+-		    	LogFile("Failed to blit options menu image.\n");
+-				LogFile((const char *)SDL_GetError());
+-				return;
+-			}
+-
+-			// draw boxes for selected options
+-			for (int i=0; i<2; i++)
+-			{
+-				bool option;
+-				switch (i)
+-				{
+-					case 0:		option = m_GameOptions.PlayMusic;	break;
+-					case 1:		option = m_GameOptions.PlaySound;	break;
+-				}
+-
+-				NjamSetRect(dest, 180, 128+35*i, 45, 32);
+-				if (!option)
+-				{
+-					dest.x = 230;
+-					dest.w = 80;
+-				}
+-				SDL_FillRect(m_Screen, &dest, SDL_MapRGB(m_Screen->format, 255, 255, 255));
+-				dest.x += 2;
+-				dest.y += 2;
+-				NjamSetRect(src, dest.x - 50, dest.y - 120, dest.w - 4, dest.h - 4);
+-	            SDL_BlitSurface(m_OptionsMenuImage, &src, m_Screen, &dest);
+-			}
+-
+-			// draw selected skin, or random
+-			if (m_GameOptions.UsedSkin == 0)
+-			{
+-				NjamSetRect(dest, 110, 202, 302, 27);
+-				SDL_FillRect(m_Screen, &dest, SDL_MapRGB(m_Screen->format, 200, 200, 20));
+-				NjamSetRect(dest, 111, 203, 300, 25);
+-				SDL_FillRect(m_Screen, &dest, SDL_MapRGB(m_Screen->format, 0, 0, 0));
+-				m_FontYellow->WriteTextXY(m_Screen, 200, 208, "R A N D O M");
+-			}
+-			else
+-			{
+-				NjamSetRect(dest, 110, 202, 302, 27);
+-				SDL_FillRect(m_Screen, &dest, SDL_MapRGB(m_Screen->format, 0, 0, 0));
+-				NjamSetRect(dest, 111, 203);
+-	            SDL_BlitSurface(m_Skins[m_GameOptions.UsedSkin - 1], NULL, m_Screen, &dest);
+-			}
+-		}
+-
+-		// draw menu selector - at pos: SelectedMenuItem
+-		SDL_Rect rsrc, rdest;
+-		NjamSetRect(rsrc, 100, 0, 25, 25);
+-		NjamSetRect(rdest, 22, 130 + 35 * SelectedMenuItem);
+-	    if (0 != SDL_BlitSurface(m_SpriteImage, &rsrc, m_Screen, &rdest))
+-	    {
+-	    	LogFile("Failed to blit menu selector image.\n");
+-			LogFile((const char *)SDL_GetError());
+-			return;
+-		}
+-
+-		DoScript();		// update info window
+-		ScrollText();	// update text that scrolls at the top of screen
+-
+-		// draw hiscore table
+-		m_FontBlue->WriteTextXY(m_Screen, 714, 470, "LEVEL SCORE");
+-		for (int i=0; i<10; i++)
+-		{
+-			if (i == m_LastHiscore)
+-			{
+-				SDL_Rect dst;
+-				NjamSetRect(dst, 658, 479+i*10, 124, 11);
+-				SDL_FillRect(m_Screen, &dst, SDL_MapRGB(m_Screen->format, 0, 0, 100));
+-			}
+-
+-			char text[100];
+-			sprintf(text, "%-11s %2d %5d\0", TopTenScores[i].name, TopTenScores[i].level, TopTenScores[i].points);
+-			m_FontBlue->WriteTextXY(m_Screen, 660, 480+i*10, text);
+-		}
+-
+-		// draw a version number
+-		m_FontBlue->WriteTextXY(m_Screen, 92, 85, "VERSION 1.25");
+-
+-		// handle a keypress
+-		SDL_Event event;
+-		while(SDL_PollEvent(&event))	 // Loop until there are no events left on the queue
+-		{
+-			switch(event.type)
+-			{
+-		    	case SDL_KEYDOWN:  									// Handle a KEYDOWN event
+-					if (event.key.keysym.sym==SDLK_ESCAPE)
+-					{
+-						if (mtMainMenu == m_ActiveMenu)				// ESC - exit game
+-							return;
+-
+-						SelectedMenuItem = m_NumberOfMenuItems - 1;
+-						if (!MenuItemSelected(SelectedMenuItem))	// as if last menu item is selected (= Exit from submenu)
+-							return;
+-					}
+-					else if (event.key.keysym.sym==SDLK_UP)			// up arrow
+-					{
+-						if (SelectedMenuItem > 0)
+-							SelectedMenuItem--;
+-					}
+-					else if (event.key.keysym.sym==SDLK_DOWN)		// down arrow
+-					{
+-						if (SelectedMenuItem < m_NumberOfMenuItems-1)
+-							SelectedMenuItem++;
+-					}
+-					else if (event.key.keysym.sym==SDLK_RETURN || event.key.keysym.sym==SDLK_KP_ENTER)	// ENTER
+-					{
+-						if (SelectedMenuItem == m_NumberOfMenuItems-1 && m_ActiveMenu == mtMainMenu)		// Exit in main = exit game
+-							return;
+-
+-						if (!MenuItemSelected(SelectedMenuItem))	// show options/run game/whatever, returns false if fatal error
+-							return;
+-					}
+-					break;
+-			}
+-		}
+-
+-
+-		// About 30fps. So that it doesn't fly on fast machines...
+-		while (StartTime + 30 > SDL_GetTicks())
+-			SDL_Delay(2);
+-
+-		SDL_Flip(m_Screen);
+-	}
++    int SelectedMenuItem = 0;
++    m_NumberOfMenuItems = 8;    // 7 options in main menu (can be different for other menus, but last option must be: Exit or Back)
++    m_ActiveMenu = mtMainMenu;  // MainMenu is active (I used enum to make code readable)
++
++    while (true)    // loop main menu
++    {
++        // this screen has animations, so we want it to look the same on all machines
++        Uint32 StartTime = SDL_GetTicks();
++
++        if (0 != SDL_BlitSurface(m_MainMenuImage, NULL, m_Screen, NULL))    // draw main image
++        {
++            LogFile("Failed to blit main menu image.\n");
++            LogFile((const char *)SDL_GetError());
++            return;
++        }
++
++        // if options -- draw options
++        if (m_ActiveMenu == mtOptionsMenu)
++        {
++            SDL_Rect src,dest;
++            dest.x = 50;
++            dest.y = 120;
++            if (0 != SDL_BlitSurface(m_OptionsMenuImage, NULL, m_Screen, &dest))
++            {
++                LogFile("Failed to blit options menu image.\n");
++                LogFile((const char *)SDL_GetError());
++                return;
++            }
++
++            // draw boxes for selected options
++            for (int i=0; i<2; i++)
++            {
++                bool option;
++                switch (i)
++                {
++                    case 0:     option = m_GameOptions.PlayMusic;   break;
++                    case 1:     option = m_GameOptions.PlaySound;   break;
++                }
++
++                NjamSetRect(dest, 180, 128+35*i, 45, 32);
++                if (!option)
++                {
++                    dest.x = 230;
++                    dest.w = 80;
++                }
++                SDL_FillRect(m_Screen, &dest, SDL_MapRGB(m_Screen->format, 255, 255, 255));
++                dest.x += 2;
++                dest.y += 2;
++                NjamSetRect(src, dest.x - 50, dest.y - 120, dest.w - 4, dest.h - 4);
++                SDL_BlitSurface(m_OptionsMenuImage, &src, m_Screen, &dest);
++            }
++
++            // draw selected skin, or random
++            if (m_GameOptions.UsedSkin == 0)
++            {
++                NjamSetRect(dest, 110, 202, 302, 27);
++                SDL_FillRect(m_Screen, &dest, SDL_MapRGB(m_Screen->format, 200, 200, 20));
++                NjamSetRect(dest, 111, 203, 300, 25);
++                SDL_FillRect(m_Screen, &dest, SDL_MapRGB(m_Screen->format, 0, 0, 0));
++                m_FontYellow->WriteTextXY(m_Screen, 200, 208, "R A N D O M");
++            }
++            else
++            {
++                NjamSetRect(dest, 110, 202, 302, 27);
++                SDL_FillRect(m_Screen, &dest, SDL_MapRGB(m_Screen->format, 0, 0, 0));
++                NjamSetRect(dest, 111, 203);
++                SDL_BlitSurface(m_Skins[m_GameOptions.UsedSkin - 1], NULL, m_Screen, &dest);
++            }
++        }
++
++        // draw menu selector - at pos: SelectedMenuItem
++        SDL_Rect rsrc, rdest;
++        NjamSetRect(rsrc, 100, 0, 25, 25);
++        NjamSetRect(rdest, 22, 130 + 35 * SelectedMenuItem);
++        if (0 != SDL_BlitSurface(m_SpriteImage, &rsrc, m_Screen, &rdest))
++        {
++            LogFile("Failed to blit menu selector image.\n");
++            LogFile((const char *)SDL_GetError());
++            return;
++        }
++
++        DoScript();     // update info window
++        ScrollText();   // update text that scrolls at the top of screen
++
++        // draw hiscore table
++        m_FontBlue->WriteTextXY(m_Screen, 714, 470, "LEVEL SCORE");
++        for (int i=0; i<10; i++)
++        {
++            if (i == m_LastHiscore)
++            {
++                SDL_Rect dst;
++                NjamSetRect(dst, 658, 479+i*10, 124, 11);
++                SDL_FillRect(m_Screen, &dst, SDL_MapRGB(m_Screen->format, 0, 0, 100));
++            }
++
++            char text[100];
++            sprintf(text, "%-11s %2d %5d\0", TopTenScores[i].name, TopTenScores[i].level, TopTenScores[i].points);
++            m_FontBlue->WriteTextXY(m_Screen, 660, 480+i*10, text);
++        }
++
++        // draw a version number
++        m_FontBlue->WriteTextXY(m_Screen, 92, 85, "VERSION 1.25");
++
++        // handle a keypress
++        SDL_Event event;
++        while(SDL_PollEvent(&event))     // Loop until there are no events left on the queue
++        {
++            switch(event.type)
++            {
++                case SDL_QUIT:
++                    throw 2;
++                case SDL_KEYDOWN:                                   // Handle a KEYDOWN event
++                    if (event.key.keysym.sym==SDLK_ESCAPE)
++                    {
++                        if (mtMainMenu == m_ActiveMenu)             // ESC - exit game
++                            return;
++
++                        SelectedMenuItem = m_NumberOfMenuItems - 1;
++                        if (!MenuItemSelected(SelectedMenuItem))    // as if last menu item is selected (= Exit from submenu)
++                            return;
++                    }
++                    else if (event.key.keysym.sym==SDLK_UP)         // up arrow
++                    {
++                        if (SelectedMenuItem > 0)
++                            SelectedMenuItem--;
++                    }
++                    else if (event.key.keysym.sym==SDLK_DOWN)       // down arrow
++                    {
++                        if (SelectedMenuItem < m_NumberOfMenuItems-1)
++                            SelectedMenuItem++;
++                    }
++                    else if (event.key.keysym.sym==SDLK_RETURN || event.key.keysym.sym==SDLK_KP_ENTER)  // ENTER
++                    {
++                        if (SelectedMenuItem == m_NumberOfMenuItems-1 && m_ActiveMenu == mtMainMenu)        // Exit in main = exit game
++                            return;
++
++                        if (!MenuItemSelected(SelectedMenuItem))    // show options/run game/whatever, returns false if fatal error
++                            return;
++                    }
++                    break;
++            }
++        }
++
++
++        // About 30fps. So that it doesn't fly on fast machines...
++        while (StartTime + 30 > SDL_GetTicks())
++            SDL_Delay(2);
++
++        SDL_Flip(m_Screen);
++    }
+ }
+ //---------------------------------------------------------------------------
+diff --git a/src/njam.h b/src/njam.h
+index be6e4d4..e04ae9c 100644
+--- a/src/njam.h
++++ b/src/njam.h
+@@ -98,6 +98,7 @@ typedef struct
+ struct list_item
+ {
+ 	char item_text[50];
++	char item_path[512];
+ 	struct list_item *next;
+ 	struct list_item *prev;
+ };
+@@ -192,7 +193,7 @@ private:
+ 	void LevelEditor();				// level editor (njamedit.cpp)
+ 	void RenderEditor(bool, int, int, int);
+ 	bool EnterFileName(char *file_name);
+-	int SelectMap(char type, char *filename = NULL);
++	int SelectMap(char type, char *filename = NULL, int filename_size = 0);
+ 	struct list_item *SelectFromList(struct list_item *first);
+ 	void Message(char *text);
+ 	bool Query(char *text);
+diff --git a/src/njamedit.cpp b/src/njamedit.cpp
+index 92debdf..a895ca9 100644
+--- a/src/njamedit.cpp
++++ b/src/njamedit.cpp
+@@ -41,7 +41,7 @@ void NjamEngine::LevelEditor()
+ {
+ 	int level_type = 0;	// cooperative
+ 	int level_type_was = 0;
+-	char filename[250];
++	char filename[512];
+ 	filename[0] = '\0';
+ 
+ 	int x=2, y=1;
+@@ -90,7 +90,7 @@ void NjamEngine::LevelEditor()
+ 
+ 		if (key == SDLK_l)	// select file from directory
+ 		{
+-			if (SelectMap('A', filename) > -1)
++			if (SelectMap('A', filename, sizeof(filename)) > -1)
+ 			{
+ 				int w=0;
+ 				while (filename[w])
+@@ -127,12 +127,20 @@ void NjamEngine::LevelEditor()
+ 			{
+ 				if (EnterFileName(filename))
+ 				{
+-					char buf[250];
++					char buf[512];
+ 					char types[2][5] = { "COOP", "DUEL" };
+-					sprintf(buf, "levels/%s.%s\0", filename, types[level_type]);
+-					sprintf(filename, "%s\0", buf);
++#ifdef __linux__
++					char *home = NjamGetHomeDir();
++					snprintf(buf, sizeof(buf),
++						"%s/.njam-levels/%s.%s",
++						home? home:"",
++#else
++					snprintf(buf, sizeof(buf),
++						"levels/%s.%s",
++#endif					
++						filename, types[level_type]);
+ 					LogFile::LogFile("Saving maps");
+-					m_Maps.Save(filename);
++					m_Maps.Save(buf);
+ 					level_type_was = level_type;
+ 					changed = false;
+ 				}
+@@ -458,51 +466,72 @@ bool NjamEngine::EnterFileName(char *file_name)
+ 	}
+ }
+ //---------------------------------------------------------------------------
+-int NjamEngine::SelectMap(char type, char *filename)
++int NjamEngine::SelectMap(char type, char *filename, int filename_size)
+ {
+ 	struct list_item *first = NULL;
+ 
+-	// open folder, load all entries
++	// open folders, load all entries
+ 	DIR *dir;
+ 	struct dirent *ent;
++	int i;
++	char dirname[512] = "levels";
+ 
+-	if ((dir = opendir("levels")) == NULL)
++#ifdef __linux__
++	for (i=0; i<2; i++)
+ 	{
+-		printf("Unable to open directory\n");
+-		return -1;
+-	}
++		if (i==0)
++		{
++#endif
++			if ((dir = opendir(dirname)) == NULL)
++			{
++				printf("Unable to open directory\n");
++				return -1;
++			}
++#ifdef __linux__
++		}
++		else
++		{
++			char *home = NjamGetHomeDir();
+ 
+-	while ((ent = readdir(dir)) != NULL)
+-	{
+-		// check if last letter of name maches:
+-		int p = 0;
+-		while (ent->d_name[p])
+-			p++;
+-
+-		char c = ent->d_name[p-1];
+-		if (c != 'P' && c != 'L')
+-			continue;
+-
+-		if (type != 'A' && c != type)
+-			continue;
+-
+-		struct list_item *new_file = new struct list_item;
+-		new_file->next = first;
+-		new_file->prev = NULL;
+-		if (first)
+-			first->prev = new_file;
+-		first = new_file;
+-
+-		// copy file name
+-		for (int i=0; ent->d_name[i] && i<29; i++)
++			snprintf(dirname, sizeof(dirname), "%s/.njam-levels",
++				home? home:"");
++			if ((dir = opendir(dirname)) == NULL)
++				break;
++		}
++#endif
++		while ((ent = readdir(dir)) != NULL)
+ 		{
+-			first->item_text[i] = ent->d_name[i];
+-			first->item_text[i+1] = '\0';
++			// check if last letter of name maches:
++			int p = 0;
++			while (ent->d_name[p])
++				p++;
++
++			char c = ent->d_name[p-1];
++			if (c != 'P' && c != 'L')
++				continue;
++
++			if (type != 'A' && c != type)
++				continue;
++
++			struct list_item *new_file = new struct list_item;
++			new_file->next = first;
++			new_file->prev = NULL;
++			if (first)
++				first->prev = new_file;
++			first = new_file;
++
++			// copy file name
++			snprintf(first->item_text, sizeof(first->item_text),
++			  "%s", ent->d_name);
++			snprintf(first->item_path, sizeof(first->item_path),
++			  "%s/%s", dirname, ent->d_name);
+ 		}
+-	}
+ 
+-	if (closedir(dir) != 0)
+-		printf("Unable to close directory\n");
++		if (closedir(dir) != 0)
++			printf("Unable to close directory\n");
++#ifdef __linux__
++	}
++#endif
+ 
+ 	// show and let player select if more than one levelset
+ 	struct list_item *selected;
+@@ -514,11 +543,10 @@ int NjamEngine::SelectMap(char type, char *filename)
+ 	int result = 0;	// no levels loaded (so far)
+ 	if (selected)
+ 	{
+-		char file_name[200];
+-		sprintf(file_name, "levels/%s\0", selected->item_text);
+-		result = m_Maps.Load(file_name);
++		result = m_Maps.Load(selected->item_path);
+ 		if (filename)
+-			sprintf(filename, "%s\0", file_name);
++			snprintf(filename, filename_size, "%s",
++				selected->item_path);
+ 	}
+ 
+ 	while (first)	// free memory
+diff --git a/src/njamutils.cpp b/src/njamutils.cpp
+index 4885558..4f46f29 100644
+--- a/src/njamutils.cpp
++++ b/src/njamutils.cpp
+@@ -43,6 +43,8 @@ SDLKey NjamGetch(bool Wait)
+ 		SDL_Event event;
+ 		while (SDL_PollEvent(&event))
+ 		{
++			if (event.type == SDL_QUIT)
++				throw 1;
+ 			if (event.type == SDL_KEYDOWN)
+ 				return event.key.keysym.sym;
+ 		}
+@@ -162,3 +164,83 @@ bool SurfaceEffect(SDL_Surface *surface, SDL_Rect& r, tEffect Effect)
+ 	return true;
+ }
+ //-----------------------------------------------------------------------------
++#ifdef __linux__
++#include <pwd.h>
++#include <unistd.h>
++#include <errno.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#if defined(__DECC) && defined(VMS)
++#include <unixlib.h>
++static char *vms_to_unix_buffer = NULL;
++static int convert_vms_to_unix(char *vms_dir_name)
++{
++	vms_to_unix_buffer = vms_dir_name;
++}
++#endif
++
++char *NjamGetHomeDir()
++{
++	struct passwd *pw;
++
++	if (!(pw = getpwuid(getuid())))
++	{
++		fprintf(stderr, "Who are you? Not found in passwd database!!\n");
++		return NULL;
++	}
++
++#if defined(__DECC) && defined(VMS)
++	/* Convert The OpenVMS Formatted "$HOME" Directory Path Into Unix
++	   Format. */
++	decc$from_vms(pw->pw_dir, convert_vms_to_unix, 1);
++	return vms_to_unix_buffer;
++#else
++	return pw->pw_dir;
++#endif
++}
++//-----------------------------------------------------------------------------
++int NjamCheckAndCreateDir(const char *name)
++{
++	struct stat stat_buffer;
++
++	if (stat(name, &stat_buffer))
++	{
++		/* error check if it doesn't exist or something else is wrong */
++		if (errno == ENOENT)
++		{
++			/* doesn't exist letts create it ;) */
++#ifdef BSD43
++			if (mkdir(name, 0775))
++#else
++				if (mkdir(name, S_IRWXU|S_IRWXG|S_IROTH|S_IXOTH))
++#endif
++				{
++					fprintf(stderr, "Error creating dir %s", name);
++					perror(" ");
++					return -1;
++				}
++		}
++		else
++		{
++			/* something else went wrong yell about it */
++			fprintf(stderr, "Error opening %s", name);
++			perror(" ");
++			return -1;
++		}
++	}
++	else
++	{
++		/* file exists check it's a dir otherwise yell about it */
++#ifdef BSD43
++		if (!(S_IFDIR & stat_buffer.st_mode))
++#else
++			if (!S_ISDIR(stat_buffer.st_mode))
++#endif
++			{
++				fprintf(stderr,"Error %s exists but isn't a dir\n", name);
++				return -1;
++			}
++	}
++	return 0;
++}
++#endif
+diff --git a/src/njamutils.h b/src/njamutils.h
+index 1806d26..8d79bcc 100644
+--- a/src/njamutils.h
++++ b/src/njamutils.h
+@@ -25,6 +25,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ void NjamSetRect(SDL_Rect& rect, int x, int y, int w=0, int h=0);
+ SDLKey NjamGetch(bool Wait);
+ int NjamRandom(int MaxValue);
++#ifdef __linux__
++char *NjamGetHomeDir();
++int NjamCheckAndCreateDir(const char *name);
++#endif
+ 
+ typedef enum { fxBlackWhite, fxDarken } tEffect;
+ bool SurfaceEffect(SDL_Surface *surface, SDL_Rect& r, tEffect Effect = fxBlackWhite);
