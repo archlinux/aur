@@ -2,7 +2,7 @@
 
 pkgname=python-etebase
 _pkgname=${pkgname}
-pkgver=0.30.0
+pkgver=0.31.1
 pkgrel=2
 pkgdesc="Etebase Python library"
 arch=(x86_64)
