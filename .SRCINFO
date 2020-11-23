@@ -1,14 +1,14 @@
 pkgbase = f5epi
 	pkgdesc = Endpoint inspection application. It provide capabilities to check machines software processes and files
-	pkgver = 7183.2020.0108.1
-	pkgrel = 4
+	pkgver = 7183.2020.0826.1
+	pkgrel = 1
 	url = https://support.f5.com/csp/article/K32311645#link_04_05
 	arch = x86_64
 	license = commercial
 	source = LICENSE
 	md5sums = 2508fc5e24d46163844dba9534fe7924
 	sha256sums = a8f4b5d965dc0279dd5173109892251ce5d107d9912836e6d83a9b6896eb19a1
-	source_x86_64 = linux_f5epi-7183.2020.0108.1-4.x86_64.rpm::https://vpn.brown.edu/public/download/linux_f5epi.x86_64.rpm
+	source_x86_64 = linux_f5epi-7183.2020.0826.1-1.x86_64.rpm::https://vpn.brown.edu/public/download/linux_f5epi.x86_64.rpm
 	md5sums_x86_64 = ceb72a2b1a0a7857da61a23f7c004f22
 	sha256sums_x86_64 = c1f755ba00e16ea61ec137b1c2f6bad1d0f56e53a88c885691922e88746ffa2d
 
