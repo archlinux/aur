@@ -1,6 +1,6 @@
 pkgbase = linux-amd-znver2
 	pkgver = 5.9.v.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -19,7 +19,7 @@ pkgbase = linux-amd-znver2
 	source = linux.install
 	source = 5013_enable-cpu-optimizations-for-gcc10.patch
 	sha256sums = SKIP
-	sha256sums = 42bbb314e0531a24db97c072a47a31a2681a69dedf4c6981120520cefff3a71e
+	sha256sums = ea66c797732556ff3ac8e212d06a63221b11536e3c895007014ffa21ac565be2
 	sha256sums = 60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = 5ab29eb64e57df83b395a29a6a4f89030d142feffbfbf73b3afc6d97a2a7fd12
