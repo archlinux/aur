@@ -3,7 +3,7 @@
 
 pkgname=vazir-fonts
 pkgver=27.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful Persian font based on DejaVu font."
 url="https://github.com/rastikerdar/vazir-font"
 arch=(any)

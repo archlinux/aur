@@ -1,7 +1,7 @@
 pkgbase = vazir-fonts
 	pkgdesc = A beautiful Persian font based on DejaVu font.
 	pkgver = 27.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rastikerdar/vazir-font
 	arch = any
 	license = OFL
