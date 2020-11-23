@@ -3,7 +3,7 @@
 pkgname=uboot-tinkerboard
 pkgver=20.11.0
 pkgrel=1
-pkgdesc="U-Boot for Tinker Board / S from Armbian"
+pkgdesc="U-Boot for Tinker Board / S"
 arch=('armv7h')
 url="https://github.com/redchenjs/armbian-ci"
 license=('GPL2')
