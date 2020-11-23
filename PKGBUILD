@@ -1,7 +1,7 @@
 # Maintainer: Pieter Joost van de Sande <pj@born2code.net>
 pkgname=whatscli-git
 _pkgname=whatscli
-pkgver=20201120.ab03aeb
+pkgver=20201123.e03e261
 pkgrel=1
 pkgdesc='A command line interface for whatsapp, based on go-whatsapp and tview'
 url='https://github.com/normen/whatscli'
