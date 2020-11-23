@@ -1,7 +1,7 @@
 # Maintainer: Lucas Declercq <lucas.declercq@hoohoot.org>
 pkgname=f5epi
 pkgver=7183.2020.0108.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Endpoint inspection application. It provide capabilities to check machines software processes and files'
 arch=('x86_64')
 source=('LICENSE')
@@ -19,6 +19,7 @@ package() {
     cd "${srcdir}/opt/f5/epi"
 
     install -Dm644 "com.f5.${pkgname}.desktop" "${pkgdir}/usr/share/applications/com.f5.${pkgname}.desktop"
+    install -Dm644 "com.f5.${pkgname}.service" "${pkgdir}/usr/share/dbus-1/services/com.f5.${pkgname}.service"
     install -dm755 "${pkgdir}/usr/bin/"
 
     for executable in $pkgname f5PolicyServer; do
@@ -28,11 +29,6 @@ package() {
     # Use system Qt libraries
     for library in lib/*.so.*; do
         ln -sf "/usr/${library%%.so.*}.so" "$library"
-    done
-
-    # Use system Qt libraries
-    for plugin in platforms/*.so; do
-        ln -sf "/usr/lib/qt/plugins/${plugin}" "$plugin"
     done
 
     for resolution in 16 24 32 48 64 96 128 256 512 1024; do
