@@ -1,0 +1,18 @@
+pkgbase = menyoki-git
+	pkgdesc = Screen{shot,cast} and perform ImageOps on the command line (git)
+	pkgver = 0.1.2.r0.g47b233f
+	pkgrel = 1
+	url = https://github.com/orhun/menyoki
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = git
+	depends = libx11
+	provides = menyoki
+	conflicts = menyoki
+	conflicts = menyoki-bin
+	source = git+https://github.com/orhun/menyoki
+	sha512sums = SKIP
+
+pkgname = menyoki-git
+
