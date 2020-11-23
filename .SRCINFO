@@ -1,6 +1,6 @@
 pkgbase = avogadro2-git
 	pkgdesc = Avogadro 2: graphical application
-	pkgver = 1.93.0.r428.59c4dbd
+	pkgver = 1.93.0.r453.87101bc
 	pkgrel = 1
 	url = http://openchemistry.org/projects/avogadro2
 	install = avogadro2.install

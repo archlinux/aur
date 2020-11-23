@@ -3,7 +3,7 @@
 _pkgname=avogadro2
 pkgname="${_pkgname}-git"
 _gitname=avogadroapp
-pkgver=1.93.0.r428.59c4dbd
+pkgver=1.93.0.r453.87101bc
 pkgrel=1
 pkgdesc="Avogadro 2: graphical application"
 url="http://openchemistry.org/projects/avogadro2"
