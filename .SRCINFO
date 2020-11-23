@@ -1,18 +1,18 @@
 pkgbase = firecracker-bin
 	pkgdesc = Secure and fast microVMs for serverless computing
-	pkgver = 0.23.0
+	pkgver = 0.23.1
 	pkgrel = 1
 	url = https://github.com/firecracker-microvm/firecracker
 	arch = x86_64
 	arch = aarch64
 	license = Apache:2.0
 	provides = firecracker
-	source = https://github.com/firecracker-microvm/firecracker/releases/download/v0.23.0/firecracker-v0.23.0-x86_64
-	source = https://github.com/firecracker-microvm/firecracker/releases/download/v0.23.0/jailer-v0.23.0-x86_64
-	sha512sums = 5a24a95805240c1125f7fd17e69d5fea92781c3767f0a884aa8e433200e8f469b33502342d47843e5612d83d3157df59bf94a960a202978ca70dcf8f31865882
-	sha512sums = 203d24794c3125afdd8cb1b07e69da4fcc40bdc9a3ec7c8e8a2deb8dc1a691156294eb4168c2422f631136a4fed7413136631b3957999fe00fb645aaed16f87d
-	b2sums = cb6a0d356a734ffb28ef6b88517983d1b9efac4127f8979fad085dab503446471d851ec00ff4da39b216f6fc9ba6a5d9d744455c0f1c1cbd7ef881d624536873
-	b2sums = 9a92c415e27a8442da18ab3134023acdc7b49f1246d332a864fb700180914c6b9a7f8747b1eef1657290df5287a946e0d5b0b689bd0b7a60486b472ba7b55290
+	source = https://github.com/firecracker-microvm/firecracker/releases/download/v0.23.1/firecracker-v0.23.1-x86_64
+	source = https://github.com/firecracker-microvm/firecracker/releases/download/v0.23.1/jailer-v0.23.1-x86_64
+	sha512sums = 4bfb756a2ee2942a158857dfe82de838b52bc161d0ba97255eace1af4b57c3a630dfbb51413433a4fbfb3d95ba02719a608c1ea3f28a5485d005daa2c71abbef
+	sha512sums = a6829ffbacd35349214087f4ba1b88304c6bfd23b50d9f97319a93fae5c94c6d0590649fbd0917f9d82b6a2a6faab1f7e37a447864a4960e0b77407ae535212a
+	b2sums = 62315d4962b4debbdac383098e656e6c469b491f7303a7aaab06c885ec653b202f6a49a43ae0b76188d2f73b229c68435e19d316992eed64645decef3f611d5e
+	b2sums = b22a908d551b3da8f882b9c18031f0904808d8f77783c046f9a8855e713074ea61327b7c8c5f875361728bd33e33e4cd84431ead5f1fae68bdca8161e88bdd1c
 
 pkgname = firecracker-bin
 
