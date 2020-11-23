@@ -4,7 +4,7 @@
 
 pkgname=hx-git
 _pkgname=hex
-pkgver=0.3.2.r0.g2e34704
+pkgver=0.4.0.r0.gb0a844a
 pkgrel=1
 pkgdesc="Futuristic take on hexdump (git)"
 arch=('x86_64')
