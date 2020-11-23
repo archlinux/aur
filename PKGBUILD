@@ -2,7 +2,7 @@
 
 pkgname=python-pdfflow
 _name=pdfflow
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Parton distribution function interpolation library written in Python and based on the TensorFlow framework'
 arch=('any')
@@ -13,7 +13,6 @@ depends=("python>=3.7"
          "python-numpy"
          "python-pyaml"
          "python-tensorflow"
-         "python-tensorflow-probability"
          )
 
 optdepends=("python-tensorflow-cuda: GPU support"
@@ -24,7 +23,7 @@ optdepends=("python-tensorflow-cuda: GPU support"
 provides=("pdfflow")
 changelog=
 source=("https://github.com/N3PDF/pdfflow/archive/v${pkgver}.tar.gz")
-md5sums=("5991db9a9bc728963de5f48e81fdc3cf")
+md5sums=("a0a56db01b27fd71261584e316527fcb")
 
 prepare() {
 	cd "$_name-$pkgver"
