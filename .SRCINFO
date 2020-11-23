@@ -1,15 +1,15 @@
 pkgbase = notedown
 	pkgdesc = A simple, keyboard-driven, markdown note-taking app
-	pkgver = 1.12.0
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/subvisual/notedown
 	arch = any
 	license = MPL
 	depends = electron
-	source = https://github.com/subvisual/notedown/releases/download/v1.12.0/notedown-1.12.0.tar.gz
+	source = https://github.com/subvisual/notedown/releases/download/v1.13.0/notedown-1.13.0.tar.gz
 	source = notedown.desktop
 	source = icon.png
-	sha256sums = e96874f194f35efb34090de6ed6950bceb9d7f3ed15df02cace9715e935e8629
+	sha256sums = 34d7431688d373c71b0601ada7dc6f0163200109f5b176b030d5e3d2bda463e1
 	sha256sums = 9d8a2c3d6997360dc3d46bd7fe070d3cd55ff1c86f28abc1705703bf7cdbe4ea
 	sha256sums = 237f69269de51f3c36405a3ea95307793699c5e1730767cdab726d4e1c2fc11a
 
