@@ -2,7 +2,7 @@
 
 pkgname=jstar
 pkgver=1.3.2
-pkgrel=3
+pkgrel=0
 pkgdesc="A Lightweight Embeddable Scripting Language"
 arch=('i686' 'x86_64')
 url="https://github.com/jstar-lang/jstar"
