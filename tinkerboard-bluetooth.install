@@ -1,9 +1,9 @@
 post_install() {
-  systemctl --global enable tinker-bluetooth.service
-  systemctl --global start tinker-bluetooth.service
+  systemctl enable tinker-bluetooth.service
+  systemctl start tinker-bluetooth.service
 }
 
 pre_remove() {
-  systemctl --global stop tinker-bluetooth.service
-  systemctl --global disable tinker-bluetooth.service
+  systemctl stop tinker-bluetooth.service
+  systemctl disable tinker-bluetooth.service
 }
