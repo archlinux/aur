@@ -3,7 +3,7 @@
 pkgname=tinkerboard-bluetooth
 pkgver=20.11.0
 pkgrel=1
-pkgdesc="Tinker Board / S Bluetooth support from Armbian"
+pkgdesc="Tinker Board / S Bluetooth support"
 arch=('armv7h')
 url="https://github.com/redchenjs/armbian-ci"
 license=('GPL2')
