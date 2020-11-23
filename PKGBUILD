@@ -9,7 +9,7 @@
 
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
-pkgver=3.10.11
+pkgver=3.10.12
 pkgrel=1
 pkgdesc='Geographic Information System (GIS); Long Term Release'
 url='https://qgis.org/'
@@ -35,7 +35,7 @@ source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
         t2t-toc-level.patch
 )
 # curl https://qgis.org/downloads/qgis-latest-ltr.tar.bz2.sha256
-sha256sums=('f171704050047373da2ee35f7f9e2bda3fd30c6095bfefac01d4960491673bfa'
+sha256sums=('a8cd61fcce2ae1df3effbdbc585af97cce8108a89d19344f11f150e80555d08d'
             '47fdab75c94ecf5b61a41b334e23714226e895cef507c35a3bc4b46c7d307981'
             'f7e91914cfe366a63383b39c63d5731f6f20a1a0a0d7e9f3d16809a40bb5acff')
 
