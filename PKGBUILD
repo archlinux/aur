@@ -3,12 +3,13 @@
 pkgbase='hunspell-fr'
 pkgname=($pkgbase-{'classical','comprehensive','modern','revised'})
 pkgver=6.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="French Hunspell dictionary"
 arch=(any)
 _base_url="https://grammalecte.net"
 url="${_base_url}/home.php?prj=fr"
 license=('MPL2')
+makedepends=('qt5-webengine')
 conflicts=('hunspell-fr')
 provides=('hunspell-fr')
 source=("${_base_url}/download/fr/hunspell-french-dictionaries-v${pkgver}.zip")
@@ -58,4 +59,11 @@ _package() {
   popd
 
   install -Dm644 README_dict_fr.txt "${pkgdir}"/usr/share/doc/${pkgname}/README_dict_fr.txt
+
+  # Install webengine dictionaries
+  install -d "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/
+  for _file in "$pkgdir"/usr/share/hunspell/*.dic; do
+    _filename=$(basename $_file)
+    qwebengine_convert_dict $_file "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/${_filename/\.dic/\.bdic}
+  done
 }

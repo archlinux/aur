@@ -1,10 +1,11 @@
 pkgbase = hunspell-fr
 	pkgdesc = French Hunspell dictionary
 	pkgver = 6.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://grammalecte.net/home.php?prj=fr
 	arch = any
 	license = MPL2
+	makedepends = qt5-webengine
 	provides = hunspell-fr
 	conflicts = hunspell-fr
 	source = https://grammalecte.net/download/fr/hunspell-french-dictionaries-v6.4.1.zip
