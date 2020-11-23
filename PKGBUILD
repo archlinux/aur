@@ -1,6 +1,5 @@
 # Maintainer: Slash <demodevil5 [at] yahoo [dot] com>
 # Contributor: Andrew Simmons <andrew.simmons@gmail.com>
-# Contributor: Premysl Janouch <warriant@gmail.com>
 
 pkgname=quake2
 pkgver=r0.16.2
