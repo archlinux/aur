@@ -1,0 +1,5 @@
+#! /usr/bin/bash
+
+makepkg --check
+
+makepkg -fg
