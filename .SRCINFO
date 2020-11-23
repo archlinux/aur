@@ -1,7 +1,7 @@
 pkgbase = gepetto-viewer
 	pkgdesc = Graphical Interface for Pinocchio and HPP.
-	pkgver = 4.9.0
-	pkgrel = 2
+	pkgver = 4.11.0
+	pkgrel = 1
 	url = https://github.com/gepetto/gepetto-viewer
 	arch = i686
 	arch = x86_64
@@ -11,16 +11,14 @@ pkgbase = gepetto-viewer
 	makedepends = urdfdom
 	depends = openscenegraph
 	depends = urdfdom
-	depends = openthreads
 	depends = osgqt
 	depends = boost
-	source = https://github.com/gepetto/gepetto-viewer/releases/download/v4.9.0/gepetto-viewer-4.9.0.tar.gz
-	source = https://github.com/gepetto/gepetto-viewer/releases/download/v4.9.0/gepetto-viewer-4.9.0.tar.gz.sig
-	source = https://github.com/gepetto/gepetto-viewer/commit/7558dda.patch
-	validpgpkeys = 9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28
+	source = https://github.com/gepetto/gepetto-viewer/releases/download/v4.11.0/gepetto-viewer-4.11.0.tar.gz
+	source = https://github.com/gepetto/gepetto-viewer/releases/download/v4.11.0/gepetto-viewer-4.11.0.tar.gz.sig
+	validpgpkeys = 9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28,
+	validpgpkeys = A031AD35058955293D54DECEC45D22EF408328AD
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 2b2c888f4ae8107f7e630c918db956deed84283425290d2dcf39a4df796f040b
 
 pkgname = gepetto-viewer
 
