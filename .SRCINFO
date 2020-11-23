@@ -1,0 +1,18 @@
+pkgbase = menyoki-bin
+	pkgdesc = Screen{shot,cast} and perform ImageOps on the command line
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/orhun/menyoki
+	arch = x86_64
+	license = GPL3
+	depends = libx11
+	provides = menyoki
+	conflicts = menyoki
+	conflicts = menyoki-git
+	source_x86_64 = https://github.com/orhun/menyoki/releases/download/v0.1.2/menyoki-0.1.2-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://github.com/orhun/menyoki/releases/download/v0.1.2/menyoki-0.1.2-x86_64-unknown-linux-gnu.tar.gz.sig
+	sha512sums_x86_64 = c7b6e178980e54317f2617bdaebf5a277593e7d967870c572b57c30736b2bbb47d004f9c619949292277f8a89e5579a6c29d453bb12edfa9ca80e30bd5e622fa
+	sha512sums_x86_64 = SKIP
+
+pkgname = menyoki-bin
+
