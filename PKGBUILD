@@ -22,11 +22,13 @@ prepare() {
     cd "$srcdir/gpio_lib_c"
 
     sed -i 's#$(DESTDIR)/lib#$(DESTDIR)$(PREFIX)/lib#' */Makefile
-    sed -i 's#$ln -sf $(DESTDIR)$(PREFIX)/lib/#ln -sf #' */Makefile
+    sed -i 's#ln -sf $(DESTDIR)$(PREFIX)/lib/#ln -sf #' */Makefile
 }
 
 package() {
     cd "$srcdir/gpio_lib_c"
+
+    install -dm755 "$pkgdir/usr/bin"
 
     _subdirs=('wiringPi' 'devLib' 'gpio')
     for subdir in "${_subdirs[@]}"; do
