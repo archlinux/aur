@@ -1,7 +1,7 @@
 # Maintainer: Vitalii Rybalko <vilko dot a at gmail dot com>
 
 pkgname=playkey-linux
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc='Client for game streaming service playkey.net'
 arch=('x86_64')
@@ -28,7 +28,7 @@ source_x86_64=(
 	'git+https://github.com/vilkoz/playkey-linux-launcher.git'
 )
 sha256sums_x86_64=(
-	'34b7352e29728db6928229f588123ffd7d563f628ce4efb59df7e1637b1b5c40'
+	'f68bc9165e3b74479dcb2e1214ee85321970a98337e3502691d214a3eec6d251'
 	'SKIP'
 )
 
