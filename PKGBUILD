@@ -1,7 +1,7 @@
 # Maintainer: printfn <printfn@users.noreply.github.com>
 
 pkgname=fend
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 epoch=
 pkgdesc="Arbitrary-precision unit-aware calculator"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 noextract=()
-sha512sums=("a43796ef5194d63fdc70b3e6ccd87f35412ed553da3fb2b1dfce7a71d17d20f1b44866fea39e2a2bbdd0214f0da55a2739e8380855acb77e894219c8d0ec5304")
+sha512sums=("a961a0773022b24119d42427b4ca28a8e13a7e776c855a66a4d47cdc44c48580a4c4b9ebbc6efb59b48d8765f664fc93b305a9a67229054821f45fa99076e029")
 validpgpkeys=()
 
 build() {
