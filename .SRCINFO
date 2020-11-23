@@ -10,6 +10,5 @@ pkgbase = libindi-eqmod
 	depends = libindi=1.8.7
 	source = https://github.com/indilib/indi-3rdparty/archive/v1.8.7.tar.gz
 	sha256sums = 7571bbc087e0efa2df992c174fca9a7e87e6b2a0f0c6d99cdff01af6fe7e82de
-
 pkgname = libindi-eqmod
 
