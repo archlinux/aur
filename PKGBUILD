@@ -4,7 +4,7 @@
 _basename=chromaprint
 pkgname="lib32-$_basename"
 pkgver=1.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Library for extracting fingerprints from any audio source (32-bit)"
 url="https://acoustid.org/chromaprint"
 arch=('x86_64')
@@ -54,7 +54,7 @@ package() {
 
     make VERBOSE=1 DESTDIR="${pkgdir}" install -C build
 
-    install -vDm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${_basename}"
+    install -vDm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
     cd "$pkgdir"/usr
 
