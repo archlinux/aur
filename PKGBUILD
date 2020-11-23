@@ -63,8 +63,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-mainline-bcachefs
-pkgver=5.7.14
-_pkgverpntrel=14
+pkgver=5.9.9
+_pkgverpntrel=9
 pkgrel=1
 _smt_nice="true"
 _runqueue_sharing="mc-llc"
@@ -84,36 +84,27 @@ options=('!strip')
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config
-  0000-sphinx-workaround.patch
-  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0002-clear-patches.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0003-glitched-base.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0006-add-acs-overrides_iommu.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0007-v5.7-fsync.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0008-5.7-bcachefs.patch"
-#  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/PATCH-RFC-x86-mm-pat-Restore-large-pages-after-fragmentation.mypatch"
-#  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/Reduce-lock-contention-on-swap-cache-from-swap-slots-allocation.mypatch"
-#  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/The-new-cgroup-slab-memory-controller.mypatch"
-#  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/async_buffered_reads.mypatch"
-#  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/mm_proactive_compaction.mypatch"
-#  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/workingset_protection.mypatch"
-#  "https://github.com/Frogging-Family/community-patches/blob/master/linux57-tkg/zstd.mypatch"
+  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
+  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0002-clear-patches.patch"
+  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0003-glitched-base.patch"
+  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0006-add-acs-overrides_iommu.patch"
+  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0007-v5.9-fsync.patch"
+  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0008-5.9-bcachefs.patch"
 )
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-md5sums=('e4630d01444e4f09521f2d6c7e6b2b86'
+md5sums=('d7155cfac43b2f21d8aa4e159809c256'
          'SKIP'
-         '94c6ee3eed73eb3fe39d5eac1e3b431b'
-         '2cebdad39da582fd6a0c01746c8adb42'
-         '3f9c557e2cad81e821c213e4e1097080'
+         '2eb9194d98130bf17a83ffa01e63ff96'
+         'a4eb432da721ad9a721d62a8bbed6d1d'
          'b10e4c612d5240d66fad8f1c50fe3242'
-         'a22cddcadc0da933dac13a6ab49b7ed9'
+         '1181cd1e866a973483e6874445027cd6'
          '168a924c7c83ecdc872a9a1c6d1c8bdb'
-         '228b33d0cb13cab162b3e051ec9bb88d'
-         '0633bf8f7561c6903b445ff476815dc0')
+         'bc259da4c80e5847ba6b4ad21b2b3f16'
+         '8f51cd828572bc100a3059f819ab3f57')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -153,9 +144,7 @@ prepare() {
 #    patch -Np1 < "../$src"
 #  done
   
-  patch -Np1 -i ../0000-sphinx-workaround.patch
-  
-  patch -Np1 -i ../0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   
     # TkG
   patch -Np1 -i ../0002-clear-patches.patch
@@ -401,10 +390,10 @@ prepare() {
   patch -Np1 -i ../0006-add-acs-overrides_iommu.patch
   
   # fsync support
-  patch -Np1 -i ../0007-v5.7-fsync.patch
+  patch -Np1 -i ../0007-v5.9-fsync.patch
 
   # bcachefs
-  patch -Np1 -i ../0008-5.7-bcachefs.patch
+  patch -Np1 -i ../0008-5.9-bcachefs.patch
   
   # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
   sed -i -e 's/# CONFIG_PSI_DEFAULT_DISABLED is not set/CONFIG_PSI_DEFAULT_DISABLED=y/' ./.config

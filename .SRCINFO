@@ -1,5 +1,5 @@
 pkgbase = linux-mainline-bcachefs
-	pkgver = 5.7.14
+	pkgver = 5.9.9
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Bcachefs
 	arch = x86_64
@@ -8,28 +8,26 @@ pkgbase = linux-mainline-bcachefs
 	makedepends = kmod
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.14.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.14.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.9.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.9.tar.sign
 	source = config
-	source = 0000-sphinx-workaround.patch
-	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0002-clear-patches.patch
-	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0003-glitched-base.patch
-	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0006-add-acs-overrides_iommu.patch
-	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0007-v5.7-fsync.patch
-	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0008-5.7-bcachefs.patch
+	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0002-clear-patches.patch
+	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0003-glitched-base.patch
+	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0006-add-acs-overrides_iommu.patch
+	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0007-v5.9-fsync.patch
+	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0008-5.9-bcachefs.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	md5sums = e4630d01444e4f09521f2d6c7e6b2b86
+	md5sums = d7155cfac43b2f21d8aa4e159809c256
 	md5sums = SKIP
-	md5sums = 94c6ee3eed73eb3fe39d5eac1e3b431b
-	md5sums = 2cebdad39da582fd6a0c01746c8adb42
-	md5sums = 3f9c557e2cad81e821c213e4e1097080
+	md5sums = 2eb9194d98130bf17a83ffa01e63ff96
+	md5sums = a4eb432da721ad9a721d62a8bbed6d1d
 	md5sums = b10e4c612d5240d66fad8f1c50fe3242
-	md5sums = a22cddcadc0da933dac13a6ab49b7ed9
+	md5sums = 1181cd1e866a973483e6874445027cd6
 	md5sums = 168a924c7c83ecdc872a9a1c6d1c8bdb
-	md5sums = 228b33d0cb13cab162b3e051ec9bb88d
-	md5sums = 0633bf8f7561c6903b445ff476815dc0
+	md5sums = bc259da4c80e5847ba6b4ad21b2b3f16
+	md5sums = 8f51cd828572bc100a3059f819ab3f57
 
 pkgname = linux-mainline-bcachefs
 	pkgdesc = The Linux-mainline-bcachefs kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler
@@ -38,11 +36,11 @@ pkgname = linux-mainline-bcachefs
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-mainline-bcachefs=5.7.14
+	provides = linux-mainline-bcachefs=5.9.9
 
 pkgname = linux-mainline-bcachefs-headers
 	pkgdesc = Headers and scripts for building modules for Linux-mainline-bcachefs kernel
 	depends = linux-mainline-bcachefs
-	provides = linux-mainline-bcachefs-headers=5.7.14
-	provides = linux-headers=5.7.14
+	provides = linux-mainline-bcachefs-headers=5.9.9
+	provides = linux-headers=5.9.9
 
