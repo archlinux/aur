@@ -1,0 +1,18 @@
+pkgbase = maildir-utils
+	pkgdesc = maildir indexer/searcher + emacs mail client + guile bindings
+	pkgver = 1.4.13
+	pkgrel = 1
+	url = https://www.djcbsoftware.nl/code/mu/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = xapian-core
+	depends = gmime3
+	depends = gtk3
+	depends = webkit2gtk
+	depends = guile
+	source = https://github.com/djcb/mu/releases/download/1.4.13/mu-1.4.13.tar.xz
+	sha512sums = f84fc0798f25b9f73c18581edf19f789910734c996ac0665b79703fab230b1caf039adf2bdc825fe90f87351d3c2877ff39028224e5222454b9828ff8533aef8
+
+pkgname = maildir-utils
+
