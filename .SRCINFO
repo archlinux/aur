@@ -1,7 +1,7 @@
 pkgbase = liquidprompt
 	pkgdesc = A useful adaptive prompt for Bash & Zsh
-	pkgver = 1.12.0
-	pkgrel = 2
+	pkgver = 1.12.1
+	pkgrel = 1
 	url = https://github.com/nojhan/liquidprompt
 	arch = any
 	license = AGPLv3
@@ -14,8 +14,8 @@ pkgbase = liquidprompt
 	optdepends = acpi: Battery and temperature status
 	optdepends = lm_sensors: Temperature status
 	conflicts = liquidprompt-git
-	source = https://github.com/nojhan/liquidprompt/archive/v1.12.0.tar.gz
-	md5sums = 9bc79c5c51a1494466f18051d7cc07ca
+	source = https://github.com/nojhan/liquidprompt/archive/v1.12.1.tar.gz
+	md5sums = c9c5672096791eecd4c2cc904d00bc23
 
 pkgname = liquidprompt
 
