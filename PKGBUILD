@@ -9,12 +9,12 @@
 
 pkgname=pure-ftpd
 pkgver=1.0.49
-pkgrel=4
+pkgrel=5
 pkgdesc="A secure, production-quality and standard-conformant FTP server, focused on efficiency and ease of use."
 arch=('any')
 url="https://www.pureftpd.org/"
 license=('custom')
-depends=('openssl' 'mariadb-libs')
+depends=('openssl' 'mariadb-libs' 'libsodium')
 conflicts=('pure-ftpd-db')
 backup=('etc/pure-ftpd/pure-ftpd.conf')
 install=pure-ftpd.install
