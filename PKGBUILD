@@ -5,10 +5,10 @@ _hgrepo=fluiddyn
 _hgver=0.2.4
 pkgname=python2-fluiddyn-hg
 pkgver=0.2.4.r406.ff507350df1f
-pkgrel=3
+pkgrel=4
 pkgdesc="FluidDyn project | Framework for studying fluid dynamics."
 arch=('any')
-url="https://bitbucket.org/${_hgproj}/${_hgrepo}"
+url="https://foss.heptapod.net/${_hgproj}/${_hgrepo}"
 license=('custom:"CeCILL-B"')
 depends=(
   'python2' 'python2-numpy' 'python2-matplotlib' 'python2-h5py' 'python2-psutil' 'python2-future'
