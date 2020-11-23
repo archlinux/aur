@@ -1,7 +1,7 @@
 pkgbase = docker-makepkg
 	pkgdesc = A script and docker image to build packages in a clean container
 	pkgver = 2.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Thermi/docker-makepkg
 	install = docker_makepkg.install
 	arch = any
