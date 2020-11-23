@@ -2,10 +2,10 @@
 
 pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.0.0
-_pkgver_ext=20201010f
-_pkg_file_name=${_pkgname}${_pkgver_ext}.deb
-pkgrel=3
+pkgver=1.1.0c
+_pkgver_ext=Beta
+_pkg_file_name=${_pkgname}${_pkgver_ext}_${pkgver}.deb
+pkgrel=1
 pkgdesc="Remote control and team work"
 arch=('x86_64')
 url="https://www.todesk.cn/"
@@ -14,7 +14,7 @@ makedepends=('xdg-user-dirs')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("local://${_pkg_file_name}")
-sha256sums=('367b9ea53fd79283612e95a899b2f18488aa14e14b0beee4c26132475df75ee3')
+sha256sums=('0d93806f7275be5487ed91fe4cfc4deea452a07508d4046a17f8ea7592905735')
 
 _DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
 if [ ! -f ${PWD}/${_pkg_file_name} ]; then
