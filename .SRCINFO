@@ -1,7 +1,7 @@
 pkgbase = python-fluiddyn
 	pkgdesc = FluidDyn project | Framework for studying fluid dynamics.
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.3.3
+	pkgrel = 1
 	url = https://fluiddyn.readthedocs.io
 	arch = any
 	license = custom:"CeCILL-B"
@@ -18,8 +18,8 @@ pkgbase = python-fluiddyn
 	optdepends = python-pillow: Image I/O
 	provides = python-fluiddyn
 	conflicts = python2-fluiddyn-hg
-	source = https://files.pythonhosted.org/packages/source/f/fluiddyn/fluiddyn-0.3.1.tar.gz
-	sha256sums = 488dcc8cd1660fd6eed939defeb21250114b5de9c94cc1d979136ea439789b33
+	source = https://files.pythonhosted.org/packages/source/f/fluiddyn/fluiddyn-0.3.3.tar.gz
+	sha256sums = 904e075fc6fd3516fac1bc96090a58701fdae49065464dc39c97ca8e5625835f
 
 pkgname = python-fluiddyn
 
