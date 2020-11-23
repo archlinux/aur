@@ -15,12 +15,12 @@ _makenconfig=
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
+_localmodcfg=y
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.9.9
+pkgver=5.9.10
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -35,7 +35,7 @@ options=('!strip')
 _srcname=linux-${pkgver}
 _bmqversion=5.9-r2
 _bmq_patch="prjc_v${_bmqversion}.patch"
-_gcc_more_v='20200615'
+_gcc_more_v='20201113'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
@@ -50,12 +50,12 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('a302d386af1278e7a8c0c2cd9a3b2119a18620eccc1f069b0f23e405bcf61fad'
+sha256sums=('f591b2f2e939ae6bd35cae2dc3cb87f9472e439695df7f23ed0a341a2c66f030'
             'SKIP'
             '1c9a38f2cc7fea22ea51c9fd5c5715cb3aea37bd3b6a58766318a2e123518fcc'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
             '11d2343174e5486e8ea1a1e98f9f6f1a1625043f6547484f5a729a83f94336eb'
-            '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
+            '0d4db3ae8a47d7a5c5a7f37edfddef7ce8fcdc6b64926cef70e5e3dfd7c0eeed'
             'fc54211c5a8482408e829637a42e9d44ff8de67d21b9f20910f0dd9d23ea121b'
             '9fecc2766e8afd23862db5874cd994669109995527b6a586e290d906bf5cbb1d')
 
