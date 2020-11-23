@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Alchitry Loader
+GenericName=FGPA Development
+Comment=Load bitstreams onto an Alchitry device
+Exec=alchitry-loader
+Terminal=false
+Type=Application
+Icon=alchitry-labs
+Categories=Development;
+StartupWMClass=alchitry-labs
