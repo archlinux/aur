@@ -66,10 +66,10 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rt54
-pkgver=5.4.77
+pkgver=5.4.78
 _major=5.4
 _branch=5.x
-_rt=43
+_rt=44
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod real-time version - LTS branch 5.4.x'
@@ -100,7 +100,7 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '734620fcc2d95f90f66e0d4c059c5a3450da04a44b9cf92ac76b8c9a2611fa51'
+            '84ce48844cc6a63a2663553149e037d13f70cdf9fb5f59c8a57f7089df9c72e1'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
