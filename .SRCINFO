@@ -1,0 +1,24 @@
+pkgbase = db-web-bahnhofstafel
+	pkgdesc = DB Bahnhofstafel Desktop built with nativefier (electron)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.facebook.com
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = db-web-bahnhofstafel.png
+	source = db-web-bahnhofstafel.desktop
+	source = https://fahrweg.dbnetze.com/resource/blob/1359908/f9d782b88f2c1224ac1192e2d4b5f6ff/betriebsstellen-data.pdf
+	sha256sums = 43acca31f22d3a49c02d14565b6ac3933018f6b812e6368f2a37bc8e37cfc688
+	sha256sums = 67fdbc93135c1af00cd1b65ac582923089fefb24413d5d8d23fbc356877eee88
+	sha256sums = fcfc436cfe50f1ca6d1f2082ef3ccdf2d1ab7df560164fee301f144dd81ea6a5
+
+pkgname = db-web-bahnhofstafel
+

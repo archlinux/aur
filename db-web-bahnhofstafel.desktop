@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=DB-Web-Bahnhofstafel
+Comment="DB Bahnhofstafel Desktop built with nativefier (electron)"
+Exec=db-web-bahnhofstafel
+Icon=db-web-bahnhofstafel
+Encoding=UTF-8
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Chat;InstantMessaging;Application;
