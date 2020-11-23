@@ -7,26 +7,19 @@
 #Credits: Joan Figueras <ffigue at gmail dot com> ---> For the base PKFBUILD, choose-gcc-optimization.sh and how to enable features
 #Credits: Piotr Gorski <lucjan.lucjanov@gmail.com> <https://github.com/sirlucjan/kernel-patches> ---> For the patches and the base pkgbuild
 #Credits: Tk-Glitch <https://github.com/Tk-Glitch> ---> For some patches
-#Credits: Con Kolivas <kernel@kolivas.org> <http://ck.kolivas.org/> ---> For MuQSS patches
 
-#BUILD OPTIONS
+################################# config ################################
+
+#menuconfig ---> value = menuconfig
+#nconfig ---> value = nconfig
+#xconfig ---> value = xconfig
+#gconfig ---> value = gconfig
+#makeolddefconfig ---> value = makeolddefconfig
 #The default is make olddefconfig
-#Set value y to enble and leave empty to disable
 
-#Tweak kernel options prior to a build via nconfig
-_make_nconfig=
+_config=olddefconfig
 
-#Tweak kernel options prior to a build via menuconfig
-_make_menuconfig=
-
-#Tweak kernel options prior to a build via xconfig
-_make_xconfig=
-
-#Tweak kernel options prior to a build via gconfig
-_make_gconfig=
-
-#Make olddefconfig if the user don't want to tweak the config file. (stock default)
-_make_olddefconfig=y
+################################# CPU microarchtectures ################################
 
 #Choose CPU microarchtectures
 
@@ -77,6 +70,29 @@ _make_olddefconfig=y
 
 _microarchitecture=0
 
+################################# CONFIG_STACK_VALIDATION ################################
+
+#Enable/disable CONFIG_STACK_VALIDATION
+
+#CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
+#Set value to n to disable
+#Set value to y to enable
+#default value is set to y
+
+_config_stack_validation=y
+
+################################# IKCONFIG ################################
+
+#Enable/disable IKCONFIG following Arch's philosophy
+#Enable access to the kernel configuration file through /proc/config.gz
+#Set value to n to disable
+#Set value to y to enable
+#default value is set to y
+
+_ikconfig=y
+
+################################# NUMA ################################
+
 #Disable/enable NUMA
 
 #Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
@@ -84,28 +100,55 @@ _microarchitecture=0
 #NUMA is optimized for multi-socket motherboards.
 #A single multi-core CPU actually runs slower with NUMA enabled.
 #Set value to y to disable (possibly increase performance)
-#leave empty to enable
+#Set value to n to enable
 #default value is set to y
 
 _disable_numa=y
+
+################################# FUNCTION_TRACER/GRAPH_TRACER ################################
 
 #Disable/enable FUNCTION_TRACER/GRAPH_TRACER
 
 #For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
 #Set value to y to disable (possibly increase performance)
-#leave empty to enable
+#Set value to n to enable
 #default value is set to y
 
 _disable_tracers=y
 
+################################# CONFIG_USER_NS_UNPRIVILEGED ################################
+
 #Enable/disable CONFIG_USER_NS_UNPRIVILEGED
 
-#Disable CONFIG_USER_NS_UNPRIVILEGED flag
+#Disable CONFIG_USER_NS_UNPRIVILEGED
 #Set value to y to disable
-#leave empty to enable
+#Set value to n to enable
 #default value is set to y
 
 _disable_ns=y
+
+################################# CPU Governer ################################
+
+#Performance ---> value = performance
+#POWERSAVE ---> value = powersave
+#USERSPACE ---> value = userspace
+#ONDEMAND ---> value = ondemand
+#CONSERVATIVE ---> value = conservative
+#SCHEDUTIL ---> value = schedutil
+#Default value is set to performance
+
+_cpu_gov=performance
+
+################################# CPU HZ ################################
+
+#100
+#250
+#350
+#750
+#1000
+#Default value is set to 1000
+
+_cpu_hz=1000
 
 ################################# I/O Scheduler ################################
 ########### In this section you need to have at least one enable ###########
@@ -152,52 +195,11 @@ _disable_mq_deadline=y
 #default value is set to n
 _disable_bfq=n
 
-################################# Patches section #################################
-
-############## ATTENTION ##############
-#I do not recommand to activate all these patches at the same time!
-
-#Base patches
-#Base patches include:
-#choose-gcc-optimization.sh ---> Forked from Joan Figueras <ffigue at gmail dot com> linux-xanmod package from the Archlinux AUR
-#0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch ---> Forked from Joan Figueras <ffigue at gmail dot com> linux-xanmod package from the Archlinux AUR
-#sphinx-workaround.patch ---> Forked from Jan Alexander Steffens (heftig) <heftig@archlinux.org> Archlinux linux-zen package
-#0001-block-patches.patch ---> From Piotr Gorski <lucjan.lucjanov@gmail.com> <https://github.com/sirlucjan/kernel-patches>
-#0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch ---> From Piotr Gorski <lucjan.lucjanov@gmail.com> <https://github.com/sirlucjan/kernel-patches>
-#0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch ---> From Piotr Gorski <lucjan.lucjanov@gmail.com> <https://github.com/sirlucjan/kernel-patches>
-
-#Project lucjan patches.
-#Set of sirlucjan patches Piotr Gorski from his github repo <lucjan.lucjanov@gmail.com> <https://github.com/sirlucjan/kernel-patches>
-#Leave empty to not activate these patches
-#Set "y" to activate the patch set
-#Default is set to empty
-_project_lucjan_patches=
-
-#Project tkg patches
-#Set of linux-tkg patches Tk-Glitch from his github repo <https://github.com/Tk-Glitch>
-#Leave empty to not activate these patches
-#Set "y" to activate the patch set
-#Default is set to empty
-_project_tkg_patches=
-
-#Project CK Patches
-#Set of patches by Con Kolivas <kernel@kolivas.org> <http://ck.kolivas.org/>
-#Leave empty to not activate these patches
-#Set "y" to activate the patch set
-#Default is set to empty
-_project_ck_patches=
-
 ###################################################################################
 
 pkgbase=linux-kernel
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
-for _p in "${pkgname[@]}"; do
-  eval "package_$_p() {
-    $(declare -f "_package${_p#$pkgbase}")
-    _package${_p#$pkgbase}
-  }"
-done
-pkgver=5.9.9
+pkgver=5.9.10
 pkgrel=1
 modulestag=${pkgver}-${pkgbase}
 pkgdesc="Stable linux kernel, modules, headers and docs"
@@ -208,93 +210,41 @@ makedepends=("bison" "flex" "valgrind" "git" "cmake" "make" "extra-cmake-modules
              "python" "python-appdirs" "python-mako" "python-evdev" "python-sphinx_rtd_theme" "python-graphviz" "python-sphinx"
              "clang" "lib32-clang" "bc" "gcc" "gcc-libs" "lib32-gcc-libs" "glibc" "lib32-glibc" "pahole" "patch" "gtk3"
              "kmod" "libmikmod" "lib32-libmikmod" "xmlto" "xmltoman" "graphviz" "imagemagick" "imagemagick-doc" "rsync" "cpio" "inetutils")
-patchsource_base_patches=https://raw.githubusercontent.com/kevall474/kernel-patches/main/base-patches/
-patchsource_project_lucjan_patches=https://raw.githubusercontent.com/kevall474/kernel-patches/main/lucjan-patches/
-patchsource_project_tkg_patches=https://raw.githubusercontent.com/kevall474/kernel-patches/main/tkg-patches/
-patchsource_project_ck_patches=https://raw.githubusercontent.com/kevall474/kernel-patches/main/muqss-patches/
+patchsource=https://raw.githubusercontent.com/kevall474/kernel-patches/main/${pkgbase}/
 source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.xz"
-        "${pkgbase}.preset"
         "config"
-        "${patchsource_base_patches}choose-gcc-optimization.sh"
-        "${patchsource_base_patches}0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch"
-        "${patchsource_base_patches}sphinx-workaround.patch"
-        "${patchsource_base_patches}0001-block-patches.patch"
-        "${patchsource_base_patches}0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
-        "${patchsource_base_patches}0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch")
-md5sums=("d7155cfac43b2f21d8aa4e159809c256"  #linux-5.9.9.tar.xz
-         "3f8fc418c35db69ecc839e9c5bd4b3dc"  #linux-kernel.preset
+        "${patchsource}choose-gcc-optimization.sh"
+        "${patchsource}0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch"
+        "${patchsource}sphinx-workaround.patch"
+        "${patchsource}0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
+        "${patchsource}0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
+        "${patchsource}0001-sched-autogroup-Add-kernel-parameter-and-config-opti.patch"
+        "${patchsource}0001-ZEN-Add-VHBA-driver.patch"
+        "${patchsource}5.9-ll-reverts-ver5.patch"
+        "${patchsource}5.9-bfq-dev-lucjan-v13-r2K201022.patch"
+        "${patchsource}0001-block-patches.patch"
+        "${patchsource}0001-futex-patches.patch"
+        "${patchsource}0001-clearlinux-patches.patch"
+        "${patchsource}0001-btrfs-patches.patch"
+        "${patchsource}0001-ntfs3-patches.patch"
+        "${patchsource}0011-ZFS-fix.patch")
+md5sums=("0e5f1b7935d352a2245ba715be498061"  #linux-5.9.10.tar.xz
          "e1f2fa957d481d0ca9e737bb92528b67"  #config version 5.9.4
          "b3f0a4804b6fe031f674988441c1af35"  #choose-gcc-optimization.sh
          "a724ee14cb7aee1cfa6e4d9770c94723"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
          "2cebdad39da582fd6a0c01746c8adb42"  #sphinx-workaround.patch
-         "35db7bfb80ed2867b2e8d5ed92cadb31"  #0001-block-patches.patch
          "d15597054a4c5e405f980d07d5eac11a"  #0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch
-         "f99b82d6f424d1a729a9b8c5a1be2b84") #0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch
-#sirlucjan patches
-if [[ "$_project_lucjan_patches" = "y" ]]; then
-source+=("${patchsource_project_lucjan_patches}0001-bfq-dev-patches.patch"
-         "${patchsource_project_lucjan_patches}0001-btrfs-patches.patch"
-         "${patchsource_project_lucjan_patches}0001-ntfs3-patches.patch"
-         "${patchsource_project_lucjan_patches}0001-sched-autogroup-Add-kernel-parameter-and-config-opti.patch"
-         "${patchsource_project_lucjan_patches}0001-ZEN-Add-VHBA-driver.patch"
-         "${patchsource_project_lucjan_patches}0001-clearlinux-patches.patch"
-         "${patchsource_project_lucjan_patches}0001-ksm-patches.patch"
-         "${patchsource_project_lucjan_patches}0001-init-add-support-for-zstd-compressed-modules.patch"
-         "${patchsource_project_lucjan_patches}0001-zstd-dev-patches.patch"
-         "${patchsource_project_lucjan_patches}0001-futex-patches.patch"
-         "${patchsource_project_lucjan_patches}0001-fsgsbase-patches.patch"
-         "${patchsource_project_lucjan_patches}0001-fixes-miscellaneous.patch"
-         "${patchsource_project_lucjan_patches}0001-iomap-patches.patch"
-         "${patchsource_project_lucjan_patches}0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch"
-         "${patchsource_project_lucjan_patches}0004-mm-set-8-megabytes-for-address_space-level-file-read.patch")
-md5sums+=("49e15d1cb87faa6d369526425d8726c6"  #0001-bfq-dev-patches.patch
-          "ad0dd4477201efb9fa86b33231ce62d8"  #0001-btrfs-patches.patch
-          "50d1cb09cf619482ceb6b5d868681448"  #0001-ntfs3-patches.patch
-          "34764d6a1af6ab2e06ef6efa95aaa467"  #0001-sched-autogroup-Add-kernel-parameter-and-config-opti.patch
-          "a0188e575abe3f27bde9ec09462b067e"  #0001-ZEN-Add-VHBA-driver.patch
-          "eb812a74ec92add2108b48f5a9f048fc"  #0001-clearlinux-patches.patch
-          "06a50579d091f2f913dbbf85a98dfd9e"  #0001-ksm-patches.patch
-          "803d689c22ebc334ac3becc212f84cba"  #0001-init-add-support-for-zstd-compressed-modules.patch
-          "9d780edd3397bc742d20e053949a4eb3"  #0001-zstd-dev-patches.patch
-          "c97b042c437883db1e768ff474e8b35c"  #0001-futex-patches.patch
-          "8c14e662be90e3cdb51c1d226b8a8600"  #0001-fsgsbase-patches.patch
-          "49b3a04f54138892bf5a76c5d5350bde"  #0001-fixes-miscellaneous.patch
-          "3dc5b4c062e368834341adb4a39a7828"  #0001-iomap-patches.patch
-          "81b3fe87cd3ab4db9e64809f533a9d02"  #0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch
-          "ac61dce42d7adad32fc2887ed8f69cfb") #0004-mm-set-8-megabytes-for-address_space-level-file-read.patch
-fi
-#linux-tkg patches
-if [ "$_project_tkg_patches" = "y" ]; then
-source+=("${patchsource_project_tkg_patches}0011-ZFS-fix.patch")
-md5sums+=("c19fd76423bfc4af45d99585cedb2623") #0011-ZFS-fix.patch
-fi
-#Con Kolivas patches
-if [[ "$_project_ck_patches" = "y" ]]; then
-source+=("${patchsource_project_ck_patches}0002-Make-preemptible-kernel-default.patch"
-         "${patchsource_project_ck_patches}0003-Expose-vmsplit-for-our-poor-32-bit-users.patch"
-         "${patchsource_project_ck_patches}0004-Create-highres-timeout-variants-of-schedule_timeout-.patch"
-         "${patchsource_project_ck_patches}0005-Special-case-calls-of-schedule_timeout-1-to-use-the-.patch"
-         "${patchsource_project_ck_patches}0006-Convert-msleep-to-use-hrtimers-when-active.patch"
-         "${patchsource_project_ck_patches}0007-Replace-all-schedule-timeout-1-with-schedule_min_hrt.patch"
-         "${patchsource_project_ck_patches}0008-Replace-all-calls-to-schedule_timeout_interruptible-.patch"
-         "${patchsource_project_ck_patches}0009-Replace-all-calls-to-schedule_timeout_uninterruptibl.patch"
-         "${patchsource_project_ck_patches}0010-Don-t-use-hrtimer-overlay-when-pm_freezing-since-som.patch"
-         "${patchsource_project_ck_patches}0012-Make-threaded-IRQs-optionally-the-default-which-can-.patch"
-         "${patchsource_project_ck_patches}0014-Swap-sucks.patch"
-         "${patchsource_project_ck_patches}0015-Make-nohz_full-not-be-picked-up-as-a-default-config-.patch")
-md5sums+=("01d3e091ded11ed61ed35899e3c06989"  #0002-Make-preemptible-kernel-default.patch
-          "322f8444650e41fd40175693749b1592"  #0003-Expose-vmsplit-for-our-poor-32-bit-users.patch
-          "55adeb5b6f05a3c666568537ad663fb8"  #0004-Create-highres-timeout-variants-of-schedule_timeout-.patch
-          "a221ad4e6f0f2c62413c0a90945492d5"  #0005-Special-case-calls-of-schedule_timeout-1-to-use-the-.patch
-          "ced32172ce6d7c8d891750ca3bbbbef2"  #0006-Convert-msleep-to-use-hrtimers-when-active.patch
-          "11d4479ce9ac7c7a5cb8478101a5dce8"  #0007-Replace-all-schedule-timeout-1-with-schedule_min_hrt.patch
-          "e9a4d9d8214ab2aaa647a8cfaa23d668"  #0008-Replace-all-calls-to-schedule_timeout_interruptible-.patch
-          "bf5700621fe1b5830fe1188475636ef2"  #0009-Replace-all-calls-to-schedule_timeout_uninterruptibl.patch
-          "f35e7618fb95c181f367b026f12973ea"  #0010-Don-t-use-hrtimer-overlay-when-pm_freezing-since-som.patch
-          "add2a95dbe9705c4f0f49feb1f447b81"  #0012-Make-threaded-IRQs-optionally-the-default-which-can-.patch
-          "46ab9d4d09b20f6604e33215a27c27af"  #0014-Swap-sucks.patch
-          "a04390dfc0db2af7f9d454535bc012f4") #0015-Make-nohz_full-not-be-picked-up-as-a-default-config-.patch
-fi
+         "f99b82d6f424d1a729a9b8c5a1be2b84"  #0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch
+         "34764d6a1af6ab2e06ef6efa95aaa467"  #0001-sched-autogroup-Add-kernel-parameter-and-config-opti.patch
+         "a0188e575abe3f27bde9ec09462b067e"  #0001-ZEN-Add-VHBA-driver.patch
+         "3ea66f6bbaa249c02aacca01894109ad"  #5.9-ll-reverts-ver5.patch. Apply revert patch to apply bfq-dev-lucjan patches
+         "fdf17f2ec486a20ef18b61eecf5cc9cc"  #5.9-bfq-dev-lucjan-v13-r2K201022.patch
+         "35db7bfb80ed2867b2e8d5ed92cadb31"  #0001-block-patches.patch
+         "c97b042c437883db1e768ff474e8b35c"  #0001-futex-patches.patch
+         "eb812a74ec92add2108b48f5a9f048fc"  #0001-clearlinux-patches.patch
+         "ad0dd4477201efb9fa86b33231ce62d8"  #0001-btrfs-patches.patch
+         "50d1cb09cf619482ceb6b5d868681448"  #0001-ntfs3-patches.patch
+         "c19fd76423bfc4af45d99585cedb2623") #0011-ZFS-fix.patch
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=${pkgbase}
@@ -302,12 +252,6 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 prepare(){
   cd linux-${pkgver}
-
-  if [[ "$_patch_level" = "base" ]]; then
-    msg2 "You choose the base patch level"
-  elif [[ "$_patch_level" = "full" ]]; then
-    msg2 "You choose the full patch level"
-  fi
 
   # Apply any patch
   local src
@@ -319,79 +263,200 @@ prepare(){
     patch -Np1 < "../$src"
   done
 
-  # cpopy the config file first
+  # Copy the config file first
   # Copy "${srcdir}"/config to linux-${pkgver}/.config
   msg2 "Copy "${srcdir}"/config to linux-${pkgver}/.config"
   cp "${srcdir}"/config .config
 
-  #Optimize for performance
-  #You can always edit these variables
-  msg2 "Optimize for performance/powersave"
-  msg2 "Set CONFIG_CPU_FREQ_DEFAULT_GOV"
-  #Enable one, disable the others
-  scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE           #|
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE            #|
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE            #|
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND             #|
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE         #|
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL            #|
-  msg2 "Set CONFIG_CPU_FREQ_GOV"                                            #|
-  #Enable one, disable the others                                           #| ---> these have to match
-  scripts/config --enable CONFIG_CPU_FREQ_GOV_PERFORMANCE                   #|
-  scripts/config --disable CONFIG_CPU_FREQ_GOV_POWERSAVE                    #|
-  scripts/config --disable CONFIG_CPU_FREQ_GOV_USERSPACE                    #|
-  scripts/config --disable CONFIG_CPU_FREQ_GOV_ONDEMAND                     #|
-  scripts/config --disable CONFIG_CPU_FREQ_GOV_CONSERVATIVE                 #|
-  scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL                    #|
-  msg2 "Set CONFIG_HZ"
-  #Enable one, disable the others
-  scripts/config --enable CONFIG_HZ_1000  #Have to match the set-val command
-  scripts/config --set-val CONFIG_HZ 1000 #You can put any of these value 100, 300, 750, 1000
-  scripts/config --disable CONFIG_HZ_300
-  scripts/config --disable CONFIG_HZ_750
-  scripts/config --disable CONFIG_HZ_250
-  scripts/config --disable CONFIG_HZ_100
-
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
-  msg2 "Enable CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team"
-  scripts/config --enable CONFIG_STACK_VALIDATION
+  if [[ $_config_stack_validation = "y" ]]; then
+    msg2 "Enable CONFIG_STACK_VALIDATION gives better stack traces... Also is enabled in all official kernel packages by Archlinux team"
+    scripts/config --enable CONFIG_STACK_VALIDATION
+  elif [[ $_config_stack_validation = "n" ]]; then
+     msg2 "Disable CONFIG_STACK_VALIDATION"
+     scripts/config --disable CONFIG_STACK_VALIDATION
+  fi
 
   # Enable IKCONFIG following Arch's philosophy
-  msg2 "Enable CONFIG_IKCONFIG/CONFIG_IKCONFIG_PROC following Arch's philosophy"
-  scripts/config --enable CONFIG_IKCONFIG \
-                 --enable CONFIG_IKCONFIG_PROC
-
-  # User set. See at the top of this file
-  if [[ "$_disable_tracers" = "y" ]]; then
-    msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER..."
-    scripts/config --disable CONFIG_FUNCTION_TRACER \
-                   --disable CONFIG_STACK_TRACER
+  # Enable access to the kernel configuration file through /proc/config.gz
+  if [[ $_ikconfig = "y" ]]; then
+    msg2 "Enable CONFIG_IKCONFIG/CONFIG_IKCONFIG_PROC following Arch's philosophy... Enable access to the kernel configuration file through /proc/config.gz"
+    scripts/config --enable CONFIG_IKCONFIG
+    scripts/config --enable CONFIG_IKCONFIG_PROC
+  elif [[ $_ikconfig = "n" ]]; then
+     msg2 "Disable CONFIG_STACK_VALIDATION..."
+    scripts/config --disable CONFIG_IKCONFIG
+    scripts/config --disable CONFIG_IKCONFIG_PROC
   fi
 
-  #Enable/Disable NUMA
+  # Enable/Disable NUMA
   if [[ $_disable_numa = "y" ]]; then
-    msg2 "Disabling NUMA..."
+    msg2 "Disable NUMA since most users do not have multiple processors... Breaks CUDA/NvEnc..."
     scripts/config --disable CONFIG_NUMA
+  elif [[ $_disable_numa = "n" ]]; then
+    msg2 "Enable NUMA..."
+    scripts/config --enable CONFIG_NUMA
   fi
 
-  #Enable/Disable CONFIG_USER_NS_UNPRIVILEGED
+  # Disable/enable FUNCTION_TRACER/GRAPH_TRACER
+  if [[ "$_disable_tracers" = "y" ]]; then
+    msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER... Limits debugging and analyzing of the kernel"
+    scripts/config --disable CONFIG_FUNCTION_TRACER
+    scripts/config --disable CONFIG_STACK_TRACER
+  elif [[ "$_disable_tracers" = "n" ]]; then
+    msg2 "Enable FUNCTION_TRACER/GRAPH_TRACER..."
+    scripts/config --enable CONFIG_FUNCTION_TRACER
+    scripts/config --enable CONFIG_STACK_TRACER
+  fi
+
+  # Enable/Disable CONFIG_USER_NS_UNPRIVILEGED
   if [[ "$_disable_ns" = "y" ]]; then
-    msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
+    msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED..."
     scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
+  elif [[ "$_disable_ns" = "n" ]]; then
+    msg2 "Enable CONFIG_USER_NS_UNPRIVILEGED..."
+    scripts/config --enable CONFIG_USER_NS_UNPRIVILEGED
   fi
 
-  #Enable/disable BFQ I/O scheduler
-  if [[ "$_disable_bfq" = "y" ]]; then
-    msg2 "Disabling BFQ I/O scheduler..."
-    scripts/config --disable CONFIG_IOSCHED_BFQ
-    scripts/config --disable CONFIG_BFQ_GROUP_IOSCHED
-  elif [[ "$_disable_bfq" = "n" ]]; then
-    msg2 "Enable BFQ I/O scheduler..."
-    scripts/config --enable CONFIG_IOSCHED_BFQ
-    scripts/config --enable CONFIG_BFQ_GROUP_IOSCHED
+  # Set CPU Governor
+  msg2 "Set CPU Governor"
+  if [[ $_cpu_gov = "performance" ]]; then
+    msg2 "Enable CPU_FREQ_DEFAULT_GOV_PERFORMANCE and CONFIG_CPU_FREQ_GOV_PERFORMANCE..."
+    scripts/config --enable CONFIG_CPU_FREQ
+    scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_PERFORMANCE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_POWERSAVE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_USERSPACE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_ONDEMAND
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
+  elif [[ $_cpu_gov = "powersave" ]]; then
+    msg2 "Enable CPU_FREQ_DEFAULT_GOV_POWERSAVE and CONFIG_CPU_FREQ_GOV_POWERSAVE..."
+    scripts/config --enable CONFIG_CPU_FREQ
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_PERFORMANCE
+    scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_POWERSAVE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_USERSPACE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_ONDEMAND
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
+  elif [[ $_cpu_gov = "userspace" ]]; then
+    msg2 "Enable CPU_FREQ_DEFAULT_GOV_USERSPACE and CONFIG_CPU_FREQ_GOV_USERSPACE..."
+    scripts/config --enable CONFIG_CPU_FREQ
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_PERFORMANCE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_POWERSAVE
+    scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_USERSPACE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_ONDEMAND
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
+  elif [[ $_cpu_gov = "ondemand" ]]; then
+    msg2 "Enable CPU_FREQ_DEFAULT_GOV_ONDEMAND and CONFIG_CPU_FREQ_GOV_ONDEMAND..."
+    scripts/config --enable CONFIG_CPU_FREQ
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_PERFORMANCE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_POWERSAVE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_USERSPACE
+    scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_ONDEMAND
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
+  elif [[ $_cpu_gov = "conservative" ]]; then
+    msg2 "Enable CPU_FREQ_DEFAULT_GOV_CONSERVATIVE and CONFIG_CPU_FREQ_GOV_CONSERVATIVE..."
+    scripts/config --enable CONFIG_CPU_FREQ
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_PERFORMANCE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_POWERSAVE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_USERSPACE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_ONDEMAND
+    scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
+  elif [[ $_cpu_gov = "schedutil" ]]; then
+    msg2 "Enable CPU_FREQ_DEFAULT_GOV_SCHEDUTIL and CONFIG_CPU_FREQ_GOV_SCHEDUTIL..."
+    scripts/config --enable CONFIG_CPU_FREQ
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_PERFORMANCE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_POWERSAVE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_USERSPACE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_ONDEMAND
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE
+    scripts/config --disable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
+    scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
   fi
 
-  #Enable/disable Kyber I/O scheduler
+  # Set CONFIG_HZ
+  msg2 "Set CONFIG_HZ"
+  if [[ $_cpu_hz = "100" ]]; then
+    msg2 "Enable CONFIG_HZ_100..."
+    scripts/config --enable CONFIG_HZ_100
+    scripts/config --set-val CONFIG_HZ 100
+    scripts/config --disable CONFIG_HZ_250
+    scripts/config --disable CONFIG_HZ_300
+    scripts/config --disable CONFIG_HZ_750
+    scripts/config --disable CONFIG_HZ_1000
+  elif [[ $_cpu_hz = "250" ]]; then
+    msg2 "Enable CONFIG_HZ_250..."
+    scripts/config --enable CONFIG_HZ_250
+    scripts/config --set-val CONFIG_HZ 250
+    scripts/config --disable CONFIG_HZ_300
+    scripts/config --disable CONFIG_HZ_750
+    scripts/config --disable CONFIG_HZ_100
+    scripts/config --disable CONFIG_HZ_1000
+  elif [[ $_cpu_hz = "300" ]]; then
+    msg2 "Enable CONFIG_HZ_300..."
+    scripts/config --enable CONFIG_HZ_300
+    scripts/config --set-val CONFIG_HZ 300
+    scripts/config --disable CONFIG_HZ_250
+    scripts/config --disable CONFIG_HZ_750
+    scripts/config --disable CONFIG_HZ_100
+    scripts/config --disable CONFIG_HZ_1000
+  elif [[ $_cpu_hz = "750" ]]; then
+    msg2 "Enable CONFIG_HZ_750..."
+    scripts/config --enable CONFIG_HZ_750
+    scripts/config --set-val CONFIG_HZ 750
+    scripts/config --disable CONFIG_HZ_300
+    scripts/config --disable CONFIG_HZ_100
+    scripts/config --disable CONFIG_HZ_250
+    scripts/config --disable CONFIG_HZ_1000
+  elif [[ $_cpu_hz = "1000" ]]; then
+    msg2 "Enable CONFIG_HZ_1000..."
+    scripts/config --enable CONFIG_HZ_1000
+    scripts/config --set-val CONFIG_HZ 1000
+    scripts/config --disable CONFIG_HZ_300
+    scripts/config --disable CONFIG_HZ_750
+    scripts/config --disable CONFIG_HZ_250
+    scripts/config --disable CONFIG_HZ_100
+  fi
+
+  # Enable/disable Kyber I/O scheduler
   if [[ "$_disable_kyber" = "y" ]]; then
     msg2 "Disabling Kyber I/O scheduler..."
     scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
@@ -400,7 +465,7 @@ prepare(){
     scripts/config --enable CONFIG_MQ_IOSCHED_KYBER
   fi
 
-  #Enable/disable MQ-Deadline I/O scheduler
+  # Enable/disable MQ-Deadline I/O scheduler
   if [[ "$_disable_mq_deadline" = "y" ]]; then
     msg2 "Disabling Deadline I/O scheduler..."
     scripts/config --disable CONFIG_MQ_IOSCHED_DEADLINE
@@ -411,37 +476,41 @@ prepare(){
     scripts/config --enable CONFIG_MQ_IOSCHED_DEADLINE_NODEFAULT
   fi
 
-  #Let's user choose microarchitecture optimization in GCC
+  # Enable/disable BFQ I/O scheduler
+  if [[ "$_disable_bfq" = "y" ]]; then
+    msg2 "Disabling BFQ I/O scheduler..."
+    scripts/config --disable CONFIG_IOSCHED_BFQ
+    scripts/config --disable CONFIG_BFQ_GROUP_IOSCHED
+  elif [[ "$_disable_bfq" = "n" ]]; then
+    msg2 "Enable BFQ I/O scheduler..."
+    scripts/config --enable CONFIG_IOSCHED_BFQ
+    scripts/config --enable CONFIG_BFQ_GROUP_IOSCHED
+  fi
+
+  # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
+  # Setting localversion
   msg2 "Setting localversion..."
   scripts/setlocalversion --save-scmversion
   echo "-${pkgbase}" > localversion
 
-  #Config
-  if [[ "$_make_nconfig" = "y" ]]; then
-  msg2 "make nconfig"
-  make nconfig
-  fi
-
-  if [[ "$_make_menuconfig" = "y" ]]; then
-  msg2 "make menuconfig"
-  make menuconfig
-  fi
-
-  if [[ "$_make_xconfig" = "y" ]]; then
-  msg2 "make xconfig"
-  make xconfig
-  fi
-
-  if [[ "$_make_gconfig" = "y" ]]; then
-  msg2 "make gconfig"
-  make gconfig
-  fi
-
-  if [[ "$_make_olddefconfig" = "y" ]]; then
-  msg2 "make olddefconfig"
-  make olddefconfig
+  # Config
+  if [[ "$_config" = "nconfig" ]]; then
+    msg2 "make nconfig..."
+    make nconfig
+  elif [[ "$_config" = "menuconfig" ]]; then
+    msg2 "make menuconfig..."
+    make menuconfig
+  elif [[ "$_config" = "xconfig" ]]; then
+    msg2 "make xconfig..."
+    make xconfig
+  elif [[ "$_config" = "gconfig" ]]; then
+    msg2 "make gconfig..."
+    make gconfig
+  elif [[ "$_config" = "olddefconfig" ]]; then
+    msg2 "make olddefconfig..."
+    make olddefconfig
   fi
 }
 
@@ -449,57 +518,51 @@ build(){
   cd linux-${pkgver}
 
   # make -j$(nproc) all
-  echo "make -j$(nproc) all"
+  msg2 "make -j$(nproc) all..."
   make -j$(nproc) all
 }
 
-_package(){
-  pkgdesc="Stable linux kernel and modules with a set of patches by TK-Glitch, Piotr Górski and Con Kolivas"
+package_linux-kernel(){
+  pkgdesc="Stable linux kernel and modules with a set of patches by TK-Glitch and Piotr Górski"
   depends=("coreutils" "kmod" "initramfs" "mkinitcpio")
   optdepends=("linux-firmware: firmware images needed for some devices"
               "crda: to set the correct wireless channels of your country")
-  install=${pkgbase}.install
+  provides=("VIRTUALBOX-GUEST-MODULES" "WIREGUARD-MODULE")
 
   # Create system tree
-  msg2 "Create system tree"
+  msg2 "Create system tree..."
   install -dm755 "${pkgdir}"/usr
   install -dm755 "${pkgdir}"/boot
-  install -dm755 "${pkgdir}"/etc/mkinitcpio.d
 
   cd linux-${pkgver}
 
   # Installing modules
-  msg2 "Installing modules"
+  msg2 "Installing modules..."
   make INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
 
   # Copy bzImage to "${pkgdir}"/boot/vmlinuz-${pkgbase}
   msg2 "Copy bzImage to "${pkgdir}"/boot/vmlinuz-${pkgbase}"
   cp arch/x86/boot/bzImage "${pkgdir}"/boot/vmlinuz-${pkgbase}
 
-  # Copy System.map to "${pkgdir}"/boot/System.map-${pkgbase}
-  msg2 "Copy System.map to "${pkgdir}"/boot/System.map-${pkgbase}"
-  cp System.map "${pkgdir}"/boot/System.map-${pkgbase}
-
   # Copy bzImage to "${pkgdir}"/usr/lib/modules/${modulestag}/vmlinuz
   msg2 "Copy bzImage to "${pkgdir}"/usr/lib/modules/${modulestag}/vmlinuz"
   cp arch/x86/boot/bzImage "${pkgdir}"/usr/lib/modules/${modulestag}/vmlinuz
-
-  # Copy linux-kernel.preset to "${pkgdir}"/etc/mkinitcpio.d/
-  msg2 "Copy linux-kernel-git.preset to "${pkgdir}"/etc/mkinitcpio.d/"
-  cp "${srcdir}"/${pkgbase}.preset "${pkgdir}"/etc/mkinitcpio.d/
+  
+  # Used by mkinitcpio to name the kernel
+  echo "$pkgbase" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${modulestag}/pkgbase"
 
   # Remove build dir and source dir
-  msg2 "Remove build dir and source dir"
+  msg2 "Remove build dir and source dir..."
   rm -rf "${pkgdir}"/usr/lib/modules/${modulestag}/build
   rm -rf "${pkgdir}"/usr/lib/modules/${modulestag}/source
 }
 
-_package-headers(){
+package_linux-kernel-headers(){
   pkgdesc="Headers and scripts for building modules for the ${pkgbase} package"
   depends=("${pkgbase}")
 
   # Create system tree
-  msg2 "Create system tree"
+  msg2 "Create system tree..."
   install -dm755 "${pkgdir}"/usr/lib/modules/${modulestag}/build
 
   cd linux-${pkgver}
@@ -577,19 +640,19 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-_package-docs() {
+package_linux-kernel-docs() {
   pkgdesc="Documentation for the ${pkgbase} package"
   depends=("${pkgbase}")
 
   # Create system tree
-  msg2 "Create system tree"
+  msg2 "Create system tree..."
 
   install -dm755 "${pkgdir}"/usr/lib/modules/${modulestag}/build
 
   cd linux-${pkgver}
 
   # make -j$(nproc) htmldocs
-  msg2 "make -j$(nproc) htmldocs"
+  msg2 "make -j$(nproc) htmldocs..."
   make -j$(nproc) htmldocs
 
   local builddir="$pkgdir/usr/lib/modules/${modulestag}/build"
