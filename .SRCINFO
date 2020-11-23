@@ -1,0 +1,25 @@
+pkgbase = python-transonic
+	pkgdesc = AOT / JIT compiler frontend for modern Python-Numpy code
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://transonic.readthedocs.io
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = autopep8
+	depends = python
+	depends = python-setuptools
+	depends = python-astunparse
+	depends = python-beniget
+	depends = python-gast
+	depends = python-numpy
+	optdepends = python-pythran: compiler backend
+	optdepends = python-numba: compiler backend
+	optdepends = cython: compiler backend
+	provides = transonic
+	source = https://files.pythonhosted.org/packages/source/t/transonic/transonic-0.4.5.tar.gz
+	sha256sums = 134ce1f0c94ad492709d372fa5d7b8f8468368b5eaa8eee9ae8697dec04cf940
+
+pkgname = python-transonic
+
