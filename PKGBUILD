@@ -14,6 +14,7 @@ arch=('i686' 'x86_64')
 url="http://www.nethack.org/index.html"
 license=('custom')
 depends=('gzip' 'ncurses' 'qt5-base' 'qt5-multimedia' 'libxaw' 'libxt' 'libx11')
+makedepends=('xorg-mkfontscale' 'xorg-bdftopcf')
 # 'libxmu' 'libxext'
 source=("https://nethack.org/download/${pkgver}/${_pkgname}-${pkgver//.}-src.tgz")
 md5sums=('6c9a75f556d24c66801d74d8727a602e')
