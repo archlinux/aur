@@ -1,6 +1,6 @@
 pkgbase = ufolint
 	pkgdesc = UFO source file linter
-	pkgver = 1.0.3
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/source-foundry/ufolint
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ufolint
 	depends = python-commandlines
 	depends = python-fonttools
 	depends = python-fs
-	source = ufolint-1.0.3.tar.gz::https://github.com/source-foundry/ufolint/archive/v1.0.3.tar.gz
-	sha256sums = 2351a2eecf33c7a61844e53b584f25c9f71a2a2c1475214b8fbcea8e0d4e1564
+	source = ufolint-1.1.0.tar.gz::https://github.com/source-foundry/ufolint/archive/v1.1.0.tar.gz
+	sha256sums = 05b6b8bbc5abfe36a367e8222610e617e428896a7f23f2c1c5635c7217093227
 
 pkgname = ufolint
 
