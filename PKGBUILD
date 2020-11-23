@@ -5,7 +5,7 @@
 
 pkgname=brickv
 pkgver=2.4.16
-pkgrel=1
+pkgrel=2
 pkgdesc="testing/flashing tool for tinkerforge brick(let)s"
 url="http://www.tinkerforge.com/"
 license=("GPL2")
@@ -24,4 +24,7 @@ build() {
 package() {
   cd $srcdir/$pkgname-$pkgver/src
   python setup.py install --root=$pkgdir --prefix=/usr
+  install -Dm755 $srcdir/$pkgname-$pkgver/src/build_data/linux/brickv/usr/share/applications/brickv.desktop $pkgdir/usr/share/applications/brickv.desktop
+  install -Dm644 $srcdir/$pkgname-$pkgver/src/build_data/linux/brickv/usr/share/pixmaps/brickv-icon.png $pkgdir/usr/share/pixmaps/brickv-icon.png
+  install -Dm644 $srcdir/$pkgname-$pkgver/src/build_data/linux/brickv/lib/udev/rules.d/99-tinkerforge-brickv.rules $pkgdir/usr/lib/udev/rules.d/99-tinkerforge-brickv.rules
 }
