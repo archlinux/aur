@@ -1,15 +1,16 @@
 # Maintainer: Cliveptr <clivedd@tuta.io>
 pkgname=gomuks-bin
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal Matrix client written in Go'
-url='https://github.com/tulir/gomuks'
 
-license=('AGPL3')
 conflicts=('gomuks')
 provides=('gomuks')
+license=('AGPL3')
+depends=('libolm') # required for encryption support
 arch=('x86_64' 'arm' 'aarch64')
 
+url='https://github.com/tulir/gomuks'
 _source="$pkgname-$pkgver::$url/releases/download/v$pkgver/gomuks-linux"
 noextract=("$pkgname-$pkgver")
 
