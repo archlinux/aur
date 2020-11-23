@@ -11,7 +11,7 @@ makedepends=('findutils' 'curl')
 depends=('bash' 'systemd')
 options=('!strip')
 install=$pkgname.install
-_ubuntu=trunk
+_ubuntu=focal
 _kernel=5.8.18
 source=(
     "$pkgname.install"
