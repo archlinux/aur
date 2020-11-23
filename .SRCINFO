@@ -1,0 +1,17 @@
+pkgbase = dmenu-dchaovii-git
+	pkgdesc = Personal Build of dmenu by DChaovII
+	pkgver = 5.0.r.
+	pkgrel = 1
+	url = https://github.com/DChaovII/dmenu-dchaovii
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	depends = ttf-ubuntu-font-family
+	provides = dmenu
+	conflicts = dmenu
+	source = git+https://github.com/DChaovII/dmenu-dchaovii
+	md5sums = SKIP
+
+pkgname = dmenu-dchaovii-git
+
