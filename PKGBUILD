@@ -1,7 +1,7 @@
 # Maintainer: Lyr <lyr-7d1h@pm.me>
 
 pkgname="dimport"
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Dotfiles Importer - Import and keep your dotfiles in sync"
 arch=("x86_64")
