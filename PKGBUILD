@@ -1,20 +1,21 @@
 # Submitter: Thomas Dziedzic < gostrc-ala-gmail.com >
 # Maintainer: Luis Sarmiento < Luis.Sarmiento-ala-nuclear.lu.se >
 pkgname=xylib
-pkgver=1.5
-_tag="v1.5"
+pkgver=1.6
+_tag="v1.6"
 _devel="wojdyr"
-pkgrel=3
+pkgrel=1
 pkgdesc="Portable C++ library for reading files that contain x-y data
 from powder diffraction, spectroscopy or other experimental methods."
 url="http://xylib.sourceforge.net/"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL')
-depends=("wxgtk")
-makedepends=('boost')
+depends=("wxgtk2")
+makedepends=('boost>=1.46.1')
 options=('!libtool')
 source=("https://github.com/$_devel/$pkgname/releases/download/$_tag/$pkgname-$pkgver.tar.bz2")
-md5sums=('398d0e04fc50b231b5214a5196765d70')
+sha256sums=('b641cb33fa01732b8203356e0978384f9551bf415cfbae5989b3a233b3cb0ec7')
+
 build() {
 
   cd $srcdir/$pkgname-$pkgver
