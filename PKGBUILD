@@ -38,7 +38,7 @@ build() {
 
   # XFT patch. 2010nov02 version. Fixed some bugs.
   # patch -p1 < ../yorick-cvs-xft-2012sep11.patch
-  patch -p1 < /home/frigaut/xft.patch
+  patch -p1 < ../yorick-git-xft.patch
 
   make prefix=/usr ysite || return 1
 
