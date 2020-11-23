@@ -2,7 +2,7 @@
 
 pkgname=artix-silence-grub-theme-git
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Artix Silence: Grub Theme, Fork of arch-silence"
 arch=('any')
 url="https://github.com/fghibellini/arch-silence"
