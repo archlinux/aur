@@ -1,0 +1,17 @@
+pkgbase = tcpsplit
+	pkgdesc = Breaks a single libpcap packet trace into some number of sub-traces.
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://www.icir.org/mallman/software/tcpsplit/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = custom
+	depends = libpcap
+	source = http://www.icir.org/mallman/software/tcpsplit/tcpsplit-0.2.tar.gz
+	sha256sums = 885a6609d04eb35f31f1c6f06a0b9afd88776d85dec0caa33a86cef3f3c09d1d
+
+pkgname = tcpsplit
+
