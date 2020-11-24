@@ -8,6 +8,7 @@ pkgbase = wfuzz-git
 	makedepends = python-mock
 	makedepends = python-netaddr
 	makedepends = python-sphinx
+	makedepends = texinfo
 	makedepends = git
 	depends = python-pycurl
 	depends = python-attrs
