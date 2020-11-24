@@ -8,6 +8,7 @@ pkgbase = globe-cli-git
 	makedepends = rust
 	makedepends = git
 	provides = globe-cli
+	conflicts = globe
 	conflicts = globe-cli
 	source = git+https://github.com/adamsky/globe
 	sha512sums = SKIP
