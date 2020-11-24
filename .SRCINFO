@@ -16,7 +16,7 @@ pkgbase = insomnia-bin
 	provides = insomnia
 	conflicts = insomnia
 	source = https://github.com/Kong/insomnia/releases/download/core@2020.4.2/Insomnia.Core-2020.4.2.deb
-	source = license-fa85501efdb0aff74d4fcca4207664711486c430::https://github.com/Kong/insomnia/raw/fa85501efdb0aff74d4fcca4207664711486c430/LICENSE
+	source = insomnia-2020.4.2-license::https://github.com/Kong/insomnia/raw/core@2020.4.2/LICENSE
 	sha256sums = 6a8f7a73c7116473e821f2874dc6a32be0dfb69270e2abded7629a05af35ae5f
 	sha256sums = cc91b5641bbbf592a69ca5f7b45807efba470068e815fc7682a42022bbd3cbb9
 
