@@ -22,8 +22,8 @@ pkgbase = runescape-launcher
 	validpgpkeys = AAC9264309E4D717441DB9527373B12CE03BEB4B
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = runescape-launcher_2.2.7_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/runescape-launcher/runescape-launcher_2.2.7_amd64.deb
 	source_x86_64 = runescape-launcher_2.2.7_Packages::https://content.runescape.com/downloads/ubuntu/dists/trusty/non-free/binary-amd64/Packages
+	source_x86_64 = runescape-launcher_2.2.7_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/runescape-launcher/runescape-launcher_.deb
 	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
 
