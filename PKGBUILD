@@ -21,7 +21,7 @@ pkgname=(
   "$pkgbase" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=r56650.bc46b78216c
+pkgver=r56710.cb9d28f8471
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -222,18 +222,17 @@ package_kodi-git() {
   depends=(
     'desktop-file-utils' 'hicolor-icon-theme' 'mesa' 'python-pycryptodomex'
     'python-pillow' 'python-simplejson' 'xorg-xdpyinfo' 'shairplay'
-    'KODI-BIN'
+    'KODI-GIT-BIN' 'libplist'
   )
   optdepends=(
     'afpfs-ng: Apple shares support'
     'bluez: Blutooth support'
     'python-pybluez: Bluetooth support'
-    'libplist: AirPlay support'
     'pulseaudio: PulseAudio support'
     'upower: Display battery level'
   )
   provides=('xbmc' "kodi=${pkgver}")
-  conflicts=('xbmc')
+  conflicts=('xbmc' 'kodi')
   replaces=('xbmc')
 
   _components=(
@@ -260,7 +259,8 @@ package_kodi-git() {
 
 package_kodi-git-x11() {
   pkgdesc="x11 kodi binary"
-  provides=('KODI-BIN' "kodi-x11=${pkgver}")
+  provides=('KODI-GIT-BIN' "kodi-x11=${pkgver}")
+  conflicts=('kodi-x11')
   replaces=('kodi-bin')
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
@@ -279,7 +279,8 @@ package_kodi-git-x11() {
 
 package_kodi-git-wayland() {
   pkgdesc="wayland kodi binary"
-  provides=('KODI-BIN' "kodi-wayland=${pkgver}")
+  provides=('KODI-GIT-BIN' "kodi-wayland=${pkgver}")
+  conflicts=('kodi-wayland')
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon' 'libxslt'
@@ -296,7 +297,8 @@ package_kodi-git-wayland() {
 
 package_kodi-git-gbm() {
   pkgdesc="gbm kodi binary"
-  provides=('KODI-BIN' "kodi-gbm=${pkgver}")
+  provides=('KODI-GIT-BIN' "kodi-gbm=${pkgver}")
+  conflicts=('kodi-gbm')
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libinput' 'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon'
