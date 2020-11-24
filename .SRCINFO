@@ -10,7 +10,6 @@ pkgbase = dog-dns-git
 	provides = dog-dns
 	conflicts = dog
 	conflicts = dog-dns
-	conflicts = dog-dns-bin
 	source = git+https://github.com/ogham/dog
 	sha512sums = SKIP
 
