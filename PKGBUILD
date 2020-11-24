@@ -3,7 +3,7 @@
 
 pkgname=fw-bin
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Workspace productivity booster"
 arch=('x86_64')
 url="https://github.com/brocode/fw"
@@ -20,6 +20,6 @@ sha512sums_x86_64=('5c8feb46e591e072ddf9a2f51465b41a0284df76564a024cea5317d2fcc0
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "${pkgdir}/usr/bin/${pkgname%-bin}"
-  install -Dm 644 "$pkgname-$pkgver-README.org" "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
-  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
+  install -Dm 644 "$pkgname-$pkgver-README.org" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
