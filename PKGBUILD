@@ -20,7 +20,7 @@ sha512sums=('7ef0ea969e6ba8bcddd085658f08b659ece5fe204c3448338f7af48e86c4df54367
 options=('!strip')
 provides=('heroku' 'heroku-cli')
 
-append_path () {
+append_path() {
   case ":$PATH:" in
       *:"$1":*)
           ;;
