@@ -1,0 +1,13 @@
+pkgbase = fortune-mod-grugq
+	pkgdesc = Fortune Quotes: The Grugq
+	pkgver = r10.888d79a
+	pkgrel = 1
+	url = https://github.com/grugq/quotes
+	arch = any
+	license = custom
+	depends = fortune-mod
+	source = grugq-quotes::git+https://github.com/grugq/quotes.git
+	sha256sums = SKIP
+
+pkgname = fortune-mod-grugq
+
