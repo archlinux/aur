@@ -1,14 +1,14 @@
 pkgbase = dokkoo-bin
 	pkgdesc = Mokk (Macro Output Key Kit) implementation written in Rust.
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/MadeByEmil/dokkoo
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	provides = dokkoo
 	options = strip
-	source = https://github.com/MadeByEmil/dokkoo/releases/download/v0.1.2/dokkoo-0.1.2-x86_64.tar.gz
-	sha256sums = ca4f7e03a0eaf8fd19ebb763383e18a5be75eec222ac81aecf6397c5685cf769
+	source = https://github.com/MadeByEmil/dokkoo/releases/download/v0.1.3/dokkoo-0.1.3-x86_64.tar.gz
+	sha256sums = 3562c52233570c862f37aefbfb65e6ad1c663f599e0a33aa189acdf063256199
 
 pkgname = dokkoo-bin
 
