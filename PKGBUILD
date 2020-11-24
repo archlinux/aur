@@ -9,6 +9,7 @@ pkgdesc="A dotfile manager and templater written in Rust"
 arch=('x86_64')
 url="https://github.com/SuperCuber/dotter"
 license=('Unlicense')
+conflicts=("$_pkgname")
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('25898bcf511345304bb3e54cdcddc0f194dbbb19c3d448b7483c5bc5463def288caaf3a0c89c0a469001e0d38ff43577d174ffafba6a3aa5a11bca5ce40439a0')
