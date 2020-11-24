@@ -13,7 +13,6 @@ url="https://github.com/Kintaro/wtftw"
 license=('BSD')
 depends=('xorg-xmessage' 'libxinerama')
 makedepends=('rust' 'git')
-install=wtftw.install
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}"

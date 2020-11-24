@@ -3,7 +3,6 @@ pkgbase = wtftw-git
 	pkgver = r347.14f3d1e
 	pkgrel = 1
 	url = https://github.com/Kintaro/wtftw
-	install = wtftw.install
 	arch = i686
 	arch = x86_64
 	license = BSD
