@@ -6,6 +6,7 @@ pkgbase = sic-image-cli-bin
 	arch = x86_64
 	license = MIT
 	provides = sic-image-cli
+	conflicts = sic
 	conflicts = sic-image-cli
 	source_x86_64 = sic-image-cli-bin-0.14.0.tar.xz::https://github.com/foresterre/sic/releases/download/v0.14.0/sic-0.14.0+features.imageproc-ops-x86_64-unknown-linux-gnu.tar.xz
 	source_x86_64 = sic-image-cli-bin-0.14.0-LICENSE-MIT::https://github.com/foresterre/sic/raw/v0.14.0/LICENSE-MIT
