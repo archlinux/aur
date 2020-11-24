@@ -8,7 +8,7 @@ pkgdesc="One Time Password Generator"
 arch=('x86_64')
 url="https://github.com/kondanta/notp"
 license=('MIT')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
+conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/${pkgname%-bin}_linux"
                "$pkgname-$pkgver-LICENSE::$url/raw/v$pkgver/LICENSE"

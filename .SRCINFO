@@ -7,7 +7,6 @@ pkgbase = notp-bin
 	license = MIT
 	provides = notp
 	conflicts = notp
-	conflicts = notp-git
 	source_x86_64 = notp-bin-2.1.0::https://github.com/kondanta/notp/releases/download/v2.1.0/notp_linux
 	source_x86_64 = notp-bin-2.1.0-LICENSE::https://github.com/kondanta/notp/raw/v2.1.0/LICENSE
 	source_x86_64 = notp-bin-2.1.0-README.md::https://github.com/kondanta/notp/raw/v2.1.0/README.md
