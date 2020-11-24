@@ -1,12 +1,13 @@
 pkgbase = linux-nitrous-fire-git
 	pkgver = 5.9+
-	pkgrel = 12
+	pkgrel = 14
 	url = https://gitlab.com/xdevs23/linux-nitrous
 	arch = x86_64
 	license = GPL2
 	makedepends = bison
 	makedepends = clang
 	makedepends = llvm
+	makedepends = lld
 	makedepends = xmlto
 	makedepends = docbook-xsl
 	makedepends = kmod
