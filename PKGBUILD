@@ -2,12 +2,13 @@
 
 pkgname=carvel-tools
 pkgdesc="Set of Carvel (k14s) tools: ytt kbld kapp kwt imgpkg vendir"
-pkgver=20201122
-pkgrel=1
+pkgver=20201124
+pkgrel=2
 url="https://carvel.dev"
 arch=(x86_64)
 license=(Apache)
 provides=(ytt kbld kapp kwt imgpkg vendir)
+conflicts=(ytt kbld kapp kwt imgpkg vendir)
 
 source=(
 ytt-v0.30.0::https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.30.0/ytt-linux-amd64

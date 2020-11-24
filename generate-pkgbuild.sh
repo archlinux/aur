@@ -20,6 +20,7 @@ url="https://carvel.dev"
 arch=(x86_64)
 license=(Apache)
 provides=(${tools[@]})
+conflicts=(${tools[@]})
 
 EOF
 
