@@ -9,6 +9,7 @@ pkgdesc="ASCII globe generator"
 arch=('x86_64')
 url="https://github.com/adamsky/globe"
 license=('GPL3')
+conflicts=("$_pkgname")
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('1d2c1f9c480b16971fa093d81254cf61cadda44c2ee94ba7c4e48b20994f0340839443473614be751bd4ce23b84fa7652df9a1437ae61e552278795481c3ba14')
