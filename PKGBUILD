@@ -7,7 +7,7 @@ pkgdesc="U-Boot for Tinker Board / S"
 arch=('armv7h')
 url="https://github.com/redchenjs/armbian-ci"
 license=('GPL2')
-makedepends=('findutils' 'curl')
+makedepends=('curl')
 depends=('uboot-tools')
 provides=('uboot' 'uboot-tinkerboard')
 install=$pkgname.install
@@ -22,7 +22,7 @@ source=(
 )
 sha512sums=(
     '6a83f5b62703079691df948ba5e134009053157d72f7cbc46dfa4218d88ae97386b39af988c94e8bc6022ad6332339e5e4c443a79b18e5eb3772129e847ec861'
-    'fb1ad6e15affee759ee5eb39db800a6b82ce7c7ba7d1388b2f840741603d6159bec86dddc484c88a0c12756e9a943146eabe054f3381f6d51c407fdaba92a981'
+    'a906e142398b53d5c08679c01c884c9366159757fe143f21db69d8c54b4ea29b9c1680da60de2e0201b67ea483aab1ed3d564d66bd6ccdedcc46ecbfb6968072'
     "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-u-boot-current-tinkerboard_$pkgver-trunk_armhf.deb.sha512sum)"
 )
 noextract=("${source[@]##*/}")
@@ -44,5 +44,8 @@ package() {
 
     install -Dm644 boot.cmd "$pkgdir/boot/boot.cmd"
     install -Dm644 "usr/lib/linux-u-boot-current-tinkerboard_$pkgver-trunk_armhf/u-boot-rockchip-with-spl.bin" "$pkgdir/usr/lib/u-boot/u-boot-rockchip-with-spl.bin"
-    sed -r -i 's#DIR=.*#DIR=/usr/lib/u-boot#' "$pkgdir/usr/lib/u-boot/platform_install.sh"
+
+    sed -i 's# > /dev/null 2>&1.*##' "$pkgdir/usr/lib/u-boot/platform_install.sh"
+    sed -i 's#DIR=.*#DIR=/usr/lib/u-boot#' "$pkgdir/usr/lib/u-boot/platform_install.sh"
+    echo 'write_uboot_platform $DIR $1' >> "$pkgdir/usr/lib/u-boot/platform_install.sh"
 }

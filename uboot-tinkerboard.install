@@ -1,4 +1,6 @@
 post_install() {
+  echo '# Install U-Boot to SD / MMC card:'
+  echo '# sh /usr/lib/u-boot/platform_install.sh /dev/mmcblkX'
   mkimage -C none -A arm -T script -d /boot/boot.cmd /boot/boot.scr
 }
 
