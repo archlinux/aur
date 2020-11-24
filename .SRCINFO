@@ -1,0 +1,14 @@
+pkgbase = brother-dcp-l2530dw
+	pkgdesc = LPR and CUPS driver for the Brother DCP-L2530DW printer
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadhowto.aspx?c=fr&lang=fr&prod=dcpl2530dw_eu&os=127&dlid=dlf103517_000&flang=4&type3=10282
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf103517/dcpl2530dwpdrv-4.0.0-1.i386.rpm
+	md5sums = a8f84171ee1796fc4899579d92df0e24
+
+pkgname = brother-dcp-l2530dw
+
