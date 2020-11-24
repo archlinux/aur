@@ -1,0 +1,26 @@
+pkgbase = loudgain-git
+	pkgdesc = A loudness normalizer that scans music files and calculates loudness-normalized gain and loudness peak values according to the EBU R128 standard, and can optionally write ReplayGain-compatible metadata.
+	pkgver = v0.6.8.r12.g0ff67ee
+	pkgrel = 1
+	url = https://github.com/Moonbase59/loudgain
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	depends = libebur128
+	depends = ffmpeg
+	depends = python
+	depends = taglib
+	provides = loudgain
+	provides = rgbpm
+	provides = rgbpm2
+	conflicts = loudgain
+	source = git+https://github.com/Moonbase59/loudgain
+	sha256sums = SKIP
+
+pkgname = loudgain-git
+
