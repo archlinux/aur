@@ -9,7 +9,7 @@ arch=("x86_64")
 provides=("dokkoo")
 options=("strip")
 source=("https://github.com/MadeByEmil/dokkoo/releases/download/v$pkgver/dokkoo-$pkgver-x86_64.tar.gz")
-sha256sums=("b7cc0a36fe86dd1f5fca23ded30c886f438fa90f7beac6e83dd4a66a790492ad")
+sha256sums=("a37621313167025bb0ec100b9f34c90170a607639d1c76fb9131632445d5f842")
 
 package() {
     install -Dm755 dokkoo -t "$pkgdir/usr/bin/"
