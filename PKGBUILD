@@ -3,7 +3,7 @@
 
 pkgname=lipl-bin
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Analyse the output over time of custom shell commands"
 arch=('x86_64')
 url="https://github.com/yxdunc/lipl"
@@ -19,6 +19,6 @@ sha512sums_x86_64=('61fd8ef04ee192bfb6142477601e37018d674aee431551bc8dc8c86f4bd7
 
 package() {
   install -Dm 755 "${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
-  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
+  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

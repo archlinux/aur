@@ -1,7 +1,7 @@
 pkgbase = lipl-bin
 	pkgdesc = Analyse the output over time of custom shell commands
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yxdunc/lipl
 	arch = x86_64
 	license = MIT
