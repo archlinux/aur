@@ -2,5 +2,6 @@ LICENSE
 *.zip
 *.tar.xz
 *.tar.gz
+*.tar.zst
 pkg
 src
