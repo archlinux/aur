@@ -2,11 +2,11 @@
 
 pkgname=cargo-readme
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A cargo subcommand to generate README.md content from doc comments'
 arch=('x86_64')
 url='https://github.com/livioribeiro/cargo-readme/blob/master/README.md'
-license=('Apache-2.0' 'MIT')
+license=('Apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=(
