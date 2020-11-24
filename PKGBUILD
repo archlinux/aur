@@ -3,7 +3,7 @@
 
 pkgname=fw-git
 pkgver=2.6.0.r16.g3d69c2d
-pkgrel=1
+pkgrel=2
 pkgdesc="Workspace productivity booster (git)"
 arch=('x86_64')
 url="https://github.com/brocode/fw"
@@ -33,6 +33,6 @@ check() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 README.org -t "$pkgdir/usr/share/doc/${pkgname%-git}"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+  install -Dm 644 README.org -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
