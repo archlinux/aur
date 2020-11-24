@@ -9,7 +9,6 @@ pkgbase = shy-git
 	makedepends = git
 	provides = shy
 	conflicts = shy
-	conflicts = shy-bin
 	source = git+https://github.com/xvxx/shy
 	sha512sums = SKIP
 
