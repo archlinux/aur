@@ -4,10 +4,11 @@ pkgbase=linux-rockchip
 pkgname=('linux-rockchip' 'linux-rockchip-headers')
 pkgver=5.8.18
 pkgrel=1
+pkgdesc="Rockchip Linux kernel and modules from Armbian"
 arch=('armv7h')
 url="https://github.com/redchenjs/armbian-ci"
 license=('GPL2')
-makedepends=('findutils' 'curl')
+makedepends=('curl')
 options=('!strip')
 _armbian=20.11.0
 source=(
@@ -31,8 +32,7 @@ prepare() {
 }
 
 package_linux-rockchip() {
-    pkgdesc="Rockchip Linux kernel and modules from Armbian"
-    depends=('mkinitcpio' 'grep' 'gzip' 'sed')
+    optdepends=('mkinitcpio: initramfs support')
     provides=('linux' 'linux-rockchip')
 
     cd "$srcdir"

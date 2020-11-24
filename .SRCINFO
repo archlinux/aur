@@ -1,10 +1,10 @@
 pkgbase = linux-rockchip
+	pkgdesc = Rockchip Linux kernel and modules from Armbian
 	pkgver = 5.8.18
 	pkgrel = 1
 	url = https://github.com/redchenjs/armbian-ci
 	arch = armv7h
 	license = GPL2
-	makedepends = findutils
 	makedepends = curl
 	noextract = mkinitcpio.preset
 	noextract = linux-dtb-current-rockchip_20.11.0-trunk_armhf.deb
@@ -21,11 +21,7 @@ pkgbase = linux-rockchip
 	sha512sums = fb5e33e81db5aef4dfd1dd4db6889ad69116c66a80b4f0f5951e1fab4f086452a672f92b124a49e50719cbaf8db3c9685317b17b39787e9efe80c9986c7665b5
 
 pkgname = linux-rockchip
-	pkgdesc = Rockchip Linux kernel and modules from Armbian
-	depends = mkinitcpio
-	depends = grep
-	depends = gzip
-	depends = sed
+	optdepends = mkinitcpio: initramfs support
 	provides = linux
 	provides = linux-rockchip
 
@@ -33,3 +29,4 @@ pkgname = linux-rockchip-headers
 	pkgdesc = Headers and scripts for building modules for the linux-rockchip kernel
 	provides = linux-headers
 	provides = linux-headers-rockchip
+
