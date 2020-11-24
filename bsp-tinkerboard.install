@@ -5,8 +5,10 @@ post_install() {
   systemctl enable tinker-bluetooth.service
   systemctl start tinker-bluetooth.service
 
-  sed -i -e "/#load-module module-alsa-sink/r /etc/pulse/pulseaudio-sink.txt" /etc/pulse/default.pa >/dev/null 2>&1
-  sed -i -e "/#load-module module-alsa-source device=hw:1,0/r /etc/pulse/pulseaudio-source.txt" /etc/pulse/default.pa >/dev/null 2>&1
+  sed -i -e "|#load-module module-alsa-sink|r /etc/pulse/pulseaudio-sink.txt" /etc/pulse/default.pa >/dev/null 2>&1
+  sed -i -e "|#load-module module-alsa-source device=hw:1,0|r /etc/pulse/pulseaudio-source.txt" /etc/pulse/default.pa >/dev/null 2>&1
+  sed -i -e "s|#load-module module-alsa-sink||" /etc/pulse/default.pa >/dev/null 2>&1
+  sed -i -e "s|#load-module module-alsa-source device=hw:1,0||" /etc/pulse/default.pa >/dev/null 2>&1
 }
 
 pre_remove() {

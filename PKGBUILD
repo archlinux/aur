@@ -20,7 +20,7 @@ source=(
     "https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-$_ubuntu-root-current-tinkerboard_$pkgver-trunk_armhf.deb"
 )
 sha512sums=(
-    'ad22fa716c1d8ecc825c49650c39a4f7977f9670e1d09c6bc2aad636d2a9d8c0855d8065a7c0c59bceb361bdbc0ac7e0cdc9aabbbd305e790e8566b2c48942b1'
+    'bd136799cced15b3d5387123503e47b7e5245080934165f8ac9d59d6916e4aac62140c5119e1970cc51d2a856f0a6dd15c2d8407b1c196afb5cfd49571a3c71d'
     'ba864bea8e0de5c37e9953706295b26c0a74e779310a4b43326e1d89b5ad5f34365fd0e64bdc23d58a06109c58ef697ad2a5845c4e3713d83d2a2b88e2768d90'
     'c109a8b3d2d6bfc6f90c747d7e76e50f316b542f0a38df582ea3b5ed5e7de388ee853e6d5f5f8c2f35612857fe10959cb68467440bda3bf33a335cfd78b7e024'
     "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/armbian-firmware_$pkgver-trunk_all.deb.sha512sum)"
