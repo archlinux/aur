@@ -33,6 +33,7 @@ pkgbase = libvirt-git
 	depends = glusterfs
 	depends = ceph-libs
 	depends = libiscsi
+	depends = fmt
 	optdepends = libvirt-storage-gluster: Gluster storage backend
 	optdepends = libvirt-storage-iscsi-direct: iSCSI-direct storage backend
 	optdepends = libvirt-storage-rbd: RBD storage backend
