@@ -8,6 +8,7 @@ pkgbase = dog-dns-git
 	makedepends = rust
 	makedepends = git
 	provides = dog-dns
+	conflicts = dog
 	conflicts = dog-dns
 	conflicts = dog-dns-bin
 	source = git+https://github.com/ogham/dog
