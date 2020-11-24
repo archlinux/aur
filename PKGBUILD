@@ -9,6 +9,7 @@ pkgdesc="Command-line DNS client like dig"
 arch=('x86_64')
 url="https://github.com/ogham/dog"
 license=('custom:EUPL')
+conflicts=("$_pkgname")
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('03af5414b995710d22ea19bdbf382def4e53ae2870f396b4103546743c9cafcc445ee0819b6c8b7f435793fead5ebd03f091be89293a32847868a5544b4bc0e5')
