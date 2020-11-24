@@ -9,7 +9,6 @@ pkgbase = gfold-git
 	makedepends = git
 	provides = gfold
 	conflicts = gfold
-	conflicts = gfold-bin
 	source = git+https://github.com/nickgerace/gfold
 	sha512sums = SKIP
 
