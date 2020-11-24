@@ -9,7 +9,6 @@ pkgbase = muffet-git
 	makedepends = go
 	provides = muffet
 	conflicts = muffet
-	conflicts = muffet-bin
 	source = git+https://github.com/raviqqe/muffet
 	sha256sums = SKIP
 
