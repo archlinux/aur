@@ -9,7 +9,6 @@ pkgbase = zps-git
 	makedepends = cmake
 	provides = zps
 	conflicts = zps
-	conflicts = zps-bin
 	source = git+https://github.com/orhun/zps
 	sha256sums = SKIP
 
