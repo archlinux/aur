@@ -5,7 +5,7 @@ KERNEL_NAME=
 KERNEL_VERSION=
 
 post_install () {
-
+    :
 }
 
 post_upgrade() {
