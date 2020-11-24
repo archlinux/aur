@@ -1,13 +1,14 @@
 pkgbase = formiko
 	pkgdesc = reStructuredText editor and live previewer
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ondratu/formiko
 	arch = any
 	license = BSD
 	depends = gobject-introspection-runtime
 	depends = gtk3
 	depends = gtksourceview3
+	depends = gtkspell3
 	depends = hicolor-icon-theme
 	depends = python
 	depends = python-docutils
