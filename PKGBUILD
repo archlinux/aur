@@ -2,13 +2,13 @@
 
 pkgname=go-chromecast-git
 _pkgname=go-chromecast
-pkgver=20200804
+pkgver=20201001
 pkgrel=1
 pkgdesc='Implements a basic number of the google chromecast commands.'
 arch=('any')
 url="https://github.com/vishen/$_pkgname"
 license=('Apache2.0')
-makedepends=('go')
+makedepends=('go' 'git')
 source=("git+${url}.git#branch=master")
 sha256sums=('SKIP')
 
