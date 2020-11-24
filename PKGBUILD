@@ -23,7 +23,7 @@ source=("https://github.com/loki-project/loki-network/releases/download/v$pkgver
 sha256sums=('6d6909f6304fbcfdf1fe5ef0d088fe5f22a2399304c0088b72c608e1b424214a'
             'SKIP'
             'ff5e7db4e65463e50978da0185487bd4a7f213f04bdb6256e221089f833c6ab6'
-            '3c2fcd2be74a989bdb19383dd3421f7654584b53e4b7e0692b752bfbe60903f4'
+            '41f02f6ca693cd596165a7431795f36a2559504361857063278d31f833b3b7b1'
             'cb31c1783998ec11d3d6eb4e5e4e138a8d423ee1aeb0ae2ebe66a52b0f87b642'
             '21c9bc83f8466ab17fa927561d7f24f930f97c996a8aa0fbbbbb2b65cb97b342'
             '6ef779170b72856bbb8df40c34a808acffddd156684bdb66a55e71d50cf95841'
