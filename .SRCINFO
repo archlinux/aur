@@ -9,7 +9,6 @@ pkgbase = jilu-git
 	makedepends = git
 	provides = jilu
 	conflicts = jilu
-	conflicts = jilu-bin
 	source = git+https://github.com/rustic-games/jilu
 	sha512sums = SKIP
 
