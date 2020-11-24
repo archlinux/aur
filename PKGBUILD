@@ -3,7 +3,7 @@
 
 pkgname=gping-bin
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Ping, but with a graph"
 arch=('x86_64')
 url="https://github.com/orf/gping"
@@ -20,6 +20,6 @@ sha512sums_x86_64=('4abe3852b096b254848949482d0b9637fd8ba666aaaf5d67c966ba2bb262
 
 package() {
   install -Dm 755 "${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 "$pkgname-$pkgver-readme.md" "$pkgdir/usr/share/doc/${pkgname%-bin}/readme.md"
-  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
+  install -Dm 644 "$pkgname-$pkgver-readme.md" "$pkgdir/usr/share/doc/$pkgname/readme.md"
+  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
