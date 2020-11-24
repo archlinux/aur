@@ -7,7 +7,6 @@ pkgbase = fhc-bin
 	license = GPL3
 	provides = fhc
 	conflicts = fhc
-	conflicts = fhc-git
 	source_x86_64 = fhc-bin-0.4.0::https://github.com/Edu4rdSHL/fhc/releases/download/0.4.0/fhc-linux
 	source_x86_64 = fhc-bin-0.4.0-README.md::https://github.com/Edu4rdSHL/fhc/raw/0.4.0/README.md
 	source_x86_64 = fhc-bin-0.4.0-man.1::https://github.com/Edu4rdSHL/fhc/raw/0.4.0/fhc.1

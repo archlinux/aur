@@ -9,7 +9,7 @@ pkgdesc="Fast HTTP Checker"
 arch=('x86_64')
 url="https://github.com/Edu4rdSHL/fhc"
 license=('GPL3')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
+conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/$pkgver/${pkgname%-bin}-linux"
                "$pkgname-$pkgver-README.md::$url/raw/$pkgver/README.md"
