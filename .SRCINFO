@@ -1,0 +1,14 @@
+pkgbase = menu-git
+	pkgdesc = A library for cli programs parsing text databases (git version).
+	pkgver = r21.ac8400e
+	pkgrel = 1
+	url = https://gitlab.com/KNIX3/menu
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = menu
+	source = menu-git::git+https://gitlab.com/KNIX3/menu.git
+	md5sums = SKIP
+
+pkgname = menu-git
+
