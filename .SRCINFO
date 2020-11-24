@@ -29,7 +29,7 @@ pkgbase = aegisub-japan7-git
 	depends = zlib
 	provides = aegisub
 	conflicts = aegisub
-	source = aegisub::git+https://github.com/odrling/Aegisub.git#branch=meson
+	source = aegisub::git+https://github.com/odrling/Aegisub.git
 	sha256sums = SKIP
 
 pkgname = aegisub-japan7-git
