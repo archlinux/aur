@@ -10,7 +10,7 @@ pkgbase = dynsim
 	depends = glibc
 	depends = fftw
 	source = https://github.com/romcenci/DynamicSimulator/releases/download/v1.0.0/v1.0.0.tar.xz
-	md5sums = 0452254cf30d23c9039985cc5e820bf3
+	md5sums = c5c27ba457bc9b3198ab7ae9e6ae10c1
 
 pkgname = dynsim
 

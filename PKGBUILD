@@ -21,7 +21,7 @@ install=
 changelog=
 source=(https://github.com/romcenci/DynamicSimulator/releases/download/v$pkgver/v$pkgver.tar.xz)
 noextract=()
-md5sums=('0452254cf30d23c9039985cc5e820bf3')
+md5sums=('c5c27ba457bc9b3198ab7ae9e6ae10c1')
 
 build() {
   make
@@ -29,6 +29,5 @@ build() {
 
 package() {
   mkdir -p ${pkgdir}/usr/share/man/man1/
-  cp docs/dynsim.1 ${pkgdir}/usr/share/man/man1/
   make DESTDIR="$pkgdir" install
 }
