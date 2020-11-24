@@ -3,7 +3,7 @@
 
 pkgname=i3-workspace-brightness-git
 pkgver=1.0.2.r0.g37dc57b
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to auto-adjust the brightness of i3wm workspaces (git)"
 arch=('x86_64')
 url="https://github.com/orhun/i3-workspace-brightness"
@@ -27,5 +27,5 @@ build() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }

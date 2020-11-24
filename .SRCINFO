@@ -1,7 +1,7 @@
 pkgbase = i3-workspace-brightness-git
 	pkgdesc = Utility to auto-adjust the brightness of i3wm workspaces (git)
 	pkgver = 1.0.2.r0.g37dc57b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/orhun/i3-workspace-brightness
 	arch = x86_64
 	license = GPL3
