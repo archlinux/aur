@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/orf/gping"
 license=('MIT')
 depends=('iputils')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
+conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}-Linux-x86_64.tar.gz"
                "$pkgname-$pkgver-LICENSE::$url/raw/v$pkgver/LICENSE"

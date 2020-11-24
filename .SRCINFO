@@ -8,7 +8,6 @@ pkgbase = gping-bin
 	depends = iputils
 	provides = gping
 	conflicts = gping
-	conflicts = gping-git
 	source_x86_64 = gping-bin-0.1.7.tar.gz::https://github.com/orf/gping/releases/download/v0.1.7/gping-Linux-x86_64.tar.gz
 	source_x86_64 = gping-bin-0.1.7-LICENSE::https://github.com/orf/gping/raw/v0.1.7/LICENSE
 	source_x86_64 = gping-bin-0.1.7-readme.md::https://github.com/orf/gping/raw/v0.1.7/readme.md
