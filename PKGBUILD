@@ -5,7 +5,7 @@
 
 pkgname=activitywatch-bin
 pkgver='0.10.0'
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Log what you do on your computer. Simple, extensible, no third parties."
 arch=('x86_64')
