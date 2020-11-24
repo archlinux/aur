@@ -7,7 +7,7 @@ arch=('1686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/normen/whatscli'
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/normen/whatscli/archive/v${pkgver}.tar.gz")
-sha1sums=('f261f22b91bff6547638e63172272b24a83731b5')
+sha1sums=('3775c95ce55c6c4e774c154acc2e106054c0d19e')
 
 build() {
     cd "${pkgname}-${pkgver}"
