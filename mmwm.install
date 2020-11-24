@@ -1,3 +1,0 @@
-post_install() {
-  echo "==> Edit config.h in mmWM's PKGBUILD directory and rebuild the package for custom configuration."
-}
