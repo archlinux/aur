@@ -8,7 +8,7 @@ pkgname=update-hosts-git
 # shellcheck disable=SC2034
 pkgdesc="Generate a hosts file based on multiple sources (git)"
 # shellcheck disable=SC2034
-pkgver=r364.16dbd0f
+pkgver=r391.c8b89a5
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -23,6 +23,7 @@ optdepends=(
   'wget: Optional download client'
   'iprange: Helper to optimize ipset configuration'
   'ipset: Parse ip address sets as an extra blocklist'
+  'dnsmasq: Parse hosts as an extra dnsmasq blocklist'
 )
 # shellcheck disable=SC2034
 provides=('update-hosts')
