@@ -10,7 +10,6 @@ pkgbase = onefetch-git
 	depends = libgit2
 	provides = onefetch
 	conflicts = onefetch
-	conflicts = onefetch-bin
 	source = git+https://github.com/o2sh/onefetch
 	sha512sums = SKIP
 
