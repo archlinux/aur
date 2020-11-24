@@ -2,4 +2,4 @@
 set -eu
 
 LD_LIBRARY_PATH=/usr/lib/compressonator-cli-bin \
- /usr/lib/compressonator-cli-bin/CompressonatorCLI-bin $@
+ /usr/lib/compressonator-cli-bin/compressonatorcli "$@"
