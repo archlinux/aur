@@ -4,3 +4,6 @@ update::
 
 install::
 	makepkg -si
+
+clean::
+	git clean -fdx
