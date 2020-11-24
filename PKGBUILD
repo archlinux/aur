@@ -3,7 +3,7 @@
 
 pkgname=onefetch-git
 pkgver=2.7.3.r0.gb15b32a
-pkgrel=1
+pkgrel=2
 pkgdesc="Git repository summary on your terminal (git)"
 arch=('x86_64')
 url="https://github.com/o2sh/onefetch"
@@ -33,7 +33,7 @@ check() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
-  install -Dm 644 LICENSE.md -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm 644 "${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
 }
