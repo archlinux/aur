@@ -3,7 +3,7 @@
 
 pkgname=notp-bin
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="One Time Password Generator"
 arch=('x86_64')
 url="https://github.com/kondanta/notp"
@@ -19,6 +19,6 @@ sha512sums_x86_64=('89d717d71233dcc418e36af66929a3c38ae78195d2656d8f77732fd7bf30
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "${pkgdir}/usr/bin/${pkgname%-bin}"
-  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
-  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
+  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

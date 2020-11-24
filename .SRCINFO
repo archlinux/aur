@@ -1,7 +1,7 @@
 pkgbase = notp-bin
 	pkgdesc = One Time Password Generator
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kondanta/notp
 	arch = x86_64
 	license = MIT
