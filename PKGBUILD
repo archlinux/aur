@@ -1,18 +1,22 @@
 # Maintainer: Simon Weald <simon[at]simonweald[dot]com>
 
 pkgname=stern-bin
+_srcname=stern
 pkgdesc="Multi pod and container log tailing for Kubernetes"
-pkgver=1.11.0
+pkgver=1.13.0
 pkgrel=1
 arch=('x86_64')
-url="https://github.com/wercker/stern"
+url="https://github.com/stern/stern"
 license=('apache')
-_stern_file=stern_linux_amd64
-source=("$_stern_file-$pkgver::https://github.com/wercker/stern/releases/download/$pkgver/$_stern_file")
-sha256sums=('e0b39dc26f3a0c7596b2408e4fb8da533352b76aaffdc18c7ad28c833c9eb7db')
+source=("${_srcname}-${pkgver}.tar.gz::https://github.com/stern/stern/releases/download/v${pkgver}/${_srcname}_${pkgver}_linux_amd64.tar.gz")
+sha256sums=('4c5e069c8cfa5ee97e035094190324d1109b554fbfa2f933f19a0fd1b752da1b')
 
 package() {
-  install -Dm 755 "$srcdir/$_stern_file-$pkgver" "$pkgdir/usr/bin/stern"
-  "$pkgdir/usr/bin/stern" --completion=bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/stern"
-  "$pkgdir/usr/bin/stern" --completion=zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_stern"
+    cd ${srcdir}
+    tar --strip-components=1 -xzf ${_srcname}-${pkgver}.tar.gz
+
+    install -Dm755 "${srcdir}/${_srcname}" "${pkgdir}/usr/bin/${_srcname}"
+
+    "${pkgdir}/usr/bin/${_srcname}" --completion=bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/stern"
+    "${pkgdir}/usr/bin/${_srcname}" --completion=zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_stern"
 }
