@@ -2,7 +2,7 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-tracks
-pkgver=20.1018
+pkgver=20.1117
 pkgrel=1
 pkgdesc="Additional RVGL tracks used for official events."
 url='https://re-volt.io/online/tracks'
