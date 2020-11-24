@@ -1,0 +1,43 @@
+--- setup.py	2020-06-06 05:31:19.000000000 -0600
++++ setup.py	2020-11-24 15:06:12.291166000 -0700
+@@ -1,21 +1,10 @@
+ import os
+ import shutil
+ import setuptools
+-from stdeb import util
+-
+-# Spacing is *critical* in the entire changelog file string.
+-with open("CHANGELOG.md", "r") as fh:
+-    changelog = fh.read()
+-
+-util.CHANGELOG_FILE = """%(source)s (%(full_version)s) %(distname)s; urgency=low
+-
+-{}
+-
+- -- %(maintainer)s  %(date822)s\n""".format(changelog)
+
+ if not os.path.exists("tmp"):
+     os.makedirs("tmp")
+-shutil.copy('src/grub-reboot-picker.py', 'tmp/grub-reboot-picker')
++shutil.copy('grub-reboot-picker/grub-reboot-picker.py', 'tmp/grub-reboot-picker')
+
+
+ setuptools.setup(
+@@ -32,7 +21,7 @@
+     """,
+     long_description_content_type="text/plain",
+     url="https://github.com/mendhak/grub-reboot-picker",
+-    packages=['src'],
++    packages=['grub-reboot-picker'],
+     include_package_data=True,
+
+     classifiers=[
+@@ -43,7 +32,7 @@
+     python_requires='>=3.6',
+     install_requires=[],
+     data_files=[
+-        ('/usr/sbin/', ['tmp/grub-reboot-picker']),
++        ('/usr/bin/', ['tmp/grub-reboot-picker']),
+         ('/usr/share/polkit-1/actions/', ['com.mendhak.grubrebootpicker.policy']),
+         ('/etc/xdg/autostart/', ['com.mendhak.grubrebootpicker.desktop']),
+         ('/usr/share/applications/', ['com.mendhak.grubrebootpicker.desktop'])
