@@ -2,14 +2,14 @@
 
 pkgname=gnome-shell-extension-password-manager-search-git
 pkgver=r47.2fe8a8c
-pkgrel=1
+pkgrel=2
 pkgdesc="Search for logins stored in online password managers."
 arch=(any)
 url="https://github.com/ellakk/password-manager-search"
 license=(GPL3)
 depends=(gnome-shell)
 makedepends=(git glib2)
-optdepends=('1password-cli'
+optdepends=('1password-cli: For 1Password support'
 	'bitwarden-cli: For Bitwarden support'
 	'lastpass-cli: For LastPass support'
 	'xclip: Option for setting the clipboard'
