@@ -1,0 +1,15 @@
+pkgbase = plasma5-runners-nordvpn
+	pkgdesc = Nordvpn plasma runner
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/alex1701c/NordVPNKrunner
+	arch = any
+	license = MIT
+	depends = nordvpn-bin
+	depends = qt5-base
+	depends = krunner
+	source = https://github.com/alex1701c/NordVPNKrunner/archive/2.0.0.tar.gz
+	md5sums = 669f6163c74fd90c85916b7233f84933
+
+pkgname = plasma5-runners-nordvpn
+
