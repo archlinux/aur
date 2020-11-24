@@ -3,7 +3,7 @@
 
 pkgname=mmwm-git
 pkgver=r88.ab0ce0c
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern Minimalistic Window Manager (git)"
 url="https://github.com/kaugm/mmwm"
 arch=('i686' 'x86_64')
@@ -31,6 +31,6 @@ build() {
 package() {
   cd "${pkgname%-git}"
   make PREFIX=/usr DESTDIR="$pkgdir" install
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }

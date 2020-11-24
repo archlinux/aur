@@ -1,7 +1,7 @@
 pkgbase = mmwm-git
 	pkgdesc = Modern Minimalistic Window Manager (git)
 	pkgver = r88.ab0ce0c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kaugm/mmwm
 	arch = i686
 	arch = x86_64
