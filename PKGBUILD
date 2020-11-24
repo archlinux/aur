@@ -17,7 +17,7 @@ conflicts=('rambox-pro-bin-beta')
 source=("${_pkgname}-EULA"
         "${_pkgname}-${pkgver}.deb::https://github.com/ramboxapp/download/releases/download/v${pkgver}/RamboxPro-${pkgver}-linux-x64.deb")
 sha256sums=('49caf20d36575fc2f8a4011049682885493428770f8cf2ae9297203ba50f7407'
-            '468713c8e1437722c9b2b2fbc6fc7d81bc6a85be5326bddd995a02393c7b6b26')
+            'd1dd2a250d8cf7d309b727128187712839575d33461f49f8a9d35e9d4ecc99e5')
 
 build() {
     rm -rf "${srcdir}/root"
