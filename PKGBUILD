@@ -3,7 +3,7 @@
 
 pkgname=jilu-git
 pkgver=0.4.0.r2.gc334c5d
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate a change log based on the state of your Git repository (git)"
 arch=('x86_64')
 url="https://github.com/rustic-games/jilu"
@@ -32,5 +32,5 @@ check() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
