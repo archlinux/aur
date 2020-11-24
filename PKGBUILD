@@ -3,7 +3,7 @@
 
 pkgname=cicero-git
 pkgver=0.1.3.r0.g8521d4f
-pkgrel=1
+pkgrel=2
 pkgdesc="Unicode tool with a terminal user interface (git)"
 arch=('x86_64')
 url="https://github.com/eyeplum/cicero-tui"
@@ -32,5 +32,5 @@ check() {
 package() {
   cd "${pkgname%-git}-tui"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
