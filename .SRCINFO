@@ -11,10 +11,10 @@ pkgbase = kst-git
 	depends = gsl
 	depends = qt5-base
 	depends = muparser
-	depends = python2-scipy>=0.9
-	depends = python2-numpy>=1.6
+	depends = python-scipy>=0.9
+	depends = python-numpy>=1.6
 	depends = cfitsio
-	depends = python2-pyside
+	depends = python-pyside2
 	optdepends = getdata: provides support for files in the Dirfile format
 	optdepends = libmatio: provides support for Matlab binary files
 	conflicts = kst
