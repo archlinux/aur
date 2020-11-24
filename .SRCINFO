@@ -1,6 +1,6 @@
 pkgbase = formiko-git
 	pkgdesc = reStructuredText editor and live previewer
-	pkgver = 1.4.3
+	pkgver = 1.4.3.r28.gf05640d
 	pkgrel = 1
 	url = https://github.com/ondratu/formiko
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = formiko-git
 	depends = python-docutils
 	depends = python-gobject
 	depends = webkit2gtk
+	depends = gtkspell3
 	optdepends = python-recommonmark: for Common Mark support (MarkDown)
 	provides = formiko
 	conflicts = formiko
