@@ -7,7 +7,6 @@ pkgbase = fclones-bin
 	license = MIT
 	provides = fclones
 	conflicts = fclones
-	conflicts = fclones-git
 	source_x86_64 = fclones-bin-0.8.0.tgz::https://github.com/pkolaczk/fclones/releases/download/0.8.0/fclones-0.8.0.tgz
 	sha512sums_x86_64 = fb4bd61b4ac7ce048ea43f64523902557e522b61d3e2f986efba413de5c6f2ff50d64cb4e53960c4c1a097a0c3e15c4b8c4b02053a486ba707e1d4d81919b106
 
