@@ -10,7 +10,6 @@ pkgbase = menyoki-git
 	depends = libx11
 	provides = menyoki
 	conflicts = menyoki
-	conflicts = menyoki-bin
 	source = git+https://github.com/orhun/menyoki
 	sha512sums = SKIP
 
