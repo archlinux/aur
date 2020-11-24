@@ -1,8 +1,8 @@
 # Maintainer: jaltek <post@ezod.de>
 # Owner: Daniel Mason (idanoo) <daniel@m2.nz>
 pkgbase=element-desktop-git
-_vers=v1.7.14-rc.1
-pkgver=v1.7.14.rc.1.r0.g0ed6c550
+_vers=v1.7.14
+pkgver=v1.7.14.r0.gf5d35462
 pkgrel=1
 pkgname=(element-web-git element-desktop-git)
 pkgdesc="A glossy Matrix collaboration client for the desktop."
