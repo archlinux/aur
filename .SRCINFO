@@ -6,6 +6,7 @@ pkgbase = dotter-rs-bin
 	arch = x86_64
 	license = Unlicense
 	provides = dotter-rs
+	conflicts = dotter
 	conflicts = dotter-rs
 	source_x86_64 = dotter-rs-bin-0.9.2::https://github.com/SuperCuber/dotter/releases/download/v0.9.2/dotter
 	source_x86_64 = dotter-rs-bin-0.9.2-README.md::https://github.com/SuperCuber/dotter/raw/v0.9.2/README.md
