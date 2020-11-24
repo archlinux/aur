@@ -1,6 +1,7 @@
 post_install() {
-  echo '# Install U-Boot to SD / MMC card:'
-  echo '# sh /usr/lib/u-boot/platform_install.sh /dev/mmcblkX'
+  echo '# Please make sure there are 4 Mebibytes of unallocated space before the first partition!'
+  echo '# Then install U-Boot to SD / MMC card with:'
+  echo '# sudo sh /usr/lib/u-boot/platform_install.sh /dev/mmcblkX'
   mkimage -C none -A arm -T script -d /boot/boot.cmd /boot/boot.scr > /dev/null 2>&1
 }
 

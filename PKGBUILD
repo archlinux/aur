@@ -22,7 +22,7 @@ source=(
 )
 sha512sums=(
     '6a83f5b62703079691df948ba5e134009053157d72f7cbc46dfa4218d88ae97386b39af988c94e8bc6022ad6332339e5e4c443a79b18e5eb3772129e847ec861'
-    '6d5bca8f0bbb19204d41500866f8e2163245602dcc1e7ab07cbde060b0d7cf018cd9ee7e87aecd3c486625fd614c2af498d51e783e671e1d83101fd6c3b717ef'
+    'f23ea74c26e9059a50c3d2411cbcd2412b35d1bc5c27ba6b71508183cdce743b25faeb79d4456191fed07308a002da0e765e9e316a4611acbf871a0a4fa9d626'
     "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-u-boot-current-tinkerboard_$pkgver-trunk_armhf.deb.sha512sum)"
 )
 noextract=("${source[@]##*/}")
