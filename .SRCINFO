@@ -26,7 +26,7 @@ pkgbase = davinci-resolve-beta
 	conflicts = davinci-resolve-studio
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = DaVinci_Resolve_17.0b2_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v17.0b2/DaVinci_Resolve_17.0b2_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=pGaEezgIUfSGMUrc2s8os8jfTuYAsbYT8Md6gmt4zQgnmRs3qH4Zxc9BN8+K36+v38i/PEByWLlo06shiGdLq7sbPx+ZMQ82t6sbYs3M1vO3V50gN36WspFmimBYep3ZLttAZyMUDvfbkszrD+Nm42EjAFWwe8FgKi4KRFIDvzNgj90fJNyoXzIx7VZkb3eTioFEcgIGQ/FCf32wsbqwGb4JeUtxl52IX4MoFOKQx71ATxveIpo56Q6EhLOaVZK7jaxnme1aBlB8KKeG+cymaI14iCutRlxRx2t7c7pfA/nbcDo36LQoejaGehwDxn3DXit7I9MNGNjpJXCG7GFQrA==&Expires=1606266043
+	source = DaVinci_Resolve_17.0b2_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v17.0b2/DaVinci_Resolve_17.0b2_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=Ha9jihGEof5VHKCTIFlBSFvfyy1WMw0G+GrkMhZ99IrDHz83ZlP4aZRwjo5+ryZ6Zkr2B5xPa6DenwulzSWWlfxuMkAhPhZ+NDG0cnUxoAQoiLvbWISiziIDvbpfxXEbz9j2aTgVJDUNs0ndl575zXeW9SMvDLphg0P2wIMfzAR11rf77gL13WCviH0+gkOufkfpD/W2c2yEQeqhpzqOIRaHjZpUNbsWowP7Sf3y4G0cF7m0e8iQlvBtiu9v3LfkaOb+hv6jbUVWGA+6C2RdkRhkbDFD/tmPohw+CYCSmbB6LeE6yhB/UwriixF1uF8y+Jq+qT/tEUgtp5DGgqm97A==&Expires=1606266902
 	sha256sums = 66c8dfcc3ba8df8679ef57f6e3474ced56aa30de54491bace73d85743d6c5802
 
 pkgname = davinci-resolve-beta
