@@ -9,7 +9,7 @@ pkgdesc="ASCII globe generator"
 arch=('x86_64')
 url="https://github.com/adamsky/globe"
 license=('GPL3')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
+conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname-x64-linux"
                "$pkgname-$pkgver-README.md::$url/raw/v$pkgver/README.md")

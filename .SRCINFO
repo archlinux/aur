@@ -7,7 +7,6 @@ pkgbase = globe-cli-bin
 	license = GPL3
 	provides = globe-cli
 	conflicts = globe-cli
-	conflicts = globe-cli-git
 	source_x86_64 = globe-cli-bin-0.2.0::https://github.com/adamsky/globe/releases/download/v0.2.0/globe-x64-linux
 	source_x86_64 = globe-cli-bin-0.2.0-README.md::https://github.com/adamsky/globe/raw/v0.2.0/README.md
 	sha512sums_x86_64 = d6ae2309ccf5e3ff9eed8cc2749d4cdf5de7154d4a530f76e9987aa4aafdc340341219b8d2c1aa0b9389baafe7e79d3f30dedf940da5cbdb6cf5dd7b171008b0
