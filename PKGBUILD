@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=19.0b1
 #_major=18.7.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -228,13 +228,12 @@ package_kodi-devel() {
   depends=(
     'desktop-file-utils' 'hicolor-icon-theme' 'mesa' 'python-pycryptodomex'
     'python-pillow' 'python-simplejson' 'xorg-xdpyinfo' 'shairplay'
-    'KODI-BIN'
+    'KODI-BIN' 'libplist'
   )
   optdepends=(
     'afpfs-ng: Apple shares support'
     'bluez: Blutooth support'
     'python-pybluez: Bluetooth support'
-    'libplist: AirPlay support'
     'pulseaudio: PulseAudio support'
     'upower: Display battery level'
   )
