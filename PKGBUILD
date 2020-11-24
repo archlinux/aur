@@ -3,7 +3,7 @@
 
 pkgname=goat-bin
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Better sleep"
 arch=('x86_64')
 url="https://github.com/brocode/goat"
@@ -19,6 +19,6 @@ sha512sums_x86_64=('aec038209b502dceb56ae249fe4c80d12e63b803c666c5806396285e62c3
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "${pkgdir}/usr/bin/${pkgname%-bin}"
-  install -Dm 644 "$pkgname-$pkgver-README.org" "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
-  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
+  install -Dm 644 "$pkgname-$pkgver-README.org" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
