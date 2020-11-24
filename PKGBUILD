@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=tpm2-tools-git
-pkgver=5.0.r0.684eeed0
+pkgver=5.0.r15.713c2ab5
 pkgrel=1
 pkgdesc='Trusted Platform Module 2.0 tools based on tpm2-tss'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('curl' 'openssl' 'tpm2-tss' 'util-linux-libs' 'libtss2-esys.so' 'libtss2-fapi.so'
          'libtss2-mu.so' 'libtss2-rc.so' 'libtss2-sys.so' 'libtss2-tctildr.so')
 makedepends=('git' 'autoconf-archive' 'pandoc')
-checkdepends=('cmocka' 'expect' 'ibm-sw-tpm2' 'iproute2' 'python-yaml' 'tpm2-abrmd' 'xxd')
+checkdepends=('cmocka' 'expect' 'iproute2' 'python-yaml' 'swtpm' 'tpm2-abrmd' 'xxd')
 optdepends=('tpm2-abrmd: user space resource manager')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
