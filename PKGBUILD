@@ -1,8 +1,8 @@
 # Maintainer: Michael Gerhaeuser <michael.gerhaeuser@gmail.com>
 pkgname=lektor
 _pkgname=Lektor
-pkgver=3.1.3
-pkgrel=3
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="A static content management system."
 arch=(any)
 url="https://www.getlektor.com"
@@ -13,7 +13,7 @@ depends=(python python-pip python-requests python-babel
 makedepends=(python-setuptools)
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/L/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('60a83e7a100780a58553324b396b0df32a2f584452184efbf87acefed85e564d')
+sha256sums=('5ab0c55aaea3cb98efdbf33b44adfd8291d0724e8849892eb13767d5cdb1fe40')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
