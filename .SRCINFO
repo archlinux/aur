@@ -1,0 +1,13 @@
+pkgbase = renogare
+	pkgdesc = A clean and elegant sans serif font created by Deepak Dogra
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.creativefabrica.com/product/renogare/
+	arch = any
+	license = custom
+	makedepends = unzip
+	source = renogare.zip::https://dl.dafont.com/dl/?f=renogare
+	sha512sums = 983c2d1c3aa35a50aaab613f47ae1023d050e9f75adecdb94366e4461ef7254ad745b4e7fad7c664e598c5315c4b3f58118350b5faaa1f475265c81894e73cac
+
+pkgname = renogare
+
