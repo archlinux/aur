@@ -9,7 +9,6 @@ pkgbase = ali-git
 	makedepends = go
 	provides = ali
 	conflicts = ali
-	conflicts = ali-bin
 	source = git+https://github.com/nakabonne/ali
 	sha256sums = SKIP
 
