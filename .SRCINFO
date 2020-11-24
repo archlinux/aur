@@ -7,7 +7,6 @@ pkgbase = termimage-bin
 	license = MIT
 	provides = termimage
 	conflicts = termimage
-	conflicts = termimage-git
 	source_x86_64 = https://github.com/nabijaczleweli/termimage/releases/download/v1.1.0/termimage-v1.1.0
 	source_x86_64 = termimage-v1.1.0-LICENSE::https://github.com/nabijaczleweli/termimage/raw/v1.1.0/LICENSE
 	source_x86_64 = https://github.com/nabijaczleweli/termimage/releases/download/v1.1.0/termimage-man-v1.1.0.tbz2
