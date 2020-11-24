@@ -1,6 +1,6 @@
 pkgbase = linux-ck
-	pkgver = 5.9.10
-	pkgrel = 2
+	pkgver = 5.9.11
+	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
@@ -8,8 +8,8 @@ pkgbase = linux-ck
 	makedepends = kmod
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.10.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.10.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.11.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.11.tar.sign
 	source = config
 	source = enable_additional_cpu_optimizations-20201113.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20201113.tar.gz
 	source = http://ck.kolivas.org/patches/5.0/5.9/5.9-ck1/patch-5.9-ck1.xz
@@ -18,7 +18,7 @@ pkgbase = linux-ck
 	source = 0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	b2sums = 423d0e2fea39d54c9bbda532dce95f67c2736646b88515e72a3cea97842a25f4b2b4ef0aa2896d623bbc89eb6e8ca14f5b447030f190677601048816ae4a76e1
+	b2sums = fbcf8b93e4a37e0f45c2de4275ecdfdb80ade1a6cf7e2b62cb331cce2d8fc247eedc14c5c37583b6e10cce58515ec3c9e541f21d067ee8d19567f9edcf065b62
 	b2sums = SKIP
 	b2sums = 834e3290b80055fb99855cebb175152d42800c0e4750e7e1c1e65448783772174c4b6d9194fea7d59a6b41dca8a438628b2692a308ccdfd2d1ced3e0af422d4c
 	b2sums = 7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127
@@ -34,11 +34,11 @@ pkgname = linux-ck
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-ck=5.9.10
+	provides = linux-ck=5.9.11
 
 pkgname = linux-ck-headers
 	pkgdesc = Headers and scripts for building modules for Linux-ck kernel
 	depends = linux-ck
-	provides = linux-ck-headers=5.9.10
-	provides = linux-headers=5.9.10
+	provides = linux-ck-headers=5.9.11
+	provides = linux-headers=5.9.11
 
