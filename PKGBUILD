@@ -3,7 +3,7 @@
 # Contributor: mustafagonul <mustafagonul@gmail..com>
 
 pkgname=create-react-app
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc='Bootstrapping tool for React'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(nodejs)
 makedepends=(npm)
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-sha512sums=('4e89c9ede3ad09ba9445f13c55a1ca5c73efb0530daf26bed1764cbe9180890f129e58a0ef405f662d0252bd0c34cf164316a9d717b71a2bed28e070b90b110a')
+sha512sums=('af2114e7c614b67e20c5a110fd9c2ddc16e692873732084b35b34ab3531483ccc35b233e6b3d52bcc999ed0697c9ef4334dc27e534b6fce93e7e9c3628abd984')
 
 package() {
   npm i -g --prefix "$pkgdir"/usr $pkgname-$pkgver.tgz
