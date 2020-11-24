@@ -1,0 +1,5 @@
+src/
+pkg/
+*.sig
+*.desktop
+*.pkg.tar.bz2
