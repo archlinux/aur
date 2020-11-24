@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -eo pipefail
 
 readonly basedir=$(mktemp -d)
 readonly pkgver=$(date +%Y%m%d)
+readonly pkgrel=${PKGBUILD_PKGREL:-1}
 readonly tools=(ytt kbld kapp kwt imgpkg vendir)
+
+set -u
 
 cat <<EOF
 # Maintainer: German Lashevich <german.lashevich@gmail.com>
@@ -12,7 +15,7 @@ cat <<EOF
 pkgname=carvel-tools
 pkgdesc="Set of Carvel (k14s) tools: ${tools[@]}"
 pkgver=${pkgver}
-pkgrel=1
+pkgrel=${pkgrel}
 url="https://carvel.dev"
 arch=(x86_64)
 license=(Apache)
