@@ -10,7 +10,6 @@ pkgbase = fw-git
 	depends = fzf
 	provides = fw
 	conflicts = fw
-	conflicts = fw-bin
 	source = git+https://github.com/brocode/fw
 	sha512sums = SKIP
 
