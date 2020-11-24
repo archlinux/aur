@@ -9,6 +9,7 @@ pkgdesc="Accessible image processing and conversion from the terminal"
 arch=('x86_64')
 url="https://github.com/foresterre/sic"
 license=('MIT')
+conflicts=("$_pkgname")
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$url/releases/download/v$pkgver/shell_completions.zip")
