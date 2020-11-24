@@ -8,7 +8,7 @@ pkgdesc="Analyse the output over time of custom shell commands"
 arch=('x86_64')
 url="https://github.com/yxdunc/lipl"
 license=('MIT')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
+conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}-linux.tar.gz"
               "$pkgname-$pkgver-LICENSE::$url/raw/v$pkgver/LICENSE"

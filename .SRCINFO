@@ -7,7 +7,6 @@ pkgbase = lipl-bin
 	license = MIT
 	provides = lipl
 	conflicts = lipl
-	conflicts = lipl-git
 	source_x86_64 = lipl-bin-0.1.2.tar.gz::https://github.com/yxdunc/lipl/releases/download/v0.1.2/lipl-linux.tar.gz
 	source_x86_64 = lipl-bin-0.1.2-LICENSE::https://github.com/yxdunc/lipl/raw/v0.1.2/LICENSE
 	source_x86_64 = lipl-bin-0.1.2-README.md::https://github.com/yxdunc/lipl/raw/v0.1.2/README.md
