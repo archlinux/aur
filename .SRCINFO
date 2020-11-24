@@ -7,7 +7,6 @@ pkgbase = shy-bin
 	license = MIT
 	provides = shy
 	conflicts = shy
-	conflicts = shy-git
 	source_x86_64 = shy-bin-0.1.10.tgz::https://github.com/xvxx/shy/releases/download/v0.1.10/shy-v0.1.10-linux-x86_64.tgz
 	source_x86_64 = shy-bin-0.1.10-LICENSE::https://github.com/xvxx/shy/raw/v0.1.10/LICENSE
 	source_x86_64 = shy-bin-0.1.10-README.md::https://github.com/xvxx/shy/raw/v0.1.10/README.md

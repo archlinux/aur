@@ -8,7 +8,7 @@ pkgdesc="Bare-bones SSH launcher"
 arch=('x86_64')
 url="https://github.com/xvxx/shy"
 license=('MIT')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
+conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver.tgz::$url/releases/download/v$pkgver/${pkgname%-bin}-v${pkgver}-linux-x86_64.tgz"
                "$pkgname-$pkgver-LICENSE::$url/raw/v$pkgver/LICENSE"
