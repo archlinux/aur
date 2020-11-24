@@ -1,6 +1,6 @@
 pkgbase = words-nl
 	pkgdesc = A wordlist of dutch words for /usr/share/dict/.
-	pkgver = 20201121
+	pkgver = r1.03ca894
 	pkgrel = 1
 	url = https://github.com/OpenTaal/opentaal-wordlist
 	arch = any
