@@ -22,7 +22,7 @@ pkgver() {
 build() {
   cd "${pkgname%-git}"
   # TODO: Use `--locked` flag for reproducibility.
-  # Tracking issue: https://github.com/eyeplum/cicero-tui/pull/1#issuecomment-729879480
+  # Tracking issue: https://gitlab.com/dns2utf8/color_blinder/-/merge_requests/3
   cargo build --release
 }
 
