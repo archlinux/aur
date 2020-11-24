@@ -3,7 +3,7 @@
 
 _perlmod=Travel-Status-DE-IRIS
 pkgname=perl-travel-status-de-iris
-pkgver=1.49
+pkgver=1.52
 pkgrel=1
 pkgdesc='Interface to IRIS-based web departure monitors (as used by DeutscheBahn)'
 url='http://finalrewind.org/projects/Travel-Status-DE-IRIS/'
@@ -35,7 +35,7 @@ makedepends=(
 options=('!emptydirs')
 validpgpkeys=('781BB7071C6BF648EAEB08A1100D5BFB5166E005')  # Daniel Friesel
 source=("https://finalrewind.org/projects/${_perlmod}/${_perlmod}-${pkgver}.tar.gz"{,.asc})
-md5sums=('c0f6f7f4c5fc043f433d61591676c886' '1165eaaec5b9dc6b2559220ddf081a89')
+sha256sums=('051fc891b82a992dfc2f8adfd09b4724a067fa4cf97a27f8edea1f8a88cbb389' 'bc333bc18657a42dbbe9ee1c0da8c6aee9775fd1fe93c77e25f158683d93509c')
 
 build() {
   cd "${srcdir}"/${_perlmod}-${pkgver}
@@ -52,4 +52,5 @@ check() {
 package() {
   cd "${srcdir}"/${_perlmod}-${pkgver}
   ./Build install
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
