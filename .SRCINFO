@@ -1,7 +1,7 @@
 pkgbase = jilu-bin
 	pkgdesc = Generate a change log based on the state of your Git repository
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rustic-games/jilu
 	arch = x86_64
 	license = Apache
