@@ -4,7 +4,7 @@
 pkgname=ali-git
 pkgdesc="Generate HTTP load and plot the results in real-time (git)"
 pkgver=0.5.3.r0.g6101998
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/nakabonne/ali"
 license=('MIT')
@@ -32,6 +32,6 @@ build() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "${pkgname%-git}" -t "$pkgdir/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
