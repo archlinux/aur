@@ -61,6 +61,7 @@ _verify_repo() {
     local _out
 
     _msg "Verifying 'Release' file (PGP)..."
+
     if ! _out=$(gpg --batch --status-fd 1 \
                     --trust-model always \
                     --verify "$Release.gpg" "$Release" \
@@ -75,30 +76,34 @@ _verify_repo() {
     fi
 
     _msg "Parsing 'Release' file..."
+
     _out=$(awk 'ok && $3 == "non-free/binary-amd64/Packages" {print $1; exit}
                 /^[^[:space:]]/ {ok=0}
                 /^SHA256:$/ {ok=1}' < "$Release")
     if ! [[ $_out =~ ^[0-9a-f]{64}$ ]]; then
-        _err "Could not find hash of 'Packages' in Release file"
+        _err "Could not find hash of 'non-free/binary-amd64/Packages' in the 'Release' file"
         return 1
     fi
 
     _msg "Verifying 'Packages' file (SHA256)..."
+
     if ! sha256sum --quiet --check <<< "$_out *$Packages"; then
         _err "Hash sum of 'Packages' did not match expected"
         return 1
     fi
 
     _msg "Parsing 'Packages' file..."
+
     _out=$(awk 'ok && /^SHA256:/ {print $2; exit}
                 /^Package:/ {ok=0}
                 /^Package: runescape-launcher$/ {ok=1}' < "$Packages")
     if ! [[ $_out =~ ^[0-9a-f]{64}$ ]]; then
-        _err "Could not find hash of $debfile in Packages file"
+        _err "Could not find hash of '$debfile' in the 'Packages' file"
         return 1
     fi
 
     _msg "Verifying '$debfile' (SHA256)..."
+
     if ! sha256sum --quiet --check <<< "$_out *$debfile"; then
         _err "Hash sum of '$debfile' did not match expected"
         return 1
