@@ -1,7 +1,7 @@
 pkgbase = linux-vanilla-next-selinux
 	pkgdesc = Vanilla-Linux-Next-Kernel (Daily Build) from kernel.org with Selinux enabled
 	pkgver = 20201124
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -24,7 +24,7 @@ pkgbase = linux-vanilla-next-selinux
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = a9d60d7f3c6059b08969183002c5626fd21f5f58f12677cef7def532e5b00560
-	sha256sums = e87dd18b7f5f1948b194f3c348da9811143f4b340fc76cc39b5e83fc0e66f8d0
+	sha256sums = 9020edb69c8cbb100e010fabbc4b8ee636bc411a7428864f4452a48864126a51
 	sha256sums = f9b13f3c00be95205ccb77ead42881ecbf0f7ba0d0ad12af294e054272859d81
 	sha256sums = 5c7af03d9b4cade110543ba706bcbd49fc6447726258b4bfec0edff7ca9994d1
 	sha256sums = 9089c8d44982dc03b0dde47632f8aa2fda14754b911acbc266feee85da94b0f5

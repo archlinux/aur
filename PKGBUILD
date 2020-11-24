@@ -3,7 +3,7 @@
 pkgbase=linux-vanilla-next-selinux
 pkgname=linux-vanilla-next-selinux
 pkgver=20201124
-pkgrel=1
+pkgrel=2
 pkgdesc="Vanilla-Linux-Next-Kernel (Daily Build) from kernel.org with Selinux enabled"
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -26,7 +26,7 @@ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torva
               )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('a9d60d7f3c6059b08969183002c5626fd21f5f58f12677cef7def532e5b00560'
-	    'e87dd18b7f5f1948b194f3c348da9811143f4b340fc76cc39b5e83fc0e66f8d0'
+	    '9020edb69c8cbb100e010fabbc4b8ee636bc411a7428864f4452a48864126a51'
 	    'f9b13f3c00be95205ccb77ead42881ecbf0f7ba0d0ad12af294e054272859d81'
             '5c7af03d9b4cade110543ba706bcbd49fc6447726258b4bfec0edff7ca9994d1'
             '9089c8d44982dc03b0dde47632f8aa2fda14754b911acbc266feee85da94b0f5'
