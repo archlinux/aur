@@ -20,7 +20,7 @@
 # Maintainer: sp1rit <sp1ritCS@protonmail.com>
 
 pkgname=clapper-git
-pkgver=0.0.0.r0.a504f49
+pkgver=r117.e7e9b9c
 pkgrel=1
 pkgdesc="A GNOME media player built using GJS and powered by GStreamer with OpenGL rendering. Can also be used as a pre-made widget for GTK apps."
 arch=(any)
@@ -44,7 +44,7 @@ optdepends=(
 	"gst-libav: Popular video decoders"
 	"gstreamer-vaapi: Intel/AMD video acceleration"
 )
-source=("${pkgname%-git}::git+https://github.com/Rafostar/${pkgname%-git}.git#branch=master")
+source=("${pkgname%-git}::git+https://github.com/Rafostar/${pkgname%-git}.git#commit=e7e9b9c07d884c1d412b15f0069117ddc7d0e635")
 provides=("${pkgname%-git}")
 replaces=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -52,7 +52,7 @@ md5sums=("SKIP")
 
 pkgver() {
 	cd "$srcdir"/"${pkgname%-git}"
-	echo "0.0.0.r0.$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"	
 }
 
 build() {
