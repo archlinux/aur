@@ -1,0 +1,37 @@
+pkgbase = glib2-nodocs-git
+	pkgdesc = Low Level Core Library
+	pkgver = 2.66.0.89.g7bfd6278b
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/GLib
+	arch = x86_64
+	license = LGPL2.1
+	checkdepends = desktop-file-utils
+	makedepends = gettext
+	makedepends = shared-mime-info
+	makedepends = python
+	makedepends = libelf
+	makedepends = git
+	makedepends = util-linux
+	makedepends = meson
+	makedepends = dbus
+	depends = pcre
+	depends = libffi
+	depends = libutil-linux
+	depends = zlib
+	optdepends = python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report
+	optdepends = libelf: gresource inspection tool
+	provides = glib2
+	provides = glib2=2.66.0.89.g7bfd6278b
+	conflicts = glib2
+	options = !emptydirs
+	source = git+https://gitlab.gnome.org/GNOME/glib.git
+	source = 0001-noisy-glib-compile-schemas.patch
+	source = glib-compile-schemas.hook
+	source = gio-querymodules.hook
+	sha512sums = SKIP
+	sha512sums = ddbf4a8eaf60e943a10a1ad67f2de078143558df8cc06e8009da87d8068af0cf8c66f443474b8b2848239c003e6210ff9ceb1ba5ffda1b95b80687adbf813722
+	sha512sums = c04fe25afc217c295b5ce4034733cec046126482d00fb8d0299e4815ac57129dd3f1c9ac824b9386d208a4f113e9dae682ea5b72f75387ed6b6b96a9cbbee8ca
+	sha512sums = 5afd6f275c8fff16df3e685818f2e7989b39ffb3b8f5fc261a5a6d54a9b28ef53af62f3bf5067cf87cb74691572f85730cbc508691956ae048a0f3ecc1a0a39c
+
+pkgname = glib2-nodocs-git
+

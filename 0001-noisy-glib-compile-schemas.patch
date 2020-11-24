@@ -1,0 +1,37 @@
+From 6474cf310a2b64e7cb911e74b4dc9456f1d7930c Mon Sep 17 00:00:00 2001
+From: Solomon Choina <shlomochoina@gmail.com>
+Date: Sun, 10 Jun 2018 21:51:38 -0400
+Subject: [PATCH] noisy-glib-compile-schemas
+
+---
+ gio/glib-compile-schemas.c | 17 ++---------------
+ 1 file changed, 2 insertions(+), 15 deletions(-)
+
+diff --git a/gio/glib-compile-schemas.c b/gio/glib-compile-schemas.c
+index f6e1b4036..d16b26fe1 100644
+--- a/gio/glib-compile-schemas.c
++++ b/gio/glib-compile-schemas.c
+
+@@ -1223,19 +1223,6 @@ parse_state_start_schema (ParseState  *state,
+       return;
+     }
+ 
+-  if (path && (g_str_has_prefix (path, "/apps/") ||
+-               g_str_has_prefix (path, "/desktop/") ||
+-               g_str_has_prefix (path, "/system/")))
+-    {
+-      gchar *message = NULL;
+-      message = g_strdup_printf (_("Warning: Schema “%s” has path “%s”.  "
+-                                   "Paths starting with "
+-                                   "“/apps/”, “/desktop/” or “/system/” are deprecated."),
+-                                 id, path);
+-      g_printerr ("%s\n", message);
+-      g_free (message);
+-    }
+-
+   state->schema_state = schema_state_new (path, gettext_domain,
+                                           extends, extends_name, list_of);
+ 
+-- 
+2.17.1
+
