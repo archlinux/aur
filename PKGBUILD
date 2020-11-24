@@ -5,13 +5,13 @@ pkgrel=3
 epoch=1
 pkgdesc="A cross-platform soundboard in QtQuick"
 arch=('any')
-url="https://github.com/D3SOX/Soundux"
+url="https://github.com/Soundux/Soundux"
 license=('GPL3')
 depends=('pulseaudio' 'qt5-base' 'qt5-x11extras' 'qt5-quickcontrols' 'qt5-quickcontrols2')
 makedepends=('qt5-tools' 'git' 'cmake')
 conflicts=('soundux')
 provides=('soundux')
-source=("git+https://github.com/D3SOX/Soundux.git" "soundux.desktop")
+source=("git+https://github.com/Soundux/Soundux.git" "soundux.desktop")
 sha256sums=('SKIP' '27e29e44ad3eacce0ac20a31653da437cd27cc2d165d19804430df9da7bab4fd')
 
 pkgver() {
