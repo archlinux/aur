@@ -3,7 +3,7 @@
 
 _pkgname="lua-language-server"
 pkgname="$_pkgname-git"
-pkgver=r3112.2121da2d
+pkgver=r3121.a14c2e0f
 pkgrel=1
 license=('MIT')
 pkgdesc='Lua Language Server coded by Lua'
@@ -23,7 +23,7 @@ sha256sums=('SKIP'
             '6135c5424e5b87146aabf47651d3c95b6038865f26f25a8fce3a1ecd8c8f31fa')
 
 pkgver() {
-  cd "${_pkgname}"
+  cd "${pkgname}"
 
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
@@ -32,21 +32,21 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_pkgname}"
+  cd "${pkgname}"
 
   git submodule update --init --recursive
   git apply "${srcdir}"/*.patch
 }
 
 build() {
-  cd "${_pkgname}"
+  cd "${pkgname}"
 
   ninja -C 3rd/luamake -f ninja/linux.ninja
   ./3rd/luamake/luamake rebuild
 }
 
 package() {
-  cd "${_pkgname}"
+  cd "${pkgname}"
 
   install -dm0755 "${pkgdir}/usr/lib/${_pkgname}"
   cp -a bin/Linux/* "${pkgdir}/usr/lib/${_pkgname}"
