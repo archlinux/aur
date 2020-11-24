@@ -7,7 +7,6 @@ pkgname="${_pkgname}-bin"
 pkgver=1.7.9
 pkgrel=1
 _dl_tag=1605
-_commit_icon='f3fcce4f71d8026f22b02dd6588105472ebf394e'
 
 pkgdesc='Keepass compatible password manager based on Flutter'
 arch=('x86_64')
@@ -20,7 +19,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 noextract=("${_pkgname}-${pkgver}.tar.gz")
 source=("${_pkgname}-${pkgver}.tar.gz::${_url_source}/releases/download/v${pkgver}/${_pkgname}-linux-${pkgver}_${_dl_tag}.tar.gz"
-        "icon-${_commit_icon}::${_url_source}/raw/${_commit_icon}/_docs/${_pkgname}-logo.svg")
+        "${_pkgname}-${pkgver}-icon::${_url_source}/raw/v${pkgver}/_docs/${_pkgname}-logo.svg")
 sha256sums=('3e9f71e91c1d955693784d1475668f9951dec8a157920a844eb4e42fd5eac603'
             '1bfe9685c9399976a872bfcafbe19c16b26063530cdc9184570270d52fe7851b')
 
@@ -40,7 +39,7 @@ package() {
   install -dv "${pkgdir}/"{"opt/${_pkgname}",'usr/bin'}
   tar -xvf "${_pkgname}-${pkgver}.tar.gz" --strip-components=1 -C "${pkgdir}/opt/${_pkgname}"
   ln -sfv "/opt/${_pkgname}/${_pkgname}" -t "${pkgdir}/usr/bin"
-  install -Dm644 "icon-${_commit_icon}" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+  install -Dm644 "${_pkgname}-${pkgver}-icon" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
 }
 
 # vim: ts=2 sw=2 et:
