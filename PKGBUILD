@@ -11,7 +11,6 @@ url="https://github.com/orhun/wtftw"
 license=('BSD')
 depends=('xorg-xmessage' 'libxinerama')
 makedepends=('rust')
-install=wtftw.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.1.tar.gz")
 md5sums=('fc937342074634cf348a7a1a6aa85bdc')
 
