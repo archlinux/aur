@@ -8,6 +8,7 @@ pkgbase = dotter-rs-git
 	makedepends = rust
 	makedepends = git
 	provides = dotter-rs
+	conflicts = dotter
 	conflicts = dotter-rs
 	source = git+https://github.com/SuperCuber/dotter
 	sha512sums = SKIP
