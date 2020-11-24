@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/tvrzna/emptty"
 license=('MIT')
 depends=('pam')
-makedepends=('go')
+makedepends=('go' 'libx11')
 optdepends=('xorg-server: default display server'
             'xorg-xauth: required if using xorg-server'
             'util-linux: mcookie required if using xorg-server'

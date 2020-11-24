@@ -6,6 +6,7 @@ pkgbase = emptty
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	makedepends = libx11
 	depends = pam
 	optdepends = xorg-server: default display server
 	optdepends = xorg-xauth: required if using xorg-server
