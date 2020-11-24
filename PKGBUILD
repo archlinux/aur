@@ -10,7 +10,6 @@ arch=('i686' 'x86_64')
 license=('custom:MIT/X')
 depends=('libx11' 'xcb-util' 'xcb-util-wm' 'xcb-util-keysyms')
 makedepends=('git')
-install=mmwm.install
 source=("git+$url")
 sha256sums=('SKIP')
 
