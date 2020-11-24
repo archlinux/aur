@@ -2,7 +2,7 @@
 
 pkgorg='gepetto'
 pkgname=('example-robot-data' 'example-robot-data-docs')
-pkgver=3.6.1
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Set of robot URDFs for benchmarking and developed examples. "
 arch=('any')
@@ -14,11 +14,6 @@ source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
 sha256sums=('SKIP' 'SKIP')
 validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28')
 
-prepare() {
-    rm -f "$pkgbase"
-    ln -s "$pkgbase-$pkgver" "$pkgbase"
-}
-
 build() {
     mkdir -p "$pkgbase-$pkgver/build"
     cd "$pkgbase-$pkgver/build"
@@ -28,7 +23,6 @@ build() {
 }
 
 check() {
-    ln -s "$pkgbase-$pkgver" "$pkgbase"
     cd "$pkgbase-$pkgver/build"
     make test
 }
@@ -37,10 +31,6 @@ package_example-robot-data() {
     cd "$pkgbase-$pkgver/build"
     make DESTDIR="$pkgdir/" install
     install -D -m755 "../LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    for robot in hyq_description talos_data
-    do ln -s "/usr/share/example-robot-data/robots/$robot/robots" \
-      "$pkgdir/usr/share/example-robot-data/robots/$robot/urdf"
-    done
     rm -rf $pkgdir/usr/share/doc
 }
 
