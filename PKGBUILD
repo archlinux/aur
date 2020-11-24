@@ -3,7 +3,7 @@
 
 pkgname=kmon-git
 pkgver=1.5.1.r0.g5b3e69f
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux kernel manager and activity monitor (git)"
 arch=('x86_64')
 url="https://github.com/orhun/kmon"
@@ -33,6 +33,6 @@ check() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 "man/${pkgname%-git}.8" -t "$pkgdir/usr/share/man/man8"
 }
