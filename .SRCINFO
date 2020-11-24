@@ -1,7 +1,7 @@
 pkgbase = muffet-bin
 	pkgdesc = Fast website link checker
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raviqqe/muffet
 	arch = x86_64
 	license = MIT
