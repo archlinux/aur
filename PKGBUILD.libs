@@ -1,0 +1,20 @@
+# Maintainer: Donald Carr <sirspudd at gmail dot com>
+
+pkgname=libspkgname
+pkgver=libspkgver
+pkgrel=libspkgrel
+pkgdesc="Qt ${pkgver} libs cross compiled for the Raspberry Pi libspiver"
+# I don't know how to set this correct for cross architecture builds
+arch=("any")
+url="http://www.qt.io"
+license=("LGPL3" "GPL3")
+source=()
+sha256sums=()
+options=('!strip')
+# qtwebengine flac snappy libsrtp jsoncpp libvpx speex opus libxml2 libwebp icu
+depends=("ttf-croscore" "ttf-dejavu" "fontconfig" "wayland" "libxkbcommon" "gstreamer" "flac" "snappy" "libsrtp" "jsoncpp" "libvpx" "speex" "opus" "libxml2" "libwebp" "icu" "pulseaudio" "mtdev" "libinput" "pcre2" "openssl-1.0" "tslib" "double-conversion")
+provides=('qt-sdk-raspberry-pi-target-libs')
+
+package() {
+    mv ${startdir}/topkg/* ${pkgdir}
+}

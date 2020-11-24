@@ -1,0 +1,35 @@
+From d9aad59d4144f5bf725893b5a008fe5c52ff5634 Mon Sep 17 00:00:00 2001
+From: Donald Carr <d@chaos-reins.com>
+Date: Thu, 28 Mar 2019 22:23:54 -0700
+Subject: [PATCH 5/7] Fix qtdeclarative build configured with -qreal=float
+
+There is a sole point of failure in Qt 5.13 beta1
+
+Change-Id: I58a41e310604a8bccbf14f463f734877d6a65a73
+Reviewed-by: Laszlo Agocs <laszlo.agocs@qt.io>
+---
+ src/plugins/scenegraph/openvg/qsgopenvghelpers.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/plugins/scenegraph/openvg/qsgopenvghelpers.cpp b/src/plugins/scenegraph/openvg/qsgopenvghelpers.cpp
+index 6bc99d32a..ab5cfb48b 100644
+--- a/src/plugins/scenegraph/openvg/qsgopenvghelpers.cpp
++++ b/src/plugins/scenegraph/openvg/qsgopenvghelpers.cpp
+@@ -220,10 +220,10 @@ void qDrawTiled(VGImage image, const QSize imageSize, const QRectF &targetRect,
+ void qDrawBorderImage(VGImage image, const QSizeF &textureSize, const QRectF &targetRect, const QRectF &innerTargetRect, const QRectF &subSourceRect)
+ {
+     // Create normalized margins
+-    QMarginsF margins(qMax(innerTargetRect.left() - targetRect.left(), 0.0),
+-                      qMax(innerTargetRect.top() - targetRect.top(), 0.0),
+-                      qMax(targetRect.right() - innerTargetRect.right(), 0.0),
+-                      qMax(targetRect.bottom() - innerTargetRect.bottom(), 0.0));
++    QMarginsF margins(qMax(innerTargetRect.left() - targetRect.left(), qreal(0.0)),
++                      qMax(innerTargetRect.top() - targetRect.top(), qreal(0.0)),
++                      qMax(targetRect.right() - innerTargetRect.right(), qreal(0.0)),
++                      qMax(targetRect.bottom() - innerTargetRect.bottom(), qreal(0.0)));
+ 
+     QRectF sourceRect(0, 0, textureSize.width(), textureSize.height());
+ 
+-- 
+2.21.0
+

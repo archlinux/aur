@@ -1,0 +1,23 @@
+pkgbase = qt-sdk
+	pkgdesc = Qt SDK for the Raspberry Pi 1/2/3
+	pkgver = 6.0.0
+	pkgrel = 0
+	url = http://www.chaos-reins.com/qpi/
+	arch = x86_64
+	license = LGPL3
+	license = GPL3
+	makedepends = git
+	makedepends = pkgconfig
+	makedepends = gcc
+	makedepends = gperf
+	makedepends = python
+	optdepends = qtcreator: Integrated Raspberry Pi IDE development
+	provides = qt-sdk
+	options = !strip
+	source = git://github.com/sirspudd/mkspecs.git
+	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-beta5/single/qt-everywhere-src-6.0.0-beta5.tar.xz
+	sha256sums = SKIP
+	sha256sums = 0955320341731051d682e155d4f1252453f933725fb140a7606c3482cafea3b4
+
+pkgname = qt-sdk
+

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+executed_file=$(readlink -f ${BASH_SOURCE[0]})
+script_dir=$(dirname ${executed_file})
+script_name=$(basename ${executed_file})
+
+for i in $(ls /etc/profile.d/qpi*); do
+    echo "sourcing: $i"
+    source $i
+done
+
+echo "Environment"
+env
+echo "Running: $@"
+$@
