@@ -3,7 +3,7 @@
 
 pkgname=kbs2-bin
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A secret manager backed by age"
 arch=('x86_64')
 url="https://github.com/woodruffw/kbs2"
@@ -15,6 +15,6 @@ sha256sums_x86_64=('b69b9b8740ab64d9af77b93aedd749270f19d73cf4683d5b8f649e679260
 
 package() {
   install -Dm 755 "${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-bin}"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-bin}"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
