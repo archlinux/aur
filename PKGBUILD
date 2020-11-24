@@ -1,5 +1,6 @@
-# Maintainer: jtts
+# Maintainer: Johan Liljeqvist <johan (at) liljeq.net>
 # From hunspell-sv-se:
+# Contributor: jtts
 # Contributor: Oscar Carlsson <oscar.carlsson (at) gmail.com>
 
 pkgname=mythes-sv
@@ -7,11 +8,11 @@ pkgver=20101106
 _pkgver=1.3
 pkgrel=9
 pkgdesc="Swedish thesaurus"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://lexin2.nada.kth.se/synlex.html"
 license=('custom')
 depends=('libmythes')
-source=("https://extensions.libreoffice.org/extensions/swedish-thesaurus-based-on-synlex/$_pkgver/@@download/file/swedishthesaurus.oxt")
+source=("https://extensions.libreoffice.org/assets/downloads/z/swedishthesaurus.oxt")
 sha256sums=('58de0797f5dca60b7dd5e2355c381eb4ced72aff7a726861a2512ebc2e97ad55')
 
 package() {
