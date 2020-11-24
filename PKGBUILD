@@ -4,7 +4,7 @@
 
 pkgname=fhc-bin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast HTTP Checker"
 arch=('x86_64')
 url="https://github.com/Edu4rdSHL/fhc"
@@ -20,6 +20,6 @@ sha256sums_x86_64=('d27cbcc6fa3da1489b21f2fec9ba39ad0881b78e21d1450ba96e4939974a
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "${pkgdir}/usr/bin/${pkgname%-bin}"
-  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
+  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm 644 "$pkgname-$pkgver-man.1" "$pkgdir/usr/share/man/man1/${pkgname%-bin}.1"
 }
