@@ -116,7 +116,7 @@ prepare() {
   npm install
   #npm run init || (npm run update_patches && npm run init)
   npm run init
-  #npm run sync -- --force
+  npm run sync -- --force
 
   msg2 "Apply Chromium patches..."
   cd src/
