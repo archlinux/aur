@@ -1,0 +1,20 @@
+From 48a5b4782a6f059dba6522d43fb5c7785df30d21 Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+aur@kokakiwi.net>
+Date: Tue, 24 Nov 2020 09:13:58 +0100
+Subject: [PATCH 2/2] Fix build.
+
+
+diff --git a/make.lua b/make.lua
+index 27896a01..482598dc 100644
+--- a/make.lua
++++ b/make.lua
+@@ -69,6 +69,4 @@ lm:build 'unittest' {
+ 
+ lm:default {
+     'install',
+-    'test',
+-    'unittest',
+ }
+-- 
+2.29.2
+

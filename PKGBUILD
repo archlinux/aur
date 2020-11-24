@@ -3,8 +3,8 @@
 
 _pkgname="lua-language-server"
 pkgname="$_pkgname-git"
-pkgver=r3080.02b37394
-pkgrel=2
+pkgver=r3112.2121da2d
+pkgrel=1
 license=('MIT')
 pkgdesc='Lua Language Server coded by Lua'
 url='https://github.com/sumneko/lua-language-server'
@@ -12,12 +12,14 @@ arch=('x86_64')
 depends=('lua')
 makedepends=('ninja' 'git')
 source=(
-  "git+https://github.com/sumneko/${_pkgname}.git"
-  '0001-Fixes.patch'
+  "${pkgname}::git+https://github.com/sumneko/${_pkgname}.git"
+  '0001-Fix-paths.patch'
+  '0002-Fix-build.patch'
   'wrapper'
 )
 sha256sums=('SKIP'
-            '66220566db9888eccbfeed998cae5ccdd4d74f3c4d43867e701bdad9585e7726'
+            '52be0f8e2f609907aa5f85758c3a380496cee2c0b031eef67c07a413eb70b85d'
+            '5fc36fa9fadd04fa6ec9fae4c952085a93bcdc6af83ce5434bb4be47efb31231'
             '6135c5424e5b87146aabf47651d3c95b6038865f26f25a8fce3a1ecd8c8f31fa')
 
 pkgver() {
@@ -51,9 +53,10 @@ package() {
 
   install -dm0755 "${pkgdir}/usr/share/${_pkgname}"
 
-  cp -a main.lua script "${pkgdir}/usr/share/${_pkgname}"
-  cp -a locale platform.lua "${pkgdir}/usr/share/${_pkgname}"
-  cp -a debugger.lua "${pkgdir}/usr/share/${_pkgname}"
+  cp -a \
+    main.lua platform.lua debugger.lua \
+    locale script \
+    "${pkgdir}/usr/share/${_pkgname}"
 
   install -Dm0755 ../wrapper "${pkgdir}/usr/bin/${_pkgname}"
 }

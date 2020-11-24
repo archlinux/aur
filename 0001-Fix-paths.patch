@@ -1,0 +1,102 @@
+From 54c22afecb29993f821f38839d0b4154a9165f2a Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+aur@kokakiwi.net>
+Date: Tue, 24 Nov 2020 09:13:49 +0100
+Subject: [PATCH 1/2] Fix paths.
+
+
+diff --git a/main.lua b/main.lua
+index 4ecd4f4a..27141a4c 100644
+--- a/main.lua
++++ b/main.lua
+@@ -1,8 +1,10 @@
+ local currentPath = debug.getinfo(1, 'S').source:sub(2)
+ local rootPath = currentPath:gsub('[/\\]*[^/\\]-$', '')
+-loadfile((rootPath == '' and '.' or rootPath) .. '/platform.lua')('script')
++loadfile(rootPath .. '/platform.lua')(rootPath, 'script')
+ local fs = require 'bee.filesystem'
++local math = require 'math'
+ ROOT = fs.path(rootPath)
++LOG_PATH = fs.path('/tmp/lua-language-server.' .. math.random(1000, 9000)) / 'log'
+ LANG = LANG or 'en-US'
+ 
+ debug.setcstacklimit(200)
+@@ -10,7 +12,7 @@ collectgarbage('generational', 10, 100)
+ --collectgarbage('incremental', 120, 120, 0)
+ 
+ log = require 'log'
+-log.init(ROOT, ROOT / 'log' / 'service.log')
++log.init(ROOT, LOG_PATH / 'service.log')
+ log.info('Lua Lsp startup, root: ', ROOT)
+ log.debug('ROOT:', ROOT:string())
+ 
+diff --git a/platform.lua b/platform.lua
+index 46656fda..e024f3d7 100644
+--- a/platform.lua
++++ b/platform.lua
+@@ -1,4 +1,4 @@
+-local script = ...
++local rootPath, script = ...
+ 
+ local function findExePath()
+     local n = 0
+@@ -30,13 +30,7 @@ cpath:    %s
+ end
+ 
+ local fs = require 'bee.filesystem'
+-local rootPath = fs.path(exePath):parent_path():parent_path():remove_filename():string()
+-if dll == '.dll' then
+-    rootPath = rootPath:gsub('/', '\\')
+-    package.path  = rootPath .. script .. '\\?.lua'
+-          .. ';' .. rootPath .. script .. '\\?\\init.lua'
+-else
+-    rootPath = rootPath:gsub('\\', '/')
+-    package.path  = rootPath .. script .. '/?.lua'
+-          .. ';' .. rootPath .. script .. '/?/init.lua'
+-end
++rootPath = fs.absolute(fs.path(rootPath))
++
++package.path = tostring(rootPath / script / '?.lua')
++     .. ';' .. tostring(rootPath / script / '?' / 'init.lua')
+diff --git a/script/workspace/workspace.lua b/script/workspace/workspace.lua
+index c5744666..8ad9b477 100644
+--- a/script/workspace/workspace.lua
++++ b/script/workspace/workspace.lua
+@@ -30,7 +30,7 @@ function m.init(uri)
+     end
+     m.uri  = uri
+     m.path = m.normalize(furi.decode(uri))
+-    local logPath = ROOT / 'log' / (uri:gsub('[/:]+', '_') .. '.log')
++    local logPath = LOG_PATH / (uri:gsub('[/:]+', '_') .. '.log')
+     log.info('Log path: ', logPath)
+     log.init(ROOT, logPath)
+ end
+diff --git a/test.lua b/test.lua
+index 64f0caea..248403c7 100644
+--- a/test.lua
++++ b/test.lua
+@@ -1,19 +1,19 @@
+ local currentPath = debug.getinfo(1, 'S').source:sub(2)
+ local rootPath = currentPath:gsub('[/\\]*[^/\\]-$', '')
+-rootPath = rootPath == '' and '.' or rootPath
+-loadfile(rootPath .. '/platform.lua')('script')
++loadfile(rootPath .. '/platform.lua')(rootPath, 'script')
+ package.path  = package.path
+       .. ';' .. rootPath .. '/test/?.lua'
+       .. ';' .. rootPath .. '/test/?/init.lua'
+ local fs = require 'bee.filesystem'
+ ROOT = fs.path(rootPath)
++LOG_PATH = ROOT / 'log'
+ LANG = 'zh-CN'
+ TEST = true
+ 
+ collectgarbage 'generational'
+ 
+ log = require 'log'
+-log.init(ROOT, ROOT / 'log' / 'test.log')
++log.init(ROOT, LOG_PATH / 'test.log')
+ log.debug('测试开始')
+ ac = {}
+ 
+-- 
+2.29.2
+
