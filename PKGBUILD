@@ -3,7 +3,7 @@
 
 pkgname=onefetch-bin
 pkgver=2.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Git repository summary on your terminal"
 arch=('x86_64')
 url="https://github.com/o2sh/onefetch"
@@ -22,7 +22,7 @@ sha512sums_x86_64=('770ab738b53d018ecb29120bedee984e70a44be1beddc23614e2a43beabf
 
 package() {
   install -Dm 755 "${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
-  install -Dm 644 "$pkgname-$pkgver-LICENSE.md" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE.md"
+  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm 644 "$pkgname-$pkgver-LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
   install -Dm 644 "$pkgname-$pkgver-man.1" "$pkgdir/usr/share/man/man1/${pkgname%-bin}.1"
 }
