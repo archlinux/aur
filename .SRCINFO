@@ -1,7 +1,7 @@
 pkgbase = hadlock-bin
 	pkgdesc = X window manager
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaShoelace/hadlock
 	arch = x86_64
 	license = MIT

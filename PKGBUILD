@@ -3,7 +3,7 @@
 
 pkgname=hadlock-bin
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="X window manager"
 arch=('x86_64')
 url="https://github.com/AdaShoelace/hadlock"
@@ -20,6 +20,6 @@ sha512sums_x86_64=('0339c6619603ab862c12a58086c924120022f6e1826cf154cc7f4903cac8
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "$pkgdir/usr/bin/${pkgname%-bin}"
-  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
-  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
+  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
