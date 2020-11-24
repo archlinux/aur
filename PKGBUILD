@@ -38,7 +38,7 @@ makedepends=(
 provides=(aegisub)
 conflicts=(aegisub)
 source=(
-  aegisub::git+https://github.com/odrling/Aegisub.git#branch=meson
+  aegisub::git+https://github.com/odrling/Aegisub.git
 )
 sha256sums=(
   SKIP
