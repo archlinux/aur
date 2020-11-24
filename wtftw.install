@@ -1,3 +1,0 @@
-post_install() {
-  echo 'After the first start, the config needs to be placed in ~/.wtftw/src/config.rs'
-}
