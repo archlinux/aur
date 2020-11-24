@@ -9,7 +9,6 @@ pkgbase = fblog-git
 	makedepends = git
 	provides = fblog
 	conflicts = fblog
-	conflicts = fblog-bin
 	source = git+https://github.com/brocode/fblog
 	sha512sums = SKIP
 
