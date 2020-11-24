@@ -3,8 +3,8 @@
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
 pkgname=runescape-launcher
-pkgver=2.2.7
-pkgrel=5
+pkgver=2.2.8
+pkgrel=1
 pkgdesc="RuneScape Game Client (NXT)"
 arch=(x86_64)
 license=(custom)
@@ -135,6 +135,7 @@ package() {
     #sed -i 's,/usr/share/games,/usr/lib,' "$pkgdir"/usr/bin/runescape-launcher
 
     install -Dm0644 copyright "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -Dm0644 changelog "$pkgdir"/usr/share/doc/$pkgname/changelog
 }
 
 # vim: ft=sh:ts=4:sw=4:et:nowrap
