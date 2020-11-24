@@ -1,6 +1,6 @@
 pkgbase = amdvbflash
 	pkgdesc = AMD vBIOS flash utility.
-	pkgver = v4.69
+	pkgver = v4.71
 	pkgrel = 1
 	url = https://github.com/patrickschur/amdvbflash
 	arch = x86_64

@@ -1,5 +1,5 @@
 pkgname=amdvbflash
-pkgver=v4.69
+pkgver=v4.71
 pkgrel=1
 pkgdesc="AMD vBIOS flash utility."
 arch=('x86_64')
