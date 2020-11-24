@@ -1,6 +1,6 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 pkgname=polkit-dumb-agent-git
-pkgver=r15.bf4bef0
+pkgver=r18.29190d8
 pkgrel=1
 pkgdesc="A polkit agent in 145 lines of code using Qt and libsystemd, because polkit sucks."
 arch=(i686 x86_64)
