@@ -1,7 +1,7 @@
 # Maintainer: Jens Heremans <jensheremans[at]gmail[dot]com>
 
 pkgname=procs-bin
-pkgver=0.10.8
+pkgver=0.10.9
 pkgrel=1
 pkgdesc="A modern replacement for ps written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=("procs")
 conflicts=("procs")
 source=("https://github.com/dalance/procs/releases/download/v$pkgver/procs-v$pkgver-$arch-lnx.zip")
-sha256sums=('4bf628e6c9898d49582a6e1b6a45a7839b3a303b8e3ac1d12443eb889846dbec')
+sha256sums=('84243f7feb7b9fa26f495e2be0701b6c10a0535cdbd74e6ce8d241a9aa66afff')
 
 package() {
   install -Dm755 "procs" "$pkgdir/usr/bin/procs"
