@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=19.0b1
 #_major=18.7.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -228,7 +228,7 @@ package_kodi-devel() {
   depends=(
     'desktop-file-utils' 'hicolor-icon-theme' 'mesa' 'python-pycryptodomex'
     'python-pillow' 'python-simplejson' 'xorg-xdpyinfo' 'shairplay'
-    'KODI-BIN' 'libplist'
+    'KODI-DEVEL-BIN' 'libplist'
   )
   optdepends=(
     'afpfs-ng: Apple shares support'
@@ -238,7 +238,7 @@ package_kodi-devel() {
     'upower: Display battery level'
   )
   provides=('xbmc' "kodi=${pkgver}")
-  conflicts=('xbmc')
+  conflicts=('xbmc' 'kodi')
   replaces=('xbmc')
 
   _components=(
@@ -265,7 +265,8 @@ package_kodi-devel() {
 
 package_kodi-devel-x11() {
   pkgdesc="x11 kodi binary"
-  provides=('KODI-BIN' "kodi-x11=${pkgver}")
+  provides=('KODI-DEVEL-BIN' "kodi-x11=${pkgver}")
+  conflicts=('kodi-x11')
   replaces=('kodi-bin')
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
@@ -284,7 +285,8 @@ package_kodi-devel-x11() {
 
 package_kodi-devel-wayland() {
   pkgdesc="wayland kodi binary"
-  provides=('KODI-BIN' "kodi-wayland=${pkgver}")
+  provides=('KODI-DEVEL-BIN' "kodi-wayland=${pkgver}")
+  conflicts=('kodi-wayland')
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon' 'libxslt'
@@ -301,7 +303,8 @@ package_kodi-devel-wayland() {
 
 package_kodi-devel-gbm() {
   pkgdesc="gbm kodi binary"
-  provides=('KODI-BIN' "kodi-gbm=${pkgver}")
+  provides=('KODI-DEVEL-BIN' "kodi-gbm=${pkgver}")
+  conflicts=('kodi-gbm')
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libinput' 'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon'

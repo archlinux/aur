@@ -1,6 +1,6 @@
 pkgbase = kodi-devel
 	pkgver = 19.0b1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -97,7 +97,7 @@ pkgname = kodi-devel
 	depends = python-simplejson
 	depends = xorg-xdpyinfo
 	depends = shairplay
-	depends = KODI-BIN
+	depends = KODI-DEVEL-BIN
 	depends = libplist
 	optdepends = afpfs-ng: Apple shares support
 	optdepends = bluez: Blutooth support
@@ -107,6 +107,7 @@ pkgname = kodi-devel
 	provides = xbmc
 	provides = kodi=19.0b1
 	conflicts = xbmc
+	conflicts = kodi
 	replaces = xbmc
 
 pkgname = kodi-devel-x11
@@ -132,8 +133,9 @@ pkgname = kodi-devel-x11
 	depends = taglib
 	depends = tinyxml
 	depends = kodi-devel
-	provides = KODI-BIN
+	provides = KODI-DEVEL-BIN
 	provides = kodi-x11=19.0b1
+	conflicts = kodi-x11
 	replaces = kodi-bin
 
 pkgname = kodi-devel-wayland
@@ -159,8 +161,9 @@ pkgname = kodi-devel-wayland
 	depends = tinyxml
 	depends = waylandpp
 	depends = kodi-devel
-	provides = KODI-BIN
+	provides = KODI-DEVEL-BIN
 	provides = kodi-wayland=19.0b1
+	conflicts = kodi-wayland
 
 pkgname = kodi-devel-gbm
 	pkgdesc = gbm kodi binary
@@ -185,8 +188,9 @@ pkgname = kodi-devel-gbm
 	depends = taglib
 	depends = tinyxml
 	depends = kodi-devel
-	provides = KODI-BIN
+	provides = KODI-DEVEL-BIN
 	provides = kodi-gbm=19.0b1
+	conflicts = kodi-gbm
 
 pkgname = kodi-devel-eventclients
 	pkgdesc = Kodi Event Clients
