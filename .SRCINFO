@@ -9,7 +9,6 @@ pkgbase = rusolver-git
 	makedepends = git
 	provides = rusolver
 	conflicts = rusolver
-	conflicts = rusolver-bin
 	source = git+https://github.com/Edu4rdSHL/rusolver
 	sha512sums = SKIP
 
