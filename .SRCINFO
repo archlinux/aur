@@ -1,7 +1,7 @@
 pkgbase = faint-git
 	pkgdesc = Extensible TUI fuzzy file explorer (git)
 	pkgver = 0.996.r0.g9a85774
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/salman-abedin/faint
 	arch = x86_64
 	license = GPL2

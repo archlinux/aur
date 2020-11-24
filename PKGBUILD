@@ -4,7 +4,7 @@
 pkgname=faint-git
 pkgdesc="Extensible TUI fuzzy file explorer (git)"
 pkgver=0.996.r0.g9a85774
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/salman-abedin/faint"
 license=('GPL2')
@@ -23,5 +23,5 @@ pkgver() {
 package() {
   cd "${pkgname%-git}"
   make BIN_DIR="$pkgdir/usr/bin" install
-  install -Dm 644 "README.md" -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm 644 "README.md" -t "$pkgdir/usr/share/doc/$pkgname"
 }
