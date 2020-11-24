@@ -6,7 +6,6 @@ pkgbase = cicero
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
-	makedepends = cmake
 	makedepends = fontconfig
 	source = cicero-0.1.3.tar.gz::https://github.com/eyeplum/cicero-tui/archive/v0.1.3.tar.gz
 	sha512sums = 2d4d060b12705b7d4f1b9e5f86754b73e46d21f37321f8b4707af8c56c52ad8450809158263b7ed39fecf3cc291efd7e572eaa91480c5f1a22871e1e6137508e

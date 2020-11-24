@@ -8,7 +8,7 @@ pkgdesc="Unicode tool with a terminal user interface"
 arch=('x86_64')
 url="https://github.com/eyeplum/cicero-tui"
 license=('GPL3')
-makedepends=('rust' 'cmake' 'fontconfig')
+makedepends=('rust' 'fontconfig')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('2d4d060b12705b7d4f1b9e5f86754b73e46d21f37321f8b4707af8c56c52ad8450809158263b7ed39fecf3cc291efd7e572eaa91480c5f1a22871e1e6137508e')
 
