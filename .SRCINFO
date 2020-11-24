@@ -8,7 +8,6 @@ pkgbase = dog-dns-bin
 	provides = dog-dns
 	conflicts = dog
 	conflicts = dog-dns
-	conflicts = dog-dns-git
 	source_x86_64 = https://github.com/ogham/dog/releases/download/v0.1.0/dog-v0.1.0-x86_64-unknown-linux-gnu.zip
 	source_x86_64 = dog-0.1.0-LICENCE::https://github.com/ogham/dog/raw/v0.1.0/LICENCE
 	source_x86_64 = dog-0.1.0-README.md::https://github.com/ogham/dog/raw/v0.1.0/README.md
