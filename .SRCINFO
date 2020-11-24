@@ -1,0 +1,17 @@
+pkgbase = linkfinder-git
+	pkgdesc = Find endpoints in JavaScript files
+	pkgver = r157.dae58bb
+	pkgrel = 1
+	url = https://github.com/GerbenJavado/LinkFinder
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-argparse
+	depends = python-jsbeautifier
+	provides = linkfinder
+	conflicts = linkfinder
+	source = linkfinder::git+https://github.com/GerbenJavado/LinkFinder.git
+	sha256sums = SKIP
+
+pkgname = linkfinder-git
+
