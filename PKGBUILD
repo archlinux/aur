@@ -177,9 +177,6 @@ $_build_from_local_src_tree && _patching=false
 #rm $install
 #touch $install
 
-if [[ -n ${_piver} ]] || ! $_building; then
-  pkgname="${pkgname}-raspberry-pi${_piver}"
-fi
 provides=($pkgname)
 
 if $_static_build; then
@@ -218,11 +215,11 @@ _source_package_name=${_qt_package_name_prefix}-${_pkgver}
 _baseprefix="/opt/qt"
 _installprefix=${_baseprefix}/${pkgname}
 
-pkgdesc="Qt SDK for the Raspberry Pi 1/2/3"
+pkgdesc="Qt SDK for both hosts and a variety of targets"
 arch=("x86_64")
 url="http://www.chaos-reins.com/qpi/"
 license=("LGPL3" "GPL3")
-optdepends=('qtcreator: Integrated Raspberry Pi IDE development')
+optdepends=('qtcreator: Integrated IDE development')
 makedepends=("git" "pkgconfig" "gcc" "gperf" "python")
 #_provider=http://qt.mirror.constant.com/
 _provider=https://download.qt.io
