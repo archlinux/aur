@@ -3,7 +3,7 @@
 
 pkgname=gfold-bin
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool to help keep track of Git repositories"
 arch=('x86_64')
 url="https://github.com/nickgerace/gfold"
@@ -17,5 +17,5 @@ sha512sums_x86_64=('78526cc61d2ac724b0e49fe9f536488976e84e5237350896c00dc00a9e98
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "${pkgdir}/usr/bin/${pkgname%-bin}"
-  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
+  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
