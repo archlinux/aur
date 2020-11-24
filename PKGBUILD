@@ -34,7 +34,7 @@ package() {
         ln -s /opt/activitywatch/$name $pkgdir/usr/bin/$name
     done
 
-    modulenames=("aw-server" "aw-watcher-afk" "aw-watcher-window")
+    modulenames=("aw-server" "aw-server-rust" "aw-watcher-afk" "aw-watcher-window")
     for name in "${modulenames[@]}"; do
         ln -s /opt/activitywatch/$name/$name $pkgdir/usr/bin/$name
     done
