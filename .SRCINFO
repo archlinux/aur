@@ -1,6 +1,6 @@
 pkgbase = python-caldav
 	pkgdesc = a caldav client library
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/caldav
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-caldav
 	depends = python-six
 	depends = python-requests
 	options = !emptydirs
-	source = https://github.com/python-caldav/caldav/archive/v0.7.0.tar.gz
-	sha256sums = 785c842f978355338463402bcedb4a647b00fc2e3a3ce11ea445dbb7788fbcf6
+	source = https://github.com/python-caldav/caldav/archive/v0.7.1.tar.gz
+	sha256sums = 3ed2d7bd3ed523bbdaa93b5c4e5379db1b44bd4560557787381cb9d20f144741
 
 pkgname = python-caldav
 
