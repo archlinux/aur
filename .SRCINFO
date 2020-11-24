@@ -8,7 +8,6 @@ pkgbase = fw-bin
 	depends = fzf
 	provides = fw
 	conflicts = fw
-	conflicts = fw-git
 	source_x86_64 = fw-bin-2.6.0::https://github.com/brocode/fw/releases/download/v2.6.0/fw
 	source_x86_64 = fw-bin-2.6.0-LICENSE::https://github.com/brocode/fw/raw/v2.6.0/LICENSE
 	source_x86_64 = fw-bin-2.6.0-README.org::https://github.com/brocode/fw/raw/v2.6.0/README.org
