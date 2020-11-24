@@ -4,7 +4,7 @@
 pkgname=kermit-git
 pkgdesc="A VTE-based, simple and froggy terminal emulator (git)"
 pkgver=3.1.r0.g2b24759
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/orhun/kermit"
 license=('GPL3')
@@ -30,5 +30,5 @@ build() {
 package() {
   cd "${pkgname%-git}/build"
   make DESTDIR="$pkgdir" install
-  install -Dm 644 "../README.md" -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm 644 "../README.md" -t "$pkgdir/usr/share/doc/$pkgname"
 }
