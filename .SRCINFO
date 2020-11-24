@@ -7,7 +7,6 @@ pkgbase = fblog-bin
 	license = custom:WTFPL
 	provides = fblog
 	conflicts = fblog
-	conflicts = fblog-git
 	source_x86_64 = fblog-bin-2.3.0::https://github.com/brocode/fblog/releases/download/v2.3.0/fblog
 	source_x86_64 = fblog-bin-2.3.0-LICENSE::https://github.com/brocode/fblog/raw/v2.3.0/LICENSE
 	source_x86_64 = fblog-bin-2.3.0-README.org::https://github.com/brocode/fblog/raw/v2.3.0/README.org
