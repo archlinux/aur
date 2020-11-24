@@ -4,7 +4,7 @@
 pkgbase=pulseaudio-hsphfpd
 pkgname=(pulseaudio-hsphfpd libpulse-hsphfpd alsa-card-profiles-hsphfpd pulseaudio-{zeroconf,lirc,jack,bluetooth,equalizer,rtp}-hsphfpd)
 pkgdesc="A fork of pulseaudio providing superior bluetooth headset functionality"
-pkgver=13.99.3+105+gb72e9fbc0
+pkgver=14.0+116+gd2ea10877
 pkgrel=1
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
@@ -13,7 +13,7 @@ makedepends=(libasyncns libcap attr libxtst libsm libsndfile rtkit libsoxr
              speexdsp tdb systemd dbus avahi bluez bluez-libs jack2 sbc
              lirc openssl fftw orc gtk3 webrtc-audio-processing check git meson
              xmltoman gst-plugins-base-libs libopenaptx)
-_commit=daf3a3c4b08c89aa658353764c5237f0a4bef9f7  # tags/v13.99.3^0
+_commit=d1e0594e939e3309435c966d994b0207b10f5175  # tags/v14.0^0
 source=("git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#commit=$_commit")
 sha256sums=('SKIP')
 
