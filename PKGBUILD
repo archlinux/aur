@@ -19,14 +19,14 @@ conflicts=("${_pkgname}")
 noextract=("${_pkgname/-/}-cli-fat-${pkgver}.jar"
         "${_pkgname/-/}-ui-fat-${pkgver}.jar")
 source=("${url}/releases/download/${pkgver}/${_pkgname/-/}-"{'cli','ui'}"-fat-${pkgver}.jar"
-        "${_pkgname}-icon-${_commit_icon}::${url}/raw/${_commit_icon}/${_pkgname/-/}-ui/src/main/app-resources/${_pkgname}_30.icns")
+        "${_pkgname}-${pkgver}-icon::${url}/raw/${pkgver}/${_pkgname/-/}-ui/src/main/app-resources/${_pkgname}_30.icns")
 sha256sums=('f85f2c0d516f1834745e50567f6f347b30de0531a2aca8f5476f0f973f9fe819'
             'ea575df3f96841fbe6a294c04e0357a75f3541dab8d418e0f49e43a393a3daee'
             '173cfd6c315b7e85dea2d7afb8c1d6ea0c4ece3014a1a7e5b4153bef3156ad77')
 
 prepare() {
-  echo -e "#!/bin/sh\ncd /usr/share/${_pkgname} && java -jar ./${_pkgname}-cli.jar" > "${_pkgname}-cli"
-  echo -e "#!/bin/sh\ncd /usr/share/${_pkgname} && java -jar ./${_pkgname}-ui.jar" > "${_pkgname}-ui"
+  echo -e "#!/bin/sh\nexec java -jar /usr/share/${_pkgname}/${_pkgname}-cli.jar \"\$@\"" > "${_pkgname}-cli"
+  echo -e "#!/bin/sh\nexec java -jar /usr/share/${_pkgname}/${_pkgname}-ui.jar \"\$@\"" > "${_pkgname}-ui"
   gendesk -f -n \
     --pkgname="${_pkgname/-/_}" \
     --pkgdesc="${pkgdesc}" \
@@ -42,9 +42,9 @@ package() {
   install -Dvm755 "${_pkgname}-ui" -t "${pkgdir}/usr/bin"
   install -Dvm644 "${_pkgname/-/_}.desktop" -t "${pkgdir}/usr/share/applications"
 
-  icns2png --extract "${_pkgname}-icon-${_commit_icon}"
+  icns2png -xs 1024 -- "${_pkgname}-${pkgver}-icon"
   for i in 16 22 24 32 48 64 96 128 256 512; do
-    convert "${_pkgname}-icon-${_commit_icon}_512x512x32.png" -resize "${i}x${i}" "icon${i}.png"
+    convert "${_pkgname}-"*'_1024x1024x32.png' -resize "${i}x${i}" "icon${i}.png"
     install -Dvm644 "icon${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${_pkgname}.png"
   done
 
