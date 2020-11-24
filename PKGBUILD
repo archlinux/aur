@@ -25,7 +25,7 @@ optdepends=(
 )
 
 source=("${pkgname}-${pkgver}.deb::http://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-beta/yandex-browser-beta_${_pkgver}_amd64.deb")
-md5sums=("2f7dea76f6bb96b2017140bd216893d8")
+md5sums=("8d06743c89c1f63f18ceeacedd74da84")
 
 prepare() {
     tar -xf data.tar.xz
