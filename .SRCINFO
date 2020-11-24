@@ -1,7 +1,7 @@
 pkgbase = god-git
 	pkgdesc = Utility for simplifying the Git usage (git)
 	pkgver = 1.10.r0.g9d6fb4b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/orhun/god
 	arch = x86_64
 	license = GPL3
