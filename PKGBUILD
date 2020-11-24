@@ -21,7 +21,7 @@ source=(
     "https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-u-boot-current-tinkerboard_$pkgver-trunk_armhf.deb"
 )
 sha512sums=(
-    '6a83f5b62703079691df948ba5e134009053157d72f7cbc46dfa4218d88ae97386b39af988c94e8bc6022ad6332339e5e4c443a79b18e5eb3772129e847ec861'
+    '4aa7a981240add9fdf1e5a14524e2584616e98ae3783c2ed081af441f438ff6fc9ff3b61cc1c7a5c382e42c78c2f2b9a7fa44c0574c16fce89a30466ffc45f08'
     'f23ea74c26e9059a50c3d2411cbcd2412b35d1bc5c27ba6b71508183cdce743b25faeb79d4456191fed07308a002da0e765e9e316a4611acbf871a0a4fa9d626'
     "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-u-boot-current-tinkerboard_$pkgver-trunk_armhf.deb.sha512sum)"
 )
