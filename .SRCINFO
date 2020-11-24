@@ -7,7 +7,6 @@ pkgbase = rusolver-bin
 	license = GPL3
 	provides = rusolver
 	conflicts = rusolver
-	conflicts = rusolver-git
 	source_x86_64 = rusolver-bin-0.2.0::https://github.com/Edu4rdSHL/rusolver/releases/download/0.2.0/rusolver-linux
 	source_x86_64 = rusolver-bin-0.2.0-README.md::https://github.com/Edu4rdSHL/rusolver/raw/0.2.0/README.md
 	source_x86_64 = rusolver-bin-0.2.0-man.1::https://github.com/Edu4rdSHL/rusolver/raw/0.2.0/rusolver.1
