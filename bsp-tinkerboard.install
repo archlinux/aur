@@ -1,0 +1,15 @@
+post_install() {
+  groupadd -r -f i2c
+  groupadd -r -f gpio
+
+  systemctl enable tinker-bluetooth.service
+  systemctl start tinker-bluetooth.service
+
+  sed -i -e "/#load-module module-alsa-sink/r pulseaudio-sink.txt" /etc/pulse/default.pa >/dev/null 2>&1
+  sed -i -e "/#load-module module-alsa-source device=hw:1,0/r pulseaudio-source.txt" /etc/pulse/default.pa >/dev/null 2>&1
+}
+
+pre_remove() {
+  systemctl stop tinker-bluetooth.service
+  systemctl disable tinker-bluetooth.service
+}

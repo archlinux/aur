@@ -1,0 +1,34 @@
+pkgbase = bsp-tinkerboard
+	pkgdesc = BSP for Tinker Board / S (Bluetooth, HDMI, Audio, Udev rules...)
+	pkgver = 20.11.0
+	pkgrel = 1
+	url = https://github.com/redchenjs/armbian-ci
+	install = bsp-tinkerboard.install
+	arch = armv7h
+	license = GPL2
+	makedepends = curl
+	depends = bash
+	depends = bluez
+	depends = bluez-tools
+	depends = systemd
+	depends = util-linux
+	depends = wireless_tools
+	depends = xorg-xrandr
+	noextract = bsp-tinkerboard.install
+	noextract = pulseaudio-sink.txt
+	noextract = pulseaudio-source.txt
+	noextract = armbian-firmware_20.11.0-trunk_all.deb
+	noextract = linux-focal-root-current-tinkerboard_20.11.0-trunk_armhf.deb
+	source = bsp-tinkerboard.install
+	source = pulseaudio-sink.txt
+	source = pulseaudio-source.txt
+	source = https://github.com/redchenjs/armbian-ci/releases/download/v5.8.18-rockchip/armbian-firmware_20.11.0-trunk_all.deb
+	source = https://github.com/redchenjs/armbian-ci/releases/download/v5.8.18-rockchip/linux-focal-root-current-tinkerboard_20.11.0-trunk_armhf.deb
+	sha512sums = 2bc75567f50efbde4c96f5bf9aed742dccc4083f1a019cfbe196832a6c416b3f12fea8768797e58979bbe2b9ed72f122cab6eb82007039564612fb77e430ab7f
+	sha512sums = 27f4af01d2e34398c05e98ec20eceaaf98cf2d4917d2b809080bef09bf385322b23226890d4bc8585f4aa7f17cd5867e15317c7e477b7bb868e65db3924b43a3
+	sha512sums = 6516f28d8e0e086422d447dcac983f69c3e9d590f82d983a4b3deb8ca21d8cca2e45d9c7591ed4245dac6300ede2200b35ed9eb9387005f1483c5e6e131b2c61
+	sha512sums = 5f5dcb8a3aca49474239572bf811d5e39a9ab575512ac7292d51fdcee46f8f6aa4e10209fe1c16e78fc86daa1f7e3ade1c995e3a546c7f3ccf3dda2c5da5a244
+	sha512sums = 1bd8bcf85334a9b410f8769e38fbc013d12887604d3be50b85860ef8d4e9e6e643f2306f1086b159789c01cf0dac607094c37370dd45dfea3af05cc8b3283f98
+
+pkgname = bsp-tinkerboard
+

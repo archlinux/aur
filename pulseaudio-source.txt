@@ -1,0 +1,2 @@
+load-module module-alsa-source device=OnBoard_D0 source_properties=device.description="BT_VOIP-Input"
+load-module module-alsa-source device=OnBoard_D1 source_properties=device.description="Headset-Input"
