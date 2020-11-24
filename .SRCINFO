@@ -9,7 +9,6 @@ pkgbase = lipl-git
 	makedepends = git
 	provides = lipl
 	conflicts = lipl
-	conflicts = lipl-bin
 	source = git+https://github.com/yxdunc/lipl
 	sha512sums = SKIP
 
