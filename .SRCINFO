@@ -9,7 +9,6 @@ pkgbase = typeracer-bin
 	depends = zlib
 	provides = typeracer
 	conflicts = typeracer
-	conflicts = typeracer-git
 	source_x86_64 = typeracer-bin-2.0.4::https://gitlab.com/ttyperacer/terminal-typeracer/uploads/f8b8d4b1c7fca37aca68c36452df1e3a/typeracer
 	source_x86_64 = typeracer-bin-2.0.4-README.md::https://gitlab.com/ttyperacer/terminal-typeracer/-/raw/v2.0.4/README.md
 	sha512sums_x86_64 = 623cdcf28d1218ac74fe968ecc349fdc612b5934f3646e96a76857cafd637755dbfd573d50107ac24ac15ba3437e8699b0e06d823347045274a75c99167ec3e1

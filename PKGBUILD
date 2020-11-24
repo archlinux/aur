@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://gitlab.com/ttyperacer/terminal-typeracer"
 license=('GPL3')
 depends=('openssl' 'zlib')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
+conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver::$url/uploads/f8b8d4b1c7fca37aca68c36452df1e3a/${pkgname%-bin}"
               "$pkgname-$pkgver-README.md::$url/-/raw/v$pkgver/README.md")
