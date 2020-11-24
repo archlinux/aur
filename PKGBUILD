@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/AdaShoelace/hadlock"
 license=('MIT')
 depends=('dbus' 'libxinerama')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
+conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/Hadlock"
                "$pkgname-$pkgver-LICENSE::$url/raw/v$pkgver/LICENSE"

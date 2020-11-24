@@ -9,7 +9,6 @@ pkgbase = hadlock-bin
 	depends = libxinerama
 	provides = hadlock
 	conflicts = hadlock
-	conflicts = hadlock-git
 	source_x86_64 = hadlock-bin-1.1.6::https://github.com/AdaShoelace/hadlock/releases/download/v1.1.6/Hadlock
 	source_x86_64 = hadlock-bin-1.1.6-LICENSE::https://github.com/AdaShoelace/hadlock/raw/v1.1.6/LICENSE
 	source_x86_64 = hadlock-bin-1.1.6-README.md::https://github.com/AdaShoelace/hadlock/raw/v1.1.6/README.md
