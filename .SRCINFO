@@ -9,7 +9,6 @@ pkgbase = bookmark-git
 	makedepends = git
 	provides = bookmark
 	conflicts = bookmark
-	conflicts = bookmark-bin
 	source = git+https://github.com/Szymongib/bookmark
 	sha512sums = SKIP
 
