@@ -1,7 +1,7 @@
 # Maintainer: nekgem2 <nekgem2@firemail.cc>
 pkgname=lokinet
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc="Anonymous, decentralized and IP based overlay network for the internet."
 arch=('x86_64' 'aarch64')
 url="https://lokinet.org"
@@ -10,18 +10,21 @@ depends=('libuv' 'libsodium' 'curl' 'zeromq' 'unbound' 'sqlite')
 makedepends=('git' 'cmake')
 conflicts=('lokimq')
 install='lokinet.install'
+backup=('etc/conf.d/lokinet')
 source=("https://github.com/loki-project/loki-network/releases/download/v$pkgver/lokinet-v$pkgver.tar.xz"{,.sig}
+        'lokinet.conf'
         'lokinet.service'
-        'lokinet-vpn@.service'
+        'lokinet-vpn.service'
         'lokinet-bootstrap.service'
         'lokinet-default-config.service'
         'lokinet-resume.service'
         'lokinet.sysusers'
         'lokinet.tmpfiles')
-sha256sums=('08f76a119141e15aa12fbce20e05e01b70782c7917aa80347d8677c7d0ab6ba1'
+sha256sums=('6d6909f6304fbcfdf1fe5ef0d088fe5f22a2399304c0088b72c608e1b424214a'
             'SKIP'
+            'ff5e7db4e65463e50978da0185487bd4a7f213f04bdb6256e221089f833c6ab6'
             '3c2fcd2be74a989bdb19383dd3421f7654584b53e4b7e0692b752bfbe60903f4'
-            'd3d1b95b794284a1e4e5915d96510aca68fcf09ebbd347a721c93e8af57cd838'
+            'cb31c1783998ec11d3d6eb4e5e4e138a8d423ee1aeb0ae2ebe66a52b0f87b642'
             '21c9bc83f8466ab17fa927561d7f24f930f97c996a8aa0fbbbbb2b65cb97b342'
             '6ef779170b72856bbb8df40c34a808acffddd156684bdb66a55e71d50cf95841'
             'bcf4bd7b38d2f054e25cc243353d3c9a56d1948b42ad07ee5c0260de06e8dd6c'
@@ -61,11 +64,10 @@ package() {
 	install -Dm755 contrib/systemd-resolved/lokinet.conf "$pkgdir/usr/lib/systemd/resolved.conf.d/00-lokinet.conf"
 	cd build
 	make DESTDIR="$pkgdir" install
-	# remove lokimq header stuff as it's confusing and currently pointless
-	rm -r "$pkgdir/usr/include"
 
+	install -D -m 644 "$srcdir/lokinet.conf"                   "$pkgdir/etc/conf.d/lokinet"
 	install -D -m 644 "$srcdir/lokinet.service"                "$pkgdir/usr/lib/systemd/system/lokinet.service"
-	install -D -m 644 "$srcdir/lokinet-vpn@.service"           "$pkgdir/usr/lib/systemd/system/lokinet-vpn@.service"
+	install -D -m 644 "$srcdir/lokinet-vpn.service"            "$pkgdir/usr/lib/systemd/system/lokinet-vpn.service"
 	install -D -m 644 "$srcdir/lokinet-bootstrap.service"      "$pkgdir/usr/lib/systemd/system/lokinet-bootstrap.service"
 	install -D -m 644 "$srcdir/lokinet-default-config.service" "$pkgdir/usr/lib/systemd/system/lokinet-default-config.service"
 	install -D -m 644 "$srcdir/lokinet-resume.service"         "$pkgdir/usr/lib/systemd/system/lokinet-resume.service"
