@@ -3,7 +3,7 @@
 # Contributor: Pascal Mathis <mail@pascalmathis.com>
 pkgname=rambox-pro-bin
 _pkgname=ramboxpro
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Workspace browser to manage many web applications in one place'
 arch=('x86_64')
