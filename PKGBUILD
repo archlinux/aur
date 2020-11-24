@@ -6,7 +6,7 @@ pkgdesc="Dead simple CLI Display Manager on TTY"
 arch=('x86_64')
 url="https://github.com/tvrzna/emptty"
 license=('MIT')
-depends=('pam')
+depends=('pam' 'libx11')
 makedepends=('git' 'go')
 optdepends=('xorg-server: default display server'
             'xorg-xauth: required if using xorg-server'
