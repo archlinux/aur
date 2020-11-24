@@ -3,7 +3,7 @@
 
 pkgname=huniq-git
 pkgver=r52.5d6f22b
-pkgrel=1
+pkgrel=2
 pkgdesc="Filter out duplicates on the command line (git)"
 arch=('x86_64')
 url="https://github.com/koraa/huniq"
@@ -31,6 +31,6 @@ check() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 readme.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+  install -Dm 644 readme.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
