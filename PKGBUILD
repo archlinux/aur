@@ -4,7 +4,7 @@
 
 pkgname=rusolver-git
 pkgver=0.2.0.r0.gc6ec585
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and accurate DNS resolver (git)"
 arch=('x86_64')
 url="https://github.com/Edu4rdSHL/rusolver"
@@ -33,6 +33,6 @@ check() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 "${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
 }
