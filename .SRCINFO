@@ -1,7 +1,7 @@
 pkgbase = fhc-git
 	pkgdesc = Fast HTTP Checker (git)
 	pkgver = 0.4.0.r2.g22815c5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Edu4rdSHL/fhc
 	arch = x86_64
 	license = GPL3
