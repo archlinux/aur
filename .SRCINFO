@@ -12,6 +12,7 @@ pkgbase = rstudio-desktop-preview-bin
 	depends = shared-mime-info
 	depends = libxrandr
 	depends = openssl-1.0
+	depends = postgresql-libs
 	optdepends = pandoc: markdown support
 	optdepends = pandoc-citeproc: markdown support
 	provides = rstudio-desktop=1.4.1056

@@ -14,7 +14,7 @@ pkgdesc="An integrated development environment (IDE) for R (binary version from 
 arch=('x86_64')
 license=('GPL')
 url="http://www.rstudio.org/"
-depends=('r' 'hicolor-icon-theme' 'libxcomposite' 'libxslt' 'shared-mime-info' 'libxrandr' 'openssl-1.0')
+depends=('r' 'hicolor-icon-theme' 'libxcomposite' 'libxslt' 'shared-mime-info' 'libxrandr' 'openssl-1.0' 'postgresql-libs')
 #makedepends=('patchelf')
 optdepends=('pandoc: markdown support'
             'pandoc-citeproc: markdown support')
