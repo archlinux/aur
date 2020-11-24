@@ -3,7 +3,7 @@
 
 pkgname=eva-git
 pkgver=0.2.7.r9.gd310979
-pkgrel=1
+pkgrel=2
 pkgdesc="a calculator REPL, similar to bc(1)"
 arch=('x86_64')
 url="https://github.com/NerdyPepper/eva"
@@ -32,6 +32,6 @@ check() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 readme.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+  install -Dm 644 readme.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
