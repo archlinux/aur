@@ -3,7 +3,7 @@
 
 pkgname=shy-bin
 pkgver=0.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Bare-bones SSH launcher"
 arch=('x86_64')
 url="https://github.com/xvxx/shy"
@@ -19,7 +19,7 @@ sha512sums_x86_64=('9dab762e1dbe8ccb1c8be0ea2b69460bc08d9b664ef0b1061b71ce8ea443
 
 package() {
   install -Dm 755 "${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
-  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
+  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm 644 "${pkgname%-bin}.1" -t "$pkgdir/usr/share/man/man1"
 }

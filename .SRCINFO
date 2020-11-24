@@ -1,7 +1,7 @@
 pkgbase = shy-bin
 	pkgdesc = Bare-bones SSH launcher
 	pkgver = 0.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xvxx/shy
 	arch = x86_64
 	license = MIT
