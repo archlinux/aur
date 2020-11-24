@@ -18,7 +18,7 @@ conflicts=('rambox-pro-bin')
 source=("${_pkgname}-EULA"
         "${_pkgname}-${pkgver}.deb::https://github.com/ramboxapp/download/releases/download/v${_pkgver}/RamboxPro-${_pkgver}-linux-x64.deb")
 md5sums=('e9bf9670347cd34d44661871bf34f043'
-         'cf1f6f44474be4608f8bd50e60ab2b47')
+         'cb9ce91a27d8de8ae2620b31999d0af3')
 
 build() {
     rm -rf "${srcdir}/root"
