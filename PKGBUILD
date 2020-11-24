@@ -2,7 +2,7 @@
 # Contributor: qaz <fkxxyz@163.com>
 
 pkgname=wine-mono-gecko-version-fix
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Fix the version numbers of wine-mono and wine-gecko files to solve the dialog box that pops up when starting wine."
 arch=(any)
@@ -16,13 +16,13 @@ source=(
 )
 
 package() {
-  install -D "wine-mono-version-fix.hook" \
+  install -Dm644 "wine-mono-version-fix.hook" \
     "${pkgdir}/usr/share/libalpm/hooks/wine-mono-version-fix.hook"
-  install -D "wine-gecko-version-fix.hook" \
+  install -Dm644 "wine-gecko-version-fix.hook" \
     "${pkgdir}/usr/share/libalpm/hooks/wine-gecko-version-fix.hook"
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('2f2958c8de920209c09a168cd75e04c7'
-         '20d6893254eb74cfb6e79c30af59977a')
+md5sums=('48e76371af53002714ff5e1a9c4d6617'
+         'd6ad765c083ea5a61c61fa43876f4832')
          
