@@ -14,7 +14,7 @@ sha256sums=('1ebe144d0f294c4e8b482742a2588201f8b962fbcebbbd109627e1fc9e2b6d94')
 
 package() {
   cd "$srcdir"
-  install -Dm644 ripme.jar "$pkgdir/usr/share/java/ripme.jar"
+  install -Dm644 "ripme-$pkgver.jar" "$pkgdir/usr/share/java/ripme.jar"
   cat << EOF | install -Dm755 /dev/stdin "$pkgdir/usr/bin/ripme"
 #!/bin/sh
 exec java -jar /usr/share/java/ripme.jar "\$@"
