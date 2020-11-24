@@ -27,7 +27,7 @@ fi
 ##
 
 pkgname=brave
-pkgver=1.16.76
+pkgver=1.17.73
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -41,21 +41,18 @@ optdepends=('cups: Printer support'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: for storing passwords in KWallet on KDE desktops'
             'sccache: For faster builds')
-chromium_base_ver="86"
-patchset="6"
+chromium_base_ver="87"
+patchset="9"
 patchset_name="chromium-${chromium_base_ver}-patchset-${patchset}"
+_launcher_ver=6
 source=("https://github.com/brave/brave-browser/archive/v${pkgver}.tar.gz"
         'brave-launcher'
         'brave-browser.desktop'
+        "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
         "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz"
         'brave-custom-build.patch')
-arch_revision=a702396adb03e094bfbe836ff05a451465fc986d
+arch_revision=63e8313d989fbb6f05b8886cefff67a643d3d888
 for Patches in \
-        fix-invalid-end-iterator-usage-in-CookieMonster.patch \
-        only-fall-back-to-the-i965-driver-if-we-re-on-iHD.patch \
-        remove-dead-reloc-in-nonalloc-LD-flags.patch \
-        check-for-enable-accelerated-video-decode-on-Linux.patch \
-        xproto-fix-underflow-in-Fp1616ToDouble.patch \
         chromium-skia-harmony.patch
 do
   source+=("${Patches}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${Patches}?h=packages/chromium&id=${arch_revision}")
@@ -64,16 +61,12 @@ done
 # VAAPI patches from chromium-vaapi in AUR
 #source+=("vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=7c05464a8700b1a6144258320b2b33b352385f77")
 
-sha256sums=('1cf73c0c86947c268cdce3a02d3a1fbcd52e4f5a754fac5fea0cd36555d518ad'
+sha256sums=('090b705dab4e89f8b3ebc5abf879a1eb1b44ce0d29fa15b6a49cecdc1efe7888'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
-            '6f9ab35fa2c9e6e34ec454b829b7b87adaebc10cacecd1ac1daa67035ee44aba'
-            'a6ab368b3e8f1768501cebdf0fe4bab331d16eb0aff581b42fa32b208081acf7'
-            '69d8b7a439db1af4713245ddf5f44ca647283ba833a8733e848033ebdaf03cdc'
-            '7514c6c81a64a5457b66494a366fbb39005563eecc48d1a39033dd06aec4e300'
-            '7cace84d7494190e7882d3e637820646ec8d64808f0a2128c515bd44991a3790'
-            '03d03a39b2afa40083eb8ccb9616a51619f71da92348effc8ee289cbda10128b'
-            '1ec617b362bf97cce4254debd04d8396f17dec0ae1071b52ec8c1c3d86dbd322'
+            '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
+            'c99934bcd2f3ae8ea9620f5f59a94338b2cf739647f04c28c8a551d9083fa7e9'
+            'd492ca5946e8faba67be4893e89677c7053bdecafe06eed1df652bd37a948286'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -123,6 +116,7 @@ prepare() {
   npm install
   #npm run init || (npm run update_patches && npm run init)
   npm run init
+  #npm run sync -- --force
 
   msg2 "Apply Chromium patches..."
   cd src/
@@ -134,11 +128,10 @@ prepare() {
     third_party/libxml/chromium/*.cc
 
   # Upstream fixes
-  patch -Np1 -i "${srcdir}"/fix-invalid-end-iterator-usage-in-CookieMonster.patch
-  patch -Np1 -i "${srcdir}"/only-fall-back-to-the-i965-driver-if-we-re-on-iHD.patch
-  patch -Np1 -i "${srcdir}"/remove-dead-reloc-in-nonalloc-LD-flags.patch
-  patch -Np1 -i "${srcdir}"/check-for-enable-accelerated-video-decode-on-Linux.patch
-  patch -Np1 -i "${srcdir}"/xproto-fix-underflow-in-Fp1616ToDouble.patch
+
+  # Fixes for building with libstdc++ instead of libc++
+  patch -Np1 -i ../../patches/chromium-87-ServiceWorkerContainerHost-crash.patch
+  patch -Np1 -i ../../patches/chromium-87-openscreen-include.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i "${srcdir}"/chromium-skia-harmony.patch
@@ -154,11 +147,11 @@ prepare() {
     sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
         tools/generate_shim_headers/generate_shim_headers.py
 
+    sed -i $'s/\r$//' \
+        brave/vendor/bat-native-ads/src/bat/ads/internal/filters/ads_history_conversion_filter.cc
+
     msg2 "Add patches for custom build"
-    local _patch
-    for _patch in "$srcdir/brave-custom-build.patch" "$srcdir/patches"/*.patch; do
-      patch -Np1 -i "$_patch"
-    done
+    patch -Np1 -i "$srcdir/brave-custom-build.patch"
 
     # Remove bundled libraries for which we will use the system copies; this
     # *should* do what the remove_bundled_libraries.py script does, with the
