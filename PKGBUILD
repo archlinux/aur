@@ -6,10 +6,10 @@ provides=("naivecalendar.py")
 conflicts=("naivecalendar.py")
 pkgdesc="A rofi calendar popup"
 url="https://framagit.org/Daguhh/naivecalendar"
-pkgver=20201123.a1ee4dc
+pkgver=20201124.925b187
 pkgrel=1
 arch=("any")
-depends=("python>=3" "kate")
+depends=("python>=3")
 makedepends=("git")
 source=("git+https://framagit.org/Daguhh/naivecalendar.git")
 md5sums=("SKIP")

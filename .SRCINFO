@@ -1,12 +1,11 @@
 pkgbase = naivecalendar-git
 	pkgdesc = A rofi calendar popup
-	pkgver = 20201123.a1ee4dc
+	pkgver = 20201124.925b187
 	pkgrel = 1
 	url = https://framagit.org/Daguhh/naivecalendar
 	arch = any
 	makedepends = git
 	depends = python>=3
-	depends = kate
 	provides = naivecalendar.py
 	conflicts = naivecalendar.py
 	source = git+https://framagit.org/Daguhh/naivecalendar.git
