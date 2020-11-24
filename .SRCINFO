@@ -9,7 +9,6 @@ pkgbase = slicer-git
 	makedepends = go
 	provides = slicer
 	conflicts = slicer
-	conflicts = slicer-bin
 	source = git+https://github.com/mzfr/slicer
 	sha256sums = SKIP
 
