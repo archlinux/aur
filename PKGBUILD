@@ -4,7 +4,7 @@
 
 pkgname=domination
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Java version of the classic Risk board game."
 arch=('any')
 url="http://domination.sourceforge.net/"
@@ -13,7 +13,7 @@ depends=('java-runtime')
 source=("https://downloads.sourceforge.net/project/domination/Domination/${pkgver}/Domination_${pkgver}.zip"
     'Domination.sh'
 'domination.desktop')
-sha256sums=('72ecb5e515c44b784458f5acf1a14bcd35899d518a64b14d232d172cc21b4253'
+sha256sums=('e2b2526048123cc838eec1dc96f594b7ae16fce95757fdaadbaaac07a4531a7d'
     'f408672cdd5494732b95dad1db8db07a7c98d3fab5db7fa3925b0ebbe1b40e00'
 'd15c38aa2fa0ad464205c1498918bd4e774bc05a5d6df4f58f47c4dd37293268')
 
