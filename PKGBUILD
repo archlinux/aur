@@ -10,7 +10,6 @@ url="https://github.com/sulami/FrankenWM"
 arch=('i686' 'x86_64')
 license=('custom:MIT/X')
 depends=('libx11' 'xcb-util' 'xcb-util-wm' 'xcb-util-keysyms')
-install=frankenwm.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('d2e00a35e1ba0647962de16b80aeffd2019cd22d319d9e4ab67ae06485bee612df4416ff8220a665fb6ccca8b54b516b8c0c253005b7ccfdd95f285f150ca394')
 
