@@ -1,7 +1,7 @@
 pkgbase = bookmark-git
 	pkgdesc = Save URLs from the terminal and open them quickly in the browser (git)
 	pkgver = 0.1.0.r0.gf46e536
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Szymongib/bookmark
 	arch = x86_64
 	license = MIT
