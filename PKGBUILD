@@ -3,7 +3,7 @@
 
 pkgname=bookmark-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Save URLs from the terminal and open them quickly in the browser"
 arch=('x86_64')
 url="https://github.com/Szymongib/bookmark"
@@ -19,6 +19,6 @@ sha512sums_x86_64=('332ccdd85a23e4a8fcbd324d9251a44b42e940dd42668da64415d6117653
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "${pkgdir}/usr/bin/${pkgname%-bin}"
-  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
-  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
+  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
