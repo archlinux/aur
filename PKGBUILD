@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/kdheepak/taskwarrior-tui"
 license=('MIT')
 depends=('task')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
+conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}-x86_64-unknown-linux-gnu.tar.gz"
         "$pkgname-$pkgver-LICENSE::$url/raw/v$pkgver/LICENSE"

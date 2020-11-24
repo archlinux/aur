@@ -8,7 +8,6 @@ pkgbase = taskwarrior-tui-bin
 	depends = task
 	provides = taskwarrior-tui
 	conflicts = taskwarrior-tui
-	conflicts = taskwarrior-tui-git
 	source_x86_64 = taskwarrior-tui-bin-0.9.4.tar.gz::https://github.com/kdheepak/taskwarrior-tui/releases/download/v0.9.4/taskwarrior-tui-x86_64-unknown-linux-gnu.tar.gz
 	source_x86_64 = taskwarrior-tui-bin-0.9.4-LICENSE::https://github.com/kdheepak/taskwarrior-tui/raw/v0.9.4/LICENSE
 	source_x86_64 = taskwarrior-tui-bin-0.9.4-README.md::https://github.com/kdheepak/taskwarrior-tui/raw/v0.9.4/README.md
