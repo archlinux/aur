@@ -20,9 +20,9 @@ source=(
     "https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-$_ubuntu-root-current-tinkerboard_$pkgver-trunk_armhf.deb"
 )
 sha512sums=(
-    '2bc75567f50efbde4c96f5bf9aed742dccc4083f1a019cfbe196832a6c416b3f12fea8768797e58979bbe2b9ed72f122cab6eb82007039564612fb77e430ab7f'
-    '27f4af01d2e34398c05e98ec20eceaaf98cf2d4917d2b809080bef09bf385322b23226890d4bc8585f4aa7f17cd5867e15317c7e477b7bb868e65db3924b43a3'
-    '6516f28d8e0e086422d447dcac983f69c3e9d590f82d983a4b3deb8ca21d8cca2e45d9c7591ed4245dac6300ede2200b35ed9eb9387005f1483c5e6e131b2c61'
+    'ad22fa716c1d8ecc825c49650c39a4f7977f9670e1d09c6bc2aad636d2a9d8c0855d8065a7c0c59bceb361bdbc0ac7e0cdc9aabbbd305e790e8566b2c48942b1'
+    'ba864bea8e0de5c37e9953706295b26c0a74e779310a4b43326e1d89b5ad5f34365fd0e64bdc23d58a06109c58ef697ad2a5845c4e3713d83d2a2b88e2768d90'
+    'c109a8b3d2d6bfc6f90c747d7e76e50f316b542f0a38df582ea3b5ed5e7de388ee853e6d5f5f8c2f35612857fe10959cb68467440bda3bf33a335cfd78b7e024'
     "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/armbian-firmware_$pkgver-trunk_all.deb.sha512sum)"
     "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-$_ubuntu-root-current-tinkerboard_$pkgver-trunk_armhf.deb.sha512sum)"
 )
@@ -59,4 +59,6 @@ package() {
     sed -r -i "s#usr/local/bin#usr/bin#g" "$pkgdir/etc/udev/rules.d/hdmi.rules"
 
     install -Dm644 "etc/asound.conf" "$pkgdir/etc/asound.conf"
+    install -Dm644 "pulseaudio-sink.txt" "$pkgdir/etc/pulse/pulseaudio-sink.txt"
+    install -Dm644 "pulseaudio-source.txt" "$pkgdir/etc/pulse/pulseaudio-source.txt"
 }
