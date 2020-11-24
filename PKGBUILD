@@ -1,27 +1,19 @@
 pkgname=mingw-w64-gmp
-pkgver=6.2.0
+pkgver=6.2.1
 pkgrel=1
 pkgdesc="A free library for arbitrary precision arithmetic (mingw-w64)"
 arch=(any)
 url="http://gmplib.org"
 license=("LGPL3")
 depends=(mingw-w64-crt)
-makedepends=(mingw-w64-configure wine)
+makedepends=(mingw-w64-configure)
 options=(staticlibs !strip !buildflags)
-source=(https://gmplib.org/download/gmp/gmp-$pkgver.tar.lz{,.sig} exeext.patch)
+source=(https://gmplib.org/download/gmp/gmp-$pkgver.tar.lz{,.sig})
 validpgpkeys=('343C2FF0FBEE5EC2EDBEF399F3599FF828C67298')   # Niels Möller <nisse@lysator.liu.se>
-sha256sums=('3f33f127bcb6b2c3601676cd3281df45824b148cbf688b73c0fc8248793667d9'
-            'SKIP' 'SKIP')
+sha256sums=('2c7f4f0d370801b2849c48c9ef3f59553b5f1d3791d070cffb04599f9fc67b41'
+            'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
-prepare () {
-  cd "${srcdir}/gmp-${pkgver}"
-
-  # detect correct exe extension, use it for code generation
-  patch -p1 -i "${srcdir}"/exeext.patch
-  autoreconf -vfi
-}
 
 build() {
   cd "${srcdir}/gmp-${pkgver}"
