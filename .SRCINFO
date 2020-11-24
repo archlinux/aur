@@ -1,6 +1,6 @@
 pkgbase = xrgears-git
 	pkgdesc = An OpenXR example using Vulkan for rendering.
-	pkgver = 1.0.0.4.5d6e498
+	pkgver = 1.0.1.55.d0bee35
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/monado/demos/xrgears
 	arch = i686
@@ -10,12 +10,12 @@ pkgbase = xrgears-git
 	makedepends = git
 	makedepends = glslang
 	makedepends = vulkan-headers
-	makedepends = openxr-headers
+	makedepends = openxr
 	makedepends = vim
 	makedepends = glm
-	depends = openxr-loader
+	depends = openxr
 	depends = vulkan-icd-loader
-	provides = xrgears=1.0.0.4.5d6e498
+	provides = xrgears=1.0.1.55.d0bee35
 	conflicts = xrgears
 	options = debug
 	options = !strip
