@@ -1,11 +1,12 @@
 pkgbase = pyspread
 	pkgdesc = Python based non-traditional spreadsheet application
 	pkgver = 1.99.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pyspread.gitlab.io/
 	arch = any
 	license = GPL3
 	depends = python-setuptools
+	depends = python-dateutil
 	depends = python-numpy>=1.1.0
 	depends = python-pyqt5
 	depends = qt5-svg
