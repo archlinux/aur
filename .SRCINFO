@@ -31,4 +31,3 @@ pkgbase = bsp-tinkerboard
 	sha512sums = 1bd8bcf85334a9b410f8769e38fbc013d12887604d3be50b85860ef8d4e9e6e643f2306f1086b159789c01cf0dac607094c37370dd45dfea3af05cc8b3283f98
 
 pkgname = bsp-tinkerboard
-
