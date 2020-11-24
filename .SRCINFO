@@ -7,7 +7,6 @@ pkgbase = zps-bin
 	license = GPL3
 	provides = zps
 	conflicts = zps
-	conflicts = zps-git
 	validpgpkeys = 39E678DF63BE20EA5A175156B928720AEC532117
 	source_x86_64 = https://github.com/orhun/zps/releases/download/1.2.3/zps-1.2.3.tar.gz
 	source_x86_64 = https://github.com/orhun/zps/releases/download/1.2.3/zps-1.2.3.tar.gz.sig

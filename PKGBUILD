@@ -8,7 +8,7 @@ pkgdesc="A small utility for listing and cleaning up zombie processes"
 arch=('x86_64')
 url="https://github.com/orhun/zps"
 license=('GPL3')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
+conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/$pkgver/${pkgname%-bin}-$pkgver.tar.gz"{,.sig}
                "$pkgname-$pkgver-LICENSE::$url/raw/$pkgver/LICENSE"
