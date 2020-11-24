@@ -4,7 +4,7 @@
 
 pkgname=rusolver-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and accurate DNS resolver"
 arch=('x86_64')
 url="https://github.com/Edu4rdSHL/rusolver"
@@ -20,6 +20,6 @@ sha256sums_x86_64=('176e3d6486cf60797f7132aef78c0d22dc349ea1ae91b60efca81033af6e
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "${pkgdir}/usr/bin/${pkgname%-bin}"
-  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
+  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm 644 "$pkgname-$pkgver-man.1" "$pkgdir/usr/share/man/man1/${pkgname%-bin}.1"
 }

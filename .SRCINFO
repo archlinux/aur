@@ -1,7 +1,7 @@
 pkgbase = rusolver-bin
 	pkgdesc = Fast and accurate DNS resolver
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Edu4rdSHL/rusolver
 	arch = x86_64
 	license = GPL3
