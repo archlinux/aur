@@ -1,5 +1,5 @@
 pkgbase = qt-sdk
-	pkgdesc = Qt SDK for the Raspberry Pi 1/2/3
+	pkgdesc = Qt SDK for both hosts and a variety of targets
 	pkgver = 6.0.0
 	pkgrel = 0
 	url = http://www.chaos-reins.com/qpi/
@@ -11,7 +11,7 @@ pkgbase = qt-sdk
 	makedepends = gcc
 	makedepends = gperf
 	makedepends = python
-	optdepends = qtcreator: Integrated Raspberry Pi IDE development
+	optdepends = qtcreator: Integrated IDE development
 	provides = qt-sdk
 	options = !strip
 	source = git://github.com/sirspudd/mkspecs.git
