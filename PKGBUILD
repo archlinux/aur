@@ -2,11 +2,11 @@
 
 pkgname=psi-notify
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimalistic PSI notifier using libnotify'
 url="https://github.com/cdown/psi-notify"
 license=('MIT')
-depends=('libnotify')
+depends=('libnotify' 'systemd-libs')
 arch=('x86_64' 'i686' 'arm')
 source=("https://github.com/cdown/psi-notify/archive/$pkgver.tar.gz")
 md5sums=('038442e24fece70843f1f7f9c0a59317')
