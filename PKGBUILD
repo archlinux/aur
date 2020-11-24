@@ -1,7 +1,7 @@
 # Maintainer: Michael Czigler <info at mcpcpc dot com>
 
 pkgname=xwm
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A tiny XCB floating window manager"
 url="http://github.com/mcpcpc/xwm"
