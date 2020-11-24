@@ -9,7 +9,6 @@ pkgbase = pwninit-git
 	makedepends = git
 	provides = pwninit
 	conflicts = pwninit
-	conflicts = pwninit-bin
 	source = git+https://github.com/io12/pwninit
 	sha256sums = SKIP
 
