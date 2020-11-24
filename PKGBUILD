@@ -2,12 +2,12 @@
 pkgname=python-enaml-git
 _shortname="${pkgname%-git}"
 pkgver=0.12.0.r2.g6554c803
-pkgrel=2
+pkgrel=3
 pkgdesc="Declarative User Interfaces for Python"
 arch=(x86_64)
 url="https://github.com/nucleic/enaml"
 license=('custom')
-depends=('python-qtpy' 'python-future' 'python-ply' 'python-kiwisolver' 'python-atom' 'python-bytecode')
+depends=('python-qtpy' 'python-ply' 'python-kiwisolver' 'python-atom' 'python-bytecode')
 makedepends=('python-setuptools' 'python-cppy')
 provides=("$_shortname")
 conflicts=("$_shortname")
