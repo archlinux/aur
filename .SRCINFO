@@ -7,6 +7,7 @@ pkgbase = python-enaml-git
 	license = custom
 	makedepends = python-setuptools
 	makedepends = python-cppy
+	makedepends = git
 	depends = python-qtpy
 	depends = python-ply
 	depends = python-kiwisolver
