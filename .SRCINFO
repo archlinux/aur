@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-mesa-demos-git
+	pkgdesc = Mesa demos and tools incl. glxinfo + glxgears (mingw-w64)
+	pkgver = r6122.faaa319d
+	pkgrel = 1
+	url = https://www.mesa3d.org/
+	arch = any
+	license = custom
+	makedepends = mingw-w64-cmake
+	makedepends = git
+	depends = mingw-w64-freeglut
+	provides = mingw-w64-mesa-demos
+	conflicts = mingw-w64-mesa-demos
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = git+https://gitlab.freedesktop.org/mesa/demos.git
+	sha256sums = SKIP
+
+pkgname = mingw-w64-mesa-demos-git
+
