@@ -1,16 +1,16 @@
 # Maintainer: Akatsuki Rui <akiirui@outlook.com>
 
 pkgname="mpv-handler-git"
-_pkgname="play-with-mpv-handler"
-pkgver=2020.11.19.r0.g10879df
+_pkgname=${pkgname%-git}
+pkgver=2020.11.19.r3.gac2a68d
 pkgrel=1
 pkgdesc="Play website videos and songs with mpv & youtube-dl."
 arch=("any")
 depends=("mpv" "youtube-dl")
 makedepends=("git")
-url="https://github.com/akiirui/play-with-mpv-handler/"
+url="https://github.com/akiirui/mpv-handler/"
 license=("MIT")
-source=("git+https://github.com/akiirui/play-with-mpv-handler.git")
+source=("git+https://github.com/akiirui/mpv-handler.git")
 b2sums=("SKIP")
 
 pkgver() {

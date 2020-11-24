@@ -1,14 +1,14 @@
 pkgbase = mpv-handler-git
 	pkgdesc = Play website videos and songs with mpv & youtube-dl.
-	pkgver = 2020.11.19.r0.g10879df
+	pkgver = 2020.11.19.r3.gac2a68d
 	pkgrel = 1
-	url = https://github.com/akiirui/play-with-mpv-handler/
+	url = https://github.com/akiirui/mpv-handler/
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = mpv
 	depends = youtube-dl
-	source = git+https://github.com/akiirui/play-with-mpv-handler.git
+	source = git+https://github.com/akiirui/mpv-handler.git
 	b2sums = SKIP
 
 pkgname = mpv-handler-git
