@@ -3,7 +3,7 @@
 
 pkgname=fblog-bin
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Small command-line JSON log viewer"
 arch=('x86_64')
 url="https://github.com/brocode/fblog"
@@ -19,6 +19,6 @@ sha512sums_x86_64=('fef318afb48dfc255b7102b3ba1e01f62ff549e5392ff8836393bde7b73d
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "${pkgdir}/usr/bin/${pkgname%-bin}"
-  install -Dm 644 "$pkgname-$pkgver-README.org" "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
-  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
+  install -Dm 644 "$pkgname-$pkgver-README.org" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

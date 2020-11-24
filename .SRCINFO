@@ -1,7 +1,7 @@
 pkgbase = fblog-bin
 	pkgdesc = Small command-line JSON log viewer
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brocode/fblog
 	arch = x86_64
 	license = custom:WTFPL
