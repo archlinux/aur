@@ -1,7 +1,7 @@
 pkgbase = whatscli
 	pkgdesc = A command line interface for whatsapp, based on go-whatsapp and tview
 	pkgver = 0.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/normen/whatscli
 	arch = 1686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = whatscli
 	makedepends = go
 	makedepends = git
 	source = whatscli-0.8.6.tar.gz::https://github.com/normen/whatscli/archive/v0.8.6.tar.gz
-	sha1sums = f261f22b91bff6547638e63172272b24a83731b5
+	sha1sums = 3775c95ce55c6c4e774c154acc2e106054c0d19e
 
 pkgname = whatscli
 
