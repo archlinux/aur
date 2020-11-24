@@ -1,5 +1,5 @@
 pkgbase = bsp-tinkerboard
-	pkgdesc = BSP for Tinker Board / S (Bluetooth, HDMI, Audio, Udev rules...)
+	pkgdesc = Board support package for Tinker Board / S (Bluetooth, HDMI, Audio...)
 	pkgver = 20.11.0
 	pkgrel = 1
 	url = https://github.com/redchenjs/armbian-ci

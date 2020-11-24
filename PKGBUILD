@@ -3,7 +3,7 @@
 pkgname=bsp-tinkerboard
 pkgver=20.11.0
 pkgrel=1
-pkgdesc="BSP for Tinker Board / S (Bluetooth, HDMI, Audio, Udev rules...)"
+pkgdesc="Board support package for Tinker Board / S (Bluetooth, HDMI, Audio...)"
 arch=('armv7h')
 url="https://github.com/redchenjs/armbian-ci"
 license=('GPL2')
