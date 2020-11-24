@@ -1,6 +1,6 @@
 pkgbase = istio-bin
 	pkgdesc = An open platform to connect, manage, and secure microservices
-	pkgver = 1.7.4
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://istio.io
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = istio-bin
 	depends = bash
 	depends = glibc
 	conflicts = istio
-	source = https://github.com/istio/istio/releases/download/1.7.4/istio-1.7.4-linux-amd64.tar.gz
-	sha256sums = 6ed5eb68e71a0884cad39c94616e4ce0a93b90369b20d3659cfaf71da015f902
+	source = https://github.com/istio/istio/releases/download/1.8.0/istio-1.8.0-linux-amd64.tar.gz
+	sha256sums = 8b41dfac9836772480fa07227262fbc99c449f33799ad9e4950fd7b5323ab9e5
 
 pkgname = istio-bin
 
