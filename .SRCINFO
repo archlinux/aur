@@ -7,7 +7,6 @@ pkgbase = ali-bin
 	license = MIT
 	provides = ali
 	conflicts = ali
-	conflicts = ali-git
 	source_x86_64 = https://github.com/nakabonne/ali/releases/download/v0.5.3/ali_0.5.3_linux_amd64.tar.gz
 	sha256sums_x86_64 = a6a61b25f8a63bd97a88b32058b2f1f347ec2526af1c96313234ea63ef117508
 
