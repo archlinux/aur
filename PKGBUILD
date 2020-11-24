@@ -1,6 +1,6 @@
 # Maintainer: Cyrusmg <aur@kulovany.net>
 pkgname=eobcanka
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="eObcanka software for Czech Citizen Portal"
 arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm' 'aarch64')
@@ -11,6 +11,7 @@ depends=('pacman>=5.2'
 optdepends=('ccid: Smart Card Interface Devices driver'
     'opensc: Tools and libraries for smart cards')
 source=(https://info.eidentita.cz/download/eObcanka.deb)
+options=('!strip')
 
 package ()
 {
