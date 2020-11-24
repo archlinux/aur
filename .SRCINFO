@@ -7,7 +7,6 @@ pkgbase = gfold-bin
 	license = Apache
 	provides = gfold
 	conflicts = gfold
-	conflicts = gfold-git
 	source_x86_64 = gfold-bin-0.7.1::https://github.com/nickgerace/gfold/releases/download/0.7.1/gfold-linux-gnu-amd64
 	source_x86_64 = gfold-bin-0.7.1-README.md::https://github.com/nickgerace/gfold/raw/0.7.1/README.md
 	sha512sums_x86_64 = 78526cc61d2ac724b0e49fe9f536488976e84e5237350896c00dc00a9e988394deb6ec2004acdf2628c8da7fcb4f3211ffd22ebf8115aa7417c393e224382ace
