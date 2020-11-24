@@ -4,11 +4,8 @@
 _name='Beekeeper Studio'
 _pkgname='beekeeper-studio'
 pkgname="${_pkgname}-bin"
-
 pkgver=1.8.11
 pkgrel=1
-_commit_license='5c3257cf1989ca38b651a9dad77d81ace18961de'
-
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 arch=('x86_64' 'aarch64')
 url='https://www.beekeeperstudio.io'
@@ -18,7 +15,7 @@ depends=('libappindicator-gtk3' 'libnotify' 'libsecret' 'libxss' 'libxslt' 'node
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source=("${_pkgname}-license-${_commit_license}::${_url_source}/raw/${_commit_license}/LICENSE.md")
+source=("${_pkgname}-${pkgver}-license::${_url_source}/raw/v${pkgver}/LICENSE.md")
 source_x86_64=("${_url_source}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("${_url_source}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 
@@ -33,7 +30,7 @@ package() {
   ln -sfv "/opt/${_name}/${_pkgname}" -t "${pkgdir}/usr/bin"
   install -Dvm644 "${pkgdir}/opt/${_name}/"{'LICENSE.electron.txt','LICENSES.chromium.html'} \
     -t "${pkgdir}/usr/share/licenses/${_pkgname}"
-  install -Dvm644 "${_pkgname}-license-${_commit_license}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dvm644 "${_pkgname}-${pkgver}-license" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
