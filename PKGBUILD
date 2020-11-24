@@ -4,7 +4,7 @@
 
 pkgname=maltego
 
-pkgver=4.2.13.13462
+pkgver=4.2.14.13579
 pkgrel=1
 
 pkgdesc='Information gathering software by Paterva'
@@ -16,7 +16,7 @@ depends=('java-runtime')
 
 install="$pkgname.install"
 source=("https://$pkgname-downloads.s3.us-east-2.amazonaws.com/linux/Maltego.v$pkgver.deb")
-sha256sums=('2e3baabb838ac3307366425df62238a627969e2a1bbd7d7968581f67e973604d')
+sha256sums=('159bb3a37170966503fe87fc1b28f2f8317c4f22f24fdcdf4ef3c809ab094311')
 
 
 package() {
