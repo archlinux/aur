@@ -9,7 +9,7 @@ pkgdesc="Command-line DNS client like dig"
 arch=('x86_64')
 url="https://github.com/ogham/dog"
 license=('custom:EUPL')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
+conflicts=("$_pkgname" "${pkgname%-bin}" "${pkgname%-bin}-git")
 provides=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu.zip"
                "$_pkgname-$pkgver-LICENCE::$url/raw/v$pkgver/LICENCE"

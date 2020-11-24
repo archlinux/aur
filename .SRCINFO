@@ -6,6 +6,7 @@ pkgbase = dog-dns-bin
 	arch = x86_64
 	license = custom:EUPL
 	provides = dog-dns
+	conflicts = dog
 	conflicts = dog-dns
 	conflicts = dog-dns-git
 	source_x86_64 = https://github.com/ogham/dog/releases/download/v0.1.0/dog-v0.1.0-x86_64-unknown-linux-gnu.zip
