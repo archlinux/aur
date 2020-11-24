@@ -3,7 +3,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=cmake
-pkgver=3.19.0
+pkgver=3.19.1
 pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('qt5-base' 'python-sphinx' 'emacs')
 optdepends=('qt5-base: cmake-gui')
 source=("https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz"
          cmake-cppflags.patch)
-sha512sums=('f9b880cf1e425101ea1e1015cb58fc006abc258b57a8b9734d5245ba0b4fca8acb9589ea495b3eb21d03e825a1fc3ff560d23b5b9c033266b4d858b1e561d54f'
+sha512sums=('1a1c9a8546c80f8602babffc7fd398cea5d9163512ef74333f87e26a97ca35358bd0e90423768cfc971ebfed185e19d775737e557e0e982403b77a2ccbcd063a'
             '407c5c63a31266e44641ada8229dbc33df44df98e5bb575db3a33590e8ffdff9aea3f2ee5cb0cb855858facf1e46c63886dea9f948a0cad2da042e7f7f258cac')
 
 prepare() {
