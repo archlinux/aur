@@ -3,7 +3,7 @@
 
 pkgname=fblog-git
 pkgver=2.3.0.r2.g3217c44
-pkgrel=1
+pkgrel=2
 pkgdesc="Small command-line JSON log viewer (git)"
 arch=('x86_64')
 url="https://github.com/brocode/fblog"
@@ -32,6 +32,6 @@ check() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 README.org -t "$pkgdir/usr/share/doc/${pkgname%-git}"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+  install -Dm 644 README.org -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
