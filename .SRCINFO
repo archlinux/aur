@@ -9,7 +9,6 @@ pkgbase = verco-bin
 	optdepends = mercurial: support for mercurial repositories
 	provides = verco
 	conflicts = verco
-	conflicts = verco-git
 	source_x86_64 = verco-bin-5.5.1::https://github.com/matheuslessarodrigues/verco/releases/download/v5.5.1/verco-linux-x86_64
 	source_x86_64 = verco-bin-5.5.1-LICENSE::https://github.com/matheuslessarodrigues/verco/raw/v5.5.1/LICENSE
 	source_x86_64 = verco-bin-5.5.1-README.md::https://github.com/matheuslessarodrigues/verco/raw/v5.5.1/README.md

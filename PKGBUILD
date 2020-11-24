@@ -10,7 +10,7 @@ url="https://github.com/matheuslessarodrigues/verco"
 license=('MIT')
 optdepends=('git: support for git repositories'
             'mercurial: support for mercurial repositories')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
+conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/${pkgname%-bin}-linux-x86_64"
                "$pkgname-$pkgver-LICENSE::$url/raw/v$pkgver/LICENSE"
