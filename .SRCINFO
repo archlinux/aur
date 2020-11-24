@@ -10,7 +10,6 @@ pkgbase = verco-git
 	optdepends = mercurial: support for mercurial repositories
 	provides = verco
 	conflicts = verco
-	conflicts = verco-bin
 	source = git+https://github.com/matheuslessarodrigues/verco
 	sha512sums = SKIP
 
