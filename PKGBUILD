@@ -1,7 +1,7 @@
 # Maintainer: JDuch <jduch@pm.me>
 
 pkgname=pulseaudio-virtualmic
-pkgver=v0.1
+pkgver=0.1
 pkgrel=1
 pkgdesc="Use any offline or online media file or stream as a PulseAudio source"
 arch=('any')
@@ -10,13 +10,13 @@ license=('GPL3')
 depends=('pulseaudio' 'ffmpeg')
 makedepends=('git')
 optdepends=('coreutils: mktemp not needed when virtualmic is run with -p filename')
-source=("git+${url}.git#tag=${pkgver}")
+source=("git+${url}.git#tag=v${pkgver}")
 sha512sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
 
-    echo "$(git describe --tag HEAD)"
+    git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 package() {

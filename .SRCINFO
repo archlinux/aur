@@ -1,6 +1,6 @@
 pkgbase = pulseaudio-virtualmic
 	pkgdesc = Use any offline or online media file or stream as a PulseAudio source
-	pkgver = v0.1
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/MatthiasCoppens/pulseaudio-virtualmic
 	arch = any
