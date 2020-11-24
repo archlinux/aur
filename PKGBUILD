@@ -4,7 +4,7 @@
 
 pkgname=funkicrab-git
 pkgver=r18.98528cc
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimising Brainfuck compiler written in Rust (git)"
 arch=('x86_64')
 url="https://github.com/zesterer/funkicrab"
@@ -26,5 +26,5 @@ build() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
