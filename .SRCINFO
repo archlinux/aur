@@ -3,13 +3,18 @@ pkgbase = xwinwrap-git
 	pkgver = r5.ec32e9b
 	pkgrel = 1
 	url = https://github.com/ujjwal96/xwinwrap
-	arch = any
-	license = Other/Open Source
+	arch = x86_64
+	license = custom
 	makedepends = git
+	depends = libx11
+	depends = libxext
+	depends = libxrender
 	provides = xwinwrap
 	conflicts = xwinwrap
-	source = xwinwrap::git+https://github.com/ujjwal96/xwinwrap#branch=master
+	source = git+https://github.com/ujjwal96/xwinwrap#branch=master
+	source = LICENSE
 	sha256sums = SKIP
+	sha256sums = 9b445615c864519effd483f60c9877de671708f6c3807841ef1514490ae61903
 
 pkgname = xwinwrap-git
 
