@@ -1,8 +1,8 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
 # https://github.com/orhun/pkgbuilds
 
-_pkgname=terminal-typeracer
 pkgname=typeracer-bin
+_pkgname=terminal-typeracer
 pkgver=2.0.4
 pkgrel=1
 pkgdesc="Terminal typing speed tester"
