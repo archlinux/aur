@@ -7,7 +7,6 @@ pkgbase = kbs2-bin
 	license = MIT
 	provides = kbs2
 	conflicts = kbs2
-	conflicts = kbs2-git
 	source_x86_64 = https://github.com/woodruffw/kbs2/releases/download/v0.1.6/kbs2-linux-v0.1.6.tar.gz
 	sha256sums_x86_64 = b69b9b8740ab64d9af77b93aedd749270f19d73cf4683d5b8f649e6792605c3d
 
