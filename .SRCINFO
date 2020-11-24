@@ -1,0 +1,15 @@
+pkgbase = rnnoise-git
+	pkgdesc = A noise suppression library based on a recurrent neural network.
+	pkgver = r81.90ec41e
+	pkgrel = 1
+	url = https://github.com/xiph/rnnoise
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	provides = rnnoise
+	conflicts = rnnoise
+	source = git+https://github.com/xiph/rnnoise
+	sha512sums = SKIP
+
+pkgname = rnnoise-git
+
