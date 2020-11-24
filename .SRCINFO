@@ -9,7 +9,6 @@ pkgbase = notp-git
 	makedepends = git
 	provides = notp
 	conflicts = notp
-	conflicts = notp-bin
 	source = git+https://github.com/kondanta/notp
 	sha256sums = SKIP
 
