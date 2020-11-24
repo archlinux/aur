@@ -8,7 +8,6 @@ pkgbase = menyoki-bin
 	depends = libx11
 	provides = menyoki
 	conflicts = menyoki
-	conflicts = menyoki-git
 	validpgpkeys = 9965F7E78C54A004D475D6FA53F218C35C1DC8B1
 	source_x86_64 = https://github.com/orhun/menyoki/releases/download/v0.1.2/menyoki-0.1.2-x86_64-unknown-linux-gnu.tar.gz
 	source_x86_64 = https://github.com/orhun/menyoki/releases/download/v0.1.2/menyoki-0.1.2-x86_64-unknown-linux-gnu.tar.gz.sig
