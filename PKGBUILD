@@ -2,7 +2,7 @@
 # Maintainer: Corey Hinshaw <corey(at)electrickite(dot)org>
 
 pkgname=system76-driver
-pkgver=20.04.13
+pkgver=20.04.16
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -21,8 +21,6 @@ depends=(
   'python-pynacl'
   'python-systemd'
   'python-xlib'
-  'system76-acpi-dkms'
-  'system76-dkms'
   'system76-firmware-daemon')
 makepdepends=(
   'python-pyflakes')
@@ -32,6 +30,8 @@ optdepends=(
   'pm-utils: For power management features'
   'polkit: Run System76 Driver GUI from application menu'
   'pulseaudio: To apply microphone fix'
+  'system76-dkms: Control hotkeys and fan on certain System76 laptops'
+  'system76-acpi-dkms: Provides the system76_acpi in-tree driver'
   'system76-io-dkms: Enable System76 I/O daughterboard'
   'system76-oled: Control brightness on OLED displays'
   'system76-power: System76 Power Management'
@@ -42,7 +42,7 @@ source=(
   'galu1.patch'
   'cli.patch'
   'wayland.patch')
-sha1sums=('933a765eede4635967d1f9b234969faac71585d6'
+sha1sums=('bc5391fb8a6217581afa07c5a05d1cfc72a3de84'
           'ddc85f9b062eb89c2c6fef0c6d7c68a28f419760'
           '916e0eeda26e00bd0372c1ffc7c5368cda9d46a1'
           '4825b80d13555742c30d197e4de56638eef162e6')
