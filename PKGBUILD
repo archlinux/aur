@@ -3,8 +3,8 @@
 # Contributor: Pascal Mathis <mail@pascalmathis.com>
 pkgname=rambox-pro-bin-beta
 _pkgname=ramboxpro
-pkgver=1.4.0.release
-_pkgver=1.4.0
+pkgver=1.4.1.release
+_pkgver=1.4.1
 pkgrel=1
 pkgdesc='Workspace browser to manage many web applications in one place (BETA)'
 arch=('x86_64')
