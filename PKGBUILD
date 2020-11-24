@@ -4,7 +4,7 @@
 
 pkgname=runescape-launcher
 pkgver=2.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="RuneScape Game Client (NXT)"
 arch=(x86_64)
 license=(custom)
@@ -25,7 +25,7 @@ depends=(
 source=("${pkgname}_${pkgver}_Release::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release"
         "${pkgname}_${pkgver}_Release.gpg::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release.gpg")
 source_x86_64=("${pkgname}_${pkgver}_Packages::https://content.runescape.com/downloads/ubuntu/dists/trusty/non-free/binary-amd64/Packages"
-               "${pkgname}_${pkgver}_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/$pkgname/${pkgname}_$pkgver_amd64.deb")
+               "${pkgname}_${pkgver}_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/$pkgname/${pkgname}_${pkgver}_amd64.deb")
 #_dir=2020/rs20200325
 #source=("${pkgname}_${pkgver}_Release::https://nullroute.eu.org/tmp/$_dir/runescape-launcher_${pkgver}_Release"
 #        "${pkgname}_${pkgver}_Release.gpg::https://nullroute.eu.org/tmp/$_dir/runescape-launcher_${pkgver}_Release.gpg")

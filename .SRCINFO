@@ -1,7 +1,7 @@
 pkgbase = runescape-launcher
 	pkgdesc = RuneScape Game Client (NXT)
 	pkgver = 2.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.runescape.com/
 	install = install.sh
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = runescape-launcher
 	sha256sums = SKIP
 	sha256sums = SKIP
 	source_x86_64 = runescape-launcher_2.2.8_Packages::https://content.runescape.com/downloads/ubuntu/dists/trusty/non-free/binary-amd64/Packages
-	source_x86_64 = runescape-launcher_2.2.8_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/runescape-launcher/runescape-launcher_.deb
+	source_x86_64 = runescape-launcher_2.2.8_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/runescape-launcher/runescape-launcher_2.2.8_amd64.deb
 	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
 
