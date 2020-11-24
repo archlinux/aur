@@ -9,7 +9,6 @@ pkgbase = termimage-git
 	makedepends = git
 	provides = termimage
 	conflicts = termimage
-	conflicts = termimage-bin
 	source = git+https://github.com/nabijaczleweli/termimage
 	source = https://github.com/nabijaczleweli/termimage/releases/download/v1.1.0/termimage-man-v1.1.0.tbz2
 	sha512sums = SKIP

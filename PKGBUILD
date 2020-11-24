@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/nabijaczleweli/termimage"
 license=('MIT')
 makedepends=('rust' 'git')
-conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
+conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}"
         "$url/releases/download/v${pkgver%.r*}/${pkgname%-git}-man-v${pkgver%.r*}.tbz2")
