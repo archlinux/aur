@@ -8,7 +8,7 @@ pkgdesc="Save URLs from the terminal and open them quickly in the browser"
 arch=('x86_64')
 url="https://github.com/Szymongib/bookmark"
 license=('MIT')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
+conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/${pkgname%-bin}-linux-amd64"
                "$pkgname-$pkgver-LICENSE::$url/raw/v$pkgver/LICENSE"

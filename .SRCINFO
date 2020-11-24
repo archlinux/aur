@@ -7,7 +7,6 @@ pkgbase = bookmark-bin
 	license = MIT
 	provides = bookmark
 	conflicts = bookmark
-	conflicts = bookmark-git
 	source_x86_64 = bookmark-bin-0.1.0::https://github.com/Szymongib/bookmark/releases/download/v0.1.0/bookmark-linux-amd64
 	source_x86_64 = bookmark-bin-0.1.0-LICENSE::https://github.com/Szymongib/bookmark/raw/v0.1.0/LICENSE
 	source_x86_64 = bookmark-bin-0.1.0-README.md::https://github.com/Szymongib/bookmark/raw/v0.1.0/README.md
