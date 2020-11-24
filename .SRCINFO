@@ -8,6 +8,7 @@ pkgbase = emptty-git
 	makedepends = git
 	makedepends = go
 	depends = pam
+	depends = libx11
 	optdepends = xorg-server: default display server
 	optdepends = xorg-xauth: required if using xorg-server
 	optdepends = util-linux: mcookie required if using xorg-server
