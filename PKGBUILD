@@ -2,7 +2,7 @@
 # Contributor: qaz <fkxxyz@163.com>
 
 pkgname=arctime
-pkgver=2.4
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="A Simple, powerful and efficient cross-platform subtitle production software"
 arch=("i686" "x86_64")
@@ -54,10 +54,10 @@ exec java -Xms128m -Xmx512m -jar ./ArcTime.jar
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('7d7260c3236c3047ac135fb58c03d8ba7f20c993675dd79f2e68b406e54eb5c4'
+sha256sums=('c911cd1b84ecba16da73eda5556a4f339411df5c6f460b32450c914fd3806184'
             '9f490a4fc4d4f15e31b15e84717e11ce794e908055484f22d02aa0a166093677'
             '406a3953b7b5d54814f6613f23badc0eff04909688d67295371aeeead862ae85'
             'fcd6ecf0a786658968d0c8747b860b5238c0df73c873642dd7ce5fca186d2122'
             'c9bc9ac2ffdc703b672c1f918ea4d48479693bdc69dfd346a077547de47ce7d1'
-            'cc2feb9c81df49fb3b3686bc8823d2ebeaaaab857ae1ff9fdb363b3e1637be4a')
+            'a044211ac433add27c66cb5850ec2d0bf5e001ef5aa97a79d43ae542267fb0ef')
 
