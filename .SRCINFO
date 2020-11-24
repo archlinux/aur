@@ -8,7 +8,6 @@ pkgbase = onefetch-bin
 	depends = libgit2
 	provides = onefetch
 	conflicts = onefetch
-	conflicts = onefetch-git
 	source_x86_64 = onefetch-bin-2.7.3.tar.gz::https://github.com/o2sh/onefetch/releases/download/v2.7.3/onefetch-linux.tar.gz
 	source_x86_64 = onefetch-bin-2.7.3-LICENSE.md::https://github.com/o2sh/onefetch/raw/v2.7.3/LICENSE.md
 	source_x86_64 = onefetch-bin-2.7.3-README.md::https://github.com/o2sh/onefetch/raw/v2.7.3/README.md

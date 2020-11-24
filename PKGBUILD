@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/o2sh/onefetch"
 license=('MIT')
 depends=('libgit2')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
+conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}-linux.tar.gz"
                "$pkgname-$pkgver-LICENSE.md::$url/raw/v$pkgver/LICENSE.md"
