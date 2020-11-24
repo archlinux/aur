@@ -22,4 +22,3 @@ pkgbase = uboot-tinkerboard
 	sha512sums = c117e76eecce9d4c677a7a643f44f6a4a8d760cc9d14cb3912dce59bcc15602ab254e6d39eff692b3a25e39845691c339230644b34f1b90c351c5a925fd6ff51
 
 pkgname = uboot-tinkerboard
-
