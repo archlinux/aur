@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://www.intesigroup.com/en/validdesk/"
 options=(!strip)
 
-source_x86_64=("https://www.intesigroup.com/wp-content/apps/pub/${pkgname}-${pkgver}-${arch}.AppImage")
+source_x86_64=("https://www.intesigroup.com/wp-content/apps/pub/ValidDesk-${pkgver}-${arch}.AppImage")
 noextract=("${pkgname}-${pkgver}-${arch}.AppImage")
 sha256sums_x86_64=('4c7f0b06fbabfe7964b7a98b02de12d7cdb7b942d93be8e8a74398a1a9f8fc76')
 
