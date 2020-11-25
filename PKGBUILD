@@ -88,16 +88,19 @@ build() {
 check() {
     cd "${srcdir}/${pkgbase%-git}"
 
+    _test_excludes=(
+        # test_ajax_book segfaults on qt >=5.15.1 inside of qt itself, but only in nspawn containers
+        # see https://github.com/kovidgoyal/calibre/commit/28ef780d9911d598314d98bdfc3b1c88a94681df
+        'ajax_book'
+        # merely testing if a runtime-optional feature works, but is not
+        # operative yet e.g. only tries checking if the optdepend is importable
+        'speech_dispatcher'
+    )
+
     # without xvfb-run this fails with much "Control socket failed to recv(), resetting"
     # ERROR: test_websocket_perf (calibre.srv.tests.web_sockets.WebSocketTest)
     # one or two tests are a bit flaky, but the python3 build seems to succeed more often
-    #
-    # test_ajax_book segfaults on qt >=5.15.1 inside of qt itself, but only in nspawn containers
-    # see https://github.com/kovidgoyal/calibre/commit/28ef780d9911d598314d98bdfc3b1c88a94681df
-    #
-    # test_speech_dispatcher is merely testing if a runtime-optional feature works, but is not
-    # operative yet e.g. only tries checking if the optdepend is importable
-    LANG='en_US.UTF-8' xvfb-run python setup.py test --exclude-test-name=ajax_book --exclude-test-name=speech_dispatcher
+    LANG='en_US.UTF-8' xvfb-run python setup.py test "${_test_excludes[@]/#/--exclude-test-name=}"
 }
 
 package() {
