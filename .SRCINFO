@@ -6,13 +6,10 @@ pkgbase = aws-cdk
 	arch = any
 	license = Apache
 	makedepends = npm
+	depends = nodejs
+	optdepends = python: python language support
 	source = http://registry.npmjs.org/aws-cdk/-/aws-cdk-1.75.0.tgz
 	sha1sums = 7d9d1c03abebbd0e4cb8e6fd2dc53c8d52696b3c
 
 pkgname = aws-cdk
-	depends = nodejs
-	optdepends = python: python language support
-
-pkgname = nodejs-aws-cdk
-	depends = aws-cdk
 
