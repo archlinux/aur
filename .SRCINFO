@@ -1,0 +1,14 @@
+pkgbase = python-kconfiglib
+	pkgdesc = A flexible Python Kconfig implementation
+	pkgver = 14.1.0
+	pkgrel = 1
+	url = https://pypi.org/project/kconfiglib/
+	arch = any
+	license = ISC License
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/ulfalizer/kconfiglib/archive/v14.1.0.tar.gz
+	sha512sums = 929a75f9b9f74ad7d4190c15d7178b94ee0a6d1fb71d85e2942935e3a9370a4f2483d8b49123d41d6610841ad9efde1dc4c14fc5231a08379d438a486ed3f97c
+
+pkgname = python-kconfiglib
+
