@@ -6,14 +6,14 @@
 
 pkgname="mozjpeg"
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="JPEG image codec with accelerated baseline decoding and superior encoding"
 url="https://github.com/mozilla/mozjpeg"
 license=("BSD")
 arch=("i686" "x86_64" "armv7h")
-depends=("glibc")
-makedepends=("nasm")
-source=("$url/archive/v${pkgver}.tar.gz")
+depends=("glibc" "libpng")
+makedepends=("nasm" "cmake")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha1sums=('e2bc33ab65d18d5b26baf842b1ca128fea30387a')
 
 provides=("libjpeg=8.2.2" "turbojpeg" "libjpeg-turbo")
