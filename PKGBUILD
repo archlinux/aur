@@ -51,7 +51,7 @@ package() {
   install -Dm755 "usr/bin/rtk_hciattach" "$pkgdir/usr/bin/rtk_hciattach"
 
   install -dm755 "$pkgdir/etc"
-  mv etc/modprobe.d etc/udev "$pkgdir/etc"
+  cp -r etc/modprobe.d etc/udev "$pkgdir/etc"
 
   install -Dm755 "usr/local/bin/hdmi-hotplug" "$pkgdir/usr/bin/hdmi-hotplug"
   sed -r -i "s#usr/local/bin#usr/bin#g" "$pkgdir/etc/udev/rules.d/hdmi.rules"
