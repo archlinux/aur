@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=amf-headers-git
-pkgver=1.4.16.1.r5.g802f92e
+pkgver=1.4.18.r0.g7a83513
 pkgrel=1
 pkgdesc='Header files for AMD Advanced Media Framework (git version)'
 arch=('any')
@@ -18,13 +18,10 @@ pkgver() {
 }
 
 package() {
-    local _dir
     local _file
     while read -r -d '' _file
     do
-        _dir="${_file%/*}"
-        _dir="${_dir#AMF/amf/public/include}"
-        install -D -m644 "$_file" -t "${pkgdir}/usr/include/AMF/${_dir}"
+        install -D -m644 "$_file" "${pkgdir}/usr/include/AMF/${_file#AMF/amf/public/include}"
     done < <(find AMF/amf/public/include -type f -print0)
     
     install -D -m644 AMF/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
