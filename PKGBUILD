@@ -44,5 +44,5 @@ package() {
   sed "s|%ROOTDEV%|$device|g" boot.txt |
     install -Dm644 /dev/stdin "$pkgdir/boot/boot.txt"
 
-  mkimage -A arm -O linux -T script -C none -n "U-Boot boot script" -d boot.txt "$pkgdir/boot/boot.scr"
+  mkimage -A arm -O linux -T script -C none -n "U-Boot boot script" -d "$pkgdir/boot/boot.txt" "$pkgdir/boot/boot.scr"
 }
