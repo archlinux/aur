@@ -1,6 +1,6 @@
 pkgbase = clockthrottle
 	pkgdesc = Utility program to adjust the max. CPU clock speed
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://kornelix.net/clockthrottle/clockthrottle.html
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = clockthrottle
 	depends = powerstat
 	depends = cpupower
 	options = !emptydirs
-	source = http://www.kornelix.net/downloads/downloads/clockthrottle-1.3.tar.gz
-	sha256sums = 8a0c2fe52681e67d94f9daec2612bad015316d8bf2f4a26a79b11595e205efb0
+	source = http://www.kornelix.net/downloads/downloads/clockthrottle-1.4.tar.gz
+	sha256sums = 887a1a4294a4a55bf49a119029c160d0ae75f582b0e8e4af743e13e1c10b1d67
 
 pkgname = clockthrottle
 
