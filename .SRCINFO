@@ -1,0 +1,19 @@
+pkgbase = jiq-bin
+	pkgdesc = Interactive JSON query tool using jq expressions
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/fiatjaf/jiq
+	arch = x86_64
+	license = MIT
+	depends = jq
+	provides = jiq
+	conflicts = jiq
+	source = jiq-0.7.1-readme::https://github.com/fiatjaf/jiq/raw/0.7.1/README.md
+	source = jiq-0.7.1-license::https://github.com/fiatjaf/jiq/raw/0.7.1/LICENSE
+	sha256sums = 79cd745c733c8bc29256deac1b4a69aa1836ec4baf820f968602154737578b09
+	sha256sums = b16f705d2788074503d280681d4be9c7a1aaa720b954807f1a3f03f5098d63dc
+	source_x86_64 = jiq-0.7.1-x86_64::https://github.com/fiatjaf/jiq/releases/download/0.7.1/jiq_linux_amd64
+	sha256sums_x86_64 = 73c81a91ff187b338350cca008d291aebe8a4328747caf2020fc94bd20cc086d
+
+pkgname = jiq-bin
+
