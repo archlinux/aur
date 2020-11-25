@@ -2,7 +2,7 @@
 
 pkgname=cxx-common
 pkgver=0.0.14
-pkgrel=4
+pkgrel=5
 pkgdesc="Common dependency management for various Trail of Bits C++ codebases"
 arch=('x86_64')
 url="https://github.com/trailofbits/cxx-common"
@@ -56,6 +56,11 @@ package() {
     cp -r "$srcdir/libraries" "$pkgdir/opt/$pkgname/"
     find "$pkgdir/opt/$pkgname"/libraries/*/lib/pkgconfig -type f -name '*.pc' \
         -exec sed -i -e "s|$srcdir|/opt/$pkgname|g" {} \;
+
+    ## install lit
+    pushd "$srcdir/$pkgname-$pkgver"/sources/llvm-*.src/utils/lit
+    python3 setup.py install --root="$pkgdir" -O1
+    popd
 }
 
 # vim: set sw=4 ts=4 et:
