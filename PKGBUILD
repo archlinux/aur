@@ -13,10 +13,10 @@ license=('MIT')
 makedepends=("bison" "flex" "valgrind" "meson" "ninja" "git" "ninjas2" "clang" "libxvmc" "python" "python-appdirs" "python-mako" "python-evdev" "elfutils"
              "glslang" "libva" "libepoxy" "libxv" "libvdpau" "libx11" "libxml2" "libxrandr" "llvm" "libconfig" "gtk3" "wayland-protocols" "xorgproto" "lib32-flex"
              "lib32-clang" "lib32-libxvmc" "lib32-elfutils" "lib32-libva" "lib32-libepoxy" "lib32-libxv" "lib32-libvdpau" "lib32-libx11" "lib32-libxml2"
-             "lib32-libxrandr" "lib32-llvm" "lib32-gtk3")
+             "lib32-libxrandr" "lib32-llvm" "lib32-gtk3" "lua" "polly" "gcc" "gcc-libs" "lib32-gcc-libs" "ncurses" "lib32-ncurses" "libarchive")
 source=("https://archive.mesa3d.org/mesa-${versiontag}.tar.xz"
-        "0001-ENABLE-LLVM-BY-DEFAULT.patch"
-        "LICENSE")
+        "LICENSE"
+        "0001-ENABLE-LLVM-BY-DEFAULT.patch")
 md5sums=("SKIP"
          "SKIP"
          "SKIP")
@@ -35,32 +35,22 @@ prepare(){
   done
 }
 
-package_mesa-llvm-rc(){
-  pkgdesc="Mesa rc release. LLVM enable by default. More options are enable than the standard mesa package."
-  depends=("libdrm" "libelf" "libglvnd" "libomxil-bellagio" "libunwind" "libxdamage" "libxxf86vm" "llvm-libs" "lm_sensors" "wayland" "zstd" "libxshmfence"
-           "libclc" "expat" "vulkan-icd-loader")
-  conflicts=("mesa" "opencl-mesa" "vulkan-intel" "vulkan-radeon" "vulkan-mesa-layer" "libva-mesa-driver" "mesa-vdpau" "mesa-aco" "mesa-aco-rc" "mesa-llvm"
-             "mesa-git")
-  replaces=("mesa" "opencl-mesa" "vulkan-intel" "vulkan-radeon" "vulkan-mesa-layer" "libva-mesa-driver" "mesa-vdpau" "mesa-aco" "mesa-aco-rc" "mesa-llvm"
-            "mesa-git")
-  provides=("mesa" "opencl-mesa" "vulkan-intel" "vulkan-radeon" "vulkan-driver" "vulkan-mesa-layer" "libva-mesa-driver" "mesa-vdpau" "opengl-driver" "opencl-driver"
-            "mesa-libgl")
-
+build(){
   cd mesa-${versiontag}
 
+export CC="gcc"
+export CXX="g++"
+
   # remove build dir if there is one
-  msg2 "remove build dir if there is one"
-  if dir build; then
-  rm -rf build
+  if dir build_64; then
+    rm -rf -v build_64
   fi
 
   # create build dir
-  msg2 "Create build dir"
-  mkdir build
+  mkdir -p -v build_64
 
   # build with meson
-  msg2 "Build with meson"
-  meson build \
+  meson build_64/ \
   -D b_ndebug=true \
   -D b_lto=true \
   -D buildtype=plain \
@@ -74,7 +64,7 @@ package_mesa-llvm-rc(){
   -Dgallium-extra-hud=true \
   -Dgallium-vdpau=enabled \
   -Dgallium-xvmc=enabled \
-  -Dgallium-omx=auto \
+  -Dgallium-omx=bellagio \
   -Dgallium-va=enabled \
   -Dgallium-xa=enabled \
   -Dgallium-nine=true \
@@ -106,35 +96,6 @@ package_mesa-llvm-rc(){
   -Dglx-direct=true \
   -Dzstd=enabled
 
-  # compiling mesa and installing to "$pkgdir"
-  msg2 "Compiling mesa and installing to ${pkgdir}"
-  DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C build/ install
-
-  # remove script file from /usr/bin
-  msg2 "Remove ${pkgdir}/usr/bin/mesa-overlay-control.py"
-  rm "${pkgdir}/usr/bin/mesa-overlay-control.py"
-  msg2 "Remove ${pkgdir}/usr/bin"
-  rm -rf "${pkgdir}/usr/bin"
-
-  # indirect rendering
-  ln -s /usr/lib/libGLX_mesa.so.0 "${pkgdir}/usr/lib/libGLX_indirect.so.0"
-
-  # installing license
-  install -dm755 "${pkgdir}"/usr/share/licenses/${pkgname}-${versiontag}/
-  cp "${srcdir}"/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}-${versiontag}/
-}
-
-package_lib32-mesa-llvm-rc(){
-   pkgdesc="Mesa rc release. LLVM enable by default. More options are enable than the standard mesa package. (32-bit)"
-   depends=("lib32-libdrm" "lib32-libelf" "lib32-libglvnd" "libomxil-bellagio" "lib32-libunwind" "lib32-libxdamage" "lib32-libxxf86vm" "lib32-llvm-libs"
-            "lib32-lm_sensors" "lib32-wayland" "lib32-zstd" "lib32-libxshmfence" "libclc" "lib32-expat" "lib32-vulkan-icd-loader")
-   conflicts=("lib32-mesa" "lib32-opencl-mesa" "lib32-vulkan-intel" "lib32-vulkan-radeon" "lib32-vulkan-mesa-layer" "lib32-libva-mesa-driver" "lib32-mesa-vdpau"
-              "lib32-mesa-aco" "lib32-mesa-llvm" "lib32-mesa-aco-rc" "lib32-mesa-git")
-   replaces=("lib32-mesa" "lib32-opencl-mesa" "lib32-vulkan-intel" "lib32-vulkan-radeon" "lib32-vulkan-mesa-layer" "lib32-libva-mesa-driver" "lib32-mesa-vdpau"
-             "lib32-mesa-aco" "lib32-mesa-llvm" "lib32-mesa-aco-rc" "lib32-mesa-git")
-   provides=("lib32-mesa" "lib32-opencl-mesa" "lib32-vulkan-intel" "lib32-vulkan-radeon" "lib32-vulkan-driver" "lib32-vulkan-mesa-layer" "lib32-libva-mesa-driver"
-             "lib32-mesa-vdpau" "lib32-opengl-driver" "lib32-opencl-driver" "lib32-mesa-libgl")
-
 export CC="gcc -m32"
 export CXX="g++ -m32"
 export PKG_CONFIG=/usr/bin/i686-pc-linux-gnu-pkg-config
@@ -143,94 +104,128 @@ cat >crossfile.ini <<END
 llvm-config = '/usr/bin/llvm-config32'
 END
 
-  cd mesa-${versiontag}
+    # remove build dir if there is one
+    if dir build_32; then
+      rm -rf -v build_32
+    fi
 
-  # remove build dir if there is one
-  msg2 "remove build dir if there is one"
-  if dir build; then
-  rm -rf build
-  fi
+    # create build dir
+    mkdir -p -v build_32
 
-  # create build dir
-  msg2 "Create build dir"
-  mkdir build
+    # build with meson
+    meson build_32/ \
+    --native-file crossfile.ini \
+    --libdir=/usr/lib32 \
+    -D b_ndebug=true \
+    -D b_lto=true \
+    -D buildtype=plain \
+    --wrap-mode=nofallback \
+    -D sysconfdir=/etc \
+    -Dprefix=/usr \
+    -Dplatforms=x11,wayland \
+    -Ddri3=enabled \
+    -Ddri-drviers=i915,i965,r100,r200,nouveau \
+    -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,zink,freedreno,v3d,vc4,etnaviv,tegra,kmsro \
+    -Dgallium-extra-hud=true \
+    -Dgallium-vdpau=enabled \
+    -Dgallium-xvmc=enabled \
+    -Dgallium-omx=disabled \
+    -Dgallium-va=enabled \
+    -Dgallium-xa=enabled \
+    -Dgallium-nine=true \
+    -Dgallium-opencl=icd \
+    -Dopencl-spirv=false \
+    -Dvulkan-drivers=amd,intel \
+    -Dshader-cache=enabled \
+    -Dvulkan-overlay-layer=true \
+    -Dvulkan-device-select-layer=true \
+    -Dshared-glapi=enabled \
+    -Dgles1=enabled \
+    -Dgles2=enabled \
+    -Dopengl=true \
+    -Dgbm=enabled \
+    -Dglx=dri \
+    -Degl=enabled \
+    -Dglvnd=true \
+    -Dllvm=enabled \
+    -Dshared-llvm=disabled \
+    -Dvalgrind=disabled \
+    -Dlibunwind=enabled \
+    -Dlmsensors=enabled \
+    -Dselinux=false \
+    -Dosmesa=gallium \
+    -Dswr-arches=avx,avx2,knl,skx \
+    -Dshared-swr=true \
+    -Dpower8=enabled \
+    -Dxlib-lease=enabled \
+    -Dglx-direct=true \
+    -Dzstd=enabled
+}
 
-  # build with meson
-  msg2 "Build with meson"
-  meson build \
-  --native-file ../crossfile.ini \
-  --libdir=/usr/lib32 \
-  -D b_ndebug=true \
-  -D b_lto=true \
-  -D buildtype=plain \
-  --wrap-mode=nofallback \
-  -D sysconfdir=/etc \
-  -Dprefix=/usr \
-  -Dplatforms=x11,wayland \
-  -Ddri3=enabled \
-  -Ddri-drviers=i915,i965,r100,r200,nouveau \
-  -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,zink,freedreno,v3d,vc4,etnaviv,tegra,kmsro \
-  -Dgallium-extra-hud=true \
-  -Dgallium-vdpau=enabled \
-  -Dgallium-xvmc=enabled \
-  -Dgallium-omx=auto \
-  -Dgallium-va=enabled \
-  -Dgallium-xa=enabled \
-  -Dgallium-nine=true \
-  -Dgallium-opencl=icd \
-  -Dopencl-spirv=false \
-  -Dvulkan-drivers=amd,intel \
-  -Dshader-cache=enabled \
-  -Dvulkan-overlay-layer=true \
-  -Dvulkan-device-select-layer=true \
-  -Dshared-glapi=enabled \
-  -Dgles1=enabled \
-  -Dgles2=enabled \
-  -Dopengl=true \
-  -Dgbm=enabled \
-  -Dglx=dri \
-  -Degl=enabled \
-  -Dglvnd=true \
-  -Dllvm=enabled \
-  -Dshared-llvm=disabled \
-  -Dvalgrind=disabled \
-  -Dlibunwind=enabled \
-  -Dlmsensors=enabled \
-  -Dselinux=false \
-  -Dosmesa=gallium \
-  -Dswr-arches=avx,avx2,knl,skx \
-  -Dshared-swr=true \
-  -Dpower8=enabled \
-  -Dxlib-lease=enabled \
-  -Dglx-direct=true \
-  -Dzstd=enabled
+check(){
+  meson test -C mesa-${versiontag}/build_64/
+  meson test -C mesa-${versiontag}/build_32/
+}
+
+package_mesa-llvm-rc(){
+  pkgdesc="Mesa rc release. LLVM enable by default. More options are enable than the standard mesa package. (64-bit)"
+  depends=("libdrm" "libelf" "libglvnd" "libomxil-bellagio" "libunwind" "libxdamage" "libxxf86vm" "llvm-libs" "lm_sensors" "wayland" "zstd" "libxshmfence"
+           "libclc" "expat" "vulkan-icd-loader")
+  conflicts=("mesa" "opencl-mesa" "vulkan-intel" "vulkan-radeon" "vulkan-mesa-layer" "libva-mesa-driver" "mesa-vdpau" "mesa-aco" "mesa-aco-rc" "mesa-llvm"
+             "mesa-git")
+  replaces=("mesa" "opencl-mesa" "vulkan-intel" "vulkan-radeon" "vulkan-mesa-layer" "libva-mesa-driver" "mesa-vdpau" "mesa-aco" "mesa-aco-rc" "mesa-llvm"
+            "mesa-git")
+  provides=("mesa" "opencl-mesa" "vulkan-intel" "vulkan-radeon" "vulkan-driver" "vulkan-mesa-layer" "libva-mesa-driver" "mesa-vdpau" "opengl-driver" "opencl-driver"
+            "mesa-libgl")
 
   # compiling mesa and installing to "$pkgdir"
-  msg2 "Compiling mesa and installing to ${pkgdir}"
-  DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C build/ install
-
-  #Remove files provided by standard mesa build
-  msg2 "Remove files provided by standard mesa build"
-  rm -rf "$pkgdir"/etc
-  rm -rf "$pkgdir"/usr/include
-  rm -rf "$pkgdir"/usr/share/glvnd
-  rm -rf "$pkgdir"/usr/share/drirc.d
-  rm -rf "$pkgdir"/usr/share/freedreno
-  rm -rf "$pkgdir"/usr/share/vulkan/explicit_layer.d
-  rm -rf "$pkgdir"/usr/share/vulkan/explicit_layer.d/VkLayer_MESA_overlay.json
-  rm -rf "$pkgdir"/usr/share/vulkan/implicit_layer.d
-  rm -rf "$pkgdir"/usr/share/vulkan/implicit_layer.d/VkLayer_MESA_device_select.json
+  DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C mesa-${versiontag}/build_64/ install
 
   # remove script file from /usr/bin
-  msg2 "Remove ${pkgdir}/usr/bin/mesa-overlay-control.py"
   rm "${pkgdir}/usr/bin/mesa-overlay-control.py"
-  msg2 "Remove ${pkgdir}/usr/bin"
-  rm -rf "${pkgdir}/usr/bin"
+  rm -rf -v "${pkgdir}/usr/bin"
+
+  # indirect rendering
+  ln -s /usr/lib/libGLX_mesa.so.0 "${pkgdir}/usr/lib/libGLX_indirect.so.0"
+
+  # installing license
+  install -dm755 "${pkgdir}"/usr/share/licenses/${pkgname}-${versiontag}/
+  cp -v "${srcdir}"/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}-${versiontag}/
+}
+
+package_lib32-mesa-llvm-rc(){
+   pkgdesc="Mesa rc release. LLVM enable by default. More options are enable than the standard mesa package. (32-bit)"
+   depends=("lib32-libdrm" "lib32-libelf" "lib32-libglvnd" "libomxil-bellagio" "lib32-libunwind" "lib32-libxdamage" "lib32-libxxf86vm" "lib32-llvm-libs"
+            "lib32-lm_sensors" "lib32-wayland" "lib32-zstd" "lib32-libxshmfence" "libclc" "lib32-expat" "lib32-vulkan-icd-loader")
+   conflicts=("lib32-mesa" "lib32-opencl-mesa" "lib32-vulkan-intel" "lib32-vulkan-radeon" "lib32-vulkan-mesa-layer" "lib32-libva-mesa-driver" "lib32-mesa-vdpau"
+              "lib32-mesa-aco" "lib32-mesa-aco-rc" "lib32-mesa-llvm" "lib32-mesa-git")
+   replaces=("lib32-mesa" "lib32-opencl-mesa" "lib32-vulkan-intel" "lib32-vulkan-radeon" "lib32-vulkan-mesa-layer" "lib32-libva-mesa-driver" "lib32-mesa-vdpau"
+             "lib32-mesa-aco" "lib32-mesa-aco-rc" "lib32-mesa-llvm" "lib32-mesa-git")
+   provides=("lib32-mesa" "lib32-opencl-mesa" "lib32-vulkan-intel" "lib32-vulkan-radeon" "lib32-vulkan-driver" "lib32-vulkan-mesa-layer" "lib32-libva-mesa-driver"
+             "lib32-mesa-vdpau" "lib32-opengl-driver" "lib32-opencl-driver" "lib32-mesa-libgl")
+
+  # compiling mesa and installing to "$pkgdir"
+  DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C mesa-${versiontag}/build_32/ install
+
+  #Remove files provided by standard mesa build
+  rm -rf -v "$pkgdir"/etc
+  rm -rf -v "$pkgdir"/usr/include
+  rm -rf -v "$pkgdir"/usr/share/glvnd
+  rm -rf -v "$pkgdir"/usr/share/drirc.d
+  rm -rf -v "$pkgdir"/usr/share/freedreno
+  rm -rf -v "$pkgdir"/usr/share/vulkan/explicit_layer.d
+  rm -rf -v "$pkgdir"/usr/share/vulkan/explicit_layer.d/VkLayer_MESA_overlay.json
+  rm -rf -v "$pkgdir"/usr/share/vulkan/implicit_layer.d
+  rm -rf -v "$pkgdir"/usr/share/vulkan/implicit_layer.d/VkLayer_MESA_device_select.json
+
+  # remove script file from /usr/bin
+  rm -v "${pkgdir}/usr/bin/mesa-overlay-control.py"
+  rm -rf -v "${pkgdir}/usr/bin"
 
   # indirect rendering
   ln -s /usr/lib32/libGLX_mesa.so.0 "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
 
   # installing license
   install -dm755 "${pkgdir}"/usr/share/licenses/${pkgname}-${versiontag}/
-  cp "${srcdir}"/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}-${versiontag}/
+  cp -v "${srcdir}"/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}-${versiontag}/
 }
