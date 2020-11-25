@@ -8,18 +8,19 @@ pkgrel=1
 arch=('x86_64')
 url="https://github.com/Rudi9719/kbtui"
 license=('GPL3')
-makedepends=('git' 'go')
+makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('de520f9be01e237eb5401f2705badd6c5a41f297e8bf705538b7221fb403b46d582f6af7b9a78d57382a15128e457dd2f4c03dbf48259fa216932ba823a416d6')
 
 build() {
   cd "$pkgname-$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go get -d ./...
-  go build \
-    -gcflags "all=-trimpath=$PWD" \
-    -asmflags "all=-trimpath=$PWD" \
-    -ldflags "-extldflags $LDFLAGS" \
-    -o "$pkgname" .
+  go build -o "$pkgname" .
 }
 
 package() {
