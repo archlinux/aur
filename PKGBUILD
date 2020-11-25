@@ -10,7 +10,7 @@ arch=('armv7h')
 url="https://github.com/armbian/build"
 license=('GPL2')
 makedepends=('curl')
-depends=('bash' 'bluez' 'bluez-tools' 'systemd' 'util-linux' 'wireless_tools' 'xorg-xrandr')
+depends=('bluez' 'systemd' 'util-linux' 'wireless_tools' 'xorg-xrandr')
 install=$pkgname.install
 source=(
   'pulseaudio-sink.txt'
