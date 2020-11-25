@@ -1,7 +1,7 @@
 pkgbase = findwild
 	pkgdesc = A program to find files with a nice gtk interface
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kornelix.net/findwild/findwild.html
 	arch = i686
 	arch = x86_64
