@@ -1,15 +1,15 @@
 # Maintainer: Renato Lui Geh <renatogeh at gmail dot com>
 
 pkgname=cppyy-cling
-pkgver=6.18.2.6
+pkgver=6.21.4
 pkgrel=1
 pkgdesc="Cling-based Python-C++ bindings (cling backend)"
 arch=('x86_64')
 url="https://cppyy.readthedocs.io/en/latest/index.html"
 license=('LGPLv2+' 'LGPL2.1' 'UoI-NCSA')
 depends=('python' 'python-wheel' 'python-pip')
-source=("https://files.pythonhosted.org/packages/35/9a/b016bf900a196f3ac71608e6629c68a95e92a32de242e8a7acd6590cbf17/cppyy_cling-${pkgver}-py2.py3-none-manylinux1_x86_64.whl")
-sha256sums=('fd6b5f946d96b35aec8f0579f9f66d3edcf3efe601a4489fdeb4ab3e8693f9ca')
+source=("https://files.pythonhosted.org/packages/ac/94/b619d2019cb3d0c96f3df175d4032bc8e765f1bcab12012d7019ea94e229/cppyy_cling-${pkgver}-py2.py3-none-manylinux1_x86_64.whl")
+sha256sums=('027c3b69cc0b4365b5ea37704499360091372c6fc2e25d830ad0372673a80643')
 
 package() {
   cd $srcdir
