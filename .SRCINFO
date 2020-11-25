@@ -1,6 +1,6 @@
 pkgbase = dde-store
 	pkgdesc = An app store for DDE built with DTK
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/dekzi/dde-store
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = dde-store
 	depends = packagekit-qt5
 	depends = appstream-qt
 	depends = archlinux-appstream-data
-	source = dde-store-1.0.0.tar.gz::https://github.com/dekzi/dde-store/archive/1.0.0.tar.gz
-	md5sums = 9dc601aa91bceda42f571b903e9d3a6d
+	source = dde-store-1.0.1.tar.gz::https://github.com/dekzi/dde-store/archive/1.0.1.tar.gz
+	md5sums = 7f18997f99bea342de310bfcabe50d9d
 
 pkgname = dde-store
 
