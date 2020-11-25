@@ -2,6 +2,8 @@
 
 pkgname=bsp-tinkerboard
 pkgver=20.11.0
+_ubuntu=focal
+_kernel=5.8.18
 pkgrel=1
 pkgdesc="Board support package for Tinker Board / S (Bluetooth, HDMI, Audio...)"
 arch=('armv7h')
@@ -10,8 +12,6 @@ license=('GPL2')
 makedepends=('curl')
 depends=('bash' 'bluez' 'bluez-tools' 'systemd' 'util-linux' 'wireless_tools' 'xorg-xrandr')
 install=$pkgname.install
-_ubuntu=focal
-_kernel=5.8.18
 source=(
   'pulseaudio-sink.txt'
   'pulseaudio-source.txt'
