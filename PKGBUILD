@@ -3,7 +3,7 @@
 
 pkgname=verco-bin
 pkgver=5.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Git/Hg tui client focused on keyboard shortcuts"
 arch=('x86_64')
 url="https://github.com/matheuslessarodrigues/verco"
@@ -21,6 +21,6 @@ sha512sums_x86_64=('f1855bff4cedd4a6d4c85261bcad691ae9da86fe24d619d98eefca7193bc
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "${pkgdir}/usr/bin/${pkgname%-bin}"
-  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
-  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
+  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm 644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

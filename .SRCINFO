@@ -1,7 +1,7 @@
 pkgbase = verco-bin
 	pkgdesc = Simple Git/Hg tui client focused on keyboard shortcuts
 	pkgver = 5.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matheuslessarodrigues/verco
 	arch = x86_64
 	license = MIT
