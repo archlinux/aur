@@ -1,14 +1,14 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=mkinitcpio-ykfde-git
-pkgver=0.6.4.r0.g95f195c
+pkgver=0.7.6.r4.g7ac4c16
 pkgrel=1
 pkgdesc='Full disk encryption with Yubikey (Yubico key) - git checkout'
 arch=('i686' 'x86_64')
 url='https://github.com/eworm-de/mkinitcpio-ykfde'
 license=('GPL')
 depends=('yubikey-personalization' 'cryptsetup' 'iniparser' 'libarchive' 'keyutils')
-makedepends=('git' 'markdown')
+makedepends=('git' 'markdown' 'systemd')
 conflicts=('mkinitcpio-ykfde')
 provides=('mkinitcpio-ykfde')
 install=mkinitcpio-ykfde.install
@@ -25,11 +25,11 @@ pkgver() {
 		printf '%s.r%s.g%s' \
 			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
 			"$(git rev-list --count ${GITTAG}..)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	else
 		printf '0.r%s.g%s' \
 			"$(git rev-list --count master)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	fi
 }
 
