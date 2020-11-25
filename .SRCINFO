@@ -1,5 +1,5 @@
 pkgbase = fcitx-skin-aqua
-	pkgdesc = Aqua - fcitx skin
+	pkgdesc = Aqua - Fcitx skin
 	pkgver = 0.1
 	pkgrel = 3
 	url = https://github.com/redchenjs/fcitx-skin-aqua
