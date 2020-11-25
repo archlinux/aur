@@ -161,11 +161,6 @@ END
     -Dzstd=enabled
 }
 
-check(){
-  meson test -C mesa-${pkgver}/build_64/
-  meson test -C mesa-${pkgver}/build_32/
-}
-
 package_mesa-llvm(){
   pkgdesc="Mesa stable release. LLVM enable by default. More options are enable than the standard mesa package. (64-bit)"
   depends=("libdrm" "libelf" "libglvnd" "libomxil-bellagio" "libunwind" "libxdamage" "libxxf86vm" "llvm-libs" "lm_sensors" "wayland" "zstd" "libxshmfence"
