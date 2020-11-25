@@ -16,8 +16,8 @@ source=(
     "$pkgname.install"
     "pulseaudio-sink.txt"
     "pulseaudio-source.txt"
-    "https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/armbian-firmware_$pkgver-trunk_all.deb"
-    "https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-$_ubuntu-root-current-tinkerboard_$pkgver-trunk_armhf.deb"
+    "armbian-fw_$pkgver-$_kernel.deb::https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/armbian-firmware_$pkgver-trunk_all.deb"
+    "armbian-bsp_$pkgver-$_kernel.deb::https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-$_ubuntu-root-current-tinkerboard_$pkgver-trunk_armhf.deb"
 )
 sha512sums=(
     'b7076722e405ab367138fe08133a85fd31b9b6e5a085f146a116a74a2f5113806643a117bad460755dfdaf115af777163f6514549f3af853ab3ef76dc7b694a8'
@@ -37,9 +37,9 @@ prepare() {
 package() {
     cd "$srcdir"
 
-    ar x "armbian-firmware_$pkgver-trunk_all.deb"
+    ar x "armbian-fw_$pkgver-$_kernel.deb"
     tar -xf data.tar.xz
-    ar x "linux-$_ubuntu-root-current-tinkerboard_$pkgver-trunk_armhf.deb"
+    ar x "armbian-bsp_$pkgver-$_kernel.deb"
     tar -xf data.tar.xz
 
     install -Dm644 "lib/systemd/system/tinker-bluetooth.service" "$pkgdir/usr/lib/systemd/system/tinker-bluetooth.service"
