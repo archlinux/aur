@@ -9,6 +9,7 @@ pkgdesc="Recursively visit and download a website's content to your disk (git)"
 arch=('x86_64')
 url="https://github.com/Skallwar/suckit"
 license=('Apache')
+depends=('openssl')
 makedepends=('rust' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
