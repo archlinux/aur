@@ -1,7 +1,7 @@
 pkgbase = komodo-pydbgp
 	pkgdesc = The Komodo IDE Python Remote Debugging component
 	pkgver = 12.0.1.91869
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.activestate.com/komodo/remotedebugging/
 	arch = x86_64
 	license = MIT
