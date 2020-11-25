@@ -3,7 +3,7 @@
 # Contributor: Fabio Loli
 # Contributor: Sergey Kasmy
 pkgname=liquidctl-git
-pkgver=1.4.2.r66.dc74cb2
+pkgver=1.4.2.r67.43f3249
 pkgrel=1
 pkgdesc='Cross-platform tool and drivers for liquid coolers and other devices'
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('i2c-tools: SMBus/I2C devices support')
 makedepends=('git' 'python-pytest')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("$pkgname::git+https://github.com/jonasmalacofilho/liquidctl.git#branch=_tmp")
+source=("$pkgname::git+https://github.com/jonasmalacofilho/liquidctl.git")
 sha256sums=('SKIP')
 
 pkgver() {
