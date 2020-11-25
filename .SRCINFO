@@ -1,6 +1,6 @@
 pkgbase = sandsmark-notificationd-git
 	pkgdesc = simple notification daemon because everything else sucks
-	pkgver = r16.7d33d87
+	pkgver = 27.e62a7f2
 	pkgrel = 1
 	url = https://github.com/sandsmark/sandsmark-notificationd
 	arch = i686

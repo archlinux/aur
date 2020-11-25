@@ -1,5 +1,7 @@
+# Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
+
 pkgname=sandsmark-notificationd-git
-pkgver=r16.7d33d87
+pkgver=27.e62a7f2
 pkgrel=1
 pkgdesc="simple notification daemon because everything else sucks"
 arch=(i686 x86_64)
@@ -14,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd sandsmark-notificationd
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -24,10 +26,7 @@ prepare() {
 build() {
     cd build
         cmake ../sandsmark-notificationd \
-        -DCMAKE_BUILD_TYPE=Debug \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DLIB_INSTALL_DIR=lib \
-        -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+        -DCMAKE_INSTALL_PREFIX=/usr
     make
 }
 
