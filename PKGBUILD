@@ -2,7 +2,7 @@
 
 pkgname=nodejs-vls
 _pkgname=vls
-pkgver=0.5.4
+pkgver=0.5.9
 pkgrel=1
 pkgdesc='Vue language server (LSP)'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
 noextract=("$_pkgname-$pkgver.tgz")
-sha256sums=('d2f4a42d73b01526da0e7b0a97b18a7f3933b2c99c50b202d298d0574e602b92')
+sha256sums=('22c39561e24409e76605edef5b70056e9534729d8eccb6ff89a6d50bb4fee5b2')
 
 package() {
   npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_pkgname-$pkgver.tgz"
