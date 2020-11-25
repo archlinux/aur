@@ -15,7 +15,7 @@ source=(
     "${pkgname}-scripts-${_scriptsver}.tar.gz::https://github.com/conqp/omada-controller-scripts/archive/${_scriptsver}.tar.gz"
 )
 sha256sums=('f0e12452a7cca3d1d19b93d9e21568510132febe8d9af3390a49f3c701e81378'
-            '1444c2fa29cd68c0acd3464ad0d51dbdd1645da515e79a84ede706f04c82db6e')
+            '8325c691e01617a49b5fd541f284e8f35cb19743b21082ea6845745949cac59b')
 
 
 package() {
