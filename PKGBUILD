@@ -52,11 +52,11 @@ package_linux-rockchip() {
   ar x "linux-image-$_armbian-$pkgver.deb"
   tar -xf data.tar.xz
 
-  install -dm755 "$pkgdir/usr"
-  cp -r lib "$pkgdir/usr/lib"
-
   install -Dm644 "boot/vmlinuz-$_kernver" "$pkgdir/boot/zImage"
   cp -r "boot/dtb-$_kernver" "$pkgdir/boot/dtb"
+
+  install -dm755 "$pkgdir/usr"
+  cp -r lib "$pkgdir/usr/lib"
 
   # make room for external modules
   local _extramodules="extramodules-$_kernver"
