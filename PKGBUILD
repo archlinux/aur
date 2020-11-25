@@ -14,7 +14,7 @@ sha512sums=('c29c42259bccef8b84e54312f3c9e64775dc0ce16d12ddf0ddf4fe64e637aa305c5
 package() {
   cd "source-han-serif-classic-$_commit"
 
-  mkdir -p "$pkgdir/usr/share/fonts/adobe-source-han-serif"
+  install -dm755 "$pkgdir/usr/share/fonts/adobe-source-han-serif"
   install -Dm644 *.otf "$pkgdir/usr/share/fonts/adobe-source-han-serif/"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
