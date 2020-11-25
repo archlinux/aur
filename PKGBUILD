@@ -3,7 +3,7 @@
 
 pkgbase='monero-feather-git'
 pkgname='monero-feather-git'
-pkgver='v0.1.0.0.841739cee9'
+pkgver='v0.1.0.0.1ccedea1dd'
 pkgrel='1'
 pkgdesc='a free Monero desktop wallet'
 license=('BSD')
@@ -13,7 +13,7 @@ depends=('boost-libs' 'libunwind' 'openssl' 'readline' 'zeromq' 'pcsclite' 'hida
 makedepends=('git' 'cmake' 'boost')
 provides=('monero-feather-git')
 
-source=("${pkgname}"::"git+https://git.wownero.com/wowario/feather")
+source=("${pkgname}"::"git+https://git.wownero.com/feather/feather")
 
 sha256sums=('SKIP')
 
