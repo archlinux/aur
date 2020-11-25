@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=delft-icon-theme
-pkgver=1.13
+pkgver=1.14
 pkgrel=1
 pkgdesc="Continuation of Faenza icon theme with up to date app icons"
 arch=(any)
