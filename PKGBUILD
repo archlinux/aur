@@ -21,7 +21,8 @@ sha256sums=('159bb3a37170966503fe87fc1b28f2f8317c4f22f24fdcdf4ef3c809ab094311')
 
 package() {
   bsdtar -xf data.tar.gz -C "$pkgdir"
-  sed -i 's|\(Exec=\)x-www-browser|\1xdg-open|g' "$pkgdir/usr/share/applications/$pkgname.desktop"
+  sed -i 's|\(Exec=\)x-www-browser|\1xdg-open|g;s|^\(Version=\).*|\11.0|' \
+         "$pkgdir/usr/share/applications/$pkgname"{,_config}.desktop
   chmod g-w "$pkgdir"/usr{,/bin,/share{,/applications,"/$pkgname",/pixmaps}}
 }
 
