@@ -3,7 +3,7 @@
 pkgname=fluffy-switch
 pkgver=2.9.2
 _pkgver=2.9 # git tag version
-pkgrel=1
+pkgrel=2
 pkgdesc="Goldtree and Tinfoil GUI for USB/Network install on switch"
 arch=('any')
 url="https://github.com/fourminute/Fluffy"
@@ -17,17 +17,17 @@ depends=(
 optdepends=(
 	'python-qdarkstyle: dark theme toggle in fluffy'
 )
-source=("Fluffy-${pkgver}.tar.gz::https://github.com/fourminute/Fluffy/archive/v${_pkgver}.tar.gz")
+source=("Fluffy-${_pkgver}.tar.gz::https://github.com/fourminute/Fluffy/archive/v${_pkgver}.tar.gz")
 sha256sums=('c063bf746b944810ff3f34bd70efe8f6807713630f0cc4b98aec3350cde5e651')
 
 # Remove .desktop file PATH (/tmp).
 prepare() {
-	cd "Fluffy-${pkgver}"
+	cd "Fluffy-${_pkgver}"
 	sed -e "s|Path=\/tmp||" -i linux/fluffy.desktop
 }
 
 package() {
-	cd "Fluffy-${pkgver}"
+	cd "Fluffy-${_pkgver}"
 	install -Dm 644 linux/80-fluffy-switch.rules "${pkgdir}/usr/lib/udev/rules.d/80-fluffy-switch.rules"
 	install -Dm 644 linux/fluffy.desktop "${pkgdir}/usr/share/applications/fluffy.desktop"
 	install -Dm 644 icons/16x16/fluffy.png "${pkgdir}/usr/share/icons/hicolor/16x16/apps/fluffy.png"
