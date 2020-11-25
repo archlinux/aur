@@ -4,7 +4,7 @@
 pkgname=slicer-bin
 pkgdesc="A tool to automate the boring process of APK recon"
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/mzfr/slicer"
 license=('GPL3')
@@ -15,5 +15,5 @@ sha512sums_x86_64=('5077e849339c7938db2f06ff7ffd60dc80cd073fe924a771ecc175579d98
 
 package() {
   install -Dm 755 "${pkgname%-bin}" -t "$pkgdir/usr/bin"
-  install -Dm 644 readme.md -t "$pkgdir/usr/share/doc/${pkgname%-bin}"
+  install -Dm 644 readme.md -t "$pkgdir/usr/share/doc/$pkgname"
 }

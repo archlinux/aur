@@ -1,7 +1,7 @@
 pkgbase = slicer-bin
 	pkgdesc = A tool to automate the boring process of APK recon
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mzfr/slicer
 	arch = x86_64
 	license = GPL3
