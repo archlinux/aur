@@ -1,0 +1,19 @@
+pkgbase = python-pyerfa
+	pkgdesc = Python wrapper for the ERFA library
+	pkgver = 1.7.1.1
+	pkgrel = 1
+	url = https://github.com/liberfa/pyerfa
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cython
+	makedepends = python-jinja
+	makedepends = python-pip
+	depends = python>=3.6
+	depends = python-numpy>=1.16.0
+	depends = erfa>=0.17
+	source = https://files.pythonhosted.org/packages/3b/37/0ff81021f6405e4f6f627bb4aed32d22569fe016376dccee14e5eca947d1/pyerfa-1.7.1.1.tar.gz
+	sha512sums = 59c2dceed6ef5b1ece618742dd0084b729cce8eb52f903dff2aad009fa0f495defb4511688da0a5203ed5900d041a552fbe50668ddac0c3a6bb3fd6d34d089bb
+
+pkgname = python-pyerfa
+
