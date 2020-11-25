@@ -21,11 +21,7 @@ package() {
 
     # Remove conflicting files present in cars pack
     rm cars/bendor/carbattle.bmp
-    rm cars/camboldr/caraugury.bmp
-    rm cars/camboldr/carfire66.bmp
-    rm cars/camboldr/carmach.bmp
-    rm cars/camboldr/caroiler.bmp
-    rm cars/camboldr/carroyalton.bmp
+    rm -r cars/camboldr
 
     find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
