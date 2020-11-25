@@ -4,7 +4,7 @@
 
 _pkgname=xcb-imdkit
 pkgname=${_pkgname}-git
-pkgver=r77.66b0ff1
+pkgver=1.0.0.r2.g8d762c3
 pkgrel=1
 pkgdesc="Input method development support for xcb"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd xcb-imdkit
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
