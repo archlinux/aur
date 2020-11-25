@@ -3,7 +3,7 @@
 
 pkgbase='monero-feather-git'
 pkgname='monero-feather-git'
-pkgver='v0.1.0.0.70dd25c477'
+pkgver='v0.1.0.0.ca5b1df7df'
 pkgrel='1'
 pkgdesc='a free Monero desktop wallet'
 license=('BSD')
@@ -23,7 +23,7 @@ build() {
   mkdir build
   cd build
   cmake ..
-  make release-static -j2
+  make -j2
 }
 
 package_monero-feather-git() {
