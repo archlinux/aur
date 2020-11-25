@@ -1,4 +1,17 @@
-
+2020-11-25 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.0.0.5-1:
+    [!] ASF V5 opens a new major milestone due to significant .NET 5.0 runtime upgrade. .NET runtime upgrade brings a lot of under-the-hood changes, compatibility enhancements, performance improvements, features and bugfixes.
+    Our OS-specific builds make use of the newest trimming mode, link, which further decreases size of the resulting binaries, making OS-specific builds smaller compared to ASF V4.
+    Apart from the runtime change, ASF V5 also received a significant code cleanup and refactor (including C# 9), some of those changes affect our public API surface and require third-party V4 plugins to be recompiled. Most significant change includes moving Bot.HasPermission() to Bot.HasAccess(), apart from that it's mostly transparent refactor.
+    Starting from ASF V5, we've decided to slightly update our release cycle in order to make released version numbers more significant. The development process remains the same as before.
+    Added IPCPasswordFormat global config property and hash command, allowing to hash IPCPassword (#2014).
+    Added new functionality through CompleteTypesToSend bot config property (#2004).
+    We've slightly changed our console input request to be less annoying (#2048).
+    ASF will now refuse to run in unsupported environments by default, we've added --ignore-unsupported-environments command-line argument to override this if you know what you're doing.
+    Fixed a possibility of updated token/key not being submitted to SteamDB when using our STD plugin.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2020-10-14 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.3.1.0-1:
     [!] Fixed possible Denial of Service attack, which caused ASF to crash (#GHSA-5v34-4prm-9474).
