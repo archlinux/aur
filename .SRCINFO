@@ -1,14 +1,14 @@
 pkgbase = benthos-bin
 	pkgdesc = A stream processor for mundane tasks written in Go
-	pkgver = 3.29.0
+	pkgver = 3.34.0
 	pkgrel = 1
 	url = https://benthos.dev
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	provides = benthos
-	source = benthos-bin-3.29.0.tar.gz::https://github.com/Jeffail/benthos/releases/download/v3.29.0/benthos_3.29.0_linux_amd64.tar.gz
-	sha256sums = 67afecd5de960c204f3fbe00ad611ee855d3650af88f939d96f2c1daba23bfda
+	source = benthos-bin-3.34.0.tar.gz::https://github.com/Jeffail/benthos/releases/download/v3.34.0/benthos_3.34.0_linux_amd64.tar.gz
+	sha256sums = 145698eebbbc97e8df8a942d187a8db4929b34e0ac608ee4764cbf1fcb000a35
 
 pkgname = benthos-bin
 

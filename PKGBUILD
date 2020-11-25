@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=benthos-bin
-pkgver=3.29.0
+pkgver=3.34.0
 pkgrel=1
 pkgdesc="A stream processor for mundane tasks written in Go"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc')
 license=('MIT')
 provides=('benthos')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Jeffail/benthos/releases/download/v${pkgver}/benthos_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('67afecd5de960c204f3fbe00ad611ee855d3650af88f939d96f2c1daba23bfda')
+sha256sums=('145698eebbbc97e8df8a942d187a8db4929b34e0ac608ee4764cbf1fcb000a35')
 
 package() {
   install -Dm755 "${srcdir}"/benthos "${pkgdir}/usr/bin/benthos"
