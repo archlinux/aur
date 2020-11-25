@@ -160,11 +160,6 @@ END
     -Dzstd=enabled
 }
 
-check(){
-  meson test -C mesa-${versiontag}/build_64/
-  meson test -C mesa-${versiontag}/build_32/
-}
-
 package_mesa-aco-rc(){
   pkgdesc="Mesa rc release. ACO enable by default. More options are enable than the standard mesa package. (64-bit)"
   depends=("libdrm" "libelf" "libglvnd" "libomxil-bellagio" "libunwind" "libxdamage" "libxxf86vm" "llvm-libs" "lm_sensors" "wayland" "zstd" "libxshmfence"
