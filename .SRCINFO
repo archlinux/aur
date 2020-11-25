@@ -1,7 +1,7 @@
 pkgbase = termchat-bin
 	pkgdesc = Terminal chat through the LAN
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lemunozm/termchat
 	arch = x86_64
 	license = Apache
