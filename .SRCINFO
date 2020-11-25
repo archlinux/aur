@@ -1,0 +1,17 @@
+pkgbase = pastenotifier-git
+	pkgdesc = Simple application showing what is copied to the clipboard, avoids embarassment
+	pkgver = 26.985ca75
+	pkgrel = 1
+	url = https://github.com/sandsmark/pastenotifier
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = kglobalaccel
+	provides = pastenotifier
+	conflicts = pastenotifier
+	source = git+https://github.com/sandsmark/pastenotifier.git
+	md5sums = SKIP
+
+pkgname = pastenotifier-git
+
