@@ -8,8 +8,8 @@ arch=(any)
 url="https://www.gnome-look.org/p/1199881/"
 license=(GPL3)
 options=(!strip)
-source=("${pkgname}-${pkgver}.tar.xz::https://github.com/madmaxms/iconpack-delft/releases/download/v${pkgver}/delft-iconpack.tar.xz")
-sha256sums=('59b9ca9a3c1bf535483b7fe4009ec060814895bf113c20933f4630b8cccf00b2')
+source=("${pkgname}-${pkgver}.tar.xz::https://github.com/madmaxms/iconpack-delft/releases/download/v${pkgver}/iconpack-delft.tar.xz")
+sha256sums=('1873f97c484a6c35041f324dbb49a341d2bb39314dfc6c27c9cffc8f4d69f2a4')
 
 package() {
   install -d ${pkgdir}/usr/share/icons
