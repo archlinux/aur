@@ -1,0 +1,29 @@
+pkgbase = supersonic
+	pkgdesc = A Subsonic music server implemented in C++
+	pkgver = 2020.11.24
+	pkgrel = 1
+	url = https://github.com/davidgfnet/supersonic-cpp
+	install = supersonic.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Unlicense
+	depends = fcgi
+	depends = openssl
+	depends = sqlite
+	depends = taglib
+	source = supersonic-2020.11.24.tar.gz::https://github.com/davidgfnet/supersonic-cpp/archive/2d157f99bd683d127aac8ca1f5f396120b721c9e.tar.gz
+	source = https://raw.githubusercontent.com/hbristow/argparse/43edb8acf2135509590631a0ac4582e3741016bf/argparse.hpp
+	source = supersonic.install
+	source = supersonic.service
+	source = supersonic.socket
+	sha256sums = 7686430618849103b5fa9de416add6e7e854187c44e4416ce420612139baf8de
+	sha256sums = 7e43bf60bac7445e2c8dcf307928ed6e62b7940071b43a5a6674a04d6476e61b
+	sha256sums = 4a48d22aed461d9ea52bfd91c32835dbead08d47157d9e49062561db63113f41
+	sha256sums = 3ffba956ec0044df1fd5e7e4fe18188e341634d1763994ebbf47498067fca676
+	sha256sums = df937e7a8922a04d69ed9db46774d67d565a0fe2738661119311c44ba365a047
+
+pkgname = supersonic
+

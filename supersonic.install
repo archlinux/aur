@@ -1,0 +1,12 @@
+post_install() {
+  echo "Remember that you must create Supersonic database before first run."
+  echo "# mkdir -p /var/lib/supersonic"
+  echo "# supersonic-scanner scan /var/lib/supersonic/supersonic.sqlite /your/music/folder"
+  echo "# supersonic-scanner useradd /var/lib/supersonic/supersonic.sqlite someusername supersecurepass"
+}
+
+post_remove() {
+  echo "Remember that the following directories aren't removed."
+  echo " -> /var/lib/supersonic"
+  echo " -> /var/lib/private/supersonic"
+}

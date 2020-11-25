@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!supersonic.install
+!supersonic.service
+!supersonic.socket

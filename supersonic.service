@@ -1,0 +1,21 @@
+[Unit]
+Description=Supersonic music server
+After=network.target
+Requires=supersonic.socket
+Wants=network-online.target
+
+[Service]
+DynamicUser=yes
+RuntimeDirectory=supersonic
+StateDirectory=supersonic
+User=supersonic
+Group=supersonic
+ExecStart=/usr/bin/supersonic-server --musicdb /var/lib/supersonic/supersonic.sqlite --userdb /var/lib/supersonic/supersonic.sqlite
+StandardOutput=null
+StandardInput=socket
+StandardError=null
+Restart=on-failure
+
+[Install]
+Also=supersonic.socket
+WantedBy=multi-user.target

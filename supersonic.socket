@@ -1,0 +1,10 @@
+[Unit]
+Description=Supersonic music server socket
+PartOf=supersonic.service
+
+[Socket]
+SocketMode=0666
+ListenStream=/run/supersonic/supersonic.sock
+
+[Install]
+WantedBy=sockets.target
