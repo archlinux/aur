@@ -83,5 +83,5 @@ package() {
 
 	# installing license
 	install -dm755 "${pkgdir}"/usr/share/licenses/${pkgname}-${pkgver}/
-	cp "${srcdir}"/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}-${pkgver}/
+	cp -v "${srcdir}"/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}-${pkgver}/
 }
