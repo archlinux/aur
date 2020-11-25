@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  cargo build --release --locked --all-features
+  cargo build --release --locked
 }
 
 package() {
