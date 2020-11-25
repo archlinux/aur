@@ -3,7 +3,7 @@
 
 pkgname=verco-git
 pkgver=5.5.1.r0.g287c5f9
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Git/Hg tui client focused on keyboard shortcuts (git)"
 arch=('x86_64')
 url="https://github.com/matheuslessarodrigues/verco"
@@ -28,6 +28,6 @@ build() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
