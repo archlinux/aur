@@ -1,14 +1,14 @@
 pkgbase = python-python_socks
 	pkgdesc = Core proxy client (SOCKS4, SOCKS5, HTTP) functionality for Python
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/romis2012/python-socks
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python
-	source = python-socks-1.1.0.tar.gz::https://github.com/romis2012/python-socks/archive/v1.1.0.tar.gz
-	sha512sums = e38594815e5f943f810862dfe5d07a802601e41e879f68b4fa70c8087be0387a91e99e1b0578f2819557832b5e53be9773043a9617c72017c41e9377c4f35ef1
+	source = python-socks-1.1.1.tar.gz::https://github.com/romis2012/python-socks/archive/v1.1.1.tar.gz
+	sha512sums = d2f03d941042f3dd58e0e10de4d6a230acfb3c57cd075bd0589589a8c02575b8d24321284f44bfbec1bcc47f72c0c3a33c52eb81c5fc6231948bfd04d3bf31cb
 
 pkgname = python-python_socks
 
