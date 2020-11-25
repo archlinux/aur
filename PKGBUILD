@@ -3,7 +3,7 @@
 
 pkgname=stegano-git
 pkgver=0.4.1.r0.g5774494
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool for steganography. Supports hiding data in PNG images via LSB Encoding. (git)"
 arch=('x86_64')
 url="https://github.com/steganogram/stegano-rs"
@@ -27,5 +27,5 @@ build() {
 package() {
   cd "${pkgname%-git}-rs"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
