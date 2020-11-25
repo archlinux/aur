@@ -1,6 +1,6 @@
 pkgbase = pleaser
 	pkgdesc = please, sudo like program with regex support written in rust
-	pkgver = 0.3.3+36+gd330c5b
+	pkgver = 0.3.16
 	pkgrel = 1
 	url = https://gitlab.com/edneville/please
 	arch = x86_64
