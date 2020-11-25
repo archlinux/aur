@@ -1,6 +1,6 @@
 pkgbase = phoronix-test-suite-milestone
 	pkgdesc = The most comprehensive testing and benchmarking platform available for Linux, milestone version
-	pkgver = 10.0.0m1
+	pkgver = 10.2.0m1
 	pkgrel = 1
 	url = http://www.phoronix-test-suite.com/
 	arch = any
@@ -18,9 +18,9 @@ pkgbase = phoronix-test-suite-milestone
 	provides = phoronix-test-suite
 	conflicts = phoronix-test-suite
 	options = !strip
-	source = phoronix-test-suite-milestone-10.0.0m1.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v10.0.0m1.tar.gz
+	source = phoronix-test-suite-milestone-10.2.0m1.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v10.2.0m1.tar.gz
 	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/phoronix-test-suite-launcher.patch
-	sha256sums = 8584ae850c6e46245e68ed578a2078daf8984d77fff68cdb6882b128c8e7232a
+	sha256sums = 4be09f3c50db0df3b5d93b0ec3c25691226990410250d0e5a354301d8b5a2af0
 	sha256sums = 577326343d0303a59fd469c3f9c9740e756dd59c0660c54363b62d6fd1cee26d
 
 pkgname = phoronix-test-suite-milestone
