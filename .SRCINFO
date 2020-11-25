@@ -1,6 +1,6 @@
 pkgbase = simpletools
 	pkgdesc = Handy command line tools for ntuple manipulation and analysis
-	pkgver = 2.0v.8e38d80
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://github.com/cofitzpa/simpletools
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = simpletools
 	makedepends = git
 	depends = boost
 	depends = root
-	source = simpletools::git+https://github.com/cofitzpa/simpletools#commit=8e38d80
+	source = simpletools-3.0.tar.gz::https://github.com/cofitzpa/simpletools/archive/v3.0.tar.gz
 	source = settings.cmake
 	sha256sums = SKIP
 	sha256sums = 540b86cd9997926026a5d277c819ae9c348bde7921158a78f3c676c855b6ab5e
