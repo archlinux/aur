@@ -3,7 +3,7 @@
 
 # Maintainer: Ed Neville <ed-archlinux@s5h.net>
 pkgname=pleaser
-pkgver=0.3.3+28+gb8d9027
+pkgver=0.3.3+36+gd330c5b
 pkgrel=1
 pkgdesc="please, sudo like program with regex support written in rust"
 url="https://gitlab.com/edneville/please"
@@ -11,7 +11,7 @@ arch=(x86_64)
 license=(GPL3)
 depends=(gcc-libs)
 makedepends=(cargo git)
-_commit=b8d9027c05115259dd15783256c33ad4c43b0ca4
+_commit=d330c5b24018ad6144eeb12f382ca5c45c885640
 source=("git+https://gitlab.com/edneville/please.git#commit=$_commit")
 sha512sums=('SKIP')
 
