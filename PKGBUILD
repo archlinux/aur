@@ -2,9 +2,9 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=ali-git
+pkgver=0.5.3.r4.g04b67c9
+pkgrel=1
 pkgdesc="Generate HTTP load and plot the results in real-time (git)"
-pkgver=0.5.3.r0.g6101998
-pkgrel=2
 arch=('x86_64')
 url="https://github.com/nakabonne/ali"
 license=('MIT')
@@ -21,12 +21,12 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  go get -d ./...
-  go build \
-    -gcflags "all=-trimpath=$PWD" \
-    -asmflags "all=-trimpath=$PWD" \
-    -ldflags "-extldflags $LDFLAGS" \
-    -o "${pkgname%-git}" .
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o "${pkgname%-git}" .
 }
 
 package() {

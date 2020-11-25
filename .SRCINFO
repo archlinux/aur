@@ -1,7 +1,7 @@
 pkgbase = ali-git
 	pkgdesc = Generate HTTP load and plot the results in real-time (git)
-	pkgver = 0.5.3.r0.g6101998
-	pkgrel = 2
+	pkgver = 0.5.3.r4.g04b67c9
+	pkgrel = 1
 	url = https://github.com/nakabonne/ali
 	arch = x86_64
 	license = MIT
