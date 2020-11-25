@@ -1,0 +1,14 @@
+pkgbase = morfeusz2-bin
+	pkgdesc = Morphological analyser Morfeusz, binary version
+	pkgver = 1.9.16
+	pkgrel = 1
+	epoch = 0
+	url = http://morfeusz.sgjp.pl/
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	source_x86_64 = http://download.sgjp.pl/morfeusz/20201122/Linux/20.04/64/morfeusz2-1.9.16.sgjp.20201122-Linux-amd64.tar.gz
+	sha256sums_x86_64 = f16625b2370112727164f61fe3965bcd037475df64c77e00ab1511039e78a52a
+
+pkgname = morfeusz2-bin
+
