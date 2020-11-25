@@ -3,7 +3,7 @@
 
 pkgname=termimage-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Display images in your terminal"
 arch=('x86_64')
 url="https://github.com/nabijaczleweli/termimage"
@@ -19,7 +19,7 @@ sha512sums_x86_64=('379d7a598bb669ffae6e7bf60071e9cbb80e81969faf1fb1fa7bd174b0ed
 
 package() {
   install -Dm 755 "${pkgname%-bin}-v$pkgver" "${pkgdir}/usr/bin/${pkgname%-bin}"
-  install -Dm 644 "${pkgname%-bin}-v$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
-  install -Dm 644 "${pkgname%-bin}-man-v$pkgver/${pkgname%-bin}.md" -t "$pkgdir/usr/share/doc/${pkgname%-bin}"
+  install -Dm 644 "${pkgname%-bin}-v$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 "${pkgname%-bin}-man-v$pkgver/${pkgname%-bin}.md" -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 "${pkgname%-bin}-man-v$pkgver/${pkgname%-bin}.1" -t "$pkgdir/usr/share/man/man1"
 }
