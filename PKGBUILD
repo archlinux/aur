@@ -16,9 +16,9 @@ source=(
   "linux.preset"
   "60-linux.hook"
   "90-linux.hook"
-  "linux-dtb_$_armbian-$pkgver.deb::https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-dtb-current-rockchip_$_armbian-trunk_armhf.deb"
-  "linux-image_$_armbian-$pkgver.deb::https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-image-current-rockchip_$_armbian-trunk_armhf.deb"
-  "linux-headers_$_armbian-$pkgver.deb::https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-headers-current-rockchip_$_armbian-trunk_armhf.deb"
+  "linux-dtb-$_armbian-$pkgver.deb::https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-dtb-current-rockchip_$_armbian-trunk_armhf.deb"
+  "linux-image-$_armbian-$pkgver.deb::https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-image-current-rockchip_$_armbian-trunk_armhf.deb"
+  "linux-headers-$_armbian-$pkgver.deb::https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-headers-current-rockchip_$_armbian-trunk_armhf.deb"
 )
 sha512sums=(
   "a492aae17ee4a316ce03faf9f1b284b2529c485f4b092cc4a1f865a6c68d482fd356fd30efa296c116975a3bdf3922f5bf03912a8d0e76f4ab24aa6ab9f8c276"
@@ -47,9 +47,9 @@ package_linux-rockchip() {
 
   cd "$srcdir"
 
-  ar x "linux-dtb_$_armbian-$pkgver.deb"
+  ar x "linux-dtb-$_armbian-$pkgver.deb"
   tar -xf data.tar.xz
-  ar x "linux-image_$_armbian-$pkgver.deb"
+  ar x "linux-image-$_armbian-$pkgver.deb"
   tar -xf data.tar.xz
 
   install -dm755 "$pkgdir/usr"
@@ -91,9 +91,9 @@ package_linux-rockchip-headers() {
 
   cd "$srcdir"
 
-  ar x "linux-image_$_armbian-$pkgver.deb"
+  ar x "linux-image-$_armbian-$pkgver.deb"
   tar -xf data.tar.xz
-  ar x "linux-headers_$_armbian-$pkgver.deb"
+  ar x "linux-headers-$_armbian-$pkgver.deb"
   tar -xf data.tar.xz
 
   install -dm755 "$pkgdir/usr/lib/modules/$_kernver"
