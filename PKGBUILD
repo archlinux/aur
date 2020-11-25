@@ -2,7 +2,7 @@
 
 pkgname=saluto-lightdm-theme-dwm
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Saluto: Litarvan LightDM Theme Fork, with added support for DWM"
 arch=('any')
 url="https://github.com/Demonstrandum/Saluto"
