@@ -59,7 +59,7 @@ package_linux-rockchip() {
   cp -r lib "$pkgdir/usr/lib"
 
   # make room for external modules
-  local _extramodules="extramodules-$_kernver"
+  local _extramodules="extramodules-$(echo $_kernver | sed -r 's|^([0-9]+.[0-9]+).*|\1|')-armv7"
   ln -s "../$_extramodules" "$pkgdir/usr/lib/modules/$_kernver/extramodules"
 
   # add real version for building modules and running depmod from hook
