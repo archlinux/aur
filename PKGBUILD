@@ -3,7 +3,7 @@
 
 pkgname=termchat-git
 pkgver=1.0.0.r0.gbd572a5
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal chat through the LAN (git)"
 arch=('x86_64')
 url="https://github.com/lemunozm/termchat"
@@ -32,5 +32,5 @@ check() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
