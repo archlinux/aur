@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=menyoki-git
-pkgver=0.1.2.r0.g47b233f
-pkgrel=2
+pkgver=0.1.3.r0.g00ecb77
+pkgrel=1
 pkgdesc="Screen{shot,cast} and perform ImageOps on the command line (git)"
 arch=('x86_64')
 url="https://github.com/orhun/menyoki"
@@ -35,6 +35,7 @@ package() {
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 "man/${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
+  install -Dm 644 "man/${pkgname%-git}.conf.5" -t "$pkgdir/usr/share/man/man5"
   install -Dm 644 "completions/${pkgname%-git}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname%-git}"
   install -Dm 644 "completions/${pkgname%-git}.fish" -t "${pkgdir}/usr/share/fish/completions"
   install -Dm 644 "completions/${pkgname%-git}.zsh" "${pkgdir}/usr/share/zsh/functions/Completion/Linux/_${pkgname%-git}"
