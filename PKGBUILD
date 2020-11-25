@@ -2,9 +2,9 @@
 pkgdesc='Command line tool for processing HTML'
 pkgname=pup
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 url=https://github.com/ericchiang/pup
-makedepends=(go-pie git patch)
+makedepends=(go-pie git)
 license=(custom:MIT)
 depends=(glibc)
 arch=(x86_64)
