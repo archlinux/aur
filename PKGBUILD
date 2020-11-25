@@ -22,15 +22,15 @@ build(){
 	cd drm-libdrm-${pkgver}
 
 	if [ "$_compiler" = "clang" ]; then
-		export CC="clang"
-		export CXX="clang++"
+	export CC="clang"
+	export CXX="clang++"
 	elif [ "$_compiler" = "gcc" ]; then
-		export CC="gcc"
-		export CXX="g++"
+	export CC="gcc"
+	export CXX="g++"
 	fi
 
 	if dir build_64; then
-		rm -rf -v build_64
+	rm -rf -v build_64
 	fi
 
 	# create build_64 dir
@@ -64,16 +64,16 @@ build(){
 	-Dudev=true
 
 	if [ "$_compiler" = "clang" ]; then
-		 export CC="clang -m32"
-		 export CXX="clang++ -m32"
-	 elif [ "$_compiler" = "gcc" ]; then
-		 export CC="gcc -m32"
-		 export CXX="g++ -m32"
-	 fi
+	export CC="clang -m32"
+	export CXX="clang++ -m32"
+	elif [ "$_compiler" = "gcc" ]; then
+	export CC="gcc -m32"
+	export CXX="g++ -m32"
+	fi
 	export PKG_CONFIG=/usr/bin/i686-pc-linux-gnu-pkg-config
 
 	if dir build_32; then
-		rm -rf -v build_32
+	rm -rf -v build_32
 	fi
 
 	# create build_32 dir
@@ -109,8 +109,8 @@ build(){
 }
 
 check() {
-    meson test -C drm-libdrm-${pkgver}/build_64
-		meson test -C drm-libdrm-${pkgver}/build_32
+	meson test -C drm-libdrm-${pkgver}/build_64
+	meson test -C drm-libdrm-${pkgver}/build_32
 }
 
 package_libdrm-full() {
