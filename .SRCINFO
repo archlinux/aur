@@ -1,6 +1,6 @@
 pkgbase = mpd-pulse
 	pkgdesc = Open-source Modbus TCP to Modbus RTU (RS-232/485) gateway.
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/matt-h/mpd-pulse
 	arch = x86_64
@@ -10,8 +10,9 @@ pkgbase = mpd-pulse
 	makedepends = cargo
 	depends = libpulse
 	depends = mpc
-	source = mpd-pulse-0.1.0.tar.gz::https://github.com/matt-h/mpd-pulse/archive/0.1.0.tar.gz
-	sha256sums = 80a37bf077e79df8476e9c4fa8499694ea78060f6f7630ffa0687e9364bcd1d7
+	backup = etc/mpd-pulse.conf
+	source = mpd-pulse-0.2.0.tar.gz::https://github.com/matt-h/mpd-pulse/archive/0.2.0.tar.gz
+	sha256sums = 3d05d28c537081c96fabedeea7bd2d23d05b6cf99ef5ce4486ff7c95e3a7d1bf
 
 pkgname = mpd-pulse
 
