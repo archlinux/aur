@@ -1,0 +1,13 @@
+post_install() {
+	if [ -f usr/bin/update-mime-database ]; then
+		update-mime-database usr/share/mime &> /dev/null
+	fi
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	if [ -f usr/bin/update-mime-database ]; then update-mime-database usr/share/mime &> /dev/null ; fi
+}
