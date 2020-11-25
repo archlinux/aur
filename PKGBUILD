@@ -13,7 +13,7 @@ noextract=("${pkgname}-${pkgver}-${arch}.AppImage")
 sha256sums_x86_64=('4c7f0b06fbabfe7964b7a98b02de12d7cdb7b942d93be8e8a74398a1a9f8fc76')
 
 package() {
-	install -Dm755 "${srcdir}/${pkgname}-${pkgver}-${arch}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}"
+	install -Dm755 "${srcdir}/ValidDesk-${pkgver}-${arch}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}"
 
 	# Symlink executable
 	mkdir -p "${pkgdir}/usr/bin"
