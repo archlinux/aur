@@ -22,12 +22,12 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  cargo build --release --locked --all-features
+  cargo build --release --locked
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release --locked --all-features
+  cargo test --release --locked
 }
 
 package() {
