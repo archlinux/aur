@@ -15,6 +15,7 @@ source=("https://github.com/redchenjs/rime-zijinmaa/archive/$_commit/rime-zijinm
 sha512sums=('dd755c3ca428dbaae0f047cc71e2bbf0f42980ed382431f1dda978be24d2434a73b786896ae2236a005acc81ac2c444337ab1ec47133f0a20a87f8113c7dccb6')
 
 package() {
-    cd $pkgname-$_commit
-    install -Dm644 zijinmaa.schema.yaml -t "$pkgdir/usr/share/rime-data/"
+  cd "$pkgname-$_commit"
+
+  install -Dm644 zijinmaa.schema.yaml -t "$pkgdir/usr/share/rime-data/zijinmaa.schema.yaml"
 }
