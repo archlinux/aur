@@ -6,7 +6,7 @@
 
 pkgname=wtftw-git
 pkgver=r347.14f3d1e
-pkgrel=1
+pkgrel=2
 pkgdesc='Window Tiling For The Win. A tiling window manager written in Rust (git)'
 arch=('i686' 'x86_64')
 url="https://github.com/Kintaro/wtftw"
@@ -33,7 +33,7 @@ build() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 config/config.rs -t "$pkgdir/usr/share/${pkgname%-git}"
-  install -Dm 644 "../$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
+  install -Dm 644 "../$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
