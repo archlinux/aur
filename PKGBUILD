@@ -1,6 +1,6 @@
 # Maintainer: igo95862 at yandex dot ru
 pkgname=bubblejail
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Bubblewrap based sandboxing utility"
 arch=('any')
@@ -20,7 +20,7 @@ source=(
 # To get the valid GPG key
 # gpg --keyserver https://keys.mailvelope.com/ --search-keys 5A3D06576A6A67443DFBE856F1A55E62951B2143
 validpgpkeys=('5A3D06576A6A67443DFBE856F1A55E62951B2143')
-sha512sums=('29b9d2bb15f4c6d9ed8afd21e59ce5066a0096f51b01383b65b535f7fb8a89650572359d6a593912eee1863dbfec15f738e7fbfc28a6dfc72d7eb6aeb2db5055'
+sha512sums=('f49f74fe65322666a7e4439b56d68c4388c48abcf6dc072165522ee621c67d39df78c2b6ce2970421639d5922efba14bb9902329f31334deb3faf2d19c6c22b9'
             'SKIP')
 
 check () {
