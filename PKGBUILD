@@ -1,8 +1,8 @@
 # Maintainer: Dario Piombo <piombo.dario at gmail dot com>
 
 pkgname=rdm-bin
-pkgver=2020.5
-pkgrel=2
+pkgver=2020.6
+pkgrel=1
 pkgdesc='Cross-platform open source database management tool for Redis ®'
 arch=('x86_64')
 url="https://rdm.dev/"
