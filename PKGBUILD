@@ -13,7 +13,6 @@ arch=('x86_64')
 url='https://discordapp.com/'
 provides=('discord-canary')
 license=('custom')
-makedepends=('asar')
 depends=('gtk3' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'xdg-utils' 'libcups')
 optdepends=('libpulse: For pulseaudio support'
             'noto-fonts-emoji: Google font for emoji support.'

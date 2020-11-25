@@ -5,7 +5,6 @@ pkgbase = discord-canary
 	url = https://discordapp.com/
 	arch = x86_64
 	license = custom
-	makedepends = asar
 	depends = gtk3
 	depends = libnotify
 	depends = libxss
