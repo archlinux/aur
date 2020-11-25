@@ -13,7 +13,7 @@ conflicts=("saluto-lightdm-theme" "saluto-lightdm-theme-git")
 provides=("saluto-lightdm-theme")
 md5sums=(
 	'SKIP' # git repo
-	'ce22e273cd2eed939cd2e33b9f773c75' # dwm.desktop
+	'4b077e28d1dcde5ead555d6f433da37b' # dwm.desktop
 	'6db4d11c5632c5b41bad0ac1b3b581b1' # dwm-lightdm.diff
 	'c7a7e64586bebde20886cc731bf2d38c' # dwm-vue.diff
 	'8f007861efc61ced5abf9ee74030afb9' # dwm.png
