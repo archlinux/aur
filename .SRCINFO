@@ -1,6 +1,6 @@
 pkgbase = liquidctl-git
 	pkgdesc = Cross-platform tool and drivers for liquid coolers and other devices
-	pkgver = 1.4.2.r65.a2ab41e
+	pkgver = 1.4.2.r66.dc74cb2
 	pkgrel = 1
 	url = https://github.com/jonasmalacofilho/liquidctl
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = liquidctl-git
 	depends = python-docopt
 	depends = python-pyusb
 	depends = python-hidapi
-	optdepends = i2c-tools
+	optdepends = i2c-tools: SMBus/I2C devices support
 	provides = liquidctl
 	conflicts = liquidctl
-	source = liquidctl-git::git+https://github.com/jonasmalacofilho/liquidctl.git
+	source = liquidctl-git::git+https://github.com/jonasmalacofilho/liquidctl.git#branch=_tmp
 	sha256sums = SKIP
 
 pkgname = liquidctl-git
