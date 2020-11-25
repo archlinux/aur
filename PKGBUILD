@@ -2,7 +2,7 @@
 pkgname=passdmenu-gen
 pkgver=1.0
 pkgrel=1
-pkgdesc="A dmenu frontend to pass with clipboard and autotype functionality for user and password."
+pkgdesc="A dmenu frontend to pass with clipboard, autotype and generate functionality for user and password."
 arch=(any)
 url="https://github.com/tyjak/passdmenu-gen"
 license=('ISC')
