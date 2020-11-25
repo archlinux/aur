@@ -14,6 +14,6 @@ sha512sums=('6c9195cb0bf2b1254abe92f963e3b17ef69fa826953209cc893165885eb8dcfa17e
 package() {
   tar -xf "$srcdir/data.tar.xz" -C "$pkgdir/"
 
-  mkdir -p "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/bin"
   ln -s /opt/uTools/utools "$pkgdir/usr/bin/utools"
 }
