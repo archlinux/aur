@@ -11,7 +11,7 @@ license=('Unlicense')
 depends=('fcgi' 'openssl' 'sqlite' 'taglib')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/davidgfnet/${pkgname}-cpp/archive/${_commit}.tar.gz"
-        "https://raw.githubusercontent.com/hbristow/argparse/43edb8acf2135509590631a0ac4582e3741016bf/argparse.hpp"
+        "argparse.hpp::https://raw.githubusercontent.com/hbristow/argparse/43edb8acf2135509590631a0ac4582e3741016bf/argparse.hpp"
         "${pkgname}.install"
         "${pkgname}.service"
         "${pkgname}.socket")
