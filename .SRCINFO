@@ -6,6 +6,7 @@ pkgbase = perl-uri-fetch
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	makedepends = perl-test-requiresinternet
 	depends = perl-class-errorhandler
 	depends = perl-uri
 	depends = perl-libwww
