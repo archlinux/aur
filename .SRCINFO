@@ -32,7 +32,6 @@ pkgbase = icecat
 	makedepends = mercurial
 	makedepends = git
 	makedepends = lld
-	makedepends = wget
 	depends = gtk3
 	depends = mozilla-common
 	depends = libxt

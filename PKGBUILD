@@ -16,7 +16,7 @@ depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg nss ttf-font libpulse)
 makedepends=(m4 unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2
-             python nodejs python2-psutil cbindgen nasm wget mercurial git lld wget)
+             python nodejs python2-psutil cbindgen nasm wget mercurial git lld)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
