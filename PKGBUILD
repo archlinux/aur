@@ -5,7 +5,7 @@
 
 pkgname="ices0"
 pkgver=0.4.11
-pkgrel=3
+pkgrel=4
 pkgdesc="A source client for broadcasting in MP3, FLAC, AAC and OGG Vorbis formats to an icecast2 server"
 license=("GPL2")
 arch=("i686" "x86_64" "armv7h")
@@ -16,7 +16,7 @@ optdepends=("flac: flac audio support"
             "libmp4v2: aac audio support"
             "libogg: vorbis audio support"
             "libvorbis: vorbis audio support")
-makedepends=("autoconf" "pkgconf")
+makedepends=("autoconf" "automake" "pkgconf")
 source=("$url/archive/v$pkgver.tar.gz")
 md5sums=("9b599abf4bcd66761fe99c024644f623")
 options=("!docs")
