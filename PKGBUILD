@@ -1,21 +1,21 @@
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 # Maintainer: aksr <aksr at t-com dot me>
-pkgname=u9fs-hg
-pkgver=r11.87c2a420d556
+pkgname=u9fs-git
+pkgver=r37.9639caf
 pkgrel=1
 pkgdesc="Serve 9P from Unix."
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/u9fs/"
 license=('GPL')
-makedepends=('mercurial')
+makedepends=('git')
 provides=('u9fs')
 conflicts=('u9fs')
-source=("$pkgname::hg+https://bitbucket.org/plan9-from-bell-labs/u9fs")
+source=("$pkgname::git+https://bitbucket.org/plan9-from-bell-labs/u9fs")
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
