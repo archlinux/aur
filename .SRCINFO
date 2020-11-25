@@ -1,0 +1,17 @@
+pkgbase = passdmenu-gen
+	pkgdesc = A dmenu frontend to pass with clipboard and autotype functionality for user and password.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/tyjak/passdmenu-gen
+	arch = any
+	license = ISC
+	depends = python
+	depends = xclip
+	depends = dmenu
+	optdepends = xdotool: autotype functionality
+	conflicts = passdmenu
+	source = passdmenu-gen-1.0.tar.gz::https://github.com/tyjak/passdmenu-gen/archive/v1.0.tar.gz
+	sha256sums = b6fa2f690a88b3f8053817db7932467a48e405b06a9792b1b3715ae74929f4c6
+
+pkgname = passdmenu-gen
+
