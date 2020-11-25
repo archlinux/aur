@@ -15,7 +15,7 @@
 pkgname=discord-canary-electron-bin
 _pkgname=discord-canary
 pkgver=0.0.116
-pkgrel=1
+pkgrel=2
 pkgdesc="Discord Canary (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
 provides=('discord-canary')
@@ -54,25 +54,20 @@ package() {
   install -d "$pkgdir"/usr/lib/$_pkgname
   
   # HACKS FOR SYSTEM ELECTRON
-  # Without this it'd fail to launch saying it's missing build_info.json.
-  # Then fail saying it's missing discord.png
-  # So just copy them to the root of the electron folder, so Discord can see them.
-  # This is a little hacky, but lol. I dunno what Discord has against using the system electron
-  # When their own electron is quite broken, to be fair. At least under linux.
-  # No offense to them, though. I still enjoy the app, propietary and all.
   # Thanks to the discord_arch_electron guy for this ;)
   # Thanks to https://aur.archlinux.org/packages/discord_arch_electron/#comment-776307 for the less-hacky fix.
   asar e $_tarname/resources/app.asar $_tarname/resources/app
   sed -i "s|process.resourcesPath|'/usr/lib/$_pkgname'|" $_tarname/resources/app/app_bootstrap/buildInfo.js
   sed -i "s|exeDir,|'/usr/share/pixmaps',|" $_tarname/resources/app/app_bootstrap/autoStart/linux.js
+  asar p $_tarname/resources/app $_tarname/resources/app.asar --unpack-dir '**'
+  rm -rf $_tarname/resources/app 
   
   # Copy relevant data
   cp -r "$_tarname"/resources/*  "$pkgdir"/usr/lib/$_pkgname/
-  rm "$pkgdir"/usr/lib/$_pkgname/app.asar
   
   # Create starter script for discord
   echo "#!/bin/sh" >> "$srcdir"/$_pkgname
-  echo "exec electron /usr/lib/$_pkgname/app \$@" >> "$srcdir"/$_pkgname
+  echo "exec electron /usr/lib/$_pkgname/app.asar \$@" >> "$srcdir"/$_pkgname
   
   install -d "$pkgdir"/usr/{bin,share/{pixmaps,applications}}
   install -Dm 755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
