@@ -1,7 +1,7 @@
 # Maintainer: Gaspard d'Hautefeuille <gaspard@dhautefeuille.eu>
 pkgname=hash-slinger-git
 pkgver=3.0+r10+gf6bd4fd
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to generate special DNS records (SSHFP, TLSA, OPENPGPKEY, IPSECKEY)"
 arch=(any)
 url="https://github.com/letoams/hash-slinger"
@@ -13,6 +13,7 @@ optdepends=('openssh: for sshfp'
             'libreswan: for ipseckey (if not using openswan or strongswan)'
             'openswan: for ipseckey (if not using libreswan or strongswan)'
             'strongswan: for ipseckey (if not using libreswan or openswan)')
+conflicts=(hash-slinger)
 source=(git+https://github.com/letoams/hash-slinger)
 sha256sums=('SKIP')
 
