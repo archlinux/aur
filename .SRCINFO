@@ -1,0 +1,19 @@
+pkgbase = bella-git
+	pkgdesc = Bella renders text to graphics and prints it on a label maker using IPP/CUPS.
+	pkgver = 20201124.42d8158
+	pkgrel = 1
+	url = https://github.com/tv42/bella
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	depends = go
+	depends = git
+	provides = bella
+	conflicts = bella
+	source = git+https://github.com/tv42/bella.git
+	sha256sums = SKIP
+
+pkgname = bella-git
+
