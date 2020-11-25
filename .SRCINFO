@@ -1,0 +1,20 @@
+pkgbase = sandsmark-xdg-autostart-launcher-git
+	pkgdesc = Minimalistic (315 lines of code, no dependencies) XDG compliant autostart launcher
+	pkgver = 10.f5b5758
+	pkgrel = 1
+	url = https://github.com/sandsmark/xdg-autostart-launcher
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	provides = sandsmark-xdg-autostart-launcher
+	provides = xdg-autostart-launcher
+	conflicts = sandsmark-xdg-autostart-launcher
+	conflicts = xdg-autostart-launcher
+	source = git+https://github.com/sandsmark/xdg-autostart-launcher.git
+	md5sums = SKIP
+
+pkgname = sandsmark-xdg-autostart-launcher-git
+
