@@ -1,14 +1,20 @@
 pkgbase = condution-bin
 	pkgdesc = A personal project management system that makes sense and will not burn your pockets out
-	pkgver = 0.2.2.beta.1
+	pkgver = 0.3.2.beta.0
 	pkgrel = 1
 	url = https://condution.shabang.cf
 	arch = x86_64
 	license = GPL3
 	makedepends = gendesk
+	depends = nss
+	depends = dbus-glib
+	depends = gtk2
+	depends = gtk3
+	depends = libxss
+	depends = libdbusmenu-glib
 	provides = condution
-	source = condution-0.2.2-beta.1.AppImage::https://github.com/Shabang-Systems/Condution/releases/download/v0.2.2-beta.1/Condution-0.2.2-beta.1.AppImage
-	sha256sums = dcbf050d2a7adface8e571e4e20d67720fa455047b56ad1a39e85a5841eec166
+	source = condution-0.3.2-beta.0.AppImage::https://github.com/Shabang-Systems/Condution/releases/download/v0.3.2-beta.0/Condution-0.3.2-beta.0.AppImage
+	sha256sums = 653bc3fc73dfdded4d0a57abb32244842f96b4a98e6423b3e5435ee7ebc27ab9
 
 pkgname = condution-bin
 
