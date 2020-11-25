@@ -1,6 +1,6 @@
 pkgbase = monero-feather-git
         pkgdesc = a free Monero desktop wallet
-        pkgver = v0.1.0.0.1ccedea1dd
+        pkgver = v0.1.0.0.70dd25c477
         pkgrel = 1
         url = https://featherwallet.org
         arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = monero-feather-git
         depends = libpgm
         depends = expat
         depends = qt5-base
+        depends = qt5-websockets
         provides = monero-feather-git
         source = monero-feather-git::git+https://git.wownero.com/feather/feather
         sha256sums = SKIP
