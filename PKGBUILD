@@ -14,7 +14,7 @@ sha512sums=('438ed2426479979cd908734b4f7c5c56870cbbcec4365c6ecc9cb86b79a14a37eba
 package() {
   cd "source-han-mono-classic-$_commit"
 
-  mkdir -p "$pkgdir/usr/share/fonts/adobe-source-han-sans"
+  install -dm755 "$pkgdir/usr/share/fonts/adobe-source-han-sans"
   install -Dm644 *.otf "$pkgdir/usr/share/fonts/adobe-source-han-sans/"
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
