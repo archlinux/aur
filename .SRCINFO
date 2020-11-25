@@ -1,6 +1,6 @@
 pkgbase = stmm-input-xi
 	pkgdesc = Device input event library - xi floating keyboards
-	pkgver = 0.17
+	pkgver = 0.18
 	pkgrel = 1
 	url = https://efanomars.com/libraries/stmm-input-xi
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = stmm-input-xi
 	depends = gtkmm3
 	depends = libx11
 	depends = libxi
-	source = https://efanomars.com/sources/stmm-input-xi-0.17.tar.gz
-	sha256sums = ba3e4df967dba91ce61642222d6c5aa45ba3f00b301c023c856912374de95a2c
+	source = https://efanomars.com/sources/stmm-input-xi-0.18.tar.gz
+	sha256sums = 416df04807a2336756710a59991f264c5ce89d03e387225e53d27ff18264de0d
 
 pkgname = stmm-input-xi
 
