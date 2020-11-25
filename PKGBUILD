@@ -3,11 +3,11 @@
 pkgname=roll-rs-git
 _pkgname=roll-rs
 pkgver=r3.34e9c11
-pkgrel=1
+pkgrel=2
 pkgdesc="A rust dice rolling application using the standard dice notation"
 arch=('x86_64')
 url="https://github.com/finitum/roll-rs"
-license=('EUPL-1.1')
+license=('EUPL-1.2')
 conflicts=('dice-roller-git')
 provides=('roll-rs')
 

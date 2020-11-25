@@ -1,10 +1,10 @@
 pkgbase = roll-rs-git
 	pkgdesc = A rust dice rolling application using the standard dice notation
 	pkgver = r3.34e9c11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/finitum/roll-rs
 	arch = x86_64
-	license = EUPL-1.1
+	license = EUPL-1.2
 	makedepends = cargo
 	provides = roll-rs
 	conflicts = dice-roller-git
