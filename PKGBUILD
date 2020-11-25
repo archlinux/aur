@@ -1,8 +1,9 @@
-# Maintainer: Kaare Jenssen <kaare at jenssen dot it>
+# Maintainer: lmartinez-mirror <lmartinez-mirror at no-reply dot github dot com>
+# Contributor: Kaare Jenssen <kaare at jenssen dot it>
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='fd-git'
-pkgver=7.4.0.r13.g762f551
+pkgver=8.1.1.r20.g24402dd
 pkgrel=1
 pkgdesc='A simple, fast and user-friendly alternative to find.'
 arch=('i686' 'x86_64')
@@ -16,9 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-
-  git describe --long --tags \
-    | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -28,7 +27,7 @@ build() {
 
 check() {
   cd $pkgname
-  cargo test --release
+  cargo test --release --locked
 }
 
 package() {
@@ -36,7 +35,8 @@ package() {
   install -Dm755 target/release/fd "$pkgdir"/usr/bin/fd
   install -Dm644 target/release/build/fd-find-*/out/fd.bash "$pkgdir"/usr/share/bash-completion/completions/fd
   install -Dm644 target/release/build/fd-find-*/out/fd.fish "$pkgdir"/usr/share/fish/vendor_completions.d/fd.fish
-  install -Dm644 target/release/build/fd-find-*/out/_fd "$pkgdir"/usr/share/zsh/site-functions/_fd
+  # Zsh script no longer exists in repo
+  # install -Dm644 target/release/build/fd-find-*/out/_fd "$pkgdir"/usr/share/zsh/site-functions/_fd
   install -Dm644 doc/fd.1 "$pkgdir"/usr/share/man/man1/fd.1
   install -Dm644 LICENSE-APACHE "$pkgdir"/usr/share/licenses/fd/LICENSE-APACHE
   install -Dm644 LICENSE-MIT "$pkgdir"/usr/share/licenses/fd/LICENSE-MIT

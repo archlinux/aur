@@ -1,6 +1,6 @@
 pkgbase = fd-git
 	pkgdesc = A simple, fast and user-friendly alternative to find.
-	pkgver = 7.4.0.r13.g762f551
+	pkgver = 8.1.1.r20.g24402dd
 	pkgrel = 1
 	url = https://github.com/sharkdp/fd
 	arch = i686
