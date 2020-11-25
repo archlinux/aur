@@ -1,0 +1,12 @@
+--- GitQlient.pro.old	2020-11-25 09:26:58.952847444 +0700
++++ GitQlient.pro	2020-11-25 09:27:33.766411000 +0700
+@@ -1,9 +1,6 @@
+ #General stuff
+ CONFIG += qt warn_on c++ 17 c++1z
+ 
+-greaterThan(QT_MINOR_VERSION, 12) {
+-!msvc:QMAKE_CXXFLAGS += -Werror
+-}
+ 
+ TARGET = GitQlient
+ QT += widgets core network svg

@@ -9,9 +9,9 @@ pkgbase = gitqlient
 	depends = qt5-base
 	depends = qlogger
 	source = https://github.com/francescmm/GitQlient/archive/v1.2.0.tar.gz
-	source = include.patch
+	source = werror.patch
 	sha256sums = SKIP
-	sha256sums = 0f2467a31bad6609e1f85d1dd4182e4918502d58447703a39d78c7c13532f584
+	sha256sums = 04754fa19b0f9db01f6570f5cf1dd81736f47ee18be0ad3e2b0cceda6200f093
 
 pkgname = gitqlient
 
