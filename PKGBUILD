@@ -2,15 +2,15 @@
 # Maintainer: stefan husmann <stefan-husmann@t-online.de>
 
 pkgname=picpuz
-pkgver=3.1
-pkgrel=3
+pkgver=3.2
+pkgrel=1
 pkgdesc="'jigsaw puzzle' program."
 arch=('i686' 'x86_64')
 url="http://www.kornelix.net/picpuz/picpuz.html"
 license=('GPL3')
 depends=('gtk3')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('36385282d0dbf84ae30422ddaac0b7e5ea47239118f3e6ceb3cccddf3264d3d7')
+sha256sums=('c78339697a37dd9ce7c88bab78ee7a88c18128935e24bb86c6322c7e6b38099e')
 options=('!emptydirs')
 
 build() {
