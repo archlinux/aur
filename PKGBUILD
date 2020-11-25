@@ -40,7 +40,7 @@ package() {
 
   major=$(mountpoint -d / | cut -f 1 -d ':')
   minor=$(mountpoint -d / | cut -f 2 -d ':')
-  device=$(cat /proc/partitions | awk {'if ($1 == "'${major}'" && $2 == "'${minor}'") print $4 '})
+  device=$(cat /proc/partitions | awk {'if ($1 == "'$major'" && $2 == "'$minor'") print $4 '})
   sed "s|%ROOTDEV%|$device|g" boot.txt |
     install -Dm644 /dev/stdin "$pkgdir/boot/boot.txt"
 
