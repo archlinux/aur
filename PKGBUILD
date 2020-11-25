@@ -12,10 +12,11 @@ groups=('')
 depends=('bash-completion' 'python-pip')
 optdepends=("dialog: GUI elements")
 makedepends=("binutils" "tar")
+conflicts=("iicalc-beta")
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("iicalc-$pkgver.deb::https://gitlab.com/TurboWafflz/ImaginaryInfinity-Calculator/-/jobs/artifacts/development/raw/iicalc.deb?job=debian%20packager")
-sha512sums=('590709f5b6bf5a27a1aad31f1d6035352f2fd28de32ce7aa0b6d922774d5747457bbc076e561ba3064b1f5d1df2ded846f384d18fad32b7bddc8a34d2e5f2011')
+sha512sums=('e0c4b4da5fac934711d4b2690b42aede35a7e28dc03e7a0ad50b3ba4757d59e2504c98d3bd30f26fa2574ecab6588e6466ae3b762ad626133ec58e29c077f98e')
 
 package(){
 
