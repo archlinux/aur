@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=datovka
-pkgver=4.15.5
+pkgver=4.15.6
 pkgrel=1
 pkgdesc="GUI application for a 'Databox' - an electronic communication interface endorsed by the Czech government"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('qt5-base' 'qt5-svg' 'libisds' 'openssl' 'hicolor-icon-theme')
 makedepends=('qt5-tools' 'patch')
 source=(https://secure.nic.cz/files/datove_schranky/$pkgver/$pkgname-$pkgver.tar.xz)
-sha256sums=('bea288ff77416274fd3c9a25f56f0ad2283bab83997367a0cb884fc9470ddcd6')
+sha256sums=('c24f6faa4f41eb54da4658c487531c1a51b1f0744e1b9eaa34c5698c53f341e3')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
