@@ -5,7 +5,7 @@
 pkgname=stegify-git
 pkgdesc="Tool for LSB steganography written in Go (git)"
 pkgver=1.2.r2.g62518ca
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/DimitarPetrov/stegify"
 license=('MIT')
@@ -32,6 +32,6 @@ build() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "${pkgname%-git}" -t "$pkgdir/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
