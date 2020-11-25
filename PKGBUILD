@@ -4,7 +4,7 @@
 pkgname=typeracer-git
 _pkgname=terminal-typeracer
 pkgver=2.0.4.r0.gdbc14fc
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal typing speed tester (git)"
 arch=('x86_64')
 url="https://gitlab.com/ttyperacer/terminal-typeracer"
@@ -34,5 +34,5 @@ check() {
 package() {
   cd "$_pkgname"
   install -Dm 755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
