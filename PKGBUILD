@@ -1,8 +1,8 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Daniel Greve <greve.daniel.l@gmail.com>
 
 pkgname=xxd-standalone
-pkgver=8.1.1306
+pkgver=8.2.0854
 pkgrel=1
 pkgdesc="Hexdump utility from vim"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -15,7 +15,7 @@ source=("xxd-${pkgver}.c::https://raw.githubusercontent.com/vim/vim/v${pkgver}/s
         "xxd-${pkgver}.1::https://raw.githubusercontent.com/vim/vim/v${pkgver}/runtime/doc/xxd.1"
         "$pkgname-Makefile::https://raw.githubusercontent.com/vim/vim/master/src/xxd/Makefile"
         "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/xxd-LICENSE")
-sha256sums=('2d4c4f98726467fc023de6d3ca8da3795ec5d8fbf9d92bb8c29d744877d4cbf8'
+sha256sums=('c3ff5f0afc4a9615a2a2ce6b0f0d266397fa3dab3e3ec431564a811df8fba0ad'
             '343f65c3a75affcec6013fb308ae895b4dbded24fd1847b6b97247d343f70f56'
             '96d7229490da56fbf6cae3791407238636b2979e1f607e535f55ec26068303c5'
             '2ac99e6ff2ee077cfec2133d0d5d2d4f14b156994c4c1896703cda98c2d21845')
