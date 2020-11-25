@@ -3,7 +3,7 @@
 
 pkgname=termimage-git
 pkgver=1.1.0.r1.g293528716
-pkgrel=1
+pkgrel=2
 pkgdesc="Display images in your terminal (git)"
 arch=('x86_64')
 url="https://github.com/nabijaczleweli/termimage"
@@ -36,7 +36,7 @@ check() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
-  install -Dm 644 "../${pkgname%-git}-man-v${pkgver%.r*}/${pkgname%-git}.md" -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 "../${pkgname%-git}-man-v${pkgver%.r*}/${pkgname%-git}.md" -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 "../${pkgname%-git}-man-v${pkgver%.r*}/${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
 }

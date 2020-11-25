@@ -1,7 +1,7 @@
 pkgbase = termimage-git
 	pkgdesc = Display images in your terminal (git)
 	pkgver = 1.1.0.r1.g293528716
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nabijaczleweli/termimage
 	arch = x86_64
 	license = MIT
