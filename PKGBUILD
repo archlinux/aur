@@ -1,8 +1,8 @@
 # Maintainer: Asterios Dimitriou <asterios@pci.gr>
 
 pkgname=libqsqlcipher
-_pkgver=5.15-1
-pkgver=5.15.1
+_pkgver=5.15-2
+pkgver=5.15.2
 pkgrel=1
 pkgdesc="Qt5 sqldriver plugin for SQLCipher"
 url="https://github.com/sjemens/qsqlcipher-qt5"
@@ -10,7 +10,7 @@ license=('LGPL3')
 arch=('i686' 'x86_64')
 depends=(qt5-base)
 source=(qsqlcipher-qt5-${_pkgver}.tar.gz::"https://github.com/sjemens/qsqlcipher-qt5/archive/v${_pkgver}.tar.gz")
-sha256sums=('d9e84408226db8e603a09065905c557b2a0468122d42c8fd4a0abf6c61208471')
+sha256sums=('8d259d603a3b24919c5f96beaa0146e4a512028c62bc617a003d42dfa75857f2')
 
 build() {
   rm -rf "${srcdir}/build" && mkdir -p "${srcdir}/build"
