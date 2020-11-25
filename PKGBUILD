@@ -22,18 +22,7 @@ package() {
 
     # Remove conflicting files present in cars pack
     rm cars/phim_stinger/carstealth.bmp
-    rm cars/xm250/car3.bmp
-    rm cars/xm250/car4.bmp
-    rm cars/xm250/car55.bmp
-    rm cars/xm250/car5alt.bmp
-    rm cars/xm250/car6.bmp
-    rm cars/xm250/car70.bmp
-    rm cars/xm250/carfire.bmp
-    rm cars/xm250/carmouse.bmp
-    rm cars/xm250/carsubzero.bmp
-    rm cars/xm250/cartorkse.bmp
-    rm cars/xm250/carudox.bmp
-    rm cars/xm250/carvanguard.bmp
+    rm -r cars/xm250
 
     find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
