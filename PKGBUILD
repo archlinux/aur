@@ -14,15 +14,17 @@ sha512sums=('8c00163df272fd6e93c249501b06e4c1de0c994c8e23426705a1c6dc4131fb06e69
 
 package() {
   cd "$srcdir/l_opencl_p_$pkgver"
+
   bsdtar -xf "rpm/intel-openclrt-$pkgver-"*.rpm
 
-  mkdir -p "$pkgdir/opt"
+  install -dm755 "$pkgdir/opt"
   mv "opt/intel/opencl_compilers_and_libraries_$pkgver" "$pkgdir/opt/intel-cpu-runtime"
 
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   ln -s /opt/intel-cpu-runtime/licensing/* "$pkgdir/usr/share/licenses/$pkgname/"
 
-  mkdir -p "$pkgdir/etc/OpenCL/vendors"
-  sed -i 's|<INSTALLDIR>|/opt/intel-cpu-runtime|g' "$pkgdir/opt/intel-cpu-runtime/linux/etc/intel64.icd"
+  install -dm755 "$pkgdir/etc/OpenCL/vendors"
   ln -s /opt/intel-cpu-runtime/linux/etc/intel64.icd "$pkgdir/etc/OpenCL/vendors/intel64.icd"
+
+  sed -i 's|<INSTALLDIR>|/opt/intel-cpu-runtime|g' "$pkgdir/opt/intel-cpu-runtime/linux/etc/intel64.icd"
 }
