@@ -3,12 +3,11 @@
 pkgname=hamsket-bin
 _pkgname=hamsket
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Forked Free and Open Source messaging and emailing app that combines common web applications into one'
 arch=('x86_64')
 depends=('alsa-lib' 'bash' 'desktop-file-utils' 'gtk2' 'libnotify' 'libxtst' 'libxss' 'nss')
 provides=('hamsket')
-conflicts=('rambox' 'rambox-os-git' 'rambox-bin' 'ramboxpro-bin' 'rambox-os-bin' 'rambox-os')
 url='https://github.com/TheGoddessInari/hamsket'
 license=('GPL3')
 source=("$_pkgname.tar.gz::https://github.com/TheGoddessInari/hamsket/releases/download/$pkgver/hamsket-$pkgver.tar.gz"
