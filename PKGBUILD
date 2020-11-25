@@ -11,6 +11,7 @@ license=('custom')
 makedepends=('git')
 provides=('u9fs')
 conflicts=('u9fs')
+replaces=('u9fs-hg')
 source=("$pkgname::git+https://bitbucket.org/plan9-from-bell-labs/u9fs")
 md5sums=('SKIP')
 
