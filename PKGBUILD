@@ -197,9 +197,9 @@ package_lib32-mesa-llvm(){
    depends=("lib32-libdrm" "lib32-libelf" "lib32-libglvnd" "libomxil-bellagio" "lib32-libunwind" "lib32-libxdamage" "lib32-libxxf86vm" "lib32-llvm-libs"
             "lib32-lm_sensors" "lib32-wayland" "lib32-zstd" "lib32-libxshmfence" "libclc" "lib32-expat" "lib32-vulkan-icd-loader")
    conflicts=("lib32-mesa" "lib32-opencl-mesa" "lib32-vulkan-intel" "lib32-vulkan-radeon" "lib32-vulkan-mesa-layer" "lib32-libva-mesa-driver" "lib32-mesa-vdpau"
-              "lib32-mesa-aco" "lib32-aco-rc" "lib32-mesa-llvm-rc" "lib32-mesa-git")
+              "lib32-mesa-aco" "lib32-mesa-aco-rc" "lib32-mesa-llvm-rc" "lib32-mesa-git")
    replaces=("lib32-mesa" "lib32-opencl-mesa" "lib32-vulkan-intel" "lib32-vulkan-radeon" "lib32-vulkan-mesa-layer" "lib32-libva-mesa-driver" "lib32-mesa-vdpau"
-             "lib32-mesa-aco" "lib32-aco-rc" "lib32-mesa-llvm-rc" "lib32-mesa-git")
+             "lib32-mesa-aco" "lib32-mesa-aco-rc" "lib32-mesa-llvm-rc" "lib32-mesa-git")
    provides=("lib32-mesa" "lib32-opencl-mesa" "lib32-vulkan-intel" "lib32-vulkan-radeon" "lib32-vulkan-driver" "lib32-vulkan-mesa-layer" "lib32-libva-mesa-driver"
              "lib32-mesa-vdpau" "lib32-opengl-driver" "lib32-opencl-driver" "lib32-mesa-libgl")
 

@@ -146,7 +146,7 @@ pkgname = lib32-mesa-llvm
 	conflicts = lib32-libva-mesa-driver
 	conflicts = lib32-mesa-vdpau
 	conflicts = lib32-mesa-aco
-	conflicts = lib32-aco-rc
+	conflicts = lib32-mesa-aco-rc
 	conflicts = lib32-mesa-llvm-rc
 	conflicts = lib32-mesa-git
 	replaces = lib32-mesa
@@ -157,7 +157,7 @@ pkgname = lib32-mesa-llvm
 	replaces = lib32-libva-mesa-driver
 	replaces = lib32-mesa-vdpau
 	replaces = lib32-mesa-aco
-	replaces = lib32-aco-rc
+	replaces = lib32-mesa-aco-rc
 	replaces = lib32-mesa-llvm-rc
 	replaces = lib32-mesa-git
 
