@@ -1,7 +1,7 @@
 pkgbase = tribler
 	pkgdesc = P2P/Bittorrent/YouTube client
 	pkgver = 7.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tribler.org
 	arch = x86_64
 	license = GPL3
@@ -24,6 +24,7 @@ pkgbase = tribler
 	depends = python-pyqt5
 	depends = python-pyqtgraph
 	depends = python-twisted
+	depends = python-yaml
 	depends = vlc
 	provides = tribler
 	conflicts = tribler

@@ -3,7 +3,7 @@
 pkgname=tribler
 _pkgname=tribler
 pkgver=7.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="P2P/Bittorrent/YouTube client"
 arch=("x86_64")
 url="http://tribler.org"
@@ -29,6 +29,7 @@ python-pyopenssl
 python-pyqt5
 python-pyqtgraph
 python-twisted
+python-yaml
 vlc)
 source=(
 https://github.com/Tribler/tribler/releases/download/v$pkgver/Tribler-v$pkgver.tar.xz
