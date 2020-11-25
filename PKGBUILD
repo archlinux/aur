@@ -2,56 +2,62 @@
 # Co-Maintainer: McModder <aur @ modder.pw>
 # PLEASE do not mark it out-of date because "2.xx is released", *2.xx a separate project with same name from other dev team*
 pkgname=tlauncher
-pkgver=1.116.1
+pkgver=1.117.1
 pkgrel=1
 epoch=1
 pkgdesc='TLauncher Legacy is freeware launcher of Minecraft.'
 url='https://tlaun.ch'
 arch=('any')
 license=('GPLv3')
-depends=('java-runtime>=8' 'xorg-xrandr')
+depends=('java-runtime>=8')
+optdepends=('xorg-xrandr: Required for some old Minecraft versions')
 
+_branch='legacy_beta'
 # try to change repo if default sends 404
-_repo="https://tlauncherrepo.com"
-# _repo="https://turikhay.ru/tlauncher"
-# _repo="https://u.tlauncher.ru"
-_librepo='http://u.tlauncher.ru/repo'
-# _librepo='http://repo.tlauncher.ru/repo'
-# _librepo='http://turikhay.ru/tlauncher/repo'
+_repo='https://tlauncherrepo.com'
+# _repo='https://u.tlauncher.ru'
+# _repo='https://tlaun.ch'
+# _repo='https://cdn.turikhay.ru/tlauncher'
+_librepo='https://u.tlauncher.ru/repo/libraries'
+# _librepo='https://tlauncherrepo.com/repo/libraries'
+# _librepo='https://tlaun.ch/repo/libraries'
+# _librepo='https://cdn.turikhay.ru/tlauncher/repo/libraries'
 
-_bootstrap_checksum='972758e1c5cad62861844a94f2830a14c7e795975108cd3d31de729285c53eb6'
-_launcher_checksum='aafd7b2a12af1f2e29acae8ea61cb3d7bd42d6228a2eb0a9aaccb0a1e4331993'
+_bootstrap_checksum='807e5086f0f70ba14baea0e250172ea499ae1e13c84c1736f7ad436a5ccf8cf0'
+_launcher_checksum='74441156d92d4e9f0616c81b8ff6aee87c878c4e814fbf6e1b79213630160839'
 
-source=(#"${_repo}/legacy_beta/bootstrap/${_bootstrap_checksum}.jar"
+source=(#"${_repo}/${_branch}/bootstrap/${_bootstrap_checksum}.jar"
         # Patched bootstrap to allow launching without RW rights (RO only)
         # Pached by TL dev; if you're having questions you can ask it
         # using support email support[at]tlauncher.ru
-        "https://files.modder.pw/mc/tl_bootstrap_1.8.2_patched.jar"
-        "${_repo}/legacy_beta/launcher/${_launcher_checksum}.jar"
+        "https://files.modder.pw/mc/tl/bootstrap-1.9.0-min.jar"
+        # "${_repo}/${_branch}/launcher/${_launcher_checksum}.jar"
+        # AUR custom build (more languages support, separate config)
+        "https://files.modder.pw/mc/tl/launcher-1.117.1-aur.jar"
 
-        "${_librepo}/libraries/org/jdom/jdom/2.0.2/jdom-2.0.2.jar"
-        "${_librepo}/libraries/org/tukaani/xz/1.5/xz-1.5.jar"
-        "${_librepo}/libraries/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.jar"
-        "${_librepo}/libraries/org/apache/commons/commons-compress/1.10/commons-compress-1.10.jar"
-        "${_librepo}/libraries/net/sf/jopt-simple/jopt-simple/4.9/jopt-simple-4.9.jar"
-        "${_librepo}/libraries/commons-io/commons-io/2.5/commons-io-2.5.jar"
-        "${_librepo}/libraries/com/google/code/gson/gson/2.6.2/gson-2.6.2.jar"
-        "${_librepo}/libraries/com/github/zafarkhaja/java-semver/0.9.0/java-semver-0.9.0.jar"
-        "${_librepo}/libraries/com/fasterxml/jackson/core/jackson-core/2.7.3/jackson-core-2.7.3.jar"
-        "${_librepo}/libraries/org/slf4j/slf4j-api/1.7.21/slf4j-api-1.7.21.jar"
-        "${_librepo}/libraries/com/getsentry/raven/raven/7.8.1/raven-7.8.1.jar"
-        "${_librepo}/libraries/com/mojang/authlib/1.5.24/authlib-1.5.24.jar"
-        "${_librepo}/libraries/com/google/guava/guava/14.0/guava-14.0.jar"
-        "${_librepo}/libraries/org/apache/logging/log4j/log4j-api/2.8.1/log4j-api-2.8.1.jar"
-        "${_librepo}/libraries/org/apache/logging/log4j/log4j-core/2.8.1/log4j-core-2.8.1.jar"
-        "${_librepo}/libraries/ru/turikhay/app/nstweaker/1.0/nstweaker-1.0.jar"
-        "${_librepo}/libraries/com/timgroup/java-statsd-client/3.1.0/java-statsd-client-3.1.0.jar"
+        "${_librepo}/org/jdom/jdom/2.0.2/jdom-2.0.2.jar"
+        "${_librepo}/org/tukaani/xz/1.5/xz-1.5.jar"
+        "${_librepo}/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.jar"
+        "${_librepo}/org/apache/commons/commons-compress/1.10/commons-compress-1.10.jar"
+        "${_librepo}/net/sf/jopt-simple/jopt-simple/4.9/jopt-simple-4.9.jar"
+        "${_librepo}/commons-io/commons-io/2.5/commons-io-2.5.jar"
+        "${_librepo}/com/google/code/gson/gson/2.6.2/gson-2.6.2.jar"
+        "${_librepo}/com/github/zafarkhaja/java-semver/0.9.0/java-semver-0.9.0.jar"
+        "${_librepo}/com/fasterxml/jackson/core/jackson-core/2.7.3/jackson-core-2.7.3.jar"
+        "${_librepo}/org/slf4j/slf4j-api/1.7.21/slf4j-api-1.7.21.jar"
+        "${_librepo}/com/getsentry/raven/raven/7.8.1/raven-7.8.1.jar"
+        "${_librepo}/com/mojang/authlib/1.5.24/authlib-1.5.24.jar"
+        "${_librepo}/com/google/guava/guava/14.0/guava-14.0.jar"
+        "${_librepo}/org/apache/logging/log4j/log4j-api/2.8.1/log4j-api-2.8.1.jar"
+        "${_librepo}/org/apache/logging/log4j/log4j-core/2.8.1/log4j-core-2.8.1.jar"
+        "${_librepo}/ru/turikhay/app/nstweaker/1.0/nstweaker-1.0.jar"
+        "${_librepo}/com/timgroup/java-statsd-client/3.1.0/java-statsd-client-3.1.0.jar"
 
+        'tlauncher.install'
         'tlauncher.desktop'
         'tlauncher.bash')
 noextract=("${source[@]##*/}")
-sha256sums=(#"${_bootstrap_checksum}"
-            'b713eb25937d7f0a70a5c8dbd29c511c53f710a63cba6d5f824cc9f4cb9d8a93'
+sha256sums=("${_bootstrap_checksum}"
             "${_launcher_checksum}"
 
             '2bdf7a48fddc9259f5aa420eee328e939d71302a6a1b79a176e4fd47ee988b97'
@@ -72,16 +78,19 @@ sha256sums=(#"${_bootstrap_checksum}"
             '6b4c15577b5256b64c7e3d69dcdbf8d18f17f68ac5928e36936bd6a40a91c218'
             'bbb82aadb5e4209527c15fcc40e514b6f4c921a37bc66b68b3611bec70c538e8'
 
+            '4f601c6973d8d8259f1b9acc782a5f92ba5a040100b2ddf9766bbdaa6a8d8cdd'
             'bbb0eaa8d6714cc1e297d351f8e23acc25c08e4ddaf0bdcd0eb2c5a995c3561a'
-            '724cd1866b16127d93f34d815a581c6fd30086a1313b7ed303e6cdbc78ea7a51')
+            'ee533ebb5ba23496f38065622513cef21ad7f03e19bb68f6d2bae7bc5ca708f5')
+install='tlauncher.install'
 
 package() {
   install -Dm0644 "${srcdir}/tlauncher.desktop" "${pkgdir}/usr/share/applications/tlauncher.desktop"
   install -Dm0755 "${srcdir}/tlauncher.bash" "${pkgdir}/usr/bin/tlauncher"
 
 #  install -Dm0644 "${srcdir}/${_bootstrap_checksum}.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
-  install -Dm0644 "${srcdir}/tl_bootstrap_1.8.2_patched.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
-  install -Dm0644 "${srcdir}/${_launcher_checksum}.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
+  install -Dm0644 "${srcdir}/bootstrap-1.9.0-min.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
+#  install -Dm0644 "${srcdir}/${_launcher_checksum}.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
+  install -Dm0644 "${srcdir}/launcher-1.117.1-aur.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
 
   install -Dm0644 "${srcdir}/jdom-2.0.2.jar" "${pkgdir}/opt/tlauncher/lib/org/jdom/jdom/2.0.2/jdom-2.0.2.jar"
   install -Dm0644 "${srcdir}/xz-1.5.jar" "${pkgdir}/opt/tlauncher/lib/org/tukaani/xz/1.5/xz-1.5.jar"
