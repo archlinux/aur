@@ -8,17 +8,18 @@
 # Contributor: Colin Pitrat <colin.pitrat@gmail.com>
 
 pkgname=openscenegraph-dae
-pkgver=3.6.4
+pkgver=3.6.5
 pkgrel=1
 pkgdesc='Open Source, high performance real-time graphics toolkit'
 url='http://www.openscenegraph.org'
 arch=('x86_64')
 license=('custom:OSGPL')
-depends=('openscenegraph' 'collada-dom')
-makedepends=('cmake' 'libxml2')
+depends=('giflib' 'jasper' 'librsvg' 'xine-lib' 'curl' 'pth')
+makedepends=('cmake' 'libvncserver' 'qt5-base' 'ffmpeg' 'mesa')
+optdepends=('libvncserver' 'gdal' 'openexr' 'poppler-glib' 'qt5-base' 'ffmpeg')
 source=(https://github.com/openscenegraph/OpenSceneGraph/archive/OpenSceneGraph-${pkgver}.tar.gz)
-sha256sums=('81394d1b484c631028b85d21c5535280c21bbd911cb058e8746c87e93e7b9d33')
-sha512sums=('7cb34fc279ba62a7d7177d3f065f845c28255688bd29026ffb305346e1bb2e515a22144df233e8a7246ed392044ee3e8b74e51bf655282d33ab27dcaf12f4b19')
+sha256sums=('aea196550f02974d6d09291c5d83b51ca6a03b3767e234a8c0e21322927d1e12')
+sha512sums=('7002fa30a3bcf6551d2e1050b4ca75a3736013fd190e4f50953717406864da1952deb09f530bc8c5ddf6e4b90204baec7dbc283f497829846d46d561f66feb4b')
 
 build() {
   mkdir -p OpenSceneGraph-OpenSceneGraph-${pkgver}/build
@@ -27,10 +28,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCOLLADA_INCLUDE_DIR=/usr/include/collada-dom2.5 \
-    -DCOLLADA_DYNAMIC_LIBRARY=/usr/lib/libcollada-dom2.5-dp.so \
   ..
-  make osgdb_dae
+  VERBOSE=1 make
 }
 
 package() {
