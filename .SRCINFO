@@ -1,14 +1,14 @@
 pkgbase = python-cattrs
 	pkgdesc = Complex custom class converters for attrs
-	pkgver = 1.0.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/Tinche/cattrs
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/cattrs/cattrs-1.0.0.tar.gz
-	sha256sums = b7ab5cf8ad127c42eefd01410c1c6e28569a45a255ea80ed968511873c433c7a
+	source = https://files.pythonhosted.org/packages/source/c/cattrs/cattrs-1.1.1.tar.gz
+	sha256sums = cd7579ef6ed80993bdd0e24a806493c48576caebd47b7b6ec2cd3cfd0b9a5f72
 
 pkgname = python-cattrs
 
