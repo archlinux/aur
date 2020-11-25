@@ -1,8 +1,7 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
-# Contributor: Morris Jobke <hey AT morrisjobke DOT de>
 
 pkgname=herokuish
-pkgver=0.5.19
+pkgver=0.5.20
 pkgrel=1
 pkgdesc='Utility for emulating Heroku build and runtime tasks in containers'
 arch=('x86_64')
@@ -11,7 +10,7 @@ license=('MIT')
 
 source=("https://github.com/gliderlabs/herokuish/releases/download/v${pkgver}/herokuish_${pkgver}_linux_x86_64.tgz"
         'LICENSE')
-sha256sums=('5c82884c8013e14686face72a97786ddf542c2e27b496016b3e9a18eb0b54d1e'
+sha256sums=('0a9b3486079c06e1a413826b10c94974f04035ecca45a0f8503c15765a419ba5'
             '10265a1dd53faef4513b728a16b1eff3e5d5fc0bacc79e692ede34529bb8d1d1')
 
 package() {
