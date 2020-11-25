@@ -128,7 +128,7 @@ package_libdrm-full() {
 
 	# installing license
 	install -dm755 "${pkgdir}"/usr/share/licenses/${pkgname}-${pkgver}/
-	cp "${srcdir}"/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}-${pkgver}/
+	cp -v "${srcdir}"/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}-${pkgver}/
 }
 
 package_lib32-libdrm-full() {
@@ -148,5 +148,5 @@ package_lib32-libdrm-full() {
 
 	# installing license
 	install -dm755 "${pkgdir}"/usr/share/licenses/${pkgname}-${pkgver}/
-	cp "${srcdir}"/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}-${pkgver}/
+	cp -v "${srcdir}"/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}-${pkgver}/
 }
