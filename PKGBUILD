@@ -4,7 +4,7 @@
 
 pkgname=unimap-git
 pkgver=0.2.0.r0.g48cb688
-pkgrel=1
+pkgrel=2
 pkgdesc="Scan only once by IP address and reduce scan times with Nmap for large amounts of data (git)"
 arch=('x86_64')
 url="https://github.com/Edu4rdSHL/unimap"
@@ -34,5 +34,5 @@ check() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
