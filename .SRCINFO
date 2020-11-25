@@ -1,14 +1,14 @@
 pkgbase = menyoki
 	pkgdesc = Screen{shot,cast} and perform ImageOps on the command line
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/orhun/menyoki
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
 	depends = libx11
-	source = menyoki-0.1.2.tar.gz::https://github.com/orhun/menyoki/archive/v0.1.2.tar.gz
-	sha512sums = e87ed351e934c1dd31e17a2c00aa3bfd6fdb21e8a9ed814b370324d55029747b1cbee678a7d640e20acc50d6a9e43c72b715a0a2d3312955c01ac9253b28ff00
+	source = menyoki-0.1.3.tar.gz::https://github.com/orhun/menyoki/archive/v0.1.3.tar.gz
+	sha512sums = 118698465b0d4ad7f9a8ef1dfbf0bc28faed597f68987754e47cfa10303c84c6c5f75be8a6033cb14ede35e3b5fafa30ff7eab8cb28f17a812981097c49d2819
 
 pkgname = menyoki
 
