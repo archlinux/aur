@@ -9,18 +9,19 @@ pkgrel=1
 arch=('x86_64')
 url="https://github.com/DimitarPetrov/stegify"
 license=('MIT')
-makedepends=('git' 'go')
+makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('a2b0ff8dbe6d6f06d4239446b25fe149df15ea3d995cd2dad48130834c25faaffb1142f72e45bc50ad6d5e38cc48fb9f5652ec7dd6d796f67f33cdef13ada661')
 
 build() {
   cd "$pkgname-$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go get -d ./...
-  go build \
-    -gcflags "all=-trimpath=$PWD" \
-    -asmflags "all=-trimpath=$PWD" \
-    -ldflags "-extldflags $LDFLAGS" \
-    -o "$pkgname" .
+  go build -o "$pkgname" .
 }
 
 package() {
