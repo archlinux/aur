@@ -1,0 +1,16 @@
+pkgbase = rconc-git
+	pkgdesc = a simple RCON client
+	pkgver = v0.2.0.r2.3379d8b
+	pkgrel = 1
+	url = https://git.kasad.com/rconc
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = readline
+	provides = rconc
+	conflicts = rconc
+	source = git+https://git.kasad.com/rconc
+	sha256sums = SKIP
+
+pkgname = rconc-git
+
