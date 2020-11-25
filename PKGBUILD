@@ -70,12 +70,12 @@ package() {
 
 	install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<-EOF
 		[Desktop Entry]
-		Version="$pkgver"
+		Version=1.0
 		Type=Application
 		Name=PyCharm Community EAP
-		Exec="/opt/$pkgname/bin/pycharm.sh" %f
+		Exec=/opt/$pkgname/bin/pycharm.sh %f
 		Icon=pycharm
-		Comment="$pkgdesc"
+		Comment=$pkgdesc
 		Categories=Development;IDE;
 		Terminal=false
 		StartupNotify=true
