@@ -4,19 +4,19 @@
 # Contributor: Franco Iacomella <yaco@gnu.org>
 
 pkgname=synfigstudio-dev
-pkgver=1.3.16
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Professional vector animation program (GUI)"
 arch=(i686 x86_64 armv7 armv8)
 url="https://synfig.org"
 license=('GPL3')
-depends=('gtkmm3' 'synfig-dev' 'sdl_image')
+depends=('gtkmm3' 'synfig-dev>=1.4.0' 'sdl_image')
 makedepends=('openexr' 'imagemagick' 'xorg-fonts-100dpi' 'xorg-fonts-75dpi'
-         'xorg-fonts-misc' 'xorg-fonts-type1' 'intltool' 'etl-dev')
+         'xorg-fonts-misc' 'xorg-fonts-type1' 'intltool' 'etl-dev>=1.4.0')
 conflicts=('synfigstudio')
 provides=('synfigstudio-dev')
 source=("https://github.com/synfig/synfig/archive/v$pkgver.tar.gz")
-sha512sums=('6cf5be662cc5bc26ad27bdc6ea3baae14ce6a100d214c38e873a88c6ad8acf7f7009ac3b09e2ed13c79650e75af5eb8e5d893ad9fd3f57ef1dce339799871381')
+sha512sums=('12688059d8b09739d092b7785f5f10e70e0def21ae00d056229034db1320d94c96d00a7afb8eeab5e968ea067df74f95cc285919b0a0a5ce7a4d4a78256cd3e1')
 
 build() {
   cd "$srcdir"/synfig-$pkgver/synfig-studio
