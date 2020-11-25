@@ -17,7 +17,7 @@ build() {
   cd "$pkgname-$pkgver"
   # TODO: Use `--locked` flag for reproducibility.
   # Tracking issue: https://github.com/AdaShoelace/hadlock/issues/63
-  cargo build --release --all-features
+  cargo build --release
 }
 
 check() {
