@@ -2,13 +2,13 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=god-git
-pkgver=1.10.r0.g9d6fb4b
-pkgrel=2
+pkgver=1.10.r1.gf7c054c
+pkgrel=1
 pkgdesc="Utility for simplifying the Git usage (git)"
 arch=('x86_64')
 url="https://github.com/orhun/god"
 license=('GPL3')
-makedepends=('git' 'go')
+makedepends=('go' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+$url")
@@ -21,12 +21,13 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go get -d ./...
-  go build \
-    -gcflags "all=-trimpath=$PWD" \
-    -asmflags "all=-trimpath=$PWD" \
-    -ldflags "-extldflags $LDFLAGS" \
-    -o "${pkgname%-git}" .
+  go build -o "${pkgname%-git}" .
 }
 
 package() {
