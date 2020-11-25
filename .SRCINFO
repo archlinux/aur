@@ -1,6 +1,6 @@
 pkgbase = grinplusplus-bin
 	pkgdesc = A C++ Grin Node & Wallet For Linux
-	pkgver = 1.1.0
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://grinplusplus.github.io
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = grinplusplus-bin
 	depends = nodejs
 	provides = grinplusplus
 	conflicts = grinplusplus
-	source = grinplusplus-1.1.0.deb::https://github.com/GrinPlusPlus/GrinPlusPlus/releases/download/v1.1.0/GrinPlusPlus.1.1.0.deb
+	source = grinplusplus-1.1.3.deb::https://github.com/GrinPlusPlus/GrinPlusPlus/releases/download/v1.1.3/GrinPlusPlus.1.1.3.deb
 	source = LICENSE::https://github.com/GrinPlusPlus/GrinPlusPlus/raw/master/LICENSE
-	sha256sums = f799f30b62bb85c66d391dad06648a222b6ebba48e1f6e0c05b846c268777ab3
+	sha256sums = ee537af557e1fb05f6b9bea4527d3cccbe2701c34005564ecbf723ef3a946b23
 	sha256sums = a5e9383c3cb97aa3034e5e4bf1c94a71db0c59b3a7ec1fbf198232fb9dcc5e53
 
 pkgname = grinplusplus-bin
