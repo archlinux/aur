@@ -2,50 +2,47 @@
 
 pkgname=uboot-tinkerboard
 pkgver=20.11.0
+_kernel=5.8.18
 pkgrel=1
 pkgdesc="U-Boot for Tinker Board / S"
 arch=('armv7h')
-url="https://github.com/redchenjs/armbian-ci"
+url="https://github.com/armbian/build"
 license=('GPL2')
-makedepends=('curl')
-depends=('uboot-tools')
-provides=('uboot' 'uboot-tinkerboard')
+backup=('boot/boot.txt' 'boot/boot.scr')
+makedepends=('curl' 'uboot-tools')
 install=$pkgname.install
-_kernel=5.8.18
-backup=(
-    'boot/boot.cmd'
-)
 source=(
-    'boot.cmd'
-    "$pkgname.install"
-    "https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-u-boot-current-tinkerboard_$pkgver-trunk_armhf.deb"
+  'mkscr'
+  'boot.txt'
+  "armbian-uboot_$pkgver-$_kernel.deb::https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-u-boot-current-tinkerboard_$pkgver-trunk_armhf.deb"
 )
 sha512sums=(
-    '4aa7a981240add9fdf1e5a14524e2584616e98ae3783c2ed081af441f438ff6fc9ff3b61cc1c7a5c382e42c78c2f2b9a7fa44c0574c16fce89a30466ffc45f08'
-    '6075a797df8ec13ddbad397630d9ee8dac7555611a744315a28ff88f03b1c2a8a2cfc4a49d327b37155bdaa9c64d0b07fe136d4469deeaebe9914072da9c6aee'
-    "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-u-boot-current-tinkerboard_$pkgver-trunk_armhf.deb.sha512sum)"
+  '7046ab4d88efbba636be049be2f660e18c05e48d161d39437c1580b12795ba4d9197ad57ac4572398f80a38d4777507b57228abf4cc41f0081d196ece27ea9d0'
+  '7f6d83d746579f6485c1603389972e9833f4ce0a71fa2b27e2036cf502bacff030d09ba7fc9adbeb5da41b12de2c4d258c1b8aed3862444f703f58e80df5429c'
+  "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-u-boot-current-tinkerboard_$pkgver-trunk_armhf.deb.sha512sum)"
 )
 noextract=("${source[@]##*/}")
 
 prepare() {
-    cd "$srcdir"
+  cd "$srcdir"
 
-    rm -rf $(find -mindepth 1 -maxdepth 1 -type d)
+  rm -rf $(find -mindepth 1 -maxdepth 1 -type d)
 }
 
 package() {
-    cd "$srcdir"
+  cd "$srcdir"
 
-    ar x "linux-u-boot-current-tinkerboard_$pkgver-trunk_armhf.deb"
-    tar -xf data.tar.xz
+  ar x "armbian-uboot_$pkgver-$_kernel.deb"
+  tar -xf data.tar.xz
 
-    mkdir -p "$pkgdir/usr/lib"
-    mv "usr/lib/u-boot" "$pkgdir/usr/lib/u-boot"
+  install -Dm755 mkscr "$pkgdir/boot/mkscr"
+  install -Dm644 "usr/lib/linux-u-boot-current-tinkerboard_$pkgver-trunk_armhf/u-boot-rockchip-with-spl.bin" "$pkgdir/boot/rksd_loader.img"
 
-    install -Dm644 boot.cmd "$pkgdir/boot/boot.cmd"
-    install -Dm644 "usr/lib/linux-u-boot-current-tinkerboard_$pkgver-trunk_armhf/u-boot-rockchip-with-spl.bin" "$pkgdir/usr/lib/u-boot/u-boot-rockchip-with-spl.bin"
+  major=$(mountpoint -d / | cut -f 1 -d ':')
+  minor=$(mountpoint -d / | cut -f 2 -d ':')
+  device=$(cat /proc/partitions | awk {'if ($1 == "'${major}'" && $2 == "'${minor}'") print $4 '})
+  sed "s|%ROOTDEV%|$device|g" boot.txt |
+    install -Dm644 /dev/stdin "$pkgdir/boot/boot.txt"
 
-    sed -i 's# > /dev/null 2>&1.*##' "$pkgdir/usr/lib/u-boot/platform_install.sh"
-    sed -i 's#DIR=.*#DIR=/usr/lib/u-boot#' "$pkgdir/usr/lib/u-boot/platform_install.sh"
-    echo 'write_uboot_platform $DIR $1' >> "$pkgdir/usr/lib/u-boot/platform_install.sh"
+  mkimage -A arm -O linux -T script -C none -n "U-Boot boot script" -d boot.txt "$pkgdir/boot/boot.scr"
 }

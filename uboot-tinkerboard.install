@@ -1,17 +1,25 @@
+flash_uboot() {
+  echo "A new U-Boot version needs to be flashed onto /dev/mmcblk0."
+  echo "Do you want to do this now? [y|N]"
+  read -r shouldwe
+  if [[ $shouldwe =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    dd if=/dev/zero of=/dev/mmcblk0 bs=1k count=1023 seek=1 status=noxfer
+    dd if=/boot/rksd_loader.img of=/dev/mmcblk0 seek=64 conv=notrunc
+  else
+    echo "You can do this later by running:"
+    echo "# dd if=/dev/zero of=/dev/mmcblk0 bs=1k count=1023 seek=1 status=noxfer"
+    echo "# dd if=/boot/rksd_loader.img of=/dev/mmcblk0 seek=64 conv=notrunc"
+    echo "# if you are using the emmc interface, take care to use the correct device identifier! (probably mmcblk1)"
+  fi
+}
+
+## arg 1:  the new package version
 post_install() {
-  echo '# WARNING!!!'
-  echo '# Make sure there are 4 Mebibytes of unallocated space before the first partition!'
-  echo '# Otherwise the partition data will be destroyed!'
-  echo '#'
-  echo '# Install U-Boot to SD / MMC card with:'
-  echo '# sudo sh /usr/lib/u-boot/platform_install.sh /dev/mmcblkX'
-  mkimage -C none -A arm -T script -d /boot/boot.cmd /boot/boot.scr > /dev/null 2>&1
+  flash_uboot
 }
 
+## arg 1:  the new package version
+## arg 2:  the old package version
 post_upgrade() {
-  post_install
-}
-
-pre_remove() {
-  rm -f /boot/boot.scr
+  flash_uboot
 }
