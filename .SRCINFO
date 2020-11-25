@@ -1,12 +1,12 @@
 pkgbase = amf-headers
 	pkgdesc = Header files for AMD Advanced Media Framework
-	pkgver = 1.4.16.1
+	pkgver = 1.4.18
 	pkgrel = 1
 	url = https://github.com/GPUOpen-LibrariesAndSDKs/AMF/
 	arch = any
 	license = MIT
-	source = amf-headers-1.4.16.1.tar.gz::https://github.com/GPUOpen-LibrariesAndSDKs/AMF/archive/1.4.16.1.tar.gz
-	sha256sums = 347ee0adcbd600b4d86faf62b98571d22e8f20b8c803a263a825ee3886e631e4
+	source = https://github.com/GPUOpen-LibrariesAndSDKs/AMF/archive/v1.4.18/amf-headers-1.4.18.tar.gz
+	sha256sums = 4f21ee07c8bb9b73ff48dbce7cb0917cdcd4d81d33333da391d97ce7f00642fe
 
 pkgname = amf-headers
 
