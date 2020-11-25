@@ -15,14 +15,14 @@ sha512sums=('8ab90817a780bb69c060482fce9c9e501eac8ff8e73cff4b964e08334a5ce506ef0
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked --all-features
+  cargo build --release --locked
 }
 
 check() {
   cd "$pkgname-$pkgver"
   # TODO: add `--release` flag after new release
   # https://github.com/Skallwar/suckit/commit/d9c17d9ec2459732ca0dee7b057002ecf7efd04a
-  cargo test --locked --all-features
+  cargo test --locked
 }
 
 package() {
