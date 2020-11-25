@@ -14,7 +14,7 @@ sha512sums=('SKIP')
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked --all-features
+  cargo build --release --locked
 }
 
 check() {
