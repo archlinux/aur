@@ -3,7 +3,7 @@
 
 pkgbase='monero-feather-git'
 pkgname='monero-feather-git'
-pkgver='v0.1.0.0.b756ba53d4'
+pkgver='v0.1.0.0.841739cee9'
 pkgrel='1'
 pkgdesc='a free Monero desktop wallet'
 license=('BSD')
@@ -19,6 +19,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/${pkgname}"
+  git submodule update --init --recursive
   mkdir build
   cd build
   cmake ..
