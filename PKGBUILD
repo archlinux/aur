@@ -3,7 +3,7 @@
 pkgname=prometheus-apcupsd-exporter
 _pkgname=apcupsd_exporter
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Prometheus exporter for apcupsd metrics"
 arch=(x86_64)
 url="https://github.com/mdlayher/apcupsd_exporter"
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sysusers")
 b2sums=('1088e2ea94566b68ed021216d62d405e802ffd575c6ea26f9ebd6d2910091876d80a19e5ffdd58cb3c3cd0e74710c1831606bdc2040b3390e0a537c72e52c2a8'
         '2159bae9adb5a5af4bdec96a593a1988ebb80c3716284fe9c7d765f8ca10992c5db877d395ced0a5bace3e075145ebc2a50f02eb0f11bda7ba145e0fa98c8e43'
-        '11728a44727abb45ca975da8f23e7ecd847d37d6cbf8ef464e8ec26d1abd6b250499e12c9fed87b5b481f3af31e7df6b2d76781bf35dc612a7cf0b683fdc61b4'
+        'b5b50dc0b5d707c338268f9b0265deeffa4e1ec87cb12b8520248205e809c569e84dedd69dd4118a0fb97bff6d7c213275dce3bc911ddfc2243769ebf7bdaf0e'
         '1a9e982c7bed03f2f29e45d40374044860aa6e05f877a66ce8900c6a088eddd2f30dc8335be3690edb410ab780ef655d402a528214e0b676da684536f9ae6687')
 
 prepare() {
