@@ -1,7 +1,7 @@
 pkgbase = tlauncher
 	pkgdesc = TLauncher Legacy is freeware launcher of Minecraft.
 	pkgver = 1.117.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://tlaun.ch
 	install = tlauncher.install
@@ -54,7 +54,7 @@ pkgbase = tlauncher
 	source = tlauncher.desktop
 	source = tlauncher.bash
 	sha256sums = 807e5086f0f70ba14baea0e250172ea499ae1e13c84c1736f7ad436a5ccf8cf0
-	sha256sums = 74441156d92d4e9f0616c81b8ff6aee87c878c4e814fbf6e1b79213630160839
+	sha256sums = 6f98b4c16845fd6138bb945078e39dd97275544fb4b69d48c933de233924b090
 	sha256sums = 2bdf7a48fddc9259f5aa420eee328e939d71302a6a1b79a176e4fd47ee988b97
 	sha256sums = 86f30fa8775fa3a62cdb39d1ed78a6019164c1058864048d42cbee244e26e840
 	sha256sums = 734c8356420cc8e30c795d64fd1fcd5d44ea9d90342a2cc3262c5158fbc6d98b
