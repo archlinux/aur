@@ -14,6 +14,7 @@ pkgbase = asus-nb-ctrl-git
 	depends = systemd
 	optdepends = hid-asus-rog-dkms-git: fn+key combination support
 	optdepends = asus-rog-nb-wmi-dkms-git: G14/G15 support
+	optdepends = linux-g14: same functions as dkms modules
 	optdepends = acpi_call: fan control
 	provides = asus-nb-ctrl
 	source = git+https://gitlab.com/asus-linux/asus-nb-ctrl.git

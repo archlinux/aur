@@ -10,8 +10,9 @@ license=('Mozilla Public License Version 2.0')
 depends=('libusb' 'udev' 'systemd')
 optdepends=('hid-asus-rog-dkms-git: fn+key combination support'
 	'asus-rog-nb-wmi-dkms-git: G14/G15 support'
+	'linux-g14: same functions as dkms modules'
 	'acpi_call: fan control')
-makedepends=('git' 'rust' 'clang' 'glibc')
+makedepends=('git' 'rust')
 provides=('asus-nb-ctrl')
 source=('git+https://gitlab.com/asus-linux/asus-nb-ctrl.git')
 md5sums=('SKIP')
