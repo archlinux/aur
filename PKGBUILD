@@ -25,10 +25,11 @@ pkgname="qt-sdk"
 _building=true
 
 # Options
+_opengl_variant="desktop"
 _target_host=true
 _sysroot=""
 _piver=""
-_use_mesa=false
+_use_mesa=true
 _float=false
 _shadow_build=true
 # automatically disabled if you are building webengine
@@ -82,6 +83,36 @@ if $_building && [[ -n $LOCAL_PI_VER ]]; then
     echo "You have to set a valid sysroot to proceed with the build"
     exit 1
   fi
+
+  _pkgname="${_pkgname}-rpi${_piver}"
+  _target_host=false
+  _mkspec="linux-rpi${_piver}-g++"
+  _opengl_variant="es2"
+  case ${_piver} in
+    0)
+    ;&
+    1)
+      _toolchain_name=armv6-rpi-linux-gnueabihf
+      _toolchain="/opt/${_toolchain_name}/bin/${_toolchain_name}-"
+      _float=true
+    ;;
+    2)
+      _toolchain_name=arm-cortexa9_neon-linux-gnueabihf
+      _toolchain="/opt/x-tools/${_toolchain_name}/bin/${_toolchain_name}-"
+      _float=true
+    ;;
+    3)
+      _toolchain_name=aarch64-rpi3-linux-gnu
+      _toolchain="/opt/x-tools/${_toolchain_name}/bin/${_toolchain_name}-"
+    ;;
+    4)
+      _toolchain="${HOME}/x-tools/aarch64-spudd-linux-gnu/bin/aarch64-spudd-linux-gnu-"
+    ;;
+    *)
+      echo "Unsupported pi variant; add support"
+      exit 1
+    ;;
+  esac
 fi
 
 # vars
@@ -90,7 +121,7 @@ _local_qt5_repo="${local_qt5_repo}"
 _pkgvermajmin="6.0"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
-_dev_suffix="beta5"
+_dev_suffix="rc"
 pkgrel=0
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
@@ -102,76 +133,13 @@ __pkgconfigpath=${_sysroot}/usr/lib/pkgconfig
 __eglpkgconfigpath="${__pkgconfigpath}/egl.pc"
 __glespkgconfigpath="${__pkgconfigpath}/glesv2.pc"
 
-#_opengl_variant="desktop"
-if [ -n "${_piver}" ]; then
-  _opengl_variant="es2"
-fi
-
 _overwrite_mkspec=true
-_mkspec="linux-rpi${_piver}-g++"
-case ${_piver} in
-1)
-  _toolchain_name=armv6-rpi-linux-gnueabihf
-  _toolchain="/opt/${_toolchain_name}/bin/${_toolchain_name}-"
-  _float=true
-  # too problematic for me to care about
-  #_float=true
-;;
-2)
-  #_toolchain_name=armv7-rpi2-linux-gnueabihf
-  #_toolchain="/opt/${_toolchain_name}/bin/${_toolchain_name}-"
-  # eats shit when linking artriculate with ltcg
-  _toolchain_name=arm-cortexa9_neon-linux-gnueabihf
-  _toolchain="/opt/x-tools/${_toolchain_name}/bin/${_toolchain_name}-"
-  _float=true
-  #_mkspec="linux-rpi${_piver}-vc4-g++"
-  #_use_mesa=true
-;;
-3)
-  _toolchain_name=aarch64-rpi3-linux-gnu
-  _toolchain="/opt/x-tools/${_toolchain_name}/bin/${_toolchain_name}-"
-  _use_mesa=true
-  # just for projectmofo!
-  #_opengl_variant="desktop"
-;;
-4)
-  # yuck; here lies tinkerboard until I find a better way of generalizing this
-  #_toolchain="/opt/gcc-arm-8.2-2019.01-x86_64-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-"
-  _toolchain="${HOME}/x-tools/aarch64-spudd-linux-gnu/bin/aarch64-spudd-linux-gnu-"
-  
-  # upstream mkspec is 32 bit
-  #_mkspec="linux-rasp-pi4-v3d-g++"
-  #_overwrite_mkspec=false
-
-  _use_mesa=true
-;;
-5)
-  # https://developer.nvidia.com/embedded/dlc/kernel-gcc-6-4-tool-chain
-  # took forever to find one that worked
-  #_toolchain="/usr/bin/aarch64-linux-gnu-"
-  _toolchain="/opt/gcc-linaro-6.4.1-2017.08-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-"
-  _mkspec="linux-jetson-nano-g++"
-  _opengl_variant="desktop"
-;;
-
-esac
-
-if $_target_host; then
-  _use_mesa=true
-elif [[ "${_piver}" = "4" ]]; then
-  echo ""
-elif [[ "${_piver}" = "5" ]]; then
-  echo ""
-else
-  depends=("qpi${_piver}-toolchain")
-fi
 
 if [[ -z "${_dev_suffix}" ]]; then _release_type="official_releases"; fi
 
 $_build_from_local_src_tree && _patching=false
 
-# PKGBUILD vars
-
+# Qt Creator integration at install broken
 #install=qpi.install
 
 #rm $install
@@ -265,14 +233,9 @@ if $_uber_minimal; then
     "
 fi
 
-if ! $_static_build && ! $_target_host; then
-    _additional_configure_flags="$_additional_configure_flags \
-        -hostprefix ${_installprefix} \
-    "
-fi
-
 #-journald \
 _core_configure_options=" \
+                 -qt-harfbuzz \
                  -qt-pcre \
                  -pkg-config \
                  -prefix ${_installprefix} \
@@ -289,8 +252,7 @@ _core_configure_options=" \
                  -reduce-exports \
         "
 
-#_tar_xz_sha256="94a02e3e1879f7492340de675b65b9b98a671698063d28c97e91b78098724548"
-_tar_xz_sha256="0955320341731051d682e155d4f1252453f933725fb140a7606c3482cafea3b4"
+_tar_xz_sha256="d5ec639f23ac314f7a4b97f305195a6e2d22a859bd750d9fa81ad537c094e412"
 
 source=("git://github.com/sirspudd/mkspecs.git")
 sha256sums=("SKIP")
@@ -380,7 +342,7 @@ fi
 
 if ! $_target_host && $_overwrite_mkspec; then
   # Get our mkspec
-  mkdir $_mkspec_dir
+  mkdir -p $_mkspec_dir
   rsync -r ${srcdir}/mkspecs/${_mkspec}/ $_mkspec_dir/
 fi
 
@@ -423,8 +385,8 @@ fi
   local _configure_line_fn=configure_line
   echo ${_configure_line} > ${_configure_line_fn}
   set &> configure_env
-  ${_configure_line} || exit 1
-  ninja all || exit 1
+  ${_configure_line}
+  cmake --build . --parallel
 }
 
 create_install_script() {
