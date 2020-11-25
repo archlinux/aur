@@ -25,6 +25,7 @@ pkgbase = monero-feather-git
         depends = expat
         depends = qt5-base
         depends = qt5-websockets
+        depends = tor
         provides = monero-feather-git
         source = monero-feather-git::git+https://git.wownero.com/feather/feather
         sha256sums = SKIP
