@@ -18,7 +18,7 @@ package() {
   bsdtar -xf "rpm/intel-openclrt-$pkgver-"*.rpm
 
   install -dm755 "$pkgdir/opt"
-  mv "opt/intel/opencl_compilers_and_libraries_$pkgver" "$pkgdir/opt/intel-cpu-runtime"
+  cp -r "opt/intel/opencl_compilers_and_libraries_$pkgver" "$pkgdir/opt/intel-cpu-runtime"
 
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   ln -s /opt/intel-cpu-runtime/licensing/* "$pkgdir/usr/share/licenses/$pkgname/"
