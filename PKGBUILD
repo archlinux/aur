@@ -4,7 +4,7 @@
 pkgname=typeracer-bin
 _pkgname=terminal-typeracer
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal typing speed tester"
 arch=('x86_64')
 url="https://gitlab.com/ttyperacer/terminal-typeracer"
@@ -19,5 +19,5 @@ sha512sums_x86_64=('623cdcf28d1218ac74fe968ecc349fdc612b5934f3646e96a76857cafd63
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "$pkgdir/usr/bin/${pkgname%-bin}"
-  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
+  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
