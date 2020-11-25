@@ -1,0 +1,3 @@
+post_remove() {
+  rm -f boot/initramfs-linux.img
+}

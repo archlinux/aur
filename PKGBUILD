@@ -3,75 +3,102 @@
 pkgbase=linux-rockchip
 pkgname=('linux-rockchip' 'linux-rockchip-headers')
 pkgver=5.8.18
+_armbian=20.11.0
+_kernver="$pkgver-rockchip"
 pkgrel=1
-pkgdesc="Rockchip Linux kernel and modules from Armbian"
 arch=('armv7h')
-url="https://github.com/redchenjs/armbian-ci"
+_desc="ARMv7 multi-platform Rockchip"
+url="https://github.com/armbian/build"
 license=('GPL2')
 makedepends=('curl')
 options=('!strip')
-_armbian=20.11.0
 source=(
-    'mkinitcpio.preset'
-    "https://github.com/redchenjs/armbian-ci/releases/download/v$pkgver-rockchip/linux-dtb-current-rockchip_$_armbian-trunk_armhf.deb"
-    "https://github.com/redchenjs/armbian-ci/releases/download/v$pkgver-rockchip/linux-image-current-rockchip_$_armbian-trunk_armhf.deb"
-    "https://github.com/redchenjs/armbian-ci/releases/download/v$pkgver-rockchip/linux-headers-current-rockchip_$_armbian-trunk_armhf.deb"
+  "linux.preset"
+  "60-linux.hook"
+  "90-linux.hook"
+  "linux-dtb_$_armbian-$pkgver.deb::https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-dtb-current-rockchip_$_armbian-trunk_armhf.deb"
+  "linux-image_$_armbian-$pkgver.deb::https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-image-current-rockchip_$_armbian-trunk_armhf.deb"
+  "linux-headers_$_armbian-$pkgver.deb::https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-headers-current-rockchip_$_armbian-trunk_armhf.deb"
 )
 sha512sums=(
-    '4e479e5c010c5cd6105b104419bbf1886a60174535d17a34ae457f2744598d0f1c4e2b24dc989c038fa2c51b3d076e0acd3210e1492a87db68b1d43840e11e8a'
-    "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$pkgver-rockchip/linux-dtb-current-rockchip_$_armbian-trunk_armhf.deb.sha512sum)"
-    "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$pkgver-rockchip/linux-image-current-rockchip_$_armbian-trunk_armhf.deb.sha512sum)"
-    "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$pkgver-rockchip/linux-headers-current-rockchip_$_armbian-trunk_armhf.deb.sha512sum)"
+  "a492aae17ee4a316ce03faf9f1b284b2529c485f4b092cc4a1f865a6c68d482fd356fd30efa296c116975a3bdf3922f5bf03912a8d0e76f4ab24aa6ab9f8c276"
+  "7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a"
+  "a8fc668de860cf7b44269e35f879d130ccbc7db84d159ffcac6a92c02324f09c08fb57cccad18332f423bf2153c928633fa681ee96482c778dc76bffe80dd4f5"
+  "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-dtb-current-rockchip_$_armbian-trunk_armhf.deb.sha512sum)"
+  "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-image-current-rockchip_$_armbian-trunk_armhf.deb.sha512sum)"
+  "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-headers-current-rockchip_$_armbian-trunk_armhf.deb.sha512sum)"
 )
 noextract=("${source[@]##*/}")
 
 prepare() {
-    cd "$srcdir"
+  cd "$srcdir"
 
-    rm -rf $(find -mindepth 1 -maxdepth 1 -type d)
+  rm -rf $(find -mindepth 1 -maxdepth 1 -type d)
 }
 
 package_linux-rockchip() {
-    optdepends=('mkinitcpio: initramfs support')
-    provides=('linux' 'linux-rockchip')
+  pkgdesc="The Linux Kernel and modules - $_desc"
+  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
+  optdepends=('crda: to set the correct wireless channels of your country')
+  backup=("etc/mkinitcpio.d/$pkgbase.preset")
+  provides=("linux=$pkgver" "WIREGUARD-MODULE")
+  conflicts=('linux')
+  install="$pkgname.install"
 
-    cd "$srcdir"
+  cd "$srcdir"
 
-    ar x "linux-dtb-current-rockchip_$_armbian-trunk_armhf.deb"
-    tar -xf data.tar.xz
-    ar x "linux-image-current-rockchip_$_armbian-trunk_armhf.deb"
-    tar -xf data.tar.xz
+  ar x "linux-dtb_$_armbian-$pkgver.deb"
+  tar -xf data.tar.xz
+  ar x "linux-image_$_armbian-$pkgver.deb"
+  tar -xf data.tar.xz
 
-    mkdir -p "$pkgdir/usr"
-    mv lib "$pkgdir/usr/lib"
+  install -dm755 "$pkgdir/usr"
+  cp -r lib "$pkgdir/usr/lib"
 
-    mkdir -p "$pkgdir/boot"
-    mv "boot/dtb-$pkgver-rockchip" "$pkgdir/boot/dtb"
+  install -Dm644 "boot/vmlinuz-$_kernver" "$pkgdir/boot/zImage"
+  cp -r "boot/dtb-$_kernver" "$pkgdir/boot/dtb"
 
-    echo "$pkgbase" > "$pkgdir/usr/lib/modules/$pkgver-rockchip/pkgbase"
-    install -Dm644 "boot/vmlinuz-$pkgver-rockchip" "$pkgdir/usr/lib/modules/$pkgver-rockchip/vmlinuz"
+  # make room for external modules
+  local _extramodules="extramodules-$_kernver"
+  ln -s "../$_extramodules" "$pkgdir/usr/lib/modules/$_kernver/extramodules"
 
-    install -Dm644 "mkinitcpio.preset" "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
-    sed -r -i "s#\\\$pkgbase#$pkgbase#g" "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
+  # add real version for building modules and running depmod from hook
+  echo "$_kernver" |
+    install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules/$_extramodules/version"
+
+  # sed expression for following substitutions
+  local _subst="
+    s|%PKGBASE%|$pkgbase|g
+    s|%KERNVER%|$_kernver|g
+    s|%EXTRAMODULES%|$_extramodules|g
+  "
+
+  # install mkinitcpio preset file
+  sed "$_subst" ../linux.preset |
+    install -Dm644 /dev/stdin "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
+
+  # install pacman hooks
+  sed "$_subst" ../60-linux.hook |
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/libalpm/hooks/60-$pkgbase.hook"
+  sed "$_subst" ../90-linux.hook |
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/libalpm/hooks/90-$pkgbase.hook"
 }
 
 package_linux-rockchip-headers() {
-    pkgdesc="Headers and scripts for building modules for the $pkgbase kernel"
-    provides=('linux-headers' 'linux-headers-rockchip')
+  pkgdesc="Header files and scripts for building modules for linux kernel - $_desc"
+  provides=("linux-headers=$pkgver")
+  conflicts=('linux-headers')
 
-    cd "$srcdir"
+  cd "$srcdir"
 
-    ar x "linux-image-current-rockchip_$_armbian-trunk_armhf.deb"
-    tar -xf data.tar.xz
-    ar x "linux-headers-current-rockchip_$_armbian-trunk_armhf.deb"
-    tar -xf data.tar.xz
+  ar x "linux-image_$_armbian-$pkgver.deb"
+  tar -xf data.tar.xz
+  ar x "linux-headers_$_armbian-$pkgver.deb"
+  tar -xf data.tar.xz
 
-    mkdir -p "$pkgdir/usr/lib/modules/$pkgver-rockchip"
-    mv "usr/src/linux-headers-$pkgver-rockchip" "$pkgdir/usr/lib/modules/$pkgver-rockchip/build"
+  install -dm755 "$pkgdir/usr/lib/modules/$_kernver"
+  cp -r "usr/src/linux-headers-$_kernver" "$pkgdir/usr/lib/modules/$_kernver/build"
 
-    install -Dm644 "boot/config-$pkgver-rockchip" "$pkgdir/usr/lib/modules/$pkgver-rockchip/build/.config"
-    install -Dm644 "boot/System.map-$pkgver-rockchip" "$pkgdir/usr/lib/modules/$pkgver-rockchip/build/System.map"
-
-    mkdir -p "$pkgdir/usr/src"
-    ln -s "../lib/modules/$pkgver-rockchip/build" "$pkgdir/usr/src/$pkgbase"
+  install -Dm644 "boot/config-$_kernver" "$pkgdir/usr/lib/modules/$_kernver/build/.config"
+  install -Dm644 "boot/System.map-$_kernver" "$pkgdir/usr/lib/modules/$_kernver/build/System.map"
 }
