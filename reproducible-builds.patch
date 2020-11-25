@@ -1,0 +1,20 @@
+diff -Naur package.orig/CMakeLists.txt package.new/CMakeLists.txt
+--- package.orig/CMakeLists.txt
++++ package.new/CMakeLists.txt
+@@ -862,6 +862,16 @@
+   set(VAMPIRE_BINARY_REV_COUNT "_${GIT_REV_COUNT}")
+ endif()
+ 
++set(VAMPIRE_AUR_GIT_COMMIT_DESCRIPTION "" CACHE STRING "Overwrite the automatically generated commit description")
++set(VAMPIRE_BINARY_BUILD "")
++set(VAMPIRE_BINARY_STATIC "")
++set(VAMPIRE_BINARY_Z3 "")
++set(VAMPIRE_BINARY_HASH "")
++set(VAMPIRE_BINARY_BRANCH "")
++set(VAMPIRE_BINARY_REV_COUNT "")
++set(GIT_COMMIT_DESCRIPTION "${VAMPIRE_AUR_GIT_COMMIT_DESCRIPTION}")
++target_compile_options(vampire PUBLIC "-fmacro-prefix-map=${CMAKE_SOURCE_DIR}=.")
++
+ ################# set binary name #######################
+ set(VAMPIRE_BINARY "vampire${VAMPIRE_BINARY_Z3}${VAMPIRE_BINARY_BUILD}${VAMPIRE_BINARY_STATIC}${VAMPIRE_BINARY_BRANCH}${VAMPIRE_BINARY_REV_COUNT}")
+ message(STATUS "Setting binary name to " "${VAMPIRE_BINARY}")
