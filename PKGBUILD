@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=metR
-_cranver=0.8.0
+_cranver=0.9.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(GPL3)
 depends=('r>=2.10' r-checkmate r-data.table r-digest r-fields r-formula r-formula.tools 'r-ggplot2>=3.0.0' r-gtable r-lubridate r-memoise r-plyr r-scales r-sp r-stringr r-purrr r-rcurl r-isoband)
 optdepends=(r-maps r-maptools r-covr r-irlba r-knitr r-ncdf4 r-pkgdown r-reshape2 r-rmarkdown r-testthat r-viridis r-udunits2 r-gridextra r-vdiffr r-proj4 r-kriging r-raster r-rgdal)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('f8bfe5b25dd857b1a6d351c50c3d55e2ba2270e56c2300278d339e95fad33f53')
+sha256sums=('31afe5740ab4e3477e9cfed37a86bb5aa0d0c82753263969231ec0c4a8b40f69')
 
 build() {
   cd "${srcdir}"
