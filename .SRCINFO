@@ -1,0 +1,17 @@
+pkgbase = faq-bin
+	pkgdesc = More flexible jq. Supports BSON, Bencode, JSON, TOML, XML, YAML
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/jzelinskie/faq
+	arch = x86_64
+	license = APACHE
+	depends = jq
+	provides = faq
+	conflicts = faq
+	source = faq-0.0.6-readme::https://github.com/jzelinskie/faq/raw/0.0.6/README.md
+	sha256sums = af63ea88fe0a540f6c23d29866d6d5249699347e5f6b4ada3da97a72e8703197
+	source_x86_64 = faq-0.0.6-x86_64::https://github.com/jzelinskie/faq/releases/download/0.0.6/faq-linux-amd64
+	sha256sums_x86_64 = 53360a0d22b0608d5e29f8e84450f2fdc94573246fb552896afedbf8f1687981
+
+pkgname = faq-bin
+
