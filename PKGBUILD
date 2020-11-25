@@ -5,7 +5,7 @@
 pkgname=z-push
 groups=('zarafa'
 	'kopano')
-pkgver=2.5.2
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="open-source implementation of the ActiveSync protocol"
 arch=('any')
