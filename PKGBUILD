@@ -5,7 +5,7 @@
 # Contributor: Jason Chu <jchu@xentac.net>
 
 pkgname=(openal-minimal-git)
-pkgver=1.18.1.r84.g5ec11a01
+pkgver=1.20.1
 pkgrel=1
 pkgdesc="Cross-platform 3D audio library, software implementation"
 arch=(i686 x86_64)
@@ -28,7 +28,15 @@ build() {
   cmake ../openal-soft -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_LIBDIR=lib
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DHAVE_OSS=0 \
+    -DHAVE_PULSEAUDIO=0 \
+    -DHAVE_COREAUDIO=0 \
+    -DHAVE_WAVE=0 \
+    -DALSOFT_BACKEND_OSS=0 \
+    -DALSOFT_BACKEND_PULSEAUDIO=0 \
+    -DALSOFT_BACKEND_COREAUDIO=0 \
+    -DALSOFT_BACKEND_WAVE=0
   ninja
 }
 

@@ -1,6 +1,6 @@
 pkgbase = openal-minimal-git
 	pkgdesc = Cross-platform 3D audio library, software implementation
-	pkgver = 1.18.1.r84.g5ec11a01
+	pkgver = 1.20.1
 	pkgrel = 1
 	url = https://github.com/kcat/openal-soft
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = openal-minimal-git
 pkgname = openal-minimal-git
 	optdepends = qt5-base: alsoft-config GUI Configurator
 	optdepends = fluidsynth: MIDI rendering
-	provides = openal=1.18.1.r84.g5ec11a01
+	provides = openal=1.20.1
 	provides = openal
 	conflicts = openal
 	conflicts = openal-git
