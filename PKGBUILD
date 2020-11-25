@@ -53,7 +53,7 @@ package_linux-rockchip() {
   tar -xf data.tar.xz
 
   install -Dm755 "boot/vmlinuz-$_kernver" "$pkgdir/boot/zImage"
-  cp -r "boot/dtb-$_kernver" "$pkgdir/boot/dtb"
+  cp -r "boot/dtb-$_kernver" "$pkgdir/boot/dtbs"
 
   install -dm755 "$pkgdir/usr"
   cp -r lib "$pkgdir/usr/lib"
