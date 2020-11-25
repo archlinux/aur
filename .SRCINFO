@@ -1,0 +1,16 @@
+pkgbase = hev-dns-forwarder
+	pkgdesc = Forwarding DNS queries on TCP transport
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/aa65535/hev-dns-forwarder
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	source = git+https://github.com/aa65535/hev-dns-forwarder.git
+	source = hev-dns-forwarder.service
+	sha256sums = SKIP
+	sha256sums = 649f7fecdf4be14197546f382e6ab78accd762f10869562a5748f48cd528e13d
+
+pkgname = hev-dns-forwarder
+

@@ -1,0 +1,11 @@
+[Unit]
+Description=hev-dns-forwarder
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+ExecStart=/usr/bin/hev-dns-forwarder -p 5300 -s 8.8.8.8:53
+
+[Install]
+WantedBy=multi-user.target
