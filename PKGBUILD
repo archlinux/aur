@@ -15,6 +15,6 @@ sha512sums=('0d9de4af916e42ab064e19ee04bf7f7986d3f52a2aa64f31a8dee2604cfbd7cee97
 package() {
   tar -xf "$srcdir/data.tar.xz" -C "$pkgdir/"
 
-  mkdir -p "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/bin"
   ln -s /opt/MiTalk/mitalk "$pkgdir/usr/bin/mitalk"
 }
