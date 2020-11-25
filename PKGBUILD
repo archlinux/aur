@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-xml-feed'
-pkgver='0.52'
+pkgver='0.59'
 pkgrel='1'
 pkgdesc="Syndication feed parser and auto-discovery"
 arch=('any')
@@ -11,9 +11,8 @@ options=('!emptydirs')
 depends=('perl-class-errorhandler' 'perl-datetime' 'perl-datetime-format-mail' 'perl-datetime-format-w3cdtf' 'perl-feed-find' 'perl-html-parser' 'perl-libwww' 'perl-uri-fetch' 'perl-xml-atom>=0.38' 'perl-xml-libxml>=1.66' 'perl-xml-rss>=1.47')
 makedepends=()
 url='http://search.cpan.org/dist/XML-Feed'
-source=('http://search.cpan.org/CPAN/authors/id/D/DA/DAVECROSS/XML-Feed-0.52.tar.gz')
-md5sums=('9ab88ee2e65bfaa10da4edd626c7e8cb')
-sha512sums=('47416579ddef2d1f21a16662bed1a11a80fce865cc680df78e65b8d0ded66e45f05edbe44ca8bfe6d94c4f5590eda7358c36082be3d8e116f888bb563240dabe')
+source=("http://search.cpan.org/CPAN/authors/id/D/DA/DAVECROSS/XML-Feed-${pkgver}.tar.gz")
+sha256sums=('f34d9027b14b17ff2665a6bf43be8ac9b641dd620a51bf962092187f17422afc')
 _distdir="XML-Feed-0.52"
 
 build() {

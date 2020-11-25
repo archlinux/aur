@@ -1,6 +1,6 @@
 pkgbase = perl-xml-feed
 	pkgdesc = Syndication feed parser and auto-discovery
-	pkgver = 0.52
+	pkgver = 0.59
 	pkgrel = 1
 	url = http://search.cpan.org/dist/XML-Feed
 	arch = any
@@ -18,9 +18,8 @@ pkgbase = perl-xml-feed
 	depends = perl-xml-libxml>=1.66
 	depends = perl-xml-rss>=1.47
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAVECROSS/XML-Feed-0.52.tar.gz
-	md5sums = 9ab88ee2e65bfaa10da4edd626c7e8cb
-	sha512sums = 47416579ddef2d1f21a16662bed1a11a80fce865cc680df78e65b8d0ded66e45f05edbe44ca8bfe6d94c4f5590eda7358c36082be3d8e116f888bb563240dabe
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAVECROSS/XML-Feed-0.59.tar.gz
+	sha256sums = f34d9027b14b17ff2665a6bf43be8ac9b641dd620a51bf962092187f17422afc
 
 pkgname = perl-xml-feed
 
