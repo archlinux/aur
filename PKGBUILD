@@ -4,7 +4,7 @@
 
 pkgname=silver-git
 pkgver=1.1.0.r51.gb25b7a0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-shell customizable powerline-like prompt with icons (git)"
 arch=('x86_64')
 url="https://github.com/reujab/silver"
@@ -28,6 +28,6 @@ build() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 readme.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
-  install -Dm 644 license -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+  install -Dm 644 readme.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 license -t "$pkgdir/usr/share/licenses/$pkgname"
 }
