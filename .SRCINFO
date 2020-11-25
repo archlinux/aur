@@ -2,18 +2,15 @@ pkgbase = perl-webservice-musicbrainz
 	pkgdesc = Web service API to MusicBrainz database
 	pkgver = 1.0.5
 	pkgrel = 1
-	url = http://search.cpan.org/dist/WebService-MusicBrainz
+	url = https://metacpan.org/release/WebService-MusicBrainz
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-class-accessor>=0.30
-	depends = perl-uri>=1.35
-	depends = perl-xml-libxml>=1.63
-	depends = perl-libwww>=0
-	depends = perl>=5.7.0
+	depends = perl-class-accessor
+	depends = perl-uri
+	depends = perl-xml-libxml
+	depends = perl-libwww
 	depends = perl-mojolicious
-	provides = perl-webservice-musicbrainz
-	conflicts = perl-webservice-musicbrainz
 	conflicts = perl-webservice-musicbrainz0
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/B/BF/BFAIST/WebService-MusicBrainz-1.0.5.tar.gz
