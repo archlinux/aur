@@ -1,5 +1,5 @@
 pkgbase = passdmenu-gen
-	pkgdesc = A dmenu frontend to pass with clipboard and autotype functionality for user and password.
+	pkgdesc = A dmenu frontend to pass with clipboard, autotype and generate functionality for user and password.
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/tyjak/passdmenu-gen
