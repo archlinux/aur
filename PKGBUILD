@@ -2,8 +2,8 @@
 
 pkgname=python-skia
 _pkgname=skia-python
-pkgver=86.0
-pkgrel=2
+pkgver=87.0
+pkgrel=1
 pkgdesc='Python binding to Skia Graphics Library'
 arch=('x86_64')
 url="https://github.com/kyamagu/$_pkgname"
@@ -14,7 +14,7 @@ options=(!strip)
 _py=cp38
 _wheel=${_pkgname/-/_}-$pkgver-$_py-$_py-manylinux2014_x86_64.whl
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/$_pkgname/$_wheel")
-sha256sums=('e9c402276242d48772c3edb77076d135e27f4f3fd4e078c7d8bdc29704338c4d')
+sha256sums=('4abd27e394baf864868ed8c8d16c2cd483f95489efb58791c08c06a9ac042940')
 
 package() {
     export PIP_CONFIG_FILE=/dev/null
