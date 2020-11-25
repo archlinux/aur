@@ -1,6 +1,6 @@
 # Maintainer: John Smith <knobpersonal@gmail.com>
 pkgname='menu-bookmark-git'
-pkgver=r23.cec6f38
+pkgver=r24.c6a0b0f
 pkgrel=1
 pkgdesc="A website bookmark manager using the menu backend (git version)."
 arch=('any')
