@@ -8,12 +8,39 @@ After=network-online.target
 User=promscale
 Group=promscale
 Restart=on-failure
+RestartSec=5s
 EnvironmentFile=-/etc/conf.d/promscale
 ExecStart=/usr/bin/promscale $PROMSCALE_ARGS
 ExecReload=/bin/kill -HUP $MAINPID
+
 NoNewPrivileges=true
-ProtectSystem=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+PrivateUsers=true
+
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+SystemCallArchitectures=native
+
+LimitNOFILE=1048576
+UMask=0077
 
 [Install]
 WantedBy=multi-user.target
-
