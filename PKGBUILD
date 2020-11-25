@@ -15,6 +15,7 @@ source=("https://github.com/redchenjs/rime-jyutgaan/archive/$_commit/rime-jyutga
 sha512sums=('43bcf7185d6790b2c066fc0c68c1ae717d2ec76c0ed6cb5c0c12215e53a1cd2f5edd5124d703d889461854f7c210a047b5fe550fd8c54ec7ee19a7ba697fa463')
 
 package() {
-    cd $pkgname-$_commit
-    install -Dm644 jyutgaan.schema.yaml -t "$pkgdir/usr/share/rime-data/"
+  cd "$pkgname-$_commit"
+
+  install -Dm644 jyutgaan.schema.yaml -t "$pkgdir/usr/share/rime-data/jyutgaan.schema.yaml"
 }
