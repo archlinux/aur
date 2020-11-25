@@ -14,12 +14,12 @@ sha512sums=('712ad518e9145613eba2f87816f5dd217bbb0782941818f68fbaf929feddd5d2b91
 
 build() {
   cd "$pkgname-$pkgver"
-  go get -d ./...
-  go build \
-    -gcflags "all=-trimpath=$PWD" \
-    -asmflags "all=-trimpath=$PWD" \
-    -ldflags "-extldflags $LDFLAGS" \
-    -o "$pkgname" "./cmd/$pkgname"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o "$pkgname" "./cmd/$pkgname"
 }
 
 package() {
