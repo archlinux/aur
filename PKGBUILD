@@ -50,7 +50,7 @@ package() {
   install -Dm644 "lib/firmware/rtlbt/rtl8723b_fw" "$pkgdir/usr/lib/firmware/rtlbt/rtl8723b_fw"
   install -Dm755 "usr/bin/rtk_hciattach" "$pkgdir/usr/bin/rtk_hciattach"
 
-  mkdir -p "$pkgdir/etc"
+  install -dm755 "$pkgdir/etc"
   mv etc/modprobe.d etc/udev "$pkgdir/etc"
 
   install -Dm755 "usr/local/bin/hdmi-hotplug" "$pkgdir/usr/bin/hdmi-hotplug"
