@@ -23,7 +23,7 @@ prepare() {
   cd "$srcdir/gpio_lib_c"
 
   sed -i 's|$(DESTDIR)/lib|$(DESTDIR)$(PREFIX)/lib|g' */Makefile
-  sed -i 's|ln -sf $(DESTDIR)|(PREFIX)/lib/#ln -sf |g' */Makefile
+  sed -i 's|ln -sf $(DESTDIR)|(PREFIX)/lib/|ln -sf |g' */Makefile
 }
 
 package() {
