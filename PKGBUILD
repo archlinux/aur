@@ -2,9 +2,9 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=ali
-pkgdesc="Generate HTTP load and plot the results in real-time"
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
+pkgdesc="Generate HTTP load and plot the results in real-time"
 arch=('x86_64')
 url="https://github.com/nakabonne/ali"
 license=('MIT')
@@ -14,12 +14,12 @@ sha512sums=('0dbac3c655f5dc93ba6774e5c1acaf7b972a91c550265539a7a55772349b00e7a38
 
 build() {
   cd "$pkgname-$pkgver"
-  go get -d ./...
-  go build \
-    -gcflags "all=-trimpath=$PWD" \
-    -asmflags "all=-trimpath=$PWD" \
-    -ldflags "-extldflags $LDFLAGS" \
-    -o "$pkgname" .
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o "$pkgname" .
 }
 
 package() {
