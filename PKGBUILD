@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  cargo build --release --locked --all-features
+  cargo build --release --locked
 }
 
 check() {
