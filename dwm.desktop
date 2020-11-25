@@ -2,7 +2,7 @@
 Name=dwm
 Comment=dynamic window manager
 Exec=dwm
-Type=Application
+Type=XSession
 X-LightDM-DesktopName=dwm
 DesktopNames=dwm
 Keywords=tiling;wm;windowmanager;window;manager;
