@@ -1,6 +1,8 @@
-# Maintainer: YoyPa <yoann dot p dot public at gmail dot com>
+# Maintainer: Valentijn "noirscape" V. <neko at catgirlsin dot space>
+# Contributor: YoyPa <yoann dot p dot public at gmail dot com>
 pkgname=fluffy-switch
-pkgver=2.9
+pkgver=2.9.2
+_pkgver=2.9 # git tag version
 pkgrel=1
 pkgdesc="Goldtree and Tinfoil GUI for USB/Network install on switch"
 arch=('any')
@@ -15,7 +17,7 @@ depends=(
 optdepends=(
 	'python-qdarkstyle: dark theme toggle in fluffy'
 )
-source=("Fluffy-${pkgver}.tar.gz::https://github.com/fourminute/Fluffy/archive/v${pkgver}.tar.gz")
+source=("Fluffy-${pkgver}.tar.gz::https://github.com/fourminute/Fluffy/archive/v${_pkgver}.tar.gz")
 sha256sums=('c063bf746b944810ff3f34bd70efe8f6807713630f0cc4b98aec3350cde5e651')
 
 # Remove .desktop file PATH (/tmp).
