@@ -12,13 +12,13 @@ backup=('boot/boot.txt' 'boot/boot.scr')
 makedepends=('curl' 'uboot-tools')
 install="$pkgname.install"
 source=(
-  'mkscr'
-  'boot.txt'
+  "mkscr"
+  "boot.txt"
   "armbian-uboot_$pkgver-$_kernel.deb::https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-u-boot-current-tinkerboard_$pkgver-trunk_armhf.deb"
 )
 sha512sums=(
-  '7046ab4d88efbba636be049be2f660e18c05e48d161d39437c1580b12795ba4d9197ad57ac4572398f80a38d4777507b57228abf4cc41f0081d196ece27ea9d0'
-  '7f6d83d746579f6485c1603389972e9833f4ce0a71fa2b27e2036cf502bacff030d09ba7fc9adbeb5da41b12de2c4d258c1b8aed3862444f703f58e80df5429c'
+  "7046ab4d88efbba636be049be2f660e18c05e48d161d39437c1580b12795ba4d9197ad57ac4572398f80a38d4777507b57228abf4cc41f0081d196ece27ea9d0"
+  "7f6d83d746579f6485c1603389972e9833f4ce0a71fa2b27e2036cf502bacff030d09ba7fc9adbeb5da41b12de2c4d258c1b8aed3862444f703f58e80df5429c"
   "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-u-boot-current-tinkerboard_$pkgver-trunk_armhf.deb.sha512sum)"
 )
 noextract=("${source[@]##*/}")
