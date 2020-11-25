@@ -1,13 +1,13 @@
 pkgbase = wombat-bin
 	pkgdesc = A graphical gRPC client written in Go
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/rogchap/wombat
 	arch = x86_64
 	license = MIT
 	provides = wombat
-	source_x86_64 = wombat-bin-0.3.1.tar.gz::https://github.com/rogchap/wombat/releases/download/v0.3.1/Wombat_v0.3.1_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 84ba5532808be1ae0c1f5a051b3adbb5e8f798e68ec1551c417d7bace4848317
+	source_x86_64 = wombat-bin-0.3.2.tar.gz::https://github.com/rogchap/wombat/releases/download/v0.3.2/Wombat_v0.3.2_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = fa61e9254b2b5a64d85129e74f7d0122f49c1fc4e2cf93f62a222aac879cdce1
 
 pkgname = wombat-bin
 
