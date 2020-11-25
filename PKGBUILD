@@ -1,5 +1,6 @@
+# Maintainer: Radoslav Georgiev <rgeorgiev583@gmail.com>
 # Contributor: Dave Reisner <dreisner@archlinux.org>
-# Maintainer: aksr <aksr at t-com dot me>
+# Contributor: aksr <aksr at t-com dot me>
 pkgname=u9fs-git
 pkgver=r37.9639caf
 pkgrel=1
