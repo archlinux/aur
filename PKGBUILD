@@ -1,6 +1,6 @@
 # Maintainer: John Smith <knobpersonal@gmail.com>
 pkgname='menu-git'
-pkgver=r25.b9e9a0a
+pkgver=r26.45553dc
 pkgrel=1
 pkgdesc="A library for cli programs parsing text databases (git version)."
 arch=('x86_64')
