@@ -1,14 +1,14 @@
 pkgbase = green-recorder
-	pkgdesc = A simple yet functional desktop recorder for Linux systems.
-	pkgver = 3.2.3
-	pkgrel = 2
-	url = https://github.com/foss-project/green-recorder
+	pkgdesc = Simple screen recorder for Linux desktop, supports Wayland & Xorg
+	pkgver = 3.2.8
+	pkgrel = 1
+	url = https://github.com/dvershinin/green-recorder
 	arch = any
 	license = GPL3
-	makedepends = python2-setuptools
-	depends = python2-pydbus
-	depends = python2-gobject
-	depends = python2-urllib3
+	makedepends = python-setuptools
+	depends = python-pydbus
+	depends = python-gobject
+	depends = python-urllib3
 	depends = ffmpeg
 	depends = imagemagick
 	depends = xorg-xdpyinfo
@@ -17,8 +17,8 @@ pkgbase = green-recorder
 	depends = gawk
 	optdepends = gnome-shell: Gnome on Wayland desktop recording
 	options = !emptydirs
-	source = green-recorder-3.2.3-e91de9d4f6becd8180a9147ceb3b289b15f2be50.tar.gz::https://github.com/foss-project/green-recorder/archive/e91de9d4f6becd8180a9147ceb3b289b15f2be50.tar.gz
-	sha256sums = b8033fd2d7011152ce704a6f7ebe9253eddd922a57e8253a8c8ac070c5a61988
+	source = green-recorder-3.2.8.tar.gz::https://github.com/dvershinin/green-recorder/archive/3.2.8.tar.gz
+	sha256sums = 5f37eb5182eab631de212a639118635fe14bba1de5c1d8ec7e02c46d01ffee2c
 
 pkgname = green-recorder
 

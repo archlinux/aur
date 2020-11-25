@@ -2,26 +2,28 @@
 # Maintainer: Fabio Loli <lolix@disroot.org>
 
 pkgname=green-recorder
-pkgver=3.2.3
-pkgrel=2
-pkgdesc="A simple yet functional desktop recorder for Linux systems."
+pkgver=3.2.8
+pkgrel=1
+pkgdesc="Simple screen recorder for Linux desktop, supports Wayland & Xorg"
 arch=(any)
-url="https://github.com/foss-project/green-recorder"
+url="https://github.com/dvershinin/green-recorder"
 license=(GPL3)
-depends=(python2-pydbus python2-gobject python2-urllib3 ffmpeg imagemagick
+depends=(python-pydbus python-gobject python-urllib3 ffmpeg imagemagick
          xorg-xdpyinfo xorg-xwininfo libappindicator-gtk3 gawk)
 optdepends=('gnome-shell: Gnome on Wayland desktop recording')
-makedepends=(python2-setuptools)
+makedepends=(python-setuptools)
 options=(!emptydirs)
-#source=("${pkgname}-${pkgver}.tar.gz::https://github.com/foss-project/green-recorder/archive/${pkgver}.tar.gz"
-_commit=(e91de9d4f6becd8180a9147ceb3b289b15f2be50) # v3.2.3
-source=("${pkgname}-${pkgver}-${_commit}.tar.gz::https://github.com/foss-project/green-recorder/archive/${_commit}.tar.gz")
-sha256sums=('b8033fd2d7011152ce704a6f7ebe9253eddd922a57e8253a8c8ac070c5a61988')
- 
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dvershinin/green-recorder/archive/${pkgver}.tar.gz")
+sha256sums=('5f37eb5182eab631de212a639118635fe14bba1de5c1d8ec7e02c46d01ffee2c')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py build
+}
+
 package() {
-#  cd "$srcdir/$pkgname-$pkgver"
-  cd "$srcdir/$pkgname-${_commit}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   # desktop file is 755 for some reason
   # chmod 644 data/${pkgname}.desktop
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
