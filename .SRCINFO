@@ -1,0 +1,44 @@
+pkgbase = libdrm-full
+	pkgver = 2.4.103
+	pkgrel = 1
+	url = https://dri.freedesktop.org/
+	arch = x86_64
+	license = custom
+	checkdepends = cairo
+	checkdepends = lib32-cairo
+	checkdepends = cunit
+	makedepends = valgrind
+	makedepends = meson
+	makedepends = libxslt
+	makedepends = lib32-libxslt
+	makedepends = docbook-xsl
+	makedepends = ninja
+	makedepends = clang
+	makedepends = lib32-clang
+	makedepends = gcc
+	makedepends = gcc-libs
+	makedepends = lib32-gcc-libs
+	source = https://gitlab.freedesktop.org/mesa/drm/-/archive/libdrm-2.4.103/drm-libdrm-2.4.103.tar.gz
+	source = COPYING
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libdrm-full
+	pkgdesc = Userspace interface to kernel DRM services with more options enable (64-bit)
+	depends = libpciaccess
+	provides = libdrm
+	conflicts = libdrm
+	conflicts = libdrm-git
+	replaces = libdrm
+	replaces = libdrm-git
+
+pkgname = lib32-libdrm-full
+	pkgdesc = Userspace interface to kernel DRM services with more options enable (32-bit)
+	depends = lib32-libpciaccess
+	depends = libdrm
+	provides = lib32-libdrm
+	conflicts = lib32-libdrm
+	conflicts = lib32-libdrm-git
+	replaces = lib32-libdrm
+	replaces = lib32-libdrm-git
+
