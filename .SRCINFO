@@ -1,0 +1,28 @@
+pkgbase = libdrm-bin
+	pkgdesc = Userspace interface to kernel DRM services with more options enable (binary)
+	pkgver = 2.4.103
+	pkgrel = 1
+	url = https://dri.freedesktop.org/
+	arch = x86_64
+	license = custom
+	checkdepends = cairo
+	checkdepends = cunit
+	makedepends = valgrind
+	makedepends = meson
+	makedepends = libxslt
+	makedepends = docbook-xsl
+	makedepends = ninja
+	makedepends = clang
+	makedepends = gcc
+	makedepends = gcc-libs
+	depends = libpciaccess
+	provides = libdrm-bin
+	conflicts = libdrm-proptest
+	replaces = libdrm-proptest
+	source = https://gitlab.freedesktop.org/mesa/drm/-/archive/libdrm-2.4.103/drm-libdrm-2.4.103.tar.gz
+	source = COPYING
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libdrm-bin
+
