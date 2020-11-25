@@ -226,7 +226,7 @@ _cpu_scheduler=bmq
 
 pkgbase=linux-prjc
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
-pkgver=5.9.10
+pkgver=5.9.11
 pkgrel=1
 modulestag=${pkgver}-${pkgbase}
 pkgdesc="Stable linux kernel, modules, headers and docs"
@@ -255,8 +255,9 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.t
         "${patchsource}0001-btrfs-patches.patch"
         "${patchsource}0001-ntfs3-patches.patch"
         "${patchsource}0011-ZFS-fix.patch"
+        "${patchsource}0001-fs-patches.patch"
         "${patchsource}0009-prjc_v5.9-r1.patch")
-md5sums=("0e5f1b7935d352a2245ba715be498061"  #linux-5.9.10.tar.xz
+md5sums=("530543935698468bf30dfacd4a20d84f"  #linux-5.9.11.tar.xz
          "e1f2fa957d481d0ca9e737bb92528b67"  #config version 5.9.4
          "b3f0a4804b6fe031f674988441c1af35"  #choose-gcc-optimization.sh
          "a724ee14cb7aee1cfa6e4d9770c94723"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
@@ -273,6 +274,7 @@ md5sums=("0e5f1b7935d352a2245ba715be498061"  #linux-5.9.10.tar.xz
          "ad0dd4477201efb9fa86b33231ce62d8"  #0001-btrfs-patches.patch
          "50d1cb09cf619482ceb6b5d868681448"  #0001-ntfs3-patches.patch
          "c19fd76423bfc4af45d99585cedb2623"  #0011-ZFS-fix.patch
+         "656de58729054bb71c9dc5dee737e589"  #0001-fs-patches.patch
          "ec4009ded435235fb03f69eafea0e82c") #0009-prjc_v5.9-r1.patch
 
 export KBUILD_BUILD_HOST=archlinux
@@ -510,10 +512,12 @@ prepare(){
     msg2 "Disabling BFQ I/O scheduler..."
     scripts/config --disable CONFIG_IOSCHED_BFQ
     scripts/config --disable CONFIG_BFQ_GROUP_IOSCHED
+    scripts/config --disable CONFIG_BFQ_CGROUP_DEBUG
   elif [[ "$_disable_bfq" = "n" ]]; then
     msg2 "Enable BFQ I/O scheduler..."
     scripts/config --enable CONFIG_IOSCHED_BFQ
     scripts/config --enable CONFIG_BFQ_GROUP_IOSCHED
+    scripts/config --enable CONFIG_BFQ_CGROUP_DEBUG
   fi
 
   # Enable CONFIG_SCHED_ALT
