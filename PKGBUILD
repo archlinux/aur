@@ -12,9 +12,9 @@ source=("https://github.com/redchenjs/source-han-serif-classic/archive/$_commit/
 sha512sums=('c29c42259bccef8b84e54312f3c9e64775dc0ce16d12ddf0ddf4fe64e637aa305c5657425953993eec449e07eeab8cefa696ffc3301e848c8cd59be778ec133d')
 
 package() {
-    cd source-han-serif-classic-$_commit
+  cd "source-han-serif-classic-$_commit"
 
-    mkdir -p "$pkgdir/usr/share/fonts/adobe-source-han-serif"
-    install -Dm644 *.otf "$pkgdir/usr/share/fonts/adobe-source-han-serif/"
-    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  mkdir -p "$pkgdir/usr/share/fonts/adobe-source-han-serif"
+  install -Dm644 *.otf "$pkgdir/usr/share/fonts/adobe-source-han-serif/"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
