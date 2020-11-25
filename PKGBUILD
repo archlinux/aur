@@ -15,7 +15,7 @@ sha512sums=('6b8a95fbe24e8fc7fcf0d04663556936cc9153868a963512f726c57e44009683867
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked --all-features
+  cargo build --release --locked
 }
 
 check() {
