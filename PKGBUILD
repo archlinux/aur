@@ -10,7 +10,7 @@ url="https://github.com/armbian/build"
 license=('GPL2')
 backup=('boot/boot.txt' 'boot/boot.scr')
 makedepends=('curl' 'uboot-tools')
-install=$pkgname.install
+install="$pkgname.install"
 source=(
   'mkscr'
   'boot.txt'
@@ -38,9 +38,9 @@ package() {
   install -Dm755 mkscr "$pkgdir/boot/mkscr"
   install -Dm644 "usr/lib/linux-u-boot-current-tinkerboard_$pkgver-trunk_armhf/u-boot-rockchip-with-spl.bin" "$pkgdir/boot/rksd_loader.img"
 
-  major=$(mountpoint -d / | cut -f 1 -d ':')
-  minor=$(mountpoint -d / | cut -f 2 -d ':')
-  device=$(cat /proc/partitions | awk {'if ($1 == "'$major'" && $2 == "'$minor'") print $4 '})
+  major="$(mountpoint -d / | cut -f 1 -d ':')"
+  minor="$(mountpoint -d / | cut -f 2 -d ':')"
+  device="$(cat /proc/partitions | awk {'if ($1 == "'$major'" && $2 == "'$minor'") print $4 '})"
   sed "s|%ROOTDEV%|$device|g" boot.txt |
     install -Dm644 /dev/stdin "$pkgdir/boot/boot.txt"
 
