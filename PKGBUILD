@@ -57,7 +57,7 @@ export CXX="g++"
   -Dprefix=/usr \
   -Dplatforms=x11,wayland \
   -Ddri3=enabled \
-  -Ddri-drviers=i915,i965,r100,r200,nouveau \
+  -Ddri-drivers=i915,i965,r100,r200,nouveau \
   -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,zink,freedreno,v3d,vc4,etnaviv,tegra,kmsro \
   -Dgallium-extra-hud=true \
   -Dgallium-vdpau=enabled \
@@ -122,7 +122,7 @@ END
     -Dprefix=/usr \
     -Dplatforms=x11,wayland \
     -Ddri3=enabled \
-    -Ddri-drviers=i915,i965,r100,r200,nouveau \
+    -Ddri-drivers=i915,i965,r100,r200,nouveau \
     -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,zink,freedreno,v3d,vc4,etnaviv,tegra,kmsro \
     -Dgallium-extra-hud=true \
     -Dgallium-vdpau=enabled \
