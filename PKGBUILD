@@ -2,7 +2,7 @@
 
 _pkgname=box86
 pkgname=${_pkgname}-git
-pkgver=v0.1.2.r302.g6c4b047b
+pkgver=v0.1.4.r150.g36346409
 pkgrel=1
 pkgdesc='Linux Userspace x86 Emulator with a twist'
 arch=('armv7h')
@@ -11,19 +11,12 @@ license=('MIT')
 depends=('gcc-libs')
 #optdepends=('')
 makedepends=('git' 'cmake')
-source=("git+https://github.com/ptitSeb/box86.git#branch=master"
-        "binfmt-install-directory.patch")
-sha256sums=('SKIP'
-            'e9738f52f26c23828ea8cdcd3125af3fb773d29348bf94ad86f34c492ad05ca7')
+source=("git+https://github.com/ptitSeb/box86.git#branch=master")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd ${_pkgname}
-  patch --forward --strip=1 --input="${srcdir}/binfmt-install-directory.patch"
 }
 
 build() {
