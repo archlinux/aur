@@ -138,7 +138,7 @@ package_lib32-libdrm-full() {
 	replaces=("lib32-libdrm" "lib32-libdrm-git")
 	conflicts=("lib32-libdrm" "lib32-libdrm-git")
 
-	msg2 "Compiling libdrm and installing to "$pkgdir""
+	#Compiling libdrm and installing to "$pkgdir"
 	DESTDIR="$pkgdir" ninja $NINJAFLAGS -C drm-libdrm-${pkgver}/build_32/ install
 
 	# remove bin include and share
