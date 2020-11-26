@@ -3,14 +3,13 @@
 
 pkgname=kwidgetsaddons-git
 pkgver=v4.100.0.rc1.r614.gaf8c544
-pkgrel=1
+pkgrel=2
 pkgdesc='KWidgetsAddons'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kwidgetsaddons'
 license=('LGPL')
 depends=('qt5-base')
 makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
-groups=('kf5')
 conflicts=(kwidgetsaddons)
 provides=(kwidgetsaddons)
 source=('git+https://github.com/KDE/kwidgetsaddons.git')
