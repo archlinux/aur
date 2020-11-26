@@ -1,13 +1,13 @@
-# Maintainer: Daurnimator <quae@daurnimator.com>
+# Maintainer: Daurnimator <daurnimator@archlinux.org>
 
 pkgname=('lua-binaryheap' 'lua51-binaryheap' 'lua52-binaryheap' 'lua53-binaryheap')
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/Tieske/binaryheap.lua'
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Tieske/binaryheap.lua/archive/version_0v4.tar.gz")
-md5sums=('8dc4ea3df17fc7c586693d6fb6f0a8a3')
+sha256sums=('10b1b6c6f2d22560f512f9896a6672ec5ae0eea1390ff8e662be1d5d9625b438')
 
 package_lua-binaryheap() {
 	pkgdesc='Binary heap implementation for Lua 5.4'
