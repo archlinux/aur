@@ -1,4 +1,4 @@
-# Maintainer: justforlxz <justforlxz@gmail.com>
+# Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-api-git
 pkgver=5.3.0.13.r3.g5eedc9b
