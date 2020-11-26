@@ -1,11 +1,10 @@
 pkgbase = kxmlgui-git
 	pkgdesc = KXmlGUI
 	pkgver = v4.100.0.rc1.r506.gbb4bab8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.kde.org/projects/frameworks/kxmlgui
 	arch = i686
 	arch = x86_64
-	groups = kf5
 	license = LGPL
 	makedepends = extra-cmake-modules-git
 	makedepends = git

@@ -3,14 +3,13 @@
 
 pkgname=kxmlgui-git
 pkgver=v4.100.0.rc1.r506.gbb4bab8
-pkgrel=1
+pkgrel=2
 pkgdesc='KXmlGUI'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kxmlgui'
 license=('LGPL')
 depends=('kglobalaccel-git' 'ktextwidgets-git' 'attica-git')
 makedepends=('extra-cmake-modules-git' 'git' 'python')
-groups=('kf5')
 conflicts=(kxmlgui)
 provides=(kxmlgui)
 source=('git+https://github.com/KDE/kxmlgui.git')
