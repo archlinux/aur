@@ -4,14 +4,13 @@
 
 pkgname=kconfigwidgets-git
 pkgver=v5.71.0.rc1.r44.gb571fe4
-pkgrel=1
+pkgrel=2
 pkgdesc='Widgets for KConfig'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kconfigwidgets'
 license=('LGPL')
 depends=('qt5-wayland')
 makedepends=('extra-cmake-modules-git' 'git' 'wayland-protocols' 'plasma-wayland-protocols-git' 'qt5-tools')
-groups=('kf5')
 conflicts=(kconfigwidgets)
 provides=(kconfigwidgets)
 source=('git+https://github.com/KDE/kconfigwidgets.git')

@@ -1,11 +1,10 @@
 pkgbase = kconfigwidgets-git
 	pkgdesc = Widgets for KConfig
 	pkgver = v5.71.0.rc1.r44.gb571fe4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.kde.org/projects/frameworks/kconfigwidgets
 	arch = i686
 	arch = x86_64
-	groups = kf5
 	license = LGPL
 	makedepends = extra-cmake-modules-git
 	makedepends = git
