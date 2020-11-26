@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Space Haven
+Exec=spacehaven
+Comment=Embark on a space voyage with your ragtag crew of civilians in search of a new home. Build spaceships tile by tile, create optimal gas conditions, manage the needs and moods of their crew, encounter other space-faring groups, and explore the universe in this spaceship colony sim.
+Terminal=false
+Icon=gog-space-haven.png
+Type=Application
+Categories=Game;
