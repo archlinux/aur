@@ -1,6 +1,6 @@
 pkgbase = gitstatus-bin
 	pkgdesc = Git status for Bash and Zsh prompt
-	pkgver = 1.4.1
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/romkatv/gitstatus
 	install = gitstatus.install
@@ -9,8 +9,8 @@ pkgbase = gitstatus-bin
 	makedepends = zsh
 	provides = gitstatus
 	conflicts = gitstatus
-	source = gitstatus-bin-1.4.1.tar.gz::https://github.com/romkatv/gitstatus/archive/v1.4.1.tar.gz
-	sha512sums = f38bb3d660bd0e6aac08860a52bc29badc47c96d57094058c2f3b7cad736c5b3f6a43597e783a5f6b9ba6f6fdea746db067eb4d7ae553c313a7cd5426718c3b4
+	source = gitstatus-bin-1.4.3.tar.gz::https://github.com/romkatv/gitstatus/archive/v1.4.3.tar.gz
+	sha512sums = 9f52ae21d54ec6735a1a1774ea27b73d70ff0de55868e8711d606fd67f27fd4016af4aa810cf5ecbda0e7bec454753fc517de77c996bc37d01dc238114cbfd46
 
 pkgname = gitstatus-bin
 
