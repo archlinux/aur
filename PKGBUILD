@@ -17,17 +17,16 @@ sha512sums=('SKIP')
 
 optdepends=('agg: to enable the HUD, requires --enable-hud at build time')
 
-_builddir="$_pkgname/src/frontend/posix"
-
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd $_pkgname
   echo "$_pkgver.r$(git rev-list --count $_lastrelease..HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare(){
-  cd "${srcdir}/${_pkgname}/${_builddir}"
+  cd $_pkgname
 
-  meson setup ../../../build/ \
+  meson setup build \
+        $_pkgname/src/frontend/posix \
         --prefix=/usr \
         --buildtype=release \
         --optimization=2 \
@@ -39,11 +38,11 @@ prepare(){
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}/${_pkgname}/build"
-  ninja -C ./
+  cd $_pkgname
+  ninja -C build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}/${_pkgname}/build"
-  DESTDIR="${pkgdir}" meson install
+  cd $_pkgname/build
+  DESTDIR="$pkgdir" meson install
 }
