@@ -1,17 +1,18 @@
-# Maintainer: justforlxz <justforlxz@gmail.com>
+# Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=golang-github-linuxdeepin-go-x11-client-git
-pkgver=0.6.2.r1.g6d7b662
+pkgver=0.6.1.r1.gfe50ee5
 pkgrel=1
 pkgdesc='X11 protocol go language binding'
 arch=('any')
 url="https://github.com/linuxdeepin/go-x11-client"
 license=('GPL')
 conflicts=('golang-github-linuxdeepin-go-x11-client')
+replaces=('golang-github-linuxdeepin-go-x11-client')
 provides=('golang-github-linuxdeepin-go-x11-client')
 groups=('deepin-git')
-depends=('golang-golang-x-text')
-makedepends=('git' 'go' 'xorg-server-xvfb' 'golang-github-stretchr-testify' 'golang-gopkg-check.v1' 'golang-gopkg-yaml.v2')
+depends=('go' 'golang-golang-x-text')
+makedepends=('git' 'xorg-server-xvfb' 'golang-github-stretchr-testify' 'golang-gopkg-check.v1' 'golang-gopkg-yaml.v2')
 checkdepends=('xorg-server-xvfb' 'golang-github-stretchr-testify' 'golang-gopkg-check.v1' 'golang-gopkg-yaml.v2' 'git')
 source=("$pkgname::git://github.com/linuxdeepin/go-x11-client")
 sha512sums=('SKIP')
