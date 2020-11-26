@@ -9,7 +9,7 @@ pkgdesc="Data files for photon evaporation"
 url="http://geant4.cern.ch/"
 arch=('any')
 license=('GPL')
-optdepends=('geant4>=10.06')
+optdepends=('geant4>=10.6')
 install="${pkgname}.install"
 source=("https://cern.ch/geant4-data/datasets/${_dataname}.${pkgver}.tar.gz"
   "${pkgname}.install")
