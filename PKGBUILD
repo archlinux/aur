@@ -3,14 +3,13 @@
 
 pkgname=kcoreaddons-git
 pkgver=v5.71.0.rc1.r2.g2e07a74
-pkgrel=1
+pkgrel=2
 pkgdesc='KCoreAddons'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kcoreaddons'
 license=('LGPL')
 depends=('qt5-base' 'shared-mime-info' 'gamin')
 makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
-groups=('kf5')
 conflicts=(kcoreaddons)
 provides=(kcoreaddons)
 install=kcoreaddons.install
