@@ -1,0 +1,18 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c886fa5..91213f0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -337,12 +337,10 @@ if (ENOKI_AUTODIFF)
+ endif()
+ 
+ if (ENOKI_PYTHON)
+-  set(ENOKI_PYBIND11_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ext/pybind11"
+-    CACHE STRING "Path containing the 'pybind11' library used to compile Enoki.")
+   message(STATUS "Enoki: building the Python plugin.")
+ 
+   set(CMAKE_CXX_STANDARD 17)
+-  add_subdirectory(${ENOKI_PYBIND11_DIR} pybind11)
++  find_package(pybind11 CONFIG)
+ 
+   pybind11_add_module(
+       enoki-python-core

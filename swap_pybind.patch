@@ -1,0 +1,57 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 549a3a22..6615d760 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -22,7 +22,7 @@ endif()
+ 
+ # ---------- Detect Python ----------
+ 
+-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/ext/pybind11/tools")
++find_package(pybind11 REQUIRED CONFIG)
+ set(Python_ADDITIONAL_VERSIONS 3.9 3.8 3.7 3.6 3.5)
+ find_package(PythonLibsNew REQUIRED)
+ 
+diff --git a/ext/CMakeLists.txt b/ext/CMakeLists.txt
+index 06ae06b2..337813dc 100644
+--- a/ext/CMakeLists.txt
++++ b/ext/CMakeLists.txt
+@@ -3,7 +3,7 @@ set(MTS_PYTHON_VERSION "" CACHE STRING "Python version to use for compiling the
+ 
+ # Try to autodetect Python (can be overridden manually if needed)
+ if (MTS_ENABLE_PYTHON)
+-  list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/pybind11/tools")
++  find_package(pybind11 REQUIRED CONFIG)
+   set(Python_ADDITIONAL_VERSIONS 3.4 3.5 3.6 3.7 3.8)
+   find_package(PythonLibsNew ${MTS_PYTHON_VERSION} REQUIRED)
+ 
+-Subproject commit 7f4528dda0e59f2600025b7979812b464dbb6e96
+diff --git a/src/libcore/python/CMakeLists.txt b/src/libcore/python/CMakeLists.txt
+index 1cd1bad3..d5c1b11f 100644
+--- a/src/libcore/python/CMakeLists.txt
++++ b/src/libcore/python/CMakeLists.txt
+@@ -40,6 +40,10 @@ foreach (MTS_VARIANT ${MTS_VARIANTS})
+     xml_v.cpp
+   )
+ 
++  target_include_directories(${TARGET_NAME}
++    PUBLIC ${PYTHON_INCLUDE_DIRS}
++  )
++
+   target_compile_definitions(${TARGET_NAME}-obj PRIVATE
+     "-DMTS_VARIANT_NAME=${MTS_VARIANT_NAME}"
+     "-DMTS_VARIANT_FLOAT=${MTS_VARIANT_FLOAT}"
+diff --git a/src/librender/python/CMakeLists.txt b/src/librender/python/CMakeLists.txt
+index 2b931909..002da547 100644
+--- a/src/librender/python/CMakeLists.txt
++++ b/src/librender/python/CMakeLists.txt
+@@ -34,6 +34,10 @@ foreach (MTS_VARIANT ${MTS_VARIANTS})
+     texture_v.cpp
+   )
+ 
++  target_include_directories(${TARGET_NAME}
++    PUBLIC ${PYTHON_INCLUDE_DIRS}
++  )
++
+   target_compile_definitions(${TARGET_NAME}-obj PRIVATE
+     "-DMTS_VARIANT_NAME=${MTS_VARIANT_NAME}"
+     "-DMTS_VARIANT_FLOAT=${MTS_VARIANT_FLOAT}"
