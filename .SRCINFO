@@ -1,17 +1,16 @@
 pkgbase = parsify-desktop
 	pkgdesc = Extendable calculator for the 21st Century
-	pkgver = 1.2.2
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://parsify.app
 	arch = x86_64
 	license = MIT
 	makedepends = tar
 	depends = gtk3
-	depends = libxss
 	depends = nss
-	source = parsify-desktop-1.2.2.deb::https://github.com/parsify-dev/desktop/releases/download/v1.2.2/parsify-desktop_1.2.2_amd64.deb
+	source = parsify-desktop-1.4.1.deb::https://github.com/parsify-dev/desktop/releases/download/v1.4.1/parsify-desktop_1.4.1_amd64.deb
 	source = LICENSE::https://github.com/parsify-dev/desktop/raw/master/license
-	sha256sums = 2c192cf1b33976158a09612056ab08957e7987f5720b0a5043d9457d4b3e83df
+	sha256sums = c63098b96f391b9c9aba70120f495e80abfb770e6b45a93b6f8550159437c895
 	sha256sums = 96a0f4a1f2e3895c759a26d58660499af0eeb342f9f929e4a6f0c14997449866
 
 pkgname = parsify-desktop
