@@ -36,8 +36,6 @@ prepare(){
         -Db_pie=true \
         -Dopenal=true \
         -Dwifi=true
-
-  meson configure ../../../build/
 }
 
 build() {
