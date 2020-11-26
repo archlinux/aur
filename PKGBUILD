@@ -1,12 +1,13 @@
 # Maintainer: jxir <aur@jxir.de>
 
 pkgname=avra-git
-pkgver=1.4.1.r3.g55a17c3
+pkgver=1.4.2.r13.g1b1b3fb
 pkgrel=1
 pkgdesc="Assembler for the Atmel AVR microcontroller family"
 arch=('x86_64')
 url="https://github.com/hsoft/avra"
 license=('GPL2')
+depends=('glibc')
 makedepends=('git')
 provides=('avra')
 conflicts=('avra')

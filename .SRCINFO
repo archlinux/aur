@@ -1,11 +1,12 @@
 pkgbase = avra-git
 	pkgdesc = Assembler for the Atmel AVR microcontroller family
-	pkgver = 1.4.1.r3.g55a17c3
+	pkgver = 1.4.2.r13.g1b1b3fb
 	pkgrel = 1
 	url = https://github.com/hsoft/avra
 	arch = x86_64
 	license = GPL2
 	makedepends = git
+	depends = glibc
 	provides = avra
 	conflicts = avra
 	source = git+https://github.com/hsoft/avra.git
