@@ -1,0 +1,100 @@
+From: Tim Lunn <tim@feathertop.org>
+Date: Sat, 22 Mar 2014 00:23:12 +0100
+Subject: Add hooks to run prime scripts (as root) before and after a
+ gdm-session
+
+This allows enabling and disabling the dGPU on log out.
+---
+ common/gdm-common.c    | 2 +-
+ daemon/gdm-session.c   | 6 ++++++
+ daemon/gdm-x-session.c | 5 +++++
+ data/Prime.in          | 6 ++++++
+ data/PrimeOff.in       | 6 ++++++
+ data/meson.build       | 2 +-
+ 6 files changed, 25 insertions(+), 2 deletions(-)
+ create mode 100644 data/Prime.in
+ create mode 100644 data/PrimeOff.in
+
+diff --git a/common/gdm-common.c b/common/gdm-common.c
+index b8de755..eb2ed38 100644
+--- a/common/gdm-common.c
++++ b/common/gdm-common.c
+@@ -720,7 +720,7 @@ gdm_run_script (const char *dir,
+                 goto out;
+         }
+ 
+-        env = gdm_get_script_environment (username,
++        env = gdm_get_script_environment ((g_strcmp0 (username, "root") == 0)?NULL:username,
+                                           display_name,
+                                           display_hostname,
+                                           display_x11_authority_file);
+diff --git a/daemon/gdm-session.c b/daemon/gdm-session.c
+index ca7d98f..e6fd59a 100644
+--- a/daemon/gdm-session.c
++++ b/daemon/gdm-session.c
+@@ -2987,6 +2987,12 @@ gdm_session_close (GdmSession *self)
+ 
+         g_list_free_full (self->outside_connections, g_object_unref);
+         self->outside_connections = NULL;
++
++        /* Run PrimeOff after the session is closed */
++        gdm_run_script (GDMCONFDIR "/PrimeOff", "root",
++                        NULL,
++                        NULL,
++                        NULL);
+ }
+ 
+ void
+diff --git a/daemon/gdm-x-session.c b/daemon/gdm-x-session.c
+index f0082fd..fd0bd0b 100644
+--- a/daemon/gdm-x-session.c
++++ b/daemon/gdm-x-session.c
+@@ -618,6 +618,11 @@ spawn_session (State        *state,
+ 
+         g_debug ("Running X session");
+ 
++        gdm_run_script (GDMCONFDIR "/Prime", "root",
++                        state->display_name,
++                        NULL, /* hostname */
++                        state->auth_file);
++
+         launcher = g_subprocess_launcher_new (G_SUBPROCESS_FLAGS_NONE);
+ 
+         if (state->environment != NULL) {
+diff --git a/data/Prime.in b/data/Prime.in
+new file mode 100644
+index 0000000..30caf03
+--- /dev/null
++++ b/data/Prime.in
+@@ -0,0 +1,6 @@
++#!/bin/sh
++
++primeoffload=/sbin/prime-offload
++if [ -f "$primeoffload" ]; then
++    $primeoffload
++fi
+diff --git a/data/PrimeOff.in b/data/PrimeOff.in
+new file mode 100644
+index 0000000..5a61c3c
+--- /dev/null
++++ b/data/PrimeOff.in
+@@ -0,0 +1,6 @@
++#!/bin/sh
++
++primeswitch=/sbin/prime-switch
++if [ -f "$primeswitch" ]; then
++    $primeswitch
++fi
+diff --git a/data/meson.build b/data/meson.build
+index 05a2011..05429d5 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -3,7 +3,7 @@ subdir('autostart')
+ subdir('dconf')
+ 
+ # XPath configs
+-foreach file : [ 'Init', 'PreSession', 'PostSession' ]
++foreach file : [ 'Init', 'PreSession', 'PostSession', 'Prime', 'PrimeOff' ]
+   generated_file = configure_file(
+     input: '@0@.in'.format(file),
+     output: file,
