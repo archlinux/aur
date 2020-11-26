@@ -4,14 +4,13 @@
 
 pkgname=kio-git
 pkgver=v4.100.0.rc1.r3340.gcea57a5b
-pkgrel=1
+pkgrel=2
 pkgdesc='Resource and network access abstraction'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kio'
 license=('LGPL')
 depends=('kbookmarks-git' 'kjobwidgets-git' 'kwallet-git' 'solid-git' 'libxslt' 'desktop-file-utils')
 makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'python')
-groups=('kf5')
 conflicts=(kio)
 provides=(kio)
 source=('git+https://github.com/KDE/kio.git')
