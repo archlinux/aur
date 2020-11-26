@@ -3,14 +3,13 @@
 
 pkgname=kcompletion-git
 pkgver=v5.71.0.rc1.r3.g30919db
-pkgrel=1
+pkgrel=2
 pkgdesc='KCompletion'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kcompletion'
 license=('LGPL')
 depends=('kwidgetsaddons-git' 'kconfig-git')
 makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
-groups=('kf5')
 conflicts=(kcompletion)
 provides=(kcompletion)
 source=('git+https://github.com/KDE/kcompletion.git')
