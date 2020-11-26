@@ -119,7 +119,7 @@ package_pulseaudio-nosystemd-minimal-git() {
 ### Split libpulse
   _pick libpulse etc/pulse/client.conf
   _pick libpulse usr/bin/pa{cat,ctl,dsp,mon,play,rec,record}
-#  _pick libpulse usr/lib/libpulse{,-simple,}.so*
+  _pick libpulse usr/lib/libpulse{,-simple,-mainloop-glib}.so*
   _pick libpulse usr/lib/{cmake,pkgconfig}
   _pick libpulse usr/lib/pulseaudio/libpulse{dsp,common-*}.so
   _pick libpulse usr/include
