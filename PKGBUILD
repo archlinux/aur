@@ -11,7 +11,7 @@
 # All patches are managed at https://github.com/Martchus/qtbase
 
 pkgname=mingw-w64-qt6-base
-_qtver=6.0.0-beta4
+_qtver=6.0.0-rc
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -38,7 +38,7 @@ source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/s
         '0005-Fix-libjpeg-workaround-for-conflict-with-rpcndr.h.patch'
         '0006-Support-finding-MariaDB.patch'
         '0007-Allow-overriding-CMAKE_FIND_LIBRARY_SUFFIXES-to-pref.patch')
-sha256sums=('5cb57bf0c513eb48cf57115dc1f1792eb3092a412806b46b836b960f82e31b3e'
+sha256sums=('8dc2c6fe053235e4a2866d8e1927fd667e5e8c853c96de708b9688012089138d'
             'bb9bec76506c3425d6fa2394c2c15cf8c8e84d6ce090f8cd9136c77e7a286d8f'
             '9ba0563f3c47327ca2f51c864fc1916a4355f56f82da77dea81c8a90cf315579'
             '37e533855b3b498bd1e93879aac05cc77dad3b2df64f9a61440aa2bcb73e9847'
