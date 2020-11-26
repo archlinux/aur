@@ -3,7 +3,7 @@
 # Contributor: Lubomir Krajcovic <lubomir.krajcovic(AT)gmail(DOT)com>
 # Contributor: Vladimir Kutyavin <vlkut(AT)bk(DOT)ru>
 pkgname=xtables-addons-dkms
-pkgver=3.11
+pkgver=3.13
 pkgrel=1
 pkgdesc='DKMS for additional extensions for Xtables packet filter present in the Linux kernel'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ conflicts=(xtables-addons xtables-addons-git xtables-addons-multikernel)
 replaces=(xtables-addons xtables-addons-git xtables-addons-multikernel)
 source=(https://inai.de/files/${pkgname%-dkms}/${pkgname%-dkms}-${pkgver}.tar.xz
         dkms.conf)
-sha256sums=('c1b3c796f37bf282fc11fe1894f8d2fe5f29f8e960415d2af9103eda0f56a548'
+sha256sums=('893c0c4ea09759cda1ab7e68f1281d125e59270f7b59e446204ce686c6a76d65'
             '87546f6d100a33271086d3bc990a2a1e4de83e25fb4a048774c520f4c36729e6')
 
 prepare() {
