@@ -1,4 +1,4 @@
-# Maintainer: DingYuan Zhang <justforlxz@gmail.com>
+# Maintainer: justforlxz <justforlxz@gmail.com>
 # Contributor: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-qt-dbus-factory-git
