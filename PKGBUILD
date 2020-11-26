@@ -11,7 +11,7 @@ depends=("python-pkgconfig" "python-psutil" "python-virtualenv" "fish")
 makedepends=("git" "python-setuptools" "python-dephell")
 source=("${pkgname%-*}::git+https://github.com/justinmayer/virtualfish.git")
 md5sums=('SKIP')
-provides=("vf")
+provides=("virtualfish")
 conflicts=("virtualfish")
 
 pkgver() {
