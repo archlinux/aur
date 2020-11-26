@@ -1,4 +1,4 @@
-# Maintainer: Haruyuki lxz <lxz@ilxz.me>
+# Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=dtkcore-git
 pkgver=5.2.2.16.r2.ge7e7a99
