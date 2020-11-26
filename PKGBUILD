@@ -3,14 +3,13 @@
 
 pkgname=ktextwidgets-git
 pkgver=v4.100.0.rc1.r302.g8b89dcc
-pkgrel=1
+pkgrel=2
 pkgdesc='KTextWidgets'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/ktextwidgets'
 license=('LGPL')
 depends=('kcompletion-git' 'kservice-git' 'kiconthemes-git' 'sonnet-git')
 makedepends=('extra-cmake-modules-git' 'git' 'python' 'qt5-tools')
-groups=('kf5')
 conflicts=(ktextwidgets)
 provides=(ktextwidgets)
 source=('git+https://github.com/KDE/ktextwidgets.git')
