@@ -20,9 +20,8 @@ md5sums=('a31b25cbee5112bb6518eb30ed99c9c8'
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  mkdir -p build
 
-#   rm -f go.sum
+  mkdir -p build
 }
 
 build() {
@@ -73,8 +72,6 @@ package_nps() {
 
   packaging "$_name" "${backup[*]}"
 
-#   cp -r web ${pkgdir}/etc/nps	
-#   find web -type d -exec install -dm755 ${pkgdir}/etc/${pkgbase}/{} \;
   find web -type f -exec install -Dm644 {} ${pkgdir}/etc/${pkgbase}/{} \;
   
 }	
