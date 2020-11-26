@@ -1,7 +1,7 @@
 pkgbase = python-qiling
 	pkgdesc = An advanced binary emulation framework
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://qiling.io/
 	arch = x86_64
 	license = GPL2
