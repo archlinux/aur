@@ -2,14 +2,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kxmlgui-git
-pkgver=v4.100.0.rc1.r506.gbb4bab8
-pkgrel=2
+pkgver=v4.100.0.rc1.r555.g28708b7
+pkgrel=1
 pkgdesc='KXmlGUI'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kxmlgui'
 license=('LGPL')
 depends=('kglobalaccel-git' 'ktextwidgets-git' 'attica-git')
-makedepends=('extra-cmake-modules-git' 'git' 'python')
+makedepends=('extra-cmake-modules-git' 'git' 'python' 'kguiaddons-git')
 conflicts=(kxmlgui)
 provides=(kxmlgui)
 source=('git+https://github.com/KDE/kxmlgui.git')
