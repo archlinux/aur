@@ -24,6 +24,11 @@ prepare() {
     dephell deps convert --from pyproject.toml --to setup.py
 }
 
+build() {
+  cd "$_pkgname"
+  python setup.py build
+}
+
 package() {
   cd "$srcdir/$_pkgname"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
