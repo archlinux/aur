@@ -115,7 +115,6 @@ package_pulseaudio-nosystemd-minimal-git() {
   sed -e '/Load several protocols/aload-module module-dbus-protocol' \
       -i etc/pulse/default.pa
 
-  rm -r etc/dbus-1
 
 ### Split libpulse
   _pick libpulse etc/pulse/client.conf
