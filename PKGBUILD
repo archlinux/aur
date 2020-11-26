@@ -2,7 +2,7 @@
 
 pkgbase=linux-rockchip
 pkgname=('linux-rockchip' 'linux-rockchip-headers')
-pkgver=5.9.8
+pkgver=5.9.11
 _armbian=21.02.0
 _kernver="$pkgver-rockchip"
 pkgrel=1

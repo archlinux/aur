@@ -1,5 +1,5 @@
 pkgbase = linux-rockchip
-	pkgver = 5.9.8
+	pkgver = 5.9.11
 	pkgrel = 1
 	url = https://github.com/armbian/build
 	arch = armv7h
@@ -15,15 +15,15 @@ pkgbase = linux-rockchip
 	source = linux.preset
 	source = 60-linux.hook
 	source = 90-linux.hook
-	source = linux-dtb-21.02.0-5.9.8.deb::https://github.com/redchenjs/armbian-ci/releases/download/v5.9.8-rockchip/linux-dtb-current-rockchip_21.02.0-trunk_armhf.deb
-	source = linux-image-21.02.0-5.9.8.deb::https://github.com/redchenjs/armbian-ci/releases/download/v5.9.8-rockchip/linux-image-current-rockchip_21.02.0-trunk_armhf.deb
-	source = linux-headers-21.02.0-5.9.8.deb::https://github.com/redchenjs/armbian-ci/releases/download/v5.9.8-rockchip/linux-headers-current-rockchip_21.02.0-trunk_armhf.deb
+	source = linux-dtb-21.02.0-5.9.11.deb::https://github.com/redchenjs/armbian-ci/releases/download/v5.9.11-rockchip/linux-dtb-current-rockchip_21.02.0-trunk_armhf.deb
+	source = linux-image-21.02.0-5.9.11.deb::https://github.com/redchenjs/armbian-ci/releases/download/v5.9.11-rockchip/linux-image-current-rockchip_21.02.0-trunk_armhf.deb
+	source = linux-headers-21.02.0-5.9.11.deb::https://github.com/redchenjs/armbian-ci/releases/download/v5.9.11-rockchip/linux-headers-current-rockchip_21.02.0-trunk_armhf.deb
 	sha512sums = a492aae17ee4a316ce03faf9f1b284b2529c485f4b092cc4a1f865a6c68d482fd356fd30efa296c116975a3bdf3922f5bf03912a8d0e76f4ab24aa6ab9f8c276
 	sha512sums = 7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a
 	sha512sums = a8fc668de860cf7b44269e35f879d130ccbc7db84d159ffcac6a92c02324f09c08fb57cccad18332f423bf2153c928633fa681ee96482c778dc76bffe80dd4f5
-	sha512sums = 442349acceeeefdfa24dfcddf478bcc3f12c2dc45a5ba2e05ce8be651542868550246902d0d4d16876e6f7818eb6bc4e7cea0d135c6fda4bb14c662f37650cf0
-	sha512sums = 4ba484660e5bb34d361055a06f1f773fe5f13864c2ff1c0fc9298e214391ab69736b5842e7fa0e445ab88482e0eca1a5d1d1e700bf9b3afad5cc1dd093937ce3
-	sha512sums = 1d5fc3554775fe08b076af637c045ab21ed25cc4147c374aa3e494217597cf5f9f5c22aeb679144584cf49e245ed8e14d64bb6d66efb8faf0e33a9a0816c0a94
+	sha512sums = e768abf2dfc8209e122340b9ad98d91fec3c7c27e418b5db9c7eeecddfdcded321ca812734674d8c91bbde08a075d44857236ec65ffa9c3c52977f809355d163
+	sha512sums = bd8c8d202d137473b0071e059485321d7d5e71acaca8a26042d3d77b789ec2bba3b640f91a2165be4f5215fa48a5fba6bf79060f72ce3e5536d5a1e325bf4642
+	sha512sums = c2539fd846d1cd64a33aff97c49c5843866ae7fb839f87e661a39ebcff99f9565910b62beb9bf8c97b10ee3bf170525f6b5977bf40935ab2382c4d89a162376a
 
 pkgname = linux-rockchip
 	pkgdesc = The Linux Kernel and modules - ARMv7 multi-platform Rockchip
@@ -33,12 +33,12 @@ pkgname = linux-rockchip
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=5.9.8
+	provides = linux=5.9.11
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	backup = etc/mkinitcpio.d/linux-rockchip.preset
 
 pkgname = linux-rockchip-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - ARMv7 multi-platform Rockchip
-	provides = linux-headers=5.9.8
+	provides = linux-headers=5.9.11
 	conflicts = linux-headers
