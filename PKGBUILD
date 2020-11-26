@@ -1,5 +1,5 @@
 # Maintainer: AkinoKaede <autmaple@protonmail.com>
-#Special thanks:  Felix Yan <felixonmars@archlinux.org>
+# Special thanks:  Felix Yan <felixonmars@archlinux.org>
 # Contributor: pandada8 <pandada8@gmail.com>
 
 pkgname=xray
@@ -30,7 +30,7 @@ sha512sums=(
 )
 
 build() {
-  cd $startdir/src/Xray-core-$pkgver
+  cd $srcdir/Xray-core-$pkgver
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external"
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -39,7 +39,7 @@ build() {
 }
 
 check() {
-  cd $startdir/src/Xray-core-$pkgver
+  cd $srcdir/Xray-core-$pkgver
   go test -p 1 -tags json -v -timeout 30m github.com/xtls/xray-core/v1/core/...
 }
 
@@ -49,7 +49,7 @@ package() {
   install -Dm644 xray@.service "$pkgdir"/usr/lib/systemd/system/xray@.service
   install -Dm644 *.json -t "$pkgdir"/etc/xray/
 
-  cd $startdir/src/Xray-core-$pkgver
+  cd $srcdir/Xray-core-$pkgver
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/xray/LICENSE
   install -Dm755 xray -t "$pkgdir"/usr/bin/
 }
