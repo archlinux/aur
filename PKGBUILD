@@ -11,6 +11,8 @@ url="https://github.com/XTLS/Xray-core"
 license=('MPLv2')
 depends=('glibc' 'v2ray-domain-list-community' 'v2ray-geoip')
 backup=(etc/xray/config.json)
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/XTLS/Xray-core/releases/download/v$pkgver/Xray-linux-64.zip"
     "LICENSE::https://raw.githubusercontent.com/XTLS/Xray-core/main/LICENSE"
