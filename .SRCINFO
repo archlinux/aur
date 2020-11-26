@@ -1,0 +1,67 @@
+pkgbase = pulseaudio-nosystemd-minimal-git
+	pkgdesc = A featureful, general-purpose sound server
+	pkgver = 13.99.1+98+g460d0c0b7
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/PulseAudio/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = attr
+	makedepends = rtkit
+	makedepends = tdb
+	makedepends = intltool
+	makedepends = orc
+	makedepends = check
+	makedepends = meson
+	depends = libltdl
+	depends = rtkit
+	depends = tdb
+	depends = orc
+	depends = python-pyqt5
+	depends = python-dbus
+	depends = python-sip
+	depends = dconf
+	optdepends = alsa-plugins: ALSA support
+	optdepends = pulseaudio-alsa: ALSA configuration (recommended)
+	optdepends = lirc-utils: infra-red support
+	options = !emptydirs
+	backup = etc/pulse/daemon.conf
+	backup = etc/pulse/default.pa
+	backup = etc/pulse/system.pa
+	backup = etc/pulse/client.conf
+	source = git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git
+	sha256sums = SKIP
+
+pkgname = pulseaudio-nosystemd-minimal-git
+	depends = rtkit
+	depends = libltdl
+	depends = tdb
+	depends = orc
+	optdepends = pulseaudio-alsa: ALSA configuration (recommended)
+	provides = pulseaudio
+	conflicts = pulseaudio
+	replaces = pulseaudio-xen<=9.0
+	replaces = pulseaudio-gconf<=11.1
+	backup = etc/pulse/daemon.conf
+	backup = etc/pulse/default.pa
+	backup = etc/pulse/system.pa
+
+pkgname = libpulse-nosystemd-minimal-git
+	pkgdesc = A featureful, general-purpose sound server (client library)
+	license = LGPL
+	depends = libcap
+	depends = libxtst
+	depends = libsm
+	provides = libpulse.so
+	provides = libpulse-simple.so
+	provides = libpulse-mainloop-glib.so
+	provides = libpulse
+	conflicts = libpulse
+	backup = etc/pulse/client.conf
+
+pkgname = pulseaudio-zeroconf-nosystemd-minimal-git
+	pkgdesc = Zeroconf support for PulseAudio
+	depends = pulseaudio
+	provides = pulseaudio-zeroconf
+	conflicts = pulseaudio-zeroconf
+
