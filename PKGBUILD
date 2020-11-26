@@ -1,9 +1,8 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=bsp-tinkerboard
-pkgver=21.02.0
+pkgver=20.11
 _ubuntu=focal
-_kernel=5.9.11
 pkgrel=1
 pkgdesc="Board support package for Tinker Board / S (Bluetooth, HDMI, Audio...)"
 arch=('armv7h')
@@ -15,14 +14,14 @@ install="$pkgname.install"
 source=(
   "pulseaudio-sink.txt"
   "pulseaudio-source.txt"
-  "armbian-fw-$pkgver-$_kernel.deb::https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/armbian-firmware_$pkgver-trunk_all.deb"
-  "armbian-bsp-$pkgver-$_kernel.deb::https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-$_ubuntu-root-current-tinkerboard_$pkgver-trunk_armhf.deb"
+  "armbian-fw-$pkgver-$pkgrel.deb::https://apt.armbian.com/pool/main/a/armbian-firmware/armbian-firmware_${pkgver}_all.deb"
+  "armbian-bsp-$pkgver-$pkgrel.deb::https://apt.armbian.com/pool/main/l/linux-$_ubuntu-root-current-tinkerboard/linux-$_ubuntu-root-current-tinkerboard_${pkgver}_armhf.deb"
 )
 sha512sums=(
-  "ba864bea8e0de5c37e9953706295b26c0a74e779310a4b43326e1d89b5ad5f34365fd0e64bdc23d58a06109c58ef697ad2a5845c4e3713d83d2a2b88e2768d90"
-  "c109a8b3d2d6bfc6f90c747d7e76e50f316b542f0a38df582ea3b5ed5e7de388ee853e6d5f5f8c2f35612857fe10959cb68467440bda3bf33a335cfd78b7e024"
-  "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/armbian-firmware_$pkgver-trunk_all.deb.sha512sum)"
-  "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-$_ubuntu-root-current-tinkerboard_$pkgver-trunk_armhf.deb.sha512sum)"
+  'ba864bea8e0de5c37e9953706295b26c0a74e779310a4b43326e1d89b5ad5f34365fd0e64bdc23d58a06109c58ef697ad2a5845c4e3713d83d2a2b88e2768d90'
+  'c109a8b3d2d6bfc6f90c747d7e76e50f316b542f0a38df582ea3b5ed5e7de388ee853e6d5f5f8c2f35612857fe10959cb68467440bda3bf33a335cfd78b7e024'
+  'SKIP'
+  'SKIP'
 )
 noextract=("${source[@]##*/}")
 
@@ -35,9 +34,9 @@ prepare() {
 package() {
   cd "$srcdir"
 
-  ar x "armbian-fw-$pkgver-$_kernel.deb"
+  ar x "armbian-fw-$pkgver-$pkgrel.deb"
   tar -xf data.tar.xz
-  ar x "armbian-bsp-$pkgver-$_kernel.deb"
+  ar x "armbian-bsp-$pkgver-$pkgrel.deb"
   tar -xf data.tar.xz
 
   install -Dm644 "lib/systemd/system/tinker-bluetooth.service" "$pkgdir/usr/lib/systemd/system/tinker-bluetooth.service"
