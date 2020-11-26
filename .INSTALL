@@ -1,8 +1,10 @@
 #!/bin/sh
 
 post_install() {
-  systemctl daemon-reload
-  xhost +
+  if systemctl -q is-active runsunloginclient.service ;then
+    systemctl restart runsunloginclient.service
+  fi
+
   ECHOLEN=$(echo -e|awk '{print length($0)}')
   if [ ${ECHOLEN} = '0' ]
   then
@@ -10,48 +12,15 @@ post_install() {
   else
   ECHO='echo'
   fi
-  $ECHO "\033[36m***********************************************************************************************\033[0m"
-  $ECHO "\033[36m*  Start SunloginClient Service                                                               *\033[0m"
-  $ECHO "\033[36m*  systemctl start runsunloginclient                                                          *\033[0m"
-  $ECHO "\033[36m*  Enable Remote Control                                                                      *\033[0m"
-  $ECHO "\033[36m*  xhost +                                                                                    *\033[0m"
-  $ECHO "\033[36m*  如果遇到开机自启动后客户端连接不上的情况                                                   *\033[0m"
-  $ECHO "\033[36m*  请根据https://wiki.archlinux.org/index.php/Systemd#Running_services_after_the_network_is_up*\033[0m"
-  $ECHO "\033[36m*  由你目前的网络管理,使能相应的*-wait-online.service                                         *\033[0m"
-  $ECHO "\033[36m***********************************************************************************************\033[0m"
+  
+  $ECHO "\033[36m*************************************************************************\033[0m"
+  $ECHO "\033[36m*  sunlogin daemon service must be running for sunloginclient to work    *\033[0m"
+  $ECHO "\033[36m*  Type: systemctl start runsunloginclient                               *\033[0m"
+  $ECHO "\033[36m*************************************************************************\033[0m"
 }
 
 post_upgrade() {
-  systemctl daemon-reload
-  xhost +
-  if [ `systemctl is-active runsunloginclient` == 'active' ];then
-    systemctl restart runsunloginclient
-  fi
-  ECHOLEN=$(echo -e|awk '{print length($0)}')
-  if [ ${ECHOLEN} = '0' ]
-  then
-    ECHO='echo -e'
-  else
-    ECHO='echo'
-  fi
-  $ECHO "\033[36m***********************************************************************************************\033[0m"
-  $ECHO "\033[36m*  Start SunloginClient Service                                                               *\033[0m"
-  $ECHO "\033[36m*  systemctl start runsunloginclient                                                          *\033[0m"
-  $ECHO "\033[36m*  Enable Remote Control                                                                      *\033[0m"
-  $ECHO "\033[36m*  xhost +                                                                                    *\033[0m"
-  $ECHO "\033[36m*  如果遇到开机自启动后客户端连接不上的情况                                                   *\033[0m"
-  $ECHO "\033[36m*  请根据https://wiki.archlinux.org/index.php/Systemd#Running_services_after_the_network_is_up*\033[0m"
-  $ECHO "\033[36m*  由你目前的网络管理,使能相应的*-wait-online.service                                         *\033[0m"
-  $ECHO "\033[36m***********************************************************************************************\033[0m"
+  post_install
 }
 
-pre_remove() {
-  systemctl disable runsunloginclient
-  systemctl stop runsunloginclient
-}
-
-post_remove() {
-  systemctl daemon-reload
-  xhost -
-}
 # vim: ts=2 sw=2 et:
