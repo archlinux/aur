@@ -1,16 +1,33 @@
 pre_upgrade() {
   systemctl stop ombi.service
+
+  if [ -d "/opt/Ombi" ]; then
+  
+    if [ -f /opt/Ombi/Ombi.db ]; then
+      cp /opt/Ombi/Ombi.db /var/lib/ombi/Ombi.db
+    fi
+
+    if [ -f /opt/Ombi/OmbiExternal.db ]; then
+      cp /opt/Ombi/OmbiExternal.db /var/lib/ombi/OmbiExternal.db
+    fi
+
+    if [ -f /opt/Ombi/OmbiSettings.db ]; then
+      cp /opt/Ombi/OmbiSettings.db /var/lib/ombi/OmbiSettings.db
+    fi
+
+    if [ -f /opt/Ombi/database.json ]; then
+      cp /opt/Ombi/database.json /var/lib/ombi/database.json
+    fi
+
+    if [ -f /opt/Ombi/database_multi.json ]; then
+      cp /opt/Ombi/database_multi.json /var/lib/ombi/database_multi.json
+    fi
+  
+    rm -r /opt/Ombi/*
+  fi
 }
 
 post_upgrade() {
-  if [ -f /opt/Ombi/Schedules.db ]; then
-    mv /opt/Ombi/Schedules.db /var/lib/ombi/Schedules.db
-  fi
-
-  if [ -f /opt/Ombi/Ombi.db ]; then
-    mv /opt/Ombi/Ombi.db /var/lib/ombi/Ombi.db
-  fi
-
   systemctl daemon-reload
   systemctl start ombi.service
 }

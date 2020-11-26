@@ -2,7 +2,7 @@
 
 pkgname=ombi-v4
 pkgver=4.0.728
-pkgrel=1
+pkgrel=2
 pkgdesc="Ombi V4 branch. Gives Plex or Emby users the ability to request content by themselves"
 jobid=
 arch=('x86_64')
