@@ -17,11 +17,6 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
-build() {
-	printf pashm
-}
-
 package() {
 	
 	mkdir -p $pkgdir/usr/bin
