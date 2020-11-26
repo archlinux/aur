@@ -1,0 +1,17 @@
+pkgbase = tuxedo-tomte
+	pkgdesc = little helper that provides services, updates and fixes for TUXEDO devices
+	pkgver = 2.0.14
+	pkgrel = 1
+	url = https://tuxedocomputers.com
+	install = tuxedo-tomte.install
+	arch = any
+	license = GPL3
+	source = http://deb.tuxedocomputers.com/ubuntu/pool/main/t/tuxedo-tomte/tuxedo-tomte_2.0.14_all.deb
+	source = tuxedo-tomte.install
+	sha256sums = 94d131355d05d489b4ec3ced052999d0d67b6379b92935e41519a5b77f2131fa
+	sha256sums = 6f62bb32139f92564cfe3341c4f3a6fb42b01b04ad658b3046f038726981208e
+	sha512sums = bf52a33b8f0bb4688f757a564c549d657d1f05c01db2cac41391e1648c2dea50aac1213dbbc8f737a2e2ede849149882849545d9e688a418b8d87e362e35400b
+	sha512sums = d9a1084dfe0e783c660987824eec91af90d7a94ca9e467073477f2a38e4b8b0cc3372967e893e15706c67d559c288c2e61671fa0844ff7dce0f3a5841ba975c2
+
+pkgname = tuxedo-tomte
+

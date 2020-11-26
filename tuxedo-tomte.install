@@ -1,0 +1,9 @@
+post_install() {
+  systemctl daemon-reload
+  systemctl enable tuxedo-tomte.timer
+  /usr/bin/tuxedo-tomte configure all
+}
+
+pre_remove() {
+  systemctl disable tuxedo-tomte.timer
+}
