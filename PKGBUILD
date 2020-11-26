@@ -3,7 +3,7 @@
 pkgname=qencoder
 _name="${pkgname#python-}"
 pkgver=2.0rc1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Qt video encoder GUI for open codec formats'
 url='https://github.com/natis1/qencoder'
 arch=('any')
