@@ -1,7 +1,7 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 pkgname=mitsuba2-git
 pkgver=r2078.76445e90
-pkgrel=1
+pkgrel=2
 pkgdesc="A Retargetable Forward and Inverse Renderer"
 arch=('x86_64')
 url="https://www.mitsuba-renderer.org/"
@@ -94,7 +94,7 @@ package() {
 
 	# install documentation
 	mkdir -p "$pkgdir/usr/share/doc/mitsuba2"
-	cp -R $srcdir/build/html "$pkgdir/usr/share/doc/mitsuba2"
+	cp -R "$srcdir/build/html" "$pkgdir/usr/share/doc/mitsuba2"
 
 	# folders which are not used/should not be shipped
 	rm -rf "$pkgdir/include" "$pkgdir/lib"
