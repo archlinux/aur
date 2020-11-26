@@ -1,28 +1,21 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
-pkgname=('python-clearbit' 'python2-clearbit')
-pkgbase=python-clearbit
+
+pkgname=python-clearbit
 _pkgname=clearbit
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python API client to https://clearbit.com"
 arch=('any')
 url="https://pypi.org/project/clearbit/"
 license=('MIT')
-depends=('python' 'python-simplejson')
-makedepends=('python-setuptools' 'python2-setuptools')
+depends=('python' 'python-requests')
+makedepends=('python-setuptools')
 backup=()
 install=
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('f1d5b854a9b0e8d6644bad2594f9e65ab756ffb0c6c34db15ecfc1e9179bb883')
 
-package_python-clearbit() {
-  depends=('python' 'python-simplejson')
+package() {
   cd "${_pkgname}-${pkgver}"
   python setup.py install -O1 --root="${pkgdir}" --prefix=/usr
-}
-
-package_python2-clearbit() {
-  depends=('python2' 'python2-simplejson')
-  cd "${_pkgname}-${pkgver}"
-  python2 setup.py install -O1 --root="${pkgdir}" --prefix=/usr
 }

@@ -1,22 +1,15 @@
 pkgbase = python-clearbit
 	pkgdesc = A Python API client to https://clearbit.com
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/clearbit/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	depends = python
-	depends = python-simplejson
+	depends = python-requests
 	source = https://files.pythonhosted.org/packages/source/c/clearbit/clearbit-0.1.7.tar.gz
 	sha256sums = f1d5b854a9b0e8d6644bad2594f9e65ab756ffb0c6c34db15ecfc1e9179bb883
 
 pkgname = python-clearbit
-	depends = python
-	depends = python-simplejson
-
-pkgname = python2-clearbit
-	depends = python2
-	depends = python2-simplejson
 
