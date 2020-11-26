@@ -6,7 +6,7 @@
 # Contributor: tocer <tocer.deng@gmail.com>
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 pkgname=v8
-pkgver=8.6.395.25
+pkgver=8.7.220.25
 pkgrel=1
 pkgdesc="Google's open source JavaScript engine"
 arch=('x86_64' 'i686')
