@@ -25,8 +25,8 @@ _gapps_list=(
 )
 source=(
     "https://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img"
-    "https://github.com/redchenjs/aur-packages/raw/master/anbox-image/houdini_y.sfs"
-    "https://github.com/redchenjs/aur-packages/raw/master/anbox-image/houdini_z.sfs"
+    "https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_y.sfs"
+    "https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_z.sfs"
     "https://github.com/topjohnwu/Magisk/releases/download/v20.4/Magisk-v20.4.zip"
     "magisk-init-rc.patch"
     "init-magisk.sh"
