@@ -10,6 +10,7 @@ fi
 git pull
 
 read -r -d "\n" TAG_NAME RELEASE_NAME <<< "$(curl -sSf "https://api.github.com/repos/ruffle-rs/ruffle/releases?per_page=1" | jq -r ".[0] | .tag_name, .name")" || true
+TAG_NAME=${TAG_NAME##nightly-}
 sed -e "s/^pkgver=.*/pkgver=${TAG_NAME//-/.}/" -i PKGBUILD
 if [ -z "$(git status --porcelain)" ]; then
 	echo "Nothing to do"

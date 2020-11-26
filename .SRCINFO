@@ -1,6 +1,6 @@
-pkgbase = ruffle-bin
+pkgbase = ruffle-nightly-bin
 	pkgdesc = A Flash Player emulator written in Rust
-	pkgver = nightly.2020.11.25
+	pkgver = 2020.11.25
 	pkgrel = 1
 	url = https://ruffle.rs/
 	arch = x86_64
@@ -10,5 +10,5 @@ pkgbase = ruffle-bin
 	source = https://github.com/ruffle-rs/ruffle/releases/download/nightly-2020-11-25/ruffle_nightly_2020_11_25_linux.tar.gz
 	sha512sums = 31d838d8f22b689c857287c01f40ad70cc1c93c1cabeb438e2f5cb0d00b8216ddb9ec882f6cd9b81fde118feafb9214b2d1aab1fdc38d548d5f4279d97de79fc
 
-pkgname = ruffle-bin
+pkgname = ruffle-nightly-bin
 
