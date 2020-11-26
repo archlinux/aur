@@ -1,4 +1,4 @@
-# Maintainer: DingYuan Zhang <justforlxz@gmail.com>
+# Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=golang-deepin-lib-git
 pkgver=5.6.0.4.r12.gef30961
