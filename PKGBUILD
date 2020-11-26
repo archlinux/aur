@@ -17,9 +17,9 @@
 
 pkgname=protonmail-bridge-nogui
 
-_pkgver=1.5.0
+_pkgver=1.5.2
 _rev=""
-_srcver=br-1.5.0
+_srcver=br-1.5.2
 _srcname=proton-bridge-"$_srcver"
 
 pkgver="$_pkgver""$_rev"
@@ -37,12 +37,12 @@ conflicts=('protonmail-bridge-bin' 'protonmail-bridge')
 options=('!emptydirs' '!strip')
 source=("$_srcname.tar.gz::https://github.com/ProtonMail/proton-bridge/archive/"$_srcver".tar.gz"
         "bridge.service")
-sha256sums=('9ada6b108a0cc9cd71e492af68560d3cc00c4a7f6b004bb217afbf9236eefc50'
+sha256sums=('49bc4681e43229bfcf0f4ec57a558ad35cf79b893a58293a64a9668d4d9764f9'
             '6b2fd1e042b55dc6d0ffe5eb44e82ffd233452b4571ef571132600e7ec0d5d82')
 
 prepare() {
     cd "${srcdir}"/"$_srcname"/
-    sed -i 's/BRIDGE_APP_VERSION?=.*/BRIDGE_APP_VERSION?=1.5.0-git/' Makefile
+    sed -i 's/BRIDGE_APP_VERSION?=.*/BRIDGE_APP_VERSION?=1.5.2-git/' Makefile
     export PATH=$PATH:$(go env GOPATH)/bin/
     make clean
     make build-nogui
@@ -53,5 +53,5 @@ package() {
     cd "${srcdir}"/"$_srcname"/
     install -Dm644 ./LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
     install -Dm644 ./Changelog.md -t "${pkgdir}"/usr/share/doc/"${pkgbame}"/
-    install -Dm755 ./Desktop-Bridge "${pkgdir}"/usr/bin/protonmail-bridge
+    install -Dm755 ./proton-bridge "${pkgdir}"/usr/bin/protonmail-bridge
 }
