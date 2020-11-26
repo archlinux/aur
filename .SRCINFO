@@ -1,6 +1,6 @@
 pkgbase = qt6-tools
 	pkgdesc = A cross-platform application and UI framework (Development Tools, QtHelp)
-	pkgver = 6.0.0beta4
+	pkgver = 6.0.0rc
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = qt6-tools
 	depends = qt6-base
 	depends = hicolor-icon-theme
 	optdepends = clang: for qdoc and lupdate
-	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-beta4/submodules/qttools-everywhere-src-6.0.0-beta4.tar.xz
-	sha256sums = cd15384ed635fc9efa0f5f6679040082f138f28748a17f65b4b415a3d2e639ca
+	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-rc/submodules/qttools-everywhere-src-6.0.0-rc.tar.xz
+	sha256sums = 6fe789cf7e1abc7f0ac39027c53e7880433425b234d448d1500e583e9c3ba498
 
 pkgname = qt6-tools
 
