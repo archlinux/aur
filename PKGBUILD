@@ -1,15 +1,15 @@
-# Maintainer: Daurnimator <quae@daurnimator.com>
+# Maintainer: Daurnimator <daurnimator@archlinux.org>
 
-pkgname=('lua-psl' 'lua51-psl' 'lua52-psl')
+pkgname=('lua-psl' 'lua51-psl' 'lua52-psl' 'lua53-psl')
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/daurnimator/lua-psl'
 license=('MIT')
-makedepends=('lua' 'lua51' 'lua52')
+makedepends=('lua' 'lua51' 'lua52' 'lua53')
 depends=('libpsl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/daurnimator/lua-psl/archive/v$pkgver.tar.gz")
-md5sums=('9171823dbd4d347a5aa1150710cc991d')
+sha256sums=('c7d529d33fcd9d898668014d174ed1dc1257e9076da98729d94a4e8b8d231d40')
 
 build() {
 	cd "lua-psl-$pkgver"
@@ -22,13 +22,16 @@ build() {
 
 	gcc -fPIC $CPPFLAGS $CFLAGS -I/usr/include/lua5.2 -o psl/psl.o -c psl/psl.c
 	gcc -shared $LDFLAGS -o psl-5.2.so psl/psl.o -lpsl
+
+	gcc -fPIC $CPPFLAGS $CFLAGS -I/usr/include/lua5.3 -o psl/psl.o -c psl/psl.c
+	gcc -shared $LDFLAGS -o psl-5.3.so psl/psl.o -lpsl
 }
 
 package_lua-psl() {
-	pkgdesc='libpsl bindings for Lua 5.3'
+	pkgdesc='libpsl bindings for Lua 5.4'
 
 	cd "lua-psl-$pkgver"
-	install -D psl.so "$pkgdir/usr/lib/lua/5.3/psl.so"
+	install -D psl.so "$pkgdir/usr/lib/lua/5.4/psl.so"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
@@ -45,5 +48,13 @@ package_lua52-psl() {
 
 	cd "lua-psl-$pkgver"
 	install -D psl-5.2.so "$pkgdir/usr/lib/lua/5.2/psl.so"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_lua53-psl() {
+	pkgdesc='libpsl bindings for Lua 5.3'
+
+	cd "lua-psl-$pkgver"
+	install -D psl-5.3.so "$pkgdir/usr/lib/lua/5.3/psl.so"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
