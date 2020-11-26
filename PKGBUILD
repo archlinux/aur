@@ -25,10 +25,6 @@ pkgver() {
 }
 
 prepare(){
-  cd "${srcdir}/$_pkgname"
-  git submodule init
-  git submodule update --init --recursive
-
   cd "${srcdir}/${_pkgname}/${_builddir}"
 
   meson setup ../../../build/ \
