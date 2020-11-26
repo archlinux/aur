@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=charm-tool-bin
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="The Charm Cloud Tool"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-tool-bin}_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('7754d16602e084becefba1cf5afbc3faa030af4993b931542528a690efc69817')
+sha256sums_x86_64=('c071ec07b23033fe4574392069d25099fbbafdbd2243194f3d1814fc5694d015')
 
 package() {
     install -Dm755 "${pkgname%-tool-bin}" "$pkgdir/usr/bin/${pkgname%-tool-bin}"
