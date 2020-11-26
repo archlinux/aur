@@ -1,3 +1,5 @@
+# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+
 _pkgname='desmume'
 pkgname="$_pkgname-git"
 _pkgver='0.9.11'
