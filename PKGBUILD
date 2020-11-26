@@ -1,33 +1,31 @@
 # Maintainer: Luis Aranguren <pizzaman@hotmail.com>
 # Contributor: Saleem Rashid <trezor@saleemrashid.com>
+
 _pkgname=trezord
 pkgname="${_pkgname}-git"
 _gitname="${_pkgname}-go"
+pkgver=2.0.30.r6.gbb4eb07
 pkgrel=1
-pkgver=2.0.29.r0.g05991ce
 pkgdesc='Trezor Communication Daemon aka Trezor Bridge (written in Go)'
-url='https://github.com/trezor/trezord-go'
 arch=('x86_64')
+url='https://github.com/trezor/trezord-go'
 license=('LGPL3')
 provides=("${_pkgname}" 'trezor-bridge')
 conflicts=("${_pkgname}" 'trezor-bridge-bin')
 makedepends=('git' 'go')
-depends=()
+depends=('trezor-udev')
 source=(
     "git://github.com/trezor/${_gitname}.git"
     "${_pkgname}.sysusers"
-    "${_pkgname}.patch"
 )
 sha256sums=('SKIP'
             'efa561a7192a22088d1840278fc742b77f649fb3d949aa2a1d8644c681acd270'
-            '39cdb6630e4843e3509fb91990df2631780c952d887f401eb0aa6ac523db0082')
+)
 
 _importpath="github.com/trezor/${_gitname}"
 
 prepare() {
     cd "${srcdir}/${_gitname}"
-
-    git apply "${srcdir}/${_pkgname}.patch"
 
     mkdir -p "${srcdir}/src/$(dirname "${_importpath}")"
     ln -sf -T "${srcdir}/${_gitname}" "${srcdir}/src/${_importpath}"
@@ -41,6 +39,7 @@ pkgver() {
 }
 
 build() {
+    cd "${srcdir}/${_gitname}"
     export GOPATH="${srcdir}"
     go install \
         -gcflags "all=-trimpath=${srcdir}" \
@@ -56,6 +55,7 @@ package() {
 
     install -Dm0644 "${srcdir}/${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
 
-    install -Dm0644 release/linux/trezor.rules    "${pkgdir}/usr/lib/udev/rules.d/51-trezor.rules"
     install -Dm0644 release/linux/trezord.service "${pkgdir}/usr/lib/systemd/system/trezord.service"
+
+    install -Dm0644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
