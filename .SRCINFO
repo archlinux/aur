@@ -1,0 +1,14 @@
+pkgbase = python-syllables
+	pkgdesc = Python package for estimating the number of syllables in a word
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/prosegrinder/python-syllables
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/s/syllables/syllables-0.1.0.tar.gz
+	sha256sums = 4d65e542db97927ccce04f6668bda528f29f346bf7f5d8524c436eabae8a4cd6
+
+pkgname = python-syllables
+
