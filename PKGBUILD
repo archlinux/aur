@@ -1,12 +1,14 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 pkgname=albert-lite
-pkgver=0.16.1
-pkgrel=3
+pkgver=0.16.2
+pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher. Without QML and VirtualBox dependencies"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/albertlauncher"
 license=('GPL')
 depends=(
+  'python'
+  'hicolor-icon-theme'
   'qt5-svg'
   'qt5-x11extras'
   'qt5-charts'
@@ -16,9 +18,7 @@ makedepends=(
   'git'
   'cmake'
   'gcc'
-  'qt5-svg'
   'muparser'
-  'python'
 )
 optdepends=('muparser: Calculator plugin')
 conflicts=('albert')

@@ -1,7 +1,7 @@
 pkgbase = albert-lite
 	pkgdesc = A sophisticated standalone keyboard launcher. Without QML and VirtualBox dependencies
-	pkgver = 0.16.1
-	pkgrel = 3
+	pkgver = 0.16.2
+	pkgrel = 1
 	url = https://github.com/albertlauncher
 	arch = i686
 	arch = x86_64
@@ -10,16 +10,16 @@ pkgbase = albert-lite
 	makedepends = git
 	makedepends = cmake
 	makedepends = gcc
-	makedepends = qt5-svg
 	makedepends = muparser
-	makedepends = python
+	depends = python
+	depends = hicolor-icon-theme
 	depends = qt5-svg
 	depends = qt5-x11extras
 	depends = qt5-charts
 	depends = libx11
 	optdepends = muparser: Calculator plugin
 	conflicts = albert
-	source = mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v0.16.1
+	source = mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v0.16.2
 	source = mirrors/plugins::git+https://github.com/albertlauncher/plugins.git
 	source = mirrors/python::git+https://github.com/albertlauncher/python.git
 	source = mirrors/pybind11::git+https://github.com/pybind/pybind11.git
