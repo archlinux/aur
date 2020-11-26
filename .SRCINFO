@@ -1,6 +1,6 @@
 pkgbase = gitstatus
 	pkgdesc = Git status for Bash and Zsh prompt
-	pkgver = 1.4.1
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/romkatv/gitstatus
 	install = gitstatus.install
@@ -10,9 +10,9 @@ pkgbase = gitstatus
 	makedepends = cmake
 	makedepends = zsh
 	depends = glibc
-	source = gitstatus-1.4.1.tar.gz::https://github.com/romkatv/gitstatus/archive/v1.4.1.tar.gz
+	source = gitstatus-1.4.3.tar.gz::https://github.com/romkatv/gitstatus/archive/v1.4.3.tar.gz
 	source = libgit2-tag-82cefe2b42300224ad3c148f8b1a569757cc617a.tar.gz::https://github.com/romkatv/libgit2/archive/tag-82cefe2b42300224ad3c148f8b1a569757cc617a.tar.gz
-	sha512sums = f38bb3d660bd0e6aac08860a52bc29badc47c96d57094058c2f3b7cad736c5b3f6a43597e783a5f6b9ba6f6fdea746db067eb4d7ae553c313a7cd5426718c3b4
+	sha512sums = 9f52ae21d54ec6735a1a1774ea27b73d70ff0de55868e8711d606fd67f27fd4016af4aa810cf5ecbda0e7bec454753fc517de77c996bc37d01dc238114cbfd46
 	sha512sums = b2760593b9ff0223e10b170702e21fb022c13bd07d360ecffece7fae20ef2fdc9e42597e609dd26803bd02dc5c22bc6a5b85aac91496710ddbf433b67db5a1c0
 
 pkgname = gitstatus
