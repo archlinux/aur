@@ -1,4 +1,4 @@
-# Maintainer: DingYuan Zhang <justforlxz@gmail.com>
+# Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=golang-github-linuxdeepin-go-x11-client-git
 pkgver=0.6.2.r1.g6d7b662
