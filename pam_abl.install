@@ -1,11 +1,18 @@
 post_upgrade() {
-	echo Warning: the database format has changed with version 0.5.0.
-	echo The database files must be manually deleted and recreated if
-	echo you are upgrading from an earlier version.
+    if (( $(vercmp $2 1.0) < 0 )); then
+        if test -f etc/security/pam_abl.conf ; then
+            if ! grep -q db_module= etc/security/pam_abl.conf ; then
+                echo db_module not set in /etc/security/pam_abl.conf
+                echo Setting db_module as BDB module. Consider switching to Kyoto Cabinet.
+                echo 'db_module=/usr/lib/security/pam_abl_bdb.so' >> etc/security/pam_abl.conf
+            fi
+            echo host_db and user_db options are removed, commenting in /etc/security/pam_abl.conf
+            sed -i -e 's/^\(host_db=\)/#\1/' -e 's/^\(user_db=\)/#\1/' etc/security/pam_abl.conf
+        fi
+    fi
 }
 
 post_install() {
-	echo This package requires non-trivial configuration. See the
-	echo Arch Wiki for details:
-	echo https://wiki.archlinux.org/index.php/Pam_abl
+    echo This package requires non-trivial configuration. See:
+    echo https://wiki.archlinux.org/index.php/Pam_abl
 }

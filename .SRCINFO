@@ -1,8 +1,8 @@
 pkgbase = pam_abl
 	pkgdesc = Automated blacklisting on repeated failed authentication attempts
-	pkgver = 0.6.0
+	pkgver = 1.0
 	pkgrel = 1
-	url = http://pam-abl.sourceforge.net/
+	url = https://github.com/amishmm/pam_abl
 	install = pam_abl.install
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,15 @@ pkgbase = pam_abl
 	makedepends = asciidoc
 	makedepends = cmake
 	depends = db
+	depends = kyotocabinet
 	depends = pam
-	source = http://downloads.sourceforge.net/pam-abl/pam-abl-0.6.0.tar.gz
-	md5sums = 62e02b88cf2da09eeea101a99f69f1ee
+	backup = etc/security/pam_abl.conf
+	source = pam_abl-1.0.tar.gz::https://github.com/amishmm/pam_abl/archive/v1.0.tar.gz
+	source = pam_abl.conf
+	source = pam_abl.tmpfiles
+	sha512sums = 7d7083de5af5112d0300be1ee9699d3290f6e984a20ed30bf4f5d63cd6c0cc1b06c6546fe45004a507d703224e5a774cc727b619ba939a8daa26de75bb61e7e9
+	sha512sums = 5b5c5b8796a852de9c7bcd4c58aea091b43c292038e0913aedf2827f4cb43c35069e9b0c48150a422610b266115633b70d670007e234c0d457f06fa49c95e32f
+	sha512sums = 581b86314b221a19db18cac5f85189d6d6446641c065be6543e926aaf09829902b84fb782a791ffbe74bcf90feaf438bb5a693a2405453988820e5598d285a1b
 
 pkgname = pam_abl
 
