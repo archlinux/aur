@@ -45,8 +45,6 @@ optdepends=('fxload'
 source=("file:///${_srcname}_${pkgver}_${_more_ver}.tar.gz"
         'spoof_homedir.c')
 
-noextract=("${_srcname}_${pkgver}_${_more_ver}.tar.gz")
-
 # checksum from https://www.xilinx.com/support/download.html
 md5sums=('b018f7b331ab0446137756156ff944d9'
          '69d14ad64f6ec44e041eaa8ffcb6f87c')
@@ -55,10 +53,6 @@ md5sums=('b018f7b331ab0446137756156ff944d9'
 options=('!strip')
 
 prepare() {
-	# https://git.archlinux.org/pacman.git/commit/?id=349c22d043290ccd0cce9f30981f5415e295442a
-	echo "Manually extracting archive..."
-	bsdtar -xf "${_srcname}_${pkgver}_${_more_ver}.tar.gz"
-
 	mkdir -p "$srcdir/installer_temp"
 }
 
