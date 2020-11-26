@@ -3,6 +3,7 @@
 _varname='G4ENSDFSTATEDATA'
 
 _remove() {
+    ## from the time where this variables where stored in this one script
     sed -n -i "/${_varname}/d" /etc/profile.d/geant4.sh  2>/dev/null
     sed -n -i "/${_varname}/d" /etc/profile.d/geant4.csh 2>/dev/null
 }
