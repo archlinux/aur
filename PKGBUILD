@@ -4,7 +4,7 @@
 
 _pkgname=fcitx5-gtk
 pkgname=${_pkgname}-git
-pkgver=r42.4e52372
+pkgver=5.0.0.r1.gd15267f
 pkgrel=1
 pkgdesc="Gtk im module for fcitx5 and glib based dbus client library"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd fcitx5-gtk
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
