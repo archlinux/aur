@@ -16,17 +16,17 @@ source=(
   "linux.preset"
   "60-linux.hook"
   "90-linux.hook"
-  "linux-dtb-$_armbian-$pkgver.deb::https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-dtb-current-sunxi_$_armbian-trunk_armhf.deb"
-  "linux-image-$_armbian-$pkgver.deb::https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-image-current-sunxi_$_armbian-trunk_armhf.deb"
-  "linux-headers-$_armbian-$pkgver.deb::https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-headers-current-sunxi_$_armbian-trunk_armhf.deb"
+  "linux-dtb-$_armbian-$pkgrel.deb::https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-current-sunxi_$_armbian-trunk.${pkgrel}_armhf.deb"
+  "linux-image-$_armbian-$pkgrel.deb::https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-image-current-sunxi_$_armbian-trunk.${pkgrel}_armhf.deb"
+  "linux-headers-$_armbian-$pkgrel.deb::https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-headers-current-sunxi_$_armbian-trunk.${pkgrel}_armhf.deb"
 )
 sha512sums=(
-  "a492aae17ee4a316ce03faf9f1b284b2529c485f4b092cc4a1f865a6c68d482fd356fd30efa296c116975a3bdf3922f5bf03912a8d0e76f4ab24aa6ab9f8c276"
-  "7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a"
-  "a8fc668de860cf7b44269e35f879d130ccbc7db84d159ffcac6a92c02324f09c08fb57cccad18332f423bf2153c928633fa681ee96482c778dc76bffe80dd4f5"
-  "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-dtb-current-sunxi_$_armbian-trunk_armhf.deb.sha512sum)"
-  "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-image-current-sunxi_$_armbian-trunk_armhf.deb.sha512sum)"
-  "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernver/linux-headers-current-sunxi_$_armbian-trunk_armhf.deb.sha512sum)"
+  'a492aae17ee4a316ce03faf9f1b284b2529c485f4b092cc4a1f865a6c68d482fd356fd30efa296c116975a3bdf3922f5bf03912a8d0e76f4ab24aa6ab9f8c276'
+  '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
+  'a8fc668de860cf7b44269e35f879d130ccbc7db84d159ffcac6a92c02324f09c08fb57cccad18332f423bf2153c928633fa681ee96482c778dc76bffe80dd4f5'
+  'SKIP'
+  'SKIP'
+  'SKIP'
 )
 noextract=("${source[@]##*/}")
 
