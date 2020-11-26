@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=yj-rs
 _pkgname=yj
-pkgver=1.1.25
+pkgver=1.1.32
 pkgrel=1
 pkgdesc='Command line tool that converts YAML to JSON.'
 arch=('i686' 'x86_64')
@@ -9,10 +9,10 @@ url="https://github.com/bruceadams/yj"
 license=('Apache')
 depends=()
 optdepends=()
-conflicts=('yj' 'yj-git' 'yj-rs-git')
+conflicts=('yj')
 makedepends=('cargo')
 source=("$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('22ee4f8a4b9d853ffb931cf8532412b7db256f438e3b6952fc9481b166cb3060')
+sha256sums=('63d3598337589406bea5f5782313414646b1027f458ce914f63311ee0556994f')
 
 build() {
   cd "$_pkgname-$pkgver"
