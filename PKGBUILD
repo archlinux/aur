@@ -16,9 +16,9 @@ depends=("libappindicator-gtk3"
          'xorg-xhost')
 license=('custom')
 provides=('sunlogin')
-source=("http://dl-cdn.oray.com/sunlogin/linux/SunloginClient-${pkgver}_amd64.deb"
+source=("http://dl-cdn.oray.com/${_pkgname}/linux/SunloginClient-${pkgver}_amd64.deb"
         'LICENSE::https://service.oray.com/question/1820.html')
-install='.INSTALL'
+install="${pkgname}.install"
 sha256sums=('0467fa18f99d01d38f311c5b36b0f53f8ad36f5a6f1426ee552143b9de42939c'
             'SKIP')
 prepare() 
@@ -26,6 +26,7 @@ prepare()
   mkdir -p build
   tar -xf data.tar.xz -C build
 }
+
 package() {
   cd build
 
@@ -52,7 +53,7 @@ package() {
   # desktop entry
   install -Dm644 usr/share/applications/${_pkgname}.desktop -t ${pkgdir}/usr/share/applications
 
-  # 修改路径
+  # fix path
   sed -i 's#/usr/local/#/opt/#g' "${pkgdir}/opt/${_pkgname}/etc/watch.sh"
   sed -i "s#/usr/local/#/opt/#g" "${pkgdir}/usr/lib/systemd/system/runsunloginclient.service"
   sed -i 's#Exec=/usr/local/sunlogin/#Exec=/usr/#g' "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
@@ -60,16 +61,16 @@ package() {
 	  # 修复开机启动后第一次连接失败的问题
   sed -i '2a\Requires=network-online.target\nAfter=network-online.target' "${pkgdir}/usr/lib/systemd/system/runsunloginclient.service"
   
-  # 安装图标
+  # icon
   install -Dm644 usr/local/${_pkgname}/res/icon/sunlogin_client.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
   
-  # 安装协议
+  # license
   install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # 创建软链
+  # soft link
   install -dm755 "$pkgdir/usr/bin"
-  ln -s "/opt/${_pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  ln -s "/opt/${_pkgname}/bin/oray_rundaemon" "${pkgdir}/usr/bin/oray_rundaemon"
+  ln -sf "/opt/${_pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  ln -sf "/opt/${_pkgname}/bin/oray_rundaemon" "${pkgdir}/usr/bin/oray_rundaemon"
 
   #  ugly hack
   sed -i "s#/usr/local/sunlogin\x0#/opt/sunlogin\x0\x0\x0\x0\x0\x0\x0#g" "${pkgdir}/opt/${_pkgname}/bin/${pkgname}"
