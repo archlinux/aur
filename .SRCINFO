@@ -1,6 +1,6 @@
 pkgbase = deepin-control-center-git
 	pkgdesc = New control center for linux deepin
-	pkgver = 5.3.0.68.r68.ge9d69661f
+	pkgver = 5.3.0.49.r1.g60562d6e3
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-control-center
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = deepin-control-center-git
 	makedepends = networkmanager-qt
 	makedepends = deepin-network-utils-git
 	makedepends = deepin-qt-dbus-factory-git
+	makedepends = gtest
 	depends = dtkwidget-git
 	depends = deepin-account-faces
 	depends = libpwquality
