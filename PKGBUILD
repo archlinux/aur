@@ -3,7 +3,7 @@
 # Contributor: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-kian-git
 _pkgname=${pkgname%-git}
-pkgver=r2118.922ca29a
+pkgver=r2162.d8329fd7
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
@@ -18,7 +18,7 @@ source=(
   'private-build-plans.toml'
 )
 sha256sums=('SKIP'
-            'd65212417700b466177f1ec233366ba7525b69606ffb0439071e3463deeced44')
+            '0f7efd3a5dcc8c2c36391185e1f6551cc7c1c83a3fca55021b7ea1c6cc1367c6')
 
 pkgver() {
   cd Iosevka
