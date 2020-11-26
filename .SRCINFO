@@ -13,6 +13,7 @@ pkgbase = python-qiling
 	depends = python-registry
 	depends = python-keystone
 	depends = python-pyelftools
+	depends = python-magic
 	source = https://files.pythonhosted.org/packages/source/q/qiling/qiling-1.2.tar.gz
 	sha256sums = d18f2bb0b6f0785954c7208c2a04215021be3d97c3cbbc9b0c89e561b0e27bbe
 
