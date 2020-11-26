@@ -1,6 +1,6 @@
 pkgbase = qt6-declarative
 	pkgdesc = Classes for QML and JavaScript languages
-	pkgver = 6.0.0beta4
+	pkgver = 6.0.0rc
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = qt6-declarative
 	makedepends = at-spi2-core
 	makedepends = ninja
 	depends = qt6-base
-	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-beta4/submodules/qtdeclarative-everywhere-src-6.0.0-beta4.tar.xz
-	sha256sums = 615eb2eacf0319f3c0ba6c0bd7a82cc0a4a19d4b9e22c0fe656715765cd5aadf
+	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-rc/submodules/qtdeclarative-everywhere-src-6.0.0-rc.tar.xz
+	sha256sums = f623518d14ac1ea9d2a5a1e8962be36f86a2e77393a315518a34c78931bcb389
 
 pkgname = qt6-declarative
 

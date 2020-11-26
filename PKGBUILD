@@ -5,7 +5,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=qt6-declarative
-_qtver=6.0.0-beta4
+_qtver=6.0.0-rc
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -17,7 +17,7 @@ makedepends=(cmake python vulkan-headers at-spi2-core ninja)
 groups=(qt6)
 _pkgfqn="${pkgname/6-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('615eb2eacf0319f3c0ba6c0bd7a82cc0a4a19d4b9e22c0fe656715765cd5aadf')
+sha256sums=('f623518d14ac1ea9d2a5a1e8962be36f86a2e77393a315518a34c78931bcb389')
 
 build() {
   cmake -G Ninja -B build -S $_pkgfqn
