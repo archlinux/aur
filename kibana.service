@@ -6,7 +6,7 @@ After=network.target elasticsearch.service
 User=kibana
 Group=kibana
 Environment="NODE_ENV=production"
-ExecStart=/usr/bin/node --max-old-space-size=512 /usr/share/kibana/src/cli --config=/etc/kibana/kibana.yml
+ExecStart=/usr/bin/node --max-old-space-size=512 /usr/share/kibana/src/cli/dist --config=/etc/kibana/kibana.yml
 PrivateTmp=true
 NoNewPrivileges=true
 Restart=always
