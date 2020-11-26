@@ -3,7 +3,8 @@
 pkgbase=linux-rockchip64
 pkgname=('linux-rockchip64' 'linux-rockchip64-headers')
 pkgver=5.9.11
-_armbian=21.02.0
+_armbver=21.02.0
+_armbrel=1
 _kernver="$pkgver-rockchip64"
 pkgrel=1
 arch=('aarch64')
@@ -16,9 +17,9 @@ source=(
   "linux.preset"
   "60-linux.hook"
   "90-linux.hook"
-  "linux-dtb-$_armbian-$pkgrel.deb::https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-current-rockchip64_$_armbian-trunk.${pkgrel}_arm64.deb"
-  "linux-image-$_armbian-$pkgrel.deb::https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-image-current-rockchip64_$_armbian-trunk.${pkgrel}_arm64.deb"
-  "linux-headers-$_armbian-$pkgrel.deb::https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-headers-current-rockchip64_$_armbian-trunk.${pkgrel}_arm64.deb"
+  "linux-dtb-$_armbver-$_armbrel.deb::https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-current-rockchip64_$_armbver-trunk.${_armbrel}_arm64.deb"
+  "linux-image-$_armbver-$_armbrel.deb::https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-image-current-rockchip64_$_armbver-trunk.${_armbrel}_arm64.deb"
+  "linux-headers-$_armbver-$_armbrel.deb::https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-headers-current-rockchip64_$_armbver-trunk.${_armbrel}_arm64.deb"
 )
 sha512sums=(
   'f683c0639fc20e813e309df99b9b850b1f55de3fc02489d64a7d66e84df19d7836ea32042090597f1df17baed46a3ae1dfcf341c8aff206be9a1b06ee394dc3f'
@@ -47,9 +48,9 @@ package_linux-rockchip64() {
 
   cd "$srcdir"
 
-  ar x "linux-dtb-$_armbian-$pkgver.deb"
+  ar x "linux-dtb-$_armbver-$_armbrel.deb"
   tar -xf data.tar.xz
-  ar x "linux-image-$_armbian-$pkgver.deb"
+  ar x "linux-image-$_armbver-$_armbrel.deb"
   tar -xf data.tar.xz
 
   install -Dm644 "boot/vmlinuz-$_kernver" "$pkgdir/boot/Image"
@@ -91,9 +92,9 @@ package_linux-rockchip64-headers() {
 
   cd "$srcdir"
 
-  ar x "linux-image-$_armbian-$pkgver.deb"
+  ar x "linux-image-$_armbver-$_armbrel.deb"
   tar -xf data.tar.xz
-  ar x "linux-headers-$_armbian-$pkgver.deb"
+  ar x "linux-headers-$_armbver-$_armbrel.deb"
   tar -xf data.tar.xz
 
   install -dm755 "$pkgdir/usr/lib/modules/$_kernver"
