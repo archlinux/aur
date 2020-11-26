@@ -2,7 +2,7 @@
 
 _npmname=fanyi
 pkgname=node-$_npmname
-pkgver=4.2.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="A CN and US translate tool in your command line."
 arch=('any')
