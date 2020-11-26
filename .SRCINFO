@@ -1,0 +1,28 @@
+pkgbase = xray
+	pkgdesc = Xray, Penetrates Everything. Also the best v2ray-core, with XTLS support. Fully compatible configuration.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/XTLS/Xray-core
+	arch = any
+	license = MPLv2
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	depends = v2ray-domain-list-community
+	depends = v2ray-geoip
+	backup = etc/xray/config.json
+	source = xray-1.0.0.tar.gz::https://github.com/XTLS/Xray-core/archive/v1.0.0.tar.gz
+	source = config.json
+	source = vpoint_socks_vmess.json
+	source = vpoint_vmess_freedom.json
+	source = xray.service
+	source = xray@.service
+	sha512sums = 03c6337ca13e135f7cdaef978bb526c846cd83ff30036764aacaecbf22a9ad79dc661de6f5fd699fbf22fac6833a4aeb5870941c82aee0d74fc60641f858460e
+	sha512sums = 2000211cbf987adaee7f278cc8cb23268965caab3bc46401f9324f2beaad95bec11012f5f4500f1016f4b75f097f3ac96cc5be2da7a6df0261582b3f23b3d78d
+	sha512sums = 9914fd3da02511b716951e521ca22006a6e8ad66e64d32cc7dd7dc3544a754174b37e35df6108ca217130f02763265d74f8bc56c4e52b262bdd48dcdb5310eb5
+	sha512sums = 532f66fe19196de0cc43df1812d6f32cbca7bbcacaa0cd4141bd80b3121b17eb8b23e0464765cf05a97b11e0213fb688eade83e393e36b3e7ebded6f0925de97
+	sha512sums = 1d31e11c3a11090ee2616adfcf77a4a1013793c8f63a41e5293d07e889e34f85223b9f5a0791b649f22ecc5e18e12182b5b074e61aa36f5cd6de523f3c64f95d
+	sha512sums = 6582aa9bf988acb2660a7172282768c217ad8335a55ccee916d7786c227bc62cc973d7d6d3b5632260c69eec98c15804c2b52cdd91c5f395d3a0fe36519586b4
+
+pkgname = xray
+
