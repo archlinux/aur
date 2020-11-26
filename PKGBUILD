@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=cie-middleware-git
-pkgver=r75.ff8d6b9
+pkgver=1.3.1.r0.12716c4
 pkgrel=1
 pkgdesc="Middleware della CIE (Carta di Identità Elettronica) per Linux (mio fork)"
 arch=('any')
@@ -16,7 +16,7 @@ source=("${pkgname%-git}::git+https://github.com/M0Rf30/${pkgname%-git}-linux")
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 
