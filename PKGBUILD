@@ -2,13 +2,13 @@
 
 _name=inkscape-applytransforms
 pkgname=$_name-git
-pkgver=r20.1d86e12
+pkgver=r38.bc65583
 pkgrel=1
 pkgdesc="An Inkscape extension which removes all matrix transforms by applying them recursively to shapes"
 arch=("any")
 url="https://github.com/Klowner/$_name"
 license=("GPL2")
-depends=("inkscape" "python2-lxml")
+depends=("inkscape" "python-lxml")
 makedepends=("git")
 provides=("_name")
 conflicts=("_name")
