@@ -16,14 +16,12 @@ pkgrel=1
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(GPL)
-depends=("libltdl" "rtkit" "tdb" "orc"
-         python-{pyqt5,dbus,sip} dconf)
+depends=("libltdl" "rtkit" "tdb" "orc" "dconf")
 makedepends=("git" "attr" "rtkit"
              "tdb" "intltool"
              "orc" "check" "meson")
 optdepends=("alsa-plugins: ALSA support"
-            "pulseaudio-alsa: ALSA configuration (recommended)"
-            "lirc-utils: infra-red support")
+            "pulseaudio-alsa: ALSA configuration (recommended)")
 backup=(etc/pulse/{daemon.conf,default.pa,system.pa,client.conf})
 options=(!emptydirs)
 source=("git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git")
@@ -49,25 +47,25 @@ build() {
     -D systemd=disabled \
     -D man=false \
     -D legacy-database-entry-format=false \
-    -D asyncns=false \
-    -D avahi=false \
+    -D asyncns=disabled \
+    -D avahi=disabled \
     -D bluez5=false \
     -D bluez5-native-headset=false \
     -D bluez5-ofono-headset=false \
-    -D dbus=false \
-    -D fftw=false \
-    -D glib=false \
-    -D gsettings=false \
-    -D gstreamer=false \
-    -D gtk=false \
+    -D dbus=disabled \
+    -D fftw=disabled \
+    -D glib=disabled \
+    -D gsettings=disabled \
+    -D gstreamer=disabled \
+    -D gtk=disabled \
     -D ipv6=false \
-    -D jack=false \
-    -D lirc=false \
-    -D openssl=false \
-    -D soxr=false \
-    -D speex=false \
+    -D jack=disabled \
+    -D lirc=disabled \
+    -D openssl=disabled \
+    -D soxr=disabled \
+    -D speex=disabled \
     -D adrian-aec=false \
-    -D webrtc-aec=false 
+    -D webrtc-aec=disabled 
   meson compile -C build
 }
 
