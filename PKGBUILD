@@ -1,9 +1,9 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=bsp-tinkerboard
-pkgver=20.11.0
+pkgver=21.02.0
 _ubuntu=focal
-_kernel=5.8.18
+_kernel=5.9.8
 pkgrel=1
 pkgdesc="Board support package for Tinker Board / S (Bluetooth, HDMI, Audio...)"
 arch=('armv7h')
