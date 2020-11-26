@@ -15,21 +15,20 @@ license=('Apache')
 depends=('java-runtime=8' 'hicolor-icon-theme' 'xorg-xrandr' 'ttf-dejavu' 'libzip')
 makedepends=('gendesk')
 source=("$pkgname"
-	"${pkgname}-$pkgver.jar"::"https://dist.creeper.host/FTB2/launcher/FTB_Launcher.jar")
-noextract=("${pkgname}-$pkgver.jar")
+	"${_pkgname}-$pkgver.jar"::"https://dist.creeper.host/FTB2/launcher/FTB_Launcher.jar")
+noextract=("${_pkgname}-$pkgver.jar")
 sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
     # generate .desktop
-    cd "${srcdir}/${_pkgname}"
     gendesk --pkgname "Feed The Beast Classic" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
     mv "Feed The Beast Classic.desktop" "${pkgname}.desktop"
 }
 
 package() {
     install -Dm755 "$pkgname" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${pkgname}-$pkgver.jar" "${pkgdir}/usr/share/${pkgname}/${pkgname}.jar"
+    install -Dm644 "${pkgname}-$pkgver.jar" "${pkgdir}/usr/share/${_pkgname}/${_pkgname}.jar"
     install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     bsdtar -xf "${pkgname}-$pkgver.jar" image/logo_ftb_large.png
     install -d -m755 "${pkgdir}/usr/share/icons/hicolor"

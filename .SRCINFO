@@ -11,9 +11,9 @@ pkgbase = feedthebeast-classic
 	depends = xorg-xrandr
 	depends = ttf-dejavu
 	depends = libzip
-	noextract = feedthebeast-classic-1.5.1.jar
+	noextract = feedthebeast-1.5.1.jar
 	source = feedthebeast-classic
-	source = feedthebeast-classic-1.5.1.jar::https://dist.creeper.host/FTB2/launcher/FTB_Launcher.jar
+	source = feedthebeast-1.5.1.jar::https://dist.creeper.host/FTB2/launcher/FTB_Launcher.jar
 	sha256sums = SKIP
 	sha256sums = SKIP
 
