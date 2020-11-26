@@ -7,18 +7,23 @@ const data = JSON.parse(fs.readFileSync(PATCHABLE_FILE));
 
 // remove extra dependencies
 const removePkg = [
+	/^chai$/,
+	/^electron-/,
 	/^electron$/,
-	/^eslint/,
-	/^grunt-concurrent$/,
+	/^eslint-/,
+	/^eslint$/,
 	/^grunt-contrib-compress$/,
 	/^grunt-contrib-deb$/,
-	/^grunt-contrib-uglify$/,
 	/^grunt-contrib-watch$/,
 	/^grunt-electron$/,
 	/^grunt-eslint$/,
+	/^mocha$/,
+	/^puppeteer$/,
 	/^stats-webpack-plugin$/,
 	/^sumchecker$/,
-	/^webpack-dev-server/,
+	/^webpack-bundle-analyzer$/,
+	/^webpack-dev-server$/,
+	/keeweb-native-modules$/,
 ];
 
 Object.keys(data.dependencies).forEach(dep => {
