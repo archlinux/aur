@@ -2,7 +2,7 @@
 
 _pkgname=straw-viewer
 pkgname=straw-viewer-git
-pkgver=0.1.1.r0.gad4c5ae
+pkgver=0.1.2.r0.g5333411
 pkgrel=1
 pkgdesc="A lightweight YouTube client for Linux (CLI/GTK), using the invidious API (fork of youtube-viewer)."
 arch=('any')
