@@ -1,15 +1,15 @@
 pkgbase = zfs-linux-lts-rc
-	pkgver = 2.0.0_rc6_5.4.78.1
+	pkgver = 2.0.0_rc7_5.4.79.1
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-lts-headers=5.4.78-1
+	makedepends = linux-lts-headers=5.4.79-1
 	depends = kmod
-	depends = zfs-utils-rc=2.0.0_rc6
-	depends = linux-lts=5.4.78-1
-	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.0.0-rc6/zfs-2.0.0-rc6.tar.gz
-	sha256sums = 4c381fafa2c97c00a29b91372d485fae18e0f19ca353b56ba33f0feb44b66fe6
+	depends = zfs-utils-rc=2.0.0_rc7
+	depends = linux-lts=5.4.79-1
+	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.0.0-rc7/zfs-2.0.0-rc7.tar.gz
+	sha256sums = 640fde2b678040c9511172bf3b7ffc444d8e8daa1d738f4687f1ad92d6d01e7b
 
 pkgname = zfs-linux-lts-rc
 	pkgdesc = Kernel modules for the Zettabyte File System.
