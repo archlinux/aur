@@ -10,7 +10,7 @@
 
 pkgbase=calibre-git
 pkgname=calibre-git
-pkgver=5.5.0.r16.g989577736f
+pkgver=5.5.0.r112.gf99b535714
 pkgrel=1
 _dictionaries_commit="d6160c5e006089c711f3fec6eb4e2ade60a4150c"
 pkgdesc="Ebook management application"
@@ -89,12 +89,11 @@ check() {
     cd "${srcdir}/${pkgbase%-git}"
 
     _test_excludes=(
-        # test_ajax_book segfaults on qt >=5.15.1 inside of qt itself, but only in nspawn containers
-        # see https://github.com/kovidgoyal/calibre/commit/28ef780d9911d598314d98bdfc3b1c88a94681df
-        'ajax_book'
         # merely testing if a runtime-optional feature works, but is not
         # operative yet e.g. only tries checking if the optdepend is importable
         'speech_dispatcher'
+        # tests if a completely unused module is bundled
+        'pycryptodome'
     )
 
     # without xvfb-run this fails with much "Control socket failed to recv(), resetting"
