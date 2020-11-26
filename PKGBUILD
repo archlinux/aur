@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-translations
-_qtver=6.0.0-beta4
+_qtver=6.0.0-rc
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,7 +17,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qttranslations-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('63ffd26df581cef6b2a47122917a241f6d4568f193a2907c9b57dd3013dce47e')
+sha256sums=('7da1d59db9ab5d25acce79cfefe51fbca79076e0fcb0a0abbfc2043324f140c6')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
