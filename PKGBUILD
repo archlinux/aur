@@ -2,7 +2,7 @@
 
 pkgname=pymedusa
 _gitname=Medusa
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic."
 arch=('any')
@@ -20,12 +20,12 @@ options=('!strip')
 
 install=${pkgname}.install
 
-source=("https://github.com/${pkgname}/${_gitname}/archive/v${pkgver}.tar.gz"
+source=("https://github.com/${pkgname}/${_gitname}/archive/v.${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
 
-sha256sums=('10c4167599ce0356ff660dc519d256c2ec7d64b1a45cf46559790861a760794a'
+sha256sums=('8978f3ff2858447ac01157c4483a37fb448b5f1735b604ec5d5d67101bb9a538'
             '413f2788b6d98d7090c25e226894a68de89bdde16fd94dcb7a3abf74db7b70b8'
             '2353be80d2ba3ddf6a81c039acfab4f9f13b058d7df99f506d51434a76dc8a37'
             'aab2c27aa38db65175e58dd9f50558a91b8a5b8d6fd07120877e47ea1b97764e')
@@ -33,7 +33,7 @@ sha256sums=('10c4167599ce0356ff660dc519d256c2ec7d64b1a45cf46559790861a760794a'
 package() {
     install -dm755 "${pkgdir}/usr/lib/${pkgname}"
 
-    cp -rp "${srcdir}/${_gitname}-${pkgver}"/* "${pkgdir}/usr/lib/${pkgname}"
+    cp -rp "${srcdir}/${_gitname}-v.${pkgver}"/* "${pkgdir}/usr/lib/${pkgname}"
 
     install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
