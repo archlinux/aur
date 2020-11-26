@@ -6,6 +6,7 @@ pkgbase = todesk-bin
 	arch = x86_64
 	license = custom
 	makedepends = xdg-user-dirs
+	makedepends = tar
 	provides = todesk
 	conflicts = todesk
 	source = local://todeskBeta_1.1.0c.deb

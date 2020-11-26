@@ -9,8 +9,8 @@ pkgrel=1
 pkgdesc="Remote control and team work"
 arch=('x86_64')
 url="https://www.todesk.cn/"
-license=('custom')
-makedepends=('xdg-user-dirs')
+license=('custom' )
+makedepends=('xdg-user-dirs' 'tar')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("local://${_pkg_file_name}")
@@ -28,17 +28,30 @@ if [ ! -f ${PWD}/${_pkg_file_name} ]; then
   fi
 fi
 
-package() {
+prepare() {
   install -dm 755 ${srcdir}/${_pkgname}
-  tar --owner=root --group=root -xf ${srcdir}/data.tar.xz -C ${srcdir}/${_pkgname} 
 
+  tar --owner=root --group=root -xf ${srcdir}/data.tar.xz -C ${srcdir}/${_pkgname} 
+}
+
+package() {
   cd ${srcdir}/${_pkgname}/
 
+  # binary wrapper
   install -Dm 755 usr/local/bin/${_pkgname} -t ${pkgdir}/usr/bin/
 
-  # dir and lib
-  find opt/ -type d -exec install -dm 755 ${pkgdir}/{} \;
-  find opt/ -type f -exec install -Dm 755 {} ${pkgdir}/{} \;
+  # lib
+  find opt/${_pkgname}/lib     -type f -exec install -Dm755 {} ${pkgdir}/{} \;
+  find opt/${_pkgname}/plugins -type f -exec install -Dm755 {} ${pkgdir}/{} \;
+
+  # font
+  find opt/${_pkgname}/res     -type f -exec install -Dm644 {} ${pkgdir}/{} \;
+
+  # binary
+  install -Dm755 opt/${_pkgname}/${_pkgname} -t ${pkgdir}/opt/${_pkgname}/
+
+  # qt.conf
+  install -Dm644 opt/${_pkgname}/qt.conf -t ${pkgdir}/opt/${_pkgname}/
 
   # desktop entry 
   install -Dm 644 usr/share/applications/${_pkgname}.desktop -t ${pkgdir}/usr/share/applications
