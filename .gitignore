@@ -4,3 +4,4 @@ src/
 *.tar.xz
 *.tar
 *.deb
+*.zst
