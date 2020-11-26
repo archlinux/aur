@@ -9,7 +9,7 @@
 # Contriubtor: Ben Morgan <neembi@gmail.com>
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
-pkgname=(pulseaudio-nosystemd-minimal-git libpulse-nosystemd-minimal-git pulseaudio-zeroconf-nosystemd-minimal-git)
+pkgname=(pulseaudio-nosystemd-minimal-git libpulse-nosystemd-minimal-git)
 pkgdesc="A featureful, general-purpose sound server"
 pkgver=13.99.1+98+g460d0c0b7
 pkgrel=1
@@ -119,32 +119,11 @@ package_pulseaudio-nosystemd-minimal-git() {
 ### Split libpulse
   _pick libpulse etc/pulse/client.conf
   _pick libpulse usr/bin/pa{cat,ctl,dsp,mon,play,rec,record}
-  _pick libpulse usr/lib/libpulse{,-simple,-mainloop-glib}.so*
+#  _pick libpulse usr/lib/libpulse{,-simple,}.so*
   _pick libpulse usr/lib/{cmake,pkgconfig}
   _pick libpulse usr/lib/pulseaudio/libpulse{dsp,common-*}.so
   _pick libpulse usr/include
-  _pick libpulse usr/share/man/man1/pa{cat,ctl,dsp,mon,play,rec,record}.1
-  _pick libpulse usr/share/man/man5/pulse-client.conf.5
   _pick libpulse usr/share/vala
-
-### Split modules
-  local moddir=usr/lib/pulse-$pulsever/modules
-
-  _pick zeroconf $moddir/libavahi-wrap.so
-  _pick zeroconf $moddir/module-zeroconf-{publish,discover}.so
-  _pick zeroconf $moddir/module-raop-discover.so
-
-  _pick lirc $moddir/module-lirc.so
-
-  _pick jack $moddir/module-jack-{sink,source}.so
-  _pick jack $moddir/module-jackdbus-detect.so
-
-  _pick bluetooth $moddir/libbluez5-util.so
-  _pick bluetooth $moddir/module-bluetooth-{discover,policy}.so
-  _pick bluetooth $moddir/module-bluez5-{discover,device}.so
-
-  _pick equalizer $moddir/module-equalizer-sink.so
-  _pick equalizer usr/bin/qpaeq
 }
 
 package_libpulse-nosystemd-minimal-git() {
@@ -156,14 +135,5 @@ package_libpulse-nosystemd-minimal-git() {
   backup=(etc/pulse/client.conf)
 
   mv libpulse/* "$pkgdir"
-}
-
-package_pulseaudio-zeroconf-nosystemd-minimal-git(){
-  pkgdesc="Zeroconf support for PulseAudio"
-  provides=(pulseaudio-zeroconf)
-  conflicts=(pulseaudio-zeroconf)
-  depends=(pulseaudio)
-
-  mv zeroconf/* "$pkgdir"
 }
 # vim:set sw=2 et:

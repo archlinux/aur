@@ -55,9 +55,3 @@ pkgname = libpulse-nosystemd-minimal-git
 	conflicts = libpulse
 	backup = etc/pulse/client.conf
 
-pkgname = pulseaudio-zeroconf-nosystemd-minimal-git
-	pkgdesc = Zeroconf support for PulseAudio
-	depends = pulseaudio
-	provides = pulseaudio-zeroconf
-	conflicts = pulseaudio-zeroconf
-
