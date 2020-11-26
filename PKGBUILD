@@ -1,13 +1,14 @@
 # Maintainer: jxir <aur@jxir.de>
 
 pkgname=tad-git
-pkgver=1.0.r0.g57151d8
+pkgver=1.3.r10.ge98e8bb
 pkgrel=1
 pkgdesc="Library and tools to handle data arrays in C++"
 arch=('x86_64')
 url="https://marlam.de/tad/"
 license=('MIT')
-depends=('ffmpeg' 'gdal' 'hdf5' 'libjpeg'  'libmatio' 'libpng' 'libtiff')
+depends=('exiv2' 'ffmpeg' 'gdal' 'hdf5' 'libjpeg' 'libmatio' 'libpng' 'libtiff'
+         'openexr')
 makedepends=('cmake' 'git')
 provides=('tad')
 conflicts=('tad')
