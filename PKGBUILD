@@ -1,8 +1,7 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=uboot-tinkerboard
-pkgver=21.02.0
-_kernel=5.9.11
+pkgver=20.11
 pkgrel=1
 pkgdesc="U-Boot for Tinker Board / S"
 arch=('armv7h')
@@ -14,12 +13,12 @@ install="$pkgname.install"
 source=(
   "mkscr"
   "boot.txt"
-  "uboot-$pkgver-$_kernel.deb::https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-u-boot-current-tinkerboard_$pkgver-trunk_armhf.deb"
+  "uboot-$pkgver-$pkgrel.deb::https://apt.armbian.com/pool/main/l/linux-u-boot-tinkerboard-current/linux-u-boot-current-tinkerboard_${pkgver}_armhf.deb"
 )
 sha512sums=(
-  "7046ab4d88efbba636be049be2f660e18c05e48d161d39437c1580b12795ba4d9197ad57ac4572398f80a38d4777507b57228abf4cc41f0081d196ece27ea9d0"
-  "0562fe48ba0659787fa2c7f6f38e0c6b2ac4171d8780678b3af8f52079ef4fb54899da696c04dcc75019c0f432d0408569542dbac54a65266cf2b5ed02e85528"
-  "$(curl -s -L https://github.com/redchenjs/armbian-ci/releases/download/v$_kernel-rockchip/linux-u-boot-current-tinkerboard_$pkgver-trunk_armhf.deb.sha512sum)"
+  '7046ab4d88efbba636be049be2f660e18c05e48d161d39437c1580b12795ba4d9197ad57ac4572398f80a38d4777507b57228abf4cc41f0081d196ece27ea9d0'
+  '0562fe48ba0659787fa2c7f6f38e0c6b2ac4171d8780678b3af8f52079ef4fb54899da696c04dcc75019c0f432d0408569542dbac54a65266cf2b5ed02e85528'
+  'SKIP'
 )
 noextract=("${source[@]##*/}")
 
@@ -32,11 +31,11 @@ prepare() {
 package() {
   cd "$srcdir"
 
-  ar x "uboot-$pkgver-$_kernel.deb"
+  ar x "uboot-$pkgver-$pkgrel.deb"
   tar -xf data.tar.xz
 
   install -Dm755 mkscr "$pkgdir/boot/mkscr"
-  install -Dm644 "usr/lib/linux-u-boot-current-tinkerboard_$pkgver-trunk_armhf/u-boot-rockchip-with-spl.bin" "$pkgdir/boot/rksd_loader.img"
+  install -Dm644 "usr/lib/linux-u-boot-current-tinkerboard_${pkgver}_armhf/u-boot-rockchip-with-spl.bin" "$pkgdir/boot/rksd_loader.img"
 
   major="$(mountpoint -d / | cut -f 1 -d ':')"
   minor="$(mountpoint -d / | cut -f 2 -d ':')"
