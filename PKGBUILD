@@ -59,7 +59,7 @@ build() {
     -D soxr=disabled \
     -D speex=disabled \
     -D adrian-aec=true \
-    -D webrtc-aec=disabled
+    -D webrtc-aec=disabled \
     -D pulsedsp-location='/usr/\$LIB/pulseaudio' \
     -D stream-restore-clear-old-devices=true \
     -D udevrulesdir=/usr/lib/udev/rules.d
@@ -84,7 +84,7 @@ package() {
   DESTDIR="$srcdir/install" meson install -C build
 
   cd install
-  _pick usr/lib32/libpulse{,-simple,}.so*
+#  _pick usr/lib32/libpulse{,-simple,}.so*
   _pick usr/lib32/{cmake,pkgconfig}
   _pick usr/lib32/pulseaudio/libpulse{dsp,common-*}.so
 }
