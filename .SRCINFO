@@ -8,11 +8,14 @@ pkgbase = lua-binaryheap
 	md5sums = 8dc4ea3df17fc7c586693d6fb6f0a8a3
 
 pkgname = lua-binaryheap
-	pkgdesc = Binary heap implementation for Lua 5.3
+	pkgdesc = Binary heap implementation for Lua 5.4
 
 pkgname = lua51-binaryheap
 	pkgdesc = Binary heap implementation for Lua 5.1
 
 pkgname = lua52-binaryheap
 	pkgdesc = Binary heap implementation for Lua 5.2
+
+pkgname = lua53-binaryheap
+	pkgdesc = Binary heap implementation for Lua 5.3
 
