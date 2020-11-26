@@ -3,9 +3,9 @@
 # Maintainer: rmorgans <rick.morgans@gmail.com>
 pkgname=direnv
 pkgver=2.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a shell extension that manages your environment'
-arch=('x86_64' 'i686' 'armv7h')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://direnv.net'
 license=('MIT')
 makedepends=('go')
