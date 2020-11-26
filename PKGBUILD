@@ -1,29 +1,28 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=python-kademlia
 _pkgname=${pkgname/python-/}
-pkgver=0.5
-pkgrel=4
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="Distributed hash table for decentralized peer-to-peer computer networks"
 url="http://github.com/bmuller/kademlia"
-depends=('python' 'python-twisted' 'python-rpcudp')
+depends=('python' 'python-rpcudp')
 optdepends=()
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/source/k/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('5069c5d404226165ed30b9384be5dedf5f16b065ddf2344c66aa3222583e1d94')
+source=("https://github.com/bmuller/${_pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('94d9ed1047273541d547ad99ea8f370be00a053fbf032cc0d983fe9b606d2c2d')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
-    patch -p1 < "$srcdir/../0001-storage-Python-3-fix-for-izip.patch"
-    patch -p1 < "$srcdir/../0002-storage-Python-3-fix-for-imap.patch"
-    patch -p1 < "$srcdir/../0003-storage-Python-3-fix-for-zope.interface.patch"
-    patch -p1 < "$srcdir/../0004-node-Python-3-fix-for-long.patch"
     python setup.py build
 }
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 
-    rm -rf ${pkgdir}/usr/lib/python*/site-packages/tests/
-}
+    python setup.py install --root="$pkgdir" --optimize=1
 
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    local site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
+    rm -rf "${pkgdir}${site_packages}/${_pkgname}/tests"
+}
