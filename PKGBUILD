@@ -3,14 +3,13 @@
 
 pkgname=kguiaddons-git
 pkgver=v5.76.0.r5.g43e657c
-pkgrel=1
+pkgrel=2
 pkgdesc='KGuiAddons'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kguiaddons'
 license=('LGPL')
 depends=('qt5-x11extras')
 makedepends=('extra-cmake-modules-git' 'git' 'qt5-wayland')
-groups=('kf5')
 conflicts=(kguiaddons)
 provides=(kguiaddons)
 source=('git+https://github.com/KDE/kguiaddons.git')

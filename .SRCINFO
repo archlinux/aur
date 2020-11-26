@@ -1,11 +1,10 @@
 pkgbase = kguiaddons-git
 	pkgdesc = KGuiAddons
 	pkgver = v5.76.0.r5.g43e657c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.kde.org/projects/frameworks/kguiaddons
 	arch = i686
 	arch = x86_64
-	groups = kf5
 	license = LGPL
 	makedepends = extra-cmake-modules-git
 	makedepends = git
