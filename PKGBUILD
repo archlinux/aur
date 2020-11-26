@@ -51,7 +51,9 @@ package() {
   mkdir -p "$pkgdir/usr/share/wallpapers/"
   #install -v -d -D "$startdir/winxp/" "$pkgdir/usr/share/wallpapers/"
   cd "$startdir"
-  find "winxp/" -type f -exec install -vDm 755 {} "$pkgdir/usr/share/wallpapers/{}" \;
+  install -vDm 755 winxp_bliss.jpg "$pkgdir/usr/share/wallpapers/winxp/bliss.jpg"
+  #aur git repo cannot cantains subdir
+  #find "winxp/" -type f -exec install -vDm 755 {} "$pkgdir/usr/share/wallpapers/{}" \;
 }
 
 # vim:set ts=2 sw=2 et:
