@@ -1,6 +1,6 @@
 pkgbase = dnsjit-git
 	pkgdesc = Engine for capturing, parsing and replaying DNS
-	pkgver = 1.0.0.r40.a5a96f1
+	pkgver = 1.0.0.r61.935d47c
 	pkgrel = 1
 	url = https://github.com/DNS-OARC/dnsjit
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = dnsjit-git
 	depends = gnutls
 	depends = libck
 	depends = libuv
+	depends = libnghttp2
 	provides = dnsjit
 	conflicts = dnsjit
 	source = git+https://github.com/DNS-OARC/dnsjit.git

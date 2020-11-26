@@ -1,6 +1,6 @@
 # Maintainer: Tomas Krizek <tomas.krizek@nic.cz>
 pkgname=dnsjit-git
-pkgver=1.0.0.r40.a5a96f1
+pkgver=1.0.0.r61.935d47c
 pkgrel=1
 pkgdesc="Engine for capturing, parsing and replaying DNS"
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=(
     'gnutls'
     'libck'
     'libuv'
+    'libnghttp2'
     )
 makedepends=(
     'autoconf'
