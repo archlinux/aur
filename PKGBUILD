@@ -3,14 +3,13 @@
 
 pkgname=kglobalaccel-git
 pkgver=v4.100.0.rc1.r323.ge6790ab
-pkgrel=1
+pkgrel=2
 pkgdesc='KGlobalAccel'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kglobalaccel'
 license=('LGPL')
 depends=('qt5-x11extras' 'kconfig-git' 'kcrash-git' 'kdbusaddons-git' 'ki18n-git' 'kwindowsystem-git')
 makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
-groups=('kf5')
 conflicts=(kglobalaccel)
 provides=(kglobalaccel)
 source=('git+https://github.com/KDE/kglobalaccel.git')

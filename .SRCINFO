@@ -1,11 +1,10 @@
 pkgbase = kglobalaccel-git
 	pkgdesc = KGlobalAccel
 	pkgver = v4.100.0.rc1.r323.ge6790ab
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.kde.org/projects/frameworks/kglobalaccel
 	arch = i686
 	arch = x86_64
-	groups = kf5
 	license = LGPL
 	makedepends = extra-cmake-modules-git
 	makedepends = git
