@@ -1,4 +1,4 @@
-# Maintainer: Haruyuki lxz <lxz@ilxz.me>
+# Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=dtkwidget-git
 pkgver=5.4.1.r4.gaffb254c
@@ -9,7 +9,7 @@ url="https://github.com/linuxdeepin/dtkwidget"
 license=('LGPL3')
 depends=('deepin-qt-dbus-factory-git' 'dtkcore-git' 'dtkgui-git' 'librsvg' 'qt5-multimedia' 'qt5-svg'
          'qt5-x11extras' 'startup-notification')
-makedepends=('git' 'qt5-tools' 'qt5-base')
+makedepends=('git' 'qt5-tools')
 provides=('dtkwidget')
 conflicts=('dtkwidget')
 groups=('deepin-git')
