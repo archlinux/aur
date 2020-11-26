@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=termchat-bin
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Terminal chat through the LAN"
 arch=('x86_64')
 url="https://github.com/lemunozm/termchat"
@@ -11,7 +11,7 @@ license=('Apache')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
-sha512sums_x86_64=('6dff703579fdd480fa41088be9699251f13360306ea4827213517312f927e4ef1304d789e762b7c792603c75c2525532776c8131c2c5e9544167af5eef7002c2')
+sha512sums_x86_64=('803fc7236a66a23e52f835c9ad17850950bf4a8ff300a06c01e36660bb323a6184b314652d4fd9e86a81ee55fcb5fdcc838d313a01172cd4351a1bab749695c5')
 
 package() {
   cd "${pkgname%-bin}-v${pkgver}-x86_64-unknown-linux-musl"

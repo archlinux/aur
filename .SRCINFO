@@ -1,14 +1,14 @@
 pkgbase = termchat-bin
 	pkgdesc = Terminal chat through the LAN
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/lemunozm/termchat
 	arch = x86_64
 	license = Apache
 	provides = termchat
 	conflicts = termchat
-	source_x86_64 = https://github.com/lemunozm/termchat/releases/download/v1.0.0/termchat-v1.0.0-x86_64-unknown-linux-musl.tar.gz
-	sha512sums_x86_64 = 6dff703579fdd480fa41088be9699251f13360306ea4827213517312f927e4ef1304d789e762b7c792603c75c2525532776c8131c2c5e9544167af5eef7002c2
+	source_x86_64 = https://github.com/lemunozm/termchat/releases/download/v1.1.1/termchat-v1.1.1-x86_64-unknown-linux-musl.tar.gz
+	sha512sums_x86_64 = 803fc7236a66a23e52f835c9ad17850950bf4a8ff300a06c01e36660bb323a6184b314652d4fd9e86a81ee55fcb5fdcc838d313a01172cd4351a1bab749695c5
 
 pkgname = termchat-bin
 
