@@ -42,4 +42,3 @@ pkgname = linux-sunxi64-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 multi-platform Sunxi
 	provides = linux-headers=5.9.11
 	conflicts = linux-headers
-
