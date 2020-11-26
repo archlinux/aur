@@ -1,0 +1,20 @@
+pkgbase = joplin-cli
+	pkgdesc = An open source note taking and to-do application with synchronization capabilities
+	pkgver = 1.4.12
+	pkgrel = 1
+	url = https://joplinapp.org
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	depends = nodejs>10
+	depends = rsync
+	conflicts = joplin
+	conflicts = joplin-beta
+	source = joplin-cli.sh
+	source = joplin-cli-1.4.12.tar.gz::https://github.com/laurent22/joplin/archive/v1.4.12.tar.gz
+	sha256sums = b5c621c425cdf0b5bb07bf0353939f6991a18db81955294a47ec42d0c5593438
+	sha256sums = f3a5e8e910144a0cae265ea4082e6f69ee12ea550d296a7948ee5f80c38a28de
+
+pkgname = joplin-cli
+
