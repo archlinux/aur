@@ -3,14 +3,13 @@
 
 pkgname=ki18n-git
 pkgver=v4.100.0.rc1.r338.g9bfef8a
-pkgrel=1
+pkgrel=2
 pkgdesc='Ki18n'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/ki18n'
 license=('LGPL')
 depends=('qt5-declarative' 'qt5-script')
 makedepends=('extra-cmake-modules-git' 'git' 'python')
-groups=('kf5')
 conflicts=(ki18n)
 provides=(ki18n)
 source=('git+https://github.com/KDE/ki18n.git')
