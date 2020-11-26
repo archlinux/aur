@@ -2,7 +2,7 @@
 pkgname=golang-mockery
 _pkgname=${pkgname##golang-}
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A mock code autogenerator for golang'
 arch=('x86_64')
 url='https://github.com/vektra/mockery'
@@ -14,7 +14,7 @@ sha256sums=('ec373ef32fccdd1b9277e0de7c19b37fb1b64d7a230831cc0d41033f554e15df')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
-  go mod download
+  go get -modcacherw -d
 }
 
 build() {
@@ -25,7 +25,7 @@ build() {
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export GOFLAGS='-buildmode=pie -modcacherw -mod=readonly -trimpath'
-  go build -o bin/${_pkgname} -ldflags "-linkmode=external -X github.com/vektra/mockery/mockery.SemVer=${pkgver}"
+  go build -o bin/${_pkgname} -ldflags "-linkmode=external -X github.com/vektra/mockery/v2/pkg/config.SemVer=${pkgver}"
 }
 
 check() {
