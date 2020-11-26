@@ -1,6 +1,6 @@
 pkgbase = qv-git
 	pkgdesc = Quick Viewer for 2D data (images, renderings, sensor data, ...)
-	pkgver = 3.0.r0.gf47f006
+	pkgver = 4.0.r0.gc098935
 	pkgrel = 1
 	url = https://marlam.de/qv/
 	arch = x86_64
