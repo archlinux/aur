@@ -1,4 +1,4 @@
-# Maintainer: DingYuan Zhang <justforlxz@gmail.com>
+# Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-desktop-schemas-git
 pkgver=5.8.0.31.r6.gfbecc00
