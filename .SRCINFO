@@ -1,12 +1,14 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = pinniped-bin
+	pkgdesc = Pinniped provides identity services for Kubernetes clusters
+	pkgver = 0.2.0
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
+	url = https://github.com/vmware-tanzu/pinniped
 	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	license = APACHE
+	conflicts = pinniped
+	conflicts = pinniped-git
+	source = pinniped::https://github.com/vmware-tanzu/pinniped/releases/download/v0.2.0/pinniped-cli-linux-amd64
+	sha512sums = 1d940739bdab3b01bab32c8b5982891003b1e78e5de0eb1906d51cd61a41bb5d72925871cf6161fd4f0130d61e8cbab0067dc9a7e1aead0a4cc44e2997a8f324
 
-pkgname = yarxi
+pkgname = pinniped-bin
 
