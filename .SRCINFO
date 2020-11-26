@@ -1,0 +1,16 @@
+pkgbase = octavia
+	pkgdesc = octobanana's customizable text-based audio visualization interactive application
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://octobanana.com/software/octavia
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = cmake
+	depends = boost-libs
+	depends = sfml
+	source = octavia-0.1.2.tar.gz::https://github.com/octobanana/octavia/archive/0.1.2.tar.gz
+	sha256sums = abc0717312178e24780081418ee7d7578ac3b721bce7fd307853688eb4cd1674
+
+pkgname = octavia
+
