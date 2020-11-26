@@ -2,7 +2,7 @@
 
 pkgname=uboot-tinkerboard
 pkgver=21.02.0
-_kernel=5.9.8
+_kernel=5.9.11
 pkgrel=1
 pkgdesc="U-Boot for Tinker Board / S"
 arch=('armv7h')
