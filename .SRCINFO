@@ -1,0 +1,12 @@
+pkgbase = brcm80211-firmware
+	pkgdesc = A replica of firmware-brcm80211 from Debian
+	pkgver = 20190114
+	pkgrel = 1
+	arch = any
+	license = non-free
+	noextract = firmware-brcm80211_20190114-2_all.deb
+	source = http://ftp.de.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-brcm80211_20190114-2_all.deb
+	sha256sums = 4a02cfe6cd2e5862765b47daf9ca5dd1d192ce0c4077e0ea1fee13d854414f6e
+
+pkgname = brcm80211-firmware
+
