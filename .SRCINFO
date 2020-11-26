@@ -1,0 +1,17 @@
+pkgbase = reftools-git
+	pkgdesc = reftools - refactoring tools for Go
+	pkgver = 20201119.01cf781
+	pkgrel = 1
+	url = https://github.com/davidrjenni/reftools
+	arch = any
+	license = BSD2
+	makedepends = git
+	makedepends = go
+	provides = fixplurals
+	provides = fillstruct
+	provides = fillswitch
+	source = git://github.com/davidrjenni/reftools.git
+	sha256sums = SKIP
+
+pkgname = reftools-git
+
