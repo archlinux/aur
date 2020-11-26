@@ -2,8 +2,8 @@
 # Co-Maintainer: Jonathan Dönszelmann <jonabent at gmail dot com>
 pkgname=roll-rs-git
 _pkgname=roll-rs
-pkgver=r3.34e9c11
-pkgrel=2
+pkgver=r11.e6bf4c3
+pkgrel=1
 pkgdesc="A rust dice rolling application using the standard dice notation"
 arch=('x86_64')
 url="https://github.com/finitum/roll-rs"
@@ -35,6 +35,6 @@ pkgver () {
 
 package() {
     cd "${_pkgname}"
-	install -Dm 755 "target/release/${_pkgname}" -T "${pkgdir}/usr/bin/roll"
+	install -Dm 755 "target/release/roll" -t "${pkgdir}/usr/bin/"
 }
 
