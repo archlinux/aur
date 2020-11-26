@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=termchat-git
-pkgver=1.0.0.r0.gbd572a5
-pkgrel=2
+pkgver=1.1.1.r0.g4b8d00d
+pkgrel=1
 pkgdesc="Terminal chat through the LAN (git)"
 arch=('x86_64')
 url="https://github.com/lemunozm/termchat"
