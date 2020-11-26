@@ -1,0 +1,15 @@
+pkgbase = 360player
+	pkgdesc = 360 Video Player
+	pkgver = 1.0.0.1006
+	pkgrel = 1
+	url = http://www.kylinos.cn/adaptation/application/15.html
+	arch = x86_64
+	license = custom
+	depends = hicolor-icon-theme
+	depends = qt5-script
+	depends = mplayer
+	source = http://update.cs2c.com.cn:8080/scs/soft_repo/x86_64/RPMS/360player-1.0.0.1006-x86_64/360player-1.0.0.1006-x86_64.rpm
+	sha256sums = 3407e730d0aabe87bdef11f52485b7bfe7de2e11bac748e9a6096705d1d2f841
+
+pkgname = 360player
+
