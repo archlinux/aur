@@ -1,7 +1,7 @@
-# Maintainer: justforlxz <justforlxz@gmail.com>
+# Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=startdde-git
-pkgver=5.6.0.30.r11.gb78cc55
+pkgver=5.6.0.13.r0.g79adfd7
 pkgrel=1
 pkgdesc="starter of deepin desktop environment"
 arch=('x86_64')
