@@ -1,13 +1,13 @@
 pkgbase = pomerium-bin
 	pkgdesc = Pomerium is an identity-aware access proxy
-	pkgver = 0.10.2
+	pkgver = 0.10.6
 	pkgrel = 1
 	url = https://www.pomerium.io
 	arch = x86_64
 	license = Apache
 	provides = pomerium
-	source = pomerium-bin-0.10.2.tar.gz::https://github.com/pomerium/pomerium/releases/download/v0.10.2/pomerium-linux-amd64.tar.gz
-	sha256sums = 6d70cf9a84c9dc2d8e6efb37f13a3aa78d4d5b1cb8f1b7c3d8b128b7196f6e20
+	source = pomerium-bin-0.10.6.tar.gz::https://github.com/pomerium/pomerium/releases/download/v0.10.6/pomerium-linux-amd64.tar.gz
+	sha256sums = 3a5b82ebd713bcb22804227c68a479cdfb19f3b1148f00892dfaf2b404c785b5
 
 pkgname = pomerium-bin
 
