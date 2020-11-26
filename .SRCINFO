@@ -1,0 +1,14 @@
+pkgbase = gentone
+	pkgdesc = Generate a tone from a note or frequency
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://octobanana.com/software/gentone
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = sfml
+	source = gentone-0.1.2.tar.gz::https://github.com/octobanana/gentone/archive/0.1.2.tar.gz
+	sha256sums = c215602b40f8a3149aef57110317c615e50faf1f68867e79c262e6d6aa5c5392
+
+pkgname = gentone
+
