@@ -1,7 +1,7 @@
 pkgbase = python-parallelencode
 	pkgdesc = A python framework to split and encode videos in parallel
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/parallelencode/PyParallelEncode
 	arch = any
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = python-parallelencode
 	depends = python-scipy
 	depends = python-numpy
 	depends = ffmpeg
+	depends = opencv
 	optdepends = python-scenedetect
 	optdepends = vmaf
 	optdepends = vapoursynth-plugin-lsmashsource

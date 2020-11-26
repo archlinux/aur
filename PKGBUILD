@@ -3,7 +3,7 @@
 pkgname=python-parallelencode
 _name="${pkgname#python-}"
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A python framework to split and encode videos in parallel'
 url='https://github.com/parallelencode/PyParallelEncode'
 arch=('any')
@@ -14,7 +14,7 @@ source=(
 makedepends=('python-setuptools')
 depends=(
 	'python' 'python-scipy' 'python-psutil'
-	'ffmpeg' 'python-numpy'
+	'ffmpeg' 'python-numpy' 'opencv'
 )
 optdepends=('vmaf: Target vmaf support',
 'python-scenedetect: Splitting based on scenedetect instead of (the faster and better) ffmpeg',
