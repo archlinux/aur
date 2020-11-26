@@ -4,23 +4,23 @@
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 
 pkgname=alice-bin
-pkgver=3.5
-pkgrel=4
+pkgver=3.6.0.1
+pkgrel=1
 pkgdesc='An educational software that teaches students computer programming in a 3D environment'
 arch=('i686' 'x86_64')
 url="http://www.alice.org"
 license=('custom')
 depends=('java-environment=8'
-     'xdg-utils'
-     'lib32-glu'
-     'lib32-libxrandr'
-     'lib32-libxcursor')
+         'xdg-utils'
+         'lib32-glu'
+         'lib32-libxrandr'
+         'lib32-libxcursor')
 options=('!strip')
 provides=('alice3')
-install=alice.install
-source=("${pkgname}-${pkgver}.sh::http://www.alice.org/wp-content/uploads/2019/04/Alice3_unix_3_5.sh")
+install=alice-bin.install
+source=("${pkgname}-${pkgver}.sh::http://www.alice.org/wp-content/uploads/2020/10/Alice3_unix_installer_3_6_0_1.sh")
 noextract=("${pkgname}-${pkgver}.sh")
-sha256sums=('dc7f80bb33e8fca32e0f8961ba815c69af07cee740421927d93026e5137ee79d')
+sha256sums=('b2956ad4bc1731a6aa73470199310629851a1d806b7f8f0c2156a545ea5e2b34')
 
 package() {
   install -d "${pkgdir}/opt" "${pkgdir}/usr/share/applications"
