@@ -6,6 +6,7 @@ pkgbase = menu-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	depends = tree
 	provides = menu
 	source = menu-git::git+https://gitlab.com/KNIX3/menu.git
 	md5sums = SKIP
