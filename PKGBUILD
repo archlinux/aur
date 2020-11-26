@@ -1,8 +1,8 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=uboot-tinkerboard
-pkgver=20.11.0
-_kernel=5.8.18
+pkgver=21.02.0
+_kernel=5.9.8
 pkgrel=1
 pkgdesc="U-Boot for Tinker Board / S"
 arch=('armv7h')
