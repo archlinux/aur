@@ -1,6 +1,6 @@
 pkgbase = qt6-base
 	pkgdesc = A cross-platform application and UI framework
-	pkgver = 6.0.0beta4
+	pkgver = 6.0.0rc
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -50,8 +50,8 @@ pkgbase = qt6-base
 	optdepends = freetds: MS SQL driver
 	optdepends = gtk3: GTK platform plugin
 	optdepends = perl: for fixqt4headers and syncqt
-	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-beta4/submodules/qtbase-everywhere-src-6.0.0-beta4.tar.xz
-	sha256sums = 5cb57bf0c513eb48cf57115dc1f1792eb3092a412806b46b836b960f82e31b3e
+	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-rc/submodules/qtbase-everywhere-src-6.0.0-rc.tar.xz
+	sha256sums = 8dc2c6fe053235e4a2866d8e1927fd667e5e8c853c96de708b9688012089138d
 
 pkgname = qt6-base
 
