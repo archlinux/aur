@@ -1,6 +1,6 @@
 pkgbase = qencoder
 	pkgdesc = A Qt video encoder GUI for open codec formats
-	pkgver = 1.5.6
+	pkgver = 2.0rc1
 	pkgrel = 1
 	url = https://github.com/natis1/qencoder
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = qencoder
 	depends = ffmpeg
 	optdepends = python-scenedetect
 	optdepends = vmaf
-	source = https://files.pythonhosted.org/packages/source/q/qencoder/qencoder-1.5.6.tar.gz
+	source = https://files.pythonhosted.org/packages/source/q/qencoder/qencoder-2.0rc1.tar.gz
 	source = qencoder.desktop
 	sha256sums = 4f19e4392bdc99cfdb40548b141c67c9173d04a096bb5658b417035eecede8dd
 	sha256sums = 3e9786a3fe1b7d6e3798fcf07cdd1e5db29e125cdc4c559dc095a8b1a143b1a5
