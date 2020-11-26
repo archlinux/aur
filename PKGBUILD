@@ -17,8 +17,8 @@
 #
 pkgbase="zfs-linux-rc"
 pkgname=("zfs-linux-rc" "zfs-linux-rc-headers")
-_zfsver="2.0.0_rc6"
-_kernelver="5.9.9.arch1-1"
+_zfsver="2.0.0_rc7"
+_kernelver="5.9.10.arch1-1"
 _extramodules="${_kernelver/.arch/-arch}"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
@@ -27,7 +27,7 @@ makedepends=("linux-headers=${_kernelver}")
 arch=("x86_64")
 url="https://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver/_/-}/zfs-${_zfsver/_/-}.tar.gz")
-sha256sums=("4c381fafa2c97c00a29b91372d485fae18e0f19ca353b56ba33f0feb44b66fe6")
+sha256sums=("640fde2b678040c9511172bf3b7ffc444d8e8daa1d738f4687f1ad92d6d01e7b")
 license=("CDDL")
 depends=("kmod" "zfs-utils-rc=${_zfsver}" "linux=${_kernelver}")
 
