@@ -1,5 +1,3 @@
-#!/bin/sh
-
 post_install() {
   if systemctl -q is-active runsunloginclient.service ;then
     systemctl restart runsunloginclient.service
@@ -10,12 +8,12 @@ post_install() {
   then
     ECHO='echo -e'
   else
-  ECHO='echo'
+    ECHO='echo'
   fi
   
   $ECHO "\033[36m*************************************************************************\033[0m"
-  $ECHO "\033[36m*  sunlogin daemon service must be running for sunloginclient to work    *\033[0m"
-  $ECHO "\033[36m*  Type: systemctl start runsunloginclient                               *\033[0m"
+  $ECHO "\033[36m*  sunlogin daemon service must be running for sunloginclient to work   *\033[0m"
+  $ECHO "\033[36m*  Type: systemctl start runsunloginclient                              *\033[0m"
   $ECHO "\033[36m*************************************************************************\033[0m"
 }
 
