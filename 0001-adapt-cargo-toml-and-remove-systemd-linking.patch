@@ -1,4 +1,4 @@
-From 92d37d2f42ff2c9cf3e9bee8ab3177e2b016e656 Mon Sep 17 00:00:00 2001
+From 5b3e7b7f583df39d0fa3a01a95ad8c6dd65b70e2 Mon Sep 17 00:00:00 2001
 From: Dominik Csapak <dominik.csapak@gmail.com>
 Date: Wed, 15 Jul 2020 07:37:24 +0000
 Subject: [PATCH 1/2] adapt cargo toml and remove systemd linking
@@ -11,10 +11,10 @@ it also in, even if the proxmox-backup-client and pxar does not use it
 
 Signed-off-by: Dominik Csapak <dominik.csapak@gmail.com>
 ---
- .cargo/config       |  5 -----
- Cargo.toml          | 10 +++++-----
- src/tools/daemon.rs |  2 --
- 3 files changed, 5 insertions(+), 12 deletions(-)
+ .cargo/config       | 5 -----
+ Cargo.toml          | 8 ++++----
+ src/tools/daemon.rs | 2 --
+ 3 files changed, 4 insertions(+), 11 deletions(-)
  delete mode 100644 .cargo/config
 
 diff --git a/.cargo/config b/.cargo/config
@@ -29,17 +29,17 @@ index 3b5b6e48..00000000
 -[source.crates-io]
 -replace-with = "debian-packages"
 diff --git a/Cargo.toml b/Cargo.toml
-index 04240fdc..02c9034c 100644
+index 283453e7..29db166d 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -37,12 +37,12 @@ pam = "0.7"
- pam-sys = "0.5"
+@@ -47,12 +47,12 @@ pam-sys = "0.5"
  percent-encoding = "2.1"
  pin-utils = "0.1.0"
+ pin-project = "0.4"
 -pathpatterns = "0.1.2"
--proxmox = { version = "0.7.0", features = [ "sortable-macro", "api-macro", "websocket" ] }
+-proxmox = { version = "0.7.2", features = [ "sortable-macro", "api-macro", "websocket" ] }
 +pathpatterns = { version = "0.1.2", git = "git://git.proxmox.com/git/pathpatterns.git" }
-+proxmox = { version = "0.7.0", features = [ "sortable-macro", "api-macro" ], git = "git://git.proxmox.com/git/proxmox.git", rev = "31b7620f201728cd6c1b404661131801cf1f59e0" }
++proxmox = { version = "0.7.2", features = [ "sortable-macro", "api-macro" ], git = "git://git.proxmox.com/git/proxmox.git", rev = "1d2a0d9e811bdb9589c5f78f3597679986060b9f" }
  #proxmox = { git = "git://git.proxmox.com/git/proxmox", version = "0.1.2", features = [ "sortable-macro", "api-macro" ] }
  #proxmox = { path = "../proxmox/proxmox", features = [ "sortable-macro", "api-macro", "websocket" ] }
 -proxmox-fuse = "0.1.0"
@@ -50,10 +50,10 @@ index 04240fdc..02c9034c 100644
  regex = "1.2"
  rustyline = "6"
 diff --git a/src/tools/daemon.rs b/src/tools/daemon.rs
-index 397ab991..f106f2da 100644
+index 6bb4a41b..9b358d78 100644
 --- a/src/tools/daemon.rs
 +++ b/src/tools/daemon.rs
-@@ -18,7 +18,6 @@ use proxmox::tools::io::{ReadExt, WriteExt};
+@@ -19,7 +19,6 @@ use proxmox::tools::io::{ReadExt, WriteExt};
  use crate::server;
  use crate::tools::{fd_change_cloexec, self};
  
@@ -61,8 +61,8 @@ index 397ab991..f106f2da 100644
  extern "C" {
      fn sd_journal_stream_fd(identifier: *const c_uchar, priority: c_int, level_prefix: c_int) -> c_int;
  }
-@@ -291,7 +290,6 @@ where
-     Ok(())
+@@ -335,7 +334,6 @@ async fn wait_service_is_active(service: &str) -> Result<(), Error> {
+     }
  }
  
 -#[link(name = "systemd")]
@@ -70,4 +70,5 @@ index 397ab991..f106f2da 100644
      fn sd_notify(unset_environment: c_int, state: *const c_char) -> c_int;
  }
 -- 
-2.28.0
+2.29.2
+
