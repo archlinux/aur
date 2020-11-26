@@ -1,7 +1,7 @@
 pkgbase = mozc-ut-common
 	pkgdesc = The Open Source edition of Google Japanese Input bundled with the UT dictionary
-	pkgver = 2.25.4190.102.20201110
-	pkgrel = 2
+	pkgver = 2.26.4200.100.20201110
+	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = i686
 	arch = x86_64
@@ -12,9 +12,12 @@ pkgbase = mozc-ut-common
 	makedepends = ninja
 	makedepends = pkgconf
 	makedepends = python
+	makedepends = python-six
 	depends = qt5-base
-	provides = mozc=2.25.4190.102
-	provides = mozc-ut=2.25.4190.102.20201110
+	depends = zinnia
+	optdepends = tegaki-models-zinnia-japanese: character models for the handwriting tool
+	provides = mozc=2.26.4200.100
+	provides = mozc-ut=2.26.4200.100.20201110
 	conflicts = mozc
 	conflicts = mozc-ut
 	conflicts = mozc-ut2
@@ -22,7 +25,7 @@ pkgbase = mozc-ut-common
 	conflicts = mozc-neologd-ut+ut2
 	conflicts = mozc-ut-unified
 	conflicts = mozc-ut-united
-	source = mozc-ut-common-git::git+https://github.com/google/mozc.git#commit=cfd05a0907d4ff95a15cc6fe2d4d56ed480f4002
+	source = mozc-ut-common-git::git+https://github.com/google/mozc.git#commit=e769997e0eff37676c78fb53b122ff79b2fb99b2
 	source = https://osdn.net/downloads/users/26/26897/mozcdic-ut-20201110.1.tar.bz2
 	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/ken_all-202010.zip
 	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-202010.zip
