@@ -13,7 +13,7 @@ url="http://xonotic.org"
 license=('GPL')
 depends=(
 	'libxpm'
-	'libjpeg>=8'
+	'libjpeg'
 	'libpng>=1.4.0'
 	'libmodplug'
 	'libvorbis'

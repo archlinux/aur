@@ -18,7 +18,7 @@ pkgbase = xonotic-git
 	makedepends = mesa
 	makedepends = imagemagick
 	depends = libxpm
-	depends = libjpeg>=8
+	depends = libjpeg
 	depends = libpng>=1.4.0
 	depends = libmodplug
 	depends = libvorbis
