@@ -3,14 +3,13 @@
 
 pkgname=kcrash-git
 pkgver=v5.71.0.r7.g4008e6a
-pkgrel=1
+pkgrel=2
 pkgdesc='KCrash'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kcrash'
 license=('LGPL')
 depends=('kcoreaddons-git' 'kwindowsystem-git')
 makedepends=('extra-cmake-modules-git' 'git')
-groups=('kf5')
 conflicts=(kcrash)
 provides=(kcrash)
 source=('git+https://github.com/KDE/kcrash.git')
