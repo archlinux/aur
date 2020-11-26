@@ -1,4 +1,4 @@
-pkgbase = pix
+pkgbase = pix-xapp
 	pkgdesc = Image viewer and browser based on gthumb. X-Apps Project.
 	pkgver = 2.4.11
 	pkgrel = 1
@@ -29,10 +29,11 @@ pkgbase = pix
 	optdepends = brasero: Burn discs
 	optdepends = liboauth: Web albums
 	optdepends = libchamplain: Map Viewer
-	provides = pix
+	provides = pix-xapp
 	conflicts = pix-git
-	source = pix-2.4.11.tar.gz::https://github.com/linuxmint/pix/archive/2.4.11.tar.gz
+	conflicts = pix
+	source = pix-xapp-2.4.11.tar.gz::https://github.com/linuxmint/pix/archive/2.4.11.tar.gz
 	md5sums = 78431d286382e7595d8f8a00ac7344c0
 
-pkgname = pix
+pkgname = pix-xapp
 

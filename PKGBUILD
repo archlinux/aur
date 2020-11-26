@@ -1,6 +1,7 @@
 # Maintainer: Nate Simon <njsimon10@gmail.com>
 
-pkgname=pix
+pkgname=pix-xapp
+_actualname=pix
 pkgver=2.4.11
 pkgrel=1
 pkgdesc="Image viewer and browser based on gthumb. X-Apps Project."
@@ -19,15 +20,15 @@ optdepends=('gstreamer: Video support'
     'liboauth: Web albums'
     'libchamplain: Map Viewer')
 provides=($pkgname)
-conflicts=('pix-git')
+conflicts=('pix-git' 'pix')
 url='https://github.com/linuxmint/pix'
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${_actualname}/archive/${pkgver}.tar.gz")
 md5sums=('78431d286382e7595d8f8a00ac7344c0')
 
 
 build() {
-    cd ${srcdir}/${pkgname}-${pkgver}
+    cd ${srcdir}/${_actualname}-${pkgver}
     gnome-autogen.sh --prefix="/usr" \
         --localstatedir="/var" \
         --libexecdir="/usr/lib/${pkgname}" \
@@ -48,7 +49,6 @@ build() {
 }
 
 package(){
-    cd ${srcdir}/${pkgname}-${pkgver}
+    cd ${srcdir}/${_actualname}-${pkgver}
     make DESTDIR="$pkgdir/" install
 }
-
