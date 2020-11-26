@@ -3,14 +3,13 @@
 
 pkgname=knotifications-git
 pkgver=v4.100.0.rc1.r459.ged8dbab
-pkgrel=1
+pkgrel=2
 pkgdesc='KNotifications'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/knotifications'
 license=(LGPL)
 depends=(libdbusmenu-qt5 phonon-qt5 kwindowsystem-git kcodecs-git kconfig-git kcoreaddons-git)
 makedepends=(extra-cmake-modules-git git qt5-tools python)
-groups=(kf5)
 conflicts=(knotifications)
 provides=(knotifications)
 source=('git+https://github.com/KDE/knotifications.git')
