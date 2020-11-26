@@ -1,6 +1,6 @@
 pkgbase = golang-github-linuxdeepin-go-dbus-factory-git
 	pkgdesc = GO DBus factory for DDE
-	pkgver = 1.8.0.23.r0.g35a79b7
+	pkgver = 1.8.0.26.r5.gc19105d
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/go-dbus-factory
 	arch = any
@@ -11,7 +11,6 @@ pkgbase = golang-github-linuxdeepin-go-dbus-factory-git
 	depends = golang-deepin-lib-git
 	provides = golang-github-linuxdeepin-go-dbus-factory
 	conflicts = golang-github-linuxdeepin-go-dbus-factory
-	replaces = golang-github-linuxdeepin-go-dbus-factory
 	source = golang-github-linuxdeepin-go-dbus-factory-git::git://github.com/linuxdeepin/go-dbus-factory
 	sha512sums = SKIP
 
