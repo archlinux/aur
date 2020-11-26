@@ -3,14 +3,13 @@
 
 pkgname=kwindowsystem-git
 pkgver=v4.100.0.rc1.r413.gfa31de1
-pkgrel=1
+pkgrel=2
 pkgdesc='KWindowSystem'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kwindowsystem'
 license=('LGPL')
 depends=('qt5-x11extras' 'libxfixes')
 makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
-groups=('kf5')
 conflicts=(kwindowsystem)
 provides=(kwindowsystem)
 source=('git+https://github.com/KDE/kwindowsystem.git')
