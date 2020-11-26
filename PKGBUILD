@@ -3,14 +3,13 @@
 
 pkgname=kjobwidgets-git
 pkgver=v4.100.0.rc1.r252.g4a3a066
-pkgrel=1
+pkgrel=2
 pkgdesc='KJobWidgets'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kjobwidgets'
 license=('LGPL')
 depends=('kcoreaddons-git' 'kwidgetsaddons-git' 'qt5-x11extras')
 makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
-groups=('kf5')
 conflicts=(kjobwidgets)
 provides=(kjobwidgets)
 source=('git+https://github.com/KDE/kjobwidgets.git')
