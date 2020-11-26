@@ -1,7 +1,7 @@
 # Maintainer: DingYuan <justforlxz@gmail.com>
 
 pkgname=golang-github-linuxdeepin-go-dbus-factory-git
-pkgver=1.8.0.26.r5.gc19105d
+pkgver=1.8.0.23.r0.g35a79b7
 pkgrel=1
 pkgdesc='GO DBus factory for DDE'
 arch=('any')
@@ -11,6 +11,7 @@ depends=('golang-deepin-lib-git')
 makedepends=('git' 'go')
 provides=('golang-github-linuxdeepin-go-dbus-factory')
 conflicts=('golang-github-linuxdeepin-go-dbus-factory')
+replaces=('golang-github-linuxdeepin-go-dbus-factory')
 groups=('deepin-git')
 source=("$pkgname::git://github.com/linuxdeepin/go-dbus-factory")
 sha512sums=('SKIP')
