@@ -7,6 +7,7 @@ pkgbase = menu-bookmark-git
 	license = GPL
 	makedepends = git
 	depends = menu
+	depends = tree
 	depends = dmenu
 	provides = menu-bookmark
 	source = menu-bookmark-git::git+https://gitlab.com/KNIX3/bookmarkmenu.git
