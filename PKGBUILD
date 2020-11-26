@@ -64,7 +64,7 @@ build() {
     -D openssl=disabled \
     -D soxr=disabled \
     -D speex=disabled \
-    -D adrian-aec=false \
+    -D adrian-aec=true \
     -D webrtc-aec=disabled 
   meson compile -C build
 }
