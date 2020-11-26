@@ -1,4 +1,4 @@
-# Maintainer:  <kitech@oarchbox1>
+# Maintainer:  <yatsen71@oarchbox1>
 pkgname=winmacs-wallpapers
 pkgver=2020.12
 pkgrel=1
@@ -51,7 +51,12 @@ package() {
   mkdir -p "$pkgdir/usr/share/wallpapers/"
   #install -v -d -D "$startdir/winxp/" "$pkgdir/usr/share/wallpapers/"
   cd "$startdir"
-  install -vDm 755 winxp_bliss.jpg "$pkgdir/usr/share/wallpapers/winxp/bliss.jpg"
+  wpdir="$pkgdir/usr/share/wallpapers"
+  install -vDm 755 winxp_bliss.jpg "$wpdir/winxp/bliss.jpg"
+  install -vDm 755 win10_img1.jpg.aa "$wpdir/win10/img1.jpg"
+  cat win10_img1.jpg.ab >> "$wpdir/win10/img1.jpg"
+  cat win10_img1.jpg.ac >> "$wpdir/win10/img1.jpg"
+  cat win10_img1.jpg.ad >> "$wpdir/win10/img1.jpg"
   #aur git repo cannot cantains subdir
   #find "winxp/" -type f -exec install -vDm 755 {} "$pkgdir/usr/share/wallpapers/{}" \;
 }
