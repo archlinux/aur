@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-tools-static
-_qtver=6.0.0-beta4
+_qtver=6.0.0-rc
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,9 +17,9 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qttools-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-windeployqt-Fix-name-of-qt6CoreName-variable.patch')
-sha256sums=('cd15384ed635fc9efa0f5f6679040082f138f28748a17f65b4b415a3d2e639ca'
-            '1f428c44520364d9a0dd03c4f017739fcaccec13a6800e69183c08c91a8d2f57')
+        '0001-Make-windeployqt-an-optional-feature.patch')
+sha256sums=('6fe789cf7e1abc7f0ac39027c53e7880433425b234d448d1500e583e9c3ba498'
+            '5655e188088c8345ba3aed72c74d98800d270bc65f9298676eeb40e3796d17c8')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -38,7 +38,8 @@ build() {
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
     $_arch-cmake-static -G Ninja -B build-$_arch -S $_pkgfqn \
       -DCMAKE_INSTALL_PREFIX:PATH="/usr/$_arch/static" \
-      -DFEATURE_pkg_config=ON
+      -DFEATURE_pkg_config=ON \
+      -DFEATURE_windeployqt=OFF
     cmake --build build-$_arch
   done
 }
