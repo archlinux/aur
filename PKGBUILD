@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=netinstall
-pkgver=6.47.7
-pkgrel=2
+pkgver=6.47.8
+pkgrel=1
 pkgdesc='Mikrotik Netinstall for RouterOS'
 arch=('i686' 'x86_64')
 url='https://www.mikrotik.com/'
@@ -13,7 +13,7 @@ install=netinstall.install
 source=("https://download.mikrotik.com/routeros/${pkgver}/netinstall-${pkgver}.zip"
 	'netinstall.c'
 	'netinstall.desktop')
-sha256sums=('c27212f20520ccdae2eb8df78b3ebe146707c9c4464d3daacc23abad5f0e1699'
+sha256sums=('b10501d327aaf09dde522efcb681ec8ee28779a076dc40a5088b3d8e063cb5b5'
             'ab9a26feafb4822266634db5e654529baab431e4b6bf8c2798ecd195d441f235'
             '742b8ebf2b66697f24a27b5e6920dd4a4b92dec0fea928e8f58e499246284623')
 
