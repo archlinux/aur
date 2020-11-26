@@ -2,7 +2,7 @@
 # Contributor: Deepjyoti <deep.barman30@gmail.com>
 pkgname=ytmdl-git
 _pkgname=ytmdl
-pkgver=2020.07.26.r26.gde1fa38
+pkgver=2020.11.20.post1.2.g9ce518a
 pkgrel=1
 pkgdesc="Download songs from YouTube with metadata from sources like Itunes and Gaana"
 arch=("any")
@@ -26,6 +26,7 @@ depends=(
 		"python-youtube-search-git"
 		"python-unidecode"
 		"python-pydes"
+		"python-simber"
 		)
 makedepends=("git" "python-setuptools")
 optdepends=("tensorflow: Trim Support")
@@ -36,7 +37,7 @@ md5sums=("SKIP")
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed -r 's/^lightspark-//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags | sed -r 's/-/./g'
 }
 
 build() {
