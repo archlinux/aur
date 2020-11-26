@@ -54,7 +54,7 @@ build() {
     -D bluez5-ofono-headset=false \
     -D dbus=disabled \
     -D fftw=disabled \
-    -D glib=disabled \
+    -D glib=enabled \
     -D gsettings=disabled \
     -D gstreamer=disabled \
     -D gtk=disabled \
@@ -67,6 +67,8 @@ build() {
     -D adrian-aec=false \
     -D webrtc-aec=disabled 
   meson compile -C build
+
+# glib needed for libpulse.so to be created
 }
 
 #check() {
