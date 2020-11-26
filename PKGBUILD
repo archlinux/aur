@@ -3,14 +3,13 @@
 
 pkgname=kauth-git
 pkgver=v5.71.0.rc1.r2.gfd24c32
-pkgrel=1
+pkgrel=2
 pkgdesc='KAuth'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kauth'
 license=('LGPL')
 depends=('kcoreaddons-git' 'polkit-qt5')
 makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
-groups=('kf5')
 conflicts=(kauth)
 provides=(kauth)
 source=('git+https://github.com/KDE/kauth.git')
