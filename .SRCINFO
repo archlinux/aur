@@ -1,6 +1,6 @@
 pkgbase = menu-bookmark-git
 	pkgdesc = A website bookmark manager using the menu backend (git version).
-	pkgver = r26.ff26613
+	pkgver = r27.117bd15
 	pkgrel = 1
 	url = https://gitlab.com/KNIX3/bookmarkmenu
 	arch = any
