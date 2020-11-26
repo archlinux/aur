@@ -1,0 +1,17 @@
+pkgbase = shirah-reader
+	pkgdesc = Curses based terminal RSVP speed reader
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Hallicopter/shirah-reader
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-beautifulsoup4
+	depends = python-ebooklib
+	depends = python-syllables
+	depends = python-termcolor
+	source = shirah-reader-1.0.0.tar.gz::https://github.com/Hallicopter/shirah-reader/archive/1.0.0.tar.gz
+	sha256sums = 88076d497d29f57230b9abbe3612b15ad2bae8d48b7a224ec11eb84983fa0abe
+
+pkgname = shirah-reader
+
