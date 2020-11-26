@@ -1,11 +1,10 @@
 pkgbase = python-pymodm
 	pkgdesc = A Pythonic, object-oriented interface for working with MongoDB
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/mongodb/pymodm
 	arch = any
 	license = Apache
-	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python-pymongo
 	source = python-pymodm-0.4.3.tar.gz::https://github.com/mongodb/pymodm/archive/0.4.3.tar.gz
