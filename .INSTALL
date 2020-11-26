@@ -1,0 +1,11 @@
+post_install() {
+    echo ""
+    echo "config files in /etc/nps/conf has moved to /etc/nps"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "config files in /etc/nps/conf has moved to /etc/nps"
+    echo ""
+}
