@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=charm-tool
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="The Charm Cloud Tool"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/charmbracelet/charm"
 license=('MIT')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}/charm-${pkgver}.tar.gz")
-sha256sums=('4d88f2b711fcaf19f86546ab2a793c221b95eb571c24b8650640af4759b3e4c7')
+sha256sums=('9ae084c1d21af79ffe14074937e5aa57dab728d7791fc927e006b1d982ee9e2a')
 
 build() {
     cd "charm-$pkgver"/cmd/charm
