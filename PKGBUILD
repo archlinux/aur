@@ -16,7 +16,7 @@
 
 pkgname=ffmpeg-mmal
 pkgver=4.3.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='ffmpeg built with MMAL hardware acceleration support for Raspberry Pi'
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -116,6 +116,7 @@ prepare() {
   cd ffmpeg
 
   patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
+  git cherry-pick -n 7c59e1b0f285cd7c7b35fcd71f49c5fd52cf9315 # fix the build with recent libsrt version
 }
 
 build() {
