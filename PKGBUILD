@@ -3,14 +3,13 @@
 
 pkgname=kbookmarks-git
 pkgver=v5.71.0.rc1.r1.g31e2e33
-pkgrel=1
+pkgrel=2
 pkgdesc='KBookmarks'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kbookmarks'
 license=('LGPL')
 depends=('kxmlgui-git')
 makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
-groups=('kf5')
 conflicts=(kbookmarks)
 provides=(kbookmarks)
 source=('git+https://github.com/KDE/kbookmarks.git')

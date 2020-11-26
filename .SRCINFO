@@ -1,11 +1,10 @@
 pkgbase = kbookmarks-git
 	pkgdesc = KBookmarks
 	pkgver = v5.71.0.rc1.r1.g31e2e33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.kde.org/projects/frameworks/kbookmarks
 	arch = i686
 	arch = x86_64
-	groups = kf5
 	license = LGPL
 	makedepends = extra-cmake-modules-git
 	makedepends = git
