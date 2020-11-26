@@ -1,12 +1,13 @@
 pkgbase = lib32-libkate
 	pkgdesc = A karaoke and text codec for embedding in ogg (32-bit)
 	pkgver = 0.4.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://wiki.xiph.org/OggKate
 	arch = x86_64
 	license = BSD
-	makedepends = pkg-config
+	makedepends = lib32-gcc-libs
 	makedepends = git
+	makedepends = pkg-config
 	depends = lib32-libogg
 	depends = lib32-libpng
 	depends = libkate
