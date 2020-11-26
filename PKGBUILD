@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=qt6-quick3d
-_qtver=6.0.0-beta4
+_qtver=6.0.0-rc
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -17,7 +17,7 @@ optdepends=('assimp: Import from assimp')
 groups=(qt6)
 _pkgfqn="${pkgname/6-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('d47e1e5d8cf10f37f2933b60ca97ca2ae55c9a0d18f1ca22a0ddd0e2c3c6908e')
+sha256sums=('439b7ab05177e6b5800676c261bb0953e93afcd9fc68aee9fdb75ec179e72e16')
 
 build() {
   cmake -G Ninja -B build -S $_pkgfqn
