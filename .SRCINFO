@@ -1,14 +1,14 @@
 pkgbase = bottom
 	pkgdesc = A cross-platform graphical process/system monitor with a customizable interface and a multitude of features.
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 0
 	url = https://github.com/ClementTsang/bottom
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	provides = bottom
-	source = bottom-0.5.1.tar.gz::https://github.com/ClementTsang/bottom/archive/0.5.1.tar.gz
-	sha512sums = e677b31f1a80c4232435f0a1c832a63037f35ba7e7c3eab1f7cf63bf68e3d4661b25558042536068b5b7d0068acc5ca419ab3439fe16825ddf38f9a7e8061fa4
+	source = bottom-0.5.2.tar.gz::https://github.com/ClementTsang/bottom/archive/0.5.2.tar.gz
+	sha512sums = d943c1f926e153517cc3f88dfadfa515a601b1e786d96c2dc862272ecd2ec45c4352653f74d0dd375acc08efdfdec3b657450bf4d0bc27865cdcb331b3905de2
 
 pkgname = bottom
 
