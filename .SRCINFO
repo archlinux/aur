@@ -1,7 +1,7 @@
 pkgbase = exaile
 	pkgdesc = A full-featured Amarok-style media player for GTK+
 	pkgver = 4.1.0beta1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.exaile.org/
 	arch = any
 	license = GPL2
@@ -20,7 +20,7 @@ pkgbase = exaile
 	depends = python-cairo
 	depends = python-gobject
 	optdepends = udisks2: device detection
-	optdepends = cddb-py: CD info
+	optdepends = spydaap: DAAP server
 	optdepends = python-zeroconf: DAAP plugins (daapserver and daapclient)
 	optdepends = ipython: ipconsole plugin
 	optdepends = python-pylast: Last.FM integration
