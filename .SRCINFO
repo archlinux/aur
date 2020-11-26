@@ -1,18 +1,17 @@
 pkgbase = rajio_gtk
 	pkgdesc = A radio program that focuses on Japanese radio
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/Dotz0cat/rajio_gtk
 	arch = x86_64
 	license = GPL3
-	makedepends = clang
 	depends = gtk3
 	depends = gstreamer
 	depends = sqlite3
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
-	source = rajio_gtk-0.2.tar.gz::https://github.com/Dotz0cat/rajio_gtk/archive/0.2.tar.gz
-	md5sums = bd7a5e390b531b3edbd4b4393af83f86
+	source = rajio_gtk-0.3.tar.gz::https://github.com/Dotz0cat/rajio_gtk/archive/0.3.tar.gz
+	md5sums = 66f9217fd13482f1305d09e693b35eb6
 
 pkgname = rajio_gtk
 
