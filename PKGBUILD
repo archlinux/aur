@@ -3,11 +3,11 @@
 
 pkgname=cayley
 pkgver=0.7.7
-pkgrel=1
-pkgdesc="Cayley is an open-source graph inspired by the graph database behind Freebase and Google's Knowledge Graph."
+pkgrel=2
+pkgdesc="An open-source graph inspired by the graph database behind Freebase and Google's Knowledge Graph."
 arch=('i686' 'x86_64')
 url='https://cayley.io/'
-license=('APACHE-2.0')
+license=('Apache')
 source_x86_64=("https://github.com/cayleygraph/cayley/releases/download/v${pkgver}/cayley_${pkgver}_linux_amd64.tar.gz")
 source_i686=("https://github.com/cayleygraph/cayley/releases/download/v${pkgver}/cayley_${pkgver}_linux_386.tar.gz")
 md5sums_i686=('6c1e29a6481f5874bdf9e3c7440f4362')
@@ -22,7 +22,6 @@ fi
 package() {
   cd "$_dir" || exit 1
   install -Dm755 cayley "$pkgdir/usr/bin/cayley"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   mkdir -p "$pkgdir/usr/share/doc/$pkgname/"
   rm cayley LICENSE
   cp -r ./* "$pkgdir/usr/share/doc/$pkgname/"
