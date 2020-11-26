@@ -1,11 +1,10 @@
 pkgbase = kitemviews-git
 	pkgdesc = KItemViews
 	pkgver = v4.100.0.rc1.r231.gecd837c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.kde.org/projects/frameworks/kitemviews
 	arch = i686
 	arch = x86_64
-	groups = kf5
 	license = LGPL
 	makedepends = extra-cmake-modules-git
 	makedepends = git

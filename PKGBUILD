@@ -3,14 +3,13 @@
 
 pkgname=kitemviews-git
 pkgver=v4.100.0.rc1.r231.gecd837c
-pkgrel=1
+pkgrel=2
 pkgdesc='KItemViews'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kitemviews'
 license=('LGPL')
 depends=('qt5-base')
 makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
-groups=('kf5')
 conflicts=(kitemviews)
 provides=(kitemviews)
 source=('git+https://github.com/KDE/kitemviews.git')
