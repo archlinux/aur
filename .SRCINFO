@@ -1,6 +1,6 @@
 pkgbase = abv-calc-git
 	pkgdesc = ABV Calculator for Refractometers
-	pkgver = 1.1.r55.3033227
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://gitlab.com/The3DmaN/abv-calc
 	arch = any
