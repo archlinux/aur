@@ -1,0 +1,14 @@
+pkgbase = g90updatefw
+	pkgdesc = Xiegu G90 firmware updater
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/DaleFarnsworth/g90updatefw
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = upx
+	source = https://github.com/DaleFarnsworth/g90updatefw/archive/version_1.2.tar.gz
+	sha512sums = e527887f06644534920c7b64a394f64e4acdf2620c3588456cf13c0c21be806f4126f82b7781ce2367e275dbab9009645c3928996fa78bd3d5ef9a4588923dd9
+
+pkgname = g90updatefw
+
