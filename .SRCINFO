@@ -1,0 +1,11 @@
+pkgbase = winmacs-wallpapers
+	pkgdesc = Windows and MacOS wallpapers
+	pkgver = 2020.12
+	pkgrel = 1
+	url = https://github.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+
+pkgname = winmacs-wallpapers
+
