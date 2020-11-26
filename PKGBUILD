@@ -1,7 +1,7 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 pkgname=mitsuba2-git
 pkgver=r2078.76445e90
-pkgrel=2
+pkgrel=3
 pkgdesc="A Retargetable Forward and Inverse Renderer"
 arch=('x86_64')
 url="https://www.mitsuba-renderer.org/"
@@ -54,10 +54,10 @@ build() {
 
 	# patch the build system to use system versions
 	rmdir ext/pugixml ext/pybind11
-	patch -p1 < ../../swap_pybind.patch
-	patch -p1 < ../../swap_pugixml.patch
-	patch -p1 < ../../swap_tbb.patch
-	patch -p1 -d ext/enoki < ../../swap_pybind_enoki.patch
+	patch -p1 < $srcdir/swap_pybind.patch
+	patch -p1 < $srcdir/swap_pugixml.patch
+	patch -p1 < $srcdir/swap_tbb.patch
+	patch -p1 -d ext/enoki < $srcdir/swap_pybind_enoki.patch
 
 	# not used with the current build options
 	rmdir ext/embree ext/nanogui
