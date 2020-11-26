@@ -8,8 +8,12 @@
 
 
 ## Helpful internal stuff
-_commit=cfd05a0907d4ff95a15cc6fe2d4d56ed480f4002
-_mozcver=2.25.4190.102
+_commit=e769997e0eff37676c78fb53b122ff79b2fb99b2
+_major=2
+_minor=26
+_build=4200
+_revision=100
+_mozcver=${_major}.${_minor}.${_build}.${_revision}
 _utdicdate=20201110
 _utdicrel=1
 _bldtype=Release
@@ -21,8 +25,8 @@ pkgdesc='Mozc module for IBus bundled with the UT dictionary'
 arch=('i686' 'x86_64')
 url='https://github.com/google/mozc'
 license=('custom')
-depends=('ibus>=1.4.1' 'mozc-ut-common' )
-makedepends=('clang' 'git' 'gtk2' 'ninja' 'pkgconf' 'python' 'qt5-base')
+depends=('ibus>=1.4.1' 'mozc-ut-common')
+makedepends=('clang' 'git' 'gtk2' 'ninja' 'pkgconf' 'python' 'python-six' 'qt5-base')
 conflicts=('ibus-mozc' 'ibus-mozc-ut2' 'ibus-mozc-ut-united')
 provides=("ibus-mozc=${_mozcver}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}")
