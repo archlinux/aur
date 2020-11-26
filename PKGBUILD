@@ -3,14 +3,13 @@
 
 pkgname=kservice-git
 pkgver=v4.100.0.rc1.r628.ga8413c5
-pkgrel=1
+pkgrel=2
 pkgdesc='KService'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kservice'
 license=('LGPL')
 depends=('ki18n-git' 'kconfig-git' 'kcrash-git' 'kdbusaddons-git' 'karchive-git')
 makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'python')
-groups=('kf5')
 conflicts=(kservice)
 provides=(kservice)
 source=('git+https://github.com/KDE/kservice.git')
