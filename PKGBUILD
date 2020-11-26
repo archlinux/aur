@@ -1,4 +1,4 @@
-# Maintainer: cupnoodles <cupn8dles@gmail.com>
+# Maintainer: cupnoodles <nwwdles@gmail.com>
 
 pkgname=plasma5-applets-virtual-desktop-bar-git
 pkgver=r495.b8271a7
