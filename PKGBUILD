@@ -25,8 +25,8 @@ _gapps_list=(
 )
 source=(
     "https://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img"
-    "https://github.com/redchenjs/aur-packages/raw/master/anbox-image/houdini_y.sfs"
-    "https://github.com/redchenjs/aur-packages/raw/master/anbox-image/houdini_z.sfs"
+    "https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_y.sfs"
+    "https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_z.sfs"
     "https://github.com/topjohnwu/Magisk/releases/download/v20.4/Magisk-v20.4.zip"
     "https://github.com/youling257/XposedTools/files/1931996/xposed-x86_64.zip"
     "XposedInstaller_3.1.5.apk::https://forum.xda-developers.com/attachment.php?attachmentid=4393082&d=1516301692"
