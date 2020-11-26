@@ -1,15 +1,14 @@
 pkgbase = youtube-dlc
 	pkgdesc = Fork of youtube-dl - download videos from youtube.com or other video platforms
 	pkgver = 2020.11.11_3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blackjack4494/yt-dlc
 	arch = any
 	license = custom
 	makedepends = git
 	makedepends = pandoc
-	makedepends = zip
+	makedepends = python-setuptools
 	depends = python
-	depends = python-setuptools
 	optdepends = ffmpeg: for video post-processing
 	optdepends = rtmpdump: for rtmp streams support
 	optdepends = atomicparsley: for embedding thumbnails into m4a files
