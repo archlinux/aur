@@ -5,7 +5,6 @@ pkgrel = 1
 url = https://vital.audio
 install = vital-synth.install
 arch = x86_64
-arch = i686
 groups = 
 license = custom
 depends = alsa-lib>=1.0.16
@@ -18,11 +17,9 @@ depends = libcurl-gnutls>=7.16.2
 depends = libgl
 depends = libglvnd
 depends = libsecret>=0.7
-optdepends = aarch64-linux-gnu-gcc>=5: support for aarch64
 options = !strip
 options = !emptydirs
 source_x86_64 = https://github.com/altaway/VitalInstaller/releases/download/v1.0.3-1/VitalInstaller.deb
 sha512sums_x86_64 = 2ebe787b6eb58148c7026a3e584890b4a1769e0044b1d59182c38b82c34c653f564c4dbf7f13ce673bdeadd8ce4afcebacec809605e890ab59f275372ee5fa7c
 
 pkgname = vital-synth
-
