@@ -1,16 +1,16 @@
 pkgbase = ruby-gssapi
 	pkgdesc = A FFI wrapper around the system GSSAPI library.
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = http://github.com/zenchild/gssapi
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-ffi
-	noextract = gssapi-1.3.0.gem
+	noextract = gssapi-1.3.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/gssapi-1.3.0.gem
-	sha1sums = 2128a81e60fab35880c2acb032a337b26696c55b
+	source = https://rubygems.org/downloads/gssapi-1.3.1.gem
+	sha256sums = c51cf30842ee39bd93ce7fc33e20405ff8a04cda9dec6092071b61258284aee1
 
 pkgname = ruby-gssapi
 

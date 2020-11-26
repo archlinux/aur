@@ -3,7 +3,7 @@
 
 _gemname=gssapi
 pkgname=ruby-$_gemname
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='A FFI wrapper around the system GSSAPI library.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-ffi)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('2128a81e60fab35880c2acb032a337b26696c55b')
+sha256sums=('c51cf30842ee39bd93ce7fc33e20405ff8a04cda9dec6092071b61258284aee1')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
