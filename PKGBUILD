@@ -4,8 +4,9 @@
 # Contributor: Lari Tikkanen <lartza@outlook.com>
 
 pkgname=feedthebeast-classic
+_pkgname=feedthebeast
 pkgver=1.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Feed The Beast offers many different styles of Minecraft modpacks to the community, catering to all tastes."
 arch=('any')
 url='https://feed-the-beast.com/'
@@ -30,8 +31,6 @@ package() {
     install -Dm755 "$pkgname" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${pkgname}-$pkgver.jar" "${pkgdir}/usr/share/${pkgname}/${pkgname}.jar"
     install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-
-    # icons are trapped inside .icns format, free them.
     bsdtar -xf "${pkgname}-$pkgver.jar" image/logo_ftb_large.png
     install -d -m755 "${pkgdir}/usr/share/icons/hicolor"
     cp -Rr "${srcdir}/image/logo_ftb_large.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
