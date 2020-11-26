@@ -48,7 +48,7 @@ build() {
     -D bluez5-ofono-headset=false \
     -D dbus=disabled \
     -D fftw=disabled \
-    -D glib=disabled \
+    -D glib=enabled \
     -D gsettings=disabled \
     -D gstreamer=disabled \
     -D gtk=disabled \
@@ -64,6 +64,8 @@ build() {
     -D stream-restore-clear-old-devices=true \
     -D udevrulesdir=/usr/lib/udev/rules.d
   meson compile -C build
+
+# glib required for libpulse.so creation
 }
 
 #check() {
@@ -84,7 +86,7 @@ package() {
   DESTDIR="$srcdir/install" meson install -C build
 
   cd install
-#  _pick usr/lib32/libpulse{,-simple,}.so*
+  _pick usr/lib32/libpulse{,-simple,-mainloop-glib}.so*
   _pick usr/lib32/{cmake,pkgconfig}
   _pick usr/lib32/pulseaudio/libpulse{dsp,common-*}.so
 }
