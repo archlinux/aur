@@ -4,14 +4,13 @@
 
 pkgname=kdbusaddons-git
 pkgver=v5.71.0.rc1.r1.g756b052
-pkgrel=1
+pkgrel=2
 pkgdesc='Addons to QtDBus'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kdbusaddons'
 license=('LGPL')
 depends=('qt5-x11extras')
 makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
-groups=('kf5')
 conflicts=(kdbusaddons)
 provides=(kdbusaddons)
 source=('git+https://github.com/KDE/kdbusaddons.git')
