@@ -1,7 +1,7 @@
 # Maintainer: David P. <megver83@parabola.nu>
 
 pkgname=linphone-desktop
-pkgver=4.2.3
+pkgver=4.2.4
 pkgrel=1
 pkgdesc='A free VoIP and video softphone based on the SIP protocol'
 arch=(x86_64 i686)
@@ -13,9 +13,9 @@ source=("https://gitlab.linphone.org/BC/public/$pkgname/-/archive/$pkgver/$pkgna
         0001-do-not-build-linphone-sdk.patch
         0002-remove-bc_compute_full_version-usage.patch
 )
-sha512sums=('d0f0fbd99bd8ab20d89b525ac4f38774974aefedb36b311b51190682ffdceedaed205e918c3685124497aa14d95dfdf1bd6c1c2675a1dd2452fed44d7b171bce'
-            '24f9849692ca1f937661dfaa89695da38d5c1713f42d364446568fdef3fca54cc195bf815111c7bf570e4520f15846ecd5d0cd44cefa380384bf37d74c69e9a9'
-            'c41551388e590844b06e0ff23ec079c5a10a67a6ec9b1aec27d2662e5e8b22d8cbceb601e0277365f2e9b0c004af06b6481248b296b7645007d964e16dac197f')
+sha512sums=('00b150b547032f2621ba3e31318258ab5c7d087877cbf362e10824da64b21bc227c9fd571ba35874f51d083a753f703abfed883c14988c634274e0cb273d0cb6'
+            '1643fcaf4c033125b0cebd7e31a15c87baa62126bbecf12cc599f9ea1aa719ccb76a9d15849e0c7d5d1218445c0e3297771ed152930e14dadaaa87772a4c3ad7'
+            'aea52c176474018b0bb05cb0ff370ec63aecbce66b3ed29e25a7be108239b91f33971317bdb3bef01730348cd98d17a2b6f24488854d34f7066371141f7d02f6')
 
 prepare() {
   cd "$pkgname-$pkgver"
