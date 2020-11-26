@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="X11 client-side library (32-bit)"
 arch=(x86_64)
 url="https://xcb.freedesktop.org/"
-depends=('lib32-libxdmcp' 'lib32-libxau' 'libxcb-git')
+depends=('lib32-libxdmcp' 'lib32-libxau' 'libxcb')
 makedepends=('pkgconfig' 'libxslt' 'python' 'xorg-util-macros' 'gcc-multilib'
              'autoconf' 'xorgproto')
 provides=(lib32-libxcb)
