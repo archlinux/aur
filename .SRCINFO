@@ -1,0 +1,12 @@
+pkgbase = brcmfmac43456-firmware
+	pkgdesc = brcmfmac43456 firmware for Raspberry Pi 400
+	pkgver = 20190114
+	pkgrel = 1
+	arch = any
+	license = non-free
+	noextract = firmware-brcm80211_20190114-1+rpt9_all.deb
+	source = http://archive.raspberrypi.org/debian/pool/main/f/firmware-nonfree/firmware-brcm80211_20190114-1+rpt9_all.deb
+	sha256sums = 232ea04d66cc645a0bc33c0d30c16a83f0ceab3d4de19252661a10f6eaff87cb
+
+pkgname = brcmfmac43456-firmware
+
