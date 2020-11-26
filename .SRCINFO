@@ -1,11 +1,12 @@
 pkgbase = edcltool-git
 	pkgdesc = edcl scripting tool
-	pkgver = 20150730
+	pkgver = 0.2.5.r11.gad559f3
 	pkgrel = 1
 	url = https://github.com/RC-MODULE/edcltool
 	arch = any
 	license = unknown
 	makedepends = git
+	makedepends = cmake
 	depends = lua
 	source = git+https://github.com/RC-MODULE/edcltool.git
 	md5sums = SKIP
