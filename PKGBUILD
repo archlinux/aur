@@ -3,7 +3,8 @@
 pkgbase=linux-rockchip
 pkgname=('linux-rockchip' 'linux-rockchip-headers')
 pkgver=5.9.11
-_armbian=21.02.0
+_armbver=21.02.0
+_armbrel=1
 _kernver="$pkgver-rockchip"
 pkgrel=1
 arch=('armv7h')
@@ -16,9 +17,9 @@ source=(
   "linux.preset"
   "60-linux.hook"
   "90-linux.hook"
-  "linux-dtb-$_armbian-$pkgrel.deb::https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-current-rockchip_$_armbian-trunk.${pkgrel}_armhf.deb"
-  "linux-image-$_armbian-$pkgrel.deb::https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-image-current-rockchip_$_armbian-trunk.${pkgrel}_armhf.deb"
-  "linux-headers-$_armbian-$pkgrel.deb::https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-headers-current-rockchip_$_armbian-trunk.${pkgrel}_armhf.deb"
+  "linux-dtb-$_armbver-$_armbrel.deb::https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-current-rockchip_$_armbver-trunk.${_armbrel}_armhf.deb"
+  "linux-image-$_armbver-$_armbrel.deb::https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-image-current-rockchip_$_armbver-trunk.${_armbrel}_armhf.deb"
+  "linux-headers-$_armbver-$_armbrel.deb::https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-headers-current-rockchip_$_armbver-trunk.${_armbrel}_armhf.deb"
 )
 sha512sums=(
   'a492aae17ee4a316ce03faf9f1b284b2529c485f4b092cc4a1f865a6c68d482fd356fd30efa296c116975a3bdf3922f5bf03912a8d0e76f4ab24aa6ab9f8c276'
@@ -47,9 +48,9 @@ package_linux-rockchip() {
 
   cd "$srcdir"
 
-  ar x "linux-dtb-$_armbian-$pkgrel.deb"
+  ar x "linux-dtb-$_armbver-$_armbrel.deb"
   tar -xf data.tar.xz
-  ar x "linux-image-$_armbian-$pkgrel.deb"
+  ar x "linux-image-$_armbver-$_armbrel.deb"
   tar -xf data.tar.xz
 
   install -Dm644 "boot/vmlinuz-$_kernver" "$pkgdir/boot/zImage"
@@ -91,9 +92,9 @@ package_linux-rockchip-headers() {
 
   cd "$srcdir"
 
-  ar x "linux-image-$_armbian-$pkgrel.deb"
+  ar x "linux-image-$_armbver-$_armbrel.deb"
   tar -xf data.tar.xz
-  ar x "linux-headers-$_armbian-$pkgrel.deb"
+  ar x "linux-headers-$_armbver-$_armbrel.deb"
   tar -xf data.tar.xz
 
   install -dm755 "$pkgdir/usr/lib/modules/$_kernver"
