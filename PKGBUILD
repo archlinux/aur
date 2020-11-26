@@ -30,7 +30,7 @@ package() {
     install -Dm755 "$pkgname" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${_pkgname}-$pkgver.jar" "${pkgdir}/usr/share/${_pkgname}/${_pkgname}.jar"
     install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    bsdtar -xf "${pkgname}-$pkgver.jar" image/logo_ftb_large.png
+    bsdtar -xf "${_pkgname}-$pkgver.jar" image/logo_ftb_large.png
     install -d -m755 "${pkgdir}/usr/share/icons/hicolor"
     cp -Rr "${srcdir}/image/logo_ftb_large.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
 }
