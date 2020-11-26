@@ -3,7 +3,7 @@
 pkgname=bsp-tinkerboard
 pkgver=21.02.0
 _ubuntu=focal
-_kernel=5.9.8
+_kernel=5.9.11
 pkgrel=1
 pkgdesc="Board support package for Tinker Board / S (Bluetooth, HDMI, Audio...)"
 arch=('armv7h')

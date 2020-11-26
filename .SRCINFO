@@ -18,11 +18,11 @@ pkgbase = bsp-tinkerboard
 	noextract = linux-focal-root-current-tinkerboard_21.02.0-trunk_armhf.deb
 	source = pulseaudio-sink.txt
 	source = pulseaudio-source.txt
-	source = armbian-fw-21.02.0-5.9.8.deb::https://github.com/redchenjs/armbian-ci/releases/download/v5.9.8-rockchip/armbian-firmware_21.02.0-trunk_all.deb
-	source = armbian-bsp-21.02.0-5.9.8.deb::https://github.com/redchenjs/armbian-ci/releases/download/v5.9.8-rockchip/linux-focal-root-current-tinkerboard_21.02.0-trunk_armhf.deb
+	source = armbian-fw-21.02.0-5.9.11.deb::https://github.com/redchenjs/armbian-ci/releases/download/v5.9.11-rockchip/armbian-firmware_21.02.0-trunk_all.deb
+	source = armbian-bsp-21.02.0-5.9.11.deb::https://github.com/redchenjs/armbian-ci/releases/download/v5.9.11-rockchip/linux-focal-root-current-tinkerboard_21.02.0-trunk_armhf.deb
 	sha512sums = ba864bea8e0de5c37e9953706295b26c0a74e779310a4b43326e1d89b5ad5f34365fd0e64bdc23d58a06109c58ef697ad2a5845c4e3713d83d2a2b88e2768d90
 	sha512sums = c109a8b3d2d6bfc6f90c747d7e76e50f316b542f0a38df582ea3b5ed5e7de388ee853e6d5f5f8c2f35612857fe10959cb68467440bda3bf33a335cfd78b7e024
-	sha512sums = 9e72f7b479f81055db632cdc60639e1bbc8f7a4f65acb5067517c52b9de8acf92c1ae79aba56125fc4fc3f2fda9185423d7eb05958308c837ece31d98988db3a
-	sha512sums = 446039c1b5ad8c337945ffb9afe4963dbeeb235d7b38f507f05f1f7f6337cad545b54cd791a1d691ecf906c68474611e5cbef3064122c9162d75f74cb58950cd
+	sha512sums = c409716abbf4abf7559163ae27562aa5a4c96063d0e8c23eda69f3bf6cc290112aedd006235fb0f6d180a587324dcd4c1cf191115bfc8e62fc523c483681f88d
+	sha512sums = 825dd087bc4d49079c9b81351a6efb41ec3137177e26691a19854eef87671c69865475df9f0620b508877b0466f93056cdeac81ec8f71006573e1039cb66a103
 
 pkgname = bsp-tinkerboard
