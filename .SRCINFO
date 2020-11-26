@@ -1,0 +1,21 @@
+pkgbase = virtualfish-git
+	pkgdesc = Fish shell tool for managing Python virtual environments
+	pkgver = r345.a19000a
+	pkgrel = 1
+	url = https://github.com/justinmayer/virtualfish
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-dephell
+	depends = python-pkgconfig
+	depends = python-psutil
+	depends = python-virtualenv
+	depends = fish
+	provides = vf
+	conflicts = virtualfish
+	source = virtualfish::git+https://github.com/justinmayer/virtualfish.git
+	md5sums = SKIP
+
+pkgname = virtualfish-git
+
