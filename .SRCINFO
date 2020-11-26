@@ -1,6 +1,6 @@
 pkgbase = anymeal
 	pkgdesc = A recipe database software
-	pkgver = 1.7
+	pkgver = 1.12
 	pkgrel = 1
 	url = https://wedesoft.github.io/anymeal
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = anymeal
 	depends = hicolor-icon-theme
 	depends = recode
 	depends = qt5-webkit
-	source = anymeal-1.7.tar.xz::https://github.com/wedesoft/anymeal/archive/v1.7.tar.gz
-	sha256sums = fcde7d4155d189403edd31e75b29bf1df04a3a4c4c5d6e05f2dbba7d0340a1bf
+	source = anymeal-1.12.tar.xz::https://github.com/wedesoft/anymeal/archive/v1.12.tar.gz
+	sha256sums = 0f27baaf707b3b72e209e587b10921c6d9e1ee9bf139e50cd4eb1971c32d934e
 
 pkgname = anymeal
 
