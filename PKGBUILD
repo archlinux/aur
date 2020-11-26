@@ -2,12 +2,12 @@
 
 pkgname=joplin-cli
 pkgver=1.4.12
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source note taking and to-do application with synchronization capabilities"
 arch=('x86_64')
 depends=('nodejs>10' 'rsync')
 source=(
-  "${pkgname}.sh"
+  "${pkgname%-*}.sh"
   "${pkgname}-${pkgver}.tar.gz::https://github.com/laurent22/${pkgname%-*}/archive/v${pkgver}.tar.gz"
 )
 makedepends=('npm' 'git')
@@ -36,13 +36,13 @@ package() {
   install -d ${pkgdir}/usr/share/${pkgname}
 
   # App-cli
-  cp -R app-cli/build "${pkgdir}/usr/share/${pkg_name}/app-cli"
-  cp -R app-cli/node_modules "${pkgdir}/usr/share/${pkg_name}/app-cli"
-  cp -R fork-htmlparser2 "${pkgdir}/usr/share/${pkg_name}"
-  cp -R renderer "${pkgdir}/usr/share/${pkg_name}"
-  cp -R lib "${pkgdir}/usr/share/${pkg_name}"
+  cp -R app-cli/build "${pkgdir}/usr/share/${pkgname}/app-cli"
+  cp -R app-cli/node_modules "${pkgdir}/usr/share/${pkgname}/app-cli"
+  cp -R fork-htmlparser2 "${pkgdir}/usr/share/${pkgname}"
+  cp -R renderer "${pkgdir}/usr/share/${pkgname}"
+  cp -R lib "${pkgdir}/usr/share/${pkgname}"
 
-  install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 "${srcdir}/${pkgname%-*}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
   install -Dm644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
