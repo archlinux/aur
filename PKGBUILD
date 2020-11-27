@@ -1,7 +1,7 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _pkgname='hlsdl'
 pkgname="$_pkgname-git"
-pkgver='0.27.r187.gc14b0c9'
+pkgver='0.27.r195.g84c1ded'
 pkgrel='1'
 pkgdesc='C program to download VoD HLS (.m3u8) files - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -30,4 +30,5 @@ package() {
 	cd "$srcdir/$_sourcedirectory/"
 	install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$_pkgname.1" "$pkgdir/usr/share/man/man1/$_pkgname.1"
 }
