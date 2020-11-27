@@ -1,6 +1,6 @@
 pkgbase = rconc-git
 	pkgdesc = a simple RCON client
-	pkgver = v0.2.0.r2.3379d8b
+	pkgver = 0.2.3.r2.1901bf7
 	pkgrel = 1
 	url = https://git.kasad.com/rconc
 	arch = any

@@ -1,6 +1,6 @@
 # Maintainer: Kian Kasad <kian@kasad.com>
 pkgname=rconc-git
-pkgver=v0.2.0.r2.3379d8b
+pkgver=0.2.3.r2.1901bf7
 pkgrel=1
 pkgdesc="a simple RCON client"
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags | sed 's/^v//; s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
