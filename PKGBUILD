@@ -7,7 +7,7 @@ _tclsrcver=8.6.10
 pkgrel=1
 pkgdesc="Provides OS primitives, file scanning, data records etc. for Tcl"
 url="https://github.com/flightaware/tclx"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('BSD')
 depends=('tcl=8.6.10' 'tk' 'libtirpc')
 source=("https://github.com/flightaware/tclx/archive/v${pkgver}.tar.gz" \
