@@ -2,7 +2,7 @@
 
 pkgname=youtube-dlc-git
 _gitname=yt-dlc
-pkgver=2020.10.31.r78.g228385340
+pkgver=2020.10.31.r80.g17fbbff94
 pkgrel=1
 pkgdesc="Fork of youtube-dl - download videos from youtube.com or other video platforms"
 arch=('any')
@@ -32,11 +32,19 @@ prepare() {
 
 build() {
   cd ${_gitname}
-  make PREFIX="${pkgdir}/usr"
+  make PREFIX="${pkgdir}/usr" README.txt youtube-dlc.1 bash-completion zsh-completion fish-completion
+  export PYTHONHASHSEED=0
+  python setup.py build
 }
 
 package() {
   cd ${_gitname}
-  make install PREFIX="${pkgdir}/usr"
+  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+
+  # Completions fix
+  mv "${pkgdir}/usr/share/bash-completion/completions/youtube-dlc"{.bash-completion,}
+  install -Dm644 youtube-dlc.zsh "${pkgdir}/usr/share/zsh/site-functions/_youtube-dlc"
+
+  # License
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
