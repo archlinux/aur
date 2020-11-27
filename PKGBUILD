@@ -5,8 +5,9 @@
 
 pkgname=mill
 pkgver=0.8.0_11
+_pkgver=0.8.0
 _commit=8cd135ad640b2732462739f6b104df4d3ac7edc1
-pkgrel=1
+pkgrel=2
 pkgdesc="Your shiny new Java/Scala build tool"
 arch=(any)
 url="https://www.lihaoyi.com/mill/index.html"
@@ -19,7 +20,7 @@ sha512sums=('cfb71718aa500dda15f56012872934c2934b70eeb301bafe4c6defa9d1c58bf6ddd
 prepare() {
   cd mill-$_commit
   # workaround non-git build
-  sed -e "s/'git/'true/" -e "s/^.*--exact-match.*$/\"$pkgver\"/" -i build.sc
+  sed -e "s/'git/'true/" -e "s/^.*--exact-match.*$/\"$_pkgver\"/" -i build.sc
 }
 
 build() {
