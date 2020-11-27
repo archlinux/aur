@@ -1,10 +1,10 @@
 pkgname=pijul
 pkgver=1.0.0_alpha.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Patch-based distributed version control system"
 url='https://pijul.org'
 makedepends=('cargo' 'clang' 'libsodium' 'gcc-libs' 'pkgconf' 'diffutils' 'make' 'xxhash')
-depends=('gcc-libs' 'libsodium' 'clang')
+depends=('zstd' 'openssl' 'xxhash')
 arch=('i686' 'x86_64')
 license=('GPL')
 sha256sums=()
