@@ -1,6 +1,6 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 _npmname=node-red
-_npmver=1.2.2
+_npmver=1.2.6
 pkgname=nodejs-${_npmname}
 pkgver=${_npmver}
 pkgrel=1
@@ -16,9 +16,9 @@ source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz"
 		"${pkgname}.service"
 		"${pkgname}.default")
 noextract=("$_npmname-$_npmver.tgz")
-sha256sums=("f28e5456b279479699d9b5962d59c3f10c96fe4b5136c56f949152bef57f63b1"
-			"cb3468c4f5c5883ed89aef13485c6c604d22f917cec714585dbadd4914fff3e8"
-			"d08994475b06f270b2f1a2b3c99c22fd33f001dc2a10413460caded125f81f38")
+sha256sums=('53461c67807019d0c811d9731f6fe173ec7286ab7ba897013d5a9ce8043b42cd'
+            'cb3468c4f5c5883ed89aef13485c6c604d22f917cec714585dbadd4914fff3e8'
+            'd08994475b06f270b2f1a2b3c99c22fd33f001dc2a10413460caded125f81f38')
 
 package() {
   install -Dm644 ${pkgname}.default "${pkgdir}/etc/default/${pkgname}"
