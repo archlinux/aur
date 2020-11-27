@@ -11,6 +11,7 @@ groups=()
 depends=('libcurl.so')
 makedepends=('git' 'cmake')
 optdepends=('doxygen: documentation' 'catch2: tests')
+provides=('mastodonpp')
 source=("${_pkgname}"::"git+https://schlomp.space/tastytea/mastodonpp.git")
 md5sums=('SKIP')
 

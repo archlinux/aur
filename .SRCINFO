@@ -10,6 +10,7 @@ pkgbase = mastodonpp-git
 	depends = libcurl.so
 	optdepends = doxygen: documentation
 	optdepends = catch2: tests
+	provides = mastodonpp
 	source = mastodonpp::git+https://schlomp.space/tastytea/mastodonpp.git
 	md5sums = SKIP
 
