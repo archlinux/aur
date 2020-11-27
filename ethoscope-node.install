@@ -27,6 +27,9 @@ post_install() {
     #setting host settings on node
     echo "127.0.0.1    node" > /etc/hosts
 
+    #Link scripts that need to run automatically
+    ln -s /opt/ethoscope-node/node_src/scripts/make_index.py /etc/cron.daily/make_index.py
+
     echo "PLEASE REBOOT NOW."
 }
 

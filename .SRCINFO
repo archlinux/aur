@@ -12,6 +12,7 @@ pkgbase = ethoscope-node
 	makedepends = wget
 	makedepends = fping
 	depends = ntp
+	depends = cronie
 	depends = openssh
 	depends = mariadb
 	depends = dnsmasq
