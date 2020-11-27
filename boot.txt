@@ -1,6 +1,6 @@
 # After modifying, run ./mkscr
 
-setenv bootargs earlyprintk root=/dev/%ROOTDEV% rw rootwait console=ttyS2,115200n8 console=tty1 loglevel=0
+setenv bootargs earlyprintk root=/dev/%ROOTDEV% rw rootwait console=ttyS2,115200n8 console=tty1 loglevel=3 quiet
 
 if load ${devtype} ${devnum} ${kernel_addr_r} ${prefix}zImage; then
   if load ${devtype} ${devnum} ${fdt_addr_r} ${prefix}dtbs/${fdtfile}; then
