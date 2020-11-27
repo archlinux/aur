@@ -2,7 +2,7 @@
 
 pkgname=lagrange
 pkgrel=1
-pkgver=0.9.0
+pkgver=0.10.0
 pkgdesc="Beautiful Gemini Client"
 url="https://git.skyjake.fi/skyjake/lagrange"
 arch=("any")
@@ -30,4 +30,4 @@ package() {
     make PREFIX="/usr" DESTDIR="$pkgdir" install
 }
 
-md5sums=('27eda4affe727e4de3322cdcf9c99a65')
+md5sums=('3d516ad8b1f92d91a297998ea1a25617')
