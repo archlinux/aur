@@ -1,6 +1,6 @@
 pkgbase = arc-darkest-theme-git
 	pkgdesc = A darker version of famous Arc theme
-	pkgver = r1.c6621e2
+	pkgver = r171.33ed527dce
 	pkgrel = 1
 	url = https://github.com/rtlewis88/rtl88-Themes
 	arch = any

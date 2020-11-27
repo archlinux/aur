@@ -1,9 +1,9 @@
-# Maintainer: Paul Oppenheimer <bepvte@gmail.com>
+# Maintainer: Stanislav Nikitin <pztrn@pztrn.name>
 
 pkgname=arc-darkest-theme-git
-_pkgname=rtl88-Themes-Arc-Darkest
+_dirname=rtl88-Themes
 pkgdesc='A darker version of famous Arc theme'
-pkgver=r1.c6621e2
+pkgver=r171.33ed527dce
 pkgrel=1
 arch=('any')
 depends=('gtk3' 'gtk-engine-murrine' 'gtk-engines')
@@ -13,12 +13,12 @@ url='https://github.com/rtlewis88/rtl88-Themes'
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${_dirname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${_dirname}"
     install -m755 -d "${pkgdir}/usr/share/themes"
     
     cp -r Arc-Darkest-3.38 "${pkgdir}/usr/share/themes/Arc-Darkest"
