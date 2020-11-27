@@ -1,9 +1,9 @@
 # Maintainer: Yohann D'ANELLO <ynerant@crans.org>
 
-_name=squirrel-battle
+name=squirrel-battle
 pkgname=python-squirrel-battle-git
-pkgver=3.14
-pkgrel=2
+pkgver=3.14.1
+pkgrel=1
 pkgdesc="Watch out for squirrel's knives!"
 arch=('any')
 url="https://gitlab.crans.org/ynerant/squirrel-battle"
@@ -16,27 +16,27 @@ source=("git+https://gitlab.crans.org/ynerant/squirrel-battle.git")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd $_name
+  cd $name
   git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_name
+  cd $name
   python setup.py build
 }
 
 check() {
-  cd $_name
+  cd $name
   tox -e py3
   tox -e linters
 }
 
 package() {
-  cd $_name
+  cd $name
   python setup.py install --skip-build \
                           --optimize=1 \
                           --root="${pkgdir}"
   install -vDm 644 README.md \
     -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
