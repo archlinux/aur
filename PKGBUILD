@@ -1,6 +1,6 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgname=rubymine-eap
-pkgver=203.5981.45
+pkgver=203.5981.120
 _pkgname=RubyMine
 _pkgver=2020.3
 pkgrel=1
@@ -15,12 +15,12 @@ install=rubymine.install
 source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
         rubymine-eap.desktop
         rubymine.install)
-sha256sums=('6c4d1bc222401ed262d2b029fa5f39254f4c3c81ed7820117e69f7ca969fb3fb'
+sha256sums=('82f620d47b6af3df8bbc38a875936651b5a161c9ccf1e898bf39620d72f49c2f'
             '02b32d973da26ef7d61e4c291fff71229729b203661dc75cc947c8098cb8e660'
             'fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd')
 
 prepare() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${_pkgver}"
 
     rm Install-Linux-tar.txt
     rm help/ReferenceCardForMac.pdf
@@ -45,7 +45,7 @@ package() {
     install -d ${pkgdir}/{opt,usr/share}
 
     #Pre-packaged program files
-    cp --recursive "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/opt/${pkgname}"
+    cp --recursive "${srcdir}/${_pkgname}-${_pkgver}" "${pkgdir}/opt/${pkgname}"
 
     #Desktop application
     install -Dm644 "${pkgdir}/opt/${pkgname}/bin/RMlogo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
@@ -55,7 +55,7 @@ package() {
 
     #License
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-    find "$srcdir/$_pkgname-$pkgver/license/" -type f -exec \
+    find "$srcdir/$_pkgname-$_pkgver/license/" -type f -exec \
         install -Dm644 '{}' "$pkgdir/usr/share/licenses/$pkgname/" \;
 
     #Java config
