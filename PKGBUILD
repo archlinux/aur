@@ -1,5 +1,5 @@
 # Maintainer: AkinoKaede <autmaple@protonmail.com>
-# Special thanks:  Felix Yan <felixonmars@archlinux.org>
+# Special thanks: Felix Yan <felixonmars@archlinux.org>
 # Contributor: pandada8 <pandada8@gmail.com>
 
 pkgname=xray-bin
@@ -15,7 +15,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/XTLS/Xray-core/releases/download/v$pkgver/Xray-linux-64.zip"
-    "LICENSE::https://raw.githubusercontent.com/XTLS/Xray-core/main/LICENSE"
+    "LICENSE::https://raw.githubusercontent.com/XTLS/Xray-core/v$pkgver/LICENSE"
     "config.json"
     "vpoint_socks_vmess.json"
     "vpoint_vmess_freedom.json"
