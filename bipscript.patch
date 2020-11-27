@@ -1,0 +1,11 @@
+--- ./src/bipscript/src/midifile.cpp	2020-08-31 17:56:43.000000000 +0100
++++ ../bipscript/src/midifile.cpp	2020-10-03 10:52:19.479979296 +0100
+@@ -18,7 +18,7 @@
+ #include <cstring>
+ #include <fstream>
+ #include <iostream>
+-#include <portSMF/allegro.h>
++#include <portsmf/allegro.h>
+ 
+ #include "midifile.h"
+ #include "miditune.h"

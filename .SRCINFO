@@ -1,0 +1,26 @@
+pkgbase = bipscript-git
+	pkgdesc = A scripting language for interactive music
+	pkgver = r52.362a4c2
+	pkgrel = 1
+	url = http://www.bipscript.org
+	arch = i686
+	arch = x86_64
+	groups = pro-audio
+	license = GPL
+	makedepends = cmake
+	makedepends = boost
+	makedepends = lv2
+	depends = boost-libs
+	depends = fftw
+	depends = lilv
+	depends = liblo
+	depends = portsmf
+	provides = bipscript
+	conflicts = bipscript
+	source = bipscript::git+https://gitlab.domainepublic.net/bipscript/bipscript
+	source = bipscript.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = bipscript-git
+
