@@ -1,12 +1,12 @@
 pkgbase = berusky2-data
-	pkgdesc = A logic game based on the puzzle game Sokoban - Data
-	pkgver = 0.9
+	pkgdesc = A logic game based on the puzzle game Sokoban (Data files).
+	pkgver = 0.12
 	pkgrel = 1
-	url = http://www.anakreon.cz/en/
+	url = https://www.anakreon.cz/berusky2.html
 	arch = any
 	license = GPL
-	source = http://downloads.sourceforge.net/project/berusky2/berusky2-data-0.9/berusky2-data-0.9.tar.bz2
-	md5sums = b0d472dfb6c64c00f777d30427ed728d
+	source = https://www.anakreon.cz/download/berusky2-data-0.12.tar.xz
+	md5sums = db7f848ddd596625e05af63a54e166c2
 
 pkgname = berusky2-data
 
