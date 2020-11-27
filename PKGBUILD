@@ -2,13 +2,13 @@
 
 pkgname=fluxcd-flux
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open and extensible continuous delivery solution for Kubernetes."
 url="https://fluxcd.io/"
 arch=("x86_64" "armv6h" "armv7h" "aarch64")
 license=("APACHE")
 depends=('glibc')
-makedepends=("go" "git")
+makedepends=("go")
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/fluxcd/flux2/archive/v$pkgver.tar.gz"
 )
