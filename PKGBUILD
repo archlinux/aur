@@ -1,14 +1,14 @@
 # Maintainer: iniVation AG <support@inivation.com>
 
 pkgname=dv-runtime
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="C++ event-based processing framework for neuromorphic cameras, targeting embedded and desktop systems."
 url="https://gitlab.com/inivation/dv/$pkgname/"
 license=('AGPL3')
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 groups=()
-depends=('libcaer' 'boost' 'openssl' 'opencv' 'gperftools' 'sfml' 'libx11' 'lz4' 'zstd' 'fmt')
+depends=('libcaer' 'boost' 'openssl' 'opencv' 'gperftools' 'sfml' 'libx11' 'lz4' 'zstd' 'fmt' 'aravis' 'ffmpeg')
 makedepends=('cmake' 'pkgconf')
 provides=()
 conflicts=()
@@ -16,7 +16,7 @@ replaces=()
 options=()
 source=("https://gitlab.com/inivation/dv/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=('47a735d9fc0ed9e3f86444923dc169ed638d891e1422e8976f18a5147aff8833')
+sha256sums=('40e6578b75b5ba53f9751482e424a2e4b62b4971ae08e674e07f7ec5cb2f373f')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
