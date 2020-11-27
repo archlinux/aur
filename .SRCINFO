@@ -1,14 +1,17 @@
 pkgbase = python-langcodes
 	pkgdesc = A toolkit for working with and comparing the standardized codes for languages
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LuminosoInsight/langcodes
 	arch = any
 	license = Apache
 	makedepends = python
 	makedepends = python-setuptools
+	depends = python-marisa-trie
 	source = https://files.pythonhosted.org/packages/source/l/langcodes/langcodes-2.1.0.tar.gz
-	md5sums = SKIP
+	source = https://raw.githubusercontent.com/LuminosoInsight/langcodes/master/LICENSE.txt
+	sha256sums = 75bcaca8825e1a321965b136815dee53083c63314975e024ad0ccff8545e681f
+	sha256sums = 326f0f4093cf7bc8d89e3711d96cb73cfa7ce7c0381a83760c6e821f96badf7f
 
 pkgname = python-langcodes
 
