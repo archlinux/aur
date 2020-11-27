@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libjpeg-turbo
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 arch=(any)
 pkgdesc="JPEG image codec with accelerated baseline compression and decompression (mingw-w64)"
@@ -12,8 +12,8 @@ conflicts=(mingw-w64-libjpeg mingw-w64-libjpeg6-turbo)
 options=(staticlibs !strip !buildflags)
 url="http://libjpeg-turbo.virtualgl.org"
 source=("http://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-$pkgver.tar.gz")
-validpgpkeys=('7D6293CC6378786E1B5C496885C7044E033FDE16')
-sha256sums=('16f8f6f2715b3a38ab562a84357c793dd56ae9899ce130563c72cd93d8357b5d')
+validpgpkeys=('0338C8D8D9FDA62CF9C421BD7EC2DBB6F4DBF434') # The libjpeg-turbo Project (Signing key for official binaries) <information@libjpeg-turbo.org>
+sha512sums=('504062778224f2ed2ddb64c988fbf466a14247952aab0cf1d35d281942b6f0874eafd34b45914d2208e087f05ddd896c5ba87a67c944e8bb80323e187413038c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
