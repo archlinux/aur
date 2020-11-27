@@ -2,7 +2,7 @@
 
 pkgname=fluxcd-flux
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Open and extensible continuous delivery solution for Kubernetes."
 url="https://fluxcd.io/"
 arch=("x86_64" "armv6h" "armv7h" "aarch64")
@@ -23,7 +23,7 @@ build() {
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -o flux-bin ./cmd/flux
+	go build -ldflags "-X main.VERSION=$pkgver" -o flux-bin ./cmd/flux
 }
 
 check() {
