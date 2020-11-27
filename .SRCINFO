@@ -1,0 +1,23 @@
+pkgbase = libassh-hg
+	pkgdesc = The asynchronous SSH library
+	pkgver = r811.2588cc95e3c9
+	pkgrel = 1
+	url = http://libassh.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = mercurial
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	depends = zlib
+	depends = openssl
+	depends = libsodium
+	depends = libgcrypt
+	provides = libassh
+	conflicts = libassh
+	source = hg+https://hg.savannah.nongnu.org/hgweb/libassh/
+	md5sums = SKIP
+
+pkgname = libassh-hg
+
