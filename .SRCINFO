@@ -1,0 +1,14 @@
+pkgbase = perl-menlo-legacy
+	pkgdesc = Legacy internal and client support for Menlo
+	pkgver = 1.9022
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Menlo-Legacy/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-menlo
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Menlo-Legacy-1.9022.tar.gz
+	sha256sums = a6acac3fee318a804b439de54acbc7c27f0b44cfdad8551bbc9cd45986abc201
+
+pkgname = perl-menlo-legacy
+
