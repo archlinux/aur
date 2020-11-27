@@ -1,9 +1,8 @@
 pkgbase = desmume-git
 	pkgdesc = Nintendo DS emulator
-	pkgver = 0.9.11.r1461.91f6e4a9e
+	pkgver = 0.9.11.r1463.eab1fb95
 	pkgrel = 1
 	url = https://desmume.org/
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = meson
