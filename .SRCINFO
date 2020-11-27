@@ -1,16 +1,17 @@
 pkgbase = pgbadger
 	pkgdesc = A fast PostgreSQL Log Analyzer
-	pkgver = 11.3
+	pkgver = 11.4
 	pkgrel = 1
 	url = https://github.com/darold/pgbadger
 	arch = any
 	license = custom:PostgreSQL
+	checkdepends = perl-json-xs
 	depends = perl>=5.10.0
 	optdepends = perl-text-csv-xs: parse PostgreSQL CSV log files
 	optdepends = perl-json-xs: export statistics as JSON file
 	options = !emptydirs
-	source = pgbadger-11.3.tar.gz::https://github.com/darold/pgbadger/archive/v11.3.tar.gz
-	sha256sums = 533f92a9cca460bde60aecad404497e1d7a28cf724b1af085e14352431c3bda3
+	source = pgbadger-11.4.tar.gz::https://github.com/darold/pgbadger/archive/v11.4.tar.gz
+	sha256sums = b235b540fe4bbc7cf59274b82ad427022ea378812562bd2c350353c884ee0bfd
 
 pkgname = pgbadger
 
