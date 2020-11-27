@@ -9,6 +9,7 @@ url="https://gitlab.com/LynxOS/lde"
 depends=('lynx-ldk' 'gnome-menus' 'python-dbus' 'python-gobject' 'lynx-desktop-settings')
 license=('GPL')
 arch=('any')
+md5sums=('SKIP')
 source=("$url/-/archive/$pkgver/lde-$pkgver.tar.gz")
 
 package() {

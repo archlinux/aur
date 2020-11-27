@@ -11,6 +11,7 @@ pkgbase = lynx-desktop
 	depends = python-gobject
 	depends = lynx-desktop-settings
 	source = https://gitlab.com/LynxOS/lde/-/archive/0.0.1/lde-0.0.1.tar.gz
+	md5sums = SKIP
 
 pkgname = lynx-desktop
 
