@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds
 
 pkgname=mpd-pulse
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Open-source Modbus TCP to Modbus RTU (RS-232/485) gateway."
 arch=('x86_64' 'i686' 'armv7h')
@@ -12,7 +12,7 @@ depends=('libpulse' 'mpc')
 makedepends=('cargo')
 backup=('etc/mpd-pulse.conf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/matt-h/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('3d05d28c537081c96fabedeea7bd2d23d05b6cf99ef5ce4486ff7c95e3a7d1bf')
+sha256sums=('eaa000180fbe6221942962cdfba2ef942b8a4a62b9c0f00c965631d3c2edc45e')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
