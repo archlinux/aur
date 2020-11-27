@@ -2,7 +2,7 @@
 
 pkgname=joplin-cli
 pkgver=1.4.12
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source note taking and to-do application with synchronization capabilities"
 arch=('x86_64')
 depends=('nodejs>10' 'rsync')
