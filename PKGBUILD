@@ -20,8 +20,7 @@ pkgver() {
 }
 
 build() {
-    # mkdir "${_pkgname}/build"
-	cmake -B "${_pkgname}/build" -S "${_pkgname}" -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
+    cmake -B "${_pkgname}/build" -S "${_pkgname}" -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
 	make -C "${_pkgname}/build"
 }
 
