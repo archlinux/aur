@@ -1,0 +1,26 @@
+diff --git a/Lektor.egg-info/requires.txt b/Lektor.egg-info/requires.txt
+index 92d14d6..38845e0 100644
+--- a/Lektor.egg-info/requires.txt
++++ b/Lektor.egg-info/requires.txt
+@@ -11,7 +11,7 @@ python-slugify
+ requests[security]
+ setuptools
+ watchdog
+-Werkzeug<1
++Werkzeug
+ 
+ [:python_version < "3.2.3"]
+ functools32
+diff --git a/setup.py b/setup.py
+index 922a250..092e328 100644
+--- a/setup.py
++++ b/setup.py
+@@ -44,7 +44,7 @@ setup(
+         'requests[security]',
+         'setuptools',
+         'watchdog',
+-        'Werkzeug<1',
++        'Werkzeug',
+     ],
+     tests_require=tests_require,
+     extras_require={

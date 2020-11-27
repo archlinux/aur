@@ -1,7 +1,7 @@
 pkgbase = lektor
 	pkgdesc = A static content management system.
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.getlektor.com
 	arch = any
 	license = BSD
@@ -18,9 +18,13 @@ pkgbase = lektor
 	depends = python-mistune
 	depends = python-inifile
 	depends = python-exifread
+	depends = python-slugify
+	depends = python-filetype
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/source/L/Lektor/Lektor-3.2.0.tar.gz
+	source = 01_werkzeug1.patch
 	sha256sums = 5ab0c55aaea3cb98efdbf33b44adfd8291d0724e8849892eb13767d5cdb1fe40
+	sha256sums = 3eab4c2b94a6383d91038f87784b5d1c596656946e531e084b8b7a6ae34d6285
 
 pkgname = lektor
 
