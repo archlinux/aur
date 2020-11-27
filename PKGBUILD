@@ -7,7 +7,7 @@ license=(gpl3)
 makedepends=(git)
 depends=(guile sph-lib)
 provides=(sph-sc)
-source=("git://git.sph.mn/sph-sc")
+source=("git://sph.mn/sph-sc")
 url="http://sph.mn"
 md5sums=(SKIP)
 

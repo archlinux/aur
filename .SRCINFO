@@ -9,7 +9,7 @@ pkgbase = sph-sc-git
 	depends = guile
 	depends = sph-lib
 	provides = sph-sc
-	source = git://git.sph.mn/sph-sc
+	source = git://sph.mn/sph-sc
 	md5sums = SKIP
 
 pkgname = sph-sc-git
