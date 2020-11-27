@@ -4,10 +4,10 @@
 # Contributor: Guillaume Raffin ("theelectronwill") <theelectronwill@gmail.com>
 
 pkgname=mill
-pkgver=0.8.0_11
+pkgver=0.8.0_37
 _pkgver=0.8.0
-_commit=8cd135ad640b2732462739f6b104df4d3ac7edc1
-pkgrel=2
+_commit=f7150b62690f305dc35f02d426561fad9274e4d2
+pkgrel=1
 pkgdesc="Your shiny new Java/Scala build tool"
 arch=(any)
 url="https://www.lihaoyi.com/mill/index.html"
@@ -15,7 +15,7 @@ license=('MIT')
 depends=('bash' 'java-environment')
 makedepends=('mill')
 source=("$pkgname-$_commit.tar.gz::https://github.com/lihaoyi/mill/archive/$_commit.tar.gz")
-sha512sums=('cfb71718aa500dda15f56012872934c2934b70eeb301bafe4c6defa9d1c58bf6ddd5a58eaedee82a8b8064f5f1d536e0fe255623f0f8323a9507b25504884af1')
+sha512sums=('381a10ce8faea421d145c32150e5a5649d88e229ce16543b2bb87751f3314669a2343488dbe557e640e9f4362e06246b5dbed93e7b0d4514cf50558d1236c885')
 
 prepare() {
   cd mill-$_commit
