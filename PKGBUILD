@@ -10,6 +10,7 @@ depends=("python>=3.8" "desktop-file-utils" "python-pyqt5>=5.14" "python-pyqtweb
 makedepends=("python-setuptools")
 license=("GPL")
 arch=("any")
+md5sums=('SKIP')
 source=("$url/-/archive/$pkgver/ldk-$pkgver.tar.gz")
 
 build() {
