@@ -1,7 +1,7 @@
 # Maintainer: Maciej Dems <maciej.dems@p.lodz.pl>
 pkgname=plask
 pkgver=2020.11.26
-pkgrel=1
+pkgrel=2
 pkgdesc="Photonic LAser Simulation Kit: a comprehensive tool for numerical
 analysis of broad range of physical phenomena in photonic devices"
 url="https://plask.app"
@@ -20,5 +20,5 @@ noextract=("plask-$pkgver.tar.zst")
 
 package() {
     cd "$pkgdir"
-    tar xJf "$srcdir/plask-$pkgver.tar.zst" --exclude='.*'
+    tar xf "$srcdir/plask-$pkgver.tar.zst" --zstd --exclude='.*'
 }
