@@ -1,7 +1,7 @@
 pkgbase = trsh
 	pkgdesc = A TLS encrypted Reverse Shell
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nanpuyue/trsh
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = trsh
 	makedepends = cargo
 	depends = openssl
 	source = trsh-0.1.2.tar.gz::https://github.com/nanpuyue/trsh/archive/v0.1.2.tar.gz
-	sha256sums = a824488c438d5b690b653319a75a58b80f97252d7a30dba4bd420f69741ea529
+	sha256sums = c0867e0e92609d3f37098bc16c4b7e72c922fe3f4c51c995a876c90a4eacd88c
 
 pkgname = trsh
 
