@@ -1,6 +1,6 @@
 # Maintainer: Hyperdriveguy <hyperdriveguy@gmail.com>
 pkgname=tilemap-studio
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="A tilemap editor for Game Boy, GBC, GBA, or SNES projects."
 arch=('x86_64')
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "$pkgname"
-  git checkout b02fc30
+  git checkout aa9c15e
 
   make
 }
