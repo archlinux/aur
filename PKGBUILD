@@ -2,7 +2,7 @@
 pkgname=golangci-lint
 pkgdesc="Linters Runner for Go. 5x faster than gometalinter."
 pkgver=1.33.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url='https://github.com/golangci/golangci-lint'
 license=('GPL3')
@@ -10,11 +10,6 @@ depends=('glibc')
 makedepends=('git' 'go')
 source=("https://github.com/golangci/golangci-lint/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('ae828754b1f9b0cee11cc81f0720f187831bc61d7b7cbb6e80421ff2d5b74631')
-
-prepare() {
-  cd "${pkgname}-${pkgver}"
-  go mod download
-}
 
 build() {
   local _commit _flags
