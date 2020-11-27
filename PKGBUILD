@@ -17,17 +17,23 @@ license=('MIT')
 
 build() {
   cd "${srcdir}/${pkgname%-*}-${pkgver}"
+
   sed -i '/"husky": ".*"/d' package.json
-  rm -rf packages/app-mobile \
+
+  rm -rf packages/app-clipper \
     packages/app-desktop \
-    packages/app-clipper \
+    packages/app-mobile \
     packages/generator-joplin
 
   npm install
 
-  # Install app-cli
-  cd "${srcdir}/${pkgname%-*}-${pkgver}/packages/app-cli"
-  npm run build
+  for package in $(ls -1 packages);
+  do
+    cd "${srcdir}/${pkgname%-*}-${pkgver}/packages/${package}"
+    (cp -r node_modules/@joplin . 2> /dev/null && rm -rf node_modules/@joplin 2> /dev/null) || true
+    npm prune --production
+    mv -f @joplin node_modules 2> /dev/null || true
+  done
 }
 
 package() {
@@ -36,7 +42,7 @@ package() {
   install -d ${pkgdir}/usr/share/${pkgname}
 
   # App-cli
-  cp -R app-cli/build "${pkgdir}/usr/share/${pkgname}/app-cli"
+  cp -R app-cli/app "${pkgdir}/usr/share/${pkgname}/app-cli"
   cp -R app-cli/node_modules "${pkgdir}/usr/share/${pkgname}/app-cli"
   cp -R fork-htmlparser2 "${pkgdir}/usr/share/${pkgname}"
   cp -R renderer "${pkgdir}/usr/share/${pkgname}"
