@@ -3,7 +3,7 @@
 pkgname=perl-sys-filesystem
 _lastauthor=R/RE/REHSACK
 _pkgname=Sys-Filesystem
-pkgver=1.406
+pkgver=1.408
 pkgrel=1
 pkgdesc='Retrieve list of filesystems and their properties'
 arch=('any')
@@ -12,7 +12,7 @@ options=('!emptydirs')
 depends=('perl-module-pluggable' 'perl-params-util')
 url="http://search.cpan.org/dist/${_pkgname}/"
 source=(http://search.cpan.org/CPAN/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('9a1d43326226f8aea3359849383784840ef930e5c4efafa4cbd5764d2c7a6afb')
+sha256sums=('577e11072b897d718c234181a5c059f8dc04b65fd95465f0b1292cb635974d97')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
