@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.32.0.r810.gf85de9e6d6
+pkgver=0.33.0.r5.g62fb374349
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -130,6 +130,7 @@ optdepends=(
             'libilbc: Additional libilbc support for ffmpeg'
             'libklvanc-git: Additional libklvanc support for ffmpeg'
             'libopenmpt: Additional libopenmpt support for ffmpeg'
+            'libsixel: Allow mpv to implement sixel as a output device'
             'kvazaar: Additional libkvazaar support for ffmpeg'
             'mpv-bash-completion-git: Additional completion definitions for Bash users'
             'nvidia-utils: for hardware accelerated video decoding with CUDA'
@@ -194,6 +195,9 @@ if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
   fi
   if [ -f /usr/lib/libshine.so ]; then
     depends+=('shine')
+  fi
+  if [ -f /usr/lib/libsixel.so ]; then
+    depends+=('libsixel')
   fi
   if [ -f /usr/lib/libtensorflow.so ]; then
     depends+=('tensorflow')
@@ -410,6 +414,9 @@ prepare() {
     fi
     if [ -f /usr/lib/libshine.so ]; then
       _ffmpeg_options+=('--enable-libvo-amrwbenc')
+    fi
+    if [ -f /usr/lib/libsixel.so ]; then
+      _mpv_options+=('--enable-sixel')
     fi
     if [ -f /usr/lib/libtensorflow.so ]; then
       _ffmpeg_options+=('--enable-libtensorflow')
