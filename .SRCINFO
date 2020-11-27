@@ -1,6 +1,6 @@
 pkgbase = xray-git
 	pkgdesc = Xray, Penetrates Everything. Also the best v2ray-core, with XTLS support. Fully compatible configuration.
-	pkgver = 1.0.0.r3.f52381e
+	pkgver = 1.0.0.r5.4e4b707
 	pkgrel = 1
 	url = https://github.com/XTLS/Xray-core
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = xray-git
 	provides = xray
 	conflicts = xray
 	backup = etc/xray/config.json
-	source = xray::git+https://github.com/XTLS/Xray-core.git
+	source = Xray-core::git+https://github.com/XTLS/Xray-core.git
 	source = config.json
 	source = vpoint_socks_vmess.json
 	source = vpoint_vmess_freedom.json

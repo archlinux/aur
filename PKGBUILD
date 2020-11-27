@@ -3,7 +3,7 @@
 # Contributor: pandada8 <pandada8@gmail.com>
 
 pkgname=xray-git
-pkgver=1.0.0.r3.f52381e
+pkgver=1.0.0.r5.4e4b707
 pkgrel=1
 pkgdesc="Xray, Penetrates Everything. Also the best v2ray-core, with XTLS support. Fully compatible configuration. "
 arch=('any')
@@ -15,7 +15,7 @@ backup=(etc/xray/config.json)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
-    "xray::git+https://github.com/XTLS/Xray-core.git"
+    "Xray-core::git+https://github.com/XTLS/Xray-core.git"
     "config.json"
     "vpoint_socks_vmess.json"
     "vpoint_vmess_freedom.json"
@@ -32,12 +32,12 @@ sha512sums=(
 )
 
 pkgver() {
-    cd $srcdir/xray
+    cd $srcdir/Xray-core
     printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-  cd $srcdir/xray
+  cd $srcdir/Xray-core
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external"
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -46,7 +46,7 @@ build() {
 }
 
 check() {
-  cd $srcdir/xray
+  cd $srcdir/Xray-core
   go test -p 1 -tags json -v -timeout 30m github.com/xtls/xray-core/v1/core/...
 }
 
@@ -56,7 +56,7 @@ package() {
   install -Dm644 xray@.service "$pkgdir"/usr/lib/systemd/system/xray@.service
   install -Dm644 *.json -t "$pkgdir"/etc/xray/
 
-  cd $srcdir/xray
+  cd $srcdir/Xray-core
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/xray/LICENSE
   install -Dm755 xray -t "$pkgdir"/usr/bin/
 }
