@@ -26,9 +26,8 @@ pkgver() {
 }
 
 prepare() {
-        patch -p2 -i "bipscript.patch"
-
-        cd "bipscript"
+  patch -p2 -i "bipscript.patch"
+  cd "bipscript"
 }
 
 build() {
