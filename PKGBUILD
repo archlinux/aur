@@ -17,7 +17,7 @@ conflicts=('cura' 'cura-appimage-git' 'cura-appimage-bin')
 options=(!strip)
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 noextract=('${_pkgname}-${pkgver}.AppImage')
-source=("${_pkgname}-${pkgver}.AppImage::https://github.com/Ultimaker/Cura/releases/download/4.8/${_pkgname}-${pkgver}.AppImage"
+source=("${_pkgname}-${pkgver}.AppImage::https://github.com/Ultimaker/Cura/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "cura.sh"
     "cura.desktop.patch")
 
