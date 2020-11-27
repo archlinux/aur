@@ -1,0 +1,29 @@
+pkgbase = lynx-desktop-settings
+	pkgver = 0.0.1
+	pkgrel = 2
+	url = https://gitlab.com/LynxOS/lds
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = dex
+	depends = qt5-styleplugins
+	depends = dunst
+	depends = papirus-maia-icon-theme
+	depends = xcursor-breeze
+	depends = qt5ct
+	depends = matcha-gtk-theme
+	depends = kvantum-theme-matchama
+	depends = kvantum-manjaro
+	depends = polkit-gnome
+	depends = lynx-menu-data
+	depends = network-manager-applet
+	depends = gala
+	depends = mutter
+	depends = tint2
+	depends = pavucontrol-qt
+	depends = pa-applet
+	source = https://gitlab.com/LynxOS/lds/-/archive/0.0.1/lds-0.0.1.tar.gz
+	md5sums = SKIP
+
+pkgname = lynx-desktop-settings
+
