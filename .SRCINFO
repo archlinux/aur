@@ -26,4 +26,3 @@ pkgbase = bsp-tinkerboard
 	sha512sums = SKIP
 
 pkgname = bsp-tinkerboard
-
