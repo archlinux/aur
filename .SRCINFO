@@ -1,16 +1,16 @@
 pkgbase = yuzu-ea-bin
 	pkgdesc = Yuzu switch emulator Early Access build for Arch Linux
-	pkgver = 1121
+	pkgver = 1165
 	pkgrel = 1
 	url = https://github.com/pineappleEA/pineappleEA.github.io
 	arch = x86_64
 	license = gpl
 	depends = zlib
 	depends = hicolor-icon-theme
-	noextract = Yuzu-EA-1121.AppImage
+	noextract = Yuzu-EA-1165.AppImage
 	options = !strip
-	source_x86_64 = https://github.com/pineappleEA/pineappleEA.github.io/releases/download/EA-1121/Yuzu-EA-1121.AppImage
-	sha256sums_x86_64 = f71e3ff15c8ec66641c73ae611617ec497183d8089141d48161826660e43edd9
+	source_x86_64 = https://github.com/pineappleEA/pineappleEA.github.io/releases/download/EA-1165/Yuzu-EA-1165.AppImage
+	sha256sums_x86_64 = 713a4ce4f783b3ca75005fc1c2b64df0ff9668e861d553b1708286f47fcaa4b6
 
 pkgname = yuzu-ea-bin
 
