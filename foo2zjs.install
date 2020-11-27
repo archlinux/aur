@@ -1,6 +1,6 @@
 restart_cups() {
 	echo "> Now restarting CUPS..."
-	systemctl try-restart org.cups.cupsd
+	systemctl try-restart cups.service
 }
 
 reload_udev() {
