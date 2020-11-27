@@ -6,6 +6,7 @@ pkgbase = perl-tie-handle-offset
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	depends = perl
 	source = https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/Tie-Handle-Offset-0.004.tar.gz
 	sha256sums = ee9f39055dc695aa244a252f56ffd37f8be07209b337ad387824721206d2a89e
 
