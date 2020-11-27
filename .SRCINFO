@@ -1,0 +1,15 @@
+pkgbase = arc-darkest-theme-git
+	pkgdesc = A darker version of famous Arc theme
+	pkgver = r1.c6621e2
+	pkgrel = 1
+	url = https://github.com/rtlewis88/rtl88-Themes
+	arch = any
+	license = GPL3
+	depends = gtk3
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	source = git+https://github.com/rtlewis88/rtl88-Themes.git#branch=Arc-Darkest
+	sha256sums = SKIP
+
+pkgname = arc-darkest-theme-git
+
