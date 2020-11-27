@@ -3,7 +3,7 @@
 
 pkgname=python-pypugjs
 pkgver=5.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc='PugJS syntax adapter for Django, Jinja2 and Mako templates'
 url='https://github.com/kakulukia/pypugjs'
 depends=(python python-six python-chardet)
