@@ -1,0 +1,19 @@
+pkgbase = libconfig-git
+	pkgdesc = C/C++ library for processing configuration files
+	pkgver = 1.7.2.r54.g6304782
+	pkgrel = 1
+	url = https://hyperrealm.github.io/libconfig/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = texinfo
+	depends = gcc-libs
+	provides = libconfig
+	conflicts = libconfig
+	source = git+https://github.com/hyperrealm/libconfig.git
+	sha256sums = SKIP
+
+pkgname = libconfig-git
+
