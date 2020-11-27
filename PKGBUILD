@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-single-version
 _name=${pkgname#python-}
-pkgver=1.4.1
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Small utility to define version string for Poetry-style Python project"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-first' 'python-importlib-metadata')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('7995efdefae3616792b0f0f3a58c8fcf956f5efd848c10d6bab69a563d50d843')
+sha256sums=('d0dee097581a4a9cdf1576075219369abedb67583449c6a0ae2c3f8100b9e903')
 
 build() {
 	cd "$_name-$pkgver"
