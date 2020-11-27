@@ -4,9 +4,7 @@
 # Contributor: Guillaume Raffin ("theelectronwill") <theelectronwill@gmail.com>
 
 pkgname=mill
-pkgver=0.8.0_37
-_pkgver=0.8.0
-_commit=f7150b62690f305dc35f02d426561fad9274e4d2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Your shiny new Java/Scala build tool"
 arch=(any)
@@ -14,22 +12,22 @@ url="https://www.lihaoyi.com/mill/index.html"
 license=('MIT')
 depends=('bash' 'java-environment')
 makedepends=('mill')
-source=("$pkgname-$_commit.tar.gz::https://github.com/lihaoyi/mill/archive/$_commit.tar.gz")
-sha512sums=('381a10ce8faea421d145c32150e5a5649d88e229ce16543b2bb87751f3314669a2343488dbe557e640e9f4362e06246b5dbed93e7b0d4514cf50558d1236c885')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/lihaoyi/mill/archive/$pkgver.tar.gz")
+sha512sums=('c4949a7f23e37959b498ec2428ac532b53631ec99f54e2794565c2f706fe3537a46088ff5958420064d207d7142f6d4c4c1ccd111f1904cca7cf346d41c357bd')
 
 prepare() {
-  cd mill-$_commit
+  cd mill-$pkgver
   # workaround non-git build
-  sed -e "s/'git/'true/" -e "s/^.*--exact-match.*$/\"$_pkgver\"/" -i build.sc
+  sed -e "s/'git/'true/" -e "s/^.*--exact-match.*$/\"$pkgver\"/" -i build.sc
 }
 
 build() {
-  cd mill-$_commit
+  cd mill-$pkgver
   mill -i all __.publishLocal assembly
 }
 
 package() {
-  cd mill-$_commit
+  cd mill-$pkgver
   install -Dm755 out/assembly/dest/mill "$pkgdir"/usr/bin/mill
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/mill/LICENSE
 }
