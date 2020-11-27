@@ -14,8 +14,8 @@ install="$pkgname.install"
 source=(
   "pulseaudio-sink.txt"
   "pulseaudio-source.txt"
-  "armbian-fw-$pkgver-$pkgrel.deb::https://apt.armbian.com/pool/main/a/armbian-firmware/armbian-firmware_${pkgver}_all.deb"
-  "armbian-bsp-$pkgver-$pkgrel.deb::https://apt.armbian.com/pool/main/l/linux-$_ubuntu-root-current-tinkerboard/linux-$_ubuntu-root-current-tinkerboard_${pkgver}_armhf.deb"
+  "https://apt.armbian.com/pool/main/a/armbian-firmware/armbian-firmware_${pkgver}_all.deb"
+  "https://apt.armbian.com/pool/main/l/linux-$_ubuntu-root-current-tinkerboard/linux-$_ubuntu-root-current-tinkerboard_${pkgver}_armhf.deb"
 )
 sha512sums=(
   'ba864bea8e0de5c37e9953706295b26c0a74e779310a4b43326e1d89b5ad5f34365fd0e64bdc23d58a06109c58ef697ad2a5845c4e3713d83d2a2b88e2768d90'
@@ -34,9 +34,9 @@ prepare() {
 package() {
   cd "$srcdir"
 
-  ar x "armbian-fw-$pkgver-$pkgrel.deb"
+  ar x "armbian-firmware_${pkgver}_all.deb"
   tar -xf data.tar.xz
-  ar x "armbian-bsp-$pkgver-$pkgrel.deb"
+  ar x "linux-$_ubuntu-root-current-tinkerboard_${pkgver}_armhf.deb"
   tar -xf data.tar.xz
 
   install -Dm644 "lib/systemd/system/tinker-bluetooth.service" "$pkgdir/usr/lib/systemd/system/tinker-bluetooth.service"
