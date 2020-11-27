@@ -2,7 +2,7 @@
 
 pkgname=rofi-emoji
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Rofi plugin for selecting emojis"
 arch=('x86_64')
 url="https://github.com/Mange/rofi-emoji"
@@ -22,7 +22,7 @@ build() {
   mkdir -p build
   cd build
 
-  ../configure
+  ../configure --prefix=/usr
   make
 }
 
