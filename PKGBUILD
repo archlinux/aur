@@ -1,4 +1,5 @@
-# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Håvard Pettersson <mail@haavard.me>
 # Contributor: naxuroqa <naxuroqa at gmail.com>
@@ -6,49 +7,63 @@
 # Contributor: Kevin MacMartin <prurigro at gmail dot com>
 
 pkgname=toxcore-git
-_pkgname=toxcore
-pkgver=r3758.532629d
+pkgver=0.2.12.r26.ga71ddc7ea
 pkgrel=1
-pkgdesc='Secure, configuration-free, P2P Skype replacement backend'
+pkgdesc="Peer to peer (serverless) instant messenger core"
 arch=('i686' 'x86_64')
-url='https://tox.chat'
+url="https://tox.chat/"
 license=('GPL3')
-depends=('systemd' 'libconfig' 'libsodium' 'libvpx' 'opus')
-makedepends=('git' 'check')
-conflicts=("tox" "toxcore")
-provides=("tox" "toxcore")
+depends=('glibc' 'libconfig' 'libsodium' 'libvpx' 'opus')
+makedepends=('git' 'cmake')
+provides=('toxcore' 'tox')
+conflicts=('toxcore' 'tox')
 backup=('etc/tox-bootstrapd.conf')
-install=$_pkgname.install
-source=("git+https://github.com/irungentoo/toxcore.git"
-        'toxcore.conf')
-sha512sums=('SKIP'
-            '71885e69f7b84955f6bdbf27b9e8196349cdd254b02b510433851bd218374d9c47aa7d3946dcc6a5cff6c8e705bc98d8a09de27039f60b8b088784cf8fa9d719')
+options=('staticlibs')
+source=("git+https://github.com/TokTok/c-toxcore.git"
+        "toxcore.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/toxcore/trunk/toxcore.conf"
+        "toxcore.tmpfiles::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/toxcore/trunk/toxcore.tmpfiles")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
-pkgver() {
-  cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 prepare() {
-  cd $_pkgname
-  sed -i "s|/usr/local|/usr|" other/bootstrap_daemon/tox-bootstrapd.service
+  cd "c-toxcore"
+
+  sed -i "s|/usr/local|/usr|" "other/bootstrap_daemon/tox-bootstrapd.service"
+}
+
+pkgver() {
+  cd "c-toxcore"
+
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_pkgname
-  autoreconf -if
-  ./configure \
-    --prefix=/usr \
-    --enable-daemon \
-    --disable-ntox \
-    --enable-tests
-  make
+  cd "c-toxcore"
+
+  cmake \
+    -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_INSTALL_LIBDIR="lib" \
+    ./
+  make -C "_build"
+}
+
+check() {
+  cd "c-toxcore"
+
+  make -C "_build" test
 }
 
 package() {
-  cd $_pkgname
-  make DESTDIR="$pkgdir" install
-  install -Dm644 "$srcdir/toxcore.conf" "$pkgdir/usr/lib/sysusers.d/toxcore.conf"
-  install -Dm644 ./other/bootstrap_daemon/tox-bootstrapd.service "$pkgdir/usr/lib/systemd/system/tox-bootstrapd.service"
-  install -Dm644 ./other/bootstrap_daemon/tox-bootstrapd.conf "$pkgdir/etc/tox-bootstrapd.conf"
+  cd "c-toxcore"
+
+  make -C "_build" DESTDIR="$pkgdir" install
+
+  install -Dm644 "$srcdir/toxcore.conf" -t "$pkgdir/usr/lib/sysusers.d"
+  install -Dm644 "$srcdir/toxcore.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/toxcore.conf"
+  install -Dm644 "other/bootstrap_daemon/tox-bootstrapd.service" -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm644 "other/bootstrap_daemon/tox-bootstrapd.conf" -t "$pkgdir/etc"
 }
