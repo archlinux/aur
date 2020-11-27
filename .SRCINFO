@@ -1,6 +1,6 @@
 pkgbase = monero-gui-bin
 	pkgdesc = Monero: the secure, private, untraceable currency - release version (Includes daemon, wallet, and miner)
-	pkgver = 0.17.1.1
+	pkgver = 0.17.1.5
 	pkgrel = 1
 	url = https://getmonero.org/
 	install = monero-gui-bin.install
@@ -10,17 +10,17 @@ pkgbase = monero-gui-bin
 	depends = qt5-svg
 	depends = desktop-file-utils
 	depends = hidapi
-	provides = monerod=0.17.1.1
-	provides = monero-blockchain-export=0.17.1.1
-	provides = monero-blockchain-import=0.17.1.1
-	provides = monero-utils-deserialize=0.17.1.1
-	provides = monero-wallet-cli=0.17.1.1
-	provides = monero-wallet-rpc=0.17.1.1
+	provides = monerod=0.17.1.5
+	provides = monero-blockchain-export=0.17.1.5
+	provides = monero-blockchain-import=0.17.1.5
+	provides = monero-utils-deserialize=0.17.1.5
+	provides = monero-wallet-cli=0.17.1.5
+	provides = monero-wallet-rpc=0.17.1.5
 	conflicts = monero
-	source = monero-gui-bin-0.17.1.1.tar.bz2::https://github.com/monero-project/monero-gui/releases/download/v0.17.1.1/monero-gui-linux-x64-v0.17.1.1.tar.bz2
+	source = monero-gui-bin-0.17.1.5.tar.bz2::https://downloads.getmonero.org/gui/monero-gui-linux-x64-v0.17.1.5.tar.bz2
 	source = monero-wallet-gui
 	source = monero-wallet-gui.desktop
-	sha256sums = 14f5667e57603f05872a0dcd31a81acd7ffa31b71eb83ba22661bd05e2fc53d1
+	sha256sums = 577c5b2bcef436cffb57e4addf3ae9b669733f9aae83dc74f5025c76671667ed
 	sha256sums = f08a864ac8a2438965eb25080e5c21d4f60ef1d6b099f622eb7416fac96fb6ef
 	sha256sums = 1a88e0dd59687fc19f4ca84b43311c506e04c1723cb9972faf427942723c73d2
 
