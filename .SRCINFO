@@ -1,0 +1,27 @@
+pkgbase = perl-app-cpm
+	pkgdesc = a fast CPAN module installer
+	pkgver = 0.994
+	pkgrel = 1
+	url = https://metacpan.org/release/App-cpm
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-tiny
+	depends = perl-command-runner
+	depends = perl-cpan-common-index
+	depends = perl-cpan-distnameinfo
+	depends = perl-cpan-meta
+	depends = perl-extutils-installpaths
+	depends = perl-file-copy-recursive
+	depends = perl-file-pushd
+	depends = perl-http-tinyish
+	depends = perl-json-pp
+	depends = perl-local-lib
+	depends = perl-menlo-legacy
+	depends = perl-module-cpanfile
+	depends = perl-parallel-pipes
+	source = https://cpan.metacpan.org/authors/id/S/SK/SKAJI/App-cpm-0.994.tar.gz
+	sha256sums = 4242ecb64aaae09034eddb1b338e005567ace29f2ac2d1bca4d4bcf4e15d21c4
+
+pkgname = perl-app-cpm
+
