@@ -12,13 +12,10 @@ arch=('any')
 license=('MIT')
 url="https://bitbucket.org/pytest-dev/$_name"
 depends=('python2-pytest' 'python2-werkzeug')
+makedepends=('python2-setuptools')
 checkdepends=('python2-requests')
-source=("$pkgname-$pkgver.tar.gz::$url/get/$pkgver.tar.bz2")
-sha512sums=('78993ee0245c9eace723c21eee6de359089f1e1895eac9c531268353b3a3d2045006d29656ea99733ad380f33af2b88f7332e83dcd4c7a97ced611cdbce5a673')
-
-prepare() {
-  mv pytest-dev-$_name-* $_name-$pkgver
-}
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha512sums=('aedf1e1c9563396457070df13df228ad0ebdd19173fa2ac5a598288d3e1a1ac8b8a0c0288cba0d8478e43d2e1de4848f2393bf640705916957f12ab31171c6cc')
 
 build() {
   cd $_name-$pkgver

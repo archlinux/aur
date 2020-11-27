@@ -6,10 +6,11 @@ pkgbase = python2-pytest-localserver
 	arch = any
 	license = MIT
 	checkdepends = python2-requests
+	makedepends = python2-setuptools
 	depends = python2-pytest
 	depends = python2-werkzeug
-	source = python2-pytest-localserver-0.5.0.tar.gz::https://bitbucket.org/pytest-dev/pytest-localserver/get/0.5.0.tar.bz2
-	sha512sums = 78993ee0245c9eace723c21eee6de359089f1e1895eac9c531268353b3a3d2045006d29656ea99733ad380f33af2b88f7332e83dcd4c7a97ced611cdbce5a673
+	source = https://files.pythonhosted.org/packages/source/p/pytest-localserver/pytest-localserver-0.5.0.tar.gz
+	sha512sums = aedf1e1c9563396457070df13df228ad0ebdd19173fa2ac5a598288d3e1a1ac8b8a0c0288cba0d8478e43d2e1de4848f2393bf640705916957f12ab31171c6cc
 
 pkgname = python2-pytest-localserver
 
