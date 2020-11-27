@@ -1,35 +1,29 @@
 # Maintainer: Luca CPZ <luca.cpz [at] gmail [dot] com>
 
-pkgname=lain-git
+_pkgname=lain
+pkgname=$_pkgname-git
 pkgcom=1735
 pkgsha=a071cc5
 pkgver=$pkgcom.$pkgsha
 pkgrel=1
 pkgdesc="Layouts, asynchronous widgets and utilities for Awesome WM"
-arch=('any')
-url="https://github.com/lcpz/lain"
-license=('GPL2')
-depends=('awesome')
-optdepends=('curl: for IMAP, MPD and weather widgets')
-makedepends=('git')
-provides=('lain')
-conflicts=('lain')
-source=("git://github.com/lcpz/lain.git")
-md5sums=('SKIP')
+arch=("any")
+url="https://github.com/lcpz/$_pkgname"
+license=("GPL2")
+depends=("awesome")
+optdepends=("curl: for IMAP, MPD and weather widgets")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+sha256sums=("SKIP")
+source=("$_pkgname-${pkgver}.zip::https://github.com/lcpz/$_pkgname/archive/$pkgsha.zip")
+
+prepare() {
+    rm -fr "$_pkgname/$_pkgname-$pkgsha"*
+    mv "$_pkgname-$pkgsha"* $_pkgname
+}
 
 package() {
-    # check if awesome is stable or git
-    if [ -d "/usr/share/awesome/lib/" ]; then
-        aw_path="$pkgdir/usr/share/awesome/lib"
-    else
-        aw_path="$pkgdir/usr/local/share/awesome/lib"
-    fi
-
-    install -dm755 "$aw_path/lain"
-    git --git-dir=lain/.git --work-tree=lain/ reset --hard $pkgsha --quiet
-    rm -rf lain/{wiki,.git*,*.rockspec,*TEMPLATE*}
-    cp -a lain $aw_path
-
-    # fix scripts permissions
-    find "$pkgdir" -type f ! -path "*/scripts/*" -print0 | xargs -0 chmod -R 644
+    cd $_pkgname
+    install -dm755 "$pkgdir/usr/share/lua/5.3/$_pkgname/"{icons,layout,util,widget}
+    cp -a {icons,layout,util,widget,LICENSE,README.rst,*.lua} "$pkgdir/usr/share/lua/5.3/$_pkgname"
 }

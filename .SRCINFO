@@ -5,13 +5,12 @@ pkgbase = lain-git
 	url = https://github.com/lcpz/lain
 	arch = any
 	license = GPL2
-	makedepends = git
 	depends = awesome
 	optdepends = curl: for IMAP, MPD and weather widgets
 	provides = lain
 	conflicts = lain
-	source = git://github.com/lcpz/lain.git
-	md5sums = SKIP
+	source = lain-1735.a071cc5.zip::https://github.com/lcpz/lain/archive/a071cc5.zip
+	sha256sums = SKIP
 
 pkgname = lain-git
 
