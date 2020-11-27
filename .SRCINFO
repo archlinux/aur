@@ -1,0 +1,18 @@
+pkgbase = mastorss-git
+	pkgdesc = mastorss reads RSS feeds and posts the items via the Mastodon API. Does not support Atom at the moment.
+	pkgver = r273.2d113ab
+	pkgrel = 1
+	url = https://schlomp.space/tastytea/mastorss.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = mastodonpp
+	depends = libcurl.so
+	depends = jsoncpp
+	source = mastorss::git+https://schlomp.space/tastytea/mastorss.git
+	md5sums = SKIP
+
+pkgname = mastorss-git
+
