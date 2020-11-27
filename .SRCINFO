@@ -7,10 +7,9 @@ pkgbase = mastorss-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	makedepends = boost
-	depends = mastodonpp
-	depends = libcurl.so
+	depends = mastodonpp-git
 	depends = jsoncpp
+	depends = boost-libs
 	source = mastorss::git+https://schlomp.space/tastytea/mastorss.git
 	md5sums = SKIP
 
