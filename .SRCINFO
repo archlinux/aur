@@ -1,0 +1,19 @@
+pkgbase = python2-pypandoc
+	pkgdesc = Thin wrapper for pandoc
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/bebraw/pypandoc
+	arch = any
+	license = MIT
+	checkdepends = texlive-core
+	checkdepends = texlive-latexextra
+	checkdepends = pandoc-citeproc
+	makedepends = python2-setuptools
+	makedepends = pandoc
+	depends = python2-setuptools
+	depends = pandoc
+	source = python2-pypandoc-1.5.tar.gz::https://github.com/bebraw/pypandoc/archive/1.5.tar.gz
+	sha512sums = bc1a18115827ac0868b887fa3c9be46736670de8f095cb49b444e61f66779497db9a08bdac0de30f821a64cd6bad195f1d3a29d0159e6e3ad050a78ca0ecea82
+
+pkgname = python2-pypandoc
+
