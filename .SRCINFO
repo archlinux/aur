@@ -1,0 +1,14 @@
+pkgbase = solokey-full-disk-encryption
+	pkgdesc = Use SoloKey to unlock a LUKS partition
+	pkgver = r39.ee0359d
+	pkgrel = 1
+	url = https://github.com/saravanan30erd/solokey-full-disk-encryption
+	arch = any
+	license = Apache
+	depends = fido2luks
+	depends = cryptsetup
+  backup = etc/skfde.conf
+  source = git+https://github.com/saravanan30erd/solokey-full-disk-encryption.git
+  sha256sums = SKIP
+
+pkgname = solokey-full-disk-encryption
