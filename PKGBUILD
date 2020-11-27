@@ -17,9 +17,9 @@ source=(
   "linux.preset"
   "60-linux.hook"
   "90-linux.hook"
-  "linux-dtb-$_armbver-$_armbrel.deb::https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-current-sunxi64_$_armbver-trunk.${_armbrel}_arm64.deb"
-  "linux-image-$_armbver-$_armbrel.deb::https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-image-current-sunxi64_$_armbver-trunk.${_armbrel}_arm64.deb"
-  "linux-headers-$_armbver-$_armbrel.deb::https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-headers-current-sunxi64_$_armbver-trunk.${_armbrel}_arm64.deb"
+  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-current-sunxi64_$_armbver-trunk.${_armbrel}_arm64.deb"
+  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-image-current-sunxi64_$_armbver-trunk.${_armbrel}_arm64.deb"
+  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-headers-current-sunxi64_$_armbver-trunk.${_armbrel}_arm64.deb"
 )
 sha512sums=(
   'f683c0639fc20e813e309df99b9b850b1f55de3fc02489d64a7d66e84df19d7836ea32042090597f1df17baed46a3ae1dfcf341c8aff206be9a1b06ee394dc3f'
@@ -48,9 +48,9 @@ package_linux-sunxi64() {
 
   cd "$srcdir"
 
-  ar x "linux-dtb-$_armbver-$_armbrel.deb"
+  ar x "linux-dtb-current-sunxi64_$_armbver-trunk.${_armbrel}_arm64.deb"
   tar -xf data.tar.xz
-  ar x "linux-image-$_armbver-$_armbrel.deb"
+  ar x "linux-image-current-sunxi64_$_armbver-trunk.${_armbrel}_arm64.deb"
   tar -xf data.tar.xz
 
   install -Dm644 "boot/vmlinuz-$_kernver" "$pkgdir/boot/Image"
@@ -92,9 +92,9 @@ package_linux-sunxi64-headers() {
 
   cd "$srcdir"
 
-  ar x "linux-image-$_armbver-$_armbrel.deb"
+  ar x "linux-image-current-sunxi64_$_armbver-trunk.${_armbrel}_arm64.deb"
   tar -xf data.tar.xz
-  ar x "linux-headers-$_armbver-$_armbrel.deb"
+  ar x "linux-headers-current-sunxi64_$_armbver-trunk.${_armbrel}_arm64.deb"
   tar -xf data.tar.xz
 
   install -dm755 "$pkgdir/usr/lib/modules/$_kernver"
