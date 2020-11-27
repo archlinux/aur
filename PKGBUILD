@@ -3,7 +3,7 @@
 pkgname=torchvision-cuda
 pkgdesc='datasets, transforms, and models specific to computer vision (C++ library only)'
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 license=("BSD")
 url='https://github.com/pytorch/vision'
 arch=('x86_64')
@@ -37,9 +37,9 @@ prepare() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS} -O3" \
 		-DWITH_CUDA=ON \
-		-DTORCH_CUDA_ARCH_LIST="3.5;3.7;5.0;5.2;5.3;6.0;6.0+PTX;6.1;6.1+PTX;6.2;6.2+PTX;7.0;7.0+PTX;7.2;7.2+PTX;7.5;7.5+PTX" \
-		-DCUDA_ARCH_LIST="3.5;3.7;5.0;5.2;5.3;6.0;6.0+PTX;6.1;6.1+PTX;6.2;6.2+PTX;7.0;7.0+PTX;7.2;7.2+PTX;7.5;7.5+PTX" \
-		-DCMAKE_CUDA_ARCHITECTURES="35;37;50;52;53;60;60-virtual;61;61-virtual;62;62-virtual;70;70-virtual;72;72-virtual;75;75-virtual"
+		-DTORCH_CUDA_ARCH_LIST="5.2;5.3;6.0;6.0+PTX;6.1;6.1+PTX;6.2;6.2+PTX;7.0;7.0+PTX;7.2;7.2+PTX;7.5;7.5+PTX" \
+		-DCUDA_ARCH_LIST="5.2;5.3;6.0;6.0+PTX;6.1;6.1+PTX;6.2;6.2+PTX;7.0;7.0+PTX;7.2;7.2+PTX;7.5;7.5+PTX" \
+		-DCMAKE_CUDA_ARCHITECTURES="52;53;60;60-virtual;61;61-virtual;62;62-virtual;70;70-virtual;72;72-virtual;75;75-virtual"
 
 }
 
