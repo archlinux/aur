@@ -10,6 +10,7 @@ pkgbase = mastorss-git
 	depends = mastodonpp
 	depends = jsoncpp
 	depends = boost-libs
+	provides = mastorss
 	source = mastorss::git+https://schlomp.space/tastytea/mastorss.git
 	md5sums = SKIP
 

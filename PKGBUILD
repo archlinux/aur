@@ -10,6 +10,7 @@ license=('GPL')
 groups=()
 depends=('mastodonpp' 'jsoncpp' 'boost-libs')
 makedepends=('git' 'cmake')
+provides=('mastorss')
 source=("${_pkgname}"::"git+https://schlomp.space/tastytea/mastorss.git")
 md5sums=('SKIP')
 
