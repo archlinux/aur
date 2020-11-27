@@ -1,5 +1,5 @@
 diff --git a/src/doc/en/constructions/algebraic_geometry.rst b/src/doc/en/constructions/algebraic_geometry.rst
-index a312548..d1c9c95 100644
+index 3933bf0839..76b173d80a 100644
 --- a/src/doc/en/constructions/algebraic_geometry.rst
 +++ b/src/doc/en/constructions/algebraic_geometry.rst
 @@ -139,7 +139,7 @@ Other methods
@@ -10,8 +10,8 @@ index a312548..d1c9c95 100644
 +       sage: I = singular.ideal('x^4+x', 'y^4+y')
         sage: L = singular.closed_points(I)
         sage: # Here you have all the points :
-        sage: print(L)
-@@ -325,7 +325,7 @@ Singular itself to help an understanding of how the wrapper works.
+        sage: L       # random
+@@ -329,7 +329,7 @@ Singular itself to help an understanding of how the wrapper works.
         sage: X = Curve(f); pts = X.rational_points()
         sage: D = X.divisor([ (3, pts[0]), (-1,pts[1]), (10, pts[5]) ])
         sage: X.riemann_roch_basis(D)
@@ -21,7 +21,7 @@ index a312548..d1c9c95 100644
  -  Using Singular's ``BrillNoether`` command (for details see the section
     Brill-Noether in the Singular online documentation
 diff --git a/src/sage/algebras/free_algebra.py b/src/sage/algebras/free_algebra.py
-index 7391dd9..7234f91 100644
+index 7391dd9812..7234f91456 100644
 --- a/src/sage/algebras/free_algebra.py
 +++ b/src/sage/algebras/free_algebra.py
 @@ -39,7 +39,15 @@ two-sided ideals, and thus provide ideal containment tests::
@@ -69,7 +69,7 @@ index 7391dd9..7234f91 100644
              newname = 'x'
              while newname in varnames:
 diff --git a/src/sage/algebras/letterplace/free_algebra_element_letterplace.pyx b/src/sage/algebras/letterplace/free_algebra_element_letterplace.pyx
-index ad863ea..d6127c9 100644
+index e7fed21ada..e9c1c9d908 100644
 --- a/src/sage/algebras/letterplace/free_algebra_element_letterplace.pyx
 +++ b/src/sage/algebras/letterplace/free_algebra_element_letterplace.pyx
 @@ -17,6 +17,7 @@ AUTHOR:
@@ -127,7 +127,7 @@ index ad863ea..d6127c9 100644
          return FreeAlgebraElement_letterplace(A, p, check=False)
  
 diff --git a/src/sage/algebras/letterplace/free_algebra_letterplace.pxd b/src/sage/algebras/letterplace/free_algebra_letterplace.pxd
-index 7e5f2bb..d1d162c 100644
+index 7e5f2bbe97..d1d162c3b4 100644
 --- a/src/sage/algebras/letterplace/free_algebra_letterplace.pxd
 +++ b/src/sage/algebras/letterplace/free_algebra_letterplace.pxd
 @@ -13,8 +13,15 @@ from sage.rings.ring cimport Algebra
@@ -147,7 +147,7 @@ index 7e5f2bb..d1d162c 100644
      cdef MPolynomialRing_libsingular _commutative_ring
      cdef MPolynomialRing_libsingular _current_ring
 diff --git a/src/sage/algebras/letterplace/free_algebra_letterplace.pyx b/src/sage/algebras/letterplace/free_algebra_letterplace.pyx
-index a9d09ad..714284e 100644
+index 39cfa4dfed..b520c4cab8 100644
 --- a/src/sage/algebras/letterplace/free_algebra_letterplace.pyx
 +++ b/src/sage/algebras/letterplace/free_algebra_letterplace.pyx
 @@ -37,7 +37,15 @@ The preceding containment test is based on the computation of Groebner
@@ -200,7 +200,7 @@ index a9d09ad..714284e 100644
 -singular_system=singular_function("system")
 +freeAlgebra = singular_function("freeAlgebra")
  
- # unfortunately we can not set Singular attributes for MPolynomialRing_libsingular
+ # unfortunately we cannot set Singular attributes for MPolynomialRing_libsingular
  # Hence, we must constantly work around Letterplace's sanity checks,
 @@ -242,7 +257,7 @@ cdef class FreeAlgebra_letterplace(Algebra):
              sage: F.<a,b,c> = FreeAlgebra(K, implementation='letterplace')
@@ -222,7 +222,7 @@ index a9d09ad..714284e 100644
                  raise TypeError("The generator degrees must be given by a list or tuple of %d positive integers" % (self.__ngens-1))
              self._degrees = tuple([int(i) for i in degrees])
              self.set_degbound(max(self._degrees))
-@@ -666,7 +683,7 @@ cdef class FreeAlgebra_letterplace(Algebra):
+@@ -662,7 +679,7 @@ cdef class FreeAlgebra_letterplace(Algebra):
          Sage, since it does the reductions in a different order
          compared to Singular. Therefore, we call the original Singular
          reduction method, and prevent a warning message by asserting
@@ -231,7 +231,7 @@ index a9d09ad..714284e 100644
  
              sage: from sage.libs.singular.function import singular_function
              sage: poly_reduce = singular_function("NF")
-@@ -682,8 +699,10 @@ cdef class FreeAlgebra_letterplace(Algebra):
+@@ -678,8 +695,10 @@ cdef class FreeAlgebra_letterplace(Algebra):
          ngens = self.__ngens
          degbound = self._degbound
          cdef list G = [C(x._poly) for x in g]
@@ -243,7 +243,7 @@ index a9d09ad..714284e 100644
          return C.ideal(out)
  
      ###########################
-@@ -879,3 +898,28 @@ cdef class FreeAlgebra_letterplace(Algebra):
+@@ -875,3 +894,28 @@ cdef class FreeAlgebra_letterplace(Algebra):
              PNames[P.ngens(): len(PNames): P.ngens()+1] = list(Names[self.ngens(): len(Names): self.ngens()+1])[:P.degbound()]
              x = Ppoly.hom([Gens[Names.index(asdf)] for asdf in PNames])(x.letterplace_polynomial())
          return FreeAlgebraElement_letterplace(self,self._current_ring(x))
@@ -273,7 +273,7 @@ index a9d09ad..714284e 100644
 +        """
 +        singular_ring_delete(self._lp_ring)
 diff --git a/src/sage/algebras/letterplace/letterplace_ideal.pyx b/src/sage/algebras/letterplace/letterplace_ideal.pyx
-index d7214d1..5b8cf48 100644
+index f1430ee77c..c16803280b 100644
 --- a/src/sage/algebras/letterplace/letterplace_ideal.pyx
 +++ b/src/sage/algebras/letterplace/letterplace_ideal.pyx
 @@ -18,7 +18,11 @@ One can compute Groebner bases out to a finite degree, can compute normal
@@ -391,7 +391,7 @@ index d7214d1..5b8cf48 100644
  
          Since the commutators of the generators are contained in the ideal,
          we can verify the above result by a computation in a polynomial ring
-@@ -276,9 +303,32 @@ class LetterplaceIdeal(Ideal_nc):
+@@ -275,9 +302,32 @@ class LetterplaceIdeal(Ideal_nc):
          libsingular_options['redSB'] = True
          A.set_degbound(degbound)
          P = A._current_ring
@@ -428,7 +428,7 @@ index d7214d1..5b8cf48 100644
          libsingular_options['redSB'] = bck[1]
          self.__GB = A.ideal(out,side='twosided',coerce=False)
 diff --git a/src/sage/combinat/root_system/hecke_algebra_representation.py b/src/sage/combinat/root_system/hecke_algebra_representation.py
-index 51f4113..ba42ed1 100644
+index 51f4113706..ba42ed1524 100644
 --- a/src/sage/combinat/root_system/hecke_algebra_representation.py
 +++ b/src/sage/combinat/root_system/hecke_algebra_representation.py
 @@ -746,7 +746,7 @@ class HeckeAlgebraRepresentation(WithEqualityById, SageObject):
@@ -441,7 +441,7 @@ index 51f4113..ba42ed1 100644
               (q2/(-q1+q2))*2121 + ((-q2)/(-q1+q2))*121 - 212 + 12,
               -2121 + 121]
 diff --git a/src/sage/combinat/root_system/non_symmetric_macdonald_polynomials.py b/src/sage/combinat/root_system/non_symmetric_macdonald_polynomials.py
-index 3537772..ee8ddec 100644
+index 35377724c9..ee8ddec7dd 100644
 --- a/src/sage/combinat/root_system/non_symmetric_macdonald_polynomials.py
 +++ b/src/sage/combinat/root_system/non_symmetric_macdonald_polynomials.py
 @@ -555,8 +555,7 @@ class NonSymmetricMacdonaldPolynomials(CherednikOperatorsEigenvectors):
@@ -489,7 +489,7 @@ index 3537772..ee8ddec 100644
          ....:     for weight in IntegerVectors(d,3).map(list).map(L0):
          ....:         eigenvalues = E.eigenvalues(E[L0(weight)])
 diff --git a/src/sage/combinat/sf/macdonald.py b/src/sage/combinat/sf/macdonald.py
-index e664e21..cc525b4 100644
+index e664e21b5a..cc525b4d7e 100644
 --- a/src/sage/combinat/sf/macdonald.py
 +++ b/src/sage/combinat/sf/macdonald.py
 @@ -483,7 +483,7 @@ class Macdonald(UniqueRepresentation):
@@ -511,7 +511,7 @@ index e664e21..cc525b4 100644
          return self( self._s(left)*self._s(right) )
  
 diff --git a/src/sage/interfaces/singular.py b/src/sage/interfaces/singular.py
-index 88a33b0..a7cf5ea 100644
+index e0faf1409e..5c02e8f0fb 100644
 --- a/src/sage/interfaces/singular.py
 +++ b/src/sage/interfaces/singular.py
 @@ -191,13 +191,21 @@ The 1x1 and 2x2 minors::
@@ -539,7 +539,7 @@ index 88a33b0..a7cf5ea 100644
  ::
  
 diff --git a/src/sage/libs/singular/function.pyx b/src/sage/libs/singular/function.pyx
-index 0fea70a..26c74d0 100644
+index 0fea70ad25..26c74d0d7f 100644
 --- a/src/sage/libs/singular/function.pyx
 +++ b/src/sage/libs/singular/function.pyx
 @@ -1257,7 +1257,7 @@ cdef class SingularFunction(SageObject):
@@ -582,7 +582,7 @@ index 0fea70a..26c74d0 100644
      The Singular function ``list`` can be called with any number of
      arguments::
 diff --git a/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py b/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py
-index 8b9367e..ef04d4f 100644
+index 8b9367ea1a..ef04d4f2b0 100644
 --- a/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py
 +++ b/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py
 @@ -1579,7 +1579,7 @@ class FractionWithFactoredDenominator(RingElement):
@@ -604,7 +604,7 @@ index 8b9367e..ef04d4f 100644
              sage: F1 = decomp[1]
              sage: p = {x: 1, y: 1, z: 1}
 diff --git a/src/sage/rings/polynomial/multi_polynomial_element.py b/src/sage/rings/polynomial/multi_polynomial_element.py
-index d86833f..3742439 100644
+index 72e25ebd02..49b4298bc0 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_element.py
 +++ b/src/sage/rings/polynomial/multi_polynomial_element.py
 @@ -2231,7 +2231,7 @@ def degree_lowest_rational_function(r, x):
@@ -617,7 +617,7 @@ index d86833f..3742439 100644
          -1
          sage: degree_lowest_rational_function(r,b)
 diff --git a/src/sage/rings/polynomial/multi_polynomial_ideal.py b/src/sage/rings/polynomial/multi_polynomial_ideal.py
-index f025b3a..94e130d 100644
+index e45a47f4d9..2a6d9fc93a 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_ideal.py
 +++ b/src/sage/rings/polynomial/multi_polynomial_ideal.py
 @@ -154,7 +154,7 @@ when the system has no solutions over the rationals.
@@ -640,7 +640,7 @@ index f025b3a..94e130d 100644
  
          The ideals must share the same ring::
  
-@@ -4008,7 +4008,7 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
+@@ -4012,7 +4012,7 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
  
              sage: J.groebner_basis.set_cache(gb)
              sage: ideal(J.transformed_basis()).change_ring(P).interreduced_basis()  # testing trac 21884
@@ -649,7 +649,7 @@ index f025b3a..94e130d 100644
  
          Giac's gbasis over `\QQ` can benefit from a probabilistic lifting and
          multi threaded operations::
-@@ -4111,9 +4111,9 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
+@@ -4115,9 +4115,9 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
              sage: P.<a,b,c> = PolynomialRing(ZZ,3)
              sage: I = P * (a + 2*b + 2*c - 1, a^2 - a + 2*b^2 + 2*c^2, 2*a*b + 2*b*c - b)
              sage: I.groebner_basis()
@@ -663,7 +663,7 @@ index f025b3a..94e130d 100644
               10*b*c + 12*c^2 - b - 4*c,
               a + 2*b + 2*c - 1]
 diff --git a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
-index 1758424..553d22d 100644
+index 836afdcdcd..4129c2c8fd 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
 +++ b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
 @@ -1349,7 +1349,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_base):
@@ -676,7 +676,7 @@ index 1758424..553d22d 100644
              //        block   1 : ordering dp
              //                  : names    x y
 diff --git a/src/sage/rings/polynomial/plural.pyx b/src/sage/rings/polynomial/plural.pyx
-index c2792ae..aa2ef59 100644
+index c2792aec88..aa2ef59e79 100644
 --- a/src/sage/rings/polynomial/plural.pyx
 +++ b/src/sage/rings/polynomial/plural.pyx
 @@ -390,28 +390,30 @@ cdef class NCPolynomialRing_plural(Ring):
@@ -732,7 +732,7 @@ index c2792ae..aa2ef59 100644
  
      #MPolynomialRing_generic.__init__(self, base_ring, n, names, order)
 diff --git a/src/sage/rings/polynomial/polynomial_singular_interface.py b/src/sage/rings/polynomial/polynomial_singular_interface.py
-index 74b8b82..beee5ad 100644
+index 37f131b585..d9c33d9c2b 100644
 --- a/src/sage/rings/polynomial/polynomial_singular_interface.py
 +++ b/src/sage/rings/polynomial/polynomial_singular_interface.py
 @@ -165,7 +165,7 @@ class PolynomialRing_singular_repr:
@@ -745,7 +745,7 @@ index 74b8b82..beee5ad 100644
              //        block   1 : ordering dp
              //                  : names    x y
 diff --git a/src/sage/schemes/curves/projective_curve.py b/src/sage/schemes/curves/projective_curve.py
-index 1091c29..4f5936e 100644
+index 1091c29c20..4f5936edb8 100644
 --- a/src/sage/schemes/curves/projective_curve.py
 +++ b/src/sage/schemes/curves/projective_curve.py
 @@ -2001,7 +2001,7 @@ class ProjectivePlaneCurve_finite_field(ProjectivePlaneCurve_field):
