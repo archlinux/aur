@@ -1,7 +1,8 @@
-# Maintainer: Stephanie Wilde-Hobbs <hi@stephanie.is>
+# Maintainer: Chris Lane <aur at chrislane dot com>
+# Contributor: Stephanie Wilde-Hobbs <hi@stephanie.is>
 
 pkgname=megacmd
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="MEGA Command Line Interactive and Scriptable Application"
 url="https://github.com/meganz/MEGAcmd"
@@ -10,11 +11,13 @@ license=('custom')
 depends=('crypto++' 'zlib' 'sqlite' 'openssl' 'curl' 'c-ares' 'freeimage' 'libsodium'
          'readline' 'libmediainfo' 'pcre' 'ffmpeg' 'libuv')
 makedepends=('git' 'autoconf')
-_sdkhash="b2948c7c77862e99dee912f4fe321d3c6dac6b09"
-source=("$pkgname.tar.gz::https://github.com/meganz/MEGAcmd/archive/${pkgver}_Linux.tar.gz"
-        "mega-sdk.tar.gz::https://github.com/meganz/sdk/archive/${_sdkhash}.tar.gz")
-sha512sums=('2fd3a3e76d3466d7b20c97a868f9af9d1189fa220e1f632bf37bd131a61f4db16f52fd8c7ff73875af98429d8e26106a16955350a8e92aeecd25c6d6c95de54c'
-            '4033188310d7a987eba6b42869c32bdc189eb0e5ad1c71c504dc5e33936066fc2d1fd9308e029ca271a2946e05be284b05a5ce19440cc42d2faba64a65db189b')
+_sdkhash="2337aca38daaca6deedd04d8ea400293503f00ff"
+source=(
+    "$pkgname.tar.gz::https://github.com/meganz/MEGAcmd/archive/${pkgver}_Linux.tar.gz"
+    "mega-sdk.tar.gz::https://github.com/meganz/sdk/archive/${_sdkhash}.tar.gz")
+sha512sums=(
+    'f2695e70a01e94e3d66e74af7d4fe9be5a1c111db96de815d94843e6cc1a623e113a7e8961aab5fc224381a829de719994cf1394c8ee9c58f59c425433557fe9'
+    'f980a2fd2b402aac74a3f739e6dbfe73372a5a5fd5aac18c9f9cdb0d70d0d1d797266bf98759c83ceba3ca587c2d01f95b91ea02dbd07313508c716e6ea9857d')
 
 prepare() {
   cd "MEGAcmd-${pkgver}_Linux"
@@ -26,7 +29,7 @@ prepare() {
 build() {
   cd "MEGAcmd-${pkgver}_Linux"
 
-  sh autogen.sh
+  ./autogen.sh
   ./configure --prefix=/usr
   make
 }
