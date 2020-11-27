@@ -1,17 +1,22 @@
 pkgbase = pijul
 	pkgdesc = Patch-based distributed version control system
-	pkgver = 0.12.0
+	pkgver = 1.0.0_alpha.8
 	pkgrel = 1
 	url = https://pijul.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cargo
+	makedepends = clang
+	makedepends = libsodium
+	makedepends = gcc-libs
+	makedepends = pkgconf
+	makedepends = diffutils
+	makedepends = make
+	makedepends = xxhash
 	depends = gcc-libs
 	depends = libsodium
 	depends = clang
-	source = https://pijul.org/releases/pijul-0.12.0.tar.gz
-	sha256sums = 987820fa2a6fe92a9f516f5e9b41ad59a597973e72cb0c7a44ca0f38e741a7e6
 
 pkgname = pijul
 
