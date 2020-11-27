@@ -2,8 +2,8 @@
 
 pkgname='python-guizero'
 _module='guizero'
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Python module to allow learners to easily create GUIs"
 url="https://github.com/lawsie/guizero"
 depends=('python-pillow' 'tk')
@@ -12,7 +12,7 @@ license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.tar.gz"
         'https://raw.githubusercontent.com/lawsie/guizero/master/license.txt')
-md5sums=('52cecac2f7cf9642c2e1f3da2f37e23e'
+md5sums=('cdad7f91d4e907393f20a39f35eb24d2'
          '9670acd16790b84f21178f2b940a96e2')
 
 
@@ -24,5 +24,8 @@ build() {
 package() {
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    # install license file
     install -Dm644 "$srcdir/license.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
+    # install readme into docdir
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
