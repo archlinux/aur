@@ -1,6 +1,6 @@
 pkgbase = joplin-desktop
 	pkgdesc = An open source note taking and to-do application with synchronization capabilities
-	pkgver = 1.4.15
+	pkgver = 1.4.16
 	pkgrel = 1
 	url = https://joplinapp.org
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = joplin-desktop
 	conflicts = joplin-beta
 	source = joplin.sh
 	source = joplin.desktop
-	source = joplin-desktop-1.4.15.tar.gz::https://github.com/laurent22/joplin/archive/v1.4.15.tar.gz
+	source = joplin-desktop-1.4.16.tar.gz::https://github.com/laurent22/joplin/archive/v1.4.16.tar.gz
 	sha256sums = 5951f61e8cad6670d4b7c2c18849faa2f9d5ff32185285f8f17594232cf32962
 	sha256sums = d78f008381e07acb5edcae54143a7505799dfbb86816b48e596eb2d20da0f94c
-	sha256sums = 946d1874b368fd490e7867df6060e93ab0de6318b7b49f61e697ceb5cb34fb7f
+	sha256sums = 90e16db2ed275b5a57c642af51d2a5378d1476070d7a80fe78467119cd3b28bd
 
 pkgname = joplin-desktop
 
