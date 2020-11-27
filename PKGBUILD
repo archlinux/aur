@@ -3,7 +3,7 @@
 
 pkgname=nextcloud-client-git
 _name=${pkgname/\-git/}
-pkgver=3.0.2.ce2dec019
+pkgver=3.1.0.rc2.70dbbbeaa
 pkgrel=1
 pkgdesc="Nextloud client for linux"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd ${srcdir}/${_name}
-    echo $(git describe --tags $(git rev-list --tags --max-count=1) | sed 's/v//g').$(git rev-parse --short HEAD)
+    echo $(git describe --tags $(git rev-list --tags --max-count=1) | sed 's/v//g;s/-/./g').$(git rev-parse --short HEAD)
 }
 
 prepare() {
