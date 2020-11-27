@@ -17,11 +17,11 @@ validpgpkeys=("7314FBDE7D38EE5610D291B65A8ED9CFC0DB6C70") # Olaf Willuhn <info@w
 sha1sums=('7c1cf5a2584b18bc3682475faeb1a045e3cd7328'
           '0664650342635fa5b0a9413dc8c22a65053ef234'
           '39c008050c7f90f3fde05b849cba80559207bdb5')
-sha1sums_i686=('1b07ac425350e9c83e48795914c2da697d02e933'
+sha1sums_i686=('c5e9e972fc96a1e2499fc7174da89d50a24732e1'
                'SKIP')
-sha1sums_x86_64=('dadb6de3269b2e8db05fd2f905159f905c6efffa'
+sha1sums_x86_64=('108fdc342b98690c36df4df9e2d810414743ab1d'
                  'SKIP')
-sha1sums_aarch64=('85f590b63b3431550bfdf8ee6a0ec59feaef2720'
+sha1sums_aarch64=('29d3b73b619f3f81e4ad318c61c6154c38c230aa'
                   'SKIP')
 source_x86_64=("https://www.willuhn.de/products/jameica/releases/current/jameica/jameica-linux64-${pkgver}.zip"
 "https://www.willuhn.de/products/jameica/releases/current/jameica/jameica-linux64-${pkgver}.zip.asc")
