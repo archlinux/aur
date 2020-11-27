@@ -13,12 +13,8 @@ depends=(
         'dex'
         'qt5-styleplugins'
         'dunst'
-        'papirus-maia-icon-theme'
         'xcursor-breeze'
         'qt5ct'
-        'matcha-gtk-theme'
-        'kvantum-theme-matchama'
-        'kvantum-manjaro'
         'polkit-gnome'
         'lynx-menu-data'
         'network-manager-applet'
@@ -26,7 +22,7 @@ depends=(
         'mutter'
         'tint2'
         'pavucontrol-qt'
-        'pa-applet'
+        'pa-applet-git'
         )
 
 pkgver() {
