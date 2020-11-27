@@ -2,9 +2,9 @@
 
 pkgname=('google-docs-online')
 pkgver=1.0
-pkgrel=0
-pkgdesc="With Google Docs, you can write, edit, and collaborate wherever you are."
-url="https://docs.google.com/document/u/0/"
+pkgrel=1
+pkgdesc="A launcher made using JAK to display Google Docs as native applications"
+url="https://github.com/hbarsaiyan/google-docs-online"
 depends=('jade-application-kit>=3.0.0')
 license=('GPL3' 'CC')
 arch=('any')

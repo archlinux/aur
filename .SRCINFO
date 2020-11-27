@@ -1,8 +1,8 @@
 pkgbase = google-docs-online
-	pkgdesc = With Google Docs, you can write, edit, and collaborate wherever you are.
+	pkgdesc = A launcher made using JAK to display Google Docs as native applications
 	pkgver = 1.0
-	pkgrel = 0
-	url = https://docs.google.com/document/u/0/
+	pkgrel = 1
+	url = https://github.com/hbarsaiyan/google-docs-online
 	arch = any
 	license = GPL3
 	license = CC
