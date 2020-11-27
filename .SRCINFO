@@ -1,0 +1,35 @@
+pkgbase = arx-liberalis-git
+	pkgdesc = Cross-platform port of Arx Fatalis, a first-person role-playing game
+	pkgver = r18896.20e8f2ac1
+	pkgrel = 1
+	url = https://github.com/arx/ArxLibertatis
+	install = arx-liberalis-git.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = inkscape
+	makedepends = boost
+	makedepends = glm
+	makedepends = optipng
+	makedepends = imagemagick
+	depends = freetype2
+	depends = openal
+	depends = sdl2
+	optdepends = gdb: required by crash reporter
+	optdepends = kdialog: for arx-install-data --gui
+	optdepends = zenity: for arx-install-data --gui
+	optdepends = xdialog: for arx-install-data --gui
+	optdepends = innoextract: for copying data from cdrom or GOG.com setup file
+	provides = arx-liberalis
+	conflicts = arx-liberalis
+	source = arx-liberalis-git::git+https://github.com/arx/ArxLibertatis
+	sha256sums = SKIP
+
+pkgname = arx-liberalis-git
+

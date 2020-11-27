@@ -1,0 +1,27 @@
+post_install() {
+  update-desktop-database -q
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+  echo ">>>"
+  echo ">>> Arx Liberalis is a game engine and it doesn't contain data files. Therefore you have to have an original copy of Arx Fatalis."
+  echo ">>> You can prepare the data files by using a arx-install-data script or you can make this manually."
+  echo ">>> Game data can be placed in ~/.local/share/arx/data or /usr/share/games/arx. See arx --list-dirs for more options."
+  echo ">>> In order to force Arx Liberalis to use portable instalation, use e.g. arx --no-data-dir --user-dir=. --config-dir=."
+  echo ">>> More information can be found on https://wiki.arx-libertatis.org/Main_Page."
+  echo ">>>"
+}
+
+post_upgrade() {
+  update-desktop-database -q
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+post_remove() {
+  update-desktop-database -q
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+  echo ">>>"
+  echo ">>> In order to completely remove arx-liberalis you will need to manually remove"
+  echo ">>> ~/.local/share/arx and ~/.config/arx directories."
+  echo ">>>"
+}
