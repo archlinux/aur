@@ -1,6 +1,6 @@
 pkgbase = sph-lib-git
 	pkgdesc = more than 80 gpl3+ licensed guile scheme libraries
-	pkgver = 650
+	pkgver = 714
 	pkgrel = 1
 	url = http://sph.mn/computer/software/sph-lib.html
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = sph-lib-git
 	depends = guile
 	provides = sph-lib
 	conflicts = sph-lib
-	source = git://git.sph.mn/sph-lib
+	source = git://sph.mn/sph-lib
 	md5sums = SKIP
 
 pkgname = sph-lib-git
