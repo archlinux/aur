@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ICQ for Linux
+Icon=/usr/share/pixmaps/icq.png
+TryExec=/usr/bin/icq
+Exec=/usr/bin/icq -urlcommand %u
+Comment=Simple way to communicate and nothing extra. New design, group chats and much more!
+Categories=InstantMessaging;Chat;Network;
+Terminal=false
+StartupWMClass=icq
+MimeType=x-scheme-handler/icq;
+Keywords=icq;
