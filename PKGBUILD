@@ -1,7 +1,7 @@
 # Maintainer: dekzi <dekzi dev at proton mail dot com>
 
 pkgname=dde-store
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 arch=(x86_64)
 pkgdesc="An app store for DDE built with DTK"
