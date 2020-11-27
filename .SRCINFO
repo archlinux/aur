@@ -1,6 +1,6 @@
 pkgbase = ceph-deploy
 	pkgdesc = Deploy Ceph with minimal infrastructure, using just SSH access
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = http://ceph.com
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = ceph-deploy
 	makedepends = python-setuptools
 	depends = python
 	depends = python-remoto
-	source = https://github.com/ceph/ceph-deploy/archive/v2.0.1.tar.gz
-	sha256sums = f8309b26afb222a325cec0a31779d91e58aa8b8b5ed6d3d891370eb076d696c0
+	source = https://github.com/ceph/ceph-deploy/archive/v2.1.0.tar.gz
+	sha256sums = 15e60e3fe7bdb7b7b67787bd523744216d8941cc1616081870e099a7010969a4
 
 pkgname = ceph-deploy
 
