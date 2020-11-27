@@ -3,28 +3,27 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=berusky2
-pkgver=0.10
-pkgrel=2
+pkgver=0.12
+pkgrel=1
 pkgdesc="A logic game based on the puzzle game Sokoban."
 arch=('i686' 'x86_64')
-url="http://www.anakreon.cz/en/"
+url="https://www.anakreon.cz/berusky2.html"
 license=('GPL')
-depends=('glu' 'libvorbis' 'freealut' 'sdl_image' 'mesa' 'berusky2-data')
-source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('3c2d5217f7a61a6fbc13d689b88ec4e4')
+depends=('glu' 'libvorbis' 'freealut' 'sdl_image' 'berusky2-data')
+source=("https://www.anakreon.cz/download/berusky2-$pkgver.tar.gz")
+md5sums=('d36eff2369279bf16546c4e20c1a379a')
 
 build() {
   cd "$srcdir"/"$pkgname"-"$pkgver"
-  ./configure --prefix=/usr --docdir=/usr/share/doc/"$pkgname" \
- --with-ini-file-global-dir=\"/usr/share/berusky2\"
+  ./configure --prefix=/usr --with-ini-file-global-dir=\"/usr/share/berusky2\"
   make
 }
 
 package() {
   cd "$srcdir"/"$pkgname"-"$pkgver"
   make DESTDIR="$pkgdir" install
-  #chmod "$pkgdir"/usr/share/berusky2/berusky3d-local.ini
-    
+  mv "$pkgdir/usr/doc" "$pkgdir/usr/share/"
+
   install -m644 -D "$srcdir"/$pkgname-$pkgver/data/berusky2.png "$pkgdir"/usr/share/pixmaps/berusky2.png
   install -m644 -D "$srcdir"/$pkgname-$pkgver/data//berusky2.desktop "$pkgdir"/usr/share/applications/berusky2.desktop
 }
