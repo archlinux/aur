@@ -21,7 +21,7 @@ depends=(
         'gala'
         'mutter'
         'tint2'
-        'pavucontrol-qt'
+        'pavucontrol'
         'pa-applet-git'
         )
 
