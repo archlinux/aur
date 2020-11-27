@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.3.beta1.r0.g222059565b
+pkgver=9.3.beta2.r0.g020bd59ec2
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -41,8 +41,6 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         test-optional.patch
         sagemath-singular-4.1.2.patch
         sagemath-gap-4.11.patch
-        sagemath-flint-2.6.patch
-        sagemath-cypari-2.1.2.patch
         sagemath-pari-2.13.patch)
 sha256sums=('SKIP'
             '4fb46b12b5ee5e5bde87f646dc69a7b8929886be247e2d9a9ae1f12efbe5b580'
@@ -50,8 +48,6 @@ sha256sums=('SKIP'
             '7da0dbcda15a327c21dc33853cb8f98cb86a283139f8735e3b20a71d49458a88'
             '881186d016a6eb47b919765b9d4e6abc4560fce54e08cf42bd948ba77e16aa85'
             '34f06f9776f84f6998b1350555316e0ffea76ed16e149916970f19ef750a467f'
-            '5d00b24c1d36b41b8ea3f07b93fc0e00b42dd84d9bc4e9b3d26e5f2cfeba6405'
-            'dc507eeb75eae1109273879771b4eb56172b7417e87a0693381106afd7554e04'
             '84875c90268436cb6a740a4e1bffd70b4895458ef9e1ee268a3c4aa0564e893f')
 
 pkgver() {
@@ -67,12 +63,8 @@ prepare(){
 # Upstream patches
 # Fixes for singular 4.1.2 https://trac.sagemath.org/ticket/25993
   patch -p1 -i ../sagemath-singular-4.1.2.patch
-# Fix segfault and tests with flint 2.6 https://trac.sagemath.org/ticket/29719
-  patch -p1 -i ../sagemath-flint-2.6.patch
 # Fix gap.version() and doctests with GAP 4.11 https://trac.sagemath.org/ticket/29314
   patch -p1 -i ../sagemath-gap-4.11.patch
-# Fix gcd/lcm between pari and sage objects https://trac.sagemath.org/ticket/30849
-  patch -p1 -i ../sagemath-cypari-2.1.2.patch
 # Port to PARI 2.13 https://trac.sagemath.org/ticket/30801
   patch -p1 -i ../sagemath-pari-2.13.patch
 
