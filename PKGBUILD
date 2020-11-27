@@ -13,7 +13,7 @@ install="$pkgname.install"
 source=(
   "mkscr"
   "boot.txt"
-  "uboot-$pkgver-$pkgrel.deb::https://apt.armbian.com/pool/main/l/linux-u-boot-tinkerboard-current/linux-u-boot-current-tinkerboard_${pkgver}_armhf.deb"
+  "https://apt.armbian.com/pool/main/l/linux-u-boot-tinkerboard-current/linux-u-boot-current-tinkerboard_${pkgver}_armhf.deb"
 )
 sha512sums=(
   '7046ab4d88efbba636be049be2f660e18c05e48d161d39437c1580b12795ba4d9197ad57ac4572398f80a38d4777507b57228abf4cc41f0081d196ece27ea9d0'
@@ -31,7 +31,7 @@ prepare() {
 package() {
   cd "$srcdir"
 
-  ar x "uboot-$pkgver-$pkgrel.deb"
+  ar x "linux-u-boot-current-tinkerboard_${pkgver}_armhf.deb"
   tar -xf data.tar.xz
 
   install -Dm755 mkscr "$pkgdir/boot/mkscr"
