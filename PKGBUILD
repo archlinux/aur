@@ -1,7 +1,7 @@
 # Maintainer: nanpuyue <nanpuyue@gmail.com>
 
 pkgname=trsh
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A TLS encrypted Reverse Shell"
 arch=('i686' 'x86_64' 'armv7h')
@@ -9,8 +9,8 @@ url="https://github.com/nanpuyue/trsh"
 license=('MIT')
 depends=('openssl')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('7514d0ec59db996c60a8fc314e3b2eadd8858253671c6685463e83d793a43337')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('a824488c438d5b690b653319a75a58b80f97252d7a30dba4bd420f69741ea529')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
