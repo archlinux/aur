@@ -1,7 +1,7 @@
 pkgbase = bitw-git
 	pkgdesc = Minimalist BitWarden client with Secret Service API implementation - git version
-	pkgver = r53.aa676ad
-	pkgrel = 2
+	pkgver = r68.g12abc07
+	pkgrel = 1
 	url = https://github.com/mvdan/bitw
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = bitw-git
 	arch = aarch64
 	license = BSD
 	makedepends = git
-	makedepends = go>=1.13
+	makedepends = go>=1.14
 	optdepends = wl-clipboard: clipboard utility for Wayland (one of the optdepends is required for the tests to pass - build time dep)
 	optdepends = xclip: clipboard utility for X11 (one of the optdepends is required for the tests to pass - build time dep)
 	optdepends = xsel: clipboard utility for X11 (one of the optdepends is required for the tests to pass - build time dep)
