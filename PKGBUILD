@@ -1,6 +1,6 @@
 # Maintainer: Joaquin (Pato) Decima <https://patojad.com.ar/>
 
-pkgname=("lynx-development-kit")
+pkgname=("lynx-ldk")
 _pkgname="ldk"
 pkgver=3.5.6
 pkgrel=2
