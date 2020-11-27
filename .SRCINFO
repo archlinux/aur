@@ -1,0 +1,15 @@
+pkgbase = google-docs-online
+	pkgdesc = With Google Docs, you can write, edit, and collaborate wherever you are.
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://docs.google.com/document/u/0/
+	arch = any
+	license = GPL3
+	license = CC
+	depends = jade-application-kit>=3.0.0
+	provides = google-docs-online
+	source = google-docs-online-1.0.tar.gz::https://github.com/hbarsaiyan/google-docs-online/archive/1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = google-docs-online
+
