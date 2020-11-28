@@ -1,9 +1,10 @@
 pkgbase = emacspeak
 	pkgdesc = Emacs extension that provides spoken output
-	pkgver = 52.0
+	pkgver = 53.0
 	pkgrel = 1
 	url = http://emacspeak.sf.net/
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	license = LGPL
 	license = APACHE
@@ -13,8 +14,8 @@ pkgbase = emacspeak
 	depends = espeak
 	optdepends = python: Google client, and wrapper for Emacspeak speech servers.
 	optdepends = openmotif
-	source = https://github.com/tvraman/emacspeak/archive/52.0.tar.gz
-	sha512sums = 0949db2b45e75b339fd3e57a17a55db1c7da91edb38fb281f128dd5d6e0d7da3ab36a6378270f0af1d01de64aa18df0c3e978ba02b86194606270cae2481dc12
+	source = emacspeak-53.0.tar.gz::https://github.com/tvraman/emacspeak/archive/53.0.tar.gz
+	sha512sums = 6575b3d16a69d0189270597357c61b38151696cd22d001f7a0e092457ba16fd6d0c837c0df5b5330f3fc04ddf393d3d4cecdd045cc1376c5d9170b08843cd278
 
 pkgname = emacspeak
 
