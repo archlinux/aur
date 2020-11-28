@@ -1,15 +1,13 @@
 # Ruijie Yu (first.last@outlook.com)
 pkgname=cajviewer-app-image
 _pkgname=${pkgname%-app-image}
-pkgver=20200306.0.0
+pkgver=20201022.0.0
 pkgrel=1
 pkgdesc='Document Viewer for TEB, CAJ, NH, KDH and PDF format'
 url="https://cajviewer.cnki.net/download.html"
 arch=(any)
 license=('Proprietary')
 depends=(
-    # explicit requirements (upstream website)
-    'glibc>=2.24' # original text asks for "libc", which should probably be glibc in arch
     # explicit requirements (error if running binary without package)
     'fuse2'
     # implicit requirements (obtained through ldd)
@@ -30,9 +28,9 @@ makedepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-    "https://viewer.d.cnki.net/CAJViewer-x86_64-libc-2.24.AppImage"
+    "https://download.cnki.net/CAJViewer-x86_64-buildubuntu1604-201021.AppImage"
 )
-sha512sums=('651e48f6d0d1acc4d5b035b9f3d9cd65188b7d2e524efbd49928dd40fd2d93e2d307e4433d3ecfe0f06c09a0791def95c3bd4a2382a0def348ed67a75ec3ffb7')
+sha512sums=('SKIP')
 
 # stripping leads to errors unfortunately
 options=('!strip')
