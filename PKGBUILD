@@ -5,7 +5,7 @@
 pkgname='axecore'
 _pkgname='axe'
 pkgver=1.6.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Axe Core (AXE) is an open source cryptocurrency."
 arch=('x86_64')
 url="https://axerunners.com/"
@@ -13,7 +13,6 @@ license=('MIT')
 depends=('qt5-base' 'boost' 'boost-libs' 'miniupnpc' 'protobuf' 'db4.8' 'zeromq' 'libevent' 'qrencode' 'libbacktrace-git')
 makedepends=('autoconf' 'automake' 'binutils' 'gcc' 'libtool' 'make' 'pkg-config' 'qt5-tools' 'codablock-bls-signatures')
 provides=('axe-daemon' 'axe-qt' 'axe-cli')
-conflicts=('axecore-git' 'axecore-bin' 'axe-cli' 'axe-qt' 'axe-daemon')
 source=('axe256.png'
         'axe-qt.desktop'
         'deque.patch'
