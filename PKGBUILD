@@ -7,7 +7,7 @@
 # Contributor: Netboy3
 
 pkgname=snort
-pkgver=2.9.16.1
+pkgver=2.9.17
 pkgrel=1
 pkgdesc='A lightweight network intrusion detection system.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64' 'arm')
@@ -60,6 +60,6 @@ package() {
     cp ${srcdir}/rules/* "${pkgdir}/etc/snort/rules"
 }
 
-md5sums=('ec148a494cde9095fb590a51efa306de'
+md5sums=('3fe89f22def4e9ffda01f07f816e666d'
          'SKIP'
          'a847030a34396e6b2d1cacd272ad42da')
