@@ -1,46 +1,40 @@
-# Maintainer Ruijie Yu
+# $Id$
+# Maintainer: Grey Christoforo <grey at christoforo dot net>
 
 pkgname=python-typish
-_pkgname="${pkgname#python-}"
 pkgver=1.9.1
 pkgrel=1
-pkgdesc='Functionality for types'
-arch=(any)
-url="https://github.com/ramonhagenaars/$_pkgname"
+pkgdesc='Functions for thorough checks on types'
+arch=(x86_64)
+url="https://github.com/ramonhagenaars/typish"
 license=(MIT)
-
-depends=(
-    'python>=3'
-)
-
-makedepends=(
-    'python-pip'
-    'python-wheel'
-)
-
+depends=(python)
+makedepends=(python-setuptools)
 checkdepends=(
-    'python-numpy'
-    # 'python-nptyping>=1.1.0'
-    'python-pycodestyle'
-    'python-pylint'
-    'mypy'
-    'python-pytest'
-    'python-coverage'
-    # 'python-codecov'
+python-numpy
+python-nptyping
+python-pycodestyle
+python-pylint
+mypy
+python-pytest
+python-coverage
 )
 
-source=(
-    "$url/archive/v$pkgver.tar.gz"
-)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ramonhagenaars/typish/archive/v${pkgver}.tar.gz")
 sha512sums=('867694f5fee9387b14cc94d3741ada256b8a32db931f01576a4d38d78fd237fe708f8e890703db21ccb790ace5ff178a09cda28d8ab9164b6ecbb105eeefc670')
 
-_extracted="$_pkgname-$pkgver/"
+build() {
+  cd typish-${pkgver}
+  python setup.py build
+}
 
-check() {
-    :
+check(){
+  cd typish-${pkgver}
+  python setup.py test
+  coverage run setup.py test
 }
 
 package() {
-    pip install --no-deps --root "${pkgdir}" --compile "$srcdir/$_extracted"
+  cd typish-${pkgver}
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
-
