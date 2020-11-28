@@ -1,7 +1,7 @@
 pkgbase = dblatexpy3
 	pkgdesc = DocBook (XML and SGML) to DVI, PDF, PostScript converter using latex with python3 support.
 	pkgver = 0.3.12
-	pkgrel = 2
+	pkgrel = 3
 	url = http://dblatex.sourceforge.net/
 	arch = any
 	license = GPL
@@ -15,8 +15,8 @@ pkgbase = dblatexpy3
 	depends = texlive-pictures
 	depends = texlive-science
 	conflicts = dblatex
-	source = https://sourceforge.net/projects/dblatex/files/dblatex/dblatex-0.3.12/dblatex3-0.3.12pre1.tar.bz2/download
-	md5sums = 19f0e0e0a70cbe281fe4c7175065ab8f
+	source = https://sourceforge.net/projects/dblatex/files/dblatex/dblatex-0.3.12/dblatex3-0.3.12pre2.tar.bz2/download
+	md5sums = 51cbfd443f0fd5df4d11ca6cb5b80c4c
 
 pkgname = dblatexpy3
 
