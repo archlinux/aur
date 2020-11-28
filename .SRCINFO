@@ -1,6 +1,6 @@
 pkgbase = pid-fan-controller
 	pkgdesc = PID fan controller with Python3
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/ThunderMikey/pid_fan_controller
 	arch = any
@@ -9,8 +9,9 @@ pkgbase = pid-fan-controller
 	depends = python-simple-pid
 	depends = python-pyaml
 	provides = pid-fan-controller
-	source = https://github.com/ThunderMikey/pid_fan_controller/archive/1.0.tar.gz
-	md5sums = 0bf5a7421cb6587e2bb21cd58e0e3b26
+	backup = etc/pid_fan_controller_config.yaml
+	source = https://github.com/ThunderMikey/pid_fan_controller/archive/1.1.tar.gz
+	md5sums = 70887cd6c32c380d5061dc8e92d57fa0
 
 pkgname = pid-fan-controller
 
