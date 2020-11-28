@@ -1,6 +1,6 @@
 pkgbase = python-django-channels-redis
 	pkgdesc = Redis-backed ASGI channel layer implementation
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 0
 	url = http://github.com/django/channels_redis/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-django-channels-redis
 	depends = python-msgpack
 	depends = python-asgiref
 	depends = python-async-timeout
-	source = https://pypi.io/packages/source/c/channels_redis/channels_redis-3.1.0.tar.gz
-	sha256sums = 3ce9832b64a2d7f950dd11e4f0dca784de7cbee99e95a3c345a1460c8878b682
+	source = https://pypi.io/packages/source/c/channels_redis/channels_redis-3.2.0.tar.gz
+	sha256sums = 2fb31a63b05373f6402da2e6a91a22b9e66eb8b56626c6bfc93e156c734c5ae6
 
 pkgname = python-django-channels-redis
 
