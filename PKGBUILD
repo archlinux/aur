@@ -3,7 +3,7 @@
 
 pkgname=python-skia-pathops
 _pkgname=${pkgname#python-}
-pkgver=0.5.1
+pkgver=0.5.1.post1
 pkgrel=1
 pkgdesc='Python bindings for the Skia library’s Path Ops'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('cython' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-cython')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.zip")
-sha256sums=('3ddd7ffa6eec59694c2deb63a2cd91a52b0799c625c55be8277d2039fe3fde25')
+sha256sums=('28dfb6afdfe90dfef075b236972b66df791a16e2ae092c3437ea7d40e9a41f73')
 
 build() {
     cd "$_pkgname-$pkgver"
