@@ -1,0 +1,24 @@
+pkgbase = acado
+	pkgdesc = algorithm collection for automatic control and dynamic optimization
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://acado.github.io/
+	arch = i686
+	arch = x86_64
+	license = LGPLv3
+	makedepends = gcc
+	makedepends = libmpc
+	makedepends = cmake
+	makedepends = git
+	makedepends = gnuplot
+	makedepends = doxygen
+	makedepends = graphviz
+	depends = libmpc
+	depends = gnuplot
+	depends = doxygen
+	depends = graphviz
+	source = git+https://github.com/acado/acado.git#commit=b4e28f3131f79cadfd1a001e9fff061f361d3a0f
+	sha256sums = SKIP
+
+pkgname = acado
+
