@@ -23,5 +23,5 @@ build() {
 package() {
 	mkdir -p $pkgdir/usr/bin/
 	install tgs-to-gif/bin/tgs_to_gif $pkgdir/usr/bin/tgs-to-gif
-	ln -s $pkgdir/usr/bin/tgs-to-gif $pkgdir/usr/bin/tgs2gif
+	ln -sv $pkgdir/usr/bin/tgs-to-gif $pkgdir/usr/bin/tgs2gif
 }
