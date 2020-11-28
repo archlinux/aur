@@ -1,0 +1,18 @@
+pkgbase = fna3d-git
+	pkgdesc = 3D graphics library for FNA
+	pkgver = 20.11.r19.g9d432ab
+	pkgrel = 1
+	url = https://fna-xna.github.io/
+	arch = x86_64
+	arch = aarch64
+	license = Zlib
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	provides = fna3d
+	conflicts = fna3d
+	source = git+https://github.com/fna-xna/fna3d
+	sha1sums = SKIP
+
+pkgname = fna3d-git
+
