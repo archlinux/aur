@@ -63,7 +63,7 @@ build() {
       -DNAS=OFF \
       -DNAS_SHARED=OFF \
       -DALSA=ON \
-      -DOSS=OFF
+      -DOSS=OFF \
       -DHIDAPI=OFF \
       -DHIDAPI_LIBUSB=OFF \
       -DJOYSTICK=OFF \
