@@ -62,6 +62,7 @@ build() {
     -D jack=disabled \
     -D lirc=disabled \
     -D openssl=disabled \
+    -D oss-support=false \
     -D soxr=disabled \
     -D speex=enabled \
     -D adrian-aec=false \
