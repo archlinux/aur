@@ -1,6 +1,6 @@
 pkgname=stack-client
 pkgver=2.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The STACK Client provides file sync to desktop clients."
 arch=('x86_64')
 url='https://www.transip.nl/stack/'
@@ -19,9 +19,11 @@ sha256sums=('935385ff07174a4d85c2d4eda4d069aeb4aa8d0e68865b2cf8a24ca8cc883288'
 prepare() {
   patch -p1 < ${srcdir}/APPLICATION_NAME.patch
   
-  cd ${srcdir}
-  # these seem to be already applied this time...
-  #. patch.sh
+  cd desktop-${pkgver}
+  for file in ${srcdir}/patches/*
+  do
+    patch -p1 < ${file}
+  done
 }
  
 build() {
