@@ -26,9 +26,7 @@ source=("git+${url}.git#branch=${BRANCH:-develop}"
 sha256sums=('SKIP'
             'dc60e6caf24a4e74d3810d993c1c5343488784b33d61f7f6ab20aded95473ffa'
             'SKIP'
-            'a8a9f637f363405dd493430c45fc5e2ddcb8b0e5f31d3f0c04e8a2095b00df8f' #)
-            'SKIP'  #comment out to disable
-            'SKIP')   #comment out to disable
+            'SKIP')
 validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC')  # Moses Narrow <moe_narrow@use.startmail.com>
 #'98F934F04F9334B81DFA3398913BBD5206B19620') #iketheadore skycoin <luxairlake@protonmail.com>
 
