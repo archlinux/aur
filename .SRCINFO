@@ -1,0 +1,17 @@
+pkgbase = clickmaster2000
+	pkgdesc = A tally counter for images
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://www.thregr.org/~wavexx/software/clickmaster2000
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = gendesk
+	depends = python-pyqt5
+	source = clickmaster2000-1.1.tar.gz::https://github.com/EuracBiomedicalResearch/clickmaster2000/archive/v1.1.tar.gz
+	source = icon.png
+	sha256sums = 269a45bdad14270d0ac2223594c8c2d9c3a3054f2541522ff77f3248f94d9b40
+	sha256sums = 03255837baa6c38eedf5cc1f6c8cfe97800176804897b7c223215f9f997b20a7
+
+pkgname = clickmaster2000
+
