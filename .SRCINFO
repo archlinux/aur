@@ -1,0 +1,31 @@
+pkgbase = gtkwave-gtk3
+	pkgdesc = A wave viewer which reads LXT, LXT2, VZT, GHW and VCD/EVCD files
+	pkgver = 3.3.107
+	pkgrel = 1
+	url = https://gtkwave.sourceforge.net
+	arch = x86_64
+	license = GPL
+	license = MIT
+	makedepends = gperf
+	depends = bzip2
+	depends = xz
+	depends = gtk3
+	depends = desktop-file-utils
+	depends = dconf
+	depends = judy
+	depends = libbz2.so
+	depends = libgdk-3.so
+	depends = libgdk_pixbuf-2.0.so
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
+	depends = libgtk-3.so
+	depends = libpango-1.0.so
+	depends = libpangocairo-1.0.so
+	provides = gtkwave
+	conflicts = gtkwave
+	source = http://gtkwave.sourceforge.net/gtkwave-gtk3-3.3.107.tar.gz
+	sha256sums = 74c7bf1800645abfa2aab5eda6efec0e474f45245ca13af6683192c4bc044355
+
+pkgname = gtkwave-gtk3
+
