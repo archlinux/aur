@@ -1,14 +1,14 @@
 pkgbase = luna-manager
-	pkgdesc = Luna-lang package manager (alpha)
-	pkgver = 1.1.1
+	pkgdesc = Luna-lang package manager
+	pkgver = latest
 	pkgrel = 1
 	url = https://luna-lang.org
 	arch = x86_64
 	license = Apache
 	depends = zlib
 	depends = gmp
-	source = luna-manager-1.1.1::https://s3-us-west-2.amazonaws.com/packages-luna/linux/luna-manager
-	sha256sums = a992d40dc2472a2b2efa7ea6e7cefd87492852a9e5f62fec7272dc302111580b
+	source = luna-manager-latest::https://s3-us-west-2.amazonaws.com/packages-luna/linux/luna-manager
+	sha256sums = SKIP
 
 pkgname = luna-manager
 
