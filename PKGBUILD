@@ -3,8 +3,8 @@
 
 #
 # Download the Dungeondraft zip archive from HumbleBundle and place it
-# in the same folder with this PKGBUILD and run pkgbuild.
-# $ pkgbuild -si
+# in the same folder with this PKGBUILD and run makepkg.
+# $ makepkg -si
 #
 # It will work with all current versions of Dungeondraft.
 # The version string is detected dinamically when run.
@@ -12,7 +12,8 @@
 # Note: AUR helpers might not be able to use this package.
 #       Install manually.
 #
-#
+
+
 pkgname=dungeondraft
 pkgrel=1
 
