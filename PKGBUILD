@@ -2,7 +2,7 @@
 
 pkgname=mdk4
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="MDK is a proof-of-concept tool to exploit common IEEE 802.11 protocol weaknesses"
 url="https://github.com/aircrack-ng/mdk4"
 arch=("x86_64")
@@ -21,10 +21,10 @@ prepare() {
 
 build() {
   cd ${pkgname}-${pkgver}
-  make
+  CFLAGS="-fcommon" make
 }
 package() {
   cd ${pkgname}-${pkgver}
-  make DESTDIR="$pkgdir/" install
+  CFLAGS="-fcommon" make DESTDIR="$pkgdir/" install
   install -Dm 644 docs/*.html -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
