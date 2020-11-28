@@ -1,8 +1,8 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=werf-bin
-pkgver=1.1.8.fix20
-_pkgver=1.1.8+fix20
+pkgver=1.1.21.fix22
+_pkgver=1.1.21+fix22
 pkgrel=1
 pkgdesc='GitOps delivery tool'
 arch=('x86_64')
@@ -10,8 +10,8 @@ url="https://werf.io"
 depends=('docker' 'git')
 license=('Apache')
 provides=('werf')
-source=("${pkgname}-${pkgver}::https://dl.bintray.com/flant/werf/v${_pkgver}/werf-linux-amd64-v${_pkgver}")
-sha256sums=('70233ab15c21df75b6f49fc4c3afdf95fa1bbf04403d6a19cd620499ee0bd842')
+source=("${pkgname}-${_pkgver}::https://dl.bintray.com/flant/werf/v${_pkgver}/werf-linux-amd64-v${_pkgver}")
+sha256sums=('5abdbe88c365db49446743de5d5acdbd935f8bca30c5821ae42322be8c4f91b6')
 
 package() {
   install -Dm755 "${srcdir}"/werf-* "${pkgdir}/usr/bin/werf"
