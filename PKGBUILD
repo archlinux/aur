@@ -89,7 +89,7 @@ package() {
   cd install
   _pick usr/lib32/libpulse{,-simple,-mainloop-glib}.so*
   _pick usr/lib32/{cmake,pkgconfig}
-  _pick usr/lib32/pulseaudio/libpulse{dsp,common-*}.so
+  _pick usr/lib32/pulseaudio/libpulsecommon-*.so
 }
 # vim:set sw=2 et:
 
