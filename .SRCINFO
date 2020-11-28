@@ -1,8 +1,8 @@
 pkgbase = dhcpcd-git
 	pkgdesc = A DHCP and DHCPv6 client
-	pkgver = 7.1.1.r31.gf1713f60
+	pkgver = 9.3.4.r0.ge04f03ce
 	pkgrel = 1
-	url = https://roy.marples.name/projects/dhcpcd
+	url = https://roy.marples.name/projects/dhcpcd/
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -16,9 +16,13 @@ pkgbase = dhcpcd-git
 	conflicts = dhcpcd
 	options = emptydirs
 	backup = etc/dhcpcd.conf
-	source = git+https://roy.marples.name/git/dhcpcd.git
-	source = dhcpcd.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/dhcpcd.service?h=packages/dhcpcd
-	source = dhcpcd_.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/dhcpcd_.service?h=packages/dhcpcd
+	source = git+https://github.com/rsmarples/dhcpcd.git
+	source = dhcpcd.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dhcpcd/trunk/dhcpcd.service
+	source = dhcpcd.sysusers::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dhcpcd/trunk/dhcpcd.sysusers
+	source = dhcpcd.tmpfiles::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dhcpcd/trunk/dhcpcd.tmpfiles
+	source = dhcpcd_.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dhcpcd/trunk/dhcpcd_.service
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
