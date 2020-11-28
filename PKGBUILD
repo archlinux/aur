@@ -1,7 +1,7 @@
 # Maintainer: Ferdinand "yrlf" Bachmann <theferdi265@gmail.com>
 pkgname=libbass_fx
 pkgver=2.4.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="BASS audio library - Effects Add-On"
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url="http://www.un4seen.com/"
@@ -54,4 +54,5 @@ package () {
     esac
     
     install -D -m644 bass_fx.chm "$pkgdir/usr/share/doc/libbass/bass_fx.chm"
+    install -D -m644 C/bass_fx.h "$pkgdir/usr/include/bass_fx.h"
 }
