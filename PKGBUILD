@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-zen-letsnote
-pkgver=5.8.12.zen1
+pkgver=5.9.11.zen2
 pkgrel=1
 pkgdesc="Linux ZEN patched for Let's note"
 _srctag=v${pkgver%.*}-${pkgver##*.}
