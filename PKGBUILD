@@ -4,12 +4,13 @@
 # Contributor: David Scholl <djscholl at gmail dot com>
 
 pkgname=leo
-pkgver=6.2.1
+pkgver=6.3
 pkgrel=1
 pkgdesc="Outliner, Editor, and Personal Information Manager written in 100% Python"
 arch=('any')
 url="http://leoeditor.com"
 license=('MIT' 'BSD')
+provides=('leo-editor')
 depends=('desktop-file-utils'
          'shared-mime-info'
          'python-pyqt5'
@@ -27,23 +28,19 @@ depends=('desktop-file-utils'
 makedepends=('python-setuptools' 'gendesk')
 optdepends=('python-pyenchant: spellchecking support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leo-editor/leo-editor/archive/v${pkgver}.tar.gz"
-        'setup.py.patch'
         'leo.xml')
-sha256sums=('95ae6334e1c1ead096bae7695c1c0a0b8c6992a83ea6c88166f94dd750fc68ae'
-            'SKIP'
-            'SKIP')
-
-prepare() {
-    cd "${pkgname}-editor-${pkgver}"
-    patch -Np1 -i ../setup.py.patch
-}
+sha256sums=('6a39af710fa53caaf0cda947a0dcb37ba0f6aed9ffe2018954b2e81b3d57725f'
+            '630852279324b0d9acf656c4684f16777d64f49b4062bd101c5cddbfc33c82cb')
 
 build() {
     cd "${pkgname}-editor-${pkgver}"
     python setup.py build
-    gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
-     --mimetypes=application/x-leo-outline --exec="$pkgname" \
-      --categories=TextEditor\;Development --icon "$pkgname"
+    gendesk -f -n --pkgname "$pkgname" \
+            --pkgdesc "$pkgdesc" \
+            --mimetypes=application/x-leo-outline \
+            --exec="$pkgname" \
+            --categories=TextEditor\;Development \
+            --icon "$pkgname"
 }
 
 package() {
