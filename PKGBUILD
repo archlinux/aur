@@ -18,7 +18,6 @@ depends=(
         'polkit-gnome'
         'lynx-menu-data'
         'network-manager-applet'
-        'gala'
         'mutter'
         'tint2'
         'pavucontrol'
