@@ -12,7 +12,7 @@ _fullname="$pkgname-$_fullver"
 _web_buildid=183-045db5be50e175
 _web_desktop_ver=4.29.2-e50e175
 _web_tv_ver=4.29.6-045db5b
-pkgrel=3
+pkgrel=4
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('GPL')
@@ -26,7 +26,8 @@ source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive
         "web-client-tv-${_web_buildid}-${_web_tv_ver}.tar.xz::https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/web-client-tv-${_web_tv_ver}.tar.xz"
         "web-client-tv-${_web_buildid}-${_web_tv_ver}.tar.xz.sha1::https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/web-client-tv-${_web_tv_ver}.tar.xz.sha1"
         'qt.patch'
-        'plex.patch')
+        'plex.patch'
+        'mpv.patch')
 noextract=("web-client-desktop-${_web_buildid}-${_web_desktop_ver}.tar.xz"
            "web-client-tv-${_web_buildid}-${_web_tv_ver}.tar.xz")
 sha512sums=('702826ed5dc5ad4f1a9a877834dce0734eeb5b0f3eb007a6e6dff2fc1b7fc1ebbd1ad7a42be6ebec392e5313abb2867121b3dfcf00acc008dbae628564594866'
@@ -36,6 +37,7 @@ sha512sums=('702826ed5dc5ad4f1a9a877834dce0734eeb5b0f3eb007a6e6dff2fc1b7fc1ebbd1
             'd60cc01f6b9abf579b3fa2e5b5c9b19e71a986578b0ca46173572324fb54573c97f09ac0ef1654a0b04d68eee20ab3d81ab19a85a761ba638b2b543548ff94ac'
             '442c2e5a31eed30167009bdaf263c66bea482d4ad03e168c9d9eb5e9f4e40f771dee9bc6913d6be46f7d86feb961603f172bb6497fac28c4f5d36a1f05d0ec66'
             'SKIP'
+            'SKIP'
             'SKIP')
 
 prepare() {
@@ -43,6 +45,7 @@ prepare() {
 
     patch --forward --strip=1 --input="${srcdir}/qt.patch"
     patch --forward --strip=1 --input="${srcdir}/plex.patch"
+    patch --forward --strip=1 --input="${srcdir}/mpv.patch"
 
     # All this git version junk fails, just remove it we already have the version
     sed -i 's|include(GetGitRevisionDescription)||
