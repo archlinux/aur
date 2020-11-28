@@ -1,14 +1,15 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
-pkgbase=linux-rockchip64
-pkgname=('linux-rockchip64' 'linux-rockchip64-headers')
+_target=rockchip64
+pkgbase="linux-$_target"
+pkgname=("$pkgbase" "$pkgbase-headers")
 pkgver=5.9.11
 _armbver=21.02.0
 _armbrel=1
-_kernver="$pkgver-rockchip64"
+_kernver="$pkgver-$_target"
 pkgrel=1
 arch=('aarch64')
-_desc="AArch64 multi-platform Rockchip"
+_desc="AArch64 multi-platform $_target"
 url="https://github.com/armbian/build"
 license=('GPL2')
 options=('!strip')
@@ -16,9 +17,9 @@ source=(
   "linux.preset"
   "60-linux.hook"
   "90-linux.hook"
-  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-current-rockchip64_$_armbver-trunk.${_armbrel}_arm64.deb"
-  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-image-current-rockchip64_$_armbver-trunk.${_armbrel}_arm64.deb"
-  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-headers-current-rockchip64_$_armbver-trunk.${_armbrel}_arm64.deb"
+  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
+  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-image-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
+  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-headers-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
 )
 sha512sums=(
   'f683c0639fc20e813e309df99b9b850b1f55de3fc02489d64a7d66e84df19d7836ea32042090597f1df17baed46a3ae1dfcf341c8aff206be9a1b06ee394dc3f'
@@ -36,7 +37,7 @@ prepare() {
   rm -rf $(find -mindepth 1 -maxdepth 1 -type d)
 }
 
-package_linux-rockchip64() {
+_package() {
   pkgdesc="The Linux Kernel and modules - $_desc"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -47,9 +48,9 @@ package_linux-rockchip64() {
 
   cd "$srcdir"
 
-  ar x "linux-dtb-current-rockchip64_$_armbver-trunk.${_armbrel}_arm64.deb"
+  ar x "linux-dtb-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
   tar -xf data.tar.xz
-  ar x "linux-image-current-rockchip64_$_armbver-trunk.${_armbrel}_arm64.deb"
+  ar x "linux-image-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
   tar -xf data.tar.xz
 
   install -Dm644 "boot/vmlinuz-$_kernver" "$pkgdir/boot/Image"
@@ -84,16 +85,16 @@ package_linux-rockchip64() {
     install -Dm644 /dev/stdin "$pkgdir/usr/share/libalpm/hooks/90-$pkgbase.hook"
 }
 
-package_linux-rockchip64-headers() {
+_package-headers() {
   pkgdesc="Header files and scripts for building modules for linux kernel - $_desc"
   provides=("linux-headers=$pkgver")
   conflicts=('linux-headers')
 
   cd "$srcdir"
 
-  ar x "linux-image-current-rockchip64_$_armbver-trunk.${_armbrel}_arm64.deb"
+  ar x "linux-image-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
   tar -xf data.tar.xz
-  ar x "linux-headers-current-rockchip64_$_armbver-trunk.${_armbrel}_arm64.deb"
+  ar x "linux-headers-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
   tar -xf data.tar.xz
 
   install -dm755 "$pkgdir/usr/lib/modules/$_kernver"
@@ -102,3 +103,10 @@ package_linux-rockchip64-headers() {
   install -Dm644 "boot/config-$_kernver" "$pkgdir/usr/lib/modules/$_kernver/build/.config"
   install -Dm644 "boot/System.map-$_kernver" "$pkgdir/usr/lib/modules/$_kernver/build/System.map"
 }
+
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
+  }"
+done
