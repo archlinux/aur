@@ -3,15 +3,15 @@
 pkgname=youtube-music
 _pkgname=YouTube-Music
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="YouTube Music Desktop App bundled with custom plugins like built-in ad blocker & downloader"
 arch=('x86_64')
 url="https://github.com/th-ch/youtube-music"
 license=('MIT')
 makedepends=('git')
-source=("https://github.com/ytmdesktop/ytmdesktop/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
-		"https://raw.githubusercontent.com/th-ch/youtube-music/master/license"
+source=("https://github.com/th-ch/youtube-music/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
+	"https://raw.githubusercontent.com/th-ch/youtube-music/master/license"
         "youtube-music-th-ch.desktop")
 noextract=('${_pkgname}-${pkgver}.AppImage')
 options=(!strip)
