@@ -1,8 +1,8 @@
 # Maintainer: Franck Stauffer <franck.stauffer@monaco.mc>
 
 pkgname='chromium-extension-decentraleyes'
-pkgver=2.0.14
-pkgrel=2
+pkgver=2.0.15
+pkgrel=1
 pkgdesc="Local emulation of Content Delivery Networks"
 license=('MPL2')
 arch=('any')
