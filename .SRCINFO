@@ -25,7 +25,7 @@ pkgbase = linux-rockchip
 	sha512sums = SKIP
 
 pkgname = linux-rockchip
-	pkgdesc = The Linux Kernel and modules - ARMv7 multi-platform Rockchip
+	pkgdesc = The Linux Kernel and modules - ARMv7 multi-platform rockchip
 	install = linux-rockchip.install
 	depends = coreutils
 	depends = linux-firmware
@@ -38,7 +38,7 @@ pkgname = linux-rockchip
 	backup = etc/mkinitcpio.d/linux-rockchip.preset
 
 pkgname = linux-rockchip-headers
-	pkgdesc = Header files and scripts for building modules for linux kernel - ARMv7 multi-platform Rockchip
+	pkgdesc = Header files and scripts for building modules for linux kernel - ARMv7 multi-platform rockchip
 	provides = linux-headers=5.9.11
 	conflicts = linux-headers
 
