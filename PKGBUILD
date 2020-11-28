@@ -13,8 +13,10 @@ depends=('dkms' 'i2c-tools')
 makedepends=('git')
 source=('git+https://github.com/respeaker/seeed-voicecard.git'
   'dkms.conf'
-  "${_pkg}.conf")
+  "${_pkg}.conf"
+  '5.9-fix.patch')
 _overlays="/boot/overlays/"
+
 
 pkgver() {
   cd "$srcdir/${_pkg}"
@@ -23,6 +25,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${_pkg}"
+  patch -Np1 -i ../5.9-fix.patch
   cd ac108_plugin/ && make clean
 }
 
@@ -35,8 +38,8 @@ package_seeed-voicecard-dkms-git() {
 
   msg2 "Install configs"
   mkdir -p "$pkgdir/etc/voicecard" || true
-  cp -v *.conf "$pkgdir/etc/voicecard"
-  cp -v *.state "$pkgdir/etc/voicecard"
+  cp -v ./asound*.conf "$pkgdir/etc/voicecard"
+  cp -v ./*.state "$pkgdir/etc/voicecard"
 
   msg2 "Install alsa plugin for ac108"
   cd ac108_plugin || exit
@@ -61,6 +64,10 @@ package_seeed-voicecard-dkms-git() {
   sed -e "s/@_PKGBASE@/${_pkg}/" \
     -e "s/@PKGVER@/${pkgver}/" \
     -i "${pkgdir}"/usr/src/${_pkg}-${pkgver}/dkms.conf
+
+  msg2 "Clean up"
+  rm -rf "${pkgdir}"/usr/src/${_pkg}-${pkgver}/{.git,*.sh}
+
 }
 
 package_seeed-voicecard-2mic-dkms-git() {
@@ -99,4 +106,5 @@ package_seeed-voicecard-8mic-dkms-git() {
 
 md5sums=('SKIP'
          'bf335011fea6259d4119059e5913744e'
-         '136d43780e54a3bb15c237ca594c90a7')
+         '136d43780e54a3bb15c237ca594c90a7'
+         'd822994566e47b143b22554a38ffcfa0')

@@ -12,9 +12,11 @@ pkgbase = seeed-voicecard-dkms-git
 	source = git+https://github.com/respeaker/seeed-voicecard.git
 	source = dkms.conf
 	source = seeed-voicecard.conf
+	source = 5.9-fix.patch
 	md5sums = SKIP
 	md5sums = bf335011fea6259d4119059e5913744e
 	md5sums = 136d43780e54a3bb15c237ca594c90a7
+	md5sums = d822994566e47b143b22554a38ffcfa0
 
 pkgname = seeed-voicecard-dkms-git
 
