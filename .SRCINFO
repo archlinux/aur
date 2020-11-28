@@ -1,7 +1,7 @@
 pkgbase = ipmiview
 	pkgdesc = Supermicro IPMI tool
-	pkgver = 2.17.0
-	pkgrel = 4
+	pkgver = 2.18.0
+	pkgrel = 1
 	url = http://www.supermicro.com/products/nfo/ipmi.cfm
 	arch = x86_64
 	license = custom:"Super Micro Computer"
@@ -14,12 +14,14 @@ pkgbase = ipmiview
 	backup = opt/ipmiview/IPMIView.properties
 	backup = opt/ipmiview/stunnel.properties
 	backup = opt/ipmiview/timeout.properties
-	source = https://www.supermicro.com/wftp/utility/IPMIView/Linux/IPMIView_2.17.0_build.200505_bundleJRE_Linux_x64.tar.gz
+	source = https://www.supermicro.com/wftp/utility/IPMIView/Linux/IPMIView_2.18.0_build.201007_bundleJRE_Linux_x64.tar.gz
 	source = ipmiview.desktop
 	source = ipmiview.png
-	sha512sums = 17ed72e802fb0a55c140f98262575385ede2d490484fe926bb7ff19f34e5a376f2d21025e99318d2001b042487729dc8b07b38cca4bf62df6e04d7df0d1d3091
+	source = patch-jvm-version-check.patch
+	sha512sums = bda6116f59776b93c449711ad890160238b53ec93aabc669b2c5938eaee7f594e3b91a11f8c293110874fb13c2ed94692257c16fbffe7f86c1d2ee757d30b948
 	sha512sums = 82f6d4a9f6ff031f0c7e7ab78a550ea76b8e297df62aaa9837a37fe4f0b4a8b4dfa4aae59c0edc9ee2f0b7e249548ba4f5f50a44e0682a7f7b6f098163a17879
 	sha512sums = d1fb8e68ca057e3b2bc1c6e51cda226443c729db5166363d637a536afc07aab285ba46f9da5f656837e2423685a0ae421789a4768acee5ac8185ecb04318fc81
+	sha512sums = 80b7318009dfa0f5666b211fd7b1c93340599a367fdbda54093893dc8b6012b38475ea2287819cc33bb71d7b9a69452840bc2daae815846b1befe06b08775d08
 
 pkgname = ipmiview
 

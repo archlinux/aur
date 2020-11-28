@@ -1,7 +1,7 @@
 pkgname=ipmiview
-pkgver=2.17.0
-_pkghash=200505
-pkgrel=4
+pkgver=2.18.0
+_pkghash=201007
+pkgrel=1
 pkgdesc="Supermicro IPMI tool"
 makedepends=('tar')
 depends=("glibc" "java-runtime=8")
@@ -22,13 +22,20 @@ source=(
     "https://www.supermicro.com/wftp/utility/IPMIView/Linux/IPMIView_${pkgver}_build.${_pkghash}_bundleJRE_Linux_x64.tar.gz"
     'ipmiview.desktop'
     'ipmiview.png'
+    'patch-jvm-version-check.patch'
     )
 
 sha512sums=(
-    '17ed72e802fb0a55c140f98262575385ede2d490484fe926bb7ff19f34e5a376f2d21025e99318d2001b042487729dc8b07b38cca4bf62df6e04d7df0d1d3091'
+    'bda6116f59776b93c449711ad890160238b53ec93aabc669b2c5938eaee7f594e3b91a11f8c293110874fb13c2ed94692257c16fbffe7f86c1d2ee757d30b948'
     '82f6d4a9f6ff031f0c7e7ab78a550ea76b8e297df62aaa9837a37fe4f0b4a8b4dfa4aae59c0edc9ee2f0b7e249548ba4f5f50a44e0682a7f7b6f098163a17879'
     'd1fb8e68ca057e3b2bc1c6e51cda226443c729db5166363d637a536afc07aab285ba46f9da5f656837e2423685a0ae421789a4768acee5ac8185ecb04318fc81'
+    '80b7318009dfa0f5666b211fd7b1c93340599a367fdbda54093893dc8b6012b38475ea2287819cc33bb71d7b9a69452840bc2daae815846b1befe06b08775d08'
     )
+
+prepare() {
+  cd ${srcdir}
+  patch --forward --strip=1 --input="../patch-jvm-version-check.patch"
+}
 
 package() {
   mkdir -p ${pkgdir}/opt/${pkgname}
