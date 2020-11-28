@@ -7,10 +7,10 @@ arch=('any')
 url="https://github.com/refi64/pakitheme"
 license=('MPL2')
 depends=(flatpak)
-source=("https://raw.github.com/saltedcoffii/pakitheme/master/pakitheme")
-md5sums=("21a75533ff1f3bc293a8ea39f74fd685")
+source=("git+https://github.com/refi64/pakitheme")
+md5sums=("SKIP")
 
 package() {
 	mkdir -p $pkgdir/usr/bin
-	install ./pakitheme "$pkgdir/usr/bin"
+	install ./pakitheme/pakitheme "$pkgdir/usr/bin"
 }
