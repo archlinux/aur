@@ -1,8 +1,7 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-media-driver-git
-_srcname=media-driver
-pkgver=2018.3.pre3.r308.g862e9600
+pkgver=2020.4.0.r113.g2eeb7e50
 pkgrel=1
 pkgdesc='Intel Media Driver for VAAPI — Broadwell+ iGPUs (git version)'
 arch=('x86_64')
@@ -21,32 +20,18 @@ source=('git+https://github.com/intel/media-driver.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_srcname"
-    
-    # git, tags available
-    git describe --long --tags | sed 's/^intel-media-//;s/^[0-9]\{2\}/20&/;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    git -C media-driver describe --long --tags | sed 's/^intel-media-//;s/^[0-9]\{2\}/20&/;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    mkdir -p build
-    cd build
-    
-    cmake \
-        -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
+    cmake -B build -S media-driver \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DINSTALL_DRIVER_SYSCONF:BOOL='OFF' \
-        -Wno-dev \
-        ../"$_srcname"
-        
-    make
+        -Wno-dev
+    make -C build
 }
 
 package() {
-    cd build
-    
-    make DESTDIR="$pkgdir" install
-    
-    # license
-    cd "${srcdir}/${_srcname}"
-    install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    make -C build DESTDIR="$pkgdir" install
+    install -D -m644 media-driver/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
