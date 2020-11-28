@@ -2,7 +2,7 @@
 # Maintainer: Patrick Klein <patrick@libklein.com>
 
 pkgname=gurobi
-pkgver=9.0.3
+pkgver=9.1.0
 pkgrel=1
 pkgdesc="State-of-the-art solver for mathematical programming"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
   "gurobi.sh"
   "gurobi_setup.m"
 )
-md5sums=('832040cce622ba7f267e26645fcd200d'
+md5sums=('628c4e2c6fc34193f9dd5852d34b3e1b'
          '1f34712dbc8df686d987b6bf129811fd'
          'e0b5a5d7bf4ba8b7b38beea44affabdf')
 
@@ -46,12 +46,8 @@ package_gurobi() {
   # License
   install -D -m644 EULA.pdf "${pkgdir}/usr/share/licenses/${pkgname}/EULA.pdf"
 
-  # Examples
-  install -D -m644 bin/gurobi.env "${pkgdir}/usr/share/${pkgname}/gurobi.env"
-  
   # Binaries and related files
   install -Dt "${pkgdir}/usr/bin/" bin/*
-  rm "${pkgdir}/usr/bin/gurobi.env"
   # Gurobi interactive shell
   install -D lib/gurobi.py "${pkgdir}/usr/lib/${pkgname}/gurobi.py"
 
