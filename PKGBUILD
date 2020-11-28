@@ -1,7 +1,8 @@
-# Maintainer: Michael J. Pento <mjpento@verizon.net>
+# Maintainer: robertfoster
+# Contributor: Michael J. Pento <mjpento@verizon.net>
 
 pkgname=artifactory-oss
-pkgver=6.18.0
+pkgver=6.23.3
 pkgrel=1
 pkgdesc='Artifactory is an advanced Binary Repository Manager for use by build tools, dependency management tools and build servers'
 arch=('any')
@@ -10,13 +11,13 @@ license=('GPLv3')
 depends=('java-runtime-headless' 'net-tools' 'bash')
 install="$pkgname.install"
 source=("jfrog-artifactory-oss-${pkgver}.zip::https://bintray.com/jfrog/artifactory/download_file?file_path=jfrog-artifactory-oss-${pkgver}.zip"
-        'artifactory.service'
-        'artifactory.conf'
-        'artifactory.default')
-sha256sums=('5d47d98f677ea36e8c47714f46b0316f7dda5819de4ef4b2b30949f00906c36d'
-            '8ba1287f4d062f57a5cf9e5426d4affcfcc00ca2680cd603f41c603957a42c20'
-            '48bc1cddf9fa64f0d62a519470a490719398d67b6baeef6a3e647b737d6484df'
-            '34337e72bbdca63a3244a61d3d1aad324c473782d976da68b72ff72ed38ac5e5')
+  'artifactory.service'
+  'artifactory.conf'
+  'artifactory.default')
+sha256sums=('5ae0fe881235d5542d0a975877e02f46db8d94c7f276786f6fcbcd5229e82da8'
+  '8ba1287f4d062f57a5cf9e5426d4affcfcc00ca2680cd603f41c603957a42c20'
+  '48bc1cddf9fa64f0d62a519470a490719398d67b6baeef6a3e647b737d6484df'
+  '34337e72bbdca63a3244a61d3d1aad324c473782d976da68b72ff72ed38ac5e5')
 options=('!strip')
 PKGEXT='.pkg.tar'
 
@@ -33,8 +34,11 @@ package() {
 
   install -d "$pkgdir$artdir"
   cp -r "$pkgname-$pkgver"/* "$pkgdir$artdir"
-  install -Dm644 "$srcdir/artifactory.conf" "$pkgdir/usr/lib/sysusers.d/artifactory.conf"
-  install -Dm644 "$srcdir/artifactory.default" "$pkgdir$artdir/bin"
-  install -Dm644 "$srcdir/artifactory.service" "$pkgdir/usr/lib/systemd/system/artifactory.service"
+  install -Dm644 "$srcdir/artifactory.conf" \
+    "$pkgdir/usr/lib/sysusers.d/artifactory.conf"
+  install -Dm644 "$srcdir/artifactory.default" \
+    "$pkgdir$artdir/bin"
+  install -Dm644 "$srcdir/artifactory.service" \
+    "$pkgdir/usr/lib/systemd/system/artifactory.service"
   install -d "$pkgdir$artdir/run"
 }
