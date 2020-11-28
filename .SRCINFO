@@ -1,7 +1,7 @@
 pkgbase = alwaysatty-git
 	pkgdesc = Always treat stdout as a tty
 	pkgver = r3.1e23181
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/weirane/alwaysatty
 	arch = x86_64
 	license = MIT
