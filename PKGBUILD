@@ -51,7 +51,7 @@ optdepends=(
   'rust-analyzer: Rust semantic completion'
   'typescript: Typescript semantic completion'
   'python-jedi: Python semantic completion'
-  'python-numpydocs: Python semantic completion'
+  'python-numpydoc: Python semantic completion'
   'python-regex: Better Unicode support'
   'omnisharp-roslyn: C# semantic completion'
   'java-environment: Java semantic completion'
