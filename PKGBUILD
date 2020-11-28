@@ -1,5 +1,5 @@
 # Maintainer: AkinoKaede <autmaple@protonmail.com>
-# Special thanks: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: pandada8 <pandada8@gmail.com>
 
 pkgname=xray-bin
