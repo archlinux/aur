@@ -5,7 +5,7 @@
 
 pkgname=moneymanagerex-git
 pkgver=1.3.5
-pkgrel=6
+pkgrel=7
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest stable version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
@@ -26,8 +26,9 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  mkdir -p build
+  git checkout tags/$(git describe --abbrev=0 | sed -E 's/([^-]*-g)/r\1/;s/-/./g')
   git submodule update --init
+  mkdir -p build
   # TODO Workaround: https://github.com/moneymanagerex/moneymanagerex/issues/2685
   sed -i "s/luaL_checkint(/luaL_checkinteger(/g" ./3rd/LuaGlue/include/LuaGlue/LuaGlueApplyTuple.h
 }
