@@ -1,0 +1,8 @@
+
+post_install() {
+	folderpreview --install-thumbnailer
+}
+
+pre_remove() {
+	rm -f /usr/share/thumbnailers/folderpreview.thumbnailer
+}
