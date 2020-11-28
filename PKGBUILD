@@ -25,7 +25,6 @@ makedepends=(
 )
 install='INSTALL'
 provides=($pipname)
-replaces=('folderpreview-git')
 
 pkgver() {
 	curl -s https://pypi.org/pypi/$pipname/json | jq -r .info.version

@@ -18,7 +18,6 @@ pkgbase = folderpreview
 	depends = python-systemd
 	depends = python-colorlog
 	provides = folderpreview
-	replaces = folderpreview-git
 
 pkgname = folderpreview
 
