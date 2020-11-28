@@ -1,14 +1,15 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
-pkgbase=linux-sunxi
-pkgname=('linux-sunxi' 'linux-sunxi-headers')
+_target=sunxi
+pkgbase="linux-$_target"
+pkgname=("$pkgbase" "$pkgbase-headers")
 pkgver=5.9.11
 _armbver=21.02.0
 _armbrel=1
-_kernver="$pkgver-sunxi"
+_kernver="$pkgver-$_target"
 pkgrel=1
 arch=('armv7h')
-_desc="ARMv7 multi-platform Sunxi"
+_desc="ARMv7 multi-platform $_target"
 url="https://github.com/armbian/build"
 license=('GPL2')
 options=('!strip')
@@ -16,9 +17,9 @@ source=(
   "linux.preset"
   "60-linux.hook"
   "90-linux.hook"
-  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-current-sunxi_$_armbver-trunk.${_armbrel}_armhf.deb"
-  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-image-current-sunxi_$_armbver-trunk.${_armbrel}_armhf.deb"
-  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-headers-current-sunxi_$_armbver-trunk.${_armbrel}_armhf.deb"
+  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-current-${_target}_${_armbver}-trunk.${_armbrel}_armhf.deb"
+  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-image-current-${_target}_${_armbver}-trunk.${_armbrel}_armhf.deb"
+  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-headers-current-${_target}_${_armbver}-trunk.${_armbrel}_armhf.deb"
 )
 sha512sums=(
   'a492aae17ee4a316ce03faf9f1b284b2529c485f4b092cc4a1f865a6c68d482fd356fd30efa296c116975a3bdf3922f5bf03912a8d0e76f4ab24aa6ab9f8c276'
@@ -36,7 +37,7 @@ prepare() {
   rm -rf $(find -mindepth 1 -maxdepth 1 -type d)
 }
 
-package_linux-sunxi() {
+_package() {
   pkgdesc="The Linux Kernel and modules - $_desc"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -47,9 +48,9 @@ package_linux-sunxi() {
 
   cd "$srcdir"
 
-  ar x "linux-dtb-current-sunxi_$_armbver-trunk.${_armbrel}_armhf.deb"
+  ar x "linux-dtb-current-${_target}_${_armbver}-trunk.${_armbrel}_armhf.deb"
   tar -xf data.tar.xz
-  ar x "linux-image-current-sunxi_$_armbver-trunk.${_armbrel}_armhf.deb"
+  ar x "linux-image-current-${_target}_${_armbver}-trunk.${_armbrel}_armhf.deb"
   tar -xf data.tar.xz
 
   install -Dm644 "boot/vmlinuz-$_kernver" "$pkgdir/boot/zImage"
@@ -84,16 +85,16 @@ package_linux-sunxi() {
     install -Dm644 /dev/stdin "$pkgdir/usr/share/libalpm/hooks/90-$pkgbase.hook"
 }
 
-package_linux-sunxi-headers() {
+_package-headers() {
   pkgdesc="Header files and scripts for building modules for linux kernel - $_desc"
   provides=("linux-headers=$pkgver")
   conflicts=('linux-headers')
 
   cd "$srcdir"
 
-  ar x "linux-image-current-sunxi_$_armbver-trunk.${_armbrel}_armhf.deb"
+  ar x "linux-image-current-${_target}_${_armbver}-trunk.${_armbrel}_armhf.deb"
   tar -xf data.tar.xz
-  ar x "linux-headers-current-sunxi_$_armbver-trunk.${_armbrel}_armhf.deb"
+  ar x "linux-headers-current-${_target}_${_armbver}-trunk.${_armbrel}_armhf.deb"
   tar -xf data.tar.xz
 
   install -dm755 "$pkgdir/usr/lib/modules/$_kernver"
@@ -102,3 +103,10 @@ package_linux-sunxi-headers() {
   install -Dm644 "boot/config-$_kernver" "$pkgdir/usr/lib/modules/$_kernver/build/.config"
   install -Dm644 "boot/System.map-$_kernver" "$pkgdir/usr/lib/modules/$_kernver/build/System.map"
 }
+
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
+  }"
+done

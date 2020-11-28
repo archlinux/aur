@@ -25,7 +25,7 @@ pkgbase = linux-sunxi
 	sha512sums = SKIP
 
 pkgname = linux-sunxi
-	pkgdesc = The Linux Kernel and modules - ARMv7 multi-platform Sunxi
+	pkgdesc = The Linux Kernel and modules - ARMv7 multi-platform sunxi
 	install = linux-sunxi.install
 	depends = coreutils
 	depends = linux-firmware
@@ -38,7 +38,7 @@ pkgname = linux-sunxi
 	backup = etc/mkinitcpio.d/linux-sunxi.preset
 
 pkgname = linux-sunxi-headers
-	pkgdesc = Header files and scripts for building modules for linux kernel - ARMv7 multi-platform Sunxi
+	pkgdesc = Header files and scripts for building modules for linux kernel - ARMv7 multi-platform sunxi
 	provides = linux-headers=5.9.11
 	conflicts = linux-headers
 
