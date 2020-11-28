@@ -1,7 +1,7 @@
 pkgbase = gtkwave-gtk3
-	pkgdesc = A wave viewer which reads LXT, LXT2, VZT, GHW and VCD/EVCD files
+	pkgdesc = A wave viewer which reads LXT, LXT2, VZT, GHW and VCD/EVCD files (gtk3 version)
 	pkgver = 3.3.107
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gtkwave.sourceforge.net
 	arch = x86_64
 	license = GPL
