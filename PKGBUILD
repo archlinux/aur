@@ -2,14 +2,16 @@
 
 pkgname=perl-module-cpanfile
 pkgver=1.1004
-pkgrel=3
+pkgrel=4
 _author="M/MI/MIYAGAWA"
 _perlmod="Module-CPANfile"
 pkgdesc="Module-CPANfile - Parse cpanfile"
 arch=('any')
-url="http://search.cpan.org/dist/Module-CPANfile/"
+url="https://metacpan.org/release/Module-CPANfile/"
 license=('GPL' 'PerlArtistic')
-depends=(perl)
+checkdepends=(
+perl-file-pushd
+)
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
 sha256sums=('88efbe2e9a642dceaa186430fedfcf999aaf0e06f6cced28a714b8e56b514921')
