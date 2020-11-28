@@ -3,7 +3,7 @@
 pkgorg='humanoid-path-planner'
 pkgname=('hpp-fcl' 'hpp-fcl-docs')
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An extension of the Flexible Collision Library"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
@@ -17,7 +17,7 @@ validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28' 'A031AD35058955293D54DE
 
 prepare() {
     cd "$pkgbase-$pkgver"
-    head -n33 202.patch | patch -p1
+    head -n33 "$srcdir/202.patch" | patch -p1
 }
 
 build() {
