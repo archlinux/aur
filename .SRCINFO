@@ -15,7 +15,6 @@ pkgbase = dwm-distrotube-git
 	depends = st
 	depends = dmenu
 	depends = libxft-bgra-git
-	depends = dwmblocks-distrotube-git
 	optdepends = surf
 	provides = dwm
 	conflicts = dwm
