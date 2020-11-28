@@ -1,17 +1,26 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=aria2p
-pkgver=0.9.1
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Command-line tool and library to interact with an aria2c daemon process with JSON-RPC"
 arch=('any')
-url="https://github.com/pawamoy/$pkgname"
+url="https://pawamoy.github.io/showcase/aria2p"
 license=('ISC')
-depends=('python-loguru' 'python-requests' 'python-websocket-client')
+depends=('python-loguru' 'python-requests' 'python-toml'
+         'python-websocket-client' 'python-pyxdg')
 optdepends=('aria2: aria2c daemon'
-            'python-asciimatics: interactive interface support')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('f9b680c2c0d954ba7f483c6f9836104b423283136a63aeaf9606c259d45c4f45')
+            'python-asciimatics: interactive interface support'
+            'python-pyperclip: interactive interface support')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
+        "xdg.patch")
+sha256sums=('13637e44dbeb27be4e4fe96b4dfca18857a999727852aeb59984768e33de7eb8'
+            'ff4d67efa56bd5bc3ef53e1b229519586de140c3278086b95b57dd719bb7f5eb')
+
+prepare() {
+    cd ${pkgname}-${pkgver}
+    patch -p1 < ../xdg.patch
+}
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
