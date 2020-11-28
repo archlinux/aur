@@ -6,10 +6,10 @@ _pkgname=${pkgname}
 _githuborg=${_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Develop Banch. Debian package"
 #set to native architecture with dpkg
-#_pkgarch=$(dpkg --print-architecture)
+_pkgarch=$(dpkg --print-architecture)
 #Uncoment to select architecture - not working currently
 #_pkgarch=amd64
-_pkgarch=arm64
+#_pkgarch=arm64
 #_pkgarch=armhf
 #leave arch package as any
 arch=('any')
@@ -70,7 +70,6 @@ prepare() {
 }
 
 build() {
-  _defaults=(env )
 local GOPATH=${srcdir}/go
 local GOBIN=${GOPATH}/bin.${_pkgarch}
 local GOAPPS=${GOPATH}/apps.${_pkgarch}
@@ -214,9 +213,10 @@ _msg2 'installing readonly-cache systemd service'
 #install -Dm755 ${srcdir}/readonlycache ${_pkgdir}/usr/bin/readonlycache ##this was installed from the GOBIN
 install -Dm644 ${srcdir}/${_scripts}/readonly-cache.service ${_pkgdir}/etc/systemd/system/readonly-cache.service
 
-_msg2 'installing the control file and postinst script'
+_msg2 'installing the control file, postinst & postrm scripts'
 install -Dm755 ${srcdir}/${_pkgarch}.control ${_pkgdir}/DEBIAN/control
 install -Dm755 ${srcdir}/${_scripts}/postinst.sh ${_pkgdir}/DEBIAN/postinst
+install -Dm755 ${srcdir}/${_scripts}/postrm.sh ${_pkgdir}/DEBIAN/postrm
 
 _msg2 'creating the debian package'
 #create the debian package
