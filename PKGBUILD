@@ -4,17 +4,25 @@
 
 pkgbase=bullet-multithreaded
 pkgname=('bullet-multithreaded' 'bullet-multithreaded-docs' 'python-pybullet-multithreaded')
-pkgver=3.05
-pkgrel=2
+pkgver=3.07
+pkgrel=1
 pkgdesc="A 3D Collision Detection and Rigid Body Dynamics Library with multithreading support"
 arch=('x86_64')
 url="http://www.bulletphysics.com/Bullet/"
 license=('custom:zlib')
 makedepends=('cmake' 'doxygen' 'graphviz' 'ttf-dejavu' 'mesa' 'glu' 'python' 'python-numpy' 'python-setuptools' 'ninja')
 source=("bullet-${pkgver}.tar.gz::https://github.com/bulletphysics/bullet3/archive/${pkgver}.tar.gz"
-                bullet3_examplebrowser.sh)
-sha512sums=('4cb67547b466e01f6c2258b1f350fdfac0f2dc73a7962b6e196491e6722e1cd22cdfe80d7b2f4e1e92a90f91e277bff5cabfd0f55ef55010f9a4d7286843cecd'
-            '8741ad94b6c46c226d89aebc8ab06d8a11bac3c04d3f0a2bf7a7524792a3375aa7bf7d295410b16fbeb4c348a31057b4570acdebe9bbaea251f44daca8d9fe81')
+                "local://bullet3_examplebrowser.sh"
+                "local://0001-bump-up-version-to-3.07.patch")
+sha512sums=('31fc7cb4ed8b939abc9eeb0a8f6fff3a454ea4ebcffd797fd35a2320fe3ab222fcd315569809ea148d0efff47267f5eec9f4bf7aaf07730a06aa9babd2abc9a6'
+            '8741ad94b6c46c226d89aebc8ab06d8a11bac3c04d3f0a2bf7a7524792a3375aa7bf7d295410b16fbeb4c348a31057b4570acdebe9bbaea251f44daca8d9fe81'
+            '3874145969414aed2cacfd9968d634cedff1abe67009103addb22e7db70f9b19b1cf6427703876529317c4f2eeb323d388eaadb6f58e2041ce56da83ec03a63f')
+
+prepare() {
+    cd bullet3-${pkgver}
+    # fix version
+    patch --forward --strip=1 --input="${srcdir}/0001-bump-up-version-to-3.07.patch"
+}
 
 build() {
 
