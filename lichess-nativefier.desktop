@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Lichess
+Comment=Play chess on lichess.org
+Exec=lichess
+Icon=lichess
+Terminal=false
+Categories=Game;Chess;Nativefier;
