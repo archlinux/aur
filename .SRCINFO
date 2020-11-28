@@ -1,0 +1,26 @@
+pkgbase = com.yyets
+	pkgdesc = 人人影视，分享让世界更精彩 人人影视Linux客户端支持在线观看、离线缓存、P2P加密传输、全面覆盖平台、自动下载追剧、更安全更极速。全程加密的P2P传输，让热门资源下载更快。支持UOS 20、Deepin 20操作系统。
+	pkgver = 3.2.9.1
+	pkgrel = 1
+	url = http://yyets.com/
+	arch = x86_64
+	license = custom
+	depends = aria2
+	depends = x264
+	depends = x265
+	depends = libwebp
+	depends = libvpx
+	depends = libva
+	depends = portaudio
+	depends = qt5-webchannel
+	depends = qt5-multimedia
+	depends = tesseract
+	depends = opencv
+	depends = qt5-serialport
+	depends = libebur128
+	depends = libssh
+	source = RRshare_uos_amd64.deb::https://od.zhullyb.workers.dev/?file=/linux/RRshare_uos_amd64.deb
+	sha512sums = 41f9e97f7d3723c6b1a68b793c111686
+
+pkgname = com.yyets
+
