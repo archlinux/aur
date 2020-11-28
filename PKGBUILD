@@ -3,7 +3,7 @@
 pipname=pyvips
 pkgname=python-$pipname
 pkgver=2.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="binding for the libvips image processing library, API mode"
 arch=(any)
 url="https://github.com/libvips/pyvips"
@@ -18,8 +18,12 @@ pkgver() {
 package() {
 	pip install $pipname \
 		--root=$pkgdir \
+		--build=./ \
 		--no-user \
 		--no-deps \
 		--ignore-installed \
 		--quiet
+
+	install -Dm644 $(find -name LICENSE*) \
+		-t "$pkgdir/usr/share/licenses/$pkgname"
 }
