@@ -2,13 +2,13 @@
 
 pkgname=zettlr
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
 license=('GPL' 'custom') # Noted that the icon and name are copyrighted
 depends=(electron ttf-webhostinghub-glyphs otf-crimson-text)
-makedepends=(yarn git gulp electron-forge)
+makedepends=(yarn git gulp)
 optdepends=('pandoc: For exporting to various format'
             'texlive-bin: For Latex support'
             'ttf-lato: Display output in a more comfortable way')
@@ -67,7 +67,7 @@ build() {
     yarn install --pure-lockfile --cache-folder "${srcdir}/cache"
 
     cd "${srcdir}/Zettlr"
-    electron-forge make || true # always failed anyway, we just want the outcome .webpack directory
+    node node_modules/.bin/electron-forge make || true # always failed anyway, we just want the outcome .webpack directory
 
     cd "${srcdir}/Zettlr/.webpack"
 
