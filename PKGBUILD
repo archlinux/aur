@@ -19,7 +19,7 @@ package() {
   _pythonversion=$(python --version | awk -F ' ' '{print substr($2, 1, length($2)-2)}')
   gendesk -f -n --pkgname "${pkgname}" \
           --pkgdesc "$pkgdesc" \
-          --name "Clickmaster2000" \
+          --name "ClickMaster2000" \
           --comment "$pkgdesc" \
           --exec "${pkgname}" \
           --categories 'Utility;Science;Application' \
