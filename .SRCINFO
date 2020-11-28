@@ -1,0 +1,16 @@
+pkgbase = roll-rs
+	pkgdesc = A rust dice rolling application using the standard dice notation
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/finitum/roll-rs
+	arch = x86_64
+	license = EUPL-1.2
+	makedepends = cargo
+	provides = roll-rs
+	conflicts = dice-roller-git
+	conflicts = roll-rs-git
+	source = roll-rs-0.1.0.tar.gz::https://github.com/finitum/roll-rs/archive/0.1.0.tar.gz
+	sha512sums = e09d527c522e834110f901a5ba9bbe2bcbefdda5eb1f6e9c28bfc02a407a8026a5efd6ef885dfd75a96558eab9dc5f04bd8ab6f468c7427cada2622f93871427
+
+pkgname = roll-rs
+
