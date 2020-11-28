@@ -12,7 +12,7 @@ license=("custom")
 depends=('aria2' 'x264' 'x265' 'libwebp' 'libvpx' 'libva' 'portaudio' 'qt5-webchannel' 'qt5-multimedia' 'tesseract' 'opencv' 'qt5-serialport' 'libebur128' 'libssh')
 source=("RRshare_uos_amd64.deb::https://od.zhullyb.workers.dev/?file=/linux/RRshare_uos_amd64.deb")
 
-sha512sums=('41f9e97f7d3723c6b1a68b793c111686')
+md5sums=('41f9e97f7d3723c6b1a68b793c111686')
 
 package(){
     cd ${srcdir}

@@ -20,7 +20,7 @@ pkgbase = com.yyets
 	depends = libebur128
 	depends = libssh
 	source = RRshare_uos_amd64.deb::https://od.zhullyb.workers.dev/?file=/linux/RRshare_uos_amd64.deb
-	sha512sums = 41f9e97f7d3723c6b1a68b793c111686
+	md5sums = 41f9e97f7d3723c6b1a68b793c111686
 
 pkgname = com.yyets
 
