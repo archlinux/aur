@@ -51,7 +51,7 @@ _major=5.9
 _minor=11
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,8 +72,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v6-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v6-sep/0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0003-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0004-efivarfs-revert-fix-memory-leak-in-efivarfs_create.patch"
         "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
@@ -314,10 +316,12 @@ sha512sums=('6a85177d72862769f203d8dd8ad7986e60cd57382c1cc907826c1bae40e725d8d54
             'SKIP'
             '12a2d17f719edefc19078dc64badf7049132e053bc242546c83063400dc28a7f3f2c81c5f6d8d375e4a176659d69dd4da08d141f67e835fa8aca154e7d1c026e'
             '96427eecb0078ce57a40ef4ee78d3576216f27390ba6b9dfbb851f4d969558a82b698cc633217ad8f6b9d991e7eaebd613ed4bd5741cafe7fa40b2502dacd43a'
-            '495ff776eac1fd43a87ab6099d1cb7737b96038e9d28c42bf554c58b0f2632ac383aea0551e9700988a5cd4ed20b9127c8a9ac298ff0616cee6b0e7fd21d1469'
-            'da9f7cf27a3932ad12f971cd6637a01e93a381c1762cbaf406c125467267bf27ea4ae753071c2a111105e7b8d4d79d1a7b9b153d11f7faca7ecd921b3ae36efe'
+            '45a44a1e5cee722d6ef1182697be13b9400056f26aa2c6a7302bf8759ddbfb6ae6d732b07ab56eb0468072716812702dc17a1e076cbdfce4891be522006a817b'
+            'cdb85aedbd83eee74e2350eb3d9ac0a8da69036fe17d3a7ff8d0a9d0a5e4f92a2eaf88866d0f6dfc320fd00074c39b81a1c4fa9addee8adf288a650023ed5e07'
+            '1a9312d86ae1ba7c8e795f7e3b9e57aa9151a394508768d6789f34c84e95450bfe2131e9cd87a86a01c65f50562640c60b79625384c2307e60a5156e93821d11'
+            '07e8fc824562e278badd0b6d4160a5b008abd088ad4c97b1e804b0863664bbced4e2737a647c7edab12ab15559f0bcfbe3fba26d23e6933e752ef194634c6213'
             'b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6'
-            'defb54e4f0dc5aeeb9a927b6b73d870d697c60d21692429ee318a5ecb39e080a1aadc2b0a586db393014ba264cfc5d58ddf3929090259aa77789c7e2210edd09')
+            '4c8709b402943941152cc9b659691fae9c31bb3a69602c964c69d6e5400224d244c3867198340a3662ab482e28dbc54f5d56d90bb32e69a958c3ee2e454d4438')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
