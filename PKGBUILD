@@ -16,7 +16,7 @@ sha512sums=('fde934c2fab5ad06b1f02abb43423ffeb780cf1002a7348d08bf6d59a84cb4d7e46
 
 
 build() {
-	#build drone-runner-docker
+	#build boilr binary
 	cd "$srcdir/$pkgname-$pkgver"
 	
 	go build \
@@ -24,7 +24,6 @@ build() {
 		-buildmode=pie \
 		-mod=readonly \
 		-modcacherw \
-		-tags "nolimit" \
 		-gcflags "all=-trimpath=${PWD}" \
 		-ldflags "-linkmode external -extldflags \"${LDFLAGS}\""
 }
