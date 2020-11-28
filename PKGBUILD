@@ -7,13 +7,17 @@ pkgdesc="Program used to perform Lucas-Lehmer tests of Mersenne numbers. Can be 
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://www.mersenneforum.org/mayer/README.html"
 license=('FDL1.3')
-source=("https://www.mersenneforum.org/mayer/src/C/mlucas_v19.txz")
-md5sums=('10906d3f1f4206ae93ebdb045f36535c')
+source=("https://www.mersenneforum.org/mayer/src/C/mlucas_v19.txz"
+'fp-link.patch'
+'sysctl-missing.patch')
+md5sums=('10906d3f1f4206ae93ebdb045f36535c'
+'04b7e30ea09677f239195f46c9f14966'
+'6959099d2b465f156c7d375b644d9dec')
 
 prepare() {
 cd "${srcdir}"/"${pkgname}"_v"${pkgver}"
-patch -p1 < "${srcdir}/sysctl-missing.patch"
-patch -p1 < "${srcdir}/fp-link.patch"
+patch -R -p1 < "../../sysctl-missing.patch"
+patch -R -p1 < "../../fp-link.patch"
 }
 
 build() {
@@ -59,7 +63,7 @@ if [[ $CARCH == "arm" || $CARCH == "aarch64" ]]
 fi
 #check the build log, to see if it empty, then link
 
-if grep error build.log > /dev/null;
+if ! grep error build.log > /dev/null;
 then
    gcc -g -o ../Mlucas *.o -lm -lpthread -lrt
 fi
@@ -67,5 +71,5 @@ fi
 
 package() {
 cd "${srcdir}"/"${pkgname}"_v"${pkgver}"
-install -Dm755 mlucas "${pkgdir}"/usr/bin/mlucas
+install -Dm755 Mlucas "${pkgdir}"/usr/bin/mlucas
 }

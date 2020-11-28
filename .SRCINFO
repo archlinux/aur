@@ -9,7 +9,11 @@ pkgbase = mlucas
 	arch = aarch64
 	license = FDL1.3
 	source = https://www.mersenneforum.org/mayer/src/C/mlucas_v19.txz
+	source = fp-link.patch
+	source = sysctl-missing.patch
 	md5sums = 10906d3f1f4206ae93ebdb045f36535c
+	md5sums = 04b7e30ea09677f239195f46c9f14966
+	md5sums = 6959099d2b465f156c7d375b644d9dec
 
 pkgname = mlucas
 
