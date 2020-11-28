@@ -1,7 +1,7 @@
 # Ruijie Yu (first.last@outlook.com)
 pkgname=ctre
 _pkgname=compile-time-regular-expressions
-pkgver=3.2
+pkgver=3.3.4
 pkgrel=1
 pkgdesc='A Compile time PCRE (almost) compatible regular expression matcher'
 url="https://github.com/hanickadot/$_pkgname/"
@@ -18,7 +18,8 @@ conflicts=("${_pkgname}")
 source=(
     "$url/archive/v$pkgver.tar.gz"
 )
-sha512sums=('853559fbb808610dad0a825d85db5e6fe9398a2c7838dfde93e0766f2072104ff063a7ae1bf4ce49e3b12c977bc51861855d023527c764631875dfd41cc09ad4')
+sha512sums=('2b1880e279d3458d2943f5154011a9f9dabeb216c56fc20a80b37b2485a3eb0b1c59f6d093a45416ce23d77c4b69fecbf5acea2f8022e3dc3014611e9df02464')
+b2sums=('a87ca6d56ca5526ce526638d4f711f5be2039f7e5ecd3ac37629c4bc1e976b96e289877319031b7e2837badced97ad98ba8d397ed2d801e71e22f099f34bb44a')
 _cmake_config=Release
 
 _extracted="$_pkgname-$pkgver"
