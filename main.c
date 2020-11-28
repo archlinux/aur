@@ -90,6 +90,7 @@ int main(int argc, char *argv[]) {
 			break;
 		}
 		XDestroyImage(image);
+		fflush(stdout);
 	}
 
 	/* will be done on connection close anw */
