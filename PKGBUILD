@@ -8,7 +8,6 @@ pkgdesc="Board support package for Tinker Board / S (Bluetooth, HDMI, Audio...)"
 arch=('armv7h')
 url="https://github.com/armbian/build"
 license=('GPL2')
-makedepends=('curl')
 depends=('bluez' 'systemd' 'util-linux' 'wireless_tools' 'xorg-xrandr')
 install="$pkgname.install"
 source=(

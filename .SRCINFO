@@ -6,7 +6,6 @@ pkgbase = bsp-tinkerboard
 	install = bsp-tinkerboard.install
 	arch = armv7h
 	license = GPL2
-	makedepends = curl
 	depends = bluez
 	depends = systemd
 	depends = util-linux
@@ -26,3 +25,4 @@ pkgbase = bsp-tinkerboard
 	sha512sums = SKIP
 
 pkgname = bsp-tinkerboard
+
