@@ -53,7 +53,7 @@ sha256sums=('SKIP'
 
 prepare() {
 
-  cd ${pkgname}-${pkgver}
+  cd Waterfox
 
   # Add patches
   patch -Np1 -i ../g3-kde.patch
@@ -121,7 +121,7 @@ END
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd Waterfox
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -181,7 +181,7 @@ package_waterfox-g3-kpe() {
              'hunspell-en_US: Spell checking, American English')
   provides=("waterfox-g3=${pkgver}")
 
-  cd ${pkgname}-${pkgver}
+  cd Waterfox
 
   DESTDIR="$pkgdir" ./mach install
 
