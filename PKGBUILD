@@ -8,7 +8,7 @@ url="https://gitlab.com/LynxOS/lds"
 license=('GPL')
 makedepends=('git')
 source=("$url/-/archive/$pkgver/lds-$pkgver.tar.gz")
-md5sums=('SKIP')
+md5sums=('7bf884d646b6be11a9ed0d8c1bc0e00d')
 depends=(
         'dex'
         'qt5-styleplugins'
@@ -18,10 +18,9 @@ depends=(
         'polkit-gnome'
         'lynx-menu-data'
         'network-manager-applet'
-        'gala'
         'mutter'
         'tint2'
-        'pavucontrol-qt'
+        'pavucontrol'
         'pa-applet-git'
         )
 
