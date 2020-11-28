@@ -58,13 +58,31 @@ build() {
       -DSDL_STATIC=OFF \
       -DSDL_DLOPEN=ON \
       -DARTS=OFF \
+      -DARTS_SHARED=OFF \
       -DESD=OFF \
+      -DESD_SHARED=OFF \
       -DNAS=OFF \
+      -DNAS_SHARED=OFF \
       -DALSA=ON \
+      -DOSS=OFF
+      -DHIDAPI=OFF \
+      -DHIDAPI_LIBUSB=OFF \
+      -DJOYSTICK=OFF \
+      -DJOYSTICK_VIRTUAL=OFF \
+      -DJOYSTICK_MFI=OFF \
+      -DHAPTIC=OFF \
+      -DSENSOR=OFF \
+      -DSNDIO=OFF \
+      -DSNDIO_SHARED=OFF \
+      -DPULSEAUDIO=OFF \
       -DPULSEAUDIO_SHARED=OFF \
       -DVIDEO_WAYLAND=ON \
       -DRPATH=OFF \
       -DCLOCK_GETTIME=ON \
+      -DVIDEO_RPI=OFF \
+      -DIBUS=OFF \
+      -DFCITX=OFF \
+      -DJACK=OFF \
       -DJACK_SHARED=OFF
   make -C build
 }
