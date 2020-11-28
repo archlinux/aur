@@ -2,7 +2,7 @@
 pkgname=ooniprobe-desktop
 pkgver=3.1.1
 _cliver=3.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="The next generation OONI Probe desktop app"
 arch=('x86_64')
 url="https://ooni.org"
@@ -59,6 +59,7 @@ package() {
 	install -d "$pkgdir/usr/bin"
 	ln -sf "/opt/OONI Probe/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
+	install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
 	install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
 
 	for icon_size in 16 48; do
