@@ -4,10 +4,10 @@
 
 pkgname=hplip-plugin
 pkgver=3.20.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Binary plugin for HPs hplip printer driver library"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="http://hplipopensource.com/node/309"
+url="https://developers.hp.com/hp-linux-imaging-and-printing/binary_plugin.html"
 license=('custom:proprietary')
 depends=("hplip>=$pkgver") 
 backup=(var/lib/hp/hplip.state)
