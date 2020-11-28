@@ -1,13 +1,14 @@
 # Maintainer: Dan Elkouby <streetwalkermc@gmail.com>
 # Contributor: Jerome Leclanche <jerome@leclan.ch>
+# Contributor: Maxim Baz <$pkgname at maximbaz dot com>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Brett Cornwall <ainola@archlinux.org>
 
 pkgname=sway9
-pkgver=1.5
+pkgver=1.5.1
 epoch=1
-pkgrel=4
-_commit=5f2de1175c0197565eaa4579703fc94e7890f07c
+pkgrel=1
+_commit=279c7e11d729e25d1e8dd1e49ad289aa6b468d09
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (personal build)'
 arch=(x86_64)
 url='https://github.com/Streetwalrus/sway9'
@@ -44,7 +45,6 @@ source=("git+https://github.com/Streetwalrus/$pkgname.git#commit=$_commit"
         "50-systemd-user.conf")
 sha512sums=('SKIP'
             '57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e')
-validpgpkeys=('9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A') # Drew DeVault
 
 build() {
   mkdir -p build
