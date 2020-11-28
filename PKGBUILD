@@ -73,7 +73,7 @@ source=("git+https://github.com/matrix-org/synapse.git#branch=develop"
 
 
 md5sums=('SKIP'
-         'c4352682c5fb5eb0440ceb54a20ac4cb'
+         '02539d38e16ba49573adebd029a71858'
          'ecd9f66fb57fe1a2e1e2df07a460a35b')
 
 backup=('etc/synapse/log_config.yaml')
