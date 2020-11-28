@@ -1,0 +1,12 @@
+diff --git common.h common.h
+index 7470006..307c317 100644
+--- common.h
++++ common.h
+@@ -10,6 +10,7 @@
+ 
+ #pragma once
+ 
++#include <stdexcept>
+ #include <string>
+ #include <vector>
+ #include <cstring>
