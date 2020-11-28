@@ -3,7 +3,7 @@
 
 pkgname=globe-cli-git
 _pkgname=globe
-pkgver=0.2.0.r5.g95413f2
+pkgver=0.2.0.r6.g3261d3f
 pkgrel=1
 pkgdesc="ASCII globe generator (git)"
 arch=('x86_64')
@@ -22,9 +22,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  # TODO: Use `--locked` flag for reproducibility.
-  # Tracking issue: https://github.com/adamsky/globe/pull/21#issuecomment-729935054
-  cargo build --release
+  cargo build --release --locked
 }
 
 package() {
