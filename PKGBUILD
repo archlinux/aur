@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-fixed-ss08
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
 arch=('any')
 url='https://typeof.net/Iosevka/'
@@ -13,6 +13,6 @@ sha256sums=('b8d6ed723e9153dec131f0123d9e9f93b6929c2d75c0b2b25ed46daa65caa5d7'
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF/
-    install -m644 ttf/*.ttf ${pkgdir}/usr/share/fonts/TTF/
+    install -m644 *.ttf ${pkgdir}/usr/share/fonts/TTF/
     install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
 }
