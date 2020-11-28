@@ -1,16 +1,19 @@
 # Maintainer: Dario Ostuni <dario.ostuni@gmail.com>
 
 pkgname=binfmt-wasm
-pkgver=20190907
+pkgver=20201128
 pkgrel=1
 pkgdesc="Register wasmtime interpreter for wasm format"
 arch=('any')
 url="http://www.freedesktop.org/software/systemd/man/binfmt.d.html"
 license=('MPL2')
 depends=('wasmtime')
-source=("wasm.conf")
-sha384sums=('a7f7237a20bfd41484e6abfe1d5224cdd6ca1f7e563c04ef8b80c0a7e9893c2a5d6a34876e85ef7275d06ae7c9242c23')
+source=("wasm.conf"
+        "binfmt-wasmtime-wrapper")
+b2sums=('0e71d92e434a21000beb0425f0931ed662453c5f93ce81772e191d34a42bb3753de21a57888fba70320ececd7e27566f404fec90e8fadbafda97cedc89096c11'
+        '4eab85549930360e8705208189bf1cfa6753120162034bf00249b07b6573d3cadb211ee7c0fc1f0ddb056280fb5dd8c61064af16dd089da5b80fbc599d7d2510')
 
 package() {
+    install -Dm 755 "$srcdir/binfmt-wasmtime-wrapper" "$pkgdir/usr/bin/binfmt-wasmtime-wrapper"
     install -Dm 644 "$srcdir/wasm.conf" "$pkgdir/usr/lib/binfmt.d/wasm.conf"
 }
