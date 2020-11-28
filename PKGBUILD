@@ -26,7 +26,7 @@ optdepends=('pepper-flash: support for Flash content'
             'kwallet: for storing passwords in KWallet on KDE desktops')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
-        chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
+        https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         chromium-skia-harmony.patch)
 sha256sums=('29a8e4ea82edec2fdcf34ece68323bec7ab90f3d5669e6b77f58cff9c278f741'
