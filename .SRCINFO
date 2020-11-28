@@ -1,7 +1,7 @@
 pkgbase = zettlr
 	pkgdesc = A markdown editor for writing academic texts and taking notes
-	pkgver = 1.7.5
-	pkgrel = 3
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://www.zettlr.com
 	arch = x86_64
 	license = GPL
@@ -9,14 +9,36 @@ pkgbase = zettlr
 	makedepends = yarn
 	makedepends = git
 	makedepends = gulp
-	depends = electron9
+	makedepends = electron-forge
+	depends = electron
 	depends = ttf-webhostinghub-glyphs
 	depends = otf-crimson-text
 	optdepends = pandoc: For exporting to various format
 	optdepends = texlive-bin: For Latex support
 	optdepends = ttf-lato: Display output in a more comfortable way
-	source = git+https://github.com/Zettlr/Zettlr.git#commit=0c4a2c21ca08464127dcc11dedf9117eb57b7bac
-	sha1sums = SKIP
+	options = !strip
+	source = git+https://github.com/Zettlr/Zettlr.git#commit=b7165b4c3e69cec8c62b7203df41fcbeb91d178d
+	source = https://github.com/citation-style-language/locales/archive/master.zip
+	source = https://raw.githubusercontent.com/citation-style-language/styles/master/chicago-author-date.csl
+	source = https://translate.zettlr.com/download/de-DE.json
+	source = https://translate.zettlr.com/download/en-GB.json
+	source = https://translate.zettlr.com/download/en-US.json
+	source = https://translate.zettlr.com/download/fr-FR.json
+	source = https://translate.zettlr.com/download/ja-JP.json
+	source = https://translate.zettlr.com/download/zh-CN.json
+	source = https://translate.zettlr.com/download/es-ES.json
+	source = https://translate.zettlr.com/download/ru-RU.json
+	sha256sums = SKIP
+	sha256sums = 4a3b89033d6bbb669a7d046d23224dc3eaaa2840cc8a5dd2c5d6201a61e3f1a1
+	sha256sums = 2b7cd6c1c9be4add8c660fb9c6ca54f1b6c3c4f49d6ed9fa39c9f9b10fcca6f4
+	sha256sums = 192b9db172cbc2f1e9e1c5f7aee4757f1ef960c851561c001fe877b92bf2fff2
+	sha256sums = 71bd0c5462dc7dbcc38e7d6f31eb7d0cfe7cfcb1291ce3d670da43195c98a460
+	sha256sums = b7583049214837ae023495dc1264089f8f43c22d788b66ef2c31fadfcf911b19
+	sha256sums = ccfd645e08d8cb25acd867209773305dd29a224e0496b5c4f1412651e1406406
+	sha256sums = 8c9a649286d4b7cb90c9481408de10ae6a1ae103340b46d1c10e7bfa4defd188
+	sha256sums = 1e6f2fa86679f1bbdb669acbc079b5b468a355ba1827f4ff8e81cba6148dc114
+	sha256sums = 8729104501d29682171c91cf8f095fa52967ef061dbaf7390fd57be88bd507bd
+	sha256sums = c03aee051a159c32ad44ac6ead384343a0850112ba95663da2b390fd115806a4
 
 pkgname = zettlr
 
