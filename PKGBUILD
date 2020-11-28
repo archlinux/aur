@@ -11,7 +11,6 @@ arch=('aarch64')
 _desc="AArch64 multi-platform Sunxi"
 url="https://github.com/armbian/build"
 license=('GPL2')
-makedepends=('curl')
 options=('!strip')
 source=(
   "linux.preset"
