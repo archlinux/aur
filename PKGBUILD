@@ -15,11 +15,11 @@ _replacesoldkernels=() # '%' gets replaced with kernel suffix
 _replacesoldmodules=() # '%' gets replaced with kernel suffix
 
 pkgbase=linux-libre
-pkgver=5.8.13
+pkgver=5.9.9
 pkgrel=1
 pkgdesc='Linux-libre'
-rcnver=5.8.13
-rcnrel=armv7-x13
+rcnver=5.9.1
+rcnrel=armv7-x12
 url='https://linux-libre.fsfla.org/'
 arch=(i686 x86_64 armv7h)
 license=(GPL2)
@@ -29,7 +29,7 @@ makedepends=(
 )
 makedepends_armv7h=(uboot-tools vboot-utils dtc) # required by linux-libre-chromebook
 options=('!strip')
-_srcname=linux-5.8
+_srcname=linux-5.9
 source=(
   "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_srcname##*-}-gnu/linux-libre-${_srcname##*-}-gnu.tar.xz"{,.sign}
   "https://linux-libre.fsfla.org/pub/linux-libre/releases/$pkgver-gnu/patch-${_srcname##*-}-gnu-$pkgver-gnu.xz"{,.sign}
@@ -47,7 +47,7 @@ source=(
   0002-fix-Atmel-maXTouch-touchscreen-support.patch
   # extracted patches from Arch Linux kernel sources
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
+  0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch
   sphinx-workaround.patch
 )
 source_armv7h=(
@@ -70,9 +70,9 @@ validpgpkeys=(
   '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
   '6DB9C4B4F0D8C0DC432CF6E4227CA7C556B2BA78' # David P.
 )
-sha512sums=('ee31b02ebb50fb061f58c9d6011c2fcda93931b2b443adb19916928a4ea1c8e60a953781f627d4fc25d0f095fa54ff78cd75850ed3a2128bbb42c6e4246af0d6'
+sha512sums=('e917ed80f1c0e83603c4b57255275f3800568ec170742993521528b7190d9f24b715996ad708839bd67a19560d6ebe364e04bd66c054e076144f44c3d9b63208'
             'SKIP'
-            '887b0aabea2fb3cc00dfe7bcfc068cc6e8f57dfb2b23f34b3dec3f0e124b438c0115f78d31fedb089ebbb3f546a629ddf4ffddf8f1cc4ba04fc5d5a81be7c87c'
+            '0b2d27cf2fae6763871a06c73039488b736e80ab43c658858407b41570a114b5cd6d226b9258180561d66bc1f836fde52686b1f21259308c8e1ff0af4b564f8a'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -80,8 +80,8 @@ sha512sums=('ee31b02ebb50fb061f58c9d6011c2fcda93931b2b443adb19916928a4ea1c8e60a9
             'SKIP'
             '267295aa0cea65684968420c68b32f1a66a22d018b9d2b2c1ef14267bcf4cb68aaf7099d073cbfefe6c25c8608bdcbbd45f7ac8893fdcecbf1e621abdfe9ecc1'
             'SKIP'
-            'fd0414f15e7eba84f6882807dad52c15efdaab8cb9c93b638a97b0ad30bcc8ba023b4895ab92efd277037940c63516d5dfc509dea30af613792b74936a90647e'
-            '985a1550a2fc28b620e96a819f2deb34de88f4cda4fa752ebbf78444ce6599b9210c71938d028414ef7a5b78b4fa146e2453e6395fa6c78da357c81886001f72'
+            'd029e46f6ba20f280b338f998248cd918f259c8eb379617c7be8b8694c41d99c2a97ecbb84b76285af81bca2ca8753d0ba675c98f6f81f6398b023e05ee9e0e8'
+            '8fdbc9bbbe29d4e93f3a413ae5e439e29c4da213985f2ca0b7187c76c5a70eb819362e2179e37cdcbb62890bcaab281aa6967b4cb9151455d0f9a91a03cb2270'
             '49f176a1e0201ad4d2ad9e35a01d67bc8a5082cd437c347cae97b78daa9c287e1acf724b5614f7088e262eb28ad0f6a7b192dfcbe3386abf77614d9fc63a543b'
             '53103bf55b957b657039510527df0df01279dec59cda115a4d6454e4135025d4546167fa30bdc99107f232561c1e096d8328609ab5a876cf7017176f92ad3e0b'
             '167bc73c6c1c63931806238905dc44c7d87c5a5c0f6293159f2133dfe717fb44081018d810675716d1605ec7dff5e8333b87b19e09e2de21d0448e447437873b'
@@ -89,10 +89,10 @@ sha512sums=('ee31b02ebb50fb061f58c9d6011c2fcda93931b2b443adb19916928a4ea1c8e60a9
             '143dea30c6da00e504c99984a98a0eb2411f558fcdd9dfa7f607d6c14e9e7dffff9cb00121d9317044b07e3e210808286598c785ee854084b993ec9cb14d8232'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '0dc489140a17ff872c799f025b35cce6e61dc7c711047fd5faaa40bf3b6e31ba64c84f2fae6830d238412f1976f4c087db80ac59389be99bb7e24c72e4eec7fd'
-            '61e3d6fb673397b745609942b8127fe27345f8ce06c4282644a9d231a902e1fb7b3672a94bf879bfebea260845aa72e5588df22be3d2cea2a6b194d4e6a7691d'
+            '2714089248984835df2bc57a1f3a5ab9b18a349195c4c7cc87c1d1c3b63a547defb476ab66f0bf6165a285747ca466a9324903c8b4a8b43a39c20cdbeab859e8'
+            '58cc7870f8fa0cd57d9662cab1c21c4af571cc133a5d6d56959ba08faac61e74f36c288407ebddf9beeeb322e7777ee31589f19ab796e95e7d95cc0c8f9b186e'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be')
-sha512sums_armv7h=('1ee5ac5f2ffc1158fc6e26492dd943dcc45df64fb87c6936eaf3987b7d77878b501dab809c08c41779333ec816d2c5a4bfc887ab98f00ecbcb9456a9a4584a65'
+sha512sums_armv7h=('078c3eeec1dbd429fa48dd7c8d030ba62379aa06a4e2ad70d387e22041a2d42153d050575ae35291fc70ff6ba6cb2a9d097a7f225a2e4500d377438ea8a98251'
                    'SKIP'
                    'ac5a06427905c33b48817eef0c335d6787b6d1440751450977faf41c649677a7ccb9ec32d0e5bbefcc6cd0fab7ab5920d7dd4e5a29b96f8915e636aca1ec7efd'
                    '7561561e6d1da2f383ac408384ffebe3490f14bcc8f797cf126d0bec5c6c774ebb6de7922c7538991ab70371aacc7fa65be647b17a691aba1a0eb604fdc7d1a7'
