@@ -1,4 +1,3 @@
-# Maintainer: zhaozhen <zhaozhen@uniontech.com>
 # Maintainer: zhullyb <zhullyb@outlook.com>
 
 pkgname=com.yyets
@@ -10,7 +9,7 @@ arch=("x86_64")
 url="http://yyets.com/"
 license=("custom")
 depends=('aria2' 'x264' 'x265' 'libwebp' 'libvpx' 'libva' 'portaudio' 'qt5-webchannel' 'qt5-multimedia' 'tesseract' 'opencv' 'qt5-serialport' 'libebur128' 'libssh')
-source=("RRshare_uos_amd64.deb::https://od.zhullyb.workers.dev/?file=/linux/RRshare_uos_amd64.deb")
+source=("RRshare_uos_amd64.deb::http://appdown.rrys.tv/RRshare_uos_amd64.deb")
 
 md5sums=('41f9e97f7d3723c6b1a68b793c111686')
 
