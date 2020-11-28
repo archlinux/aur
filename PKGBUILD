@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname=lime
-pkgver=4.4.6
+pkgver=4.4.13
 pkgrel=1
 pkgdesc="C++ library implementing Open Whisper System Signal protocol"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=("bctoolbox=$pkgver" 'soci>=4.0.0')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/BelledonneCommunications/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('baf89da4fcb73945c9d8fa9a0c820ce44b6214d532ecae7e4cf28706de8c8c16')
+sha256sums=('fca4b32c82e9fa1c2001c9c3a550a1f690af8d1b944717a8b5b3838e8b88ee5f')
 
 build() {
   mkdir -p build
