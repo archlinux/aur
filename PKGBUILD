@@ -3,30 +3,16 @@
 pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
 pkgver=1.1.0c
-_pkgver_ext=Beta
-_pkg_file_name=${_pkgname}${_pkgver_ext}_${pkgver}.deb
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote control and team work"
 arch=('x86_64')
 url="https://www.todesk.cn/"
 license=('custom' )
-makedepends=('xdg-user-dirs' 'tar')
+makedepends=('tar')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-source=("local://${_pkg_file_name}")
+source=("${_pkgname}-${pkgver}.deb::https://update.todesk.com/${_pkgname}Beta_${pkgver}.deb")
 sha256sums=('0d93806f7275be5487ed91fe4cfc4deea452a07508d4046a17f8ea7592905735')
-
-_DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
-if [ ! -f ${PWD}/${_pkg_file_name} ]; then
-  if [ -f $_DOWNLOADS_DIR/${_pkg_file_name} ]; then
-    ln -sfn $_DOWNLOADS_DIR/${_pkg_file_name} ${PWD}
-  else
-    echo ""
-    echo "The package can be downloaded here: "
-    echo "Please remember to put a downloaded package ${_pkg_file_name} into the build directory ${PWD} or $_DOWNLOADS_DIR"
-    echo ""
-  fi
-fi
 
 prepare() {
   install -dm 755 ${srcdir}/${_pkgname}
@@ -41,8 +27,8 @@ package() {
   install -Dm 755 usr/local/bin/${_pkgname} -t ${pkgdir}/usr/bin/
 
   # lib
-  find opt/${_pkgname}/lib     -type f -exec install -Dm755 {} ${pkgdir}/{} \;
-  find opt/${_pkgname}/plugins -type f -exec install -Dm755 {} ${pkgdir}/{} \;
+  find opt/${_pkgname}/lib     -type f -exec install -Dm644 {} ${pkgdir}/{} \;
+  find opt/${_pkgname}/plugins -type f -exec install -Dm644 {} ${pkgdir}/{} \;
 
   # font
   find opt/${_pkgname}/res     -type f -exec install -Dm644 {} ${pkgdir}/{} \;
@@ -60,4 +46,5 @@ package() {
   # icon
   install -Dm 644 usr/share/pixmaps/${_pkgname}.png -t ${pkgdir}/usr/share/pixmaps
 }
+
 # vim: set sw=2 ts=2 et:
