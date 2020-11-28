@@ -2,14 +2,14 @@
 
 _pkgname=lynx-desktop
 pkgname=${_pkgname,}
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="LynxOS Desktop Environment"
 url="https://gitlab.com/LynxOS/lde"
 depends=('lynx-ldk' 'gnome-menus' 'python-dbus' 'python-gobject' 'lynx-desktop-settings')
 license=('GPL')
 arch=('any')
-md5sums=('SKIP')
+md5sums=('ff8fa60a4a286ea356a8996bcd837dce')
 source=("$url/-/archive/$pkgver/lde-$pkgver.tar.gz")
 
 package() {
