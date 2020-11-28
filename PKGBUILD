@@ -7,8 +7,8 @@
 # Contributor: julian <pidanc_j at epita dot fr>
 
 pkgname=tpm-tools
-pkgver=1.3.9.1
-pkgrel=2
+pkgver=1.3.9.2
+pkgrel=1
 pkgdesc="Tools to manage and diagnose a TPM"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/trousers"
@@ -20,11 +20,11 @@ source=(http://downloads.sourceforge.net/project/trousers/${pkgname}/${pkgver}/$
         04-fix-FTBFS-clang.patch
         05-openssl1.1_fix_data_mgmt.patch)
 noextract=(${pkgname}-${pkgver}.tar.gz)
-sha1sums=('c35cb031c6b5220dd1c8a03995654fdd12aa3031'
-          'f87849fc46d8c8cab5b7a0fbc1a8de69f3fd1669'
-          'b40d56f3a7ca3ef231470cc401a73e178b698a4e'
-          '521e9f58e6740bc50979e8dc727a60b82ad4fae0'
-          '3fdf2d39a25f5c2e152ec44a457ffd2f7258d698')
+sha256sums=('8af837949a2ec30b195389ac8a2b31bc49fe315050751b7d4d0d432bf7812a97'
+            'fa3a8440b49b7ade6522e940587b72c08e5549ee44a46aabf9754eca6f39e614'
+            '8c6102112161890c4cdb398b529509ecf6f0c2ffe3d0d08ba09e120c48183d4b'
+            'ee00e8932526f16ae062fcaf06168f78d46c71fe2e41cfe67394023bafbb4fe6'
+            'b27b76b951e643c2c2a101b6852acef6160856042d5cf3f5d5c33f4eb8f63e98')
 
 prepare() {
   mkdir -p ${pkgname}-${pkgver}
