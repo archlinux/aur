@@ -1,0 +1,13 @@
+diff --unified --recursive --text mlucas_v19/src/Mlucas.c mlucas_v19-1/src/Mlucas.c
+--- mlucas_v19/src/Mlucas.c	2020-11-28 13:49:49.478452597 -0500
++++ mlucas_v19-1/src/Mlucas.c	2020-11-28 13:49:07.820195013 -0500
+@@ -100,7 +100,7 @@
+ char in_line[STR_MAX_LEN];
+ char *char_addr;
+ int char_offset;
+-FILE *fq;
++FILE *fp, *fq;
+ 
+ /* File access mode is a 3-character string, with the last of these being a mandatory null terminator: */
+ char FILE_ACCESS_MODE[3] = {'x','y','\0'};
+Only in mlucas_v19/src: Mlucas.c~

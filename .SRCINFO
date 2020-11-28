@@ -1,0 +1,15 @@
+pkgbase = mlucas
+	pkgdesc = Program used to perform Lucas-Lehmer tests of Mersenne numbers. Can be built on the ARM architecture.
+	pkgver = 19
+	pkgrel = 1
+	url = https://www.mersenneforum.org/mayer/README.html
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = FDL1.3
+	source = https://www.mersenneforum.org/mayer/src/C/mlucas_v19.txz
+	md5sums = 10906d3f1f4206ae93ebdb045f36535c
+
+pkgname = mlucas
+
