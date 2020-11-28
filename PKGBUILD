@@ -1,6 +1,6 @@
 # Maintainer: John Doe <kitterhuff@gmail.com>
-# Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
-# Contributor: Thomas S Hatch <thatch45@gmail.copm>
+# Previous Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+# Contributor: Thomas S Hatch <thatch45@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
@@ -18,7 +18,7 @@ source=("https://github.com/aide/aide/releases/download/v${pkgver}/aide-${pkgver
 sha256sums=('17f998ae6ae5afb9c83578e4953115ab8a2705efc50dee5c6461cef3f521b797'
             'SKIP'
             'c56b3d360d659614df2552c8dbf5ea500e44974d38c34c07f6cdd3ce4c4ad615')
-validpgpkeys=('2BBBD30FAAB29B3253BCFBA6F6947DAB68E7B931') # Hannes von Haugwitz <hannes@vonhaugwitz.com>
+validpgpkeys=('18EE86386022EF57') # Hannes von Haugwitz <hannes@vonhaugwitz.com>
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
