@@ -4,7 +4,6 @@ pkgbase = linux-sunxi
 	url = https://github.com/armbian/build
 	arch = armv7h
 	license = GPL2
-	makedepends = curl
 	noextract = linux.preset
 	noextract = 60-linux.hook
 	noextract = 90-linux.hook
@@ -42,3 +41,4 @@ pkgname = linux-sunxi-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - ARMv7 multi-platform Sunxi
 	provides = linux-headers=5.9.11
 	conflicts = linux-headers
+

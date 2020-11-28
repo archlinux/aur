@@ -11,7 +11,6 @@ arch=('armv7h')
 _desc="ARMv7 multi-platform Sunxi"
 url="https://github.com/armbian/build"
 license=('GPL2')
-makedepends=('curl')
 options=('!strip')
 source=(
   "linux.preset"
