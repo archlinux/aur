@@ -1,6 +1,6 @@
 pkgbase = dwmblocks-distrotube-git
 	pkgdesc = My own build of dwmblocks for use with my build of dwm.
-	pkgver = 1.0.r7.b8aecb3
+	pkgver = 1.0.r13.af63299
 	pkgrel = 1
 	url = https://gitlab.com/dwt1/dwmblocks-distrotube.git
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = dwmblocks-distrotube-git
 	makedepends = make
 	depends = ttf-hack
 	depends = ttf-joypixels
-	depends = dwm-distrotube-git
 	depends = libxft-bgra-git
 	provides = dwmblocks
 	conflicts = dwmblocks
