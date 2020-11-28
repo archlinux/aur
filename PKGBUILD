@@ -21,10 +21,11 @@ package(){
     mkdir -p "${pkgdir}"/opt/rrshare
     mv ${pkgdir}/opt/apps/com.yyets/entries/*   ${pkgdir}/usr/share/
     mv ${pkgdir}/opt/apps/com.yyets/files/*   ${pkgdir}/opt/rrshare/
+    rm ${pkgdir}/opt/rrshare/RRShare.sh
     rm -r ${pkgdir}/opt/apps/
     
     mkdir -p "${pkgdir}"/usr/bin
     ln -s /opt/rrshare/RRShare "${pkgdir}"/usr/bin/rrshare
-    sed -i 's|Exec=/opt/apps/com.yyets/files/RRShare.sh|Exec=/opt/rrshare/RRShare.sh|g' $pkgdir/usr/share/applications/com.yyets.desktop 
+    sed -i 's|Exec=/opt/apps/com.yyets/files/RRShare.sh|Exec=rrshare %U|g' $pkgdir/usr/share/applications/com.yyets.desktop 
 }
   
