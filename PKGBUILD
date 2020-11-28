@@ -8,7 +8,7 @@ arch=('armv7h')
 url="https://github.com/armbian/build"
 license=('GPL2')
 backup=('boot/boot.txt' 'boot/boot.scr')
-makedepends=('curl' 'uboot-tools')
+makedepends=('uboot-tools')
 install="$pkgname.install"
 source=(
   "mkscr"

@@ -6,7 +6,6 @@ pkgbase = uboot-tinkerboard
 	install = uboot-tinkerboard.install
 	arch = armv7h
 	license = GPL2
-	makedepends = curl
 	makedepends = uboot-tools
 	noextract = mkscr
 	noextract = boot.txt
@@ -21,3 +20,4 @@ pkgbase = uboot-tinkerboard
 	sha512sums = SKIP
 
 pkgname = uboot-tinkerboard
+
