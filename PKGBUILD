@@ -26,7 +26,7 @@
 
 
 pkgname=archey4
-pkgver=v4.8.1
+pkgver=v4.9.0
 pkgrel=1
 pkgdesc="A simple system information tool written in Python"
 arch=('any')
@@ -45,8 +45,8 @@ conflicts=('archey-git' 'archey2' 'archey3-git' 'pyarchey')
 install="${pkgname}.install"
 backup=("etc/${pkgname}/config.json")
 source=("${pkgname}_${pkgver}-${pkgrel}.tar.gz::https://github.com/HorlogeSkynet/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('9f74e0a67c6dba7b4936eeaecb895e26')
-sha1sums=('86a300fa9f30f9b87b0995ca9d4ef17b32ab34e7')
+md5sums=('d406fcf2810f3f5426c6c7e6954f51b3')
+sha1sums=('4a29f664b9a81809d2270a6494ada254e4d542ee')
 
 
 build() {
@@ -69,7 +69,7 @@ package() {
 		--skip-build
 
 	# Configuration file.
-	install -D -m0644 archey/config.json "${pkgdir}/etc/${pkgname}/config.json"
+	install -D -m0644 config.json "${pkgdir}/etc/${pkgname}/config.json"
 
 	# Manual page.
 	install -D -m0644 dist/archey.1.gz "${pkgdir}/usr/share/man/man1/archey.1.gz"
