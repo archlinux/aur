@@ -2,7 +2,7 @@
 
 pkgname=aria2p
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tool and library to interact with an aria2c daemon process with JSON-RPC"
 arch=('any')
 url="https://pawamoy.github.io/showcase/aria2p"
@@ -15,7 +15,7 @@ optdepends=('aria2: aria2c daemon'
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "xdg.patch")
 sha256sums=('13637e44dbeb27be4e4fe96b4dfca18857a999727852aeb59984768e33de7eb8'
-            'ff4d67efa56bd5bc3ef53e1b229519586de140c3278086b95b57dd719bb7f5eb')
+            '1ab5a896ec75ec950151cb98703c1622439b19e5e9aa6bbd4f9703224043778b')
 
 prepare() {
     cd ${pkgname}-${pkgver}

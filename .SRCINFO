@@ -1,7 +1,7 @@
 pkgbase = aria2p
 	pkgdesc = Command-line tool and library to interact with an aria2c daemon process with JSON-RPC
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pawamoy.github.io/showcase/aria2p
 	arch = any
 	license = ISC
