@@ -1,0 +1,18 @@
+pkgbase = libs76-hidpi-widget-git
+	pkgdesc = System76 HiDPI daemon widget library
+	pkgver = r12.1b9ddd8
+	pkgrel = 1
+	url = https://github.com/pop-os/hidpi-widget
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	depends = gtk3
+	depends = system76-hidpi-daemon
+	provides = libs76-hidpi-widget
+	conflicts = libs76-hidpi-widget
+	source = git+https://github.com/pop-os/hidpi-widget.git
+	sha256sums = SKIP
+
+pkgname = libs76-hidpi-widget-git
+
