@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rosapi
 	pkgdesc = ROS - Provides service calls for getting ros meta-information, like list of topics, services, params, etc.
-	pkgver = 0.11.11
+	pkgver = 0.11.12
 	pkgrel = 1
 	url = https://wiki.ros.org/rosapi
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = ros-melodic-rosapi
 	depends = ros-melodic-rosnode
 	depends = ros-melodic-rosgraph
 	depends = ros-melodic-message-runtime
-	source = ros-melodic-rosapi-0.11.11.tar.gz::https://github.com/RobotWebTools/rosbridge_suite/archive/0.11.11.tar.gz
-	sha256sums = 9e0e5b9c50edf6296b4cfec8f252220703ffb702245b832744ca964c10115f61
+	source = ros-melodic-rosapi-0.11.12.tar.gz::https://github.com/RobotWebTools/rosbridge_suite/archive/0.11.12.tar.gz
+	sha256sums = 97687bf6363760660fc0f10a05d0a95574525777bbaf1237c80c26d8371368e1
 
 pkgname = ros-melodic-rosapi
 
