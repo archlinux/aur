@@ -1,7 +1,7 @@
-# Maintainer: Wang Ruochen <wangkevin920@163.com>
+# Maintainer: Wang Ruochen <aur@ruo-chen.wang>
 pkgname=alwaysatty-git
 pkgver=r3.1e23181
-pkgrel=1
+pkgrel=2
 pkgdesc="Always treat stdout as a tty"
 arch=('x86_64')
 url="https://github.com/weirane/alwaysatty"
