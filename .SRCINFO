@@ -1,7 +1,7 @@
 pkgbase = cuda-11.0
 	pkgdesc = NVIDIA's GPU programming toolkit
 	pkgver = 11.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.nvidia.com/cuda-zone
 	install = cuda.install
 	arch = x86_64
@@ -14,6 +14,8 @@ pkgbase = cuda-11.0
 	optdepends = java-runtime=8: for nsight and nvvp
 	provides = cuda-toolkit
 	provides = cuda-sdk
+	provides = cuda
+	conflicts = cuda
 	replaces = cuda-toolkit
 	replaces = cuda-sdk
 	options = !strip
