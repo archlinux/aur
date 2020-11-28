@@ -1,0 +1,21 @@
+--- nvclock0.8b4/src/nvcontrol/nvcontrol.c  2007-12-30 14:12:43.000000000 +0000
++++ fix/nvclock0.8b4/src/nvcontrol/nvcontrol.c  2020-09-26 21:17:33.530984131 +0000
+@@ -71,7 +71,7 @@
+     {NULL, -1}
+ };
+
+-NVOptionList option_list[] = {
++NVOptionList *option_list = {
+     {"fsaa", 4, "Fullscene Antialiasing", NV_FSAA, 0, (NVOption*)&fsaa_list },
+     {"aniso", 5, "Anisotropic Filtering", NV_LOG_ANISO, 0, (NVOption*)&aniso_list },
+     {"intellisample", 13, "Intellisampling", NV_OPENGL_QUALITY_ENHANCHEMENTS, 0, (NVOption*)&isample_list },
+--- nvclock0.8b4/src/nvcontrol/nvcontrol.h  2006-07-15 09:47:09.000000000 +0000
++++ fix/nvclock0.8b4/src/nvcontrol/nvcontrol.h  2020-09-26 21:17:06.984982907 +0000
+@@ -42,7 +42,7 @@
+ } NVOptionList;
+
+ #define OPTION_LIST_SIZE 27
+-NVOptionList option_list[OPTION_LIST_SIZE];
++extern NVOptionList *option_list;
+ int init_nvcontrol();
+ NVOptionList *nvcontrol_lookup_option(int option);
