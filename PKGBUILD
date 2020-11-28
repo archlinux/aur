@@ -2,7 +2,7 @@
 
 pkgbase=mpd-art-box
 pkgname='mpd-art-box'
-pkgver=0.0.3
+pkgver=0.0.4
 _srcname="${pkgname}-${pkgver}"
 pkgrel=1
 pkgdesc="A window displaying the cover for the currently playing MPD track - nothing more"
@@ -15,7 +15,7 @@ depends=(
     'python-mpd2'
 )
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${_srcname}.tar.gz")
-sha256sums=('d77619ac62b01d4171ae616653e7ec54a57b726a5075ffcf707def5c4ef65f5c')
+sha256sums=('00a8a49e9b3cc63a8b1b7827b2d8a8b2ed90162ba7f96688c016b4c391ffa27b')
 
 build() {
   cd "${srcdir}"/"${_srcname}"
