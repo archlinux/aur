@@ -5,7 +5,7 @@
 pkgname=xray
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Xray, Penetrates Everything. Also the best v2ray-core, with XTLS support. Fully compatible configuration. "
+pkgdesc="The best v2ray-core, with XTLS support."
 arch=('any')
 url="https://github.com/XTLS/Xray-core"
 license=('MPLv2')
