@@ -54,7 +54,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -83,10 +83,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-rt-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-rt-patches-v2-sep/0002-i2c-core-Restore-acpi_walk_dep_device_list-getting-c.patch"
-        "${_lucjanpath}/arch-rt-patches-v2-sep/0003-mac80211-fix-regression-where-EAPOL-frames-were-sent.patch"
-        "${_lucjanpath}/arch-rt-patches-v2-sep/0004-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch"
+        "${_lucjanpath}/arch-rt-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-rt-patches-v3-sep/0002-i2c-core-Restore-acpi_walk_dep_device_list-getting-c.patch"
+        "${_lucjanpath}/arch-rt-patches-v3-sep/0003-mac80211-fix-regression-where-EAPOL-frames-were-sent.patch"
+        "${_lucjanpath}/arch-rt-patches-v3-sep/0004-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch"
+        "${_lucjanpath}/arch-rt-patches-v3-sep/0005-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
         "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
@@ -341,10 +342,11 @@ sha512sums=('96af08c1dc964e5dbb3d221880ef8ca246f13370d2dc2f5ae64039f0352efc687c7
             '7d30c34e75c2800d93c01e34ca23a00cda24d2f44bb837a48f6789c50ad69f7db4cc93d1fc75e43cfa4d4f4e9c612330dd595c56c13f8abb5d062338ea30697c'
             'cf634a9e0298adf1d05b7a8048ba2f89d4b8490cf48f1ab493cb40473116f360035b7fb3d8a54af980b1a49a1ad4dcfbc4ca69de8543b8bdf0a1d586908bd093'
             '96427eecb0078ce57a40ef4ee78d3576216f27390ba6b9dfbb851f4d969558a82b698cc633217ad8f6b9d991e7eaebd613ed4bd5741cafe7fa40b2502dacd43a'
-            '50b521e8b0ce8d8f879ffd67a2ca46b485d04e980c28e1baffb7798533c88106bfe31373458570d631120e3f0933621e61117d2afd8a309dfcad22cf68c71ef4'
-            'c478c2957dd676a95cdd3d43404e8611ac6d8eba3c92deaa6b3c303a79dab08c239fc0efff0df048955bb3bf8f22a7121519bee9bca254864edda3b8825d3d95'
-            '3f18db4fca744ac93a0eebf454fcf8759c5dd7b7e55d0cef8c59f1dd5befdfb0228df0eebf7751756e2d1f29430c68670ce534571b2d59d6803f529903bd945a'
-            '997f083e5a56b59202049d103512d648d1b9bdbbf07c7abb0141fd9cf9844d79918492185e6453da0c3f304f10fde016ac897265cfaa947f3d7764fc1aed58ec'
+            '7dedfce2fa368ee366166f93bf6707b1f89a3e6ee90eca94bbfd6b7829fd3d7892c51fb25cbac5f2b8e01e05ae45713f9c5c691ea8e8ddd52efe03074e6a3cde'
+            '46f7e3d320d5fe8f25f4ea9315a475f0ec56d239e06179b7e81739fc2cc25ed6d43294f94c4707f95bd0696bcd08a513d1d20bc5800abfbd2e912b2392367cc8'
+            '937b60a60a934ba5f0efc0da0ca41c1e3bc3af563c30e056fc56fc9141ab64745396928e325a3bc04b539d2c377b72ad280a47a29fab3ad7583deac194cd722d'
+            'f9a476e8b8c72fb7ea123e20c10c067eada9c208e0691852fade94df377b8f07520d7a578702bcf78898929124b2c71c7e502c5bc7eedf88f231d73477981687'
+            '5c7aa5aa1d80b85f0c6efbdf37a6ed218a3876a12ff205eb7fae5741b1999ad56feb791a51fe18a2cd86f498b9b1c041609c9b26847c86d0bd87648d5d68c406'
             'b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6'
             'dfad8ea58cf37cb76f6876375340b1480a332fe710c06f112cd5a93bf6e7e6d1d40e9e8827bfdb5ade1037f6a9609ad19a29c4262c3d6fd29712673d4d471fc7')
 
