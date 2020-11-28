@@ -3,7 +3,7 @@
 
 _pkgname=hydrogen
 pkgname="${_pkgname}-git"
-pkgver=1.0.0.r90.g051e723e
+pkgver=1.0.0.r203.gc4982c6d
 pkgrel=1
 pkgdesc="An advanced drum machine (git version)"
 arch=('x86_64')
@@ -50,9 +50,6 @@ prepare() {
 
   # update docbook dtd version
   patch -Np1 -r - -i "${srcdir}/fix_dtd_version.patch" || true
-
-  # fix *.qm file installation path
-  sed -i 's|\./data/i18n|${H2_DATA_PATH}/data/i18n|' data/i18n/CMakeLists.txt
 }
 
 build() {
