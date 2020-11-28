@@ -1,0 +1,84 @@
+Index: gnome-control-center/panels/display/cc-display-panel.c
+===================================================================
+--- gnome-control-center.orig/panels/display/cc-display-panel.c
++++ gnome-control-center/panels/display/cc-display-panel.c
+@@ -33,6 +33,8 @@
+ #include "list-box-helper.h"
+ #include <libupower-glib/upower.h>
+ 
++#include "s76_hidpi_widget.h"
++
+ #include "cc-display-config-manager-dbus.h"
+ #include "cc-display-config.h"
+ #include "cc-display-arrangement.h"
+@@ -113,6 +115,7 @@ struct _CcDisplayPanel
+   GtkButtonBox   *output_selection_two_second;
+   HdyComboRow    *primary_display_row;
+   GtkWidget      *stack_switcher;
++  GtkWidget      *display_container;
+ };
+ 
+ CC_PANEL_REGISTER (CcDisplayPanel, cc_display_panel)
+@@ -611,6 +614,27 @@ on_primary_display_selected_index_change
+ static void
+ cc_display_panel_constructed (GObject *object)
+ {
++  CcDisplayPanel *self = CC_DISPLAY_PANEL (object);
++
++  HiDpiToggle *toggle = hidpi_toggle_new ();
++
++  GtkWidget *toggle_frame = gtk_frame_new (NULL);
++  gtk_container_add (GTK_CONTAINER (toggle_frame), hidpi_toggle_widget (toggle));
++
++  GtkWidget *hidpi_label = gtk_label_new ("<b>HiDPI Daemon</b>");
++  gtk_label_set_use_markup (GTK_LABEL (hidpi_label), TRUE);
++  gtk_label_set_xalign (GTK_LABEL (hidpi_label), 0);
++
++  GtkWidget *hidpi_container = gtk_box_new (GTK_ORIENTATION_VERTICAL, 12);
++
++  gtk_container_add (GTK_CONTAINER (hidpi_container), hidpi_label);
++  gtk_container_add (GTK_CONTAINER (hidpi_container), toggle_frame);
++  gtk_container_add (GTK_CONTAINER (self->display_container), hidpi_container);
++
++  gtk_widget_show_all (hidpi_container);
++
++  hidpi_toggle_free (toggle);
++
+   g_signal_connect_object (cc_panel_get_shell (CC_PANEL (object)), "notify::active-panel",
+                            G_CALLBACK (active_panel_changed), object, 0);
+ 
+@@ -664,6 +688,7 @@ cc_display_panel_class_init (CcDisplayPa
+   gtk_widget_class_bind_template_child (widget_class, CcDisplayPanel, output_selection_two_second);
+   gtk_widget_class_bind_template_child (widget_class, CcDisplayPanel, primary_display_row);
+   gtk_widget_class_bind_template_child (widget_class, CcDisplayPanel, stack_switcher);
++  gtk_widget_class_bind_template_child (widget_class, CcDisplayPanel, display_container);
+ 
+   gtk_widget_class_bind_template_callback (widget_class, on_config_type_toggled_cb);
+   gtk_widget_class_bind_template_callback (widget_class, on_night_light_list_box_row_activated_cb);
+Index: gnome-control-center/panels/display/meson.build
+===================================================================
+--- gnome-control-center.orig/panels/display/meson.build
++++ gnome-control-center/panels/display/meson.build
+@@ -47,7 +47,8 @@ deps = common_deps + [
+   colord_dep,
+   gnome_desktop_dep,
+   m_dep,
+-  upower_glib_dep
++  upower_glib_dep,
++  dependency ('s76_hidpi_widget'),
+ ]
+ 
+ cflags += [
+Index: gnome-control-center/panels/display/cc-display-panel.ui
+===================================================================
+--- gnome-control-center.orig/panels/display/cc-display-panel.ui
++++ gnome-control-center/panels/display/cc-display-panel.ui
+@@ -68,7 +68,7 @@
+                     <property name="margin_start">12</property>
+                     <property name="margin_end">12</property>
+                     <child>
+-                      <object class="GtkBox">
++                      <object class="GtkBox" id="display_container">
+                         <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+                         <property name="hexpand">True</property>
