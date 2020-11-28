@@ -1,7 +1,7 @@
 pkgbase = emby-server-beta
 	pkgdesc = Bring together your videos, music, photos, and live television
 	pkgver = 4.6.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://emby.media
 	install = emby-server.install
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = emby-server-beta
 	depends = alsa-lib
 	depends = aom
 	depends = bzip2
-	depends = dotnet-runtime-bin
+	depends = dotnet-runtime-3.1
 	depends = dotnet-host-bin
 	depends = expat
 	depends = fontconfig
