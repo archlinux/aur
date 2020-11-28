@@ -4,9 +4,9 @@ After=network.target
 
 [Service]
 Type=forking
-ExecStart=/opt/artifactory/bin/artifactory.sh start
-ExecStop=/opt/artifactory/bin/artifactory.sh stop
-PIDFile=/opt/artifactory/run/artifactory.pid
+ExecStart=/opt/jfrog/artifactory/app/bin/artifactory.sh start
+ExecStop=/opt/jfrog/artifactory/app/bin/artifactory.sh stop
+PIDFile=/opt/jfrog/artifactory/app/run/artifactory.pid
 Restart=no
 TimeoutSec=30
 RemainAfterExit=yes

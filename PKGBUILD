@@ -2,7 +2,7 @@
 # Contributor: Michael J. Pento <mjpento@verizon.net>
 
 pkgname=artifactory-oss
-pkgver=6.23.3
+pkgver=7.11.2
 pkgrel=1
 pkgdesc='Artifactory is an advanced Binary Repository Manager for use by build tools, dependency management tools and build servers'
 arch=('any')
@@ -10,35 +10,32 @@ url="https://bintray.com/jfrog/product/JFrog-Artifactory-Oss/view"
 license=('GPLv3')
 depends=('java-runtime-headless' 'net-tools' 'bash')
 install="$pkgname.install"
-source=("jfrog-artifactory-oss-${pkgver}.zip::https://bintray.com/jfrog/artifactory/download_file?file_path=jfrog-artifactory-oss-${pkgver}.zip"
+source=("https://releases.jfrog.io/artifactory/bintray-artifactory/org/artifactory/oss/jfrog-artifactory-oss/7.11.2/jfrog-artifactory-oss-$pkgver-linux.tar.gz"
+  # "https://releases.jfrog.io/artifactory/bintray-artifactory/org/artifactory/oss/jfrog-artifactory-oss/$pkgver/jfrog-artifactory-oss-$pkgver-sources.tar.gz"
   'artifactory.service'
-  'artifactory.conf'
-  'artifactory.default')
-sha256sums=('5ae0fe881235d5542d0a975877e02f46db8d94c7f276786f6fcbcd5229e82da8'
-  '8ba1287f4d062f57a5cf9e5426d4affcfcc00ca2680cd603f41c603957a42c20'
-  '48bc1cddf9fa64f0d62a519470a490719398d67b6baeef6a3e647b737d6484df'
-  '34337e72bbdca63a3244a61d3d1aad324c473782d976da68b72ff72ed38ac5e5')
+  'artifactory.conf')
+sha256sums=('b5d888884982ee2a2b7740b4e4027eb87dbfa10501399e322e3289380118bd68'
+  '9daada205ad4b201f28f791a04f006aad2ab8885078700d710566d99dc176b3d'
+  '7cbc5f68aca3343c2d7445859bcf215150f421dbe36b84c79279abdefb7988de'
+  'c8c4028b36b9501fcfceb0ec878a41a56762bf477e69ff66cca40ca865320fc3')
 options=('!strip')
 PKGEXT='.pkg.tar'
 
-package() {
-  local artdir="/opt/artifactory"
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  #patch -Np1 -i ../artifactory.patch
+}
 
-  pushd "$pkgname-$pkgver"
-  rm -f bin/*.{exe,bat}
-  rm -f bin/{install,uninstall}Service.sh
-  rm -f bin/artifactoryctl
-  rm -f tomcat/bin/*.bat
-  rm -f COPYING* *.txt *.html
-  popd
+package() {
+  local artdir="/opt/jfrog/artifactory"
 
   install -d "$pkgdir$artdir"
   cp -r "$pkgname-$pkgver"/* "$pkgdir$artdir"
+
   install -Dm644 "$srcdir/artifactory.conf" \
     "$pkgdir/usr/lib/sysusers.d/artifactory.conf"
-  install -Dm644 "$srcdir/artifactory.default" \
-    "$pkgdir$artdir/bin"
+
   install -Dm644 "$srcdir/artifactory.service" \
     "$pkgdir/usr/lib/systemd/system/artifactory.service"
-  install -d "$pkgdir$artdir/run"
+  install -d "$pkgdir$artdir/app/run"
 }

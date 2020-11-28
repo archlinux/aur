@@ -1,6 +1,6 @@
 post_install() {
   systemd-sysusers artifactory.conf
-  chown -R artifactory /opt/artifactory
+  chown -R artifactory /opt/jfrog/artifactory
 
   echo
   echo 'For the Artifactory user guide and installation instructions please visit:'
@@ -13,8 +13,8 @@ post_install() {
   echo
   echo 'The default port is 8081'
   echo
-  echo 'Please make sure to create softlinks from /opt/artifactory/{backup,data,support}'
-  echo 'to appropriate places, since by default Artifactory will write its data to /opt/artifactory'
+  echo 'Please make sure to create softlinks from /opt/jfrog/artifactory/{backup,data,support}'
+  echo 'to appropriate places, since by default Artifactory will write its data to /opt/jfrog/artifactory'
   echo
 }
 
@@ -22,18 +22,18 @@ post_upgrade() {
   echo "Removing tomcat work directory"
   if [ -d /opt/artifactory/tomcat/work ]
   then
-    rm -rf /opt/artifactory/tomcat/work
+    rm -rf /opt/jfrog/artifactory/app/tomcat/work
   fi
 
-  if [ -d /opt/artifactory/tomcat/webapps/artifactory ]
+  if [ -d /opt/jfrog/artifactory/app/tomcat/webapps/artifactory ]
   then
     echo "Removing Artifactory's exploded WAR directory"
-    rm -rf /opt/artifactory/tomcat/webapps/artifactory
+    rm -rf /opt/jfrog/artifactory/app/tomcat/webapps/artifactory
   fi
 
-  if [ -f /opt/artifactory/run/artifactory.pid ]
+  if [ -f /opt/jfrog/artifactory/app/run/artifactory.pid ]
   then
     echo "Removing Artifactory's PID file"
-    rm -f /opt/artifactory/run/artifactory.pid
+    rm -f /opt/jfrog/artifactory/run/artifactory.pid
   fi
 }
