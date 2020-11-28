@@ -1,0 +1,15 @@
+pkgbase = qradiolink-bin
+	pkgdesc = Multimode SDR transceiver for GNU radio
+	pkgver = 0.8.5.rc3
+	pkgrel = 1
+	url = http://qradiolink.org
+	arch = x86_64
+	license = GPL3
+	depends = qt5-multimedia
+	depends = protobuf
+	provides = qradiolink
+	source = qradiolink-bin-0.8.5-rc3.deb::https://github.com/qradiolink/qradiolink/releases/download/0.8.5-rc3/qradiolink_0.8.5-rc3_amd64.deb
+	sha256sums = d7517db50cda8370ab365ad204286cce1d432fc80692bd12bde7fce03fb05ff7
+
+pkgname = qradiolink-bin
+
