@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=downzemall
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A mass download manager based on the Qt5 framework and written in C/C++"
 arch=('x86_64')
 url="https://setvisible.github.io/DownZemAll"
@@ -35,9 +35,9 @@ package() {
 	install -Dm644 src/locale/*.qm -t "$pkgdir/opt/$pkgname/locale"
 
 	install -Dm644 web-extension/launcher/unix/launcher-manifest-chrome.json \
-		"$pkgdir/etc/chromium/native-messaging-hosts/DownRightNow.json"
+		"$pkgdir/etc/chromium/native-messaging-hosts/com.setvisible.downrightnow.json"
 	install -Dm644 web-extension/launcher/unix/launcher-manifest-chrome.json \
-		"$pkgdir/etc/opt/chrome/native-messaging-hosts/DownRightNow.json"
+		"$pkgdir/etc/opt/chrome/native-messaging-hosts/com.setvisible.downrightnow.json"
 	install -Dm644 web-extension/launcher/unix/launcher-manifest-firefox.json \
 		"$pkgdir/usr/lib/mozilla/native-messaging-hosts/DownRightNow.json"
 
