@@ -3,7 +3,7 @@
 # Contributor: Jonathan Coates <contact@squiddev.cc>
 pkgname=craftos-pc-data
 pkgver=2.4.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="ROM package for CraftOS-PC"
 arch=('any')
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("https://github.com/MCJack123/craftos2-rom/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('badd5fef34d323b788ae9436e15766127a2f6d340ae578e797e208b95af1603')
+sha256sums=('badd5fef34d323b788ae9436e15766127a2f6d340ae578e797e208b95af1603e')
 validpgpkeys=()
 
 prepare() {
