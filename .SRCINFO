@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rosbridge-server
 	pkgdesc = ROS - A WebSocket interface to rosbridge.
-	pkgver = 0.11.11
+	pkgver = 0.11.12
 	pkgrel = 1
 	url = https://wiki.ros.org/rosbridge_server
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = ros-melodic-rosbridge-server
 	depends = python-backports.ssl
 	depends = python-tornado=4
 	depends = python-twisted
-	source = ros-melodic-rosbridge-server-0.11.11.tar.gz::https://github.com/RobotWebTools/rosbridge_suite/archive/0.11.11.tar.gz
-	sha256sums = 9e0e5b9c50edf6296b4cfec8f252220703ffb702245b832744ca964c10115f61
+	source = ros-melodic-rosbridge-server-0.11.12.tar.gz::https://github.com/RobotWebTools/rosbridge_suite/archive/0.11.12.tar.gz
+	sha256sums = 97687bf6363760660fc0f10a05d0a95574525777bbaf1237c80c26d8371368e1
 
 pkgname = ros-melodic-rosbridge-server
 
