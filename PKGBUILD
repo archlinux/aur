@@ -16,8 +16,6 @@ python
 opencascade
 )
 makedepends=(
-gcc8
-gcc8-libs
 clang
 python-joblib
 python-click
@@ -68,8 +66,6 @@ build() {
   python -m bindgen -n $(nproc) generate ${_config_file} out_f.pkl
   mkdir -p ${_output}
   cp -a out*.pkl ${_output}/.
-  export CC=`which gcc-8`
-  export CXX=`which g++-8`
   cmake -B build -S "${_output}" -G Ninja -DCMAKE_BUILD_TYPE=Release
   cmake --build build -j $(nproc) -- -k 0
 }
