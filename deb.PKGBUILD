@@ -5,12 +5,12 @@ pkgname=skywire
 _pkgname=${pkgname}
 _githuborg=${_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Develop Banch. Debian package"
+#set to native architecture with dpkg
+#_pkgarch=$(dpkg --print-architecture)
 #Uncoment to select architecture - not working currently
 #_pkgarch=amd64
-#_pkgarch=arm64
+_pkgarch=arm64
 #_pkgarch=armhf
-#set to native architecture with dpkg
-_pkgarch=$(dpkg --print-architecture)
 #leave arch package as any
 arch=('any')
 #manually version for now
@@ -25,7 +25,8 @@ pkgrel=${_pkgrel}
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 url="https://${_pkggopath}"
 license=()
-makedepends=('dpkg' 'git' 'go' 'musl' 'kernel-headers-musl' 'skycoin-keyring')
+#make deps for every architecture are included here..
+makedepends=('dpkg' 'git' 'go' 'musl' 'kernel-headers-musl') #'aarch64-linux-musl' 'arm-linux-gnueabihf-musl' 'skycoin-keyring')
 depends=()
 _debdeps="reprepro"
 #_debdeps=""
@@ -37,20 +38,15 @@ source=("git+${url}.git#commit=d156980280fdb2ddfc8765ff77cdd55c0b7e9d9c"
 #'deb.PKGBUILD.sig'   #skip the pgp checks for now as makepkg and yay handle it differently
 #'deb.PKGBUILD')
 sha256sums=('SKIP'
-            '61122b39103760f4543b8a4c3da1ce695333ff4915cf76199ba8fb337cb13774')
+            '25fddc23bd3bf6a68839daba2753bedcc12696f147cdc6985532a42bf17e5680')
 #            'SKIP'
 #            'SKIP')
-validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC')  # Moses Narrow <moe_narrow@use.startmail.com>
+#validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC')  # Moses Narrow <moe_narrow@use.startmail.com>
+
 #tar -czvf skywire-deb-scripts.tar.gz skywire-deb-scripts
 #updpkgsums deb.PKGBUILD
 
-## BINARY CROSS COMPILATION IS NOT WORKING - PENDING INVESTIGATION ##
-#[[ $_pkgarch == "amd64" ]] && _buildwith=(env GOOS=linux GOARCH=amd64)
-#[[ $_pkgarch == "arm64" ]] && _buildwith=(env GOOS=linux GOARCH=arm64)
-#[[ $_pkgarch == "armhf" ]] && _buildwith=(env GOOS=linux GOARCH=arm GOARM=6)
-## Build only on native architecture for now ##
-
-#manually version for now
+#omit this and manually version for now
 #pkgver() {
 	#cd "${srcdir}/${_pkgname}"
   #local _version=$(git describe --abbrev=0 | tr --delete v)
@@ -74,16 +70,22 @@ prepare() {
 }
 
 build() {
-export GOPATH=${srcdir}/go
-export GOBIN=${GOPATH}/bin.${_pkgarch}
-export GOAPPS=${GOPATH}/apps.${_pkgarch}
-#enable static compilation
+  _defaults=(env )
+local GOPATH=${srcdir}/go
+local GOBIN=${GOPATH}/bin.${_pkgarch}
+local GOAPPS=${GOPATH}/apps.${_pkgarch}
+local GOOS=linux
 export CC=musl-gcc
-#export GOOS=linux
-#export GOARCH=amd64
+  #static cross-compilation
+  #[[ $_pkgarch == "amd64" ]] && local GOARCH=amd64 && local CC=musl-gcc
+  #[[ $_pkgarch == "arm64" ]] && local GOARCH=arm64 && local CC=aarch64-linux-musl-gcc
+  #[[ $_pkgarch == "armhf" ]] && local GOARCH=arm && local GOARM=6 && local CC=arm-linux-gnueabihf-musl-gcc
 
+#_ldflags=('-linkmode external -extldflags "-static" -buildid=')
+
+#${_defaults} ${_goarch}
 #create read only cache binary
-go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOBIN/ ${_scripts}/readonlycache.go
+ go build -trimpath -o $GOBIN/ ${srcdir}/${_scripts}/readonlycache.go
 
 #create the skywire binaries
 cd ${srcdir}/go/src/${_pkggopath}
@@ -91,28 +93,28 @@ _cmddir=${srcdir}/go/src/${_pkggopath}/cmd
 #using go build for determinism
 _msg2 'building skychat binary'
 cd ${_cmddir}/apps/skychat
-go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOAPPS/ .
+ go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOAPPS/ .
 _msg2 'building skysocks binary'
 cd ${_cmddir}/apps/skysocks
-go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOAPPS/ .
+ go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOAPPS/ .
 _msg2 'building skysocks-client binary'
 cd ${_cmddir}/apps/skysocks-client
-go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOAPPS/ .
+ go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOAPPS/ .
 _msg2 'building vpn-client binary'
 cd ${_cmddir}/apps/vpn-client
-go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOAPPS/ .
+ go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOAPPS/ .
 _msg2 'building vpn-server binary'
 cd ${_cmddir}/apps/vpn-server
-go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOAPPS/ .
+ go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOAPPS/ .
 _msg2 'building skywire-visor binary'
 cd ${_cmddir}/skywire-visor
-go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOBIN/ .
+ go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOBIN/ .
 _msg2 'building skywire-cli binary'
 cd ${_cmddir}/skywire-cli
-go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOBIN/ .
+ go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOBIN/ .
 _msg2 'building setup-node binary'
 cd ${_cmddir}/setup-node
-go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOBIN/ .
+ go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOBIN/ .
 #_msg2 'building hypervisor binary'  #hypervisor has been combined with the visor
 #cd ${_cmddir}/hypervisor
 #go build -trimpath -ldflags '-extldflags ${LDFLAGS}' -ldflags=-buildid= -o $GOBIN/ .
