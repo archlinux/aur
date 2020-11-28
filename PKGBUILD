@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-ss06
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
 arch=('any')
 url='https://typeof.net/Iosevka/'
@@ -13,6 +13,6 @@ sha256sums=('0ce567f89e23cff5ed9b36a5edb2ecceaae003d3fab1104a00e27573d6e69810'
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF/
-    install -m644 ttf/*.ttf ${pkgdir}/usr/share/fonts/TTF/
+    install -m644 *.ttf ${pkgdir}/usr/share/fonts/TTF/
     install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
 }
