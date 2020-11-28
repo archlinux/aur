@@ -2,8 +2,8 @@
 # GPG: https://keybase.io/greut/pgp_keys.asc
 
 pkgname='eclint'
-pkgver=0.2.10
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='EditorConfig linter'
 url='https://gitlab.com/greut/eclint'
 arch=('x86_64' 'i686')
@@ -14,12 +14,12 @@ makedepends=('git' 'go' 'gzip')
 checkdepends=('git' 'go')
 optdepends=('git: Git repository support')
 source=(
-  "${url}/uploads/0c3508cb73da403042121cee07e293f6/eclint-${pkgver}.tar.gz"
-  "${url}/uploads/2f76e78f763bbdc3530261efe786cdfb/eclint-${pkgver}.tar.gz.sig"
+  "${url}/uploads/241af6c03569a208a4fbdc8bf9d40c04/eclint-${pkgver}.tar.gz"
+  "${url}/uploads/f9bbdec5ad699b24dcbc7e26e48b84c9/eclint-${pkgver}.tar.gz.sig"
 )
 
 sha256sums=(
-  'cfc8c27507a52da1cab9a9f520a7b885b5dcc377331b0033a68fc32e14584137'
+  '357c96e571524118fbd49e366be501ac2fcc7a71db67ace0f9369c24802b9173'
   'SKIP'
 )
 validpgpkeys=('9E2D407EAFEE50863F42B9D16058CF4574298812')
