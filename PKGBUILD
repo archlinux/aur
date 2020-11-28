@@ -11,7 +11,7 @@ url="https://sourceforge.net/projects/gsmwm/"
 license=('GPL3')
 depends=('bash' 'libx11')
 source=("https://sourceforge.net/projects/gsmwm/files/$pkgname-$pkgver.tar.gz")
-md5sums=('1ef172ccf0ef2ba6c0b56c706504964c')
+sha256sums=('b81b775f1d14df2253294423fcf5edd311626d1374792c5661f24e4a9a3dc816')
 
 build() {
 	cd "$pkgname-$pkgver"
