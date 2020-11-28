@@ -9,7 +9,7 @@ url="https://gitlab.com/LynxOS/lmd"
 license=('GPL')
 makedepends=('git')
 source=("$url/-/archive/$pkgver/lmd-$pkgver.tar.gz")
-md5sums=('SKIP')
+md5sums=('528329c7481fccf2bb62513fd05cc52c')
 
 pkgver() {
     date +%Y%m%d

@@ -7,7 +7,7 @@ pkgbase = lynx-menu-data
 	license = GPL
 	makedepends = git
 	source = https://gitlab.com/LynxOS/lmd/-/archive/0.0.1/lmd-0.0.1.tar.gz
-	md5sums = SKIP
+	md5sums = 528329c7481fccf2bb62513fd05cc52c
 
 pkgname = lynx-menu-data
 
