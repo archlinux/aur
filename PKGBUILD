@@ -5,7 +5,7 @@
 
 pkgname=bigloo-devel
 pkgver=4.4a
-pkgrel=19
+pkgrel=20
 epoch=1
 pkgdesc="Fast scheme compiler"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!makeflags' 'staticlibs')
 conflicts=('bigloo')
 provides=("bigloo=$pkgver")
 source=(ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${pkgname%-devel}-latest.tar.gz bigloo-emacs.patch)
-sha256sums=('3b483294fd7098f7d5224f3915b9e3839cde808a7a03c98f2a135d2cdc8d3833'
+sha256sums=('83c23d10b3d475669b843878af10245d362785bd93c5f57252ced807a56269bb'
             '80356c27b58a302775f75e848a89ab2d588796a548f4ce7a20df048e215deab0')
 elisp_dir=/usr/share/emacs/site-lisp/bigloo
 
@@ -62,14 +62,4 @@ package() {
   make -C manuals DESTDIR="${pkgdir}" install-bee
 
   rm "${pkgdir}"/usr/bin/{bglafile,bigloo}.sh
-
-  # Remove references to the build root
-  sed -e "s|^BOOTDIR=.*|BOOTDIR=/usr|g" \
-      -e "s|^BOOTBINDIR=.*|BOOTBINDIR=/usr/bin|g" \
-      -e "s|^BOOTLIBDIR=.*|BOOTLIBDIR=/usr/lib/bigloo/${pkgver}|g" \
-      -e "s|^BGLBUILDBINDIR=.*|BGLBUILDBINDIR=/usr/bin|g" \
-      -e "s|^BGLBUILDLIBDIR=.*|BGLBUILDLIBDIR=/usr/lib/bigloo/${pkgver}|g" \
-      -e "s|^\(BIGLOO=.*\)\.sh|\1|" \
-      -e "s|^\(BGL.*=.*\)\.sh|\1|" \
-      -i  ${pkgdir}/usr/lib/bigloo/$pkgver/Makefile.config
 }
