@@ -18,12 +18,12 @@ package() {
   cd "${pkgname}-${pkgver}"
   _pythonversion=$(python --version | awk -F ' ' '{print substr($2, 1, length($2)-2)}')
   gendesk -f -n --pkgname "${pkgname}" \
-            --pkgdesc "$pkgdesc" \
-            --name "Clickmaster2000" \
-            --comment "$pkgdesc" \
-            --exec "${pkgname}" \
-            --categories 'Utility;Science;Application' \
-            --icon "${pkgname}"
+          --pkgdesc "$pkgdesc" \
+          --name "Clickmaster2000" \
+          --comment "$pkgdesc" \
+          --exec "${pkgname}" \
+          --categories 'Utility;Science;Application' \
+          --icon "${pkgname}"
   install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 clickmaster2000/clickmaster.html -t "${pkgdir}/usr/lib/python${_pythonversion}/site-packages/clickmaster2000"
