@@ -1,14 +1,14 @@
 pkgbase = linuxptp
 	pkgdesc = An implementation of the Precision Time Protocol (PTP) according to IEEE standard 1588 for Linux.
-	pkgver = 3.0
-	pkgrel = 2
+	pkgver = 3.1
+	pkgrel = 1
 	url = http://linuxptp.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	source = linuxptp-3.0.tgz::https://sourceforge.net/projects/linuxptp/files/v3.0/linuxptp-3.0.tgz/download
-	sha256sums = d74ceca722c75bfff53c633425f926dd48eb04f4a089451b855155c016d15785
+	source = linuxptp-3.1.tgz::https://sourceforge.net/projects/linuxptp/files/v3.1/linuxptp-3.1.tgz/download
+	sha256sums = f58f5b11cf14dc7c4f7c9efdfb27190e43d02cf20c3525f6639edac10528ce7d
 
 pkgname = linuxptp
 
