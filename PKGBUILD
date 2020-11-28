@@ -1,10 +1,9 @@
-# Maintainer: tinywrkb <tinywrkb@gmail.com>
-# Contributor: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Jan de Groot <jgc@archlinux.org>
 
 _pkgname=polkit
 pkgname=${_pkgname}-duktape
 pkgver=0.118
-pkgrel=2
+pkgrel=3
 pkgdesc="polkit with duktape as the javascript engine"
 arch=(x86_64)
 license=(LGPL)
@@ -17,7 +16,8 @@ backup=(etc/pam.d/polkit-1)
 _commit=ff4c2144f0fb1325275887d9e254117fcd8a1b52
 source=("git+https://gitlab.freedesktop.org/polkit/polkit.git#commit=$_commit"
         "0001-Add-duktape-as-javascript-engine.patch")
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP'
+            '4b6b90ca0f2fa44115027cc6bb98fa43fede46e7fa31a6fd52f8ec142c0073f1')
 
 pkgver() {
   cd $_pkgname
