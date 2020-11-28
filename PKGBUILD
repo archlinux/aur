@@ -3,13 +3,13 @@
 name=squirrel-battle
 pkgname=python-squirrel-battle
 pkgver=3.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch out for squirrel's knives!"
 arch=('any')
 url="https://gitlab.crans.org/ynerant/squirrel-battle"
 license=('GPLv3')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('gettext' 'python-setuptools')
 depends=('noto-fonts-emoji')
 checkdepends=('python-tox')
 source=("https://gitlab.crans.org/ynerant/squirrel-battle/-/archive/v$pkgver/$name-v$pkgver.tar.gz")

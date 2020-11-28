@@ -1,11 +1,12 @@
 pkgbase = python-squirrel-battle
 	pkgdesc = Watch out for squirrel's knives!
 	pkgver = 3.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.crans.org/ynerant/squirrel-battle
 	arch = any
 	license = GPLv3
 	checkdepends = python-tox
+	makedepends = gettext
 	makedepends = python-setuptools
 	depends = noto-fonts-emoji
 	source = https://gitlab.crans.org/ynerant/squirrel-battle/-/archive/v3.14.1/squirrel-battle-v3.14.1.tar.gz
