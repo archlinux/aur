@@ -14,6 +14,6 @@ sha256sums=('d01a4667881667790a809c1e3674ac328415b0fc5251101857884e561ddc2973')
 package() {
     cd ${srcdir}/${pkgname}-${pkgver}
 
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    python setup.py install --root=${pkgdir} --prefix=/usr
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
