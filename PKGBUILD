@@ -3,7 +3,7 @@
 pipname=folderpreview
 pkgname=$pipname
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generates folder thumbs using child files thumbs"
 arch=(any)
 url="https://gitlab.com/hxss-linux/folderpreview"
@@ -17,6 +17,7 @@ depends=(
 	'python-pyvips'
 	'python-systemd'
 	'python-colorlog'
+	'tumbler'
 )
 makedepends=(
 	'python-pip'
