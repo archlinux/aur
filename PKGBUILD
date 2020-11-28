@@ -2,7 +2,7 @@
 
 pkgname=gssp-recoll
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Shell search provider for Recoll"
 arch=(x86_64)
 license=(BSD-3)
@@ -15,6 +15,8 @@ build() {
     cd ${pkgname}-${pkgver}
     ./configure --prefix=/usr
     make
+    # remove the entry from the application grid
+    echo "NoDisplay=true" >> org.recoll.Recoll.SearchProvider.desktop
 }
 
 package() {
