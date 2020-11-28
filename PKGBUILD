@@ -2,7 +2,7 @@ pkgdesc="ROS - Package containing message files"
 url='https://wiki.ros.org/rosbridge_msgs'
 
 pkgname='ros-melodic-rosbridge-msgs'
-pkgver='0.11.11'
+pkgver='0.11.12'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -30,7 +30,7 @@ depends=(
 
 _dir="rosbridge_suite-${pkgver}/rosbridge_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/RobotWebTools/rosbridge_suite/archive/${pkgver}.tar.gz")
-sha256sums=('9e0e5b9c50edf6296b4cfec8f252220703ffb702245b832744ca964c10115f61')
+sha256sums=('97687bf6363760660fc0f10a05d0a95574525777bbaf1237c80c26d8371368e1')
 
 build() {
 	# Use ROS environment variables.
