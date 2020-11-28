@@ -12,12 +12,10 @@ license=('GPLv3')
 depends=('java-runtime>=8')
 optdepends=('xorg-xrandr: Required for some old Minecraft versions')
 
-_branch='legacy_beta'
+_branch='aur'
 # try to change repo if default sends 404
 _repo='https://tlauncherrepo.com'
 # _repo='https://u.tlauncher.ru'
-# _repo='https://tlaun.ch'
-# _repo='https://cdn.turikhay.ru/tlauncher'
 _librepo='https://u.tlauncher.ru/repo/libraries'
 # _librepo='https://tlauncherrepo.com/repo/libraries'
 # _librepo='https://tlaun.ch/repo/libraries'
@@ -26,14 +24,8 @@ _librepo='https://u.tlauncher.ru/repo/libraries'
 _bootstrap_checksum='807e5086f0f70ba14baea0e250172ea499ae1e13c84c1736f7ad436a5ccf8cf0'
 _launcher_checksum='6f98b4c16845fd6138bb945078e39dd97275544fb4b69d48c933de233924b090'
 
-source=(#"${_repo}/${_branch}/bootstrap/${_bootstrap_checksum}.jar"
-        # Patched bootstrap to allow launching without RW rights (RO only)
-        # Pached by TL dev; if you're having questions you can ask it
-        # using support email support[at]tlauncher.ru
-        "https://files.modder.pw/mc/tl/bootstrap-1.9.0-min.jar"
-        # "${_repo}/${_branch}/launcher/${_launcher_checksum}.jar"
-        # AUR custom build (more languages support, separate config)
-        "https://files.modder.pw/mc/tl/launcher-1.117.1-aur.jar"
+source=("tl-bootstrap-${pkgver}::${_repo}/${_branch}/bootstrap/${_bootstrap_checksum}.jar"
+        "tl-launcher-${pkgver}::${_repo}/${_branch}/launcher/${_launcher_checksum}.jar"
 
         "${_librepo}/org/jdom/jdom/2.0.2/jdom-2.0.2.jar"
         "${_librepo}/org/tukaani/xz/1.5/xz-1.5.jar"
