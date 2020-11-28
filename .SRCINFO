@@ -1,19 +1,18 @@
 pkgbase = python-nptyping
-	pkgdesc = Type hints for Numpy.
+	pkgdesc = Type hints for Numpy
 	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/ramonhagenaars/nptyping
-	arch = any
+	arch = x86_64
 	license = MIT
 	checkdepends = python-pycodestyle
 	checkdepends = python-pylint
 	checkdepends = python-pytest
-	checkdepends = python-coverage
-	makedepends = python-pip
-	depends = python>=3.5
+	makedepends = python-setuptools
+	depends = python
 	depends = python-numpy
-	depends = python-typish>=1.5.2
-	source = https://github.com/ramonhagenaars/nptyping/archive/v1.3.0.tar.gz
+	depends = python-typish
+	source = python-nptyping-1.3.0.tar.gz::https://github.com/ramonhagenaars/nptyping/archive/v1.3.0.tar.gz
 	sha512sums = 05dc5e22c2d71dbff3fdb5fb086d627a03e912d2ed43a64c0522675f8334212afd7105bd09723bc1f09d59c968de8a96ef6e9ee11cb508cb1db301f22fa1b96e
 
 pkgname = python-nptyping

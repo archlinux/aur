@@ -1,49 +1,37 @@
-# Maintainer Ruijie Yu (first.last@outlook.com)
+# Maintainer: Grey Christoforo <grey at christoforo dot net>
 
 pkgname=python-nptyping
-_pkgname="${pkgname#python-}"
 pkgver=1.3.0
 pkgrel=1
-pkgdesc='Type hints for Numpy.'
+pkgdesc='Type hints for Numpy'
 url="https://github.com/ramonhagenaars/nptyping"
-arch=(any)
+arch=(x86_64)
 license=(MIT)
-
 depends=(
-    'python>=3.5'
-    'python-numpy'
-    'python-typish>=1.5.2'
+python
+python-numpy
+python-typish
 )
-
-makedepends=(
-    'python-pip'
-    # 'python-wheel'
-)
-
+makedepends=(python-setuptools)
 checkdepends=(
-    'python-pycodestyle'
-    'python-pylint'
-    'python-pytest'
-    'python-coverage'
-    # 'python-codecov'
+python-pycodestyle
+python-pylint
+python-pytest
 )
-
-source=(
-    'https://github.com/ramonhagenaars/nptyping/archive/v1.3.0.tar.gz'
-)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ramonhagenaars/nptyping/archive/v${pkgver}.tar.gz")
 sha512sums=('05dc5e22c2d71dbff3fdb5fb086d627a03e912d2ed43a64c0522675f8334212afd7105bd09723bc1f09d59c968de8a96ef6e9ee11cb508cb1db301f22fa1b96e')
 
-_extracted="$_pkgname-$pkgver/"
+build() {
+  cd nptyping-${pkgver}
+  python setup.py build
+}
 
-check() {
-    ## how do we "test" with python/pip?
-    ## `./setup.py test` seems to be deprecated
-
-    # python "$srcdir/$_extracted/setup.py" test
-    :
+check(){
+  cd nptyping-${pkgver}
+  python setup.py test
 }
 
 package() {
-    pip install --no-deps --root "${pkgdir}" --compile "$srcdir/$_extracted"
+  cd nptyping-${pkgver}
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
-
