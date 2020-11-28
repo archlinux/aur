@@ -20,7 +20,6 @@ optdepends=('alsa-lib: ALSA audio driver'
             'tslib: Touchscreen support'
             'wayland: wayland support'
             'wayland-protocols: wayland support'
-            'hidapi: hidapi support'
             'mesa: open source graphics support'
             'hidapi: modern controller support')
 source=("hg+https://hg.libsdl.org/SDL#branch=default")

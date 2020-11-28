@@ -30,7 +30,6 @@ pkgbase = sdl2-minimal-hg
 	optdepends = tslib: Touchscreen support
 	optdepends = wayland: wayland support
 	optdepends = wayland-protocols: wayland support
-	optdepends = hidapi: hidapi support
 	optdepends = mesa: open source graphics support
 	optdepends = hidapi: modern controller support
 	provides = sdl2
