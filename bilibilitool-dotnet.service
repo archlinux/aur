@@ -1,0 +1,14 @@
+[Unit]
+Description=A cross-platform Bilibili daily task tool written in .Net 5
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bilibilitool-dotnet -closeConsoleWhenEnd 1
+StandardOutput=null
+StandardError=journal
+
+
+[Install]
+WantedBy=multi-user.target

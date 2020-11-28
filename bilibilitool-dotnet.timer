@@ -1,0 +1,7 @@
+[Timer]
+OnCalendar=*-*-* 12:05:00 Asia/Shanghai
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+
