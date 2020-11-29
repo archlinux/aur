@@ -22,7 +22,6 @@ source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver
         '70-tpmd.rules'
         '01-tss-user.patch')
 #        'trousers-0.3.14-fno-common.patch')
-noextract=("${pkgname}-${pkgver}.tar.gz")
 sha256sums=('1e5be93e518372acf1d92d2f567d01a46fdb0b730487e544e6fb896c59cac77f'
             '4c2684501e7a67132d4f53466b32fc06bd2a0275d4cf1fbd5479d0cdb2349bc7'
             '1afd455b6c17e730b2cc4ec71d5625f0b63fde54f9409ae4762dc6f084c194de'
@@ -32,17 +31,13 @@ sha256sums=('1e5be93e518372acf1d92d2f567d01a46fdb0b730487e544e6fb896c59cac77f'
 #            '770fd94510adb90605eb38745b62450a4cda25c2b8c9c6c8ea2e6043582d0e27')
 
 prepare() {
-  mkdir -p ${pkgname}-${pkgver}
-  bsdtar -x -f ${pkgname}-${pkgver}.tar.gz -C ${pkgname}-${pkgver}
-  # this is not a typo; the trousers devs released the tarball like this
-  cd ${pkgname}-${pkgver}/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   patch -p1 -i ${srcdir}/01-tss-user.patch
   #patch -p1 -i ${srcdir}/trousers-0.3.14-fno-common.patch
 }
 
 build() {
-  # this is not a typo; the trousers devs released the tarball like this
-  cd ${pkgname}-${pkgver}/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   ./bootstrap.sh
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
@@ -54,8 +49,7 @@ build() {
 }
 
 package() {
-  # this is not a typo; the trousers devs released the tarball like this
-  cd ${pkgname}-${pkgver}/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
   install -Dm644 ${srcdir}/tcsd.service ${pkgdir}/usr/lib/systemd/system/tcsd.service
   install -Dm644 ${srcdir}/70-tpmd.rules ${pkgdir}/usr/lib/udev/rules.d/70-tpmd.rules

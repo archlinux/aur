@@ -7,7 +7,6 @@ pkgbase = trousers
 	arch = x86_64
 	license = CPL
 	depends = openssl
-	noextract = trousers-0.3.15.tar.gz
 	options = libtool
 	source = http://downloads.sourceforge.net/project/trousers/trousers/0.3.15/trousers-0.3.15.tar.gz
 	source = sysusers.conf
