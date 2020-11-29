@@ -42,6 +42,11 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
+  
+  # Move data to /usr/share
+  install -d "$pkgdir/usr/share/$_pkgname"
+  mv "$pkgdir/usr/bin/data"/* "$pkgdir/usr/share/$_pkgname/"
+
   install -Dm 644 "$_pkgname.svg" \
 	"$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
   install -Dm 644 "$pkgname-$pkgver-$pkgname/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
