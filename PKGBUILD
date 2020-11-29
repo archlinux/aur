@@ -2,7 +2,7 @@
 
 pkgname=watsup
 pkgver=5.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 depends=('libappindicator-gtk3' 'clutter-gtk')
 license=('GPL3')
