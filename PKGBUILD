@@ -1,6 +1,8 @@
+# Maintainer: Mladen Milinkovic <maxrd2@smoothware.net>
+
 _pkgname=kross
 pkgname=mingw-w64-$_pkgname
-pkgver=5.45.0
+pkgver=5.76.0
 pkgrel=1
 arch=(any)
 pkgdesc="Multi-language application scripting (mingw-w64)"
@@ -11,7 +13,7 @@ makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
 source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/portingAids/$_pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('1647a4d8418bd2c3921ed98185a755a482d9b0f7c718871ca645da6499191ee9'
+sha256sums=('15591f2a50f995bcaf17ef72662851c805d4644f13848387f056f686b77c5291'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
