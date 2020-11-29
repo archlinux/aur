@@ -2,7 +2,7 @@
 
 pkgname=evolution-etesync-git
 _pkgname=evolution-etesync
-pkgver=0.7.0.r12.f7849e9
+pkgver=1.0.0.r5.gc90f7d8
 pkgrel=1
 pkgdesc="EteSync (end-to-end encrypted sync) plugin for Evolution"
 arch=(x86_64)
@@ -15,8 +15,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  # FIXME: change to this when there's a tag: git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  printf "0.7.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
