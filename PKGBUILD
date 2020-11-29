@@ -2,7 +2,7 @@
 pkgname=mjpeg-proxy-git
 _pkgname=mjpeg-proxy
 pkgver=r38.99e4412
-pkgrel=1
+pkgrel=2
 pkgdesc="Republish MJPEG HTTP image streams using a server in Go"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/vvidic/mjpeg-proxy"
@@ -29,7 +29,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  go build -o $_pkgname
+  go build -trimpath -ldflags="-s -w" -o $_pkgname
 }
 
 package() {
