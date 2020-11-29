@@ -1,6 +1,8 @@
+# Maintainer: Mladen Milinkovic <maxrd2@smoothware.net>
+
 _pkgname=ktextwidgets
 pkgname=mingw-w64-$_pkgname
-pkgver=5.45.0
+pkgver=5.76.0
 pkgrel=1
 arch=(any)
 pkgdesc="Advanced text editing widgets (mingw-w64)"
@@ -11,7 +13,7 @@ makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/$_pkgname-${pkgver}.tar.xz"{,.sig})
-sha256sums=('4b406a084b4d33d635b0f4bcd33e752e9adc5d3726ddfa770ecb5401ecc6e6e4'
+sha256sums=('a104e894cf21c245a6c22e6f2c38fdbbdb094cb7fde3d7ebff801bfd73af4c84'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 

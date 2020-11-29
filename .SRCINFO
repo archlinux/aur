@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-ktextwidgets
-	pkgdesc = Widgets for tracking KJob instances (mingw-w64)
-	pkgver = 5.45.0
+	pkgdesc = Advanced text editing widgets (mingw-w64)
+	pkgver = 5.76.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = any
@@ -16,10 +16,10 @@ pkgbase = mingw-w64-ktextwidgets
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://download.kde.org/stable/frameworks/5.45/ktextwidgets-5.45.0.tar.xz
-	source = http://download.kde.org/stable/frameworks/5.45/ktextwidgets-5.45.0.tar.xz.sig
+	source = http://download.kde.org/stable/frameworks/5.76/ktextwidgets-5.76.0.tar.xz
+	source = http://download.kde.org/stable/frameworks/5.76/ktextwidgets-5.76.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = 4b406a084b4d33d635b0f4bcd33e752e9adc5d3726ddfa770ecb5401ecc6e6e4
+	sha256sums = a104e894cf21c245a6c22e6f2c38fdbbdb094cb7fde3d7ebff801bfd73af4c84
 	sha256sums = SKIP
 
 pkgname = mingw-w64-ktextwidgets
