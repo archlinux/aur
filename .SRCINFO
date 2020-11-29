@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-kdoctools
 	pkgdesc = Documentation generation from docbook (mingw-w64)
-	pkgver = 5.45.0
-	pkgrel = 3
+	pkgver = 5.76.0
+	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = any
 	groups = mingw-w64-kf5
@@ -21,10 +21,10 @@ pkgbase = mingw-w64-kdoctools
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://download.kde.org/stable/frameworks/5.45/kdoctools-5.45.0.tar.xz
-	source = http://download.kde.org/stable/frameworks/5.45/kdoctools-5.45.0.tar.xz.sig
+	source = http://download.kde.org/stable/frameworks/5.76/kdoctools-5.76.0.tar.xz
+	source = http://download.kde.org/stable/frameworks/5.76/kdoctools-5.76.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = a5322f7d09aa643d60738f3b24bda2d3c129cc9aa37856acf5bedba3929d4b2c
+	sha256sums = 84ea7974d741e6261e8c269750367a00375c6111dbc542e917647d0267337ae4
 	sha256sums = SKIP
 
 pkgname = mingw-w64-kdoctools

@@ -1,7 +1,9 @@
+# Maintainer: Mladen Milinkovic <maxrd2@smoothware.net>
+
 _pkgname=kdoctools
 pkgname=mingw-w64-$_pkgname
-pkgver=5.45.0
-pkgrel=3
+pkgver=5.76.0
+pkgrel=1
 arch=(any)
 pkgdesc="Documentation generation from docbook (mingw-w64)"
 license=("LGPL")
@@ -12,7 +14,7 @@ makedepends=(mingw-w64-extra-cmake-modules perl-uri mingw-w64-ki18n mingw-w64-qt
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/$_pkgname-${pkgver}.tar.xz"{,.sig})
-sha256sums=('a5322f7d09aa643d60738f3b24bda2d3c129cc9aa37856acf5bedba3929d4b2c'
+sha256sums=('84ea7974d741e6261e8c269750367a00375c6111dbc542e917647d0267337ae4'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
