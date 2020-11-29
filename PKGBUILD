@@ -19,6 +19,8 @@ depends=('libxft')
 # Required for plugins which copy to clip perminantly
 #   this includes: calc, spellcheck
 depends+=('xclip')
+# Requred for the lookup plugin
+depends+=('xdg-utils')
 # Requred for the spellcheck plugin
 depends+=('aspell')
 # Required for Xinerama (requires editing config.mk to disable)
@@ -28,7 +30,7 @@ makedepends=('rust' 'git' 'clang' 'sh' 'make' 'diffutils')
 
 _pkgname=dmenu
 pkgname=$_pkgname-rs
-pkgver=5.4.0
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="A 1:1 port of dmenu, rewritten in Rust"
 arch=('i686' 'x86_64')
