@@ -1,7 +1,9 @@
+# Maintainer: Mladen Milinkovic <maxrd2@smoothware.net>
+
 _pkgname=kjobwidgets
 pkgname=mingw-w64-$_pkgname
-pkgver=5.45.0
-pkgrel=2
+pkgver=5.76.0
+pkgrel=1
 arch=(any)
 pkgdesc="Widgets for tracking KJob instances (mingw-w64)"
 license=("LGPL")
@@ -11,7 +13,7 @@ makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('f2a1441262fffa82c17a3359687f523df021c2b7e0701bce1128de6614e686a4'
+sha256sums=('850b6af6c027476e594e6ed77ea0e531abb69ff726fce41b91e541fbee3ecedf'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
