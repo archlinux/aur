@@ -4,8 +4,8 @@
 
 _gitname=tinyMediaManager
 pkgname=tiny-media-manager
-pkgver=4.0.5
-pkgrel=2
+pkgver=4.0.6
+pkgrel=1
 pkgdesc="A multi-OS media managment tool"
 arch=('any')
 url="https://www.tinymediamanager.org/"

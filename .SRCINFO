@@ -1,15 +1,15 @@
 pkgbase = tiny-media-manager
 	pkgdesc = A multi-OS media managment tool
-	pkgver = 4.0.5
-	pkgrel = 2
+	pkgver = 4.0.6
+	pkgrel = 1
 	url = https://www.tinymediamanager.org/
 	install = tinyMediaManager.install
 	arch = any
 	license = Apache
 	depends = libmediainfo
 	depends = java-runtime>=11
-	noextract = tmm_4.0.5_linux.tar.gz
-	source = tmm_4.0.5_linux.tar.gz::https://gitlab.com/tinyMediaManager/tinyMediaManager/-/package_files/4147080/download
+	noextract = tmm_4.0.6_linux.tar.gz
+	source = tmm_4.0.6_linux.tar.gz::https://gitlab.com/tinyMediaManager/tinyMediaManager/-/package_files/4147080/download
 	source = tinyMediaManager.desktop
 	source = tinymediamanager
 	source = tinymediamanager-cli
