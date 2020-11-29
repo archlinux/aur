@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-kparts
 	pkgdesc = Document centric plugin system (mingw-w64)
-	pkgver = 5.45.0
+	pkgver = 5.76.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = mingw-w64-kparts
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://download.kde.org/stable/frameworks/5.45/kparts-5.45.0.tar.xz
-	source = http://download.kde.org/stable/frameworks/5.45/kparts-5.45.0.tar.xz.sig
+	source = http://download.kde.org/stable/frameworks/5.76/kparts-5.76.0.tar.xz
+	source = http://download.kde.org/stable/frameworks/5.76/kparts-5.76.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = bfe86f6326a520f7f179a35ee5b8b01f7e9247d6e93b4ae8cb840581b5f11556
+	sha256sums = c516b5c1f2bca4a109dc2d186ef6729c1ad53a242877dfe942b84f131e93412d
 	sha256sums = SKIP
 
 pkgname = mingw-w64-kparts
