@@ -5,6 +5,7 @@ pkgbase = amdgpu-clocks-git
 	url = https://github.com/sibradzic/amdgpu-clocks
 	arch = any
 	license = GPL2
+	makedepends = git
 	depends = bash
 	provides = amdgpu-clocks
 	conflicts = amdgpu-clocks

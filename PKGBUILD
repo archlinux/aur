@@ -12,6 +12,7 @@ arch=('any')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 depends=('bash')
+makedepends=('git')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
