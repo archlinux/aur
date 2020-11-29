@@ -1,4 +1,5 @@
 pkgbase = lynx-desktop-settings
+	pkgdesc = Archivos de configuracion de LynxOS
 	pkgver = 0.0.1
 	pkgrel = 2
 	url = https://gitlab.com/LynxOS/lds
