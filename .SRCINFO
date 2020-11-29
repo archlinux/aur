@@ -1,0 +1,18 @@
+pkgbase = andotp-decrypt
+	pkgdesc = A backup decryptor for the andOTP Android app.
+	pkgver = 0.1.4.r1.g88c9b79
+	pkgrel = 1
+	url = https://github.com/asmw/andOTP-decrypt
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-docopt
+	depends = python-pillow
+	depends = python-pycryptodome
+	depends = python-pyotp
+	depends = python-pyqrcode
+	source = andotp-decrypt::git+https://github.com/asmw/andOTP-decrypt.git
+	sha256sums = SKIP
+
+pkgname = andotp-decrypt
+
