@@ -36,6 +36,7 @@ pkgbase = cinelerra-gg
 	depends = numactl
 	depends = openexr
 	depends = opus
+	conflicts = cin
 	source = https://www.cinelerra-gg.org/download/pkgs/src/cin_5.1.20201031-src.tgz
 	sha256sums = b60daa268899961a0084659c1f7dfdff01d9184fea79ed26ac9f7cee1afb92f7
 

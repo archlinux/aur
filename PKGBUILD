@@ -1,5 +1,5 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
-# Co-Maintainer: pingplug < aur at pingplug dot me >
+# Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: goodguy <lists.cinelerra-gg.org>
 
 pkgname=cinelerra-gg
@@ -15,6 +15,7 @@ depends=(alsa-lib aom dav1d fftw flac glu gtk2 libavc1394
 makedepends=(cmake ctags libxml2 nasm perl-xml-libxml
              perl-xml-parser python xorg-mkfontdir
              xorg-mkfontscale yasm)
+conflicts=(cin)
 source=("https://www.cinelerra-gg.org/download/pkgs/src/cin_$pkgver-src.tgz")
 sha256sums=('b60daa268899961a0084659c1f7dfdff01d9184fea79ed26ac9f7cee1afb92f7')
 
