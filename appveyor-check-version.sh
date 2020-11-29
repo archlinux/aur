@@ -8,7 +8,7 @@ APVSH_URL="${APVSH_URL:-https://www.appveyor.com/self-hosted/}"
 
 ver() {
     # if $# > 0 (has additional arguments), then output version string to stdout
-    tmp=$(mktemp)
+    tmp="$(mktemp)"
     curl -Ls "$APVSH_URL" | grep -Pof ver.pgrep > "$tmp"
     EXIT=$?
 
