@@ -2,12 +2,12 @@
 
 pkgname=clockthrottle
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility program to adjust the max. CPU clock speed"
 url="https://kornelix.net/$pkgname/$pkgname.html"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('gtk3' 'powerstat' 'cpupower')
+depends=('clutter-gtk' 'powerstat' 'cpupower')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
 sha256sums=('887a1a4294a4a55bf49a119029c160d0ae75f582b0e8e4af743e13e1c10b1d67')
 options=('!emptydirs')
