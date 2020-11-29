@@ -1,15 +1,14 @@
 # Maintainer: Michał Przybyś <michal@przybys.eu>
-_sdk=3.1
 pkgname=roslynpad
 pkgver=15.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform C# editor based on Roslyn and AvalonEdit'
 arch=(any)
 url='https://roslynpad.net/'
 license=(Apache)
-depends=("dotnet-runtime>=${_sdk}"
+depends=("dotnet-runtime"
     desktop-file-utils)
-makedepends=("dotnet-sdk>=${_sdk}")
+makedepends=("dotnet-sdk")
 source=("https://github.com/aelij/RoslynPad/archive/${pkgver}.tar.gz"
     config_path.patch
     roslynpad
@@ -24,7 +23,6 @@ md5sums=(e39bab8bfafb9a27ef5edf3602793234
 prepare() {
     cd "${srcdir}/RoslynPad-${pkgver}"
     rm global.json
-    dotnet new globaljson --force --sdk-version "$(dotnet --list-sdks | grep "${_sdk/./\.}" | tail -1 | awk '{ print $1 }')"
 
     cd "${srcdir}/RoslynPad-${pkgver}/src"
     patch -Np1 -i "${srcdir}/config_path.patch"
@@ -33,7 +31,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/RoslynPad-${pkgver}/src/RoslynPad.Avalonia"
-    dotnet build -c Release /p:DebugType=None
+    dotnet build -c Release /p:DebugType=None /p:TreatWarningsAsErrors=False
 }
 
 package() {

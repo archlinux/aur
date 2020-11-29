@@ -1,8 +1,5 @@
 src
 pkg
 
-RoslynPad.png
-RoslynPadNetCore.zip
-
-*.pkg.tar.xz
+*.pkg.tar.zst
 *.tar.gz
