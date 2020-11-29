@@ -1,6 +1,6 @@
 _pkgname=kauth
 pkgname=mingw-w64-$_pkgname
-pkgver=5.45.0
+pkgver=5.76.0
 pkgrel=4
 pkgdesc='Abstraction to system policy and authentication features (mingw-w64)'
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 optdepends=('python-pyqt5: for the Python bindings')
 groups=(mingw-w64-kf5)
 source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/$_pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('d1149f2f3a653608519bdd31f2832b85c1806a8a981334afa5e07089e77ad7c8'
+sha256sums=('c277a7ab750158a56381d8f74b8ebed5205b785eca2444c65cbf59d429958a89'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
