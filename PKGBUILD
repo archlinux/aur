@@ -1,7 +1,9 @@
+# Maintainer: Mladen Milinkovic <maxrd2@smoothware.net>
+
 _pkgname=kio
 pkgname=mingw-w64-$_pkgname
-pkgver=5.45.0
-pkgrel=3
+pkgver=5.76.0
+pkgrel=1
 arch=(any)
 pkgdesc="Resource and network access abstraction (mingw-w64)"
 license=("LGPL")
@@ -13,7 +15,7 @@ optdepends=('mingw-w64-kio-extras: extra protocols support (sftp, fish and more)
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/$_pkgname-${pkgver}.tar.xz"{,.sig})
-sha256sums=('3e7512e819fe1831b15981641dba26a7dcbbdbccd79cbf076ceedae8e4116b15'
+sha256sums=('9351fc85c4020f2f77012e077f4f9d04d8f233e9b67f9b7619c9bc064714145b'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
