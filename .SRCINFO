@@ -1,6 +1,6 @@
 pkgbase = brltty-git
 	pkgdesc = Braille display driver for Linux/Unix (development version)
-	pkgver = 6.1.r559.g7cfd436fd
+	pkgver = 6.1.r619.g7e6e9f341
 	pkgrel = 1
 	url = https://brltty.app
 	install = brltty-git.install
@@ -15,6 +15,7 @@ pkgbase = brltty-git
 	makedepends = dracut
 	makedepends = espeak-ng
 	makedepends = festival
+	makedepends = git
 	makedepends = glib2
 	makedepends = gpm
 	makedepends = icu
@@ -53,9 +54,9 @@ pkgbase = brltty-git
 	options = !emptydirs
 	backup = etc/brltty.conf
 	source = brltty-git::git+https://github.com/brltty/brltty.git
-	source = brltty-git.tmpfiles
+	source = brltty-systemd.patch
 	sha512sums = SKIP
-	sha512sums = 6b29bf62cbcd1ffea70875c9325f02796797da83ece2e62742fcb09f6a8d49c465123ecbd7ebaad472b20cb2664fcf0ba9e81bf91d1d1529ef2ee154354afc58
+	sha512sums = eab819248b5bbf8251e1bedc5009aec1ebd8fa8b8a09e2eef116d582f31d7d13d9837e06bd09a3910159cc97406d73e98bb0e9e99102fcb35e667a12153e4aa2
 
 pkgname = brltty-git
 	depends = bluez-libs

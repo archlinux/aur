@@ -1,0 +1,58 @@
+diff --git a/Autostart/Systemd/brltty@.service.in b/Autostart/Systemd/brltty@.service.in
+index e3c1164b3..bb97278e4 100644
+--- a/Autostart/Systemd/brltty@.service.in
++++ b/Autostart/Systemd/brltty@.service.in
+@@ -85,8 +85,8 @@ SupplementaryGroups=tty
+ 
+ # for serial I/O (/dev/ttyS<n>)
+ # probably only one of these should be uncommented
+-SupplementaryGroups=dialout
+-#SupplementaryGroups=uucp
++#SupplementaryGroups=dialout
++SupplementaryGroups=uucp
+ 
+ # for USB I/o via USBFS (/dev/bus/usb/*/*)
+ SupplementaryGroups=root
+@@ -95,7 +95,7 @@ SupplementaryGroups=root
+ SupplementaryGroups=audio
+ 
+ # for playing sound via the Pulse Audio daemon
+-SupplementaryGroups=pulse-access
++#SupplementaryGroups=pulse-access
+ 
+ # for monitoring keyboard input (/dev/input/*)
+ SupplementaryGroups=input
+@@ -105,4 +105,3 @@ SupplementaryGroups=root
+ 
+ # for reading the BrlAPI authorization key file
+ SupplementaryGroups=brlapi
+-
+diff --git a/Autostart/Systemd/sysusers b/Autostart/Systemd/sysusers
+index 1819984cd..0acf7cc5a 100644
+--- a/Autostart/Systemd/sysusers
++++ b/Autostart/Systemd/sysusers
+@@ -30,8 +30,8 @@ m brltty tty
+ 
+ # for serial I/O (/dev/ttyS<n>)
+ # probably only one of these should be uncommented
+-m brltty dialout
+-#m brltty uucp
++#m brltty dialout
++m brltty uucp
+ 
+ # for USB I/o (/dev/bus/usb/*/*)
+ m brltty root
+@@ -40,7 +40,7 @@ m brltty root
+ m brltty audio
+ 
+ # for playing sound via the Pulse Audio daemon
+-m brltty pulse-access
++#m brltty pulse-access
+ 
+ # for monitoring keyboard input (/dev/input/*)
+ m brltty input
+@@ -50,4 +50,3 @@ m brltty root
+ 
+ # for reading the BrlAPI authorization key file
+ m brltty brlapi
+-

@@ -1,6 +1,6 @@
 post_install () {
   brltty-genkey
-  echo "Please add your user to the brltty group."
+  echo "Please add your user to the brlapi group."
 }
 
 post_upgrade () {
