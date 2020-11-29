@@ -6,6 +6,7 @@ pkgbase = anki-official-binary-bundle
 	arch = x86_64
 	license = GNU AGPL
 	provides = anki
+	conflicts = anki
 	conflicts = anki-git
 	source = https://apps.ankiweb.net/downloads/current/anki-2.1.35-linux-amd64.tar.bz2
 	source = remove_xdg_cmds_from_makefile.patch
