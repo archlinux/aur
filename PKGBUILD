@@ -2,7 +2,7 @@
 pkgname=('etesync-server')
 pkgver=0.3.0
 pkgrel=1
-pkgdesc="A self-hostable EteSync server"
+pkgdesc="A self-hostable EteSync 1.0 (legacy) server (for EteSync 2.0: etebase-server)"
 arch=(any)
 depends=('python-django-cors-headers'
          'python-django-etesync-journal' 

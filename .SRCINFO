@@ -1,5 +1,5 @@
 pkgbase = etesync-server
-	pkgdesc = A self-hostable EteSync server
+	pkgdesc = A self-hostable EteSync 1.0 (legacy) server (for EteSync 2.0: etebase-server)
 	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/etesync/server
