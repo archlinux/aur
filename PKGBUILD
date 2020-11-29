@@ -84,6 +84,7 @@ build() {
       --enable-plugin \
       --enable-install-libiberty \
       --enable-gnu-indirect-function \
+      --enable-default-pie \
       --enable-checking=release
   make
 }
