@@ -8,6 +8,7 @@ pkgbase = animata-svn
 	arch = x86_64
 	license = GPL
 	makedepends = scons
+	makedepends = subversion
 	depends = fltk
 	depends = mesa
 	provides = animata
