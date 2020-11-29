@@ -1,7 +1,7 @@
 pkgbase = mpd-art-box
 	pkgdesc = A window displaying the cover for the currently playing MPD track - nothing more
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nvllsvm/mpd-art-box
 	arch = any
 	license = MIT
