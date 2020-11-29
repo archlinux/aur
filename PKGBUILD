@@ -4,13 +4,13 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-git
-pkgver=1.4.1399.r1151.g2170e90
+pkgver=1.4.1555.r1151.g2170e90
 pkgrel=1
 pkgdesc="Psi+ is a powerful XMPP client (Qt, C++) designed for the XMPP power users (built with Qt 5.x)"
 url="https://psi-plus.com"
 license=('GPL2')
 arch=('x86_64')
-depends=('qt5-base' 'qt5-webengine' 'qt5-multimedia' 'qt5-x11extras' 'qca-qt5'
+depends=('qt5-base' 'qt5-webengine' 'qt5-multimedia' 'qt5-x11extras'
 	 'libidn' 'libxss' 'qt5-svg' 'hunspell' 'qtkeychain' 'http-parser')
 makedepends=('git' 'patch' 'cmake')
 provides=("psi-plus=$pkgver" "psi-plus-qt5-git=$pkgver")
@@ -47,7 +47,7 @@ prepare() {
 }
 
 build() {
-  cmake -B build -S psi -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DPSI_PLUS=ON -DCHAT_TYPE=WEBENGINE  ..
+  cmake -B build -S psi -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUNDLED_USRSCTP=ENABLE -DBUNDLED_QCA=ENABLE -DPSI_PLUS=ON -DCHAT_TYPE=WEBENGINE  ..
   cmake --build build
 }
 
