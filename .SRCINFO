@@ -26,6 +26,8 @@ pkgbase = cheese-git
 	depends = libgudev
 	depends = dconf
 	depends = gnome-video-effects
+	provides = cheese
+	conflicts = cheese
 	source = git+https://gitlab.gnome.org/GNOME/cheese.git
 	sha256sums = SKIP
 
