@@ -1,12 +1,11 @@
 pkgbase = perl-tie-toobject
-	pkgdesc = Tie to an existing object.
+	pkgdesc = Perl/CPan Module: Tie to an existing object.
 	pkgver = 0.03
-	pkgrel = 2
-	url = http://search.cpan.org/dist/Tie-ToObject
+	pkgrel = 3
+	url = https://metacpan.org/release/Tie-ToObject
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	makedepends = perl-test-use-ok
 	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/N/NU/NUFFIN/Tie-ToObject-0.03.tar.gz
