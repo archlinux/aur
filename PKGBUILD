@@ -41,5 +41,5 @@ package() {
   DESTDIR="$pkgdir" meson install -C build
   install -Dm 644 "${pkgname%-xl}.svg" \
 	"${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
-  install -Dm 644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm 644 "$pkgname-$pkgver-$pkgname/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
