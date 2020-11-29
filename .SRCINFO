@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-solid
 	pkgdesc = Hardware integration and detection (mingw-w64)
-	pkgver = 5.45.0
+	pkgver = 5.76.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = mingw-w64-solid
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://download.kde.org/stable/frameworks/5.45/solid-5.45.0.tar.xz
-	source = http://download.kde.org/stable/frameworks/5.45/solid-5.45.0.tar.xz.sig
+	source = http://download.kde.org/stable/frameworks/5.76/solid-5.76.0.tar.xz
+	source = http://download.kde.org/stable/frameworks/5.76/solid-5.76.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = ade2068f5d0affeff3599ef12b67b016a4518e3085863739f9b6e90685d4b09c
+	sha256sums = 7958d047c8bd7622f91541acbe2d554c222218419ee18f395059a09fb90d264d
 	sha256sums = SKIP
 
 pkgname = mingw-w64-solid
