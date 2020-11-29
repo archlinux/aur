@@ -5,7 +5,7 @@
 # Contributor: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: Robert Orzanna <orschiro at gmail dot com>
 pkgname=timeshift
-pkgver=20.11.1
+pkgver=20.11.1+3+g08d0e59
 pkgrel=1
 pkgdesc="A system restore utility for Linux"
 arch=('i686' 'x86_64')
@@ -13,17 +13,27 @@ url="https://github.com/teejee2008/timeshift"
 license=('GPL')
 depends=('gtk3' 'libsoup' 'desktop-file-utils' 'cronie' 'rsync' 'libgee' 'vte3'
          'xapp' 'xorg-xhost' 'btrfs-progs')
-makedepends=('vala' 'diffutils' 'coreutils' 'xapp=1.8.10')
+makedepends=('git' 'vala' 'diffutils' 'coreutils')
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c6dcca80b42f80a8c8d9d03e91eb17aa634be2f1031f667bba3f483410297abb')
+#source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+#sha256sums=('c6dcca80b42f80a8c8d9d03e91eb17aa634be2f1031f667bba3f483410297abb')
+_commit=08d0e5912b617009f2f0fdb61fb4173cb3576ed4
+source=("git+https://github.com/teejee2008/timeshift.git#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/$pkgname"
+	git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 build() {
-	cd "$pkgname-$pkgver"
+#	cd "$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+#	cd "$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	make DESTDIR="$pkgdir" install
 }
