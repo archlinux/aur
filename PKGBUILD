@@ -1,28 +1,30 @@
 # Maintainer: Térence Clastres <t.clastres@gmail.com>
 
 pkgname=giada-git
-pkgver=v0.16.3.r10.g3dc97d07
+pkgver=v0.17.0.r15.g34b107f1
 pkgrel=1
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 arch=('x86_64')
 url="https://www.giadamusic.com/"
 license=('GPL3')
 groups=('pro-audio')
-depends=('fltk' 'gcc-libs' 'glibc' 'libx11' 'libxpm')
-makedepends=('alsa-lib' 'gendesk' 'imagemagick' 'jack' 'libpulse' 'libsamplerate' 'libsndfile' 'nlohmann-json' 'rtmidi')
+depends=('gcc-libs' 'glibc' 'libx11' 'libxpm')
+# upstream vendors a hacked rtaudio :(
+makedepends=('alsa-lib' 'cmake' 'fltk' 'gendesk' 'git' 'imagemagick' 'jack'
+'libpulse' 'libsamplerate' 'libsndfile' 'libxrandr' 'nlohmann-json' 'rtmidi' 'vst3sdk' 'steinberg-vst')
 checkdepends=('catch2' 'xorg-server-xvfb')
 conflicts=('giada' 'giada-vst')
 source=("giada-git::git+https://github.com/monocasual/giada.git"
-        "$pkgname-devendor_nlohmann-json.patch"
-         "JUCE-5.3.2.tar.gz::https://github.com/WeAreROLI/JUCE/archive/5.3.2.tar.gz"
-	 "https://raw.githubusercontent.com/nlohmann/json/bde57124187c5732c026ffb9357c0491344c45e7/single_include/nlohmann/json.hpp"
-	 "gcc9-fix.diff"
+	"$pkgname-rtmidi_cppflags.patch"
+        "$pkgname-devendor_nlohmann_json.patch"
+        "JUCE-6.0.4.tar.gz::https://github.com/WeAreROLI/JUCE/archive/6.0.4.tar.gz"
+	"https://raw.githubusercontent.com/nlohmann/json/db78ac1d7716f56fc9f1b030b715f872f93964e4/single_include/nlohmann/json.hpp"
 	)
 sha512sums=('SKIP'
-            '31cf5b2b1bba29e8c97109c04c6456a98b778017ef5d48a0f020d326d8a11a5e76c8613fc232a2492d16aa48bc2faaae4aae7316252d6b887bd2187032fb83f9'
-            'f968a622306e12542c0971fd4cac5c311d70304d63fef8a177e8624a3f43916254122cf5d068974bf062a59d95fd6df97400a3d2ff950b117399cc667b976b9d'
-            'a3bdd5dc53097584bf2bbe19f296b1726b9fa751905bae22990dc9eb17015e49e1911956b1e29dbaacbe6c285100a653179c191f223b6e612be633505347c34c'
-            '0b011913f031930d3540daf2bec8df66b345f59c79d1666a6447f5b1be0b0e59cfd855bd6ec581118cd6949f24aba8e4c503ad73f0fe5a4bb1882b60ed3cd41f')
+            'ae222bb63b0388ef1b02ff2cda0e589545c80fae26cbf06c04e0963a661e32b4d6746eea424359a44bb20e7568dbb5335359c5226c36d9c8b86d10130e83fedc'
+            '5b4b6c6c421851f4da72b6fb4ff457156d3332c5c7a795edffe05386d48864830e7b3afb4011996a8cd5284d2fdbc2e0da3d590108e04d00227d25bc3127f506'
+            '94bfb122bad5f47be018f66b118a024eb56d537aecaedc440fd1648cbecb08375a2c375e6b1e12b39621bf8c272356fab98872b6a8cab506706cdc18f215096c'
+            'a3bdd5dc53097584bf2bbe19f296b1726b9fa751905bae22990dc9eb17015e49e1911956b1e29dbaacbe6c285100a653179c191f223b6e612be633505347c34c')
 
 pkgver() {
   cd "$pkgname"
@@ -32,10 +34,12 @@ pkgver() {
 prepare() {
   cd "$pkgname"
 
-  cp -r ../JUCE-5.3.2/modules/ src/deps/juce/
-  patch -p2 -i ../../../../../gcc9-fix.diff -d src/deps/juce/modules/
+  cp -r ../JUCE-6.0.4/modules/ src/deps/juce/
+  #vst3 support headers
+  cp -r /usr/include/vst3sdk/* src/deps/vst3sdk/
+  #vst2 support headers
+  cp -r /usr/include/vst36/pluginterfaces/vst2.x/ src/deps/vst3sdk/pluginterfaces/
 
-  autoreconf -vfi
   # XDG desktop file
   gendesk -n -f \
           --pkgname ${pkgname/-git} \
@@ -43,36 +47,56 @@ prepare() {
           --name Giada \
           --categories "AudioVideo;Audio;Midi;Sequencer"
 
-  # fixing catch2 include for system library
-  sed -e 's|catch\.hpp|catch2/catch\.hpp|g' -i tests/*.cpp
+  # remove targets for missing files:
+  # https://github.com/monocasual/giada/issues/431
+  sed -e '/baseButton/d' -i Makefile.am
+
+  # add rtmidi cppflags:
+  # https://github.com/monocasual/giada/issues/417
+  patch -Np1 -i ../"$pkgname-rtmidi_cppflags.patch"
+
   # devendor nlohmann-json
-  patch -Np1 -i ../"$pkgname-devendor_nlohmann-json.patch"
+  patch -Np1 -i ../"$pkgname-devendor_nlohmann_json.patch"
+
+  # fixing test includes to use system catch2
+  sed -e 's|catch\.hpp|catch2/catch\.hpp|g' -i tests/*.cpp src/main.cpp
 }
 
 build() {
   cd "$pkgname"
+   
+  cmake -B build  \
+	-DWITH_VST2=on \
+	-DWITH_VST3=on \
+	-DWITH_TESTS=on \
+	-DWITH_SYSTEM_CATCH=on \
+        -DCMAKE_BUILD_TYPE='None' \
+        -Wno-dev
+  make -C build
 
-  ./configure --prefix=/usr \
-              --target=linux \
-              --enable-vst \
-              --enable-system-catch
-
-  make
+  # Hack to allow (re)building package without --cleanbuild
+  # This is because I'm copying files to those submodules instead of updating them
+  git submodule deinit --all -f
 }
 
-check() {
+check(){
   cd "$pkgname"
-  make check
+  # move binary to expected directory:
+  # https://github.com/monocasual/giada/issues/432
+  mkdir -vp build
+  cp -av "${pkgname}" build/
+  xvfb-run -a make -k check
 }
 
 package() {
-  depends+=('libasound.so' 'libjack.so' 'libpulse.so' 'libpulse-simple.so' 'librtmidi.so' 'libsamplerate.so' 'libsndfile.so')
+  depends+=('libasound.so' 'libfltk.so' 'libjack.so' 'libpulse.so'
+  'libpulse-simple.so' 'librtmidi.so' 'libsamplerate.so' 'libsndfile.so')
   cd "$pkgname"
-  make DESTDIR="$pkgdir/" install
+  install -vD "build/${pkgname/-git}" -t "${pkgdir}/usr/bin/"
   # XDG integration
   install -vDm 644 "${pkgname/-git}.desktop" -t "${pkgdir}/usr/share/applications"
   install -vDm 644 "extras/${pkgname/-git}-logo.png" \
-    "${pkgdir}/usr/share/pixmaps/${pkgname/-git}.png"
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname/-git}.svg"
   # docs
   install -vDm 644 {ChangeLog,README.md} \
     -t "${pkgdir}/usr/share/doc/${pkgname}"
