@@ -7,7 +7,7 @@ arch=('any')
 url='https://github.com/nttcslab-sp/kaldiio'
 license=('custom:NTT')
 depends=('python>=3.7' 'python-pytorch-complex-git' 'python-numpy')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 provides=('python-kaldiio')
 conflicts=("python-kaldiio-git" "${pkgname}")
 source=(
