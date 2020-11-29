@@ -6,7 +6,7 @@
 
 pkgname=btrfs-progs-git
 _gitname=${pkgname%-git}
-pkgver=4704_5.2_r0_g608fd900
+pkgver=5107_5.7_r0_g11acf45e
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities"
 arch=("i686" "x86_64")
@@ -27,12 +27,12 @@ md5sums=('SKIP'
          'b09688a915a0ec8f40e2f5aacbabc9ad'
          '7241ba3a4286d08da0d50b7176941112'
          '917b31f4eb90448d6791e17ea0f386c7'
-         '42475169de355a33d551b2f368eb0a50')
+         '40ac621390e93a934b9661adbcedf7a8')
 sha1sums=('SKIP'
           'bf017ec8fd82c5be282b50fc49b63fa3dc2c44a8'
           '5e32dc3a7c704c0114efcb01e48c6f4c673ea9be'
           '59f32f9abbe4831c3d342d9c208c8c4dea0629bc'
-          'c1b4efdd9a001f5d75bcb68d6c90a4fe32b7b601')
+          'f75f76ff1a760f6c710cf0d5ab1c52874fc5625c')
 
 pkgver() {
   cd ${_gitname}
