@@ -7,7 +7,7 @@ arch=('any')
 url='https://github.com/kamo-naoyuki/pytorch_complex'
 license=('unknown')
 depends=('python>=3.7' 'python-pytorch')
-makedepends=('git' 'python-pytorch' 'python-pytest')
+makedepends=('git' 'python-setuptools' 'python-pytorch' 'python-pytest')
 provides=('python-pytorch-complex')
 conflicts=("python-pytorch-complex" "${pkgname}")
 source=(
