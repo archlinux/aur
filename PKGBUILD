@@ -2,7 +2,7 @@
 
 pkgname=linphone-desktop-git
 _pkgname=linphone-desktop
-pkgver=4.3.0.alpha.r21.g85b09ee9
+pkgver=4.3.0.alpha.r53.gc4f9aaff
 pkgrel=1
 pkgdesc="A Voice-over-IP phone"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=('git+https://github.com/BelledonneCommunications/linphone-desktop.git'
     '0001-do-not-build-linphone-sdk.patch'
     'cmake.patch')
 sha256sums=('SKIP'
-            'b2ec0664060d807473d774ae10a28e3f5041046ccbc47f254d8c4a171d5411f4'
+            '6dc5d722a2495608811b1d1899b0b728231bdcff98e8ef0a5f8b094ea4a185e8'
             '6f92f10991d1705b719330efb468f141302179e52aa06f17dda16c6637d90b50')
 
 pkgver() {
@@ -29,7 +29,7 @@ pkgver() {
 
 prepare() {
     cd "${_pkgname}"
-    patch -p0 -i ../0001-do-not-build-linphone-sdk.patch
+    patch -p1 -i ../0001-do-not-build-linphone-sdk.patch
     patch -p0 -i ../cmake.patch
 }
 
