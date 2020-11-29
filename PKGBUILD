@@ -13,7 +13,7 @@ url="https://github.com/teejee2008/timeshift"
 license=('GPL')
 depends=('gtk3' 'libsoup' 'desktop-file-utils' 'cronie' 'rsync' 'libgee' 'vte3'
          'xapp' 'xorg-xhost' 'btrfs-progs')
-makedepends=('vala' 'diffutils' 'coreutils') #'xapp=1.8.10')
+makedepends=('vala' 'diffutils' 'coreutils' 'xapp=1.8.10')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('c6dcca80b42f80a8c8d9d03e91eb17aa634be2f1031f667bba3f483410297abb')

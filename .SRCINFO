@@ -10,6 +10,7 @@ pkgbase = timeshift
 	makedepends = vala
 	makedepends = diffutils
 	makedepends = coreutils
+	makedepends = xapp=1.8.10
 	depends = gtk3
 	depends = libsoup
 	depends = desktop-file-utils
