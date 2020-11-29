@@ -1,7 +1,7 @@
 pkgbase = goland-eap
 	pkgdesc = Capable and Ergonomic Go IDE
 	pkgver = 203.5981.98
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/go/
 	arch = x86_64
 	arch = i686
