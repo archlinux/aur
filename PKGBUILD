@@ -1,5 +1,5 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
-pkgname=python-torch-complex-git
+pkgname=python-pytorch-complex-git
 pkgver=0.2.0.r94
 pkgrel=1
 pkgdesc='Python class for PyTorch-ComplexTensor (workaround for missing Pytorch Class)'
@@ -8,8 +8,8 @@ url='https://github.com/kamo-naoyuki/pytorch_complex'
 license=('unknown')
 depends=('python>=3.7' 'python-pytorch')
 makedepends=('git' 'python-pytorch' 'python-pytest')
-provides=('python-torch-complex')
-conflicts=("python-torch-complex" "${pkgname}")
+provides=('python-pytorch-complex')
+conflicts=("python-pytorch-complex" "${pkgname}")
 source=(
     "${pkgname}::git+${url}")
 md5sums=(
