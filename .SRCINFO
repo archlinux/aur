@@ -1,6 +1,6 @@
 pkgbase = animata-svn
 	pkgdesc = an open source real-time animation software
-	pkgver = 63
+	pkgver = 6
 	pkgrel = 1
 	url = http://animata.kibu.hu/
 	install = animata-svn.install
