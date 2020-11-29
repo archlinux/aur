@@ -1,6 +1,6 @@
 pkgbase = mapton
 	pkgdesc = Some kind of map application
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://mapton.org
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = mapton
 	makedepends = jdk11-openjdk
 	makedepends = java11-openjfx
 	makedepends = maven
-	source = git+https://github.com/trixon/mapton.git#tag=v2.1.0
+	source = git+https://github.com/trixon/mapton.git#tag=v2.1.1
 	source = mapton.desktop
 	source = jdkhome.patch
 	source = settings.xml

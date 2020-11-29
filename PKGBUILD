@@ -1,7 +1,7 @@
 # Maintainer: Jonathon Fernyhough <jonathon_at_m2x dotdev>
 
 pkgname=mapton
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Some kind of map application"
 arch=(any)
