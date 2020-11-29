@@ -2,7 +2,7 @@
 pkgbase=python-baseband
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Package to read and write radio baseband data"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 makedepends=('python-setuptools-scm' 'python-astropy' 'python-entrypoints' 'python-sphinx-astropy' 'graphviz')
 checkdepends=('python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('9e2f81f6c39825a3f4d9fcea9eaf4fb7')
+md5sums=('8bf1c66eb618fa88c5b2d8285fccb67d')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
