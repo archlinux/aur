@@ -1,5 +1,5 @@
 pkgbase = lynx-menu-data
-	pkgdesc = freedesktop.org application menu definition files for LynxOS
+	pkgdesc = Archivos de definición del menú de la aplicación freedesktop.org para LynxOS
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://gitlab.com/LynxOS/lmd
