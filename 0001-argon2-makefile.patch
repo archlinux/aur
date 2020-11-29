@@ -1,0 +1,17 @@
+--- a/Makefile	2020-11-29 21:37:00.470902331 +0100
++++ b/Makefile	2020-11-29 21:47:33.621700488 +0100
+@@ -31,12 +31,12 @@
+ MANPAGES = slapd-pw-argon2.5
+ LTVER = 0:0:0
+ 
+-prefix=/usr/local
++prefix=/usr
+ exec_prefix=$(prefix)
+ ldap_subdir=/openldap
+ 
+ libdir=$(exec_prefix)/lib
+-libexecdir=$(exec_prefix)/libexec
++libexecdir=$(exec_prefix)/lib
+ moduledir = $(libexecdir)$(ldap_subdir)
+ mandir = $(exec_prefix)/share/man
+ man5dir = $(mandir)/man5
