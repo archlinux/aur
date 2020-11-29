@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-kdbusaddons
 	pkgdesc = Addons to QtDBus (mingw-w64)
-	pkgver = 5.45.0
+	pkgver = 5.76.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = mingw-w64-kdbusaddons
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://download.kde.org/stable/frameworks/5.45/kdbusaddons-5.45.0.tar.xz
-	source = http://download.kde.org/stable/frameworks/5.45/kdbusaddons-5.45.0.tar.xz.sig
+	source = http://download.kde.org/stable/frameworks/5.76/kdbusaddons-5.76.0.tar.xz
+	source = http://download.kde.org/stable/frameworks/5.76/kdbusaddons-5.76.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = e62b0ce98c345ddd0c214af4a57f6d44085bbe9bb6342c5b682cc8925ac93f1c
+	sha256sums = 8e11b19e4a3d4ad8e4deda245eb51b7b77255cbacc07346e7074c8110b946e0a
 	sha256sums = SKIP
 
 pkgname = mingw-w64-kdbusaddons
