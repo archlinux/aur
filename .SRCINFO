@@ -1,7 +1,7 @@
 pkgbase = videobrowser
 	pkgdesc = Browser with shortcuts for Videoplatforms. Based on Microsoft Edge Dev. New Shortcuts can i make just in time.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoftedgeinsider.com/en-us/download
 	arch = x86_64
 	license = custom
@@ -31,6 +31,8 @@ pkgbase = videobrowser
 	source = YouTube.png
 	source = Twitch.png
 	source = twitch.desktop
+	source = amazon-prime.png
+	source = amazon-prime.desktop
 	sha256sums = 7dc49f9069241e62846dcdf6211ff15128ddf8ebe151426ee8f8a40d92b07586
 	sha256sums = 3516070a2bcfa8d28989975813a32a4b197d30aa629ea20632a1fc5b2b83aa20
 	sha256sums = 0d15536c32f31a6625609df76de33b9429c12cb970b6cda4db1044b6d9c272e9
@@ -39,6 +41,8 @@ pkgbase = videobrowser
 	sha256sums = c42f9d3d58eafd4b95044ef818ee0c32b5120d57f4212f0cdd9ec878a477a2b9
 	sha256sums = ec1008447123d58511bd4738d5adc022aa7090f14d2776eb6a487c9a0a7e9855
 	sha256sums = 717bde96aba89d6a01ff6ce92e2e16c91a1b4646e07d0f1998442e9aa060fe93
+	sha256sums = 0956633217210e9caa64c9f5f1d85e8d582035df89d4649120c3467b316e3523
+	sha256sums = 423d268eef36fdb29719af928a7a26816e8264967df1d80f18337fd5cbec904d
 
 pkgname = videobrowser
 
