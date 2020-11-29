@@ -26,6 +26,7 @@ depends=(
 makedepends=(
 	'git'
 	'cmake'
+	'qt5-tools'
 )
 
 pkgver() {
