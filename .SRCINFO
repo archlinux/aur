@@ -1,6 +1,6 @@
 pkgbase = tgs-to-gif-cpp-git
 	pkgdesc = Animated stickers for Telegram (*.tgs) to animated GIFs converter, c++ version
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/ed-asriyan/tgs-to-gif
 	arch = x86_64
