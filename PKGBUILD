@@ -1,6 +1,6 @@
 # Maintainer: Morgan <morganamilo@archlinux.org>
 pkgname=paru-bin
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='AUR helper based on yay'
 url='https://github.com/morganamilo/paru'
@@ -12,7 +12,7 @@ depends=('git' 'pacman')
 optdepends=('asp: downloading repo pkgbuilds' 'bat: colored pkgbuild printing')
 conflicts=('paru')
 provides=('paru')
-sha256sums=('dce25e760ede45bb9ed8a7f7d3d7d5d347e6991e6155da64904c6281162a2f52')
+sha256sums=('c8c0fcab278c48b7eb40ab370fbe73bb18145a3d426ed95d8872faeffe05ff8b')
 
 package() {
   cd "$srcdir/"
