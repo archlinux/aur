@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-kunitconversion
 	pkgdesc = Support for unit conversion (mingw-w64)
-	pkgver = 5.45.0
+	pkgver = 5.76.0
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kunitconversion
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = mingw-w64-kunitconversion
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://download.kde.org/stable/frameworks/5.45/kunitconversion-5.45.0.tar.xz
-	source = http://download.kde.org/stable/frameworks/5.45/kunitconversion-5.45.0.tar.xz.sig
+	source = http://download.kde.org/stable/frameworks/5.76/kunitconversion-5.76.0.tar.xz
+	source = http://download.kde.org/stable/frameworks/5.76/kunitconversion-5.76.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = 7906c5d3e911b6689e6aa55a5d63549658069696f2c4f89f317c3cc3862e952a
+	sha256sums = 31fa05b082ec3a42c831b840cbc086f97c5e49c05a71af29ab35b9727320990c
 	sha256sums = SKIP
 
 pkgname = mingw-w64-kunitconversion
