@@ -5,6 +5,7 @@ pkgbase = psensor-git
 	url = https://gitlab.com/jeanfi/psensor
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	makedepends = help2man
 	depends = lm_sensors
 	depends = dconf
