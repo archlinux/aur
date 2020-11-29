@@ -1,17 +1,18 @@
 pkgbase = gtk-sharp-2-git
-	pkgdesc = C# bindings for GTK+ 2, built from sources.
-	pkgver = 2.12
+	pkgdesc = C# bindings for GTK+ 2
+	pkgver = 2.12.45.r48.ga915b2c67
 	pkgrel = 1
 	url = https://mono-project.com/GtkSharp
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = mono
 	depends = gtk2
 	depends = libglade
 	provides = gtk-sharp-2
 	conflicts = gtk-sharp-2
-	source = git://github.com/mono/gtk-sharp.git#branch=gtk-sharp-2-12-branch
-	md5sums = SKIP
+	source = git+https://github.com/mono/gtk-sharp.git#branch=gtk-sharp-2-12-branch
+	sha256sums = SKIP
 
 pkgname = gtk-sharp-2-git
 
