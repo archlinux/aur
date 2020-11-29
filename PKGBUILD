@@ -1,8 +1,8 @@
 # Maintainer: yjun <jerrysteve1101@gmail.com>
 
 pkgname=sakura-frp
-pkgver=0.34.1_sakura_2.1
-pkgrel=4
+pkgver=0.34.2_sakura_2
+pkgrel=1
 pkgdesc="Sakura Frp"
 arch=('x86_64' 'i686' 'aarch64' 'armv6h' 'armv7h' 'arm')
 url="https://www.natfrp.com/"
@@ -23,12 +23,12 @@ md5sums=('c3675dc7b62fa2493991798745068042'
          '1407d25307cd98902f60db064f2e2bc0'
          'a87e9ee64c87ab609d1e978adc6446e0'
          'd3f3b3c8368fdc692a8a7d71bf9ae5c8')
-md5sums_x86_64=('5bafb67f9f90e58fcdf7d6cf6fa08f88')
-md5sums_i686=('a51635ee1f10c05b0d30180a41f62c02')
-md5sums_aarch64=('53170ad0096ef363dbdfd052fc00f205')
-md5sums_armv6h=('a1887adad2198710cef3d8787613e515')
-md5sums_armv7h=('a1887adad2198710cef3d8787613e515')
-md5sums_arm=('a1887adad2198710cef3d8787613e515')
+md5sums_x86_64=('526097f74b626c3c6b7dabb2c4aa60e6')
+md5sums_i686=('2dd86fcfc58b407eaee25b24ba6fab0a')
+md5sums_aarch64=('84b7ce3114d3b903c6f7029bd5e9e42d')
+md5sums_armv6h=('aa6252089728871e32e44f812134e594')
+md5sums_armv7h=('aa6252089728871e32e44f812134e594')
+md5sums_arm=('aa6252089728871e32e44f812134e594')
 
 package() {
   install -Dm755 ${pkgname}-${pkgver}-* ${pkgdir}/usr/bin/${pkgname}c
