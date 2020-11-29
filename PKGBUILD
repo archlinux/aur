@@ -7,13 +7,13 @@ pkgdesc="Open and extensible continuous delivery solution for Kubernetes."
 url="https://fluxcd.io/"
 arch=("x86_64" "armv6h" "armv7h" "aarch64")
 license=("APACHE")
-depends=('glibc')
+depends=("glibc")
 makedepends=("go")
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/fluxcd/flux2/archive/v$pkgver.tar.gz"
 )
 sha512sums=(
-  'feb48c43a4c8e5d891f892219f95345e051adec2222708de1d4f743e2208ae961c63f6f08075f6e7d5ad383226b664c04fad10dd4c0f84762d8f5b97894c9f0b'
+  "feb48c43a4c8e5d891f892219f95345e051adec2222708de1d4f743e2208ae961c63f6f08075f6e7d5ad383226b664c04fad10dd4c0f84762d8f5b97894c9f0b"
 )
 
 build() {
@@ -32,7 +32,7 @@ check() {
 }
 
 package() {
-	cd "flux2-$pkgver"
-	install -Dm755 flux-bin "$pkgdir/usr/bin/flux"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "flux2-$pkgver"
+  install -Dm755 flux-bin "$pkgdir/usr/bin/flux"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
