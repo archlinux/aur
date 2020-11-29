@@ -1,21 +1,21 @@
 pkgbase = mingw-w64-kcrash
 	pkgdesc = Support for application crash analysis and bug report from apps (mingw-w64)
-	pkgver = 5.45.0
+	pkgver = 5.76.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = any
 	groups = mingw-w64-kf5
 	license = LGPL
-	makedepends = mingw-w64-extra-cmake-modules=5.45.0
-	depends = mingw-w64-kcoreaddons>=5.45.0
-	depends = mingw-w64-kwindowsystem>=5.45.0
+	makedepends = mingw-w64-extra-cmake-modules>=5.76.0
+	depends = mingw-w64-kcoreaddons>=5.76.0
+	depends = mingw-w64-kwindowsystem>=5.76.0
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://download.kde.org/stable/frameworks/5.45/kcrash-5.45.0.tar.xz
-	source = http://download.kde.org/stable/frameworks/5.45/kcrash-5.45.0.tar.xz.sig
+	source = http://download.kde.org/stable/frameworks/5.76/kcrash-5.76.0.tar.xz
+	source = http://download.kde.org/stable/frameworks/5.76/kcrash-5.76.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = 7bb20708404a80fc2bec0d2126666b0c18e779beb41198b158c77d8565a8c3db
+	sha256sums = c4e32254b22f1f02db556be2ad40000cc52cac2e30a35682af3c75ac69710993
 	sha256sums = SKIP
 
 pkgname = mingw-w64-kcrash
