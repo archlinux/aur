@@ -1,6 +1,6 @@
 pkgname=mingw-w64-sdl2
 pkgver=2.0.12
-pkgrel=2
+pkgrel=3
 pkgdesc='A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2) (mingw-w64)'
 license=('MIT')
 url='http://libsdl.org'
@@ -15,7 +15,7 @@ options=(staticlibs '!strip' '!buildflags')
 
 prepare() {
   cd "${srcdir}/SDL2-${pkgver}"
-  sed -i 's/@libdir@\/libSDL2\.so/@bindir@\/SDL2.dll/' sdl2-config.cmake.in
+  sed -i 's:IMPORTED_LOCATION "@libdir@/libSDL2\.so":IMPORTED_LOCATION "@bindir@/SDL2.dll" IMPORTED_IMPLIB "@libdir@/libSDL2.dll.a":' sdl2-config.cmake.in
 }
 
 build() {
