@@ -1,0 +1,5 @@
+# PackageVersion is added by PKGBUILD
+PackageAuthor=[radarr](https://aur.archlinux.org/packages/radarr/)
+UpdateMethod=External
+UpdateMethodMessage=flag [radarr](https://aur.archlinux.org/packages/radarr/) [out-of-date](https://aur.archlinux.org/pkgbase/radarr/flag/), use an [aur helper](https://wiki.archlinux.org/index.php/AUR_helpers) or the [manual method](https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages) to update.
+Branch=master
