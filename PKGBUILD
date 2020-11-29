@@ -1,6 +1,8 @@
+# Maintainer: Mladen Milinkovic <maxrd2@smoothware.net>
+
 pkgname=mingw-w64-kcoreaddons
 pkgver=5.76.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Addons to QtCore (mingw-w64)"
 license=("LGPL")
