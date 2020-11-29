@@ -3,7 +3,7 @@
 # PLEASE do not mark it out-of date because "2.xx is released", *2.xx a separate project with same name from other dev team*
 pkgname=tlauncher
 pkgver=1.117.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='TLauncher Legacy is freeware launcher of Minecraft.'
 url='https://tlaun.ch'
@@ -24,8 +24,8 @@ _librepo='https://u.tlauncher.ru/repo/libraries'
 _bootstrap_checksum='807e5086f0f70ba14baea0e250172ea499ae1e13c84c1736f7ad436a5ccf8cf0'
 _launcher_checksum='6f98b4c16845fd6138bb945078e39dd97275544fb4b69d48c933de233924b090'
 
-source=("tl-bootstrap-${pkgver}::${_repo}/${_branch}/bootstrap/${_bootstrap_checksum}.jar"
-        "tl-launcher-${pkgver}::${_repo}/${_branch}/launcher/${_launcher_checksum}.jar"
+source=("tl-bootstrap-${pkgver}.jar::${_repo}/${_branch}/bootstrap/${_bootstrap_checksum}.jar"
+        "tl-launcher-${pkgver}.jar::${_repo}/${_branch}/launcher/${_launcher_checksum}.jar"
 
         "${_librepo}/org/jdom/jdom/2.0.2/jdom-2.0.2.jar"
         "${_librepo}/org/tukaani/xz/1.5/xz-1.5.jar"
@@ -48,7 +48,7 @@ source=("tl-bootstrap-${pkgver}::${_repo}/${_branch}/bootstrap/${_bootstrap_chec
         'tlauncher.install'
         'tlauncher.desktop'
         'tlauncher.bash')
-noextract=("${source[@]##*/}")
+noextract=("${source[@]##*/}" "tl-bootstrap-${pkgver}.jar" "tl-launcher-${pkgver}.jar")
 sha256sums=("${_bootstrap_checksum}"
             "${_launcher_checksum}"
 
@@ -79,10 +79,8 @@ package() {
   install -Dm0644 "${srcdir}/tlauncher.desktop" "${pkgdir}/usr/share/applications/tlauncher.desktop"
   install -Dm0755 "${srcdir}/tlauncher.bash" "${pkgdir}/usr/bin/tlauncher"
 
-#  install -Dm0644 "${srcdir}/${_bootstrap_checksum}.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
-  install -Dm0644 "${srcdir}/bootstrap-1.9.0-min.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
-#  install -Dm0644 "${srcdir}/${_launcher_checksum}.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
-  install -Dm0644 "${srcdir}/launcher-1.117.1-aur.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
+  install -Dm0644 "${srcdir}/tl-bootstrap-${pkgver}.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
+  install -Dm0644 "${srcdir}/tl-launcher-${pkgver}.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
 
   install -Dm0644 "${srcdir}/jdom-2.0.2.jar" "${pkgdir}/opt/tlauncher/lib/org/jdom/jdom/2.0.2/jdom-2.0.2.jar"
   install -Dm0644 "${srcdir}/xz-1.5.jar" "${pkgdir}/opt/tlauncher/lib/org/tukaani/xz/1.5/xz-1.5.jar"
