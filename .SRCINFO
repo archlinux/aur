@@ -1,0 +1,18 @@
+pkgbase = nodemcu-firmware-git
+	pkgdesc = A Lua based firmware for ESP8266 WiFi SOC
+	pkgver = 2319.4f679277
+	pkgrel = 1
+	url = https://github.com/nodemcu/nodemcu-firmware
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = esptool
+	optdepends = esplorer
+	optdepends = nodemcu-pyflasher
+	optdepends = nodemcu-tool
+	optdepends = nodemcu-uploader-git
+	source = git+https://github.com/nodemcu/nodemcu-firmware.git
+	sha256sums = SKIP
+
+pkgname = nodemcu-firmware-git
+
