@@ -1,12 +1,12 @@
 pkgbase = mystuff
 	pkgdesc = Create a custom menu in a popup window
 	pkgver = 3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.kornelix.net/mystuff/mystuff.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = gtk3
+	depends = clutter-gtk
 	options = !emptydirs
 	source = http://www.kornelix.net/downloads/downloads/mystuff-3.4.tar.gz
 	sha256sums = 2eacc545b1652a97138344822388fc7f45adf92a72f86923e42cd4399f7025d5
