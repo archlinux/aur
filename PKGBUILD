@@ -1,6 +1,8 @@
+# Maintainer: Mladen Milinkovic <maxrd2@smoothware.net>
+
 pkgname=mingw-w64-kcodecs
 pkgver=5.76.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Provide a collection of methods to manipulate strings using various encodings (mingw-w64)"
 license=("LGPL")
