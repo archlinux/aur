@@ -4,7 +4,7 @@
 
 pkgname=xray-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The best v2ray-core, with XTLS support."
 arch=('x86_64')
 url="https://github.com/XTLS/Xray-core"
@@ -31,6 +31,7 @@ sha512sums=(
 prepare() {
   cd $srcdir
   sed -i 's|/usr/local/bin|/usr/bin|;s|/usr/local/etc|/etc|' systemd/system/*.service
+  sed -i '/ExecStart/i\Environment=XRAY_LOCATION_ASSET=/usr/share/v2ray' systemd/system/*.service
 }
 
 
