@@ -1,7 +1,7 @@
 pkgbase = gssp-recoll
 	pkgdesc = GNOME Shell search provider for Recoll
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.lesbonscomptes.com/recoll/index.html
 	arch = x86_64
 	license = BSD-3
