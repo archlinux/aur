@@ -1,14 +1,14 @@
 # Maintainer: Wouter Wijsman <wwijsman@live.nl>
 
 pkgname=minigalaxy
-pkgver=0.9.4
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A simple GOG client for Linux"
 arch=('any')
 url="https://github.com/sharkwouter/minigalaxy"
 license=('GPL-3')
 source=(https://github.com/sharkwouter/minigalaxy/archive/"$pkgver".tar.gz)
-md5sums=('a6c78c00f688ac340b8718c6b5e6dab1')
+md5sums=('f61a407cdebc3640779f21a701c5fc5e')
 depends=('python' 'python-requests' 'python-gobject' 'gtk3' 'webkit2gtk')
 optdepends=('scummvm' 'dosbox' 'wine')
 makedepends=('python' 'python-setuptools')

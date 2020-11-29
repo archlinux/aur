@@ -1,6 +1,6 @@
 pkgbase = minigalaxy
 	pkgdesc = A simple GOG client for Linux
-	pkgver = 0.9.4
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/sharkwouter/minigalaxy
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = minigalaxy
 	optdepends = scummvm
 	optdepends = dosbox
 	optdepends = wine
-	source = https://github.com/sharkwouter/minigalaxy/archive/0.9.4.tar.gz
-	md5sums = a6c78c00f688ac340b8718c6b5e6dab1
+	source = https://github.com/sharkwouter/minigalaxy/archive/1.0.0.tar.gz
+	md5sums = f61a407cdebc3640779f21a701c5fc5e
 
 pkgname = minigalaxy
 
