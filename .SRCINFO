@@ -1,14 +1,14 @@
 pkgbase = dolt
 	pkgdesc = Git for data!
-	pkgver = 0.22.0
+	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://www.dolthub.com/
 	arch = x86_64
 	license = Apache
 	makedepends = go-pie
 	depends = glibc
-	source = dolt-0.22.0.tar.gz::https://github.com/liquidata-inc/dolt/archive/v0.22.0.tar.gz
-	sha256sums = cebfc98b4656d2da2275926b773d4697c97f9ab9f0f8aab324f6abe5e5aa0d8b
+	source = dolt-0.22.1.tar.gz::https://github.com/liquidata-inc/dolt/archive/v0.22.1.tar.gz
+	sha256sums = c54927112eeabb2119fd5245e3da083e212ea009566b1d2d12ca6084814f469c
 
 pkgname = dolt
 
