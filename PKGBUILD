@@ -1,6 +1,8 @@
+# Maintainer: Mladen Milinkovic <maxrd2@smoothware.net>
+
 _pkgname=kxmlgui
 pkgname=mingw-w64-$_pkgname
-pkgver=5.45.0
+pkgver=5.76.0
 pkgrel=1
 arch=(any)
 pkgdesc="User configurable main windows (mingw-w64)"
@@ -10,12 +12,19 @@ groups=(mingw-w64-kf5)
 makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
-source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/$_pkgname-${pkgver}.tar.xz"{,.sig})
-sha256sums=('1b0e799490e30341d57fea7357c650245cf1e4532d2a5890490b1f71e58f65ed'
-            'SKIP')
+source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/$_pkgname-${pkgver}.tar.xz"{,.sig}
+	"0001-private-qtbase-includes.patch")
+sha256sums=('73ae838fb79f97243bea36d438e9bc45315183bbb6b08ab5173c822cfcb4dd82'
+            'SKIP'
+            'ce13e11911cd1e8a8c2e3c2916a8f42dd9e1666d23cbd44a0b812d00d2519db9')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd ${_pkgname}-$pkgver
+  patch -Np1 -i ../0001-private-qtbase-includes.patch
+}
 
 build() {
   cd $_pkgname-$pkgver

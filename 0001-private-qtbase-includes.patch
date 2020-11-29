@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5ec1071..5d80ce6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -46,6 +46,8 @@ if (NOT ANDROID)
+   find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED DBus)
+ endif()
+ 
++include_directories(${Qt5Core_PRIVATE_INCLUDE_DIRS})
++
+ find_package(KF5CoreAddons ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5ItemViews ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5Config ${KF5_DEP_VERSION} REQUIRED)
