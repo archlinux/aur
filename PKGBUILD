@@ -54,7 +54,7 @@ optdepends=(
   'python-numpydoc: Python semantic completion'
   'python-regex: Better Unicode support'
   'omnisharp-roslyn: C# semantic completion'
-  'java-environment: Java semantic completion'
+  'java-environment>11: Java semantic completion'
   'jdtls: Java semantic completion')
 source=(git+https://github.com/ycm-core/YouCompleteMe.git
         git+https://github.com/ycm-core/ycmd.git)
@@ -104,7 +104,6 @@ build() {
   cd "${srcdir}"/ycmd_build || exit
 
   cmake \
-    -DUSE_PYTHON2=OFF \
     -DUSE_CLANG_COMPLETER=${_use_system_clang} \
     -DUSE_SYSTEM_LIBCLANG=${_use_system_clang} \
     ../YouCompleteMe/third_party/ycmd/cpp
