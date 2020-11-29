@@ -1,8 +1,9 @@
-# Maintainer: Muflone http://www.muflone.com/contacts/english/
+# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Contributor: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=transifex-client
-pkgver=0.13.10
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="The Transifex command-line tool to download and upload translations from Transifex"
 arch=('any')
@@ -11,7 +12,7 @@ license=('GPL2')
 depends=('python-distribute' 'python-urllib3' 'python-six' 'python-requests'
          'python-slugify' 'python-gitpython')
 source=("https://pypi.io/packages/source/t/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('633444d0dfa6fba4e1dbdc1cce259ec510e63a3cebc03b3b6e090134a18f4fef')
+sha256sums=('b458c56d6d07d2d8269b43d5049026304ed9a34d31bdf655d9e1864807e7555b')
 
 build() {
   cd "${pkgname}-${pkgver}"
