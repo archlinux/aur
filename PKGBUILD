@@ -1,37 +1,22 @@
-pkgbase=('python-dxfgrabber')
-pkgname=('python-dxfgrabber' 'python2-dxfgrabber')
-_module='dxfgrabber'
-pkgver='1.0.0'
-pkgrel=2
+pkgname=python-dxfgrabber
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="A Python library to grab information from DXF drawings - all DXF versions supported."
 url="https://github.com/mozman/dxfgrabber.git"
-depends=()
-makedepends=('python-setuptools' 'python2-setuptools')
-license=('MIT')
-arch=('any')
-source=("https://files.pythonhosted.org/packages/d0/d5/f4c1bc143223b4a2cc4e915e7e1956ef183fbe035e4a8525e336110a90ed/dxfgrabber-${pkgver}.zip")
-md5sums=('d87f166fe168ef8ab58c837cedd0c370')
+depends=(python)
+makedepends=('python-setuptools')
+license=('custom')
+arch=('x86_64')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mozman/dxfgrabber/archive/v${pkgver}.tar.gz")
+sha256sums=('86e7fa7c186f8c48bf0f7ca5e3cb5df319be8cddf56ba4ea4a95c29c3a251856')
 
-prepare() {
-    cp -a "${srcdir}/${_module}-${pkgver}"{,-python2}
-}
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
+    cd dxfgrabber-${pkgver}
     python setup.py build
-
-    cd "${srcdir}/${_module}-${pkgver}-python2"
-    python2 setup.py build
 }
 
-package_python-dxfgrabber() {
-    depends+=('python')
-    cd "${srcdir}/${_module}-${pkgver}"
+package() {
+    cd dxfgrabber-${pkgver}
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-}
-
-package_python2-dxfgrabber() {
-    depends+=('python2')
-    cd "${srcdir}/${_module}-${pkgver}-python2"
-    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
