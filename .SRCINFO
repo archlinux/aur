@@ -6,6 +6,7 @@ pkgbase = mellowplayer-git
 	arch = x86_64
 	arch = aarch64
 	license = GPL
+	makedepends = git
 	makedepends = qt5-tools
 	makedepends = cmake
 	makedepends = mesa
