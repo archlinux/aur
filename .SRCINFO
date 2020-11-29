@@ -1,0 +1,17 @@
+pkgbase = javanoid
+	pkgdesc = Javanoid is an arkanoid clone written in Java
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://games.os.vc
+	arch = any
+	license = GPLv3
+	depends = java-runtime
+	source = https://games.os.vc/jgames/javanoid-1.0/javanoid.jar
+	source = javanoid_icon.png
+	source = javanoid.desktop
+	md5sums = bb8fe71b73811e9ef97ef5f883728c4e
+	md5sums = 6d4a2c9a141cb8f80986f0998bea9187
+	md5sums = 66e8e32ed549519bed78802fb0e79313
+
+pkgname = javanoid
+
