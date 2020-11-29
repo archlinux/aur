@@ -90,6 +90,10 @@ prepare() {
     sed -e "s/\(java_jdtls_workspace_root_path\":\).*\$/\1 \"\/tmp\",/" \
         -e "s/\(java_binary_path\":\).*\$/\1 \"\/usr\/bin\/java\"/" \
         -i "${srcdir}"/ycmd/ycmd/default_settings.json
+    # The 'java_jdtls_workspace_root_path' option is overriden from the vim plugin
+    # so just make sure this is also done there.
+    sed -e "s/\(ycm_java_jdtls_workspace_root_path',\).*\$/\1 '\/tmp' )/" \
+        -i "${srcdir}"/YouCompleteMe/plugin/youcompleteme.vim
   fi
 
   sed -e "s/\(clangd_binary_path\":\).*\$/\1 \"\/usr\/bin\/clangd\",/" \
@@ -129,7 +133,6 @@ package() {
   if [[ "$_java" == "y" ]]; then
     install -Ddm755 "${pkg_ycmd_dir}/third_party/eclipse.jdt.ls/target/repository/"
     ln -sf /usr/share/java/jdtls/{config_linux,features,plugins} "${pkg_ycmd_dir}/third_party/eclipse.jdt.ls/target/repository/"
-    ln -sf /tmp "${pkg_ycmd_dir}/third_party/eclipse.jdt.ls/workspace"
   fi
 
   if [[ ${_tern} == "ON" ]]; then
