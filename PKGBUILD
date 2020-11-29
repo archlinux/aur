@@ -23,7 +23,7 @@ build() {
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -ldflags "-X main.VERSION=$pkgver" -o flux-bin ./cmd/flux
+  go build -ldflags "-X main.VERSION=$pkgver" -o flux-bin ./cmd/flux
 }
 
 check() {
