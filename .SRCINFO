@@ -5,7 +5,7 @@ pkgbase = mingw-w64-ki18n
 	url = https://cgit.kde.org/ki18n.git
 	arch = any
 	license = LGPL
-	makedepends = mingw-w64-extra-cmake-modules>=5.45
+	makedepends = mingw-w64-extra-cmake-modules
 	makedepends = python
 	depends = mingw-w64-qt5-script
 	depends = mingw-w64-qt5-declarative
@@ -14,7 +14,7 @@ pkgbase = mingw-w64-ki18n
 	options = staticlibs
 	options = !strip
 	source = http://download.kde.org/stable/frameworks/5.76/ki18n-5.76.0.tar.xz
-	sha256sums = b70e62cd355b02c6160b69b210fd7f4bd44fb341e013db8dc81c744332e55cf6
+	sha256sums = 0e87bc1136e21f7860f15daa39e8d16e5a773995fce2b87b0cef0043c4ce0e7a
 
 pkgname = mingw-w64-ki18n
 
