@@ -1,0 +1,7 @@
+post_install() {
+    echo "Notice: the data.zip ("game data") contained in this package build is for personal use only without redistribution"
+}
+
+post_upgrade() {
+    post_install
+}

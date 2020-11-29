@@ -3,9 +3,8 @@
 
 pkgname=vvvvvv-git
 binname=vvvvvv
-pkgver=20200111.84320d2
+pkgver=20201123.9f5f697
 _pkgver=git
-_databin=vvvvvv-mp-11192019-bin
 pkgrel=1
 pkgdesc='A retro-styled 2D platformer'
 arch=('i686' 'x86_64')
@@ -19,14 +18,15 @@ source=(
     "git+https://github.com/TerryCavanagh/VVVVVV.git"
     "${binname}.desktop"
     "${binname}.sh"
-    "http://www.flibitijibibo.com/${_databin}"
+    "https://thelettervsixtim.es/makeandplay/data.zip"
 )
 sha256sums=(
     'SKIP'
     '8c704e92e6abc8172d7d9fe726f1a0bba4b8630682745d6daf1f34ce12e0e3e4'
     '883913125c4630d16fe0081d9a96bf65f2bc08ace7fa345613669d827a8ea7c1'
-    '9f7307e111b4f8e19c02d6a0fbf4b43b93a17f341468993fa4fa0c4eae42fc4a'
+    '6fae3cdec06062d05827d4181c438153f3ea3900437a44db73bcd29799fe57e0'
 )
+install="${pkgname}.install"
 
 pkgver() {
 	cd "${srcdir}/VVVVVV"
@@ -35,8 +35,9 @@ pkgver() {
 
 prepare() {
   cd VVVVVV/desktop_version
-  # Disable the integration with Steam, the game seems fine without it
-  sed -i "s/NETWORK_init/\/\/NETWORK_init/g" ./src/main.cpp
+
+  echo "Please note: the retrieved data.zip is for personal use only without redistribution"
+  echo "See also: /usr/share/licenses/vvvvvv-git/LICENSE.md and https://thelettervsixtim.es/makeandplay/"
 }
 
 build() {
@@ -51,9 +52,8 @@ package() {
   cd ${srcdir}/VVVVVV/desktop_version/build
   install -d "${pkgdir}/opt/${binname}"
   install -D -m644 ../../LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
-  # Legal considerations for inclusion of data.zip
-  sed --silent '38,50p' ../README.md > \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-data.md"
+  # Legal: There used to be a separate LICENSE-data.md, but the LICENSE.md also mentions the "Make and Play" edition specifically.
+  # We now instead warn the user on build they should not redistribute the package and mention the same on install
   install -m755 ${binname^^} \
     "${pkgdir}/opt/${binname}/${binname}"
 

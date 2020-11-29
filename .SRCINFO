@@ -1,8 +1,9 @@
 pkgbase = vvvvvv-git
 	pkgdesc = A retro-styled 2D platformer
-	pkgver = 20200111.84320d2
+	pkgver = 20201123.9f5f697
 	pkgrel = 1
 	url = https://thelettervsixtim.es/
+	install = vvvvvv-git.install
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -15,11 +16,11 @@ pkgbase = vvvvvv-git
 	source = git+https://github.com/TerryCavanagh/VVVVVV.git
 	source = vvvvvv.desktop
 	source = vvvvvv.sh
-	source = http://www.flibitijibibo.com/vvvvvv-mp-11192019-bin
+	source = https://thelettervsixtim.es/makeandplay/data.zip
 	sha256sums = SKIP
 	sha256sums = 8c704e92e6abc8172d7d9fe726f1a0bba4b8630682745d6daf1f34ce12e0e3e4
 	sha256sums = 883913125c4630d16fe0081d9a96bf65f2bc08ace7fa345613669d827a8ea7c1
-	sha256sums = 9f7307e111b4f8e19c02d6a0fbf4b43b93a17f341468993fa4fa0c4eae42fc4a
+	sha256sums = 6fae3cdec06062d05827d4181c438153f3ea3900437a44db73bcd29799fe57e0
 
 pkgname = vvvvvv-git
 
