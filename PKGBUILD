@@ -1,6 +1,6 @@
 _pkgname=attica
 pkgname=mingw-w64-$_pkgname
-pkgver=5.45.0
+pkgver=5.76.0
 pkgrel=1
 arch=(any)
 pkgdesc="Qt library that implements the Open Collaboration Services API (mingw-w64)"
@@ -11,7 +11,7 @@ makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/$_pkgname-${pkgver}.tar.xz"{,.sig})
-sha256sums=('c506843f635943dad70600ec0c6dda85bb23a19a1bc0aeb5110f362aa454ebef'
+sha256sums=('64b262f61935653b91a83f4d1c659e7dcaf575b12aa955fe16d8392adb256e22'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
