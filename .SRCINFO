@@ -1,6 +1,6 @@
 pkgbase = flexisip
 	pkgdesc = A general purpose SIP proxy with media capabilities
-	pkgver = 2.0.0
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = http://flexisip.org
 	install = flexisip.install
@@ -16,8 +16,8 @@ pkgbase = flexisip
 	depends = soci
 	depends = sofia-sip-bc>=1.13.41bc
 	depends = xerces-c
-	source = flexisip-2.0.0.tar.gz::https://github.com/BelledonneCommunications/flexisip/archive/2.0.0-beta.tar.gz
-	sha256sums = 679ce09120143a4dc363a38e9e41bd469a8ac589867b7d233d9fb0b036107092
+	source = flexisip-2.0.3.tar.gz::https://github.com/BelledonneCommunications/flexisip/archive/2.0.3.tar.gz
+	sha256sums = fba32d04aeb0ba4d5078199e3d0a75fe7357cb3cadb571dc032918730f34015a
 
 pkgname = flexisip
 
