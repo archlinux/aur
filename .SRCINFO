@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-kimageformats
 	pkgdesc = Image format plugins for Qt5 (mingw-w64)
-	pkgver = 5.45.0
+	pkgver = 5.76.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = any
@@ -15,10 +15,10 @@ pkgbase = mingw-w64-kimageformats
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://download.kde.org/stable/frameworks/5.45/kimageformats-5.45.0.tar.xz
-	source = http://download.kde.org/stable/frameworks/5.45/kimageformats-5.45.0.tar.xz.sig
+	source = http://download.kde.org/stable/frameworks/5.76/kimageformats-5.76.0.tar.xz
+	source = http://download.kde.org/stable/frameworks/5.76/kimageformats-5.76.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = d79feea60a3b0e9f73347b7b65361c3304a533edcd389efc4b5c9b222fcdac4d
+	sha256sums = 78ced2665f8918beb617b74962d188dcbb01a92a90ba49bfd173671bdb14e68d
 	sha256sums = SKIP
 
 pkgname = mingw-w64-kimageformats
