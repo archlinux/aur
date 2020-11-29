@@ -1,16 +1,16 @@
 pkgbase = linkinator
 	pkgdesc = Find broken links, missing images, etc in your HTML
-	pkgver = 2.2.2
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/JustinBeckwith/linkinator#readme
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = linkinator-2.2.2.tgz
+	noextract = linkinator-2.4.0.tgz
 	options = !strip
-	source = https://registry.npmjs.org/linkinator/-/linkinator-2.2.2.tgz
-	sha256sums = bf56cac37ff84c7e82eedfb16972ffcc10a0e7cf6501e2bde0e856e43863fd75
+	source = https://registry.npmjs.org/linkinator/-/linkinator-2.4.0.tgz
+	sha256sums = 98f200d29dd94da5ee37bb474835ca66f19053585151608cea2be4fa5962cf6d
 
 pkgname = linkinator
 
