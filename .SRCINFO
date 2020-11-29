@@ -1,6 +1,6 @@
 pkgbase = gtkterm-git
 	pkgdesc = A gtk+ based serial port communication program
-	pkgver = 91.421f834
+	pkgver = 120.c8bce8e
 	pkgrel = 1
 	url = https://github.com/zdavkeos/gtkterm
 	install = gtkterm-git.install
@@ -11,11 +11,11 @@ pkgbase = gtkterm-git
 	makedepends = intltool
 	makedepends = gnome-common
 	depends = gtk2
-	depends = vte-legacy
+	depends = vte290
 	depends = systemd
 	provides = gtkterm
 	conflicts = gtkterm
-	source = gtkterm::git+https://github.com/zdavkeos/gtkterm.git#branch=0.99.7
+	source = gtkterm::git+https://github.com/zdavkeos/gtkterm.git
 	md5sums = SKIP
 
 pkgname = gtkterm-git

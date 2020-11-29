@@ -1,6 +1,6 @@
 post_install() {
     echo "You must be in the following groups: "
-    echo " * lock: for /var/lock/lockdev"
+    echo " * lock: for /run/lock/lockdev"
     echo " * uucp: for /dev/ttyS0"
 }
 
