@@ -1,32 +1,26 @@
-# Maintainer heichblatt <git@hanneseichblatt.de>
-pkgname=seclists-git
-pkgbase=seclists
-pkgver=r283.8ef8694
-pkgrel=1
-pkgdesc="A collection of multiple types of lists used during security assessments."
-arch=('any')
-url="https://github.com/danielmiessler/SecLists/"
-license=('unknown')
-groups=()
-depends=()
-makedepends=('git')
-provides=("${pkgname}")
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-source=('seclists-git::git+https://github.com/danielmiessler/SecLists.git')
-noextract=()
-md5sums=('SKIP')
+# Maintainer: Aleksander Mietinen <aleksander at mietinen dot net>
 
-pkgver() {
-	cd "$srcdir/${pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+pkgname=seclists
+pkgver=2020.4
+pkgrel=1
+pkgdesc="A collection of multiple types of lists used during security assessments, collected in one place."
+arch=('any')
+url="https://github.com/danielmiessler/SecLists"
+license=('MIT')
+makedepends=('findutils' 'coreutils' 'tar')
+
+source=($pkgname-$pkgver.tar.gz::"https://github.com/danielmiessler/SecLists/archive/${pkgver}.tar.gz")
+sha256sums=('eeec19a2596e0d0ed6f8d81e2feec828641ba6e66fc614e3e60bb5b30219fd86')
+
+prepare() {
+    cd "$srcdir/SecLists-$pkgver"
+    find . -iname "rockyou*.tar.gz" -exec sh -c 'tar zxf {} -C $(dirname {}); rm {}' \;
 }
 
-
 package() {
-	mkdir -p "${pkgdir}/usr/share/wordlists/${pkgname}"
-	find "${srcdir}/${pkgname}" -maxdepth 1 | grep -v \\.git | xargs -I{} cp -r {} "${pkgdir}/usr/share/wordlists/${pkgname}"
+    cd "$srcdir/SecLists-$pkgver"
+    mkdir -p "${pkgdir}/usr/share/${pkgname}"
+    find . \( ! -iname "*.md" -a ! -iname ".git*" -a ! -name "LICENSE"  \) -type f -print0 | \
+	    xargs -I{} -0 install -Dm644 {} "${pkgdir}/usr/share/${pkgname}/{}"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
