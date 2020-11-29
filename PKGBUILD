@@ -1,7 +1,7 @@
 # Maintainer: Alex Mekkering <amekkering at gmail dot com>
 
 pkgname=libavresample
-pkgver=4.2.2
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="libavresample from the ffmpeg package because it's been excluded due to deprecation"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ provides=(
   libavresample.so
 )
 source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver})
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 build() {
   cd ffmpeg
