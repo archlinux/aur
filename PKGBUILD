@@ -5,41 +5,55 @@
 # Contributor: nokangaroo <nokangaroo@aon.at>
 
 pkgname=golly
-pkgver=3.4
+pkgver=4.0
 pkgrel=1
 pkgdesc="A simulator for Conway's Game of Life and other cellular automata"
 arch=('i686' 'x86_64')
 url="http://golly.sourceforge.net/"
 license=('GPL')
-depends=('wxgtk')
-makedepends=('perl' 'python2')
+depends=('wxgtk' 'glu')
+makedepends=('perl' 'python3')
 optdepends=('perl: for Perl scripting support'
-            'python2: for Python scripting support')
+            'python3: for Python scripting support')
 source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}-src.tar.gz"
         "golly.desktop")
-md5sums=('635be7639c29e62ec5edf263ffe24d2b'
+md5sums=('1f8713687745b542473b4218ed1cf05a'
          'bf54bb7268dcba539162ee106d2a5063')
+sha1sums=('f0641c36fcb6406468f7b2fa06e0c2582c32e3c1'
+          'e8fefda400ca3094d7457e8ad45d2314e910ca85')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}-src"
+  # Hacky way to get location of libperl.so used by perl interpreter
+  PERL_SHLIB=$(ldd "$(which perl)" | grep 'libperl\.so' | awk '{print $3}')
+  test -x "${PERL_SHLIB}" || (echo 'libperl.so not found' && false)
 
-  gui-wx/configure/configure \
-    LIBS='-ldl -lGL' \
-    --enable-perl \
-    --with-perl-shlib=/usr/lib/perl5/core_perl/CORE/libperl.so \
-    --with-python-shlib=libpython2.7.so \
-    --with-wx-config=/usr/bin/wx-config \
-    --prefix=/usr
+  cd "${srcdir}/${pkgname}-${pkgver}-src/gui-wx/"
 
-  make
+  cat >local-gtk.mk <<EOF
+GOLLYDIR=/usr/share/golly
+CXXFLAGS=${CXXFLAGS}
+LDFLAGS=${LDFLAGS}
+ENABLE_PERL=1
+EOF
+
+  make -f makefile-gtk PERL_SHLIB="${PERL_SHLIB}"
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}-src"
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname}-${pkgver}-src/"
+
+  install -d "${pkgdir}"/usr/bin
+  install bgolly golly "${pkgdir}"/usr/bin/
+
+  install -d "${pkgdir}"/usr/share/doc/golly
+  install -m644 docs/License.html docs/ReadMe.html "${pkgdir}"/usr/share/doc/golly/
+
+  find Help Patterns Rules Scripts -type f | while read file; do
+    install -D -m644 "${file}" "${pkgdir}/usr/share/golly/${file}"
+  done
 
   install -D -m644 "${srcdir}/${pkgname}.desktop" \
-    "$pkgdir"/usr/share/applications/"${pkgname}.desktop"
+    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -D -m644 gui-wx/icons/appicon.xpm \
-    "$pkgdir"/usr/share/pixmaps/"${pkgname}.xpm"
+    "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
 }
