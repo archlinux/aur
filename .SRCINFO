@@ -1,5 +1,5 @@
 pkgbase = lynx-desktop
-	pkgdesc = LynxOS Desktop Environment
+	pkgdesc = Lynx Desktop Environment - Escritorio Oficial de LynxOS
 	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://gitlab.com/LynxOS/lde
