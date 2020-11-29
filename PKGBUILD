@@ -1,6 +1,8 @@
+# Maintainer: Mladen Milinkovic <maxrd2@smoothware.net>
+
 _pkgname=kconfigwidgets
 pkgname=mingw-w64-$_pkgname
-pkgver=5.45.0
+pkgver=5.76.0
 pkgrel=1
 arch=(any)
 pkgdesc="Widgets for KConfig (mingw-w64)"
@@ -11,7 +13,7 @@ makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/$_pkgname-${pkgver}.tar.xz"{,.sig})
-sha256sums=('349ccd412fbe7130026e389edc6d1186ec0a1610dfdd43fd9ff00867ba50404e'
+sha256sums=('f8eed399008a041df2da9cc3f2313df11376b94c85472900b39b9d6abcabe6d4'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
