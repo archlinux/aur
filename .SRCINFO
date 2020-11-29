@@ -6,7 +6,6 @@ pkgbase = findwild
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = gtk3
 	depends = clutter-gtk
 	options = !emptydirs
 	source = http://www.kornelix.net/downloads/downloads/findwild-3.1.tar.gz
