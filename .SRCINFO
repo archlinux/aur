@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-ki18n
 	pkgdesc = Advanced internationalization framework (mingw-w64)
-	pkgver = 5.45.0
+	pkgver = 5.76.0
 	pkgrel = 1
 	url = https://cgit.kde.org/ki18n.git
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mingw-w64-ki18n
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = http://download.kde.org/stable/frameworks/5.45/ki18n-5.45.0.tar.xz
+	source = http://download.kde.org/stable/frameworks/5.76/ki18n-5.76.0.tar.xz
 	sha256sums = b70e62cd355b02c6160b69b210fd7f4bd44fb341e013db8dc81c744332e55cf6
 
 pkgname = mingw-w64-ki18n
