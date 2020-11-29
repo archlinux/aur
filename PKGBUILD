@@ -1,6 +1,8 @@
+# Maintainer: Mladen Milinkovic <maxrd2@smoothware.net>
+
 pkgname=mingw-w64-kconfig
 pkgver=5.76.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Configuration system (mingw-w64)"
 license=("LGPL")
