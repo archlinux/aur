@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-kwindowsystem
 	pkgdesc = Access to the windowing system (mingw-w64)
-	pkgver = 5.45.0
+	pkgver = 5.76.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = mingw-w64-kwindowsystem
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://download.kde.org/stable/frameworks/5.45/kwindowsystem-5.45.0.tar.xz
-	source = http://download.kde.org/stable/frameworks/5.45/kwindowsystem-5.45.0.tar.xz.sig
+	source = http://download.kde.org/stable/frameworks/5.76/kwindowsystem-5.76.0.tar.xz
+	source = http://download.kde.org/stable/frameworks/5.76/kwindowsystem-5.76.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = d3844edff32ea4a0bcf98b0ecfd82a37cb52663cc8d2a6b8f32ea2c947206904
+	sha256sums = 8dced74012bed3f33c3c51874aa9c3a57093573c1c0e263b758cefa96c26f7b7
 	sha256sums = SKIP
 
 pkgname = mingw-w64-kwindowsystem
