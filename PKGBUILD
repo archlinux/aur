@@ -1,7 +1,7 @@
 # Maintainer: Ning Sun <n@sunng.info>
 
 pkgname=zipkin
-pkgver=2.22.1
+pkgver=2.23.0
 pkgrel=1
 pkgdesc='Opensource Distributed Tracing System'
 arch=('any')
@@ -14,7 +14,7 @@ source=(https://search.maven.org/remotecontent?filepath=io/zipkin/zipkin-server/
         'zipkin.sh'
         'zipkin.sysusers'
         'zipkin.service')
-sha1sums=('8657ee2383ef3fe5d3b5f56191183c5fda1b203c'
+sha1sums=('d0afa5ab226feddb7a2c7499c379c09198b20752'
           'SKIP'
           'SKIP'
           'SKIP')
