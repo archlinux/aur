@@ -1,6 +1,6 @@
 pkgbase = apio
 	pkgdesc = Experimental micro-ecosystem for open FPGAs
-	pkgver = 0.5.4
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://pypi.org/project/apio/
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = apio
 	depends = python-colorama
 	depends = python-requests
 	depends = sudo
-	depends = python-urllib3
-	source = https://files.pythonhosted.org/packages/source/a/apio/apio-0.5.4.tar.gz
-	md5sums = 1c60390c863cb47651c921fccd57505e
+	depends = python-wheel
+	source = https://files.pythonhosted.org/packages/source/a/apio/apio-0.6.0.tar.gz
+	sha256sums = cf1b350d685b2fe10fcd148f29144cc984a301396b642ddd883c1630ace22eed
 
 pkgname = apio
 
