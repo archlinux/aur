@@ -1,6 +1,8 @@
+# Maintainer: Mladen Milinkovic <maxrd2@smoothware.net>
+
 pkgname=mingw-w64-kcompletion
 pkgver=5.76.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Text completion helpers and widgets (mingw-w64)"
 license=("LGPL")
