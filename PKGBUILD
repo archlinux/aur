@@ -1,6 +1,6 @@
 # Maintainer: Daniel Plank <tyrolyean@gmx.at>
 pkgname=electric
-pkgver=9.08b
+pkgver=9.08d
 pkgrel=1
 pkgdesc="a sophisticated electrical CAD system for the design of \
         integrated circuits"
