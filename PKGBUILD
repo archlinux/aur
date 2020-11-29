@@ -63,8 +63,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-bcachefs-ck
-pkgver=5.7.15
-_pkgverpntrel=15
+pkgver=5.9.11
+_pkgverpntrel=11
 pkgrel=1
 _ckpatchversion=1
 _cpusched="MuQSS"
@@ -87,15 +87,15 @@ options=('!strip')
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config
-  "https://github.com/graysky2/kernel_gcc_patch/raw/master/enable_additional_cpu_optimizations_for_gcc_v10.1%2B_kernel_v5.7%2B.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0002-clear-patches.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0003-glitched-base.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0004-5.7-ck1.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0004-glitched-muqss.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0006-add-acs-overrides_iommu.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0007-v5.7-fsync.patch"
-  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0008-5.7-bcachefs.patch"
+# "https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v10.1%2B_kernel_v5.8%2B.patch"
+  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
+  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0002-clear-patches.patch"
+  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0003-glitched-base.patch"
+  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0004-5.9-ck1.patch"
+  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0004-glitched-muqss.patch"
+  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0006-add-acs-overrides_iommu.patch"
+  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0007-v5.9-fsync.patch"
+  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0008-5.9-bcachefs.patch"
 )
 
 
@@ -103,18 +103,17 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-md5sums=('31965edc4b4473959a6692db3b200846'
+md5sums=('530543935698468bf30dfacd4a20d84f'
          'SKIP'
-         '91db2f49d9ec23865eb553f8606977ec'
-         'c22798dae23cde0141c891660312ece9'
-         'f89cd458929e9817a41861119bf8fcc1'
-         'b10e4c612d5240d66fad8f1c50fe3242'
-         'a22cddcadc0da933dac13a6ab49b7ed9'
-         '83b17512a54ed65e6a1be42668a3dddb'
-         '75602fa70033aef9cb42f3df16ec2eb3'
+         'acaec169590211b789b7873145f84564'
+         'a4eb432da721ad9a721d62a8bbed6d1d'
+         '31a83ad2d5c11e560c7bfdfd59659c84'
+         '825adea276dddc5ce88e9484d1dd4575'
+         '67a0b9088e599091ad121ecd2dab9c9a'
+         '33cdcc3fa5c5f753c42f1455b973850c'
          '168a924c7c83ecdc872a9a1c6d1c8bdb'
-         '228b33d0cb13cab162b3e051ec9bb88d'
-         '0633bf8f7561c6903b445ff476815dc0')
+         'bc259da4c80e5847ba6b4ad21b2b3f16'
+         'bff07060407a694a7bac6cbf0e75aa71')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -157,16 +156,16 @@ prepare() {
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   
   # graysky's cpu opts - https://github.com/graysky2/kernel_gcc_patch
-  msg2 "Applying graysky's cpu opts patch"
-  patch -Np1 -i ../enable_additional_cpu_optimizations_for_gcc_v10.1%2B_kernel_v5.7%2B.patch
+  # msg2 "Applying graysky's cpu opts patch"
+  # patch -Np1 -i ../enable_additional_cpu_optimizations_for_gcc_v10.1%2B_kernel_v5.8%2B.patch
   
     # TkG
   patch -Np1 -i ../0002-clear-patches.patch
 
   patch -Np1 -i ../0003-glitched-base.patch
-    
-  patch -Np1 -i ../0004-5.7-ck1.patch
 
+  patch -Np1 -i ../0004-5.9-ck1.patch
+    
   patch -Np1 -i ../0004-glitched-muqss.patch
 
   echo "Setting config..."
@@ -433,10 +432,10 @@ prepare() {
   patch -Np1 -i ../0006-add-acs-overrides_iommu.patch
   
   # bcachefs
-  patch -Np1 -i ../0008-5.7-bcachefs.patch
+  patch -Np1 -i ../0008-5.9-bcachefs.patch
 
   # fsync support
-  patch -Np1 -i ../0007-v5.7-fsync.patch
+  patch -Np1 -i ../0007-v5.9-fsync.patch
   
   # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
   sed -i -e 's/# CONFIG_PSI_DEFAULT_DISABLED is not set/CONFIG_PSI_DEFAULT_DISABLED=y/' ./.config
