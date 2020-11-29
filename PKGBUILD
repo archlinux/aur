@@ -5,7 +5,7 @@ pkgname=glib
 pkgver=1.2.10
 pkgrel=15
 pkgdesc="Common C routines used by Gtk+ and other libs"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h')
 url="http://www.gtk.org/"
 license=('LGPL')
 depends=('glibc' 'sh')
@@ -31,6 +31,8 @@ build() {
     CONFIGFLAG='--host=i686-pc-linux-gnu --target=i686-pc-linux-gnu'
   elif [[ $CARCH = "x86_64" ]]; then
     CONFIGFLAG='--host=x86_64-unknown-linux-gnu --target=x86_64-unknown-linux-gnu'
+  elif [[ $CARCH = "armv6h" ]]; then
+    CONFIGFLAG='--host=armv6l-unknown-linux-gnueabihf --target=armv6l-unknown-linux-gnueabihf'
   fi
 
   autoreconf --force --install

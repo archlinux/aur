@@ -5,6 +5,7 @@ pkgbase = glib
 	url = http://www.gtk.org/
 	arch = i686
 	arch = x86_64
+	arch = armv6h
 	license = LGPL
 	depends = glibc
 	depends = sh
