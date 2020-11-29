@@ -1,5 +1,5 @@
 pkgname=multiselect
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="multiple x11 selection server"
 arch=('x86_64')
