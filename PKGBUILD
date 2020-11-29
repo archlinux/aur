@@ -2,14 +2,14 @@
 
 _plug=sangnom
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r41.1.g44b0341
+pkgver=r42.0.g55a93f5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (Fork)(GIT version)"
 arch=('x86_64')
 url='https://github.com/dubhater/vapoursynth-sangnom'
 license=('MIT')
 depends=('vapoursynth')
-makedepends=('mercurial'
+makedepends=('git'
              'meson'
              )
 provides=("vapoursynth-plugin-${_plug}"
