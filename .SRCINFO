@@ -1,6 +1,6 @@
 pkgbase = linphone-desktop-git
 	pkgdesc = A Voice-over-IP phone
-	pkgver = 4.3.0.alpha.r21.g85b09ee9
+	pkgver = 4.3.0.alpha.r53.gc4f9aaff
 	pkgrel = 1
 	url = http://www.linphone.org
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = linphone-desktop-git
 	source = 0001-do-not-build-linphone-sdk.patch
 	source = cmake.patch
 	sha256sums = SKIP
-	sha256sums = b2ec0664060d807473d774ae10a28e3f5041046ccbc47f254d8c4a171d5411f4
+	sha256sums = 6dc5d722a2495608811b1d1899b0b728231bdcff98e8ef0a5f8b094ea4a185e8
 	sha256sums = 6f92f10991d1705b719330efb468f141302179e52aa06f17dda16c6637d90b50
 
 pkgname = linphone-desktop-git
