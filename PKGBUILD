@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=('SKIP'
             '698c307c758f5b911d8bf054f2ed74bf707bf8eb18ad9e6475fd8abd6b15fbea'
-            'afb78ea67a8faa7a384155ff12bc12f4e5aff861f0531aca7cc3804224cdb13a')
+            '11b464bb313a6ea6f6719b7f47814f76bcf10f733dc83c06aefd76b825e47988')
 
 pkgver() {
   cd "$_pkgname"
