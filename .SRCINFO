@@ -25,7 +25,7 @@ pkgbase = vim-youcompleteme-git
 	optdepends = python-numpydoc: Python semantic completion
 	optdepends = python-regex: Better Unicode support
 	optdepends = omnisharp-roslyn: C# semantic completion
-	optdepends = java-environment>11: Java semantic completion
+	optdepends = java-environment=>11: Java semantic completion
 	optdepends = jdtls: Java semantic completion
 	source = git+https://github.com/ycm-core/YouCompleteMe.git
 	source = git+https://github.com/ycm-core/ycmd.git

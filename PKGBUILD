@@ -54,7 +54,7 @@ optdepends=(
   'python-numpydoc: Python semantic completion'
   'python-regex: Better Unicode support'
   'omnisharp-roslyn: C# semantic completion'
-  'java-environment>11: Java semantic completion'
+  'java-environment=>11: Java semantic completion'
   'jdtls: Java semantic completion')
 source=(git+https://github.com/ycm-core/YouCompleteMe.git
         git+https://github.com/ycm-core/ycmd.git)
