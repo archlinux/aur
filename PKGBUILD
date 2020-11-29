@@ -1,7 +1,9 @@
+# Maintainer: Mladen Milinkovic <maxrd2@smoothware.net>
+
 _pkgname=kinit
 pkgname=mingw-w64-$_pkgname
-pkgver=5.45.0
-pkgrel=2
+pkgver=5.76.0
+pkgrel=1
 arch=(any)
 pkgdesc="Process launcher to speed up launching KDE applications (mingw-w64)"
 license=("LGPL")
@@ -12,7 +14,7 @@ options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/$_pkgname-${pkgver}.tar.xz"{,.sig}
         "org.kde.klauncher5.service")
-sha256sums=('5050b36c80e9163df7dbce2c55948e135cf3db1c140238adf51b9901cce5185e'
+sha256sums=('a5b63c10b4fc5efcbb5f92b7bce928b4a4880c0ad5d12ff12518106b09239546'
             'SKIP'
             '5b242720243f720221284489d739b9caa3b25717c8883bfa0f1883fc7d87edf6')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>

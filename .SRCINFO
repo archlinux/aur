@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-kinit
 	pkgdesc = Process launcher to speed up launching KDE applications (mingw-w64)
-	pkgver = 5.45.0
-	pkgrel = 2
+	pkgver = 5.76.0
+	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = any
 	groups = mingw-w64-kf5
@@ -12,12 +12,13 @@ pkgbase = mingw-w64-kinit
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://download.kde.org/stable/frameworks/5.45/kinit-5.45.0.tar.xz
-	source = http://download.kde.org/stable/frameworks/5.45/kinit-5.45.0.tar.xz.sig
+	source = http://download.kde.org/stable/frameworks/5.76/kinit-5.76.0.tar.xz
+	source = http://download.kde.org/stable/frameworks/5.76/kinit-5.76.0.tar.xz.sig
 	source = org.kde.klauncher5.service
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = 5050b36c80e9163df7dbce2c55948e135cf3db1c140238adf51b9901cce5185e
+	sha256sums = a5b63c10b4fc5efcbb5f92b7bce928b4a4880c0ad5d12ff12518106b09239546
 	sha256sums = SKIP
+	sha256sums = 5b242720243f720221284489d739b9caa3b25717c8883bfa0f1883fc7d87edf6
 
 pkgname = mingw-w64-kinit
 
