@@ -1,0 +1,5 @@
+post_install() {
+  echo "1) Please edit /opt/persistent-evdev/etc/config.json and add your devices"
+  echo "2) Please restart systemd-udevd.service"
+  echo "3) Please enable persistent-evdev.service"
+}
