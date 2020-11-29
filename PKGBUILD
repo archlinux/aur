@@ -2,7 +2,7 @@
 
 pkgname=zettlr
 pkgver=1.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
@@ -16,16 +16,22 @@ options=('!strip')
 _commit=b7165b4c3e69cec8c62b7203df41fcbeb91d178d # 1.8.0^0
 _lang=('de-DE' 'en-GB' 'en-US' 'fr-FR' 'ja-JP' 'zh-CN' 'es-ES' 'ru-RU')
 source=(git+https://github.com/Zettlr/Zettlr.git#commit="${_commit}"
+        # Fix language files search path
+        fix-lang-search-path.patch::https://github.com/Zettlr/Zettlr/pull/1466.patch
         # citation style
         https://github.com/citation-style-language/locales/archive/master.zip
-        https://raw.githubusercontent.com/citation-style-language/styles/master/chicago-author-date.csl)
+        https://raw.githubusercontent.com/citation-style-language/styles/master/chicago-author-date.csl
+        # Chinese(Taiwan) translation
+        https://github.com/Brli/zetter-zh-TW/raw/master/zh-TW.json)
         # translations
 for _l in ${_lang[@]}; do
     source+=(https://translate.zettlr.com/download/${_l}.json)
 done
 sha256sums=('SKIP'
+            '906041fbf93b1533dc14733ce5214df306f161519e55e79881ce237835b865bf'
             '4a3b89033d6bbb669a7d046d23224dc3eaaa2840cc8a5dd2c5d6201a61e3f1a1'
             '2b7cd6c1c9be4add8c660fb9c6ca54f1b6c3c4f49d6ed9fa39c9f9b10fcca6f4'
+            '81730193afc64908f820020a19bfeda4475c67ada92e8567a39c9313a3d65ff0'
             '192b9db172cbc2f1e9e1c5f7aee4757f1ef960c851561c001fe877b92bf2fff2'
             '71bd0c5462dc7dbcc38e7d6f31eb7d0cfe7cfcb1291ce3d670da43195c98a460'
             'b7583049214837ae023495dc1264089f8f43c22d788b66ef2c31fadfcf911b19'
@@ -38,6 +44,9 @@ sha256sums=('SKIP'
 prepare() {
     cd "${srcdir}/Zettlr"
 
+    # regression introduced in e5d807a36dd9fd952449afe1aa19ad9bfec4b690
+    patch -Np1 -i ${srcdir}/fix-lang-search-path.patch
+
     # We don't build electron and friends, and don't depends on postinstall script
     sed '/^\s*\"electron-notarize.*$/d;/^\s*\"electron-builder.*$/d;/postinstall/d' -i package.json
     sed 's/\^10.1.5/10.1.5/' -i package.json
@@ -46,6 +55,9 @@ prepare() {
     for _l in ${_lang[@]}; do
         cp "${srcdir}/${_l}.json" source/common/lang/
     done
+
+    # manually add community translation
+    cp "${srcdir}/zh-TW.json" source/common/lang/
 
     # csl:refresh from package.json
     cp $(find "${srcdir}/locales-master/" -name "*.xml") source/app/service-providers/assets/csl-locales/
@@ -67,7 +79,8 @@ build() {
     yarn install --pure-lockfile --cache-folder "${srcdir}/cache"
 
     cd "${srcdir}/Zettlr"
-    node node_modules/.bin/electron-forge make || true # always failed anyway, we just want the outcome .webpack directory
+    # always failed anyway, we just want the outcome .webpack directory
+    node node_modules/.bin/electron-forge make || true
 
     cd "${srcdir}/Zettlr/.webpack"
 
