@@ -1,6 +1,6 @@
 pkgbase = python-gammapy
 	pkgdesc = A Python package for gamma-ray astronomy
-	pkgver = 0.18
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = https://gammapy.org/
 	arch = i686
@@ -20,13 +20,13 @@ pkgbase = python-gammapy
 	makedepends = cython
 	makedepends = python-setuptools-scm
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/g/gammapy/gammapy-0.18.tar.gz
-	md5sums = 6afb33bd320bc31d04e07dce6ca201c4
+	source = https://files.pythonhosted.org/packages/source/g/gammapy/gammapy-0.18.2.tar.gz
+	md5sums = 64a6d77c1fb87bdfb21478ba13f72632
 
 pkgname = python-gammapy
 	depends = python>=3.6
 	depends = python-yaml>=5.1
-	depends = python-astropy>=3.2
+	depends = python-astropy>=4.0
 	depends = python-regions>=0.4
 	depends = python-click>=7.0
 	depends = python-pydantic>=1.0

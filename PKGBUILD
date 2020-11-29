@@ -3,7 +3,7 @@ pkgbase=python-gammapy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.18
+pkgver=0.18.2
 pkgrel=1
 pkgdesc="A Python package for gamma-ray astronomy"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ checkdepends=('python-pytest-astropy-header'
               'python-click'
               'python-pydantic')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('6afb33bd320bc31d04e07dce6ca201c4')
+md5sums=('64a6d77c1fb87bdfb21478ba13f72632')
 
 prepare() {
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
@@ -47,7 +47,7 @@ check() {
 }
 
 package_python-gammapy() {
-    depends=('python>=3.6' 'python-yaml>=5.1' 'python-astropy>=3.2' 'python-regions>=0.4' 'python-click>=7.0' 'python-pydantic>=1.0')
+    depends=('python>=3.6' 'python-yaml>=5.1' 'python-astropy>=4.0' 'python-regions>=0.4' 'python-click>=7.0' 'python-pydantic>=1.0')
     optdepends=('python-iminuit: For fitting by optimization'
                 'python-pandas: For working with tables'
                 'python-matplotlib: For plotting'
