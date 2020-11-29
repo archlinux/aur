@@ -17,12 +17,7 @@ depends=(
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${_srcname}.tar.gz")
 sha256sums=('00a8a49e9b3cc63a8b1b7827b2d8a8b2ed90162ba7f96688c016b4c391ffa27b')
 
-build() {
-  cd "${srcdir}"/"${_srcname}"
-  python setup.py build
-}
-
 package() {
   cd "${srcdir}"/"${_srcname}"
-  python setup.py install --skip-build -O1 --root="$pkgdir"
+  install -D -m 755 mpd_art_box.py "$pkgdir"/usr/bin/mpd-art-box
 }
