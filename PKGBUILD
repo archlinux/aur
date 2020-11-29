@@ -2,7 +2,7 @@
 # Maintainer: Tom Hacohen <tom@stosb.com>
 
 pkgname=etebase-server
-pkgver=0.5.0
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="A self-hostable Etebase (EteSync 2.0) server"
 arch=(any)
@@ -23,7 +23,7 @@ source=(https://github.com/etesync/server/archive/v"$pkgver".tar.gz
         $pkgname.install
         $pkgname.sysusers
         $pkgname)
-sha256sums=('af604db5ae17ad1205d5cdfa19d60333acf1ff671b4d51ad816317183083f36b'
+sha256sums=('de7e84da4881f6c630ec1891ddb36be0d3c9234336680433373e1de768a6f413'
             '22ecfe8c6df3fe615a90db03afbdbc53c0c46cb9546eb61ca433392587725b41'
             'd42e2518975363aed2900fe4e03eefade98ed9b6f8b8140fd1eddc081d4081e7'
             'fb2d4fbec4faf951b0c5df0552eb8afaa8aff85278b43faa018e2e9a77e23591')
