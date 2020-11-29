@@ -37,5 +37,5 @@ package() {
 	install -Dm755 ${_pkgname}-${pkgver}.AppImage "${pkgdir}/usr/bin/youtube-music-bin"
  
 	# install desktop entry
-	install -Dm755 youtube-music-th-ch.desktop "${pkgdir}/usr/share/applications/youtube-music-bin.desktop"
+	install -Dm755 youtube-music-bin.desktop "${pkgdir}/usr/share/applications/youtube-music-bin.desktop"
 }
