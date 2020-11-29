@@ -1,6 +1,6 @@
 pkgbase = subtitlecomposer-git
 	pkgdesc = A KDE subtitle editor (git version)
-	pkgver = 0.7.0.181.a757aa2c
+	pkgver = 0.7.0.203.431e63c2
 	pkgrel = 1
 	url = https://invent.kde.org/kde/subtitlecomposer
 	arch = i686

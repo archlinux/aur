@@ -1,19 +1,16 @@
 # Maintainer: Mladen Milinkovic <maxrd2@smoothware.net>
 # Contributor: Martchus <martchus@gmx.net>
 
-# You can install/update Subtitle Composer from repository
-# if you add following to /etc/pacman.conf (x86_64 only)
-# [subtitlecomposer]
+# You can install/update Subtitle Composer binaries from official repository.
+# Add following to /etc/pacman.conf:
+# [home_maxrd2_Arch]
 # # Subtitle Composer
-# SigLevel = PackageRequired
-# Server = http://smoothware.net/$repo/$arch
-
-# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
-# you also find the URL of (another) binary repository (i686 and x86_64).
+# SigLevel = Never
+# Server = https://download.opensuse.org/repositories/home:/maxrd2/Arch/$arch
 
 _name=subtitlecomposer
 pkgname=${_name}-git
-pkgver=0.7.0.181.a757aa2c
+pkgver=0.7.0.203.431e63c2
 pkgrel=1
 pkgdesc="A KDE subtitle editor (git version)"
 arch=('i686' 'x86_64')
@@ -22,8 +19,8 @@ license=('GPL')
 depends=('kcoreaddons' 'sonnet' 'kcodecs' 'kross' 'kxmlgui' 'ki18n' 'ffmpeg' 'openal')
 makedepends=('extra-cmake-modules' 'git')
 
-# Comment/uncomment the following dependencies to disable/enable
-# building the plugins for MPV and Xine player backends and pocketsphinx
+# Comment/uncomment the following dependency to disable/enable
+# building the speech recognition plugin
 makedepends+=('pocketsphinx')
 
 # For consistency, also enable/disable the corresponding optdepends
