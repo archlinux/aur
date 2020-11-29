@@ -1,7 +1,9 @@
+# Maintainer: Mladen Milinkovic <maxrd2@smoothware.net>
+
 _pkgname=kauth
 pkgname=mingw-w64-$_pkgname
 pkgver=5.76.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Abstraction to system policy and authentication features (mingw-w64)'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
