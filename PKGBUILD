@@ -17,27 +17,25 @@ depends=('trousers' 'opencryptoki')
 source=(http://downloads.sourceforge.net/project/trousers/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz
         01-opencryptoki-soname.patch
         03-fix-bool-error-parseStringWithValues.patch
-        04-fix-FTBFS-clang.patch
-        05-openssl1.1_fix_data_mgmt.patch)
-noextract=(${pkgname}-${pkgver}.tar.gz)
+        04-fix-FTBFS-clang.patch)
+#        05-openssl1.1_fix_data_mgmt.patch)
 sha256sums=('8af837949a2ec30b195389ac8a2b31bc49fe315050751b7d4d0d432bf7812a97'
             'fa3a8440b49b7ade6522e940587b72c08e5549ee44a46aabf9754eca6f39e614'
             '8c6102112161890c4cdb398b529509ecf6f0c2ffe3d0d08ba09e120c48183d4b'
-            'ee00e8932526f16ae062fcaf06168f78d46c71fe2e41cfe67394023bafbb4fe6'
-            'b27b76b951e643c2c2a101b6852acef6160856042d5cf3f5d5c33f4eb8f63e98')
+            'ee00e8932526f16ae062fcaf06168f78d46c71fe2e41cfe67394023bafbb4fe6')
+#            'b27b76b951e643c2c2a101b6852acef6160856042d5cf3f5d5c33f4eb8f63e98')
 
 prepare() {
-  mkdir -p ${pkgname}-${pkgver}
-  bsdtar -x -f ${pkgname}-${pkgver}.tar.gz -C ${pkgname}-${pkgver}
   cd ${pkgname}-${pkgver}
   patch -p1 -i ${srcdir}/01-opencryptoki-soname.patch
   patch -p1 -i ${srcdir}/03-fix-bool-error-parseStringWithValues.patch
   patch -p1 -i ${srcdir}/04-fix-FTBFS-clang.patch
-  patch -p1 -i ${srcdir}/05-openssl1.1_fix_data_mgmt.patch
+#  patch -p1 -i ${srcdir}/05-openssl1.1_fix_data_mgmt.patch
 }
 
 build() {
   cd ${pkgname}-${pkgver}
+  sh bootstrap.sh
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
               --enable-static \
