@@ -1,6 +1,6 @@
 pkgbase = capbattleship-git
 	pkgdesc = A pirate-themed battleship game
-	pkgver = v1.0alpha2.r3.gb771f89
+	pkgver = v1.0alpha5.r0.ga765bfa
 	pkgrel = 1
 	url = https://forge.tedomum.net/captnfab/capbattleship
 	arch = any
@@ -10,9 +10,7 @@ pkgbase = capbattleship-git
 	provides = capbattleship
 	conflicts = capbattleship
 	source = git+https://forge.tedomum.net/captnfab/capbattleship.git
-	source = capbattleship.desktop
 	sha384sums = SKIP
-	sha384sums = 8ae97f48e815cd1ed8c45716cd315046063f147760439367a65b9a774976b36bb968a44d48159c5a6c7028f15d2bfb13
 
 pkgname = capbattleship-git
 
