@@ -1,7 +1,8 @@
 pkgbase = jd-gui-git
 	pkgdesc = A standalone Java Decompiler GUI
-	pkgver = 1.4.1.r0.g4ed68bf
+	pkgver = 1.6.6.r0.gb3c1ced
 	pkgrel = 1
+	url = https://github.com/java-decompiler/jd-gui
 	arch = i686
 	arch = x86_64
 	license = LGPL3
@@ -10,11 +11,11 @@ pkgbase = jd-gui-git
 	depends = java-runtime
 	provides = jd-gui
 	conflicts = jd-gui
-	source = git://github.com/java-decompiler/jd-gui.git
+	source = git+https://github.com/java-decompiler/jd-gui.git
 	source = jd-gui.patch
 	source = jd-gui.sh
 	sha256sums = SKIP
-	sha256sums = c8d78d59457d3cd604d8e99ffbdb22e0124a811e72085e7489890d7dd43671ae
+	sha256sums = 7c437ec34546d4a62c77da5587718f681d5998f6d03f44d547148e1715a0f154
 	sha256sums = 1f37782756847ed41044a6503799bd52fd9b325e1c52906dec99f13499976adf
 
 pkgname = jd-gui-git

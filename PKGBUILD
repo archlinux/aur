@@ -3,22 +3,23 @@ _pkgname=jd-gui
 pkgname="${_pkgname}-git"
 gitname="${_pkgname}"
 pkgrel=1
-pkgver=1.4.1.r0.g4ed68bf
+pkgver=1.6.6.r0.gb3c1ced
 pkgdesc='A standalone Java Decompiler GUI'
 arch=('i686' 'x86_64')
+url='https://github.com/java-decompiler/jd-gui'
 license=('LGPL3')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 makedepends=('git' 'gradle')
 depends=('java-runtime')
 source=(
-    "git://github.com/java-decompiler/${gitname}.git"
+    "git+https://github.com/java-decompiler/${gitname}.git"
     "${_pkgname}.patch"
     "${_pkgname}.sh"
 )
 sha256sums=(
     'SKIP'
-    'c8d78d59457d3cd604d8e99ffbdb22e0124a811e72085e7489890d7dd43671ae'
+    '7c437ec34546d4a62c77da5587718f681d5998f6d03f44d547148e1715a0f154'
     '1f37782756847ed41044a6503799bd52fd9b325e1c52906dec99f13499976adf'
 )
 
