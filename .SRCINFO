@@ -1,7 +1,7 @@
 pkgbase = vlogsolv
 	pkgdesc = cli program that calculates value tables for logical expressions
-	pkgver = 1.1
-	pkgrel = 1
+	pkgver = 1.2
+	pkgrel = 0
 	url = https://github.com/nzbr/vlogsolv
 	arch = x86_64
 	license = ISC
@@ -9,7 +9,7 @@ pkgbase = vlogsolv
 	makedepends = gcc
 	makedepends = make
 	makedepends = vlang
-	source = vlogsolv-1.1::git+https://github.com/nzbr/vlogsolv.git#tag=v1.1
+	source = vlogsolv-1.2::git+https://github.com/nzbr/vlogsolv.git#tag=1.2
 	sha512sums = SKIP
 
 pkgname = vlogsolv
