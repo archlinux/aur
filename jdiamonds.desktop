@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=java -jar /usr/local/games/jdiamonds/jdiamonds.jar
+Icon=/usr/share/pixmaps/jdiamonds_icon.png
+Name=JDiamonds
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Game;
+Encoding=UTF-8
+Comment=JDiamonds - jewel like game written in java
+

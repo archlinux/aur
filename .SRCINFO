@@ -1,0 +1,17 @@
+pkgbase = jdiamonds
+	pkgdesc = JDiamonds is a jewel like game written in Java
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://games.os.vc
+	arch = any
+	license = GPLv3
+	depends = java-runtime
+	source = https://games.os.vc/jgames/jdiamonds-1.0/jdiamonds.jar
+	source = jdiamonds_icon.png
+	source = jdiamonds.desktop
+	md5sums = 7d19dc1d292cd71cb7026968894a6f7b
+	md5sums = 7dbe50a3a109e19c8cca9c6e524cce56
+	md5sums = decae5c71961a5bf911e7b283fae0866
+
+pkgname = jdiamonds
+
