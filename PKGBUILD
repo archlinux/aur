@@ -2,7 +2,7 @@
 
 pkgname=giada-git
 pkgver=v0.17.0.r15.g34b107f1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 arch=('x86_64')
 url="https://www.giadamusic.com/"
@@ -95,7 +95,7 @@ package() {
   install -vD "build/${pkgname/-git}" -t "${pkgdir}/usr/bin/"
   # XDG integration
   install -vDm 644 "${pkgname/-git}.desktop" -t "${pkgdir}/usr/share/applications"
-  install -vDm 644 "extras/${pkgname/-git}-logo.png" \
+  install -vDm 644 "extras/${pkgname/-git}-logo.svg" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname/-git}.svg"
   # docs
   install -vDm 644 {ChangeLog,README.md} \
