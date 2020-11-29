@@ -1,32 +1,42 @@
-# Contributor: Balló György <ballogyor+arch at gmail dot com>
-# Contributor: archus <archus@archlinux.cba.pl>
+# Contributor: archus <archus@arch.int.pl>
 
 pkgname=streamtuner2
 pkgver=2.2.1
-pkgrel=1
+pkgrel=5
 pkgdesc="An internet radio browser"
 arch=('any')
 url="https://sourceforge.net/projects/streamtuner2/"
 license=('custom:public domain')
 depends=(gtk3 python-dbus python-gobject python-pillow python-pyquery python-pyxdg python-requests youtube-dl)
-source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.src.txz"
-        "streamtuner2-make.patch")
-sha256sums=('30aa66fa9bc314c8161fdcb1fddba57fdd3b6b910acf4f07de1d59366bdd024b'
-            '6e20484cc250204f8d37582087405c734998ea4d3c42cef9b55f50db756cc3e2')
+source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver+2020-0$pkgrel.deb")
+sha256sums=('dcebec983a11e6c644d42e6e9f4c1b3cb494f869bd1ef84deb0b3b42220bb2b3')
+
 
 prepare() {
-  cd $pkgname
-  patch -Np1 -i ../streamtuner2-make.patch
-  gzip -dc > gtk3.xml < gtk3.xml.gz
-}
-
-build() {
-  cd $pkgname
-  make
+	ar -x ${pkgname}-${pkgver}+2020-0${pkgrel}.deb
+	mkdir ${pkgname}-${pkgver}_${pkgrel}
+	tar -xf data.tar.xz --directory="${pkgname}-${pkgver}_${pkgrel}"
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
-  install -Dm644 CREDITS "$pkgdir/usr/share/licenses/$pkgname/CREDITS"
+
+	cd "${pkgname}-${pkgver}_${pkgrel}"
+
+	# Creating needed directories
+	install -dm755 "$pkgdir/usr/bin/"
+	install -dm755 "$pkgdir/usr/share/applications/"
+	install -dm755 "$pkgdir/usr/share/doc/"
+	install -dm755 "$pkgdir/usr/share/man/"
+	install -dm755 "$pkgdir/usr/share/pixmaps/"
+
+	# Install
+	install -dm755 "$pkgdir/usr/share/streamtuner2/"
+	install -dm755 "$pkgdir/usr/share/doc/streamtuner2/"
+	install -Dm755 "./usr/bin/streamtuner2" "$pkgdir/usr/bin/streamtuner2"
+	install -Dm644 "./usr/share/pixmaps/streamtuner2.png" "$pkgdir/usr/share/pixmaps/streamtuner2.png"
+	install -Dm644 "./usr/share/applications/streamtuner2.desktop" "$pkgdir/usr/share/applications/streamtuner2.desktop"
+	find ./usr/share/doc/streamtuner2 -type f -exec install -Dm644 {} $pkgdir/{} \;
+	install -Dm644 "./usr/share/man/man1/streamtuner2.1" "$pkgdir/usr/share/man/man1/streamtuner2.1"
+	find ./usr/share/streamtuner2 -type f -exec install -Dm644 {} $pkgdir/{} \;
+
 }
