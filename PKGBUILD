@@ -20,10 +20,10 @@ sha256sums=('c6dcca80b42f80a8c8d9d03e91eb17aa634be2f1031f667bba3f483410297abb')
 
 build() {
 	cd "$pkgname-$pkgver"
-	make -C src all
+	make
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	make -C src DESTDIR="$pkgdir" install
+	make DESTDIR="$pkgdir" install
 }
