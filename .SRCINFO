@@ -1,17 +1,15 @@
 pkgbase = firebase-tools
 	pkgdesc = The Firebase Command Line Tools
 	pkgver = 8.9.0
-	pkgrel = 1
-	url = https://firebase.google.com/docs/cli/
-	install = firebase-tools.install
+	pkgrel = 2
+	url = https://github.com/firebase/firebase-tools
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	provides = nodejs-firebase-tools
-	conflicts = nodejs-firebase-tools
-	replaces = nodejs-firebase-tools
-	noextract = firebase-tools-8.9.0.tgz
+	conflicts = firebase-tools
+	replaces = firebase-tools
+	noextract = firebase-tools-v8.9.0.tgz
 	source = https://registry.npmjs.org/firebase-tools/-/firebase-tools-8.9.0.tgz
 	sha256sums = 544070dbd2955a3613d7f0c5a05cc1088b144ddef2776a893244c3d194871c2b
 
