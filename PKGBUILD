@@ -3,7 +3,7 @@
 
 export GIT_LFS_SKIP_SMUDGE=1 # This is to prevent Git LFS errors 
 pkgname=veloren
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='An open-world, open-source multiplayer voxel RPG'
 arch=('x86_64' 'i686')
@@ -36,7 +36,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname"
-    cargo build --release --bin veloren-voxygen --bin veloren-server-cli
+    VELOREN_USERDATA_STRATEGY='system' cargo build --release --bin veloren-voxygen --bin veloren-server-cli
 }
 
 package() {
