@@ -1,3 +1,4 @@
 *.tar.gz
 *.pkg.tar.*
 keeweb/
+keeweb-native-modules/
