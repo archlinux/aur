@@ -24,7 +24,7 @@ source=("git+${url}.git#commit=d156980280fdb2ddfc8765ff77cdd55c0b7e9d9c"
 #'PKGBUILD.sig' #disable signature checking for now
 #'PKGBUILD')
 sha256sums=('SKIP'
-            '757bc33439f39693f312a86673a47502e354f1077efc308530f30114464ff9f9')
+            '794b5a7767c306fe1dba55a975c39d667cc0b5f4ba172698bda7f25a19a867bc')
 #            'SKIP'
 #            'SKIP')
 #validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC')  # Moses Narrow <moe_narrow@use.startmail.com>
