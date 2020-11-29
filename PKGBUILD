@@ -26,5 +26,6 @@ build() {
 }
 package() {
   cd "${srcdir}/${pkgname}"
+  mkdir -p "${pkgdir}/usr/local/bin/${pkgname}"
   install ${pkgname} ${pkgdir}/usr/local/bin/${pkgname}
 }
