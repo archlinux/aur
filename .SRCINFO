@@ -1,0 +1,20 @@
+pkgbase = python-sentencepiece-git
+	pkgdesc = PyTorch Weighted Prediction Error
+	pkgver = .r637
+	pkgrel = 1
+	url = https://github.com/google/sentencepiece
+	arch = any
+	license = Apache 2.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = python-setuptools
+	depends = python>=3.7
+	depends = python-protobuf
+	provides = python-sentencepiece
+	conflicts = python-sentencepiece
+	conflicts = python-sentencepiece-git
+	source = python-sentencepiece-git::git+https://github.com/google/sentencepiece
+	md5sums = SKIP
+
+pkgname = python-sentencepiece-git
+
