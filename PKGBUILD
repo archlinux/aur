@@ -3,17 +3,13 @@
 pkgname=lynx-menu-data
 pkgver=0.0.1
 pkgrel=1
-pkgdesc="Archivos de definición del menú de la aplicación freedesktop.org para LynxOS"
+pkgdesc="Archivos de definición del menú de la aplicación freedesktop.org para LynxOS o lynx-desktop"
 arch=('any')
 url="https://gitlab.com/LynxOS/lmd"
 license=('GPL')
 makedepends=('git')
 source=("$url/-/archive/$pkgver/lmd-$pkgver.tar.gz")
 md5sums=('528329c7481fccf2bb62513fd05cc52c')
-
-pkgver() {
-    date +%Y%m%d
-}
 
 package() {
     cd lmd-$pkgver
