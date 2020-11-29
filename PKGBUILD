@@ -11,7 +11,8 @@ depends=('libva'
          'libvdpau>=1.3'
          'libgl'
          )
-makedepends=('mesa'
+makedepends=('git'
+             'mesa'
              'xorgproto'
              )
 replaces=('vdpau-video')

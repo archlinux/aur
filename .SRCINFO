@@ -5,6 +5,7 @@ pkgbase = libva-vdpau-driver-vp9-git
 	url = https://github.com/xtknight/vdpau-va-driver-vp9
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = mesa
 	makedepends = xorgproto
 	depends = libva
