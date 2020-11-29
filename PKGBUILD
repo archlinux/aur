@@ -5,7 +5,7 @@ pkgver=1.0
 _srcname=microsoft-edge-dev
 _pkgshortname=msedge-dev
 _srcpkgver=88.0.702.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Browser with shortcuts for Videoplatforms. Based on Microsoft Edge Dev. New Shortcuts can i make just in time."
 arch=('x86_64')
 url="https://www.microsoftedgeinsider.com/en-us/download"
@@ -43,7 +43,7 @@ sha256sums=('7dc49f9069241e62846dcdf6211ff15128ddf8ebe151426ee8f8a40d92b07586'
             'ec1008447123d58511bd4738d5adc022aa7090f14d2776eb6a487c9a0a7e9855'
             '717bde96aba89d6a01ff6ce92e2e16c91a1b4646e07d0f1998442e9aa060fe93'
             '0956633217210e9caa64c9f5f1d85e8d582035df89d4649120c3467b316e3523'
-            '423d268eef36fdb29719af928a7a26816e8264967df1d80f18337fd5cbec904d')
+            'b1a9bb378534037dc0044a192e762edce0079984c5567baa38128fb1bb26ed0e')
 
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
