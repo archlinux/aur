@@ -1,0 +1,18 @@
+pkgbase = obs-controller-git
+	pkgdesc = A plugin for obs-studio that allows you to control it over HTTP
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/Beezig/obs-controller
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = rust
+	makedepends = clang
+	depends = obs-studio
+	provides = obs-controller-git=0.1.0
+	conflicts = obs-controller
+	source = obs-controller-git::git+https://gitlab.com/Beezig/obs-controller.git
+	md5sums = SKIP
+
+pkgname = obs-controller-git
+
