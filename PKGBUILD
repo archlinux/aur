@@ -1,7 +1,9 @@
+# Maintainer: Mladen Milinkovic <maxrd2@smoothware.net>
+
 _pkgname=attica
 pkgname=mingw-w64-$_pkgname
 pkgver=5.76.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Qt library that implements the Open Collaboration Services API (mingw-w64)"
 license=("LGPL")
