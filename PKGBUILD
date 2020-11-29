@@ -63,8 +63,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-mainline-bcachefs
-pkgver=5.9.9
-_pkgverpntrel=9
+pkgver=5.9.11
+_pkgverpntrel=11
 pkgrel=1
 _smt_nice="true"
 _runqueue_sharing="mc-llc"
@@ -96,15 +96,15 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-md5sums=('d7155cfac43b2f21d8aa4e159809c256'
+md5sums=('530543935698468bf30dfacd4a20d84f'
          'SKIP'
-         '2eb9194d98130bf17a83ffa01e63ff96'
+         'acaec169590211b789b7873145f84564'
          'a4eb432da721ad9a721d62a8bbed6d1d'
-         'b10e4c612d5240d66fad8f1c50fe3242'
-         '1181cd1e866a973483e6874445027cd6'
+         '31a83ad2d5c11e560c7bfdfd59659c84'
+         '825adea276dddc5ce88e9484d1dd4575'
          '168a924c7c83ecdc872a9a1c6d1c8bdb'
          'bc259da4c80e5847ba6b4ad21b2b3f16'
-         '8f51cd828572bc100a3059f819ab3f57')
+         'bff07060407a694a7bac6cbf0e75aa71')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

@@ -1,5 +1,5 @@
 pkgbase = linux-mainline-bcachefs
-	pkgver = 5.9.9
+	pkgver = 5.9.11
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Bcachefs
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = linux-mainline-bcachefs
 	makedepends = kmod
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.9.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.9.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.11.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.11.tar.sign
 	source = config
 	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0002-clear-patches.patch
@@ -19,15 +19,15 @@ pkgbase = linux-mainline-bcachefs
 	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0008-5.9-bcachefs.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	md5sums = d7155cfac43b2f21d8aa4e159809c256
+	md5sums = 530543935698468bf30dfacd4a20d84f
 	md5sums = SKIP
-	md5sums = 2eb9194d98130bf17a83ffa01e63ff96
+	md5sums = acaec169590211b789b7873145f84564
 	md5sums = a4eb432da721ad9a721d62a8bbed6d1d
-	md5sums = b10e4c612d5240d66fad8f1c50fe3242
-	md5sums = 1181cd1e866a973483e6874445027cd6
+	md5sums = 31a83ad2d5c11e560c7bfdfd59659c84
+	md5sums = 825adea276dddc5ce88e9484d1dd4575
 	md5sums = 168a924c7c83ecdc872a9a1c6d1c8bdb
 	md5sums = bc259da4c80e5847ba6b4ad21b2b3f16
-	md5sums = 8f51cd828572bc100a3059f819ab3f57
+	md5sums = bff07060407a694a7bac6cbf0e75aa71
 
 pkgname = linux-mainline-bcachefs
 	pkgdesc = The Linux-mainline-bcachefs kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler
@@ -36,11 +36,11 @@ pkgname = linux-mainline-bcachefs
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-mainline-bcachefs=5.9.9
+	provides = linux-mainline-bcachefs=5.9.11
 
 pkgname = linux-mainline-bcachefs-headers
 	pkgdesc = Headers and scripts for building modules for Linux-mainline-bcachefs kernel
 	depends = linux-mainline-bcachefs
-	provides = linux-mainline-bcachefs-headers=5.9.9
-	provides = linux-headers=5.9.9
+	provides = linux-mainline-bcachefs-headers=5.9.11
+	provides = linux-headers=5.9.11
 
