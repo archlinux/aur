@@ -1,6 +1,8 @@
+# Maintainer: Mladen Milinkovic <maxrd2@smoothware.net>
+
 _pkgname=kbookmarks
 pkgname=mingw-w64-$_pkgname
-pkgver=5.45.0
+pkgver=5.76.0
 pkgrel=1
 arch=(any)
 pkgdesc="Support for bookmarks and the XBEL format (mingw-w64)"
@@ -11,7 +13,7 @@ makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/$_pkgname-${pkgver}.tar.xz"{,.sig})
-sha256sums=('ad8a11ce7079674a9fbdb22c0e26116f5e6c1b4047587f3d06f759ba497c2046'
+sha256sums=('ac5416f1ac21cb9e9fdf72a95de855a9891cea0ed7e1436a93c019b6c45af2af'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
