@@ -1,0 +1,17 @@
+pkgbase = cudnn8-cuda11.0
+	pkgdesc = NVIDIA CUDA Deep Neural Network library
+	pkgver = 8.0.3.33
+	pkgrel = 1
+	url = https://developer.nvidia.com/cuDNN
+	arch = x86_64
+	license = custom
+	depends = cuda=11.0
+	conflicts = cudnn
+	noextract = cudnn-11.0-linux-x64-v8.0.3.33.tgz
+	source = https://developer.download.nvidia.com/compute/redist/cudnn/v8.0.3/cudnn-11.0-linux-x64-v8.0.3.33.tgz
+	source = NVIDIA_SLA+cuDNN_Supp_Feb2017_release.pdf
+	sha512sums = 3d7e1c40f6424ab6a720a7bfb74c30d1b44b93dcf90fbe7051679172939664b84f7fcd466bdf66141a897872b03322ab7317b5c6641a4adfd3fe169358df70a7
+	sha512sums = 38bbb7eb287914e4d7ba79da20a47222382687832d4ba0290715199a129c08715a23681800cf8d381f40e24202470a7b20505a31c8cea51a78762a740860251b
+
+pkgname = cudnn8-cuda11.0
+
