@@ -1,36 +1,27 @@
 # Maintainer: Tomasz Gruszka <tompear79@gmail.com>
-_phpversion=73
-_extname=xdebug
-pkgname=php${_phpversion}-${_extname}
-pkgver=2.9.8
+pkgname=php73-xdebug
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="Xdebug is an extension for PHP to assist with debugging and development"
+pkgdesc="PHP debugging extension"
 arch=("x86_64")
 url="https://xdebug.org/"
 license=('Xdebug')
-depends=("php${_phpversion}")
-source=("http://pecl.php.net/get/${_extname}-${pkgver}.tgz")
-sha256sums=('f555b6cc58d96c9965af942d22e0f1818b7a477a410c76b1ab0eebe85a762f8a')
-backup=("etc/php${_phpversion}/conf.d/$_extname.ini")
+depends=("php73")
+source=("https://xdebug.org/files/xdebug-${pkgver}.tgz"
+  "xdebug.ini")
+sha256sums=('845007e82c1d4e088770d1d87f5832aa3a767cb5a3664fc1615db62cecc3ca62'
+  '7c66883dc2ade69069ef84e30188b25630748aa9c8b0dd123727c00505421205')
+backup=("etc/php73/conf.d/xdebug.ini")
 
 build() {
-    cd "${srcdir}/${_extname}-${pkgver}"
-    phpize${_phpversion}
-    ./configure
-    make
-
-    cd "$srcdir/${_extname}-${pkgver}/debugclient"
-    ./configure --prefix=/usr
-    make
+  cd "${srcdir}/xdebug-${pkgver}"
+  phpize73
+  ./configure --prefix=/usr --enable-xdebug
+  make
 }
 
 package() {
-    cd "${srcdir}/${_extname}-${pkgver}"
-
-    install -dm0755 "${pkgdir}/etc/php${_phpversion}/conf.d/"
-    echo "zend_extension=${_extname}.so" > "${pkgdir}/etc/php${_phpversion}/conf.d/${_extname}.ini"
-
-    install -Dm0644 "${srcdir}/${_extname}-${pkgver}/modules/${_extname}.so" "${pkgdir}/usr/lib/php${_phpversion}/modules/${_extname}.so"
-    install -Dm0644 "${srcdir}/${_extname}-${pkgver}/debugclient/debugclient" "${pkgdir}/usr/bin/debugclient${_phpversion}"
-    install -Dm0644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${srcdir}/xdebug-${pkgver}"
+  make INSTALL_ROOT="$pkgdir" install
+  install -D -m 644 "$srcdir"/xdebug.ini "$pkgdir"/etc/php73/conf.d/xdebug.ini
 }
