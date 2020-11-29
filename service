@@ -1,0 +1,28 @@
+[Unit]
+Description=Republish MJPEG HTTP image streams using a server in Go
+
+[Service]
+Type=simple
+User=http
+Group=http
+ExecStart=/usr/bin/mjpeg-proxy -bind unix:/run/mjpeg-proxy/socket -sources /etc/mjpeg-proxy/sources.json
+ProtectSystem=strict
+ProtectHome=on
+ReadWritePaths=/run/mjpeg-proxy/
+CapabilityBoundingSet=~CAP_SYS_ADMIN CAP_SETUID CAP_SETGID CAP_SETPCAP CAP_SYS_PTRACE CAP_SYS_TIME CAP_NET_ADMIN CLONE_NEWUSER CAP_SYS_NICE CAP_SYS_RESOURCE CAP_KILL 
+PrivateUsers=on
+PrivateDevices=on
+DeviceAllow=
+ProtectClock=on
+ProtectKernelTunables=on
+ProtectKernelModules=on
+ProtectKernelLogs=on
+ProtectControlGroups=on
+PrivateTmp=on
+NoNewPrivileges=on
+RestrictSUIDSGID=on
+RestrictNamespaces=uts ipc pid user cgroup
+PrivateNetwork=off
+
+[Install]
+WantedBy=multi-user.target

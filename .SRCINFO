@@ -1,0 +1,26 @@
+pkgbase = mjpeg-proxy-git
+	pkgdesc = Republish MJPEG HTTP image streams using a server in Go
+	pkgver = r38.99e4412
+	pkgrel = 1
+	url = https://github.com/vvidic/mjpeg-proxy
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	provides = mjpeg-proxy
+	conflicts = mjpeg-proxy
+	source = mjpeg-proxy::git+https://github.com/vvidic/mjpeg-proxy.git
+	source = service
+	source = tmpfiles
+	sha256sums = SKIP
+	sha256sums = 61f0fa052321e9faf9ce5f853fa95bb4c8ad34f89a0d1fb99c8cf4d41c9b9494
+	sha256sums = afb78ea67a8faa7a384155ff12bc12f4e5aff861f0531aca7cc3804224cdb13a
+
+pkgname = mjpeg-proxy-git
+
