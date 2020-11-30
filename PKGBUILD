@@ -7,7 +7,7 @@ _SPELL_EN_DICT_SHA256='c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4
 
 _pkgname=fcitx5
 pkgname=${_pkgname}-git
-pkgver=5.0.1.r0.g45780ce
+pkgver=5.0.1.r69.g6b16f0b
 pkgrel=1
 pkgdesc="Next generation of fcitx"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ license=('GPL')
 depends=('cairo' 'enchant' 'iso-codes' 'libgl' 'libxkbcommon-x11' 'pango' 'systemd' 'wayland'
          'wayland-protocols' 'xcb-imdkit-git' 'xcb-util-wm' 'libxkbfile'
     	 'fmt' 'libxkbfile' 'gdk-pixbuf2' 'cldr-emoji-annotation')
-makedepends=('extra-cmake-modules' 'git')
+makedepends=('extra-cmake-modules' 'git' 'ninja')
 provides=($_pkgname)
 conflicts=($_pkgname)
 
@@ -37,11 +37,16 @@ prepare() {
 build(){
   cd fcitx5
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_LIBDIR=/usr/lib .
-  make
+  cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_INSTALL_SYSCONFDIR=/etc .
+  ninja
+}
+
+check(){
+  cd fcitx5
+  ninja test
 }
 
 package() {
   cd fcitx5
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja install
 }
