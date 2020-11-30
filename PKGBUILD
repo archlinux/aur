@@ -1,6 +1,6 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=libff7tk-git
-pkgver=Qt5.r126.g49ece0d
+pkgver=Qt5.r146.gdc8b145
 pkgrel=1
 pkgdesc="Final Fantasy 7 Tool library"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
