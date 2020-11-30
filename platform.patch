@@ -1,46 +1,67 @@
-From 321c218002f989dc7cb693bdabb69b6dd94589ce Mon Sep 17 00:00:00 2001
-From: John Whittington <git@jbrengineering.co.uk>
-Date: Mon, 29 Jan 2018 11:23:45 +0000
-Subject: [PATCH] Patch toolchain and CMSIS path for arch
-
----
- platform.txt | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
-
 diff --git a/platform.txt b/platform.txt
-index 03f054f..a22fa1a 100644
+index 2dbf3ca..2f6e169 100644
 --- a/platform.txt
 +++ b/platform.txt
-@@ -19,7 +19,7 @@
+@@ -19,8 +19,8 @@
  # For more info:
  # https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5---3rd-party-Hardware-specification
  
 -name=Arduino SAMD (32-bits ARM Cortex-M0+) Boards
-+name=Arch Linux Arduino SAMD (32-bits ARM Cortex-M0+) Boards
- version=1.6.16
+-version=1.8.6
++name=Arch Arduino SAMD (32-bits ARM Cortex-M0+) Boards
++version=1.8.9
  
  # Compile variables
-@@ -31,7 +31,7 @@ compiler.warning_flags.default=
- compiler.warning_flags.more=-Wall
- compiler.warning_flags.all=-Wall -Wextra
+ # -----------------
+@@ -28,8 +28,8 @@ version=1.8.6
+ compiler.warning_flags=-w
+ compiler.warning_flags.none=-w
+ compiler.warning_flags.default=
+-compiler.warning_flags.more=-Wall -Wno-expansion-to-defined
+-compiler.warning_flags.all=-Wall -Wextra -Wno-expansion-to-defined
++compiler.warning_flags.more=-Wall
++compiler.warning_flags.all=-Wall -Wextra
  
--compiler.path={runtime.tools.arm-none-eabi-gcc.path}/bin/
+ # EXPERIMENTAL feature: optimization flags
+ #  - this is alpha and may be subject to change without notice
+@@ -37,7 +37,7 @@ compiler.optimization_flags=-Os
+ compiler.optimization_flags.release=-Os
+ compiler.optimization_flags.debug=-Og -g3
+ 
+-compiler.path={runtime.tools.arm-none-eabi-gcc-7-2017q4.path}/bin/
 +compiler.path=/usr/bin/
  compiler.c.cmd=arm-none-eabi-gcc
- compiler.c.flags=-mcpu={build.mcu} -mthumb -c -g -Os {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -nostdlib --param max-inline-insns-single=500 -MMD
- compiler.c.elf.cmd=arm-none-eabi-gcc
-@@ -64,8 +64,8 @@ compiler.S.extra_flags=
+ compiler.c.flags=-mcpu={build.mcu} -mthumb -c -g {compiler.optimization_flags} {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -nostdlib --param max-inline-insns-single=500 -MMD
+ compiler.c.elf.cmd=arm-none-eabi-g++
+@@ -70,8 +70,8 @@ compiler.S.extra_flags=
  compiler.ar.extra_flags=
  compiler.elf2hex.extra_flags=
  
--compiler.arm.cmsis.c.flags="-I{runtime.tools.CMSIS-4.5.0.path}/CMSIS/Include/" "-I{runtime.tools.CMSIS-Atmel-1.1.0.path}/CMSIS/Device/ATMEL/"
+-compiler.arm.cmsis.c.flags="-I{runtime.tools.CMSIS-4.5.0.path}/CMSIS/Include/" "-I{runtime.tools.CMSIS-Atmel-1.2.0.path}/CMSIS/Device/ATMEL/"
 -compiler.arm.cmsis.ldflags="-L{runtime.tools.CMSIS-4.5.0.path}/CMSIS/Lib/GCC/" -larm_cortexM0l_math
-+compiler.arm.cmsis.c.flags="-I/usr/share/arduino/packages/arduino/tools/CMSIS/4.5.0/CMSIS/Include/" "-I/usr/share/arduino/packages/arduino/tools/CMSIS-Atmel/1.0.0/CMSIS/Device/ATMEL/"
++compiler.arm.cmsis.c.flags="-I/usr/share/arduino/packages/arduino/tools/CMSIS/4.5.0/CMSIS/Include/" "-I/usr/share/arduino/packages/arduino/tools/CMSIS-Atmel/1.2.0/CMSIS/Device/ATMEL/"
 +compiler.arm.cmsis.ldflags="-L/usr/share/arduino/packages/arduino/tools/CMSIS/4.5.0/CMSIS/Lib/GCC/" -larm_cortexM0l_math
  
- # USB Flags
- # ---------
-@@ -117,7 +117,7 @@ recipe.size.regex=\.text\s+([0-9]+).*
+ compiler.libraries.ldflags=
+ 
+@@ -87,13 +87,13 @@ build.usb_manufacturer="Unknown"
+ # ----------------
+ 
+ ## Compile c files
+-recipe.c.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.c.flags} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {compiler.c.extra_flags} {build.extra_flags} {compiler.arm.cmsis.c.flags} {includes} "{source_file}" -o "{object_file}"
++recipe.c.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.c.flags} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {compiler.c.extra_flags} {build.extra_flags} {compiler.arm.cmsis.c.flags} "-I{build.core.path}/api/deprecated" {includes} "{source_file}" -o "{object_file}"
+ 
+ ## Compile c++ files
+-recipe.cpp.o.pattern="{compiler.path}{compiler.cpp.cmd}" {compiler.cpp.flags} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {compiler.cpp.extra_flags} {build.extra_flags} {compiler.arm.cmsis.c.flags} {includes} "{source_file}" -o "{object_file}"
++recipe.cpp.o.pattern="{compiler.path}{compiler.cpp.cmd}" {compiler.cpp.flags} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {compiler.cpp.extra_flags} {build.extra_flags} {compiler.arm.cmsis.c.flags} "-I{build.core.path}/api/deprecated" {includes} "{source_file}" -o "{object_file}"
+ 
+ ## Compile S files
+-recipe.S.o.pattern="{compiler.path}{compiler.S.cmd}" {compiler.S.flags} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {compiler.S.extra_flags} {build.extra_flags} {compiler.arm.cmsis.c.flags} {includes} "{source_file}" -o "{object_file}"
++recipe.S.o.pattern="{compiler.path}{compiler.S.cmd}" {compiler.S.flags} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {compiler.S.extra_flags} {build.extra_flags} {compiler.arm.cmsis.c.flags} "-I{build.core.path}/api/deprecated" {includes} "{source_file}" -o "{object_file}"
+ 
+ ## Create archives
+ # archive_file_path is needed for backwards compatibility with IDE 1.6.5 or older, IDE 1.6.6 or newer overrides this value
+@@ -126,7 +126,7 @@ recipe.size.regex.data=^(?:\.data|\.bss)\s+([0-9]+).*
  #
  # AVRDUDE
  #
@@ -49,33 +70,74 @@ index 03f054f..a22fa1a 100644
  tools.avrdude.cmd={path}/bin/avrdude
  tools.avrdude.config.path={path}/etc/avrdude.conf
  
-@@ -131,7 +131,7 @@ tools.avrdude_remote.upload.pattern="openocd --version 2>&1 | grep 2016 && if op
+@@ -143,7 +143,7 @@ tools.avrdude.upload.network_pattern="{network_cmd}" -address {serial.port} -por
  #
  # BOSSA
  #
--tools.bossac.path={runtime.tools.bossac-1.7.0.path}
+-tools.bossac.path={runtime.tools.bossac-1.7.0-arduino3.path}
 +tools.bossac.path=/usr/bin/
  tools.bossac.cmd=bossac
  tools.bossac.cmd.windows=bossac.exe
  
-@@ -148,7 +148,7 @@ tools.bossac.upload.network_pattern="{network_cmd}" -address {serial.port} -port
+@@ -153,13 +153,14 @@ tools.bossac.upload.pattern="{path}/{cmd}" {upload.verbose} --port={serial.port.
+ 
+ tools.bossac_remote.upload.pattern=/usr/bin/run-bossac {upload.verbose} --port=ttyATH0 -U {upload.native_usb} -e -w -v /tmp/sketch.bin -R
+ 
+-tools.bossac.network_cmd={runtime.tools.arduinoOTA.path}/bin/arduinoOTA
+-tools.bossac.upload.network_pattern="{network_cmd}" -address {serial.port} -port 65280 -username arduino -password "{network.password}" -sketch "{build.path}/{build.project_name}.bin" -upload /sketch -b
++arduinoota.extraflags=
++tools.bossac.network_cmd={runtime.tools.arduinoOTA-1.3.0.path}/bin/arduinoOTA
++tools.bossac.upload.network_pattern="{network_cmd}" -address {serial.port} -port 65280 -username arduino -password "{network.password}" -sketch "{build.path}/{build.project_name}.bin" -upload /sketch -b {arduinoota.extraflags}
+ 
+ #
+ # BOSSA (ignore binary size)
+ #
+-tools.bossacI.path={runtime.tools.bossac-1.7.0-arduino3.path}
++tools.bossacI.path=/usr/bin/
+ tools.bossacI.cmd=bossac
+ tools.bossacI.cmd.windows=bossac.exe
+ 
+@@ -177,7 +178,7 @@ tools.bossacI.upload.network_pattern="{network_cmd}" -address {serial.port} -por
  # OpenOCD sketch upload
  #
  
--tools.openocd.path={runtime.tools.openocd-0.9.0-arduino6-static.path}
+-tools.openocd.path={runtime.tools.openocd-0.10.0-arduino7.path}
 +tools.openocd.path=/usr/
  tools.openocd.cmd=bin/openocd
  tools.openocd.cmd.windows=bin/openocd.exe
  
-@@ -177,7 +177,7 @@ tools.openocd.bootloader.pattern="{path}/{cmd}" {bootloader.verbose} -s "{path}/
+@@ -188,10 +189,9 @@ tools.openocd.upload.pattern="{path}/{cmd}" {upload.verbose} -s "{path}/share/op
+ tools.openocd.network_cmd={runtime.tools.arduinoOTA.path}/bin/arduinoOTA
+ tools.openocd.upload.network_pattern={network_cmd} -address {serial.port} -port 65280 -username arduino -password "{network.password}" -sketch "{build.path}/{build.project_name}.bin" -upload /sketch -b
+ 
+-# Program flashes the binary at 0x0000, so use the linker script without_bootloader
+ tools.openocd.program.params.verbose=-d2
+ tools.openocd.program.params.quiet=-d0
+-tools.openocd.program.pattern="{path}/{cmd}" {program.verbose} -s "{path}/share/openocd/scripts/" -f "{runtime.platform.path}/variants/{build.variant}/{build.openocdscript}" -c "telnet_port disabled; program {{build.path}/{build.project_name}.elf} verify reset; shutdown"
++tools.openocd.program.pattern="{path}/{cmd}" {program.verbose} -s "{path}/share/openocd/scripts/" -f "{runtime.platform.path}/variants/{build.variant}/{build.openocdscript}" -c "telnet_port disabled; program {{build.path}/{build.project_name}.hex} verify reset; shutdown"
+ 
+ tools.openocd.erase.params.verbose=-d3
+ tools.openocd.erase.params.quiet=-d0
+@@ -206,7 +206,7 @@ tools.openocd.bootloader.pattern="{path}/{cmd}" {bootloader.verbose} -s "{path}/
  # FIXME: this programmer is a workaround for default options being overwritten by uploadUsingPreferences
  #
  
--tools.openocd-withbootsize.path={runtime.tools.openocd-0.9.0-arduino6-static.path}
+-tools.openocd-withbootsize.path={runtime.tools.openocd-0.10.0-arduino7.path}
 +tools.openocd-withbootsize.path=/usr/
  tools.openocd-withbootsize.cmd=bin/openocd
  tools.openocd-withbootsize.cmd.windows=bin/openocd.exe
  
--- 
-2.16.1
-
+@@ -232,8 +232,8 @@ tools.openocd-withbootsize.bootloader.pattern="{path}/{cmd}" {bootloader.verbose
+ #
+ # EXPERIMENTAL feature: debug.pattern
+ #  - this is alpha and may be subject to change without notice
+-
+-tools.gdb.path={runtime.tools.arm-none-eabi-gcc-7-2017q4.path}/bin/
+-tools.gdb.cmd=arm-none-eabi-gdb
+-tools.gdb.cmd.windows=arm-none-eabi-gdb.exe
+-tools.gdb.debug.pattern="{path}/{cmd}" --interpreter=mi2 -ex "set pagination off" -ex 'target extended-remote | {tools.openocd.path}/{tools.openocd.cmd} -s "{tools.openocd.path}/share/openocd/scripts/" --file "{runtime.platform.path}/variants/{build.variant}/{build.openocdscript}" -c "gdb_port pipe" -c "telnet_port 0"' {build.path}/{build.project_name}.elf
++tools.gdb-openocd.path=/usr/bin/
++tools.gdb-openocd.cmd=arm-none-eabi-gdb
++tools.gdb-openocd.cmd.windows=arm-none-eabi-gdb.exe
++tools.gdb-openocd.interpreter=console
++tools.gdb-openocd.debug.pattern="{path}/{cmd}" --interpreter={interpreter} -ex "set remotetimeout 5" -ex "set pagination off" -ex 'target extended-remote | "{tools.openocd.path}/{tools.openocd.cmd}" -s "{tools.openocd.path}/share/openocd/scripts/" --file "{runtime.platform.path}/variants/{build.variant}/{build.openocdscript}" -c "gdb_port pipe" -c "telnet_port 0"' "{build.path}/{build.project_name}.elf"
