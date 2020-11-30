@@ -1,9 +1,15 @@
 # Maintainer: Nicholas Dahm <(first).(last) at gmail>
 
+# Update process
+# Go to PyPI neo4j download page https://pypi.org/project/neo4j/#files
+# Get latest URL to tar.gz, extract _pypidir and version
+# Download and get sha256 checksum
+# profit
+
 pkgname=python-neo4j
 _pypiname=neo4j
-_pypidir="ad/4c/6d58b9416d2d62c4115d4c6bd84e6f31ca98716f50ee9da7a5418cfa61d0"
-pkgver=4.1.1
+_pypidir="ba/9c/96069a907f845ec74a5031d7a2fa2cacfa2f52ad2f312ee1e9ba45364ff7"
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Neo4j Bolt driver for Python"
 url="https://pypi.org/project/neo4j/"
@@ -12,7 +18,7 @@ license=('GPLv3')
 depends=('python')
 makedepends=('python-setuptools')
 source=(${_pypiname}-${pkgver}.tar.gz::"https://files.pythonhosted.org/packages/${_pypidir}/${_pypiname}-${pkgver}.tar.gz")
-sha256sums=('b19efd8949adfd6330537bd97b2d0df88e4074b741f7db4c05427498915886ec')
+sha256sums=('a346f7b1681e31100c7bb0b3e60e755582f6bd60bb39a9b4ca50fd25207ffa2e')
 
 package() {
 	  cd ${_pypiname}-${pkgver}
