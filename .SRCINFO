@@ -1,0 +1,18 @@
+pkgbase = phonic-git
+	pkgdesc = A GTK audiobook player targeted at mobile Linux.
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://pep.foundation/dev/repos/pEpPythonAdapter
+	arch = any
+	license = GPL3
+	makedepends = python
+	makedepends = git
+	depends = python
+	depends = gtk3
+	depends = sox
+	provides = phonic
+	source = git+https://www.bitbucket.org/hackersgame/phonic.git
+	sha256sums = SKIP
+
+pkgname = phonic-git
+
