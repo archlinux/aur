@@ -8,8 +8,6 @@ url="https://github.com/guee/GueeRecorder"
 license=('GPL3')
 depends=('mesa' 'libxinerama' 'libxcomposite' 'libxfixes' 'qt5-multimedia' 'qt5-x11extras')
 makedepends=('git' 'qt5-base' 'qt5-tools')
-#  'qtcreator'
-# optdepends=('libxtst')
 conflicts=()
 replaces=()
 backup=()
@@ -34,7 +32,6 @@ build() {
 
 package() {
   cd $srcdir/${pkgname%-git}
-  cp ./build/GueeRecorder ./template
   install -D ./build/GueeRecorder ${pkgdir}/usr/bin/${pkgname%-git}
   install -Dm644 ./Package/uos-amd64/opt/apps/net.guee.recorder/entries/icons/hicolor/scalable/apps/net.guee.recorder.svg ${pkgdir}/usr/share/icons/${pkgname%-git}.svg
   install -Dm644 ./Package/uos-amd64/opt/apps/net.guee.recorder/entries/applications/net.guee.recorder.desktop $pkgdir/usr/share/applications/${pkgname%-git}.desktop
