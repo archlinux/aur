@@ -1,13 +1,14 @@
 pkgbase = yuzu-early-access-kiku233-git
 	pkgdesc = An experimental open-source Nintendo Switch emulator/debugger (early access with Chinese translation)
-	pkgver = 1138.r0.ga8f198c7e
-	pkgrel = 1
+	pkgver = 1152.r1.g9a905b57d
+	pkgrel = 2
 	url = https://github.com/yuzu-emu/yuzu-mainline
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
+	makedepends = glslang
 	makedepends = ninja
 	makedepends = python2
 	makedepends = graphviz
