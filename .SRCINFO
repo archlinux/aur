@@ -1,0 +1,21 @@
+pkgbase = com.taobao.wangwang.deepin
+	pkgdesc = Ali WangWang Client on Deepin Wine5
+	pkgver = 9.12.10Cdeepin6
+	pkgrel = 1
+	url = https://alimarket.taobao.com/markets/qnww/portal-group/ww/index
+	install = wangwang.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine5-stable>=5.0.0.10
+	depends = deepin-wine-helper>=5.1.10
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.taobao.wangwang.deepin/com.taobao.wangwang.deepin_9.12.10Cdeepin6_i386.deb
+	sha512sums = f9330ea8625384ecee28625f4e7b5a1cb827ac1c512d0be002a9cd4fdbc97c452d4fdfe7f43cfb09a6072dfb19bb1a62fe7fddee5fe5066d1c00756c1871c209
+
+pkgname = com.taobao.wangwang.deepin
