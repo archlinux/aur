@@ -1,0 +1,21 @@
+pkgbase = com.taobao.aliclient.qianniu.deepin
+	pkgdesc = Ali Qian Niu Client on Deepin Wine
+	pkgver = 7.22.06N
+	pkgrel = 11
+	url = https://cts.alibaba.com/product/qianniu.htm
+	install = qianniu.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine5-stable>=5.0.0.10
+	depends = deepin-wine-helper>=5.1.10
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.taobao.aliclient.qianniu.deepin/com.taobao.aliclient.qianniu.deepin_7.22.06Ndeepin11_i386.deb
+	sha512sums = a0168d694035250879a529e2b5fc9550c726af2a19e610c5ae9524aa52184263769eecc8eacfd5fc3fc39b9aa4a27be10eeddb663c1bb793fd01bf487649bb7d
+
+pkgname = com.taobao.aliclient.qianniu.deepin
