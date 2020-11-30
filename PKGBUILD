@@ -6,7 +6,7 @@
 
 _pkgname=audacious-plugins
 pkgname="$_pkgname-git"
-pkgver=4.0.beta1.r160.g89b6ab575
+pkgver=4.0.beta1.r215.g6d8a86d3d
 pkgrel=1
 epoch=1
 pkgdesc="Plugins for Audacious (git version)"
@@ -33,10 +33,7 @@ build() {
   cd "$_pkgname"
 
   autoreconf -I m4
-  ./configure \
-    --prefix=/usr \
-  # --enable-gtk \
-
+  ./configure --prefix=/usr
   make
 }
 
