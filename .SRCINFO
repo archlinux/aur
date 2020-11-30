@@ -1,0 +1,16 @@
+pkgbase = tab-rs-bin
+	pkgdesc = The intuitive config-driven terminal multiplexer
+	pkgver = 0.5.2
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/austinjones/tab-rs
+	arch = x86_64
+	license = MIT
+	provides = tab-rs
+	conflicts = tab
+	conflicts = tab-rs
+	source = tab-rs-bin-0.5.2.tar.gz::https://github.com/austinjones/tab-rs/releases/download/v0.5.2/tab-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 5180781ac388b966e899930b49c440125e906a6b7f82ec28e392ce27eb93a875
+
+pkgname = tab-rs-bin
+
