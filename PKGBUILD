@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=2.6
+pkgver=2.7
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -33,7 +33,7 @@ source=("$url/archive/$_pkgtag.tar.gz"
         "archlinux-defaults.cfg"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('955760e3a74e39f8a791fa9b5e04d7ec'
+md5sums=('cd288239be4017002eefd6bca5eaa90c'
          'f64f312dfdca58dc510504041dcc9675'
          'd277502b9a95484594f86231d073dae0'
          '1052fa4db74b59b0c195f4756bd865e8')
@@ -73,6 +73,7 @@ build() {
 	    -e 's|/usr/libexec/mock/mock|/usr/bin/mock.py|'
 
 	sed -e "s|@VERSION@|$pkgver|" -i "docs/$pkgname"{,-parse-buildlog}.1
+	sed -e "s|^_MOCK_NVR = None\$|_MOCK_NVR = \"$pkgname-$pkgver-$_rpmrel\"|" -i "py/$pkgname.py"
 
 	python    -m compileall py/ -q
 	python -O -m compileall py/ -q

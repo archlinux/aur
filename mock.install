@@ -3,6 +3,5 @@ post_install() {
 }
 
 post_remove() {
-  getent group mock >/dev/null && groupdel mock
   echo 'Make sure to empty out /var/lib/mock and /var/cache/mock'
 }
