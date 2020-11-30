@@ -1,7 +1,7 @@
 # Maintainer: Aurel Canciu <aurelcanciu@gmail.com>
 
 pkgname=flux-cli
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Open and extensible continuous delivery solution for Kubernetes."
 url="https://fluxcd.io/"
