@@ -1,6 +1,6 @@
 pkgbase = cloudcross
 	pkgdesc = Opensource cross-platform client for multiple cloud providers.
-	pkgver = 1.4.6
+	pkgver = 1.4.8
 	pkgrel = 1
 	url = http://cloudcross.mastersoft24.ru
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = cloudcross
 	depends = qt5-base
 	depends = curl
 	replaces = grive2
-	source = cloudcross-1.4.6::https://github.com/MasterSoft24/CloudCross/archive/v1.4.6.tar.gz
-	md5sums = d9717020511182a4d03410ce9b095291
+	source = cloudcross-1.4.8::https://github.com/MasterSoft24/CloudCross/archive/v1.4.8.tar.gz
+	md5sums = c4ebdd415ee2d4fa571d690e1a0187b1
 
 pkgname = cloudcross
 
