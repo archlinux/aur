@@ -1,6 +1,6 @@
 # Maintainer: Radoslaw Mejer <radmen@radmen.info>
 pkgname=silicon
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 depends=('fontconfig' 'freetype2' 'xclip')
 makedepends=('rust' 'cargo' 'glibc' 'llvm-libs' 'gcc-libs' 'clang')
@@ -12,7 +12,7 @@ source=(
     "https://github.com/Aloxaf/silicon/archive/v$pkgver.tar.gz"
 )
 sha256sums=(
-    "510e8d6a5cf856f5060088ea6d5d22a510b6adeea2ea5b71d4d186e417115061"
+    "1534b7b4b5a309cf7f79132f3cd5fd7987642735ca7845efb1ec93df685a402d"
 )
 
 build() {
