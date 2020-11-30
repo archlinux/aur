@@ -30,9 +30,9 @@ package() {
     cd "$srcdir"
 
     # Create directories for installation
-    install -d0755 "${pkgdir}"/usr/bin
-    install -d0755 "${pkgdir}"/opt/${pkgname}
-    install -d0755 "${pkgdir}"/usr/share/icons
+    install -dm0755 "${pkgdir}"/usr/bin
+    install -dm0755 "${pkgdir}"/opt/${pkgname}
+    install -dm0755 "${pkgdir}"/usr/share/icons
     # Install icons
     cp -r squashfs-root/usr/share/icons/hicolor "${pkgdir}"/usr/share/icons/
     # Modify .desktop file to run executable instead of AppImage
