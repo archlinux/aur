@@ -1,6 +1,6 @@
 pkgbase = gxr-git
 	pkgdesc = A glib wrapper for the OpenVR and OpenXR APIs.
-	pkgver = 0.15.0.934.7ac618b
+	pkgver = 0.15.1.951.6704e75
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xrdesktop/gxr
 	arch = i686
@@ -14,10 +14,10 @@ pkgbase = gxr-git
 	depends = gtk3
 	depends = gulkan-git
 	depends = openvr-git
-	depends = openxr-loader-git
+	depends = openxr
 	optdepends = monado-git: The open source OpenXR runtime.
 	optdepends = steam: For SteamVR.
-	provides = gxr=0.15.0.934.7ac618b
+	provides = gxr=0.15.1.951.6704e75
 	conflicts = gxr
 	source = git+https://gitlab.freedesktop.org/xrdesktop/gxr.git
 	md5sums = SKIP
