@@ -7,7 +7,7 @@ arch=(i686 x86_64)
 url="https://gitlab.freedesktop.org/realmd/adcli"
 license=(GPL3)
 depends=(cyrus-sasl-gssapi krb5 openldap)
-makedepends=(docbook-xml docbook-xsl git intltool xmlto)
+makedepends=(docbook-xml docbook-xsl git xmlto)
 _commit=08bac0946de29f3e5de90743ce6dfc7118d4ad20
 source=("git+https://gitlab.freedesktop.org/realmd/adcli.git#commit=$_commit")
 sha256sums=('SKIP')
