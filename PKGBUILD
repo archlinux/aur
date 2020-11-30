@@ -6,7 +6,7 @@
 # Contributor: dieghen89 <dieghen89@gmail.com>
 
 pkgname=musique
-pkgver=1.10
+pkgver=1.10.1
 pkgrel=1
 pkgdesc='A finely crafted music player'
 arch=('x86_64')
