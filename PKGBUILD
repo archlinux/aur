@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=openvsp
 pkgver=3.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenVSP allows the user to create a 3D model of an aircraft defined by
          common engineering parameters.'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ optdepends=('doxygen: generate documentation'
             'graphviz: generate documentation'
             'python: python API module'
             'swig: build interface to APIs')
-makedepends=('cmake')
+makedepends=('cmake' 'unzip')
 _name=OpenVSP-OpenVSP_${pkgver}
 source=("${pkgname}-${pkgver}"::"https://github.com/OpenVSP/OpenVSP/archive/OpenVSP_${pkgver}.tar.gz"
         "stepcode-install-dir.patch"::"https://patch-diff.githubusercontent.com/raw/OpenVSP/OpenVSP/pull/158.patch")
