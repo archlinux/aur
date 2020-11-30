@@ -3,10 +3,10 @@
 pkgname=python-slixmpp
 _pkgbase=slixmpp
 pkgver=1.5.2
-pkgrel=4
+pkgrel=5
 pkgdesc="An XMPP library written for Python 3.7 (SleekXMPP asyncio fork)"
 arch=('x86_64' 'armv7h' 'aarch64')
-url="https://dev.louiz.org/projects/slixmpp"
+url="https://lab.louiz.org/poezio/slixmpp"
 license=('MIT')
 depends=('python' 'python-aiodns' 'libidn' 'python-pyasn1' 'python-pyasn1-modules' 'python-aiohttp')
 makedepends=('git' 'cython')
@@ -24,12 +24,12 @@ package() {
     cd $_pkgbase-slix-$pkgver
     python setup.py install --skip-build --root="$pkgdir/" --optimize=1
 
-    if ! test -f "$pkgdir"/usr/lib/python3.9/site-packages/slixmpp/stringprep.*.so; then
+    if ! test -f "$pkgdir"/usr/lib/python3.*/site-packages/slixmpp/stringprep.*.so; then
         msg 'stringprep module failed to build!'
         msg 'Check that cython is correctly installed and working.'
         exit 1
     fi
 
     # This one is only used when Cython is unavailable, or on pypy3.
-    rm "$pkgdir"/usr/lib/python3.9/site-packages/slixmpp/stringprep.py
+    rm "$pkgdir"/usr/lib/python3.*/site-packages/slixmpp/stringprep.py
 }
