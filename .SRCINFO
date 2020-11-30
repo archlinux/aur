@@ -1,7 +1,7 @@
 pkgbase = alice-vision
 	pkgdesc = Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms
-	pkgver = 2.2.0
-	pkgrel = 3
+	pkgver = 2.3.1
+	pkgrel = 1
 	url = https://alicevision.github.io/
 	arch = i686
 	arch = x86_64
@@ -23,18 +23,12 @@ pkgbase = alice-vision
 	depends = opengv
 	depends = coin-or-clp
 	depends = ceres-solver
-	source = alice-vision::https://github.com/alicevision/AliceVision/archive/v2.2.0.tar.gz
+	source = alice-vision::https://github.com/alicevision/AliceVision/archive/v2.3.1.tar.gz
 	source = MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop
 	source = nanoflann::git+https://github.com/alicevision/nanoflann.git
-	source = submodule.patch
-	source = boost_017100.patch::https://github.com/alicevision/AliceVision/pull/709.patch
-	source = cuda11.patch
-	sha256sums = 157d06d472ffef29f08a781c9df82daa570a49bb009e56a2924a3bd2f555ef50
+	sha256sums = 40a4e753197cccf0cf00ca74a4bbcf610d5bd4fc2b908abd19f6b060602206f7
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = ddbe76933cea0300b577095afa7459113a2d2ef02d4f300424261165ad9dee22
-	sha256sums = 3055e98b7d788135d9873bc7fc4698cb72a3f8212155f281877e37d315a693d8
-	sha256sums = c0c54b0d3ac3b0b0ed139a3efbf574ca307d5a06021b086065932fb9fe2078ad
 
 pkgname = alice-vision
 

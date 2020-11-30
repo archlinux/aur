@@ -32,13 +32,13 @@ else
 fi
 
 # Disable popsift and ute when cuda is disabled.
-((DISABLE_POPSIFT)) || ((DISABLE_CUDA)) || { 
+((DISABLE_POPSIFT|DISABLE_CUDA)) || {
   _CMAKE_FLAGS+=( -DPopSift_DIR=/usr )
   makedepends+=('popsift')
   optdepends+=('popsift-libs: for GPU accelerated feature matching')
 }
 
-((DISABLE_UTE)) || ((DISABLE_CUDA)) || {
+((DISABLE_UTE|DISABLE_CUDA)) || {
   _CMAKE_FLAGS+=( -DUNCERTAINTYTE_DIR=/usr -DMAGMA_ROOT=/usr )
   makedepends+=('uncertainty-framework' 'magma')
   optdepends+=('uncertainty-framework: for SFM uncertainty estimation')
@@ -47,40 +47,34 @@ fi
 
 _name=alice-vision
 pkgname=${_name}
-pkgver=2.2.0
-pkgrel=3
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
 url="https://alicevision.github.io/"
 license=('MPL2' 'MIT')
 groups=()
 # split: cctag
-#depends=('openexr' 'coin-or-coinutils' 'coin-or-lemon' 'opencv' 
+#depends=('openexr' 'coin-or-coinutils' 'coin-or-lemon' 'opencv'
 depends+=('alembic' 'boost-libs' 'openimageio' 'flann' 'geogram' 'opengv' 'coin-or-clp' 'ceres-solver')
 #makedepends+=('ceres-solver')
 makedepends+=('boost' 'ninja' 'eigen' 'freetype2' 'coin-or-coinutils' 'coin-or-lemon' 'git' 'cmake')
 source=("${pkgname}::https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
         "MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop"
         "nanoflann::git+https://github.com/alicevision/nanoflann.git"
-        "submodule.patch"
-        "boost_017100.patch::https://github.com/alicevision/AliceVision/pull/709.patch"
-        "cuda11.patch"
-        )
-sha256sums=('157d06d472ffef29f08a781c9df82daa570a49bb009e56a2924a3bd2f555ef50'
+)
+sha256sums=('40a4e753197cccf0cf00ca74a4bbcf610d5bd4fc2b908abd19f6b060602206f7'
             'SKIP'
             'SKIP'
-            'ddbe76933cea0300b577095afa7459113a2d2ef02d4f300424261165ad9dee22'
-            '3055e98b7d788135d9873bc7fc4698cb72a3f8212155f281877e37d315a693d8'
-            'c0c54b0d3ac3b0b0ed139a3efbf574ca307d5a06021b086065932fb9fe2078ad')
+)
 
 prepare() {
   cd "${srcdir}"/AliceVision-${pkgver}
-  patch -Np1 -i "${srcdir}"/submodule.patch
-  patch -Np1 -i "${srcdir}"/boost_017100.patch
-  patch -Np1 -i "${srcdir}"/cuda11.patch
   rm -rf src/dependencies/{MeshSDFilter,nanoflann}
   cp -r "${srcdir}"/MeshSDFilter src/dependencies/MeshSDFilter
   cp -r "${srcdir}"/nanoflann src/dependencies/nanoflann
+  #fix missing submodule warning.
+  mkdir src/dependencies/osi_clp/CoinUtils
 }
 
 
@@ -96,13 +90,13 @@ package() {
 #  ((DISABLE_CUDA)) || depends+=( 'libcudart.so=10.1' )
   ((DISABLE_CUDA)) || optdepends+=( 'cuda: (libcudart.so) for depth map computation' )
   DESTDIR="${pkgdir}" ninja -C build install
-  
+
 # fix conflict with openmvg
   rm "${pkgdir}"/usr/lib/libvlsift.a
-  
+
 # install custom licenses.
   cd "${pkgdir}"/usr/share
-  install -dm755 licenses/${_name}/ 
+  install -dm755 licenses/${_name}/
   mv aliceVision/LICENSE-{MPL2,MIT-libmv}.md licenses/${_name}
 
 # prune empty dirs
