@@ -21,6 +21,7 @@ pkgbase = megasync-bin
 	depends = double-conversion
 	optdepends = sni-qt: fix systray issue on KDE and LXQt
 	provides = megasync
+	conflicts = megasync
 	source = https://mega.nz/linux/MEGAsync/Arch_Extra/x86_64/megasync-4.3.8-1-x86_64.pkg.tar.zst
 	sha256sums = 7b3adc8cf17435e8bf93d0f51f42057ed621259181a04ca55e7162336eb01937
 
