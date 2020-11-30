@@ -6,7 +6,7 @@ pkgver=2.4.6
 pkgrel=1
 pkgdesc="An extensible calculator written in Python."
 arch=('any')
-url=""
+url="https://gitlab.com/TurboWafflz/ImaginaryInfinity-Calculator"
 license=('GPL')
 groups=('')
 depends=('bash-completion' 'python-pip')
@@ -16,7 +16,7 @@ conflicts=("iicalc-beta")
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("iicalc-$pkgver.deb::https://gitlab.com/TurboWafflz/ImaginaryInfinity-Calculator/-/jobs/artifacts/development/raw/iicalc.deb?job=debian%20packager")
-sha512sums=('237954b4b8222d1d738f9e00d67804d28dfe3f196efbbcc7f7286771bc5436ab68d8ee07a12844e9c7e555c3329f117cc9bf9648400fb0be95617b0aed2822ae')
+sha512sums=('6ef962d80172a84be926306ca92d7b887244ea5da0808d49211813dd5369771118144ce3bc4047c0905712ccfd6bbcd79c3d52f5fd873aa5e4789e81989008ff')
 
 package(){
 
