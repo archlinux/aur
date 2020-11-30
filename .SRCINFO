@@ -1,6 +1,6 @@
 pkgbase = goobook
 	pkgdesc = Access your Google contacts from the command line
-	pkgver = 3.5
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://gitlab.com/goobook/goobook
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = goobook
 	depends = python-google-api-python-client
 	depends = python-simplejson
 	depends = python-oauth2client
-	depends = python-xdg
-	source = https://gitlab.com/goobook/goobook/-/archive/3.5/goobook-3.5.tar.gz
-	sha256sums = 1b7d5a176d0d1e8705f6dcd5056ec356d660bb2e3a3a95ad7cd416c6c0442968
+	depends = python-xdg>=4.0.1
+	source = https://gitlab.com/goobook/goobook/-/archive/3.5.1/goobook-3.5.1.tar.gz
+	sha256sums = 235df73635bba6d51e80215cb50d260ae0f5fc17ccef1d00a13826085e9b794d
 
 pkgname = goobook
 

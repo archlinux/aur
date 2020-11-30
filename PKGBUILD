@@ -1,6 +1,6 @@
 # Maintainer: Jaan Toots <jaan@jaantoots.org>
 pkgname=goobook
-pkgver=3.5
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Access your Google contacts from the command line"
 arch=('any')
@@ -9,20 +9,10 @@ license=('GPL3')
 depends=('python-google-api-python-client'
          'python-simplejson'
          'python-oauth2client'
-         'python-xdg')
+         'python-xdg>=4.0.1')
 makedepends=('python-setuptools' 'python-docutils')
 source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('1b7d5a176d0d1e8705f6dcd5056ec356d660bb2e3a3a95ad7cd416c6c0442968')
-
-prepare() {
-    cd "$pkgname-$pkgver"
-    # Fix to use pyxdg (in extra) instead of xdg
-    sed -i -E \
-        -e '/^import/s/xdg/\0.BaseDirectory/' \
-        -e 's/\bxdg.(\w+_HOME)/pathlib.Path(xdg.BaseDirectory.\L\1)/' \
-        -e 's/\bxdg.(\w+_DIRS)/[pathlib.Path(x) for x in xdg.BaseDirectory.\L\1]/' \
-        goobook/config.py
-}
+sha256sums=('235df73635bba6d51e80215cb50d260ae0f5fc17ccef1d00a13826085e9b794d')
 
 build() {
     cd "$pkgname-$pkgver"
