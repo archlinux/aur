@@ -15,41 +15,12 @@ url="https://audacious-media-player.org/"
 license=('BSD' 'GPL')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-depends=('audacious-git')
-
-makedepends=('glib2' 'python' # for gdbus-codegen
-             'alsa-lib' 'pulseaudio' 'jack' 'lame' 'libvorbis' 'flac' 'mpg123'
-             'faad2' 'ffmpeg' 'libmodplug' 'fluidsynth' 'libcdio-paranoia'
-             'libsidplayfp' 'wavpack' 'libsamplerate' 'libnotify' 'lirc'
-             'curl' 'libmtp' 'neon' 'libmms' 'libcue' 'libbs2b' 'git')
-
-optdepends=('alsa-lib: Advanced Linux Sound Arch. output'
-            'pulseaudio: PulseAudio output'
-            'jack: Jack Audio Connection Kit output'
-            'lame: FileWriter MP3 output'
-            'libvorbis: Vorbis input, FileWriter Vorbis output'
-            'flac: FLAC input, FileWriter FLAC output'
-
-            'mpg123: MP3 input'
-            'faad2: AAC input'
-            'ffmpeg: ffaudio input'
-            'libmodplug: modplug input'
-            'fluidsynth: MIDI FluidSynth backend input'
-            'libcdio-paranoia: CD Digital Audio input'
-            'libsidplayfp: Commodore 64 audio input'
-            'wavpack: WavPack input'
-
-            'libsamplerate: Speed and Pitch Plugin'
-            'libnotify: libnotify OSD'
-            'lirc: LIRC'
-            'curl: AudioScrobbler Client'
-            'libmtp: Upload to MTP device'
-            'libbs2b: Bauer stereophonic-to-binaural DSP'
-
-            'neon: neon-based http transport'
-            'libmms: libmms-based mms transport'
-            'libcue: CUE playlist format')
-
+depends=('audacious-git'
+         'alsa-lib' 'curl' 'dbus-glib' 'faad2' 'ffmpeg' 'flac' 'fluidsynth'
+         'jack' 'lame' 'libcdio-paranoia' 'libcue' 'libmms' 'libmodplug'
+         'libmtp' 'libnotify' 'libsamplerate' 'libsidplayfp' 'libvorbis'
+         'lirc' 'mpg123' 'neon' 'pulseaudio' 'wavpack')
+makedepends=('glib2' 'python' 'git')
 source=("git://github.com/audacious-media-player/$_pkgname.git")
 sha256sums=('SKIP')
 
