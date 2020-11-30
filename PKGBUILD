@@ -1,4 +1,4 @@
-# Maintainer: Coelacanthus <liuhongwu2003@outlook.com>
+# Maintainer: Kienyew <aobi100bt@hotmail.com>
 
 pkgname=fcitx5-skin-arc
 _pkgname=fcitx5-arc-theme

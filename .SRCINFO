@@ -6,7 +6,7 @@ pkgbase = fcitx5-skin-arc
 	arch = any
 	license = MIT
 	source = https://github.com/Kienyew/fcitx5-arc-theme/archive/5d2a3981304499e81131730577cbf22f881d7919/fcitx5-arc-theme-5d2a3981304499e81131730577cbf22f881d7919.tar.gz
-	md5sums = f9e3f4ac9ea621dafbbae3ff16a9aada
+	md5sums = 3e61fcd7379de96615d0601ac43b2aef
 
 pkgname = fcitx5-skin-arc
 
