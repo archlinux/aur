@@ -20,7 +20,7 @@ depends=(
     'libxkbcommon'
     'opengl-driver'
     'pixman'
-    'xcb-util-errors'
+#    'xcb-util-errors'
     'xcb-util-image'
     'xcb-util-wm'
 )
