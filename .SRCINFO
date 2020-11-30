@@ -1,7 +1,7 @@
 pkgbase = chaos
 	pkgdesc = A purely functional programming language that achieves zero cyclomatic complexity
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chaos-lang/chaos
 	arch = x86_64
 	arch = i686
