@@ -1,7 +1,9 @@
 # Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=vim-grammarous
-pkgver=r199.a3d6740
+pkgver=r201.db46357
+# git clone https://github.com/rhysd/vim-grammarous.git && cd vim-grammarous && printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+# `makepkg -so`, then update checksum
 pkgrel=1
 pkgdesc='A powerful grammar checker for Vim using LanguageTool'
 arch=('any')
@@ -10,7 +12,7 @@ license=('MIT')
 groups=('vim-plugins')
 depends=('vim' 'vim-vital' 'java-runtime=8' 'languagetool')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rhysd/vim-grammarous/archive/master.tar.gz")
-sha256sums=('fbe5b467172fb939dbf7a49b9b41b5d6ac47e9bd22bc584ccd504283fb940f92')
+sha256sums=('f052681a9b312bb0460dcb834c41324134b7cf493b791a4a5504250382567aea')
 
 package () {
   cd "${pkgname}-master"

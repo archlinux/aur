@@ -1,6 +1,6 @@
 pkgbase = vim-grammarous
 	pkgdesc = A powerful grammar checker for Vim using LanguageTool
-	pkgver = r199.a3d6740
+	pkgver = r201.db46357
 	pkgrel = 1
 	url = https://github.com/rhysd/vim-grammarous
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = vim-grammarous
 	depends = vim-vital
 	depends = java-runtime=8
 	depends = languagetool
-	source = vim-grammarous-r199.a3d6740.tar.gz::https://github.com/rhysd/vim-grammarous/archive/master.tar.gz
-	sha256sums = fbe5b467172fb939dbf7a49b9b41b5d6ac47e9bd22bc584ccd504283fb940f92
+	source = vim-grammarous-r201.db46357.tar.gz::https://github.com/rhysd/vim-grammarous/archive/master.tar.gz
+	sha256sums = f052681a9b312bb0460dcb834c41324134b7cf493b791a4a5504250382567aea
 
 pkgname = vim-grammarous
 
