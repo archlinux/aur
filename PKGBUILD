@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=mlite
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Useful classes originating from MeeGo Touch"
 arch=('x86_64')
