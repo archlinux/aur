@@ -35,6 +35,7 @@ pkgbase = audacious-plugins-git
 	depends = mpg123
 	depends = neon
 	depends = wavpack
+	depends = libbs2b
 	provides = audacious-plugins
 	conflicts = audacious-plugins
 	source = git://github.com/audacious-media-player/audacious-plugins.git
