@@ -1,7 +1,7 @@
 # Maintainer: koraynilay <koray.fra@gmail.com>
 pkgname=scrnsvr-bin
 pkgver=1
-pkgrel=13
+pkgrel=14
 pkgdesc="Yet Another X Screensaver/locker. Precompiled version."
 arch=('x86_64')
 url="https://github.com/koraynilay/scrnsvr"
@@ -10,7 +10,7 @@ conflicts=('scrnsvr')
 depends=('pulseaudio' 'grep' 'procps-ng' 'libxss')
 makedepends=('git' 'gcc')
 source=("$pkgname-$pkgver::git+https://github.com/koraynilay/scrnsvr")
-optdepends=('dunst: dunstify for notifications' 'libnotify: for notifications')
+optdepends=('dunst: dunstify for notifications' 'libnotify: for notifications' 'libxinerama: for multi-monitor with xinerama fullscreen check support' 'libxrandr: for multi-monitor with xrandr fullscreen check support')
 install="scrnsvr.install"
 md5sums=("SKIP")
 
