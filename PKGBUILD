@@ -1,7 +1,7 @@
 # Maintainer: koraynilay <koray.fra@gmail.com>
 pkgname=scrnsvr
 pkgver=1
-pkgrel=12
+pkgrel=13
 pkgdesc="Yet Another X Screensaver/locker"
 arch=('x86_64')
 url="https://github.com/koraynilay/scrnsvr"
@@ -16,7 +16,7 @@ md5sums=("SKIP")
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	gcc -g -O0 -Wl,-z,relro,-z,now src/scrnsvr.c -o bin/scrnsvr -lXss -lX11 -lpthread
+	gcc -O3 -Wl,-z,relro,-z,now src/scrnsvr.c -o bin/scrnsvr -lpthread -lXss -lX11 -lXinerama -lXrandr
 }
 
 package() {
