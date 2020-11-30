@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=gh
-_cranver=1.1.0
+_cranver=1.2.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -9,10 +9,10 @@ pkgdesc="'GitHub' 'API'"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
-depends=(r r-cli r-ini r-jsonlite 'r-httr>=1.2')
-optdepends=(r-covr r-keyring r-pingr r-testthat r-withr)
+depends=(r 'r-cli>=2.0.1' r-gitcreds 'r-httr>=1.2' r-ini r-jsonlite)
+optdepends=(r-covr r-knitr r-rmarkdown r-rprojroot r-spelling r-testthat r-withr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('f34485dab3283fbadba9d61b651359e7')
+sha256sums=('2988440ed2ba4b241c8ffbafbfdad29493574980a9aeba210521dadda91f7eff')
 
 build() {
   cd "${srcdir}"
