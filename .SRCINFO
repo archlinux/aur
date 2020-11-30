@@ -1,0 +1,21 @@
+pkgbase = com.youdao.note.deepin
+	pkgdesc = YouDao Note Client on Deepin Wine5
+	pkgver = 6.10.1.0
+	pkgrel = 2
+	url = http://note.youdao.com/
+	install = ynote.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine5-stable>=5.0.0.15
+	depends = deepin-wine-helper>=5.1.13
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.youdao.note.deepin/com.youdao.note.deepin_6.10.1.0deepin2_i386.deb
+	sha512sums = 7f71d4a0f7093ffceee835ba205ba60559b04c291bb8a0d6aea9b61f31ae741c47e84d8ad06acd4de2b3995d4e52eaebbab328a2026501a94753913ad67171ea
+
+pkgname = com.youdao.note.deepin
