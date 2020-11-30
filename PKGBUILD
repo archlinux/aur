@@ -4,17 +4,16 @@
 
 pkgname=xcursor-osx-elcap
 pkgver=1.00
-pkgrel=4
+pkgrel=5
 pkgdesc="Cursor theme from OSX"
 arch=('any')
+makedepends=(curl)
 url="https://www.gnome-look.org/p/1084939/"
 license=('GPL')
-source=('https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1MTUzMDg3MzUiLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6Ijg4MWZkNDU5NzQwNTI4NmE4OTBmMjVhNmNlYmFkMTlmYjI4ZmQ3NjM0NjZmMDRiNWY1ZTViM2M3Njk1ZTAwZDhkYjU0MTY1N2QxOWUzOTU2YmY1ZDUxZjBhMTM1ZTM4YWExZmMwNjNiNjQzOWZlZTU3OWU1ODg4NGUyMjI1YjlmIiwidCI6MTU5Njk5NTczOSwic3RmcCI6ImUxNDdlZGQ4YTliZWE4NmMyYTlmNjM5MjYyYjY2NjM1Iiwic3RpcCI6Ijg4LjEwMi42OC4xNzEifQ.uHfffxOp2MZF1RGX1E8Kf_h_T8RgcvU6H3AuUXaLtM8/OSX-ElCap-(KDE).R2.tar.bz2')
+_url='https://www.gnome-look.org/dl?file_id=1515308735&file_type=application/x-bzip2&file_name=OSX-ElCap-(KDE).R2.tar.bz2&file_size=31214&has_torrent=0&project_id=1084939&link_type=download&is_external=false&external_link=null'
+_cookie="$(curl -vq "$_url" 2>&1 | grep -Po '(?<=Set-Cookie: __ocs_id\=)[^;]+(?=;)')"
+source=("$(curl -sSL "$_url" -X 'POST' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64)' -H "Cookie: __ocs_id=$_cookie" | grep -Po '(?<=top.location.href \= ")[^"]+(?=")')")
 sha512sums=('7db6bc6266fc99358e35d203b767ffb9a6883bad40d8f4332f85214609859583c29e637a339cc1f386e581bc43cd9365088cc277c8ee1493c49d03f17ec45695')
-
-build() {
-	true
-}
 
 package() {
 	cd $srcdir
