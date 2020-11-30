@@ -1,0 +1,8 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.desktop
+!*.patch
+!xmrig.service
+!xmrig.sysusers
