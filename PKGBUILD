@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage <>
 
 pkgname=konfyt
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Konfyt is a digital keyboard workstation for Linux which allows you to set up patches, each with multiple layers, and instantly switch between these patches for live keyboard playing."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='http://www.noedig.co.za/konfyt'
 license=('GPL3')
 depends=('fluidsynth' 'carla' 'liblscp' 'qt5-base')
 source=("https://github.com/noedigcode/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('3193ca32028823ef8caf430f1b1825763a7a8b944b84d230c06e64bedc754db5')
+sha256sums=('f1385c24f3815a880d5448b9e51d7c28f78e64f3243b766b2d8dca29e59d07d2')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
