@@ -1,14 +1,14 @@
 # Maintainer: Frank Großgasteiger <frank@grossgasteiger.de>
 pkgname=xgifwallpaper
-pkgver=0.3.0
-pkgrel=5
+pkgver=0.3.1
+pkgrel=6
 pkgdesc="Use an animated GIF as wallpaper on X11 systems"
 arch=("x86_64")
 url="https://github.com/calculon102/xgifwallpaper"
 license=("GPL-3.0")
 depends=("gcc-libs" "glibc" "libx11" "libxau" "libxcb" "libxdmcp" "libxinerama" "libxext")
 makedepends=("gcc" "git" "rust")
-source=(git+${url}#commit=e9c0c632be39b217e37783781d1b7b4102f76636)
+source=(git+${url}#commit=4fb25e54c28a45fd085343dd53bc18ea6b87f630)
 sha256sums=('SKIP')
 
 build() {
