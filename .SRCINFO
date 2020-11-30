@@ -1,6 +1,6 @@
 pkgbase = palaura
 	pkgdesc = Find any words definition with this handy dictionary
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/lainsce/palaura
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = palaura
 	makedepends = vala
 	depends = granite
 	depends = gtksourceview3
-	source = palaura-1.5.0.tar.gz::https://github.com/lainsce/palaura/archive/1.5.0.tar.gz
-	sha256sums = 302f638bb4735761a3507f8785f79f65ec9b0d9eb35eb774d246549b34baa494
+	source = palaura-1.5.1.tar.gz::https://github.com/lainsce/palaura/archive/1.5.1.tar.gz
+	sha256sums = b07eadce97571a30326e3563f9d02dad9c0d41bbcac721033a487c2dcb00a9d9
 
 pkgname = palaura
 
