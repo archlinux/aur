@@ -3,7 +3,6 @@
 pkgname=qutebrowser-profile-git
 _pkgname="qutebrowser-profile"
 provides=("qutebrowser-profile")
-conflicts=("naivecalendar.py")
 pkgdesc="A simple wrapper script for qutebrowser that allows you to maintain different profiles"
 url="https://github.com/jtyers/qutebrowser-profile"
 pkgver=20200714.4dc3bfe
