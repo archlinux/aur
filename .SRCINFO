@@ -1,0 +1,15 @@
+pkgbase = user-union
+	pkgdesc = Tool to download source files or extract their URLs from RPM spec files
+	pkgver = 0.14
+	pkgrel = 1
+	url = https://www.dwheeler.com/user-union/
+	arch = any
+	license = gpl2
+	depends = rsync
+	options = libtool
+	options = staticlibs
+	source = http://downloads.sourceforge.net/user-union/user-union-0.14.tar.gz
+	md5sums = a746ffd1fc87f80f37fa34e0daf254f6
+
+pkgname = user-union
+
