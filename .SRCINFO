@@ -1,6 +1,6 @@
 pkgbase = musique-bin
 	pkgdesc = A finely crafted music player
-	pkgver = 1.10
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://flavio.tordini.org/musique
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = musique-bin
 	depends = phonon-qt5
 	depends = taglib
 	depends = mpv
-	source = musique-1.10.deb::http://flavio.tordini.org/files/musique/musique.deb
-	sha256sums = b39773d4cba343afd641328007921d8a47865e293517e9b18751b3cb3e03a143
+	source = musique-1.10.1.deb::http://flavio.tordini.org/files/musique/musique.deb
+	sha256sums = d763e23dff01485d0b3d0faa6c846cddc81d3f83ea720e83a8a3a7df1346ce35
 
 pkgname = musique-bin
 
