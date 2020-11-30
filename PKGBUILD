@@ -2,7 +2,7 @@
 
 _pkgname=dwarfs
 pkgname=${_pkgname}-git
-pkgver=r128.cd42e21
+pkgver=0.2.1.r6.g9a4ce33
 pkgrel=1
 pkgdesc="A fast high compression read-only file system"
 url='https://github.com/mhx/dwarfs'
@@ -20,10 +20,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname}"
 
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -33,8 +30,6 @@ prepare() {
 }
 
 build() {
-  make -C "${pkgname}/man"
-
   cmake -B build -S "${pkgname}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None
