@@ -1,0 +1,21 @@
+pkgbase = com.freepiano.deepin
+	pkgdesc = freepiano on deepin-wine5-stable
+	pkgver = 2.2.2.1
+	pkgrel = 2
+	url = https://freepiano.tiwb.com/
+	install = freepiano.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine5-stable>=5.0.0.7
+	depends = deepin-wine-helper>=5.1.8
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.freepiano.deepin/com.freepiano.deepin_2.2.2.1deepin2_i386.deb
+	sha512sums = 7fd127770897eb6595396d3efcb3f263d5ac3b1ccc4e2fdcb283966a9aaa66fe41c30a5b8f4c605461a627c73d43267ee6e8e10c8ffb23bc33fbc28ef54689ef
+
+pkgname = com.freepiano.deepin
