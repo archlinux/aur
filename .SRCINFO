@@ -1,5 +1,5 @@
 pkgbase = mpd-pulse
-	pkgdesc = Open-source Modbus TCP to Modbus RTU (RS-232/485) gateway.
+	pkgdesc = Allows MPD output to go to a different Pulse Audio sink than your default.
 	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/matt-h/mpd-pulse
