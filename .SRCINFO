@@ -1,0 +1,21 @@
+pkgbase = com.meituxiuxiu.deepin
+	pkgdesc = Meitu Xiu Xiu Client on Deepin-Wine5-Stable
+	pkgver = 6.0.3.3
+	pkgrel = 5
+	url = https://xiuxiu.web.meitu.com/
+	install = mtxx.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine5-stable>=5.0.0.10
+	depends = deepin-wine-helper>=5.1.12
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.meituxiuxiu.deepin/com.meituxiuxiu.deepin_6.0.3.3deepin5_i386.deb
+	sha512sums = 11dba746371a755f1be4504dd7408d06d34a6949451b7e50b6999d87086dcf4e9c1b363b84427fe2a6b454efe7b67a62f5878acfda3eedf6d0d3bc304d82d309
+
+pkgname = com.meituxiuxiu.deepin
