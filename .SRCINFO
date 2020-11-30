@@ -1,0 +1,21 @@
+pkgbase = deepin.com.qq.rtx2015
+	pkgdesc = Tencent RTX 2015 Client on Deepin-Wine5-Stable
+	pkgver = 8.3.649.1
+	pkgrel = 2
+	url = https://rtx.tencent.com/rtx/index.shtml
+	install = rtx2015.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine5-stable>=5.0.0.9
+	depends = deepin-wine-helper>=5.1.9
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/deepin.com.qq.rtx2015/deepin.com.qq.rtx2015_8.3.649.1deepin2_i386.deb
+	sha512sums = 2c2ed3c8866e846c3218169ced183cdebbbc981683e58a9edce699d2edd6d0ad0295dc8ab7d0134ab5fa335c7ba805160f568c70c805af7c66bec32cef8a8ca0
+
+pkgname = deepin.com.qq.rtx2015
