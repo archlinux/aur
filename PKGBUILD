@@ -2,6 +2,8 @@
 pkgname=libff7tk-git
 pkgver=Qt5.r146.gdc8b145
 pkgrel=1
+provides=('libff7tk')
+conflicts=('libff7tk')
 pkgdesc="Final Fantasy 7 Tool library"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/sithlord48/ff7tk"
