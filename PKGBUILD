@@ -1,37 +1,42 @@
-# Maintainer: Matthias Loibl <mail at matthiasloibl dot com>
+# Maintainer: a821
+# Contributor: Matthias Loibl <mail at matthiasloibl dot com>
+# Contributor: Morten Linderud <foxboron@archlinux.org>
 
-_pkgname=gopass
-_gourl="github.com/justwatchcom"
 pkgname=gopass-git
-pkgver=r24.bddd1e0
+pkgver=1.10.1.r32.g93539afc
 pkgrel=1
 pkgdesc="The slightly more awesome standard unix password manager for teams."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
-url="https://github.com/justwatchcom/gopass"
+url="https://github.com/gopasspw/gopass"
 license=('MIT')
-depends=('bash' 'git' 'gnupg' 'xclip')
-makedepends=('go>=1.7' 'git' 'make')
-provides=("gopass=${pkgver}")
-source=('git://github.com/justwatchcom/gopass.git')
+makedepends=('go' 'git')
+provides=("gopass")
+conflicts=("gopass")
+source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd gopass
+  git describe --long --tags | sed -e 's/^v//;s/-/.r/;s/-/./g'
+}
+
+prepare() {
+  cd gopass
+  sed -i 's|-gcflags="-trimpath=$(GOPATH)" -asmflags="-trimpath=$(GOPATH)"||' Makefile
 }
 
 build() {
-  mkdir -p "${srcdir}/go/src/${_gourl}/${_pkgname}"
-  mv "${srcdir}/${_pkgname}" "${srcdir}/go/src/${_gourl}"
-
-  export GOPATH="$srcdir/go"
-
-  cd ${srcdir}/go/src/${_gourl}/${_pkgname}
-  LDFLAGS='' make build
+  cd gopass
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  make
 }
 
 package() {
-  export GOOS=$(go version | cut -d' ' -f4 | cut -d'/' -f1)
-  export GOARCH=$(go version | cut -d' ' -f4 | cut -d'/' -f2)
-  install -Dm755 "${srcdir}/go/src/${_gourl}/${_pkgname}/${_pkgname}-${GOOS}-${GOARCH}" "${pkgdir}/usr/bin/${_pkgname}"
+  cd gopass
+  make DESTDIR="${pkgdir}" PREFIX="/usr" install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
