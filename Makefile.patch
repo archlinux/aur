@@ -1,0 +1,38 @@
+diff -Naur fotoxx/Makefile fotoxx.new/Makefile
+--- fotoxx/Makefile	2020-11-30 16:34:34.000000000 +0100
++++ fotoxx.new/Makefile	2020-11-30 22:43:18.859691427 +0100
+@@ -29,9 +29,7 @@
+    -I/usr/include/json-glib-1.0/                   \
+    -I/usr/include/clutter-gtk-1.0/                 \
+    -I/usr/include/champlain-gtk-0.12/              \
+-   -I/usr/include/champlain-0.12/                  \
+-   -I/usr/include/libchamplain-gtk-0.12/           \
+-   -I/usr/include/libchamplain-0.12/
++   -I/usr/include/champlain-0.12/                  
+ 
+ LIBS = `$(PKG_CONFIG) --libs gtk+-3.0`                                              \
+          -lrt -lpthread -llcms2 -ltiff -lpng -ljpeg                                 \
+@@ -104,7 +102,6 @@
+ DOCDIR = $(PREFIX)/share/doc/fotoxx
+ MANDIR = $(PREFIX)/share/man/man1
+ MENUDIR = $(PREFIX)/share/applications
+-METAINFODIR = $(PREFIX)/share/metainfo
+ SHAREDIR = $(PREFIX)/share/fotoxx
+ DATADIR = $(SHAREDIR)/data
+ IMAGEDIR = $(SHAREDIR)/images
+@@ -118,15 +115,10 @@
+ 	mkdir -p  $(DESTDIR)$(DATADIR)
+ 	mkdir -p  $(DESTDIR)$(IMAGEDIR)
+ 	mkdir -p  $(DESTDIR)$(ICONDIR)
+-	mkdir -p  $(DESTDIR)$(METAINFODIR)
+ 	cp -f     fotoxx $(DESTDIR)$(BINDIR)
+ 	cp -f -R  doc/* $(DESTDIR)$(DOCDIR)
+ 	cp -f -R  data/* $(DESTDIR)$(DATADIR)
+ 	cp -f -R  images/* $(DESTDIR)$(IMAGEDIR)
+-	cp -f -R  metainfo/* $(DESTDIR)$(METAINFODIR)
+-	# man page  (21.29) 
+-	gzip -fk -9 man/fotoxx.man
+-	mv -f man/fotoxx.man.gz $(DESTDIR)$(MANDIR)/fotoxx.1.gz
+ 	# desktop file and icon
+ 	cp -f fotoxx.desktop $(DESTDIR)$(MENUDIR)
+ 	cp -f fotoxx.png $(DESTDIR)$(ICONDIR)

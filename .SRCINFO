@@ -1,6 +1,6 @@
 pkgbase = fotoxx-test
 	pkgdesc = A program for improving image files made with a digital camera, test version
-	pkgver = 21.28
+	pkgver = 21.29
 	pkgrel = 1
 	url = http://www.kornelix.net/fotoxx/fotoxx.html
 	arch = i686
@@ -16,8 +16,10 @@ pkgbase = fotoxx-test
 	optdepends = hugin: for panorama photos
 	provides = fotoxx
 	conflicts = fotoxx
-	source = http://www.kornelix.net/downloads/downloads/fotoxx-21.28-test.tar.gz
-	sha512sums = 91c877a0e5e469f2389590ea9dc13c735ac51202ce1f377eeadd7a7aa77d34475f266ceb84bbbc208499f01da5d5edd8201e94f9683c350a1ed5c16b4e2bfb72
+	source = http://www.kornelix.net/downloads/downloads/fotoxx-21.29-test.tar.gz
+	source = Makefile.patch
+	sha256sums = be32db72bcd9c6efe88e304b2a210ea0640e01341120cfd910f697aee069925b
+	sha256sums = 91a603e77dc9836919fe4d12e89ca826330f8009cf726dd681a5e64ca42096a8
 
 pkgname = fotoxx-test
 

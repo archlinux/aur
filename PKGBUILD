@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fotoxx-test
-pkgver=21.28
+pkgver=21.29
 pkgrel=1
 pkgdesc="A program for improving image files made with a digital camera, test version"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
@@ -13,24 +13,24 @@ optdepends=('rawtherapee: for raw image processing'
 	    'hugin: for panorama photos')
 conflicts=('fotoxx')
 provides=('fotoxx')
-source=("http://www.kornelix.net/downloads/downloads/${pkgname%-test}-$pkgver-test.tar.gz")
-sha512sums=('91c877a0e5e469f2389590ea9dc13c735ac51202ce1f377eeadd7a7aa77d34475f266ceb84bbbc208499f01da5d5edd8201e94f9683c350a1ed5c16b4e2bfb72')
+source=("http://www.kornelix.net/downloads/downloads/${pkgname%-test}-$pkgver-test.tar.gz" Makefile.patch)
+sha256sums=('be32db72bcd9c6efe88e304b2a210ea0640e01341120cfd910f697aee069925b'
+            '91a603e77dc9836919fe4d12e89ca826330f8009cf726dd681a5e64ca42096a8')
 
 prepare() {
   cd ${pkgname%-test}
-  sed -i 's+libchamplain+champlain+g' Makefile
-  chmod o+r images/color-mode.jpg
+  patch -Np1 < "$srcdir"/Makefile.patch
 }
 
 build() {
-    cd ${pkgname%-test}
+  cd ${pkgname%-test}
   make PREFIX=/usr
 }
 
 package() {
   cd ${pkgname%-test}
   make DESTDIR="$pkgdir" PREFIX=/usr ICONDIR=/usr/share/pixmaps install 
-  rm -r "$pkgdir"/usr/share/appdata
+  
   sed -i 's+/usr/share/fotoxx/icons/++' "$pkgdir"/usr/share/applications/${pkgname%-test}.desktop
   sed -i 's+Icon=fotoxx.png+Icon=fotoxx+' "$pkgdir"/usr/share/applications/${pkgname%-test}.desktop
 }
