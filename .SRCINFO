@@ -1,7 +1,7 @@
 pkgbase = com.taobao.wangwang.deepin
 	pkgdesc = Ali WangWang Client on Deepin Wine5
-	pkgver = 9.12.10Cdeepin6
-	pkgrel = 1
+	pkgver = 9.12.10C
+	pkgrel = 6
 	url = https://alimarket.taobao.com/markets/qnww/portal-group/ww/index
 	install = wangwang.install
 	arch = i686
