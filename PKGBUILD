@@ -2,15 +2,13 @@
 
 _pkgbase=karla
 pkgname=ttf-karla
-pkgver=0_20140620
+pkgver=20160111
 pkgrel=1
 pkgdesc="Grotesque Sans Serif Latin typeface"
 arch=('any')
 license=('custom:OFL')
-url='https://gitlab.collabora.com/collabora/fonts-karla'
-depends=('fontconfig' 'xorg-font-utils')
-_tag='upstream/0_20140620'
-source=("$_pkgbase::git+https://gitlab.collabora.com/collabora/fonts-karla.git#tag=${_tag}")
+url=https://gitlab.collabora.com/collabora/fonts-karla
+source=("$_pkgbase::git+https://gitlab.collabora.com/collabora/fonts-karla.git#tag=upstream/${pkgver}")
 sha512sums=('SKIP')
 
 package() {
