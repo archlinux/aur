@@ -52,7 +52,7 @@ package() {
   # Copy the default appsettings.json
   install -d -m 755 "${pkgdir}/var/lib/ombi"
   install -D -m 644 "${srcdir}/ombi/appsettings.json" "${pkgdir}/var/lib/ombi/"
-  install -D -m 644 "${srcdir}/ombi/HealthCheck.css" "${pkgdir}/var/lib/ombi/"
+  #install -D -m 644 "${srcdir}/ombi/HealthCheck.css" "${pkgdir}/var/lib/ombi/"
 
   # Copy in files and then fix permissions
   install -d -m 755 "${pkgdir}/usr/lib/ombi"
