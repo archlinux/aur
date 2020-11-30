@@ -4,19 +4,16 @@
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
-# To enable GTK support, uncomment the additional dependency and "--enable-gtk".
-# Do the same with audacious-plugins-git. Then run Audacious by "audacious --gtk".
-
 _pkgname=audacious
 pkgname="$_pkgname-git"
-pkgver=4.0.beta1.r100.g27313f081
+pkgver=4.0.beta1.r154.g91de6c1f2
 pkgrel=1
 epoch=1
 pkgdesc="Lightweight, advanced audio player focused on audio quality (git version)"
 arch=('i686' 'x86_64')
 url="https://audacious-media-player.org/"
 license=('BSD')
-depends=('glib2' 'qt5-base') # 'gtk2')
+depends=('glib2' 'qt5-base' 'gtk2')
 makedepends=('git' 'python') # for gdbus-codegen
 optdepends=('unzip: zipped skins support')
 provides=("$_pkgname")
@@ -36,9 +33,7 @@ build() {
   autoreconf -I m4
   ./configure \
     --prefix=/usr \
-    --with-buildstamp="$(date +%x)" \
-  # --enable-gtk \
-
+    --with-buildstamp='Arch Linux'
   make
 }
 
