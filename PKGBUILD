@@ -3,13 +3,13 @@
 pkgname=lite-xl
 _pkgname=lite
 pkgver=1.12
-pkgrel=2
+pkgrel=3
 pkgdesc='A lightweight text editor written in Lua'
 arch=('x86_64')
 url="https://github.com/franko/$pkgname"
 license=('MIT')
-depends=('sdl2' 'agg')
-makedepends=('meson')
+depends=('agg' 'lua52' 'sdl2')
+makedepends=('meson' 'gendesk')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver-$pkgname.tar.gz"
