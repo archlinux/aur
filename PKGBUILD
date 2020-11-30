@@ -1,16 +1,16 @@
 # Maintainer: Marco Steiger <marco (at) steiger (dot) online>
 pkgname=sqlc-bin
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='Generate type safe Go from SQL'
 arch=('x86_64')
 url="https://github.com/kyleconroy/sqlc"
 license=('MIT')
 source=(
   "https://github.com/kyleconroy/sqlc/releases/download/v${pkgver}/sqlc-v${pkgver}-linux-amd64.tar.gz"
-  "https://raw.githubusercontent.com/kyleconroy/sqlc/d191365b0af92dead317a87633bd666c3bd20f6c/LICENSE"
+  "https://raw.githubusercontent.com/kyleconroy/sqlc/v${pkgver}/LICENSE"
 )
-sha256sums=('ce9cb631489b81fa979bec0de93506eb894c65e03694173478a158c4d7115a7e'
+sha256sums=('a246200942c926dc76c8803d7fd5a2a5f4e9fbcde44a95408be6ce7d377523c5'
             'b18ed0937de93cf24dd372fe1b59ba578d183588ed087cc63772930b80ce57aa')
 
 package() {
