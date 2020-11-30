@@ -1,16 +1,17 @@
-# Maintainer: Maxime Gauduin <alucryd@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@gmail.com>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgbase=lib32-gstreamer0.10-base
 pkgname=('lib32-gstreamer0.10-base' 'lib32-gstreamer0.10-base-plugins')
 pkgver=0.10.36
-pkgrel=7
+pkgrel=8
 arch=('x86_64')
 url='http://gstreamer.freedesktop.org/'
 license=('LGPL')
 makedepends=('lib32-alsa-lib' 'lib32-cdparanoia' 'lib32-gstreamer0.10'
              'lib32-libgl' 'lib32-libtheora' 'lib32-libvisual'
-             'lib32-libvorbis' 'lib32-libxv' 'lib32-orc' 'lib32-pango')
+             'lib32-libvorbis' 'lib32-libxv' 'lib32-orc' 'lib32-pango'
+             'make-3.81')
 options=('!emptydirs')
 source=("http://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-${pkgver}.tar.xz")
 sha256sums=('1fe45c3894903001d4d008b0713dab089f53726dcb5842d5b40c2595a984e64a')
@@ -34,7 +35,7 @@ build() {
     --disable-gnome_vfs \
     --disable-introspection \
     --disable-static
-  make
+  make-3.81
   sed -e 's/^SUBDIRS_EXT =.*/SUBDIRS_EXT =/' -i Makefile
 }
 
@@ -45,7 +46,7 @@ package_lib32-gstreamer0.10-base() {
 
   cd gst-plugins-base-${pkgver}
 
-  make DESTDIR="${pkgdir}" install
+  make-3.81 DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/{bin,include,share}
 }
 
@@ -57,9 +58,9 @@ package_lib32-gstreamer0.10-base-plugins() {
 
   cd gst-plugins-base-${pkgver}
 
-  make -C gst-libs DESTDIR="${pkgdir}" install
-  make -C ext DESTDIR="${pkgdir}" install
-  make -C gst-libs DESTDIR="${pkgdir}" uninstall
+  make-3.81 -C gst-libs DESTDIR="${pkgdir}" install
+  make-3.81 -C ext DESTDIR="${pkgdir}" install
+  make-3.81 -C gst-libs DESTDIR="${pkgdir}" uninstall
 }
 
 # vim: ts=2 sw=2 et:
