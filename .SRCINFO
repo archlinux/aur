@@ -1,0 +1,18 @@
+pkgbase = upstream
+	pkgdesc = Desktop client for radicle
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/radicle-dev/radicle-upstream
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = yarn
+	makedepends = rustup
+	provides = upstream
+	conflicts = radicle
+	conflicts = upstream-bin
+	source = upstream-0.1.4.tar.gz::https://github.com/radicle-dev/radicle-upstream/archive/v0.1.4.tar.gz
+	sha256sums = 78f7d04a3d90cdc4bcfe0cec08376a7164438886e99cefe7fe64f1ed353beced
+
+pkgname = upstream
+
