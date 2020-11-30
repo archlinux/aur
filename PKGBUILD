@@ -10,7 +10,8 @@ arch=('x86_64')
 url="https://slack.com/downloads"
 license=('custom')
 depends=('alsa-lib' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss' 'xdg-utils')
-optdepends=('org.freedesktop.secrets')
+optdepends=('libappindicator-gtk3: Systray indicator support'
+            'org.freedesktop.secrets: Keyring password store support')
 source=("https://downloads.slack-edge.com/linux_releases/${pkgname}-${pkgver}-amd64.deb"
         "${pkgname}.patch")
 noextract=("${pkgname}-${pkgver}-amd64.deb")
