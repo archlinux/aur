@@ -1,3 +1,4 @@
+# Contributer: abcfy2 <abcfy2@163.com>
 pkgname='deepin-wine5-stable'
 pkgver=5.0.0.15
 pkgrel=1
@@ -5,6 +6,7 @@ pkgdesc="Deepin Wine5 stable"
 arch=('i686' 'x86_64')
 url="http://www.deepin.org"
 license=('Proprietary')
+# The depenency list is copied from abcfy2/deepin-wine5-i386 package
 depends=(
         'lib32-alsa-plugins' 'lib32-glib2' 'lib32-glibc' 'libgphoto2'
         'lib32-gst-plugins-base-libs' 'lib32-lcms2' 'lib32-libldap' 'lib32-mpg123'
