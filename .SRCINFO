@@ -1,0 +1,21 @@
+pkgbase = com.evernote.deepin
+	pkgdesc = Evernote Client on Deepin Wine
+	pkgver = 6.21.10
+	pkgrel = 2
+	url = https://evernote.com
+	install = evernote.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine5-stable>=5.0.0.12
+	depends = deepin-wine-helper>=5.1.12
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.evernote.deepin/com.evernote.deepin_6.21.10deepin2_i386.deb
+	sha512sums = 138e850eb36255614d35d51b0e90a015a351bd1e1fb79a260b6a9ce9f7659df0a6a1ba0036346073e06ec0c840f30ce2956eb93073f7962801779732d71f6fd7
+
+pkgname = com.evernote.deepin
