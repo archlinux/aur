@@ -1,0 +1,14 @@
+pkgbase = brother-dcp385c-cups-bin
+	pkgdesc = CUPS wrapper for Brother DCP-385C printer
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=dcp385c_all
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf005397/dcp385ccupswrapper-1.1.2-2.i386.deb
+	md5sums = e120a58c97db025affc88b76e255854a
+
+pkgname = brother-dcp385c-cups-bin
+
