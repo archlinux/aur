@@ -3,7 +3,7 @@
 pkgname=ax25-apps
 pkgver=0.0.8_rc5
 _pkgver=${pkgver//_/-}
-pkgrel=3
+pkgrel=4
 pkgdesc="Programs for the hamradio protocol AX.25 that would be used by normal users"
 arch=('i686' 'x86_64')
 url='http://www.linux-ax25.org'
@@ -13,6 +13,11 @@ depends=('libax25')
 source=("http://www.linux-ax25.org/pub/${pkgname}/${pkgname}-${_pkgver}.tar.xz")
 sha1sums=('d7955215cb31a5164bc84d9d4c942343f79e7d26')
 backup=('etc/ax25/ax25ipd.conf' 'etc/ax25/ax25mond.conf' 'etc/ax25/ax25rtd.conf')
+
+prepare () {
+	cd $srcdir/${pkgname}-$_pkgver
+	sed -i -e "s#ncursesw/ncurses.h#ncurses.h#" call/call.c
+}
 
 build() {
 	cd $srcdir/${pkgname}-$_pkgver
