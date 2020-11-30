@@ -1,16 +1,24 @@
 pkgbase = movfuscator-git
 	pkgdesc = The single instruction C compiler
-	pkgver = 2.3273164
-	pkgrel = 2
+	pkgver = r48.ea37dae
+	pkgrel = 1
 	url = https://github.com/xoreaxeaxeax/movfuscator
 	arch = x86_64
 	license = BSD
 	makedepends = gcc-multilib
 	makedepends = git
 	provides = movcc
+	provides = movfuscator
 	conflicts = movcc
+	conflicts = movfuscator
 	source = movfuscator-git::git+https://github.com/xoreaxeaxeax/movfuscator.git
+	source = ldargs.patch
+	source = wrong_builtin_binary_path.patch
+	source = movcc
 	sha256sums = SKIP
+	sha256sums = d8d19cbca2954f523c66543f2e7d00f7296cdf40a970cefd4a6326dc51e90c48
+	sha256sums = 4f44b4ce54da6568d801d04b642c51217f70cbe558907027dd3b09aad294151f
+	sha256sums = b85126987376ecec037b483e38eafd20ad6f0dec111485091ffdcfd8000d0276
 
 pkgname = movfuscator-git
 

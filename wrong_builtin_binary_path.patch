@@ -1,0 +1,14 @@
+diff --git a/build.sh b/build.sh
+index ed29b5e..8085b9e 100755
+--- a/build.sh
++++ b/build.sh
+@@ -12,2 +12,4 @@ mkdir -p "$BUILDDIR"
+ 
++export DESTDIR="${DESTDIR:-$BUILDDIR}"
++
+ # configure the build includes
+@@ -39,3 +41,3 @@ patch -N -r - lcc/etc/lcc.c movfuscator/lcc.patch
+ # Build the compiler driver
+-make -C lcc HOSTFILE=../movfuscator/host.c CFLAGS='-g -DLCCDIR=\"$(BUILDDIR)/\"' lcc
++make -C lcc HOSTFILE=../movfuscator/host.c CFLAGS='$CFLAGS -g -DLCCDIR=\"$(DESTDIR)/\"' lcc
+ 
