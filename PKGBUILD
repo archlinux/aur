@@ -33,6 +33,11 @@ makedepends=('wget'
              'pkg-config'
              'openssl'
              'pixman'
+
+             # FIXME: This is *not* needed for newer Xen (>=4.14 tested).
+             #        Remove it in the future.
+             'python2'
+             'python2-distlib'
 )
 checkdepends=()
 optdepends=()
@@ -54,7 +59,8 @@ sha512sums=('SKIP')
 
 
 build() {
-    export PYTHON=/usr/bin/python
+    # FIXME: Change this to "python" when moving to newer Xen
+    export PYTHON=/usr/bin/python2
 
     cd "${srcdir}/${_gitname}/"
     make get-sources
