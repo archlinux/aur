@@ -1,7 +1,7 @@
 # Maintainer: Bruno Bollos Correa <bollos@outlook.com.br>
 
 pkgname=qcad-git
-pkgver=v3.25.2.0.r92.gfc244555a
+pkgver=v3.25.2.4.r13.g07852efee
 pkgrel=1
 epoch=
 pkgdesc="QCAD - The Open Source 2D CAD"
@@ -23,6 +23,11 @@ pkgver() {
 
 build() {
 	cd $srcdir/qcad
+
+	# Don't require specific Qt version
+	sed -e 's|$${QT_VERSION}|5.15.1|g' \
+       -i src/3rdparty/3rdparty.pro
+
    qmake -r CONFIG+=ractivated
    make release
 }
