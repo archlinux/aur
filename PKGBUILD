@@ -2,7 +2,7 @@
 
 pkgname=qliveplayer
 pkgver=3.20.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Cute and useful Live Stream Player with danmaku support.'
 arch=('x86_64')
 url="https://github.com/IsoaSFlus/QLivePlayer"
@@ -14,8 +14,7 @@ depends=('mpv'
          'qt5-quickcontrols2'
          'qt5-graphicaleffects'
          'qt5-quickcontrols'
-         'python'
-         'ykdl-git')
+         'python')
 makedepends=('cmake'
              'extra-cmake-modules' )
 optdepends=('python-protobuf: for YouTube LiveChat support'
