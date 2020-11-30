@@ -5,7 +5,7 @@ pkgname=vvvvvv-git
 binname=vvvvvv
 pkgver=20201123.9f5f697
 _pkgver=git
-pkgrel=1
+pkgrel=2
 pkgdesc='A retro-styled 2D platformer'
 arch=('i686' 'x86_64')
 url='https://thelettervsixtim.es/'
@@ -57,7 +57,7 @@ package() {
   install -m755 ${binname^^} \
     "${pkgdir}/opt/${binname}/${binname}"
 
-  cd "${srcdir}/data"
+  cd ${srcdir}
   install -m644 -t "${pkgdir}/opt/${binname}" \
       data.zip
   install -D -m755 "${srcdir}/${binname}.sh" "${pkgdir}/usr/bin/${binname}"

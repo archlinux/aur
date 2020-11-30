@@ -1,7 +1,7 @@
 pkgbase = vvvvvv-git
 	pkgdesc = A retro-styled 2D platformer
 	pkgver = 20201123.9f5f697
-	pkgrel = 1
+	pkgrel = 2
 	url = https://thelettervsixtim.es/
 	install = vvvvvv-git.install
 	arch = i686
