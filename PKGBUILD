@@ -18,8 +18,8 @@ conflicts=("$_pkgname")
 depends=('audacious-git'
          'alsa-lib' 'curl' 'dbus-glib' 'faad2' 'ffmpeg' 'flac' 'fluidsynth'
          'jack' 'lame' 'libcdio-paranoia' 'libcue' 'libmms' 'libmodplug'
-         'libmtp' 'libnotify' 'libsamplerate' 'libsidplayfp' 'libvorbis'
-         'lirc' 'mpg123' 'neon' 'pulseaudio' 'wavpack')
+         'libmtp' 'libpulse' 'libnotify' 'libsamplerate' 'libsidplayfp'
+         'libvorbis' 'lirc' 'mpg123' 'neon' 'wavpack')
 makedepends=('glib2' 'python' 'git')
 source=("git://github.com/audacious-media-player/$_pkgname.git")
 sha256sums=('SKIP')
