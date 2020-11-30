@@ -8,6 +8,7 @@ pkgdesc="A simple wrapper script for qutebrowser that allows you to maintain dif
 url="https://github.com/jtyers/qutebrowser-profile"
 pkgver=20200714.4dc3bfe
 pkgrel=1
+license=("MIT")
 arch=("any")
 depends=("bash")
 source=("git+https://github.com/jtyers/qutebrowser-profile.git")
@@ -22,4 +23,5 @@ package()
 {
   chmod +x "${srcdir}/${_pkgname}/qutebrowser-profile"
   install -Dm755 "${srcdir}/${_pkgname}/qutebrowser-profile" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm644 ${srcdir}/${_pkgname}/LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 }

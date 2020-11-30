@@ -4,6 +4,7 @@ pkgbase = qutebrowser-profile-git
 	pkgrel = 1
 	url = https://github.com/jtyers/qutebrowser-profile
 	arch = any
+	license = MIT
 	depends = bash
 	provides = qutebrowser-profile
 	conflicts = naivecalendar.py
