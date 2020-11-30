@@ -1,5 +1,5 @@
 pkgname=sendmail-tryqueue
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="A generic utility that caches/queues emails that couldn't be sent"
 arch=("any")
@@ -8,7 +8,7 @@ license=("MIT")
 depends=("python")
 makedepends=()
 source=("https://github.com/lenormf/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=("1714e982d04c9af85cc3316f7f4250a35c3664eaaf71fd18ed6b2fbf299fa30c")
+sha256sums=("72a3aac19ac061cd6882a6460b7e094633db174ddef0c9f772c6731ce80a0cb7")
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
