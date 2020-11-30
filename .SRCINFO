@@ -1,0 +1,16 @@
+pkgbase = console_sudoku
+	pkgdesc = Ncurses sudoku application built entirely in C++
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/flyingpeakock/Console_sudoku
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	depends = ncurses
+	depends = git
+	noextract = Console_sudoku.git
+	source = git+https://github.com/flyingpeakock/Console_sudoku.git
+	md5sums = SKIP
+
+pkgname = console_sudoku
+
