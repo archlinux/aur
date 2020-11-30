@@ -1,15 +1,18 @@
 # Maintainer: a821
 # Contributor: Matthias Loibl <mail at matthiasloibl dot com>
-# Contributor: Morten Linderud <foxboron@archlinux.org>
+# Contributor: Morten Linderud <foxboron archlinux.org>
 
 pkgname=gopass-git
 pkgver=1.10.1.r32.g93539afc
-pkgrel=1
+pkgrel=2
 pkgdesc="The slightly more awesome standard unix password manager for teams."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="https://github.com/gopasspw/gopass"
 license=('MIT')
 makedepends=('go' 'git')
+optdepends=('xdotool: for typing passwords selected by dmenu'
+            'xsel: clipboard support'
+            'xclip: clipboard support')
 provides=("gopass")
 conflicts=("gopass")
 source=("git+${url}")
