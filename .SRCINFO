@@ -1,0 +1,18 @@
+pkgbase = powbot
+	pkgdesc = A bot client for OldSchool RuneScape
+	pkgver = latest
+	pkgrel = 1
+	url = https://powbot.org
+	arch = any
+	license = custom
+	makedepends = gendesk
+	depends = java-runtime
+	depends = bash
+	noextract = powbot-latest.tar.gz
+	source = powbot-latest.jar::https://powbot.org/game/PowBotLoader.jar
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = powbot
+
