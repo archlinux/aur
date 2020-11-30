@@ -23,5 +23,5 @@ package()
 {
   chmod +x "${srcdir}/${_pkgname}/qutebrowser-profile"
   install -Dm755 "${srcdir}/${_pkgname}/qutebrowser-profile" "${pkgdir}/usr/bin/${_pkgname}"
-	install -Dm644 ${srcdir}/${_pkgname}/LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 ${srcdir}/${_pkgname}/LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 }
