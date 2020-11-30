@@ -13,7 +13,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/fluxcd/flux2/archive/v$pkgver.tar.gz"
 )
 sha512sums=(
-  "feb48c43a4c8e5d891f892219f95345e051adec2222708de1d4f743e2208ae961c63f6f08075f6e7d5ad383226b664c04fad10dd4c0f84762d8f5b97894c9f0b"
+  "d206df2e18f107fb9c28067e01e07020d801758ec74181607c765ff6d078f8539293eedd248b137711b5e4486b63a3e2fa34be22123fd2b8258dee982af4f7ab"
 )
 
 build() {
