@@ -21,6 +21,6 @@ sed -e "s/^pkgrel=.*/pkgrel=1/" -i PKGBUILD
 echo "Updating to $RELEASE_NAME..."
 updpkgsums
 makepkg --printsrcinfo > .SRCINFO
-makepkg -sf
+makepkg -sf --noconfirm
 git commit -am "Update to $RELEASE_NAME"
 git push
