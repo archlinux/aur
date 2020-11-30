@@ -1,0 +1,19 @@
+pkgbase = scour-git
+	pkgdesc = An SVG scrubber
+	pkgver = r300.7a83e71
+	pkgrel = 1
+	url = https://github.com/sharethewisdom/scour
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = scour
+	conflicts = scour
+	source = git+https://github.com/scour-project/scour.git
+	source = git+https://github.com/scour-project/scour.wiki.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = scour-git
+
