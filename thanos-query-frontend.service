@@ -1,0 +1,14 @@
+[Unit]
+Description=thanos query-frontend
+After=network.target
+
+[Service]
+User=thanos
+Group=thanos
+Restart=on-failure
+EnvironmentFile=-/etc/thanos/query-frontend.conf
+ExecStart=/usr/bin/thanos query-frontend $QUERY_FRONTEND_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
