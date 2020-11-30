@@ -1,0 +1,4 @@
+post_install() {
+	echo "Load the extension as an unpacked extension. The files are located in"
+	echo "/usr/share/chromium-bypass-paywalls"
+}
