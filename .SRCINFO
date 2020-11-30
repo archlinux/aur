@@ -1,0 +1,21 @@
+pkgbase = gueerecorder-git
+	pkgdesc = 一个实验性的屏幕、摄像头录像软件。
+	pkgver = r81.7cfc7ab
+	pkgrel = 1
+	url = https://github.com/guee/GueeRecorder
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-base
+	makedepends = qt5-tools
+	depends = mesa
+	depends = libxinerama
+	depends = libxcomposite
+	depends = libxfixes
+	depends = qt5-multimedia
+	depends = qt5-x11extras
+	source = gueerecorder::git+https://github.com/guee/GueeRecorder.git
+	md5sums = SKIP
+
+pkgname = gueerecorder-git
+
