@@ -1,7 +1,8 @@
 pkgbase = fontconfig-infinality-remix
 	pkgdesc = A library for configuring and customizing font access, optimized for Infinality Remix.
-	pkgver = 2.13.91+24+g75eadca
+	pkgver = 2.13.91+48+gfcb0420
 	pkgrel = 2
+	epoch = 2
 	url = http://www.fontconfig.org/release/
 	install = fontconfig-infinality-remix.install
 	arch = i686
@@ -22,7 +23,8 @@ pkgbase = fontconfig-infinality-remix
 	makedepends = json-c
 	depends = expat
 	depends = freetype2
-	provides = fontconfig=2.13.91+24+g75eadca
+	provides = fontconfig=2.13.91+48+gfcb0420
+	provides = libfontconfig.so
 	conflicts = fontconfig
 	conflicts = fontconfig-infinality
 	conflicts = fontconfig-infinality-git
@@ -39,20 +41,20 @@ pkgbase = fontconfig-infinality-remix
 	backup = etc/fonts/conf.avail.infinality/35-repl-custom.conf
 	backup = etc/fonts/conf.avail.infinality/38-repl-webfonts-custom.conf
 	backup = etc/fonts/conf.avail.infinality/97-selective-rendering-custom.conf
-	source = git+https://anongit.freedesktop.org/git/fontconfig#commit=75eadca26648abf69497691ff0f4c7803b9ff23c
+	source = git+https://anongit.freedesktop.org/git/fontconfig#commit=fcb042028126d79ea5a5fa015b2b034b98656e73
 	source = fontconfig-infinality-remix-srcs-20191030.tar.bz2
 	source = fc-presets
 	source = fc-cache-infinality-remix.hook
-	source = 0001-configure-2.13.91+24+g75eadca.patch
-	source = 0002-configure-2.13.91+24+g75eadca.ac.patch
-	source = 0003-Makefile-2.13.91+24+g75eadca.in.patch
-	source = 0004-Makefile-2.13.91+24+g75eadca.conf.d.patch
-	source = 0005-Makefile-2.13.91+24+g75eadca.am.in.patch
+	source = 0001-configure-2.13.91+48+gfcb0420.patch
+	source = 0002-configure-2.13.91+48+gfcb0420.ac.patch
+	source = 0003-Makefile-2.13.91+48+gfcb0420.in.patch
+	source = 0004-Makefile-2.13.91+48+gfcb0420.conf.d.patch
+	source = 0005-Makefile-2.13.91+48+gfcb0420.am.in.patch
 	sha256sums = SKIP
 	sha256sums = f8c49b4ee86ad64b1d3df700a5c0b337e44f507bb7e7d264eb5eaf0040998ef2
 	sha256sums = 23f70387eec20761b8b89f7a312f2859e4bfedd07325f3a1de12f86cca094711
 	sha256sums = 94e7b03a32304604be2cf5568c02805ea1ac45eb68104de400ae7f370e3e598b
-	sha256sums = 45a1ea897f0c7687f4ba1d2c200b17145cc5246e4a82eaa33e09d1b843030cb7
+	sha256sums = 079a6d852928ae319d66ef8839b5b117fff4fb70507306cd3bf9dceb2ad56917
 	sha256sums = 006a14e00017736813002034996b024bb7133bd3eeda6b7f74e4c2880b64031d
 	sha256sums = 7dfc5ba9b20e0326e6a3a880f18d58a7ed31f7af025627670f210ec109be1a81
 	sha256sums = fd3487482109874d21c0e537284920392f93c4362b70a765de376c66654edec6

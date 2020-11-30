@@ -77,8 +77,8 @@ index c6f1142..b9f064d 100755
 
 
 
--ac_config_files="$ac_config_files Makefile fontconfig/Makefile fc-lang/Makefile fc-case/Makefile src/Makefile conf.d/Makefile fc-cache/Makefile fc-cat/Makefile fc-conflist/Makefile fc-list/Makefile fc-match/Makefile fc-pattern/Makefile fc-query/Makefile fc-scan/Makefile fc-validate/Makefile doc/Makefile doc/version.sgml its/Makefile po/Makefile.in po-conf/Makefile.in test/Makefile fontconfig.spec fontconfig.pc fontconfig-zip"
-+ac_config_files="$ac_config_files Makefile fontconfig/Makefile fc-lang/Makefile fc-case/Makefile src/Makefile conf.d/Makefile conf.d.infinality/Makefile fc-cache/Makefile fc-cat/Makefile fc-conflist/Makefile fc-list/Makefile fc-match/Makefile fc-pattern/Makefile fc-query/Makefile fc-scan/Makefile fc-validate/Makefile doc/Makefile doc/version.sgml its/Makefile po/Makefile.in po-conf/Makefile.in test/Makefile fontconfig.spec fontconfig.pc fontconfig-zip"
+-ac_config_files="$ac_config_files Makefile fontconfig/Makefile fc-lang/Makefile fc-case/Makefile src/Makefile conf.d/Makefile fc-cache/Makefile fc-cat/Makefile fc-conflist/Makefile fc-list/Makefile fc-match/Makefile fc-pattern/Makefile fc-query/Makefile fc-scan/Makefile fc-validate/Makefile doc/Makefile doc/version.sgml its/Makefile po/Makefile.in po-conf/Makefile.in test/Makefile fontconfig.pc fontconfig-zip"
++ac_config_files="$ac_config_files Makefile fontconfig/Makefile fc-lang/Makefile fc-case/Makefile src/Makefile conf.d/Makefile conf.d.infinality/Makefile fc-cache/Makefile fc-cat/Makefile fc-conflist/Makefile fc-list/Makefile fc-match/Makefile fc-pattern/Makefile fc-query/Makefile fc-scan/Makefile fc-validate/Makefile doc/Makefile doc/version.sgml its/Makefile po/Makefile.in po-conf/Makefile.in test/Makefile fontconfig.pc fontconfig-zip"
 
  cat >confcache <<\_ACEOF
  # This file is a shell script that caches the results of configure

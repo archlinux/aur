@@ -6,8 +6,9 @@ _basename=fontconfig
 pkgdesc="A library for configuring and customizing font access, optimized for Infinality Remix."
 url='http://www.fontconfig.org/release/'
 license=('custom' 'MIT')
-pkgver=2.13.91+24+g75eadca
+pkgver=2.13.91+48+gfcb0420
 pkgrel=2
+epoch=2
 arch=(i686 x86_64)
 groups=('infinality-remix')
 
@@ -17,7 +18,7 @@ makedepends=('git' 'autoconf-archive' 'gperf' 'python-lxml' 'python-six' 'docboo
 
 options=('libtool')
 
-provides=("fontconfig=$pkgver")
+provides=("fontconfig=$pkgver" "libfontconfig.so")
 
 conflicts=('fontconfig'
             'fontconfig-infinality'
@@ -39,7 +40,7 @@ backup=('etc/fonts/fonts.conf'
 install=fontconfig-infinality-remix.install
 
 # Arch official upstream version commit
-_commit=75eadca26648abf69497691ff0f4c7803b9ff23c
+_commit=fcb042028126d79ea5a5fa015b2b034b98656e73
 
 # Infinality Remix fontconfig configuration version
 _remixver=20191030
@@ -58,7 +59,7 @@ sha256sums=('SKIP'
             'f8c49b4ee86ad64b1d3df700a5c0b337e44f507bb7e7d264eb5eaf0040998ef2'
             '23f70387eec20761b8b89f7a312f2859e4bfedd07325f3a1de12f86cca094711'
             '94e7b03a32304604be2cf5568c02805ea1ac45eb68104de400ae7f370e3e598b'
-            '45a1ea897f0c7687f4ba1d2c200b17145cc5246e4a82eaa33e09d1b843030cb7'
+            '079a6d852928ae319d66ef8839b5b117fff4fb70507306cd3bf9dceb2ad56917'
             '006a14e00017736813002034996b024bb7133bd3eeda6b7f74e4c2880b64031d'
             '7dfc5ba9b20e0326e6a3a880f18d58a7ed31f7af025627670f210ec109be1a81'
             'fd3487482109874d21c0e537284920392f93c4362b70a765de376c66654edec6'
