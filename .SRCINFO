@@ -1,0 +1,16 @@
+pkgbase = dragonframe-bin
+	pkgdesc = Industry standard stop motion animation software
+	pkgver = 4.2.2
+	pkgrel = 1
+	url = https://www.dragonframe.com/
+	arch = x86_64
+	license = EULA
+	depends = libudev0-shim
+	provides = dragonframe
+	conflicts = dragonframe
+	options = !strip
+	source = https://www.dragonframe.com/download/dragonframe4_4.2.2_amd64.deb
+	sha256sums = b594ed0a08900c08c759efe10244be9b3ec72ec136035a34bab6e31fbd89700c
+
+pkgname = dragonframe-bin
+
