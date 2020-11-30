@@ -4,7 +4,7 @@
 pkgname=cozy-audiobooks
 _gitname=cozy
 pkgdesc=' A modern audio book player for Linux using GTK+ 3.'
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 url='https://github.com/geigi/cozy'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=(
   'gstreamer' 'gtk3' 'python-dbus' 'python-distro' 'python-requests' 'python-pytz' 'python-gobject' 'python-mutagen' 'python-cairo' 'python-peewee' 'python-packaging' 'file' 'gst-plugins-good' 'libhandy'
 )
 source=( "https://github.com/geigi/cozy/archive/${pkgver}.tar.gz")
-sha256sums=('2c64f82eb45ebd43460d903dc9eeb4bf466c368ef74cc21c13cd798007392e01')
+sha256sums=('61d8cf70f70cb037a32bc05ee28d5b5ba6667709646cb76608ddcdad9171c18d')
 
 build() {
     cd "cozy-${pkgver}"
