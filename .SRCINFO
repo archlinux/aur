@@ -1,6 +1,6 @@
 pkgbase = tab-rs
 	pkgdesc = The intuitive config-driven terminal multiplexer
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 2
 	epoch = 1
 	url = https://github.com/austinjones/tab-rs
@@ -11,8 +11,8 @@ pkgbase = tab-rs
 	depends = gcc-libs
 	provides = tab-rs
 	conflicts = tab-rs-git
-	source = tab-rs-0.5.1.tar.gz::https://github.com/austinjones/tab-rs/archive/v0.5.1.tar.gz
-	md5sums = 8ec02997375cd4469541fcebce39634b
+	source = tab-rs-0.5.2.tar.gz::https://github.com/austinjones/tab-rs/archive/v0.5.2.tar.gz
+	md5sums = 45fc9e3f1a778bb76db88bbe5ea0a389
 
 pkgname = tab-rs
 
