@@ -1,0 +1,21 @@
+pkgbase = chaos
+	pkgdesc = A purely functional programming language that achieves zero cyclomatic complexity
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/chaos-lang/chaos
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0
+	makedepends = gcc
+	makedepends = make
+	makedepends = flex
+	makedepends = bison
+	depends = gcc-libs
+	source = https://github.com/chaos-lang/chaos/archive/v0.1.0.tar.gz
+	sha256sums = f2cd154034c051410845ce5fd3d98da8ad19e68e93e93bb7f25ed32e013fbd80
+
+pkgname = chaos
+
