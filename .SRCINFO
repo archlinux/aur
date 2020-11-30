@@ -1,18 +1,17 @@
 pkgbase = mercure
 	pkgdesc = Server-sent live updates: protocol and reference implementation
-	pkgver = 0.10.3
+	pkgver = 0.10.4
 	pkgrel = 1
 	url = https://mercure.rocks
 	install = mercure.install
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = AGPL-3.0
+	makedepends = git
+	makedepends = go
 	source = mercure.service
+	source = mercure::git+https://github.com/dunglas/mercure#tag=v0.10.4
 	sha256sums = 277572c9cbc93b74b368aec4fd40a8a9542d220e74b14383ef68e24630b2a4dc
-	source_i686 = mercure-0.10.3_i686::https://github.com/dunglas/mercure/releases/download/v0.10.3/mercure_0.10.3_Linux_i386.tar.gz
-	sha256sums_i686 = bb10302eb544af870f2aafffc0fe1f4a96a26392a0f6761b0c6000cf4ae79c7b
-	source_x86_64 = mercure-0.10.3_x86_64::https://github.com/dunglas/mercure/releases/download/v0.10.3/mercure_0.10.3_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = f9b7dccf4d199bf219466e62c7892818319e4ff881f689de34f1fd644c6626be
+	sha256sums = SKIP
 
 pkgname = mercure
 
