@@ -1,0 +1,73 @@
+From de4132bfe509edfe72afcd2b13f6f32e0f553157 Mon Sep 17 00:00:00 2001
+From: Igor Ryzhov <iryzhov@nfware.com>
+Date: Fri, 27 Nov 2020 21:53:25 +0300
+Subject: [PATCH] yang: fix cisco access list source value
+
+Source value must be a choice between host, network and any, not a set
+of all three.
+
+Fixes #7599.
+
+Signed-off-by: Igor Ryzhov <iryzhov@nfware.com>
+---
+ yang/frr-filter.yang | 44 ++++++++++++++++++++++++--------------------
+ 1 file changed, 24 insertions(+), 20 deletions(-)
+
+diff --git a/yang/frr-filter.yang b/yang/frr-filter.yang
+index 400a0931789..eb84dd74608 100644
+--- a/yang/frr-filter.yang
++++ b/yang/frr-filter.yang
+@@ -154,29 +154,33 @@ module frr-filter {
+                 }
+               }
+               case cisco {
+-                leaf host {
+-                  description "Host to match";
+-                  type inet:ipv4-address;
+-                }
+-                container network {
+-                  leaf address {
+-                    mandatory true;
+-                    description "Network address part.";
++                choice standard-value {
++                  description "Source value to match";
++
++                  leaf host {
++                    description "Host to match";
+                     type inet:ipv4-address;
+                   }
+-                  leaf mask {
+-                    mandatory true;
+-                    description "Network mask/wildcard part.";
+-                    type inet:ipv4-address;
++                  container network {
++                    leaf address {
++                      mandatory true;
++                      description "Network address part.";
++                      type inet:ipv4-address;
++                    }
++                    leaf mask {
++                      mandatory true;
++                      description "Network mask/wildcard part.";
++                      type inet:ipv4-address;
++                    }
++                  }
++                  leaf source-any {
++                    /*
++                     * Was `any`, however it conflicts with `any` leaf
++                     * outside this choice.
++                     */
++                    description "Match any";
++                    type empty;
+                   }
+-                }
+-                leaf source-any {
+-                  /*
+-                   * Was `any`, however it conflicts with `any` leaf
+-                   * outside this choice.
+-                   */
+-                  description "Match any";
+-                  type empty;
+                 }
+ 
+                 choice extended-value {
