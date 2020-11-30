@@ -3,12 +3,12 @@
 
 pkgname=rccl
 pkgver=3.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ROCm Communication Collectives Library"
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/rccl"
 license=('custom')
-depends=('hip')
+depends=('hip' 'gtest')
 makedepends=('cmake' 'python' 'rocminfo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
 sha256sums=('ff9d03154d668093309ff814a33788f2cc093b3c627e78e42ae246e6017408b0')
