@@ -1,7 +1,7 @@
 pkgbase = com.tencent.meeting.deepin
 	pkgdesc = Tencent Meeting Client on Deepin Wine5 Stable
-	pkgver = 2.2.0.409deepin2
-	pkgrel = 1
+	pkgver = 2.2.0.409
+	pkgrel = 2
 	url = https://meeting.tencent.com/
 	install = meeting.install
 	arch = i686
