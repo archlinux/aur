@@ -1,0 +1,21 @@
+pkgbase = com.foxmail.deepin
+	pkgdesc = Tencent Foxmail Client on Deepin Wine5
+	pkgver = 7.2
+	pkgrel = 5
+	url = https://www.foxmail.com/
+	install = foxmail.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine5-stable>=5.0.0.7
+	depends = deepin-wine-helper>=5.1.8
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.foxmail.deepin/com.foxmail.deepin_7.2deepin5_i386.deb
+	sha512sums = a663bb259583d7e1006a948c50fbc768a226568f0f74c3ae13a4afdae76f93fb4aedf6c423c4acb7021ae010c5e8d2dd0e14fe3e4c017ff6abb38e30bdc4d8f5
+
+pkgname = com.foxmail.deepin

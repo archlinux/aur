@@ -1,0 +1,10 @@
+post_upgrade() {
+    echo 
+    echo "Remove ~/.deepinwine/Deepin-Foxmail to generate a new bottle."
+    echo 
+}
+
+post_remove() {
+    echo "Deleting existing Foxmail bottles..."
+    find /home -maxdepth 2 -name ".deepinwine" -exec rm -rf \{\}/Deepin-Foxmail/ \;
+}
