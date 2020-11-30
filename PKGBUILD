@@ -1,13 +1,13 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=jsonnet
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='The data templating language'
 arch=('x86_64')
 url='https://jsonnet.org/'
 license=('Apache')
 depends=('gcc-libs')
-checkdepends=('python2')
+checkdepends=('python')
 source=("https://github.com/google/${pkgname}/archive/v${pkgver}.tar.gz")
 
 prepare() {
@@ -40,4 +40,4 @@ package() {
 
 # vim: set ft=sh:
 
-sha512sums=('80e0403ec8008cbacff8d9e8fe0e2b5d3bfa306d92c2c11d472e5721015ce4c11be745df10d25715f22f8d8594df69fabf2fe617bdded462ffc5b21f8923606f')
+sha512sums=('d3ee6947163d8abced504ff37ecf365c0311164cbf243d4c635d34944f0831ca9fce2470acf00eb9a218f82a2e553b3f885db9bd21bb9dcefbd707fa0202925d')
