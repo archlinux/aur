@@ -18,6 +18,9 @@ package() {
   bsdtar xf "dragonframe4_${pkgver}_amd64.deb"
   bsdtar xf data.tar.xz -C "$pkgdir"
 
+  # Fix executable path
+  sed 's, bin/, /opt/dragonframe4/bin/,' -i "$pkgdir"/opt/dragonframe4/dragonframe4
+
   # Placeholder file for the user's license
   install -dm 755 "$pkgdir"/etc/opt/dragonframe4
   echo "# License File" > "$pkgdir"/etc/opt/dragonframe4/license.properties
