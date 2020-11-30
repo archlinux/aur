@@ -1,5 +1,5 @@
 pkgname=1password
-_appimagver=0.9.4-1
+_appimagver=0.9.6
 _appimage="${pkgname}-${_appimagver}.AppImage"
 pkgver=${_appimagver//-/_}
 pkgrel=1
@@ -11,8 +11,8 @@ depends=('fuse2' 'zlib' 'hicolor-icon-theme')
 options=(!strip)
 source=(${_appimage}::https://onepassword.1password.com/linux/appimage/${_appimage}{,.sig})
 noextract=("${_appimage}")
-sha256sums=('b1548962f7a18e65bf8e9efe88905df2d2690b5a466666ad90877d680c38b3b4'
-            '88277bf0749dc46f329468ec0759b151eacce2f4f03f0e217ca8cadc61da8cff'
+sha256sums=('3030306a875ccd97242218f8af56af0c2cdcd0c978fc365c8440bc345a51c410'
+            'cee3a7c1309ed2179a985dc3812a6c3a1ec12938e83fa8914f3a4a1d2547731e'
 )
 validpgpkeys=('3FEF9748469ADBE15DA7CA80AC2D62742012EA22')
 
