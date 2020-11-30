@@ -1,7 +1,7 @@
 # Maintainer: Megumi_fox <i@megumifox.com>
 
 pkgname=qliveplayer-git
-pkgver=3.17.0.r0.g51e66de
+pkgver=3.20.0.r1.ge0aedb4
 pkgrel=1
 pkgdesc='Cute and useful Live Stream Player with danmaku support.'
 arch=('x86_64')
@@ -14,8 +14,7 @@ depends=('mpv'
          'qt5-quickcontrols2'
          'qt5-graphicaleffects'
          'qt5-quickcontrols'
-         'python'
-         'ykdl-git')
+         'python')
 makedepends=('cmake'
              'git'
              'extra-cmake-modules' )
