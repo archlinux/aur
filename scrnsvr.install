@@ -1,7 +1,7 @@
 post_install() {
 	cat << EOF
 
-By default it won't work without command line parameters ('scrnsvr --help') o without a config file.
+By default it won't work without command line parameters ('scrnsvr --help') or without a config file.
 To copy an example config to \$HOME/.config/scrnsvr.ini use 'scrnsvr --copy-config'
 
 EOF
