@@ -4,7 +4,7 @@
 
 pkgname=berusky2-data
 pkgver=0.12
-pkgrel=2
+pkgrel=3
 pkgdesc="A logic game based on the puzzle game Sokoban (Data files)."
 arch=('any')
 url="https://www.anakreon.cz/berusky2.html"
@@ -15,5 +15,7 @@ md5sums=('db7f848ddd596625e05af63a54e166c2')
 package() {
   cd "$srcdir"/"$pkgname"-"$pkgver"
   mkdir -p "$pkgdir/usr/share/berusky2/"
-  cp --recursive --no-preserve=mode,ownership *[^.ini] "$pkgdir/usr/share/berusky2/"
+  cp --recursive --no-preserve=mode,ownership * "$pkgdir/usr/share/berusky2/"
+  # Delete two ini files because berusky2 ships those:
+  rm "$pkgdir/usr/share/berusky2/"*.ini
 }
