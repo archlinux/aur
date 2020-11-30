@@ -2,7 +2,7 @@
 
 pkgname=deepin-control-center-git
 _pkgname=deepin-control-center
-pkgver=5.3.0.68.r81.g9d30c7554
+pkgver=5.3.0.68.r84.gbee224eb4
 pkgrel=1
 pkgdesc='New control center for linux deepin'
 arch=('x86_64')
