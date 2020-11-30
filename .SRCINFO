@@ -1,12 +1,12 @@
 pkgbase = xcursor-osx-elcap
 	pkgdesc = Cursor theme from OSX
 	pkgver = 1.00
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.gnome-look.org/p/1084939/
 	arch = any
 	license = GPL
 	makedepends = curl
-	source = https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1MTUzMDg3MzUiLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6ImZhM2Y1ODA3ZTBkODlmY2E1NGY1ZDE2ZWEyOTQ2NzE0YTMxMDQxMTVjNzRkODRhOTNmMDgwYjQzZWRhMWVhNGQ5M2MxMzMwM2MwZWU5OTQ1ZjgzNDU5ZDQ0YmI1M2YzYWQwYWYwNWI0YWVkOTY0MjBkNWQ0ZGVkZWUwZTM5YjgyIiwidCI6MTYwNjc2MzkzMiwic3RmcCI6bnVsbCwic3RpcCI6bnVsbH0.B22PEW9QlqPfgkwhefESuZp1z-9X2QWDpTSKjy2bMrw/OSX-ElCap-(KDE).R2.tar.bz2
+	source = https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1MTUzMDg3MzUiLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6IjIwZmQxYTczMWRmYTlkNzRhZTFmMGE0NzNmN2QwYjg3ZTljZjI5MDMzYWYzNjkyZGIwYWY2MzdmNGUzZTczMGE3ZWY4MjYwMDRlZjI5MDczMjMwYmM0YTVlZjkxMDc3ODdhODI4NmEwMjRkNzVlNjk2NTJlOWRlYmU5MWVhMjY2IiwidCI6MTYwNjc2NDc0MSwic3RmcCI6bnVsbCwic3RpcCI6bnVsbH0.PP5L6zul8WZyvMCEWQqJ06A876AFtzE2GfoyQRF0338/OSX-ElCap-(KDE).R2.tar.bz2
 	sha512sums = 7db6bc6266fc99358e35d203b767ffb9a6883bad40d8f4332f85214609859583c29e637a339cc1f386e581bc43cd9365088cc277c8ee1493c49d03f17ec45695
 
 pkgname = xcursor-osx-elcap
