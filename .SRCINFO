@@ -1,6 +1,6 @@
 pkgbase = ruby-listen
 	pkgdesc = The Listen gem listens to file modifications and notifies you about the changes. Works everywhere!
-	pkgver = 3.3.2
+	pkgver = 3.3.3
 	pkgrel = 1
 	url = https://rubygems.org/gems/listen
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = ruby-listen
 	depends = ruby
 	depends = ruby-rb-inotify>=0.9.10
 	depends = ruby-rb-fsevent>=0.10.3
-	noextract = listen-3.3.2.gem
+	noextract = listen-3.3.3.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/listen-3.3.2.gem
-	sha256sums = 335a0bd63d8e83fec14826a83b125ac74381d50f533d90bb89f5f8291f5d976e
+	source = https://rubygems.org/downloads/listen-3.3.3.gem
+	sha256sums = 0ae6949b576b58f6fe1b8f1631024d6f7bb9d83086add585df7c8c77147cecfe
 
 pkgname = ruby-listen
 
