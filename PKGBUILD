@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://mega.nz"
 license=('custom')
 provides=('megasync')
+conflicts=('megasync')
 depends=('glibc'
          'gcc-libs'
          'qt5-base'
