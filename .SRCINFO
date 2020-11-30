@@ -1,14 +1,14 @@
 pkgbase = faint
 	pkgdesc = Extensible TUI fuzzy file explorer
-	pkgver = 0.996
+	pkgver = 0.997
 	pkgrel = 1
 	url = https://github.com/salman-abedin/faint
 	arch = x86_64
 	license = GPL2
 	makedepends = make
 	depends = fzf
-	source = faint-0.996.tar.gz::https://github.com/salman-abedin/faint/archive/0.996.tar.gz
-	sha256sums = cc1beb925befb0d38da4bf427cdfa74eb7d11727de2aeecc7f023ca82810c48a
+	source = faint-0.997.tar.gz::https://github.com/salman-abedin/faint/archive/0.997.tar.gz
+	sha256sums = 3b1f8d8d5950636b3c86363f7845a2d53035947099fee6b3f1b211fd0dd202e9
 
 pkgname = faint
 
