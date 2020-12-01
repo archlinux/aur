@@ -1,0 +1,18 @@
+pkgbase = abcccid
+	pkgdesc = AB Circle CCID driver for ABC USB CCID smart card readers
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://abcircle.com/en/product/2/CIR115B/sim-sized-contact-smart-card-reader/
+	arch = x86_64
+	license = LGPL2.1+
+	makedepends = pcsclite>=1.8.3
+	makedepends = libusb>=1.0.9
+	makedepends = perl
+	depends = pcsclite>=1.8.3
+	depends = libusb>=1.0.9
+	provides = pcsc-ifd-handler
+	source = Circle_Linux_Installer_v2.0.2.zip::https://abcircle.com/action/action.download.php?id=10&token=994058073e6886bb48563ca4f6939187ed2f23fb17506927a2c99e3c0c6f6ae8
+	md5sums = SKIP
+
+pkgname = abcccid
+
