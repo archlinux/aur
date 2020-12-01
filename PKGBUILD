@@ -1,8 +1,8 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=python-pypsrp
-_pypiname=pypsrp
-pkgver=0.4.0
+_pkgname=pypsrp
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Python PowerShell Remoting Protocol Client Library"
 url="https://pypi.org/project/pypsrp/"
@@ -10,10 +10,10 @@ arch=('any')
 license=('MIT')
 depends=('python' 'python-six' 'python-cryptography' 'python-requests' 'python-ntlm-auth')
 makedepends=('python-setuptools')
-source=(${_pypiname}-${pkgver}.tar.gz::"https://files.pythonhosted.org/packages/f7/73/e116b8f1a5a2580d920bce5b1e3ad846b999ed68001f964d227647261f3d/pypsrp-${pkgver}.tar.gz")
-sha256sums=('64b5bdd725a9744c821483b05ecd266f6417f4c6e90ee961a08838480f7d025e')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('e4d13c84a5a150c75ec5bc8653059fa78e8421172049e0496d1df89ca24d9a6d')
 
 package() {
-  cd ${_pypiname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
   python setup.py install -O1 --root="${pkgdir}" --prefix=/usr
 }
