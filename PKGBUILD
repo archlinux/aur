@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python' 'python-urllib3')
 makedepends=('git' 'python-setuptools')
 optdepends=('tesseract' 'imagemagick')
-source=("git+https://gitgud.io/ring/infinityctl"
+source=("git+https://gitgud.io/ring/infinityctl.git"
         "0001-Add-setup.py.patch"
         "0002-Add-unix_original-file-scrape-mode.patch"
         "0003-Fix-for-file-names-which-potentially-exceed-the-file.patch"
