@@ -1,0 +1,19 @@
+pkgbase = nedit-ng-git
+	pkgdesc = a Qt port of the Nirvana Editor (NEdit) version 5.6
+	pkgver = r2782.b72ec0cc
+	pkgrel = 1
+	url = https://github.com/eteran/nedit-ng
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = qt5-base
+	depends = qt5-x11extras
+	provides = nedit-ng
+	conflicts = nedit-ng
+	source = nedit-ng::git+https://github.com/eteran/nedit-ng.git
+	md5sums = SKIP
+
+pkgname = nedit-ng-git
+
