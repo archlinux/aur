@@ -1,6 +1,6 @@
 pkgbase = owo-git
 	pkgdesc = cli owoifier
-	pkgver = r17.f99cf77
+	pkgver = r18.fd3536e
 	pkgrel = 1
 	url = https://code.pyuku.com/neko/owo
 	arch = any

@@ -1,5 +1,5 @@
 pkgname="owo-git"
-pkgver=r17.f99cf77
+pkgver=r18.fd3536e
 pkgrel=1
 pkgdesc="cli owoifier"
 arch=("any")
