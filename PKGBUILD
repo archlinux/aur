@@ -26,5 +26,6 @@ build() {
 package() {
 	DESTDIR="$pkgdir" meson install -C build
 	
+	cd "Greybird-$pkgver"
 	install -Dm644 LICENSE.CC -t "$pkgdir/usr/share/licenses/$pkgname"
 }
