@@ -1,7 +1,7 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
 
 pkgname=cryptobox
-pkgver=20201115.r12.2f7067c
+pkgver=20201118.r13.d5610d4
 pkgrel=1
 pkgdesc='A script that makes it easy to create, mount and unmount encrypted images in Linux using LUKS'
 url='https://github.com/prurigro/cryptobox'
