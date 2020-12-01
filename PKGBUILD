@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=wikibase-cli
-pkgver=15.6.0
+pkgver=15.7.0
 pkgrel=1
 pkgdesc="The command-line interface to Wikibase (Wikidata)"
 arch=(any)
@@ -25,4 +25,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('d17c07436cf777e36984e85038889abcbf6a528e837779e60661a1dc6e32df98')
+sha256sums=('b50e3fb2c7319ec8bf8324df631be7f1b5d4464c8e895d85041d164b085b6a10')
