@@ -1,0 +1,18 @@
+pkgbase = python-espnet-tts-frontend-git
+	pkgdesc = A tools collection of text frontend for ESPnet tts recipes
+	pkgver = 0.0.3.r47
+	pkgrel = 1
+	url = https://github.com/espnet/espnet_tts_frontend
+	arch = any
+	license = Apache 2.0
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python>=3.7
+	provides = python-espnet-tts-frontend
+	conflicts = python-espnet-tts-frontend
+	conflicts = python-espnet-tts-frontend-git
+	source = python-espnet-tts-frontend-git::git+https://github.com/espnet/espnet_tts_frontend
+	md5sums = SKIP
+
+pkgname = python-espnet-tts-frontend-git
+
