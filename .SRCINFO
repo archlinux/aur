@@ -1,6 +1,6 @@
 pkgbase = python-sentencepiece-git
-	pkgdesc = PyTorch Weighted Prediction Error
-	pkgver = .r637
+	pkgdesc = Sentencepiece text tokenizer (Python version)
+	pkgver = 0.1.94.r637
 	pkgrel = 1
 	url = https://github.com/google/sentencepiece
 	arch = any
