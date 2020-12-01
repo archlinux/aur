@@ -1,11 +1,11 @@
 # Maintainer:  <yatsen71@oarchbox1>
 pkgname=bt-tracker-add
-pkgver=0.1.0
+pkgver=2012.12
 pkgrel=1
 epoch=
-pkgdesc=""
+pkgdesc="Automatically checks new torrents and adds trackers"
 arch=('i686' 'x86_64')
-url=""
+url="https://aur.archlinux.org/packages/bt-tracker-add/"
 license=('GPL')
 groups=()
 depends=()
