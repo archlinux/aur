@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=exhale-git
-pkgver=1.0.7.r2.g9323a9d
+pkgver=1.1.0.r0.gc71ec48
 pkgrel=1
 pkgdesc="Open source xHE-AAC encoder"
 arch=('i686' 'x86_64')
@@ -11,7 +11,6 @@ depends=('gcc-libs')
 makedepends=('git' 'cmake')
 provides=('exhale')
 conflicts=('exhale')
-options=('staticlibs')
 source=("git+https://gitlab.com/ecodis/exhale.git")
 sha256sums=('SKIP')
 
@@ -30,6 +29,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
+    -DBUILD_SHARED_LIBS=ON \
     ./
   make -C "_build"
 }
