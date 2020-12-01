@@ -3,13 +3,13 @@
 pkgname=h5cpp
 _pkgname=myMPD
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="h5cpp is a C++ wrapper for HDF5s C-API."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="h5cpp.org"
 license=('GPL2')
 optdepends=()
-makedepends=('cmake' 'hdf5')
+makedepends=('cmake' 'hdf5' 'boost')
 source=("https://github.com/ess-dmsc/$pkgname/archive/v$pkgver.tar.gz"
         "newer_hdf5_lib.patch")
 sha256sums=('2ccae670109d605a2c26729abd2b1a98b0b5a7fe5dd98df5f03c5fe76463e1e7'
