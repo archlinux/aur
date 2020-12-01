@@ -1,0 +1,10 @@
+pre_upgrade() {
+	echo ">>> Restarting collectd service ..."
+	systemctl restart stackdriver-collectd.service
+}
+
+pre_remove() {
+	echo ">>> Stopping collectd service ..."
+	systemctl stop stackdriver-collectd.service
+	systemctl disable stackdriver-collectd.service
+}

@@ -1,0 +1,35 @@
+pkgbase = stackdriver-collectd
+	pkgdesc = Stackdriver's monitoring agent based on collectd
+	pkgver = 6.1.0
+	pkgrel = 1
+	url = https://github.com/Stackdriver/collectd
+	arch = x86_64
+	license = MIT
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = bison
+	makedepends = flex
+	makedepends = gcc
+	makedepends = libtool
+	makedepends = pkg-config
+	depends = curl
+	depends = iptables
+	depends = libxml2
+	depends = lua
+	depends = systemd-libs
+	depends = yajl
+	optdepends = mariadb-libs
+	provides = stackdriver-collectd
+	conflicts = collectd
+	backup = etc/collectd.conf
+	source = stackdriver-collectd-v6.1.0.tar.gz::https://github.com/Stackdriver/collectd/archive/6.1.0.tar.gz
+	source = collectd.conf
+	source = stackdriver-collectd.service
+	source = stackdriver-collectd.sh
+	md5sums = fef6db9b22153903ed98d4c888ccc35a
+	md5sums = 7a2c4528d4ff161d7ac665daedc5fb3c
+	md5sums = 251922321b6d566c8f1750402e4cfd21
+	md5sums = e4da9e61c35f6d74d3d76a02eb441ff2
+
+pkgname = stackdriver-collectd
+
