@@ -10,10 +10,10 @@ arch=('any')
 url="https://github.com/XTLS/Xray-core"
 license=('MPLv2')
 depends=('glibc' 'v2ray-domain-list-community' 'v2ray-geoip')
-makedepends=('go' 'git')
+makedepends=('go')
 backup=(etc/xray/config.json)
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/XTLS/Xray-core/archive/v$pkgver.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/v$pkgver.tar.gz"
     "config.json"
     "vpoint_socks_vmess.json"
     "vpoint_vmess_freedom.json"
@@ -30,7 +30,7 @@ sha512sums=(
 )
 
 build() {
-  cd $srcdir/Xray-core-$pkgver
+  cd "${srcdir}"/"Xray-core-${pkgver}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external"
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -39,17 +39,17 @@ build() {
 }
 
 check() {
-  cd $srcdir/Xray-core-$pkgver
+  cd "${srcdir}"/"Xray-core-${pkgver}"
   go test -p 1 -tags json -v -timeout 30m github.com/xtls/xray-core/v1/core/...
 }
 
 package() {
-  cd $startdir
-  install -Dm644 xray.service "$pkgdir"/usr/lib/systemd/system/xray.service
-  install -Dm644 xray@.service "$pkgdir"/usr/lib/systemd/system/xray@.service
-  install -Dm644 *.json -t "$pkgdir"/etc/xray/
+  cd "${srcdir}"
+  install -Dm644 xray.service "${pkgdir}"/usr/lib/systemd/system/xray.service
+  install -Dm644 xray@.service "${pkgdir}"/usr/lib/systemd/system/xray@.service
+  install -Dm644 *.json -t "${pkgdir}"/etc/xray/
 
-  cd $srcdir/Xray-core-$pkgver
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/xray/LICENSE
-  install -Dm755 xray -t "$pkgdir"/usr/bin/
+  cd "${srcdir}"/"Xray-core-${pkgver}"
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/xray/LICENSE
+  install -Dm755 xray -t "${pkgdir}"/usr/bin/
 }

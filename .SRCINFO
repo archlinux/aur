@@ -6,7 +6,6 @@ pkgbase = xray
 	arch = any
 	license = MPLv2
 	makedepends = go
-	makedepends = git
 	depends = glibc
 	depends = v2ray-domain-list-community
 	depends = v2ray-geoip
