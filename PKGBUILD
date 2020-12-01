@@ -5,22 +5,20 @@ pkgver=1.4
 pkgrel=0
 pkgdesc="A Lightweight Embeddable Scripting Language"
 arch=('i686' 'x86_64')
-url="https://github.com/jstar-lang/jstar"
+url="https://github.com/bamless/jstar"
 license=('MIT')
 makedepends=('cmake>=3.9' 'python>=2.7')
 
-source=("${pkgname}-${pkgver}::https://github.com/bamless/jstar/archive/v${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/bamless/jstar/master/LICENSE")
+source=("${pkgname}-${pkgver}::git://github.com/bamless/jstar.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
-sha256sums=("f8d7e3242315683ad45a1c76a356eaa65633771bbc1b9a1509e07785581766ee"
-            "SKIP")
+prepare() {
+	cd "${pkgname}-${pkgver}"
+	git submodule update --init --recursive
+}
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-
-	git init
-	git remote add origin https://github.com/bamless/jstar.git
-	git submodule update --init
 
 	mkdir -p build && cd build
 	
@@ -29,7 +27,7 @@ build() {
 }
 
 package() {
-	install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	install -Dm644 ${srcdir}/${pkgname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 	
 	cd "${srcdir}/${pkgname}-${pkgver}/build"
 	make install
