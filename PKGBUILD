@@ -3,7 +3,7 @@
 # Contributor: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=peazip-gtk2-portable
-pkgver=7.4.2
+pkgver=7.5.0
 pkgrel=1
 pkgdesc="Natively compiled 64-bit GTK2 archiver utility, portable version with no dependencies"
 arch=(x86_64)
@@ -16,7 +16,7 @@ conflicts=('peazip-gtk2' 'peazip-qt')
 options=('!strip')
 install=peazip.install
 source=("https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip_portable-$pkgver.LINUX.x86_64.GTK2.tar.gz")
-sha256sums=('7390311b28f3340c37c08fd493b326c7a7c1b09365edef56d403f88720c1be4f')
+sha256sums=('f9e87abb3d292e2dd0eb3cd1092eb4e4e5a14059a6ad654d054edc0984a54bea')
 
 package() {
   _srcpea="$srcdir/peazip_portable-$pkgver.LINUX.x86_64.GTK2"
