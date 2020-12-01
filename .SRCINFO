@@ -1,0 +1,19 @@
+pkgbase = wlhangul-git
+	pkgdesc = A Hangul input method for Wayland.
+	pkgver = r6.9fbe8d7
+	pkgrel = 1
+	url = https://github.com/emersion/wlhangul
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	depends = libhangul
+	depends = wayland
+	depends = libxkbcommon
+	provides = wlhangul
+	source = git+https://github.com/emersion/wlhangul.git
+	sha256sums = SKIP
+
+pkgname = wlhangul-git
+
