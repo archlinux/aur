@@ -3,7 +3,6 @@ pkgbase = openhab3
 	pkgver = 3.0.0.M4
 	pkgrel = 1
 	url = http://www.openhab.org/
-	install = openhab3.install
 	arch = any
 	license = EPL
 	depends = java-runtime-headless=11
@@ -21,12 +20,10 @@ pkgbase = openhab3
 	source = openhab-3.0.0.M4.tar.gz::https://openhab.jfrog.io/openhab/libs-milestone-local/org/openhab/distro/openhab/3.0.0.M4/openhab-3.0.0.M4.tar.gz
 	source = openhab3.service
 	source = openhab3.default
-	source = openhab3.install
 	source = openhab3.patch
 	sha256sums = 63b1725ab2e37ee25649663362fb08bedb6f9c1727c5511543eef2d8048d008c
-	sha256sums = a948b1c74fe41038ca2aa6a7c46416c7ad15eab4b22948161b95b092b9e8c642
+	sha256sums = 9b42de40f82dfe1fcb5efcac5f69d948e39f955e85c6273daddd97bc94ac34b6
 	sha256sums = b149d976dc13dc18c62d2014457557e266e733ead70b0730d06dcd0372da78a7
-	sha256sums = 3f75538c64fd02120ccfcfa1024e8414514536708255e9218b5cc0bd995715c5
 	sha256sums = 3f7478e5742ff504b3200b580eba84bd10f9adde24c0a5e070dda71125a69c3b
 
 pkgname = openhab3

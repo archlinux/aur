@@ -6,8 +6,8 @@ After=network-online.target
 
 [Service]
 Type=simple
-User=openhab
-Group=openhab
+User=openhab3
+Group=openhab3
 WorkingDirectory=/usr/share/openhab3
 EnvironmentFile=/etc/default/openhab3
 ExecStart=/usr/share/openhab3/start.sh server
