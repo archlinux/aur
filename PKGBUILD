@@ -10,7 +10,7 @@ url='https://gitlab.freedesktop.org/xrdesktop/gxr'
 depends=('gtk3' 'gulkan-git' 'openvr-git' 'openxr')
 provides=("$_realname="$pkgver)
 conflicts=("$_realname")
-makedepends=('meson' 'git' 'vulkan-headers' 'openxr-headers-git' 'gtk-doc')
+makedepends=('meson' 'git' 'vulkan-headers' 'gtk-doc')
 license=('MIT')
  
 source=('git+https://gitlab.freedesktop.org/xrdesktop/gxr.git')
