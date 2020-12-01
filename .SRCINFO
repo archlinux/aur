@@ -1,0 +1,14 @@
+pkgbase = taskfile-gotask-git
+	pkgdesc = A task runner / simpler Make alternative written in Go. Compiled with 'go-task' as binary name to allow coexistance with taskwarrior.
+	pkgver = 3.0.0.r22.gb136166
+	pkgrel = 1
+	url = https://github.com/go-task/task
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = go-task::git://github.com/go-task/task#branch=master
+	md5sums = SKIP
+
+pkgname = taskfile-gotask-git
+
