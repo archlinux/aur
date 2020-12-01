@@ -3,7 +3,7 @@
 
 pkgname=emptty
 pkgdesc="Dead simple CLI Display Manager on TTY"
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/tvrzna/emptty"
@@ -16,10 +16,15 @@ optdepends=('xorg-server: default display server'
             'wayland: alternative to xorg-server')
 backup=('etc/emptty/conf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('1f9be379a76e95f7965ae3853cd322d73f8c575182850e1886ae21817f6741393db0a2e36ed4995f6a9291cee1c4efa34db08557d81aefc703e7099964dc33bb')
+sha512sums=('4e6569d6aa9b22630ff3082c8cf05e213465ba133996baa1205904e7193e296f20a4f0e5b94dcfed22141cfb5780ecb0dd785b41f6630e1b07954ceb19f524a1')
 
 build() {
   cd "$pkgname-$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   make build
 }
 
