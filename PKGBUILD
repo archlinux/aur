@@ -24,22 +24,15 @@ source=(git+https://github.com/Zettlr/Zettlr.git#commit="${_commit}"
         # Chinese(Taiwan) translation
         https://github.com/Brli/zetter-zh-TW/raw/master/zh-TW.json)
         # translations
-for _l in ${_lang[@]}; do
-    source+=(https://translate.zettlr.com/download/${_l}.json)
-done
 sha256sums=('SKIP'
             '906041fbf93b1533dc14733ce5214df306f161519e55e79881ce237835b865bf'
             '4a3b89033d6bbb669a7d046d23224dc3eaaa2840cc8a5dd2c5d6201a61e3f1a1'
             '2b7cd6c1c9be4add8c660fb9c6ca54f1b6c3c4f49d6ed9fa39c9f9b10fcca6f4'
-            '81730193afc64908f820020a19bfeda4475c67ada92e8567a39c9313a3d65ff0'
-            '192b9db172cbc2f1e9e1c5f7aee4757f1ef960c851561c001fe877b92bf2fff2'
-            '71bd0c5462dc7dbcc38e7d6f31eb7d0cfe7cfcb1291ce3d670da43195c98a460'
-            'b7583049214837ae023495dc1264089f8f43c22d788b66ef2c31fadfcf911b19'
-            'ccfd645e08d8cb25acd867209773305dd29a224e0496b5c4f1412651e1406406'
-            '8c9a649286d4b7cb90c9481408de10ae6a1ae103340b46d1c10e7bfa4defd188'
-            '1e6f2fa86679f1bbdb669acbc079b5b468a355ba1827f4ff8e81cba6148dc114'
-            '8729104501d29682171c91cf8f095fa52967ef061dbaf7390fd57be88bd507bd'
-            'c03aee051a159c32ad44ac6ead384343a0850112ba95663da2b390fd115806a4')
+            '81730193afc64908f820020a19bfeda4475c67ada92e8567a39c9313a3d65ff0')
+for _l in ${_lang[@]}; do
+    source+=(https://translate.zettlr.com/download/${_l}.json)
+    sha256sums+=('SKIP')
+done
 
 prepare() {
     cd "${srcdir}/Zettlr"
@@ -47,8 +40,16 @@ prepare() {
     # regression introduced in e5d807a36dd9fd952449afe1aa19ad9bfec4b690
     patch -Np1 -i ${srcdir}/fix-lang-search-path.patch
 
+    # pandoc citeproc argument deprecation
+    sed 's,--filter pandoc-citeproc,--citeproc,' -i source/main/modules/export/run-pandoc.js
+    
+    # LaTeX Error: Environment CSLReferences undefined.
+    sed 's,cslreferences,CSLReferences,' -i source/main/assets/export.tex
+
     # We don't build electron and friends, and don't depends on postinstall script
     sed '/^\s*\"electron-notarize.*$/d;/^\s*\"electron-builder.*$/d;/postinstall/d' -i package.json
+
+    # npm/yarn failed with the ^head...
     sed 's/\^10.1.5/10.1.5/' -i package.json
 
     # lang:refresh from package.json
@@ -79,13 +80,8 @@ build() {
     yarn install --pure-lockfile --cache-folder "${srcdir}/cache"
 
     cd "${srcdir}/Zettlr"
-    # always failed anyway, we just want the outcome .webpack directory
-    node node_modules/.bin/electron-forge make || true
-
-    cd "${srcdir}/Zettlr/.webpack"
-
-    # remove fonts
-    find . -type d -name "fonts" -exec rm -rfv {} +
+    # failed without deb or rpm anyway, we just want the outcome
+    node node_modules/.bin/electron-forge package || true
 }
 
 # check() {
@@ -106,16 +102,19 @@ package() {
     local _destdir=usr/lib/"${pkgname}"
     install -dm755 "${pkgdir}/${_destdir}"
 
-    cd "${srcdir}/Zettlr"
+    cd "${srcdir}/Zettlr/out/Zettlr-linux-x64/"
 
-    # only copy the critical parts
-    cp -r --no-preserve=ownership --preserve=mode ./package.json "${pkgdir}/${_destdir}/"
-    cp -r --no-preserve=ownership --preserve=mode ./.webpack "${pkgdir}/${_destdir}/"
+    # copy the generated electron project
+    cp -r --no-preserve=ownership --preserve=mode ./* "${pkgdir}/${_destdir}/"
+    
+    # symlink to /usr/bin
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -sf "/${_destdir}/Zettlr" "${pkgdir}/usr/bin/zettlr"
 
-    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<END
+#    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<END
 #!/bin/sh
-exec electron /${_destdir} "\$@"
-END
+#exec electron /${_destdir} "\$@"
+#END
 
     # install icons of various sizes to hi-color theme
     for px in 16 24 32 48 64 96 128 256 512; do
@@ -123,7 +122,7 @@ END
             "${pkgdir}/usr/share/icons/hicolor/${px}x${px}/apps/${pkgname}.png"
     done
 
-    # generate freedesktop entry files
+    # generate freedesktop entry files, aligned with description in package.json and forge.config.js
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<END
 [Desktop Entry]
 Name=Zettlr
