@@ -2,14 +2,14 @@
 # Contributor: Peter Lewis <plewis@aur.archlinux.org>
 pkgname=commander-genius-git
 _pkgname=Commander-Genius
-pkgver=v2.3.8.r3.g2d22da699
+pkgver=v2.6.3.1.r11.gb3efc3da2
 pkgrel=1
 pkgdesc="A modern implementation of the classic Commander Keen game series"
 arch=('i686' 'x86_64')
 url="http://clonekeenplus.sourceforge.net"
 license=('GPL')
 groups=()
-depends=('sdl2' 'mesa' 'libvorbis' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer'  'boost' 'boost-libs' 'python')
+depends=('sdl2' 'mesa' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer')
 makedepends=('git' 'cmake' 'glu')
 provides=()
 conflicts=()
