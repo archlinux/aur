@@ -1,4 +1,4 @@
-# Maintainer: Andrey Alekseev <andrey.android7890@gmail.com>
+# Maintainer: ANDRoid7890 <andrey.android7890@gmail.com>
 
 # https://gitlab.manjaro.org/packages/core/linux54
 #
@@ -78,7 +78,7 @@ _makenconfig=
 
 pkgbase=linux-manjaro-xanmod-lts
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.4.72
+pkgver=5.4.80
 _major=5.4
 _branch=5.x
 xanmod=1
@@ -87,7 +87,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="41beff0a892767780b4ab392a5f17f92076ad225" # 5.4.72
+__commit="1cedf0dcd53dcefcbf0d3173ae5917a0f3bddfb0" # 5.4.80-2
 
 license=(GPL2)
 makedepends=(
@@ -100,11 +100,11 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
         "manjaro.tar.gz::https://gitlab.manjaro.org/packages/core/linux54/-/archive/${__commit}/linux59-${__commit}.tar.gz")
-sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
-            'SKIP'
-            '926a046f6d2f2d3b9f8c4d6b729aac79aa398fda43c540f7e0fe6220ea30546c'
-            '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
-            'b89053bd91b9951a89eb40bebce0aae050fb8078d3e0dfbd1dd67735bd9c7bf6')
+sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491' # linux-5.4.tar.xz
+            'SKIP'                                                             #            .sign
+            '6ba57e1d7dde279e49348aa9a3c522be6994e8d725bbd84398574142bbe24ae3' # xanmod
+            '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511' # choose-gcc-optimization.sh
+            '34a9d92fe7c75d631550f80bb3b370632abbcee5a1708838585e94773fa083f5') # manjaro
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
