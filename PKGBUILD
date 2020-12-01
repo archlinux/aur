@@ -2,8 +2,8 @@
 
 _pkgbase='gtimelog'
 pkgname=gtimelog-collabora-git
-pkgver=r338.7890123
-pkgrel=2
+pkgver=r446.24abd43
+pkgrel=1
 pkgdesc="A time tracking application: Collabora repository."
 provides=('gtimelog')
 arch=('any')
@@ -11,11 +11,10 @@ url="https://gitlab.collabora.com/collabora/gtimelog.git"
 license=('GPL2')
 depends=(
   'libsoup'
-  'python2'
-  'python2-gobject'
-  'python2-setuptools'
-  'python2-gnomekeyring')
-makedepends=('git' 'python2' 'python2-setuptools')
+  'python'
+  'python-gobject'
+  'python-setuptools')
+makedepends=('git')
 source=(
   "$_pkgbase::git+https://gitlab.collabora.com/collabora/gtimelog.git"
 )
@@ -27,12 +26,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgbase"
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd "$srcdir/$_pkgbase"
-  python2 setup.py install --root="$pkgdir/"
+  python setup.py install --root="$pkgdir/"
 }
 
 sha256sums=('SKIP')
