@@ -2,7 +2,7 @@
 Comment[ru_RU]=
 Comment=
 Exec=/opt/zesarux/zesarux
-GenericName[ru_RU]=Multiple Z80-based machines emulator
+GenericName[ru_RU]=Эмулятор разных устройств на основе процессора Z80
 GenericName=Multiple Z80-based machines emulator
 Icon=/usr/share/pixmaps/zesarux.png
 MimeType=
