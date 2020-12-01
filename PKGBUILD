@@ -1,8 +1,8 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Barfin
 
 pkgname=transgender-wallpapers
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Collection of HD Transgender and non-binary pride wallpapers'
 arch=(any)
 url='https://github.com/barfin/transgender-wallpapers-for-linux'

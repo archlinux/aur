@@ -1,7 +1,7 @@
 pkgbase = transgender-wallpapers
 	pkgdesc = Collection of HD Transgender and non-binary pride wallpapers
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/barfin/transgender-wallpapers-for-linux
 	arch = any
 	license = unknown
