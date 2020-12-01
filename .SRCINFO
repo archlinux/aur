@@ -41,7 +41,6 @@ pkgbase = lv2-plugins-aur-meta
 	depends = sooperlooper.lv2-git
 	depends = so-synth-lv2-git
 	depends = ssr.lv2-git
-	depends = stegosaurus-lv2-git
 	depends = stepseq_s16n8.lv2
 	depends = string-machine-git
 	depends = swh-lv2-git
@@ -62,7 +61,6 @@ pkgbase = lv2-plugins-aur-meta
 	depends = bschaffl.lv2-git
 	depends = bharvestr.lv2-git
 	depends = x42-sisco-cv-git
-	depends = stegosaurus-lv2-git
 	depends = odin2-synthesizer
 	depends = poly.lv2-git
 
