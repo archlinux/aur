@@ -20,8 +20,6 @@ build() {
 
 	git init
 	git remote add origin https://github.com/bamless/jstar.git
-	git fetch
-	git checkout v${pkgver}
 	git submodule update --init
 
 	mkdir -p build && cd build
