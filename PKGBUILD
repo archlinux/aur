@@ -6,7 +6,7 @@
     pkgname='ros-melodic-cartographer'
     pkgver='1.0.0'
     arch=('any')
-    pkgrel=1
+    pkgrel=2
     license=('Apache 2.0')
 
     ros_makedepends=(ros-melodic-catkin)
@@ -20,7 +20,7 @@
   python-sphinx
   gcc
   gflags
-  eigen3
+  eigen
   ceres-solver
   gmock)
 
@@ -32,13 +32,14 @@
   cairo
   lua52
   gflags
-  eigen3
+  eigen
   ceres-solver)
     
     # Tarball version (faster download)
     _dir="cartographer-release-release-melodic-cartographer"
     source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-gbp/cartographer-release/archive/release/melodic/cartographer/${pkgver}.tar.gz" FindGMock.patch)
-    sha256sums=('0b1979462b1715efc762f27bfb1b69fe659c269df96934baee12928b47b7cc9f')
+sha256sums=('0b1979462b1715efc762f27bfb1b69fe659c269df96934baee12928b47b7cc9f'
+            'a109c0927cff5d0a9d8ad7d0f676ce0c3af81a1aa39b88b16a030431cde2cbb4')
 
     prepare() {
       cd "$srcdir/$_dir"
@@ -78,5 +79,3 @@
     make DESTDIR="${pkgdir}/" install
     }
     
-sha256sums=('0b1979462b1715efc762f27bfb1b69fe659c269df96934baee12928b47b7cc9f'
-            'a109c0927cff5d0a9d8ad7d0f676ce0c3af81a1aa39b88b16a030431cde2cbb4')
