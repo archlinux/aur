@@ -8,20 +8,22 @@ name=cloudcompare
 pkgname=${name}
 _fragment="#tag=v2.11.0"
 pkgver="${_fragment###tag=v}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
 license=('GPL2')
-depends=('cgal' 'ffmpeg' 'glew' 'glu' 'mesa' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-svg' 'vxl')
+depends=('cgal' 'ffmpeg' 'glew' 'glu' 'mesa' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-svg' 'tbb' 'vxl')
 makedepends=('cmake' 'doxygen' 'git' 'laz-perf' 'libharu' 'ninja' 'pcl' 'proj' 'python')
 optdepends=('pcl')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git${_fragment}"
         constexpr.patch
+        pcl.patch
         CloudCompare.desktop
         ccViewer.desktop)
 md5sums=('SKIP'
          '7b254561200ba7d51817e4860f589426'
+         'b93f216458129507f154ea6d19a5fed0'
          '379e09f6996b2b397429c0661c409bd0'
          'b6dcb0dee15cc67011166a2fc774c5ef')
 
@@ -40,39 +42,47 @@ build() {
         -Wno-dev \
         -DCMAKE_CXX_STANDARD=14 \
         -DCMAKE_CXX_FLAGS=-fpermissive \
-        -DOPTION_PDAL_LAS=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
-        -DINSTALL_QRANSAC_SD_PLUGIN=ON \
-        -DINSTALL_QCOMPASS_PLUGIN=ON \
-        -DINSTALL_QPCL_PLUGIN=ON \
-        -DINSTALL_QBLUR_PLUGIN=ON \
         -DCMAKE_BUILD_TYPE=Release \
         -DCOMPILE_CC_CORE_LIB_WITH_CGAL=ON \
-        -DINSTALL_QHPR_PLUGIN=ON \
-        -DINSTALL_QPOISSON_RECON_PLUGIN=ON \
-        -DPOISSON_RECON_WITH_OPEN_MP=ON \
-        -DINSTALL_QEDL_PLUGIN=ON \
-        -DINSTALL_QSRA_PLUGIN=ON \
-        -DOPTION_USE_GDAL=ON \
-        -DOPTION_USE_DXF_LIB=ON \
-        -DINSTALL_QSSAO_PLUGIN=ON \
-        -DINSTALL_QGMMREG_PLUGIN=ON \
-        -DINSTALL_QANIMATION_PLUGIN=ON \
-        -DINSTALL_QCSF_PLUGIN=ON \
-        -DINSTALL_QPHOTOSCAN_IO_PLUGIN=ON \
-        -DWITH_FFMPEG_SUPPORT=ON \
+        -DCOMPILE_CC_CORE_LIB_WITH_TBB=ON \
         -DFFMPEG_INCLUDE_DIR=/usr/include \
         -DFFMPEG_LIBRARY_DIR=/usr/lib/ \
-        -DINSTALL_QFACETS_PLUGIN=ON \
+        -DOPTION_USE_DXF_LIB=ON \
+        -DOPTION_USE_GDAL=ON \
         -DOPTION_USE_SHAPE_LIB=ON \
-        -DINSTALL_QPCV_PLUGIN=ON \
-        -DINSTALL_QM3C2_PLUGIN=ON \
-        -DINSTALL_QBROOM_PLUGIN=true \
-        -DINSTALL_QHOUGH_NORMALS_PLUGIN=true \
+        -DPLUGIN_GL_QEDL=ON \
+        -DPLUGIN_GL_QSSAO=ON \
+        -DPLUGIN_IO_QADDITIONAL=ON \
+        -DPLUGIN_IO_QCORE=ON \
+        -DPLUGIN_IO_QCSV_MATRIX=ON \
+        -DPLUGIN_IO_QE57=ON \
+        -DPLUGIN_IO_QFBX=OFF \
+        -DPLUGIN_IO_QPDAL=ON \
+        -DPLUGIN_IO_QPHOTOSCAN=ON \
+        -DPLUGIN_IO_QRDB=OFF \
+        -DPLUGIN_STANDARD_QANIMATION=ON \
+        -DPLUGIN_STANDARD_QBROOM=ON \
+        -DPLUGIN_STANDARD_QCANUPO=OFF \
+        -DPLUGIN_STANDARD_QCOMPASS=ON \
+        -DPLUGIN_STANDARD_QCORK=OFF \
+        -DPLUGIN_STANDARD_QCSF=ON \
+        -DPLUGIN_STANDARD_QCSF=ON \
+        -DPLUGIN_STANDARD_QFACETS=ON \
+        -DPLUGIN_STANDARD_QHOUGH_NORMALS=ON \
+        -DPLUGIN_STANDARD_QHPR=ON \
+        -DPLUGIN_STANDARD_QM3C2=ON \
+        -DPLUGIN_STANDARD_QPCL=ON \
+        -DPLUGIN_STANDARD_QPCV=ON \
+        -DPLUGIN_STANDARD_QPOISSON_RECON=ON \
+        -DPLUGIN_STANDARD_QRANSAC_SD=ON \
+        -DPLUGIN_STANDARD_QSRA=ON \
+        -DPOISSON_RECON_WITH_OPEN_MP=ON \
+        -DWITH_FFMPEG_SUPPORT=ON \
         -DEIGEN_ROOT_DIR=/usr/include/eigen3 
   )
-  cmake -B build -S "${srcdir}/${name}" -G Ninja "${CMAKE_FLAGS[@]}"
+  cmake -B build -S "${srcdir}/${name}" -G Ninja "${CMAKE_FLAGS[@]}" -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-deprecated-declarations"
 # shellcheck disable=SC2086 # allow slitting for MAKEFLAGS carrying multiple flags.
   ninja -C build ${MAKEFLAGS:--j1}
 }
