@@ -1,7 +1,7 @@
 pkgbase = prometheus-fritzbox-exporter-sberk42-git
 	pkgdesc = Prometheus UPnP exporter for Fritz!Box routers (sberk42 fork)
 	pkgver = r75.fd48163
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sberk42/fritzbox_exporter
 	arch = x86_64
 	license = Apache
