@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=gping
-pkgver=0.1.7
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Ping, but with a graph"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('iputils')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('acdf605d6f2fc32c6e468abf287caa7569d5f018d4d2cdec47de77a065db1c99311e2caa786fb4fa2705db362df1fbbdfc7c9f4d88628cec3afdafb7ca1911c2')
+sha512sums=('a2338030e1eec725b253e3adb453966e2637a9a4eb672a3309358980a7c637f911f6cfeee112a1c50827199cad17fe5194c0723bc30c97ca5ef6589edf9966db')
 
 build() {
   cd "$pkgname-$pkgver"

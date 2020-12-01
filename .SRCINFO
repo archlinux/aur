@@ -1,14 +1,14 @@
 pkgbase = gping
 	pkgdesc = Ping, but with a graph
-	pkgver = 0.1.7
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/orf/gping
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = iputils
-	source = gping-0.1.7.tar.gz::https://github.com/orf/gping/archive/v0.1.7.tar.gz
-	sha512sums = acdf605d6f2fc32c6e468abf287caa7569d5f018d4d2cdec47de77a065db1c99311e2caa786fb4fa2705db362df1fbbdfc7c9f4d88628cec3afdafb7ca1911c2
+	source = gping-1.0.1.tar.gz::https://github.com/orf/gping/archive/v1.0.1.tar.gz
+	sha512sums = a2338030e1eec725b253e3adb453966e2637a9a4eb672a3309358980a7c637f911f6cfeee112a1c50827199cad17fe5194c0723bc30c97ca5ef6589edf9966db
 
 pkgname = gping
 
