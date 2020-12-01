@@ -3,8 +3,8 @@
 _gitname=fritzbox_exporter
 _pkgname=prometheus-fritzbox-exporter
 pkgname=${_pkgname}-sberk42-git
-pkgver=r68.f47a658
-pkgrel=2
+pkgver=r75.fd48163
+pkgrel=1
 pkgdesc="Prometheus UPnP exporter for Fritz!Box routers (sberk42 fork)"
 arch=('x86_64')
 url="https://github.com/sberk42/fritzbox_exporter"
@@ -17,7 +17,7 @@ source=("git+https://github.com/sberk42/fritzbox_exporter.git"
         "prometheus-fritzbox-exporter.conf")
 sha256sums=('SKIP'
             '862d7a028de9a52ac11d1408d621cc727f59e1ccf85bca23e42032c945509411'
-            '1faaf054a2b84a88ca8f3766346bba0dc63456fa62258c8fb5d66048cf052225')
+            '07331f39044ffab74a4403bdab4740c4d866ec6393456cdfd441db72ad14a95b')
 
 pkgver() {
   cd "$_gitname"
@@ -30,7 +30,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_gitname"
 
-  GOPATH="$srcdir" go get -v github.com/sberk42/fritzbox_exporter
+  GOPATH="$srcdir" go get github.com/sberk42/fritzbox_exporter
 }
 
 package() {
@@ -45,8 +45,11 @@ package() {
   install -Dm755 "bin/$_gitname" \
         "$pkgdir/usr/bin/$_pkgname"
 
-  install -Dm644 "$_gitname/metrics.json" \
-        "$pkgdir/opt/$_gitname/metrics.json"
+  install -d "$pkgdir/opt/$_gitname/"
+
+  for file in $(find $_gitname -maxdepth 1 -type f -name *.json); do
+        install -Dm644 ${file} "$pkgdir/opt/$_gitname/"
+  done
 
   install -Dm644 "$_gitname/LICENSE" \
         "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
