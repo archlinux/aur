@@ -1,0 +1,19 @@
+pkgbase = nlnetlabs-krill-git
+	pkgdesc = RPKI certificate authority and publication server
+	pkgver = 0.8.1.r5.g9b58437
+	pkgrel = 1
+	url = https://nlnetlabs.nl/projects/rpki/about/
+	arch = i686
+	arch = x86_64
+	license = MPL2
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	depends = openssl
+	provides = nlnetlabs-krill
+	conflicts = nlnetlabs-krill
+	source = git+https://github.com/NLnetLabs/krill.git
+	sha256sums = SKIP
+
+pkgname = nlnetlabs-krill-git
+
