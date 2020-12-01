@@ -11,17 +11,22 @@ pkgdesc='A swiss army knife for pentesting Windows/Active Directory environments
 arch=('any')
 url='https://github.com/byt3bl33d3r/CrackMapExec'
 license=('GPL3')
-depends=('impacket' 'python' 'python-bcrypt' 'python-beautifulsoup4'
-'python-certifi' 'python-cffi' 'python-chardet' 'python-click'
-'python-cryptography' 'python-dnspython' 'python-flask' 'python-future'
-'python-gevent' 'python-greenlet' 'python-idna' 'python-itsdangerous'
-'python-jinja' 'python-ldap3' 'python-markupsafe' 'python-msgpack'
-'python-ntlm-auth' 'python-paramiko' 'python-pyasn1' 'python-pycparser'
-'python-pycryptodomex' 'python-pynacl' 'python-pyopenssl' 'python-requests-ntlm'
-'python-requests' 'python-six' 'python-soupsieve' 'python-termcolor'
-'python-terminaltables' 'python-urllib3' 'python-werkzeug' 'python-xmltodict'
-'python-ldapdomaindump' 'python-lsassy' 'python-neo4j-driver' 'python-pylnk3'
-'python-pypsrp' 'python-bs4' 'python-neotime' 'python-neobolt' 'python-pywerview-git' )
+depends=('impacket' 'python' 'python-aiowinreg' 'python-asn1crypto'
+	 'python-asysocks' 'python-bcrypt' 'python-beautifulsoup4' 'python-bs4'
+	 'python-certifi' 'python-cffi' 'python-chardet' 'python-click'
+	 'python-cryptography' 'python-dnspython' 'python-flask' 'python-future'
+	 'python-greenlet' 'python-idna' 'python-itsdangerous' 'python-jinja'
+	 'python-ldap3' 'python-ldapdomaindump' 'python-lsassy'
+	 'python-markupsafe' 'python-minidump' 'python-minikerberos'
+	 'python-msgpack' 'python-msldap' 'python-netaddr' 'python-ntlm-auth'
+	 'python-paramiko' 'python-prompt_toolkit' 'python-pyasn1'
+	 'python-pycparser' 'python-pycryptodomex' 'python-pylnk3'
+	 'python-pynacl' 'python-pyopenssl' 'python-pypsrp' 'python-pypykatz'
+	 'python-pyspnego' 'python-pytz' 'python-requests-ntlm' 'python-six'
+	 'python-soupsieve' 'python-termcolor' 'python-terminaltables'
+	 'python-tqdm' 'python-urllib3' 'python-wcwidth' 'python-werkzeug'
+	 'python-winacl' 'python-winsspi' 'python-xmltodict' 'python-zope-event'
+	 'python-zope-interface' 'python-pywerview-git')
 
 makedepends=('python-setuptools' 'python-poetry')
 source=("${url}/archive/v${pkgver}.tar.gz")
