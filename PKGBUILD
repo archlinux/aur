@@ -26,7 +26,7 @@ validpgpkeys=()
 
 build() {
 	cd "$srcdir"
-        g++ -O3 ./Console_sudoku/src/*.cpp -lncurses -o console_sudoku
+        g++ -O3 ./Console_sudoku/src/*.cpp -lncursesw -o console_sudoku
 }
 
 package() {
