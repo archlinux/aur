@@ -1,11 +1,9 @@
 pkgbase = systester
 	pkgdesc = System Stability Tester is a RAM/CPU burning and benchmarking program based on calculating pi.
 	pkgver = 1.5.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://systester.sourceforge.net/
 	arch = x86_64
-	arch = armv7h
-	arch = armv6h
 	arch = aarch64
 	license = GPL
 	makedepends = gmp
