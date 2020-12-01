@@ -3,19 +3,18 @@
 # Contributor: Bumsik Kim <k.bumsik@gmail.com>
 
 pkgname=nushell
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="A new type of shell."
 url="https://www.nushell.sh"
 license=('MIT')
-depends=('openssl' 'libxcb' 'libgit2' 'zlib')
-optdepends=('libx11: for binaryview plugin')
-makedepends=('rust')
+depends=('openssl' 'libxcb' 'libgit2' 'zlib' 'libx11')
+makedepends=('rust' 'python')
 arch=('x86_64' 'i686')
 source=("https://github.com/nushell/nushell/archive/${pkgver}.tar.gz")
 install=nushell.install
-sha256sums=('a7ee864b711d43bec1d611aa11ac70ff62f254d09ee507bbbe7aa3ceaf7b4f39')
-b2sums=('e5a0af0aa5718a4cf47a56aa26eef11b27638923a7aa7c48629c8fc13a139bb2dfb18ece4872aae5135583b93d24d0f07b76c6348cf63ae601e99c004195ead9')
+sha256sums=('fbb490fa25cb4ca6ec46b33274ee8a222407a1786dd2204f05ceb573eb0246aa')
+b2sums=('358722a59630c9017d055379da4c2f72b3c0b23c3ea50804709a273f5acbacf817d83c9410c5c9a7111f185fcb7c14f6ef3cc703ebc8f0cae14f5fe49c4d7b4a')
 
 build() {
   cd "${pkgname}-${pkgver}"
