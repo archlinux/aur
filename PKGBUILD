@@ -2,7 +2,7 @@
 pkgname=python-g2p-git
 pkgver=2.0.0.r47
 pkgrel=1
-pkgdesc='PyTorch Weighted Prediction Error'
+pkgdesc='English grapheme to phoneme conversion'
 arch=('any')
 url='https://github.com/Kyubyong/g2p'
 license=('Apache 2.0')
