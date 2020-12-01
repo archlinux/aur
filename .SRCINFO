@@ -1,0 +1,13 @@
+pkgbase = winmacs-fonts
+	pkgdesc = Windows and Macos mainline fonts
+	pkgver = 2020.12
+	pkgrel = 1
+	url = https://developer.apple.com/fonts/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg
+	md5sums = 21cee6ac758229392ad7d45bc9e1e375
+
+pkgname = winmacs-fonts
+
