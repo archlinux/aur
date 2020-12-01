@@ -2,8 +2,8 @@
 # Contributor: Shaber
 
 pkgname=coreinfo
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="A file information tool from the CoreApps family."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('qt5-base' 'libcprime>=2.7.1' 'libmediainfo' 'zlib')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('ad677f5f4d93ffb5f78044eb19ded639')
+md5sums=('213fa4f71f1f53792bacb80caf57c271')
 
 prepare() {
   mkdir -p build
