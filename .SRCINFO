@@ -1,14 +1,10 @@
 pkgbase = cinnamon-slim
-	pkgdesc = Innovative Linux desktop. Slim version.
+	pkgdesc = Linux desktop which provides advanced innovative features and a traditional user experience
 	pkgver = 4.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxmint/cinnamon
 	arch = x86_64
 	license = GPL2
-	makedepends = git
-	makedepends = intltool
-	makedepends = gtk-doc
-	makedepends = gobject-introspection
 	depends = accountsservice
 	depends = caribou
 	depends = cinnamon-control-center
@@ -48,13 +44,7 @@ pkgbase = cinnamon-slim
 	conflicts = cinnamon
 	replaces = cinnamon
 	options = !emptydirs
-	source = git+https://github.com/linuxmint/cinnamon.git#commit=7dcb5e73ba4aeb41ece18680515f8a3466b4d076
-	source = 0001-cinnamon-settings-don-t-rely-on-the-presence-of-cinn.patch
-	source = set_wheel.diff
-	source = default-theme.patch
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
+	source = https://archive.archlinux.org/packages/c/cinnamon/cinnamon-4.8.0-1-x86_64.pkg.tar.zst
 	sha512sums = SKIP
 
 pkgname = cinnamon-slim

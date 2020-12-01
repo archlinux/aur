@@ -1,88 +1,35 @@
-# Based on the file created for Arch Linux by:
-# Eli Schwartz <eschwartz@archlinux.org>
-# Maintainer: Andrey Vetrov <vetrov at mail dot ru>
-
 pkgname=cinnamon-slim
 pkgver=4.8.0
-pkgrel=1
-_commit=7dcb5e73ba4aeb41ece18680515f8a3466b4d076 # tags/4.6.6^0
-pkgdesc="Innovative Linux desktop. Slim version."
+pkgrel=2
+pkgdesc="Linux desktop which provides advanced innovative features and a traditional user experience"
 arch=('x86_64')
 url="https://github.com/linuxmint/${pkgname%-slim}"
 license=('GPL2')
 provides=("cinnamon=$pkgver")
 conflicts=('cinnamon')
 replaces=('cinnamon')
-
 depends=('accountsservice' 'caribou' 'cinnamon-control-center' 'cinnamon-menus' 'cinnamon-screensaver'
          'cinnamon-session' 'cinnamon-settings-daemon' 'cjs' 'gnome-backgrounds'
          'gnome-themes-extra' 'gstreamer' 'libcroco' 'libgnomekbd' 'libkeybinder3' 'librsvg' 'muffin'
-         'nemo' 'polkit-gnome' 'python-cairo' 'python-dbus' 'python-gobject' 'python-pam'
-         'python-pexpect' 'python-pillow' 'python-pyinotify' 'python-pytz' 'python-tinycss2'
-         'python-xapp' 'timezonemap' 'xapps')
+         'nemo' 'polkit-gnome' 'python-cairo' 'python-dbus'
+         'python-gobject' 'python-pam' 'python-pexpect' 'python-pillow' 'python-pyinotify'
+         'python-pytz' 'python-tinycss2' 'python-xapp' 'timezonemap' 'xapps')
 optdepends=('blueberry: Bluetooth support'
             'cinnamon-translations: i18n'
             'gnome-panel: fallback mode'
             'metacity: fallback mode'
             'system-config-printer: printer settings')
-makedepends=('git' 'intltool' 'gtk-doc' 'gobject-introspection')
+makedepends=()
 options=('!emptydirs')
-source=("git+${url}.git#commit=${_commit}"
-        "0001-cinnamon-settings-don-t-rely-on-the-presence-of-cinn.patch"
-        "set_wheel.diff"
-        "default-theme.patch")
-
-sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
-
-prepare() {
-    cd "${srcdir}"/${pkgname%-slim}
-
-    # Check for the cc-panel module path, not for the irrelevant binary
-    # https://github.com/linuxmint/cinnamon/pull/7382
-    patch --no-backup-if-mismatch -p1 -i ../0001-cinnamon-settings-don-t-rely-on-the-presence-of-cinn.patch
-
-    # Use wheel group instread of sudo (taken from Fedora)
-    patch -Np1 -i ../set_wheel.diff
-
-    # Set default theme to 'cinnamon'
-    patch -Np1 -i ../default-theme.patch
-
-    # Replace MintInstall with GNOME Software
-    sed -i 's/mintinstall.desktop/org.gnome.Software.desktop/' data/org.cinnamon.gschema.xml.in
-
-    # Add polkit agent to required components
-    sed -i 's/RequiredComponents=\(.*\)$/RequiredComponents=\1polkit-gnome-authentication-agent-1;/' \
-        files/cinnamon*.session.in
-
-    # https://github.com/linuxmint/cinnamon/issues/3575#issuecomment-374887122
-    # Cinnamon has no upstream backgrounds, use GNOME backgrounds instead
-    sed -i 's|/usr/share/cinnamon-background-properties|/usr/share/gnome-background-properties|' \
-        files/usr/share/cinnamon/cinnamon-settings/modules/cs_backgrounds.py
-
-    NOCONFIGURE=1 ./autogen.sh
-}
-
-build() {
-    cd "${srcdir}"/${pkgname%-slim}
-
-    ./configure --prefix=/usr \
-                --sysconfdir=/etc \
-                --libexecdir=/usr/lib/cinnamon \
-                --localstatedir=/var \
-                --disable-static \
-                --disable-gtk-doc \
-                --disable-schemas-compile \
-                --disable-networkmanager \
-                --enable-compile-warnings=yes
-
-    # https://bugzilla.gnome.org/show_bug.cgi?id=656231
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-    make
-}
+source=("https://archive.archlinux.org/packages/c/cinnamon/cinnamon-$pkgver-1-x86_64.pkg.tar.zst")
+sha512sums=('SKIP')
 
 package() {
-    cd "${srcdir}"/${pkgname%-slim}
-
-    make DESTDIR="${pkgdir}" install
+    cp -R "${srcdir}/etc" "${pkgdir}/etc"
+    cp -R "${srcdir}/usr" "${pkgdir}/usr"
+    sed --in-place 's/nm-applet;//g' "${pkgdir}/usr/share/cinnamon-session/sessions/cinnamon.session"
+    sed --in-place 's/nm-applet;//g' "${pkgdir}/usr/share/cinnamon-session/sessions/cinnamon2d.session"
+    sed --in-place '/nm-applet/d' "${pkgdir}/usr/share/cinnamon/js/ui/statusIconDispatcher.js"
+    rm -rf "${pkgdir}/usr/share/cinnamon/applets/network@cinnamon.org"
 }
+
