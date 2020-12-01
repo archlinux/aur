@@ -2,8 +2,8 @@
 # Contributor: Shaber
 
 pkgname=corepad
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="A document editor from the CoreApps family."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('qt5-base' 'libcprime>=2.7.1')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('84470c3b18f085c85e39dd324b15b4ca')
+md5sums=('e47cc2fc14080082eca99f7633eca6ee')
 
 prepare() {
   mkdir -p build
