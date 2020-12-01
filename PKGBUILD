@@ -1,7 +1,7 @@
 # Maintainer: Jonathon Fernyhough <jonathon+m2x@dev>
 
 pkgname=hypnotix-git
-pkgver=r18.2b0cc8e
+pkgver=1.1
 pkgrel=1
 pkgdesc="An IPTV app"
 arch=(any)
