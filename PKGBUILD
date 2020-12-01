@@ -1,7 +1,7 @@
 # Maintainer: Alkindi42
 
 pkgname=joplin-cli
-pkgver=1.4.18
+pkgver=1.4.19
 pkgrel=1
 pkgdesc="An open source note taking and to-do application with synchronization capabilities"
 arch=('x86_64')
@@ -53,4 +53,4 @@ package() {
   install -Dm644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 sha256sums=('b5c621c425cdf0b5bb07bf0353939f6991a18db81955294a47ec42d0c5593438'
-            '75a3fcd33132d15dcec249c8816a68efd5e6db5f99da9c6bbf257342145a02f9')
+            '55aad4fe50e2da980983a69bc7c0870626064db971550d522e266feb17d38916')
