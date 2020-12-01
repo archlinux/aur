@@ -7,7 +7,9 @@ pkgdesc='A flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell'
 url='https://github.com/vinceliuice/vimix-gtk-themes'
 arch=('any')
 license=('GPL3')
-depends=('gtk3' 'gtk-engine-murrine' 'gtk-engines')
+depends=('gtk3')
+optdepends=('gtk-engines-murrine: for gtk2 themes'
+            'gtk-engines: for gtk2 themes')
 makedepends=('git')
 source=('git+https://github.com/vinceliuice/vimix-gtk-themes.git')
 sha256sums=('SKIP')
