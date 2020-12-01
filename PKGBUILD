@@ -4,7 +4,8 @@
 
 pkgname=crackmapexec
 _pkgname=CrackMapExec
-pkgver=5.1.0dev
+pkgver=5.1.1dev
+_pkgver=5.1.1.dev0
 pkgrel=1
 pkgdesc='A swiss army knife for pentesting Windows/Active Directory environments'
 arch=('any')
@@ -22,12 +23,25 @@ depends=('impacket' 'python' 'python-bcrypt' 'python-beautifulsoup4'
 'python-ldapdomaindump' 'python-lsassy' 'python-neo4j-driver' 'python-pylnk3'
 'python-pypsrp' 'python-bs4' 'python-neotime' 'python-neobolt' 'python-pywerview-git' )
 
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-poetry')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('6410440e2231d9963e2f3a6105bd067c0bbb49bc69d9fa9c82b14a53720e67e82f447109d9a1ebcfa4f4d064b81cfcf5c1b1e565404e68bbf43e26b98edd0ed5')
+sha512sums=('6db9630b3b01278089976186cff4a8303b72fbf034e2ac46a4e8cf91d7057348cdf44f093c525509971de94bf79c66d73f4d76b46537a96791b2edc63b940aa5')
+
+prepare() {
+  cd $_pkgname-$pkgver
+  make clean
+}
+
+build() {
+  cd $_pkgname-$pkgver
+  poetry build
+  cd dist
+  tar zxvf "${pkgname}-${_pkgver}.tar.gz"
+}
 
 package() {
   cd $_pkgname-$pkgver
+  cd "dist/${pkgname}-${_pkgver}"
   python setup.py install --root=${pkgdir} --optimize=1
  
   # Needed to operate:
