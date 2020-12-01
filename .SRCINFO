@@ -1,9 +1,10 @@
 pkgbase = glib2-static
 	pkgdesc = Low level core library: Static library
-	pkgver = 2.66.1
+	pkgver = 2.66.3
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = x86_64
+	arch = aarch64
 	license = LGPL2.1
 	checkdepends = desktop-file-utils
 	makedepends = gettext
@@ -21,10 +22,8 @@ pkgbase = glib2-static
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
-	source = http://ftp.gnome.org/pub/gnome/sources/glib/2.66/glib-2.66.1.tar.xz
-	source = 1683.patch
-	sha256sums = a269ffe69fbcc3a21ff1acb1b6146b2a5723499d6e2de33ae16ccb6d2438ef60
-	sha256sums = e1913090c7cdd4c7db12651858a8381be28ae61f19d5e5e02a33f4c7c74c926d
+	source = http://ftp.gnome.org/pub/gnome/sources/glib/2.66/glib-2.66.3.tar.xz
+	sha256sums = 79f31365a99cb1cc9db028625635d1438890702acde9e2802eae0acebcf7b5b1
 
 pkgname = glib2-static
 
