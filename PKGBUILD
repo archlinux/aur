@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname='emulsion-bin'
-pkgver='6.0'
+pkgver='7.2'
 pkgrel='1'
 pkgdesc='A fast and minimalistic image viewer'
 arch=('x86_64')
