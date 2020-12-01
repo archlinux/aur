@@ -1,0 +1,17 @@
+pkgbase = bt-tracker-add
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = manual-tracker-add.sh
+	source = tracker-add-auto-router.sh
+	source = tracker-add-auto.sh
+	source = transmission-tracker-add.service
+	md5sums = bd87e85da1c673818a166d9a851b087b
+	md5sums = fa818c0c2dee082f4988c69687e26227
+	md5sums = 4d8651c5829d3b5b721b554d4621b2be
+	md5sums = b0692989c320591dfa69c4ab9395cc4b
+
+pkgname = bt-tracker-add
+

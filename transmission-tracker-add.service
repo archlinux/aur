@@ -1,0 +1,18 @@
+[Unit]
+Description=transmission tracker add
+#Requires=network.target
+
+[Service]
+### use non root user example below:
+#User=debian-transmission
+Type=simple
+ExecStart=/usr/bin/tracker-add-auto.sh
+ExecStop=/bin/kill -s TERM $MAINPID
+ExecStopPost=/bin/rm -f /tmp/TTAA.*.lock
+KillMode=control-group
+StandardOutput=null
+CPUSchedulingPolicy=idle
+Nice=19
+
+[Install]
+WantedBy=multi-user.target
