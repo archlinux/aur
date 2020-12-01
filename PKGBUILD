@@ -22,14 +22,13 @@ _bldtype=Release
 
 pkgname='mozc-ut-common'
 pkgver=${_mozcver}.${_utdicdate}
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
 arch=('i686' 'x86_64')
 url='https://github.com/google/mozc'
 license=('custom')
-depends=('qt5-base' 'zinnia')
+depends=('qt5-base')
 makedepends=('clang' 'git' 'gtk2' 'ninja' 'pkgconf' 'python' 'python-six')
-optdepends=('tegaki-models-zinnia-japanese: character models for the handwriting tool')
 conflicts=('mozc' 'mozc-ut' 'mozc-ut2' 'mozc-neologd-ut' 'mozc-neologd-ut+ut2' 'mozc-ut-unified' 'mozc-ut-united')
 provides=("mozc=${_mozcver}" "mozc-ut=${_mozcver}.${_utdicdate}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
@@ -64,7 +63,7 @@ build() {
 
     _targets='server/server.gyp:mozc_server gui/gui.gyp:mozc_tool'
 
-    GYP_DEFINES='use_libzinnia=1 document_dir=/usr/share/licenses/mozc'
+    GYP_DEFINES='document_dir=/usr/share/licenses/mozc'
 
     python build_mozc.py gyp --target_platform=Linux
     python build_mozc.py build -c ${_bldtype} ${_targets}

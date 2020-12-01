@@ -1,7 +1,7 @@
 pkgbase = mozc-ut-common
 	pkgdesc = The Open Source edition of Google Japanese Input bundled with the UT dictionary
 	pkgver = 2.26.4206.102.20201129
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/mozc
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,6 @@ pkgbase = mozc-ut-common
 	makedepends = python
 	makedepends = python-six
 	depends = qt5-base
-	depends = zinnia
-	optdepends = tegaki-models-zinnia-japanese: character models for the handwriting tool
 	provides = mozc=2.26.4206.102
 	provides = mozc-ut=2.26.4206.102.20201129
 	conflicts = mozc
