@@ -54,8 +54,8 @@ build() {
 package() {
 	cd "ytmdl-${pkgver}"
 	python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
-	install -D "${pkgdir}/share/bash-completion/completions/ytmdl.bash" \
+	install -Dm644 "${pkgdir}/share/bash-completion/completions/ytmdl.bash" \
 	   	"${pkgdir}/usr/share/bash-completion/completions/ytmdl"
-	install -D "${pkgdir}/usr/share/zsh/functions/Completion/Unix/ytmdl.zsh" \
-		"${pkgdir}/usr/share/zsh/site-functions/ytmdl"
+	install -Dm644 "${pkgdir}/usr/share/zsh/functions/Completion/Unix/ytmdl.zsh" \
+		"${pkgdir}/usr/share/zsh/site-functions/_ytmdl"
 }
