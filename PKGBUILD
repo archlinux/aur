@@ -18,7 +18,7 @@ prepare(){
 }
 
 package() {
-	cd "${srcdir}/${conflicts}-${pkgver}pre1"
+	cd "${srcdir}/${conflicts}-${pkgver}pre2"
 
 	python3 setup.py install --root "${pkgdir}" --catalogs=/etc/xml/docbook-xml
 	sed -i -e "s,${pkgdir},," -e "s,#!/usr/bin/env python,#!/usr/bin/env python," \
