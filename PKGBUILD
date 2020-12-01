@@ -6,7 +6,7 @@
 
 #  printf "'SKIP'%.0s\n" {1..43}
 pkgname=ossia-score-git
-pkgver=r8571.6a4348ab9
+pkgver=r8572.4a1fefb96
 pkgrel=1
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts (git master)"
 arch=('x86_64')
@@ -211,5 +211,7 @@ build() {
 package() {
   cd "$srcdir/build"
   cmake -DCMAKE_INSTALL_DO_STRIP=1 -DCOMPONENT=OssiaScore -P cmake_install.cmake
+  rm -rf "$pkgdir/usr/share/faust"
+
   install -D -m644 "$srcdir/$_gitname/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
