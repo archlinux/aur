@@ -1,6 +1,6 @@
 pkgbase = sddm-kcm-git
 	pkgdesc = KDE Config Module for SDDM
-	pkgver = 5.4.95.7.ga208c02
+	pkgver = 5.19.90.4.g48dae08
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kdereview/sddm-kcm/
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = sddm-kcm-git
 	depends = kio
 	depends = libxcursor
 	depends = sddm
+	depends = knewstuff
 	provides = sddm-kcm
 	conflicts = sddm-kcm
 	source = git+https://invent.kde.org/plasma/sddm-kcm.git
