@@ -3,16 +3,16 @@
 # Contributor: Laurent Hofer <laurenth at laurenth dot net>
 
 pkgname=brickd
-pkgver=2.4.2
+pkgver=2.4.3
 _pkgver=${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc="a brick daemon for tinkerforge brick(let)s"
 url="http://www.tinkerforge.com/"
 license=("GPL2")
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('libusb')
 source=(https://download.tinkerforge.com/apt/debian/pool/main/t/tinkerforge-${pkgname}/tinkerforge-${pkgname}_${_pkgver}.tar.xz brickd.install)
-sha256sums=('3eb52eb3cde51a6130b42d5872b412c1f76af5b9a7ed97955f7255f9160a72a6'
+sha256sums=('2172bae827bdde157fddd889a3258b3d3f63d463a3733bc67a19226ad5d1892a'
             'c70f47a66e5c538e255bfd93111fe1a4ea15894db9c377ed133f8a0351403589')
 install='brickd.install'
 build() {
