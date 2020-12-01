@@ -1,19 +1,19 @@
 pkgbase = gping-bin
 	pkgdesc = Ping, but with a graph
-	pkgver = 0.1.7
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/orf/gping
 	arch = x86_64
 	license = MIT
 	depends = iputils
 	provides = gping
 	conflicts = gping
-	source_x86_64 = gping-bin-0.1.7.tar.gz::https://github.com/orf/gping/releases/download/v0.1.7/gping-Linux-x86_64.tar.gz
-	source_x86_64 = gping-bin-0.1.7-LICENSE::https://github.com/orf/gping/raw/v0.1.7/LICENSE
-	source_x86_64 = gping-bin-0.1.7-readme.md::https://github.com/orf/gping/raw/v0.1.7/readme.md
-	sha512sums_x86_64 = 4abe3852b096b254848949482d0b9637fd8ba666aaaf5d67c966ba2bb2626c8cde70b480bd6c79fd7ab629012723638b8686c08439ac9e6da96b5134231a0c73
+	source_x86_64 = gping-bin-1.0.1.tar.gz::https://github.com/orf/gping/releases/download/v1.0.1/gping-Linux-x86_64.tar.gz
+	source_x86_64 = gping-bin-1.0.1-LICENSE::https://github.com/orf/gping/raw/v1.0.1/LICENSE
+	source_x86_64 = gping-bin-1.0.1-readme.md::https://github.com/orf/gping/raw/v1.0.1/readme.md
+	sha512sums_x86_64 = 2b6112cd24e46858016b39352dc7e47c936886f2822a92b05715a9cccf8a95aa839d4726b52b581088172923e9d7e1e9954bd8e1867acadb90b51d01957f3a30
 	sha512sums_x86_64 = 372499ab23419bfb2f1644f523d8ba1ce9c280e87795db6bf62673e7891394c51846e3f427c52e0603837b82dbc9399d0f4a25fac016a812e09fc54cf6c3a88d
-	sha512sums_x86_64 = 80ca73521502d20e3c4fa4f41895da180cc113b775b21287eb8cd9decedd1fa29235ce8c3b77d1b84a34b1da01b2b4aacaaf4a3b80d9eb950f006fbe69187d48
+	sha512sums_x86_64 = 7b202ca799931d51d1ae47e5519b572fa497d00b4870992a823b1a3fd3ce2076acff6be79ed065499199d156117dd379c4a2196f50b3cbd48c23ab509f8afc8f
 
 pkgname = gping-bin
 
