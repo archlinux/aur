@@ -1,0 +1,18 @@
+pkgbase = python-svgpathtools-git
+	pkgdesc = manipulate and analyze SVG Path objects and Bezier curves
+	pkgver = r179.45dc873
+	pkgrel = 1
+	url = https://github.com/mathandy/svgpathtools
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-svgwrite
+	provides = python-svgpathtools
+	conflicts = python-svgpathtools
+	source = python-svgpathtools::git+https://github.com/mathandy/svgpathtools.git
+	md5sums = SKIP
+
+pkgname = python-svgpathtools-git
+
