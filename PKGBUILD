@@ -14,8 +14,8 @@ backup=(etc/xray/config.json)
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/XTLS/Xray-core/releases/download/v$pkgver/Xray-linux-64.zip"
-    "LICENSE::https://raw.githubusercontent.com/XTLS/Xray-core/v$pkgver/LICENSE"
+    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/Xray-linux-64.zip"
+    "LICENSE::https://raw.githubusercontent.com/XTLS/Xray-core/v${pkgver}/LICENSE"
     "config.json"
     "vpoint_socks_vmess.json"
     "vpoint_vmess_freedom.json"
@@ -29,19 +29,17 @@ sha512sums=(
 )
 
 prepare() {
-  cd $srcdir
+  cd "${srcdir}"
   sed -i 's|/usr/local/bin|/usr/bin|;s|/usr/local/etc|/etc|' systemd/system/*.service
   sed -i '/ExecStart/i\Environment=XRAY_LOCATION_ASSET=/usr/share/v2ray' systemd/system/*.service
 }
 
 
 package() {
-  cd $startdir
-  install -Dm644 *.json -t "$pkgdir"/etc/xray/
-
-  cd $srcdir
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/xray/LICENSE
-  install -Dm644 systemd/system/xray.service "$pkgdir"/usr/lib/systemd/system/xray.service
-  install -Dm644 systemd/system/xray@.service "$pkgdir"/usr/lib/systemd/system/xray@.service
-  install -Dm755 xray -t "$pkgdir"/usr/bin/
+  cd "${srcdir}"
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/xray/LICENSE
+  install -Dm644 systemd/system/xray.service "${pkgdir}"/usr/lib/systemd/system/xray.service
+  install -Dm644 systemd/system/xray@.service "${pkgdir}"/usr/lib/systemd/system/xray@.service
+  install -Dm644 *.json -t "${pkgdir}"/etc/xray/
+  install -Dm755 xray -t "${pkgdir}"/usr/bin/
 }
