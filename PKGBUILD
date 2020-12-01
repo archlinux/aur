@@ -9,6 +9,7 @@ url="https://github.com/jketterl/csdr"
 license=('GPL3')
 depends=('fftw')
 makedepends=('git')
+conflicts=('csdr')
 provides=('csdr')
 source=("$pkgname"::'git://github.com/jketterl/csdr.git')
 md5sums=('SKIP')

@@ -9,6 +9,7 @@ pkgbase = csdr-jketterl-git
 	makedepends = git
 	depends = fftw
 	provides = csdr
+	conflicts = csdr
 	source = csdr-jketterl-git::git://github.com/jketterl/csdr.git
 	md5sums = SKIP
 
