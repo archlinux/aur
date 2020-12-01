@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="ayatana-indicator-printers"
-pkgver="0.8.0"
+pkgver="0.8.1"
 pkgrel="1"
 pkgdesc="Ayatana Indicator showing active print jobs"
 arch=("i686" "x86_64" "pentium4")
@@ -11,7 +11,7 @@ depends=("cups" "libayatana-indicator")
 makedepends=("intltool" "mate-common" "glib2" "gtk3" "libdbusmenu-glib" "libdbusmenu-gtk3" "libayatana-indicator" "libcups" "systemd")
 optdepends=("system-config-printer")
 source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("be037f075b3825655bb63ae92da2091d")
+md5sums=("500acc2692671bdae86578523a74deb1")
 options=("!emptydirs")
 
 prepare()
