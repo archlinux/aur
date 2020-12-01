@@ -1,19 +1,24 @@
-commit a59918e2547f87e2cd2cbfaa3f0aeb96951cb5b9
-Author: Daniel M. Capella <polyzen@archlinux.org>
-Date:   Tue Aug 4 18:30:54 2020 -0400
+From aece46df8cdb10eb92d5733ff34e4923fd03832e Mon Sep 17 00:00:00 2001
+From: "Daniel M. Capella" <polyzen@archlinux.org>
+Date: Tue, 4 Aug 2020 18:30:54 -0400
+Subject: [PATCH] Global install
 
-    Global install
+---
+ src/swapper.rs   |  3 +--
+ tmux-thumbs.sh   |  6 ++----
+ tmux-thumbs.tmux | 10 +---------
+ 3 files changed, 4 insertions(+), 15 deletions(-)
 
 diff --git a/src/swapper.rs b/src/swapper.rs
-index a7ef585..2c6a988 100644
+index 05c1365..8ba0b7b 100644
 --- a/src/swapper.rs
 +++ b/src/swapper.rs
-@@ -192,10 +192,9 @@ impl<'a> Swapper<'a> {
+@@ -215,10 +215,9 @@ impl<'a> Swapper<'a> {
  
      // NOTE: For debugging add echo $PWD && sleep 5 after tee
      let pane_command = format!(
--        "tmux capture-pane -t {} -p{} | {}/target/release/thumbs -f '%U:%H' -t {} {}; tmux swap-pane -t {}; tmux wait-for -S {}",
-+        "tmux capture-pane -t {} -p{} | thumbs -f '%U:%H' -t {} {}; tmux swap-pane -t {}; tmux wait-for -S {}",
+-        "tmux capture-pane -t {} -p{} | {}/target/release/thumbs -f '%U:%H' -t {} {}; tmux swap-pane -t {} {}; tmux wait-for -S {}",
++        "tmux capture-pane -t {} -p{} | thumbs -f '%U:%H' -t {} {}; tmux swap-pane -t {} {}; tmux wait-for -S {}",
          active_pane_id,
          scroll_params,
 -        self.dir,
@@ -70,3 +75,6 @@ index 4fc9355..dc03d1d 100755
 -  tmux split-window "cd ${CURRENT_DIR} && cargo build --release --target-dir=target && echo 'Press any key to continue...' && read -k1"
 -fi
 +tmux bind-key "${THUMBS_KEY}" run-shell -b /usr/share/thumbs/tmux-thumbs.sh
+-- 
+2.29.2
+
