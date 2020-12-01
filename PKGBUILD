@@ -4,7 +4,7 @@ _gitname=fritzbox_exporter
 _pkgname=prometheus-fritzbox-exporter
 pkgname=${_pkgname}-sberk42-git
 pkgver=r75.fd48163
-pkgrel=1
+pkgrel=2
 pkgdesc="Prometheus UPnP exporter for Fritz!Box routers (sberk42 fork)"
 arch=('x86_64')
 url="https://github.com/sberk42/fritzbox_exporter"
@@ -30,7 +30,16 @@ pkgver() {
 build() {
   cd "$srcdir/$_gitname"
 
-  GOPATH="$srcdir" go get github.com/sberk42/fritzbox_exporter
+  GOPATH="$srcdir" go get \
+    -trimpath \
+    -buildmode=pie \
+    -ldflags "-extldflags ${LDFLAGS}
+      -X github.com/prometheus/common/version.Version=${pkgver} \
+      -X github.com/prometheus/common/version.Revision=${pkgver} \
+      -X github.com/prometheus/common/version.Branch=tarball \
+      -X github.com/prometheus/common/version.BuildUser=someone@builder \
+      -X github.com/prometheus/common/version.BuildDate=$(date -d@"${SOURCE_DATE_EPOCH}" +%Y%m%d-%T)" \
+    github.com/sberk42/fritzbox_exporter
 }
 
 package() {
