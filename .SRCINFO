@@ -1,0 +1,23 @@
+pkgbase = python-espnet-model-zoo-git
+	pkgdesc = Manage pretrained models created by ESPnet toolkit
+	pkgver = 0.0.0a20.r117
+	pkgrel = 1
+	url = https://github.com/espnet/espnet_model_zoo
+	arch = any
+	license = Apache 2.0
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python>=3.7
+	depends = python-numpy
+	depends = python-tqdm
+	depends = python-requests
+	depends = python-pandas
+	depends = python-espnet
+	provides = python-espnet-model-zoo
+	conflicts = python-espnet-model-zoo
+	conflicts = python-espnet-model-zoo-git
+	source = python-espnet-model-zoo-git::git+https://github.com/espnet/espnet_model_zoo
+	md5sums = SKIP
+
+pkgname = python-espnet-model-zoo-git
+
