@@ -2,8 +2,8 @@
 # Contributor: Shaber
 
 pkgname=corepins
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="A bookmarking app from the CoreApps family."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('qt5-base' 'libcprime>=2.7.1')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('7643978b744777803c06205d7e5e53af')
+md5sums=('e71c12b4f576a2adb8e3b640987a47cc')
 
 prepare() {
   mkdir -p build
