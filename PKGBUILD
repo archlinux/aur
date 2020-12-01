@@ -17,6 +17,11 @@ sha256sums=("f8d7e3242315683ad45a1c76a356eaa65633771bbc1b9a1509e07785581766ee"
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
+	
+	git remote add origin https://github.com/bamless/jstar.git
+	git checkout v${pkgver}
+	git submodule update --init
+
 	mkdir -p build && cd build
 	
 	cmake -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr ../
