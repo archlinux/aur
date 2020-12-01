@@ -1,12 +1,12 @@
 pkgbase = fluxv2-bin
 	pkgdesc = Command line utility for assembling Kubernetes CD pipelines the GitOps way.
-	pkgver = 0.4.0
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/fluxcd/flux2
 	arch = x86_64
 	license = Apache
-	source = fluxv2-bin-0.4.0.tar.gz::https://github.com/fluxcd/flux2/releases/download/v0.4.0/flux_0.4.0_linux_amd64.tar.gz
-	sha256sums = 9a14903925b65b54f03e884ee8b63ff1b8bb63a9bac70dedc09b295aa38912ac
+	source = fluxv2-bin-0.4.2.tar.gz::https://github.com/fluxcd/flux2/releases/download/v0.4.2/flux_0.4.2_linux_amd64.tar.gz
+	sha256sums = f5d82a8d35fcfed8e484078c144879f08f31476d0e59394a7752b6e58be913ac
 
 pkgname = fluxv2-bin
 
