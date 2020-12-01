@@ -1,6 +1,6 @@
 # Maintainer:  <yatsen71@oarchbox1>
 pkgname=bt-tracker-add
-pkgver=2012.12
+pkgver=2020.12
 pkgrel=1
 epoch=
 pkgdesc="Automatically checks new torrents and adds trackers"
