@@ -1,0 +1,2 @@
+z /etc/fileshelter.conf 0640 root fileshelter
+d /var/fileshelter 0750 fileshelter fileshelter -
