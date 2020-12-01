@@ -1,0 +1,1 @@
+/usr/lib/p7zip/7z "$@"
