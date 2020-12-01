@@ -15,7 +15,7 @@ backup=(etc/xray/config.json)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
-    "Xray-core::git+https://github.com/XTLS/Xray-core.git"
+    "Xray-core::git+${url}.git"
     "config.json"
     "vpoint_socks_vmess.json"
     "vpoint_vmess_freedom.json"
@@ -32,12 +32,12 @@ sha512sums=(
 )
 
 pkgver() {
-    cd $srcdir/Xray-core
+    cd "${srcdir}"/Xray-core
     printf "%s" "$(git describe --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-  cd $srcdir/Xray-core
+  cd "${srcdir}"/Xray-core
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external"
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -46,17 +46,17 @@ build() {
 }
 
 check() {
-  cd $srcdir/Xray-core
+  cd "${srcdir}"/Xray-core
   go test -p 1 -tags json -v -timeout 30m github.com/xtls/xray-core/v1/core/...
 }
 
 package() {
-  cd $startdir
-  install -Dm644 xray.service "$pkgdir"/usr/lib/systemd/system/xray.service
-  install -Dm644 xray@.service "$pkgdir"/usr/lib/systemd/system/xray@.service
-  install -Dm644 *.json -t "$pkgdir"/etc/xray/
+  cd "${srcdir}"
+  install -Dm644 xray.service "${pkgdir}"/usr/lib/systemd/system/xray.service
+  install -Dm644 xray@.service "${pkgdir}"/usr/lib/systemd/system/xray@.service
+  install -Dm644 *.json -t "${pkgdir}"/etc/xray/
 
-  cd $srcdir/Xray-core
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/xray/LICENSE
-  install -Dm755 xray -t "$pkgdir"/usr/bin/
+  cd "${srcdir}"/Xray-core
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/xray/LICENSE
+  install -Dm755 xray -t "${pkgdir}"/usr/bin/
 }
