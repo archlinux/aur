@@ -8,13 +8,13 @@
 
 
 ## Helpful internal stuff
-_commit=e769997e0eff37676c78fb53b122ff79b2fb99b2
+_commit=91cc1e19ef34aeb12888b697fefa52907f1a834d
 _major=2
 _minor=26
-_build=4200
-_revision=100
+_build=4206
+_revision=102
 _mozcver=${_major}.${_minor}.${_build}.${_revision}
-_utdicdate=20201110
+_utdicdate=20201129
 _utdicrel=1
 _bldtype=Release
 
