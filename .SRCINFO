@@ -5,7 +5,7 @@ pkgbase = sfcgal
 	url = https://gitlab.com/Oslandia/SFCGAL
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = GPL3
 	makedepends = git
 	makedepends = cmake
 	depends = cgal>=4.1
@@ -14,8 +14,8 @@ pkgbase = sfcgal
 	depends = mpfr
 	depends = openscenegraph
 	provides = sfcgal
-	source = git+https://gitlab.com/Oslandia/SFCGAL#commit=823db7a318b8841f8296e80036ef993ddf19ebf5
-	sha256sums = SKIP
+	source = https://gitlab.com/Oslandia/SFCGAL/-/archive/v1.3.9/SFCGAL-v1.3.9.tar.gz
+	sha256sums = 2451cb6df24853c7e59173eec0068e3263ab625fcf61add4624f8bf8366ae4e3
 
 pkgname = sfcgal
 

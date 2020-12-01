@@ -7,21 +7,15 @@ pkgrel=2
 pkgdesc="Wrapper around the CGAL library that intents to implement 2D and 3D operations on OGC standards models"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/Oslandia/SFCGAL"
-license=('LGPL')
+license=('GPL3')
 provides=('sfcgal')
 depends=('cgal>=4.1' 'boost' 'gmp' 'mpfr' 'openscenegraph')
 makedepends=('git' 'cmake')
-_commit=823db7a318b8841f8296e80036ef993ddf19ebf5 # tags/1.3.9^0
-source=("git+${url}#commit=${_commit}")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/SFCGAL"
-  git describe --tags | sed 's/-/+/g'
-}
+source=("https://gitlab.com/Oslandia/SFCGAL/-/archive/v${pkgver}/SFCGAL-v${pkgver}.tar.gz")
+sha256sums=('2451cb6df24853c7e59173eec0068e3263ab625fcf61add4624f8bf8366ae4e3')
 
 build() {
-  cd "${srcdir}/SFCGAL"
+  cd "${srcdir}/SFCGAL-v${pkgver}"
   mkdir -p build && cd build
   cmake -Wno-dev \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -34,7 +28,7 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/SFCGAL/build
+  cd ${srcdir}/SFCGAL-v${pkgver}/build
   make DESTDIR=${pkgdir} install
   # Remove conflict with cgal package
   rm -rf ${pkgdir}/usr/include/CGAL
