@@ -5,8 +5,8 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.16.3_34.1.0-1"
-_minecraft_ver_latest="1.16.3"
+_ver="1.16.4_35.1.0-1"
+_minecraft_ver_latest="1.16.4"
 
 IFS="-" read -ra _ver_temp <<< "$_ver"
 IFS="_" read -ra _pkgver_temp <<< "${_ver_temp[0]}"
@@ -50,7 +50,7 @@ sha512sums=('cbc7a567cd254e48e80aa97b62b6f2439ec09cde957ca0643a8ab323bb6bbdcf34f
             'd6bde61a7aa479b85e35b4a3eccb9b3237a6c97f8919b3d704434f1df15672b74c7ae9ca9473eea6a0593e6e80892a2510782115185c1b7fe332720ccb78a7bd'
             'e8b6fa8da94f11648ad3fa024d5238ab96d533a20fd1bcfd1c0e23cd1f18827ed6efc9edbdf8b2c7dd7095f2383131b2e6e641ba64d1cbce2f3ee109540bc818'
             '76f038abf51fe1ff503118611b3e2f931349b0be9d444a521703b82406d8602099851e4006887c88d24468b6ea72e5ba1b63e8846420fb45e5f68f14aa9378d4'
-            '45c6ce0f6f47691c4bd392748047ca5ddd03432fbec10686bcd2c3948bfb90d3d4e4f0de2099092830264b821dacc32b8a16ec62d66b1bdede2f93772b54761c'
+            '68f282ddd6d334453b92adf917543fd7cb225896032f0330829e76fefcbd142165a60a18849614c6a6c62dfc3f4a178a86bc6ff7dcd7883461143d1c668ecc35'
             '3da10d63a5edee4bc8bcd3d5c2730771062f7fa58626a8c51635fbe96bfbceca3ff6937cfaad3e17f16a94ef95137f7c78cc6dac1c846a6b9a8f18d3c6355973')
 
 # -- Forge Installer -- #
