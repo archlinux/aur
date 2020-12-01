@@ -2,7 +2,7 @@
 
 pkgname=zettlr
 pkgver=1.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
