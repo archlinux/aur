@@ -1,36 +1,43 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
-# Useful commands : 
+# Useful commands :
 # git submodule foreach --recursive --quiet 'git remote -v' | grep origin | grep -v push | awk '{ print "\"git+" $2 "\"" }'
 
-# git submodule foreach  --quiet 'module=$(echo $name | rev | cut -d"/" -f1 | rev) ; echo "git config submodule.$path.url \$srcdir/$module"' 
+# git submodule foreach  --quiet 'module=$(echo $name | rev | cut -d"/" -f1 | rev) ; echo "git config submodule.$path.url \$srcdir/$module"'
 
 #  printf "'SKIP'%.0s\n" {1..43}
 pkgname=ossia-score-git
-pkgver=r7780.d05985277
+pkgver=r8571.6a4348ab9
 pkgrel=1
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts (git master)"
 arch=('x86_64')
 url="https://ossia.io"
 license=('GPLv3')
-depends=('boost' 'qt5-base' 'qt5-imageformats' 'qt5-svg' 'qt5-websockets' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-multimedia' 'qt5-declarative' 'ffmpeg' 'portaudio' 'jack')
+depends=('boost' 'qt5-base' 'qt5-imageformats' 'qt5-svg' 'qt5-websockets'
+         'qt5-quickcontrols2' 'qt5-serialport' 'qt5-multimedia' 'qt5-declarative' 'ffmpeg' 'portaudio' 'jack')
 makedepends=('git' 'cmake' 'qt5-tools')
-optdepends=('faust' 'lilv' 'suil' 'sdl2')
+optdepends=('faust' 'lilv' 'suil' 'sdl2' 'libfreenect2' 'qt5-shadertools-git')
 provides=('ossia-score-git')
 conflicts=('ossia-score')
 replaces=('i-score')
-source=('git+https://github.com/OSSIA/score.git'
+
+source=(
+'git+https://github.com/OSSIA/score.git'
+"git+https://github.com/jcelerier/QCodeEditor"
 "git+https://github.com/OSSIA/libossia.git"
 "git+https://github.com/OculusVR/Flicks"
 "git+https://github.com/Microsoft/GSL"
 "git+https://github.com/jcelerier/RtMidi17"
 "git+https://github.com/jcelerier/Servus"
+"git+https://github.com/jcelerier/dnssd"
 "git+https://github.com/jcelerier/SmallFunction"
 "git+https://github.com/chriskohlhoff/asio"
 "git+https://github.com/ClaasBontus/bitset2"
 "git+https://github.com/edouarda/brigand"
 "git+https://github.com/Chobolabs/chobo-shl"
 "git+https://github.com/cameron314/concurrentqueue"
+"git+https://github.com/cpp-taskflow/cpp-taskflow"
 "git+https://github.com/mackron/dr_libs"
+"git+https://github.com/dr-soft/miniaudio.git"
 "git+https://github.com/ArashPartow/exprtk"
 "git+https://github.com/jcelerier/flat"
 "git+https://github.com/jcelerier/flat_hash_map"
@@ -44,15 +51,14 @@ source=('git+https://github.com/OSSIA/score.git'
 "git+https://github.com/jcelerier/nano-signal-slot"
 "git+https://github.com/jcelerier/oscpack"
 "git+https://github.com/pybind/pybind11"
-"git+https://github.com/wjakob/clang-cindex-python3"
 "git+https://github.com/avaneev/r8brain-free-src"
+"git+https://github.com/maxbachmann/rapidfuzz-cpp.git"
 "git+https://github.com/miloyip/rapidjson"
 "git+https://github.com/google/googletest.git"
 "git+https://github.com/cameron314/readerwriterqueue"
 "git+https://github.com/jcelerier/rnd"
 "git+https://github.com/jcelerier/rubberband/"
 "git+https://github.com/gabime/spdlog"
-"git+https://github.com/jcelerier/tbb"
 "git+https://github.com/eggs-cpp/variant"
 "git+https://github.com/jcelerier/verdigris"
 "git+https://github.com/jcelerier/weakjack"
@@ -62,62 +68,64 @@ source=('git+https://github.com/OSSIA/score.git'
 "git+https://github.com/OSSIA/cmake-modules"
 "git+https://github.com/jcelerier/magicitems"
 "git+https://github.com/jcelerier/phantomstyle"
-"git+https://github.com/jcelerier/zipdownloader.git"
+"git+https://github.com/jcelerier/zipdownloader"
 "git+https://github.com/Velron/doxygen-bootstrapped"
 "git+https://github.com/jcelerier/QProgressIndicator"
 "git+https://github.com/jcelerier/Qt-Color-Widgets.git"
-"git+https://github.com/KDE/qqc2-desktop-style"
 )
+
 sha256sums=(
 'SKIP'
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
 )
 
 _gitname=score
@@ -129,17 +137,18 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  git config submodule.3rdparty/libossia.url $srcdir/libossia
-  git config submodule.Documentation/Doxygen/doxygen-bootstrapped.url $srcdir/doxygen-bootstrapped
-  git config submodule.src/3rdparty/phantomstyle.url $srcdir/phantomstyle
-  git config submodule.src/3rdparty/magicitems.url $srcdir/magicitems
-  git config submodule.src/3rdparty/zipdownloader.url $srcdir/zipdownloader
+  git config submodule.3rdparty/QCodeEditor.url $srcdir/QCodeEditor
+  git config submodule.3rdparty/libossia.url $srcdir/API
+  git config submodule.3rdparty/magicitems.url $srcdir/magicitems
+  git config submodule.3rdparty/phantomstyle.url $srcdir/phantomstyle
+  git config submodule.3rdparty/zipdownloader.url $srcdir/zipdownloader
+  git config submodule.docs/Doxygen/doxygen-bootstrapped.url $srcdir/doxygen-bootstrapped
   git config submodule.src/lib/3rdparty/QProgressIndicator.url $srcdir/QProgressIndicator
   git config submodule.src/lib/3rdparty/Qt-Color-Widgets.url $srcdir/Qt-Color-Widgets
-  git config submodule.src/lib/resources/desktopqqc2style.url $srcdir/desktopqqc2style
+
   (
     cd 3rdparty/libossia
-    git config submodule.3rdparty/CicmWrapper.url $srcdir/CicmWrapper
+    git config submodule.3rdparty/Flicks.url $srcdir/Flicks
     git config submodule.3rdparty/GSL.url $srcdir/GSL
     git config submodule.3rdparty/RtMidi17.url $srcdir/RtMidi17
     git config submodule.3rdparty/Servus.url $srcdir/Servus
@@ -149,34 +158,35 @@ build() {
     git config submodule.3rdparty/brigand.url $srcdir/brigand
     git config submodule.3rdparty/chobo-shl.url $srcdir/chobo-shl
     git config submodule.3rdparty/concurrentqueue.url $srcdir/concurrentqueue
+    git config submodule.3rdparty/cpp-taskflow.url $srcdir/cpp-taskflow
+    git config submodule.3rdparty/dr_libs.url $srcdir/dr_libs
     git config submodule.3rdparty/exprtk.url $srcdir/exprtk
     git config submodule.3rdparty/flat.url $srcdir/flat
     git config submodule.3rdparty/flat_hash_map.url $srcdir/flat_hash_map
     git config submodule.3rdparty/fmt.url $srcdir/fmt
     git config submodule.3rdparty/frozen.url $srcdir/frozen
     git config submodule.3rdparty/hopscotch-map.url $srcdir/hopscotch-map
-    git config submodule.3rdparty/jni_hpp.url $srcdir/jni.hpp
     git config submodule.3rdparty/libartnet.url $srcdir/libartnet
+    git config submodule.3rdparty/libsamplerate.url $srcdir/libsamplerate
     git config submodule.3rdparty/max-sdk.url $srcdir/max-sdk
     git config submodule.3rdparty/multi_index.url $srcdir/multi_index
     git config submodule.3rdparty/nano-signal-slot.url $srcdir/nano-signal-slot
     git config submodule.3rdparty/oscpack.url $srcdir/oscpack
     git config submodule.3rdparty/pybind11.url $srcdir/pybind11
+    git config submodule.3rdparty/r8brain-free-src.url $srcdir/r8brain-free-src
+    git config submodule.3rdparty/rapidfuzz-cpp.url $srcdir/rapidfuzz-cpp
     git config submodule.3rdparty/rapidjson.url $srcdir/rapidjson
     git config submodule.3rdparty/readerwriterqueue.url $srcdir/readerwriterqueue
+    git config submodule.3rdparty/rnd.url $srcdir/rnd
+    git config submodule.3rdparty/rubberband.url $srcdir/rubberband
     git config submodule.3rdparty/spdlog.url $srcdir/spdlog
-    git config submodule.3rdparty/tbb.url $srcdir/tbb
     git config submodule.3rdparty/variant.url $srcdir/variant
     git config submodule.3rdparty/verdigris.url $srcdir/verdigris
     git config submodule.3rdparty/weakjack.url $srcdir/weakjack
     git config submodule.3rdparty/websocketpp.url $srcdir/websocketpp
     git config submodule.3rdparty/whereami.url $srcdir/whereami
     git config submodule.3rdparty/wiiuse.url $srcdir/wiiuse
-    git config submodule.3rdparty/libsamplerate.url $srcdir/libsamplerate
-    git config submodule.3rdparty/rubberband.url $srcdir/rubberband
-    git config submodule.3rdparty/Flicks.url $srcdir/Flicks
-    git config submodule.3rdparty/rnd.url $srcdir/rnd
-    git config submodule.CMake/cmake-modules.url $srcdir/cmake-modules
+    git config submodule.cmake/cmake-modules.url $srcdir/cmake-modules
   )
 
   git checkout master
@@ -185,12 +195,17 @@ build() {
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
   cmake -Wno-dev \
-	-DSCORE_CONFIGURATION=static-release \
-	-DDEPLOYMENT_BUILD=1 \
-	-DCMAKE_SKIP_RPATH=ON \
-	-DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
-	"$srcdir/$_gitname"
-  cmake --build . --target all_unity
+	      -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_UNITY_BUILD=1 \
+        -DSCORE_PCH=0 \
+        -DSCORE_STATIC_PLUGINS=1 \
+        -DSCORE_DISABLED_PLUGINS="score-plugin-jit" \
+	      -DDEPLOYMENT_BUILD=1 \
+	      -DCMAKE_SKIP_RPATH=1 \
+	      -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+	      "$srcdir/$_gitname"
+
+  cmake --build .
 }
 
 package() {
