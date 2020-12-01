@@ -1,7 +1,7 @@
 pkgbase = gitlab-glab-bin
 	pkgdesc = An open source GitLab CLI tool written in Go
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/profclems/glab
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = gitlab-glab-bin
 	provides = gitlab-glab
 	conflicts = gitlab-glab
 	source = https://github.com/profclems/glab/releases/download/v1.12.0/glab_1.12.0_Linux_x86_64.tar.gz
-	sha256sums = 5c32c13e9ac376b44c6dc93f4a0d8b1873108cc2e6b945d70208e44b5af293c3
+	sha256sums = 5863a2c68d02ba7ef0932faa9f99e2ffce88017719b3a23e0e4a67f70566a628
 
 pkgname = gitlab-glab-bin
 
