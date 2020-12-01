@@ -13,12 +13,12 @@ sha256sums=('083eced510b7492ac7a1678e5fd68416cb3844e83a5153514ded1eb2414d885d')
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cargo test --release --target-dir=target
+  cargo test --release --locked --target-dir=target
 }
 
 build () {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cargo build --release --all-features --target-dir=target
+  cargo build --release --locked --all-features --target-dir=target
 }
 
 package() {
