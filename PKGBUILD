@@ -2,7 +2,7 @@
 # Contributor: Maxwell Anselm
 
 pkgname="gcs"
-pkgver=4.25.0
+pkgver=4.26.0
 pkgrel=1
 pkgdesc="WYSIWYG editor for building character sheets for GURPS 4th Edition"
 url="https://gurpscharactersheet.com"
@@ -10,7 +10,7 @@ license=("MPL2")
 arch=("x86_64")
 depends=("java-runtime")
 source=("$pkgname-$pkgver.deb::https://github.com/richardwilkes/gcs/releases/download/v$pkgver/gcs_$pkgver-1_amd64.deb")
-md5sums=("8d0cef49ca456935a30f82b25d18637b")
+md5sums=("419a2062ee08c07dea22ed759c619c41")
 
 prepare(){
  tar -xf "data.tar.xz"
