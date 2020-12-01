@@ -1,9 +1,10 @@
 # Maintainer: Derek Taylor (DistroTube) <derek@distrotube.com>
+# Contributor: Kunkgg <goukun07@gmail.com>
 pkgname=shell-color-scripts
 pkgver=0.1
 pkgrel=1
-pkgdesc="A collection of terminal color scripts.  A random color script is selected when you open bash or zsh."
-arch=(x86_64 i686)
+pkgdesc="A CLI for the collection of terminal color scripts. Included 52 beautiful terminal color scripts."
+arch=('i686' 'x86_64')
 url="https://gitlab.com/dwt1/shell-color-scripts.git"
 license=('MIT')
 groups=()
@@ -22,11 +23,14 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 package() {
-  cd "${pkgname}"  
-  rm -rf "${pkgdir}/opt/shell-color-scripts" || return 1
-  mkdir -p $pkgdir/opt/shell-color-scripts || return 1
-  cp -rf * $pkgdir/opt/shell-color-scripts || return 1
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-}
+    echo "$srcdir/$pkgname"
+	cd "$srcdir/$pkgname"
+    rm -rf "${pkgdir}/opt/${pkgname}/colorscripts"
+    mkdir -p "${pkgdir}/opt/${pkgname}/colorscripts"
 
+    install -Dm755 colorscripts/* -t "${pkgdir}/opt/${pkgname}/colorscripts"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm755 colorscript.sh "${pkgdir}"/usr/bin/colorscript.sh
+    install -Dm644 zsh_completion/_colorscript -t "${pkgdir}"/usr/share/zsh/site-functions
+}
