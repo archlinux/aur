@@ -1,6 +1,6 @@
 pkgbase = smag
 	pkgdesc = Easily create graphs from cli commands and view them in the terminal.
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/aantn/smag/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = smag
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
-	source = smag-0.5.3.tar.gz::https://github.com/aantn/smag//archive/v0.5.3.tar.gz
-	sha256sums = 6dcafcb7431b4b9822683d65aad436f1caedc5a0497695b81ec90cb4680f70e6
+	source = smag-0.5.4.tar.gz::https://github.com/aantn/smag//archive/v0.5.4.tar.gz
+	sha256sums = 083eced510b7492ac7a1678e5fd68416cb3844e83a5153514ded1eb2414d885d
 
 pkgname = smag
 
