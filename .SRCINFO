@@ -1,7 +1,7 @@
 pkgbase = qutebrowser-profile-git
 	pkgdesc = A simple wrapper script for qutebrowser that allows you to maintain different profiles
-	pkgver = 20200714.4dc3bfe
-	pkgrel = 2
+	pkgver = 20201130.55ff314
+	pkgrel = 1
 	url = https://github.com/jtyers/qutebrowser-profile
 	arch = any
 	license = MIT
