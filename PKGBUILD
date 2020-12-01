@@ -2,7 +2,7 @@
 pkgname=python-sentencepiece-git
 pkgver=.r637
 pkgrel=1
-pkgdesc='PyTorch Weighted Prediction Error'
+pkgdesc='Sentencepiece text tokenizer (Python version)'
 arch=('any')
 url='https://github.com/google/sentencepiece'
 license=('Apache 2.0')
