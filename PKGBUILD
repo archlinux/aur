@@ -3,7 +3,7 @@
 # Contributor: Bjoern Franke <bjo at nord-west.org>
 # Contributor: flan_suse
 pkgname=xfce-theme-greybird
-pkgver=3.22.12
+pkgver=3.22.13
 pkgrel=1
 pkgdesc="Desktop Suite for Xfce"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('elementary-xfce-icons: matching icon set; use the dark icon theme'
             'shimmer-wallpapers: contains the Greybird wallpaper, among others'
             'lib32-gtk-engine-murrine: required for multilib')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/shimmerproject/Greybird/archive/v$pkgver.tar.gz")
-sha256sums=('410804cd5daca33cbc5c7c4a179f3a334ced87f408e515fc5d9c083a04bec4bc')
+sha256sums=('2805205c20597d528e8850fc76c8f730e66469227d06982a4e05a2fbb9c4db96')
 
 build() {
 	arch-meson "Greybird-$pkgver" build
