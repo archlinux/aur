@@ -19,7 +19,7 @@ source_arm=(${pkgname}-${pkgver}-arm::"https://getfrp.sh/d/frpc_linux_arm")
 source_armv7h=(${pkgname}-${pkgver}-arm::"https://getfrp.sh/d/frpc_linux_arm")
 source_armv6h=(${pkgname}-${pkgver}-arm::"https://getfrp.sh/d/frpc_linux_arm")
 source_aarch64=(${pkgname}-${pkgver}-aarch64::"https://getfrp.sh/d/frpc_linux_arm64")
-md5sums=('c3675dc7b62fa2493991798745068042'
+md5sums=('SKIP'
          '1407d25307cd98902f60db064f2e2bc0'
          'a87e9ee64c87ab609d1e978adc6446e0'
          'd3f3b3c8368fdc692a8a7d71bf9ae5c8')
