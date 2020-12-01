@@ -1,0 +1,12 @@
+pkgbase = lynx-icons-theme
+	pkgdesc = Icons Theme para LynxOS
+	pkgver = 0.0.1
+	pkgrel = 2
+	url = https://gitlab.com/LynxOS/lit
+	arch = any
+	license = GPL
+	source = https://gitlab.com/LynxOS/lit/-/archive/0.0.1/lit-0.0.1.tar.gz
+	md5sums = 17b96f35398452fbc029341d3409cf97
+
+pkgname = lynx-icons-theme
+
