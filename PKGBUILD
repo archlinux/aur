@@ -9,7 +9,7 @@ url="https://gitgud.io/ring/imbpy"
 license=('custom:ISC')
 depends=('python')
 makedepends=('git' 'python-setuptools')
-source=("git+https://gitgud.io/ring/imbpy"
+source=("git+https://gitgud.io/ring/imbpy.git"
         "setup.py.patch")
 sha256sums=('SKIP'
             '4fc94e7c2dd2eebf135b76dbb2e3044fad688249f08bde8c28fe72a6e7785eba')
