@@ -6,7 +6,7 @@
     pkgname='ros-melodic-cartographer'
     pkgver='1.0.0'
     arch=('any')
-    pkgrel=2
+    pkgrel=3
     license=('Apache 2.0')
 
     ros_makedepends=(ros-melodic-catkin)
@@ -21,7 +21,7 @@
   gcc
   gflags
   eigen
-  ceres-solver
+  ceres-solver-legacy
   gmock)
 
     ros_depends=()
@@ -33,7 +33,7 @@
   lua52
   gflags
   eigen
-  ceres-solver)
+  ceres-solver-legacy)
     
     # Tarball version (faster download)
     _dir="cartographer-release-release-melodic-cartographer"
