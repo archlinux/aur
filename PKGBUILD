@@ -4,19 +4,20 @@
 # Contributor: Arthur Darcet <arthur.darcet@m4x.org>
 
 pkgname=mod_authnz_external
-pkgver=3.3.2
-pkgrel=2
-pkgdesc='Apache External Authentication Modules'
-arch=('i686' 'x86_64')
-url='https://github.com/phokz/mod-auth-external'
+_gitname=mod-auth-external
+pkgver=3.3.3
+pkgrel=1
+pkgdesc='External Authentication Module for Apache HTTP Server'
+arch=('x86_64')
+url="https://github.com/phokz/${_gitname}"
 license=('Apache')
 makedepends=('apache>=2.4.0')
 install=mod_authnz_external.install
-source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mod-auth-external/$pkgname-$pkgver.tar.gz)
-sha1sums=('c3b9b25b0c2043d1fd7ab4572a01a9c58f226fc1')
+source=(https://github.com/phokz/${_gitname}/archive/${pkgname}-${pkgver}.tar.gz)
+sha256sums=('21795bdcc6d671368871c9202ae64c729efca8a0055a7482a26a06f2e7131eff')
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  make build || return 1
+  cd ${srcdir}/${_gitname}-${pkgname}-${pkgver}
+  make build
   install -D -m755 .libs/mod_authnz_external.so $pkgdir/usr/lib/httpd/modules/mod_authnz_external.so
 }
