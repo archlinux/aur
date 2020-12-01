@@ -1,6 +1,6 @@
 pkgbase = python-wandb-git
-	pkgdesc = Pure Python module for reading and writing kaldi ark files
-	pkgver = 0.10.12.dev1.r3660
+	pkgdesc = Weights and Biases - organize and analyze machine learning experiments
+	pkgver = 0.10.12.dev1.r3662
 	pkgrel = 1
 	url = https://github.com/wandb/client
 	arch = any

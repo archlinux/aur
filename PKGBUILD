@@ -1,8 +1,8 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-wandb-git
-pkgver=0.10.12.dev1.r3660
+pkgver=0.10.12.dev1.r3662
 pkgrel=1
-pkgdesc='Pure Python module for reading and writing kaldi ark files'
+pkgdesc='Weights and Biases - organize and analyze machine learning experiments'
 arch=('any')
 url='https://github.com/wandb/client'
 license=('MIT')
