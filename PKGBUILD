@@ -1,19 +1,20 @@
-# Maintainer: Nils Czernia <nils[at]czserver.de>
+# Maintainer: Felix Bühler <account at buehler dot rocks>
+# Contirbutor: Nils Czernia <nils[at]czserver.de>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Hugo Doria <hugo@archlinux.org>
 
 pkgname=zenmap
 _pkgname=nmap
-pkgver=7.80
-pkgrel=3
+pkgver=7.91
+pkgrel=1
 pkgdesc="Graphical Nmap frontend and results viewer"
 url="https://nmap.org/"
 arch=("any")
 license=("GPL2")
 depends=("nmap" "pygtk")
 source=("https://nmap.org/dist/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=("fcfa5a0e42099e12e4bf7a68ebe6fde05553383a682e816a7ec9256ab4773faa")
+sha256sums=("18cc4b5070511c51eb243cdd2b0b30ff9b2c4dc4544c6312f75ce3a67a593300")
 
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}/${pkgname}"
