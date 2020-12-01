@@ -1,7 +1,7 @@
 pkgbase = libcprime
 	pkgdesc = A library for bookmarking, saving recent activites, managing settings of CoreApps.
-	pkgver = 4.0.0
-	pkgrel = 2
+	pkgver = 4.1.0
+	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/libcprime
 	arch = x86_64
 	arch = aarch64
@@ -10,8 +10,8 @@ pkgbase = libcprime
 	depends = qt5-base
 	depends = qt5-connectivity
 	depends = libnotify
-	source = https://gitlab.com/cubocore/coreapps/libcprime/-/archive/v4.0.0/libcprime-v4.0.0.tar.gz
-	md5sums = 2124981a6cfafb9eb5ba147625e7fbda
+	source = https://gitlab.com/cubocore/coreapps/libcprime/-/archive/v4.1.0/libcprime-v4.1.0.tar.gz
+	md5sums = 3222024b5ecc04230c7a906856b8b9e4
 
 pkgname = libcprime
 
