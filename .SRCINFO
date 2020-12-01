@@ -1,7 +1,7 @@
 pkgbase = vital-synth
 	pkgdesc = Powerful wavetable synthesizer with realtime modulation feedback. Vital is a MIDI enabled polyphonic music synthesizer with an easy to use parameter modulation system with real-time graphical feedback.
 	pkgver = 1.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://vital.audio
 	install = vital-synth.install
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = vital-synth
 	depends = libsecret>=0.7
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/altaway/VitalInstaller/releases/download/v1.0.3-3/VitalInstaller.deb
-	sha512sums_x86_64 = 7a38bf53df1f9ac61591ac4d117786f589091f1c34aa161e287f965d6c5e03b65dddc4034c3d787c9f10e0a216361f73bd64d046cc0968428a2d1cf7f924e01b
+	source_x86_64 = https://github.com/altaway/VitalInstaller/releases/download/v1.0.3-4/VitalInstaller.deb
+	sha512sums_x86_64 = e16cf3a43bf8c3f5e5d18ad23edb17629d95b9d0cbb2cef4ff0d5deb0197fafe7a702d63ee893dba31fe2e2e79e7a0c9fbc1d3ea0663d7234205c0bc98727db2
 
 pkgname = vital-synth
 
