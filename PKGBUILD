@@ -2,7 +2,7 @@
 # Co-Maintainer: Bradley Garrod <bradleybredgarrod@gmail.com>
 
 pkgname=gitlab-glab-bin
-pkgver=1.11.1
+pkgver=1.12.0
 pkgrel=1
 epoch=
 pkgdesc="An open source GitLab CLI tool written in Go"
