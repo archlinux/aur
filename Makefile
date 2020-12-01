@@ -6,4 +6,4 @@ all: .SRCINFO
 
 .PHONY: clean
 clean:
-	rm -rf pkg src silicon-*.pkg.tar.xz v*.tar.gz
+	rm -rf pkg src silicon-*.pkg.tar.zst silicon*.tar.gz
