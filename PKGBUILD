@@ -7,7 +7,7 @@ _srcname=linux-5.9
 _major=5.9
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=10
+_minor=11
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -30,18 +30,22 @@ source=(
   config         # the main kernel config file
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch
+  0003-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('48e1d46811155acd411966da164c76e5918b5d2140d129631d981ebe3f7f9ac5f340219f48506edb7c74c2deb0c083d8863612c6ca1a33721339f9de6774b010'
+b2sums=('113ad674b77fca621bcf79d87373abf4979aefba4071c49e3f8a1d8221eb9ef67da37193eb7e6dbcbe159674ec2efa19ad8346be3257de5dedccb5baaf138b2a'
         'SKIP'
-        '423d0e2fea39d54c9bbda532dce95f67c2736646b88515e72a3cea97842a25f4b2b4ef0aa2896d623bbc89eb6e8ca14f5b447030f190677601048816ae4a76e1'
+        'fbcf8b93e4a37e0f45c2de4275ecdfdb80ade1a6cf7e2b62cb331cce2d8fc247eedc14c5c37583b6e10cce58515ec3c9e541f21d067ee8d19567f9edcf065b62'
         'SKIP'
-        '834e3290b80055fb99855cebb175152d42800c0e4750e7e1c1e65448783772174c4b6d9194fea7d59a6b41dca8a438628b2692a308ccdfd2d1ced3e0af422d4c'
+        '5b3de497c291d115c19e1856d08ae16f8ceb27061374deb763a4391b98c4aa7bd7e7afb0461c29d9245fba84b2827420104edd4902978dee2bda2c5738212b85'
         'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95'
-        '3c5cdf6da7ff5312bfe2a8dcd18e58c8e1a3408e1612be60417ed33866e9e70da77db88435fe49483c907c5ff45d4b9ed979aaa96d485cef976c6aa6fdaa834c')
+        'ed1979dfdcc03ce0d052c407dff85f94325b713a0f2a7e6b39d79bf6e8e5463956b371d0ebb7056f07a1bc21f2f806a4a2a7de2cc8f61c59b2d733ca29b34e48'
+        'bd67ff3a8a1554e642a55ed99b9317a3c7538da94630ed09bab0e0af3f556c538e3e7e7a53b1961f107034645ae1c0dac5e705406b83073fc81f59c0b937d5f4'
+        '5e725df39b824199eb25031730d32a982b5d79076584e131b2930f719bc84cbdd93e5cdd487e975111b568d39422f0bf6aa200d147f2281ff14e8e0d908a29dd')
 
 
 export KBUILD_BUILD_HOST=archlinux
