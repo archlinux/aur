@@ -6,6 +6,7 @@ pkgbase = python-mbedtls
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	makedepends = mbedtls
 	source = https://files.pythonhosted.org/packages/source/p/python-mbedtls/python-mbedtls-1.4.1.tar.gz
 	sha256sums = eff1d90c602311b0fc6f92ad58c73a327ee473468408c5f57cf63be9210d2803
 

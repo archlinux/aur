@@ -6,7 +6,8 @@ pkgdesc="A free cryptographic library for Python that uses mbed TLS for back end
 arch=(any)
 url="https://github.com/Synss/python-mbedtls/releases"
 license=('Apache')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools'
+             'mbedtls')
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz)
 sha256sums=('eff1d90c602311b0fc6f92ad58c73a327ee473468408c5f57cf63be9210d2803')
 
