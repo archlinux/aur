@@ -1,13 +1,14 @@
-# Maintainer: Xaryphon <xaryphon at tuta dot io>
+# Maintainer: JcNils <jcnils at user dot noreply dot github dot com >
+# Contributor: Xaryphon <xaryphon at tuta dot io>
 pkgname=protonhax
-pkgver=1.0.1
-pkgrel=1
+pkgver=1.0.2
+pkgrel=2
 pkgdesc="Program to help executing outside programs in proton"
 arch=('x86_64')
-url="https://gitlab.com/xaryphon/protonhax"
+url="https://github.com/jcnils/protonhax"
 license=('BSD')
 makedepends=('tcc')
-source=('git+https://gitlab.com/xaryphon/protonhax.git')
+source=('git+https://github.com/jcnils/protonhax.git')
 md5sums=('SKIP')
 
 build() {
