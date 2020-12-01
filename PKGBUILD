@@ -1,8 +1,8 @@
 # Maintainer: Daniel Maslowski <info@orangecms.org>
 
 pkgname=depthcharge
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Security research and jailbreaking toolkit for platforms using U-Boot"
 arch=('any')
 url="https://depthcharge.readthedocs.io/en/latest/scripts/index.html"
@@ -18,7 +18,7 @@ optdepends=(
 provides=("$pkgname")
 options=(!emptydirs)
 source=(https://github.com/nccgroup/$pkgname/archive/$pkgver.tar.gz)
-sha512sums=('5eab7a26f51dcd2b5aef7054c3eaaaffab1d68cf2c58354c84c87019ea55e90c61ae910340d0638c25cf57269410803692c56002dd648626011ff2132e8b01a5')
+sha512sums=('827c4eb3c0c01251c431f14538465ff3eded9cda3a277d2e2f21453f7c87218ae43a98e7a647445e5bf1642f9ef94553e84acf13f85e8a77dc6a369fa5f424a3')
 
 package() {
   cd "$srcdir/${pkgname}-$pkgver/python"
