@@ -1,0 +1,14 @@
+pkgbase = zsh-fzy-git
+	pkgdesc = Use the fzy fuzzy-finder in ZSH
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/aperezdc/zsh-fzy
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	source = git+https://github.com/aperezdc/zsh-fzy.git
+	sha256sums = SKIP
+
+pkgname = zsh-fzy-git
+
