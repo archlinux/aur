@@ -13,7 +13,7 @@ depends=('java-runtime')
 makedepends=('git' 'maven')
 provides=('ripme')
 conflicts=('ripme')
-source=("git+https://github.com/RipMeApp/ripme")
+source=("git+https://github.com/RipMeApp/ripme.git")
 sha256sums=('SKIP')
 
 pkgver() {
