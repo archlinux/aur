@@ -1,7 +1,7 @@
 # Maintainer: OriginCode <self@origincode.me>
 
 pkgbase=linux-froidzen
-pkgver=5.9.8.zen1
+pkgver=5.9.11.zen2
 pkgrel=1
 pkgdesc='Linux ZEN with Patches and Modifications'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -42,6 +42,9 @@ prepare() {
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
+
+  # Workaround for uksm-5.9 patch
+  sed -i "%s/#include <linux\/vmalloc.h>/#include <linux\/vmalloc.h>\r #include <linux\/io_uring.h>/g" uksm-5.9.patch
 
   local src
   for src in "${source[@]}"; do
