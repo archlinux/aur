@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=java -jar /usr/local/games/jsnake/jsnake.jar
+Icon=/usr/share/pixmaps/jsnake_icon.png
+Name=JSnake
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Game;
+Encoding=UTF-8
+Comment=JSnake - snake written in java
+
