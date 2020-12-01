@@ -2,8 +2,8 @@
 # Contributor: Shaber
 
 pkgname=coregarage
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="A settings manager for the CoreApps family."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('qt5-base' 'libcprime>=2.7.1' 'libcsys>=2.7.1' 'libarchive-qt')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('e32176383442324512fd682cb11e47a4')
+md5sums=('e6df6b43b4032717db6bc857675f610d')
 
 prepare() {
   mkdir -p build
