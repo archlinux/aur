@@ -8,7 +8,7 @@ pkgrel=2
 pkgdesc="Desktop Suite for Xfce"
 arch=('any')
 url="https://shimmerproject.org"
-license=('CC BY-SA-3.0' 'GPL')
+license=('CC-BY-SA-3.0' 'GPL')
 depends=('gtk-engine-murrine' 'gtk3')
 makedepends=('librsvg' 'meson' 'sassc')
 optdepends=('elementary-xfce-icons: matching icon set; use the dark icon theme'
@@ -25,4 +25,6 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" meson install -C build
+	
+	install -Dm644 LICENSE.CC -t "$pkgdir/usr/share/licenses/$pkgname"
 }
