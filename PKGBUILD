@@ -1,5 +1,4 @@
-# Maintainer: Alexander Bruegmann <mail[at]abruegmann[dot]eu>
-# Contributor: Anton Palgunov <toxblh@gmail.com>
+# Maintainer: Anton Palgunov <toxblh@gmail.com>
 
 pkgname=1password-bin
 _pkgname=1Password
@@ -12,8 +11,9 @@ arch=('x86_64')
 depends=('libxss' 'gtk3' 'nss')
 license=('custom:LicenseRef-1Password-Proprietary')
 url='https://1password.com/'
-source=("https://onepassword.s3.amazonaws.com/linux/debian/pool/main/1/1password/1password-$_pkgver.deb")
+source=("https://downloads.1password.com/linux/debian/pool/main/1/1password/1password-$_pkgver.deb")
 sha256sums=('9f55d930e865d8026d396f21595977dc2fda08e3ed51c9a865179737025b8d2c')
+validpgpkeys=('3FEF9748469ADBE15DA7CA80AC2D62742012EA22')
 
 package() {
   bsdtar -xv -C "${pkgdir}" -f "${srcdir}/data.tar.xz"
