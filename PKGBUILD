@@ -19,7 +19,7 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	git init
-	git pull	
+	git fetch	
 	git remote add origin https://github.com/bamless/jstar.git
 	git checkout v${pkgver}
 	git submodule update --init
