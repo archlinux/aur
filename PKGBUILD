@@ -6,7 +6,7 @@ pkgname=('marble-git'
          'libastro-git'
          'marble-data-git'
 	 'marble-common-git')
-pkgver=20.08.1.47.g5ded04e18
+pkgver=20.08.3.81.gabdada2a0
 pkgrel=1
 pkgdesc="Desktop Globe. (GIT version)"
 arch=('i686' 'x86_64')
@@ -63,38 +63,19 @@ package_libastro-git() {
 }
 
 package_marble-git() {
-  depends=('libastro-git'
-	   'marble-common-git'
-           'marble-data-git'
-           'qt5-webkit'
-           'kparts'
-           'knewstuff'
-           'opencv'
-           'quazip'
-           )
-  optdepends=('gpsd: position information via gpsd'
-  'shapelib: reading and displaying .shp files'
-  'qt5-serialport: reading from serial port in APRS plugin'
-  'libwlocate: Position information based on neighboring WLAN networks'
-  'krunner: Krunner plugin for marble'
-  )
-  conflicts=('kdeedu-marble<15.04.3-3'
- 'marble-qt'
- 'marble'
- )
+  depends=('marble-common-git' 'knewstuff' 'kparts')
+  conflicts=('kdeedu-marble<15.04.3-3' 'marble-qt' 'marble')
   provides=('marble')
-  groups=('kde-applications'
-          'kdeedu'
-          )
+  groups=('kde-applications' 'kdeedu')
 
   make -C build DESTDIR="${pkgdir}" install
 
-  # provided by libastro
+  # provided by libastro-git
   rm -fr "${pkgdir}/usr/include/astro"
   rm -fr "${pkgdir}/usr/lib/"libastro.*
   rm -fr "${pkgdir}/usr/lib/cmake/Astro"
 
-  # provided by marble-data
+  # provided by marble-data-git
   rm -fr "${pkgdir}/usr/share/"{icons,mime,marble}
 }
 

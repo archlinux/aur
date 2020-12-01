@@ -1,6 +1,6 @@
 pkgbase = marble-git
 	pkgdesc = Desktop Globe. (GIT version)
-	pkgver = 20.08.1.47.g5ded04e18
+	pkgver = 20.08.3.81.gabdada2a0
 	pkgrel = 1
 	url = https://www.kde.org/applications/system/marble
 	arch = i686
@@ -28,19 +28,9 @@ pkgbase = marble-git
 pkgname = marble-git
 	groups = kde-applications
 	groups = kdeedu
-	depends = libastro-git
 	depends = marble-common-git
-	depends = marble-data-git
-	depends = qt5-webkit
-	depends = kparts
 	depends = knewstuff
-	depends = opencv
-	depends = quazip
-	optdepends = gpsd: position information via gpsd
-	optdepends = shapelib: reading and displaying .shp files
-	optdepends = qt5-serialport: reading from serial port in APRS plugin
-	optdepends = libwlocate: Position information based on neighboring WLAN networks
-	optdepends = krunner: Krunner plugin for marble
+	depends = kparts
 	provides = marble
 	conflicts = kdeedu-marble<15.04.3-3
 	conflicts = marble-qt
@@ -70,6 +60,6 @@ pkgname = marble-common-git
 	depends = libastro-git
 	depends = marble-git
 	depends = marble-data-git
-	provides = marble-common=20.08.1.47.g5ded04e18
+	provides = marble-common=20.08.3.81.gabdada2a0
 	conflicts = marble-common
 
