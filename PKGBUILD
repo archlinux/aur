@@ -13,7 +13,7 @@ source=("https://github.com/chernandezba/zesarux/releases/download/9.1/ZEsarUX_l
         "Zesarux.desktop"
         "zesarux.png")
 sha256sums=('1d0f50d0916c346c7450fc10ec2af33344ed682d02167be3ff92b55d8c847f43'
-            '5168eeb04e4641ddfb6652865c7105382f1da498e0e1b57dfd9f680b7016a941'
+            '0059e183e7cfd8daec6f649728ee15a39f2646fe000032b390caa3dfbeb1edb8'
             'ab9e0749862c3b2c50fcb41ed542c86917964c864d39f1d409466ca362c4386c')
 package() {
 	mkdir -p ${pkgdir}/opt/zesarux
