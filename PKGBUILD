@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-api-git
-pkgver=5.3.0.13.r4.g132365f
+pkgver=5.3.0.14.r3.g132365f
 pkgrel=1
 pkgdesc='Golang bindings for dde-daemon'
 arch=('x86_64')
