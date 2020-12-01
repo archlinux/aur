@@ -3,7 +3,7 @@
 
 _pkgname='quich'
 pkgname="${_pkgname}-git"
-pkgver=3.0.0.r42.ga55fa23
+pkgver=3.0.0.r45.ge5b0b48
 pkgrel=1
 pkgdesc='Small, easy to use, fast and useful calculator for your terminal with numerous features'
 arch=('x86_64')
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 build() {
-  make -C "${_pkgname}"
+  make -C "${_pkgname}" LDFLAGS="${LDFLAGS}"
 }
 
 package() {
