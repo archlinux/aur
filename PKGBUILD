@@ -8,14 +8,16 @@
 
 
 ## Helpful internal stuff
-_commit=e769997e0eff37676c78fb53b122ff79b2fb99b2
+_commit=91cc1e19ef34aeb12888b697fefa52907f1a834d
 _major=2
 _minor=26
-_build=4200
-_revision=100
+_build=4206
+_revision=102
 _mozcver=${_major}.${_minor}.${_build}.${_revision}
-_utdicdate=20201110
+_utdicdate=20201129
 _utdicrel=1
+_kendate=202011
+_jugyosyodate=202011
 _bldtype=Release
 
 pkgname='mozc-ut-common'
@@ -31,13 +33,13 @@ optdepends=('tegaki-models-zinnia-japanese: character models for the handwriting
 conflicts=('mozc' 'mozc-ut' 'mozc-ut2' 'mozc-neologd-ut' 'mozc-neologd-ut+ut2' 'mozc-ut-unified' 'mozc-ut-united')
 provides=("mozc=${_mozcver}" "mozc-ut=${_mozcver}.${_utdicdate}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
-        "https://osdn.net/downloads/users/26/26897/mozcdic-ut-${_utdicdate}.${_utdicrel}.tar.bz2"
-        "https://osdn.net/projects/ponsfoot-aur/storage/mozc/ken_all-202010.zip"
-        "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-202010.zip")
+        "https://osdn.net/downloads/users/26/26959/mozcdic-ut-${_utdicdate}.${_utdicrel}.tar.bz2"
+        "https://osdn.net/projects/ponsfoot-aur/storage/mozc/ken_all-${_kendate}.zip"
+        "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_jugyosyodate}.zip")
 sha256sums=('SKIP'
-            'bc40c1f4798a8d5c39325201376277289f8228491101195c85d748efbf3e0ffc'
-            '95e68670e52baab93f804a643a454840079ba7d6522b21c83e01dd6dfc7b75b8'
-            '57fbd2fdf5023dc1158260e6ac9ed98e63609cd14f86e74ae223f1bcb5ca852b')
+            '0c4f5fa4733010843b7a61ea18a7bb474265525489dcdeb55b11e6e11b32a738'
+            '0c498cbefd2b0c3ef3442de0af4b3921525269988386560982f0b9d604e0b45c'
+            '8fb32436d778f904e2f7512b7958a0e3f395d28e72d7e2888c42411262cafe66')
 
 prepare() {
     cd ${pkgname}-git
