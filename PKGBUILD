@@ -9,7 +9,7 @@ url="https://bitbucket.org/TZ86/arch-rcscripts"
 license=('GPL2')
 depends=('initscripts-fork')
 backup=()
-source=("git+https://bitbucket.org/TZ86/arch-rcscripts")
+source=("git+https://bitbucket.org/TZ86/arch-rcscripts.git")
 sha256sums=('SKIP')
 
 shopt -s nullglob

@@ -6,7 +6,7 @@ pkgbase = arch-rcscripts-git
 	arch = any
 	license = GPL2
 	depends = initscripts-fork
-	source = git+https://bitbucket.org/TZ86/arch-rcscripts
+	source = git+https://bitbucket.org/TZ86/arch-rcscripts.git
 	sha256sums = SKIP
 
 pkgname = arch-rcscripts-git
