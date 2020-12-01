@@ -2,7 +2,7 @@
 
 pkgname=python-click-option-group
 _pkgname=click-option-group
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Option groups missing in Click"
 arch=("any")
@@ -12,7 +12,7 @@ depends=('python-click')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "${url}/raw/master/LICENSE")
-sha256sums=('764eb49094dc864e28afbf36c6bb140d09ef714a915c0c5972c982113ed70fab'
+sha256sums=('743733a0f564438b6b761f49ddf37d845f9a662294ecabe0e832e597208bcf31'
             'a1c5c6628debcad64ee214620dc936bacc4e64063fbd34c7d745970cb1c5b589')
 
 build() {
