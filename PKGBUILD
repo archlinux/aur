@@ -9,8 +9,8 @@ url="https://github.com/jstar-lang/jstar"
 license=('MIT')
 makedepends=('cmake>=3.9' 'python>=2.7')
 
-source=("${pkgname}-${pkgver}::https://github.com/jstar-lang/jstar/archive/v${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/jstar-lang/jstar/master/LICENSE")
+source=("${pkgname}-${pkgver}::https://github.com/bamless/jstar/archive/v${pkgver}.tar.gz"
+        "https://raw.githubusercontent.com/bamless/jstar/master/LICENSE")
 
 sha256sums=("f8d7e3242315683ad45a1c76a356eaa65633771bbc1b9a1509e07785581766ee"
             "SKIP")
@@ -19,8 +19,8 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	git init
-	git fetch	
 	git remote add origin https://github.com/bamless/jstar.git
+	git fetch
 	git checkout v${pkgver}
 	git submodule update --init
 
