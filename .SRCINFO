@@ -1,5 +1,5 @@
 pkgbase = console_sudoku
-	pkgdesc = Ncurses sudoku application built entirely in C++
+	pkgdesc = Fully fledged ncurses sudoku application built entirely in C++
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/flyingpeakock/Console_sudoku
