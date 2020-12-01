@@ -1,7 +1,7 @@
 # Maintainer: Radoslaw Mejer <radmen@radmen.info>
 pkgname=silicon
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 depends=('fontconfig' 'freetype2' 'xclip')
 makedepends=('rust' 'cargo' 'glibc' 'llvm-libs' 'gcc-libs' 'clang')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -9,10 +9,10 @@ pkgdesc="Create beautiful image of your code"
 license=('MIT')
 url="https://github.com/Aloxaf/silicon"
 source=(
-    "https://github.com/Aloxaf/silicon/archive/v$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/Aloxaf/silicon/archive/v$pkgver.tar.gz"
 )
 sha256sums=(
-    "1534b7b4b5a309cf7f79132f3cd5fd7987642735ca7845efb1ec93df685a402d"
+    "423c03d9c92cbad8f5a136abaa680e85dfa5b5f31998aab4424c335d4d99b7ab"
 )
 
 build() {
