@@ -25,7 +25,7 @@ noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "cv_to_cc.lv2"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -33,16 +33,16 @@ pkgver() {
 }
 
 prepare() {
-	cd "$pkgname"
+  cd "cv_to_cc.lv2"
 }
 
 build() {
-	cd "$pkgname"
+  cd "cv_to_cc.lv2"
 	# ./configure --prefix=/usr
 	make
 }
 
 package() {
-	cd "$pkgname"
+  cd "cv_to_cc.lv2"
 	make DESTDIR="$pkgdir/" install
 }
