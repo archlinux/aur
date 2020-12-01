@@ -14,7 +14,7 @@ depends=('kio' 'libxcursor' 'sddm')
 makedepends=('git' 'extra-cmake-modules' 'qt5-tools')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git://anongit.kde.org/sddm-kcm.git")
+source=("git+https://invent.kde.org/plasma/sddm-kcm.git")
 sha256sums=('SKIP')
 
 pkgver() {
