@@ -2,7 +2,7 @@
 _modulename=cobaya
 pkgname=python-$_modulename
 pkgver=3.0.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Code for Bayesian Analysis in Cosmology"
 arch=(any)
 url="https://github.com/CobayaSampler/$_modulename"
