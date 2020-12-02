@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-espnet-git
-pkgver=0.9.5.r10039
+pkgver=0.9.6.r10047
 pkgrel=1
 pkgdesc='End-to-End Speech Processing Toolkit Python-Only Package (without venv)'
 arch=('any')
@@ -25,9 +25,6 @@ pkgver() {
 
 build() {
     cd "${pkgname}"
-    cythonize -3 ctc_segmentation/ctc_segmentation_dyn.pyx
-    python setup.py build
-    # echo " --> Warnings of a deprected numpy API can be safely ignored."
 }
 
 
