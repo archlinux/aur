@@ -37,7 +37,7 @@ pkgbase = python-hyperspy
 	conflicts = hyperspy
 	replaces = hyperspy
 	source = https://github.com/hyperspy/hyperspy/archive/v1.6.1.zip
-	sha256sums = a06631844223f6de0ad4f83a455051ba6a31c8de77c3ee637ed7de1e43193731
+	sha256sums = dbdbd1d21dc2023ee33bcc6aab726844a6ca990d57b22fea8f2f1afca2984da2
 
 pkgname = python-hyperspy
 
