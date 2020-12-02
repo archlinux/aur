@@ -1,8 +1,8 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='absolutely-proprietary'
 pkgver='20190627'
 _commit='4a126c8bfe173d916f0569939ef31d1786bb30d5'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Proprietary package detector for arch-based distros that uses Parabola's package blacklist"
 arch=('any')
 url="https://github.com/vmavromatis/$pkgname"
