@@ -1,7 +1,7 @@
 pkgbase = firejail-no-apparmor
 	pkgdesc = Linux namespaces sandbox program, compiled without dependency to apparmor
 	pkgver = 0.9.64
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/netblue30/firejail
 	changelog = RELNOTES
 	arch = x86_64

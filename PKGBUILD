@@ -7,7 +7,7 @@ _pkgname=firejail
 pkgname="$_pkgname-no-apparmor"
 
 pkgver=0.9.64
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Linux namespaces sandbox program, compiled without dependency to apparmor'
 arch=('x86_64')
