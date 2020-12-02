@@ -1,9 +1,9 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='rapidtables'
 pkgname="python2-$_projectname"
 pkgver='0.1.11'
 _commit='da2737da6c210518e3044782d72de031c53d9a7e'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Super fast list of dicts to pre-formatted tables conversion library - python2 version'
 arch=('any')
 url="https://github.com/alttch/$_projectname"
