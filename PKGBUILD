@@ -2,7 +2,7 @@
 _modulename=montepython
 pkgname=python-$_modulename
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Monte Carlo code for class in Python"
 arch=(any)
 url="https://github.com/brinckmann/${_modulename}_public"
