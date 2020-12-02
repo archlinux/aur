@@ -5,8 +5,8 @@ pkgname=fluxion-git
 
 epoch=1
 pkgver() { git -C "${pkgname%-git}" describe --tags | sed 's/^v//;s/-/.r/;s/-g/./'; }
-pkgver=4.10.r192.098715f
-pkgrel=1
+pkgver=4.10.r194.1ca414b
+pkgrel=2
 
 pkgdesc='Security auditing and social-engineering research tool'
 url="https://fluxionnetwork.github.io/${pkgname-git}"
