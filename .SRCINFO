@@ -1,7 +1,7 @@
 pkgbase = shd-git
 	pkgdesc = Console tool to display drive list with commonly checked smart info - git version
 	pkgver = r26.166aa73
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alttch/shd
 	arch = any
 	license = MIT
