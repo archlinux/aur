@@ -1,0 +1,63 @@
+--- src/seams-core-1.0.1/src/include/external/sol.hpp	2020-12-02 03:03:52.379082151 +0200
++++ ./sol.hpp	2020-05-21 22:00:36.000000000 +0300
+@@ -5147,7 +5147,7 @@
+ 		runtime = LUA_ERRRUN,
+ 		memory = LUA_ERRMEM,
+ 		handler = LUA_ERRERR,
+-		gc = LUA_ERRMEM,
++		gc = LUA_ERRGCMM,
+ 		syntax = LUA_ERRSYNTAX,
+ 		file = LUA_ERRFILE,
+ 	};
+@@ -5157,7 +5157,7 @@
+ 		yielded = LUA_YIELD,
+ 		runtime = LUA_ERRRUN,
+ 		memory = LUA_ERRMEM,
+-		gc = LUA_ERRMEM,
++		gc = LUA_ERRGCMM,
+ 		handler = LUA_ERRERR,
+ 		dead = -1,
+ 	};
+@@ -5166,7 +5166,7 @@
+ 		ok = LUA_OK,
+ 		syntax = LUA_ERRSYNTAX,
+ 		memory = LUA_ERRMEM,
+-		gc = LUA_ERRMEM,
++		gc = LUA_ERRGCMM,
+ 		file = LUA_ERRFILE,
+ 	};
+ 
+@@ -5209,12 +5209,12 @@
+ 			return names[3];
+ 		case call_status::handler:
+ 			return names[4];
+-
++		case call_status::gc:
+ 			return names[5];
+ 		case call_status::syntax:
+ 			return names[6];
+-		
+-
++		case call_status::file:
++			return names[7];
+ 		}
+ 		if (static_cast<std::ptrdiff_t>(c) == -1) {
+ 			// One of the many cases where a critical exception error has occurred
+@@ -5230,7 +5230,7 @@
+ 		case call_status::runtime:
+ 		case call_status::memory:
+ 		case call_status::handler:
+-
++		case call_status::gc:
+ 		case call_status::syntax:
+ 		case call_status::file:
+ 			return false;
+@@ -5251,7 +5251,7 @@
+ 			return names[0];
+ 		case load_status::memory:
+ 			return names[1];
+-
++		case load_status::gc:
+ 			return names[2];
+ 		case load_status::syntax:
+ 			return names[3];
