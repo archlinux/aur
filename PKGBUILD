@@ -5,7 +5,7 @@ pkgname="${_jdkname}-bin"
 _java_ver=15
 _zulu_build="${_java_ver}.28.13-ca"
 pkgver="${_java_ver}.0.1"
-pkgrel=1
+pkgrel=2
 pkgdesc='Zulu Community builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.'
 arch=('x86_64')
 url='https://www.azul.com/products/zulu-community/'
@@ -18,6 +18,8 @@ depends=(
 provides=(
   "java-environment=$_java_ver"
   "java-environment-openjdk=$_java_ver"
+  "java-runtime-headless=$_java_ver"
+  "java-runtime-headless-openjdk=$_java_ver"
   "java-runtime=$_java_ver"
   "java-runtime-openjdk=$_java_ver"
 )
