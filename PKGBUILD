@@ -6,7 +6,7 @@
 _pkgname='dpkt'
 pkgname="python-${_pkgname}"
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, simple packet creation / parsing, with definitions for the basic TCP/IP protocols'
 arch=('any')
 url='https://github.com/kbandla/dpkty'
