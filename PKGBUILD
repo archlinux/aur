@@ -2,7 +2,7 @@
 _modulename=pybobyqa
 pkgname=python-$_modulename
 pkgver=1.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Python-based Derivative-Free Optimization with Bound Constraints"
 arch=(any)
 url="https://github.com/numericalalgorithmsgroup/$_modulename"

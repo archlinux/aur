@@ -1,7 +1,7 @@
 pkgbase = python-pybobyqa
 	pkgdesc = Python-based Derivative-Free Optimization with Bound Constraints
 	pkgver = 1.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/numericalalgorithmsgroup/pybobyqa
 	arch = any
 	makedepends = python-setuptools
