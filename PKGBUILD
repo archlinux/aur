@@ -2,10 +2,11 @@
 
 pkgname='termtrack'
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Track satellites in your terminal'
 arch=('any')
 url='https://github.com/trehn/termtrack'
+_url_pypi='https://pypi.org/project/termtrack'
 license=('GPL3')
 depends=('python-click' 'python-pillow' 'python-pyephem' 'python-pyshp' 'python-requests')
 makedepends=('python-setuptools')
@@ -20,7 +21,7 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.rst'
+  install -Dvm644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
