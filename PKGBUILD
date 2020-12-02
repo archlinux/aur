@@ -6,7 +6,7 @@ url='https://wiki.ros.org/tf2_py'
 pkgname='ros-melodic-tf2-py'
 pkgver='0.6.5'
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
@@ -52,9 +52,9 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.8 \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.8.so \
-		-DPYTHON_BASENAME=.cpython-38 \
+		-DPYTHON_INCLUDE_DIR=/usr/include/python3.9 \
+		-DPYTHON_LIBRARY=/usr/lib/libpython3.9.so \
+		-DPYTHON_BASENAME=.cpython-39 \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
