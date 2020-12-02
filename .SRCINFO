@@ -1,7 +1,7 @@
 pkgbase = python-django-widget-tweaks
 	pkgdesc = Tweak the form field rendering in templates, not in python-level form definitions. CSS classes and HTML attributes can be altered.
 	pkgver = 1.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jazzband/django-widget-tweaks/
 	arch = any
 	license = MIT
