@@ -1,7 +1,7 @@
 pkgbase = beets-bbq-git
 	pkgdesc = A blackbird style search query plugin for beets.
 	pkgver = r7.b784da6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lepisma/beets-bbq
 	arch = any
 	license = GPL

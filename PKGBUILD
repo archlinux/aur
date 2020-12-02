@@ -1,7 +1,7 @@
 #maintainer BrainDamage
 pkgname=beets-bbq-git
 pkgver=r7.b784da6
-pkgrel=1
+pkgrel=2
 pkgdesc='A blackbird style search query plugin for beets.'
 arch=('any')
 url='https://github.com/lepisma/beets-bbq'
