@@ -13,7 +13,7 @@ replaces=("roundcube-rcmcarddav")
 depends=("roundcubemail")
 makedepends=("composer")
 source=("$pkgname::git+$url.git")
-md5sums=("SKIP")
+sha256sums=("SKIP")
 backup=("etc/webapps/roundcubemail/plugins/carddav/config.inc.php")
 
 pkgver(){

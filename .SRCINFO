@@ -14,7 +14,7 @@ pkgbase = roundcubemail-plugin-carddav-git
 	replaces = roundcube-rcmcarddav
 	backup = etc/webapps/roundcubemail/plugins/carddav/config.inc.php
 	source = roundcubemail-plugin-carddav-git::git+https://github.com/blind-coder/rcmcarddav.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = roundcubemail-plugin-carddav-git
 
