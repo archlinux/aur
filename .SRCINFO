@@ -1,7 +1,7 @@
 pkgbase = python-pyqt5-stubs
 	pkgdesc = PEP561 stub files for the PyQt5 framework
 	pkgver = 5.14.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stlehmann/PyQt5-stubs
 	arch = any
 	license = GPL3

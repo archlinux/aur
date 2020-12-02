@@ -3,7 +3,7 @@
 _pypiname=PyQt5-stubs
 pkgname=python-pyqt5-stubs
 pkgver=5.14.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='PEP561 stub files for the PyQt5 framework'
 url="https://github.com/stlehmann/PyQt5-stubs"
 makedepends=('python-pip')
