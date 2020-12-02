@@ -2,7 +2,7 @@
 
 pkgbase=linux-vanilla-selinux-419
 pkgname=linux-vanilla-selinux-419
-pkgver=4.19.160
+pkgver=4.19.161
 pkgrel=1
 pkgdesc="Vanilla-Linux-Kernel (4.19) from kernel.org with Selinux enabled."
 arch=('x86_64')
@@ -26,14 +26,14 @@ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torva
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
               )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
-sha256sums=('18345206f9c61e8adafa5204d0ca0b8619f1d9aafd70cbd5cb0fbf1faf521585'
-            '2a264c07c906d5d31d903c9eaaba807d5141dfd5342cad5896895c413efd2132'
-	    '9e20ecea75ea42016f6c730805ba92f8885ee8a677b8f617d1a3864c86432f6a'
-            'f9b13f3c00be95205ccb77ead42881ecbf0f7ba0d0ad12af294e054272859d81'
-            '5c7af03d9b4cade110543ba706bcbd49fc6447726258b4bfec0edff7ca9994d1'
-            '9089c8d44982dc03b0dde47632f8aa2fda14754b911acbc266feee85da94b0f5'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '4befd6244fd1e933519f7e589aa4dc24639500e3e911620636be5e0c0aa5f719')
+sha512sums=('d2e300966bd53872808e9180454921bfe0f0bfa7de655585b6d3643a732ef1dab8f35d6899859c763d2837e428c7697f417453eec9b0d146adcd6dc3bf6e6584'
+            '4218afe24433770502e6f688601bc29388acd52918999f96ff004d845c80a04468a4092dd105c0ba00eb8196f74ec1127678be00066e1d54f306ac625bc3410b'
+	    'c856722aa400b55a8397a2301e33efbacce22d70c36b421d7bfae1366ad169565ed68fd7e8a0fdef11808c9ce05cbc72f82814f2c4c75f0f0b0c788aa9c05ff6'
+            'fc52feda32be644deeadf267fdff124ffcc0d0870c36e736024a7be0958ba4b50cea5ef0ec33c2681ad00f36b42ebed354fa3e63bd4827acbeedebc39029229c'
+            '7132a74149b39e30f57a0ef70330fbdf8f38a33bd88ba94f1115de098319e41af0ae86091a1e610e209fc87a9823f69da5c883b0a2fd7adc203578cc4ab08733'
+            '06481e0492d8ec0f353672fbd1d71322b105849871975f434f87bcb33ca898f85407403ba935153e5d8cca44fea62bfbb43404871d12f26891579067a36fae19'
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
+            '3905000ea36ab62a96e9f668e73e95bba42bea20abcfa987a02ed813dd6105f20f7a9f7d0ab83dfb0a75ea3164cb74c8be928b843037259dfc42fe38492bcc20')
 
 _kernelname=${pkgbase#}
 : ${_kernelname:=-Arch-vanilla-selinux-419}
