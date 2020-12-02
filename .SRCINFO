@@ -1,7 +1,7 @@
 pkgbase = instawow
 	pkgdesc = Package manager for World of Warcraft
 	pkgver = 1.19.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/layday/instawow
 	arch = x86_64
 	license = GPL3
@@ -41,6 +41,9 @@ pkgbase = instawow
 	depends = python-yarl<2.0.0
 	optdepends = python-aiohttp_rpc: server support
 	conflicts = python-aiohttp=3.6.3
+	conflicts = python-yarl-gns3
+	conflicts = python-aiohttp-gns3
+	conflicts = python-prompt_toolkit-gns3
 	source = https://files.pythonhosted.org/packages/source/i/instawow/instawow-1.19.1.tar.gz
 	sha256sums = fb7ca5b533f4af58578e28fecfce77406e2c23e8f4825cd69b9c62c44fcea48c
 
