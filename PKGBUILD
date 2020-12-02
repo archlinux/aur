@@ -1,7 +1,7 @@
 #maintainer BrainDamage
 pkgname=beets-bandcamp
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Plugin for beets to use bandcamp as an autotagger source.'
 arch=('any')
 url='https://github.com/unrblt/beets-bandcamp'

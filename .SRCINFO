@@ -1,7 +1,7 @@
 pkgbase = beets-bandcamp
 	pkgdesc = Plugin for beets to use bandcamp as an autotagger source.
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/unrblt/beets-bandcamp
 	arch = any
 	license = GPL
