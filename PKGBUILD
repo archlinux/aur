@@ -2,16 +2,22 @@
 # Contributor: Franck Lucien Duriez <franck.lucien.duriez@gmail.com>
 
 pkgname=openpose
-pkgver=1.5.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='OpenPose: Real-time multi-person keypoint detection library for body, face, hands, and foot estimation'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/CMU-Perceptual-Computing-Lab/openpose'
 license=("ACADEMIC OR NON-PROFIT ORGANIZATION NONCOMMERCIAL RESEARCH USE ONLY")
-depends=('caffe' 'intel-mkl' 'libgl' 'glu' 'lilv' 'boost')
-makedepends=('cmake' 'doxygen' 'graphviz' 'wget')
+depends=('caffe' 'libgl' 'glu' 'glut')
+makedepends=('cmake' 'doxygen' 'graphviz' 'wget' 'boost')
 source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('ac27f8102c1e8c2e5b51532a46c10181')
+md5sums=('178876507c11dab3da2fcd68c748d90b')
+
+prepare() {
+  mkdir -p openpose-$pkgver
+  cd openpose-$pkgver
+  find ./ -name "*.hpp" | xargs -n1 sed -i "s|models/|/usr/lib/OpenPose/models/|g"
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -30,8 +36,6 @@ build() {
     -DDOWNLOAD_HAND_MODEL:BOOL=ON \
     -DGPU_MODE:STRING=CPU_ONLY \
     -DWITH_3D_RENDERER:BOOL=ON \
-    -DCMAKE_CXX_FLAGS:STRING="-I/opt/intel/mkl/include" \
-    -DCMAKE_C_FLAGS:STRING="-I/opt/intel/mkl/include" \
     -DCaffe_INCLUDE_DIRS:PATH="/usr/include" \
     -DCaffe_LIBS:PATH="/usr/lib/libcaffe.so" \
     -DCMAKE_INSTALL_PREFIX:PATH="${pkgdir}/usr" \
