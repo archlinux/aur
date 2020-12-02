@@ -2,7 +2,7 @@
 pkgname=system76-hidpi-daemon-git
 _pkgname=hidpi-daemon
 pkgver=18.04.6.r0.gcfe8850
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon to manage HiDPI and LoDPI monitors on X"
 arch=('any')
 url="https://github.com/pop-os/hidpi-daemon"
