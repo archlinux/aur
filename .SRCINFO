@@ -1,6 +1,6 @@
 pkgbase = tartube
 	pkgdesc = A GUI front-end for youtube-dl, partly based on youtube-dl-gui and written in Python 3 / Gtk 3
-	pkgver = 2.2.007
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/axcore/tartube
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = tartube
 	optdepends = ffmpeg: Video playback support
 	optdepends = python-moviepy
 	optdepends = atomicparsley
-	source = tartube-2.2.007.tar.gz::https://github.com/axcore/tartube/archive/v2.2.007.tar.gz
-	sha256sums = 9b91820d6a59a238813898b759a731f1f38c1a157c8d165093263949570b49ac
+	source = tartube-2.3.0.tar.gz::https://github.com/axcore/tartube/archive/v2.3.0.tar.gz
+	sha256sums = d2026391be1378bfa3b9e4aa004b67a1dcd433e9fc588ca310456466c05ba0f9
 
 pkgname = tartube
 
