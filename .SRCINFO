@@ -21,11 +21,11 @@ pkgbase = librespeed-go
 	source = librespeed.sysusers
 	source = librespeed.tmpfiles
 	source = settings.toml
-	md5sums = 4534a45a909ca9bb4fe176299dbb0deb
-	md5sums = 81c7b43b922df27533399746715a5db5
-	md5sums = 62f7aab9f9607bb9f0f4250f54928c3f
-	md5sums = 25ec3e5a8b85467863134a68cd3e0e03
-	md5sums = 0a3ae23c24688169f44931a937df8a85
+	sha256sums = 336632d5e0f02445c72bd751f3af784358e1930e12abd6612293518a8563a0b9
+	sha256sums = c9db604a942f3fcc25f75b8e630fdb95916bf604721d0d1dbd70f29554ab766c
+	sha256sums = d2cdcfd2a5d4ed1b482915c65e38a3aa06e34e967510a3721ea95180fe31c83f
+	sha256sums = ef3ee7877738f801edc83a56ef83ed49cef2f6a7431641a55f3f6d5c8967059e
+	sha256sums = 5a7daa3e93243d780379438dd13e112844b9e5064e9d89d1fb4d97e52e89138a
 
 pkgname = librespeed-go
 
