@@ -2,7 +2,7 @@
 
 pkgname='jello'
 pkgver=1.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Filter JSON and JSON Lines data with Python syntax'
 arch=('any')
 url='https://github.com/kellyjonbrazil/jello'
