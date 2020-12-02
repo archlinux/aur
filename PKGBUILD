@@ -54,7 +54,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=4
+pkgrel=5
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -83,11 +83,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-rt-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-rt-patches-v3-sep/0002-i2c-core-Restore-acpi_walk_dep_device_list-getting-c.patch"
-        "${_lucjanpath}/arch-rt-patches-v3-sep/0003-mac80211-fix-regression-where-EAPOL-frames-were-sent.patch"
-        "${_lucjanpath}/arch-rt-patches-v3-sep/0004-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch"
-        "${_lucjanpath}/arch-rt-patches-v3-sep/0005-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
+        "${_lucjanpath}/arch-rt-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-rt-patches-v4-sep/0002-i2c-core-Restore-acpi_walk_dep_device_list-getting-c.patch"
+        "${_lucjanpath}/arch-rt-patches-v4-sep/0003-mac80211-fix-regression-where-EAPOL-frames-were-sent.patch"
+        "${_lucjanpath}/arch-rt-patches-v4-sep/0004-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch"
+        "${_lucjanpath}/arch-rt-patches-v4-sep/0005-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
+        "${_lucjanpath}/arch-rt-patches-v4-sep/0006-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
         "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
@@ -342,11 +343,12 @@ sha512sums=('96af08c1dc964e5dbb3d221880ef8ca246f13370d2dc2f5ae64039f0352efc687c7
             '7d30c34e75c2800d93c01e34ca23a00cda24d2f44bb837a48f6789c50ad69f7db4cc93d1fc75e43cfa4d4f4e9c612330dd595c56c13f8abb5d062338ea30697c'
             'cf634a9e0298adf1d05b7a8048ba2f89d4b8490cf48f1ab493cb40473116f360035b7fb3d8a54af980b1a49a1ad4dcfbc4ca69de8543b8bdf0a1d586908bd093'
             '96427eecb0078ce57a40ef4ee78d3576216f27390ba6b9dfbb851f4d969558a82b698cc633217ad8f6b9d991e7eaebd613ed4bd5741cafe7fa40b2502dacd43a'
-            '7dedfce2fa368ee366166f93bf6707b1f89a3e6ee90eca94bbfd6b7829fd3d7892c51fb25cbac5f2b8e01e05ae45713f9c5c691ea8e8ddd52efe03074e6a3cde'
-            '46f7e3d320d5fe8f25f4ea9315a475f0ec56d239e06179b7e81739fc2cc25ed6d43294f94c4707f95bd0696bcd08a513d1d20bc5800abfbd2e912b2392367cc8'
-            '937b60a60a934ba5f0efc0da0ca41c1e3bc3af563c30e056fc56fc9141ab64745396928e325a3bc04b539d2c377b72ad280a47a29fab3ad7583deac194cd722d'
-            'f9a476e8b8c72fb7ea123e20c10c067eada9c208e0691852fade94df377b8f07520d7a578702bcf78898929124b2c71c7e502c5bc7eedf88f231d73477981687'
-            '5c7aa5aa1d80b85f0c6efbdf37a6ed218a3876a12ff205eb7fae5741b1999ad56feb791a51fe18a2cd86f498b9b1c041609c9b26847c86d0bd87648d5d68c406'
+            'bf3d86a5e24b5f7a2ebfc930f0bee11a5281b52306f1068c0f42ed2871277eb3038070754f489523e73f63addd5e56d74c1f766742f1d9944689f4e1ee1bfdb9'
+            '3e40d576551170702bd81242102ec3aa8a27a8140fdc2e6615739f2b6634105131700b20ac781c7d123566fe5cb10800a6bd1b0c0c7a3a1f8753b887bd18cb5b'
+            '2e5f6635b835a21e546a06be177489504dc6a8f8ad496deea51e63433b76f779fc65a5abc726649155e73126a705d97113813ebae2b977d7147fc696806811c5'
+            'fcd0de43151da7743ce91a1a2b2cd282e148bff4226efba04283dd7ee70662f2946082e0a213e5bc419d4bff180eec863f0bc66cbcd35ee6072232c945bce3ed'
+            '3fb990e45784be1d932d7374483b76f474457e341cdaba9c4c4cd1c7ee78c3645709d36758922a5dd0ec1c49dd206ba12d83c5464770890e237ca6c742065de1'
+            'a07144e630c7fef92c2ae488c3537c850788275f49abce2aa54df4e5199a7288d1a336729f8293931a00b2cc3f8f2d0e6c1b8740c364b1b590faadc86fd744ae'
             'b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6'
             'dfad8ea58cf37cb76f6876375340b1480a332fe710c06f112cd5a93bf6e7e6d1d40e9e8827bfdb5ade1037f6a9609ad19a29c4262c3d6fd29712673d4d471fc7')
 
