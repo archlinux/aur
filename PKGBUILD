@@ -4,7 +4,7 @@
 
 pkgname=firebase-tools
 pkgver=8.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Firebase Command Line Tools"
 arch=('any')
 url="https://github.com/firebase/firebase-tools"
