@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=guiscrcpy
 pkgver=4.7.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
 url="https://guiscrcpy.github.io"
@@ -25,5 +25,6 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname"
+	export PYTHONHASHSEED=0
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
