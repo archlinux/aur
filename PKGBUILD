@@ -1,6 +1,6 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
-pkgname=spectacle-analyzer.lv2-git
+pkgname=spectacle.lv2-git
 pkgdesc="Realtime graphical spectrum analyzer."
 pkgver=v1.0.r1.ga47fd22
 pkgrel=1
@@ -25,7 +25,7 @@ noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd spectacle.lv2-git
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -33,17 +33,17 @@ pkgver() {
 }
 
 prepare() {
-	cd "$pkgname"
+  cd spectacle.lv2-git
   git submodule update --init --recursive
 }
 
 build() {
-	cd "$pkgname"
+  cd spectacle.lv2-git
 	# ./configure --prefix=/usr
 	make
 }
 
 package() {
-	cd "$pkgname"
+  cd spectacle.lv2-git
 	make DESTDIR="$pkgdir/" PREFIX=/usr BUILD_VST2=false BUILD_JACK=false install
 }

@@ -1,4 +1,4 @@
-pkgbase = spectacle-analyzer.lv2-git
+pkgbase = spectacle.lv2-git
 	pkgdesc = Realtime graphical spectrum analyzer.
 	pkgver = v1.0.r1.ga47fd22
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = spectacle-analyzer.lv2-git
 	source = spectacle.lv2-git::git+https://github.com/jpcima/spectacle
 	md5sums = SKIP
 
-pkgname = spectacle-analyzer.lv2-git
+pkgname = spectacle.lv2-git
 
