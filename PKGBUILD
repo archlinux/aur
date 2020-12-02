@@ -2,7 +2,7 @@
 _modulename=todoist-python
 pkgname=python-$_modulename
 pkgver=8.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The official Todoist Python API library"
 arch=(any)
 url="https://github.com/Doist/$_modulename"
