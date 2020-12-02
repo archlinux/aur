@@ -1,5 +1,5 @@
 pkgbase = python-mglib
-	pkgdesc = Modules shared across all Papermerge project.
+	pkgdesc = Python Package containing modules shared across all Papermerge Project project
 	pkgver = 1.2.8
 	pkgrel = 1
 	url = https://github.com/papermerge/mglib
