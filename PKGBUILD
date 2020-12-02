@@ -2,7 +2,7 @@
 
 pkgname=i3-agenda
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Show your next google calendar event in polybar or i3-bar"
 arch=('any')
 url="https://github.com/rosenpin/i3-agenda"
