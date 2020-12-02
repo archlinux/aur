@@ -1,7 +1,7 @@
 pkgbase = dialect
 	pkgdesc = A translation app for GNOME based on Google Translate
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gi-lom/dialect
 	arch = any
 	license = GPL3
