@@ -8,8 +8,7 @@ pkgrel=2
 pkgdesc="Matplotlib Jupyter Extension"
 url="https://pypi.org/project/ipympl/"
 depends=(
-  'python>=3.9'
-  'python<3.10')
+  'python')
 makedepends=(
   'python-setuptools')
 license=('BSD')
