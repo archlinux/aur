@@ -2,18 +2,23 @@
 
 _pkgbase='wgtools'
 pkgname="python-${_pkgbase}"
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Python bindings for wireguard-tools'
 arch=('any')
-url="https://github.com/coNQP/${_pkgbase}"
+url="https://github.com/conqp/${_pkgbase}"
 license=('GPLv3')
-depends=('python' 'wireguard-tools')
-source=("${_pkgbase}::https://github.com/conqp/${_pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('2457f9062cd35de8de64132f6389cdedd8d6f5246f6f3a153bfd58a3813bb85f')
+depends=('python' 'python-setuptools')
+makedepends=('git' 'python-setuptools-scm')
+source=("${_pkgbase}::git+${url}.git#tag=${pkgver}")
+sha256sums=('SKIP')
 
+build() {
+    cd "${srcdir}/${_pkgbase}"
+    python setup.py build
+}
 
 package() {
-    cd "${srcdir}/${_pkgbase}-${pkgver}"
-    python setup.py install --root "${pkgdir}" --optimize=1
+    cd "${srcdir}/${_pkgbase}"
+    python setup.py install --root "${pkgdir}" --optimize=1 --skip-build
 }
