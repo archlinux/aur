@@ -4,7 +4,7 @@
 pkgname='maestral'
 provides=('maestral')
 conflicts=('maestral-git')
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='A light-weight and open-source CLI Dropbox client.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("${url}/archive/v${pkgver}.tar.gz" "maestral@.service")
 makedepends=('python-setuptools')
 changelog=CHANGELOG.md
 depends=(
-    'python>=3.8'
+    'python>=3.9'
     'python-alembic>=1.3.0'
     'python-bugsnag>=3.4.0'
     'python-click>=7.1.1'
@@ -31,7 +31,9 @@ depends=(
     'python-sqlalchemy>=1.3'
     'python-watchdog>=0.10.0'
     'python-systemd')
-md5sums=('a306fbbc2407110e4f494f875b510020'
+optdepends=(
+    'maestral-qt: Qt interface for the maestral daemon')
+md5sums=('776957e2bc91cc36181ca76591f55121'
          '25d1041b158c1b1ea42d7290c9c0f91d')
 
 build() {
@@ -46,6 +48,8 @@ package() {
     # Install the licence
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.txt" \
     	"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # Remove icons
+    rm -r "${pkgdir}/usr/share/icons"
     # Install the systemd unit provided
     install -Dm644 "${srcdir}/maestral@.service" \
         "${pkgdir}/usr/lib/systemd/user/maestral@.service"
