@@ -3,9 +3,9 @@
 # Maintainer: Virgil Dupras <hsoft@hardcoded.net>
 pkgname=dupeguru
 pkgver=4.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Find duplicate files on your system"
-arch=(any)
+arch=('x86_64')
 url="https://dupeguru.voltaicideas.net/"
 license=('BSD')
 depends=('python' 'python-pyqt5' 'libxkbcommon-x11' 'python-send2trash')
