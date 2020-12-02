@@ -2,7 +2,7 @@
 
 pkgname=puddletag-git
 pkgver=2.0.1.r24.gfe54639
-pkgrel=1
+pkgrel=2
 pkgdesc="An audio tag editor for GNU/Linux, git version"
 url="https://github.com/puddletag/puddletag"
 license=('GPL3')
