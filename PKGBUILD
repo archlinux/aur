@@ -3,7 +3,7 @@
 pkgname=(python-detectron2 python-detectron2-cuda)
 _pkgname=detectron2
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="FAIR's next-generation platform for object detection and segmentation"
 arch=('x86_64')
 url='https://github.com/facebookresearch/detectron2'
@@ -60,6 +60,8 @@ package_python-detectron2-cuda() {
     cuda
     python-pytorch-cuda
   )
+  provides=(python-detectron2=${pkgver})
+  conflicts=(python-detectron2)
   cd "${pkgname}-${pkgver}"
   TORCH_CUDA_ARCH_LIST="5.2;5.3;6.0;6.0+PTX;6.1;6.1+PTX;6.2;6.2+PTX;7.0;7.0+PTX;7.2;7.2+PTX;7.5;7.5+PTX;8.0;8.0+PTX" \
   FORCE_CUDA=1 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
