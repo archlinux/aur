@@ -1,7 +1,7 @@
 pkgbase = polybar
 	pkgdesc = A fast and easy-to-use status bar
-	pkgver = 3.4.3
-	pkgrel = 2
+	pkgver = 3.5.0
+	pkgrel = 1
 	url = https://github.com/polybar/polybar
 	install = polybar.install
 	arch = i686
@@ -29,8 +29,8 @@ pkgbase = polybar
 	optdepends = siji-git: Font used in example config
 	optdepends = xorg-fonts-misc: Font used in example config
 	conflicts = polybar-git
-	source = https://github.com/polybar/polybar/releases/download/3.4.3/polybar-3.4.3.tar
-	sha256sums = d4ed121c1d3960493f8268f966d65a94d94c4646a4abb131687e37b63616822f
+	source = https://github.com/polybar/polybar/releases/download/3.5.0/polybar-3.5.0.tar
+	sha256sums = e8c1798c195854852fc7c99703287294123381101b371f171d4aa540aeb17afd
 
 pkgname = polybar
 
