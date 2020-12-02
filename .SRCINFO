@@ -1,7 +1,7 @@
 pkgbase = python-unrar
 	pkgdesc = Work with RAR archive files through unrar library using ctypes.
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matiasb/python-unrar
 	arch = any
 	license = GPLv3
