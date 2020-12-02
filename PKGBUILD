@@ -8,7 +8,7 @@
 
 pkgname=gnupg-large-secmem
 _pkgname=gnupg
-pkgver=2.2.23
+pkgver=2.2.24
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard - with extra large secure memory for many parallel decryption actions'
 url='https://www.gnupg.org/'
@@ -16,27 +16,27 @@ license=('GPL')
 arch=('x86_64')
 checkdepends=('openssh')
 makedepends=('libldap' 'libusb-compat' 'pcsclite')
-depends=('npth' 'libgpg-error' 'libgcrypt' 'libksba' 'libassuan'
-         'pinentry' 'bzip2' 'readline' 'libreadline.so' 'gnutls'
-         'sqlite' 'zlib' 'glibc')
+depends=('npth' 'libgpg-error' 'libgcrypt' 'libksba' 'libassuan' 'pinentry'
+         'bzip2' 'libbz2.so' 'readline' 'libreadline.so' 'gnutls' 'sqlite'
+         'zlib' 'glibc')
 optdepends=('libldap: gpg2keys_ldap'
             'libusb-compat: scdaemon'
             'pcsclite: scdaemon')
-validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'
-              '46CC730865BB5C78EBABADCF04376F3EE0856959'
-              '031EC2536E580D8EA286A9F22071B08A33BD3F06'
-              '5B80C5754298F0CB55D8ED6ABCEF7E294B092E28')
+validpgpkeys=(
+	'D8692123C4065DEA5E0F3AB5249B39D24F25E3B6' # Werner Koch (dist sig)
+	'031EC2536E580D8EA286A9F22071B08A33BD3F06' # NIIBE Yutaka (GnuPG Release Key) <gniibe@fsij.org>
+	'5B80C5754298F0CB55D8ED6ABCEF7E294B092E28' # Andre Heinecke (Release Signing Key)
+	'6DAA6E64A76D2840571B4902528897B826403ADA' # Werner Koch (dist signing 2020)
+)
 source=("https://gnupg.org/ftp/gcrypt/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"{,.sig}
         "gnupg_large_secmem.patch"
         'drop-import-clean.patch'
-        'avoid-beta-warning.patch'
-        'do-not-rebuild-defsincdate.patch')
-sha256sums=('10b55e49d78b3e49f1edb58d7541ecbdad92ddaeeb885b6f486ed23d1cd1da5c'
+        'avoid-beta-warning.patch')
+sha256sums=('9090b400faae34f08469d78000cfec1cee5b9c553ce11347cc96ef16eab98c46'
             'SKIP'
             '63108d8fcbcfddf7ba6eee699ade0f79f98558c8ba1f07d86c7a55dce603355d'
             '02d375f0045f56f7dd82bacdb5ce559afd52ded8b75f6b2673c39ec666e81abc'
-            '22fdf9490fad477f225e731c417867d9e7571ac654944e8be63a1fbaccd5c62d'
-            'bb4dcba0328af6271ccfe992a64d8daa9f0a691ba52978491647f1dea05675ee')
+            '22fdf9490fad477f225e731c417867d9e7571ac654944e8be63a1fbaccd5c62d')
 
 install=install
 
@@ -50,7 +50,6 @@ prepare() {
 	patch -p1 -i ../drop-import-clean.patch
 
 	# improve reproducibility
-	patch -p1 -i ../do-not-rebuild-defsincdate.patch
 	rm doc/gnupg.info*
 
 	# See: https://lists.gnupg.org/pipermail/gnupg-devel/2017-June/032905.html
