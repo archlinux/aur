@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=sysmon-git
-pkgver=1.0.r9.g4868cd9
+pkgver=1.0.1.r0.g9d5b2d8
 pkgrel=1
 pkgdesc="Graphical system monitor. Similar to windows task manager."
 arch=('any')
@@ -28,6 +28,7 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}/src"
+	export PYTHONHASHSEED=0
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
 	install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t \
