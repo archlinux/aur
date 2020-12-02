@@ -3,7 +3,7 @@
 _pkgname=clintermission
 pkgname=python-${_pkgname}
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Non-fullscreen command-line selection menu"
 arch=(any)
 url="https://github.com/sebageek/clintermission"

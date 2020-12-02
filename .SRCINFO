@@ -1,7 +1,7 @@
 pkgbase = python-clintermission
 	pkgdesc = Non-fullscreen command-line selection menu
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sebageek/clintermission
 	arch = any
 	license = Apache
