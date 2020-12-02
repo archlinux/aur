@@ -51,7 +51,7 @@ _major=5.9
 _minor=12
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -78,9 +78,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v8-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v8-sep/0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch"
-        "${_lucjanpath}/arch-patches-v8-sep/0003-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0003-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0004-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
         "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
@@ -330,9 +331,10 @@ sha512sums=('164a89388a56140140e0b4ba3f39a45f85a73c9862f5104cf591a6d6826cfc2498b
             '7d30c34e75c2800d93c01e34ca23a00cda24d2f44bb837a48f6789c50ad69f7db4cc93d1fc75e43cfa4d4f4e9c612330dd595c56c13f8abb5d062338ea30697c'
             'cf634a9e0298adf1d05b7a8048ba2f89d4b8490cf48f1ab493cb40473116f360035b7fb3d8a54af980b1a49a1ad4dcfbc4ca69de8543b8bdf0a1d586908bd093'
             '96427eecb0078ce57a40ef4ee78d3576216f27390ba6b9dfbb851f4d969558a82b698cc633217ad8f6b9d991e7eaebd613ed4bd5741cafe7fa40b2502dacd43a'
-            'fa805da312ad7edd5bc70273b6c0a624d1bafaed3c03b735adb7a2fc6cca7897fe7fdad2087fa1109c11484d0620f03d9ff685347da0bfb009da9d70255c3e6d'
-            'f6da10e0fed639a4fb0a7bb8fed43fe668211fd6cb9b8c59c73a306ada02112055a492f0800b0fdefc1f8bd9065a691aff3cfa54e6b880141428c5ab86ce158b'
-            '44d3beab7a82a06f0ae8f85b5b4cbbad2630f4f992bfcf590b8101e964bdeeaf2cadcf6bfceec5654a90414058050556e1db79612a785038f3b0ea21eebfb5ff'
+            'a652b0dabe595337cefc30abd362004490d0019796375f609048e7f0e25c6a27fd3e7901f552f558a48d47f55e9116a31f41db4d291caa8f9551d97a18b0549b'
+            '5029a22ba2f445184131fa7101c2205b6c4cc3874a27490134a432446e1930173141cd83d1faea536c42b64d9bade11ecf09d0bd4059b73746eaf41c4560c90a'
+            '47781f92e6ca8334acae59dec17011a411eca0e70e57bac65ce736fcf44c6c77c639b498488f0cb457a0382ba55f34de41c3db7f4da97cd8206c91855fbba559'
+            '04c55bd1c192da753f537ac139f102fdcebea9af57712914f0d2bf0f9b77be7caa3e18356bea40ec015dbf74ac056285989e7c6fdd78a1ff482ad00271438fc9'
             'b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6'
             '6c9581a002f5dd07df186e4cd6b032d9706529adf448d39590ca23a07a9e1b4354739c56e83927ce1e31b2c31d073cdd9ee2c8f855310a0be5808bb15c97aad8')
 
