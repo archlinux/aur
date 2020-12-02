@@ -2,7 +2,7 @@
 
 pkgname='wireviz'
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Easily document cables, wiring harnesses and connector pinouts'
 arch=('any')
 url='https://github.com/formatc1702/WireViz'
