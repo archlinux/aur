@@ -3,7 +3,7 @@
 _pkgname=spydaap
 pkgname=${_pkgname}-git
 pkgver=r178+0af5ac4
-pkgrel=2
+pkgrel=3
 pkgdesc="DAAP server"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/egh/spydaap"
@@ -22,5 +22,5 @@ pkgver() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1
 }

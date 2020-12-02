@@ -1,7 +1,7 @@
 pkgbase = spydaap-git
 	pkgdesc = DAAP server
 	pkgver = r178+0af5ac4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/egh/spydaap
 	arch = i686
 	arch = x86_64
