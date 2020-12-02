@@ -1,26 +1,27 @@
 pkgbase = hdtv
 	pkgdesc = Nuclear spectrum analysis tool on top of the ROOT data analysis toolkit
-	pkgver = 18.04
-	pkgrel = 2
-	url = https://gitlab.ikp.uni-koeln.de/staging/hdtv
+	pkgver = 20.11
+	pkgrel = 1
+	url = https://github.com/janmayer/hdtv
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = libx11
 	makedepends = python-docutils
 	depends = glibc
+	depends = libx11
 	depends = python
-	depends = root
-	depends = libmfile
+	depends = root>=6.22.06
+	depends = python-matplotlib
+	depends = python-prompt_toolkit
 	depends = python-setuptools
 	depends = python-scipy
-	depends = python-matplotlib
+	depends = python-traitlets
 	depends = python-uncertainties
 	provides = hdtv
 	conflicts = hdtv
 	options = !emptydirs
-	source = hdtv-v18.04.tar.gz::https://gitlab.ikp.uni-koeln.de/staging/hdtv/repository/v18.04/archive.tar.gz
-	sha256sums = 1352ef93037e40cc33ec02fd64031f314a3e3eae97fe48457d51300a1e0f4f42
+	source = https://github.com/janmayer/hdtv/archive/v20.11.tar.gz
+	sha256sums = 8fa50549285f5e64b6ee63ce677c81b99e81a0eb56d555ef3d230fe661cc0866
 
 pkgname = hdtv
 
