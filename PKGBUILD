@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-polychord
 pkgver='1.18.1'
-pkgrel=2
+pkgrel=3
 pkgdesc="Next generation nested sampling (python library)"
 arch=(any)
 url="https://github.com/PolyChord/PolyChordLite"
