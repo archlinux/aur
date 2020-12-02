@@ -5,7 +5,7 @@
 pkgname=social-engineer-toolkit
 
 pkgver=8.0.3
-pkgrel=2
+pkgrel=3
 
 pkgdesc='The Social-Engineer Toolkit (SET)'
 arch=('any')
