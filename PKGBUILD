@@ -1,23 +1,25 @@
 # Maintainer: Erich Eckner <arch at eckner dot net>
 pkgname=zdkimfilter
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="zDKIM filter for Courier-MTA using the OpenDKIM Project's library."
 arch=('i686' 'pentium4' 'x86_64')
 url='https://www.tana.it/sw/zdkimfilter/'
 license=('GPL3')
 _pinned_dependencies=(
   'glibc>=2.31'
+  'libbsd=0.10.0'
   'libidn2.so=0'
   'libnettle.so=8'
-  'libunistring=0.9.10'
+  'libunistring.so=2'
   'libuuid.so=1'
   'opendbx=1.4.6'
-  'opendkim=2.10.3'
+  'openssl=1.1.1.h'
   'zlib=1:1.2.11'
 )
 depends=(
   'courier-mta'
+  'opendkim'
   "${_pinned_dependencies[@]}"
 )
 backup=('etc/courier/filters/zdkimfilter.conf')
