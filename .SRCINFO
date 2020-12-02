@@ -1,7 +1,7 @@
 pkgbase = python-pillow-simd
 	pkgdesc = Python Imaging Library (PIL) fork. Pillow fork for better image processing performance.
 	pkgver = 7.0.0.post3
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/uploadcare/pillow-simd
 	arch = x86_64
