@@ -1,12 +1,11 @@
 pkgbase = thank-you-stars
 	pkgdesc = CLI tool to star a PyPI package and its dependencies hosted on GitHub
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/thombashi/thank-you-stars
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
 	depends = python-appconfigpy
 	depends = python-colorama
 	depends = python-datetimerange
