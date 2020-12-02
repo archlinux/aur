@@ -5,7 +5,7 @@
 _pkgname='pscript'
 pkgname="python-${_pkgname}"
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Python to JavaScript compiler'
 arch=('any')
 url='https://github.com/flexxui/pscript'
