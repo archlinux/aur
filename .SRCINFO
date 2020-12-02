@@ -1,7 +1,7 @@
 pkgbase = python-pfs
 	pkgdesc = tool for "git submodule foreach" execution in parallel
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stt-systems/parallel_foreach_submodule
 	arch = any
 	license = LGPL

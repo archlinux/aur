@@ -2,7 +2,7 @@
 _modulename=pfs
 pkgname=python-$_modulename
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="tool for \"git submodule foreach\" execution in parallel"
 arch=(any)
 url="https://github.com/stt-systems/parallel_foreach_submodule"
