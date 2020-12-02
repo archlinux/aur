@@ -2,7 +2,7 @@
 _modulename=texsoup
 pkgname=python-$_modulename
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python3 package for searching, navigating, and modifying LaTeX documents using BeautifulSoup-esque idioms"
 arch=(any)
 url="https://github.com/alvinwan/TexSoup"
