@@ -14,7 +14,7 @@ pkgbase = monica-git
 	optdepends = redis: cache and session driver
 	backup = etc/webapps/monica/config.env
 	source = git+https://github.com/monicahq/monica.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = monica-git
 

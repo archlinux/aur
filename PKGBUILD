@@ -15,7 +15,7 @@ optdepends=("mariadb: database"
             "nginx: web server"
             "redis: cache and session driver")
 source=("git+https://github.com/monicahq/monica.git")
-md5sums=("SKIP")
+sha256sums=("SKIP")
 backup=("etc/webapps/monica/config.env")
 
 pkgver(){
@@ -29,11 +29,11 @@ package(){
 
  install -d "$pkgdir/usr/share/webapps/monica"  
  cp -r * "$pkgdir/usr/share/webapps/monica"
- 
+
  install -D -m 644 "LICENSE" "$pkgdir/usr/share/licenses/monica/LICENSE"
  install -D -o root -g http -m 640 ".env.example" "$pkgdir/etc/webapps/monica/config.env"
  ln -s "/etc/webapps/monica/config.env" "$pkgdir/usr/share/webapps/monica/.env"
- 
+
  install -d "$pkgdir/var/cache/"
  mv "$pkgdir/usr/share/webapps/monica/bootstrap/cache" "$pkgdir/var/cache/monica"
  ln -s "/var/cache/monica" "$pkgdir/usr/share/webapps/monica/bootstrap/cache"
