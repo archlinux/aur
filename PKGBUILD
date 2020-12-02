@@ -15,20 +15,18 @@ arch=('i686' 'pentium4' 'x86_64' 'armv6h')
 url='http://jabberd2.org/'
 license=('GPL')
 options=('!libtool')
-_pinned_dependencies=(
-  'glibc>=2.31'
-  'gsasl=1.8.1'
-  'libcrypt.so=2'
-  'libexpat.so=1'
-  'libidn=1.36'
-  'openssl=1.1.1.h'
-  'pam=1.5.0'
-  'postgresql-libs=12.5'
-  'sqlite=3.33.0'
-  'udns=0.4'
-  'zlib=1:1.2.11'
+depends=(
+  'gsasl'
+  'libcrypt.so'
+  'libexpat.so'
+  'libidn'
+  'openssl'
+  'pam'
+  'postgresql-libs'
+  'sqlite'
+  'udns'
+  'zlib'
 )
-depends=("${_pinned_dependencies[@]}")
 optdepends=('sqlite3' 'postgresql-libs')
 makedepends=('git' 'sqlite3' 'postgresql-libs' 'autoconf-archive')
 install=install

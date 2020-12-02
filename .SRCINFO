@@ -13,17 +13,16 @@ pkgbase = jabberd2
 	makedepends = sqlite3
 	makedepends = postgresql-libs
 	makedepends = autoconf-archive
-	depends = glibc>=2.31
-	depends = gsasl=1.8.1
-	depends = libcrypt.so=2
-	depends = libexpat.so=1
-	depends = libidn=1.36
-	depends = openssl=1.1.1.h
-	depends = pam=1.5.0
-	depends = postgresql-libs=12.5
-	depends = sqlite=3.33.0
-	depends = udns=0.4
-	depends = zlib=1:1.2.11
+	depends = gsasl
+	depends = libcrypt.so
+	depends = libexpat.so
+	depends = libidn
+	depends = openssl
+	depends = pam
+	depends = postgresql-libs
+	depends = sqlite
+	depends = udns
+	depends = zlib
 	optdepends = sqlite3
 	optdepends = postgresql-libs
 	conflicts = jabberd2-git
