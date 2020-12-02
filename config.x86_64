@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.9.11 Kernel Configuration
+# Linux/x86 5.9.12 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 10.2.0"
 CONFIG_CC_IS_GCC=y
@@ -636,7 +636,6 @@ CONFIG_FW_CFG_SYSFS=m
 # CONFIG_GOOGLE_FIRMWARE is not set
 CONFIG_UEFI_CPER=y
 CONFIG_UEFI_CPER_X86=y
-CONFIG_EFI_EARLYCON=y
 
 #
 # Tegra firmware driver
