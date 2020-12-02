@@ -2,7 +2,7 @@
 _modulename=getdist
 pkgname=python-$_modulename
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="MCMC sample analysis, kernel densities, plotting, and GUI"
 arch=(any)
 url="https://github.com/cmbant/getdist"
