@@ -3,7 +3,7 @@
 _pkgname=flask-restx
 pkgname=python-${_pkgname}
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Flask extension that adds support for quickly building REST APIs"
 arch=('any')
 url="https://flask-restx.readthedocs.io/"
