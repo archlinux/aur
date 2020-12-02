@@ -17,11 +17,11 @@ source=("https://registry.npmjs.org/mstream/-/mstream-$pkgver.tgz"
         "mstream.service"
         "mstream.sysusers"
         "mstream.tmpfiles")
-md5sums=("f8d978ade28d77a280e1c8112aa034f8"
-        "f590018cf4626a0e1a2bfb9b30531c44"
-        "f4fb1b503cedd059c4c3e311b7f8a206"
-        "a2c873e2862c0cc5a13e3db4c05e61bb"
-        "3d6bd19d0e8aa007f2f342d1d5a74083")
+sha256sums=("40b2c1bf628e0462bc0f80e45a5d2a3a4e8f50f14366077c6c61ba309f00e990"
+            "fb95db00a269d0e7f5d6b7e23e037d319176ad8e7a8332ab61f87ed2e82842a7"
+            "833f86daaffb12857612ef5b1264e944b0a48a077d5a8bb8d217ec6565ed90c3"
+            "5f2e6aced1707f64ca4ae3ae647fb6a8420f5c2a747ba06fa9174920fd821437"
+            "a584c25700c57ffe9df9a1902e44fe2f0ad9b508af748eca540734e3df44bb0f")
 backup=("etc/mstream.json")
 install="mstream.install"
 noextract=("mstream-$pkgver.tgz")
