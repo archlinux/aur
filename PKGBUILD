@@ -4,14 +4,15 @@
 
 pkgname=dfhack-twbt
 pkgver=0.47.04
-_pkgver=$pkgver-r1
+_pkgver=$pkgver-r3
 _twbtver=v6.61
-pkgrel=9
+pkgrel=10
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it"
 arch=('x86_64' 'i686')
 url="https://dfhack.readthedocs.io/en/stable/"
 license=('custom')
 depends=("dwarffortress=$pkgver" lua protobuf libpng12 libxrandr libjpeg6 freetype2 libglvnd libxcursor libxinerama)
+provides=('dfhack')
 makedepends=('cmake' 'git' 'python-sphinx' 'perl-xml-libxml' 'perl-xml-libxslt')
 conflicts=('dfhack-bin' 'dfhack-git' 'dfhack-twbt-bin' 'dfhack')
 

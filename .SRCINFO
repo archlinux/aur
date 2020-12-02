@@ -1,7 +1,7 @@
 pkgbase = dfhack-twbt
 	pkgdesc = memory hacking library for Dwarf Fortress and a set of tools that use it
 	pkgver = 0.47.04
-	pkgrel = 9
+	pkgrel = 10
 	url = https://dfhack.readthedocs.io/en/stable/
 	arch = x86_64
 	arch = i686
@@ -21,11 +21,12 @@ pkgbase = dfhack-twbt
 	depends = libglvnd
 	depends = libxcursor
 	depends = libxinerama
+	provides = dfhack
 	conflicts = dfhack-bin
 	conflicts = dfhack-git
 	conflicts = dfhack-twbt-bin
 	conflicts = dfhack
-	source = dfhack::git+https://github.com/DFHack/dfhack#tag=0.47.04-r1
+	source = dfhack::git+https://github.com/DFHack/dfhack#tag=0.47.04-r3
 	source = twbt::git+https://github.com/thurin/df-twbt#branch=04704
 	source = dfhack.sh
 	source = dfhack-run.sh
