@@ -1,7 +1,7 @@
 pkgbase = python-untangle
 	pkgdesc = Converts XML to a Python object
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stchris/untangle
 	arch = any
 	license = MIT

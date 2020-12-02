@@ -2,7 +2,7 @@
 
 pkgname=python-untangle
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Converts XML to a Python object"
 arch=('any')
 url="https://github.com/stchris/untangle"
