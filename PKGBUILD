@@ -2,7 +2,7 @@
 
 pkgname='nextinspace'
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Print upcoming space-related events to your terminal'
 arch=('any')
 url='https://github.com/The-Kid-Gid/nextinspace'
