@@ -1,6 +1,6 @@
 pkgbase = steamtinkerlaunch
 	pkgdesc = Wrapper script for Steam custom launch options
-	pkgver = 2.8.0
+	pkgver = 3.1.335
 	pkgrel = 1
 	url = https://github.com/frostworx/steamtinkerlaunch
 	arch = any
@@ -32,10 +32,11 @@ pkgbase = steamtinkerlaunch
 	optdepends = gamescope: for optional GameScope support
 	optdepends = libnotify: for optional Notifier
 	optdepends = cabextract: optional for extracting the wmp10 setup archive
+	optdepends = innoextract: optional for extracting the Cheat Engine setup archive
 	optdepends = usbutils: optional for a quick VR HMD presence check
 	optdepends = jq: optional for extracting game names from the steam api
-	source = steamtinkerlaunch-2.8.0.tar.gz::https://github.com/frostworx/steamtinkerlaunch/archive/v2.8.0.tar.gz
-	sha256sums = 1b9b4f0a1f8cce727d1951d42fcc5a5cad3b44f1cf970607e7eccdadce369086
+	source = steamtinkerlaunch-3.1.335.tar.gz::https://github.com/frostworx/steamtinkerlaunch/archive/v3.1.335.tar.gz
+	sha256sums = cf4961a42ce747ebd744f91fa5ffd0668a8919ef4ddb8bd2076dff19820c241d
 
 pkgname = steamtinkerlaunch
 

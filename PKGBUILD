@@ -2,8 +2,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
-pkgver=2.8.0
-pkgrel=2
+pkgver=3.1.335
+pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/frostworx/steamtinkerlaunch"
@@ -26,12 +26,13 @@ optdepends=(
     'gamescope: for optional GameScope support'
     'libnotify: for optional Notifier'
     'cabextract: optional for extracting the wmp10 setup archive'
+    'innoextract: optional for extracting the Cheat Engine setup archive'
     'usbutils: optional for a quick VR HMD presence check'
     'jq: optional for extracting game names from the steam api'
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1b9b4f0a1f8cce727d1951d42fcc5a5cad3b44f1cf970607e7eccdadce369086')
+sha256sums=('cf4961a42ce747ebd744f91fa5ffd0668a8919ef4ddb8bd2076dff19820c241d')
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}"
