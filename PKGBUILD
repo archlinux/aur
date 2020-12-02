@@ -2,7 +2,7 @@
 _pkgname=gpyopt
 pkgname=python-$_pkgname-git
 pkgver=r488.33d207e
-pkgrel=1
+pkgrel=2
 pkgdesc="Gaussian Process Optimization using GPy"
 arch=('any')
 url="https://github.com/SheffieldML/GPyOpt"
