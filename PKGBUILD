@@ -1,8 +1,8 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='imgsize'
 pkgname="python-$_projectname"
 pkgver='2.1'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Pure Python image size library - python version'
 arch=('any')
 url="https://github.com/ojii/$_projectname"
