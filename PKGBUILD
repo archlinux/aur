@@ -23,9 +23,9 @@ replaces=('hyperspy-gui-ipywidgets')
 conflicts=('hyperspy-gui-ipywidgets')
 provides=('hyperspy-gui-ipywidgets')
 
-source=(https://github.com/hyperspy/hyperspy_gui_ipywidgets/archive/v$pkgver.tar.gz>
+source=(https://github.com/hyperspy/hyperspy_gui_ipywidgets/archive/v$pkgver.tar.gz)
 #source=(https://github.com/hyperspy/hyperspy_gui_ipywidgets/archive/master.zip)
-sha256sums=('e09b4d01070b20dec7ff9328cdd9c961cd64fdc86d726e891eb066166bcc9257')
+sha256sums=('9db1ae7186db2da08ad9040fbf567cbd5d7e50179a39958456bcb081deede33e')
 #sha512sums=("SKIP")
 
 #pkgver() {

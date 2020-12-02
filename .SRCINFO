@@ -12,7 +12,8 @@ pkgbase = python-hyperspy-gui-ipywidgets
 	provides = hyperspy-gui-ipywidgets
 	conflicts = hyperspy-gui-ipywidgets
 	replaces = hyperspy-gui-ipywidgets
-	sha256sums = e09b4d01070b20dec7ff9328cdd9c961cd64fdc86d726e891eb066166bcc9257
+	source = https://github.com/hyperspy/hyperspy_gui_ipywidgets/archive/v1.3.0.tar.gz
+	sha256sums = 9db1ae7186db2da08ad9040fbf567cbd5d7e50179a39958456bcb081deede33e
 
 pkgname = python-hyperspy-gui-ipywidgets
 
