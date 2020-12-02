@@ -1,7 +1,7 @@
 pkgbase = python-yahoofinancials
 	pkgdesc = A powerful financial data module used for pulling data from Yahoo Finance
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JECSand/yahoofinancials
 	arch = any
 	license = MIT

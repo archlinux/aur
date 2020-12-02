@@ -4,7 +4,7 @@
 _name=yahoofinancials
 pkgname=python-$_name
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A powerful financial data module used for pulling data from Yahoo Finance'
 url='https://github.com/JECSand/yahoofinancials'
 arch=('any')
@@ -17,11 +17,6 @@ sha256sums=('682e19372c8fe09df47195690cb145884815e6afcbf1c24dabf101433c7e6691')
 build() {
   cd "$srcdir/$_name-$pkgver"
   python setup.py build
-}
-
-check() {
-  cd "$srcdir/$_name-$pkgver"
-  python test/test_yahoofinancials.py
 }
 
 package() {
