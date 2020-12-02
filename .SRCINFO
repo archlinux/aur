@@ -1,0 +1,15 @@
+pkgbase = gog-sudden-strike-4-africa-desert-war
+	pkgdesc = The Africa Desert War add-on for Sudden Strike 4 centers around some of the most notorious desert skirmishes in North Africa.
+	pkgver = 1.15
+	pkgrel = 1
+	url = https://www.gog.com/game/sudden_strike_4_africa_desert_war
+	arch = x86_64
+	groups = gog-sudden-strike-4-dlcs
+	license = custom
+	makedepends = lgogdownloader
+	depends = gog-sudden-strike-4>=1.15
+	source = sudden_strike_4_africa_desert_war_1_15.sh::gogdownloader://1912059629/en3installer0
+	sha512sums = a4ba0abb75da66524d786fc624b8d40d32548d1c9627520dfcf6328e536f7928c9a2a30ae525b753f2b825d00027d3a0c60aa782762cfd3ffb7964bd3b91e876
+
+pkgname = gog-sudden-strike-4-africa-desert-war
+
