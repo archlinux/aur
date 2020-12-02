@@ -1,7 +1,7 @@
 pkgbase = johnnydep-git
 	pkgdesc = Display dependency tree of Python distribution
 	pkgver = 1.6.r2.g4b09e91
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wimglenn/johnnydep
 	arch = any
 	license = MIT

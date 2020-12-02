@@ -3,7 +3,7 @@
 _pkgname='johnnydep'
 pkgname="${_pkgname}-git"
 pkgver=1.6.r2.g4b09e91
-pkgrel=1
+pkgrel=2
 pkgdesc='Display dependency tree of Python distribution'
 arch=('any')
 url='https://github.com/wimglenn/johnnydep'
