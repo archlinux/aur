@@ -3,7 +3,7 @@
 _pkgname='syllables'
 pkgname="python-${_pkgname}"
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python package for estimating the number of syllables in a word'
 arch=('any')
 url='https://github.com/prosegrinder/python-syllables'
