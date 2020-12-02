@@ -2,14 +2,14 @@
 
 pkgname=qmanga-git
 _pkgname=qmanga
-pkgver=20200313.aee22c9
-pkgrel=1
+pkgver=20200827.e054f5d
+pkgrel=2
 pkgdesc="Manga and book reader written with Qt"
 arch=('i686' 'x86_64')
 url="https://github.com/kernel1024/qmanga"
 license=('GPL3')
 
-depends=('qt5-base>=5.11.0' 'libzip' 'zlib' 'poppler>=0.72.0')
+depends=('qt5-base>=5.15.0' 'libzip' 'zlib' 'poppler>=0.83.0' 'tbb')
 optdepends=('djvulibre: DJVU files support'
             'tesseract: OCR support')
 
