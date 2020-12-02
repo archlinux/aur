@@ -1,7 +1,7 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 
 pkgname='nemo-pastebin'
-pkgver=4.6.0
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="Pastebin upload context menu in Nemo"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('libnotify')
 makedepends=('python-distutils-extra')
 options=('!emptydirs')
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-sha256sums=('f656a65ebb4454180f5dcddbb063c14410f38125151e762fc695993685d64edd')
+sha256sums=('1b7b85b41c659fe0f93a9b83fadb81a7934c7e7cb2df9eda4a03413b7f5d05c4')
 
 package() {
   cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"
