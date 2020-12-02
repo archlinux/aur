@@ -1,0 +1,60 @@
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 2.9)
+
+ set(CMAKE_VERBOSE_MAKEFILE              off)
+
+--- src/CMakeLists.txt
++++ src/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 2.9)
+
+ set(CMAKE_VERBOSE_MAKEFILE              off)
+
+--- doc/CMakeLists.txt
++++ doc/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 2.9)
+
+ set(CMAKE_VERBOSE_MAKEFILE              off)
+
+
+--- src/config.cc
++++ src/config.cc
+@@ -90,10 +90,10 @@
+ void Config::load()
+ {
+     try {
+-        if(access("/etc/"PROGRAM_NAME".conf", F_OK))
++        if(access("/etc/" PROGRAM_NAME".conf", F_OK))
+             return;
+
+-        read_info("/etc/"PROGRAM_NAME".conf", ptree);
++        read_info("/etc/" PROGRAM_NAME".conf", ptree);
+ #if 0
+         BOOST_FOREACH(boost::property_tree::ptree::value_type &v, ptree)
+             if(defaultProperty.find(v.first) == defaultProperty.not_found())
+--- src/defrag.cc
++++ src/defrag.cc
+@@ -56,7 +56,7 @@
+     std::string path;
+
+     path = (dir / PROGRAM_NAME"-XXXXXX").string();
+-    strncpy(cpath, path.c_str(), PATH_MAX);
++    strncpy(cpath, path.c_str(), PATH_MAX - 1);
+
+     fd = mkostemp(cpath, O_RDWR |O_CREAT);
+     if(-1 == fd)
+@@ -450,7 +450,7 @@
+      */
+     char cfiletemplate[PATH_MAX];
+     std::string file_template = (device.getMountPoint() / PROGRAM_NAME"-XXXXXX").string();
+-    strncpy(cfiletemplate, file_template.c_str(), PATH_MAX);
++    strncpy(cfiletemplate, file_template.c_str(), PATH_MAX - 1 );
+     int fd = mkostemp(cfiletemplate, O_RDWR |O_CREAT);
+     if(fd < 0)
+         throw std::runtime_error("Cannot create a temporary file");
