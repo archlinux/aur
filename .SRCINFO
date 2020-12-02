@@ -1,6 +1,6 @@
 pkgbase = gfold-git
 	pkgdesc = CLI tool to help keep track of Git repositories (git)
-	pkgver = 0.8.0.r0.gafb762f
+	pkgver = 0.8.1.r1.gd1a872c
 	pkgrel = 1
 	url = https://github.com/nickgerace/gfold
 	arch = x86_64
