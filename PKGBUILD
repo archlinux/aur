@@ -2,7 +2,7 @@
 
 pkgname=rdm-bin
 pkgver=2020.6
-pkgrel=3
+pkgrel=1
 pkgdesc='Cross-platform open source database management tool for Redis ®'
 arch=('x86_64')
 url="https://rdm.dev/"
@@ -26,7 +26,6 @@ depends=(
   'python-pandas'
   'python-msgpack')
 conflicts=('redis-desktop-manager-bin' 'redis-desktop-manager')
-
 source=('rdm.desktop'
         "https://github.com/pidario/rdm-build/releases/download/${pkgver}/rdm"
         'https://raw.githubusercontent.com/uglide/RedisDesktopManager/2020/src/resources/images/rdm.png')
