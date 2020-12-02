@@ -11,10 +11,10 @@ depends=('java-runtime')
 source=("https://downloads.apache.org/james/mime4j/${pkgver}/${pkgname}-${pkgver}-bin.tar.gz")
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"/lib
-  mkdir -p ${pkgdir}/usr/share/java/${pkgname}
-  chmod +r *.jar
-  cp *.jar $pkgdir/usr/share/java/${pkgname}
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -dm755 "${pkgdir}/usr/share/java/${pkgname}"
+  cp lib/*.jar "$pkgdir/usr/share/java/${pkgname}"
+  chmod +r "$pkgdir/usr/share/java/${pkgname}"/*.jar
 }
 
-md5sums=('ba4a77bb6c66292a5eadfb82c2c46f2c')
+sha256sums=('06acb2fd2e45e80d67d9c04dc38e9694d9d7d3acbbe9e3bd3813153da38c4205')

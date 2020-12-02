@@ -8,7 +8,7 @@ pkgbase = apache-mime4j
 	license = Apache
 	depends = java-runtime
 	source = https://downloads.apache.org/james/mime4j/0.8.3/apache-mime4j-0.8.3-bin.tar.gz
-	md5sums = ba4a77bb6c66292a5eadfb82c2c46f2c
+	sha256sums = 06acb2fd2e45e80d67d9c04dc38e9694d9d7d3acbbe9e3bd3813153da38c4205
 
 pkgname = apache-mime4j
 
