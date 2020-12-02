@@ -1,26 +1,28 @@
 # Maintainer: Oliver Papst <opapst at ikp dot tu-darmstadt dot de>
 pkgname=hdtv-git
 _pkgname=hdtv
-pkgver=r1020.39d70a5
+pkgver=r1182.b8b057a
 pkgrel=1
 pkgdesc="Nuclear spectrum analysis tool on top of the ROOT data analysis toolkit"
 arch=('i686' 'x86_64')
-url="https://gitlab.ikp.uni-koeln.de/staging/hdtv"
+url="https://github.com/janmayer/hdtv"
 license=('GPL')
 conflicts=('hdtv')
 provides=('hdtv')
 depends=('glibc'
+         'libx11'
          'python'
-         'root'
-         'libmfile'
+         'root>=6.22.06'
+         'python-matplotlib'
+         'python-prompt_toolkit'
          'python-setuptools'
          'python-scipy'
-         'python-matplotlib'
+         'python-traitlets'
          'python-uncertainties')
-makedepends=('git' 'libx11' 'python-docutils')
+makedepends=('git' 'python-docutils')
 #checkdepends=('python-pytest')
 options=(!emptydirs)
-source=('git+https://gitlab.ikp.uni-koeln.de/staging/hdtv.git')
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
