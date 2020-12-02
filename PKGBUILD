@@ -3,7 +3,7 @@
 _pkgname='pdd'
 pkgname="${_pkgname}-git"
 pkgver=1.5.r2.g6e44f7c
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiny CLI date, time diff calculator with timers'
 arch=('any')
 url='https://github.com/jarun/pdd'
