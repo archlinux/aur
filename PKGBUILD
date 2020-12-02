@@ -1,7 +1,7 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=svgtools
 pkgver=2020.7.27
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools for working with SVG files and JessyInk presentations.'
 arch=(any)
 license=(GPL)
