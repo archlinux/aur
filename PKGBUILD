@@ -36,7 +36,7 @@ sha256sums=('9db1ae7186db2da08ad9040fbf567cbd5d7e50179a39958456bcb081deede33e')
 #}
 
 package() {
-#  cd "$srcdir/$pkginst-$pkgver"
-  cd "$srcdir/${pkginst}-master"
+  cd "$srcdir/$pkginst-$pkgver"
+#  cd "$srcdir/${pkginst}-master"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
