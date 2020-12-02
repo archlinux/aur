@@ -3,7 +3,7 @@
 _pkgname='bookletimposer'
 pkgname="${_pkgname}-git"
 pkgver=0.3.r4.g85d66b7
-pkgrel=1
+pkgrel=2
 pkgdesc='Achieve some basic imposition on PDF documents'
 arch=('any')
 url='https://kjo.herbesfolles.org/bookletimposer/'
@@ -28,7 +28,7 @@ build() {
 package() {
   cd "${_pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
 
 # vim: ts=2 sw=2 et:

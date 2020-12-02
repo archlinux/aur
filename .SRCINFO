@@ -1,7 +1,7 @@
 pkgbase = bookletimposer-git
 	pkgdesc = Achieve some basic imposition on PDF documents
 	pkgver = 0.3.r4.g85d66b7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kjo.herbesfolles.org/bookletimposer/
 	arch = any
 	license = GPL3
