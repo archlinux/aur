@@ -1,10 +1,10 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=carp
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="EncFS gui and cli front-end"
 arch=("any")
-url="https://projects.deparis.io/projects/carp"
+url="https://git.umaneti.net/carp/about/"
 license=("WTFPL")
 depends=("encfs" "python-gobject" "python-inotify>=0.2.9" "python-xdg")
 optdepends=("rsync: sync support")
