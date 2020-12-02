@@ -2,7 +2,7 @@
 
 pkgname=python-wsgidav
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic WebDAV server based on WSGI"
 arch=("any")
 license=("MIT")

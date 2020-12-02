@@ -1,7 +1,7 @@
 pkgbase = python-wsgidav
 	pkgdesc = Generic WebDAV server based on WSGI
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mar10/wsgidav
 	arch = any
 	license = MIT
