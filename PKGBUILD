@@ -1,4 +1,4 @@
-# Maintainer: slmb
+# Maintainer: slimb
 
 _pkgname=libopenrazer
 pkgname=z3ntu-libopenrazer-git
