@@ -1,48 +1,78 @@
-# Maintainer: Martin Diehl <https://martin-diehl.net>
+# Maintainer: Bruno Bollos Correa <bollos@outlook.com.br>
+
+# trilinos-xyce contributors
+# Contributor: Cheng Fei Phung <feiphung@hotmail.com>
+
+# trilinos package contributors
+# Contributor: Martin Diehl <https://martin-diehl.net>
 # Contributor: Alad Wenter <alad@archlinux.org>
 # Contributor: Jingbei Li <i@jingbei.li>
 # Contributor: Simon Pintarelli <simon.pintarelli@gmail.com>
 # Contributor: Feng Wang <wanng.fenng@gmail.com>
-pkgname=trilinos
-pkgver=12.18.1
+
+# Forked from https://aur.archlinux.org/packages/trilinos/
+
+pkgname=trilinos-xyce-serial
+pkgver=12.12.1
 _pkgver=${pkgver//./-}
-pkgrel=4
-pkgdesc="algorithms for the solution of large-scale scientific problems"
+pkgrel=1
+pkgdesc="Algorithms for the solution of large-scale scientific problems. Configured to install the package xyce with serial build"
 arch=('x86_64')
 url="http://trilinos.org"
 license=('LGPL3')
 depends=('python' 'lapack' 'boost' 'netcdf' 'libmatio' 'libx11' 'hdf5-openmpi')
-makedepends=('gcc-fortran' 'perl' 'blas' 'cmake' 'doxygen' 'bc')
+makedepends=('gcc-fortran' 'perl' 'blas' 'cmake' 'doxygen' 'bc' 'gtest')
+provides=('trilinos')
+conflicts=('trilinos')
 checkdepends=('cmake')
-source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-$_pkgver.tar.gz"
-        "Makefile.kokkos.patch"
-        "Seacas.patch")
-sha256sums=('7d2e1a1a3e2d2ce78bb248c63411fed5007c827b87cadee3d13c1a45c09a89cf'
-            '64130011dd70f3be1133c0943be458a7d4f6fa799e6bd47a6294300ced6d827a'
-            '0e2f10b7ba4f7349eaef6bff111cda6de6d216ab417e24bf0b342711117a7374')
-
-prepare() {
-    cd Trilinos-trilinos-release-12-18-1
-    patch --forward --strip=1 --input="${srcdir}/Makefile.kokkos.patch"
-    patch --forward --strip=1 --input="${srcdir}/Seacas.patch"
-}
-
+source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-$_pkgver.tar.gz")
+sha256sums=('5474c5329c6309224a7e1726cf6f0d855025b2042959e4e2be2748bd6bb49e18')
 
 build() {
     cd Trilinos-trilinos-release-"$_pkgver"
     mkdir -p build
     cd build
 
-    cmake .. -DTrilinos_ENABLE_ALL_OPTIONAL_PACKAGES:BOOL=ON \
-             -DTrilinos_ENABLE_ALL_PACKAGES:BOOL=ON \
-             -DTrilinos_ENABLE_PyTrilinos:BOOL=OFF \
-             -DTrilinos_ENABLE_Gtest:BOOL=OFF \
-             -DTrilinos_ENABLE_TESTS=OFF \
-             -DTPL_ENABLE_gtest:BOOL=OFF \
-             -DTPL_ENABLE_MPI:BOOL=ON \
-             -DTPL_ENABLE_HDF5:BOOL=ON \
-             -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-             -DBUILD_SHARED_LIBS:BOOL=ON
+    cmake .. \
+		-G "Unix Makefiles" \
+		-DCMAKE_C_COMPILER=gcc \
+		-DCMAKE_CXX_COMPILER=g++ \
+		-DCMAKE_Fortran_COMPILER=gfortran \
+		-DCMAKE_CXX_FLAGS="${CXXFLAGS/-O2/-O3} -fPIC" \
+		-DCMAKE_C_FLAGS="${CFLAGS/-O2/-O3} -fPIC" \
+		-DCMAKE_Fortran_FLAGS="${FFLAGS/-O2/-O3} -fPIC" \
+		-DTrilinos_INSTALL_INCLUDE_DIR="/usr/include/trilinos" \
+		-DTrilinos_INSTALL_LIB_DIR="/usr/lib/trilinos" \
+		-DCMAKE_MAKE_PROGRAM="make" \
+		-DTrilinos_ENABLE_NOX=ON \
+		-DNOX_ENABLE_LOCA=ON \
+		-DTrilinos_ENABLE_EpetraExt=ON \
+		-DEpetraExt_BUILD_BTF=ON \
+		-DEpetraExt_BUILD_EXPERIMENTAL=ON \
+		-DEpetraExt_BUILD_GRAPH_REORDERINGS=ON \
+		-DTrilinos_ENABLE_TrilinosCouplings=ON \
+		-DTrilinos_ENABLE_Ifpack=ON \
+		-DTrilinos_ENABLE_Isorropia=ON \
+		-DTrilinos_ENABLE_AztecOO=ON \
+		-DTrilinos_ENABLE_Belos=ON \
+		-DTrilinos_ENABLE_Teuchos=ON \
+		-DTeuchos_ENABLE_COMPLEX=ON \
+		-DTrilinos_ENABLE_Amesos=ON \
+		-DAmesos_ENABLE_KLU=ON \
+		-DTrilinos_ENABLE_Sacado=ON \
+		-DTrilinos_ENABLE_Kokkos=OFF \
+		-DTrilinos_ENABLE_ALL_OPTIONAL_PACKAGES=OFF \
+		-DTrilinos_ENABLE_CXX11=ON \
+		-DTPL_ENABLE_AMD=ON \
+		-DAMD_LIBRARY_DIRS="/usr/lib" \
+		-DTPL_AMD_INCLUDE_DIRS="/usr/include/suitesparse" \
+		-DTPL_ENABLE_BLAS=ON \
+		-DTPL_ENABLE_LAPACK=ON \
+		-DTPL_ENABLE_MPI=OFF \
+		-DBUILD_SHARED_LIBS=OFF \
+		-DCMAKE_BUILD_TYPE=RELEASE
+
+
     make VERBOSE=1
 }
 
