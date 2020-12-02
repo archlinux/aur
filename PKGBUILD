@@ -3,7 +3,7 @@
 _pkgbase='wgtools'
 pkgname="python-${_pkgbase}"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings for wireguard-tools'
 arch=('any')
 url="https://github.com/coNQP/${_pkgbase}"
