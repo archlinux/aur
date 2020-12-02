@@ -2,7 +2,7 @@
 
 pkgname=pyambientmixer-git
 pkgver=r7.b188d8f
-pkgrel=1
+pkgrel=2
 pkgdesc="a Python player with Pygame to play ambient-mixer.com mixes locally"
 arch=('any')
 url="https://github.com/Philooz/pyambientmixer"
