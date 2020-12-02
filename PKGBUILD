@@ -51,8 +51,8 @@ replaces=('hyperspy')
 conflicts=('hyperspy')
 provides=('hyperspy')
 
-source=(https://github.com/hyperspy/hyperspy/archive/v$pkgver.zip)
-sha256sums=('dbdbd1d21dc2023ee33bcc6aab726844a6ca990d57b22fea8f2f1afca2984da2')
+source=(https://github.com/hyperspy/hyperspy/archive/v$pkgver.tar.gz)
+sha256sums=('3cd7213abd439724266ad71aa542c9258830db6eac07f7dfaf30e243e1289790')
 
 package() {
   cd "$srcdir/$pkgshort-$pkgver"
