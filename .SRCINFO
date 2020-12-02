@@ -1,14 +1,14 @@
 pkgbase = aruco
 	pkgdesc = ArUco is a C++ library for detection of squared planar markers based on OpenCV
-	pkgver = 3.1.11
+	pkgver = 3.1.12
 	pkgrel = 1
 	url = https://www.uco.es/investiga/grupos/ava/node/26
 	arch = any
 	license = GPLv3
 	makedepends = cmake
 	depends = opencv
-	source = https://downloads.sourceforge.net/project/aruco/3.1.11/aruco-3.1.11.zip
-	md5sums = 68c39f743f9b4ed9d292fa8d87a964ab
+	source = https://downloads.sourceforge.net/project/aruco/3.1.12/aruco-3.1.12.zip
+	md5sums = ad59afcfe79eeb88dff76ddc95271435
 
 pkgname = aruco
 

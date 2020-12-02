@@ -1,7 +1,7 @@
 # Maintainer: Lloyd Henning <lloyd.w.henning@gmail.com>
 # Maintainer: Felix Pfeiffer <fepf@freeshell.de>
 pkgname=aruco
-pkgver=3.1.11
+pkgver=3.1.12
 pkgrel=1
 pkgdesc="ArUco is a C++ library for detection of squared planar markers based on OpenCV"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('opencv')
 makedepends=('cmake')
 options=()
 source=("https://downloads.sourceforge.net/project/aruco/$pkgver/$pkgname-$pkgver.zip")
-md5sums=('68c39f743f9b4ed9d292fa8d87a964ab')
+md5sums=('ad59afcfe79eeb88dff76ddc95271435')
 
 _builddir="$pkgname-$pkgver-build"
 
