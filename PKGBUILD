@@ -2,7 +2,7 @@
 
 pkgname=rdm-bin
 pkgver=2020.6
-pkgrel=3
+pkgrel=4
 pkgdesc='Cross-platform open source database management tool for Redis ®'
 arch=('x86_64')
 url="https://rdm.dev/"
