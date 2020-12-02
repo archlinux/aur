@@ -1,6 +1,6 @@
 pkgbase = pdd-git
 	pkgdesc = Tiny CLI date, time diff calculator with timers
-	pkgver = 1.4.r17.g19ea856
+	pkgver = 1.5.r2.g6e44f7c
 	pkgrel = 1
 	url = https://github.com/jarun/pdd
 	arch = any

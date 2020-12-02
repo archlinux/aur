@@ -2,7 +2,7 @@
 
 _pkgname='pdd'
 pkgname="${_pkgname}-git"
-pkgver=1.4.r17.g19ea856
+pkgver=1.5.r2.g6e44f7c
 pkgrel=1
 pkgdesc='Tiny CLI date, time diff calculator with timers'
 arch=('any')
@@ -27,8 +27,8 @@ build() {
 package() {
   cd "${_pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
-  install -Dm644 -t "${pkgdir}/usr/share/man/man1" "${_pkgname}.1"
+  install -Dvm644 -t "${pkgdir}/usr/share/man/man1" "${_pkgname}.1"
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
