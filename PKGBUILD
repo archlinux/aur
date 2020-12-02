@@ -2,7 +2,7 @@
 
 pkgname=python-aplpy
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An astronomical plotting library in python"
 arch=('any')
 url="http://aplpy.sourceforge.net/"
