@@ -1,7 +1,7 @@
 pkgbase = tartube
 	pkgdesc = A GUI front-end for youtube-dl, partly based on youtube-dl-gui and written in Python 3 / Gtk 3
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/axcore/tartube
 	arch = any
 	license = GPL3

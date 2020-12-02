@@ -2,7 +2,7 @@
 
 pkgname=tartube
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A GUI front-end for youtube-dl, partly based on youtube-dl-gui and written in Python 3 / Gtk 3'
 arch=('any')
 url='https://github.com/axcore/tartube'
@@ -27,7 +27,8 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  mv "${pkgdir}/tartube/icons" "${pkgdir}/usr/lib/python3.8/site-packages/tartube/"
+  _pythonversion=$(python --version | awk -F ' ' '{print substr($2, 1, length($2)-2)}')
+  mv "${pkgdir}/tartube/icons" "${pkgdir}/usr/lib/python${_pythonversion}/site-packages/tartube/"
   rm -rvf "${pkgdir}/tartube/"
   install -d "${pkgdir}/usr/share/applications" \
    "${pkgdir}/usr/share/pixmaps"
