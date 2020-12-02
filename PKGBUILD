@@ -53,7 +53,7 @@ build() {
         -DENABLE_TARGETS_FOR_MINGW64_CROSS_PACKAGING:BOOL=ON \
         ${_config_flags[$_cfg]} \
         ../
-      ninja
+      [[ $_cfg == shared ]] && ninja
       popd
     done
   done
