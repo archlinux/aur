@@ -2,8 +2,8 @@
 # Contributor: Kazuo Teramoto < kaz.rag [at] gmail [dot] com >
 
 pkgname=stig-git
-pkgver=0.11.2a0.r13.7d8b621d
-pkgrel=2
+pkgver=0.11.2a0.r14.a059b0b9
+pkgrel=3
 pkgdesc='TUI and CLI client for the Transmission daemon'
 url='https://github.com/rndusr/stig'
 depends=('python' 'python-urwid' 'python-urwidtrees' 'python-aiohttp'
