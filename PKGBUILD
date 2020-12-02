@@ -4,7 +4,7 @@
 pkgname=python-wn
 _pkgname=wn
 pkgver=0.0.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Stand-alone WordNet API"
 arch=('any')
 url='https://github.com/alvations/wordnet'
