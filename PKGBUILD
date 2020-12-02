@@ -14,7 +14,7 @@ _json_export=${TAGEDITOR_JSON_EXPORT:-ON}
 
 _reponame=tageditor
 pkgname=tageditor
-pkgver=3.3.9
+pkgver=3.3.10
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska'
@@ -30,7 +30,7 @@ makedepends=('cmake' 'ninja' 'qt5-tools' 'mesa')
 checkdepends=('cppunit' 'jq')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('1ab9f843788046834ded52b99606908fde9327ca975376418ebf44139ca522ba')
+sha256sums=('0d720dcfce039c5dc85c0dcc0ce3daa0bd15835394c977da28b20a63e09f0d71')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
@@ -43,6 +43,8 @@ build() {
     -DJS_PROVIDER="${_js_provider}" \
     -DENABLE_JSON_EXPORT="${_json_export}" \
     -DREFLECTION_GENERATOR_EXECUTABLE:FILEPATH='/usr/bin/reflective_rapidjson_generator' \
+    -DBUILTIN_TRANSLATIONS:BOOL=ON \
+    -DBUILTIN_TRANSLATIONS_OF_QT:BOOL=OFF \
     .
   ninja
 }
