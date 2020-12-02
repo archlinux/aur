@@ -6,7 +6,7 @@
 # Source : new application - https://forums.insynchq.com
 
 pkgname=insync
-pkgver=3.3.2.40903
+pkgver=3.3.3.40905
 pkgrel=1
 _dist=buster
 pkgdesc="An unofficial Google Drive and OneDrive client that runs on Linux, with support for various desktops"
@@ -26,7 +26,7 @@ arch=('x86_64')
 source=("http://s.insynchq.com/builds/${pkgname}_${pkgver}-${_dist}_amd64.deb"
     'insync@.service'
     'insync.service')
-sha256sums=('e3332b87cb8cf362aa4269f188f27b80fe2c1780f6ba99d7b294c1452d9a2e16'
+sha256sums=('acd0de7fd7b279998fc04b7876359f82966590e4d71940c867f7e415e99bb1ce'
             'cf276c1dbf1592ea63a21c2d61c75f7ad6ec3b13e87b3aaa331e9c14799f4598'
             '1432141539a6b3c5333631a2ee6696fab9bd2fe8770643bc670d95e4e96203e0')
 package() {
