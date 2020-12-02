@@ -1,7 +1,7 @@
 pkgbase = python-rebulk
 	pkgdesc = Define simple search patterns in bulk to perform advanced matching on any string.
 	pkgver = 2.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Toilal/rebulk
 	arch = any
 	license = MIT
