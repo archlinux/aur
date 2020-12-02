@@ -8,7 +8,7 @@ pkgver() {
   git -C "$_pkgname" describe --tags | sed 's/v\?\([^-]\+\)-/\1.r/;s/-g/./'
 }
 pkgver=6.0.8.r26.499b891
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Desktop integration for webapps'
 url="https://github.com/peppermintos/$_pkgname"

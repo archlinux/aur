@@ -1,7 +1,7 @@
 pkgbase = ice-ssb-git
 	pkgdesc = Desktop integration for webapps
 	pkgver = 6.0.8.r26.499b891
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/peppermintos/ice
 	arch = any
 	license = GPL2
