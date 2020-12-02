@@ -91,9 +91,8 @@ build() {
         -DEIGEN_ROOT_DIR=/usr/include/eigen3
   )
   msg2 "Build Cork lib"
-  (cd "${srcdir}/${name}-cork"; CFLAGS+=" -fPIC" CXXFLAGS+=" -fPIC" make)
-  msg2 "Build CloudCompare"
   (cd "${srcdir}/${name}-cork"; make)
+  msg2 "Build CloudCompare"
   cmake -B build -S "${srcdir}/${name}" -G Ninja "${CMAKE_FLAGS[@]}" -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-deprecated-declarations"
 # shellcheck disable=SC2086 # allow slitting for MAKEFLAGS carrying multiple flags.
   ninja -C build ${MAKEFLAGS:--j1}
