@@ -1,0 +1,15 @@
+pkgbase = gog-sudden-strike-4-the-pacific-war
+	pkgdesc = The Pacific War add-on for Sudden Strike 4 throws you right into the conflict between the Allied Forces and the Imperial Japanese Army.
+	pkgver = 1.15
+	pkgrel = 1
+	url = https://www.gog.com/game/sudden_strike_4_the_pacific_war
+	arch = x86_64
+	groups = gog-sudden-strike-4-dlcs
+	license = custom
+	makedepends = lgogdownloader
+	depends = gog-sudden-strike-4>=1.15
+	source = sudden_strike_4_the_pacific_war_1_15.sh::gogdownloader://1324401455/en3installer0
+	sha512sums = 95de0b33862a75426ab69dc84948cfe6bc88bd4bdc1d9eeab4e80839bd924a0f7ad70f226f1b3e804c8e7f561610e6340e2bdb91c2cce4d2535a3f5d89bf8d88
+
+pkgname = gog-sudden-strike-4-the-pacific-war
+
