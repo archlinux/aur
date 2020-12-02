@@ -1,7 +1,7 @@
 pkgbase = python-cssutils
 	pkgdesc = CSS Cascading Style Sheets library for Python
 	pkgver = 1.0.2
-	pkgrel = 6
+	pkgrel = 7
 	url = http://cthedot.de/cssutils
 	arch = any
 	license = LGPL3

@@ -10,7 +10,7 @@ pkgname=python-cssutils
 _name="${pkgname#python-}"
 
 pkgver=1.0.2
-pkgrel=6
+pkgrel=7
 
 pkgdesc='CSS Cascading Style Sheets library for Python'
 arch=('any')
