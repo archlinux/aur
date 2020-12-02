@@ -2,7 +2,7 @@
 _modulename=docrep
 pkgname=python-$_modulename
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python Module for intelligent reuse of docstrings"
 arch=(any)
 url="https://github.com/Chilipp/docrep"
