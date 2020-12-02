@@ -1,7 +1,7 @@
 pkgbase = nspawn-tools
 	pkgdesc = Convenience code for dealing with systemd-nspawn machines
 	pkgver = 1.1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/djmattyg007/nspawn-tools
 	arch = any
 	license = GPL3
