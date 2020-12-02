@@ -5,6 +5,7 @@ pkgbase = shiromino-git
 	url = https://github.com/FelicityVi/shiromino
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = MIT
 	makedepends = pkgconf
 	makedepends = git
