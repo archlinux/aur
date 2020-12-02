@@ -2,7 +2,7 @@
 _pkgname=hopcroftkarp
 pkgname=python-$_pkgname-git
 pkgver=r43.4ecacde
-pkgrel=2
+pkgrel=3
 pkgdesc="a module to find a maximum matching in bipartite graphs"
 arch=('any')
 url="https://github.com/sofiatolaosebikan/hopcroftkarp"
