@@ -1,8 +1,9 @@
-# Maintainer: Daniel Moch <daniel AT danielmoch DOT com>
-# Maintainer: Nathan Owens <ndowens @ artixlinux.org>
+# Maintainer: Michael Riegert <michael at eowyn net>
+# Contributor: Daniel Moch <daniel AT danielmoch DOT com>
+# Contributor: Nathan Owens <ndowens @ artixlinux.org>
 
 pkgname=python-sphinx-sitemap
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Sphinx extension to silently generate a sitemap for HTML builds"
 url="https://github.com/jdillard/sphinx-sitemap"
@@ -10,19 +11,17 @@ license=('MIT')
 arch=('any')
 depends=('python-sphinx' 'python-six')
 makedepends=('python-setuptools' 'git')
-source=("git+${url}#tag=v${pkgver}")
-sha512sums=('SKIP')
+source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('fe4a7c2c3c654b3caa5b64c7268cc664b3741d001bf3f78640f523b0b9cf1f117ee58360632114d74cbc7022cc864ad6d4e9a257076ca1e83ecab5545e7492b2')
 
 build() {
-  cd "$srcdir/sphinx-sitemap"
-  python setup.py build
+    cd "$srcdir/sphinx-sitemap"
+    python setup.py build
 }
 
 package() {
-  cd "$srcdir/sphinx-sitemap"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
+    cd "$srcdir/sphinx-sitemap"
+    python setup.py install --root="$pkgdir/" --optimize=1
 
-# vim: ts=2 sts=2 sw=2 et ft=PKGBUILD
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
