@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Chris Billington <chrisjbillington at gmail dot com>
 pkgname=git-nautilus-icons-git
-pkgver=2.0.0.r0.g636aeb3
+pkgver=2.0.0.r1.g6d60312
 pkgrel=1
 pkgdesc="A Nautilus, Nemo, and Caja extension to overlay icons on files in git repositories"
 arch=('any')
