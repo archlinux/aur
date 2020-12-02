@@ -1,7 +1,7 @@
 pkgbase = python-ads-git
 	pkgdesc = Python tool for ADS
 	pkgver = r312.63e1e53
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/andycasey/ads
 	arch = any
 	license = MIT

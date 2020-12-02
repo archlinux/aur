@@ -2,7 +2,7 @@
 _pkgname=python-ads
 pkgname=$_pkgname-git
 pkgver=r312.63e1e53
-pkgrel=1
+pkgrel=3
 pkgdesc="Python tool for ADS "
 arch=('any')
 url="https://github.com/andycasey/ads"
