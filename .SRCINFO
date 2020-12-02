@@ -1,0 +1,15 @@
+pkgbase = gog-sudden-strike-4-battle_of_kursk
+	pkgdesc = The Battle of Kursk for Sudden Strike 4 throws you right in the Battle of Kursk - one of the largest tank battles of World War II! Command German and Soviet forces on the new skirmish map.
+	pkgver = 1.15
+	pkgrel = 1
+	url = https://www.gog.com/game/sudden_strike_4_complete_collection
+	arch = x86_64
+	groups = gog-sudden-strike-4-dlcs
+	license = custom
+	makedepends = lgogdownloader
+	depends = gog-sudden-strike-4>=1.15
+	source = sudden_strike_4_battle_of_kursk_1_15.sh::gogdownloader://1938212434/en3installer0
+	sha512sums = 52244bc0a33c6696328cbf538f8f7c8088352bb9f00de27c6164adfa0a715788d7265158083589cb4896264e0e805461869d04bc515cc9c580de71e606768a3f
+
+pkgname = gog-sudden-strike-4-battle_of_kursk
+
