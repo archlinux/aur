@@ -2,8 +2,8 @@
 
 _pkgbase='strflib'
 pkgname="python-${_pkgbase}-git"
-pkgver=latest
-pkgrel=1
+pkgver=r26.a0f6a24
+pkgrel=2
 pkgdesc='A string formatting library'
 arch=('any')
 url="https://gitlab.com/HOMEINFO/${_pkgbase}"

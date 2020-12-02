@@ -1,7 +1,7 @@
 pkgbase = python-strflib-git
 	pkgdesc = A string formatting library
-	pkgver = latest
-	pkgrel = 1
+	pkgver = r26.a0f6a24
+	pkgrel = 2
 	url = https://gitlab.com/HOMEINFO/strflib
 	arch = any
 	license = GPLv3
