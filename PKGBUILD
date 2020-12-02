@@ -3,7 +3,6 @@
 pkgname=python-asysocks
 _pkgname=asysocks
 pkgver=0.0.7
-_file="d7/34/c8895dbc82c231a463ca63c1c9b664eb410d6b423885219e336b573f64ab"
 pkgrel=1
 pkgdesc="Socks5/Socks4 client and server python library"
 url="https://pypi.org/project/asysocks"
