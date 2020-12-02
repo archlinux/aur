@@ -1,6 +1,6 @@
---- configure	2020-01-23 14:40:20.000000000 +0300
-+++ configure	2020-01-23 14:56:53.679636518 +0300
-@@ -493,11 +493,10 @@
+--- configure	2020-12-02 12:41:14.529198213 +0300
++++ configure	2020-12-02 12:45:30.914220944 +0300
+@@ -496,19 +496,19 @@
  
  $arch_cc          = "cc";
  $arch_ccpp        = "CC";
@@ -10,12 +10,25 @@
 -                    "-gencode arch=compute_30,code=compute_30 " .
 -                    "-gencode arch=compute_30,code=sm_35 " .
 -                    "-gencode arch=compute_30,code=sm_37 " .
+-                    "-gencode arch=compute_50,code=compute_50 " .
 +                    "-gencode arch=compute_35,code=sm_35 " .
 +                    "-gencode arch=compute_35,code=sm_37 " .
-                     "-gencode arch=compute_50,code=compute_50 " .
                      "-gencode arch=compute_50,code=sm_50 " .
-                     "-gencode arch=compute_60,code=compute_60 " .
-@@ -777,8 +776,8 @@
+-                    "-gencode arch=compute_60,code=compute_60 " .
++                    "-gencode arch=compute_52,code=sm_52 " .
+                     "-gencode arch=compute_60,code=sm_60 " .
+-                    "-gencode arch=compute_70,code=compute_70 " .
++                    "-gencode arch=compute_61,code=sm_61 " .
+                     "-gencode arch=compute_70,code=sm_70 " .
++                    "-gencode arch=compute_75,code=sm_75 " .
++                    "-gencode arch=compute_80,code=sm_80 " .
++                    "-gencode arch=compute_86,code=sm_86 " .
+                     "--ftz=true ";
+-#                    "-gencode arch=compute_75,code=sm_75 " .
+ $arch_gcc         = "gcc";
+ $arch_gccpp       = "g++";
+ $arch_lex         = "lex";
+@@ -780,8 +780,8 @@
  if ($config_tk) { $tcl_include .= " -I$stock_tk_include_dir"; }
  $tcl_library      = "-L$stock_tcl_library_dir";
  if ($config_tk) { $tcl_library .= " -L$stock_tk_library_dir"; }
@@ -26,7 +39,7 @@
  
  @tcl_cc           = ();
  @tcl_cu           = ();
-@@ -906,13 +905,7 @@
+@@ -909,13 +909,7 @@
  $system_dir           = "";
  $system_include       = "-I.";
  $system_library       = "";
@@ -41,7 +54,7 @@
  @system_cc             = ();
  @system_cu             = ();
  @system_ccpp           = ();
-@@ -942,7 +935,7 @@
+@@ -971,7 +965,7 @@
  #   This option enables the use of CUDA GPU acceleration functions.
  #######################
  $cuda_defines     = "-DVMDCUDA -DMSMPOT_CUDA";
@@ -50,7 +63,7 @@
  $cuda_include     = "";
  $cuda_library     = "";
  $cuda_libs        = "-Wl,-rpath -Wl,\$\$ORIGIN/ -lcudart_static -lrt";
-@@ -1151,7 +1144,7 @@
+@@ -1180,7 +1174,7 @@
  # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-5.0.1-linux64";
  # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-5.1.0-linux64";
  # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-6.0.0-linux64";
@@ -59,7 +72,7 @@
  # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-7.0.0-linux64";
  
  # NCSA Blue Waters
-@@ -1217,7 +1210,7 @@
+@@ -1246,7 +1240,7 @@
    $libospray_dir         = "/usr/local/ospray-1.8.5.x86_64.linux";
    $libospray_include     = "-I$libospray_dir/include -I$libospray_dir/ospray/include ";
    $libospray_library     = "-L$libospray_dir/lib ";
@@ -68,7 +81,7 @@
  }
  
  
-@@ -1629,16 +1622,16 @@
+@@ -1629,16 +1623,16 @@
    $stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "$conda_root/lib/python-3.7/site-packages/numpy/core/include";
    $python_libs        = "-fno-lto -lpython3.7m -lpthread";
  } else {
@@ -82,20 +95,20 @@
 -  $stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "$vmd_library_dir/numpy/lib_$config_arch/include";
 -  $stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/site-packages/numpy/core/include";
 -  $python_libs        = "-lpython2.5 -lpthread";
-+  $stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "/usr/include/python3.8";
-+  $stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "/usr/lib/python3.8/config-3.8-x86_64-linux-gnu";
++  $stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "/usr/include/python3.9";
++  $stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "/usr/lib/python3.9/config-3.9-x86_64-linux-gnu";
 +#   $stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "$vmd_library_dir/python/lib_$config_arch/include/python2.5";
 +#   $stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/config";
 +
-+  $stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "/usr/lib/python3.8/site-packages/numpy/core/include/numpy";
-+  $stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "/usr/lib/python3.8/site-packages/numpy/core/include";
++  $stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "/usr/lib/python3.9/site-packages/numpy/core/include/numpy";
++  $stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "/usr/lib/python3.9/site-packages/numpy/core/include";
 +#   $stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "$vmd_library_dir/numpy/lib_$config_arch/include";
 +#   $stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/site-packages/numpy/core/include";
-+  $python_libs        = "-lpython3.8 -lpthread";
++  $python_libs        = "-lpython3.9 -lpthread";
  }
  
  $python_defines     = "-DVMDPYTHON";
-@@ -2499,9 +2492,9 @@
+@@ -2538,9 +2532,9 @@
        # for compiling with g++:
        $arch_cc		= "gcc";
        $arch_ccpp  	= "g++";
@@ -107,7 +120,7 @@
  
        # so far only STATIC version tested
        if ($config_static) {
-@@ -2513,7 +2506,7 @@
+@@ -2552,7 +2546,7 @@
  
      if ($config_cuda) {
        $arch_nvccflags   .= " --machine 64 -O3 $cuda_include";
@@ -116,7 +129,7 @@
      }
  
      $arch_lex		= "flex"; # has problems with vendor lex
-@@ -2551,7 +2544,7 @@
+@@ -2590,7 +2584,7 @@
  
    $arch_nvcc     = "/usr/local/cuda/bin/nvcc";
    $arch_nvccflags   = "--ptxas-options=-v " .
@@ -125,7 +138,7 @@
                      "-gencode arch=compute_70,code=compute_70 " .
                      "--ftz=true ";
    $cuda_library     = "-L/usr/local/cuda/lib64";
-@@ -2575,11 +2568,7 @@
+@@ -2614,11 +2608,7 @@
  
    $arch_nvcc     = "/usr/local/cuda-5.5/bin/nvcc";
    $arch_nvccflags   = "--ptxas-options=-v " . 
@@ -137,7 +150,7 @@
                      "--ftz=true ";
    $cuda_library     = "-L/usr/local/cuda/lib";
    $arch_cc       = "cc";
-@@ -2913,7 +2902,7 @@
+@@ -2952,7 +2942,7 @@
    
        # Only generate code for SM 7.0 on Summit
        $arch_nvccflags   = "--ptxas-options=-v " .
@@ -146,7 +159,7 @@
                        "-gencode arch=compute_70,code=sm_70 " .
                        "--ftz=true ";
        $arch_nvccflags   .= " --machine 64 -O3 $cuda_include";
-@@ -3541,7 +3530,7 @@
+@@ -3623,7 +3613,7 @@
  
  .cu.ptx:
  	\$(ECHO) "Compiling " \$< " --> " \$*.ptx " ..."; \\

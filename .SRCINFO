@@ -1,7 +1,7 @@
 pkgbase = vmd-src
 	pkgdesc = Visual Molecular Dynamics
 	pkgver = 1.9.4a48
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ks.uiuc.edu/Research/vmd/
 	arch = x86_64
 	license = custom
@@ -26,7 +26,7 @@ pkgbase = vmd-src
 	source = mpi.patch
 	source = wkfthreads_reversal.patch
 	sha256sums = d1ef1260be2bb43aed891832cc2ad15df1bb8402cb47d848073342c3df917ea4
-	sha256sums = dcda14b9a4b43824a968ccb6613e4f704f50ecbdce3bbdfde1257185b5a6af32
+	sha256sums = 1a36eeea92a362576fc1167f0bafb12ecf4c97562e0ae4b001743f5de6f0a48c
 	sha256sums = e281a57831b8ff60c5a644219f0b6289d32bee239978af676474941c7d8548c0
 	sha256sums = 1284e19124743fe85969ebbee67e4e4e5b6ec07e9c4c83f75f960db75b0587ad
 

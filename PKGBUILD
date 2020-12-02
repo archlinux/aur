@@ -6,7 +6,7 @@
 pkgname=vmd-src
 _pkgname=vmd
 pkgver=1.9.4a48
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual Molecular Dynamics"
 url="http://www.ks.uiuc.edu/Research/vmd/"
 license=('custom')
@@ -26,7 +26,7 @@ source=("local://$_pkgname-${pkgver}.src.tar.gz"
         "mpi.patch"
         "wkfthreads_reversal.patch")
 sha256sums=('d1ef1260be2bb43aed891832cc2ad15df1bb8402cb47d848073342c3df917ea4'
-            'dcda14b9a4b43824a968ccb6613e4f704f50ecbdce3bbdfde1257185b5a6af32'
+            '1a36eeea92a362576fc1167f0bafb12ecf4c97562e0ae4b001743f5de6f0a48c'
             'e281a57831b8ff60c5a644219f0b6289d32bee239978af676474941c7d8548c0'
             '1284e19124743fe85969ebbee67e4e4e5b6ec07e9c4c83f75f960db75b0587ad')
 
@@ -60,7 +60,7 @@ build() {
   make -j1 LINUXAMD64
   make distrib
   cd ../$_pkgname-$pkgver
-  ./configure LINUXAMD64 OPENGL EGLPBUFFER FLTKOPENGL FLTK TK $ACC IMD OPENCL MPI XINERAMA XINPUT LIBOSPRAY LIBPNG ZLIB NETCDF COLVARS TCL PYTHON PTHREADS GCC
+  ./configure LINUXAMD64 OPENGL EGLPBUFFER FLTKOPENGL FLTK TK $ACC IMD OPENCL MPI XINERAMA XINPUT LIBOSPRAY LIBPNG ZLIB NETCDF COLVARS TCL PYTHON NUMPY PTHREADS GCC
   cd src
   make veryclean
   make
