@@ -2,7 +2,7 @@
 
 pkgname=python-infi
 pkgver=2019.01.05
-pkgrel=2
+pkgrel=3
 pkgdesc="Create empty infi namespace for packages by Infinidat"
 arch=("any")
 license=("BSD3")
