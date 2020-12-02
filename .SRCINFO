@@ -1,0 +1,19 @@
+pkgbase = python-matplotlib-sixel-git
+	pkgdesc = a sixel graphics backend for matplotlib
+	pkgver = r9.27df6fa
+	pkgrel = 1
+	url = https://github.com/koppa/matplotlib-sixel
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-matplotlib
+	depends = python-numpy
+	provides = python-matplotlib-sixel
+	conflicts = python-matplotlib-sixel
+	source = git+https://github.com/koppa/matplotlib-sixel
+	sha256sums = SKIP
+
+pkgname = python-matplotlib-sixel-git
+
