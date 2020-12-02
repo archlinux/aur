@@ -2,8 +2,8 @@
 
 _pkgbase='timelib'
 pkgname="python-${_pkgbase}-git"
-pkgver=r21.befe015
-pkgrel=1
+pkgver=r29.0c6da92
+pkgrel=2
 pkgdesc='A library for handling time data'
 arch=('any')
 url="https://gitlab.com/HOMEINFO/${_pkgbase}"
@@ -11,6 +11,8 @@ license=('GPLv3')
 depends=('python')
 conflicts=('python-timelib')
 makedepends=('git' 'python')
+provides=("python-${_pkgbase}")
+conflicts=("python-${_pkgbase}")
 source=("${_pkgbase}::git+${url}.git")
 md5sums=('SKIP')
 pkgdir='pkg'
