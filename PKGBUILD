@@ -2,7 +2,7 @@
 
 pkgname='cmakew'
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='CMake wrapper CLI tool'
 arch=('any')
 url='https://github.com/thombashi/cmakew'
