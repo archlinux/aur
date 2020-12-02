@@ -1,7 +1,7 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=xac
 pkgver=2018
-pkgrel=1
+pkgrel=2
 pkgdesc='A markdown- and Pandoc-based content management system (CMS).'
 arch=(any)
 license=(GPL)
