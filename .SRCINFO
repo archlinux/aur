@@ -1,6 +1,6 @@
 pkgbase = xorg-server-bug865
-	pkgver = 1.20.9.r21.g5c400cae1
-	pkgrel = 2
+	pkgver = 1.20.10
+	pkgrel = 1
 	url = https://xorg.freedesktop.org
 	arch = x86_64
 	groups = xorg
@@ -37,7 +37,7 @@ pkgbase = xorg-server-bug865
 	makedepends = egl-wayland
 	makedepends = meson
 	makedepends = git
-	source = git+https://gitlab.freedesktop.org/xorg/xserver#commit=5c400cae1f9817045378966effa6bca91e45aead
+	source = git+https://gitlab.freedesktop.org/xorg/xserver#commit=bc111a2e67e16d4e6d4f3196ab86c22c1e278c45
 	source = xserver-autobind-hotplug.patch
 	source = 0001-v2-FS-58644.patch
 	source = 0002-fix-libshadow-2.patch
@@ -76,7 +76,7 @@ pkgname = xorg-server-bug865
 	provides = X-ABI-XINPUT_VERSION=24.1
 	provides = X-ABI-EXTENSION_VERSION=10.0
 	provides = x-server
-	provides = xorg-server=1.20.9.r21.g5c400cae1
+	provides = xorg-server=1.20.10
 	conflicts = nvidia-utils<=331.20
 	conflicts = glamor-egl
 	conflicts = xf86-video-modesetting
