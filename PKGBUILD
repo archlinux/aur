@@ -6,16 +6,17 @@
 _reponame=passwordmanager
 pkgname=mingw-w64-passwordmanager
 _name=${pkgname#mingw-w64-}
-pkgver=4.1.5
+pkgver=4.1.6
 pkgrel=1
 arch=('any')
 pkgdesc='A simple password store using AES-256-CBC encryption via OpenSSL (mingw-w64)'
 license=('GPL')
-depends=('mingw-w64-crt' 'mingw-w64-qt5-base' 'mingw-w64-qtutilities' 'mingw-w64-passwordfile' 'mingw-w64-openssl')
+depends=('mingw-w64-crt' 'mingw-w64-qt5-base' 'mingw-w64-qtutilities' 'mingw-w64-passwordfile' 'mingw-w64-openssl'
+         'mingw-w64-kirigami2')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg' 'ninja')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('4e5ef1c6dfcf9b642c4552cd4be2f88344238956f157f69defab24db655f5cda')
+sha256sums=('2498867bb85e267202cd8d0e665f9675456072882d43c5aba22219474ccfa008')
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
@@ -29,6 +30,7 @@ build() {
   declare -A _config_flags=(
     [shared]='
         -DBUILD_SHARED_LIBS:BOOL=ON
+	-DQUICK_GUI:BOOL=ON
     '
     [static]='
         -DBUILD_SHARED_LIBS:BOOL=OFF
