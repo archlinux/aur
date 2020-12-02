@@ -1,7 +1,7 @@
 pkgbase = pcem
 	pkgdesc = Emulator for various IBM PC computers and clones.
-	pkgver = 16
-	pkgrel = 4
+	pkgver = 17
+	pkgrel = 1
 	url = http://pcem-emulator.co.uk/
 	arch = x86_64
 	arch = i686
@@ -10,10 +10,8 @@ pkgbase = pcem
 	depends = openal
 	depends = sdl2
 	depends = alsa-lib
-	source = http://pcem-emulator.co.uk/files/PCemV16Linux.tar.gz
-	source = use-fcommon.patch
-	sha256sums = 45ae9321ee25375f0e685a49d84e8a5acba8ed33ccf597299edcf287cb3c8499
-	sha256sums = a020184887520f58e74a8ebb990fb677af4d40dd87a5602f2336945824c7cea9
+	source = http://pcem-emulator.co.uk/files/PCemV17Linux.tar.gz
+	sha256sums = 5b24cb5ce886ed53232385f46594146ba3f7d7eecda90f82892b2dce1cb2f1a4
 
 pkgname = pcem
 
