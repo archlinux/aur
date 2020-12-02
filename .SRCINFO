@@ -1,13 +1,12 @@
 pkgbase = python-envinfopy
 	pkgdesc = Python Library to get execution environment information
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thombashi/envinfopy
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	provides = envinfopy
 	source = https://files.pythonhosted.org/packages/source/e/envinfopy/envinfopy-0.0.3.tar.gz
 	sha256sums = cbee4e6ea91b48b9cfafc5817aa97a44f1d61065a9aa37e5e909838da232ec20
 
