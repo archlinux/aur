@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=nvidia-vpf-git
-pkgver=r4.g9630e0d
+pkgver=r107.g4f2c84c
 pkgrel=1
 pkgdesc='NVIDIA Video Processing Framework (git version)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('nvidia-vpf')
 source=('git+https://github.com/NVIDIA/VideoProcessingFramework.git'
         '010-nvidia-vpf-git-fix-install.patch')
 sha256sums=('SKIP'
-            '04931025174a113df620b46a824b6b41437782533a0e9b7ce945f539208b72ae')
+            'efd9851b0386f5b4e1f0f6f3fe93797861bc2ff77f5d990511882c81f2b42925')
 
 prepare() {
     patch -d VideoProcessingFramework -Np1 -i "${srcdir}/010-nvidia-vpf-git-fix-install.patch"
@@ -27,7 +27,8 @@ pkgver() {
 
 build() {
     export CXXFLAGS+=' -I/opt/cuda/include'
-    export  LDFLAGS+=' -L/opt/cuda/lib'
+    export  LDFLAGS+=' -L/opt/cuda/lib64'
+    
     cmake -B build -S VideoProcessingFramework \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_SKIP_RPATH:BOOL='YES' \
