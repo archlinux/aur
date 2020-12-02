@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: slact
 pkgname=tlpui-git
-pkgver=1.3.1.r0.g14396b2
+pkgver=1.3.1.r1.gf3a9ca9
 pkgrel=1
 epoch=2
 pkgdesc="A GTK user interface for TLP written in Python"
@@ -29,6 +29,7 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
+	export PYTHONHASHSEED=0
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
 	install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t \
