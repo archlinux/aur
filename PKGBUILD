@@ -2,7 +2,7 @@
 _pkgname=camb
 pkgname=python-$_pkgname-git
 pkgver=r491.0dbbbb9
-pkgrel=3
+pkgrel=4
 pkgdesc="Code for Anisotropies in the Microwave Background"
 arch=('any')
 url="https://github.com/cmbant/CAMB"
