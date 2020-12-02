@@ -1,6 +1,7 @@
 pkgbase = docspell
+	pkgdesc = Assists in organizing your piles of documents, resulting from scanners, e-mails and other sources with miminal effort.
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eikek/docspell
 	arch = any
 	groups = docspell

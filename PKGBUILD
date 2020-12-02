@@ -4,9 +4,10 @@
 pkgbase=docspell
 pkgname=('docspell-joex' 'docspell-restserver')
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/eikek/docspell"
+pkgdesc="Assists in organizing your piles of documents, resulting from scanners, e-mails and other sources with miminal effort."
 license=('GPL3')
 groups=('docspell')
 depends=('java-runtime-headless')
@@ -44,7 +45,7 @@ prepare() {
 # checkdepends=('unpaper' 'ocrmypdf' 'solr')
 
 package_docspell-joex() {
-    pkgdesc="Assists in organizing your piles of documents, resulting from scanners, e-mails and other sources with miminal effort. (Job executer)"
+    pkgdesc+=" (Job executer)"
     depends+=('ghostscript' 'tesseract' 'unoconv' 'wkhtmltopdf')
     optdepends+=('ocrmypdf: adds an OCR layer to scanned PDF files to make them searchable'
                  'unpaper: pre-processes images to yield better results when doing ocr')
@@ -55,7 +56,7 @@ package_docspell-joex() {
     install -Dm 644 "$pkgbase.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/${pkgname[0]}.conf"
     install -Dm 644 "$pkgbase.sysusers" "$pkgdir/usr/lib/sysusers.d/${pkgname[0]}.conf"
 
-    cd "${pkgname[0]}-$pkgver" || exit
+    cd "${pkgname[0]}-$pkgver" || return
 
     # shellcheck disable=2174
     mkdir -p -m 750 "$pkgdir/etc/docspell"
@@ -74,7 +75,7 @@ package_docspell-joex() {
 }
 
 package_docspell-restserver() {
-    pkgdesc="Assists in organizing your piles of documents, resulting from scanners, e-mails and other sources with miminal effort. (Server)"
+    pkgdesc+=" (Server)"
     backup=("etc/docspell/restserver.conf")
 
     install -Dm 755 "${pkgname[1]}.sh" "$pkgdir/usr/bin/${pkgname[1]}"
@@ -82,7 +83,7 @@ package_docspell-restserver() {
     install -Dm 644 "$pkgbase.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/${pkgname[1]}.conf"
     install -Dm 644 "$pkgbase.sysusers" "$pkgdir/usr/lib/sysusers.d/${pkgname[1]}.conf"
 
-    cd "${pkgname[1]}-$pkgver" || exit
+    cd "${pkgname[1]}-$pkgver" || return
 
     # shellcheck disable=2174
     mkdir -p -m 750 "$pkgdir/etc/docspell"
