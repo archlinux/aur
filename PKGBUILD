@@ -2,7 +2,7 @@
 _modulename=persim
 pkgname=python-$_modulename
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Distances and representations of persistence diagrams"
 arch=(any)
 url="https://github.com/scikit-tda/persim"

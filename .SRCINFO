@@ -1,7 +1,7 @@
 pkgbase = python-persim
 	pkgdesc = Distances and representations of persistence diagrams
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scikit-tda/persim
 	arch = any
 	license = MIT
