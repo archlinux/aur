@@ -1,7 +1,7 @@
 pkgbase = firebase-tools
 	pkgdesc = The Firebase Command Line Tools
 	pkgver = 8.16.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/firebase/firebase-tools
 	arch = any
 	license = MIT
