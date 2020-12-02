@@ -1,12 +1,11 @@
 pkgbase = pingparsing
 	pkgdesc = Parser and transmitter for ping command
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thombashi/pingparsing
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
 	depends = python-humanreadable
 	depends = python-pyparsing
 	depends = python-subprocrunner
