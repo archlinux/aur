@@ -1,7 +1,7 @@
 pkgbase = ubuntu-wallpapers
 	pkgdesc = The default Wallpapers for Ubuntu
 	pkgver = 20.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/ubuntu-wallpapers
 	arch = any
 	license = custom

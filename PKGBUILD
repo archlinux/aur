@@ -5,13 +5,15 @@
 
 pkgname='ubuntu-wallpapers'
 pkgver=20.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc='The default Wallpapers for Ubuntu'
 arch=('any')
 url='https://launchpad.net/ubuntu-wallpapers'
 _pool_url='http://archive.ubuntu.com/ubuntu/pool/main'
 license=('custom')
 makedepends=('python-distutils-extra' 'python-setuptools')
+
+# https://packages.ubuntu.com/source/ubuntu-wallpapers
 # http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/
 source=("${_pool_url}/${pkgname::1}/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz"
         "${_pool_url}/${pkgname::1}/${pkgname}/${pkgname}_${pkgver}-0ubuntu1.debian.tar.xz")
