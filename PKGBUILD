@@ -3,7 +3,7 @@
 _pkgname=bilibilitool-dotnet
 pkgname=${_pkgname}-git
 pkgver=1.0.10.r2.g701114a
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform Bilibili daily task tool written in .Net 5"
 arch=('x86_64')
 url='https://github.com/RayWangQvQ/BiliBiliTool'
@@ -19,7 +19,7 @@ install="${pkgname}.install"
 backup=("etc/${_pkgname}/appsettings.json")
 sha256sums=('SKIP'
             '706da4f4901361e67c4f31b6302220072a5f5989ad1bfafbb35dfbd3db34e4a9'
-            '89f69f1aef1d047f8ab161eaa9682ed9e02f16db60451b020909bd63e00b2a58'
+            '81283e4c542f4bcb9b8fcabc9324574e8553fed68738d32836b95bf5b8db44d4'
             '29abca35fff5a915113e87d970da326190195ad2e4019d28ff07fcbc7a0e7fb9'
             '55c10b3ff54139395bde101db58d1e31879b72cc50cbbf785280e20e8df17bc0')
 
@@ -30,13 +30,13 @@ pkgver() {
 
 prepare(){
   cd "${_pkgname}"
-  mkdir -p /tmp/nuget
+  mkdir -p ${srcdir}/nuget
 
   patch -p1 -i ../change-default-configuration-path.patch
 
-  NUGET_PACKAGES=/tmp/nuget/packages \
-  NUGET_HTTP_CACHE_PATH=/tmp/nuget/v3-cache \
-  NUGET_PLUGINS_CACHE_PATH=/tmp/nuget/plugins-cache \
+  NUGET_PACKAGES=${srcdir}/nuget/packages \
+  NUGET_HTTP_CACHE_PATH=${srcdir}/nuget/v3-cache \
+  NUGET_PLUGINS_CACHE_PATH=${srcdir}/nuget/plugins-cache \
   dotnet restore \
   --runtime linux-x64 \
   --verbosity normal

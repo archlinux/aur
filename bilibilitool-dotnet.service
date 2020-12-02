@@ -1,5 +1,5 @@
 [Unit]
-Description=A cross-platform Bilibili daily task tool written in .Net 5
+Description=Bilibili daily task helper
 After=network-online.target
 Wants=network-online.target
 
