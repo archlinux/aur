@@ -1,7 +1,7 @@
 pkgbase = python-pytest-dependency
 	pkgdesc = Manage dependencies of tests.
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RKrahl/pytest-dependency
 	arch = any
 	license = MIT
