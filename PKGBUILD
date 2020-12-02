@@ -1,4 +1,4 @@
-# Maintainer: slmb
+# Maintainer: slimb
 
 _pkgname=razer_test
 pkgname=z3ntu-razer_test-git
