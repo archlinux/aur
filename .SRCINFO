@@ -1,0 +1,20 @@
+pkgbase = z3ntu-razer_test-git
+	pkgdesc = A work-in-progress replacement for OpenRazer
+	pkgver = r152.7d866a6
+	pkgrel = 1
+	url = https://github.com/z3ntu/razer_test
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = hidapi
+	depends = systemd-libs
+	provides = razer_test
+	conflicts = razer_test
+	source = git+https://github.com/z3ntu/razer_test.git
+	sha512sums = SKIP
+
+pkgname = z3ntu-razer_test-git
+
