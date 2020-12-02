@@ -3,7 +3,7 @@
 
 pkgname=ninja-ide-git
 pkgver=20190207
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform IDE focused on Python application development"
 arch=('any')
 url="http://ninja-ide.org"
