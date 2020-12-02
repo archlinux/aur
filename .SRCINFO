@@ -1,7 +1,7 @@
 pkgbase = python-isounidecode
 	pkgdesc = Conversion and transliteration of unicode into ascii or iso-8859-1
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/redvasily/isounidecode
 	arch = any
 	license = BSD 3-Clause
