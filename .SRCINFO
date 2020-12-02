@@ -1,7 +1,7 @@
 pkgbase = bauerbill
 	pkgdesc = Extension of Powerpill with AUR and ABS support.
 	pkgver = 2019
-	pkgrel = 2
+	pkgrel = 3
 	url = https://xyne.archlinux.ca/projects/bauerbill
 	arch = any
 	license = GPL
