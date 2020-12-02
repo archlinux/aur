@@ -1,0 +1,14 @@
+pkgbase = python-googletrans-git
+	pkgdesc = Free Google Translate API for Python. Git version.
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/ssut/py-googletrans
+	arch = any
+	license = MIT
+	depends = python-setuptools
+	depends = python-httpx
+	source = git+https://github.com/ssut/py-googletrans.git
+	sha512sums = SKIP
+
+pkgname = python-googletrans-git
+

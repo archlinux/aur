@@ -1,0 +1,6 @@
+*.tar.gz
+src/
+pkg/
+*.tar.xz
+*.tar.zst
+py-googletrans
