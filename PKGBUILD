@@ -1,8 +1,8 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='shd'
 pkgver='0.0.12'
 _commit='166aa7346317a80e7cca6a35abb77d692a0f80d9'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Console tool to display drive list with commonly checked smart info'
 arch=('any')
 url="https://github.com/alttch/$pkgname"
