@@ -1,14 +1,14 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=photobroom
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Photos managing tool"
 arch=('i686' 'x86_64')
 url="https://github.com/Kicer86/photobroom"
 license=('GPL3')
 groups=()
 depends=('jsoncpp' 'openlibrary' 'qt5-base')
-makedepends=('cmake' 'exiv2' 'openlibrary' 'qt5-tools')
+makedepends=('cmake' 'exiv2' 'openlibrary' 'qt5-tools' 'dlib')
 optdepends=()
 provides=()
 conflicts=()
@@ -44,7 +44,7 @@ build()
     cd "$pkgname-$pkgver"
     mkdir -p build
     cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=OFF
     make
 }
 
