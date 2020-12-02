@@ -2,13 +2,13 @@
 
 pkgname=python-pynest2d-git
 _pkgname=pynest2d
-pkgver=cura.4.8.beta.r1.gd31a381
+pkgver=4.8.0.r1.g1548790
 pkgrel=1
 pkgdesc="Python bindings for libnest2d"
 arch=('any')
 url="https://github.com/Ultimaker/pynest2d"
 license=('LGPL3')
-makedepends=(git sip)
+makedepends=(git sip cmake)
 depends=(libnest2d python)
 provides=(python-pynest2d)
 conflicts=(python-pynest2d)
