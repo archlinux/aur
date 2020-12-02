@@ -1,20 +1,21 @@
 pkgbase = mailman-rss
 	pkgdesc = Mailman archive to rss/twitter bot
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kyamagu/mailman-rss
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = python
 	depends = python-beautifulsoup4
 	depends = python-dateutil
 	depends = python-future
 	depends = python-requests
 	optdepends = python-twitter: twitter bot functionality
 	source = https://files.pythonhosted.org/packages/source/m/mailman-rss/mailman-rss-0.2.4.tar.gz
-	source = mailman-rss-0.2.4-LICENSE::https://raw.githubusercontent.com/kyamagu/mailman-rss/master/LICENSE
+	source = mailman-rss-license-4722888c7c4b1ecb2042a10f8cf96f5936287396::https://github.com/kyamagu/mailman-rss/raw/4722888c7c4b1ecb2042a10f8cf96f5936287396/LICENSE
 	sha256sums = 0030e2ba55cf77b96d8777956270909cc68b77a7d5314093ea4f7909ce8c39af
-	sha256sums = SKIP
+	sha256sums = 27d5c197628d3e10c3f9cb2bf6c1a9d8049834e633bb0ead3cb783418823cbbe
 
 pkgname = mailman-rss
 
