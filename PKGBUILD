@@ -2,14 +2,14 @@
 
 _name=Av1an
 pkgname=python-av1an
-pkgver=4.1
+pkgver=4.2
 pkgrel=1
 pkgdesc='A cross-platform all-in-one tool for streamlining AV1 encoding'
 arch=('any')
 url='https://github.com/master-of-zen/Av1an'
 license=('GPL3')
 makedepends=('python-setuptools')
-depends=('python>=3.6.0' 'python-numpy' 'python-scenedetect' 'python-fuzzywuzzy' 'opencv'
+depends=('python>=3.6.0' 'python-numpy' 'python-scenedetect' 'opencv'
          'python-tqdm' 'python-psutil' 'python-scipy' 'python-matplotlib'
          'ffmpeg' 'aom' 'hdf5')
 optdepends=('svt-av1: SVT-AV1 encoder support'
@@ -25,7 +25,7 @@ optdepends=('svt-av1: SVT-AV1 encoder support'
             'vapoursynth-plugin-lsmashsource'
             )
 source=("av1an-${pkgver}.tar.gz"::"https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('89c438463e1ccfe8ee14e82f741b758f02eb25e73c329e8e9737302ed811a49c')
+sha256sums=('b3bdd7bfd09973a30950dad1c56ca500d533e792c4343d524f8c7b8594cbcf1f')
 
 
 package() {
