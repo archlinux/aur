@@ -2,13 +2,13 @@
 
 pkgname=gridtracker-bin
 pkgver='1.20.0927'
-pkgrel=1
+pkgrel=2
 pkgdesc="Companion program for WSJT-X for mapping contacts"
 arch=('x86_64')
 url="https://tagloomis.com/grid-tracker/"
 license=('closed')
 depends=(libxss nss gtk3)
-source=("http://tagloomis.com/arch/GridTracker-Linux-64-$pkgver.tar.gz"
+source=("https://www.dropbox.com/s/0rbduq0ibxrrj0e/GridTracker-Linux-64-$pkgver.tar.gz"
         "gridtracker.png"
         "GridTracker.desktop")
 md5sums=('3df1a34cac79117c0a3ed4b00dbeca1b'
