@@ -1,7 +1,7 @@
 pkgbase = unsilence
 	pkgdesc = Console Interface and Library to remove silent parts of a media file
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lagmoellertim/unsilence
 	arch = any
 	license = MIT

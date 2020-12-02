@@ -2,7 +2,7 @@
 
 pkgname=unsilence
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Console Interface and Library to remove silent parts of a media file'
 arch=('any')
 url='https://github.com/lagmoellertim/unsilence'
