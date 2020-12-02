@@ -1,7 +1,7 @@
 pkgbase = python-user_agent
 	pkgdesc = Generate random, valid web user-agent headers
 	pkgver = 0.1.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lorien/user_agent
 	arch = any
 	license = MIT

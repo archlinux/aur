@@ -4,7 +4,7 @@
 _pkgname='user_agent'
 pkgname="python-${_pkgname}"
 pkgver=0.1.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Generate random, valid web user-agent headers'
 arch=('any')
 url='https://github.com/lorien/user_agent'
