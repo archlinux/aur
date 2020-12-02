@@ -1,9 +1,9 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='neotermcolor'
 pkgname="python-$_projectname"
 pkgver='2.0.8'
 _commit='0893ac7e18cccbcecf12b80c262ba674d969bd6a'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Modern ANSII Color formatting for output in terminal'
 arch=('any')
 url="https://github.com/alttch/$_projectname"
