@@ -2,7 +2,7 @@
 
 pkgname=giara
 pkgver=0.3
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Reddit gtk client"
 arch=('any')

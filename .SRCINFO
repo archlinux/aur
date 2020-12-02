@@ -1,7 +1,7 @@
 pkgbase = giara
 	pkgdesc = Reddit gtk client
 	pkgver = 0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.gnome.org/World/giara
 	arch = any
 	license = GPL3
