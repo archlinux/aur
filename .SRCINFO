@@ -1,7 +1,7 @@
 pkgbase = python-django-storage-swift
 	pkgdesc = OpenStack Swift storage backend for Django
 	pkgver = 1.2.19
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dennisv/django-storage-swift/
 	arch = any
 	license = MIT
