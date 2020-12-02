@@ -1,0 +1,19 @@
+pkgbase = xyce-serial
+	pkgdesc = The Xyce Parallel Electronic Simulator is a SPICE-compatible circuit simulator
+	pkgver = 7.2.0
+	pkgrel = 1
+	url = https://github.com/Xyce/Xyce
+	arch = x86_64
+	license = GPL3
+	depends = blas
+	depends = lapack
+	depends = fftw
+	depends = suitesparse
+	depends = trilinos-xyce-serial
+	provides = xyce
+	conflicts = xyce
+	source = https://github.com/Xyce/Xyce/archive/Release-7.2.0.tar.gz
+	sha256sums = cf49705278ecda46373784bb24925cb97f9017b6adff49e4416de146bdd6a4b5
+
+pkgname = xyce-serial
+
