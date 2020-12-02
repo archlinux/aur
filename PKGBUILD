@@ -2,11 +2,11 @@
 
 pkgname=python-gluoncv-torch-git
 _pkgver=0.0.3
-pkgver=0.0.3.r6.4b2b416
-pkgrel=1
+pkgver=0.0.3.r8.7b71149
+pkgrel=2
 pkgdesc="Research Framework for easy and efficient training of GANs based on PyTorch"
 arch=(any)
-url="https://github.com/zhanghang1989/gluoncv-torch"
+url="https://github.com/StacyYang/gluoncv-torch"
 license=('MIT')
 depends=(python-numpy python-pillow python-requests python-torchvision python-tqdm)
 makedepends=(git python-setuptools)
