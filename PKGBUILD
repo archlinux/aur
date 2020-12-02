@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-gpytorch
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='A highly efficient and modular implementation of GPs, with GPU
 acceleration. Implemented in PyTorch.'
@@ -33,7 +33,7 @@ optdepends=(
             'python-nbval: for [test] module'
            )
 source=("$pkgname-$pkgver::https://github.com/cornellius-gp/gpytorch/archive/v$pkgver.tar.gz")
-sha256sums=('9f09c6f11dd76fdba22ba0c4523b7631c2637104e9ebfb2ea4c8a6fa556015d6')
+sha256sums=('c60f216e621aba5b8197ea0e54868cba957ab6b9720a1c5745eda0292382cbe9')
 
 _pkgname=gpytorch
 
