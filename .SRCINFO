@@ -1,7 +1,7 @@
 pkgbase = bullet-multithreaded
 	pkgdesc = A 3D Collision Detection and Rigid Body Dynamics Library with multithreading support
 	pkgver = 3.07
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bulletphysics.com/Bullet/
 	arch = x86_64
 	license = custom:zlib
