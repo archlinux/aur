@@ -7,9 +7,9 @@
 
 name=cloudcompare
 pkgname=${name}
-_fragment="#tag=v2.11.0"
+_fragment="#tag=v2.11.3"
 pkgver="${_fragment###tag=v}"
-pkgrel=3
+pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
@@ -53,6 +53,10 @@ build() {
         -DCMAKE_BUILD_TYPE=Release
         -DCOMPILE_CC_CORE_LIB_WITH_CGAL=ON
         -DCOMPILE_CC_CORE_LIB_WITH_TBB=ON
+        -DWITH_FFMPEG_SUPPORT:BOOL=ON
+        -DFFMPEG_INCLUDE_DIR:PATH=/usr/include
+        -DFFMPEG_LIBRARY_DIR:PATH=/usr/lib
+        -DPOISSON_RECON_WITH_OPEN_MP:BOOL=ON
         -DPLUGIN_EXAMPLE_GL:BOOL=ON
         -DPLUGIN_EXAMPLE_IO:BOOL=ON
         -DPLUGIN_EXAMPLE_STANDARD:BOOL=ON
