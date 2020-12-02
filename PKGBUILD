@@ -5,7 +5,7 @@
 _pipname=flask-bcrypt
 pkgname=python-flask-bcrypt
 pkgver=0.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Bcrypt hashing for Flask"
 arch=('any')
 url="http://flask-bcrypt.readthedocs.io/en/latest/"
