@@ -1,8 +1,8 @@
 # Maintainer: Federico Di Pierro <nierro92@gmail.com>
 
 pkgname=clightd-git
-_gitname=Clightd
-pkgver=r326.99fcc09
+_gitname=clightd
+pkgver=r339.135c9e5
 pkgrel=1
 pkgdesc="Bus interface to change screen brightness and capture frames from webcam. Devel version."
 arch=('i686' 'x86_64')
@@ -32,6 +32,7 @@ build() {
         -G "Unix Makefiles" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INSTALL_LIBEXECDIR=lib/"$_gitname" \
         -DCMAKE_BUILD_TYPE="Release" \
         -DENABLE_DDC=1 -DENABLE_GAMMA=1 -DENABLE_DPMS=1 -DENABLE_SCREEN=1 -DENABLE_YOCTOLIGHT=1 \
         ..
