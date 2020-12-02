@@ -1,0 +1,15 @@
+pkgbase = gog-sudden-strike-4-road-to-dunkirk
+	pkgdesc = In the Road to Dunkirk add-on for Sudden Strike 4, relive battles leading up to one of the world‘s most daring military rescue missions.
+	pkgver = 1.15
+	pkgrel = 1
+	url = https://www.gog.com/game/sudden_strike_4_road_to_dunkirk
+	arch = x86_64
+	groups = gog-sudden-strike-4-dlcs
+	license = custom
+	makedepends = lgogdownloader
+	depends = gog-sudden-strike-4>=1.15
+	source = sudden_strike_4_road_to_dunkirk_1_15.sh::gogdownloader://1589182480/en3installer0
+	sha512sums = da66f0319035ff3292889fb677dae339a6987f5bfa8b50f745e7a97c883bd7afb9b79c05a902d30895cd2e157c53f2d2b474b98c64d6bbfdb0b301a6f48920f9
+
+pkgname = gog-sudden-strike-4-road-to-dunkirk
+
