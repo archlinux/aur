@@ -1,7 +1,7 @@
 pkgbase = python-pylzma
 	pkgdesc = Platform independent python bindings for the LZMA compression library
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.joachim-bauch.de/projects/pylzma/
 	arch = i686
 	arch = x86_64
