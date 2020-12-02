@@ -28,12 +28,12 @@ source=(https://github.com/hyperspy/hyperspy_gui_ipywidgets/archive/v$pkgver.tar
 sha256sums=('9db1ae7186db2da08ad9040fbf567cbd5d7e50179a39958456bcb081deede33e')
 #sha512sums=("SKIP")
 
-pkgver() {
-  cd "${srcdir}/${pkginst}-master/"
-  rel_ver=$(grep -E "^__version__" ${pkginst}-master/version.py | awk '{print $3}' | tr -d \")
-  commit=$(git rev-parse --short HEAD)
-  echo "${rel_ver}.${commit}"
-}
+#pkgver() {
+#  cd "${srcdir}/${pkginst}-master/"
+#  rel_ver=$(grep -E "^__version__" ${pkginst}-master/version.py | awk '{print $3}' | tr -d \")
+#  commit=$(git rev-parse --short HEAD)
+#  echo "${rel_ver}.${commit}"
+#}
 
 package() {
 #  cd "$srcdir/$pkginst-$pkgver"
