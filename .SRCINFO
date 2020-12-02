@@ -1,7 +1,7 @@
 pkgbase = python-simplediff
 	pkgdesc = A Python module to annotate two versions of a list with the values that have been changed between the versions, similar to unix's diff but with a dead-simple Python interface.
 	pkgver = 1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://pypi.org/project/simplediff
 	arch = any
 	license = custom
