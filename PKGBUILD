@@ -12,7 +12,7 @@ pkgver() {
 		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgver=3.3.0.r77.56547fd
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Common User Passwords Profiler'
 url="https://github.com/Mebus/${pkgname%-git}"
