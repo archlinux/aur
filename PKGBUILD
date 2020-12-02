@@ -3,7 +3,7 @@
 pkgname=webmacs-git
 pkgver=r791.35f1743
 pkgrel=3
-_pythonver=3.8
+_pythonver=3.9
 pkgdesc="browser for keyboard-based web navigation"
 arch=('x86_64')
 url="https://github.com/parkouss/webmacs"
