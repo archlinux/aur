@@ -2,7 +2,7 @@
 
 pkgname=python-radicale-decsync
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Radicale storage plugin to add synchronization using DecSync "
 arch=('any')
 url="https://github.com/39aldo39/Radicale-DecSync"
@@ -22,7 +22,6 @@ build() {
 package() {
   cd "${srcdir}/${_dirname}"
   python setup.py install --optimize=1 --skip-build --root="${pkgdir}/" --prefix="/usr"
-  # not necessary for every package, but for those who it is, it'd generate conflict with others otherwise
+	# not necessary for every package, but for those who it is, it'd generate conflict with others otherwise
   rm -rf "${pkgdir}/$(python -c 'import site; print(site.getsitepackages()[0])')/tests/"
 }
-
