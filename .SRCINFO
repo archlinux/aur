@@ -1,0 +1,16 @@
+pkgbase = python-django-rest-knox
+	pkgdesc = Authentication Module for django rest auth
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/James1345/django-rest-knox
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-cryptography
+	depends = python-django
+	depends = python-django-rest-framework
+	source = python-django-rest-knox-4.1.0.src.tar.gz::https://github.com/James1345/django-rest-knox/archive/4.1.0.tar.gz
+	sha512sums = ff7252e35ed3998d882ba5f857ba7278340065ab849475b0b3d46a04842eac43f38f089fc138ebbe1495a06c4fd4ddb7bd1025a816ae4ad2c646752e74f85336
+
+pkgname = python-django-rest-knox
+
