@@ -1,0 +1,15 @@
+pkgbase = yofi-git
+	pkgdesc = Minimalistic menu for Wayland-based compositors
+	pkgver = 0.1.0.4abf534
+	pkgrel = 1
+	url = https://github.com/l4l/yofi
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/l4l/yofi.git
+	sha256sums = SKIP
+
+pkgname = yofi-git
+
