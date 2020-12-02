@@ -7,13 +7,13 @@
 
 pkgname=autojump
 pkgver=22.5.3
-pkgrel=5
+pkgrel=6
 pkgdesc="A faster way to navigate your filesystem from the command line"
 arch=('any')
 url="https://github.com/wting/autojump"
 license=('GPL3')
-depends=('python>=3.8')
-_python=python3.8
+depends=('python>=3.9')
+_python=python3.9
 source=($pkgname-$pkgver.tar.gz::https://github.com/wting/$pkgname/archive/release-v$pkgver.tar.gz)
 sha256sums=('00daf3698e17ac3ac788d529877c03ee80c3790472a85d0ed063ac3a354c37b1')
 install=readme.install
