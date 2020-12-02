@@ -1,4 +1,4 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jelle van der Waa <jelle@vdwaa.nl>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Daniel J Griffiths <griffithsdj@archlinux.us>
@@ -11,7 +11,7 @@ pkgname="qt-$_reponame"
 _pkgver='0.3.8'
 _commit='r602'
 pkgver="$_pkgver.$_commit"
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Qt4 frontend for recordMyDesktop'
 arch=('any')
 url="http://$_reponame.sourceforge.net"

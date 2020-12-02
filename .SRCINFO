@@ -1,7 +1,7 @@
 pkgbase = qt-recordmydesktop
 	pkgdesc = Qt4 frontend for recordMyDesktop
 	pkgver = 0.3.8.r602
-	pkgrel = 4
+	pkgrel = 5
 	url = http://recordmydesktop.sourceforge.net
 	arch = any
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = qt-recordmydesktop
 	depends = qt4>=4.2.0
 	depends = recordmydesktop>=0.3.8.1
 	depends = xorg-xwininfo
-	source = qt-recordmydesktop-0.3.8.r602-4.tar.gz::https://downloads.sourceforge.net/project/recordmydesktop/qt-recordMyDesktop/0.3.8/qt-recordmydesktop-0.3.8.tar.gz
+	source = qt-recordmydesktop-0.3.8.r602-5.tar.gz::https://downloads.sourceforge.net/project/recordmydesktop/qt-recordMyDesktop/0.3.8/qt-recordmydesktop-0.3.8.tar.gz
 	source = autogen.sh
 	source = messages.pot
 	source = r602.diff
