@@ -2,7 +2,7 @@
 _modulename=mpi4py-intel
 pkgname=python-$_modulename
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for the Message Passing Interface compiled with intel mpi"
 arch=(any)
 url="https://github.com/mpi4py/mpi4py"
