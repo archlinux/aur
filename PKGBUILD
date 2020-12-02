@@ -2,7 +2,7 @@
 _modulename=giotto-tda
 pkgname=python-$_modulename
 pkgver=0.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A high performance topological machine learning toolbox in Python"
 arch=(any)
 url="https://github.com/giotto-ai/giotto-tda"
