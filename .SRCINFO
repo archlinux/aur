@@ -1,12 +1,11 @@
 pkgbase = waybackpack
 	pkgdesc = Download the entire Wayback Machine archive for a given URL
 	pkgver = 0.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jsvine/waybackpack
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
 	depends = python-requests
 	source = waybackpack-0.3.7.tar.gz::https://github.com/jsvine/waybackpack/archive/v0.3.7.tar.gz
 	sha256sums = 2445a142932b74816d4ef0e136877c2f0ae0e95a1c07d79f81df06504b210e1e

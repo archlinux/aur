@@ -2,13 +2,13 @@
 
 pkgname='waybackpack'
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Download the entire Wayback Machine archive for a given URL'
 arch=('any')
 url='https://github.com/jsvine/waybackpack'
 _url_pypi='https://pypi.org/project/waybackpack'
 license=('MIT')
-depends=('python' 'python-requests')
+depends=('python-requests')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('2445a142932b74816d4ef0e136877c2f0ae0e95a1c07d79f81df06504b210e1e')
