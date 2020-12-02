@@ -1,18 +1,22 @@
 # Changelog
 
 
-0.4.1 - Updating ...
+Updating ...
 ---------
 - Faster
-- Added no extension option
-- Removed the delay between test requests when using -s
-- Support capital wordlist format
+- Allow to brute force through a CIDR notation
+- Exclude responses by human readable sizes
+- Provide headers from a file
+- Match/filter status codes by ranges
+- Detect 429 response status code
 - Support SOCKS proxy
-- Option to stop whenever an error occurs
-- Option to provide headers using file as input
-- Option to exclude responses by human readable sizes
-- XML report format
-- Several updates
+- XML, Markdown and CSV report formats
+- Capital wordlist format
+- Option to replay proxy with found paths
+- Option to remove all extensions in the wordlist
+- Option to exit whenever an error occurs
+- Option to disable colored output
+- Debug mode
 - Multiple bugfixes
 
 ---------

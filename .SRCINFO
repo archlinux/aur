@@ -1,6 +1,6 @@
 pkgbase = dirsearch-git
 	pkgdesc = Web path scanner/fuzzer, written in Python
-	pkgver = v0.4.0.r371.295ebab
+	pkgver = v0.4.0.r644.07726bb
 	pkgrel = 1
 	url = https://github.com/maurosoria/dirsearch
 	changelog = CHANGELOG.md
