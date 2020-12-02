@@ -3,7 +3,7 @@
 
 pkgname=servefile
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Serve or receive files from shell via a small HTTP server"
 arch=('any')
 url="https://github.com/sebageek/servefile"
