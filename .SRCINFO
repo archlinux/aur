@@ -1,5 +1,5 @@
 pkgbase = python-mgclipboard
-	pkgdesc = Modules shared across all Papermerge project.
+	pkgdesc = Clipboard middleware for Papermerge DMS. Designed as Django reusable app.
 	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/papermerge/mg-clipboard
