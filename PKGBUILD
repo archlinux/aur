@@ -1,6 +1,6 @@
 # Maintainer: Marc Cousin <cousinmarc@gmail.com>
 pkgname=algobox
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Algorithmic learning for high school students"
 url="http://www.xm1math.net/algobox/index.html"
@@ -11,12 +11,8 @@ optdepends=()
 makedepends=()
 source=("http://www.xm1math.net/algobox/${pkgname}-${pkgver}.tar.bz2"
        )
-md5sums=('c89783eaf926e67b570d37f87ab94c05')
+md5sums=('320d37c01e2064470f10cd653716fb80')
 
-prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    patch -Np1 -i "${srcdir}/../qbuttongroup.patch"
-}
 
 build() {
 	  cd "${srcdir}/${pkgname}-${pkgver}"
