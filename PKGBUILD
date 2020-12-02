@@ -2,7 +2,7 @@
 
 pkgname='shirah-reader'
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Curses based terminal RSVP speed reader'
 arch=('any')
 url='https://github.com/Hallicopter/shirah-reader'
