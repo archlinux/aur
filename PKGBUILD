@@ -1,7 +1,7 @@
 # Maintainer: Jake <ja.ke@posteo.de>
 pkgname=flatcam-git
 _pkgname=FlatCAM
-pkgver=r2643.db8dd77c
+pkgver=r3435.a8a2f6b0
 pkgrel=1
 pkgdesc="Generates CNC gcode from 2D PCB files (Gerber/Excellon/SVG)"
 arch=('any')
@@ -22,7 +22,7 @@ depends=('tk'
         'python-svg.path'
         'python-reportlab'
         'python-svglib'
-        'python-vispy-git'
+        'python-vispy'
         'python-rasterio'
         'python-ezdxf'
         'python-dill'

@@ -1,6 +1,6 @@
 pkgbase = flatcam-git
 	pkgdesc = Generates CNC gcode from 2D PCB files (Gerber/Excellon/SVG)
-	pkgver = r2643.db8dd77c
+	pkgver = r3435.a8a2f6b0
 	pkgrel = 1
 	url = http://flatcam.org
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = flatcam-git
 	depends = python-svg.path
 	depends = python-reportlab
 	depends = python-svglib
-	depends = python-vispy-git
+	depends = python-vispy
 	depends = python-rasterio
 	depends = python-ezdxf
 	depends = python-dill
