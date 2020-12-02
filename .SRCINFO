@@ -1,0 +1,15 @@
+pkgbase = spotify-search-provider
+	pkgdesc = GNOME Shell search provider for Spotify
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/arrufat/spotify-search-provider/
+	arch = any
+	license = GPL-3.0
+	depends = python-gobject
+	depends = python-dbus
+	depends = python-spotipy
+	source = https://github.com/arrufat/spotify-search-provider/archive/v1.0.0.tar.gz
+	md5sums = 64cf9ffafbab4ea4247faf7f14e0450c
+
+pkgname = spotify-search-provider
+
