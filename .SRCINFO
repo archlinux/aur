@@ -1,9 +1,9 @@
 pkgbase = trimage-git
 	pkgdesc = Tool for optimizing PNG and JPG files
 	pkgver = 1.0.6.r12.gc21089f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://trimage.org
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools

@@ -4,9 +4,9 @@
 _pkgname='trimage'
 pkgname="${_pkgname}-git"
 pkgver=1.0.6.r12.gc21089f
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for optimizing PNG and JPG files'
-arch=('x86_64')
+arch=('any')
 url='https://trimage.org'
 _url_source='https://github.com/Kilian/Trimage'
 license=('MIT')
@@ -29,8 +29,8 @@ build() {
 package() {
   cd "${_pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
-  install -Dm644 'COPYING' "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -Dvm644 'COPYING' "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
