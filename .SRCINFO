@@ -1,7 +1,7 @@
 pkgbase = moodle
-	pkgdesc = Moodle is an open-source software learning management system
+	pkgdesc = An open-source software learning management system
 	pkgver = 3.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://moodle.org/
 	arch = any
 	license = GPLv3

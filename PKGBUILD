@@ -7,8 +7,8 @@
 pkgname=moodle
 pkgver=3.10
 _pkgver="stable310"
-pkgrel=1
-pkgdesc='Moodle is an open-source software learning management system'
+pkgrel=2
+pkgdesc='An open-source software learning management system'
 arch=('any')
 url='https://moodle.org/'
 license=('GPLv3')
