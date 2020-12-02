@@ -9,9 +9,8 @@ pkgbase = nginx-mod-ipscrub
 	arch = armv6h
 	arch = armv7h
 	license = custom
+	depends = libbsd
 	depends = nginx=1.18.0
-	depends = glibc>=2.31
-	depends = libbsd=0.10.0
 	source = https://nginx.org/download/nginx-1.18.0.tar.gz
 	source = https://nginx.org/download/nginx-1.18.0.tar.gz.asc
 	source = nginx-mod-ipscrub-1.0.1.tar.gz::https://github.com/masonicboom/ipscrub/archive/v1.0.1.tar.gz
