@@ -1,12 +1,11 @@
 pkgbase = python-osmnx
 	pkgdesc = Retrieve, model, analyze, and visualize OpenStreetMap street networks and other spatial data
 	pkgver = 0.16.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gboeing/osmnx
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
 	depends = python-descartes
 	depends = python-folium
 	depends = python-geopandas

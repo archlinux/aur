@@ -5,14 +5,13 @@
 _pkgname='osmnx'
 pkgname="python-${_pkgname}"
 pkgver=0.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Retrieve, model, analyze, and visualize OpenStreetMap street networks and other spatial data'
 arch=('any')
 url='https://github.com/gboeing/osmnx'
 _url_pypi='https://pypi.org/project/osmnx'
 license=('MIT')
-depends=('python'
-        'python-descartes'
+depends=('python-descartes'
         'python-folium'
         'python-geopandas'
         'python-matplotlib'
