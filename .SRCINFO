@@ -64,6 +64,9 @@ pkgbase = lv2-plugins-aur-meta
 	depends = odin2-synthesizer
 	depends = poly.lv2-git
 	depends = spectacle-analyzer.lv2-git
+	depends = trakmeter-lv2
+	depends = speech-denoiser-git
+	depends = kn0ck0ut-lv2-git
 
 pkgname = lv2-plugins-aur-meta
 
