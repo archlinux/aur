@@ -1,4 +1,4 @@
-From 48a5b4782a6f059dba6522d43fb5c7785df30d21 Mon Sep 17 00:00:00 2001
+From 8e35afa8583a0f034a0b554b54157d9c7398aae9 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 Date: Tue, 24 Nov 2020 09:13:58 +0100
 Subject: [PATCH 2/2] Fix build.
