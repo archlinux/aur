@@ -3,7 +3,7 @@
 pkgname=utsu-bin
 _debname=utsu
 _debarch=amd64
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="A cross-platform vocal synthesis frontend"
 arch=('x86_64')
@@ -23,12 +23,12 @@ install=
 changelog=
 source=("https://github.com/titinko/utsu/releases/download/v${pkgver}/${_debname}_${pkgver}_${_debarch}.deb")
 noextract=("utsu_${pkgver}_${_debarch}.deb")
-md5sums=('832b4e2dc0079a8abcd69b7b77debd45')
+md5sums=('6fae6a210892ace46f08ab2716ddd5d1')
 validpgpkeys=()
 
 prepare() {
 	ar -x ${_debname}_${pkgver}_${_debarch}.deb
-	mkdir ${_debname}-${pkgver}_${pkgrel}
+	mkdir -p ${_debname}-${pkgver}_${pkgrel}
 	tar -xf data.tar.xz --directory="${_debname}-${pkgver}_${pkgrel}"
 }
 
@@ -37,5 +37,5 @@ package() {
 	cp -r ./ ${pkgdir}/
 	cd ${pkgdir}
 	install -Dm644 ./opt/utsu/lib/utsu-Utsu.desktop ./usr/share/applications/utsu-Utsu.desktop
-	install -Dm644 ./opt/utsu/lib/app/LICENSE /usr/share/licenses/${pkgname}/LICENSE
+	install -Dm644 ./opt/utsu/lib/app/LICENSE ./usr/share/licenses/${pkgname}/LICENSE
 }
