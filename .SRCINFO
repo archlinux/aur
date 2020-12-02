@@ -1,0 +1,15 @@
+pkgbase = graph2dot
+	pkgdesc = parse a filtergraph description and issue a corresponding textual representation in the dot language
+	pkgver = 4.3.1
+	pkgrel = 1
+	url = https://ffmpeg.org
+	arch = i686
+	arch = x86_64
+	license = LGPL 2.1
+	makedepends = yasm
+	optdepends = dot
+	source = https://ffmpeg.org/releases/ffmpeg-4.3.1.tar.gz
+	sha256sums = 45035f15d6f192772de2309c846e1d60472694f479679354a39c699719e53772
+
+pkgname = graph2dot
+
