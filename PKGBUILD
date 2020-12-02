@@ -2,23 +2,15 @@
 # Contributor: Jan Magnus Brevik <janmbrevik@gmail.com>
 
 pkgname=gpodder-git
-pkgver=3.10.11.r3.gc6860de1
-pkgrel=3
+pkgver=3.10.17.r41.ge78f54b0
+pkgrel=2
 pkgdesc='A podcast receiver/catcher'
 license=('GPL3')
 arch=('any')
 url='http://gpodder.org/'
 depends=(gtk3 python-cairo python-dbus python-gobject python-mygpoclient python-podcastparser)
-makedepends=(git help2man intltool)
-optdepends=('ffmpeg: transcode audio files to mp3/ogg'
-            'gnome-bluetooth: transfer podcast via bluethooth'
-            'lame: converting ogg to mp3'
-            'libgpod: ipod sync support'
-            'mutagen: audio tagging'
-            'python-eyed3: mp3 player sync support'
-            'python-html5lib: clickable links in GTK UI show notes'
-            'webkit2gtk: HTML show notes'
-            'youtube-dl: for Youtube-dl extension')
+makedepends=(git intltool)
+optdepends=('youtube-dl: for Youtube-dl extension')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git+https://github.com/gpodder/gpodder.git")
