@@ -11,7 +11,7 @@ arch=("i686" "x86_64")
 depends=("libev" "python2")
 makedepends=("python2-setuptools")
 source=("https://pypi.python.org/packages/source/b/bjoern/bjoern-$pkgver.tar.gz")
-md5sums=("9589b4a03f7acf80e0200cf1e5a3b324")
+sha256sums=("01f3b601cf0ab0a9c7cb9c8f944ab7c738baaa6043ca82db20e9bd7a9be5767b")
 
 build(){
  cd "bjoern-$pkgver"
