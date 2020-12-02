@@ -1,7 +1,7 @@
 pkgbase = python-pelican-jupyter
 	pkgdesc = Pelican plugin for Jupyter Notebooks
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/danielfrg/pelican-jupyter
 	arch = any
 	license = apache
