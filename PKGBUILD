@@ -2,7 +2,7 @@
 
 pkgbase=linux-vanilla-selinux-44
 pkgname=linux-vanilla-selinux-44
-pkgver=4.4.246
+pkgver=4.4.247
 pkgrel=1
 pkgdesc="Vanilla-Linux-Kernel (4.4) from kernel.org with Selinux enabled. Without docs. Will be fixed in the next builds (Problem with Sphinx)."
 arch=('x86_64')
@@ -25,13 +25,13 @@ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torva
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
               )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
-sha256sums=('9e0bdebf18a12d0c899e5e4042e715e24a70ab0fd986a3f4c67c8ec2710bad97'
-            '99d459d743ed0778692a66f6aebdab1821f0befeb0be22027a7c2c12a7871572'
-	    'b3a3c95ef30dca7e9145308da1941a5405c5b78a5b998b5c571a34cf47520151'
-            'f9b13f3c00be95205ccb77ead42881ecbf0f7ba0d0ad12af294e054272859d81'
-            '5c7af03d9b4cade110543ba706bcbd49fc6447726258b4bfec0edff7ca9994d1'
-            '9089c8d44982dc03b0dde47632f8aa2fda14754b911acbc266feee85da94b0f5'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+sha256sums=('df3d6946ad780263f7931f17389a3e72d5fa43012d56533d9d1d4976ecafa643b291aa23a52e36c01f2d8d526c3fd430aa8d41dad8cf87d76dee7e9db1c44fdf'
+            '35780e04a0b6114c75c39fc00be7eb4cdf8521e6bbcfe168ffbdbd7f208fd7256bc94182e42099c5fc455402ca7b21ce447496a6cf9e7a0634dccd31661ce2bd'
+	    '2e4e4374c2bdb71b84641853090b4f65ad763339c51c13f3cbd62d1f487473893be5a61251bdd0736f5d260cd537269cf9fc6724413e9272c9bd0751a0af8238'
+            'fc52feda32be644deeadf267fdff124ffcc0d0870c36e736024a7be0958ba4b50cea5ef0ec33c2681ad00f36b42ebed354fa3e63bd4827acbeedebc39029229c'
+            '7132a74149b39e30f57a0ef70330fbdf8f38a33bd88ba94f1115de098319e41af0ae86091a1e610e209fc87a9823f69da5c883b0a2fd7adc203578cc4ab08733'
+            '06481e0492d8ec0f353672fbd1d71322b105849871975f434f87bcb33ca898f85407403ba935153e5d8cca44fea62bfbb43404871d12f26891579067a36fae19'
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
 
 _kernelname=${pkgbase#}
 : ${_kernelname:=-Arch-vanilla-selinux-44}
