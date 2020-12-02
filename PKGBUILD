@@ -12,9 +12,9 @@ optdepends=("postfix: for sending mail")
 source=("https://launchpad.net/$pkgname/1.2/$pkgver/+download/$pkgname-$pkgver.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=("dc0f054bc7dc6178eb31f20d93b73cca"
-        "91699122f87d2a9a468922d64e827c0c"
-        "4924433c6210ecc9be943ac0046fbd75")
+sha256sums=("d7e0d4006cad1add90b5b71243e488680b63cf63c5350cef619c061e808f2c3b"
+            "548edb0351ac5f92d9e3b644d8c4b5bcd9a45cc102c971a202007d6fda590a83"
+            "c19902c420ed6a003bd3052f88414266cb1190547b3447d83e6f889b0212a32e")
 backup=("etc/dkimpy-milter/dkimpy-milter.conf")
 install="$pkgname.install"
 

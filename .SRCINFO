@@ -18,9 +18,9 @@ pkgbase = dkimpy-milter
 	source = https://launchpad.net/dkimpy-milter/1.2/1.2.2/+download/dkimpy-milter-1.2.2.tar.gz
 	source = dkimpy-milter.sysusers
 	source = dkimpy-milter.tmpfiles
-	md5sums = dc0f054bc7dc6178eb31f20d93b73cca
-	md5sums = 91699122f87d2a9a468922d64e827c0c
-	md5sums = 4924433c6210ecc9be943ac0046fbd75
+	sha256sums = d7e0d4006cad1add90b5b71243e488680b63cf63c5350cef619c061e808f2c3b
+	sha256sums = 548edb0351ac5f92d9e3b644d8c4b5bcd9a45cc102c971a202007d6fda590a83
+	sha256sums = c19902c420ed6a003bd3052f88414266cb1190547b3447d83e6f889b0212a32e
 
 pkgname = dkimpy-milter
 
