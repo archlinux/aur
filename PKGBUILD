@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 pkgname=dmenu-dchaovii-git
-pkgver=5.0.r.
+pkgver=5.0.1
 pkgrel=1
 epoch=
 pkgdesc="Personal Build of dmenu by DChaovII"
@@ -27,11 +27,6 @@ source=("git+$url")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
-
-pkgver() {
-	cd "${_pkgname}"
-	printf "5.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
 	cd dmenu-dchaovii
