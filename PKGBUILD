@@ -3,9 +3,9 @@
 _pkgname='krop'
 pkgname="${_pkgname}-git"
 pkgver=0.6.0.r0.gcdca681
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple graphical tool to crop the pages of PDF files'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/arminstraub/krop'
 license=('GPL3')
 depends=('python' 'python-poppler-qt5' 'python-pypdf2' 'python-pyqt5')
@@ -27,7 +27,7 @@ build() {
 package() {
   cd "${_pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
