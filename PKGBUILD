@@ -1,8 +1,8 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
-pkgname=spectacle.lv2-git
+pkgname=spectacle-analyzer.lv2-git
 pkgdesc="Realtime graphical spectrum analyzer."
-pkgver=v1.0.r1.ga47fd22
+pkgver=v1.0.r5.g1c08616
 pkgrel=1
 epoch=
 arch=(x86_64)
