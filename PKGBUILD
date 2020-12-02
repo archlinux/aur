@@ -1,10 +1,10 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='pysmart'
 _reponame='py-SMART'
 pkgname="python2-$_projectname"
 pkgver='20200825'
 _commit='9a75ddccd5bd49751919f66591ed54a70b500fac'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Wrapper for smartctl (smartmontools) - FreeNAS fork - python2 version'
 arch=('any')
 url="https://github.com/freenas/$_reponame"
