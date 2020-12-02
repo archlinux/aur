@@ -8,13 +8,7 @@ pkgdesc='The open source particle-in-cell post processor.'
 url='https://github.com/skuschel/postpic'
 arch=('i686' 'pentium4' 'x86_64')
 license=('GPL3')
-_pinned_dependencies=(
-  'glibc>=2.31'
-)
 depends=(
-  "${_pinned_dependencies[@]}"
-  'python>=3.9'
-  'python<3.10'
   'python-matplotlib'
   'python-numpy>=1.7'
   'python-scipy'
