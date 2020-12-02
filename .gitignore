@@ -1,5 +1,4 @@
-*.tar.gz
-*.pkg.tar.xz
-*.deb
+*.tar.*
 src/
 pkg/
+avpnc
