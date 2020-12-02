@@ -63,6 +63,7 @@ pkgbase = lv2-plugins-aur-meta
 	depends = x42-sisco-cv-git
 	depends = odin2-synthesizer
 	depends = poly.lv2-git
+	depends = spectacle-analyzer.lv2-git
 
 pkgname = lv2-plugins-aur-meta
 
