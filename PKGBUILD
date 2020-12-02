@@ -4,18 +4,18 @@
 
 pkgname=qtspim
 pkgver=9.1.21
-pkgrel=1
+pkgrel=2
 pkgdesc="New user interface for spim, a MIPS simulator."
 arch=('x86_64')
 url="http://spimsimulator.sourceforge.net/"
 license=('BSD')
 depends=('qt5-base')
 makedepends=('qt5-tools' 'subversion' 'icu')
-source=("spimsimulator::svn://svn.code.sf.net/p/spimsimulator/code/#revision=733")
+source=("svn://svn.code.sf.net/p/spimsimulator/code/#revision=734")
 sha256sums=('SKIP')
 
 prepare() {
-  cd spimsimulator/QtSpim
+  cd "$srcdir/code/QtSpim"
   sed -i 's/zero_imm/is_zero_imm/g' parser_yacc.cpp
   sed -i 's/^int data_dir/bool data_dir/g' parser_yacc.cpp
   sed -i 's/^int text_dir/bool text_dir/g' parser_yacc.cpp
@@ -23,14 +23,14 @@ prepare() {
 }
 
 build() {
-  cd spimsimulator/QtSpim
+  cd "$srcdir/code/QtSpim"
 
   qmake
   make
 }
 
 package() {
-  cd spimsimulator
+  cd "$srcdir/code"
 
   install -D QtSpim/QtSpim "$pkgdir/usr/bin/qtspim"
 
