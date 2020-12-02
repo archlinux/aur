@@ -1,12 +1,11 @@
 pkgbase = yeecli
 	pkgdesc = Command-line utility for controlling the YeeLight RGB LED lightbulb
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/stavros/yeecli
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	depends = python
 	depends = python-click
 	depends = python-ifaddr
 	depends = python-yeelight
