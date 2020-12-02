@@ -3,3 +3,4 @@
 !.SRCINFO
 !PKGBUILD
 !pipewire-git.install
+!pipewire-pulse.install

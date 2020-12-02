@@ -6,7 +6,7 @@ pkgname=('pipewire-git'
          'pipewire-pulse-git'
          'pipewire-ffmpeg-git'
          )
-pkgver=0.3.15.92.g573e2afd
+pkgver=0.3.17.35.g3c2ab98a
 pkgrel=1
 pkgdesc='Server and user space API to deal with multimedia pipelines. (GIT version)'
 arch=('x86_64')
@@ -95,6 +95,7 @@ package_pipewire-git() {
               'pipewire-jack-git: JACK support'
               'pipewire-alsa-git: ALSA support'
               'pipewire-pulse-git: PulseAudio support'
+              'pipewire-ffmpeg-git: ffmpeg support'
               )
   provides=('pipewire'
             "libpipewire-${pkgver:0:3}.so"
@@ -112,6 +113,7 @@ package_pipewire-git() {
 
   _pick docs usr/share/doc
 
+  _pick jack etc/pipewire/media-session.d/with-jack
   _pick jack usr/bin/pw-jack usr/lib/pipewire-${pkgver:0:3}/jack
   _pick jack usr/lib/spa-0.2/jack
   _pick jack usr/share/man/man1/pw-jack.1
@@ -120,6 +122,7 @@ package_pipewire-git() {
   rm -rv "$pkgdir"/usr/share/alsa-card-profile
 
   _pick pulse usr/bin/pipewire-pulse usr/lib/systemd/user/pipewire-pulse*
+  _pick pulse etc/pipewire/media-session.d/with-pulseaudio
 
   _pick ffmpeg usr/lib/spa-0.2/ffmpeg/libspa-ffmpeg.so
 
@@ -136,7 +139,8 @@ package_pipewire-docs-git() {
 
 package_pipewire-jack-git() {
   pkgdesc='Server and user space API to deal with multimedia pipelines. (JACK support)(GIT Version)'
-  depends=("libpipewire-${pkgver:0:3}.so"
+  depends=('pipewire'
+           "libpipewire-${pkgver:0:3}.so"
            'libjack.so'
            )
   provides=('pipewire-jack')
@@ -147,7 +151,9 @@ package_pipewire-jack-git() {
 
 package_pipewire-alsa-git() {
   pkgdesc="ALSA Configuration for PipeWire (ALSA support)(GIT version)"
-  depends=("libpipewire-${pkgver:0:3}.so")
+  depends=('pipewire'
+           "libpipewire-${pkgver:0:3}.so"
+           )
   provides=('pipewire-alsa')
   conflicts=('pipewire-alsa')
   arch=('any')
@@ -158,13 +164,19 @@ package_pipewire-alsa-git() {
 
 package_pipewire-pulse-git() {
   pkgdesc='Server and user space API to deal with multimedia pipelines. (Pulse support)(GIT version)'
-  depends=("libpipewire-${pkgver:0:3}.so"
-           'libglib-2.0.so'
+  depends=('pipewire'
+           "libpipewire-${pkgver:0:3}.so"
+           'libpulse'
            )
   provides=('pipewire-pulse'
             'pulseaudio'
+            'pulseaudio-bluetooth'
             )
-  conflicts=('pipewire-pulse')
+  conflicts=('pipewire-pulse'
+             'pulseaudio'
+             'pulseaudio-bluetooth'
+             )
+  install=pipewire-pulse.install
 
   mv pulse/* "${pkgdir}"
 }
