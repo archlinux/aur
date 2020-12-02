@@ -1,6 +1,6 @@
 pkgbase = insomnia-designer-bin
 	pkgdesc = Collaborative API Design Tool for designing, testing and managing OpenAPI specifications
-	pkgver = 2020.4.2
+	pkgver = 2020.5.0
 	pkgrel = 1
 	url = https://insomnia.rest
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = insomnia-designer-bin
 	depends = xdg-utils
 	provides = insomnia-designer
 	conflicts = insomnia-designer
-	source = https://github.com/Kong/insomnia/releases/download/designer@2020.4.2/Insomnia.Designer-2020.4.2.deb
-	source = Insomnia-Designer-2020.4.2-license::https://github.com/Kong/insomnia/raw/designer@2020.4.2/LICENSE
-	sha256sums = 92d672fcdbd53aa7000449e6a8d296d847fb3de543657e82f4145a1906234ea1
+	source = https://github.com/Kong/insomnia/releases/download/designer@2020.5.0/Insomnia.Designer-2020.5.0.deb
+	source = Insomnia-Designer-2020.5.0-license::https://github.com/Kong/insomnia/raw/designer@2020.5.0/LICENSE
+	sha256sums = 52db5ea5a232f2476a237e1f4fc966dcd1ef728b54ef36fe5493ce6352f002cb
 	sha256sums = cc91b5641bbbf592a69ca5f7b45807efba470068e815fc7682a42022bbd3cbb9
 
 pkgname = insomnia-designer-bin
