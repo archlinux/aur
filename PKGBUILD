@@ -3,8 +3,8 @@
 # Maintainer: Joshua Taillon <jat255 AT gmail DOT com>
 pkgname=python-hyperspy
 pkgshort=hyperspy
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
 url="http://hyperspy.org"
@@ -61,4 +61,4 @@ package() {
 
 # vim:set ts=2 sw=2 et:
 
-sha256sums=('942294a6a6f76ccb55c510ca07293ef93b3fe4eedd37b840b9c88366624b2026')
+sha256sums=('a06631844223f6de0ad4f83a455051ba6a31c8de77c3ee637ed7de1e43193731')
