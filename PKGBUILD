@@ -2,7 +2,7 @@
 pkgname=suricata-nfqueue
 _pkgname=suricata
 pkgver=6.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source mature, fast and robust network IDS and IPS"
 arch=('i686' 'x86_64')
 url="https://suricata-ids.org/"
