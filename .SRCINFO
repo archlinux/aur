@@ -1,7 +1,7 @@
 pkgbase = instawow
 	pkgdesc = Package manager for World of Warcraft
 	pkgver = 1.19.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/layday/instawow
 	arch = x86_64
 	license = GPL3
@@ -17,7 +17,6 @@ pkgbase = instawow
 	makedepends = python-toml
 	depends = python>=3.7.0
 	depends = python-aiohttp>=3.6.0
-	depends = python-aiohttp<3.7.0
 	depends = python-alembic>=1.4.3
 	depends = python-alembic<1.5.0
 	depends = python-click>=7.1.0
@@ -41,6 +40,7 @@ pkgbase = instawow
 	depends = python-yarl<2.0.0
 	optdepends = python-aiohttp_rpc: server support
 	conflicts = python-aiohttp=3.6.3
+	conflicts = python-aiohttp=3.7.0
 	conflicts = python-yarl-gns3
 	conflicts = python-aiohttp-gns3
 	conflicts = python-prompt_toolkit-gns3
