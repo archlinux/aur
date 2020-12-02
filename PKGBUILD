@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=pg_partman
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Partition management extention for PostgreSQL'
 arch=('x86_64')
 url="https://github.com/pgpartman/$pkgname"

@@ -1,7 +1,7 @@
 pkgbase = pg_partman
 	pkgdesc = Partition management extention for PostgreSQL
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pgpartman/pg_partman
 	arch = x86_64
 	license = custom:PostgreSQL
