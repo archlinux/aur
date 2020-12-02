@@ -1,7 +1,7 @@
 pkgbase = python3-xcpf
 	pkgdesc = Xyne's common Pacman functions, for internal use.
 	pkgver = 2019.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://xyne.archlinux.ca/projects/python3-xcpf
 	arch = any
 	license = GPL
