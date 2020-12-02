@@ -2,7 +2,7 @@
 _modulename=fgivenx
 pkgname=python-$_modulename
 pkgver=2.2.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Functional Posterior Plotter"
 arch=(any)
 url="https://github.com/williamjameshandley/fgivenx"
