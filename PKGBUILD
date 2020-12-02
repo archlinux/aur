@@ -1,19 +1,20 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=teams
-pkgver=1.3.00.25560
+pkgver=1.3.00.30857
 pkgrel=1
 pkgdesc="Microsoft Teams for Linux is your chat-centered workspace in Office 365"
 arch=('x86_64')
 url="https://teams.microsoft.com/downloads"
 license=('custom')
 depends=("gtk3" "libxss" "alsa-lib" "libxtst" "libsecret" "nss" "glibc>=2.28-4")
-optdepends=("org.freedesktop.secrets")
+optdepends=("libappindicator-gtk3: Systray indicator support"
+            "org.freedesktop.secrets: Keyring password store support")
 conflicts=("ms-teams")
 replaces=("ms-teams")
 source=("https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/${pkgname}_${pkgver}_amd64.deb")
 noextract=("${pkgname}_${pkgver}_amd64.deb")
-sha256sums=('acfe094beacbacfc29641c1c9a85ec4bb61157d371fad67e03108b6d706aec4e')
+sha256sums=('5058b1fe8bf9fffc57d94148a7ec55119c5cd9b21aa267cb13518bec0244241b')
 
 package() {
   bsdtar -O -xf "${pkgname}_${pkgver}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
