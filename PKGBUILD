@@ -6,7 +6,7 @@ pkgname='ros-melodic-costmap-converter'
 pkgver='0.0.12'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -48,9 +48,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.8 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.8.so \
-        -DPYTHON_BASENAME=-python3.8 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make 
 }  
