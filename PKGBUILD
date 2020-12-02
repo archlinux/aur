@@ -2,7 +2,7 @@
 pkgname="python-wfdb"
 _dirname='wfdb-python'
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A library of tools for reading, writing, and processing WFDB signals and annotations"
 arch=(any)
 url="https://github.com/MIT-LCP/wfdb-python"
