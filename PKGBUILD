@@ -1,7 +1,7 @@
 # Maintainer: Lennart Eichhorn <lennart@madmanfred.com>
 
 pkgname="awall"
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Alpine Wall is a iptables based firewall frontend"
 arch=('any')
