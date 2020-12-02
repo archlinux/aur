@@ -8,7 +8,7 @@ pkgbase = yofi-git
 	license = custom
 	makedepends = cargo
 	makedepends = git
-	source = git+https://github.com/l4l/yofi.git
+	source = yofi-git::git+https://github.com/l4l/yofi.git
 	sha256sums = SKIP
 
 pkgname = yofi-git

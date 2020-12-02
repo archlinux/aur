@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/l4l/yofi"
 license=('custom')
 makedepends=('cargo' 'git')
-source=("git+https://github.com/l4l/yofi.git")
+source=("$pkgname::git+https://github.com/l4l/yofi.git")
 sha256sums=('SKIP')
 
 pkgver() {
