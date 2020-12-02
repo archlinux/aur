@@ -1,6 +1,6 @@
 pkgbase = pijul
 	pkgdesc = Patch-based distributed version control system
-	pkgver = 1.0.0_alpha.8
+	pkgver = 1.0.0_alpha.11
 	pkgrel = 1
 	url = https://pijul.org
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = pijul
 	makedepends = diffutils
 	makedepends = make
 	makedepends = xxhash
-	depends = gcc-libs
-	depends = libsodium
-	depends = clang
+	depends = zstd
+	depends = openssl
+	depends = xxhash
 
 pkgname = pijul
 
