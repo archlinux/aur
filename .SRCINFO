@@ -11,7 +11,6 @@ pkgbase = gog-sudden-strike-4-complete-collection
 	depends = gog-sudden-strike-4-africa-desert-war=1.15
 	depends = gog-sudden-strike-4-finland_winter_storm=1.15
 	depends = gog-sudden-strike-4-battle_of_kursk=1.15
-	provides = gog-sudden-strike-4=1.15
 
 pkgname = gog-sudden-strike-4-complete-collection
 

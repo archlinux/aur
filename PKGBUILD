@@ -14,4 +14,3 @@ depends=("gog-sudden-strike-4=$pkgver"
          "gog-sudden-strike-4-africa-desert-war=$pkgver"
          "gog-sudden-strike-4-finland_winter_storm=$pkgver"
          "gog-sudden-strike-4-battle_of_kursk=$pkgver")
-provides=("gog-sudden-strike-4=$pkgver")
