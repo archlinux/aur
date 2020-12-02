@@ -1,0 +1,15 @@
+pkgbase = gog-sudden-strike-4-finland_winter_storm
+	pkgdesc = The Finland Winter Storm add-on for Sudden Strike 4 centers around the most iconic Finnish vs. Soviet military conflicts during World War II.
+	pkgver = 1.15
+	pkgrel = 1
+	url = https://www.gog.com/game/sudden_strike_4_finland_winter_storm
+	arch = x86_64
+	groups = gog-sudden-strike-4-dlcs
+	license = custom
+	makedepends = lgogdownloader
+	depends = gog-sudden-strike-4>=1.15
+	source = sudden_strike_4_finland_winter_storm_1_15.sh::gogdownloader://1937377674/en3installer0
+	sha512sums = 6933da827ad9de5332f08562511ecfe757a07b396cb319c95646ea02e48026ab16888fc2a027d2d79bbe9ee36d9f11a65326eed68e90108f22a1153bd07b0b42
+
+pkgname = gog-sudden-strike-4-finland_winter_storm
+
