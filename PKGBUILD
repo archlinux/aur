@@ -2,7 +2,7 @@
 
 _pkgname='inspektor'
 pkgname="${_pkgname}-git"
-pkgver=1.0.32.r1.g7e899ee
+pkgver=1.0.32.r2.g755702b
 pkgrel=1
 pkgdesc='View metadata information on files'
 arch=('any')
@@ -27,7 +27,7 @@ build() {
 package() {
   cd "${_pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
