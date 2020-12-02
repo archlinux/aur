@@ -7,12 +7,12 @@
 pkgname=moodle
 pkgver=3.10
 _pkgver="stable310"
-pkgrel=2
+pkgrel=3
 pkgdesc='An open-source software learning management system'
 arch=('any')
 url='https://moodle.org/'
 license=('GPLv3')
-depends=('php' 'php-intl' 'php-gd' 'mariadb')
+depends=('php>=7.2.0' 'php-intl>=7.2.0' 'php-gd>=7.2.0' 'mariadb>=10.2.29')
 conflicts=('moodle-plus')
 options=('!strip')
 source=("https://download.moodle.org/${_pkgver}/${pkgname}-${pkgver}.tgz")
