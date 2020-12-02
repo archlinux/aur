@@ -3,10 +3,11 @@
 
 pkgname='python-mpv'
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Python interface to the awesome mpv media player'
 arch=('any')
 url='https://github.com/jaseg/python-mpv'
+_url_pypi='https://pypi.org/project/python-mpv'
 license=('AGPL3')
 depends=('mpv' 'python')
 optdepends=('python-pillow: raw screenshot support')
@@ -22,7 +23,7 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.rst'
+  install -Dvm644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
