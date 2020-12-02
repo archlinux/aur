@@ -1,6 +1,7 @@
 [Timer]
-OnCalendar=*-*-* 12:05:00 Asia/Shanghai
+OnCalendar=*-*-* 08:05:00 Asia/Shanghai
 Persistent=true
+RandomizedDelaySec=8h
 
 [Install]
 WantedBy=timers.target

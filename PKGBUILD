@@ -3,7 +3,7 @@
 _pkgname=bilibilitool-dotnet
 pkgname=${_pkgname}-git
 pkgver=1.0.10.r2.g701114a
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform Bilibili daily task tool written in .Net 5"
 arch=('x86_64')
 url='https://github.com/RayWangQvQ/BiliBiliTool'
@@ -20,7 +20,7 @@ backup=("etc/${_pkgname}/appsettings.json")
 sha256sums=('SKIP'
             '706da4f4901361e67c4f31b6302220072a5f5989ad1bfafbb35dfbd3db34e4a9'
             '81283e4c542f4bcb9b8fcabc9324574e8553fed68738d32836b95bf5b8db44d4'
-            '29abca35fff5a915113e87d970da326190195ad2e4019d28ff07fcbc7a0e7fb9'
+            '2b4f3621c10194156e0127e07367a2adc3dcc2a90dee5a9ca145931da8ec8d30'
             '55c10b3ff54139395bde101db58d1e31879b72cc50cbbf785280e20e8df17bc0')
 
 pkgver() {
