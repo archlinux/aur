@@ -1,0 +1,17 @@
+pkgbase = gog-sudden-strike-4-complete-collection
+	pkgdesc = The complete collection of historical real time strategy game, which include all available addons.
+	pkgver = 1.15
+	pkgrel = 1
+	url = https://www.gog.com/game/sudden_strike_4_complete_collection
+	arch = x86_64
+	license = custom
+	depends = gog-sudden-strike-4=1.15
+	depends = gog-sudden-strike-4-the-pacific-war=1.15
+	depends = gog-sudden-strike-4-road-to-dunkirk=1.15
+	depends = gog-sudden-strike-4-africa-desert-war=1.15
+	depends = gog-sudden-strike-4-finland_winter_storm=1.15
+	depends = gog-sudden-strike-4-battle_of_kursk=1.15
+	provides = gog-sudden-strike-4=1.15
+
+pkgname = gog-sudden-strike-4-complete-collection
+
