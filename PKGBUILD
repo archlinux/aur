@@ -1,6 +1,6 @@
 # Maintainer: Lukas Waymann <io@meribold.org>
 pkgname=muccadoro
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 arch=('any')
 
@@ -12,7 +12,7 @@ depends=(awk bash cowsay figlet libnotify coreutils ncurses)
 optdepends=(lolcat)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/meribold/muccadoro/archive/v${pkgver}.tar.gz")
-sha256sums=(74fdfb86883dc40d1ebcb4831a94e50dc89a629fd1e4662b4fab3f554855ce6d)
+sha256sums=(1e881ab91a8f0f3e9d3e99427f4cf9f2c4023a78cc6ac5f5df6e2479ce71fb4b)
 
 package() {
     cd "$pkgname-$pkgver" || return $?
