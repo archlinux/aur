@@ -8,7 +8,7 @@ url="https://ffmpeg.org"
 license=('LGPL 2.1')
 source=("${url}/releases/ffmpeg-${pkgver}.tar.gz")
 makedepends=('yasm')
-optdepends=('dot')
+optdepends=('graphviz')
 sha256sums=('45035f15d6f192772de2309c846e1d60472694f479679354a39c699719e53772')
 
 build() {
