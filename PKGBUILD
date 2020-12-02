@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=haruna-git
-pkgver=0.1.1.r5.gd03700e
+pkgver=0.3.1.r0.ge547a2e
 pkgrel=1
 pkgdesc="A Qt/QML video player built on top of libmpv"
 url="https://github.com/g-fb/haruna"
