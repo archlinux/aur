@@ -1,6 +1,6 @@
 pkgbase = linux-ck
 	pkgver = 5.9.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
@@ -17,6 +17,7 @@ pkgbase = linux-ck
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = 0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch
 	source = 0003-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch
+	source = 0004-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	b2sums = 9e7a86c22993f4bf1a2eda9edd8aacf768ddfb67d109eba78f0719a27d0243767b197a205142524b158c176fe5e1a08de091f4c8f35612267737f2a5ba2dbdc9

@@ -1,4 +1,4 @@
-From 730629bfe4efc95aaee0de463ea410e31153cef9 Mon Sep 17 00:00:00 2001
+From c3517e2c26868cad0fda418a8815b2e0b818bf92 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 16 Sep 2019 04:53:20 +0200
 Subject: [PATCH 1/5] ZEN: Add sysctl and CONFIG to disallow unprivileged
