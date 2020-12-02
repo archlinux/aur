@@ -3,7 +3,7 @@
 pkgname=python-postpic
 _pkgname="${pkgname#*-}"
 pkgver=0.4
-pkgrel=6
+pkgrel=7
 pkgdesc='The open source particle-in-cell post processor.'
 url='https://github.com/skuschel/postpic'
 arch=('i686' 'pentium4' 'x86_64')
@@ -13,8 +13,8 @@ _pinned_dependencies=(
 )
 depends=(
   "${_pinned_dependencies[@]}"
-  'python>=3.8'
-  'python<3.9'
+  'python>=3.9'
+  'python<3.10'
   'python-matplotlib'
   'python-numpy>=1.7'
   'python-scipy'

@@ -1,7 +1,7 @@
 pkgbase = python-postpic
 	pkgdesc = The open source particle-in-cell post processor.
 	pkgver = 0.4
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/skuschel/postpic
 	arch = i686
 	arch = pentium4
@@ -11,8 +11,8 @@ pkgbase = python-postpic
 	makedepends = cython
 	makedepends = python-h5py
 	depends = glibc>=2.31
-	depends = python>=3.8
-	depends = python<3.9
+	depends = python>=3.9
+	depends = python<3.10
 	depends = python-matplotlib
 	depends = python-numpy>=1.7
 	depends = python-scipy
