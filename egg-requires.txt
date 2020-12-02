@@ -1,0 +1,8 @@
+Jinja2
+MarkupSafe
+PyYAML
+distro>=1.5
+msgpack>=0.5,!=0.5.5
+pycryptodomex>=3.9.8
+pyzmq
+requests>=1.0.0
