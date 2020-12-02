@@ -2,7 +2,7 @@
 _modulename=kmapper
 pkgname=python-$_modulename
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Kepler Mapper: A flexible Python implementation of the Mapper algorithm"
 arch=(any)
 url="https://github.com/scikit-tda/kepler-mapper"
