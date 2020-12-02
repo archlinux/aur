@@ -1,16 +1,15 @@
-pkgbase = element-desktop-nightly-bin
-	pkgdesc = All-in-one secure chat app for teams, friends and organisations (nightly .deb build).
-	pkgver = 2020120101
+pkgbase = schildichat-desktop
+	pkgdesc = A Matrix Client based on Element with a more traditional instant messaging experience
+	pkgver = 1.7.14
 	pkgrel = 1
-	url = https://element.io
+	url = https://schildi.chat
 	arch = x86_64
 	license = Apache
 	depends = sqlcipher
-	replaces = riot-desktop-nightly-bin
-	source = https://packages.riot.im/debian/pool/main/e/element-nightly/element-nightly_2020120101_amd64.deb
-	source = element-desktop-nightly.sh
-	sha256sums = 74e44e9945269040995e57380f6a748c112b216ad42cbc224e6b96b1241465e1
-	sha256sums = cf5a9348d8ad3f4c7a46bb8abf6ea9059d65231de2cf89f1b5e1885071afb0e2
+	source = https://github.com/SchildiChat/schildichat-desktop/releases/download/v1.7.14/schildichat-desktop_1.7.14_amd64.deb
+	source = schildichat-desktop.sh
+	sha256sums = 8e21999ee97ebdcb12bf7d0b19abb139b94044e50b447f0d5a66ca92214cfb33
+	sha256sums = fbc7d9a5480a66e2623dbf05c0c51deee39bf35289d5b79325bfc4b87fa2a609
 
-pkgname = element-desktop-nightly-bin
+pkgname = schildichat-desktop
 

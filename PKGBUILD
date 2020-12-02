@@ -1,21 +1,22 @@
-# Maintainer: David Mehren <david.mehren@udo.edu>
+# Maintainer: su-ex <codeworks@supercable.onl>
+# Maintainer: SpiritCroc <dev@spiritcroc.de>
+# Contributor: David Mehren <david.mehren@udo.edu>
 
-pkgname=element-desktop-nightly-bin
-pkgver=2020120101
+pkgname=schildichat-desktop
+pkgver=1.7.14
 pkgrel=1
-pkgdesc="All-in-one secure chat app for teams, friends and organisations (nightly .deb build)."
+pkgdesc="A Matrix Client based on Element with a more traditional instant messaging experience"
 arch=('x86_64')
-url="https://element.io"
+url="https://schildi.chat"
 license=('Apache')
 depends=('sqlcipher')
-source=("https://packages.riot.im/debian/pool/main/e/element-nightly/element-nightly_${pkgver}_amd64.deb"
-        "element-desktop-nightly.sh")
-sha256sums=('74e44e9945269040995e57380f6a748c112b216ad42cbc224e6b96b1241465e1'
-            'cf5a9348d8ad3f4c7a46bb8abf6ea9059d65231de2cf89f1b5e1885071afb0e2')
-replaces=('riot-desktop-nightly-bin')
+source=("https://github.com/SchildiChat/schildichat-desktop/releases/download/v${pkgver}/schildichat-desktop_${pkgver}_amd64.deb"
+        "schildichat-desktop.sh")
+sha256sums=('8e21999ee97ebdcb12bf7d0b19abb139b94044e50b447f0d5a66ca92214cfb33'
+            'fbc7d9a5480a66e2623dbf05c0c51deee39bf35289d5b79325bfc4b87fa2a609')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
   bsdtar -xf data.tar.xz -C "$pkgdir/"
-  install -Dm755 "${srcdir}"/element-desktop-nightly.sh "${pkgdir}"/usr/bin/element-desktop-nightly
+  install -Dm755 "${srcdir}"/schildichat-desktop.sh "${pkgdir}"/usr/bin/schildichat-desktop
 }
