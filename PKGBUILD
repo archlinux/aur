@@ -10,7 +10,7 @@ pkgver() {
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgver=r419.9050f0c
-pkgrel=3
+pkgrel=4
 
 pkgdesc='Search and play songs from Youtube, Soundcloud, Spotify and more from your terminal'
 arch=('any')
@@ -27,6 +27,7 @@ replaces=("python-$pkgname")
 
 source=("git+$url.git")
 sha256sums=('SKIP')
+
 
 build() {
     cd "$_prjname"
