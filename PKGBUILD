@@ -1,6 +1,6 @@
 pkgname=papis-zotero
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Zotero remote server for papis'
 arch=('any')
 url='https://github.com/papis/papis-zotero'
