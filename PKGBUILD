@@ -1,7 +1,7 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=buildaur
-pkgver=42.0.7.9
-pkgrel=2
+pkgver=42.0.8.0
+pkgrel=1
 pkgdesc="An AUR helper with asp support"
 arch=(any)
 url="https://github.com/lxgr-linux/buildaur"
@@ -11,12 +11,13 @@ makedepends=()
 backup=('etc/buildaur/buildaur.conf' 'usr/share/buildaur/blacklist')
 optdepends=("bash-completion: Bash completion")
 source=("${pkgname}.tar.gz"::"https://github.com/lxgr-linux/buildaur/archive/${pkgver}.tar.gz")
-md5sums=('64160ec897da2683712e892f6f1b8f67')
+md5sums=('11545618a1b8503fe22d2febced0c97c')
+_python_version=$(python -c "import sys; print(sys.version[:3])")
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	install -dm755 "${pkgdir}/usr/share/buildaur"
-	install -dm755 "${pkgdir}/usr/lib/python3.9/site-packages"
+	install -dm755 "${pkgdir}/usr/lib/python${_python_version}/site-packages"
 	install -dm755 "${pkgdir}/etc/bash_completion.d"
 	install -m644 blacklist "${pkgdir}/usr/share/buildaur"
 	install -m644 buildaur-completion.bash "${pkgdir}/etc/bash_completion.d"
