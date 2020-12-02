@@ -1,8 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-mingw
-pkgver=1.7.2
-pkgrel=2
+pkgver=1.7.3
+pkgrel=1
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
@@ -36,9 +36,6 @@ prepare() {
     # Filter fstack-protector{ ,-all,-strong} flag for MingW.
     # https://github.com/Joshua-Ashton/d9vk/issues/476
     dxvk_cflags="${dxvk_cflags// -fstack-protector*([\-all|\-strong])/}"
-    # Adjust optimization level in meson arguments. This is ignored
-    # anyway because meson sets its own optimization level.
-    dxvk_cflags="${dxvk_cflags// -O+([0-3s]|fast)/}"
     # Doesn't compile with these flags in MingW so remove them.
     # They are also filtered in Wine PKGBUILDs so remove them
     # for winelib versions too.
