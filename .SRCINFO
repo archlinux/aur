@@ -1,6 +1,6 @@
 pkgbase = social-engineer-toolkit-git
 	pkgdesc = The Social-Engineer Toolkit (SET) - Development Version
-	pkgver = 8.0.3.r4.bc1459567
+	pkgver = 8.0.3.r27.5e057388e
 	pkgrel = 2
 	url = https://github.com/trustedsec/social-engineer-toolkit
 	changelog = CHANGELOG

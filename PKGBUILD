@@ -4,7 +4,7 @@
 pkgname=social-engineer-toolkit-git
 
 pkgver() { git -C "${pkgname%-git}" describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'; }
-pkgver=8.0.3.r4.bc1459567
+pkgver=8.0.3.r27.5e057388e
 pkgrel=2
 
 pkgdesc='The Social-Engineer Toolkit (SET) - Development Version'
