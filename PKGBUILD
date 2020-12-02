@@ -2,7 +2,7 @@
 
 pkgname=ai-dungeon-cli
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Play ai dungeon on your terminal"
 arch=('any')
 url="https://github.com/Eigenbahn/ai-dungeon-cli"
@@ -30,6 +30,13 @@ prepare() {
 	sed -i \
 		-e "s/version_format.*/version=\"$pkgver\",/" \
 		-e "s/setup_requires.*//" setup.py
+
+	# Bad imports
+	find ai_dungeon_cli \
+		-name "*.py" \
+		-exec sed -i \
+		"s/\(from gql.*\), WebsocketsTransport\(.*\)/\1\2\nfrom gql.transport.websockets import WebsocketsTransport/" \
+		{} \;
 }
 
 build() {
