@@ -5,7 +5,7 @@
 pkgname=wapiti
 
 pkgver=3.0.3
-pkgrel=2
+pkgrel=3
 
 pkgdesc='A comprehensive web app vulnerability scanner written in Python'
 arch=('any')
