@@ -31,7 +31,7 @@ package() {
 
     # Create directories for installation
     install -dm0755 "${pkgdir}"/usr/bin
-    install -dm0755 "${pkgdir}"/opt/${pkgname}
+    install -dm0755 "${pkgdir}"/opt
     install -dm0755 "${pkgdir}"/usr/share/icons
     # Install icons
     cp -r squashfs-root/usr/share/icons/hicolor "${pkgdir}"/usr/share/icons/
