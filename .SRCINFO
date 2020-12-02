@@ -1,7 +1,7 @@
 pkgbase = undocker
 	pkgdesc = Extract Docker images
 	pkgver = 7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/larsks/undocker/
 	arch = any
 	license = GPL3

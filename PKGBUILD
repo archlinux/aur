@@ -2,7 +2,7 @@
 
 pkgname='undocker'
 pkgver=7
-pkgrel=1
+pkgrel=2
 pkgdesc='Extract Docker images'
 arch=('any')
 url='https://github.com/larsks/undocker/'
@@ -20,7 +20,7 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
