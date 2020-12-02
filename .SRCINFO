@@ -1,0 +1,19 @@
+pkgbase = python-django-polymorphic-tree
+	pkgdesc = Polymorphic MPTT tree support for models
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/django-polymorphic/django-polymorphic-tree
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-django-js-asset-git
+	depends = python-django
+	depends = python-django-mptt
+	depends = python-django-polymorphic
+	depends = python-django-tag-parser
+	depends = python-future
+	source = python-django-polymorphic-tree-1.5.1.src.tar.gz::https://github.com/django-polymorphic/django-polymorphic-tree/archive/v1.5.1.tar.gz
+	sha512sums = 291ed73400c3a5073cbfe00fdd0dab16ac7dbb4fa96fc1797f526ef7235111162806c4be3fddb0bc6cd61560bdb6d1ac806c2f83380a1d45735d876c4f79ac67
+
+pkgname = python-django-polymorphic-tree
+
