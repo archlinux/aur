@@ -1,7 +1,7 @@
 pkgbase = python-pywwt
 	pkgdesc = Python interface to the Windows and Web client of WorldWide Telescope
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WorldWideTelescope/pywwt
 	arch = any
 	license = BSD

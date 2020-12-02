@@ -2,7 +2,7 @@
 _modulename=pywwt
 pkgname=python-$_modulename
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface to the Windows and Web client of WorldWide Telescope"
 arch=(any)
 url="https://github.com/WorldWideTelescope/pywwt"
