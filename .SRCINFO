@@ -1,7 +1,7 @@
 pkgbase = gallery-dl
 	pkgdesc = Command-line program to download image-galleries and collections from several image hosting sites
 	pkgver = 1.15.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mikf/gallery-dl
 	arch = any
 	license = GPL2
@@ -17,3 +17,4 @@ pkgbase = gallery-dl
 	sha512sums = SKIP
 
 pkgname = gallery-dl
+
