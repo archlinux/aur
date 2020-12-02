@@ -2,10 +2,11 @@
 
 pkgname='qpropgen'
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Generate QML-friendly QObject-based C++ classes from class definition files'
 arch=('any')
 url='https://github.com/agateau/qpropgen'
+_url_pypi='https://pypi.org/project/qpropgen'
 license=('APACHE')
 depends=('python-jinja' 'python-pyaml')
 makedepends=('python-setuptools')
@@ -20,7 +21,7 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
