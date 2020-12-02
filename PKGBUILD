@@ -29,7 +29,7 @@ source=(
     "https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_z.sfs"
     "https://github.com/topjohnwu/Magisk/releases/download/v20.4/Magisk-v20.4.zip"
     "https://github.com/youling257/XposedTools/files/1931996/xposed-x86_64.zip"
-    "XposedInstaller_3.1.5.apk::https://forum.xda-developers.com/attachment.php?attachmentid=4393082&d=1516301692"
+    "XposedInstaller_3.1.5.apk::http://web.archive.org/web/20190807034045if_/https://dl.xda-developers.com/4/3/9/3/0/8/2/XposedInstaller_3.1.5.apk?key=vp4YYV_q9R9UXFJdEqPa6w&ts=1565149304"
     "magisk-init-rc.patch"
     "init-magisk.sh"
     "https://xnopyt.info/busybox"
