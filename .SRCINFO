@@ -1,7 +1,7 @@
 pkgbase = python-pytablewriter-altrow-theme
 	pkgdesc = pytablewriter plugin to provide a theme that colored rows alternatively
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thombashi/pytablewriter-altrow-theme
 	arch = any
 	license = MIT
@@ -9,7 +9,6 @@ pkgbase = python-pytablewriter-altrow-theme
 	depends = python
 	depends = python-pytablewriter
 	depends = python-tcolorpy
-	provides = pytablewriter-altrow-theme
 	source = https://files.pythonhosted.org/packages/source/p/pytablewriter-altrow-theme/pytablewriter-altrow-theme-0.0.2.tar.gz
 	sha256sums = 4fc14a914ee99f707c81a6d8a29f79e61b6d2e74dae7a03c7fc6342b5cae5398
 
