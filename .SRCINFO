@@ -1,7 +1,7 @@
 pkgbase = python-locallib
 	pkgdesc = Ensure /usr/local/lib/pythonX is in sys.path
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	arch = any
 	license = Unlicense
 	depends = python
