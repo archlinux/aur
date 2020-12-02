@@ -1,20 +1,20 @@
 pkgbase = scanpy
 	pkgdesc = Single-Cell Analysis in Python
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theislab/scanpy
 	arch = any
 	license = BSD
 	makedepends = install-wheel-scripts
-	depends = python-anndata>=0.6.22
-	depends = python-matplotlib>=3.0
+	depends = python-anndata>=0.7
+	depends = python-numpy>=1.17.0
+	depends = python-matplotlib>=3.1.2
 	depends = python-pandas>=0.21
 	depends = python-scipy>=1.4
 	depends = python-seaborn
 	depends = python-h5py
 	depends = python-pytables
 	depends = python-tqdm
-	depends = python-importlib-metadata
 	depends = python-scikit-learn>=0.21.2
 	depends = python-statsmodels>=0.10.0
 	depends = python-patsy

@@ -2,22 +2,22 @@
 
 pkgname=scanpy
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Single-Cell Analysis in Python'
 arch=(any)
 provides=(scanpy python-scanpy)
 url='https://github.com/theislab/scanpy'
 license=(BSD)
 depends=(
-	'python-anndata>=0.6.22'
-	'python-matplotlib>=3.0'
+	'python-anndata>=0.7'
+	'python-numpy>=1.17.0'
+	'python-matplotlib>=3.1.2'
 	'python-pandas>=0.21'
 	'python-scipy>=1.4'
 	python-seaborn
 	python-h5py
 	python-pytables
 	python-tqdm
-	python-importlib-metadata
 	'python-scikit-learn>=0.21.2'
 	'python-statsmodels>=0.10.0'
 	python-patsy
