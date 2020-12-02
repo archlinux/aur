@@ -4,7 +4,7 @@
 pkgname=('python-apscheduler' 'python2-apscheduler')
 _pkgname=APScheduler
 pkgver=3.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A light but powerful in-process task scheduler'
 arch=(any)
 url=http://pypi.python.org/pypi/APScheduler
