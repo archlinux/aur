@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cdir-git
 pkgver=1.3.r48.a2e4ad8
-pkgrel=1
+pkgrel=2
 pkgdesc="A faster way to navigate folders and browse files in Windows and Linux shells."
 arch=('any')
 url="https://github.com/EskelinenAntti/cdir"
