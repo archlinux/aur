@@ -10,7 +10,7 @@ license=("MPL2")
 arch=("x86_64")
 depends=("java-runtime")
 source=("$pkgname-$pkgver.deb::https://github.com/richardwilkes/gcs/releases/download/v$pkgver/gcs_$pkgver-1_amd64.deb")
-md5sums=("419a2062ee08c07dea22ed759c619c41")
+sha256sums=("f120f4bf5d6dc8d50c68c0bd2acbada188d4e69936553f6dd611935ec4f8e093")
 
 prepare(){
  tar -xf "data.tar.xz"
