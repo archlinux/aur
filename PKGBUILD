@@ -3,7 +3,7 @@
 pkgname=spf-engine
 pkgver=2.9.2
 _pkgver=2.9
-pkgrel=2
+pkgrel=3
 pkgdesc="SPF (Sender Policy Framework) back-end for integration with Postfix and Sendmail"
 arch=('any')
 url="https://launchpad.net/spf-engine"
