@@ -2,8 +2,8 @@
 # Contributor:
 
 pkgname=fotowall-git
-pkgver=1.0.r831.g9e2436f
-pkgrel=1
+pkgver=1.0.r833.g7d12301
+pkgrel=2
 pkgdesc="A creative tool that allows you to layout your photos or pictures in a personal way"
 arch=('x86_64')
 url="https://github.com/enricoros/fotowall"
@@ -19,6 +19,11 @@ pkgver() {
   cd "${pkgname%-*}"
   ver=$(grep "ApplicationVersion(" main.cpp | awk -F '"' '{print $2}')
   printf "%s.r%s.g%s" "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${pkgname%-*}"
+  sed -i 's|#include <QPainter>|#include <QPainter>\n#include <QPainterPath>|'  3rdparty/posterazor/paintcanvas.cpp
 }
 
 build() {
