@@ -3,7 +3,7 @@
 pkgname='python-asyncio-glib'
 _module='asyncio-glib'
 pkgver='0.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="GLib event loop integration for asyncio."
 url="https://github.com/jhenstridge/asyncio-glib"
 makedepends=('python-setuptools')
