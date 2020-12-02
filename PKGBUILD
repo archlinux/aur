@@ -7,7 +7,7 @@ pkgrel=3
 pkgdesc="Electron wrapper for the Gravit Designer web application"
 arch=(any)
 license=(custom)
-url="https://designer.gravit.io/"
+url="https://designer.io/"
 source=($_pkgname.png
         $_pkgname.desktop
         LICENSE)
