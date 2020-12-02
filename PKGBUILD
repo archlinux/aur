@@ -7,7 +7,7 @@ _pkgname="${pkgname%-git}"
 epoch=1
 pkgver() { git -C "$_pkgname" describe --tags --long | sed 's/^v//;s/-/.r/;s/-g/./'; }
 pkgver=6.10.r0.9652214
-pkgrel=1
+pkgrel=2
 
 pkgdesc='POP3 mail retriever with reliable Maildir and command delivery; Python 3 port'
 arch=('any')
