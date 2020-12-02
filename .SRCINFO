@@ -1,6 +1,6 @@
 pkgbase = dockerize-git
 	pkgdesc = Tool for creating minimal docker images from dynamic ELF binaries
-	pkgver = 0.2.2.r10.ga02d457
+	pkgver = 0.2.2.r14.gb9a573b
 	pkgrel = 1
 	url = https://github.com/larsks/dockerize
 	arch = any

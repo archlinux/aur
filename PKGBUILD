@@ -2,7 +2,7 @@
 
 _pkgname='dockerize'
 pkgname="${_pkgname}-git"
-pkgver=0.2.2.r10.ga02d457
+pkgver=0.2.2.r14.gb9a573b
 pkgrel=1
 pkgdesc='Tool for creating minimal docker images from dynamic ELF binaries'
 arch=('any')
@@ -27,7 +27,7 @@ build() {
 package() {
   cd "${_pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
