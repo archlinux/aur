@@ -3,8 +3,8 @@
 
 _pkgname=lml
 pkgname=python-$_pkgname
-pkgver=0.0.9
-pkgrel=2
+pkgver=0.1.0
+pkgrel=1
 pkgdesc="Load me later. A lazy loading plugin management system."
 arch=('any')
 url='https://github.com/python-lml/lml'
@@ -12,7 +12,7 @@ license=('BSD')
 makedepends=('python-setuptools')
 depends=('python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c9157e138fd3eba88ccb3047bfd7f8688d804f69f0c0c6199db038a49ccd014d')
+sha256sums=('b68a79b25cca1cd8028a208a49ebb37093ccf142454832f773c915431db0b90a')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
