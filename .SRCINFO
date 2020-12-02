@@ -13,8 +13,8 @@ pkgbase = dynwg
 	depends = python-setuptools-git
 	depends = wireguard-tools
 	depends = iputils
-	source = dynwg-1.1.2::https://github.com/conqp/dynwg/archive/1.1.2.tar.gz
-	sha256sums = bc351ead1fa107255aea2bcd73d8f532455b62e688547a279e69cef241c5272e
+	source = dynwg::git+https://github.com/coNQP/dynwg.git#tag=1.1.2
+	sha256sums = SKIP
 
 pkgname = dynwg
 
