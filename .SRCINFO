@@ -1,0 +1,16 @@
+pkgbase = ff-password-exporter-appimage
+	pkgdesc = Easily export your passwords from Firefox.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/kspearrin/ff-password-exporter
+	arch = x86_64
+	license = GPL
+	noextract = ff-password-exporter-appimage-1.2.0.AppImage
+	options = !strip
+	source_x86_64 = ff-password-exporter-appimage-1.2.0.AppImage::https://github.com/kspearrin/ff-password-exporter/releases/download/v1.2.0/FF-Password-Exporter-1.2.0-x86_64.AppImage
+	source_x86_64 = https://raw.githubusercontent.com//kspearrin/ff-password-exporter/v1.2.0/LICENSE.txt
+	sha256sums_x86_64 = 05f346239391ee5ec13ca73cf05aff0e03455709756896bd3e331b28c713568f
+	sha256sums_x86_64 = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+
+pkgname = ff-password-exporter-appimage
+
