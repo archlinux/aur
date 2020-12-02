@@ -6,7 +6,7 @@
 _reponame=cpp-utilities
 pkgname=mingw-w64-c++utilities
 _name=${pkgname#mingw-w64-}
-pkgver=5.8.0
+pkgver=5.9.0
 pkgrel=1
 arch=('any')
 pkgdesc='Common C++ classes and routines such as argument parser, IO and conversion utilities (mingw-w64)'
@@ -17,7 +17,7 @@ checkdepends=('mingw-w64-cppunit' 'mingw-w64-wine')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'ninja')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('20eb49249e94f07c09ee602246d2c74cd829c5f49b09559fced008e7b8651ce6')
+sha256sums=('88647cb246f502771ad42e955d7657c279fa19082d1ef2d538ccdfcd4dd2002e')
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
@@ -68,7 +68,7 @@ check() {
       msg2 "${_arch}-${_cfg}"
       pushd "build-${_arch}-${_cfg}"
       export WINEPATH="/usr/${_arch}/bin" WINEDEBUG=-all
-      ninja check || true
+      [[ $_cfg == shared ]] && ninja check
       popd
     done
   done
