@@ -3,7 +3,7 @@
 
 pkgname=fotowall
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A creative tool that allows you to layout your photos or pictures in a personal way"
 arch=('x86_64')
 url="http://www.enricoros.com/opensource/fotowall/"
@@ -18,6 +18,7 @@ sha256sums=('8dc42262dd5220a12e92181ff82bd363a6506a4c3ab1ea3841281f2971e1b289'
 prepare() {
   cd $pkgname-$pkgver
   patch -Np1 -i ../fotowall-1.0-fix-build-against-qt-5.11.0.patch
+  sed -i 's|#include <QPainter>|#include <QPainter>\n#include <QPainterPath>|'  3rdparty/posterazor/paintcanvas.cpp
 }
 
 build() {

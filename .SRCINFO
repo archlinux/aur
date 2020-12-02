@@ -1,7 +1,7 @@
 pkgbase = fotowall
 	pkgdesc = A creative tool that allows you to layout your photos or pictures in a personal way
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.enricoros.com/opensource/fotowall/
 	arch = x86_64
 	license = LGPL3
