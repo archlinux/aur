@@ -3,7 +3,7 @@
 _pkgname=pyportfolioopt
 _PkgName=PyPortfolioOpt
 pkgname=python-$_pkgname-git
-pkgver=1.0.1
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="Financial portfolio optimisation in python"
 arch=('any')
