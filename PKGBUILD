@@ -18,7 +18,7 @@ optdepends=("flac: flac audio support"
             "libvorbis: vorbis audio support")
 makedepends=("autoconf" "automake" "pkgconf")
 source=("$url/archive/v$pkgver.tar.gz")
-md5sums=("9b599abf4bcd66761fe99c024644f623")
+sha256sums=("9179496149e763a75fea37bf6ec12947cad4bdb868b401d34728b353b836047a")
 options=("!docs")
 install="$pkgname.install"
 
@@ -40,4 +40,3 @@ package(){
  mv "$pkgdir/usr/share/man1/ices.1" "$pkgdir/usr/share/man1/ices0.1"
  install -D -m 644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
