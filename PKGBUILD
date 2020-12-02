@@ -3,7 +3,7 @@
 _pkgname='rapidfuzz'
 pkgname="python-${_pkgname}"
 pkgver=0.13.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Rapid fuzzy string matching in Python and C++ using the Levenshtein Distance'
 arch=('x86_64')
 url='https://github.com/maxbachmann/rapidfuzz'
