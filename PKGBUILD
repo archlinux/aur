@@ -4,13 +4,13 @@
 _pkgname='Py3AMF'
 pkgname="python-${_pkgname,,}"
 pkgver=0.8.10
-pkgrel=2
+pkgrel=3
 pkgdesc='Python action Message Format (AMF) support'
 arch=('any')
 url='https://github.com/StdCarrot/Py3AMF'
 _url_pypi='https://pypi.org/project/Py3AMF'
 license=('MIT')
-depends=('python' 'python-defusedxml')
+depends=('python-defusedxml')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('6dac2d34a09daf5351e654e8cdc3026b3560a6db498c17cdcc84322b3149952c')
