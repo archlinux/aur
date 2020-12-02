@@ -2,8 +2,8 @@
 
 pkgname=python-usersettings
 pkgver=1.0.7
-pkgrel=3
-pkgdesc="Python module for easily managing persistent settings using an editable format and stored in an OS-appropriate location."
+pkgrel=4
+pkgdesc="Python module for easily managing persistent settings using an editable format and stored in an OS-appropriate location"
 arch=('any')
 url="https://pypi.org/project/usersettings"
 license=("BSD")
