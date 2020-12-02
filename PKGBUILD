@@ -2,7 +2,7 @@
 
 _pkgbase='functoolsplus'
 pkgname="python-${_pkgbase}-git"
-pkgver=latest
+pkgver=r28.36621d5
 pkgrel=1
 pkgdesc='Even higher-order functions and operations on callable objects'
 arch=('any')

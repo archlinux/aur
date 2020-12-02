@@ -1,6 +1,6 @@
 pkgbase = python-functoolsplus-git
 	pkgdesc = Even higher-order functions and operations on callable objects
-	pkgver = latest
+	pkgver = r28.36621d5
 	pkgrel = 1
 	url = https://gitlab.com/HOMEINFO/functoolsplus
 	arch = any
