@@ -3,14 +3,15 @@
 pkgname=avpnc
 pkgver=0.1
 pkgrel=1
+epoch=1
 pkgdesc="A python implementation of the Aviatrix VPN client"
 arch=('any')
 url=https://github.com/christophgysin/avpnc
 license=('MIT')
 depends=('python' 'sudo' 'openvpn')
-source=('https://raw.githubusercontent.com/christophgysin/avpnc/e4cf4728d6e3fce8e32b7039d8b305e186f6f012/avpnc')
-sha512sums=('79323bbaa0be150d372a3b2c807a7d61ee8bd10974152d9674e880eaa27a754a7b7503ae88a3c9d0fa4b53ee45dc6411122c81676d74e87157367d48d595d829')
+source=("avpnc-$pkgver.tar.gz::https://github.com/christophgysin/avpnc/archive/v$pkgver.tar.gz")
+sha512sums=('665cb7dcf3e6f5a53a868d9bdd7236f66cbc19883b9443e4fa25b9b273b586441dc7f79ef02bd9132c9bf433810fe02c2c604e4780f8ba8b0367ef8eb117109e')
 
 package() {
-  install -Dm755 ${srcdir}/avpnc ${pkgdir}/usr/bin/avpnc
+  install -Dm755 ${srcdir}/avpnc-${pkgver}/avpnc ${pkgdir}/usr/bin/avpnc
 }
