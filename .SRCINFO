@@ -1,7 +1,7 @@
 pkgbase = termtrack-git
 	pkgdesc = Track satellites in your terminal
 	pkgver = 0.7.3.r0.gaf5c4ed
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trehn/termtrack
 	arch = any
 	license = GPL3
