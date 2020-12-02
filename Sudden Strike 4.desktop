@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Sudden Strike 4
+Exec=sudden-strike-4
+Comment=A historical real time strategy game. Commanding the Allied, German or Soviet troops.
+Terminal=false
+Icon=/usr/share/pixmaps/gog-sudden-strike-4.png
+Type=Application
+Categories=Game;

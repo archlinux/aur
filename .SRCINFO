@@ -1,0 +1,25 @@
+pkgbase = gog-sudden-strike-4
+	pkgdesc = A historical real time strategy game. Commanding the Allied, German or Soviet troops.
+	pkgver = 1.15
+	pkgrel = 1
+	url = https://www.gog.com/game/we_are_the_dwarves
+	arch = x86_64
+	license = custom
+	makedepends = lgogdownloader
+	makedepends = findutils
+	makedepends = unzip
+	depends = gtk2
+	optdepends = gog-sudden-strike-4-the-pacific-war=1.15
+	optdepends = gog-sudden-strike-4-road-to-dunkirk=1.15
+	optdepends = gog-sudden-strike-4-africa-desert-war=1.15
+	optdepends = gog-sudden-strike-4-finland_winter_storm=1.15
+	optdepends = gog-sudden-strike-4-battle_of_kursk=1.15
+	source = sudden_strike_4_1_15.sh::gogdownloader://2146639313/en3installer0
+	source = Sudden Strike 4.desktop
+	source = start-sudden-strike-4.sh
+	sha512sums = bc918de3e38ab86ecd8f1630f6afc2ad76bdcd848bf33ae57b6170e50f8323cd880ee2d2f3450c730c48fe76389b745dd637e7690723c623370067a3e83b8d36
+	sha512sums = 0414b87ab350906a0401bbc4b3c425d6efa6e9685b2dbabf87b88217b74bf4c5e73d411846996f5368ea241e366ddb63a23ebaae2b030730ff7f71179db40100
+	sha512sums = a0250c930eef5dab2e7211dec395cc3c889b42728001b4976c32ee7f2d6902e25e1a0dd7d006897e3753d5b376c4c3ae109032c43bad77919d705bfd69be6223
+
+pkgname = gog-sudden-strike-4
+
