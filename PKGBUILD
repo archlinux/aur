@@ -2,7 +2,7 @@
 # Contributor: Paulo Castro <p dot oliveira dot castro at gmail dot com>
 
 pkgname=nest
-pkgver=2.20.0
+pkgver=2.20.1
 pkgrel=1
 pkgdesc="Simulator for spiking neural network models"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gsl' 'libtool' 'python')
 makedepends=('cmake' 'cython')
 optdepends=('ipython' 'python-numpy' 'python-scipy' 'python-matplotlib')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nest/nest-simulator/archive/v${pkgver}.tar.gz")
-sha256sums=('40e33187c22d6e843d80095b221fa7fd5ebe4dbc0116765a91fc5c425dd0eca4')
+sha256sums=('df3d32b5899d5d444f708037b290f889ac6ff8eae6b7be9e9faee2c0d660d8e5')
 
 build() {
   mkdir -p "${srcdir}/build" && cd "${srcdir}/build"
