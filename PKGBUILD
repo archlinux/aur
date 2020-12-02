@@ -3,7 +3,7 @@
 pkgname=python-setuptools-git-ver
 _name=${pkgname#python-}
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically set package version using git tag/hash"
 arch=('any')
 url="https://github.com/camas/setuptools-git-ver"

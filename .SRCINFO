@@ -1,7 +1,7 @@
 pkgbase = python-setuptools-git-ver
 	pkgdesc = Automatically set package version using git tag/hash
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/camas/setuptools-git-ver
 	arch = any
 	license = MIT
