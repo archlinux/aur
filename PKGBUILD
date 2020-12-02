@@ -21,12 +21,10 @@ pkgver() {
 }
 
 build() {
-   echo "$pkgdir"
    arch-meson "$_pkgname" build
    ninja -C build
 }
 
 package() {
-  echo "$pkgdir"
   DESTDIR="$pkgdir" meson install -C build
 }
