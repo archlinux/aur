@@ -1,7 +1,7 @@
 pkgbase = crackmapexec
 	pkgdesc = A swiss army knife for pentesting Windows/Active Directory environments
 	pkgver = 5.1.1dev
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/byt3bl33d3r/CrackMapExec
 	arch = any
 	license = GPL3
