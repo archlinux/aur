@@ -1,7 +1,7 @@
 pkgbase = python-pyperclip-git
 	pkgdesc = A cross-platform clipboard module for Python (git)
 	pkgver = r197.d72f3ce
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asweigart/pyperclip
 	arch = any
 	license = BSD

@@ -2,7 +2,7 @@
 
 pkgname=python-pyperclip-git
 pkgver=r197.d72f3ce
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform clipboard module for Python (git)"
 arch=('any')
 url="https://github.com/asweigart/pyperclip"
