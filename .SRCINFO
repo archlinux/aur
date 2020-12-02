@@ -1,7 +1,7 @@
 pkgbase = python-infi.unittest
 	pkgdesc = Various extensions to the unittest module
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	arch = any
 	license = BSD3
 	depends = python-infi
