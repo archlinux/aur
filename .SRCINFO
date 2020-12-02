@@ -9,15 +9,14 @@ pkgbase = zdkimfilter
 	license = GPL3
 	depends = courier-mta
 	depends = opendkim
-	depends = glibc>=2.31
-	depends = libbsd=0.10.0
-	depends = libidn2.so=0
-	depends = libnettle.so=8
-	depends = libunistring.so=2
-	depends = libuuid.so=1
-	depends = opendbx=1.4.6
-	depends = openssl=1.1.1.h
-	depends = zlib=1:1.2.11
+	depends = libbsd
+	depends = libidn2.so
+	depends = libnettle.so
+	depends = libunistring.so
+	depends = libuuid.so
+	depends = opendbx
+	depends = openssl
+	depends = zlib
 	options = debug
 	options = !strip
 	backup = etc/courier/filters/zdkimfilter.conf

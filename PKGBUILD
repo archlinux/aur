@@ -6,21 +6,17 @@ pkgdesc="zDKIM filter for Courier-MTA using the OpenDKIM Project's library."
 arch=('i686' 'pentium4' 'x86_64')
 url='https://www.tana.it/sw/zdkimfilter/'
 license=('GPL3')
-_pinned_dependencies=(
-  'glibc>=2.31'
-  'libbsd=0.10.0'
-  'libidn2.so=0'
-  'libnettle.so=8'
-  'libunistring.so=2'
-  'libuuid.so=1'
-  'opendbx=1.4.6'
-  'openssl=1.1.1.h'
-  'zlib=1:1.2.11'
-)
 depends=(
   'courier-mta'
   'opendkim'
-  "${_pinned_dependencies[@]}"
+  'libbsd'
+  'libidn2.so'
+  'libnettle.so'
+  'libunistring.so'
+  'libuuid.so'
+  'opendbx'
+  'openssl'
+  'zlib'
 )
 backup=('etc/courier/filters/zdkimfilter.conf')
 source=(
