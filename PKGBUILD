@@ -2,7 +2,7 @@
 _modulename=anesthetic
 pkgname=python-$_modulename-git
 pkgver=r319.2351380
-pkgrel=1
+pkgrel=2
 pkgdesc="nested sampling visualisation"
 arch=(any)
 url="https://github.com/williamjameshandley/anesthetic"

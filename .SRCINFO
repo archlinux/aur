@@ -1,7 +1,7 @@
 pkgbase = python-anesthetic-git
 	pkgdesc = nested sampling visualisation
 	pkgver = r319.2351380
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/williamjameshandley/anesthetic
 	arch = any
 	license = MIT
