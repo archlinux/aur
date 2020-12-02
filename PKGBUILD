@@ -2,7 +2,7 @@
 
 pkgbase=libjpeg-xl-git
 pkgname=('libjpeg-xl-git' 'libjpeg-xl-doc-git')
-pkgver=r28.gd5ab3c6
+pkgver=0.1.r3.g739e6cd
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
@@ -57,7 +57,7 @@ prepare() {
 }
 
 pkgver() {
-    printf 'r%s.g%s' "$(git -C jpeg-xl rev-list --count HEAD)" "$(git -C jpeg-xl rev-parse --short HEAD)"
+    git -C jpeg-xl describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
