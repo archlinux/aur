@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=5.9
-_minor=11
+_minor=12
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,10 +72,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v7-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0003-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0004-efivarfs-revert-fix-memory-leak-in-efivarfs_create.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0003-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
         "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
@@ -312,14 +311,13 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('6a85177d72862769f203d8dd8ad7986e60cd57382c1cc907826c1bae40e725d8d54568f319ef0c0aa55a16300364e5b0d7e83c428e96987f32bfc968e63c69a5'
+sha512sums=('164a89388a56140140e0b4ba3f39a45f85a73c9862f5104cf591a6d6826cfc2498b4080f862cc592f04853328ba9236f8aa305e4f0f876f6b18eda2e42ea6dcb'
             'SKIP'
             '12a2d17f719edefc19078dc64badf7049132e053bc242546c83063400dc28a7f3f2c81c5f6d8d375e4a176659d69dd4da08d141f67e835fa8aca154e7d1c026e'
             '96427eecb0078ce57a40ef4ee78d3576216f27390ba6b9dfbb851f4d969558a82b698cc633217ad8f6b9d991e7eaebd613ed4bd5741cafe7fa40b2502dacd43a'
-            '45a44a1e5cee722d6ef1182697be13b9400056f26aa2c6a7302bf8759ddbfb6ae6d732b07ab56eb0468072716812702dc17a1e076cbdfce4891be522006a817b'
-            'cdb85aedbd83eee74e2350eb3d9ac0a8da69036fe17d3a7ff8d0a9d0a5e4f92a2eaf88866d0f6dfc320fd00074c39b81a1c4fa9addee8adf288a650023ed5e07'
-            '1a9312d86ae1ba7c8e795f7e3b9e57aa9151a394508768d6789f34c84e95450bfe2131e9cd87a86a01c65f50562640c60b79625384c2307e60a5156e93821d11'
-            '07e8fc824562e278badd0b6d4160a5b008abd088ad4c97b1e804b0863664bbced4e2737a647c7edab12ab15559f0bcfbe3fba26d23e6933e752ef194634c6213'
+            'fa805da312ad7edd5bc70273b6c0a624d1bafaed3c03b735adb7a2fc6cca7897fe7fdad2087fa1109c11484d0620f03d9ff685347da0bfb009da9d70255c3e6d'
+            'f6da10e0fed639a4fb0a7bb8fed43fe668211fd6cb9b8c59c73a306ada02112055a492f0800b0fdefc1f8bd9065a691aff3cfa54e6b880141428c5ab86ce158b'
+            '44d3beab7a82a06f0ae8f85b5b4cbbad2630f4f992bfcf590b8101e964bdeeaf2cadcf6bfceec5654a90414058050556e1db79612a785038f3b0ea21eebfb5ff'
             'b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6'
             '4c8709b402943941152cc9b659691fae9c31bb3a69602c964c69d6e5400224d244c3867198340a3662ab482e28dbc54f5d56d90bb32e69a958c3ee2e454d4438')
 
