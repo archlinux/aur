@@ -18,11 +18,11 @@ source=("git+https://github.com/d10n/mStream.git#branch=d10n-master"
         "mstream.service"
         "mstream.sysusers"
         "mstream.tmpfiles")
-md5sums=("SKIP"
-        "f590018cf4626a0e1a2bfb9b30531c44"
-        "f4fb1b503cedd059c4c3e311b7f8a206"
-        "a2c873e2862c0cc5a13e3db4c05e61bb"
-        "3d6bd19d0e8aa007f2f342d1d5a74083")
+sha256sums=("SKIP"
+            "fb95db00a269d0e7f5d6b7e23e037d319176ad8e7a8332ab61f87ed2e82842a7"
+            "833f86daaffb12857612ef5b1264e944b0a48a077d5a8bb8d217ec6565ed90c3"
+            "5f2e6aced1707f64ca4ae3ae647fb6a8420f5c2a747ba06fa9174920fd821437"
+            "a584c25700c57ffe9df9a1902e44fe2f0ad9b508af748eca540734e3df44bb0f")
 backup=("etc/mstream.json")
 install="mstream.install"
 
@@ -43,7 +43,7 @@ package(){
  install -d "$pkgdir/var/lib/mstream/media"
  install -d "$pkgdir/var/lib/mstream/sync"
  install -d "$pkgdir/var/log/mstream"
- 
+
  install -D -m 640 "mstream.json" "$pkgdir/etc/mstream.json"
  install -D -m 644 "mstream.service" "$pkgdir/usr/lib/systemd/system/mstream.service"
  install -D -m 644 "mstream.sysusers" "$pkgdir/usr/lib/sysusers.d/mstream.conf"
