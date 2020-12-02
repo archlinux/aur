@@ -1,0 +1,14 @@
+pkgbase = python-mgclipboard
+	pkgdesc = Modules shared across all Papermerge project.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/papermerge/mg-clipboard
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = python-mgclipboard-0.3.0.src.tar.gz::https://github.com/papermerge/mg-clipboard/archive/f5a4e9370820c3d8bbfbc3bed08131d32bc141fc.tar.gz
+	sha512sums = 25f7787ca3aec9d0f56ddf4dc65a530a39c4238a91040af592b8f5c686f539ddcf734101307aa9ee86f6850825c7eb33ea66e2cfd19c27a96358e755bf1b78a9
+
+pkgname = python-mgclipboard
+
