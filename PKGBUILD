@@ -25,6 +25,7 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
+	export PYTHONHASHSEED=0
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
