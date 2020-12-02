@@ -1,19 +1,22 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname=wbsv
+pkgname='wbsv'
+
 pkgver=0.2.5
-pkgrel=2
+pkgrel=3
+_commit_license='d9e7e7b451e3dd87925f9381debb2b481d46553e'
+
 pkgdesc='CLI tool for saving webpages to the Wayback Machine'
 arch=('any')
 url='https://github.com/eggplants/wbsv-cli'
-_rawurl="https://raw.githubusercontent.com/${url##*github.com/}"
+_url_pypi='https://pypi.org/project/wbsv'
 license=('MIT')
 depends=('python-beautifulsoup4' 'python-savepagenow')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-        "${pkgname}-${pkgver}-LICENSE::${_rawurl}/master/LICENSE")
+        "${pkgname}-license-${_commit_license}::${url}/raw/${_commit_license}/LICENSE")
 sha256sums=('ea7ea2d89c3ca65d1e6eb264a9620a2bafaefadba5b0c260bef32be456c535ac'
-            'SKIP')
+            'd85df8a73ab1e2324a2b5b216b408f2609e571d348eb576bdfc1a9bb3c854d19')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -21,10 +24,10 @@ build() {
 }
 
 package() {
-  install -Dm644 "${pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dvm644 "${pkgname}-license-${_commit_license}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 'README.md' "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
