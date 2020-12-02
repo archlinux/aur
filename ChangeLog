@@ -1,3 +1,7 @@
+2020-12-02 Pierre Choffet <peuc@wanadoo.fr>
+	* r4737.842d4d9a2-1 :
+	Add missing dependency
+
 2020-08-12 Pierre Choffet <peuc@wanadoo.fr>
 	* r4685.b153c4897-1 :
 	Update build after upstream changes
