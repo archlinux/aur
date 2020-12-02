@@ -1,0 +1,17 @@
+pkgbase = cam_board-git
+	pkgdesc = Point your laptop web cam at a piece of paper and the program will stretch the writable area over the whole screen.
+	pkgver = r122.ece9f51
+	pkgrel = 1
+	url = https://github.com/kacpertopol/cam_board.git
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = opencv
+	depends = python-numpy
+	provides = cam_board
+	conflicts = cam_board
+	source = cam_board-git::git+https://github.com/kacpertopol/cam_board.git
+	md5sums = SKIP
+
+pkgname = cam_board-git
+
