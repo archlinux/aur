@@ -1,6 +1,6 @@
 pkgbase = nextinspace-git
 	pkgdesc = Print upcoming space-related events to your terminal
-	pkgver = 1.0.0.r7.g13e05ad
+	pkgver = 1.0.6.r2.g1763952
 	pkgrel = 1
 	url = https://github.com/The-Kid-Gid/nextinspace
 	arch = any

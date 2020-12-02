@@ -2,7 +2,7 @@
 
 _pkgname='nextinspace'
 pkgname="${_pkgname}-git"
-pkgver=1.0.0.r7.g13e05ad
+pkgver=1.0.6.r2.g1763952
 pkgrel=1
 pkgdesc='Print upcoming space-related events to your terminal'
 arch=('any')
