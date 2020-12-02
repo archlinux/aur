@@ -3,7 +3,7 @@
 
 pkgname=bazarr
 pkgver=0.9.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Subtitle download automation for Sonarr and Radarr."
 arch=('any')
 url="https://github.com/morpheus65535/bazarr"
