@@ -1,7 +1,7 @@
 pkgbase = python-django-storages
 	pkgdesc = Support for many storage backends (S3, Libcloud, etc) in Django.
 	pkgver = 1.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jschneier/django-storages
 	arch = any
 	license = BSD

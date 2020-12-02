@@ -4,7 +4,7 @@
 pkgname='python-django-storages'
 _module='django-storages'
 pkgver='1.10.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Support for many storage backends (S3, Libcloud, etc) in Django."
 url="https://github.com/jschneier/django-storages"
 makedepends=('python-setuptools')
