@@ -4,7 +4,7 @@
 pkgname=python-bidi
 _pkgname=bidi
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="BIDI algorithm related functions"
 arch=('any')
 makedepends=('python-setuptools')

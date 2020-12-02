@@ -1,7 +1,7 @@
 pkgbase = python-bidi
 	pkgdesc = BIDI algorithm related functions
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MeirKriheli/python-bidi
 	arch = any
 	license = LGPL
