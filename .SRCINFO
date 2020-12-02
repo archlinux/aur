@@ -1,7 +1,7 @@
 pkgbase = waybackpy-git
 	pkgdesc = Python package & command-line program that interfaces with the Internet Archives Wayback Machine API
 	pkgver = 2.2.0.r15.gca51c14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/akamhy/waybackpy
 	arch = any
 	license = MIT

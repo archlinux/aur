@@ -3,7 +3,7 @@
 _pkgname='waybackpy'
 pkgname="${_pkgname}-git"
 pkgver=2.2.0.r15.gca51c14
-pkgrel=1
+pkgrel=2
 pkgdesc='Python package & command-line program that interfaces with the Internet Archives Wayback Machine API'
 arch=('any')
 url='https://github.com/akamhy/waybackpy'
