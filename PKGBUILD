@@ -20,10 +20,10 @@ source=("$pkgname::git+$url.git"
         "lms.sysusers"
         "lms.service"
         "lms.tmpfiles")
-md5sums=("SKIP"
-        "938534cc0cd64a4990dd3f413ea0f4bb"
-        "7cdb8d3326ed75ce31ce7d4c20fa12c1"
-        "54f669182ba59508d71729f40ead6b93")
+sha256sums=("SKIP"
+            "04bda76b610b7d61dfcad355a5ca18c794df417e1b3172d7419c93170446da41"
+            "e52499370746e696f18271db3703853475c6565e10f73e1e3514868a327db3d1"
+            "32f537bf3480fbe55d0a9929ba633718fbc16887a68e0ba1a2b3b265c400ed41")
 backup=("etc/lms.conf")
 
 pkgver(){
@@ -45,7 +45,7 @@ package(){
  install -D -m 644 "lms.service" "$pkgdir/usr/lib/systemd/system/lms.service"
  install -D -m 644 "lms.sysusers" "$pkgdir/usr/lib/sysusers.d/lms.conf"
  install -D -m 644 "lms.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/lms.conf"
- 
+
  cd "$pkgname/build"
  make DESTDIR="$pkgdir" install
  install -D -m 644 "$pkgdir/usr/share/lms/lms.conf" "$pkgdir/etc/lms.conf"

@@ -19,10 +19,10 @@ pkgbase = lms-git
 	source = lms.sysusers
 	source = lms.service
 	source = lms.tmpfiles
-	md5sums = SKIP
-	md5sums = 938534cc0cd64a4990dd3f413ea0f4bb
-	md5sums = 7cdb8d3326ed75ce31ce7d4c20fa12c1
-	md5sums = 54f669182ba59508d71729f40ead6b93
+	sha256sums = SKIP
+	sha256sums = 04bda76b610b7d61dfcad355a5ca18c794df417e1b3172d7419c93170446da41
+	sha256sums = e52499370746e696f18271db3703853475c6565e10f73e1e3514868a327db3d1
+	sha256sums = 32f537bf3480fbe55d0a9929ba633718fbc16887a68e0ba1a2b3b265c400ed41
 
 pkgname = lms-git
 
