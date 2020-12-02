@@ -7,7 +7,6 @@ pkgbase = python-ecos
 	license = GPL3
 	checkdepends = python-nose
 	makedepends = python-setuptools
-	depends = python
 	depends = python-numpy
 	depends = python-scipy
 	depends = ecos

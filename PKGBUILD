@@ -1,12 +1,11 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
-pkgname=('python-ecos')
+pkgname='python-ecos'
 _module='ecos-python'
 pkgver='2.0.7'
 pkgrel=1
 pkgdesc="Python interface for ECOS."
 url="https://github.com/embotech/ecos-python"
-depends=('python'
-    'python-numpy'
+depends=('python-numpy'
     'python-scipy'
     'ecos'
     'suitesparse')
