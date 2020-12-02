@@ -2,12 +2,13 @@
 
 pkgname=steam-fast-login
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Login manager for Steam, allowing fast switching between accounts"
 arch=("any")
 license=("GPL3")
 url="https://github.com/djmattyg007/SteamFastLogin"
 depends=("python" "python-setuptools" "python-appdirs" "python-pyqt5" "python-keyring")
+optdepends=("python-dbus: some keyring providers require this")
 source=("https://github.com/djmattyg007/SteamFastLogin/archive/${pkgver}.tar.gz")
 sha256sums=("17d89216622a2a9b35f4284e5a88cc15d3851b23db4432ecc832317e4ae46bd0")
 
