@@ -1,13 +1,12 @@
 pkgbase = sqlitebiter
 	pkgdesc = Convert CSV, Excel, HTML, JSON, Jupyter Notebook, LDJSON, LTSV, Markdown, SSV, TSV, Google-Sheets to SQLite database file
 	pkgver = 0.34.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/thombashi/sqlitebiter
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = jupyter-nbformat
-	depends = python
 	depends = python-appconfigpy
 	depends = python-click
 	depends = python-dataproperty

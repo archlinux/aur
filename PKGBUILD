@@ -2,13 +2,13 @@
 
 pkgname='sqlitebiter'
 pkgver=0.34.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Convert CSV, Excel, HTML, JSON, Jupyter Notebook, LDJSON, LTSV, Markdown, SSV, TSV, Google-Sheets to SQLite database file'
 arch=('any')
 url='https://github.com/thombashi/sqlitebiter'
+_url_pypi='https://pypi.org/project/sqlitebiter'
 license=('MIT')
 depends=('jupyter-nbformat'
-        'python'
         'python-appconfigpy'
         'python-click'
         'python-dataproperty'
@@ -34,8 +34,8 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.rst'
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" 'LICENSE'
+  install -Dvm644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
