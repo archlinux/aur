@@ -1,0 +1,17 @@
+pkgbase = python-django-modelcluster
+	pkgdesc = Django extension to allow working with 'clusters' of models as a single unit, independently of the database.
+	pkgver = 5.1
+	pkgrel = 1
+	url = https://github.com/wagtail/django-modelcluster
+	arch = any
+	license = BSD
+	checkdepends = python-django
+	checkdepends = python-django-taggit
+	makedepends = python-setuptools
+	depends = python-pytz
+	optdepends = python-django-taggit
+	source = python-django-modelcluster-5.1.src.tar.gz::https://github.com/wagtail/django-modelcluster/archive/v5.1.tar.gz
+	sha512sums = bb3d8640a04cabfdebe7f60b571a2b2c4d71bbf5d4ea0ff0e7db5fe9d120e6eab7ec3f1b6992d21aff377045f8ed3e11d1b351ce2f460b33dd4c0f3a8dd749fb
+
+pkgname = python-django-modelcluster
+
