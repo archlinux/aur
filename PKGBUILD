@@ -2,7 +2,7 @@
 _modulename=ripser
 pkgname=python-$_modulename
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Lean Persistent Homology Library for Python"
 arch=(any)
 url="https://github.com/scikit-tda/ripser.py"
