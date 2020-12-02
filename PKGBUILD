@@ -2,7 +2,7 @@
 _modulename=fastkde
 pkgname=python-$_modulename
 pkgver=1.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast kernel density estimation"
 arch=(any)
 url="https://bitbucket.org/lbl-cascade/fastkde"
