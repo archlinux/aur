@@ -2,7 +2,7 @@
 _modulename=scholarly
 pkgname=python-$_modulename
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Retrieve author and publication information from Google Scholar in a friendly, Pythonic way"
 arch=(any)
 url="https://github.com/OrganicIrradiation/scholarly"
