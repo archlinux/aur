@@ -3,7 +3,7 @@
 cpaname=Math-NumSeq
 cpanauthor=KRYDE
 pkgname='perl-math-numseq'
-pkgver=72
+pkgver=74
 pkgrel=1
 pkgdesc="number sequences"
 arch=('any')
@@ -21,9 +21,9 @@ depends=(
 )
 url=http://search.cpan.org/dist/${cpaname}
 source=("http://search.cpan.org/CPAN/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-md5sums=('2bb1b103470548d4fad0528e6aad475e')
-sha256sums=('75aeba105d7edc7fb32d832d8948b5535de8078442876ca0b01f3e3648e9c6f5')
-sha512sums=('7ba1c69eced5adeca7cc0d6247885b291d7b96b09d256e652c207ebd034b8ceea477d4016a71f28f4247b8f5ba644dcaacbd9b358144ee06057c30b0bc1f0cbc')
+md5sums=('0ba288dae0dc957782a96e37b98438c0')
+sha256sums=('b4a8b66b2131c46aa1bb58da2b9af77de22deed78ddf26c51743e32a225eff4b')
+sha512sums=('2312b7dd5fcdc3e7be4a5575d999bdeff33eaa0e4742ee188298d0c362256c0f02b32d391f734d58c4f101b6590e3bf21c17eb789066d5cf057f1074195e77b7')
 
 build() {
   cd "${srcdir}/${cpaname}-${pkgver}"
