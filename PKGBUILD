@@ -2,7 +2,7 @@
 
 pkgname=python-unstdlib
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Unstandard Python library of useful and highly-reusable functions."
 arch=("any")
 url="https://github.com/shazow/unstdlib.py"

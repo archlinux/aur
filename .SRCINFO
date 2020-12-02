@@ -1,7 +1,7 @@
 pkgbase = python-unstdlib
 	pkgdesc = Unstandard Python library of useful and highly-reusable functions.
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shazow/unstdlib.py
 	arch = any
 	license = MIT
