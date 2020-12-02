@@ -1,0 +1,29 @@
+pkgbase = plasma-nano-git
+	pkgdesc = A minimal plasma shell package intended for embedded devices.
+	pkgver = r127.da8ffe2
+	pkgrel = 1
+	url = https://invent.kde.org/plasma/plasma-nano
+	arch = any
+	license = GPL2
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kactivities
+	depends = kactivities-stats
+	depends = ki18n
+	depends = kdeconnect
+	depends = plasma-workspace
+	depends = kdeclarative
+	depends = plasma-framework
+	depends = kirigami2
+	depends = kcmutils
+	depends = kwayland
+	depends = xorg-server-xwayland
+	depends = plasma-wayland-session
+	provides = plasma-nano
+	conflicts = plasma-nano
+	source = git+https://invent.kde.org//plasma/plasma-nano.git
+	md5sums = SKIP
+
+pkgname = plasma-nano-git
+
