@@ -1,7 +1,7 @@
 pkgbase = inspektor
 	pkgdesc = View metadata information on files
 	pkgver = 1.0.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hezral/inspektor
 	arch = any
 	license = GPL3
