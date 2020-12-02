@@ -1,8 +1,8 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=jriver-media-center
-_debpkgver=27.0.35
-pkgver=27.0.35
+_debpkgver=27.0.37
+pkgver=27.0.37
 pkgrel=1
 pkgdesc="The Most Comprehensive Media Software"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('alsa-lib' 'gcc-libs' 'libx11' 'libxext' 'libxcb' 'libxau' 'libxdmcp' '
 optdepends=('mesa-libgl: nouveau video support' 'nvidia-libgl: nvidia video support' 'vorbis-tools' 'musepack-tools')
 conflicts=('jriver-media-center26' 'jriver-media-center25' 'jriver-media-center24')
 source=("http://files.jriver.com/mediacenter/channels/v27/latest/MediaCenter-$_debpkgver-amd64.deb" 'License.txt')
-sha256sums=('9249a2deb9a239a2c9943055cd8bb324be1aa01af3083a8a3a14bb49de86f562' 'ee00f430918df6be37777a61e12812875b5583379c78daaa969bae7383a41fbd')
+sha256sums=('f79ef85351a5539ff30830c3a10f1e9a49f9135beefd4c49ca2b2328b3f5ee04' 'ee00f430918df6be37777a61e12812875b5583379c78daaa969bae7383a41fbd')
 
 package() {
   cd "$srcdir"
