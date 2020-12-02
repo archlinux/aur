@@ -1,7 +1,6 @@
 pre_install() {
 	# create the papermerge user and folders early so we can chown the migrations folder and run migrations after installation
 	echo 'u papermerge - "open source document management system" -' | systemd-sysusers --replace=/usr/lib/sysusers.d/papermerge.conf -
-	
 	{
 		echo 'd /var/lib/papermerge/media - papermerge papermerge -'
 		echo 'd /var/lib/papermerge/media - papermerge papermerge -'
@@ -11,9 +10,6 @@ pre_install() {
 		echo 'd /run/papermerge - papermerge papermerge -'
 		echo 'd /var/log/papermerge - papermerge papermerge -'
 	} | systemd-tmpfiles --create --replace=/usr/lib/tmpfiles.d/papermerge.conf -
-	
-	# mkdir -p "/usr/lib/python3.8/site-packages/papermerge/core"
-	# ln -s /var/lib/papermerge/migrations "/usr/lib/python3.8/site-packages/papermerge/core/migrations"
 }
 
 post_install() {
@@ -22,8 +18,7 @@ post_install() {
 	# Make sure the papermerge user owns the migrations directory (write access needed)
 	if id papermerge &>/dev/null; then
 		chown -R papermerge:papermerge "/usr/lib/python3.8/site-packages/papermerge/core/migrations"
-	else
-		printf '\n --> Please run "sudo chown -R papermerge:papermerge /usr/lib/python3.8/site-packages/papermerge/core/migrations" before launching the papermerge service for the first time!\n'
+		chown -R papermerge:papermerge "/usr/lib/python3.9/site-packages/papermerge/core/migrations"
 	fi
 	
 	# run the migrations
@@ -39,6 +34,7 @@ post_install() {
 post_upgrade() {
 	# Make sure the papermerge user owns the migrations directory (write access needed)
 	chown -R papermerge:papermerge "/usr/lib/python3.8/site-packages/papermerge/core/migrations"
+	chown -R papermerge:papermerge "/usr/lib/python3.9/site-packages/papermerge/core/migrations"
 	
 	# run the migrations
 	runuser -u papermerge -- /usr/bin/papermerge-manage makemigrations --merge --noinput

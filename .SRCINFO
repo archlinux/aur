@@ -1,7 +1,7 @@
 pkgbase = papermerge
 	pkgdesc = An open source document management system (DMS) primarily designed for archiving and retrieving your digital documents.
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ciur/papermerge
 	install = papermerge.install
 	arch = any
@@ -33,6 +33,7 @@ pkgbase = papermerge
 	optdepends = python-redis: file based transport of messaging queue
 	backup = etc/papermerge.conf.py
 	backup = usr/lib/python3.8/site-packages/config/settings/production.py
+	backup = usr/lib/python3.9/site-packages/config/settings/production.py
 	source = papermerge-1.5.3.src.tar.gz::https://github.com/ciur/papermerge/archive/v1.5.3.tar.gz
 	source = papermerge.install
 	source = papermerge.sysusers

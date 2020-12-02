@@ -3,12 +3,12 @@
 
 pkgname=papermerge
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source document management system (DMS) primarily designed for archiving and retrieving your digital documents."
 arch=('any')
 url="https://github.com/ciur/papermerge"
 license=('Apache')
-backup=("etc/$pkgname.conf.py" "usr/lib/python3.8/site-packages/config/settings/production.py")
+backup=("etc/$pkgname.conf.py" "usr/lib/python3.8/site-packages/config/settings/production.py" "usr/lib/python3.9/site-packages/config/settings/production.py")
 install=$pkgname.install
 depends=('imagemagick' 'pdftk' 'poppler' 'python-celery' 'python-django' 'python-django-allauth' 'python-django-celery-results' 'python-django-dynamic-preferences' 'python-django-modelcluster' 'python-django-mptt' 'python-django-polymorphic-tree' 'python-django-rest-framework' 'python-django-rest-knox' 'python-django-taggit' 'python-imapclient' 'python-lxml' 'python-mgclipboard' 'python-mglib' 'python-psycopg2' 'python-pyaml' 'tesseract' 'gunicorn')
 optdepends=('nginx: reverse proxy for papermerge provided by gunicorn' 'redis: file based transport of messaging queue' 'python-redis: file based transport of messaging queue')
