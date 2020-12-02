@@ -5,7 +5,7 @@
 
 pkgname=rivalcfg
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool and Python library to configure SteelSeries gaming mice'
 arch=('any')
 url='https://github.com/flozz/rivalcfg'
