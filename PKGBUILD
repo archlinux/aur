@@ -1,6 +1,6 @@
 # Maintainer: American_Jesus <american.jesus.pt AT gmail DOT com>
 pkgname=grub2-theme-preview
-pkgver=1.5.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Preview a full GRUB 2.x theme (or just a background image) using KVM/QEMU"
 arch=('any')
