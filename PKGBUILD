@@ -4,9 +4,9 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=pycharm-eap
-_buildver=203.5981.52
+_buildver=203.5981.165
 _pkgver=2020.3
-_eap=true
+_eap=false
 pkgver="${_pkgver}.${_buildver}"
 pkgrel=1
 pkgdesc="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
@@ -14,7 +14,7 @@ arch=("any")
 options=("!strip")
 url="https://www.jetbrains.com/pycharm/nextversion/"
 license=("custom")
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'ipython: For enhanced interactive Python shell v3 inside Pycharm'
             'openssh: For deployment and remote connections'
@@ -42,7 +42,7 @@ else
 	"${pkgname}.desktop")
 fi
 	
-sha256sums=("1d56cba76ca218eebfa208abbc279f0455661b10e9e9f9cb53b852163571688a"
+sha256sums=("a099d0aefa9e6a2e8507e0f89feb48f5839f529f21649393e22f52f641f2efcf"
 	    "aa9573c177f5d4d3092b9dff2aef5b4c7d25ff9c2b044be222a0512dff759731")
 
 prepare() {
@@ -53,8 +53,11 @@ prepare() {
 
 build() {
 	# compile PyDev debugger used by PyCharm to speedup debugging
-	python2 $srcdir/pycharm-${_buildver}/plugins/python/helpers/pydev/setup_cython.py build_ext --inplace
-	python3 $srcdir/pycharm-${_buildver}/plugins/python/helpers/pydev/setup_cython.py build_ext --inplace
+	find $srcdir/pycharm-${_buildver}/plugins/python/helpers/pydev/ \( -name *.c -o -name *.so -o -name *.pyd \) -delete
+	sed -i '1s/^/# cython: language_level=3\n/' $srcdir/pycharm-${_buildver}/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_cython.pxd
+	python $srcdir/pycharm-${_buildver}/plugins/python/helpers/pydev/setup_cython.py build_ext --inplace --force-cython
+	rm -rf $srcdir/pycharm-${_buildver}/plugins/python/helpers/pydev/build/
+	find $srcdir/pycharm-${_buildver}/plugins/python/helpers/pydev/ -name __pycache__ -exec rm -rf {} \;
 }
 
 package() {
@@ -67,11 +70,6 @@ package() {
 
 	mv "${srcdir}"/pycharm-${_buildver}/license "${pkgdir}/usr/share/licenses/${pkgname}"
 	mv "${srcdir}"/pycharm-${_buildver}/* "${pkgdir}/opt/${pkgname}"
-
-	if [[ "i686" = "${CARCH}" ]]; then
-		rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
-		rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
-	fi
 
 	sed -i "s/Version=/Version=${pkgver}/g" "${pkgname}.desktop"
 	install -m755 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
