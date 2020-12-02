@@ -6,10 +6,6 @@ pkgbase = openhab3
 	arch = any
 	license = EPL
 	depends = java-runtime-headless=11
-	conflicts = openhab-runtime
-	conflicts = openhab-addons
-	conflicts = openhab-beta
-	conflicts = openhab2
 	noextract = openhab-3.0.0.M4.tar.gz
 	backup = etc/openhab3/services/addons.cfg
 	backup = etc/openhab3/services/runtime.cfg

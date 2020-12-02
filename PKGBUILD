@@ -8,8 +8,6 @@ url="http://www.openhab.org/"
 license=("EPL")
 depends=("java-runtime-headless=11")
 
-conflicts=("openhab-runtime" "openhab-addons" "openhab-beta" "openhab2")
-
 backup=("etc/${pkgname}/services/addons.cfg"
         "etc/${pkgname}/services/runtime.cfg"
         "etc/default/${pkgname}"
@@ -51,6 +49,8 @@ package() {
     mkdir -p "${pkgdir}/usr/share"
     cp -r "${srcdir}/${pkgname}" "${pkgdir}/usr/share"
 
+    mkdir -p "${pkgdir}/var/log/${pkgname}"
+
     rm -fr "${pkgdir}/usr/share/${pkgname}/conf"
     rm -fr "${pkgdir}/usr/share/${pkgname}/userdata"
 
@@ -58,5 +58,5 @@ package() {
     echo "Z /etc/${pkgname} - ${pkgname} ${pkgname} -" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
     echo "Z /usr/share/${pkgname} - ${pkgname} ${pkgname} -" >> "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
     echo "Z /var/lib/${pkgname} - ${pkgname} ${pkgname} -" >> "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-    echo "d /var/log/${pkgname} - ${pkgname} ${pkgname} -" >> "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+    echo "z /var/log/${pkgname} - ${pkgname} ${pkgname} -" >> "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
