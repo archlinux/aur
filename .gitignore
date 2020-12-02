@@ -11,6 +11,8 @@
 *.zip.sig
 *.tgz
 *.tgz.sig
+*.zst
+*.zst.sig
 *.log
 *.asc
 src
