@@ -2,7 +2,7 @@
 
 pkgname='wayback-machine-archiver'
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Submit web pages to the Wayback Machine for archiving'
 arch=('any')
 url='https://github.com/agude/wayback-machine-archiver'

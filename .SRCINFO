@@ -1,7 +1,7 @@
 pkgbase = wayback-machine-archiver
 	pkgdesc = Submit web pages to the Wayback Machine for archiving
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/agude/wayback-machine-archiver
 	arch = any
 	license = MIT
