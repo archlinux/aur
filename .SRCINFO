@@ -1,7 +1,7 @@
 pkgbase = python-pyheif
 	pkgdesc = Python interface to libheif using CFFI (reading only)
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/david-poirier-csn/pyheif
 	arch = x86_64
 	arch = i686

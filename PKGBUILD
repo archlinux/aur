@@ -3,7 +3,7 @@
 _pkgname=pyheif
 pkgname=python-${_pkgname}
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface to libheif using CFFI (reading only)"
 arch=(x86_64 i686 aarch64)
 url="https://github.com/david-poirier-csn/pyheif"
