@@ -1,0 +1,54 @@
+pre_install() {
+	# create the papermerge user and folders early so we can chown the migrations folder and run migrations after installation
+	echo 'u papermerge - "open source document management system" -' | systemd-sysusers --replace=/usr/lib/sysusers.d/papermerge.conf -
+	
+	{
+		echo 'd /var/lib/papermerge/media - papermerge papermerge -'
+		echo 'd /var/lib/papermerge/media - papermerge papermerge -'
+		echo 'd /var/lib/papermerge/static - papermerge papermerge -'
+		echo 'd /var/lib/papermerge/database - papermerge papermerge -'
+		echo 'd /var/lib/papermerge/import 777 papermerge papermerge -'
+		echo 'd /run/papermerge - papermerge papermerge -'
+		echo 'd /var/log/papermerge - papermerge papermerge -'
+	} | systemd-tmpfiles --create --replace=/usr/lib/tmpfiles.d/papermerge.conf -
+	
+	# mkdir -p "/usr/lib/python3.8/site-packages/papermerge/core"
+	# ln -s /var/lib/papermerge/migrations "/usr/lib/python3.8/site-packages/papermerge/core/migrations"
+}
+
+post_install() {
+	systemctl daemon-reload
+	
+	# Make sure the papermerge user owns the migrations directory (write access needed)
+	if id papermerge &>/dev/null; then
+		chown -R papermerge:papermerge "/usr/lib/python3.8/site-packages/papermerge/core/migrations"
+	else
+		printf '\n --> Please run "sudo chown -R papermerge:papermerge /usr/lib/python3.8/site-packages/papermerge/core/migrations" before launching the papermerge service for the first time!\n'
+	fi
+	
+	# run the migrations
+	runuser -u papermerge -- /usr/bin/papermerge-manage makemigrations --merge --noinput
+	runuser -u papermerge -- /usr/bin/papermerge-manage migrate --noinput
+	runuser -u papermerge -- /usr/bin/papermerge-manage collectstatic --noinput
+	
+	printf '\n --> Run papermerge with "sudo systemctl start papermerge-gunicorn papermerge-worker". Point your reverse proxy (e.g. nginx) to 127.0.0.1:9001.\n'
+	printf '\n --> If this is a new Papermerge installation, please run "sudo -u papermerge papermerge-manage createsuperuser" to create the admin user.\n\n'
+}
+
+# Run migrations and restart the systemd service
+post_upgrade() {
+	# Make sure the papermerge user owns the migrations directory (write access needed)
+	chown -R papermerge:papermerge "/usr/lib/python3.8/site-packages/papermerge/core/migrations"
+	
+	# run the migrations
+	runuser -u papermerge -- /usr/bin/papermerge-manage makemigrations --merge --noinput
+	runuser -u papermerge -- /usr/bin/papermerge-manage migrate --noinput
+	runuser -u papermerge -- /usr/bin/papermerge-manage collectstatic --noinput
+	
+	systemctl daemon-reload
+	
+	running="$(systemctl is-active papermerge-gunicorn)"
+	if [ "$running" == "active" ]; then
+		systemctl restart papermerge-gunicorn
+	fi
+}

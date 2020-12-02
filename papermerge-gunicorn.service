@@ -1,0 +1,22 @@
+[Unit]
+Description=Gunicorn providing papermerge
+Documentation=https://papermerge.readthedocs.io/en/latest/setup/server_configurations.html,https://docs.gunicorn.org/en/latest/deploy.html#systemd
+After=network.target
+Wants=papermerge-worker.service
+
+[Service]
+Type=notify
+User=papermerge
+Group=papermerge
+RuntimeDirectory=papermerge
+WorkingDirectory=/var/lib/papermerge
+Environment="DJANGO_SETTINGS_MODULE=config.settings.production"
+ExecStart=/usr/bin/gunicorn config.wsgi:application --bind 127.0.0.1:9001 --workers 2 --access-logfile "/var/log/papermerge/gunicorn.access" --error-logfile "/var/log/papermerge/gunicorn.error"
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

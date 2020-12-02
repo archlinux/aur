@@ -1,0 +1,17 @@
+[Unit]
+Description=Papermerge Worker
+Documentation=https://papermerge.readthedocs.io/en/latest/setup/server_configurations.html
+After=network.target
+PartOf=papermerge-gunicorn.service
+
+[Service]
+Type=simple
+User=papermerge
+Group=papermerge
+WorkingDirectory=/tmp
+Environment="DJANGO_SETTINGS_MODULE=config.settings.production"
+ExecStart=/usr/bin/django-admin worker --pidfile /var/run/papermerge/papermerge-worker.pid
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

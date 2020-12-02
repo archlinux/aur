@@ -1,0 +1,7 @@
+d /var/lib/papermerge/ - papermerge papermerge -
+d /var/lib/papermerge/media - papermerge papermerge -
+d /var/lib/papermerge/static - papermerge papermerge -
+d /var/lib/papermerge/database - papermerge papermerge -
+d /var/lib/papermerge/import 777 papermerge papermerge -
+d /run/papermerge - papermerge papermerge -
+d /var/log/papermerge - papermerge papermerge -
