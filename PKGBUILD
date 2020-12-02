@@ -1,7 +1,7 @@
 # Maintainer:  Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=abyss
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler"
 arch=("i686" "x86_64")
@@ -28,4 +28,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('f064a8c5ad152a37963d9001df6c89d744370f7ec5a387307747c4647360a47c')
+sha256sums=('38e886f455074c76b32dd549e94cc345f46cb1d33ab11ad3e8e1f5214fc65521')
