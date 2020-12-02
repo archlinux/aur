@@ -7,7 +7,7 @@
 pkgname=texlive-localmanager-git
 _pkgname="${pkgname%-git}"
 pkgver=v0.7.r3.gbbd8488
-pkgrel=5
+pkgrel=6
 pkgdesc='A shell and command-line utility to manage TeXLive on Arch Linux'
 arch=('any')
 url='https://git.archlinux.org/users/remy/texlive-localmanager.git/'
@@ -26,11 +26,13 @@ makedepends=('git')
 source=("${_pkgname}::git+http://git.archlinux.org/users/remy/texlive-localmanager.git"
         'tllocalmgr-2020.patch'
         'tllocalmgr-enhance.patch'
-        'tllocalmgr-fix-texlive-local-match.patch')
+        'tllocalmgr-fix-texlive-local-match.patch'
+        'tllocalmgr-pkgs-nicer-error.patch')
 sha256sums=('SKIP'
             'cdd88b9d8b87fcd6117a3ef6c9dd69ac1103a15beb966d64f2ad1996b574a1f1'
             '22222ff329919ee6a16ffd489b0213b14f8169d9daf6ef1a82aa5ab37538c236'
-            'a7698d0076f4e1a7ef401899c174ed9a290674a7e89e9c818ba078e17548c6e7')
+            'a7698d0076f4e1a7ef401899c174ed9a290674a7e89e9c818ba078e17548c6e7'
+            '1538426adada826f8faeed826e9be5f5610ade23ce0437535e39662294e6e108')
 
 pkgver() {
   cd "$_pkgname"
@@ -50,6 +52,9 @@ prepare() {
   # fix missing exclusion of matches for texlive local packages
   # thanks: @CaptainBern
   patch -p1 < "$srcdir/tllocalmgr-fix-texlive-local-match.patch"
+
+  # make error on missing 'pkgs' file non-fatal, improve error msg
+  patch -p1 < "$srcdir/tllocalmgr-pkgs-nicer-error.patch"
 }
 
 package() {
