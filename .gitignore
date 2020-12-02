@@ -1,5 +1,5 @@
 pkg/
 src/
 wgmgr
-*pkg.tar.xz*
+*.pkg.tar*
 *.log
