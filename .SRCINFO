@@ -1,0 +1,16 @@
+pkgbase = libnspire-git
+	pkgdesc = A crappy lightweight alternative to the Nspire-specific parts of TiLP built with a simple API and with minimal dependancies.
+	pkgver = 0.r25.g7649e3c
+	pkgrel = 1
+	url = https://github.com/Vogtinator/libnspire
+	arch = any
+	license = LGPL-3.0
+	makedepends = git
+	makedepends = pkgconfig
+	depends = libusb
+	provides = libnspire=0-1
+	source = libnspire-git::git://github.com/Vogtinator/libnspire.git
+	sha256sums = SKIP
+
+pkgname = libnspire-git
+
