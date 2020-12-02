@@ -3,7 +3,7 @@
 
 pkgname=python-openshift
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python client for the OpenShift API"
 url="https://github.com/openshift/openshift-restclient-python"
 license=('APACHE')
