@@ -1,4 +1,5 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Térence Clastres <t dot clastres at gmail dot com>
+# PKGBUILD based on the one from https://aur.archlinux.org/packages/lite
 
 pkgname=lite-xl
 _pkgname=lite
@@ -50,4 +51,6 @@ package() {
   install -Dm 644 "$_pkgname.svg" \
 	"$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
   install -Dm 644 "$pkgname-$pkgver-$pkgname/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm 644 "$pkgname-$pkgver-$pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
+
