@@ -26,7 +26,6 @@ depends=(
   'python-pandas'
   'python-msgpack')
 conflicts=('redis-desktop-manager-bin' 'redis-desktop-manager')
-
 source=('rdm.desktop'
         "https://github.com/pidario/rdm-build/releases/download/${pkgver}/rdm"
         'https://raw.githubusercontent.com/uglide/RedisDesktopManager/2020/src/resources/images/rdm.png')
