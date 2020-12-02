@@ -1,8 +1,8 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='tablet-mode'
-pkgver=2.1.0
-pkgrel=3
+pkgver=2.1.1
+pkgrel=2
 pkgdesc='Tools to toggle a convertible laptop between laptop and tablet mode'
 arch=('any')
 url="https://github.com/coNQP/${pkgname}"
