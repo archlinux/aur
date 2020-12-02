@@ -1,11 +1,12 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname=cleanpy
+pkgname='cleanpy'
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool to remove caches and temporary files related to Python'
 arch=('any')
 url='https://github.com/thombashi/cleanpy'
+_url_pypi='https://pypi.org/project/cleanpy'
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
@@ -20,8 +21,8 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.rst'
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" 'LICENSE'
+  install -Dvm644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:

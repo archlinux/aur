@@ -1,7 +1,7 @@
 pkgbase = cleanpy
 	pkgdesc = CLI tool to remove caches and temporary files related to Python
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thombashi/cleanpy
 	arch = any
 	license = MIT
