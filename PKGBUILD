@@ -64,8 +64,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.9.11
-pkgrel=2
+pkgver=5.9.12
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -85,13 +85,12 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch
   0003-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch
-  0004-efivarfs-revert-fix-memory-leak-in-efivarfs_create.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('fbcf8b93e4a37e0f45c2de4275ecdfdb80ade1a6cf7e2b62cb331cce2d8fc247eedc14c5c37583b6e10cce58515ec3c9e541f21d067ee8d19567f9edcf065b62'
+b2sums=('9e7a86c22993f4bf1a2eda9edd8aacf768ddfb67d109eba78f0719a27d0243767b197a205142524b158c176fe5e1a08de091f4c8f35612267737f2a5ba2dbdc9'
         'SKIP'
         '5b3de497c291d115c19e1856d08ae16f8ceb27061374deb763a4391b98c4aa7bd7e7afb0461c29d9245fba84b2827420104edd4902978dee2bda2c5738212b85'
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
@@ -99,8 +98,7 @@ b2sums=('fbcf8b93e4a37e0f45c2de4275ecdfdb80ade1a6cf7e2b62cb331cce2d8fc247eedc14c
         'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95'
         'ed1979dfdcc03ce0d052c407dff85f94325b713a0f2a7e6b39d79bf6e8e5463956b371d0ebb7056f07a1bc21f2f806a4a2a7de2cc8f61c59b2d733ca29b34e48'
         'bd67ff3a8a1554e642a55ed99b9317a3c7538da94630ed09bab0e0af3f556c538e3e7e7a53b1961f107034645ae1c0dac5e705406b83073fc81f59c0b937d5f4'
-        '5e725df39b824199eb25031730d32a982b5d79076584e131b2930f719bc84cbdd93e5cdd487e975111b568d39422f0bf6aa200d147f2281ff14e8e0d908a29dd'
-        '3a8b254e0ecc8e2e550adc38b923829d65c2ca0d8536f8f74e59be36ce13c29b93960354e033d4b666f735fe82c818682da96005db064f3ecc82174064628242')
+        '5e725df39b824199eb25031730d32a982b5d79076584e131b2930f719bc84cbdd93e5cdd487e975111b568d39422f0bf6aa200d147f2281ff14e8e0d908a29dd')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

@@ -1,6 +1,6 @@
 pkgbase = linux-ck
-	pkgver = 5.9.11
-	pkgrel = 2
+	pkgver = 5.9.12
+	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
@@ -8,8 +8,8 @@ pkgbase = linux-ck
 	makedepends = kmod
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.11.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.11.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.12.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.12.tar.sign
 	source = config
 	source = enable_additional_cpu_optimizations-20201113.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20201113.tar.gz
 	source = http://ck.kolivas.org/patches/5.0/5.9/5.9-ck1/patch-5.9-ck1.xz
@@ -17,10 +17,9 @@ pkgbase = linux-ck
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = 0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch
 	source = 0003-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch
-	source = 0004-efivarfs-revert-fix-memory-leak-in-efivarfs_create.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	b2sums = fbcf8b93e4a37e0f45c2de4275ecdfdb80ade1a6cf7e2b62cb331cce2d8fc247eedc14c5c37583b6e10cce58515ec3c9e541f21d067ee8d19567f9edcf065b62
+	b2sums = 9e7a86c22993f4bf1a2eda9edd8aacf768ddfb67d109eba78f0719a27d0243767b197a205142524b158c176fe5e1a08de091f4c8f35612267737f2a5ba2dbdc9
 	b2sums = SKIP
 	b2sums = 5b3de497c291d115c19e1856d08ae16f8ceb27061374deb763a4391b98c4aa7bd7e7afb0461c29d9245fba84b2827420104edd4902978dee2bda2c5738212b85
 	b2sums = 7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127
@@ -29,7 +28,6 @@ pkgbase = linux-ck
 	b2sums = ed1979dfdcc03ce0d052c407dff85f94325b713a0f2a7e6b39d79bf6e8e5463956b371d0ebb7056f07a1bc21f2f806a4a2a7de2cc8f61c59b2d733ca29b34e48
 	b2sums = bd67ff3a8a1554e642a55ed99b9317a3c7538da94630ed09bab0e0af3f556c538e3e7e7a53b1961f107034645ae1c0dac5e705406b83073fc81f59c0b937d5f4
 	b2sums = 5e725df39b824199eb25031730d32a982b5d79076584e131b2930f719bc84cbdd93e5cdd487e975111b568d39422f0bf6aa200d147f2281ff14e8e0d908a29dd
-	b2sums = 3a8b254e0ecc8e2e550adc38b923829d65c2ca0d8536f8f74e59be36ce13c29b93960354e033d4b666f735fe82c818682da96005db064f3ecc82174064628242
 
 pkgname = linux-ck
 	pkgdesc = The Linux-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler
@@ -38,11 +36,11 @@ pkgname = linux-ck
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-ck=5.9.11
+	provides = linux-ck=5.9.12
 
 pkgname = linux-ck-headers
 	pkgdesc = Headers and scripts for building modules for Linux-ck kernel
 	depends = linux-ck
-	provides = linux-ck-headers=5.9.11
-	provides = linux-headers=5.9.11
+	provides = linux-ck-headers=5.9.12
+	provides = linux-headers=5.9.12
 
