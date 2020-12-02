@@ -9,8 +9,8 @@ pkgname=wfuzz-git
 _pkgname="${pkgname%-git}"
 
 pkgver() { git -C "$_pkgname" describe --long --tags | sed 's/v[^0-9]*//;s/-/.r/;s/-g/./'; }
-pkgver=3.1.0.r0.02a809d
-pkgrel=1
+pkgver=3.1.0.r2.1b695ee
+pkgrel=2
 
 pkgdesc='Web application fuzzer - python3 build of the dev branch'
 url="https://github.com/xmendez/$_pkgname"
