@@ -14,8 +14,6 @@ makedepends=(
   'npm'
   'jq'
 )
-conflicts=('firebase-tools')
-replaces=('firebase-tools')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
 sha256sums=('c3c7fd30ee57ab1997a55ac63d4d867469d7f663dad778cd469fb7175c422f42')
