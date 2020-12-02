@@ -6,7 +6,7 @@ url='https://wiki.ros.org/roslz4'
 pkgname='ros-melodic-roslz4'
 pkgver='1.14.10'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -51,8 +51,8 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.8 \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.8.so \
+		-DPYTHON_INCLUDE_DIR=/usr/include/python3.9 \
+		-DPYTHON_LIBRARY=/usr/lib/libpython3.9.so \
 		-DPYTHON_BASENAME=.cpython-38 \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
