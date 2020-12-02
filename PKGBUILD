@@ -4,7 +4,7 @@
 _pkgname='addict'
 pkgname="python-${_pkgname}"
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python Dict whos keys can be set both using attribute and item syntax'
 arch=('any')
 url='https://github.com/mewwts/addict'
