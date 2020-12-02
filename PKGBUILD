@@ -1,19 +1,23 @@
 # Maintainer: Ramadan Ali <rot13ezqa@ezqa.ny>
 pkgname=abcccid
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="AB Circle CCID driver for ABC USB CCID smart card readers"
 arch=('x86_64')
 url="https://abcircle.com/en/product/2/CIR115B/sim-sized-contact-smart-card-reader/"
 license=('LGPL2.1+')
 depends=("pcsclite>=1.8.3" "libusb>=1.0.9")
-makedepends=("pcsclite>=1.8.3" "libusb>=1.0.9" "perl")
+makedepends=("perl") # glibc is dependency of base package, flex is in base-devel group 
 provides=("pcsc-ifd-handler")
-source=("Circle_Linux_Installer_v${pkgver}.zip::https://abcircle.com/action/action.download.php?id=10&token=994058073e6886bb48563ca4f6939187ed2f23fb17506927a2c99e3c0c6f6ae8")
-md5sums=("SKIP")
+conflicts=($pkgname-bin)
+source=("Circle_Linux_Mac_Driver_v${pkgver}.zip::https://abcircle.com/action/action.download.php?id=10&token=994058073e6886bb48563ca4f6939187ed2f23fb17506927a2c99e3c0c6f6ae8")
+sha512sums=("d71838213f731b1845ae5fdb4a150bae1d64f591bb143a6212664c9a4b88823a43ab5c4ae1b821ff3a819c995bf32daa12390af8c9a7a5a4eedbf8faecbedbf9")
 
 prepare() {
+	# Extracting source tarbal
 	find $srcdir -type f -name $pkgname-$pkgver* -exec bsdtar -xf {} \;
+	
+	# Writing udev rules
 	cat << EOF >  udev.rules
 # udev rules for CCID devices
 
@@ -43,4 +47,3 @@ package() {
 	install -Dv LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
 	
 }
-
