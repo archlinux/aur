@@ -1,6 +1,6 @@
 pkgbase = python-restrictedpython
 	pkgdesc = A restricted execution environment for Python to run untrusted code
-	pkgver = 5.0
+	pkgver = 5.1
 	pkgrel = 1
 	url = https://github.com/zopefoundation/RestrictedPython
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-restrictedpython
 	depends = python
 	provides = python-restrictedpython
 	conflicts = python-restrictedpython
-	source = https://github.com/zopefoundation/RestrictedPython/archive/5.0.tar.gz
-	sha512sums = 21d64123be0b33cba1689a70ce94bb506c8f52f3f2d1241b8c4732de1bdf92c37b53acc5d86f8f72324e370bcb950120e278be6571c2d640bdb324909c7d5273
+	source = https://github.com/zopefoundation/RestrictedPython/archive/5.1.tar.gz
+	sha512sums = bd3bdfbd581368c0204543e4f7d0ec2f92e243ba94dee932f7c43e99beb7a857c689b054985fe66d2da36fb29b1fbc7c9234ab13aca382fa57da34d6a5065ee6
 
 pkgname = python-restrictedpython
 
