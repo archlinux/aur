@@ -13,7 +13,7 @@ pkgbase = roundcubemail-plugin-carddav
 	replaces = roundcube-rcmcarddav
 	backup = etc/webapps/roundcubemail/plugins/carddav/config.inc.php
 	source = https://github.com/blind-coder/rcmcarddav/releases/download/v4.0.4/carddav-v4.0.4.tgz
-	md5sums = 40dad8058d734d5a4a667b0592097075
+	sha256sums = 2eeed69e5ecb1584460a5f8b527a803959dcf885ae34a1b1f4af3c0c29893d3d
 
 pkgname = roundcubemail-plugin-carddav
 

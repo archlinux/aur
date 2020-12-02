@@ -12,7 +12,7 @@ replaces=("roundcube-rcmcarddav")
 depends=("roundcubemail")
 makedepends=("composer")
 source=("$url/releases/download/v$pkgver/carddav-v$pkgver.tgz")
-md5sums=("40dad8058d734d5a4a667b0592097075")
+sha256sums=("2eeed69e5ecb1584460a5f8b527a803959dcf885ae34a1b1f4af3c0c29893d3d")
 backup=("etc/webapps/roundcubemail/plugins/carddav/config.inc.php")
 
 build(){
