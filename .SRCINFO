@@ -1,7 +1,7 @@
 pkgbase = btusb-csr-0x8891
 	pkgdesc = patch btusb so it works on CSR clone devices with id 0x8891
 	pkgver = 0.8
-	pkgrel = 4
+	pkgrel = 5
 	url = https://bugzilla.kernel.org/show_bug.cgi?id=60824
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = btusb-csr-0x8891
 	depends = dkms
 	source = Makefile
 	source = btusb.patch
-	source = btusb.c::https://raw.githubusercontent.com/zen-kernel/zen-kernel/v5.7.6-zen1/drivers/bluetooth/btusb.c
-	source = btintel.h::https://raw.githubusercontent.com/zen-kernel/zen-kernel/v5.7.6-zen1/drivers/bluetooth/btintel.h
-	source = btbcm.h::https://raw.githubusercontent.com/zen-kernel/zen-kernel/v5.7.6-zen1/drivers/bluetooth/btbcm.h
-	source = btrtl.h::https://raw.githubusercontent.com/zen-kernel/zen-kernel/v5.7.6-zen1/drivers/bluetooth/btrtl.h
+	source = btusb.c::https://raw.githubusercontent.com/zen-kernel/zen-kernel/v5.9.11-zen2/drivers/bluetooth/btusb.c
+	source = btintel.h::https://raw.githubusercontent.com/zen-kernel/zen-kernel/v5.9.11-zen2/drivers/bluetooth/btintel.h
+	source = btbcm.h::https://raw.githubusercontent.com/zen-kernel/zen-kernel/v5.9.11-zen2/drivers/bluetooth/btbcm.h
+	source = btrtl.h::https://raw.githubusercontent.com/zen-kernel/zen-kernel/v5.9.11-zen2/drivers/bluetooth/btrtl.h
 	source = dkms.conf
 	sha512sums = 263480d12c234c4e42bf5c8e518af8b6000a8d2307d4cf0a740d22887c1574a36a9105272d0b739a04257fceb66f794d230d901f70ffd8076fdd294bc503216d
 	sha512sums = dd33fb45c6ba132925ee0f1e1e1743708e578cae0857c1704e8a0caa50c27438d78d9e1c80f2a8acc0f47fd902dde62dc8670ed2dafbe7d044a26a1c50edee1e
