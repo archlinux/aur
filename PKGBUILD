@@ -2,51 +2,58 @@
 # Maintainer: xj9 <aur@xj-ix.luxe>
 
 pkgname=xjdwm
-pkgver=6.2+tracker.2
+pkgver=6.2+tracker.3
 pkgrel=4
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
 license=('MIT')
 options=(zipman)
-depends=('libx11'
+depends=(
+	'busybox'
 	'cantata'
-	'yggdrasil'
-	'fossil'
-	'plan9port'
-	'xorg-xsetroot'
-	'xorg-xrandr'
-	'profanity'
-	'evolution'
-	'evolution-rss'
-	'evolution-spamassassin'
-	'evolution-bogofilter'
-	'highlight'
-	'feh'
 	'chicken'
 	'clang'
+	'clementine'
 	'compton'
-	'network-manager-applet'
-	'pasystray'
-	'busybox'
-	'redshift'
+	'dmenu'
+	'evolution'
+	'evolution-bogofilter'
+	'evolution-rss'
+	'evolution-spamassassin'
+	'feh'
+	'fossil'
+	'freetype2'
+	'highlight'
 	'keepassxc'
-	'tmux'
-	'vim'
+	'libx11'
+	'libxft'
+	'transmission-remote-gtk'
+	'libxinerama'
+	'lxappearance-gtk3'
 	'mpv'
+	'network-manager-applet'
+	'otf-font-awesome'
+	'otf-hermit'
+	'pasystray'
+	'plan9port'
+	'profanity'
+	'redshift'
 	'syncthing'
 	'syncthing-gtk'
-	'libxinerama'
-	'libxft'
-	'freetype2'
-	'xfce4-terminal'
-	'dmenu'
-	'otf-font-awesome'
-	'otf-hermit')
+	'tk'
+	'tmux'
+	'vim'
+	'alacritty'
+	'xorg-xrandr'
+	'xorg-xsetroot'
+	'yggdrasil'
+	'youtube-dl'
+)
 install=dwm.install
 source=($pkgname-$pkgver.tar.gz::http://git.hackers.town/xj9/xjdwm/archive/$pkgver.tar.gz
 	dwm.desktop)
-sha256sums=('f71415563eb16e447d31893e5173dcbad2c851472d660f1a2ce54be6bee59d03'
+sha256sums=('c96d68216bbfdd35705eaf4b4130c78644b5df2d80cbbf65dab5ab2304637ac1'
             'bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81')
 
 prepare() {

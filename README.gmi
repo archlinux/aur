@@ -1,0 +1,9 @@
+# xjdwm AUR package
+
+> things i can't remember
+
+## regen SRCINFO
+
+```
+makepkg --printsrcinfo > .SRCINFO
+```
