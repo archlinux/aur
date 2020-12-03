@@ -27,8 +27,8 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  _pythonversion=$(python --version | awk -F ' ' '{print substr($2, 1, length($2)-2)}')
-  mv "${pkgdir}/tartube/icons" "${pkgdir}/usr/lib/python${_pythonversion}/site-packages/tartube/"
+  _sitepkgs_dir="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+  mv "${pkgdir}/tartube/icons" "${pkgdir}${_sitepkgs_dir}/tartube/"
   rm -rvf "${pkgdir}/tartube/"
   install -d "${pkgdir}/usr/share/applications" \
    "${pkgdir}/usr/share/pixmaps"
