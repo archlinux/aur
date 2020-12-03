@@ -1,6 +1,6 @@
 pkgbase = python-mkdocs-material-extensions-git
 	pkgdesc = Markdown extension resources for MkDocs Material
-	pkgver = 1.0.r5.g8e530fe
+	pkgver = 1.0b1.r0.g0f120b8
 	pkgrel = 1
 	url = https://github.com/facelessuser/mkdocs-material-extensions
 	arch = any
@@ -8,10 +8,11 @@ pkgbase = python-mkdocs-material-extensions-git
 	makedepends = python-setuptools
 	makedepends = python-pip
 	makedepends = python-wheel
+	depends = mkdocs-material>=5.0.0
 	provides = python-materialx
 	provides = python-mkdocs-material-extensions
-	source = git+https://github.com/facelessuser/mkdocs-material-extensions
-	md5sums = SKIP
+	source = python-mkdocs-material-extensions-git-0f120b8d472ca61fd9dd758f1428c603785dfe33.tar.gz::https://github.com/facelessuser/mkdocs-material-extensions/archive/0f120b8d472ca61fd9dd758f1428c603785dfe33.tar.gz
+	sha256sums = fc94e8369b295c0fabf8b9c6cfbca8fa1669678e26f91e836497786025e3e356
 
 pkgname = python-mkdocs-material-extensions-git
 
