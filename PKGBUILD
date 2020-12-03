@@ -3,7 +3,7 @@
 _name=anyconfig-msgpack-backend
 pkgname=python-$_name
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='a backend module for python-anyconfig to support to load and dump MessagePack data files.'
 url='https://github.com/ssato/python-anyconfig-msgpack-backend'
 arch=('any')
