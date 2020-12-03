@@ -1,7 +1,8 @@
 # Maintainer: Emilio Reggi <nag@mailbox.org>
 pkgname=mastodonpp-git
 _pkgname=mastodonpp
-pkgver=r335.cf43022
+_source=https://schlomp.space/tastytea/mastodonpp.git
+pkgver=r337.cca3a4a
 pkgrel=1
 pkgdesc="mastodonpp is a C++ wrapper for the Mastodon and Pleroma APIs. It replaces mastodon-cpp."
 arch=('x86_64')
@@ -11,8 +12,9 @@ groups=()
 depends=('libcurl.so')
 makedepends=('git' 'cmake')
 optdepends=('doxygen: documentation' 'catch2: tests')
-provides=('mastodonpp')
-source=("${_pkgname}"::"git+https://schlomp.space/tastytea/mastodonpp.git")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}"::"git+${_source}")
 md5sums=('SKIP')
 
 pkgver() {
