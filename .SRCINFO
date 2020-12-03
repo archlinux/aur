@@ -1,6 +1,6 @@
 pkgbase = gleam
 	pkgdesc = A statically typed language for the Erlang VM
-	pkgver = 0.12.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = http://github.com/lpil/gleam/
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = gleam
 	options = !docs
 	options = !libtool
 	options = !staticlibs
-	source = https://github.com/gleam-lang/gleam/archive/v0.12.0.tar.gz
-	sha256sums = 927f903801de55843baacaaf8977a12383cc912fe8374859f82e766c44d7a69a
-	sha512sums = 63452b28bdc9129327749747be8a6fb106acc3f353957705da721f4362194a093445c9448ad88530109df8621a69b03b9f3d72d7e4d53af2bc161e52751288bf
+	source = https://github.com/gleam-lang/gleam/archive/v0.12.1.tar.gz
+	sha256sums = 93797ef144f863120d305691913a21a3c42881c6cbc5a07bb2fe8336456e9aa8
+	sha512sums = 4ebc0a04e50c83cb703755d97a0583c7c578772f5cac0e6d1a938a8e6f56874a2f6193f306dea1f46335177911e06ece83c89180672c21d1107ea40fbbca8e25
 
 pkgname = gleam
 
