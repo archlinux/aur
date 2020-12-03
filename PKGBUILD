@@ -8,7 +8,6 @@ pkgdesc="mastorss reads RSS feeds and posts the items via the Mastodon API. Does
 arch=('x86_64')
 url="https://schlomp.space/tastytea/mastorss.git"
 license=('GPL')
-groups=()
 depends=('mastodonpp' 'jsoncpp' 'boost-libs')
 makedepends=('git' 'cmake')
 provides=("${_pkgname}")
