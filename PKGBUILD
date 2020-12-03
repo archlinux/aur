@@ -3,9 +3,9 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=virtualbox-headless
-pkgver=6.1.14
-_tarver=${pkgver}a
-pkgrel=2
+pkgver=6.1.16
+_tarver=${pkgver}
+pkgrel=1
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use. Headless build (no GUI, no Java).'
 arch=('i686' 'x86_64')
 url='https://virtualbox.org'
@@ -38,11 +38,10 @@ source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${_tarv
         '013-Makefile.patch'
         '017-fix-narrowing-conversion.patch'
         '018-xclient.patch'
-        '020-gsoap.patch'
-        '021-kernel-5.9.patch'
+        '019-python3.9.patch'
         )
 sha256sums=(
-    '16f3cb83ab3c4dacf2a9d3cc638cbd18db23767828bba6b8ba1c1b57abeb6aef'
+    '49c1990da16d8a3d5bda8cdb961ec8195a901e67e4c79aea44c1521a5fc2f9f1'
     '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
     '9c5238183019f9ebc7d92a8582cad232f471eab9d3278786225abc1a1c7bf66e'
     '033c597e0f5285d2ddb0490868e5b6f945f45c7b1b1152a02a9e6fea438b2c95'
@@ -57,8 +56,7 @@ sha256sums=(
     'da7e58ed37dc23c6202aab3017864579a99e78417f3421ddcc98a198198fe2c9'
     '5aac692909a0a0ec56b08bdece9e42cf7463abdca9da2f990d441ff463be6a99'
     'cac5a573e9ed5aafb2f469c2e6fffb8cd4f389bbadba5a968c9f65be7a72fee3'
-    'c6892a3561a72a9b308cb33fa6647cc53e54a3bd40cb41780cad7f8e9d7df9f6'
-    '05bfc8306bbd856087c393dcb47d16de4213a4cc69124857f705f3784d88581a'
+    '039c7b520ae589bc52dc6c0e658f7ec28ca8defb12ccbc32ad9834361d23162c'
 )
 
 prepare() {
