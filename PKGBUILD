@@ -1,12 +1,14 @@
-# Maintainer: Ivy Foster <code@escondida.tk>
+# Maintainer: Jason Ryan <jasonwryan@gmail.com>
+# Contributor: Ivy Foster <code@escondida.tk>
 
 pkgname=cgo-git
-pkgver=0.r47.gca69bbb
-pkgrel=1
+pkgver=0.r68.g0162380
+pkgrel=2
 pkgdesc='A terminal gopher client'
 arch=(i686 x86_64)
 url='https://github.com/kieselsteini/cgo'
 license=(ISC)
+depends=(glibc)
 makedepends=(git)
 provides=(cgo)
 conflicts=(cgo)
