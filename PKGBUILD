@@ -1,13 +1,13 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=roadrunner
-pkgver=1.8.4
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
 url="https://roadrunner.dev/"
 license=(MIT)
-depends=("php>=7.1")
+depends=("php>=7.3")
 makedepends=("go>=1.13")
 source=(
 	"https://github.com/spiral/$pkgname/archive/v$pkgver.tar.gz"
@@ -15,7 +15,7 @@ source=(
 	".rr.yaml.sample-minimal"
 )
 sha256sums=(
-	"a9070052a98422526b97ccec9fc51a714a341d6c0330a9fb5d11910a99466202"
+	"ee306cce2132c8f0b0dbd3a085084194f7c8659ae50a87ea06c160d4f2c716c4"
 	SKIP
 	SKIP
 )
