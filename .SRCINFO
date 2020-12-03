@@ -1,7 +1,7 @@
 pkgbase = python-pyautogui
 	pkgdesc = A cross-platform GUI automation Python module for human beings
 	pkgver = 0.9.52
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/asweigart/pyautogui
 	arch = any
 	license = BSD

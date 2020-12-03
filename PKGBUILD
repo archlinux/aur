@@ -7,15 +7,15 @@
 pkgname=python-pyautogui
 _name=PyAutoGUI
 pkgver=0.9.52
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform GUI automation Python module for human beings"
 arch=('any')
 url="https://github.com/asweigart/pyautogui"
 license=('BSD')
 depends=('python-xlib' 'python-pymsgbox' 'python-pytweening' 'python-pyscreeze' 'python-mouseinfo')
 optdepends=('tk: windowing tool kit' 'scrot: screenshot tool')
-          # 'python-pygetwindow' - Not compatible with Linux yet
-          # 'python-pillow' - is provided by mouseinfo
+# 'python-pygetwindow' - Not compatible with Linux yet
+# 'python-pillow' - is provided by mouseinfo
 makedepends=('python' 'python-setuptools')
 provides=('python-pyautogui')
 conflicts=('python-pyautogui-git')
