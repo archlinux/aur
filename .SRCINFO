@@ -1,0 +1,30 @@
+pkgbase = ogre-next-git
+	pkgdesc = Scene-oriented, flexible 3D engine written in C++
+	pkgver = r12498.507f6bbf0
+	pkgrel = 1
+	url = http://ogre3d.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = mesa
+	makedepends = git
+	depends = freeimage
+	depends = freetype2
+	depends = glu
+	depends = libxaw
+	depends = libxrandr
+	depends = rapidjson
+	depends = tinyxml
+	depends = zziplib
+	provides = ogre
+	conflicts = ogre
+	source = git+https://github.com/OGRECave/ogre-next.git
+	sha512sums = SKIP
+
+pkgname = ogre-next-git
+	optdepends = cppunit: unit testing
+	optdepends = intel-tbb: better threading support
+	optdepends = poco: portability
+	optdepends = boost: for developing using ogre
+
