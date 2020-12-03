@@ -3,7 +3,7 @@
 pkgname="python-marshmallow-union"
 _pkgname="${pkgname#python-}"
 pkgver=0.1.15.post1
-pkgrel=1
+pkgrel=2
 pkgdesc='Union fields for marshmallow'
 arch=('any')
 url='https://github.com/adamboche/python-marshmallow-union'

@@ -1,7 +1,7 @@
 pkgbase = python-marshmallow-union
 	pkgdesc = Union fields for marshmallow
 	pkgver = 0.1.15.post1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adamboche/python-marshmallow-union
 	arch = any
 	license = MIT
