@@ -1,7 +1,7 @@
 pkgbase = python-flask-reverse-proxy-fix
 	pkgdesc = Python Flask middleware for applications running under a reverse proxy.
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/antarctica/flask-reverse-proxy-fix
 	arch = any
 	license = BSD
