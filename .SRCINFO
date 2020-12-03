@@ -1,0 +1,17 @@
+pkgbase = python-cocotbext-axi-git
+	pkgdesc = AXI, AXI lite, and AXI stream modules for cocotb
+	pkgver = 0.1.0.r0.gece1bd4
+	pkgrel = 1
+	url = https://github.com/alexforencich/cocotbext-axi
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-cocotb
+	provides = python-cocotbext-axi
+	conflicts = python-cocotbext-axi
+	source = cocotbext-axi::git+https://github.com/alexforencich/cocotbext-axi.git
+	md5sums = SKIP
+
+pkgname = python-cocotbext-axi-git
+
