@@ -4,7 +4,7 @@
 pkgname=python-lda
 _name=lda
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Topic modeling with latent Dirichlet allocation using Gibbs sampling"
 arch=("i686" "x86_64")
 url="https://github.com/lda-project/lda"
