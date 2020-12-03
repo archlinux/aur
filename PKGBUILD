@@ -1,6 +1,6 @@
 # Maintainer: Petr Mrázek <petr@mojang.com>
 pkgname=minecraft-launcher
-pkgver=2.1.17785
+pkgver=2.2.741
 pkgrel=1
 pkgdesc="Official Minecraft Launcher"
 arch=('x86_64')
@@ -16,7 +16,7 @@ minecraft-launcher.desktop
 https://launcher.mojang.com/download/minecraft-launcher.svg
 )
 sha256sums=(
-'6c4a9022f69aef919ae12e93eb9bd41b18202f435954b14d9b9661689cafe0e4'
+'7ccf4fdd7271b8c81058151b344f51c4f72f683bf3d2fafa8a3086649747a72e'
 '677e2442a1ae83cc58d8d403666e508129e97dbed37fdfafdceac6101dc0dee7'
 '35c2bcaeb09fa4b8864e9422fd66bf60847706f8b4400ec4a66ba6436b101f71'
 )
