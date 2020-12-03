@@ -1,7 +1,7 @@
 #Maintainer: John Gleezowood <psyrccio@gmail.com>
 #Contributor: John Gleezowood <psyrccio@gmail.com>
 pkgname=jwildfire
-pkgver=5.60
+pkgver=6.05
 pkgrel=1
 pkgdesc="Fractal flame image and animation processor written in Java"
 arch=('any')
@@ -12,12 +12,12 @@ depends=('java-environment' 'bash')
 provides=('jwildfire')
 conflicts=('jwildfire')
 
-source=("http://www.andreas-maschke.de/java/j-wildfire-5.60.zip" "https://raw.githubusercontent.com/thargor6/JWildfire/master/Delphi/jwildfire_icon.png")
-sha256sums=('23055c5b65841a1aec7e07163307f4dd64ffd0c2906e555556f52644d13eb05d' 'c4b30c591d3f00ca163f8b48da7980e0a6f327552aa7e03828d2c5b3f01c66e8')
+source=("https://jwildfire.overwhale.com/downloads/j-wildfire-6.05.zip" "https://raw.githubusercontent.com/thargor6/JWildfire/master/Delphi/jwildfire_icon.png")
+sha256sums=('e6d373d2687bdaa762a18c350ec1d4c328979ef576ea775ff0087bc437788701' 'c4b30c591d3f00ca163f8b48da7980e0a6f327552aa7e03828d2c5b3f01c66e8')
 
 build() {
   cd "$srcdir"
-  rm -rf ./j-wildfire-5.60.zip
+  rm -rf ./j-wildfire-6.05.zip
   rm -rf ./*.exe
   rm -rf ./start_mac.command
   echo "[Desktop Entry]" > ./jwildfire.desktop
