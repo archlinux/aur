@@ -1,0 +1,12 @@
+pkgbase = nxp-blhost-sdphost
+	pkgdesc = NXP blhost and sdphost boot loading tools
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.nxp.com/design/software/development-software/mcuxpresso-software-and-tools-/mcuboot-mcu-bootloader-for-nxp-microcontrollers:MCUBOOT
+	arch = armv7h
+	arch = x86_64
+	source = git+https://github.com/apexrtos/nxp_blhost_sdphost.git
+	md5sums = SKIP
+
+pkgname = nxp-blhost-sdphost
+
