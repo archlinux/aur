@@ -7,7 +7,7 @@ pkgdesc="Qt based RGB control application for MasterKeys devices"
 arch=(i686 x86_64)
 url="https://github.com/chmod222/cmmk_ctrl"
 license=('GPL')
-depends=(libcmmk qt5-base qt5-svg)
+depends=(libcmmk-git qt5-base qt5-svg)
 source=("git+https://github.com/chmod222/cmmk_ctrl.git")
 sha256sums=('SKIP')
 
