@@ -1,6 +1,6 @@
 pkgbase = ripgrep-all
 	pkgdesc = rga: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://github.com/phiresky/ripgrep-all
 	arch = i686
@@ -11,18 +11,15 @@ pkgbase = ripgrep-all
 	makedepends = rust
 	makedepends = cargo
 	depends = ripgrep
-	depends = ffmpeg
-	depends = pandoc
-	depends = poppler
-	depends = tesseract
-	depends = imagemagick
+	optdepends = ffmpeg: for the ffmpeg adapter
+	optdepends = graphicsmagick: for the pdfpages adapter
+	optdepends = pandoc: for the pandoc adapter
+	optdepends = poppler: for the poppler adapter
+	optdepends = tesseract: for the tesseract adapter
 	conflicts = ripgrep-all-git
 	conflicts = ripgrep-all-bin
-	conflicts = rga
-	conflicts = rga-git
-	conflicts = rga-bin
-	source = https://github.com/phiresky/ripgrep-all/archive/v0.9.5.tar.gz
-	sha512sums = b881503d412b882f03036e748e50fa80ce463cb2d0f670ee76a21853dc3ccf307d680ab0fb8d0a4302f3b6c40ca64d62b2f6fca84fb6323ee1af50d4f6eeae47
+	source = ripgrep-all-0.9.6::https://github.com/phiresky/ripgrep-all/archive/v0.9.6.tar.gz
+	sha512sums = 45fc258e8ef44ddd7ce6b4c7dc5c60a439c8e5aafd253ea41621afcc50aaecd300d8792c4cbdc9247a5656d9c3db0a33053de96ca41f0831421ea8ce382ca7de
 
 pkgname = ripgrep-all
 
