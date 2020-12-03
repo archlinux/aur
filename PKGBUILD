@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxc-git
-pkgver=v0.7.4.r0.g89d63bc
+pkgver=v1.0.1.r0.gac2487f
 pkgrel=1
 pkgdesc="Generic C-implementation of data containers"
 arch=('any')
@@ -35,5 +35,5 @@ build() {
 
 package() {
 	cd "${pkgname}"
-	make DEST="${pkgdir}/" INSTALL_LIB_DIR="/lib" install
+	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
 }
