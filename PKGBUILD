@@ -2,7 +2,7 @@
 pkgname="filius"
 pkgver="1.10.4"
 _pkgver="${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Network simulation program"
 arch=('any')
 url="http://www.lernsoftware-filius.de"
@@ -20,7 +20,7 @@ package() {
   rm Filius.exe
   rm Filius.command
   # mv lib $pkgdir/usr/lib/filius
-  cp -r Changelog.txt  config  Einfuehrung_Filius.pdf  filius.jar  Filius.sh  GPLv2.txt  GPLv3.txt  hilfe  img  Introduction_Filius.pdf  lib  tmpl $pkgdir/usr/share/filius/
+  cp -r Changelog.md  config  Einfuehrung_Filius.pdf  filius.jar  Filius.sh  GPLv2.txt  GPLv3.txt  hilfe  img  Introduction_Filius.pdf  lib  tmpl $pkgdir/usr/share/filius/
   chmod +x $pkgdir/usr/share/filius/Filius.sh
   ln -s /usr/share/filius/Filius.sh $pkgdir/usr/bin/filius
 
