@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.9.11
+pkgver=5.9.12
 pkgrel=2
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -42,26 +42,26 @@ source=(
   "0000-sphinx-workaround.patch"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=730629bfe4efc95aaee0de463ea410e31153cef9"
-  "0002-Bluetooth_Fix_LL_PRivacy_BLE_device_fails_to_connect.patch::https://git.archlinux.org/linux.git/patch/?id=08f9b12aec2533a309a5f6d7ff47d01ee3179a35"
-  "0003-Bluetooth_Fix_attempting_to_set_RPA_timeout_when_uns.patch::https://git.archlinux.org/linux.git/patch/?id=4264c74c96e7907b60ee6ed82670317d19ed7ebe"
-  "0004-efivarfs_revert_fix_memory_leak_in_efivarfs_create.patch::https://git.archlinux.org/linux.git/patch/?id=a163474e9b86c2c25f20733385d8b1d6de492a7f"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=c3517e2c26868cad0fda418a8815b2e0b818bf92"
+  "0002-Bluetooth_Fix_LL_PRivacy_BLE_device_fails_to_connect.patch::https://git.archlinux.org/linux.git/patch/?id=48085266a9b724af6f35ad4eabd31ac8b8bfa064"
+  "0003-Bluetooth_Fix_attempting_to_set_RPA_timeout_when_uns.patch::https://git.archlinux.org/linux.git/patch/?id=3d936926666bb681f2a9ed6e04f685667e61e2b4"
+  "0004-HID_quirks_Add_Apple_Magic_Trackpad_2_to_hid_have_sp.patch::https://git.archlinux.org/linux.git/patch/?id=b8c149d9a7cf8ec50440d0dcd90ff754ba72b616"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('5eb20a65a410669928f94b3975872e493fa6d0fe441c6a78b7564affa2a5d260'
+sha256sums=('d97f56192e3474c9c8a44ca39957d51800a26497c9a13c9c5e8cc0f1f5b0d9bd'
             'SKIP'
             'cbae1e5d00a89f218892a1afa4b1c1a01f821a8d46b1a3ef7bc3d3e95892a10c'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
             '11d2343174e5486e8ea1a1e98f9f6f1a1625043f6547484f5a729a83f94336eb'
             '0d4db3ae8a47d7a5c5a7f37edfddef7ce8fcdc6b64926cef70e5e3dfd7c0eeed'
-            '315bac923ba3c3456c709df49153bac6a88968d3e592ba73272fa08f23c81ef3'
-            'd3515c918a959fa1882e3112d0a1782d46169b39eda73a6687f9b826f38b3388'
-            'e216346f7c7761a53b76dea0638898e52aac9e4527a64893c9dfa9936b3c5a0d'
-            '2fd5ce56d3272b05cdd3e4dc3ebc3deb8b0f1c7893d342f5ae295bf7213cced5')
+            'afde1408c10340f3c32a4d5f1b9afcf650880ea265af61d32a521ebb12fbc702'
+            '6e0452f9c6bde1c73cb566465fbf92a272bfa1a364148d6121229810a5550dd1'
+            '1b104e390b32b7ab3495bec1874d210f27a0e263a80a1fcd04babe2d3b0a6379'
+            '7356bec9ad33e3121d019868ac1b993b705db0c46c12b3b63255ba1b5053f0fc')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
