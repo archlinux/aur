@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Ozone
+Name=JLink Ozone
 Comment=Segger Ozone for Linux
 Exec=/usr/bin/Ozone
 Icon=Ozone.svg
