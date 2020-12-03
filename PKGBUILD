@@ -7,7 +7,7 @@
 pkgname=lib32-systemd-git
 _pkgname=lib32-systemd
 _pkgbasename=systemd
-pkgver=246.r927.gc7828862b3
+pkgver=247.r147.g6dd16814a5
 pkgrel=1
 pkgdesc='system and service manager (32-bit, git version)'
 arch=('x86_64')
@@ -53,9 +53,10 @@ build() {
  
   local _meson_options=(
     --libexecdir  /usr/lib32
-    --libdir    /usr/lib32
+    --libdir      /usr/lib32
 
     -Dversion-tag="${pkgver}-${pkgrel}-arch"
+    -Dmode=release
 
     -Daudit=false
     -Dblkid=false
