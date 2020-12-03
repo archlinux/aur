@@ -4,7 +4,7 @@
 pkgname=python-lolcat
 _pkgname=lolcat
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Rainbows and unicorns (without Ruby! jay!)"
 url="https://github.com/tehmaze/lolcat"
 arch=('any')
