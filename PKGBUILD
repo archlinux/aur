@@ -2,8 +2,8 @@
 pkgname=scholarref-git
 _pkgname=scholarref
 _source=git://src.adamsgaard.dk/scholarref
-pkgver=r29.98931f5
-pkgrel=3
+pkgver=r53.691d247
+pkgrel=1
 pkgdesc="POSIX shell tools to extract, fetch, and parse DOIs and BiBTeX bibliography references."
 arch=('any')
 url="https://src.adamsgaard.dk/scholarref/files.html"
