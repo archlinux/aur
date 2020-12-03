@@ -1,6 +1,6 @@
 pkgbase = 8188fu-kelebek333-dkms-git
 	pkgdesc = Kernel driver module for Realtek RTL8188FU and RTL8188FTV Wireless 802.11n USB 2.0 adapters (device id 0bda:f179)
-	pkgver = r83.7c988d6
+	pkgver = r84.b01ebdf
 	pkgrel = 1
 	url = https://github.com/kelebek333/rtl8188fu
 	install = 8188fu-dkms.install
@@ -14,7 +14,7 @@ pkgbase = 8188fu-kelebek333-dkms-git
 	source = dkms.conf
 	sha256sums = SKIP
 	sha256sums = 48bc8d2270ea8db1e5c0be51012419753b22a106028e153919b37d583c422cc6
-	sha256sums = e2b146ffbe6b81c6a8c963ee2826aecc3a092497fd9b33c6290751da5706d103
+	sha256sums = b948cdf264b397bc68eb25448c8da1370247da064bbf22230542b136bf0d70cb
 
 pkgname = 8188fu-kelebek333-dkms-git
 
