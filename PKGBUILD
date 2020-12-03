@@ -1,7 +1,7 @@
 # Maintainer: Kian Kasad <kian at kasad.com>
 
 pkgname=privacy-redirect-git
-pkgver=v1.1.41.r6.ed4ebad
+pkgver=v1.1.43.r4.3d45eb3
 pkgrel=1
 pkgdesc="Privacy Redirect browser extension (for chromium and Firefox)"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/SimonBrazell/privacy-redirect"
 license=('MIT')
 groups=()
 depends=()
-makedepends=('git' 'nodejs-web-ext' 'unzip')
+makedepends=('git' 'nodejs-web-ext')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/SimonBrazell/privacy-redirect.git')
@@ -39,7 +39,7 @@ package() {
 	shortpkgver="$(sed 's/^v//; s/\.r.*$//;' <<< "$pkgver")"
 
 	# unzip resulting zip file into install dir
-	unzip -d "$pkgdir/usr/share/${pkgname%-git}/" "web-ext-artifacts/privacy_redirect-$shortpkgver.zip"
+	bsdtar -C "$pkgdir/usr/share/${pkgname%-git}/" -xvf "web-ext-artifacts/privacy_redirect-$shortpkgver.zip"
 
 	# install MIT license
 	install -TDm0644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
