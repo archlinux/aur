@@ -16,6 +16,7 @@ install=
 source=("git+${url}.git")
 noextract=()
 md5sums=('SKIP')
+license=('GPL')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
