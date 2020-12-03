@@ -1,7 +1,7 @@
 pkgbase = python-mplleaflet
 	pkgdesc = Convert Matplotlib plots into Leaflet web maps
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/jwass/mplleaflet
 	arch = any
 	license = BSD

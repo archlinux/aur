@@ -3,7 +3,7 @@
 pkgname=python-mplleaflet
 _name=mplleaflet
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert Matplotlib plots into Leaflet web maps"
 url="http://github.com/jwass/mplleaflet"
 depends=('python' 'python-six' 'python-jinja')
