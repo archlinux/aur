@@ -1,7 +1,7 @@
 pkgbase = gollum
 	pkgdesc = A simple, Git-powered wiki.
 	pkgver = 5.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/gollum/gollum
 	arch = any
 	license = MIT
@@ -9,7 +9,8 @@ pkgbase = gollum
 	depends = ruby
 	depends = ruby-gollum-lib
 	depends = ruby-kramdown
-	depends = ruby-kramdown-parser-gfm<1.1
+	depends = ruby-kramdown-parser-gfm>=1.1
+	depends = ruby-kramdown-parser-gfm<1.2
 	depends = ruby-sinatra
 	depends = ruby-sinatra-contrib
 	depends = ruby-mustache<1

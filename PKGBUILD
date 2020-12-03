@@ -5,7 +5,7 @@
 _gemname=gollum
 pkgname=$_gemname
 pkgver=5.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, Git-powered wiki.'
 arch=(any)
 url='http://github.com/gollum/gollum'
@@ -13,7 +13,8 @@ license=(MIT)
 depends=(ruby
          ruby-gollum-lib
          'ruby-kramdown'
-         'ruby-kramdown-parser-gfm<1.1'
+         'ruby-kramdown-parser-gfm>=1.1'
+         'ruby-kramdown-parser-gfm<1.2'
          ruby-sinatra
          ruby-sinatra-contrib
          'ruby-mustache<1'
