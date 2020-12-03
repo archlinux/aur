@@ -6,8 +6,8 @@
 pkgbase='python-mosspy'
 pkgname=('python-mosspy')
 _module='mosspy'
-pkgver='1.0.7'
-pkgrel=3
+pkgver='1.0.8'
+pkgrel=4
 pkgdesc='A Python client for Moss: A System for Detecting Software Similarity'
 url='https://github.com/soachishti/moss.py'
 depends=(
@@ -18,14 +18,14 @@ depends=(
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-source=('https://files.pythonhosted.org/packages/8e/34/18aa21e6d7a6c2ba7c239826702e7b199c1eff4707f8368b4e7fa85af9b2/mosspy-1.0.7-py2.py3-none-any.whl')
-sha256sums=('a2595fd587c07c2f21fb7d9989273ca1923c208f735d9605004c4b1bb3707a07')
+source=('https://files.pythonhosted.org/packages/33/0b/e562cdb5b5bec2d8fff76d216723793cb6ff90677226b9d340367eee7cf6/mosspy-1.0.8-py2.py3-none-any.whl')
+sha256sums=('9387f8137efdea2e089ed7d511acc615caa45fd2e63c0bb59313cdc4bb4dde06')
 
 
 package() {
     cd "${srcdir}"
-    mkdir -p "$pkgdir/usr/lib/python3.7/site-packages/mosspy-1.0.7.dist-info"
-    mkdir -p "$pkgdir/usr/lib/python3.7/site-packages/mosspy"
-    install -Dm755 mosspy-1.0.7.dist-info/* "$pkgdir/usr/lib/python3.7/site-packages/mosspy-1.0.7.dist-info"
-    install -Dm755 mosspy/* "$pkgdir/usr/lib/python3.7/site-packages/mosspy"
+    mkdir -p "$pkgdir/usr/lib/python3.9/site-packages/mosspy-1.0.8.dist-info"
+    mkdir -p "$pkgdir/usr/lib/python3.9/site-packages/mosspy"
+    install -Dm755 mosspy-1.0.8.dist-info/* "$pkgdir/usr/lib/python3.9/site-packages/mosspy-1.0.8.dist-info"
+    install -Dm755 mosspy/* "$pkgdir/usr/lib/python3.9/site-packages/mosspy"
 }
