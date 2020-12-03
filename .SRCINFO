@@ -2,7 +2,7 @@ pkgbase = sway-borders-git
 	pkgdesc = Fork of Sway with some additional (mostly graphical) features
 	pkgver = r6547.a854f050
 	pkgrel = 1
-	url = https://github.com/TheAvidDev/sway-borders
+	url = https://github.com/fluix-dev/sway-borders
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -35,7 +35,7 @@ pkgbase = sway-borders-git
 	conflicts = sway
 	options = debug
 	backup = etc/sway/config
-	source = sway-borders::git+https://github.com/TheAvidDev/sway-borders.git
+	source = sway-borders::git+https://github.com/fluix-dev/sway-borders.git
 	sha512sums = SKIP
 
 pkgname = sway-borders-git

@@ -1,4 +1,4 @@
-# Maintainer: Steven Guikal <aur-void@theavid.dev>
+# Maintainer: Steven Guikal <aur-void@fluix.dev>
 
 pkgname=sway-borders-git
 _pkgname=sway-borders
@@ -39,8 +39,8 @@ optdepends=(
 )
 backup=(etc/sway/config)
 arch=("i686" "x86_64")
-url="https://github.com/TheAvidDev/sway-borders"
-source=("${pkgname%-*}::git+https://github.com/TheAvidDev/sway-borders.git")
+url="https://github.com/fluix-dev/sway-borders"
+source=("${pkgname%-*}::git+https://github.com/fluix-dev/sway-borders.git")
 sha512sums=("SKIP")
 provides=("sway")
 conflicts=("sway")
