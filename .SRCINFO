@@ -8,6 +8,7 @@ pkgbase = gog-ftl
 	arch = x86_64
 	license = custom
 	makedepends = lgogdownloader
+	makedepends = sed
 	depends = lib32-libglvnd
 	depends = lib32-alsa-lib
 	provides = ftl=1.6.12
