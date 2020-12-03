@@ -5,7 +5,7 @@ variables:
 
 build:
   script:
-    - pacman --sync --sysupgrade --refresh --needed --noconfirm --noprogressbar devtools
+    - pacman --sync --refresh --needed --noconfirm --noprogressbar devtools
     - mkdir $CHROOT
     - mkarchroot $CHROOT/root base-devel
     - arch-nspawn $CHROOT/root pacman -Syu
