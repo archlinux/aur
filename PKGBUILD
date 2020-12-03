@@ -3,7 +3,7 @@
 pkgname='python-contextily'
 _name=contextily
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Context geo-tiles in Python'
 arch=('any')
 url='https://github.com/geopandas/contextily'
