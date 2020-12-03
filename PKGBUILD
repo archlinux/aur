@@ -1,8 +1,9 @@
-# Maintainer: Matt Harrison <matt@harrison.us.com>
-# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Timo Sarawinski <timo@it-kraut.net>
 
-pkgbase=php73
-_pkgbase=${pkgbase%73}
+pkgbase=php80-zts
+pkgdesc='php 8.0 with zts'
+__pkgbase=php80
+_pkgbase=${pkgbase%80-zts}
 pkgname=("${pkgbase}"
          "${pkgbase}-cgi"
          "${pkgbase}-apache"
@@ -22,27 +23,28 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=7.3.24
+pkgver=8.0.0
 pkgrel=1
 arch=('x86_64')
 license=('PHP')
 url='https://www.php.net/'
 makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libsodium' 'libxslt' 'libzip' 'net-snmp'
-             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre2' 'libnsl')
+             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre2' 'libnsl'
+             'oniguruma' 'libwebp' 'libxpm' 'openjpeg2' 'libjpeg-turbo' 'freetype2' 'libiodbc' 'libxcrypt' 'aspell-de' 'aspell' 'clang' 'llvm')
 checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
-        'enchant-2.patch' 'freetype.patch')
-sha256sums=('78b0b417a147ab7572c874334d11654e3c61ec5b3f2170098e5db02fb0c89888'
+        'enchant-2.patch' )
+sha256sums=('b5278b3eef584f0c075d15666da4e952fa3859ee509d6b0cc2ed13df13f65ebb'
             'SKIP'
-            '62e5ceea3c90a3c6eab1166488f876e766efcfd7d4e973c44060a9e72d51a98a'
+            'b4ea038f2863801175d6c4e74c685913feecdd5be3d49aff7d9b3fa92d8c4159'
             'ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce'
-            '7e4736dc63746e8b58f0d76ccbcd14cf5f221864b61ba16e2fc736e1ac22f41a'
-            'c28997b08d3ea257a2435164e35d0340f42cd3306def6a94b6b8c0a2f5644def'
-            'cd3b12c1cd5860f77325ef5405b987eca9cd894cbc99bde6ea4bdbed78ff5d46'
-            '3992491eebaf5b31f6b00095a7276d11682f9a8aaff473bfb25afbdcfa6eba32'
-            '07c4648669dc05afc3c1ad5a4739768079c423b817eabf5296ca3d1ea5ffd163')
+            '591a266b62cd027483675b07254a61f54fe73d2118b4fbea7b168b632cb7243d'
+            '3d8c5d47300ddd9509dcc502209a4337f46ff1b424764498c18e1e34e8240dea'
+            '7a0b7b976d61d4f0e0c12572e781021e03a364eae89aa1e5d76846049d6dba2f'
+            '3992491eebaf5b31f6b00095a7276d11682f9a8aaff473bfb25afbdcfa6eba32')
 validpgpkeys=('CBAF69F173A0FEA4B537F470D66C9593118BCCB6'
+	      '1729F83938DA44E27BA0F4D3DBDB397470D12172'
               'F38252826ACD957EF380D39F2F7956BC5DA04B5D')
 
 prepare() {
@@ -51,8 +53,6 @@ prepare() {
 	patch -p0 -i ${srcdir}/apache.patch
 	patch -p0 -i ${srcdir}/php-fpm.patch
 	patch -p0 -i ${srcdir}/php.ini.patch
-	patch -p1 -i ${srcdir}/enchant-2.patch
-	patch -p1 -i ${srcdir}/freetype.patch
 	autoconf
 
 	rm tests/output/stream_isatty_*.phpt
@@ -66,18 +66,19 @@ build() {
 		--config-cache \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
-		--sysconfdir=/etc/${pkgbase} \
+		--sysconfdir=/etc/${__pkgbase} \
 		--localstatedir=/var \
-		--libdir=/usr/lib/${pkgbase} \
-		--datarootdir=/usr/share/${pkgbase} \
-		--datadir=/usr/share/${pkgbase} \
-		--program-suffix=${pkgbase#php} \
+		--libdir=/usr/lib/${__pkgbase} \
+		--datarootdir=/usr/share/${__pkgbase} \
+		--datadir=/usr/share/${__pkgbase} \
+		--program-suffix=${__pkgbase#php} \
 		--with-layout=GNU \
-		--with-config-file-path=/etc/${pkgbase} \
-		--with-config-file-scan-dir=/etc/${pkgbase}/conf.d \
+		--with-config-file-path=/etc/${__pkgbase} \
+		--with-config-file-scan-dir=/etc/${__pkgbase}/conf.d \
 		--disable-rpath \
 		--mandir=/usr/share/man \
 		--without-pear \
+                --enable-zts \
 		"
 
 	local _phpextensions="\
@@ -86,57 +87,56 @@ build() {
 		--enable-dba=shared \
 		--enable-exif=shared \
 		--enable-ftp=shared \
+		--enable-gd=shared \
 		--enable-intl=shared \
 		--enable-mbstring \
+		--enable-pcntl \
 		--enable-shmop=shared \
 		--enable-soap=shared \
 		--enable-sockets=shared \
 		--enable-sysvmsg=shared \
 		--enable-sysvsem=shared \
 		--enable-sysvshm=shared \
-		--enable-zip=shared \
 		--with-bz2=shared \
 		--with-curl=shared \
 		--with-db4=/usr \
-		--with-enchant=shared,/usr \
-		--with-freetype-dir=/usr \
-		--with-gd=shared,/usr \
+		--with-enchant=shared \
+		--with-external-gd \
+		--with-external-pcre \
+		--with-ffi=shared \
 		--with-gdbm \
 		--with-gettext=shared \
 		--with-gmp=shared \
 		--with-iconv=shared \
 		--with-imap-ssl \
 		--with-imap=shared \
-		--with-kerberos=/usr \
+		--with-kerberos \
 		--with-ldap=shared \
 		--with-ldap-sasl \
-		--with-libzip \
 		--with-mhash \
 		--with-mysql-sock=/run/mysqld/mysqld.sock \
 		--with-mysqli=shared,mysqlnd \
 		--with-openssl \
 		--with-password-argon2 \
-		--with-pcre-regex=/usr \
 		--with-pdo-dblib=shared,/usr \
 		--with-pdo-mysql=shared,mysqlnd \
 		--with-pdo-odbc=shared,unixODBC,/usr \
 		--with-pdo-pgsql=shared \
-		--with-pdo-sqlite=shared,/usr \
+		--with-pdo-sqlite=shared \
 		--with-pgsql=shared \
 		--with-pspell=shared \
 		--with-readline \
 		--with-snmp=shared \
 		--with-sodium=shared \
-		--with-sqlite3=shared,/usr \
+		--with-sqlite3=shared \
 		--with-tidy=shared \
-		--with-unixODBC=shared,/usr \
-		--with-xmlrpc=shared \
+		--with-unixODBC=shared \
 		--with-xsl=shared \
 		--with-zlib \
-		--enable-pcntl \
+		--with-zip=shared \
 		"
 
-	EXTENSION_DIR=/usr/lib/${pkgbase}/modules
+	EXTENSION_DIR=/usr/lib/${__pkgbase}/modules
 	export EXTENSION_DIR
 
 	mkdir ${srcdir}/build
@@ -172,199 +172,201 @@ build() {
 }
 
 check() {
-	cd ${srcdir}/${_pkgbase}-${pkgver}
+	cd ${srcdir}/build
 
 	# Check if sendmail was configured correctly (FS#47600)
-	${srcdir}/build/sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
+	sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
 
 	export REPORT_EXIT_STATUS=1
 	export NO_INTERACTION=1
 	export SKIP_ONLINE_TESTS=1
 	export SKIP_SLOW_TESTS=1
+	export TEST_PHP_ARGS="-j$(nproc)"
+	export TESTS='tests Zend'
 
-	${srcdir}/build/sapi/cli/php -n run-tests.php -n -P {tests,Zend}
+        make test
 }
 
-package_php73() {
+package_php80-zts() {
 	pkgdesc='A general-purpose scripting language that is especially suited to web development'
 	depends=('libxml2' 'curl' 'libzip' 'pcre2' 'argon2')
-	replaces=('php73-ldap')
-	conflicts=('php73-ldap')
-	provides=("php73-ldap=${pkgver}" "php")
-	backup=("etc/${pkgbase}/php.ini")
+	replaces=('php80-ldap')
+	conflicts=('php80-ldap')
+	provides=("php80-ldap=${pkgver}" "php80")
+	backup=("etc/${__pkgbase}/php.ini")
 
 	cd ${srcdir}/build
 	make -j1 INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
-	install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/php.ini-production ${pkgdir}/etc/${pkgbase}/php.ini
-	install -d -m755 ${pkgdir}/etc/${pkgbase}/conf.d/
+	install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/php.ini-production ${pkgdir}/etc/${__pkgbase}/php.ini
+	install -d -m755 ${pkgdir}/etc/${__pkgbase}/conf.d/
 
 	# remove static modules
-	rm -f ${pkgdir}/usr/lib/${pkgbase}/modules/*.a
+	rm -f ${pkgdir}/usr/lib/${__pkgbase}/modules/*.a
 	# remove modules provided by sub packages
-	rm -f ${pkgdir}/usr/lib/${pkgbase}/modules/{enchant,gd,imap,intl,sodium,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
+	rm -f ${pkgdir}/usr/lib/${__pkgbase}/modules/{enchant,gd,imap,intl,sodium,odbc,pdo_dblib,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
 	# remove empty directory
 	rmdir ${pkgdir}/usr/include/php/include
 
 	# move include directory
-	mv ${pkgdir}/usr/include/php ${pkgdir}/usr/include/${pkgbase}
+	mv ${pkgdir}/usr/include/php ${pkgdir}/usr/include/${__pkgbase}
 
 	# fix phar symlink
-	rm ${pkgdir}/usr/bin/phar
-	ln -sf phar.phar73 ${pkgdir}/usr/bin/phar73
+	#rm ${pkgdir}/usr/bin/phar
+	ln -sf phar.phar80 ${pkgdir}/usr/bin/phar80
 
 	# rename executables
-	mv ${pkgdir}/usr/bin/phar.phar ${pkgdir}/usr/bin/phar.phar73
+	#mv ${pkgdir}/usr/bin/phar.phar ${pkgdir}/usr/bin/phar.phar80
 
 	# rename man pages
-	mv ${pkgdir}/usr/share/man/man1/{phar,phar73}.1
-	mv ${pkgdir}/usr/share/man/man1/phar.{phar,phar73}.1
+	#mv ${pkgdir}/usr/share/man/man1/{phar,phar80}.1
+	#mv ${pkgdir}/usr/share/man/man1/phar.{phar,phar80}.1
 
 	# fix paths in executables
-	sed -i "/^includedir=/c \includedir=/usr/include/${pkgbase}" ${pkgdir}/usr/bin/phpize73
-	sed -i "/^include_dir=/c \include_dir=/usr/include/${pkgbase}" ${pkgdir}/usr/bin/php-config73
+	sed -i "/^includedir=/c \includedir=/usr/include/${__pkgbase}" ${pkgdir}/usr/bin/phpize80
+	sed -i "/^include_dir=/c \include_dir=/usr/include/${__pkgbase}" ${pkgdir}/usr/bin/php-config80
 
-	# make phpize use php-config73
-	sed -i "/^\[  --with-php-config=/c \[  --with-php-config=PATH  Path to php-config [php-config73]], php-config73, no)" ${pkgdir}/usr/lib/${pkgbase}/build/phpize.m4
+	# make phpize use php-config80
+	sed -i "/^\[  --with-php-config=/c \[  --with-php-config=PATH  Path to php-config [php-config80]], php-config80, no)" ${pkgdir}/usr/lib/${__pkgbase}/build/phpize.m4
 }
 
-package_php73-cgi() {
+package_php80-zts-cgi() {
 	pkgdesc='CGI and FCGI SAPI for PHP'
-	depends=("${pkgbase}")
+	depends=("${__pkgbase}")
 
 	cd ${srcdir}/build
 	make -j1 INSTALL_ROOT=${pkgdir} install-cgi
 }
 
-package_php73-apache() {
+package_php80-zts-apache() {
 	pkgdesc='Apache SAPI for PHP'
-	depends=("${pkgbase}" 'apache' 'libnsl')
-	backup=("etc/httpd/conf/extra/${pkgbase}_module.conf")
+	depends=("${__pkgbase}" 'apache' 'libnsl')
+	backup=("etc/httpd/conf/extra/${__pkgbase}_module.conf")
 
-	install -D -m755 ${srcdir}/build-apache/libs/libphp7.so ${pkgdir}/usr/lib/httpd/modules/lib${pkgbase}.so
-	install -D -m644 ${srcdir}/apache.conf ${pkgdir}/etc/httpd/conf/extra/${pkgbase}_module.conf
+	install -D -m755 ${srcdir}/build-apache/libs/libphp.so ${pkgdir}/usr/lib/httpd/modules/lib${__pkgbase}.so
+	install -D -m644 ${srcdir}/apache.conf ${pkgdir}/etc/httpd/conf/extra/${__pkgbase}_module.conf
 }
 
-package_php73-fpm() {
+package_php80-zts-fpm() {
 	pkgdesc='FastCGI Process Manager for PHP'
-	depends=("${pkgbase}" 'systemd')
-	backup=("etc/${pkgbase}/php-fpm.conf" "etc/${pkgbase}/php-fpm.d/www.conf")
+	depends=("${__pkgbase}" 'systemd')
+	backup=("etc/${__pkgbase}/php-fpm.conf" "etc/${__pkgbase}/php-fpm.d/www.conf")
 	options=('!emptydirs')
 
 	cd ${srcdir}/build
 	make -j1 INSTALL_ROOT=${pkgdir} install-fpm
-	install -D -m644 sapi/fpm/php-fpm.service ${pkgdir}/usr/lib/systemd/system/${pkgbase}-fpm.service
-	install -D -m644 ${srcdir}/php-fpm.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${pkgbase}-fpm.conf
+	install -D -m644 sapi/fpm/php-fpm.service ${pkgdir}/usr/lib/systemd/system/${__pkgbase}-fpm.service
+	install -D -m644 ${srcdir}/php-fpm.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${__pkgbase}-fpm.conf
 }
 
-package_php73-embed() {
+package_php80-zts-embed() {
 	pkgdesc='Embedded PHP SAPI library'
-	depends=("${pkgbase}" 'systemd-libs' 'libnsl')
+	depends=("${__pkgbase}" 'systemd-libs' 'libnsl')
 	options=('!emptydirs')
 
 	cd ${srcdir}/build
 	make -j1 INSTALL_ROOT=${pkgdir} PHP_SAPI=embed install-sapi
-	mv ${pkgdir}/usr/lib/libphp7.so ${pkgdir}/usr/lib/libphp-73.so
+	mv ${pkgdir}/usr/lib/libphp.so ${pkgdir}/usr/lib/libphp-80.so
 }
 
-package_php73-phpdbg() {
+package_php80-zts-phpdbg() {
 	pkgdesc='Interactive PHP debugger'
-	depends=("${pkgbase}")
+	depends=("${__pkgbase}")
 	options=('!emptydirs')
 
 	cd ${srcdir}/build-phpdbg
 	make -j1 INSTALL_ROOT=${pkgdir} install-phpdbg
 }
 
-package_php73-dblib() {
+package_php80-zts-dblib() {
 	pkgdesc='dblib module for PHP'
-	depends=("${pkgbase}" 'freetds')
+	depends=("${__pkgbase}" 'freetds')
 
-	install -D -m755 ${srcdir}/build/modules/pdo_dblib.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_dblib.so
+	install -D -m755 ${srcdir}/build/modules/pdo_dblib.so ${pkgdir}/usr/lib/${__pkgbase}/modules/pdo_dblib.so
 }
 
-package_php73-enchant() {
+package_php80-zts-enchant() {
 	pkgdesc='enchant module for PHP'
-	depends=("${pkgbase}" 'enchant')
+	depends=("${__pkgbase}" 'enchant')
 
-	install -D -m755 ${srcdir}/build/modules/enchant.so ${pkgdir}/usr/lib/${pkgbase}/modules/enchant.so
+	install -D -m755 ${srcdir}/build/modules/enchant.so ${pkgdir}/usr/lib/${__pkgbase}/modules/enchant.so
 }
 
-package_php73-gd() {
+package_php80-zts-gd() {
 	pkgdesc='gd module for PHP'
-	depends=("${pkgbase}" 'gd')
+	depends=("${__pkgbase}" 'gd')
 
-	install -D -m755 ${srcdir}/build/modules/gd.so ${pkgdir}/usr/lib/${pkgbase}/modules/gd.so
+	install -D -m755 ${srcdir}/build/modules/gd.so ${pkgdir}/usr/lib/${__pkgbase}/modules/gd.so
 }
 
-package_php73-imap() {
+package_php80-zts-imap() {
 	pkgdesc='imap module for PHP'
-	depends=("${pkgbase}" 'c-client')
+	depends=("${__pkgbase}" 'c-client')
 
-	install -D -m755 ${srcdir}/build/modules/imap.so ${pkgdir}/usr/lib/${pkgbase}/modules/imap.so
+	install -D -m755 ${srcdir}/build/modules/imap.so ${pkgdir}/usr/lib/${__pkgbase}/modules/imap.so
 }
 
-package_php73-intl() {
+package_php80-zts-intl() {
 	pkgdesc='intl module for PHP'
-	depends=("${pkgbase}" 'icu')
+	depends=("${__pkgbase}" 'icu')
 
-	install -D -m755 ${srcdir}/build/modules/intl.so ${pkgdir}/usr/lib/${pkgbase}/modules/intl.so
+	install -D -m755 ${srcdir}/build/modules/intl.so ${pkgdir}/usr/lib/${__pkgbase}/modules/intl.so
 }
 
-package_php73-sodium() {
+package_php80-zts-sodium() {
 	pkgdesc='sodium module for PHP'
-	depends=("${pkgbase}" 'libsodium')
+	depends=("${__pkgbase}" 'libsodium')
 
-	install -D -m755 ${srcdir}/build/modules/sodium.so ${pkgdir}/usr/lib/${pkgbase}/modules/sodium.so
+	install -D -m755 ${srcdir}/build/modules/sodium.so ${pkgdir}/usr/lib/${__pkgbase}/modules/sodium.so
 }
 
-package_php73-odbc() {
+package_php80-zts-odbc() {
 	pkgdesc='ODBC modules for PHP'
-	depends=("${pkgbase}" 'unixodbc')
+	depends=("${__pkgbase}" 'unixodbc')
 
-	install -D -m755 ${srcdir}/build/modules/odbc.so ${pkgdir}/usr/lib/${pkgbase}/modules/odbc.so
-	install -D -m755 ${srcdir}/build/modules/pdo_odbc.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_odbc.so
+	install -D -m755 ${srcdir}/build/modules/odbc.so ${pkgdir}/usr/lib/${__pkgbase}/modules/odbc.so
+	install -D -m755 ${srcdir}/build/modules/pdo_odbc.so ${pkgdir}/usr/lib/${__pkgbase}/modules/pdo_odbc.so
 }
 
-package_php73-pgsql() {
+package_php80-zts-pgsql() {
 	pkgdesc='PostgreSQL modules for PHP'
-	depends=("${pkgbase}" 'postgresql-libs')
+	depends=("${__pkgbase}" 'postgresql-libs')
 
-	install -D -m755 ${srcdir}/build/modules/pgsql.so ${pkgdir}/usr/lib/${pkgbase}/modules/pgsql.so
-	install -D -m755 ${srcdir}/build/modules/pdo_pgsql.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_pgsql.so
+	install -D -m755 ${srcdir}/build/modules/pgsql.so ${pkgdir}/usr/lib/${__pkgbase}/modules/pgsql.so
+	install -D -m755 ${srcdir}/build/modules/pdo_pgsql.so ${pkgdir}/usr/lib/${__pkgbase}/modules/pdo_pgsql.so
 }
 
-package_php73-pspell() {
+package_php80-zts-pspell() {
 	pkgdesc='pspell module for PHP'
-	depends=("${pkgbase}" 'aspell')
+	depends=("${__pkgbase}" 'aspell')
 
-	install -D -m755 ${srcdir}/build/modules/pspell.so ${pkgdir}/usr/lib/${pkgbase}/modules/pspell.so
+	install -D -m755 ${srcdir}/build/modules/pspell.so ${pkgdir}/usr/lib/${__pkgbase}/modules/pspell.so
 }
 
-package_php73-snmp() {
+package_php80-zts-snmp() {
 	pkgdesc='snmp module for PHP'
-	depends=("${pkgbase}" 'net-snmp')
+	depends=("${__pkgbase}" 'net-snmp')
 
-	install -D -m755 ${srcdir}/build/modules/snmp.so ${pkgdir}/usr/lib/${pkgbase}/modules/snmp.so
+	install -D -m755 ${srcdir}/build/modules/snmp.so ${pkgdir}/usr/lib/${__pkgbase}/modules/snmp.so
 }
 
-package_php73-sqlite() {
+package_php80-zts-sqlite() {
 	pkgdesc='sqlite module for PHP'
-	depends=("${pkgbase}" 'sqlite')
+	depends=("${__pkgbase}" 'sqlite')
 
-	install -D -m755 ${srcdir}/build/modules/sqlite3.so ${pkgdir}/usr/lib/${pkgbase}/modules/sqlite3.so
-	install -D -m755 ${srcdir}/build/modules/pdo_sqlite.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_sqlite.so
+	install -D -m755 ${srcdir}/build/modules/sqlite3.so ${pkgdir}/usr/lib/${__pkgbase}/modules/sqlite3.so
+	install -D -m755 ${srcdir}/build/modules/pdo_sqlite.so ${pkgdir}/usr/lib/${__pkgbase}/modules/pdo_sqlite.so
 }
 
-package_php73-tidy() {
+package_php80-zts-tidy() {
 	pkgdesc='tidy module for PHP'
-	depends=("${pkgbase}" 'tidy')
+	depends=("${__pkgbase}" 'tidy')
 
-	install -D -m755 ${srcdir}/build/modules/tidy.so ${pkgdir}/usr/lib/${pkgbase}/modules/tidy.so
+	install -D -m755 ${srcdir}/build/modules/tidy.so ${pkgdir}/usr/lib/${__pkgbase}/modules/tidy.so
 }
 
-package_php73-xsl() {
+package_php80-zts-xsl() {
 	pkgdesc='xsl module for PHP'
-	depends=("${pkgbase}" 'libxslt')
+	depends=("${__pkgbase}" 'libxslt')
 
-	install -D -m755 ${srcdir}/build/modules/xsl.so ${pkgdir}/usr/lib/${pkgbase}/modules/xsl.so
+	install -D -m755 ${srcdir}/build/modules/xsl.so ${pkgdir}/usr/lib/${__pkgbase}/modules/xsl.so
 }

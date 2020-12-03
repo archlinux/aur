@@ -1,15 +1,15 @@
 --- php.ini-production.orig
 +++ php.ini-production
-@@ -751,7 +751,7 @@
+@@ -756,7 +756,7 @@
  
  ; Directory in which the loadable extensions (modules) reside.
  ; http://php.net/extension-dir
 -;extension_dir = "./"
-+extension_dir = "/usr/lib/php73/modules/"
++extension_dir = "/usr/lib/php80/modules/"
  ; On windows:
  ;extension_dir = "ext"
  
-@@ -899,48 +899,44 @@
+@@ -913,48 +913,43 @@
  ; deprecated in a future PHP major version. So, when it is possible, please
  ; move to the new ('extension=<ext>) syntax.
  ;
@@ -22,23 +22,21 @@
 +;extension=bcmath
  ;extension=bz2
 -;extension=curl
--;extension=fileinfo
--;extension=gd2
 +;extension=calendar
 +extension=curl
 +;extension=dba
 +;extension=enchant
 +;extension=exif
-+;extension=ftp
-+;extension=gd
+ ;extension=ffi
+ ;extension=ftp
+-;extension=fileinfo
+ ;extension=gd
  ;extension=gettext
  ;extension=gmp
 -;extension=intl
 +;extension=iconv
  ;extension=imap
--;extension=interbase
 +;extension=intl
-+;extension=sodium
  ;extension=ldap
 -;extension=mbstring
 -;extension=exif      ; Must be after mbstring as it depends on it
@@ -47,8 +45,6 @@
  ;extension=odbc
 -;extension=openssl
 -;extension=pdo_firebird
-+;zend_extension=opcache
-+;extension=pdo_dblib
  ;extension=pdo_mysql
 -;extension=pdo_oci
  ;extension=pdo_odbc
@@ -64,15 +60,16 @@
 -
  ;extension=soap
  ;extension=sockets
--;extension=sodium
+ ;extension=sodium
  ;extension=sqlite3
 +;extension=sysvmsg
 +;extension=sysvsem
 +;extension=sysvshm
  ;extension=tidy
- ;extension=xmlrpc
++;extension=xmlrpc
  ;extension=xsl
 +extension=zip
- 
- ;;;;;;;;;;;;;;;;;;;
- ; Module Settings ;
+
+ ;zend_extension=opcache
+
+
