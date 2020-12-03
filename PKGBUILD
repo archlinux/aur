@@ -20,8 +20,9 @@ depends=(
 )
 makedepends=(
   'cmake'
-  'mesa'
   'git'
+  'mesa'
+  'vulkan-headers'
 )
 provides=('ogre')
 conflicts=('ogre')
