@@ -16,7 +16,6 @@ source=(
 "SpiNNaker_PACMAN::git+https://github.com/SpiNNakerManchester/PACMAN.git"
 "SpiNNMachine::git+https://github.com/SpiNNakerManchester/SpiNNMachine.git"
 "SpiNNMan::git+https://github.com/SpiNNakerManchester/SpiNNMan.git"
-"SpiNNStorageHandlers::git+https://github.com/SpiNNakerManchester/SpiNNStorageHandlers.git"
 "SpiNNUtilities::git+https://github.com/SpiNNakerManchester/SpiNNUtils.git"
 "sPyNNaker::git+https://github.com/SpiNNakerManchester/sPyNNaker.git"
 "SpiNNFrontEndCommon::git+https://github.com/SpiNNakerManchester/SpiNNFrontEndCommon.git"
@@ -40,11 +39,10 @@ sha256sums=(
 'SKIP'
 'SKIP'
 'SKIP'
-'SKIP'
 '91af2126b639a6a795bfc2709ac49423278c4794b6d0da143908b9afcb415f80')
 
 pkgver() {
-  printf "%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s" $(git -C sPyNNaker rev-list --count HEAD) $(git -C sPyNNaker rev-parse --short HEAD) $(git -C SpiNNFrontEndCommon rev-list --count HEAD) $(git -C SpiNNFrontEndCommon rev-parse --short HEAD) $(git -C spinn_common rev-list --count HEAD) $(git -C spinn_common rev-parse --short HEAD) $(git -C spinnaker_tools rev-list --count HEAD) $(git -C spinnaker_tools rev-parse --short HEAD) $(git -C SpiNNakerGraphFrontEnd rev-list --count HEAD) $(git -C SpiNNakerGraphFrontEnd rev-parse --short HEAD) $(git -C spynnaker8 rev-list --count HEAD) $(git -C spynnaker8 rev-parse --short HEAD) $(git -C spalloc rev-list --count HEAD) $(git -C spalloc rev-parse --short HEAD) $(git -C SpiNNaker_DataSpecification rev-list --count HEAD) $(git -C SpiNNaker_DataSpecification rev-parse --short HEAD) $(git -C SpiNNaker_PACMAN rev-list --count HEAD) $(git -C SpiNNaker_PACMAN rev-parse --short HEAD) $(git -C SpiNNMachine rev-list --count HEAD) $(git -C SpiNNMachine rev-parse --short HEAD) $(git -C SpiNNMan rev-list --count HEAD) $(git -C SpiNNMan rev-parse --short HEAD) $(git -C SpiNNStorageHandlers rev-list --count HEAD) $(git -C SpiNNStorageHandlers rev-parse --short HEAD) $(git -C SpiNNUtilities rev-list --count HEAD) $(git -C SpiNNUtilities rev-parse --short HEAD)
+  printf "%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s" $(git -C sPyNNaker rev-list --count HEAD) $(git -C sPyNNaker rev-parse --short HEAD) $(git -C SpiNNFrontEndCommon rev-list --count HEAD) $(git -C SpiNNFrontEndCommon rev-parse --short HEAD) $(git -C spinn_common rev-list --count HEAD) $(git -C spinn_common rev-parse --short HEAD) $(git -C spinnaker_tools rev-list --count HEAD) $(git -C spinnaker_tools rev-parse --short HEAD) $(git -C SpiNNakerGraphFrontEnd rev-list --count HEAD) $(git -C SpiNNakerGraphFrontEnd rev-parse --short HEAD) $(git -C spynnaker8 rev-list --count HEAD) $(git -C spynnaker8 rev-parse --short HEAD) $(git -C spalloc rev-list --count HEAD) $(git -C spalloc rev-parse --short HEAD) $(git -C SpiNNaker_DataSpecification rev-list --count HEAD) $(git -C SpiNNaker_DataSpecification rev-parse --short HEAD) $(git -C SpiNNaker_PACMAN rev-list --count HEAD) $(git -C SpiNNaker_PACMAN rev-parse --short HEAD) $(git -C SpiNNMachine rev-list --count HEAD) $(git -C SpiNNMachine rev-parse --short HEAD) $(git -C SpiNNMan rev-list --count HEAD) $(git -C SpiNNMan rev-parse --short HEAD) $(git -C SpiNNUtilities rev-list --count HEAD) $(git -C SpiNNUtilities rev-parse --short HEAD)
 }
 
 prepare()
@@ -108,9 +106,6 @@ package_python2-spynnaker-git() {
   cd "${srcdir}/SpiNNMan"
   python2 setup.py install --root="${pkgdir}"
   
-  cd "${srcdir}/SpiNNStorageHandlers"
-  python2 setup.py install --root="${pkgdir}"
-  
   cd "${srcdir}/SpiNNUtilities"
   python2 setup.py install --root="${pkgdir}"
   
@@ -168,9 +163,6 @@ package_python-spynnaker-git() {
   python setup.py install --root="${pkgdir}"
   
   cd "${srcdir}/SpiNNMan"
-  python setup.py install --root="${pkgdir}"
-  
-  cd "${srcdir}/SpiNNStorageHandlers"
   python setup.py install --root="${pkgdir}"
   
   cd "${srcdir}/SpiNNUtilities"
