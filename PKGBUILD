@@ -1,28 +1,28 @@
 # Maintainer: Yardena Cohen <yardenack at gmail dot com>
+# Contributor: Alexander Epaneshnikov <aarnaarn2@gmail.com>
 
-gitname=s3cmd
-pkgname=${gitname}-git
-pkgver=1705.c0d66ac
+pkgname=s3cmd-git
+pkgver=v2.1.0.r67.67e7d12
 pkgrel=1
-pkgdesc="A command line client for Amazon S3 (git)"
+pkgdesc="A command line client for Amazon S3 (development version)"
 arch=('any')
-url="https://github.com/s3tools/${gitname}"
+url="https://github.com/s3tools/${pkgname%-git}"
 license=('GPL')
-depends=(python2 python2-dateutil python-magic)
-makedepends=(git python2-setuptools)
-optdepends=('gnupg: encrypted file storage')
+depends=('python' 'python-dateutil')
+makedepends=('python-setuptools')
+optdepends=('gnupg: encrypted file storage'
+            'python-magic: determine mimetype based on contents')
 provides=('s3cmd')
 conflicts=('s3cmd')
 source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-	 cd "${srcdir}/${gitname}"
-	 local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-	 printf "%s" "${ver//-/.}"
+	cd "$srcdir/${pkgname%-git}"
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 package() {
-  cd "${srcdir}/${gitname}"
-  python2 setup.py install --root="$pkgdir"
+	cd "${srcdir}/${pkgname%-git}"
+	python setup.py install --root="$pkgdir"
 }
