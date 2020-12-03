@@ -1,7 +1,7 @@
 pkgbase = python-pulse-control
 	pkgdesc = Python high-level interface and ctypes-based bindings for PulseAudio.
 	pkgver = 20.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/mk-fg/python-pulse-control
 	arch = any
 	license = MIT
