@@ -44,7 +44,7 @@ pkgbase = waterfox-g3-kpe
 	options = !emptydirs
 	options = !makeflags
 	options = zipman
-	source = git+https://github.com/MrAlex94/Waterfox.git#commit=
+	source = git+https://github.com/MrAlex94/Waterfox.git#commit=11befa20d8c009ee5eaeb44bb3b586de9390bfcd
 	source = https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/c7505a01651453e3779cc4d93f4a10437a477a3c/waterfox-g3-kpe/waterfox-g3.desktop
 	source = https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/c7505a01651453e3779cc4d93f4a10437a477a3c/waterfox-g3-kpe/distribution.ini
 	source = https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/c7505a01651453e3779cc4d93f4a10437a477a3c/waterfox-g3-kpe/vendor.js

@@ -15,6 +15,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'python' 'yasm' 'mesa' 'imake' 'inetutils
 options=('!emptydirs' '!makeflags' 'zipman')
 _filesrev=c7505a01651453e3779cc4d93f4a10437a477a3c
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g3-kpe
+_commit=11befa20d8c009ee5eaeb44bb3b586de9390bfcd
 #"git+https://github.com/MrAlex94/Waterfox.git#tag=G3.$pkgver"
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "$_filesurl/waterfox-g3.desktop"
