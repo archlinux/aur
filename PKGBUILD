@@ -3,7 +3,7 @@
 _name=anyconfig-ion-backend
 pkgname=python-$_name
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A backend module for python-anyconfig to support to load and dump Amazon Ion data files.'
 url='https://github.com/ssato/python-anyconfig-ion-backend'
 arch=('any')

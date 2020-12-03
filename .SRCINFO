@@ -1,7 +1,7 @@
 pkgbase = python-anyconfig-ion-backend
 	pkgdesc = A backend module for python-anyconfig to support to load and dump Amazon Ion data files.
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ssato/python-anyconfig-ion-backend
 	arch = any
 	license = MIT
