@@ -153,7 +153,7 @@ package_python-pytorch() {
 }
 
 package_python-pytorch-opt() {
-  pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CPU optimizations)"
+  pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration (with AVX2 CPU optimizations)"
   conflicts=(python-pytorch)
   provides=(python-pytorch)
 
@@ -172,7 +172,7 @@ package_python-pytorch-cuda() {
 }
 
 package_python-pytorch-opt-cuda() {
-  pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CUDA and CPU optimizations)"
+  pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CUDA and AVX2 CPU optimizations)"
   depends+=(cuda cudnn magma)
   conflicts=(python-pytorch)
   provides=(python-pytorch python-pytorch-cuda)
