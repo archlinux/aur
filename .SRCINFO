@@ -1,7 +1,7 @@
 pkgbase = python-oct2py
 	pkgdesc = Python to GNU Octave bridge.
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/blink1073/oct2py
 	arch = any
 	license = MIT
