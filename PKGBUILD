@@ -2,7 +2,7 @@
 
 pkgname=python-discogs-api
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Interface to the Discogs REST API"
 arch=('any')
 url="https://github.com/grawlinson/python-discogs-api"
