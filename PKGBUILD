@@ -3,7 +3,7 @@
 
 pkgname=electrumx
 pkgver=1.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Server implementation for the Electrum wallet"
 arch=('any')
 depends=('leveldb'
@@ -17,7 +17,9 @@ depends=('leveldb'
          )
 makedepends=('python-setuptools')
 optdepends=('bitcoin-daemon: Bitcoin core headless P2P node'
-            'electrum: Bitcoin thin client')
+            'electrum: Bitcoin thin client'
+            'python-rapidjson<1.0: Alternative JSON parsing library for improved performance'
+            'python-ujson<4.0: Alternative JSON parsing library for improved performance')
 url="https://github.com/spesmilo/electrumx"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/spesmilo/$pkgname/tar.gz/$pkgver
