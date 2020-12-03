@@ -3,7 +3,7 @@
 pkgname="python-amazon.ion"
 _name="amazon.ion"
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python implementation of Amazon Ion.'
 url='https://amzn.github.io/ion-docs/'
 arch=('any')

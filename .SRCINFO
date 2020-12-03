@@ -1,7 +1,7 @@
 pkgbase = python-amazon.ion
 	pkgdesc = A Python implementation of Amazon Ion.
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://amzn.github.io/ion-docs/
 	arch = any
 	license = Apache
