@@ -2,7 +2,7 @@
 pkgname=python-simpleeval
 _name=${pkgname#python-}
 pkgver=0.9.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple, safe single expression evaluator library."
 arch=(any)
 url="https://github.com/danthedeckie/simpleeval"
