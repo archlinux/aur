@@ -3,7 +3,7 @@
 _name=overly
 pkgname=python-overly
 pkgver=0.1.85
-pkgrel=1
+pkgrel=2
 pkgdesc="An overly configurable http server for client testing."
 arch=('any')
 url="https://github.com/theelous3/overly"
@@ -23,4 +23,3 @@ package() {
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 LICENCE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
-

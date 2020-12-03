@@ -1,7 +1,7 @@
 pkgbase = python-overly
 	pkgdesc = An overly configurable http server for client testing.
 	pkgver = 0.1.85
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theelous3/overly
 	arch = any
 	license = MIT
