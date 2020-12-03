@@ -1,7 +1,7 @@
 pkgbase=deepspeech
 pkgname=('deepspeech' 'python-deepspeech')
 _pkgname=DeepSpeech
-pkgver=0.9.0
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="A TensorFlow implementation of Baidu's DeepSpeech architecture"
 arch=('x86_64')
@@ -32,6 +32,7 @@ build() {
   export TF_DOWNLOAD_CLANG=0
   export TF_NEED_CUDA=0
   export CC_OPT_FLAGS="-march=x86-64"
+  rm .bazelversion
   ./configure
 
   bazel build --workspace_status_command="bash native_client/bazel_workspace_status_cmd.sh" --config=monolithic -c opt --copt=-O3 --copt="-D_GLIBCXX_USE_CXX11_ABI=0" --copt=-fvisibility=hidden //native_client:libdeepspeech.so
