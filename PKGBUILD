@@ -4,7 +4,7 @@
 pkgname=python-geoplot
 _name=geoplot
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='High-level geospatial data visualization library for Python'
 arch=('any')
 url='https://github.com/ResidentMario/geoplot'

@@ -1,7 +1,7 @@
 pkgbase = python-geoplot
 	pkgdesc = High-level geospatial data visualization library for Python
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ResidentMario/geoplot
 	arch = any
 	license = MIT
