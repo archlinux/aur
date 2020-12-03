@@ -1,7 +1,7 @@
 pkgbase = python-flask-api
 	pkgdesc = Browsable web APIs for Flask.
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flask-api/flask-api
 	arch = any
 	license = BSD
