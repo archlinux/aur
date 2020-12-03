@@ -1,13 +1,14 @@
 # Maintainer: Jonathon Fernyhough <jonathon+m2x@dev>
+# Contributor: Leo <olorin12+gmail+com>
 
 pkgname=hypnotix-git
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An IPTV app"
 arch=(any)
 url="https://github.com/linuxmint/hypnotix"
 license=(GPL3)
-depends=(dconf hicolor-icon-theme python-imdbpy python-requests python-setproctitle mpv xapp)
+depends=(dconf hicolor-icon-theme python-cairo python-imdbpy python-requests python-setproctitle mpv xapp)
 makedepends=(git)
 provides=(hypnotix)
 conflicts=(hypnotix)
