@@ -2,8 +2,8 @@
 
 pkgname="python-desert"
 _pkgname="${pkgname#python-}"
-pkgver=2020.1.6
-pkgrel=3
+pkgver=2020.11.18
+pkgrel=1
 pkgdesc='Deserialize to objects while staying DRY'
 arch=('any')
 url='https://github.com/python-desert/desert'
@@ -12,7 +12,7 @@ depends=('python' 'python-marshmallow' 'python-attrs' 'python-typing_inspect')
 # NOTE: python-dataclasses was introduced in Python 3.7, so no longer an explicit dependency.
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('8975c4358fb23a4f638d353c74578f386c113c6d0d317f6c66122197d4295aecc03c72c814cca68504d87e64f08064b9905f12816972300b962f7558015acc73')
+sha512sums=('5cf52104bf18531a0caf737109655a0090d75aca681cafd97160d90e9d29326fd02bb19985130e53a494853b95b51da4efbc8ce64b4e6711c4b13c6d3e10e73f')
 
 build() {
   cd "$_pkgname-$pkgver"
