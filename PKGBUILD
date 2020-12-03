@@ -1,15 +1,15 @@
-# Maintainer: Michael Stegeman <mstegeman@mozilla.com>
+# Maintainer: Michael Stegeman <team@webthings.io>
 pkgname=webthings-gateway
-pkgver=0.12.0
+pkgver=1.0.0
 pkgrel=1
-pkgdesc='WebThings Gateway by Mozilla'
-url='https://iot.mozilla.org/gateway/'
+pkgdesc='WebThings Gateway'
+url='https://webthings.io/gateway/'
 arch=('x86_64')
 license=('MPL2')
 depends=(
   'lsb-release'
   'nodejs>=10.0.0'       # dubnium (10.x) is what our other distros use
-  'nodejs<13.0.0'        # we only test up to 12.x
+  'nodejs<15.0.0'        # we only test up to 14.x
   'pagekite'
   'python-gateway-addon'
 )
@@ -28,7 +28,7 @@ optdepends=(
 )
 backup=()
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/mozilla-iot/gateway/archive/${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/WebThingsIO/gateway/archive/${pkgver}.tar.gz"
   "${pkgname}.conf"
   "${pkgname}.install"
   "${pkgname}.profile"
@@ -37,13 +37,13 @@ source=(
   "${pkgname}.sysusers"
 )
 sha256sums=(
-  '70297de904cc480396fd71dd2991dd4c45daa9dd67916a92ff1575f6003fc476'
-  '36d1e319305f7da9f678f614387f6a23cd9d660b704932d566a3308819be2260'
+  'a5274e370e358c6cdfd667c02cc70dbf599af73605eaecab425f07b8cc2a6e71'
+  '02e18af6e5d2b4fa391187b1c61fd04304882e1c38a686660e46b2c07ac23cbf'
   '6bda15a6d276d5b7f060121bc72f43edb46b40c6670419a1ce3113042fb47381'
   '1a5e41278b02a8c509edaf86d510b4739efb90bbfed4b85df9f2da9ff4eef9a7'
   'e8f4faa6fb1778157d9927d730038ef0f5520c6c3c5cc33222f155d9979238a5'
   'e516c724bce5fa9ab9f0652f903c778609dd5b8a7682b169b881a8c0fcb41bbf'
-  '38ac347a82f61525e762ba3dd129faf2eb5af03371599626bef7fc66e8bf8a32'
+  'aa94d3c56eae58483b6c0cd860c01ecbb7810db10056d18cbdadac4e86b452ca'
 )
 install="${pkgname}.install"
 
