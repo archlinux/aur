@@ -2,7 +2,7 @@
 pkgname=python-pylyrics
 _name=PyLyrics
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Pythonic Implementation of lyrics.wikia.com for getting lyrics of songs"
 arch=('any')
 url="https://github.com/geekpradd/PyLyrics"
@@ -19,5 +19,6 @@ build() {
 
 package() {
 	cd "$_name-$pkgver"
+	export PYTHONHASHSEED=0
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
