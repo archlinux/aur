@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 # Contributor: Quan Guo <guotsuan@gmail.com>
 pkgname=cheat-git
-pkgver=4.1.0.r0.g82e1c27
+pkgver=4.2.0.r0.g883a170
 pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -45,6 +45,7 @@ build() {
 
 	# Generate man page
 	pandoc -s -t man "doc/${pkgname%-git}.1.md" -o "doc/${pkgname%-git}.1"
+	gzip "doc/$pkgname.1"
 
 	# Clean mod cache for makepkg -C
 	go clean -modcache
@@ -64,7 +65,7 @@ package() {
 
 	install -Dm644 LICENSE.txt \
 		"$pkgdir/usr/share/licenses/${pkgname%-git}/${pkgname%-git}-LICENSE"
-	install -Dm644 "doc/${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
+	install -Dm644 "doc/${pkgname%-git}.1.gz" -t "$pkgdir/usr/share/man/man1"
 
 	install -dm755 "$pkgdir/usr/share/${pkgname%-git}/cheatsheets/community"
 	find "$srcdir/cheatsheets" \
