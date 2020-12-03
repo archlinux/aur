@@ -1,7 +1,7 @@
 pkgbase = python-asks
 	pkgdesc = Async requests-like httplib for python.
 	pkgver = 2.4.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theelous3/asks
 	arch = any
 	license = MIT

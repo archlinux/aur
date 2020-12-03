@@ -3,7 +3,7 @@
 _name=asks
 pkgname=python-asks
 pkgver=2.4.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Async requests-like httplib for python."
 arch=('any')
 url="https://github.com/theelous3/asks"
@@ -24,4 +24,3 @@ package() {
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 LICENCE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
 }
-
