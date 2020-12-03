@@ -1,10 +1,14 @@
 pkgbase = rhvoice
 	pkgdesc = Free and open source speech synthesizer for Russian and other languages
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Olga-Yakovleva/RHVoice
 	arch = x86_64
 	license = GPL3
+	license = custom
+	license = custom:by-nc-nd-4.0
+	license = custom:by-nc-sa-4.0
+	license = custom:by-sa-4.0
 	makedepends = scons
 	makedepends = portaudio
 	makedepends = libao
