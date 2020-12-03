@@ -1,7 +1,7 @@
 # Maintainer: pumpkincheshire <sollyonzou at gmail dot com>
 # Contributor: Sigmund Vestergaard <sigmundv at gmail dot com>
 pkgname=python-eve-git
-pkgver=1.1.4.r5.ge1194eb7
+pkgver=1.1.4.r10.g9e0cfbf2
 pkgrel=1
 _name=eve
 pkgdesc="An open source Python REST API framework designed for human beings."
@@ -32,4 +32,3 @@ package() {
   python setup.py install --root="$pkgdir/" --skip-build --optimize=1
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
