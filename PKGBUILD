@@ -66,7 +66,7 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-anbox
-pkgver=5.9.11
+pkgver=5.9.12
 _major=5.9
 _branch=5.x
 xanmod=1
@@ -99,15 +99,15 @@ done
 
 sha256sums=('3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06'
             'SKIP'
-            '8a800e6b341e0e4117291b4501bc5bb158d4da7851bca23e5ae985c82898e77c'
+            '1181d1194c4d92a9cee660f1d3a0e7d220e4f84aaaa6252621e2053e96c1e23f'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991')
 
 # If use_cachy=y then download cachy patch
 if [ "$use_cachy" = "y" ]; then
-   echo "Cachy branch is not ready yet..." && exit 1
+   #echo "Cachy branch is not ready yet..." && exit 1
    source+=("https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-cachy/patch-${pkgver}-xanmod${xanmod}-cachy.xz")
-   sha256sums+=('8dc6a2bc5270b7cc784c52650bb15a3b66792f5d49ef1d49a38da19a660e1472')
+   sha256sums+=('16b29e9e30979c8ff5f25ee5d46f9a9fc601ebda2b4aeabeeb85953628d38f10')
 fi
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
