@@ -1,0 +1,17 @@
+pkgbase = nspire-tools-git
+	pkgdesc = The Swiss Army Knife for Ti-NSpire
+	pkgver = r2.6a7fccc
+	pkgrel = 1
+	url = https://github.com/ErnyTech/nspire-tools
+	arch = any
+	license = MPL-2.0
+	makedepends = dub
+	makedepends = ldc
+	depends = liblphobos
+	depends = libnspire-git
+	provides = nspire-tools-git
+	source = git+https://github.com/ErnyTech/nspire-tools.git
+	sha1sums = SKIP
+
+pkgname = nspire-tools-git
+
