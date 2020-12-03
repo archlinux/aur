@@ -1,7 +1,7 @@
 pkgbase = espanso
 	pkgdesc = Cross-platform Text Expander written in Rust
 	pkgver = 0.7.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://espanso.org/
 	install = espanso.install
 	arch = x86_64
