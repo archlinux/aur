@@ -1,7 +1,7 @@
 pkgbase = gravit-designer-electron
 	pkgdesc = Electron wrapper for the Gravit Designer web application
-	pkgver = 2020_1.3.3
-	pkgrel = 3
+	pkgver = 2020_1.3.4
+	pkgrel = 1
 	url = https://designer.io/
 	arch = any
 	license = custom

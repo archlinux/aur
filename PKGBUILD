@@ -2,8 +2,8 @@
 
 pkgname=('gravit-designer-electron')
 _pkgname=('gravit-designer')
-pkgver=2020_1.3.3
-pkgrel=3
+pkgver=2020_1.3.4
+pkgrel=1
 pkgdesc="Electron wrapper for the Gravit Designer web application"
 arch=(any)
 license=(custom)
