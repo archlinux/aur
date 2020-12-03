@@ -1,17 +1,17 @@
 diff --git a/Action.c b/Action.c
-index 5b68811..3c5a296 100644
+index 66934be..c229584 100644
 --- a/Action.c
 +++ b/Action.c
-@@ -404,7 +404,7 @@ static Htop_Reaction actionTogglePauseProcessUpdate(State *st) {
- }
- 
- static const struct { const char* key; const char* info; } helpLeft[] = {
+@@ -448,7 +448,7 @@ static const struct {
+    const char* key;
+    const char* info;
+ } helpLeft[] = {
 -   { .key = " Arrows: ", .info = "scroll process list" },
 +   { .key = "   hjkl: ", .info = "scroll process list" },
     { .key = " Digits: ", .info = "incremental PID search" },
     { .key = "   F3 /: ", .info = "incremental name search" },
     { .key = "   F4 \\: ",.info = "incremental name filtering" },
-@@ -426,7 +426,7 @@ static const struct { const char* key; const char* info; } helpRight[] = {
+@@ -474,7 +474,7 @@ static const struct {
     { .key = "  Space: ", .info = "tag process" },
     { .key = "      c: ", .info = "tag process and its children" },
     { .key = "      U: ", .info = "untag all processes" },
@@ -20,12 +20,14 @@ index 5b68811..3c5a296 100644
     { .key = "   F7 ]: ", .info = "higher priority (root only)" },
     { .key = "   F8 [: ", .info = "lower priority (+ nice)" },
  #if (defined(HAVE_LIBHWLOC) || defined(HAVE_LINUX_AFFINITY))
-@@ -434,11 +434,11 @@ static const struct { const char* key; const char* info; } helpRight[] = {
+@@ -482,12 +482,12 @@ static const struct {
  #endif
     { .key = "      e: ", .info = "show process environment" },
     { .key = "      i: ", .info = "set IO priority" },
 -   { .key = "      l: ", .info = "list open files with lsof" },
+-   { .key = "      x: ", .info = "list file locks of process" },
 +   { .key = "      L: ", .info = "list open files with lsof" },
++   { .key = "      X: ", .info = "list file locks of process" },
     { .key = "      s: ", .info = "trace syscalls with strace" },
     { .key = "      w: ", .info = "wrap process command in multiple lines" },
     { .key = " F2 C S: ", .info = "setup" },
@@ -34,15 +36,15 @@ index 5b68811..3c5a296 100644
     { .key = "  F10 q: ", .info = "quit" },
     { .key = NULL, .info = NULL }
  };
-@@ -601,6 +601,7 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -662,6 +662,7 @@ void Action_setBindings(Htop_Action* keys) {
     keys['I'] = actionInvertSortOrder;
-    keys[KEY_F(6)] = actionExpandCollapseOrSortColumn;
+    keys[KEY_F(6)] = actionSetSortColumn;
     keys[KEY_F(18)] = actionExpandCollapseOrSortColumn;
 +   keys['o'] = actionExpandCollapseOrSortColumn;
     keys['<'] = actionSetSortColumn;
     keys[','] = actionSetSortColumn;
     keys['>'] = actionSetSortColumn;
-@@ -609,7 +610,7 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -670,7 +671,7 @@ void Action_setBindings(Htop_Action* keys) {
     keys['q'] = actionQuit;
     keys['a'] = actionSetAffinity;
     keys[KEY_F(9)] = actionKill;
@@ -51,11 +53,13 @@ index 5b68811..3c5a296 100644
     keys[KEY_RECLICK] = actionExpandOrCollapse;
     keys['+'] = actionExpandOrCollapse;
     keys['='] = actionExpandOrCollapse;
-@@ -620,12 +621,11 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -681,13 +682,12 @@ void Action_setBindings(Htop_Action* keys) {
     keys['S'] = actionSetup;
     keys['C'] = actionSetup;
     keys[KEY_F(2)] = actionSetup;
+-   keys['x'] = actionShowLocks;
 -   keys['l'] = actionLsof;
++   keys['X'] = actionShowLocks;
 +   keys['L'] = actionLsof;
     keys['s'] = actionStrace;
     keys[' '] = actionTag;
@@ -66,10 +70,10 @@ index 5b68811..3c5a296 100644
     keys['U'] = actionUntagAll;
     keys['c'] = actionTagAllChildren;
 diff --git a/Panel.c b/Panel.c
-index ab3f600..85e8f28 100644
+index 68a245e..f722d7b 100644
 --- a/Panel.c
 +++ b/Panel.c
-@@ -319,10 +319,12 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -329,10 +329,12 @@ bool Panel_onKey(Panel* this, int key) {
     int size = Vector_size(this->items);
     switch (key) {
     case KEY_DOWN:
@@ -82,7 +86,7 @@ index ab3f600..85e8f28 100644
     case KEY_CTRL('P'):
        this->selected--;
        break;
-@@ -337,23 +339,33 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -347,23 +349,33 @@ bool Panel_onKey(Panel* this, int key) {
        break;
     #endif
     case KEY_LEFT:
@@ -118,7 +122,7 @@ index ab3f600..85e8f28 100644
        this->selected += (this->h - 1);
        this->scrollV = MAXIMUM(0, MINIMUM(Vector_size(this->items) - this->h,
                                   this->scrollV + this->h - 1));
-@@ -375,9 +387,11 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -385,9 +397,11 @@ bool Panel_onKey(Panel* this, int key) {
        break;
     }
     case KEY_HOME:
@@ -131,10 +135,10 @@ index ab3f600..85e8f28 100644
        break;
     case KEY_CTRL('A'):
 diff --git a/README b/README
-index 880597d..54283bc 100644
+index 880597d..0c44936 100644
 --- a/README
 +++ b/README
-@@ -19,6 +19,47 @@ The information displayed is configurable through a graphical setup and can be s
+@@ -19,6 +19,48 @@ The information displayed is configurable through a graphical setup and can be s
  
  Tasks related to processes (e.g. killing and renicing) can be done without entering their PIDs.
  
@@ -174,6 +178,7 @@ index 880597d..54283bc 100644
 +* 'h' can no longer be used to access the help, leaving Ctrl+F1 & '?'
 +* 'k' can no longer be used to kill processes, being replaced with 'x'
 +* 'l' can no longer be used to list open files, being replaced with 'L'
++* 'x' can no longer be used to list file locks, being replaced with 'X'
 +
 +
 +Comparison between `htop` and classic `top`
@@ -183,10 +188,10 @@ index 880597d..54283bc 100644
  
  For more information and details on how to contribute to `htop` visit [htop.dev](https://htop.dev).
 diff --git a/ScreenManager.c b/ScreenManager.c
-index bc5f66a..41b03e0 100644
+index 87746c7..bbfa1a3 100644
 --- a/ScreenManager.c
 +++ b/ScreenManager.c
-@@ -257,7 +257,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -255,7 +255,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
           continue;
        }
        case KEY_LEFT:
@@ -195,8 +200,8 @@ index bc5f66a..41b03e0 100644
           if (this->panelCount < 2) {
              goto defaultHandler;
           }
-@@ -271,7 +271,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
-             goto tryLeft;
+@@ -276,7 +276,7 @@ tryLeft:
+ 
           break;
        case KEY_RIGHT:
 -      case KEY_CTRL('F'):
