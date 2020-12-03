@@ -1,7 +1,7 @@
 pkgbase = jlink-systemview
 	pkgdesc = Segger SystemView for Linux
 	pkgver = 3.20
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 6
 	url = https://www.segger.com/downloads/jlink/
 	arch = i686

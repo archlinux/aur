@@ -3,7 +3,7 @@
 
 pkgname=jlink-systemview
 pkgver=3.20
-pkgrel=3
+pkgrel=4
 epoch=6
 pkgdesc="Segger SystemView for Linux"
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ package(){
     # Install desktop entry
     rm -f "${pkgdir}/usr/share/applications/SystemView.desktop"
     install -Dm644 "SystemView.desktop" "${pkgdir}/usr/share/applications/JLink\ SystemView.desktop"
-    install -Dm644 "SystemView.svg" "${pkgdir}/usr/share/pixmaps/SystemView.png"
+    install -Dm644 "SystemView.svg" "${pkgdir}/usr/share/pixmaps/SystemView.svg"
 
 
     cd ${srcdir}/SystemView
