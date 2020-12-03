@@ -1,7 +1,7 @@
 pkgbase = mugshot
 	pkgdesc = Program to update personal user details
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bluesabre/mugshot
 	arch = any
 	license = GPLv3
@@ -18,7 +18,9 @@ pkgbase = mugshot
 	optdepends = libreoffice: update user details
 	options = !emptydirs
 	source = mugshot-0.4.2.tar.gz::https://github.com/bluesabre/mugshot/archive/mugshot-0.4.2.tar.gz
+	source = https://github.com/bluesabre/mugshot/commit/4f6c280f43261b45f16dea348d33bb3bf02e3ca1.patch
 	sha256sums = 05698a36494405b5a76be0bf92e89a87fec4e3e6e6168378833de160c9741c84
+	sha256sums = 087086eae1e453bf1e4626e0facdc5967f2ac1e43c1d75f73e5de1fda0bf69d6
 
 pkgname = mugshot
 
