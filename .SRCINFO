@@ -1,6 +1,6 @@
 pkgbase = hey-mail-bin
 	pkgdesc = Hey Mail desktop app
-	pkgver = 1.0.11
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://hey.com/apps/
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = hey-mail-bin
 	depends = libnotify
 	depends = libappindicator-gtk2
 	depends = libappindicator-gtk3
-	source = https://api.snapcraft.io/api/v1/snaps/download/lfWUNpR7PrPGsDfuxIhVxbj0wZHoH7bK_9.snap
-	md5sums = 2e44b4593f1644df6f2314aa037aae8b
+	source = https://api.snapcraft.io/api/v1/snaps/download/lfWUNpR7PrPGsDfuxIhVxbj0wZHoH7bK_10.snap
+	md5sums = d1723498daea634a06cbbacc406d5052
 
 pkgname = hey-mail-bin
 
