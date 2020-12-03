@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-moveit-ros-benchmarks
 	pkgdesc = ROS - Enhanced tools for benchmarks in MoveIt!.
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://moveit.ros.org
 	arch = i686
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = ros-melodic-moveit-ros-benchmarks
 	depends = ros-melodic-moveit-ros-planning
 	depends = ros-melodic-moveit-ros-warehouse
 	depends = ros-melodic-moveit-core
-	source = ros-melodic-moveit-ros-benchmarks-1.0.6.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_benchmarks/1.0.6.tar.gz
-	sha256sums = efd57aa9a2dca27e3802bb9d4c4baad73bd6931692899b778e1e6159299c975f
+	source = ros-melodic-moveit-ros-benchmarks-1.0.6.tar.gz::https://github.com/ros-planning/moveit/archive/1.0.6.tar.gz
+	sha256sums = a633830d2ed7e23089f9642d99298cb6eb96148c695c0b4890f2792eac4904b4
 
 pkgname = ros-melodic-moveit-ros-benchmarks
 
