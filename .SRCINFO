@@ -1,0 +1,30 @@
+pkgbase = distcc-arm-avahi
+	pkgdesc = Distributed compilation service for C, C++ and Objective-C (with zeroconf)
+	pkgver = 3.3.3
+	pkgrel = 7
+	url = https://github.com/distcc/distcc
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = python
+	depends = avahi
+	depends = popt
+	optdepends = python
+	provides = distcc=3.3.3
+	conflicts = distcc
+	backup = etc/conf.d/distccd
+	backup = etc/distcc/hosts
+	source = git+https://github.com/distcc/distcc#commit=4cde9bcfbda589abd842e3bbc652ce369085eaae
+	source = distccd.conf.d
+	source = distccd.service
+	source = sysusers.conf
+	sha256sums = SKIP
+	sha256sums = 43e02b461841ca2976816c244a0eca8b24820ca143f73cc0924403d75a8c012f
+	sha256sums = 360493245590d8c1480ff93cd30c9e81cb86efebacd78e45f37e7d6cdbcc2136
+	sha256sums = 4e037a6225f498b51d6902d117be979454ac78ec5fd2f65f1d5a38e10859612a
+
+pkgname = distcc-arm-avahi
+
