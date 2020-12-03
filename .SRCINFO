@@ -1,0 +1,29 @@
+pkgbase = arm-none-eabi-bin-92-complete
+	pkgdesc = GNU Tools ARM Embedded Processors (binary distribution, includes newlib, includes GDB)
+	pkgver = 9_2019_q4_major
+	pkgrel = 1
+	url = https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads
+	arch = x86_64
+	license = custom
+	depends = glibc
+	provides = gcc-arm-none-eabi
+	provides = gcc-arm-none-eabi-92
+	provides = arm-none-eabi-gcc
+	provides = arm-none-eabi-gcc-92
+	provides = arm-none-eabi-binutils
+	provides = arm-none-eabi-binutils-92
+	provides = arm-none-eabi-newlib
+	provides = arm-none-eabi-newlib-92
+	provides = arm-none-eabi-gdb
+	provides = arm-none-eabi-gdb-92
+	options = !strip
+	options = staticlibs
+	source = https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/9-2019q4/gcc-arm-none-eabi-9-2019-q4-major-x86_64-linux.tar.bz2
+	source = LICENSE.zst
+	md5sums = fe0029de4f4ec43cf7008944e34ff8cc
+	md5sums = 20737bbb5e041db4f2c139ad9108fa9f
+	b2sums = 9977e751aa457812c6401bdcdc963342a92595af0b7fbf4fb13e429c2f475752ee5b1d53d0774a31452131d3c6b3cfec188cff2933e6a12da27c206c5b78a561
+	b2sums = 202032f22a1f35a80874e93eba0a52dce294b780f9efdbecf2b993e1df6e65dbcdf4cb3ffc459feae06e559f7bc9e6934ff698b4035a6a5e3a7588a3e1809c42
+
+pkgname = arm-none-eabi-bin-92-complete
+
