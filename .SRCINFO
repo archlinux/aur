@@ -1,7 +1,7 @@
 pkgbase = flux-bin
 	pkgdesc = Open and extensible continuous delivery solution for Kubernetes
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fluxcd.io/
 	arch = x86_64
 	arch = armv6h
