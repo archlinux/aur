@@ -1,43 +1,40 @@
-# Maintainer: Rustem B. <rustemb@systemli.org>
+# Maintainer: orhun <orhunparmaksiz@gmail.com>
+# Contributor: Rustem B. <rustemb@systemli.org>
+# https://github.com/orhun/pkgbuilds
 
 pkgname=sic-image-cli-git
-pkgver=0.11.0.r2.g670901f
+_pkgname=sic
+pkgver=0.11.0.r412.g91c12ec
 pkgrel=1
-pkgdesc="Convert images and perform image operations from the command-line."
-arch=(x86_64)
+pkgdesc="Accessible image processing and conversion from the terminal (git)"
+arch=('x86_64')
 url="https://github.com/foresterre/sic"
 license=('MIT')
-groups=()
-depends=()
-makedepends=(git cargo)
-checkdepends=()
-optdepends=()
-provides=(sic)
-conflicts=(sic)
-replaces=()
-source=("$pkgname::git+https://github.com/foresterre/sic.git")
-md5sums=("SKIP")
+conflicts=("$_pkgname" "${pkgname%-git}")
+provides=("${pkgname%-git}")
+makedepends=('rust' 'git')
+source=("git+${url}"
+        "$url/releases/download/v$pkgver/shell_completions.zip")
+sha512sums=('SKIP'
+            'c3ce7c681c50a4bba8f29cca4f3269b857bd7f5f64b7b84c411fb41d4ff0ace6c06aae760bdcc81be0a750f271bac2cf80f6fc8376d5f3e293d915e2b37d3ecc')
 
 pkgver() {
-	cd "${pkgsrc}/$pkgname"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgname"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "${pkgsrc}/$pkgname"
-	cargo build --release
-}
-
-
-check() {
-	cd "${pkgsrc}/$pkgname"
-	cargo test --release
+  cd "$_pkgname"
+  cargo build --release --locked --all-features
 }
 
 package() {
-	cd "${pkgsrc}/$pkgname"
-	install -Dm755 "${srcdir}/${pkgname}/target/release/sic" "${pkgdir}/usr/bin/sic"
-	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/sic/README.md"
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/sic/LICENSE"
-	install -Dm644 "thanks/dependency_licenses.txt" "${pkgdir}/usr/share/licenses/sic/DEPS_LICENSES"
+  cd "$_pkgname"
+  install -Dm 755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+  install -Dm 644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$_pkgname"
+  install -Dm 644 LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$_pkgname"
+  install -Dm 644 "../$_pkgname.bash" "${pkgdir}/usr/share/bash-completion/completions/$_pkgname"
+  install -Dm 644 "../$_pkgname.fish" -t "${pkgdir}/usr/share/fish/completions"
+  install -Dm 644 "../_$_pkgname" -t "${pkgdir}/usr/share/zsh/functions/Completion/Linux"
 }
