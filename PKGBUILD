@@ -8,6 +8,8 @@ url="http://www.openhab.org/"
 license=("EPL")
 depends=("java-runtime-headless=11")
 
+conflicts=("openhab3-snapshot")
+
 backup=("etc/${pkgname}/services/addons.cfg"
         "etc/${pkgname}/services/runtime.cfg"
         "etc/default/${pkgname}"

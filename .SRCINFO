@@ -6,6 +6,7 @@ pkgbase = openhab3
 	arch = any
 	license = EPL
 	depends = java-runtime-headless=11
+	conflicts = openhab3-snapshot
 	backup = etc/openhab3/services/addons.cfg
 	backup = etc/openhab3/services/runtime.cfg
 	backup = etc/default/openhab3
