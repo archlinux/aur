@@ -14,11 +14,13 @@ pre_install() {
 
 post_install() {
 	systemctl daemon-reload
+
+	# Get the path to site-packages with the current python version
+	site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 	
 	# Make sure the papermerge user owns the migrations directory (write access needed)
 	if id papermerge &>/dev/null; then
-		chown -R papermerge:papermerge "/usr/lib/python3.8/site-packages/papermerge/core/migrations"
-		chown -R papermerge:papermerge "/usr/lib/python3.9/site-packages/papermerge/core/migrations"
+		chown -R papermerge:papermerge "$site_packages/papermerge/core/migrations"
 	fi
 	
 	# run the migrations
@@ -32,9 +34,11 @@ post_install() {
 
 # Run migrations and restart the systemd service
 post_upgrade() {
+	# Get the path to site-packages with the current python version
+	site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
 	# Make sure the papermerge user owns the migrations directory (write access needed)
-	chown -R papermerge:papermerge "/usr/lib/python3.8/site-packages/papermerge/core/migrations"
-	chown -R papermerge:papermerge "/usr/lib/python3.9/site-packages/papermerge/core/migrations"
+	chown -R papermerge:papermerge "$site_packages/papermerge/core/migrations"
 	
 	# run the migrations
 	runuser -u papermerge -- /usr/bin/papermerge-manage makemigrations --merge --noinput
