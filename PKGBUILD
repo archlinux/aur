@@ -3,7 +3,7 @@
 _name=anyconfig-bson-backend
 pkgname=python-$_name
 pkgver=0.1.2
-pkgrel=1
+pkgrel=3
 pkgdesc='A parser backend module for python-anyconfig to load and dump BSON files using pymongo.'
 url='https://github.com/ssato/python-anyconfig-bson-backend'
 arch=('any')

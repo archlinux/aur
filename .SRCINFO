@@ -1,7 +1,7 @@
 pkgbase = python-anyconfig-bson-backend
 	pkgdesc = A parser backend module for python-anyconfig to load and dump BSON files using pymongo.
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/ssato/python-anyconfig-bson-backend
 	arch = any
 	license = MIT
