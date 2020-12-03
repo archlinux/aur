@@ -3,7 +3,7 @@
 
 pkgname=flux-go
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open and extensible continuous delivery solution for Kubernetes"
 url="https://fluxcd.io/"
 arch=("x86_64" "armv6h" "armv7h" "aarch64")
@@ -18,7 +18,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/fluxcd/flux2/archive/v$pkgver.tar.gz"
 )
 sha512sums=(
-  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  e7cda6633e2ff8189ee2a4801e4af60337e16a84a74ea5ed1145a73d79860844
 )
 
 build() {
