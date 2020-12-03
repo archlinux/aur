@@ -2,7 +2,7 @@
 
 pkgname=python-pyminifier
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Pyminifier is a Python code minifier, obfuscator, and compressor."
 url="https://github.com/liftoff/pyminifier"
 depends=('python' 'python-setuptools')

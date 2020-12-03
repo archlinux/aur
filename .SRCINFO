@@ -1,7 +1,7 @@
 pkgbase = python-pyminifier
 	pkgdesc = Pyminifier is a Python code minifier, obfuscator, and compressor.
 	pkgver = 2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/liftoff/pyminifier
 	arch = any
 	license = MIT
