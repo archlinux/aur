@@ -3,7 +3,7 @@
 
 pkgname=ozone
 pkgver=3.20i
-pkgrel=4
+pkgrel=5
 epoch=21
 pkgdesc="Segger Ozone JLink debugger for Linux"
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ package(){
 
     # Install desktop entry
     install -Dm644 "Ozone.desktop" "${pkgdir}/usr/share/applications/Ozone.desktop"
-    install -Dm644 "Ozone.svg" "${pkgdir}/usr/share/pixmaps/Ozone.png"
+    install -Dm644 "Ozone.svg" "${pkgdir}/usr/share/pixmaps/Ozone.svg"
 
     cd ${srcdir}/Ozone
 
