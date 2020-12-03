@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Segger JLinkRemoteServer
+Comment=Segger remote server for Linux
+Exec=/usr/bin/JLinkRemoteServer
+Icon=JLink.svg
+Terminal=false
+StartupNotify=false
+Categories=Development

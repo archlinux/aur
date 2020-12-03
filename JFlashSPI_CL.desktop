@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Segger JFlashSPI_CL
+Comment=Segger SPI flasher for Linux
+Exec=/usr/bin/JFlashSPI_CL
+Icon=JLink.svg
+Terminal=false
+StartupNotify=false
+Categories=Development

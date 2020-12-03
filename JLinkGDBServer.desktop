@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Segger JLinkGDBServer
+Comment=Segger GDB server for Linux
+Exec=/usr/bin/JLinkGDBServer
+Icon=JLink.svg
+Terminal=false
+StartupNotify=false
+Categories=Development

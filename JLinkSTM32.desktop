@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Segger JLinkSTM32
+Comment=Segger JLinkSTM32 for Linux
+Exec=/usr/bin/JLinkSTM32
+Icon=JLink.svg
+Terminal=false
+StartupNotify=false
+Categories=Development

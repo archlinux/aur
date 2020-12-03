@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Segger JLinkLicenseManager
+Comment=Segger Jlink license manager for Linux
+Exec=/usr/bin/JLinkLicenseManager
+Icon=JLink.svg
+Terminal=false
+StartupNotify=false
+Categories=Development

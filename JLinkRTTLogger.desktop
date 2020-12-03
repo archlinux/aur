@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Segger JLinkRTTLogger
+Comment=Segger RTT Logger for Linux
+Exec=/usr/bin/JLinkRTTLogger
+Icon=JLink.svg
+Terminal=false
+StartupNotify=false
+Categories=Development

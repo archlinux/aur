@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=6.88b
-pkgrel=0
+pkgrel=1
 epoch=32
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,11 +13,12 @@ depends=('glibc' 'libudev0-shim' 'patch')
 source_x86_64=("JLink_Linux_${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_x86_64.tgz")
 source_i686=("JLink_Linux_${pkgver/./}_i686.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_i386.tgz")
 source_armv7h=("JLink_Linux_${pkgver/./}_arm.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_arm.tgz")
-source=("99-jlink.rules.patch")
+source=("99-jlink.rules.patch" "JLink.svg" "JFlashSPI_CL.desktop" "JLinkGDBServer.desktop" "JLinkLicenseManager.desktop" "JLinkRegistration.desktop" "JLinkRemoteServer.desktop" "JLinkRTTClient.desktop" "JLinkRTTLogger.desktop" "JLinkSTM32.desktop" "JLinkSWOViewer.desktop")
 md5sums_i686=('b661572da1b9f3bede8ba5e1621d63e8')
 md5sums_x86_64=('ca4935902d8bd2b7ee9cb2d6136becd6')
 md5sums_armv7h=('d00eae7b543d23e4cdcd6758a2c0fb0b')
-md5sums=('a57d93b791581c1f36e4c672303bb85d')
+md5sums=("a57d93b791581c1f36e4c672303bb85d" "83a136d31b296dd8f0e23bc21f9d8e19" "395410c9819a18a659de9c80925508f1" "69516914a635e3b8c703816fb34add8b" "e763d0de7bced23342523447af761c23" "3d9e3093c2da9fde601b9c308296161b" "3cf777043c9779763fb8281cceed5d81" "fea9e4cf79db13c19e90af0e6ce4048a" "f933dfa3297baba000a0514a0c705264" "9119afd453425a256aa023bae8442570" "24e403277bb890d915b2c454833ff3d6")
+
 install=$pkgname.install
 url="https://www.segger.com/jlink-software.html"
 conflicts=("j-link-software-and-documentation")
@@ -44,7 +45,21 @@ package(){
             "${pkgdir}/usr/bin/" \
             "${pkgdir}/etc/" \
             "${pkgdir}/usr/lib/udev/rules.d/" \
-            "${pkgdir}/usr/share/doc/${pkgname}/"
+            "${pkgdir}/usr/share/doc/${pkgname}/" \
+            "${pkgdir}/usr/share/pixmaps" \
+            "${pkgdir}/usr/share/applications"
+
+    # Install desktop entry
+    install -Dm644 "JFlashSPI_CL.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm644 "JLinkSTM32.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm644 "JLinkGDBServer.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm644 "JLinkLicenseManager.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm644 "JLinkRegistration.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm644 "JLinkRemoteServer.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm644 "JLinkRTTClient.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm644 "JLinkRTTLogger.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm644 "JLinkSWOViewer.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm644 "JLink.svg" "${pkgdir}/usr/share/pixmaps/JLink.svg"
 
     cd "${srcdir}/JLink"
 
