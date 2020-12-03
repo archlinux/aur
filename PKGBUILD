@@ -2,7 +2,7 @@
 
 _srcname='chinadns-ng'
 pkgname=chinadns-ng-git
-pkgver=r341.90e9f26
+pkgver=r342.748a043
 pkgrel=1
 pkgdesc='Chinadns next generation, refactoring with epoll and ipset'
 arch=('i686' 'x86_64')
