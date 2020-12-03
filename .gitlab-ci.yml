@@ -3,9 +3,11 @@ image: archlinux:latest
 variables:
   CHROOT: "$HOME/chroot"
 
-script:
-  - pacman -Syu
-  - mkdir $CHROOT
-  - mkarchroot $CHROOT/root base-devel
-  - arch-nspawn $CHROOT/root pacman -Syu
-  - makechrootpkg -c -r $CHROOT
+build:
+  script:
+    - pacman -Syu
+    - mkdir $CHROOT
+    - mkarchroot $CHROOT/root base-devel
+    - arch-nspawn $CHROOT/root pacman -Syu
+    - makechrootpkg -c -r $CHROOT
+
