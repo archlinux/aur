@@ -42,6 +42,7 @@ build() {
       --disable-ldaps \
       --disable-ipv6 \
       --disable-manual \
+      --disable-verbose \
       --disable-rtsp \
       --disable-ftp \
       --disable-file \
