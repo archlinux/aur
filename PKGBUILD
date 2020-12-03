@@ -1,6 +1,6 @@
 # Maintainer: Malachi Soord <me@malachisoord.com>
 pkgname=psalm
-pkgver=4.2.1
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Psalm is a static analysis tool for finding errors in PHP applications, built on top of PHP Parser."
 url="https://getpsalm.org"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('php')
 
 source=("$pkgname-$pkgver.phar::https://github.com/vimeo/psalm/releases/download/${pkgver}/psalm.phar")
-sha512sums=('f2bc6854cd83aff4c3ef4c4e8c507a0b72e3d8af61d7a68ca42d859fe3395e897919a1544bb636a5daae2cf60a63735204b3edb914a3c88feac8de92cd384536')
+sha512sums=('b0dd780a45580fd2c5f10a7aa0269577533a9ac531cf56876371e603814e41f85653b37b75099535f29fd4a2b9dd43194bcfb898c4a275f49cc678714455788e')
 
 package() {
   install -D -m 755 ${srcdir}/$pkgname-$pkgver.phar ${pkgdir}/usr/share/webapps/bin/${pkgname}.phar
