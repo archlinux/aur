@@ -1,10 +1,10 @@
 # Maintainer: libertylocked <libertylocked@disroot.org>
 # Contributor: Stephen Brown II <Stephen [dot] Brown2 [at] gmail.com>
 pkgname=bitwarden-cli
-pkgver=1.13.2
-_jslibcommit='85faee21eec7602eecc3a5368be4c8fb7bab1e67'
+pkgver=1.13.3
+_jslibcommit='abb54f007305eabd77996623dd20cbe45345e82a'
 _nodeversion='10.20.1'
-pkgrel=2
+pkgrel=1
 pkgdesc="The command line vault (Windows, macOS, & Linux). bitwarden.com"
 arch=('x86_64')
 url="https://github.com/bitwarden/cli"
@@ -14,8 +14,8 @@ conflicts=('bitwarden-cli-git')
 options=('!strip')
 source=("bitwarden-cli-${pkgver}.tar.gz::https://github.com/bitwarden/cli/archive/v${pkgver}.tar.gz"
         "jslib-${_jslibcommit}.tar.gz::https://github.com/bitwarden/jslib/archive/${_jslibcommit}.tar.gz")
-sha512sums=('5fa28716c5e10f5df0983a13ccf162c2f035d351e590f6d4580c115ca1c08b9d3f71bfced085521afc6885a78276ef108d5fe185e89674076c3265f21a0e7b58'
-            '50d8f222a208252630e47e365325a5c0a9875c9fb52415f380749951773c76159120355f3579a18ccc8582fbe07588f5afcd62eedc20d17ff4247ba28ef8c1cd')
+sha512sums=('95cf8783035420510a2ce4ed8d0b5066f2fd400e763498a3f4449341c99571bd4f8715248f73b53a0669e19f6742a61d223fe17e61638a85a8c5000a3a9c472f'
+            '3d27f44477a5da81bbd217b1c13a756b9174852b3b2f1bb45601a1374ae9c548bde996766608246403dc8aba73422972a0b5655c7c18aeddd869b3992feaf07e')
 
 prepare() {
   rmdir "${srcdir}/cli-${pkgver}/jslib"
@@ -29,6 +29,7 @@ build() {
   source /usr/share/nvm/init-nvm.sh
   nvm install ${_nodeversion} && nvm use ${_nodeversion}
 
+  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   cd "${srcdir}/cli-${pkgver}/jslib"
   npm install
   cd "${srcdir}/cli-${pkgver}"
