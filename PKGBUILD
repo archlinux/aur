@@ -6,7 +6,7 @@ url='http://wiki.ros.org/trac_ik_python'
 pkgname='ros-melodic-trac-ik-python'
 pkgver='1.5.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -55,8 +55,8 @@ build() {
           -DCATKIN_BUILD_BINARY_PACKAGE=ON \
           -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
           -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-          -DPYTHON_INCLUDE_DIR=/usr/include/python3.8 \
-          -DPYTHON_LIBRARY=/usr/lib/libpython3.8.so \
+          -DPYTHON_INCLUDE_DIR=/usr/include/python3.9 \
+          -DPYTHON_LIBRARY=/usr/lib/libpython3.9.so \
           -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
