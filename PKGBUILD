@@ -2,7 +2,7 @@
 
 pkgname=i3-workspace-switch
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Utility to allow switching workspaces by their position on the output"
 arch=(any)
 url="https://github.com/languitar/i3-workspace-switch"
