@@ -55,6 +55,7 @@ _flags=(
     -Dxcb-xkb=enabled
     -Dxwayland=enabled
     -Dx11-backend=enabled
+    -Dexamples=false
 )
 
 build() {
