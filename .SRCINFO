@@ -1,7 +1,7 @@
 pkgbase = mcg
 	pkgdesc = A covergrid for the Music Player Daemon.
 	pkgver = 2.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.suruatoel.xyz/codes/mcg
 	arch = any
 	license = GPL
@@ -13,6 +13,7 @@ pkgbase = mcg
 	depends = desktop-file-utils
 	optdepends = python-keyring
 	optdepends = avahi
+	optdepends = mpd
 	provides = mcg
 	conflicts = mcg
 	source = https://gitlab.com/coderkun/mcg/-/archive/v2.1.2/mcg-v2.1.2.tar.gz

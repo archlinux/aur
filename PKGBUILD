@@ -1,12 +1,12 @@
 pkgname=mcg
 pkgver=2.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A covergrid for the Music Player Daemon."
 url="https://www.suruatoel.xyz/codes/mcg"
 arch=(any)
 license=(GPL)
 depends=('python-gobject' 'gtk3' 'gsettings-desktop-schemas' 'desktop-file-utils')
-optdepends=('python-keyring' 'avahi')
+optdepends=('python-keyring' 'avahi' 'mpd')
 makedepends=('python-setuptools' 'git')
 provides=("$pkgname")
 conflicts=("$pkgname")
