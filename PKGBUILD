@@ -1,33 +1,38 @@
-# Maintainer: Matt Harrison <matt@harrison.us.com>
-# Contributor: David Runge <dvzrv@archlinux.org>
+# Maintainer: Timo Sarawinski <timo@it-kraut.net>
 
-pkgname=php73-imagick
+pkgname=php80-imagick
 _name=imagick
 pkgver=3.4.4
-pkgrel=2
-pkgdesc="PHP 7.3 extension to create and modify images using the ImageMagick library"
+pkgrel=1
+_commit=c5b8086b5d96c7030e6d4e6ea9a5ef49055d8273
+pkgdesc="PHP 8.0 extension to create and modify images using the ImageMagick library"
 arch=('x86_64')
 url="https://github.com/mkoppanen/imagick"
 license=('PHP')
-depends=('php73' 'imagemagick' 'ttf-dejavu')
-checkdepends=('librsvg')
-backup=("etc/php73/conf.d/${_name}.ini")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mkoppanen/${_name}/archive/${pkgver}.tar.gz")
-sha512sums=('f3d3c74b4d0bb5c2dd986a8b960096ff200daa82e60fdd1467a54944be06810923b4e68a4f70194e25c8176afd9a609b9f2545054520ec759202e5fc3f1e827b')
+depends=('php80' 'imagemagick' 'ttf-font')
+checkdepends=('librsvg' 'ttf-dejavu')
+backup=("etc/php80/conf.d/${_name}.ini")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mkoppanen/${_name}/archive/${_commit}.tar.gz"
+        "${pkgname}-3.4.4-imagemagick_threading.patch::https://github.com/Imagick/imagick/pull/296.patch")
+sha512sums=('bd62bc51de3e330f63b29fc5f259893356e0aa205f6643266432f465fcca4d893931bc5822aef04643d6d27e9be906e3602126ee3f58fbed7804de691d0cb6d2'
+            'd11a08b6a6a4a5e6d9b9cf9e87a6c0bb29ba632d6318ac237fe59910d70b07ef8df5af775451c89c5a81d45e609b9aa69611ecb562bfcbda832d5f0ae1207d55')
 
 prepare() {
-  mv -v "${_name}-$pkgver" "$pkgname-$pkgver"
+  mv -v "${_name}-$_commit" "$pkgname-$pkgver"
   cd "$pkgname-$pkgver"
+  # fix imagemagick threading issues when building against php >= 7.4
+  patch -Np1 -i "../${pkgname}-3.4.4-imagemagick_threading.patch"
+  # php8 
   # setting package version: https://bugs.archlinux.org/task/64185
   sed -e "s/@PACKAGE_VERSION@/${pkgver}/" \
       -i php_imagick.h package.xml
   echo ";extension=${_name}" > "${_name}.ini"
-  phpize73
+  phpize80
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --with-php-config=/usr/bin/php-config80
   make
 }
 
@@ -40,7 +45,7 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   make INSTALL_ROOT="$pkgdir/" install
-  install -vDm 644 "${_name}.ini" -t "${pkgdir}/etc/php73/conf.d/"
+  install -vDm 644 "${_name}.ini" -t "${pkgdir}/etc/php80/conf.d/"
   install -vDm 644 {ChangeLog,CREDITS,README.md} \
     -t "${pkgdir}/usr/share/doc/${pkgname}/"
   install -vDm 644 examples/*.php \
