@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-mbf-costmap-core
 	pkgdesc = ROS - This package provides common interfaces for navigation specific robot actions.
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = http://wiki.ros.org/move_base_flex/mbf_costmap_core
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = ros-melodic-mbf-costmap-core
 	depends = ros-melodic-costmap-2d
 	depends = ros-melodic-std-msgs
 	depends = ros-melodic-geometry-msgs
-	source = ros-melodic-mbf-costmap-core-0.3.3.tar.gz::https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_costmap_core/0.3.3.tar.gz
-	sha256sums = be6f806ed2987d692778f50c9580f1ba02728748aabde2a32a257cd417905424
+	source = ros-melodic-mbf-costmap-core-0.3.4.tar.gz::https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_costmap_core/0.3.4.tar.gz
+	sha256sums = 7afcb41c88bd2da3edeffd43f328cd842e260f44a04ee9a49a2c700f80590078
 
 pkgname = ros-melodic-mbf-costmap-core
 
