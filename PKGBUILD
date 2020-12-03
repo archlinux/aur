@@ -3,15 +3,15 @@ packager='Natalia Portillo <claunia@claunia.com>'
 _netcoretarget='netcoreapp3.1'
 _aarubase='Aaru'
 pkgname='aaru'
-pkgver=5.1.0.3214
+pkgver=5.2.0.3330
 pkgrel=1
 pkgdesc='Disc image management and creation tool for disks, tapes, optical and solid state media'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='http://www.aaru.app'
 license=('GPL')
-source=('https://github.com/aaru-dps/Aaru/releases/download/v5.1.0.3214/aaru-src-5.1.0.3214.tar.xz'
-        'https://github.com/aaru-dps/Aaru/releases/download/v5.1.0.3214/aaru-src-5.1.0.3214.tar.xz.asc')
-sha256sums=('ea7978bdfcf580436bad7cffa0b7cf2a1a0bd4b7bca8d5d69e9f129b4caf6d72'
+source=('https://github.com/aaru-dps/Aaru/releases/download/v5.2.0.3330/aaru-src-5.2.0.3330.tar.xz'
+        'https://github.com/aaru-dps/Aaru/releases/download/v5.2.0.3330/aaru-src-5.2.0.3330.tar.xz.asc')
+sha256sums=('f76c9efff49ab893b68a08e3ec32407a88335b6bd9448dda30b026f722f40aaa'
             'SKIP')
 validpgpkeys=('236F1E21B540FC0D40F7AD1751D20488C724CA9F')
 makedepends=('dotnet-sdk>=3.1.0')
