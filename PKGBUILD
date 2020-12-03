@@ -4,7 +4,7 @@
 
 pkgname=liquidctl
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform tool and drivers for liquid coolers and other devices"
 url="https://github.com/jonasmalacofilho/liquidctl"
 depends=('python' 'python-setuptools' 'python-pyusb' 'python-hidapi' 'python-docopt')
