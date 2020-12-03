@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=mmwm-git
-pkgver=r102.ffe4c6d
+pkgver=r109.a454c08
 pkgrel=1
 pkgdesc="Modern Minimalistic Window Manager (git)"
 url="https://github.com/kaugm/mmwm"
