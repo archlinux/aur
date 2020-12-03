@@ -6,13 +6,13 @@ pkgbase = gog-factorio
 	arch = x86_64
 	license = custom
 	makedepends = lgogdownloader
-	depends = glibc
-	depends = libx11
 	depends = libxinerama
 	depends = libxrandr
 	depends = libxcursor
 	depends = alsa-lib
 	depends = libpulse
+	depends = libglvnd
+	provides = factorio=1.0.0
 	conflicts = factorio
 	conflicts = factorio-demo
 	conflicts = factorio-experimental
