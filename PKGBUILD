@@ -3,13 +3,13 @@
 _srcname=dict-cedict
 _txtname=cedict_1_0_ts_utf-8_mdbg.txt
 pkgname=dict-cedict-git
-pkgver=20201121.r6.1a76c1e
+pkgver=20201202.r6.1a76c1e
 pkgrel=1
 pkgdesc="A port of CC-CEDICT database for dictd et al."
 arch=('any')
 url="https://www.mdbg.net/chinese/dictionary?page=cc-cedict"
 license=('CCPL')
-optdepends=('dictd: dict client and server')
+depends=('dictd')
 makedepends=('dictd' 'git' 'python' 'curl')
 provides=('dict-cedict')
 conflicts=('dict-cedict')
