@@ -1,7 +1,8 @@
 # Maintainer: Emilio Reggi <nag@mailbox.org>
 pkgname=mastorss-git
 _pkgname=mastorss
-pkgver=r273.2d113ab
+_source=https://schlomp.space/tastytea/mastorss.git
+pkgver=r278.baf3e20
 pkgrel=1
 pkgdesc="mastorss reads RSS feeds and posts the items via the Mastodon API. Does not support Atom at the moment."
 arch=('x86_64')
@@ -10,8 +11,9 @@ license=('GPL')
 groups=()
 depends=('mastodonpp' 'jsoncpp' 'boost-libs')
 makedepends=('git' 'cmake')
-provides=('mastorss')
-source=("${_pkgname}"::"git+https://schlomp.space/tastytea/mastorss.git")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}"::"git+${_source}")
 md5sums=('SKIP')
 
 pkgver() {
