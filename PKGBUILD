@@ -6,7 +6,7 @@ url='https://wiki.ros.org/python_orocos_kdl'
 pkgname='ros-melodic-python-orocos-kdl'
 pkgver='1.4.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('LGPL')
 
 ros_makedepends=(
@@ -58,13 +58,10 @@ build() {
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.8 \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.8.so \
-		-DPYTHON_BASENAME=.cpython-38 \
-		-DSETUPTOOLS_DEB_LAYOUT=OFF
+		-DPYTHON_INCLUDE_DIR=/usr/include/python3.9 \
+		-DPYTHON_LIBRARY=/usr/lib/libpython3.9.so
 	make
 }
 
