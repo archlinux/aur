@@ -1,22 +1,21 @@
 pkgbase = openpose
 	pkgdesc = OpenPose: Real-time multi-person keypoint detection library for body, face, hands, and foot estimation
-	pkgver = 1.5.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/CMU-Perceptual-Computing-Lab/openpose
-	arch = any
+	arch = x86_64
 	license = ACADEMIC OR NON-PROFIT ORGANIZATION NONCOMMERCIAL RESEARCH USE ONLY
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = wget
+	makedepends = boost
 	depends = caffe
-	depends = intel-mkl
 	depends = libgl
 	depends = glu
-	depends = lilv
-	depends = boost
-	source = https://github.com/CMU-Perceptual-Computing-Lab/openpose/archive/v1.5.1.tar.gz
-	md5sums = ac27f8102c1e8c2e5b51532a46c10181
+	depends = glut
+	source = https://github.com/CMU-Perceptual-Computing-Lab/openpose/archive/v1.7.0.tar.gz
+	md5sums = 178876507c11dab3da2fcd68c748d90b
 
 pkgname = openpose
 
