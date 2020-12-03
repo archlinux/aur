@@ -1,7 +1,7 @@
 pkgbase = mastodonpp-git
 	pkgdesc = mastodonpp is a C++ wrapper for the Mastodon and Pleroma APIs. It replaces mastodon-cpp.
-	pkgver = r335.cf43022
-	pkgrel = 2
+	pkgver = r337.cca3a4a
+	pkgrel = 1
 	url = https://schlomp.space/tastytea/mastodonpp.git
 	arch = x86_64
 	license = AGPL

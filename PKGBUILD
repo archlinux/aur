@@ -8,7 +8,6 @@ pkgdesc="mastodonpp is a C++ wrapper for the Mastodon and Pleroma APIs. It repla
 arch=('x86_64')
 url="https://schlomp.space/tastytea/mastodonpp.git"
 license=('AGPL')
-groups=()
 depends=('libcurl.so')
 makedepends=('git' 'cmake')
 optdepends=('doxygen: documentation' 'catch2: tests')
