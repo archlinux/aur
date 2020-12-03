@@ -1,7 +1,7 @@
 pkgbase = tgenv
 	pkgdesc = Terragrunt version manager inspired by tfenv
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cunymatthieu/tgenv
 	install = tgenv.install
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 pkgname=tgenv
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Terragrunt version manager inspired by tfenv"
 arch=("x86_64")
@@ -29,6 +29,7 @@ package() {
 
     cp -R "bin" "${pkgdir}/opt/tgenv/bin"
     cp -R "libexec" "${pkgdir}/opt/tgenv/libexec"
+    cp "CHANGELOG.md" "${pkgdir}/opt/tgenv/CHANGELOG.md"
 
     ln -s "/opt/tgenv/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     ln -s "/opt/tgenv/bin/terragrunt" "${pkgdir}/usr/bin/terragrunt"
