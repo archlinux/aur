@@ -3,7 +3,7 @@
 pkgname="python-marshmallow-dataclass"
 _pkgname="${pkgname#python-}"
 _name="${_pkgname/-/_}"
-pkgver=7.6.0
+pkgver=8.3.0
 pkgrel=1
 pkgdesc='Convert dataclasses into marshmallow schemas'
 arch=('any')
@@ -12,9 +12,9 @@ license=('MIT')
 # NOTE: python-dataclasses was introduced in Python 3.7, so no longer an explicit dependency.
 depends=('python' 'python-marshmallow' 'python-typing_inspect' 'python-marshmallow-enum' 'python-marshmallow-union')
 makedepends=('python-setuptools')
-checkdepends=('python-pytest')
+checkdepends=('python-pytest' 'python-typeguard')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('10b0838bd10250ea69c9593230146f6a93a8e10774468ea3e1206e2f2e74f656b52da1442d623c4e432155525f2e80b77fc7ceb0f502767a161d226f1e8fdc6c')
+sha512sums=('4bddbe77f3131aa40af9b19f1430445c5b285c7912eb43ea09ab64c89a07b4623f2fd62a56747df0c8b418819423f45dcd75bada6b0b4c583d4bb0d68a6657ba')
 
 build() {
   cd "$_name-$pkgver"
