@@ -1,6 +1,6 @@
 pkgbase = wasi-sdk-bin
 	pkgdesc = WASI-enabled WebAssembly C/C++ toolchain
-	pkgver = 11.0
+	pkgver = 12.0
 	pkgrel = 1
 	url = https://github.com/WebAssembly/wasi-sdk
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = wasi-sdk-bin
 	depends = clang
 	depends = lld
 	options = !strip
-	source = https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-11/wasi-sysroot-11.0.tar.gz
-	source = https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-11/libclang_rt.builtins-wasm32-wasi-11.0.tar.gz
-	sha512sums = 8f84fd904e178853042cec85d90ea85c66c27fece42101a00b110d2af0ef398c7ae6ffca6abf7fe5579d1397b532fa7e67c7d38cbb27c441ca7692b54444294a
-	sha512sums = 9b5a20fbfc1f470cb76af1c02774b63e09473570381d14c72f6d173be5b8950e85a7f719a56b66d86c24a01136faaea1496a9147629542c1c789ed7079ee9559
+	source = https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-12/wasi-sysroot-12.0.tar.gz
+	source = https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-12/libclang_rt.builtins-wasm32-wasi-12.0.tar.gz
+	sha512sums = 0dfbc250863f80d98638ad4cd4ccbf482c4a7ca91f1221e10ce5ee63bf4490c6f0a5f09d69a5e9000dc31c05439fece8638c486a3d85956b26cddd1f54dccb8f
+	sha512sums = 8297413cb44dd0a68528ea66515677d16c3af8ff5ac80a4d0c5dacd54ead32d316ec6fb7aee483bcef8b018a8558a2358e02a1fe1ec26f21426098aeb772346a
 
 pkgname = wasi-sdk-bin
 
