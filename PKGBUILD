@@ -2,7 +2,7 @@
 # Contributor: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=html-xml-utils
-pkgver=7.8
+pkgver=7.9
 pkgrel=1
 pkgdesc='A number of simple utilities for manipulating HTML and XML files.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='http://www.w3.org/Tools/HTML-XML-utils/'
 license=('W3C')
 depends=('curl' 'libidn2' )
 source=("$url/$pkgname-$pkgver.tar.gz")
-sha256sums=('9ab41c9277efc699603d062c10740c6e528fdb9ac35014db4e07f16ad8700d5d')
+sha256sums=('d86ac96ea660316bef814c17b2a96d54cdf91c69e59614459865c2bfdaee433f')
 
 build() {
 	cd "$pkgname-$pkgver"
