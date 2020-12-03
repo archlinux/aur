@@ -3,16 +3,16 @@
 
 pkgname=('python-crccheck')
 _module=${pkgname#python-}
-pkgver='0.6'
-pkgrel=2
+pkgver='1.0'
+pkgrel=1
 pkgdesc="Calculation library for CRCs and checksums"
-url="https://bitbucket.org/martin_scharrer/crccheck"
+url="https://sourceforge.net/projects/crccheck"
 depends=('python')
 makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.zip")
-sha256sums=('5686a4e5c3a2949597316c067c49c21e06051d13de9521434480cfa24dad7e32')
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.tar.gz")
+sha256sums=('17c42dc4f069308ae962b682b2974bdbf2f80ee682c7032a9df44880fca3c9ab')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
@@ -20,7 +20,6 @@ build() {
 }
 
 package() {
-    depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
     rm -r ${pkgdir}/usr/lib/python3.8/site-packages/tests/

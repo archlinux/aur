@@ -1,15 +1,14 @@
 pkgbase = python-crccheck
 	pkgdesc = Calculation library for CRCs and checksums
-	pkgver = 0.6
-	pkgrel = 2
-	url = https://bitbucket.org/martin_scharrer/crccheck
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://sourceforge.net/projects/crccheck
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/crccheck/crccheck-0.6.zip
-	sha256sums = 5686a4e5c3a2949597316c067c49c21e06051d13de9521434480cfa24dad7e32
+	source = https://files.pythonhosted.org/packages/source/c/crccheck/crccheck-1.0.tar.gz
+	sha256sums = 17c42dc4f069308ae962b682b2974bdbf2f80ee682c7032a9df44880fca3c9ab
 
 pkgname = python-crccheck
-	depends = python
 
