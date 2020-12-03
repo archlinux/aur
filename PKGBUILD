@@ -64,7 +64,7 @@ build() {
       -DNAS=OFF \
       -DNAS_SHARED=OFF \
       -DALSA=ON \
-      -DOSS=OFF
+      -DOSS=OFF \
       -DHIDAPI=OFF \
       -DHIDAPI_LIBUSB=OFF \
       -DJOYSTICK=OFF \
@@ -77,6 +77,8 @@ build() {
       -DPULSEAUDIO=OFF \
       -DPULSEAUDIO_SHARED=OFF \
       -DVIDEO_WAYLAND=ON \
+      -DVIDEO_WAYLAND_QT_TOUCH=OFF \
+      -DVIDEO_X11_XSCRNSAVER=OFF \
       -DRPATH=OFF \
       -DCLOCK_GETTIME=ON \
       -DVIDEO_RPI=OFF \
