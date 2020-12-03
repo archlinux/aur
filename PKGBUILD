@@ -1,7 +1,7 @@
 # Maintainer: Xuanrui Qi <me@xuanruiqi.com>
 pkgname=ssrmint-git
-pkgver=r9.26df1b7
-pkgrel=2
+pkgver=r13.fa1f7ab
+pkgrel=3
 pkgdesc="Ad-hoc pygments style and lexer for LaTeX pretty-printing of SSReflect"
 arch=('any')
 url="https://github.com/affeldt-aist/ssrmint"
