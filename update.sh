@@ -90,7 +90,7 @@ package() {
     # Move all of the package data resources to \${pkgdir}/usr/share/sublime-music
     data_dir=\${pkgdir}/usr/share/sublime-music
     mkdir -p \${data_dir}/adapters/subsonic \${data_dir}/dbus \${data_dir}/ui
-    pushd \${pkgdir}/usr/lib/python3.8/site-packages/sublime_music
+    pushd \${pkgdir}/usr/lib/python3.9/site-packages/sublime_music
     mv adapters/icons \${data_dir}/adapters
     mv adapters/images \${data_dir}/adapters
     mv adapters/subsonic/icons \${data_dir}/adapters/subsonic
