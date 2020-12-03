@@ -1,14 +1,14 @@
 pkgbase = lib_amxm-git
 	pkgdesc = Generic C-implementation of modular support
-	pkgver = v0.0.0.r13.gb80f433
+	pkgver = v0.0.8.r0.g6a033d7
 	pkgrel = 1
-	url = https://gitlab.com/proj_amx_01/libraries/lib_amxm
+	url = https://gitlab.com/soft.at.home/ambiorix/libraries/libamxm
 	arch = any
 	license = MIT
 	depends = lib_amxc
 	provides = lib_amxm
 	conflicts = lib_amxm
-	source = lib_amxm-git::git+https://gitlab.com/proj_amx_01/libraries/lib_amxm.git#branch=master
+	source = lib_amxm-git::git+https://gitlab.com/soft.at.home/ambiorix/libraries/libamxm.git#branch=master
 	md5sums = SKIP
 
 pkgname = lib_amxm-git
