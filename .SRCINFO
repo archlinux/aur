@@ -1,6 +1,6 @@
 pkgbase = python-geomet
 	pkgdesc = GeoMet - Convert GeoJSON to WKT/WKB, and vice versa.
-	pkgver = 0.2.1
+	pkgver = 0.2.1.post1
 	pkgrel = 1
 	url = https://pysal.org/libpysal
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-geomet
 	optdepends = python-nose: tests
 	optdepends = python-coverage: tests
 	optdepends = flake8: tests
-	source = https://files.pythonhosted.org/packages/source/g/geomet/geomet-0.2.1.tar.gz
-	sha256sums = adfafeac8d0b6ccc509f67c61ce6db7feb27a3eca40eaad93b2e29669e3c0297
+	source = https://files.pythonhosted.org/packages/source/g/geomet/geomet-0.2.1.post1.tar.gz
+	sha256sums = 91d754f7c298cbfcabd3befdb69c641c27fe75e808b27aa55028605761d17e95
 
 pkgname = python-geomet
 

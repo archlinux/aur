@@ -1,0 +1,15 @@
+*.log
+*.rpm
+*.deb
+*.tar*
+*.gz
+*.zip
+*.run
+*.whl
+*.AppImage
+*.jar
+*.tgz
+*.pdf
+test*
+src/
+pkg/
