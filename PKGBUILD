@@ -1,7 +1,7 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=blackchocobo-git
 conflicts=('blackchocobo')
-pkgver=1.10.0.r47.ge6b1163
+pkgver=1.10.0.r50.g80802af
 pkgrel=1
 pkgdesc="Final Fantasy 7 Save Editor"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -22,9 +22,10 @@ pkgver() {
 
 build() {
   cd "blackchocobo"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -Dff7tk_DIR=/usr/lib/cmake/ff7tk -Dff7tkWidgets_DIR=/usr/lib/cmake/ff7tk CMakeLists.txt
+  cmake -DCMAKE_INSTALL_PREFIX=/usr CMakeLists.txt
   make
 }
+
 package(){
   cd "blackchocobo"
   make DESTDIR=$pkgdir install
