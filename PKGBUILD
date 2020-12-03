@@ -4,7 +4,7 @@
     url='http://wiki.ros.org/mbf_abstract_core'
 
     pkgname='ros-melodic-mbf-abstract-core'
-    pkgver='0.3.3'
+    pkgver='0.3.4'
     arch=('any')
     pkgrel=1
     license=('BSD')
@@ -24,7 +24,7 @@
     # Tarball version (faster download)
     _dir="move_base_flex-release-release-melodic-mbf_abstract_core"
     source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_abstract_core/${pkgver}.tar.gz")
-sha256sums=('2ea843af7b22f6571039ced9a4c27543793d691a271e2b81a915ba5dc59dfc46')
+sha256sums=('020d4264b7d5d096ef5c215a987b84034ef65d0cda2faab49b4683392c37a36a')
 
     build() {
         # Use ROS environment variables

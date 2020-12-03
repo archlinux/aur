@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-mbf-abstract-core
 	pkgdesc = ROS - This package provides common interfaces for navigation specific robot actions.
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = http://wiki.ros.org/mbf_abstract_core
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = ros-melodic-mbf-abstract-core
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-std-msgs
 	depends = ros-melodic-geometry-msgs
-	source = ros-melodic-mbf-abstract-core-0.3.3.tar.gz::https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_abstract_core/0.3.3.tar.gz
-	sha256sums = 2ea843af7b22f6571039ced9a4c27543793d691a271e2b81a915ba5dc59dfc46
+	source = ros-melodic-mbf-abstract-core-0.3.4.tar.gz::https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_abstract_core/0.3.4.tar.gz
+	sha256sums = 020d4264b7d5d096ef5c215a987b84034ef65d0cda2faab49b4683392c37a36a
 
 pkgname = ros-melodic-mbf-abstract-core
 
