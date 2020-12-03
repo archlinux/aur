@@ -29,17 +29,17 @@ sha512sums=(
 )
 
 prepare() {
-  cd "${srcdir}"
-  sed -i 's|/usr/local/bin|/usr/bin|;s|/usr/local/etc|/etc|' systemd/system/*.service
-  sed -i '/ExecStart/i\Environment=XRAY_LOCATION_ASSET=/usr/share/v2ray' systemd/system/*.service
+    cd "${srcdir}"
+    sed -i 's|/usr/local/bin|/usr/bin|;s|/usr/local/etc|/etc|' systemd/system/*.service
+    sed -i '/ExecStart/i\Environment=XRAY_LOCATION_ASSET=/usr/share/v2ray' systemd/system/*.service
 }
 
 
 package() {
-  cd "${srcdir}"
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/xray/LICENSE
-  install -Dm644 systemd/system/xray.service "${pkgdir}"/usr/lib/systemd/system/xray.service
-  install -Dm644 systemd/system/xray@.service "${pkgdir}"/usr/lib/systemd/system/xray@.service
-  install -Dm644 *.json -t "${pkgdir}"/etc/xray/
-  install -Dm755 xray -t "${pkgdir}"/usr/bin/
+    cd "${srcdir}"
+    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/xray/LICENSE
+    install -Dm644 systemd/system/xray.service "${pkgdir}"/usr/lib/systemd/system/xray.service
+    install -Dm644 systemd/system/xray@.service "${pkgdir}"/usr/lib/systemd/system/xray@.service
+    install -Dm644 *.json -t "${pkgdir}"/etc/xray/
+    install -Dm755 xray -t "${pkgdir}"/usr/bin/
 }
