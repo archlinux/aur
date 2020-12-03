@@ -167,9 +167,7 @@ prepare() {
   fi
 
   if [ "$use_cachy" = "y" ]; then
-    msg2 "Enabling Cachy CPU scheduler by default (also NUMA and grouping for tasks, which are not compatible with Cachy)..."
-    scripts/config --disable CONFIG_NUMA
-    scripts/config --disable FAIR_GROUP_SCHED
+    msg2 "Enabling Cachy CPU scheduler by default..."
     scripts/config --enable CONFIG_CACHY_SCHED
   fi
 
