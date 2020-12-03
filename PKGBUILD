@@ -2,7 +2,7 @@
 # Contributor: Felix Golatofski <contact@xdfr.de>
 
 pkgname=nxmc
-pkgver=3.6.252
+pkgver=3.6.300
 pkgrel=1
 pkgdesc="Graphical console for NetXMS NMS based on Eclipse."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(https://netxms.org/download/releases/3.6/${pkgname}-${pkgver}-linux-gtk-
         ${pkgname}.desktop
         https://raw.githubusercontent.com/netxms/netxms/master/COPYING
 )
-sha256sums=('17d945da890a34f985ebc8069ce81433f6628ceaf3986f2fc3e655afec961faa'
+sha256sums=('d7e0e216534862257a4bd3d3361be9e4ba9171318f18adca4a6b813952f11d40'
             'a8fd91020c07d78163bcc4988ab94ca192240bb01566138cc6ed531e3d183e9c'
             '9ac6daa129fb98672b5bc6bd6d2283a7b419b1186d298c5aeb3156bf317228ab')
 package() {
