@@ -47,7 +47,6 @@ _path=(
 
 _flags=(
     --buildtype=plain
-    -Dlibcap=enabled
     -Dlogind=disabled
     -Dlogind-provider=elogind
     -Dlibseat=disabled
