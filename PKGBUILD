@@ -1,5 +1,5 @@
 # Maintainer: su-ex <codeworks@supercable.onl>
-# Maintainer: SpiritCroc <dev@spiritcroc.de>
+# Maintainer: SpiritCroc <aur@spiritcroc.de>
 # Contributor: David Mehren <david.mehren@udo.edu>
 
 pkgname=schildichat-desktop-bin
