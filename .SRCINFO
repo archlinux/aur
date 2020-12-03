@@ -1,7 +1,7 @@
 pkgbase = vidcutter-git
 	pkgdesc = A modern, simple to use, constantly evolving and hella fast MEDIA CUTTER + JOINER w/ frame-accurate SmartCut technology + Qt5, libmpv, FFmpeg and MediaInfo powering the backend.
 	pkgver = 6.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vidcutter.ozmartians.com
 	install = vidcutter-git.install
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = vidcutter-git
 	depends = python-simplejson
 	provides = vidcutter
 	conflicts = vidcutter
-	source = https://github.com/ozmartian/vidcutter/archive/6.0.5.tar.gz
+	source = git+https://github.com/ozmartian/vidcutter.git
 	sha256sums = SKIP
 
 pkgname = vidcutter-git
