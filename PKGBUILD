@@ -3,7 +3,7 @@
 _name=anyconfig-configobj-backend
 pkgname=python-$_name
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A backend module for python-anyconfig to load and dump ConfigObj data'
 url='https://github.com/ssato/python-anyconfig-configobj-backend'
 arch=('any')
