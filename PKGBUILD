@@ -3,7 +3,7 @@
 
 pkgname=mopidy-alsamixer
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Mopidy extension for ALSA volume control"
 arch=('any')
 url="http://www.mopidy.com"
