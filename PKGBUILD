@@ -3,7 +3,7 @@
 _name=anyconfig-cbor-backend
 pkgname=python-$_name
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='This is a backend module for python-anyconfig to support to load and dump CBOR files with using cbor.'
 url='https://github.com/ssato/python-anyconfig-cbor-backend'
 arch=('any')
