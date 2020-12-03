@@ -1,6 +1,6 @@
 pkgbase = xviewer-git
 	pkgdesc = A simple and easy to use image viewer. X-Apps Project (git version).
-	pkgver = 2.6.0.r0.g5c3d252
+	pkgver = master.lmde4.r0.gfb92517
 	pkgrel = 1
 	url = https://github.com/linuxmint/xviewer
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = xviewer-git
 	makedepends = gnome-common
 	makedepends = libglade
 	makedepends = gobject-introspection
+	depends = xapp
 	depends = gtk3
 	depends = glib2
 	depends = cinnamon-desktop
