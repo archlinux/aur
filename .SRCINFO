@@ -1,13 +1,13 @@
 pkgbase = lambroll-bin
 	pkgdesc = a minimal deployment tool for AWS Lambda.
-	pkgver = 0.9.3
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/fujiwara/lambroll
 	arch = x86_64
 	license = MIT
 	optdepends = aws-cli
-	source = https://github.com/fujiwara/lambroll/releases/download/v0.9.3/lambroll_v0.9.3_linux_amd64.tar.gz
-	md5sums = 3ee49402c7c46e0b57ae92b0195b3485
+	source = https://github.com/fujiwara/lambroll/releases/download/v0.10.0/lambroll_v0.10.0_linux_amd64.tar.gz
+	md5sums = d5264b79feecf4d3b1d1e440fd2b6558
 
 pkgname = lambroll-bin
 
