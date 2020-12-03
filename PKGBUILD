@@ -2,7 +2,7 @@
 
 _appname=wasm-bindgen
 pkgname=wasm-bindgen-bin
-pkgver=0.2.68
+pkgver=0.2.69
 pkgrel=1
 pkgdesc="Interoperating JS and Rust code (binary builds)"
 arch=('x86_64')
