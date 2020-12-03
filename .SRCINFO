@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-openimagedenoise-bin
+	pkgdesc = Interl(R) Open Image Denise library
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://openimagedenoise.github.io
+	arch = x86_64
+	license = Apache
+	depends = mingw-w64-crt
+	optdepends = mingw-w64-cmake: cmake support
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://github.com/OpenImageDenoise/oidn/releases/download/v1.2.4/oidn-1.2.4.x64.vc14.windows.zip
+	md5sums = 460fbaa8e2cbb4d0cc93ccc4bc25f8d7
+
+pkgname = mingw-w64-openimagedenoise-bin
+
