@@ -3,7 +3,7 @@
 
 pkgname=jlink-systemview
 pkgver=3.20
-pkgrel=0
+pkgrel=2
 epoch=6
 pkgdesc="Segger SystemView for Linux"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source_i686=("SystemView_Linux_V${pkgver/./}_i686.tgz::https://www.segger.com/do
 source=("SystemView.desktop" "SystemView.svg")
 md5sums_i686=('6487d0b14d1ea6a24a73699e37bbb47f')
 md5sums_x86_64=('09d4c2cb126c6f64d7671f2e5de16255')
-md5sums=('da383f51d18074411019bb78028463c2' '54635efec35cdbb6f60b997a8fceee74')
+md5sums=('abf561ca1a39ff3156d8a2ea98f0ad57' '54635efec35cdbb6f60b997a8fceee74')
 url="https://www.segger.com/downloads/jlink/"
 
 package(){
@@ -39,7 +39,8 @@ package(){
 
 
     # Install desktop entry
-    install -Dm644 "SystemView.desktop" "${pkgdir}/usr/share/applications/SystemView.desktop"
+    rm -f "${pkgdir}/usr/share/applications/SystemView.desktop"
+    install -Dm644 "SystemView.desktop" "${pkgdir}/usr/share/applications/JLink\ SystemView.desktop"
     install -Dm644 "SystemView.svg" "${pkgdir}/usr/share/pixmaps/SystemView.png"
 
 
