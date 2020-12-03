@@ -4,7 +4,7 @@
 pkgname=python-nclib
 _name=nclib
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Netcat as a library: convienent socket interfaces"
 license=('MIT')
 arch=('any')
