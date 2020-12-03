@@ -4,8 +4,8 @@
 
 pkgbase='python-redmine'
 pkgname=('python-redmine' 'python2-redmine')
-pkgver=2.2.1
-pkgrel=1
+pkgver='2.3.0'
+pkgrel='1'
 pkgdesc="Python library for communicating with a Redmine project management application"
 arch=("any")
 url="https://${pkgbase}.com/"
@@ -14,7 +14,7 @@ makedepends=('python' 'python-setuptools'
 checkdepends=('python-nose' 'python-mock' 'python-requests' 'python-coverage')
 license=('Apache')
 source=("https://github.com/maxtepkeev/${pkgbase}/archive/v${pkgver}.tar.gz")
-sha256sums=('995e852545b4e9ae8097ad64bc758ad1464d67ed76204294553296960837680b')
+sha256sums=('9c60667b79c1c93a1530d3b299beeb2278b34a33c03ac9bedd99e0d9fc9b0f3b')
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
