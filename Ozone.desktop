@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Ozone
+Comment=Segger Ozone for Linux
+Exec=/usr/bin/Ozone
+Icon=Ozone.svg
+Terminal=false
+StartupNotify=false
+Categories=Development

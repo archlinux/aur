@@ -3,7 +3,7 @@
 
 pkgname=ozone
 pkgver=3.20i
-pkgrel=0
+pkgrel=1
 epoch=21
 pkgdesc="Segger Ozone JLink debugger for Linux"
 arch=('i686' 'x86_64')
@@ -15,8 +15,11 @@ provides=('jlink-debugger')
 depends=('jlink-software-and-documentation>=5.10n')
 source_x86_64=("Ozone_Linux_V${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/jlink/Ozone_Linux_V${pkgver/./}_x86_64.tgz")
 source_i686=("Ozone_Linux_V${pkgver/./}_i686.tgz::https://www.segger.com/downloads/jlink/Ozone_Linux_V${pkgver/./}_i386.tgz")
+source=("Ozone.desktop" "Ozone.svg")
 md5sums_x86_64=('7bfd1cc8dc695d4fa8d2f070af7147c1')
 md5sums_i686=('8a2a0fa9eda87315e2bc40e84e6fcbc7')
+md5sums=('6177280cff930e0bd4f963ad745b1fca' 'f7c46fe903305c37f38f846b18318b38')
+
 url="https://www.segger.com/jlink-software.html"
 options=(!strip)
 
@@ -32,7 +35,13 @@ package(){
             "${pkgdir}/usr/share/licenses/${pkgname}" \
             "${pkgdir}/usr/lib/" \
             "${pkgdir}/usr/bin/" \
-            "${pkgdir}/usr/share/doc/${pkgname}/"
+            "${pkgdir}/usr/share/doc/${pkgname}/" \
+            "${pkgdir}/usr/share/pixmaps" \
+            "${pkgdir}/usr/share/applications"
+
+    # Install desktop entry
+    install -Dm644 "Ozone.desktop" "${pkgdir}/usr/share/applications/Ozone.desktop"
+    install -Dm644 "Ozone.svg" "${pkgdir}/usr/share/pixmaps/Ozone.png"
 
     cd ${srcdir}/Ozone
 
