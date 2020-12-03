@@ -1,17 +1,17 @@
 pkgbase = youtube-music-bin
 	pkgdesc = YouTube Music Desktop App bundled with custom plugins like built-in ad blocker & downloader
-	pkgver = 1.6.4
-	pkgrel = 5
+	pkgver = 1.6.5
+	pkgrel = 1
 	url = https://github.com/th-ch/youtube-music
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	noextract = ${_pkgname}-${pkgver}.AppImage
 	options = !strip
-	source = https://github.com/th-ch/youtube-music/releases/download/v1.6.4/YouTube-Music-1.6.4.AppImage
+	source = https://github.com/th-ch/youtube-music/releases/download/v1.6.5/YouTube-Music-1.6.5.AppImage
 	source = https://raw.githubusercontent.com/th-ch/youtube-music/master/license
 	source = youtube-music-bin.desktop
-	sha512sums = d9b75e151e609bde9694c960f7b9ff40f1681d338b575d86948780a6f47a5a58183b5506e9e0c22b39594682d39fea1b40d969dfbe3a32ede11492b06c96bfcb
+	sha512sums = 173ccaf45c8f18ab2910a427961056fb01d027585a311105921f7fcbd2d54632abf7eeb3d6e20e141e2ab97fdfed7230d9e3e966a7df844cb16b4eaa694197af
 	sha512sums = 49c9004d9a157e3ddc4e79b6a800f0ac320989967a86ce887e5f8658c263167d43afa510f5692da86608bda1b98418e4fa9b012d9920c501f11304226136e031
 	sha512sums = 5cde2a00f56761b510a550cbf685206646519068f5b1b14d0a0e6c954e38f677aef8ec83c53ff2c85b67ae539a4a419368f2593207548a868466502e675ae38c
 
