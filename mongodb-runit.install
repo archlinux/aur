@@ -1,0 +1,25 @@
+pre_install() {
+	conf=/etc/mongdb.conf
+	exe=/usr/bin/mongod
+	user=mongodb
+	group=daemon
+
+	msg=`(
+		[ ! -e "$conf" ] && echo "missing config $conf"
+		[ ! -x "$exe" ] && echo "missing executable $exe"
+		[ ! getent passwd "$user" >/dev/null 2>&1 ] &&  echo "missing user $user"
+		[ ! getent group "$group" >/dev/null 2>&1 ] &&  echo "missing group $group"
+		)`
+	[ -n "$msg" ] && echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+$msg
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" && exit 1
+}
+post_remove(){
+	msg="mongodb-runit: stopping mongod and removing service folder"
+	echo "$msg" 1>&2
+	[ -x /usr/bin/logger ] && /usr/bin/logger "$msg"
+	/usr/bin/sv stop mongod >/dev/null 2>&1
+	tgt=`readlink -f /run/runit/service/mongod`
+	[ -n "$tgt" -a -e "$tgt" ] && rm -rf "$tgt"
+	rm -f /run/runit/service/mongod
+}

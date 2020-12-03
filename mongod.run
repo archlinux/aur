@@ -1,0 +1,24 @@
+#!/bin/sh
+conf=/etc/mongodb.conf
+exe=/usr/bin/mongod
+user=mongodb
+group=daemon
+__prog=mongod.run
+
+msg=`(
+	[ ! -e "$conf" ] && echo "missing config $conf"
+	[ ! -x "$exe" ] &&  echo "missing executable $exe"
+	[ ! getent passwd "$user" >/dev/null 2>& 1] &&  echo "missing user $user"
+	[ ! getent group "$group" >/dev/null 2>& 1] &&  echo "missing group $group"
+	)`
+
+if [ -n "$msg" ]; then
+	[ -x /usr/bin/logger ] && echo "$msg" | \
+		while IFS='' read line;do
+			/usr/bin/logger "$__prog: $line"
+		done
+	/usr/bin/sv stop mongod	#prevent looping
+	echo "$msg" 1>&2
+	exit 1
+fi
+exec /usr/bin/chpst -u "$user:$group" "$exe" -quiet --config "$conf"

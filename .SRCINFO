@@ -1,0 +1,17 @@
+pkgbase = mongodb-runit
+	pkgdesc = runit run script for mongodb-bin
+	pkgver = 20201203
+	pkgrel = 1
+	url = https://github.com/artix-linux
+	install = mongodb-runit.install
+	arch = any
+	groups = runit-world
+	license = BSD3
+	provides = mongodb-runscripts
+	conflicts = systemd-sysvcompat
+	replaces = mongodb-runscripts
+	source = mongod.run
+	sha256sums = 49ab180c4ac6771226370268250752e23a089fb99542a08f19cc700bddd74789
+
+pkgname = mongodb-runit
+
