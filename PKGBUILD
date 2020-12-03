@@ -1,6 +1,7 @@
 # Maintainer: Emilio Reggi <nag@mailbox.org>
 pkgname=scholarref-git
 _pkgname=scholarref
+_source=git://src.adamsgaard.dk/scholarref
 pkgver=r29.98931f5
 pkgrel=3
 pkgdesc="POSIX shell tools to extract, fetch, and parse DOIs and BiBTeX bibliography references."
@@ -9,7 +10,7 @@ url="https://src.adamsgaard.dk/scholarref/files.html"
 license=('GPL')
 depends=('bash' 'xdg-utils')
 makedepends=('git')
-source=('scholarref::git://src.adamsgaard.dk/scholarref')
+source=("${_pkgname}"::"${_source}")
 md5sums=('SKIP')
 
 
