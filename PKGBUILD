@@ -1,4 +1,4 @@
-# Contributor linuxer <https://gitea.artixlinux.org/linuxer>
+# Contributor linuxer <linuxer@artixlinux.org>
 # Copyright 2020 Dave Eddy <dave@daveeddy.com> (https://www.daveeddy.com)
 
 pkgname=runit-service-manager
