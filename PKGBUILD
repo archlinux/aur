@@ -2,7 +2,7 @@
 
 pkgbase=linux-froidzen
 pkgver=5.9.12.zen1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux ZEN with Patches and Modifications'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
@@ -44,7 +44,7 @@ prepare() {
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
   # Workaround for uksm-5.9 patch
-  sed -i "s/#include <linux\/vmalloc.h>/#include <linux\/vmalloc.h>\n #include <linux\/io_uring.h>/g" uksm-5.9.patch
+  sed -i "s/#include <linux\/vmalloc.h>/#include <linux\/vmalloc.h>\n #include <linux\/io_uring.h>/g" ${srcdir}/uksm-5.9.patch
 
   local src
   for src in "${source[@]}"; do
