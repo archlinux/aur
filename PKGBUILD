@@ -1,7 +1,7 @@
 # Maintainer: OriginCode <self@origincode.me>
 
 pkgbase=linux-froidzen
-pkgver=5.9.11.zen2
+pkgver=5.9.12.zen1
 pkgrel=1
 pkgdesc='Linux ZEN with Patches and Modifications'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -27,7 +27,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'c312ab11f58eb747d2f8e3419b842580f95056943e0e92583f7a3bb0ab09b871'
+            '23f9693a1b35e4d674eced335a2a2cd8a231a157f362000340ccfdb86b4a98e2'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '59d2b5e63c30332bd6e7030e4050ce9722f420b0e5b9bc383e7e93aca4268929')
 
@@ -44,7 +44,7 @@ prepare() {
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
   # Workaround for uksm-5.9 patch
-  sed -i "%s/#include <linux\/vmalloc.h>/#include <linux\/vmalloc.h>\r #include <linux\/io_uring.h>/g" uksm-5.9.patch
+  sed -i "s/#include <linux\/vmalloc.h>/#include <linux\/vmalloc.h>\n #include <linux\/io_uring.h>/g" uksm-5.9.patch
 
   local src
   for src in "${source[@]}"; do
