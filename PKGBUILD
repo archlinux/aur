@@ -9,8 +9,9 @@ pkgdesc="Spaceship simulation roguelike-like (GOG version). Take your ship and c
 url="https://www.gog.com/game/faster_than_light"
 license=('custom')
 arch=('i686' 'x86_64')
-makedepends=('lgogdownloader')
-depends=('sdl2')
+makedepends=('lgogdownloader' 'sed')
+provides=("ftl=$pkgver")
+depends=('lib32-libglvnd' 'lib32-alsa-lib' )
 source=("ftl_advanced_edition.sh_${pkgver}.sh::gogdownloader://1207659102/en3installer0"
         "ftl.desktop")
 sha256sums=('aac8bdcbbf47b823f77889e27be77d52dfde041c4977ec375176a2a52063e0c9'
@@ -20,23 +21,23 @@ DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 
 prepare(){
 	sed -i 's/^here=.*$/here=\/opt\/gog-ftl\ncd "$here"/' "${srcdir}/data/noarch/game/data/FTL"
-	sed -i 's/^command=.*$/command=FTL/'                  "${srcdir}/data/noarch/game/data/FTL" 
+	sed -i 's/^command=.*$/command=FTL/'                  "${srcdir}/data/noarch/game/data/FTL"
 }
 
 package(){
 	# Install game
 	mkdir -p "${pkgdir}/opt/$pkgname"
-	cp -r "${srcdir}/data/noarch/game/data" -T "${pkgdir}/opt/$pkgname"
+	mv "${srcdir}/data/noarch/game/data" -T "${pkgdir}/opt/$pkgname"
 	chmod -R 644 "${pkgdir}/opt/$pkgname/"
 	chmod    755 "${pkgdir}/opt/$pkgname" "${pkgdir}/opt/$pkgname/FTL" "${pkgdir}/opt/$pkgname/FTL.amd64" "${pkgdir}/opt/$pkgname/FTL.x86"
 
 	# Desktop integration
-	install -Dm 644 "${srcdir}/data/noarch/game/data/exe_icon.bmp" \
+	install -Dm 644 "${pkgdir}/opt/$pkgname/exe_icon.bmp" \
 		"${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 	install -Dm 644 "${srcdir}/data/noarch/docs/End User License Agreement.txt" \
 		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm 644 "${srcdir}/ftl.desktop" \
- 		"${pkgdir}/usr/share/applications/ftl.desktop"
- 	install -dm 755 "${pkgdir}/usr/bin/" 
+		"${pkgdir}/usr/share/applications/ftl.desktop"
+		install -dm 755 "${pkgdir}/usr/bin/"
 	mv "${pkgdir}/opt/${pkgname}/FTL" "${pkgdir}/usr/bin/ftl"
 }
