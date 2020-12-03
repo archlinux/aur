@@ -1,6 +1,6 @@
 pkgbase = jackett-runit
 	pkgdesc = Use many torrent trackers with software that supports torznab/potato feeds.
-	pkgver = 0.16.2284
+	pkgver = 0.16.2291
 	pkgrel = 1
 	url = https://github.com/Jackett/Jackett
 	arch = x86_64
@@ -18,12 +18,12 @@ pkgbase = jackett-runit
 	b2sums = fed3336e07fe1d88a65bad5fb4f3e081ec16b24c07cc2a96462e7cecc3962b9742897455c0ce7f7fdbe04ecb337c575d54194d2dedad865f72572a5158cc6ef4
 	b2sums = a9f9d370a3d747275d6ead0aa6a05c33bb669e4f97d1c639e4e6d4c043a4b26045a17ec80a35edc5f7fd897162dd3ba7f5ed3b930c99d8d4a77f626e27680be2
 	b2sums = 4837363802330a33153e8b1560074d3af1c24c393287d295083dc41c82d6667ef0eb1dbcabc6afd180082405762bfed749adc7483d0c6fab0be431f944b4c001
-	source_x86_64 = Jackett.Binaries.LinuxAMDx64-0.16.2284.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.16.2284/Jackett.Binaries.LinuxAMDx64.tar.gz
-	b2sums_x86_64 = d858208eda77ade48f2ec38cfd1186b61c71e8262e94621ae3e00432124b5fd34f1a744c801384bdf32db7e6a5e88ad855f786de4f0686dbea79bb88254b7088
-	source_aarch64 = Jackett.Binaries.LinuxARM64-0.16.2284.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.16.2284/Jackett.Binaries.LinuxARM64.tar.gz
-	b2sums_aarch64 = 2dd9f31836f7f03a97fb4a905d7703cde40d4bb5f4ec8b80e0e9826fcf40796fcf575e22b4d7ae7b63c7aee335d8270b8c42ed28ecc76f3fc1e6096eadf513f0
-	source_armv7h = Jackett.Binaries.LinuxARM32-0.16.2284.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.16.2284/Jackett.Binaries.LinuxARM32.tar.gz
-	b2sums_armv7h = 9beb5fec3b162cd6772a6c69c81d806ec1686e8683cdd78164833a83c24fa00891d782f46af6c193e782c7beafd990025f6ec15d941d1670c99614c7625f2826
+	source_x86_64 = Jackett.Binaries.LinuxAMDx64-0.16.2291.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.16.2291/Jackett.Binaries.LinuxAMDx64.tar.gz
+	b2sums_x86_64 = 6b718488c6f8f4716045c48c73bdb0bffa59c2cf29f73a43f0194df8e1dfce77e7fda535851f5218ba81563921c5818f3a332c7158ce9e2194de3811362dfdeb
+	source_aarch64 = Jackett.Binaries.LinuxARM64-0.16.2291.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.16.2291/Jackett.Binaries.LinuxARM64.tar.gz
+	b2sums_aarch64 = 4c3144d84f840be952e2a83c58e9c343a8936a65915068f053e00717f6bc3e621dae8080af41cf023bbdece8d3d6a66f08ea8253f9aea30b2333873b65742019
+	source_armv7h = Jackett.Binaries.LinuxARM32-0.16.2291.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.16.2291/Jackett.Binaries.LinuxARM32.tar.gz
+	b2sums_armv7h = 5a6ba449b9cc1184c4c73156808aa234dc1e940b93b9087ab8a0c432385c96c82c9b7269f751de95835bb719fbc3c6269b3aba621709e65045ba2404d2b10c22
 
 pkgname = jackett-runit
 
