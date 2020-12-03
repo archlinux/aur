@@ -1,6 +1,6 @@
 pkgbase = flightgear
 	pkgdesc = An open-source, multi-platform flight simulator
-	pkgver = 2020.3.2
+	pkgver = 2020.3.4
 	pkgrel = 1
 	url = http://www.flightgear.org/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = flightgear
 	makedepends = cmake
 	makedepends = mesa
 	makedepends = sharutils
-	makedepends = simgear
+	makedepends = simgear=2020.3.4
 	makedepends = qt5-base
 	makedepends = qt5-declarative
 	makedepends = qt5-svg
@@ -24,8 +24,8 @@ pkgbase = flightgear
 	optdepends = qt5-declarative: fgfs --launcher
 	optdepends = flightgear-data
 	options = makeflags
-	source = http://downloads.sourceforge.net/project/flightgear/release-2020.3/flightgear-2020.3.2.tar.bz2
-	sha256sums = ad9bbca886f85e9081222a2403c0c6cc19d4aa69a3be6889b9c9726c56decc14
+	source = http://downloads.sourceforge.net/project/flightgear/release-2020.3/flightgear-2020.3.4.tar.bz2
+	sha256sums = c8f375641071273d0410697df4438eb9f2758d7c2a6b568402d643744180a909
 
 pkgname = flightgear
 

@@ -5,13 +5,13 @@
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 
 pkgname='flightgear'
-pkgver=2020.3.2
+pkgver=2020.3.4
 _pkgver=${pkgver%.*}
 pkgrel=1
 pkgdesc="An open-source, multi-platform flight simulator"
 arch=('x86_64')
 depends=('libxmu' 'libxi' 'zlib' 'openscenegraph' 'libxrandr' 'glu' 'openal')
-makedepends=('boost' 'cmake' 'mesa' 'sharutils' 'simgear' 'qt5-base' 'qt5-declarative' 'qt5-svg')
+makedepends=('boost' 'cmake' 'mesa' 'sharutils' "simgear=${pkgver}" 'qt5-base' 'qt5-declarative' 'qt5-svg')
 optdepends=('qt5-base: fgfs --launcher'
             'qt5-declarative: fgfs --launcher'
             'flightgear-data')
@@ -19,7 +19,7 @@ license=("GPL")
 url="http://www.flightgear.org/"
 options=('makeflags')
 source=("http://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('ad9bbca886f85e9081222a2403c0c6cc19d4aa69a3be6889b9c9726c56decc14')
+sha256sums=('c8f375641071273d0410697df4438eb9f2758d7c2a6b568402d643744180a909')
 
 prepare() {
   cd "$srcdir"/flightgear-$pkgver
