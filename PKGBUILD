@@ -3,7 +3,7 @@
 pkgname='python-mercantile'
 _name=mercantile
 pkgver=1.1.6
-pkgrel=3
+pkgrel=4
 pkgdesc='Spherical mercator tile and coordinate utilities'
 arch=('any')
 url='https://github.com/mapbox/mercantile'

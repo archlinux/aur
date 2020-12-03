@@ -1,7 +1,7 @@
 pkgbase = python-mercantile
 	pkgdesc = Spherical mercator tile and coordinate utilities
 	pkgver = 1.1.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mapbox/mercantile
 	arch = any
 	license = MIT
