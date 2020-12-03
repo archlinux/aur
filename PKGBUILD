@@ -1,18 +1,18 @@
-# Maintainer: Lukas Werling <lukas.werling@gmail.com>
+# Maintainer: Lukas Werling <lukas@lwrl.de>
 pkgname=tab
-pkgver=6.2.2
+pkgver=7.2
 pkgrel=1
 pkgdesc="A general-purpose query language for text files."
 arch=('i686' 'x86_64')
-url="http://tkatchev.bitbucket.org/tab/"
+url="https://tkatchev.bitbucket.io/tab/"
 license=('custom:boost')
 depends=('gcc-libs')
 makedepends=()
 checkdepends=('python2')
 source=("https://bitbucket.org/tkatchev/tab/get/${pkgver}.tar.bz2")
-sha256sums=('19edd1183ee0e3bb9d79e022141567779ef42d9ebddbfd09317aaf5bc700be8d')
+sha256sums=('446703528a7e51601371240a8fb74665aa98b02b2c89034ed61705bb3ff488b4')
 
-_dirname="tkatchev-tab-efe6f906ae05"
+_dirname="tkatchev-tab-f2e160ebddf8"
 
 build() {
 	cd "$_dirname"
