@@ -9,12 +9,12 @@ name=cloudcompare
 pkgname=${name}
 _fragment="#tag=v2.11.3"
 pkgver="${_fragment###tag=v}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
 license=('GPL2')
-depends=('cgal' 'dlib' 'ffmpeg' 'glew' 'glu' 'mesa' 'mpir' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-svg' 'shapelib' 'tbb' 'vxl')
+depends=('cgal' 'dlib' 'fbx-sdk' 'ffmpeg' 'glew' 'glu' 'mesa' 'mpir' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-svg' 'shapelib' 'tbb' 'vxl')
 makedepends=('clang' 'cmake' 'doxygen' 'git' 'laz-perf' 'libharu' 'ninja' 'pcl' 'proj' 'python')
 optdepends=('pcl')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git${_fragment}"
@@ -66,7 +66,9 @@ build() {
         -DPLUGIN_IO_QCORE:BOOL=ON
         -DPLUGIN_IO_QCSV_MATRIX:BOOL=ON
         -DPLUGIN_IO_QE57:BOOL=ON
-        -DPLUGIN_IO_QFBX:BOOL=OFF # requires update of AUR/fbx-sdk (https://www.autodesk.com/content/dam/autodesk/www/adn/fbx/2020-1-1/fbx202011_fbxsdk_linux.tar.gz)
+        -DPLUGIN_IO_QFBX:BOOL=ON # requires update of AUR/fbx-sdk (https://www.autodesk.com/content/dam/autodesk/www/adn/fbx/2020-1-1/fbx202011_fbxsdk_linux.tar.gz)
+        -DFBX_SDK_INCLUDE_DIR:PATH=/usr/include
+        -DFBX_SDK_LIBRARY_FILE:FILEPATH=/usr/lib/libfbxsdk.so
         -DPLUGIN_IO_QPDAL:BOOL=ON
         -DPLUGIN_IO_QPHOTOSCAN:BOOL=ON
         -DPLUGIN_IO_QRDB:BOOL=OFF # requires rdblib (package for AUR from http://www.riegl.com/products/software-packages/rdblib/)
@@ -78,8 +80,8 @@ build() {
         -DPLUGIN_STANDARD_QCORK:BOOL=ON # require mpir, cork (cork-git is not enough)
         -DMPIR_INCLUDE_DIR:PATH=/usr/include # required by qcork plugin
         -DCORK_INCLUDE_DIR:PATH="${srcdir}/${name}-cork/src" # required by qcork plugin
-        -DCORK_RELEASE_LIBRARY_FILE:PATH="${srcdir}/${name}-cork/lib/libcork.a" # required by qcork plugin
-        -DMPIR_RELEASE_LIBRARY_FILE:PATH=/usr/lib/libmpir.so # require by qcork plugin
+        -DCORK_RELEASE_LIBRARY_FILE:FILEPATH="${srcdir}/${name}-cork/lib/libcork.a" # required by qcork plugin
+        -DMPIR_RELEASE_LIBRARY_FILE:FILEPATH=/usr/lib/libmpir.so # require by qcork plugin
         -DPLUGIN_STANDARD_QCSF:BOOL=ON
         -DPLUGIN_STANDARD_QFACETS:BOOL=ON # requires shapelib
         -DOPTION_USE_SHAPE_LIB:BOOL=ON
