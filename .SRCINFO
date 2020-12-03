@@ -1,7 +1,7 @@
 pkgbase = python-mapclassify
 	pkgdesc = Classification schemes for choropleth mapping.
 	pkgver = 2.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pysal/mapclassify
 	arch = any
 	license = BSD

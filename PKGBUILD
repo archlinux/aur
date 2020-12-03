@@ -3,7 +3,7 @@
 _name=mapclassify
 pkgname=python-mapclassify
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Classification schemes for choropleth mapping."
 arch=('any')
 url="https://github.com/pysal/mapclassify"
