@@ -3,7 +3,7 @@
 _name=libpysal
 pkgname=python-libpysal
 pkgver=4.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Core components of Python Spatial Analysis Library."
 arch=('any')
 url="https://pysal.org/libpysal/"
