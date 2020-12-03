@@ -45,7 +45,7 @@ build() {
 
 	# Generate man page
 	pandoc -s -t man "doc/${pkgname%-git}.1.md" -o "doc/${pkgname%-git}.1"
-	gzip "doc/$pkgname.1"
+	gzip "doc/${pkgname%-git}.1"
 
 	# Clean mod cache for makepkg -C
 	go clean -modcache
