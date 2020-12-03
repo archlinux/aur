@@ -1,6 +1,6 @@
 pkgbase = nmly-git
 	pkgdesc = Bulk rename utility with useful functions
-	pkgver = 1.1.1.r1.ge147cbf
+	pkgver = 1.1.1.r11.gbdb2577
 	pkgrel = 1
 	url = https://github.com/Usbac/nmly
 	arch = x86_64
