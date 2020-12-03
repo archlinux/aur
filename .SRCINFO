@@ -1,0 +1,16 @@
+pkgbase = xdgize-git
+	pkgdesc = A tool that generates minimal wrapper/shim shell scripts around external commands to "XDG"-ize them.
+	pkgver = 0.1.r0.g921d8cf
+	pkgrel = 3
+	url = https://github.com/etcusrvar/xdgize
+	arch = any
+	makedepends = git
+	depends = bash
+	depends = which
+	provides = xdgize
+	conflicts = xdgize
+	source = git+https://github.com/etcusrvar/xdgize.git
+	md5sums = SKIP
+
+pkgname = xdgize-git
+
