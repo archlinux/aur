@@ -1,12 +1,12 @@
-# Maintainer: Martin Diehl <https://martin-diehl.net>
+# Maintainer: Martin Diehl <aur@martin-diehl.net>
 # Contributor: Alad Wenter <alad@archlinux.org>
 # Contributor: Jingbei Li <i@jingbei.li>
 # Contributor: Simon Pintarelli <simon.pintarelli@gmail.com>
 # Contributor: Feng Wang <wanng.fenng@gmail.com>
 pkgname=trilinos
-pkgver=12.18.1
+pkgver=13.0.1
 _pkgver=${pkgver//./-}
-pkgrel=4
+pkgrel=1
 pkgdesc="algorithms for the solution of large-scale scientific problems"
 arch=('x86_64')
 url="http://trilinos.org"
@@ -14,18 +14,8 @@ license=('LGPL3')
 depends=('python' 'lapack' 'boost' 'netcdf' 'libmatio' 'libx11' 'hdf5-openmpi')
 makedepends=('gcc-fortran' 'perl' 'blas' 'cmake' 'doxygen' 'bc')
 checkdepends=('cmake')
-source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-$_pkgver.tar.gz"
-        "Makefile.kokkos.patch"
-        "Seacas.patch")
-sha256sums=('7d2e1a1a3e2d2ce78bb248c63411fed5007c827b87cadee3d13c1a45c09a89cf'
-            '64130011dd70f3be1133c0943be458a7d4f6fa799e6bd47a6294300ced6d827a'
-            '0e2f10b7ba4f7349eaef6bff111cda6de6d216ab417e24bf0b342711117a7374')
-
-prepare() {
-    cd Trilinos-trilinos-release-12-18-1
-    patch --forward --strip=1 --input="${srcdir}/Makefile.kokkos.patch"
-    patch --forward --strip=1 --input="${srcdir}/Seacas.patch"
-}
+source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-$_pkgver.tar.gz")
+sha256sums=('0bce7066c27e83085bc189bf524e535e5225636c9ee4b16291a38849d6c2216d')
 
 
 build() {
@@ -35,7 +25,6 @@ build() {
 
     cmake .. -DTrilinos_ENABLE_ALL_OPTIONAL_PACKAGES:BOOL=ON \
              -DTrilinos_ENABLE_ALL_PACKAGES:BOOL=ON \
-             -DTrilinos_ENABLE_PyTrilinos:BOOL=OFF \
              -DTrilinos_ENABLE_Gtest:BOOL=OFF \
              -DTrilinos_ENABLE_TESTS=OFF \
              -DTPL_ENABLE_gtest:BOOL=OFF \
