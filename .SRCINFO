@@ -1,7 +1,7 @@
 pkgbase = python-anyconfig
 	pkgdesc = Python library provides common APIs to load and dump configuration files in various formats
 	pkgver = 0.9.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ssato/python-anyconfig
 	arch = any
 	license = MIT

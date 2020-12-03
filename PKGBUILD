@@ -5,7 +5,7 @@
 pkgname=python-anyconfig
 _name=anyconfig
 pkgver=0.9.11
-pkgrel=3
+pkgrel=4
 pkgdesc='Python library provides common APIs to load and dump configuration files in various formats'
 url='https://github.com/ssato/python-anyconfig'
 arch=('any')
