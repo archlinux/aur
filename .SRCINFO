@@ -1,6 +1,6 @@
 pkgbase = openvpn-xor-git
 	pkgdesc = OpenVPN with XOR patch to bypass DPI monitoring in places like China (also known as OpenVPN stealth/scramble mode)
-	pkgver = 2.4.9
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/openvpn/openvpn
 	arch = x86_64
@@ -15,28 +15,30 @@ pkgbase = openvpn-xor-git
 	optdepends = easy-rsa
 	optdepends = pam
 	optdepends = qopenvpn
-	provides = openvpn=2.4.9
+	provides = openvpn=2.5.0
 	provides = openvpn-dev
 	conflicts = openvpn
 	conflicts = openvpn-dev
 	conflicts = openvpn-git
 	conflicts = openvpn-xor-patched
-	source = https://github.com/openvpn/openvpn/archive/v2.4.9.tar.gz
-	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.4.9/patches/02-tunnelblick-openvpn_xorpatch-a.diff
-	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.4.9/patches/03-tunnelblick-openvpn_xorpatch-b.diff
-	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.4.9/patches/04-tunnelblick-openvpn_xorpatch-c.diff
-	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.4.9/patches/05-tunnelblick-openvpn_xorpatch-d.diff
-	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.4.9/patches/06-tunnelblick-openvpn_xorpatch-e.diff
+	source = https://github.com/openvpn/openvpn/archive/v2.5.0.tar.gz
+	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.5.0/patches/02-tunnelblick-openvpn_xorpatch-a.diff
+	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.5.0/patches/03-tunnelblick-openvpn_xorpatch-b.diff
+	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.5.0/patches/04-tunnelblick-openvpn_xorpatch-c.diff
+	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.5.0/patches/05-tunnelblick-openvpn_xorpatch-d.diff
+	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.5.0/patches/06-tunnelblick-openvpn_xorpatch-e.diff
+	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.5.0/patches/10-route-gateway-dhcp.diff
 	source = systemd.diff
 	source = openvpn-xor-watermark.diff
-	sha256sums = cccadc1b4849107df3ba34f5d9d64284676ba99aa88415f1bcd481e08a3bc548
+	sha256sums = d9fbeede4b650bfd9bac12384fbae3f90c26c07248d3031df171056c17a7f3a3
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 6e1d0147076ce0221e4e22e0a10d70c17eaa3740fe21461aff931c107416564f
-	sha256sums = 3eb01176fff1d3b450b15f280a536323fc5161f3cfa0ee5fcccadeacc7ad97c9
+	sha256sums = 1232b23c6885588c05c521b3722e45b1d79558e24095a4b6d99729ba83ba481b
 
 pkgname = openvpn-xor-git
 

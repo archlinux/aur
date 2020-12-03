@@ -1,9 +1,7 @@
 --- a/src/openvpn/options.c
 +++ b/src/openvpn/options.c
-@@ -107,6 +107,7 @@ const char title_string[] =
- #ifdef HAVE_AEAD_CIPHER_MODES
+@@ -107,3 +107,4 @@ const char title_string[] =
      " [AEAD]"
- #endif
 +    " [XOR]"
      " built on " __DATE__
  ;
