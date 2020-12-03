@@ -3,7 +3,7 @@
 _name=sansio_multipart
 pkgname=python-sansio-multipart
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A sansio multipart parser for Python 3"
 arch=('any')
 url="https://github.com/theelous3/sansio-multipart-parser"
@@ -22,4 +22,3 @@ package() {
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
-

@@ -1,7 +1,7 @@
 pkgbase = python-sansio-multipart
 	pkgdesc = A sansio multipart parser for Python 3
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theelous3/sansio-multipart-parser
 	arch = any
 	license = MIT
