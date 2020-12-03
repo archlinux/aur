@@ -1,0 +1,9 @@
+@@ -30,6 +30,8 @@
+ 		defPath,
+ 		filepath.Join("/usr/local/share/xray/", file),
+ 		filepath.Join("/usr/share/xray/", file),
++		filepath.Join("/usr/local/share/v2ray/", file),
++		filepath.Join("/usr/share/v2ray/", file),
+ 	} {
+ 		if _, err := os.Stat(p); os.IsNotExist(err) {
+ 			continue
