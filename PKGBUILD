@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Alex Dewar <alex.dewar@gmx.co.uk>
 # Contributor: Andrew Sun <adsun701@gmail.com>
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
