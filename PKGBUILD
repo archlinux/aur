@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxb_pcb-git
-pkgver=v0.5.3.r0.g3b3cace
+pkgver=v0.6.2.r0.g897bf18
 pkgrel=1
 pkgdesc="PCB baapi back-end"
 arch=('any')
