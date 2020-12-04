@@ -1,5 +1,6 @@
 # Package files
 *.pkg.tar.xz
+*.pkg.tar.zst
 
 # Sources
 noson-app
