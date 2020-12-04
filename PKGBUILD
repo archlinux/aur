@@ -4,13 +4,13 @@
 
 _pkgname=fcitx5-gtk
 pkgname=${_pkgname}-git
-pkgver=5.0.0.r1.gd15267f
+pkgver=5.0.1.r0.gd37f648
 pkgrel=1
 pkgdesc="Gtk im module for fcitx5 and glib based dbus client library"
 arch=('i686' 'x86_64')
 url="https://github.com/fcitx/fcitx5-gtk"
 license=('GPL')
-depends=('fcitx5-git' 'glib2')
+depends=('glib2')
 makedepends=('extra-cmake-modules' 'gobject-introspection' 'gtk2' 'gtk3' 'git')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
