@@ -2,7 +2,7 @@
 pkgname=rbtools
 _name=RBTools
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Client tools for Review Board"
 arch=('any')
 url="https://www.reviewboard.org/"

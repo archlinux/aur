@@ -1,7 +1,7 @@
 pkgbase = rbtools
 	pkgdesc = Client tools for Review Board
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.reviewboard.org/
 	arch = any
 	license = custom:MIT
