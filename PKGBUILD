@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=smooth-git
-pkgver=0.9.6.r0.gbe42782d
+pkgver=0.9.6.r19.g7ae4e410
 pkgrel=1
 pkgdesc="An object oriented C++ class library"
 arch=('x86_64')
