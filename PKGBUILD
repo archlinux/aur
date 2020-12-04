@@ -80,7 +80,7 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	ninja -C "$srcdir/build" install
+	ninja -C "$srcdir/build" ${MAKEFLAGS:--j1} install
 	cd "$srcdir/build"
 
 	# adapt rpath to where libraries will be installed (so they do not conflict
