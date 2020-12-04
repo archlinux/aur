@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Segger JLinkConfigExe
+Comment=Segger JLinkConfigExe for Linux
+Exec=/usr/bin/JLinkConfigExe
+Icon=JLink.svg
+Terminal=false
+StartupNotify=false
+Categories=Development

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Segger JRunExe
+Comment=Segger JRunExe for Linux
+Exec=/usr/bin/JRunExe
+Icon=JLink.svg
+Terminal=false
+StartupNotify=false
+Categories=Development

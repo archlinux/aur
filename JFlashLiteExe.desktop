@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Segger JFlashLiteExe
+Comment=Segger flashing utility (lite) for Linux
+Exec=/usr/bin/JFlashLiteExe
+Icon=JLink.svg
+Terminal=false
+StartupNotify=false
+Categories=Development

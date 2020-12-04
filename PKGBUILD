@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=6.88b
-pkgrel=1
+pkgrel=2
 epoch=32
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,11 +13,45 @@ depends=('glibc' 'libudev0-shim' 'patch')
 source_x86_64=("JLink_Linux_${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_x86_64.tgz")
 source_i686=("JLink_Linux_${pkgver/./}_i686.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_i386.tgz")
 source_armv7h=("JLink_Linux_${pkgver/./}_arm.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_arm.tgz")
-source=("99-jlink.rules.patch" "JLink.svg" "JFlashSPI_CL.desktop" "JLinkGDBServer.desktop" "JLinkLicenseManager.desktop" "JLinkRegistration.desktop" "JLinkRemoteServer.desktop" "JLinkRTTClient.desktop" "JLinkRTTLogger.desktop" "JLinkSTM32.desktop" "JLinkSWOViewer.desktop")
+source=("99-jlink.rules.patch" "JLink.svg"
+        "JFlashSPI_CL.desktop"
+        "JLinkGDBServer.desktop"
+        "JLinkLicenseManager.desktop"
+        "JLinkRegistration.desktop"
+        "JLinkRemoteServer.desktop"
+        "JLinkRTTClient.desktop"
+        "JLinkRTTLogger.desktop"
+        "JLinkSTM32.desktop"
+        "JLinkSWOViewer.desktop"
+        "JFlashExe.desktop"
+        "JFlashLiteExe.desktop"
+        "JLinkConfigExe.desktop"
+        "JLinkExe.desktop"
+        "JLinkGUIServerExe.desktop"
+        "JRunExe.desktop"
+        "JMemExe.desktop"
+)
 md5sums_i686=('b661572da1b9f3bede8ba5e1621d63e8')
 md5sums_x86_64=('ca4935902d8bd2b7ee9cb2d6136becd6')
 md5sums_armv7h=('d00eae7b543d23e4cdcd6758a2c0fb0b')
-md5sums=("a57d93b791581c1f36e4c672303bb85d" "83a136d31b296dd8f0e23bc21f9d8e19" "395410c9819a18a659de9c80925508f1" "69516914a635e3b8c703816fb34add8b" "e763d0de7bced23342523447af761c23" "3d9e3093c2da9fde601b9c308296161b" "3cf777043c9779763fb8281cceed5d81" "fea9e4cf79db13c19e90af0e6ce4048a" "f933dfa3297baba000a0514a0c705264" "9119afd453425a256aa023bae8442570" "24e403277bb890d915b2c454833ff3d6")
+md5sums=("a57d93b791581c1f36e4c672303bb85d" "83a136d31b296dd8f0e23bc21f9d8e19"
+         "395410c9819a18a659de9c80925508f1"
+         "69516914a635e3b8c703816fb34add8b"
+         "e763d0de7bced23342523447af761c23"
+         "3d9e3093c2da9fde601b9c308296161b"
+         "3cf777043c9779763fb8281cceed5d81"
+         "fea9e4cf79db13c19e90af0e6ce4048a"
+         "f933dfa3297baba000a0514a0c705264"
+         "9119afd453425a256aa023bae8442570"
+         "24e403277bb890d915b2c454833ff3d6"
+         "02e067cd1c420f2085216d76e4866cd4"
+         "50bced5895a0ec59db0146153a077515"
+         "88fa3a356d20179a2cb5e6679a30c946"
+         "ca75f4f47bf69df8b651b94a1b564594"
+         "a44a41520069f29f68b14985307ac09d"
+         "8fa15c29a78bf1c98af5941607ff5a2a"
+         "74cb2486441a6e571dcc3327204cd8da"
+        )
 
 install=$pkgname.install
 url="https://www.segger.com/jlink-software.html"
@@ -59,6 +93,9 @@ package(){
     install -Dm644 "JLinkRTTClient.desktop" "${pkgdir}/usr/share/applications/"
     install -Dm644 "JLinkRTTLogger.desktop" "${pkgdir}/usr/share/applications/"
     install -Dm644 "JLinkSWOViewer.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm644 "JFlashExe.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm644 "JFlashLiteExe.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm644 "JLinkConfigExe.desktop" "${pkgdir}/usr/share/applications/"
     install -Dm644 "JLink.svg" "${pkgdir}/usr/share/pixmaps/JLink.svg"
 
     cd "${srcdir}/JLink"

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Segger JLinkGUIServerExe
+Comment=Segger JLinkGUIServerExe for Linux
+Exec=/usr/bin/JLinkGUIServerExe
+Icon=JLink.svg
+Terminal=false
+StartupNotify=false
+Categories=Development
