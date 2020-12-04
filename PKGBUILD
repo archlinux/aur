@@ -13,23 +13,23 @@ source=(git+$url)
 sha512sums=(SKIP)
 
 build() {
-	   #  Installs the Rust nightly toolchain to a temporary
-	   #  directory. If you already have the toolchain installed,
-	   #  e.g. via the script at https://rustup.rs/ or another
-	   #  package, you can remove the rust-nightly dependancy and
-	   #  comment out the following three commands.
+    #  Installs the Rust nightly toolchain to a temporary
+    #  directory. If you already have the toolchain installed,
+    #  e.g. via the script at https://rustup.rs/ or another
+    #  package, you can remove the rust-nightly dependancy and
+    #  comment out the following three commands.
 
-	  mkdir -p nightly
-	  export RUSTUP_HOME=$(pwd)/nightly
-	  rustup toolchain install nightly
+    mkdir -p nightly
+    export RUSTUP_HOME=$(pwd)/nightly
+    rustup toolchain install nightly
 
-	  # build tiny
-      cd tiny
-      cargo install --path tiny --features=desktop-notifications
+    # build tiny
+    cd tiny
+    cargo install --path tiny --features=desktop-notifications
 }
 
 package() {
-	  cd tiny
-	  install -Dm755 target/release/tiny "$pkgdir/usr/bin/tiny"
-	  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/tiny/LICENSE"
+    cd tiny
+    install -Dm755 target/release/tiny "$pkgdir/usr/bin/tiny"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/tiny/LICENSE"
 }
