@@ -1,17 +1,15 @@
 pkgbase = modsman
 	pkgdesc = Minecraft mod manager and updater for the CLI
 	pkgver = 0.32.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/sargunv/modsman
 	arch = x86_64
 	license = GPL3
 	makedepends = gendesk
-	makedepends = unzip
 	makedepends = git
+	makedepends = java-environment=8
 	depends = java-runtime=8
-	conflicts = modsman-git
-	conflicts = modsman-bin
-	source = modsman::git+https://github.com/sargunv/modsman.git
+	source = modsman::git+https://github.com/sargunv/modsman.git#tag=0.32.1
 	md5sums = SKIP
 
 pkgname = modsman
