@@ -33,6 +33,7 @@ pkgbase = networkmanager-support
 	optdepends = network-manager-applet: Applet for managing network connections
 	optdepends = nm-tray: A pure QT NetworkManager front-end residing in panels
 	optdepends = modem-manager-gui: A GTK+ Gui for modem manager
+	optdepends = qomui: OpenVPN/WireGuard QT Gui with advanced features and support for multiple providers
 	conflicts = connman-support
 	replaces = garuda-network
 	replaces = manjaro-network

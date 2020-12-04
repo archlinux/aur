@@ -33,7 +33,8 @@ depends=("networkmanager"
                         "neard")
 optdepends=('network-manager-applet: Applet for managing network connections'
                         'nm-tray: A pure QT NetworkManager front-end residing in panels'
-                        'modem-manager-gui: A GTK+ Gui for modem manager')
+                        'modem-manager-gui: A GTK+ Gui for modem manager'
+                        'qomui: OpenVPN/WireGuard QT Gui with advanced features and support for multiple providers')
 conflicts=("connman-support")
 replaces=("garuda-network" "manjaro-network")
 install=networkmanager.install
