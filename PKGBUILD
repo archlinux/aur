@@ -2,7 +2,7 @@
 # Contributor: Cedric Girard <girard.cedric@gmail.com>
 # Contributor: Tom <tomgparchaur@gmail.com>
 pkgname=cacti-spine
-pkgver=1.2.15
+pkgver=1.2.16
 pkgrel=1
 pkgdesc="Faster poller for Cacti."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('help2man')
 options=('!makeflags')
 backup=('etc/spine.conf')
 source=( "http://www.cacti.net/downloads/spine/${pkgname}-${pkgver/_/}.tar.gz")
-sha256sums=('7a692b3eff3b836237eea12998f596e2b48941ef4364ca1c0e3e501e5cf8a865')
+sha256sums=('eccc20a1e32e831b84b88c30e08b844b44e31e1664c5a909df58784ad0b77cea')
 
 
 build() {
