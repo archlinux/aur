@@ -3,7 +3,7 @@
 
 pkgname=journalwatch
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Filter error messages from systemd journal, similar to logcheck/logwatch."
 arch=(any)
 url="https://pypi.python.org/pypi/journalwatch/"
@@ -15,5 +15,5 @@ md5sums=('c06619d5ece24510d6ec334febfbdef9')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
