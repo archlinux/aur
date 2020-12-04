@@ -37,7 +37,7 @@ pkgver() {
 	git -C "$srcdir/${pkgname%-git}" describe --long --tags --always | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
 	cd "$srcdir/${pkgname%-git}"
 
 	# submodules, some of which need to be compiled with the same compiler as
@@ -54,16 +54,25 @@ build() {
 
 	# patch the build system to use system versions
 	rmdir ext/pugixml ext/pybind11
-	patch -p1 < $srcdir/swap_pybind.patch
-	patch -p1 < $srcdir/swap_pugixml.patch
-	patch -p1 < $srcdir/swap_tbb.patch
-	patch -p1 -d ext/enoki < $srcdir/swap_pybind_enoki.patch
+	git apply -v $srcdir/swap_pybind.patch
+	git apply -v $srcdir/swap_pugixml.patch
+	git apply -v $srcdir/swap_tbb.patch
+	git -C ext/enoki apply -v $srcdir/swap_pybind_enoki.patch
 
 	# not used with the current build options
 	rmdir ext/embree ext/nanogui
+}
 
+build() {
 	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-	CC=clang CXX=clang++ cmake -DCMAKE_MODULE_PATH=$site_packages/pybind11/share/cmake/pybind11/ -DMTS_ENABLE_PYTHON=yes -DMTS_ENABLE_GUI=no -DMTS_ENABLE_EMBREE=no -DCMAKE_INSTALL_PREFIX=$pkgdir -GNinja -B "$srcdir/build"
+	CC=clang CXX=clang++ \
+	cmake	-S "$srcdir/${pkgname%-git}" \
+		-B "$srcdir/build" -G Ninja \
+		-DCMAKE_MODULE_PATH:PATH="$site_packages/pybind11/share/cmake/pybind11/" \
+		-DMTS_ENABLE_PYTHON:BOOL=ON \
+		-DMTS_ENABLE_GUI:BOOL=OFF \
+		-DMTS_ENABLE_EMBREE:BOOL=OFF \
+		-DCMAKE_INSTALL_PREFIX:PATH="$pkgdir"
 
 	ninja -C "$srcdir/build" mkdoc
 }
