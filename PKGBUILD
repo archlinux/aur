@@ -6,8 +6,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=denemo-git
-pkgver=2.3.0.r153.g8f98d55d0
-pkgrel=2
+pkgver=2.4.0.r114.g4dcc8e6b1
+pkgrel=1
 epoch=1
 pkgdesc="A music score editor"
 arch=('x86_64')
@@ -29,7 +29,7 @@ pkgver() {
 build() {
   cd ${pkgname%-git} 
   [ -x configure ] || ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc --disable-rpath
+  ./configure --prefix=/usr --sysconfdir=/etc --disable-rpath --disable-portaudio --disable-portmidi 
   make
 }
 
