@@ -20,8 +20,8 @@ pkgdesc="Algorithms for the solution of large-scale scientific problems. Configu
 arch=('x86_64')
 url="http://trilinos.org"
 license=('LGPL3')
-depends=('python' 'lapack' 'boost' 'netcdf' 'libmatio' 'libx11' 'hdf5-openmpi')
-makedepends=('gcc-fortran' 'perl' 'blas' 'cmake' 'doxygen' 'bc' 'gtest')
+depends=('suitesparse')
+makedepends=('gcc-fortran' 'cmake')
 provides=('trilinos')
 conflicts=('trilinos')
 checkdepends=('cmake')
@@ -35,9 +35,6 @@ build() {
 
     cmake .. \
 		-G "Unix Makefiles" \
-		-DCMAKE_C_COMPILER=gcc \
-		-DCMAKE_CXX_COMPILER=g++ \
-		-DCMAKE_Fortran_COMPILER=gfortran \
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS/-O2/-O3} -fPIC" \
 		-DCMAKE_C_FLAGS="${CFLAGS/-O2/-O3} -fPIC" \
 		-DCMAKE_Fortran_FLAGS="${FFLAGS/-O2/-O3} -fPIC" \
@@ -70,7 +67,8 @@ build() {
 		-DTPL_ENABLE_LAPACK=ON \
 		-DTPL_ENABLE_MPI=OFF \
 		-DBUILD_SHARED_LIBS=OFF \
-		-DCMAKE_BUILD_TYPE=RELEASE
+		-DCMAKE_BUILD_TYPE='None' \
+		-Wno-dev
 
 
     make VERBOSE=1
