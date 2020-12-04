@@ -14,6 +14,7 @@ minecraft-legacy-launcher.desktop
 https://launcher.mojang.com/download/minecraft-launcher.svg
 minecraft-legacy-launcher
 )
+conflicts=(minecraft-launcher)
 md5sums=('f2171107e6b1f8a3483c5e3ed5d1229e'
          'cd561eab1fd1fddae58fb8205a00f54f'
          '0b104e3049346908bf559cab602071e3'
