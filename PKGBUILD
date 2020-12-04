@@ -6,7 +6,7 @@ pkgname=('pipewire-git'
          'pipewire-pulse-git'
          'pipewire-ffmpeg-git'
          )
-pkgver=0.3.17.35.g3c2ab98a
+pkgver=0.3.17.51.gc6663b6a
 pkgrel=1
 pkgdesc='Server and user space API to deal with multimedia pipelines. (GIT version)'
 arch=('x86_64')
@@ -21,7 +21,6 @@ makedepends=('git'
              'jack2'
              'libpulse'
              'alsa-lib'
-             'ffmpeg'
              'sbc'
              'rtkit'
              'vulkan-icd-loader'
@@ -29,6 +28,8 @@ makedepends=('git'
              'libsndfile'
              'bluez-libs'
              'vulkan-headers'
+             'libldac'
+             'ffmpeg'
              )
 source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
 sha256sums=('SKIP')
@@ -77,19 +78,17 @@ _pick() {
 }
 
 package_pipewire-git() {
-  depends=('ffmpeg'
-           'sbc'
+  depends=(
            'rtkit'
            'vulkan-icd-loader'
-           'bluez-libs'
            'alsa-card-profiles'
-           'libdbus-1.so'
            'libsndfile.so'
            'libudev.so'
            'libasound.so'
            'libsystemd.so'
-           'libglib-2.0.so'
-           'libgobject-2.0.so'
+           'libdbus-1.so'
+           'sbc'
+           'libldac'
            )
   optdepends=('pipewire-docs-git: Documentation'
               'pipewire-jack-git: JACK support'
@@ -121,7 +120,6 @@ package_pipewire-git() {
   # Use alsa-card-profiles built with Pulseaudio
   rm -rv "$pkgdir"/usr/share/alsa-card-profile
 
-  _pick pulse usr/bin/pipewire-pulse usr/lib/systemd/user/pipewire-pulse*
   _pick pulse etc/pipewire/media-session.d/with-pulseaudio
 
   _pick ffmpeg usr/lib/spa-0.2/ffmpeg/libspa-ffmpeg.so
@@ -165,7 +163,6 @@ package_pipewire-alsa-git() {
 package_pipewire-pulse-git() {
   pkgdesc='Server and user space API to deal with multimedia pipelines. (Pulse support)(GIT version)'
   depends=('pipewire'
-           "libpipewire-${pkgver:0:3}.so"
            'libpulse'
            )
   provides=('pipewire-pulse'
@@ -176,6 +173,7 @@ package_pipewire-pulse-git() {
              'pulseaudio'
              'pulseaudio-bluetooth'
              )
+  arch=('any')
   install=pipewire-pulse.install
 
   mv pulse/* "${pkgdir}"
@@ -183,7 +181,8 @@ package_pipewire-pulse-git() {
 
 package_pipewire-ffmpeg-git() {
   pkgdesc='Server and user space API to deal with multimedia pipelines. (FFmpeg SPA plugin)(GIT version)'
-  depends=("libpipewire-${pkgver:0:3}.so"
+  depends=('pipewire'
+           "libpipewire-${pkgver:0:3}.so"
            'ffmpeg'
            )
   provides=('pipewire-ffmpeg')
