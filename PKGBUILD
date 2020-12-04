@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxrt-git
-pkgver=v0.2.1.r0.gae3c28c
+pkgver=v0.2.4.r0.g6838eeb
 pkgrel=1
 pkgdesc="Ambiorix application runtime"
 arch=('any')
