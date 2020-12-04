@@ -1,0 +1,25 @@
+pkgbase = minecraft-legacy-launcher
+	pkgdesc = Minecraft Legacy Java Launcher
+	pkgver = 1.6.93
+	pkgrel = 1
+	url = https://www.minecraft.net
+	arch = x86_64
+	license = All rights reserved
+	depends = glibc
+	depends = libx11
+	depends = freetype2
+	depends = glib2
+	depends = java-runtime
+	depends = opengl-driver
+	optdepends = flite: narrator support
+	source = https://launcher.mojang.com/v1/objects/eabbff5ff8e21250e33670924a0c5e38f47c840b/launcher.jar
+	source = minecraft-legacy-launcher.desktop
+	source = https://launcher.mojang.com/download/minecraft-launcher.svg
+	source = minecraft-legacy-launcher
+	md5sums = f2171107e6b1f8a3483c5e3ed5d1229e
+	md5sums = cd561eab1fd1fddae58fb8205a00f54f
+	md5sums = 0b104e3049346908bf559cab602071e3
+	md5sums = ed884b0467a8d72d270fbca0b1122f07
+
+pkgname = minecraft-legacy-launcher
+

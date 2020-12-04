@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Minecraft Legacy Launcher
+Comment=Official Minecraft Legacy Launcher
+Exec=minecraft-legacy-launcher
+Path=/usr/share/java/myprogram
+Icon=minecraft-launcher
+Terminal=false
+Categories=Game;Application;
