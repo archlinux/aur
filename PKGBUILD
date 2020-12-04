@@ -6,8 +6,7 @@ pkgdesc='Enable vscode marketplace in Code OSS and VSCodium'
 arch=('any')
 url='https://marketplace.visualstudio.com/vscode'
 license=('unknown')
-optdepends=('code: for Code OSS'
-            'vscodium-bin: for VSCodium')
+depends=('code')
 install="${pkgname}.install"
 source=('code-marketplace.hook'
         'code-product.json.patch'
