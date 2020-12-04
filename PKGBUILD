@@ -2,7 +2,7 @@
 # Contributor: Sergey Mastykov <smastykov at gmail dot com>
 
 pkgname=python-pyramid
-pkgver=1.10.4
+pkgver=1.10.5
 pkgrel=1
 pkgdesc='A very general open source Python web framework.'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=('python-pyramid-debugtoolbar: development mode'
             'python-waitress: pserve/pcreate')
 
 source=($url/archive/${pkgver}.tar.gz)
-sha256sums=('7dd0aa9233baa258ef32206900e46a16de792ee1457cfe2f09264edd95bdc088')
+sha256sums=('ad3f8d4ca1342e4b8c4a28a08144fea4cbc31457a78604ae3d0ac9f30e62dd07')
 
 build() {
   cd pyramid-$pkgver
@@ -43,7 +43,7 @@ check() {
 
 package() {
   cd pyramid-$pkgver
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -D LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
