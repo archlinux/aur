@@ -1,0 +1,20 @@
+pkgbase = asian-fonts
+	pkgdesc = Meta package for asian fonts.
+	pkgver = 1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Fonts
+	arch = any
+	license = GPL
+	depends = lohit-fonts
+	depends = ttf-indic-otf
+	depends = opendesktop-fonts
+	depends = otf-ipafont
+	depends = ttf-hannom
+	depends = ttf-baekmuk
+	depends = fonts-tlwg
+	depends = ttf-khmer
+	depends = ttf-tibetan-machine
+	replaces = garuda-asian
+
+pkgname = asian-fonts
+
