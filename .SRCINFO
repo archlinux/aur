@@ -1,0 +1,19 @@
+pkgbase = scanner-support
+	pkgdesc = Meta package for scanner support.
+	pkgver = 1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/SANE
+	install = scanner.install
+	arch = any
+	license = GPL
+	depends = sane
+	depends = sane-airscan
+	depends = colord-sane
+	depends = ipp-usb
+	optdepends = simple-scan: GTK3 frontend for scanner
+	optdepends = skanlite: Image Scanning Application for KDE
+	replaces = garuda-scanner
+	replaces = manjaro-scanner
+
+pkgname = scanner-support
+
