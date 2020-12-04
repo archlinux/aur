@@ -1,7 +1,7 @@
 # Maintainer: Aman Sinha
 
 pkgname=mongodb-shell
-pkgver=0.5.2
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='The MongoDB Shell includes all features of legacy mongo shell with new syntax highligting, clear error messages and intelligent autocomplete.'
 url='https://www.mongodb.com/'
@@ -10,7 +10,7 @@ optdepends=('mongodb-bin')
 provides=("mongosh")
 arch=('x86_64')
 source=("https://downloads.mongodb.com/compass/mongosh-$pkgver-linux.tgz")
-sha256sums=("8932e972a52413e4f03f72e8a483bd1f242eb4838af10d89c68b665470f0eb87")
+sha256sums=("6896d77224ca3edbd0c031b0904b5a8a55043851780c7e547f1a70e48bdac540")
 options=(!strip)
 package() {
   cd $srcdir
