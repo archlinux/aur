@@ -1,13 +1,13 @@
 pkgbase = miniongg
 	pkgdesc = Elder Scrolls Online and World of Warcraft Addon Manager
 	pkgver = 3.0.7_SNAPSHOT.r1.12dbc95e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://minion.mmoui.com/
 	arch = any
 	license = custom
 	makedepends = unzip
-	depends = jdk8-openjdk
-	depends = java8-openjfx
+	depends = java-runtime
+	depends = java-openjfx
 	provides = miniongg
 	source = https://cdn.mmoui.com/minion/v3/MinionClientUpdate-12dbc95eff5898a64f584a3c697dad987c604af8.zip
 	source = https://cdn.mmoui.com/minion/v3/MinionLibsUpdate-81fcfa6cd281365b8e6c40c51e2fc931caf4101d.zip
@@ -17,7 +17,7 @@ pkgbase = miniongg
 	md5sums = 977dcbe4914fe452055d092083960f4c
 	md5sums = 862307f1f506b42a576c8d49e90eccbf
 	md5sums = 0e439acd67fab9625deae97f657615ba
-	md5sums = 8a35da141230c288000c70075c35fe8a
+	md5sums = 4e4379da15949ba28dabc3dc2678aa37
 	md5sums = cb92061ae2d15effbddc3b23600cfeaf
 
 pkgname = miniongg
