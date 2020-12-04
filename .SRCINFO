@@ -1,7 +1,7 @@
 pkgbase = python-olxsearch
 	pkgdesc = Download metadata from the OLX online market place(s)
 	pkgver = 1.0.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://gitlab.com/christoph.fink/olxsearch
 	arch = any
 	license = GPLv3

@@ -3,7 +3,7 @@
 pkgname=python-olxsearch
 _name=${pkgname#python-}
 pkgver=1.0.1
-pkgrel=0
+pkgrel=1
 
 pkgdesc="Download metadata from the OLX online market place(s)"
 url="https://gitlab.com/christoph.fink/olxsearch"
