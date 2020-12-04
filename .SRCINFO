@@ -1,0 +1,31 @@
+pkgbase = input-devices-support
+	pkgdesc = Meta package for input devices support.
+	pkgver = 1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Category:Input_devices
+	install = input.install
+	arch = any
+	license = GPL
+	depends = xf86-input-elographics
+	depends = xf86-input-evdev
+	depends = xf86-input-void
+	depends = xf86-input-libinput
+	depends = xf86-input-wacom
+	depends = libinput-gestures
+	depends = iio-sensor-proxy
+	depends = fprintd
+	depends = bolt
+	depends = v4l-utils
+	depends = linuxconsole
+	depends = brightnessctl
+	depends = game-devices-udev
+	depends = android-tools
+	depends = android-udev
+	optdepends = piper: GTK application to configure gaming mice
+	optdepends = antimicrox: GUI for mapping keyboard keys to controller
+	optdepends = plasma-thunderbolt: Plasma integration for managing Thunderbolt devices
+	replaces = garuda-input
+	replaces = manjaro-input
+
+pkgname = input-devices-support
+
