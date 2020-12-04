@@ -8,7 +8,7 @@ provides=('python-fasttext')
 conflicts=('python-fasttext')
 
 pkgver=v0.1.0.r85.g25c3994
-pkgrel=1
+pkgrel=2
 
 arch=('any')
 license=('BSD')
