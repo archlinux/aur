@@ -1,6 +1,6 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 pkgname=albert-lite
-pkgver=0.16.2
+pkgver=0.16.3
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher. Without QML and VirtualBox dependencies"
 arch=('i686' 'x86_64' 'armv7h')
