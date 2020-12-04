@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-mbf-costmap-nav
 	pkgdesc = ROS - The mbf_costmap_nav package contains the costmap navigation server implementation of Move Base Flex (MBF).
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = http://wiki.ros.org/move_base_flex
 	arch = any
@@ -42,8 +42,8 @@ pkgbase = ros-melodic-mbf-costmap-nav
 	depends = ros-melodic-actionlib
 	depends = ros-melodic-pluginlib
 	depends = ros-melodic-mbf-utility
-	source = ros-melodic-mbf-costmap-nav-0.3.3.tar.gz::https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_costmap_nav/0.3.3.tar.gz
-	sha256sums = ce50ae3e4680f916d8091f5ba11d3273c80c5447537031acaf840d5c8c45564b
+	source = ros-melodic-mbf-costmap-nav-0.3.4.tar.gz::https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_costmap_nav/0.3.4.tar.gz
+	sha256sums = 87fe73b12f44fd35c61ce3c4b147fc501c1da34730627bfade1756b4b11c5976
 
 pkgname = ros-melodic-mbf-costmap-nav
 
