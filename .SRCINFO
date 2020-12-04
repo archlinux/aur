@@ -1,7 +1,7 @@
 pkgbase = python-messytables
 	pkgdesc = Parse messy tabular data in various formats
 	pkgver = 0.15.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://messytables.readthedocs.io/
 	arch = any
 	license = MIT

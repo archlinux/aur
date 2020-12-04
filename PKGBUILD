@@ -6,7 +6,7 @@ pkgdesc="Parse messy tabular data in various formats"
 url="https://messytables.readthedocs.io/"
 
 pkgver=0.15.2
-pkgrel=3
+pkgrel=4
 
 arch=("any")
 license=("MIT")
