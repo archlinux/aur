@@ -23,7 +23,7 @@ source=("git+https://gitlab.com/wg1/jpeg-xl.git#tag=v${pkgver}"
         'git+https://github.com/Netflix/vmaf.git'
         'git+https://github.com/thorfdbg/difftest_ng.git'
         'git+https://github.com/google/highway.git'
-        '010-libjpeg-xl-git-fix-highway-build.patch')
+        '010-libjpeg-xl-fix-highway-build.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -53,7 +53,7 @@ prepare() {
     git -C jpeg-xl config --local submodule.third_party/difftest_ng.url "${srcdir}/difftest_ng"
     git -C jpeg-xl config --local submodule.third_party/highway.url "${srcdir}/highway"
     git -C jpeg-xl submodule update
-    patch -d jpeg-xl -Np1 -i "${srcdir}/010-libjpeg-xl-git-fix-highway-build.patch"
+    patch -d jpeg-xl -Np1 -i "${srcdir}/010-libjpeg-xl-fix-highway-build.patch"
 }
 
 build() {
