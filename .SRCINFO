@@ -1,0 +1,20 @@
+pkgbase = xaskpass
+	pkgdesc = A lightweight passphrase dialog
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/user827/xaskpass.git
+	arch = x86_64
+	license = Apache
+	depends = libxcb
+	depends = xcb-util-errors
+	depends = xcb-util-xrm
+	depends = pango
+	depends = cairo
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	source = xaskpass::git+https://github.com/user827/xaskpass.git#tag=v1.0.0?signed
+	validpgpkeys = D47AF080A89B17BA083053B68DFE60B7327D52D6
+	sha256sums = SKIP
+
+pkgname = xaskpass
+
