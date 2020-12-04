@@ -1,0 +1,15 @@
+pkgbase = python-tilemapbase-git
+	pkgdesc = Use OpenStreetMap tiles as basemaps in python / matplotlib
+	pkgver = r55.85665c2
+	pkgrel = 1
+	url = https://github.com/MatthewDaws/TileMapBase
+	arch = any
+	license = MIT
+	depends = python-requests
+	depends = python-pillow
+	optdepends = python-pyproj
+	source = git+https://github.com/MatthewDaws/TileMapBase.git
+	sha256sums = SKIP
+
+pkgname = python-tilemapbase-git
+
