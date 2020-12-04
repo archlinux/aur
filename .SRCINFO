@@ -1,0 +1,14 @@
+pkgbase = python-pytest-split
+	pkgdesc = Pytest plugin which splits the test suite based on test execution time.
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/jerry-git/pytest-split
+	arch = any
+	license = MIT
+	makedepends = python-setuptools-scm
+	depends = python-pytest
+	source = https://files.pythonhosted.org/packages/source/p/pytest-split/pytest-split-0.1.5.tar.gz
+	sha256sums = bf0163aafe5686e917a7f043567af96c50fabfe1ba0aa3be0f1b65556e09aa3c
+
+pkgname = python-pytest-split
+
