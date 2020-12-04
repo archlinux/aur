@@ -1,7 +1,7 @@
 pkgbase = python-crccheck
 	pkgdesc = Calculation library for CRCs and checksums
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/crccheck
 	arch = any
 	license = GPL3

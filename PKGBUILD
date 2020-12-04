@@ -4,7 +4,7 @@
 pkgname=('python-crccheck')
 _module=${pkgname#python-}
 pkgver='1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Calculation library for CRCs and checksums"
 url="https://sourceforge.net/projects/crccheck"
 depends=('python')
@@ -22,5 +22,6 @@ build() {
 package() {
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    rm -r ${pkgdir}/usr/lib/python3.8/site-packages/tests/
+    python_version="$(python -c "import sys;v=sys.version_info;print(f'{v[0]}.{v[1]}')")"
+    rm -r ${pkgdir}/usr/lib/python${python_version}/site-packages/tests/
 }
