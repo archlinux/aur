@@ -17,7 +17,7 @@ makedepends=()
 noextract=()
 options=()
 pkgdesc='a shell extension that manages your environment'
-pkgrel=2
+pkgrel=3
 pkgver=2.25.0
 provides=("$_pkgname")
 replaces=()
@@ -34,14 +34,16 @@ source_i686=("${_pkgname}-${pkgver}.linux-i686::${_srcurl}/releases/download/v${
 source_x86_64=("${_pkgname}-${pkgver}.linux-x86_64::${_srcurl}/releases/download/v${pkgver}/${_pkgname}.linux-amd64")
 
 package() {
+
   install -Dm755 "${_pkgname}-${pkgver}.linux-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
 
   cd "$_pkgname-$pkgver" || exit
 
-  install -Dm755 -d "${pkgdir}/usr/share/man/man1"
-  install -Dm644 man/*.1 "${pkgdir}/usr/share/man/man1/"
-
+  for f in man/*.1; do
+    install -Dm644 "$f" "${pkgdir}/usr/share/man/man1/${f##*/}"
+  done
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
 }
 
 # vim:set ts=2 sw=2 et:
