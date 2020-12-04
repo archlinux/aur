@@ -1,31 +1,31 @@
 post_install() {
   if [ -f /usr/lib/code/product.json ]; then
-    patch /usr/lib/code/product.json < /usr/share/code-marketplace/code-product.json.patch
+    patch /usr/lib/code/product.json </usr/share/code-marketplace/code-product.json.patch
   elif [ -f /usr/share/vscodium-bin/resources/app/product.json ]; then
-    patch /usr/share/vscodium-bin/resources/app/product.json < /usr/share/code-marketplace/vscodium-bin-product.json.patch
+    patch /usr/share/vscodium-bin/resources/app/product.json </usr/share/code-marketplace/vscodium-bin-product.json.patch
   fi
 }
 
 pre_upgrade() {
   if [ -f /usr/lib/code/product.json ]; then
-    patch -R /usr/lib/code/product.json < /usr/share/code-marketplace/code-product.json.patch
+    patch -R /usr/lib/code/product.json </usr/share/code-marketplace/code-product.json.patch
   elif [ -f /usr/share/vscodium-bin/resources/app/product.json ]; then
-    patch -R /usr/share/vscodium-bin/resources/app/product.json < /usr/share/code-marketplace/vscodium-bin-product.json.patch
+    patch -R /usr/share/vscodium-bin/resources/app/product.json </usr/share/code-marketplace/vscodium-bin-product.json.patch
   fi
 }
 
 post_upgrade() {
   if [ -f /usr/lib/code/product.json ]; then
-    patch /usr/lib/code/product.json < /usr/share/code-marketplace/code-product.json.patch
+    patch /usr/lib/code/product.json </usr/share/code-marketplace/code-product.json.patch
   elif [ -f /usr/share/vscodium-bin/resources/app/product.json ]; then
-    patch /usr/share/vscodium-bin/resources/app/product.json < /usr/share/code-marketplace/vscodium-bin-product.json.patch
+    patch /usr/share/vscodium-bin/resources/app/product.json </usr/share/code-marketplace/vscodium-bin-product.json.patch
   fi
 }
 
 pre_remove() {
   if [ -f /usr/lib/code/product.json ]; then
-    patch -R /usr/lib/code/product.json < /usr/share/code-marketplace/code-product.json.patch
+    patch -R /usr/lib/code/product.json </usr/share/code-marketplace/code-product.json.patch
   elif [ -f /usr/share/vscodium-bin/resources/app/product.json ]; then
-    patch -R /usr/share/vscodium-bin/resources/app/product.json < /usr/share/code-marketplace/vscodium-bin-product.json.patch
+    patch -R /usr/share/vscodium-bin/resources/app/product.json </usr/share/code-marketplace/vscodium-bin-product.json.patch
   fi
 }

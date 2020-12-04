@@ -9,14 +9,17 @@ license=('unknown')
 depends=('code')
 install="${pkgname}.install"
 source=('code-marketplace.hook'
+        'patch.sh'
         'code-product.json.patch'
         'vscodium-bin-product.json.patch')
-md5sums=('dc1b0dedb41767bf2511bbeee3715a02'
+md5sums=('86f0c2bc60b5843a41fd9d2f8bab0b5a'
+         'c30c18a4feb9b3558568dbbd7d9c237f'
          '9e476c8aae4243010d6a1c18e56ac402'
          '26be4c7916e72598198d9b3b19945311')
 
 package() {
   install -Dm 644 "${srcdir}"/code-marketplace.hook "${pkgdir}"/usr/share/libalpm/hooks/code-marketplace.hook
+  install -Dm 755 "${srcdir}"/patch.sh "${pkgdir}"/usr/share/code-marketplace/patch.sh
   install -Dm 644 "${srcdir}"/code-product.json.patch "${pkgdir}"/usr/share/code-marketplace/code-product.json.patch
   install -Dm 644 "${srcdir}"/vscodium-bin-product.json.patch "${pkgdir}"/usr/share/code-marketplace/vscodium-bin-product.json.patch
 }

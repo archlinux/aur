@@ -8,9 +8,11 @@ pkgbase = code-marketplace
 	license = unknown
 	depends = code
 	source = code-marketplace.hook
+	source = patch.sh
 	source = code-product.json.patch
 	source = vscodium-bin-product.json.patch
-	md5sums = dc1b0dedb41767bf2511bbeee3715a02
+	md5sums = 86f0c2bc60b5843a41fd9d2f8bab0b5a
+	md5sums = c30c18a4feb9b3558568dbbd7d9c237f
 	md5sums = 9e476c8aae4243010d6a1c18e56ac402
 	md5sums = 26be4c7916e72598198d9b3b19945311
 
