@@ -5,16 +5,16 @@ url='https://wiki.ros.org/chomp_motion_planner'
 pkgname='ros-melodic-chomp-motion-planner'
 pkgver='1.0.6'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-moveit-core
-  ros-melodic-moveit-experimental)
+  )
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-melodic-moveit-core
-  ros-melodic-moveit-experimental)
+  )
 depends=(${ros_depends[@]})
 
 # Tarball version (faster download)
