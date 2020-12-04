@@ -14,7 +14,7 @@ provides=('x11-ssh-askpass')
 source=("$pkgname::git+$url#tag=v${pkgver}?signed")
 sha256sums=(SKIP)
 validpgpkeys=(D47AF080A89B17BA083053B68DFE60B7327D52D6) # user827
-option=(strip)
+options=(strip)
 
 build() {
   cd "$pkgname"
