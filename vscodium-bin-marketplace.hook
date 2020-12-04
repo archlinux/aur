@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = /usr/share/vscodium-bin/resources/app/product.json
+
+[Action]
+Description = Patching product.json...
+Exec = /usr/bin/bash -c "/usr/bin/patch /usr/share/vscodium-bin/resources/app/product.json < /usr/share/vscodium-bin/resources/app/product.json.patch"
+When = PostTransaction

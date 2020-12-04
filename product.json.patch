@@ -1,0 +1,35 @@
+*** /usr/share/vscodium-bin/resources/app/product.json  2020-12-03 19:59:40.000000000 -0500
+--- product_new.json    2020-12-04 08:39:09.547338599 -0500
+***************
+*** 1,9 ****
+  {
+    "serverDataFolderName": ".vscode-server-oss",
+-   "linkProtectionTrustedDomains": ["https://open-vsx.org"],
+    "extensionsGallery": {
+!     "itemUrl": "https://open-vsx.org/vscode/item",
+!     "serviceUrl": "https://open-vsx.org/vscode/gallery"
+    },
+    "quality": "stable",
+    "keyboardShortcutsUrlWin": "https://go.microsoft.com/fwlink/?linkid=832145",
+--- 1,9 ----
+  {
+    "serverDataFolderName": ".vscode-server-oss",
+    "extensionsGallery": {
+!     "serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
+!     "cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
+!     "itemUrl": "https://marketplace.visualstudio.com/items"
+    },
+    "quality": "stable",
+    "keyboardShortcutsUrlWin": "https://go.microsoft.com/fwlink/?linkid=832145",
+***************
+*** 152,155 ****
+      "vs/code/electron-browser/workbench/workbench.html": "DCAx76TE79oJvbVEouBCXQ",
+      "vs/code/electron-browser/workbench/workbench.js": "QmbzxZoyrJnqFRW9jKugHQ"
+    }
+! }
+\ No newline at end of file
+--- 152,155 ----
+      "vs/code/electron-browser/workbench/workbench.html": "DCAx76TE79oJvbVEouBCXQ",
+      "vs/code/electron-browser/workbench/workbench.js": "QmbzxZoyrJnqFRW9jKugHQ"
+    }
+! }
