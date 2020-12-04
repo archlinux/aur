@@ -27,7 +27,7 @@ fi
 ##
 
 pkgname=brave
-pkgver=1.17.73
+pkgver=1.17.75
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -61,12 +61,12 @@ done
 # VAAPI patches from chromium-vaapi in AUR
 #source+=("vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=7c05464a8700b1a6144258320b2b33b352385f77")
 
-sha256sums=('090b705dab4e89f8b3ebc5abf879a1eb1b44ce0d29fa15b6a49cecdc1efe7888'
+sha256sums=('00fae544068fb94a82587ff7bbcba8430d0a1efd91ffcc5e84c06da6ce9b49fc'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'c99934bcd2f3ae8ea9620f5f59a94338b2cf739647f04c28c8a551d9083fa7e9'
-            'd492ca5946e8faba67be4893e89677c7053bdecafe06eed1df652bd37a948286'
+            '8d1123e583e33ef8e91ddda0b62f7b8d51b9d6b61c73e74a90f40ef5f379573b'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py

@@ -164,3 +164,16 @@ index d3bf012a5f..794ba63eb7 100644
  
  #include "base/logging.h"
  #include "brave/components/ipfs/common/ipfs_constants.h"
+diff --git a/brave/browser/brave_stats/brave_stats_updater.cc b/brave/browser/brave_stats/brave_stats_updater.cc
+index e4e9a0668f..20493aa078 100644
+--- a/brave/browser/brave_stats/brave_stats_updater.cc
++++ b/brave/browser/brave_stats/brave_stats_updater.cc
+@@ -171,9 +171,6 @@ void BraveStatsUpdater::SetStatsThresholdCallback(
+ 
+ GURL BraveStatsUpdater::BuildStatsEndpoint(const std::string& path) {
+   auto stats_updater_url = GURL(usage_server_ + path);
+-#if defined(OFFICIAL_BUILD)
+-  CHECK(stats_updater_url.is_valid());
+-#endif
+   return stats_updater_url;
+ }
