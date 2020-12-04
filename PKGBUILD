@@ -2,7 +2,7 @@
 # Contributor: jfperini <@jfperini>
 
 pkgname=veusz-git
-pkgver=3.2.r2.g1f461161
+pkgver=3.2.991.r5.ga282e2a2
 pkgrel=1
 pkgdesc="A scientific plotting and graphing package, designed to create publication-ready Postscript or PDF output."
 url="https://github.com/veusz/veusz"
@@ -13,6 +13,7 @@ makedepends=('git' 'sip')
 optdepends=('ghostscript: for EPS/PS output'
 	    'python-pyfits: for reading files in FITS format'
 	    'python-dbus: for dbus interface'
+	    'python-iminuit: improved fitting'
             'python-astropy: for VO table import')
 conflicts=('veusz')
 provides=('veusz')
@@ -28,7 +29,7 @@ build() {
   cd ${pkgname%-git}
   [[ -d NEW ]] || mkdir -p NEW
   [[ -d NEW/PyQt5 ]] && rm -rf NEW/PyQt5
-  ln -s /usr/lib/python3.8/site-packages/PyQt5/bindings/ NEW/PyQt5
+  ln -s /usr/lib/python3.9/site-packages/PyQt5/bindings/ NEW/PyQt5
   export SIP_DIR=NEW/
   python setup.py build
 }
