@@ -6,7 +6,7 @@
     pkgname='ros-melodic-cartographer-ros'
     pkgver='1.0.0'
     arch=('any')
-    pkgrel=1
+    pkgrel=2
     license=('Apache 2.0')
 
     ros_makedepends=(ros-melodic-tf2-ros
@@ -65,8 +65,15 @@
     
     # Tarball version (faster download)
     _dir="cartographer_ros-release-release-melodic-cartographer_ros"
-    source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-gbp/cartographer_ros-release/archive/release/melodic/cartographer_ros/${pkgver}.tar.gz")
-    sha256sums=('874e830d4b3e341cf7f53e66499f84e5f46bb9fda97cfe5d523cee6ec2ebd6d0')
+    source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-gbp/cartographer_ros-release/archive/release/melodic/cartographer_ros/${pkgver}.tar.gz"
+      CMakeLists.patch)
+sha256sums=('874e830d4b3e341cf7f53e66499f84e5f46bb9fda97cfe5d523cee6ec2ebd6d0'
+            '18bafe6a7b7c0a894ce2055ace65925dedab29aab0183f56ba01cb8937013b86')
+
+prepare() {
+    cd "${srcdir}/${_dir}"
+    patch -uN CMakeLists.txt ../CMakeLists.patch || return 1
+}
 
     build() {
         # Use ROS environment variables
