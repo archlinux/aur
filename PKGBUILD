@@ -1,8 +1,8 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=devpi-server
-pkgver=5.2.0
-pkgrel=2
+pkgver=5.5.0
+pkgrel=1
 pkgdesc="reliable private and pypi.python.org caching server"
 arch=(any)
 url="http://doc.devpi.net/"
@@ -17,13 +17,13 @@ source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}
         'devpi-server.service'
         'devpi-server.install')
 install='devpi-server.install'
-sha256sums=('aff9858dcb97e6806df9e0a4409f665515bfae3e6afb82bf23eb1e1d176857b5'
+sha256sums=('11c2609bf6e0b06a6262ea4232a403def26909164ef403faf36b840914f13452'
             '1ebfe9edc2bf0f368162f15540e48a8e046db0023b5da23e98daf43f0e075a95'
             '16c075687426589b69da252f04ee1a2ff0f8e73526eb773c53475d82e827f199')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
