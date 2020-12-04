@@ -17,7 +17,7 @@ makedepends=()
 noextract=()
 options=()
 pkgdesc='a shell extension that manages your environment'
-pkgrel=1
+pkgrel=2
 pkgver=2.25.0
 provides=("$_pkgname")
 replaces=()
@@ -29,9 +29,9 @@ sha256sums_i686=('d8d33b014c44a1ec0418103168004a7044e98b19f0d2e5b03b3c26f115bbc6
 sha256sums_x86_64=('3a639ddb7a4d29589ca9aaf44de90873f98937ca78d922e5f51a8f3f9c3b2a25')
 
 source=("${_pkgname}-${pkgver}.tar.gz::${_srcurl}/archive/v${pkgver}.tar.gz")
-source_aarch64=("${_pkgname}-${pkgver}.linux-${CARCH}::${_srcurl}/releases/download/v${pkgver}/${_pkgname}.linux-arm64")
-source_i686=("${_pkgname}-${pkgver}.linux-${CARCH}::${_srcurl}/releases/download/v${pkgver}/${_pkgname}.linux-386")
-source_x86_64=("${_pkgname}-${pkgver}.linux-${CARCH}::${_srcurl}/releases/download/v${pkgver}/${_pkgname}.linux-amd64")
+source_aarch64=("${_pkgname}-${pkgver}.linux-aarch64::${_srcurl}/releases/download/v${pkgver}/${_pkgname}.linux-arm64")
+source_i686=("${_pkgname}-${pkgver}.linux-i686::${_srcurl}/releases/download/v${pkgver}/${_pkgname}.linux-386")
+source_x86_64=("${_pkgname}-${pkgver}.linux-x86_64::${_srcurl}/releases/download/v${pkgver}/${_pkgname}.linux-amd64")
 
 package() {
   install -Dm755 "${_pkgname}-${pkgver}.linux-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
