@@ -33,8 +33,6 @@ package() {
   install -dm755 "${pkgdir}"/usr/bin/
   mv "${pkgdir}"/usr/local/bin/wmderland "${pkgdir}"/usr/bin/wmderland
   mv "${pkgdir}"/usr/local/bin/wmderlandc "${pkgdir}"/usr/bin/wmderlandc
-  rm "${pkgdir}"/usr/local/bin/wmderland
-  rm "${pkgdir}"/usr/local/bin/wmderlandc
 
 
   # Install example config file.
