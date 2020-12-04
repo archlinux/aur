@@ -2,7 +2,7 @@
 _pkgname=aiohttp-json-rpc
 pkgname="python-$_pkgname"
 pkgver=0.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Implements JSON-RPC 2.0 Specification using aiohttp"
 arch=(any)
 url="https://github.com/pengutronix/aiohttp-json-rpc"

@@ -1,7 +1,7 @@
 pkgbase = python-aiohttp-json-rpc
 	pkgdesc = Implements JSON-RPC 2.0 Specification using aiohttp
 	pkgver = 0.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pengutronix/aiohttp-json-rpc
 	arch = any
 	license = Apache
