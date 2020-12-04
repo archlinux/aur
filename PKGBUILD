@@ -1,8 +1,9 @@
 # Maintainer: peippo <christoph.fink@gmail.com>
 
 pkgname=python-emojientities
+_name=${pkgname#python-}
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 
 pkgdesc="retrieves emoji character range from unicode.org"
 url="https://gitlab.com/christoph.fink/python-emojientities"
@@ -12,8 +13,8 @@ arch=("any")
 makedepends=("python-setuptools")
 depends=("python-requests")
 
-source=("https://gitlab.com/christoph.fink/python-emojientities/uploads/71e3675a1032bdc0702eb8a5343944cc/emojientities-0.1.5.tar.gz")
-sha256sums=("d8cec2414b36a4c62008775d784302b368be0ec4cbe0d605ea376acf0a57a9e0")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=("bd0d130c5597a157dc652f9202ee0bfcf4a1053dda92a9400e4ceee34ec5967d")
 
 prepare() {
    rm -Rf "${srcdir}/*/*.egg-info"
