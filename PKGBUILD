@@ -3,19 +3,19 @@ pkgname=geant4-particlexsdata
 _varname='G4PARTICLEXSDATA'
 _dataname="G4PARTICLEXS"
 _foldername='G4PARTICLEXS'
-pkgver=2.1
-pkgrel=3
+pkgver=3.1
+pkgrel=1
 pkgdesc="Data files for evaluated particle cross-sections on natural composition of elements"
 url="http://geant4.cern.ch/"
 arch=('any')
 license=('GPL')
-optdepends=('geant4>=10.5')
+optdepends=('geant4>=10.7')
 conflicts=('geant4-neutronxsdata')
 provides=('geant4-neutronxsdata')
 install="${pkgname}.install"
 source=("https://cern.ch/geant4-data/datasets/${_dataname}.${pkgver}.tar.gz"
-  "${pkgname}.install")
-sha256sums=('094d103372bbf8780d63a11632397e72d1191dc5027f9adabaf6a43025520b41'
+        "${pkgname}.install")
+sha256sums=('404da84ead165e5cccc0bb795222f6270c9bf491ef4a0fd65195128b27f0e9cd'
             'bc476e1b0ebb6e5ea2f57398887ed3b2ec22e4b678be2f54edf439d6f3dc18a2')
 
 ## Remove this if you want to keep an even smaller package
