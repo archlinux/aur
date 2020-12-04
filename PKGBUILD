@@ -3,17 +3,17 @@ pkgname=geant4-realsurfacedata
 _varname='G4REALSURFACEDATA'
 _dataname="G4RealSurface"
 _foldername="RealSurface"
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.2
+pkgrel=1
 pkgdesc="Data files for measured optical surface reflectance"
 url="http://geant4.cern.ch/"
 arch=('any')
 license=('GPL')
-optdepends=('geant4>=10.5')
+optdepends=('geant4>=10.7')
 install="${pkgname}.install"
 source=("https://cern.ch/geant4-data/datasets/${_dataname}.${pkgver}.tar.gz"
-  "${pkgname}.install")
-sha256sums=('90481ff97a7c3fa792b7a2a21c9ed80a40e6be386e581a39950c844b2dd06f50'
+        "${pkgname}.install")
+sha256sums=('9954dee0012f5331267f783690e912e72db5bf52ea9babecd12ea22282176820'
             'da6cc95b5f5d3de4abd454481f3cff8c68e99faff097a030251d2a8ce9e3203a')
 
 ## Remove this if you want to keep an even smaller package
