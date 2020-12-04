@@ -1,7 +1,7 @@
 pkgname=pijul
 pkgver=1.0.0_alpha.15
 pkgrel=1
-pkgdesc="Patch-based distributed version control system"
+pkgdesc="The sound distributed version control system"
 url='https://pijul.org'
 makedepends=('cargo' 'clang' 'libsodium' 'gcc-libs' 'pkgconf' 'diffutils' 'make' 'xxhash')
 depends=('zstd' 'openssl' 'xxhash')
