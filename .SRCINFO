@@ -1,6 +1,6 @@
 pkgbase = nagstamon-beta
 	pkgdesc = Nagios status monitor for the desktop
-	pkgver = 3.5.0.20200731
+	pkgver = 3.5.0.20201110
 	pkgrel = 1
 	url = https://nagstamon.ifw-dresden.de/
 	arch = any
@@ -18,9 +18,9 @@ pkgbase = nagstamon-beta
 	depends = python-dateutil
 	provides = nagstamon
 	conflicts = nagstamon
-	source = https://nagstamon.ifw-dresden.de/files/testing/Nagstamon-3.5-20200731.tar.gz
-	md5sums = 8d154e14f66a07ebd4851e07049c62d3
-	sha256sums = f1b78eded305adf5001d1175918e6edefeb21fb0efa8bbb638fb10aae3dbe9bd
+	source = https://nagstamon.ifw-dresden.de/files/testing/Nagstamon-3.5-20201110.tar.gz
+	md5sums = 8dcdd69ec477152b474c5025eb7dcb07
+	sha256sums = a9337d2e69806c50fba69be55684fc72e0b997a1c3deec45f845d75510f7c90a
 
 pkgname = nagstamon-beta
 
