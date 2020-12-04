@@ -1,14 +1,14 @@
 pkgbase = python-aiosocks
 	pkgdesc = SOCKS proxy client for asyncio and aiohttp
 	pkgver = 0.2.6
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/nibrag/aiosocks
 	arch = any
-	license = Apache
+	license = Apache 2
 	depends = python
 	depends = python-setuptools
 	source = https://files.pythonhosted.org/packages/source/a/aiosocks/aiosocks-0.2.6.tar.gz
-	md5sums = cbe53d1ff7c4537b66d5515d90ac1bc5
+	sha256sums = 94dfb2c3ff2fc646c88629e29872599cc93d9137c2eace68dc89079e6a221277
 
 pkgname = python-aiosocks
 
