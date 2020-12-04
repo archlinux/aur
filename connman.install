@@ -1,0 +1,25 @@
+msg() {
+    ALL_OFF="\e[1;0m"
+    BOLD="\e[1;1m"
+    GREEN="${BOLD}\e[1;32m"
+	local mesg=$1; shift
+	printf "${GREEN}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}" "$@" >&2
+}
+
+post_install() {
+post_upgrade
+}
+
+post_upgrade() {
+  msg "Attempting to enable services..."
+  systemctl is-active connman.service >/dev/null || systemctl enable connman.service --force
+  systemctl is-active ofono.service >/dev/null || systemctl enable ofono.service --force
+  systemctl is-active iwd.service >/dev/null || systemctl enable iwd.service
+  systemctl is-active ead.service >/dev/null || systemctl enable ead.service
+  echo ""
+  msg "services should now be enabled."
+  msg "Reboot your system, so changes will take effect.."
+  echo ""
+}
+
+# vim: ts=2 sw=2 et:
