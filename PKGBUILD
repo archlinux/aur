@@ -8,13 +8,13 @@ _buildver=203.5981.165
 _pkgver=2020.3
 _eap=false
 pkgver="${_pkgver}.${_buildver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
 arch=("any")
 options=("!strip")
 url="https://www.jetbrains.com/pycharm/nextversion/"
 license=("custom")
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'cython')
 optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'ipython: For enhanced interactive Python shell v3 inside Pycharm'
             'openssh: For deployment and remote connections'
@@ -23,7 +23,6 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'python2-coverage: For support code coverage measurement for Python 2'
             'python-coverage: For support code coverage measurement for Python 3'
             'cython2: For performance debugger in Python 2'
-            'cython: For performance debugger in Python 3'
             'docker-machine: For support docker inside Pycharm'
             'docker-compose: For support docker inside Pycharm'
             'vagrant: For support virtualized development environments'
