@@ -2,7 +2,7 @@
 
 pkgname=openhsr-connect-git
 pkgver=r172.4d341fb
-pkgrel=1
+pkgrel=2
 pkgdesc="An open alternative to HSR Mapper for HSR students"
 arch=(any)
 url="https://github.com/openhsr/connect"
@@ -20,7 +20,7 @@ pkgver() {
 
 package() {
   cd connect
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 # vim:set ts=2 sw=2 et:
