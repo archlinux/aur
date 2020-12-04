@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=6.88b
-pkgrel=2
+pkgrel=3
 epoch=32
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64' 'armv7h')
@@ -96,6 +96,10 @@ package(){
     install -Dm644 "JFlashExe.desktop" "${pkgdir}/usr/share/applications/"
     install -Dm644 "JFlashLiteExe.desktop" "${pkgdir}/usr/share/applications/"
     install -Dm644 "JLinkConfigExe.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm644 "JLinkExe.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm644 "JLinkGUIServerExe.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm644 "JRunExe.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm644 "JMemExe.desktop" "${pkgdir}/usr/share/applications/"
     install -Dm644 "JLink.svg" "${pkgdir}/usr/share/pixmaps/JLink.svg"
 
     cd "${srcdir}/JLink"
