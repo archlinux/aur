@@ -1,0 +1,25 @@
+--- ./pkg/vscodium-bin/usr/share/vscodium-bin/resources/app/product.json	2020-12-04 15:56:10.000000000 +0800
++++ /home/sainnhe/Downloads/product.json	2020-12-04 16:03:53.732183038 +0800
+@@ -1,10 +1,10 @@
+ {
+   "serverDataFolderName": ".vscode-server-oss",
+-  "linkProtectionTrustedDomains": ["https://open-vsx.org"],
+-  "extensionsGallery": {
+-    "itemUrl": "https://open-vsx.org/vscode/item",
+-    "serviceUrl": "https://open-vsx.org/vscode/gallery"
+-  },
++	"extensionsGallery": {
++		"serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
++		"cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
++		"itemUrl": "https://marketplace.visualstudio.com/items"
++	},
+   "quality": "stable",
+   "keyboardShortcutsUrlWin": "https://go.microsoft.com/fwlink/?linkid=832145",
+   "keyboardShortcutsUrlLinux": "https://go.microsoft.com/fwlink/?linkid=832144",
+@@ -152,4 +152,4 @@
+     "vs/code/electron-browser/workbench/workbench.html": "DCAx76TE79oJvbVEouBCXQ",
+     "vs/code/electron-browser/workbench/workbench.js": "QmbzxZoyrJnqFRW9jKugHQ"
+   }
+-}
+\ No newline at end of file
++}

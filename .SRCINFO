@@ -1,16 +1,19 @@
 pkgbase = code-marketplace
-	pkgdesc = Enable vscode marketplace in Code OSS
+	pkgdesc = Enable vscode marketplace in Code OSS and VSCodium
 	pkgver = 1.50.1
 	pkgrel = 1
 	url = https://marketplace.visualstudio.com/vscode
 	install = code-marketplace.install
 	arch = any
 	license = unknown
-	depends = code>=1.50.1
+	optdepends = code: for Code OSS
+	optdepends = vscodium-bin: for VSCodium
 	source = code-marketplace.hook
-	source = product_json.patch
-	md5sums = 8a5cbd751ee2762d40f1e43e9e6e69e0
+	source = code-product.json.patch
+	source = vscodium-bin-product.json.patch
+	md5sums = dc1b0dedb41767bf2511bbeee3715a02
 	md5sums = 9e476c8aae4243010d6a1c18e56ac402
+	md5sums = 26be4c7916e72598198d9b3b19945311
 
 pkgname = code-marketplace
 

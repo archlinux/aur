@@ -3,8 +3,9 @@ Operation = Install
 Operation = Upgrade
 Type = Path
 Target = usr/lib/code/product.json
+Target = usr/share/vscodium-bin/resources/app/product.json
 
 [Action]
 Description = Patching product.json...
-Exec = /usr/bin/bash -c "/usr/bin/patch /usr/lib/code/product.json < /usr/lib/code/product_json.patch"
+Exec = /usr/bin/bash -c "if [ -f /usr/lib/code/product.json ]; then /usr/bin/patch /usr/lib/code/product.json < /usr/share/code-marketplace/code-product.json.patch; elif [ -f /usr/share/vscodium-bin/resources/app/product.json ]; then /usr/bin/patch /usr/share/vscodium-bin/resources/app/product.json < /usr/share/code-marketplace/vscodium-bin-product.json.patch; fi"
 When = PostTransaction
