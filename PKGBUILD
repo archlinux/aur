@@ -8,7 +8,7 @@ provides=('python-twitter')
 conflicts=('python-twitter')
 
 pkgver=3.5
-pkgrel=2
+pkgrel=3
 
 arch=('any')
 license=('Apache')
