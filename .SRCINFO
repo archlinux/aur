@@ -8,6 +8,7 @@ pkgbase = python-atheris-git
 	makedepends = python-setuptools
 	makedepends = pybind11
 	depends = python
+	depends = compiler-rt
 	source = git+https://github.com/google/atheris.git
 	sha256sums = SKIP
 

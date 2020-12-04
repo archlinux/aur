@@ -6,7 +6,7 @@ arch=(any)
 url="https://github.com/google/atheris"
 license=('MIT')
 makedepends=('python-setuptools' 'pybind11')
-depends=('python')
+depends=('python' 'compiler-rt')
 source=("git+https://github.com/google/atheris.git")
 sha256sums=('SKIP')
 
