@@ -1,7 +1,7 @@
 pkgbase = termdown-git
 	pkgdesc = Countdown timer and stopwatch in your terminal
 	pkgver = 1.17.0.r6.g660b30f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trehn/termdown
 	arch = any
 	license = GPL3
