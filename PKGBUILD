@@ -2,8 +2,8 @@
 
 pkgname=carvel-tools
 pkgdesc="Set of Carvel (k14s) tools: ytt kbld kapp kwt imgpkg vendir"
-pkgver=20201124
-pkgrel=2
+pkgver=20201204
+pkgrel=1
 url="https://carvel.dev"
 arch=(x86_64)
 license=(Apache)
