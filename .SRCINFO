@@ -1,7 +1,7 @@
 pkgbase = mopidy-musicbox
 	pkgdesc = Web Client for Mopidy Music Server and the Pi MusicBox
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pimusicbox/mopidy-musicbox-webclient
 	arch = any
 	license = Apache
