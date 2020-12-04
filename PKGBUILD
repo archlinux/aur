@@ -11,16 +11,14 @@ provides=('mingw-w64-paraview')
 conflicts=('mingw-w64-paraview')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("${url}/files/v${pkgver:0:3}/ParaView-v${pkgver}-RC2.tar.xz"
-        https://gitlab.kitware.com/paraview/paraview/merge_requests/4514.patch
         https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7038.patch
         https://gitlab.kitware.com/paraview/catalyst/-/merge_requests/7.patch)
-sha256sums=('a3e6f7db7804f11351df48781e8d67ff3e9c18a691bb9ef9a5485aa6520e70bc' SKIP SKIP SKIP)
+sha256sums=('a3e6f7db7804f11351df48781e8d67ff3e9c18a691bb9ef9a5485aa6520e70bc' SKIP SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/ParaView-v${pkgver}-RC2"
-  patch -p1 -i "${srcdir}"/4514.patch
   cd VTK
   patch -p1 -i "${srcdir}"/7038.patch
   cd ../ThirdParty/catalyst/vtkcatalyst/catalyst
