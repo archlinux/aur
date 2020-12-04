@@ -19,7 +19,7 @@ sha256sums=(SKIP)
 build () {
   cd "$srcdir/$_pkgname"
 
-  if pacman -T pacman-git > /dev/null; then
+  if pacman -T pacman-git > /dev/null || pacman -T 'pacman>6.0.0alpha' > /dev/null; then
     _features+="git,"
   fi
 
