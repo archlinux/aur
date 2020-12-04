@@ -1,0 +1,20 @@
+pkgbase = virtualbox-meta
+	pkgdesc = Meta package for virtualbox.
+	pkgver = 1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/VirtualBox
+	install = vbox.install
+	arch = any
+	license = GPL
+	depends = virtualbox
+	depends = virtualbox-ext-vnc
+	depends = virtualbox-guest-iso
+	depends = virtualbox-sdk
+	depends = virtualbox-host-dkms
+	depends = vde2
+	depends = virtualbox-ext-oracle
+	optdepends = tigervnc
+	replaces = garuda-virtualbox
+
+pkgname = virtualbox-meta
+
