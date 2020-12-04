@@ -4,9 +4,9 @@
 pkgbase=python-pytorch
 pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pytorch-opt-cuda")
 _pkgname="pytorch"
-pkgver=1.7.0
-_pkgver=1.7.0
-pkgrel=2
+pkgver=1.7.0rc2
+_pkgver=1.7.0-rc2
+pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
