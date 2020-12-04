@@ -5,7 +5,7 @@
 # Contributor: DDoSolitary <DDoSolitary@gmail.com>
 
 pkgname=i2pd-git
-pkgver=2.34.0.r19.g3907c17c
+pkgver=2.35.0.r7.g36473e38
 pkgrel=1
 pkgdesc='A full-featured C++ implementation of the I2P router (git version)'
 arch=('x86_64')
@@ -21,13 +21,15 @@ source=('git+https://github.com/PurpleI2P/i2pd.git#branch=openssl'
         '010-i2pd-use-arch-flags-on-tests.patch'
         '020-i2pd-config.patch'
         '030-i2pd-do-not-override-config.patch'
-        '040-i2pd-tunnels-d-readme.patch'
+        '040-i2pd-systemd-service-hardening.patch'
+        '050-i2pd-tunnels-d-readme.patch'
         'i2pd.sysusers'
         'i2pd.tmpfiles')
 sha256sums=('SKIP'
             '0064503a9124b764d01db862ba3c2ff97bc5961d41359970df2d6ce9842a5ab5'
             '452550678ea5702a6492eb58e8d0452b91dc5d0aaa112cf04542df74a3dc0dfc'
             '45cfc3035c5b5cfc92cfffec1fe7d7efc4fed3229195cdb640ec4a6c405af149'
+            '578ed9767890e970bd93b44e3be85c2595c4149ed65e4cc1c79ea12e2cb6982e'
             'cfcb6b07b67aff3e3af12767f4649d88b9320dc71907b6c01b465e5c138cdaa3'
             '88b2e709228049ba11f37863f87de75ab6cde295104852871384337cfdc906a3'
             'fe8cc2ec83cb5b5c2b2ec8cce9a989e0cb6fd347e00b84e03a17b12efd152fac')
@@ -36,7 +38,8 @@ prepare() {
     patch -d i2pd -Np1 -i "${srcdir}/010-i2pd-use-arch-flags-on-tests.patch"
     patch -d i2pd -Np1 -i "${srcdir}/020-i2pd-config.patch"
     patch -d i2pd -Np1 -i "${srcdir}/030-i2pd-do-not-override-config.patch"
-    patch -d i2pd -Np1 -i "${srcdir}/040-i2pd-tunnels-d-readme.patch"
+    patch -d i2pd -Np1 -i "${srcdir}/040-i2pd-systemd-service-hardening.patch"
+    patch -d i2pd -Np1 -i "${srcdir}/050-i2pd-tunnels-d-readme.patch"
 }
 
 pkgver() {
@@ -51,8 +54,6 @@ build() {
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DBUILD_SHARED_LIBS:BOOL='ON' \
         -DWITH_UPNP:BOOL='ON' \
-        -DWITH_AESNI:BOOL='OFF' \
-        -DWITH_AVX:BOOL='OFF' \
         -Wno-dev
     make -C i2pd/build
 }
