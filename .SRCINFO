@@ -1,7 +1,7 @@
 pkgbase = mitsuba-git
 	pkgdesc = Mitsuba physically based renderer.
-	pkgver = 0.6.0.r2171.26355676
-	pkgrel = 2
+	pkgver = 0.6.0.r2172.cfeb7766
+	pkgrel = 1
 	url = http://mitsuba-renderer.org/
 	arch = i686
 	arch = x86_64
@@ -26,9 +26,9 @@ pkgbase = mitsuba-git
 	conflicts = mitsuba
 	conflicts = mitsuba-hg
 	source = mitsuba::git+https://github.com/mitsuba-renderer/mitsuba.git
-	source = python3.8.patch
+	source = python3.9.patch
 	sha256sums = SKIP
-	sha256sums = e3411c523aa56e1d784b64699cc32eaffc970b8e4d9645911e335e765fe472b4
+	sha256sums = 6fc5513d95182a84209b4bbdce8cd2eee3bdf25aadd5da35c6b246479c4c8939
 
 pkgname = mitsuba-git
 

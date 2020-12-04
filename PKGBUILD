@@ -4,8 +4,8 @@
 _pkgname="mitsuba"
 _pkgver="0.6.0"
 pkgname="${_pkgname}-git"
-pkgver=0.6.0.r2171.26355676
-pkgrel=2
+pkgver=0.6.0.r2172.cfeb7766
+pkgrel=1
 pkgdesc="Mitsuba physically based renderer."
 url="http://mitsuba-renderer.org/"
 license=("GPL3")
@@ -15,10 +15,10 @@ makedepends=("eigen" "python2-scons" "git" "boost")
 provides=("mitsuba")
 conflicts=("mitsuba" "mitsuba-hg")
 source=("${_pkgname}::git+https://github.com/mitsuba-renderer/mitsuba.git"
-        "python3.8.patch"
+        "python3.9.patch"
         )
 sha256sums=('SKIP'
-            'e3411c523aa56e1d784b64699cc32eaffc970b8e4d9645911e335e765fe472b4')
+            '6fc5513d95182a84209b4bbdce8cd2eee3bdf25aadd5da35c6b246479c4c8939')
 
 pkgver() {
   cd ${_pkgname}
@@ -55,7 +55,7 @@ prepare() {
     sed -i "s/^CFLAGS[ ]*= \[/&\'${CFLAGS// /\',\'}\', /g" config.py
     sed -i "s/^CXXFLAGS[ ]*= \[/&\'${CXXFLAGS// /\',\'}\', /g" config.py
 
-    git apply ${srcdir}/python3.8.patch
+    git apply ${srcdir}/python3.9.patch
 }
 
 build() {
