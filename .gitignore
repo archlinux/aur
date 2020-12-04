@@ -1,5 +1,6 @@
 /src/
 /pkg/
+/powder-toy/
 /powder-toy-*.pkg.tar.*
 
 /powder-toy-*.tar.gz

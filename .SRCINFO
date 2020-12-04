@@ -1,6 +1,6 @@
-pkgbase = powder-toy
+pkgbase = powder-toy-git
 	pkgdesc = Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat!
-	pkgver = 95.0
+	pkgver = snapshot.204.2.ga3c2a0d6
 	pkgrel = 1
 	url = http://powdertoy.co.uk/
 	arch = x86_64
@@ -16,18 +16,20 @@ pkgbase = powder-toy
 	depends = bzip2
 	depends = zlib
 	depends = hicolor-icon-theme
-	source = powder-toy-95.0.tar.gz::http://github.com/ThePowderToy/The-Powder-Toy/archive/v95.0.tar.gz
+	provides = powder-toy
+	conflicts = powder-toy
+	source = powder-toy::git+https://github.com/ThePowderToy/The-Powder-Toy.git#branch=master
 	source = powder-toy.patch
 	source = powder-toy.sh
 	source = powder-toy.desktop
 	source = powder-toy-open.desktop
 	source = powder-toy-ptsave.desktop
-	sha256sums = f60c3dc93e4ceddeda92b768e75a2d218f8df3da4a569b7d7cb57fff5515e15b
+	sha256sums = SKIP
 	sha256sums = 4b75d58bfff9278bceb27fa14738e9a1abef6fe60680bb9f5eb0592f3d69a02a
 	sha256sums = b5d181c3141715b7dced8813cae6d07d2adc03bca2a7efe527592740de2d45e2
 	sha256sums = 265f530be7597fcc7bbaf2690fd517fe4f8f18372c808a90ddef49a604c8d455
 	sha256sums = 398f6d068dd37e12989f4132ea5966886b14036bac07a589991b283d242b4ca5
 	sha256sums = fcbf035d286d805dced55f147d649aa0bc74d3be873d5430de92d175d9f59431
 
-pkgname = powder-toy
+pkgname = powder-toy-git
 
