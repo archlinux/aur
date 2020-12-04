@@ -1,6 +1,6 @@
 pkgbase = python-pysmb
 	pkgdesc = An experimental SMB/CIFS library written in Python
-	pkgver = 1.1.27
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://miketeo.net/wp/index.php/projects/pysmb
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-pysmb
 	depends = python
 	depends = python-setuptools
 	depends = python-pyasn1
-	source = https://miketeo.net/files/Projects/pysmb/pysmb-1.1.27.zip
-	sha1sums = 88d1f13cb3cc71c1d6ebdad6f9730a8601a043d0
+	source = https://miketeo.net/files/Projects/pysmb/pysmb-1.2.5.zip
+	sha1sums = 935aeea64ed0aa69ee1b348837bc4f16e48e9808
 
 pkgname = python-pysmb
 
