@@ -1,7 +1,8 @@
 # Maintainer: peippo <christoph.fink@gmail.com>
 
 pkgname=python-webis
-pkgver=0.3.0
+_name="${pkgname#python-}"
+pkgver=0.3.1
 pkgrel=1
 
 pkgdesc="Python wrapper for the webis Twitter sentiment identification tool"
@@ -21,8 +22,8 @@ depends=(
     "python-pyjnius"
 )
 
-source=("https://gitlab.com/christoph.fink/python-webis/uploads/0a2fee28159936e93f62e98822ef3e9d/webis-0.3.0.tar.gz")
-sha256sums=("3579aa8bfb738518646c4ad2df0ea71dacb34ddc96adf45485c68d9cf8956d5c")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('417fd708cfbc54078e0bc678fa6c64d973a5112888c8a697931970398283f543')
 
 prepare() {
     rm -Rf "${srcdir}/*/*.egg-info"
