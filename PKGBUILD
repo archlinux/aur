@@ -3,7 +3,7 @@
 
 pkgname=python-unidiff
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Python library to parse and interact with unified diff data."
 arch=('any')
 url="https://github.com/matiasb/python-unidiff"
