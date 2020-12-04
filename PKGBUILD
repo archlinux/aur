@@ -1,7 +1,8 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
+
 pkgname=mitsuba2-git
-pkgver=r2078.76445e90
-pkgrel=3
+pkgver=2.2.1.r25.g76445e90
+pkgrel=1
 pkgdesc="A Retargetable Forward and Inverse Renderer"
 arch=('x86_64')
 url="https://www.mitsuba-renderer.org/"
@@ -33,8 +34,7 @@ md5sums=('e40fe4bf313d60b1eb7c3da60fb6d434'
          'SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git -C "$srcdir/${pkgname%-git}" describe --long --tags --always | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
