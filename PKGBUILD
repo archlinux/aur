@@ -3,7 +3,7 @@
 # Contributor: pandada8 <pandada8@gmail.com>
 
 pkgname=xray-git
-pkgver=1.0.0.r8.ed8d6d7
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="The best v2ray-core, with XTLS support."
 arch=('x86_64')
@@ -53,7 +53,7 @@ build() {
 
 check() {
     cd "${srcdir}"/Xray-core
-    go test -p 1 -tags json -v -timeout 30m github.com/xtls/xray-core/v1/core/...
+    go test -p 1 -tags json -v -timeout 30m github.com/xtls/xray-core/core/...
 }
 
 package() {
