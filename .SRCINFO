@@ -1,6 +1,6 @@
 pkgbase = pijul
 	pkgdesc = Patch-based distributed version control system
-	pkgver = 1.0.0_alpha.11
+	pkgver = 1.0.0_alpha.15
 	pkgrel = 1
 	url = https://pijul.org
 	arch = i686
