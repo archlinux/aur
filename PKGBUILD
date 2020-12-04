@@ -28,6 +28,15 @@ package() {
   cd ../ipc-client/build/
   make DESTDIR="${pkgdir}/" PREFIX="/usr/" install
 
+
+  # Move resulting executables to /usr/bin/...
+  install -dm755 "${pkgdir}"/usr/bin/
+  mv "${pkgdir}"/usr/local/bin/wmderland "${pkgdir}"/usr/bin/wmderland
+  mv "${pkgdir}"/usr/local/bin/wmderlandc "${pkgdir}"/usr/bin/wmderlandc
+  rm "${pkgdir}"/usr/local/bin/wmderland
+  rm "${pkgdir}"/usr/local/bin/wmderlandc
+
+
   # Install example config file.
   cd ../../
   mkdir -p "${pkgdir}/etc/xdg/wmderland/"
