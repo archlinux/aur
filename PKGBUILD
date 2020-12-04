@@ -2,7 +2,7 @@
 pkgname=python-discord
 _pkgname=discord.py
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An API wrapper for Discord written in Python"
 arch=(any)
 url="https://github.com/Rapptz/discord.py"
