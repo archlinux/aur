@@ -1,7 +1,7 @@
 # Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
 
 pkgname=python-pywebview
-pkgver=3.3.5
+pkgver=3.4
 pkgrel=1
 pkgdesc="Build GUI for your Python program with JavaScript, HTML, and CSS."
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('python-gobject: use with GTK'
 install="$pkgname.install"
 source=("https://pypi.python.org/packages/source/p/pywebview/pywebview-$pkgver.tar.gz"
 	"https://raw.githubusercontent.com/r0x0r/pywebview/master/LICENSE.md")
-sha256sums=('6612e07786bb84681e2a380152514e089fbbed272d0660e7dedb6932150769a5'
+sha256sums=('bb92c556e8ac7ccaaf9e24d86c437a73240850438490833d8b3ee3e60c50e040'
 	'4a988dd3598832cd3653de20dc33cb677d0fb53ab5551c879ca31280ae653675')
 
 build() {
