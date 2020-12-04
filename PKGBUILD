@@ -13,7 +13,7 @@ _buildver=203.5981.165
 _pkgver=2020.3
 _eap=n
 pkgver="$_pkgver.$_buildver"
-pkgrel=1
+pkgrel=2
 epoch=7
 
 pkgdesc='Powerful Python and Django IDE, Early Access Program (EAP) build, Community Edition'
@@ -24,7 +24,7 @@ license=('Apache')
 provides=('pycharm-community-edition')
 conflicts=('pycharm-community-edition')
 
-makedepends=('python-setuptools')  # 'python2-setuptools'
+makedepends=('cython' 'python-setuptools')  # 'python2-setuptools'
 depends=('python' 'glib2' 'dbus' 'libdbusmenu-glib')
 optdepends=('python2: Support for Python 2 language'
 			'ipython: Alternative Python shell'
@@ -55,18 +55,32 @@ prepare() {
 build() {
 	cd "pycharm-community-$_buildver/plugins/python-ce/helpers/pydev"
 
-	# using absolute paths to the python executables so that users with an activated virtual env
+	# compile PyDev debugger used by PyCharm to speedup debugging
+	find . \( -name *.c -o -name *.so -o -name *.pyd \) -delete
+	sed -i '1s/^/# cython: language_level=3\n/' _pydevd_bundle/pydevd_cython.pxd
+
+	# use absolute paths to the python executables so that users with an activated virtual env
 	# (like e.g. anaconda) can build without issues
-	/usr/bin/python3 ./setup_cython.py build_ext --inplace
+	/usr/bin/python setup_cython.py build_ext --inplace --force-cython
 	if [ -z "$(pacman -T python2-setuptools)" ]; then
 		# only compile the py2-debugger if `python2-setuptools’ is already installed
-		/usr/bin/python2 ./setup_cython.py build_ext --inplace
+		/usr/bin/python2 setup_cython.py build_ext --inplace
 	fi
+	rm -rf build/
+	find . -name __pycache__ -exec rm -rf {} \;
 }
 
 package() {
 	install -dm755 "$pkgdir"/{opt,usr/{bin,share/pixmaps}}
 	cp -R "pycharm-community-$_buildver" "$pkgdir/opt/$pkgname"
+
+	local _vmoptfile=pycharm64
+	if [[ "$CARCH" = i686 ]]; then
+		rm -f "$pkgdir/opt/$pkgname/bin/libyjpagent-linux64.so"
+		rm -f "$pkgdir/opt/$pkgname/bin/fsnotifier64"
+		_vmoptfile=pycharm
+	fi
+	echo $'-Dawt.useSystemAAFontSettings=on\n-Dswing.aatext=true' >>"$pkgdir/opt/$pkgname/bin/$_vmoptfile.vmoptions"
 
 	install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<-EOF
 		[Desktop Entry]
