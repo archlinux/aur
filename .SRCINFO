@@ -1,7 +1,7 @@
 pkgbase = python-webhoseio
 	pkgdesc = Simple client library for the webhose.io REST API
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Webhose/webhoseio-python/
 	arch = any
 	license = MIT

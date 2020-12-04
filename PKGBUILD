@@ -2,7 +2,7 @@
 
 pkgname=python-webhoseio
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Simple client library for the webhose.io REST API"
 url="https://github.com/Webhose/webhoseio-python/"
