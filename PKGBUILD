@@ -1,10 +1,10 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-hatari-enhanced-git
-pkgver=5523.f19bc118
-pkgrel=1
+pkgver=5525.a96c89fd
+pkgrel=2
 pkgdesc="libretro implementation of Hatari v1.8 (Atari ST/STE/TT/Falcon) with IPF support"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/libretro/hatari"
 license=('GPL2')
 groups=('libretro')
@@ -18,7 +18,7 @@ source=("git+https://github.com/libretro/${_gitname}.git"
 	"capsimage.patch")
 
 sha256sums=('SKIP'
-	'473f38a4252d313bb113c377af5891b7775f826a8c6a26476fb121cc7c4b2843')
+	'9f53cc41753b285792295bcd56423223e1d24efcbc3c81055dbbc15812472a2d')
 
 pkgver() {
   cd "${_gitname}"

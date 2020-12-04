@@ -1,10 +1,10 @@
---- Makefile.libretro.orig	2020-11-02 08:46:48.813818898 +0100
-+++ Makefile.libretro	2020-11-02 08:53:20.323006145 +0100
+--- Makefile.libretro.org	2020-12-04 11:39:43.933895905 +0100
++++ Makefile.libretro	2020-12-04 11:41:07.719294586 +0100
 @@ -200,6 +200,8 @@
  else
  CFLAGS += -funroll-loops -ffast-math -fomit-frame-pointer -O3
  endif
-+INCFLAGS += -I/usr/include
++INCFLAGS += -I/usr/include/caps
 +PLATFLAGS += -DHAVE_CAPSIMAGE=1
  CFLAGS += -fsigned-char -D__LIBRETRO__ -fno-builtin
  
@@ -14,7 +14,7 @@
  	$(AR) rcs $@ $(OBJECTS) 
  else
 -	$(CC) $(CFLAGS) $(INCFLAGS) $(LDFLAGS) $(OBJECTS) -o $@ -lm $(ZLIB) $(SHARED)
-+	$(CC) $(CFLAGS) $(INCFLAGS) $(LDFLAGS) $(OBJECTS) -o $@ -lm $(ZLIB) $(SHARED) -lpthread -L/usr/lib64 -lcapsimage
++	$(CC) $(CFLAGS) $(INCFLAGS) $(LDFLAGS) $(OBJECTS) -o $@ -lm $(ZLIB) $(SHARED) -lpthread -L/usr/lib/caps -lcapsimage
  endif
  
  %.o: %.c
