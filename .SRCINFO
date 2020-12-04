@@ -1,7 +1,7 @@
 pkgbase = python-geomet
 	pkgdesc = GeoMet - Convert GeoJSON to WKT/WKB, and vice versa.
 	pkgver = 0.2.1.post1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pysal.org/libpysal
 	arch = any
 	license = Apache

@@ -3,7 +3,7 @@
 _name=geomet
 pkgname=python-geomet
 pkgver=0.2.1.post1
-pkgrel=1
+pkgrel=2
 pkgdesc="GeoMet - Convert GeoJSON to WKT/WKB, and vice versa."
 arch=('any')
 url="https://pysal.org/libpysal"
@@ -27,5 +27,5 @@ package() {
   cd "$_name-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  rm "$pkgdir/usr/LICENSE"
+  # rm "$pkgdir/usr/LICENSE"
 }
