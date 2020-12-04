@@ -3,7 +3,7 @@
 pkgname=('autotiling-git')
 _pkgname=autotiling
 pkgver=r24.6854508
-pkgrel=1
+pkgrel=2
 pkgdesc="Script for sway and i3 to automatically switch the horizontal / vertical window split orientation"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/autotiling"
