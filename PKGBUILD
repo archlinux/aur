@@ -1,7 +1,7 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxb_ubus-git
-pkgver=v0.3.3.r0.gca31123
-pkgrel=2
+pkgver=v0.4.1.r0.gb9c70fe
+pkgrel=1
 pkgdesc="Ubus baapi back-end"
 arch=('any')
 url="https://gitlab.com/soft.at.home/ambiorix/modules/amxb_backends/amxb_ubus.git"
