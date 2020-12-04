@@ -1,7 +1,7 @@
 pkgbase = python-dircolors
 	pkgdesc = Python library to colorize and format file names based on type
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aswild/pydircolors
 	arch = any
 	license = Apache

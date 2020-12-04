@@ -2,7 +2,7 @@
 _name=dircolors
 pkgname=python-${_name}
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library to colorize and format file names based on type'
 arch=('any')
 url='https://github.com/aswild/pydircolors'
