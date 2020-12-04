@@ -17,7 +17,7 @@ makedepends=()
 noextract=()
 options=()
 pkgdesc='a shell extension that manages your environment'
-pkgrel=3
+pkgrel=4
 pkgver=2.25.0
 provides=("$_pkgname")
 replaces=()
@@ -42,7 +42,7 @@ package() {
   for f in man/*.1; do
     install -Dm644 "$f" "${pkgdir}/usr/share/man/man1/${f##*/}"
   done
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
 
