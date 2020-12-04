@@ -1,7 +1,7 @@
 pkgbase = cpl
 	pkgdesc = ESO Common Pipeline Library
 	pkgver = 7.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eso.org/sci/software/cpl/index.html
 	arch = x86_64
 	license = GPL2

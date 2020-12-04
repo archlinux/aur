@@ -3,7 +3,7 @@
 
 pkgname=cpl
 pkgver=7.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ESO Common Pipeline Library"
 url="https://www.eso.org/sci/software/cpl/index.html"
 arch=('x86_64')
