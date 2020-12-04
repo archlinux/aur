@@ -3,12 +3,12 @@
 
 pkgname=miniongg
 pkgver=3.0.7_SNAPSHOT.r1.12dbc95e
-pkgrel=2
+pkgrel=3
 pkgdesc="Elder Scrolls Online and World of Warcraft Addon Manager"
 arch=('any')
 url='https://minion.mmoui.com/'
 license=('custom')
-depends=('java-runtime' 'java-openjfx')
+depends=('jre-openjdk' 'java-openjfx')
 makedepends=('unzip')
 provides=("miniongg")
 
