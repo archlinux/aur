@@ -1,0 +1,23 @@
+pkgbase = virt-manager-meta
+	pkgdesc = Meta package for libvirt/qemu/kvm support using virt-manager.
+	pkgver = 1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Libvirt
+	install = libvirt.install
+	arch = any
+	license = GPL
+	depends = virt-manager
+	depends = virt-viewer
+	depends = libvirt
+	depends = ebtables
+	depends = openbsd-netcat
+	depends = dnsmasq
+	depends = bridge-utils
+	depends = qemu
+	depends = radvd
+	depends = edk2-ovmf
+	depends = qemu-arch-extra
+	replaces = garuda-virt-manager
+
+pkgname = virt-manager-meta
+
