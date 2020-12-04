@@ -9,7 +9,7 @@ _pkgver_tag=$(echo $pkgver | cut -d . -f 3)
 #_filename="dfc_unix_${_pkgver_major}_${_pkgver_minor}_${_pkgver_tag}-${_pkgver_suffix}.tar.gz"
 _pkgver="${_pkgver_major}.${_pkgver_minor}.${_pkgver_tag}"
 _filename="dfc_unix_${_pkgver_major}_${_pkgver_minor}_${_pkgver_tag}.tar.gz"
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Forged Alliance Forever - Lobby Client. Community-driven client system for Supreme Commander: Forged Alliance. Downlord's Java client reimplementation."
 url="http://www.faforever.com/"
@@ -34,15 +34,6 @@ sha256sums=('ae38876afdcfbb810c43516cfa0376d6b6e41df52b5e4d0e9b3a03db9245867a'
             '3df2ae7c886d03a899427e493583be2b1db8d5e557b3b83d4362ff7d5b1b32a7')
 noextract=()
 validpgpkeys=()
-
-pkgver() {
-  _pkgver=`curl -s https://api.github.com/repos/FAForever/downlords-faf-client/releases | jq -r '.[0].tag_name' | cut -d v -f 2 | sed "s/-/\./"`
-  _pkgver_major=$(echo $_pkgver | cut -d . -f 1)
-  _pkgver_minor=$(echo $_pkgver | cut -d . -f 2)
-   echo "${_pkgver_major}.${_pkgver_minor}.${_pkgver_tag}"
-#  _pkgver_suffix=$(echo $_pkgver | cut -d . -f 4)
-#   echo "${_pkgver_major}.${_pkgver_minor}.${_pkgver_tag}.${_pkgver_suffix}"
-}
 
 package() {
   mkdir -p $pkgdir/usr/share/java
