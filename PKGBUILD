@@ -6,8 +6,8 @@
 set -u
 pkgname='libreswan'
 #pkgname+='-git'
-pkgver='3.32'
-pkgrel='3'
+pkgver='4.1'
+pkgrel='1'
 pkgdesc='IPsec implementation with IKEv1 and IKEv2 keying protocols'
 arch=('i686' 'x86_64')
 url='https://libreswan.org/'
@@ -27,9 +27,9 @@ source=(
   "https://download.libreswan.org/${pkgname}-${pkgver%%.r*}.tar.gz"
   'tmpfiles.conf'
 )
-md5sums=('754519242e69e4ac516b0e172a127d9b'
+md5sums=('791a69d5f2900276c4b7346304bb172c'
          '77399a739ee99f8bc54837684d7c39d5')
-sha256sums=('236b57fee8f562302c54f2b16d8a839a9039fcb5893668e61b398ec6b179432e'
+sha256sums=('216444c3a2ede7bed5820648856fa5d9cc8fc4b4122bd4a1129d1a5954d9227d'
             '78265c690d58228c3bcc1a8793456172c39d493d268e9d9b1816288d0a47f573')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
@@ -122,6 +122,10 @@ net.ipv4.conf.default.send_redirects = 0
 EOF
   ) "${pkgdir}/usr/lib/sysctl.d/${pkgname}-icmp-redirects.conf"
   sed -e 's: = 0: = 1:g' "${pkgdir}/usr/lib/sysctl.d/${pkgname}-icmp-redirects.conf" > "${pkgdir}/usr/lib/sysctl.d/${pkgname}-icmp-redirects.conf.revert"
+
+  if [ "$(vercmp "${pkgver}" '4.0')" -ge 0 ]; then
+    install -dm700 "${pkgdir}/var/lib/ipsec/nss"
+  fi
   set +u
 }
 set +u

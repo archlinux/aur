@@ -10,6 +10,20 @@ post_upgrade() {
   else
     echo "  systemctl restart '${_service}'"
   fi
+  if [ "$(vercmp "${1}" '4.0')" -ge 0 ]; then
+    if [ -s '/etc/ipsec.d/cert9.db' ]; then
+      echo '>>> upgrading /var/lib/ipsec/nss'
+      set -x
+      ipsec checknss
+      set +x
+    fi
+  elif [ -d '/var/lib/ipsec/nss' ]; then
+    echo '>>> downgrading /var/lib/ipsec/nss'
+    set -x
+    mv '/var/lib/ipsec/nss'/* '/etc/ipsec.d/'
+    rmdir --ignore-fail-on-non-empty /var/lib/ipsec{/nss,}
+    set +x
+  fi
 }
 
 post_install() {
@@ -26,4 +40,11 @@ pre_remove() {
     echo "  systemctl disable '${_service}'"
   fi
   sysctl -p "/usr/lib/sysctl.d/${_pkgname}-icmp-redirects.conf.revert"
+}
+
+post_remove() {
+  if [ -d '/var/lib/ipsec/nss' ]; then
+    echo 'To complete package removal'
+    echo '  rm -r /var/lib/ipsec/nss'
+  fi
 }
