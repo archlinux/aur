@@ -1,7 +1,7 @@
 pkgbase = python-tableschema
 	pkgdesc = Parse messy tabular data in various formats
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frictionlessdata/tableschema-py
 	arch = any
 	license = MIT
