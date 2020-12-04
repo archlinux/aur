@@ -1,6 +1,6 @@
 pkgbase = devpi-client
 	pkgdesc = devpi upload/install/... workflow commands for Python developers
-	pkgver = 5.1.0
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = http://doc.devpi.net/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = devpi-client
 	depends = python-pkginfo
 	depends = check-manifest
 	depends = devpi-common
-	source = https://files.pythonhosted.org/packages/source/d/devpi-client/devpi-client-5.1.0.tar.gz
-	sha256sums = 5841c5c1b421cf97f4371f335998acc39bf37c857cd16d6bb44f5b792c363398
+	source = https://files.pythonhosted.org/packages/source/d/devpi-client/devpi-client-5.2.1.tar.gz
+	sha256sums = 74ff365efeaa7b78c9eb7f6d7bd349ccd6252a6cdf879bcb4137ee5ff0fb127a
 
 pkgname = devpi-client
 
