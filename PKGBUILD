@@ -19,9 +19,9 @@ sha256sums=('SKIP')
 package() {
     cd "${srcdir}/${_gitname}/${_appname}"
     
-    basefolder=$(python -c "import os;import pyqtws as _; print(os.path.dirname(_.__file__))")
+    basefolder="/usr/share/silos-apps"
     
-    iconsfolder=${basefolder}/icons
+    iconsfolder="${basefolder}/icons"
     for f in ${srcdir}/${_gitname}/${_appname}/icons/*.svg
     do
         target=$(basename "$f")
@@ -35,7 +35,7 @@ package() {
         install -Dm755 "$f" "${pkgdir}/usr/share/applications/silo-$target"
     done
     
-    appsfolder=${basefolder}/apps
+    appsfolder="${basefolder}/apps"
     for f in ${srcdir}/${_gitname}/${_appname}/apps/*.qtws
     do
         target=$(basename "$f")
