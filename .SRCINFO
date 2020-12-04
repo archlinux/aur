@@ -1,7 +1,7 @@
 pkgbase = python-metatube
 	pkgdesc = downloads YouTube metadata
 	pkgver = 1.0.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://gitlab.com/christoph.fink/metatube
 	arch = any
 	license = GPLv3

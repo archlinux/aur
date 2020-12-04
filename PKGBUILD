@@ -3,7 +3,7 @@
 pkgname=python-metatube
 _name=${pkgname#python-}
 pkgver=1.0.1
-pkgrel=0
+pkgrel=1
 
 pkgdesc="downloads YouTube metadata"
 url="https://gitlab.com/christoph.fink/metatube"
