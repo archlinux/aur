@@ -37,8 +37,8 @@ build() {
 
 package_mhwd-garuda-git() {
   pkgdesc="mhwd-garuda(manjaro's mhwd backported to archlinux with additional features and limited to only dkms drivers)"
-  depends=('hwinfo' 'mesa' 'mhwd-db-garuda-git' 'pacman' 'mesa-demos' 'vulkan-tools' 'libva-utils' 'vdpauinfo')
-  depends_x86_64=("lib32-mesa" "lib32-mesa-demos")
+  depends=('hwinfo' 'mesa' 'mhwd-db-garuda-git' 'pacman' 'mesa-demos' 'vulkan-tools' 'libva-utils' 'vdpauinfo' 'vulkan-icd-loader' 'opencl-icd-loader')
+  depends_x86_64=("lib32-mesa" "lib32-mesa-demos" "lib32-vulkan-icd-loader" "lib32-opencl-icd-loader")
   provides=("mhwd" "mhwd-garuda")
   conflicts=("mhwd" "mhwd-garuda")
   replaces=("mhwd-garuda")
