@@ -1,12 +1,13 @@
 pkgbase = python-gensim
 	pkgdesc = Library for topic modelling, document indexing and similarity retrieval with large corpora
 	pkgver = 3.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://radimrehurek.com/gensim/
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	makedepends = cython
 	depends = python-numpy
 	depends = python-scipy
