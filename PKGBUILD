@@ -1,7 +1,8 @@
-# Maintainer Kyle Laker <kyle at laker dot email>
+# Maintainer Etienne Brateau <etienne dot brateau at gmail dot com>
+# Contributor Kyle Laker <kyle at laker dot email>
 
 pkgname=python-botocore-v2-git
-pkgver=r6683.d8643cb1
+pkgver=r7659.1a4caa8d1
 pkgrel=1
 pkgdesc="A low-level interface to a growing number of Amazon Web Services v2"
 arch=('any')
@@ -10,7 +11,7 @@ license=('Apache')
 depends=('python-jmespath' 'python-docutils' 'python-dateutil' 'python-urllib3')
 provides=('python-botocore')
 conflicts=('python-botocore')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 source=("botocore-v2::git+$url#branch=v2")
 sha256sums=('SKIP')
 
