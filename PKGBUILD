@@ -1,25 +1,25 @@
 # Maintainer: Nicholas Boyd Isacsson <nicholas@isacsson.se>
 
-pkgname=runin
-pkgver=r2.a9636d1
+_pkgname=runin
+pkgname=runin-git
+pkgver=r5.b40f047
 pkgrel=1
 pkgdesc='Launch a terminal to run a command, passing on stdin & stdout'
 arch=('any')
-url="https://github.com/nichobi/${pkgname}"
+url="https://github.com/nichobi/$_pkgname"
 license=('GPL3')
 depends=('bash')
 makedepends=('git')
 provides=('runin')
 source=(git+$url)
-md5sums=(SKIP)
+sha512sums=(SKIP)
 
 pkgver() {
-    cd "${pkgname}"
+    cd "$_pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
-    install -vDm 755 runin -t "${pkgdir}/usr/bin/"
+    install -vDm 755 "$srcdir/$_pkgname"/runin -t "$pkgdir"/usr/bin/
 }
 

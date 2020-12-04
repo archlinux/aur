@@ -1,6 +1,6 @@
-pkgbase = runin
+pkgbase = runin-git
 	pkgdesc = Launch a terminal to run a command, passing on stdin & stdout
-	pkgver = r2.a9636d1
+	pkgver = r5.b40f047
 	pkgrel = 1
 	url = https://github.com/nichobi/runin
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = runin
 	depends = bash
 	provides = runin
 	source = git+https://github.com/nichobi/runin
-	md5sums = SKIP
+	sha512sums = SKIP
 
-pkgname = runin
+pkgname = runin-git
 
