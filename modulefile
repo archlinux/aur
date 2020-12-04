@@ -5,32 +5,32 @@
 
 set MODULE   "aocc"
 set BASE_DIR "/opt"
-set VERSION  "2.2.0"
-set MDL_ROOT "${BASE_DIR}/${MODULE}"
-set MDL_TEXT "AMD Optimizing C/C++ Compiler"
+set VERSION  "2.3.0"
+set MODULE_ROOT "${BASE_DIR}/${MODULE}"
+set MODULE_TEXT "AMD Optimizing C/C++ Compiler and Fortran Compiler (flang)"
 
-prepend-path PATH            ${MDL_ROOT}/bin
-prepend-path LIBRARY_PATH    ${MDL_ROOT}/lib32
-prepend-path LIBRARY_PATH    ${MDL_ROOT}/lib
-prepend-path LD_LIBRARY_PATH ${MDL_ROOT}/lib32
-prepend-path LD_LIBRARY_PATH ${MDL_ROOT}/lib
-append-path  CPATH           ${MDL_ROOT}/include
-prepend-path MANPATH         ${MDL_ROOT}/share/man
+prepend-path PATH            ${MODULE_ROOT}/bin
+prepend-path LIBRARY_PATH    ${MODULE_ROOT}/lib32
+prepend-path LIBRARY_PATH    ${MODULE_ROOT}/lib
+prepend-path LD_LIBRARY_PATH ${MODULE_ROOT}/lib32
+prepend-path LD_LIBRARY_PATH ${MODULE_ROOT}/lib
+append-path  CPATH           ${MODULE_ROOT}/include
+prepend-path MANPATH         ${MODULE_ROOT}/share/man
 
-setenv       CC              clang
-setenv       OMPI_CC         clang
-setenv       CXX             clang++
-setenv       OMPI_CXX        clang++
-setenv       FC              flang
-setenv       F77             flang
-setenv       F90             flang
-setenv       OMPI_FC         flang
+setenv       CC              ${MODULE_ROOT}/bin/aocc-clang
+setenv       OMPI_CC         ${MODULE_ROOT}/bin/aocc-clang
+setenv       CXX             ${MODULE_ROOT}/bin/aocc-clang++
+setenv       OMPI_CXX        ${MODULE_ROOT}/bin/aocc-clang++
+setenv       FC              ${MODULE_ROOT}/bin/aocc-flang
+setenv       F77             ${MODULE_ROOT}/bin/aocc-flang
+setenv       F90             ${MODULE_ROOT}/bin/aocc-flang
+setenv       OMPI_FC         ${MODULE_ROOT}/bin/aocc-flang
 
-module-whatis "$MDL_TEXT version $VERSION"
+module-whatis "${MODULE_TEXT} version ${VERSION}"
 
 proc ModulesHelp {} {
-	global MDL_TEXT
-	puts stderr "This module sets up the environment for $MDL_TEXT"
+	global MODULE_TEXT
+	puts stderr "This module sets up the environment for ${MODULE_TEXT}"
 	puts stderr "by adapting the following environment variables:"
 	puts stderr "PATH"
 	puts stderr "LIBRARY_PATH"

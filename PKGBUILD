@@ -2,7 +2,7 @@
 # Manual download of '${pkgname}-compiler-${pkgver}.tar' required from upstream
 
 pkgname=aocc
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="AMD Optimizing C/C++ Compiler"
 arch=('x86_64')
@@ -12,9 +12,14 @@ source=("local://aocc-compiler-${pkgver}.tar" "local://modulefile")
 options=('staticlibs' '!strip' 'libtool')
 depends=('env-modules')
 install=aocc.install
-md5sums=("7fb6fb1efb36bd8af9a9c2273544f09c" "SKIP")
+md5sums=("acb9a992c9bd6315612c5a9313ecc2fb" "SKIP")
 
-aocc_prefix=/opt/aocc
+# default flags for compiler
+# edit this or /etc/makepkg.conf to your liking for default flags for your architecutre
+# like e.g. "-O3 -march=znver2 -mtune=znver2"
+_default_flags="${CFLAGS}"
+
+_aocc_prefix=/opt/aocc
 
 if [ -z ${MODULESHOME} ]; then
 	echo "Environment variable MODULESHOME from env-modules is unset."
@@ -23,7 +28,7 @@ if [ -z ${MODULESHOME} ]; then
 fi
 
 package() {
-	prefix=${pkgdir}${aocc_prefix}
+	prefix=${pkgdir}${_aocc_prefix}
 	mkdir -p ${prefix}
 
 	# Cleanup
@@ -33,8 +38,17 @@ package() {
 
 	cp -r ${srcdir}/${pkgname}-compiler-${pkgver}/* ${prefix}
 
+	ln -s ${_aocc_prefix}/bin/clang   ${prefix}/bin/aocc-clang
+	ln -s ${_aocc_prefix}/bin/clang++ ${prefix}/bin/aocc-clang++
+	ln -s ${_aocc_prefix}/bin/flang   ${prefix}/bin/aocc-flang
+
+	# Default flags the compilers should use
+	# This only works together with calling the "aocc-" prefixed symlinks above
+	# Verbose output should read "Configuration file: /opt/aocc/bin/aocc.cfg"
+	echo "${_default_flags}" > ${prefix}/bin/aocc.cfg
+
 	# modulefile
 	cp ${srcdir}/modulefile ${prefix}
 	mkdir -p ${pkgdir}${MODULESHOME}/modulefiles/
-	ln -s ${aocc_prefix}/modulefile ${pkgdir}${MODULESHOME}/modulefiles/${pkgname}
+	ln -s ${_aocc_prefix}/modulefile ${pkgdir}${MODULESHOME}/modulefiles/${pkgname}
 }
