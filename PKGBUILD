@@ -7,6 +7,7 @@ pkgver=1.0.0
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
+makedepends=('git' 'rust' 'cargo')
 depends=(libxcb xcb-util-errors pango cairo libxkbcommon
     libxkbcommon-x11)
 provides=('x11-ssh-askpass')
