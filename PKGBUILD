@@ -1,7 +1,7 @@
 # Maintainer: Nick Econopouly <wry at mm dot st>
 pkgname=tiny-irc-client-git
 pkgver="0.7.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="A console IRC client"
 arch=('x86_64')
 provides=('tiny')
@@ -24,8 +24,8 @@ build() {
 	  rustup toolchain install nightly
 
 	  # build tiny
-	  cd tiny
-	  cargo +nightly build --release
+      cd tiny
+      cargo install --path tiny --features=desktop-notifications
 }
 
 package() {
