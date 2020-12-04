@@ -1,5 +1,5 @@
 # Contributor: Archadept
-#    Revision: 2016-03-27
+#    Revision: 2020-12-04
 
 # Package workarounds:
 # 1 Requires cmake2 to compile
@@ -18,15 +18,15 @@
 pkgname=friking-shark-git
 _gitname=friking-shark
 pkgver=1.01beta
-pkgrel=2
+pkgrel=3
 pkgdesc="Latest version of vertical shooter with upgrades to machine gun of a bomber fighter"
 arch=('x86_64')
 url="https://github.com/ptitSeb/friking-shark"
 license=('GPL3')
 makedepends=('git' 'cmake2')
 depends=('libxinerama' 'libxrandr' 'freealut' 'libvorbis' 'glu' 'libpng14')
-source=('git://github.com/ptitSeb/friking-shark.git' 'OpenGLTexture.cpp' 'CMakeCache.txt' 'frikingshark.desktop')
-md5sums=('SKIP' 'b4ff7a43dd97aa7a4f5158311ddf0e5f' '85b1db2d1cd093d9cfe769beb86a65a3' 'c6ae445d9227bd6b4c4e684ab6be73b0')
+source=('git://github.com/ptitSeb/friking-shark.git' 'OpenGLTexture.cpp' 'frikingshark.desktop')
+md5sums=('SKIP' 'b4ff7a43dd97aa7a4f5158311ddf0e5f' 'c6ae445d9227bd6b4c4e684ab6be73b0')
 
 build() {
     cd "${srcdir}"
@@ -34,7 +34,6 @@ build() {
     rm -rf ${srcdir}/$_gitname-build
     cp -r ${_gitname} ${_gitname}-build || return 1
 
-    cp $srcdir/CMakeCache.txt $srcdir/${_gitname}-build/
     cp $srcdir/OpenGLTexture.cpp $srcdir/${_gitname}-build/GameGraphics/
     cp $srcdir/frikingshark.desktop $srcdir/${_gitname}-build/Demo/Linux/
 
