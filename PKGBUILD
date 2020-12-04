@@ -12,7 +12,6 @@ makedepends=(yarn git gulp)
 optdepends=('pandoc: For exporting to various format'
             'texlive-bin: For Latex support'
             'ttf-lato: Display output in a more comfortable way')
-options=('!strip')
 _commit=93273f39a0a178f82ad3c8ed64d01faf4224aab1 # 1.8.1^0
 _csl_locale_commit=cbb45961b815594f35c36da7e78154feb5647823
 _lang=('de-DE' 'en-GB' 'en-US' 'fr-FR' 'ja-JP' 'zh-CN' 'es-ES' 'ru-RU')
