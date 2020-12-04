@@ -1,0 +1,22 @@
+pkgbase = python-phoebe
+	pkgdesc = An eclipsing binary modeling code - reproducing and fitting light curves, radial velocity curves, and spectral line profiles of eclipsing systems.
+	pkgver = 2.3.7
+	pkgrel = 1
+	url = http://phoebe-project.org
+	arch = any
+	license = GPL3
+	depends = gcc-libs
+	depends = clang
+	depends = python
+	depends = python-numpy>=1.10.0
+	depends = python-scipy>=1.2.0
+	depends = python-astropy>=1.0.0
+	depends = python-requests
+	depends = python-socketio-client
+	depends = python-matplotlib
+	depends = python-corner
+	source = python-phoebe-2.3.7.tar.gz::https://github.com/phoebe-project/phoebe2/archive/2.3.7.tar.gz
+	sha512sums = d4b753c50adc04532e5679aa6a3dff3d630be39605ed97a936af9f2f50f4776f7581539caa4c9a2afbddca551051a4c03497b239ae6a4ff3df038a20d4f1b94c
+
+pkgname = python-phoebe
+
