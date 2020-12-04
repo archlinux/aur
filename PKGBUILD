@@ -24,7 +24,6 @@ depends=('suitesparse')
 makedepends=('gcc-fortran' 'cmake')
 provides=('trilinos')
 conflicts=('trilinos')
-checkdepends=('cmake')
 source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-$_pkgver.tar.gz")
 sha256sums=('5474c5329c6309224a7e1726cf6f0d855025b2042959e4e2be2748bd6bb49e18')
 
