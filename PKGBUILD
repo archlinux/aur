@@ -26,7 +26,8 @@ depends=("connman"
 optdepends=('cmst: A QT gui for connman'
                         'connman-gtk: a GTK gui for connman'
                         'modem-manager-gui: A GTK+ Gui for modem manager'
-                        'phonesim: Phone Simulator for modem testing')
+                        'phonesim: Phone Simulator for modem testing'
+                        'qomui: OpenVPN/WireGuard QT Gui with advanced features and support for multiple providers')
 conflicts=("networkmanager-support" "garuda-network" "wpa_supplicant")
 replaces=("garuda-connman" "manjaro-connman")
 install=connman.install
