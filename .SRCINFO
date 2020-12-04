@@ -1,6 +1,6 @@
 pkgbase = python-strictyaml
 	pkgdesc = A type-safe YAML parser that parses a restricted subset of the YAML specificaton.
-	pkgver = 1.0.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = http://hitchdev.com/strictyaml/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-strictyaml
 	depends = python
 	depends = python-dateutil
 	depends = python-ruamel-yaml
-	source = https://files.pythonhosted.org/packages/source/s/strictyaml/strictyaml-1.0.1.tar.gz
-	sha256sums = 06d7100587695a0edfabd772a6c6fb69071fc38c413df599e22dfd40e52f5fad
+	source = https://files.pythonhosted.org/packages/source/s/strictyaml/strictyaml-1.1.1.tar.gz
+	sha256sums = ea2bb97aacc12fff7df11bd4cb4ae64b1418a0311fbd1611445cc59dc650bdd3
 
 pkgname = python-strictyaml
 
