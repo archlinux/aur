@@ -8,7 +8,7 @@
 set -u
 _pkgname='Openswan'
 pkgname="${_pkgname,,}"
-pkgver='2.6.52.1'
+pkgver='2.6.52.2'
 pkgrel='1'
 pkgdesc='Open Source implementation of IPsec for Linux'
 arch=('i686' 'x86_64')
@@ -32,13 +32,13 @@ source=(
   '0001-gcc9-strncpy.patch'
   'openswan.service'
 )
-md5sums=('1c1857a2ab293dd033afd21cf5af3ebd'
+md5sums=('8626458d4695af2ccc11b4082dc687c9'
          'b54891b73bc62fce51f8ca46c8731882'
          'e428e61ba81048eef92475dffa2ffc23')
-sha256sums=('33f48de8168a9339c1a9802b51799352690319b55c1c35a64d986aebb84a1629'
+sha256sums=('766d9c91330112fa2d9bb8f7d49cb916db6e7c0bc4f05613a0405e0968a7c3de'
             'b30cfd22b14450668ecf798e6117ca6ea07609dabbee6d0ac15ef07dcef11804'
             '9f42bc005d4c361b31d41c7186a19ed8dbd1f95be31c16663bd2a1a8da8a29f0')
-sha512sums=('c137cc2e589a527584c7a10afae40538a9a34924f77192b4f59587cc4008c24b54b3853bd66c5b5de1de7e6abe4bd568eb958aeeda5434732bb8b1fdf198b0ad'
+sha512sums=('b13ab605375291a09ee72ad7a06220d43941b22ddbbbedfb6a28686777ebb9c5db96fd4d1d28c4440af1e6d9a1f630e865f4214e253bf6a126dfa42119885d2e'
             'def41d3c407ef11fef7c53e5293b5b7b4d0d394218caa0ee0b0508a016f9c229dec5569dc013955e3521140a200582e3183198e2aa1dd314d13fd73e6bad415b'
             'a234e97a4fe10fb85a8a1b69d0b55b7c7a4a9ef44c199f876f64bb7290e9f161b20e4c721112e26c6a5636a898a27a36b525aae0944cf6217ff81c36389d5803')
 
