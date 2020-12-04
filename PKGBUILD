@@ -6,7 +6,7 @@ pkgdesc="Hierarchical Density-Based Spatial Clustering of Applications with Nois
 url="http://github.com/scikit-learn-contrib/hdbscan"
 
 pkgver=0.8.26
-pkgrel=2
+pkgrel=3
 
 arch=("x86_64")
 license=("BSD")
