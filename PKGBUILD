@@ -1,7 +1,7 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=barpyrus-git
-pkgver=r71.42fb779
+pkgver=r94.fa160c6
 pkgrel=1
 pkgdesc="A python wrapper for lemonbar/conky"
 arch=(any)
@@ -19,7 +19,7 @@ pkgver() {
 
 package() {
   cd barpyrus
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 # vim:set ts=2 sw=2 et:
