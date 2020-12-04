@@ -17,7 +17,14 @@ depends=('mono'
          'python-pip'
          'zeromq')
 
-source=("https://github.com/renode/renode/releases/download/v${pkgver}/renode-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz")
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/renode/renode/releases/download/v${pkgver}/renode-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz")
 
 # checksum from package at time of pkgbuild
 md5sums=('723dab329330ef99e5db25a43e1967c8')
+
+package() {
+    cp -r opt $pkgdir
+    cp -r usr $pkgdir
+}
+
+
