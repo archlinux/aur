@@ -2,7 +2,7 @@
 
 pkgname=python-emojientities
 pkgver=0.1.5
-pkgrel=0
+pkgrel=1
 
 pkgdesc="retrieves emoji character range from unicode.org"
 url="https://gitlab.com/christoph.fink/python-emojientities"
