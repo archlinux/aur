@@ -1,12 +1,11 @@
 pkgbase = python-patch-ng
 	pkgdesc = Library to parse and apply unified diffs forked from python-patch.
 	pkgver = 1.17.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/conan-io/python-patch/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = fakeroot
 	depends = python
 	source = python-patch-ng-1.17.4.tar.gz::https://pypi.io/packages/source/p/patch-ng/patch-ng-1.17.4.tar.gz
 	md5sums = 6e9371b9e6531ccdfb43e7ad883b3ff5
