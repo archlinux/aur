@@ -3,14 +3,14 @@ pkgver=5.8.1
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
-url='http://www.paraview.org'
+url='https://www.paraview.org'
 license=('custom')
 depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-qt5-svg' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-freetype2' 'mingw-w64-libxml2' 'mingw-w64-libtiff' 'mingw-w64-jsoncpp' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-proj' 'mingw-w64-cgns' 'mingw-w64-netcdf' 'mingw-w64-double-conversion' 'mingw-w64-protobuf' 'mingw-w64-libtheora' 'mingw-w64-pugixml' 'mingw-w64-gl2ps')
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-wine' 'mingw-w64-wine-qt' 'protobuf')
 provides=('mingw-w64-paraview')
 conflicts=('mingw-w64-paraview')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}.tar.xz")
+source=("${url}/files/v${pkgver:0:3}/ParaView-v${pkgver}.tar.xz")
 sha256sums=('7653950392a0d7c0287c26f1d3a25cdbaa11baa7524b0af0e6a1a0d7d487d034')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
