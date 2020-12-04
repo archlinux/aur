@@ -10,7 +10,7 @@ _mpi=openmpi
 pkgname=${_pkg}-opt
 #-${_mpi}
 pkgver=5.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Parallel Visualization application using VTK (${_mpi} version): installed to /opt/"
 arch=(x86_64)
 provides=("${_pkg}")
@@ -75,10 +75,14 @@ build() {
 package() {
     DESTDIR="${pkgdir}" ninja -C build install
 
-    # Install license
-    install -Dm644 ParaView-v${pkgver/R/-R}/License_v1.2.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-
     # add paraview to PATH
     install -Dm 755 paraview.sh -t "${pkgdir}/etc/profile.d"
+
+    # Install licenses,shortcuts,icons
+    install -dm755 "${pkgdir}"/usr/share
+    mv "${pkgdir}"/{opt/paraview,usr}/share/licenses
+    mv "${pkgdir}"/usr/share/licenses/{ParaView,paraview-opt}
+    mv "${pkgdir}"/{opt/paraview,usr}/share/applications
+    mv "${pkgdir}"/{opt/paraview,usr}/share/icons
 }
 # vim:set sw=2 ts=2 et:
