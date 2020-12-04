@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=boca-git
-pkgver=1.0.3.r0.gd6efddf5
+pkgver=1.0.3.r21.g2e35aacf
 pkgrel=1
 epoch=2
 pkgdesc="A component library used by the fre:ac audio converter"
