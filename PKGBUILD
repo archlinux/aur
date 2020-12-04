@@ -6,7 +6,7 @@ pkgver=1.0.0
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
-depends=(libxcb xcb-util-errors xcb-util-xrm pango cairo libxkbcommon
+depends=(libxcb xcb-util-errors pango cairo libxkbcommon
     libxkbcommon-x11)
 url="https://github.com/user827/xaskpass.git"
 source=("$pkgname::git+$url#tag=v${pkgver}?signed")
