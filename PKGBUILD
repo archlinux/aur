@@ -6,7 +6,7 @@ pkgdesc="Line-oriented, tab-separated value format"
 url="https://github.com/solidsnack/tsv"
 
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("APACHE")
