@@ -22,11 +22,11 @@ build() {
 package() {
   # Install wmderland.
   cd ${_pkgname}/build/
-  make DESTDIR="${pkgdir}/" PREFIX="/usr/" install
+  make DESTDIR="${pkgdir}/" PREFIX="/usr/local/" install
 
   # Install wmderlandc (ipc client).
   cd ../ipc-client/build/
-  make DESTDIR="${pkgdir}/" PREFIX="/usr/" install
+  make DESTDIR="${pkgdir}/" PREFIX="/usr/local/" install
 
 
   # Move resulting executables to /usr/bin/...
