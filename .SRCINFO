@@ -1,14 +1,14 @@
 pkgbase = python-mpld3
 	pkgdesc = D3 Viewer for Matplotlib
-	pkgver = 0.3
-	pkgrel = 4
+	pkgver = 0.5.2
+	pkgrel = 1
 	url = http://mpld3.github.io/
 	arch = any
 	license = BSD 3-clause
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://pypi.org/packages/source/m/mpld3/mpld3-0.3.tar.gz
-	md5sums = 088251ed3182b2932268f9986cdc2778
+	source = https://pypi.org/packages/source/m/mpld3/mpld3-0.5.2.tar.gz
+	md5sums = 7c2a1900563b818ab9a27146ab749973
 
 pkgname = python-mpld3
 	depends = python

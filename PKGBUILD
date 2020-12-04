@@ -1,8 +1,8 @@
 # Submitter: Germán Osella Massa <gosella@gmail.com>
 
 pkgname=('python-mpld3' 'python2-mpld3')
-pkgver=0.3
-pkgrel=4
+pkgver=0.5.2
+pkgrel=1
 pkgdesc='D3 Viewer for Matplotlib'
 arch=('any')
 url='http://mpld3.github.io/'
@@ -10,7 +10,7 @@ license=('BSD 3-clause')
 makedepends=('python-setuptools' 'python2-setuptools')
 pypiname='mpld3'
 source=("https://pypi.org/packages/source/${pypiname:0:1}/${pypiname}/${pypiname}-${pkgver}.tar.gz")
-md5sums=('088251ed3182b2932268f9986cdc2778')
+md5sums=('7c2a1900563b818ab9a27146ab749973')
 
 prepare() {
   cd "$srcdir/"
