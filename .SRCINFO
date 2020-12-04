@@ -9,12 +9,12 @@ pkgbase = code-marketplace
 	depends = code
 	source = code-marketplace.hook
 	source = patch.sh
-	source = code-product.json.patch
-	source = vscodium-bin-product.json.patch
+	source = code.patch
+	source = vscodium-bin.patch
 	md5sums = 86f0c2bc60b5843a41fd9d2f8bab0b5a
-	md5sums = c30c18a4feb9b3558568dbbd7d9c237f
-	md5sums = 9e476c8aae4243010d6a1c18e56ac402
-	md5sums = 26be4c7916e72598198d9b3b19945311
+	md5sums = 5c3a49895d2d29a1878e8b9ba5764ef0
+	md5sums = 0fe49bf0ff5d74f632bf3b5d435750ab
+	md5sums = 060a4fc39945ca3c5a5c9e8136c343ad
 
 pkgname = code-marketplace
 

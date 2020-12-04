@@ -10,16 +10,16 @@ depends=('code')
 install="${pkgname}.install"
 source=('code-marketplace.hook'
         'patch.sh'
-        'code-product.json.patch'
-        'vscodium-bin-product.json.patch')
+        'code.patch'
+        'vscodium-bin.patch')
 md5sums=('86f0c2bc60b5843a41fd9d2f8bab0b5a'
-         'c30c18a4feb9b3558568dbbd7d9c237f'
-         '9e476c8aae4243010d6a1c18e56ac402'
-         '26be4c7916e72598198d9b3b19945311')
+         '5c3a49895d2d29a1878e8b9ba5764ef0'
+         '0fe49bf0ff5d74f632bf3b5d435750ab'
+         '060a4fc39945ca3c5a5c9e8136c343ad')
 
 package() {
   install -Dm 644 "${srcdir}"/code-marketplace.hook "${pkgdir}"/usr/share/libalpm/hooks/code-marketplace.hook
   install -Dm 755 "${srcdir}"/patch.sh "${pkgdir}"/usr/share/code-marketplace/patch.sh
-  install -Dm 644 "${srcdir}"/code-product.json.patch "${pkgdir}"/usr/share/code-marketplace/code-product.json.patch
-  install -Dm 644 "${srcdir}"/vscodium-bin-product.json.patch "${pkgdir}"/usr/share/code-marketplace/vscodium-bin-product.json.patch
+  install -Dm 644 "${srcdir}"/code.patch "${pkgdir}"/usr/share/code-marketplace/code.patch
+  install -Dm 644 "${srcdir}"/vscodium-bin.patch "${pkgdir}"/usr/share/code-marketplace/vscodium-bin.patch
 }

@@ -1,5 +1,5 @@
---- ./pkg/vscodium-bin/usr/share/vscodium-bin/resources/app/product.json	2020-12-04 15:56:10.000000000 +0800
-+++ /home/sainnhe/Downloads/product.json	2020-12-04 16:03:53.732183038 +0800
+--- /usr/share/vscodium-bin/resources/app/product.json	2020-12-04 15:56:10.000000000 +0800
++++ product.json	2020-12-04 16:03:53.732183038 +0800
 @@ -1,10 +1,10 @@
  {
    "serverDataFolderName": ".vscode-server-oss",
