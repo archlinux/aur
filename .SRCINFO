@@ -1,7 +1,7 @@
 pkgbase = python-html5lint
 	pkgdesc = Mozilla HTML5-lint (Python version)
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mozilla/html5-lint
 	arch = any
 	license = MPL

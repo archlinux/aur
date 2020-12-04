@@ -2,7 +2,7 @@
 
 pkgname=python-html5lint
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Mozilla HTML5-lint (Python version)'
 url='https://github.com/mozilla/html5-lint'
 license=('MPL')
