@@ -13,7 +13,7 @@ depends=("bluez"
                         "bluez-plugins"
                         "bluez-tools"
                         "bluez-utils"
-                        "pulsesudio-bluetooth"
+                        "pulseaudio-bluetooth"
                         "bluetooth-autoconnect")
 optdepends=('blueman: A gtk+ bluetooth manager'
                         'bluedevil: Qt bluetooth frontend'
