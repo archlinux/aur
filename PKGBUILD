@@ -2,7 +2,7 @@
 
 _pkgname=prelockd
 pkgname=${_pkgname}
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="prelockd is a daemon that locks memory mapped binaries and libraries in memory to improve system responsiveness under low-memory conditions."
 arch=('any')

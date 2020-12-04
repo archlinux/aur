@@ -1,6 +1,6 @@
 pkgbase = prelockd
 	pkgdesc = prelockd is a daemon that locks memory mapped binaries and libraries in memory to improve system responsiveness under low-memory conditions.
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/hakavlad/prelockd
 	install = prelockd.install
@@ -9,7 +9,7 @@ pkgbase = prelockd
 	depends = python
 	conflicts = prelockd
 	backup = etc/prelockd.conf
-	source = prelockd::https://github.com/hakavlad/prelockd/archive/v0.8.tar.gz
+	source = prelockd::https://github.com/hakavlad/prelockd/archive/v0.9.tar.gz
 	md5sums = SKIP
 
 pkgname = prelockd
