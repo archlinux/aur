@@ -2,8 +2,8 @@
 
 _pkgname=espanso
 pkgname=${_pkgname}
-pkgver=0.7.2
-pkgrel=3
+pkgver=0.7.3
+pkgrel=1
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
 url="https://espanso.org/"
@@ -22,9 +22,6 @@ prepare() {
     # don't change the original service file, as it will be embedded in the binary
     cp "src/res/linux/systemd.service" "systemd.service"
     sed -i "s|{{{espanso_path}}}|/usr/bin/espanso|g" "systemd.service"
-
-    cargo update -p serde --precise 1.0.117
-    cargo update -p serde_yaml --precise 0.8.14
 }
 
 check() {
