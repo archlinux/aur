@@ -74,33 +74,33 @@ prepare() {
 
   # NOTE: Arch package for pybind11 2.6.0 doesn't ship headers
   # Force system headers/libs
-  rm -rf "${srcdir}"/ycmd/cpp/llvm || exit
+  rm -rf "${srcdir}"/YouCompleteMe/third_party/ycmd/cpp/llvm || exit
 
   if [[ "$_gocode" == "y" ]]; then
-    sed -e "s/\(gopls_binary_path\":\).*\$/\1 \"\/usr\/bin\/gopls\",/" \
-        -i "${srcdir}"/ycmd/ycmd/default_settings.json
+    sed -e 's|\(gopls_binary_path":\).*$|\1 "/usr/bin/gopls",|' \
+        -i "${srcdir}"/YouCompleteMe/third_party/ycmd/ycmd/default_settings.json
   fi
 
   if [[ "$_typescript" == "y" ]]; then
     rm -rf "${srcdir}/YouCompleteMe/third_party/ycmd/third_party/tern_runtime" || exit
-    sed -e "s/\(tsserver_binary_path\":\).*\$/\1 \"\/usr\/bin\/tsserver\",/" \
-        -i "${srcdir}"/ycmd/ycmd/default_settings.json
+    sed -e 's|\(tsserver_binary_path":\).*$|\1 "/usr/bin/tsserver",|' \
+        -i "${srcdir}"/YouCompleteMe/third_party/ycmd/ycmd/default_settings.json
   fi
   if [[ "$_java" == "y" ]]; then
-    sed -e "s/\(java_jdtls_workspace_root_path\":\).*\$/\1 \"\/tmp\",/" \
-        -e "s/\(java_binary_path\":\).*\$/\1 \"\/usr\/bin\/java\"/" \
-        -i "${srcdir}"/ycmd/ycmd/default_settings.json
+    sed -e 's|\(java_jdtls_workspace_root_path":\).*$|\1 "/tmp",|' \
+        -e 's|\(java_binary_path":\).*$|\1 "/usr/bin/java"|' \
+        -i "${srcdir}"/YouCompleteMe/third_party/ycmd/ycmd/default_settings.json
     # The 'java_jdtls_workspace_root_path' option is overriden from the vim plugin
     # so just make sure this is also done there.
-    sed -e "s/\(ycm_java_jdtls_workspace_root_path',\).*\$/\1 '\/tmp' )/" \
+    sed -e "s|\(ycm_java_jdtls_workspace_root_path',\).*\$|\1 '/tmp' )|" \
         -i "${srcdir}"/YouCompleteMe/plugin/youcompleteme.vim
   fi
 
-  sed -e "s/\(clangd_binary_path\":\).*\$/\1 \"\/usr\/bin\/clangd\",/" \
-      -e "s/\(rust_toolchain_root\":\).*\$/\1 \"\/usr\",/" \
-      -e "s/\(roslyn_binary_path\":\).*\$/\1 \"\/opt\/omnisharp-roslyn\/OmniSharp.exe\",/" \
-      -e "s/\(mono_binary_path\":\).*\$/\1 \"\/usr\/bin\/mono\",/" \
-      -i "${srcdir}"/ycmd/ycmd/default_settings.json
+  sed -e 's|\(clangd_binary_path":\).*$|\1 "/usr/bin/clangd",|' \
+      -e 's|\(rust_toolchain_root":\).*$|\1 "/usr",|' \
+      -e 's|\(roslyn_binary_path":\).*$|\1 "/opt/omnisharp-roslyn/OmniSharp.exe",|' \
+      -e 's|\(mono_binary_path":\).*$|\1 "/usr/bin/mono",|' \
+      -i "${srcdir}"/YouCompleteMe/third_party/ycmd/ycmd/default_settings.json
 }
 
 build() {
