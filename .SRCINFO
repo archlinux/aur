@@ -1,0 +1,23 @@
+pkgbase = imhex-git
+	pkgdesc = A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM
+	pkgver = 1.4.0.r23.gd7af693
+	pkgrel = 1
+	url = https://github.com/WerWolv/ImHex
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = glfw
+	depends = glm
+	depends = capstone
+	depends = llvm-libs
+	depends = llvm
+	depends = nlohmann-json
+	depends = python
+	provides = imhex
+	conflicts = imhex
+	source = imhex-git::git+https://github.com/WerWolv/ImHex.git
+	sha256sums = SKIP
+
+pkgname = imhex-git
+
