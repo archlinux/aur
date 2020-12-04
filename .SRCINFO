@@ -1,7 +1,7 @@
 pkgbase = python-yamk
 	pkgdesc = Yet another make
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spapanik/yamk
 	arch = any
 	license = MIT
