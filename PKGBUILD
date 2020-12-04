@@ -3,7 +3,7 @@
 pkgname=gajim-plugin-urlimagepreview
 _pkgname=url_image_preview
 pkgver=2.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Gajim plugin which displays a preview of links to images"
 arch=(any)
 url="https://dev.gajim.org/gajim/gajim-plugins/wikis/urlimagepreviewplugin"
