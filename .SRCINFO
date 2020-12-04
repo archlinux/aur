@@ -1,19 +1,19 @@
 pkgbase = firecamp
 	pkgdesc = firecamp, A campsite for developers.
-	pkgver = 1.2.5
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://firecamp.app/
 	arch = x86_64
 	license = unknown
 	makedepends = p7zip
 	makedepends = asar
-	depends = electron
+	depends = electron8
 	provides = firecamp
 	options = !strip
-	source = firecamp-1.2.5.orig.appimage::https://firecamp.ams3.digitaloceanspaces.com/versions/linux/Firecamp-1.2.5.AppImage
-	source = runner.patch
-	sha256sums = 13bb9878a787afd0ba3391c0160dab7d9af5124d7691924090e9142451c15ac3
-	sha256sums = f22a12c6b3ee55161ac9e8debadba48263fad338c13b6700d06261c2346426dd
+	source = firecamp-1.4.4.orig.appimage::https://firecamp.ams3.digitaloceanspaces.com/versions/linux/Firecamp-1.4.4.AppImage
+	source = path.patch
+	sha256sums = 240c94d2b5242e39ffb27287abc9c9ba7456a204036db9dd46f97f5d47b277cd
+	sha256sums = SKIP
 
 pkgname = firecamp
 

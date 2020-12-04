@@ -1,0 +1,25 @@
+diff -ruN app/services/icon-path/index.js app_new/services/icon-path/index.js
+--- app/services/icon-path/index.js	2020-12-04 16:57:28.158203215 +0800
++++ app_new/services/icon-path/index.js	2020-12-04 17:05:31.062678085 +0800
+@@ -22,7 +22,7 @@
+ } else {
+   if (process.platform === "linux")
+     trayIcon = path.join(
+-      process.resourcesPath,
+-      "assets/icons/images/22x22.png"
++      "/usr/share/firecamp/app",
++      "assets/icons/png/24x24.png"
+     );
+   else if (process.platform === "darwin")
+diff -ruN app/services/protobuf/index.js app_new/services/protobuf/index.js
+--- app/services/protobuf/index.js	2020-12-04 17:02:45.669701138 +0800
++++ app_new/services/protobuf/index.js	2020-12-04 17:03:38.614007488 +0800
+@@ -384,7 +384,7 @@
+   }
+
+   init() {
+-    this.loadModule();
++    // this.loadModule();
+     this.compileSchema();
+     this.fetchInputObject();
+     this.encodePayload();
