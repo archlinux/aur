@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GameJolt
+Exec=game-jolt-client
+Comment=Library of Game
+Terminal=false
+Icon=gamejolt
+Type=Application
+Categories=Game
+StartupNotify=true
