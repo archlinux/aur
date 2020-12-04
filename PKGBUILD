@@ -6,7 +6,7 @@
     pkgname='ros-melodic-cartographer-rviz'
     pkgver='1.0.0'
     arch=('any')
-    pkgrel=1
+    pkgrel=2
     license=('Apache 2.0')
 
     ros_makedepends=(ros-melodic-message-runtime
@@ -36,8 +36,16 @@
     
     # Tarball version (faster download)
     _dir="cartographer_ros-release-release-melodic-cartographer_rviz"
-    source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-gbp/cartographer_ros-release/archive/release/melodic/cartographer_rviz/${pkgver}.tar.gz")
-    sha256sums=('6b9bc233a6e64b0a737797fff2eb0e1b9217cd990cc98f8d62e12c95bee73ef6')
+    source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-gbp/cartographer_ros-release/archive/release/melodic/cartographer_rviz/${pkgver}.tar.gz"
+      CMakeLists.patch)
+sha256sums=('6b9bc233a6e64b0a737797fff2eb0e1b9217cd990cc98f8d62e12c95bee73ef6'
+            '7e706acef5e7029a50acee352221a035605ecc51b81d32f795f9c1c9be646556')
+
+  prepare() {
+    cd "${srcdir}/${_dir}"
+    patch -uN CMakeLists.txt ../CMakeLists.patch || return 1
+}
+
 
     build() {
         # Use ROS environment variables

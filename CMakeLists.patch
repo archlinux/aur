@@ -1,0 +1,10 @@
+--- CMakeLists.txt.old	2020-06-02 22:43:13.140020487 +0200
++++ CMakeLists.txt	2020-06-02 22:43:21.673353859 +0200
+@@ -15,6 +15,7 @@
+ cmake_minimum_required(VERSION 2.8.12)  # Ships with Ubuntu 14.04 (Trusty)
+ 
+ project(cartographer_rviz)
++add_compile_options(-std=c++14)
+ 
+ set(PACKAGE_DEPENDENCIES
+   cartographer_ros
