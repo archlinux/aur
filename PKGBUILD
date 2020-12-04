@@ -1,6 +1,6 @@
 # Maintainer: Timo Sarawinski <timo@it-kraut.net>
 pkgname=ofork
-pkgver=9.0.7
+pkgver=9.0.10
 pkgrel=1
 pkgdesc="OFORK is a OTRS fork open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
@@ -38,9 +38,29 @@ optdepends=("mariadb:  Fast SQL database server, drop-in replacement for MySQL"
 backup=("etc/webapps/${pkgname}/Config.pm")
 install="${pkgname}.install"
 source=("${pkgname}.install"
-        "https://ftp.o-fork.de/ofork-${pkgver}.tar.gz")
+        "https://ftp.o-fork.de/ofork-${pkgver}.tar.gz"
+	"https://ftp.o-fork.de/ITSM/Bundle9/ITSM-${pkgver}.opm"
+	"https://ftp.o-fork.de/ITSM/GeneralCatalog-${pkgver}.opm"
+	"https://ftp.o-fork.de/ITSM/ITSMCore-${pkgver}.opm"
+        "https://ftp.o-fork.de/ITSM/ITSMChangeManagement-${pkgver}.opm"
+        "https://ftp.o-fork.de/ITSM/ITSMConfigurationManagement-${pkgver}.opm"
+        "https://ftp.o-fork.de/ITSM/ITSMIncidentProblemManagement-${pkgver}.opm"
+        "https://ftp.o-fork.de/ITSM/ImportExport-${pkgver}.opm"
+	"https://ftp.o-fork.de/AddOns/FAQ-${pkgver}.opm"
+	"https://ftp.o-fork.de/AddOns/MasterSlave-${pkgver}.opm"
+	"https://ftp.o-fork.de/AddOns/Survey-${pkgver}.opm")
 sha256sums=('237bea50871d37e6822b5b47c6c47e90061981293a7edfe3c679e968e7088b42'
-            '40978cccfcb23fed2e7dbcc4caa32cc3f05065010c0a1404c05133c33dda547b')
+            '3c2b819bedaaac80015aeee657b9ae1bbdd5019081461688eeb4226c72453ce0'
+            'd1dd33e754a41d7f83b61d4db5324572cf560df0bdfab619cce88cd58fcc257d'
+            'd5c36681efcc621be766577da0c53d12c17e6fec540afba67555bcb0caa68d1d'
+            'aaffe0f6a611287fb0d140c53dcc34320d0613eed3ce19a82bb5fb48428310bd'
+            '13db38049236c30670477cd7bea4af9c8f1373a2def7eddd5e05ac4e0844d19b'
+            '4752f7854c90f3e07112db562b6da14a147a17546ae4edd878a02e0ad9392483'
+            '7af8a23a9e7bc4dfaea4298b812bc9d2309ef406d9338404eab06b66e900761b'
+            'b71cdb63f92227d3a50ccbfbc5828f8171b42fe6bd29124e51c525519e85cbee'
+            '724ad367a96931bf0c27680fef3848d47d846edc2362e2302ba6639674cd7cc1'
+            '134cb56c82380978baf7035e5400fe15cefef01a1f35cc43cb9bb3735c0dfcba'
+            'a10d01bd7117075047a874ec04546284e2abf0937acc90dc474cbd1c4075b1a0')
 
 prepare() {
 cat << EOL > "${srcdir}/${pkgname}.service"
