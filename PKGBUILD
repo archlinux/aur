@@ -2,7 +2,7 @@
 
 _pkgname='Insomnia-Designer'
 pkgname="${_pkgname,,}-bin"
-pkgver=2020.5.0
+pkgver=2020.5.1
 pkgrel=1
 pkgdesc='Collaborative API Design Tool for designing, testing and managing OpenAPI specifications'
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("${_pkgname,,}")
 conflicts=("${_pkgname,,}")
 source=("${_url_source}/releases/download/designer@${pkgver}/${_pkgname/-/.}-${pkgver}.deb"
         "${_pkgname}-${pkgver}-license::${_url_source}/raw/designer@${pkgver}/LICENSE")
-sha256sums=('52db5ea5a232f2476a237e1f4fc966dcd1ef728b54ef36fe5493ce6352f002cb'
+sha256sums=('ce3e0c19e20b9ff785f25d9da9fe545df70b71f1a3ba80969d8d1b852e269dbd'
             'cc91b5641bbbf592a69ca5f7b45807efba470068e815fc7682a42022bbd3cbb9')
 
 package() {
