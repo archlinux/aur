@@ -40,6 +40,8 @@ prepare() {
     sed -i "s|2.4.0|2.3.0|" VTK/ThirdParty/libharu/CMakeLists.txt
     # https://bugs.archlinux.org/task/68244
     patch -Np1 -i ../paraview-vtk-freetype-2.10.3.patch
+    # add python:3.9
+    sed -i "s|3.8|3.9 &|" VTK/CMake/patches/99/FindPython/Support.cmake
 }
 
 build() {
