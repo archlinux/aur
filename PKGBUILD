@@ -1,7 +1,7 @@
 # Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
 pkgname=vorta
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A GUI for BorgBackup"
 arch=('any')
 url="https://github.com/borgbase/vorta"
