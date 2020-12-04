@@ -7,7 +7,7 @@
 set -u
 _pkgname='mdadm'
 pkgname="${_pkgname}-git"
-pkgver=4.0.r0.g25cfca3
+pkgver=4.1.r106.ga64f126
 pkgrel=1
 pkgdesc='create, manage, and monitor Linux mdraid block device RAID arrays'
 arch=('i686' 'x86_64')
@@ -22,20 +22,25 @@ conflicts=('mkinitcpio<0.7' "${_pkgname}")
 replaces=('raidtools')
 backup=("etc/${_pkgname}.conf")
 install="${_pkgname}.install"
-_verwatch=('ftp://ftp.kernel.org/pub/linux/utils/raid/mdadm/' 'mdadm-\(.*\)\.tar\.xz' 'f')
+_verwatch=('https://mirrors.edge.kernel.org/pub/linux/utils/raid/mdadm/' 'mdadm-\(.*\)\.tar\.xz' 't')
 _archlink="@@@::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/@@@?h=packages/${_pkgname}"
-source=(# use either one, but not both. Reset with makepkg -sCf. My comparison shows these are identical, including the tags. Github is faster.
-        "mdadm_gitnb::git://neil.brown.name/${_pkgname}"
-        #"mdadm_github::git+https://github.com/neilbrown/${_pkgname}.git"
-        "${_archlink//@@@/${_pkgname}.conf}"
-        "${_archlink//@@@/${_pkgname}_hook}"
-        "${_archlink//@@@/${_pkgname}_install}"
-        "${_archlink//@@@/${_pkgname}_udev_install}"
-        "mdadm_udev_hook")
+source=(
+  # choose whichever repo is newest.
+  #"mdadm_gitnb::git://neil.brown.name/${_pkgname}"
+  #"mdadm_github::git+https://github.com/neilbrown/${_pkgname}.git"
+  "mdadm_gitkr::git://git.kernel.org/pub/scm/utils/mdadm/mdadm.git"
+  "${_archlink//@@@/${_pkgname}.conf}"
+  #"${_archlink//@@@/${_pkgname}_hook}"
+  #"${_archlink//@@@/${_pkgname}_install}"
+  "${_archlink//@@@/${_pkgname}_udev_install}"
+  "${_pkgname}_udev_hook"
+)
+md5sums=('SKIP'
+         '5a37c112aa07dccdde62f9fa5b888607'
+         'b6b0bfd6487c99264578630616dfe5eb'
+         '910398cd21e16c1da33f2d7449497245')
 sha256sums=('SKIP'
             '4ce1e90690282f98e4828e11576fbd61be65e97a2cdae6c7eac7035ea5ee53e5'
-            'd297b4fa6213016ec08e4f66d07cf7eb03426e4e17ab31eddfa5c5c1d82ea294'
-            '15bc46b9fa663dc204e2168861fabfd26e0dbcbb073792f271e3e4510897fb4e'
             '170b0e5d548416c0adb9df4e6941bea6bc33d843419c997e45ecaf9e36a58f38'
             'd395184617f45849cbbaf5b4ee3665ca6895a1d642e0470e9de703ce944279ca')
 
@@ -49,65 +54,93 @@ pkgver() {
 prepare() {
   set -u
   cd mdadm_git*/
-  # NB strives for warning free code so the werror patch should not be necessary. Comment but don't erase it as it may be needed from time to time.
-  #sed -i -e 's: -Werror : :g' 'Makefile' # disable-werror.patch
-  sed -i -e 's:/usr/sbin/:/usr/bin:g' -e 's:/sbin:/usr/bin:g' 'Makefile' 'test' 'mkinitramfs' 'mdadm.conf.5'
+  # NB and the mdadm team strive for warning free code. Disable the warning only when necessary.
+  sed -e 's: -Werror : :g' -i 'Makefile' # disable-werror.patch
+  sed -e 's:/usr/sbin/:/usr/bin:g' -e 's:/sbin:/usr/bin:g' -i 'Makefile' 'test' 'mkinitramfs' 'mdadm.conf.5'
+
+  # make install must not compile anything
+  sed -e '/^install\s*:/ s:\bmdadm mdmon\b::g' -i 'Makefile'
   set +u
 }
 
 build() {
   set -u
   cd mdadm_git*/
-  msg2 'Build mdadm'
-  make -s -j $(nproc) CXFLAGS="${CFLAGS}" BINDIR='/usr/bin' UDEVDIR='/usr/lib/udev'
-  # build static mdassemble for Arch's initramfs for use with mkinitcpio hook mdadm. Hook mdadm_udev does not use mdassemble.
-  msg2 'Build mdassemble'
-  make -s -j $(nproc) CXFLAGS="${CFLAGS}" MDASSEMBLE_AUTO=1 mdassemble
+  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  nice make -s -j "${_nproc}" CXFLAGS="${CFLAGS}" BINDIR='/usr/bin' UDEVDIR='/usr/lib/udev'
   set +u
 }
 
 check() {
   set -u
   cd mdadm_git*/
-  make -s -j $(nproc) CXFLAGS="${CFLAGS}" test
-  #sudo ./test # can't do sudo in a PKGBUILD
+  #make -s -j1 CXFLAGS="${CFLAGS}" test
+  # check must be run on a machine *NOT* running mdraid, think laptop!
+  # Watch for gksu prompts.
+  if ! :; then
+    #sudo ./test
+    echo "passed, but you can't deliver a PKGBUILD with sudo in it"
+    set +u
+    false
+  fi
   set +u
 }
 
 package() {
   set -u
   cd mdadm_git*/
-  make -s INSTALL='/usr/bin/install' BINDIR='/usr/bin' DESTDIR="${pkgdir}" UDEVDIR='/usr/lib/udev' install
-  make -s SYSTEMD_DIR="${pkgdir}/usr/lib/systemd/system" install-systemd # does not honor silent -s
-  install -Dpm755 'mdassemble' -t "${pkgdir}/usr/bin/"
+  make -s -j1 INSTALL='/usr/bin/install' BINDIR='/usr/bin' DESTDIR="${pkgdir}" UDEVDIR='/usr/lib/udev' install
+
+  # systemd addon
+  make -s -j1 SYSTEMD_DIR="${pkgdir}/usr/lib/systemd/system" install-systemd # does not honor silent -s
+  sed -e 's:#!/bin/sh:#!/usr/bin/sh:g' -i "${pkgdir}/usr/lib/systemd/system-shutdown/mdadm.shutdown"
+
+  # configuration
   install -Dpm644 "${srcdir}/mdadm.conf" -t "${pkgdir}/etc/"
-  sed -i -e 's:/usr/sbin/:/usr/bin:g' "${pkgdir}/etc/mdadm.conf"
-  install -Dpm644 "${srcdir}/mdadm_install" "${pkgdir}/usr/lib/initcpio/install/mdadm"
-  ## 2015-08-04 mdadm is required even when using mdassemble. This eliminates the need for adding mdadm to BINARIES="" in mkinitcpio.conf
-  #if ! grep -q '/usr/bin/mdadm' "${pkgdir}/usr/lib/initcpio/install/mdadm"; then
-  #  sed -i -e 's:^\(\s\+\)\(add_binary \):\1\2"/usr/bin/mdadm"\n&:g' "${pkgdir}/usr/lib/initcpio/install/mdadm"
-  #fi
-  install -Dpm644 "${srcdir}/mdadm_hook" "${pkgdir}/usr/lib/initcpio/hooks/mdadm"
-  sed -i -e 's:/usr/bin/ash:/usr/bin/bash:g' "${pkgdir}/usr/lib/initcpio/hooks/mdadm"
+  sed -e 's:/usr/sbin/:/usr/bin/:g' -i "${pkgdir}/etc/mdadm.conf"
+
+  # hook mdadm_udev
   install -Dpm644 "${srcdir}/mdadm_udev_install" "${pkgdir}/usr/lib/initcpio/install/mdadm_udev"
   if ! grep -q 'add_runscript' "${pkgdir}/usr/lib/initcpio/install/mdadm_udev"; then
-    sed -i -e 's:^\(\s\+\)add_binary:\1add_runscript\n&:g' "${pkgdir}/usr/lib/initcpio/install/mdadm_udev"
+    sed -e 's:^\(\s\+\)add_binary:\1add_runscript\n&:g' -i "${pkgdir}/usr/lib/initcpio/install/mdadm_udev"
   fi
+  sed -e 's:#!/bin/bash:#!/usr/bin/bash:g' -i "${pkgdir}/usr/lib/initcpio/install/mdadm_udev"
+  bash -n "${pkgdir}/usr/lib/initcpio/install/mdadm_udev" || echo "${}"
+  ln -s '/usr/lib/initcpio/install/mdadm_udev' "${pkgdir}/usr/lib/initcpio/install/mdadm"
+
+  # Custom display hook
   install -Dpm644 "${srcdir}/mdadm_udev_hook" "${pkgdir}/usr/lib/initcpio/hooks/mdadm_udev"
-  sed -i -e 's:#!/bin/bash:#!/usr/bin/bash:g' "${pkgdir}/usr/lib/initcpio/install"/{mdadm,mdadm_udev}
-  sed -i -e 's:#!/bin/sh:#!/usr/bin/sh:g' "${pkgdir}/usr/lib/systemd/system-shutdown/mdadm.shutdown"
+  bash -n "${pkgdir}/usr/lib/initcpio/hooks/mdadm_udev" || echo "${}"
   #ln -sf 'mdadm' "${pkgdir}/usr/lib/initcpio/hooks/raid" # symlink for backward compatibility
+
+  # Ensure all udev rules files are present in the initcpio install hooks
+  shopt -s failglob
+  local _lf=$'\n'
+  local _missing=''
+  pushd "${pkgdir}" > /dev/null
+  local _mks=(usr/lib/initcpio/install/*)
+  cd "${pkgdir}/usr/lib/udev/rules.d/"
+  local _mk _mkd _ud _udp
+  for _mk in "${_mks[@]}"; do
+    for _ud in *.rules; do
+      _udp="/usr/lib/udev/rules.d/${_ud}"
+      if ! grep -qe "add_file.*${_udp}" "${pkgdir}/${_mk}"; then
+        _missing+="${_lf}Missing ${_mk}: ${_udp}"
+      fi
+    done
+  done
+  popd > /dev/null
+  if [ ! -z "${_missing}" ]; then
+    echo "${_missing}"
+    set +u
+    # Disable for now.
+    : false
+  fi
+  shopt -u failglob
+
+  # Ensure files are clean
+  ! grep -alqr "mdassemble" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: mdassemble"; false; }
+  ! grep -alqr "/sbin" "${pkgdir}" || echo "${}"
   set +u
-  # Ensure there are no forbidden paths. Place at the end of package() and comment out as you find or need exceptions. (git-aurcheck)
-  ! test -d "${pkgdir}/bin" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
-  ! test -d "${pkgdir}/sbin" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
-  ! test -d "${pkgdir}/lib" || { echo "Line ${LINENO} Forbidden: /lib"; false; }
-  ! test -d "${pkgdir}/share" || { echo "Line ${LINENO} Forbidden: /share"; false; }
-  ! test -d "${pkgdir}/usr/sbin" || { echo "Line ${LINENO} Forbidden: /usr/sbin"; false; }
-  ! test -d "${pkgdir}/usr/local" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
-  ! grep -lr "/sbin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
-  ! grep -lr "/usr/tmp" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/tmp"; false; }
-  ! grep -lr "/usr/local" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
-  ! pcre2grep -Ilr "(?<!/usr)/bin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
 }
 set +u

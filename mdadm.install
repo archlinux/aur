@@ -1,6 +1,13 @@
 # arg 1:  the new package version
 # arg 2:  the old package version
 
+_picheck() {
+  if grep -qe '^\s*HOOKS=.*\<mdadm\>' '/etc/mkinitcpio.conf'; then
+    echo 'The old mkinitcpio hook "mdadm" is no longer supported'
+    echo 'In /etc/mkinitcpio.conf HOOKS= change "mdadm" to "mdadm_udev"'
+  fi
+}
+
 post_upgrade() {
   if [ "$(vercmp "$2" '2.6.8-2')" -lt 0 -a "$(grep 'raid_partitions' '/etc/mkinitcpio.conf')" ]; then
     echo "Attention mdadm update:"
@@ -18,6 +25,7 @@ post_upgrade() {
     echo 'One or more arrays may be damaged. Please repair soon.'
     tput 'sgr0'
   fi
+  _picheck
 }
 
 post_install() {
@@ -32,6 +40,7 @@ post_install() {
       mv '/etc/mdadm.conf.pacsave' '/etc/mdadm.conf' && echo '/etc/mdadm.conf restored from /etc/mdadm.conf.pacsave'
     fi
   fi
+  _picheck
 }
 
 pre_remove() {
