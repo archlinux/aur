@@ -1,0 +1,4 @@
+pkg/
+src/
+sleepcount-*.tar.gz
+sleepcount-*.pkg.*
