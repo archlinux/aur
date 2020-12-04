@@ -1,2 +1,3 @@
 *.pkg.tar.xz
+*.pkg.tar.zst
 gnome-shell-extension-disable-workspace-switcher-popup-git
