@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=muwire
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc='An I2P file sharing program'
 arch=('any')
