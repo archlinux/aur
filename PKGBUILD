@@ -3,12 +3,12 @@
 # Contributor: Samed Beyribey <ras0ir AT eventualis DOT org>
 pkgname=python-pyspf
 pkgver=2.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Python implementation of the Sender Policy Framework (SPF) protocol"
 arch=('any')
 url="https://pypi.python.org/pypi/pyspf"
 license=('PSF')
-depends=('python-pydns')
+depends=('python-dnspython')
 makedepends=('python-setuptools')
 optdepends=('python-authres: Return RFC 5451 Authentication Results headers')
 source=("https://files.pythonhosted.org/packages/d4/dc/5b3838ff90474e21fe0914920c53430f73402e07d6598ea228e61b74963e/pyspf-$pkgver.tar.gz")
