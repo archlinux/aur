@@ -2,8 +2,8 @@
 
 _pkgname=termdown
 pkgname=$_pkgname-git
-pkgver=1.16.0.r1.ga70ac7c
-pkgrel=3
+pkgver=1.17.0.r6.g660b30f
+pkgrel=1
 arch=('any')
 pkgdesc='Countdown timer and stopwatch in your terminal'
 url='https://github.com/trehn/termdown'
