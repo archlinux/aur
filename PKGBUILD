@@ -5,7 +5,7 @@
 pkgname=python-pycapnp
 _pkgname=pycapnp
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cython wrapper for the C++ Cap'n Proto serialization library"
 arch=(x86_64)
 url=https://github.com/capnproto/pycapnp
