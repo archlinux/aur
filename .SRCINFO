@@ -1,13 +1,13 @@
 pkgbase = oldschool-pc-fonts
 	pkgdesc = world's biggest collection of classic text mode fonts, system fonts and BIOS fonts from DOS-era IBM PCs and compatibles
-	pkgver = 2.0
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://int10h.org/oldschool-pc-fonts/
 	arch = any
 	license = CCPL
 	makedepends = fontconfig
-	source = https://int10h.org/oldschool-pc-fonts/download/oldschool_pc_font_pack_v2.0_ttf.zip
-	md5sums = 91c7b424b327a99cd517226ca1ad5024
+	source = https://int10h.org/oldschool-pc-fonts/download/oldschool_pc_font_pack_v2.2_linux.zip
+	md5sums = e4e114151d7d9d4baf7b0f69b6645043
 
 pkgname = oldschool-pc-fonts
 
