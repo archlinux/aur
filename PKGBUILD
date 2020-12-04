@@ -1,8 +1,8 @@
 # Maintainer: Bruce Zhang
 pkgname=listen1-desktop
-pkgver=2.11.0
+pkgver=2.17.0
 pkgrel=1
-listen1_commit=99e58a4688876ee677c914519b7381f4a8dbf177
+listen1_commit=d4670e8acf3a6323e43d32dcde6e09be8cd0e83f
 pkgdesc="one for all free music in china (Build from source)"
 arch=('x86_64' 'i686')
 url="https://github.com/listen1/listen1_desktop"
@@ -15,13 +15,14 @@ source=(
 	"$pkgname-$pkgver.src.tar.gz::https://github.com/listen1/listen1_desktop/archive/v$pkgver.tar.gz"
 	"git+https://github.com/listen1/listen1_chrome_extension.git#commit=$listen1_commit"
 )
-sha256sums=('00a0f2de9305a44b960107ace0423cf23da097289c9552a47808071d03e8133b'
+sha256sums=('500ece75e27e94d88f8b365055d4641f6a002e59b8eb6526810018c143c78c9b'
             'SKIP')
 
 prepare() {
 	cd "${pkgname/-/_}-$pkgver"
 	electronDist="\/usr\/lib\/electron"
-	sed -i "s/\"productName\": \"Listen1\",/\"productName\": \"Listen1\",\"electronDist\": \"$electronDist\",/" package.json
+	electronVersion="tail /usr/lib/electron/version"
+	sed -i "s#\"productName\": \"Listen1\",/\"productName\": \"Listen1\",\"electronDist\": \"$electronDist\",\"electronVersion\": \"$electronVersion\",##" package.json
 	rmdir app/listen1_chrome_extension
 	cp -r "$srcdir/listen1_chrome_extension" app/listen1_chrome_extension
 }
