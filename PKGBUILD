@@ -2,7 +2,7 @@
 _pkgname=Red-Lavalink
 pkgname=python-red-lavalink
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lavalink client library used in Red-DiscordBot"
 arch=(any)
 url="https://github.com/Cog-Creators/Red-Lavalink"
