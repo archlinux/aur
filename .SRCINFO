@@ -1,6 +1,6 @@
 pkgbase = kicad-templates
 	pkgdesc = KiCad templates
-	pkgver = 5.1.7
+	pkgver = 5.1.8
 	pkgrel = 1
 	url = https://gitlab.com/kicad/libraries/kicad-templates
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = kicad-templates
 	makedepends = cmake
 	conflicts = kicad-templates-git
 	options = !strip
-	source = https://gitlab.com/kicad/libraries/kicad-templates/-/archive/5.1.7/kicad-templates-5.1.7.tar.gz
-	sha256sums = 0454a08872e39c7f5f038f4447606ec05d7e327684a8361ccb71e7e3d497bbb2
+	source = https://gitlab.com/kicad/libraries/kicad-templates/-/archive/5.1.8/kicad-templates-5.1.8.tar.gz
+	sha256sums = 1afc8196f47d053937c2db9ee7f09b0d812e1ba93e57a0610ab1ced21c9134ca
 
 pkgname = kicad-templates
 
