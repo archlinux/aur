@@ -1,5 +1,5 @@
 pkgname=linvst
-pkgver=2.8.r98.e0c8d55
+pkgver=3.2.r2.b801bdd
 pkgrel=1
 license=('GPL3')
 pkgdesc="enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's"
