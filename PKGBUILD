@@ -1,8 +1,8 @@
 # Maintainer: Leon <adigitoleo@protonmail.com>
 pkgname=python-enaml-git
 _shortname="${pkgname%-git}"
-pkgver=0.12.0.r2.g6554c803
-pkgrel=4
+pkgver=0.12.0.r10.g3e58a3c2
+pkgrel=1
 pkgdesc="Declarative User Interfaces for Python"
 arch=(x86_64)
 url="https://github.com/nucleic/enaml"
