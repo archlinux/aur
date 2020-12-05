@@ -1,13 +1,7 @@
-# Trezor-bridge-bin install script
-
-pre_install() {
+pre_install(){
     getent group trezord >/dev/null || groupadd -r trezord
     getent group plugdev >/dev/null || groupadd -r plugdev
-    getent passwd trezord >/dev/null || useradd -r -g trezord -d /var -s /usr/bin/nologin -c "TREZOR Bridge" trezord
-    usermod -a -G plugdev trezord
-    touch /var/log/trezord.log
-    chown trezord:trezord /var/log/trezord.log
-    chmod 660 /var/log/trezord.log
+    getent passwd trezord >/dev/null || useradd -r -g trezord -G plugdev -M -s /usr/bin/nologin -c "TREZOR Bridge" trezord
 }
 
 post_install() {
@@ -27,4 +21,9 @@ post_upgrade() {
 pre_remove() {
     systemctl stop trezord.service
     systemctl disable trezord.service
+}
+
+post_remove() {
+    getent passwd trezord >/dev/null && userdel trezord
+    getent group trezord >/dev/null && groupdel trezord
 }
