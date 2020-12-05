@@ -1,13 +1,14 @@
 pkgbase = qqmusic-bin
 	pkgdesc = tencent qq music
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://y.qq.com/
 	arch = x86_64
 	license = CC0-1.0
 	depends = nss
 	depends = libxss
 	depends = gtk3
+	provides = qqmusic
 	source = qqmusic_1.0.5_amd64.deb::http://dldir1.qq.com/music/clntupate/linux/deb/qqmusic_1.0.5_amd64.deb
 	sha512sums = af5034d68807d50744157d239df07dd41bb2ce2e3045f05363956bc36aefda266cc99d85133eac2b33432666a9a71b43a531d88d7e12291b1a6f70bdc84287da
 
