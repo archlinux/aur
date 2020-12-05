@@ -1,0 +1,18 @@
+pkgbase = dynfwd
+	pkgdesc = An unofficial secure and minimalistic DynFW client for Turris:Sentinel by CZ.NIC
+	pkgver = git
+	pkgrel = 0
+	url = https://github.com/petrkutalek/dynfwd
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = MIT
+	makedepends = git
+	depends = ipset
+	depends = zeromq
+	depends = msgpack-c
+	source = dynfwd::git+https://github.com/petrkutalek/dynfwd.git
+	sha256sums = SKIP
+
+pkgname = dynfwd
+
