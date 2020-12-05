@@ -4,7 +4,7 @@
 _name=NBT
 pkgname=python-${_name,,}
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Named Binary Tag Reader/Writer"
 url="https://github.com/twoolie/$_name"
 depends=('python')
