@@ -5,6 +5,7 @@ pkgbase = jfetch-git
 	url = https://github.com/Jimmysit0/jfetch
 	arch = any
 	license = MIT
+	makedepends = make
 	provides = jfetch
 	source = jfetch-git::git+https://github.com/Jimmysit0/jfetch.git
 	source = https://raw.githubusercontent.com/Jimmysit0/jfetch/master/LICENSE
