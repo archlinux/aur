@@ -1,4 +1,5 @@
 # Maintainer: pryme-svg <edoc.www@gmail.com>
+
 pkgname=jfetch-git
 pkgver=r49.d7f0b60
 pkgrel=1
@@ -9,10 +10,10 @@ license=('MIT')
 depends=()
 makedepends=()
 optdepends=()
-provides=()
+provides=('jfetch')
 conflicts=()
-source=("$pkgname::git+https://github.com/Jimmysit0/jfetch.git"
-	"https://raw.githubusercontent.com/Jimmysit0/jfetch/master/LICENSE")
+source=('$pkgname::git+https://github.com/Jimmysit0/jfetch.git'
+	'https://raw.githubusercontent.com/Jimmysit0/jfetch/master/LICENSE')
 md5sums=('SKIP'
          '12786834660fb952a20bbdd479e264bc')
 
