@@ -1,14 +1,14 @@
-# Maintainer: Marko Korhonen <marko dot korhonen at reekynet dot com>
+# Maintainer: Marko Korhonen <aur@marko.korhonen.cc>
 
 pkgname=fzf-pass
 pkgver=0.1
 pkgrel=1
 pkgdesc="FZF frontend for pass written in bash"
 arch=('any')
-url='https://git.reekynet.com/ReekyMarko/fzf-pass'
+url='https://github.com/FunctionalHacker/fzf-pass'
 license=('GPL')
 depends=('fzf' 'pass' 'ydotool')
-source=('https://gitlab.com/ReekyMarko/fzf-pass/raw/2533521513b12b1db07bc37cc9087a3e76eb624b/fzf-pass')
+source=('https://gitlab.com/FunctionalHacker/fzf-pass/raw/2533521513b12b1db07bc37cc9087a3e76eb624b/fzf-pass')
 
 package() {
 	install -Dm755 fzf-pass ${pkgdir}/usr/bin/fzf-pass
