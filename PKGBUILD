@@ -28,19 +28,19 @@ package() {
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Install JAR to canonical location
-    install -Dm644 "$srcdir/$pkgname-$pkgver-J8-jar-with-dependencies.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
-    
+    install -Dm755 "$srcdir/$pkgname-$pkgver-J8-jar-with-dependencies.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+
     # Install logo to canonical location
     install -Dm644 "$srcdir/icons/logo.png" "$pkgdir/usr/share/pixmaps/recaf.png"
-    
+
     # Build exec script
     printf '#!/usr/bin/env bash\nexec java -cp "/usr/lib/jvm/default-runtime/lib/*:/usr/share/java/%s/%s.jar" "me.coley.recaf.Recaf" "$@"' "$pkgname" "$pkgname" > "$srcdir/recaf"
-    
+
     # Write .desktop file
     printf "[Desktop Entry]\nType=Application\nVersion=1.0\nName=Recaf\nComment=%s\nPath=/usr/bin\nExec=recaf %%u\nIcon=recaf\nTerminal=false\nCategories=Development;Java" "$pkgdesc" > "$srcdir/recaf.desktop"
 
     # Install exec script to canonical location
-    install -Dm644 "$srcdir/recaf" "$pkgdir/usr/bin/recaf"
+    install -Dm755 "$srcdir/recaf" "$pkgdir/usr/bin/recaf"
 
     # Install .desktop to canonical location
     install -Dm644 "$srcdir/recaf.desktop" "$pkgdir/usr/share/applications/recaf.desktop"
