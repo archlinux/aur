@@ -6,7 +6,7 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=0.117.6
+pkgver=0.118.5
 pkgrel=1
 arch=(any)
 url=https://home-assistant.io/
@@ -22,7 +22,10 @@ depends=(
   python-certifi
   python-ciso8601
   python-cryptography
+  python-defusedxml
+  python-httpx
   python-jinja
+  python-mutagen
   python-pillow
   python-pip
   python-pyjwt
@@ -35,6 +38,7 @@ depends=(
   python-voluptuous-serialize
   python-yaml
   python-yarl
+  python-zeroconf
 )
 makedepends=(
   git
@@ -46,7 +50,7 @@ optdepends=(
   'python-dtlssocket: Ikea Tradfri integration'
   'python-lxml: Meteo France integration'
 )
-_tag=7c783dc1b45ca63f071da9d3fc97d85b1b7039b7
+_tag=7130b7a4b7d876151d2edc55e83486b84f017ebf
 source=(
   git+https://github.com/home-assistant/home-assistant.git#tag=${_tag}
   home-assistant.service
@@ -54,7 +58,7 @@ source=(
 )
 b2sums=('SKIP'
         '0df7bbfdac09e37294ac27567e677855c72d13be3aefbd23e0a8f101cf2148302affbe9b6b586b893f77fc990f665d7b95f4916583680c06abd8f74b5cdf3da9'
-        'b8b13879e6db3f512aa3e2f86b485fe2ed55a2940b7f62d8cbcc706f05768585836f7c6496e5db30b0a6782e5842629f92d310872114795e4aa446d2da300eec')
+        'e2e4c8f4c20932d6f10812ed06a30234de8c6c9b364c8ea98976d1b7546256d7917a2d4649da3c9880f7e542ec161f91295f11cd15f77f21100822aacb9b0753')
 
 pkgver() {
   cd home-assistant
