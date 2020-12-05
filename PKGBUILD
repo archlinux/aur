@@ -2,7 +2,7 @@
 _pkgname=marshmallow-polyfield
 pkgname=python-${_pkgname}
 pkgver=5.9
-pkgrel=1
+pkgrel=2
 pkgdesc="An extension to marshmallow to allow for polymorphic fields"
 arch=('x86_64')
 url="https://github.com/Bachmann1234/marshmallow-polyfield"
