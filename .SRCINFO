@@ -1,13 +1,13 @@
 pkgbase = deepin.com.dingtalk.com
 	pkgdesc = DingTalk Client on Deepin Wine
 	pkgver = 5.1.28.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zhullyb/deepin.com.dingtalk.com
 	install = .INSTALL
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = deepin-wine
+	depends = deepin-wine5
 	depends = wqy-microhei
 	source = https://github.com/zhullyb/deepin.com.dingtalk.com/releases/download/v5.1.28.12/deepin.com.dingtalk.com_5.1.28.12_i386.deb
 	md5sums = 491e2c6229575bc9170450d497d41896

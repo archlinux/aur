@@ -2,23 +2,12 @@
 
 post_install() {
 sed "15a\export LC_CTYPE='zh_CN.UTF-8'" -i /opt/deepinwine/apps/Deepin-DingTalk/run.sh
-sed '16a\if [ ! -e /$HOME/.deepinwine/Deepin-Dingtalk/drive_c/windows/Fonts/wqy-microhei.ttc ]\nthen\n    ln -sf /usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc /$HOME/.deepinwine/Deepin-DingTalk/drive_c/windows/Fonts/wqy-microhei.ttc\nfi\n' -i /opt/deepinwine/apps/Deepin-DingTalk/run.sh
-echo "*****************************************************************************************"
-echo " "
-echo "                                         WARNING                                         "
-echo "第一次打开钉钉会界面会有乱码，重新打开一次即可"
-echo "如果遇到图标消失（不显示），请在钉钉的设置中打开SVG支持"
-echo " "
-echo "*****************************************************************************************"
+sed -i "s|deepin-wine|deepin-wine5|g" /opt/deepinwine/apps/Deepin-DingTalk/run.sh
 }
 
 post_upgrade() {
-echo "*****************************************************************************************"
-echo " "
-echo "注：如果遇到图标变成口，请在钉钉的设置中打开SVG支持"
-echo "Note: If the icon becomes garbled, please turn on SVG support in the settings of dingtalk"
-echo " "
-echo "*****************************************************************************************"
+sed "15a\export LC_CTYPE='zh_CN.UTF-8'" -i /opt/deepinwine/apps/Deepin-DingTalk/run.sh
+sed -i "s|deepin-wine|deepin-wine5|g" /opt/deepinwine/apps/Deepin-DingTalk/run.sh
 }
 
 pre_remove() {
