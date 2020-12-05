@@ -3,7 +3,7 @@
 
 _pkgname="lua-language-server"
 pkgname="$_pkgname-git"
-pkgver=r3167.37f95b72
+pkgver=r3202.a5895f62
 pkgrel=1
 license=('MIT')
 pkgdesc='Lua Language Server coded by Lua'
@@ -18,8 +18,8 @@ source=(
   'wrapper'
 )
 sha256sums=('SKIP'
-            'b1e0a2430e34e5660f8ff9cddac06932ac8213abaab5f62b9743b215825e1122'
-            '2598a43cae9b3fdb47012a74b460c1b4a1addf48d31bf2bad918b11a1992ca0e'
+            '5e550ec01b72a16ef38a0d663845a0a9903c7435c88875b72199cd5fbaa480fb'
+            '0378933707eae0542322c7ed81b98728727b47988b7bee1ad76a9459e3f3269f'
             '6135c5424e5b87146aabf47651d3c95b6038865f26f25a8fce3a1ecd8c8f31fa')
 
 pkgver() {
@@ -55,7 +55,7 @@ package() {
 
   cp -a \
     main.lua platform.lua debugger.lua \
-    locale script \
+    locale script meta \
     "${pkgdir}/usr/share/${_pkgname}"
 
   install -Dm0755 ../wrapper "${pkgdir}/usr/bin/${_pkgname}"
