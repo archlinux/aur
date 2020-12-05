@@ -1,14 +1,20 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
 
+# Uncomment to install GUI
+#install-gui=y
+
 pkgname='chia-git'
-pkgver=1.0beta17.r0.gf745601d
+pkgver=1.0beta18.r0.g7051102a
 pkgrel=1
 pkgdesc="A new blockchain and smart transaction platform that is easier to use, more efficient, and secure."
 arch=('x86_64' 'i686' 'pentium4' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.chia.net/"
 license=('Apache')
-depends=('git' 'python' 'npm' 'nodejs')
-makedepends=('bc' 'lsb-release')
+depends=('git' 'python')
+if [ -n "$install-gui" ]; then
+    depends+=('git' 'python' 'npm' 'nodejs')
+fi
+makedepends=('cmake')
 options=('!strip')
 source=("git+https://github.com/Chia-Network/chia-blockchain.git"
         "chia-gui.desktop"
@@ -22,15 +28,6 @@ pkgver() {
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-	read -r -p "Install Electron GUI? [y/N]" input
-	case $input in
-	[yY][eE][sS]|[yY])
-	echo "1" > "$srcdir"/gui.choice
-	;;
-	esac
-}
-
 build() {
 	cd chia-blockchain 
 	python3 -m venv venv
@@ -40,7 +37,7 @@ build() {
 	pip install wheel
 	pip install --extra-index-url https://download.chia.net/simple/ miniupnpc==2.1 setproctitle==1.1.10 cbor2==5.1.2
 	pip install -e .
-	if [[ "$(< "$srcdir"/gui.choice)" == "1" ]]; then
+	if [ -n "$install-gui" ]; then
 	    cd electron-react
 	    npm install
 	    npm audit fix
@@ -49,7 +46,7 @@ build() {
 }
 
 package() {
-	if [[ "$(< "$srcdir"/gui.choice)" == "1" ]]; then
+	if [ -n "$install-gui" ]; then
 	    install -Dm644 chia-blockchain/electron-react/src/assets/img/circle-cropped.png "$pkgdir"/usr/share/pixmaps/chia.png
 	    install -Dm755 chia-gui.sh "$pkgdir"/usr/bin/chia-gui
 	    install -Dm644 chia-gui.desktop "$pkgdir"/usr/share/applications/chia-gui.desktop
