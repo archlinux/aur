@@ -1,8 +1,8 @@
 # Mantainer: Fabrizio Pietrucci <bamlessnty5@gmail.com>
 
 pkgname=jstar
-pkgver=1.4
-pkgrel=1
+pkgver=1.4.1
+pkgrel=0
 pkgdesc="A Lightweight Embeddable Scripting Language"
 arch=('i686' 'x86_64')
 url="https://github.com/bamless/jstar"
