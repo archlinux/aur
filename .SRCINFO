@@ -1,7 +1,7 @@
 pkgbase = direnv-bin
 	pkgdesc = a shell extension that manages your environment
 	pkgver = 2.25.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://direnv.net
 	arch = aarch64
 	arch = i686
