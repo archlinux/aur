@@ -48,5 +48,5 @@ pkgname = qubes-vm-pulseaudio
 	depends = alsa-lib
 	depends = alsa-utils
 	depends = pulseaudio-alsa
-	depends = pulseaudio<14.0
+	depends = pulseaudio<14.1
 

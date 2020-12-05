@@ -77,7 +77,7 @@ package_qubes-vm-pulseaudio() {
   depends=('alsa-lib'
            'alsa-utils'
            'pulseaudio-alsa'
-           'pulseaudio<14.0'
+           'pulseaudio<14.1'
   )
   install=PKGBUILD-pulseaudio.install
 
