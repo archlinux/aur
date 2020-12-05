@@ -1,4 +1,4 @@
-#!/usr/hint/bash
+#!/hint/bash
 # Maintainer  : bartus <arch-user-repo(at)bartus.33mail.com>
 # Contributor : Johannes Sauer <joh.sauer(at)gmail(dot)com>
 # Contributor : Danilo Bargen <aur at dbrgn dot ch>
@@ -6,8 +6,8 @@
 # shellcheck disable=SC2034,SC2154 # allow unused/uninitialized variables.
 
 name=cloudcompare
-pkgname=${name}
 _fragment="#tag=v2.11.3"
+pkgname=${name}
 pkgver="${_fragment###tag=v}"
 pkgrel=2
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
@@ -23,7 +23,8 @@ source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git${_fragmen
         cork.patch
         pcl.patch
         CloudCompare.desktop
-        ccViewer.desktop)
+        ccViewer.desktop
+        )
 sha256sums=('SKIP'
             'SKIP'
             '984e6186f6483534a52cb153b65dee016904eb9efdb89211c2c0042eea2417ff'
@@ -36,10 +37,6 @@ prepare() {
   git -C "${srcdir}/${name}" submodule update --init --recursive
   git -C "${srcdir}/${name}" apply -v "${srcdir}"/{constexpr,pcl}.patch
   git -C "${srcdir}/${name}-cork" apply -v "${srcdir}"/cork.patch
-}
-
-pkgver() {
-  git -C "${srcdir}/${name}" describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
@@ -97,7 +94,7 @@ build() {
         -DEIGEN_ROOT_DIR=/usr/include/eigen3
   )
   msg2 "Build Cork lib"
-  (cd "${srcdir}/${name}-cork"; make)
+  make -C "${srcdir}/${name}-cork"
   msg2 "Build CloudCompare"
   cmake -B build -S "${srcdir}/${name}" -G Ninja "${CMAKE_FLAGS[@]}" -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-deprecated-declarations"
 # shellcheck disable=SC2086 # allow slitting for MAKEFLAGS carrying multiple flags.
