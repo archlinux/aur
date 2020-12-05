@@ -3,7 +3,7 @@
 _name='django-ranged-response'
 pkgname="python-$_name"
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Django ranged response'
 arch=('any')
 url="https://pypi.org/project/$_name"
