@@ -2,7 +2,7 @@
 _pkgname=multitasking
 pkgname=python-multitasking
 pkgver=0.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Non-blocking Python methods using decorators"
 arch=('x86_64')
 url="https://github.com/ranaroussi/multitasking"
