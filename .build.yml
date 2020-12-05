@@ -27,4 +27,4 @@ tasks:
 triggers:
   - action: email
     condition: always
-    to: Nate Ijams <nate@ijams.tk>
+    to: Nate Ijams <nate@ijams.me>
