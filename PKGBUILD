@@ -56,10 +56,12 @@ pkgver() {
 
 prepare() {
   cd FreeCAD
-  # fix a build error
+  # patch out a build error
   #curl -L "https://github.com/FreeCAD/FreeCAD/pull/2842/commits/095984fce44931a4c8e2ace269d45a62640fbfb4.patch" | patch -p1
 
-  # OpenCascade requires that /bin comes before /usr/bin in $PATH  export PATH="/usr/bin:$PATH"
+  # OpenCascade requires that /bin comes before /usr/bin in $PATH
+  export PATH="/usr/bin:$PATH"
+  
   mkdir -p build
   cd build
   cmake -Wno-dev .. \
