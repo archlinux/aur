@@ -1,38 +1,40 @@
-# Maintainer: etcusrvar <etcusrvar at gmail dot com>
-# shellcheck shell=bash
-# shellcheck disable=SC2034
+# Maintainer: etcusrvar <e t c u s r v a r at gmail dot com>
+# shellcheck shell=bash disable=SC2034
 
 pkgname=xdgize-git
-_="${pkgdir:-}"
-_="${srcdir:-}"
 _pkgname="${pkgname%-git}"
+pkgdesc='Generates wrapper/shim shell scripts around external commands to "XDG"-ize them'
+pkgver=0.1.1.r0.g9a8a4f4
+pkgrel=1
+url="https://github.com/etcusrvar/${_pkgname}"
 arch=('any')
-backup=()
-conflicts=("$_pkgname")
-depends=('bash' 'which')
-groups=()
-install=
-license=()
+license=('Unlicense')
 makedepends=('git')
-md5sums=('SKIP')
-noextract=()
-options=()
-pkgdesc='A tool that generates minimal wrapper/shim shell scripts around external commands to "XDG"-ize them.'
-pkgrel=3
-pkgver=0.1.r0.g921d8cf
+depends=('bash')
 provides=("$_pkgname")
-replaces=()
-source=("git+https://github.com/etcusrvar/$_pkgname.git")
-url="https://github.com/etcusrvar/$_pkgname"
+conflicts=("$_pkgname")
+source=("${pkgname}::git+${url}.git")
+sha256sums=('SKIP')
+_="${pkgdir:-}"
 
 package() {
-	cd "$srcdir/$_pkgname" || exit
-	install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-	mkdir -p "$pkgdir/etc/$_pkgname"
-	cp -r rules.d "$pkgdir/etc/$_pkgname"
+
+  cd "$pkgname" || exit
+
+  install -Dm755 "$_pkgname" "${pkgdir}/usr/bin/${_pkgname}"
+
+  for f in rules.d/*; do
+    install -Dm644 "$f" "${pkgdir}/etc/${_pkgname}/$f"
+    [[ -L "$f" ]] && cp -df "$f" "${pkgdir}/etc/${_pkgname}/$f"
+  done
+
+  install -Dm644 UNLICENSE "${pkgdir}/usr/share/licenses/${pkgname}/UNLICENSE"
+
 }
 
 pkgver() {
-	cd "$srcdir/$_pkgname" || exit
-	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+  cd "$pkgname" || exit
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
+# vim:set ts=2 sw=2 et:
