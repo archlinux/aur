@@ -1,6 +1,6 @@
 pkgbase = java-openjfx-ea-bin
 	pkgdesc = Java OpenJFX 16 Early-Access Build.
-	pkgver = 16rc3
+	pkgver = 16rc5
 	pkgrel = 1
 	url = https://openjfx.io/
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = java-openjfx-ea-bin
 	depends = qt5-base
 	provides = java-openjfx=16
 	conflicts = java16-openjfx
-	source = https://download2.gluonhq.com/openjfx/16/openjfx-16-ea+3_linux-x64_bin-sdk.zip
-	source = https://download2.gluonhq.com/openjfx/16/openjfx-16-ea+3_linux-x64_bin-jmods.zip
-	source = https://download2.gluonhq.com/openjfx/16/openjfx-16-ea+3-javadoc.zip
-	sha256sums = 24f1c14bc64514a52143910522746209ece07b207e0a30525502c99e70a34c7d
-	sha256sums = b89aa1be0c3d15f3cbde778af444245376cabb4ce1037b7f7e1c9fc8155cce60
-	sha256sums = f5606a9d5c81d36c58f4f482b4fcde6e63c5729df4397dbc0e3d48147357e2a7
+	source = https://download2.gluonhq.com/openjfx/16/openjfx-16-ea+5_linux-x64_bin-sdk.zip
+	source = https://download2.gluonhq.com/openjfx/16/openjfx-16-ea+5_linux-x64_bin-jmods.zip
+	source = https://download2.gluonhq.com/openjfx/16/openjfx-16-ea+5-javadoc.zip
+	sha256sums = 36351fd08d41f19da70b552a49e32a09d850c9a2e0bc024bdcf0fa545af38773
+	sha256sums = e908678761df9b66b165d2eb8d89206bb2b0186fccaa6fbbdd0a7267aa270c22
+	sha256sums = 5986f0d33568e4aab27fcd1fc477260fd90e2213a27de7f158a1572aca1762f7
 
 pkgname = java-openjfx-ea-bin
 
