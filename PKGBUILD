@@ -2,7 +2,7 @@
 
 pkgname=python-django-constance
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Dynamic Django settings'
 arch=('any')
 url='https://github.com/jazzband/django-constance'
