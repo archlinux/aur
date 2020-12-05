@@ -20,8 +20,8 @@ source=(
   "https://download-ib01.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/e/edk2-aarch64-${pkgver}stable-${pkgrel}.fc${fedora_ver}.noarch.rpm"
   "https://download-ib01.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/e/edk2-arm-${pkgver}stable-${pkgrel}.fc${fedora_ver}.noarch.rpm")
 
-sha256sums=('0da4f919cdaede39119ff2ee98888d8e2d7723d18920250b5e3ecb7822913bb4'
-            '2189bc4833fbb2f93e4e08c8602483d79f46f3bb08749e1a0610e4ed236ba5f9')
+sha256sums=('dd133986ccd15b2a55d5ecdc55bb82ba48d0cb3b4b9cbc098f7dd9bda802c089'
+            '854d1e912e97061ccecda9331ca4ad2b633cab7f63bf80b9c99b20d6499a1cd2')
 
 install=${pkgname}.install
 
