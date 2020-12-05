@@ -19,7 +19,7 @@
 
 pkgname=setools
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Policy analysis tools for SELinux"
 groups=('selinux')
 arch=('i686' 'x86_64')
@@ -32,8 +32,17 @@ makedepends=('cython' 'python-tox')
 checkdepends=('checkpolicy')
 conflicts=("selinux-${pkgname}")
 provides=("selinux-${pkgname}=${pkgver}-${pkgrel}")
-source=("https://github.com/SELinuxProject/setools/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('315df3ae0eb29b399123c5e3330480c5d1c0da038671c9fd62a439c49a6f9105')
+source=("https://github.com/SELinuxProject/setools/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
+        '0001-Disable-deprecated-function-warnings-to-fix-build-wi.patch')
+sha256sums=('315df3ae0eb29b399123c5e3330480c5d1c0da038671c9fd62a439c49a6f9105'
+            '95973be9faf3380986b0cf5969b9e28d1ba4d8eea7d78e24786c49871977cd40')
+
+prepare() {
+  cd "${pkgname}"
+  # Fix compatibility issues with Cython 0.29.21 and Python 3.9
+  # https://github.com/SELinuxProject/setools/issues/54
+  patch -Np1 -i ../0001-Disable-deprecated-function-warnings-to-fix-build-wi.patch
+}
 
 build() {
   cd "${pkgname}"

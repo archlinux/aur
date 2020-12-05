@@ -1,7 +1,7 @@
 pkgbase = setools
 	pkgdesc = Policy analysis tools for SELinux
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SELinuxProject/setools/wiki
 	arch = i686
 	arch = x86_64
@@ -18,10 +18,12 @@ pkgbase = setools
 	depends = python-setuptools
 	optdepends = python-pyqt5: needed for graphical tools
 	optdepends = qt5-tools: display apol help with Qt Assistant
-	provides = selinux-setools=4.3.0-1
+	provides = selinux-setools=4.3.0-2
 	conflicts = selinux-setools
 	source = https://github.com/SELinuxProject/setools/releases/download/4.3.0/setools-4.3.0.tar.bz2
+	source = 0001-Disable-deprecated-function-warnings-to-fix-build-wi.patch
 	sha256sums = 315df3ae0eb29b399123c5e3330480c5d1c0da038671c9fd62a439c49a6f9105
+	sha256sums = 95973be9faf3380986b0cf5969b9e28d1ba4d8eea7d78e24786c49871977cd40
 
 pkgname = setools
 
