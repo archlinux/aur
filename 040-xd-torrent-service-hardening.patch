@@ -1,0 +1,34 @@
+--- a/contrib/systemd/xd.service
++++ b/contrib/systemd/xd.service
+@@ -9,5 +9,31 @@ WorkingDirectory=/var/lib/xd
+ ExecStart=/usr/bin/XD /var/lib/xd/xd.conf
+ Restart=on-failure
+ 
++# hardening options
++PrivateTmp=true
++ProtectSystem=strict
++ProtectHome=true
++PrivateDevices=true
++ProtectKernelTunables=true
++ProtectControlGroups=true
++NoNewPrivileges=true
++MemoryDenyWriteExecute=true
++LockPersonality=true
++SystemCallFilter=@system-service
++RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelLogs=true
++ProtectKernelModules=true
++ProtectProc=invisible
++ProcSubset=pid
++PrivateMounts=true
++PrivateUsers=true
++ReadWritePaths=/var/lib/xd
++RemoveIPC=true
++RestrictRealtime=true
++RestrictSUIDSGID=true
++SystemCallArchitectures=native
++
+ [Install]
+ WantedBy=default.target

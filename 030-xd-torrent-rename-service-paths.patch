@@ -1,13 +1,3 @@
-commit 5ca25a52b9d4f9ae36e9603c715ed55efaa1f0f1
-Author: Daniel Bermond <danielbermond@gmail.com>
-Date:   Fri Sep 27 17:49:47 2019 +0000
-
-    systemd service: rename working directory and config file
-    
-    Signed-off-by: Daniel Bermond <danielbermond@gmail.com>
-
-diff --git a/contrib/systemd/xd.service b/contrib/systemd/xd.service
-index d47640c..58ff8e5 100644
 --- a/contrib/systemd/xd.service
 +++ b/contrib/systemd/xd.service
 @@ -1,11 +1,12 @@
