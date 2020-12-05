@@ -1,12 +1,14 @@
 # Maintainer: Kitsu mail@kitsu.me
 pkgname=yofi-git
-pkgver=0.1.0.4abf534
-pkgrel=1
+pkgver=0.1.0.5387c5f
+pkgrel=2
 pkgdesc="Minimalistic menu for Wayland-based compositors"
 arch=('i686' 'x86_64')
 url="https://github.com/l4l/yofi"
-license=('custom')
+license=('MIT')
+depends=('fontconfig' 'expat' 'graphite' 'pcre' 'wayland-protocols' 'libxkbcommon')
 makedepends=('cargo' 'git')
+provides=('yofi')
 source=("$pkgname::git+https://github.com/l4l/yofi.git")
 sha256sums=('SKIP')
 
