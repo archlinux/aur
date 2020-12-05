@@ -5,7 +5,7 @@
 pkgname=hx-git
 _pkgname=hex
 pkgver=0.4.0.r0.gb0a844a
-pkgrel=1
+pkgrel=2
 pkgdesc="Futuristic take on hexdump (git)"
 arch=('x86_64')
 url="https://github.com/sitkevij/hex"
@@ -34,6 +34,6 @@ check() {
 package() {
   cd "$_pkgname"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
