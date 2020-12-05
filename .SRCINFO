@@ -1,11 +1,11 @@
 pkgbase = kose-font
 	pkgdesc = A Chinese Font derived from SetoFont / Naikai Font / cjkFonts-AllSeto
-	pkgver = 3.0+0+eb548a3
+	pkgver = 3.11+0+c1a6ec8
 	pkgrel = 1
 	url = https://github.com/lxgw/kose-font
 	arch = any
 	license = custom:SIL
-	source = git+https://github.com/lxgw/kose-font.git#commit=eb548a3ae5d8a9f3c5c3f43b95d79acd54432e46
+	source = git+https://github.com/lxgw/kose-font.git#commit=c1a6ec8e3093b41bb936eeb8deb86c4a573a99a2
 	sha256sums = SKIP
 
 pkgname = kose-font

@@ -1,8 +1,8 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-_version=3.0
+_version=3.11
 _version_pkg_updates=0
-_gitcommit=eb548a3ae5d8a9f3c5c3f43b95d79acd54432e46
+_gitcommit=c1a6ec8e3093b41bb936eeb8deb86c4a573a99a2
 
 pkgname=kose-font
 pkgver="${_version}+${_version_pkg_updates}+${_gitcommit::7}"
@@ -22,8 +22,8 @@ package() {
   cd "${srcdir}/${pkgname}"
 
   install -dm755 "${pkgdir}/usr/share/fonts/${pkgname}"
-  install -Dm644 TTF\ \(Simplified\ Chinese\)/Xiaolai-SC.ttf "${pkgdir}/usr/share/fonts/${pkgname}/Xiaolai-SC.ttf"
-  install -Dm644 TTF\ \(Simplified\ Chinese\)/XiaolaiP-SC.ttf "${pkgdir}/usr/share/fonts/${pkgname}/XiaolaiP-SC.ttf"
+  install -Dm644 TTF\ \(Simplified\ Chinese\)/XiaolaiSC-Regular.ttf "${pkgdir}/usr/share/fonts/${pkgname}/XiaolaiSC-Regular.ttf"
+  install -Dm644 TTF\ \(Simplified\ Chinese\)/XiaolaiMonoSC-Regular.ttf "${pkgdir}/usr/share/fonts/${pkgname}/XiaolaiMonoSC-Regular.ttf"
   install -Dm644 TTF\ \(Japanese\)/Kosefont-JP.ttf "${pkgdir}/usr/share/fonts/${pkgname}/Kosefont-JP.ttf"
   install -Dm644 TTF\ \(Japanese\)/KosefontP-JP.ttf "${pkgdir}/usr/share/fonts/${pkgname}/KosefontP-JP.ttf"
 
