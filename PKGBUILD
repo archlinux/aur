@@ -1,7 +1,7 @@
 # Maintainer: Groctel <aur@taxorubio.com>
 pkgname=manimce
 pkgver=0.1.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Animation engine for explanatory math videos (community edition)."
 arch=('any')
 url="https://github.com/ManimCommunity/manim/"
