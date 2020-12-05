@@ -14,9 +14,12 @@ makedepends=('git' gnome-{common,menus} lib{dbusmenu-gtk3,granite.so} 'meson' 'v
 conflicts=('plank')
 provides=('plank')
 source=('pantheon-dock::git+https://github.com/elementary/dock'
-        'instance-controls.patch')
+        'instance-controls.patch'
+        'ellipsize-long-window-names.patch')
+
 sha256sums=('SKIP'
-            '8aef381cd636d8c958e5d29ce1b053fa3ef8f961768654c34fd80939b96b3fc3')
+            '8aef381cd636d8c958e5d29ce1b053fa3ef8f961768654c34fd80939b96b3fc3'
+            'd6a94877f50f57d67de47358c996f0ee27f0e69d1eb013317f2759dbb4cdeeb9')
 
 pkgver() {
   cd pantheon-dock
@@ -27,7 +30,11 @@ pkgver() {
 prepare() {
   cd pantheon-dock
 
+  # https://github.com/elementary/dock/pull/73
   patch -Np1 < ../instance-controls.patch
+
+  # https://github.com/elementary/dock/pull/19
+  patch -Np1 < ../ellipsize-long-window-names.patch
 }
 
 build() {
@@ -39,3 +46,4 @@ package() {
 }
 
 # vim: ts=2 sw=2 et:
+
