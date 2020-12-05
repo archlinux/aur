@@ -1,4 +1,4 @@
-# Maintainer: scpketer <scpketer@protonmail.ch>
+# Maintainer: dreamscached <dreamscache.d@gmail.com>
 pkgname=recaf
 pkgver=2.13.1
 pkgrel=1
