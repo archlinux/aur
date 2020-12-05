@@ -5,8 +5,8 @@
 # Contributor: Vladimir Kirillov <proger@wilab.org.ua>
 
 pkgname=lib32-libpgm
-pkgver=5.2.122
-pkgrel=5
+pkgver=5.3.128
+pkgrel=1
 pkgdesc='An implementation of the PGM reliable multicast protocol'
 arch=('x86_64')
 url='https://github.com/steve-o/openpgm'
@@ -15,10 +15,11 @@ depends=('lib32-glibc' 'libpgm')
 makedepends=('cmake' 'gcc-multilib' 'python2')
 options=('!strip')
 source=("libpgm-${pkgver}.tar.gz::https://github.com/steve-o/openpgm/archive/release-${pkgver//./-}.tar.gz")
-sha256sums=('acc1545fd8060aa66b17327110e2859e451cfc685ebd3b2211619728e3471b66')
+sha256sums=('8d707ef8dda45f4a7bc91016d7f2fed6a418637185d76c7ab30b306499c6d393')
 
 prepare() {
   cd openpgm-release-${pkgver//./-}/openpgm/pgm
+  cp openpgm-5.2.pc.in openpgm-5.3.pc.in
 
   find . -type f -exec sed -i 's/python/python2/g' {} +
   autoreconf -fiv
