@@ -1,7 +1,7 @@
 # Maintainer: levyd
 
 pkgname=gloomhaven-helper
-pkgver=8.4.7
+pkgver=8.4.8
 pkgrel=1
 pkgdesc="Gloomhaven Helper is the officially licensed companion application for playing the Gloomhaven board game."
 arch=('any')
@@ -10,7 +10,7 @@ license=('unknown')
 depends=('java-runtime>=8' 'bash') 
 source=(http://esotericsoftware.com/files/ghh/GloomhavenHelper-${pkgver}.zip
 gloomhaven-helper.sh)
-sha256sums=('acb4ba170f67adc9b08ca04819c7baaf5147fb9579c08a66686750b2dda24cac'
+sha256sums=('b35bf9d5ac7acea2437bb1cafb6516ce9d4988fc8f06077cd0323bd3e666ab21'
             '3e2c22d22ef2056be278906554900d1fa9c6b7a07f3ee75a5120cfe55463b28c')
 package() {
   install -d "$pkgdir/usr/share/java/$pkgname"
