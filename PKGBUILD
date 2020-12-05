@@ -7,6 +7,7 @@ arch=("any")
 url="http://www.openhab.org/"
 license=("EPL")
 depends=("java-runtime-headless=11" "archlinux-java-run")
+optdepends=("openhab3-addons: add-on archives for offline use")
 
 conflicts=("openhab3-snapshot")
 
