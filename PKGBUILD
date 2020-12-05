@@ -1,4 +1,4 @@
-# Maintainer: Marko Korhonen <marko.korhonen@reekynet.com>
+# Maintainer: Marko Korhonen <aur@marko.korhonen.cc>
 pkgname="lqsd-bin"
 pkgdesc="LiQuid Screen Dim - Dim your screen smoothly. Precompiled binary version"
 pkgver=0.1.1
