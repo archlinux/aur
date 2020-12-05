@@ -3,7 +3,7 @@
 
 pkgname=dotter-rs-git
 _pkgname=dotter
-pkgver=0.10.3.r0.gb153239
+pkgver=0.10.5.r0.g4523eaa
 pkgrel=1
 pkgdesc="A dotfile manager and templater written in Rust (git)"
 arch=('x86_64')
@@ -33,5 +33,5 @@ check() {
 package() {
   cd "$_pkgname"
   install -Dm 755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
