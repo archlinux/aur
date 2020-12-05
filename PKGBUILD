@@ -3,7 +3,7 @@
 
 pkgname=edk2-avmf
 pkgver=20200801
-pkgrel=1
+pkgrel=2
 fedora_ver=34
 pkgdesc="QEMU ARM/AARCH64 Virtual Machine Firmware (Tianocore UEFI firmware)."
 arch=('any')
