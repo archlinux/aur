@@ -8,7 +8,7 @@
 # Contributor: Pavlo <pavlofreemen(at)gmail(dot)com>
 
 pkgname=font-manager
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc='A simple font management application for GTK+ Desktop Environments'
 url='https://fontmanager.github.io'
@@ -18,7 +18,7 @@ depends=('libsoup' 'libxml2' 'sqlite' 'json-glib' 'gtk3' 'webkit2gtk')
 optdepends=('file-roller')
 makedepends=('intltool' 'yelp-tools' 'gobject-introspection' 'vala' 'meson' 'ninja' 'libxml2')
 source=("https://github.com/FontManager/master/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('793aca6784bc8153ed19a83225b4346d4c93cb8cad7f3613598f165663bfa652')
+sha256sums=('b1f0d22cada36aa8d8508aff0bfc72af276e73acc074a28897449f5f4ed14ac6')
 
 build() {
     cd "$pkgname-$pkgver"
