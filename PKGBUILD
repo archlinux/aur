@@ -2,7 +2,7 @@
 
 pkgname=python-captcha
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A captcha library that generates audio and image CAPTCHAs.'
 arch=('any')
 url='https://github.com/lepture/captcha'
