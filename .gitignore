@@ -1,0 +1,4 @@
+/Linphone-*.AppImage
+/*.pkg.tar.zst
+/pkg
+/src
