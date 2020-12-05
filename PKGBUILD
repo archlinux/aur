@@ -2,7 +2,7 @@
 
 pkgname='python-django-statici18n'
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Django app that provides helper for generating JavaScript catalog to static files'
 arch=('any')
 url='https://github.com/zyegfryed/django-statici18n'
