@@ -2,7 +2,7 @@
 
 _pyname=pslab-python
 pkgname=python-pslab-git
-pkgver=v1.0.1.r95.g57425d0
+pkgver=v1.0.1.r134.gc7ae417
 pkgrel=1
 pkgdesc="Core library for PSlab desktop"
 arch=('any')
