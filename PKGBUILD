@@ -1,7 +1,7 @@
 # Maintainer: Joffrey <j-off@live.fr>
 
-pkgname='python-django-constance'
-pkgver=2.6.0
+pkgname=python-django-constance
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='Dynamic Django settings'
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=(
     'python-redis: Redis support'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('c68091e74475cbfb2d67adeebe8cc028b04cf37588c4993c0972df63b8b507dd')
+sha256sums=('5de358f764f1dd99771d97a20b3e4525bd7574ef24e038691e8cbf1bfb085d59')
 
 package() {
     cd "$srcdir/django-constance-$pkgver"
