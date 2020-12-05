@@ -1,0 +1,21 @@
+pkgbase = com.dzh365.deepin
+	pkgdesc = dzh365 Client on Deepin Wine5
+	pkgver = 8.31.00.18788.47
+	pkgrel = 0
+	url = http://www.gw.com.cn/
+	install = dzh365.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine5-stable>=5.0.0.15
+	depends = deepin-wine-helper
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.dzh365.deepin/com.dzh365.deepin_8.31.00.18788.47deepin0_i386.deb
+	sha512sums = 2a1ceb07a2db90d679646d54399852b524769d497dd53558d4bc5c5dae04ce4e399c400eaa26363fdb449859cc831b00bf4c180c11ede39a0f7a499427142658
+
+pkgname = com.dzh365.deepin
