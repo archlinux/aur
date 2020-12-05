@@ -2,15 +2,15 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=ali
-pkgver=0.5.3
-pkgrel=2
+pkgver=0.5.4
+pkgrel=1
 pkgdesc="Generate HTTP load and plot the results in real-time"
 arch=('x86_64')
 url="https://github.com/nakabonne/ali"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('0dbac3c655f5dc93ba6774e5c1acaf7b972a91c550265539a7a55772349b00e7a38744c8775f4691e5dc1fe6c4ff90eb1ae968f2ba24581d3af0d6ace3f20c1f')
+sha512sums=('f955ba0d434207df1ce02286fa143fd1af69fdfecbbaee49e2794143d5ad463e9fb8ea66deee9601ccab52226097efa3b3dfc29104972024c6d63db76f08d0e6')
 
 build() {
   cd "$pkgname-$pkgver"
