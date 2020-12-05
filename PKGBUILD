@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-cpu-opt
-pkgver=5.9.6.arch1
+pkgver=5.9.11.arch2
 pkgrel=1
 pkgdesc='Linux (with CPU optimizations patch)'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -29,7 +29,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'e7d3e5a34d47d2d0850e916efcd31b6537ab917eacbb53df0e18c8596ee46839'
+            '12069536e87f1cb268ee1c833db9718535442172abe16bdd33acfd9a10d64570'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '5ab29eb64e57df83b395a29a6a4f89030d142feffbfbf73b3afc6d97a2a7fd12')
 
