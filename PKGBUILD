@@ -7,72 +7,96 @@
 name=cloudcompare
 #_fragment="#branch="
 pkgname=${name}-git
-pkgver=2.10.2.r713.g6be7d31c
+pkgver=2.10.2.r857.ga33ffe93
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
 license=('GPL2')
-depends=('cgal' 'ffmpeg' 'glew' 'glu' 'mesa' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-svg' 'vxl')
-makedepends=('cmake' 'doxygen' 'git' 'laz-perf' 'libharu' 'ninja' 'pcl' 'proj' 'python')
+depends=('cgal' 'dlib' 'fbx-sdk' 'ffmpeg' 'glew' 'glu' 'mesa' 'mpir' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-svg' 'shapelib' 'tbb' 'vxl')
+makedepends=('clang' 'cmake' 'doxygen' 'git' 'laz-perf' 'libharu' 'ninja' 'pcl' 'proj' 'python')
 optdepends=('pcl')
 conflicts=('cloudcompare')
 provides=('cloudcompare')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git${_fragment}"
+        "${name}-cork::git+https://github.com/CloudCompare/cork.git"
+        cork.patch
         CloudCompare.desktop
         ccViewer.desktop
         )
-md5sums=('SKIP'
-         '379e09f6996b2b397429c0661c409bd0'
-         'b6dcb0dee15cc67011166a2fc774c5ef')
+sha256sums=('SKIP'
+            'SKIP'
+            '3f8692fbff2b92ebf422f2c4de46f2f9164cd37879092c66f171b32fea464227'
+            '14096df9cf7aca3099d5df1585d1cf669544e9b10754dce3d2507100dd7034fe'
+            '821ac2540e1196774e26f8033946ce7b36223dae7a2a7c78f4a901b4177f68cc')
 
 prepare() {
-  git -C ${name} submodule update --init --recursive
+  git -C "${srcdir}/${name}" submodule update --init --recursive
+  git -C "${srcdir}/${name}-cork" apply -v "${srcdir}"/cork.patch
 }
 
 pkgver() {
-  git -C ${name} describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git -C "${srcdir}/${name}" describe --long --tag | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
 # shellcheck disable=SC2191
   CMAKE_FLAGS=(
-        -Wno-dev \
-        -DCMAKE_CXX_STANDARD=14 \
-        -DCMAKE_CXX_FLAGS=-fpermissive \
-        -DOPTION_PDAL_LAS=ON \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DINSTALL_QRANSAC_SD_PLUGIN=ON \
-        -DINSTALL_QCOMPASS_PLUGIN=ON \
-        -DINSTALL_QPCL_PLUGIN=ON \
-        -DINSTALL_QBLUR_PLUGIN=ON \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCOMPILE_CC_CORE_LIB_WITH_CGAL=ON \
-        -DINSTALL_QHPR_PLUGIN=ON \
-        -DINSTALL_QPOISSON_RECON_PLUGIN=ON \
-        -DPOISSON_RECON_WITH_OPEN_MP=ON \
-        -DINSTALL_QEDL_PLUGIN=ON \
-        -DINSTALL_QSRA_PLUGIN=ON \
-        -DOPTION_USE_GDAL=ON \
-        -DOPTION_USE_DXF_LIB=ON \
-        -DINSTALL_QSSAO_PLUGIN=ON \
-        -DINSTALL_QGMMREG_PLUGIN=ON \
-        -DINSTALL_QANIMATION_PLUGIN=ON \
-        -DINSTALL_QCSF_PLUGIN=ON \
-        -DINSTALL_QPHOTOSCAN_IO_PLUGIN=ON \
-        -DWITH_FFMPEG_SUPPORT=ON \
-        -DFFMPEG_INCLUDE_DIR=/usr/include \
-        -DFFMPEG_LIBRARY_DIR=/usr/lib/ \
-        -DINSTALL_QFACETS_PLUGIN=ON \
-        -DOPTION_USE_SHAPE_LIB=ON \
-        -DINSTALL_QPCV_PLUGIN=ON \
-        -DINSTALL_QM3C2_PLUGIN=ON \
-        -DINSTALL_QBROOM_PLUGIN=true \
-        -DINSTALL_QHOUGH_NORMALS_PLUGIN=true \
-        -DEIGEN_ROOT_DIR=/usr/include/eigen3 
+        -Wno-dev
+        -DCMAKE_CXX_STANDARD=14
+        -DCMAKE_CXX_FLAGS=-fpermissive
+        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_LIBDIR=lib
+        -DCMAKE_BUILD_TYPE=Release
+        -DCOMPILE_CC_CORE_LIB_WITH_CGAL=ON
+        -DCOMPILE_CC_CORE_LIB_WITH_TBB=ON
+        -DWITH_FFMPEG_SUPPORT:BOOL=ON
+        -DFFMPEG_INCLUDE_DIR:PATH=/usr/include
+        -DFFMPEG_LIBRARY_DIR:PATH=/usr/lib
+        -DPOISSON_RECON_WITH_OPEN_MP:BOOL=ON
+        -DPLUGIN_EXAMPLE_GL:BOOL=ON
+        -DPLUGIN_EXAMPLE_IO:BOOL=ON
+        -DPLUGIN_EXAMPLE_STANDARD:BOOL=ON
+        -DPLUGIN_GL_QEDL:BOOL=ON
+        -DPLUGIN_GL_QSSAO:BOOL=ON
+        -DPLUGIN_IO_QADDITIONAL:BOOL=ON
+        -DPLUGIN_IO_QCORE:BOOL=ON
+        -DPLUGIN_IO_QCSV_MATRIX:BOOL=ON
+        -DPLUGIN_IO_QE57:BOOL=ON
+        -DPLUGIN_IO_QFBX:BOOL=ON # requires update of AUR/fbx-sdk (https://www.autodesk.com/content/dam/autodesk/www/adn/fbx/2020-1-1/fbx202011_fbxsdk_linux.tar.gz)
+        -DFBX_SDK_INCLUDE_DIR:PATH=/usr/include
+        -DFBX_SDK_LIBRARY_FILE:FILEPATH=/usr/lib/libfbxsdk.so
+        -DPLUGIN_IO_QPDAL:BOOL=ON
+        -DPLUGIN_IO_QPHOTOSCAN:BOOL=ON
+        -DPLUGIN_IO_QRDB:BOOL=OFF # requires rdblib (package for AUR from http://www.riegl.com/products/software-packages/rdblib/)
+        -DPLUGIN_STANDARD_QANIMATION:BOOL=ON
+        -DPLUGIN_STANDARD_QBROOM:BOOL=ON
+        -DPLUGIN_STANDARD_QCANUPO:BOOL=ON # requires dlib
+        -DDLIB_ROOT:PATH="/usr" # required by qcanupo plugin
+        -DPLUGIN_STANDARD_QCOMPASS:BOOL=ON
+        -DPLUGIN_STANDARD_QCORK:BOOL=ON # require mpir, cork (cork-git is not enough)
+        -DMPIR_INCLUDE_DIR:PATH=/usr/include # required by qcork plugin
+        -DCORK_INCLUDE_DIR:PATH="${srcdir}/${name}-cork/src" # required by qcork plugin
+        -DCORK_RELEASE_LIBRARY_FILE:FILEPATH="${srcdir}/${name}-cork/lib/libcork.a" # required by qcork plugin
+        -DMPIR_RELEASE_LIBRARY_FILE:FILEPATH=/usr/lib/libmpir.so # require by qcork plugin
+        -DPLUGIN_STANDARD_QCSF:BOOL=ON
+        -DPLUGIN_STANDARD_QFACETS:BOOL=ON # requires shapelib
+        -DOPTION_USE_SHAPE_LIB:BOOL=ON
+        -DPLUGIN_STANDARD_QHOUGH_NORMALS:BOOL=ON
+        -DPLUGIN_STANDARD_QHPR:BOOL=ON
+        -DPLUGIN_STANDARD_QM3C2:BOOL=ON
+        -DPLUGIN_STANDARD_QPCL:BOOL=ON
+        -DPLUGIN_STANDARD_QPCV:BOOL=ON
+        -DPLUGIN_STANDARD_QPOISSON_RECON:BOOL=ON
+        -DPLUGIN_STANDARD_QRANSAC_SD:BOOL=ON
+        -DPLUGIN_STANDARD_QSRA:BOOL=ON
+        -DOPTION_USE_DXF_LIB:BOOL=ON # required by qsra plugin
+        -DEIGEN_ROOT_DIR=/usr/include/eigen3
   )
-  cmake -B build -S ${name} -G Ninja "${CMAKE_FLAGS[@]}"
+  msg2 "Build Cork lib"
+  make -C "${srcdir}/${name}-cork"
+  msg2 "Build CloudCompare"
+  cmake -B build -S "${srcdir}/${name}" -G Ninja "${CMAKE_FLAGS[@]}"
 # shellcheck disable=SC2086 # allow slitting for MAKEFLAGS carrying multiple flags.
   ninja -C build ${MAKEFLAGS:--j1}
 }
