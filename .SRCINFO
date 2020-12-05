@@ -1,4 +1,4 @@
-pkgbase = gamejolt-client-bin
+pkgbase = gamejolt-client-bin-aur
 	pkgdesc = GameJolt library of game
 	pkgver = 0.57.0
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = gamejolt-client-bin
 	md5sums = 07e4fcfbf1f9459eb2857f74dce00c7c
 	md5sums = 7abf832caf3f294bfb172052f956f085
 
-pkgname = gamejolt-client-bin
+pkgname = gamejolt-client-bin-aur
 
