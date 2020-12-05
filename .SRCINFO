@@ -1,0 +1,16 @@
+pkgbase = reddit-wallpaper-fetcher-git
+	pkgdesc = Automatically fetch images from reddit for a wallpaper
+	pkgver = r8.99c36a7
+	pkgrel = 1
+	url = https://github.com/Chizi123/reddit-wallpaper-fetcher
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = jq
+	depends = curl
+	depends = imagemagick
+	source = git+https://github.com/Chizi123/reddit-wallpaper-fetcher.git
+	md5sums = SKIP
+
+pkgname = reddit-wallpaper-fetcher-git
+
