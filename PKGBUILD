@@ -2,7 +2,7 @@
 _pkgname=roguehostapd
 pkgname=python-${_pkgname}-git
 pkgver=r78.381b373
-pkgrel=1
+pkgrel=2
 pkgdesc="Hostapd fork including Wi-Fi attacks and providing Python bindings with ctypes"
 arch=('x86_64')
 url="https://github.com/wifiphisher/roguehostapd"
@@ -25,6 +25,6 @@ build() {
 package() {
 	cd "${srcdir}/${_pkgname}"
 	python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-    rm -r "${pkgdir}/usr/lib/python3.8/site-packages/examples/"
-    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  rm -r "${pkgdir}/usr/lib/python3.9/site-packages/examples/"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
