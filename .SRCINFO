@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = A Sony PlayStation 2 emulator
-	pkgver = 1.7.0.r596.319287dbe
+	pkgver = 1.7.0.r653.378eccc6e
 	pkgrel = 1
 	url = https://www.pcsx2.net
 	arch = x86_64
@@ -25,6 +25,8 @@ pkgbase = pcsx2-git
 	conflicts = pcsx2
 	source = git+https://github.com/PCSX2/pcsx2.git
 	source = git+https://github.com/fmtlib/fmt.git
+	source = git+https://github.com/jbeder/yaml-cpp.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
