@@ -2,8 +2,8 @@
 
 _pkgname=python-gaphas
 pkgname="${_pkgname}-git"
-pkgver=2.1.2.r0.g2c145f3
-pkgrel=2
+pkgver=2.1.2.r347.g6701fc0
+pkgrel=1
 pkgdesc="Diagramming widget library for Python"
 arch=('x86_64' 'i686')
 url="https://github.com/gaphor/gaphas"
