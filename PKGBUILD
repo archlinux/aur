@@ -18,12 +18,12 @@ md5sums=('SKIP'
          '12786834660fb952a20bbdd479e264bc')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir/" install
 }
