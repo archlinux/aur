@@ -1,7 +1,7 @@
 pkgbase = seahub
 	pkgdesc = The web frontend for seafile server
 	pkgver = 7.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/haiwen/seahub
 	arch = any
 	license = Apache
