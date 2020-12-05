@@ -1,7 +1,7 @@
 # Maintainer: Joffrey <j-off@live.fr>
 
-pkgname='python-django-post-office'
-pkgver=3.4.1
+pkgname=python-django-post-office
+pkgver=3.5.3
 pkgrel=1
 pkgdesc='A simple app to send and manage your emails in Django'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-django-jsonfield')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c8939802134a88d2ba80da28ecfc7e6ddae4260c85709cf86a125eb8362e07f6')
+sha256sums=('d74a8b0e80f245a720a7c0344daba56ec6be03a1aaf8c45f3624405c3a4b7f4d')
 
 package() {
     cd "$srcdir/django-post_office-$pkgver"
