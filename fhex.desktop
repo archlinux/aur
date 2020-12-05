@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Fhex
+Comment=Full-featured hexadecimal editor
+Comment[fr]=Éditeur hexadécimal complet
+Icon=fhex
+Exec=fhex
+Terminal=false
+Categories=Utility
