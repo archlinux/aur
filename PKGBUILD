@@ -4,7 +4,7 @@ _pyname=astropy-helpers
 pkgbase=python-${_pyname}31
 pkgname=("python-${_pyname}31" "python-${_pyname}31-doc")
 pkgver=3.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Utilities used for building the Astropy python library for astronomy"
 arch=('any')
 url="https://astropy-helpers.readthedocs.io/"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-sphinx-astropy')
 source=("https://github.com/astropy/astropy-helpers/archive/v${pkgver}.tar.gz"
         'use_system_astropy_helpers.patch')
 md5sums=('69be038c5b31aa43b41470ec9e6e9f41'
-         '387b23e088026915b59fb70eefb9b14e')
+         '2a5af34b0c02b2ec96a7a31363f49324')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
