@@ -4,7 +4,7 @@
 pkgname=dotter-rs-bin
 _pkgname=dotter
 pkgver=0.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A dotfile manager and templater written in Rust"
 arch=('x86_64')
 url="https://github.com/SuperCuber/dotter"
@@ -18,5 +18,5 @@ sha512sums_x86_64=('0a235f87e40b3d49c7565f250544f91a709f6561801fe79f9c48a47bccab
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "${pkgdir}/usr/bin/$_pkgname"
-  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
+  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
