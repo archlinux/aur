@@ -1,6 +1,6 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=libff7tk-git
-pkgver=Qt5.r146.gdc8b145
+pkgver=Qt5.r149.g67561f9
 pkgrel=1
 provides=('libff7tk')
 conflicts=('libff7tk')
@@ -8,7 +8,7 @@ pkgdesc="Final Fantasy 7 Tool library"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/sithlord48/ff7tk"
 license=('GPL3')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'doxygen')
 depends=('qt5-base' 'qt5-declarative' 'zlib') #Qt5)
 #optdepends=('otf-ipafont: font for displaying japanese')
 install=$pkgname.install
