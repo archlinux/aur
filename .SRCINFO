@@ -1,0 +1,15 @@
+pkgbase = bfetch-git
+	pkgdesc = Simple Fetch program written in bash
+	pkgver = 2020.12.05.r1.cc005569
+	pkgrel = 1
+	url = https://gitlab.com/nautilor/bfetch
+	arch = any
+	license = custom
+	makedepends = git
+	provides = bfetch
+	conflicts = bfetch
+	source = git+https://gitlab.com/nautilor/bfetch.git
+	md5sums = SKIP
+
+pkgname = bfetch-git
+
