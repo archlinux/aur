@@ -1,0 +1,11 @@
+pkgbase = mpris-proxy-service
+	pkgdesc = mpris-proxy systemd service
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.bluez.org/
+	install = INSTALL
+	arch = any
+	depends = bluez-utils
+
+pkgname = mpris-proxy-service
+

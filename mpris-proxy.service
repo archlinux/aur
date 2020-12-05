@@ -1,0 +1,11 @@
+[Unit]
+Description=Forward bluetooth midi controls via mpris2 so they are picked up by supporting media players
+Requires=dbus.service bluetooth.target
+After=dbus.service bluetooth.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mpris-proxy
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,9 @@
+
+post_install() {
+	echo
+	echo Usage:
+	echo
+	echo systemctl --user start mpris-proxy
+	echo systemctl --user enable mpris-proxy
+	echo
+}
