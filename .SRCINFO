@@ -1,13 +1,14 @@
 pkgbase = python-pyvips
 	pkgdesc = binding for the libvips image processing library, API mode
 	pkgver = 2.1.13
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/libvips/pyvips
 	arch = any
 	license = MIT
 	makedepends = python-pip
 	makedepends = curl
 	makedepends = jq
+	makedepends = findutils
 	depends = libvips
 	depends = python
 	depends = python-cffi
