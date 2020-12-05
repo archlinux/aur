@@ -3,7 +3,7 @@
 
 _pkgname=metakernel
 pkgname=jupyter-$_pkgname
-pkgver=0.27.0
+pkgver=0.27.5
 pkgrel=1
 pkgdesc="A Jupyter/IPython kernel template."
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('jupyter' 'ipython' 'python-pexpect')
 makedepends=('python-setuptools')
 source=("https://github.com/Calysto/metakernel/archive/${pkgver}.tar.gz")
-sha256sums=('a6097a30a1c28c1370865077170766d490f24913282d0b6c66e5d8859b544b0c')
+sha256sums=('57e17012a673d14778b725df738be4b1e8aa4d7f5c6cbf9061abef7cfac9771c')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
