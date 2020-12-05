@@ -1,7 +1,7 @@
 pkgbase = solo-python
 	pkgdesc = Tools and Python library for SoloKeys.
 	pkgver = 0.0.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/solokeys/solo-python
 	arch = any
 	license = Apache
