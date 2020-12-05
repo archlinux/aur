@@ -3,7 +3,7 @@
 pkgname=('python-django-celery-results')
 _pypi_pkgname=('django_celery_results')
 pkgver=2.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc='Celery Result Backends using the Django ORM/Cache framework'
 arch=('any')
 url='http://github.com/celery/django-celery-results'
