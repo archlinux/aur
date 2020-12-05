@@ -1,9 +1,9 @@
 # Maintaoner: Yamada Hayao <development@fascode.net>
 # Maintainer: Abraham Levine <echo iue@trnspljc.890 | tr ietursnpl890jc acprlsurecomed>
 
-pkgname=aptpac
-pkgver=3.0.1
-pkgrel=1
+pkgname="aptpac"
+pkgver="3.2.1"
+pkgrel="1"
 pkgdesc="a pacman wrapper with syntax from debian's apt"
 arch=('any')
 url="https://github.com/FascodeNet/aptpac"
