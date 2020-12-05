@@ -6,22 +6,24 @@
 
 pkgname=lib32-libpgm
 pkgver=5.3.128
-pkgrel=1
+pkgrel=2
 pkgdesc='An implementation of the PGM reliable multicast protocol'
 arch=('x86_64')
 url='https://github.com/steve-o/openpgm'
 license=('LGPL2.1')
 depends=('lib32-glibc' 'libpgm')
-makedepends=('cmake' 'gcc-multilib' 'python2')
+makedepends=('cmake' 'gcc-multilib' 'python')
 options=('!strip')
-source=("libpgm-${pkgver}.tar.gz::https://github.com/steve-o/openpgm/archive/release-${pkgver//./-}.tar.gz")
-sha256sums=('8d707ef8dda45f4a7bc91016d7f2fed6a418637185d76c7ab30b306499c6d393')
+source=("libpgm-${pkgver}.tar.gz::https://github.com/steve-o/openpgm/archive/release-${pkgver//./-}.tar.gz"
+         lib32-libpgm-undefined-symbol.patch::"https://github.com/steve-o/openpgm/commit/b7fa865f.patch")
+sha256sums=('8d707ef8dda45f4a7bc91016d7f2fed6a418637185d76c7ab30b306499c6d393'
+            '167ccb9ee3432d96e7ce433f67dd852877a594a096d8562ba45362370c3de86c')
 
 prepare() {
   cd openpgm-release-${pkgver//./-}/openpgm/pgm
   cp openpgm-5.2.pc.in openpgm-5.3.pc.in
+  patch -p3 -i "$srcdir"/lib32-libpgm-undefined-symbol.patch # Fix undefuned symbol
 
-  find . -type f -exec sed -i 's/python/python2/g' {} +
   autoreconf -fiv
 }
 
