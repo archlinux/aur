@@ -1,6 +1,6 @@
 pkgbase = luametatex
 	pkgdesc = ConTeXt LuaMetaTeX distribution
-	pkgver = 2019.04.06
+	pkgver = 2020.12.04
 	pkgrel = 1
 	url = http://www.contextgarden.net
 	install = luametatex.install
@@ -14,6 +14,9 @@ pkgbase = luametatex
 	optdepends = pstoedit: support for metapost outlines for fonts
 	optdepends = zint: support for barcodes
 	optdepends = curl: loading remote content
+	options = !strip
+	source = http://lmtx.pragma-ade.nl/install-lmtx/context-linux-64.zip
+	md5sums = SKIP
 
 pkgname = luametatex
 

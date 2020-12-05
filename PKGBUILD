@@ -1,6 +1,6 @@
-# Maintainer: Aditya Mahajan <adityam at umich dot edu>
+packager='Aditya Mahajan <adityam at umich dot edu>'
 pkgname=luametatex
-pkgver=2019.10.28
+pkgver=2020.12.04
 pkgrel=1
 pkgdesc="ConTeXt LuaMetaTeX distribution"
 url="http://www.contextgarden.net"
@@ -47,7 +47,7 @@ _osfontdir="/usr/share/fonts"
 
 pkgver() {
   cd "$scrdir"
-  grep -e '\\edef\\contextversion' tex/texmf-context/tex/context/base/mkiv/context.mkxl | sed -n 's/.*{\(.*\) .*}/\1/p'
+  grep -e '\\edef\\contextversion' tex/texmf-context/tex/context/base/mkiv/context.mkiv | sed -n 's/.*{\(.*\) .*}/\1/p'
 }
 
 prepare() {
