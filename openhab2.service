@@ -10,8 +10,8 @@ User=openhab
 Group=openhab
 WorkingDirectory=/usr/share/openhab2
 EnvironmentFile=/etc/default/openhab2
-ExecStart=/usr/share/openhab2/start.sh server
-ExecStop=/bin/kill -SIGINT $MAINPID
+ExecStart=/bin/bash -c 'JAVA_HOME=$(archlinux-java-run -a 8 -b 8 -j) exec /usr/share/openhab2/runtime/bin/karaf server'
+ExecStop=/bin/bash -c 'JAVA_HOME=$(archlinux-java-run -a 8 -b 8 -j) exec /usr/share/openhab2/runtime/bin/karaf stop'
 Restart=on-failure
 
 [Install]
