@@ -4,7 +4,7 @@
 pkgname=globe-cli-git
 _pkgname=globe
 pkgver=0.2.0.r6.g3261d3f
-pkgrel=1
+pkgrel=2
 pkgdesc="ASCII globe generator (git)"
 arch=('x86_64')
 url="https://github.com/adamsky/globe"
@@ -28,5 +28,5 @@ build() {
 package() {
   cd "$_pkgname"
   install -Dm 755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
