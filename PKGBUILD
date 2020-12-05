@@ -3,7 +3,7 @@
 pkgname=python-aioredis
 _pypi_pkgname=aioredis
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="asyncio (PEP 3156) Redis client library"
 arch=(any)
 url="https://github.com/aio-libs/aioredis"
