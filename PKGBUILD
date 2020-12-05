@@ -1,23 +1,22 @@
-# Maintainer: Bleuzen <supgesu@gmail.com>
+# Maintainer: robertfoster
+# Contributor: Bleuzen <supgesu@gmail.com>
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=pulseeffects-git
-pkgver=4.7.3.r88.g497ce9de
+pkgver=4.8.3.r0.gf5f83831
 pkgrel=1
 pkgdesc='Audio Effects for Pulseaudio Applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url='https://github.com/wwmm/pulseeffects'
 license=('GPL3')
-depends=('gtk3' 'gtkmm3' 'glibmm' 'libpulse' 'gstreamer' 'gst-plugins-good' 'gst-plugins-bad'
-        'lilv' 'boost-libs' 'libsigc++' 'libsndfile' 'libsamplerate' 'zita-convolver' 'libebur128')
-makedepends=('meson' 'boost' 'itstool' 'appstream-glib'
-             'calf' 'zam-plugins' 'rubberband')
-optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
-            'zam-plugins: maximizer'
-            'rubberband: pitch shifting'
-            'lsp-plugins: equalizer, delay'
-            'yelp: in-app help')
+depends=('gtk3' 'gtkmm3' 'glibmm' 'libpulse' 'gstreamer' 'gst-plugin-gtk' 'gst-plugins-bad'
+  'lilv' 'boost-libs' 'libsigc++' 'librnnoise' 'libsndfile' 'libsamplerate' 'zita-convolver' 'libebur128'
+  'calf' 'lsp-plugins' 'yelp')
+makedepends=('meson' 'boost' 'git' 'itstool' 'appstream-glib'
+  'zam-plugins' 'rubberband')
+optdepends=('zam-plugins: maximizer'
+  'rubberband: pitch shifting')
 source=("git+https://github.com/wwmm/pulseeffects.git")
 conflicts=(pulseeffects)
 provides=(pulseeffects)
