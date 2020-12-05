@@ -2,7 +2,7 @@
 
 _name=gaphor
 pkgname=python-${_name}
-pkgver=2.0.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('any')
@@ -23,7 +23,7 @@ source=(
 	"https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_wheelname}"
 	"https://raw.githubusercontent.com/gaphor/${_name}/master/logos/org.gaphor.Gaphor.svg"
 )
-sha256sums=('e78145643cd1b67d4eebbbeb3ad2f28e525223e9d7be162edbae3f449cbe35ca'
+sha256sums=('d56fdc6c0cba524eb35320ffd66ac8173d2205b571cf8b95ec16590e90cfb35b'
             'ef938e113167fc25a0647c9559d5042c38d23e0667d1683c0d74a7a5d0290791')
 
 prepare() {
