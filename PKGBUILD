@@ -1,7 +1,7 @@
 # Maintainer: Razer <razer[AT]neuf[DOT]fr>
 pkgname=bubblemail-git
 pkgver=1.3.r1.g5114bd9
-pkgrel=0
+pkgrel=1
 pkgdesc="New and Unread mail notification service for local mailboxes, pop, imap, and gnome online accounts"
 pkgbasename=bubblemail
 provides=("${pkgbasename}")
