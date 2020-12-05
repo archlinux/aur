@@ -41,7 +41,7 @@ depends=(${ros_depends[@]}
 _dir="rtabmap-release-release-noetic-rtabmap-${pkgver}-${_pkgver_patch}"
 #_dir="rtabmap-release-release-noetic-rtabmap"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/introlab/rtabmap-release/archive/release/noetic/rtabmap/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c640fb6039912f68dc405143b6ef79e472b10575d498e3da04ac977891593d4a')
+sha256sums=('7c66dc9f823e6cbde9897aabe847ed49a13fbd86286a9c459d7e3b8cc6d8d119')
 
 
 build() {
