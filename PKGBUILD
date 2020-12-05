@@ -4,7 +4,7 @@
 pkgname=sic-image-cli-bin
 _pkgname=sic
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Accessible image processing and conversion from the terminal"
 arch=('x86_64')
 url="https://github.com/foresterre/sic"
@@ -22,8 +22,8 @@ sha512sums_x86_64=('7ee5d44d14cf0fd40cb04afa7a2196b2a3a0f8ae16375473828650c3b24c
 
 package() {
   install -Dm 755 "$_pkgname" -t "${pkgdir}/usr/bin"
-  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
-  install -Dm 644 "$pkgname-$pkgver-LICENSE-MIT" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE-MIT"
+  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm 644 "$pkgname-$pkgver-LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
   install -Dm 644 "$_pkgname.bash" "${pkgdir}/usr/share/bash-completion/completions/$_pkgname"
   install -Dm 644 "$_pkgname.fish" -t "${pkgdir}/usr/share/fish/completions"
   install -Dm 644 "_$_pkgname" -t "${pkgdir}/usr/share/zsh/functions/Completion/Linux"
