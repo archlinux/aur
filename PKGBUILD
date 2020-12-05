@@ -12,7 +12,7 @@ makedepends=()
 optdepends=()
 provides=('jfetch')
 conflicts=()
-source=('$pkgname::git+https://github.com/Jimmysit0/jfetch.git'
+source=('jfetch-git::git+https://github.com/Jimmysit0/jfetch.git'
 	'https://raw.githubusercontent.com/Jimmysit0/jfetch/master/LICENSE')
 md5sums=('SKIP'
          '12786834660fb952a20bbdd479e264bc')
