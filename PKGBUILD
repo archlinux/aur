@@ -1,9 +1,11 @@
 # $Id: PKGBUILD 194888 2016-11-07 16:13:16Z spupykin $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Contributor: Jonas Heinrich <onny@project-insanity.org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Sébastien Luttringer
 
 pkgname=dokuwiki-git
-pkgver=release_candidate_2009.12.02.r5954.g9c5f31158
+pkgver=0.0.20091252c.r8038.gf2a13d874
 pkgrel=1
 pkgdesc='Simple to use and highly versatile Open Source wiki software'
 arch=('any')
@@ -15,14 +17,14 @@ backup=('etc/webapps/dokuwiki/.htaccess'
 options=('!strip')
 source=("git+https://github.com/splitbrain/dokuwiki.git"
         'apache.example.conf')
-md5sums=('SKIP'
-         'c5bed40abf5bb737bad8df29bb7020dc')
+sha512sums=('SKIP'
+            'd37c0288121eb509506e060473dc4fa11142a27442ba6c0bb35b43193089f1ae4c1cfea736866db9c2122f086a825220e497e04460c7f2e81966d5a6fbf9b1f6')
 provides=("dokuwiki")
 conflicts=("dokuwiki")
 
 pkgver() {
   cd "dokuwiki"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/upstream\///g'
 }
 
 package() {
