@@ -2,8 +2,8 @@
 
 _pkgname=bilibilitool-dotnet
 pkgname=${_pkgname}-git
-pkgver=1.0.10.r2.g701114a
-pkgrel=3
+pkgver=1.0.14.r1.ga9cd3f0
+pkgrel=1
 pkgdesc="A cross-platform Bilibili daily task tool written in .Net 5"
 arch=('x86_64')
 url='https://github.com/RayWangQvQ/BiliBiliTool'
