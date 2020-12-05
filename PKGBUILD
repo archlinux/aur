@@ -5,7 +5,7 @@
 _name=octave_kernel
 pkgname=jupyter-${_name}
 pkgver=0.32.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Jupyter kernel for Octave"
 arch=('any')
 url="https://github.com/Calysto/octave_kernel"
