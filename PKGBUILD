@@ -4,7 +4,7 @@
 pkgname=globe-cli-bin
 _pkgname=globe
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ASCII globe generator"
 arch=('x86_64')
 url="https://github.com/adamsky/globe"
@@ -18,5 +18,5 @@ sha512sums_x86_64=('d6ae2309ccf5e3ff9eed8cc2749d4cdf5de7154d4a530f76e9987aa4aafd
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "${pkgdir}/usr/bin/$_pkgname"
-  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
+  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

@@ -1,7 +1,7 @@
 pkgbase = globe-cli-bin
 	pkgdesc = ASCII globe generator
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adamsky/globe
 	arch = x86_64
 	license = GPL3
