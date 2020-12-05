@@ -1,13 +1,13 @@
 pkgbase = signal-desktop-beta
 	pkgdesc = Signal Private Messenger for Linux
 	pkgver = 1.39.2beta1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://signal.org
 	arch = x86_64
 	license = GPL3
 	makedepends = yarn
 	makedepends = git
-	makedepends = nodejs
+	makedepends = nodejs>=12.13.0
 	makedepends = npm
 	makedepends = python
 	makedepends = python2
