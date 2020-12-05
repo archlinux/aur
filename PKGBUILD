@@ -1,4 +1,4 @@
-# Maintainer: Marko Korhonen <reekymarko@reekynet.com>
+# Maintainer: Marko Korhonen <aur@marko.korhonen.cc>
 
 pkgname=rofi-pass-ydotool-git
 _pkgname=rofi-pass
