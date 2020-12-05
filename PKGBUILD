@@ -9,10 +9,7 @@ arch=('any')
 url="https://gitlab.com/nautilor/bfetch"
 license=('custom')
 makedepends=('git')
-optdepends=('ffmpeg: for video post-processing'
-            'rtmpdump: for rtmp streams support'
-            'atomicparsley: for embedding thumbnails into m4a files'
-            'phantomjs: for openload support')
+optdepends=('')
 provides=("bfetch")
 conflicts=("bfetch")
 source=('git+https://gitlab.com/nautilor/bfetch')
