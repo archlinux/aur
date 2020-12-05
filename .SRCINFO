@@ -6,7 +6,7 @@ pkgbase = python-obspy-docs
 	arch = any
 	license = LGPL
 	options = docs
-	source = python-obspy-docs-1.2.0.tgz::http://docs.obspy.org/archive/obspy-1.2.0-documentation.tgz
+	source = http://docs.obspy.org/archive/obspy-1.2.0-documentation.tgz
 	sha256sums = aacb0b14f0c9955f5592b7858ea455e1d02d91fab3ba7f74f11b800daeb681a9
 
 pkgname = python-obspy-docs
