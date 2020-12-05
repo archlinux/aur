@@ -1,0 +1,30 @@
+pkgbase = opensnitch
+	pkgdesc = GNU/Linux application firewall
+	pkgver = 1.3.0_rc2
+	pkgrel = 1
+	url = https://github.com/gustavo-iniguez-goya/opensnitch
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	makedepends = python-setuptools
+	makedepends = python-grpcio-tools
+	depends = libnetfilter_queue
+	depends = libpcap
+	depends = python-grpcio
+	depends = python-protobuf
+	depends = python-pyinotify
+	depends = python-slugify
+	depends = python-pyqt5
+	optdepends = logrotate: for logfile rotation support
+	backup = etc/opensnitchd/default-config.json
+	backup = etc/opensnitchd/system-fw.json
+	source = https://github.com/gustavo-iniguez-goya/opensnitch/archive/v1.3.0-rc.2.tar.gz
+	sha256sums = 9a2fe0f7078631b6d6b347fde9125548fa924d6c3c2a38d4b2401175edc81fb9
+
+pkgname = opensnitch
+
