@@ -3,7 +3,7 @@
 _name=gaphas
 pkgname=python-${_name}
 pkgver=2.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Diagramming widget library for Python"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
