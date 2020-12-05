@@ -1,7 +1,7 @@
 # Maintainer: Jaan Toots <jaan@jaantoots.org>
 pkgname=goobook
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Access your Google contacts from the command line"
 arch=('any')
 url="https://gitlab.com/goobook/goobook"
