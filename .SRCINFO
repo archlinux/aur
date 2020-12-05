@@ -6,6 +6,7 @@ pkgbase = key-mapper-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = fakeroot
 	makedepends = python-setuptools
 	depends = python-gobject
 	depends = python-pydbus
