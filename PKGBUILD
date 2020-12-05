@@ -9,8 +9,14 @@ license=("MIT")
 depends=("java-runtime" "java-openjfx")
 makedepends=("jdk-openjdk")
 noextract=("$pkgname-$pkgver-J8-jar-with-dependencies.jar")
-source=("https://github.com/Col-E/Recaf/releases/download/$pkgver/$pkgname-$pkgver-J8-jar-with-dependencies.jar")
-sha256sums=('SKIP')
+source=(
+    "https://github.com/Col-E/Recaf/releases/download/$pkgver/$pkgname-$pkgver-J8-jar-with-dependencies.jar"
+    "https://raw.githubusercontent.com/Col-E/Recaf/$pkgver/LICENSE"
+)
+sha256sums=(
+    "SKIP"
+    "SKIP"
+)
 
 prepare() {
     # Extract logo
@@ -18,6 +24,9 @@ prepare() {
 }
 
 package() {
+    # Install LICENSE to canonical location
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
     # Install JAR to canonical location
     install -Dm644 "$srcdir/$pkgname-$pkgver-J8-jar-with-dependencies.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
     
