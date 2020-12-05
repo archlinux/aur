@@ -39,7 +39,7 @@ package() {
   install -Dm755 "$srcdir/$pkgname.sysuser.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 }
 
-md5sums=('12369c12445f9a234863816c584d81d2'
-         'ae3e285b857b7efeecbab29826f29735'
-         '9fd31f8bc5b6ccc21a52fc1b58fdb9d6'
-         '92cd2fa8929c5acddbddf7d4fc2fd494')
+sha256sums=('cb986f7e2f7d8c01f0f09385285cf08dde940d7dbbfb05acafb0c87106700633'
+            'eaf7cdce16b0930a53f56208de54cd25a27c830ca2936ac75e51fbdcd2b3956a'
+            '8efe5e6b0bdc98b3d4813320a38f862607d716adecc28866e4d0cf2a24463b96'
+            '8187df684f82063aa90c5b31cbedcc6da870cb6b2e45d95c98c78e05aec6406b')
