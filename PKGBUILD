@@ -1,20 +1,18 @@
 # Maintainer: willemw <willemw12@gmail.com>
 # Contributor: rtfreedman  <rob<d0t>til<d0t>freedman< T>googlemail<d0t>com>
 
-_pkgname=exmplayer
-pkgname=$_pkgname-git
-pkgver=5.0.1.r2.g1ccb1ac
-pkgrel=2
-pkgdesc="MPlayer GUI front-end with 3D/2D video playback support and with audio converter, media cutter and audio extractor tools"
-arch=('i686' 'x86_64')
-url='http://exmplayer.sourceforge.net/'
+pkgname=exmplayer-git
+pkgver=5.0.1.r17.gaecf78a
+pkgrel=1
+pkgdesc="MPlayer GUI front-end. Plays any media file. Video downloader, subtitle search, audio converter/extractor, media cutter, Gif animation generator"
+arch=('x86_64')
+url="http://exmplayer.sourceforge.net/"
 license=('GPL')
-depends=('desktop-file-utils' 'ffmpeg' 'mplayer' 'qt4')
+depends=('ffmpeg' 'mplayer' 'qt5-base')
 optdepends=('youtube-dl: download video/audio')
 makedepends=('git')
-provides=($_pkgname)
-conflicts=($_pkgname)
-install=$pkgname.install
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=($pkgname::git+https://github.com/rupeshs/ExMplayer.git)
 md5sums=('SKIP')
 
@@ -23,15 +21,9 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd $pkgname
-  #sed -i 's|this->setWindowFlags(!Qt::WindowStaysOnTopHint);|this->setWindowFlags(Qt::Window);|' src/playerwindow.cpp
-  sed -i 's|this->setWindowFlags(!Qt::WindowStaysOnTopHint);|this->setWindowFlags(0);|' src/playerwindow.cpp
-}
-
 build() {
   cd $pkgname/src
-  qmake-qt4
+  qmake-qt5
   make 
 }
 
