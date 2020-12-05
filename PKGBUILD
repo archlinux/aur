@@ -2,7 +2,7 @@
 
 pkgname='python-django-simple-captcha'
 pkgver=0.5.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Django application to add captcha images to any Django form'
 arch=('any')
 url='https://github.com/mbi/django-simple-captcha'
