@@ -1,4 +1,4 @@
-# Maintainer: Marko Korhonen <reekymarko at reekynet.com>
+# Maintainer: Marko Korhonen <aur@marko.korhonen.cc>
 pkgname=shiori-bin
 pkgver=1.5.0
 pkgrel=2
