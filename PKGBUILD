@@ -2,7 +2,7 @@
 
 _pkgbase=clutch
 pkgname=python-clutch
-pkgver=4.2.1
+pkgver=5.0.2
 pkgrel=1
 pkgdesc="Transmission RPC for Python"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-pydantic' 'python-requests' 'python-typing_extensions')
 makedepends=('python-setuptools' 'python-dephell')
 source=("${_pkgbase}-${pkgver}.tar.gz::https://github.com/mhadam/${_pkgbase}/archive/v${pkgver}.tar.gz")
-sha512sums=('4a0d1209eff5650b2b6537d5368cf4fb4c2bf77160d9b7b056101c4455cbb6908b950a6c9606e9b7cab7bbc24a5b8ed38cf37af37cfbc87c56db3909a032da4a')
+sha512sums=('630eb9ad6ca9bf3d30bb2a314669202487b1119acc948e5f1c0c48fc22966903829eb4f1c3d6a98ef54c3afc1c1039513b2dd787eb26b01f38dee039f8be196e')
 
 prepare() {
     cd "${_pkgbase}-${pkgver}"
