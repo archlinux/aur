@@ -12,15 +12,10 @@ arch=('x86' 'x86_64' 'arm')
 url='http://runningwithscissors.com/'
 license=('GPL')
 depends=('sdl2')
-makedepends=('mercurial' 'gcc' 'patch')
-source=("hg+https://bitbucket.org/gopostal/postal-1-open-source")
+makedepends=('git' 'gcc' 'patch')
+source=("git+https://github.com/sirspudd/POSTAL-1-Open-Source")
 sha256sums=('SKIP')
-_repo_name="postal-1-open-source"
-
-pkgver() {
-  cd "$srcdir/$_repo_name"
-  hg tags | tr -s ' ' | cut -d ' ' -f 2 | tr ':' '.'
-}
+_repo_name="POSTAL-1-Open-Source"
 
 build() {
   cd "$srcdir/$_repo_name"
@@ -38,6 +33,6 @@ package() {
 
   cp ${startdir}/postal-git $_bin_dir
   cp bin/postal1-* $_data_dir
-  ls bin/postal1-* | sed 's/bin/./g' >> ${_bin_dir}/postal-git
+  ls bin/postal1-* | sed 's,bin/,./,' >> ${_bin_dir}/postal-git
   cp DefaultPostal.ini $_data_dir/POSTAL.INI
 }
