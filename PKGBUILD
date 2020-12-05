@@ -2,7 +2,7 @@
 
 pkgname=pytify
 pkgver=3.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python CLI application for controlling Spotify.'
 arch=(any)
 url='https://github.com/bjarneo/Pytify'
@@ -16,6 +16,7 @@ prepare() {
   cd "Pytify-${pkgver}"
   sed \
     -e 's/spotipy ~= 2.3.8/spotipy >= 2.4.4/' \
+    -e 's/prompt-toolkit ~= 2.0.9/prompt-toolkit >= 3.0/' \
     -i requirements.txt
 }
 
@@ -28,4 +29,5 @@ package() {
   cd "Pytify-${pkgver}"
   python setup.py install --root="$pkgdir/" --skip-build --optimize=1
 }
-md5sums=('b4c4be64a7704207110aea6cc185d12e')
+
+sha256sums=('43d6b596c64c04e5a99a2f79510422f2dcb8d8f1c52f52a42a4b4b1035a69cd5')

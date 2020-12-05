@@ -1,7 +1,7 @@
 pkgbase = pytify
 	pkgdesc = A Python CLI application for controlling Spotify.
 	pkgver = 3.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bjarneo/Pytify
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = pytify
 	depends = python-prompt_toolkit
 	options = !emptydirs
 	source = pytify-3.6.3.tar.gz::https://github.com/bjarneo/pytify/archive/v3.6.3.tar.gz
-	md5sums = b4c4be64a7704207110aea6cc185d12e
+	sha256sums = 43d6b596c64c04e5a99a2f79510422f2dcb8d8f1c52f52a42a4b4b1035a69cd5
 
 pkgname = pytify
 
