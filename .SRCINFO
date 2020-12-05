@@ -1,7 +1,7 @@
 pkgbase = ccnet-server
 	pkgdesc = Internal communication framework and user/group management for seafile server
 	pkgver = 7.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haiwen/ccnet-server
 	arch = i686
 	arch = x86_64
