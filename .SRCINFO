@@ -1,11 +1,13 @@
 pkgbase = fontfor
 	pkgdesc = Find fonts which can show a specified character and preview them in terminal or browser.
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/7sDream/fontfor
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = rust
+	makedepends = cmake
+	makedepends = freetype2
 	source = https://github.com/7sDream/fontfor/archive/v0.3.1.tar.gz
 	sha256sums = 0e7969de5a6313d6b8a11a16f07c607ba9c82c26dfa0ddecff08c153e000801e
 
