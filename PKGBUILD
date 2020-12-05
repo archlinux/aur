@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=ameba
-pkgver=0.13.2
+pkgver=0.13.3
 pkgrel=1
 pkgdesc="A static code analysis tool for Crystal"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
   "${url}/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '7ae91a3e1b32cfed595db090ddea065dd177fb3591de9730606f9f32d340c180'
+  'e725aa45a701b6f89409a69742ac0c17b9d15af0743b3be013ff1b6b82d685a2'
 )
 
 package() {
