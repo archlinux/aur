@@ -20,7 +20,7 @@ source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
   "config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=71181d962a0864241bf25b367774873f742fa1ba"
   i8042.patch
-  "https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/-/raw/master/kernel_patches/5.9/5.9.8%20-%205.9.12/0001-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard_fixup.patch"
+  "https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/-/raw/master/kernel_patches/5.9/5.9.8%20-%205.9.12/0001-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard.patch"
   uksm.patch
   "https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/-/raw/master/kernel_patches/5.9/5.9.8%20-%205.9.12/experimental/0002-alsa-hda-ga401-experimental.patch"
 )
@@ -32,7 +32,7 @@ validpgpkeys=(
 sha256sums=('SKIP'
             '23f9693a1b35e4d674eced335a2a2cd8a231a157f362000340ccfdb86b4a98e2'
             'b944d886e9488f65b3773521c1d10af3fcd2f7641475708dfbebdaa0824bfd3b'
-            '8db0d190cf6a5cc96e3c7c5d3df3f7800cd7af93cf3554a65ed45dd689813537'
+            '68bf0dcc390ed14d97f48ebd1095d2587ac2eb2671445125fbcaaf7a6aa01733'
             'a5b177ccfde06c8c82a1e20191a23bb3a16a553657be0d543397ee5847a0c86c'
             '8e95f77486f9ed849114e1d09452227cbc39cb7811a5083b27cb274500cbab4b')
 
