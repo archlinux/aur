@@ -5,7 +5,7 @@ pkgname='ros-noetic-kinect2-viewer'
 pkgver='0.0.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('apache')
 
 submodule_name=kinect2_viewer
@@ -39,7 +39,7 @@ depends=('pcl' ${ros_depends[@]})
 # Git version (e.g. for debugging)
 _dir=${pkgname}
 source=("${_dir}"::"git+https://github.com/code-iai/iai_kinect2.git" "fix_cv3_to_4.patch")
-sha256sums=('SKIP')
+sha256sums=('SKIP' '654d04bd5473d947c12d0330d35449ef1ac4544f34295ce7bbee8484d4a49a18')
 
 build() {
   # Use ROS environment variables

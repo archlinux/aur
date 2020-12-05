@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-kinect2-viewer
 	pkgdesc = Viewer for Kinect One (Kinect v2) in ROS.
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/code-iai/iai_kinect2
 	arch = any
 	license = apache
