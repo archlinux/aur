@@ -5,7 +5,7 @@
 
 pkgname=domoticz
 pkgver=2020.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Web based home automation"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://www.domoticz.com'
@@ -26,12 +26,17 @@ makedepends=('git'
              'python')
 install='domoticz.install'
 source=("https://github.com/domoticz/domoticz/archive/${pkgver}.tar.gz"
-        'domoticz.service')
+        'domoticz.service'
+        'python3.9.patch')
 md5sums=('fd383a13d13d0976c72f332d6db1d24e'
-         'c13a3f5d04142587d159820156a6223f')
+         'c13a3f5d04142587d159820156a6223f'
+         '39b1a4aa57dff4d7083f67870bc1fa1b')
 
 prepare() {
+
   mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
+  patch --forward --strip=1 --input="${srcdir}/python3.9.patch"
+
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   cmake -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=/opt/domoticz \
