@@ -83,7 +83,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="rtabmap_ros-release-release-noetic-rtabmap_ros-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/introlab/rtabmap_ros-release/archive/release/noetic/rtabmap_ros/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b8d4832ba5b71f7e36d4be3c907e77955d80e78d8e1de0b5d1385dcfd8b104a3')
+sha256sums=('fa20f2e9c75f65932f047ef92c26eddc72ec943490226c4083b2c4328b587ffb')
 
 build() {
   # Use ROS environment variables
