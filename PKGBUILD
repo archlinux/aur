@@ -4,7 +4,7 @@
 pkgname=globe-cli
 _pkgname=globe
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ASCII globe generator"
 arch=('x86_64')
 url="https://github.com/adamsky/globe"
@@ -16,7 +16,7 @@ sha512sums=('1d2c1f9c480b16971fa093d81254cf61cadda44c2ee94ba7c4e48b20994f0340839
 
 build() {
   cd "$_pkgname-$pkgver"
-  # TODO: Use `--locked` flag for reproducibility.
+  # TODO: Use `--locked` flag for reproducibility (for the new release).
   # Tracking issue: https://github.com/adamsky/globe/pull/21#issuecomment-729935054
   cargo build --release
 }
@@ -24,5 +24,5 @@ build() {
 package() {
   cd "$_pkgname-$pkgver"
   install -Dm 755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
