@@ -12,13 +12,13 @@ makedepends=('python-setuptools')
 url="https://github.com/keis/base58"
 license=('MIT')
 options=(!emptydirs)
-source=("https://github.com/keis/base58/archive/v$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v$pkgver.tar.gz")
 
 package() {
-	cd ${pkgbase##python-}-$pkgver
+  cd ${pkgname##python-}-$pkgver
 
-	python setup.py install --root="$pkgdir" --optimize=1
-	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python setup.py install --root="$pkgdir" --optimize=1
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 md5sums=('f83f4006ab892c39437a6c06c54af6ca')
