@@ -2,8 +2,8 @@
 
 _srcname='ss-tproxy'
 pkgname=ss-tproxy-git
-pkgver=r836.0f45dd0
-pkgrel=2
+pkgver=r839.716165c
+pkgrel=1
 pkgdesc='A rudimentary script for building SS/SSR/V2Ray/Socks5 transparent proxy environments'
 arch=('i686' 'x86_64')
 url="https://github.com/zfl9/${_srcname}"
