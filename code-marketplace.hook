@@ -6,5 +6,5 @@ Target = usr/lib/code/product.json
 
 [Action]
 Description = Patching product.json...
-Exec = /usr/bin/bash -c "/usr/bin/patch /usr/lib/code/product.json < /usr/lib/code/product_json.patch"
+Exec = /usr/bin/bash -c "[ -f /usr/lib/code/product.json ] && /usr/bin/patch /usr/lib/code/product.json </usr/lib/code/product_json.patch || echo 'Failed to patch product.json. This package is only tested in [community/code 1.50.1-1].'"
 When = PostTransaction
