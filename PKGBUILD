@@ -3,7 +3,7 @@
 
 pkgname=qubes-libvchan-xen
 _gitname=${pkgname%-git*}
-pkgver=4.1.3
+pkgver=4.0.8
 pkgrel=1
 
 pkgdesc="The Qubes core libraries for installation inside a Qubes Dom0 and VM."
