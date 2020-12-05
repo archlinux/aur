@@ -11,24 +11,25 @@ _json_export=${TAGEDITOR_JSON_EXPORT:-OFF}
 
 _reponame=tageditor
 pkgname=tageditor-cli
-pkgver=3.3.6
+pkgver=3.3.10
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A tag editor with command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska (GUI disabled)'
 license=('GPL')
 depends=('c++utilities' 'tagparser')
-makedepends=('cmake')
+makedepends=('cmake' 'ninja')
 conflicts=("${pkgname%-cli}")
 provides=("${pkgname%-cli}")
 [[ $_json_export == ON ]] && makedepends+=('reflective-rapidjson')
 checkdepends=('cppunit')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('23cd6e03732757ef4e0d4a5fc6f2257a37b2eaa127da87a8be6a9bff5ec379b6')
+sha256sums=('0d720dcfce039c5dc85c0dcc0ce3daa0bd15835394c977da28b20a63e09f0d71')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   cmake \
+    -G Ninja \
     -DCMAKE_BUILD_TYPE:STRING='Release' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
     -DBUILD_SHARED_LIBS:BOOL=ON \
@@ -37,13 +38,13 @@ build() {
     -DENABLE_JSON_EXPORT="${_json_export}" \
     -DREFLECTION_GENERATOR_EXECUTABLE:FILEPATH='/usr/bin/reflective_rapidjson_generator' \
     .
-  make
+  ninja
 }
 
 check() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   if [[ $TEST_FILE_PATH ]]; then
-    make check
+    ninja check
   else
     msg2 'Skipping execution of testsuite because the environment variable TEST_FILE_PATH is not set.'
   fi
@@ -51,5 +52,5 @@ check() {
 
 package() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
