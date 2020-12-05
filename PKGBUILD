@@ -6,7 +6,7 @@ pkgdesc="openhab3 open source home automation software"
 arch=("any")
 url="http://www.openhab.org/"
 license=("EPL")
-depends=("java-runtime-headless=11")
+depends=("java-runtime-headless=11" "archlinux-java-run")
 
 conflicts=("openhab3-snapshot")
 
@@ -23,7 +23,7 @@ source=("openhab-${pkgver}.tar.gz::https://openhab.jfrog.io/openhab/libs-milesto
         "${pkgname}.patch")
 
 sha256sums=('63b1725ab2e37ee25649663362fb08bedb6f9c1727c5511543eef2d8048d008c'
-            '9b42de40f82dfe1fcb5efcac5f69d948e39f955e85c6273daddd97bc94ac34b6'
+            'e4b374cf5d590e8a91a43ab5cc8be9d82f6ebff22c3ce0ee767dc13ffc1ebe1d'
             'b149d976dc13dc18c62d2014457557e266e733ead70b0730d06dcd0372da78a7'
             '3f7478e5742ff504b3200b580eba84bd10f9adde24c0a5e070dda71125a69c3b')
 
@@ -44,9 +44,6 @@ package() {
     mkdir -p "${pkgdir}/usr/share/${pkgname}"
     cp -r "${srcdir}/runtime" "${pkgdir}/usr/share/${pkgname}"
     cp -r "${srcdir}/addons" "${pkgdir}/usr/share/${pkgname}"
-    cp  "${srcdir}/start.sh" "${pkgdir}/usr/share/${pkgname}"
-    cp  "${srcdir}/start_debug.sh" "${pkgdir}/usr/share/${pkgname}"
-    cp  "${srcdir}/LICENSE.TXT" "${pkgdir}/usr/share/${pkgname}"
 
     mkdir -p "${pkgdir}/var/log/${pkgname}"
 
