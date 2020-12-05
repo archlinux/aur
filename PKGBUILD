@@ -6,7 +6,7 @@ pkgdesc='Enable vscode marketplace in vscodium-bin'
 arch=('any')
 url='https://marketplace.visualstudio.com/vscode'
 license=('unknown')
-depends=('code>=1.50.1')
+depends=('vscodium-bin')
 install="${pkgname}.install"
 source=('vscodium-bin-marketplace.hook'
         'product.json.patch')

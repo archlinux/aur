@@ -6,7 +6,7 @@ pkgbase = vscodium-bin-marketplace
 	install = vscodium-bin-marketplace.install
 	arch = any
 	license = unknown
-	depends = code>=1.50.1
+	depends = vscodium-bin
 	source = vscodium-bin-marketplace.hook
 	source = product.json.patch
 	md5sums = 3579c73f400410130ece9b778b0454cc
