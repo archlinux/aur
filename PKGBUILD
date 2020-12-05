@@ -5,7 +5,7 @@
 # Contributor: Angel "angvp" Velasquez <angvp[at]archlinux.com.ve> 
 
 pkgname="python-numpy-openblas"
-pkgver=1.19.1
+pkgver=1.19.4
 pkgrel=1
 pkgdesc="Scientific tools for Python - built with openblas"
 arch=("i686" "x86_64")
@@ -19,25 +19,27 @@ makedepends=('cblas' 'lapack' 'python' 'python-setuptools' 'gcc-fortran' 'python
 checkdepends=('python-pytest')
 options=('staticlibs')
 source=("python-numpy-$pkgver.tar.gz::https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
-sha256sums=('1396e6c3d20cbfc119195303b0272e749610b7042cc498be4134f013e9a3215c')
+sha256sums=('fe836a685d6838dbb3f603caef01183ea98e88febf4ce956a2ea484a75378413')
+
+prepare() {
+  # https://github.com/numpy/numpy/issues/17390
+  sed -i '/error/a \    ignore:Module already imported so cannot be rewritten' numpy-$pkgver/pytest.ini
+}
 
 build() {
   export Atlas=None
   export LDFLAGS="$LDFLAGS -shared"
 
-  echo "Building Python3"
   cd numpy-$pkgver
 
   python setup.py config_fc --fcompiler=gnu95 build
 }
 
 check() {
-  # TODO: Fix fortran tests here (it works fine after installation)
-
   cd numpy-$pkgver
   python setup.py install --root="$PWD/tmp_install" --optimize=1
   cd "$PWD/tmp_install"
-  PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD/usr/lib/python3.8/site-packages:$PYTHONPATH" python -c 'import numpy; numpy.test()'
+  PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD/usr/lib/python3.9/site-packages:$PYTHONPATH" python -c 'import numpy; numpy.test()'
 }
 
 package() {
