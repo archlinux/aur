@@ -9,7 +9,6 @@ pkgbase = opensnitch
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	makedepends = git
 	makedepends = go
 	makedepends = python-setuptools
 	makedepends = python-grpcio-tools

@@ -8,7 +8,7 @@ pkgdesc='GNU/Linux application firewall'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/gustavo-iniguez-goya/opensnitch'
 license=('GPL3')
-makedepends=('git' 'go' 'python-setuptools' 'python-grpcio-tools')
+makedepends=('go' 'python-setuptools' 'python-grpcio-tools')
 depends=('libnetfilter_queue' 'libpcap' 'python-grpcio' 'python-protobuf'
     'python-pyinotify' 'python-slugify' 'python-pyqt5')
 optdepends=('logrotate: for logfile rotation support')
