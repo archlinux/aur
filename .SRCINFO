@@ -7,6 +7,7 @@ pkgbase = openhab3-snapshot
 	license = EPL
 	depends = java-runtime-headless=11
 	depends = archlinux-java-run
+	optdepends = openhab3-snapshot-addons: add-on archives for offline use
 	conflicts = openhab3
 	backup = etc/openhab3/services/addons.cfg
 	backup = etc/openhab3/services/runtime.cfg
@@ -19,7 +20,7 @@ pkgbase = openhab3-snapshot
 	source = openhab3.default
 	source = openhab3.patch
 	sha256sums = SKIP
-	sha256sums = 11406a8d4c4e2dc57fab1a894f15f2f1fbcc09cabb7761218ba3cdc413477515
+	sha256sums = e4b374cf5d590e8a91a43ab5cc8be9d82f6ebff22c3ce0ee767dc13ffc1ebe1d
 	sha256sums = b149d976dc13dc18c62d2014457557e266e733ead70b0730d06dcd0372da78a7
 	sha256sums = 3f7478e5742ff504b3200b580eba84bd10f9adde24c0a5e070dda71125a69c3b
 
