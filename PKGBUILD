@@ -37,7 +37,7 @@ depends=(${ros_depends[@]})
 # Git version (e.g. for debugging)
 _dir=${pkgname}
 source=("${_dir}"::"git+https://github.com/code-iai/iai_kinect2.git" "fix_cv3_to_4.patch")
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'ab71cef077731213a34059b29f3be3ced46c179b87fac17252f138473d2929ef')
 
 build() {
   # Use ROS environment variables
