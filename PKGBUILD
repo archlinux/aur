@@ -2,7 +2,7 @@
 pkgbase=python-astroslam
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=1.2020.811.0
+pkgver=1.2020.1104.0
 pkgrel=1
 pkgdesc="Stellar LAbel Machine (SLAM)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('python-matplotlib' 'python-scikit-learn' 'python-pandas' 'python-emcee
 checkdepends=('python-pyzmq' 'python-jupyter_client' 'python-pillow')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/hypergravity/astroslam/master/LICENSE")
-md5sums=('e2cf7cf28109dd34e97a259395a3535b'
+md5sums=('a7ca825f5ea1d6c20c348f0046284209'
          'SKIP')
 
 build() {
