@@ -2,7 +2,7 @@
 
 pkgname='python-django-webpack-loader'
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Transparently use webpack with django'
 arch=('any')
 url='https://github.com/owais/django-webpack-loader'
