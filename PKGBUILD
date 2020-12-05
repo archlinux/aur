@@ -3,15 +3,15 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=python-googletrans
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0a0
+pkgrel=1
 pkgdesc="Free Google Translate API for Python."
 arch=('any')
 license=('MIT')
 url="https://github.com/ssut/py-googletrans"
 depends=('python-setuptools' 'python-httpx')
 source=("https://pypi.io/packages/source/g/googletrans/googletrans-$pkgver.tar.gz")
-sha512sums=('1a31c52e1fc72ab45131c95ff3649d1d679e3c082adc2b43ba1e5d9bbc57bf740c9e14575c6416e406e6e6e1796cac57330fbb1a639ad96841464e042ef70981')
+sha512sums=('0640f8e301f205fbf415dc1ea310d342dbd9e06dc3e87029f2928bcd945b4c0f41e70b829f5f8eeb1125d5fccffe1f210ba963b461e6c22b6ea7e79ccfb6996f')
 
 build() {
   cd googletrans-$pkgver
