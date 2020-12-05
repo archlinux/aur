@@ -3,7 +3,7 @@
 
 pkgname='python-django-pylibmc'
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Memcached cache backend for Django using pylibmc'
 arch=('any')
 url='https://github.com/django-pylibmc/django-pylibmc'
