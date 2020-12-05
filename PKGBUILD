@@ -4,8 +4,8 @@
 pkgbase=python-pytorch
 pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pytorch-opt-cuda")
 _pkgname="pytorch"
-pkgver=1.7.0rc2
-_pkgver=1.7.0-rc2
+pkgver=1.7.1rc2
+_pkgver=1.7.1-rc2
 pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         nccl_version.patch
         disable_non_x86_64.patch)
 sha256sums=('SKIP'
-            '147bdaeac8ec46ea46382e6146878bd8f8d51e05d5bd6f930dfd8e2b520859b9'
+            '83c81ec6a461110da6ae6182529f58100986b068c5182ca62cd53c648b4e4fb0'
             '26b1dd596f1e21a011ee18cab939924483d6c6d4d98e543bf76f5a9312d54d67'
             '7b65c3b209fc39f92ba58a58be6d3da40799f1922910b1171ccd9209eda1f9eb'
             'e4a96887b41cbdfd4204ce5f16fcb16a23558d23126331794ab6aa30a66f2e0d'
