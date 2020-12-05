@@ -1,16 +1,17 @@
 # Maintainer: Aldo Gunsing <dev at aldogunsing dot nl>
+# Maintainer: Rohit Goswami (HaoZeke) <rohit dot goswami at aol dot com>
 
 pkgname=klfc
-pkgver=1.5.3
-pkgrel=3
-commit="abfc7ebd80a33a20caa50d481cfa46183258dda6"
+pkgver=1.5.5
+pkgrel=5
+commit="58af59c0cce2c0aa9a2c311231d4da9a5947259e"
 pkgdesc="Tool to create advanced keyboard layouts in various formats"
 url="https://github.com/39aldo39/klfc"
 license=("GPL3")
 arch=("i686" "x86_64")
-makedepends=("cabal-install")
+makedepends=("cabal-install" "ghc")
 source=("https://github.com/39aldo39/klfc/archive/$commit.tar.gz")
-md5sums=('7a317f99e12b95fed8c9f3b85e0ad9c8')
+md5sums=('4817cbc1028974b2c3f692ed454b5aba')
 
 build() {
     cd "$srcdir/$pkgname-$commit"
