@@ -1,6 +1,6 @@
 pkgbase = dog-dns-git
 	pkgdesc = Command-line DNS client like dig (git)
-	pkgver = 0.1.0.r0.g445ed98
+	pkgver = 0.1.0.r24.ga002db8
 	pkgrel = 1
 	url = https://github.com/ogham/dog
 	arch = x86_64

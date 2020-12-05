@@ -3,7 +3,7 @@
 
 pkgname=dog-dns-git
 _pkgname=dog
-pkgver=0.1.0.r0.g445ed98
+pkgver=0.1.0.r24.ga002db8
 pkgrel=1
 pkgdesc="Command-line DNS client like dig (git)"
 arch=('x86_64')
@@ -33,8 +33,8 @@ check() {
 package() {
   cd "$_pkgname"
   install -Dm 755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
-  install -Dm 644 LICENCE -t "$pkgdir/usr/share/licenses/$_pkgname"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENCE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm 644 "completions/$_pkgname.bash" "${pkgdir}/usr/share/bash-completion/completions/$_pkgname"
   install -Dm 644 "completions/$_pkgname.fish" -t "${pkgdir}/usr/share/fish/completions"
   install -Dm 644 "completions/$_pkgname.zsh" "${pkgdir}/usr/share/zsh/functions/Completion/Linux/_$_pkgname"
