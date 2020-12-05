@@ -2,7 +2,7 @@
 # Contributor: Marcin Karpezo <sirmacik at gmail dot com>
 # Contributor: Daenyth <Daenyth+Arch [at] gmail [dot] com>
 pkgname=rakudo
-pkgver=2020.10
+pkgver=2020.11
 pkgrel=1
 pkgdesc="Raku compiler for MoarVM"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ replaces=('rakudo-moarvm')
 conflicts=('rakudo-moarvm')
 options=('!makeflags')
 source=("https://rakudo.org/dl/$pkgname/$pkgname-$pkgver.tar.gz")
-b2sums=('869f6dc6569093f7ad39d9c250d6564b6311cdefda2950784e54263bed6faca4b8653a9578b19f52819eb8e9f24e1f5f831468bf4620d885d4bb26944e22e8f4')
+b2sums=('314da91b516d509fcfcfff16e46444243083bdeb21294bc33a2996f1883317b663cc3442cbb6090c8339c5607b4e64a4c8c3c9f2fa5d728bd5c6513d6ef20bcf')
 
 build() {
 	cd "$pkgname-$pkgver"
