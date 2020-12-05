@@ -1,0 +1,5 @@
+*
+!.gitignore
+!PKGBUILD
+!helm-gcs.install
+!.SRCINFO
