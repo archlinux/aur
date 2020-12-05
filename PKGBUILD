@@ -1,7 +1,7 @@
 # Maintainer: Ethan Atchley <ethanatchley2006@gmail.com>
 # Maintainer: Hydral
 pkgname=gamejolt-client-bin-aur
-pkgname=gamejolt-client-bin
+pkgname=gamejolt-client-bin-aur
 pkgver=0.57.0
 pkgrel=1
 epoch=
