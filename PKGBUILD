@@ -2,7 +2,7 @@
 
 pkgname='python-django-jsonfield'
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A reusable JSONField model for Django to store ad-hoc data'
 arch=('any')
 url='https://github.com/dmkoch/django-jsonfield'
