@@ -1,7 +1,8 @@
-# Maintainer: Lamelos <lamelos at gmail.com>
+# Maintainer: Amin Vakil <info AT aminvakil DOT com>
+# Contributor: Lamelos <lamelos at gmail.com>
 
 pkgname=fcct
-pkgver=0.5.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Fedora CoreOS Config Transpiler"
 arch=("any")
