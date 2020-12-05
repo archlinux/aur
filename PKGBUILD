@@ -1,30 +1,38 @@
-# $Id$
-# Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+
 pkgname=rofimoji-git
-_pkgname=rofimoji
-pkgver=3.0.0.r0.g4cffa9f
+pkgver=4.3.0.r6.g0614fe8
 pkgrel=1
-pkgdesc="A simple emoji picker for rofi"
-depends=('rofi' 'python3' 'xdotool')
-optdepends=('noto-fonts-emoji' 'ttf-symbola' 'xsel: copy emoji to clipboard')
+pkgdesc='Character picker for rofi'
 arch=('any')
-url="https://github.com/fdw/${_pkgname}"
+url=https://github.com/fdw/rofimoji
 license=('MIT')
-provides=($_pkgname)
-conflicts=($_pkgname)
-makedepends=('git')
-source=("git+https://github.com/fdw/rofimoji.git")
-md5sums=('SKIP')
+depends=('emoji-font' 'python-configargparse' 'python-xdg' 'rofi')
+makedepends=('git' 'python-pip' 'python-setuptools' 'python-wheel')
+optdepends=('wl-copy: for the Wayland clipboarder'
+            'wtype: for the Wayland typer'
+            'xclip: for one of the X.Org clipboarders'
+            'xsel: for one of the X.Org clipboarders'
+            'xdotool: for the X.Org typer')
+provides=('rofimoji')
+conflicts=('rofimoji')
+install=$pkgname.install
+source=("git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd rofimoji
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+  cd rofimoji
+  python setup.py bdist_wheel
+}
+
 package() {
-  cd $_pkgname
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/rofimoji-git/LICENSE"
-  install -D -m755 rofimoji.py "$pkgdir/usr/bin/$_pkgname"
+  cd rofimoji
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps dist/*.whl
 }
 
 # vim:set ts=2 sw=2 et:
