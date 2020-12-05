@@ -6,7 +6,7 @@ pkgname=('pipewire-git'
          'pipewire-pulse-git'
          'pipewire-ffmpeg-git'
          )
-pkgver=0.3.17.51.gc6663b6a
+pkgver=0.3.17.56.gcfe43cbe
 pkgrel=1
 pkgdesc='Server and user space API to deal with multimedia pipelines. (GIT version)'
 arch=('x86_64')
@@ -28,8 +28,9 @@ makedepends=('git'
              'libsndfile'
              'bluez-libs'
              'vulkan-headers'
-             'libldac'
              'ffmpeg'
+             'libldac'
+             'libopenaptx'
              )
 source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
 sha256sums=('SKIP')
@@ -89,6 +90,7 @@ package_pipewire-git() {
            'libdbus-1.so'
            'sbc'
            'libldac'
+           'libopenaptx'
            )
   optdepends=('pipewire-docs-git: Documentation'
               'pipewire-jack-git: JACK support'
