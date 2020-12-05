@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-pytest-mpl
 pkgver=0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Pytest plugin to help with testing figures output from Matplotlib"
 arch=('i686' 'x86_64')
 url="https://github.com/matplotlib/pytest-mpl"

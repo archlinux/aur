@@ -1,7 +1,7 @@
 pkgbase = python-pytest-mpl
 	pkgdesc = Pytest plugin to help with testing figures output from Matplotlib
 	pkgver = 0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matplotlib/pytest-mpl
 	arch = i686
 	arch = x86_64
