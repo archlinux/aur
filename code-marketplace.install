@@ -1,31 +1,15 @@
 post_install() {
-  if [ -f /usr/lib/code/product.json ]; then
-    patch /usr/lib/code/product.json </usr/share/code-marketplace/code.patch
-  elif [ -f /usr/share/vscodium-bin/resources/app/product.json ]; then
-    patch /usr/share/vscodium-bin/resources/app/product.json </usr/share/code-marketplace/vscodium-bin.patch
-  fi
+  patch /usr/lib/code/product.json < /usr/lib/code/product_json.patch
 }
 
 pre_upgrade() {
-  if [ -f /usr/lib/code/product.json ]; then
-    patch -R /usr/lib/code/product.json </usr/share/code-marketplace/code.patch
-  elif [ -f /usr/share/vscodium-bin/resources/app/product.json ]; then
-    patch -R /usr/share/vscodium-bin/resources/app/product.json </usr/share/code-marketplace/vscodium-bin.patch
-  fi
+  patch -R /usr/lib/code/product.json < /usr/lib/code/product_json.patch
 }
 
 post_upgrade() {
-  if [ -f /usr/lib/code/product.json ]; then
-    patch /usr/lib/code/product.json </usr/share/code-marketplace/code.patch
-  elif [ -f /usr/share/vscodium-bin/resources/app/product.json ]; then
-    patch /usr/share/vscodium-bin/resources/app/product.json </usr/share/code-marketplace/vscodium-bin.patch
-  fi
+  patch /usr/lib/code/product.json < /usr/lib/code/product_json.patch
 }
 
 pre_remove() {
-  if [ -f /usr/lib/code/product.json ]; then
-    patch -R /usr/lib/code/product.json </usr/share/code-marketplace/code.patch
-  elif [ -f /usr/share/vscodium-bin/resources/app/product.json ]; then
-    patch -R /usr/share/vscodium-bin/resources/app/product.json </usr/share/code-marketplace/vscodium-bin.patch
-  fi
+  patch -R /usr/lib/code/product.json < /usr/lib/code/product_json.patch
 }

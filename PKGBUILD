@@ -2,24 +2,18 @@
 pkgname=code-marketplace
 pkgver=1.50.1
 pkgrel=1
-pkgdesc='Enable vscode marketplace in Code OSS and VSCodium'
+pkgdesc='Enable vscode marketplace in Code OSS'
 arch=('any')
 url='https://marketplace.visualstudio.com/vscode'
 license=('unknown')
-depends=('code')
+depends=('code>=1.50.1')
 install="${pkgname}.install"
 source=('code-marketplace.hook'
-        'patch.sh'
-        'code.patch'
-        'vscodium-bin.patch')
-md5sums=('86f0c2bc60b5843a41fd9d2f8bab0b5a'
-         '5c3a49895d2d29a1878e8b9ba5764ef0'
-         '0fe49bf0ff5d74f632bf3b5d435750ab'
-         '060a4fc39945ca3c5a5c9e8136c343ad')
+        'product_json.patch')
+md5sums=('8a5cbd751ee2762d40f1e43e9e6e69e0'
+         '9e476c8aae4243010d6a1c18e56ac402')
 
 package() {
   install -Dm 644 "${srcdir}"/code-marketplace.hook "${pkgdir}"/usr/share/libalpm/hooks/code-marketplace.hook
-  install -Dm 755 "${srcdir}"/patch.sh "${pkgdir}"/usr/share/code-marketplace/patch.sh
-  install -Dm 644 "${srcdir}"/code.patch "${pkgdir}"/usr/share/code-marketplace/code.patch
-  install -Dm 644 "${srcdir}"/vscodium-bin.patch "${pkgdir}"/usr/share/code-marketplace/vscodium-bin.patch
+  install -Dm 644 "${srcdir}"/product_json.patch "${pkgdir}"/usr/lib/code/product_json.patch
 }
