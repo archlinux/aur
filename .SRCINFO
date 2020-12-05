@@ -1,7 +1,7 @@
 pkgbase = libsearpc
 	pkgdesc = A simple C language RPC framework (including both server side & client side)
 	pkgver = 3.2.0
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 2
 	url = https://github.com/haiwen/libsearpc
 	arch = i686
