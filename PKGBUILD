@@ -5,7 +5,7 @@
 
 pkgbase=mp-5
 pkgname=(mp-5-gtk mp-5-nc mp-5-qt5)
-pkgver=5.42
+pkgver=5.44
 pkgrel=1
 arch=('x86_64')
 url="https://triptico.com/software/mp.html"
@@ -15,20 +15,23 @@ makedepends=('gtk3' 'ncurses' 'qt5-base')
 options=(!makeflags)
 #source=("https://triptico.com/download/mp/mp-$pkgver.tar.gz")
 source=("https://triptico.com/download/mp-5.tar.gz")
-md5sums=('ca4dbe8401524445cb47abc1e8d9da5b')
+md5sums=('d76f16f46e2b0a9175a3995d92e80feb')
 
 prepare() {
   # Patch hard-coded install paths
-  sed -i 's| /usr| $(PREFIX)|g' mp-$pkgver/makefile.in
+  #sed -i 's| /usr| $(PREFIX)|g' mp-$pkgver/makefile.in
+  sed -i 's| /usr| $(PREFIX)|g' mp-$pkgver-dev/makefile.in
 
   # Copy source files for each package
   # Patch: move subfolders "mpdm" and "mpsl" one folder up
   for dir in mp-5-gtk mp-5-nc mp-5-qt5; do
     rm -rf "$dir"
-    cp -a mp-$pkgver "$dir"
+    #cp -a mp-$pkgver "$dir"
+    cp -a mp-$pkgver-dev "$dir"
     rm -rf "$dir/"{mpdm,mpsl}
   done
-  cp -a mp-$pkgver/{mpdm,mpsl} .
+  #cp -a mp-$pkgver/{mpdm,mpsl} .
+  cp -a mp-$pkgver-dev/{mpdm,mpsl} .
 }
 
 build() {
