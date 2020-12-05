@@ -8,8 +8,10 @@ pkgbase = recaf
 	makedepends = jdk-openjdk
 	depends = java-runtime
 	depends = java-openjfx
-	noextract = recaf-2.13.1.jar
+	noextract = recaf-2.13.1-J8-jar-with-dependencies.jar
 	source = https://github.com/Col-E/Recaf/releases/download/2.13.1/recaf-2.13.1-J8-jar-with-dependencies.jar
+	source = https://raw.githubusercontent.com/Col-E/Recaf/2.13.1/LICENSE
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = recaf
