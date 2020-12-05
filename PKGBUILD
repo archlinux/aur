@@ -36,9 +36,8 @@ depends=(${ros_depends[@]} 'libfreenect2')
 
 # Git version (e.g. for debugging)
  _dir=${pkgname}
- source=("${_dir}"::"git+https://github.com/code-iai/iai_kinect2.git"
- "patch.patch")
- sha256sums=('SKIP')
+ source=("${_dir}"::"git+https://github.com/code-iai/iai_kinect2.git" "patch.patch")
+ sha256sums=('SKIP' '3df544f12e67c4c9ec4dcb5d3ab434bd3e68076950735395c182fd357100931b')
 
 build() {
   # Use ROS environment variables
