@@ -3,7 +3,7 @@
 pipname=mpris-fakeplayer
 pkgname=$pipname
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fake mpris player for activating bluez avrcp volume control'
 arch=(any)
 url='https://gitlab.com/hxss-linux/mpris-fakeplayer'
