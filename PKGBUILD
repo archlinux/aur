@@ -63,8 +63,9 @@ package() {
     # base
     install -dm 755 "$pkgdir/opt/$pkgname"
     mv "pycharm-$pkgver/"* "$pkgdir/opt/$pkgname/"
-    install -dm 755 "$pkgdir/usr/share/applications"
+    install -dm 755 "$pkgdir/usr/share/"{applications,pixmaps}
     install -Dm 644 "$pkgname.desktop" "$pkgdir/usr/share/applications/"
+    ln -s "/opt/$pkgname/bin/pycharm.svg" "$pkgdir/usr/share/pixmaps/pycharm.svg"
 
     # exec
     install -dm 755 "$pkgdir/usr/bin/"
