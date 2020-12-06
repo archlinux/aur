@@ -3,7 +3,7 @@
 pkgname='python-django-versatile-imagefield'
 _name='django-versatileimagefield'
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Drop-in replacement for django's ImageField, provides a flexible, intuitive and easily-extensible interface"
 arch=(any)
 url="https://github.com/respondcreate/django-versatileimagefield"
