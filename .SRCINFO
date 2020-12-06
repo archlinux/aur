@@ -1,0 +1,19 @@
+pkgbase = kodi-addon-pvr-sledovanitv-cz-git
+	pkgdesc = sledovanitv.cz/sk PVR client addon for Kodi from palinek's sources
+	pkgver = 1.9.0.Leia.r0.g5390c53
+	pkgrel = 1
+	url = https://github.com/palinek/pvr.sledovanitv.cz
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = kodi-dev
+	makedepends = kodi-platform
+	depends = jsoncpp
+	depends = kodi
+	conflicts = kodi-addon-pvr-sledovanitv
+	source = kodi-addon-pvr-sledovanitv-cz-git::git+https://github.com/palinek/pvr.sledovanitv.cz.git#branch=Leia
+	md5sums = SKIP
+
+pkgname = kodi-addon-pvr-sledovanitv-cz-git
+
