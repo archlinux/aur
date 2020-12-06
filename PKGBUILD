@@ -2,7 +2,7 @@
 
 _pkgname='QRit'
 pkgname="${_pkgname,,}-git"
-pkgver=1.1.1.r0.gbd9c8a0
+pkgver=1.1.2.r0.gace3b28
 pkgrel=1
 pkgdesc='Create awesome QR codes'
 arch=('x86_64')
