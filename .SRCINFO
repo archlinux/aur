@@ -1,0 +1,25 @@
+pkgbase = python-tpm2-gui-git
+	pkgdesc = GUI for the TPM Software Stack (TSS) Feature API (FAPI)
+	pkgver = 0.0.1.r1.2ea1ef7
+	pkgrel = 1
+	url = https://github.com/joholl/tpm2-gui
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python
+	depends = gtk3
+	depends = gobject-introspection-runtime
+	depends = gdk-pixbuf2
+	depends = pango
+	depends = json-c
+	depends = python-tpm2-pytss-git
+	depends = python-gobject
+	depends = python-cryptography
+	provides = python-tpm2-gui
+	conflicts = python-tpm2-gui
+	replaces = tpm2-gui-git
+	source = git+https://github.com/joholl/tpm2-gui.git
+	sha512sums = SKIP
+
+pkgname = python-tpm2-gui-git
+
