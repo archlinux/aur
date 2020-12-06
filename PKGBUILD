@@ -1,7 +1,7 @@
 # Maintainer: Sergey Kasmy <SleeplessSloth79 [at] gmail [dot] com>
 pkgname=ffpb
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A progress bar for ffmpeg. Yay !'
 arch=('any')
 url="https://github.com/althonos/${pkgname}"
