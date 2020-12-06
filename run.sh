@@ -10,6 +10,7 @@ APPDIR="/opt/deepinwine/apps/Deepin-QQLight"
 APPVER="7.9.14308deepin8"
 APPTAR="files.7z"
 PACKAGENAME="deepin.com.qq.im.light"
+export LC_CTYPE='en_US.UTF-8'
 
 HelpApp()
 {
