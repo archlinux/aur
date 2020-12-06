@@ -22,7 +22,7 @@ optdepends=('python-pymupdf: for pdf viewer'
 makedepends=('git')
 provides=('emacs-eaf')
 conflicts=('emacs-eaf')
-source=("emacs-eaf::git://github.com/manateelazycat/emacs-application-framework")
+source=("emacs-eaf::https://github.com/manateelazycat/emacs-application-framework")
 options=(!strip)
 md5sums=('SKIP')
 

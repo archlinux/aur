@@ -21,6 +21,6 @@ optdepends = nodejs: for terminal
 optdepends = aria2: for browser
 optdepends = libreoffice: doc viewer
 optdepends = filebrowser-bin: for file browser
-source = git://github.com/manateelazycat/emacs-application-framework
+source = https://github.com/manateelazycat/emacs-application-framework
 
 pkgname = emacs-eaf
