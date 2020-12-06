@@ -1,7 +1,7 @@
 pkgbase = zettlr
 	pkgdesc = A markdown editor for writing academic texts and taking notes
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zettlr.com
 	arch = x86_64
 	license = GPL
@@ -19,26 +19,10 @@ pkgbase = zettlr
 	source = https://github.com/citation-style-language/locales/archive/cbb45961b815594f35c36da7e78154feb5647823.zip
 	source = https://github.com/citation-style-language/styles/raw/master/chicago-author-date.csl
 	source = https://github.com/Brli/zetter-zh-TW/raw/master/zh-TW.json
-	source = https://translate.zettlr.com/download/de-DE.json
-	source = https://translate.zettlr.com/download/en-GB.json
-	source = https://translate.zettlr.com/download/en-US.json
-	source = https://translate.zettlr.com/download/fr-FR.json
-	source = https://translate.zettlr.com/download/ja-JP.json
-	source = https://translate.zettlr.com/download/zh-CN.json
-	source = https://translate.zettlr.com/download/es-ES.json
-	source = https://translate.zettlr.com/download/ru-RU.json
 	sha256sums = SKIP
 	sha256sums = 8ee8c7e0ea63aacf811fb6f4bdb8f8f32929bf9afdad2f0ffc2f6bfb721d1fd5
 	sha256sums = 2b7cd6c1c9be4add8c660fb9c6ca54f1b6c3c4f49d6ed9fa39c9f9b10fcca6f4
 	sha256sums = 81730193afc64908f820020a19bfeda4475c67ada92e8567a39c9313a3d65ff0
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 
 pkgname = zettlr
 
