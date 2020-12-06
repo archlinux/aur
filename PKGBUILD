@@ -1,9 +1,10 @@
-# Maintainer: Charles L <charliehogger31@gmail.com>
+# Maintainer: Dylan Delgado <dylan1496 at live dot com>
+# Contributor: Charles L <charliehogger31@gmail.com>
 
 pkgbase='python-tinydb'
 pkgname=('python-tinydb')
 _module='tinydb'
-pkgver='4.1.1'
+pkgver='4.3.0'
 pkgrel=1
 pkgdesc="TinyDB is a tiny, document oriented database optimized for your happiness :)"
 url="https://github.com/msiemens/tinydb"
@@ -12,7 +13,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('1b8d7308ba2fe6d582c6ae69f33c62013053939f7ab8d1787b1e15950566a202')
+sha256sums=('1d102d06f9bb22d739d8061b490c64d420de70dca5f95ebd43a492c43c7bd303')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
