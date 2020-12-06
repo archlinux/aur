@@ -1,0 +1,19 @@
+pkgbase = solus-artwork-git
+	pkgdesc = Solus Artwork -- latest git
+	pkgver = 27.0.r3.g5120697
+	pkgrel = 1
+	url = https://solus-project.com/budgie
+	arch = x86_64
+	license = CC-BY-3.0
+	license = CC-BY-SA-4.0
+	license = GPL-2.0-only
+	makedepends = meson
+	makedepends = go
+	depends = budgie-desktop
+	provides = solus-artwork
+	conflicts = solus-artwork
+	source = git+https://github.com/getsolus/artwork.git
+	md5sums = SKIP
+
+pkgname = solus-artwork-git
+
