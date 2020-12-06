@@ -4,6 +4,7 @@ _pkgname=htop
 pkgname=${_pkgname}-vim-git
 pkgver=3.0.3rc1.14.g4c4ba9d
 pkgrel=1
+epoch=1
 pkgdesc="Interactive text-mode process viewer. Patched for vim keybindings"
 url="https://github.com/htop-dev/${_pkgname}"
 license=('GPL')
