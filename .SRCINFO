@@ -1,6 +1,6 @@
 pkgbase = python-executor
 	pkgdesc = Programmer friendly subprocess wrapper
-	pkgver = 23.1
+	pkgver = 23.2
 	pkgrel = 1
 	url = https://github.com/xolox/python-executor
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-executor
 	depends = python-humanfriendly
 	depends = python-property-manager
 	depends = python-six
-	source = https://github.com/xolox/python-executor/archive/23.1.tar.gz
-	md5sums = c9f6ce677605d427265e3b5ff8f9c655
+	source = https://github.com/xolox/python-executor/archive/23.2.tar.gz
+	md5sums = 83227fb7030f3b3675b5f562821f9a7f
 
 pkgname = python-executor
 
