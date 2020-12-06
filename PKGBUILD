@@ -1,14 +1,14 @@
-# Maintainer: wszqkzqk <wszqkzqk@gmail.com>
+# Maintainer: zhullyb <zhullyb@outlook.com>
 pkgname=deepin.com.qq.im.light
 pkgver=7.9.14308deepin8
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Deepin Wine QQ Light 7.9."
 arch=('i686' 'x86_64')
 url="http://im.qq.com/"
 license=('Proprietary')
 groups=()
-depends=('deepin-wine')
+depends=('deepin-wine5')
 makedepends=('tar')
 checkdepends=()
 optdepends=()
@@ -17,9 +17,9 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=
+install=.INSTALL
 changelog=
-source=("https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/${pkgname}/${pkgname}_${pkgver}_i386.deb")
+source=("https://packages.deepin.com/deepin/pool/non-free/d/${pkgname}/${pkgname}_${pkgver}_i386.deb")
 noextract=("${pkgname}_${pkgver}_i386.deb")
 md5sums=('SKIP')
 validpgpkeys=()
