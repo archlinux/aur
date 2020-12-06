@@ -12,6 +12,8 @@ pkgbase = budgie-desktop-view-git
 	makedepends = vala
 	makedepends = gtk-doc
 	depends = budgie-desktop
+	provides = budgie-desktop-view
+	conflicts = budgie-desktop-view
 	source = git+https://github.com/getsolus/budgie-desktop-view.git
 	md5sums = SKIP
 

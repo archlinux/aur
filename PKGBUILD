@@ -18,6 +18,8 @@ intltool
 vala
 gtk-doc
 )
+provides=(budgie-desktop-view)
+conflicts=(budgie-desktop-view)
 source=("git+https://github.com/getsolus/budgie-desktop-view.git")
 md5sums=('SKIP')
 
