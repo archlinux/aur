@@ -1,6 +1,6 @@
 pkgbase = python-pypykatz
 	pkgdesc = Partial Mimikatz implementation in pure Python.
-	pkgver = 0.3.12
+	pkgver = 0.3.15
 	pkgrel = 1
 	url = https://pypi.org/project/pypykatz/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-pypykatz
 	depends = python-winsspi
 	depends = python-msldap
 	depends = python-aiowinreg
-	source = pypykatz-0.3.12.tar.gz::https://files.pythonhosted.org/packages/ee/c8/1f405de42e52b2fc06aed437ae02ce6e711605e755e304727b8917188c0f/pypykatz-0.3.12.tar.gz
-	sha256sums = b63b19ec6ee8448bbcf7003e6ad1f9d7a2784fd8cee54aebcc5f717792a43200
+	source = https://files.pythonhosted.org/packages/source/p/pypykatz/pypykatz-0.3.15.tar.gz
+	sha256sums = 718618aabf115d06136007fb4cd6bf3baf98ffc004c5bd90baf8d0cd9546d0e5
 
 pkgname = python-pypykatz
 
