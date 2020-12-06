@@ -2,7 +2,7 @@
 # Maintainer: jirian <me@jiriantonu.cz>
 
 pkgbase=lib32-mesa-libgl
-pkgname=('lib32-vulkan-intel-noglvnd' 'lib32-vulkan-radeon-noglvnd' 'lib32-libva-mesa-driver-noglvnd' 'lib32-mesa-vdpau-noglvnd' 'lib32-mesa-noglvnd' 'lib32-mesa-libgl-noglvnd')
+pkgname=('lib32-mesa-libgl')
 pkgver=18.3.2
 pkgrel=1
 arch=('x86_64')
@@ -84,104 +84,7 @@ _install() {
   done
 }
 
-package_lib32-vulkan-intel-noglvnd() {
-  pkgdesc="Intel's Vulkan mesa driver (32-bit) - non-libglvnd version"
-  depends=('lib32-wayland' 'lib32-libx11' 'lib32-gcc-libs' 'lib32-libxshmfence')
-  provides=('lib32-vulkan-driver' 'lib32-vulkan-intel')
-  conflicts=('lib32-vulkan-intel' 'lib32-vulkan-intel-git')
-  replaces=('lib32-vulkan-intel' 'lib32-vulkan-intel-git')
-
-  _install fakeinstall/usr/share/vulkan/icd.d/intel_icd*.json
-  _install fakeinstall/usr/lib32/libvulkan_intel.so
-
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-}
-
-package_lib32-vulkan-radeon-noglvnd() {
-  pkgdesc="Radeon's Vulkan mesa driver (32-bit) - non-libglvnd version"
-  depends=('lib32-wayland' 'lib32-libx11' 'lib32-llvm-libs' 'lib32-libdrm' 'lib32-libelf' 'lib32-libxshmfence')
-  provides=('lib32-vulkan-driver' 'lib32-vulkan-radeon')
-  conflicts=('lib32-vulkan-radeon' 'lib32-vulkan-radeon-git')
-  replaces=('lib32-vulkan-radeon' 'lib32-vulkan-radeon-git')
-
-  _install fakeinstall/usr/share/vulkan/icd.d/radeon_icd*.json
-  _install fakeinstall/usr/lib32/libvulkan_radeon.so
-
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-}
-
-package_lib32-libva-mesa-driver-noglvnd() {
-  pkgdesc="VA-API implementation for gallium (32-bit) - non-libglvnd version"
-  depends=('lib32-libdrm' 'lib32-libx11' 'lib32-expat' 'lib32-llvm-libs' 'lib32-libelf' 'lib32-libxshmfence')
-  provides=('lib32-libva-mesa-driver')
-  conflicts=('lib32-libva-mesa-driver' 'lib32-libva-mesa-driver-git')
-  replaces=('lib32-libva-mesa-driver' 'lib32-libva-mesa-driver-git')
-
-  _install fakeinstall/usr/lib32/dri/*_drv_video.so
-
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-}
-
-package_lib32-mesa-vdpau-noglvnd() {
-  pkgdesc="Mesa VDPAU drivers (32-bit) - non-libglvnd version"
-  depends=('lib32-libdrm' 'lib32-libx11' 'lib32-expat' 'lib32-llvm-libs' 'lib32-libelf' 'lib32-libxshmfence')
-  provides=('lib32-mesa-vdpau')
-  conflicts=('lib32-mesa-vdpau')
-  replaces=('lib32-mesa-vdpau')
-
-  _install fakeinstall/usr/lib32/vdpau
-
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-}
-
-package_lib32-mesa-noglvnd() {
-  pkgdesc="an open-source implementation of the OpenGL specification (32-bit) - non-libglvnd version"
-  depends=('lib32-libdrm' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-lm_sensors'
-           'lib32-libelf' 'lib32-llvm-libs' 'lib32-wayland' 'lib32-libtxc_dxtn' 'mesa')
-  optdepends=('opengl-man-pages: for the OpenGL API man pages'
-              'lib32-mesa-vdpau-noglvnd: for accelerated video playback')
-  provides=('lib32-ati-dri' 'lib32-intel-dri' 'lib32-nouveau-dri' 'lib32-mesa-dri' 'lib32-opengl-driver' 'lib32-mesa')
-  conflicts=('lib32-ati-dri' 'lib32-intel-dri' 'lib32-nouveau-dri' 'lib32-mesa-dri' 'lib32-mesa' 'lib32-mesa-git')
-  replaces=('lib32-ati-dri' 'lib32-intel-dri' 'lib32-nouveau-dri' 'lib32-mesa-dri' 'lib32-mesa' 'lib32-mesa-git')
-
-  # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast
-  _install fakeinstall/usr/lib32/dri/*_dri.so
-
-  _install fakeinstall/usr/lib32/d3d
-  _install fakeinstall/usr/lib32/lib{gbm,glapi}.so*
-  _install fakeinstall/usr/lib32/libOSMesa.so*
-  _install fakeinstall/usr/lib32/libxatracker.so*
-
-#   # in libglvnd
-#   rm -v fakeinstall/usr/lib32/libGLESv{1_CM,2}.so*
-
-
-  install -m755 -d ${pkgdir}/usr/lib32/mesa
-  # move libgl/EGL/glesv*.so to not conflict with blobs - may break .pc files ?
-  mv -v ${srcdir}/fakeinstall/usr/lib32/libGL.so*    ${pkgdir}/usr/lib32/mesa/
-  mv -v ${srcdir}/fakeinstall/usr/lib32/libEGL.so*   ${pkgdir}/usr/lib32/mesa/
-  mv -v ${srcdir}/fakeinstall/usr/lib32/libGLES*.so* ${pkgdir}/usr/lib32/mesa/
-
-  _install fakeinstall/usr/lib32/pkgconfig
-
-#   # libglvnd support
-#   _install fakeinstall/usr/lib32/libGLX_mesa.so*
-#   _install fakeinstall/usr/lib32/libEGL_mesa.so*
-
-#   # indirect rendering
-#   ln -s /usr/lib32/libGLX_mesa.so.0 "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
-# 
-#   rm -rv fakeinstall/etc
-#   rm -rv fakeinstall/usr/include
-#   rm -rv fakeinstall/usr/share
-
-#   # make sure there are no files left to install
-#   find fakeinstall -depth -print0 | xargs -0 rmdir
-
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-}
-
-package_lib32-mesa-libgl-noglvnd() {
+package_lib32-mesa-libgl() {
   pkgdesc="Mesa 3-D graphics library (32-bit) - non-libglvnd version"
   depends=('lib32-mesa')
   provides=('lib32-libgl' 'lib32-libegl' 'lib32-libgles' 'lib32-mesa-libgl')
