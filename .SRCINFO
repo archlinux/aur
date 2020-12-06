@@ -1,6 +1,6 @@
 pkgbase = wingpanel-indicator-notifications-git
 	pkgdesc = Notifications indicator for Wingpanel
-	pkgver = 2.1.4.r15.gf06603e
+	pkgver = 2.1.4.r85.g316738a
 	pkgrel = 1
 	url = https://github.com/elementary/wingpanel-indicator-notifications
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = wingpanel-indicator-notifications-git
 	depends = libgee
 	depends = libwnck3
 	depends = libgranite.so
-	depends = libwingpanel-2.0.so
+	depends = libwingpanel-3.0.so
 	provides = wingpanel-indicator-notifications
 	conflicts = wingpanel-indicator-notifications
 	source = git+https://github.com/elementary/wingpanel-indicator-notifications.git
