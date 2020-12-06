@@ -3,7 +3,7 @@
 
 pkgname=renderdoc-git
 pkgver=1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenGL and Vulkan debugging tool"
 arch=(i686 x86_64)
 url="https://github.com/baldurk/renderdoc"
@@ -24,6 +24,8 @@ pkgver() {
 }
 
 build() {
+  CFLAGS="${CFLAGS//-march=native}"
+  CXXFLAGS="${CXXFLAGS//-march=native}"
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_VERSION_DIST_CONTACT="https://aur.archlinux.org/packages/renderdoc-git" \
