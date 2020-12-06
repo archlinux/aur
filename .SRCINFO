@@ -1,7 +1,7 @@
 pkgbase = hplip-plugin
 	pkgdesc = Binary plugin for HPs hplip printer driver library
-	pkgver = 3.20.9
-	pkgrel = 4
+	pkgver = 3.20.11
+	pkgrel = 1
 	url = https://developers.hp.com/hp-linux-imaging-and-printing/binary_plugin.html
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = hplip-plugin
 	arch = armv7h
 	arch = aarch64
 	license = custom:proprietary
-	depends = hplip>=3.20.9
+	depends = hplip>=3.20.11
 	backup = var/lib/hp/hplip.state
-	source = https://developers.hp.com/sites/default/files/hplip-3.20.9-plugin.run
-	md5sums = 6919238d3911504ec6580cef1efa52e2
+	source = https://developers.hp.com/sites/default/files/hplip-3.20.11-plugin.run
+	md5sums = e6c2e7760b3ea30d19b89300bf49ecbd
 
 pkgname = hplip-plugin
 
