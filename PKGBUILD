@@ -17,20 +17,24 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=.INSTALL
+install=
 changelog=
-source=("https://packages.deepin.com/deepin/pool/non-free/d/${pkgname}/${pkgname}_${pkgver}_i386.deb")
+source=("https://packages.deepin.com/deepin/pool/non-free/d/${pkgname}/${pkgname}_${pkgver}_i386.deb"
+  "run.sh")
 noextract=("${pkgname}_${pkgver}_i386.deb")
-md5sums=('SKIP')
+md5sums=('SKIP'
+  "SKIP")
 validpgpkeys=()
 
 prepare() {
 	ar -x ${pkgname}_${pkgver}_i386.deb
 	mkdir ${pkgname}-${pkgver}
-	tar -xf data.tar.xz --directory="${pkgname}-${pkgver}"	
+	tar -xf data.tar.xz --directory="${pkgname}-${pkgver}"
+    mv run.sh ${pkgname}-${pkgver}/opt/deepinwine/apps/Deepin-QQLight/
 }
 
 package() {
 	cd "${pkgname}-${pkgver}"
 	cp -r ./ ${pkgdir}/
+	
 }

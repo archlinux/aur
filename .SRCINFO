@@ -3,7 +3,6 @@ pkgbase = deepin.com.qq.im.light
 	pkgver = 7.9.14308deepin8
 	pkgrel = 3
 	url = http://im.qq.com/
-	install = .INSTALL
 	arch = i686
 	arch = x86_64
 	license = Proprietary
@@ -11,6 +10,8 @@ pkgbase = deepin.com.qq.im.light
 	depends = deepin-wine5
 	noextract = deepin.com.qq.im.light_7.9.14308deepin8_i386.deb
 	source = https://packages.deepin.com/deepin/pool/non-free/d/deepin.com.qq.im.light/deepin.com.qq.im.light_7.9.14308deepin8_i386.deb
+	source = run.sh
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = deepin.com.qq.im.light
