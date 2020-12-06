@@ -1,0 +1,53 @@
+pkgbase = openrazer-basilisk-v2-git
+	pkgdesc = An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux.  (Temporary package for Basilisk V2 support).
+	pkgver = 2.6.0.r6.g2433ae8
+	pkgrel = 1
+	url = https://github.com/malsyned/openrazer
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = python-setuptools
+	source = git+https://github.com/malsyned/openrazer.git
+	sha256sums = SKIP
+
+pkgname = python-openrazer-basilisk-v2-git
+	pkgdesc = Python library for accessing the Razer daemon from Python.
+	depends = openrazer-daemon
+	depends = python-numpy
+	provides = python-openrazer
+	conflicts = python-openrazer
+
+pkgname = openrazer-daemon-basilisk-v2-git
+	pkgdesc = Userspace daemon that abstracts access to the kernel driver. Provides a DBus service for applications to use.  (Temporary package for Basilisk V2 support).
+	install = openrazer-daemon-git.install
+	depends = openrazer-driver-dkms
+	depends = gtk3
+	depends = python-dbus
+	depends = python-gobject
+	depends = python-setproctitle
+	depends = python-daemonize
+	depends = python-notify2
+	depends = python-pyudev
+	depends = xautomation
+	provides = openrazer-daemon
+	conflicts = openrazer-daemon
+
+pkgname = openrazer-driver-dkms-basilisk-v2-git
+	pkgdesc = Kernel driver for Razer devices (DKMS-variant)  (Temporary package for Basilisk V2 support).
+	install = openrazer-driver-dkms-git.install
+	depends = dkms
+	depends = udev
+	provides = openrazer-driver-dkms
+	conflicts = openrazer-driver-dkms
+
+pkgname = openrazer-meta-basilisk-v2-git
+	pkgdesc = Meta package for installing all required openrazer packages.  (Temporary package for Basilisk V2 support).
+	depends = openrazer-driver-dkms
+	depends = openrazer-daemon
+	depends = python-openrazer
+	optdepends = polychromatic: frontend
+	optdepends = razergenie: qt frontend
+	optdepends = razercommander: gtk frontend
+	provides = openrazer-meta
+	conflicts = openrazer-meta
+
