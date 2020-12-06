@@ -2,7 +2,7 @@
 
 _pkgname=htop
 pkgname=${_pkgname}-vim-git
-pkgver=1697.d1db9da
+pkgver=3.0.3rc1.14.g4c4ba9d
 pkgrel=1
 pkgdesc="Interactive text-mode process viewer. Patched for vim keybindings"
 url="https://github.com/htop-dev/${_pkgname}"
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    local ver="$(git describe --tags)"
     printf "%s" "${ver//-/.}"
 }
 
