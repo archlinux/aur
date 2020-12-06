@@ -1,13 +1,13 @@
 pkgbase = dolphin-git
 	pkgdesc = KDE File Manager (Git)
-	pkgver = 20.08.0.r35.ga1d5d75be
+	pkgver = 20.11.90.r45.g3c6f1e688
 	pkgrel = 1
 	url = https://kde.org/applications/en/system/org.kde.dolphin
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = extra-cmake-modules
-	makedepends = kdoctools
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
 	makedepends = packagekit-qt5
 	makedepends = git
 	depends = baloo-widgets
@@ -23,4 +23,3 @@ pkgbase = dolphin-git
 	md5sums = SKIP
 
 pkgname = dolphin-git
-
