@@ -5,7 +5,7 @@
 pkgbase=lib32-pipewire
 _pkgbase=pipewire
 pkgname=(lib32-pipewire lib32-pipewire-jack lib32-gst-plugin-pipewire)
-pkgver=0.3.16
+pkgver=0.3.17
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines (32-bit client libraries)"
 url="https://pipewire.org"
@@ -13,9 +13,9 @@ license=(LGPL2.1)
 arch=(x86_64)
 makedepends=(git meson valgrind lib32-jack2 lib32-libpulse lib32-alsa-lib
              lib32-gstreamer lib32-gst-plugins-base lib32-sbc rtkit
-             lib32-vulkan-icd-loader lib32-dbus lib32-libsndfile lib32-bluez-libs
+             lib32-vulkan-icd-loader lib32-dbus lib32-libsndfile
              vulkan-headers)
-_commit=09d373f094f0e6797aef3d97cde2c0167dccc986  # tags/0.3.16
+_commit=f5f5beb0ece64c7d08edb5413dde537ec5b6c3e2  # tags/0.3.17
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -40,6 +40,7 @@ build() {
     --libdir /usr/lib32 \
     -D docs=false \
     -D tests=false \
+    -D bluez5=false \
     -D udevrulesdir=/usr/lib/udev/rules.d
   meson compile -C build
 }
@@ -62,9 +63,9 @@ _ver=${pkgver:0:3}
 _spaver="0.2"
 
 package_lib32-pipewire() {
-  depends=(lib32-sbc rtkit lib32-vulkan-icd-loader lib32-bluez-libs
-           alsa-card-profiles lib32-dbus lib32-libsndfile lib32-libudev0-shim
-           lib32-alsa-lib lib32-systemd lib32-glib2)
+  depends=(lib32-sbc rtkit lib32-vulkan-icd-loader alsa-card-profiles
+           lib32-dbus lib32-libsndfile lib32-libudev0-shim lib32-alsa-lib
+           lib32-systemd lib32-glib2)
   optdepends=('lib32-pipewire-jack: JACK support')
 
   DESTDIR="$srcdir/install" meson install -C build
