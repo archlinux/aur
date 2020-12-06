@@ -1,42 +1,32 @@
 # Maintainer: Mattéo Delabre <spam@delab.re>
 pkgname=rmapi
 pkgver=0.0.12
-pkgrel=1
-pkgdesc="Access reMarkable tablet files through the Cloud API"
+pkgrel=2
+pkgdesc='Access reMarkable tablet files through the Cloud API'
 arch=('x86_64')
-url="https://github.com/juruen/rmapi"
+url='https://github.com/juruen/rmapi'
 license=('AGPL3')
 depends=('glibc')
-makedepends=('go-pie')
-source=("$url/archive/v$pkgver.tar.gz")
+makedepends=('go')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
-_ref="${url#"https://"}"
-
 prepare() {
-    export GOPATH="$srcdir"/gopath
-    mkdir -p "$GOPATH"
-
-    ref_base="$(dirname "$_ref")"
-    mkdir -p "$GOPATH"/src/"$ref_base"
-    mv "$pkgname-$pkgver" "$GOPATH"/src/"$_ref"
-
-    cd "$GOPATH"/src/"$_ref"
-    go get -v -t -d -a ./...
+    cd "$pkgname-$pkgver"
+    mkdir -p build/
 }
 
 build() {
-    export GOPATH="$srcdir"/gopath
-    cd "$GOPATH"/src/"$_ref"
-
-    go build \
-        -gcflags "all=-trimpath=$GOPATH" \
-        -asmflags "all=-trimpath=$GOPATH" \
-        -ldflags "-extldflags $LDFLAGS" \
-        -v .
+    cd "$pkgname-$pkgver"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw'
+    go build -o build .
 }
 
 package() {
-    cd "$GOPATH"/src/"$_ref"
-    install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
+    cd "$pkgname-$pkgver"
+    install -Dm755 build/"$pkgname" "$pkgdir"/usr/bin/"$pkgname"
 }
