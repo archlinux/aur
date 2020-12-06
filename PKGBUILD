@@ -5,8 +5,8 @@
 
     pkgname='ros-melodic-cartographer-rviz'
     pkgver='1.0.0'
-    arch=('any')
-    pkgrel=2
+    arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+    pkgrel=3
     license=('Apache 2.0')
 
     ros_makedepends=(ros-melodic-message-runtime
