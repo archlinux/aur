@@ -1,0 +1,17 @@
+pkgbase = moar-git
+	pkgdesc = Drop-in replacement for the less pager
+	pkgver = 1.1.r0.geace381
+	pkgrel = 1
+	url = https://github.com/walles/moar
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	optdepends = highlight: syntax highlighting
+	provides = moar
+	conflicts = moar
+	source = git+https://github.com/walles/moar.git
+	sha256sums = SKIP
+
+pkgname = moar-git
+
