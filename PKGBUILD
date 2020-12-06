@@ -3,7 +3,7 @@
 
 pkgname="emacs-eaf"
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="EAF extends GNU Emacs to an entire universe of powerful GUI applications."
 arch=('x86_64')
 url="https://github.com/manateelazycat/emacs-application-framework"
