@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/a/astropy-helpers/astropy-helpers-${pkgver}.tar.gz"
         'use_system_astropy_helpers.patch')
 md5sums=('e626e395b4eac6784acb45c5f56e6706'
-         '9b061a3f373546f797fcc658483d7e2b')
+         'cc001e2567642396d2eebabc2c323c26')
 
 prepare() {
     cd ${srcdir}/astropy-helpers-${pkgver}
