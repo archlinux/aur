@@ -3,8 +3,8 @@
 # Contributor: pandada8 <pandada8@gmail.com>
 
 pkgname=xray
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="The best v2ray-core, with XTLS support."
 arch=('x86_64')
 url="https://github.com/XTLS/Xray-core"
@@ -22,7 +22,7 @@ source=(
     "location_asset.patch"
 )
 sha512sums=(
-    '03c6337ca13e135f7cdaef978bb526c846cd83ff30036764aacaecbf22a9ad79dc661de6f5fd699fbf22fac6833a4aeb5870941c82aee0d74fc60641f858460e'
+    '6b45eb38abceec9f0604af2e6a04c595d4bf71c25d176a31cf6bed91b5473dd9d17ab92b28c2a4c8ccc8260db713a9fa8aa5ff69e54f1943460e512f6c6342b4'
     '2000211cbf987adaee7f278cc8cb23268965caab3bc46401f9324f2beaad95bec11012f5f4500f1016f4b75f097f3ac96cc5be2da7a6df0261582b3f23b3d78d'
     '9914fd3da02511b716951e521ca22006a6e8ad66e64d32cc7dd7dc3544a754174b37e35df6108ca217130f02763265d74f8bc56c4e52b262bdd48dcdb5310eb5'
     '532f66fe19196de0cc43df1812d6f32cbca7bbcacaa0cd4141bd80b3121b17eb8b23e0464765cf05a97b11e0213fb688eade83e393e36b3e7ebded6f0925de97'
@@ -46,7 +46,7 @@ build() {
 
 check() {
     cd "${srcdir}"/"Xray-core-${pkgver}"
-    go test -p 1 -tags json -v -timeout 30m github.com/xtls/xray-core/v1/core/...
+    go test -p 1 -tags json -v -timeout 30m github.com/xtls/xray-core/core/...
 }
 
 package() {
