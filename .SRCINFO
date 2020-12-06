@@ -1,12 +1,11 @@
 pkgbase = python-django-rest-framework-jwt
 	pkgdesc = JSON Web Token Authentication support for Django REST Framework
 	pkgver = 1.11.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/GetBlimp/django-rest-framework-jwt
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	depends = python-django
 	depends = python-django-rest-framework
 	depends = python-pyjwt
