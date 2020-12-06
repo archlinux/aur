@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.66.2
+pkgver=2.66.3
 pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
@@ -20,7 +20,7 @@ optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-repor
             'libelf: gresource inspection tool')
 options=('!docs')
 license=(LGPL2.1)
-_commit=500db2e0b8643815cdd9cba4eb67d5daf1352338  # tags/2.66.2^0
+_commit=30c06eb5fc5c1d6b992c144ebf8ae540d99b2fd2  # tags/2.66.3^0
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
         noisy-glib-compile-schemas.diff
         glib-compile-schemas.hook
@@ -44,7 +44,7 @@ prepare() {
   git apply -3 ../noisy-glib-compile-schemas.diff
 
   # Apply patch to generate thumbnails
-  patch -Np1 -i ../glib-thumbnailer.patch
+  git apply -3 ../glib-thumbnailer.patch
 }
 
 build() {
