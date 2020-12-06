@@ -28,15 +28,6 @@ validpgpkeys=()
 build() {
 	cd "$pkgname"
 	make
-:q
-ls
-
-
-
-
-
-
-
 }
 
 package() {
