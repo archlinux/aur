@@ -1,14 +1,14 @@
 pkgbase = python-humblewx
 	pkgdesc = Library that simplifies creating user interfaces with wxPython.
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/thetimelineproj/humblewx
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/h/humblewx/humblewx-0.2.1.tar.gz
-	md5sums = 1d3b30936aecf7570565a73878ed7f73
+	source = https://files.pythonhosted.org/packages/source/h/humblewx/humblewx-0.2.2.tar.gz
+	md5sums = 24b16dbc0aa4f924bd85368bbf01c1e2
 
 pkgname = python-humblewx
 
