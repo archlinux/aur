@@ -14,7 +14,7 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          xorg-server-xwayland graphene)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server sysprof)
 checkdepends=(xorg-server-xvfb)
-provides=(mutter)
+provides=(mutter libmutter-7.so=0-64)
 conflicts=(mutter)
 groups=(gnome)
 install=mutter.install
