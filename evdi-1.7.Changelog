@@ -1,3 +1,6 @@
+v1.7.1
+- use upstreams tagged version to support kernel 5.9
+
 evdi-1.7 v1.7.0
 - revert to 1.7.0 to work with current displayling
 - support kernel 5.9 via PR #228
