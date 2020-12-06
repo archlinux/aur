@@ -1,7 +1,7 @@
 pkgbase = python-numpy-openblas
 	pkgdesc = Scientific tools for Python - built with openblas
 	pkgver = 1.19.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://numpy.scipy.org/
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = python-numpy-openblas
 	makedepends = gcc-fortran
 	makedepends = python-nose
 	makedepends = cython
+	makedepends = python-hypothesis
 	depends = python
 	depends = cython
 	depends = openblas-lapack

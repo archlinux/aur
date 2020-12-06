@@ -6,7 +6,7 @@
 
 pkgname="python-numpy-openblas"
 pkgver=1.19.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python - built with openblas"
 arch=("i686" "x86_64")
 license=("custom")
@@ -15,7 +15,7 @@ depends=("python" "cython" "openblas-lapack")
 optdepends=("python-nose: testsuite")
 provides=("python3-numpy=${pkgver}" "python-numpy=${pkgver}")
 conflicts=("python3-numpy" "python-numpy")
-makedepends=('cblas' 'lapack' 'python' 'python-setuptools' 'gcc-fortran' 'python-nose' 'cython')
+makedepends=('cblas' 'lapack' 'python' 'python-setuptools' 'gcc-fortran' 'python-nose' 'cython' 'python-hypothesis')
 checkdepends=('python-pytest')
 options=('staticlibs')
 source=("python-numpy-$pkgver.tar.gz::https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
