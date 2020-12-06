@@ -1,30 +1,30 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-awkward
-pkgver=0.14.0
-pkgrel=3
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="Manipulate jagged, chunky, and/or bitmasked arrays as easily as Numpy"
-url="https://github.com/scikit-hep/awkward-array"
+url="https://github.com/scikit-hep/awkward-0.x"
 license=('BSD')
 arch=('any')
 depends=('python-numpy')
 makedepends=('python-setuptools' 'python-pytest-runner')
 checkdepends=('python-h5py' 'python-pandas')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/scikit-hep/awkward-array/archive/$pkgver.tar.gz")
-sha512sums=('121feef8c762d4f3aebbe6797cf61aae4aa49c7423858530e892dc3da3229c5118886c09bc37a87abe6b33cb0f351e8753542d30c28a90a6b44088d5e07f5e24')
+source=("https://github.com/scikit-hep/awkward-0.x/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha512sums=('93e3871c770927486411e2a392f731aa5b2eb4fa710b912cd6b3d92fd012bed5200c03a3b7ecca4adfd0fe188edf641c5d004bd4c16dfc39d7684fa09db7a4b4')
 
 build() {
-  cd awkward-array-$pkgver
+  cd awkward-0.x-$pkgver
   python setup.py build
 }
 
 check() {
-  cd awkward-array-$pkgver
+  cd awkward-0.x-$pkgver
   pytest tests
 }
 
 package() {
-  cd awkward-array-$pkgver
+  cd awkward-0.x-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
