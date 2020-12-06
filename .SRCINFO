@@ -1,12 +1,11 @@
 pkgbase = python-retworkx
 	pkgdesc = A python graph library implemented in Rust.
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Qiskit/retworkx
 	arch = x86_64
 	license = Apache
 	makedepends = python-setuptools-rust
-	makedepends = python-pip
 	makedepends = rust
 	depends = python
 	depends = python-numpy
