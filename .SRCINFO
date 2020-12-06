@@ -1,0 +1,19 @@
+pkgbase = jc-git
+	pkgdesc = Converts the output of popular command-line tools and file-types to JSON
+	pkgver = v1.13.4.r24.g439871e
+	pkgrel = 1
+	url = https://github.com/kellyjonbrazil/jc
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-pygments
+	depends = python-ruamel-yaml
+	depends = python-xmltodict
+	provides = jc
+	conflicts = jc
+	source = jc::git+https://github.com/kellyjonbrazil/jc.git
+	sha256sums = SKIP
+
+pkgname = jc-git
+
