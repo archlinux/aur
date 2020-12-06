@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: jirian <me@jiriantonu.cz>
 
-pkgbase=lib32-mesa-noglvnd
+pkgbase=lib32-mesa-libgl
 pkgname=('lib32-vulkan-intel-noglvnd' 'lib32-vulkan-radeon-noglvnd' 'lib32-libva-mesa-driver-noglvnd' 'lib32-mesa-vdpau-noglvnd' 'lib32-mesa-noglvnd' 'lib32-mesa-libgl-noglvnd')
 pkgver=18.3.2
 pkgrel=1
