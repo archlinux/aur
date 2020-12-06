@@ -1,6 +1,6 @@
 pkgbase = weave
 	pkgdesc = Extensions for status bars
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/amrhassan/weave
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = weave
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = https://github.com/amrhassan/weave/archive/v0.1.1.tar.gz
-	md5sums = 2537c1b99e6eaa6bf94702a17850952b
+	source = https://github.com/amrhassan/weave/archive/v0.1.2.tar.gz
+	md5sums = b8bbfd2a3d61699e03de4b8105f19acf
 
 pkgname = weave
 
