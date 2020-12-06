@@ -11,6 +11,7 @@ arch=('any')
 license=('MIT')
 url="https://github.com/asottile/aspy.yaml"
 depends=('python')
+makedepends=('python-setuptools')
 source=("https://pypi.io/packages/source/a/${pypi_name}/${pypi_name}-${pkgver}.tar.gz")
 md5sums=('1959a34873a6bdc1fba807023804867e')
 
