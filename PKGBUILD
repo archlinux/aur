@@ -2,7 +2,7 @@
 
 pkgname=python-b2sdk
 _pkgname=b2-sdk-python
-pkgver=1.1.4
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Python library to access B2 cloud storage.'
 arch=(any)
@@ -13,12 +13,11 @@ depends=('python'
          'python-logfury>=0.1.2'
          'python-requests>=2.9.1'
          'python-setuptools'
-         'python-six>=1.10'
          'python-tqdm>=4.5.0'
         )
 
 source=(https://github.com/Backblaze/${_pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('230d88d1368345f0175c1df3c4e8225b4e481b97263ed3bb1e24eb5b9c204a76')
+sha256sums=('80d2daeaee38178a4d76922da2e69d7ad1f0d90fccea90d724a38909abb69b27')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
@@ -32,4 +31,10 @@ build() {
 package() {
   cd ${srcdir}/${_pkgname}-${pkgver}
   python setup.py install --root=${pkgdir} --optimize=1
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+   # https://wiki.archlinux.org/index.php/Python_package_guidelines
+   local site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
+   rm -rf "${pkgdir}${site_packages}/test"
 }
