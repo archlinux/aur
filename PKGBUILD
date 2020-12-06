@@ -1,5 +1,5 @@
-# Maintainer: Scott <swlittle At gmail dot (commerical tld)>
-pkgname=fetchutils
+# Maintainer: Scott <swlittle{VII} At gmail dot (commerical tld)>
+pkgname=fetchutils-git
 pkgver=0.1.0
 pkgrel=1
 epoch=
