@@ -4,7 +4,7 @@
 pkgname=imagescan
 pkgver=3.63.0
 _utsushiver=${pkgver/3./0.}
-pkgrel=1
+pkgrel=2
 pkgdesc="EPSON Image Scan v3 front-end for scanners and all-in-ones"
 arch=(x86_64)
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
