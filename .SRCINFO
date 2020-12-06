@@ -1,6 +1,6 @@
 pkgbase = pidgin-light
 	pkgdesc = A light pidgin version: msn, jabber, irc supported protocols without gstreamer, tcl, tk, xscreensaver support.No video/voice. Includes finch
-	pkgver = 2.13.0
+	pkgver = 2.14.1
 	pkgrel = 1
 	url = http://pidgin.im/
 	install = pidgin-light.install
@@ -31,10 +31,10 @@ pkgbase = pidgin-light
 	conflicts = libpurple
 	replaces = gaim
 	options = !libtool
-	source = http://downloads.sourceforge.net/project/pidgin/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2
+	source = http://downloads.sourceforge.net/project/pidgin/Pidgin/2.14.1/pidgin-2.14.1.tar.bz2
 	source = anti-flood.patch
-	sha512sums = 68b3d1eefee111544c7eb347386d0aea4f47c3e320d5963a4e0d833ed6af7b1be243a7bcd6a38c9234b58601d10a9aebf8541f1d97decfeca754fa78dc693047
-	sha512sums = eb36697f26d167412272f23d260178d9b8b48df4d4aeff0e7929b75a6ddddfa95212343348357a9b90a407eba0be4640d9a5a0b12fb28e4d4b43c0cfcb8883e8
+	sha256sums = f132e18d551117d9e46acce29ba4f40892a86746c366999166a3862b51060780
+	sha256sums = 0b792053434d686131d090e77fb1d6e0e1739c7feb0e8c277bda575adc24f16a
 
 pkgname = pidgin-light
 
