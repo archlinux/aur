@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=inline
-_cranver=0.3.16
+_cranver=0.3.17
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,9 +11,9 @@ arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(LGPL2 LGPL2.1 LGPL3)
 depends=('r>=2.4.0')
-optdepends=(r-rcpp)
+optdepends=(r-rcpp r-tinytest)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('d216a46d65e2b7f5dae2eb06ff44bee16262f1d29605e3267456191b39143575')
+sha256sums=('792857b2ebd408d6523424d2f6bb7297e241d4b28ab32372f6a9240c8cd554f3')
 
 build() {
   cd "${srcdir}"
