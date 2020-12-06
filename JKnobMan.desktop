@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=JKnobMan
+Exec=jknobman
+Icon=/usr/share/JKnobMan/Resource/Images/JKnobMan.png
+Categories=AudioVideo;Audio;
