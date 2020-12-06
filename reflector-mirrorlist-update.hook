@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = pacman-mirrorlist
+
+[Action]
+Description = Updating mirrorlist with reflector...
+When = PostTransaction
+Exec = /bin/sh -c 'systemctl start reflector.service && rm -f /etc/pacman.d/mirrorlist.pacnew'

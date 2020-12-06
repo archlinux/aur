@@ -1,0 +1,14 @@
+pkgbase = reflector-mirrorlist-update
+	pkgdesc = Use reflector to update mirrorlist when pacman-mirrorlist is updated
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = sh
+	depends = systemd
+	depends = reflector
+	source = reflector-mirrorlist-update.hook
+	sha256sums = 86c37645da78cfd7fe29cfe9e4fbe798dc0d9b0c3aa306364178d0f7d5b3c7f1
+
+pkgname = reflector-mirrorlist-update
+
