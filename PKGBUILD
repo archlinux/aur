@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-sound-git
-pkgver=2.1.6.r2.g7582e6d
+pkgver=2.1.7.r19.g349de3b
 pkgrel=1
 pkgdesc='Sound indicator for Wingpanel'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk2' 'gtk3' 'libcanberra'
          'libgee' 'libnotify' 'libpulse'
-         'libgranite.so' 'libwingpanel-2.0.so')
+         'libgranite.so' 'libwingpanel-3.0.so')
 makedepends=('git' 'gobject-introspection' 'granite' 'gtk2' 'meson' 'vala'
              'wingpanel')
 provides=('wingpanel-indicator-sound')
