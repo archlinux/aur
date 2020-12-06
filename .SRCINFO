@@ -1,6 +1,6 @@
 pkgbase = wingpanel-indicator-keyboard-git
 	pkgdesc = Keyboard indicator for Wingpanel
-	pkgver = 2.2.1.r16.g9c265a9
+	pkgver = 2.2.1.r33.gf688c26
 	pkgrel = 1
 	url = https://github.com/elementary/wingpanel-indicator-keyboard
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = wingpanel-indicator-keyboard-git
 	depends = glibc
 	depends = gtk3
 	depends = libxml2
-	depends = libwingpanel-2.0.so
+	depends = libwingpanel-3.0.so
 	provides = wingpanel-indicator-keyboard
 	conflicts = wingpanel-indicator-keyboard
 	source = git+https://github.com/elementary/wingpanel-indicator-keyboard.git
