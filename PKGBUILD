@@ -3,7 +3,7 @@
 
 _pkgname=imagewriter
 pkgname="${_pkgname}-git"
-pkgver=20190501
+pkgver=20201109
 pkgrel=1
 pkgdesc="A graphical utility for writing raw disk images & hybrid ISOs to USB keys. QT5 GIT release."
 arch=('i686' 'x86_64')
@@ -14,7 +14,8 @@ makedepends=('git')
 optdepends=("xdg-su: needed for non-KDE users"
 	    "kdesu: needed for KDE")
 conflicts=("imagewriter")
-source=("${_pkgname}::git+${url}.git")
+source=(git+https://github.com/frispete/imagewriter)
+#("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver(){
