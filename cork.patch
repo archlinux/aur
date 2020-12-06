@@ -51,19 +51,6 @@ index a0acc15..69d33a8 100644
          //exit(1);
      }
      
-diff --git a/src/mesh/mesh.topoCache.tpp b/src/mesh/mesh.topoCache.tpp
-index cf225d6..b648d5f 100644
---- a/src/mesh/mesh.topoCache.tpp
-+++ b/src/mesh/mesh.topoCache.tpp
-@@ -504,7 +504,7 @@ void Mesh<VertData, TriData>::TopoCache::print()
-     cout << "TRIS" << endl;
-     int tri_count = 0;
-     tris.for_each([&](Tptr t) {
--        cout << " " << t << ": " << *t << endl;
-+        cout << " " << t << ": " << endl;
-         tri_count++;
-     });
-     cout << "There were " << tri_count << " TRIS" << endl;
 diff --git a/src/util/prelude.h b/src/util/prelude.h
 index 6836ace..6981d20 100644
 --- a/src/util/prelude.h
