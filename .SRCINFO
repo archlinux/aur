@@ -1,6 +1,6 @@
 pkgbase = silo-amazon
 	pkgdesc = Standalone silo app for Amazon (US and IT versions)
-	pkgver = 0.1
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/intersimone999/silos-apps
 	arch = i686

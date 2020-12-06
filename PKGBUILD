@@ -1,7 +1,7 @@
 # Maintainer: Simone Scalabrino <s.scalabrino9@gmail.com>
 _appname="amazon"
 _appdesc="Standalone silo app for Amazon (US and IT versions)"
-_gittag="0.1"
+_gittag="0.3"
 
 _gitname=silos-apps
 pkgname="silo-${_appname}"
