@@ -1,0 +1,17 @@
+pkgbase = pipewire-support
+	pkgdesc = Meta package for pipewire support.
+	pkgver = 1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/PipeWire
+	arch = any
+	license = GPL
+	depends = pipewire
+	depends = pipewire-alsa
+	depends = pipewire-pulse
+	depends = pipewire-jack
+	depends = wireplumber
+	conflicts = pulseaudio-support
+	replaces = garuda-pipewire
+
+pkgname = pipewire-support
+
