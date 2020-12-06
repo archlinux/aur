@@ -48,6 +48,8 @@ build() {
       --disable-smtp \
       --disable-gopher \
       --disable-mqtt \
+      --disable-ares \
+      --disable-proxy \
       --enable-versioned-symbols \
       --enable-threaded-resolver \
       --with-gssapi \
@@ -56,6 +58,13 @@ build() {
       --without-librtmp \
       --without-libmetalink \
       --without-wolfssh \
+      --without-winssl \
+      --without-schannel \
+      --without-darwinssl \
+      --without-secure-transport \
+      --without-amissl \
+      --without-mesalink \
+      --without-winidn \
       --with-random=/dev/urandom \
       --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt
 
