@@ -10,10 +10,8 @@ _CMAKE_FLAGS+=(
               -DCMAKE_INSTALL_LIBDIR=lib
               -DEIGEN_INCLUDE_DIR_HINTS=/usr/include/eigen3
               -DFLANN_INCLUDE_DIR_HINTS=/usr/include/flann
-              -DCOINUTILS_INCLUDE_DIR_HINTS=/usr/include/coin
+              -D{COINUTILS,CLP,OSI}_INCLUDE_DIR_HINTS=/usr/include/coin
               -DLEMON_INCLUDE_DIR_HINTS=/usr/include/lemon
-              -DCLP_INCLUDE_DIR_HINTS=/usr/include/coin
-              -DOSI_INCLUDE_DIR_HINTS=/usr/include/coin
               -DCERES_DIR=/usr/include/ceres
               -DALICEVISION_BUILD_DOC=OFF
              )
@@ -48,7 +46,7 @@ fi
 _name=alice-vision
 pkgname=${_name}
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
 url="https://alicevision.github.io/"
@@ -62,11 +60,12 @@ makedepends+=('boost' 'ninja' 'eigen' 'freetype2' 'coin-or-coinutils' 'coin-or-l
 source=("${pkgname}::https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
         "MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop"
         "nanoflann::git+https://github.com/alicevision/nanoflann.git"
+        "FindOpenGV.cmake.patch"
 )
 sha256sums=('40a4e753197cccf0cf00ca74a4bbcf610d5bd4fc2b908abd19f6b060602206f7'
             'SKIP'
             'SKIP'
-)
+            '2740fc6890a62f74367df357e132dc95bcd276528d828d51d66c4689e183ceec')
 
 prepare() {
   cd "${srcdir}"/AliceVision-${pkgver}
@@ -75,6 +74,8 @@ prepare() {
   cp -r "${srcdir}"/nanoflann src/dependencies/nanoflann
   #fix missing submodule warning.
   mkdir src/dependencies/osi_clp/CoinUtils
+  #patch FindOpenGV.cmake to use Eigen3 instear of Eigen
+  patch -Np1 -i "$srcdir"/FindOpenGV.cmake.patch
 }
 
 

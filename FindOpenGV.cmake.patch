@@ -1,0 +1,38 @@
+--- AliceVision-2.3.1-orig/src/cmake/FindOpenGV.cmake	2020-10-14 10:22:53.000000000 +0200
++++ AliceVision-2.3.1/src/cmake/FindOpenGV.cmake	2020-12-06 21:22:22.290072442 +0100
+@@ -25,19 +25,19 @@
+ 
+ IF(OPENGV_INCLUDE_DIR)
+   MESSAGE(STATUS "OpenGV headers found in ${OPENGV_INCLUDE_DIR}")
+-  IF(NOT EIGEN_FOUND)
+-    MESSAGE(STATUS "Looking for Eigen dependency...")
+-    FIND_PACKAGE(Eigen QUIET)
+-    IF(EIGEN_FOUND)
++  IF(NOT EIGEN3_FOUND)
++    MESSAGE(STATUS "Looking for Eigen3 dependency...")
++    FIND_PACKAGE(Eigen3 QUIET)
++    IF(EIGEN3_FOUND)
+         INCLUDE_DIRECTORIES(${EIGEN3_INCLUDE_DIRS})
+     ELSE()
+-      MESSAGE(WARNING "Couldn't find Eigen, this is needed for compiling with openGV")
++      MESSAGE(WARNING "Couldn't find Eigen3, this is needed for compiling with openGV")
+       # this is to make the find_package_handle_standard_args  fail
+       SET(OPENGV_INCLUDE_DIR "OPENGV_INCLUDE_DIR-NOTFOUND")
+-    ENDIF(EIGEN_FOUND)
+-  ELSE(NOT EIGEN_FOUND)
+-    MESSAGE(STATUS "Eigen already found")
+-  ENDIF(NOT EIGEN_FOUND)
++    ENDIF(EIGEN3_FOUND)
++  ELSE(NOT EIGEN3_FOUND)
++    MESSAGE(STATUS "Eigen3 already found")
++  ENDIF(NOT EIGEN3_FOUND)
+ ELSE(OPENGV_INCLUDE_DIR)
+   MESSAGE(STATUS "OpenGV headers not found!")
+ ENDIF(OPENGV_INCLUDE_DIR)
+@@ -63,4 +63,4 @@
+ find_package_handle_standard_args(OpenGV  DEFAULT_MSG
+                                   OPENGV_LIBRARY OPENGV_INCLUDE_DIR)
+ 
+-MARK_AS_ADVANCED(OPENGV_INCLUDE_DIR OPENGV_LIBRARY)
+\ Brak znaku nowej linii na końcu pliku
++MARK_AS_ADVANCED(OPENGV_INCLUDE_DIR OPENGV_LIBRARY)
