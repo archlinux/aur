@@ -3,7 +3,7 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 
 pkgname=rust-nightly-bin
-pkgver=1.44.0_2020.04.13
+pkgver=1.50.0_2020.12.05
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Fast, concurrent, safe. The Rust programming language and its package manager, Cargo.'
@@ -11,7 +11,7 @@ url='https://www.rust-lang.org/'
 license=('MIT' 'Apache' 'custom')
 provides=('rust' 'rust-nightly' 'cargo' 'cargo-nightly' 'rust-docs')
 conflicts=('rust' 'rust-git' 'rust-nightly' 'cargo-nightly-bin' 'cargo' 'cargo-git' 'cargo-nightly' 'cargo-nightly-bin' 'rust-docs')
-depends=('gcc-libs' 'llvm-git' 'zlib' 'sh')
+depends=('gcc-libs' 'llvm' 'zlib' 'sh')
 source=("rust-nightly-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz::https://static.rust-lang.org/dist/rust-nightly-${CARCH}-unknown-linux-gnu.tar.gz"
 )
 
