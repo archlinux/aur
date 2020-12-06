@@ -1,4 +1,4 @@
-pkgbase = lib32-mesa-noglvnd
+pkgbase = lib32-mesa-libgl
 	pkgver = 18.3.2
 	pkgrel = 1
 	url = https://www.mesa3d.org/
