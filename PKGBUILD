@@ -1,11 +1,12 @@
-# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Maintainer: Harsh Barsaiyan <hbarsaiyan at gmail dot com>
+# Contributor: Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Oscar Morante <oscar@mooistudios.com>
 # Contributor: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 set -u
 pkgname='gravit-designer-bin'
-pkgver='2019_2.7'
-pkgrel='4'
+pkgver='2020_1.3.4'
+pkgrel='1'
 pkgdesc='A cross-platform, free design tool for the 21st century empowering everyone to design'
 arch=('x86_64')
 url='https://designer.io/'
@@ -18,12 +19,12 @@ source=("${pkgname}-${pkgver}.zip::https://designer.gravit.io/_downloads/linux/G
         'gravit-designer-document.svg'
         'gravit-designer.xml'
         'LICENSE')
-md5sums=('2a9f2afdd6ad4a60c38aea8ac94f200c'
+md5sums=('e0b2ed775962bf1e53ab64a1f41a5028'
          '17969adf6d872a541772e169658b82d1'
          '70b0c1397df726a2ba0f16a4ff43993a'
          'fb3e19b45f7fe02bd959f20cc26e49d0'
          '021ccafc0993d3c34265ae59048d4bf2')
-sha256sums=('4012e2a70de30abe3756492ebb20ad6818a0cccb82a2a11b4e4721978638db1c'
+sha256sums=('023bccee59d7661b0cd32aa8a47db8a69dc735286fea2865da6234b0c7b571e5'
             '80f947f51165c9764ec3ac168df64178a68c26c49d96ae1a970930146aee3cfe'
             '1c4673222f28e070258289a363ba1d03b3af87aaca99fee7c05a54c9de5deb2b'
             'd2228771efc34f1ed0953fd8f8cd49f60d72728d230c7f860862c4f2056c0df3'
