@@ -21,20 +21,22 @@ backup=("etc/${pkgname}/services/addons.cfg"
 source=("openhab-${pkgver}.tar.gz::https://openhab.jfrog.io/openhab/libs-milestone-local/org/openhab/distro/openhab/${pkgver}/openhab-${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.default"
-        "${pkgname}.patch")
+        "${pkgname}.patch"
+        "karaf_wrapper.sh")
 
 sha256sums=('63b1725ab2e37ee25649663362fb08bedb6f9c1727c5511543eef2d8048d008c'
-            'e4b374cf5d590e8a91a43ab5cc8be9d82f6ebff22c3ce0ee767dc13ffc1ebe1d'
+            '995bb5eacc583c22fe97555fd67e69911a63cfb02449a046481b5a0e64f4032c'
             'b149d976dc13dc18c62d2014457557e266e733ead70b0730d06dcd0372da78a7'
-            '3f7478e5742ff504b3200b580eba84bd10f9adde24c0a5e070dda71125a69c3b')
+            '3f7478e5742ff504b3200b580eba84bd10f9adde24c0a5e070dda71125a69c3b'
+            '9f5185d7f301d7abf5bd362710c89af43fb8391e13010226d43677ba2fc79762')
 
 prepare() {
     patch -p1 < ../${pkgname}.patch
 }
 
 package() {
-    install -Dm644 ${pkgname}.default "${pkgdir}/etc/default/${pkgname}"
-    install -Dm644 ${pkgname}.service "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm644 "${srcdir}/${pkgname}.default" "${pkgdir}/etc/default/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
     mkdir -p "${pkgdir}/etc/${pkgname}"
     cp -r ${srcdir}/conf/* "${pkgdir}/etc/${pkgname}"
@@ -45,6 +47,7 @@ package() {
     mkdir -p "${pkgdir}/usr/share/${pkgname}"
     cp -r "${srcdir}/runtime" "${pkgdir}/usr/share/${pkgname}"
     cp -r "${srcdir}/addons" "${pkgdir}/usr/share/${pkgname}"
+    install -m755 "${srcdir}/karaf_wrapper.sh" "${pkgdir}/usr/share/${pkgname}/karaf_wrapper.sh"
 
     mkdir -p "${pkgdir}/var/log/${pkgname}"
 
