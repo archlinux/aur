@@ -34,7 +34,7 @@ arch=('x86_64')
 url='https://www.brave.com/download'
 license=('custom')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'libva')
-makedepends=('git' 'npm<7.0.0' 'python' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang' 'python-setuptools')
+makedepends=('git' 'npm<7.0.0' 'python' 'python2' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang' 'python2-setuptools')
 optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support'
             'libpipewire02: WebRTC desktop sharing under Wayland'
@@ -98,7 +98,7 @@ _unwanted_bundled_libs=(
 if [ "$COMPONENT" = "4" ]; then
   depends+=('libpulse' 'pciutils')
   depends+=(${_system_libs[@]})
-  makedepends+=('lld' 'libva' 'libpipewire02' 'python2-xcb-proto' 'python2-setuptools')
+  makedepends+=('lld' 'libva' 'libpipewire02' 'python2-xcb-proto')
 else
   makedepends+=('ncurses5-compat-libs')
 fi
