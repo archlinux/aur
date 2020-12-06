@@ -1,7 +1,7 @@
 pkgbase = wine-meta
 	pkgdesc = Meta package for wine support.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/wine
 	arch = any
 	license = GPL
@@ -71,6 +71,7 @@ pkgbase = wine-meta
 	depends = lib32-fluidsynth
 	optdepends = q4wine
 	replaces = garuda-wine
+	replaces = lutris-wine-meta
 
 pkgname = wine-meta
 
