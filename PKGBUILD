@@ -41,7 +41,7 @@ prepare() {
 
   patch -Np1 < ../librapidjson-1.1.patch
   # Boost 1.74 provides nowide, and since leatherman vendors nowide it has to be patched out.
-  #patch -Np1 < ../1.12.2-shared_nowide.patch
+  patch -Np1 < ../1.12.2-shared_nowide.patch
 }
 
 build() {
