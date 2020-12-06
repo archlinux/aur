@@ -1,0 +1,12 @@
+pkgbase = macos-3d-originals-gtk-git
+	pkgdesc = MacOS-3D-Originals is a Gtk3 theme created using the awesome Orchis theme
+	pkgver = 2.6
+	pkgrel = 1
+	url = https://github.com/Macintosh98/MacOS-3D.git
+	arch = x86_64
+	license = GPL
+	source = git+https://github.com/Macintosh98/MacOS-3D.git
+	md5sums = SKIP
+
+pkgname = macos-3d-originals-gtk-git
+
