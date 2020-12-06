@@ -1,12 +1,12 @@
 pkgbase = inkscape-generate-palette
 	pkgdesc = Inkscape extension to generate color palettes
 	pkgver = 4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/olibia/inkscape-generate-palette
 	arch = any
 	license = GPL
 	depends = inkscape
-	depends = python2-lxml
+	depends = python-lxml
 	conflicts = inkscape-generate-palette
 	conflicts = inkscape-generate-palette-git
 	source = inkscape-generate-palette-4.0.tar.gz::https://github.com/olibia/inkscape-generate-palette/archive/v4.0.tar.gz
