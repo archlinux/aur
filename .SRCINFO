@@ -16,6 +16,7 @@ pkgbase = gplaycli-git
 	depends = python-gpapi
 	depends = python-pycryptodome
 	optdepends = java-runtime: needed for autogeneration of a new AndroiID
+	provides = gplaycli=3.29.r1.gb161dbf
 	conflicts = gplaycli
 	source = gplaycli::git+https://github.com/matlink/gplaycli.git
 	md5sums = SKIP

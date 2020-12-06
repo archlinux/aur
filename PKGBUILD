@@ -19,6 +19,7 @@ optdepends=('java-runtime: needed for autogeneration of a new AndroiID')
 conflicts=('gplaycli')
 source=("gplaycli::git+https://github.com/matlink/gplaycli.git")
 md5sums=("SKIP")
+provides=("gplaycli=${pkgver}")
 
 pkgver() {
   cd "gplaycli"
