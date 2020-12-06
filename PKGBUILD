@@ -4,7 +4,7 @@
 
 pkgname=pop-gtk-theme
 pkgver=5.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="System76 Pop GTK+ Theme"
 arch=('any')
 url='https://github.com/pop-os/gtk-theme'
