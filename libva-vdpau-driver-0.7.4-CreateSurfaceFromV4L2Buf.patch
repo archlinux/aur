@@ -1,0 +1,24 @@
+diff -rupN libva-vdpau-driver-0.7.4.orig/src/vdpau_video.c libva-vdpau-driver-0.7.4/src/vdpau_video.c
+--- libva-vdpau-driver-0.7.4.orig/src/vdpau_video.c	2020-12-06 10:48:03.320569841 +0100
++++ libva-vdpau-driver-0.7.4/src/vdpau_video.c	2020-12-06 10:50:45.437401497 +0100
+@@ -927,8 +927,6 @@ VAStatus
+ vdpau_CreateSurfaceFromV4L2Buf(
+     VADriverContextP    ctx,
+     int                 v4l2_fd,
+-    struct v4l2_format *v4l2_fmt,
+-    struct v4l2_buffer *v4l2_buf,
+     VASurfaceID        *surface
+ )
+ {
+diff -rupN libva-vdpau-driver-0.7.4.orig/src/vdpau_video.h libva-vdpau-driver-0.7.4/src/vdpau_video.h
+--- libva-vdpau-driver-0.7.4.orig/src/vdpau_video.h	2020-12-06 10:48:03.317236508 +0100
++++ libva-vdpau-driver-0.7.4/src/vdpau_video.h	2020-12-06 10:50:45.417401454 +0100
+@@ -274,8 +274,6 @@ VAStatus
+ vdpau_CreateSurfaceFromV4L2Buf(
+     VADriverContextP    ctx,
+     int                 v4l2_fd,
+-    struct v4l2_format *v4l2_fmt,
+-    struct v4l2_buffer *v4l2_buf,
+     VASurfaceID        *surface
+ ) attribute_hidden;
+ 
