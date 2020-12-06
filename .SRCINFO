@@ -11,7 +11,7 @@ pkgbase = irrdynamics
 	makedepends = git
 	depends = bullet
 	depends = irrlicht
-	source = git+https://socialg.it/ottona/irrdynamics.git
+	source = git+https://git.socialnerds.org/otto/irrdynamics.git
 	md5sums = SKIP
 
 pkgname = irrdynamics

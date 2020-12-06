@@ -4,12 +4,12 @@ pkgver=11.41d9752
 pkgrel=1
 pkgdesc="A light-weight Bullet Physics wrapper for the Irrlicht graphics engine"
 arch=(i686 x86_64 armv7h armv6h)
-url="https://socialg.it/ottona/irrdynamics"
+url="https://git.socialnerds.org/otto/irrdynamics"
 license=('zlib')
 groups=()
 depends=(bullet irrlicht)
 makedepends=('git')
-source=("git+https://socialg.it/ottona/irrdynamics.git")
+source=("git+https://git.socialnerds.org/otto/irrdynamics.git")
 md5sums=("SKIP")
 
 _gitname=irrdynamics
