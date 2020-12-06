@@ -1,6 +1,6 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=gplaycli-git
-pkgver=3.20.r4.g8a60f83
+pkgver=3.29.r1.gb161dbf
 pkgrel=1
 pkgdesc="Google Play Downloader via Command line, based on https://codingteam.net/project/googleplaydownloader"
 arch=('i686' 'x86_64')
@@ -32,8 +32,7 @@ package() {
 
     # installs config to build user home - moving to /usr/share
     mkdir -p "$pkgdir/usr/share/gplaycli/"
-    mv "${pkgdir}${HOME}/.config/gplaycli/" "$pkgdir/usr/share/gplaycli/config"
-    rm -rf "$pkgdir/home"
+    mv "$srcdir/gplaycli/gplaycli.conf" "$pkgdir/usr/share/gplaycli/config"
 }
 
 # vim:set ts=2 sw=2 et:
