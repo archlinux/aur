@@ -1,7 +1,7 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 pkgname=openhab2
 pkgver=2.5.10
-pkgrel=2
+pkgrel=3
 pkgdesc="openHAB2 open source home automation software"
 arch=('any')
 url="http://www.openhab.org/"
@@ -23,15 +23,17 @@ source=("openhab-${pkgver}.tar.gz::https://bintray.com/openhab/mvn/download_file
         "openhab2.service"
 	"openhab2.default"
 	"openhab2.install"
-	"openhab2.patch")
+	"openhab2.patch"
+	"karaf_wrapper.sh")
 
 noextract=("openhab-${pkgver}.tar.gz")
 
 sha256sums=('d00bc6f0d662afd36802b496e82d6307a076053ac9097805684e25619a76b6b2'
-            '1d4839f7e55c354bcd36a43538938d0eb2c3cceb7e27bbf5c9cb1627ef7bbd85'
+            'd7bb21c0e0dc27534af29a9a5538ccbcf801b08afe41ba84be738f44456510aa'
             'b149d976dc13dc18c62d2014457557e266e733ead70b0730d06dcd0372da78a7'
             'c6ddfcf9d38882ef50cdff6eb9a5df4d3577c07771a8c6d91484d1d84ad63705'
-            '500118875b0a9f3a4a511bebea3aebaebaa1e8fb5fc1e5c9222e3a287530a5ab')
+            '500118875b0a9f3a4a511bebea3aebaebaa1e8fb5fc1e5c9222e3a287530a5ab'
+            'd61ebec172e2a173dbe94f534035b55250e1b09f4cab5665d275ccfcdf3e710e')
 
 prepare() {
 	if [[ ! -d ${srcdir}/openhab2 ]]; then
@@ -46,7 +48,7 @@ package() {
 
 	install -Dm644 openhab2.default "${pkgdir}/etc/default/openhab2"
 	install -Dm644 openhab2.service "${pkgdir}/usr/lib/systemd/system/openhab2.service"
-
+	install -Dm755 karaf_wrapper.sh "${pkgdir}/usr/share/openhab2/karaf_wrapper.sh"
 
 	mkdir -p "${pkgdir}/etc/openhab2"
 	cp -r ${srcdir}/openhab2/conf/* "${pkgdir}/etc/openhab2"

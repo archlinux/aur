@@ -1,7 +1,7 @@
 pkgbase = openhab2
 	pkgdesc = openHAB2 open source home automation software
 	pkgver = 2.5.10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.openhab.org/
 	install = openhab2.install
 	arch = any
@@ -23,11 +23,13 @@ pkgbase = openhab2
 	source = openhab2.default
 	source = openhab2.install
 	source = openhab2.patch
+	source = karaf_wrapper.sh
 	sha256sums = d00bc6f0d662afd36802b496e82d6307a076053ac9097805684e25619a76b6b2
-	sha256sums = 1d4839f7e55c354bcd36a43538938d0eb2c3cceb7e27bbf5c9cb1627ef7bbd85
+	sha256sums = d7bb21c0e0dc27534af29a9a5538ccbcf801b08afe41ba84be738f44456510aa
 	sha256sums = b149d976dc13dc18c62d2014457557e266e733ead70b0730d06dcd0372da78a7
 	sha256sums = c6ddfcf9d38882ef50cdff6eb9a5df4d3577c07771a8c6d91484d1d84ad63705
 	sha256sums = 500118875b0a9f3a4a511bebea3aebaebaa1e8fb5fc1e5c9222e3a287530a5ab
+	sha256sums = d61ebec172e2a173dbe94f534035b55250e1b09f4cab5665d275ccfcdf3e710e
 
 pkgname = openhab2
 
