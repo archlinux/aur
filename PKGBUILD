@@ -4,8 +4,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gtk3-patched-filechooser-icon-view
-pkgver=3.24.23
-pkgrel=4
+pkgver=3.24.24
+pkgrel=1
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
 arch=(x86_64)
@@ -23,15 +23,13 @@ makedepends=(gobject-introspection gtk-doc git glib2-docs sassc meson)
 
 license=(LGPL)
 install=gtk3.install
-_commit=016e8c55ab924c9ef4d32c8cb06253b1dc1be60d  # tags/3.24.23^0
+_commit=de8329b3ce4b235eac9ddcbb6cd121cc83dd9e74  # tags/3.24.24^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
-        0001-gtkplacessidebar-Disconnect-and-unref-cloud_manager-.patch
         settings.ini
         gtk-query-immodules-3.0.hook
         gtk3-filechooser-icon-view.patch)        
 
 sha256sums=('SKIP'
-            'd6f6bf347482553bc20a1640c1619f674520b853a5b2ade9fd56bb77bfdfe170'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
             'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
             '37d8d594ee3ef4528b8066992999c39746f3506078083a7d21c19bbceae87b2b')
@@ -42,9 +40,6 @@ pkgver() {
 
 prepare() {
   cd gtk
-
-  # https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/2669
-  git apply -3 ../0001-gtkplacessidebar-Disconnect-and-unref-cloud_manager-.patch
 
   # apply icon-view patch
   git apply -3 ../gtk3-filechooser-icon-view.patch
