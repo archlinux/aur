@@ -1,6 +1,6 @@
 pkgbase = wingpanel-indicator-bluetooth-git
 	pkgdesc = Bluetooth indicator for Wingpanel
-	pkgver = 2.1.5.r9.g94b430e
+	pkgver = 2.1.5.r32.g6ec4d8d
 	pkgrel = 1
 	url = https://github.com/elementary/wingpanel-indicator-bluetooth
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = wingpanel-indicator-bluetooth-git
 	depends = glibc
 	depends = gtk3
 	depends = libgee
-	depends = libwingpanel-2.0.so
+	depends = libwingpanel-3.0.so
 	provides = wingpanel-indicator-bluetooth
 	conflicts = wingpanel-indicator-bluetooth
 	source = git+https://github.com/elementary/wingpanel-indicator-bluetooth.git
