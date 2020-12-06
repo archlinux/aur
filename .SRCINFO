@@ -1,0 +1,17 @@
+pkgbase = mpris-fakeplayer
+	pkgdesc = Fake mpris player for activating bluez avrcp volume control
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/hxss-linux/mpris-fakeplayer
+	install = INSTALL
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	makedepends = curl
+	makedepends = jq
+	makedepends = findutils
+	depends = python
+	optdepends = python-systemd: systemd logging
+
+pkgname = mpris-fakeplayer
+

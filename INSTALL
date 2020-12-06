@@ -1,0 +1,8 @@
+
+post_install() {
+	mpris-fakeplayer --install-service
+}
+
+pre_remove() {
+	rm -f /usr/lib/systemd/user/mpris-fakeplayer.service
+}
