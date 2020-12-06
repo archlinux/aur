@@ -1,9 +1,9 @@
 pkgbase = dupeguru
 	pkgdesc = Find duplicate files on your system
 	pkgver = 4.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://dupeguru.voltaicideas.net/
-	arch = any
+	arch = x86_64
 	license = BSD
 	makedepends = python-sphinx
 	depends = python

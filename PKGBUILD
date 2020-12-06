@@ -3,7 +3,7 @@
 # Maintainer: Virgil Dupras <hsoft@hardcoded.net>
 pkgname=dupeguru
 pkgver=4.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Find duplicate files on your system"
 arch=('x86_64')
 url="https://dupeguru.voltaicideas.net/"
@@ -24,6 +24,8 @@ conflicts=("dupeguru-se" "dupeguru-pe" "dupeguru-me")
 prepare() {
   cd "$srcdir"
   sed -i "s/hsaudiotag3k>=1.1.3/hsaudiotag3k>=1.1.*/g" requirements.txt
+  # replace hardcoded icon path in .desktop file
+  sed -i "s/\(.*iconpath.*\"\).*\"/\1dupeguru\"/g" pkg/arch/dupeguru.json
 }
 
 build() {
@@ -49,10 +51,12 @@ package() {
   mkdir -p "${pkgdir}/usr/share/applications"
   mv ${pkgname}.desktop "${pkgdir}/usr/share/applications"
   
-  mkdir -p "$pkgdir/usr/share/${pkgname}"
-  cp -a * "$pkgdir/usr/share/${pkgname}/"
-  chmod a+x "$pkgdir/usr/share/${pkgname}/run.py"
+  mkdir -p "${pkgdir}/usr/share/${pkgname}"
+  cp -a * "${pkgdir}/usr/share/${pkgname}/"
+  chmod a+x "${pkgdir}/usr/share/${pkgname}/run.py"
   
-  mkdir -p "$pkgdir/usr/bin"
-  ln -s ../share/${pkgname}/run.py "$pkgdir/usr/bin/${pkgname}"
+  mkdir -p "${pkgdir}/usr/share/pixmaps"
+  ln -s "/usr/share/${pkgname}/dgse_logo_128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -s ../share/${pkgname}/run.py "${pkgdir}/usr/bin/${pkgname}"
 }
