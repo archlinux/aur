@@ -1,7 +1,7 @@
 pkgbase = scanner-support
 	pkgdesc = Meta package for scanner support.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/SANE
 	install = scanner.install
 	arch = any
