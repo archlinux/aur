@@ -1,7 +1,7 @@
 pkgbase = targetd
 	pkgdesc = Remote configuration of a LIO-based storage appliance
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/open-iscsi/targetd
 	arch = any
 	license = GPL3
@@ -18,7 +18,11 @@ pkgbase = targetd
 	optdepends = zfs-dkms: ZFS block device support
 	provides = targetd
 	source = targetd-0.9.1.tar.gz::https://github.com/open-iscsi/targetd/archive/v0.9.1.tar.gz
+	source = targetd.service
+	source = targetd.yaml
 	sha256sums = 40846e30a8f2d3ce9a6075a76dcf59f927932296b774a1b7f2875e82b96312e8
+	sha256sums = 221c660d89f94c5543991ce62127d1b30da78f133b6683b9f6be79293266aa73
+	sha256sums = fd9362d5dc32c976107114ef40a983f2440687c89e444c63f22c911df8010b06
 
 pkgname = targetd
 
