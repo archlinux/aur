@@ -1,0 +1,12 @@
+pkgbase = mathtime-professional
+	pkgdesc = Custom-Designed Math Fonts for use with Times Fonts
+	pkgver = 2
+	pkgrel = 1
+	url = https://pctex.com/mtpro2.html
+	arch = any
+	license = custom
+	depends = texlive-core
+	source = local://mtp2fonts.zip.tpm
+	sha256sums = 43d9b98f2015721fb934549f04ab623de56f26f848d2bdaf81a08871bd2201e6
+
+pkgname = mathtime-professional
