@@ -2,7 +2,7 @@
 # Contributor: Dan McGee <dan@archlinux.org>
 
 pkgname=mingw-w64-libarchive
-pkgver=3.4.3
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="library that can create and read several streaming archive formats (mingw-w64)"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=('mingw-w64-configure')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("libarchive-${pkgver}.tar.gz::https://github.com/libarchive/libarchive/archive/v${pkgver}.tar.gz"
         "0001-libarchive-3.3.3-bcrypt-fix.patch")
-sha256sums=('19556c1c67aacdff547fd719729630444dbc7161c63eca661a310676a022bb01'
+sha256sums=('83f42374cfc4e97e55aec269efb653d671a2411d43aac4232243f267a50271a6'
             '2c318a025029998a9389eb99ab80f733c0fcf3b4888421879f2f6b4530d7f522')
 
 prepare() {
