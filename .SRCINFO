@@ -1,6 +1,6 @@
 pkgbase = python-umonitor-git
 	pkgdesc = Dynamic monitor configuration
-	pkgver = r83.165911e
+	pkgver = r93.f741e62
 	pkgrel = 1
 	url = https://github.com/rliou92/python-umonitor
 	arch = i686

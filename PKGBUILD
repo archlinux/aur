@@ -1,7 +1,7 @@
 # Maintainer: Ricky Liou <rliou92@gmail.com>
 pkgname=python-umonitor-git
 _gitname=python-umonitor
-pkgver=r83.165911e
+pkgver=r93.f741e62
 pkgrel=1
 pkgdesc="Dynamic monitor configuration"
 arch=('i686' 'x86_64')
