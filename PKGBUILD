@@ -2,7 +2,7 @@
 
 pkgname=printer-support
 pkgver=1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://wiki.archlinux.org/index.php/Category:Printers"
 license=('GPL')
