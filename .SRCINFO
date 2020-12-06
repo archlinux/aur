@@ -1,10 +1,11 @@
 pkgbase = peertube-viewer-rs-bin
 	pkgdesc = Peertube command line viewer inspired by youtube-viewer
 	pkgver = 1.7.3
-	pkgrel = 1
-	url = https://gitlab.com/peertube-viewer/peertube-viewer-rs
+	pkgrel = 2
+	url = https://peertube-viewer.com
 	arch = x86_64
 	license = MIT
+	depends = gcc-libs
 	provides = peertube-viewer-rs
 	conflicts = peertube-viewer-rs
 	source = https://peertube-viewer.com/releases/linux/peertube-viewer-rs-v1.7.3.tar.gz
