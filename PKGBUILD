@@ -2,7 +2,7 @@
 _pkgname=qiskit-terra
 pkgname=python-${_pkgname}
 pkgver=0.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source framework for working with noisy quantum computers at the level of pulses, circuits, and algorithms"
 arch=('x86_64')
 url="https://github.com/Qiskit/qiskit-terra"
