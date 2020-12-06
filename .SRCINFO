@@ -1,0 +1,40 @@
+pkgbase = mutter-choppy-mouse-fix
+	pkgdesc = A window manager for GNOME (with a little patch to fix mouse stutter/choppiness, especially for games)
+	pkgver = 3.38.2
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/mutter
+	install = mutter.install
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	checkdepends = xorg-server-xvfb
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = egl-wayland
+	makedepends = meson
+	makedepends = xorg-server
+	makedepends = sysprof
+	depends = dconf
+	depends = gobject-introspection-runtime
+	depends = gsettings-desktop-schemas
+	depends = libcanberra
+	depends = startup-notification
+	depends = zenity
+	depends = libsm
+	depends = gnome-desktop
+	depends = upower
+	depends = libxkbcommon-x11
+	depends = gnome-settings-daemon
+	depends = libgudev
+	depends = libinput
+	depends = pipewire
+	depends = xorg-server-xwayland
+	depends = graphene
+	provides = libmutter-7.so
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=9b9051c2172078e623e8a4b0e45e38004c394a92
+	source = https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/168.patch
+	sha256sums = SKIP
+	sha256sums = f9e71b14c791ac7553ff4ed2d0d5b612fc886c5aa771587965a6ffd99cb98b86
+
+pkgname = mutter-choppy-mouse-fix
+
