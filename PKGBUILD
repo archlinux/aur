@@ -1,7 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-
 pkgname=glassfish
-pkgver=6.0.0_M3_2020_10_04
+pkgver=6.0.0_RC2
 pkgrel=1
 pkgdesc="The Open Source Jakarta EE (Java EE) Reference Implementation."
 url="https://github.com/eclipse-ee4j/glassfish"
@@ -9,10 +8,10 @@ license=("EPL")
 depends=("java-environment=8")
 arch=("any")
 options=(!strip)
-source=("${pkgname}-${pkgver//_/-}.zip::${url}/releases/download/${pkgver//_/-}/${pkgname}-${pkgver//_/-}.zip"
+source=("https://download.eclipse.org/ee4j/${pkgname}/${pkgname}-${pkgver//_/-}.zip"
         "${pkgname}.service")
 
-sha256sums=('f69a582e2ee15f49afb48adb2393d42351256ea070a60513e1ae17afe973e9c3'
+sha256sums=('1e8ed1e7eddcdb2a9033bacd27b4106d485778607d65acf556df644d4fb0ebd2'
             '7dbfedd1bdd3e040e91f89f8b6895117db3fda0fac774d2fdd8d55e4f602afa6')
 
 package() {
