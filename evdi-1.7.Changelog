@@ -1,3 +1,7 @@
+v1.7.1-2
+- remove custom install scripts -- the DKMS transaction hooks alreay do 
+  everything
+
 v1.7.1
 - use upstreams tagged version to support kernel 5.9
 
