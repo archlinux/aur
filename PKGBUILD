@@ -1,7 +1,7 @@
 # Maintainer: Simone Scalabrino <s.scalabrino9@gmail.com>
 _appname="todoist"
 _appdesc="Standalone silo app for Todoist (TODO manager)"
-_gittag="0.2"
+_gittag="0.3"
 
 _gitname=silos-apps
 pkgname="silo-${_appname}"
