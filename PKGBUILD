@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Abhishek Zambare <abhishekzambare@gmail.com>
-pkgname=macos-3d-originals-gtk-git
+pkgname=macos-3d-originals-theme
 pkgver=2.6
 pkgrel=1
 epoch=
