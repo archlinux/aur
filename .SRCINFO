@@ -1,14 +1,14 @@
 pkgbase = openhab3-addons
 	pkgdesc = addons for openhab3 open source home automation software
-	pkgver = 3.0.0.M4
+	pkgver = 3.0.0.M5
 	pkgrel = 1
 	url = http://www.openhab.org/
 	arch = any
 	license = EPL
 	depends = openhab3
 	conflicts = openhab3-snapshot-addons
-	source = openhab-addons-3.0.0.M4.kar::https://openhab.jfrog.io/openhab/libs-milestone-local/org/openhab/distro/openhab-addons/3.0.0.M4/openhab-addons-3.0.0.M4.kar
-	sha256sums = 05cee3fc3f880a52f9178d0c1797c1ac9126dee0900bc84f010af82ea23c7af2
+	source = openhab-addons-3.0.0.M5.kar::https://openhab.jfrog.io/openhab/libs-milestone-local/org/openhab/distro/openhab-addons/3.0.0.M5/openhab-addons-3.0.0.M5.kar
+	sha256sums = ed23bab67b23e05585284de3e0fe5e99c0e9601bbcfa81b565cd5267b1043c9b
 
 pkgname = openhab3-addons
 
