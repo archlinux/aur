@@ -8,8 +8,7 @@
 # Contributor: Johannes Krampf <wuischke.at.amule.dot.org>
 
 pkgname=midori-git
-pkgver=0.6.0.r8628.7b765721
-_pkgver=0.6.0
+pkgver=v9.0.r0.gf6b3b1e0
 pkgrel=1
 pkgdesc='Lightweight web browser based on WebKit and GTK3. Git development version.'
 arch=('x86_64' 'i686')
@@ -23,12 +22,12 @@ optdepends=('gst-plugins-base: HTML5 OGG videos support'
 provides=('midori')
 conflicts=('midori' 'midori-gtk2-git')
 options=('!emptydirs')
-source=("git+https://github.com/midori-browser/core")
+source=("git+https://github.com/midori-browser/core#tag=v9.0")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/core"
-  printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
 
 }
 
@@ -39,7 +38,6 @@ build() {
   cmake "../" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DHALF_BRO_INCOM_WEBKIT2=ON \
     -DCMAKE_C_FLAGS="$CFLAGS -fPIC -w" \
     -DVALA_CFLAGS="$CFLAGS -fPIC -w" \
     -G Ninja
