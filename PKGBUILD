@@ -8,7 +8,7 @@ pkgdesc="EAF extends GNU Emacs to an entire universe of powerful GUI application
 arch=('x86_64')
 url="https://github.com/manateelazycat/emacs-application-framework"
 license=('GPL3')
-depends=('emacs' 'python-dbus' 'python-pyqt5' 'python-pyqtwebengine')
+depends=('emacs' 'python-dbus' 'python-pyqt5' 'python-pyqtwebengine' 'wmctrl')
 optdepends=('python-pymupdf: for pdf viewer'
 	    'python-grip: for markdown preview'
 	    'python-qrcode: for qr codes'

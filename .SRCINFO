@@ -10,6 +10,7 @@ depends = emacs
 depends = python-dbus
 depends = python-pyqt5
 depends = python-pyqtwebengine
+depends = wmctrl
 optdepends = python-pymupdf: for pdf viewer
 optdepends = python-grip: for markdown preview
 optdepends = python-qrcode: for qr codes
