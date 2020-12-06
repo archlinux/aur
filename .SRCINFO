@@ -1,0 +1,23 @@
+pkgbase = jack-support
+	pkgdesc = Meta package for alsa support.
+	pkgver = 1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture
+	install = jack.install
+	arch = any
+	license = GPL
+	depends = jack
+	depends = jack_capture
+	depends = jack_utils
+	depends = python-dbus
+	depends = celt
+	depends = libffado
+	depends = realtime-privileges
+	depends = a2jmidid
+	depends = zita-ajbridge
+	optdepends = qjackctl: A Qt front-end for the JACK low-latency audio server
+	optdepends = cadence: JACK toolbox for audio production
+	replaces = garuda-jack
+
+pkgname = jack-support
+
