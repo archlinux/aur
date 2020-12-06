@@ -1,6 +1,6 @@
 pkgbase = dmenu-pryme-svg
 	pkgdesc = pryme-svgs customized fork of dmenu
-	pkgver = 1
+	pkgver = r2.44c0b97
 	pkgrel = 1
 	url = https://gitlab.com/pryme-svg/dmenu
 	arch = any
