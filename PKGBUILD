@@ -2,7 +2,7 @@
 _pkgname=qiskit-aqua
 pkgname=python-${_pkgname}
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance simulator for quantum circuits that includes noise models"
 arch=('x86_64')
 url="https://github.com/Qiskit/qiskit-aqua"
@@ -11,7 +11,8 @@ depends=('python-qiskit-terra'
          'python-qiskit-ignis'
          'python-scikit-learn'
          'python-cvxopt'
-         # dlx docplex
+         'python-dlx'
+         'python-docplex'
          'python-fastdtw'
          'python-quandl'
          'python-h5py'
