@@ -18,17 +18,17 @@ noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/dmenu
+  cd $srcdir/st
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd dmenu
+  cd st 
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-  cd dmenu
+  cd st 
   make PREFIX=/usr DESTDIR="$pkgdir" install
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
