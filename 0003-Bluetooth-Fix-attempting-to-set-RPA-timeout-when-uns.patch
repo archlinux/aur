@@ -1,4 +1,4 @@
-From 4264c74c96e7907b60ee6ed82670317d19ed7ebe Mon Sep 17 00:00:00 2001
+From 3d936926666bb681f2a9ed6e04f685667e61e2b4 Mon Sep 17 00:00:00 2001
 From: Edward Vear <edwardvear@gmail.com>
 Date: Tue, 27 Oct 2020 00:02:03 -0700
 Subject: [PATCH 3/5] Bluetooth: Fix attempting to set RPA timeout when

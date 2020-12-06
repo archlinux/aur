@@ -7,7 +7,7 @@ _srcname=linux-5.9
 _major=5.9
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=11
+_minor=12
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -32,20 +32,22 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch
   0003-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch
+  0004-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('113ad674b77fca621bcf79d87373abf4979aefba4071c49e3f8a1d8221eb9ef67da37193eb7e6dbcbe159674ec2efa19ad8346be3257de5dedccb5baaf138b2a'
+b2sums=('2c30e2026f5ed894ed453ad3e1d03b57eb4aee6249f0f5b349678edfdb0ffb2f4864765c90aa10f62b57ca5631250e32787f9ecc472cbecfe9f35e4adb2a7baf'
         'SKIP'
-        'fbcf8b93e4a37e0f45c2de4275ecdfdb80ade1a6cf7e2b62cb331cce2d8fc247eedc14c5c37583b6e10cce58515ec3c9e541f21d067ee8d19567f9edcf065b62'
+        '9e7a86c22993f4bf1a2eda9edd8aacf768ddfb67d109eba78f0719a27d0243767b197a205142524b158c176fe5e1a08de091f4c8f35612267737f2a5ba2dbdc9'
         'SKIP'
         '5b3de497c291d115c19e1856d08ae16f8ceb27061374deb763a4391b98c4aa7bd7e7afb0461c29d9245fba84b2827420104edd4902978dee2bda2c5738212b85'
         'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95'
-        'ed1979dfdcc03ce0d052c407dff85f94325b713a0f2a7e6b39d79bf6e8e5463956b371d0ebb7056f07a1bc21f2f806a4a2a7de2cc8f61c59b2d733ca29b34e48'
-        'bd67ff3a8a1554e642a55ed99b9317a3c7538da94630ed09bab0e0af3f556c538e3e7e7a53b1961f107034645ae1c0dac5e705406b83073fc81f59c0b937d5f4'
-        '5e725df39b824199eb25031730d32a982b5d79076584e131b2930f719bc84cbdd93e5cdd487e975111b568d39422f0bf6aa200d147f2281ff14e8e0d908a29dd')
+        '4212b9f8d634038353c78fa4e33b7525789ea29fbb72bdeb4e263e1ae0c61b9ee22d6829b664b26fe2c7dff28a9d1f1fb2e558b9f90b32f78d8b2680816665ea'
+        '2456d8a70e3c6f992ae5956efc3d0bee35480b55cf47088b5b31722059a213409fd0e4ba601e2b00ad25202fa44b336cf402e7d2def3ffe2861874a643f7d29a'
+        '66cd32b08aee217d1031461161f1730c9c05c1585df9c1bdde857adf08477b4517d89766e90500704f28fb251101441efe22242f5290a7d2bc6095820e397adf'
+        'd07187d63303cd07a567aa5a7afdd908905c07e6f6f5c4154b1c2900c2020465970aeaa40ba36537b98014c7b111e32c440123eeb71a9a64160e5affa8660b9d')
 
 
 export KBUILD_BUILD_HOST=archlinux
