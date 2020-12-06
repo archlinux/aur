@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-ndi
 pkgver=4.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video with NDI restored and enabled'
 arch=(x86_64)
 url=https://ffmpeg.org/
@@ -27,7 +27,6 @@ depends=(
   libiec61883
   libmfx
   libmodplug
-  libomxil-bellagio
   libpulse
   librav1e.so
   libraw1394
@@ -66,7 +65,9 @@ depends=(
   ndi-sdk
 )
 makedepends=(
+  amf-headers
   avisynthplus
+  clang
   ffnvcodec-headers
   git
   ladspa
@@ -94,7 +95,6 @@ _tag=6b6b9e593dd4d3aaf75f48d40a13ef03bdef9fdb
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
   vmaf-model-path.patch
-  '016-ffmpeg-srt-1.4.2-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/7c59e1b0f285cd7c7b35fcd71f49c5fd52cf9315'
   '0001-Revert-lavd-Remove-libndi_newtek.patch'::'https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/0001-Revert-lavd-Remove-libndi_newtek.patch?inline=false'
   'libndi_newtek_common.h'::'https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_common.h?inline=false'
   'libndi_newtek_dec.c'::'https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_dec.c?inline=false'
@@ -104,7 +104,6 @@ source=(
 sha256sums=(
   SKIP
   8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d
-  960fd930955cd126e33c543eb5bf300fc050efdd4238626ee4aad2a50d353fa7
   207b0005fe9310d9985c4903c259a5e55441a3728577ff6d9b9f562a20462fdf
   462e984a7cb3d0af17b0ea0eb2a010aee2f79a3e77c2055fdfd760163dd75fa4
   3c6dea7583d79911e9ea198c35b1b56830b85eea84e49d63c2d5c03af5210eca
@@ -115,6 +114,7 @@ sha256sums=(
 pkgver() {
   cd ffmpeg
 
+  git cherry-pick -n 7c59e1b0f285cd7c7b35fcd71f49c5fd52cf9315 # fix build against libsrt 1.4.2
   git describe --tags | sed 's/^n//'
 }
 
@@ -122,7 +122,6 @@ prepare() {
   cd ffmpeg
 
   patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
-  patch -Np1 -i "${srcdir}"/016-ffmpeg-srt-1.4.2-fix.patch
   patch -Np1 -i "${srcdir}"/0001-Revert-lavd-Remove-libndi_newtek.patch
 
   printf 'Copying libndi missing file'
@@ -137,7 +136,10 @@ build() {
     --disable-debug \
     --disable-static \
     --disable-stripping \
+    --enable-amf \
     --enable-avisynth \
+    --enable-cuda-llvm \
+    --enable-lto \
     --enable-fontconfig \
     --enable-gmp \
     --enable-gnutls \
@@ -180,7 +182,6 @@ build() {
     --enable-libxvid \
     --enable-nvdec \
     --enable-nvenc \
-    --enable-omx \
     --enable-shared \
     --enable-version3 \
     --enable-nonfree \
