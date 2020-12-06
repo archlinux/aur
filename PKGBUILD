@@ -11,8 +11,8 @@ conflicts=('librespot-java-git')
 backup=(etc/librespot-java/config.toml)
 source=("https://github.com/librespot-org/librespot-java/releases/download/v$pkgver/librespot-api-$pkgver.jar"
         "https://github.com/librespot-org/librespot-java/releases/download/v$pkgver/librespot-player-$pkgver.jar"
-        "https://github.com/paulbastian/aur/blob/master/librespot-java/config.toml"
-        "https://github.com/paulbastian/aur/blob/master/librespot-java/librespot-java.service")
+        "https://raw.githubusercontent.com/paulbastian/aur/master/librespot-java/config.toml"
+        "https://raw.githubusercontent.com/paulbastian/aur/master/librespot-java/librespot-java.service")
 noextract=("librespot-api-$pkgver.jar"
            "librespot-player-$pkgver.jar")
 sha256sums=('0097b97fd420ca0685ef409d03d133df580867317d37be9a4fff19ceb6dfe142'
