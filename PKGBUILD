@@ -4,7 +4,7 @@
 pkgbase=python-feedparser-dev
 pkgname=('python-feedparser-dev' 'python-sgmllib3k')
 pkgver=6.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Parse RSS and Atom feeds in Python: development version"
 arch=('any')
 url="https://github.com/kurtmckee/feedparser/"
@@ -21,7 +21,7 @@ sha256sums=('b211cfb80c4daefca64b773ade77340727187564fad9c2c94b37da8e1f03788f'
 
 build() {
   cd "${srcdir}/sgmllib3k-1.0.0"
-  python /usr/lib/python3.8/compileall.py sgmllib.py
+  python /usr/lib/$(readlink /usr/bin/python3)/compileall.py sgmllib.py
 }
 
 package_python-feedparser-dev() {
@@ -39,10 +39,11 @@ package_python-sgmllib3k() {
   pkgdesc="Port of sgmllib to Python3"
   license=('PSF')
 
+  ext="3$(readlink /usr/bin/python3 | sed -En "s/python3.//p")"
   cd "${srcdir}/sgmllib3k-1.0.0"
   install -Dm644 sgmllib.py \
-    "${pkgdir}/usr/lib/python3.8/site-packages/sgmllib.py"
-  install -Dm644 __pycache__/sgmllib.cpython-38.pyc \
-    "${pkgdir}/usr/lib/python3.8/site-packages/__pycache__/sgmllib.cpython-38.pyc"
+    "${pkgdir}/usr/lib/$(readlink /usr/bin/python3)/site-packages/sgmllib.py"
+  install -Dm644 __pycache__/sgmllib.cpython-${ext}.pyc \
+    "${pkgdir}/usr/lib/$(readlink /usr/bin/python3)/site-packages/__pycache__/sgmllib.cpython-${ext}.pyc"
 }
 
