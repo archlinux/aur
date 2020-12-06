@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/elisescu/tty-share"
 license=('MIT')
 depends=()
-source=("https://github.com/elisescu/tty-share/archive/v${pkgver}.zip")
+source=("${url}/archive/v${pkgver}.zip")
 md5sums=('da4adbb20543f381d012f6b6b7c03046')
 makedepends=('go-pie')
 
