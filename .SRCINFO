@@ -1,6 +1,6 @@
 pkgbase = secureboot.sh
 	pkgdesc = A very basic script to setup secureboot
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 2
 	url = https://github.com/mrabe89/secureboot.sh
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = secureboot.sh
 	depends = dracut
 	depends = efitools
 	depends = sbsigntools
-	source = secureboot.sh-0.0.1.tar.gz::https://github.com/mrabe89/secureboot.sh/archive/v0.0.1.tar.gz
-	sha256sums = 1e32809a0c4c3646e72719c8a553fa0310fa3094c8224012dbbb6a333756b18a
+	source = secureboot.sh-0.0.2.tar.gz::https://github.com/mrabe89/secureboot.sh/archive/v0.0.2.tar.gz
+	sha256sums = 00b3e285e0a6f9f4a75a508d2cf30c1112b02c787152501a98aea48a95f8459b
 
 pkgname = secureboot.sh
 
