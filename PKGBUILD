@@ -2,16 +2,14 @@
 
 pkgname=backblaze-b2
 _pkgname=B2_Command_Line_Tool
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Backblaze B2 Command Line Client"
 url='https://github.com/Backblaze/B2_Command_Line_Tool'
 depends=('python'
          'python-b2sdk>=1.0.0'
-         'python-six>=1.10'
          'python-tqdm>=4.5.0'
-         'python-logfury'
-         'python-class-registry'
+         'python-class-registry=3.0.5'
         )
 optdepends=()
 # MIT or Creative Commons: https://www.backblaze.com/using_b2_code.html
@@ -19,7 +17,7 @@ license=('MIT')
 arch=('any')
 
 source=("https://github.com/Backblaze/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('0e0ebf698f49de00cb530bd0928855058fc6d1f4aaeb0b7b1bbea475e6e3f2add8c7acd9a75baf348907646eedc199b9729e1777bfb4a4e63952782a74c749dc')
+sha512sums=('8dcf2f6bb244e67c0bd3c91b5984d62f37d553bb018a87c81baca49cb2ca0d7f743c64695189829216206976b1e7cb5deb9776c94c8bda2d3d9f8deccb33685a')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
@@ -31,8 +29,11 @@ package() {
     cd ${srcdir}/${_pkgname}-${pkgver}
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
     # https://wiki.archlinux.org/index.php/Python_package_guidelines
-    rm -rf ${pkgdir}/usr/lib/python*/site-packages/tests/
+    local site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
+    rm -rf "${pkgdir}${site_packages}/test"
 
     # Installed to backblaze-b2 because the Boost pkg installs /usr/bin/b2
     mv ${pkgdir}/usr/bin/b2 ${pkgdir}/usr/bin/backblaze-b2
