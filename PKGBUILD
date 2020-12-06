@@ -2,13 +2,13 @@
 
 pkgname=btusb-csr-0x8891
 pkgver=0.8
-pkgrel=7
+pkgrel=8
 pkgdesc="Patch btusb so it works on CSR clone devices with id 0x8891. Not necessary for kernel 5.9+"
 url=https://bugzilla.kernel.org/show_bug.cgi?id=60824
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('dkms')
-#makedepends=('linux-headers<5.9')
+makedepends=('linux-headers<5.9')
 _lts_version=5.4.80
 
 source=(
