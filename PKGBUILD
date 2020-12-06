@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-datetime-git
-pkgver=2.2.5.r16.ga2607d3
+pkgver=2.2.5.r35.g0cb673c
 pkgrel=1
 pkgdesc='Date & Time indicator for Wingpanel'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/elementary/wingpanel-indicator-datetime'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('evolution-data-server' 'glib2' 'glibc' 'gtk3' 'libgee' 'libical'
-         'libgranite.so' 'libwingpanel-2.0.so')
+         'libgranite.so' 'libwingpanel-3.0.so')
 makedepends=('git' 'granite' 'meson' 'vala' 'wingpanel')
 provides=('wingpanel-indicator-datetime')
 conflicts=('wingpanel-indicator-datetime')
