@@ -5,8 +5,8 @@ url='https://github.com/davetcoleman/ros_control_boilerplate'
 
 pkgname='ros-melodic-ros-control-boilerplate'
 pkgver='0.5.0'
-arch=('any')
-pkgrel=1
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-rosparam-shortcuts
