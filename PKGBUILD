@@ -1,7 +1,7 @@
 # Maintainer: pryme-svg <edoc.www@gmail.com>
 
 pkgname=dmenu-pryme-svg
-pkgver=r2.44c0b97
+pkgver=r3.426b5b3
 pkgrel=1
 pkgdesc="pryme-svgs customized fork of dmenu"
 arch=(any)
