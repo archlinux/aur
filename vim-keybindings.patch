@@ -70,39 +70,44 @@ index 66934be..c229584 100644
     keys['U'] = actionUntagAll;
     keys['c'] = actionTagAllChildren;
 diff --git a/Panel.c b/Panel.c
-index 68a245e..f722d7b 100644
+index 21dfbe2..e8ba9f9 100644
 --- a/Panel.c
 +++ b/Panel.c
-@@ -329,10 +329,12 @@ bool Panel_onKey(Panel* this, int key) {
-    int size = Vector_size(this->items);
+@@ -333,6 +333,7 @@ bool Panel_onKey(Panel* this, int key) {
+ 
     switch (key) {
     case KEY_DOWN:
 +   case 'j':
     case KEY_CTRL('N'):
-       this->selected++;
+    #ifdef KEY_C_DOWN
+    case KEY_C_DOWN:
+@@ -341,6 +342,7 @@ bool Panel_onKey(Panel* this, int key) {
        break;
+ 
     case KEY_UP:
 +   case 'k':
     case KEY_CTRL('P'):
-       this->selected--;
+    #ifdef KEY_C_UP
+    case KEY_C_UP:
+@@ -349,7 +351,7 @@ bool Panel_onKey(Panel* this, int key) {
        break;
-@@ -347,23 +349,33 @@ bool Panel_onKey(Panel* this, int key) {
-       break;
-    #endif
+ 
     case KEY_LEFT:
 -   case KEY_CTRL('B'):
 +   case 'h':
        if (this->scrollH > 0) {
           this->scrollH -= MAXIMUM(CRT_scrollHAmount, 0);
           this->needsRedraw = true;
-       }
+@@ -357,18 +359,29 @@ bool Panel_onKey(Panel* this, int key) {
        break;
+ 
     case KEY_RIGHT:
 -   case KEY_CTRL('F'):
 +   case 'l':
        this->scrollH += CRT_scrollHAmount;
        this->needsRedraw = true;
        break;
+ 
 +   case KEY_CTRL('U'):
 +      this->selected -= (this->h - 1) / 2;
 +      this->needsRedraw = true;
@@ -111,29 +116,32 @@ index 68a245e..f722d7b 100644
 +      this->selected += (this->h - 1) / 2;
 +      this->needsRedraw = true;
 +      break;
++
     case KEY_PPAGE:
 +   case KEY_CTRL('B'):
        this->selected -= (this->h - 1);
-       this->scrollV = MAXIMUM(0, this->scrollV - this->h + 1);
+       this->scrollV = CLAMP_INDEX(this->scrollV, -(this->h - 1), 0, size - this->h);
        this->needsRedraw = true;
        break;
+ 
     case KEY_NPAGE:
 +   case KEY_CTRL('F'):
        this->selected += (this->h - 1);
-       this->scrollV = MAXIMUM(0, MINIMUM(Vector_size(this->items) - this->h,
-                                  this->scrollV + this->h - 1));
-@@ -385,9 +397,11 @@ bool Panel_onKey(Panel* this, int key) {
+       this->scrollV = CLAMP_INDEX(this->scrollV, +(this->h - 1), 0, size - this->h);
+       this->needsRedraw = true;
+@@ -387,10 +400,12 @@ bool Panel_onKey(Panel* this, int key) {
        break;
-    }
+ 
     case KEY_HOME:
 +   case 'g':
        this->selected = 0;
        break;
+ 
     case KEY_END:
 +   case 'G':
        this->selected = size - 1;
        break;
-    case KEY_CTRL('A'):
+ 
 diff --git a/README b/README
 index 880597d..0c44936 100644
 --- a/README
@@ -188,7 +196,7 @@ index 880597d..0c44936 100644
  
  For more information and details on how to contribute to `htop` visit [htop.dev](https://htop.dev).
 diff --git a/ScreenManager.c b/ScreenManager.c
-index 87746c7..bbfa1a3 100644
+index ac93721..6413bd7 100644
 --- a/ScreenManager.c
 +++ b/ScreenManager.c
 @@ -255,7 +255,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
