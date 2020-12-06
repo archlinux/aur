@@ -11,7 +11,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=21.0.0_devel.131029.fe3b5241a48
+pkgver=21.0.0_devel.131663.40ede410358
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -132,7 +132,8 @@ build () {
        -D vulkan-overlay-layer=true \
        -D vulkan-device-select-layer=true \
        -D tools=[] \
-       -D zstd=enabled
+       -D zstd=enabled \
+       -D microsoft-clc=disabled
        
     meson configure _build
     
