@@ -5,8 +5,8 @@
 
     pkgname='ros-melodic-libg2o'
     pkgver='2018.3.25'
-    arch=('any')
-    pkgrel=2
+    arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+    pkgrel=3
     license=('BSD')
 
     ros_makedepends=()
