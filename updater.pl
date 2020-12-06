@@ -10,11 +10,11 @@ my $installer = "";
 
 GetOptions("installer=s" => \$installer);
 
-unless ($installer =~ /(cewe-fotoservice|Mein_CEWE_FOTOBUCH)/){
+unless ($installer =~ /(CEWE_Fotowelt|Mein_CEWE_FOTOBUCH)/){
 	print "\033[1;31mNo AUR package available for this update ('$installer').\033[0m"
 }else{
 
-	my $pkgName = $1 eq 'Mein_CEWE_FOTOBUCH' ? 'cewe-fotobuch' : 'cewe-fotoservice';
+	my $pkgName = $1 eq 'Mein_CEWE_FOTOBUCH' ? 'cewe-fotobuch' : 'cewe-fotowelt';
 
 	chdir('/tmp');
 	system("wget https://aur.archlinux.org/cgit/aur.git/snapshot/$pkgName.tar.gz -O $pkgName.tar.gz");

@@ -10,8 +10,8 @@ pkgname=cewe-fotobuch
 conflicts=(cewe-fotoservice)
 pkgdesc='an offline client for creating photobooks, uploading and ordering them at cewe.de'
 md5sums=('1bc5b7602826ef4feed2d39ec141fff8'
-# template start; name=cewe; version=7.0.3;
-         '11e395d7c48d7f340435eeb938bcb502')
+# template start; name=cewe; version=7.1.2;
+         '12ab17737db1c55035b6e7769132f791')
 
 pkgver=7.1.2
 pkgrel=1
@@ -59,7 +59,7 @@ package() {
 		cd ${_installDir#$pkgdir}
 		# nouveau bug with QT web engine: https://bugreports.qt.io/browse/QTBUG-41242
 		lsmod | grep nouveau && export QT_XCB_FORCE_SOFTWARE_OPENGL=1
-		exec ./"${_productUrname/_/.}" "\$@"
+		exec ./"${_productUrname/_/ }" "\$@"
 	EOF
 	cat > $pkgdir/usr/share/applications/$pkgname.desktop <<-EOF
 		[Desktop Entry]
