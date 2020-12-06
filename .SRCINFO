@@ -1,12 +1,12 @@
 pkgbase = inkscape-download-palette
 	pkgdesc = Inkscape extension to download color palettes
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/olibia/inkscape-download-palette
 	arch = any
 	license = GPL
 	depends = inkscape
-	depends = python2-lxml
+	depends = python-lxml
 	provides = inkscape-download-palette
 	conflicts = inkscape-download-palette-git
 	source = inkscape-download-palette-1.0.tar.gz::https://github.com/olibia/inkscape-download-palette/archive/v1.0.tar.gz

@@ -1,12 +1,12 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=inkscape-download-palette
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Inkscape extension to download color palettes"
 arch=("any")
 url="https://github.com/olibia/inkscape-download-palette"
 license=("GPL")
-depends=("inkscape" "python2-lxml")
+depends=("inkscape" "python-lxml")
 provides=("inkscape-download-palette")
 conflicts=("inkscape-download-palette-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
