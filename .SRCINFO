@@ -1,6 +1,6 @@
 pkgbase = openrazer-basilisk-v2-git
 	pkgdesc = An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux.  (Temporary package for Basilisk V2 support).
-	pkgver = 2.6.0.r6.g2433ae8
+	pkgver = 2.8.0.r1.g5989555
 	pkgrel = 1
 	url = https://github.com/malsyned/openrazer
 	arch = any
