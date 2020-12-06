@@ -1,6 +1,6 @@
 pkgbase = wingpanel-indicator-power-git
 	pkgdesc = Power indicator for Wingpanel
-	pkgver = 2.1.5.r25.g7ae1a7c
+	pkgver = 2.2.0.r28.g3bd02c7
 	pkgrel = 1
 	url = https://github.com/elementary/wingpanel-indicator-power
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = wingpanel-indicator-power-git
 	depends = libgtop
 	depends = libgranite.so
 	depends = libudev.so
-	depends = libwingpanel-2.0.so
+	depends = libwingpanel-3.0.so
 	provides = wingpanel-indicator-power
 	conflicts = wingpanel-indicator-power
 	source = git+https://github.com/elementary/wingpanel-indicator-power.git
