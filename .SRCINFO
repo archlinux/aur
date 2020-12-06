@@ -1,0 +1,20 @@
+pkgbase = scrutiny
+	pkgdesc = Hard Drive S.M.A.R.T Monitoring, Historical Trends & Real World Failure Thresholds
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/AnalogJ/scrutiny
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = https://github.com/AnalogJ/scrutiny/archive/0.3.5.tar.gz
+	sha512sums = 815842576ca2126c9c53ece283a9c9c30eba14a0d3727331b1634bcdebaeb2a086a9bfe8a68ec2f8c82549bb673a147b4760118437b982489d4a63ee73fdd29c
+
+pkgname = scrutiny
+	depends = glibc
+	depends = scrutiny-web-frontend
+
+pkgname = scrutiny-collector
+	depends = glibc
+	depends = smartmontools
+
