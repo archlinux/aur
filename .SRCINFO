@@ -1,6 +1,6 @@
 pkgbase = devdocs-desktop
 	pkgdesc = DevDocs GTK3 application for multiple API documentations in a fast searchable interface
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/hardpixel/devdocs-desktop
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = devdocs-desktop
 	depends = python-dbus
 	depends = webkit2gtk
 	provides = devdocs-desktop
-	source = devdocs-desktop-1.1.1::https://github.com/hardpixel/devdocs-desktop/archive/v1.1.1.tar.gz
-	md5sums = 63770358fae9cf4655a630116b584dd8
+	source = devdocs-desktop-1.2.0::https://github.com/hardpixel/devdocs-desktop/archive/v1.2.0.tar.gz
+	md5sums = 258c1fb85f25b2a1198d6bd71711a0c5
 
 pkgname = devdocs-desktop
 
