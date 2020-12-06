@@ -1,8 +1,8 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=agordejo
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="A music production session manager"
 arch=('x86_64')
 url="https://www.laborejo.org/agordejo/"
@@ -16,9 +16,9 @@ provides=('argodejo')
 conflicts=('argodejo')
 replaces=('argodejo')
 source=("https://laborejo.org/downloads/${pkgname}-${pkgver}.tar.gz"{,.sig})
-sha512sums=('b65558011d4f3bcc9f4a159ffaea9fb5135c0fb402b3f80f582c28e095114e226f1a7e63863e5cb7bdd0d681814a86af98388b65ad34d80ae15df629aadb6eca'
+sha512sums=('4bb9bd0b795bd34b204d1ce71edcb15da8e668c6b3b3289f4260428f4a4253da179451218a3f4439608a5c2ba6a415e17a5235e3162b4dac9064d2e0916141cd'
             'SKIP')
-b2sums=('63db36f67e24038ebbceac6ff36b71472845d65000be8ddd8bdab54e76402028ce88e2a21fbcf3cd64132e03ae1a568f7d2db54c2817bddf7a0115ee30cfaa57'
+b2sums=('dadfe275ba3addf1f735ce288f288083841b1c3dd24ecbdf3ee8c11165efee9bc9692534cff6eba439e11aab6412b6bb443209a3d21f6c70bb48d859ebfaf3dd'
         'SKIP')
 validpgpkeys=('45D952EF384ADFBB00913E3428C6A306F2909FEE') # Nils Hilbricht <nils@hilbricht.com>
 
