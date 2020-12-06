@@ -1,6 +1,6 @@
 pkgbase = r-gitcreds
 	pkgdesc = Query 'git' Credentials from 'R'
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=gitcreds
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = r-gitcreds
 	optdepends = r-oskeyring
 	optdepends = r-rmarkdown
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/gitcreds_0.1.0.tar.gz
-	sha256sums = 373a010a46bb4b954be7ea4b4ac5c0fcdab0edd5ff100c1036965a1de721fd28
+	source = https://cran.r-project.org/src/contrib/gitcreds_0.1.1.tar.gz
+	sha256sums = b14aaf4e910a9d2d6c65c93e645f0b0159c00898e669f917f83c03dfedb1dfea
 
 pkgname = r-gitcreds
 
