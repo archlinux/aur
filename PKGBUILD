@@ -3,7 +3,7 @@
 # Contributor: pandada8 <pandada8@gmail.com>
 
 pkgname=xray-git
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="The best v2ray-core, with XTLS support."
 arch=('x86_64')
@@ -61,7 +61,7 @@ package() {
     install -Dm644 xray.service "${pkgdir}"/usr/lib/systemd/system/xray.service
     install -Dm644 xray@.service "${pkgdir}"/usr/lib/systemd/system/xray@.service
     install -Dm644 *.json -t "${pkgdir}"/etc/xray/
-    
+ 
     cd "${srcdir}"/Xray-core
     install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/xray/LICENSE
     install -Dm755 xray -t "${pkgdir}"/usr/bin/
