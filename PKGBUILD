@@ -1,6 +1,6 @@
 # Maintainer: Daniel Borowski <hurricanepootis@protonmail.com>
 pkgname=minecraft-legacy-launcher
-pkgver=1.6.93
+pkgver=1.6.93.1
 pkgrel=1
 pkgdesc="Minecraft Legacy Java Launcher"
 arch=(x86_64)
@@ -18,7 +18,7 @@ conflicts=(minecraft-launcher)
 md5sums=('f2171107e6b1f8a3483c5e3ed5d1229e'
          'cd561eab1fd1fddae58fb8205a00f54f'
          '0b104e3049346908bf559cab602071e3'
-         'ed884b0467a8d72d270fbca0b1122f07')
+         '8e597d8b7aece38a9ee3bb7cf965a31d')
 package() {
   cd "$pkgdir"
   mkdir -p "$pkgdir/usr"
