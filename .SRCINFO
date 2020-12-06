@@ -1,0 +1,15 @@
+pkgbase = python-wrapio
+	pkgdesc = Handling event-based streams.
+	pkgver = 0.3.8
+	pkgrel = 1
+	url = https://github.com/Exahilosys/wrapio
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python>=3.5
+	provides = python-wrapio
+	source = https://github.com/Exahilosys/wrapio/archive/v0.3.8.tar.gz
+	md5sums = 170de19707eaa0596db01b0edac405d0
+
+pkgname = python-wrapio
+
