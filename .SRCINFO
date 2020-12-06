@@ -1,7 +1,7 @@
 pkgbase = botamusique
 	pkgdesc = Music bot for mumble
 	pkgver = 7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/azlux/botamusique
 	arch = x86_64
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = botamusique
 	makedepends = python-virtualenv
 	depends = ffmpeg
 	depends = opus-tools
+	options = !strip
 	source = botamusique-7.2.zip::https://github.com/azlux/botamusique/archive/7.2.zip
 	source = botamusique.service
 	source = botamusique.sh

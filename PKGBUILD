@@ -3,13 +3,14 @@
 
 pkgname='botamusique'
 pkgver=7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Music bot for mumble"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/azlux/botamusique"
 license=('MIT')
 depends=('ffmpeg' 'opus-tools')
 makedepends=('unzip' 'python-virtualenv')
+options=('!strip') # Otherwise some python libraries get corrupted.
 source=("${pkgname}-${pkgver}.zip::https://github.com/azlux/${pkgname}/archive/${pkgver}.zip"
 "${pkgname}.service"
 "${pkgname}.sh"
