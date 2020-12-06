@@ -5,8 +5,8 @@
 
     pkgname='ros-melodic-teb-local-planner'
     pkgver='0.8.4'
-    arch=('any')
-    pkgrel=1
+    arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+    pkgrel=2
     license=('BSD')
 
     ros_makedepends=(ros-melodic-mbf-costmap-core

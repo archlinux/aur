@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-teb-local-planner
 	pkgdesc = ROS - The teb_local_planner package implements a plugin to the base_local_planner of the 2D navigation stack.
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/teb_local_planner
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
