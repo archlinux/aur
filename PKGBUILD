@@ -9,16 +9,16 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=87.0.4280.66
+pkgver=87.0.4280.88
 pkgrel=1
 _launcher_ver=6
 _gcc_patchset=9
 _pkgname=$(echo $pkgname | cut -d\- -f1-2)
 _pkgver=$(echo $pkgver | cut -d\. -f1-4)
 # ungoogled chromium variables
-_uc_ver=87.0.4280.67-1
+_uc_ver=$pkgver-1
 _uc_usr=Eloston
-_uc_sum='158d1210be8d0f72ec09724a22907b5a737c3a25b19632d2eb93ebdfbe3f1ac9'
+_uc_sum='79fad3ac0f247732e4326992698e4cf2c643a53b7e101b3b62768c461195fba2'
 _uc_url="$_pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz"
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
@@ -38,21 +38,20 @@ optdepends=('pepper-flash: support for Flash content'
             'kwallet: for storing passwords in KWallet on KDE desktops')
 provides=('chromium')
 conflicts=('chromium')
-install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$_pkgver.tar.xz
         $_uc_url
-        chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
+        https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         chromium-drirc-disable-10bpc-color-configs.conf
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         wayland-egl.patch
-        chromium-skia-harmony.patch)
-sha256sums=('29a8e4ea82edec2fdcf34ece68323bec7ab90f3d5669e6b77f58cff9c278f741'
+        subpixel-anti-aliasing-in-FreeType-2.8.1.patch)
+sha256sums=('3e4645328735ef60db78d1a313efb3770a3edeaede90d076414df52f567a09c0'
             $_uc_sum
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             'c99934bcd2f3ae8ea9620f5f59a94338b2cf739647f04c28c8a551d9083fa7e9'
             'bf86923eaee5529ab9fb6148bd6c33a73c8746ab1b4ade0cd3b761109bc55826'
-            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
+            '1e2913e21c491d546e05f9b4edf5a6c7a22d89ed0b36ef692ca6272bcd5faec6')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -94,13 +93,11 @@ prepare() {
     third_party/libxml/chromium/*.cc
 
   # Upstream fixes
+  patch -Np1 -d third_party/skia <../subpixel-anti-aliasing-in-FreeType-2.8.1.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-87-ServiceWorkerContainerHost-crash.patch
   patch -Np1 -i ../patches/chromium-87-openscreen-include.patch
-
-  # https://crbug.com/skia/6663#c10
-  patch -Np0 -i ../chromium-skia-harmony.patch
 
   # Wayland/EGL regression (crbug #1071528 #1071550)
   patch -Np1 -i ../wayland-egl.patch
@@ -191,7 +188,7 @@ build() {
   CXXFLAGS+=' -Wno-unknown-warning-option'
 
   msg2 'Configuring Chromium'
-  gn gen out/Release --args="${_flags[*]}" --script-executable=/usr/bin/python2
+  gn gen out/Release --args="${_flags[*]}" --script-executable=python2
   msg2 'Building Chromium'
   ninja -C out/Release chrome chrome_sandbox chromedriver
 }
