@@ -1,11 +1,14 @@
 pkgbase = zenkit
 	pkgdesc = A platform for collaboration and project management
 	pkgver = 20201204
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zenkit.com
 	arch = x86_64
 	license = Commercial
-	depends = gconf
+	depends = alsa-lib
+	depends = gtk3
+	depends = nss
+	optdepends = xdg-utils: for opening links (e.g. for logging in via 3rd party accounts)
 	provides = zenki
 	options = !strip
 	source = https://static.zenkit.com/downloads/desktop-apps/base/zenkit-base-linux.tar.gz
