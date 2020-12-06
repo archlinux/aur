@@ -1,7 +1,7 @@
 # Maintainer: Matthew Treinish <mtreinish@kortar.org>
 _name=retworkx
 pkgname=python-retworkx
-pkgver=0.5.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A python graph library implemented in Rust."
 url="https://github.com/Qiskit/retworkx"
@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=('python' 'python-numpy')
 makedepends=('python-setuptools-rust' 'python-pip' 'rust')
 source=("https://pypi.io/packages/source/r/retworkx/retworkx-$pkgver.tar.gz")
-sha512sums=('eb030d5dad9973a1e075687c7943ac5e0be74fbe41e0a7d7258710338f253e84131d82db720193761ae85caf7c7f5ede2e4020451969d0f51978bde18c88b484')
+sha512sums=('f4e7b83096d21f265ac6572a6f122539ac1d118a79ebded637ba3231719c633cdae5171394558d8b4f439b35c315e5d3f8e5f84489ae6063cd7f71019345f67c')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "$pkgname-$pkgver"
@@ -18,16 +18,11 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  export PIP_CONFIG_FILE=/dev/null
-  pip wheel .
+  python setup.py build
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  export PIP_CONFIG_FILE='/dev/null'
-  pip install --isolated \
-              --root="$pkgdir" \
-              --ignore-installed \
-              --no-deps "$_name-$pkgver"*.whl
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
