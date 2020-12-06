@@ -6,11 +6,11 @@
 buildarch=8
 
 pkgbase=linux-raspberrypi4-aarch64
-_commit=ff93994fb3f92070d8521d709ad04675ecaa5817
+_commit=9797f1a4938c20139b00a25de93cc99efb5c291b
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Raspberry Pi 4"
-pkgver=5.4.72
+pkgver=5.4.79
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -20,14 +20,14 @@ options=('!strip')
 source=("https://github.com/raspberrypi/linux/archive/${_commit}.tar.gz"
         'config.txt'
         'cmdline.txt'
-        'config'
+        'rpi4-kernel-config'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-b2sums=('ac22284417546a39f5ee67802f1c2ef451fffb6ec1754da2eb1ac1c59dba80827eff0116f58323d51477973d554db3506666181fd516ca02a696f90f18b76825'
+b2sums=('7ef70ba8232538d08336730406ea8512027f434689ea27f7a9be758ba387aebf72add4dcfa5a6062e6eddf2f6f4f2cbb8012fa22f190eaf45c7e665bcd86b680'
         '4bbd31aeb35fb0400ee65d63d1718bd93ed65fbe5f50c22fff63a60e2934f63c71245590b2ab4449abdd75f80c44e6b5016e44e6c35406b5ba20bbc346d5dcb5'
         '7988d1abc76ff5237ab104e4d3ce0d4d62e6d4c514cbe9411e6950baeb4e3121731ff75d85868071fbcc7f8c98448f5db128a564237844680375cb2e3176fdd7'
-        '33c8925e92d30c6290f75b3d48e693ebe142601cf938c7da2a9ba4c334f742c78ef9d66d414c0ec446f2a88ac6aec7193b159c20cb27043fe496005b2ab07365'
+        'f200485d292025085ec2d79815246c5db2d793a222116dd10054c540352ffc041a1f7ed2fb9853caa28ceae01b424c02a11f62a15fa9b4ba94d39bb42fd5f53e'
         'f0cb39a8e448dc93cd830f1680303ecfcda6c729030ecf0bbf6dd8c57777a12ab33bbd991da4f735ba5869afb59d39f5cf5c7c725cc9ba6a78c235c2fd00251a'
         '40e2e0ac9eec9f9c08593875ca5bb8a26f835e33ae42e3718b98e83d76bbbc51a68395215c707fe58269954127261f7f8d12ec47341d28c672de973f3c4e71e8'
         '8edd95fb949c3282bc70043af19cd6afc5201c2889a4d4c2a0b65862d27ed7bbcfdcfb75cb2a91bae852f9a2294b5c947d71ce742458bf98f6937429130a64b0')
@@ -35,7 +35,7 @@ b2sums=('ac22284417546a39f5ee67802f1c2ef451fffb6ec1754da2eb1ac1c59dba80827eff011
 prepare() {
   cd "${srcdir}/${_srcname}"
 
-  cat "${srcdir}/config" > ./.config
+  cat "${srcdir}/rpi4-kernel-config" > ./.config
 
   # add pkgrel to extraversion
   sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile
