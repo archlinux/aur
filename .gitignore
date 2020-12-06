@@ -1,4 +1,4 @@
-*.xz
+*.zst
 src
 python-umonitor
 pkg
