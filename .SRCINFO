@@ -6,8 +6,9 @@ pkgbase = easymake-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	provides = easymake-git-VCS
-	conflicts = easymake-git-VCS
+	depends = gcc
+	provides = easymake-git
+	conflicts = easymake-git
 	source = git+https://gitea.com/EasySoft/easymake.git
 	md5sums = SKIP
 
