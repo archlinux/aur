@@ -1,0 +1,9 @@
+#!/bin/sh
+if ! systemctl -q is-active tksuite-server-agfeo.service;then
+    if ! error="`systemctl start tksuite-server-agfeo.service 2>&1`";then
+        zenity --error --title "Problem starting TK Suite Server" --text "$error" --width=400
+        exit 1
+    fi
+fi
+
+xdg-open http://localhost:5080

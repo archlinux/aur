@@ -1,0 +1,6 @@
+pkg/
+src/
+*client*/
+*server*/
+*.tgz
+*.tar.*

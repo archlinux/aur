@@ -1,0 +1,13 @@
+[Unit]
+Description=AGFEO TK Suite Professional Server
+Wants=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/share/tksuite-server-agfeo
+ExecStart=/usr/share/tksuite-server-agfeo/tksock
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=default.target

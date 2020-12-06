@@ -1,0 +1,27 @@
+pkgbase = tksuite-server-agfeo
+	pkgdesc = AGFEO TK-Suite Professional telephone system configuration tool
+	pkgver = 4.4.42
+	pkgrel = 1
+	url = https://www.agfeo.de
+	arch = x86_64
+	arch = i686
+	license = GPL
+	license = LGPL
+	license = custom:iMatix
+	license = custom:SFL
+	license = custom:SMT
+	makedepends = imagemagick
+	depends = zenity
+	depends = xdg-utils
+	source = ftp://ftp.agfeo.de/pub/software/tksuite_server_agfeo_4.4.42_linux-x86.tgz
+	source = tksuite-server-agfeo.service
+	source = tksuite-server-agfeo.desktop
+	source = tksuite-server-agfeo-launch
+	md5sums = e8df3f97cef660965732cb08e022cd60
+	md5sums = 82703c655eb99b32b55148692e77c9c4
+	md5sums = a531975807cbb4d51b2821812a2d803b
+	md5sums = 150efe9268b4557c19aab2e99ca77dec
+	depends_i686 = glibc
+
+pkgname = tksuite-server-agfeo
+

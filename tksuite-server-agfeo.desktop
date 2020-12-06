@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=AGFEO TK-Suite Professional
+Comment=Configure your AGFEO telephone system
+Comment[de]=Ihre AGFEO Telefonanlage konfigurieren
+GenericName=AGFEO
+Exec=/usr/bin/tksuite-server-agfeo-launch
+Icon=tksuite-server-agfeo
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=System;Utility;Qt;
