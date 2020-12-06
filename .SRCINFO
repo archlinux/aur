@@ -7,7 +7,7 @@ pkgbase = openrazer-basilisk-v2-git
 	license = GPL2
 	makedepends = git
 	makedepends = python-setuptools
-	source = git+https://github.com/malsyned/openrazer.git
+	source = git+https://github.com/malsyned/openrazer.git#branch=basilisk-v2
 	sha256sums = SKIP
 
 pkgname = python-openrazer-basilisk-v2-git

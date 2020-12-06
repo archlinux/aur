@@ -15,7 +15,7 @@ arch=('any')
 url="https://github.com/malsyned/openrazer"
 license=('GPL2')
 makedepends=('git' 'python-setuptools')
-source=("git+https://github.com/malsyned/openrazer.git")
+source=("git+https://github.com/malsyned/openrazer.git#branch=basilisk-v2")
 sha256sums=('SKIP')
 
 pkgver() {
