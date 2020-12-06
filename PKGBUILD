@@ -1,7 +1,7 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=feed2maildir
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Read RSS/Atom feeds in your favourite, maildir-compatible email client"
 arch=('any')
 url="https://github.com/sulami/feed2maildir"

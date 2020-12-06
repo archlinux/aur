@@ -1,7 +1,7 @@
 pkgbase = feed2maildir
 	pkgdesc = Read RSS/Atom feeds in your favourite, maildir-compatible email client
 	pkgver = 0.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sulami/feed2maildir
 	arch = any
 	license = ISC
