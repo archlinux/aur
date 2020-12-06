@@ -26,7 +26,7 @@ source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git${_fragmen
         )
 sha256sums=('SKIP'
             'SKIP'
-            '3f8692fbff2b92ebf422f2c4de46f2f9164cd37879092c66f171b32fea464227'
+            '1789d726d65478857633fa4797da7c3ea4c13d90cdcc169d4197c58d2d33f123'
             '14096df9cf7aca3099d5df1585d1cf669544e9b10754dce3d2507100dd7034fe'
             '821ac2540e1196774e26f8033946ce7b36223dae7a2a7c78f4a901b4177f68cc')
 
@@ -44,7 +44,7 @@ build() {
   CMAKE_FLAGS=(
         -Wno-dev
         -DCMAKE_CXX_STANDARD=14
-        -DCMAKE_CXX_FLAGS=-fpermissive
+        -DCMAKE_CXX_FLAGS="$CXXFLAGS -fpermissive -DSUPPORT_TOPO_STREAM_OPERATORS -Wno-deprecated-declarations"
         -DCMAKE_INSTALL_PREFIX=/usr
         -DCMAKE_INSTALL_LIBDIR=lib
         -DCMAKE_BUILD_TYPE=Release
@@ -94,7 +94,7 @@ build() {
         -DEIGEN_ROOT_DIR=/usr/include/eigen3
   )
   msg2 "Build Cork lib"
-  make -C "${srcdir}/${name}-cork"
+  make -C "${srcdir}/${name}-cork" CXXFLAGS="$CXXFLAGS -DSUPPORT_TOPO_STREAM_OPERATORS"
   msg2 "Build CloudCompare"
   cmake -B build -S "${srcdir}/${name}" -G Ninja "${CMAKE_FLAGS[@]}"
 # shellcheck disable=SC2086 # allow slitting for MAKEFLAGS carrying multiple flags.
