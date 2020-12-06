@@ -1,5 +1,5 @@
 pkgbase = mastorss-git
-	pkgdesc = mastorss reads RSS feeds and posts the items via the Mastodon API. Does not support Atom at the moment.
+	pkgdesc = Automatically read RSS feeds and post the items via the Mastodon API. Does not support Atom at the moment.
 	pkgver = r278.baf3e20
 	pkgrel = 1
 	url = https://schlomp.space/tastytea/mastorss.git
