@@ -1,0 +1,19 @@
+pkgbase = kodi-addon-vfs-libarchive-leia
+	pkgdesc = VFS libarchive addon for Kodi Leia
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/xbmc/vfs.libarchive
+	arch = x86_64
+	groups = kodi-addons
+	license = GPL
+	makedepends = cmake
+	makedepends = kodi-dev>=18
+	makedepends = kodi-dev<19
+	makedepends = git
+	depends = kodi>=18
+	depends = kodi<19
+	source = vfs.libarchive-1.0.7-Leia.tar.gz::https://github.com/xbmc/vfs.libarchive/archive/1.0.7-Leia.tar.gz
+	md5sums = 398705c272cba3016b455e79b153fb03
+
+pkgname = kodi-addon-vfs-libarchive-leia
+
