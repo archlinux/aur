@@ -1,7 +1,8 @@
-# Maintainer : Aaron Griffin <aaron@archlinux.org>
+# Maintainer up to 2020-07-10: Aaron Griffin <aaron@archlinux.org>
+# Maintainer : Elmar Klausmeier <Elmar.Klausmeier@gmail.com>
 
 pkgname=oprofile
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='System-wide profiler for Linux systems'
 arch=('x86_64')
@@ -11,7 +12,7 @@ depends=('popt' 'gcc-libs' 'zlib' 'sh')
 options=('staticlibs')
 source=(https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz
         oprofile.sysusers)
-sha1sums=('7daa0cca8587e399cb3df9eb817c6a39ffea2082'
+sha1sums=('d4d7634372d18de821b33650ad0ff7392e94c6e3'
           'efcd625073759b69f95cf74dbb4c2839e03af017')
 
 build() {
@@ -41,3 +42,4 @@ package() {
   install -m644 libutil/libutil.a "$pkgdir/usr/lib/liboputil.a"
   install -m644 libutil++/libutil++.a "$pkgdir/usr/lib/liboputil++.a"
 }
+

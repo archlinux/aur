@@ -1,6 +1,6 @@
 pkgbase = oprofile
 	pkgdesc = System-wide profiler for Linux systems
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = http://oprofile.sourceforge.net
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = oprofile
 	depends = zlib
 	depends = sh
 	options = staticlibs
-	source = https://downloads.sourceforge.net/sourceforge/oprofile/oprofile-1.3.0.tar.gz
+	source = https://downloads.sourceforge.net/sourceforge/oprofile/oprofile-1.4.0.tar.gz
 	source = oprofile.sysusers
-	sha1sums = 7daa0cca8587e399cb3df9eb817c6a39ffea2082
+	sha1sums = d4d7634372d18de821b33650ad0ff7392e94c6e3
 	sha1sums = efcd625073759b69f95cf74dbb4c2839e03af017
 
 pkgname = oprofile
