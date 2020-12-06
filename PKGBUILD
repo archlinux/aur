@@ -2,7 +2,7 @@
 
 pkgname=wine-meta
 pkgver=1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://wiki.archlinux.org/index.php/wine"
 license=('GPL')
@@ -43,4 +43,4 @@ depends=(
   )
 
 optdepends=('q4wine')
-replaces=('garuda-wine')
+replaces=('garuda-wine' 'lutris-wine-meta')
