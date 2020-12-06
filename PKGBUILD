@@ -1,6 +1,6 @@
 # Maintainer: levinit <levinit@outlook.com>
 pkgname=clamtk-gnome
-pkgver=0.03
+pkgver=0.05
 pkgrel=1
 pkgdesc="a simple plugin for ClamTk to allow a right-click, context menu scan of files or folders in the Nautilus file manager."
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('clamtk' 'python-nautilus')
 
 source=("https://bitbucket.org/davem_/clamtk-gnome/downloads/$pkgname-$pkgver.tar.xz")
-md5sums=('6419e68e05f698028e0cc4450bc986e9')
+md5sums=('f9e25af1238e849dcf6ed43b9a09e2a2')
 
 #pkgver() {
 #  cd "$pkgname"
