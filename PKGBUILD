@@ -2,7 +2,7 @@
 
 pkgname=samba-support
 pkgver=1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://wiki.archlinux.org/index.php/samba"
 license=('GPL')

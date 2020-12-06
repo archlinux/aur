@@ -1,7 +1,7 @@
 pkgbase = samba-support
 	pkgdesc = Meta package for samba support.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/samba
 	install = samba.install
 	arch = any
