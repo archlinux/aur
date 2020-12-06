@@ -4,9 +4,9 @@ pkgname=jack-support
 pkgver=1
 pkgrel=1
 arch=('any')
-url="https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture"
+url="https://wiki.archlinux.org/index.php/JACK_Audio_Connection_Kit"
 license=('GPL')
-pkgdesc="Meta package for alsa support."
+pkgdesc="Meta package for jack support."
 		depends=("jack"
             "jack_capture"
 			"jack_utils"
