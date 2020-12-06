@@ -8,14 +8,14 @@ pkgname=(buildbot buildbot-worker buildbot-docs
          python-buildbot-www python-buildbot-waterfall-view
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges)
-pkgver=2.8.4
-_bb_contrib_commit=ada3c8f30ca7e1b6bb260e2e5971053fbd254333
-pkgrel=2
+pkgver=2.9.1
+_bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
+pkgrel=1
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
 checkdepends=(python-boto3 python-lz4 python-treq python-txrequests
-              python-moto python-parameterized python-mock
+              python-moto python-parameterized python-mock python-subunit
               openssh chromium)
 makedepends=(python-twisted python-jinja python-zope-interface
              python-sqlalchemy-migrate python-dateutil python-txaio
@@ -26,15 +26,11 @@ makedepends=(python-twisted python-jinja python-zope-interface
              git yarn)
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
-        "reproducible-html.diff"
-        "sqlalchemy-1.13.18.diff"
-        "ignore-lib2to3-deprecated.diff")
-sha256sums=('b8c1d807d89dc220422843d7043831ee35ca03dfd7fd4da5a4f73899dffa1849'
+        "subunit-tests.diff")
+sha256sums=('388e0a757019b73148f6552c1cccbc13e998f13cacb32e56e4c85387b0adbc75'
             'SKIP'
             'SKIP'
-            'b921d29994eff3af134ca1b37acf291a6a95f5da35a2a4f885557adcca22f864'
-            'cd6119e8f8346ad2bcfedb3bfdbfcdcbb9908ea1db9f3ec09d323f6c9d13d9df'
-            '30a29f954560ce3edf36307a5fa5b54874739330aad04841dbdca8ec8948667f')
+            'cd66bf65e45fa0a5916a6e0201dcebc4db001e4f47da856afbffc58a04356d55')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt> (@p12tic on GitHub)
@@ -42,9 +38,9 @@ validpgpkeys=(
 
 prepare() {
   cd buildbot-$pkgver
-  patch -Np1 -i ../reproducible-html.diff
-  patch -Np1 -i ../sqlalchemy-1.13.18.diff
-  patch -Np1 -i ../ignore-lib2to3-deprecated.diff
+
+  # Some master tests use scripts from contrib
+  ln -s ../../buildbot-contrib/master/contrib master/contrib
 
   # HACK: do not use virtualenv
   sed -i -e 's#frontend_deps:.*#frontend_deps:#' Makefile
@@ -57,6 +53,11 @@ prepare() {
   rm -v master/buildbot/scripts/windows_service.py
   sed -i '/buildbot_worker_windows_service/d' worker/setup.py
   rm -v worker/buildbot_worker/scripts/windows_service.py
+
+  # Subunit logs are from testtools. Arch Linux's testtools is patched to use
+  # traceback instead of traceback2, and causing a difference. See
+  # https://github.com/testing-cabal/testtools/pull/299 for more defailts.
+  patch -Np1 -i ../subunit-tests.diff
 }
 
 build() {
@@ -87,8 +88,8 @@ build() {
   done
 
   ################### buildbot-docs ####################
-  cd "$srcdir/buildbot-$pkgver"
-  make docs
+  cd "$srcdir"/buildbot-$pkgver/master/docs
+  make clean html singlehtml
 }
 
 check() {
@@ -123,9 +124,10 @@ check() {
 
 package_buildbot() {
   pkgdesc='The Continuous Integration Framework'
+  # include setuptools as plugins are enumerated via pkg_resources
   depends=(python-twisted python-jinja python-zope-interface
            python-sqlalchemy-migrate python-dateutil python-txaio
-           python-autobahn python-pyjwt python-yaml)
+           python-autobahn python-pyjwt python-yaml python-setuptools)
   optdepends=(
     # reporters
     'python-pyopenssl: to use SSL/TLS in mail or IRC notifiers'
@@ -137,6 +139,7 @@ package_buildbot() {
     # steps
     'python-subunit: for SubunitShellCommand'
     'python-treq: for using HTTP requests as steps'
+    'python-requests: for using HTTP requests as steps'
     'python-txrequests: for using HTTP requests as steps'
     # workers
     'buildbot-worker: for local worker'
@@ -146,6 +149,7 @@ package_buildbot() {
     'python-novaclient: for OpenStack latent worker'
     # www
     'python-ldap3: to authenticate users via LDAP'
+    'python-pypugjs: to use custom Pug.js templates'
 
     # misc
     'python-lz4: to compress logs using lz4'
@@ -159,7 +163,7 @@ package_buildbot() {
 
 package_buildbot-worker() {
   pkgdesc='Buildbot worker daemon'
-  depends=(python-setuptools python-twisted python-future)
+  depends=(python-twisted python-future)
 
   cd buildbot-$pkgver/worker
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build

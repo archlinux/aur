@@ -1,0 +1,37 @@
+diff --git a/master/buildbot/test/unit/test_steps_subunit.py b/master/buildbot/test/unit/test_steps_subunit.py
+index 4e9f326b6..fdac4b17f 100644
+--- a/master/buildbot/test/unit/steps/test_subunit.py
++++ b/master/buildbot/test/unit/steps/test_subunit.py
+@@ -120,8 +120,7 @@ class TestSubUnit(steps.BuildStepMixin, TestReactorMixin, unittest.TestCase):
+         self.expectOutcome(result=FAILURE, state_string="shell Total 1 test(s) 1 error (failure)")
+         self.expectLogfile('problems', '''\
+ test1
+-testtools.testresult.real._StringException: Traceback (most recent call last):
+-ValueError: invalid literal for int() with base 10: '_error1'
++testtools.testresult.real._StringException: ValueError: invalid literal for int() with base 10: '_error1'
+ 
+ ''')
+         return self.runStep()
+@@ -148,12 +147,10 @@ ValueError: invalid literal for int() with base 10: '_error1'
+         self.expectOutcome(result=FAILURE, state_string="shell Total 2 test(s) 2 errors (failure)")
+         self.expectLogfile('problems', '''\
+ test1
+-testtools.testresult.real._StringException: Traceback (most recent call last):
+-ValueError: invalid literal for int() with base 10: '_error1'
++testtools.testresult.real._StringException: ValueError: invalid literal for int() with base 10: '_error1'
+ 
+ test2
+-testtools.testresult.real._StringException: Traceback (most recent call last):
+-ValueError: invalid literal for int() with base 10: '_error2'
++testtools.testresult.real._StringException: ValueError: invalid literal for int() with base 10: '_error2'
+ 
+ ''')
+         return self.runStep()
+@@ -180,7 +177,6 @@ ValueError: invalid literal for int() with base 10: '_error2'
+         # note that the warnings list is ignored..
+         self.expectLogfile('warnings', '''\
+ error: test2 [
+-Traceback (most recent call last):
+ ValueError: invalid literal for int() with base 10: '_error2'
+ ]
+ ''')
