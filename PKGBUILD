@@ -1,7 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=archipelago
-pkgver=3.8.1
+pkgver=3.13.0
 epoch=1
 pkgrel=1
 pkgdesc="An open-source terminal emulator built on web technology"
@@ -13,7 +13,7 @@ depends=('nodejs' 'libxkbfile' 'libx11')
 makedepends=("git" "yarn" 'python2' 'libpng'
              'libx11' 'node-gyp' 'libxtst')
 source=("https://github.com/npezza93/archipelago/archive/v$pkgver.tar.gz")
-sha512sums=('aaa926a4b149c5289437b7d01d1ac969d47a55eb1727923db6a3d7ac693170bf005773dac81d2aabafef4e3a813568d762a01ed6cb213d524949469a035d7139')
+sha512sums=('13c9789e9e591d9c0b160859ad67373037efbce04b6422d733b6e9e9526f4d74d7586be4fc8afadfd6ffcb4cbaceab789e6f4126bcf6eff116a733258de5b226')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
