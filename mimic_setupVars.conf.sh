@@ -53,6 +53,7 @@ finalExports() {
     echo "PIHOLE_INTERFACE=${IPV4DEV}"
     echo "IPV4_ADDRESS=${IPV4_ADDRESS}"
     echo "IPV6_ADDRESS=${IPV6_ADDRESS}"
+    echo "INSTALL_WEB_INTERFACE=true"
     }>> "${setupVars}"
 }
 

@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=5.2.1
-pkgrel=1
+pkgrel=2
 _wwwpkgname=AdminLTE
 _wwwpkgver=5.2.1
 _now=`date +%N`
@@ -43,8 +43,8 @@ source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/arc
 
 md5sums=('9440c4fa703da269f0c5f38119a7bbdd'
          'f9161cdcc3baa14925bb446f5f439002'
-         'ea9b3a8bab46b698f3a6a516527e8512'
-         '6a9b00918ff626feeda4662bab211a06'
+         '466b7f3193bf962b15232eef32c4b458'
+         'c681552c1411e8b100bd8686dc8109ae'
          '62ab22d82267f30bd1a75773a1de79c8'
          '971cc2859672341d77f8deba702fb7f7'
          'b63fcf29c29796023a2677bcf2b369a7'
@@ -53,7 +53,7 @@ md5sums=('9440c4fa703da269f0c5f38119a7bbdd'
          'd42a864f88299998f8233c0bc0dd093d'
          '20c5b0c6b4e23e55b25ab6c28dda709d'
          '291d3c95e445fe65caf40c3605efd186'
-         'c227ffa88ddebc34cb715b73640cd845'
+         'f3d97637e0e74599ae77e6ab36cb9e26'
          'c9a5fa5fe9b794b0630cb53fb343f598'
          'd7b69ae51db0e8ac8e27f20a234eed85')
 
