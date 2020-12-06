@@ -6,7 +6,7 @@ pkgname=('lib32-mesa-libgl')
 pkgver=18.3.2
 pkgrel=1
 arch=('x86_64')
-makedepends=('python-mako' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'lib32-libdrm' 'dri2proto' 'xorgproto-git' 'presentproto'
+makedepends=('python-mako' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'lib32-libdrm' 'xorgproto-git'
              'lib32-libxshmfence' 'lib32-libxxf86vm' 'lib32-libxdamage' 'gcc-multilib' 'lib32-libelf' 'lib32-llvm' 'lib32-libvdpau'
              'lib32-wayland' 'lib32-lm_sensors' 'wayland-protocols' 'lib32-libva' 'meson' 'lib32-libxrandr')
 url="https://www.mesa3d.org/"
