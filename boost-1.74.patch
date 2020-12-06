@@ -1,0 +1,68 @@
+From ae1e2b6c738d5af0cb8a121f5c5146e113930cc4 Mon Sep 17 00:00:00 2001
+From: Olaf Meeuwissen <paddy-hack@member.fsf.org>
+Date: Sun, 18 Oct 2020 10:13:30 +0900
+Subject: [PATCH] Fix compile errors with boost-1.74.0.  Fixes #94
+
+Courtesy of @loqs.
+---
+ drivers/esci/verify.cpp | 2 ++
+ gtkmm/pump.cpp          | 2 ++
+ lib/monitor.cpp         | 2 ++
+ sane/handle.cpp         | 2 ++
+ 4 files changed, 8 insertions(+)
+
+diff --git a/drivers/esci/verify.cpp b/drivers/esci/verify.cpp
+index b9463e8..35d4ec9 100644
+--- a/drivers/esci/verify.cpp
++++ b/drivers/esci/verify.cpp
+@@ -59,6 +59,8 @@ namespace but = boost::unit_test;
+ using namespace utsushi;
+ using namespace _drv_::esci;
+ 
++using namespace boost::placeholders;
++
+ using std::basic_string;
+ using std::ios_base;
+ using std::make_pair;
+diff --git a/gtkmm/pump.cpp b/gtkmm/pump.cpp
+index 2c5a2d4..7c5c1ea 100644
+--- a/gtkmm/pump.cpp
++++ b/gtkmm/pump.cpp
+@@ -31,6 +31,8 @@
+ namespace utsushi {
+ namespace gtkmm {
+ 
++using namespace boost::placeholders;
++
+ pump::pump (idevice::ptr idev)
+   : utsushi::pump (idev)
+   , idev_ptr_(idev)
+diff --git a/lib/monitor.cpp b/lib/monitor.cpp
+index 964670a..0460f55 100644
+--- a/lib/monitor.cpp
++++ b/lib/monitor.cpp
+@@ -50,6 +50,8 @@ namespace utsushi {
+ 
+ using boost::filesystem::exists;
+ 
++using namespace boost::placeholders;
++
+ class monitor::impl
+ {
+ public:
+diff --git a/sane/handle.cpp b/sane/handle.cpp
+index cac6ce5..9c5a802 100644
+--- a/sane/handle.cpp
++++ b/sane/handle.cpp
+@@ -66,6 +66,8 @@ using utsushi::_flt_::deskew;
+ using utsushi::_flt_::autocrop;
+ using utsushi::_flt_::pnm;
+ 
++using namespace boost::placeholders;
++
+ namespace sane {
+ 
+ //! Keep backend options separate from frontend options
+-- 
+GitLab
+
