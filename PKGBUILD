@@ -2,8 +2,8 @@
 # Maintainer: nobodyinperson <nobodyinperson at posteo de>
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 pkgname=pasaffe
-pkgver=0.55
-pkgrel=2
+pkgver=0.56
+pkgrel=1
 pkgdesc="Easy to use password manager for Gnome with a Password Safe 3.0 compatible database."
 arch=('any')
 url="https://launchpad.net/pasaffe"
@@ -20,7 +20,7 @@ optdepends=(
 makedepends=('python-distutils-extra')
 install=
 source=(http://launchpad.net/pasaffe/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz)
-md5sums=('e535aafeee6e1684b2a506bd9c463da5')
+md5sums=('e994a1a91bedcd645ccc83615705ad52')
 
 package() {
     cd $srcdir/$pkgname-$pkgver

@@ -1,3 +1,4 @@
 *.tar.?z
+*.pkg.tar*
 pkg/
 src/
