@@ -1,0 +1,15 @@
+pkgbase = easymake
+	pkgdesc = A simple replacement to GNU Make or CMake.
+	pkgver = r97.60381b1
+	pkgrel = 1
+	url = https://undersquire.github.io/easymake
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = easymake-VCS
+	conflicts = easymake-VCS
+	source = git+https://gitea.com/EasySoft/easymake.git
+	md5sums = SKIP
+
+pkgname = easymake
+
