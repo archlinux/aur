@@ -1,71 +1,51 @@
-# Maintainer: Skydrome <skydrome at protonmail dot com>
+# Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 
 pkgname=zulu-embedded-jdk11
-pkgver=13.0.4
+pkgver=11.0.9.1
 pkgrel=1
 pkgdesc='Zulu Embedded is a certified build of OpenJDK for Armv8/v7/v6 devices.'
-arch=('armv6h' 'armv7h' 'armv8h' 'i686' 'x86_64')
-url='https://www.azul.com/downloads/zulu-community'
+arch=('armv6h' 'armv7h' 'armv8h' 'aarch64' 'i686' 'x86_64')
+url='https://www.azul.com/products/zulu-embedded'
 license=('custom')
 install=jdk.install
 options=(!strip)
-provides=("java-environment=13" "java-runtime=13")
-depends=('java-runtime-common>=3' 'java-environment-common>=3'
+provides=("java-environment=11" "java-runtime=11" "java-runtime-headless=11")
+depends=('java-runtime-common>=3' 'java-environment-common=3'
          'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'libnet'
          'freetype2' 'giflib' 'libelf')
 
-#CARCH=armv7h
-
 case "$CARCH" in
     armv?h) _arch='aarch32hf'
-        _build=13.33.38
-        sha256sums=('9b8bfb5b60bd93a1c724834a805c2e81897bb58b54c89ce0f45712940444e720')
-        source=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-c2-linux_${_arch}.tar.gz")
+        _build=11.43.100
+        sha256sums=('48523ca1f3e0e3308ada108a0a6e84dee057017e0a06b81f5da722c769a5766a')
         ;;
     aarch64) _arch='aarch64'
-        _build=15.28.13
-        pkgver=15.0.1
-        sha256sums=('4BC0368DBFCC17A7263C60DB1F82DE424D0F8B0BEED4C80139BC65F983DB4FA5')
-        source=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
-        provides=("java-environment=13" "java-runtime=13")
+        _build=11.43.100
+        sha256sums=('15f9e3512b2c011a33c36b4ff27a8e70fefc18805509d5d58b0bd3b6684cbe8e')
         ;;
     i686) _arch='i686'
-        _build=15.28.13
-        pkgver=15.0.1
-        sha256sums=('458913990AE85635E5C6E2FCB18490EC6F6DA5DCD54ECA1FC23E91DB602B2262')
-        source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
-        provides=("java-environment=14" "java-runtime=14")
+        _build=11.43.55
+        sha256sums=('804d1307527903023c91396035b36a0ca74c7ddd8905835e1820b321ccc7c216')
+        source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_i686.tar.gz")
+        provides=("java-environment=11" "java-runtime=11")
         ;;
     x86_64) _arch='x64'
-        _build=15.28.13
-        pkgver=15.0.1
-        sha256sums=('F0CB5492B8544A77AE7BCCA50FBF41A4CE538A3AC4AB8BA123A5E1E58D685D1B')
-        source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
-        provides=("java-environment=14" "java-runtime=14")
-        ;;
+        _build=11.43.55
+        sha256sums=('6c79bfe8bb06c82b72ef2f293a14becef56b3078d298dc75fda4225cbb2d3d0c')
+        source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_x64.tar.gz")
+        provides=("java-environment=11" "java-runtime=11")
 esac
 
-#_archive="zulu${_build}-ca-jdk${pkgver}-linux_${_arch}"
-_archive=${source[0]/.tar.gz/}
+_archive="zulu${_build}-ca-jdk${pkgver}-linux_${_arch}"
+source=(${source:-"https://cdn.azul.com/zulu-embedded/bin/${_archive}.tar.gz"})
+
 _jvmdir="usr/lib/jvm/zulu-embedded-${pkgver%%.*}"
 
 package() {
-    cd "$(basename $_archive)"
+    cd "$_archive"
 
     install -dm 755 "${pkgdir}/${_jvmdir}"
     cp -a . "${pkgdir}/${_jvmdir}/"
-
-    # Conf
-    install -dm 755 "${pkgdir}/etc"
-    cp -r conf "${pkgdir}/etc/${pkgname}"
-    rm -rf "${pkgdir}/${_jvmdir}/conf"
-    ln -s "/etc/${pkgname}" "${pkgdir}/${_jvmdir}/conf"
-
-    # Legal
-    install -dm 755 "${pkgdir}/usr/share/licenses"
-    cp -r legal "${pkgdir}/usr/share/licenses/${pkgname}"
-    rm -rf "${pkgdir}/${_jvmdir}/legal"
-    ln -s "/usr/share/licenses/${pkgname}" "${pkgdir}/${_jvmdir}/legal"
 
     # Man pages
     for f in man/man1/*; do
