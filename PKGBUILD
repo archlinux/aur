@@ -1,7 +1,7 @@
 # Maintainer: Simone Scalabrino <s.scalabrino9@gmail.com>
 _appname="netflix"
 _appdesc="Standalone silo app for Netflix"
-_gittag="0.5"
+_gittag="0.6"
 
 _gitname=silos-apps
 pkgname="silo-${_appname}"
