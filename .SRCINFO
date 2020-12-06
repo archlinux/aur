@@ -7,9 +7,8 @@ pkgbase = peertube-viewer-rs-bin
 	license = MIT
 	provides = peertube-viewer-rs
 	conflicts = peertube-viewer-rs
-	noextract = release-v1.7.3.tar.gz.zip
-	source = release-v1.7.3.tar.gz.zip::https://gitlab.com/peertube-viewer/peertube-viewer-rs/-/jobs/artifacts/v1.7.3/download?job=release-linux
-	md5sums = 7c3f1ddd82fe88ac9ab7aa16ba92ae8b
+	source = https://peertube-viewer.com/releases/linux/peertube-viewer-rs-v1.7.3.tar.gz
+	md5sums = e4587a37fb211535db9ec5da78056a8e
 
 pkgname = peertube-viewer-rs-bin
 
