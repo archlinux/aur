@@ -1,4 +1,4 @@
-pkgbase = easymake
+pkgbase = easymake-git
 	pkgdesc = A simple replacement to GNU Make or CMake.
 	pkgver = r97.60381b1
 	pkgrel = 1
@@ -6,10 +6,10 @@ pkgbase = easymake
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	provides = easymake-VCS
-	conflicts = easymake-VCS
+	provides = easymake-git-VCS
+	conflicts = easymake-git-VCS
 	source = git+https://gitea.com/EasySoft/easymake.git
 	md5sums = SKIP
 
-pkgname = easymake
+pkgname = easymake-git
 

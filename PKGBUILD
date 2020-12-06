@@ -7,7 +7,7 @@
 # Other VCS sources are not natively supported by makepkg yet.
 
 # Maintainer: Your Name <youremail@domain.com>
-pkgname='easymake'
+pkgname='easymake-git'
 pkgver=r97.60381b1
 pkgrel=1
 pkgdesc="A simple replacement to GNU Make or CMake."
