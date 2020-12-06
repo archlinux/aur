@@ -1,7 +1,7 @@
 pkgbase = python-pyld
 	pkgdesc = An implementation of the JSON-LD specification in Python
 	pkgver = 1.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/digitalbazaar/pyld
 	arch = any
 	license = BSD

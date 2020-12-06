@@ -3,7 +3,7 @@
 pkgname=('python-pyld' 'python2-pyld')
 _pkgname='pyld'
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="An implementation of the JSON-LD specification in Python"
 arch=('any')
 url="https://github.com/digitalbazaar/pyld"
