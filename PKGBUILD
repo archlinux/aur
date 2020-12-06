@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=12.0.0_r369979.3052e474eceb
+pkgver=12.0.0_r373974.e1b8e8a1f4c3
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -141,7 +141,7 @@ package_llvm-git() {
         cp "$srcdir"/llvm-config.h "$pkgdir"/usr/include/llvm/Config/llvm-config.h
     fi
 
-    _py="3.8"
+    _py="3.9"
     cd llvm-project
     # Install Python bindings and optimize them
     cp -a llvm/bindings/python/llvm  "$pkgdir"/usr/lib/python$_py/site-packages/
