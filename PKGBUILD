@@ -6,7 +6,7 @@
 pkgbase=lib32-pipewire-git
 _pkgbase=pipewire
 pkgname=(lib32-pipewire-git lib32-pipewire-jack-git lib32-gst-plugin-pipewire-git)
-pkgver=0.3.17.r44.g9818582a
+pkgver=0.3.17.r60.g6d494c12
 pkgrel=1
 pkgdesc='Server and user space API to deal with multimedia pipelines (git) (32 bit client libraries)'
 url=https://pipewire.org
@@ -14,7 +14,7 @@ license=(LGPL2.1)
 arch=(x86_64)
 makedepends=(git meson valgrind lib32-jack2 lib32-libpulse lib32-alsa-lib
              lib32-gst-plugins-base lib32-sbc rtkit lib32-vulkan-icd-loader
-             lib32-dbus lib32-libsndfile lib32-bluez-libs vulkan-headers)
+             lib32-dbus lib32-libsndfile vulkan-headers)
 source=(git+https://gitlab.freedesktop.org/pipewire/pipewire.git)
 md5sums=('SKIP')
 
@@ -31,6 +31,7 @@ build() {
         --libdir /usr/lib32 \
         -D docs=false \
         -D tests=false \
+        -D bluez5=false \
         -D udevrulesdir=/usr/lib/udev/rules.d
     meson compile -C build
 }
@@ -49,9 +50,9 @@ _ver=${pkgver:0:3}
 _spaver="0.2"
 
 package_lib32-pipewire-git() {
-    depends=(lib32-sbc rtkit lib32-vulkan-icd-loader lib32-bluez-libs
-        alsa-card-profiles lib32-dbus lib32-libsndfile lib32-libudev0-shim
-        lib32-alsa-lib lib32-systemd)
+    depends=(lib32-sbc rtkit lib32-vulkan-icd-loader alsa-card-profiles
+        lib32-dbus lib32-libsndfile lib32-libudev0-shim lib32-alsa-lib
+        lib32-systemd)
     optdepends=('lib32-pipewire-jack: JACK support')
     provides=(lib32-pipewire)
     conflicts=(lib32-pipewire)
