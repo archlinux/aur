@@ -1,0 +1,268 @@
+commit 2b13ef107fe8d671023c5c1543037889d6d34ce6
+Author: picobyte <PIc.O.0ob.y.TE@gmail.com>
+Date:   Sun Sep 6 17:11:55 2020 +0200
+
+    fix compilation
+    
+    Signed-off-by: picobyte <PIc.O.0ob.y.TE@gmail.com>
+
+diff --git a/compression/dict.c b/compression/dict.c
+index eccf8d2..34e0a84 100644
+--- a/compression/dict.c
++++ b/compression/dict.c
+@@ -32,7 +32,7 @@ typedef struct
+     unsigned len;     // длина слова
+     byte *ptr;        // начало слова
+ } dict_entry;
+-dict_entry dict[UCHAR_MAX+1];
++static dict_entry dict[UCHAR_MAX+1];
+ 
+ #define dict_get_byte()       (*ptr++)
+ #define dict_put_byte(c)      (*outptr++ = (c))
+diff --git a/compression/lzhuf.c b/compression/lzhuf.c
+index 37f9853..c59122f 100644
+--- a/compression/lzhuf.c
++++ b/compression/lzhuf.c
+@@ -210,8 +210,8 @@ static int GetByte(void)   /* get one byte */
+     return (int)((i & 0xff00) >> 8);
+ }
+ 
+-unsigned putbuf = 0;
+-uchar putlen = 0;
++static unsigned putbuf = 0;
++static uchar putlen = 0;
+ 
+ /* initialization of tree */
+ 
+@@ -312,7 +312,7 @@ static void update(int c)
+     } while ((c = prnt[c]) != 0); /* repeat up to root */
+ }
+ 
+-unsigned code, len;
++static unsigned code, len;
+ 
+ static int DecodeChar(void)
+ {
+diff --git a/compression/rnc.c b/compression/rnc.c
+index a6f7c92..e182049 100644
+--- a/compression/rnc.c
++++ b/compression/rnc.c
+@@ -161,7 +161,8 @@ typedef struct {
+ unsigned char blk[WINMAX];
+ int linkp[WINMAX];
+ int hashp[HASHMAX];
+-int blkstart, bpos;
++int blkstart;
++static int bpos;
+ int blklen;
+ 
+ tuple tuples[MAXTUPLES];
+@@ -169,7 +170,8 @@ int ntuple;
+ 
+ unsigned char *packed;
+ long packedlen;
+-long packedpos, bitpos, bitcount, bitbuf;
++long packedpos, bitpos, bitcount;
++static long bitbuf;
+ 
+ static int hash (unsigned char *a) {
+     return ((a[0] * 7 + a[1]) * 7 + a[2]) % HASHMAX;
+diff --git a/compression/unjam.c b/compression/unjam.c
+index 4064ab6..9d873f4 100644
+--- a/compression/unjam.c
++++ b/compression/unjam.c
+@@ -208,8 +208,10 @@ dic_item;
+ 
+ dic_item *dic;
+ FILE *source, *target;
+-long bitbuf=0, bits=0;
+-int code_len=9, code, available=fst_code-1;
++static long bitbuf=0;
++static int code;
++long bits=0;
++int code_len=9, available=fst_code-1;
+ int mapped=0, tagged=0, pure_char=0;
+ 
+ int read_code(void);
+diff --git a/compression/usq.c b/compression/usq.c
+index 2db61bd..c5672af 100644
+--- a/compression/usq.c
++++ b/compression/usq.c
+@@ -89,7 +89,7 @@ EXTERN int curin;	/* last byte value read */
+ 
+ /* Variables associated with repetition decoding */
+ EXTERN int repct;	/*Number of times to retirn value*/
+-EXTERN int value;	/*current byte value or EOF */
++static int value;	/*current byte value or EOF */
+ 
+ #define VERSION "3.3   10/29/86"
+ 
+diff --git a/libs/glza/GLZAmodel.c b/libs/glza/GLZAmodel.c
+index 848cb5e..24f4b30 100644
+--- a/libs/glza/GLZAmodel.c
++++ b/libs/glza/GLZAmodel.c
+@@ -20,20 +20,20 @@ limitations under the License.
+ #include "GLZAmodel.h"
+ #include <stdio.h>
+ 
+-uint32_t InCharNum, OutCharNum;
+-uint32_t RangeLow, RangeHigh, count;
+-uint32_t low, code, range, extra_range;
+-uint8_t * InBuffer;
+-uint8_t FoundIndex;
+-uint8_t SymbolFirstChar[4][0x100][0x100];
+-uint8_t RangeScaleERG[3], RangeScaleWordTag;
+-uint8_t FreqERG[3], FreqWordTag, *OutBuffer;
+-uint16_t RangeScaleMtfQueueNum[2], RangeScaleMtfQueuePos[2][14], RangeScaleMtfgQueuePos[2];
+-uint16_t RangeScaleSID[2], RangeScaleINST[2][16];
+-uint16_t RangeScaleFirstChar[4][0x100];
+-uint16_t RangeScaleFirstCharSection[0x100][7];
+-uint16_t FreqSymType[4][4], FreqMtfQueueNum[2][14], FreqMtfQueuePos[2][14][64], FreqMtfgQueuePos[2][256];
+-uint16_t FreqSID[2][16], FreqINST[2][16][38], FreqFirstChar[4][0x100][0x100], FreqFirstCharBinary[0x100][0x100];
++static uint32_t InCharNum, OutCharNum;
++static uint32_t RangeLow, RangeHigh, count;
++static uint32_t low, code, range, extra_range;
++static uint8_t * InBuffer;
++static uint8_t FoundIndex;
++static uint8_t SymbolFirstChar[4][0x100][0x100];
++static uint8_t RangeScaleERG[3], RangeScaleWordTag;
++static uint8_t FreqERG[3], FreqWordTag, *OutBuffer;
++static uint16_t RangeScaleMtfQueueNum[2], RangeScaleMtfQueuePos[2][14], RangeScaleMtfgQueuePos[2];
++static uint16_t RangeScaleSID[2], RangeScaleINST[2][16];
++static uint16_t RangeScaleFirstChar[4][0x100];
++static uint16_t RangeScaleFirstCharSection[0x100][7];
++static uint16_t FreqSymType[4][4], FreqMtfQueueNum[2][14], FreqMtfQueuePos[2][14][64], FreqMtfgQueuePos[2][256];
++static uint16_t FreqSID[2][16], FreqINST[2][16][38], FreqFirstChar[4][0x100][0x100], FreqFirstCharBinary[0x100][0x100];
+ const uint32_t MTF_QUEUE_SIZE = 64;
+ 
+ uint32_t ReadLow() {return(low);}
+diff --git a/libs/nintendo_ds/lzss.c b/libs/nintendo_ds/lzss.c
+index 8c9de68..194eeef 100644
+--- a/libs/nintendo_ds/lzss.c
++++ b/libs/nintendo_ds/lzss.c
+@@ -58,7 +58,7 @@
+ 
+ /*----------------------------------------------------------------------------*/
+ unsigned char ring[LZS_N + LZS_F - 1];
+-int           dad[LZS_N + 1], lson[LZS_N + 1], rson[LZS_N + 1 + 256];
++static int    dad[LZS_N + 1], lson[LZS_N + 1], rson[LZS_N + 1 + 256];
+ int           pos_ring, len_ring, lzs_vram;
+ 
+ /*----------------------------------------------------------------------------*/
+diff --git a/libs/tdcb/arith-n.c b/libs/tdcb/arith-n.c
+index 16377b1..2dc16be 100644
+--- a/libs/tdcb/arith-n.c
++++ b/libs/tdcb/arith-n.c
+@@ -228,8 +228,8 @@ int current_order;
+  * can be excluded from lower order context total calculations.
+  */
+ 
+-short int totals[ 258 ];
+-char scoreboard[ 256 ];
++static short int totals[ 258 ];
++static char scoreboard[ 256 ];
+ 
+ /*
+  * Local procedure declarations for modeling routines.
+@@ -825,7 +825,7 @@ void arithn_flush_model()
+ static unsigned short int code;  /* The present input code value       */
+ static unsigned short int low;   /* Start of the current code range    */
+ static unsigned short int high;  /* End of the current code range      */
+-long underflow_bits;             /* Number of underflow bits pending   */
++static long underflow_bits;             /* Number of underflow bits pending   */
+ 
+ /*
+  * This routine must be called to initialize the encoding process.
+diff --git a/libs/tdcb/arith.c b/libs/tdcb/arith.c
+index 31b7487..6e74650 100644
+--- a/libs/tdcb/arith.c
++++ b/libs/tdcb/arith.c
+@@ -392,7 +392,7 @@ memory_file *input;
+ static unsigned short int code;  /* The present input code value       */
+ static unsigned short int low;   /* Start of the current code range    */
+ static unsigned short int high;  /* End of the current code range      */
+-long underflow_bits;             /* Number of underflow bits pending   */
++static long underflow_bits;             /* Number of underflow bits pending   */
+ 
+ /*
+  * This routine must be called to initialize the encoding process.
+diff --git a/libs/tdcb/arith1.c b/libs/tdcb/arith1.c
+index ca8131c..059abfc 100644
+--- a/libs/tdcb/arith1.c
++++ b/libs/tdcb/arith1.c
+@@ -28,7 +28,7 @@ typedef struct {
+ #define MAXIMUM_SCALE   16383  /* Maximum allowed frequency count        */
+ #define END_OF_STREAM   256    /* The EOF symbol                         */
+ 
+-extern long underflow_bits;    /* The present underflow count in         */
++static long underflow_bits;    /* The present underflow count in         */
+                                /* the arithmetic coder.                  */
+ static int *totals[ 257 ] = {NULL};     /* Pointers to the 257 context tables     */
+ 
+@@ -251,7 +251,7 @@ SYMBOL *s;
+ static unsigned short int code;  /* The present input code value       */
+ static unsigned short int low;   /* Start of the current code range    */
+ static unsigned short int high;  /* End of the current code range      */
+-long underflow_bits;             /* Number of underflow bits pending   */
++static long underflow_bits;             /* Number of underflow bits pending   */
+ 
+ /*
+  * This routine must be called to initialize the encoding process.
+diff --git a/libs/tdcb/arith1e.c b/libs/tdcb/arith1e.c
+index 4ecff91..ddd1acb 100644
+--- a/libs/tdcb/arith1e.c
++++ b/libs/tdcb/arith1e.c
+@@ -283,7 +283,7 @@ SYMBOL *s;
+ static unsigned short int code;  /* The present input code value       */
+ static unsigned short int low;   /* Start of the current code range    */
+ static unsigned short int high;  /* End of the current code range      */
+-long underflow_bits;             /* Number of underflow bits pending   */
++static long underflow_bits;             /* Number of underflow bits pending   */
+ 
+ /*
+  * This routine must be called to initialize the encoding process.
+diff --git a/libs/tdcb/lzw12.c b/libs/tdcb/lzw12.c
+index 6b8f9f5..9fcfc2e 100644
+--- a/libs/tdcb/lzw12.c
++++ b/libs/tdcb/lzw12.c
+@@ -50,7 +50,7 @@ struct dictionary {
+     char character;
+ } dict[ TABLE_SIZE ];
+ 
+-char decode_stack[ TABLE_SIZE ];
++static char decode_stack[ TABLE_SIZE ];
+ 
+ /*
+  * The compressor is short and simple.  It reads in new symbols one
+diff --git a/libs/tdcb/lzw15v.c b/libs/tdcb/lzw15v.c
+index 1c3654d..88619b8 100644
+--- a/libs/tdcb/lzw15v.c
++++ b/libs/tdcb/lzw15v.c
+@@ -82,7 +82,7 @@ static struct dictionary {
+  * trigger the next jump in word size.
+  */
+ 
+-char decode_stack[ TABLE_SIZE ];
++static char decode_stack[ TABLE_SIZE ];
+ unsigned int next_code;
+ int current_code_bits;
+ unsigned int next_bump_code;
+
+commit 7c6ea09e5fae9aa47d7896e1a51ad51ec8a338f0
+Author: picobyte <PIc.O.0ob.y.TE@gmail.com>
+Date:   Sun Sep 6 14:05:27 2020 +0200
+
+    try to circumvent pie
+
+diff --git a/Makefile b/Makefile
+index 93605a8..119d724 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,6 @@
+ EXE		= quickbms
+ # -m32 because QuickBMS has been tested only on 32bit systems and gives problems using 64bit native code
+-CFLAGS	+= -m32 -s -O2 -fstack-protector-all -fno-unit-at-a-time -fno-omit-frame-pointer -w
++CFLAGS	+= -m32 -s -O2 -fstack-protector-all -fno-unit-at-a-time -fno-omit-frame-pointer -no-pie -fno-pie -w
+ # Add -DQUICKBMS64 to CDEFS for compiling quickbms_4gb_files
+ # For static builds on Linux (no MacOSX due to -lcrt0 error) add: -static
+ # -ldl is in CDEFS to avoid undefined references
