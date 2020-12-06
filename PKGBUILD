@@ -2,12 +2,12 @@
 
 pkgname=zettlr
 pkgver=1.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
 license=('GPL' 'custom') # Noted that the icon and name are copyrighted
-depends=(electron ttf-webhostinghub-glyphs otf-crimson-text)
+depends=(c-ares ffmpeg gtk3 http-parser libevent libxslt minizip nss re2 snappy)
 makedepends=(yarn git gulp)
 optdepends=('pandoc: For exporting to various format'
             'texlive-bin: For Latex support'
@@ -23,7 +23,7 @@ source=(git+https://github.com/Zettlr/Zettlr.git#commit="${_commit}"
 sha256sums=('SKIP'
             '8ee8c7e0ea63aacf811fb6f4bdb8f8f32929bf9afdad2f0ffc2f6bfb721d1fd5'
             '2b7cd6c1c9be4add8c660fb9c6ca54f1b6c3c4f49d6ed9fa39c9f9b10fcca6f4'
-            '81730193afc64908f820020a19bfeda4475c67ada92e8567a39c9313a3d65ff0')
+            '14b1534a8ab29eade7d6cdaf92f539dc2851e312e922ef5923b8566b1bc070d3')
 
 prepare() {
     cd "${srcdir}/Zettlr"
