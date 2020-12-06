@@ -1,6 +1,6 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=docplex
-pkgname=python-dlx
+pkgname=python-docplex
 pkgver=2.18.200 
 pkgrel=1
 pkgdesc="The IBM Decision Optimization CPLEX Modeling for Python"
