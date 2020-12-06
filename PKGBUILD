@@ -1,7 +1,7 @@
 # Maintainer: pryme-svg <edoc.www@gmail.com>
 
 pkgname=st-pryme-svg
-pkgver=1
+pkgver=r1134.b1c12ce
 pkgrel=1
 pkgdesc="pryme-svgs customized fork of st"
 arch=(any)

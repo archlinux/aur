@@ -1,6 +1,6 @@
 pkgbase = st-pryme-svg
 	pkgdesc = pryme-svgs customized fork of st
-	pkgver = 1
+	pkgver = r1134.b1c12ce
 	pkgrel = 1
 	url = https://gitlab.com/pryme-svg/st
 	arch = any
