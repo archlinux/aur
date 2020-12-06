@@ -1,6 +1,6 @@
 pkgbase = qliveplayer
 	pkgdesc = Cute and useful Live Stream Player with danmaku support.
-	pkgver = 3.20.1
+	pkgver = 3.20.2
 	pkgrel = 1
 	url = https://github.com/IsoaSFlus/QLivePlayer
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = qliveplayer
 	depends = python
 	optdepends = python-protobuf: for YouTube LiveChat support
 	optdepends = streamlink: for foreign streaming service support
-	source = QLivePlayer-3.20.1::https://github.com/IsoaSFlus/QLivePlayer/archive/3.20.1.tar.gz
-	sha256sums = bd5c9e9e9a8b9453b3f1330a7140eec51b9232c50047d000ea3a1f77391fa9be
+	source = QLivePlayer-3.20.2::https://github.com/IsoaSFlus/QLivePlayer/archive/3.20.2.tar.gz
+	sha256sums = 9859e3da8e4d194d153d2a3725f9f34fea527f67866867fb48299a43bf9c9e84
 
 pkgname = qliveplayer
 
