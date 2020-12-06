@@ -1,6 +1,6 @@
 pkgbase = silo-google-photos
 	pkgdesc = Standalone silo app for Google Photos
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/intersimone999/silos-apps
 	arch = i686
