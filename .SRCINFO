@@ -1,0 +1,25 @@
+pkgbase = python-qiskit
+	pkgdesc = An open-source SDK for working with quantum computers at the level of circuits, algorithms, and application modules
+	pkgver = 0.23.1
+	pkgrel = 1
+	url = https://github.com/Qiskit/qiskit
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-qiskit-terra=0.16.1
+	depends = python-qiskit-aer=0.7.1
+	depends = python-qiskit-ibmq-provider=0.11.1
+	depends = python-qiskit-ignis=0.5.1
+	depends = python-qiskit-aqua=0.8.1
+	optdepends = python-matplotlib: plotting support
+	optdepends = python-ipywidgets
+	optdepends = python-pydot
+	optdepends = python-pillow
+	optdepends = python-pylatexenc
+	optdepends = python-seaborn
+	optdepends = python-pygments
+	source = qiskit-0.23.1.tar.gz::https://github.com/Qiskit/qiskit/archive/0.23.1.tar.gz
+	sha256sums = 86ae4324db338d70ea3a8e9f1000b839d73161a95bedf39810f1a891a8d8170e
+
+pkgname = python-qiskit
+
