@@ -2,7 +2,7 @@
 
 pipname=mpris-fakeplayer
 pkgname=$pipname
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Fake mpris player for activating bluez avrcp volume control'
 arch=(any)
