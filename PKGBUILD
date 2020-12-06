@@ -31,7 +31,7 @@ md5sums=('SKIP')
 # a description of each element in the source array.
 
 pkgver() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/easymake"
 
 # The examples below are not absolute and need to be adapted to each repo. The
 # primary goal is to generate version numbers that will increase according to
@@ -48,22 +48,22 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/easymake"
 	#patch -p1 -i "$srcdir/${pkgname%-VCS}.patch"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/easymake"
 	gcc src/easymake.c -Iinclude -s -Ofast -o easymake
 }
 
 check() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/easymake"
 	#make -k check
 }
 
 package() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/easymake"
 	#make DESTDIR="$pkgdir/" install
 	sudo cp easymake /usr/bin/
 	chmod +x /usr/bin/easymake
