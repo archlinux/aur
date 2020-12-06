@@ -8,7 +8,8 @@ url=https://bugzilla.kernel.org/show_bug.cgi?id=60824
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('dkms')
-makedepends=('linux-headers<5.9')
+#makedepends=('linux-headers<5.9')
+_lts_version=5.4.80
 
 source=(
 	"Makefile"
@@ -18,10 +19,24 @@ source=(
 	"btbcm.h::https://raw.githubusercontent.com/zen-kernel/zen-kernel/v5.7.6-zen1/drivers/bluetooth/btbcm.h"
 	"btrtl.h::https://raw.githubusercontent.com/zen-kernel/zen-kernel/v5.7.6-zen1/drivers/bluetooth/btrtl.h"
 	"dkms.conf"
+	"btusb-lts.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/bluetooth/btusb.c?h=v${_lts_version}"
+	"btintel-lts.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/bluetooth/btintel.h?h=v${_lts_version}"
+	"btbcm-lts.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/bluetooth/btbcm.h?h=v${_lts_version}"
+	"btrtl-lts.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/bluetooth/btrtl.h?h=v${_lts_version}"
 ) 
 
 prepare() {
 	\cp --remove-destination $(readlink btusb.c) btusb.c
+	\cp --remove-destination $(readlink btusb-lts.c) btusb-lts.c
+	if [[ `cat /proc/version | sed "s/Linux version \([5]\.[0-9]\+\.[0-9]\+\).*/\1/"` == $_lts_version ]]; then
+		rm btusb.c btintel.h btbcm.h btrtl.h
+		mv btusb-lts.c btusb.c
+		mv btintel-lts.h btintel.h
+		mv btbcm-lts.h btbcm.h
+		mv btrtl-lts.h btrtl.h
+	else
+		rm btusb-lts.c btintel-lts.h btbcm-lts.h btrtl-lts.h
+	fi
 	patch -p1 < btusb.patch
 }
 
@@ -52,5 +67,9 @@ sha512sums=(
 	'b526d42413a1621bbd6360ada6e0623c74c7cb31c0e82d1ac6690b782ea2c9b496bb6e650fe4a66fa16bb405ecb3f14233f7c3e68093f9939a21f61c2f082ea0'
 	'0230ffe3981bc4b99fd7b961d0a8181920dd7ad231ed4ed89824872d4e9ba3305cf18cfe88f954eca9dd000fd10abbefbdddf89bef11aac91fec07c0425bf701'
 	'2bde0461ab2bb84bb5bb2a5dce5ae8e6919cf5649f72bd2dc3b505c359b80713d8573409d11101789e1455b5090bbdd9305adfbabb78d5cbc56598abedc24c18'
+	'd0d8ce26aae0a7be84120e9d43cf16a60d70d044cdbc36949395cb6fdc18382bf36134c3e81b3a9bcf4dd29155ba310c4953a0241abf99bda305c27fca50e315'
+	'2ab0f32cbf79b178a2db4376758d9c5efe1a37e1ce597d1a6365fc920b6b83c23211a772b7b66cf04b3ecba813f062d78cad3f95c743223dd3bf95e1707c7460'
+	'320706504bf00fe7928ea8c67340f1535912bd32ad3554b6c972413952299a19ce67003a00556b1d568a08c1f355bf10dbe0523df3b5a1879dcd5043a269eebf'
+	'3458820f64b426444406356c56d1845c6e077d829fa2cdb6804befda657b7ae495d39da11b6ba6202fb147a64e161e74a48fcb6d7a7ef19bc122da12c7c47ebf'
 )
 
