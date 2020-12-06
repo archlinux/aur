@@ -1,4 +1,4 @@
-pkgbase = fetchutils
+pkgbase = fetchutils-git
 	pkgdesc = A collection of small (< ~100 LOC) POSIX shell scripts to retrieve system information
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -7,8 +7,8 @@ pkgbase = fetchutils
 	license = MIT
 	makedepends = scdoc
 	depends = bash
-	source = fetchutils::git+https://github.com/lptstr/fetchutils.git
+	source = fetchutils-git::git+https://github.com/lptstr/fetchutils.git
 	md5sums = SKIP
 
-pkgname = fetchutils
+pkgname = fetchutils-git
 
