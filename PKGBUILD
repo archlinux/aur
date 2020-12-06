@@ -28,5 +28,6 @@ build() {
 package() {
   cd "gtk-theme-${pkgver}"
   DESTDIR="${pkgdir}" ninja -C build install
+  ln -s /usr/share/gnome-shell/theme/Pop-dark "${pkgdir}/usr/share/themes/Pop-dark/gnome-shell"
 }
 # vim: ts=2 sw=2 et:
