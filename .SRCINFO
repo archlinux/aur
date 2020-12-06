@@ -1,0 +1,18 @@
+pkgbase = lsdalton
+	pkgdesc = A linear-scaling HF and DFT code suitable for large molecular systems
+	pkgver = 2020.0
+	pkgrel = 1
+	url = https://daltonprogram.org
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = gcc-fortran
+	depends = scalapack
+	depends = python-cffi
+	depends = hdf5
+	conflicts = lsdalton-git
+	source = https://gitlab.com/dalton/lsdalton/-/archive/v2020.0/lsdalton-v2020.0.tar.bz2
+	sha256sums = 9ecc0087be030c462c7ca6c0666de4223d43ef90866b1b6defc388a608ed5896
+
+pkgname = lsdalton
+
