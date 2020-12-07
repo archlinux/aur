@@ -121,7 +121,7 @@ build() {
 # xv needed with nvidia blob/amdgpu/mesa
 # glamor needed for xwayland support
 # b_lto needs to be set to false or build fails
-# b_pgo needs to be set to false ot build fails
+# b_pgo needs to be set to off or build fails
 
   # Print config
   meson configure build
