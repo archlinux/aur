@@ -3,8 +3,8 @@
 # Contributor: vscncls <lucaslou4@protonmail.com>
 
 pkgname=insomnia
-pkgver=2020.4.2
-pkgrel=7
+pkgver=2020.5.1
+pkgrel=1
 _nodeversion=12.18.3
 pkgdesc="Cross-platform HTTP and GraphQL Client"
 url="https://github.com/Kong/insomnia"
@@ -17,7 +17,7 @@ source=(
   "insomnia.desktop"
   "insomnia.sh"
 )
-b2sums=('2527045680d99d0321ce9a29f8d3e9302bd07c79d059d0a2e9c3f963d2adb45c9566668faca817a0f4913ee22728ebb8f553463ae6cdc731793520a3371d0953'
+b2sums=('9c13d6bc6c7908f7eaec7b2d249b68dc703f68271ccbd1c6d4abb9ec107b2909f09973190de6caf73cb4ff72c65b82ac8960854575a99fd7ccc2e741a9a01613'
         'd2ceeb224fa3a35551b0929648d5e066da93a451a66b73373c13ed0dd89575a2482c2dc8e7499b214d0d62cca2532189dac9a681537751a5a86b592cae5686c7'
         '7ea4aff2779267bfc5f7be5533d70b07a3da1c8bfed424c9f6cc9806fe6567a4cd40144264a8827b016e51f31c6dbb395c90aac4d333f297070213c77a0b2c9c')
 
@@ -61,11 +61,8 @@ package() {
 
   cd ${pkgname}-core-${pkgver}
   install -Dm644 packages/insomnia-app/dist/com.insomnia.app/linux-unpacked/resources/app.asar -t "${pkgdir}/usr/share/insomnia"
-
-  for size in 16 32 48 128 256 512; do
-    install -Dm644 packages/insomnia-app/build/com.insomnia.app/static/icon.png "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/insomnia.png"
-  done
-
+  
+  install -Dm644 packages/insomnia-app/build/com.insomnia.app/static/insomnia-core-logo_16x.png "${pkgdir}/usr/share/icons/hicolor/16x16/apps/insomnia.png"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
