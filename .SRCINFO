@@ -1,0 +1,16 @@
+pkgbase = eqonomize-git
+	pkgdesc = Efficient and easy accounting for the small household economy
+	pkgver = r490.a55847a
+	pkgrel = 1
+	url = https://eqonomize.github.io/
+	arch = x86_64
+	makedepends = git
+	depends = qt5-charts
+	depends = qt5-base
+	provides = eqonomize
+	conflicts = eqonomize
+	source = eqonomize::git+https://github.com/Eqonomize/Eqonomize
+	sha256sums = SKIP
+
+pkgname = eqonomize-git
+
