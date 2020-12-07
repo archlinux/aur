@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=menyoki-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Screen{shot,cast} and perform ImageOps on the command line"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('slop: area selection support')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}-$pkgver-x86_64-unknown-linux-gnu.tar.gz"{,.sig})
-sha512sums_x86_64=('64926b95429f77af194137a990e8c11e28cdbf1890485ae2d7ef240822c6e3f9ef696a0db8540a693ffb94c64b3dfd00b434213c6961143416f7f26406e0facb'
+sha512sums_x86_64=('026e41e056505f92b84d8359b71d02b266924068888bbf33363c636532f740fb7d0fa74bdcd7da4cdde2a8863dab33aa983d8ec1acdd0bdccffa04257fd3d92b'
                    'SKIP')
 validpgpkeys=('9965F7E78C54A004D475D6FA53F218C35C1DC8B1') # menyoki <menyoki.cli@protonmail.com>
 
