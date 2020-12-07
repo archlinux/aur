@@ -10,6 +10,7 @@ pkgbase = wtftw-git
 	makedepends = git
 	depends = xorg-xmessage
 	depends = libxinerama
+	depends = gcc-libs
 	provides = wtftw
 	conflicts = wtftw
 	source = git+https://github.com/Kintaro/wtftw
