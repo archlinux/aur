@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/AdnanHodzic/auto-cpufreq"
 license=('LGPL3')
 depends=('python-distro' 'python-psutil' 'python-click')
+makedepends=('python-setuptools')
 provides=("$pkgname")
 conflicts=("$pkgname")
 install="$pkgname.install"
