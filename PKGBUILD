@@ -3,8 +3,8 @@ url='https://moveit.ros.org'
 
 pkgname='ros-noetic-moveit-ros-planning'
 pkgver='1.0.5'
-arch=('any')
-pkgrel=1
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
