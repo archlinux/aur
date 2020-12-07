@@ -3,11 +3,11 @@
 pkgname=certbot-dns-namecheap-git
 _pkgbase=certbot_dns_namecheap
 pkgver=r2.591508b
-pkgrel=1
+pkgrel=2
 pkgdesc="Namecheap API plugin for Let’s Encrypt client"
 arch=('any')
 license=('Apache')
-depends=('certbot' 'python-acme' 'python-setuptools')
+depends=('certbot' 'dns-lexicon' 'python-acme' 'python-pynamecheap' 'python-setuptools')
 source=("git://github.com/schubc/certbot_dns_namecheap")
 sha512sums=('SKIP')
 
@@ -23,5 +23,5 @@ build() {
 
 package() {
   cd "$srcdir"/${_pkgbase}
-  python setup.py install --root="$pkgdir"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
