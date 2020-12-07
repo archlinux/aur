@@ -3,7 +3,7 @@
 _pyname='aiogram'
 pkgname="python-${_pyname}"
 pkgver=2.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A pretty simple and fully asynchronous library for Telegram Bot API written in Python 3.7 with asyncio and aiohttp"
 arch=('any')
 url="https://github.com/${_pyname}/${_pyname}"
