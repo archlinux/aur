@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=stegano-git
-pkgver=0.4.1.r0.g5774494
-pkgrel=2
+pkgver=0.4.1.r8.g46fd3fd
+pkgrel=1
 pkgdesc="CLI tool for steganography. Supports hiding data in PNG images via LSB Encoding. (git)"
 arch=('x86_64')
 url="https://github.com/steganogram/stegano-rs"
@@ -22,6 +22,11 @@ pkgver() {
 build() {
   cd "${pkgname%-git}-rs/${pkgname%-git}-cli"
   cargo build --release --locked
+}
+
+check() {
+  cd "${pkgname%-git}-rs/${pkgname%-git}-cli"
+  cargo test --release --locked
 }
 
 package() {
