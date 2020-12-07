@@ -6,6 +6,7 @@ pkgbase = mips-linux-egcs-bin
 	arch = i686
 	arch = x86_64
 	license = GPL
+	depends = mips-linux-binutils-bin
 	options = !strip
 	source = https://www.linux-mips.org/pub/linux/mips/crossdev/i686-linux/mips-linux/egcs-mips-linux-1.1.2-4.i386.rpm
 	sha256sums = 0f258ec59e1ae54cb2493d04f0366f56ae549b014f46e65f57ab2d3b45a55415
