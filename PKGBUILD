@@ -17,5 +17,6 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    cargo install --root="$pkgdir" skywalker
+    cargo build --target  x86_64-unknown-linux-gnu --release
+    cp target/x86_64-unknown-linux-gnu/release/skywalker $pkgdir
 }
