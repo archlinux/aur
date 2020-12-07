@@ -3,7 +3,7 @@
 pkgname=kbenv-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Kubectl version manager inspired by tfenv'
 arch=('x86_64')
 _goos='linux'
@@ -13,7 +13,7 @@ license=('GPL3')
 provides=("$_pkgname" "kubectl")
 conflicts=("kubectl")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/little-angry-clouds/kubernetes-binaries-managers/releases/download/$pkgver/$_pkgname-$_goos-$_goarch.tar.gz")
-sha256sums=(132b54da1bde4adb3c087ba2b98a567164ce1bafe896ce91f9338c60912d2b4d)
+sha256sums=(2efba990d4a3d268eb0c8b9f1e5bb553944d4bb040529960c7ad971fad23f75a)
 
 package() {
 	install -Dm 755 $_pkgname-$_goos-$_goarch "$pkgdir/usr/bin/$_pkgname"
