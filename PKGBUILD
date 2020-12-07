@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=mivisionx
-pkgver=3.9.0
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="Set of comprehensive computer vision and machine intelligence
 libraries, utilities, and applications bundled into a single toolkit"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('rocm' 'rocm-cmake' 'miopengemm' 'miopen' 'protobuf' 'opencv' 'ffmpeg')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-ProfessionalCompute-Libraries/MIVisionX/archive/rocm-$pkgver.tar.gz")
-sha256sums=('892812cc6e6977ed8cd4b69c63f4c17be43b83c78eeafd9549236c17f6eaa2af')
+sha256sums=('8a67fae77a05ef60a501e64a572a7bd2ccb9243518b1414112ccd1d1f78d08c8')
 
 build() {
   mkdir -p "$srcdir/build"
