@@ -1,0 +1,34 @@
+[Unit]
+Description=Scrutiny Server
+After=network-online.target
+
+[Service]
+Type=simple
+User=scrutiny
+Group=scrutiny
+ExecStart=/usr/bin/scrutiny --config /etc/scrutiny/scrutiny.yaml
+Restart=always
+RestartSec=10s
+
+NoNewPrivileges=yes
+ProtectHome=yes
+ProtectSystem=strict
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectHostname=yes
+ProtectClock=yes
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target
