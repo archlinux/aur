@@ -13,7 +13,7 @@ optdepends=('libappindicator-gtk3: for tray icon'
             'aspell: spell checking'
             'nuspell: spell checking'
             'hspell: spell checking'
-            'libvoikko: spell checking for Finnish lanuage')
+            'libvoikko: spell checking for Finnish language')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/collinss/sticky.git')
