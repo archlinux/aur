@@ -2,11 +2,12 @@
 
 pkgname=eqonomize-git
 pkgver=r490.a55847a
-pkgrel=1
+pkgrel=2
 pkgdesc='Efficient and easy accounting for the small household economy'
 arch=('x86_64')
 url='https://eqonomize.github.io/'
 depends=('qt5-charts' 'qt5-base')
+makedepends=('qt5-tools')
 # strip the -git suffix from name
 _dirname="${pkgname%-git}"
 _basename="${pkgname%-git}"
@@ -33,6 +34,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_dirname}"
+	lrelease Eqonomize.pro
 	qmake PREFIX=/usr \
 		QMAKE_CFLAGS="${CFLAGS}" \
 		QMAKE_CXXFLAGS="${CXXFLAGS}" \
