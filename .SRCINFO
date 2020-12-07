@@ -5,6 +5,7 @@ pkgbase = skywalker
 	url = https://github.com/toorajtaraz/skywalker
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0
 	makedepends = rust
 	makedepends = cargo
