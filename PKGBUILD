@@ -11,9 +11,17 @@ depends=(boost-libs curl glew intel-tbb nlopt wxgtk2 qhull openvdb cgal) #wxgtk3
 makedepends=(cmake boost cereal eigen expat gtest libpng systemd)
 replaces=(slic3r-prusa3d)
 source=(${url}/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz
+        ${pkgname}-boost-1.73.patch::${url}/commit/3a194f918716.patch
         ${pkgname}.desktop)
 sha256sums=('e6e0c83bf92e448ec058fd3063b84caca69f58b8b419e48eace6e8ce534937c0'
+            '630b9db185ef3891387f3ade3eb29611eef7f7fc3fd8579b84864b936abf4b6f'
             '9d21467c541b809f149b39c7c6b4f60b2c866823021fb6f8a076290583982d11')
+
+prepare() {
+  cd PrusaSlicer-version_${pkgver}
+  sed -i '1i\#include <atomic>' src/slic3r/GUI/Mouse3DController.hpp
+  patch -Np1 -i ../${pkgname}-boost-1.73.patch
+}
 
 build() {
   cmake -B build -S PrusaSlicer-version_${pkgver} \
