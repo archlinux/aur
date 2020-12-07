@@ -1,7 +1,7 @@
 # Maintainer: Chan Beom Park <cbpark@gmail.com>
 
 pkgname=whizard
-pkgver=2.7.0
+pkgver=2.8.5
 pkgrel=1
 pkgdesc="The Generator of Monte Carlo Event Generators for Tevatron, LHC, ILC, CLIC, CEPC, FCC-ee, FCC-hh, SppC and other High Energy Physics Experiments"
 arch=("x86_64")
@@ -9,13 +9,13 @@ url="http://${pkgname}.hepforge.org"
 license=('GPL2')
 depends=('gcc-libs' 'gcc-fortran' 'ocaml' 'libtirpc')
 makedepends=('texlive-bin' 'texlive-pictures' 'ghostscript')
-optdepends=('pythia: PYTHIA8 for shower and hadronization'
+optdepends=('pythia8: PYTHIA8 for shower and hadronization'
             'lhapdf: LHAPDF for structure functions'
             'fastjet: FastJet for handling event data'
             'looptools: LoopTools loop integral library'
             'hepmc: HepMC for handling event data')
 source=("${url}/downloads/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('97a50705a8ba4174206cdc2c9cf0981a4046352e815e1903f124a92bd05eb4a9')
+sha256sums=('0f633e5620aa7dd50336b492e8a76bfae15b15943ea842010346ad7610818ecd')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -33,7 +33,8 @@ build() {
                --enable-fastjet \
                --enable-looptools \
                --with-precision=quadruple \
-               CPPFLAGS="-I/usr/include/tirpc" LIBS="-ltirpc"
+               CPPFLAGS="-I/usr/include/tirpc" LIBS="-ltirpc" \
+               CXXFLAGS="-std=c++17"
   make
 }
 
