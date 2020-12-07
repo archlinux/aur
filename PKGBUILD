@@ -4,7 +4,7 @@
 
 pkgname=opam-git
 pkgver=2.1.0.beta2.r165.g1138d481
-pkgrel=1
+pkgrel=2
 pkgdesc='OCaml package manager'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://opam.ocaml.org/'
@@ -19,11 +19,11 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("$pkgname"::'git+git://github.com/ocaml/opam.git')
+source=("${pkgname%-git}"::'git+git://github.com/ocaml/opam.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir/${pkgname%-git}"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
