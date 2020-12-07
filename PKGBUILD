@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel at yahoo dot com>
 
 pkgname=miopen-opencl
-pkgver=3.9.0
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="AMD's Machine Intelligence Library (OpenCL backend)"
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('ocl-icd' 'rocblas' 'boost' 'llvm-amdgpu')
 makedepends=('opencl-headers' 'rocm-cmake' 'cmake' 'half' 'miopengemm')
 provides=('miopen')
 conflicts=('miopen')
-source=("$pkgname-$pkgver::https://github.com/ROCmSoftwarePlatform/MIOpen/archive/rocm-$pkgver.tar.gz")
-sha256sums=('f57d75a220c1094395cc1dccab2185c759d779751ddbb5369a6f041ec77b2156')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ROCmSoftwarePlatform/MIOpen/archive/rocm-$pkgver.tar.gz")
+sha256sums=('926e43c5583cf70d6b247f9fe45971b8b1cc9668f9c8490c142c7e8b6e268f1a')
 
 build() {
   mkdir -p "$srcdir/build"
