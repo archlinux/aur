@@ -3,7 +3,7 @@ pkgname=skywalker
 pkgver=0.1.2
 pkgrel=1
 depends=(libpcap)
-makedepends=()
+makedepends=(rust cargo)
 pkgdesc="simple port and packer sniffer written in rust."
 arch=('i686' 'x86_64')
 url="https://github.com/toorajtaraz/skywalker"
@@ -12,11 +12,12 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/toorajtaraz/$pkgname/archive
 md5sums=('358918905fae26a6c4fc7c22f4138dd1')
 
 build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    cargo build --release --locked
     return 0
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    cargo build --target  x86_64-unknown-linux-gnu --release
-    cp target/x86_64-unknown-linux-gnu/release/skywalker "$pkgdir/usr/bin"
+    install -D -m755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
