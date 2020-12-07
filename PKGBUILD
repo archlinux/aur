@@ -3,7 +3,7 @@
 pkgbase=sweet-kde-git
 pkgname=(sweet-kde-git kvantum-theme-sweet-git)
 _pkgname=sweet
-pkgver=r109.0d214a6
+pkgver=r157.93b2375
 pkgrel=1
 pkgdesc="A very sweet theme"
 arch=(any)
@@ -24,7 +24,8 @@ package_sweet-kde-git() {
     provides=('sweet-kde')
     optdepends=('sweet-theme-git: Matching GTK theme'
                 'kvantum-theme-sweet: Sweet theme for Kvantum Qt style (recommended)'
-                'candy-icons: Matching icon theme')
+                'candy-icons: Matching icon theme'
+                'sweet-cursor-theme: Matching cursor theme')
 
     cd $_pkgname/kde
 
@@ -61,4 +62,15 @@ package_kvantum-theme-sweet-git() {
     install -d "$pkgdir"/usr/share
 
     cp -r Kvantum "$pkgdir"/usr/share
+}
+
+package_sweet-cursor-theme-git() {
+    provides=('sweet-cursor-theme')
+    pkgdesc="Sweet cursor theme"
+
+    cd $_pkgname/kde
+
+    install -d "${pkgdir}"/usr/share/icons
+
+    cp -r cursors/Sweet-cursors "${pkgdir}"/usr/share/icons
 }

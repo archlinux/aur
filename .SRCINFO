@@ -1,6 +1,6 @@
 pkgbase = sweet-kde-git
 	pkgdesc = A very sweet theme
-	pkgver = r109.0d214a6
+	pkgver = r157.93b2375
 	pkgrel = 1
 	url = https://github.com/EliverLara/sweet
 	arch = any
@@ -14,6 +14,7 @@ pkgname = sweet-kde-git
 	optdepends = sweet-theme-git: Matching GTK theme
 	optdepends = kvantum-theme-sweet: Sweet theme for Kvantum Qt style (recommended)
 	optdepends = candy-icons: Matching icon theme
+	optdepends = sweet-cursor-theme: Matching cursor theme
 	provides = sweet-kde
 
 pkgname = kvantum-theme-sweet-git
