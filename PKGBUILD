@@ -4,7 +4,7 @@
 
 pkgname=opam-git
 pkgver=2.1.0.beta2.r165.g1138d481
-pkgrel=2
+pkgrel=3
 pkgdesc='OCaml package manager'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://opam.ocaml.org/'
@@ -29,8 +29,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  ./configure --prefix=/usr
-  make lib-ext all
+  # A clean environment seems mandatory to avoid conflicts with
+  # existing installation of Opam packages. This may cause surprises
+  # if you have a peculiar customization of your OCaml/Opam setup.
+  env -i PATH=/usr/bin LANG=$LANG ./configure --prefix=/usr
+  env -i PATH=/usr/bin LANG=$LANG make lib-ext all
 }
 
 package() {
