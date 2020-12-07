@@ -82,6 +82,11 @@ build() {
       -DVIDEO_RPI=OFF \
       -DIBUS=OFF \
       -DFCITX=OFF \
+      -DSSE=ON \
+      -DSSE2=ON \
+      -DSSE3=ON \
+      -DSSEMATH=ON \
+      -DVIDEO_X11_XSHAPE=OFF \
       -DJACK=OFF \
       -DJACK_SHARED=OFF
   ninja -C build
