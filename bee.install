@@ -1,0 +1,21 @@
+post_install () {
+	if [[ -z $(getent passwd bzz) ]]; then
+		echo "creating bzz user"
+	       	useradd -r -s /usr/bin/nologin -d /var/lib/bee 
+	else
+		echo "already have bzz user"
+	fi
+	if [ ! -d /var/lib/bee ]; then
+		mkdir -vp /var/lib/bee
+		chown -R bzz:bzz /var/lib/bee
+	fi
+	if [ ! -f /var/lib/bee/password ]; then
+		dd status=none if=/dev/urandom count=1 | tr -dc A-Za-z0-9 | head -c 20 > /var/lib/bee/password
+		chown -v bzz:bzz /var/lib/bee/password
+		chmod -v 400 /var/lib/bee/password
+		echo "generated new password in /var/lib/bee/password"
+	fi
+	echo -e "\e[0;93mSwap is disabled by default in this configuation."
+	echo -e "\e[0;93mTo use swap you need an Ethereum endpoint."
+	echo -e "\e[0m"
+}

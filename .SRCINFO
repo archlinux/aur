@@ -1,0 +1,32 @@
+pkgbase = go-bee
+	pkgdesc = Censorship resistant storage and communication infrastructure for a truly sovereign digital society
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://swarm-gateways.net/bzz:/docs.swarm.eth/
+	install = bee.install
+	arch = x86_64
+	groups = eth-swarm
+	license = BSD
+	makedepends = go>=1.15.0
+	makedepends = git
+	optdepends = go-ethereum
+	optdepends = systemd
+	provides = go-bee
+	source = git+https://github.com/ethersphere/bee#commit=625d64e656241a058678e310ba7b02e40f3ec50d
+	source = bee.yaml
+	source = bee.service
+	source = bee.install
+	source = bee.yaml.sig
+	source = bee.service.sig
+	source = bee.install.sig
+	validpgpkeys = 0826EDA1702D1E87C6E2875121D2E7BB88C2A746
+	sha256sums = SKIP
+	sha256sums = 8841026f29b181f0582c6e7e08c28e472f073cf5f42f729abc5bf696802a08ae
+	sha256sums = 04a72c89f76b4649046c9a588216657803a5a6a29f3c22484bf11dd8639be2b4
+	sha256sums = 3158225705621a572fadfc9c552e748fec338535eb29923af558669c549329db
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = go-bee
+

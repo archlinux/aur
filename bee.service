@@ -1,0 +1,15 @@
+[Unit]
+Description=Bee - Ethereum Swarm node
+Documentation=https://swarm-gateways.net/bzz:/docs.swarm.eth/
+After=network.target
+
+[Service]
+Environment="BEE_CONFIG=/etc/bee/bee.yml"
+User=bzz
+Group=bzz
+ExecStart=/usr/bin/bee start --config ${BEE_CONFIG}
+RestartSec=1
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
