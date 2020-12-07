@@ -4,7 +4,7 @@
 pkgname=emptty
 pkgdesc="Dead simple CLI Display Manager on TTY"
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/tvrzna/emptty"
 license=('MIT')
@@ -33,5 +33,7 @@ package() {
   make DESTDIR="$pkgdir/" install-all
   make DESTDIR="$pkgdir/" install-config
   make DESTDIR="$pkgdir/" install-systemd
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   echo "Disable your DM and run 'systemctl enable emptty' to enable emptty at the next boot"
 }
