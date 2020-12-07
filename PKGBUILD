@@ -1,8 +1,8 @@
 # Maintainer: Graham Gower <graham dot gower at gmail dot com>
 _gitname=SLiM
-_gittag=v3.4  # tag, branch, or commit; comment out to use latest
+_gittag=v3.5  # tag, branch, or commit; comment out to use latest
 pkgname=slim-simulator
-pkgver=3.4.r0.gb2c2b634
+pkgver=3.5.r0.g1f0fc1ae
 pkgrel=1
 pkgdesc="A forwards-time population genetic simulator."
 arch=("x86_64")
@@ -33,7 +33,7 @@ build() {
 	cd build
 	cmake \
 		-D CMAKE_INSTALL_PREFIX=/usr \
-		-D BUILD_QTSLIM=ON \
+		-D BUILD_SLIMGUI=ON \
 		../${_gitname} \
 		|| (echo "cmake failed"; exit 1)
 	make || (echo "make failed"; exit 1)
