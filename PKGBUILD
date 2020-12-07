@@ -1,18 +1,18 @@
-# Maintainer: Axel Parra <apc@openmailbox.org>
+# Maintainer: Wilsson Martee <wilssonm@gmail.com>
 
 pkgname=lemonbar-git
 _pkgname=lemonbar
-pkgver=v1.1.r12.gb331ee3
+pkgver=v1.4.r0.g2e8ac2c
 pkgrel=1
 pkgdesc="A featherweight, lemon-scented, bar based on xcb."
 arch=('i686' 'x86_64')
 url="https://github.com/LemonBoy/bar"
 license=('MIT')
 depends=('libxcb')
-makedepends=('git')
+makedepends=('git' 'pod2man')
 provides=('lemonbar')
-conflicts=('lemonbar-xft-git')
-source=("$_pkgname::git+https://github.com/Lemonboy/bar.git")
+conflicts=('lemonbar-xft-git' 'lemonbar-ucs4-git' 'lemonbar-sm-git')
+source=("$_pkgname::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
