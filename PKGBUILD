@@ -2,8 +2,8 @@
 # Contributor: Michael Yang <ohmyarchlinux@protonmail.com>
 
 pkgname=spdlog-git
-pkgver=1.8.1.cbe9448
-pkgrel=3
+pkgver=1.8.1.233e97c
+pkgrel=1
 pkgdesc='Very fast, header only, C++ logging library'
 arch=('any')
 url='https://github.com/gabime/spdlog'
