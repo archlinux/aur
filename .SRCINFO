@@ -1,6 +1,6 @@
 pkgbase = aespresso
 	pkgdesc = A Gtk3 frontend for archlinux's archlinux-java script.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/Booglejr/aespresso/releases
@@ -9,8 +9,9 @@ pkgbase = aespresso
 	makedepends = rust
 	depends = gtk3
 	depends = lxqt-sudo
-	source = aespresso-0.1.1.tar.gz::https://github.com/Booglejr/aespresso/archive/v0.1.1.tar.gz
-	md5sums = 1ba647355812a2ca9fdb26aa03d1b18c
+	depends = java-runtime-common
+	source = aespresso-0.1.2.tar.gz::https://github.com/Booglejr/aespresso/archive/v0.1.2.tar.gz
+	md5sums = c8267f1ae4ea11173ba3710a655744bb
 
 pkgname = aespresso
 
