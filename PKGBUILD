@@ -1,7 +1,7 @@
 # Maintainer: James Crompton DonJaime at freenet de
 # forked from cewe-fotobuch, originally by Jozef Riha, updated by Manuel Conzelmann
 
-_keyaccount=6822
+_keyaccount=24441
 _productUrname='CEWE_Fotowelt'
 _productRename='CEWE Fotowelt'
 _lang='de_DE'
@@ -10,12 +10,12 @@ pkgname=cewe-fotowelt
 conflicts=(cewe-fotobuch cewe-fotoservice)
 provides=(cewe-fotoservice)
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them at cewe.de or partners'
-md5sums=('5f8d6ab12625938d8be04fb32950ab46'
+md5sums=('ace8dc16a050d0bb0d640cc183acdb94'
 # template start; name=cewe; version=7.1.2;
          '12ab17737db1c55035b6e7769132f791')
 
 pkgver=7.1.2
-pkgrel=1
+pkgrel=2
 url="http://www.cewe.de/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy')
