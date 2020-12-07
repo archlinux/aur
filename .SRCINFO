@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-diagnostic-msgs
 	pkgdesc = ROS - This package holds the diagnostic messages which provide the standardized interface for the diagnostic and runtime monitoring systems in ROS.
-	pkgver = 1.12.7
-	pkgrel = 2
+	pkgver = 1.13.0
+	pkgrel = 1
 	url = https://wiki.ros.org/diagnostic_msgs
 	arch = any
 	license = BSD
@@ -12,8 +12,8 @@ pkgbase = ros-noetic-diagnostic-msgs
 	makedepends = ros-noetic-catkin
 	depends = ros-noetic-message-runtime
 	depends = ros-noetic-std-msgs
-	source = ros-noetic-diagnostic-msgs-1.12.7.tar.gz::https://github.com/ros/common_msgs/archive/1.12.7.tar.gz
-	sha256sums = a9d8c7655d426afe8bc2b021e0bc8ce25dae70ca35b985a0ec0b8b5768722bd4
+	source = ros-noetic-diagnostic-msgs-1.13.0.tar.gz::https://github.com/ros/common_msgs/archive/1.13.0.tar.gz
+	sha256sums = 8f3acd0094612172fd922a63788e8ef88e08cc1d50fcbcf2c466dfa8bb9db7e4
 
 pkgname = ros-noetic-diagnostic-msgs
 
