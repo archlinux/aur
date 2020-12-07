@@ -1,0 +1,14 @@
+pkgbase = earthly-bin
+	pkgdesc = Build automation for the container era
+	pkgver = 0.3.19
+	pkgrel = 1
+	url = https://earthly.dev
+	install = earthly-bin.install
+	arch = x86_64
+	license = MPL-2.0
+	depends = docker
+	depends = git
+	source = https://github.com/earthly/earthly/releases/download/v0.3.19/earth-linux-amd64
+	sha512sums = f4a3db97071e58bd568e2fff1da7dc1336eb0bbf044a2dc28079015448eabb679f8e04771304cbbd2cb9aab5ca65a27c23bcdce9f4d74f555b1fa67d02885eed
+
+pkgname = earthly-bin
