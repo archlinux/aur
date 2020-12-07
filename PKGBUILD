@@ -2,11 +2,11 @@
 
 pkgname=nancy-bin
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to check for vulnerabilities in your Golang dependencies"
 arch=(x86_64 i686)
 url="https://github.com/sonatype-nexus-community/nancy"
-license=('Apache 2.0')
+license=(Apache)
 provides=(nancy)
 _src="${url}/releases/download/v${pkgver}/nancy-linux."
 source_x86_64=("${_src}amd64-v${pkgver}.tar.gz")
