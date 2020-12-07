@@ -1,13 +1,13 @@
 pkgbase = dhall-yaml-bin
 	pkgdesc = Dhall to YAML compiler and a YAML to Dhall compiler
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/dhall-lang/dhall-haskell
 	arch = x86_64
 	license = GPL3
 	conflicts = dhall-yaml
-	source = dhall-yaml-1.36.0-1.2.3.tar.bz2::https://github.com/dhall-lang/dhall-haskell/releases/download/1.36.0/dhall-yaml-1.2.3-x86_64-linux.tar.bz2
-	sha256sums = a29e2546bb617a9645124816ee9441253285bf767a5c8a9b6e2753aaf03a892c
+	source = dhall-yaml-1.37.0-1.2.4.tar.bz2::https://github.com/dhall-lang/dhall-haskell/releases/download/1.37.0/dhall-yaml-1.2.4-x86_64-linux.tar.bz2
+	sha256sums = a717dbf6e813bfacf457b9a7ab9c1f928f2430001d1d85858d4aed1f86c131c1
 
 pkgname = dhall-yaml-bin
 
