@@ -1,4 +1,4 @@
-pkgbase = standard-notes-bin
+pkgbase = standardnotes-bin
 	pkgdesc = Standard Notes
 	pkgver = 3.5.11
 	pkgrel = 1
@@ -8,8 +8,8 @@ pkgbase = standard-notes-bin
 	depends = hicolor-icon-theme
 	conflicts = standardnotes-desktop
 	options = !strip
-	source = standard-notes-3.5.11-1.AppImage::https://github.com/standardnotes/desktop/releases/download/v3.5.11/standard-notes-3.5.11-linux-x86_64.AppImage
+	source = standardnotes-bin-3.5.11-1.AppImage::https://github.com/standardnotes/desktop/releases/download/v3.5.11/standard-notes-3.5.11-linux-x86_64.AppImage
 	sha256sums = 8ef533758303bc37ce693d73f5667d8d28b77114363968a93cc5cf011a0032ba
 
-pkgname = standard-notes-bin
+pkgname = standardnotes-bin
 

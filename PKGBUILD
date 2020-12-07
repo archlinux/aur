@@ -1,6 +1,6 @@
 # Maintainer: Plague-doctor <plague at privacyrequired dot com>
 
-pkgname=standard-notes-bin
+pkgname=standardnotes-bin
 pkgver=3.5.11
 pkgrel=1
 pkgdesc='Standard Notes'
@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://standardnotes.org'
 license=('AGPL3')
 _shortname=standard-notes
-_appimage=$_shortname-$pkgver-$pkgrel.AppImage
+_appimage=$pkgname-$pkgver-$pkgrel.AppImage
 depends=('hicolor-icon-theme')
 options=(!strip)
 conflicts=('standardnotes-desktop')
