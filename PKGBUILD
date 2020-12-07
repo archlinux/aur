@@ -3,7 +3,7 @@
 pkgbase=esphomeyaml
 pkgname=esphome
 pkgver=1.15.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Solution for your ESP8266/ESP32 projects with Home Assistant"
 url="https://github.com/esphome/ESPHome"
 depends=('python-setuptools'
