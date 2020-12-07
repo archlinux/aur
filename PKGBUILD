@@ -21,10 +21,19 @@ pkgver() {
 	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-build() {
+prepare() {
 	cd "${srcdir}/${_pkgname}"
 	yarn install --pure-lockfile --non-interactive
-	yarn run grunt release
+}
+
+check() {
+	cd "${srcdir}/${_pkgname}"
+	yarn run test
+}
+
+build() {
+	cd "${srcdir}/${_pkgname}"
+	yarn run grunt clean:tmp_prod webpack:prod compile
 }
 
 package() {
