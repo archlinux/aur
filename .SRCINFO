@@ -1,0 +1,17 @@
+pkgbase = gitsu
+	pkgdesc = A simple cli tool for switching git user easily.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/matsuyoshi30/gitsu
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = go
+	depends = git
+	provides = gitsu
+	conflicts = gitsu
+	source = https://github.com/matsuyoshi30/gitsu/archive/v0.1.1.tar.gz
+	sha256sums = 6e17b8e73559543e902cc6e2066fa0b5f9543d7073216f28e5d6f6de49b10df3
+
+pkgname = gitsu
+
