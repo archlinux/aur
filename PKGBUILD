@@ -1,14 +1,15 @@
 # Maintainer: BrainDamage <braindamage springlobby.info>
 
 pkgname=eqonomize
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Efficient and easy accounting for the small household economy'
 arch=('x86_64')
 url='https://eqonomize.github.io/'
 depends=('qt5-charts' 'qt5-base')
 source=("https://github.com/Eqonomize/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('6ca5383d49f65aa521faf4103b7d2910bad9dd277319a1ce4d92669d2d490672')
+sha256sums=('81af117784b6be70cc29383e9ea024dd957eb5ae4b83557c1abc44eba37d41e2')
+
 
 
 build() {
