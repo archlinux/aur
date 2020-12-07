@@ -1,8 +1,8 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-vfio-lts
-pkgver=5.4.80
-pkgrel=2
+pkgver=5.4.81
+pkgrel=1
 pkgdesc='LTS Linux VFIO'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -18,7 +18,6 @@ source=(
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
-  0003-efivarfs-revert-fix-memory-leak-in-efivarfs_create.patch
   sphinx-workaround.patch
   add-acs-overrides.patch
   i915-vga-arbiter.patch
@@ -28,12 +27,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('49da425c1f3c530fd3ff31d85a0461f6b6dc6e459f7faf3eee23e49a98ce64c7'
+sha256sums=('9470bde475726996202d845a5fc3bc8bd3bb546bbc6816fb663fa73df25d8427'
             'SKIP'
             '760ec068a7a1d8e6d4af17c2a77bd0bcec6198ba31e003f6304313d43e3632a0'
             'b439f57b84bc98730c0265695abb92385ee4dcd35a5c00d4cb3d3155c75fb491'
             '4fd74bb2a7101d700fba91806141339d8c9e46a14f8fc1fe276cfb68f1eec0f5'
-            'bc9e2f7e843a8fa87da0b1b40c7257cd92311f070fb255120c405ad257cff3ed'
             'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e'
             '6ebc19f8cdd608a97f8fa6a0a815ac142b88e18dd476bc2851b2771e3aa9522d'
             '50880279bab5793c89a6823d751d3c84ead5efd5c4c0d38b921a14061fc0d336')
