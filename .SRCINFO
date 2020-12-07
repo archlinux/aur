@@ -1,8 +1,8 @@
 pkgbase = vapoursynth-plugin-modfunc-git
 	pkgdesc = Plugin for Vapoursynth: modfunc (GIT version)
-	pkgver = r6
+	pkgver = r7
 	pkgrel = 1
-	url = https://github.com/LightArrowsEXE/modfunc
+	url = https://github.com/Ichunjo/modfunc
 	arch = any
 	license = GPL
 	makedepends = git
@@ -12,7 +12,7 @@ pkgbase = vapoursynth-plugin-modfunc-git
 	depends = vapoursynth-plugin-mvsfunc-git
 	provides = vapoursynth-plugin-modfunc
 	conflicts = vapoursynth-plugin-modfunc
-	source = modfunc::git+https://github.com/LightArrowsEXE/modfunc.git
+	source = modfunc::git+https://github.com/Ichunjo/modfunc.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-modfunc-git

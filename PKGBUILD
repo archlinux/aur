@@ -2,11 +2,11 @@
 
 _plug=modfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r6
+pkgver=r7
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
-url='https://github.com/LightArrowsEXE/modfunc'
+url='https://github.com/Ichunjo/modfunc'
 license=('GPL')
 depends=('vapoursynth-plugin-vsutil-git'
          'vapoursynth-plugin-fvsfunc-git'
@@ -16,7 +16,7 @@ depends=('vapoursynth-plugin-vsutil-git'
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/LightArrowsEXE/modfunc.git")
+source=("${_plug}::git+https://github.com/Ichunjo/modfunc.git")
 sha256sums=('SKIP')
 
 _site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
