@@ -12,7 +12,6 @@ pkgbase = gtg-git
 	depends = pygtk
 	depends = python-gobject
 	depends = python-configobj
-	depends = dbus-python
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	depends = python2-gnomekeyring

@@ -8,7 +8,7 @@ pkgdesc="Personal GTD like organizer for the GNOME desktop environment. Git vers
 url="https://wiki.gnome.org/Apps/GTG"
 arch=('x86_64')
 license=('GPL')
-depends=('pygtk' 'python-gobject' 'python-configobj' 'dbus-python'
+depends=('pygtk' 'python-gobject' 'python-configobj'
 'hicolor-icon-theme' 'desktop-file-utils' 'python2-gnomekeyring'
 'python-liblarch-git' 'python-cairo' 'python-pyxdg' 'python-lxml')
 makedepends=('git' 'python-gobject' 'meson')
