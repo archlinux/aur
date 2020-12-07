@@ -272,6 +272,4 @@ groups=('xorg')
 
 license=('custom')
 
-sha512sums=('SKIP'
-            'SKIP'
-            'SKIP')
+sha512sums=('SKIP')
