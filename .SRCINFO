@@ -1,12 +1,14 @@
 pkgbase = breath-gtk-git
-	pkgdesc = Breath widget theme for GTK 2 and 3
+	pkgdesc = Breath widget style for GTK applications
 	pkgver = r3.da27066
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/artwork/themes/breath-gtk
-	arch = x86_64
+	arch = any
 	license = LGPL
 	makedepends = extra-cmake-modules
-	source = git+https://gitlab.manjaro.org/artwork/themes/breath-gtk
+	provides = breath-gtk-theme
+	conflicts = breath-gtk-theme
+	source = git+https://gitlab.manjaro.org/artwork/themes/breath-gtk.git
 	sha256sums = SKIP
 
 pkgname = breath-gtk-git
