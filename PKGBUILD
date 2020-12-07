@@ -1,6 +1,6 @@
 pkgname=epdfview-gtk3
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight PDF document viewer. GTK3 version.'
 url='https://github.com/Flow-It/epdfview'
 arch=('x86_64')
@@ -10,14 +10,9 @@ conflicts=('epdfview')
 replaces=('epdfview')
 depends=('gtk3' 'poppler-glib' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('git' 'meson' 'ninja' 'doxygen')
-source=("git+https://github.com/Flow-It/epdfview_old.git"
-        'patch.txt')
-md5sums=('SKIP' 'SKIP')
-
-prepare() {
-    cd "${srcdir}/${pkgname%-*}_old"
-    patch -Np1 -i ../patch.txt
-}
+options=('!emptydirs')
+source=("git+https://github.com/Flow-It/epdfview_old.git")
+md5sums=('SKIP')
 
 build() {
   mkdir build
