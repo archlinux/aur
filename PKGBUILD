@@ -1,17 +1,17 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-ssh2'
 _pkgname='ssh2-python'
-pkgver='0.23.0'
+pkgver='0.25.0'
 pkgrel=1
 pkgdesc="Python bindings for libssh2"
 url="https://github.com/ParallelSSH/ssh2-python/"
-depends=('python' 'libssh2')
+depends=('libssh2')
 makedepends=('python-setuptools' 'cython')
 checkdepends=('python-pytest')
 license=('GPL')
 arch=('x86_64')
-source=("https://github.com/ParallelSSH/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('70ff84e6ce37df877ce239109b713fb0f5b26de6309c72da5fa41723863ab14b')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ParallelSSH/$_pkgname/archive/$pkgver.tar.gz")
+sha256sums=('2fad2e2149ff14f17e1c2e18993624aa573f0ead8db4cb9491e0671448ccb677')
 
 build() {
     cd "${_pkgname}-${pkgver}"
