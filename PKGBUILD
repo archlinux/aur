@@ -1,78 +1,48 @@
-# Maintainer: Tod Jackson <tod.jackson@gmail.com>
+# Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
+# Contributor: Tod Jackson <tod.jackson@gmail.com>
 # Contributor: orumin <dev@orum.in>
 # Contributor: Adam <adam900710 at gmail dot com>
 
 _basename=gst-libav
-pkgname="lib32-$_basename"
-pkgver=1.16.2
+pkgname=lib32-gst-libav
+pkgver=1.18.1
 pkgrel=1
-pkgdesc="GStreamer Multimedia Framework ffmpeg Plugin (32-bit)"
+pkgdesc="Multimedia graph framework - libav plugin (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
 license=(GPL)
-depends=('gst-plugins-base-libs' 'lib32-gst-plugins-base-libs' 'bzip2')
-makedepends=(python autoconf-archive git lib32-gcc-libs valgrind-multilib yasm)
+depends=(bzip2 lib32-gst-plugins-base-libs lib32-libffmpeg gst-libav)
+makedepends=(python git meson)
 provides=("lib32-gst-ffmpeg=$pkgver-$pkgrel")
-_commit=090cfd40aad49ad645a9bf4bdd62e65b739c95f3  # tags/1.16.2^0
-source=("git+https://anongit.freedesktop.org/git/gstreamer/gst-libav#commit=$_commit"
-        "gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common"
-        "git+https://git.videolan.org/git/ffmpeg" "git://git.libav.org/gas-preprocessor")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+_commit=097313530cae4a49437a779a9ded0ade8113c26b  # tags/1.18.1^0
+source=("git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_basename
-  git describe --tags | sed 's/-/+/g'
-}
+    cd $_basename
 
-prepare() {
-  cd $_basename
-
-  git submodule init
-  git config --local submodule.common.url "$srcdir/gst-common"
-  git config --local submodule.gst-libs/ext/libav.url "$srcdir/ffmpeg"
-  git config --local submodule.gst-libs/ext/gas-preprocessor.url "$srcdir/gas-preprocessor"
-  git submodule update
-
-  NOCONFIGURE=1 ./autogen.sh
+    git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  cd $_basename
+    export CC='gcc -m32'
+    export CXX='g++ -m32'
+    export PKG_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config'
 
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+    arch-meson $_basename build \
+        --libdir=lib32 \
+        --libexecdir=lib32 \
+        -D doc=disabled \
+        -D package-name="GStreamer FFmpeg Plugin (Arch Linux)" \
+        -D package-origin="https://www.archlinux.org/"
 
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --libexecdir=/usr/lib32 \
-    --libdir=/usr/lib32 \
-    --build=i686-pc-linux-gnu \
-    --with-package-name="GStreamer libav Plugin (Arch Linux)" \
-    --with-package-origin="http://www.archlinux.org/" \
-    --without-system-libav \
-    --with-libav-extra-configure="--enable-runtime-cpudetect" \
-    --enable-experimental \
-    --disable-gtk-doc \
-    --disable-static
-
-  # https://bugzilla.gnome.org/show_bug.cgi?id=655517
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-  make
+    meson compile -C build
 }
 
 check() {
-  cd $_basename
-  make check
+    meson test -C build --print-errorlogs
 }
 
 package() {
-  cd $_basename
-  make DESTDIR="${pkgdir}" install
+    DESTDIR="$pkgdir" meson install -C build
 }
