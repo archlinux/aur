@@ -16,10 +16,10 @@ md5sums=('SKIP')
 
 prepare() {
 	if [ ! -z "$_gittag" ] ; then
-		cd "${srcdir}/${_gitname}"
+		cd "${_gitname}"
 		git checkout $_gittag \
 			|| (echo "Couldn't checkout '${_gittag}'"; exit 1)
-		cd ../..
+		cd ..
 	fi
 	mkdir -p build
 }
