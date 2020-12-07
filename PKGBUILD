@@ -1,16 +1,16 @@
 # Maintainer: Booglejr <rooty (a+) kwtechllc (dot) com>
 pkgname=aespresso
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 epoch=0
 pkgdesc="A Gtk3 frontend for archlinux's archlinux-java script."
 arch=('x86_64')
 url="https://github.com/Booglejr/$pkgname/releases"
 license=('custom:BSD')
-depends=('gtk3' 'lxqt-sudo')
+depends=('gtk3' 'lxqt-sudo' 'java-runtime-common')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Booglejr/$pkgname/archive/v${pkgver}.tar.gz")
-md5sums=('1ba647355812a2ca9fdb26aa03d1b18c')
+md5sums=('c8267f1ae4ea11173ba3710a655744bb')
 
 
 build() {
