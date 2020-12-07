@@ -1,7 +1,7 @@
 # Maintainer: Ramadan Ali <rot13ezqa@ezqa.ny>
 pkgname=abcccid
 pkgver=2.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="AB Circle CCID driver for ABC USB CCID smart card readers"
 arch=('x86_64')
 url="https://abcircle.com/en/product/2/CIR115B/sim-sized-contact-smart-card-reader/"
@@ -10,7 +10,7 @@ depends=("pcsclite>=1.8.3" "libusb>=1.0.9")
 makedepends=("perl") # glibc is dependency of base package, flex is in base-devel group 
 provides=("pcsc-ifd-handler")
 conflicts=($pkgname-bin)
-source=("Circle_Linux_Mac_Driver_v${pkgver}.zip::https://abcircle.com/download/10/b278d90be4b77c71b79e9a0c39415b9d3ebd2d242e041a63a378ebe67c68291e/Circle_Linux_Mac_Driver_v2.0.2.zip")
+source=("Circle_Linux_Mac_Driver_v${pkgver}.zip::https://github.com/alicavus/abcccid/releases/download/v${pkgver}/Circle_Linux_Mac_Driver_v${pkgver}.zip")
 sha512sums=("d71838213f731b1845ae5fdb4a150bae1d64f591bb143a6212664c9a4b88823a43ab5c4ae1b821ff3a819c995bf32daa12390af8c9a7a5a4eedbf8faecbedbf9")
 
 prepare() {
