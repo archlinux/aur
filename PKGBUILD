@@ -4,7 +4,7 @@
 _gitname=CuteMarkEd-NG
 pkgname=cutemarked-git
 pkgver=20200625.r910
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt Markdown Editor"
 url="https://github.com/Waqar144/${_gitname}"
 arch=('i686' 'x86_64')
@@ -28,9 +28,9 @@ pkgver() {
 prepare() {
   cd $_gitname
   git submodule init
-  for __submodule in hunspell md4c qmarkdowntextedit
-  do git config submodule.${__submodule}.url "$srcdir"/${_gitname}/3rdparty/${__submodule}
-  done
+  git config submodule.3rdparty/hunspell/hunspell.url "$srcdir"/hunspell
+  git config submodule.3rdparty/md4c.url "${srcdir}/md4c"
+  git config submodule.3rdparty/qmarkdowntextedit.url "${srcdir}/qmarkdowntextedit"
   git submodule update
 }
 
