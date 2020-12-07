@@ -4,7 +4,7 @@ pkgdesc="ROS - common_msgs contains messages that are widely used by other ROS p
 url='https://wiki.ros.org/common_msgs'
 
 pkgname='ros-noetic-common-msgs'
-pkgver='1.12.7'
+pkgver='1.13.0'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -37,7 +37,7 @@ depends=(
 
 _dir="common_msgs-${pkgver}/common_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/common_msgs/archive/${pkgver}.tar.gz")
-sha256sums=('a9d8c7655d426afe8bc2b021e0bc8ce25dae70ca35b985a0ec0b8b5768722bd4')
+sha256sums=('8f3acd0094612172fd922a63788e8ef88e08cc1d50fcbcf2c466dfa8bb9db7e4')
 
 build() {
 	# Use ROS environment variables.
