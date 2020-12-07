@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-trajectory-msgs
 	pkgdesc = ROS - This package defines messages for defining robot trajectories.
-	pkgver = 1.12.7
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://wiki.ros.org/trajectory_msgs
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = ros-noetic-trajectory-msgs
 	depends = ros-noetic-std-msgs
 	depends = ros-noetic-rosbag-migration-rule
 	depends = ros-noetic-geometry-msgs
-	source = ros-noetic-trajectory-msgs-1.12.7.tar.gz::https://github.com/ros/common_msgs/archive/1.12.7.tar.gz
-	sha256sums = a9d8c7655d426afe8bc2b021e0bc8ce25dae70ca35b985a0ec0b8b5768722bd4
+	source = ros-noetic-trajectory-msgs-1.13.0.tar.gz::https://github.com/ros/common_msgs/archive/1.13.0.tar.gz
+	sha256sums = 8f3acd0094612172fd922a63788e8ef88e08cc1d50fcbcf2c466dfa8bb9db7e4
 
 pkgname = ros-noetic-trajectory-msgs
 
