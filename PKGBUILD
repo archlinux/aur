@@ -3,7 +3,7 @@
 
 pkgname=fclones-bin
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Efficient Duplicate File Finder"
 arch=('x86_64')
 url="https://github.com/pkolaczk/fclones"
@@ -15,7 +15,6 @@ sha512sums_x86_64=('fb4bd61b4ac7ce048ea43f64523902557e522b61d3e2f986efba413de5c6
 
 package() {
   install -Dm 755 "usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-  for f in "usr/share/doc/${pkgname%-bin}/*"; do
-    install -Dm 644 $f -t "$pkgdir/usr/share/doc/$pkgname"
-  done
+  install -Dm 644 "usr/share/doc/${pkgname%-bin}/README" -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 "usr/share/doc/${pkgname%-bin}/copyright" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
