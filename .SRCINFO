@@ -1,0 +1,19 @@
+pkgbase = ross-applicationlauncher-git
+	pkgdesc = Application Launcher for the ROSS Shell
+	pkgver = r31.310986c
+	pkgrel = 1
+	url = https://github.com/HawaiinPizza/Rational-Operating-System-Shell/tree/master/ApplicationLauncher
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	optdepends = qt5-x11extras
+	optdepends = libx11
+	provides = ross-applicationlauncher
+	conflicts = ross-applicationlauncher
+	source = ross-applicationlauncher::git+https://github.com/HawaiinPizza/Rational-Operating-System-Shell.git
+	sha256sums = SKIP
+
+pkgname = ross-applicationlauncher-git
+
