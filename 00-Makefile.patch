@@ -9,7 +9,7 @@
  MANDIR?=$(DESTDIR)$(PREFIX)/man
 -SYSCONFDIR?=$(DESTDIR)$(PREFIX)/etc
 -OBJECTS=doas.o env.o compat/execvpe.o compat/reallocarray.o y.tab.o 
-+SYSCONFDIR?=$(DESTDIR)$(PREFIX)/etc
++SYSCONFDIR?=$(DESTDIR)/etc
 +OBJECTS=doas.o env.o compat/execvpe.o compat/reallocarray.o y.tab.o
  OPT?=-O2
  # Can set GLOBAL_PATH here to set PATH for target user.
