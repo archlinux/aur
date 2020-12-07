@@ -5,7 +5,7 @@ pkgbase="foosynth-plugin-${_plug}-git"
 pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
          )
-pkgver=r5.1.gc3f18b1
+pkgver=r6.3.gf2e9c24
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
@@ -27,8 +27,6 @@ pkgver() {
 prepare() {
   cd "${_plug}"
   mkdir -p build
-
-  sed '1i#include <cpuid.h>' -i src/cpuid.cpp
 }
 
 build() {
