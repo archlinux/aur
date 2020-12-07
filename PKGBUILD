@@ -2,7 +2,7 @@
 # Contributor: Tristelune <tristelune@archlinux.info>
 
 pkgname=libupnpp
-pkgver=0.19.4
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="A C++ wrapper for libupnp - used with upmpdcli or upplay"
 url="https://www.lesbonscomptes.com//upmpdcli/libupnpp-refdoc/libupnpp-ctl.html"
@@ -10,7 +10,7 @@ arch=(x86_64 i686 armv6h armv7h aarch64)
 license=(LGPL2.1)
 depends=(libnpupnp expat)
 source=("http://www.lesbonscomptes.com/upmpdcli/downloads/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('29d1d07d44c8f79573e64e093ad8f0f883b11ef9eb3642a67aa703c1dde60576')
+sha256sums=('d4da986aeaa7124a1732ce3383b6ac8f28e20cab10f1916709f39e5499ae9c38')
 
 build(){
   cd "${pkgname}-${pkgver}"
