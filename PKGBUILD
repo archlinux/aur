@@ -2,7 +2,7 @@
 
 pkgname='openwebrx'
 pkgver='0.20.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('i686' 'x86_64')
 url='https://www.openwebrx.de/'
@@ -22,8 +22,8 @@ package() {
     install -Dm 0644 ../sysusers.conf ${pkgdir}/usr/lib/sysusers.d/openwebrx.conf
     cd "$srcdir/$pkgname-$pkgver"
     install -Dm 0755 openwebrx.py ${pkgdir}/usr/bin/openwebrx
-    find owrx -type f -exec install -Dm 0644 "{}" "${pkgdir}/usr/lib/python3.8/{}" \;
-    find csdr -type f -exec install -Dm 0644 "{}" "${pkgdir}/usr/lib/python3.8/{}" \;
+    find owrx -type f -exec install -Dm 0644 "{}" "${pkgdir}/usr/lib/python3.9/{}" \;
+    find csdr -type f -exec install -Dm 0644 "{}" "${pkgdir}/usr/lib/python3.9/{}" \;
     find htdocs -type f -exec install -Dm 0644 "{}" "${pkgdir}/usr/lib/openwebrx/{}" \;
     install -Dm 0644 config_webrx.py ${pkgdir}/etc/openwebrx/config_webrx.py
     install -Dm 0644 systemd/openwebrx.service ${pkgdir}/usr/lib/systemd/system/openwebrx.service
