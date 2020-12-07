@@ -1,6 +1,6 @@
 # Maintainer: Sergey Starovoytov <sergey.starovoytov.94@gmail.com>
 
-pkgname=breath2-kde-theme-git
+pkgname=breath2-git
 _pkgname=breath2
 pkgver=r110.ed26e232
 pkgrel=1
