@@ -2,18 +2,19 @@
 
 pkgname=zettlr
 pkgver=1.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
 license=('GPL' 'custom') # Noted that the icon and name are copyrighted
-depends=(c-ares ffmpeg gtk3 http-parser libevent libxslt minizip nss re2 snappy)
+depends=(electron)
 makedepends=(yarn git gulp)
 optdepends=('pandoc: For exporting to various format'
             'texlive-bin: For Latex support'
             'ttf-lato: Display output in a more comfortable way')
 _commit=93273f39a0a178f82ad3c8ed64d01faf4224aab1 # 1.8.1^0
 _csl_locale_commit=cbb45961b815594f35c36da7e78154feb5647823
+options=(!strip)
 source=(git+https://github.com/Zettlr/Zettlr.git#commit="${_commit}"
         # citation style
         https://github.com/citation-style-language/locales/archive/"${_csl_locale_commit}.zip"
@@ -27,6 +28,7 @@ sha256sums=('SKIP'
 
 prepare() {
     cd "${srcdir}/Zettlr"
+    rm -rf yarn.lock
 
     # pandoc citeproc argument deprecation
     sed 's,--filter pandoc-citeproc,--citeproc,' -i source/main/modules/export/run-pandoc.js
@@ -34,10 +36,9 @@ prepare() {
     # LaTeX Error: Environment CSLReferences undefined.
     sed 's,cslreferences,CSLReferences,' -i source/main/assets/export.tex
 
-    # We don't build electron and friends, and don't depends on postinstall script
-    sed '/^\s*\"electron-notarize.*$/d;/^\s*\"electron-builder.*$/d;/postinstall/d' -i package.json
-
-    sed 's,beta.53,beta.54,' -i package.json
+    # Replace unmaintained module to maintained upstream
+    sed 's|"@marshallofsound/webpack-asset-relocator-loader": "^0.5.0"|"@zeit/webpack-asset-relocator-loader": "^0.8.0"|' -i package.json
+    sed 's|@marshallofsound|@zeit|' -i webpack.rules.js
 
     # Manually add community translation
     cp "${srcdir}/zh-TW.json" source/common/lang/
@@ -51,8 +52,7 @@ prepare() {
 build() {
     cd "${srcdir}/Zettlr"
     local NODE_ENV=''
-    yarn install --pure-lockfile \
-                 --cache-folder "${srcdir}/cache" \
+    yarn install --cache-folder "${srcdir}/cache" \
                  --link-folder "${srcdir}/link" \
                  --ignore-scripts
     yarn reveal:build
@@ -60,7 +60,6 @@ build() {
     rm -rf node_modules/electron
     yarn add -D electron@10.1.5 --cache-folder "${srcdir}/cache" --link-folder "${srcdir}/link"
 
-    cd "${srcdir}/Zettlr"
     node node_modules/.bin/electron-forge package
 
     # Remove fonts
@@ -86,19 +85,17 @@ package() {
     local _destdir=usr/lib/"${pkgname}"
     install -dm755 "${pkgdir}/${_destdir}"
 
-    cd "${srcdir}/Zettlr/out/Zettlr-linux-x64/"
+    cd "${srcdir}/Zettlr"
 
-    # copy the generated electron project
-    cp -r --no-preserve=ownership --preserve=mode ./* "${pkgdir}/${_destdir}/"
+    # Copy the generated electron project
+    cp -r --no-preserve=ownership --preserve=mode ./.webpack "${pkgdir}/${_destdir}/"
+    cp -r --no-preserve=ownership --preserve=mode ./package.json "${pkgdir}/${_destdir}/"
 
-    # symlink to /usr/bin
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -sf "/${_destdir}/Zettlr" "${pkgdir}/usr/bin/zettlr"
-
-#    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<END
+    # Install start script to /usr/bin
+   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<END
 #!/bin/sh
-#exec electron /${_destdir} "\$@"
-#END
+exec electron /${_destdir} "\$@"
+END
 
     # install icons of various sizes to hi-color theme
     for px in 16 24 32 48 64 96 128 256 512; do
