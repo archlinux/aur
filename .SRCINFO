@@ -1,0 +1,16 @@
+pkgbase = python-ycast
+        pkgdesc = A self hosted replacement for the vTuner internet radio service
+        pkgver = 1.1.0
+        pkgrel = 1
+        url = https://github.com/milaq/YCast
+        arch = any
+        license = GPL
+        depends = python
+        depends = python-requests
+        depends = python-flask
+        depends = python-pyaml
+        depends = python-pillow
+        source = YCast-1.1.0.tar.gz::https://github.com/milaq/YCast/archive/1.1.0.tar.gz
+        sha512sums = 905CD727758FB4BCE2538FDECFAC436B97CE4FFA7454B2C5512A83CEBFF4E5F0ED40D5C186C591A2102F6EC05BFC4A80FD84FF6347FD859774EAC227AFC6D514
+
+pkgname = python-ycast
