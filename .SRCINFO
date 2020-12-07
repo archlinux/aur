@@ -1,14 +1,13 @@
 pkgbase = gromacs
 	pkgdesc = A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.
 	pkgver = 2020.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gromacs.org/
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
 	makedepends = libxml2
 	makedepends = hwloc
-	makedepends = gcc9
 	depends = lapack
 	depends = zlib
 	depends = hwloc

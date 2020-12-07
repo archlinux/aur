@@ -3,7 +3,7 @@
 
 pkgname=gromacs
 pkgver=2020.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -14,7 +14,7 @@ optdepends=('cuda: Nvidia GPU support'
             'perl: needed for demux.pl and xplor2gmx.pl'
 	    'opencl-mesa: OpenCL support for AMD GPU'
 	    'opencl-nvidia: OpenCL support for Nvidia GPU')
-makedepends=('cmake' 'libxml2' 'hwloc' 'gcc9')
+makedepends=('cmake' 'libxml2' 'hwloc')
 options=('!libtool')
 source=(http://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
 sha256sums=('5519690321b5500c7951aaf53ff624042c3edd1a5f5d6dd1f2d802a3ecdbf4e6')
@@ -24,9 +24,9 @@ export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #trajectory file format that can be read by
                             #VMD installation (e.g. AMBER's DCD format).
 
-#For cuda8 support gcc8 is required, if you do not need cuda support comment the next two lines
-export CC=gcc-9
-export CXX=g++-9 
+#For cuda support gccXXX is required, if you do not need cuda support comment the next two lines
+#export CC=gcc-XXX
+#export CXX=g++-XXX 
 
 build() {
   mkdir -p ${srcdir}/{single,double}
