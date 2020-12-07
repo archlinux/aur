@@ -5,7 +5,7 @@ pkgname="stm32cubeide"
 pkgver=1.5.0
 _pkgver_ext=1.5.0_8698_20201117_1050
 _pkg_file_name=en.en-st-stm32cubeide_1-5-0_8698_20201117_1050_amd64_sh.zip
-pkgrel=2
+pkgrel=3
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('xdg-user-dirs' 'imagemagick')
@@ -33,7 +33,7 @@ source=("local://${_pkg_file_name}"
 	"https://www.st.com/resource/en/license_agreement/dm00218346.pdf")
 sha256sums=('5efe1aa8cc044aba65a2e231fe17ea698f5ff1492535c4c9296b79d098d01a6d'
 	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
-	'9a1e2ca4879e538caf0d7f6a912546072ffe275e1b74d5cae9ae33795711095b')
+	'SKIP')
 
 prepare(){
 	mkdir -p build

@@ -1,7 +1,7 @@
 pkgbase = stm32cubeide
 	pkgdesc = Integrated Development Environment for STM32
 	pkgver = 1.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.st.com/en/development-tools/stm32cubeide.html
 	arch = x86_64
 	license = Commercial
@@ -20,7 +20,7 @@ pkgbase = stm32cubeide
 	source = https://www.st.com/resource/en/license_agreement/dm00218346.pdf
 	sha256sums = 5efe1aa8cc044aba65a2e231fe17ea698f5ff1492535c4c9296b79d098d01a6d
 	sha256sums = 0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3
-	sha256sums = 9a1e2ca4879e538caf0d7f6a912546072ffe275e1b74d5cae9ae33795711095b
+	sha256sums = SKIP
 
 pkgname = stm32cubeide
 
