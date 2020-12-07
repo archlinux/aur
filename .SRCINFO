@@ -1,6 +1,6 @@
 pkgbase = python-minikerberos
 	pkgdesc = Kerberos manipulation library in pure Python
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://pypi.org/project/minikerberos
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-minikerberos
 	depends = python
 	depends = python-asn1crypto
 	depends = python-asysocks
-	source = https://files.pythonhosted.org/packages/source/m/minikerberos/minikerberos-0.2.4.tar.gz
-	sha256sums = 7865d48446ca664b1b701ba56e4828854f186ebd18e2a23ca1cf510a99aaf4f5
+	source = https://files.pythonhosted.org/packages/source/m/minikerberos/minikerberos-0.2.5.tar.gz
+	sha256sums = fe6d0f3686a51f76073d915b982b3072e3e27c3abe8ebf10b5c22b10e5321e34
 
 pkgname = python-minikerberos
 
