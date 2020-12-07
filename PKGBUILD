@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=menyoki
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Screen{shot,cast} and perform ImageOps on the command line"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('libx11')
 makedepends=('rust')
 optdepends=('slop: area selection support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('f00f5c68e73543b83ff6f51a3a92b5df7078957f1e8a992a5ab8cb50a2638fa8a91af46fd761674d4c8bba76f577efa20d189396c06dbcb1c3a3e03d599143b0')
+sha512sums=('d7b4a6354c3102fc45152844dfdcd97bee98d8195a28388af5d2a5c48083ef1d9262924781efcd6cf4433981b08503ad6308fe96ff845206d96000c958583e77')
 
 build() {
   cd "$pkgname-$pkgver"
