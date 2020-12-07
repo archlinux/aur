@@ -1,5 +1,5 @@
 pkgbase = llvm-minimal-git
-	pkgver = 12.0.0_r369979.3052e474eceb
+	pkgver = 12.0.0_r374074.1c98f984105e
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -11,10 +11,9 @@ pkgbase = llvm-minimal-git
 	makedepends = libedit
 	makedepends = ncurses
 	makedepends = libxml2
-	makedepends = python-sphinx
-	makedepends = python-recommonmark
-	makedepends = swig
 	makedepends = libxcrypt
+	makedepends = python
+	makedepends = python-setuptools
 	options = staticlibs
 	source = llvm-project::git+https://github.com/llvm/llvm-project.git
 	source = llvm-config.h
@@ -25,9 +24,10 @@ pkgbase = llvm-minimal-git
 
 pkgname = llvm-minimal-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies
-	depends = llvm-libs-minimal-git=12.0.0_r369979.3052e474eceb-1
+	depends = llvm-libs-minimal-git=12.0.0_r374074.1c98f984105e-1
 	depends = perl
-	optdepends = python-setuptools: for using lit (LLVM Integrated Tester)
+	optdepends = python: for using lit (LLVM Integrated Tester)
+	optdepends = python-setuptools: for using lit
 	provides = llvm
 	provides = compiler-rt
 	provides = clang

@@ -16,13 +16,13 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=12.0.0_r369979.3052e474eceb
+pkgver=12.0.0_r374074.1c98f984105e
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
-             'python-sphinx' 'python-recommonmark' 'swig' 'libxcrypt')
+             'libxcrypt' 'python' 'python-setuptools')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
                 'llvm-config.h')
 md5sums=('SKIP'
@@ -32,7 +32,6 @@ sha512sums=('SKIP'
 options=('staticlibs')
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
-
             
 pkgver() {
     cd llvm-project/llvm
@@ -70,9 +69,13 @@ build() {
         -D LLVM_INSTALL_UTILS=ON \
         -D LLVM_ENABLE_RTTI=ON \
         -D LLVM_ENABLE_FFI=ON \
-        -D LLVM_BUILD_DOCS=ON \
-        -D LLVM_ENABLE_SPHINX=ON \
-        -D SPHINX_WARNINGS_AS_ERRORS=OFF \
+        -D LLVM_INCLUDE_BENCHMARKS=OFF \
+        -D LLVM_INCLUDE_GO_TESTS=OFF \
+        -D LLVM_INCLUDE_EXAMPLES=OFF \
+        -D LLVM_BUILD_DOCS=OFF \
+        -D LLVM_INCLUDE_DOCS=OFF \
+        -D LLVM_ENABLE_OCAMLDOC=OFF \
+        -D LLVM_ENABLE_SPHINX=OFF \
         -D LLVM_ENABLE_DOXYGEN=OFF \
         -D LLVM_ENABLE_BINDINGS=OFF \
         -D LLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang" \
@@ -92,7 +95,9 @@ package_llvm-minimal-git() {
     depends=(llvm-libs-minimal-git=$pkgver-$pkgrel  'perl')
     provides=('llvm' 'compiler-rt' 'clang')
     conflicts=('llvm' 'compiler-rt' 'clang')
-    optdepends=('python-setuptools: for using lit (LLVM Integrated Tester)')
+    optdepends=('python: for using lit (LLVM Integrated Tester)'
+                          'python-setuptools: for using lit'
+    )
 
     DESTDIR="$pkgdir" ninja -C _build $NINJAFLAGS install
 
@@ -101,10 +106,6 @@ package_llvm-minimal-git() {
     python3 setup.py install --root="$pkgdir" -O1
     popd
 
-    # Remove documentation sources
-    rm -r "$pkgdir"/usr/share/doc/llvm/html/{_sources,.buildinfo}
-
-  
     # The runtime libraries go into a separate package
     mv -f "$pkgdir"/usr/lib/lib{LLVM-*.so,LTO.so.*,Remarks.so.*} "$srcdir"
 
