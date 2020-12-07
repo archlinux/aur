@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=rocm-bandwidth-test
-pkgver=3.9.0
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="Bandwidth test for ROCm"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('hsa-rocr')
 makedepends=('cmake')
 options=(!staticlibs strip)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RadeonOpenCompute/rocm_bandwidth_test/archive/rocm-$pkgver.tar.gz")
-sha256sums=('f366299b48a29b419febb2ba398d1abe4cd01425d33254777e426966b722d3b1')
+sha256sums=('ad1dedad9023ccb050082c866fa5131665d9c3b50de0b78e4618730c29a07773')
 
 build() {
   mkdir -p "$srcdir/build"
