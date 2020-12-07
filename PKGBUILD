@@ -11,7 +11,7 @@ license=("MIT")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=("gtk3" "libxss" "nss" "streamlink")
-makedepends=("git" "nodejs" "yarn")
+makedepends=("git" "nodejs" "yarn" "xorg-server-xvfb")
 options=(!strip)
 source=("${_pkgname}::git+https://github.com/streamlink/${_pkgname}.git")
 sha256sums=("SKIP")
@@ -28,7 +28,7 @@ prepare() {
 
 check() {
 	cd "${srcdir}/${_pkgname}"
-	yarn run test
+	xvfb-run --auto-servernum yarn run test
 }
 
 build() {

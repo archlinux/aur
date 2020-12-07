@@ -9,6 +9,7 @@ pkgbase = streamlink-twitch-gui-git
 	makedepends = git
 	makedepends = nodejs
 	makedepends = yarn
+	makedepends = xorg-server-xvfb
 	depends = gtk3
 	depends = libxss
 	depends = nss
