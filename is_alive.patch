@@ -1,0 +1,10 @@
+--- pychromecast/__init__.py 2020-06-28 00:58:09.000000000 -0700
++++ - 2020-12-07 09:21:51.082051341 -0800
+@@ -443,7 +443,7 @@
+                         operation in seconds (or fractions thereof). Or None
+                         to block forever.
+         """
+-        if not self.socket_client.isAlive():
++        if not self.socket_client.is_alive():
+             self.socket_client.start()
+         self.status_event.wait(timeout=timeout)
