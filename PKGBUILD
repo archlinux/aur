@@ -1,7 +1,7 @@
 # Maintainer: Anton Leontiev <scileont /at/ gmail dot com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gst-rtsp-server
-pkgver=1.18.1
+pkgver=1.18.2
 pkgrel=1
 pkgdesc="RTSP server library based on GStreamer"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -11,7 +11,7 @@ makedepends=('meson' 'gobject-introspection')
 depends=("gst-plugins-base>=$pkgver" "gst-plugins-bad>=$pkgver")
 provides=('libgstrtspserver-1.0.so' 'libgstrtspclientsink.so')
 source=("https://gstreamer.freedesktop.org/src/$pkgname/$pkgname-$pkgver.tar.xz"{,.asc})
-sha256sums=('10a82865c3d199e66731017ca4b120bad071df9889e60cfe4dd6c49d953ef754'
+sha256sums=('973922aba65a1672a131527dee965fb09bab4bb996c351f0ee7f42f0d5b954e2'
             'SKIP')
 validpgpkeys=('D637032E45B8C6585B9456565D2EEE6F6F349D7C')
               # Tim-Philipp Müller <tim@centricular.com>
