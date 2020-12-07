@@ -1,8 +1,8 @@
 # Maintainer: Niklas Krafczyk <krafczyk.n at gmail dot com>
 # Contributor: r7v
 pkgname=klee
-pkgver=2.1
-pkgrel=8
+pkgver=2.2
+pkgrel=9
 epoch=
 pkgdesc="Symbolic virtual machine built on top of the LLVM compiler infrastructure"
 arch=('x86_64')
@@ -31,8 +31,8 @@ backup=()
 options=()
 install=
 changelog=
-#source=("git+https://github.com/klee/klee.git#tag=v2.1"
-source=("git+https://github.com/klee/klee.git#commit=de471397338640df8ff792dab6d04c1a9a798d8c"
+#source=("git+https://github.com/klee/klee.git#tag=v2.2"
+source=("git+https://github.com/klee/klee.git#commit=5719d2803e93252e5d4613f43afc7db0d72332f1"
         "git+https://github.com/google/googletest.git#tag=release-1.10.0") #Building from the repo so it's built with the same compiler as klee is
 noextract=()
 md5sums=('SKIP'
