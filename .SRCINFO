@@ -1,0 +1,36 @@
+pkgbase = sweet-theme-mars-git
+	pkgdesc = Colorful Sweet Mars GTK and KDE theme
+	pkgver = r121.134ff45
+	pkgrel = 1
+	url = https://github.com/EliverLara/sweet
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = git+https://github.com/EliverLara/sweet.git#branch=mars
+	sha256sums = SKIP
+
+pkgname = sweet-gtk-theme-mars-git
+	pkgdesc = Light and dark colorful GTK theme (Sweet Mars)
+	optdepends = candy-icons-git: Icon theme
+	optdepends = sweet-cursor-theme: Cursor theme
+	provides = sweet-gtk-theme-mars
+	conflicts = sweet-theme-mars
+
+pkgname = sweet-kde-theme-mars-git
+	pkgdesc = Dark colorful KDE theme (Sweet Mars)
+	depends = plasma-desktop
+	optdepends = sweet-gtk-theme-mars: GTK theme
+	optdepends = kvantum-theme-sweet-mars: Kvantum theme
+	optdepends = candy-icons-git: Icon theme
+	optdepends = sweet-cursor-theme: Cursor theme
+	provides = sweet-kde-theme-mars
+	conflicts = aurorae-theme-sweet-mars
+	conflicts = color-scheme-sweet-mars
+	conflicts = plasma-theme-sweet-mars
+	conflicts = sweet-mars-kde
+
+pkgname = kvantum-theme-sweet-mars-git
+	pkgdesc = Sweet Mars theme for Kvantum
+	depends = kvantum-qt5
+	provides = kvantum-theme-sweet-mars
+
