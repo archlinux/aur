@@ -1,0 +1,13 @@
+pkgbase = pacfile-bin
+	pkgdesc = Manage your pacman packages declaratively
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/mastertinner/pacfile
+	arch = x86_64
+	arch = i686
+	license = Apache
+	provides = pacfile
+	source = https://raw.githubusercontent.com/mastertinner/pacfile/main/pacfile
+
+pkgname = pacfile-bin
+
