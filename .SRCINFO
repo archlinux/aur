@@ -1,0 +1,16 @@
+pkgbase = mips-linux-egcs-bin
+	pkgdesc = Experimental GNU Compiler System (EGCS MIPS)
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://www.gnu.org/software/gcc/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	options = !strip
+	source = https://www.linux-mips.org/pub/linux/mips/crossdev/i686-linux/mips-linux/egcs-mips-linux-1.1.2-4.i386.rpm
+	sha256sums = 0f258ec59e1ae54cb2493d04f0366f56ae549b014f46e65f57ab2d3b45a55415
+	depends_i686 = glibc
+	depends_x86_64 = lib32-glibc
+
+pkgname = mips-linux-egcs-bin
+
