@@ -13,7 +13,7 @@ pkgbase = hawck-git
 	makedepends = ninja
 	makedepends = git
 	depends = libnotify
-	depends = lua
+	depends = lua53
 	depends = ruby
 	depends = python
 	depends = kbd
@@ -23,7 +23,6 @@ pkgbase = hawck-git
 	optdepends = polkit-gnome
 	source = git+https://github.com/snyball/Hawck.git
 	md5sums = SKIP
-
 
 pkgname = hawck-git
 
