@@ -5,7 +5,8 @@ After=network-online.target
 [Service]
 Type=oneshot
 DynamicUser=yes
-ExecStart=/usr/bin/scrutiny-collector-metrics --config /etc/scrutiny/scrutiny-collector-metrics.yaml
+ConfigurationDirectory=scrutiny-collector-metrics
+ExecStart=/usr/bin/scrutiny-collector-metrics run --config /etc/scrutiny-collector-metrics/scrutiny-collector-metrics.yaml
 
 ProtectKernelTunables=yes
 ProtectKernelModules=yes
@@ -18,7 +19,7 @@ RestrictNamespaces=true
 LockPersonality=true
 MemoryDenyWriteExecute=true
 RestrictRealtime=true
-# These capabilities are necessary for smartctl
+# These capabilities are necessary for running smartctl
 CapabilityBoundingSet=SYS_RAWIO SYS_ADMIN
 AmbientCapabilities=SYS_RAWIO SYS_ADMIN
 

@@ -6,7 +6,10 @@ After=network-online.target
 Type=simple
 User=scrutiny
 Group=scrutiny
-ExecStart=/usr/bin/scrutiny --config /etc/scrutiny/scrutiny.yaml
+WorkingDirectory=~
+LogsDirectory=scrutiny
+StateDirectory=scrutiny
+ExecStart=/usr/bin/scrutiny start --config /etc/scrutiny/scrutiny.yaml
 Restart=always
 RestartSec=10s
 

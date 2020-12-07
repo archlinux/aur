@@ -1,0 +1,5 @@
+d /var/lib/scrutiny 0750
+Z /var/lib/scrutiny - scrutiny scrutiny
+d /var/log/scrutiny 0750 scrutiny scrutiny
+z /etc/scrutiny 0750 root scrutiny
+z /etc/scrutiny/scrutiny.yaml 0640 root scrutiny
