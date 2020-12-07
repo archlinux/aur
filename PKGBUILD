@@ -5,8 +5,8 @@ url='https://wiki.ros.org/roslz4'
 
 pkgname='ros-noetic-roslz4'
 pkgver='1.15.7'
-arch=('any')
-pkgrel=1
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
