@@ -20,10 +20,8 @@ makedepends=('boost' 'git' 'intltool' 'lua' 'mesa' 'meson')
 # which makes building quite inconvenient over using the vendored one.
 provides=('aegisub')
 conflicts=('aegisub' 'aegisub-git')
-source=("$_srcname::git+https://github.com/TypesettingTools/Aegisub.git#branch=meson-vs2019"
-        "fix_audio_cache.patch")
-sha256sums=('SKIP'
-            '3ddbc863fba016c664d8bcec377c567e8641072c7156a69bca87b6536f8a7016')
+source=("$_srcname::git+https://github.com/TypesettingTools/Aegisub.git#branch=meson-vs2019")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_srcname"
@@ -37,7 +35,6 @@ prepare() {
 
   cd "$_srcname"
 
-  patch -p1 < ../fix_audio_cache.patch
 
   arch-meson builddir -Dportaudio=disabled -Dopenal=disabled
 }
