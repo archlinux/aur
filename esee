@@ -1,0 +1,24 @@
+diff --git a/modNeural.cpp.esee b/modNeural.cpp
+index d4135b6..ba73036 100644
+--- a/modNeural.cpp.esee
++++ b/modNeural.cpp
+@@ -8,6 +8,19 @@ Author V.C.Mohan
+ Aug 26, 2017, Aug 20, 2020
+ ********************************************************************************/  
+ 
++#if defined(__unix__)
++static inline void linux_strcpy_s(char *dest, size_t destsz, const char *src){
++    strcpy(dest, src);
++}
++
++static inline void linux_strcat_s(char *dest, size_t destsz, const char *src){
++    strcat(dest, src);
++}
++
++#define strcpy_s linux_strcpy_s
++#define strcat_s linux_strcat_s
++#endif
++
+ 
+ typedef struct {
+ 
