@@ -4,9 +4,9 @@ pkgdesc="ROS - self_test."
 url='https://wiki.ros.org/self_test'
 
 pkgname='ros-noetic-self-test'
-pkgver='1.9.3'
+pkgver='1.10.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -35,7 +35,7 @@ depends=(
 
 _dir="diagnostics-${pkgver}/self_test"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/diagnostics/archive/${pkgver}.tar.gz")
-sha256sums=('3b2d3bb7bb333b8685fa084e086c00a044803dac41ff58351161440931d23550')
+sha256sums=('b0f966c978642938dea3db726752c5339c2819a5b22cc76b3851257d30eaca8d')
 
 build() {
 	# Use ROS environment variables.
