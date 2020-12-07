@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.3.beta2.r0.g020bd59ec2
+pkgver=9.3.beta3.r0.gca088c9c93
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=(ipython palp brial cliquer maxima-ecl gfan sympow nauty python-rpy2 pyt
   python-matplotlib python-scipy python-sympy python-networkx python-pillow python-pplpy python-sphinx
   gap flintqs lcalc lrcalc arb eclib zn_poly gd python-cvxopt pynac linbox m4rie pari-galdata pari-seadata-small planarity rankwidth tachyon
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
-  iml libgiac libhomfly libbraiding symmetrica three.js)
+  iml libgiac libhomfly libbraiding symmetrica threejs-sage)
 optdepends=('cython: to compile cython code' 'python-pkgconfig: to compile cython code'
   'jmol: alternative 3D plot engine' 'sagemath-doc: HTML documentation' 'python-igraph: igraph backend for graph theory'
   'sage-numerical-backends-coin: COIN mixed integer linear programming backend'
@@ -48,7 +48,7 @@ sha256sums=('SKIP'
             '7da0dbcda15a327c21dc33853cb8f98cb86a283139f8735e3b20a71d49458a88'
             'e6ce1829347fa588096cd975c5d607ae8d32d407f0bab2cdadd13e1bfb99494d'
             '34f06f9776f84f6998b1350555316e0ffea76ed16e149916970f19ef750a467f'
-            '58cfc3826d123a6c7293e5db382dc111b9df0ad192dc30e4d1df373d0aff7ec2')
+            '42cf51e79a9bb1407eda21079797de6d5c1109c063e325d1290c8b21d3217a46')
 
 pkgver() {
   cd sage
@@ -57,8 +57,7 @@ pkgver() {
 
 prepare(){
   cd sage
-
-  sed -e '/sage-env-config/d' -i src/setup.py # Don't try to install sage-env
+  sed -e '/sage-env/d' -i src/setup.py # Don't try to install sage-env
 
 # Upstream patches
 # Fixes for singular 4.1.2 https://trac.sagemath.org/ticket/25993
@@ -77,9 +76,6 @@ prepare(){
   patch -p1 -i ../latte-count.patch
 # Fix mathjax path
   sed -e 's|mathjax|mathjax2|g' -i src/sage/env.py
-
-  sed -e 's|sage-python23|python|' -i src/bin/*
-  sed -e 's|$SAGE_PYTHON3|yes|' -i src/bin/sage
 }
 
 build() {
@@ -103,7 +99,6 @@ package_sagemath-git() {
 # Install tests
   cp -r sage/doctest/tests "$pkgdir"/$_pythonpath/sage/doctest
   cp -r sage/tests/books "$pkgdir"/$_pythonpath/sage/tests
-
 # Split jupyter kernel
   rm -r "$pkgdir"/usr/share
 }
@@ -115,9 +110,6 @@ package_sagemath-jupyter-git() {
 
   cd sage/src
 
-  export SAGE_ROOT="$PWD" \
-         SAGE_LOCAL="/usr" \
-         MATHJAX_DIR="/usr/share/mathjax2"
   python -c "from sage.repl.ipython_kernel.install import SageKernelSpec; SageKernelSpec.update(prefix='$pkgdir/usr')"
 # fix symlinks to assets
   _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
