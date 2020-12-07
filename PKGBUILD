@@ -17,6 +17,11 @@ build() {
   cargo build --release --locked
 }
 
+check() {
+  cd "$pkgname-rs-$pkgver/$pkgname-cli"
+  cargo test --release --locked
+}
+
 package() {
   cd "$pkgname-rs-$pkgver"
   install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
