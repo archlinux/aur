@@ -1,0 +1,12 @@
+diff --unified --recursive --text clipper-git/contrib/linux/systemd-service/clipper.service clipper-git/contrib/linux/systemd-service/clipper.service
+--- clipper-git/contrib/linux/systemd-service/clipper.service	2020-12-07 17:47:18.774441389 +0100
++++ clipper-git/contrib/linux/systemd-service/clipper.service	2020-12-07 17:48:16.594441145 +0100
+@@ -3,7 +3,7 @@
+ 
+ [Service]
+ Environment=DISPLAY=:0
+-ExecStart=/usr/local/bin/clipper
++ExecStart=/usr/bin/clipper
+ Restart=always
+ # Restart service after 10 seconds if service crashes
+ RestartSec=10

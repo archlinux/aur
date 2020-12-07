@@ -1,0 +1,18 @@
+pkgbase = clipper-git
+	pkgdesc = Clipboard access for local and remote tmux sessions
+	pkgver = 2.0.0_15_ge6fd460
+	pkgrel = 1
+	url = https://github.com/wincent/clipper
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = xclip: access to X11 clipboard
+	source = clipper-git::git+https://github.com/wincent/clipper.git
+	source = service-path.patch
+	sha256sums = SKIP
+	sha256sums = 2295aa32f28f1aeeec1ddb375fd8bf0e138d58f239bc00634df7d1f71b04ba5e
+
+pkgname = clipper-git
+
