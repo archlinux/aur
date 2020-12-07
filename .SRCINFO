@@ -1,0 +1,15 @@
+pkgbase = kvantum-manjaro-theme-git
+	pkgdesc = Kvantum Manjaro theme based on works of Papirus Development Team and Tsu Jan
+	pkgver = r37.a316110
+	pkgrel = 1
+	url = https://gitlab.manjaro.org/artwork/themes/kvantum-manjaro
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = kvantum-qt5
+	provides = kvantum-manjaro-theme
+	source = git+https://gitlab.manjaro.org/artwork/themes/kvantum-manjaro.git
+	sha256sums = SKIP
+
+pkgname = kvantum-manjaro-theme-git
+
