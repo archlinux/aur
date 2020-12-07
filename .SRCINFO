@@ -13,7 +13,6 @@ pkgbase = deepin-network-utils-git
 	depends = gsettings-qt
 	provides = deepin-network-utils
 	conflicts = deepin-network-utils
-	replaces = deepin-network-utils
 	source = deepin-network-utils-git::git://github.com/linuxdeepin/dde-network-utils.git
 	sha512sums = SKIP
 
