@@ -1,6 +1,4 @@
 # Contributor: Pedro H Lara Campos <root@pedrohlc.com>
-# Maintainer: heavysink <winstonwu91 at gmail>
-
 _pkgname=haxm
 pkgname=haxm-dkms-git
 pkgver=347.a19ddbd
