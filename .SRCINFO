@@ -1,7 +1,7 @@
 pkgbase = php80-rar
 	pkgdesc = PHP PECL extension for reading RAR archives using bundled unRAR library
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pecl.php.net/package/rar
 	arch = i686
 	arch = x86_64

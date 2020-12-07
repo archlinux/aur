@@ -1,10 +1,8 @@
-# Maintainer: tjbp (archlinux@tjbp.net)
-# Contributor: Shalygin Konstantin (kostya@opentech.ru)
+# Maintainer: Timo Sarawinski (timo@it-kraut.net)
 
 pkgname='php80-rar'
-_pkgname='php-rar'
 pkgver='4.2.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='PHP PECL extension for reading RAR archives using bundled unRAR library'
 arch=('i686' 'x86_64')
 url='https://pecl.php.net/package/rar'
