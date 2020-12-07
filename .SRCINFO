@@ -1,0 +1,16 @@
+pkgbase = polygone
+	pkgdesc = Is a utility that can significantly reduce the size of certain postscript graphics files.
+	pkgver = 4
+	pkgrel = 1
+	url = http://pcwww.liv.ac.uk/~itho17/personal/polygone/index.htm
+	arch = x86_64
+	license = custom
+	makedepends = gcc-fortran
+	depends = gcc-libs
+	provides = polygone
+	conflicts = polygone
+	source = http://pcwww.liv.ac.uk/~itho17/personal/polygone/src/polygone4.f90
+	sha256sums = 564b60363ea40cac0f3dd7a693d722617fac8d271e8ff533df052c4f0d8a71ed
+
+pkgname = polygone
+
