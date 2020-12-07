@@ -1,0 +1,23 @@
+pkgbase = appimagetool-continuous
+	pkgdesc = Package desktop applications as AppImages
+	pkgver = r0.aaef827
+	pkgrel = 1
+	url = https://github.com/AppImage/AppImageKit
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = curl
+	makedepends = jq
+	optdepends = appstream: install it if you want to use AppStream metadata
+	provides = appimagetool
+	options = !strip
+	source_x86_64 = appimagetool.appimage::https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
+	sha256sums_x86_64 = SKIP
+	source_i686 = appimagetool.appimage::https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-i686.AppImage
+	sha256sums_i686 = SKIP
+	source_aarch64 = appimagetool.appimage::https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-aarch64.AppImage
+	sha256sums_aarch64 = SKIP
+
+pkgname = appimagetool-continuous
+
