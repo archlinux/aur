@@ -2,7 +2,7 @@
 
 _pkgname=streamlink-twitch-gui
 pkgname="${_pkgname}-git"
-pkgver=2361.a9dbfad0
+pkgver=2452.38dc24d8
 pkgrel=1
 pkgdesc="A multi platform Twitch.tv browser for Streamlink"
 arch=("i686" "x86_64")
