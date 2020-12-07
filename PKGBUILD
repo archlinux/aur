@@ -35,8 +35,8 @@ build() {
 package_mhwd-db-garuda-git() {
   pkgdesc="mhwd-db-garuda(manjaro's mhwd-db backported to archlinux with additional features and limited to only dkms drivers)"
   arch=('any')
-  depends=('mhwd-nvidia' 'mhwd-ati' 'mhwd-amdgpu')
-  depends_x86_64=('mhwd-nvidia' 'mhwd-ati' 'mhwd-amdgpu')
+  depends=('mhwd-nvidia' 'mhwd-ati' 'mhwd-amdgpu' 'mhwd-nvidia-390xx')
+  depends_x86_64=('mhwd-nvidia' 'mhwd-ati' 'mhwd-amdgpu' 'mhwd-nvidia-390xx')
   replaces=("mhwd-db-garuda")
   provides=("mhwd-db" "mhwd-db-garuda")
   conflicts=("mhwd-db" "mhwd-db-garuda")

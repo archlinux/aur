@@ -19,6 +19,7 @@ pkgname = mhwd-db-garuda-git
 	depends = mhwd-nvidia
 	depends = mhwd-ati
 	depends = mhwd-amdgpu
+	depends = mhwd-nvidia-390xx
 	provides = mhwd-db
 	provides = mhwd-db-garuda
 	conflicts = mhwd-db
