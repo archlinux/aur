@@ -1,0 +1,45 @@
+pkgbase = sweet-theme-nova-git
+	pkgdesc = Colorful Sweet GTK and KDE theme
+	pkgver = r157.93b2375
+	pkgrel = 1
+	url = https://github.com/EliverLara/sweet
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = git+https://github.com/EliverLara/sweet.git#branch=nova
+	sha256sums = SKIP
+
+pkgname = sweet-gtk-theme-nova-git
+	pkgdesc = Light and dark colorful GTK theme (Sweet Nova)
+	optdepends = candy-icons-git: Icon theme
+	optdepends = sweet-cursor-theme: Cursor theme
+	provides = sweet-gtk-theme-nova
+	conflicts = sweet-theme
+	conflicts = sweet-theme-dark
+	conflicts = sweet-theme-git
+
+pkgname = sweet-kde-theme-nova-git
+	pkgdesc = Dark colorful KDE theme (Sweet Nova)
+	optdepends = sweet-gtk-theme-nova: GTK theme
+	optdepends = plasma5-theme-sweet: KDE Plasma 5 theme
+	optdepends = kvantum-theme-sweet-nova: Kvantum theme
+	optdepends = candy-icons-git: Icon theme
+	optdepends = sweet-cursor-theme: Cursor theme
+	provides = sweet-kde-theme-nova
+	conflicts = aurorae-theme-sweet
+	conflicts = color-scheme-sweet
+	conflicts = konsole-colorscheme-sweet
+	conflicts = sddm-theme-sweet
+	conflicts = sweet-kde
+
+pkgname = kvantum-theme-sweet-nova-git
+	pkgdesc = Sweet Nova theme for Kvantum
+	depends = kvantum-qt5
+	provides = kvantum-theme-sweet-nova
+	conflicts = kvantum-theme-sweet
+
+pkgname = sweet-cursor-theme-git
+	pkgdesc = Sweet cursor theme
+	provides = sweet-cursor-theme
+	conflicts = xcursor-sweet
+
