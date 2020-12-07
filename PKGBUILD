@@ -3,7 +3,7 @@
 pkgbase="scrutiny"
 pkgname=("scrutiny" "scrutiny-collector")
 pkgver=0.3.5
-pkgrel=5
+pkgrel=7
 pkgdesc="Hard Drive S.M.A.R.T Monitoring, Historical Trends & Real World Failure Thresholds"
 url="https://github.com/AnalogJ/scrutiny"
 license=("MIT")
@@ -18,6 +18,7 @@ source=(
     "scrutiny.tmpfiles"
     "scrutiny-collector-metrics.service"
     "scrutiny-collector-metrics.timer"
+    "scrutiny-collector-metrics.env"
 )
 sha512sums=(
     "815842576ca2126c9c53ece283a9c9c30eba14a0d3727331b1634bcdebaeb2a086a9bfe8a68ec2f8c82549bb673a147b4760118437b982489d4a63ee73fdd29c"
@@ -25,8 +26,9 @@ sha512sums=(
     "b82b91733e01cd9384c460aa3b3519f9c99c3f854198fe8f80968c0b607bd272a71ecc4841b2538f0ad13ef0594d5c4cbceb147e116ea141ad360fc4d1b6ef02"
     "b98bedd6ec3d56d052bd2cb8c410f17da9a8254b64e3a759e45b3ea0d2a95ff65763274b489d93faba77f88420e362189b71bd970acf90061cb8c28a0f063fe1"
     "55e620185fcb0bf8544ad70fd400b0c597cd657f67eb6a83cb4a1d414524c9996cc4efc9118628a851a86b3f909ed5ce2ae7d8fda04242cf2d00ce4995b375e9"
-    "4bf9ec4248140f745e5c645cb2c814eab7d5e820bde52662e4f87d30e2622b0b088a2cb5e73110cb0f099e5d9208d5f102d2f55273d1e98d1ac7b336e014a936"
+    "d3ec0ab99298663163409333fbf67c9fa8c03d43d4a37d1339ab942315bdf2b02d0fed5b89b02cbab4cb2ad2af1c426136f068d52e30133ee359708c87798017"
     "2108d3d619e3e6188162beb05648d436a73a3c63e526222f6037a701e8368c45395b60e2668fe8625b713d2a6a30812013c14dcb3c5de321f4d2bc153f01c5cc"
+    "8c76f64bba51b5e357982508ef54b59178ddbb1ec491f9fc8256e224ed044033aaec92f2b5e6a8d9ff37137ea422a1995ece6ddae4a46df5255938865ac48152"
 )
 
 build() {
@@ -46,14 +48,18 @@ build() {
 
 package_scrutiny-collector() {
     depends+=("smartmontools")
-    backup=("etc/scrutiny-collector-metrics/scrutiny-collector-metrics.yaml")
+    backup=(
+        "etc/conf.d/scrutiny-collector-metrics"
+        "etc/scrutiny-collector-metrics/scrutiny-collector-metrics.yaml"
+    )
 
     cd "scrutiny-${pkgver}"
 
     install -Dm755 scrutiny-collector-selftest "${pkgdir}/usr/bin/scrutiny-collector-selftest"
     install -Dm755 scrutiny-collector-metrics "${pkgdir}/usr/bin/scrutiny-collector-metrics"
-    install -dm750 "${pkgdir}/etc/scrutiny-collector-metrics"
-    install -Dm640 example.collector.yaml "${pkgdir}/etc/scrutiny-collector-metrics/scrutiny-collector-metrics.yaml"
+    install -Dm644 "${srcdir}/scrutiny-collector-metrics.env" "${pkgdir}/etc/conf.d/scrutiny-collector-metrics"
+    install -dm755 "${pkgdir}/etc/scrutiny-collector-metrics"
+    install -Dm644 example.collector.yaml "${pkgdir}/etc/scrutiny-collector-metrics/scrutiny-collector-metrics.yaml"
 
     install -Dm644 "${srcdir}/scrutiny-collector-metrics.service" "${pkgdir}/usr/lib/systemd/system/scrutiny-collector-metrics.service"
     install -Dm644 "${srcdir}/scrutiny-collector-metrics.timer" "${pkgdir}/usr/lib/systemd/system/scrutiny-collector-metrics.timer"

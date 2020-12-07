@@ -4,24 +4,32 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-DynamicUser=yes
-ConfigurationDirectory=scrutiny-collector-metrics
-ExecStart=/usr/bin/scrutiny-collector-metrics run --config /etc/scrutiny-collector-metrics/scrutiny-collector-metrics.yaml
+User=root
+Group=root
+LogsDirectory=scrutiny-collector-metrics
+EnvironmentFile=-/etc/conf.d/scrutiny-collector-metrics
+ExecStart=/usr/bin/scrutiny-collector-metrics run --config /etc/scrutiny-collector-metrics/scrutiny-collector-metrics.yaml --log-file /var/log/scrutiny-collector-metrics/scrutiny-collector-metrics.log
 
+NoNewPrivileges=true
+SystemCallArchitectures=native
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
 ProtectKernelTunables=yes
 ProtectKernelModules=yes
 ProtectKernelLogs=yes
 ProtectControlGroups=yes
 ProtectHostname=yes
-ProtectClock=yes
 RestrictAddressFamilies=AF_INET AF_INET6
-RestrictNamespaces=true
-LockPersonality=true
-MemoryDenyWriteExecute=true
-RestrictRealtime=true
-# These capabilities are necessary for running smartctl
-CapabilityBoundingSet=SYS_RAWIO SYS_ADMIN
-AmbientCapabilities=SYS_RAWIO SYS_ADMIN
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+RemoveIPC=yes
+
+# smartctl apparently doesn't function properly with this protection in place
+#ProtectClock=yes
 
 [Install]
 WantedBy=multi-user.target
