@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=atmi
-pkgver=3.9.0
+pkgver=3.10.0
 pkgrel=1
 pkgdesc='Task graph framework for heterogeneous CPU-GPU systems.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('hsa-rocr' 'comgr')
 makedepends=('cmake' 'rsync')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RadeonOpenCompute/atmi/archive/rocm-$pkgver.tar.gz")
-sha256sums=('0a305e85bab210dd9a0410aa01d46227e00b59141e4675c50d731ad1232ab828')
+sha256sums=('387e87c622ec334d3ba7a2f4f015ea9a219712722f4c56c1ef572203d0d072ea')
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
 build() {
