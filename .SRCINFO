@@ -9,6 +9,7 @@ pkgbase = wtftw
 	makedepends = rust
 	depends = xorg-xmessage
 	depends = libxinerama
+	depends = gcc-libs
 	source = wtftw-1.2.tar.gz::https://github.com/orhun/wtftw/archive/1.2.1.tar.gz
 	md5sums = fc937342074634cf348a7a1a6aa85bdc
 
