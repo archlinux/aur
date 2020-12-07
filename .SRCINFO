@@ -1,0 +1,15 @@
+pkgbase = mhwd-nvidia-390xx
+	pkgdesc = mhwd-nvidia-390xx pci id
+	pkgver = 390.138
+	pkgrel = 1
+	url = https://garudalinux.org/
+	arch = any
+	license = GPL2
+	makedepends = nvidia-390xx-dkms
+	makedepends = nvidia-390xx-utils
+	provides = mhwd-nvidia-390xx
+	source = mhwd-nvidia
+	sha256sums = 11176f1c070bbdbfaa01a3743ec065fe71ff867b9f72f1dce0de0339b5873bb5
+
+pkgname = mhwd-nvidia-390xx
+
