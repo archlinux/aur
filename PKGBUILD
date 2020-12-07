@@ -1,6 +1,6 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=auto-cpufreq
-pkgver=1.3.4
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Automatic CPU speed & power optimizer"
 arch=('any')
