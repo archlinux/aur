@@ -1,0 +1,15 @@
+pkgbase = plasma5-theme-sweet-git
+	pkgdesc = Dark and modern Sweet theme for Plasma based on Helium
+	pkgver = r15.5791401
+	pkgrel = 1
+	url = https://github.com/EliverLara/sweet-kde
+	arch = any
+	license = custom: CC-BY-SA-4.0
+	depends = plasma-desktop
+	provides = plasma5-theme-sweet
+	conflicts = plasma-theme-sweet
+	source = git+https://github.com/EliverLara/sweet-kde.git
+	sha256sums = SKIP
+
+pkgname = plasma5-theme-sweet-git
+
