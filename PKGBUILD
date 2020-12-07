@@ -1,4 +1,6 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Joe Davison <joe@warhaggis.com>
 
 pkgname=lgogdownloader-headless-git
 pkgver=3.7.r13.g5c64fc3
@@ -10,7 +12,7 @@ license=('custom:WTFPL')
 depends=(boost-libs jsoncpp tinyxml2 rhash htmlcxx curl)
 makedepends=(git help2man cmake boost)
 provides=('lgogdownloader' 'lgogdownloader-git')
-conflicts=(lgogdownloader)
+conflicts=('lgogdownloader' 'lgogdownloader-git' 'lgogdownloader-headless')
 source=("git+https://github.com/Sude-/lgogdownloader.git")
 sha256sums=('SKIP')
 

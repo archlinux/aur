@@ -20,6 +20,8 @@ pkgbase = lgogdownloader-headless-git
 	provides = lgogdownloader
 	provides = lgogdownloader-git
 	conflicts = lgogdownloader
+	conflicts = lgogdownloader-git
+	conflicts = lgogdownloader-headless
 	source = git+https://github.com/Sude-/lgogdownloader.git
 	sha256sums = SKIP
 
