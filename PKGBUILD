@@ -11,7 +11,7 @@
 
 pkgname=lib32-mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=21.0.0_devel.131029.fe3b5241a48
+pkgver=21.0.0_devel.132039.6df572532dc
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -135,7 +135,8 @@ build () {
         -D shared-glapi=enabled \
         -D valgrind=disabled \
         -D tools=[] \
-        -D zstd=enabled
+        -D zstd=enabled \
+        -D microsoft-clc=disabled
 
     meson configure _build
     
