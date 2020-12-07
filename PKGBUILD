@@ -1,6 +1,6 @@
 # Maintainer: Tomasz Gruszka <tompear79@gmail.com>
 pkgname=php73-xdebug
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="PHP debugging extension"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=('Xdebug')
 depends=("php73")
 source=("https://xdebug.org/files/xdebug-${pkgver}.tgz"
   "xdebug.ini")
-sha256sums=('845007e82c1d4e088770d1d87f5832aa3a767cb5a3664fc1615db62cecc3ca62'
+sha256sums=('0b95317153a2254f3da1fc9010fdffc40c9eec232be3ede088ec4c9bd94049b5'
   '7c66883dc2ade69069ef84e30188b25630748aa9c8b0dd123727c00505421205')
 backup=("etc/php73/conf.d/xdebug.ini")
 
