@@ -2,7 +2,7 @@
 
 _name=Av1an
 pkgname=python-av1an
-pkgver=4.2
+pkgver=4.3
 pkgrel=1
 pkgdesc='A cross-platform all-in-one tool for streamlining AV1 encoding'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=('svt-av1: SVT-AV1 encoder support'
             'vapoursynth-plugin-lsmashsource'
             )
 source=("av1an-${pkgver}.tar.gz"::"https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('b3bdd7bfd09973a30950dad1c56ca500d533e792c4343d524f8c7b8594cbcf1f')
+sha256sums=('9db669831a6a0995867d692ccdb3cbeb0090422ca5e3b9d9b0409baa4d061b5f')
 
 
 package() {
