@@ -1,7 +1,7 @@
 # Maintainer: Andreas Bolka <a AT bolka DOT at>
 
 pkgname=visidata-git
-pkgver=1.5.2.g32771e0
+pkgver=2.1.g9c83fe4a
 pkgrel=1
 pkgdesc='A console spreadsheet tool for discovering and arranging data'
 arch=('any')
@@ -9,10 +9,25 @@ url='http://visidata.org/'
 license=('GPLv3')
 depends=('python')
 makedepends=('git' 'python-setuptools')
-optdepends=('python-dateutil: for converting string column to datetime'
-            'python-openpyxl: for opening .xlsx files'
-            'python-h5py: for opening .hdf5 files'
-            'python-google-api-python-client: for opening Google sheets')
+optdepends=('python-dnslib: pcap support'
+            'python-dpkt: pcap support'  # AUR
+            'python-fonttools: ttf/otf support'
+            'python-h5py: hdf5 support'
+            'python-lxml: html/xml support'
+            'python-mapbox-vector-tile: mbtiles support'  # AUR
+            'python-namestand: graphviz support'  # AUR
+            'python-openpyxl: xlsx support'
+            'python-pandas: dta (Stata) support'
+            'python-pdfminer: pdf support'
+            'python-psycopg2: postgres support'
+            'python-pyaml: yaml/yml support'
+            'python-pypng: png support'
+            'python-pyshp: shapefiles support'  # AUR
+            'python-requests: http support'
+            'python-tabulate: tabulate saver support'
+            'python-vobject: vcf support'
+            'python-wcwidth: tabulate saver with unicode support'
+            'python-xlrd: xls support')
 provides=('visidata')
 conflicts=('visidata')
 source=("$pkgname::git+https://github.com/saulpw/visidata")
