@@ -101,6 +101,8 @@ prepare() {
       -e 's|\(roslyn_binary_path":\).*$|\1 "/opt/omnisharp-roslyn/OmniSharp.exe",|' \
       -e 's|\(mono_binary_path":\).*$|\1 "/usr/bin/mono",|' \
       -i "${srcdir}"/YouCompleteMe/third_party/ycmd/ycmd/default_settings.json
+  sed -e "s|\(ycm_clangd_binary_path',\).*\$|\1 '/usr/bin/clangd' )|" \
+      -i "${srcdir}"/YouCompleteMe/plugin/youcompleteme.vim
 }
 
 build() {
