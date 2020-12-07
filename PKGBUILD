@@ -1,5 +1,4 @@
-# Maintainer: linuxer <https://linuxer.gr> 
-# 			      <https://gitlab.com/linuxer.gr>
+# Maintainer: linuxer <linuxer@artixlinux.org>
 # Maintainer: Justin Vreeland <vreeland.justin@gmail.com>
 # Contributor: Antoine Lubineau <antoine@lubignon.info>
 # Contributor: Charles Pigott <charlespigott@googlemail.com>
@@ -7,13 +6,12 @@
 
 pkgname=debhelpergit
 aliasname=debhelper
-pkgver=13.2.1
+pkgver=13.3
 pkgrel=1
 pkgdesc="A collection of programs that can be used in a debian/rules file to automate common tasks"
 arch=('any')
 url="https://salsa.debian.org/debian/debhelper.git/"
 license=('GPL2' 'GPL3')
-provides=('debhelper')
 depends=('binutils' 'dpkg>=1.16.2' 'file>=3.23' 'html2text' 'man-db>=2.5.1' 'perl>=5.6.0' 'po-debconf')
 makedepends=('po4a>=0.24' 'man-db>=2.5.1' 'file>=3.23' 'git' 'perl-pod-parser>=1.63')
 optdepends=('dh-make')
