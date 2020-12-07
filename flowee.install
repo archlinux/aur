@@ -26,7 +26,7 @@ _mkuser() {
   getent passwd $_bc_user &>/dev/null || {
     echo -n "Creating flowee user... "
     grep -E "^$_bc_group:" /etc/group >/dev/null || groupadd $_bc_group
-    useradd -m -d /etc/flowee -g $_bc_group -s /usr/bin/nologin $_bc_user 2>/dev/null
+    useradd -r -m -d /etc/flowee -g $_bc_group -s /usr/bin/nologin $_bc_user 2>/dev/null
     echo "done"
   }
 }
