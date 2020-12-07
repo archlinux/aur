@@ -10,8 +10,10 @@ license=(LGPL)
 depends=(gtk3 pcre2 gnutls fribidi systemd-libs)
 makedepends=(gobject-introspection vala git gtk-doc gperf meson)
 _commit=62c4908953e3fea8e0771fa82212462157d46d4f # tags/0.62.1^0
-source=("git+https://gitlab.gnome.org/GNOME/vte.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("git+https://gitlab.gnome.org/GNOME/vte.git#commit=$_commit"
+  fix-exit-regression.patch)
+sha256sums=('SKIP'
+  '582edbac0c92cb023a4c0a8f70cb74c85606c139ab8c8f83f6093a21e3033a5c')
 
 depends+=(vte-common)
 provides=("vte3=$pkgver" libvte-2.91.so)
@@ -23,6 +25,7 @@ pkgver() {
 
 prepare() {
   cd vte
+  patch -p1 -i "$srcdir/fix-exit-regression.patch"
 }
 
 build() {

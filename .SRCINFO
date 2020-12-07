@@ -21,7 +21,9 @@ pkgbase = vte3-nohang
 	provides = libvte-2.91.so
 	conflicts = vte3
 	source = git+https://gitlab.gnome.org/GNOME/vte.git#commit=62c4908953e3fea8e0771fa82212462157d46d4f
+	source = fix-exit-regression.patch
 	sha256sums = SKIP
+	sha256sums = 582edbac0c92cb023a4c0a8f70cb74c85606c139ab8c8f83f6093a21e3033a5c
 
 pkgname = vte3-nohang
 

@@ -1,0 +1,46 @@
+From 21514e6d4f38cdf4d5ce9186c2dcc8e6bb63ce15 Mon Sep 17 00:00:00 2001
+From: Felipe Contreras <felipe.contreras@gmail.com>
+Date: Sun, 6 Dec 2020 04:01:03 -0600
+Subject: [PATCH] Fix exit regression
+
+Any time you start a job in the background vte gets confused and waits
+several seconds for nothing to happen before exiting.
+
+This regression was thanks to commit 7888602c
+(lib: Rework child exit and EOF handling, 2019-11-17).
+
+It can be triggered by simply doing:
+
+  sleep infinity &
+  exit
+
+The maintainers of vte clearly have no intention fixing the issue that
+was reported more than one year ago.
+
+  https://gitlab.gnome.org/GNOME/vte/-/issues/204
+
+With this patch we can return to the behavior of 0.59, where the
+terminal exits immediately.
+
+Signed-off-by: Felipe Contreras <felipe.contreras@gmail.com>
+---
+ src/vte.cc | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/vte.cc b/src/vte.cc
+index 2614e5b4..ea80d1ee 100644
+--- a/src/vte.cc
++++ b/src/vte.cc
+@@ -3130,6 +3130,9 @@ Terminal::child_watch_done(pid_t pid,
+ 
+         m_pty_pid = -1;
+ 
++        if (pty())
++                unset_pty();
++
+         /* If we still have a PTY, or data to process, defer emitting the signals
+          * until we have EOF on the PTY, so that we can process all pending data.
+          */
+-- 
+2.29.2
+
