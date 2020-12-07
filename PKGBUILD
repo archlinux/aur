@@ -7,6 +7,10 @@ arch=('any')
 url="https://github.com/AdnanHodzic/auto-cpufreq"
 license=('LGPL3')
 depends=('python-distro' 'python-psutil' 'python-click')
+optdepends=(
+	'cpufreqctl: CPU Power Manager'
+	'gnome-shell-extension-cpufreq: CPU Power Manager for GNOME Shell'
+)
 makedepends=('python-setuptools')
 provides=("$pkgname")
 conflicts=("$pkgname")
