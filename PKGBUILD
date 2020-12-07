@@ -4,7 +4,7 @@
 pkgbase=pulseaudio-hsphfpd
 pkgname=(pulseaudio-hsphfpd libpulse-hsphfpd alsa-card-profiles-hsphfpd pulseaudio-{zeroconf,lirc,jack,bluetooth,equalizer,rtp}-hsphfpd)
 pkgdesc="A fork of pulseaudio providing superior bluetooth headset functionality"
-pkgver=14.0+116+gd2ea10877
+pkgver=14.0+137+gd3802d928
 pkgrel=1
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
@@ -14,8 +14,9 @@ makedepends=(libasyncns libcap attr libxtst libsm libsndfile rtkit libsoxr
              lirc openssl fftw orc gtk3 webrtc-audio-processing check git meson
              xmltoman gst-plugins-base-libs libopenaptx)
 _commit=d1e0594e939e3309435c966d994b0207b10f5175  # tags/v14.0^0
-source=("git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#commit=$_commit"
+        "pa_hsphfpd::git+https://gitlab.freedesktop.org/kapiwko/pulseaudio.git#branch=hsphfpd")
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd pulseaudio
@@ -27,11 +28,9 @@ prepare() {
 
   # Freeze version before patching
   ./git-version-gen doesnt-exist >.tarball-version
-
-  git fetch "https://gitlab.freedesktop.org/pali/pulseaudio.git" "hsphfpd"
-  git checkout -B "pali/hsphfpd" FETCH_HEAD
-  git checkout master
-  git merge --ff -m "Merge branch 'pali/hsphfpd' into master" "pali/hsphfpd"
+ 
+  # Merge from pali
+  git pull --strategy=recursive --no-edit ../pa_hsphfpd
 }
 
 build() {
