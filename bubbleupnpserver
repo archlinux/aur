@@ -1,0 +1,41 @@
+# Defaults for bubbleupnpserver initscript
+# sourced by /etc/init/bubbleupnpserver.conf
+
+#
+# This is a POSIX shell fragment
+#
+
+
+#
+# User under which to run BubbleUPnP Server
+#
+# It is OK to run BubbleUPnP Server with an unpriviledged user 
+# as long as you do not use http or https ports < 1024
+#
+# if not running as root, for auto-update to work, you will have
+# to make the install dir (/usr/share/bubbleupnpserver) and its files writable
+# by the user defined here
+
+USER="root"
+
+
+#
+# DATA dir is where all data files aer stored:
+#    configuration, logs, image cache, OpenHome Playlists
+#
+
+if [ "${USER}" = "root" ]; then
+     DATADIR=/root/.bubbleupnpserver
+else 
+     DATADIR="/home/${USER}/.bubbleupnpserver"
+fi 
+
+
+#
+# HTTP and HTTPS port used by BubbleUPnP Server
+# NOTE you need to run the server as root user if using ports < 1024 
+#
+
+HTTP_PORT=58050
+HTTPS_PORT=58051
+
