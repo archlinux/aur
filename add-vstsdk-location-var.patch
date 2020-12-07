@@ -1,18 +1,6 @@
-diff -aur --no-dereference '--exclude=.git' radium-6.0.99.old/Makefile.Qt radium-6.0.99.new/Makefile.Qt
---- radium-6.0.99.old/Makefile.Qt	2020-09-01 14:37:08.000000000 +0100
-+++ radium-6.0.99.new/Makefile.Qt	2020-09-01 20:10:33.357697286 +0100
-@@ -306,7 +306,7 @@
- 
- FLAGOPTS = $(DEFINES) -DGUIISQT -DFULL_VERSION=$(FULL_VERSION) -DIS_LITTLE_ENDIAN=1 -DUSE_OPENGL=1 $(VISUAL) $(REQTYPE_TYPE) $(MENU_TYPE)
- 
--COMMONOPT = -c `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_70_0 -I${HOME}/boost_1_67_0 -I${HOME}/boost_1_63_0 -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/vstsdk2.4/ -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-pragmas -fno-strict-aliasing -Wmissing-field-initializers -Wnull-dereference 
-+COMMONOPT = -c `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_70_0 -I${HOME}/boost_1_67_0 -I${HOME}/boost_1_63_0 -I${RADIUM_VST2SDK_PATH} -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-pragmas -fno-strict-aliasing -Wmissing-field-initializers -Wnull-dereference 
- #-fdelete-null-pointer-checks 
- # -Werror
- 
-diff -aur --no-dereference '--exclude=.git' radium-6.0.99.old/check_dependencies.sh radium-6.0.99.new/check_dependencies.sh
---- radium-6.0.99.old/check_dependencies.sh	2020-09-01 14:37:08.000000000 +0100
-+++ radium-6.0.99.new/check_dependencies.sh	2020-09-01 20:12:11.634639063 +0100
+diff '--color=always' -aur --no-dereference '--exclude=.git' radium-6.5.84.old/check_dependencies.sh radium-6.5.84.new/check_dependencies.sh
+--- radium-6.5.84.old/check_dependencies.sh	2020-12-06 19:02:42.000000000 +0000
++++ radium-6.5.84.new/check_dependencies.sh	2020-12-07 15:42:25.481575479 +0000
 @@ -226,13 +226,6 @@
      exit 5
  fi
@@ -27,9 +15,21 @@ diff -aur --no-dereference '--exclude=.git' radium-6.0.99.old/check_dependencies
  if [[ $4 == "test_build" ]] ; then
      if [ `uname` == "Linux" ] ; then
          if [ ! -f bin/packages/deletemetorebuild ] ; then
-diff -aur --no-dereference '--exclude=.git' radium-6.0.99.old/pluginhost/Builds/Linux/Makefile radium-6.0.99.new/pluginhost/Builds/Linux/Makefile
---- radium-6.0.99.old/pluginhost/Builds/Linux/Makefile	2020-09-01 14:37:08.000000000 +0100
-+++ radium-6.0.99.new/pluginhost/Builds/Linux/Makefile	2020-09-01 20:18:12.189005049 +0100
+diff '--color=always' -aur --no-dereference '--exclude=.git' radium-6.5.84.old/Makefile.Qt radium-6.5.84.new/Makefile.Qt
+--- radium-6.5.84.old/Makefile.Qt	2020-12-06 19:02:42.000000000 +0000
++++ radium-6.5.84.new/Makefile.Qt	2020-12-07 15:44:32.972013226 +0000
+@@ -306,7 +306,7 @@
+ 
+ FLAGOPTS = $(DEFINES) -DGUIISQT -DFULL_VERSION=$(FULL_VERSION) -DIS_LITTLE_ENDIAN=1 -DUSE_OPENGL=1 $(VISUAL) $(REQTYPE_TYPE) $(MENU_TYPE)
+ 
+-COMMONOPT = -c `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_70_0 -I${HOME}/boost_1_67_0 -I${HOME}/boost_1_63_0 -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/vstsdk2.4/ -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-pragmas -fno-strict-aliasing -Wmissing-field-initializers -Wnull-dereference
++COMMONOPT = -c `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_70_0 -I${HOME}/boost_1_67_0 -I${HOME}/boost_1_63_0 -I${RADIUM_VST2SDK_PATH} -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-pragmas -fno-strict-aliasing -Wmissing-field-initializers -Wnull-dereference
+ #-fdelete-null-pointer-checks 
+ # -Werror
+ 
+diff '--color=always' -aur --no-dereference '--exclude=.git' radium-6.5.84.old/pluginhost/Builds/Linux/Makefile radium-6.5.84.new/pluginhost/Builds/Linux/Makefile
+--- radium-6.5.84.old/pluginhost/Builds/Linux/Makefile	2020-12-06 19:02:42.000000000 +0000
++++ radium-6.5.84.new/pluginhost/Builds/Linux/Makefile	2020-12-07 15:42:25.481575479 +0000
 @@ -8,7 +8,7 @@
    CONFIG=Debug
  endif
