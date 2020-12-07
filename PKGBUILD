@@ -11,7 +11,7 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 install="$pkgname.install"
 source=( "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('fcffad89b9a4a8adcfef128d46a833f1')
+sha256sums=('846d0ec46f82d1545aac63807c22086dbd3956c25e5398e39f709ccfc8c1f327')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
