@@ -1,6 +1,6 @@
 pkgbase = p3wm
 	pkgdesc = Three-way merge .pacnew files
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/5long/p3wm
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = p3wm
 	optdepends = kdiff3: default resolve tool
 	optdepends = meld: default resolve tool
 	optdepends = vim: default resolve tool
-	source = https://github.com/5long/p3wm/archive/v0.6.1.tar.gz
-	sha256sums = 0e025bbd501122725eb5809e1574fc703ad7086b65dcf1b47d4f35f7de4fd2cd
+	source = https://github.com/5long/p3wm/archive/v0.6.2.tar.gz
+	sha256sums = f7f1067d10660b82dadd883aab09fab36e1cc53f28e2249d02884e96670f7188
 
 pkgname = p3wm
 
