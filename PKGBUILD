@@ -8,7 +8,8 @@ pkgdesc="Time management TUI"
 arch=('x86_64')
 url="https://github.com/aryakaul/rusty-krab-manager"
 license=('custom:ETHICAL')
-makedepends=('rust' 'alsa-lib')
+depends=('alsa-lib' 'gcc-libs')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('c7af5435075ce9f848908a952eb22bb5aeb5b3c011d90d1af2cd55d9f4f03f11d32e601f0c96e5cdd2dac3ef0a43682f04c9849d62a2c2a1734a4090e85ab925')
 
