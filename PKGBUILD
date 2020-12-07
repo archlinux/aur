@@ -1,7 +1,7 @@
 # Maintainer: Thibault Boyeux <thibault.boyeux@gmail.com>
 
 pkgname=python-ycast
-_pkgname=ycast
+_pkgname=YCast
 pkgver=1.1.0
 pkgrel=1
 pkgdesc="A self hosted replacement for the vTuner internet radio service"
