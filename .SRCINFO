@@ -17,8 +17,8 @@ pkgbase = element-desktop-git
 	depends = electron
 	provides = element-desktop
 	backup = etc/element/config.json
-	source = element-web::git://github.com/vector-im/element-web#tag=v1.7.15-rc.1
-	source = element-desktop::git://github.com/vector-im/element-desktop.git#tag=v1.7.15-rc.1
+	source = element-web::git://github.com/vector-im/element-web#tag=v1.7.15
+	source = element-desktop::git://github.com/vector-im/element-desktop.git#tag=v1.7.15
 	source = element-desktop.desktop
 	source = element-desktop.sh
 	source = element-web-reskindex.patch
