@@ -3,7 +3,7 @@
 if [ $# -eq 0 ]; then
 
   # Colour stdin
-  perl -0pe '
+  exec perl -pe '
 
     s/^(.?Warning:.*)$/\e[30;43m$1\e[0m/mg;
     s/^(.?Error:(?! The behavior up to this point is).*|\*\*\*.*Error.*)$/\e[97;41m$1\e[0m/mg;

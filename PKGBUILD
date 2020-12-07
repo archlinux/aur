@@ -2,7 +2,7 @@
 
 pkgname=tla-tools
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for the TLA+2 language (SANY, TLC, PlusCal translator and TLATeX)"
 arch=('any')
 url="http://research.microsoft.com/en-us/um/people/lamport/tla/tools.html"
@@ -29,7 +29,7 @@ sha256sums=('34ad47e58c85ec2b73f60ea4a8faaa7312003c921d69b7b67b9b34bbcbb09c6b'
             '1ed9e18cf3036f71ffb5f66ba53d4b13a46535ec6687185dd2b2f25a3aa2c051'
             '8b87025166b15e93fd90803ba5165e505a4ee5e67d8f5e462276badd2443a16c'
             '1a0dcaebefe29e330aaf6ac42da41cd8ad5059d5f10411abf2063d2ef68c87af'
-            'a3e62459666f7c126bd47b746980f09769f1c905655b0948998287ec5077bd1f'
+            '789cd76bddc8e957278a95ddfe7bdf3ebc22f7cb161b0c6bf1a644d525dc3431'
             '3ae8122f331b3aa9cd1952571d4bbc58d98246ec2e6f58bdfa9ce973fa7afc87'
             'fedb2f21d93526495ca4b8b6b10a6f37d6d4099d06a9203426b7c5f7c6996419'
             '450b00da072989f41f8cec7e6fdf535d8acdc31472d9372071a1ce769b860073'
