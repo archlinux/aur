@@ -1,14 +1,14 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='tspreed'
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Terminal RSVP speed reader with Spritz-like functionality'
 arch=('any')
 url='https://github.com/n-ivkovic/tspreed'
 license=('GPL3')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('029163f13caf482edd13d19c9893c2e55e30d3fa308d15112325541fe7f831ff')
+sha256sums=('a192e9b32b91c20a904914c07b171c60957da1a7674a3710975fed8593ec2dc8')
 
 package() {
   cd "${pkgname}-${pkgver}"
