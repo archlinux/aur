@@ -1,7 +1,7 @@
 pkgbase = python-generic
 	pkgdesc = Library for Generic programming, also known as Multiple dispatch
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gaphor/generic
 	arch = any
 	license = BSD

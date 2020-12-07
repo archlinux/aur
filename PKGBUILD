@@ -3,7 +3,7 @@
 _name=generic
 pkgname=python-${_name}
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for Generic programming, also known as Multiple dispatch"
 arch=('any')
 url="https://github.com/gaphor/generic"
