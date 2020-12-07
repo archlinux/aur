@@ -1,9 +1,13 @@
 pkgbase = ros-noetic-octomap-server
 	pkgdesc = ROS - This library loads a 3D map (as Octree-based OctoMap) and distributes it to other nodes in a compact binary format
 	pkgver = 0.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/octomap_server
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
