@@ -3,8 +3,8 @@
 # Contributor: Vincent Bernardoff <vb@luminar.eu.org>
 
 pkgname=clingo
-pkgver=5.4.0
-pkgrel=2
+pkgver=5.4.1
+pkgrel=1
 pkgdesc='Grounding tools for (disjunctive) logic programs'
 arch=('i686' 'x86_64' 'pentium4')
 url='https://potassco.org/'
@@ -12,17 +12,11 @@ license=('MIT')
 depends=('lua' 'python')
 makedepends=('clang' 'cmake' 'git' 'ninja' 're2c')
 conflicts=('clasp')
-source=("git+https://github.com/potassco/clingo#tag=v${pkgver}"
-        "python38-fix.patch")
-sha256sums=('SKIP'
-            '782d9fa710e59cba36bc3bfb922d52de0469cd3d0c5c591308f8e459139bd72f')
+source=("git+https://github.com/potassco/clingo#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 prepare() {
   sed '/#include <xlocale.h>/d' -i "${srcdir}"/clingo/clasp/libpotassco/src/string_convert.cpp
-
-  cd "${srcdir}/${pkgname}"
-  # Upstream patch
-  patch -Np1 -i "${srcdir}/python38-fix.patch"
 }
 
 build() {
