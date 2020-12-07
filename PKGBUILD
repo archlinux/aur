@@ -2,8 +2,8 @@
 # Contributor: Sabart Otto <seberm at gmail dot com>
 
 pkgname=adminer
-pkgver=4.7.7
-pkgrel=3
+pkgver=4.7.8
+pkgrel=1
 pkgdesc="A full-featured MySQL management tool written in PHP."
 arch=('any')
 license=('Apache' 'GPL')
@@ -16,7 +16,7 @@ source=("${pkgname}.install"
         "https://github.com/vrana/adminer/releases/download/v${pkgver}/adminer-${pkgver}.php")
 sha256sums=('a9b786e220c0deabcb96849ffa511f1ef0b130836f978a8504e1ffbc9c723e51'
             '176b392620e8d972188685e0e202cba853a2ff5e3d0c90fef130ef1c8c2491c2'
-            '566152a2d86186dcfb28856b4ed0dfdb60e355d93ab693f7931201f75868fff0')
+            'eadca9f2194702a4c0bc74ad02846bf88fdf521128c205ac0ec2c345489b1384')
 
 package() {
     cd "$srcdir"
