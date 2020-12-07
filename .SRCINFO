@@ -1,7 +1,7 @@
 pkgbase = ssss
 	pkgdesc = Simple command-line implementation of Shamir's Secret Sharing Scheme
-	pkgver = 0.5.6
-	pkgrel = 2
+	pkgver = 0.5.7
+	pkgrel = 1
 	url = https://github.com/MrJoy/ssss
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ssss
 	makedepends = git
 	makedepends = xmltoman
 	depends = gmp
-	source = git+https://github.com/MrJoy/ssss#tag=84b540782a22d7c6bcf240b34d838e0af846c62d?signed
+	source = git+https://github.com/MrJoy/ssss#tag=59091974830377a78b9a5577f2594f64a75f3c1c?signed
 	validpgpkeys = 6DD601691023247FB4FE63A3498FCFAD9FE6855B
 	sha256sums = SKIP
 
