@@ -1,6 +1,6 @@
---- k40_whisperer.py	2020-07-05 17:55:14.289666498 +0100
-+++ k40_whisperer.py.patched	2020-07-05 17:55:31.979666539 +0100
-@@ -510,21 +510,21 @@
+--- k40_whisperer.py.orig	2020-12-07 22:39:20.757106315 +0000
++++ k40_whisperer.py	2020-12-07 22:40:13.300634034 +0000
+@@ -521,21 +521,21 @@
          self.Stop_Button       = Button(self.master,text="Pause/Stop",      command=self.Stop)
  
          try:
