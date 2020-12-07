@@ -1,7 +1,7 @@
 # Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
 pkgname=freetube-bin
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="An open source desktop YouTube player built with privacy in mind."
 arch=('x86_64')
@@ -12,11 +12,12 @@ options=("!strip" "staticlibs")
 source=(
     "freetube-bin.desktop"
     "freetube-bin-icon.png"
-    "$pkgname-$pkgver-$pkgrel.deb.zip"::"$url/releases/download/v$pkgver-beta/$file.zip"
+    "$pkgname-$pkgver-$pkgrel.deb"::"$url/releases/download/v$pkgver-beta/$file"
+    #"$pkgname-$pkgver-$pkgrel.deb.zip"::"$url/releases/download/v$pkgver-beta/$file.zip"
     )
 
 prepare() {
-    ar -x $file
+    #ar -x $file
     bsdtar -x -f data.tar.xz opt/FreeTube
 }
 
@@ -32,4 +33,4 @@ package() {
 
 md5sums=('e6ae90f67b51efc28cbc249aefc7fc28'
          '226826376032a3253ebba9f1ed2e58fd'
-         'c5fc8917b05330b6e5a705dd12634853')
+         'b7baad3c610655c9b07a1a5727a8bcc1')
