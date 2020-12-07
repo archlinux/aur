@@ -52,9 +52,14 @@ package() {
 		"${builddir}/LICENSE.txt" \
 		"${builddir}/credits.html"
 
+	# copy appstream metainfo
+	install -Dm644 \
+		-t "${pkgdir}/usr/share/metainfo/" \
+		"${builddir}/${_pkgname}.appdata.xml"
+
 	# copy application content and remove unneeded files and dirs
 	cp -a "${builddir}/." "${pkgdir}/opt/${_pkgname}/"
-	rm -r "${pkgdir}/opt/${_pkgname}/"{{add,remove}-menuitem.sh,LICENSE.txt,credits.html,icons/}
+	rm -r "${pkgdir}/opt/${_pkgname}/"{{add,remove}-menuitem.sh,LICENSE.txt,credits.html,"${_pkgname}.appdata.xml",icons/}
 
 	# create custom start script and disable version check
 	cat > "${pkgdir}/usr/bin/${_pkgname}" <<-EOF
