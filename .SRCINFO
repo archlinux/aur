@@ -1,7 +1,7 @@
 pkgbase = helmenv-bin
 	pkgdesc = Helm version manager inspired by tfenv
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/little-angry-clouds/kubernetes-binaries-managers
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = helmenv-bin
 	provides = helm
 	conflicts = helm
 	source = helmenv-bin-0.2.5.tar.gz::https://github.com/little-angry-clouds/kubernetes-binaries-managers/releases/download/0.2.5/helmenv-linux-amd64.tar.gz
-	sha256sums = 820510e6c01cccf2e50ec82280dd14d2e4b29e75002dc590a1ef0ef78a3c5a20
+	sha256sums = 22bdaa219aa479fa73b72b441e2e227b31f482225d1eaea6488c66948c8479dc
 
 pkgname = helmenv-bin
 

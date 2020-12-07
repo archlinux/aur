@@ -3,7 +3,7 @@
 pkgname=helmenv-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Helm version manager inspired by tfenv'
 arch=('x86_64')
 _goos='linux'
@@ -13,7 +13,7 @@ license=('GPL3')
 provides=("$_pkgname" "helm")
 conflicts=("helm")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/little-angry-clouds/kubernetes-binaries-managers/releases/download/$pkgver/$_pkgname-$_goos-$_goarch.tar.gz")
-sha256sums=(820510e6c01cccf2e50ec82280dd14d2e4b29e75002dc590a1ef0ef78a3c5a20)
+sha256sums=(22bdaa219aa479fa73b72b441e2e227b31f482225d1eaea6488c66948c8479dc)
 
 package() {
 	install -Dm 755 $_pkgname-$_goos-$_goarch "$pkgdir/usr/bin/$_pkgname"
