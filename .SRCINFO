@@ -1,7 +1,7 @@
 pkgbase = openvsp
 	pkgdesc = OpenVSP allows the user to create a 3D model of an aircraft defined by common engineering parameters.
 	pkgver = 3.22.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.openvsp.org
 	arch = i686
 	arch = x86_64
