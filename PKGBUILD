@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=rocm-validation-suite
-pkgver=3.9.0
-pkgrel=2
+pkgver=3.10.0
+pkgrel=1
 pkgdesc="Tool for detecting and troubleshooting common problems affecting AMD
 GPUs"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake')
 options=(!staticlibs strip)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ROCm-Developer-Tools/ROCmValidationSuite/archive/rocm-$pkgver.tar.gz"
         "action.patch")
-sha256sums=('17662028a4485b97e3ccaad5e94d20aaa2c3e9e3f741c7ebbf0f8b4cdebcc555'
+sha256sums=('9f9a530f7850770663e0b0ec0c786367f2e22500a472ac6652c4fd9fb4df4f64'
             '8edac06b0658c77f91ce77bbfbe539c4f001b27ab205aabcad91cbecf19bd4d0')
 
 prepare() {
