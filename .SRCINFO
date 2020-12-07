@@ -1,5 +1,5 @@
 pkgbase = xorg-server-rootless-nosystemd-minimal
-	pkgver = 1.20.9
+	pkgver = 1.20.10
 	pkgrel = 1
 	url = http://xorg.freedesktop.org
 	arch = x86_64
@@ -34,11 +34,7 @@ pkgbase = xorg-server-rootless-nosystemd-minimal
 	makedepends = meson
 	optdepends = wayland-protocols: xwayland support
 	optdepends = egl-wayland: xwayland support
-	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.20.9.tar.bz2
-	source = xvfb-run
-	source = xvfb-run.1
-	sha512sums = SKIP
-	sha512sums = SKIP
+	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.20.10.tar.bz2
 	sha512sums = SKIP
 
 pkgname = xorg-server-rootless-nosystemd-minimal

@@ -11,12 +11,10 @@ pkgname=(
 	'xorg-server-common-rootless-nosystemd-minimal'
 	'xorg-server-devel-rootless-nosystemd-minimal')
 
-pkgver=1.20.9
+pkgver=1.20.10
 pkgrel=1
 url="http://xorg.freedesktop.org"
-source=("https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2"
-        xvfb-run # with updates from FC master
-        xvfb-run.1)
+source=("https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2")
 
 makedepends=(
 	'xorgproto'
@@ -57,9 +55,9 @@ build() {
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
   # With them, module fail to load with undefined symbol.
   # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
-  export CFLAGS=${CFLAGS/-fno-plt}
-  export CXXFLAGS=${CXXFLAGS/-fno-plt}
-  export LDFLAGS=${LDFLAGS/,-z,now}
+#  export CFLAGS=${CFLAGS/-fno-plt}
+#  export CXXFLAGS=${CXXFLAGS/-fno-plt}
+#  export LDFLAGS=${LDFLAGS/,-z,now}
 
 
   arch-meson xorg-server-$pkgver build \
@@ -92,6 +90,25 @@ build() {
     -D xvfb=false \
     -D xwin=false \
     -D xres=false \
+    -D xdm-auth-1=false \
+    -D secure-rpc=false \
+    -D dtrace=false \
+    -D listen_tcp=false \
+    -D dpms=false \
+    -D xf86bigfont=false \
+    -D xselinux=false \
+    -D dga=false \
+    -D linux_acpi=false \
+    -D agp=false \
+    -D dri1=false \
+    -D dri2=false \
+    -D xpbproxy=false \
+    -D errorlogs=false \
+    -D stdsplit=false \
+    -D b_pgo=off \
+    -D optimization=s \
+    -D libunwind=false \
+    -D debug=false
     -D libunwind=false \
     -D debug=false
      
@@ -99,6 +116,8 @@ build() {
 # mitshm needed with nvidia blob/amdgpu/mesa
 # xv needed with nvidia blob/amdgpu/mesa
 # glamor needed for xwayland support
+# b_lto needs to be set to false or build fails
+# b_pgo needs to be set to off or build fails
 
   # Print config
   meson configure build
@@ -249,6 +268,4 @@ groups=('xorg')
 
 license=('custom')
 
-sha512sums=('SKIP'
-            'SKIP'
-            'SKIP')
+sha512sums=('SKIP')
