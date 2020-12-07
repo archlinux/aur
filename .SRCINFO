@@ -14,12 +14,10 @@ pkgbase = clamav-unofficial-sigs
 	source = clamav-unofficial-sigs-7.0.1.tar.gz::https://github.com/extremeshok/clamav-unofficial-sigs/archive/7.0.1.tar.gz
 	source = clamav-unofficial-sigs.logrotate
 	source = clamav-unofficial-sigs.tmpfiles
-	source = clamav-unofficial-sigs.8
 	source = os.conf
 	sha256sums = 20e1bd6da863513ec1dc42c3f498ca1dfe1c1845110442c2e4595df6ab8341ed
 	sha256sums = 0564ecac9ea02376b627fed158c9ea899c58b528d276d6d962f9e642e060239e
 	sha256sums = d5441953dbfafb14764ca30b75ad1ae48dbe8a9cace6d3f72ecb9fbe82aa36ca
-	sha256sums = bc5409c3d7006207bf83b7b30cb4c9fcd2aacb68c6cfbf3c5063bd265f47fcb3
 	sha256sums = 434000ac8572890913775451e678ec6b23cb6570828aec8ab4c690eb3f603bfb
 
 pkgname = clamav-unofficial-sigs
