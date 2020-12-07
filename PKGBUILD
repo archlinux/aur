@@ -1,7 +1,7 @@
 # Contributor: Bug <bug2000@gmail.com>
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=xpra-svn
-pkgver=r26625
+pkgver=r28093
 pkgrel=1
 pkgdesc="multi-platform screen and application forwarding system screen for X11"
 arch=('x86_64')
@@ -35,8 +35,9 @@ backup=('etc/xpra/xpra.conf' 'etc/xpra/xorg.conf'
         'etc/xpra/conf.d/55_server_x11.conf'
         'etc/xpra/conf.d/60_server.conf'
         'etc/xpra/conf.d/65_proxy.conf'
+        'etc/default/xpra'
         'etc/pam.d/xpra')
-source=("xpra::svn+https://xpra.org/svn/Xpra/trunk/src")
+source=("xpra::svn+https://xpra.org/svn/Xpra/trunk/src/")
 md5sums=('SKIP')
 
 pkgver() {
