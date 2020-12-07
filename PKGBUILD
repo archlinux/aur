@@ -1,4 +1,5 @@
-# Maintainer: Shaoyu Tseng<zandimna@autistici.org>
+# Maintainer: Martin Dünkelmann<nc-duenkekl3@netcologne.de>
+# Contributor: Shaoyu Tseng<zandimna@autistici.org>
 # Contributor: Daniel Egeberg <daniel.egeberg@gmail.com
 # Contributor: Sławomir Kowalski <suawekk+aur@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
@@ -7,19 +8,71 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki-git
-pkgver=r1940.9396d74
+pkgver=r5491.c505894b8
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
 license=('AGPL3')
 arch=('any')
 provides=('anki')
-conflicts=('anki' 'anki20')
-depends=('python-pyqt5' 'python-beautifulsoup4' 'python-httplib2'
-    'python-pyaudio' 'python-requests' 'python-send2trash' 'qt5-webengine'
-    'python-pyqtwebengine')
-optdepends=('mplayer: sound playing')
-source=("${pkgname}::git+https://github.com/dae/anki.git")
+conflicts=('anki' 'anki20' 'anki-official-binary-bundle')
+depends=(
+    # anki and aqt
+    'python-beautifulsoup4'
+    'python-requests'
+    'python-wheel'
+
+    # anki
+    'python-pysocks' # requests[socks]
+    'python-decorator'
+    'python-protobuf'
+    'python-orjson'
+    'python-distro'
+
+    # aqt
+    'python-send2trash'
+    'python-markdown'
+    'python-jsonschema'
+    'python-pyaudio'
+    'python-pyqtwebengine'
+    'python-flask'
+    'python-flask-cors'
+    'python-waitress'
+    'python-pyqt5'
+)
+makedepends=(
+    'git'
+    'rsync'
+
+    'bazel'
+    'clang'
+
+    'maturin'
+    'rust'
+
+    'python-pip'
+    'python-mypy-protobuf'
+    'npm'
+    'typescript'
+)
+optdepends=(
+    'lame: record sound'
+    'mpv: play sound. prefered over mplayer'
+    'mplayer: play sound'
+)
+source=(
+    $pkgname::git+https://github.com/dae/anki.git
+
+    #ankitects-anki-core-i18n-master.tar.gz::https://github.com/ankitects/anki-core-i18n/tarball/master
+    #ankitects-anki-desktop-ftl-master.tar.gz::https://github.com/ankitects/anki-desktop-ftl/tarball/master
+    #ankitects-anki-desktop-i18n-master.tar.gz::https://github.com/ankitects/anki-desktop-i18n/tarball/master
+
+    #0001-Move-aqt_data-to-sys.prefix-share.patch
+    #0002-Remove-bad-build-steps-from-makefiles.patch
+    #0003-Compile-.py-s-before-building-wheel.patch
+    0004-Disable-auto-updates.patch
+    #0005-Make-pyenv-target-just-create-venv.patch
+)
 sha512sums=('SKIP')
 
 pkgver() {
@@ -27,23 +80,43 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-    cd "$srcdir/$pkgname"
+prepare() {
+    cd "$pkgname"
+    #patch -p1 <"$srcdir"/0001-Move-aqt_data-to-sys.prefix-share.patch
+    #patch -p1 <"$srcdir"/0002-Remove-bad-build-steps-from-makefiles.patch
+    #patch -p1 <"$srcdir"/0003-Compile-.py-s-before-building-wheel.patch
+    patch -p1 <"$srcdir"/0004-Disable-auto-updates.patch
+    #patch -p1 <"$srcdir"/0005-Make-pyenv-target-just-create-venv.patch
 
-    msg2 "Building UI"
-    ./tools/build_ui.sh
+    # Put translations in place.
+    #ln -sf "$srcdir"/ankitects-anki-core-i18n-*/ rslib/ftl/repo
+    #ln -sf "$srcdir"/ankitects-anki-desktop-ftl-*/ qt/ftl/repo
+    #ln -sf "$srcdir"/ankitects-anki-desktop-i18n-*/ qt/po/repo
+}
+
+build() {
+    cd "$pkgname"
+    # Built into the shared libraries so that the Python component can check
+    # that it has the same value.
+    #echo arch-linux-$pkgver-$pkgrel > meta/buildhash
+
+    # Installs development modules in venv, which is required by scripts used
+    # by various make targets.  The dependencies between targets are completely broken.
+    #make develop
+
+    #make build
+
+    export CC=/usr/bin/clang
+    export CXX=/usr/bin/clang++
+    bazel build -c opt //pylib/anki:wheel
+    bazel build -c opt //qt/aqt:wheel
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$pkgname"
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps dist/*.whl
 
-    mkdir -p "$pkgdir"/usr/share/anki
-    cp -av anki aqt web "$pkgdir"/usr/share/anki/
-    sed -e 's:@PREFIX@:/usr/:' tools/runanki.system.in > tools/runanki.system
-    install -m 0755 -D tools/runanki.system $pkgdir/usr/bin/anki
-	install -m 0644 -D -t $pkgdir/usr/share/pixmaps anki.xpm anki.png
-	install -m 0644 -D -t $pkgdir/usr/share/applications anki.desktop
-	install -m 0644 -D -t $pkgdir/usr/share/man/man1 anki.1
-	install -m 0644 -D -t $pkgdir/usr/share/doc/anki README.contributing README.development README.md LICENSE LICENSE.logo
-	echo "Install complete."
+    install -Dm755 qt/runanki "$pkgdir"/usr/bin/anki
+    install -Dm644 qt/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
+    install -Dm644 qt/anki.png "$pkgdir"/usr/share/pixmaps/anki.png
 }
