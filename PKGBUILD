@@ -12,7 +12,7 @@ depends=('libxcb')
 makedepends=('git' 'pod2man')
 provides=('lemonbar')
 conflicts=('lemonbar-xft-git' 'lemonbar-ucs4-git' 'lemonbar-sm-git')
-source=("$_pkgname::git+${url}")
+source=("$_pkgname::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {

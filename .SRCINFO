@@ -13,7 +13,7 @@ pkgbase = lemonbar-git
 	conflicts = lemonbar-xft-git
 	conflicts = lemonbar-ucs4-git
 	conflicts = lemonbar-sm-git
-	source = lemonbar::git+https://github.com/LemonBoy/bar
+	source = lemonbar::git+https://github.com/LemonBoy/bar.git
 	sha256sums = SKIP
 
 pkgname = lemonbar-git
