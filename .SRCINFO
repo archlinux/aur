@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-combined-robot-hw
 	pkgdesc = ROS - Combined Robot HW class.
-	pkgver = 0.18.2
-	pkgrel = 2
+	pkgver = 0.18.3
+	pkgrel = 1
 	url = http://wiki.ros.org/combined_robot_hw
 	arch = i686
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = ros-melodic-combined-robot-hw
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-hardware-interface
 	depends = ros-melodic-pluginlib
-	source = ros-melodic-combined-robot-hw-0.18.2-.tar.gz::https://github.com/ros-gbp/ros_control-release/archive/release/melodic/combined_robot_hw/0.18.2.tar.gz
-	sha256sums = 72b7b493a0bad6a4e6d8560b8a6a54ee6fab71796d61a46765abf43cf358ef31
+	source = ros-melodic-combined-robot-hw-0.18.3.tar.gz::https://github.com/ros-controls/ros_control/archive/0.18.3.tar.gz
+	sha256sums = d3dfc0a3ee8ef33b7e3302f14a8ec4a16c1e5b7baf9010ba20f0d204fc0aa5d8
 
 pkgname = ros-melodic-combined-robot-hw
 
