@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-chomp-motion-planner
 	pkgdesc = ROS - chomp motion planner
-	pkgver = 1.0.6
-	pkgrel = 2
+	pkgver = 1.0.7
+	pkgrel = 1
 	url = https://wiki.ros.org/chomp_motion_planner
 	arch = any
 	license = BSD
@@ -9,8 +9,8 @@ pkgbase = ros-melodic-chomp-motion-planner
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-moveit-core
 	depends = ros-melodic-moveit-core
-	source = ros-melodic-chomp-motion-planner-1.0.6.tar.gz::https://github.com/ros-planning/moveit/archive/1.0.6.tar.gz
-	sha256sums = a633830d2ed7e23089f9642d99298cb6eb96148c695c0b4890f2792eac4904b4
+	source = ros-melodic-chomp-motion-planner-1.0.7.tar.gz::https://github.com/ros-planning/moveit/archive/1.0.7.tar.gz
+	sha256sums = 388a15209a0191bcdc8a1a9e6b3eaca4717aaa3a6fb9f541ad31dff7c3d6d07a
 
 pkgname = ros-melodic-chomp-motion-planner
 
