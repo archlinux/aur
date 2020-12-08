@@ -3,9 +3,4 @@
 !PKGBUILD
 !.SRCINFO
 !dkms.conf
-!phc-intel.system-sleep
-!phc-intel.sleep
-!phc-intel.sh
-!phc-intel.install
-!phc-intel.default
-!phc-intel-pack-rev31.tar.bz2
+!phc-intel.*
