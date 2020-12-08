@@ -3,7 +3,7 @@
 pkgname=llvm-toolchain-nightly-bin
 pkgver=12
 pkgrel=1
-pkgdesc="Precompiled binaries of llvm-toolchain (clang+lld+lldb+...) nightly builds"
+pkgdesc="NOT READY YET. Precompiled binaries of llvm-toolchain (clang+lld+lldb+...) nightly builds. Status: Needs manual linking of libedit.so.2 to libedit.so and libz3.so.4 to libz.so, can't fetch llvm version."
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -23,6 +23,7 @@ package() {
     --reject="*.tar.xz" --reject="*.dsc" \
     --reject="*ocaml*" \
     https://apt.llvm.org/unstable/pool/main/l/llvm-toolchain-snapshot/
+
   for f in *.deb; do
     ar xv $f
     tar xf data.tar.xz -C "${pkgdir}"
@@ -31,7 +32,12 @@ package() {
 
   cd "$pkgdir/usr/bin"
   for f in *-$pkgver; do
-    echo "Link" $f "to" ${f::-3}
     ln -s $f ${f::-3}
+  done
+
+  cd "$pkgdir/usr/lib/x86_64-linux-gnu"
+  for f in *; do
+    # TODO: a better way?
+    ln -s $(readlink -f $f) ../$f
   done
 }
