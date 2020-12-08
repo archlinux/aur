@@ -5,7 +5,7 @@
 
 pkgname=pacemaker-git
 _pkgname=pacemaker
-pkgver=2.0.4.r0.g2deceaa3a
+pkgver=2.0.5.r0.gba59be712
 pkgrel=1
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
@@ -19,9 +19,8 @@ optdepends=('pssh: for use with some tools'
             'pdsh: for use with some tools'
             'crmsh-git: for use with crm_report'
             'booth-git: for geo-clustering')
-provides=(${_pkgname})
-conflicts=(${_pkgname})
-install=${_pkgname}.install
+provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
+conflicts=("${_pkgname}")
 source=("$pkgname::git+https://github.com/ClusterLabs/${_pkgname}.git#branch=2.0"
         'crm_report.in')
 md5sums=('SKIP'
@@ -78,6 +77,11 @@ package() {
 		d /var/lib/pacemaker/cib      0770 hacluster haclient
 		d /var/lib/pacemaker/cores    0770 hacluster haclient
 		d /var/lib/pacemaker/pengine  0770 hacluster haclient
+	EOF
+  install -Dm644 /dev/null "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  cat>"$pkgdir/usr/lib/sysusers.d/$pkgname.conf"<<-EOF
+    g haclient 189
+    u hacluster 189:189 "cluster user" / /sbin/nologin
 	EOF
   rm -fr "$pkgdir/var"
   chmod a+x "$pkgdir/usr/share/pacemaker/tests/cts/CTSlab.py"
