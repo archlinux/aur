@@ -1,6 +1,6 @@
 pkgbase = pagraphcontrol-git
 	pkgdesc = PulseAudio Graph Control
-	pkgver = 1.0.12.r0.gc45149f
+	pkgver = 1.0.13.r0.g3b415b3
 	pkgrel = 1
 	url = https://github.com/futpib/pagraphcontrol
 	arch = x86_64
