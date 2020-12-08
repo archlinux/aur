@@ -4,6 +4,7 @@ After=network.service redis.service
 Requires=redis.service
 
 [Service]
+User=nitter
 ExecStart=/usr/bin/nitter
 
 [Install]

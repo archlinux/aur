@@ -2,7 +2,7 @@
 _pkgname=nitter
 pkgname=nitter-git
 pkgver=latest
-pkgrel=8
+pkgrel=9
 pkgdesc="Alternative Twitter front-end"
 url="https://github.com/zedeus/nitter"
 depends=('redis')
@@ -23,7 +23,7 @@ sha256sums=('SKIP'
             '827a028b78761593ac1f835eff87c8495c84689893ad6ff71f2edb4b484239d4'
             '832d2963389270332e50da95082d43babbe40124dc2d7177bb19eefac9586891'
             '79469c5cfeacf38c7469a2240ba5c19670ddaf757e6d1b5286206a18a0718487'
-            '47a5d6098a6750916110dd1172f2e5c327d863e44053a8d97883d61f78f5ef00'
+            '560d98833c56979cb6b5d187a827788dbbdff95871f957225604b58b15c1c219'
             '57eb0d0aa47416006f107df078221e64023881123e8ec961266029db9228af9d')
 
 pkgver() {
@@ -70,4 +70,6 @@ package() {
     ln -sv "/etc/nitter.conf" "$main_dir/nitter.conf"
     # Public Folder
     cp -r --no-preserve=all public -t "$main_dir"
+    # System User
+    echo 'u nitter - "Nitter" /usr/share/nitter' | install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 }
