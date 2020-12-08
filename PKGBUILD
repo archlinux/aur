@@ -1,7 +1,7 @@
 # Maintainer: Leonid Koftun <leonid.koftun@gmail.com>
 
 pkgname=kafkactl
-pkgver=1.13.3
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Command Line Tool for managing Apache Kafka'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 makedepends=('go')
 depends=('glibc')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('6ed690f8330cb0277342330d31ca9cdbeb9e0ed3e11b352d9a03924b42fd09fc')
+sha256sums=('34841249e5434871444671adb4ab98668b1d3ad2305422175b3a029dd3f1e12d')
 
 build() {
   cd $pkgname-$pkgver
