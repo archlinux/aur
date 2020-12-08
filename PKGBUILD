@@ -5,7 +5,7 @@
 
 pkgname=libdart
 pkgver=6.9.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
 url="https://dartsim.github.io"
