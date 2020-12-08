@@ -9,7 +9,7 @@ url="https://gitlab.com/nbebaw/softphone"
 license=('MIT')
 makedepends=('git'
 	     'wget')
-source=("git+https://gitlab.com/nbebaw/softphone.git")
+source=("https://gitlab.com/nbebaw/softphone.git")
 md5sums=('SKIP')
 
 package() {

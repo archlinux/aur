@@ -7,7 +7,7 @@ pkgbase = softphone-sipgate
 	license = MIT
 	makedepends = git
 	makedepends = wget
-	source = git+https://gitlab.com/nbebaw/softphone.git
+	source = https://gitlab.com/nbebaw/softphone.git
 	md5sums = SKIP
 
 pkgname = softphone-sipgate
