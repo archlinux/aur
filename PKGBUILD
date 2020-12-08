@@ -4,7 +4,7 @@
 pkgname=go4
 _Pkgname=Go4
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT'
 arch=('x86_64')
 depends=('root' 'qt5-webengine')
@@ -58,7 +58,7 @@ build() {
   make clean
 
   make prefix=/usr \
-       withqt=5 \
+       withqt=4 \
        GO4_OS=Linux \
        rpath=true \
        withdabc=yes \
