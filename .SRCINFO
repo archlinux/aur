@@ -1,7 +1,7 @@
 pkgbase = python-arpy
 	pkgdesc = Library for accessing 'ar' files
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/pypi/arpy
 	arch = any
 	license = BSD

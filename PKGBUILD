@@ -3,7 +3,7 @@
 _name=arpy
 pkgname="python-$_name"
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for accessing 'ar' files"
 arch=(any)
 url="https://pypi.org/pypi/$_name"
