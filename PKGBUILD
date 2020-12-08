@@ -14,6 +14,7 @@ backup=("etc/systemd/system/k3s.service.env")
 source=(
   "k3s.service"
   "k3s.service.env"
+  "k3s-killall.sh"
 )
 
 source_x86_64=(
