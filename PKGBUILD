@@ -4,7 +4,7 @@ pkgdesc="ROS - velocity_controllers."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-melodic-velocity-controllers'
-pkgver='0.17.0'
+pkgver='0.17.1'
 _pkgver_patch=1
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
@@ -39,7 +39,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_controllers-release-release-melodic-velocity_controllers-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/velocity_controllers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('09065027f992457b2961e20e4f9fb5df0bad52a34f3cd964c74cf6ae8e23b67d')
+sha256sums=('b48fda80fcab413de486c6183495f5e28ca1bd28ab8fe02764ee8572087cf2cc')
 
 
 build() {
