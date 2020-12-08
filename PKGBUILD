@@ -13,7 +13,7 @@
 pkgbase=linux-nitrous-git
 _srcname=linux-nitrous-git
 pkgver=5.9+
-pkgrel=30
+pkgrel=1
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
