@@ -1,7 +1,7 @@
 pkgbase = python-wheezy-0.1.167
 	pkgdesc = A lightweight template library (0.1.167)
 	pkgver = 0.1.167
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.python.org/pypi/wheezy.template
 	arch = any
 	license = MIT

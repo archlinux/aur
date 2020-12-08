@@ -17,7 +17,7 @@
 _pkgname=wheezy.template
 pkgname=python-wheezy-0.1.167
 pkgver=0.1.167
-pkgrel=3
+pkgrel=4
 pkgdesc='A lightweight template library (0.1.167)'
 arch=('any')
 url="https://pypi.python.org/pypi/wheezy.template"
@@ -40,6 +40,6 @@ build() {
 package() {
   cd "$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  chmod 644 "$pkgdir"/usr/lib/python3.8/site-packages/wheezy.template-0.1.167-py3.8.egg-info/*
+  chmod 644 "$pkgdir"/usr/lib/python3.*/site-packages/wheezy.template-0.1.167-py3.*.egg-info/*
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
