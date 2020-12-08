@@ -1,7 +1,7 @@
 # Maintainer: Jan-Henrik Bruhn <aur@jhbruhn.de> 
 pkgname=upstream-electron-bin
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop client for radicle (binary version, system electron)'
 arch=('x86_64')
 url='https://github.com/radicle-dev/radicle-upstream'
@@ -24,11 +24,30 @@ package() {
     `${srcdir}/${_package} --appimage-extract &>/dev/null`
     rm -rf "${srcdir}/upstream"
     mv "${srcdir}/squashfs-root" "${srcdir}/upstream"
+    
+    # clean unused files (electron installation)
+    rm -rf "${srcdir}/upstream/swiftshader" 
+    rm -rf "${srcdir}/upstream/usr/lib" 
+    rm "${srcdir}/upstream/chrome-sandbox" 
+    rm "${srcdir}/upstream/chrome_100_percent.pak" 
+    rm "${srcdir}/upstream/chrome_200_percent.pak" 
+    rm "${srcdir}/upstream/libEGL.so" 
+    rm "${srcdir}/upstream/libffmpeg.so" 
+    rm "${srcdir}/upstream/libGLESv2.so" 
+    rm "${srcdir}/upstream/libvk_swiftshader.so" 
+    rm "${srcdir}/upstream/libvulkan.so" 
+    rm "${srcdir}/upstream/snapshot_blob.bin" 
+    rm "${srcdir}/upstream/icudtl.dat" 
+    rm "${srcdir}/upstream/LICENSE.electron.txt" 
+    rm "${srcdir}/upstream/LICENSES.chromium.html" 
+    rm "${srcdir}/upstream/v8_context_snapshot.bin" 
+    rm "${srcdir}/upstream/vk_swiftshader_icd.json" 
+    rm "${srcdir}/upstream/radicle-upstream" 
+    rm "${srcdir}/upstream/AppRun" 
   
     install -d -m755 "${pkgdir}/opt/"
     cp -a "${srcdir}/upstream/." "${pkgdir}/opt/upstream/"
     find "${pkgdir}/opt/upstream/" -type d -exec chmod 755 {} +
-    chmod +rx "${pkgdir}/opt/upstream/radicle-upstream"
   
     install -d "${pkgdir}/usr/bin"
     install -Dm755 "${srcdir}/radicle-launcher.sh" "${pkgdir}/usr/bin/upstream"

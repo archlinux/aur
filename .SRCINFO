@@ -1,7 +1,7 @@
 pkgbase = upstream-electron-bin
 	pkgdesc = Desktop client for radicle (binary version, system electron)
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/radicle-dev/radicle-upstream
 	arch = x86_64
 	license = GPL
