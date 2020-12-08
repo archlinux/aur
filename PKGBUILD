@@ -3,37 +3,36 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-git
-pkgver=5.5r20201016.11328
-_majorver=5.5
+pkgver=5.5.r20201207.11381
 pkgrel=1
 pkgdesc="A command-line driven interactive function and data plotting utility - git version"
 arch=('i686' 'x86_64')
 url="https://github.com/gnuplot/gnuplot"
 license=('custom')
-depends=('gd' 'lua' 'qt5-svg' 'pango' 'libcerf')
-makedepends=('git' 'qt5-tools')
+depends=('gd' 'lua' 'qt5-svg' 'pango' 'libcerf' 'libwebp')
+makedepends=('git' 'clang' 'qt5-tools')
 provides=("gnuplot=${_majorver}")
 conflicts=('gnuplot')
 provides=('gnuplot')
 source=("${pkgname%-git}::git+https://git.code.sf.net/p/gnuplot/gnuplot-main")
 sha256sums=('SKIP')
+options=('!buildflags')
 
 pkgver() {
   cd ${pkgname%-git}
-  printf "%sr%s.%s" $(echo $_majorver) $(git log -1 --format="%cd" --date=short | tr -d '-') \
+  _majorver=$(grep gnuplot_version src/version.c|cut -d= -f2 | tr -d '"' | tr -d ';' | tr -d ' ')
+  printf "%s.r%s.%s" $(echo $_majorver) $(git log -1 --format="%cd" --date=short | tr -d '-') \
 	 "$(git rev-list --count HEAD)"
 }
 
 build() {
   cd ${pkgname%-git}
   ./prepare
-  TERMLIBS='-lX11' ./configure --prefix=/usr \
+  CC=clang CXX=clang++ ./configure --prefix=/usr \
 	  --libexecdir=/usr/lib \
 	  --with-gihdir=/usr/share/gnuplot \
-	  --with-texdir=/usr/share/texmf \
 	  --with-readline=gnu \
 	  --disable-wxwidgets \
-	  --enable-kpsexpand \
 	  --with-qt=qt5 
   make pkglibexecdir=/usr/bin
 }

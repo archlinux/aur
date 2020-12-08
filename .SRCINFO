@@ -1,20 +1,23 @@
 pkgbase = gnuplot-git
 	pkgdesc = A command-line driven interactive function and data plotting utility - git version
-	pkgver = 5.5r20201016.11328
+	pkgver = 5.5.r20201207.11381
 	pkgrel = 1
 	url = https://github.com/gnuplot/gnuplot
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = git
+	makedepends = clang
 	makedepends = qt5-tools
 	depends = gd
 	depends = lua
 	depends = qt5-svg
 	depends = pango
 	depends = libcerf
+	depends = libwebp
 	provides = gnuplot
 	conflicts = gnuplot
+	options = !buildflags
 	source = gnuplot::git+https://git.code.sf.net/p/gnuplot/gnuplot-main
 	sha256sums = SKIP
 
