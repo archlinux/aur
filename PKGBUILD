@@ -1,4 +1,5 @@
-# Maintainer: TrueRandom <rantruedom at gmail dot com>
+# Maintainer: Manuel Kauschinger <admin at bruzzzla dot de>
+# Previous Maintainer: TrueRandom <rantruedom at gmail dot com>
 pkgname=iota-trinity-wallet
 pkgver=1.6.1
 pkgrel=1
