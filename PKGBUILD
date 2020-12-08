@@ -2,14 +2,14 @@
 _pkgname=minimaxsimulator
 pkgname=$_pkgname-git
 pkgver=v2.0.0.r4.gd234ffa
-pkgrel=1
+pkgrel=3
 pkgdesc="a platform independent GUI-based Minimax simulator written in Java"
 arch=('any')
 url="https://github.com/luhsra/MinimaxSimulator"
 license=('MIT')
 groups=()
-depends=('bash' 'java-runtime')
-makedepends=('git' 'java-environment' 'maven')
+depends=('bash' 'java-runtime>=11')
+makedepends=('git' 'java-environment>=11' 'maven>=3.0.5')
 checkdepends=()
 optdepends=('libcanberra: for smoother GUI')
 provides=('minimaxsimulator-git')
