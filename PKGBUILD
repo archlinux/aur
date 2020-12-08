@@ -2,7 +2,7 @@
 
 pkgname="ivpn-ui"
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="IVPN Graphical User Interface"
 arch=('x86_64')
 url="https://ivpn.net"

@@ -16,13 +16,6 @@ killapp() {
   if [ $? -eq 0 ]; then
     echo "[!] Detected: IVPN app is running"
 
-    if [ -f /usr/local/bin/ivpn ]; then
-      echo "[+] Disabling firewall (if enabled) ..."
-      /usr/local/bin/ivpn firewall -off || echo "[-] Failed to disable firewall"
-      echo "[+] Disconnecting (if connected) ..."
-      /usr/local/bin/ivpn disconnect || echo "[-] Failed to disconnect"
-    fi
-
     echo "[+] Killing all 'ivpn-ui' processes ..."
     # We should be careful here: WE SHOULD NOT KILL THIS SCRIPT :)
     # (which also can have 'ivpn-ui' in process description)
@@ -36,7 +29,23 @@ killapp() {
   fi
 }
 
-## arg 1:  the new package version
+erase_leftovers() {
+  local _USER="${SUDO_USER:-$USER}"
+  local _UI_APP_USER_DIR="/home/${_USER}/.config/ivpn-ui"
+  local _AUTOSTART_FILE="/home/${_USER}/.config/autostart/ivpn-ui.desktop"
+
+  if [ -d $_UI_APP_USER_DIR ] ; then
+    echo "[+] Removing application cache data: '$_UI_APP_USER_DIR' ..."
+    rm -rf $_UI_APP_USER_DIR || echo "[-] Failed"
+  fi
+
+  if [ -f $_AUTOSTART_FILE ]; then
+    echo "[+] Removing application autostart file: '$_AUTOSTART_FILE' ..."
+    rm $_AUTOSTART_FILE || echo "[-] Failed"
+  fi
+}
+
+# --- install hooks ---
 pre_install() {
   killapp;
 }
@@ -55,4 +64,8 @@ post_install() {
 
 post_upgrade() {
 	prepare;
+}
+
+post_remove() {
+	erase_leftovers;
 }
