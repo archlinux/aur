@@ -1,5 +1,5 @@
 pkgbase = kodi-eggz
-	pkgver = 19.0b1
+	pkgver = 19.0b2
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -56,7 +56,7 @@ pkgbase = kodi-eggz
 	depends = libcec
 	depends = tinyxml
 	depends = shairplay
-	source = git+https://github.com/xbmc/xbmc.git#tag=19.0b1-Matrix
+	source = git+https://github.com/xbmc/xbmc.git#tag=19.0b2-Matrix
 	source = git+https://github.com/xbmc/vfs.rar.git#tag=4.0.0-Matrix
 	source = removestupidremarks.patch
 	sha256sums = SKIP
