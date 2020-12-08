@@ -1,7 +1,7 @@
 pkgbase = python-pyfavicon
 	pkgdesc = Async favicon fetcher
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/pypi/pyfavicon
 	arch = any
 	license = MIT

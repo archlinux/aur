@@ -3,7 +3,7 @@
 _name=pyfavicon
 pkgname=python-$_name
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Async favicon fetcher"
 arch=(any)
 url="https://pypi.org/pypi/$_name"
