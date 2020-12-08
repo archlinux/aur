@@ -4,7 +4,7 @@ pkgdesc="ROS - Python implementation of the URDF parser."
 url='https://wiki.ros.org/urdfdom_py'
 
 pkgname='ros-melodic-urdfdom-py'
-pkgver='0.4.4'
+pkgver='0.4.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(
 
 _dir="urdf_parser_py-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/urdf_parser_py/archive/${pkgver}.tar.gz")
-sha256sums=('093bf7f35c84d574b6859ee3a866c4d18a67727d727f444fa83be059ff284108')
+sha256sums=('be5645c3153fd9c3e3e32b041abcf7ad815d6c0746a37e3b2d1be37b1ff977c3')
 
 build() {
 	# Use ROS environment variables.
