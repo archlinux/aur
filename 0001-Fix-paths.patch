@@ -1,4 +1,4 @@
-From cc53190db89aaa9f546c17b6462006e2727f9f03 Mon Sep 17 00:00:00 2001
+From 2c92fb1766ff3009ee6ffa56ab05bb0a97a44150 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 Date: Wed, 2 Dec 2020 09:29:13 +0100
 Subject: [PATCH 1/2] Fix paths.
@@ -53,7 +53,7 @@ index 6c9d7c09..77e45c35 100644
 +package.path = tostring(rootPath / script / '?.lua')
 +     .. ';' .. tostring(rootPath / script / '?' / 'init.lua')
 diff --git a/script/library.lua b/script/library.lua
-index 06b7d8f4..ee8ba6fa 100644
+index 06b7d8f4..d5524988 100644
 --- a/script/library.lua
 +++ b/script/library.lua
 @@ -144,7 +144,7 @@ local function compileSingleMetaDoc(script, metaLang)
@@ -74,11 +74,20 @@ index 06b7d8f4..ee8ba6fa 100644
          version  = version,
          language = langID,
      })
+@@ -179,7 +179,7 @@ local function compileMetaDoc()
+ 
+     m.metaPath = metapath:string()
+     m.metaPaths = {}
+-    fs.create_directory(metapath)
++    fs.create_directories(metapath)
+     local templateDir = ROOT / 'meta' / 'template'
+     for fullpath in templateDir:list_directory() do
+         local filename = fullpath:filename()
 diff --git a/script/workspace/workspace.lua b/script/workspace/workspace.lua
-index a6425a8b..b55c3717 100644
+index c76eec55..9ed199e4 100644
 --- a/script/workspace/workspace.lua
 +++ b/script/workspace/workspace.lua
-@@ -30,7 +30,7 @@ function m.init(uri)
+@@ -29,7 +29,7 @@ function m.init(uri)
      end
      m.uri  = uri
      m.path = m.normalize(furi.decode(uri))
@@ -88,7 +97,7 @@ index a6425a8b..b55c3717 100644
      log.init(ROOT, logPath)
  end
 diff --git a/test.lua b/test.lua
-index 88c2817c..d39aadfd 100644
+index ed8d8dfc..b5e4892c 100644
 --- a/test.lua
 +++ b/test.lua
 @@ -1,19 +1,19 @@

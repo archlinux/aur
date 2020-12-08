@@ -3,7 +3,7 @@
 
 _pkgname="lua-language-server"
 pkgname="$_pkgname-git"
-pkgver=r3202.a5895f62
+pkgver=r3214.e818b4bd
 pkgrel=1
 license=('MIT')
 pkgdesc='Lua Language Server coded by Lua'
@@ -18,8 +18,8 @@ source=(
   'wrapper'
 )
 sha256sums=('SKIP'
-            '5e550ec01b72a16ef38a0d663845a0a9903c7435c88875b72199cd5fbaa480fb'
-            '0378933707eae0542322c7ed81b98728727b47988b7bee1ad76a9459e3f3269f'
+            'e5f139bd85d4bee09c17733b22398485a0bc53caf6301e42c65b57bdbe6f5b31'
+            '920ef2e6fb1144277406578a944a462354ac587af967c907eec8b8cd0481a653'
             '6135c5424e5b87146aabf47651d3c95b6038865f26f25a8fce3a1ecd8c8f31fa')
 
 pkgver() {
