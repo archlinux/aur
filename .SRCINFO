@@ -1,6 +1,6 @@
 pkgbase = devhub-appimage
 	pkgdesc = TweetDeck for GitHub - AppImage version
-	pkgver = 0.101.0
+	pkgver = 0.102.0
 	pkgrel = 1
 	url = https://github.com/devhubapp/devhub
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = devhub-appimage
 	depends = hicolor-icon-theme
 	provides = devhub
 	conflicts = devhub
-	noextract = devhub-0.101.0.AppImage
+	noextract = devhub-0.102.0.AppImage
 	options = !strip
-	source_x86_64 = devhub-0.101.0.AppImage::https://github.com/devhubapp/devhub/releases/download/v0.101.0/DevHub-0.101.0.AppImage
-	sha256sums_x86_64 = bd09da30167862808d3ded1a740ed2bad267a2a5529da44743c8d29b31b91604
+	source_x86_64 = devhub-0.102.0.AppImage::https://github.com/devhubapp/devhub/releases/download/v0.102.0/DevHub-0.102.0.AppImage
+	sha256sums_x86_64 = 28620433cf9d36151e21786ed67ba8efc5c0f84517bcbad879a30793e558d2c6
 
 pkgname = devhub-appimage
 
