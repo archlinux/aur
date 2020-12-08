@@ -1,0 +1,32 @@
+[Unit]
+Description=Wkhtmltopdf Server
+After=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+EnvironmentFile=-/etc/conf.d/wkhtmltox-server
+ExecStart=/usr/bin/wkhtmltox-server
+Restart=always
+Restart=10s
+
+LimitNOFILE=1024
+LimitNPROC=16
+
+SystemCallArchitectures=native
+PrivateDevices=yes
+ProtectControlGroups=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectHostname=yes
+ProtectClock=yes
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+MemoryDenyWriteExecute=yes
+LockPersonality=yes
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target
