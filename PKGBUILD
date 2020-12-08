@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=downzemall
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="A mass download manager based on the Qt5 framework and written in C/C++"
 arch=('x86_64')
 url="https://setvisible.github.io/DownZemAll"
@@ -12,7 +12,7 @@ optdepends=('libnotify: desktop notifications'
             'libappindicator-gtk3: tray icon')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/setvisible/DownZemAll/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('864cf423921428dd3dca7a9730900b878b340d7ce3452fe2145cc57701c73478'
+sha256sums=('6b445a0f61b2ec5f40211cae8de5f1ed3222176cf39af2d4c0fef2ea667eb81b'
             '3cb8f2eefbd9f04dd4b3a706058d8ab82c42514db81fbfbdf213fc833ca01eff')
 
 prepare() {
@@ -24,7 +24,9 @@ prepare() {
 build() {
 	cd "DownZemAll-$pkgver"
 	cmake -B build -S . \
-		-DENABLE_TESTS:BOOL='OFF' \
+		-DCMAKE_CXX_FLAGS="$CXXFLAGS" \
+		-DCMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS" \
+		-DENABLE_TESTS=OFF \
 		-Wno-dev
 	make -C build
 }
@@ -40,8 +42,6 @@ package() {
 		"$pkgdir/etc/opt/chrome/native-messaging-hosts/com.setvisible.downrightnow.json"
 	install -Dm644 web-extension/launcher/unix/launcher-manifest-firefox.json \
 		"$pkgdir/usr/lib/mozilla/native-messaging-hosts/DownRightNow.json"
-
-	install -Dm644 *.md -t "$pkgdir/usr/share/doc/$pkgname"
 
 	install -Dm644 src/icons/logo/LICENSE \
 		"$pkgdir/usr/share/licenses/$pkgname/LOGO_LICENSE"
