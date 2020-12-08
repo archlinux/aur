@@ -1,0 +1,33 @@
+pkgbase = fcitx5-mozc-ut
+	pkgdesc = Mozc module for Fcitx5 bundled with the UT dictionary
+	pkgver = 2.26.4206.102.20201129
+	pkgrel = 1
+	url = https://github.com/fcitx/mozc
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = clang
+	makedepends = git
+	makedepends = gtk2
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = python
+	makedepends = python-six
+	makedepends = qt5-base
+	depends = fcitx5
+	depends = mozc-ut-common
+	provides = fcitx5-mozc=2.26.4206.102
+	conflicts = fcitx-mozc
+	conflicts = fcitx-mozc-ut2
+	conflicts = fcitx-mozc-neologd-ut
+	conflicts = fcitx-mozc-neologd-ut+ut2
+	conflicts = fcitx-mozc-ut-unified
+	conflicts = fcitx-mozc-ut-unified-full
+	conflicts = fcitx-mozc-ut
+	conflicts = fcitx5-mozc
+	conflicts = fcitx5-mozc-git
+	source = fcitx5-mozc-ut-git::git+https://github.com/fcitx/mozc.git#commit=e7a97d0eea658a5cf7cd800eea75c57b70a70a7c
+	sha256sums = SKIP
+
+pkgname = fcitx5-mozc-ut
+
