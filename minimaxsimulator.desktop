@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Java based Minimax simulator
+Terminal=false
+Name=minimaxsimulator
+Exec=minimaxsimulator
+Type=Application
+Icon=minimaxsimulator
