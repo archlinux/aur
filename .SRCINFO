@@ -1,0 +1,13 @@
+pkgbase = sacd
+	pkgdesc = Super Audio CD decoder.
+	pkgver = 19.7.16.37
+	pkgrel = 1
+	url = https://github.com/Sound-Linux-More/sacd
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = https://github.com/Sound-Linux-More/sacd/archive/19.7.16.37.tar.gz
+	md5sums = 3c29546256e722d378e111ac5a6bd3a5
+
+pkgname = sacd
+
