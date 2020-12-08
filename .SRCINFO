@@ -1,6 +1,6 @@
 pkgbase = srcml
 	pkgdesc = commandline and library for srcML, an XML representation for source code
-	pkgver = 0.9.5
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://www.srcml.org/
 	arch = x86_64
@@ -9,16 +9,23 @@ pkgbase = srcml
 	makedepends = boost
 	makedepends = man2html
 	makedepends = docbook2x
+	makedepends = java-environment
+	makedepends = sh
+	makedepends = antlr2
 	depends = libxml2
 	depends = libxslt
 	depends = libarchive
 	depends = boost-libs
 	depends = curl
 	depends = openssl
-	depends = antlr2
-	depends = python2
-	source = srcml-0.9.5.tar.gz::http://131.123.42.38/lmcrs/beta/srcML-src.tar.gz
-	md5sums = e5c4223f7556b57984b20d70606f50ab
+	source = srcml-1.0.0.tar.gz::http://131.123.42.38/lmcrs/v1.0.0/srcML-1.0.0.tar.gz
+	source = arch-build.patch
+	source = https://www.antlr2.org/download/antlr-2.7.7.tar.gz
+	source = gcc4.4.patch
+	md5sums = f910de40b1b7fa9a6928e7cd3d75cd2b
+	md5sums = 8aaad26040808d2a0ac0793999521e9e
+	md5sums = 01cc9a2a454dd33dcd8c856ec89af090
+	md5sums = 7bb8f01ca97a83d55e72d86c850b63f1
+	md5sums = 8574c93f40e6477e83c29f9b07de49da
 
 pkgname = srcml
-
