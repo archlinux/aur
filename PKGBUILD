@@ -5,10 +5,10 @@
 # https://github.com/alfredopalhares/arch-pkgbuilds
 
 pkgbase="joplin"
-pkgname=('joplin-cmd' 'joplin-desktop-electron')
+pkgname=('joplin' 'joplin-desktop-electron')
 pkgver=1.4.19
 groups=('joplin')
-pkgrel=6
+pkgrel=7
 pkgdesc="A note taking and to-do application with synchronization capabilities - Split Package"
 arch=('x86_64' 'i686')
 conflicts=('joplin-cli' 'joplin-desktop')
@@ -45,7 +45,7 @@ check() {
 }
 
 #TODO: A slimdown is needed
-package_joplin-cmd() {
+package_joplin() {
   pkgdesc="A note taking and to-do application with synchronization capabilities - CLI App"
   depends=('nodejs' 'rsync')
 
