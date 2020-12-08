@@ -1,0 +1,21 @@
+pkgbase = upstream-electron-bin
+	pkgdesc = Desktop client for radicle (binary version, system electron)
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/radicle-dev/radicle-upstream
+	arch = x86_64
+	license = GPL
+	license = custom
+	depends = electron
+	provides = upstream
+	conflicts = radicle
+	conflicts = upstream
+	source = https://releases.radicle.xyz/radicle-upstream-0.1.4.AppImage
+	source = https://raw.githubusercontent.com/radicle-dev/radicle-upstream/v0.1.4/LICENSE
+	source = radicle-launcher.sh
+	sha256sums = 267a567b851c9ec301b0cad517eb1a1fdaf3ed46bf85a85000285b066185c5c6
+	sha256sums = d1bb5e1a4cd3774790ae7024904d572c27267857ed004a062416d520bf4230ad
+	sha256sums = ca84ffe5cda88ad75fa3aa95c9f100768eff2ea91b977235418ef74ec1f37ac4
+
+pkgname = upstream-electron-bin
+
