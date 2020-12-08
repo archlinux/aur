@@ -1,7 +1,7 @@
 pkgbase = downzemall
 	pkgdesc = A mass download manager based on the Qt5 framework and written in C/C++
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://setvisible.github.io/DownZemAll
 	arch = x86_64
 	license = LGPL3

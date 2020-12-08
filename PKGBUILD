@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=downzemall
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A mass download manager based on the Qt5 framework and written in C/C++"
 arch=('x86_64')
 url="https://setvisible.github.io/DownZemAll"
@@ -24,6 +24,8 @@ prepare() {
 build() {
 	cd "DownZemAll-$pkgver"
 	cmake -B build -S . \
+		-DCMAKE_C_FLAGS="$CFLAGS" \
+		-DCMAKE_C_FLAGS_RELEASE="$CFLAGS" \
 		-DCMAKE_CXX_FLAGS="$CXXFLAGS" \
 		-DCMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS" \
 		-DENABLE_TESTS=OFF \
