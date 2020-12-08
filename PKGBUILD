@@ -1,12 +1,13 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libgav1-git
-pkgver=0.16.0.r0.ge46493b
+pkgver=0.16.0.r217.g2af099d
 pkgrel=1
 pkgdesc='A main profile (0) and high profile (1) compliant AV1 decoder (git version)'
 arch=('x86_64')
 url='https://chromium.googlesource.com/codecs/libgav1/'
 license=('Apache')
+depends=('gcc-libs')
 makedepends=('git' 'cmake')
 provides=('libgav1')
 conflicts=('libgav1')
