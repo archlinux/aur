@@ -15,6 +15,7 @@ conflicts=('lightcord-bin')
 source=("$pkgname::git://github.com/Lightcord/Lightcord.git"
 	"Lightcord.desktop"
 	"https://raw.githubusercontent.com/Lightcord/Lightcord/master/LICENSE"
+	"catch-error.patch"
 	"lightcord.png::https://raw.githubusercontent.com/Lightcord/LightcordLogos/master/lightcord/lightcord.png")
 
 
@@ -26,7 +27,13 @@ pkgver() {
 md5sums=('SKIP'
 	 'd60e05000301e23b5819bdfbe8d9f52b'
 	 'SKIP'
+	 'SKIP'
 	 'SKIP')
+
+prepare() {
+  cd "$pkgname"
+  patch -p1 < "$srcdir/catch-error.patch"
+}
 
 build() {
   cd "$pkgname" 
