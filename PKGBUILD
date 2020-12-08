@@ -11,14 +11,15 @@
 _pkgname="pulseaudio"
 pkgname="$_pkgname-git"
 pkgdesc="A featureful, general-purpose sound server (development version)"
-pkgver=13.99.2.r4.g36a86d414
+pkgver=14.0.r41.g6bf178d79
 pkgrel=1
 arch=("i686" "x86_64" "armv7h")
 url="http://pulseaudio.org/"
 license=("GPL" "LGPL")
+install=pulseaudio.install
 depends=(lib{ltdl,soxr,asyncns,xtst,sndfile} "rtkit" "speexdsp" "tdb" "orc"
          "webrtc-audio-processing" jack2 "lirc" bluez{,-libs} "sbc"
-         python-{pyqt5,dbus,sip} "fftw" dconf)
+         python-{pyqt5,dbus,sip} "fftw" dconf gst-plugins-base-libs)
 makedepends=("git" lib{asyncns,xtst,tool,soxr,sndfile} "attr" "rtkit" "speexdsp"
              "tdb" jack2 bluez{,-libs} "intltool"  "sbc" "lirc" "fftw"
              "orc" "gtk3" "webrtc-audio-processing" "check" "meson")
@@ -26,11 +27,13 @@ optdepends=("alsa-plugins: ALSA support"
             "pulseaudio-alsa: ALSA configuration (recommended)"
             "lirc-utils: infra-red support")
 backup=(etc/pulse/{daemon.conf,default.pa,system.pa,client.conf})
-provides=(pulseaudio{,-{zeroconf,lirc,jack,bluetooth,equalizer}} "libpulse" libpulse{,-{simple,mainloop-glib}}.so)
-conflicts=(pulseaudio{,-{zeroconf,lirc,jack,bluetooth,equalizer}} "libpulse" libpulse{,-{simple,mainloop-glib}}.so)
+provides=(pulseaudio{,-{zeroconf,lirc,jack,bluetooth,equalizer}} libpulse  libpulse{,-{simple,mainloop-glib}}.so)
+conflicts=(pulseaudio-zeroconf pulseaudio-lirc pulse-audio-jack pulseaudio-bluetooth pulseaudio-equalizer libpulse{,-{simple,mainloop-glib}}.so pipewire-pulse)
 options=(!emptydirs)
-source=("git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git")
-sha256sums=('SKIP')
+source=("git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git"
+        "pulseaudio.install")
+sha256sums=('SKIP'
+            '1d4890b10fadb9208c3fefbbed4aca1f22e63a0f102f4c598dc573a55e724cb2')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -39,7 +42,7 @@ pkgver() {
 
 build() {
     arch-meson pulseaudio build \
-    -D gcov=false \
+    -D stream-restore-clear-old-devices=true \
     -D pulsedsp-location='/usr/\$LIB/pulseaudio' \
     -D udevrulesdir=/usr/lib/udev/rules.d
   ninja -C build
@@ -71,12 +74,12 @@ package() {
 
     # Disable cork-request module, can result in e.g. media players unpausing
     # when there's a Skype call incoming
-    sed -e "s|/usr/bin/pactl load-module module-x11-cork-request|#&|" \
+    sed -e 's|/usr/bin/pactl load-module module-x11-cork-request|#&|' \
     -i usr/bin/start-pulseaudio-x11
 
     # Required by qpaeq
     sed -e '/Load several protocols/aload-module module-dbus-protocol' \
-        -i "$pkgdir/etc/pulse/default.pa"
+        -i etc/pulse/default.pa
 
     rm -r etc/dbus-1
 
