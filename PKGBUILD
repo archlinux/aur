@@ -1,7 +1,7 @@
 # Maintainer: zan <zan@420blaze.it>
 
 pkgname=ajour
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc='World of Warcraft addon manager written in Rust'
 url='https://www.getajour.com'
@@ -13,7 +13,7 @@ conflicts=(ajour)
 provides=(ajour)
 source=("https://github.com/casperstorm/$pkgname/archive/$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('7dfeead647ce619379a6e58bc339c343eed32b01438f78f8135780d47429f3e2'
+sha256sums=('3bff817aaf234af2d6bc9249e893b3a32d5c23970e4bd02367592892a2159753'
             'd356c0f7ab3087a087e2ff261bf6348e62e87190805fa166fcbe9e3f8b64fb0d')
 
 build() {
