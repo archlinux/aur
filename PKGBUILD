@@ -7,8 +7,8 @@
 pkgbase="joplin"
 pkgname=('joplin-cmd' 'joplin-desktop-electron')
 pkgver=1.4.19
-group="joplin"
-pkgrel=5
+groups=('joplin')
+pkgrel=6
 pkgdesc="A note taking and to-do application with synchronization capabilities - Split Package"
 arch=('x86_64' 'i686')
 conflicts=('joplin-cli' 'joplin-desktop')
