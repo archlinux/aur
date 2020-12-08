@@ -1,6 +1,6 @@
 pkgbase = ecflow
 	pkgdesc = ecFlow - workflow manager from ECMWF
-	pkgver = 5.5.1
+	pkgver = 5.6.0
 	pkgrel = 2
 	url = https://confluence.ecmwf.int/display/ECFLOW
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = ecflow
 	depends = git
 	conflicts = ecflow-ui
 	conflicts = ecflow4
-	source = https://software.ecmwf.int/wiki/download/attachments/8650755/ecFlow-5.5.1-Source.tar.gz
-	sha256sums = cf5f3588c8f4b7e3785eb25666533710fa2c0b7f0407cb455f84b4ac30a83a3e
+	source = https://software.ecmwf.int/wiki/download/attachments/8650755/ecFlow-5.6.0-Source.tar.gz
+	sha256sums = 15db6e320c689417e48048a9bbce41ed334c447a09ffd18333e85b6cf24a181c
 
 pkgname = ecflow
 
