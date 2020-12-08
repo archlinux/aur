@@ -1,6 +1,14 @@
 --- src/go4-6.0.0/Makefile.config	2019-10-25 12:45:46.709957747 +0200
-+++ Makefile.config	2019-11-22 18:15:33.517213237 +0100
-@@ -130,7 +130,7 @@
++++ Makefile.config	2019-12-19 21:09:15.698546160 +0100
+@@ -78,6 +78,7 @@
+ endif
+ endif
+ 
++INCLUDES += -I/usr/include
+ 
+ ifdef USEHDF5
+ INCLUDES += -I$(HDF5INCLUDEPATH)
+@@ -130,7 +131,7 @@
  
  QMAKEOPTFLAG  = "CONFIG+=release"
  
@@ -9,7 +17,7 @@
  
  ifeq ($(GO4_OS),Win32)
    QMAKEFLAGS   += "INCLUDEPATH+=$(shell cygpath -w $(ROOTINCPATH))" "DEPENDPATH+=$(shell cygpath -w $(ROOTINCPATH))"
-@@ -277,7 +277,7 @@
+@@ -277,7 +278,7 @@
                 -lMinuit \
                  $(if $(USESPECTRUM),-lSpectrum,) \
                  $(if $(USEXMLIO),-lXMLIO,) \
@@ -18,7 +26,7 @@
  
  ifneq ($(USERT),false)
  LIBS_BASESET += -lrt
-@@ -296,7 +296,7 @@
+@@ -296,7 +297,7 @@
                  $(if $(USEDIM),-L$(DIMLIBPATH) -ldim,) \
                  $(if $(LINKX11),-L/usr/X11R6/lib/ -lX11,) \
                  $(if $(GO4_X11),-L/usr/lib/ -lX11,) \
