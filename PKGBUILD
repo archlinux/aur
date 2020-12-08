@@ -5,7 +5,7 @@
 
 pkgname=pacemaker1.1-git
 _pkgname=pacemaker
-pkgver=1.1.21.r170.g5a452afbc
+pkgver=1.1.24.r0.g385048474
 pkgrel=1
 pkgdesc="advanced, scalable high-availability cluster resource manager (1.1 series)"
 arch=('i686' 'x86_64')
@@ -19,9 +19,8 @@ optdepends=('pssh: for use with some tools'
             'pdsh: for use with some tools'
             'crmsh: for use with crm_report'
             'booth: for geo-clustering')
-provides=(${_pkgname})
-conflicts=(${_pkgname})
-install=${_pkgname}.install
+provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
+conflicts=("${_pkgname}")
 source=("$pkgname::git+https://github.com/ClusterLabs/${_pkgname}.git#branch=1.1"
         'crm_report.in'
         'makefile-chown.patch')
@@ -44,6 +43,7 @@ prepare() {
 build() {
   cd $pkgname
   ./configure \
+    CFLAGS="$CFLAGS -fcommon" \
     CPPFLAGS= \
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
@@ -70,6 +70,8 @@ build() {
     --with-configdir=/etc/pacemaker
 #   --with-nagios-plugin-dir=DIR
 #   --with-nagios-metadata-dir=DIR
+  # Fight unused direct deps
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
   make V=0
 }
 
@@ -84,6 +86,11 @@ package() {
 		d /var/lib/pacemaker/cib      0750 hacluster haclient
 		d /var/lib/pacemaker/cores    0750 hacluster haclient
 		d /var/lib/pacemaker/pengine  0750 hacluster haclient
+	EOF
+  install -Dm644 /dev/null "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+  cat>"$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"<<-EOF
+    g haclient 189
+    u hacluster 189:189 "cluster user" / /sbin/nologin
 	EOF
   rm -fr "$pkgdir/var"
   chmod a+x "$pkgdir/usr/share/pacemaker/tests/cts/CTSlab.py"

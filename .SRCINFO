@@ -1,9 +1,8 @@
 pkgbase = pacemaker1.1-git
 	pkgdesc = advanced, scalable high-availability cluster resource manager (1.1 series)
-	pkgver = 1.1.21.r170.g5a452afbc
+	pkgver = 1.1.24.r0.g385048474
 	pkgrel = 1
 	url = https://github.com/ClusterLabs/pacemaker/
-	install = pacemaker.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -28,7 +27,7 @@ pkgbase = pacemaker1.1-git
 	optdepends = pdsh: for use with some tools
 	optdepends = crmsh: for use with crm_report
 	optdepends = booth: for geo-clustering
-	provides = pacemaker
+	provides = pacemaker=1.1.24-1
 	conflicts = pacemaker
 	source = pacemaker1.1-git::git+https://github.com/ClusterLabs/pacemaker.git#branch=1.1
 	source = crm_report.in
