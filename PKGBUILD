@@ -2,7 +2,7 @@
 # Contributor: M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=thonny
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Python IDE for beginners"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('hicolor-icon-theme' 'mypy' 'python-astroid' 'python-asttokens' 'python-docutils' 'python-jedi' \
          'python-pylint' 'python-pyserial' 'python-send2trash' 'python-setuptools' 'tk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('5845ce751cb72d8695bbdd087715105de7be0e1adc315d7240c0d4eda7bd6269971a752b9991248593140691e73f68b592141377c8e63fdd7c92df1393e04e16')
+sha512sums=('3c75dd5f1c749eeb03a460e7ccd63208c0d99ea84cf16d0d62e8fb7229ba7365368de5cb0b1bd4d5bd6a66376369b29b48666dfea89a83c9d4b787d2da25fe90')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
