@@ -1,0 +1,16 @@
+pkgbase = st-wrightjjw-git
+	pkgdesc = Josh's build of suckless st
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://github.com/wrightjjw/st
+	arch = x86_64
+	license = MIT
+	depends = libxft
+	depends = ttf-cascadia-code
+	provides = st
+	conflicts = st
+	source = git+https://github.com/wrightjjw/st
+	md5sums = SKIP
+
+pkgname = st-wrightjjw-git
+
