@@ -1,20 +1,27 @@
 pkgbase = python-fonttools-git
-	pkgdesc = Modify OpenType and TrueType fonts and convert them to and from XML
-	pkgver = 3.0.r1920
+	pkgdesc = A library to manipulate font files from Python
+	pkgver = 4.18.0.r8.g26f3ef0
 	pkgrel = 1
-	url = https://github.com/behdad/fonttools
-	arch = any
+	url = https://github.com/fonttools/fonttools
+	arch = x86_64
 	license = MIT
-	makedepends = python2-setuptools
-	makedepends = python-numpy
-	makedepends = python2-numpy
+	makedepends = cython
 	depends = python
-	source = git+https://github.com/behdad/fonttools.git
+	optdepends = python-lxml: faster backend for XML files reading/writing
+	optdepends = python-fs: to read/write UFO source files,
+	optdepends = python-brotli: to compress/decompress WOFF 2.0 web fonts
+	optdepends = python-zopfli: faster backend fom WOFF 1.0 web fonts compression
+	optdepends = python-scipy: for finding wrong contour/component order between different masters
+	optdepends = python-matplotlib: for visualizing DesignSpaceDocument and resulting VariationModel
+	optdepends = python-unicodedata2: for displaying the Unicode character names when dumping the cmap table with ttx
+	optdepends = python-sympy: for symbolic font statistics analysis
+	optdepends = python-pyqt5: for drawing glyphs with Qt's QPainterPath
+	optdepends = python-reportlab: to drawing glyphs as PNG images
+	optdepends = python-lz4: for graphite type tables in ttLib/tables
+	provides = python-fonttools=4.18.0.r8.g26f3ef0
+	conflicts = python-fonttools
+	source = python-fonttools-git::git+https://github.com/fonttools/fonttools.git
 	sha256sums = SKIP
 
 pkgname = python-fonttools-git
-	depends = python-numpy
-
-pkgname = python2-fonttools-git
-	depends = python2-numpy
 
