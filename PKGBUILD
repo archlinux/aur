@@ -1,6 +1,6 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=cypher-shell
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="A command line shell where you can execute Cypher against an instance of Neo4j"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('java-runtime>=8')
 source=(
     "$pkgname-$pkgver.zip::https://github.com/neo4j/cypher-shell/releases/download/$pkgver/cypher-shell.zip")
-md5sums=('78c92680c93927330225f0d31b6e31fc')
+md5sums=('95fff85841d884e8a3a9b8e4676edb73')
 
 package() {
     mkdir -p $pkgdir/usr/share/$pkgname
