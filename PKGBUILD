@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=menyoki-git
-pkgver=1.0.1.r0.g5c0581f
+pkgver=1.0.2.r0.g073cf00
 pkgrel=1
 pkgdesc="Screen{shot,cast} and perform ImageOps on the command line (git)"
 arch=('x86_64')

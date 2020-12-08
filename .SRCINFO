@@ -1,6 +1,6 @@
 pkgbase = menyoki-git
 	pkgdesc = Screen{shot,cast} and perform ImageOps on the command line (git)
-	pkgver = 1.0.1.r0.g5c0581f
+	pkgver = 1.0.2.r0.g073cf00
 	pkgrel = 1
 	url = https://github.com/orhun/menyoki
 	arch = x86_64
