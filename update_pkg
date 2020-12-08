@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+new_sha = `makepkg -g`
+pkgbuild = File.readlines("PKGBUILD").map do |line|
+  if line =~ /\A\s*sha256sums/
+    new_sha
+  else
+    line
+  end
+end.join
+
+File.write("PKGBUILD", pkgbuild)
+system("makepkg --printsrcinfo > .SRCINFO")
+# puts new_sha
+puts "done!"
+

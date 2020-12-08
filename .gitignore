@@ -1,0 +1,6 @@
+pkg/
+*.tar.gz
+*.tar.xz
+*.zst
+src/
+crystalline-*/
