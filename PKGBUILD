@@ -4,7 +4,7 @@ pkgdesc="ROS - Graphical frontend for interacting with joint_trajectory_controll
 url='http://wiki.ros.org/rqt_joint_trajectory_controller'
 
 pkgname='ros-melodic-rqt-joint-trajectory-controller'
-pkgver='0.17.0'
+pkgver='0.17.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -33,9 +33,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ros_controllers-release-release-melodic-rqt_joint_trajectory_controller"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/rqt_joint_trajectory_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('27f6e3b11d9d9cf5bd33084bc63215e9a2de8f5a3cf91b9c0927dcfab6070873')
+_dir="ros_controllers-${pkgver}/rqt_joint_trajectory_controller"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_controllers/archive/${pkgver}.tar.gz")
+sha256sums=('373e5b00522a7e0343fa6b7ffe95ccf7fe6bd44622fe28534a05e2abcd8dc6ba')
 
 build() {
   # Use ROS environment variables

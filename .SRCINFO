@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rqt-joint-trajectory-controller
 	pkgdesc = ROS - Graphical frontend for interacting with joint_trajectory_controller instances.
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = http://wiki.ros.org/rqt_joint_trajectory_controller
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = ros-melodic-rqt-joint-trajectory-controller
 	depends = ros-melodic-rqt-gui-py
 	depends = ros-melodic-rospy
 	depends = ros-melodic-rqt-gui
-	source = ros-melodic-rqt-joint-trajectory-controller-0.17.0-.tar.gz::https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/rqt_joint_trajectory_controller/0.17.0-.tar.gz
-	sha256sums = 27f6e3b11d9d9cf5bd33084bc63215e9a2de8f5a3cf91b9c0927dcfab6070873
+	source = ros-melodic-rqt-joint-trajectory-controller-0.17.1.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.17.1.tar.gz
+	sha256sums = 373e5b00522a7e0343fa6b7ffe95ccf7fe6bd44622fe28534a05e2abcd8dc6ba
 
 pkgname = ros-melodic-rqt-joint-trajectory-controller
 
