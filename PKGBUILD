@@ -31,8 +31,15 @@ build() {
     rm -rf build
     mkdir build
     cd build
-    cmake -DLIBRARY_TYPE=SHARED -DCMAKE_BUILD_TYPE=Debug -DCMAKE_SKIP_BUILD_RPATH=TRUE -DCMAKE_INSTALL_PREFIX=/usr ..
-	make
+    cmake \
+      -DCMAKE_SHARED_LINKER_FLAGS="-Wl,-Bsymbolic -Wl,-Bsymbolic-functions" \
+      -DCMAKE_MODULE_LINKER_FLAGS="-Wl,-Bsymbolic -Wl,-Bsymbolic-functions" \
+      -DLIBRARY_TYPE=SHARED \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_SKIP_BUILD_RPATH=TRUE \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      ..
+	make V=1 VERBOSE=1
 }
 
 package_libvgm-common-git() {
