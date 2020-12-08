@@ -1,13 +1,12 @@
 pkgbase = neoleo-git
 	pkgdesc = Lightweight curses spreadsheet based on GNU oleo
-	pkgver = 10.0.r128.g0e9d4b2
+	pkgver = 10.0.r152.gb0d78af
 	pkgrel = 1
 	url = https://github.com/blippy/neoleo
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = gcc8
 	depends = ncurses
 	provides = neoleo
 	conflicts = neoleo
