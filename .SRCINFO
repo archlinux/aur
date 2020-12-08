@@ -1,6 +1,6 @@
 pkgbase = obsidian-appimage
 	pkgdesc = Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files
-	pkgver = 0.9.17
+	pkgver = 0.9.20
 	pkgrel = 1
 	url = https://obsidian.md/
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = obsidian-appimage
 	depends = zlib
 	depends = hicolor-icon-theme
 	depends = fuse
-	noextract = orsidian-appimage-0.9.17.AppImage
+	noextract = orsidian-appimage-0.9.20.AppImage
 	options = !strip
-	source_x86_64 = obsidian-appimage-0.9.17.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v0.9.17/Obsidian-0.9.17.AppImage
-	sha256sums_x86_64 = 505dfedf70ad6d4511ddac13db8ed7b04a5916359def709f8e9979382d429b0c
+	source_x86_64 = obsidian-appimage-0.9.20.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v0.9.20/Obsidian-0.9.20.AppImage
+	sha256sums_x86_64 = 735e0a5ca7bd8794ccac40b5459eec5034e52a8bc79602acb8562118caf6dcad
 
 pkgname = obsidian-appimage
 
