@@ -1,6 +1,6 @@
 pkgbase = python-stdeb
 	pkgdesc = Python to Debian source package conversion utility
-	pkgver = 0.8.5
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/astraw/stdeb
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-stdeb
 	depends = python-setuptools
 	depends = python-requests
 	depends = dpkg
-	source = https://pypi.python.org/packages/source/s/stdeb/stdeb-0.8.5.tar.gz
-	md5sums = afebfb9ca1c545fa15ad575679879f91
+	source = https://pypi.python.org/packages/source/s/stdeb/stdeb-0.10.0.tar.gz
+	md5sums = 683a7e783113b3297632733efbbc9ae2
 
 pkgname = python-stdeb
 
