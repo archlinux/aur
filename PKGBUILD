@@ -1,5 +1,5 @@
 pkgname=opencl-headers-git
-pkgver=v2020.03.13.3.g35deb75
+pkgver=v2020.06.16.21.g3259391
 pkgrel=1
 pkgdesc='OpenCL (Open Computing Language) header files. (GIT Version)'
 arch=('any')
@@ -12,11 +12,13 @@ provides=('opencl-headers')
 conflicts=('opencl-headers')
 source=('git+https://github.com/KhronosGroup/OpenCL-Headers.git'
         'git+https://github.com/KhronosGroup/OpenCL-CLHPP.git'
-        'https://patch-diff.githubusercontent.com/raw/KhronosGroup/OpenCL-Headers/pull/78.diff'
+        'git+https://github.com/ThrowTheSwitch/CMock.git'
+        'git+https://github.com/ThrowTheSwitch/Unity.git'
         )
 sha256sums=('SKIP'
             'SKIP'
-            'd999515f411313ac5b60fa1521f79ea61dea3c43c022046f21dedcfe07350575'
+            'SKIP'
+            'SKIP'
             )
 
 pkgver() {
@@ -25,29 +27,39 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
+  mkdir -p build-ocl-headers build-ocl-hpp
 
-  patch -d OpenCL-Headers -p1 -i "${srcdir}/78.diff"
+  cd OpenCL-CLHPP
+  git config submodule.external/CMock.url "${srcdir}/CMock"
+  git config submodule.external/Unity.url "${srcdir}/Unity"
+
+  git submodule update --init external/CMock external/Unity
 }
 
 build() {
-  cd build
+  cd "${srcdir}/build-ocl-headers"
 
   cmake ../OpenCL-Headers \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
 
   make
+
+  cd "${srcdir}/build-ocl-hpp"
+
+  cmake ../OpenCL-CLHPP \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_EXAMPLES=OFF \
+    -DBUILD_TESTS=OFF
+
+  make
 }
 
 package() {
 
-  make -C build DESTDIR="${pkgdir}" install
+  make -C build-ocl-headers DESTDIR="${pkgdir}" install
+  make -C build-ocl-hpp DESTDIR="${pkgdir}" install
 
   install -D -m644 OpenCL-Headers/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  cd "${srcdir}/OpenCL-CLHPP"
-
-  python gen_cl_hpp.py -i input_cl.hpp -o "${pkgdir}/usr/include/CL/cl.hpp"
-  install -Dm644 include/CL/cl2.hpp "${pkgdir}/usr/include/CL/cl2.hpp"
 }
