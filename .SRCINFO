@@ -1,6 +1,6 @@
 pkgbase = python-pdbpp-git
 	pkgdesc = pdb++, a drop-in replacement for pdb
-	pkgver = 0.10.2.r169.gce0c181
+	pkgver = 0.10.2.r203.gb62a338
 	pkgrel = 1
 	url = https://github.com/pdbpp/pdbpp
 	arch = any
