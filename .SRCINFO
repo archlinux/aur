@@ -1,8 +1,8 @@
 pkgbase = bottles
 	pkgdesc = Easily manage wineprefix
-	pkgver = 2.0.1
+	pkgver = 2.0.5
 	pkgrel = 1
-	url = https://git.mirko.pm/brombinmirko/Bottles
+	url = https://github.com/bottlesdevs/Bottles
 	arch = any
 	license = GPL3
 	makedepends = meson
@@ -10,8 +10,8 @@ pkgbase = bottles
 	depends = hicolor-icon-theme
 	depends = dconf
 	depends = python
-	source = bottles-2.0.1.tar.gz::https://git.mirko.pm/brombinmirko/Bottles/archive/2.0.1.tar.gz
-	sha256sums = c98d3201f3ba4b0a6226ed44b0401fe893fed57cc433e1a7f6f2dcd33f92399d
+	source = bottles-2.0.5.tar.gz::https://github.com/bottlesdevs/Bottles/archive/2.0.5.tar.gz
+	sha256sums = ad75317a88c83648cdf9d7583c94759b5b7887be97dc261397a7ff0e167a6b1a
 
 pkgname = bottles
 
