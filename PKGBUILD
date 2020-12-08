@@ -1,18 +1,18 @@
 # Maintainer: Phil Schaf <flying-sheep@web.de>
 
 pkgname=auditwheel
-pkgver=2.0.0
-pkgrel=3
+pkgver=3.3.0
+pkgrel=1
 pkgdesc='Cross-distribution Linux wheels'
 arch=(any)
-url="https://github.com/pypa/auditwheel"
+url="https://github.com/pypa/$pkgname"
 license=(MIT)
 depends=(python-wheel python-pyelftools)
 makedepends=(install-wheel-scripts)
 _pyarch=py3
 _wheel="$pkgname-$pkgver-$_pyarch-none-any.whl"
 source=("https://files.pythonhosted.org/packages/$_pyarch/${pkgname::1}/$pkgname/$_wheel")
-sha256sums=('63fe2fdda4d6c5f7b04e3982896428e3c243fdf8b8543aaa567bf0e1ce26b44a')
+sha256sums=('a462fb349b33f716c954186ea67c085a84f83dcb8421f564166224612634dbf8')
 noextract=("$_wheel")
 
 package() {
