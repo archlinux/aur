@@ -1,0 +1,24 @@
+pkgbase = glxosd-aarch64-git
+	pkgdesc = (no nvidia proprietary dep, fix compile errors, update luajit to support aarch64) An OSD for OpenGL applications running under the X Window System. This allows you to monitor your framerate and hardware temperature in games on Linux!
+	pkgver = r209.dbb44b7
+	pkgrel = 1
+	url = https://github.com/Francesco149/GLXOSD
+	arch = aarch64
+	license = GPL
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	makedepends = boost
+	depends = mesa
+	depends = glu
+	depends = fontconfig
+	depends = freetype2
+	depends = lm_sensors
+	depends = libxext
+	provides = glxosd
+	conflicts = glxosd
+	source = git://github.com/Francesco149/GLXOSD.git
+	md5sums = SKIP
+
+pkgname = glxosd-aarch64-git
+
