@@ -1,0 +1,16 @@
+pkgbase = accio-git
+	pkgdesc = Initrd cryptsetup hook to retrieve keys from hardware tokens
+	pkgver = r2.a42b6ed
+	pkgrel = 1
+	url = https://www.bestov.io/software/accio
+	arch = any
+	license = GPL3
+	makedepends = scdoc
+	depends = systemd
+	depends = mkinitcpio
+	depends = yubikey-personalization
+	source = source::git+https://github.com/vmsh0/accio.git
+	md5sums = SKIP
+
+pkgname = accio-git
+
