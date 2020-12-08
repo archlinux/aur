@@ -4,9 +4,9 @@
 
 _pkgname=android-studio
 pkgname="${_pkgname}-beta"
-pkgver=4.1.0.18
+pkgver=4.2.0.17
 pkgrel=1
-_build=201.6823847
+_build=202.6987402
 pkgdesc='The Official Android IDE (Beta branch)'
 arch=('i686' 'x86_64')
 url='https://developer.android.com/studio/preview'
@@ -18,7 +18,7 @@ optdepends=('gtk2: GTK+ look and feel'
 options=('!strip')
 source=("https://dl.google.com/dl/android/studio/ide-zips/${pkgver}/${_pkgname}-ide-${_build}-linux.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('a9bc6647d83c0d22b370fd3d6c9b9cf9a9bbf41497586dfd510c4511bd5b67cf'
+sha256sums=('271245f1daa8c5d1c2b29f92eb246b09ddde5028231513b50decfef6c302191f'
             '368b5287efcfd2b421bdd10e1bdd39a8bffeb84500745c4a88729609c841bcf7')
 
 if [ "${CARCH}" = "i686" ]; then
