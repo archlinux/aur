@@ -5,7 +5,7 @@
 pkgname=ttf-nerd-fonts-input
 epoch=1
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fonts for Code, from Font Bureau, patched with nerd-fonts'
 arch=('any')
 url='http://input.fontbureau.com/'
