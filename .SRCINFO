@@ -1,0 +1,14 @@
+pkgbase = rnix-lsp-git
+	pkgdesc = A language server for Nix
+	pkgver = 0.1.0.r14.3821a1a
+	pkgrel = 1
+	url = https://github.com/nix-community/rnix-lsp
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = rnix-lsp
+	source = git+https://github.com/nix-community/rnix-lsp.git#branch=master
+	md5sums = SKIP
+
+pkgname = rnix-lsp-git
+
