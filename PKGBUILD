@@ -19,13 +19,13 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git')
-pkgver=12.0.0_r369979.3052e474eceb
+pkgver=12.0.0_r374137.2cfbdaf60104
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('git' 'cmake' 'ninja' 'lib32-libffi' 'lib32-zlib' 'python' 'lib32-gcc-libs'
-             'lib32-libxml2')
+             'lib32-libxml2' 'llvm-minimal-git')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
 md5sums=('SKIP')
 sha512sums=('SKIP')
@@ -46,12 +46,6 @@ pkgver() {
              END { print "\n" }' \
              CMakeLists.txt)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
     echo "${_pkgver}"
-}
-
-prepare() {
-    cd llvm-project
-    # remove code parts not needed to build this package
-    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl clang clang-tools-extra compiler-rt mlir flang
 }
 
 build() {
@@ -78,8 +72,13 @@ build() {
         -D LLVM_LINK_LLVM_DYLIB=ON \
         -D LLVM_ENABLE_RTTI=ON \
         -D LLVM_ENABLE_FFI=ON \
+        -D LLVM_INCLUDE_BENCHMARKS=OFF \
+        -D LLVM_INCLUDE_GO_TESTS=OFF \
+        -D LLVM_INCLUDE_EXAMPLES=OFF \
         -D LLVM_BUILD_DOCS=OFF \
+        -D LLVM_INCLUDE_DOCS=OFF \
         -D LLVM_ENABLE_SPHINX=OFF \
+        -D LLVM_ENABLE_OCAMLDOC=OFF \
         -D LLVM_ENABLE_DOXYGEN=OFF \
         -D FFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
         -D LLVM_BINUTILS_INCDIR=/usr/include \
@@ -98,9 +97,6 @@ package_lib32-llvm-minimal-git() {
     provides=('lib32-llvm')
     conflicts=('lib32-llvm')
     
-    
-    
-#    cd _build
     DESTDIR="$pkgdir" ninja -C _build $NINJAFLAGS install
 
     # Remove files which conflict with lib32-llvm-libs
