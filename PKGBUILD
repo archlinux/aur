@@ -4,9 +4,9 @@ pkgdesc="ROS - Controller for executing joint-space trajectories on a group of j
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-melodic-joint-trajectory-controller'
-pkgver='0.17.0'
+pkgver='0.17.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -53,9 +53,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ros_controllers-release-release-melodic-joint_trajectory_controller"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/joint_trajectory_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d9a4284149558cf5436d359fd5c855daef847beb02dd02a689478e2c0ca5c074')
+_dir="ros_controllers-${pkgver}/joint_trajectory_controller"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_controllers/archive/${pkgver}.tar.gz")
+sha256sums=('373e5b00522a7e0343fa6b7ffe95ccf7fe6bd44622fe28534a05e2abcd8dc6ba')
 
 build() {
   # Use ROS environment variables
