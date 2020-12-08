@@ -2,14 +2,14 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=roundcubemail-git
-pkgver=1.4.rc2.r595.ge99fb3968
-pkgrel=3
+pkgver=1.4.rc2.r633.gf979b0ce1
+pkgrel=1
 pkgdesc="A PHP web-based mail client"
 arch=('any')
 url="https://roundcube.net/"
 license=('GPL')
 depends=('php' 'php-gd')
-makedepends=('composer' 'php-gd' 'git' 'unzip' 'java-runtime' 'nodejs-less-plugin-clean-css')
+makedepends=('systemd' 'composer' 'php-gd' 'git' 'unzip' 'java-runtime' 'nodejs-less-plugin-clean-css')
 optdepends=('python2')
 provides=('roundcubemail')
 conflicts=('roundcubemail')
