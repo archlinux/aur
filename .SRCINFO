@@ -1,0 +1,14 @@
+pkgbase = python-entry-points-txt
+	pkgdesc = Read & write entry_points.txt files
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jwodder/entry-points-txt
+	arch = any
+	license = MIT
+	depends = python
+	noextract = entry_points_txt-0.1.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/e/entry-points-txt/entry_points_txt-0.1.0-py3-none-any.whl
+	sha256sums = 29773bed3d9d337766a394e19d6f7ab0be3ed7d6f3ebb753ff0f7f48f056aa8e
+
+pkgname = python-entry-points-txt
+
