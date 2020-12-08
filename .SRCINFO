@@ -1,6 +1,6 @@
 pkgbase = joplin
-	pkgdesc = A note taking and to-do application with synchronization capabilities
-	pkgver = 1.3.18
+	pkgdesc = A note taking and to-do application with synchronization capabilities - Split Package
+	pkgver = 1.4.19
 	pkgrel = 1
 	url = https://joplinapp.org/
 	arch = x86_64
@@ -10,6 +10,24 @@ pkgbase = joplin
 	makedepends = npm
 	makedepends = python
 	makedepends = rsync
+	conflicts = joplin
+	conflicts = joplin-beta
+	source = joplin.desktop
+	source = joplin-desktop.sh
+	source = joplin-cli.sh
+	source = joplin-1.4.19.tar.gz::https://github.com/laurent22/joplin/archive/v1.4.19.tar.gz
+	sha256sums = c7c5d8b0ff9edb810ed901ea21352c9830bfa286f3c18b1292deca5b2f8febd2
+	sha256sums = a450284fe66d89aa463d129ce8fff3a0a1a783a64209e4227ee47449d5737be8
+	sha256sums = 5b6f8847ec0c3848375755213c3009c273f478b4b80ed2c5f0af8f67ee0e94fb
+	sha256sums = 55aad4fe50e2da980983a69bc7c0870626064db971550d522e266feb17d38916
+
+pkgname = joplin-cli
+	pkgdesc = A note taking and to-do application with synchronization capabilities - CLI App
+	depends = nodejs
+	depends = rsync
+
+pkgname = joplin-desktop
+	pkgdesc = A note taking and to-do application with synchronization capabilities - Desktop
 	depends = gtk3
 	depends = libexif
 	depends = libgsf
@@ -20,14 +38,4 @@ pkgbase = joplin
 	depends = nss
 	depends = orc
 	optdepends = libappindicator-gtk3: for tray icon
-	source = joplin.desktop
-	source = joplin-desktop.sh
-	source = joplin.sh
-	source = joplin-1.3.18.tar.gz::https://github.com/laurent22/joplin/archive/v1.3.18.tar.gz
-	sha256sums = 50c4d294eed7cc1319874831040a316127c3dbc03f8e74a293793a35773e0626
-	sha256sums = 41bfdc95a6ee285eb644d05eb3bded72a83950d4720c3c8058ddd3c605cd625d
-	sha256sums = 5245da6f5f647d49fbe044b747994c9f5a8e98b3c2cd02757dd189426a677276
-	sha256sums = 71f836bb1504b101cc85071e750d183edd4405ff163776a0aff74e6da0ba1906
-
-pkgname = joplin
 
