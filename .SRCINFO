@@ -1,0 +1,20 @@
+pkgbase = llvm-toolchain-nightly-bin
+	pkgdesc = Precompiled binaries of llvm-toolchain (clang+lld+lldb+...) nightly builds
+	pkgver = 12
+	pkgrel = 1
+	url = https://llvm.org/
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = wget
+	provides = clang-analyzer=12
+	provides = clang-tools-extra=12
+	provides = clang=12
+	provides = lld=12
+	provides = llvm=12
+	provides = compiler-rt=12
+	provides = polly=12
+	provides = lldb=12
+	provides = openmp=12
+
+pkgname = llvm-toolchain-nightly-bin
+
