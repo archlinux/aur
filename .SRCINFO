@@ -1,7 +1,7 @@
 pkgbase = tootle
 	pkgdesc = GTK3 client for Mastodon
-	pkgver = 0.2.0
-	pkgrel = 4
+	pkgver = 1.0_alpha2
+	pkgrel = 1
 	url = https://github.com/bleakgrey/tootle
 	arch = x86_64
 	license = GPL3
@@ -23,10 +23,8 @@ pkgbase = tootle
 	depends = json-glib
 	optdepends = noto-fonts-emoji: color emoji
 	options = !libtool
-	source = https://github.com/bleakgrey/tootle/archive/0.2.0.tar.gz
-	source = fix-build-on-vala-46.patch
-	sha256sums = e83c4a0539bf7b4b9d2b81d036ee0e8a69564b11c70f77ded5091955a89d2737
-	sha256sums = 5158d1e2019eaf6f4fa043b8483f8dfa049335d572a2563a0d4f71f799cae2b0
+	source = https://github.com/bleakgrey/tootle/archive/1.0-alpha2.tar.gz
+	sha256sums = 7094adf37a177782a0cfc9c4d951a96e646bd496a74ac7e121b8c67e710d9199
 
 pkgname = tootle
 
