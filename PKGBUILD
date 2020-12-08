@@ -1,6 +1,6 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=zeebe-modeler
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Desktop Application for modeling Zeebe Workflows with BPMN"
 arch=('x86_64')
@@ -19,5 +19,5 @@ package() {
     install -dm755 "${pkgdir}/usr/bin"
     ln -s /opt/$pkgname/zeebe-modeler $pkgdir/usr/bin/zeebe-modeler
 }
-md5sums=('7232c1865bae9a8f4c14956f543f5b0f'
+md5sums=('3b25559103a03c7bbf01581a329a44e8'
          '615f2fe722cc5b3eea9c9ea9d22bdafd')
