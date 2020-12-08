@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Myteam for Linux
+Icon=/usr/share/pixmaps/myteam.png
+TryExec=/usr/bin/myteam
+Exec=/usr/bin/myteam -urlcommand %u
+Comment=Simple way to communicate and nothing extra. New design, group chats and much more!
+Categories=InstantMessaging;Chat;Network;
+Terminal=false
+StartupWMClass=myteam
+MimeType=x-scheme-handler/myteam-messenger;
+Keywords=myteam;
