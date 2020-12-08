@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel at yahoo dot com>
 
 pkgname=miopen-hip
-pkgver=3.9.0
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="AMD's Machine Intelligence Library (HIP backend)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'rocm-cmake' 'half' 'miopengemm' 'clang' 'rocminfo')
 provides=('miopen')
 conflicts=('miopen')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
-sha256sums=('f57d75a220c1094395cc1dccab2185c759d779751ddbb5369a6f041ec77b2156')
+sha256sums=('926e43c5583cf70d6b247f9fe45971b8b1cc9668f9c8490c142c7e8b6e268f1a')
 
 build() {
   CXXFLAGS="$CXXFLAGS -DHALF_ENABLE_F16C_INTRINSICS=0 -isystem /opt/rocm/llvm/lib/clang/11.0.0" \
