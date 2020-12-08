@@ -2,7 +2,7 @@
 
 pkgname=fence-agents-git
 _pkgname=fence-agents
-pkgver=4.5.1.r3.g311c5126
+pkgver=4.6.0.r28.g17bd8552
 pkgrel=1
 pkgdesc="OCF fence agents for rgmanager and pacemaker"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ url='http://clusterlabs.org/'
 license=('GPL2')
 makedepends=('git' 'libxslt' 'python' 'docbook-xsl')
 depends=('python-pexpect' 'openwsman' 'python-pycurl' 'python-requests' 'python-boto3' 'python-suds')
-provides=($_pkgname)
-conflicts=($_pkgname)
+provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
+conflicts=("${_pkgname}")
 source=("$pkgname::git+https://github.com/ClusterLabs/$_pkgname")
 md5sums=('SKIP')
 
