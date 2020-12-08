@@ -2,7 +2,7 @@
 
 _pkgname=rofi-ttv
 pkgname="${_pkgname}-git"
-pkgver=r19.51564b3
+pkgver=r22.058fe3d
 pkgrel=1
 pkgdesc='A script that uses rofi, youtube-dl and mpv to view twitch streams.'
 arch=('any')
