@@ -1,7 +1,7 @@
-From b2e41088d2a2b3dd99f268833d8079d1a98ee3ea Mon Sep 17 00:00:00 2001
+From 48085266a9b724af6f35ad4eabd31ac8b8bfa064 Mon Sep 17 00:00:00 2001
 From: Sathish Narasimman <nsathish41@gmail.com>
 Date: Thu, 29 Oct 2020 13:18:21 +0530
-Subject: [PATCH 2/2] Bluetooth: Fix: LL PRivacy BLE device fails to connect
+Subject: [PATCH 2/4] Bluetooth: Fix: LL PRivacy BLE device fails to connect
 
 When adding device to white list the device is added to resolving list
 also. It has to be added only when HCI_ENABLE_LL_PRIVACY flag is set.
