@@ -1,6 +1,6 @@
 pkgbase = openmv-ide-bin
 	pkgdesc = QtCreator based OpenMV IDE.
-	pkgver = 2.6.7
+	pkgver = 2.6.8
 	pkgrel = 1
 	url = https://github.com/openmv/openmv-ide
 	install = .INSTALL
@@ -20,10 +20,10 @@ pkgbase = openmv-ide-bin
 	sha256sums = f88d7948cd07a7a7c8e9cc7030eff7eccd348880d68c6846454e7473d4bafd11
 	sha256sums = c3b6bc073a98169ce988424663d14ca802d38726db7aea14b3c18e31216e23a5
 	sha256sums = 11b3fe3f7de494aa7e45050327c3a5300596e5f03717fd3f469f6b8b8e1e7f55
-	source_x86_64 = openmv-ide-2.6.7-x86_64.run::https://github.com/openmv/openmv-ide/releases/download/v2.6.7/openmv-ide-linux-x86_64-2.6.7.run
-	sha256sums_x86_64 = b2a8042cfb869ac7c7ef8c751529990d843df4781679f00e8dc2cab6a61f3d4b
-	source_i686 = openmv-ide-2.6.7-i686.run::https://github.com/openmv/openmv-ide/releases/download/v2.6.7/openmv-ide-linux-x86-2.6.7.run
-	sha256sums_i686 = 95592208599d101ad117ae9ee6731ffd7bcd71425979e95ea6499f08d7e7d514
+	source_x86_64 = openmv-ide-2.6.8-x86_64.run::https://github.com/openmv/openmv-ide/releases/download/v2.6.8/openmv-ide-linux-x86_64-2.6.8.run
+	sha256sums_x86_64 = dc5b7dbca536dc9d9965c9c1898a002d51a12cad129fa14909bd40f239416991
+	source_i686 = openmv-ide-2.6.8-i686.run::https://github.com/openmv/openmv-ide/releases/download/v2.6.8/openmv-ide-linux-x86-2.6.8.run
+	sha256sums_i686 = be236f4f5deb36d3cc3b38fac133fe189bcc80735822bff6b16c3db413269024
 
 pkgname = openmv-ide-bin
 
