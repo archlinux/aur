@@ -14,7 +14,7 @@ _EXTRAMODULES=$(readlink -f /usr/lib/modules/"$_cur_kernel/extramodules")
 
 pkgname=synaptics-led
 pkgver=$_kver
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://github.com/mmonaco/PKGBUILDs"
@@ -29,7 +29,7 @@ source=(
 	kernel.patch
 )
 
-sha256sums=('0eef61894facab9d26f7a5fa705b2b01b4175f54b19ef87ebd77e9e62f9d8b9b'
+sha256sums=('f547d96e3c8e2126a88ad9a901a1cd0f99e0800b3b649858c012d8a1da37bfed'
             'b46af61822e8ec8639faa1b60dd3b6b1a64e24854611902499b9f81d2691e22c'
             'c98a73eae81a490325781da16d04ae03d85380ed431c22eac4dfd363ac09c813')
 
