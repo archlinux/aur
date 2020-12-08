@@ -4,7 +4,7 @@ pkgdesc="ROS - Library of ros controllers."
 url='http://ros.org/wiki/ros_controllers'
 
 pkgname='ros-melodic-ros-controllers'
-pkgver='0.17.0'
+pkgver='0.17.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -38,9 +38,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ros_controllers-release-release-melodic-ros_controllers"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/ros_controllers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('74f7ebff8a7b59a25de522336157c837e194ef84288c5823c2d9e1ba5ef47812')
+_dir="ros_controllers-${pkgver}/ros_controllers"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_controllers/archive/${pkgver}.tar.gz")
+sha256sums=('373e5b00522a7e0343fa6b7ffe95ccf7fe6bd44622fe28534a05e2abcd8dc6ba')
 
 build() {
   # Use ROS environment variables
