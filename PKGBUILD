@@ -1,6 +1,6 @@
 # Maintainer: Josh Wright <wright.jjw@gmail.com>
 pkgname=dwm-wrightjjw-git
-pkgver=6.2.r1705.eb7ea3d
+pkgver=6.2
 pkgrel=1
 pkgdesc="Josh's build of suckless dwm"
 arch=('x86_64')

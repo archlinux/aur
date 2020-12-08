@@ -1,6 +1,6 @@
 pkgbase = dwm-wrightjjw-git
 	pkgdesc = Josh's build of suckless dwm
-	pkgver = 6.2.r1705.eb7ea3d
+	pkgver = 6.2
 	pkgrel = 1
 	url = https://github.com/wrightjjw/dwm
 	arch = x86_64
