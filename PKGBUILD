@@ -32,7 +32,7 @@ build() {
     -Dtests=false \
     -Ddocumentation=false \
     -Dlibwacom=false \
-    -Ddebug_gui=false
+    -Ddebug-gui=false
   ninja -C build
 }
 
