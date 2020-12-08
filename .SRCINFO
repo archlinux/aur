@@ -1,7 +1,7 @@
 pkgbase = electrum-vtc
 	pkgdesc = A simple, powerful, and secure Vertcoin wallet which has no sync time or long waits for the blockchain to download.
 	pkgver = 3.3.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://electrum.vertcoin.org/
 	arch = any
 	license = MIT
