@@ -3,7 +3,7 @@
 _pkgname=seafobj
 pkgname=python-$_pkgname
 pkgver=7.1.5
-pkgrel=1
+pkgrel=3
 pkgdesc="Python library for accessing seafile data model"
 arch=('any')
 url="https://github.com/haiwen/seafobj"
