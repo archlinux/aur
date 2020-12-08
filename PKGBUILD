@@ -10,7 +10,6 @@ pkgdesc='Fonts for Code, from Font Bureau, patched with nerd-fonts'
 arch=('any')
 url='http://input.fontbureau.com/'
 license=('custom:Font Software License Agreement')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 makedepends=('fontforge' 'parallel')
 url_long="${url}build/?fontSelection=whole&a=0&g=0&i=0&l=0&zero=0&asterisk=0&braces=0&preset=default&line-height=1.2&accept=I+do&email="
 # go to the input website and try a download to get more info on how to customise this URL. Below are the setting I personally use, the default above matches the ttf-input package (all defaults on the website)
