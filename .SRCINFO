@@ -9,6 +9,7 @@ pkgbase = deepin.com.qq.im.light
 	license = Proprietary
 	makedepends = tar
 	depends = deepin-wine5
+	depends = p7zip
 	noextract = deepin.com.qq.im.light_7.9.14308deepin8_i386.deb
 	source = https://packages.deepin.com/deepin/pool/non-free/d/deepin.com.qq.im.light/deepin.com.qq.im.light_7.9.14308deepin8_i386.deb
 	source = run.sh

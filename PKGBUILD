@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://im.qq.com/"
 license=('Proprietary')
 groups=()
-depends=('deepin-wine5')
+depends=('deepin-wine5' 'p7zip')
 makedepends=('tar')
 checkdepends=()
 optdepends=()
@@ -30,7 +30,7 @@ prepare() {
 	ar -x ${pkgname}_${pkgver}_i386.deb
 	mkdir ${pkgname}-${pkgver}
 	tar -xf data.tar.xz --directory="${pkgname}-${pkgver}"
-    mv run.sh ${pkgname}-${pkgver}/opt/deepinwine/apps/Deepin-QQLight/
+	cp run.sh ${pkgname}-${pkgver}/opt/deepinwine/apps/Deepin-QQLight/
 }
 
 package() {
