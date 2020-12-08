@@ -1,0 +1,22 @@
+pkgbase = dwm-wrightjjw-git
+	pkgdesc = Josh's build of suckless dwm
+	pkgver = 6.2.r1705.eb7ea3d
+	pkgrel = 1
+	url = https://github.com/wrightjjw/dwm
+	arch = x86_64
+	license = MIT
+	depends = dmenu
+	depends = freetype2
+	depends = libx11
+	depends = libxft-bgra
+	depends = libxinerama
+	depends = st
+	depends = flameshot
+	depends = ttf-cascadia-code
+	provides = dwm
+	conflicts = dwm
+	source = git+https://github.com/wrightjjw/dwm
+	md5sums = SKIP
+
+pkgname = dwm-wrightjjw-git
+
