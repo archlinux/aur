@@ -1,0 +1,27 @@
+pkgbase = jetbrains-toolbox-fix
+	pkgdesc = Manage your tools the easy way (with changes allowing it to be ignored by appimagelauncherd)
+	pkgver = 1.18.7609
+	pkgrel = 1
+	url = https://www.jetbrains.com/toolbox/
+	arch = x86_64
+	license = custom:jetbrains
+	makedepends = appimagetool
+	depends = java-runtime>=8
+	depends = fuse
+	depends = glib2
+	depends = libxslt
+	depends = libxss
+	depends = xcb-util-keysyms
+	depends = nss
+	optdepends = xdg-utils: open URLs
+	provides = jetbrains-toolbox
+	options = !strip
+	source = jetbrains-toolbox.tar.gz::https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.18.7609.tar.gz
+	source = jetbrains-toolbox.desktop
+	source = jetbrains-toolbox.svg
+	sha256sums = f4eae649a88baec0c4b4f7db84fa290ebcd6151aef8856ab3af42b97add40d10
+	sha256sums = ade259058b244c8ce6573bc86327ab14b4eddd0095f8d2a8638473334b268200
+	sha256sums = 4a6b4b801954017402e47b40b7246a71b1c128ca352efe459322b3f3699a5813
+
+pkgname = jetbrains-toolbox-fix
+

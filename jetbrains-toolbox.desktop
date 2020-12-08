@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=JetBrains Toolbox
+Categories=Development;
+Comment=Manage your tools the easy way
+Exec=/opt/jetbrains-toolbox/jetbrains-toolbox %u
+Icon=jetbrains-toolbox
+MimeType=x-scheme-handler/jetbrains;
+StartupNotify=false
+StartupWMClass=jetbrains-toolbox
+Terminal=false
+Type=Application
+Version=1.0
+X-GNOME-Autostart-Delay=10
+X-GNOME-Autostart-enabled=true
+X-KDE-autostart-after=panel
+X-MATE-Autostart-Delay=10
+# See https://github.com/TheAssassin/AppImageLauncher/issues/239
+X-AppImage-Integrate=false
