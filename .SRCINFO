@@ -11,9 +11,11 @@ pkgbase = z3-git
 	depends = gcc-libs
 	optdepends = python: bindings for python
 	provides = z3
+	provides = python-z3
 	conflicts = z3
 	conflicts = z3-bin
 	conflicts = z3-codeplex
+	conflicts = python-z3
 	source = z3-git::git+https://github.com/Z3Prover/z3
 	md5sums = SKIP
 
