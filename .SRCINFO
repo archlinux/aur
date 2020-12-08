@@ -1,6 +1,6 @@
 pkgbase = suda-vim-git
 	pkgdesc = An alternative sudo.vim for Vim and Neovim .
-	pkgver = r65.24a1c09
+	pkgver = r70.45f88d4
 	pkgrel = 1
 	url = https://github.com/lambdalisue/suda.vim
 	arch = i686
