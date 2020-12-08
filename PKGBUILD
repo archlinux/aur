@@ -5,12 +5,12 @@
 # https://github.com/alfredopalhares/arch-pkgbuilds
 
 pkgbase="joplin"
-pkgname=('joplin' 'joplin-desktop')
+pkgname=('joplin' 'joplin-desktop-electron')
 pkgver=1.4.19
 pkgrel=1
 pkgdesc="A note taking and to-do application with synchronization capabilities - Split Package"
 arch=('x86_64' 'i686')
-conflicts=('joplin' 'joplin-beta')
+conflicts=('joplin-cli' 'joplin-desktop')
 makedepends=('git' 'npm' 'python' 'rsync')
 url="https://joplinapp.org/"
 license=('MIT')
@@ -87,7 +87,7 @@ package_joplin() {
 }
 
 #TODO: Check for slimdown
-package_joplin-desktop() {
+package_joplin-desktop-electron() {
   pkgdesc="A note taking and to-do application with synchronization capabilities - Desktop"
   depends=('gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs'
          'nss' 'orc')
