@@ -2,7 +2,7 @@
 
 pkgname=git-annex-remote-googledrive
 pkgver=1.2.3
-pkgrel=2
+pkgrel=1
 pkgdesc='Faster git-annex special remote for Google Drive with support for exports'
 url='https://github.com/Lykos153/git-annex-remote-googledrive'
 license=('GPLv3+')
