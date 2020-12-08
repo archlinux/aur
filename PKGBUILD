@@ -2,7 +2,7 @@
 
 _pkgname=dwarfs
 pkgname=${_pkgname}-git
-pkgver=0.2.1.r6.g9a4ce33
+pkgver=0.2.3.r1.gbdd4b84
 pkgrel=1
 pkgdesc="A fast high compression read-only file system"
 url='https://github.com/mhx/dwarfs'
@@ -13,7 +13,7 @@ depends=(
   'lz4' 'xz' 'zstd'
   'libunwind' 'google-glog' 'fmt' 'gflags' 'double-conversion'
 )
-makedepends=('git' 'cmake' 'sparsehash' 'ruby-ronn')
+makedepends=('git' 'cmake' 'sparsehash' 'ruby-ronn' 'boost' 'libevent')
 source=("${pkgname}::git+https://github.com/mhx/dwarfs.git")
 sha256sums=('SKIP')
 
