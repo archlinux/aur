@@ -10,7 +10,10 @@ arch=('any')
 url='https://github.com/systemd/mkosi'
 license=('LGPL2.1')
 depends=('python')
-makedepends=('python-setuptools' 'git' 'pandoc')
+makedepends=('python-setuptools'
+             'git'
+             # pandoc is optional-ish – if missing, the package still builds
+             'pandoc')
 optdepends=('dnf: build Fedora or Mageia images'
             'debootstrap: build Debian or Ubuntu images'
             'debian-archive-keyring: build Debian images'
@@ -54,13 +57,21 @@ pkgver() {
 build() {
     cd 'mkosi'
 
-    pandoc -s -f markdown -t man mkosi.md -o mkosi.1
     python setup.py build
+
+    # try to build the manpage but tolerate “command not found” (but not other errors)
+    pandoc -s -f markdown -t man mkosi.md -o mkosi.1 || error=$?
+    if ((error != 0 && error != 127)); then
+        return $error
+    fi
 }
 
 package() {
   cd 'mkosi'
 
   python setup.py install --skip-build --optimize=1 --root="$pkgdir"
-  install -Dm 644 mkosi.1 "$pkgdir/usr/share/man/man1/mkosi.1"
+
+  # as in build(), try to install the manpage but tolerate “file not found”
+  # (but in this case there’s no specific error code to check)
+  install -Dm 644 mkosi.1 "$pkgdir/usr/share/man/man1/mkosi.1" || true
 }
