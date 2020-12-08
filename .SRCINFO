@@ -1,7 +1,7 @@
 pkgbase = nitter-git
 	pkgdesc = Alternative Twitter front-end
 	pkgver = latest
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/zedeus/nitter
 	install = nitter.install
 	arch = x86_64
