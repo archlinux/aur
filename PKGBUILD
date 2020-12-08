@@ -9,7 +9,7 @@ url='https://github.com/AdaCore/VSS'
 arch=('any')
 license=('GPL3')
 
-makedepends=('gcc-ada' 'gprbuild')
+makedepends=('git' 'gcc-ada' 'gprbuild')
 
 provides=('libvss')
 
