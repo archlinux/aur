@@ -1,6 +1,6 @@
 pkgbase = python-py7zr
 	pkgdesc = 7zip implementation in pure python3 with various compression methods
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/miurahr/py7zr
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = python-py7zr
 	depends = python-pycryptodome
 	provides = python-py7zr
 	conflicts = python-py7zr
-	source = https://github.com/miurahr/py7zr/archive/v0.11.0.tar.gz
-	sha512sums = 011a98f666e3d6d5fefa10a11e09a146ec513367be84d96a6a5b9253742bb5d28f7e8f285206bb627042b42d44eeeb47a430aa69c098f30533028087845f0e47
+	source = https://github.com/miurahr/py7zr/archive/v0.11.1.tar.gz
+	sha512sums = 82a4f5dd3cd5ed5346bdc436afa32fb637aa9c3304e277412c92d71e7f54a02003b3cc817acb67f4214419f68ed2fb6dce7145399aa7141233f30973e24e2b9d
 
 pkgname = python-py7zr
 
