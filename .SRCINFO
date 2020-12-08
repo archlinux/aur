@@ -1,7 +1,7 @@
 pkgbase = emby-server-beta
 	pkgdesc = Bring together your videos, music, photos, and live television
 	pkgver = 4.6.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://emby.media
 	install = emby-server.install
 	arch = x86_64
@@ -55,7 +55,7 @@ pkgbase = emby-server-beta
 	sha256sums = c66e73c86ebfdfb169dbdc3c6731f09bd82382dda3fb8a77abe19d6973c09b51
 	sha256sums = 0351d6e9118853e3aa275d62b67dce4444b3d85130b05fb889b2069f364f47ca
 	sha256sums = 5e3470f834808babe7d60b8d86f462e7945c3617499539e5af45eb55d7b87b23
-	sha256sums = 2e7f778fd47cad0670690beaab2453fde37c2a3e7d0e7b2ca83b2cbb66087b3c
+	sha256sums = a7f2e38d2d196984d1c1632c851215aea9072b3af998d10a6b68477ad886ea14
 	sha256sums = a6d7ea65dcb06392479a85e1a10a7aeb872d803da6f784f6935fcd4ee63008c6
 
 pkgname = emby-server-beta

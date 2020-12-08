@@ -5,7 +5,7 @@
 
 pkgname=emby-server-beta
 pkgver=4.6.0.6
-pkgrel=2
+pkgrel=3
 _ffmpeg_ver=2020_05_23
 _ffdetect_ver=2020_05_23
 pkgdesc='Bring together your videos, music, photos, and live television'
@@ -62,7 +62,7 @@ sha256sums=('f01716f34d7230ccbaeef9e716446bad5c5d5ffe2836b03ca9dece49fb2dc623'
             'c66e73c86ebfdfb169dbdc3c6731f09bd82382dda3fb8a77abe19d6973c09b51'
             '0351d6e9118853e3aa275d62b67dce4444b3d85130b05fb889b2069f364f47ca'
             '5e3470f834808babe7d60b8d86f462e7945c3617499539e5af45eb55d7b87b23'
-            '2e7f778fd47cad0670690beaab2453fde37c2a3e7d0e7b2ca83b2cbb66087b3c'
+            'a7f2e38d2d196984d1c1632c851215aea9072b3af998d10a6b68477ad886ea14'
             'a6d7ea65dcb06392479a85e1a10a7aeb872d803da6f784f6935fcd4ee63008c6')
 
 prepare() {
