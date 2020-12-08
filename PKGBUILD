@@ -2,7 +2,7 @@
 
 pkgname=python-drivelib
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Easy access to the most common Google Drive API calls'
 url='https://github.com/Lykos153/python-drivelib'
 license=('GPLv3+')
