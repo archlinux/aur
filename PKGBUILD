@@ -2,30 +2,29 @@
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 
 pkgname=onlyoffice-bin
-pkgver=6.0.2
+pkgver=6.1.0
 pkgrel=1
+_build=90
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://www.onlyoffice.com/'
 license=('AGPL3')
 depends=('curl' 'gtk3' 'alsa-lib' 'libpulse' 'gstreamer' 'gst-plugins-base-libs'
-         'libxss' 'nss' 'nspr' 'ttf-dejavu' 'ttf-liberation' 'ttf-carlito'
-         'desktop-file-utils' 'hicolor-icon-theme')
+         'gst-plugins-ugly' 'libxss' 'nss' 'nspr' 'ttf-dejavu' 'ttf-liberation'
+         'ttf-carlito' 'desktop-file-utils' 'hicolor-icon-theme')
 optdepends=('libreoffice: for OpenSymbol fonts'
             'otf-takao: for japanese Takao fonts'
             'ttf-ms-fonts: for Microsoft fonts')
 provides=('onlyoffice')
 conflicts=('onlyoffice')
 options=('!strip' '!emptydirs')
-_srcfile='onlyoffice-desktopeditors_amd64.deb'
-_srcurl="https://github.com/ONLYOFFICE/DesktopEditors/releases/download/ONLYOFFICE-DesktopEditors-${pkgver}/${_srcfile}"
-source=("onlyoffice-desktopeditors-${pkgver}_amd64.deb"::"$_srcurl")
+source=("https://github.com/ONLYOFFICE/DesktopEditors/releases/download/v${pkgver}/onlyoffice-desktopeditors_${pkgver}-${_build}_amd64.deb")
 noextract=("onlyoffice-desktopeditors-${pkgver}_amd64.deb")
-sha256sums=('e81ce18e0696c0720e8de1b07d7c2c0953a145db58a794ced933d9572e2da901')
+sha256sums=('4d468408284cdc6c6d079e3fccd20a8d1228727031a4154aed7b17df3edaabca')
 
 prepare() {
     mkdir -p "onlyoffice-${pkgver}"
-    bsdtar -xf "${srcdir}/onlyoffice-desktopeditors-${pkgver}_amd64.deb" -C "onlyoffice-${pkgver}"
+    bsdtar -xf "${srcdir}/onlyoffice-desktopeditors_${pkgver}-${_build}_amd64.deb" -C "onlyoffice-${pkgver}"
 }
 
 package() {
