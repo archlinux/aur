@@ -5,13 +5,13 @@
 # https://github.com/alfredopalhares/arch-pkgbuilds
 
 pkgbase="joplin"
-pkgname=('joplin' 'joplin-desktop-electron')
+pkgname=('joplin-cmd' 'joplin-desktop-electron')
 pkgver=1.4.19
 pkgrel=2
 pkgdesc="A note taking and to-do application with synchronization capabilities - Split Package"
 arch=('x86_64' 'i686')
 conflicts=('joplin-cli' 'joplin-desktop')
-makedepends=('git' 'npm' 'python' 'rsync')
+makedepends=('git' 'npm' 'python' 'rsync' 'electron')
 url="https://joplinapp.org/"
 license=('MIT')
 source=("joplin.desktop" "joplin-desktop.sh" "joplin.sh"
@@ -24,7 +24,7 @@ sha256sums=('c7c5d8b0ff9edb810ed901ea21352c9830bfa286f3c18b1292deca5b2f8febd2'
 
 build() {
   cd "${srcdir}/joplin-${pkgver}"
-  msg "Disabling husky (git hooks)"
+  msg2 "Disabling husky (git hooks)"
   sed -i '/"husky": ".*"/d' package.json
 
   # Force Lang
@@ -35,11 +35,16 @@ build() {
   npm install
   npm install compare-version # Joplin Cli needs this
   ./node_modules/.bin/lerna bootstrap
+}
 
+check() {
+  cd "${srcdir}/joplin-${pkgver}"
+  msg2 "Running Lerna Test Suite"
+  npm run test
 }
 
 #TODO: A slimdown is needed
-package_joplin() {
+package_joplin-cmd() {
   pkgdesc="A note taking and to-do application with synchronization capabilities - CLI App"
   depends=('nodejs' 'rsync')
 
@@ -86,7 +91,6 @@ package_joplin() {
   install -Dm755 joplin.sh "${pkgdir}/usr/bin/joplin-cli"
 }
 
-#TODO: Check for slimdown
 package_joplin-desktop-electron() {
   pkgdesc="A note taking and to-do application with synchronization capabilities - Desktop"
   depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs'
@@ -99,8 +103,8 @@ package_joplin-desktop-electron() {
   electron_dir="/usr/lib/electron"
   electron_version=$(cat /usr/lib/electron/version)
 
-  USE_HARD_LINKS=false npm run dist -- --publish=never  --linux tar.xz --x64 \
-    --dir -c.electronDist=$electron_dir -c.electronVersion=$electron_version
+  USE_HARD_LINKS=false npm run dist -- --publish=never  --linux  --x64 \
+    --dir="dist/" -c.electronDist=$electron_dir -c.electronVersion=$electron_version
 
   cd dist/linux-unpacked/
   cp -R "." "${pkgdir}/usr/share/joplin-desktop"
@@ -113,5 +117,5 @@ package_joplin-desktop-electron() {
   cd "${srcdir}"
   install -Dm755 ${srcdir}/joplin-desktop.sh "${pkgdir}/usr/bin/joplin-desktop"
   install -Dm644 ${srcdir}/joplin.desktop -t "${pkgdir}/usr/share/applications"
-
 }
+
