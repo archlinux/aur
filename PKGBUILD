@@ -2,7 +2,7 @@
 
 pkgname=resource-agents-git
 _pkgname=resource-agents
-pkgver=4.3.0.r186.g0cc87081d
+pkgver=4.7.0rc1.r4.gef4ec184f
 pkgrel=1
 pkgdesc="OCF resource agents for rgmanager and pacemaker"
 arch=('i686' 'x86_64')
@@ -10,9 +10,10 @@ url='http://clusterlabs.org/'
 license=('GPL2')
 makedepends=('git' 'libxslt' 'python' 'docbook-xsl')
 depends=('bash' 'perl')
-optdepends=('pacemaker-git: for these to be useful')
-provides=($_pkgname)
-conflicts=($_pkgname)
+optdepends=('pacemaker-git: for these to be useful'
+            'python: for dummypy and azure-events scripts')
+provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
+conflicts=("${_pkgname}")
 source=("$pkgname::git+https://github.com/ClusterLabs/$_pkgname")
 md5sums=('SKIP')
 

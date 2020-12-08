@@ -1,6 +1,6 @@
 pkgbase = resource-agents-git
 	pkgdesc = OCF resource agents for rgmanager and pacemaker
-	pkgver = 4.3.0.r186.g0cc87081d
+	pkgver = 4.7.0rc1.r4.gef4ec184f
 	pkgrel = 1
 	url = http://clusterlabs.org/
 	arch = i686
@@ -13,7 +13,8 @@ pkgbase = resource-agents-git
 	depends = bash
 	depends = perl
 	optdepends = pacemaker-git: for these to be useful
-	provides = resource-agents
+	optdepends = python: for dummypy and azure-events scripts
+	provides = resource-agents=4.7.0rc1-1
 	conflicts = resource-agents
 	source = resource-agents-git::git+https://github.com/ClusterLabs/resource-agents
 	md5sums = SKIP
