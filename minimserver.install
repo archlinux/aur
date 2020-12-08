@@ -14,8 +14,6 @@ To start minimserver:
 To stop minimserver
 /opt/minimserver/bin/stopall
 
-(you can use also the desktop file at /opt/minimserver/icons/MinimServer.desktop)
-
 To start minimserver, you could also start the service unit file:
   # systemctl --user start minimserver
 
@@ -24,7 +22,7 @@ To enable minimserver at boot:
   
 To complete the configuration once the service has been started, point
 your web browser to:
-  http://localhost:9790
+  http://ipaddress:9790
 
 Full documentation is available at:
   http://www.minimserver.com/

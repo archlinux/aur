@@ -2,7 +2,7 @@
 
 pkgname=minimserver
 pkgver=0.8.5.2
-pkgrel=5
+pkgrel=6
 pkgdesc="UPnP Audio Server"
 arch=('x86_64' 'aarch64')
 url="http://www.minimserver.com"
