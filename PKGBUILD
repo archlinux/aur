@@ -18,7 +18,6 @@ source=("$pkgname-$pkgver.tar.gz::http://131.123.42.38/lmcrs/v${pkgver}/${_srcna
 md5sums=('f910de40b1b7fa9a6928e7cd3d75cd2b'
          '8aaad26040808d2a0ac0793999521e9e'
          '01cc9a2a454dd33dcd8c856ec89af090'
-         '7bb8f01ca97a83d55e72d86c850b63f1'
          '8574c93f40e6477e83c29f9b07de49da')
 
 prepare() {

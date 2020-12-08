@@ -25,7 +25,6 @@ pkgbase = srcml
 	md5sums = f910de40b1b7fa9a6928e7cd3d75cd2b
 	md5sums = 8aaad26040808d2a0ac0793999521e9e
 	md5sums = 01cc9a2a454dd33dcd8c856ec89af090
-	md5sums = 7bb8f01ca97a83d55e72d86c850b63f1
 	md5sums = 8574c93f40e6477e83c29f9b07de49da
 
 pkgname = srcml
