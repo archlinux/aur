@@ -1,0 +1,13 @@
+pkgbase = lib32-http-parser
+	pkgdesc = Parser for HTTP Request/Response written in C
+	pkgver = 2.9.4
+	pkgrel = 1
+	url = https://github.com/nodejs/http-parser
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = http-parser-2.9.4.tar.gz::https://github.com/nodejs/http-parser/archive/v2.9.4.tar.gz
+	sha512sums = b45df7b94d1c51079d44687d0a7f901f44faae51df4e84c7e3fe38f130c2d809d0e7c2a146c57b3723e60732aededc246bf44eadb10a95b710963d641f9fe7cd
+
+pkgname = lib32-http-parser
+
