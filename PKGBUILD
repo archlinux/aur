@@ -1,7 +1,7 @@
 # Maintainer: Greg Hurrell <greg@hurrell.net>
 pkgname=clipper-git
-pkgver=2.0.0_15_ge6fd460
-pkgrel=1
+pkgver=2.0.0_20_g3ab426d
+pkgrel=2
 pkgdesc="Clipboard access for local and remote tmux sessions"
 arch=(x86_64)
 url="https://github.com/wincent/clipper"
@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '2295aa32f28f1aeeec1ddb375fd8bf0e138d58f239bc00634df7d1f71b04ba5e'
+  'e9f238ab3619091b3e191570f4cee46ecb56063d77dc7677bbe6f5b1013b901a'
 )
 
 prepare() {
@@ -45,6 +45,17 @@ check() {
 package() {
   cd "$pkgname"
   LDFLAGS="-extldflags \"${LDFLAGS}\"" make DESTDIR="$pkgdir" PREFIX=/usr install
-  install -Dm644 contrib/linux/systemd-service/clipper.service "$pkgdir/usr/lib/systemd/system/clipper.service"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/clipper-git/LICENSE"
+  install -Dm644 contrib/linux/systemd-service/clipper.service "$pkgdir/usr/share/clipper/clipper.service"
+  echo
+  echo "A sample systemd service has been installed to /usr/share/clipper/clipper.service"
+  echo
+  echo "To use it:"
+  echo
+  echo "    mkdir -p ~/.config/systemd/user"
+  echo "    cp /usr/share/clipper/clipper.service ~/.config/systemd/user/clipper.service"
+  echo "    systemctl --user daemon-reload"
+  echo "    systemctl --user enable clipper.service"
+  echo "    systemctl --user start clipper.service"
+  echo
 }
