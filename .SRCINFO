@@ -1,0 +1,27 @@
+pkgbase = moe-mansion
+	pkgdesc = A rolling release/nightly version of srb2kart 1.3 based on birdhouse with a couple other changes.
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://mb.srb2.org/showthread.php?t=49381
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = mesa
+	makedepends = glu
+	makedepends = git
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = libpng
+	depends = libgme
+	depends = srb2kart-data>=1.3
+	options = !buildflags
+	source = git+https://gitlab.com/himie/kart-public.git
+	source = srb2kart.desktop
+	source = srb2kart-opengl.desktop
+	sha256sums = SKIP
+	sha256sums = e99f64fdbe8f2db5cbda55415ab238daf3aa50d10fad089c6de6e3b815d9392e
+	sha256sums = 03bf7a10d6d2d5f0fd8ccefdf82a59b2ff1274a3913faf12cd21424f0e7a4bad
+	makedepends_i686 = nasm
+
+pkgname = moe-mansion
+
