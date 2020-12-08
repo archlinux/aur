@@ -4,10 +4,10 @@ pkgdesc="ROS - KDL binding for tf2."
 url='https://wiki.ros.org/tf2'
 
 pkgname='ros-noetic-tf2-kdl'
-pkgver='0.6.5'
+pkgver='0.7.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=4
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -38,7 +38,7 @@ depends=(
 
 _dir="geometry2-${pkgver}/tf2_kdl"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry2/archive/${pkgver}.tar.gz")
-sha256sums=('9a1268621518fc22afd7b12ef1cf30e6901a57b054535924d1d74fd5d267773a')
+sha256sums=('0b5d461c71d6dc1dbdb99a2ba39e1515194cd451c2e53d53caadb3ecea13367a')
 
 build() {
 	# Use ROS environment variables.
