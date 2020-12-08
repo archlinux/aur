@@ -7,7 +7,7 @@
 pkgbase="joplin"
 pkgname=('joplin' 'joplin-desktop-electron')
 pkgver=1.4.19
-pkgrel=1
+pkgrel=2
 pkgdesc="A note taking and to-do application with synchronization capabilities - Split Package"
 arch=('x86_64' 'i686')
 conflicts=('joplin-cli' 'joplin-desktop')
@@ -89,14 +89,19 @@ package_joplin() {
 #TODO: Check for slimdown
 package_joplin-desktop-electron() {
   pkgdesc="A note taking and to-do application with synchronization capabilities - Desktop"
-  depends=('gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs'
+  depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs'
          'nss' 'orc')
   optdepends=('libappindicator-gtk3: for tray icon')
 
-  msg2 "Building Desktop..."
+  msg2 "Building Desktop with packaged Electron..."
   mkdir -p "${pkgdir}/usr/share/joplin-desktop"
   cd "${srcdir}/joplin-${pkgver}/packages/app-desktop"
-  USE_HARD_LINKS=false npm run dist -- --publish=never
+  electron_dir="/usr/lib/electron"
+  electron_version=$(cat /usr/lib/electron/version)
+
+  USE_HARD_LINKS=false npm run dist -- --publish=never  --linux tar.xz --x64 \
+    --dir -c.electronDist=$electron_dir -c.electronVersion=$electron_version
+
   cd dist/linux-unpacked/
   cp -R "." "${pkgdir}/usr/share/joplin-desktop"
 

@@ -1,7 +1,7 @@
 pkgbase = joplin
 	pkgdesc = A note taking and to-do application with synchronization capabilities - Split Package
 	pkgver = 1.4.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://joplinapp.org/
 	arch = x86_64
 	arch = i686
@@ -28,6 +28,7 @@ pkgname = joplin
 
 pkgname = joplin-desktop-electron
 	pkgdesc = A note taking and to-do application with synchronization capabilities - Desktop
+	depends = electron
 	depends = gtk3
 	depends = libexif
 	depends = libgsf
