@@ -1,6 +1,4 @@
-# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
-# Contributor: neo.shadowsocks<neo.shadowsocks AT gmx.com>
-# Contributor: Kars Wang <jaklsy g-mail>
+# Maintainer:  Jason Wang <wang_borong@163.com>
 
 pkgname=beam-bin
 pkgver=0.1.19
