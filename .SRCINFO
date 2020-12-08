@@ -1,7 +1,7 @@
 pkgbase = retroshare
 	pkgdesc = Serverless encrypted instant messenger with filesharing, chatgroups, e-mail.
 	pkgver = 0.6.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://retroshare.cc/
 	arch = i686
 	arch = x86_64
@@ -22,8 +22,10 @@ pkgbase = retroshare
 	conflicts = retroshare
 	source = https://github.com/RetroShare/RetroShare/archive/v0.6.5.tar.gz
 	source = bbaad838572b5fba6109bc7d3b5c55c2c68e6cdc.patch
+	source = fix_icon_path.patch
 	sha256sums = 901a1d1f282e04118fbe0e24190355b4a8f355a806cc5448738b1d691b46f5d5
 	sha256sums = c8e53fb677f5438600a78e4bef4ee2aa6d837c1dfdff033545e087dd2d3e2280
+	sha256sums = 724f55edb3aa5ae34abfcba341cdecf3d6f5095d1d7018de4e254ae5627c426f
 
 pkgname = retroshare
 

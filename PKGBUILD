@@ -30,7 +30,7 @@
 
 pkgname=retroshare
 pkgver=0.6.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://retroshare.cc/'
@@ -43,9 +43,11 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 source=("https://github.com/RetroShare/RetroShare/archive/v${pkgver}.tar.gz"
-        "bbaad838572b5fba6109bc7d3b5c55c2c68e6cdc.patch")
+        "bbaad838572b5fba6109bc7d3b5c55c2c68e6cdc.patch"
+        "fix_icon_path.patch")
 sha256sums=('901a1d1f282e04118fbe0e24190355b4a8f355a806cc5448738b1d691b46f5d5'
-            'c8e53fb677f5438600a78e4bef4ee2aa6d837c1dfdff033545e087dd2d3e2280')
+            'c8e53fb677f5438600a78e4bef4ee2aa6d837c1dfdff033545e087dd2d3e2280'
+            '724f55edb3aa5ae34abfcba341cdecf3d6f5095d1d7018de4e254ae5627c426f')
 
 # Add missing dependencies if needed
 [[ "$_plugin_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv3-opt')
@@ -77,6 +79,8 @@ prepare() {
 	cd "${srcdir}/RetroShare-${pkgver}"
 
 	patch -p1 --ignore-whitespace -i "${srcdir}"/bbaad838572b5fba6109bc7d3b5c55c2c68e6cdc.patch
+
+	patch -p1 --ignore-whitespace -i "${srcdir}"/fix_icon_path.patch
 
 	[[ "$_plugin_voip" == 'true' ]] && sed -i -e 's/PKGCONFIG += opencv/PKGCONFIG += opencv3/g' plugins/VOIP/VOIP.pro || true
 }
