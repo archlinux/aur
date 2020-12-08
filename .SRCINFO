@@ -1,0 +1,20 @@
+pkgbase = sqlite-fts3-parenthesis
+	pkgdesc = A C library that implements an SQL database engine. Compiled with 'SQLITE_ENABLE_FTS3_PARENTHESIS' option to allow operators AND and NOT and nested parenthesis in queries.
+	pkgver = 3.34.0
+	pkgrel = 1
+	url = https://www.sqlite.org/
+	arch = x86_64
+	license = custom:Public Domain
+	makedepends = tcl
+	depends = readline
+	depends = zlib
+	provides = sqlite=3.34.0
+	conflicts = sqlite
+	replaces = sqlite3
+	options = !emptydirs
+	options = !makeflags
+	source = https://www.sqlite.org/2020/sqlite-src-3340000.zip
+	sha256sums = a5c2000ece56d2de13c474658b9cdba6b7f2608a4d711e245518ea02a2a2333e
+
+pkgname = sqlite-fts3-parenthesis
+
