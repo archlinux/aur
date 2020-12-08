@@ -1,0 +1,33 @@
+pkgbase = ukbprep-bin
+	pkgdesc = UK Biobank file handlers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://biobank.ndph.ox.ac.uk/showcase/download.cgi
+	arch = x86_64
+	license = unknown
+	makedepends = gcc
+	makedepends = sed
+	provides = gfetch
+	provides = ukbconv
+	provides = ukbfetch
+	provides = ukblink
+	provides = ukbmd5
+	provides = ukbunpack
+	noextract = gfetch_linkset.tar
+	noextract = ukbfetch_linkset.tar
+	noextract = ukblink_linkset.tar
+	source = gfetch_linkset.tar::https://biobank.ndph.ox.ac.uk/showcase/showcase/util/gfetch_linkset.tar
+	source = ukbconv::https://biobank.ndph.ox.ac.uk/showcase/util/ukbconv
+	source = ukbfetch_linkset.tar::https://biobank.ndph.ox.ac.uk/showcase/showcase/util/ukbfetch_linkset.tar
+	source = ukblink_linkset.tar::https://biobank.ndph.ox.ac.uk/showcase/showcase/util/ukblink_linkset.tar
+	source = ukbmd5::https://biobank.ndph.ox.ac.uk/showcase/util/ukbmd5
+	source = ukbunpack::https://biobank.ndph.ox.ac.uk/showcase/util/ukbunpack
+	md5sums = 9530c628fa41c9e3fe7441ac63d9ab84
+	md5sums = 06b5b39ab608a093b1dd264e27280316
+	md5sums = 3499b767a6809f96f446d6db28665115
+	md5sums = 9b309b581f435a08e5482e03ef07fea7
+	md5sums = 6412007ab74054bfcde0a16e781d84e8
+	md5sums = 78397002e55183feb4ebf62cbca3be3f
+
+pkgname = ukbprep-bin
+
