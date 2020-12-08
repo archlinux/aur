@@ -4,10 +4,10 @@ pkgdesc="ROS - polled_camera contains a service and C++ helper classes for imple
 url='https://wiki.ros.org/polled_camera'
 
 pkgname='ros-noetic-polled-camera'
-pkgver='1.11.13'
+pkgver='1.12.0'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -39,7 +39,7 @@ depends=(
 
 _dir="image_common-${pkgver}/polled_camera"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_common/archive/${pkgver}.tar.gz")
-sha256sums=('32a2e07724dec6eaaace21eae006274436d70d40bfe205249438570275c43cac')
+sha256sums=('ba2e3c0beda22a4bb517ffc2d2a8782c564b8f100286043b9782004d1a87de8e')
 
 build() {
 	# Use ROS environment variables.
