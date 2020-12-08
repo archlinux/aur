@@ -1,7 +1,7 @@
 pkgbase = python-pyroaring
 	pkgdesc = Fast and lightweight set for unsigned 32 bits integers
 	pkgver = 0.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/pypi/pyroaring
 	arch = x86_64
 	license = MIT
