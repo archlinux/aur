@@ -4,10 +4,10 @@ pkgdesc="ROS - Conversion functions between KDL and geometry_msgs types."
 url='https://wiki.ros.org/kdl_conversions'
 
 pkgname='ros-noetic-kdl-conversions'
-pkgver='1.12.0'
+pkgver='1.13.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -33,7 +33,7 @@ depends=(
 
 _dir="geometry-${pkgver}/kdl_conversions"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry/archive/${pkgver}.tar.gz")
-sha256sums=('61a278bdd50e00ea442055d9f70eaf82b5a36916739edca188fa1b71a59507b4')
+sha256sums=('6b653d4e10503d3da56bc4000e39ce58d6a85547a37837da576edccecc0c6ae2')
 
 build() {
 	# Use ROS environment variables.
