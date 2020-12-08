@@ -39,44 +39,50 @@ prepare(){
   cd "${_plug}"
   git config submodule.extra/libp2p.url "${srcdir}/libp2p"
   git config submodule.extra/vsxx.url "${srcdir}/vsxx"
-  git submodule update --init
+  git submodule update --init extra/libp2p extra/vsxx
 
   rm -fr extra/vsxx/VSHelper.h extra/vsxx/VapourSynth.h
 
   sed -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
       -e 's|"VSHelper.h"|<VSHelper.h>|g' \
-    -i extra/vsxx/VapourSynth++.hpp
+      -i extra/vsxx/VapourSynth++.hpp
 
-  sed 's|<imagine++.hpp>|"api/imagine++.hpp"|g' \
-    -i src/vsimagine/vsimagine.cpp
+  sed '10i#include <stdio.h>' \
+    -i src/imagine/provider/jpeg_decoder.cpp
 
 
   echo "all:
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -DP2P_USER_NAMESPACE=im_p2p -o extra/libp2p/v210.o extra/libp2p/v210.cpp
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -DP2P_USER_NAMESPACE=im_p2p -o src/imagine/api/imagine.o src/imagine/api/imagine.cpp
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -DP2P_USER_NAMESPACE=im_p2p -o src/imagine/common/decoder.o src/imagine/common/decoder.cpp
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -DP2P_USER_NAMESPACE=im_p2p -o src/imagine/common/file_io.o src/imagine/common/file_io.cpp
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -DP2P_USER_NAMESPACE=im_p2p -o src/imagine/common/io_context.o src/imagine/common/io_context.cpp
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -DP2P_USER_NAMESPACE=im_p2p -o src/imagine/common/jumpman.o src/imagine/common/jumpman.cpp
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -DP2P_USER_NAMESPACE=im_p2p -o src/imagine/common/memory_io.o src/imagine/common/memory_io.cpp
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -DP2P_USER_NAMESPACE=im_p2p -o src/imagine/common/path.o src/imagine/common/path.cpp
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -DP2P_USER_NAMESPACE=im_p2p -o src/imagine/provider/bmp_decoder.o src/imagine/provider/bmp_decoder.cpp
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -DP2P_USER_NAMESPACE=im_p2p -o src/imagine/provider/jpeg_decoder.o src/imagine/provider/jpeg_decoder.cpp
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -DP2P_USER_NAMESPACE=im_p2p -o src/imagine/provider/png_decoder.o src/imagine/provider/png_decoder.cpp
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -DP2P_USER_NAMESPACE=im_p2p -o src/imagine/provider/tiff_decoder.o src/imagine/provider/tiff_decoder.cpp
+	  g++ -c -fPIC ${CXXFLAGS} -std=c++11 -Wno-missing-field-initializers ${CPPFLAGS} -I. -I./src/vsimagine -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -o extra/libp2p/v210.o extra/libp2p/v210.cpp
+	  g++ -c -fPIC ${CXXFLAGS} -std=c++11 -Wno-missing-field-initializers ${CPPFLAGS} -I. -I./src/vsimagine -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -o extra/libp2p/p2p_api.o extra/libp2p/p2p_api.cpp
 
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -o extra/vsxx/vsxx_pluginmain.o extra/vsxx/vsxx_pluginmain.cpp
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -o src/vsimagine/path.o src/vsimagine/path.cpp
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -o src/vsimagine/vsimagine.o src/vsimagine/vsimagine.cpp
+	  g++ -c -fPIC ${CXXFLAGS} -std=c++11 ${CPPFLAGS} -I. -I./src/vsimagine -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -o extra/vsxx/vsxx_pluginmain.o extra/vsxx/vsxx_pluginmain.cpp
 
-	  ar r libimage.a extra/libp2p/v210.o src/imagine/api/imagine.o src/imagine/common/decoder.o src/imagine/common/file_io.o src/imagine/common/io_context.o src/imagine/common/jumpman.o src/imagine/common/memory_io.o src/imagine/common/path.o src/imagine/provider/bmp_decoder.o src/imagine/provider/jpeg_decoder.o src/imagine/provider/png_decoder.o src/imagine/provider/tiff_decoder.o
+	  g++ -c -fPIC ${CXXFLAGS} -std=c++11 ${CPPFLAGS} -I. -I./src/vsimagine -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -o src/imagine/api/imagine.o src/imagine/api/imagine.cpp
+
+	  g++ -c -fPIC ${CXXFLAGS} -std=c++11 ${CPPFLAGS} -I. -I./src/vsimagine -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -o src/imagine/common/decoder.o src/imagine/common/decoder.cpp
+	  g++ -c -fPIC ${CXXFLAGS} -std=c++11 ${CPPFLAGS} -I. -I./src/vsimagine -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -o src/imagine/common/file_io.o src/imagine/common/file_io.cpp
+	  g++ -c -fPIC ${CXXFLAGS} -std=c++11 ${CPPFLAGS} -I. -I./src/vsimagine -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -o src/imagine/common/io_context.o src/imagine/common/io_context.cpp
+	  g++ -c -fPIC ${CXXFLAGS} -std=c++11 ${CPPFLAGS} -I. -I./src/vsimagine -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -o src/imagine/common/jumpman.o src/imagine/common/jumpman.cpp
+	  g++ -c -fPIC ${CXXFLAGS} -std=c++11 ${CPPFLAGS} -I. -I./src/vsimagine -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -o src/imagine/common/memory_io.o src/imagine/common/memory_io.cpp
+	  g++ -c -fPIC ${CXXFLAGS} -std=c++11 ${CPPFLAGS} -I. -I./src/vsimagine -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -o src/imagine/common/path.o src/imagine/common/path.cpp
+
+	  g++ -c -fPIC ${CXXFLAGS} -std=c++11 ${CPPFLAGS} -I. -I./src/vsimagine -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -DP2P_USER_NAMESPACE=im_p2p -o src/imagine/provider/bmp_decoder.o src/imagine/provider/bmp_decoder.cpp
+	  g++ -c -fPIC ${CXXFLAGS} -std=c++11 ${CPPFLAGS} -I. -I./src/vsimagine -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -DP2P_USER_NAMESPACE=im_p2p -o src/imagine/provider/jpeg_decoder.o src/imagine/provider/jpeg_decoder.cpp
+	  g++ -c -fPIC ${CXXFLAGS} -std=c++11 ${CPPFLAGS} -I. -I./src/vsimagine -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -DP2P_USER_NAMESPACE=im_p2p -o src/imagine/provider/png_decoder.o src/imagine/provider/png_decoder.cpp
+	  g++ -c -fPIC ${CXXFLAGS} -std=c++11 ${CPPFLAGS} -I. -I./src/vsimagine -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -DP2P_USER_NAMESPACE=im_p2p -o src/imagine/provider/tiff_decoder.o src/imagine/provider/tiff_decoder.cpp
+
+	  g++ -c -fPIC ${CXXFLAGS} -std=c++11 ${CPPFLAGS} -I. -I./src/vsimagine -I./src/imagine -I./src/imagine/api -I./extra $(pkg-config --cflags vapoursynth) -o src/vsimagine/path.o src/vsimagine/path.cpp
+	  g++ -c -fPIC ${CXXFLAGS} -std=c++11 ${CPPFLAGS} -I. -I./src/vsimagine -I./src/imagine -I./src/imagine/api -I./extra $(pkg-config --cflags vapoursynth) -o src/vsimagine/vsimagine.o src/vsimagine/vsimagine.cpp
+
+	  ar r libimage.a extra/libp2p/v210.o extra/libp2p/p2p_api.o src/imagine/api/imagine.o src/imagine/common/decoder.o src/imagine/common/file_io.o src/imagine/common/io_context.o src/imagine/common/jumpman.o src/imagine/common/memory_io.o src/imagine/common/path.o src/imagine/provider/bmp_decoder.o src/imagine/provider/jpeg_decoder.o src/imagine/provider/png_decoder.o src/imagine/provider/tiff_decoder.o
 	  ranlib libimage.a
 
-	  g++ -shared -L. -limage $(pkg-config --libs libpng libturbojpeg libtiff-4 libopenjp2 libavcodec libavformat libavutil libswscale) -fPIC ${LDFLAGS} -o libvs${_plug}.so extra/vsxx/vsxx_pluginmain.o src/vsimagine/path.o src/vsimagine/vsimagine.o"> Makefile
+	  g++ -fPIC ${CXXFLAGS} -std=c++11 -shared -L. -limage $(pkg-config --libs libpng libturbojpeg libtiff-4 libopenjp2 libavcodec libavformat libavutil libswscale) -fPIC ${LDFLAGS} -o libvs${_plug}.so extra/vsxx/vsxx_pluginmain.o src/vsimagine/path.o src/vsimagine/vsimagine.o"> Makefile
 }
 
 build() {
   cd "${_plug}"
+
   make
 }
 
