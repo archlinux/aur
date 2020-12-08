@@ -1,0 +1,16 @@
+pkgbase = wkhtmltopdf-server
+	pkgdesc = Run Wkhtmltopdf as a Service
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/djmattyg007/wkhtmltopdf-server
+	arch = x86_64
+	license = Unlicense
+	makedepends = go
+	depends = glibc
+	source = https://github.com/djmattyg007/wkhtmltopdf-server/archive/1.0.0.tar.gz
+	sha512sums = 72d6f0ab20cff5cd89bbf0629e726d6f550e916b4501c62eea8f240c9e8c18e64694bbc3da9c6ae751a2a607054fcf569cf23ac8f436b2cfbc73e4766cab8261
+
+pkgname = wkhtmltopdf-server
+	depends = glibc
+	depends = wkhtmltopdf
+
