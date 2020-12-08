@@ -4,7 +4,7 @@ pkgdesc="ROS - The gripper_action_controller package."
 url='http://www.ros.org/'
 
 pkgname='ros-melodic-gripper-action-controller'
-pkgver='0.17.0'
+pkgver='0.17.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -58,9 +58,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ros_controllers-release-release-melodic-gripper_action_controller"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/gripper_action_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('90204cf2e2fd550e34f4e086098bd01f0f21bb6a121d74df7fe6139ff327487d')
+_dir="ros_controllers-${pkgver}/gripper_action_controller"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_controllers/archive/${pkgver}.tar.gz")
+sha256sums=('373e5b00522a7e0343fa6b7ffe95ccf7fe6bd44622fe28534a05e2abcd8dc6ba')
 
 build() {
   # Use ROS environment variables
