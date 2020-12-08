@@ -4,8 +4,8 @@
 # Please contribute to:
 # https://github.com/alfredopalhares/arch-pkgbuilds
 
-pkgname=('joplin-cli' 'joplin-desktop')
 pkgbase="joplin"
+pkgname=('joplin' 'joplin-desktop')
 pkgver=1.4.19
 pkgrel=1
 pkgdesc="A note taking and to-do application with synchronization capabilities - Split Package"
@@ -14,7 +14,7 @@ conflicts=('joplin' 'joplin-beta')
 makedepends=('git' 'npm' 'python' 'rsync')
 url="https://joplinapp.org/"
 license=('MIT')
-source=("joplin.desktop" "joplin-desktop.sh" "joplin-cli.sh"
+source=("joplin.desktop" "joplin-desktop.sh" "joplin.sh"
         "joplin-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/v${pkgver}.tar.gz")
 sha256sums=('c7c5d8b0ff9edb810ed901ea21352c9830bfa286f3c18b1292deca5b2f8febd2'
             'a450284fe66d89aa463d129ce8fff3a0a1a783a64209e4227ee47449d5737be8'
@@ -39,7 +39,7 @@ build() {
 }
 
 #TODO: A slimdown is needed
-package_joplin-cli() {
+package_joplin() {
   pkgdesc="A note taking and to-do application with synchronization capabilities - CLI App"
   depends=('nodejs' 'rsync')
 
@@ -83,7 +83,7 @@ package_joplin-cli() {
 
   msg2 "Installing Startup Script"
   cd "${srcdir}"
-  install -Dm755 joplin-cli.sh "${pkgdir}/usr/bin/joplin-cli"
+  install -Dm755 joplin.sh "${pkgdir}/usr/bin/joplin-cli"
 }
 
 #TODO: Check for slimdown

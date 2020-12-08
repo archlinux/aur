@@ -14,14 +14,14 @@ pkgbase = joplin
 	conflicts = joplin-beta
 	source = joplin.desktop
 	source = joplin-desktop.sh
-	source = joplin-cli.sh
+	source = joplin.sh
 	source = joplin-1.4.19.tar.gz::https://github.com/laurent22/joplin/archive/v1.4.19.tar.gz
 	sha256sums = c7c5d8b0ff9edb810ed901ea21352c9830bfa286f3c18b1292deca5b2f8febd2
 	sha256sums = a450284fe66d89aa463d129ce8fff3a0a1a783a64209e4227ee47449d5737be8
 	sha256sums = 5b6f8847ec0c3848375755213c3009c273f478b4b80ed2c5f0af8f67ee0e94fb
 	sha256sums = 55aad4fe50e2da980983a69bc7c0870626064db971550d522e266feb17d38916
 
-pkgname = joplin-cli
+pkgname = joplin
 	pkgdesc = A note taking and to-do application with synchronization capabilities - CLI App
 	depends = nodejs
 	depends = rsync
