@@ -1,6 +1,6 @@
 _name=mizani
 pkgname=python-$_name
-pkgver=0.5.3
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='Scales for python'
 arch=(any)
@@ -9,14 +9,14 @@ license=(BSD)
 depends=(
 	python
 	python-numpy
-	'python-pandas>=0.23.4'
+	python-pandas
 	python-matplotlib
 	python-palettable
 )
-_pyarch=py2.py3
+_pyarch=py3
 _wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
 source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
-sha256sums=('dbb700cac139a47d3edd4eefa7646bd6415e83df48b369cf791ae674cc138a01')
+sha256sums=('8a8035f6b3b8294378e21acb24d742896b27b471cfd14cd8da8a0ccd9adf3cb5')
 noextract=("$_wheel")
 
 package() {
