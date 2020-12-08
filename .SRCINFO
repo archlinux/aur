@@ -1,0 +1,15 @@
+pkgbase = reqflow
+	pkgdesc = A free and open-source tool for traceability of requirements across documents, designed to analyse documents with speed and efficiency
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://goeb.github.io/reqflow
+	arch = x86_64
+	license = GPL2
+	depends = poppler
+	depends = libzip
+	depends = libxml2
+	source = reqflow-1.6.0.tar.gz::https://github.com/goeb/reqflow/archive/v1.6.0.tar.gz
+	sha256sums = 2cfee36c7a7bf920278dc09a330ff8e2861677f820f16af4c4a6872cc3479ac9
+
+pkgname = reqflow
+
