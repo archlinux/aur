@@ -1,12 +1,14 @@
-# Maintainer: Andrey Tkachenko <andreytkachenko64@gmail.com>
+# Maintainer: yjun <jerrysteve1101@gmail.com>
+# Contributor: Andrey Tkachenko <andreytkachenko64@gmail.com>
 
-_pkgname=stm32flash
+
 pkgname=stm32flash-git
-pkgver=r351.5ad1f87
+_pkgname=stm32flash
+pkgver=r363.dba794a
 pkgrel=1
 pkgdesc='Open source flash program for the STM32 ARM processors using the ST serial bootloader over UART or I2C'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
-url='https://git.code.sf.net/p/stm32flash/code'
+url='https://sourceforge.net/projects/stm32flash/'
 license=('GPLv2')
 makedepends=('git')
 provides=("$_pkgname")

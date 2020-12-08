@@ -1,17 +1,19 @@
 pkgbase = stm32flash-git
 	pkgdesc = Open source flash program for the STM32 ARM processors using the ST serial bootloader over UART or I2C
-	pkgver = 0.4
+	pkgver = r363.dba794a
 	pkgrel = 1
-	url = https://github.com/ARMinARM/stm32flash
-	arch = x86_64
+	url = https://sourceforge.net/projects/stm32flash/
 	arch = i686
+	arch = x86_64
 	arch = arm
 	arch = armv6h
 	arch = armv7h
 	license = GPLv2
-	makedepends = make
 	makedepends = git
-	source = git+https://github.com/ARMinARM/stm32flash.git
-	sha1sums = SKIP
+	provides = stm32flash
+	conflicts = stm32flash
+	source = stm32flash::git://git.code.sf.net/p/stm32flash/code
+	sha512sums = SKIP
 
 pkgname = stm32flash-git
+
