@@ -14,11 +14,9 @@ pkgbase = lightcord-git
 	source = lightcord-git::git://github.com/Lightcord/Lightcord.git
 	source = Lightcord.desktop
 	source = https://raw.githubusercontent.com/Lightcord/Lightcord/master/LICENSE
-	source = catch-error.patch
 	source = lightcord.png::https://raw.githubusercontent.com/Lightcord/LightcordLogos/master/lightcord/lightcord.png
 	md5sums = SKIP
 	md5sums = d60e05000301e23b5819bdfbe8d9f52b
-	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
