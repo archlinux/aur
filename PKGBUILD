@@ -1,8 +1,8 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 _pkgname=telegram-tg
 pkgname=$_pkgname-git
-pkgver=v0.5.0.r7.7a9e312
-pkgrel=1
+pkgver=v0.7.0.r3.06f7c5b
+pkgrel=2
 pkgdesc="terminal telegram client that really works"
 arch=(any)
 url="https://github.com/paul-nameless/tg"
