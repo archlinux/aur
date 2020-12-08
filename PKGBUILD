@@ -2,17 +2,17 @@
 
 _name=headerparser
 pkgname=python-$_name
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='argparse for mail-style headers'
 arch=(any)
-url="https://github.com/jwodder//$_name"
+url="https://github.com/jwodder/$_name"
 license=(MIT)
-depends=(python-six)
+depends=(python)
 _pyarch=py2.py3
 _wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
 source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
-sha256sums=('216ecee4a995c88c66764814c47c86109cf9fef564105a5a024d6efa6cdfb2b2')
+sha256sums=('75857316449cdad212a3ba5c7b3b3177e45dd86e1f83b003f0b6b5108f14766e')
 noextract=("$_wheel")
 
 package() {
