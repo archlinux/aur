@@ -1,7 +1,7 @@
 pkgbase = vgrep
 	pkgdesc = Reimpementation of the ancient cgvg perl scripts
 	pkgver = 2.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vrothberg/vgrep
 	arch = x86_64
 	arch = i686
