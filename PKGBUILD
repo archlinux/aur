@@ -1,8 +1,8 @@
 # Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
 
 pkgname=brltty-git
-pkgver=6.1.r619.g7e6e9f341
-pkgrel=2
+pkgver=6.1.r666.g11e2b96fd
+pkgrel=1
 pkgdesc="Braille display driver for Linux/Unix (development version)"
 arch=(x86_64)
 url="https://brltty.app"
@@ -68,5 +68,6 @@ package() {
 	make INSTALL_ROOT="${pkgdir}" install-systemd
 	make INSTALL_ROOT="${pkgdir}" install-udev
 	make INSTALL_ROOT="${pkgdir}" install-dracut
+	make INSTALL_ROOT="${pkgdir}" install-polkit
 	install -vDm 644 "Documents/brltty.conf" -t "${pkgdir}/etc/"
 }
