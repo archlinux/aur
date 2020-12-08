@@ -2,7 +2,7 @@
 _pkgname=tg
 pkgname=telegram-$_pkgname
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="terminal telegram client that really works"
 arch=('any')
 url="https://github.com/paul-nameless/tg"
