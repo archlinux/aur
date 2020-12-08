@@ -2,14 +2,18 @@
 
 pkgname=python-wsgidav-seafile
 pkgver=7.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Seafile webdav server"
 arch=('any')
 url="https://github.com/haiwen/seafdav"
 license=('MIT')
 depends=('python'
          'python-json5'
-         'python-seafobj')
+         'python-seafobj'
+         'python-defusedxml'
+         'python-jinja'
+         'python-sqlalchemy'
+         'python-yaml')
 makedepends=('python-setuptools'
              'libyaml')
 conflicts=('python-wsgidav')
