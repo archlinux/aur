@@ -1,6 +1,6 @@
 # Maintainer: Senya <senya at riseup.net>
 pkgname=crowdin-cli
-pkgver=3.4.1
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Command line tool that allows you to manage and synchronize localization resources with your Crowdin project"
 url="https://support.crowdin.com/cli-tool/"
