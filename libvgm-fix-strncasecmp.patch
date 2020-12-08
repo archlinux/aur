@@ -1,0 +1,26 @@
+From 5cb65a74bacb0fec100cd49b438a19aba905693a Mon Sep 17 00:00:00 2001
+From: John Regan <john@jrjrtech.com>
+Date: Tue, 8 Dec 2020 16:10:28 -0500
+Subject: [PATCH] strutils: use strcasecmp/strncasecmp on non-windows
+
+---
+ utils/StrUtils-CPConv_IConv.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/utils/StrUtils-CPConv_IConv.c b/utils/StrUtils-CPConv_IConv.c
+index 51d582c..3769547 100644
+--- a/utils/StrUtils-CPConv_IConv.c
++++ b/utils/StrUtils-CPConv_IConv.c
+@@ -10,6 +10,12 @@
+ #define strdup		_strdup
+ #define stricmp		_stricmp
+ #define strnicmp	_strnicmp
++#else
++#ifdef _POSIX_C_SOURCE
++#include <strings.h>
++#endif
++#define stricmp strcasecmp
++#define strnicmp strncasecmp
+ #endif
+ 
+ #include <iconv.h>
