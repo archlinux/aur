@@ -1,4 +1,5 @@
-*.tar.gz
-*.xz
-src
-pkg
+*
+!.gitignore
+!lens.desktop
+!PKGBUILD
+!.SRCINFO
