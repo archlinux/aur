@@ -2,10 +2,10 @@
 pkgname=jre-jetbrains
 _major=11
 _minor=0
-_patch=9
-_build=1171.1
+_patch=9_1
+_build=1207.1
 pkgver=${_major}.${_minor}.${_patch}b${_build}
-pkgrel=2
+pkgrel=1
 pkgdesc="OpenJDK Java $_major runtime with some fixes and enhancements by JetBrains"
 arch=('x86_64')
 url="https://bintray.com/jetbrains/intellij-jdk"
@@ -18,7 +18,7 @@ provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-environme
 _zipname="jbr-${_major}_${_minor}_${_patch}-linux-x64-b${_build}.tar.gz"
 install=$pkgname.install
 source=("https://dl.bintray.com/jetbrains/intellij-jbr/${_zipname}")
-sha256sums=('592c17641af144c02cb0a7d2d029736bc75aa93e31fc06f72d56bdbe0d8bab57')
+sha256sums=('2b04ec4c45195c0cd3a2d16adae3dafddb19436ca9096703bdbf4dcf94a8ff46')
 
 package() {
     rm "$srcdir/$_zipname"
