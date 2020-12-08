@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-control-toolbox
 	pkgdesc = ROS - The control toolbox contains modules that are useful across all controllers.
-	pkgver = 1.17.0
-	pkgrel = 2
+	pkgver = 1.18.2
+	pkgrel = 1
 	url = https://wiki.ros.org/control_toolbox
 	arch = i686
 	arch = x86_64
@@ -28,8 +28,8 @@ pkgbase = ros-noetic-control-toolbox
 	depends = ros-noetic-realtime-tools
 	depends = ros-noetic-cmake-modules
 	depends = tinyxml
-	source = ros-noetic-control-toolbox-1.17.0.tar.gz::https://github.com/ros-controls/control_toolbox/archive/1.17.0.tar.gz
-	sha256sums = f137b29311f2bef60f910d411c43dd123a3c7609f9e438796b80144e19b696c8
+	source = ros-noetic-control-toolbox-1.18.2.tar.gz::https://github.com/ros-controls/control_toolbox/archive/1.18.2.tar.gz
+	sha256sums = 064bcde85b251fdb8dff91c121652526e813a9cba3859786cc16e7b8a55e2e79
 
 pkgname = ros-noetic-control-toolbox
 
