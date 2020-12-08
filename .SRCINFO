@@ -1,0 +1,19 @@
+pkgbase = cgal-headers
+	pkgdesc = The Computational Geometry Algorithms Library.
+	pkgver = 5.1.1
+	pkgrel = 1
+	url = https://www.cgal.org/
+	arch = any
+	license = GPL
+	license = LGPL
+	makedepends = cmake
+	depends = mpfr
+	depends = gmp
+	depends = boost
+	provides = cgal
+	conflicts = cgal
+	source = https://github.com/CGAL/cgal/releases/download/v5.1.1/CGAL-5.1.1-library.tar.xz
+	sha512sums = 3abbc92ae320765a4c4bd9980ff24af0d3484c4ed298f201e75b4cf44df47562d1c649b2edebb1b4a74bd3c57784d64536de2d1e03ad4e34aa8e394b722e03c3
+
+pkgname = cgal-headers
+
