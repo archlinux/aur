@@ -1,0 +1,10 @@
+post_install() {
+  cat << EOF
+
+  Get started with cspace --help
+
+EOF
+}
+
+post_upgrade() {
+}

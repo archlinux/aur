@@ -1,0 +1,18 @@
+pkgbase = cspace
+	pkgdesc = A simple color conversion and formatting tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/DRKblade/cspace
+	install = cspace.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkg-config
+	depends = gcc-libs
+	source = https://github.com/DRKblade/cspace/releases/download/v1.0.0/cspace-1.0.0.tar
+	sha256sums = 3ce4b26a785a46edc64300885d0c514aad8df73625f29ea42c7e391caee79206
+
+pkgname = cspace
+
