@@ -2,18 +2,17 @@
 # Contributor: erm67
 # Contributor: Stefan Husmann <Stefan-Husmann@t-online.de>
 pkgname=xpaint
-pkgver=2.10.1
-pkgrel=2
-pkgdesc="A color image editing tool which features most standard \
-paint program options."
+pkgver=3.0.2
+pkgrel=1
+pkgdesc="A color image editing tool which features most standard paint program options."
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/sf-xpaint/"
 license=('GPL')
-depends=('libxaw3dxft' 'libpng' 'libtiff' 'libxft' 'libxpm')
+depends=('libxaw3dxft' 'libpng' 'libtiff' 'libxft' 'libxpm' 'netpbm' 'hicolor-icon-theme')
 optdepends=('gv: external viewer for PostScript output' 'imagemagick: external viewer for pixel graphics')
 makedepends=('git')
 source=(http://downloads.sourceforge.net/sourceforge/sf-$pkgname/$pkgname-$pkgver.tar.bz2 git+https://gist.github.com/10018613.git X11app.patch)
-md5sums=('c2c5b2bcd411de885f825b2451ec68ef'
+md5sums=('ee568380ee559cff187e3cd623d03a66'
          'SKIP'
          '10b3d1053a8a9f8d1707fd45b7154b68')
 #options=('!makeflags')
