@@ -30,7 +30,7 @@ build() {
 
 package() {
   [ "$CARCH" == "x86_64" ] && IS64BIT="64" || IS64BIT=""
-  sudo install -Dm755 "$srcdir"/kart-public/bin/Linux$IS64BIT/Release/lsdl2srb2kart /usr/bin/srb2kart
+  sudo install -Dm755 "$srcdir"/kart-public/bin/Linux$IS64BIT/Release/lsdl2srb2kart /usr/bin/moe-mansion
   # icon + .desktop
   sudo install -Dm644 "$srcdir"/kart-public/src/sdl/SDL_icon.xpm /usr/share/pixmaps/srb2kart.xpm
   sudo install -Dm644 srb2kart.desktop /usr/share/applications/srb2kart.desktop
