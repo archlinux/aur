@@ -1,4 +1,5 @@
-# Maintainer: Wesley Moore <wes@wezm.net>
+# Maintainer: Max Harmathy <max.harmathy@web.de>
+# Contributor: Wesley Moore <wes@wezm.net>
 pkgname=tootle
 pkgver=0.2.0
 pkgrel=4
