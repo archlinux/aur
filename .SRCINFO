@@ -1,7 +1,7 @@
 pkgbase = mopidy-spotify
 	pkgdesc = Mopidy extension for playing music from Spotify
-	pkgver = 4.0.1
-	pkgrel = 2
+	pkgver = 4.1.0
+	pkgrel = 1
 	url = http://www.mopidy.com
 	arch = any
 	license = APACHE
@@ -10,8 +10,8 @@ pkgbase = mopidy-spotify
 	depends = python-pyspotify
 	depends = python-setuptools
 	depends = python-requests
-	source = mopidy-spotify-4.0.1.tar.gz::https://github.com/mopidy/mopidy-spotify/archive/v4.0.1.tar.gz
-	sha256sums = 8e90d9a18958145ef55fcd56f5f8f958e2a93d5b7451189e1ab9445000ca88a9
+	source = mopidy-spotify-4.1.0.tar.gz::https://github.com/mopidy/mopidy-spotify/archive/v4.1.0.tar.gz
+	sha256sums = 3a02a8efb8497250ad5996efdc12370c81a3e3c3ad0d86b889a5bc5faeaa51f5
 
 pkgname = mopidy-spotify
 
