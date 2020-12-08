@@ -12,7 +12,7 @@ arch=('x86_64')
 url="https://veusz.github.io/"
 license=('GPL2')
 depends=('python-pyqt5' 'python-numpy' 'python-sip' 'hicolor-icon-theme')
-makedepends=('sip5')
+makedepends=('sip')
 optdepends=('python-h5py:  HDF5 support'
 #             'pyemf >= 2.0.0: EMF export   https://github.com/jeremysanders/pyemf (Python 3 port in development) - package missing
             'python-dbus: dbus interface'
