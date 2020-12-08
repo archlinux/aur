@@ -1,0 +1,9 @@
+[Unit]
+Description=Beam
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/beam -headless
+
+[Install]
+WantedBy=default.target
