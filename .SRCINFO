@@ -1,0 +1,32 @@
+pkgbase = lib32-libgit2
+	pkgdesc = A linkable library for Git
+	pkgver = 1.1.0
+	pkgrel = 1
+	epoch = 1
+	url = https://libgit2.github.com/
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = libssh2
+	makedepends = python
+	depends = lib32-glibc
+	depends = lib32-http-parser
+	depends = lib32-openssl
+	depends = lib32-pcre
+	depends = lib32-zlib
+	provides = libgit2.so
+	source = libgit2-1.1.0.tar.gz::https://github.com/libgit2/libgit2/archive/v1.1.0.tar.gz
+	source = libgit2-0.99.0-remove_http-parse_incompatible_tests.patch
+	sha512sums = 347bb68900181b44fa58a0417506c91383adb965607fce049a5b4c57ac9cc286e0a140d164c339b50fb6cd6951f47757c2917a2df44ba004bfaa4fb643946bb8
+	sha512sums = e73072424c9c1870eaaf93b3451295ef7333b59f6cb8a6897dd690b69a20aaeb70f00d15a692c1d9e0745d5ef16bbbb912fbd570d8bc83ca0b7d57f32025bf94
+	b2sums = 2a1c1f71d2a2e06448c78eb46028fdcfd59682dccf2365851c4bd059cdd78842320f9a5ba7345e761611a5b4eba634faf2e26cc669097da0ba2e1c832c23059f
+	b2sums = cdca2012f772afea99436faa02f80697dc9042a6eb5ae14f8ee8ba9e100a65b936cdfaf84ec0361543c70859375c823a25cfee52b0face40b8dea2ec2cf1de59
+
+pkgname = lib32-libgit2
+	depends = lib32-glibc
+	depends = lib32-http-parser
+	depends = lib32-openssl
+	depends = lib32-pcre
+	depends = lib32-zlib
+	depends = libssh2.so
+
