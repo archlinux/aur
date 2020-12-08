@@ -12,6 +12,7 @@ post_install() {
       export CL_JDK=/usr/lib/jvm/jre-jetbrains
       export DATAGRIP_JDK=/usr/lib/jvm/jre-jetbrains
       export GOLAND_JDK=/usr/lib/jvm/jre-jetbrains
+      export STUDIO_JDK=/usr/lib/jvm/jre-jetbrains
 
 EOF
 }
@@ -26,7 +27,7 @@ post_upgrade() {
 post_remove() {
     cat <<EOF
 
-    Don't forget to remove environment variable(-s): IDEA_JDK / PHPSTORM_JDK / WEBIDE_JDK / PYCHARM_JDK / RUBYMINE_JDK / CL_JDK / DATAGRIP_JDK / GOLAND_JDK
+    Don't forget to remove environment variable(-s): IDEA_JDK / PHPSTORM_JDK / WEBIDE_JDK / PYCHARM_JDK / RUBYMINE_JDK / CL_JDK / DATAGRIP_JDK / GOLAND_JDK / STUDIO_JDK
 
 EOF
 }
