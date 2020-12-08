@@ -1,6 +1,6 @@
 # Maintainer: d.woffinden
 pkgname=z3-git
-pkgver=4.8.8.r706.g1c7d27bdf
+pkgver=4.8.9.r232.gfae948130
 pkgrel=1
 pkgdesc='Z3 is a theorem prover from Microsoft Research'
 arch=('i686' 'x86_64')
