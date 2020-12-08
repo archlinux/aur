@@ -3,7 +3,7 @@
 
 pkgname=pyzbar
 pkgver=0.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A ctypes-based wrapper around the zbar barcode reader"
 arch=('any')
 license=('MIT')

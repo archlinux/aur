@@ -1,7 +1,7 @@
 pkgbase = pyzbar
 	pkgdesc = A ctypes-based wrapper around the zbar barcode reader
 	pkgver = 0.1.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/NaturalHistoryMuseum/pyzbar/
 	arch = any
 	license = MIT
