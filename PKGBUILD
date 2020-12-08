@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  echo $pkgver
+  git rev-parse --short HEAD
 }
 
 prepare() {
