@@ -1,7 +1,7 @@
 pkgbase = stepcode
 	pkgdesc = Data exchange with ISO 10303. Used with IFC, STEP, and other standards to exchange data wit C++ and Python.
 	pkgver = 0.8
-	pkgrel = 4
+	pkgrel = 5
 	url = https://stepcode.github.io
 	arch = i686
 	arch = x86_64
