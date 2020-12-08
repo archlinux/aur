@@ -1,6 +1,6 @@
 pkgbase = libjpeg-xl
 	pkgdesc = JPEG XL image format reference implementation
-	pkgver = 0.1
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = libjpeg-xl
 	makedepends = python
 	makedepends = doxygen
 	makedepends = graphviz
-	source = git+https://gitlab.com/wg1/jpeg-xl.git#tag=v0.1
+	source = git+https://gitlab.com/wg1/jpeg-xl.git#tag=v0.1.1
 	source = git+https://github.com/google/brotli.git
 	source = git+https://github.com/lvandeve/lodepng.git
 	source = git+https://github.com/mm2/Little-CMS.git
