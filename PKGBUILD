@@ -4,7 +4,7 @@ pkgdesc="ROS - The pluginlib package provides tools for writing and dynamically 
 url='http://www.ros.org/wiki/pluginlib'
 
 pkgname='ros-noetic-pluginlib'
-pkgver='1.12.2'
+pkgver='1.13.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -39,7 +39,7 @@ depends=(
 
 _dir="pluginlib-${pkgver}/pluginlib"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/pluginlib/archive/${pkgver}.tar.gz")
-sha256sums=('d83289a919719c4cf97513c0a752eaf4a38ef17559e5ef676d29c8fb278ca82b')
+sha256sums=('879e434d09fdcca238868b4ba92eaca77234e4291947c41d25bc5b14bb54fa0e')
 
 build() {
 	# Use ROS environment variables.
