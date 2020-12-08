@@ -1,7 +1,7 @@
 pkgbase = lightcord-git
 	pkgdesc = A simple - customizable - Discord Client
-	pkgver = r399.3372285
-	pkgrel = 2
+	pkgver = r401.75bc92d
+	pkgrel = 1
 	url = https://github.com/Lightcord/Lightcord
 	arch = x86_64
 	license = MIT

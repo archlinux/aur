@@ -1,8 +1,8 @@
 # Maintainer: pryme-svg <edoc.www@gmail.com>
 
 pkgname=lightcord-git
-pkgver=r399.3372285
-pkgrel=2
+pkgver=r401.75bc92d
+pkgrel=1
 pkgdesc="A simple - customizable - Discord Client"
 arch=('x86_64')
 url="https://github.com/Lightcord/Lightcord"
