@@ -4,7 +4,7 @@
 # Contributor: Tim Meusel <tim@bastelfreak.de>
 
 pkgname=pacemaker
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
@@ -18,10 +18,9 @@ optdepends=('pssh: for use with some tools'
             'pdsh: for use with some tools'
             'crmsh: for use with crm_report'
             'booth: for geo-clustering')
-install=${pkgname}.install
 source=("https://github.com/ClusterLabs/$pkgname/archive/Pacemaker-$pkgver.tar.gz"
         'crm_report.in')
-sha512sums=('fbff3b5ab05ad52d469304d5bc7fca518df2f491a1176a24735cd1a9b46f7ff90dc5aeae65e5e29feb86e8a210e69e528261138847d6f8773933fb557e71133d'
+sha512sums=('5fd3614f0284297babb66ea2dc567583315052fcf77f49107c52161e8e8c164ae3169d98528fdc1316d8eabaacc98ed24e9c6e6c90b3286f2f012a4ee874bbba'
             '09a80f5579db9016dcbba759ee9b661aea24ed7c98906939d5e50befb344c693652a9634ab804a91bfedeeeb69ce5ab87f30d2ed356bfefd9cdc67669a1cce64')
 
 prepare() {
@@ -70,6 +69,11 @@ package() {
 		d /var/lib/pacemaker/cib      0770 hacluster haclient
 		d /var/lib/pacemaker/cores    0770 hacluster haclient
 		d /var/lib/pacemaker/pengine  0770 hacluster haclient
+	EOF
+  install -Dm644 /dev/null "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  cat>"$pkgdir/usr/lib/sysusers.d/$pkgname.conf"<<-EOF
+    g haclient 189
+    u hacluster 189:189 "cluster user" / /sbin/nologin
 	EOF
   rm -fr "$pkgdir/var"
   chmod a+x "$pkgdir/usr/share/pacemaker/tests/cts/CTSlab.py"
