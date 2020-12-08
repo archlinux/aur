@@ -5,7 +5,7 @@
 
 pkgname=pacemaker1.1
 _pkgname=pacemaker
-pkgver=1.1.21
+pkgver=1.1.24
 pkgrel=1
 pkgdesc="advanced, scalable high-availability cluster resource manager (1.1 series)"
 arch=('i686' 'x86_64')
@@ -21,11 +21,10 @@ optdepends=('pssh: for use with some tools'
             'booth: for geo-clustering')
 provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
-install=${_pkgname}.install
 source=("https://github.com/ClusterLabs/$_pkgname/archive/Pacemaker-$pkgver.tar.gz"
         'crm_report.in'
         'makefile-chown.patch')
-sha512sums=('fd859ed0d932fc17c57574abc416627662935b7a5a5789f77cbe28c99fb7a185b5c0392efd99a9db9031e41f5fed53222e100c9fbc4d9d176ca4775068a5af42'
+sha512sums=('6eb5996ae135970cb7a04b81ad43d060e898566d0addd70da61085d47da6d7dc752e8e9df580e18c295c8b373bab6b4574ddb3a34cb7a1e29b2ed768a4f916bd'
             '09a80f5579db9016dcbba759ee9b661aea24ed7c98906939d5e50befb344c693652a9634ab804a91bfedeeeb69ce5ab87f30d2ed356bfefd9cdc67669a1cce64'
             'bbd4f0415bbc07dedc447cdedea8470ee5308631721c04d7a495e5d0dcad639754f26d7db5c2bdad13e9669346e83d9674607dc7349e1b59cb7e9a35b31b2d22')
 
@@ -39,6 +38,7 @@ prepare() {
 build() {
   cd ${_pkgname}-Pacemaker-${pkgver}
   ./configure \
+    CFLAGS="$CFLAGS -fcommon" \
     CPPFLAGS= \
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
@@ -65,6 +65,8 @@ build() {
     --with-configdir=/etc/pacemaker
 #   --with-nagios-plugin-dir=DIR
 #   --with-nagios-metadata-dir=DIR
+  # Fight unused direct deps
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
   make V=0
 }
 
@@ -79,6 +81,11 @@ package() {
 		d /var/lib/pacemaker/cib      0750 hacluster haclient
 		d /var/lib/pacemaker/cores    0750 hacluster haclient
 		d /var/lib/pacemaker/pengine  0750 hacluster haclient
+	EOF
+  install -Dm644 /dev/null "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+  cat>"$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"<<-EOF
+    g haclient 189
+    u hacluster 189:189 "cluster user" / /sbin/nologin
 	EOF
   rm -fr "$pkgdir/var"
   chmod a+x "$pkgdir/usr/share/pacemaker/tests/cts/CTSlab.py"
