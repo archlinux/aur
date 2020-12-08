@@ -1,6 +1,6 @@
 pkgbase = pavucontrol-qt-sandsmark-git
-	pkgdesc = Pulseaudio volume control, fork of lxqt's with bugfixes and extra features
-	pkgver = 0.3.0.316.g27c8a83
+	pkgdesc = Improved version of pavucontrol, the standard pulseaudio volume control
+	pkgver = 0.3.0.320.gc1ac54e
 	pkgrel = 1
 	url = https://github.com/sandsmark/pavucontrol-qt
 	arch = i686

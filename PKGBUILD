@@ -1,10 +1,11 @@
-# Maintainer: Peter Mattern <pmattern at arcor dot de>
+# Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
+# Contributor: Peter Mattern <pmattern at arcor dot de>
 
 _pkgname='pavucontrol-qt'
 pkgname="$_pkgname-sandsmark-git"
-pkgver=0.3.0.316.g27c8a83
+pkgver=0.3.0.320.gc1ac54e
 pkgrel=1
-pkgdesc="Pulseaudio volume control, fork of lxqt's with bugfixes and extra features"
+pkgdesc="Improved version of pavucontrol, the standard pulseaudio volume control"
 arch=('i686' 'x86_64')
 url="https://github.com/sandsmark/$_pkgname"
 license=('GPL2')
@@ -16,8 +17,8 @@ source=("git+https://github.com/sandsmark/$_pkgname.git")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd $_pkgname
-  git describe --always | sed "s/-/./g"
+    cd $_pkgname
+    git describe --always | sed "s/-/./g"
 }
 
 prepare() {
@@ -32,6 +33,8 @@ build() {
 }
 
 package() {
-  cd build
-  make DESTDIR=$pkgdir install
+    cd build
+    make DESTDIR=$pkgdir install
 }
+
+# vim: ft=sh syn=sh ts=4 sw=4 expandtab
