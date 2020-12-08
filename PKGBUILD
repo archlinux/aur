@@ -9,7 +9,7 @@ url="https://www.sipgateteam.de/softphone/download"
 license=('MIT')
 makedepends=('git'
 	     'wget')
-source=("https://gitlab.com/nbebaw/softphone.git")
+source=("git+https://gitlab.com/nbebaw/softphone.git")
 md5sums=('SKIP')
 
 package() {
