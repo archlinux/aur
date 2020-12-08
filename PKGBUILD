@@ -5,7 +5,7 @@ pkgver=1.10
 pkgrel=27
 pkgdesc="SIPGATE"
 arch=('any')
-url="https://gitlab.com/nbebaw/softphone"
+url="https://www.sipgateteam.de/softphone/download"
 license=('MIT')
 makedepends=('git'
 	     'wget')
