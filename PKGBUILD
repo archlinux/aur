@@ -1,6 +1,6 @@
 # Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 pkgname=3proxy
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="A tiny crossplatform proxy server"
 arch=('any')
@@ -14,7 +14,7 @@ source=("https://github.com/z3APA3A/3proxy/archive/$pkgver.tar.gz"
         "sysusers"
         "tmpfiles"
 )
-md5sums=('e57ea3d597dfad7797e87380ce67a68a'
+md5sums=('3ab30a34c01ea555d31da8a0fb564062'
          '99fbf305116df79fde910402c1132295'
          "6cafc741aa7ca8aab877f24a132c8bd1"
          "127ddc9c57a7b30ed8c70782f94e69b1"
