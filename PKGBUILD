@@ -2,7 +2,7 @@
 
 pkgname=python-keepkey
 pkgver=6.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for communicating with KeepKey Hardware Wallet"
 arch=('any')
 depends=('python'
