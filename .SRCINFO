@@ -1,7 +1,7 @@
 pkgbase = python-gettext
 	pkgdesc = Python implementation of Gettext
 	pkgver = 4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/python-gettext/
 	arch = any
 	license = GPL3

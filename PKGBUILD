@@ -2,7 +2,7 @@
 pkgbase=python-gettext
 pkgname=('python-gettext' 'python2-gettext')
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python implementation of Gettext"
 arch=('any')
 url="https://pypi.org/project/python-gettext/"
