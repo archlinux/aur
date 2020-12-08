@@ -1,6 +1,6 @@
 pkgbase = xpaint
 	pkgdesc = A color image editing tool which features most standard paint program options.
-	pkgver = 3.0.2
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = http://sourceforge.net/projects/sf-xpaint/
 	arch = i686
@@ -16,10 +16,10 @@ pkgbase = xpaint
 	depends = hicolor-icon-theme
 	optdepends = gv: external viewer for PostScript output
 	optdepends = imagemagick: external viewer for pixel graphics
-	source = http://downloads.sourceforge.net/sourceforge/sf-xpaint/xpaint-3.0.2.tar.bz2
+	source = http://downloads.sourceforge.net/sourceforge/sf-xpaint/xpaint-3.0.3.tar.bz2
 	source = git+https://gist.github.com/10018613.git
 	source = X11app.patch
-	md5sums = ee568380ee559cff187e3cd623d03a66
+	md5sums = 9ff83ec7ca26c56b15e8769dbe26d5fd
 	md5sums = SKIP
 	md5sums = 10b3d1053a8a9f8d1707fd45b7154b68
 
