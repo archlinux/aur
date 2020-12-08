@@ -1,7 +1,7 @@
 pkgbase = python-fancycompleter
 	pkgdesc = Colorful TAB completion for Python prompt
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pdbpp/fancycompleter
 	install = python-fancycompleter.install
 	arch = any
