@@ -1,0 +1,16 @@
+pkgbase = gol-git
+	pkgdesc = implementation of Conway's Game of Life in C
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Benjamin-Davies/gol
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = pandoc
+	provides = gol
+	conflicts = gol
+	source = git://github.com/Benjamin-Davies/gol
+	sha256sums = SKIP
+
+pkgname = gol-git
+
