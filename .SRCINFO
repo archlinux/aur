@@ -1,0 +1,14 @@
+pkgbase = ndstool
+	pkgdesc = A tool for packing and unpacking nds roms
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/devkitPro/ndstool/
+	arch = any
+	license = GPL3
+	makedepends = gcc
+	makedepends = make
+	source = https://github.com/devkitPro/ndstool/releases/download/v2.1.2/ndstool-2.1.2.tar.bz2
+	sha256sums = 4fb4668e52cb48fe54adff8241e09751a8ed6f38639978bfbf33236427ba7d09
+
+pkgname = ndstool
+
