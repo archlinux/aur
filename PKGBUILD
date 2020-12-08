@@ -4,7 +4,7 @@ pkgdesc="ROS - Controller to publish state of force-torque sensors."
 url='http://wiki.ros.org/force_torque_sensor_controller'
 
 pkgname='ros-melodic-force-torque-sensor-controller'
-pkgver='0.17.0'
+pkgver='0.17.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -44,9 +44,9 @@ depends=(
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ros_controllers-release-release-melodic-force_torque_sensor_controller"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/force_torque_sensor_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0a2fdc3e336d232f22b3015d8eb29e92daeb43ecb54f7bb46d6c3761600334f1')
+_dir="ros_controllers-${pkgver}/force_torque_sensor_controller"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_controllers/archive/${pkgver}.tar.gz")
+sha256sums=('373e5b00522a7e0343fa6b7ffe95ccf7fe6bd44622fe28534a05e2abcd8dc6ba')
 
 build() {
   # Use ROS environment variables
