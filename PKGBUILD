@@ -4,7 +4,7 @@
 _pkgname=devhub
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.101.0
+pkgver=0.102.0
 pkgrel=1
 pkgdesc="TweetDeck for GitHub - AppImage version"
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('devhub')
 _appimage="${_pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/devhubapp/devhub/releases/download/v${pkgver}/DevHub-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('bd09da30167862808d3ded1a740ed2bad267a2a5529da44743c8d29b31b91604')
+sha256sums_x86_64=('28620433cf9d36151e21786ed67ba8efc5c0f84517bcbad879a30793e558d2c6')
 
 prepare() {
     chmod +x "${_appimage}"
