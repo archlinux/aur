@@ -7,7 +7,7 @@
 
 pkgname=calculix
 pkgver=2.17
-pkgrel=1
+pkgrel=2
 pkgdesc="CalculiX: 3D finite element solver and post-processor (executables)"
 arch=('i686' 'x86_64')
 options=(!makeflags !buildflags)
@@ -29,7 +29,7 @@ source=("http://www.dhondt.de/ccx_${pkgver}.src.tar.bz2"
 sha256sums=('ca708ad4aa729d9f84a9faba343c1bcc0b7cc84ed372616ebb55c8e6fa8f6e50'
             '798f94e536197bb10a74bae096f2a29a5111239020e7d10f93e1ad3d90c370cf'
             '01b32864714d7ed7c760567e3a04077f3e41fe171d1804b305c96c344b0e4d2e'
-            'a3c8c91c6ecd4b958ed366fb78cd6ebde077d238f7aaa2d0714fab31d6ff48c9')
+            'd6bbe96457d6a773958a9eb5a783ae630c8c2ea38ebaa0c6a799f3384e85d84f')
 
 prepare()
 {
@@ -47,11 +47,11 @@ build()
     
     msg2 "Building solver..."
     cd "${srcdir}/CalculiX/ccx_${pkgver}/src"
-    make
+    make CFLAGS='-Wall -O2 -fopenmp -I /usr/include/spooles -DARCH="Linux" -DSPOOLES -DARPACK -DMATRIXSTORAGE -DNETWORKOUT -DUSE_MT=1' FFLAGS='-Wall -O2 -fallow-argument-mismatch' LIBS='-lpthread -lm -lc -lspooles -larpack -lblas -llapack'
     
     msg2 "Building gui..."
     cd "${srcdir}/CalculiX/cgx_${pkgver}/src"
-    make
+    make  CFLAGS='-O2 -Wall -Wno-narrowing -I./ -I/usr/include/libSNL -I../../glut-3.5/src' LFLAGS='-lGL -lGLU -lX11 -lXi -lXmu -lXext -lXt -lSM -lICE -lSNL -lm -lpthread -lrt'
 
     msg2 "Build complete"
 }
@@ -88,7 +88,8 @@ check()
     rm -f ${dat_file}
     rm -f ${frd_file}
 
-    ../src/ccx_${pkgver} ${test_name} &> ${log_file} ||\
+    # Testing on maximum 4 cores
+    OMP_NUM_THREADS=4 ../src/ccx_${pkgver} ${test_name} &> ${log_file} ||\
         warning "check $(pwd)/${log_file}"
 
     if [ ! -f ${dat_file} ]; then
