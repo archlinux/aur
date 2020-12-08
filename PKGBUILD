@@ -2,15 +2,15 @@
 # Contributor: Leo <olorin12+gmail+com>
 
 pkgname=hypnotix
-pkgver=1.1
-pkgrel=3
+pkgver=1.2
+pkgrel=1
 pkgdesc="An IPTV app"
 arch=(any)
 url="https://github.com/linuxmint/hypnotix"
 license=(GPL3)
 depends=(dconf hicolor-icon-theme python-cairo python-imdbpy python-requests python-setproctitle mpv xapp)
 source=($url/archive/$pkgver.tar.gz)
-b2sums=('6d15118cd9342a2d007a5eb06512aa2adb449f1f6c5499cdde93f847a35f671d1d1bedafeaf4b1d5589ee736e96d9a75bb85d88c014460168a2ff45a6a9248ea')
+b2sums=('347b954ce83852eb5041480b1f92731701e49ed457896974bf98e5061a071520e2c8f32e7d527c1a7b91919afd4e5967183a227ef0e69bf07fbcea1c61151e52')
 
 build() {
 	cd $pkgname-$pkgver
