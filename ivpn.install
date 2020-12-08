@@ -1,11 +1,88 @@
 #!/usr/bin/env bash
 
-post_upgrade () {
-  echo "Restarting ivpn-service.service..."
-  systemctl restart ivpn-service.service
+silent() {
+  "$@" > /dev/null 2>&1
+}
+
+has_systemd() {
+  # Some OS vendors put systemd in ... different places ...
+  [ -d "/lib/systemd/system/" -o -d "/usr/lib/systemd/system" ] && silent which systemctl
+}
+
+ivpnlogout() {
+  if [ -f /usr/local/bin/ivpn ]; then
+      echo "[+] Logging out ..."
+      /usr/local/bin/ivpn logout || echo "[-] Failed to log out"
+  fi
+}
+
+disconnect() {
+  if [ -f /usr/local/bin/ivpn ]; then
+    echo "[+] Trying to disable firewall..."
+    /usr/local/bin/ivpn firewall -off || echo "[-] Failed to disable firewall"
+
+    echo "[+] Trying to disconnect ..."
+    /usr/local/bin/ivpn disconnect || echo "[-] Failed to disconnect"
+  fi
+}
+
+try_systemd_stop() {
+    if has_systemd ; then
+        echo "[ ] systemd detected. Trying to stop service ..."
+
+        echo "[+] Stopping service"
+        silent systemctl stop ivpn-service
+
+        echo "[+] Disabling service"
+        silent systemctl disable ivpn-service
+    fi
+}
+
+erase_leftovers() {
+  local _IVPN_TMP="/opt/ivpn/mutable"
+  local _IVPN_LOG="/opt/ivpn/log"
+  local _IVPN_DIR="/opt/ivpn"
+
+  # Normally, all files which were installed, deleted automatically
+  # But ivpn-service also writing to 'mutable' additional temporary files (uninstaller know nothing about them)
+  # Therefore, we are completely removing all content of '/opt/ivpn/mutable' and '/opt/ivpn/log'
+
+  echo "[+] Removing leftovers ..."
+  if [ -d $_IVPN_TMP ] ; then
+    rm -rf $_IVPN_TMP|| echo "[-] Removing '$_IVPN_TMP' folder failed"
+  fi
+  if [ -d $_IVPN_LOG ] ; then
+    rm -rf $_IVPN_LOG|| echo "[-] Removing '$_IVPN_LOG' folder failed"
+  fi
+
+  #remove 'ivpn' folder (if empy)
+  silent sudo rmdir $_IVPN_DIR
+}
+
+# --- install hooks ---
+
+pre_upgrade () {
+  disconnect;
+}
+
+pre_remove() {
+  disconnect;
+  ivpnlogout;
+  try_systemd_stop;
 }
 
 post_install () {
   echo "Enabling ivpn-service.service..."
-  systemctl enable --now ivpn-service.service
+  systemctl enable --now ivpn-service
+}
+
+
+post_upgrade () {
+  echo "Restarting ivpn-service.service..."
+  systemctl daemon-reload
+  systemctl restart ivpn-service
+}
+
+post_remove() {
+  erase_leftovers;
 }

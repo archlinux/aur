@@ -1,12 +1,12 @@
 # Maintainer: Alexandr Stelnykovych <alexandr dot stelnykovych at ivpn dot net>
 
 # dependencies versions
-_ver_ivpn_daemon=2.12.12
+_ver_ivpn_daemon=2.12.13
 _ver_ivpn_cli=2.12.11
 
 # PKGBUILD config
 pkgname="ivpn"
-pkgver=2.12.12
+pkgver=2.12.13
 pkgrel=1
 pkgdesc="IVPN Command Line Interface"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
 "ivpn-cli-src-v${_ver_ivpn_cli}.tar.gz::https://github.com/ivpn/desktop-app-cli/archive/v${_ver_ivpn_cli}.tar.gz"
 )
 sha256sums=(
-'43794a740c70d2b6d399215f5dec2eaa55174fd6e45cfde7f1126d6e9797cad6' # daemon sources
+'ad7976e089fcf0d7c192b40a6947b6480c67eb88a50d9feb6ef246e7e0e2d174' # daemon sources
 'a7dcec032b2542770facf81aa896c596f240dcc00b4fb6d47dcb20cf48c2164d' # CLI sources
 )
 
