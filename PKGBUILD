@@ -1,6 +1,6 @@
 pkgname=kakoune-git
-pkgver=2020.01.16_r186_g60154300
-pkgrel=2
+pkgver=2020.09.01_r231_gce96c3f2
+pkgrel=1
 pkgdesc='Multiple-selection, UNIX-flavored modal editor'
 arch=('x86_64' 'armv7h')
 url='https://github.com/mawww/kakoune'
@@ -20,7 +20,7 @@ optdepends=(
 makedepends=(
   'git'
 )
-provides=('kakoune')
+provides=("kakoune=${pkgver}")
 conflicts=('kakoune')
 source=("${pkgname}::git+https://github.com/mawww/kakoune.git")
 sha256sums=('SKIP')

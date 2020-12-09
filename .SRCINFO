@@ -1,7 +1,7 @@
 pkgbase = kakoune-git
 	pkgdesc = Multiple-selection, UNIX-flavored modal editor
-	pkgver = 2020.01.16_r186_g60154300
-	pkgrel = 2
+	pkgver = 2020.09.01_r231_gce96c3f2
+	pkgrel = 1
 	url = https://github.com/mawww/kakoune
 	arch = x86_64
 	arch = armv7h
@@ -15,7 +15,7 @@ pkgbase = kakoune-git
 	optdepends = universal-ctags-git: provides `readtags` used by `:tag` command to jump on a tag definition
 	optdepends = xdotool: add support for kak windows switching (in grep, make... files)
 	optdepends = xorg-xmessage: for nicer debugging messages
-	provides = kakoune
+	provides = kakoune=2020.09.01_r231_gce96c3f2
 	conflicts = kakoune
 	options = !buildflags
 	source = kakoune-git::git+https://github.com/mawww/kakoune.git
