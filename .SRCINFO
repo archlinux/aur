@@ -5,7 +5,7 @@ pkgbase = otf-ryman-eco
 	url = https://rymaneco.co.uk
 	arch = any
 	license = custom
-	source = ryman-eco-1.0.zip::https://rymaneco.co.uk/download/ryman-eco.zip
+	source = ryman-eco-1.0-2.zip::https://rymaneco.co.uk/download/ryman-eco.zip
 	sha256sums = be47185a8ae794ce56a837aae7d7687d46b0c6fd009fde8d299829e7950caa86
 
 pkgname = otf-ryman-eco
