@@ -1,0 +1,11 @@
+post_install() {
+	 echo ""
+	 echo "Enable systemd services for color and brightness management on boot and shutdown."
+	 echo ""
+	 echo "Restores the cache when started (normally, at boot):"
+	 echo "systemctl enable system76-kbd-led.service"
+	 echo ""
+	 echo "Runs the program on shutdown to cache the current levels (at shutdown):"
+	 echo "systemctl enable system76-kbd-led-cache.service"
+	 echo ""
+}
