@@ -2,13 +2,13 @@
 # Maintainer:  skydrome <skydrome@protonmail.com>
 
 pkgname=i2p-bin
-pkgver=0.9.47
+pkgver=0.9.48
 pkgrel=1
 pkgdesc="A distributed anonymous network (pre-compiled binary)"
 url="https://geti2p.net"
 license=('GPL2')
 arch=('any')
-depends=('java-runtime>=8' 'java-runtime<=13' 'java-service-wrapper')
+depends=('java-runtime>=8' 'java-service-wrapper')
 #optdepends=('gtk2: for rrd graphs')
 conflicts=('i2p' 'i2p-dev')
 provides=('i2p')
@@ -29,7 +29,7 @@ source=("${_url}/i2pinstall_${pkgver}.jar"{,.sig}
         'i2prouter.service' 'i2p.tmpfiles' 'wrapper.config' 'router.config'
         'i2prouter.bash' 'i2prouter.sh' 'chromium-i2p.sh')
 
-sha256sums=('3ddf3afb0c06edeed4810c6d1f34d909959dd94640adf7c638781b4a3b282e9e'
+sha256sums=('5dd5c300d3d2ca4eb7f7b33a2d4c9e54814f02c199c5176db17f214c8ab655d2'
             'SKIP'
             '925d931aae2bd03c08555536b1c836654a72cc4acfd9f440f1ad43958ba2108d'
             '644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876'
