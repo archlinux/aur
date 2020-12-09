@@ -2,7 +2,7 @@
 # Contributor:	Ondřej Surý <ondrej@sury.org>
 
 pkgname=knot-resolver
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc='Caching DNSSEC-validating DNS resolver'
 arch=('x86_64' 'armv7h')
@@ -34,7 +34,7 @@ optdepends=(
 backup=('etc/knot-resolver/kresd.conf')
 options=(debug strip)
 source=("https://secure.nic.cz/files/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('8824267ca3331fa06d418c1351b68c648da0af121bcbc84c6e08f5b1e28d9433')
+sha256sums=('aa37b744c400f437acba7a54aebcbdbe722ece743d342cbc39f2dd8087f05826')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
