@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=panicparse
-pkgver=1.5.1
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Crash your app in style (Golang)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('4ff41f29e1c752027f72155a5a93aca20c3270c43d0db3220c6165a4436e9aa5')
+sha256sums=('15f6ecf84f7b8a64cb20f4ae4ae0f3e5669c81c25f0e29916e78d9757e6fad8b')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
