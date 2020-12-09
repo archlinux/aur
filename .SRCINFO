@@ -1,7 +1,7 @@
 pkgbase = syncthingtray-qt6
 	pkgdesc = Tray application for Syncthing (using Qt 6)
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Martchus/syncthingtray
 	arch = i686
 	arch = x86_64
