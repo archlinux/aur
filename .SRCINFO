@@ -1,25 +1,15 @@
 pkgbase = python-pymunk
 	pkgdesc = A wrapper around the 2d physics library Chipmunk
-	pkgver = 5.7.0
+	pkgver = 6.0.0
 	pkgrel = 1
-	url = http://www.pymunk.org/en/latest/
-	arch = any
+	url = http://www.pymunk.org/
+	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/p/pymunk/pymunk-5.7.0.zip
-	sha256sums = 585aabe9a7039b7a2dc07217120b6ccfc2abc200bd381187e0912ae852a63894
+	depends = python
+	depends = python-cffi
+	source = https://files.pythonhosted.org/packages/source/p/pymunk/pymunk-6.0.0.zip
+	sha256sums = 772a214f6ff87a1a856a881b92242ef4b2f5bedf08d0752f9eff73e045c35812
 
 pkgname = python-pymunk
-	depends = python
-	depends = chipmunk
-	depends = python-cffi
-
-pkgname = python2-pymunk
-	depends = python2
-	depends = chipmunk
-	depends = python2-cffi
-	provides = pymunk
-	conflicts = pymunk
-	replaces = pymunk
 
