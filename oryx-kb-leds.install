@@ -1,0 +1,14 @@
+post_install() {
+	 echo ""
+	 echo "Enable the service:"
+	 echo "systemctl enable --now oryxkbleds.service"
+	 echo ""
+}
+
+post_upgrade() {
+	 echo ""
+	 echo "Restart the service:"
+	 echo "systemctl daemon-reload"
+	 echo "systemctl restart oryxkbleds.service"
+	 echo ""
+}

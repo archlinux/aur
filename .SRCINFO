@@ -1,0 +1,17 @@
+pkgbase = oryx-kb-leds
+	pkgdesc = Control your Oryx Pro's Keyboard LEDs
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/davemcphee/oryx-kb-leds
+	install = oryx-kb-leds.install
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-colour
+	depends = python-psutil
+	depends = python-pyaml
+	source = oryx-kb-leds-1.1.tar.gz::https://github.com/davemcphee/oryx-kb-leds/archive/1.1.tar.gz
+	sha256sums = d1ebeaf7464147beb3dba36e629b0e0afe5e31c6243cef298998eb2afe240a16
+
+pkgname = oryx-kb-leds
+
