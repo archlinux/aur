@@ -2,3 +2,4 @@ pkg
 src
 *.xz
 *.deb
+*.zst
