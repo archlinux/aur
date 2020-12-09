@@ -36,14 +36,13 @@ build() {
 }
 
 package() {
-	cd "$srcdir/${pkgname_raw}"
+	cd "$srcdir/${_pkgname_raw}"
 	osarch=$CARCH
 	echo "$osarch"
 	if [ "$osarch" == "x86_64" ]
 	then
 		osarch="amd64"
 	fi
-	mkdir -p "$pkgdir/usr/bin"
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-	install -m +x "build/freedns-go-linux-$osarch" ${pkgdir}/usr/bin/freedns-go
+	install -Dm644 "$srcdir/${_pkgname_raw}/LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	install -Dm +x "build/freedns-go-linux-$osarch" ${pkgdir}/usr/bin/freedns-go
 }
