@@ -9,7 +9,7 @@ license=('MIT')
 url='https://gitlab.com/hadogenes/displaylink-connect'
 depends=('displaylink')
 source=("https://gitlab.com/hadogenes/displaylink-connect/-/archive/v${pkgver}/displaylink-connect-v${pkgver}.zip")
-sha256sums=('de3c9cd0d81ec3af7ea7dd0f95f04fdf81749a0fb2b42b3708733199d5f9c99a')
+sha256sums=('0ca1faf1881ab9811bfee0b4e85cb85ace75fc0afd2989c61ca6d618f11ef68e')
 
 prepare() {
     cd "$srcdir/${pkgname}-v${pkgver}"
