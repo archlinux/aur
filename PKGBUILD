@@ -1,5 +1,6 @@
-# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Credit: Laurent Carlier <lordheavym@gmail.com>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Yurii Kolesnykov <root@yurikoles.com>
+# Contributor: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=xf86-video-amdgpu-nosystemd-git
 _pkgname=xf86-video-amdgpu
