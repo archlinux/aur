@@ -2,7 +2,7 @@
 # Contributor: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=smartsvn
-pkgver=14.0.1
+pkgver=14.0.2
 pkgrel=1
 pkgdesc="A Subversion (SVN) GUI client written in Java"
 arch=("any")
@@ -12,7 +12,7 @@ depends=("jre11-openjdk" "desktop-file-utils" "sh" "hunspell-en_US" "hicolor-ico
 provides=("smartsvn=${pkgver}")
 source=("https://www.smartsvn.com/downloads/${pkgname}/${pkgname}-linux-${pkgver//\./_}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('7cbaeffda2b40ea93235e0fb45281afadf754962cf3af539f35f049b6a994a22'
+sha256sums=('bab1e7c369782077768e83f9c34838cbbe70d28c89c025cb74feaac133a675a9'
             'ab0ef714cdb1ba8f188b04f4accaf661501503234b4cedd335e200498b6e3b35')
 
 package() {
