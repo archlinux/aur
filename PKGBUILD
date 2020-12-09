@@ -2,7 +2,7 @@
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=instamenu 
 pkgver=2020.12.9
-pkgrel=2
+pkgrel=3
 pkgdesc="dmenu like menu with the Manjaro Matcha-dark-sea theme"
 url="https://github.com/TheCynicalTeam/$pkgname"
 arch=('any')
