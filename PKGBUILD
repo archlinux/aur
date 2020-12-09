@@ -4,7 +4,7 @@
 
 pkgname=cnijfilter-ip2800series
 pkgver=4.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Canon IJ Printer Driver for Pixma IP2800 series (with cnijfilter-common)"
 url="https://canon-print.com/canon-pixma-ip2800-series-drivers-windows-mac-linux/"
 arch=('x86_64')
@@ -34,6 +34,7 @@ build() {
     ./autogen.sh
     cd ..
     cd cnijnpr
+    patch src/cnijnpr.c ../../../cnijnpr_cnijnpr.c.patch
     ./autogen.sh --prefix=/usr --enable-libpath=/usr/lib/bjlib
 
     cd ..
@@ -42,10 +43,12 @@ build() {
     cd ..
     cd cngpij
     patch configure.in ../../../cngpij_configure.in.patch
+    patch cngpij/bjcups.c ../../../cngpij_bjcups.c.patch
     ./autogen.sh --prefix=/usr --enable-progpath=/usr/bin
     cd ..
     cd cngpijmnt
     patch configure.in ../../../cngpijmnt_configure.in.patch
+    patch src/main.c ../../../cngpijmnt_main.c.patch
     ./autogen.sh --prefix=/usr --enable-progpath=/usr/bin
     cd ..
     cd pstocanonij

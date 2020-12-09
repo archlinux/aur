@@ -1,0 +1,43 @@
+698,701c698
+< 		pRequest = ippNew();
+< 		
+< 		pRequest->request.op.operation_id = CUPS_GET_PRINTERS;
+< 		pRequest->request.op.request_id   = 1;
+---
+> 		pRequest = ippNewRequest(IPP_OP_CUPS_GET_PRINTERS);
+710c707
+< 			if (pResponse->request.status.status_code > IPP_OK_CONFLICT) {
+---
+> 			if (ippGetStatusCode(pResponse) > IPP_OK_CONFLICT) {
+715c712
+< 				pAttribute = pResponse->attrs;
+---
+> 				pAttribute = ippFirstAttribute(pResponse);
+718,719c715,716
+< 					while (pAttribute != NULL && pAttribute->group_tag != IPP_TAG_PRINTER) {
+< 						pAttribute = pAttribute->next;
+---
+> 					while (pAttribute != NULL && ippGetGroupTag(pAttribute) != IPP_TAG_PRINTER) {
+> 						pAttribute = ippNextAttribute(pResponse);
+725,727c722,724
+< 					while (pAttribute != NULL && pAttribute->group_tag == IPP_TAG_PRINTER) {
+< 						if (strcmp(pAttribute->name, "printer-name") == 0 && pAttribute->value_tag == IPP_TAG_NAME) {
+< 							pPrinter = pAttribute->values[0].string.text;
+---
+> 					while (pAttribute != NULL && ippGetGroupTag(pAttribute) == IPP_TAG_PRINTER) {
+> 						if (strcmp(ippGetName(pAttribute), "printer-name") == 0 && ippGetValueTag(pAttribute) == IPP_TAG_NAME) {
+> 							pPrinter = ippGetString(pAttribute, 0, NULL);
+729,730c726,727
+< 						if (strcmp(pAttribute->name, "device-uri") == 0 && pAttribute->value_tag == IPP_TAG_URI) {
+< 							pDUri = pAttribute->values[0].string.text;
+---
+> 						if (strcmp(ippGetName(pAttribute), "device-uri") == 0 && ippGetValueTag(pAttribute) == IPP_TAG_URI) {
+> 							pDUri = ippGetString(pAttribute, 0, NULL);
+732c729
+< 						pAttribute = pAttribute->next;
+---
+> 						pAttribute = ippNextAttribute(pResponse);
+741c738
+< 						 pAttribute = pAttribute->next;
+---
+> 						 pAttribute = ippNextAttribute(pResponse);

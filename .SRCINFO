@@ -1,7 +1,7 @@
 pkgbase = cnijfilter-ip2800series
 	pkgdesc = Canon IJ Printer Driver for Pixma IP2800 series (with cnijfilter-common)
 	pkgver = 4.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://canon-print.com/canon-pixma-ip2800-series-drivers-windows-mac-linux/
 	arch = x86_64
 	license = custom
