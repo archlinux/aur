@@ -1,20 +1,28 @@
 pkgbase = gog-unreal-tournament-goty
 	pkgdesc = Unreal Tournament (99): Game of the Year Edition. GOG Version.
 	pkgver = 2.0.0.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.gog.com/game/unreal_tournament_goty
 	arch = x86_64
+	license = MIT
+	license = BSD
+	license = ZLIB
+	license = GPL2
+	license = LGPL2.1
+	license = ZLIB
+	license = OFL
+	license = Apache
 	license = custom
 	makedepends = innoextract
 	depends = lib32-sdl
 	depends = lib32-libgl
-	noextract = ut99v451-linux.tar.gz
+	noextract = OldUnreal-UTPatch469a-Linux.tar.bz2
 	source = setup_ut_goty_2.0.0.5.exe::gogdownloader://unreal_tournament_goty/en1installer0
 	source = https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469a/OldUnreal-UTPatch469a-Linux.tar.bz2
-	source = gog-unreal-tournament-goty
+	source = gog-unreal-tournament-goty.desktop
 	sha256sums = 4cc257d54d97659c5062f2bf186d0a8c6959561d11e42d8fcf2eac07f1926803
 	sha256sums = d521a8339b80a4c86019c3648fb55cfc29edffeec73047ceb72784b159cc84f1
-	sha256sums = 2b70aa7a20d5b1fbfaf9561bd3cfc8c1d0f0dee2212b3914aed30a7c75e40566
+	sha256sums = 60a0211a47a4d1b2c6b31da4ecd4848fcb3338dc06430599969c77dc6a5d87e0
 
 pkgname = gog-unreal-tournament-goty
 

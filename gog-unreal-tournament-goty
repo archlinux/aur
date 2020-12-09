@@ -1,4 +1,0 @@
-#!/bin/sh
-mkdir -p $HOME/.loki/ut/System
-cd /opt/gog/gog-unreal-tournament-goty/System
-./ut-bin

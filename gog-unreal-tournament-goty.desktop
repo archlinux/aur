@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=UT99
+Exec=/opt/gog/unreal-tournament-goty/System/ut-bin
+Comment=Unreal Tournament (99): Game of the Year Edition. GOG Version.
+Terminal=false
+Icon=/opt/gog/unreal-tournament-goty/System/Unreal.ico
+Type=Application
+Categories=Game;
