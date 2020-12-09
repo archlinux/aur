@@ -1,6 +1,6 @@
 pkgbase = neovim-nightly
 	pkgdesc = Fork of Vim aiming to improve user experience, plugins, and GUIs - Nightly Builds
-	pkgver = 0.5.0+20201206
+	pkgver = 0.5.0+dev+918+g4383c0f95
 	pkgrel = 1
 	epoch = 2
 	url = https://neovim.io
@@ -11,9 +11,9 @@ pkgbase = neovim-nightly
 	optdepends = python-neovim: for Python 3 plugin support, see :help python
 	optdepends = xclip: for clipboard support, see :help clipboard
 	optdepends = xsel: for clipboard support, see :help clipboard
-	provides = neovim=0.5.0
+	provides = neovim=0.5.0+dev+918+g4383c0f95
 	conflicts = neovim
-	source = neovim-0.5.0+20201206.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
+	source = neovim-0.5.0+dev+918+g4383c0f95.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
 	sha512sums = SKIP
 
 pkgname = neovim-nightly
