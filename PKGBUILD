@@ -1,8 +1,8 @@
 # Maintainer: Alexandr Stelnykovych <alexandr dot stelnykovych at ivpn dot net>
 
 pkgname="ivpn-ui"
-pkgver=3.2.1
-pkgrel=2
+pkgver=3.2.3
+pkgrel=1
 pkgdesc="IVPN Graphical User Interface"
 arch=('x86_64')
 url="https://ivpn.net"
@@ -12,7 +12,7 @@ makedepends=('npm')
 install="ivpn-ui.install"
 
 source=("ivpn-ui-src-v${pkgver}.tar.gz::https://github.com/ivpn/desktop-app-ui2/archive/v${pkgver}.tar.gz")
-sha256sums=('e3131ba9745cd67de8cf91ce5208ff7006153a23e69b9132683ec70a40a74b5b')
+sha256sums=('3166518f729583f7660069277868bb863f7573a1696a184a700a4b39b5bc83b9')
 
 build() {
   cd "$srcdir/desktop-app-ui2-${pkgver}"
