@@ -1,2 +1,9 @@
 #!/bin/bash
-exec ${TLA_JAVA:-java} $TLA_JAVA_OPTS -classpath /usr/share/java/tla2tools.jar "$@"
+JAR=/usr/share/java/tla2tools.jar
+CP="$TLA_EXTRA_CLASSPATH"
+if [ -z "$CP" ]; then
+  CP=$JAR
+else
+  CP="$CP:$JAR"
+fi
+exec ${TLA_JAVA:-java} $TLA_JAVA_OPTS -classpath "$CP" "$@"
