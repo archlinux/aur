@@ -2,7 +2,7 @@
 # Maintainer: Christian Wieden <wiedenchr at gmail dot com>
 
 pkgname=hstr
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="Bash and Zsh shell history suggest box - easily view, navigate, search and manage your command history."
 arch=('any')
