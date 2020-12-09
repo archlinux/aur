@@ -39,11 +39,11 @@ pkgbase = alice-vision-git
 	source = alice-vision-git::git+https://github.com/alicevision/AliceVision.git#branch=develop
 	source = ute_lib::git+https://github.com/alicevision/uncertaintyTE.git
 	source = geogram::git+https://github.com/alicevision/geogram.git
-	source = submodule.patch
+	source = FindOpenGV.cmake.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = ddbe76933cea0300b577095afa7459113a2d2ef02d4f300424261165ad9dee22
+	sha256sums = 2740fc6890a62f74367df357e132dc95bcd276528d828d51d66c4689e183ceec
 
 pkgname = alice-vision-git
 

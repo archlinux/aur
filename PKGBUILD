@@ -28,17 +28,19 @@ makedepends=('ninja' 'boost' 'eigen' 'freetype2' 'gflags' 'doxygen' 'python-sphi
 source=("${pkgname}::git+https://github.com/alicevision/AliceVision.git${_fragment}"
         "ute_lib::git+https://github.com/alicevision/uncertaintyTE.git"
         "geogram::git+https://github.com/alicevision/geogram.git"
-        "submodule.patch"
+        "FindOpenGV.cmake.patch"
         )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'ddbe76933cea0300b577095afa7459113a2d2ef02d4f300424261165ad9dee22')
+            '2740fc6890a62f74367df357e132dc95bcd276528d828d51d66c4689e183ceec')
+
 
 pkgver() {
   cd "${pkgname}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
 
 prepare() {
 # shellcheck disable=SC2154 # mask $srcdir missing assignment.
@@ -48,9 +50,10 @@ prepare() {
 #  git config submodule.src/dependencies/nanoflann.url
 #  git config submodule.src/dependencies/osi_clp.url
   git submodule update
-  git apply "${srcdir}/submodule.patch"
 # fix doc build
   sed -i '/^ *install.*doc/s/doc/htmlDoc/' src/CMakeLists.txt
+  #patch FindOpenGV.cmake to use Eigen3 instear of Eigen
+  patch -Np1 -i "$srcdir"/FindOpenGV.cmake.patch
 }
 
 
