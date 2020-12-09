@@ -1,8 +1,8 @@
 pkgbase = wtftw
 	pkgdesc = Window Tiling For The Win. A tiling window manager written in Rust
 	pkgver = 1.2
-	pkgrel = 1
-	url = https://github.com/orhun/wtftw
+	pkgrel = 2
+	url = https://github.com/Kintaro/wtftw
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -10,7 +10,7 @@ pkgbase = wtftw
 	depends = xorg-xmessage
 	depends = libxinerama
 	depends = gcc-libs
-	source = wtftw-1.2.tar.gz::https://github.com/orhun/wtftw/archive/1.2.1.tar.gz
+	source = wtftw-1.2.tar.gz::https://github.com/Kintaro/wtftw/archive/1.2.1.tar.gz
 	md5sums = fc937342074634cf348a7a1a6aa85bdc
 
 pkgname = wtftw

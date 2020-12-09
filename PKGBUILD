@@ -1,13 +1,12 @@
-# Maintainer: orhun <orhunparmaksiz@gmail.com>
+# Contributor: orhun <orhunparmaksiz@gmail.com>
 # Contributor: Vlad M. <vlad@archlinux.net>
-# https://github.com/orhun/pkgbuilds
 
 pkgname=wtftw
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Window Tiling For The Win. A tiling window manager written in Rust'
 arch=('i686' 'x86_64')
-url="https://github.com/orhun/wtftw"
+url="https://github.com/Kintaro/wtftw"
 license=('BSD')
 depends=('xorg-xmessage' 'libxinerama' 'gcc-libs')
 makedepends=('rust')
