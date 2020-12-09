@@ -1,6 +1,6 @@
 pkgbase = yaru-plus-git
 	pkgdesc = Yaru++ – Elegant and modern third-party icons theme, based on Canonical’s Yaru
-	pkgver = 4.0
+	pkgver = 4.1
 	pkgrel = 7
 	url = https://github.com/Bonandry/yaru-plus
 	changelog = CHANGELOG.sh
@@ -10,7 +10,7 @@ pkgbase = yaru-plus-git
 	depends = yaru-icon-theme
 	provides = yaru-plus
 	conflicts = yaru-plus
-	source = git+https://github.com/Bonandry/yaru-plus.git#tag=v4.0
+	source = git+https://github.com/Bonandry/yaru-plus.git#tag=v4.1
 	sha256sums = SKIP
 
 pkgname = yaru-plus-git
