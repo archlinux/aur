@@ -1,14 +1,14 @@
 pkgbase = ooniprobe-cli
 	pkgdesc = Next generation OONI Probe CLI
-	pkgver = 3.0.11
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/ooni/probe-cli
 	arch = x86_64
 	license = BSD
 	makedepends = go
 	depends = glibc
-	source = https://github.com/ooni/probe-cli/archive/v3.0.11/probe-cli-3.0.11.tar.gz
-	sha256sums = 870b8e2d801a5ae96a27fe0f7898f70ff2839ea12c9872e272b78f175e07deb2
+	source = https://github.com/ooni/probe-cli/archive/v3.1.0/probe-cli-3.1.0.tar.gz
+	sha256sums = daa3878737df32565192ea2010151183a45125ee1efced1bfeef21be1e9a54c9
 
 pkgname = ooniprobe-cli
 
