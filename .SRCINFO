@@ -1,0 +1,15 @@
+pkgbase = fuz-calc-git
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/FuzyTechLLC/FuzCalc
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gtkmm3
+	depends = xclip
+	depends = libqalculate
+	source = git+https://github.com/FuzyTechLLC/FuzCalc
+	md5sums = SKIP
+
+pkgname = fuz-calc-git
+
