@@ -1,7 +1,7 @@
 # Maintainer: pryme-svg <edoc.www@gmail.com>
 
 pkgname=jfetch-git
-pkgver=r49.d7f0b60
+pkgver=r57.5222f2b
 pkgrel=1
 pkgdesc="A minimal Linux fetch script"
 arch=('any')
@@ -15,7 +15,7 @@ conflicts=()
 source=('jfetch-git::git+https://github.com/Jimmysit0/jfetch.git'
 	'https://raw.githubusercontent.com/Jimmysit0/jfetch/master/LICENSE')
 md5sums=('SKIP'
-         '12786834660fb952a20bbdd479e264bc')
+         '10530c5d870f9e86d4b0e7b24a4e72fa')
 
 pkgver() {
   cd "$srcdir/$pkgname"

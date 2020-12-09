@@ -1,6 +1,6 @@
 pkgbase = jfetch-git
 	pkgdesc = A minimal Linux fetch script
-	pkgver = r49.d7f0b60
+	pkgver = r57.5222f2b
 	pkgrel = 1
 	url = https://github.com/Jimmysit0/jfetch
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = jfetch-git
 	source = jfetch-git::git+https://github.com/Jimmysit0/jfetch.git
 	source = https://raw.githubusercontent.com/Jimmysit0/jfetch/master/LICENSE
 	md5sums = SKIP
-	md5sums = 12786834660fb952a20bbdd479e264bc
+	md5sums = 10530c5d870f9e86d4b0e7b24a4e72fa
 
 pkgname = jfetch-git
 
