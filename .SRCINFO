@@ -1,0 +1,14 @@
+pkgbase = sys76-kb
+	pkgdesc = RGB keyboard controller for System76 laptops
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/bambash/sys76-kb
+	arch = x86_64
+	license = none
+	makedepends = go
+	depends = glibc
+	source = sys76-kb-0.3.1.tar.gz::https://github.com/bambash/sys76-kb/archive/v0.3.1.tar.gz
+	sha256sums = 95d18be01c83bc529ad4311a5c59507d0e1568160638d9823b6c02aa6261c7e8
+
+pkgname = sys76-kb
+
