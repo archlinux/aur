@@ -46,8 +46,7 @@ build() {
 	# and let electron-packager use it for building
 	# https://github.com/electron/electron-packager/issues/187
 
-	[[ $_target =~ .*-beta ]] && _releasescriptsuffix='-evergreen' || _releasescriptsuffix=''
-	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npm run "release$_releasescriptsuffix" "${_target%-beta}"
+	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npm run release-evergreen "${_target%-beta}"
 }
 
 package() {
