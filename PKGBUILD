@@ -1,16 +1,17 @@
 
 pkgname=pinegrow
-pkgver=5.972.0
+pkgver=5.981
 pkgrel=1
 pkgdesc='A website development tool for building responsive websites'
 arch=('x86_64')
 url="https://pinegrow.com"
 license=('custom:pinegrow')
-depends_x86_64+=(gtk2 gconf-gtk2 alsa-lib nss libxss libxtst gendesk unzip)
+depends_x86_64+=(gtk2 gconf-gtk2 alsa-lib nss libxss libxtst)
+makedepends=(gendesk unzip)
 source=("http://download.pinegrow.com/PinegrowLinux64.${pkgver}.zip"
 	"${pkgname}.png"
   "LICENSE")
-sha512sums=('083a672125dadb9253c1c6dccb99c5388cb3c0cd43f7b5ac5cc2412904bcb810b983edfcb607860d9a339e1bdf1c36e4564007de8769d91f65ba6fab33b1476e'
+sha512sums=('2022dca9226dfba68eff66678519c604dc4c6d5bf25ac519cb82fb8b544db97c18fe3a340120801c19dc9f269ed12a8ad5ecf792ae12efcdcbca5853b732cf45'
             'e71d7bfa237604fdf183cf1dc61e674c3f0ee9a33609f5c2aa6adf3b0359acd12f6ff2c1deeec52128461327c0fde013f4e1cc6fc5170e21f09b7fb01a4f334e'
             '1f2dd46c34bac1d218176f977eec05811982f1f74ead24deadb64717bb64059122e056ee1c95de34e207dd9e90107ce2f7187a4d6781f024257a7c2d7d605967')
 
