@@ -22,7 +22,7 @@ arch=("i686" "x86_64")
 url="https://swaywm.org"
 source=("${pkgname%-*}::git+https://github.com/swaywm/swaybg.git#branch=master")
 sha1sums=("SKIP")
-provides=("swaybg")
+provides=("swaybg" "swaybg-git")
 conflicts=("swaybg")
 
 pkgver() {

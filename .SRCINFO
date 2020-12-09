@@ -12,6 +12,7 @@ pkgbase = swaybg-minimal-git
 	depends = wayland
 	depends = cairo
 	provides = swaybg
+	provides = swaybg-git
 	conflicts = swaybg
 	source = swaybg-minimal::git+https://github.com/swaywm/swaybg.git#branch=master
 	sha1sums = SKIP
