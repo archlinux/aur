@@ -44,22 +44,24 @@ backup=(etc/default/icinga2
 install='icinga2.install'
 changelog="icinga2.changelog"
 source=("https://github.com/Icinga/$pkgname/archive/v$pkgver.tar.gz"
-        'https://www.boost.org/patches/1_72_0/0001-revert-cease-dependence-on-range.patch'
+        'https://patch-diff.githubusercontent.com/raw/Icinga/icinga2/pull/8184.patch'
+        'https://patch-diff.githubusercontent.com/raw/Icinga/icinga2/pull/8190.patch'
+        'https://patch-diff.githubusercontent.com/raw/Icinga/icinga2/pull/8191.patch'
         "$pkgname.tmpfiles"
         "$pkgname.sysusers")
 sha256sums=('de453549440d469c173b2f6183e5230b1db7a62878ce0a20455ece5f73518e0e'
-            'da7950df251a9d785a84c0092fb7ac4f68f6872c6172cccb303a5453e0ef98fd'
+            'dc1a2530d1c2c311826443cebaaa3c307f400e6a995414c654f4e6b94ec8b885'
+            '4f033a9a1bf74fe81eeda553e8d249ddc30fbb7c09a7edb37c3ce6dbad332958'
+            'ec60024196c381debb6caa759f5d8e1750f5039f5b3689d822009643da6fd6cb'
             '1302b333f49ead14f8808a379535971501d3a0c1ba02a7bf7b4406b7d27c754c'
             '2f946a33ea50a3c4400a81acd778e6411ffe5e2257a98004288b84a64f382810')
 
 prepare() {
-  mkdir -p "$srcdir/include/boost/coroutine"
-  cd "$srcdir/include"
+  cd "$srcdir/$pkgname-$pkgver"
 
-  # Workaround to make icinga2 compile with boost 1.72, see also
-  # https://github.com/Icinga/icinga2/issues/7730#issuecomment-569496219
-  cp /usr/include/boost/coroutine/asymmetric_coroutine.hpp boost/coroutine/
-  patch -p1 < "$srcdir/0001-revert-cease-dependence-on-range.patch"
+  patch -p1 < "$srcdir/8184.patch"
+  patch -p1 < "$srcdir/8190.patch"
+  patch -p1 < "$srcdir/8191.patch"
 }
 
 build() {
@@ -83,8 +85,7 @@ build() {
     -DBoost_NO_BOOST_CMAKE=TRUE \
     -DBoost_NO_SYSTEM_PATHS=TRUE \
     -DBOOST_LIBRARYDIR=/usr/lib \
-    -DBOOST_INCLUDEDIR=/usr/include \
-    -DCMAKE_CXX_FLAGS=-I"$srcdir/include"
+    -DBOOST_INCLUDEDIR=/usr/include
 
   make
 }
