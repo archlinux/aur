@@ -4,7 +4,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=zfs-dkms
-pkgver=0.8.5
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System."
 arch=('any')
@@ -17,10 +17,10 @@ provides+=('zfs')
 replaces=('spl-dkms')
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"{,.asc}
         "0001-only-build-the-module-in-dkms.conf.patch")
-sha256sums=('dbb41d6b9c606a34ac93f4c19069fd6806ceeacb558f834f8a70755dadb7cd3d'
+sha256sums=('3403bf8e993f3c9d772f768142117df47bdbbb8e9bbf85a29c0e166f577f9311'
             'SKIP'
             '780e590383fb00389c5e02ac15709b7a476d9e07d3c4935ed9eb67c951a88409')
-b2sums=('8376f360369c4657ff1fc040fb2bba780bbd5d6a98d149d2fa4ba39478588e213dbf6db218c7bd970839f015a69ae00ac951b90afc1c26b34aadf666b2976cab'
+b2sums=('2961b97aa6736af9b4a2bc968d1488f49ec0c0fd7bb22b6bc015047239279efd2d48f8d7c593f9b467ac9d40f99d67363ab551bdfaf1dd71335c37c48c759875'
         'SKIP'
         '1fdae935043d979b9241f07f8baa25a9a0367c24c31c84a59dfe8d6b468a523d8f49b68da3c7fd3194db6638f9d7bef046fc5e2669ce25d73c65009c16bf6c50')
 validpgpkeys=('4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027'  # Tony Hutter (GPG key for signing ZFS releases) <hutter2@llnl.gov>
