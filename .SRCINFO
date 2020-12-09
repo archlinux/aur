@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-5compat
 	pkgdesc = Module that contains unsupported Qt 5 APIs (mingw-w64)
-	pkgver = 6.0.0rc
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = mingw-w64-qt6-5compat
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-rc/submodules/qt5compat-everywhere-src-6.0.0-rc.tar.xz
-	sha256sums = 114a7f5f69c53449c545a03262b55c223cf32f276188e7bead4dfa2f3672c1c0
+	source = https://download.qt.io/official_releases/qt/6.0/6.0.0/submodules/qt5compat-everywhere-src-6.0.0.tar.xz
+	sha256sums = 13b9d78aa698609d07376e3e9e9d1a82a96084236aba0642f8ac695c181ab25f
 
 pkgname = mingw-w64-qt6-5compat
 
