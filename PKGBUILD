@@ -5,7 +5,7 @@
 
 pkgname=jhbuild
 pkgver=3.38.0.r0.g30ef98f3
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to build the whole GNOME desktop from sources'
 arch=('any')
 url='https://wiki.gnome.org/Projects/Jhbuild'
@@ -18,10 +18,8 @@ optdepends=('subversion: fetch subversion repositories'
             'mercurial: fetch Mercurial repositories'
             'darcs: fetch Darcs repositories')
 _commit=30ef98f3
-source=("$pkgname::git+https://gitlab.gnome.org/GNOME/jhbuild.git#commit=$_commit"
-        "module_args.patch")
-sha256sums=('SKIP'
-            'eca850a9cfd80295d6b748838578218829fd63ef885630d507d095542626bd93')
+source=("$pkgname::git+https://gitlab.gnome.org/GNOME/jhbuild.git#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -30,7 +28,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  #patch -p1 -i "$srcdir/module_args.patch"
 }
 
 build() {
