@@ -12,14 +12,14 @@ pkgdesc='xkcd styled sans-serif typeface'
 arch=('any')
 url='http://xkcdsucks.blogspot.com.au/2009/03/xkcdsucks-is-proud-to-present-humor.html'
 license=('custom')
-source=("https://antiyawn.com/uploads/${_pkgname}-${pkgver}.ttf"
-        "${_pkgname}-${pkgver}-license::https://antiyawn.com/uploads/${_pkgname}OFL-${pkgver}.txt")
+source=("${pkgname}-${pkgver}-${pkgrel}.ttf::https://antiyawn.com/uploads/${_pkgname}-${pkgver}.ttf"
+        "${pkgname}-${pkgver}-${pkgrel}-license::https://antiyawn.com/uploads/${_pkgname}OFL-${pkgver}.txt")
 sha256sums=('2ded6a27448c9ed30aaff177744e2bcf1e52e0aab018b2a8be64565df633318f'
             '94aadc8f2a4dcfbe296e7dffb165c557b8a10d9b6b9e0542f06f9fe0ef79ca83')
 
 package() {
-  install -Dvm644 "${_pkgname}-${pkgver}.ttf" "${pkgdir}/usr/share/fonts/TTF/${_pkgname}.ttf"
-  install -Dvm644 "${_pkgname}-${pkgver}-license" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dvm644 "${pkgname}-${pkgver}-${pkgrel}.ttf" "${pkgdir}/usr/share/fonts/TTF/${_pkgname}.ttf"
+  install -Dvm644 "${pkgname}-${pkgver}-${pkgrel}-license" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:

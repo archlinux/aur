@@ -5,8 +5,8 @@ pkgbase = ttf-humor-sans
 	url = http://xkcdsucks.blogspot.com.au/2009/03/xkcdsucks-is-proud-to-present-humor.html
 	arch = any
 	license = custom
-	source = https://antiyawn.com/uploads/Humor-Sans-1.0.ttf
-	source = Humor-Sans-1.0-license::https://antiyawn.com/uploads/Humor-SansOFL-1.0.txt
+	source = ttf-humor-sans-1.0-4.ttf::https://antiyawn.com/uploads/Humor-Sans-1.0.ttf
+	source = ttf-humor-sans-1.0-4-license::https://antiyawn.com/uploads/Humor-SansOFL-1.0.txt
 	sha256sums = 2ded6a27448c9ed30aaff177744e2bcf1e52e0aab018b2a8be64565df633318f
 	sha256sums = 94aadc8f2a4dcfbe296e7dffb165c557b8a10d9b6b9e0542f06f9fe0ef79ca83
 
