@@ -1,8 +1,5 @@
 #!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-# shellcheck disable=SC2034,SC2164 # mask unused variable warning, mask cd without fallback warning.
-# ToDo:
-# * add libraw to openimageio
 
 # Configuration.
 _CMAKE_FLAGS+=(
