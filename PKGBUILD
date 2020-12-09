@@ -1,6 +1,6 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=yoda
-pkgver=1.8.4
+pkgver=1.8.5
 pkgrel=1
 pkgdesc="A particle physics package for data analysis (specifically histogramming) classes."
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ depends=('python')
 optdepends=('python2: For Python2 module in addition to Python3')
 makedepends=('cython')
 source=(http://www.hepforge.org/archive/yoda/YODA-$pkgver.tar.gz yoda-pyroot.patch)
-md5sums=('428c8bf244cb9f0e5179c1fa18ae9706'
+md5sums=('420abe730380f7e0c3221b1357ee0ae4'
          '1c0789c6e701dde0c1b28a9b30a21120')
 
 package() {
