@@ -1,0 +1,14 @@
+pkgbase = python-tinydownload-git
+	pkgdesc = Automatic Ripping Machine packaged for Arch Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ritiek/tinydownload
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-requests
+	source = git://github.com/ritiek/tinydownload
+	md5sums = SKIP
+
+pkgname = python-tinydownload-git
+
