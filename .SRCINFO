@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-rviz
 	pkgdesc = ROS - 3D visualization tool for ROS.
-	pkgver = 1.14.1
+	pkgver = 1.14.4
 	pkgrel = 1
 	url = https://wiki.ros.org/rviz
 	arch = i686
@@ -49,8 +49,8 @@ pkgbase = ros-noetic-rviz
 	depends = qt5-base
 	depends = sip
 	depends = python-sip
-	source = ros-noetic-rviz-1.14.1.tar.gz::https://github.com/ros-visualization/rviz/archive/1.14.1.tar.gz
-	sha256sums = 106ac7c7f83f8c9dbb6946298afd69e1d259b5cb006b83dd6b88f32cd38b22c2
+	source = ros-noetic-rviz-1.14.4.tar.gz::https://github.com/ros-visualization/rviz/archive/1.14.4.tar.gz
+	sha256sums = 9561e5487037cb761fc3b4e1626c9e9c73243662cee8dc54f679dc35031b9f8f
 
 pkgname = ros-noetic-rviz
 
