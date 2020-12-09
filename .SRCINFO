@@ -1,0 +1,27 @@
+pkgbase = cctv-viewer-git
+	pkgdesc = A simple Qt application for simultaneously viewing multiple video streams. Designed for high performance and low latency. Based on ffmpeg.
+	pkgver = 0.1
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/iEvgeny/cctv-viewer
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = glibc
+	depends = gcc-libs
+	depends = qt5-base
+	depends = ffmpeg
+	depends = qt5-multimedia
+	depends = qt5-quickcontrols
+	provides = cctv-viewer
+	source = git+https://github.com/iEvgeny/cctv-viewer.git
+	source = git+https://github.com/iEvgeny/qmlav.git
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = cctv-viewer-git
+
