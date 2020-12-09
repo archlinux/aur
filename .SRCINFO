@@ -1,6 +1,6 @@
 pkgbase = ivpn
 	pkgdesc = IVPN Command Line Interface
-	pkgver = 2.12.13
+	pkgver = 2.12.14
 	pkgrel = 1
 	url = https://ivpn.net
 	install = ivpn.install
@@ -12,9 +12,9 @@ pkgbase = ivpn
 	depends = wireless_tools
 	depends = openvpn
 	depends = wireguard-tools
-	source = ivpn-daemon-src-v2.12.13.tar.gz::https://github.com/ivpn/desktop-app-daemon/archive/v2.12.13.tar.gz
+	source = ivpn-daemon-src-v2.12.14.tar.gz::https://github.com/ivpn/desktop-app-daemon/archive/v2.12.14.tar.gz
 	source = ivpn-cli-src-v2.12.11.tar.gz::https://github.com/ivpn/desktop-app-cli/archive/v2.12.11.tar.gz
-	sha256sums = ad7976e089fcf0d7c192b40a6947b6480c67eb88a50d9feb6ef246e7e0e2d174
+	sha256sums = e1fc7c1931b415aeee62afa2961f7a61e940109b9d81aaaa9c78f2c1853008a3
 	sha256sums = a7dcec032b2542770facf81aa896c596f240dcc00b4fb6d47dcb20cf48c2164d
 
 pkgname = ivpn
