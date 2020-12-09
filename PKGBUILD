@@ -1,4 +1,5 @@
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Maintainer: Thibault Boyeux <thibault.boyeux@gmail.com>
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=('sqlite-fts3-parenthesis')
