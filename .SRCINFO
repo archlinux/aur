@@ -5,6 +5,7 @@ pkgbase = streamlabels
 	url = https://patojad.com.ar/aplicaciones/2020/12/streamlabels-en-arch-linux/
 	arch = x86_64
 	license = GPL
+	depends = gconf
 	source = https://s3-us-west-2.amazonaws.com/streamlabs-electron/streamlabels_0.3.8_amd64.deb
 	source = pjadalien.py
 	md5sums = ade077aa9baf135de156b169d8d4ecd8
