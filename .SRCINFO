@@ -1,7 +1,7 @@
 pkgbase = sardi-icons
 	pkgdesc = Sardi is an icon collection for any linux distro with 6 different circular icons and 10 different kind of folders.
-	pkgver = 20.5
-	pkgrel = 3
+	pkgver = 20.11
+	pkgrel = 1
 	url = http://sourceforge.net/projects/sardi
 	arch = any
 	license = Attribution-NonCommercial-ShareAlike 4.0 International Public License
@@ -10,8 +10,8 @@ pkgbase = sardi-icons
 	conflicts = sardi-icons
 	options = !strip
 	options = !emptydirs
-	source = sardi-icons::http://downloads.sourceforge.net/project/sardi/sardi-icons-20.5-3.tar.gz
-	sha256sums = SKIP
+	source = sardi-icons::http://downloads.sourceforge.net/project/sardi/sardi-icons-20.11-1.tar.gz
+	sha256sums = e4a9a2abc7a1733717a04468c3425d86237245b2dd54f79277f9a68c48b33c63
 
 pkgname = sardi-icons
 
