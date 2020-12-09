@@ -1,7 +1,7 @@
 pkgbase = qt6ct
 	pkgdesc = Qt 6 Configuration Utility
 	pkgver = 0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/trialuser02/qt6ct
 	arch = x86_64
 	license = BSD

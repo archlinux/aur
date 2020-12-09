@@ -2,7 +2,7 @@
 
 pkgname=qt6ct
 pkgver=0.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Qt 6 Configuration Utility'
 arch=(x86_64)
 url='https://github.com/trialuser02/qt6ct'
