@@ -1,9 +1,9 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Timo Sarawinski <timo@it-kraut.net>
 
 _pkgname=php-lzo
 pkgname=${_pkgname}-git
 pkgver=r6.cad6299
-pkgrel=1
+pkgrel=2
 pkgdesc="lzo compression for php"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -25,8 +25,13 @@ build() {
   cd "${srcdir}/${_pkgname}"
 
   phpize
-  ./configure
+  ./configure --with-php-config=/usr/bin/php-config
   make
+}
+
+check() {
+  cd "${srcdir}/${_pkgname}"
+  make test
 }
 
 package() {
