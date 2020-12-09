@@ -6,7 +6,8 @@ pkgbase = deepin.com.qq.qqmusic
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = deepin-wine
+	depends = deepin-wine5
+	depends = p7zip
 	source = https://github.com/gorquan/QQMusic/releases/download/17.66/qqmusic-17.66-wine.deb
 	sha256sums = 4152033ccd75f4bbde998570fcc02196288231c589223b4415d41f0b2a0841c8
 
