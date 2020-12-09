@@ -1,6 +1,6 @@
 pkgbase = eea
 	pkgdesc = ESET Endpoint Antivirus Business for Linux
-	pkgver = 7.1.6.0
+	pkgver = 7.1.8.0
 	pkgrel = 1
 	url = https://www.eset.com/int/business/endpoint-antivirus-linux/
 	install = eea.install
@@ -16,7 +16,7 @@ pkgbase = eea
 	conflicts = esets
 	source = https://download.eset.com/com/eset/apps/business/eea/linux/g2/latest/eeau.x86_64.bin
 	source = eea.install
-	sha256sums = ea536f51a55a8dea445bd71ccacdff52eb94a085a4127118e2b39208aca7871d
+	sha256sums = 4e907f184f6bdb75a0b9960f1bb102f6040698ccd6f295a0b0b09e610702bc74
 	sha256sums = 73216c2aa21c3528150229a1747c07ae21927e1dbdb345d4ba718d6b9e96b648
 
 pkgname = eea
