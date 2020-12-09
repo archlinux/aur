@@ -35,6 +35,7 @@ pkgbase = matrix-mirage-git
 	depends = python-matrix-nio>=0.15.0
 	depends = libxss
 	depends = python-plyer
+	depends = python-sortedcontainers
 	source = git://github.com/mirukana/mirage.git
 	sha256sums = SKIP
 
