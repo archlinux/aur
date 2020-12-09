@@ -1,7 +1,7 @@
 # Maintainer: Jacek Szafarkiewicz <szafar@linux.pl>
 
 pkgname=displaylink-connect
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc='Automatically execute `xrandr --setprovideroutputsource` when Displaylink dock is connected'
 arch=('x86_64')
@@ -26,5 +26,6 @@ package() {
 
     install -Dm644 systemd/system/displaylink.service.d/displaylink-connect.conf "$pkgdir/usr/lib/systemd/system/displaylink.service.d/displaylink-connect.conf"
     install -Dm644 systemd/user/displaylink-connect.service "$pkgdir/usr/lib/systemd/user/displaylink-connect.service"
-    install -Dm644 displaylink-connect.desktop "$pkgdir/etc/xdg/autostart/displaylink-connect.desktop"
+    mkdir -p "$pkgdir/usr/lib/systemd/user/default.target.wants"
+    ln -s /usr/lib/systemd/user/displaylink-connect.service "$pkgdir/usr/lib/systemd/user/default.target.wants/displaylink-connect.service"
 }
