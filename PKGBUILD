@@ -9,7 +9,7 @@
 
 pkgname=anki-git
 pkgver=r5491.c505894b8
-pkgrel=1
+pkgrel=2
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
 license=('AGPL3')
@@ -114,7 +114,7 @@ build() {
 
 package() {
     cd "$pkgname"
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps dist/*.whl
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps bazel-bin/pylib/anki/anki-*.whl bazel-bin/qt/aqt/aqt-*.whl
 
     install -Dm755 qt/runanki "$pkgdir"/usr/bin/anki
     install -Dm644 qt/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
