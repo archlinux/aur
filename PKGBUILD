@@ -1,8 +1,7 @@
-# Maintainer: orhun <orhunparmaksiz@gmail.com>
+# Contributor: orhun <orhunparmaksiz@gmail.com>
 # Contributor: Frederic Bezies < fredbezies at gmail dot com >
 # Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
-# https://github.com/orhun/pkgbuilds
 
 pkgname=wtftw-git
 pkgver=r347.14f3d1e
