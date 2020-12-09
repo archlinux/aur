@@ -54,7 +54,7 @@ build() {
     -D bluez5-ofono-headset=false \
     -D dbus=disabled \
     -D fftw=disabled \
-    -D glib=enabled \
+    -D glib=disabled \
     -D gsettings=disabled \
     -D gstreamer=disabled \
     -D gtk=disabled \
