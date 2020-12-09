@@ -11,7 +11,7 @@ pkgbase = neovim-nightly
 	optdepends = python-neovim: for Python 3 plugin support, see :help python
 	optdepends = xclip: for clipboard support, see :help clipboard
 	optdepends = xsel: for clipboard support, see :help clipboard
-	provides = neovim=0.5.0+dev+918+g4383c0f95
+	provides = neovim=0.5.0
 	conflicts = neovim
 	source = neovim-0.5.0+dev+918+g4383c0f95.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
 	sha512sums = SKIP

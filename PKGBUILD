@@ -1,7 +1,7 @@
 # Maintainer: Kevin Del Castillo <quebin31@gmail.com>
 
 _pkgname=neovim
-_pkgver=0.5.0+dev+918+g4383c0f95
+_pkgver=0.5.0
 pkgname=neovim-nightly
 epoch=2
 pkgver=0.5.0+dev+918+g4383c0f95
