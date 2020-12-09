@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-shadertools
 	pkgdesc = Experimental module providing APIs and a host tool to host tool to perform graphics and compute shader conditioning for the upcoming Qt graphics abstraction layer (mingw-w64)
-	pkgver = 6.0.0rc
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = mingw-w64-qt6-shadertools
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-rc/submodules/qtshadertools-everywhere-src-6.0.0-rc.tar.xz
-	sha256sums = 4129357f7318c9e7879b2b3570c94e62dedc0d7a5b27f585fc411d5c06d80d35
+	source = https://download.qt.io/official_releases/qt/6.0/6.0.0/submodules/qtshadertools-everywhere-src-6.0.0.tar.xz
+	sha256sums = 201b1376b65ef9f7fd19789781e0378ea813385217cd392c5c896699e6108e6c
 
 pkgname = mingw-w64-qt6-shadertools
 
