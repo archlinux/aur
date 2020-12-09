@@ -13,7 +13,7 @@ pkgbase = glaxnimate-bin
 	depends = ffmpeg
 	provides = glaxnimate
 	conflicts = glaxnimate
-	source = glaxnimate-0.3.1.deb::https://gitlab.com/mattbas/glaxnimate/-/jobs/artifacts/0.3.1/raw/build/glaxnimate.deb?job=linux%3Adeb
+	source = glaxnimate-0.3.2.deb::https://gitlab.com/mattbas/glaxnimate-artifacts/-/raw/master/0.3.2/Deb/glaxnimate.deb
 	sha1sums = fee0b997af8a42192083060c5c8129462ad5117a
 
 pkgname = glaxnimate-bin
