@@ -2,9 +2,9 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=ali-bin
-pkgdesc="Generate HTTP load and plot the results in real-time"
 pkgver=0.5.4
 pkgrel=1
+pkgdesc="Generate HTTP load and plot the results in real-time"
 arch=('x86_64')
 url="https://github.com/nakabonne/ali"
 license=('MIT')
