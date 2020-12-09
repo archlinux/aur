@@ -1,4 +1,4 @@
-From 2e806336a1053599c6b9b2fb1bcd541b256506b2 Mon Sep 17 00:00:00 2001
+From 042b2c86c9f895980f400fdd1d4e6ab8ce8022d8 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 2 Nov 2020 13:47:45 +0100
 Subject: [PATCH 5/7] Fix libjpeg workaround for conflict with rpcndr.h
@@ -13,7 +13,7 @@ Change-Id: I011b7735485689c9797cffe2646c8c3d15d0645e
  1 file changed, 1 insertion(+), 7 deletions(-)
 
 diff --git a/src/plugins/imageformats/jpeg/qjpeghandler.cpp b/src/plugins/imageformats/jpeg/qjpeghandler.cpp
-index 29bf5ab589..dc336f156a 100644
+index beef18f260..72708145f4 100644
 --- a/src/plugins/imageformats/jpeg/qjpeghandler.cpp
 +++ b/src/plugins/imageformats/jpeg/qjpeghandler.cpp
 @@ -61,14 +61,8 @@

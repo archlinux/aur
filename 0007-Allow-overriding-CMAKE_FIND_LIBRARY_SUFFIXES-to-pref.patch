@@ -1,4 +1,4 @@
-From dd3d798d4c338164db0ff41ba09af66c43a9d2ab Mon Sep 17 00:00:00 2001
+From 28e6e716d2a09f40720f3d213e82c1ff6e61a860 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 8 Nov 2020 00:34:09 +0100
 Subject: [PATCH 7/7] Allow overriding CMAKE_FIND_LIBRARY_SUFFIXES to prefer
@@ -10,7 +10,7 @@ Change-Id: Ic29b64b999ed9b5888a8dc1b0961a76009c5e75c
  1 file changed, 5 insertions(+)
 
 diff --git a/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake b/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake
-index 5e49a99f5d..dd8ffc1972 100644
+index bb2de0a0c2..a2e8b37ba7 100644
 --- a/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake
 +++ b/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake
 @@ -2,6 +2,10 @@ if (CMAKE_VERSION VERSION_LESS 3.1.0)
@@ -24,7 +24,7 @@ index 5e49a99f5d..dd8ffc1972 100644
  ######################################
  #
  #       Macros for building Qt modules
-@@ -224,6 +228,7 @@ macro(qt_prepare_standalone_project)
+@@ -268,6 +272,7 @@ macro(qt_prepare_standalone_project)
  endmacro()
  
  macro(qt_build_repo_begin)
