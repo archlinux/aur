@@ -17,6 +17,14 @@ build() {
   pod2man --utf8 rename rename.1
 }
 
+check() {
+  mkdir -p "rename-$pkgver/tests"
+  cd "rename-$pkgver/tests"
+  touch foo.doc bar.doc
+  ../rename -s .doc .txt *.doc
+  stat foo.txt bar.txt >/dev/null
+}
+
 package() {
   cd "rename-$pkgver"
   # Change name to "prename" to not conflict with util-linux.
