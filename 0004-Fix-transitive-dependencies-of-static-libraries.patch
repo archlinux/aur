@@ -1,4 +1,4 @@
-From 7c05fdef291be4b1819c15845116005f865b185e Mon Sep 17 00:00:00 2001
+From f0176a1ae2e36b4ea89bda4a927bf387a4e20ead Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:59:33 +0100
 Subject: [PATCH 4/7] Fix transitive dependencies (of static libraries)

@@ -11,7 +11,7 @@
 # All patches are managed at https://github.com/Martchus/qtbase
 
 pkgname=mingw-w64-qt6-base
-_qtver=6.0.0-rc
+_qtver=6.0.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -30,7 +30,7 @@ optdepends=('mingw-w64-postgresql: PostgreSQL driver'
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtbase-everywhere-src-${_qtver}"
-source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Use-CMake-s-default-import-library-suffix.patch'
         '0002-Fix-finding-D-Bus.patch'
         '0003-Fix-using-static-PCRE2-and-DBus-1.patch'
@@ -38,14 +38,14 @@ source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/s
         '0005-Fix-libjpeg-workaround-for-conflict-with-rpcndr.h.patch'
         '0006-Support-finding-MariaDB.patch'
         '0007-Allow-overriding-CMAKE_FIND_LIBRARY_SUFFIXES-to-pref.patch')
-sha256sums=('8dc2c6fe053235e4a2866d8e1927fd667e5e8c853c96de708b9688012089138d'
-            'bb9bec76506c3425d6fa2394c2c15cf8c8e84d6ce090f8cd9136c77e7a286d8f'
-            '9ba0563f3c47327ca2f51c864fc1916a4355f56f82da77dea81c8a90cf315579'
-            '37e533855b3b498bd1e93879aac05cc77dad3b2df64f9a61440aa2bcb73e9847'
-            '3bdb93179f5258aa87ce3c2b8e560e2ff9fc9446bfd4688b2faf46c5deb45fc8'
-            'f2f64e7b6bc2a3b7c4414fc4c857b206c597ee7174cdaadaccc51ca4c0f5ada1'
-            'bd3a50b6a034e647a36cc4bf6a37532d892561255cda3e6cbdaf5849e710b657'
-            'df804bde0b39e507f07cbedc18001ea8eb939497c89586e93dc1cbb8c878fbed')
+sha256sums=('ae227180272d199cbb15318e3353716afada5c57fd5185b812ae26912c958656'
+            'ea0d7432318261cfd13dadd39ecef5bb98d6ff3017c9e170209c9227bfddaed7'
+            '42e06c8f4261adf434d3f570c22156dec8164745bcb25fd1a93c54a0a5f2277a'
+            '01e52d9a60f6b31561c95798bc1fe0f3e0b6361c9e22307a8db47af789bd8544'
+            'c7a416a2bb61f938a81c7ddc82257776e6752f5372ee57f2cc08cba8761e2211'
+            'e11565af9b05b7714248324b5afecda78caa9be03e9c4872f80ea07636bfa1a7'
+            '8fa423062a850d68341b80aade231cfec865f9a750324ff3819faecf77ff9347'
+            'c9c0289e08106dcc18973d1625526f2a90271452d375171d97a9793199549cea')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 

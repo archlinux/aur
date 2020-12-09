@@ -1,4 +1,4 @@
-From e8cb07cbabefc1bf1acfd238b3298c7fa7a6c536 Mon Sep 17 00:00:00 2001
+From baf1e987e55c90a32e6e32438f770f7aab4c4a3c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 8 Nov 2020 00:33:12 +0100
 Subject: [PATCH 6/7] Support finding MariaDB
