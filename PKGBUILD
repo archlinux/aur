@@ -10,7 +10,7 @@ license=('BSD')
 depends=('gcc-libs' 'rsync')
 makedepends=('rust')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/NLnetLabs/routinator/archive/v$pkgver.tar.gz")
-sha256sums=('f81b63cddb841ccd2b28387f91e7d9d2820dccc0cbb9541f54b51eb44c0bd634')
+sha256sums=('d6c2793ef282c48d561fb7b386f2dfb65ebecfbc7b6ce6b44bcd1842a2047fe4')
 
 
 check() {
