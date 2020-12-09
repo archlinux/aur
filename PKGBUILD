@@ -20,6 +20,6 @@ pkgver() {
 
 package() {
   cd "${_pkgname}"
-  install -D -m 755 -t "${pkgdir}/usr/bin/" rofi-ttv
+  install -D -m 755 -t "${pkgdir}/usr/bin/" rofi-nordvpn
   install -D -m 644 -t "${pkgdir}/usr/share/licenses/${_pkgname}/" LICENSE
 }
