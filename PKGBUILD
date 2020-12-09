@@ -1,0 +1,45 @@
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Taran Lynn <taranlynn0gmail.com>
+
+pkgname=swaybg-minimal-git
+_pkgname=swaybg
+pkgver=r95.a8f109a
+pkgrel=1
+license=("MIT")
+pkgdesc="Wallpaper tool for Wayland compositors"
+makedepends=(
+  'meson'
+  'git'
+#  'scdoc'
+  'wayland-protocols'
+#  'gdk-pixbuf2'
+)
+depends=(
+    "wayland" "cairo"
+)
+
+arch=("i686" "x86_64")
+url="https://swaywm.org"
+source=("${pkgname%-*}::git+https://github.com/swaywm/swaybg.git#branch=master")
+sha1sums=("SKIP")
+provides=("swaybg")
+conflicts=("swaybg")
+
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+
+build() {
+  arch-meson "${_pkgname}" build -Dgdk-pixbuf=disabled -Dman-pages=disabled
+  meson compile -C build
+}
+
+#check() {
+#  meson test -C build
+#}
+
+package() {
+  DESTDIR="$pkgdir" meson install -C build
+}

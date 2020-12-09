@@ -1,0 +1,20 @@
+pkgbase = swaybg-minimal-git
+	pkgdesc = Wallpaper tool for Wayland compositors
+	pkgver = r95.a8f109a
+	pkgrel = 1
+	url = https://swaywm.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = cairo
+	provides = swaybg
+	conflicts = swaybg
+	source = swaybg-minimal::git+https://github.com/swaywm/swaybg.git#branch=master
+	sha1sums = SKIP
+
+pkgname = swaybg-minimal-git
+
