@@ -1,0 +1,19 @@
+pkgbase = neovim-scnvim-git
+	pkgdesc = Neovim frontend for SuperCollider
+	pkgver = r372.6274cab
+	pkgrel = 1
+	url = https://github.com/dvzrv/scnvim
+	arch = any
+	groups = neovim-plugins
+	license = GPL3
+	makedepends = git
+	depends = neovim
+	depends = supercollider
+	optdepends = pandoc: for rendering help files
+	provides = neovim-scnvim
+	conflicts = neovim-scnvim
+	source = neovim-scnvim-git::git+https://github.com/dvzrv/scnvim#branch=install_system_wide
+	md5sums = SKIP
+
+pkgname = neovim-scnvim-git
+
