@@ -27,7 +27,6 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${_pkgname_raw}"
-	sed -e s/raw.githubusercontent.com/https://g.ioiox.com/https://raw.githubusercontent.com/g chinaip/update_db.py
 	make update_db
 }
 
