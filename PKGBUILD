@@ -3,9 +3,9 @@
 
 pkgbase=linux-amd-staging-drm-next-git
 pkgdesc='Linux kernel with AMDGPU WIP patches'
-pkgver=5.10.949809.8f0ba3310c12
-_branch=amd-staging-drm-next
+pkgver=5.10.952174.d3b9ec1a13c9
 _product="${pkgbase%-git}"
+_branch="${_product#linux-}"
 pkgrel=1
 arch=(x86_64)
 url='https://gitlab.freedesktop.org/drm/amd'
@@ -23,7 +23,7 @@ source=(
   sphinx-workaround.patch
 )
 sha256sums=('SKIP'
-            '181330a9cf4517abbbe29b93165bc859ad8ca14a43582f4e1d69aae2b5ecc2c9'
+            'cf69b81648a07ebedb274ed26bed3c4d2ff75c6665ecaca0a724b148c70c9c7c'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
 
 pkgver() {
