@@ -1,6 +1,6 @@
 pkgbase = bricscad-en_us
 	pkgdesc = Alternative to CAD number DWG
-	pkgver = 20.2.10
+	pkgver = 20.2.11
 	pkgrel = 1
 	url = https://www.bricsys.com
 	arch = x86_64
@@ -12,9 +12,8 @@ pkgbase = bricscad-en_us
 	depends = lib32-freetype2
 	depends = lib32-gtk2
 	provides = bricscad
-	source = file://BricsCAD-V20.2.10-1-en_US.x86_64.rpm
-	md5sums = 23f348705ad3b4e40ae90768a77a5136
-	sha512sums = c1e6c45dd5fec1a40567bfc3f89d578f18937263adf9bd2ac3a341be6cd4fe1b142c2098580aa7bc2e6524165b8168785dff20c4910846c7dfef764e4973d560
+	source = file://BricsCAD-V20.2.11-en_US.x86_64.rpm
+	md5sums = 4b245d920e5f21501519c12e9ee7a260
 
 pkgname = bricscad-en_us
 

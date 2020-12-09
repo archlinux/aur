@@ -1,5 +1,5 @@
 pkgname=bricscad-en_us
-pkgver=20.2.10
+pkgver=20.2.11
 pkgrel=1
 pkgdesc="Alternative to CAD number DWG"
 arch=("x86_64")
@@ -11,7 +11,7 @@ provides=('bricscad')
 #optdepends=()
 
 # To download you must be logged in. The official website has no permanent link.
-source=("file://BricsCAD-V20.2.10-1-en_US.x86_64.rpm")
+source=("file://BricsCAD-V${pkgver}-en_US.x86_64.rpm")
 
 #validpgpkeys=()
 
@@ -58,5 +58,4 @@ if [ -x "`which update-mime-database 2>/dev/null`" ]; then update-mime-database 
 if [ -x "`which gtk-update-icon-cache 2>/dev/null`" ] && [ -x /usr/share/icons/gnome/index.theme ]; then gtk-update-icon-cache --force /usr/share/icons/gnome ; fi
 
 }
-md5sums=('23f348705ad3b4e40ae90768a77a5136')
-sha512sums=('c1e6c45dd5fec1a40567bfc3f89d578f18937263adf9bd2ac3a341be6cd4fe1b142c2098580aa7bc2e6524165b8168785dff20c4910846c7dfef764e4973d560')
+md5sums=('4b245d920e5f21501519c12e9ee7a260')
