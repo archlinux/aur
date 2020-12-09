@@ -5,7 +5,7 @@
 pkgname=sic-image-cli-git
 _pkgname=sic
 pkgver=0.14.0.r0.g9c0e31f
-pkgrel=2
+pkgrel=3
 pkgdesc="Accessible image processing and conversion from the terminal (git)"
 arch=('x86_64')
 url="https://github.com/foresterre/sic"
@@ -36,5 +36,5 @@ package() {
   install -Dm 644 LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm 644 "../$_pkgname.bash" "${pkgdir}/usr/share/bash-completion/completions/$_pkgname"
   install -Dm 644 "../$_pkgname.fish" -t "${pkgdir}/usr/share/fish/completions"
-  install -Dm 644 "../_$_pkgname" -t "${pkgdir}/usr/share/zsh/functions/Completion/Linux"
+  install -Dm 644 "../_$_pkgname" -t "${pkgdir}/usr/share/zsh/site-functions"
 }
