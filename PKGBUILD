@@ -14,6 +14,8 @@ arch=('x86_64')
 package="ledger-live-desktop-${pkgver}-linux-${arch}.AppImage"
 depends=('ledger-udev')
 options=(!strip)
+provides=('ledger-live')
+conflicts=('ledger-live')
 source=(
   "${package}::${url}/releases/download/v${pkgver}/${package}"
   "LICENSE"
