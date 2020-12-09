@@ -1,6 +1,6 @@
 pkgbase = linux-manjaro-xanmod
 	pkgdesc = Linux Xanmod
-	pkgver = 5.9.10
+	pkgver = 5.9.13
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = linux-manjaro-xanmod
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.9.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.9.tar.sign
-	source = https://github.com/xanmod/linux/releases/download/5.9.10-xanmod2/patch-5.9.10-xanmod2.xz
+	source = https://github.com/xanmod/linux/releases/download/5.9.13-xanmod2/patch-5.9.13-xanmod2.xz
 	source = choose-gcc-optimization.sh
 	source = https://gitlab.manjaro.org/packages/core/linux59/-/archive/a75492e80ffc04de605bf92639c4a2fbd5f52b86/linux59-a75492e80ffc04de605bf92639c4a2fbd5f52b86.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
