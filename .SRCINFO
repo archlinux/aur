@@ -1,6 +1,6 @@
 pkgbase = particle-cli
 	pkgdesc = CLI tool for the Particle hardware platform
-	pkgver = 2.8.1
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = http://particle.io/
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = particle-cli
 	depends = nodejs
 	optdepends = dfu-util: local flashing
 	optdepends = openssl: local flashing
-	noextract = particle-cli-2.8.1.tgz
-	source = http://registry.npmjs.org/particle-cli/-/particle-cli-2.8.1.tgz
-	md5sums = 30606e734c0b5929795b0ea415833420
-	sha256sums = f4d97ad821d3a99cf4aa2aaf9dcc3e203235baf51f784a1f357f3def222466be
+	noextract = particle-cli-2.9.1.tgz
+	source = http://registry.npmjs.org/particle-cli/-/particle-cli-2.9.1.tgz
+	md5sums = 2cf5ff1ada971967f1602172e3cf7055
+	sha256sums = 4ea10c4ce749d83e67d84154303767f9b551eaaace395a2196d3cb6c988664fd
 
 pkgname = particle-cli
 
