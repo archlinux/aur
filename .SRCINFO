@@ -1,6 +1,6 @@
 pkgbase = php-cs-fixer
 	pkgdesc = Analyzes some PHP source code and tries to fix coding standards issues (PSR-1 and PSR-2 compatible).
-	pkgver = 2.16.8
+	pkgver = 2.16.9
 	pkgrel = 1
 	url = http://cs.sensiolabs.org/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = php-cs-fixer
 	makedepends = git
 	depends = php>=5.6
 	depends = php>=7
-	source = php-cs-fixer::git+https://github.com/FriendsOfPHP/PHP-CS-Fixer#tag=v2.16.8
+	source = php-cs-fixer::git+https://github.com/FriendsOfPHP/PHP-CS-Fixer#tag=v2.16.9
 	md5sums = SKIP
 
 pkgname = php-cs-fixer
