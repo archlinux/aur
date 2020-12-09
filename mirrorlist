@@ -1,8 +1,3 @@
-# Brazil
-## By: PedroHLC and UFSCar
-Server = https://lonewolf.pedrohlc.com/$repo/$arch
-#Server = http://lonewolf-builder.duckdns.org/$repo/$arch
-
 # USA
 ## By: GarudaLinux and Fosshost
 Server = https://builds.garudalinux.org/repos/$repo/$arch
