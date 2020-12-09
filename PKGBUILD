@@ -1,7 +1,7 @@
 # Maintainer: Markus Richter <mqus at disroot dot org>
 # Contributor: Timothée Ravier <tim@siosm.fr
 
-pkgname=bitwarden_rs
+pkgname=bitwarden_rs-sqlite
 _pkgbase=bitwarden_rs
 pkgver=1.17.0
 pkgrel=1
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('openssl')
 makedepends=('rust-nightly' 'cargo-nightly')
 optdepends=("bitwarden_rs-vault: Web Interface 'Vault'")
-conflicts=("${_pkgbase}-git" "${_pkgbase}-mysql" "${_pkgbase}-postgresql")
+conflicts=("${_pkgbase}" "${_pkgbase}-git" "${_pkgbase}-mysql" "${_pkgbase}-postgresql")
 backup=('etc/bitwarden_rs.env')
 install=bitwarden_rs.install
 source=("https://github.com/dani-garcia/bitwarden_rs/archive/$pkgver.tar.gz"
@@ -27,7 +27,7 @@ sha512sums=('f983d225b42ddcc561502aa0bc2820c0fb362307c3ac1181c568c3ab4cb6a08eb40
             '15b00b0dc9122f98ce8d7b55668fdfbb2e0387563e7d9ad6c0ebc73b75e46e1ccdb3a2186a453795a1b3e2d45358ff5a8076d5cf30319ab2c21539d20cff81c6'
             '6fd0ea962f077f92ad7f55a1bab479e68e3463b41eb171d501847554b676b7ecf05e016544f6331bdb53bf71038fcf2ce67ad213d0a7c2f93acbafd72e8441a6'
             '9e0bf89b2e1196402e744244b09257d58958a8fa4b78aabc556571781a1cb05e900e15877f884592e2796c24d631e353d715f202238260055e7d2e8f77cafc58')
-_src="$pkgname-$pkgver"
+_src="$_pkgbase-$pkgver"
 
 build() {
 	# rustup is not required, but if it exists, we have to set the profile. Otherwise, fail silently.

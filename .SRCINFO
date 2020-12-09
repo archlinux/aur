@@ -1,4 +1,4 @@
-pkgbase = bitwarden_rs
+pkgbase = bitwarden_rs-sqlite
 	pkgdesc = An unofficial lightweight implementation of the bitwarden-server using rust and sqlite. Does NOT include the web-interface.
 	pkgver = 1.17.0
 	pkgrel = 1
@@ -13,6 +13,7 @@ pkgbase = bitwarden_rs
 	makedepends = cargo-nightly
 	depends = openssl
 	optdepends = bitwarden_rs-vault: Web Interface 'Vault'
+	conflicts = bitwarden_rs
 	conflicts = bitwarden_rs-git
 	conflicts = bitwarden_rs-mysql
 	conflicts = bitwarden_rs-postgresql
@@ -30,5 +31,5 @@ pkgbase = bitwarden_rs
 	sha512sums = 6fd0ea962f077f92ad7f55a1bab479e68e3463b41eb171d501847554b676b7ecf05e016544f6331bdb53bf71038fcf2ce67ad213d0a7c2f93acbafd72e8441a6
 	sha512sums = 9e0bf89b2e1196402e744244b09257d58958a8fa4b78aabc556571781a1cb05e900e15877f884592e2796c24d631e353d715f202238260055e7d2e8f77cafc58
 
-pkgname = bitwarden_rs
+pkgname = bitwarden_rs-sqlite
 
