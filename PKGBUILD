@@ -2,8 +2,8 @@
 # Maintainer: Corey Richardson <corey at octayn dot net>
 
 pkgname=asciidocfx
-pkgver=1.7.2
-pkgrel=2
+pkgver=1.7.3
+pkgrel=1
 pkgdesc="Asciidoc Editor and Toolchain written with JavaFX"
 arch=('any')
 
@@ -18,7 +18,7 @@ source=(
     'asciidocfx'
 )
 sha512sums=(
-    '13e11110b81ff5dea8afab24616e9f2a1994a065408d0b8642af78566f1e39570bba4871a2b437675b0cca4adc7951221cdc13eb04896d44fef961d92f0e780f'
+    '25d2739f83571523e5b67d52b83fb447723867c35ba93d38d0236425f1b305e3eac182f92772db059a2bd161b991617b06da7e5a3d3ffef6e0567653bd92437e'
     '7f758a2536c627d854bab4d42f629163d68ff5681be108779670262e765311cad3c93d0c976d561438519ab92a4311d3b49d2f8352cf5ef17aab47eb2b77047d'
 )
 
