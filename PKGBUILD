@@ -101,7 +101,7 @@ package() {
 
   install -Dm644 ../COPYING.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  ln -s /usr/lib/libSDL2-2.0.so ${pkgdir}/usr/lib/libSDL2-2.0.so.0
+#  ln -s /usr/lib/libSDL2-2.0.so ${pkgdir}/usr/lib/libSDL2-2.0.so.0
 }
 
 # vim: ts=2 sw=2 et:
