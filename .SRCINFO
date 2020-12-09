@@ -1,8 +1,8 @@
 pkgbase = python-pyfastcopy
 	pkgdesc = Python module that monkey patches the shutil.copyfile function of Python standard library to internally use the sendfile system call.
 	pkgver = 1.0.3
-	pkgrel = 1
-	url = https://pypi.org/project/filetype/
+	pkgrel = 2
+	url = https://pypi.org/project/pyfastcopy/
 	arch = any
 	license = GPL
 	depends = python
