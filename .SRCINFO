@@ -28,8 +28,6 @@ pkgbase = vim-youcompleteme-git
 	optdepends = java-environment>=11: Java semantic completion
 	optdepends = jdtls: Java semantic completion
 	source = git+https://github.com/ycm-core/YouCompleteMe.git
-	source = git+https://github.com/ycm-core/ycmd.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = vim-youcompleteme-git
