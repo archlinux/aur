@@ -1,9 +1,9 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-prance
-pkgver=0.19.0
+pkgver=0.20.0
 _openapi_commit=fbe62006211838a8bb7bf2433a1d15f1a5838a03
-pkgrel=3
+pkgrel=1
 pkgdesc="Resolving Swagger/OpenAPI 2.0 and 3.0 Parser"
 url="https://github.com/jfinkhaeuser/prance"
 license=('custom:MITNFA')
@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest-cov')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jfinkhaeuser/prance/archive/v$pkgver.tar.gz"
         "OpenAPI-Specification-$_openapi_commit.tar.gz::https://github.com/OAI/OpenAPI-Specification/archive/$_openapi_commit.tar.gz")
-sha512sums=('e04e10e025280170d4b01ff302d7bb3cde30c321d9b09c9b215eec2f4214dc05a32adcc0a171ee13b0b843639ae7978015693658e601b49286224e1dbe779bf2'
+sha512sums=('e10f3c828b5c9f182be3443b8a7bdd2dbdac1f404a48ab04636e0cd681878248b9205e74a38939f0cc476c9b482502fdabf3bfa2a2e43f28152ab860b0d456d7'
             'd7957f1cdaa681b4c163e6e0b35ed6b808f469c3fdbba86a5e7221bb3c0c980415dca145e7f57bcebed75624562e89a893841d17c9e0ff82df4f0ff65ffaa2ae')
 
 prepare() {
