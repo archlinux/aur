@@ -1,7 +1,7 @@
 pkgbase = menyoki-bin
 	pkgdesc = Screen{shot,cast} and perform ImageOps on the command line
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/orhun/menyoki
 	arch = x86_64
 	license = GPL3

@@ -3,7 +3,7 @@
 
 pkgname=menyoki-bin
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Screen{shot,cast} and perform ImageOps on the command line"
 arch=('x86_64')
 url="https://github.com/orhun/menyoki"
@@ -25,5 +25,5 @@ package() {
   install -Dm 644 "man/${pkgname%-bin}.conf.5" -t "$pkgdir/usr/share/man/man5"
   install -Dm 644 "completions/${pkgname%-bin}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname%-bin}"
   install -Dm 644 "completions/${pkgname%-bin}.fish" -t "${pkgdir}/usr/share/fish/completions"
-  install -Dm 644 "completions/${pkgname%-bin}.zsh" "${pkgdir}/usr/share/zsh/functions/Completion/Linux/_${pkgname%-bin}"
+  install -Dm 644 "completions/${pkgname%-bin}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname%-bin}"
 }
