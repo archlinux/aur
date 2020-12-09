@@ -104,7 +104,7 @@ sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491' #
             'SKIP'                                                             #            .sign
             'ecc8b8723e7ef4625c83c00c9ce7e7a6c304125dd4626e3dcbfbaf9cff2e0468' # xanmod
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511' # choose-gcc-optimization.sh
-            '219f658ae91e429ec1de81b08ce39d11ee6286f1c171a9e85e12ce021fd9b903') # manjaro
+            '3d9d311b7a7a0ea59e2a0da9b5b63efc3f3e1876a9b58ff96e15f69290db5cde') # manjaro
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman

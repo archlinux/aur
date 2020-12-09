@@ -28,7 +28,7 @@ pkgbase = linux-manjaro-xanmod-lts
 	sha256sums = SKIP
 	sha256sums = ecc8b8723e7ef4625c83c00c9ce7e7a6c304125dd4626e3dcbfbaf9cff2e0468
 	sha256sums = 2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511
-	sha256sums = 219f658ae91e429ec1de81b08ce39d11ee6286f1c171a9e85e12ce021fd9b903
+	sha256sums = 3d9d311b7a7a0ea59e2a0da9b5b63efc3f3e1876a9b58ff96e15f69290db5cde
 
 pkgname = linux-manjaro-xanmod-lts
 	pkgdesc = The Linux LTS kernel and modules with Xanmod and Manjaro patches (Bootsplash support)
