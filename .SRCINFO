@@ -1,0 +1,18 @@
+pkgbase = python-okta-legacy
+	pkgdesc = Python SDK for managing Okta instances, pre-1.0 version
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/okta/okta-sdk-python
+	arch = any
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-requests
+	depends = python-dateutil
+	depends = python-six
+	provides = python-okta=0.0.4
+	conflicts = python-okta
+	source = https://files.pythonhosted.org/packages/source/o/okta/okta-0.0.4.tar.gz
+	sha1sums = 152715bef918b10f6b8c420b2c89a7c4d44a6f3a
+
+pkgname = python-okta-legacy
+
