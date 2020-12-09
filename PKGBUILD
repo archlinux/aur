@@ -78,7 +78,7 @@ _makenconfig=
 
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.9.10
+pkgver=5.9.13
 _major=5.9
 _branch=5.x
 xanmod=2
