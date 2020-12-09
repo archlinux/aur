@@ -1,7 +1,7 @@
 pkgbase = ombi-preview
 	pkgdesc = Simple automated way for users to request new content for Plex
 	pkgver = 4.0.731
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tidusjar/Ombi
 	arch = x86_64
 	arch = aarch64
@@ -24,6 +24,7 @@ pkgbase = ombi-preview
 	noextract = ombi-x86_64-4.0.731.tar.gz
 	noextract = ombi-i686-4.0.731.tar.gz
 	noextract = ombi-armv7h-4.0.731.tar.gz
+	options = !strip
 	options = staticlibs
 	backup = var/lib/appsettings.json
 	source = ombi.service

@@ -2,7 +2,7 @@
 
 pkgname=ombi-preview
 pkgver=4.0.731
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple automated way for users to request new content for Plex"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/tidusjar/Ombi"
@@ -20,7 +20,7 @@ backup=('var/lib/appsettings.json')
 replaces=('plexrequests')
 provides=('ombi')
 conflicts=('ombi')
-options=('staticlibs')
+options=('!strip' 'staticlibs')
 
 source=("ombi.service"
         "ombi.sysusers"
