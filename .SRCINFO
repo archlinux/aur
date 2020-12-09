@@ -1,10 +1,11 @@
 pkgbase = i3-scratchpad-git
 	pkgdesc = The Swiss Army Knife of floating i3 windows
-	pkgver = 7
-	pkgrel = 1
+	pkgver = 9
+	pkgrel = 2
 	arch = any
 	license = Unlicense
 	depends = i3-wm
+	depends = wmctrl
 	depends = bash
 	optdepends = rxvt-unicode: for terminal programs support
 	source = git+https://gitlab.com/aquator/i3-scratchpad.git

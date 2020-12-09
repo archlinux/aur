@@ -1,11 +1,11 @@
 # Maintainer: Thomas Simatic <thomas.sim@mailo.com>
 pkgname="i3-scratchpad-git"
-pkgver=7
-pkgrel=1
+pkgver=9
+pkgrel=2
 pkgdesc="The Swiss Army Knife of floating i3 windows"
 arch=(any)
 license=('Unlicense')
-depends=(i3-wm bash)
+depends=(i3-wm wmctrl bash)
 optdepends=('rxvt-unicode: for terminal programs support')
 
 source=("git+https://gitlab.com/aquator/i3-scratchpad.git")
