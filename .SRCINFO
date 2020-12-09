@@ -1,7 +1,7 @@
 pkgbase = pam-selinux
 	pkgdesc = SELinux aware PAM (Pluggable Authentication Modules) library
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://linux-pam.org
 	arch = x86_64
 	groups = selinux
@@ -15,8 +15,11 @@ pkgbase = pam-selinux
 	depends = audit
 	depends = libselinux
 	depends = pambase-selinux
-	provides = pam=1.5.0-1
-	provides = selinux-pam=1.5.0-1
+	depends = libaudit.so
+	depends = libxcrypt
+	depends = libcrypt.so
+	provides = pam=1.5.0-2
+	provides = selinux-pam=1.5.0-2
 	conflicts = pam
 	conflicts = selinux-pam
 	options = !emptydirs
@@ -31,11 +34,13 @@ pkgbase = pam-selinux
 	backup = etc/environment
 	source = https://github.com/linux-pam/linux-pam/releases/download/v1.5.0/Linux-PAM-1.5.0.tar.xz
 	source = https://github.com/linux-pam/linux-pam/releases/download/v1.5.0/Linux-PAM-1.5.0.tar.xz.asc
+	source = CVE-2020-27780.patch
 	source = pam.tmpfiles
 	validpgpkeys = 8C6BFD92EE0F42EDF91A6A736D1A7F052E5924BB
 	validpgpkeys = 296D6F29A020808E8717A8842DB5BD89A340AEB7
 	sha256sums = 02d39854b508fae9dc713f7733bbcdadbe17b50de965aedddd65bcb6cc7852c8
 	sha256sums = SKIP
+	sha256sums = b785b637e4bf4c0a1601c296b562ee2eed09916cc589dc4021fa1abc6c5394c8
 	sha256sums = 5631f224e90c4f0459361c2a5b250112e3a91ba849754bb6f67d69d683a2e5ac
 
 pkgname = pam-selinux

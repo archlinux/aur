@@ -9,20 +9,21 @@
 
 pkgname=pam-selinux
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux aware PAM (Pluggable Authentication Modules) library"
 arch=('x86_64')
 license=('GPL2')
 url="http://linux-pam.org"
-depends=('glibc' 'libtirpc' 'audit' 'libselinux' 'pambase-selinux')
+depends=('glibc' 'libtirpc' 'audit' 'libselinux' 'pambase-selinux' 'libaudit.so' 'libxcrypt' 'libcrypt.so')
 makedepends=('flex' 'w3m' 'docbook-xml>=4.4' 'docbook-xsl')
+provides=('libpam.so' 'libpamc.so' 'libpam_misc.so')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 backup=(etc/security/{access.conf,faillock.conf,group.conf,limits.conf,namespace.conf,namespace.init,pam_env.conf,time.conf} etc/environment)
 groups=('selinux')
-source=(https://github.com/linux-pam/linux-pam/releases/download/v$pkgver/Linux-PAM-$pkgver.tar.xz
-        https://github.com/linux-pam/linux-pam/releases/download/v$pkgver/Linux-PAM-$pkgver.tar.xz.asc
+source=(https://github.com/linux-pam/linux-pam/releases/download/v$pkgver/Linux-PAM-$pkgver.tar.xz{,.asc}
+        CVE-2020-27780.patch  # https://github.com/linux-pam/linux-pam/commit/30fdfb90d9864bcc254a62760aaa149d373fd4eb.patch
         ${pkgname/-selinux}.tmpfiles)
 validpgpkeys=(
         '8C6BFD92EE0F42EDF91A6A736D1A7F052E5924BB' # Thorsten Kukuk
@@ -31,9 +32,15 @@ validpgpkeys=(
 
 sha256sums=('02d39854b508fae9dc713f7733bbcdadbe17b50de965aedddd65bcb6cc7852c8'
             'SKIP'
+            'b785b637e4bf4c0a1601c296b562ee2eed09916cc589dc4021fa1abc6c5394c8'
             '5631f224e90c4f0459361c2a5b250112e3a91ba849754bb6f67d69d683a2e5ac')
 
 options=('!emptydirs')
+
+prepare() {
+  cd Linux-PAM-$pkgver
+  patch -Np1 < ../CVE-2020-27780.patch
+}
 
 build() {
   cd Linux-PAM-$pkgver
