@@ -1,7 +1,7 @@
 pkgbase = qt-sdk
 	pkgdesc = Qt SDK for both hosts and a variety of targets
 	pkgver = 6.0.0
-	pkgrel = 0
+	pkgrel = 3
 	url = http://www.chaos-reins.com/qpi/
 	arch = x86_64
 	license = LGPL3
@@ -18,9 +18,9 @@ pkgbase = qt-sdk
 	provides = qt-sdk
 	options = !strip
 	source = git://github.com/sirspudd/mkspecs.git
-	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-rc/single/qt-everywhere-src-6.0.0-rc.tar.xz
+	source = https://download.qt.io/official_releases/qt/6.0/6.0.0/single/qt-everywhere-src-6.0.0.tar.xz
 	sha256sums = SKIP
-	sha256sums = d5ec639f23ac314f7a4b97f305195a6e2d22a859bd750d9fa81ad537c094e412
+	sha256sums = d39a1a557a0dc8dc5ea2eaaee0fa015c71dcbb79c25a6aea421c594227565296
 
 pkgname = qt-sdk
 
