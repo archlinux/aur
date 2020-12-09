@@ -1,4 +1,4 @@
-From adbcd437ab61010cec31a3e52a1fd0b7e772173f Mon Sep 17 00:00:00 2001
+From 007674dc717498f33a8e30a558e8d6560369a0fd Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 26 Nov 2020 01:53:27 +0100
 Subject: [PATCH] Make windeployqt an optional feature
