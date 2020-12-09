@@ -1,6 +1,6 @@
 pkgbase = kakoune-extra-filetypes-git
 	pkgdesc = Extra highlighters for the Kakoune editor
-	pkgver = r22_gc478ebd
+	pkgver = r33_g9cbd83b
 	pkgrel = 1
 	url = https://github.com/kakoune-editor/kakoune-extra-filetypes
 	install = kakoune-extra-filetypes-git.install

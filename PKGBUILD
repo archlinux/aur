@@ -1,5 +1,5 @@
 pkgname=kakoune-extra-filetypes-git
-pkgver=r22_gc478ebd
+pkgver=r33_g9cbd83b
 pkgrel=1
 pkgdesc='Extra highlighters for the Kakoune editor'
 arch=('any')
