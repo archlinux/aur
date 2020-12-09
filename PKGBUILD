@@ -5,9 +5,14 @@ pkgname=getmail6-git
 _pkgname="${pkgname%-git}"
 
 epoch=1
-pkgver() { git -C "$_pkgname" describe --tags --long | sed 's/^v//;s/-/.r/;s/-g/./'; }
-pkgver=6.10.r0.9652214
-pkgrel=2
+pkgver() {
+  cd "$_pkgname"
+  printf '%s.r%s.%s' \
+    "$(git tag -l | sed -r 's/v?([0-9\.]+)(-.+)?/\1/g' | sort -Vr | sed 1q)" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+pkgver=6.11.r435.4699143
+pkgrel=1
 
 pkgdesc='POP3 mail retriever with reliable Maildir and command delivery; Python 3 port'
 arch=('any')
