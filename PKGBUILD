@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-oled
-pkgver=5.9.arch1
+pkgver=5.9.12.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -28,7 +28,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '36439a90c9d2f860298d90e141f3bf9d897dd8ece9e21cd46508f4ed7b2151bb'
+            'cf69b81648a07ebedb274ed26bed3c4d2ff75c6665ecaca0a724b148c70c9c7c'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             'c60c3040f90a28177a0b7718ebb85b4598d2087a3f7670be6102b0cf79a23598'
             '12ff4aed41d3ad9a0a72124966ceeb96bb34404761221ad43bee2c810ceafe7d')
