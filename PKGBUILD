@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=ms-tpm-20-ref-git
-pkgver=r167.51d7b24
+pkgver=r181.f640b4b
 pkgrel=1
 pkgdesc='Reference implementation of the TCG Trusted Platform Module 2.0 specification'
 arch=('x86_64')
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
 	cd "${pkgname%-git}/TPMCmd"
-	./configure --prefix=/usr CPPFLAGS="$CPPFLAGS -DALG_SM3_256=ALG_NO -DALG_SM4=ALG_NO"
+	./configure --prefix=/usr
 	make
 }
 
