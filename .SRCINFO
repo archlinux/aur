@@ -1,6 +1,6 @@
 pkgbase = multimonitorlock-gui
 	pkgdesc = GUI for multimonitorlock to set the background
-	pkgver = 2020.7.9
+	pkgver = 2020.12.9
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/multimonitorlock-gui
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = multimonitorlock-gui
 	depends = python-pyqt5
 	depends = multimonitorlock
 	depends = gtk-engine-murrine
-	source = https://github.com/TheCynicalTeam/multimonitorlock-gui/archive/2020.7.9-1.tar.gz
-	sha256sums = 5f30f85115cd8d1970ff1b6ff1b540a809edb205a6e7deb24ed5b9746f641696
+	source = https://github.com/TheCynicalTeam/multimonitorlock-gui/archive/2020.12.9-1.tar.gz
+	sha256sums = 46a2a6da19bc04b7fe43dd98c962e36fdb1dffaa6b839764c5f317aa323fa7d3
 
 pkgname = multimonitorlock-gui
 
