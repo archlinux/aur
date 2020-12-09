@@ -64,11 +64,11 @@ prepare() {
 }
 
 build() {
-	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-	CC=clang CXX=clang++ \
 	cmake	-S "$srcdir/${pkgname%-git}" \
 		-B "$srcdir/build" -G Ninja \
-		-DCMAKE_MODULE_PATH:PATH="$site_packages/pybind11/share/cmake/pybind11/" \
+		-DCMAKE_C_COMPILER=clang \
+		-DCMAKE_CXX_COMPILER=clang++ \
+		-DCMAKE_MODULE_PATH:PATH="$(pybind11-config --cmakedir)" \
 		-DMTS_ENABLE_PYTHON:BOOL=ON \
 		-DMTS_ENABLE_GUI:BOOL=OFF \
 		-DMTS_ENABLE_EMBREE:BOOL=OFF \
