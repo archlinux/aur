@@ -1,6 +1,6 @@
 pkgbase = gitleaks
 	pkgdesc = Audit Git repos for secrets and keys
-	pkgver = 7.0.2
+	pkgver = 7.1.1
 	pkgrel = 1
 	url = https://github.com/zricethezav/gitleaks
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = gitleaks
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = https://github.com/zricethezav/gitleaks/archive/v7.0.2/gitleaks-v7.0.2.tar.gz
-	sha256sums = b57cb5d1d97c42f3d02aff1c3f174b91f0839f8d4d6b47a1f43f3f4fb7054065
+	source = https://github.com/zricethezav/gitleaks/archive/v7.1.1/gitleaks-v7.1.1.tar.gz
+	sha256sums = 6a827ee65d62a3259b9852ddd0a861c326a62ae691154c7c1dcc93cb3873899a
 
 pkgname = gitleaks
 
