@@ -1,8 +1,8 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=instamenu 
-pkgver=2020.9.28
-pkgrel=1
+pkgver=2020.12.9
+pkgrel=2
 pkgdesc="dmenu like menu with the Manjaro Matcha-dark-sea theme"
 url="https://github.com/TheCynicalTeam/$pkgname"
 arch=('any')
@@ -13,7 +13,7 @@ provides=($pkgname dmenu)
 conflicts=(dmenu)
 replaces=(dmenu)
 source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=('0e298600745356a4090400175b580275d6502524b228790f4f6a307923536475')
+sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver-$pkgrel"
