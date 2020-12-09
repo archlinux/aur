@@ -24,9 +24,7 @@ prepare() {
 build() {
 	cd "DownZemAll-$pkgver"
 	cmake -B build -S . \
-		-DCMAKE_C_FLAGS="$CFLAGS" \
 		-DCMAKE_C_FLAGS_RELEASE="$CFLAGS" \
-		-DCMAKE_CXX_FLAGS="$CXXFLAGS" \
 		-DCMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS" \
 		-DENABLE_TESTS=OFF \
 		-Wno-dev
