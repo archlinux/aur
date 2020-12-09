@@ -1,13 +1,13 @@
 pkgbase = jackett-runit.git
 	pkgdesc = Use many torrent trackers with software that supports torznab/potato feeds.
-	pkgver = 0.16.2347
+	pkgver = 0.17.11
 	pkgrel = 1
 	url = https://github.com/Jackett/Jackett
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = GPL
-	makedepends = dotnet-sdk
+	makedepends = dotnet-sdk-bin
 	depends = curl
 	depends = openssl-1.0
 	options = !strip
@@ -15,11 +15,11 @@ pkgbase = jackett-runit.git
 	source = run
 	source = jackett.sysusers
 	source = jackett.tmpfiles
-	source = jackett-runit.git-0.16.2347.tar.gz::https://github.com/Jackett/Jackett/archive/v0.16.2347.tar.gz
+	source = jackett-runit.git-0.17.11.tar.gz::https://github.com/Jackett/Jackett/archive/v0.17.11.tar.gz
 	b2sums = fed3336e07fe1d88a65bad5fb4f3e081ec16b24c07cc2a96462e7cecc3962b9742897455c0ce7f7fdbe04ecb337c575d54194d2dedad865f72572a5158cc6ef4
 	b2sums = 6b0534e5f3320e70cff1cc59b0c4de202451d6bc240c0659749929a72223fcb8e636508b14905e3d449c854ae6774c4349480039dd50e35d1d01ac13fa15eea3
 	b2sums = 4837363802330a33153e8b1560074d3af1c24c393287d295083dc41c82d6667ef0eb1dbcabc6afd180082405762bfed749adc7483d0c6fab0be431f944b4c001
-	b2sums = 1b21088dfe763fef1e79b773682029daff1683a3f560955cf7dbc8ac3f79690071742bfe604c8feb6b83265337836ce3a5355014415528a6b1e0562ce0b3bd76
+	b2sums = 2373c42132435f2e0d71d0b9dd1a513a0a487b07f796ab0bb8675e1fa1f979d5a6daa384bd2c6c26878255d5b5afe56783f055592a6c155f4c2753390268d504
 
 pkgname = jackett-runit.git
 
