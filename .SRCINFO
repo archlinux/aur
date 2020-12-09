@@ -1,7 +1,7 @@
 pkgbase = haskell-mock
 	pkgdesc = Great Haskell tool to transform text
-	pkgver = 3.6.0
-	pkgrel = 4
+	pkgver = 3.7.1
+	pkgrel = 1
 	url = https://git.eisfunke.com/software/mock
 	arch = x86_64
 	license = custom:WTFPL
@@ -18,8 +18,8 @@ pkgbase = haskell-mock
 	depends = haskell-random
 	depends = haskell-text
 	depends = haskell-time
-	source = haskell-mock-3.6.0.tar.gz::https://git.eisfunke.com/software/mock/-/archive/v3.6.0/mock-v3.6.0.tar.gz
-	sha256sums = 5c99d6b9503da9d470d7a681f1ddd9e46e1b0e90ba4e5d37adc4e387ef0a7fc1
+	source = haskell-mock-3.7.1.tar.gz::https://git.eisfunke.com/software/mock/-/archive/3.7.1/mock-3.7.1.tar.gz
+	sha256sums = ca3342dc5ae0775630913509004f949b220fbe73993026806f80f83fc7c4dc21
 
 pkgname = haskell-mock
 
