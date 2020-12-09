@@ -1,0 +1,13 @@
+pkgbase = ap-rename
+	pkgdesc = Perl-powered file rename script with many helpful built-ins
+	pkgver = 1.601
+	pkgrel = 1
+	url = http://plasmasturm.org/code/rename
+	arch = any
+	license = PerlArtistic
+	depends = perl
+	source = https://github.com/ap/rename/archive/v1.601.tar.gz
+	sha384sums = a3cc071fd4be319b0fc526d682bc920a6b1b03656356feb5a49fef4bd1881a919d82661eb5b7277cd66c448399d57181
+
+pkgname = ap-rename
+
