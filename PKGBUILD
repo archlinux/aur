@@ -3,14 +3,14 @@
 
 _pkgname=php-cs-fixer
 pkgname=${_pkgname}
-pkgver=2.16.4
+pkgver=2.16.5
 pkgrel=1
 pkgdesc="Analyzes some PHP source code and tries to fix coding standards issues (PSR-1 and PSR-2 compatible)."
 url="http://cs.sensiolabs.org/"
 license=("MIT")
 arch=("any")
 depends=("php>=5.6" "php>=7")
-makedepends=("php-humbug-box-bin" "php-composer" "git")
+makedepends=("php-humbug-box-bin" "composer" "git")
 source=("${_pkgname}"::"git+https://github.com/FriendsOfPHP/PHP-CS-Fixer#tag=v${pkgver}")
 md5sums=('SKIP')
 
