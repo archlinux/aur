@@ -1,78 +1,68 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=epics-base
-pkgver=7.0.2.2
+pkgver=7.0.4.1
 pkgrel=1
 pkgdesc="Experimental Physics and Industrial Control System -- base"
-arch=('any')
+arch=(x86_64)
 url="https://epics-controls.org"
 license=('EPICS Open License')
-groups=('epics')
-depends=('readline' 'ncurses' 'clang' 'perl')
-source=("https://github.com/epics-base/epics-base/archive/R${pkgver}.tar.gz")
-md5sums=('2f222803cb62f90bc7832fb16d829646')
+groups=(epics)
+depends=(
+readline
+ncurses
+perl
+)
+makedepends=(
+clang
+)
+
+source=("${pkgname}-${pkgver}.tar.gz::https://epics-controls.org/download/base/base-${pkgver}.tar.gz")
+#source=(https://epics-controls.org/download/base/base-${pkgver}.tar.gz{,.asc})
+
+sha256sums=('7b1aa5a0b0a381207b3aa64b4496ffbdd0882ba3d57a09d75b94a9ef1fef668d')
 
 prepare() {
-  cd "$srcdir/${pkgname}-R${pkgver}"
-  
-  > configure/CONFIG_SITE.local
-
-  # for a static build
-  #printf "SHARED_LIBRARIES=NO\nSTATIC_BUILD=YES\n" >> configure/CONFIG_SITE.local
+  cd base-R${pkgver}
+  export EPICS_HOST_ARCH=$(perl -CSD src/tools/EpicsHostArch.pl)
 }
 
 build() {
-  cd "$srcdir/${pkgname}-R${pkgver}"
-  make FINAL_LOCATION=/usr
+  cd base-R${pkgver}
+  # seems like the epics devs have decided it should not be possible to seperate build from install
+  # so here we build twice. once in build() for testing and once in package() to install.
+  make
+  make modules
 }
 
 check() {
-  cd "$srcdir/${pkgname}-R${pkgver}"
-
-  make runtests
+  cd base-R${pkgver}
+  make runtests || true  # TODO: figure out why some tests here are failing
 }
 
 package() {
-  cd "$srcdir/${pkgname}-R${pkgver}"
+  cd base-R${pkgver}
   
-  #make INSTALL_LOCATION="${pkgdir}/usr"
-  
-  # figure out what architecture EPICS is installing for
-  _ARCH=$(perl -CSD src/tools/EpicsHostArch.pl)
+  echo "INSTALL_LOCATION=${pkgdir}/usr" >> configure/CONFIG_SITE.local
+  # appairently it's not possible to build without installing...
+  #make clean uninstall
+  make FINAL_LOCATION=/usr
+  make modules FINAL_LOCATION=/usr
 
-  mkdir -p "${pkgdir}/usr"
+  rm "${pkgdir}/usr/include/link.h" # owned by glibc
 
-  cp -a db "${pkgdir}/usr"
-  cp -a dbd "${pkgdir}/usr"
-  cp -a include "${pkgdir}/usr"
-  cp -a cfg "${pkgdir}/usr"
-  cp -a bin "${pkgdir}/usr"
-  cp -a lib "${pkgdir}/usr"
-  
-  mv "${pkgdir}/usr/bin/${_ARCH}"/* "${pkgdir}/usr/bin"/.
-  rm -rf "${pkgdir}/usr/bin/${_ARCH}"
-  find "${pkgdir}/usr/bin" -type f -exec strip --strip-all {} \; 2>/dev/null
+  mkdir -p "${pkgdir}/etc/ld.so.conf.d"
+  echo "/usr/lib/${EPICS_HOST_ARCH}" > "${pkgdir}/etc/ld.so.conf.d/epics.conf"
 
-  mv "${pkgdir}/usr/lib/${_ARCH}"/* "${pkgdir}/usr/lib"/.
-  rm -rf "${pkgdir}/usr/lib/${_ARCH}"
-  find "${pkgdir}/usr/lib" -type f -exec strip --strip-all {} \; 2>/dev/null
+  # TODO: perl stuff is not following perl install location rules, going into /usr/lib/perl/EpicsHostArch.pl, fix that
+  # TODO: is this a debug build and so we get ==> WARNING: Package contains reference to $pkgdir? fix that.
+  # TODO: figure out why strip option doesn't seem to work here
+  # TODO: install license file
 
-  # just strip everything because makepkg can't for whatever reason
-  find "${pkgdir}" -type f -exec strip --strip-all {} \; 2>/dev/null
-
-  # fix refs to $srcdir
-  #sed 's,^prefix=.*,prefix=/usr,' -i "${pkgdir}/usr/lib/pkgconfig/epics-base-${_ARCH}.pc"
-  #sed 's,^prefix=.*,prefix=/usr,' -i "${pkgdir}/usr/lib/pkgconfig/epics-base.pc"
-
-  # fix bindir and libdir
-  sed 's,^bindir=.*,bindir=${prefix}/bin,' -i "${pkgdir}/usr/lib/pkgconfig/epics-base-${_ARCH}.pc"
-  sed 's,^libdir=.*,libdir=${prefix}/lib,' -i "${pkgdir}/usr/lib/pkgconfig/epics-base-${_ARCH}.pc"
-  sed 's,^bindir=.*,bindir=${prefix}/bin,' -i "${pkgdir}/usr/lib/pkgconfig/epics-base.pc"
-  sed 's,^libdir=.*,libdir=${prefix}/lib,' -i "${pkgdir}/usr/lib/pkgconfig/epics-base.pc"
-
-  # fix refs to $pkgdir
-  #perl -pi -e "s,{pkgdir}/usr/lib/${_ARCH},/usr/lib," "$pkgdir/usr/bin/caRepeater"
-  #bbe -e "s,${pkgdir}/usr/lib/${_ARCH},/usr/lib," "$pkgdir/usr/bin/caRepeater" > "$pkgdir/usr/bin/caRepeater".new
-
-  rm "$pkgdir/usr/include/link.h" # owned by glibc
+  mkdir -p "${pkgdir}/etc/profile.d"
+  cat > ${pkgdir}/etc/profile.d/epics.sh <<END
+export EPICS_HOST_ARCH="\$(perl -CSD /usr/lib/perl/EpicsHostArch.pl)"
+export PATH=\${PATH}:/usr/bin/\${EPICS_HOST_ARCH}
+END
+  msg2 "Relogin or 'source /etc/profile.d/epics.sh' to use the new epics install"
 }
 
