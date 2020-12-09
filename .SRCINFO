@@ -1,4 +1,4 @@
-pkgbase = net.winegame.client
+pkgbase = winegame
 	pkgdesc = 开源游戏平台，帮您在uos/deepin系统中运行windows游戏
 	pkgver = 0.5.7.1
 	pkgrel = 1
@@ -32,5 +32,5 @@ pkgbase = net.winegame.client
 	source = https://file.winegame.net/packages/debian/0.5.7.1/net.winegame.client_0.5.7.1_amd64.deb
 	sha512sums = e8732456ef2126ce2f73fa5e08212448b449e95fa02769466c3aa1e4a57f331c31dfa559757d25aa921752d060500b1d1a8ad61debea35f14768b1bd7288476f
 
-pkgname = net.winegame.client
+pkgname = winegame
 
