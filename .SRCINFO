@@ -1,0 +1,19 @@
+pkgbase = python-sdf
+	pkgdesc = Python library to work with the Scientific Data Format
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/ScientificDataFormat/SDF-Python
+	arch = x86_64
+	license = custom:BSD 3-clause
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-scipy
+	depends = python-h5py
+	source = https://files.pythonhosted.org/packages/7e/0f/35fe015db93179c905795b84cc03fc79b5b40d0daf530e1e075b0f78aea2/SDF-0.3.5.tar.gz
+	source = LICENSE
+	sha256sums = 7be0abd14f0cb742745b383436f7b26d883396610da045ba485f24cc5bbfd22f
+	sha256sums = SKIP
+
+pkgname = python-sdf
+
