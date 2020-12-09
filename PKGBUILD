@@ -6,7 +6,7 @@ pkgname=gnumeric-minimal
 _pkgname=gnumeric
 _minorver=48
 pkgver=1.12.${_minorver}
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNOME-less spreadsheet program"
 arch=('i686' 'x86_64')
 url="http://www.gnome.org/projects/gnumeric/"
@@ -32,6 +32,7 @@ build() {
               --without-gnome --without-psiconv --without-perl \
               --without-python --without-gda \
 	      --with-help-dir=/usr/share/gnome/help
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
