@@ -1,7 +1,7 @@
 # Maintainer: Kirill Goncharov <kdgoncharov at gmail dot com>
 pkgname=upstream
 _pkgname=radicle-upstream
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Desktop client for radicle'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('upstream')
 conflicts=('radicle' 'upstream-bin')
 makedepends=('yarn' 'rustup')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/radicle-dev/radicle-upstream/archive/v${pkgver}.tar.gz")
-sha256sums=('78f7d04a3d90cdc4bcfe0cec08376a7164438886e99cefe7fe64f1ed353beced')
+sha256sums=('3cf97e01600f91570da2715bc3f6ca6d2b7ca5b75c849d6483be7bebd1c19f95')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
