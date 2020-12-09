@@ -15,7 +15,7 @@ depends=('qt5-base' 'python' 'zlib' 'hicolor-icon-theme' 'potrace' 'ffmpeg')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-    "$_pkgname-$pkgver.deb::https://gitlab.com/mattbas/$_pkgname/-/jobs/artifacts/${pkgver}/raw/build/$_pkgname.deb?job=linux%3Adeb"
+    "$_pkgname-$pkgver.deb::https://gitlab.com/mattbas/${_pkgname}-artifacts/-/raw/master/${pkgver}/Deb/${_pkgname}.deb"
 )
 sha1sums=('fee0b997af8a42192083060c5c8129462ad5117a')
 prepare() {
