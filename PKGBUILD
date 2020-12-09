@@ -3,8 +3,8 @@
 
 pkgname=dirsearch
 
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.4.1
+pkgrel=1
 
 pkgdesc='Web path scanner/fuzzer, written in Python'
 arch=('any')
@@ -15,7 +15,7 @@ depends=('python')
 
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tgz::$url/archive/v$pkgver.tar.gz")
-b2sums=('bc357898943dbcf3cdeed3c9385e70b54c78af9e115e17f2a69da38a73e51dc29a1aa968b8dc76969c0c690cec81f1aecec3c3baf40ddc36d7fd62a5bc1f76bd')
+b2sums=('32208874a95611f51d5efbaa0d0d50e58105998d9781b46c67db5f3b6e6f97d7d997a22ae6eb9001ebff7dea93edc1383d0c3a789abe3d8244fdbd8a4f398224')
 
 
 prepare() {
