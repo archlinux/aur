@@ -2,7 +2,7 @@
 _target='compass-readonly'
 _edition=' Readonly'
 pkgname="mongodb-$_target"
-_pkgver='1.23.0'
+_pkgver='1.24.1'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition'
@@ -16,7 +16,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'hadron-build.diff'
 )
-sha256sums=('36069b92121d63e7c470ac90d0db997b04dcac2fc643f4ff4d77956583089d03'
+sha256sums=('d61a0c412278247a70a0023176bd2a024bae584721d6b77e0b7671406f2ea0d1'
             '6adbd892ef2603c556e50b8f300fff87b5481dcec1b3ae741be0fbd250ad4c93')
 
 _sourcedirectory="compass-$_pkgver"
@@ -46,8 +46,7 @@ build() {
 	# and let electron-packager use it for building
 	# https://github.com/electron/electron-packager/issues/187
 
-	[[ $_target =~ .*-beta ]] && _releasescriptsuffix='-evergreen' || _releasescriptsuffix=''
-	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npm run "release$_releasescriptsuffix" "${_target%-beta}"
+	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npm run release-evergreen "${_target%-beta}"
 }
 
 package() {
