@@ -2,7 +2,7 @@ pkgdesc="ROS - roscpp is a C++ implementation of ROS."
 url='https://github.com/ros/ros_comm'
 
 pkgname='ros-noetic-roscpp'
-pkgver='1.15.8'
+pkgver='1.15.9'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -46,7 +46,7 @@ depends=(
 
 _dir="ros_comm-${pkgver}/clients/roscpp"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('7a72219b236aef5f0327c3ce6eba6008980a24a986a5b970b17125890887b494')
+sha256sums=('ee68c16fe6e2f3bf8fef4cf35552a30160cb3b579dfe18d667c0ba05e69ef90d')
 
 build() {
     # Use ROS environment variables.
