@@ -1,7 +1,7 @@
 # Maintainer:geekmar <geekmar2002@gmail.com>
 
 
-pkgname=net.winegame.client
+pkgname=winegame
 pkgver=0.5.7.1
 pkgrel=1
 pkgdesc="开源游戏平台，帮您在uos/deepin系统中运行windows游戏"
