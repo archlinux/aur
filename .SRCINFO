@@ -1,33 +1,33 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = Repackaging of the Arch kernel with a unique package name for each version
-	pkgver = 5.9.12.arch1
+	pkgver = 5.9.13.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.9.12-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.9.13-arch1
 	arch = x86_64
 	license = GPL2
 	options = !strip
-	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-5.9.12.arch1-1-x86_64.pkg.tar.zst
-	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-headers-5.9.12.arch1-1-x86_64.pkg.tar.zst
-	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-docs-5.9.12.arch1-1-x86_64.pkg.tar.zst
-	sha256sums = 95c9bec2620306da7b185fa911f22310f4f6abfc901870df020ba156cc321715
-	sha256sums = 3cbf07112cbd7cc4268a3b56f5311ccb3a2627423ea1fa871de80166c9c0ce1c
-	sha256sums = 2a03fdaf7ce2b2e4d22ca55ebfebaaefbe068d05c42cf2080f509925e0a689aa
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-5.9.13.arch1-1-x86_64.pkg.tar.zst
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-headers-5.9.13.arch1-1-x86_64.pkg.tar.zst
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-docs-5.9.13.arch1-1-x86_64.pkg.tar.zst
+	sha256sums = 89fbfbb75905a34b50bc912b9222eaa1459dd7d8c2fa0078805c60cbd15cc698
+	sha256sums = 9e7e9fc677497a29a2a0fd1d2cead61e237e631dd83e2db85a15459d21423ade
+	sha256sums = c8fcd0cf1ea1fd9c2afa60d99e539981ad0a0b31f08d2d49af9961f74d67b194
 
 pkgname = linux-versioned-bin
-	pkgdesc = Dummy package depending on linux5.9.12.arch1-1-bin
-	depends = linux5.9.12.arch1-1-bin
+	pkgdesc = Dummy package depending on linux5.9.13.arch1-1-bin
+	depends = linux5.9.13.arch1-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.9.12.arch1-1-headers-bin
-	depends = linux5.9.12.arch1-1-headers-bin
+	pkgdesc = Dummy package depending on linux5.9.13.arch1-1-headers-bin
+	depends = linux5.9.13.arch1-1-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.9.12.arch1-1-docs-bin
-	depends = linux5.9.12.arch1-1-docs-bin
+	pkgdesc = Dummy package depending on linux5.9.13.arch1-1-docs-bin
+	depends = linux5.9.13.arch1-1-docs-bin
 
-pkgname = linux5.9.12.arch1-1-bin
-	pkgdesc = The Linux kernel and modules, version 5.9.12-arch1-1
+pkgname = linux5.9.13.arch1-1-bin
+	pkgdesc = The Linux kernel and modules, version 5.9.13-arch1-1
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -39,11 +39,11 @@ pkgname = linux5.9.12.arch1-1-bin
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux5.9.12.arch1-1-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.9.12-arch1-1
+pkgname = linux5.9.13.arch1-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.9.13-arch1-1
 	conflicts = linux-headers
 
-pkgname = linux5.9.12.arch1-1-docs-bin
-	pkgdesc = Documentation for the Linux kernel 5.9.12-arch1-1
+pkgname = linux5.9.13.arch1-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 5.9.13-arch1-1
 	conflicts = linux-docs
 
