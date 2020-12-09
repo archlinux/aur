@@ -1,7 +1,7 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 
 pkgname=drush-launcher
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='A small wrapper around Drush for your global $PATH.'
 arch=('any')
