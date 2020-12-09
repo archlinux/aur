@@ -2,8 +2,8 @@
 # Contributor: zwindl on AUR
 
 pkgname=python-pypugjs
-pkgver=5.9.6
-pkgrel=2
+pkgver=5.9.8
+pkgrel=1
 pkgdesc='PugJS syntax adapter for Django, Jinja2 and Mako templates'
 url='https://github.com/kakulukia/pypugjs'
 depends=(python python-six python-chardet)
@@ -12,9 +12,9 @@ checkdepends=(python-nose python-django python-jinja python-tornado python-mako)
 optdepends=(python-django python-jinja python-tornado python-mako)
 license=(MIT)
 arch=(any)
-# sdist is not uploaded to PyPI
+# PyPI sdist does not contain tests
 source=("https://github.com/kakulukia/pypugjs/archive/v$pkgver/pypugjs-$pkgver.tar.gz")
-sha256sums=('741a1129105a17bc8c8066bbd74f2813a797ed7648095d25dd4d5f51aa57e4c2')
+sha256sums=('efb7cbfbbe9fec223b13a419754626b7313dd74d67230f4c38addf1e4389ebc8')
 
 build() {
   cd pypugjs-$pkgver
