@@ -1,6 +1,6 @@
 _pkgbasename=apulse
 pkgname=lib32-$_pkgbasename-git
-pkgver=0.1.12_r10_g6d38b8c
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="PulseAudio emulation for ALSA, x86_64 multilib version"
 arch=('x86_64')
