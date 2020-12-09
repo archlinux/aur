@@ -104,7 +104,7 @@ package() {
   install -dm 755 "${pkgdir}"/usr/share/licenses
   ln -s sdl2 "${pkgdir}"/usr/share/licenses/lib32-sdl2
 
-  ln -s /usr/lib32/libSDL2-2.0.so ${pkgdir}/usr/lib32/libSDL2-2.0.so.0
+#  ln -s /usr/lib32/libSDL2-2.0.so ${pkgdir}/usr/lib32/libSDL2-2.0.so.0
 }
 
 # vim: ts=2 sw=2 et:
