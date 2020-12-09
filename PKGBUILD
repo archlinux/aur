@@ -3,7 +3,7 @@
 
 pkgname=siril
 pkgver=0.99.6
-pkgrel=2
+pkgrel=3
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
 arch=('i686' 'x86_64')
 license=('GPLv3')
@@ -15,7 +15,6 @@ optdepends=('libpng: PNG import'
             'libtiff: TIFF import and export'
             'libraw: DSLR RAW images import'
             'ffms2: films native support as image sequences and import'
-            'libffms2: avi support'
             'libcurl-gnutls: check for updates'
             'gnuplot: photometry graphs creation')
 
