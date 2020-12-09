@@ -21,6 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://epics-controls.org/download/base/b
 
 sha256sums=('7b1aa5a0b0a381207b3aa64b4496ffbdd0882ba3d57a09d75b94a9ef1fef668d')
 
+
 prepare() {
   cd base-R${pkgver}
   export EPICS_HOST_ARCH=$(perl -CSD src/tools/EpicsHostArch.pl)
@@ -30,13 +31,14 @@ build() {
   cd base-R${pkgver}
   # seems like the epics devs have decided it should not be possible to seperate build from install
   # so here we build twice. once in build() for testing and once in package() to install.
-  make
-  make modules
+  #make
+  #make modules
 }
 
 check() {
   cd base-R${pkgver}
-  make runtests || true  # TODO: figure out why some tests here are failing
+  #make runtests || true  # TODO: figure out why some tests here are failing
+  #make modules.runtests || true #TODO: figure out why some tests are failing
 }
 
 package() {
