@@ -1,7 +1,7 @@
 # Maintainer: ny-a <nyaarch64@gmail..com>
 # Contributor: JC Francois <jc.francois@gmail.com>
 pkgname=beaker-browser-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Peer-to-peer browser with tools to create and host websites"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("https://github.com/beakerbrowser/beaker/releases/download/${pkgver//_/-
         "beaker-browser.desktop"
         "beaker-browser"
         "LICENSE")
-sha256sums=('b34a0c98d70d85f3ae14418a204e25aa30a5ae9e1e2209fb1930fdcdf847f438'
+sha256sums=('77b6707ac32b5fe3fcc38f0f86159bb2f8eda42c1b88c077dea846bf4df60c1e'
             '5d5539f28d3a3177a75cdb6ea6f2c7cb6fc6c33a5d936fa30f5fb4396c20bba8'
             'e6efc2fbdc8ed38e8b19e5e9d13e3ecd458a71d12731b43060395bc3a328d09f'
             '7a0ab6f0bfde635de0dea1a5e57e641de973544ba9a5fb8498c098563ad35783')
