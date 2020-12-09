@@ -68,9 +68,6 @@ build() {
   mkdir -p "$srcdir/$pkgname-$pkgver/build"
   cd "$srcdir/$pkgname-$pkgver/build"
 
-  # The four lines settings variables regarding boost are a workaround for the
-  # boost version not being detected properly, see also
-  # https://github.com/Icinga/icinga2/issues/7566
   cmake "$srcdir/$pkgname-$pkgver" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_SYSCONFDIR=/etc \
@@ -81,11 +78,7 @@ build() {
     -DICINGA2_SYSCONFIGFILE=/etc/default/icinga2 \
     -DICINGA2_PLUGINDIR=/usr/lib/monitoring-plugins \
     -DUSE_SYSTEMD=ON \
-    -DLOGROTATE_HAS_SU=OFF \
-    -DBoost_NO_BOOST_CMAKE=TRUE \
-    -DBoost_NO_SYSTEM_PATHS=TRUE \
-    -DBOOST_LIBRARYDIR=/usr/lib \
-    -DBOOST_INCLUDEDIR=/usr/include
+    -DLOGROTATE_HAS_SU=OFF
 
   make
 }
