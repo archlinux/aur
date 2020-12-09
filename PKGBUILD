@@ -3,7 +3,7 @@
 # Maintainer: Tassos Natsakis <7712382@eipieq.com>
 # Maintainer: Standard Ebooks <admin@standardebooks.org>
 pkgname=python-standardebooks
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=2
 pkgdesc="The toolset used to produce Standard Ebooks epub ebooks."
 arch=(any)
