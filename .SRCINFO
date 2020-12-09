@@ -1,0 +1,14 @@
+pkgbase = streamlabels
+	pkgdesc = Stream Labels is an application that runs on your computer that generates text files. These text files contain stats, including your top donor for the day, your most recent follower, and many others.
+	pkgver = 0.3.8
+	pkgrel = 2
+	url = https://patojad.com.ar/aplicaciones/2020/12/streamlabels-en-arch-linux/
+	arch = x86_64
+	license = GPL
+	source = https://s3-us-west-2.amazonaws.com/streamlabs-electron/streamlabels_0.3.8_amd64.deb
+	source = pjadalien.py
+	md5sums = ade077aa9baf135de156b169d8d4ecd8
+	md5sums = 8b65bd2668e7b7acc0768e16841130bc
+
+pkgname = streamlabels
+
