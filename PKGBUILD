@@ -18,6 +18,7 @@ depends=('glibc'
          'qt5-base'
          'ffmpeg'
          'qt5-multimedia'
+         'qt5-quickcontrols'
          'qt5-quickcontrols2'
          'qt5-graphicaleffects')
 makedepends=(git
