@@ -1,5 +1,5 @@
 pkgname=opencl-headers-git
-pkgver=v2020.06.16.21.g3259391
+pkgver=2020.06.16.26.gc57ba81
 pkgrel=1
 pkgdesc='OpenCL (Open Computing Language) header files. (GIT Version)'
 arch=('any')
@@ -23,7 +23,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd OpenCL-Headers
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = opencl-headers-git
 	pkgdesc = OpenCL (Open Computing Language) header files. (GIT Version)
-	pkgver = v2020.06.16.21.g3259391
+	pkgver = 2020.06.16.26.gc57ba81
 	pkgrel = 1
 	url = https://www.khronos.org/registry/cl/
 	arch = any
