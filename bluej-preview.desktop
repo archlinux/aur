@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=BlueJ-Preview
+Comment=A simple powerful Java IDE
+Categories=Application;Development;
+Exec=bluej-preview %u
+MimeType=application/x-bluej.package;
+Icon=bluej
+Terminal=false
+Type=Application
+StartupWMClass=bluej.Boot$App

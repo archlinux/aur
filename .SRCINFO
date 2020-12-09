@@ -1,0 +1,29 @@
+pkgbase = bluej-preview
+	pkgdesc = An integrated Java environment specifically designed for introductory teaching - Preview Version
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://www.bluej-preview.org
+	arch = any
+	license = GPL2
+	license = Apache
+	license = BSD
+	license = CPL
+	license = LGPL2.1
+	license = MIT
+	license = custom
+	depends = archlinux-java-run
+	depends = java-runtime=11
+	depends = java-environment=11
+	depends = java11-openjfx
+	noextract = BlueJ-linux-500preview.deb
+	source = https://www.bluej.org/download/files/BlueJ-linux-500preview.deb
+	source = bluej-preview
+	source = bluej-preview.desktop
+	source = bluej-preview.xml
+	sha256sums = 26786aabb4c9eaf4e58e4803719c47d519a1878a7215f6d4541e910cabc80672
+	sha256sums = c699ac24cc8fa48a920f9fbb056d0059f78cc90db371251d24f773fa57e71928
+	sha256sums = 565c74b8eca934d2991294e8205bf73e1b2950083ab74ea539f919a9d87df413
+	sha256sums = e05453bd791b34ab6cfd6b67250dd18210f47505344b7980ad28bf922c014772
+
+pkgname = bluej-preview
+

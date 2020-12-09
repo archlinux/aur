@@ -1,0 +1,11 @@
+post_install() {
+	if test -x /usr/bin/update-mime-database usr/share/mime &> /dev/null; then update-mime-database usr/share/mime &> /dev/null; fi
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	if test -x /usr/bin/update-mime-database usr/share/mime &> /dev/null; then update-mime-database usr/share/mime &> /dev/null; fi
+}

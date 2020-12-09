@@ -1,0 +1,14 @@
+#!/bin/sh
+if [ -e /usr/lib/jvm/java-11-openjfx/lib ]; then
+        JAVAFX_HOME=/usr/lib/jvm/java-11-openjfx/lib
+else
+        JAVAFX_HOME=/usr/lib/jvm/java-11-openjdk/lib
+fi
+
+JAVAFX_CP="$JAVAFX_HOME/javafx.base.jar:$JAVAFX_HOME/javafx.controls.jar:$JAVAFX_HOME/javafx.fxml.jar:$JAVAFX_HOME/javafx.graphics.jar:$JAVAFX_HOME/javafx.media.jar:$JAVAFX_HOME/javafx.swing.jar:$JAVAFX_HOME/javafx-swt.jar:$JAVAFX_HOME/javafx.web.jar"
+
+archlinux-java-run -a 11 -b 11 -- -Djavafx.embed.singleThread=true \
+        -Dawt.useSystemAAFontSettings=on \
+        -cp /opt/bluej-preview/bluej.jar:$JAVAFX_CP bluej.Boot \
+        -javafxpath=$JAVAFX_CP \
+        "$@"
