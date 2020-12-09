@@ -3,9 +3,8 @@
 _pkgname='jetbrains-toolbox'
 pkgname="${_pkgname}-fix"
 pkgver=1.18.7609
-pkgrel=1
-pkgdesc='Manage your tools the easy way (with changes allowing
-it to be ignored by appimagelauncherd)'
+pkgrel=2
+pkgdesc='Manage your tools the easy way'
 arch=('x86_64')
 url='https://www.jetbrains.com/toolbox/'
 license=(
@@ -14,14 +13,15 @@ license=(
 depends=(
 	'java-runtime>=8'
 	'fuse'
-	'glib2'
+	'glibc>=2.17'
 	'libxslt'
 	'libxss'
 	'xcb-util-keysyms'
+	'xdg-utils'
 	'nss'
 )
 optdepends=(
-	'xdg-utils: open URLs'
+	'libnotify'
 )
 makedepends=(
 	appimagetool
@@ -48,7 +48,7 @@ build() {
 	cp --force "$srcdir/jetbrains-toolbox.desktop" ./squashfs-root
 	cp --force "$srcdir/jetbrains-toolbox.svg" ./squashfs-root
 	env --unset=SOURCE_DATE_EPOCH appimagetool --no-appstream ./squashfs-root
-	rm -rf ./squashfs-root
+	rm --recursive --force ./squashfs-root
 	cp *.AppImage "$srcdir/$_pkgname"
 }
 package() {
