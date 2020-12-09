@@ -1,6 +1,6 @@
 pkgbase = vue-cli-service-global
 	pkgdesc = vue-cli-service global addon for vue-cli
-	pkgver = 4.5.8
+	pkgver = 4.5.9
 	pkgrel = 1
 	url = https://cli.vuejs.org
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = vue-cli-service-global
 	makedepends = npm
 	depends = nodejs
 	depends = vue-cli
-	noextract = vue-cli-service-global-4.5.8.tar.gz
-	source = vue-cli-service-global-4.5.8.tar.gz::https://registry.npmjs.org/@vue/cli-service-global/-/cli-service-global-4.5.8.tgz
-	sha1sums = 18e351bbdfa2770e807dc7837ae6ec7711f1824e
+	noextract = vue-cli-service-global-4.5.9.tar.gz
+	source = vue-cli-service-global-4.5.9.tar.gz::https://registry.npmjs.org/@vue/cli-service-global/-/cli-service-global-4.5.9.tgz
+	sha1sums = c3a9488674604c4af1cec5d6f6dc709a22a51e35
 
 pkgname = vue-cli-service-global
 
