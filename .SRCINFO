@@ -1,14 +1,14 @@
 pkgbase = java-testng
 	pkgdesc = A testing framework inspired by JUnit and NUnit
-	pkgver = 7.1.1
+	pkgver = 7.3.0
 	pkgrel = 1
 	url = http://testng.org
 	arch = any
 	license = Apache
 	depends = jdk8-openjdk
 	depends = java-runtime
-	source = https://github.com/cbeust/testng/archive/7.1.1.tar.gz
-	sha256sums = 56a276d405f0e17770b0341d54d5d47dc08bbd6d59d0406f2f0fa18895e08ca7
+	source = https://github.com/cbeust/testng/archive/7.3.0.tar.gz
+	sha256sums = 337e78528755af7e39acc1b84cc6f7eaa0e24d843359491ae7fc57df8d331444
 
 pkgname = java-testng
 
