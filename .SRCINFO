@@ -1,15 +1,18 @@
 pkgbase = pomo
-	pkgdesc = Pomodoro CLI
-	pkgver = 0.6.0
-	pkgrel = 2
-	url = https://kevinschoon.github.io/pomo
+	pkgdesc = Pomodoro Command Line Interface
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://kevinschoon.github.io/pomo/
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = go
-	makedepends = go-bindata
-	makedepends = dep
-	source = https://github.com/kevinschoon/pomo/archive/0.6.0.tar.gz
-	md5sums = e9762a4fdaa5ae83a1ccedffea9eb5cd
+	source = https://github.com/kevinschoon/pomo/archive/0.7.1.tar.gz
+	source = pomo.1.gz
+	md5sums = fdf660c19c263f4216f4a38f01153393
+	md5sums = fa5b708af2c606a52d65f3231146fe22
+	sha512sums = 224a5c58348078ab12c07fa31977203eef11d502045f78df572e0545e8d8816ab0b9e274e81464fc328a588d1520618ece34f6f065f97286d86d707d3a8aca66
+	sha512sums = c6b61ca7a6a2f6be154cea4515853ac131e27cbfa52ee1c1d0d9eb78767bccd103efaf1ed0bdd434879f0fac999db24e7e5fb44db492735fee774bd2f2059bc8
 
 pkgname = pomo
 

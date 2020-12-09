@@ -1,37 +1,34 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
 pkgname=pomo
-pkgver=0.6.0
-pkgrel=2
-epoch=
-pkgdesc="Pomodoro CLI"
-arch=(x86_64)
-url="https://kevinschoon.github.io/pomo"
-license=('MIT')
-makedepends=(go go-bindata dep)
-source=("https://github.com/kevinschoon/$pkgname/archive/$pkgver.tar.gz")
+pkgver=0.7.1
+pkgrel=1
 
-prepare() {
-	mkdir -p gopath/src/github.com/kevinschoon
-	ln -rTsf $pkgname-$pkgver gopath/src/github.com/kevinschoon/$pkgname
-}
+pkgdesc='Pomodoro Command Line Interface'
+url='https://kevinschoon.github.io/pomo/'
+arch=(x86_64 aarch64)
+license=(MIT)
 
+#epends=()
+makedepends=('go')
+
+
+source=("https://github.com/kevinschoon/pomo/archive/0.7.1.tar.gz" "pomo.1.gz"
+)
 build() {
-	export GOPATH="$srcdir"/gopath
-	cd "gopath/src/github.com/kevinschoon/$pkgname"
-	dep ensure
-	make release-linux
+	cd ${pkgname}-${pkgver}
+  #export GOOS=linux
+  #export GOARCH=arm64
+  #export BUILD_NUMBER=1
+  export BUILD_VERSION=${pkgver}
+  make 
 }
 
 package() {
-	cd "gopath/src/github.com/kevinschoon/$pkgname"
-	install -d "${pkgdir}/usr/bin"
-	mv bin/pomo-UNKNOWN-linux-amd64 bin/pomo
-	install bin/pomo "${pkgdir}/usr/bin"
+  mkdir -p $pkgdir/usr/bin
+  install -Dm 755 $srcdir/${pkgname}-${pkgver}/bin/pomo "$pkgdir/usr/bin/pomo"
+  install -Dm 644 $srcdir/pomo.1.gz "$pkgdir/usr/share/man/man1/pomo.1.gz"
 }
 
-md5sums=('e9762a4fdaa5ae83a1ccedffea9eb5cd')
+md5sums=('fdf660c19c263f4216f4a38f01153393'
+         'fa5b708af2c606a52d65f3231146fe22')
+sha512sums=('224a5c58348078ab12c07fa31977203eef11d502045f78df572e0545e8d8816ab0b9e274e81464fc328a588d1520618ece34f6f065f97286d86d707d3a8aca66'
+            'c6b61ca7a6a2f6be154cea4515853ac131e27cbfa52ee1c1d0d9eb78767bccd103efaf1ed0bdd434879f0fac999db24e7e5fb44db492735fee774bd2f2059bc8')
