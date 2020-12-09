@@ -1,13 +1,13 @@
 pkgbase = rsv
 	pkgdesc = The runit sv command rewritten in rust with nice new features
-	pkgver = 1.3.1
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://github.com/JojiiOfficial/rsv
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
 	provides = rsv
-	source = git+https://github.com/JojiiOfficial/rsv#tag=v1.3.1
+	source = git+https://github.com/JojiiOfficial/rsv#tag=v1.3.3
 	md5sums = SKIP
 
 pkgname = rsv

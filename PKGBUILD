@@ -1,6 +1,6 @@
 # Maintainer: jojii <jojii@gmx.net>
 pkgname=rsv
-pkgver=1.3.1
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="The runit sv command rewritten in rust with nice new features"
 url="https://github.com/JojiiOfficial/rsv"
