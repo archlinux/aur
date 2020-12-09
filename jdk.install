@@ -12,7 +12,7 @@ fix_default() {
 post_install() {
   default=$(fix_default)
   case ${default} in
-    "" | ${THIS_JDK}/jre)
+    "")
       /usr/bin/archlinux-java set ${THIS_JDK}
       ;;
     ${THIS_JDK})
@@ -27,24 +27,28 @@ post_install() {
   if [ ! -f /etc/ssl/certs/java/cacerts ]; then
     /usr/bin/update-ca-trust
   fi
+
+  /usr/bin/java -Xshare:dump
 }
 
 post_upgrade() {
   default=$(fix_default)
-  if [ -z "${default}" -o "x${default}" = "x${THIS_JDK}/jre" ]; then
+  if [ -z "${default}" ]; then
     /usr/bin/archlinux-java set ${THIS_JDK}
   fi
 
   if [ ! -f /etc/ssl/certs/java/cacerts ]; then
     /usr/bin/update-ca-trust
   fi
+
+  /usr/bin/java -Xshare:dump
 }
 
 pre_remove() {
   if [ "x$(fix_default)" = "x${THIS_JDK}" ]; then
-    /usr/bin/archlinux-java unset
-    if [ -x /usr/lib/jvm/${THIS_JDK}/jre/bin/java ]; then
-      /usr/bin/archlinux-java set ${THIS_JDK}/jre
+    # Check JRE is still available
+    if [ -x /usr/lib/jvm/${THIS_JDK}/bin/java ]; then
+      /usr/bin/archlinux-java unset
     fi
   fi
 }
