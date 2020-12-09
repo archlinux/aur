@@ -2,7 +2,7 @@
 
 pkgname=kdepim-runtime-etesync-git
 _pkgname=kdepim-runtime-etesync
-pkgver=v20.08.1.r218.g05354bbd3
+pkgver=v20.11.90.r31.g3c8387b68
 pkgrel=1
 pkgdesc='Extends the functionality of kdepim (with etesync modules)'
 arch=(x86_64)
