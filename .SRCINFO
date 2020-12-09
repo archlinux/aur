@@ -1,5 +1,5 @@
 pkgbase = linux-rockchip64
-	pkgver = 5.9.12
+	pkgver = 5.9.13
 	pkgrel = 1
 	url = https://github.com/armbian/build
 	arch = aarch64
@@ -7,16 +7,16 @@ pkgbase = linux-rockchip64
 	noextract = linux.preset
 	noextract = 60-linux.hook
 	noextract = 90-linux.hook
-	noextract = linux-dtb-current-rockchip64_21.02.0-trunk.13_arm64.deb
-	noextract = linux-image-current-rockchip64_21.02.0-trunk.13_arm64.deb
-	noextract = linux-headers-current-rockchip64_21.02.0-trunk.13_arm64.deb
+	noextract = linux-dtb-current-rockchip64_21.02.0-trunk.16_arm64.deb
+	noextract = linux-image-current-rockchip64_21.02.0-trunk.16_arm64.deb
+	noextract = linux-headers-current-rockchip64_21.02.0-trunk.16_arm64.deb
 	options = !strip
 	source = linux.preset
 	source = 60-linux.hook
 	source = 90-linux.hook
-	source = https://beta.armbian.com/pool/main/l/linux-5.9.12-rockchip64/linux-dtb-current-rockchip64_21.02.0-trunk.13_arm64.deb
-	source = https://beta.armbian.com/pool/main/l/linux-5.9.12-rockchip64/linux-image-current-rockchip64_21.02.0-trunk.13_arm64.deb
-	source = https://beta.armbian.com/pool/main/l/linux-5.9.12-rockchip64/linux-headers-current-rockchip64_21.02.0-trunk.13_arm64.deb
+	source = https://beta.armbian.com/pool/main/l/linux-5.9.13-rockchip64/linux-dtb-current-rockchip64_21.02.0-trunk.16_arm64.deb
+	source = https://beta.armbian.com/pool/main/l/linux-5.9.13-rockchip64/linux-image-current-rockchip64_21.02.0-trunk.16_arm64.deb
+	source = https://beta.armbian.com/pool/main/l/linux-5.9.13-rockchip64/linux-headers-current-rockchip64_21.02.0-trunk.16_arm64.deb
 	sha512sums = f683c0639fc20e813e309df99b9b850b1f55de3fc02489d64a7d66e84df19d7836ea32042090597f1df17baed46a3ae1dfcf341c8aff206be9a1b06ee394dc3f
 	sha512sums = 7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a
 	sha512sums = b2cdb620fcc6f0b430b0cf0c844887c2c1e290844ea330750cad52c9ec04e835ead973b664c7613d147037c388120affe97dfd2f2e0f9ae224db52aaa4cb8814
@@ -32,12 +32,12 @@ pkgname = linux-rockchip64
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=5.9.12
+	provides = linux=5.9.13
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	backup = etc/mkinitcpio.d/linux-rockchip64.preset
 
 pkgname = linux-rockchip64-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 multi-platform rockchip64
-	provides = linux-headers=5.9.12
+	provides = linux-headers=5.9.13
 	conflicts = linux-headers
