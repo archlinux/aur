@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-5compat-static
-_qtver=6.0.0-rc
+_qtver=6.0.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -16,8 +16,8 @@ makedepends=('mingw-w64-cmake-static' 'qt6-base' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qt5compat-everywhere-src-${_qtver}"
-source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('114a7f5f69c53449c545a03262b55c223cf32f276188e7bead4dfa2f3672c1c0')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('13b9d78aa698609d07376e3e9e9d1a82a96084236aba0642f8ac695c181ab25f')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
