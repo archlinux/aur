@@ -2,7 +2,7 @@
 
 pkgname=deconz
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
-pkgver=2.07.00
+pkgver=2.07.01
 pkgrel=1
 pkgdesc="A generic ZigBee monitoring and control tool"
 url="https://www.dresden-elektronik.de"
@@ -24,15 +24,15 @@ backup=()
 options=()
 install=
 changelog=
-source_x86_64=($pkgname-$pkgver-x86_64.deb::https://deconz.dresden-elektronik.de/ubuntu/beta/$pkgname-$pkgver-qt5.deb)
-source_armv6h=($pkgname-$pkgver-armv6h.deb::https://deconz.dresden-elektronik.de/raspbian/beta/$pkgname-$pkgver-qt5.deb)
-source_armv7h=($pkgname-$pkgver-armv7h.deb::https://deconz.dresden-elektronik.de/raspbian/beta/$pkgname-$pkgver-qt5.deb)
-source_aarch64=(${pkgname}_${pkgver}-debian-stretch-beta_arm64.deb::https://deconz.dresden-elektronik.de/debian/beta/${pkgname}_${pkgver}-debian-stretch-beta_arm64.deb)
+source_x86_64=($pkgname-$pkgver-x86_64.deb::https://deconz.dresden-elektronik.de/ubuntu/stable/$pkgname-$pkgver-qt5.deb)
+source_armv6h=($pkgname-$pkgver-armv6h.deb::https://deconz.dresden-elektronik.de/raspbian/stable/$pkgname-$pkgver-qt5.deb)
+source_armv7h=($pkgname-$pkgver-armv7h.deb::https://deconz.dresden-elektronik.de/raspbian/stable/$pkgname-$pkgver-qt5.deb)
+source_aarch64=(${pkgname}_${pkgver}-debian-stretch-stable_arm64.deb::https://deconz.dresden-elektronik.de/debian/stable/${pkgname}_${pkgver}-debian-stretch-stable_arm64.deb)
 noextract=()
-sha256sums_x86_64=('4ecde70ce0db498ead1ad864563a919e83a4b493d0c3d1dc3b36790f5ec2143e')
-sha256sums_armv6h=('49f1f30c925eeffeae2b8a7341e321f4883d930fde1bb88a6d478e2787348bb7')
-sha256sums_armv7h=('49f1f30c925eeffeae2b8a7341e321f4883d930fde1bb88a6d478e2787348bb7')
-sha256sums_aarch64=('5e481da65781d2dae9be725114b83116cea78b5c10ddd40706da0058b516a4c8')
+sha256sums_x86_64=('4bca1e03e97aeeed0c7197a69e70c51693e6f43153916013d9bf6ec88778fadc')
+sha256sums_armv6h=('4896e16fba33589ba4e4feb6320e5d262366660d7d4b12a0bb26a81e57af9128')
+sha256sums_armv7h=('4896e16fba33589ba4e4feb6320e5d262366660d7d4b12a0bb26a81e57af9128')
+sha256sums_aarch64=('880c475daa79ebb27f89902b33921feda5073b93f66e735d7e903ee5e5b75a07')
 
 package() {
   cd "${srcdir}"

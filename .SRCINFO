@@ -1,6 +1,6 @@
 pkgbase = deconz
 	pkgdesc = A generic ZigBee monitoring and control tool
-	pkgver = 2.07.00
+	pkgver = 2.07.01
 	pkgrel = 1
 	url = https://www.dresden-elektronik.de
 	arch = x86_64
@@ -16,14 +16,14 @@ pkgbase = deconz
 	depends = qt5-serialport
 	depends = qt5-websockets
 	depends = sqlite
-	source_x86_64 = deconz-2.07.00-x86_64.deb::https://deconz.dresden-elektronik.de/ubuntu/beta/deconz-2.07.00-qt5.deb
-	sha256sums_x86_64 = 4ecde70ce0db498ead1ad864563a919e83a4b493d0c3d1dc3b36790f5ec2143e
-	source_armv6h = deconz-2.07.00-armv6h.deb::https://deconz.dresden-elektronik.de/raspbian/beta/deconz-2.07.00-qt5.deb
-	sha256sums_armv6h = 49f1f30c925eeffeae2b8a7341e321f4883d930fde1bb88a6d478e2787348bb7
-	source_armv7h = deconz-2.07.00-armv7h.deb::https://deconz.dresden-elektronik.de/raspbian/beta/deconz-2.07.00-qt5.deb
-	sha256sums_armv7h = 49f1f30c925eeffeae2b8a7341e321f4883d930fde1bb88a6d478e2787348bb7
-	source_aarch64 = deconz_2.07.00-debian-stretch-beta_arm64.deb::https://deconz.dresden-elektronik.de/debian/beta/deconz_2.07.00-debian-stretch-beta_arm64.deb
-	sha256sums_aarch64 = 5e481da65781d2dae9be725114b83116cea78b5c10ddd40706da0058b516a4c8
+	source_x86_64 = deconz-2.07.01-x86_64.deb::https://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.07.01-qt5.deb
+	sha256sums_x86_64 = 4bca1e03e97aeeed0c7197a69e70c51693e6f43153916013d9bf6ec88778fadc
+	source_armv6h = deconz-2.07.01-armv6h.deb::https://deconz.dresden-elektronik.de/raspbian/stable/deconz-2.07.01-qt5.deb
+	sha256sums_armv6h = 4896e16fba33589ba4e4feb6320e5d262366660d7d4b12a0bb26a81e57af9128
+	source_armv7h = deconz-2.07.01-armv7h.deb::https://deconz.dresden-elektronik.de/raspbian/stable/deconz-2.07.01-qt5.deb
+	sha256sums_armv7h = 4896e16fba33589ba4e4feb6320e5d262366660d7d4b12a0bb26a81e57af9128
+	source_aarch64 = deconz_2.07.01-debian-stretch-stable_arm64.deb::https://deconz.dresden-elektronik.de/debian/stable/deconz_2.07.01-debian-stretch-stable_arm64.deb
+	sha256sums_aarch64 = 880c475daa79ebb27f89902b33921feda5073b93f66e735d7e903ee5e5b75a07
 
 pkgname = deconz
 
