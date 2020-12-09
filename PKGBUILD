@@ -4,14 +4,14 @@
 
 pkgname=appimagelauncher
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Helper application for running and integrating AppImages."
 arch=('x86_64')
 url="https://github.com/TheAssassin/AppImageLauncher"
 license=('MIT')
-depends=('cairo' 'desktop-file-utils' 'gtest' 'hicolor-icon-theme' 'libappimage'
+depends=('cairo' 'desktop-file-utils' 'hicolor-icon-theme' 'libappimage'
          'libbsd' 'libxpm' 'qt5-base' 'shared-mime-info')
-makedepends=('git' 'boost' 'cmake' 'python' 'qt5-tools' 'wget' 'xxd')
+makedepends=('git' 'boost' 'cmake' 'gtest' 'python' 'qt5-tools' 'wget' 'xxd')
 source=("$pkgname::git+$url.git#tag=v$pkgver"
         'git+https://github.com/AppImage/AppImageUpdate.git'
         'git+https://github.com/AppImage/libappimage.git'
@@ -66,6 +66,7 @@ prepare() {
 build() {
 	cd "$srcdir/$pkgname"
 	cmake . \
+		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX:PATH=/usr/ \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DUSE_SYSTEM_GTEST=ON \
