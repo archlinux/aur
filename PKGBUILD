@@ -3,8 +3,8 @@
 
 pkgname=vis-surround-git
 _pkgname=${pkgname%-git}
-pkgver=r1.227a15b
-pkgrel=2
+pkgver=r1.635a0a9
+pkgrel=1
 pkgdesc='Operators for adding/changing/deleting pairs of block delimiters.'
 arch=('any')
 url='https://repo.or.cz/vis-surround.git'
