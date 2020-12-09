@@ -26,13 +26,13 @@ provides=("swaybg")
 conflicts=("swaybg")
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
+    cd swaybg-minimal
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 
 build() {
-  arch-meson "${_pkgname}" build -Dgdk-pixbuf=disabled -Dman-pages=disabled
+  arch-meson swaybg-minimal build -Dgdk-pixbuf=disabled -Dman-pages=disabled
   meson compile -C build
 }
 
