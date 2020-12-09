@@ -6,6 +6,7 @@ Requires=redis.service
 [Service]
 User=lanraragi
 Group=lanraragi
+Environment=PERL5LIB="/usr/lib/lanraragi/perl5/lib/perl5:$PERL5LIB"
 WorkingDirectory=/usr/lib/lanraragi
 ExecStart=/usr/bin/perl /usr/lib/lanraragi/script/launcher.pl -f /usr/lib/lanraragi/script/lanraragi
 Type=simple
