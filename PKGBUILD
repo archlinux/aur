@@ -3,8 +3,8 @@
 
 pkgname=vis-toggler-git
 _pkgname=${pkgname%-git}
-pkgver=r2.6bc06e6
-pkgrel=2
+pkgver=r1.9542323
+pkgrel=1
 pkgdesc='Improved versions of <C-a>, <C-x>, ~, g~, gu, and gU.'
 arch=('any')
 url='https://repo.or.cz/vis-toggler.git'
