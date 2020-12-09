@@ -1,21 +1,12 @@
-From f2ef35c7db78f527932c29b5afa19bf1e18f5bef Mon Sep 17 00:00:00 2001
-From: Davide Depau <davide@depau.eu>
-Date: Mon, 19 Oct 2020 15:31:55 +0200
-Subject: [PATCH] Do not checkout the vfs0090 submodule in the meson script
-
----
- meson.build | 22 +++++++++++-----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
-
 diff --git a/meson.build b/meson.build
-index a3a3b81..e41cb77 100644
+index 919129f..5f4bd5d 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -160,17 +160,17 @@ foreach driver: drivers
              error('pixman is required for imaging support')
          endif
  
--        git = find_program('git')
+-        git = find_program('git', required: false)
 -        if git.found()
 -            message('Updating the vfs0090 submodule')
 -            c = run_command(git, ['submodule', 'update', '--init', '--recursive'])
@@ -26,7 +17,7 @@ index a3a3b81..e41cb77 100644
 -        else
 -            message('Ensure you updated the vfs0090 submodule!')
 -        endif
-+#        git = find_program('git')
++#        git = find_program('git', required: false)
 +#        if git.found()
 +#            message('Updating the vfs0090 submodule')
 +#            c = run_command(git, ['submodule', 'update', '--init', '--recursive'])
@@ -40,6 +31,3 @@ index a3a3b81..e41cb77 100644
      endif
      if not all_drivers.contains(driver)
          error('Invalid driver \'' + driver + '\'')
--- 
-2.28.0
-
