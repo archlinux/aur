@@ -1,6 +1,6 @@
 # Maintainer: fengkx <liangkx8237@gmail.com>
 pkgname=freedns-go-git 
-pkgname_raw=freedns-go
+_pkgname_raw=freedns-go
 pkgver=r71.9977496
 pkgrel=1
 pkgdesc="Optimized DNS Server for Chinese users."
@@ -9,7 +9,7 @@ url="https://github.com/tuna/freedns-go"
 license=('MIT')
 groups=()
 depends=()
-makedepends=('git' 'go' 'python')
+makedepends=('git' 'go' 'python' 'python-requests')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -26,12 +26,13 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir/${pkgname_raw}"
+	cd "$srcdir/${_pkgname_raw}"
+	sed -e s/raw.githubusercontent.com/https://g.ioiox.com/https://raw.githubusercontent.com/g chinaip/update_db.py
 	make update_db
 }
 
 build() {
-	cd "$srcdir/${pkgname_raw}"
+	cd "$srcdir/${_pkgname_raw}"
 	make
 }
 

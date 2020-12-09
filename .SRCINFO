@@ -8,6 +8,7 @@ pkgbase = freedns-go-git
 	makedepends = git
 	makedepends = go
 	makedepends = python
+	makedepends = python-requests
 	provides = freedns-go
 	conflicts = freedns-go
 	source = git+https://github.com/tuna/freedns-go.git
