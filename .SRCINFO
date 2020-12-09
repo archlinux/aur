@@ -1,7 +1,7 @@
 pkgbase = vis-pairs-git
 	pkgdesc = Textobjects and motions for delimited blocks.
-	pkgver = r75.bfce39a
-	pkgrel = 2
+	pkgver = r75.8d2e4ee
+	pkgrel = 1
 	url = https://repo.or.cz/vis-pairs.git
 	arch = any
 	license = unknown

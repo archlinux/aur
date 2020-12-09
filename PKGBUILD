@@ -3,8 +3,8 @@
 
 pkgname=vis-pairs-git
 _pkgname=${pkgname%-git}
-pkgver=r75.bfce39a
-pkgrel=2
+pkgver=r75.8d2e4ee
+pkgrel=1
 pkgdesc='Textobjects and motions for delimited blocks.'
 arch=('any')
 url='https://repo.or.cz/vis-pairs.git'
