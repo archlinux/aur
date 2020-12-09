@@ -1,14 +1,12 @@
-pkgbase = trackma-git
+pkgbase = trackma
 	pkgdesc = A lightweight and simple program for updating and using lists on several media tracking websites.
 	pkgver = 0.8.4
 	pkgrel = 1
 	url = http://z411.github.io/trackma/
 	arch = any
 	license = GPL3
-	makedepends = python
 	makedepends = python-setuptools
 	makedepends = desktop-file-utils
-	makedepends = git
 	depends = python
 	depends = python-pyinotify
 	optdepends = python-gobject: GTK frontend
@@ -17,16 +15,15 @@ pkgbase = trackma-git
 	optdepends = python-pyqt5: Qt frontend
 	optdepends = python-urwid: ncurses frontend
 	optdepends = lsof: polling tracker/pyinotify alternative
-	conflicts = wmal-git
-	replaces = wmal-git
-	source = trackma-git::git+https://github.com/z411/trackma.git
+	conflicts = trackma-git
+	source = trackma-0.8.4.tar.gz::https://github.com/z411/trackma/archive/v0.8.4.tar.gz
 	source = trackma-curses.desktop
 	source = trackma-gtk.desktop
 	source = trackma-qt.desktop
-	sha256sums = SKIP
+	sha256sums = a718d3ffa175bb66ab105af6df508def2a76fe717f2be4cf2f768279e43a2aaa
 	sha256sums = 80be9ffc3eb66456004a438a3da8950ed8382faa00a3fe61c5ef3980090c4dce
-	sha256sums = 1d866705353d08243ecef80495da7bb5703d8e95697cdfe75e4f4170e5ef23f4
+	sha256sums = a737f0fd38af4c472dfbca8503f57763bbec7c91568221298db317421a6c5604
 	sha256sums = 988f4c4422577f0657e9ff8a9695ef44796ee6a9c43e07ee7a81369f25c2761f
 
-pkgname = trackma-git
+pkgname = trackma
 

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Trackma (GTK)
 Exec=trackma-gtk %u
-NotShowIn=KDE;LXQt;Razor;
+NotShowIn=LXQt;Razor;
 Type=Application
 Categories=Network;
 Icon=trackma
