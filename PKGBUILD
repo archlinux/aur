@@ -1,13 +1,13 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com
 pkgname=mintmenu
 pkgver=6.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mint Menu for MATE"
 arch=('any')
 url="https://github.com/linuxmint/mintmenu"
 license=('GPL2')
-depends=('mate-panel' 'xdg-utils' 'python2' 'python2-gobject' 
-         'python2-xlib' 'python2-setproctitle')
+depends=('mate-panel' 'xdg-utils' 'python' 'python-gobject' 
+         'python-xlib' 'python-setproctitle' 'xapp' 'python-unidecode')
 makedepends=('git')
 optdepends=('mint-translations: translations files'
             'mate-screensaver: lock screen button'
