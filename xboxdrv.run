@@ -1,2 +1,2 @@
 #!/bin/sh
-exec xboxdrv --daemon --detach-kernel-driver --mimic-xpad 2>&1
+exec xboxdrv --detach-kernel-driver --mimic-xpad 2>&1
