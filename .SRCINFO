@@ -1,6 +1,6 @@
 pkgbase = drush-launcher
 	pkgdesc = A small wrapper around Drush for your global $PATH.
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/drush-ops/drush-launcher
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = drush-launcher
 	conflicts = drush
 	conflicts = drush-git
 	conflicts = drush-launcher-git
-	source = drush-launcher::git+https://github.com/drush-ops/drush-launcher.git#tag=0.6.0
+	source = drush-launcher::git+https://github.com/drush-ops/drush-launcher.git#tag=0.7.0
 	md5sums = SKIP
 
 pkgname = drush-launcher
