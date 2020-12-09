@@ -1,14 +1,14 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=jackett
-pkgver=0.16.2374
+pkgver=0.17.11
 pkgrel=1
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64' 'aarch64' 'armv7h')
 license=('GPL')
 url='https://github.com/Jackett/Jackett'
 depends=('curl' 'openssl-1.0')
-makedepends=('dotnet-sdk')
+makedepends=('dotnet-sdk>=5.0.0')
 options=('!strip' 'staticlibs')
 
 source=(
@@ -18,7 +18,7 @@ source=(
   'jackett.tmpfiles'
 )
 
-sha256sums=('b8e74300f97552cc73a8a50ec60189da5c6404431c67451059f86bb4b16071f0'
+sha256sums=('2d4a4a8c2635d85815d5ad7eac5d252c3f223cbd0ae7729f75155048a4ea5fd5'
             '9d8f9d73e5fa2b2877dde010c0d8ca6fbf47f03eb1f01b02f846026a949a0dcf'
             'd005fcd009ec5404e1ec88246c31e664167f5551d6cabc35f68eb41750bfe590'
             '64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1')
@@ -33,7 +33,7 @@ build() {
   esac
 
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
-  dotnet publish src/Jackett.Server -f netcoreapp3.1 --self-contained -r linux-${_CARCH} -c Debug -o buid/ /p:AssemblyVersion=${pkgver} /p:FileVersion=${pkgver} /p:InformationalVersion=${pkgver} /p:Version=${pkgver}
+  dotnet publish src/Jackett.Server -f net5.0 --self-contained -r linux-${_CARCH} -c Debug -o buid/ /p:AssemblyVersion=${pkgver} /p:FileVersion=${pkgver} /p:InformationalVersion=${pkgver} /p:Version=${pkgver}
 }
 
 package() {
