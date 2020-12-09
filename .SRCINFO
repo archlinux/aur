@@ -1,6 +1,6 @@
 pkgbase = lbrynet-bin
 	pkgdesc = Implementation of the LBRY Network protocols, without the desktop app
-	pkgver = 0.86.0
+	pkgver = 0.86.1
 	pkgrel = 1
 	url = https://lbry.tech/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = lbrynet-bin
 	conflicts = lbrynet
 	conflicts = lbry-app-bin>=0.47.1
 	conflicts = lbry-app-bin<0.47.2-2
-	source = lbrynet-linux-0.86.0.zip::https://github.com/lbryio/lbry-sdk/releases/download/v0.86.0/lbrynet-linux.zip
-	source = lbrynet-LICENSE-0.86.0::https://raw.githubusercontent.com/lbryio/lbry-sdk/v0.86.0/LICENSE
-	b2sums = 9cae0b4dfedb5ddea573ea1f3af48f8a60ff2e6fe7d3ba027be3d2e201fda76d2d3737ac1478d733870148058cd3a1f9bb73d2ed4c5fd1c24945cb336ee6def7
+	source = lbrynet-linux-0.86.1.zip::https://github.com/lbryio/lbry-sdk/releases/download/v0.86.1/lbrynet-linux.zip
+	source = lbrynet-LICENSE-0.86.1::https://raw.githubusercontent.com/lbryio/lbry-sdk/v0.86.1/LICENSE
+	b2sums = afd95ca14793042e17fd2f09ec666fb3071df0394b8bf3455e687a5cf7bb058cc87711b4cdf40394781c722f29663feaa113f3101035968dc810edcf1208759e
 	b2sums = c17e30091ae9d3f6ad3f5a70c80ff686bdcbfc41b9b603d5693c34a006aba635968ebc67aa5ddeb607053b098ad8d3d3a03b790249ab58b9cbb6f66ba6cf5693
 
 pkgname = lbrynet-bin
