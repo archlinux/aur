@@ -1,0 +1,22 @@
+pkgbase = nautilus-columns-git
+	pkgdesc = Nautilus extension to display music/EXIF and PDF metadata info in the Nautilus List View.
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://github.com/atareao/nautilus-columns
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash-completion
+	depends = gobject-introspection-runtime
+	depends = mediainfo
+	depends = python-gobject
+	depends = python-mutagen
+	depends = python-nautilus
+	depends = python-pillow
+	depends = python-plumbum
+	depends = python-pypdf2
+	source = git+https://github.com/atareao/nautilus-columns.git
+	md5sums = SKIP
+
+pkgname = nautilus-columns-git
+
