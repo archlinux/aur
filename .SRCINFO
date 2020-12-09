@@ -1,0 +1,16 @@
+pkgbase = gotranslator-git
+	pkgdesc = 多引擎支持命令行翻译工具 in Go
+	pkgver = r39.c6ba9b8
+	pkgrel = 1
+	url = https://github.com/fengkx/translator
+	arch = any
+	license = LGPL-3.0
+	makedepends = git
+	makedepends = go
+	provides = gotranslator
+	conflicts = gotranslator
+	source = git+https://github.com/fengkx/translator.git
+	md5sums = SKIP
+
+pkgname = gotranslator-git
+
