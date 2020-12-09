@@ -1,13 +1,13 @@
 pkgbase = python-dataclasses
 	pkgdesc = Implementation of PEP 557, Data Classes.
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
-	url = https://pypi.org/project/filetype/
+	url = https://pypi.org/project/dataclasses/
 	arch = any
 	license = GPL
 	depends = python
-	source = https://files.pythonhosted.org/packages/7a/71/fdbab71f1f714e03ead2d264bf444f88379bc09b2937d54ec83894057f80/dataclasses-0.7.tar.gz
-	sha256sums = 494a6dcae3b8bcf80848eea2ef64c0cc5cd307ffc263e17cdf42f3e5420808e6
+	source = https://files.pythonhosted.org/packages/1f/12/7919c5d8b9c497f9180db15ea8ead6499812ea8264a6ae18766d93c59fe5/dataclasses-0.8.tar.gz
+	sha256sums = 8479067f342acf957dc82ec415d355ab5edb7e7646b90dc6e2fd1d96ad084c97
 
 pkgname = python-dataclasses
 
