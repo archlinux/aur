@@ -1,7 +1,7 @@
 pkgbase = linvst-bin
 	pkgdesc = Linux Windows vst wrapper/bridge
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/osxmidi/LinVst
 	arch = x86_64
 	groups = pro-audio
