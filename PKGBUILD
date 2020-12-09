@@ -1,6 +1,6 @@
 
 pkgname=khronos-ocl-icd-git
-pkgver=v2020.06.16.33.g34ef50a
+pkgver=2020.06.16.33.g34ef50a
 pkgrel=1
 pkgdesc="Khronos Group OpenCL 1.2 installable client driver (ICD) loader. (GIT Version)"
 arch=('x86_64')
@@ -21,20 +21,20 @@ conflicts=('libcl'
            'ocl-icd'
            )
 source=('ocl::git+https://github.com/KhronosGroup/OpenCL-ICD-Loader.git'
-        'https://patch-diff.githubusercontent.com/raw/KhronosGroup/OpenCL-ICD-Loader/pull/95.diff'
+        '115.diff' # reference rebased: 'https://patch-diff.githubusercontent.com/raw/KhronosGroup/OpenCL-ICD-Loader/pull/115.diff'
          )
 sha256sums=('SKIP'
-            '3c93e365c70e6ecefde1e7be6f3ea039e61e538de1746aaa60f383cd59fe089c'
+            '3af74c2df1a00761e842cf68364c4e5ae4ef69c810e438cd4091ce95d03251b2'
             )
 
 pkgver() {
   cd ocl
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
   mkdir -p build
-  patch -d ocl -p1 -i "${srcdir}/95.diff"
+  patch -d ocl -p1 -i "${srcdir}/115.diff"
 }
 
 build() {

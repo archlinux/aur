@@ -1,0 +1,190 @@
+diff --git a/.appveyor.yml b/.appveyor.yml
+index 39121a2..b050f17 100644
+--- a/.appveyor.yml
++++ b/.appveyor.yml
+@@ -1,6 +1,6 @@
+ os:
+   - Visual Studio 2017
+-  #- Visual Studio 2015
++  - Visual Studio 2019
+ 
+ platform:
+   - Win32
+@@ -11,10 +11,28 @@ configuration:
+   - Release
+ 
+ before_build:
+-  - git clone --depth=1 https://github.com/KhronosGroup/OpenCL-Headers inc/OpenCL-Headers
+-  - cmake -DOPENCL_ICD_LOADER_HEADERS_DIR=inc/OpenCL-Headers -H. -Bbuild -A%PLATFORM%
++  - git clone https://github.com/MathiasMagnus/OpenCL-Headers --branch pkgconfig --single-branch
++  - cd OpenCL-Headers
++  - mkdir build
++  - mkdir install
++  - cd build
++  - cmake -A %PLATFORM%
++          -D CMAKE_INSTALL_PREFIX=../install
++          ..
++  - cmake --build .
++          --target INSTALL
++  - cd ..\..\
++  - git clone https://github.com/MathiasMagnus/OpenCL-ICD-Loader --branch pkgconfig --single-branch
++  - cd OpenCL-ICD-Loader
++  - mkdir build
++  - mkdir install
++  - cd build
++  - cmake -A %PLATFORM%
++          -D CMAKE_INSTALL_PREFIX=../install
++          -D CMAKE_PREFIX_PATH=C:/projects/opencl-icd-loader/OpenCL-Headers/install
++          ..
+ 
+ build:
+-  project: build\OpenCL-ICD-Loader.sln
++  project: OpenCL-ICD-Loader\build\OpenCL-ICD-Loader.sln
+   parallel: true
+-  verbosity: normal
++  verbosity: minimal
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 05455af..a5989bf 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,6 @@
+ cmake_minimum_required (VERSION 3.1)
+ 
+ project (OpenCL-ICD-Loader VERSION 1.2)
+-include (GNUInstallDirs)
+ find_package (Threads REQUIRED)
+ 
+ # The option below allows building the ICD Loader library as a shared library
+@@ -76,14 +75,11 @@ else ()
+         loader/linux/icd_exports.map)
+ endif ()
+ 
+-set (OPENCL_ICD_LOADER_HEADERS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/inc CACHE PATH "Path to OpenCL Headers")
+-
+ add_library (OpenCL ${OPENCL_ICD_LOADER_SOURCES})
+ set_target_properties (OpenCL PROPERTIES VERSION "1.2" SOVERSION "1")
+-target_include_directories(OpenCL SYSTEM PUBLIC ${OPENCL_ICD_LOADER_HEADERS_DIR})
+ 
+ if (WIN32)
+-    target_link_libraries (OpenCL cfgmgr32.lib runtimeobject.lib)
++    target_link_libraries (OpenCL PRIVATE cfgmgr32.lib runtimeobject.lib)
+ 
+     option (OPENCL_ICD_LOADER_DISABLE_OPENCLON12 "Disable support for OpenCLOn12. Support for OpenCLOn12 should only be disabled when building an import lib to link with, and must be enabled when building an ICD loader for distribution!" OFF)
+     if (OPENCL_ICD_LOADER_DISABLE_OPENCLON12)
+@@ -102,21 +98,39 @@ if (WIN32)
+     endif()
+ else()
+     if (APPLE)
+-        target_link_libraries (OpenCL ${CMAKE_THREAD_LIBS_INIT})
++        target_link_libraries (OpenCL PRIVATE ${CMAKE_THREAD_LIBS_INIT})
+     else ()
+         set_target_properties (OpenCL PROPERTIES LINK_FLAGS "-Wl,--version-script -Wl,${CMAKE_CURRENT_SOURCE_DIR}/loader/linux/icd_exports.map")
+         if (OPENCL_ICD_LOADER_PIC)
+             set_target_properties(OpenCL PROPERTIES POSITION_INDEPENDENT_CODE ON)
+         endif ()
+-        target_link_libraries (OpenCL ${CMAKE_THREAD_LIBS_INIT})
++        target_link_libraries (OpenCL PRIVATE ${CMAKE_THREAD_LIBS_INIT})
+     endif ()
+ endif ()
+ 
+-include_directories (${OPENCL_ICD_LOADER_HEADERS_DIR})
++find_package(OpenCLHeaders REQUIRED)
++if (TARGET OpenCL::Headers)
++  target_link_libraries (OpenCL PUBLIC OpenCL::Headers)
++  link_libraries(OpenCL::Headers)
++else ()
++  find_path(OpenCL_HEADERS_DIR
++    NAMES
++      CL/cl.h OpenCL/cl.h
++    PATH_SUFFIXES
++      include
++      OpenCL/common/inc
++  )
++  target_include_directories(OpenCL SYSTEM PUBLIC ${OpenCL_HEADERS_DIR})
++  include_directories(SYSTEM ${OpenCL_HEADERS_DIR})
++endif ()
+ add_definitions (-DCL_TARGET_OPENCL_VERSION=300)
+ 
+-target_include_directories (OpenCL PRIVATE ${CMAKE_CURRENT_BINARY_DIR} loader)
+-target_link_libraries (OpenCL ${CMAKE_DL_LIBS})
++target_include_directories (OpenCL
++  PRIVATE
++    ${CMAKE_CURRENT_BINARY_DIR}
++    loader
++)
++target_link_libraries (OpenCL PUBLIC ${CMAKE_DL_LIBS})
+ 
+ option (OPENCL_ICD_LOADER_BUILD_TESTING "Enable support for OpenCL ICD Loader testing." OFF)
+ 
+@@ -127,6 +141,49 @@ if((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME OR OPENCL_ICD_LOADER_BUILD_TESTING)
+     add_subdirectory (test)
+ endif()
+ 
++include (GNUInstallDirs)
++
++install(
++  TARGETS OpenCL
++  EXPORT OpenCLICDLoaderTargets
++  LIBRARY
++    DESTINATION ${CMAKE_INSTALL_LIBDIR} # obtained from GNUInstallDirs
++)
++
++export(
++  EXPORT OpenCLICDLoaderTargets
++  FILE ${PROJECT_BINARY_DIR}/OpenCLICDLoader/OpenCLICDLoaderTargets.cmake
++  NAMESPACE OpenCL::
++)
++file(
++  WRITE ${PROJECT_BINARY_DIR}/OpenCLICDLoader/OpenCLICDLoaderConfig.cmake
++  "include(\"\${CMAKE_CURRENT_LIST_DIR}/OpenCLICDLoaderTargets.cmake\")"
++)
++
++set(config_package_location ${CMAKE_INSTALL_DATADIR}/cmake/OpenCLICDLoader)
++install(
++  EXPORT OpenCLICDLoaderTargets
++  FILE OpenCLICDLoaderTargets.cmake
++  NAMESPACE OpenCL::
++  DESTINATION ${config_package_location}
++)
++install(
++  FILES ${CMAKE_CURRENT_BINARY_DIR}/OpenCLICDLoader/OpenCLICDLoaderConfig.cmake
++  DESTINATION ${config_package_location}
++)
++
++unset(CMAKE_SIZEOF_VOID_P)
++include(CMakePackageConfigHelpers)
++write_basic_package_version_file(
++  ${CMAKE_CURRENT_BINARY_DIR}/OpenCLICDLoader/OpenCLICDLoaderConfigVersion.cmake
++  VERSION ${PROJECT_VERSION}
++  COMPATIBILITY AnyNewerVersion
++)
++install(
++  FILES ${CMAKE_CURRENT_BINARY_DIR}/OpenCLICDLoader/OpenCLICDLoaderConfigVersion.cmake
++  DESTINATION ${config_package_location}
++)
++
+ install (TARGETS OpenCL
+     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index a158995..25d97bf 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -4,4 +4,16 @@ add_subdirectory (log)
+ add_subdirectory (driver_stub)
+ add_subdirectory (loader_test)
+ 
+-add_test (NAME opencl_icd_loader_test COMMAND icd_loader_test)
++set_target_properties (IcdLog OpenCLDriverStub icd_loader_test
++    PROPERTIES
++    ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
++    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
++    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
++    PDB_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
++)
++
++add_test (
++    NAME opencl_icd_loader_test
++    COMMAND icd_loader_test
++    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
++)
