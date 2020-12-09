@@ -20,7 +20,16 @@ if ((DISABLE_CUDA)); then
   # Disable component that could yield cuda.
 else
   makedepends+=('cuda')
-  _CMAKE_FLAGS+=( -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc )
+  depends+=('popsift')
+  depends+=('magma') # uncertaintyTE deps.
+  source+=("ute_lib::git+https://github.com/alicevision/uncertaintyTE.git")
+  provides+=(uncertainty-framework)
+  conflicts+=(uncertainty-framework)
+  sha256sums+=("SKIP")
+  _CMAKE_FLAGS+=(
+                -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc
+                -D{MAGMA_ROOT,{UNCERTAINTYTE,PopSift}_DIR}=/usr
+                )
   if [[ -v _cc_list ]]; then
     _CMAKE_FLAGS+=( -DALICEVISION_CUDA_CC_LIST="$(IFS=';'; echo "${_cc_list[*]}";)" )
   fi
@@ -38,19 +47,16 @@ arch=('i686' 'x86_64')
 url="https://alicevision.github.io/"
 license=('MPL2' 'MIT')
 groups=()
-conflicts=("${_name}" geogram uncertainty-framework)
-provides=("${_name}" geogram uncertainty-framework)
-depends+=('alembic' 'boost-libs' 'coin-or-clp' 'flann' 'google-glog' 'opencv' 'openimageio' 'opengv' )
+conflicts+=("${_name}" geogram)
+provides+=("${_name}" geogram)
+depends+=('alembic' 'boost-libs' 'ceres-solver' 'coin-or-clp' 'flann' 'google-glog' 'opencv' 'openimageio' 'opengv' )
 depends+=('glu' 'glfw-x11') # geogram deps.
-depends+=('magma' 'ceres-solver') # uncertaintyTE deps.
 makedepends+=('ninja' 'boost' 'eigen' 'freetype2' 'gflags' 'doxygen' 'python-sphinx' 'coin-or-coinutils' 'coin-or-lemon' 'git' 'cmake')
-source=("${pkgname}::git+https://github.com/alicevision/AliceVision.git${_fragment}"
-        "ute_lib::git+https://github.com/alicevision/uncertaintyTE.git"
+source+=("${pkgname}::git+https://github.com/alicevision/AliceVision.git${_fragment}"
         "geogram::git+https://github.com/alicevision/geogram.git"
         "FindOpenGV.cmake.patch"
         )
-sha256sums=('SKIP'
-            'SKIP'
+sha256sums+=('SKIP'
             'SKIP'
             '2740fc6890a62f74367df357e132dc95bcd276528d828d51d66c4689e183ceec')
 
@@ -75,11 +81,13 @@ prepare() {
 
 
 build() {
+  ((!DISABLE_CUDA)) && {
   msg2 "Build uncertaintyTE library"
   cmake -DCMAKE_INSTALL_PREFIX=/ -DMAGMA_ROOT=/usr -G Ninja -S ute_lib -B ute_build
 # shellcheck disable=SC2030,SC2031,SC2046 # ninja call won't work with shell substitution in quotes.
   ninja $([ -v MAKEFLAGS ] || echo -j1) -C ute_build
   DESTDIR="${srcdir}/ute_bin" ninja install -C ute_build install
+  }
 
   msg2 "Build geogram library"
   CFLAGS+=" -fcommon" cmake -DCMAKE_INSTALL_PREFIX=/ -DGEOGRAM_LIB_ONLY=ON -DGEOGRAM_USE_SYSTEM_GLFW3=ON -DCMAKE_BUILD_TYPE:STRING=Release -DVORPALINE_PLATFORM:STRING=Linux64-gcc-dynamic -G Ninja -S geogram -B geogram_build
@@ -95,8 +103,10 @@ build() {
 
 
 package() {
+  ((!DISABLE_CUDA)) && {
   msg2 "Install uncertaintyTE"
   DESTDIR="${pkgdir}/usr" ninja -C ute_build install
+  }
 
   msg2 "Install geogram"
   DESTDIR="${pkgdir}/usr" ninja -C geogram_build install
