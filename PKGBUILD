@@ -4,7 +4,7 @@
 pkgname=dirsearch
 
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Web path scanner/fuzzer, written in Python'
 arch=('any')
