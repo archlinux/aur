@@ -1,15 +1,15 @@
 pkgbase = python-pdir2
 	pkgdesc = Pretty dir() printing with joy
-	pkgver = 0.3.1.post2
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/laike9m/pdir2
 	arch = any
 	license = MIT
 	makedepends = python-pip
 	depends = python>=3.5
-	provides = python-pdir2=0.3.1.post2
-	noextract = pdir2-0.3.1.post2-py2.py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/e8/11/f3d2b3fbceceb3c5f8401cfcbcee3b3f2d16d79a9333bde5996a083d5b04/pdir2-0.3.1.post2-py2.py3-none-any.whl
+	provides = python-pdir2=0.3.2
+	noextract = pdir2-0.3.2-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/25/df/78657e25574db75474ca898e49d0e892a70e82a3eea6221694323098901b/pdir2-0.3.2-py2.py3-none-any.whl
 	sha256sums = 71761d0fe879de2c91fc36ecdb9a7f20d059deee7d94d0f10c2dea2cca1c1929
 
 pkgname = python-pdir2
