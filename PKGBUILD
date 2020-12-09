@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-tools
-_qtver=6.0.0-rc
+_qtver=6.0.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -16,10 +16,10 @@ makedepends=('mingw-w64-cmake' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qttools-everywhere-src-${_qtver}"
-source=("https://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Make-windeployqt-an-optional-feature.patch')
-sha256sums=('6fe789cf7e1abc7f0ac39027c53e7880433425b234d448d1500e583e9c3ba498'
-            '5655e188088c8345ba3aed72c74d98800d270bc65f9298676eeb40e3796d17c8')
+sha256sums=('b6dc559db447bf394d09dfb238d5c09108f834139a183888179e855c6566bfae'
+            'f316cdb87dcc84d1fe9ebd262812118e35571aa0fadd3da6ac3b9f42af19b8bb')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 

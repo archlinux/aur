@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-tools
 	pkgdesc = A cross-platform application and UI framework (tools, mingw-w64)
-	pkgver = 6.0.0rc
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -21,10 +21,10 @@ pkgbase = mingw-w64-qt6-tools
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-rc/submodules/qttools-everywhere-src-6.0.0-rc.tar.xz
+	source = https://download.qt.io/official_releases/qt/6.0/6.0.0/submodules/qttools-everywhere-src-6.0.0.tar.xz
 	source = 0001-Make-windeployqt-an-optional-feature.patch
-	sha256sums = 6fe789cf7e1abc7f0ac39027c53e7880433425b234d448d1500e583e9c3ba498
-	sha256sums = 5655e188088c8345ba3aed72c74d98800d270bc65f9298676eeb40e3796d17c8
+	sha256sums = b6dc559db447bf394d09dfb238d5c09108f834139a183888179e855c6566bfae
+	sha256sums = f316cdb87dcc84d1fe9ebd262812118e35571aa0fadd3da6ac3b9f42af19b8bb
 
 pkgname = mingw-w64-qt6-tools
 
