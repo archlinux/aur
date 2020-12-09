@@ -4,7 +4,7 @@
 
 pkgname=icinga2
 pkgver=2.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source host, service and network monitoring program"
 license=('GPL')
 arch=('i686' 'x86_64')

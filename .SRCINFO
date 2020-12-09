@@ -1,7 +1,7 @@
 pkgbase = icinga2
 	pkgdesc = An open source host, service and network monitoring program
 	pkgver = 2.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.icinga.org
 	install = icinga2.install
 	changelog = icinga2.changelog
@@ -49,11 +49,15 @@ pkgbase = icinga2
 	backup = etc/icinga2/zones.conf
 	backup = etc/logrotate.d/icinga2
 	source = https://github.com/Icinga/icinga2/archive/v2.12.2.tar.gz
-	source = https://www.boost.org/patches/1_72_0/0001-revert-cease-dependence-on-range.patch
+	source = https://patch-diff.githubusercontent.com/raw/Icinga/icinga2/pull/8184.patch
+	source = https://patch-diff.githubusercontent.com/raw/Icinga/icinga2/pull/8190.patch
+	source = https://patch-diff.githubusercontent.com/raw/Icinga/icinga2/pull/8191.patch
 	source = icinga2.tmpfiles
 	source = icinga2.sysusers
 	sha256sums = de453549440d469c173b2f6183e5230b1db7a62878ce0a20455ece5f73518e0e
-	sha256sums = da7950df251a9d785a84c0092fb7ac4f68f6872c6172cccb303a5453e0ef98fd
+	sha256sums = dc1a2530d1c2c311826443cebaaa3c307f400e6a995414c654f4e6b94ec8b885
+	sha256sums = 4f033a9a1bf74fe81eeda553e8d249ddc30fbb7c09a7edb37c3ce6dbad332958
+	sha256sums = ec60024196c381debb6caa759f5d8e1750f5039f5b3689d822009643da6fd6cb
 	sha256sums = 1302b333f49ead14f8808a379535971501d3a0c1ba02a7bf7b4406b7d27c754c
 	sha256sums = 2f946a33ea50a3c4400a81acd778e6411ffe5e2257a98004288b84a64f382810
 
