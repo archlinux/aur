@@ -55,6 +55,7 @@ build() {
     mkdir -p build
 
     cd build
+    WX_CONFIG=wx-config-gtk3 \
     cmake .. -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
