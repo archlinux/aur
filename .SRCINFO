@@ -1,5 +1,5 @@
 pkgbase = python-tinydownload-git
-	pkgdesc = Automatic Ripping Machine packaged for Arch Linux
+	pkgdesc = Download files from tinyupload.com
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/ritiek/tinydownload

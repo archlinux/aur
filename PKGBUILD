@@ -2,7 +2,7 @@
 pkgname=python-tinydownload-git
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Automatic Ripping Machine packaged for Arch Linux"
+pkgdesc="Download files from tinyupload.com"
 url="https://github.com/ritiek/tinydownload"
 arch=('any')
 license=('MIT')
