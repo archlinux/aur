@@ -1,10 +1,11 @@
 pkgbase = steamtinkerlaunch
 	pkgdesc = Wrapper script for Steam custom launch options
 	pkgver = 3.1.335
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frostworx/steamtinkerlaunch
 	arch = any
 	license = GPL3
+	depends = bc
 	depends = bash
 	depends = git
 	depends = procps-ng
