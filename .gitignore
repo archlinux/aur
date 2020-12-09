@@ -1,4 +1,6 @@
 *.gz
+*.part
+*.zst
 *.xz
 pkg
 src
