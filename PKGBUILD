@@ -6,7 +6,7 @@ url='https://github.com/ros/ros_comm'
 pkgname='ros-melodic-roscpp'
 pkgver='1.14.10'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -51,8 +51,15 @@ conflicts=(
 )
 
 _dir="ros_comm-${pkgver}/clients/roscpp"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('b3b75612feb447afe70600e3ba80bf3e356493a058ba8ebf2746e8db0c55165c')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz"
+        "boost_fixes.patch")
+sha256sums=('b3b75612feb447afe70600e3ba80bf3e356493a058ba8ebf2746e8db0c55165c'
+            'cf619e6a9082dc0f4d10f01ec773043f1803352b50de58e493534f43c6e063e5')
+
+prepare() {
+  cd "${srcdir}/${_dir}"
+  patch -p0 < ${srcdir}/boost_fixes.patch || return 1
+}
 
 
 build() {

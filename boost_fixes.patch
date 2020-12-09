@@ -1,0 +1,33 @@
+--- ./CMakeLists.txt	2020-10-17 02:06:33.000000000 +0200
++++ ../../../ros_comm-1.14.10_mod/clients/roscpp/CMakeLists.txt	2020-12-09 19:44:33.418660181 +0100
+@@ -75,6 +75,8 @@
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/libros/config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h)
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ 
++add_definitions(-DBOOST_BIND_GLOBAL_PLACEHOLDERS)
++
+ add_library(roscpp 
+   src/libros/master.cpp
+   src/libros/network.cpp
+
+--- ./include/ros/connection_manager.h	2020-10-17 02:06:33.000000000 +0200
++++ ../../../ros_comm-1.14.10_mod/clients/roscpp/include/ros/connection_manager.h	2020-12-09 19:57:27.307009573 +0100
+@@ -31,6 +31,7 @@
+ 
+ #include <boost/thread/mutex.hpp>
+ #include <boost/signals2/connection.hpp>
++#include <boost/bind.hpp>
+ 
+ namespace ros
+ {
+
+--- ./include/ros/timer_manager.h	2020-10-17 02:06:33.000000000 +0200
++++ ../../../ros_comm-1.14.10_mod/clients/roscpp/include/ros/timer_manager.h	2020-12-09 19:55:12.846155520 +0100
+@@ -35,6 +35,7 @@
+ #include <boost/thread/thread.hpp>
+ #include <boost/thread/mutex.hpp>
+ #include <boost/thread/recursive_mutex.hpp>
++#include <boost/bind.hpp>
+ 
+ #include "ros/assert.h"
+ #include "ros/callback_queue_interface.h"
