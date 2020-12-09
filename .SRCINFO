@@ -1,0 +1,18 @@
+pkgbase = apipost-bin
+	pkgdesc = An API debug and mamagement tool supported teamwork and generate documents directly.
+	pkgver = 3.2.3
+	pkgrel = 1
+	url = https://www.apipost.cn/
+	arch = x86_64
+	license = custom
+	makedepends = tar
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	provides = apipost
+	conflicts = apipost
+	source = https://img.cdn.apipost.cn/download/linux/apipost_3.2.3_amd64.deb
+	sha256sums = 7504919ed2bf0009cbc0f36c4534be58c8bff96632a5e58916e4c8eb39e2358a
+
+pkgname = apipost-bin
+
