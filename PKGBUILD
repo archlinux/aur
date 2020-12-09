@@ -4,7 +4,7 @@
 
 pkgname=gns3-server
 pkgver=2.2.17
-pkgrel=1
+pkgrel=2
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64')
 url='https://github.com/GNS3/gns3-server'
@@ -30,7 +30,6 @@ depends=(
 optdepends=(
     'dynamips: Cisco router emulator.'
     'gns3-gui: graphical user interface for GNS3 server.'
-    'iouyap: Bridge IOU to UDP, TAP and Ethernet.'
     'qemu: Used by GNS3 to run Cisco ASA, PIX and IDS.'
     'libvirt: needed for the NAT cloud'
     'vpcs: Simple PC emulation for basic network operations.'
