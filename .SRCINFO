@@ -1,6 +1,6 @@
 pkgbase = ignition-msgs
 	pkgdesc = Standard set of message definitions, used by Ignition Transport, and other applications.
-	pkgver = 5.3.0
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = https://ignitionrobotics.org/libs/msgs
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = ignition-msgs
 	depends = protobuf-c
 	depends = ignition-math>=6
 	depends = ignition-tools
-	source = ignition-msgs-5.3.0::https://github.com/ignitionrobotics/ign-msgs/archive/ignition-msgs5_5.3.0.tar.gz
-	sha256sums = 1e11986cdf9549f1b4e2a6da1b978525ff2f60539a451b24db5b81ca2c0893df
+	source = ignition-msgs-6.1.0::https://github.com/ignitionrobotics/ign-msgs/archive/ignition-msgs6_6.1.0.tar.gz
+	sha256sums = 231b0b302a854fb0f838174ea2b86cac96ed137d2d6d51174ba024f6b30b9baf
 
 pkgname = ignition-msgs
 
