@@ -1,0 +1,17 @@
+pkgbase = freedns-go-git
+	pkgdesc = Optimized DNS Server for Chinese users.
+	pkgver = r71.9977496
+	pkgrel = 1
+	url = https://github.com/tuna/freedns-go
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = python
+	provides = freedns-go
+	conflicts = freedns-go
+	source = git+https://github.com/tuna/freedns-go.git
+	md5sums = SKIP
+
+pkgname = freedns-go-git
+
