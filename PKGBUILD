@@ -65,6 +65,7 @@ build() {
     -D oss-output=false \
     -D soxr=disabled \
     -D speex=enabled \
+    -D valgrind=disabled \
     -D adrian-aec=false \
     -D webrtc-aec=disabled 
   meson compile -C build
