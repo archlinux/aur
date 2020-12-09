@@ -1,19 +1,19 @@
 # Maintainer: Ben Aaron Goldberg <ben@benaaron.dev>
 
 pkgname=fre
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="CLI tool for tracking your most-used directories and files"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
 url="https://github.com/camdencheek/fre"
 license=('MIT')
-source=("https://github.com/camdencheek/fre/archive/v${pkgver}.tar.gz")
+source=("https://github.com/camdencheek/fre/archive/${pkgver}.tar.gz")
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
-sha256sums=("fdca3786e35ced6b5709daaf987cad7a2776cc4aaf0d947b2f4185dc3384b5de")
+sha256sums=("22d8dddd1c634031e731ab3966d07aa01acc184b773ae1d9aa5fe5aa6c0c3858")
 
 build() {
-    tar -xf v${pkgver}.tar.gz
+    tar -xf ${pkgver}.tar.gz
     cd "$srcdir/$pkgname-$pkgver"
     cargo build --release
 }
