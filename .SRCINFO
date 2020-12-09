@@ -1,0 +1,19 @@
+pkgbase = passman++-devel
+	pkgdesc = Incredibly simple and secure command-line password manager - development/debug release
+	pkgver = 2.0.0rc1
+	pkgrel = 1
+	url = https://github.com/binex-dsk/passmanpp/
+	arch = x86_64
+	license = BSD
+	depends = botan
+	depends = libsodium
+	depends = qt5-base
+	depends = ttf-hack
+	provides = passman
+	conflicts = passman-git
+	conflicts = passman++
+	source = https://github.com/binex-dsk/passmanpp/archive/2.0.0rc1.zip
+	md5sums = fe58a3d3b51083ea7cc6c84399dfe264
+
+pkgname = passman++-devel
+
