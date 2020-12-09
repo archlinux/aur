@@ -4,7 +4,7 @@
 _pkgbase=indicator-sysmonitor
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-budgie-git" "${_pkgbase}-appindicator-git")
-pkgver=r108.5062118
+pkgver=r117.b99cc39
 pkgrel=1
 pkgdesc='An Application Indicator showing cpu temperature, memory, network speed, cpu usage, public IP address and internet connection status'
 arch=('any')
