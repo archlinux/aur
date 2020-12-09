@@ -6,8 +6,9 @@ pkgbase = ttf-invader
 	arch = any
 	license = unknown
 	provides = ttf-invader-zim
-	source = ttf-invader-20010314.zip::https://dl.dafont.com/dl/?f=invader_zim
-	source = ttf-invader-20010314-README.png::https://www.dafont.com/img/charmap/i/n/invader_zim0.png
+	conflicts = ttf-invader-zim
+	source = ttf-invader-20010314-1.zip::https://dl.dafont.com/dl/?f=invader_zim
+	source = ttf-invader-20010314-1-README.png::https://www.dafont.com/img/charmap/i/n/invader_zim0.png
 	sha256sums = 3f673a31e4b16bfdee9600096a276b3047b0f5a0cb57cb24a9ed2852ba3983c2
 	sha256sums = bc7744c042b4c4f869dead513a1b01213be112a13996295b2b0afd0451837c80
 
