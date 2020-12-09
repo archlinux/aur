@@ -1,7 +1,7 @@
 # Maintainer: Thorben Günther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=terraform-ls
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Terraform Language Server'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/hashicorp/terraform-ls'
 license=('custom:MPL2')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4f6975960dab0d47297fb1cab5685482a12a1f04e148056bdba548d014dd5cd7')
+sha256sums=('1cdbc77a4f6c91183f54b7d9d2a2ae36f9561d313edfd2ab35b33310fd42a852')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -18,7 +18,7 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build
+    go build -ldflags "-X main.version=$pkgver -X main.prerelease="
 }
 
 package() {
