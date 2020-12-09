@@ -1,7 +1,7 @@
 pkgbase = tageditor-qt6
 	pkgdesc = A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska (using Qt 6)
 	pkgver = 3.3.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Martchus/tageditor
 	arch = i686
 	arch = x86_64
