@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Oskar Roesler <oskar@oskar-roesler.de>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
@@ -14,11 +14,11 @@ pkgbase=boost1.69
 pkgname=('boost1.69-libs' 'boost1.69')
 pkgver=1.69.0
 _boostver=${pkgver//./_}
-pkgrel=4
+pkgrel=5
 url='https://www.boost.org/'
-arch=('x86_64')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 license=('custom')
-makedepends=('icu' 'python' 'python2' 'python-numpy' 'python2-numpy' 'bzip2' 'zlib' 'openmpi')
+makedepends=('icu' 'python' 'python-numpy' 'bzip2' 'zlib' 'openmpi')
 source=(https://downloads.sourceforge.net/project/boost/boost/${pkgver}/boost_${_boostver}.tar.bz2)
 sha256sums=('8f32d4617390d1c2d16f26a27ab60d97807b35440d45891fa340fc2648b04406')
 
@@ -32,7 +32,7 @@ build() {
 
    cd boost_${_boostver}
 
-   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python2
+    ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python3
 
    _bindir="bin.linuxx86"
    [[ "${CARCH}" = "x86_64" ]] && _bindir="bin.linuxx86_64"
@@ -45,35 +45,6 @@ build() {
    install -dm755 "${_stagedir}"/share/boostbook
    cp -a tools/boostbook/{xsl,dtd} "${_stagedir}"/share/boostbook/
 
-   # default "minimal" install: "release link=shared,static
-   # runtime-link=shared threading=single,multi"
-   # --layout=tagged will add the "-mt" suffix for multithreaded libraries
-   # and installs includes in /usr/include/boost.
-   # --layout=system no longer adds the -mt suffix for multi-threaded libs.
-   # install to ${_stagedir} in preparation for split packaging
-   "${_stagedir}"/bin/b2 \
-      variant=release \
-      debug-symbols=off \
-      threading=multi \
-      runtime-link=shared \
-      link=shared,static \
-      toolset=gcc \
-      python=2.7 \
-      cflags="${CPPFLAGS} ${CFLAGS} -fPIC -O3" \
-      cxxflags="${CPPFLAGS} ${CXXFLAGS} -std=c++14 -fPIC -O3" \
-      linkflags="${LDFLAGS}" \
-      --layout=system \
-      ${JOBS} \
-      \
-      --prefix="${_stagedir}" \
-      install
-
-   # because b2 in boost 1.62.0 doesn't seem to respect python parameter, we
-   # need another run for liboost_python3.so
-
-   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python3 \
-      --with-libraries=python
-
    "${_stagedir}"/bin/b2 clean
    "${_stagedir}"/bin/b2 \
       variant=release \
@@ -82,15 +53,14 @@ build() {
       runtime-link=shared \
       link=shared,static \
       toolset=gcc \
-      python=3.8 \
+      python=3.9 \
       cflags="${CPPFLAGS} ${CFLAGS} -fPIC -O3" \
       cxxflags="${CPPFLAGS} ${CXXFLAGS} -std=c++14 -fPIC -O3" \
       linkflags="${LDFLAGS}" \
       --layout=system \
       ${JOBS} \
       \
-      --prefix="${_stagedir}/python3" \
-      --with-python \
+      --prefix="${_stagedir}" \
       install
 }
 
@@ -98,8 +68,7 @@ package_boost1.69() {
    pkgdesc='Free peer-reviewed portable C++ source libraries - development headers'
    depends=("boost1.69-libs=${pkgver}")
    conflicts=('boost')
-   optdepends=('python: for python bindings'
-               'python2: for python2 bindings')
+   optdepends=('python: for python bindings')
    options=('staticlibs')
 
    install -dm755 "${pkgdir}"/usr
@@ -112,9 +81,6 @@ package_boost1.69() {
    install -Dm644 "${srcdir}/"boost_${_boostver}/LICENSE_1_0.txt \
       "${pkgdir}"/usr/share/licenses/boost1.69/LICENSE_1_0.txt
 
-   install -Dm644 "${_stagedir}"/python3/lib/libboost_*.a \
-      "${pkgdir}"/usr/lib/
-
    ln -s /usr/bin/b2 "$pkgdir"/usr/bin/bjam
 }
 
@@ -126,7 +92,6 @@ package_boost1.69-libs() {
 
    install -dm755 "${pkgdir}"/usr
    cp -a "${_stagedir}"/lib "${pkgdir}"/usr
-   cp -a "${_stagedir}"/python3/lib/libboost_* "${pkgdir}"/usr/lib
    rm "${pkgdir}"/usr/lib/*.a
 
    # remove library symlinks shipped in boost1.69 / conflicting with boost-libs
