@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=kbs2
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A secret manager backed by age"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('libx11')
 makedepends=('rust' 'python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('6cb7a4e3792511f34c4a57e2a991b1b34ea4a872af9b7520e772c7a7b72c0356563e3514e99539bad94f38235b3d746d779b592192b03669dfe7e31118a1f66f')
+sha512sums=('1e86660c9a75aa78230d2ff331e6de7d938c8d90866a786fd47487d9a57cdfc702326afb91c46879aca493b9ef0f392e148797f6b89afb1b2194a08abd96a076')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -28,4 +28,7 @@ package() {
   install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  "$pkgname" --completions bash | install -Dm 644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/$pkgname"
+  "$pkgname" --completions fish | install -Dm 644 /dev/stdin "${pkgdir}/usr/share/fish/completions/$pkgname.fish"
+  "$pkgname" --completions zsh | install -Dm 644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_$pkgname"
 }
