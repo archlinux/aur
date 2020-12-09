@@ -1,6 +1,8 @@
---- src/t4k_common-0.1.1/src/t4k_loaders.c	2011-04-08 05:46:07.000000000 +0300
-+++ src.new/t4k_common-0.1.1/src/t4k_loaders.c	2012-05-02 10:35:41.836670434 +0300
-@@ -1028,12 +1028,9 @@
+diff --git a/src/t4k_loaders.c b/src/t4k_loaders.c
+index 7248e35..61fe63f 100644
+--- a/src/t4k_loaders.c
++++ b/src/t4k_loaders.c
+@@ -1028,12 +1028,9 @@ static int do_png_save(FILE * fi, const char *const fname, SDL_Surface * surf)
        {
          png_init_io(png_ptr, fi);
  

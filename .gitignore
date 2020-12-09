@@ -1,0 +1,9 @@
+t4kcommon-*.pkg.tar.zst
+t4kcommon-*.pkg.tar.xz
+t4kcommon-*.tar.gz
+t4kcommon-*.log
+916060_bugfix.patch
+PKGBUILD-namcap.log
+t4kcommon-upstream-*/
+pkg/
+src/
