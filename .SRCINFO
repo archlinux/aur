@@ -5,12 +5,10 @@ pkgbase = otf-rally-symbols
 	url = https://www.dafont.com/rally-symbols.font
 	arch = any
 	license = custom
-	source = otf-rally-symbols-1.001.zip::https://dl.dafont.com/dl/?f=rally_symbols
-	source = otf-rally-symbols-1.001-README.png::https://www.dafont.com/img/charmap/r/a/rally_symbols0.png
-	source = LICENSE
+	source = otf-rally-symbols-1.001-1.zip::https://dl.dafont.com/dl/?f=rally_symbols
+	source = otf-rally-symbols-1.001-1-README.png::https://www.dafont.com/img/charmap/r/a/rally_symbols0.png
 	sha256sums = e78fcca993f27119a30261e918f3ae2e048acddca76b7e89d6e65cba910dc06d
 	sha256sums = e7965f9fd44fbbd667c461dc1a5cf0a463e0cce9eee1a10dba6b1b277e2a400b
-	sha256sums = 78a4c94338e4a1d515d1673b07f236ddbda7afb1cef13eb1ce020499648ab340
 
 pkgname = otf-rally-symbols
 
