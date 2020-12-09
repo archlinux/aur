@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-bytes-random-secure-tiny'
-pkgver='1.008'
+pkgver='1.011'
 pkgrel='1'
 pkgdesc="Bytes::Random::Secure::Tiny - a tiny Perl extension to generate cryptographically-secure random bytes."
 arch=('any')
@@ -12,8 +12,8 @@ depends=('perl>=5.8.0')
 makedepends=()
 url='https://metacpan.org/release/Bytes-Random-Secure-Tiny'
 source=("http://search.cpan.org/CPAN/authors/id/D/DA/DAVIDO/Bytes-Random-Secure-Tiny-$pkgver.tar.gz")
-md5sums=('97ab84d97b5bee8666ff14d275a719a5')
-sha512sums=('24a53916f17304abde11360bac4ad3a98283200e2e7e74fa744f3fe423c7849ba62af3867211939475ee8ce0158bc68e754ab2a41c46c861af636c171d38dbb5')
+md5sums=('e8ef537ed481669444358c612cfcc678')
+sha512sums=('b04b765af3d4ecd337571b53ff02d9efc54a08a598ece5df82357c8e364fbeff0f2a97561916a0e362f5e89e83939cdd10c3a3b3288e2952324fa57490d640be')
 _distdir="Bytes-Random-Secure-Tiny-$pkgver"
 
 build() {
@@ -39,12 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-  rm -r "$pkgdir"/usr/lib
+  rm -r "$pkgdir/usr/lib"
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
