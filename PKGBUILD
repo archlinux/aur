@@ -1,19 +1,19 @@
 # Maintainer: wenbushi <wenbushi@gmail.com>
 
-pkgbase=('python-browsercookie')
-pkgname=('python-browsercookie')
+pkgbase='python-browsercookie'
+pkgname='python-browsercookie'
 _module='browsercookie'
-pkgver='0.7.5'
+pkgver='0.7.7'
 pkgrel=1
 pkgdesc="Loads cookies from your browser into a cookiejar object"
-url="https://bitbucket.org/richardpenman/browsercookie"
+url="https://github.com/richardpenman/browsercookie"
 depends=('python-pycryptodome' 'python-keyring' 'python-lz4')
 makedepends=('python-setuptools')
 provides=("${pkgname}=${pkgver}")
 license=('LGPL')
 arch=('any')
-source=("${pkgname}"::"https://files.pythonhosted.org/packages/52/c7/df624e7fef8bbdf994510c2138f771c27142075a9cdb611adcb47e0d4e90/${_module}-${pkgver}.tar.gz")
-sha256sums=('25bebd5ae2143b510c0c466fb29bc40d3604f35132061684b17ee43f7c46754f')
+source=("${pkgname}"::"https://files.pythonhosted.org/packages/17/36/07a04cf7b3b5b944d14cc7f0a8131d056dc18847efe0cd3928dfe076bbfc/${_module}-${pkgver}.tar.gz")
+sha256sums=('d085c827cacc0c2396e7ffa1ab5177ef7f2a490d13e85ed6cb41eefb745447ed')
 dirname="${_module}-${pkgver}"
 
 build() {
