@@ -1,7 +1,7 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname=('libvgm-player-git' 'libvgm-emu-git' 'libvgm-utils-git' 'libvgm-audio-git' 'libvgm-common-git' 'vgm2wav-git' 'vgmplayer-git')
 pkgbase=libvgm-git
-pkgver=r447.dd7acb8
+pkgver=r448.96fc0f6
 pkgrel=1
 pkgdesc="Library for decoding and playing VGM files"
 arch=(x86_64 i686)
@@ -9,11 +9,8 @@ url="https://github.com/ValleyBell/libvgm"
 license=('GPL')
 makedepends=('zlib' 'alsa-lib' 'libpulse' 'libao' 'git' 'cmake')
 
-source=('git+https://github.com/ValleyBell/libvgm.git'
-'libvgm-fix-strncasecmp.patch')
-
-md5sums=('SKIP'
-'e6535e390c4a689744cde3e3286c2355')
+source=('git+https://github.com/ValleyBell/libvgm.git')
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgbase%-git}"
@@ -23,7 +20,8 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/${pkgbase%-git}"
-    patch --forward --strip=1 --input="${srcdir}/libvgm-fix-strncasecmp.patch"
+    # leaving a note for patching
+    #patch --forward --strip=1 --input="${srcdir}/libvgm-fix-strncasecmp.patch"
 }
 
 build() {
@@ -39,7 +37,7 @@ build() {
       -DCMAKE_SKIP_BUILD_RPATH=TRUE \
       -DCMAKE_INSTALL_PREFIX=/usr \
       ..
-	make V=1 VERBOSE=1
+	make
 }
 
 package_libvgm-common-git() {
