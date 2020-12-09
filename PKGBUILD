@@ -8,7 +8,7 @@
 
 pkgbase=nvidia-full-vulkan-all
 pkgname=('nvidia-full-vulkan-all' 'nvidia-utils-full-vulkan-all' 'opencl-nvidia-full-vulkan-all'   'lib32-nvidia-utils-full-vulkan-all' 'lib32-opencl-nvidia-full-vulkan-all' 'nvidia-settings-full-vulkan-all')
-pkgver=440.66.15
+pkgver=455.46.02
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch) for all kernels on the system (drivers, utilities and libraries)"
 arch=('x86_64')
@@ -19,10 +19,12 @@ options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-$pkgver"
 source=("$_pkg.run::https://developer.nvidia.com/vulkan-beta-${pkgver//.}-linux"
         'kernel-5.6.patch'
+        'kernel-5.7.patch'
         'nvidia-drm-outputclass.conf'
         'nvidia-vulkan-utils.sysusers')
-sha512sums=('e0b999edeefc9086a0308a0070af6a584430ca23588e8c4a37b50be10ec558df26adabc81cc2ab885935c85fe5db49619a0854dd16c13d25e7421e2bee95047c'
+sha512sums=('549b62b7ba66471f00142fe4d02de6d09f480ff05ef33431f33d32bf4a35a2cf349c5b9087e0a0ee028ca6cc10be395238146be4224aa6ab8038768df1c94514'
             'a622f4d784103d58f30c584976060ba499f794a0852c469da202314842495bdfbbcae8a510b534eec4477590a1181cae1b98d239a54a60ef2bd752b6ca8ebd1b'
+            'ba5df48ef67285739b3321b6e1f7480b13fa1a3d9b0773acf5973aba7477c7d291f5d2448c9d3af92b51916dd24e2f470535f03979de2010130d6edc0869d06e'
             'c49d246a519731bfab9d22afa5c2dd2d366db06d80182738b84881e93cd697c783f16ee04819275c05597bb063451a5d6102fbc562cd078d2a374533a23cea48'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499')
 
@@ -40,29 +42,23 @@ create_links() {
 }
 
 prepare() {
-    sh "$_pkg.run" --extract-only
+    sh "$_pkg.run" -x
     cd "$_pkg"
 
     bsdtar -xf nvidia-persistenced-init.tar.bz2
     patch -Np1 -i ../kernel-5.6.patch
-    # Fixing regex pattern for Module.symvers
-    sed -i "s/${TAB}vmlinux/$TAB*vmlinux/g" kernel/conftest.sh
-    sed -i "s/TAB='    '/TAB='\\\t'/g" kernel/conftest.sh
-
+    patch -Np1 -i ../kernel-5.7.patch
 
     #linux-rt fox for newer drivers.
     sed -i -e 's|PREEMPT_RT_PRESENT=1|PREEMPT_RT_PRESENT=0|g' kernel/conftest.sh
 
-    sed -i "s/static int nv_drm_vma_fault(struct vm_fault \*vmf)/#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 1, 0)\nstatic int nv_drm_vma_fault(struct vm_fault \*vmf)\n#else\nstatic vm_fault_t nv_drm_vma_fault(struct vm_fault \*vmf)\n#endif/g" kernel/nvidia-drm/nvidia-drm-gem-nvkms-memory.c
-
-    mv kernel kernel-orig
    # create a build directory for each installed kernel
    local -a _kernel
    local -a _kernels
    mapfile -t _kernels < <(find /usr/lib/modules/*/build/version -exec cat {} +)
    for _kernel in "${_kernels[@]}"
    do
-       cp -a kernel-orig "kernel-$_kernel"
+       cp -a kernel "kernel-$_kernel"
    done
 }
 
@@ -71,12 +67,13 @@ build() {
     local -a _kernels
     mapfile -t _kernels < <(find /usr/lib/modules/*/build/version -exec cat {} +)
     
-    for _kernel in "${_kernels[@]}"
-    do
-        cd "$srcdir/$_pkg/kernel-$_kernel"
-        printf '%s\n' "  -> Building Nvidia module for $_kernel..."
-        make SYSSRC="/usr/lib/modules/$_kernel/build" module
-      done
+    for _kernel in "${_kernels[@]}"; do
+      cd "$srcdir"/$_pkg/kernel-$_kernel
+
+      # Build module
+      msg2 "Building Nvidia module for $_kernel..."
+      make SYSSRC=/usr/lib/modules/$_kernel/build modules
+    done
 }
 
 package_nvidia-full-vulkan-all() {

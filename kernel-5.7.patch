@@ -1,0 +1,20 @@
+--- a/kernel/conftest.sh
++++ b/kernel/conftest.sh
+@@ -144,6 +144,7 @@ test_headers() {
+     FILES="$FILES video/nv_internal.h"
+     FILES="$FILES asm/book3s/64/hash-64k.h"
+     FILES="$FILES asm/set_memory.h"
++    FILES="$FILES asm/pgtable.h"
+     FILES="$FILES asm/prom.h"
+     FILES="$FILES asm/powernv.h"
+     FILES="$FILES asm/tlbflush.h"
+@@ -471,6 +472,9 @@ compile_test() {
+             # It does not exist on all architectures.
+             #
+             CODE="
++            #if defined(NV_ASM_PGTABLE_H_PRESENT)
++            #include <asm/pgtable.h>
++            #endif
+             #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
+             #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
+             #include <asm/pgtable_types.h>
