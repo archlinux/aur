@@ -70,7 +70,7 @@ prepare() {
 # fix doc build
   sed -i '/^ *install.*doc/s/doc/htmlDoc/' src/CMakeLists.txt
   #patch FindOpenGV.cmake to use Eigen3 instear of Eigen
-  patch -Np1 -i "$srcdir"/FindOpenGV.cmake.patch
+  git apply -v "$srcdir"/FindOpenGV.cmake.patch
 }
 
 
