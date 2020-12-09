@@ -2,7 +2,7 @@
 
 pkgname=ajour-git
 _name=${pkgname%-git}
-pkgver=0.3.4.r33.3dd767f
+pkgver=0.5.4
 pkgrel=1
 pkgdesc='World of Warcraft addon manager written in Rust'
 url='https://www.getajour.com'
@@ -34,7 +34,7 @@ package() {
   install -Dm755 "target/release/$_name" "$pkgdir/usr/bin/$_name"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  for i in "1 16" "2 24" "3 32" "4 48" "5 256";
+  for i in "1 16" "2 24" "3 32" "4 48" "5 64" "6 96" "7 128" "8 192" "9 256"
   do
     set -- $i
     install -Dm644 "${_name}_$1_$2x$2x32.png" "$pkgdir/usr/share/icons/hicolor/$2x$2/apps/$_name.png"
