@@ -3,7 +3,7 @@
 
 pkgname=menyoki-git
 pkgver=1.0.2.r0.g073cf00
-pkgrel=1
+pkgrel=2
 pkgdesc="Screen{shot,cast} and perform ImageOps on the command line (git)"
 arch=('x86_64')
 url="https://github.com/orhun/menyoki"
@@ -39,5 +39,5 @@ package() {
   install -Dm 644 "man/${pkgname%-git}.conf.5" -t "$pkgdir/usr/share/man/man5"
   install -Dm 644 "completions/${pkgname%-git}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname%-git}"
   install -Dm 644 "completions/${pkgname%-git}.fish" -t "${pkgdir}/usr/share/fish/completions"
-  install -Dm 644 "completions/${pkgname%-git}.zsh" "${pkgdir}/usr/share/zsh/functions/Completion/Linux/_${pkgname%-git}"
+  install -Dm 644 "completions/${pkgname%-git}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname%-git}"
 }
