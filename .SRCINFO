@@ -1,7 +1,7 @@
 pkgbase = needrestart-git
 	pkgdesc = Restart daemons after library updates.
 	pkgver = 3.5.r24.g0a43727
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/liske/needrestart
 	arch = any
 	license = GPL
@@ -17,7 +17,9 @@ pkgbase = needrestart-git
 	conflicts = needrestart
 	backup = etc/needrestart/needrestart.conf
 	source = git+https://github.com/liske/needrestart.git
+	source = https://github.com/liske/needrestart/pull/200.patch
 	sha256sums = SKIP
+	sha256sums = 852f8a7edc4dda7c7c59a393d4a4ae6defc25d37461a204dc22b7f27bdba7089
 
 pkgname = needrestart-git
 

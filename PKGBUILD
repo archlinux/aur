@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=needrestart-git
 pkgver=3.5.r24.g0a43727
-pkgrel=1
+pkgrel=2
 pkgdesc='Restart daemons after library updates.'
 arch=('any')
 url="https://github.com/liske/needrestart"
@@ -13,8 +13,10 @@ optdepends=('iucode-tool: for outdated Intel microcode detection')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=("etc/${pkgname%-git}/${pkgname%-git}.conf")
-source=('git+https://github.com/liske/needrestart.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/liske/needrestart.git'
+        'https://github.com/liske/needrestart/pull/200.patch')
+sha256sums=('SKIP'
+            '852f8a7edc4dda7c7c59a393d4a4ae6defc25d37461a204dc22b7f27bdba7089')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -24,6 +26,9 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 	sed -i -e 's|/usr/sbin|/usr/bin|' Makefile
+	
+	# Add ignore for memfd file used by nvidia binary drivers
+	git apply -3 "$srcdir/200.patch"
 }
 
 build() {
