@@ -12,7 +12,7 @@ conflicts=('linvst')
 optdepends=('jack')
 suffix="Debian-Stretch"
 source=( "$url/releases/download/$pkgver/LinVst-$pkgver-$suffix.zip") 
-md5sums=('c84a15e29b46115dd22e817a30604efc')
+md5sums=('869218de3ff63f2abbb75816fe0f30a9')
 
 package() {
 	# Shared library
