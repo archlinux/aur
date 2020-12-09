@@ -1,6 +1,6 @@
 pkgbase = jfetch-git
 	pkgdesc = A minimal Linux fetch script
-	pkgver = r57.5222f2b
+	pkgver = r65.4fa1731
 	pkgrel = 1
 	url = https://github.com/Jimmysit0/jfetch
 	arch = any
