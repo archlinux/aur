@@ -8,10 +8,11 @@ pkgver=2.17.1
 pkgrel=1
 pkgdesc="Ledger Live - Desktop"
 arch=('x86_64')
-url="https://www.ledgerwallet.com/live"
+url='https://github.com/LedgerHQ/ledger-live-desktop'
 license=('MIT')
 makedepends=(yarn python nodejs)
-
+provides=('ledger-live-bin')
+conflicts=('ledger-live-bin')
 source=("https://github.com/LedgerHQ/ledger-live-desktop/archive/v${pkgver}.tar.gz"
         "ledger-live.desktop")
 sha512sums=('66f0af5d9ed8dcdb6b88756bc8d51cd3dab11e94026071cdf8517c0112c91cd87a6afc42fe1d2db4bb5aeba6ed9a24b2006224a6acfc92c67e9a9ae0ced9082f'
