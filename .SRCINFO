@@ -1,6 +1,6 @@
 pkgbase = wallchanger
 	pkgdesc = Automatic wallpaper changer
-	pkgver = 1.6.12
+	pkgver = 1.6.13
 	pkgrel = 1
 	url = https://www.nongnu.org/wallchanger/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = wallchanger
 	depends = json-c>=0.12.1
 	depends = gtk3>=3.22.0
 	optdepends = flickcurl: Flickr support
-	source = https://download.savannah.nongnu.org/releases/wallchanger/wallchanger-1.6.12.tar.gz
-	md5sums = b8d2891c08f766b61d2dfd2e73a49f77
+	source = https://download.savannah.nongnu.org/releases/wallchanger/wallchanger-1.6.13.tar.gz
+	md5sums = 14bc4ab847cc909bc65feb34e0c18242
 	depends_i686 = libcurl-compat
 	depends_x86_64 = libcurl-gnutls
 
