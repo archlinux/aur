@@ -1,7 +1,7 @@
 pkgbase = piavpn-bin
 pkgdesc = Private Internet Access client
-pkgver = 2.6_05820
-pkgrel = 4
+pkgver = 2.6.1_05824
+pkgrel = 1
 url = https://privateinternetaccess.com/
 install = piavpn-bin.install
 arch = x86_64
@@ -22,8 +22,7 @@ conflicts = pia-manager
 conflicts = pia-tools
 conflicts = private-internet-access-vpn
 options = !strip
-source = https://installers.privateinternetaccess.com/download/pia-linux-2.6-05820.run
-sha256sums = f094fa3a9330c62eafa4c08dc6e4afc392135332de9f53649c84142bf4bff814
+source = https://installers.privateinternetaccess.com/download/pia-linux-2.6.1-05824.run
+sha256sums = a43338813cb54b897b4da70dd7745b76cbd07c6b46caf472e4a1ccd445e67b04
 
 pkgname = piavpn-bin
-
