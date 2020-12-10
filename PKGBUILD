@@ -1,7 +1,8 @@
 # Maintainer: Ronny Lorenz <ronny@tbi.univie.ac.at>
 
+_basever=2020.12.08
 pkgname=gapc-git
-pkgver=r1.0.56.a30d19a
+pkgver="${_basever}.301.f58a1c2"
 pkgrel=1
 pkgdesc="The Bellman's GAP Compiler (GAP-C) is the novel ADP compiler which translates GAP-L programs into efficient C++ code."
 url="https://bibiserv.cebitec.uni-bielefeld.de/gapc"
@@ -9,14 +10,14 @@ license=("GPL3")
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 depends=('boost' 'gsl' )
 makedepends=('git' 'mercurial' 'flex' 'bison')
-provides=(gapc)
+provides=(gapc="${pkgver}")
 conflicts=(gapc)
-source=("git+https://github.com/RaumZeit/gapc.git")
+source=("git+https://github.com/jlab/gapc.git")
 sha256sums=("SKIP")
 
 pkgver() {
     cd gapc
-    printf "r1.0.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "${_basever}.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -31,5 +32,5 @@ build() {
 
 package() {
     cd gapc
-    DESTDIR="${pkgdir}" make install
+    make PREFIX="${pkgdir}/usr" install
 }
