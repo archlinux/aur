@@ -1,6 +1,5 @@
-
 pkgname=mingw-w64-cminpack
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="A C/C++ rewrite of the MINPACK software (mingw-w64)"
 arch=('any')
@@ -9,15 +8,14 @@ license=('BSD')
 depends=('mingw-w64-crt' 'mingw-w64-cblas')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
-source=("http://devernay.free.fr/hacks/cminpack/cminpack-${pkgver}.tar.gz")
-sha256sums=('3c07fd21308c96477a2c900032e21d937739c233ee273b4347a0d4a84a32d09f')
+source=("https://github.com/devernay/cminpack/archive/v${pkgver}.tar.gz")
+sha256sums=('b891f33ffcfb8b246bb6147a4da6308cdb2386ca42a99892ff9b2e884f8b0386')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd $srcdir/cminpack-${pkgver}
-  # https://github.com/devernay/cminpack/issues/12
-  sed -i "s|target_link_libraries(cminpack PUBLIC|target_link_libraries(cminpack PUBLIC cblas|g" CMakeLists.txt
+  curl -L https://github.com/devernay/cminpack/pull/44.patch | patch -p1
 }
 
 build() {
