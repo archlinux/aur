@@ -10,4 +10,3 @@ pkgbase = neovim-kotlin
 	sha256sums = SKIP
 
 pkgname = neovim-kotlin
-
