@@ -1,8 +1,8 @@
 pkgbase = qemu-git
 	pkgdesc = A generic and open source machine emulator and virtualizer. Git version.
-	pkgver = 5.1.0.r4.g1d806cef0e
-	pkgrel = 2
-	epoch = 11
+	pkgver = 5.2.0.r136.g379e9eaed4
+	pkgrel = 1
+	epoch = 12
 	url = http://wiki.qemu.org/
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = qemu-git
 	makedepends = glusterfs
 	makedepends = python-sphinx
 	makedepends = xfsprogs
+	makedepends = git
+	makedepends = ninja
 	depends = dtc
 	depends = virglrenderer
 	depends = sdl2
@@ -39,11 +41,13 @@ pkgbase = qemu-git
 	depends = libssh
 	depends = zstd
 	depends = liburing
-	source = git://git.qemu.org/qemu.git#commit=d0ed6a69d399ae193959225cdeaa9382746c91cc
-	source = qemu-ga.service
+	depends = ndctl
+	depends = dtc
+	source = git://git.qemu.org/qemu.git
+	source = qemu-guest-agent.service
 	source = 65-kvm.rules
 	sha256sums = SKIP
-	sha256sums = 0b4f3283973bb3bc876735f051d8eaab68f0065502a3a5012141fad193538ea1
+	sha256sums = 09a720ed48ef8cf0f67770b67874202600c5209973d10e6e2c72ecc9aea23ece
 	sha256sums = 60dcde5002c7c0b983952746e6fb2cf06d6c5b425d64f340f819356e561e7fc7
 
 pkgname = qemu-git
@@ -74,6 +78,8 @@ pkgname = qemu-headless-git
 	depends = libssh
 	depends = zstd
 	depends = liburing
+	depends = ndctl
+	depends = dtc
 	optdepends = qemu-headless-arch-extra-git: extra architectures support
 	conflicts = qemu-headless
 
@@ -114,6 +120,7 @@ pkgname = qemu-block-gluster-git
 
 pkgname = qemu-guest-agent-git
 	pkgdesc = QEMU Guest Agent. Git version.
+	install = qemu-guest-agent.install
 	depends = gcc-libs
 	depends = glib2
 	depends = libudev.so

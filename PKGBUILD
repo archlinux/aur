@@ -8,23 +8,23 @@ pkgbase=qemu-git
 _gitname=qemu
 pkgname=(qemu-git qemu-headless-git qemu-arch-extra-git qemu-headless-arch-extra-git qemu-block-{iscsi-git,rbd-git,gluster-git} qemu-guest-agent-git)
 pkgdesc="A generic and open source machine emulator and virtualizer. Git version."
-pkgver=5.1.0.r4.g1d806cef0e
-pkgrel=2
-epoch=11
+pkgver=5.2.0.r136.g379e9eaed4
+pkgrel=1
+epoch=12
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
 _headlessdeps=(seabios gnutls libpng libaio numactl libnfs
                lzo snappy curl vde2 libcap-ng spice libcacard usbredir libslirp
-               libssh zstd liburing)
+               libssh zstd liburing ndctl dtc)
 depends=(dtc virglrenderer sdl2 vte3 libpulse brltty "${_headlessdeps[@]}")
-makedepends=(spice-protocol python ceph libiscsi glusterfs python-sphinx xfsprogs)
-source=("git://git.qemu.org/qemu.git#commit=d0ed6a69d399ae193959225cdeaa9382746c91cc"
-        qemu-ga.service
+makedepends=(spice-protocol python ceph libiscsi glusterfs python-sphinx xfsprogs git ninja)
+source=(git://git.qemu.org/qemu.git
+        qemu-guest-agent.service
         65-kvm.rules)
 sha256sums=('SKIP'
-            '0b4f3283973bb3bc876735f051d8eaab68f0065502a3a5012141fad193538ea1'
-           '60dcde5002c7c0b983952746e6fb2cf06d6c5b425d64f340f819356e561e7fc7')
+            '09a720ed48ef8cf0f67770b67874202600c5209973d10e6e2c72ecc9aea23ece'
+            '60dcde5002c7c0b983952746e6fb2cf06d6c5b425d64f340f819356e561e7fc7')
 
 case $CARCH in
   i?86) _corearch=i386 ;;
@@ -75,7 +75,7 @@ _build() (
     --enable-xfsctl \
     "${@:2}"
 
-  make
+  ninja
 )
 
 package_qemu-git() {
@@ -105,7 +105,7 @@ _package() {
   install=qemu.install
   options=(!strip !emptydirs)
 
-  make -C ${srcdir}/${_gitname}/build-$1 DESTDIR="$pkgdir" install "${@:2}"
+  DESTDIR="$pkgdir" ninja -C ${srcdir}/${_gitname}/build-$1 install "${@:2}"
 
   # systemd stuff
   install -Dm644 65-kvm.rules "$pkgdir/usr/lib/udev/rules.d/65-kvm.rules"
@@ -230,9 +230,10 @@ package_qemu-guest-agent-git() {
   depends=(gcc-libs glib2 libudev.so)
   conflicts=(qemu-guest-agent)
   provides=(qemu-guest-agent)
+  install=qemu-guest-agent.install
 
-  install -D $srcdir/$_gitname/build-full/qemu-ga "$pkgdir/usr/bin/qemu-ga"
-  install -Dm644 $srcdir/qemu-ga.service "$pkgdir/usr/lib/systemd/system/qemu-ga.service"
+  install -D $srcdir/$_gitname/build-full/qga/qemu-ga "$pkgdir/usr/bin/qga"
+  install -Dm644 $srcdir/qemu-guest-agent.service "$pkgdir/usr/lib/systemd/system/qemu-guest-agent.service"
   install -Dm755 "$srcdir/$_gitname/scripts/qemu-guest-agent/fsfreeze-hook" "$pkgdir/etc/qemu/fsfreeze-hook"
 }
 
