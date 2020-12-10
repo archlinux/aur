@@ -218,7 +218,6 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=('linux')
 
   cd linux-${_major}
   local kernver="$(<version)"
@@ -244,7 +243,6 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for Xanmod Linux kernel"
-  provides=('linux-headers')
 
   cd linux-${_major}
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
