@@ -1,7 +1,7 @@
 pkgbase = dupeguru
 	pkgdesc = Find duplicate files on your system
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dupeguru.voltaicideas.net/
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,6 @@ pkgbase = dupeguru
 	depends = python
 	depends = python-pyqt5
 	depends = libxkbcommon-x11
-	depends = python-send2trash
 	provides = dupeguru
 	conflicts = dupeguru-git
 	conflicts = dupeguru-se

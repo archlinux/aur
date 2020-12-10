@@ -4,15 +4,13 @@
 pkgname=dupeguru
 pkgver=4.1.0
 _pkgver="${pkgver}-alpha"
-pkgrel=1
+pkgrel=2
 pkgdesc="Find duplicate files on your system"
 arch=('x86_64')
 url="https://dupeguru.voltaicideas.net/"
 license=('GPL3')
-depends=('python' 'python-pyqt5' 'libxkbcommon-x11' 'python-send2trash')
-makedepends=(
-    python-sphinx
-)
+depends=('python' 'python-pyqt5' 'libxkbcommon-x11')
+makedepends=('python-sphinx')
 source=(
     https://github.com/glubsy/${pkgname}/releases/download/${_pkgver}/dupeguru-src-${_pkgver}.tar.xz
 )
@@ -34,9 +32,7 @@ build() {
   # Instead of doing the full ./bootstrap.sh
   python3 -m venv env --system-site-packages
   source env/bin/activate
-  #python -m pip install --no-index --find-links=deps -r requirements.txt
-  ./env/bin/pip install -r requirements.txt
-  source env/bin/activate
+  python3 -m pip install -r requirements.txt
   msg "Starting build..."
   python build.py --clean
 }
