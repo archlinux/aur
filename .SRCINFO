@@ -1,6 +1,6 @@
 pkgbase = python-sentry_sdk
 	pkgdesc = The new Python SDK for Sentry.io
-	pkgver = 0.19.4
+	pkgver = 0.19.5
 	pkgrel = 1
 	url = https://sentry.io/for/python
 	arch = any
@@ -25,8 +25,8 @@ pkgbase = python-sentry_sdk
 	optdepends = python-executing: for richer stacktraces & better function names
 	optdepends = python-asttokens
 	optdepends = python-chalice: for the Chalice web framework for AWS Lambda
-	source = https://pypi.org/packages/source/s/sentry-sdk/sentry-sdk-0.19.4.tar.gz
-	sha256sums = 1052f0ed084e532f66cb3e4ba617960d820152aee8b93fc6c05bd53861768c1c
+	source = https://pypi.org/packages/source/s/sentry-sdk/sentry-sdk-0.19.5.tar.gz
+	sha256sums = 737a094e49a529dd0fdcaafa9e97cf7c3d5eb964bd229821d640bc77f3502b3f
 
 pkgname = python-sentry_sdk
 
