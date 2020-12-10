@@ -1,0 +1,20 @@
+pkgbase = krunner-jetbrains-git
+	pkgdesc = JetBrains plugin for KRunner
+	pkgver = r94.9351091
+	pkgrel = 1
+	url = https://github.com/alex1701c/JetBrainsRunner
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = libnotify
+	depends = kcmutils
+	depends = kio
+	provides = krunner-jetbrains
+	conflicts = krunner-jetbrains
+	source = krunner-jetbrains::git+https://github.com/alex1701c/JetBrainsRunner#branch=master
+	md5sums = SKIP
+
+pkgname = krunner-jetbrains-git
+
