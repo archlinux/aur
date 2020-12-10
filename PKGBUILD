@@ -2,14 +2,14 @@
 # Contributor: Lukas Sabota <LTsmooth42 _at_ gmail _dot_ com>
 pkgname=yumbootstrap-git
 _pkgname=yumbootstrap
-pkgver=78.a99c946
+pkgver=87.2733c23
 pkgrel=1
 pkgdesc="Tool for installing Yum-based distributions (Red Hat, CentOS, Fedora) in a chroot directory"
 arch=('any')
 url="http://dozzie.jarowit.net/trac/wiki/yumbootstrap"
 license=('GPL')
 groups=()
-depends=('python2' 'yum')
+depends=('python2' 'yum' 'python2-rpm')
 makedepends=('python2-setuptools')
 provides=()
 conflicts=()
