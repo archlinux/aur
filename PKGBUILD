@@ -2,7 +2,7 @@
 # Contributor: lukpod <lukpod9@ya.ru>
 
 pkgname=electrum-ltc-git
-pkgver=4.0.0a0.git20191121.e0a3bd9
+pkgver=4.0.6.git20201208.d32670c
 pkgrel=1
 pkgdesc='Litecoin thin client'
 arch=(any)
