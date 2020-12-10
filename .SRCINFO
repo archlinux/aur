@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-dynamic-reconfigure
 	pkgdesc = ROS - This unary stack contains the dynamic_reconfigure package which provides a means to change node parameters at any time without having to restart the node.
 	pkgver = 1.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/dynamic_reconfigure
 	arch = i686
 	arch = x86_64
@@ -18,14 +18,14 @@ pkgbase = ros-melodic-dynamic-reconfigure
 	makedepends = ros-melodic-std-msgs
 	makedepends = ros-melodic-roscpp
 	makedepends = ros-melodic-roscpp-serialization
-	makedepends = boost
+	makedepends = boost1.69
 	depends = ros-melodic-rosservice
 	depends = ros-melodic-std-msgs
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-rospy
 	depends = ros-melodic-roslib
-	depends = boost
+	depends = boost1.69
 	source = ros-melodic-dynamic-reconfigure-1.6.3.tar.gz::https://github.com/ros/dynamic_reconfigure/archive/1.6.3.tar.gz
 	sha256sums = 2916e14caabe367f9260b18d9c7914516a5c18a7bc6305b6b60c74ddd1c3a919
 
