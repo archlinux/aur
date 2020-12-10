@@ -4,7 +4,7 @@ url='http://ros.org/wiki/swri_console'
 pkgname='ros-melodic-swri-console'
 pkgver='1.1.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(ros-melodic-rosgraph-msgs
@@ -13,14 +13,14 @@ ros_makedepends=(ros-melodic-rosgraph-msgs
   ros-melodic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  boost
+  boost1.69
   qt5-base)
 
 ros_depends=(ros-melodic-rosgraph-msgs
   ros-melodic-roscpp
   ros-melodic-rosbag-storage)
 depends=(${ros_depends[@]}
-  boost
+  boost1.69
   qt5-base)
 
 _dir="swri_console-${pkgver}"
@@ -45,7 +45,8 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+		 -DBOOST_ROOT=/opt/boost1.69
   make
 }
 
