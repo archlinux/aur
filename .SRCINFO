@@ -1,6 +1,6 @@
 pkgbase = python-labml
 	pkgdesc = Monitor PyTorch & TensorFlow model training on mobile phones
-	pkgver = 0.4.60
+	pkgver = 0.4.65
 	pkgrel = 1
 	url = https://github.com/lab-ml/labml
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-labml
 	depends = python-numpy
 	depends = python-yaml
 	provides = python-labml
-	source = https://files.pythonhosted.org/packages/source/l/labml/labml-0.4.60.tar.gz
-	sha256sums = 197fced871b9583eeb8c16f9084f333e1f5220fe4e6bbb6c24cc5c077bddbfa7
+	source = https://files.pythonhosted.org/packages/source/l/labml/labml-0.4.65.tar.gz
+	sha256sums = 5c2b830bd8808b0cc0ade380ecc04ae89ac4cb32342b79c2d40bbdc7d1ad3f4f
 
 pkgname = python-labml
 
