@@ -1,12 +1,12 @@
 # Maintainer: Thomas P. <tpxp@live.fr>
 pkgname=fhex-git
-pkgver=v2.3.r26.ga7938d6
+pkgver=v2.4.1.r1.gbeadf69
 pkgrel=1
 pkgdesc="A full-featured hex editor"
 arch=(x86_64)
 url="https://github.com/echo-devim/fhex"
 license=('GPLv3')
-depends=(qt5-base qt5-charts)
+depends=(qt5-base qt5-charts capstone keystone)
 source=(
 	"git+https://github.com/echo-devim/fhex.git"
 	"fhex.desktop"
