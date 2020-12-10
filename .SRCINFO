@@ -1,7 +1,7 @@
 pkgbase = fcitx5-qt-git
 	pkgdesc = Fcitx Qt Library
-	pkgver = 5.0.0.r1.gb589c33
-	pkgrel = 1
+	pkgver = 5.0.1.r8.gddc2214
+	pkgrel = 2
 	url = https://github.com/fcitx/fcitx5-qt
 	arch = x86_64
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = fcitx5-qt-git
 	makedepends = git
 	makedepends = qt4
 	makedepends = qt5-base
+	makedepends = qt6-base
 	depends = fcitx5-git
 	source = git+https://github.com/fcitx/fcitx5-qt.git
 	sha512sums = SKIP
@@ -28,4 +29,11 @@ pkgname = fcitx5-qt4-git
 	depends = qt4
 	provides = fcitx5-qt4
 	conflicts = fcitx5-qt4
+
+pkgname = fcitx5-qt6-git
+	pkgdesc = Fcitx Qt Library, for Qt6
+	depends = fcitx5-git
+	depends = qt6-base
+	provides = fcitx5-qt6
+	conflicts = fcitx5-qt6
 
