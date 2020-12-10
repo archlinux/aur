@@ -6,14 +6,13 @@ pkgver=4.0.11
 provides=('psmoveapi')
 conflicts=('psmoveapi' 'psmoveapi-git' 'psmoveapi-bin')
 _pkgurl=https://github.com/thp/psmoveapi/archive/${pkgver}.tar.gz
-pkgrel=1
+pkgrel=2
 pkgdesc="Playstation Move Motion Controller API"
 arch=(any)
 url="http://thp.io/2010/psmove/"
 license=('BSD')
-depends=('udev' 'bluez-libs' 'v4l-utils' 'jdk11-openjdk'
-         'python' 'mono' 'swig' 'freeglut' 'libusb')
-makedepends=('go-md2man')
+depends=('udev' 'bluez-libs' 'libusb' 'libusb-compat')
+makedepends=('go-md2man' 'java-environment' 'cmake' 'make' 'gcc' 'pkgconfig' 'swig' 'python')
 source=("${_pkgname}-${pkgver}.tar.gz::${_pkgurl}"
         "PS3EYEDriver@b314029.tar.gz::https://github.com/inspirit/PS3EYEDriver/archive/b31402953d7d7b0c24b05c79b9c5933fce2b4773.tar.gz"
         "libusb@b4c9b42.tar.gz::https://github.com/libusb/libusb/archive/b4c9b4272d61cecffeddeb91abd31efe256a6224.tar.gz"
