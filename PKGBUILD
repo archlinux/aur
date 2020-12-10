@@ -63,6 +63,7 @@ CMAKE_FLAGS=( -DWITH_EMBREE=ON
   grep -q sse4_2 /proc/cpuinfo && CMAKE_FLAGS+=(-DUSE_SSE42=ON)
 
   cmake "${CMAKE_FLAGS[@]}" -S "${srcdir}/${pkgname}-${_pkgver}" -B build -G Ninja
+# shellcheck disable=SC2086 # allow MAKEFLAGS to carry multiple flags
   ninja -C build ${MAKEFLAGS:--j1}
 }
 
