@@ -2,7 +2,7 @@
 
 pkgname=pantheon-calendar-git
 pkgver=5.1.1.r65.gdf9d6899
-pkgrel=1
+pkgrel=2
 pkgdesc='The Pantheon Calendar'
 arch=(x86_64)
 url=https://github.com/elementary/calendar
@@ -25,6 +25,7 @@ depends=(
   libical
   libnotify
   libsoup
+  libhandy
 )
 makedepends=(
   git
