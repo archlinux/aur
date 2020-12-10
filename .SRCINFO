@@ -16,7 +16,6 @@ pkgbase = appleseed-git
 	depends = python
 	depends = embree
 	depends = qt5-base
-	depends = seexpr-qt5
 	depends = boost-libs
 	depends = boost-python2-libs
 	depends = openexr

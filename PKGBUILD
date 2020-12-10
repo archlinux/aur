@@ -13,7 +13,7 @@ url="https://appleseedhq.net"
 license=('MIT')
 provides=('appleseed')
 conflicts=('appleseed')
-depends=(python2 python embree qt5-base seexpr-qt5 boost{,-python2}-libs openexr opencolorio openimageio openshadinglanguage xerces-c zlib)
+depends=(python2 python embree qt5-base boost{,-python2}-libs openexr opencolorio openimageio openshadinglanguage xerces-c zlib)
 makedepends=(boost{,-python2} cmake git ninja)
 options=()
 source=("${pkgname}::git+https://github.com/appleseedhq/appleseed.git${_fragment}"
@@ -44,7 +44,6 @@ build() {
 CMAKE_FLAGS=( -DWITH_EMBREE=ON
               -DCMAKE_BUILD_TYPE=Ship
               -DCMAKE_INSTALL_PREFIX=/opt/appleseed
-              -DWITH_DISNEY_MATERIAL=ON
               -DWITH_PYTHON3_BINDINGS=ON
               -DUSE_STATIC_EMBREE=OFF
               -DUSE_STATIC_EXR=OFF
