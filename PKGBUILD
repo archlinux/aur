@@ -1,7 +1,7 @@
 # Maintainer: Adrien Wu <adrien.sf.wu@gmail.com>
 pkgname=python-pycld2
 pkgver=0.41
-pkgrel=2
+pkgrel=3
 pkgdesc="Python bindings for the Compact Langauge Detect 2 (CLD2)"
 url="https://github.com/aboSamoor/pycld2"
 arch=('i686' 'x86_64')
