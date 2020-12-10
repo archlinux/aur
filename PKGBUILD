@@ -1,11 +1,15 @@
 # Maintainer: Vasya Novikov <vnnn91@yandex.ru> (replace "nnn" with a single "n")
 
-# Note: if you want to use the system version of electron (one shipped with ArchLinux),
-# check out jitsi-meet-desktop on AUR.
+# Note:
+# If you want to use the system version of electron, check out jitsi-meet-desktop on AUR.
+# This will use the ArchLinux version of electron.
+# This will also reduce your installation size and make sure
+# you get the latest version of electron when possible.
 #
 # If you want to use the stand-alone version from npm, this package is the way to go.
+# It follows the official guidelines more closely and might be more stable.
 #
-# If unsure, try the system electron first.
+# If unsure, try the system electron first, and fallback to this package if system won't work.
 
 pkgname=jitsi-meet-electron
 pkgver=2.4.2
