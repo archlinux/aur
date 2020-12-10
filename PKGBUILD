@@ -1,7 +1,7 @@
 # Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
 
 pkgname=vvdec-git
-pkgver=r1.df4be18
+pkgver=0.2.0.1.r0.gefa0db6
 pkgrel=1
 pkgdesc="Fraunhofer Versatile Video Decoder (VVdeC)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/vvdec"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -37,13 +37,8 @@ check() {
 
 package() {
 	make -C build install
-	mkdir -p "$pkgdir/usr/share/licenses/vvdec"
-	mkdir -p "$pkgdir/usr/bin"
-	mkdir -p "$pkgdir/usr/lib"
 	cd "${srcdir}/vvdec"
+	cp -r "install" "$pkgdir/usr"
+	mkdir -p "$pkgdir/usr/share/licenses/vvdec"
 	install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/vvdec/"
-	install -Dm755 "install/bin/release-shared/vvdecapp" "$pkgdir/usr/bin/"
-	install -Dm755 "install/lib/release-shared/libvvdec.so" "$pkgdir/usr/lib/"
-	cp -r "install/include" "$pkgdir/usr/"
-	cp -r "install/lib/cmake" "$pkgdir/usr/lib/"
 }

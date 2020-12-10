@@ -1,6 +1,6 @@
 pkgbase = vvdec-git
 	pkgdesc = Fraunhofer Versatile Video Decoder (VVdeC)
-	pkgver = r1.df4be18
+	pkgver = 0.2.0.1.r0.gefa0db6
 	pkgrel = 1
 	url = https://github.com/fraunhoferhhi/vvdec
 	arch = x86_64
