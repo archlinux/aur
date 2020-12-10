@@ -1,19 +1,19 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=fish-done
 _reponame='done'
-pkgver=1.13.0
+pkgver=1.14.10
 pkgrel=1
 pkgdesc='Receive notifications when long processes finish in fish'
 arch=(any)
 url="https://github.com/franciscolourenco/$_reponame/"
 license=(MIT)
-depends=('fish>=2.3.0' 'fish-humanize-duration')
+depends=('fish>=2.3.0')
 checkdepends=('fish-fishtape')
 optdepends=('jq: for use with sway'
             'libnotify: notification backend'
             'notify-desktop: notification backend')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('7f95d91c99794fbc49a80da42d7eb8c8767585614cb9993f93dd3fe040c44e72')
+sha256sums=('388d392ab7c790fa05086bbd7935a5449e39358e0a8202116f234f2b1dd6ad30')
 
 check() {
 	cd "$_reponame-$pkgver"
