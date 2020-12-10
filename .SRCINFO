@@ -1,13 +1,13 @@
 pkgbase = supermicro-update-manager
 	pkgdesc = manage the firmware and configuration for Supermicro motherboards
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://www.supermicro.com/en/solutions/management-software/supermicro-update-manager
 	arch = x86_64
 	license = custom: EULA
 	backup = etc/sumrc
-	source = sum_2.4.0_Linux_x86_64_20191206.tar.gz::https://www.supermicro.com/SwDownload/SwSelect_Free.aspx
-	sha256sums = d0d7203913334e02d4ea1c8493834c5a0e7236040380447e22697b816dc614c7
+	source = sum_2.5.0_Linux_x86_64_20200722.tar.gz::https://www.supermicro.com/SwDownload/SwSelect_Free.aspx
+	sha256sums = bb34a300f38367544a85d92ddccc9f023609959a677abf972380ec1cda4213f4
 
 pkgname = supermicro-update-manager
 
