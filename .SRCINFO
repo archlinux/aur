@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rostime
 	pkgdesc = ROS - Time and Duration implementations for C++ libraries, including roscpp.
 	pkgver = 0.6.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rostime
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = ros-melodic-rostime
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-cpp-common
 	makedepends = ros-melodic-catkin
-	makedepends = boost
+	makedepends = boost1.69
 	depends = ros-melodic-cpp-common
-	depends = boost
+	depends = boost1.69
 	source = ros-melodic-rostime-0.6.14.tar.gz::https://github.com/ros/roscpp_core/archive/0.6.14.tar.gz
 	sha256sums = d5a0ad09fa878d9f3d6d7f3e8c7854f0f160aeeea9c4d332e3dc87552087ca68
 
