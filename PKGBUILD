@@ -4,7 +4,7 @@
 
 pkgname=('pamac-aur-git') #'pamac-aur-tray-appindicator-git')
 _pkgname=pamac
-pkgver=9.5.12.r24.g3f53062
+pkgver=9.5.12.r35.g2b8c747
 _pkgver=9.5.12
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - git version"
@@ -45,7 +45,6 @@ build() {
   ninja
 }
 
-#package_pamac-aur-git() {
 package() {
   backup=('etc/pamac.conf')
   conflicts=('pamac-aur')
@@ -55,17 +54,6 @@ package() {
   DESTDIR="$pkgdir" ninja install
   # removed pamac-mirrorlist-timer, useless for Archlinux
   # remove pamac-tray-appindicator
-  # rm "$pkgdir/usr/bin/pamac-tray-appindicator"
-  # rm "$pkgdir/etc/xdg/autostart/pamac-tray-appindicator.desktop"
 }
-
-#package_pamac-aur-tray-appindicator-git() {
-#  pkgdesc="Tray icon using appindicator which fits better in KDE - git version"
-#  conflicts=('pamac-aur-tray-indicator')
-#  depends=('pamac-aur-git' 'libappindicator-gtk3')
-#  cd $_pkgname
-#  install -Dm755 "builddir/src/pamac-tray-appindicator" "$pkgdir/usr/bin/pamac-tray-appindicator"
-#  install -Dm644 "data/applications/pamac-tray-appindicator.desktop" "$pkgdir/etc/xdg/autostart/pamac-#tray-appindicator.desktop"
-#}
 
 #vim:set ts=2 sw=2 et:
