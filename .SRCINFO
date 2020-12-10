@@ -1,14 +1,13 @@
 pkgbase = jgoodies-looks
 	pkgdesc = A Java Swing look and feel library
-	pkgver = 2.8.0
-	pkgrel = 3
-	url = http://www.jgoodies.com/
+	pkgver = 2.5.3
+	pkgrel = 1
+	url = http://www.jgoodies.com
 	arch = any
-	groups = jgoodies
 	license = BSD
 	depends = java-runtime
-	source = jgoodies-looks-2_8_0-20150402.zip::https://www.dropbox.com/s/88cjnlxecs9qsf1/jgoodies-looks-2_8_0-20150402.zip?dl=1
-	md5sums = 89a28c43d742142869077e3ebeb109c9
+	source = http://www.jgoodies.com/download/libraries/looks/jgoodies-looks-2_5_3.zip
+	sha256sums = a4a61f5d5474e048c12d602dc899f2bcf7b41604d5704880eb5af14b4938c588
 
 pkgname = jgoodies-looks
 
