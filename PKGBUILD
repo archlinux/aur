@@ -1,28 +1,32 @@
-# Maintainer: ml <ml@visu.li>
-# TODO add test. update to HEAD
+# Maintainer: ml <>
 pkgname=helm-secrets
-pkgver=2.0.2
+pkgver=3.3.5
 pkgrel=3
 pkgdesc='Helm plugin to manage secrets with Git workflow and store them anywhere'
 arch=('any')
-url='https://github.com/zendesk/helm-secrets'
+url='https://github.com/jkroepke/helm-secrets'
 license=('Apache')
 install=helm-secrets.install
-depends=('bash' 'helm' 'sops')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('282b3ebd60f726c25194451489b048de56cee2c75ade6d3242cee956fec3026d')
+depends=('bash' 'helm')
+optdepends=(
+  'sops: secret driver'
+  'vault: secret driver'
+)
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('a08b5554af5c199b9db4c42454a488e1b99bc30402cd06ecbb6fc66be2a3661a')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  sed -i '/^hooks:$/Q' plugin.yaml
+  sed -i '/platformCommand:/,+2 d' plugin.yaml
 }
 
 # check(): Go tests require special test environment
 
 package() {
   cd "${pkgname}-${pkgver}"
-  # shell scripts don't belong in /usr/lib, but other plugins reside there as well.
-  # will fix later
-  install -Dm755 secrets.sh -t "${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}"
-  install -m644 plugin.yaml -t "${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}"
+  local _dest="${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}"
+  install -Dm644 plugin.yaml -t "$_dest"
+  # copy whole scripts directory but remove the install script
+  cp -ar scripts/ -t "$_dest"
+  rm -f "$_dest/install.sh"
 }
