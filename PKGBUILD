@@ -1,6 +1,6 @@
 # Maintainer: tsp <patrictroy at gmail dot com>
 pkgname=rizin-git
-pkgver=4.6.0.r25116.4db5191a0
+pkgver=4.6.0.r25118.bbccf28ee
 pkgrel=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
 arch=('i686' 'x86_64')
@@ -9,10 +9,6 @@ license=('GPL3' 'LGPL3')
 makedepends=('git' 'meson' 'ninja')
 depends=('capstone' 'lz4' 'file' 'libzip' 'xxhash' 'libuv')
 provides=('rizin')
-
-# esil man page conflicts with the one provided by the radare packages
-conflicts=('radare2')
-
 source=("$pkgname"::"git://github.com/rizinorg/rizin.git")
 md5sums=('SKIP')
 
@@ -41,5 +37,5 @@ package() {
   cd ${srcdir}/${pkgname}
   DESTDIR="${pkgdir}" ninja -C build install
   cp -r doc/* "${pkgdir}/usr/share/doc/rizin"
-  install -D -m644 man/* "${pkgdir}/usr/share/man/man1" 
+  rm "${pkgdir}/usr/share/man/man7/esil.7"
 }

@@ -1,6 +1,6 @@
 pkgbase = rizin-git
 	pkgdesc = Open-source tools to disasm, debug, analyze and manipulate binary files
-	pkgver = 4.6.0.r25116.4db5191a0
+	pkgver = 4.6.0.r25118.bbccf28ee
 	pkgrel = 1
 	url = https://rizin.re/
 	arch = i686
@@ -17,7 +17,6 @@ pkgbase = rizin-git
 	depends = xxhash
 	depends = libuv
 	provides = rizin
-	conflicts = radare2
 	source = rizin-git::git://github.com/rizinorg/rizin.git
 	md5sums = SKIP
 
