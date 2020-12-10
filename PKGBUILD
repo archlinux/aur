@@ -1,6 +1,6 @@
 # Maintainer: Chris Lane <aur at chrislane dot com>
 pkgname=quassel-client-lighter-git
-pkgver=0.14.pre.r130.g01d67be2
+pkgver=0.14.pre.r255.gb0035602
 pkgrel=1
 pkgdesc="Qt-based distributed IRC client (client only) - minimal dependencies"
 url='https://quassel-irc.org'
@@ -16,39 +16,36 @@ optdepends=('sonnet: spell checking support'
             'snorenotify: snorenotify notification framework support')
 provides=('quassel-client')
 conflicts=('quassel-client')
-source=("$pkgname"::"git+https://github.com/quassel/quassel")
+source=("$pkgname-$pkgver"::"git+https://github.com/quassel/quassel")
 md5sums=('SKIP')
 
-_builddir="build"
+_builddir="$pkgname-$pkgver/build"
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$pkgname"
-
-  rm -rf "$_builddir"
-  mkdir -p "$_builddir" && cd "$_builddir"
-
   cmake -G Ninja                \
-    -DWANT_MONO=OFF             \
-    -DWANT_CORE=OFF             \
-    -DWANT_QTCLIENT=ON          \
-    -DHAVE_SSL=ON               \
-    -DWITH_KDE=OFF              \
-    -DUSE_QT5=ON                \
-    -DWITH_WEBKIT=OFF           \
+    -B "$_builddir"             \
+    -S "$pkgname-$pkgver"       \
+    -DCMAKE_BUILD_TYPE=None     \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib  \
-    "$srcdir/$pkgname"
+    -DWANT_QTCLIENT=ON          \
+    -DHAVE_SSL=ON               \
+    -DWANT_MONO=OFF             \
+    -DWANT_CORE=OFF             \
+    -DWITH_KDE=OFF              \
+    -DWITH_WEBKIT=OFF           \
+    -Wno-dev
 
-  ninja
+  ninja -C "$_builddir"
 }
 
 package() {
-  cd "$pkgname/$_builddir"
+  cd "$_builddir"
 
   DESTDIR="$pkgdir" ninja install
 }
