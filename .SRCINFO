@@ -1,6 +1,6 @@
 pkgbase = neovim-kotlin
 	pkgdesc = Kotlin highlighting and indentation for NeoVim
-	pkgver = r73.b9fa728
+	pkgver = r77.f338707
 	pkgrel = 1
 	url = https://github.com/udalov/kotlin-vim
 	arch = any
