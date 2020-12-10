@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=snappymail
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="modern PHP webmail client"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('mariadb: storage backend for contacts'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-b2sums=('97c4964d5a1b5dadd88731fdce69f622f8001386ed84c7e8d675792e457192dc7c420b6ab2bb816fe4c7e2dac61465673765faae560bced4ecceb6ee9585dd20'
+b2sums=('b78eabb392d6bfcb24e3bd6b1c81506056839ae1336babbe2bc376faf011d0e2188d20d112bdba578647b4a964424c3c40686d490eb6520a010de988f4912c1a'
         'e020b2d4bc694ca056f5c15b148c69553ab610b5e1789f52543aa65e098f8097a41709b5b0fc22a6a01088a9d3f14d623b1b6e9ae2570acd4f380f429301c003'
         '2536e11622895322cc752c6b651811b2122d3ae60099fe609609d7b45ba1ed00ea729c23f344405078698d161dbf9bcaffabf8eff14b740acdce3c681c513318')
 
