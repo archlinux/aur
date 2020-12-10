@@ -1,14 +1,14 @@
 pkgbase = hledger-bin
 	pkgdesc = Easy-to-use command-line/curses/web plaintext accounting tool
-	pkgver = 1.19.1
+	pkgver = 1.20
 	pkgrel = 1
 	url = http://hledger.org
 	arch = x86_64
 	license = GPL
 	depends = gmp
 	depends = ncurses5-compat-libs
-	source = hledger-1.19.1.zip::https://github.com/simonmichael/hledger/releases/download/1.19.1/hledger-ubuntu.zip
-	sha256sums = 3df49b035feb57bbebff3ea93dfff0edc54c898be5d67c7711c655bbab8a5696
+	source = hledger-1.20.zip::https://github.com/simonmichael/hledger/releases/download/1.20/hledger-ubuntu.zip
+	sha256sums = bf7f888676c9d55b0ce0abfaf6797c12b87df4e03e373d3fe662ad4fa35fd7ea
 
 pkgname = hledger-bin
 	pkgdesc = Command-line interface for the hledger accounting system
