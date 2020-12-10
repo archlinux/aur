@@ -1,13 +1,13 @@
 pkgbase = displaylink-connect
 	pkgdesc = Automatically execute `xrandr --setprovideroutputsource` when Displaylink dock is connected
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://gitlab.com/hadogenes/displaylink-connect
 	arch = x86_64
 	license = MIT
 	depends = displaylink
-	source = https://gitlab.com/hadogenes/displaylink-connect/-/archive/v2.0/displaylink-connect-v2.0.zip
-	sha256sums = 0ca1faf1881ab9811bfee0b4e85cb85ace75fc0afd2989c61ca6d618f11ef68e
+	source = https://gitlab.com/hadogenes/displaylink-connect/-/archive/v2.1/displaylink-connect-v2.1.zip
+	sha256sums = 01f6631bc964d1799ca4a87d8509139bd6ca921e24a68d027f66877efba92602
 
 pkgname = displaylink-connect
 

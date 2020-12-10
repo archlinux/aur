@@ -1,7 +1,7 @@
 # Maintainer: Jacek Szafarkiewicz <szafar@linux.pl>
 
 pkgname=displaylink-connect
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc='Automatically execute `xrandr --setprovideroutputsource` when Displaylink dock is connected'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 url='https://gitlab.com/hadogenes/displaylink-connect'
 depends=('displaylink')
 source=("https://gitlab.com/hadogenes/displaylink-connect/-/archive/v${pkgver}/displaylink-connect-v${pkgver}.zip")
-sha256sums=('0ca1faf1881ab9811bfee0b4e85cb85ace75fc0afd2989c61ca6d618f11ef68e')
+sha256sums=('01f6631bc964d1799ca4a87d8509139bd6ca921e24a68d027f66877efba92602')
 
 prepare() {
     cd "$srcdir/${pkgname}-v${pkgver}"
@@ -26,6 +26,7 @@ package() {
 
     install -Dm644 systemd/system/displaylink.service.d/displaylink-connect.conf "$pkgdir/usr/lib/systemd/system/displaylink.service.d/displaylink-connect.conf"
     install -Dm644 systemd/user/displaylink-connect.service "$pkgdir/usr/lib/systemd/user/displaylink-connect.service"
+    install -Dm644 displaylink-connect.desktop "$pkgdir/etc/xdg/autostart/displaylink-connect.desktop"
     mkdir -p "$pkgdir/usr/lib/systemd/user/default.target.wants"
     ln -s /usr/lib/systemd/user/displaylink-connect.service "$pkgdir/usr/lib/systemd/user/default.target.wants/displaylink-connect.service"
 }
