@@ -1,14 +1,14 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=ceaflate
-pkgver=r3.5f95404
+pkgver=r4.fa5ec39
 pkgrel=1
 pkgdesc="MCC CEA map file compressor/decompressor"
 depends=('zlib')
 arch=('i686' 'x86_64')
-url="https://github.com/Kavawuvi/ceaflate"
+url="https://github.com/SnowyMouse/ceaflate"
 license=('GPL')
-source=('git+https://github.com/Kavawuvi/ceaflate.git')
+source=('git+https://github.com/SnowyMouse/ceaflate.git')
 sha256sums=('SKIP')
 
 pkgver() {
