@@ -21,7 +21,7 @@ makedepends=(
 	'pixman'
 	'libx11'
 	'mesa'
-	'mesa-libgl'
+#	'mesa-libgl'
 	'xtrans'
 	'libxkbfile'
 	'libxfont2'
