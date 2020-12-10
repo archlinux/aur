@@ -6,7 +6,7 @@
     pkgname='ros-melodic-libg2o'
     pkgver='2018.3.25'
     arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-    pkgrel=3
+    pkgrel=4
     license=('BSD')
 
     ros_makedepends=()
@@ -14,7 +14,7 @@
     ${ros_makedepends[@]}
     eigen
     glu
-  boost
+  boost1.69
   mesa
   suitesparse)
 
@@ -22,7 +22,7 @@
     depends=(${ros_depends[@]}
     eigen
     glu
-  boost
+  boost1.69
   mesa
   suitesparse)
     
@@ -53,7 +53,8 @@ sha256sums=('c49b69b1843dc0c287720c1eb14380069612abe5f338c5f979a7099f6dde6db3')
                 -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
                 -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
                 -DPYTHON_BASENAME=.cpython-37m \
-                -DSETUPTOOLS_DEB_LAYOUT=OFF
+                -DSETUPTOOLS_DEB_LAYOUT=OFF \
+		 -DBOOST_ROOT=/opt/boost1.69
     make
     }
 
