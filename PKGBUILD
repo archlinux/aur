@@ -2,7 +2,7 @@
 
 pkgname='pass-import'
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A pass extension for importing data from most of the existing password manager.'
 arch=('any')
 url='https://github.com/roddhjav/pass-import'

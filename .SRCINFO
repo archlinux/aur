@@ -1,7 +1,7 @@
 pkgbase = pass-import
 	pkgdesc = A pass extension for importing data from most of the existing password manager.
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/roddhjav/pass-import
 	arch = any
 	license = GPL3
