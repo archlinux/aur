@@ -30,3 +30,4 @@ package() {
     install -Dm644 "squashfs-root/listen1.desktop" "${pkgdir}/usr/share/applications/listen1.desktop"
     cp -R "squashfs-root/usr/share/icons/hicolor" "${pkgdir}/usr/share/icons"
 }
+
