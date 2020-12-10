@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-message-filters
 	pkgdesc = ROS - A set of message filters which take in messages and may output those messages at a later time, based on the conditions that filter needs met.
 	pkgver = 1.14.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/message_filters
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = ros-melodic-message-filters
 	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-rosconsole
 	makedepends = ros-melodic-roscpp
-	makedepends = boost
+	makedepends = boost1.69
 	depends = ros-melodic-rosconsole
 	depends = ros-melodic-roscpp
 	conflicts = ros-melodic-message-filters-git
