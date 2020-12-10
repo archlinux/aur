@@ -20,7 +20,7 @@ makedepends=('git' 'python-mako' 'xorgproto'
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'libglvnd' 'wayland' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opengl-driver' 'opencl-driver')
+provides=('mesa' 'mesa-git' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opengl-driver' 'opencl-driver')
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau')
 url="https://www.mesa3d.org"
 license=('custom')

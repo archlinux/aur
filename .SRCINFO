@@ -38,6 +38,7 @@ pkgbase = mesa-minimal-git
 	optdepends = clang: opencl
 	optdepends = compiler-rt: opencl
 	provides = mesa
+	provides = mesa-git
 	provides = opencl-mesa
 	provides = vulkan-intel
 	provides = vulkan-radeon
