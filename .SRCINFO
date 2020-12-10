@@ -1,7 +1,7 @@
 pkgbase = upstream-bin
 	pkgdesc = Desktop client for radicle (binary version)
-	pkgver = 0.1.4
-	pkgrel = 3
+	pkgver = 0.1.5
+	pkgrel = 1
 	url = https://github.com/radicle-dev/radicle-upstream
 	arch = x86_64
 	license = GPL
@@ -9,9 +9,9 @@ pkgbase = upstream-bin
 	provides = upstream
 	conflicts = radicle
 	conflicts = upstream
-	source = https://releases.radicle.xyz/radicle-upstream-0.1.4.AppImage
-	source = https://raw.githubusercontent.com/radicle-dev/radicle-upstream/v0.1.4/LICENSE
-	sha256sums = 267a567b851c9ec301b0cad517eb1a1fdaf3ed46bf85a85000285b066185c5c6
+	source = https://releases.radicle.xyz/radicle-upstream-0.1.5.AppImage
+	source = https://raw.githubusercontent.com/radicle-dev/radicle-upstream/v0.1.5/LICENSE
+	sha256sums = 0737ef7b6718ef86ff073facdc506fe02f233c6c7bf7a152eb5c95f8f732b7e0
 	sha256sums = d1bb5e1a4cd3774790ae7024904d572c27267857ed004a062416d520bf4230ad
 
 pkgname = upstream-bin
