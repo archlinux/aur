@@ -1,7 +1,7 @@
 # Maintainer: Adrien Wu <adrien.sf.wu@gmail.com>
 pkgname=python-morfessor
 pkgver=2.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for unsupervised and semi-supervised morphological segmentation"
 url="https://github.com/aalto-speech/morfessor"
 arch=('any')
