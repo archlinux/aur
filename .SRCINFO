@@ -1,7 +1,7 @@
 pkgbase = python-widlparser
 	pkgdesc = WebIDL Parser
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/widlparser
 	arch = any
 	license = MIT
