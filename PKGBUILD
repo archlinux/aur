@@ -27,3 +27,5 @@ package() {
     install -Dm644 "squashfs-root/cajviewer.desktop" "${pkgdir}/usr/share/applications/cajviewer.desktop"
     cp -R "squashfs-root/usr/share/icons/hicolor" "${pkgdir}/usr/share/icons"
 }
+
+
