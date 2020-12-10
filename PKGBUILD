@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-calendar-git
-pkgver=r2100.d7b9a090
+pkgver=5.1.1.r65.gdf9d6899
 pkgrel=1
 pkgdesc='The Pantheon Calendar'
 arch=(x86_64)
@@ -28,7 +28,7 @@ depends=(
 )
 makedepends=(
   git
-  granite-git
+  granite
   intltool
   meson
   vala
@@ -41,7 +41,7 @@ sha256sums=(SKIP)
 pkgver() {
   cd pantheon-calendar
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
