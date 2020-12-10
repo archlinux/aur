@@ -1,22 +1,22 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
-pkgdesc="ROS - This library contains wrappers for generating floating point values, integers, quaternions using boost libraries."
+pkgdesc="ROS - This library contains wrappers for generating floating point values, integers, quaternions using boost1.69 libraries."
 url='https://wiki.ros.org/random_numbers'
 
 pkgname='ros-melodic-random-numbers'
 pkgver='0.3.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  boost)
+  boost1.69)
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  boost)
+  boost1.69)
 
 _dir="random_numbers-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/random_numbers/archive/${pkgver}.tar.gz")
@@ -40,7 +40,8 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+		 -DBOOST_ROOT=/opt/boost1.69
   make
 }
 

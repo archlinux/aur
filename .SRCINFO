@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-random-numbers
-	pkgdesc = ROS - This library contains wrappers for generating floating point values, integers, quaternions using boost libraries.
+	pkgdesc = ROS - This library contains wrappers for generating floating point values, integers, quaternions using boost1.69 libraries.
 	pkgver = 0.3.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://wiki.ros.org/random_numbers
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = ros-melodic-random-numbers
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	makedepends = boost
-	depends = boost
+	makedepends = boost1.69
+	depends = boost1.69
 	source = ros-melodic-random-numbers-0.3.2.tar.gz::https://github.com/ros-planning/random_numbers/archive/0.3.2.tar.gz
 	sha256sums = da825a0c7a4e9de180d9d539aa78682c1d805b1e4c3ef16af0e6cb384f2134f5
 
