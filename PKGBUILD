@@ -6,7 +6,7 @@ url='https://wiki.ros.org/warehouse_ros'
 pkgname='ros-melodic-warehouse-ros'
 pkgver='0.9.4'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf
@@ -26,7 +26,7 @@ ros_depends=(ros-melodic-tf
   ros-melodic-geometry-msgs
   ros-melodic-rostime)
 depends=(${ros_depends[@]}
-  boost)
+  boost1.69)
 
 # Git version (e.g. for debugging)
 # _tag=release/melodic/warehouse_ros/${pkgver}-${_pkgver_patch}
@@ -57,7 +57,8 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+		 -DBOOST_ROOT=/opt/boost1.69
   make
 }
 
