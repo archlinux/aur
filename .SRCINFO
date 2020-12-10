@@ -1,8 +1,8 @@
 pkgbase = warpinator-git
 	pkgdesc = Share files across the LAN
-	pkgver = 1.0.8.r10.gd4865f8
+	pkgver = 1.1.0.r0.g399384d
 	pkgrel = 1
-	url = https://github.com/linuxmint/warp
+	url = https://github.com/linuxmint/warpinator
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -19,12 +19,12 @@ pkgbase = warpinator-git
 	depends = python-setproctitle
 	depends = python-zeroconf
 	depends = python-xapp
-	depends = xapps-git
+	depends = xapps
 	depends = python-packaging
 	optdepends = ufw: Configure firewall rules
 	provides = warpinator
 	conflicts = warpinator
-	source = git+https://github.com/linuxmint/warp.git
+	source = git+https://github.com/linuxmint/warpinator.git
 	sha256sums = SKIP
 
 pkgname = warpinator-git
