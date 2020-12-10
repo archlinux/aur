@@ -1,0 +1,23 @@
+pkgbase = ignition-fuel_tools-4
+	pkgdesc = A C++ client library and command line tools for interacting with Ignition Fuel servers
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://ignitionrobotics.org/libs/fuel_tools
+	arch = i686
+	arch = x86_64
+	groups = development
+	license = Apache
+	makedepends = ignition-cmake>=2
+	depends = curl
+	depends = jsoncpp
+	depends = libyaml
+	depends = libzip
+	depends = ignition-common>=3
+	depends = ignition-msgs-5
+	depends = ignition-tools
+	optdepends = ruby
+	source = ignition-fuel_tools-4.2.1.tar.gz::https://github.com/ignitionrobotics/ign-fuel-tools/archive/ignition-fuel-tools4_4.2.1.tar.gz
+	sha256sums = 447ee273d6c51577635ee9717d8e13d00273ee54d6d734d740510b129aa550df
+
+pkgname = ignition-fuel_tools-4
+
