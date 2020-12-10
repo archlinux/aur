@@ -10,8 +10,8 @@ url="https://github.com/Presburger/qmc-decoder"
 license=('MIT')
 makedepends=('cmake'
              'git')
-provides=("${_pkgname}-bin" "${_pkgname}")
-conflicts=("${_pkgname}-bin" "${_pkgname}")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 _submodule='filesystem'
 source=("git+https://github.com/Presburger/${_pkgname}"
         "git+https://github.com/gulrak/${_submodule}.git")
