@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-user-accounts-git
-pkgver=2.3.1.r40.g492d5b0
+pkgver=2.3.2.r23.g156767a
 pkgrel=1
 pkgdesc='Switchboard User Accounts Plug'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('accountsservice' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc'
          'gnome-desktop' 'gtk3' 'libgee' 'libpwquality' 'polkit'
-         'libgranite.so' 'libswitchboard-2.0.so')
+         'libgranite.so' 'libswitchboard-2.0.so' 'libhandy')
 makedepends=('git' 'gobject-introspection' 'granite' 'meson'
              'switchboard' 'vala')
 provides=('switchboard-plug-user-accounts')

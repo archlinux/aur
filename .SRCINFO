@@ -1,6 +1,6 @@
 pkgbase = switchboard-plug-user-accounts-git
 	pkgdesc = Switchboard User Accounts Plug
-	pkgver = 2.3.1.r40.g492d5b0
+	pkgver = 2.3.2.r23.g156767a
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-useraccounts
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = switchboard-plug-user-accounts-git
 	depends = polkit
 	depends = libgranite.so
 	depends = libswitchboard-2.0.so
+	depends = libhandy
 	provides = switchboard-plug-user-accounts
 	conflicts = switchboard-plug-user-accounts
 	source = switchboard-plug-user-accounts::git+https://github.com/elementary/switchboard-plug-useraccounts.git
