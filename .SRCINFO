@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-pugixml
 	pkgdesc = Light-weight, simple and fast XML parser for C++ with XPath support (mingw-w64)
-	pkgver = 1.10
+	pkgver = 1.11
 	pkgrel = 1
 	url = http://pugixml.org/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mingw-w64-pugixml
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = http://github.com/zeux/pugixml/releases/download/v1.10/pugixml-1.10.tar.gz
-	sha256sums = 55f399fbb470942410d348584dc953bcaec926415d3462f471ef350f29b5870a
+	source = http://github.com/zeux/pugixml/releases/download/v1.11/pugixml-1.11.tar.gz
+	sha256sums = 26913d3e63b9c07431401cf826df17ed832a20d19333d043991e611d23beaa2c
 
 pkgname = mingw-w64-pugixml
 
