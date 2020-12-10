@@ -1,7 +1,7 @@
 # Maintainer: pryme-svg <edoc.www@gmail.com>
 
 pkgname=jfetch-git
-pkgver=rr72.796241c
+pkgver=r72.796241c
 pkgrel=1
 pkgdesc="A minimal Linux fetch script"
 arch=('any')
