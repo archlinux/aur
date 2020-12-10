@@ -25,7 +25,15 @@ sha256sums=('5f8599c64a9c1dbdf0d8ee13a4d395b03e9bcba17fec731526109437ab760898'
             '125d5191b52122434984ccc11a6f2677697a4fee3b9f4571ee0d3742a43a74a4'
             '5e0bffb5a1c1a877abf75c55a5485b2bf6220caa9886ba073e7513cbf4245886')
 
+prepare() {
+  for patch in "${srcdir}"/*.patch; do
+    msg2 "Applying patch: ${patch##*/}"
+    patch -d "${pkgname}-${_pkgver}" -Nfp1 -i "$patch" || true #silently drop failed chunks
+  done
+}
 
+build() {
+  _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
 CMAKE_FLAGS=( -DWITH_EMBREE=ON
               -DCMAKE_BUILD_TYPE=Ship
               -DCMAKE_INSTALL_PREFIX=/opt/appleseed
@@ -38,28 +46,21 @@ CMAKE_FLAGS=( -DWITH_EMBREE=ON
               -DUSE_STATIC_OIIO=OFF
               -DUSE_STATIC_OSL=OFF
               -DWARNINGS_AS_ERRORS=OFF
+              -DWITH_BENCH=OFF
+              -DPYTHON3_INCLUDE_DIR="/usr/include/python${_pyver}"
+              -Wno-dev
             )
+  grep -q    avx /proc/cpuinfo && CMAKE_FLAGS+=(-DUSE_AVX=ON)
+  grep -q   avx2 /proc/cpuinfo && CMAKE_FLAGS+=(-DUSE_AVX2=ON)
+  grep -q   f16c /proc/cpuinfo && CMAKE_FLAGS+=(-DUSE_F16C=ON)
+  grep -q sse4_2 /proc/cpuinfo && CMAKE_FLAGS+=(-DUSE_SSE42=ON)
 
-prepare() {
-  for patch in "${srcdir}"/*.patch; do
-    msg2 "Applying patch: ${patch##*/}"
-    patch -d "${pkgname}-${_pkgver}" -Nfp1 -i "$patch" || true #silently drop failed chunks
-  done
-  grep -q    avx /proc/cpuinfo && CMAKE_FLAGS+=(   -DUSE_AVX=ON)
-  grep -q   avx2 /proc/cpuinfo && CMAKE_FLAGS+=(  -DUSE_AVX2=ON)
-  grep -q   f16c /proc/cpuinfo && CMAKE_FLAGS+=(  -DUSE_F16C=ON)
-  grep -q sse4_2 /proc/cpuinfo && CMAKE_FLAGS+=( -DUSE_SSE42=ON)
-}
-
-build() {
-  _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
-  CMAKE_FLAGS+=( -DPYTHON3_INCLUDE_DIR="/usr/include/python${_pyver}")
-  cmake "${CMAKE_FLAGS[@]}" -S "${pkgname}-${_pkgver}" -B build
-  make -C build
+  cmake "${CMAKE_FLAGS[@]}" -S "${srcdir}/${pkgname}-${_pkgver}" -B build -G Ninja
+  ninja -C build ${MAKEFLAGS:--j1}
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -C build install
   install -D -m644 "${pkgname}-${_pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
