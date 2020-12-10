@@ -24,7 +24,7 @@ _bldtype=Release
 
 _mozcrev=afb03ddfe72dde4cf2409863a3bfea160f7a66d8
 _mozcver=2.23.2815.102
-_utdicdate=20201110
+_utdicdate=20201129
 _utdicver=1
 
 pkgbase=mozc-ut-united
@@ -42,13 +42,13 @@ source=(
   https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/mozc.patch
   https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/Add_support_new_Japanese_era.patch
   https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/Change-from-python2-code-to-python3.patch
-  https://osdn.net/downloads/users/26/26897/mozcdic-ut-${_utdicdate}.${_utdicver}.tar.bz2
+  https://osdn.net/downloads/users/26/26959/mozcdic-ut-${_utdicdate}.${_utdicver}.tar.bz2
 )
 sha1sums=('SKIP'
           'a366077418ae6f235aecf374256354a40dc5b37a'
           '3aa3077cb28352f9aafde71f8d864b333424338f'
           'f363373e892ac53b972cb092a3627b3a4fbc5b6a'
-          'e91e7f67c48f59cd67787e5e6af98946e9a53b1c')
+          'eb6fc52789044238b81596479107239e491c4f25')
 
 
 if [[ "$_emacs_mozc" == "yes" ]]; then

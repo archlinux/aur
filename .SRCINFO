@@ -1,6 +1,6 @@
 pkgbase = mozc-ut-united
 	pkgdesc = IBus engine module for Mozc with UT dictionary
-	pkgver = 2.23.2815.102.20201110
+	pkgver = 2.23.2815.102.20201129
 	pkgrel = 1
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = i686
@@ -21,12 +21,12 @@ pkgbase = mozc-ut-united
 	source = https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/mozc.patch
 	source = https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/Add_support_new_Japanese_era.patch
 	source = https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/Change-from-python2-code-to-python3.patch
-	source = https://osdn.net/downloads/users/26/26897/mozcdic-ut-20201110.1.tar.bz2
+	source = https://osdn.net/downloads/users/26/26959/mozcdic-ut-20201129.1.tar.bz2
 	sha1sums = SKIP
 	sha1sums = a366077418ae6f235aecf374256354a40dc5b37a
 	sha1sums = 3aa3077cb28352f9aafde71f8d864b333424338f
 	sha1sums = f363373e892ac53b972cb092a3627b3a4fbc5b6a
-	sha1sums = e91e7f67c48f59cd67787e5e6af98946e9a53b1c
+	sha1sums = eb6fc52789044238b81596479107239e491c4f25
 
 pkgname = mozc-ut-united
 	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
