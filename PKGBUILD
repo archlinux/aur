@@ -2,8 +2,8 @@
 # https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux
 
 pkgname=azure-cli
-pkgver=2.15.1
-pkgrel=2
+pkgver=2.16.0
+pkgrel=1
 pkgdesc="Command-line tools for Azure."
 arch=('any')
 url="https://github.com/Azure/azure-cli"
