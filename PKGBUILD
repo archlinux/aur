@@ -132,7 +132,7 @@ build () {
         -D libunwind=disabled \
         -D llvm=enabled \
         -D lmsensors=disabled \
-        -D osmesa=gallium \
+        -D osmesa=true \
         -D shared-glapi=enabled \
         -D valgrind=disabled \
         -D tools=[] \
