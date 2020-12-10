@@ -77,9 +77,9 @@ prepare() {
 
 	#update the submodules
 	git submodule sync
-	git submodule update --init --recursive --remote
+	git submodule update --init --recursive --remote --depth=1
 	git submodule foreach git checkout master
-	git submodule foreach git pull --rebase
+	git submodule foreach git pull --rebase --depth=1
 
 	if [ "$_EMBREE_PKG" != "" ]; then
 		git apply -v "${srcdir}"/embree.patch
