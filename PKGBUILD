@@ -35,7 +35,7 @@ pkgver() {
 }
 
 prepare() {
-  git -C "${srcdir}/${pkgname}" apply -v ${srcdir}/{boost_107400,cmake.extra.install.dirs.remove,osl_1.11.8}.patch
+  git -C "${srcdir}/${pkgname}" apply -v "${srcdir}"/{boost_107400,cmake.extra.install.dirs.remove,osl_1.11.8}.patch
   sed '/python37/s/37/39/' -i "${srcdir}/${pkgname}"/src/appleseed.python/CMakeLists.txt
 }
 
