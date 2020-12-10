@@ -1,4 +1,5 @@
-# Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor: Armin K. <krejzi at email dot com>
 # Contributor: Kristian Klausen <klausenbusk@hotmail.com>
 # Contributor: Egon Ashrafinia <e.ashrafinia@gmail.com>
@@ -9,7 +10,7 @@
 # Contributor: Antti "Tera" Oja <antti.bofh@gmail.com>
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
-pkgname=lib32-mesa-git
+pkgname=lib32-mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=21.0.0_devel.132039.6df572532dc
 pkgrel=1
@@ -18,7 +19,7 @@ makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'git' 'mesa-git' 'lib32-libglvnd' 
              'wayland-protocols' 'lib32-wayland' 'meson' 'lib32-libva' 'lib32-libxrandr')
 depends=('mesa-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence'
-            'lib32-elfutils' 'lib32-libunwind' 'lib32-lm_sensors' 'glslang' 'lib32-vulkan-icd-loader' 'lib32-zstd')
+            'lib32-elfutils' 'glslang' 'lib32-vulkan-icd-loader' 'lib32-zstd')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-opengl-driver' 'lib32-vulkan-driver')
 conflicts=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau')
@@ -100,7 +101,7 @@ build () {
 
     meson setup mesa _build \
         --native-file llvm32.native \
-        -D b_ndebug=true \
+        -D b_ndebug=false \
         -D b_lto=true \
         -D buildtype=plain \
         --wrap-mode=nofallback \
@@ -128,9 +129,9 @@ build () {
         -D gles2=enabled \
         -D glvnd=true \
         -D glx=dri \
-        -D libunwind=enabled \
+        -D libunwind=disabled \
         -D llvm=enabled \
-        -D lmsensors=enabled \
+        -D lmsensors=disabled \
         -D osmesa=gallium \
         -D shared-glapi=enabled \
         -D valgrind=disabled \
