@@ -1,13 +1,13 @@
 pkgbase = nodejs-docs
 	pkgdesc = Node.js API documentation.
-	pkgver = 14.15.1
+	pkgver = 15.4.0
 	pkgrel = 1
 	url = https://nodejs.org/en/docs/
 	arch = any
 	license = MIT
 	options = docs
-	source = https://nodejs.org/dist/v14.15.1/node-v14.15.1.tar.gz
-	sha256sums = a1120472bf55aea745287693a6651e16973e1008c9d6107df350126adf9716fe
+	source = https://nodejs.org/dist/v15.4.0/node-v15.4.0.tar.gz
+	sha256sums = b199796544d988b4bb61e38584cd097744e073fa0559cbec772858d91ce4649f
 
 pkgname = nodejs-docs
 
