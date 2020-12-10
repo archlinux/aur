@@ -1,6 +1,6 @@
 pkgbase = boost1.69
 	pkgver = 1.69.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.boost.org/
 	arch = i686
 	arch = x86_64
@@ -29,6 +29,6 @@ pkgname = boost1.69
 	pkgdesc = Free peer-reviewed portable C++ source libraries - development headers
 	depends = boost1.69-libs=1.69.0
 	optdepends = python: for python bindings
-	conflicts = boost
+	conflicts = 
 	options = staticlibs
 
