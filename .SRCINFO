@@ -1,0 +1,15 @@
+pkgbase = python-result
+	pkgdesc = A rust-like result type for Python
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://pypi.org/project/result
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = python-result-0.5.0.tar.gz::https://pypi.org/packages/source/r/result/result-0.5.0.tar.gz
+	sha256sums = f4563ff615b1147822d13eb363fbda202511fcbf281b3cf7acf0723ca7cb612b
+	b2sums = b6691551452a0b3cea8bee81b7f17b1495cfb56b446ce20007d3a2f12b00ab516e80dda7cde0084151fd9b9a86daa67899cde1e3d2ab921c6d2253359702894c
+
+pkgname = python-result
+
