@@ -1,6 +1,6 @@
 pkgbase = chromecast_mpris
 	pkgdesc = Control Chromecasts from Linux and D-Bus 
-	pkgver = 0.6.1
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/alexdelorenzo/chromecast_mpris
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = chromecast_mpris
 	depends = python-gobject
 	depends = python-pydbus
 	depends = python-click
-	source = chromecast_mpris-0.6.1.tar.gz::https://github.com/alexdelorenzo/chromecast_mpris/archive/v0.6.1.tar.gz
+	source = chromecast_mpris-0.6.3.tar.gz::https://github.com/alexdelorenzo/chromecast_mpris/archive/v0.6.3.tar.gz
 	md5sums = SKIP
 
 pkgname = chromecast_mpris
