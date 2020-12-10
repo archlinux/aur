@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-image-proc
 	pkgdesc = ROS - Single image rectification and color processing.
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/image_proc
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = ros-melodic-image-proc
 	makedepends = ros-melodic-sensor-msgs
 	makedepends = ros-melodic-nodelet-topic-tools
 	makedepends = ros-melodic-image-transport
-	makedepends = boost
+	makedepends = boost1.69
 	depends = ros-melodic-camera-calibration-parsers
 	depends = ros-melodic-image-geometry
 	depends = ros-melodic-nodelet
