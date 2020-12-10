@@ -1,7 +1,7 @@
 # Maintainer: Adrien Wu <adrien.sf.wu@gmail.com>
 pkgname=python-pystatparser-git
 pkgver=r24.0e4990d
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple Python statistical (CKY) parser"
 url="https://github.com/emilmont/pyStatParser"
 arch=('any')

@@ -1,7 +1,7 @@
 pkgbase = python-pystatparser-git
 	pkgdesc = Simple Python statistical (CKY) parser
 	pkgver = r24.0e4990d
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/emilmont/pyStatParser
 	arch = any
 	makedepends = git
