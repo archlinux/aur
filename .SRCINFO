@@ -1,6 +1,6 @@
 pkgbase = proton-native
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution
-	pkgver = 5.13.3
+	pkgver = 5.13.4
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton
@@ -178,7 +178,7 @@ pkgbase = proton-native
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-5.13-3
+	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-5.13-4
 	source = wine-valve::git+https://github.com/ValveSoftware/wine.git
 	source = vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
 	source = dxvk-valve::git+https://github.com/ValveSoftware/dxvk.git

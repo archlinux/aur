@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-native
-_srctag=5.13-3
+_srctag=5.13-4
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
