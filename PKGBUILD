@@ -24,7 +24,10 @@ package() {
 	cd "${pkgname}"
 
 	install -dm755 "${pkgdir}/usr/src/${pkgname}-${pkgver}"
-	cp -a LICENSE Makefile README* *.c "${pkgdir}/usr/src/${pkgname}-${pkgver}"
+	cp -a LICENSE README* *.c "${pkgdir}/usr/src/${pkgname}-${pkgver}"
+
+	sed -e "s/(shell uname -r)/{TARGET}/" Makefile > \
+		"${pkgdir}/usr/src/${pkgname}-${pkgver}/Makefile"
 
 	sed -e "s/@PACKAGE_VERSION@/${pkgver}/" "${srcdir}/dkms.conf.in" > \
 		"${pkgdir}/usr/src/${pkgname}-${pkgver}/dkms.conf"
