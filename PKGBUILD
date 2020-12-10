@@ -1,7 +1,7 @@
 pkgname=netlify-application
 _pkgname=Netlify
-pkgver=1.0.4
-pkgrel=4
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="Unofficial Netlify desktop application"
 arch=('any')
 url="https://gitlab.com/netlify-desktop/application"
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/application"
-    npm --cache "$srcdir/npm-cache" i electron@10.1.5 electron-packager
+    npm --cache "$srcdir/npm-cache" i electron@11.0.4 electron-packager
     ./node_modules/.bin/electron-packager .
     for dir in $_pkgname-linux-*/ ; do mv "${dir}" "$_pkgname" ;done
     rm -rf "$srcdir/$pkgname/$_pkgname/resources/app/node_modules"
