@@ -6,7 +6,7 @@ url='https://www.wiki.ros.org/bondcpp'
 pkgname='ros-melodic-bondcpp'
 pkgver='1.8.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -21,7 +21,7 @@ makedepends=(
 	'cmake'
 	'ros-build-tools'
 	${ros_makedepends[@]}
-	boost
+	boost1.69
 	util-linux
 )
 
@@ -33,7 +33,7 @@ ros_depends=(
 
 depends=(
 	${ros_depends[@]}
-	boost
+	boost1.69
 	util-linux
 )
 
@@ -63,7 +63,8 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DSETUPTOOLS_DEB_LAYOUT=OFF
+		-DSETUPTOOLS_DEB_LAYOUT=OFF \
+	   -DBOOST_ROOT=/opt/boost1.69
 	make
 }
 
