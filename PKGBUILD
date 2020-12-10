@@ -13,7 +13,7 @@ optdepends=()
 provides=('jfetch')
 conflicts=()
 source=('jfetch-git::git+https://github.com/Jimmysit0/jfetch.git'
-	'https://raw.githubusercontent.com/Jimmysit0/jfetch/master/LICENSE')
+	'https://raw.githubusercontent.com/Jimmysit0/jfetch/master/license')
 md5sums=('SKIP'
          '10530c5d870f9e86d4b0e7b24a4e72fa')
 

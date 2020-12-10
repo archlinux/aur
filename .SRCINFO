@@ -8,7 +8,7 @@ pkgbase = jfetch-git
 	makedepends = make
 	provides = jfetch
 	source = jfetch-git::git+https://github.com/Jimmysit0/jfetch.git
-	source = https://raw.githubusercontent.com/Jimmysit0/jfetch/master/LICENSE
+	source = https://raw.githubusercontent.com/Jimmysit0/jfetch/master/license
 	md5sums = SKIP
 	md5sums = 10530c5d870f9e86d4b0e7b24a4e72fa
 
