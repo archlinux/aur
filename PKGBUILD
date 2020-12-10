@@ -6,13 +6,12 @@
 # NOTE: If you plan on using the usbblaster make sure you are member of the plugdev group.
 #
 pkgbase=quartus-free
-_components=(${pkgbase}-{quartus,modelsim,help,devinfo-{arria_lite,cyclone{,10lp,v},max{,10}}})
+_components=(${pkgbase}-{quartus,modelsim,help,devinfo-{arria_lite,cyclone{,10lp,v},max{,10}},hls})
 pkgname=(${pkgbase} ${_components[@]})
-_mainver=20.1
 # Keep dot in _patchver
-_patchver=.0
-_buildver=711
-_basever=.0.711
+_mainver=20.1; _patchver=.1; _buildver=720
+# Latest HLS compiler was only released with Pro numbering
+_promain=20.3; _propatch=.0; _probuild=158; _prover=${_promain}${_propatch}.${_probuild}
 pkgver=${_mainver}${_patchver}.${_buildver}
 pkgrel=1
 pkgdesc="Quartus Prime Lite design software for Intel FPGAs"
@@ -23,30 +22,31 @@ license=('custom')
 _alteradir="/opt/intelFPGA/${_mainver}"
 
 # According to the installer script, these dependencies are needed for the installer
-depends=('lib32-expat' 'lib32-fontconfig' 'lib32-freetype2' 'lib32-glibc'
+depends=('ld-lsb' 'lib32-expat' 'lib32-fontconfig' 'lib32-freetype2' 'lib32-glibc'
          'lib32-gtk2' 'lib32-libcanberra' 'lib32-libpng' 'lib32-libice' 'lib32-libsm'
          'lib32-util-linux' 'lib32-ncurses' 'lib32-ncurses5-compat-libs' 'lib32-zlib'
          'lib32-libx11' 'lib32-libxau' 'lib32-libxdmcp' 'lib32-libxext' 'lib32-libxft'
          'lib32-libxrender' 'lib32-libxt' 'lib32-libxtst')
 
-makedepends=('patchelf')
-
-source=("http://download.altera.com/akdlm/software/acdsinst/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/QuartusLiteSetup-${pkgver}-linux.run"
-        "http://download.altera.com/akdlm/software/acdsinst/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/ModelSimSetup-${pkgver}-linux.run"
-        "http://download.altera.com/akdlm/software/acdsinst/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/QuartusHelpSetup-${pkgver}-linux.run"
-        "http://download.altera.com/akdlm/software/acdsinst/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/"{arria_lite,cyclone{,10lp,v},max{,10}}"-${pkgver}.qdz"
+_base_url="https://download.altera.com/akdlm/software/acdsinst"
+source=("${_base_url}/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/QuartusLiteSetup-${pkgver}-linux.run"
+        "${_base_url}/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/ModelSimSetup-${pkgver}-linux.run"
+        "${_base_url}/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/QuartusHelpSetup-${pkgver}-linux.run"
+        "${_base_url}/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/"{arria_lite,cyclone{,10lp,v},max{,10}}"-${pkgver}.qdz"
+        "${_base_url}/${_promain}${_propatch/.0/}/${_probuild}/ib_installers/HLSProSetup-${_prover}-linux.run"
         'quartus.sh' 'quartus.desktop' 'modelsim-ase.sh' 'modelsim-ase.desktop' '51-usbblaster.rules')
 noextract=({arria_lite,cyclone{,10lp,v},max{,10}}"-${pkgver}.qdz") # Will extract directly to pkgdir
-md5sums=('e995b65f09aa0855770a2315cf7bc2ff'
-         '6c0b26510477d20896becca042c33917'
-         'cbfc39a16bc6fcbb6862aa676e2fbcfb'
-         'a439bb4873e69bd23e35aced3ea9ba8c'
-         '14e47510cea47dc0ed92c8cb97d76488'
-         'af64dc8c95035dd084e9e8b621eb1378'
-         '2b30d36171d1beb159971f89206e6d9f'
-         '2ef442bc8872aa4e39ed3b313e13cc2a'
-         '10284d71211a02f6dd20cbc41c9ececb'
-         '737d51fcc74c8d6d2114c8f4ba79e4de'
+md5sums=('3a5ca38169bcff285611789850b5af83'
+         'adfdde0d455dadedd2cc094cbf771352'
+         '1f1a52ba830b7496a1276c15a7fe067a'
+         '4561d23010dd1fd359fe12348b102ac6'
+         'e6527cbc876426c4ecd8737d8b68369c'
+         'd47100035a5a97f44048df19218b09e4'
+         '78d59d548756f81e67b9d7cd2149e2b8'
+         '9e8b802c6b4768933362a0e6398b7e2e'
+         'fea82df785421cd0c0bf75ca94790804'
+         '20a76b8373fcab2ceb35d2003a0630d1'
+         '60fbfafbaa565af5e97b2904914e41e7'
          'c5a8f6310ade971f07e5ee6c4e338054'
          'ea5eca3341da1628e57f3efb7e074796'
          'a32f9e42db394016ce267c8d96f69cd5'
@@ -88,11 +88,6 @@ package_quartus-free-quartus() {
     # Remove duplicated file from help
     rm -r "${pkgdir}${_alteradir}/quartus/common/help/webhelp"
 
-    # Fix interpreter for the license manager
-    for prog in quartus/linux64/{lmutil,lmgrd}; do
-        patchelf --set-interpreter /lib64/ld-linux-x86-64.so.2 "${pkgdir}${_alteradir}/${prog}"
-    done
-
     # Fix missing permissions
     find "${pkgdir}${_alteradir}" \! -perm /o+rwx -exec chmod o=g {} \;
 
@@ -132,10 +127,6 @@ package_quartus-free-modelsim() {
     # Remove uninstaller and install logs since we have a working package management
     rm -r "${pkgdir}${_alteradir}/uninstall"
     rm -r "${pkgdir}${_alteradir}/logs"
-
-    for prog in modelsim_ase/linuxaloem/mgls/bin/{lmutil,lmgrd}; do
-        patchelf --set-interpreter /lib/ld-linux.so.2 "${pkgdir}${_alteradir}/${prog}"
-    done
 
     # Fix missing permissions
     find "${pkgdir}${_alteradir}" \! -perm /o+rwx -exec chmod o=g {} \;
@@ -177,3 +168,18 @@ package_${pkgbase}-devinfo-${_dev}() {
 }
 "
 done
+
+package_quartus-free-hls() {
+    depends=(quartus-free-quartus)
+    pkgdesc="Quartus Prime - HLS compiler"
+
+    chmod a+x HLSProSetup-${_prover}-linux.run
+    DISPLAY="" ./HLSProSetup-${_prover}-linux.run --mode unattended --unattendedmodeui none --accept_eula 1 --installdir "${pkgdir}${_alteradir}"
+
+    # Fix path to Lite qsys-script
+    sed -i '429s,../qsys,sopc_builder,' "${pkgdir}${_alteradir}/hls/init_hls.sh"
+
+    # Remove uninstaller and install logs since we have a working package management
+    rm -r "${pkgdir}${_alteradir}/uninstall"
+    rm -r "${pkgdir}${_alteradir}/logs"
+}

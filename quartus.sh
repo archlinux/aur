@@ -1,4 +1,4 @@
-export PATH=$PATH:_alteradir/quartus/bin
+export PATH=$PATH:_alteradir/quartus/bin:_alteradir/quartus/sopc_builder/bin
 
 # Detect if a 64bit machine and activate quartus
 # depending on it.
