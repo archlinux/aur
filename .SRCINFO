@@ -1,0 +1,30 @@
+pkgbase = bikeshed-git
+	pkgdesc = A preprocessor for anyone writing specifications.
+	pkgver = 2.2.3.3886cea8b
+	pkgrel = 1
+	url = https://tabatkins.github.io/bikeshed/
+	arch = any
+	license = custom:CC0
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-aiofiles
+	depends = python-aiohttp
+	depends = python-attrs
+	depends = python-certifi
+	depends = python-cssselect
+	depends = python-html5lib
+	depends = python-isodate
+	depends = python-json_home_client
+	depends = python-lxml
+	depends = python-pygments
+	depends = python-requests
+	depends = python-result
+	depends = python-tenacity
+	depends = python-widlparser
+	source = bikeshed::git+https://github.com/tabatkins/bikeshed.git
+	sha256sums = SKIP
+	b2sums = SKIP
+
+pkgname = bikeshed-git
+
