@@ -2,7 +2,7 @@
 
 pkgname='pass-audit'
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A pass extension for auditing your password repository.'
 arch=('any')
 url='https://github.com/roddhjav/pass-audit'

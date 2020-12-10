@@ -1,7 +1,7 @@
 pkgbase = pass-audit
 	pkgdesc = A pass extension for auditing your password repository.
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/roddhjav/pass-audit
 	arch = any
 	license = GPL3
