@@ -1,7 +1,7 @@
 pkgbase = libmlv0-dev
 	pkgdesc = The MLV library is a simplified multimedia library. This library is ideal for students who are new to C programming and want to add graphic and sound effects to their programs.
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www-igm.univ-mlv.fr/~boussica/mlv/api/French/html/index.html
 	install = libmlv0-dev.install
 	arch = any
