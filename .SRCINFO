@@ -1,4 +1,4 @@
-pkgbase = dmenu-abdellatif
+pkgbase = dmenu-abdellatif-git
 	pkgdesc = my dmenu costume build
 	pkgver = 0.5.5
 	pkgrel = 1
@@ -19,9 +19,8 @@ pkgbase = dmenu-abdellatif
 	depends = libfontconfig.so
 	provides = dmenu
 	conflicts = dmenu
-	replaces = dmenu
 	source = git+https://github.com/abdellatif-dev/dmenu-abdelllatif-dev.git
 	md5sums = SKIP
 
-pkgname = dmenu-abdellatif
+pkgname = dmenu-abdellatif-git
 
