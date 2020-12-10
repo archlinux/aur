@@ -11,8 +11,8 @@ pkgbase = gaiasky
 	depends = jre11-openjdk
 	depends = xorg-xrandr
 	source = http://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/3.0.1.2318179ff/gaiasky-3.0.1.2318179ff.tar.gz
-	md5sums = 597ed10e7c2a25ab7eac7a133487233b
-	sha256sums = ace518854dfb1d811d78b78df631c7fe8b1a422bde7cf593df11b085651710b7
+	md5sums = 13d30f0e1dc71f3652623a59e7325a2d
+	sha256sums = 3f2e70eb8c416092897150a40e2d85190e30d5ae22d2c752d18418c561d13f00
 
 pkgname = gaiasky
 
