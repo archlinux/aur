@@ -1,0 +1,65 @@
+pkgbase = mesa-minimal-git
+	pkgdesc = an open-source implementation of the OpenGL specification, git version
+	pkgver = 21.0.0_devel.132039.6df572532dc
+	pkgrel = 1
+	url = https://www.mesa3d.org
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = python-mako
+	makedepends = xorgproto
+	makedepends = libxml2
+	makedepends = libx11
+	makedepends = libvdpau
+	makedepends = libva
+	makedepends = elfutils
+	makedepends = libxrandr
+	makedepends = ocl-icd
+	makedepends = wayland-protocols
+	makedepends = meson
+	makedepends = ninja
+	makedepends = glslang
+	makedepends = llvm=11.0.0
+	makedepends = clang=11.0.0
+	depends = libdrm
+	depends = libxxf86vm
+	depends = libxdamage
+	depends = libxshmfence
+	depends = libelf
+	depends = libomxil-bellagio
+	depends = libglvnd
+	depends = wayland
+	depends = libclc
+	depends = vulkan-icd-loader
+	depends = zstd
+	depends = expat
+	depends = llvm-libs=11.0.0
+	optdepends = opengl-man-pages: for the OpenGL API man pages
+	optdepends = clang: opencl
+	optdepends = compiler-rt: opencl
+	provides = mesa
+	provides = opencl-mesa
+	provides = vulkan-intel
+	provides = vulkan-radeon
+	provides = vulkan-mesa-layer
+	provides = libva-mesa-driver
+	provides = mesa-vdpau
+	provides = vulkan-driver
+	provides = opengl-driver
+	provides = opencl-driver
+	conflicts = mesa
+	conflicts = opencl-mesa
+	conflicts = vulkan-intel
+	conflicts = vulkan-radeon
+	conflicts = vulkan-mesa-layer
+	conflicts = libva-mesa-driver
+	conflicts = mesa-vdpau
+	source = mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 5c65a0fe315dd347e09b1f2826a1df5a
+	sha512sums = SKIP
+	sha512sums = 25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2
+
+pkgname = mesa-minimal-git
+
