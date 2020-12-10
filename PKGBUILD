@@ -2,7 +2,7 @@
 
 pkgname=helm-gcs
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Helm plugin to manage chart repositories on GCS'
 arch=('x86_64')
 url='https://github.com/hayorov/helm-gcs'
@@ -35,6 +35,7 @@ package() {
   # /usr/lib/helm/plugins follows other helm plugins on the AUR (e.g., helm-diff)
   install -Dm0755 bin/helm-gcs -t "${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}/bin"
   install -m0644 plugin.yaml -t "${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}"
+  install -Dm0755 scripts/pull.sh -t "${pkgdir}/usr/lib/helm/plugins/${pkgname#helm-}/scripts"
 
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
