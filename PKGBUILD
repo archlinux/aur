@@ -14,21 +14,23 @@ license=('MIT')
 provides=('appleseed')
 conflicts=('appleseed')
 depends=(python2 python embree qt5-base seexpr-qt5 boost openexr opencolorio 'openimageio=2.1.19.0' 'openshadinglanguage=1.10.13' xerces-c zlib)
-makedepends=(git cmake ninja)
+makedepends=(cmake git ninja)
 options=()
 source=("${pkgname}::git+https://github.com/appleseedhq/appleseed.git${_fragment}"
         "cmake.extra.install.dirs.remove.patch"
         )
 sha256sums=('SKIP'
             '87b987f006e45d11cc4dfec2bd37fd2b760fd2bdbf06f48e7d467cbca9b2b301')
+b2sums=('SKIP'
+        '85d278ea12672e44657fbfe8695744508db88cea54dbc93410632b05175c94a5e29e28dfb739ba88ec10a2449ff499484854ba177db03f5e41b24d2b8e6b9328')
 
 pkgver() {
   git -C "${srcdir}/${pkgname}" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  git -C "${srcdir}/${pkgname}" apply -v ${srcdir}/cmake.extra.install.dirs.remove.patch
-  sed '/python37/s/37/38/' -i "${srcdir}/${pkgname}"/src/appleseed.python/CMakeLists.txt
+  git -C "${srcdir}/${pkgname}" apply -v ${srcdir}/{cmake.extra.install.dirs.remove}.patch
+  sed '/python37/s/37/39/' -i "${srcdir}/${pkgname}"/src/appleseed.python/CMakeLists.txt
 }
 
 build() {
