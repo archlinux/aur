@@ -6,7 +6,7 @@ url='http://www.ros.org/wiki/pluginlib'
 pkgname='ros-melodic-pluginlib'
 pkgver='1.12.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -21,7 +21,7 @@ makedepends=(
 	'cmake'
 	'ros-build-tools'
 	${ros_makedepends[@]}
-	boost
+	boost1.69
 	tinyxml2
 )
 
@@ -33,7 +33,7 @@ ros_depends=(
 
 depends=(
 	${ros_depends[@]}
-	boost
+	boost1.69
 	tinyxml2
 )
 
@@ -59,7 +59,8 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DSETUPTOOLS_DEB_LAYOUT=OFF
+		-DSETUPTOOLS_DEB_LAYOUT=OFF \
+		 -DBOOST_ROOT=/opt/boost1.69
 	make
 }
 
