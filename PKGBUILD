@@ -6,7 +6,7 @@ url='https://wiki.ros.org/hls_lfcd_lds_driver'
 pkgname='ros-melodic-hls-lfcd-lds-driver'
 pkgver='1.1.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -26,7 +26,7 @@ ros_depends=(
 )
 
 depends=(
-    'boost'
+    'boost1.69'
 	${ros_depends[@]}
 )
 
@@ -52,7 +52,8 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DSETUPTOOLS_DEB_LAYOUT=OFF
+		-DSETUPTOOLS_DEB_LAYOUT=OFF \
+		 -DBOOST_ROOT=/opt/boost1.69
 	make
 }
 

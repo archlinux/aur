@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-hls-lfcd-lds-driver
 	pkgdesc = ROS - ROS package for LDS(HLS-LFCD2). The LDS (Laser Distance Sensor) is a sensor sending the data to Host for the simultaneous localization and mapping (SLAM).
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/hls_lfcd_lds_driver
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ros-melodic-hls-lfcd-lds-driver
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = boost
+	depends = boost1.69
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-std-msgs
 	depends = ros-melodic-sensor-msgs
