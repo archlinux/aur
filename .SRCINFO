@@ -18,6 +18,7 @@ pkgbase = switchboard-plug-parental-controls-git
 	depends = gtk3
 	depends = libgee
 	depends = polkit
+	depends = libhandy
 	depends = libgranite.so
 	depends = libswitchboard-2.0.so
 	provides = switchboard-plug-parental-controls

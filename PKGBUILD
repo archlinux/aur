@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-parental-controls-git
-pkgver=3.0.1.r21.g5d9f013
+pkgver=3.0.1.r38.gff4f66e
 pkgrel=1
 pkgdesc='Switchboard Parental Controls Plug'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/elementary/switchboard-plug-parental-controls'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('accountsservice' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee'
-         'polkit'
+         'polkit' 'libhandy'
          'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('git' 'granite' 'meson' 'switchboard' 'vala')
 provides=('switchboard-plug-parental-controls')
