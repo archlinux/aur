@@ -8,6 +8,8 @@ pkgbase = bottles-git
 	makedepends = meson
 	makedepends = ninja
 	depends = python
+	depends = dconf
+	depends = hicolor-icon-theme
 	source = git://github.com/bottlesdevs/Bottles
 	sha256sums = SKIP
 

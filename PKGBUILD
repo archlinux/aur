@@ -6,7 +6,7 @@ pkgdesc="Easily manage wineprefix using environments"
 arch=('x86_64')
 url="https://github.com/bottlesdevs/Bottles"
 license=('GPL3')
-depends=('python')
+depends=('python' 'dconf' 'hicolor-icon-theme')
 makedepends=('meson' 'ninja')
 source=("git://github.com/bottlesdevs/Bottles")
 sha256sums=('SKIP')
@@ -16,7 +16,8 @@ _repo="Bottles"
 build () {
   cd "$srcdir/$_repo"
   rm -rf build
-  mkdir build && meson build
+  mkdir build
+  meson build
   cd build
   ninja -j$(nproc)
 }
