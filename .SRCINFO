@@ -1,7 +1,7 @@
 pkgbase = python-polyglot
 	pkgdesc = A natural language pipeline that supports massive multilingual applications
 	pkgver = 16.7.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aboSamoor/polyglot
 	arch = any
 	makedepends = python-setuptools

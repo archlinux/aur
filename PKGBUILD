@@ -1,7 +1,7 @@
 # Maintainer: Adrien Wu <adrien.sf.wu@gmail.com>
 pkgname=python-polyglot
 pkgver=16.7.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A natural language pipeline that supports massive multilingual applications"
 url="https://github.com/aboSamoor/polyglot"
 arch=('any')
