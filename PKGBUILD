@@ -8,15 +8,15 @@
 
 pkgname=gazebo
 pkgver=11.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
 license=('Apache')
 # See: http://www.gazebosim.org/tutorials?tut=install_from_source&cat=install
 depends=('boost' 'curl' 'freeglut' 'freeimage' 'intel-tbb' 'libccd' 'libltdl'
-         'libtar' 'libxml' 'ogre-1.9' 'protobuf>=2.3.0' 'sdformat>=9' 'ignition-math>=6' 'ignition-transport>=8'
-         'ignition-cmake>=2' 'ignition-common>=3' 'ignition-fuel_tools>=4' 'ignition-msgs>=5' 'tinyxml2' 'qwt')
+         'libtar' 'libxml' 'ogre-1.9' 'protobuf>=2.3.0' 'sdformat-9' 'ignition-math>=6' 'ignition-transport-8'
+         'ignition-cmake>=2' 'ignition-common>=3' 'ignition-fuel_tools-4' 'ignition-msgs-5' 'tinyxml2' 'qwt')
 optdepends=('bullet: Bullet support'
             'cegui: Design custom graphical interfaces'
             'ffmpeg: Playback movies on textured surfaces'
