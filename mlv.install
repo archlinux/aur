@@ -1,0 +1,8 @@
+post_install() {
+    ldconfig
+    note "You need to reboot your computer."
+}
+
+post_remove() {
+    post_install
+}
