@@ -5,6 +5,7 @@ pkgver=r4.fa5ec39
 pkgrel=1
 pkgdesc="MCC CEA map file compressor/decompressor"
 depends=('zlib')
+makedepends=('cmake' 'git')
 arch=('i686' 'x86_64')
 url="https://github.com/SnowyMouse/ceaflate"
 license=('GPL')
