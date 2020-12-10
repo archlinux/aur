@@ -1,0 +1,14 @@
+pkgbase = fish-humantime
+	pkgdesc = Turn milliseconds into a human-readable string in Fish
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jorgebucaran/humantime.fish
+	arch = any
+	license = MIT
+	depends = fish
+	replaces = fish-humanize-duration
+	source = fish-humantime-1.0.0.tar.gz::https://github.com/jorgebucaran/humantime.fish/archive/1.0.0.tar.gz
+	sha256sums = a042789a4cc1b1eb18bbd47f42fa2b188764a13868956ad32d317d05c87375e8
+
+pkgname = fish-humantime
+
