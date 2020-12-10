@@ -3,7 +3,7 @@
 # https://bbs.archlinux.org/viewtopic.php?id=235884
 
 pkgname=lando
-pkgver=3.0.19
+pkgver=3.0.21
 _target_version=${pkgver//_/-}
 pkgrel=1
 pkgdesc="A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology"
