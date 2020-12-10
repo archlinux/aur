@@ -1,5 +1,5 @@
-# Maintainer: Justin Coffman <jcoffman@uid0.io>
-# Contributor: Justin Coffman <jcoffman@uid0.io>
+# Maintainer: Justin Coffman <jcoffman@cipherize.net>
+# Contributor: Justin Coffman <jcoffman@cipherize.net>
 
 pkgname=tinyfugue
 pkgver=5.0
