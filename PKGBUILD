@@ -1,7 +1,7 @@
 # Maintainer: abdellatif-dev <abdellatif.devlog@gmail.com>
 pkgname=dmenu-abdellatif
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="my dmenu costume build"
 arch=(x86_64)
 url="https://github.com/abdellatif-dev/dmenu-abdelllatif-dev.git"
