@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-socketcan-interface
-	pkgdesc = Generic CAN interface description with helpers for filtering and driver implementation. Further a socketcan implementation based on boost::asio is included.
+	pkgdesc = Generic CAN interface description with helpers for filtering and driver implementation. Further a socketcan implementation based on boost1.69::asio is included.
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/socketcan_interface?distro=melodic
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ros-melodic-socketcan-interface
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = boost
+	depends = boost1.69
 	depends = linux-headers
 	depends = ros-melodic-class-loader
 	source = ros-melodic-socketcan-interface-0.8.5.tar.gz::https://github.com/ros-industrial/ros_canopen/archive/0.8.5.tar.gz

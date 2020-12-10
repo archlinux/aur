@@ -2,11 +2,11 @@
 # Contributor: michaelchou <michaeljchou at the hotmail domain which is .com>
 
 pkgname=ros-melodic-socketcan-interface
-pkgdesc='Generic CAN interface description with helpers for filtering and driver implementation. Further a socketcan implementation based on boost::asio is included.'
+pkgdesc='Generic CAN interface description with helpers for filtering and driver implementation. Further a socketcan implementation based on boost1.69::asio is included.'
 url="http://wiki.ros.org/socketcan_interface?distro=melodic"
 
 pkgver='0.8.5'
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 license=('LGPL3')
 
@@ -17,7 +17,7 @@ makedepends=(cmake ros-build-tools ${ros_makedepends[@]})
 ros_depends=(
   ros-melodic-class-loader
 )
-depends=(boost linux-headers ${ros_depends[@]})
+depends=(boost1.69 linux-headers ${ros_depends[@]})
 
 _dir="ros_canopen-${pkgver}/socketcan_interface"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-industrial/ros_canopen/archive/${pkgver}.tar.gz")
@@ -42,7 +42,8 @@ build() {
         -DCATKIN_ENABLE_TESTING=0 \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+		 -DBOOST_ROOT=/opt/boost1.69
   make
 }
 
