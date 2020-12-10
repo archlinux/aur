@@ -1,3 +1,4 @@
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
 # Contributor: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor: Armin K. <krejzi at email dot com>
 # Contributor: Kristian Klausen <klausenbusk@hotmail.com>
