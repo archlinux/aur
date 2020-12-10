@@ -9,7 +9,7 @@ url='https://github.com/elementary/wingpanel-indicator-datetime'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('evolution-data-server' 'glib2' 'glibc' 'gtk3' 'libgee' 'libical'
-         'libgranite.so' 'libwingpanel-3.0.so')
+         'libgranite.so' 'libwingpanel-2.0.so' 'libhandy')
 makedepends=('git' 'granite' 'meson' 'vala' 'wingpanel')
 provides=('wingpanel-indicator-datetime')
 conflicts=('wingpanel-indicator-datetime')
