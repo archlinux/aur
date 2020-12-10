@@ -1,7 +1,7 @@
 pkgbase = subtitlecomposer
 	pkgdesc = A KDE subtitle editor
 	pkgver = 0.7.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://invent.kde.org/kde/subtitlecomposer
 	arch = i686
 	arch = x86_64
@@ -27,7 +27,9 @@ pkgbase = subtitlecomposer
 	optdepends = ruby: scripting
 	optdepends = python: scripting
 	source = https://invent.kde.org/kde/subtitlecomposer/-/archive/v0.7.0/subtitlecomposer-v0.7.0.tar.bz2
+	source = 0001-fix-mpv-compile.patch
 	sha256sums = 5292006e551793f63d0db68c775eb63030c863f9815fabb0387ca0db5cdbfd77
+	sha256sums = 2d3629904b980c9897d437f68a21efe484294299775be3f1562e4c3ff76e5878
 
 pkgname = subtitlecomposer
 

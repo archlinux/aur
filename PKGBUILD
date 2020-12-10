@@ -13,7 +13,7 @@
 
 pkgname=subtitlecomposer
 pkgver=0.7.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A KDE subtitle editor'
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/kde/${pkgname}"
@@ -38,8 +38,15 @@ optdepends=('gstreamer: GStreamer videoplayer backend'
             'ruby: scripting'
             'python: scripting')
 
-source=("https://invent.kde.org/kde/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
-sha256sums=('5292006e551793f63d0db68c775eb63030c863f9815fabb0387ca0db5cdbfd77')
+source=("https://invent.kde.org/kde/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2"
+        "0001-fix-mpv-compile.patch")
+sha256sums=('5292006e551793f63d0db68c775eb63030c863f9815fabb0387ca0db5cdbfd77'
+            '2d3629904b980c9897d437f68a21efe484294299775be3f1562e4c3ff76e5878')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-v${pkgver}"
+  patch -Np1 -i ../0001-fix-mpv-compile.patch
+}
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
