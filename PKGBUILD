@@ -9,8 +9,7 @@ arch=('i686' 'x86_64' 'arm' 'aarch64')
 depends=('qt5-base')
 makedepends=('git' 'extra-cmake-modules' 'ninja' 'boost')
 optdepends=('qca: encryption support'
-            'libldap: LDAP support'
-            'qt5-tools: translations support')
+            'libldap: LDAP support')
 provides=('quassel-core')
 conflicts=('quassel-core')
 source=("$pkgname-$pkgver"::"git+https://github.com/quassel/quassel")
