@@ -1,4 +1,4 @@
-pkgbase = dmenu-abdellatif-git
+pkgbase = dmenu-abdellatif
 	pkgdesc = my dmenu costume build
 	pkgver = 0.5.5
 	pkgrel = 1
@@ -22,5 +22,5 @@ pkgbase = dmenu-abdellatif-git
 	source = git+https://github.com/abdellatif-dev/dmenu-abdelllatif-dev.git
 	md5sums = SKIP
 
-pkgname = dmenu-abdellatif-git
+pkgname = dmenu-abdellatif
 
