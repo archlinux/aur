@@ -1,14 +1,14 @@
 pkgbase = python-humanfriendly
 	pkgdesc = Human friendly input/output in Python
-	pkgver = 9.0
+	pkgver = 9.1
 	pkgrel = 1
 	url = https://github.com/xolox/python-humanfriendly
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/xolox/python-humanfriendly/archive/9.0.tar.gz
-	md5sums = 15b9e0a179941aa2bfe01a0cfc4cf6d5
+	source = https://github.com/xolox/python-humanfriendly/archive/9.1.tar.gz
+	md5sums = 752c33e1e1ee2d9ebfa972ffced6c2a7
 
 pkgname = python-humanfriendly
 
