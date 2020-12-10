@@ -3,13 +3,14 @@
 pkgname=pamixer-git
 _realname=pamixer
 pkgver=20191030
-pkgrel=1
+pkgrel=2
 pkgdesc="Pulseaudio command-line mixer like amixer"
 arch=('i686' 'x86_64')
 url="https://github.com/cdemoulins/pamixer"
 license=('GPL3')
 depends=('libpulse' 'boost-libs')
 makedepends=('git' 'boost')
+conflicts=('pamixer')
 
 source=(git+https://github.com/cdemoulins/pamixer.git)
 md5sums=('SKIP')
