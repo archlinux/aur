@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosconsole
 	pkgdesc = ROS - ROS console output library.
 	pkgver = 1.13.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rosconsole
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = ros-melodic-rosconsole
 	makedepends = ros-melodic-catkin
 	makedepends = log4cxx
 	makedepends = apr
-	makedepends = boost
+	makedepends = boost1.69
 	makedepends = apr-util
 	depends = ros-melodic-rostime
 	depends = ros-melodic-cpp-common
