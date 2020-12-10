@@ -2,34 +2,35 @@
 # Maintainer: Bijaya Dangol <dangoldbj23@gmail.com>
 # Maintainer: Virgil Dupras <hsoft@hardcoded.net>
 pkgname=dupeguru
-pkgver=4.0.4
-pkgrel=4
+pkgver=4.1.0
+_pkgver="${pkgver}-alpha"
+pkgrel=1
 pkgdesc="Find duplicate files on your system"
 arch=('x86_64')
 url="https://dupeguru.voltaicideas.net/"
-license=('BSD')
+license=('GPL3')
 depends=('python' 'python-pyqt5' 'libxkbcommon-x11' 'python-send2trash')
 makedepends=(
     python-sphinx
 )
 source=(
-    https://github.com/arsenetar/${pkgname}/releases/download/${pkgver}/dupeguru-src-${pkgver}_RC.tar.gz
+    https://github.com/glubsy/${pkgname}/releases/download/${_pkgver}/dupeguru-src-${_pkgver}.tar.xz
 )
 md5sums=(
- '85184ae7fa32a917541d359638123767'
+ '6faf275a1e1be0c42e5faa32d2ddf7ab'
 )
 provides=("dupeguru")
-conflicts=("dupeguru-se" "dupeguru-pe" "dupeguru-me")
+conflicts=("dupeguru-git" "dupeguru-se" "dupeguru-pe" "dupeguru-me")
 
 prepare() {
-  cd "$srcdir"
+  cd "${srcdir}"
   sed -i "s/hsaudiotag3k>=1.1.3/hsaudiotag3k>=1.1.*/g" requirements.txt
   # replace hardcoded icon path in .desktop file
   sed -i "s/\(.*iconpath.*\"\).*\"/\1dupeguru\"/g" pkg/arch/dupeguru.json
 }
 
 build() {
-  cd "$srcdir"
+  cd "${srcdir}"
   # Instead of doing the full ./bootstrap.sh
   python3 -m venv env --system-site-packages
   source env/bin/activate
@@ -41,7 +42,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir"
+  cd "${srcdir}"
   
   cp -R "help" "build"
   cp -R "locale" "build"

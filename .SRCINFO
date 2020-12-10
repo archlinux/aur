@@ -1,21 +1,22 @@
 pkgbase = dupeguru
 	pkgdesc = Find duplicate files on your system
-	pkgver = 4.0.4
-	pkgrel = 4
+	pkgver = 4.1.0
+	pkgrel = 1
 	url = https://dupeguru.voltaicideas.net/
 	arch = x86_64
-	license = BSD
+	license = GPL3
 	makedepends = python-sphinx
 	depends = python
 	depends = python-pyqt5
 	depends = libxkbcommon-x11
 	depends = python-send2trash
 	provides = dupeguru
+	conflicts = dupeguru-git
 	conflicts = dupeguru-se
 	conflicts = dupeguru-pe
 	conflicts = dupeguru-me
-	source = https://github.com/arsenetar/dupeguru/releases/download/4.0.4/dupeguru-src-4.0.4_RC.tar.gz
-	md5sums = 85184ae7fa32a917541d359638123767
+	source = https://github.com/glubsy/dupeguru/releases/download/4.1.0-alpha/dupeguru-src-4.1.0-alpha.tar.xz
+	md5sums = 6faf275a1e1be0c42e5faa32d2ddf7ab
 
 pkgname = dupeguru
 
