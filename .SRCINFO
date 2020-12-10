@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-mavros
 	pkgdesc = ROS - MAVROS -- MAVLink extendable communication node for ROS with proxy for Ground Control Station.
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/mavros
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ros-melodic-mavros
 	makedepends = ros-melodic-mavlink
 	makedepends = ros-melodic-angles
 	makedepends = ros-melodic-cmake-modules
-	makedepends = boost
+	makedepends = boost1.69
 	makedepends = eigen
 	makedepends = geographiclib
 	depends = ros-melodic-diagnostic-updater
