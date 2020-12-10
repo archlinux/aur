@@ -1,0 +1,18 @@
+pkgbase = python-pyarrow-bin
+	pkgdesc = Python library for Apache Arrow
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = Python library for Apache Arrow
+	arch = any
+	license = Apache V2
+	makedepends = python-pip
+	depends = python>=3.8.0
+	depends = python<3.9.0
+	depends = python-numpy
+	conflicts = python-pyarrow
+	replaces = python-pyarrow
+	source = https://files.pythonhosted.org/packages/7c/93/23e304a4238d3e776e0ab43dfd4a78f602c8f51ef0c1adca97477f63161e/pyarrow-2.0.0-cp38-cp38-manylinux2014_x86_64.whl
+	md5sums = 6091b93580cdd8c7db263f1774eb112b
+
+pkgname = python-pyarrow-bin
+
