@@ -1,7 +1,7 @@
 # Maintainer: pryme-svg <edoc.www@gmail.com>
 
 pkgname=jfetch-git
-pkgver=r65.4fa1731
+pkgver=rr72.796241c
 pkgrel=1
 pkgdesc="A minimal Linux fetch script"
 arch=('any')
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 package() {
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 license "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir/" install
 }
