@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-tracetools
 	pkgdesc = ROS - Wrapper interface for tracing libraries.
 	pkgver = 0.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bosch-robotics-cr/tracetools
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ros-melodic-tracetools
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	makedepends = boost
+	makedepends = boost1.69
 	makedepends = pkg-config
 	source = ros-melodic-tracetools-0.2.1.tar.gz::https://github.com/bosch-robotics-cr/tracetools/archive/0.2.1.tar.gz
 	sha256sums = 3a2aa03551d6de84939260bb4e02b528bec53de81f0bebf44cc4f4610470eaff
