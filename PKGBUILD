@@ -9,6 +9,7 @@ arch=(x86_64)
 url='http://www.gnu.org/software/gdb/'
 license=(GPL3)
 depends=(gdb-common)
+makedepends=(guile2.0)
 options=(!emptydirs)
 source=(http://ftp.gnu.org/gnu/gdb/gdb-$pkgver.tar.xz)
 sha256sums=('f82f1eceeec14a3afa2de8d9b0d3c91d5a3820e23e0a01bbb70ef9f0276b62c0')
