@@ -2,7 +2,7 @@
 
 pkgbase=ivre
 pkgname=('ivre' 'ivre-web' 'ivre-docs' 'python-ivre' 'python2-ivre')
-pkgver=0.9.15
+pkgver=0.9.16
 pkgrel=1
 pkgdesc='Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://ivre.rocks/'
 license=('GPL3')
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/cea-sec/$pkgname/v$pkgver/pkg/apache/ivre.conf")
-sha512sums=('99ecfa55c7189cc62a85fcd982cce02951b8469dd93637ed3c62757b2d96635df2333676a2ebca8133b1c19bc0cc05056eaf30a54c40c64e28c08cfee94d7353'
+sha512sums=('0fc0c1bf614805ccbf656916c89f175fd2cf26d3acd89c3865615214360953f6a068796280154b5bab5c06bae4b33e1f572ebc0fbff2926cd1af47acc6c86ef2'
             '9db82963976ed0134c88ca779ab2d8ac92fdaf5eff8f6e6c47014b56f92cb78313acd6b6ddee8de13de6c3ae8a2988f216a659496f16b756836475a9b774b0c5')
 
 prepare() {
@@ -99,8 +99,7 @@ package_ivre-web() {
 
 package_python-ivre() {
   depends=('python' 'python-pymongo' 'python-future' 'python-pyopenssl' 'python-cryptography')
-  optdepends=('python-py2neo: experimental flow analysis (Neo4j backend)'
-              'python-sqlalchemy: experimental PostgreSQL & SQLite backends'
+  optdepends=('python-sqlalchemy: experimental PostgreSQL & SQLite backends'
               'python-psycopg2: experimental PostgreSQL backend'
               'python-elasticsearch: experimental Elasticsearch backend'
               'python-elasticsearch-dsl: experimental Elasticsearch backend'
@@ -111,8 +110,7 @@ package_python-ivre() {
               'python-matplotlib: create graphs from command line tools'
               'python-dbus: 3D traceroute graphs'
               'mongodb: database server'
-              'postgresql: database server (experimental backend)'
-              'neo4j-community: database server (experimental flow analysis)')
+              'postgresql: database server (experimental backend)')
   pkgdesc+=' (library)'
 
   cd "$srcdir/$pkgbase-$pkgver"
@@ -128,8 +126,7 @@ package_python-ivre() {
 
 package_python2-ivre() {
   depends=('python2' 'python2-pymongo' 'python2-future' 'python2-pyopenssl' 'python2-cryptography')
-  optdepends=('python2-py2neo: experimental flow analysis (Neo4j backend)'
-              'python2-sqlalchemy: experimental PostgreSQL & SQLite backends'
+  optdepends=('python2-sqlalchemy: experimental PostgreSQL & SQLite backends'
               'python2-psycopg2: experimental PostgreSQL backend'
               'python2-elasticsearch: experimental Elasticsearch backend'
               'python2-elasticsearch-dsl: experimental Elasticsearch backend'
@@ -140,8 +137,7 @@ package_python2-ivre() {
               'python2-matplotlib: create graphs from command line tools'
               'python2-dbus: 3D traceroute graphs'
               'mongodb: database server'
-              'postgresql: database server (experimental backend)'
-              'neo4j-community: database server (experimental flow analysis)')
+              'postgresql: database server (experimental backend)')
   pkgdesc+=' (library)'
 
   cd "$srcdir/$pkgbase-$pkgver-py2"
