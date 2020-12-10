@@ -3,7 +3,7 @@
 pkgname=chkcrontab
 pkgver=1.7
 pkgrel=4
-pkgdesc="A tool for checking system crontab files (/etc/crontab and /etc/cron.d normally) for errors and common mistakes."
+pkgdesc="A tool for checking system crontab files for errors and common mistakes."
 arch=("any")
 url="https://github.com/lyda/chkcrontab"
 license=("Apache")

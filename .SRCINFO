@@ -1,5 +1,5 @@
 pkgbase = chkcrontab
-	pkgdesc = A tool for checking system crontab files (/etc/crontab and /etc/cron.d normally) for errors and common mistakes.
+	pkgdesc = A tool for checking system crontab files for errors and common mistakes.
 	pkgver = 1.7
 	pkgrel = 4
 	url = https://github.com/lyda/chkcrontab
