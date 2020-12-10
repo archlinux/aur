@@ -1,18 +1,18 @@
 pkgbase = tuxmath
-	pkgdesc = An arcade game that helps kids practice their math facts
+	pkgdesc = An educational math tutorial game starring Tux, the Linux Penguin
 	pkgver = 2.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tux4kids/tuxmath/
 	arch = i686
 	arch = x86_64
-	license = GPL
 	license = custom:OFL
-	license = custom
-	makedepends = make
+	license = GPL
 	depends = t4kcommon
 	options = !docs
-	source = https://github.com/tux4kids/tuxmath/archive/upstream/2.0.3.tar.gz
+	source = tuxmath-2.0.3.tar.gz::https://github.com/tux4kids/tuxmath/archive/upstream/2.0.3.tar.gz
+	source = menu_lan.patch
 	sha256sums = ab91bd6df17eb9377e5608701030bd32110a3588933bf0e4c26b5697fb2a4698
+	sha256sums = f6dad4cb620bf11ad9608dd95190ae6cafc78f0345fd92d8fb43a2a427dbb0df
 
 pkgname = tuxmath
 

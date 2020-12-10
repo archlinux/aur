@@ -1,0 +1,8 @@
+tuxmath-*.pkg.tar.zst
+tuxmath-*.pkg.tar.xz
+tuxmath-*.tar.gz
+tuxmath-*.log
+PKGBUILD-namcap.log
+tuxmath-upstream-*/
+pkg/
+src/
