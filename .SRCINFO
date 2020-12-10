@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-ros
 	pkgdesc = ROS - ROS packaging system.
 	pkgver = 1.14.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/ROS
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = ros-melodic-ros
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-rosmake
-	depends = ros-melodic-rosboost-cfg
+	depends = ros-melodic-rosboost1.69-cfg
 	depends = ros-melodic-rosbuild
 	depends = ros-melodic-rosclean
 	depends = ros-melodic-rosbash
