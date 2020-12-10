@@ -1,15 +1,15 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='gau'
-pkgver=1.0.7
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Fetch known URLs from AlienVault's Open Threat Exchange, the Wayback Machine, and Common Crawl"
 arch=('x86_64')
 url='https://github.com/lc/gau'
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('5672bd30f9da06b34a7d5b49f9f5e9ef1c8b83968f5801da3114a38fa563d8ad')
+sha256sums=('1d5cbf2e4a9268268d50eeed3d56608754b6fc0112faa4e26d298f83257f407b')
 
 prepare() {
   export GOPATH="${srcdir}/gopath"
