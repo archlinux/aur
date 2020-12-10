@@ -9,3 +9,6 @@ _pkgname="CAJViewer-x86_64-libc-2.24.AppImage"
 noextract=(${_pkgname})
 options=("!strip")
 
+prepare() {
+	msg2 '这是个空包, 啥都没做!!!'
+}
