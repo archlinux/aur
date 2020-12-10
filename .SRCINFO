@@ -1,7 +1,7 @@
 pkgbase = bookletimposer
 	pkgdesc = Achieve some basic imposition on PDF documents
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kjo.herbesfolles.org/bookletimposer/
 	install = bookletimposer.install
 	arch = any

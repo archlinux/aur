@@ -4,7 +4,7 @@
 
 pkgname=bookletimposer
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Achieve some basic imposition on PDF documents"
 arch=('any')
 url="http://kjo.herbesfolles.org/bookletimposer/"
