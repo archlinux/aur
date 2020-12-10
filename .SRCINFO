@@ -1,0 +1,13 @@
+pkgbase = ignition-sensors
+	pkgdesc = Provides numerous sensor models designed to generate realistic data from simulation environments.
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://ignitionrobotics.org/libs/sensors
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	source = ignition-sensors-4.0.0.tar.gz::https://github.com/ignitionrobotics/ign-sensors/archive/ignition-sensors4_4.0.0.tar.gz
+	sha256sums = d7b3dd18e5130532d202acd08be0f941e552bd0f13154a0e9cd31d00919f2952
+
+pkgname = ignition-sensors
+
