@@ -4,7 +4,8 @@
 
 pkgname=nvhpc
 _REL_YEAR=2020
-pkgver=20.9
+_CUDA_VER=11.1
+pkgver=20.11
 pkgrel=1
 pkgdesc='NVIDIA HPC SDK'
 arch=('x86_64')
@@ -14,10 +15,10 @@ depends=('numactl' 'java-runtime')
 makedepends=('bash')
 replaces=('pgi-compilers')
 conflicts=('pgi-compilers')
-_pkgname="${pkgname}_${_REL_YEAR}_${pkgver//.}_Linux_${arch}_cuda_11.0"
+_pkgname="${pkgname}_${_REL_YEAR}_${pkgver//.}_Linux_${arch}_cuda_${_CUDA_VER}"
 source=("https://developer.download.nvidia.com/hpc-sdk/$pkgver/$_pkgname.tar.gz"
         "nvhpc.sh")
-sha256sums=('8fa07d762e1b48155f3d531a16b8fffeb6f28b9d8a0033a1f2ba47fdb16ffd58'
+sha256sums=('eeba5d8aa6b6b0ffdfa9cc7b96d5df53581c5c7061c5d71e049ba7c2a9d3585a'
             'b4066e52abf7ae524f4dce64bb534ca7c77c3d5371d61d8e73d82fd648fad746')
 options=(!strip)
 
