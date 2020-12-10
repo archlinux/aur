@@ -1,0 +1,19 @@
+pkgbase = mfakto
+	pkgdesc = An OpenCL program for Mersenne prefactoring.
+	pkgver = 0.15pre7
+	pkgrel = 1
+	url = https://mersenneforum.org/showthread.php?t=15646
+	arch = x86_64
+	license = GPL3
+	depends = ocl-icd
+	depends = opencl-headers
+	depends = opencl-driver
+	source = https://download.mersenne.ca/mfakto/mfakto-0.15pre7/mfakto-0.15pre7-src.zip
+	source = make.patch
+	md5sums = e382f2c58ff1b7cde193ac776878d51a
+	md5sums = 93a017fa68adea89184efba1268b0aaf
+	sha256sums = 09874202640fe38d3f4ecf056bbed7cbf10daeedf083e3528efe27b2e3982e58
+	sha256sums = SKIP
+
+pkgname = mfakto
+
