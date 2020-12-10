@@ -1,12 +1,14 @@
 pkgbase = dlib
 	pkgdesc = A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques
 	pkgver = 19.21
-	pkgrel = 3
+	pkgrel = 4
 	url = http://dlib.net
 	arch = x86_64
 	license = custom
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = cuda
+	makedepends = cudnn
 	depends = cblas
 	depends = lapack
 	depends = blas
