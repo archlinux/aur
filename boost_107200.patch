@@ -4,16 +4,16 @@ Date: Mon, 30 Dec 2019 16:16:06 +0100
 Subject: [PATCH] Fix compilation with Boost 1.72+ and Qt 5.14.0
 
 ---
- src/appleseed.common/application/application.cpp          | 3 +++
+ src/appleseed.shared/application/application.cpp          | 3 +++
  .../mainwindow/rendering/pixelcolortracker.cpp            | 8 ++++----
  src/appleseed/foundation/platform/path.h                  | 1 +
  .../foundation/utility/benchmark/benchmarkaggregator.cpp  | 3 +--
  4 files changed, 9 insertions(+), 6 deletions(-)
 
-diff --git a/src/appleseed.common/application/application.cpp b/src/appleseed.common/application/application.cpp
+diff --git a/src/appleseed.shared/application/application.cpp b/src/appleseed.shared/application/application.cpp
 index 9f0e5d0ecd..a5c8077a61 100644
---- a/src/appleseed.common/application/application.cpp
-+++ b/src/appleseed.common/application/application.cpp
+--- a/src/appleseed.shared/application/application.cpp
++++ b/src/appleseed.shared/application/application.cpp
 @@ -39,6 +39,9 @@
  #include "foundation/utility/settings.h"
  #include "foundation/utility/string.h"
