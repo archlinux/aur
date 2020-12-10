@@ -1,0 +1,14 @@
+pkgbase = python-pyfttt
+	pkgdesc = Python tools for interacting with IFTTT Webhooks Channel.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/briandconnelly/pyfttt
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-requests
+	source = https://github.com/briandconnelly/pyfttt/archive/v0.3.2.tar.gz
+	md5sums = 27390768888ca9e50fe8b4b86d018755
+
+pkgname = python-pyfttt
+
