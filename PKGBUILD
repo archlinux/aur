@@ -2,14 +2,15 @@
 
 pkgname=picosvg
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool to simplify SVG files, intended for use as part of a font build'
 arch=('any')
 url="https://github.com/googlefonts/$_pkgname"
 license=('Apache')
 _py_deps=('lxml'
           'skia-pathops')
-depends=('python'
+depends=('absl-py'
+		 'python'
          "${_py_deps[@]/#/python-}")
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
