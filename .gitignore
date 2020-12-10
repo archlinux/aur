@@ -4,3 +4,5 @@
 azurespheresdk/
 pkg/
 src/
+*.log
+*.zst
