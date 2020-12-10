@@ -15,7 +15,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=
+install=$pkgname.install
 changelog=
 source=("http://download.savannah.gnu.org/releases/mlv/mlv-2.0.2/libmlv0_2.0.2-1_amd64.deb"
 	"http://download.savannah.gnu.org/releases/mlv/mlv-2.0.2/libmlv0-dev_2.0.2-1_amd64.deb")

@@ -3,6 +3,7 @@ pkgbase = mlv
 	pkgver = 2.0.2
 	pkgrel = 6
 	url = http://www-igm.univ-mlv.fr/~boussica/mlv/api/French/html/index.html
+	install = mlv.install
 	arch = any
 	license = GPL
 	depends = sdl
