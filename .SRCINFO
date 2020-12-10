@@ -1,7 +1,7 @@
 pkgbase = python-scikit-sparse
 	pkgdesc = Scikit sparse matrix package
 	pkgver = 0.4.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/scikit-sparse/
 	arch = x86_64
 	license = GPL
