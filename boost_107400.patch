@@ -1,0 +1,12 @@
+diff -Naur a/src/appleseed/renderer/modeling/project/assethandler.cpp b/src/appleseed/renderer/modeling/project/assethandler.cpp
+--- a/src/appleseed/renderer/modeling/project/assethandler.cpp	2019-08-31 17:49:01.000000000 +0200
++++ b/src/appleseed/renderer/modeling/project/assethandler.cpp	2020-12-10 03:26:57.768459744 +0100
+@@ -80,7 +80,7 @@
+         try
+         {
+             create_directories(dest_path.parent_path());
+-            copy_file(source_path, dest_path, copy_option::overwrite_if_exists);
++            copy_file(source_path, dest_path, copy_options::overwrite_existing);
+             return true;
+         }
+         catch (const std::exception& e)     // namespace qualification required

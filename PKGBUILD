@@ -13,15 +13,18 @@ url="https://appleseedhq.net"
 license=('MIT')
 provides=('appleseed')
 conflicts=('appleseed')
-depends=(python2 python embree qt5-base seexpr-qt5 boost openexr opencolorio 'openimageio=2.1.19.0' 'openshadinglanguage=1.10.13' xerces-c zlib)
-makedepends=(cmake git ninja)
+depends=(python2 python embree qt5-base seexpr-qt5 boost{,-python2}-libs openexr opencolorio 'openimageio=2.1.19.0' 'openshadinglanguage=1.10.13' xerces-c zlib)
+makedepends=(boost{,-python2} cmake git ninja)
 options=()
 source=("${pkgname}::git+https://github.com/appleseedhq/appleseed.git${_fragment}"
+        "boost_107400.patch"
         "cmake.extra.install.dirs.remove.patch"
         )
 sha256sums=('SKIP'
+            '8e7d453ced2a58b162b6e8e2ace09916755b70821837b2c7502a3417f03a25a3'
             '87b987f006e45d11cc4dfec2bd37fd2b760fd2bdbf06f48e7d467cbca9b2b301')
 b2sums=('SKIP'
+        '8461888dc541113700f377379b0e688bdbc6a5b79bfda4c1b061c2e3811a03c43583272862d6b084f092c6bb372c15b31d2a25849b9e2d89d1e3ed657f680846'
         '85d278ea12672e44657fbfe8695744508db88cea54dbc93410632b05175c94a5e29e28dfb739ba88ec10a2449ff499484854ba177db03f5e41b24d2b8e6b9328')
 
 pkgver() {
@@ -29,7 +32,7 @@ pkgver() {
 }
 
 prepare() {
-  git -C "${srcdir}/${pkgname}" apply -v ${srcdir}/{cmake.extra.install.dirs.remove}.patch
+  git -C "${srcdir}/${pkgname}" apply -v ${srcdir}/{boost_107400,cmake.extra.install.dirs.remove}.patch
   sed '/python37/s/37/39/' -i "${srcdir}/${pkgname}"/src/appleseed.python/CMakeLists.txt
 }
 
