@@ -1,6 +1,6 @@
 pkgbase = vvenc-git
 	pkgdesc = Fraunhofer Versatile Video Encoder (VVenC)
-	pkgver = 0.1.0.1.r0.gbc966db
+	pkgver = 0.2.0.0.r0.g58282d7
 	pkgrel = 1
 	url = https://github.com/fraunhoferhhi/vvenc
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
 
 pkgname=vvenc-git
-pkgver=0.1.0.1.r0.gbc966db
+pkgver=0.2.0.0.r0.g58282d7
 pkgrel=1
 pkgdesc="Fraunhofer Versatile Video Encoder (VVenC)"
 arch=('x86_64')
@@ -28,13 +28,7 @@ build() {
 
 package() {
 	cd "${srcdir}/vvenc"
+	cp -r "install" "$pkgdir/usr"
 	mkdir -p "$pkgdir/usr/share/licenses/vvenc"
-	mkdir -p "$pkgdir/usr/bin"
-	mkdir -p "$pkgdir/usr/lib"
 	install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/vvenc/"
-	install -Dm755 "install/bin/release-shared/vvencapp" "$pkgdir/usr/bin/"
-	install -Dm755 "install/bin/release-shared/vvencFFapp" "$pkgdir/usr/bin/"
-	install -Dm755 "install/lib/release-shared/libvvenc.so" "$pkgdir/usr/lib/"
-	cp -r "install/include" "$pkgdir/usr/"
-	cp -r "install/lib/cmake" "$pkgdir/usr/lib/"
 }
