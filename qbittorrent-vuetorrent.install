@@ -1,0 +1,6 @@
+post_install() {
+    cat << EOF
+>>> Make sure to enable 'Use alternative Web UI' in qBittorrent under Preferences->Web UI.
+>>> Set 'File location' to /usr/share/qbittorrent-vuetorrent.
+EOF
+}
