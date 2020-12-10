@@ -1,8 +1,8 @@
 
 # Maintainer: Matthias Eberlein
 pkgname=youtube-to-mp3
-pkgver=3.9.9.49
-pkgrel=3
+pkgver=3.9.9.50
+pkgrel=1
 epoch=
 pkgdesc="YouTube to Mp3 converter\nDownloads audio from YouTube or Vimeo and saves it to mp3 or m4a format to listen to locally"
 arch=('any')
