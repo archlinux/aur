@@ -1,0 +1,17 @@
+pkgbase = perl-yaml-pp
+	pkgdesc = Simple configuration automation
+	pkgver = 0.026
+	pkgrel = 1
+	url = http://search.cpan.org/dist/YAML-PP
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-deep>=0
+	makedepends = perl-test-warn>=0
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TI/TINITA/YAML-PP-0.026.tar.gz
+	sha512sums = df13083fd641ddbcbdc9fe69875d459d3fd7f6295b8fd281b1a216794397f9966df552515dda05c4b001a426b91536ffa04bc519babccf4b4b9d5c929eb3d7fa
+
+pkgname = perl-yaml-pp
+
