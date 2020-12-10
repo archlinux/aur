@@ -3,8 +3,8 @@
 _pkgname=spotitube
 pkgname="${_pkgname}-bin"
 provides=(spotitube)
-pkgver=30
-pkgrel=1
+pkgver=31
+pkgrel=0
 pkgdesc="Synchronize your Spotify collections downloading from external providers"
 arch=('x86_64')
 url="https://github.com/streambinder/spotitube"
@@ -14,7 +14,7 @@ depends=('youtube-dl' 'ffmpeg' 'xdg-utils')
 source=("https://github.com/streambinder/spotitube/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.bin"
         "https://raw.githubusercontent.com/streambinder/spotitube/master/LICENSE")
         
-sha256sums=("8eb24169e0c2e83661a720e97363dd5322385c4f064e50d987aee30169323d1f"
+sha256sums=("be396e472e548de913f8e1de13d05b1d65e772657ddeb9fb752c628872ea3f2c"
             "SKIP")
 
 package() {
