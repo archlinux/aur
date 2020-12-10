@@ -2,15 +2,15 @@
 
 pkgname=gmnisrv-git
 _pkgname=gmnisrv
-pkgrel=1
+pkgrel=2
 pkgver=r58.70fadc2
 pkgdesc="A high-performance Gemini server for POSIX systems"
 url="https://git.sr.ht/~sircmpwn/gmnisrv"
 arch=("any")
 license=("GPL")
 source=("gmnisrv::git+${url}")
-depends=('openssl')
-makedepends=('git' 'scdoc')
+depends=("openssl" "mailcap")
+makedepends=("git" "scdoc")
 
 pkgver() {
     cd "${_pkgname}"
