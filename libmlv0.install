@@ -1,7 +1,9 @@
 post_install() {
     ldconfig
+    ln -s /usr/lib/libSDL_gfx.so.16.9.1 /usr/lib/libSDL_gfx.so.15
 }
 
 post_remove() {
-    post_install
+    ldconfig
+    rm /usr/lib/libSDL_gfx.so.15
 }
