@@ -1,6 +1,6 @@
 pkgbase = python-tifffile
 	pkgdesc = Read and write image data from and to TIFF files
-	pkgver = 2020.12.4
+	pkgver = 2020.12.8
 	pkgrel = 1
 	url = https://github.com/cgohlke/tifffile
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-tifffile
 	optdepends = python-imagecodecs>=2020.5.30: required only for encoding or decoding LZW, JPEG, etc
 	optdepends = python-lxml>=4.6.2: required only for validating and printing XML
 	optdepends = python-zarr>=2.6.1: required only for opening zarr storage
-	source = https://files.pythonhosted.org/packages/source/t/tifffile/tifffile-2020.12.4.tar.gz
-	sha256sums = 5a388f8f3ca3f69a62f7c1cda72837fa5e9070e89992e7702408a786d526b3ff
+	source = https://files.pythonhosted.org/packages/source/t/tifffile/tifffile-2020.12.8.tar.gz
+	sha256sums = 6c65c3997a21cad40349921e557a383fd5f0ebd728f5e91fa6c8f8f9e45c4bbd
 
 pkgname = python-tifffile
 
