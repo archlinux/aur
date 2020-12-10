@@ -12,6 +12,7 @@ pkgbase = gnome-social-git
 	depends = appstream-glib
 	depends = libhandy
 	depends = gtksourceview4
+	depends = gtk4
 	provides = gnome-social
 	conflicts = gnome-social
 	source = git+https://gitlab.gnome.org/World/social.git

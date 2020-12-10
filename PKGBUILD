@@ -1,4 +1,4 @@
-# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+# Maintainer: Lahfa Samy <samy@lahfa.xyz>
 pkgname=gnome-social-git
 _name=social
 pkgver=0.1.0.r206.1cbaccd
@@ -7,7 +7,7 @@ pkgdesc="A Mastodon and Pleroma application for GNOME"
 arch=(x86_64)
 url="https://gitlab.gnome.org/World/social"
 license=('GPL3')
-depends=('appstream-glib' 'libhandy' 'gtksourceview4')
+depends=('appstream-glib' 'libhandy' 'gtksourceview4' 'gtk4')
 makedepends=('git' 'meson' 'rust' 'cmake')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
