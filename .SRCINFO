@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-ackermann-steering-controller
 	pkgdesc = ROS - Controller for a steer drive mobile base.
 	pkgver = 0.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/ackermann_steering_controller
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = ros-melodic-ackermann-steering-controller
 	makedepends = ros-melodic-nav-msgs
 	makedepends = ros-melodic-realtime-tools
 	makedepends = ros-melodic-pluginlib
-	makedepends = boost
+	makedepends = boost1.69
 	depends = ros-melodic-tf
 	depends = ros-melodic-diff-drive-controller
 	depends = ros-melodic-roscpp
@@ -31,7 +31,7 @@ pkgbase = ros-melodic-ackermann-steering-controller
 	depends = ros-melodic-nav-msgs
 	depends = ros-melodic-realtime-tools
 	depends = ros-melodic-pluginlib
-	depends = boost
+	depends = boost1.69
 	source = ros-melodic-ackermann-steering-controller-0.17.1.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.17.1.tar.gz
 	sha256sums = 373e5b00522a7e0343fa6b7ffe95ccf7fe6bd44622fe28534a05e2abcd8dc6ba
 
