@@ -1,7 +1,7 @@
 pkgbase = python-pyquota
 	pkgdesc = A simple python wrapper for C apis of quotactl
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tjumyk/pyquota
 	arch = any
 	makedepends = python-setuptools

@@ -1,7 +1,7 @@
 # Maintainer: Adrien Wu <adrien.sf.wu@gmail.com>
 pkgname=python-pyquota
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple python wrapper for C apis of quotactl"
 url="https://github.com/tjumyk/pyquota"
 arch=('any')
