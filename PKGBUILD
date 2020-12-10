@@ -2,7 +2,7 @@
 
 pkgname=steam-acolyte
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight user account switcher/login keeper for steam"
 arch=('any')
 url="https://github.com/coldfix/${pkgname}"
@@ -23,5 +23,5 @@ package() {
     install -D -m 0644 "README.rst" "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
     install -D -m 0644 "UNLICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/UNLICENSE"
     install -D -m 0644 "acolyte.desktop" "${pkgdir}/usr/share/applications/acolyte.desktop"
-    install -D -m 0644 "steam_acolyte/acolyte.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/acolyte.svg"
+    install -D -m 0644 "steam_acolyte/acolyte.svg" "${pkgdir}/usr/share/pixmaps/acolyte.svg"
 }

@@ -1,7 +1,7 @@
 pkgbase = steam-acolyte
 	pkgdesc = Lightweight user account switcher/login keeper for steam
 	pkgver = 0.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coldfix/steam-acolyte
 	arch = any
 	license = custom:UNLICENSE
