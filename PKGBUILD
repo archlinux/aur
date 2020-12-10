@@ -1,8 +1,6 @@
 # Maintainer: Mohammad Hossein Sekhavat <sekhavat17@gmail.com>
 # Original Maintainer: Ista Zahn <istazahn[at]gmail[dot]com>
 
-pkgbase=python-pyarrow-bin
-_pyname=pyarrow
 pkgname=('python-pyarrow-bin')
 depends=(
   'python>=3.8.0'
@@ -10,10 +8,10 @@ depends=(
   'python-numpy'
 )
 conflicts=('python-pyarrow')
-replaces=('python-pyarrow')
+provides=('python-pyarrow')
 makedepends=('python-pip')
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for Apache Arrow"
 arch=('any')
 url="Python library for Apache Arrow"
