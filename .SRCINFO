@@ -1,6 +1,6 @@
 pkgbase = python-wheezy
 	pkgdesc = A lightweight template library
-	pkgver = 3.0.2
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/wheezy.template
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-wheezy
 	makedepends = python-setuptools
 	depends = python
 	conflicts = python2-wheezy
-	source = https://files.pythonhosted.org/packages/source/w/wheezy.template/wheezy.template-3.0.2.tar.gz
-	sha256sums = 09d3a121435f5fb0c29437c737790518e639e307739bba25116b6b0aefcf045f
+	source = https://files.pythonhosted.org/packages/source/w/wheezy.template/wheezy.template-3.0.3.tar.gz
+	sha256sums = 1254ba402e2f5720885945be026a643cc6820ea9b721835c9242c826c1d3e670
 
 pkgname = python-wheezy
 
