@@ -18,5 +18,5 @@ pkgbase = ignition-msgs-5
 	source = ignition-msgs-5.3.0::https://github.com/ignitionrobotics/ign-msgs/archive/ignition-msgs5_5.3.0.tar.gz
 	sha256sums = 1e11986cdf9549f1b4e2a6da1b978525ff2f60539a451b24db5b81ca2c0893df
 
-pkgname = ignition-msgs
+pkgname = ignition-msgs-5
 
