@@ -164,11 +164,12 @@ package_ibus-mozc-ut-united() {
 }
 
 package_emacs-mozc-ut-united() {
-  pkgdesc="Mozc for Emacs with UT dictionary"
+  pkgdesc="Emacs engine module for Mozc with UT dictionary"
   arch=('i686' 'x86_64')
-  depends=("mozc=${_mozcver}" 'emacs')
+  depends=('emacs')
   provides=('emacs-mozc')
   conflicts=('emacs-mozc' 'emacs-mozc-bin' 'emacs-mozc-ut2')
+  install=emacs-mozc.install
 
   cd "${srcdir}/mozc/src"
   install -D -m 755 out_linux/${_bldtype}/mozc_emacs_helper "${pkgdir}/usr/bin/mozc_emacs_helper"
@@ -177,5 +178,5 @@ package_emacs-mozc-ut-united() {
 }
 
 # Global pkgdesc and depends are here so that they will be picked up by AUR
-pkgdesc="IBus engine module for Mozc with UT dictionary"
-depends=('qt5-base' 'ibus>=1.4.1' 'zinnia')
+pkgdesc="A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)"
+depends=('qt5-base' 'zinnia')

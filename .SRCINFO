@@ -52,4 +52,15 @@ pkgname = ibus-mozc-ut-united
 	provides = ibus-mozc
 	conflicts = ibus-mozc
 	conflicts = ibus-mozc-ut2
+	
+pkgname = emacs-mozc-ut-united
+    pkgdesc = Emacs engine module for Mozc with UT dictionary
+	arch = i686
+	arch = x86_64
+	depends = emacs
+	provides = emacs-mozc
+	conflicts = emacs-mozc
+	conflicts = emacs-mozc-ut2
+	conflicts = emacs-mozc-bin
+
 
