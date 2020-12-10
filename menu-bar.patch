@@ -1,11 +1,13 @@
+diff --git a/build/main.js b/build/main.js
+index 188b186..21b0b54 100644
 --- a/build/main.js
 +++ b/build/main.js
-@@ -4541,6 +4541,8 @@
-                 .setAutoResize({ width: !0, height: !0 }))
-             : this.appService.setWindow(this.window, void 0),
-           this.appService.setUserAgent(),
-+          this.window.setAutoHideMenuBar(true),
-+          this.window.setMenuBarVisibility(false),
-           isPlatform(PLATFORM_DARWIN)
+@@ -4537,6 +4537,8 @@ module.exports = (function (modules) {
+             mainView.setAutoResize({ width: !0, height: !0 });
+         } else this.appService.setWindow(this.window, void 0);
+         this.appService.setUserAgent(),
++        this.window.setAutoHideMenuBar(true),
++        this.window.setMenuBarVisibility(false),
+           isPlatform(PLATFORM.DARWIN)
              ? this.window.on("moved", () => {
                  this.windowState.save();
