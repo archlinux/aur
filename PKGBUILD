@@ -1,36 +1,44 @@
 # Maintainer: Swix
 
 pkgname=gog-terraria
-pkgver=1.4.0.5.38805
-pkgrel=3
+pkgver=1.4.1.2.42620
+pkgrel=1
 epoch=1
+
+_gogrel=42620
+_gamename=${pkgname#gog-}
+_gamename=${_gamename//-/_}
+_setupname="setup_${_gamename}_${pkgver}_${_gogrel}.sh"
+
 pkgdesc="The very world is at your fingertips as you fight for survival, fortune, and glory."
 url="http://terraria.org/"
 license=('custom')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('sdl2')
 makedepends=('libarchive')
 optdepends=('firejail: Automatically sandbox this application from your OS')
-source=("gog://terraria_v${pkgver//./_}.sh"
+source=("${_setupname}::gogdownloader://${_gamename}/en3installer0"
         "${pkgname}.desktop"
         "$pkgname"
         "$pkgname.profile")
 
 # bsdtar is really cool but I want to control what I'm extracting
-noextract=("terraria_v${pkgver//./_}.sh")
-sha256sums=('3c2e0145f30829cf0c956a69aca8867a4027d9dadbcb0a359ad70eade3bae066'
+noextract=("${_setupname}")
+sha256sums=('37f3b68ff95a9fb3832dfd62062b22941f76ef419118665a3809164d2aadc376'
             '815bf359c2828cdefee1e33a978a84a2ebb538450197a5792b62e382ae3e3093'
             '223137957a9ba6474f73f8f6610d6d7dba154e70106792e2d8b4d70b67a6dfce'
             '9ec20a7515dd54a518da4fab006e0b2313deff1c341a3bd163f0e1305b6be5b6')
 
+
 # You need to download the gog.com installer file manually or with lgogdownloader.
-DLAGENTS+=("gog::/usr/bin/echo %u - This is is not a real URL, you need to download the GOG file manually to \"$PWD\" or setup a gog:// DLAGENT. Read this PKGBUILD for more information.")
+DLAGENTS+=("gogdownloader::/usr/bin/echo %u - This is is not a real URL, you need to download the GOG file manually to \"$PWD/${_setupname}\" or setup a gogdownloader:// DLAGENT. Read this PKGBUILD for more information.")
+#DLAGENTS+=("gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o")
 
 # Prevent compressing final package
 PKGEXT='.pkg.tar'
 
 prepare(){
-    datasource="terraria_v${pkgver//./_}.sh"
+    datasource="${_setupname}"
 
     offset=`sed -n '/.*offset=.*head/{s/.*head -n \([0-9]*\).*/\1/p;q}' "$datasource"`
     toskip=`sed -n '/filesizes=/{s/.*="\([0-9]*\)"/\1/p;q}' "$datasource"`
@@ -69,6 +77,7 @@ package(){
         "${pkgdir}/opt/${pkgname}/${pkgname}.profile"
 
     # Fix permissions
-    chmod +x "${pkgdir}/opt/${pkgname}/game/Terraria"{,Server}{,.bin.x86,.bin.x86_64}
+    chmod +x "${pkgdir}/opt/${pkgname}/game/Terraria"{,Server}{,.bin.x86_64}
+
     popd
 }
