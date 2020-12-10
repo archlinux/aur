@@ -1,9 +1,16 @@
 # Maintainer: Vasya Novikov <vnnn91@yandex.ru> (replace "nnn" with a single "n")
 
+# Note: if you want to use the system version of electron (one shipped with ArchLinux),
+# check out jitsi-meet-desktop on AUR.
+#
+# If you want to use the stand-alone version from npm, this package is the way to go.
+#
+# If unsure, try the system electron first.
+
 pkgname=jitsi-meet-electron
 pkgver=2.4.2
 pkgrel=1
-pkgdesc="Jitsi Meet desktop application powered by Electron"
+pkgdesc="Jitsi Meet desktop application powered by Electron. Uses npm version of electron"
 arch=('any')
 url="https://github.com/jitsi/jitsi-meet-electron"
 license=('APACHE-2.0')
@@ -13,18 +20,17 @@ optdepends=(
     'nodejs-webpack-cli: build-time dependency, to avoid re-downloading it'
 )
 source=(
-  jitsi-meet-electron.desktop
-  "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+    jitsi-meet-electron.desktop
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 )
 
-sha256sums=('d4ce7836a838be92d6484813737c424074a7747fd1b7eed9fbc061c4b2cd10cf'
-            '974c4a8d91b7ea93baaaefbaa4344da44e9590162ae73a70156c4c714265822f')
+sha256sums=(
+    'd4ce7836a838be92d6484813737c424074a7747fd1b7eed9fbc061c4b2cd10cf'
+    '974c4a8d91b7ea93baaaefbaa4344da44e9590162ae73a70156c4c714265822f'
+)
 
 build() {
     cd "${pkgname}-${pkgver}"
-    #### TODO: compile against system electron:
-    #### https://wiki.archlinux.org/index.php/Electron_package_guidelines
-    #### patches welcomed!
     npm install
     npm run dist
 }
