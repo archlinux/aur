@@ -6,13 +6,13 @@
     pkgname='ros-melodic-cartographer'
     pkgver='1.0.0'
     arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-    pkgrel=4
+    pkgrel=5
     license=('Apache 2.0')
 
     ros_makedepends=(ros-melodic-catkin)
     makedepends=('cmake' 'ros-build-tools'
     ${ros_makedepends[@]}
-    boost
+    boost1.69
   google-glog
   protobuf
   cairo
@@ -26,7 +26,7 @@
 
     ros_depends=()
     depends=(${ros_depends[@]}
-    boost
+    boost1.69
   google-glog
   protobuf
   cairo
@@ -70,7 +70,8 @@ sha256sums=('0b1979462b1715efc762f27bfb1b69fe659c269df96934baee12928b47b7cc9f'
                 -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
                 -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
                 -DPYTHON_BASENAME=.cpython-37m \
-                -DSETUPTOOLS_DEB_LAYOUT=OFF
+                -DSETUPTOOLS_DEB_LAYOUT=OFF \
+	   -DBOOST_ROOT=/opt/boost1.69
     make
     }
 
