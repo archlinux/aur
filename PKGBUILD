@@ -36,7 +36,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --localstatedir=/usr/share/games \
-    --sysconfdir=/etc \
+    --sysconfdir=/etc
   make
 }
 
