@@ -18,7 +18,7 @@ source=("https://github.com/aide/aide/releases/download/v${pkgver}/aide-${pkgver
 sha256sums=('17f998ae6ae5afb9c83578e4953115ab8a2705efc50dee5c6461cef3f521b797'
             'SKIP'
             'c56b3d360d659614df2552c8dbf5ea500e44974d38c34c07f6cdd3ce4c4ad615')
-validpgpkeys=('18EE86386022EF57') # Hannes von Haugwitz <hannes@vonhaugwitz.com>
+validpgpkeys=('5495CDA17C9AC17AB23841A718EE86386022EF57') # Hannes von Haugwitz <hannes@vonhaugwitz.com>
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
