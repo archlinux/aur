@@ -3,29 +3,23 @@
 
 _pkgname=dateutils
 pkgname=python-$_pkgname
-pkgver=0.6.10
+pkgver=0.6.12
 pkgrel=1
 pkgdesc="Utilities for working with datetime objects."
 arch=('any')
 url="https://github.com/plytophogy/python-dateutils"
-license=('Unlicense')
+license=('ISC')
 depends=('python-dateutil' 'python-argparse' 'python-pytz')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('860b3e40261085f56928f1454ee4d221856b56aa421c69a7df12067596ec0b26')
-
-prepare() {
-  cd "${_pkgname}-${pkgver}"
-  # for some reason the PyPi version is missing some fixes found in the repo to make it python3 compatible.
-  sed -e 's/print dt.strftime(args.format)/print(dt.strftime(args.format))/' -i "${_pkgname}/dateadd.py"
-  sed -e 's/print __import__(args.unit)(end_dt, start_dt, \*\*kwargs)/print(__import__(args.unit)(end_dt, start_dt, \*\*kwargs))/' -i "${_pkgname}/datediff.py"
-}
+sha256sums=('03dd90bcb21541bd4eb4b013637e4f1b5f944881c46cc6e4b67a6059e370e3f1')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd "$srcdir/$_pkgname-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py install --root="$pkgdir" -O1 --skip-build
+  install -Dm755 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
