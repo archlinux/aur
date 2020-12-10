@@ -2,7 +2,7 @@
 
 pkgname=nanoemoji
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A wee tool to build color fonts'
 arch=('any')
 url="https://github.com/googlefonts/$_pkgname"
@@ -10,12 +10,13 @@ license=('Apache')
 _py_deps=('fonttools>=4.18.1'
           'fs' # optdepends of fonttols required for [ufo]
           'lxml'
-          'protobuf'
-          'pygithub'
+          'pillow'
           'regex'
+          'toml'
           'ufo2ft'
           'ufolib2')
 depends=('absl-py'
+         'ninja'
          'picosvg>=0.9.1'
          'python'
          "${_py_deps[@]/#/python-}")
