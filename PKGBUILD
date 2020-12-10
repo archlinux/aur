@@ -21,7 +21,7 @@ makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
 depends=('mesa-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence'
             'lib32-elfutils' 'glslang' 'lib32-vulkan-icd-loader' 'lib32-zstd')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-opengl-driver' 'lib32-vulkan-driver')
+provides=('lib32-mesa' 'lib32-mesa-git' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-opengl-driver' 'lib32-vulkan-driver')
 conflicts=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau')
 url="https://www.mesa3d.org"
 license=('custom')
@@ -137,6 +137,9 @@ build () {
         -D valgrind=disabled \
         -D tools=[] \
         -D zstd=enabled \
+	-D debug=false \
+	-D optimization=3 \
+	-D b_pgo=off \
         -D microsoft-clc=disabled
 
     meson configure _build

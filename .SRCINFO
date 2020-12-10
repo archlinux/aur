@@ -35,6 +35,7 @@ pkgbase = lib32-mesa-minimal-git
 	depends = lib32-llvm-libs=11.0.0
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	provides = lib32-mesa
+	provides = lib32-mesa-git
 	provides = lib32-vulkan-intel
 	provides = lib32-vulkan-radeon
 	provides = lib32-libva-mesa-driver
