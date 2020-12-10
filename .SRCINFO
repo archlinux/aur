@@ -1,8 +1,8 @@
 pkgbase = ros-melodic-trac-ik-examples
 	pkgdesc = ROS - This package contains the source code for testing and comparing trac_ik.
 	pkgver = 1.5.1
-	pkgrel = 1
-	url = http://www.ros.org/
+	pkgrel = 2
+	url = http://wiki.ros.org/trac_ik_examples
 	arch = i686
 	arch = x86_64
 	arch = aarch64
@@ -14,11 +14,11 @@ pkgbase = ros-melodic-trac-ik-examples
 	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-orocos-kdl
 	makedepends = ros-melodic-trac-ik-lib
-	makedepends = boost
+	makedepends = boost1.69
 	depends = ros-melodic-orocos-kdl
 	depends = ros-melodic-trac-ik-lib
 	depends = ros-melodic-xacro
-	depends = boost
+	depends = boost1.69
 	source = trac_ik-1.5.1.tar.gz::https://bitbucket.org/traclabs/trac_ik/get/1.5.1.tar.gz
 	sha256sums = 67bdfb8dfcdf99c4ff5bd10de3c214527443a5c1ac54c99a0b5590d2692bf676
 

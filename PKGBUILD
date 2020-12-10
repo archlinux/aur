@@ -6,7 +6,7 @@ url='http://wiki.ros.org/trac_ik_examples'
 pkgname='ros-melodic-trac-ik-examples'
 pkgver='1.5.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -17,7 +17,7 @@ ros_makedepends=(
 makedepends=(
   'cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  boost
+  boost1.69
 )
 
 ros_depends=(
@@ -28,7 +28,7 @@ ros_depends=(
 
 depends=(
   ${ros_depends[@]}
-  boost
+  boost1.69
 )
 
 _dir="traclabs-trac_ik-f4597094e974/trac_ik_examples"
@@ -53,7 +53,8 @@ build() {
      -DCATKIN_BUILD_BINARY_PACKAGE=ON \
      -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
      -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-     -DSETUPTOOLS_DEB_LAYOUT=OFF
+     -DSETUPTOOLS_DEB_LAYOUT=OFF \
+		 -DBOOST_ROOT=/opt/boost1.69
    make
 }
 
