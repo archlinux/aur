@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rosbag_storage'
 pkgname='ros-melodic-rosbag-storage'
 pkgver='1.14.10'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -27,7 +27,7 @@ makedepends=(
 	console-bridge
 	gpgme
 	openssl
-	boost
+	boost1.69
 	bzip2
 )
 
@@ -45,7 +45,7 @@ depends=(
 	console-bridge
 	gpgme
 	openssl
-	boost
+	boost1.69
 	bzip2
 )
 
@@ -71,7 +71,8 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DSETUPTOOLS_DEB_LAYOUT=OFF
+		-DSETUPTOOLS_DEB_LAYOUT=OFF \
+		 -DBOOST_ROOT=/opt/boost1.69
 	make
 }
 
