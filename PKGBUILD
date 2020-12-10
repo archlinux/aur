@@ -1,13 +1,13 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=kak-quickscope-git
 _reponame=quickscope.kak
-pkgver=r7.30e7b51
+pkgver=r12.2316ef1
 pkgrel=1
 pkgdesc='plugin that adds indicators to f and t in Kakoune'
 arch=(any)
 url="https://git.sr.ht/~voroskoi/$_reponame"
 license=(Unlicense)
-depends=(kakoune lua)
+depends=(kakoune 'lua>=5.3')
 makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

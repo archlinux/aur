@@ -1,6 +1,6 @@
 pkgbase = kak-quickscope-git
 	pkgdesc = plugin that adds indicators to f and t in Kakoune
-	pkgver = r7.30e7b51
+	pkgver = r12.2316ef1
 	pkgrel = 1
 	url = https://git.sr.ht/~voroskoi/quickscope.kak
 	install = kak-quickscope-git.install
@@ -8,7 +8,7 @@ pkgbase = kak-quickscope-git
 	license = Unlicense
 	makedepends = git
 	depends = kakoune
-	depends = lua
+	depends = lua>=5.3
 	provides = kak-quickscope
 	conflicts = kak-quickscope
 	source = git+https://git.sr.ht/~voroskoi/quickscope.kak
