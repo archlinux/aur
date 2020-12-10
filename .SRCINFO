@@ -1,0 +1,27 @@
+pkgbase = dmenu-abdellatif
+	pkgdesc = my dmenu costume build
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://github.com/abdellatif-dev/dmenu-abdelllatif-dev.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = dash
+	depends = sh
+	depends = glibc
+	depends = coreutils
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	depends = freetype2
+	depends = fontconfig
+	depends = libfontconfig.so
+	provides = dmenu
+	conflicts = dmenu
+	replaces = dmenu
+	source = git+https://github.com/abdellatif-dev/dmenu-abdelllatif-dev.git
+	md5sums = SKIP
+
+pkgname = dmenu-abdellatif
+
