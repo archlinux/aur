@@ -1,6 +1,6 @@
 pkgbase = edex-ui
 	pkgdesc = A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support.
-	pkgver = 2.2.3
+	pkgver = 2.2.4
 	pkgrel = 1
 	url = https://github.com/GitSquared/edex-ui
 	install = edex-ui.install
@@ -16,8 +16,8 @@ pkgbase = edex-ui
 	depends = libxss
 	depends = nss
 	provides = edex-ui
-	source = https://github.com/GitSquared/edex-ui/archive/v2.2.3.tar.gz
-	sha256sums = 3aecdf71d9b31a6b562258e4c2eca500821e439d7afb58d827f48bbb6cea9b6b
+	source = https://github.com/GitSquared/edex-ui/archive/v2.2.4.tar.gz
+	sha256sums = 83dbbeccc9345301cf4e2f9590b775347c8fba320b3f97c3cbf6208bbfa096dd
 
 pkgname = edex-ui
 
