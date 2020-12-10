@@ -20,7 +20,7 @@ diff -Naur orig/appleseed-2.1.0-beta/src/appleseed.python/CMakeLists.txt applese
 -    if (Boost_VERSION GREATER_EQUAL 106700)
 -        set (BOOST_NEEDED_LIBS ${BOOST_NEEDED_LIBS} python35)
 +    if ((Boost_MAJOR_VERSION GREATER 1) OR (Boost_MINOR_VERSION GREATER_EQUAL 67))
-+        set (BOOST_NEEDED_LIBS ${BOOST_NEEDED_LIBS} python38)
++        set (BOOST_NEEDED_LIBS ${BOOST_NEEDED_LIBS} python39)
      else ()
          set (BOOST_NEEDED_LIBS ${BOOST_NEEDED_LIBS} python3)
      endif ()

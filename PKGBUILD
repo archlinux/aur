@@ -11,19 +11,19 @@ url="https://appleseedhq.net"
 license=('MIT')
 provides=('appleseed')
 conflicts=('appleseed')
-depends=(python2 python embree qt5-base seexpr-qt5 boost openexr opencolorio 'openimageio=2.1.19.0' 'openshadinglanguage=1.10.13' xerces-c zlib)
-makedepends=(cmake ninja)
+depends=(python2 python embree qt5-base seexpr-qt5 boost{,-python2}-libs openexr opencolorio 'openimageio=2.1.19.0' 'openshadinglanguage=1.10.13' xerces-c zlib)
+makedepends=(boost{,-python2} cmake ninja)
 options=()
 _github="https://github.com/${pkgname}hq/${pkgname}"
 source=("${_github}/archive/${_pkgver}.tar.gz"
         "cmake.extra.install.dirs.remove.patch"
         "boost_107200.patch"
-        "python38.patch"
+        "python39.patch"
         )
 sha256sums=('5f8599c64a9c1dbdf0d8ee13a4d395b03e9bcba17fec731526109437ab760898'
             '87b987f006e45d11cc4dfec2bd37fd2b760fd2bdbf06f48e7d467cbca9b2b301'
             '8c23f1800a2bfd541f86aba9929588aa318998098fe303a4ee13980b843746b6'
-            '9206bc3934dcd48036b89b3721658136bf465dd37bb846bdfcf95cf9beb14130')
+            '5e0bffb5a1c1a877abf75c55a5485b2bf6220caa9886ba073e7513cbf4245886')
 
 
 CMAKE_FLAGS=( -DWITH_EMBREE=ON

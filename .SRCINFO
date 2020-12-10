@@ -5,6 +5,8 @@ pkgbase = appleseed
 	url = https://appleseedhq.net
 	arch = x86_64
 	license = MIT
+	makedepends = boost
+	makedepends = boost-python2
 	makedepends = cmake
 	makedepends = ninja
 	depends = python2
@@ -12,7 +14,8 @@ pkgbase = appleseed
 	depends = embree
 	depends = qt5-base
 	depends = seexpr-qt5
-	depends = boost
+	depends = boost-libs
+	depends = boost-python2-libs
 	depends = openexr
 	depends = opencolorio
 	depends = openimageio=2.1.19.0
@@ -24,11 +27,11 @@ pkgbase = appleseed
 	source = https://github.com/appleseedhq/appleseed/archive/2.1.0-beta.tar.gz
 	source = cmake.extra.install.dirs.remove.patch
 	source = boost_107200.patch
-	source = python38.patch
+	source = python39.patch
 	sha256sums = 5f8599c64a9c1dbdf0d8ee13a4d395b03e9bcba17fec731526109437ab760898
 	sha256sums = 87b987f006e45d11cc4dfec2bd37fd2b760fd2bdbf06f48e7d467cbca9b2b301
 	sha256sums = 8c23f1800a2bfd541f86aba9929588aa318998098fe303a4ee13980b843746b6
-	sha256sums = 9206bc3934dcd48036b89b3721658136bf465dd37bb846bdfcf95cf9beb14130
+	sha256sums = 5e0bffb5a1c1a877abf75c55a5485b2bf6220caa9886ba073e7513cbf4245886
 
 pkgname = appleseed
 
