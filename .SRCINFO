@@ -1,0 +1,32 @@
+pkgbase = ignition-gazebo
+	pkgdesc = Open source robotics simulator.
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://ignitionrobotics.org/libs/gazebo
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = ruby-ronn
+	makedepends = doxygen
+	depends = benchmark
+	depends = gflags
+	depends = tinyxml2
+	depends = tinyxml
+	depends = eigen
+	depends = qt5-declarative
+	depends = ignition-cmake
+	depends = ignition-common
+	depends = ignition-math
+	depends = ignition-plugin
+	depends = ignition-physics
+	depends = ignition-rendering
+	depends = ignition-tools
+	depends = ignition-transport
+	depends = ignition-gui
+	depends = ignition-msgs
+	depends = sdformat
+	source = ignition-gazebo-4.0.0.tar.gz::https://github.com/ignitionrobotics/ign-gazebo/archive/ignition-gazebo4_4.0.0.tar.gz
+	sha256sums = 963d169ec802d37a5409bb17e21d0b9079b7996a178da533490e889beb53b010
+
+pkgname = ignition-gazebo
+
