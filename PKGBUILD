@@ -2,7 +2,7 @@
 
 _pkgbase='mcipc'
 pkgname="python-${_pkgbase}"
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc='Python 3 library and scripts for the RCON and Query protocol'
 arch=('any')
