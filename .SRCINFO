@@ -1,8 +1,8 @@
 pkgbase = linux-froidzen
 	pkgdesc = Linux ZEN with Patches and Modifications
-	pkgver = 5.9.12.zen1
-	pkgrel = 2
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.9.12-zen1
+	pkgver = 5.9.13.zen1
+	pkgrel = 1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.9.13-zen1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -16,7 +16,7 @@ pkgbase = linux-froidzen
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.9.12-zen1
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.9.13-zen1
 	source = config
 	source = sphinx-workaround.patch
 	source = https://raw.githubusercontent.com/dolohow/uksm/master/v5.x/uksm-5.9.patch
