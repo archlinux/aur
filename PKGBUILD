@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rospack'
 pkgname='ros-melodic-rospack'
 pkgver='2.5.6'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -21,7 +21,7 @@ makedepends=(
 	tinyxml2
 	gtest
 	pkg-config
-	boost
+	boost1.69
 	python
 )
 
@@ -35,7 +35,7 @@ depends=(
 	python-rosdep
 	python-catkin_pkg
 	pkg-config
-	boost
+	boost1.69
 	python
 )
 
@@ -61,7 +61,8 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DSETUPTOOLS_DEB_LAYOUT=OFF
+		-DSETUPTOOLS_DEB_LAYOUT=OFF \
+		 -DBOOST_ROOT=/opt/boost1.69
 	make
 }
 
