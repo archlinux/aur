@@ -1,6 +1,6 @@
 # Maintainer: Ilya Zlobintsev <ilya.zl@protonmail.com>
 pkgname=lact-git
-pkgver=r54.b30fd41
+pkgver=r56.1b0883e
 pkgrel=1
 license=("MIT")
 pkgdesc="AMDGPU Controller application"
@@ -10,7 +10,7 @@ depends=("gtk3" "hwids")
 arch=("any")
 source=("git+https://github.com/ilyazzz/LACT.git" "lactd.service" "lact.desktop")
 sha512sums=("SKIP"
-    "d84665b73a6daf79122196b8fc4899aac8576eb3040bc180f2d597a2763cdbd1dea873d16cb21666bcb0c6360fd700f3e640b5eb946c821403baa8ae5156591a"
+    "a7b443e400f3e1c18f0ee15b91acaf046ca8b6bd618d0c4dcea0291e961fdb5798bb9163c49312553903fcf9cfe4c83511a0faac75f24403bbdadff8646509ff"
     "dbd7b6fd2041da1f7272503d99d598d061a7f56e8aed74d92d013b01d9d7282f4ff66b3d180779ec16f9293d789c5082472633cfb1e0705a699895d12fa713b9")
 
 pkgver() {
