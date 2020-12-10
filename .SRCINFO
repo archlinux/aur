@@ -29,15 +29,7 @@ pkgname = linux-xanmod-git
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux
-	provides = linux-xanmod-git
-	conflicts = linux-xanmod-git
-	replaces = linux-xanmod-git
 
 pkgname = linux-xanmod-git-headers
 	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel
-	provides = linux-headers
-	provides = linux-xanmod-git-headers
-	conflicts = linux-xanmod-git-headers
-	replaces = linux-xanmod-git-headers
 
