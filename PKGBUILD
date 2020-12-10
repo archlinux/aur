@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-calculator-git
-pkgver=r438.4d93534
+pkgver=1.5.5.r105.g5d3c275
 pkgrel=1
 pkgdesc='The Pantheon Calculator'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3'
          'libgranite.so')
-makedepends=('git' 'granite-git' 'intltool' 'meson' 'vala')
+makedepends=('git' 'granite' 'intltool' 'meson' 'vala')
 provides=('pantheon-calculator')
 conflicts=('pantheon-calculator')
 source=('pantheon-calculator::git+https://github.com/elementary/calculator.git')
@@ -18,8 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd pantheon-calculator
-
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
