@@ -1,7 +1,7 @@
 pkgbase = pokerth
 	pkgdesc = Client to online Poker game written in C++/QT
 	pkgver = 1.1.2
-	pkgrel = 14
+	pkgrel = 15
 	url = http://www.pokerth.net/
 	arch = i686
 	arch = x86_64
@@ -18,9 +18,11 @@ pkgbase = pokerth
 	source = https://sourceforge.net/projects/pokerth/files/pokerth/1.1.2/pokerth-1.1.2.tar.gz
 	source = pokerth-1.1.2.patch
 	source = pokerth-1.1.2.patch.2019
+	source = pokerth-1.1.2.patch.2020
 	md5sums = 8fd7d7fc7ece17315e58aa3240dd4586
 	md5sums = 0ef5541fc6008dfb2521dcab47afb659
 	md5sums = 50d427bd8afc57fb61e186de6c4e5601
+	md5sums = e5bf2357733b4508737f8271f3c1e65f
 
 pkgname = pokerth
 
