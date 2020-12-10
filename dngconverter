@@ -6,4 +6,4 @@ if [ ! -d "${HOME}"/.dngconverter ] ; then
   ln -s /usr/share/dngconverter/CameraRaw "${HOME}/.dngconverter/wine/drive_c/ProgramData/Adobe/CameraRaw"
 fi
 
-WINEDLLOVERRIDES="api-ms-win-core-winrt-error-l1-1-0=" wine "/usr/share/dngconverter/Adobe DNG Converter/Adobe DNG Converter.exe" "$@"
+WINEDLLOVERRIDES="mscoree=,mshtml=,api-ms-win-core-winrt-error-l1-1-0=" wine "/usr/share/dngconverter/Adobe DNG Converter/Adobe DNG Converter.exe" "$@"
