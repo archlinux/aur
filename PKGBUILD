@@ -2,7 +2,7 @@
 # Don't manually edit the PKGBUILD, edit the upstream template instead
 
 pkgname=kde-development-environment-meta
-pkgver=20200828
+pkgver=20201210
 pkgrel=1
 pkgdesc='Metapackage to install a full KDE development environment'
 arch=(any)
@@ -49,7 +49,6 @@ depends=(akonadi-calendar
          kdbusaddons
          kdeclarative
          kdelibs4support
-         kdepim-apps-libs
          kdesignerplugin
          kdesu
          kdewebkit
@@ -123,7 +122,6 @@ depends=(akonadi-calendar
          libktorrent
          libkvkontakte
          libmediawiki
-         linux-headers
          mailcommon
          mailimporter
          make
@@ -151,7 +149,7 @@ optdepends=(kate
             plasma-workspace)
 makedepends=()
 source=(org.kde.development.appdata.xml kdesdk-devenv-dependencies.svg)
-sha256sums=('ee95e46239bcf16ea99afd4b3eb6939cdbbafc0aeaa35699086df75c2b6500bf'
+sha256sums=('3400f5bce02cd234f2b38974fc4ae399976748cf3f51a58c96763e211dd9297a'
             '92af2376f53429735903ff6706344566c7f0f1aa6cfd5d2cf7aaad7097c71238')
 noextract=()
 

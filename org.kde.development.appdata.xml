@@ -6,7 +6,10 @@
   <name>KDE Software Development Kit</name>
   <name xml:lang="ca">Joc de desenvolupament de programari del KDE</name>
   <name xml:lang="ca-valencia">Joc de desenvolupament de programari del KDE</name>
+  <name xml:lang="el">Εργαλειοθήκη ανάπτυξης KDE λογισμικού (SDK)</name>
+  <name xml:lang="en-GB">KDE Software Development Kit</name>
   <name xml:lang="es">Kit de desarrollo de software de KDE</name>
+  <name xml:lang="et">KDE arenduskomplekt</name>
   <name xml:lang="fr">Bibliothèque de développement de logiciels pour KDE</name>
   <name xml:lang="it">Strumenti di sviluppo dei programmi di KDE</name>
   <name xml:lang="nl">KDE Software Development Kit</name>
@@ -21,6 +24,8 @@
   <summary>A full SDK for developing Qt and KDE Applications</summary>
   <summary xml:lang="ca">Un SDK complet per a desenvolupar aplicacions Qt i KDE</summary>
   <summary xml:lang="ca-valencia">Un SDK complet per a desenvolupar aplicacions Qt i KDE</summary>
+  <summary xml:lang="el">Ένα πλήρες SDK για την ανάπτυξη Qt και KDE εφαρμογών</summary>
+  <summary xml:lang="en-GB">A full SDK for developing Qt and KDE Applications</summary>
   <summary xml:lang="es">Un completo SDK para desarrollar aplicaciones de Qt y de KDE</summary>
   <summary xml:lang="fr">Une bibliothèque complète pour le développement d'applications Qt et KDE</summary>
   <summary xml:lang="it">Una SDK completa per sviluppare applicazioni Qt e KDE</summary>
@@ -35,6 +40,8 @@
     <p>This is the KDE SDK: everything you need for developing Qt-based KDE software.</p>
     <p xml:lang="ca">Aquest és el SDK del KDE: tot el que cal per a desenvolupar programari KDE basat en les Qt.</p>
     <p xml:lang="ca-valencia">Aquest és el SDK del KDE: tot el que cal per a desenvolupar programari KDE basat en les Qt.</p>
+    <p xml:lang="el">Αυτό είναι το SDK του KDE: ό,τι χρειάζεστε για να αναπτύξετε KDE λογισμικό με βάση την Qt.</p>
+    <p xml:lang="en-GB">This is the KDE SDK: everything you need for developing Qt-based KDE software.</p>
     <p xml:lang="es">Esto es KDE SDK: todo lo que necesita para desarrollar software de KDE basado en Qt.</p>
     <p xml:lang="fr">Ceci est une bibliothèque KDE, tout ce dont vous avez besoin pour le développement de logiciels KDE utilisant Qt.</p>
     <p xml:lang="it">Questa è una SDK di KDE: tutto quello che ti può servire per sviluppare programmi di KDE basati su Qt.</p>
@@ -47,6 +54,8 @@
     <p>It will install the required dependencies for compiling most KDE software (Frameworks, Applications, and Plasma). It will also offer to install tools that make KDE development easy, including the KDevelop IDE, Kate text editor, and Cuttlefish icon viewer.</p>
     <p xml:lang="ca">Instal·larà les dependències requerides per a compilar la majoria del programari KDE (Frameworks, aplicacions i Plasma). També oferirà la instal·lació d'eines que faciliten el desenvolupament del KDE, incloent l'IDE KDevelop, l'editor de text Kate i el visor d'icones Cuttlefish.</p>
     <p xml:lang="ca-valencia">Instal·larà les dependències requerides per a compilar la majoria del programari KDE (Frameworks, aplicacions i Plasma). També oferirà la instal·lació d'eines que faciliten el desenvolupament del KDE, incloent l'IDE KDevelop, l'editor de text Kate i el visor d'icones Cuttlefish.</p>
+    <p xml:lang="el">Θα εγκαταστήσει τις απαραίτητες εξαρτήσεις για τη μεταγλώττιση του μεγαλύτερου μέρους του λογισμικού του KDE (Frameworks, Εφαρμογές και Plasma). Θα προτείνει επίσης την εγκατάσταση εργαλείων που θα διευκολύνουν την ανάπτυξη του KDE μαζί και του KDevelp IDE, τον κειμενογράφου Kate και του προγράμματος προβολής εικονιδίων Cuttlefish.</p>
+    <p xml:lang="en-GB">It will install the required dependencies for compiling most KDE software (Frameworks, Applications, and Plasma). It will also offer to install tools that make KDE development easy, including the KDevelop IDE, Kate text editor, and Cuttlefish icon viewer.</p>
     <p xml:lang="es">Instalará las dependencias necesarias para compilar la mayor parte del software de KDE (Frameworks, aplicaciones y Plasma). También ofrecerá la posibilidad de instalar herramientas para facilitar el desarrollo de KDE, incluyendo el IDE KDevelop, el editor de texto Kate y el visor de iconos Cuttlefish.</p>
     <p xml:lang="fr">Ceci installera les dépendances nécessaires pour la compilation de la plupart des logiciels de KDE (Atelier, applications et Plasma). Il vous offrira aussi d'installer des outils pour rendre les développement sous KDE faciles, en incluant l'environnement de développement KDevelop, l'éditeur de texte Kate et l'afficheur d'icônes Cuttlefish.</p>
     <p xml:lang="it">Installerà le dipendenze richieste per la compilazione della maggior parte dei programmi di KDE (Frameworks, Applications e Plasma). Offrirà anche la possibilità di installare strumenti che semplificano lo sviluppo di KDE, tra cui l'IDE di KDevelop, l'editor di testo di Kate e il visualizzatore di icone di Cuttlefish.</p>
