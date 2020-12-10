@@ -9,7 +9,6 @@ pkgbase = xorg-server-rootless-nosystemd-minimal
 	makedepends = pixman
 	makedepends = libx11
 	makedepends = mesa
-	makedepends = mesa-libgl
 	makedepends = xtrans
 	makedepends = libxkbfile
 	makedepends = libxfont2
