@@ -1,19 +1,40 @@
-From 588958f9148b363185aa06192360c95b0dcfd25a Mon Sep 17 00:00:00 2001
-From: Franz Beaune <franz@appleseedhq.net>
-Date: Mon, 30 Dec 2019 16:16:06 +0100
-Subject: [PATCH] Fix compilation with Boost 1.72+ and Qt 5.14.0
-
----
- src/appleseed.shared/application/application.cpp          | 3 +++
- .../mainwindow/rendering/pixelcolortracker.cpp            | 8 ++++----
- src/appleseed/foundation/platform/path.h                  | 1 +
- .../foundation/utility/benchmark/benchmarkaggregator.cpp  | 3 +--
- 4 files changed, 9 insertions(+), 6 deletions(-)
-
-diff --git a/src/appleseed.shared/application/application.cpp b/src/appleseed.shared/application/application.cpp
-index 9f0e5d0ecd..a5c8077a61 100644
---- a/src/appleseed.shared/application/application.cpp
-+++ b/src/appleseed.shared/application/application.cpp
+diff -Naur a/src/appleseed/foundation/platform/path.h b/src/appleseed/foundation/platform/path.h
+--- a/src/appleseed/foundation/platform/path.h	2019-08-31 17:49:01.000000000 +0200
++++ b/src/appleseed/foundation/platform/path.h	2020-12-10 03:26:57.768459744 +0100
+@@ -40,6 +40,7 @@
+ #include "main/dllsymbol.h"
+ 
+ // Boost headers.
++#include "boost/filesystem/exception.hpp"
+ #include "boost/filesystem/operations.hpp"
+ #include "boost/filesystem/path.hpp"
+ 
+diff -Naur a/src/appleseed/foundation/utility/benchmark/benchmarkaggregator.cpp b/src/appleseed/foundation/utility/benchmark/benchmarkaggregator.cpp
+--- a/src/appleseed/foundation/utility/benchmark/benchmarkaggregator.cpp	2019-08-31 17:49:01.000000000 +0200
++++ b/src/appleseed/foundation/utility/benchmark/benchmarkaggregator.cpp	2020-12-10 03:40:31.226687399 +0100
+@@ -40,6 +40,7 @@
+ 
+ // Boost headers.
+ #include "boost/date_time/posix_time/posix_time.hpp"
++#include "boost/filesystem/directory.hpp"
+ #include "boost/filesystem/operations.hpp"
+ #include "boost/filesystem/path.hpp"
+ #include "boost/regex.hpp"
+diff -Naur a/src/appleseed/renderer/modeling/project/assethandler.cpp b/src/appleseed/renderer/modeling/project/assethandler.cpp
+--- a/src/appleseed/renderer/modeling/project/assethandler.cpp	2019-08-31 17:49:01.000000000 +0200
++++ b/src/appleseed/renderer/modeling/project/assethandler.cpp	2020-12-10 03:26:57.768459744 +0100
+@@ -80,7 +80,7 @@
+         try
+         {
+             create_directories(dest_path.parent_path());
+-            copy_file(source_path, dest_path, copy_option::overwrite_if_exists);
++            copy_file(source_path, dest_path, copy_options::overwrite_existing);
+             return true;
+         }
+         catch (const std::exception& e)     // namespace qualification required
+diff -Naur a/src/appleseed.shared/application/application.cpp b/src/appleseed.shared/application/application.cpp
+--- a/src/appleseed.shared/application/application.cpp	2019-08-31 17:49:01.000000000 +0200
++++ b/src/appleseed.shared/application/application.cpp	2020-12-10 03:26:57.768459744 +0100
 @@ -39,6 +39,9 @@
  #include "foundation/utility/settings.h"
  #include "foundation/utility/string.h"
@@ -24,11 +45,10 @@ index 9f0e5d0ecd..a5c8077a61 100644
  // Standard headers.
  #include <cstring>
  #include <string>
-diff --git a/src/appleseed.studio/mainwindow/rendering/pixelcolortracker.cpp b/src/appleseed.studio/mainwindow/rendering/pixelcolortracker.cpp
-index 0a7cfcac39..4e6fa0a287 100644
---- a/src/appleseed.studio/mainwindow/rendering/pixelcolortracker.cpp
-+++ b/src/appleseed.studio/mainwindow/rendering/pixelcolortracker.cpp
-@@ -133,10 +133,10 @@ void PixelColorTracker::set_rgba_labels(const QPoint& point) const
+diff -Naur a/src/appleseed.studio/mainwindow/rendering/pixelcolortracker.cpp b/src/appleseed.studio/mainwindow/rendering/pixelcolortracker.cpp
+--- a/src/appleseed.studio/mainwindow/rendering/pixelcolortracker.cpp	2019-08-31 17:49:01.000000000 +0200
++++ b/src/appleseed.studio/mainwindow/rendering/pixelcolortracker.cpp	2020-12-10 03:26:57.768459744 +0100
+@@ -133,10 +133,10 @@
              static_cast<size_t>(pixel.y),
              linear_rgba);
  
@@ -43,28 +63,3 @@ index 0a7cfcac39..4e6fa0a287 100644
      }
      else
      {
-diff --git a/src/appleseed/foundation/platform/path.h b/src/appleseed/foundation/platform/path.h
-index cb243c50f2..8d3a410dc9 100644
---- a/src/appleseed/foundation/platform/path.h
-+++ b/src/appleseed/foundation/platform/path.h
-@@ -40,6 +40,7 @@
- #include "main/dllsymbol.h"
- 
- // Boost headers.
-+#include "boost/filesystem/exception.hpp"
- #include "boost/filesystem/operations.hpp"
- #include "boost/filesystem/path.hpp"
- 
-diff --git a/src/appleseed/foundation/utility/benchmark/benchmarkaggregator.cpp b/src/appleseed/foundation/utility/benchmark/benchmarkaggregator.cpp
-index 870ab8e04d..7ccfb47e09 100644
---- a/src/appleseed/foundation/utility/benchmark/benchmarkaggregator.cpp
-+++ b/src/appleseed/foundation/utility/benchmark/benchmarkaggregator.cpp
-@@ -40,8 +40,7 @@
- 
- // Boost headers.
- #include "boost/date_time/posix_time/posix_time.hpp"
--#include "boost/filesystem/operations.hpp"
--#include "boost/filesystem/path.hpp"
-+#include "boost/filesystem.hpp"
- #include "boost/regex.hpp"
- 

@@ -22,7 +22,7 @@ source=("${_github}/archive/${_pkgver}.tar.gz"
         )
 sha256sums=('5f8599c64a9c1dbdf0d8ee13a4d395b03e9bcba17fec731526109437ab760898'
             '87b987f006e45d11cc4dfec2bd37fd2b760fd2bdbf06f48e7d467cbca9b2b301'
-            '8c23f1800a2bfd541f86aba9929588aa318998098fe303a4ee13980b843746b6'
+            '125d5191b52122434984ccc11a6f2677697a4fee3b9f4571ee0d3742a43a74a4'
             '5e0bffb5a1c1a877abf75c55a5485b2bf6220caa9886ba073e7513cbf4245886')
 
 
