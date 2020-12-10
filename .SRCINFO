@@ -1,6 +1,6 @@
 pkgbase = mp3fs
 	pkgdesc = FUSE-based transcoding filesystem from FLAC to MP3
-	pkgver = 0.91
+	pkgver = 1.0
 	pkgrel = 1
 	url = http://khenriks.github.com/mp3fs
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = mp3fs
 	depends = fuse
 	depends = lame
 	depends = libid3tag
-	source = https://github.com/khenriks/mp3fs/releases/download/v0.91/mp3fs-0.91.tar.gz
-	md5sums = 8b1e7543114c2bcc5b8eb9562e15c909
+	depends = libvorbis
+	source = https://github.com/khenriks/mp3fs/releases/download/v1.0/mp3fs-1.0.tar.gz
+	md5sums = 1f023906e35732c02e0bf236e3398873
 
 pkgname = mp3fs
-
