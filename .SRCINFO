@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-camera-info-manager
 	pkgdesc = ROS - This package provides a C++ interface for camera calibration information.
 	pkgver = 1.11.13
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ros.org/camera_info_manager
 	arch = i686
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = ros-melodic-camera-info-manager
 	makedepends = ros-melodic-image-transport
 	makedepends = ros-melodic-sensor-msgs
 	makedepends = ros-melodic-roslib
-	makedepends = boost
+	makedepends = boost1.69
 	depends = ros-melodic-camera-calibration-parsers
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-image-transport
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-roslib
-	depends = boost
+	depends = boost1.69
 	source = ros-melodic-camera-info-manager-1.11.13.tar.gz::https://github.com/ros-perception/image_common/archive/1.11.13.tar.gz
 	sha256sums = 32a2e07724dec6eaaace21eae006274436d70d40bfe205249438570275c43cac
 
