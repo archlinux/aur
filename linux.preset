@@ -6,5 +6,5 @@ ALL_kver="%KERNVER%"
 PRESETS=('default')
 
 #default_config="/etc/mkinitcpio.conf"
-default_image="/boot/initramfs-linux.img"
+default_image="/boot/initramfs-%PKGBASE%.img"
 #default_options=""
