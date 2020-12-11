@@ -6,8 +6,8 @@
 # Conttributor: xiretza <xiretza+aur@gmail.com>
 # Contributor: heavysink <winstonwu91 at gmail>
 pkgname=wine-valve
-pkgver=5.12
-pkgrel=3
+pkgver=5.13
+pkgrel=2
 pkgdesc='A compatibility layer for running Windows programs (Valve version)'
 arch=('i686' 'x86_64')
 url='https://github.com/ValveSoftware/wine.git'
@@ -30,7 +30,7 @@ _depends=(
     'desktop-file-utils'
     'libgphoto2'
     'faudio'                'lib32-faudio'
-    'vkd3d-valve'
+    'vkd3d'
 )
 makedepends=('autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
     'gcc>=4.5.0-2'
@@ -82,7 +82,7 @@ optdepends=(
 )
 options=('staticlibs')
 install="$pkgname.install"
-source=("https://github.com/ValveSoftware/wine/archive/wine-${pkgver}.tar.gz"
+source=("https://github.com/ValveSoftware/wine/archive/experimental-wine-${pkgver}-shmem-20201209.tar.gz"
         '30-win32-aliases.conf'
         'wine-binfmt.conf')
 
@@ -103,7 +103,7 @@ fi
 
 
 prepare() {
-    cd "wine-wine-${pkgver}"
+    cd "wine-experimental-wine-${pkgver}-shmem-20201209/"
     
     # fix path of opencl headers
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
@@ -129,7 +129,7 @@ build() {
         mkdir "$pkgname"-64-build
         cd    "$pkgname"-64-build
         
-        ../"wine-wine-${pkgver}"/configure \
+        ../"wine-experimental-wine-${pkgver}-shmem-20201209"/configure \
                           --prefix='/usr' \
                           --libdir='/usr/lib' \
                           --with-x \
@@ -151,7 +151,7 @@ build() {
     
     cd "${srcdir}/${pkgname}"-32-build
     
-    ../"wine-wine-${pkgver}"/configure \
+    ../"wine-experimental-wine-${pkgver}-shmem-20201209"/configure \
                       --prefix='/usr' \
                       --with-x \
                       --with-gstreamer \
@@ -196,11 +196,11 @@ package() {
     install -D -m644 "${srcdir}/wine-binfmt.conf"   "${pkgdir}/usr/lib/binfmt.d/wine.conf"
 
     #wine list.h
-    for file in ${srcdir}/wine-wine-${pkgver}/include/wine/*.h; do
+    for file in ${srcdir}/wine-experimental-wine-${pkgver}-shmem-20201209/include/wine/*.h; do
         cp -n $file "${pkgdir}/usr/include/wine/"
     done
 }
 
-sha256sums=('32b051ffc13f1b874d9ee69c951300403fd2c5a99303db4a48f7aacf2ac6fb8a'
+sha256sums=('e44db3313a4163cb903b291fccfba7ab96e5a84f6ee63745cb023f4d3eb16e2c'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
             '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4')
