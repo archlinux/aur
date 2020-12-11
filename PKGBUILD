@@ -6,7 +6,7 @@
 set -u
 pkgname='pmacct'
 #pkgname+='-git'
-pkgver=1.7.4p1
+pkgver=1.7.5
 _pkgver="${pkgver%%.r[0-9]*}"
 _pkgverb="${_pkgver%%.[a-z]*}"
 _pkgverb="${_pkgverb%%[a-z]*}"
@@ -25,12 +25,12 @@ source=(
   'sfacctd.rc.d'
   'uacctd.rc.d'
 )
-md5sums=('61428c5d1d59bb91f2f948a2cbb96110'
+md5sums=('4ce9e8f38ce37d3c60bfa3d66e0d5184'
          '3b9313a756b75b4b571b17693db0ae04'
          'f732e33cbccba5a492d2ee95b5f88221'
          '235c1e77690fbe939a69c98dad041203'
          '9a49065076b645df94e30278052a8796')
-sha256sums=('8a35fdde01a2e34faf7c0d68cb3010bca56667638a6227b02384d015ee9c1335'
+sha256sums=('2e778bd3cdd968c4b9f22e28008b9b72f229980201d2cc2ee04cb02f6b0bdcd5'
             '504b31e1a3ccc6ab9fd56960800e6146cae69c479d1a87a5f491042c382e4384'
             '143e7b83d15df723e2668383efb108e458818b47fdd62a6201b159a5430379e7'
             '990915185774ccb6f167433f1f4a4c415dc60fcaaee2af9d9239dfafefcb8166'
@@ -72,7 +72,7 @@ build() {
     ./autogen.sh
   fi
   if [ ! -s 'Makefile' ]; then
-    if [ "${_pkgverb}" = '1.7.4' ]; then
+    if [ "$(vercmp "${_pkgverb}" '1.7.4')" -ge 0 ]; then
       CFLAGS+=' -fcommon' # gcc-10
     fi
     ./configure --prefix='/usr' --mandir='/usr/share/man' --sbindir='/usr/bin' --enable-ipv6 --enable-mysql --enable-pgsql --enable-sqlite3 --enable-64bit --enable-threads --enable-jansson
