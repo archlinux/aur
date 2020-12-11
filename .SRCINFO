@@ -31,14 +31,11 @@ pkgname = linux-nitrous-git
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-nitrous-git-headers: to build DKMS modules against this kernel
 	optdepends = linux-firmware: Additional firmware blobs
-	provides = linux
 	backup = etc/mkinitcpio.d/linux-nitrous-git.preset
 
 pkgname = linux-nitrous-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel (git version)
-	provides = linux-headers
 
 pkgname = linux-nitrous-git-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)
-	provides = linux-docs
 
