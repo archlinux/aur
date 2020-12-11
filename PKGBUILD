@@ -2,7 +2,7 @@
 #Maintainer: William Leven <boogrocha@sidus.io>
 
 # _tag and sha256 is populated by the pipeline
-_tag=v1.1.0
+_tag=v1.1.1
 pkgname=boogrocha
 pkgver=$_tag
 pkgrel=1
@@ -14,7 +14,7 @@ url="https://github.com/sidusio/boogrocha"
 license=("GPL3")
 makedepends=(go)
 source=($url/archive/$_tag.tar.gz)
-sha256sums=('252ae31722217ff2937707338b410c86a9fa92a3807fe0fd9500c2c63bc0945b')
+sha256sums=('0d749ae45939fd3fcfd58a4db9d04252f864545e01956db0d040db8b0bc04fc1')
 # The name of the root directory of the tar.gz that Github
 # automatically creates and which therefore will be extracted
 _src="BooGroCha-${pkgver:1}"
