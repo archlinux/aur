@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=libs76-hidpi-widget-git
-pkgver=r12.1b9ddd8
+pkgver=r14.6398f4b
 pkgrel=1
 pkgdesc="System76 HiDPI daemon widget library"
 arch=('x86_64')
 url="https://github.com/pop-os/hidpi-widget"
 license=('GPL3')
-depends=('gtk3' 'system76-hidpi-daemon')
+depends=('gtk3' 'libhandy' 'system76-hidpi-daemon')
 makedepends=('git' 'rust')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
