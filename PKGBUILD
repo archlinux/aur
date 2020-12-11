@@ -11,7 +11,7 @@ license=('MIT')
 arch=('any')
 source=("https://github.com/alisaifee/limits/archive/${pkgver}.tar.gz")
 
-sha256sums=('e48a7134c35c05312927c9b446ca34470e5bb21081414c00b17527fdd10fe296')
+sha256sums=('b22b0f568475ebf5e2a92e7a69c7ca0962dc1f16a4da01bd3b52cb438f5b45f7')
 
 build() {
     cd "${srcdir}/limits-${pkgver}"
