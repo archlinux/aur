@@ -9,7 +9,7 @@ url='https://github.com/elementary/wingpanel-indicator-notifications'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee' 'libwnck3'
-         'libgranite.so' 'libwingpanel-3.0.so')
+         'libgranite.so' 'libwingpanel-2.0.so')
 makedepends=('git' 'granite' 'meson' 'vala' 'wingpanel')
 provides=('wingpanel-indicator-notifications')
 conflicts=('wingpanel-indicator-notifications')
