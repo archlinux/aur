@@ -23,7 +23,7 @@ pkgbase = alice-vision
 	depends = opengv
 	depends = coin-or-clp
 	depends = ceres-solver
-	source = alice-vision::https://github.com/alicevision/AliceVision/archive/v2.3.1.tar.gz
+	source = alice-vision_2.3.1.tgz::https://github.com/alicevision/AliceVision/archive/v2.3.1.tar.gz
 	source = MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop
 	source = nanoflann::git+https://github.com/alicevision/nanoflann.git
 	source = FindOpenGV.cmake.patch

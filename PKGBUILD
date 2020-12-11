@@ -50,11 +50,9 @@ url="https://alicevision.github.io/"
 license=('MPL2' 'MIT')
 groups=()
 # split: cctag
-#depends=('openexr' 'coin-or-coinutils' 'coin-or-lemon' 'opencv'
 depends+=('alembic' 'boost-libs' 'openimageio' 'flann' 'geogram' 'opengv' 'coin-or-clp' 'ceres-solver')
-#makedepends+=('ceres-solver')
 makedepends+=('boost' 'ninja' 'eigen' 'freetype2' 'coin-or-coinutils' 'coin-or-lemon' 'git' 'cmake')
-source=("${pkgname}::https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
+source=("${pkgname}_${pkgver}.tgz::https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
         "MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop"
         "nanoflann::git+https://github.com/alicevision/nanoflann.git"
         "FindOpenGV.cmake.patch"
