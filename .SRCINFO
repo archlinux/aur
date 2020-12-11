@@ -1,16 +1,16 @@
 pkgbase = cloudfoundry-cli
 	pkgdesc = The official command line client for Cloud Foundry
-	pkgver = 7.1.0
+	pkgver = 7.2.0
 	pkgrel = 1
 	url = https://github.com/cloudfoundry/cli
 	arch = x86_64
 	license = Apache
 	options = !emptydirs
 	options = !strip
-	source = cf-cli-7.1.0-amd64.tar.gz::https://cli.run.pivotal.io/stable?release=linux64-binary&version=7.1.0&source=github-rel
-	md5sums = 05b5a4e37f347556be97444e27ad01ac
-	sha256sums = 53f93b3a940566cb1fddfc24f2b3c60528b2516c200c553bd30e0d1e99a09723
-	sha512sums = a454df6aac8010e0c241eef96dcf3668a5ecac31a1ca1a34b2b1a17038abda3dd7856cccf2c72d2fab4970114681e11b22aa04242d60abd3af225025a5d4f7aa
+	source = cf-cli-7.2.0-amd64.tar.gz::https://cli.run.pivotal.io/stable?release=linux64-binary&version=7.2.0&source=github-rel
+	md5sums = 820d5285c293b63b2a5e554c74de777c
+	sha256sums = e7e6284ebc3c9002681a924c199ea4a79ff22f8a5820afe24a1bae8142143332
+	sha512sums = 8562032a4ee665b97211df7fa2277175b366c5e0736b1c4993cf4d702fb7318261253bf779fdae6e62d10b3850680181a631d90a43bdc9f9c465584d95f980f3
 
 pkgname = cloudfoundry-cli
 
