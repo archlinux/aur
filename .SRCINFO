@@ -7,6 +7,8 @@ pkgbase = xps-home-end-keymappings-git
 	license = GPL3
 	makedepends = gcc
 	depends = libevdev
+	source = xps-home-end-keymappings::git+https://github.com/soraxas/xps-home-end-keymappings.git
+	md5sums = SKIP
 
 pkgname = xps-home-end-keymappings-git
 
