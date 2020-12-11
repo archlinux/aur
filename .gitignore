@@ -3,3 +3,4 @@ pkg/
 *.tar.xz
 *.pkg.tar.zst
 *.AppImage
+*.AppImage.part
