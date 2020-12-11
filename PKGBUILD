@@ -1,6 +1,6 @@
 # Maintainer: David Goudou <david.goudou@gmail.com>
 pkgname=coffeetch-git
-pkgver=1.0.r45.c998de6
+pkgver=1.0.r1.afe1279
 pkgrel=1
 pkgdesc="Minimal command line system information tool written in C"
 arch=('x86_64')
