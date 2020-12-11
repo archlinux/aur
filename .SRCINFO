@@ -1,0 +1,47 @@
+pkgbase = jre-bcl
+	pkgdesc = Oracle Java Runtime Environment (BCL)
+	pkgver = 8u201
+	pkgrel = 1
+	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	install = jre-bcl.install
+	arch = x86_64
+	license = custom:Oracle
+	depends = ca-certificates-java
+	depends = hicolor-icon-theme
+	depends = java-runtime-common
+	depends = nss
+	depends = xdg-utils
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for Gtk+ look and feel (desktop)
+	provides = java-openjfx=8
+	provides = java-runtime=8
+	provides = java-runtime-headless=8
+	provides = java-runtime-headless-jre=8
+	provides = java-runtime-jre=8
+	provides = java-web-start=8
+	provides = java-web-start-jre=8
+	options = !strip
+	backup = etc/java-jre-bcl/amd64/jvm.cfg
+	backup = etc/java-jre-bcl/images/cursors/cursors.properties
+	backup = etc/java-jre-bcl/management/jmxremote.access
+	backup = etc/java-jre-bcl/management/management.properties
+	backup = etc/java-jre-bcl/security/java.policy
+	backup = etc/java-jre-bcl/security/java.security
+	backup = etc/java-jre-bcl/security/javaws.policy
+	backup = etc/java-jre-bcl/content-types.properties
+	backup = etc/java-jre-bcl/flavormap.properties
+	backup = etc/java-jre-bcl/fontconfig.properties.src
+	backup = etc/java-jre-bcl/logging.properties
+	backup = etc/java-jre-bcl/net.properties
+	backup = etc/java-jre-bcl/psfont.properties.ja
+	backup = etc/java-jre-bcl/psfontj2d.properties
+	backup = etc/java-jre-bcl/sound.properties
+	source = manual://jre-8u201-linux-x64.tar.gz
+	source = https://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
+	source = policytool-jre-bcl.desktop
+	sha256sums = 12c745fbb8735bf450b8c6ba6f649bebe19915f05742975e443bdc8566170352
+	sha256sums = f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59
+	sha256sums = 3c7e6dbda62b0d21460394d13c31ab03d5d0df61e5e1f539792021e4cb69255c
+
+pkgname = jre-bcl
+
