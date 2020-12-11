@@ -3,8 +3,8 @@
 # Maintainer: Square252 <square@0xfc.de>
 
 pkgname=hibiscus-nightly
-pkgver=2.9.0
-pkgrel=2
+pkgver=2.11.0
+pkgrel=1
 pkgdesc="Hibiscus HBCI banking plugin for Jameica (nightly)"
 arch=('any')
 url="http://www.willuhn.de/products/hibiscus/"
