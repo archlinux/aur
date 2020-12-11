@@ -2,17 +2,16 @@
 
 _pkgname=htop
 pkgname=${_pkgname}-dev-git
-pkgver=3.0.2.r329.g9b31ee5
+pkgver=3.0.3.r19.g738d31b
 pkgrel=1
 pkgdesc="htop - an interactive process viewer, full-featured"
 url="https://github.com/htop-dev/${_pkgname}"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('ncurses' 'libnl' 'libncursesw.so' )
+depends=('ncurses' 'libnl' 'libncursesw.so' 'hwloc' 'lm_sensors')
 makedepends=('git' 'python')
 optdepends=('lsof: list open files for running process'
-            'strace: attach to running process'
-            'hwloc: Portable Hardware Locality')
+            'strace: attach to running process')
 provides=('htop')
 conflicts=('htop' 'htop-git')
 options=('!emptydirs')
