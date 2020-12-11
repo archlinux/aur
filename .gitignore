@@ -5,3 +5,5 @@ jre-*.tar.gz
 PKGBUILD-namcap.log
 jre1.*/
 jce_policy-*.zip
+pkg/
+src/

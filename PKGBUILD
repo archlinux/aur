@@ -2,10 +2,10 @@
 
 pkgname=jre-bcl
 pkgver=8u201
-pkgrel=1
+pkgrel=2
 pkgdesc="Oracle Java Runtime Environment (BCL)"
 arch=("x86_64")
-url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
+url="https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html"
 license=("custom:Oracle")
 depends=("ca-certificates-java" "hicolor-icon-theme" "java-runtime-common" "nss" "xdg-utils")
 optdepends=(
@@ -47,7 +47,7 @@ source=(
 )
 sha256sums=(
   "12c745fbb8735bf450b8c6ba6f649bebe19915f05742975e443bdc8566170352"
-  "f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59"
+  "9c64997edfce44e29296bfbd0cf90abf8b6b9ef2ea64733adae3bdac9ae2c5a6"
   "3c7e6dbda62b0d21460394d13c31ab03d5d0df61e5e1f539792021e4cb69255c"
 )
 DLAGENTS=("${DLAGENTS[@]//curl -/curl -b "oraclelicense=a" -}")
@@ -82,12 +82,12 @@ package() {
   done
 
   set +u; msg2 "Fixing .desktop paths..."; set -u
-  sed -e "s|Exec=|Exec=${_jvmdir}/bin/|" -i "${pkgdir}${_jvmdir}/lib/desktop/applications"/*
-  sed -e "s|.png|-${pkgname}.png|" -i "${pkgdir}${_jvmdir}/lib/desktop/applications"/*
+  sed -e "s|Exec=|Exec=${_jvmdir}/bin/|" -i "${pkgdir}${_jvmdir}/lib/desktop/applications/"*
+  sed -e "s|.png|-${pkgname}.png|" -i "${pkgdir}${_jvmdir}/lib/desktop/applications/"*
 
   set +u; msg2 "Moving .desktops and icons to /usr/share ..."; set -u
-  mv "${pkgdir}${_jvmdir}/lib/desktop"/* "${pkgdir}/usr/share/"
-  install -m644 "${srcdir}"/*.desktop "${pkgdir}/usr/share/applications/"
+  mv "${pkgdir}${_jvmdir}/lib/desktop/"* "${pkgdir}/usr/share/"
+  install -m644 "${srcdir}/"*.desktop "${pkgdir}/usr/share/applications/"
 
   set +u; msg2 "Moving confs to /etc and link back to /usr: /usr/lib/jvm/java-${pkgname}/lib -> /etc ..."; set -u
   local _new_etc_path
@@ -127,7 +127,7 @@ package() {
   # things like 256-bit AES. Enabled by default in OpenJDK:
   # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
   # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
-  install -m644 "${srcdir}/UnlimitedJCEPolicyJDK${pkgver%u*}"/*.jar "${pkgdir}${_jvmdir}/lib/security/"
+  install -m644 "${srcdir}/UnlimitedJCEPolicyJDK${pkgver%u*}/"*.jar "${pkgdir}${_jvmdir}/lib/security/"
   install -Dm644 "${srcdir}/UnlimitedJCEPolicyJDK${pkgver%u*}/README.txt" \
   "${pkgdir}/usr/share/doc/${pkgname}/README_-_Java_JCE_Unlimited_Strength.txt"
 
