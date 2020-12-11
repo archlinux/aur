@@ -27,7 +27,7 @@ _brotherund="${_brotheru//-/}" # MFC0000DW
 _brotherxnd="${_brotherlnd}"   # upper or lower as required by scripts
 pkgname="brother-${_brotherl}"
 pkgver='3.0.0_1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="LPR and CUPS driver for the Brother ${_brotheru} printer"
 arch=('i686' 'x86_64')
 url='https://support.brother.com/g/s/id/linux/en/'
@@ -47,23 +47,27 @@ optdepends=(
   'ttf-dejavu: printing text files from lpr'
 )
 options=('!strip')
-#install="${pkgname}.install"
+install="${pkgname}.install"
 _brsource="${_brotherlnd}_cupswrapper_GPL_source_${pkgver//_/-}"
 _dlf='http://www.brother.com/pub/bsc/linux'
 _inf="${_brotherlnd}-${pkgver}.inf"
+_modpatch='0001-cups-segfault-orphan-CloseUI.patch' # cups 1:2.3.3op1-1 https://github.com/OpenPrinting/cups/issues/64
 source=(
   "${_inf}::${_dlf}/infs/${_brotherund}"
   "${_dlf}/dlf/${_brsource}.tar.gz"
   'lpr-license.txt'
+  "${_modpatch}"
 )
 md5sums=('700f783579c67c3025869942265e7346'
          '8bb864e08602347d75611faa827432aa'
          '5e87a3dc0f3e3438c088eda0f3565f0d'
+         '2ccb3c6f539b75e674aa73ccda4618a3'
          '6171ec18a24481c6a1365cb5d95562a4'
          'b0261c99a29c4a7039f8dc3f047330ce')
 sha256sums=('11744a2869976451364497d2173b091c17a530fb59c20cb95c25bd98e22e05da'
             '749145cf019dad18ebdbc46c138846a10df32459729b05fbd3167bad2a73423b'
             '9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67'
+            'e3a3a22a7914f3b0b66d2e4608fa047c19205ddf441064f6a9a58818a6a01608'
             'c7fb5985701a41cb6230685fd1d704b17315a977c6ffb487e33766177810f6a0'
             '5d01721cc6f264fa989cb4ffff4aa1f7a9559474a70788b06a5ba9131b645c25')
 
@@ -188,6 +192,9 @@ prepare() {
 
   # /etc/printcap is managed by cups
   find . -type 'f' -name 'setupPrintcap*' -delete
+
+  # diff -pNau5 brother_mfcj6710dw_printer_en.ppd{.orig,} > '0001-cups-segfault-orphan-CloseUI.patch'
+  find . -type 'f' -name 'brother_mfcj6710dw_printer_en.ppd' -execdir patch -Nup0 -i "${srcdir}/0001-cups-segfault-orphan-CloseUI.patch" ';'
 
   set +u
 }
@@ -346,6 +353,12 @@ build() {
   test "${_nppdfound}" -ne 0 || echo "${}"
   test "${_ncodefound}" -ne 0 || echo "${}"
 
+  # Install PPD live patch
+  printf '# Do not modify this copy\n\n' > 'patch.txt'
+  printf "_patch='/${_basedir}/${_modpatch}'\n" >> 'patch.txt'
+  printf "_model='${_brotheru}'\n\n" >> 'patch.txt'
+  install -m644 -t "${_basedir}" "${_modpatch}"
+
   set  +u
 }
 
@@ -370,6 +383,14 @@ package() {
 
   install -Dpm644 <(sed -e 's:\r::g' "${_brsource}/Copying") "${pkgdir}/usr/share/licenses/${pkgname}/cupswrapper-licence.txt"
   install -Dpm644 'lpr-license.txt' "${pkgdir}/usr/share/licenses/${pkgname}/lpr-licence.txt"
+
+  # Generate amended install
+  bash -n "${startdir}/${install}" || echo "${}"
+  true && install="${install}.pkg"
+  rm -f "${startdir}/${install}"
+  cat 'patch.txt' "${startdir}/${install%.pkg}" > "${startdir}/${install}"
+  bash -n "${startdir}/${install}" || echo "${}"
+
   set +u
 }
 set +u

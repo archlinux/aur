@@ -1,0 +1,15 @@
+--- brother_mfcj6710dw_printer_en.ppd.orig	2012-09-25 04:26:38.000000000 -0400
++++ brother_mfcj6710dw_printer_en.ppd	2020-12-10 20:28:17.220370700 -0500
+@@ -574,11 +574,11 @@
+ *%OpenUI *BRReverse/Reverse Printing: PickOne
+ *%OrderDependency: 30 AnySetup *BRReverse
+ *%DefaultBRReverse: OFF
+ *%BRReverse OFF/Off: "          "
+ *%BRReverse ON/On: "          "
+-*CloseUI: *BRReverse
++*%CloseUI: *BRReverse
+ 
+ *%=== Mirror Printing ================================
+ *OpenUI *BRMirror/Mirror Printing: PickOne
+ *OrderDependency: 31 AnySetup *BRMirror
+ *DefaultBRMirror: OFF
