@@ -1,11 +1,12 @@
 pkgbase = xcursor-neutral++
 	pkgdesc = Icon set based on Neutral and jaguarx themes.
 	pkgver = 1.0.3
-	pkgrel = 3
+	pkgrel = 4
+	url = https://github.com/ducakar/xcursor-neutralxx
 	arch = any
 	license = Artistic 2.0
-	source = Neutral++-1.0.3.tar.xz
-	sha256sums = 23ec4fa3f7b62c023b8726b70d7a822ecd1f3cf90515b302d988f6fe58bce426
+	source = git+https://github.com/ducakar/xcursor-neutralxx.git
+	sha256sums = SKIP
 
 pkgname = xcursor-neutral++
 

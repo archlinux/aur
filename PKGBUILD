@@ -1,22 +1,30 @@
 # Maintainer: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
+# Maintainer: Robin Becker <robin@reporrtlab.com>
 
 pkgname=xcursor-neutral++
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Icon set based on Neutral and jaguarx themes."
 arch=('any')
-#url="https://dl.opendesktop.org/api/files/download/id/1460735294/108142-Neutral++-$pkgver.tar.xz"
+url="https://github.com/ducakar/xcursor-neutralxx"
 license=('Artistic 2.0')
-#source=(https://dl.opendesktop.org/api/files/download/id/1460735294/s/5ce93eb392694040136bff1805802bc7/t/1539154277/u//108142-Neutral%20%20-1.0.3.tar.xz)
-source=(Neutral++-1.0.3.tar.xz)
-sha256sums=('23ec4fa3f7b62c023b8726b70d7a822ecd1f3cf90515b302d988f6fe58bce426')
+source=(git+$url.git)
+sha256sums=('SKIP')
 
 build() {
 	true
 	}
 
+prepare(){
+	cd $srcdir
+	[ ! -h Neutral++ ] && ln -s xcursor-neutralxx Neutral++
+	cd Neutral++/source
+	./make.sh
+	}
+
 package(){
 	cd $srcdir
 	mkdir -p $pkgdir/usr/share/icons
-	cp -r Neutral++ $pkgdir/usr/share/icons
+	cp -r Neutral++/ $pkgdir/usr/share/icons
+	rm -rf $pkgdir/usr/share/icons/Neutral++/{source,.git}
 	}
