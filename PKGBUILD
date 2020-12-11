@@ -6,14 +6,14 @@ _pkgbase=pipewire
 pkgbase=pipewire-nightly
 pkgname=(pipewire-nightly pipewire-docs-nightly pipewire-jack-nightly
     pipewire-pulse-nightly pipewire-alsa-nightly gst-plugin-pipewire-nightly)
-pkgver=0.3.17.r86.g7dd69651
-pkgrel=1
+pkgver=0.3.17.r89.g4ef0ef46
+pkgrel=2
 pkgdesc="Server and user space API to deal with multimedia pipelines (git version)"
 url="https://pipewire.org"
 license=(LGPL2.1)
 arch=(x86_64)
 makedepends=(alsa-lib bluez-libs dbus doxygen git graphviz gst-plugins-base
-    jack2 libldac libopenaptx libpulse libsndfile meson rtkit sbc valgrind
+    jack2 libopenaptx libpulse libsndfile meson rtkit sbc valgrind
     vulkan-headers vulkan-icd-loader xmltoman)
 source=("git+https://github.com/PipeWire/pipewire")
 sha256sums=('SKIP')
@@ -51,7 +51,7 @@ _pick() {
 _ver=${pkgver:0:3}
 
 package_pipewire-nightly() {
-  depends=(sbc rtkit vulkan-icd-loader bluez-libs alsa-card-profiles libldac
+  depends=(sbc rtkit vulkan-icd-loader bluez-libs alsa-card-profiles
       libopenaptx libdbus-1.so libsndfile.so libudev.so libasound.so
       libsystemd.so)
   optdepends=('pipewire-docs: Documentation'
