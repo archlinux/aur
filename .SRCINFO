@@ -1,6 +1,6 @@
 pkgbase = surf-git
 	pkgdesc = a WebKit based browser
-	pkgver = 2.0.r53.g81f0452
+	pkgver = 2.0.r82.g7dcce9e
 	pkgrel = 1
 	url = http://surf.suckless.org/
 	arch = i686
@@ -19,9 +19,7 @@ pkgbase = surf-git
 	provides = surf
 	conflicts = surf
 	source = surf::git+https://git.suckless.org/surf
-	source = config.h
 	md5sums = SKIP
-	md5sums = 61acead6e11b1980fa1bcba0ae5a1cb4
 
 pkgname = surf-git
 

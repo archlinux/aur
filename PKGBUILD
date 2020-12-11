@@ -3,7 +3,7 @@
 
 _pkgname=surf
 pkgname=$_pkgname-git
-pkgver=2.0.r53.g81f0452
+pkgver=2.0.r82.g7dcce9e
 pkgrel=1
 pkgdesc="a WebKit based browser"
 arch=('i686' 'x86_64')
@@ -19,10 +19,8 @@ optdepends=('dmenu: url bar and search'
             'mpv: default video player')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://git.suckless.org/surf"
-        'config.h')
-md5sums=('SKIP'
-         '61acead6e11b1980fa1bcba0ae5a1cb4')
+source=("$_pkgname::git+https://git.suckless.org/surf")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
