@@ -1,7 +1,7 @@
 pkgbase = wingpanel-indicator-a11y-git
 	pkgdesc = Universal Access indicator for Wingpanel
 	pkgver = r100.76c85a0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elementary/wingpanel-indicator-a11y
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = wingpanel-indicator-a11y-git
 	depends = glibc
 	depends = gtk3
 	depends = libgranite.so
-	depends = libwingpanel-3.0.so
+	depends = libwingpanel-2.0.so
 	provides = wingpanel-indicator-a11y
 	conflicts = wingpanel-indicator-a11y
 	replaces = wingpanel-indicator-a11y-bzr
