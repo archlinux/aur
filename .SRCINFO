@@ -1,7 +1,7 @@
 pkgbase = python-astropy-helpers
 	pkgdesc = Utilities used for building the Astropy python library for astronomy
 	pkgver = 4.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://astropy-helpers.readthedocs.io/
 	arch = any
 	license = BSD

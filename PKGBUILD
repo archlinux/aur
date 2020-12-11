@@ -2,7 +2,7 @@
 # Contributor: Universebenzene <universebenzene at sina dot com>
 pkgname=('python-astropy-helpers')
 pkgver=4.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Utilities used for building the Astropy python library for astronomy"
 arch=('any')
 url="https://astropy-helpers.readthedocs.io/"
