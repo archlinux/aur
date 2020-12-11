@@ -273,7 +273,7 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices'
               'bootsplash-systemd: for bootsplash functionality')
-  provides=('linux' VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=()
   conflicts=()
 
@@ -305,7 +305,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for linux-manjaro-xanmod-lts kernel"
-  provides=('linux-headers')
+  provides=()
   replaces=()
   conflicts=()
 

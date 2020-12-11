@@ -40,7 +40,6 @@ pkgname = linux-manjaro-xanmod-lts
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = bootsplash-systemd: for bootsplash functionality
-	provides = linux
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 	conflicts = 
@@ -48,7 +47,7 @@ pkgname = linux-manjaro-xanmod-lts
 
 pkgname = linux-manjaro-xanmod-lts-headers
 	pkgdesc = Header files and scripts for building modules for linux-manjaro-xanmod-lts kernel
-	provides = linux-headers
+	provides = 
 	conflicts = 
 	replaces = 
 
