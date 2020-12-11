@@ -12,7 +12,7 @@ backup=("etc/webapps/piwigo/apache.conf")
 install=piwigo.install
 options=(emptydirs)
 
-source=('http::https://piwigo.org/download/dlcounter.php?code=latest'
+source=('piwigo.zip::https://piwigo.org/download/dlcounter.php?code=latest'
         'apache.conf'
         'piwigo.perm.sh')
 md5sums=('488174630af5fd3589301cb1d2ab3c66'
