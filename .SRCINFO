@@ -1,6 +1,6 @@
 pkgbase = mullvad-vpn-beta-bin
 	pkgdesc = The Mullvad VPN client app for desktop (latest/beta release)
-	pkgver = 2020.7.stable
+	pkgver = 2020.8.beta2
 	pkgrel = 1
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
@@ -12,11 +12,11 @@ pkgbase = mullvad-vpn-beta-bin
 	depends = nss
 	provides = mullvad-vpn
 	conflicts = mullvad-vpn
-	source = https://github.com/mullvad/mullvadvpn-app/releases/download/2020.7/MullvadVPN-2020.7_amd64.deb
-	source = https://github.com/mullvad/mullvadvpn-app/releases/download/2020.7/MullvadVPN-2020.7_amd64.deb.asc
+	source = https://github.com/mullvad/mullvadvpn-app/releases/download/2020.8-beta2/MullvadVPN-2020.8-beta2_amd64.deb
+	source = https://github.com/mullvad/mullvadvpn-app/releases/download/2020.8-beta2/MullvadVPN-2020.8-beta2_amd64.deb.asc
 	source = mullvad-vpn.sh
 	validpgpkeys = A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF
-	sha256sums = 3193add6573ef2edc9e84898adad65e14f2fcc060df89c7ca924236cc3f7791f
+	sha256sums = 82a31eccb6afdfecb24a3e482fc6362a4a170e930a9d6a12c056ca2686b73926
 	sha256sums = SKIP
 	sha256sums = a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4
 
