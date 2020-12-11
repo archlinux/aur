@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('noise-suppression-for-voice' 'pulseaudio' 'polkit')
 makedepends=('git' 'go' 'cmake')
 provides=('noisetorch')
-conflicts=("noisetorch-bin")
+conflicts=("noisetorch-bin" "noisetorch")
 install="${pkgname}.install"
 source=('git+https://github.com/lawl/NoiseTorch.git'
         'main.patch'

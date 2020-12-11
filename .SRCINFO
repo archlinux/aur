@@ -14,6 +14,7 @@ pkgbase = noisetorch-git
 	depends = polkit
 	provides = noisetorch
 	conflicts = noisetorch-bin
+	conflicts = noisetorch
 	source = git+https://github.com/lawl/NoiseTorch.git
 	source = main.patch
 	source = module.patch
