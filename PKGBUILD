@@ -4,7 +4,7 @@
 pkgname=xdgize-git
 _pkgname="${pkgname%-git}"
 pkgdesc='Generates wrapper/shim shell scripts around external commands to "XDG"-ize them'
-pkgver=0.1.1.r0.g9a8a4f4
+pkgver=0.2
 pkgrel=1
 url="https://github.com/etcusrvar/${_pkgname}"
 arch=('any')
