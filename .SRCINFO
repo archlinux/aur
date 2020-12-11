@@ -7,8 +7,8 @@ pkgbase = notify-call
 	license = MIT
 	makedepends = cargo
 	depends = dbus
-	source = https://github.com/crabvk/notify-call/archive/0.1.0.tar.gz
-	sha512sums = 8da02b41ee0eb756cb8cfdb04380b21f7a9d328b99ac628451f819411738234184447a08dbaf3e8362b341f4a7ecfc8975793fd025cd9b5ea9991ef82962c84b
+	source = https://github.com/crabvk/notify-call/archive/v0.1.0.tar.gz
+	sha512sums = 48759d3b526dcd654ab47760b100855b3f16d61232475dc7828140fbbb6467946d8b47e864d00eaee2786b6830f3f267d6c15848bf43d7329e759d47a03c48cb
 
 pkgname = notify-call
 
