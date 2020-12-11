@@ -1,5 +1,5 @@
 pkgbase = glrnvim
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 0
 	url = https://github.com/beeender/glrnvim
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = glrnvim
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
-	source = git+https://github.com/beeender/glrnvim.git#tag=v1.1.0
+	source = git+https://github.com/beeender/glrnvim.git#tag=v1.1.1
 	sha256sums = SKIP
 
 pkgname = glrnvim
