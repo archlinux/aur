@@ -31,14 +31,11 @@ pkgname = linux-nitrous-fire
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-nitrous-fire-headers: to build DKMS modules against this kernel
 	optdepends = linux-firmware: Additional firmware blobs
-	provides = linux
 	backup = etc/mkinitcpio.d/linux-nitrous-fire.preset
 
 pkgname = linux-nitrous-fire-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel (tagged git version)
-	provides = linux-headers
 
 pkgname = linux-nitrous-fire-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (tagged git version)
-	provides = linux-docs
 
