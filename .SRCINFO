@@ -1,12 +1,13 @@
 pkgbase = python-vispy
 	pkgdesc = A high-performance interactive 2D/3D data visualization library.
 	pkgver = 0.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://vispy.org
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = cython
+	makedepends = npm
 	depends = python-numpy
 	optdepends = pyside2: a possible backend
 	optdepends = python-pyqt5: a possible backend
