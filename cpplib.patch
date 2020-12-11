@@ -1,0 +1,36 @@
+diff -Naur LuxCore-luxcorerender_v2.5beta1/src/slg/scene/parsematerials.cpp LuxCore-luxcorerender_v2.5beta1-new/src/slg/scene/parsematerials.cpp
+--- LuxCore-luxcorerender_v2.5beta1/src/slg/scene/parsematerials.cpp	2020-11-15 11:42:41.000000000 +0100
++++ LuxCore-luxcorerender_v2.5beta1-new/src/slg/scene/parsematerials.cpp	2020-12-11 16:25:46.032356584 +0100
+@@ -52,6 +52,8 @@
+ 
+ #include "slg/utils/filenameresolver.h"
+ 
++#include <atomic>
++
+ using namespace std;
+ using namespace luxrays;
+ using namespace slg;
+diff -Naur LuxCore-luxcorerender_v2.5beta1/src/slg/scene/parsevolumes.cpp LuxCore-luxcorerender_v2.5beta1-new/src/slg/scene/parsevolumes.cpp
+--- LuxCore-luxcorerender_v2.5beta1/src/slg/scene/parsevolumes.cpp	2020-11-15 11:42:41.000000000 +0100
++++ LuxCore-luxcorerender_v2.5beta1-new/src/slg/scene/parsevolumes.cpp	2020-12-11 16:25:58.548903384 +0100
+@@ -32,6 +32,8 @@
+ #include "slg/volumes/heterogenous.h"
+ #include "slg/volumes/homogenous.h"
+ 
++#include <atomic>
++
+ using namespace std;
+ using namespace luxrays;
+ using namespace slg;
+diff -Naur LuxCore-luxcorerender_v2.5beta1/src/slg/scene/parseobjects.cpp LuxCore-luxcorerender_v2.5beta1-new/src/slg/scene/parseobjects.cpp
+--- LuxCore-luxcorerender_v2.5beta1/src/slg/scene/parseobjects.cpp	2020-11-15 11:42:41.000000000 +0100
++++ LuxCore-luxcorerender_v2.5beta1-new/src/slg/scene/parseobjects.cpp	2020-12-11 16:31:37.835655891 +0100
+@@ -19,6 +19,8 @@
+ #include "slg/scene/scene.h"
+ #include "slg/utils/filenameresolver.h"
+ 
++#include <atomic>
++
+ using namespace std;
+ using namespace luxrays;
+ using namespace slg;

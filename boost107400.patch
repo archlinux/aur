@@ -1,0 +1,47 @@
+diff -Naur LuxCore-luxcorerender_v2.5beta1/src/slg/film/filmserialize.cpp LuxCore-luxcorerender_v2.5beta1-new/src/slg/film/filmserialize.cpp
+--- LuxCore-luxcorerender_v2.5beta1/src/slg/film/filmserialize.cpp	2020-11-15 11:42:41.000000000 +0100
++++ LuxCore-luxcorerender_v2.5beta1-new/src/slg/film/filmserialize.cpp	2020-12-11 15:40:07.712190410 +0100
+@@ -21,6 +21,7 @@
+ #include <boost/lexical_cast.hpp>
+ #include <boost/foreach.hpp>
++#include <boost/serialization/library_version_type.hpp>
+ #include <boost/serialization/unordered_set.hpp>
+ 
+ #include "slg/film/film.h"
+ #include "slg/film/imagepipeline/imagepipeline.h"
+diff -Naur LuxCore-luxcorerender_v2.5beta1/src/slg/engines/bakecpu/bakecputhread.cpp LuxCore-luxcorerender_v2.5beta1-new/src/slg/engines/bakecpu/bakecputhread.cpp
+--- LuxCore-luxcorerender_v2.5beta1/src/slg/engines/bakecpu/bakecputhread.cpp	2020-11-15 11:42:41.000000000 +0100
++++ LuxCore-luxcorerender_v2.5beta1-new/src/slg/engines/bakecpu/bakecputhread.cpp	2020-12-11 15:59:46.150726376 +0100
+@@ -23,6 +23,8 @@
+ #include "slg/utils/varianceclamping.h"
+ #include "slg/film/imagepipeline/plugins/bakemapmargin.h"
+ 
++#include <boost/bind.hpp>
++
+ using namespace std;
+ using namespace luxrays;
+ using namespace slg;
+diff -Naur LuxCore-luxcorerender_v2.5beta1/src/slg/engines/pathocl/pathoclopenclthread.cpp LuxCore-luxcorerender_v2.5beta1-new/src/slg/engines/pathocl/pathoclopenclthread.cpp
+--- LuxCore-luxcorerender_v2.5beta1/src/slg/engines/pathocl/pathoclopenclthread.cpp	2020-11-15 11:42:41.000000000 +0100
++++ LuxCore-luxcorerender_v2.5beta1-new/src/slg/engines/pathocl/pathoclopenclthread.cpp	2020-12-11 15:59:38.660798941 +0100
+@@ -31,6 +31,8 @@
+ #include "slg/renderconfig.h"
+ #include "slg/engines/pathocl/pathocl.h"
+ 
++#include <boost/bind.hpp>
++
+ using namespace std;
+ using namespace luxrays;
+ using namespace slg;
+diff -Naur LuxCore-luxcorerender_v2.5beta1/src/slg/engines/tilepathocl/tilepathoclthread.cpp LuxCore-luxcorerender_v2.5beta1-new/src/slg/engines/tilepathocl/tilepathoclthread.cpp
+--- LuxCore-luxcorerender_v2.5beta1/src/slg/engines/tilepathocl/tilepathoclthread.cpp	2020-11-15 11:42:41.000000000 +0100
++++ LuxCore-luxcorerender_v2.5beta1-new/src/slg/engines/tilepathocl/tilepathoclthread.cpp	2020-12-11 15:59:08.011095932 +0100
+@@ -24,6 +24,8 @@
+ #include "slg/kernels/kernels.h"
+ #include "slg/engines/tilepathocl/tilepathocl.h"
+ 
++#include <boost/bind.hpp>
++
+ using namespace std;
+ using namespace luxrays;
+ using namespace slg;
