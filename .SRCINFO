@@ -1,0 +1,20 @@
+pkgbase = fotokilof
+	pkgdesc = GUI for ImageMagick
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://github.com/TeaM-TL/FotoKilof
+	arch = any
+	license = MIT
+	makedepends = python
+	depends = imagemagick
+	depends = python-configparser
+	depends = python-tkcolorpicker
+	source = https://files.pythonhosted.org/packages/source/F/FotoKilof/FotoKilof-3.4.0.tar.gz
+	source = make-executable.patch
+	source = fotokilof.desktop
+	sha256sums = 6aad20db071d74e95bd3a561efee5e260dedbefc4edc8c3b01449ac93fd9df70
+	sha256sums = 4eeef4372c7b584f52f3fa1cc095be34f0ef7f4cd6937d95a0adc2258ca1e817
+	sha256sums = 8f6610e5b14c7ecc3d099b6c03ee2ea638b6080d625d4d7ed2e6baa95daaf1c2
+
+pkgname = fotokilof
+

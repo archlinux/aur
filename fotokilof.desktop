@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=FotoKilof
+Comment=GUI for ImageMagick
+Path=/usr/bin
+Exec=fotokilof
+Icon=fotokilof
+Terminal=false
+Categories=Graphics;Utility;Photography;
