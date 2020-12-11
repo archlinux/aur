@@ -1,10 +1,9 @@
-
 pkgname=piwigo
 pkgver=2.10.2
 pkgrel=1
 pkgdesc="Piwigo is a photo gallery software for the web that comes with powerful features to publish and manage your collection of pictures."
 arch=(any)
-url="http://piwigo.org/"
+url="https://piwigo.org/"
 license=("GPL")
 optdepends=('php-apache: to use the Apache web server')
 depends=("php" "php-gd" "mariadb")
@@ -13,9 +12,9 @@ backup=("etc/webapps/piwigo/apache.conf")
 install=piwigo.install
 options=(emptydirs)
 
-source=('http::http://piwigo.org/download/dlcounter.php?code=latest'
-	'apache.conf'
-	'piwigo.perm.sh')
+source=('http::https://piwigo.org/download/dlcounter.php?code=latest'
+        'apache.conf'
+        'piwigo.perm.sh')
 md5sums=('488174630af5fd3589301cb1d2ab3c66'
          '5d1da01ee31fa1ad7a2b7e11766ec1f7'
          'a855fa62a5ae3595f3361ae42c3cdf2f')
@@ -23,7 +22,7 @@ md5sums=('488174630af5fd3589301cb1d2ab3c66'
 
 pkgver() {
 #    curl -Is https://github.com/Piwigo/Piwigo/releases/latest | awk -F'/' '/^Location/ {print $NF}' |  sed 's/[^[:print:]]//'
-      curl -s  http://piwigo.org/download/all_versions.php | head -1
+      curl -s  https://piwigo.org/download/all_versions.php | head -1
 }
 
 
@@ -39,7 +38,7 @@ package() {
     install -D -m755 "${srcdir}/piwigo.perm.sh" "${pkgdir}/usr/bin/set-piwigo-perm"
 
     ### apache conf (optionnal)
-    mkdir -p "${pkgdir}/etc/webapps/piwigo"    
+    mkdir -p "${pkgdir}/etc/webapps/piwigo"
     install -m644 "${srcdir}/apache.conf" "${pkgdir}/etc/webapps/piwigo/apache.conf"
     ## add 2 patch from pull request
     ## cd ${pkgdir}/usr/share/webapps/piwigo/

@@ -2,7 +2,7 @@ pkgbase = piwigo
 	pkgdesc = Piwigo is a photo gallery software for the web that comes with powerful features to publish and manage your collection of pictures.
 	pkgver = 2.10.2
 	pkgrel = 1
-	url = http://piwigo.org/
+	url = https://piwigo.org/
 	install = piwigo.install
 	arch = any
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = piwigo
 	optdepends = php-apache: to use the Apache web server
 	options = emptydirs
 	backup = etc/webapps/piwigo/apache.conf
-	source = http::http://piwigo.org/download/dlcounter.php?code=latest
+	source = http::https://piwigo.org/download/dlcounter.php?code=latest
 	source = apache.conf
 	source = piwigo.perm.sh
 	md5sums = 488174630af5fd3589301cb1d2ab3c66
