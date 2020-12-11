@@ -1,5 +1,5 @@
 pkgbase = strace-parser
-	pkgdesc = Strace parser written in Rust
+	pkgdesc = A tool to analyze raw strace data
 	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://gitlab.com/gitlab-com/support/toolbox/strace-parser

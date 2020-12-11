@@ -3,7 +3,7 @@
 pkgname=strace-parser
 pkgver=0.7.0
 pkgrel=1
-pkgdesc='Strace parser written in Rust'
+pkgdesc='A tool to analyze raw strace data'
 arch=(i686 x86_64)
 url=https://gitlab.com/gitlab-com/support/toolbox/strace-parser
 license=(MIT)
