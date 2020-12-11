@@ -18,10 +18,10 @@
 }
 
 pkgname=luxcorerender
-pkgver=2.4
-_name=LuxCore-${pkgname}_v${pkgver}
-#_rel="rc1"
+pkgver=2.5
+_rel="beta1"
 [ -n "${_rel}" ] && _pkgver=${pkgver}${_rel} && pkgver+=".${_rel}" || _pkgver=${pkgver}
+_name=LuxCore-${pkgname}_v${_pkgver}
 epoch=2
 pkgrel=1
 pkgdesc="Physically correct, unbiased rendering engine."
@@ -36,9 +36,12 @@ source=("https://github.com/LuxCoreRender/LuxCore/archive/${pkgname}_v${_pkgver}
         "python.patch"
         "glfw.patch"
         )
-sha256sums=('b80486f2340a130257a50686337be04802c32df8a4e2dfe2ac6ccc1e2b6e7482'
+sha256sums=('eed186b4ff8002c1e29d882751e42f7a7d66cd622054f7f031a32d6688b5c1c7'
             'f639fb7e31056b6c7214e303c90fe06665572ffafc11e545f7c05128a8d85dc4'
             '4e04c3eb653f00d2389aff8e7fda2d244e258cbca3a22e32c13388a3984e4bb1')
+b2sums=('0ce686271e6c04e9381e587fe083c86bb54a10bb6c85fa5796ebf8ae0f19c954f79699bac3c9517913a3702f7275ca9821f39322328e03ccd88d979cc508798a'
+        '348fa445b9ac7f738461543f8adadbb9a93dc2f75d96d0d26acbf7168290a0621224d6f11b3af77a6c6e492ae089e57770fc02a987af0748f5bb3e73b8d90f54'
+        '2903992389c61fc4720cde8a011d0b637de647a7c9e701609968c01a8ab904277dfb27a90179d4cfcf98382973542e59d1384580236c25f6568aaa7b6ba90528')
 
 prepare() {
   for patch in "${srcdir}"/*.patch; do
