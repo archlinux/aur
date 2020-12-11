@@ -4,8 +4,8 @@
 # Maintainer: Square252 <square@0xfc.de>
 
 pkgname=jameica-nightly
-pkgver=2.9.0
-pkgrel=4
+pkgver=2.11.0
+pkgrel=1
 pkgdesc="Jameica is a free Java application platform"
 arch=('any')
 url="http://www.willuhn.de/products/jameica/"
