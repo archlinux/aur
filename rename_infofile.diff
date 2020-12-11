@@ -1,0 +1,26 @@
+diff --git a/doc/ref/Makefile.am b/doc/ref/Makefile.am
+index 2f4b8ca88..c6fe2ec93 100644
+--- a/doc/ref/Makefile.am
++++ b/doc/ref/Makefile.am
+@@ -22,7 +22,7 @@
+ 
+ AUTOMAKE_OPTIONS = gnu
+ 
+-info_TEXINFOS = guile.texi
++info_TEXINFOS = guile-3.0.texi
+ 
+ guile_TEXINFOS = preface.texi			\
+                  intro.texi			\
+diff --git a/doc/ref/guile.texi b/doc/ref/guile.texi
+index 9f3fe2d72..2f40b9dba 100644
+--- a/doc/ref/guile.texi
++++ b/doc/ref/guile.texi
+@@ -1,7 +1,7 @@
+ \input texinfo
+ @c -*-texinfo-*-
+ @c %**start of header
+-@setfilename guile.info
++@setfilename guile-3.0.info
+ @documentencoding UTF-8
+ @settitle Guile Reference Manual
+ @set guile

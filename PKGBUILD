@@ -4,7 +4,7 @@ pkgname=guile-git
 epoch=1
 _majorver=3.0
 pkgver=3.0.4.r38.g64c89458e
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL')
@@ -14,13 +14,21 @@ depends=('gc' 'libtool' 'libffi' 'libunistring' 'gmp' 'readline')
 provides=('guile')
 conflicts=('guile4emacs')
 options=('!strip' '!makeflags' 'libtool')
-source=("git+https://git.savannah.gnu.org/git/${pkgname%-git}.git")
+source=("git+https://git.savannah.gnu.org/git/${pkgname%-git}.git" rename_infofile.diff)
 url="http://www.gnu.org/software/guile/"
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '555e6d5491ddbe66a30fdec4a8e1897d4bbbb4131083b831e41af33c172010b9')
 
 pkgver() {
   cd ${pkgname%-git}
   git describe --tags | sed 's+-+.r+' | sed 's+^v++' | tr - .
+}
+
+prepare() {
+  cd ${pkgname%-git}
+  git apply "$srcdir"/rename_infofile.diff
+  cd doc/ref
+  mv guile.texi guile-3.0.texi 
 }
 
 build() {
@@ -33,16 +41,7 @@ build() {
 package() {
   cd ${pkgname%-git}
   make DESTDIR="$pkgdir/" install
-  cd "$pkgdir"/usr/share/info
-  for i in guile*
-  do
-    mv $i guile-${_majorver}${i#guile}
-  done
-  sed -i "s/guile.info/guile-${_majorver}.info/g" guile-${_majorver}*
-  sed -i "s/guile.texi/guile-${_majorver}.texi/g" guile-${_majorver}*
-  sed -i "s/* Guile Reference: (guile)/* Guile-${_majorver} Reference: (guile-${_majorver})/g" guile-${_majorver}*
-  sed -i "s/The Guile reference manual./The Guile-${_majorver} reference manual./g" guile-${_majorver}*
-  mv r5rs.info r5rs-${_majorver}.info
+
   mv "$pkgdir"/usr/share/aclocal/guile.m4 "$pkgdir"/usr/share/aclocal/guile-${_majorver}.m4
   rm "$pkgdir"/usr/lib/libguile-3.0.so.*-gdb.scm
 }
