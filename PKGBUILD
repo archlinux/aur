@@ -2,7 +2,7 @@
 
 pkgname=noisetorch-bin
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Easy to use noise suppression for PulseAudio'
 arch=('x86_64')
 url="https://github.com/lawl/NoiseTorch"
