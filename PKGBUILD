@@ -1,8 +1,9 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
+# Contributor: bittin
 
 pkgname=mopidy-mpd
-pkgver=3.0.0
-pkgrel=3
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Mopidy extension for controlling playback from MPD clients"
 arch=('any')
 url="http://www.mopidy.com"
@@ -12,7 +13,7 @@ depends=('mopidy>=3.0'
          'python-pykka')
 makedepends=('python3')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mopidy/mopidy-mpd/archive/v${pkgver}.tar.gz")
-md5sums=('596b16cfd33bb9a576e784f275ccafbc')
+md5sums=('2d2458108db4e99a320b0384e4e428c3')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
