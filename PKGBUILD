@@ -1,9 +1,9 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 pkgname=raspberrypi-stop-initramfs
 pkgver=3
-pkgrel=1
+pkgrel=2
 pkgdesc="Prevent kernel updates on RPix from generating useless kernel images"
-arch=('armv6h' 'armv7h')
+arch=('armv6h' 'armv7h' 'aarch64')
 install=readme.install
 
 package() {
