@@ -1,13 +1,13 @@
 pkgname=postgresql-debversion
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Debian version number type for PostgreSQL"
 arch=('i686' 'x86_64')
 url="https://packages.debian.org/source/sid/postgresql-debversion"
 license=('GPL3')
-depends=('postgresql>12' 'postgresql<13' 'apt')
+depends=('postgresql>13' 'postgresql<14' 'apt')
 source=("https://deb.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz")
-sha512sums=('5bb17568873aff8acb743b7143dd58a51a4dd7c862044deaf992527391d98819de8dae2669918a46e4958781c3f3e178a8196f7d65b48b8ec0f4080ff2ab2a93')
+b2sums=('3b19b95b119095918478b7e3e26232599902a5fd3c3e9026d5c35bedef02c95020367c2a5f0dc1336780c2c4250524fe14d341c1d5c348c3f1e88c38d06be8dd')
 
 build() {
   cd "$pkgname"
