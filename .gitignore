@@ -1,1 +1,7 @@
-upload.sh
+*
+!.gitignore
+!main.patch
+!module.patch
+!version.go
+!.SRCINFO
+!PKGBUILD
