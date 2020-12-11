@@ -13,7 +13,7 @@
 pkgbase=linux-nitrous-fire-git
 _srcname=linux-nitrous
 pkgver=5.9+
-pkgrel=50
+pkgrel=51
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
