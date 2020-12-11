@@ -1,13 +1,13 @@
 # Maintainer: Andy Kluger <https://t.me/andykluger>
-
-# Contributor: Antonio Rojas <arojas@archlinux,org>
-# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Upstream PKGBUILD (extra repo):
+# Maintainer: Antonio Rojas <arojas@archlinux,org>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=dolphin-meld
 _pkgname=dolphin
-pkgver=20.08.3
+pkgver=20.12.0
 pkgrel=1
 pkgdesc="KDE File Manager, using Meld rather than Kompare"
 arch=(x86_64)
@@ -15,14 +15,14 @@ url="https://kde.org/applications/system/dolphin/"
 license=(LGPL)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname=$pkgver")
-depends=(baloo-widgets knewstuff kio-extras kcmutils kparts kinit kactivities)
+depends=(baloo-widgets knewstuff kio-extras kcmutils kparts kinit kactivities kuserfeedback)
 makedepends=(extra-cmake-modules kdoctools packagekit-qt5)
 optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: video thumbnails' 'kdegraphics-thumbnailers: PDF and PS thumbnails'
             'konsole: terminal panel' 'purpose: share context menu' 'packagekit-qt5: service menu installer')
 groups=(kde-applications kde-system)
 source=("https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig}
         "dolphin-meld.patch")
-sha256sums=('9d29577e0ef2d364a54718f1a8e0a74cf4246f6bd020ff605825f5888739f680'
+sha256sums=('02b384e85b00aaaf1b4efd7ee7ca9d2f98991b850aa3645b7161219e9087ccd3'
             'SKIP'
             '9bf8e1d53bb482e3cc2f3a114fb894fc3d0216ad2933d0c6e1f0b7df6d640b7a')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
