@@ -1,0 +1,16 @@
+pkgbase = statis
+	pkgdesc = Modular system monitoring and status display via desktop notifications.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://gitlab.com/BVollmerhaus/statis
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	optdepends = libnotify: for desktop notifications
+	optdepends = dunst: for desktop notifications
+	source = https://gitlab.com/BVollmerhaus/statis/-/archive/v1.1.0/statis-v1.1.0.tar.gz
+	sha256sums = f434b94033e63632cbaad7fe6c06894f8a66dd2d4f990469daf174525ec0e632
+
+pkgname = statis
+
