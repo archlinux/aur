@@ -8,7 +8,7 @@ pkgname=mullvad-vpn-beta
 _pkgver=2020.8
 _channel=beta
 pkgver=${_pkgver}.${_channel}2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -21,14 +21,10 @@ install="${pkgname%-beta}.install"
 _commit='fa76f058d6f5fa66e62f9c4a291e6079cea22e37'
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}2?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
-        "${pkgname%-beta}.sh"
-        "${pkgname%-beta}.desktop"
-        "${pkgname%-beta}.png")
+        "${pkgname%-beta}.sh")
 sha256sums=('SKIP'
             'SKIP'
-            'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4'
-            '121d90e6683e64d9c0d2dbb7b346fa918bdb37cf21fdaf9f66232304ed23abc2'
-            'd022c2226280bb9bf0bbf12136d9cf62b57b4a961cb3de73568cffcd78f45ccc')
+            'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
 validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               # Linus Färnstrand (code signing key) <linus at mullvad dot net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
@@ -41,11 +37,8 @@ prepare() {
 	git config submodule.mullvadvpn-app-binaries.url "$srcdir/mullvadvpn-app-binaries"
 	git submodule update
 
-#	# Disable building of rpm
-#	sed -i "s/'deb', 'rpm'/'deb'/g" gui/tasks/distribution.js
-	
-	# Disable building of rpm & deb
-	sed -i "s/'deb', 'rpm'/'dir'/g" gui/tasks/distribution.js
+	# Disable building of rpm
+	sed -i "s/'deb', 'rpm'/'deb'/g" gui/tasks/distribution.js
 
 	echo "Removing old Rust build artifacts"
 	cargo clean
@@ -86,7 +79,7 @@ build() {
 	
 	cargo build --release --locked
 
-	mkdir -p /dist-assets/shell-completions
+	mkdir -p dist-assets/shell-completions
 	for sh in bash zsh fish; do
 		echo "Generating shell completion script for $sh..."
 		cargo run --bin mullvad --release --locked -- shell-completions "$sh" \
@@ -158,20 +151,16 @@ package() {
 	install -Dm755 dist-assets/shell-completions/mullvad.fish -t \
 		"$pkgdir/usr/share/fish/vendor_completions.d"
 
-#	# Install desktop file & icons from deb
-#	cd dist
-#	ar x "MullvadVPN-${_pkgver}.0-${_channel}2_amd64.deb"
-#	bsdtar -xf data.tar.xz
-#	install -Dm644 "usr/share/applications/${pkgname%-beta}.desktop" -t \
-#		"$pkgdir/usr/share/applications"
-
-#	for icon_size in 16 32 48 64 128 256 512 1024; do
-#		icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-#		install -d $pkgdir/$icons_dir
-#		install -m644 $icons_dir/${pkgname%-beta}.png -t $pkgdir/$icons_dir
-#	done
-
-	install -Dm644 "$srcdir/${pkgname%-beta}.desktop" -t \
+	# Install desktop file & icons from deb
+	cd dist
+	ar x "MullvadVPN-${_pkgver}.0-${_channel}2_amd64.deb"
+	bsdtar -xf data.tar.xz
+	install -Dm644 "usr/share/applications/${pkgname%-beta}.desktop" -t \
 		"$pkgdir/usr/share/applications"
-	install -Dm644 "$srcdir/${pkgname%-beta}.png" -t "$pkgdir/usr/share/pixmaps"
+
+	for icon_size in 16 32 48 64 128 256 512 1024; do
+		icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
+		install -d $pkgdir/$icons_dir
+		install -m644 $icons_dir/${pkgname%-beta}.png -t $pkgdir/$icons_dir
+	done
 }

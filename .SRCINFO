@@ -1,7 +1,7 @@
 pkgbase = mullvad-vpn-beta
 	pkgdesc = The Mullvad VPN client app for desktop (latest/beta release)
 	pkgver = 2020.8.beta2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
 	arch = x86_64
@@ -20,15 +20,11 @@ pkgbase = mullvad-vpn-beta
 	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2020.8-beta2?signed
 	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=fa76f058d6f5fa66e62f9c4a291e6079cea22e37?signed
 	source = mullvad-vpn.sh
-	source = mullvad-vpn.desktop
-	source = mullvad-vpn.png
 	validpgpkeys = EA0A77BF9E115615FC3BD8BC7653B940E494FE87
 	validpgpkeys = 8339C7D2942EB854E3F27CE5AEE9DECFD582E984
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4
-	sha256sums = 121d90e6683e64d9c0d2dbb7b346fa918bdb37cf21fdaf9f66232304ed23abc2
-	sha256sums = d022c2226280bb9bf0bbf12136d9cf62b57b4a961cb3de73568cffcd78f45ccc
 
 pkgname = mullvad-vpn-beta
 
