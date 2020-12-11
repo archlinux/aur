@@ -3,7 +3,7 @@
 # Contributor: pandada8 <pandada8@gmail.com>
 
 pkgname=xray-git
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="The best v2ray-core, with XTLS support."
 arch=('x86_64')
