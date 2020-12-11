@@ -1,0 +1,4 @@
+pkg/*
+src/*
+touchegg*.tar.gz
+touchegg-*pkg.tar.zst
