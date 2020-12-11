@@ -1,0 +1,7 @@
+post_install() {
+  /usr/share/libalpm/scripts/symlink-latest-kernel
+}
+
+post_remove() {
+  rm -f /usr/lib/modules/latest
+}

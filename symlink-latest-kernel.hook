@@ -1,0 +1,12 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/modules/*/
+Target = !usr/lib/modules/*/?*
+
+[Action]
+Description = Symlinking latest kernel...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/symlink-latest-kernel
