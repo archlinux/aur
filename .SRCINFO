@@ -1,7 +1,7 @@
 pkgbase = python-onnxruntime
 	pkgdesc = Cross-platform, high performance scoring engine for ML models
-	pkgver = 1.5.3
-	pkgrel = 1
+	pkgver = 1.6.0
+	pkgrel = 2
 	url = https://github.com/microsoft/onnxruntime
 	arch = x86_64
 	license = MIT
@@ -19,12 +19,14 @@ pkgbase = python-onnxruntime
 	depends = python-numpy
 	depends = python-onnx
 	depends = python-protobuf
-	source = git+https://github.com/microsoft/onnxruntime#tag=v1.5.3
+	source = git+https://github.com/microsoft/onnxruntime#tag=v1.6.0
 	source = git+https://gitlab.com/libeigen/eigen.git
 	source = git+https://github.com/google/gemmlowp.git
 	source = git+https://github.com/onnx/onnx.git
 	source = git+https://github.com/dcleblanc/SafeInt.git
+	source = git+https://github.com/martinmoene/optional-lite.git
 	source = build-fixes.patch
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
