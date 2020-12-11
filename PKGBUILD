@@ -2,7 +2,7 @@
 
 pkgname=mympd
 _pkgname=myMPD
-pkgver=6.8.2
+pkgver=6.8.3
 pkgrel=1
 pkgdesc="A standalone and lightweight MPD web client."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -14,7 +14,7 @@ makedepends=('cmake' 'perl')
 backup=('etc/webapps/mympd/mympd.conf')
 install=mympd.install
 source=("https://github.com/jcorporation/myMPD/archive/v$pkgver.tar.gz")
-sha256sums=('46363c5e0a92c99040b1ac73c50f9e54ec90285fb0923e09f5fd5a264bd5804e')
+sha256sums=('0575bca5cd92ee526384a2f9df92cf62b7aed9c2285a427217552062d5d10b41')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
