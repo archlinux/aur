@@ -2,11 +2,11 @@
 pkgname=python-scipy-mkl-bin
 _pkgname=scipy
 _pkgver=1.5.2
-_build=py38h0b6359f_0
+_build=py39h91f5cce_0
 _build_number=0
 _libgfortran=libgfortran-ng-7.3.0-hdf63c60_0
 pkgver="${_pkgver}.${_build_number}.${_build//_/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering - with Intel MKL - prebuilt binaries from Anaconda"
 arch=('x86_64')
 url="http://www.scipy.org/"
@@ -28,7 +28,7 @@ optdepends=('python-pillow: for image saving module')
 source=("https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${_pkgver}-${_build}.tar.bz2"
         "https://repo.anaconda.com/pkgs/main/linux-64/${_libgfortran}.tar.bz2"
         )
-sha256sums=('3e9f47c52ac1736f48a55da394ee6e4782922466e834f424b7821bf002fe3788'
+sha256sums=('2ef41f525a68de31e85a4aa78ca9f298cfe984dc17dadd7238d8591d250ce869'
             '83c6fdb30a240fbaa09f5d2e2ae8f092759cb710bc3fa628ccb18934fc237b7f')
 
 package() {
