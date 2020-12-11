@@ -1,14 +1,19 @@
 pkgbase = xnp2-git
 	pkgdesc = X Neko Project II, a PC-9801 emulator
-	pkgver = 20150503.g9a0baa6
+	pkgver = 20201130.g1c9eb5c
 	pkgrel = 1
 	url = http://www.nonakap.org/np2/
-	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
 	depends = gtk2
-	depends = sdl_mixer
-	source = git://github.com/nonakap/xnp2.git
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	depends = openssl
+	depends = libusb
+	source = git+https://github.com/AZO234/NP2kai
 	md5sums = SKIP
 
 pkgname = xnp2-git
