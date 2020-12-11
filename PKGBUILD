@@ -4,12 +4,12 @@ set -u
 _pyver="python2"
 _pybase='parse_type'
 pkgname="${_pyver}-${_pybase}"
-pkgver='0.5.2'
+pkgver='0.5.6'
 pkgrel='1'
 pkgdesc='simplifies to build parse types based on the parse module'
 arch=('any')
-url="https://pypi.python.org/pypi/${_pybase}/"
-#url="https://github.com/behave/${_pybase}"
+#url="https://pypi.python.org/pypi/${_pybase}/"
+url='https://github.com/jenisys/parse_type'
 license=('BSD')
 _pydepends=( # See setup.py, README.rst, and requirements.txt for version dependencies
   "${_pyver}-parse>=1.6"    # COM
@@ -21,8 +21,11 @@ _srcdir="${_pybase}-${pkgver}"
 #_verwatch=("${url}/releases" "${url#*github.com}/archive/\(.*\)\.tar\.gz" 'l')
 #source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 #_verwatch=("https://pypi.org/simple/${_pybase//_/-}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
-source=("https://pypi.io/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('7f690b18d35048c15438d6d0571f9045cffbec5907e0b1ccf006f889e3a38c0b')
+#source=("https://pypi.io/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
+source=("${_srcdir}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+#https://github.com/jenisys/parse_type/archive/v0.5.6.tar.gz
+md5sums=('872136263b915e051115669b4467876e')
+sha256sums=('12b75aa048595457fa5d15558c1a49a688ad4a585d5d1378b1aff4d99fb532ae')
 
 build() {
   set -u
