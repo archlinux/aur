@@ -4,14 +4,14 @@
 
 pkgname=insomnia
 pkgver=2020.5.1
-pkgrel=1
+pkgrel=2
 _nodeversion=12.18.3
 pkgdesc="Cross-platform HTTP and GraphQL Client"
 url="https://github.com/Kong/insomnia"
 arch=('any')
 license=('MIT')
 depends=('electron')
-makedepends=('npm' 'nvm')
+makedepends=('npm' 'nvm' 'imagemagick')
 source=(
   "https://github.com/Kong/insomnia/archive/core@${pkgver}/${pkgname}-${pkgver}.tar.gz"
   "insomnia.desktop"
@@ -61,8 +61,13 @@ package() {
 
   cd ${pkgname}-core-${pkgver}
   install -Dm644 packages/insomnia-app/dist/com.insomnia.app/linux-unpacked/resources/app.asar -t "${pkgdir}/usr/share/insomnia"
-  
-  install -Dm644 packages/insomnia-app/build/com.insomnia.app/static/insomnia-core-logo_16x.png "${pkgdir}/usr/share/icons/hicolor/16x16/apps/insomnia.png"
+
+  # Add icons
+  for size in 16 32 48 128 256 512 1024; do
+     install -dm744 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/"
+     convert -resize "${size}x${size}" packages/insomnia-app/app/ui/images/insomnia-core-logo.png "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/insomnia.png"
+  done
+
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
