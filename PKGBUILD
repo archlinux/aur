@@ -5,9 +5,9 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
-_pkgver=2020.7
-_channel=stable
-pkgver=${_pkgver}.${_channel}
+_pkgver=2020.8
+_channel=beta
+pkgver=${_pkgver}.${_channel}2
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
@@ -18,13 +18,17 @@ makedepends=('git' 'go' 'rust' 'npm' 'python')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
-_commit='cef267fadf707b6c59f3637685cc854ea09ee927'
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"
+_commit='fa76f058d6f5fa66e62f9c4a291e6079cea22e37'
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}2?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
-        "${pkgname%-beta}.sh")
+        "${pkgname%-beta}.sh"
+        "${pkgname%-beta}.desktop"
+        "${pkgname%-beta}.png")
 sha256sums=('SKIP'
             'SKIP'
-            'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
+            'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4'
+            '121d90e6683e64d9c0d2dbb7b346fa918bdb37cf21fdaf9f66232304ed23abc2'
+            'd022c2226280bb9bf0bbf12136d9cf62b57b4a961cb3de73568cffcd78f45ccc')
 validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               # Linus Färnstrand (code signing key) <linus at mullvad dot net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
@@ -37,8 +41,11 @@ prepare() {
 	git config submodule.mullvadvpn-app-binaries.url "$srcdir/mullvadvpn-app-binaries"
 	git submodule update
 
-	# Disable building of rpm
-	sed -i "s/'deb', 'rpm'/'deb'/g" gui/tasks/distribution.js
+#	# Disable building of rpm
+#	sed -i "s/'deb', 'rpm'/'deb'/g" gui/tasks/distribution.js
+	
+	# Disable building of rpm & deb
+	sed -i "s/'deb', 'rpm'/'dir'/g" gui/tasks/distribution.js
 
 	echo "Removing old Rust build artifacts"
 	cargo clean
@@ -72,19 +79,19 @@ build() {
 
 	# Clean mod cache for makepkg -C
 	go clean -modcache
+	
+	export MULLVAD_ADD_MANIFEST="1"
 
 	echo "Building Rust code in release mode using $RUSTC_VERSION..."
+	
+	cargo build --release --locked
 
-	pushd mullvad-cli
-	mkdir -p ../dist-assets/shell-completions
+	mkdir -p /dist-assets/shell-completions
 	for sh in bash zsh fish; do
 		echo "Generating shell completion script for $sh..."
-		cargo run --release --locked --features shell-completions -- \
-			shell-completions "$sh" ../dist-assets/shell-completions/
+		cargo run --bin mullvad --release --locked -- shell-completions "$sh" \
+			dist-assets/shell-completions/
 	done
-	popd
-
-	MULLVAD_ADD_MANIFEST="1" cargo build --release --locked
 
 	echo "Copying binaries"
 	binaries=(
@@ -99,9 +106,12 @@ build() {
 		cp "target/release/$binary" "dist-assets/$binary"
 	done
 
-	# Update relay list & generate relays.json
-	./update-relays.sh
-
+	echo "Updating relay list..."
+	cargo run --bin relay_list --release > dist-assets/relays.json
+	
+	echo "Updating API address cache..."
+	cargo run --bin address_cache --release > dist-assets/api-ip-address.txt
+	
 	# Build Electron GUI app
 	pushd gui
 	echo "Installing JavaScript dependencies..."
@@ -148,16 +158,20 @@ package() {
 	install -Dm755 dist-assets/shell-completions/mullvad.fish -t \
 		"$pkgdir/usr/share/fish/vendor_completions.d"
 
-	# Install desktop file & icons from deb
-	cd dist
-	ar x "MullvadVPN-${_pkgver}.0_amd64.deb"
-	bsdtar -xf data.tar.xz
-	install -Dm644 "usr/share/applications/${pkgname%-beta}.desktop" -t \
-		"$pkgdir/usr/share/applications"
+#	# Install desktop file & icons from deb
+#	cd dist
+#	ar x "MullvadVPN-${_pkgver}.0-${_channel}2_amd64.deb"
+#	bsdtar -xf data.tar.xz
+#	install -Dm644 "usr/share/applications/${pkgname%-beta}.desktop" -t \
+#		"$pkgdir/usr/share/applications"
 
-	for icon_size in 16 32 48 64 128 256 512 1024; do
-		icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-		install -d $pkgdir/$icons_dir
-		install -m644 $icons_dir/${pkgname%-beta}.png -t $pkgdir/$icons_dir
-	done
+#	for icon_size in 16 32 48 64 128 256 512 1024; do
+#		icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
+#		install -d $pkgdir/$icons_dir
+#		install -m644 $icons_dir/${pkgname%-beta}.png -t $pkgdir/$icons_dir
+#	done
+
+	install -Dm644 "$srcdir/${pkgname%-beta}.desktop" -t \
+		"$pkgdir/usr/share/applications"
+	install -Dm644 "$srcdir/${pkgname%-beta}.png" -t "$pkgdir/usr/share/pixmaps"
 }

@@ -8,6 +8,7 @@ pre_install() {
 	pkill -x "mullvad-gui" || true
 
 	rm -f /var/cache/mullvad-vpn/relays.json || true
+	rm -f /var/cache/mullvad-vpn/api-ip-address.txt || true
 }
 
 post_install() {
@@ -30,14 +31,13 @@ post_upgrade() {
 }
 
 pre_remove() {
-	/usr/bin/mullvad account clear-history || echo "Failed to remove leftover WireGuard keys"
-
 	# the user might've disabled or stopped the service themselves already
 	echo 'Making sure the Mullvad VPN daemon is stopped & disabled...'
 	systemctl stop mullvad-daemon || true
 	systemctl disable mullvad-daemon || true
 
-	/opt/Mullvad\ VPN/resources/mullvad-setup reset-firewall || true
+	/opt/Mullvad\ VPN/resources/mullvad-setup reset-firewall || echo "Failed to reset firewall"
+	/opt/Mullvad\ VPN/resources/mullvad-setup clear-history || echo "Failed to remove leftover WireGuard keys"
 }
 
 post_remove() {
