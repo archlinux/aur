@@ -1,7 +1,7 @@
 pkgbase = linux-manjaro-xanmod
 	pkgdesc = Linux Xanmod
 	pkgver = 5.9.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
@@ -40,7 +40,6 @@ pkgname = linux-manjaro-xanmod
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = bootsplash-systemd: for bootsplash functionality
-	provides = linux
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 	conflicts = 
@@ -48,7 +47,7 @@ pkgname = linux-manjaro-xanmod
 
 pkgname = linux-manjaro-xanmod-headers
 	pkgdesc = Header files and scripts for building modules for linux-manjaro-xanmod kernel
-	provides = linux-headers
+	provides = 
 	conflicts = 
 	replaces = 
 

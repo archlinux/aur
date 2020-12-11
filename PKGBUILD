@@ -82,7 +82,7 @@ pkgver=5.9.13
 _major=5.9
 _branch=5.x
 xanmod=2
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -256,7 +256,7 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices'
               'bootsplash-systemd: for bootsplash functionality')
-  provides=('linux' VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=()
   conflicts=()
 
@@ -285,7 +285,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for linux-manjaro-xanmod kernel"
-  provides=('linux-headers')
+  provides=()
   replaces=()
   conflicts=()
 
