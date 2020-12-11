@@ -11,9 +11,6 @@ post_install() {
     echo ""
     echo -n "To setup your webserver and enable the needed php extensions, "
     echo "please read: https://doc.wallabag.org/en/master/user/installation.html"
-    echo ""
-    echo -n "If you upgraded from 2.0.x or 2.1.x, you might need to check "
-    echo "the upgrade guide: https://doc.wallabag.org/en/master/user/upgrade.html"
 }
 
 
@@ -39,10 +36,11 @@ pre_upgrade() {
 post_upgrade() {
     rm -rf /var/lib/wallabag/var/cache/*
     echo ""
-    echo "====================================================================================="
-    echo "               If you upgraded from 2.2.3 to 2.3.X you need to do database           "
-    echo "                          migrations, check the guide:                               "
-    echo "https://doc.wallabag.org/en/admin/upgrade.html#explanations-about-database-migrations"
-    echo "====================================================================================="
+    echo "====================================================================================================="
+    echo "                         You need to execute any database migration with:                            "
+    echo "cd /usr/share/webapps/wallabag && sudo -u http php bin/console --env=prod doctrine:migrations:migrate"
+    echo "                                                                                                     "
+    echo "      Check the release notes for any other step: https://github.com/wallabag/wallabag/releases      "
+    echo "====================================================================================================="
     echo ""
 }
