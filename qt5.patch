@@ -1,0 +1,140 @@
+diff --color -Naur silex/main.cpp silex/main.cpp
+--- tools/silex/main.cpp	2020-12-11 18:03:35.497787357 +0300
++++ tools/silex/main.cpp	2020-12-11 18:03:50.058496239 +0300
+@@ -58,7 +58,7 @@
+ #include <cstdlib>
+ 
+ #ifndef Q_WS_MACX
+-#include "qwindowsstyle.h"
++#include "qproxystyle.h"
+ #endif
+ #include "qfiledialog.h"
+ #include "qstring.h"
+@@ -91,7 +91,7 @@
+     QApplication::setColorSpec(QApplication::ManyColor);
+     QApplication a(argc, argv);
+ #ifndef Q_WS_MACX
+-    a.setStyle(new QWindowsStyle);
++    a.setStyle(new QProxyStyle);
+ #endif
+     Explorer *w = 0;
+     if (argc > 1)
+diff --color -Naur silex/SiloFile.cpp silex/SiloFile.cpp
+--- tools/silex/SiloFile.cpp	2020-12-11 18:03:35.497787357 +0300
++++ tools/silex/SiloFile.cpp	2020-12-11 18:03:50.058496239 +0300
+@@ -97,7 +97,7 @@
+     int drt = DBGetDriverType(db);
+     if (canCallFreeCompression[drt] && DBFreeCompressionResources(db,0) == -1)
+         canCallFreeCompression[drt] = false;
+-    DBSetDir(db, (const char*)path.toAscii());
++    DBSetDir(db, (const char*)path.toUtf8());
+     DBtoc *toc = DBGetToc(db);
+ 
+     int i;
+@@ -204,7 +204,7 @@
+ // ****************************************************************************
+ SiloFile::SiloFile(const QString &name)
+ {
+-    db = DBOpen((const char*)name.toAscii(), DB_UNKNOWN, DB_READ);
++    db = DBOpen((const char*)name.toUtf8(), DB_UNKNOWN, DB_READ);
+     if (db)
+         root = new SiloDir(db, "/", "/");
+     else
+@@ -247,47 +247,47 @@
+ void*
+ SiloFile::GetVar(const QString &name)
+ {
+-    return DBGetVar(db, (const char*)name.toAscii());
++    return DBGetVar(db, (const char*)name.toUtf8());
+ }
+ 
+ int
+ SiloFile::GetVarType(const QString &name)
+ {
+-    return DBGetVarType(db, (const char*)name.toAscii());
++    return DBGetVarType(db, (const char*)name.toUtf8());
+ }
+ 
+ int
+ SiloFile::GetVarLength(const QString &name)
+ {
+-    return DBGetVarLength(db, (const char*)name.toAscii());
++    return DBGetVarLength(db, (const char*)name.toUtf8());
+ }
+ 
+ DBobject*
+ SiloFile::GetObject(const QString &name)
+ {
+-    return DBGetObject(db, (const char*)name.toAscii());
++    return DBGetObject(db, (const char*)name.toUtf8());
+ }
+ 
+ void*
+ SiloFile::GetComponent(const QString &oname, const QString &cname)
+ {
+-    return DBGetComponent(db, (const char*)oname.toAscii(), (const char*)cname.toAscii());
++    return DBGetComponent(db, (const char*)oname.toUtf8(), (const char*)cname.toUtf8());
+ }
+ 
+ int
+ SiloFile::GetComponentType(const QString &oname, const QString &cname)
+ {
+-    return DBGetComponentType(db, (const char*)oname.toAscii(), (const char*)cname.toAscii());
++    return DBGetComponentType(db, (const char*)oname.toUtf8(), (const char*)cname.toUtf8());
+ }
+ 
+ DBObjectType
+ SiloFile::InqVarType(const QString &name)
+ {
+-    return DBInqVarType(db, (const char*)name.toAscii());
++    return DBInqVarType(db, (const char*)name.toUtf8());
+ }
+ 
+ bool
+ SiloFile::InqVarExists(const QString &name)
+ {
+-    return DBInqVarExists(db, (const char*)name.toAscii());
++    return DBInqVarExists(db, (const char*)name.toUtf8());
+ }
+diff --color -Naur silex/SiloObjectView.cpp silex/SiloObjectView.cpp
+--- tools/silex/SiloObjectView.cpp	2020-12-11 18:03:35.497787357 +0300
++++ tools/silex/SiloObjectView.cpp	2020-12-11 18:03:50.058496239 +0300
+@@ -177,8 +177,8 @@
+         void *comp = silo->GetComponent(name, compname);
+         if (!comp)
+         {
+-            const char *asciiname = name.toAscii();
+-            const char *asciicomp = compname.toAscii();
++            const char *asciiname = name.toUtf8();
++            const char *asciicomp = compname.toUtf8();
+             std::cerr << "ERROR: DBGetComponent failed for object '"
+                       << asciiname
+                       <<"', component '"
+@@ -230,11 +230,11 @@
+             break;
+           default:
+             typestr = "var";
+-            std::string valStr = std::string(pdbname.toAscii());
++            std::string valStr = std::string(pdbname.toUtf8());
+             if (pdbname.indexOf("'<s>") == 0)
+             {
+                 int len = pdbname.length();
+-                valStr = std::string((const char*)(pdbname.toAscii()),4,len-5);
++                valStr = std::string((const char*)(pdbname.toUtf8()),4,len-5);
+             }
+             sprintf(value, "%s", valStr.c_str());
+             break;
+diff --color -Naur silex/SiloView.cpp silex/SiloView.cpp
+--- tools/silex/SiloView.cpp	2020-12-11 18:03:35.497787357 +0300
++++ tools/silex/SiloView.cpp	2020-12-11 18:03:50.058496239 +0300
+@@ -109,8 +109,8 @@
+         dirTreeView->OpenRootDir();
+         dirView->Set(silo->root);
+ 
+-        dirTreeView->header()->setResizeMode(QHeaderView::Interactive);
+-        dirView->header()->setResizeMode(QHeaderView::Interactive);
++        dirTreeView->header()->setSectionResizeMode(QHeaderView::Interactive);
++        dirView->header()->setSectionResizeMode(QHeaderView::Interactive);
+     }
+ }
+ 

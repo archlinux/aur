@@ -1,5 +1,5 @@
 --- tests/testsuite.at	2016-02-26 12:52:54.249108829 +0100
-+++ tests/testsuite.at.new	2016-02-26 12:58:44.184478494 +0100
++++ tests/testsuite.at	2016-02-26 12:58:44.184478494 +0100
 @@ -242,7 +242,7 @@
  AT_CLEANUP
  AT_SETUP(write objects)
@@ -9,8 +9,8 @@
  AT_CLEANUP
  
  AT_BANNER(JSON (experimental))
---- src/silo-4.10.2/tests/testsuite.at	2018-07-04 20:07:16.559992474 +0200
-+++ src/silo-4.10.2/tests/testsuite.at.new	2018-07-04 20:07:10.693169683 +0200
+--- tests/testsuite.at	2018-07-04 20:07:16.559992474 +0200
++++ tests/testsuite.at	2018-07-04 20:07:10.693169683 +0200
 @@ -183,7 +183,7 @@
  AT_CHECK($VALGRIND csg $STARGS,,ignore)
  AT_CLEANUP

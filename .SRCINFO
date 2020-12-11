@@ -1,24 +1,21 @@
 pkgbase = silo
 	pkgdesc = A Mesh and Field I/O Library and Scientific Database
 	pkgver = 4.10.2
-	pkgrel = 9
+	pkgrel = 10
 	url = https://wci.llnl.gov/simulation/computer-codes/silo
-	arch = i686
 	arch = x86_64
 	license = BSD
-	license = custom
 	makedepends = gcc-fortran
-	depends = qt4
-	depends = python2
-	depends = hdf5
-	source = https://wci.llnl.gov/content/assets/docs/simulation/computer-codes/silo/silo-4.10.2/silo-4.10.2.tar.gz
-	source = silo-4.10.2-rocket-test.patch
-	source = silo-4.10.2-skip-test.patch
-	source = silo-4.10.2-remove-mpiposix.patch
-	sha256sums = 3af87e5f0608a69849c00eb7c73b11f8422fa36903dd14610584506e7f68e638
-	sha256sums = d66a7a47c4dbb3be20fe3d35275a38de7e23c7b6d7927627255f7a5d49aefb47
-	sha256sums = 836b1ca692a07e4354bd52bca85587284086fc89c8cb6c0842f4616008d95c9c
-	sha256sums = 64a3c49eb6032dbd2bd0bbbe8110dea77d1d8a99379d96eca15c6b7c0a6f658e
+	depends = qt5-base
+	depends = hdf5-openmpi
+	source = https://wci.llnl.gov/content/assets/docs/simulation/computer-codes/silo/silo-4.10.2/silo-4.10.2-bsd.tar.gz
+	source = remove-mpiposix.patch
+	source = skip-test.patch
+	source = qt5.patch
+	sha256sums = 4b901dfc1eb4656e83419a6fde15a2f6c6a31df84edfad7f1dc296e01b20140e
+	sha256sums = 824be92ba71e8d797c5836545c58c2c67de0f296b69e8efd9cb9e8ae206837b8
+	sha256sums = 83e50ccad8477ae7549ae68ab12b180e268e1f28b589b699090dbefb59f57e8b
+	sha256sums = 7928c311e238f4d53176f69b75d8099d786b4526fa81fc6c6f565b04c80d5915
 
 pkgname = silo
 

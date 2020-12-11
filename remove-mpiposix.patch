@@ -1,7 +1,5 @@
-Index: silo-llnl-4.9.1/src/hdf5_drv/silo_hdf5.c
-===================================================================
---- silo-llnl-4.9.1.orig/src/hdf5_drv/silo_hdf5.c
-+++ silo-llnl-4.9.1/src/hdf5_drv/silo_hdf5.c
+--- src/hdf5_drv/silo_hdf5.c
++++ src/hdf5_drv/silo_hdf5.c
 @@ -4717,16 +4717,7 @@ db_hdf5_process_file_options(opts_set_id
  
          /* default HDF5 mpi drivers */
