@@ -1,0 +1,16 @@
+pkgbase = terminus-font-otb-narrow
+	pkgdesc = Monospace bitmap font (OTB version with 1px space between characters)
+	pkgver = 4.48
+	pkgrel = 1
+	url = http://terminus-font.sourceforge.net/
+	arch = any
+	license = custom:OFL
+	license = GPL2
+	makedepends = fonttosfnt
+	provides = terminus-font-otb
+	conflicts = terminus-font-otb
+	source = https://downloads.sourceforge.net/project/terminus-font/terminus-font-4.48/terminus-font-4.48.tar.gz
+	sha256sums = 34799c8dd5cec7db8016b4a615820dfb43b395575afbb24fc17ee19c869c94af
+
+pkgname = terminus-font-otb-narrow
+
