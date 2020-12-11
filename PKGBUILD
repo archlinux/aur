@@ -6,8 +6,8 @@
 
 _gemname_="curses"
 pkgname="ruby-${_gemname_}"
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Ruby binding for curses, ncurses, and PDCurses"
 arch=("any")
 url="https://github.com/ruby/curses"
@@ -25,4 +25,4 @@ package() {
 	rm "${pkgdir}/${_gemdir_}/cache/${_gemname_}-${pkgver}.gem"
 }
 
-sha256sums=('0f3f18aa2831b366cf035ca04fdf9014629b434a618e2eb14410b604f04c2c42')
+sha256sums=('51ce7a1cd81fb82585a9c5fe574f428ceb88f0b9e2c934dfe9d4c08882349244')
