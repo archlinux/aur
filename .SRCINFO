@@ -1,6 +1,6 @@
 pkgbase = mermaid-cli
 	pkgdesc = Generation of diagram and flowchart from text in a similar manner as markdown (CLI)
-	pkgver = 8.8.3
+	pkgver = 8.8.4
 	pkgrel = 1
 	url = https://github.com/mermaid-js/mermaid-cli
 	arch = any
