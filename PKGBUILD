@@ -4,7 +4,7 @@
 # Contributor: Nuno Araujo <nuno.araujo@russo79.com>
 
 pkgname=mnemosyne
-pkgver=2.7
+pkgver=2.7.3
 pkgrel=1
 pkgdesc="A flash-card tool with a sophisticated card review algorithm"
 arch=('any')
@@ -21,13 +21,14 @@ optdepends=('texlive-core: support for mathematical formulae in cards'
 conflicts=('mnemosyne-bzr')
 install='mnemosyne.install'
 
-source=("http://downloads.sourceforge.net/mnemosyne-proj/Mnemosyne-${pkgver}.tar.gz"
-        "python38.patch")
-sha256sums=('44e0a61a77ef91410da89a02c4407527e225562a44a792a9206ca83be806a753'
-            '362bb526d2eb55dbf026d6a0e4436ee3757da0f4bf11600982099993c3ae7e79')
+source=("http://downloads.sourceforge.net/mnemosyne-proj/Mnemosyne-${pkgver}.tar.gz")
+sha256sums=('08e03e750d52db71f63a42ecc71b6e5bbf14cccd75bdc3bd90fddb9af6e2c808')
+
 prepare() {
-    cd "Mnemosyne-${pkgver}"
-    patch -p1 < ../python38.patch
+  cd "Mnemosyne-${pkgver}/"
+
+  # Fix windows line endings
+  sed -i "s/\r//g" mnemosyne/pyqt_ui/mnemosyne
 }
 
 build() {
