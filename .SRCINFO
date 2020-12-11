@@ -1,13 +1,14 @@
 pkgbase = proton-caller-git
 	pkgdesc = Run any Windows program through Proton
-	pkgver = 1.4.0
+	pkgver = 1.3.2.r10.g3b2fc50
 	pkgrel = 1
 	url = https://github.com/caverym/Proton-Caller/
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = steam
 	depends = dxvk
-	depends = git
+	provides = proton-caller
 	conflicts = proton-caller
 	source = git+https://github.com/caverym/Proton-Caller.git
 	sha256sums = SKIP
