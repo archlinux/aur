@@ -32,15 +32,7 @@ pkgname = linux-xanmod-anbox
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux
-	provides = linux-xanmod-anbox-git
-	conflicts = linux-xanmod-anbox-git
-	replaces = linux-xanmod-anbox-git
 
 pkgname = linux-xanmod-anbox-headers
 	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel with ashmem and binder enabled
-	provides = linux-headers
-	provides = linux-xanmod-anbox-git-headers
-	conflicts = linux-xanmod-anbox-git-headers
-	replaces = linux-xanmod-anbox-git-headers
 

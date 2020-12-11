@@ -236,9 +236,6 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=('linux' 'linux-xanmod-anbox-git')
-  replaces=('linux-xanmod-anbox-git')
-  conflicts=('linux-xanmod-anbox-git')
 
   cd linux-${_major}
   local kernver="$(<version)"
@@ -261,9 +258,6 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for Xanmod Linux kernel with ashmem and binder enabled"
-  provides=('linux-headers' 'linux-xanmod-anbox-git-headers')
-  replaces=('linux-xanmod-anbox-git-headers')
-  conflicts=('linux-xanmod-anbox-git-headers')
 
   cd linux-${_major}
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
