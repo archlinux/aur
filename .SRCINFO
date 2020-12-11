@@ -1,7 +1,7 @@
 pkgbase = filmulator
 	pkgdesc = Simple raw photo editor based on the process of developing film
-	pkgver = 0.9.0
-	pkgrel = 2
+	pkgver = 0.10.1
+	pkgrel = 1
 	url = https://filmulator.org/
 	arch = i686
 	arch = pentium4
@@ -16,8 +16,8 @@ pkgbase = filmulator
 	depends = libraw
 	depends = librtprocess
 	depends = qt5-declarative
-	source = filmulator-gui-0.9.0.tar.gz::https://github.com/CarVac/filmulator-gui/archive/v0.9.0.tar.gz
-	sha512sums = 1148d613f558ae6a43f5478ebd7a035401462544607955a55a6d0472d56ea70eb36019d4de56a2f405cc88fdc6e146c243f8bde7b50c98e0c255e8ea03e085d1
+	source = filmulator-gui-0.10.1.tar.gz::https://github.com/CarVac/filmulator-gui/archive/v0.10.1.tar.gz
+	sha512sums = fe27a333ef39c26a2e36b3a1fbee99cb289f8ee90affd705e6abef45b57253b5cc45746e549fb087308e2c8dc0a9f59462118b74d1d5ca1cf6eadb6f59dde902
 
 pkgname = filmulator
 
