@@ -1,6 +1,6 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=kodi-addon-inputstream-adaptive-git
-pkgver=2.4.5.Leia.r14.gadb26e9
+pkgver=2.4.6.Leia.r6.g09ec268
 pkgrel=1
 pkgdesc="InputStream client for adaptive streams for Kodi 18+"
 arch=('x86_64' 'i686' 'armv7h' 'armv6h')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-git}")
 # kodi 18
 source=('kodi-addon-inputstream-adaptive-git::git+https://github.com/peak3d/inputstream.adaptive.git#branch=Leia')
 # kodi 19
-# source=('kodi-addon-inputstream-adaptive-git::git+https://github.com/peak3d/inputstream.adaptive.git')
+# source=('kodi-addon-inputstream-adaptive-git::git+https://github.com/peak3d/inputstream.adaptive.git#branch=Matrix')
 md5sums=('SKIP')
 
 pkgver() {
