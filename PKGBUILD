@@ -1,6 +1,6 @@
 # Maintainer: Quan Dang Van <quandangv at gmail dot com>
 pkgname=cspace
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A simple color conversion and formatting tool"
 arch=("i686" "x86_64")
@@ -10,7 +10,7 @@ depends=("gcc-libs")
 makedepends=("cmake" "git" "pkg-config")
 install="${pkgname}.install"
 source=(${url}/releases/download/v${pkgver}/cspace-${pkgver}.tar)
-sha256sums=('3ce4b26a785a46edc64300885d0c514aad8df73625f29ea42c7e391caee79206')
+sha256sums=('d40e95dbaefb324c1f2ac78db5d122d9a864a8dcbb226585ebebdfdf99dec8f4')
 
 prepare() {
   mkdir -p "$srcdir/${pkgname}/build"
