@@ -27,7 +27,8 @@ class ClashUp:
     "is_subscribe_banned": false,
     "custom_rules": [],
     "mmdb_file_url": "http://www.ideame.top/mmdb/Country.mmdb",
-    "mmdb_version_url: "http://www.ideame.top/mmdb/version"
+    "mmdb_version_url: "http://www.ideame.top/mmdb/version",
+    "periodically_update": false
 }
 '''
     def __init__(self):
@@ -139,9 +140,13 @@ class ClashUp:
         parser = argparse.ArgumentParser()
         parser.add_argument('--pre', action='store_true')
         parser.add_argument('--post', action='store_true')
+        parser.add_argument('--update', action='store_true')
         args = parser.parse_args()
         self.load_conf()
-        if args.pre:
+        if args.update:
+            self.update(False)
+            self.update_mmdb()
+        elif args.pre and not self.config.get('periodically_update', False):
             if self.config['is_subscribe_banned']:
                 logging.info('Subscribe is banned, pass this run')
             else:
@@ -149,7 +154,7 @@ class ClashUp:
             if self.config.get('mmdb_version_url') and self.config.get('mmdb_file_url'):
                 with daemon.DaemonContext():
                     self.update_mmdb()
-        elif args.post:
+        elif args.post and not self.config.get('periodically_update', False):
             if self.config['is_subscribe_banned']:
                 if self.update_time_cache():
                     self.update(True)

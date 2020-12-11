@@ -1,0 +1,9 @@
+[Unit]
+Wants=network-online.target
+After=network-online.target
+Description=Update clash config file
+
+[Service]
+ExecStart=/usr/bin/clashup --update
+ExecStopPost=/usr/bin/systemctl restart clash@root
+Type=oneshot

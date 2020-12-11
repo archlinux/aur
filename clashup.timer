@@ -1,0 +1,10 @@
+[Unit]
+Description=Update clash once a day
+Wants=network-online.target
+After=network-online.target
+
+[Timer]
+OnUnitActiveSec=1d
+
+[Install]
+WantedBy=timers.target
