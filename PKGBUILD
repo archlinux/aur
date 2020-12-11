@@ -7,7 +7,7 @@ pkgname=("python-pytorch-rocm" "python-pytorch-opt-rocm")
 _pkgname="pytorch"
 pkgver=1.7.1
 _pkgver=1.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -15,7 +15,7 @@ license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'rccl' 'pybind11' 'python' 'python-yaml' 'libuv'
          'python-numpy' 'protobuf' 'ffmpeg' 'python-future' 'qt5-base' 'onednn' 'intel-mkl')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'rocm'
-             'rocm-libs' 'miopen' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen')
+             'rocm-libs' 'miopen' 'git' 'ninja' 'pkgconfig' 'doxygen')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         fix_include_system.patch
         use-system-libuv.patch
@@ -145,7 +145,7 @@ _package() {
 
 package_python-pytorch-rocm() {
   pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration (with ROCM)"
-  depends+=(rocm rocm-libs miopen magma)
+  depends+=(rocm rocm-libs miopen)
   conflicts=(python-pytorch)
   provides=(python-pytorch)
 
@@ -155,7 +155,7 @@ package_python-pytorch-rocm() {
 
 package_python-pytorch-opt-rocm() {
   pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration (with ROCM and AVX2 CPU optimizations)"
-  depends+=(rocm rocm-libs miopen magma)
+  depends+=(rocm rocm-libs miopen)
   conflicts=(python-pytorch)
   provides=(python-pytorch python-pytorch-rocm)
 
