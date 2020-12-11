@@ -2,7 +2,7 @@
 
 pkgname=noisetorch-bin
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Easy to use noise suppression for PulseAudio'
 arch=('x86_64')
 url="https://github.com/lawl/NoiseTorch"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('polkit')
 optdepends=()
 provides=('noisetorch')
-conflicts=('noisetorch-git')
+conflicts=('noisetorch-git' 'noisetorch')
 options=(!strip)
 install="${pkgname}.install"
 source=(
