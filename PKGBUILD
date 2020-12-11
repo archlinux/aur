@@ -4,13 +4,13 @@
 # Contributor: Tilman Vatteroth <tilman.vatteroth@udo.edu>
 
 pkgname=upmpdcli
-pkgver=1.4.12
-pkgrel=3
+pkgver=1.5.5
+pkgrel=1
 pkgdesc="A UPnP Media Renderer front-end for the Music Player Daemon (MPD)"
 arch=(i686 x86_64 arm armv7h armv6h aarch64)
-url="http://www.lesbonscomptes.com/upmpdcli/"
+url="https://www.lesbonscomptes.com/upmpdcli/"
 license=(GPL2)
-depends=(python libmpdclient 'libupnpp>=0.17.0' libmicrohttpd jsoncpp)
+depends=(python libmpdclient libupnpp libmicrohttpd jsoncpp)
 makedepends=(python-setuptools python-requests recoll python-bottle python-mutagen aspell-en id3lib python-waitress sqlite)
 optdepends=(aspell-en id3lib sqlite
             'python-requests: enable search'
@@ -20,21 +20,13 @@ optdepends=(aspell-en id3lib sqlite
             'python-waitress: enable uprcl media server')
 install=upmpdcli.install
 source=("http://www.lesbonscomptes.com/upmpdcli/downloads/$pkgname-$pkgver.tar.gz"
-        "upmpdcli-streamproxy-cpp-fix.patch::https://framagit.org/medoc92/upmpdcli/-/commit/4fd8a07b560dcd4ad5706684d512d33707de3da0.patch"
         'upmpdcli.service')
-sha256sums=('bffc78c140ad688987894ea5a1e162e6dcbc7dcae7d2cc322a894f5ea2a2f53b'
-            'a7d764cf0bf0949bd2f18cc4149cd5356b9dc60d91874bda879be8bbcd01092b'
-            '53da5e4e40a1987e3c137270b315f8c0ba9521539c563e75e254f48449ce0ae9'
-            )
+sha256sums=('45fce9c71a45f1ec0d1cb2924bf7ece444c44a918a0c437c1c768baa3d4a345d'
+            '53da5e4e40a1987e3c137270b315f8c0ba9521539c563e75e254f48449ce0ae9')
 backup=('etc/upmpdcli.conf')
 
-prepare() {
-  cd "$srcdir/${pkgname}-${pkgver}"
-  patch -Np1 -i ../upmpdcli-streamproxy-cpp-fix.patch
-}
-
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --sysconfdir=/etc --prefix=/usr
   make
 }

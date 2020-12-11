@@ -1,8 +1,8 @@
 pkgbase = upmpdcli
 	pkgdesc = A UPnP Media Renderer front-end for the Music Player Daemon (MPD)
-	pkgver = 1.4.12
-	pkgrel = 3
-	url = http://www.lesbonscomptes.com/upmpdcli/
+	pkgver = 1.5.5
+	pkgrel = 1
+	url = https://www.lesbonscomptes.com/upmpdcli/
 	install = upmpdcli.install
 	arch = i686
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = upmpdcli
 	makedepends = sqlite
 	depends = python
 	depends = libmpdclient
-	depends = libupnpp>=0.17.0
+	depends = libupnpp
 	depends = libmicrohttpd
 	depends = jsoncpp
 	optdepends = aspell-en
@@ -34,11 +34,9 @@ pkgbase = upmpdcli
 	optdepends = python-mutagen: enable uprcl media server
 	optdepends = python-waitress: enable uprcl media server
 	backup = etc/upmpdcli.conf
-	source = http://www.lesbonscomptes.com/upmpdcli/downloads/upmpdcli-1.4.12.tar.gz
-	source = upmpdcli-streamproxy-cpp-fix.patch::https://framagit.org/medoc92/upmpdcli/-/commit/4fd8a07b560dcd4ad5706684d512d33707de3da0.patch
+	source = http://www.lesbonscomptes.com/upmpdcli/downloads/upmpdcli-1.5.5.tar.gz
 	source = upmpdcli.service
-	sha256sums = bffc78c140ad688987894ea5a1e162e6dcbc7dcae7d2cc322a894f5ea2a2f53b
-	sha256sums = a7d764cf0bf0949bd2f18cc4149cd5356b9dc60d91874bda879be8bbcd01092b
+	sha256sums = 45fce9c71a45f1ec0d1cb2924bf7ece444c44a918a0c437c1c768baa3d4a345d
 	sha256sums = 53da5e4e40a1987e3c137270b315f8c0ba9521539c563e75e254f48449ce0ae9
 
 pkgname = upmpdcli
