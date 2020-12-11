@@ -2,7 +2,7 @@
 # Contributor: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=radeontop
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Radeon cards monitoring utility"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/clbr/radeontop"
 license=('GPL3')
 depends=('ncurses' 'libdrm' 'libxcb')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/clbr/radeontop/archive/v$pkgver.tar.gz")
-sha512sums=('f36c2e418fe8add77080642e575b99c092afeda24811f33ee161a8c9341decb611f631e5511a5255089d63e172eda6836295e5795c3ebd3f5cad172f7599d862')
+sha512sums=('cc54e0726b2a934d14ad591c7a199474b49885e6122399b282e9289610d26f3c55b3d68a7d655d88a0ff8de1a0ac0994e868fa06ae1198416aaf857a099181f1')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
