@@ -1,0 +1,15 @@
+pkgbase = gnome-builder-themes-gtksourceview4-git
+	pkgdesc = gtksourceview4/gedit themes from gnome-builder
+	pkgver = r14447.aab3b443d
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/gnome-builder/
+	arch = any
+	license = GPL3
+	makedepends = git
+	conflicts = gnome-builder-themes-gtksourceview4-git
+	conflicts = gnome-builder
+	source = gnome-builder-themes-gtksourceview4-git::git+https://gitlab.gnome.org/GNOME/gnome-builder.git
+	md5sums = SKIP
+
+pkgname = gnome-builder-themes-gtksourceview4-git
+
