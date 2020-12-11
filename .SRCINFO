@@ -1,0 +1,26 @@
+pkgbase = zsh-minimal-git
+	pkgver = 5.2.r502.ge35dcae
+	pkgrel = 1
+	url = http://www.zsh.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = pcre
+	makedepends = libcap
+	makedepends = gdbm
+	source = zsh::git://git.code.sf.net/p/zsh/code
+	source = zprofile
+	md5sums = SKIP
+	md5sums = 24a9335edf77252a7b5f52e079f7aef7
+
+pkgname = zsh-minimal-git
+	pkgdesc = A very advanced and programmable command interpreter (shell) for UNIX
+	install = zsh.install
+	depends = pcre
+	depends = libcap
+	depends = gdbm
+	provides = zsh=5.2
+	conflicts = zsh
+	backup = etc/zsh/zprofile
+
