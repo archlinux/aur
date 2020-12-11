@@ -1,0 +1,19 @@
+pkgbase = linux-vr-player-or-something-git
+	pkgdesc = Very simple VR video player using libmpv and openhmd.
+	pkgver = 3.ac25eda
+	pkgrel = 1
+	url = https://github.com/sandsmark/linux-vr-player-or-something
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = mpv
+	depends = openhmd
+	provides = linux-vr-player-or-something
+	conflicts = linux-vr-player-or-something
+	source = git+https://github.com/sandsmark/linux-vr-player-or-something.git
+	md5sums = SKIP
+
+pkgname = linux-vr-player-or-something-git
+
