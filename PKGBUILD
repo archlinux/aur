@@ -5,9 +5,9 @@
 pkgbase=python-pytorch-rocm
 pkgname=("python-pytorch-rocm" "python-pytorch-opt-rocm")
 _pkgname="pytorch"
-pkgver=1.7.0
-_pkgver=1.7.0
-pkgrel=2
+pkgver=1.7.1
+_pkgver=1.7.1
+pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -17,14 +17,12 @@ depends=('google-glog' 'gflags' 'opencv' 'openmp' 'rccl' 'pybind11' 'python' 'py
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'rocm'
              'rocm-libs' 'miopen' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
-        fix_include_system.patch
         use-system-libuv.patch
         use-system-libuv2.patch
         nccl_version.patch
         disable_non_x86_64.patch
         "find-hsa-runtime.patch::https://patch-diff.githubusercontent.com/raw/pytorch/pytorch/pull/45550.patch")
 sha256sums=('SKIP'
-            '147bdaeac8ec46ea46382e6146878bd8f8d51e05d5bd6f930dfd8e2b520859b9'
             '26b1dd596f1e21a011ee18cab939924483d6c6d4d98e543bf76f5a9312d54d67'
             '7b65c3b209fc39f92ba58a58be6d3da40799f1922910b1171ccd9209eda1f9eb'
             'e4a96887b41cbdfd4204ce5f16fcb16a23558d23126331794ab6aa30a66f2e0d'
@@ -40,9 +38,6 @@ prepare() {
   # submodules) will make building inefficient but for now I'll take it.
   # It will result in the same package, don't worry.
   git submodule update --init --recursive
-
-  # https://bugs.archlinux.org/task/64981
-  patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
 
   # Use system libuv
   patch -Np1 -i "${srcdir}"/use-system-libuv.patch
