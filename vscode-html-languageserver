@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec node /usr/lib/node_modules/vscode-html-languageserver/node/htmlServerMain.js "$@"
