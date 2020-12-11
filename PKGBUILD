@@ -1,29 +1,35 @@
-# Maintainer: Jeff Henson <jeff@henson.io>
+# Maintainer: Max Gautier <mg+archlinux@max.gautier.name>
+# Contributor: Jeff Henson <jeff@henson.io>
 
 pkgname=origin-client
 pkgdesc="Openshift client"
-pkgver=4.1.0
-pkgrel=2
+pkgver=4.6
+pkgrel=3
 arch=('x86_64')
-url="https://github.com/openshift/origin"
+url="https://github.com/openshift/oc"
 license=('Apache')
-makedepends=('go-pie' 'rsync')
-validpgpkeys=('0E2CFB1B72F087ACF089B41E3D16906B4F1C5CB3')  # Clayton Coleman (Red Hat key) <ccoleman@redhat.com>
-source=("git+https://github.com/openshift/origin#tag=v${pkgver}?signed")
-sha256sums=('SKIP')
+makedepends=('go-pie')
+source=("https://github.com/openshift/oc/archive/release-${pkgver}.zip")
+# The upstream dodes not seems to publish tagged releases
+# (the tags have all timestamps informations in it, *not* helpful)
+sha256sums=('680943a11c9385f490464274ec8abe9f86945dc4561feb01aba58566f9b2b81e')
 
 build() {
-  cd "${srcdir}/origin"
-  unset GOPATH
-  make WHAT=cmd/oc
-  hack/generate-docs.sh
+  cd "oc-release-$pkgver"
+  make
 }
 
-package() {
-  cd "${srcdir}/origin"
-  install -Dm755 _output/local/bin/linux/amd64/oc -t "$pkgdir/usr/bin"
-  install -Dm644 docs/man/man1/* -t "$pkgdir/usr/share/man/man1"
+#check() { # Checks are broken right now
+#  cd "oc-release-$pkgver"
+#  make verify test
+#}
 
-  "$pkgdir/usr/bin/oc" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/oc"
-  "$pkgdir/usr/bin/oc" completion zsh | sed 's/kubectl/oc/g' | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_oc"
+package() {
+
+  cd "oc-release-$pkgver"
+  install -Dm755 oc -t "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/man/man1"
+  ./genman "$pkgdir/usr/share/man/man1" oc
+  install -Dm644 contrib/completions/bash/oc "$pkgdir/usr/share/bash-completion/completions/oc"
+  install -Dm644 contrib/completions/zsh/oc "$pkgdir/usr/share/zsh/site-functions/_oc"
 }
