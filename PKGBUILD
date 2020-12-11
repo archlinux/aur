@@ -1,46 +1,42 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=xine-lib-hg
-pkgver=1.2.10.r211.79af5718c10d
+pkgver=1.2.11.r6.09aa41e45228
 pkgrel=1
-pkgdesc='A multimedia playback engine (mercurial version)'
+pkgdesc='Multimedia playback engine (mercurial version)'
 arch=('x86_64')
-url='http://xine.sourceforge.net/'
+url='https://www.xine-project.org'
 license=('GPL' 'LGPL')
-depends=('libxvmc' 'ffmpeg' 'libxinerama' 'libnsl' 'libssh2')
-makedepends=('mercurial'
-             'wavpack' 'faad2' 'libmng' 'imagemagick' 'mesa' 'libmodplug'
-             'vcdimager' 'jack' 'aalib' 'libdca' 'a52dec' 'libmad' 'libdvdnav'
-             'libmpcdec' 'libcaca' 'libbluray' 'libvdpau' 'glu' 'gdk-pixbuf2')
-optdepends=('imagemagick: for using the imagemagick plugin'
-            'jack: for using the jack plugin'
-            'vcdimager: for using the vcd plugin'
-            'glu: for using the opengl plugin'
-            'wavpack: for using the wavpack plugin'
-            'faad2: for using the faad plugin'
-            'libmng: for using the mng plugin'
-            'aalib: for using the aalib plugin'
-            'libmodplug: for using the modplug plugin'
-            'libdca: for using the dca plugin'
-            'a52dec: for using the a52 plugin'
-            'libmad: for using the mp3 plugin'
-            'libdvdnav: for using the dvd plugin'
-            'libmpcdec: for using the musepack plugin'
-            'libcaca: for using the caca plugin'
-            'libbluray: for using the bluray plugin'
-            'libvdpau: for using the VDPAU plugin'
-            'smbclient: for using the samba plugin'
-            'gdk-pixbuf2: for using the gdk-pixbuf plugin')
+depends=('ffmpeg' 'libjpeg-turbo' 'libnsl' 'libpng' 'libx11' 'libxcb'
+         'libxext' 'libxinerama' 'libxv' 'libxvmc' 'zlib')
+optdepends=('libdvdnav: for dvd plugin'
+            'libdvdread: for spu and dxr3 plugins'
+            'vcdimager: for vcd plugin'
+            'glu: for opengl and vaapi plugins'
+            'sdl: for sdl plugin'
+            'wayland: for egl_wl plugin'
+            'aalib: for aalib plugin'
+            'a52dec: for a52 plugin'
+            'faad2: for faad plugin'
+            'flac: for flac plugin'
+            'libdca: for dts (dca) plugin'
+            'libmad: for mad (mp3) plugin'
+            'libmpcdec: for mpc (musepack) plugin'
+            'wavpack: for wavpack plugin'
+            'gdk-pixbuf2: for gdk_pixbuf plugin'
+            'imagemagick: for imagemagick plugin'
+            'libcaca: for caca plugin'
+            'libmng: for mng plugin'
+            'libnfs: for nfs plugin'
+            'smbclient: for samba plugin')
+makedepends=('mercurial' 'mesa' 'libdvdnav' 'libdvdread' 'vcdimager' 'glu' 'sdl'
+             'wayland' 'aalib' 'a52dec' 'faad2' 'flac' 'libdca' 'libmad'
+             'libmpcdec' 'wavpack' 'gdk-pixbuf2' 'imagemagick' 'libcaca'
+             'libmng' 'libnfs' 'smbclient')
 provides=('xine-lib')
 conflicts=('xine-lib')
-source=('hg+http://hg.code.sf.net/p/xine/xine-lib-1.2'
-        '010-xine-lib-hg-gcc10-fix.patch')
-sha256sums=('SKIP'
-            '357daf6042d592556b4b23d400d622be4e165dc7d3bce8ce2ab638abf357f2e6')
-
-prepare() {
-    patch -d xine-lib-1.2 -Np1 -i"${srcdir}/010-xine-lib-hg-gcc10-fix.patch"
-}
+source=('hg+http://hg.code.sf.net/p/xine/xine-lib-1.2')
+sha256sums=('SKIP')
 
 pkgver() {
     printf '%s.r%s.%s' "$(hg -R xine-lib-1.2 log -r. --template '{latesttag}')" \
@@ -52,10 +48,9 @@ build() {
     cd xine-lib-1.2
     ./autogen.sh \
         --prefix='/usr' \
-        --with-wavpack \
-        --enable-vdpau \
+        --enable-antialiasing \
         --with-external-dvdnav \
-        --disable-optimizations 
+        --with-wavpack
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
     make
 }
