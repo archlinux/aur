@@ -1,10 +1,10 @@
 # Maintainer: Andy Kluger <https://t.me/andykluger>
-# Upstream Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
-# Upstream Contributor: hexchain <i@hexchain.org>
-
+# Upstream PKGBUILD (community repo):
+# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop-userfonts
 pkgver=2.4.7
-pkgrel=3
+pkgrel=4
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 pkgdesc='Official Telegram Desktop client, with your fonts as set by fontconfig'
@@ -13,7 +13,7 @@ url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
          'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'qt5-wayland' 'gtk3')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libwebrtc')
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt')
 optdepends=('ttf-opensans: default Open Sans font family')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz")
 sha512sums=('712ab6896f89f7df0c7ac297039ee3b3532c159e17f66e4539b701a35d04d4709b558755d592d3cd91df541a2d2ca9f0485cf073c32f0b69a18848ab2ccd1993')
