@@ -1,7 +1,7 @@
-# Maintainer: Zach Hoffman <zach@zrhoffman.net>
+# Maintainer: Zach Hoffman <zrhoffman@apache.org>
 
 pkgname=(flashplugin-debug pepper-flash-debug)
-pkgver=32.0.0.445
+pkgver=32.0.0.465
 pkgrel=1
 pkgdesc="Adobe Flash Player debugger"
 arch=('x86_64')
@@ -11,8 +11,8 @@ options=('!strip')
 source=(flash_player_npapi_linux_debug_$pkgver.x86_64.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/32/flash_player_npapi_linux_debug.x86_64.tar.gz
         flash_player_ppapi_linux_debug_$pkgver.x86_64.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/32/flash_player_ppapi_linux_debug.x86_64.tar.gz)
 noextract=(${source[@]%::*})
-sha256sums=('31a60504c79a297ec22ac5f6c5ad3732773a882a5d33da4184334e87267ac14a'
-            '19cc85d368cf1911a074333ed2ef68a382bb536c25df1b1f112b0befff96a569')
+sha256sums=('7e4c598349e271634b3b190540ac70d7e0f20e7d161cd5359d611e4fd807e712'
+            '63348acd3f3b8f18b89c5abce41a057211b2d08c476a924835b719f2830435d5')
 
 prepare() {
   local _dir
