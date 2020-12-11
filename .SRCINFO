@@ -9,6 +9,7 @@ pkgbase = zsh-minimal-git
 	makedepends = pcre
 	makedepends = libcap
 	makedepends = gdbm
+	makedepends = yodl
 	source = zsh::git://git.code.sf.net/p/zsh/code
 	source = zprofile
 	md5sums = SKIP
@@ -25,7 +26,7 @@ pkgname = zsh-minimal-git
 	backup = etc/zsh/zprofile
 
 pkgname = zsh-doc-minimal-git
-	pkgdesc = Info, HTML and PDF format of the ZSH documentation
+	pkgdesc = ZSH documentation
 	provides = zsh-doc
 	conflicts = zsh-doc
 

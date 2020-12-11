@@ -9,7 +9,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.zsh.org/'
 license=('custom')
-makedepends=('git' 'pcre' 'libcap' 'gdbm')
+makedepends=('git' 'pcre' 'libcap' 'gdbm' 'yodl')
 source=('zsh::git://git.code.sf.net/p/zsh/code'
         'zprofile')
 md5sums=('SKIP'
@@ -101,7 +101,7 @@ package_zsh-minimal-git() {
 }
 
 package_zsh-doc-minimal-git() {
-   pkgdesc='Info, HTML and PDF format of the ZSH documentation'
+   pkgdesc='ZSH documentation'
    conflicts=('zsh-doc')
    provides=('zsh-doc')
 
