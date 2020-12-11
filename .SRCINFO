@@ -1,6 +1,6 @@
 pkgbase = compcert
 	pkgdesc = The formally verified C compiler
-	pkgver = 3.7
+	pkgver = 3.8
 	pkgrel = 1
 	url = http://compcert.inria.fr
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = compcert
 	makedepends = ocaml-menhir>=20190626
 	makedepends = ocaml-findlib
 	depends = gcc
-	source = http://compcert.inria.fr/release/compcert-3.7.tgz
-	sha1sums = 63f327b7ee8a76fb720b7f1a644283d43dccd53a
+	source = https://github.com/AbsInt/CompCert/archive/v3.8.tar.gz
+	sha1sums = f30b3b4b2f3e0915c69538c9eda26f7a04625a6a
 
 pkgname = compcert
 
