@@ -2,10 +2,10 @@
 
 pkgname=jdk-bcl
 pkgver=8u201
-pkgrel=1
+pkgrel=2
 pkgdesc="Oracle Java Development Kit (BCL)"
 arch=("x86_64")
-url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
+url="https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html"
 license=("custom:Oracle")
 depends=("ca-certificates-java" "hicolor-icon-theme" "java-environment-common" "java-runtime-common" "nss" "xdg-utils")
 optdepends=(
@@ -53,7 +53,7 @@ source=(
 )
 sha256sums=(
   "cb700cc0ac3ddc728a567c350881ce7e25118eaf7ca97ca9705d4580c506e370"
-  "f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59"
+  "9c64997edfce44e29296bfbd0cf90abf8b6b9ef2ea64733adae3bdac9ae2c5a6"
   "50d8f76c1205e437c290a3d3fe1274e2cddbcac4dde0a95300cc473200176154"
   "dfa19d10ea5614fda73cee31c592601e3a24c567150a6a7243dd7bcd1e3540cc"
   "44c97f46d2706f4410ebf838bb26e21e6dee3a7e0b357cf91d68c75cf9d1e011"
@@ -101,12 +101,12 @@ package() {
   done
   
   set +u; msg2 "Fixing .desktop paths..."; set -u
-  sed -e "s|Exec=|Exec=${_jvmdir}/jre/bin/|" -i "${pkgdir}${_jvmdir}/jre/lib/desktop/applications"/*
-  sed -e "s|.png|-${pkgname}.png|" -i "${pkgdir}${_jvmdir}/jre/lib/desktop/applications"/*
+  sed -e "s|Exec=|Exec=${_jvmdir}/jre/bin/|" -i "${pkgdir}${_jvmdir}/jre/lib/desktop/applications/"*
+  sed -e "s|.png|-${pkgname}.png|" -i "${pkgdir}${_jvmdir}/jre/lib/desktop/applications/"*
 
   set +u; msg2 "Moving .desktops and icons to /usr/share ..."; set -u
-  mv "${pkgdir}${_jvmdir}/jre/lib/desktop"/* "${pkgdir}/usr/share/"
-  install -m644 "${srcdir}"/*.desktop "${pkgdir}/usr/share/applications/"
+  mv "${pkgdir}${_jvmdir}/jre/lib/desktop/"* "${pkgdir}/usr/share/"
+  install -m644 "${srcdir}/"*.desktop "${pkgdir}/usr/share/applications/"
 
   set +u; msg2 "Moving confs to /etc and link back to /usr: /usr/lib/jvm/java-${pkgname}/jre/lib -> /etc ..."; set -u
   local _new_etc_path
@@ -145,7 +145,7 @@ package() {
   # things like 256-bit AES. Enabled by default in OpenJDK:
   # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
   # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
-  install -m644 "${srcdir}/UnlimitedJCEPolicyJDK${pkgver%u*}"/*.jar "${pkgdir}${_jvmdir}/jre/lib/security/"
+  install -m644 "${srcdir}/UnlimitedJCEPolicyJDK${pkgver%u*}/"*.jar "${pkgdir}${_jvmdir}/jre/lib/security/"
   install -Dm644 "${srcdir}/UnlimitedJCEPolicyJDK${pkgver%u*}/README.txt" \
   "${pkgdir}/usr/share/doc/${pkgname}/README_-_Java_JCE_Unlimited_Strength.txt"
 

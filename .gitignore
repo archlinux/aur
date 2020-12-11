@@ -5,3 +5,5 @@ jdk-*.tar.gz
 PKGBUILD-namcap.log
 jdk1.*/
 jce_policy-*.zip
+pkg/
+src/
