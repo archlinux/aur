@@ -1,6 +1,6 @@
 # Maintainer: Saulius Lukauskas <luksaulius@gmail.com>
 pkgname=salmon
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Highly-accurate & wicked fast transcript-level quantification from RNA-seq reads using lightweight alignments"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('bzip2' 'intel-tbb' 'xz')
 makedepends=('boost>=1.55' 'cmake' 'unzip')
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/COMBINE-lab/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('ec4fc93d95bbcc782d63578e8f2624fd')
+md5sums=('454d7812d480de6df911bacc2ef194de')
 
 prepare() {
   cd "$pkgname-$pkgver"
