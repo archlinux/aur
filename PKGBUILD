@@ -1,6 +1,6 @@
 # Maintainer: Jay Ta'ala <jay@jaytaala.com>
 pkgname=chart-geany
-pkgver=6.1.9
+pkgver=6.2.0
 pkgrel=2
 pkgdesc="Chart Geany is a free cross platform software solution for market technical analysis, charting and a portfolio manager."
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('qtwebkit-bin' 'libxls')
 makedepends=('clang')
 source=("$pkgname-$pkgver.tar.gz::https://sourceforge.net/projects/chart-geany/files/6.0/chartgeany-$pkgver.tar.gz/download")
-md5sums=('f80c724deff01216095731c75abdc918')
+md5sums=('7ff5762dd8edd70746c71539dfe5640e')
 
 prepare() {
 	_dirname=$(bsdtar -tf "${source[0]%%::*}" | awk -F / '{print $1; exit}')
