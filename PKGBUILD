@@ -4,30 +4,35 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-_pkgver=79.0
-pkgver=79.0b2
-_major=${pkgver/[br]*}
-_build=${pkgver/*rc}
+_pkgver=84.0
+pkgver=${_pkgver}b3
 pkgrel=1
-pkgdesc="Standalone mail and news reader from mozilla.org - Bleeding edge version"
+pkgdesc='Standalone mail and news reader from mozilla.org - Bleeding edge version'
+url='https://www.mozilla.org/thunderbird/'
 arch=(x86_64)
 license=(MPL GPL LGPL)
-url="https://www.mozilla.org/thunderbird/"
-depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib
-         nss hunspell sqlite ttf-font icu)
-makedepends=(unzip zip diffutils python python2 yasm nasm mesa imake libpulse inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm gtk2 cbindgen nodejs)
+depends=(
+  glibc gtk3 libgdk-3.so mime-types dbus libdbus-1.so dbus-glib alsa-lib nss
+  hunspell sqlite ttf-font libvpx libvpx.so zlib bzip2 botan libwebp libevent
+  libjpeg-turbo libffi nspr gcc-libs libx11 libxrender libxfixes libxext
+  libxcomposite libxdamage pango libpango-1.0.so cairo gdk-pixbuf2 icu
+  libicui18n.so libicuuc.so freetype2 libfreetype.so fontconfig
+  libfontconfig.so glib2 libglib-2.0.so pixman libpixman-1.so gnupg
+)
+makedepends=(
+  unzip zip diffutils python python-setuptools yasm nasm mesa imake libpulse
+  inetutils xorg-server-xvfb autoconf2.13 rust clang llvm gtk2 cbindgen nodejs
+  gawk perl findutils
+)
 optdepends=('libcanberra: sound support')
 options=(!emptydirs !makeflags)
 provides=("thunderbird=$pkgver")
 conflicts=('thunderbird-beta-bin')
-install=$pkgname.install
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
-	thunderbird-beta.desktop)
-sha512sums=('230e6a5a772eb61dc16112623286a9c1d918fe66bc15520ed057cdde30242cbf1c265e9b0459beb65a6a625488038e02576f988784b3a58a614414a88c9da494'
-            'SKIP'
-            'cab681d5acf17dd8dabf732c0bb5f73fd0444796bb4fd82decdfa8764122513fd2f05c562cf9246eacac67ea84ae85a220f59d7eea7106e0b2f6fc16bc520dd4')
-
+        thunderbird-beta.desktop
+        vendor-prefs.js
+        distribution.ini
+        mozconfig.cfg)
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -42,53 +47,23 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 # more information.
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
-prepare() {  
+prepare() {
   cd $_pkgname-$_pkgver
 
-  echo -n "$_google_api_key" >google-api-key
-  echo -n "$_mozilla_api_key" >mozilla-api-key
+  echo "${noextract[@]}"
 
-  cat >.mozconfig <<END
-ac_add_options --enable-application=comm/mail
-ac_add_options --enable-calendar
-
-ac_add_options --prefix=/usr
-ac_add_options --enable-release
-ac_add_options --enable-linker=gold
-ac_add_options --enable-hardening
-ac_add_options --enable-optimize
-# https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
-#ac_add_options --enable-rust-simd
-# https://bugzilla.mozilla.org/show_bug.cgi?id=1423822
-ac_add_options --disable-elf-hack
-
-# Branding
-ac_add_options --with-branding=comm/mail/branding/nightly 
-ac_add_options --enable-update-channel=nightly
-ac_add_options --with-distribution-id=org.archlinux
-
-# System libraries
-ac_add_options --with-system-zlib
-ac_add_options --with-system-bz2
-ac_add_options --with-system-icu
-ac_add_options --with-system-jpeg
-# ac_add_options --with-system-libvpx
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
-ac_add_options --enable-system-ffi
-
-# Features
-ac_add_options --enable-alsa
-ac_add_options --disable-jack
-ac_add_options --enable-startup-notification
-ac_add_options --disable-crashreporter
-ac_add_options --disable-updater
-ac_add_options --disable-gconf
-END
+  printf "%s" "$_google_api_key" >google-api-key
+  printf "%s" "$_mozilla_api_key" >mozilla-api-key
+  cp ../mozconfig.cfg .mozconfig
+  sed "s|@PWD@|${PWD@Q}|g" -i .mozconfig
 }
 
 build() {
   cd $_pkgname-$_pkgver
+  if [[ -n "${SOURCE_DATE_EPOCH}" ]]; then
+    export MOZ_BUILD_DATE=$(date --date "@${SOURCE_DATE_EPOCH}" "+%Y%m%d%H%M%S")
+  fi
+  ./mach create-mach-environment
   ./mach configure
   ./mach build
   ./mach buildsymbols
@@ -98,34 +73,9 @@ package() {
   cd $_pkgname-$_pkgver
   DESTDIR="$pkgdir" ./mach install
 
-  _vendorjs="$pkgdir/usr/lib/$pkgname/defaults/preferences/vendor.js"
-  install -Dm644 /dev/stdin "$_vendorjs" <<END
-// Use LANG environment variable to choose locale
-pref("intl.locale.requested", "");
-
-// Use system-provided dictionaries
-pref("spellchecker.dictionary_path", "/usr/share/hunspell");
-
-// Disable default mailer checking.
-pref("mail.shell.checkDefaultMail", false);
-
-// Don't disable our bundled extensions in the application directory
-pref("extensions.autoDisableScopes", 11);
-pref("extensions.shownSelectionUI", true);
-END
-
-  _distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
-  install -Dm644 /dev/stdin "$_distini" <<END
-[Global]
-id=archlinux
-version=1.0
-about=Mozilla Thunderbird for Arch Linux
-
-[Preferences]
-app.distributor=archlinux
-app.distributor.channel=$pkgname
-app.partner.archlinux=archlinux
-END
+  install -Dm 644 ../vendor-prefs.js -t "$pkgdir/usr/lib/$pkgname/defaults/pref"
+  install -Dm 644 ../distribution.ini -t "$pkgdir/usr/lib/$pkgname/distribution"
+  install -Dm 644 ../$pkgname.desktop -t "$pkgdir/usr/share/applications"
 
   for i in 16 22 24 32 48 64 128 256; do
     install -Dm644 comm/mail/branding/thunderbird/default${i}.png \
@@ -133,9 +83,6 @@ END
   done
   install -Dm644 comm/mail/branding/thunderbird/TB-symbolic.svg \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/thunderbird-symbolic.svg"
-
-  install -Dm644 ../$pkgname.desktop \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   # Use system-provided dictionaries
   ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/$pkgname/dictionaries"
@@ -153,3 +100,9 @@ END
     "$pkgdir/usr/lib/$pkgname/thunderbird-bin"
 }
 
+sha256sums=('55ffd4ed6d4e828aded35d7ccc024b60e29b2631a1f06a318c3be995e51c0e48'
+            'SKIP'
+            'd7aa1bd77f74c255446eec4171e4360c7a6215dac1d29c8ee71ec1f2a03bda3d'
+            'fa11b4736bbf53ec015f71cd42b1040b22d1a855c562b76927b3f0eccb925c85'
+            'bc3aae2cc00dc9806f54606f98d967366a2ba7223f6a3ad1c658a653ebff5569'
+            'bf77cebf208318f60ab50b3982e7cf257f0f37b486e3b6d6b208ee64205270da')
