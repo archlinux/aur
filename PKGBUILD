@@ -1,6 +1,6 @@
 # Maintainer: stiglers-eponym
 pkgname=beamerpresenter-git
-pkgver=0.1.2_285.33caacc
+pkgver=0.1.3_292.4f167ac
 pkgrel=1
 pkgdesc="Simple dual screen pdf presentation software (git)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('beamerpresenter')
 makedepends=('git')
 source=('git://github.com/stiglers-eponym/BeamerPresenter.git')
 md5sums=('SKIP')
-backup=("etc/beamerpresenter/beamerpresenter.conf" "etc/beamerpresenter/pid2wid.sh")
+backup=("etc/xdg/beamerpresenter/beamerpresenter.conf" "etc/xdg/beamerpresenter/pid2wid.sh")
 install=beamerpresenter.install
 
 pkgver() {
@@ -44,9 +44,9 @@ build() {
 package() {
   cd "${srcdir}/BeamerPresenter"
   install -Dm755 beamerpresenter "${pkgdir}/usr/bin/beamerpresenter"
-  sed -ie 's/^pid2wid=.*$/pid2wid=\/etc\/beamerpresenter\/pid2wid.sh/' config/beamerpresenter.conf
-  install -Dm644 config/beamerpresenter.conf "${pkgdir}/etc/beamerpresenter/beamerpresenter.conf"
-  install -Dm644 config/pid2wid.sh "${pkgdir}/etc/beamerpresenter/pid2wid.sh"
+  sed -ie 's/^#pid2wid=.*$/#pid2wid=\/etc\/xdg\/beamerpresenter\/pid2wid.sh/' config/beamerpresenter.conf
+  install -Dm644 config/beamerpresenter.conf "${pkgdir}/etc/xdg/beamerpresenter/beamerpresenter.conf"
+  install -Dm644 config/pid2wid.sh "${pkgdir}/etc/xdg/beamerpresenter/pid2wid.sh"
   [ -f man/beamerpresenter.1 ] && gzip -f9 man/beamerpresenter.1
   [ -f man/beamerpresenter.conf.5 ] && gzip -f9 man/beamerpresenter.conf.5
   install -Dm644 man/beamerpresenter.1.gz "${pkgdir}/usr/share/man/man1/beamerpresenter.1.gz"
