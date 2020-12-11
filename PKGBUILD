@@ -6,7 +6,7 @@ pkgname=nvhpc
 _REL_YEAR=2020
 _CUDA_VER=11.1
 pkgver=20.11
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA HPC SDK'
 arch=('x86_64')
 url="https://developer.nvidia.com/hpc-sdk"
@@ -22,13 +22,10 @@ sha256sums=('eeba5d8aa6b6b0ffdfa9cc7b96d5df53581c5c7061c5d71e049ba7c2a9d3585a'
             'b4066e52abf7ae524f4dce64bb534ca7c77c3d5371d61d8e73d82fd648fad746')
 options=(!strip)
 
-prepare() {
-  export NVHPC_SILENT=true
-  export NVHPC_INSTALL_DIR="$pkgdir/opt/nvidia"
-}
-
 package() {
   cd "$srcdir/$_pkgname"
+  export NVHPC_SILENT=true
+  export NVHPC_INSTALL_DIR="$pkgdir/opt/nvidia"
   bash ./install
 
   # Remove references to $pkgdir from module files

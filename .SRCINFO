@@ -1,7 +1,7 @@
 pkgbase = nvhpc
 	pkgdesc = NVIDIA HPC SDK
 	pkgver = 20.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.nvidia.com/hpc-sdk
 	arch = x86_64
 	license = custom
