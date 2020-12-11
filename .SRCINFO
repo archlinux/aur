@@ -1,0 +1,18 @@
+pkgbase = libgme-git
+	pkgdesc = Video game music file emulation/playback library (git version)
+	pkgver = r215.013d467
+	pkgrel = 1
+	url = https://bitbucket.org/mpyne/game-music-emu
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	depends = libunrar
+	provides = libgme
+	conflicts = libgme
+	source = game-music-emu::git+https://bitbucket.org/mpyne/game-music-emu.git
+	sha256sums = SKIP
+
+pkgname = libgme-git
+
