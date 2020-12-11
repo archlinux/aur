@@ -1,0 +1,15 @@
+pkgbase = dbus-codegen-rust-git
+	pkgdesc = This program takes D-Bus XML Introspection data and generates Rust code for calling and implementing the interfaces in the introspection data.
+	pkgver = 0.9.0.r901.g6b0600a
+	pkgrel = 1
+	url = https://github.com/diwic/dbus-rs
+	arch = x86_64
+	makedepends = git
+	makedepends = rust
+	provides = dbus-codegen-rust
+	conflicts = dbus-codegen-rust
+	source = dbus-codegen-rust::git+https://github.com/diwic/dbus-rs
+	md5sums = SKIP
+
+pkgname = dbus-codegen-rust-git
+
