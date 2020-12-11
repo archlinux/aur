@@ -1,0 +1,57 @@
+pkgbase = jdk-bcl
+	pkgdesc = Oracle Java Development Kit (BCL)
+	pkgver = 8u201
+	pkgrel = 1
+	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	install = jdk-bcl.install
+	arch = x86_64
+	license = custom:Oracle
+	depends = ca-certificates-java
+	depends = hicolor-icon-theme
+	depends = java-environment-common
+	depends = java-runtime-common
+	depends = nss
+	depends = xdg-utils
+	optdepends = alsa-lib: for basic sound support
+	optdepends = eclipse-java: to use "Oracle Java Mission Control" plugins in Eclipse
+	optdepends = gtk2: for Gtk+ look and feel (desktop)
+	provides = java-environment=8
+	provides = java-environment-jdk=8
+	provides = java-openjfx=8
+	provides = java-runtime=8
+	provides = java-runtime-headless=8
+	provides = java-runtime-headless-jre=8
+	provides = java-runtime-jre=8
+	provides = java-web-start=8
+	provides = java-web-start-jre=8
+	options = !strip
+	backup = etc/java-jdk-bcl/amd64/jvm.cfg
+	backup = etc/java-jdk-bcl/images/cursors/cursors.properties
+	backup = etc/java-jdk-bcl/management/jmxremote.access
+	backup = etc/java-jdk-bcl/management/management.properties
+	backup = etc/java-jdk-bcl/security/java.policy
+	backup = etc/java-jdk-bcl/security/java.security
+	backup = etc/java-jdk-bcl/security/javaws.policy
+	backup = etc/java-jdk-bcl/content-types.properties
+	backup = etc/java-jdk-bcl/flavormap.properties
+	backup = etc/java-jdk-bcl/fontconfig.properties.src
+	backup = etc/java-jdk-bcl/logging.properties
+	backup = etc/java-jdk-bcl/net.properties
+	backup = etc/java-jdk-bcl/psfont.properties.ja
+	backup = etc/java-jdk-bcl/psfontj2d.properties
+	backup = etc/java-jdk-bcl/sound.properties
+	source = manual://jdk-8u201-linux-x64.tar.gz
+	source = https://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
+	source = jconsole-jdk-bcl.desktop
+	source = jmc-jdk-bcl.desktop
+	source = jvisualvm-jdk-bcl.desktop
+	source = policytool-jdk-bcl.desktop
+	sha256sums = cb700cc0ac3ddc728a567c350881ce7e25118eaf7ca97ca9705d4580c506e370
+	sha256sums = f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59
+	sha256sums = 50d8f76c1205e437c290a3d3fe1274e2cddbcac4dde0a95300cc473200176154
+	sha256sums = dfa19d10ea5614fda73cee31c592601e3a24c567150a6a7243dd7bcd1e3540cc
+	sha256sums = 44c97f46d2706f4410ebf838bb26e21e6dee3a7e0b357cf91d68c75cf9d1e011
+	sha256sums = 6bfccd461abd3ee2eba600c19f3f3cc5be95bff841e96ea1bc05b234fba9e27d
+
+pkgname = jdk-bcl
+

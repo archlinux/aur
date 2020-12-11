@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=/usr/lib/jvm/java-8-jdk-bcl/jre/bin/policytool
+Icon=sun-java-jdk8
+Name=Java 8 Policy Settings (BCL)
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Settings;Java;

@@ -1,0 +1,7 @@
+jdk-bcl-*.pkg.tar.zst
+jdk-bcl-*.pkg.tar.xz
+jdk-bcl-*.log
+jdk-*.tar.gz
+PKGBUILD-namcap.log
+jdk1.*/
+jce_policy-*.zip

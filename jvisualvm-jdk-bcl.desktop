@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=/usr/lib/jvm/java-8-jdk-bcl/bin/jvisualvm
+GenericName=Java 8 Monitoring and Performance Monitoring Tool (BCL)
+Icon=sun-java-jdk8
+Name=Java 8 VisualVM (BCL)
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Development;Java;
