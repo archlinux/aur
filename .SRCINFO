@@ -5,39 +5,31 @@ pkgbase = linux-rockchip
 	arch = armv7h
 	license = GPL2
 	noextract = linux.preset
-	noextract = 60-linux.hook
-	noextract = 90-linux.hook
 	noextract = linux-dtb-current-rockchip_21.02.0-trunk.13_armhf.deb
 	noextract = linux-image-current-rockchip_21.02.0-trunk.13_armhf.deb
 	noextract = linux-headers-current-rockchip_21.02.0-trunk.13_armhf.deb
 	options = !strip
 	source = linux.preset
-	source = 60-linux.hook
-	source = 90-linux.hook
 	source = https://beta.armbian.com/pool/main/l/linux-5.9.12-rockchip/linux-dtb-current-rockchip_21.02.0-trunk.13_armhf.deb
 	source = https://beta.armbian.com/pool/main/l/linux-5.9.12-rockchip/linux-image-current-rockchip_21.02.0-trunk.13_armhf.deb
 	source = https://beta.armbian.com/pool/main/l/linux-5.9.12-rockchip/linux-headers-current-rockchip_21.02.0-trunk.13_armhf.deb
 	sha512sums = a492aae17ee4a316ce03faf9f1b284b2529c485f4b092cc4a1f865a6c68d482fd356fd30efa296c116975a3bdf3922f5bf03912a8d0e76f4ab24aa6ab9f8c276
-	sha512sums = 7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a
-	sha512sums = a8fc668de860cf7b44269e35f879d130ccbc7db84d159ffcac6a92c02324f09c08fb57cccad18332f423bf2153c928633fa681ee96482c778dc76bffe80dd4f5
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = linux-rockchip
 	pkgdesc = The Linux Kernel and modules - ARMv7 multi-platform rockchip
-	install = linux-rockchip.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=5.9.12
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	backup = etc/mkinitcpio.d/linux-rockchip.preset
 
 pkgname = linux-rockchip-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - ARMv7 multi-platform rockchip
-	provides = linux-headers=5.9.12
 	conflicts = linux-headers
+
