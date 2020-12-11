@@ -7,16 +7,18 @@ pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
 url=https://github.com/lawl/NoiseTorch
 license=('GPL3')
-depends=('pulseaudio' 'polkit')
+depends=('noise-suppression-for-voice' 'pulseaudio' 'polkit')
 makedepends=('git' 'go' 'cmake')
 provides=('noisetorch')
 conflicts=("noisetorch-bin")
 install="${pkgname}.install"
 source=('git+https://github.com/lawl/NoiseTorch.git'
-        'git+https://github.com/werman/noise-suppression-for-voice'
+        'main.patch'
+        'module.patch'
         "${pkgname}.install")
 sha256sums=('SKIP'
-            'SKIP'
+            '4a71c81fdb7dddc90cea893e4a1ff904180c6d7908ed765298549f538183d881'
+            '9849d5ffbe1eb757419ee3e766105d7511f3eb47a49284d51ca6c530751fc455'
             'eb72a0bb2a89deac6cb4ddb35ed9385e744e7d47a90f8ffe904673d91c6611cd')
 
 pkgver() {
@@ -26,9 +28,11 @@ pkgver() {
 
 prepare() {
 	cd NoiseTorch
-	git submodule init
-	git config submodule.librnnoise_ladspa.url $srcdir/noise-suppression-for-voice
-	git submodule update
+	#git submodule init
+	#git config submodule.librnnoise_ladspa.url $srcdir/noise-suppression-for-voice
+	#git submodule update
+	patch -u main.go ../main.patch
+	patch -u module.go ../module.patch
 	export GOPATH="$srcdir/go"
 	go clean -modcache
 }
@@ -45,7 +49,9 @@ build() {
 	echo "go cxxflags $CGO_CXXFLAGS"
 	echo "go ldflags  $CGO_LDFLAGS"
 	echo "go flags    $GOFLAGS"
-	make
+	mkdir -p bin/
+	go generate
+	go build -o bin/noisetorch
 	go clean -modcache
 }
 

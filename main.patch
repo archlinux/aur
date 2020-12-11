@@ -1,13 +1,56 @@
---- main.go	2020-08-03 09:32:34.857998898 -0400
-+++ main.go.1	2020-08-03 09:34:04.110953809 -0400
-@@ -63,10 +63,6 @@
- 	ui.config = readConfig()
- 	ui.librnnoise = rnnoisefile
+--- main.go	2020-12-10 09:35:05.860864716 -0500
++++ main.go.1	2020-12-10 11:15:40.867108315 -0500
+@@ -4,7 +4,6 @@
+ 	"flag"
+ 	"fmt"
+ 	"image"
+-	"io/ioutil"
+ 	"log"
+ 	"os"
+ 	"path/filepath"
+@@ -19,7 +18,6 @@
+ 	"github.com/aarzilli/nucular/style"
+ )
  
--	if ui.config.EnableUpdates {
--		go updateCheck(&ui)
+-//go:generate go run scripts/embedlibrnnoise.go
+ //go:generate go run scripts/embedversion.go
+ //go:generate go run scripts/embedlicenses.go
+ 
+@@ -85,12 +83,9 @@
+ 	log.Printf("CAP_SYS_RESOURCE: %t\n", hasCapSysResource(getCurrentCaps()))
+ 
+ 	initializeConfigIfNot()
+-	rnnoisefile := dumpLib()
+-	defer removeLib(rnnoisefile)
+ 
+ 	ctx := ntcontext{}
+ 	ctx.config = readConfig()
+-	ctx.librnnoise = rnnoisefile
+ 
+ 	paClient, err := pulseaudio.NewClient()
+ 
+@@ -168,24 +163,6 @@
+ 
+ }
+ 
+-func dumpLib() string {
+-	f, err := ioutil.TempFile("", "librnnoise-*.so")
+-	if err != nil {
+-		log.Fatalf("Couldn't open temp file for librnnoise\n")
 -	}
+-	f.Write(libRNNoise)
+-	log.Printf("Wrote temp librnnoise to: %s\n", f.Name())
+-	return f.Name()
+-}
 -
- 	go paConnectionWatchdog(&ui)
- 
- 	wnd := nucular.NewMasterWindowSize(0, "NoiseTorch", image.Point{550, 300}, func(w *nucular.Window) {
+-func removeLib(file string) {
+-	err := os.Remove(file)
+-	if err != nil {
+-		log.Printf("Couldn't delete temp librnnoise: %v\n", err)
+-	}
+-	log.Printf("Deleted temp librnnoise: %s\n", file)
+-}
+-
+ func getSources(client *pulseaudio.Client) []input {
+ 	sources, err := client.Sources()
+ 	if err != nil {
