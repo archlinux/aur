@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=xcaddy-bin
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Build Caddy with plugins"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
   "https://github.com/caddyserver/xcaddy/releases/download/v${pkgver}/xcaddy_${pkgver}_linux_amd64.tar.gz"
 )
 sha256sums=(
-  'fcc6c6c4bd6a898edb3acd916c414930acd3ad21f0d5fbae92155640ea1c139d'
+  '6ad4b03d3ba53be635ec9347808cafe0784785b4a0f4025a813c128762c2f405'
 )
 
 package() {
