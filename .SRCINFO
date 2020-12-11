@@ -1,6 +1,6 @@
 pkgbase = hdtv
 	pkgdesc = Nuclear spectrum analysis tool on top of the ROOT data analysis toolkit
-	pkgver = 20.11
+	pkgver = 20.12
 	pkgrel = 1
 	url = https://github.com/janmayer/hdtv
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = hdtv
 	provides = hdtv
 	conflicts = hdtv
 	options = !emptydirs
-	source = https://github.com/janmayer/hdtv/archive/v20.11.tar.gz
-	sha256sums = 8fa50549285f5e64b6ee63ce677c81b99e81a0eb56d555ef3d230fe661cc0866
+	source = https://github.com/janmayer/hdtv/archive/v20.12.tar.gz
+	sha256sums = f42584252254f81bb274c142549679a7abf2528c15fe34d4cd0d980f4ab4fc53
 
 pkgname = hdtv
 
