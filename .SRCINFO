@@ -1,0 +1,18 @@
+pkgbase = python-cocotbext-pcie-git
+	pkgdesc = PCI express simulation framework for cocotb
+	pkgver = 0.1.0.r1.g6828942
+	pkgrel = 1
+	url = https://github.com/alexforencich/cocotbext-pcie
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-cocotb
+	depends = python-cocotbext-axi
+	provides = python-cocotbext-pcie
+	conflicts = python-cocotbext-pcie
+	source = cocotbext-pcie::git+https://github.com/alexforencich/cocotbext-pcie.git
+	md5sums = SKIP
+
+pkgname = python-cocotbext-pcie-git
+
