@@ -3,7 +3,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 _pkgbase=zsh
-pkgname=('zsh-minimal-git')
+pkgname=('zsh-minimal-git' 'zsh-doc-minimal-git')
 pkgver=5.2.r502.ge35dcae
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -61,7 +61,7 @@ build() {
 		--enable-zlogout=/etc/zsh/zlogout \
 		--enable-zprofile=/etc/zsh/zprofile \
 		--enable-zshrc=/etc/zsh/zshrc \
-		--enable-maildir-support \
+		--disable-maildir-support \
 		--with-term-lib='ncursesw' \
 		--enable-multibyte \
 		--enable-function-subdirs \
@@ -98,4 +98,14 @@ package_zsh-minimal-git() {
 	make DESTDIR="${pkgdir}/" install
 	install -D -m644 "${srcdir}/zprofile" "${pkgdir}/etc/zsh/zprofile"
 	install -D -m644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_zsh-doc-minimal-git() {
+   pkgdesc='Info, HTML and PDF format of the ZSH documentation'
+   conflicts=('zsh-doc')
+   provides=('zsh-doc')
+
+   cd "${srcdir}/${_pkgbase}"
+   make DESTDIR="${pkgdir}/" install.info install.html
+   install -D -m644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

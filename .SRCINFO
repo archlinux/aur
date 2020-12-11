@@ -24,3 +24,8 @@ pkgname = zsh-minimal-git
 	conflicts = zsh
 	backup = etc/zsh/zprofile
 
+pkgname = zsh-doc-minimal-git
+	pkgdesc = Info, HTML and PDF format of the ZSH documentation
+	provides = zsh-doc
+	conflicts = zsh-doc
+
