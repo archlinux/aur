@@ -1,8 +1,8 @@
 pkgbase = gauche-git
 	pkgdesc = R7RS Scheme implementation developed to be a handy script interpreter
-	pkgver = 0.9.10_pre1.r12427
+	pkgver = 0.9.10.r12887
 	pkgrel = 1
-	epoch = 3
+	epoch = 4
 	url = http://practical-scheme.net/gauche/index.html
 	arch = i686
 	arch = x86_64
