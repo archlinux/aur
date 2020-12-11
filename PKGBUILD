@@ -13,8 +13,7 @@ depends=(
   'steam'
   'dxvk'
 )
-conflicts=(proton-caller-git)
-source=("https://github.com/caverym/"$__pkgname"/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/caverym/"$__pkgname"/archive/${pkgver}.tar.gz")
 sha256sums=('59284eafb1760fe2279c44a10e8e8144dfc562821e49e58e7fd0a4636f0d1924')
 
 build() {
@@ -29,7 +28,6 @@ package() {
   mkdir -p "$pkgdir"/usr/share/proton-caller/
   cp -f "$srcdir/$__pkgname-$pkgver"/LICENSE "$pkgdir"/usr/share/licenses/"$_pkgname"/
   install -g 0 -o 0 -m 0644 "$srcdir/$__pkgname-$pkgver"/manual/"$_pkgname".6 "$pkgdir"/usr/share/man/man6/
-  gzip -f "$pkgdir"/usr/share/man/man6/"$_pkgname".6
   cp "$srcdir/$__pkgname-$pkgver"/"$_pkgname" "$pkgdir"/usr/bin/
   cp "$srcdir/$__pkgname-$pkgver"/HELP "$pkgdir"/usr/share/proton-caller/
 }

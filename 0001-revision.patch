@@ -1,0 +1,49 @@
+From f672f79f6a789cc44e221063b902fb09d4289024 Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Fri, 11 Dec 2020 19:21:57 +0100
+Subject: [PATCH] revision
+
+---
+ .SRCINFO | 3 +--
+ PKGBUILD | 4 +---
+ 2 files changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/.SRCINFO b/.SRCINFO
+index 3672d97..bd887c6 100644
+--- a/.SRCINFO
++++ b/.SRCINFO
+@@ -7,8 +7,7 @@ pkgbase = proton-caller
+ 	license = GPL3
+ 	depends = steam
+ 	depends = dxvk
+-	conflicts = proton-caller-git
+-	source = https://github.com/caverym/Proton-Caller/archive/1.3.2.tar.gz
++	source = proton-caller-1.3.2.tar.gz::https://github.com/caverym/Proton-Caller/archive/1.3.2.tar.gz
+ 	sha256sums = 59284eafb1760fe2279c44a10e8e8144dfc562821e49e58e7fd0a4636f0d1924
+ 
+ pkgname = proton-caller
+diff --git a/PKGBUILD b/PKGBUILD
+index 1e76422..37d00ff 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -13,8 +13,7 @@ depends=(
+   'steam'
+   'dxvk'
+ )
+-conflicts=(proton-caller-git)
+-source=("https://github.com/caverym/"$__pkgname"/archive/${pkgver}.tar.gz")
++source=("${pkgname}-${pkgver}.tar.gz::https://github.com/caverym/"$__pkgname"/archive/${pkgver}.tar.gz")
+ sha256sums=('59284eafb1760fe2279c44a10e8e8144dfc562821e49e58e7fd0a4636f0d1924')
+ 
+ build() {
+@@ -29,7 +28,6 @@ package() {
+   mkdir -p "$pkgdir"/usr/share/proton-caller/
+   cp -f "$srcdir/$__pkgname-$pkgver"/LICENSE "$pkgdir"/usr/share/licenses/"$_pkgname"/
+   install -g 0 -o 0 -m 0644 "$srcdir/$__pkgname-$pkgver"/manual/"$_pkgname".6 "$pkgdir"/usr/share/man/man6/
+-  gzip -f "$pkgdir"/usr/share/man/man6/"$_pkgname".6
+   cp "$srcdir/$__pkgname-$pkgver"/"$_pkgname" "$pkgdir"/usr/bin/
+   cp "$srcdir/$__pkgname-$pkgver"/HELP "$pkgdir"/usr/share/proton-caller/
+ }
+-- 
+2.29.2
+
