@@ -1,0 +1,13 @@
+pkgbase = i915-vfe-bin
+	pkgdesc = Precompiled i915 driver patched to limit VFE threads based on GT
+	pkgver = 5.9.0
+	pkgrel = 1
+	url = https://patchwork.freedesktop.org/patch/395580/?series=82783&rev=1
+	install = i915-vfe-bin.install
+	arch = x86_64
+	license = MIT
+	source = https://github.com/jeffangelion/i915-vfe/releases/download/5.9.0/i915.ko.tar.gz
+	sha1sums = ef115397a039a8a4b479ca62fbb3d237af635573
+
+pkgname = i915-vfe-bin
+
