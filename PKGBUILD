@@ -1,5 +1,6 @@
 # Maintainer: David Londoño <davidlo176@gmail.com>
-pkgname='skr-git'
+pkgbase=skr
+pkgname=skr-git
 _gitname='skr'
 pkgver=r111.30fc142
 pkgrel=1
@@ -10,6 +11,7 @@ license=('GPL')
 groups=()
 depends=('interception-tools' 'sudo' 'python')
 makedepends=('git' 'gcc')
+provides=('skr')
 source=('skr::git://github.com/DavRack/skr')
 md5sums=('SKIP')
 
