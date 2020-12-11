@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=strace-parser
-pkgver=0.5.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Strace parser written in Rust'
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ url=https://gitlab.com/gitlab-com/support/toolbox/strace-parser
 license=(MIT)
 makedepends=(cargo)
 source=($pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-sha512sums=('c2146190945cac207580b6602f59abd1871f15896cbed394cfeda482620573e86c11880b7abfbcbf4c2065e6e52990eafc67146cbc1ad7bd2ff9bb6ba964d128')
+sha512sums=('38078cca5e5c75eae5ea504b186c62e019e43c357ddd2e913565af04b687613f25c4c73d8ff3605a197a4c3d75dc4939d94daeec67cd84650d4d1267dc671fa4')
 
 build() {
   cd $pkgname-v$pkgver
