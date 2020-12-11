@@ -2,13 +2,13 @@
 
 pkgname=yabridge
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another VST bridge, run Windows VST2 plugins under Linux"
 epoch=
 arch=('x86_64')
 url="https://github.com/robbert-vdh/yabridge"
 license=('GPL3')
-depends=('wine' 'boost'  'libxcb' 'lib32-boost-libs>=1.72.0' 'lib32-libxcb')
+depends=('wine<6.0' 'boost'  'libxcb' 'lib32-boost-libs>=1.72.0' 'lib32-libxcb')
 optdepends=('yabridgectl: utility for setting up and managing yabridge')
 makedepends=('meson' 'ninja')
 options=('!strip')
