@@ -3,8 +3,8 @@
 
 pkgname=ttf-tengwar-annatar
 pkgver=1.20
-pkgrel=2
-pkgdesc="The Tengwar Annatar ttf font family. (Tolkein Elvish)"
+pkgrel=3
+pkgdesc="The Tengwar Annatar ttf font family. (Tolkien Elvish)"
 license=("custom:tengwar-annatar")
 arch=("any")
 #url="http://home.student.uu.se/j/jowi4905/fonts/annatar.html"

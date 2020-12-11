@@ -1,7 +1,7 @@
 pkgbase = ttf-tengwar-annatar
-	pkgdesc = The Tengwar Annatar ttf font family. (Tolkein Elvish)
+	pkgdesc = The Tengwar Annatar ttf font family. (Tolkien Elvish)
 	pkgver = 1.20
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tengwar.art.pl/tengwar/fonty.php
 	arch = any
 	license = custom:tengwar-annatar
