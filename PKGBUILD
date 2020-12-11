@@ -9,7 +9,7 @@ url="https://www.mitsuba-renderer.org/"
 license=('custom')
 groups=()
 depends=('libpng' 'libjpeg-turbo' 'libc++' 'pybind11' 'pugixml' 'tbb')
-makedepends=('clang' 'git' 'cmake' 'ninja' 'patchelf' 'python' 'python-sphinx' 'python-guzzle-sphinx-theme' 'python-sphinxcontrib-bibtex')
+makedepends=('clang' 'git' 'cmake' 'ninja' 'patchelf' 'python' 'python-sphinx' 'python-guzzle-sphinx-theme' 'python-sphinxcontrib-bibtex' 'jq')
 checkdepends=('python-pytest' 'python-pytest-xdist' 'python-numpy')
 install=
 source=('swap_pybind.patch'
@@ -61,6 +61,13 @@ prepare() {
 
 	# not used with the current build options
 	rmdir ext/embree ext/nanogui
+
+	# generate the mitsuba.conf file with only one renderer (RGB)
+	# NOTE: change this if you want to build something else
+	grep -v '#' < "$srcdir/${pkgname%-git}"/resources/mitsuba.conf.template \
+		| jq '.["enabled"] = ["scalar_rgb"]' \
+		| jq '.["default"] = "scalar_rgb"' \
+		> "$srcdir/${pkgname%-git}"/mitsuba.conf
 }
 
 build() {

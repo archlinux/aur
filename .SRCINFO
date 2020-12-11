@@ -17,6 +17,7 @@ pkgbase = mitsuba2-git
 	makedepends = python-sphinx
 	makedepends = python-guzzle-sphinx-theme
 	makedepends = python-sphinxcontrib-bibtex
+	makedepends = jq
 	depends = libpng
 	depends = libjpeg-turbo
 	depends = libc++
