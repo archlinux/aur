@@ -1,0 +1,16 @@
+pkgbase = goldjack
+	pkgdesc = Jackalizer for your images
+	pkgver = 20201210
+	pkgrel = 1.0
+	url = https://github.com/F48D1/goldjack
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python
+	depends = sh
+	depends = python-pillow
+	source = goldjack::git://github.com/F48D1/goldjack.git
+	sha512sums = SKIP
+
+pkgname = goldjack
+
