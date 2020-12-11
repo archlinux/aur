@@ -1,4 +1,4 @@
-From f012312abb99f90b3ed5edf86b844764b9953d38 Mon Sep 17 00:00:00 2001
+From 08758cddd4d5749f2715534b28108420cb167b74 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 1 Sep 2020 12:22:28 +0100
 Subject: [PATCH 3/3] Don't build the main poppler library.
@@ -8,10 +8,10 @@ Subject: [PATCH 3/3] Don't build the main poppler library.
  1 file changed, 17 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 307b26e8..8dedf6de 100644
+index 1573249a..67bd471d 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -562,23 +562,6 @@ ADD_GPERF_FILE(TimesItalicWidths)
+@@ -564,23 +564,6 @@ ADD_GPERF_FILE(TimesItalicWidths)
  ADD_GPERF_FILE(TimesRomanWidths)
  ADD_GPERF_FILE(ZapfDingbatsWidths)
  
