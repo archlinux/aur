@@ -15,7 +15,7 @@ sha256sums=('4d15c8288aca414e11cd304686b172696104c5e42bf776300311c005634854a2'
 
 build() {
     cd ${srcdir}/atinout-$pkgver
-    patch -p0 < ../../Makefile.patch
+    patch -p0  < "${srcdir}/Makefile.patch"
     make
  }
 
