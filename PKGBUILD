@@ -20,7 +20,7 @@ source=(
   "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-headers-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
 )
 sha512sums=(
-  'f683c0639fc20e813e309df99b9b850b1f55de3fc02489d64a7d66e84df19d7836ea32042090597f1df17baed46a3ae1dfcf341c8aff206be9a1b06ee394dc3f'
+  'aca591b5a2e838754e3c5fd2c0e50098ad54c2d0f990de5bf9cff8608e881daf0e37132294ed1a0e0a7b9e1c194c0b89f95da001d94febdb25a01c409060e3ac'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -50,7 +50,9 @@ _package() {
 
   install -dm755 "$pkgdir/boot"
   cp -r "boot/dtb-$_kernver" "$pkgdir/boot/dtbs"
+
   ln -s "vmlinuz-$pkgbase" "$pkgdir/boot/Image"
+  ln -s "initramfs-$pkgbase.img" "$pkgdir/boot/Initrd"
 
   install -dm755 "$pkgdir/usr"
   cp -r lib "$pkgdir/usr/lib"
