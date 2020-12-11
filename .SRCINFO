@@ -1,7 +1,7 @@
 pkgbase = thundersvm
 	pkgdesc = A Fast SVM Library on GPUs and CPUs
 	pkgver = 0.3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Xtra-Computing/thundersvm
 	arch = x86_64
 	license = APL
@@ -11,7 +11,9 @@ pkgbase = thundersvm
 	makedepends = python-setuptools
 	makedepends = chrpath
 	source = https://github.com/Xtra-Computing/thundersvm/archive/v0.3.4.tar.gz
+	source = kernelmatrix_kernel.cu.patch
 	sha256sums = c8b4f7ece312a51ab72ef72e550f7ca3973f5328bc128df64158fe6e3b3b8c0e
+	sha256sums = c2d9d6891f77268ee1c8de832b17d9cadf8fcc7008ce94ba9c1e04d70b3aa396
 
 pkgname = thundersvm
 	depends = cuda
