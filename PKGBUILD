@@ -1,7 +1,7 @@
 # Maintainer: Aiyion <aur@aiyionpri.me>
 _pkgname=minimaxsimulator
 pkgname=$_pkgname-git
-pkgver=v2.0.0.r8.g98947e1
+pkgver=v2.0.0.r14.ge281d59
 pkgrel=1
 pkgdesc="a platform independent GUI-based Minimax simulator written in Java"
 arch=('any')
