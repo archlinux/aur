@@ -73,6 +73,7 @@ prepare() {
 -Wstrict-prototypes
 -include linux/module.h
 -include linux/uaccess.h
+-DHAVE_UNLOCKED_IOCTL=1
 EOF
   sed -e '1i #!/usr/bin/sh' \
       -e "1i cp -p '/usr/lib/${pkgname}/ArchOpts' '/tmp/'" \
