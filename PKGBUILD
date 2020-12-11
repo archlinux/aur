@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee' 'libnm-glib' 'networkmanager'
          'nm-connection-editor'
-         'libgranite.so' 'libwingpanel-3.0.so')
+         'libgranite.so' 'libwingpanel-2.0.so')
 makedepends=('git' 'granite' 'meson' 'vala' 'wingpanel')
 provides=('wingpanel-indicator-network')
 conflicts=('wingpanel-indicator-network')
