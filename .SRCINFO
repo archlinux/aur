@@ -1,6 +1,6 @@
 pkgbase = meshlab
 	pkgdesc = System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)
-	pkgver = 2020.09
+	pkgver = 2020.12
 	pkgrel = 2
 	url = https://www.meshlab.net
 	arch = i686
@@ -27,8 +27,8 @@ pkgbase = meshlab
 	optdepends = levmar: for isoparametrization and mutualcorrs plugins
 	optdepends = muparser: for filer_func plugins
 	optdepends = mpir: for Constructive Solid Geometry operation filters
-	source = meshlab::git+https://github.com/cnr-isti-vclab/meshlab.git#tag=Meshlab-2020.09
-	source = vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git#tag=v1.0.1
+	source = meshlab::git+https://github.com/cnr-isti-vclab/meshlab.git#tag=Meshlab-2020.12
+	source = vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git#tag=2020.12
 	sha256sums = SKIP
 	sha256sums = SKIP
 
