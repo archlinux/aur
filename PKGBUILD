@@ -2,20 +2,22 @@
 
 pkgname=python-cos-python-sdk-v5
 _pkgname=${pkgname/python-}
-pkgver=1.8.1
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="腾讯云COSV5Python SDK."
 arch=('any')
 url="https://github.com/tencentyun/cos-python-sdk-v5"
 license=('MIT')
 depends=('python-requests'
          'python-six'
-         'python-dicttoxml')
+         'python-dicttoxml'
+         'python-crcmod'
+         'python-pycryptodome')
 makedepends=('python-setuptools')
 conflicts=("${pkgname}-git")
 provides=("${pkgname}-git")
-source=("https://github.com/tencentyun/${_pkgname}/archive/V${pkgver}.tar.gz")
-sha256sums=('SKIP')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tencentyun/cos-python-sdk-v5/archive/v${pkgver}.tar.gz")
+sha256sums=('ddbeea127241197ce034c6230b4ec796c1ed035d5155173ca9b909fb54fdaf18')
 
 build() {
   cd $_pkgname-$pkgver
