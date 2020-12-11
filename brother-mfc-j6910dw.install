@@ -1,0 +1,50 @@
+post_upgrade() {
+  set -u
+  set -e
+  local _awkp='
+# Look for
+
+# *%=== Reverse Printing ================================
+# *%OpenUI *BRReverse/Reverse Printing: PickOne
+# *%OrderDependency: 30 AnySetup *BRReverse
+# *%DefaultBRReverse: OFF
+# *%BRReverse OFF/Off: "          "
+# *%BRReverse ON/On: "          "
+# *CloseUI: *BRReverse
+
+# where OpenUI is commented out but CloseUI is not. This is crashing cups 1:2.3.3op1-1.
+# We need to patch /etc/cups/ppd in place because cups will not start to allow
+# fixed ppd to be updated. Even if it did start, its a lot of work to update.
+
+BEGIN {
+  # model="Brother "; # specified by -v
+}
+
+BEGINFILE {
+  fbrother=0;
+  fmodel=0;
+  f1=0;
+  f2=0;
+}
+/Brother / { fbrother=1; }
+$0 ~ model { fmodel=1; }
+/^\*%OpenUI \*BRReverse/ { f1=1; }
+/^\*CloseUI: \*BRReverse/ { f2=1; }
+ENDFILE {
+  if (fbrother && fmodel && f1 && f2) {
+    print FILENAME;
+  }
+}
+'
+
+  shopt -s nullglob
+  local _f
+  for _f in /etc/cups/ppd/*.ppd; do
+    if [ ! -z "$(awk -v "model=${_model}" "${_awkp}" "${_f}")" ]; then
+      patch -Nup0 "${_f}" "${_patch}"
+    fi
+  done
+  shopt -u nullglob
+  set +e
+  set +u
+}
