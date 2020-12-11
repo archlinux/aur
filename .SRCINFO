@@ -1,0 +1,22 @@
+pkgbase = rare-git
+	pkgdesc = Legendary frontend
+	pkgver = 0.1.r15.g4d47e98
+	pkgrel = 1
+	url = https://github.com/Dummerle/Rare
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = legendary
+	depends = python-requests
+	depends = python-pillow
+	depends = python-pyqt5
+	provides = rare
+	conflicts = rare
+	source = rare-git::git+https://github.com/Dummerle/Rare.git
+	source = setup.py
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rare-git
+
