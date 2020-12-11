@@ -1,0 +1,12 @@
+[Unit]
+Description=Update the clash config.yaml peroidly with optional patch for %i.
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+Restart=on-abort
+ExecStart=/usr/bin/clash-subscription-updater
+
+[Install]
+WantedBy=multi-user.target

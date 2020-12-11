@@ -1,0 +1,18 @@
+pkgbase = clash-subscription-updater-git
+	pkgdesc = Update the clash config.yaml peroidly with optional patch
+	pkgver = r3.e2083ea
+	pkgrel = 1
+	url = https://github.com/fengkx/clash-subscription-updater
+	arch = any
+	license = LGPL-3.0
+	makedepends = git
+	makedepends = go
+	provides = clash-subscription-updater
+	conflicts = clash-subscription-updater
+	source = git+https://github.com/fengkx/clash-subscription-updater.git
+	source = clash-subscription-updater@.service
+	sha256sums = SKIP
+	sha256sums = 3ad08345ee3482597073996cf2282f8880dc6b59d86863a6c12b8c081ecddf05
+
+pkgname = clash-subscription-updater-git
+
