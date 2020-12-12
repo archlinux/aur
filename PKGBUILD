@@ -2,7 +2,7 @@
 
 pkgname=mopidy-local
 pkgver=3.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Mopidy extension for local media playback"
 arch=('any')
 url="https://github.com/mopidy/mopidy-local"

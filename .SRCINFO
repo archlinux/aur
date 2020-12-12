@@ -1,7 +1,7 @@
 pkgbase = mopidy-local
 	pkgdesc = Mopidy extension for local media playback
 	pkgver = 3.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mopidy/mopidy-local
 	arch = any
 	license = APACHE
