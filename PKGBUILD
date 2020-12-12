@@ -87,7 +87,8 @@ if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   provides+=("${pkgname%-git}=${pkgver%%.r*}")
   conflicts+=("${pkgname%-git}")
   source=("${_srcdir}::git+${url}.git")
-  :;sha256sums=('SKIP')
+  md5sums[0]='SKIP'
+  sha256sums[0]='SKIP'
 pkgver() {
   set -u
   cd "${_srcdir}"
