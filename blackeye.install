@@ -1,7 +1,10 @@
 post_install() {
-    printf "\e[1;34m --> \e[0mInstalled: BlackEye Version %s by \"TheLinuxChoice\"\n" ${1%-*}
-    printf "\e[1;34m --> \e[0m           https://github.com/thelinuxchoice/blackeye\n"
-    printf "\e[1;34m --> \e[31mWARNING:   \e[33mBLACKEYE WILL ONLY WORK ON LAN !\n"
-    printf "\e[1;34m --> \e[0;33m           This tool was made for educational purposes.\e[0m\n"
+    printf "\e[1;32m ==>\e[0;1m %s\n" \
+           "blackeye: IMPORTANT"
+    printf "\e[1;34m  ->\e[0;1m %s\n" \
+           "Don't forget to save your ngrok token to your local configuration by"
+    printf "\e[1;34m  ->\e[0;33m %s\n" \
+           "    $ ngrok authtoken <your_token>"
+    printf "\e[1;34m  ->\e[0;1m %s\e[0m\n" \
+           "if you haven't done so yet."
 }
-

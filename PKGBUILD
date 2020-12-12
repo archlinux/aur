@@ -1,52 +1,48 @@
-# Maintainer :  Kr1ss $(sed s/\+/./g\;s/\-/@/ <<<\<kr1ss+x-yandex+com\>)
+# Maintainer :  Kr1ss  $(tr +- .@ <<<'<kr1ss+x-yandex+com>')
 
 
 pkgname=blackeye-git
-pkgver=r27.gdfcd597
-pkgrel=2
-pkgdesc='The most complete phishing tool, 32 website templates + 1 customizable'
+
+pkgver() { git -C "${pkgname%-git}" log -n1 --format=%cs.g%h | tr - .; }
+pkgver=2020.10.07.g2304100
+pkgrel=1
+
+pkgdesc='The most complete phishing tool - 38 website templates, updated version with ngrok'
 arch=('any')
-url='https://github.com/thelinuxchoice/blackeye'
+url="https://github.com/x3rz/${pkgname%-git}"
 license=('GPL3')
-depends=('php' 'wget' 'coreutils' 'bash')
+
 makedepends=('git')
+depends=('php' 'wget')
+optdepends=('ngrok: if not installed, the binary will be downloaded into the user cache')
+
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
 install="${pkgname%-git}.install"
-source=('git+https://github.com/thelinuxchoice/blackeye.git'
-        "${pkgname%-git}".{install,sh.patch}{.sig,})
-sha256sums=('SKIP'
-            'SKIP'
-            '9b33022a2e7c377013a60b07b96e250b0d677a6edaeee2ec81b09f0d3dbabd26'
-            'SKIP'
-            'c8fbd92fc18aea1a09f842c10ac2ab450680810542a96438d8ab7ef8ae1e0363')
+source=("git+$url.git" "${pkgname%-git}.patch" "${pkgname%-git}.patch.sig")
+sha256sums=('SKIP' '2f30f40f2246ae77a987da5f9a9430411e4cdf00ab1a3694b1f22c19af91ee70' 'SKIP')
 validpgpkeys=('7A194E3F7A8F867BEA8A5339023F078862ACFE50')
 
-pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 prepare() {
-    cd "$srcdir/${pkgname%-git}"
-    patch -Np1 -i "$srcdir/${pkgname%-git}.sh.patch"
+    cd "${pkgname%-git}"
+    patch -Np1 <"../${pkgname%-git}.patch"
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
-    install -dm755 "$pkgdir"/usr/{bin,share/{,doc/}"${pkgname%-git}"}
-    install -m755 "${pkgname%-git}.sh" "$pkgdir/usr/share/${pkgname%-git}/"
-    cp -r --no-preserve=ownership README.md LICENSE sites "$pkgdir/usr/share/${pkgname%-git}/"
-    ln -s "/usr/share/${pkgname%-git}/README.md" "$pkgdir/usr/share/doc/${pkgname%-git}/"
-    cat >"$pkgdir/usr/bin/${pkgname%-git}" <<-EOF
+    cd "${pkgname%-git}"
+    install -Dm755 "${pkgname%-git}.sh" -t"$pkgdir/usr/share/${pkgname%-git}/"
+    cp -a --no-preserve=o sites "$pkgdir/usr/share/${pkgname%-git}/"
+    install -Dm644 README.md -t"$pkgdir/usr/share/doc/${pkgname%-git}/"
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/${pkgname%-git}" <<-EOF
 		#!/bin/sh
 
-		cp -sufr /usr/share/blackeye "\${XDG_CACHE_HOME:-\$HOME/.cache}/"
-		cd "\${XDG_CACHE_HOME:-\$HOME/.cache}/blackeye"
-		./blackeye.sh
-		cd - >/dev/null
+		cp -sufr /usr/share/${pkgname%-git} "\${XDG_CACHE_HOME:-\$HOME/.cache}/"
+		cd "\${XDG_CACHE_HOME:-\$HOME/.cache}/${pkgname%-git}"
+		exec ./${pkgname%-git}.sh
 	EOF
-    chmod +x "$pkgdir/usr/bin/${pkgname%-git}"
 }
 
+
+# vim: ts=4 sw=4 et ft=PKGBUILD:

@@ -1,7 +1,9 @@
 *
 
-!.gitignore
 !.SRCINFO
 !PKGBUILD
-!blackeye.install*
-!blackeye.sh.patch*
+
+!blackeye.install
+
+!blackeye.patch
+!blackeye.patch.sig
