@@ -4,7 +4,7 @@
 pkgname=youtube-music-bin
 _pkgname=YouTube-Music
 pkgver=1.7.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="YouTube Music Desktop App bundled with custom plugins like built-in ad blocker & downloader"
 arch=('x86_64')
