@@ -3,7 +3,7 @@
 
 pkgname=kcm-grub2-git
 _product="${pkgname%-git}"
-pkgver=v0.6.4.r86.g1912ede
+pkgver=0.6.4.r86.g1912ede
 pkgrel=1
 pkgdesc='KDE Control Module for configuring the GRUB bootloader'
 arch=('x86_64')
@@ -29,7 +29,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_product}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  # cutting off 'v' prefix that presents in the git tag
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
