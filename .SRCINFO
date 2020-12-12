@@ -1,15 +1,15 @@
 pkgbase = blackeye-git
 	pkgdesc = The most complete phishing tool - 38 website templates, updated version with ngrok
 	pkgver = 2020.10.07.g2304100
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/x3rz/blackeye
 	install = blackeye.install
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = php
-	depends = wget
 	optdepends = ngrok: if not installed, the binary will be downloaded into the user cache
+	optdepends = wget: used to download the ngrok binary if none is found
 	provides = blackeye
 	conflicts = blackeye
 	source = git+https://github.com/x3rz/blackeye.git
@@ -17,7 +17,7 @@ pkgbase = blackeye-git
 	source = blackeye.patch.sig
 	validpgpkeys = 7A194E3F7A8F867BEA8A5339023F078862ACFE50
 	sha256sums = SKIP
-	sha256sums = 2f30f40f2246ae77a987da5f9a9430411e4cdf00ab1a3694b1f22c19af91ee70
+	sha256sums = b520c32fdb2a053b2c5c9c7a13452ba360a48f6c66aeaac87b47b6d293b2e167
 	sha256sums = SKIP
 
 pkgname = blackeye-git

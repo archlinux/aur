@@ -1,6 +1,15 @@
 diff -ru --color old/blackeye.sh new/blackeye.sh
---- old/blackeye.sh	2020-12-12 17:20:20.920485939 +0100
-+++ new/blackeye.sh	2020-12-12 17:32:23.941913566 +0100
+--- old/blackeye.sh	2020-12-12 19:37:48.130378733 +0100
++++ new/blackeye.sh	2020-12-12 19:50:22.552417197 +0100
+@@ -10,7 +10,7 @@
+ dependencies() {
+ 
+ command -v php > /dev/null 2>&1 || { echo >&2 "I require php but it's not installed. Install it. Aborting."; exit 1; }
+-command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed. Install it. Aborting."; exit 1; }
++{ command -v wget || command -v ngrok; } > /dev/null 2>&1 || { echo >&2 "I require either ngrok or wget but neither of them is installed. Install one of those. Aborting."; exit 1; }
+ command -v unzip > /dev/null 2>&1 || { echo >&2 "I require unzip but it's not installed. Install it. Aborting."; exit 1; }
+ command -v curl > /dev/null 2>&1 || { echo >&2 "I require curl but it's not installed. Install it. Aborting."; exit 1; }
+ 
 @@ -18,15 +18,15 @@
  
  menu() {
