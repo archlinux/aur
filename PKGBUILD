@@ -1,9 +1,9 @@
-# Maintainer: Drew DeVault <sir@cmpwn.com>
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
+# Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-hidpi-git
 _pkgname=sway-hidpi
-pkgver=r6506.1be66c98
-pkgrel=2
+pkgver=r6539.1dbb6990
+pkgrel=1
 license=("MIT")
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager, with XWayland HiDPI"
 makedepends=(
@@ -23,7 +23,7 @@ depends=(
 	"swaybg-git"
 	"ttf-font"
 	"wlroots-hidpi-git"
-	"xorg-server-xwayland-hidpi-git"
+	"xorg-xwayland-hidpi-git"
         "xsettingsd"
 )
 optdepends=(
@@ -53,7 +53,7 @@ options=(debug)
 
 prepare() {
 	cd "$_pkgname"
-	patch -Np1 -i ../xwayland_hidpi.diff
+	patch --forward --strip=1 --input="${srcdir}/xwayland_hidpi.diff"
 }
 
 pkgver() {
