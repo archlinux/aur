@@ -3,11 +3,12 @@
 
 pkgname=zps-bin
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A small utility for listing and cleaning up zombie processes"
 arch=('x86_64')
 url="https://github.com/orhun/zps"
 license=('GPL3')
+depends=('glibc')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/$pkgver/${pkgname%-bin}-$pkgver.tar.gz"{,.sig}

@@ -1,10 +1,11 @@
 pkgbase = zps-bin
 	pkgdesc = A small utility for listing and cleaning up zombie processes
 	pkgver = 1.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/orhun/zps
 	arch = x86_64
 	license = GPL3
+	depends = glibc
 	provides = zps
 	conflicts = zps
 	validpgpkeys = 39E678DF63BE20EA5A175156B928720AEC532117
