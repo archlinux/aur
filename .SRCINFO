@@ -1,10 +1,11 @@
 pkgbase = ali-bin
 	pkgdesc = Generate HTTP load and plot the results in real-time
 	pkgver = 0.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nakabonne/ali
 	arch = x86_64
 	license = MIT
+	depends = glibc
 	provides = ali
 	conflicts = ali
 	source_x86_64 = https://github.com/nakabonne/ali/releases/download/v0.5.4/ali_0.5.4_linux_amd64.tar.gz
