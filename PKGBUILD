@@ -3,11 +3,12 @@
 
 pkgname=shy-bin
 pkgver=0.1.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Bare-bones SSH launcher"
 arch=('x86_64')
 url="https://github.com/xvxx/shy"
 license=('MIT')
+depends=('gcc-libs')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver.tgz::$url/releases/download/v$pkgver/${pkgname%-bin}-v${pkgver}-linux-x86_64.tgz"

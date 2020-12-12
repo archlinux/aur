@@ -1,10 +1,11 @@
 pkgbase = shy-bin
 	pkgdesc = Bare-bones SSH launcher
 	pkgver = 0.1.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xvxx/shy
 	arch = x86_64
 	license = MIT
+	depends = gcc-libs
 	provides = shy
 	conflicts = shy
 	source_x86_64 = shy-bin-0.1.10.tgz::https://github.com/xvxx/shy/releases/download/v0.1.10/shy-v0.1.10-linux-x86_64.tgz
