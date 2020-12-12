@@ -35,7 +35,7 @@ wheel>0.24.0,<0.30.0
 #setup.py
 
 install_requires = [
-    'botocore==1.17.43',
+    'botocore==1.19.35',
     'docutils>=0.10,<0.16',
     's3transfer>=0.3.0,<0.4.0',
 ]
@@ -65,7 +65,7 @@ else
 pkgname="${_pyver}-${_pybase}"
 _pyverother='python'
 fi
-pkgver=1.18.120
+pkgver=1.18.195
 # Generally when this version changes, the version of botocore also changes
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services awscli'
@@ -74,7 +74,7 @@ url="https://github.com/aws/${_pybase}"
 license=('Apache') # Apache License 2.0
 _pydepends=( # See setup.py, README.rst, and requirements.txt for version dependencies
   # setup.py
-  "${_pyver}-botocore>=1.17.43" # COM ==
+  "${_pyver}-botocore>=1.19.35" # COM ==
   "${_pyver}-docutils"'>=0.10' # ,'<0.16'} # COM
   "${_pyver}-rsa"'>=3.1.2' #,'<=4.5.0'}
   #"${_pyver}-cryptography"'>=2.8.0' # ,'<=2.9.0'}
@@ -109,8 +109,8 @@ depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!emptydirs' '!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-md5sums=('2825bb6c92018dfbf0c0e7697aed399f')
-sha256sums=('21bc80ba44dcaccc00ac1449a03cb8cc8af1bf9f72284ef01d1a1e0364c08483')
+md5sums=('e3207f83e0e6b603ec2b9e9aadadbe32')
+sha256sums=('94262c494dc33d2c7518f062385184af6f8459484e83a48326d7ef7c1c1ce7a3')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
@@ -118,7 +118,8 @@ if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _vcsprovides=("${pkgname%-git}=${pkgver%%.r*}")
   _vcsconflicts=("${pkgname%-git}")
   source=("${_srcdir}::${url//https:/git:}.git")
-  :;sha256sums=('SKIP')
+  md5sums[0]='SKIP'
+  sha256sums[0]='SKIP'
 pkgver() {
   set -u
   cd "${_srcdir}"
