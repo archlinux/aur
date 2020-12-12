@@ -1,3 +1,4 @@
+#!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # Old maintainer: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
@@ -69,13 +70,13 @@ package() {
   install -d -m777 "${pkgdir}/opt/${pkgname}/materials"
 
   # create system wide writable directory for opencl shaders cache
-  install -d -m777 ${pkgdir}/opt/${pkgname}/cache/program_cache
+  install -d -m777 "${pkgdir}"/opt/${pkgname}/cache/program_cache
 
   # create system wide writable settings file
-  install -m666 ${_package_src_dir}/default_settings.xml ${pkgdir}/opt/${pkgname}/settings.xml
+  install -m666 ${_package_src_dir}/default_settings.xml "${pkgdir}"/opt/${pkgname}/settings.xml
 
   # create system wide writable renders folder
-  install -d -m777 ${pkgdir}/opt/${pkgname}/renders
+  install -d -m777 "${pkgdir}"/opt/${pkgname}/renders
 }
 
 # vim:set ts=2 sw=2 et:
