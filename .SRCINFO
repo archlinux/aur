@@ -12,6 +12,7 @@ pkgbase = libdrm-nodocs-git
 	makedepends = ninja
 	depends = libpciaccess
 	provides = libdrm
+	provides = libdrm-git
 	conflicts = libdrm
 	source = libdrm::git://anongit.freedesktop.org/mesa/drm#branch=master
 	source = COPYING

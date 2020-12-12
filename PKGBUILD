@@ -14,7 +14,7 @@ depends=('libpciaccess')
 makedepends=('libxslt' 'meson' 'git' 'ninja')
 #checkdepends=('cairo' 'cunit')
 url="http://dri.freedesktop.org/"
-provides=('libdrm')
+provides=('libdrm' 'libdrm-git')
 conflicts=('libdrm')
 
 source=('libdrm::git://anongit.freedesktop.org/mesa/drm#branch=master'
