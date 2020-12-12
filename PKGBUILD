@@ -1,7 +1,7 @@
 # Maintainer: Franck Stauffer <franck.stauffer@monaco.mc>
 
 pkgname='chromium-extension-privacybadger'
-pkgver=2020.10.7
+pkgver=2020.12.10
 pkgrel=1
 pkgdesc="Block third party tracking in your browser"
 license=('GPL3')
@@ -10,7 +10,7 @@ url="https://privacybadger.org/"
 depends=('chromium')
 changelog=$pkgname.changelog
 source=("$pkgname-$pkgver.crx::https://www.eff.org/files/privacy_badger-$pkgver.crx")
-b2sums=('20a7aae4dda9e1dc3c6bb4968cee1552d2c1da1f31afac9e241de8ce07fd10a6c3e3fdcc136bb23fe93c369009b98a099b2a8c35a0d5a7627c175671a5466cef')
+b2sums=('aeea1dbb3e8cd8b7e75b599f83b099379f1e2a864711444495c665cf0843fba2f4b545ea21a14a9d0148cafa782dba3e0fd0763a3817b6e24db879cd7ef11dea')
 
 build() {
     echo "{ \"external_crx\": \"/usr/share/$pkgname/$pkgname.crx\", \"external_version\": \"$pkgver\" }" > pkehgijcmpdhfbdbbnkijodmdjhbjlgp.json
