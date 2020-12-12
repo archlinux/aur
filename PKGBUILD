@@ -20,7 +20,7 @@ pkgver() {
 }
 
 build() {
-    meson build wayland --buildtype='release' --prefix='/usr' --disable-documentation
+    meson build wayland --buildtype='release' --prefix='/usr' -Ddocumentation=false
 }
 
 #check() {
