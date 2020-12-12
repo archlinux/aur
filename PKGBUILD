@@ -6,7 +6,7 @@ pkgdesc="An adult game made for JOI's lovers"
 url="http://www.the-joi-database.com"
 license=('Unlicense')
 arch=('x86_64')
-depends=("unzip" "sudo")
+depends=("unzip")
 
 source=(
     "http://www.the-joi-database.com/downloads.php?version=game_versions/The%20joi%20Database%20${pkgver}-linux.zip&file_id=65&id=36"
