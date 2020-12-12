@@ -9,8 +9,7 @@ pkgbase = android-platform-30
 	depends = android-sdk-platform-tools
 	options = !strip
 	source = https://dl-ssl.google.com/android/repository/platform-30_r03.zip
-	sha1sums = e7c6280901dcfa511af098d67dd88c4dfcbc6ea2
-	sha384sums = 2ff53b95a4584f86ab06c5daaf8aabe6e8bb28eaa3cd2e4e06b9762959d84a0a331721eb3c6e39f49dd0691a961fa46c
+	sha256sums = c788380c4edcaf055f16a3d08fe137669376ef842b1f9711a78c28a29fdd9acf70942068511ecdbf7559891e7767da8c74613bc858ff0f86290a56d566ff29b3
 
 pkgname = android-platform-30
 

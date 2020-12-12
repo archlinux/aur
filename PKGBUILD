@@ -14,8 +14,7 @@ license=('custom')
 depends=('android-sdk' 'android-sdk-platform-tools')
 options=('!strip')
 source=("https://dl-ssl.google.com/android/repository/platform-${_apilevel}_${_rev}.zip")
-sha1sums=('e7c6280901dcfa511af098d67dd88c4dfcbc6ea2')
-sha384sums=('2ff53b95a4584f86ab06c5daaf8aabe6e8bb28eaa3cd2e4e06b9762959d84a0a331721eb3c6e39f49dd0691a961fa46c')
+sha256sums=('f3f5b75744dbf6ee6ed3e8174a71e513bfee502d0bc3463ea97e517bff68d84e')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/platforms/"
