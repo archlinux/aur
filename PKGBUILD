@@ -7,13 +7,13 @@
 _pkgname=testng
 pkgname=java-${_pkgname}
 pkgver=7.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A testing framework inspired by JUnit and NUnit'
 arch=('any')
 url="http://testng.org"
 license=('Apache')
-depends=('java-runtime')
-makedepends=('jdk8-openjdk' 'gradle')
+depends=('jdk8-openjdk')
+makedepends=('gradle')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cbeust/$_pkgname/archive/$pkgver.tar.gz")
 sha256sums=('337e78528755af7e39acc1b84cc6f7eaa0e24d843359491ae7fc57df8d331444')
 
