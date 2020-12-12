@@ -1,5 +1,5 @@
 pkgbase = goldjack
-	pkgdesc = Jackalizer for your images
+	pkgdesc = Jackalizer tool
 	pkgver = 20201210
 	pkgrel = 1.0
 	url = https://github.com/F48D1/goldjack
