@@ -2,7 +2,7 @@
 pkgname=sfarklib-git
 _gitname=sfArkLib
 pkgver=20200903
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for decompressing sfArk soundfonts."
 arch=(x86_64)
 url="https://github.com/raboof/sfArkLib"
