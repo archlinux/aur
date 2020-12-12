@@ -2,7 +2,7 @@
 pkgbase=skr
 pkgname=skr-git
 _gitname='skr'
-pkgver=r111.30fc142
+pkgver=r115.70fad82
 pkgrel=1
 pkgdesc="Low level key remapping"
 arch=('x86_64' 'arm' 'aarch64')
