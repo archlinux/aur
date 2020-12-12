@@ -1,6 +1,6 @@
 pkgbase = slurm-llnl
 	pkgdesc = Simple Linux Utility for Resource Management
-	pkgver = 20.11.0.1
+	pkgver = 20.11.1.1
 	pkgrel = 1
 	url = https://www.schedmd.com
 	arch = i686
@@ -33,13 +33,13 @@ pkgbase = slurm-llnl
 	source = slurmctld.service
 	source = slurmd.service
 	source = slurmdbd.service
-	source = https://github.com/SchedMD/slurm/archive/slurm-20-11-0-1.tar.gz
+	source = https://github.com/SchedMD/slurm/archive/slurm-20-11-1-1.tar.gz
 	sha512sums = 40aa91b02d8839ee94ae106de1ea675b0a79ba533f218afc87e909b5bbd38ce1135f54716094bf9384edc51409bfaeb0b7904cb387cbcbc8ad16befdafb8a5ab
 	sha512sums = 0f1c477be4a06fd6050afd7e4fd7d3524ce4dc9bec4e3f9bbfb0087660a29f76442139b659bc906029757646ac107e521a6b2ba120b5b2db49bc815f501fb581
 	sha512sums = f74dacaaffa35fa11a62bb9efa492bb4ef9b197748f28c15210f362382da27ec1dd88a57a48fc6807029c93c9033c82e11545ea36622c683ae7bd09970ef8710
 	sha512sums = a1c2478a049dc1c024d773a73f363da6c9106d9533137f919394e8213376cb9167c8fcca7b038d1c45c441a1adce4524ccb68b6dd269a1000aba11b84b5352d5
 	sha512sums = ae2d0275bc9e0aac15d0d1dd4913b70ed4d4032e76c9c6ffdeae345c55834219f6495429d1d1c9129779221d6d08bada1228ccdb1c671b05d4a92ed6088bf55c
 	sha512sums = 56459e20d7f2624a8e8dd2982693b257e65df22c3609d991afdc1b2f79adaefc0586a76fd5fdd7dc2bdd39b3af0c91f38ddc4b1139081968903450bc28aca304
-	sha512sums = 9a57f2610f7294ba6cd265746b874e32a7930100f30c0adf41d95b261787c441bdcacaa641f0b9785150b94fc7d6b5b7608ec618f668bffcae6f774752f17678
+	sha512sums = 4cd2afc87be1db378fa69d018275139b81c1712b200d0dc13dcbf0a5ee95a653744cd75614c1425dcb852be1c5029fa80d2fee9aec7db9dea5a45b603a09ea58
 
 pkgname = slurm-llnl
