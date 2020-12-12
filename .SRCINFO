@@ -1,6 +1,6 @@
 pkgbase = groonga
 	pkgver = 10.0.9
-	pkgrel = 4
+	pkgrel = 5
 	url = http://groonga.org/
 	arch = i686
 	arch = x86_64
@@ -29,5 +29,6 @@ pkgname = groonga
 	optdepends = arrow
 
 pkgname = groonga-doc
+	pkgdesc = Document for Groonga
 	arch = any
 

@@ -3,7 +3,7 @@
 pkgname=('groonga' 'groonga-doc')
 pkgver=10.0.9
 pkgbase=groonga
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 url="http://groonga.org/"
 license=('LGPL2.1')
@@ -33,7 +33,7 @@ build() {
 }
 
 package_groonga-doc() {
-    pkgsec="Document for Groonga"
+    pkgdesc="Document for Groonga"
     arch=('any')
 
     cd $srcdir/$pkgbase-$pkgver/doc
