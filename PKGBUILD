@@ -1,36 +1,21 @@
-# Maintainer: Wilson E. Alvarez <wilson.e.alvarez1@gmail.com>
+# Maintainer epsilonKNOT <epsilon.aur@epsilonKNOT.xyz>
 
-_gitname=uWebSockets
-pkgname=${_gitname,,}
-pkgver=0.14.8
+pkgbase=uwebsockets
+pkgname=uwebsockets
+pkgver=18.17.0
 pkgrel=1
-pkgdesc="µWS is one of the most lightweight, efficient & scalable WebSocket & HTTP server implementations available"
-#arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-arch=('i686' 'x86_64')
-url="https://github.com/uWebSockets/uWebSockets"
-depends=('openssl' 'make' 'zlib' 'libuv')
-makedepends=('cmake')
-license=('ZLib')
-conflicts=('uwebsockets')
-provides=('uwebsockets')
-replaces=('uwebsockets')
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('663a22b521c8258e215e34e01c7fcdbbd500296aab2c31d36857228424bb7675')
-#options+=(!strip)
+pkgdesc="Simple, secure & standards compliant web server for the most demanding of applications"
+url="https://github.com/uNetworking/uWebSockets"
+license=('Apache')
+arch=('any')
+source=( "${pkgname}-${pkgver}.tar.gz::https://github.com/uNetworking/uWebSockets/archive/v${pkgver}.tar.gz" )
+md5sums=('ae1dffd2fe19b78969c5b41d31e26310')
+depends=( usockets )
 
-build()
-{
-	cd "${srcdir}/${_gitname}-${pkgver}"
-	make $MAKEFLAGS
+package() {
+	cd "uWebSockets-${pkgver}"
+	mkdir -p "${pkgdir}"/usr/include/uWebSockets
+	cp -a src/. "${pkgdir}"/usr/include/uWebSockets
 }
 
-package()
-{
-	# Add the compiled library:
-	mkdir -p "${pkgdir}/usr/lib"
-	mv "${srcdir}/${_gitname}-${pkgver}/libuWS.so" "${pkgdir}/usr/lib"
-
-	# Add the headers:
-	mkdir -p "${pkgdir}/usr/include/uWS"
-	mv "${srcdir}/${_gitname}-${pkgver}/src/"*.h "${pkgdir}/usr/include/uWS"
-}
+#vim: syntax=sh
