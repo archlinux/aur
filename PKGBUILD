@@ -16,7 +16,7 @@ pkgname=vmware-workstation12
 pkgver=12.5.9
 _buildver=7535481
 _pkgver=${pkgver}_${_buildver}
-pkgrel=16
+pkgrel=17
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -117,8 +117,8 @@ sha256sums=(
 
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
-  '31de75b16d8442db671dff22816fd067876b443b4fe4ed8349bd4835be827e9d'
-  'd619d8a3f982fff0ce3f9cd6e6cb840767b2a70333e770367a1f87354f2b103d'
+  'bae8c731a9825d3d529df373a059d508cceff00f81b522675db51d3cdf32b5af'
+  'ba069b2d5b7a81d3648991444cf67945e31cab061dc089e5c44c78a37058d080'
 )
 options=(!strip emptydirs)
 
@@ -432,7 +432,7 @@ fi
     -e "s/@PKGVER@/$_pkgver/g" \
     -i "$dkms_dir/dkms.conf"
 
-  for module in vmmon vmnet; do # vmblock vmci vsock
+  for module in vmmon vmnet; do
     tar -xf "vmware-vmx/lib/modules/source/$module.tar" -C "$dkms_dir"
     msg "Patching $module module for DKMS"
     patch -p2 --read-only=ignore --directory="$dkms_dir/$module-only" < "$srcdir/$module.patch"

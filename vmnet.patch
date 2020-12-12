@@ -37,7 +37,7 @@
  	  MODULEBUILDDIR=$(MODULEBUILDDIR) postbuild
 --- a/vmnet/bridge.c
 +++ b/vmnet/bridge.c
-@@ -65,7 +65,7 @@ static inline void do_gettimeofday(struct timeval *tv)
+@@ -65,7 +65,7 @@
  #endif
  
  #if LOGLEVEL >= 4
@@ -46,7 +46,7 @@
  #endif
  
  typedef struct VNetBridge VNetBridge;
-@@ -636,7 +636,7 @@
+@@ -636,7 +636,7 @@ VNetBridgeReceiveFromVNet(VNetJack
  	 unsigned long flags;
  	 int i;
  
@@ -55,7 +55,7 @@
  
  	 clone->dev = dev;
  	 clone->protocol = eth_type_trans(clone, dev);
-@@ -696,7 +696,7 @@ VNetBridgeReceiveFromVNet(VNetJack        *this, // IN: jack
+@@ -696,7 +696,7 @@ VNetBridgeReceiveFromVNet(VNetJack
  
  	 netif_rx_ni(clone);
  #	 if LOGLEVEL >= 4
@@ -64,7 +64,7 @@
  #	 endif
        }
     }
-@@ -1661,12 +1661,11 @@ VNetBridgeReceiveFromDev(struct sk_buff *skb,         // IN: packet to receive
+@@ -1661,12 +1661,11 @@ VNetBridgeReceiveFromDev(struct sk_buff
  
  #  if LOGLEVEL >= 4
     {
@@ -83,7 +83,7 @@
  
 --- a/vmnet/procfs.c
 +++ a/vmnet/procfs.c
-@@ -137,6 +137,7 @@
+@@ -137,6 +137,7 @@ VNetProcShow(struct seq_file *p, // IN:
  }
  
  
@@ -91,7 +91,7 @@
  /*
   *----------------------------------------------------------------------
   *
-@@ -168,6 +169,7 @@
+@@ -168,6 +169,7 @@ static struct file_operations fops = {
     .release = single_release,
  };
  #endif
@@ -99,7 +99,7 @@
  
  
  /*
-@@ -203,7 +205,12 @@
+@@ -203,7 +205,12 @@ VNetProcMakeEntryInt(VNetProcEntry   *pa
        } else {
           ent->data   = data;
           ent->fn     = fn;
@@ -114,7 +114,7 @@
           *ret = ent;
 --- a/vmnet/userif.c
 +++ b/vmnet/userif.c
-@@ -84,11 +84,11 @@
+@@ -84,11 +84,11 @@ static int  VNetUserIfSetUplinkState(VNe
  extern unsigned int  vnet_max_qlen;
  
  #if COMPAT_LINUX_VERSION_CHECK_LT(3, 2, 0)
@@ -131,7 +131,7 @@
  #endif
  
  /*
-@@ -115,16 +115,7 @@
+@@ -115,16 +115,7 @@ UserifLockPage(VA addr) // IN
     struct page *page = NULL;
     int retval;
  
@@ -149,7 +149,7 @@
  
     if (retval != 1) {
        return NULL;
-@@ -152,16 +143,21 @@
+@@ -152,16 +143,21 @@ UserifLockPage(VA addr) // IN
   */
  
  static INLINE int
@@ -175,7 +175,7 @@
  
     *p = UserifLockPage(uAddr);
     if (*p == NULL) {
-@@ -173,7 +169,7 @@
+@@ -173,7 +169,7 @@ VNetUserIfMapPtr(VA uAddr,        // IN:
  }
  
  static INLINE int
@@ -184,7 +184,7 @@
                         struct page **p, // OUT: locked page
                         uint32 **ptr)    // OUT: kernel mapped pointer
  {
-@@ -218,7 +214,7 @@
+@@ -218,7 +214,7 @@ VNetUserIfSetupNotify(VNetUserIF *userIf
        return -EBUSY;
     }
  
@@ -193,7 +193,7 @@
                                          &pollPtr)) < 0) {
        return retval;
     }
-@@ -236,7 +232,7 @@
+@@ -236,7 +232,7 @@ VNetUserIfSetupNotify(VNetUserIF *userIf
        goto error_free;
     }
  
@@ -202,7 +202,20 @@
                                          &recvClusterPage,
                                          &recvClusterCount)) < 0) {
        goto error_free;
-@@ -594,20 +590,20 @@
+@@ -585,7 +581,12 @@ VNetCsumCopyDatagram(const struct sk_buf
+       return -EINVAL;
+    }
+ 
++#if COMPAT_LINUX_VERSION_CHECK_LT(5, 10, 0)
+    csum = csum_and_copy_to_user(skb->data + offset, curr, len, 0, &err);
++#else
++   csum = csum_and_copy_to_user(skb->data + offset, curr, len);
++   err = (csum == 0) ? -EFAULT : 0;
++#endif
+    if (err) {
+       return err;
+    }
+@@ -594,20 +595,26 @@ VNetCsumCopyDatagram(const struct sk_buf
     for (frag = skb_shinfo(skb)->frags;
  	frag != skb_shinfo(skb)->frags + skb_shinfo(skb)->nr_frags;
  	frag++) {
@@ -216,8 +229,14 @@
 -					 curr, frag->size, 0, &err);
 -	 compat_kunmap(frag->page);
 +	 vaddr = kmap(skb_frag_page(frag));
++#if COMPAT_LINUX_VERSION_CHECK_LT(5, 10, 0)
 +	 tmpCsum = csum_and_copy_to_user(vaddr + skb_frag_off(frag),
 +					 curr, skb_frag_size(frag), 0, &err);
++#else
++	 tmpCsum = csum_and_copy_to_user(vaddr + skb_frag_off(frag),
++					 curr, skb_frag_size(frag));
++	 err = (tmpCsum == 0) ? -EFAULT : 0;
++#endif
 +	 kunmap(skb_frag_page(frag));
  
  	 if (err) {
