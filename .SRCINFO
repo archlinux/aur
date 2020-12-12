@@ -20,4 +20,3 @@ pkgbase = uboot-tinkerboard
 	sha512sums = SKIP
 
 pkgname = uboot-tinkerboard
-
