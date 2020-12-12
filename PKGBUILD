@@ -2,7 +2,7 @@
 pkgname=orchis-kde-theme-git
 _gitname=Orchis-kde
 pkgver=r5.018fd0f
-pkgrel=1
+pkgrel=2
 pkgdesc="A materia Design theme for KDE Plasma desktop."
 arch=('any')
 url="https://github.com/vinceliuice/${_gitname}"
@@ -31,16 +31,16 @@ package() {
    mkdir -p "${pkgdir}/usr/share/wallpapers"
 
    # aurorae theme
-   cp -r "${srcdir}/${_gitname}/aurorae"/* "${pkgdir}/usr/share/aurorae/themes"
+   cp -r "${srcdir}/${_gitname}/aurorae"/*/ "${pkgdir}/usr/share/aurorae/themes"
    # kvantum theme
-   cp -r "${srcdir}/${_gitname}/Kvantum"/* "${pkgdir}/usr/share/Kvantum"
+   cp -r "${srcdir}/${_gitname}/Kvantum"/*/ "${pkgdir}/usr/share/Kvantum"
    # color scheme
    cp -r "${srcdir}/${_gitname}/color-schemes"/* "${pkgdir}/usr/share/color-schemes"
    # desktop theme
-   cp -r "${srcdir}/${_gitname}/plasma"/* "${pkgdir}/usr/share/plasma"
+   cp -r "${srcdir}/${_gitname}/plasma"/*/ "${pkgdir}/usr/share/plasma"
    # look and feel
-   cp -r "${srcdir}/${_gitname}/wallpaper/${_themeName}" "${pkgdir}/usr/share/wallpapers"
+   cp -r "${srcdir}/${_gitname}/wallpaper/"*/ "${pkgdir}/usr/share/wallpapers"
    # sddm
-   cp -r "${srcdir}/${_gitname}/sddm/${_themeName}" "${pkgdir}/usr/share/sddm/themes"
+   cp -r "${srcdir}/${_gitname}/sddm/"*/ "${pkgdir}/usr/share/sddm/themes"
 
 }

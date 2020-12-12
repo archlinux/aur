@@ -1,7 +1,7 @@
 pkgbase = orchis-kde-theme-git
 	pkgdesc = A materia Design theme for KDE Plasma desktop.
 	pkgver = r5.018fd0f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinceliuice/Orchis-kde
 	arch = any
 	license = GPL3
