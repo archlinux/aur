@@ -3,8 +3,8 @@
 
 _pkgname='typepy'
 pkgname="python-${_pkgname}"
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc='Variable run time type checker/validator/converter'
 arch=('any')
 url='https://github.com/thombashi/typepy'
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('python' 'python-mbstrdecoder')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('a0850559dfd135577c6d565c0268fcad1327cab9c4c295015d4d882aa9a24786')
+sha256sums=('afec7feeac73d6b01fe6b23314edc17eaf8469f93783d2460c229068ae9dc588')
 
 build() {
   cd "${_pkgname}-${pkgver}"
