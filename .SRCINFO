@@ -1,0 +1,22 @@
+pkgbase = dyndnsc-git
+	pkgdesc = Dynamic DNS client with support for multiple protocols and services. Compatible with IPv6 dual stack. Git version
+	pkgver = 0.5.1.r24.g59ef5f9
+	pkgrel = 1
+	url = https://pypi.org/project/dyndnsc
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-requests
+	depends = python-setuptools
+	depends = python-netifaces
+	depends = python-dnspython
+	depends = python-daemonocle
+	provides = dyndnsc
+	conflicts = dyndnsc
+	source = git+https://github.com/infothrill/python-dyndnsc.git
+	source = dyndnsc.service
+	md5sums = SKIP
+	md5sums = 530304e7ce3c6463c0d0d053949ad5a9
+
+pkgname = dyndnsc-git
+
