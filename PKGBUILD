@@ -1,8 +1,8 @@
 # Maintainer: Vincent.Ducamps <aur@ducamps.win>
 pkgname=gnome-shell-extension-pop-shell
 pkgdesc="Pop Shell - Tiling window management in Gnome (WIP)"
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.1.0
+pkgrel=2
 _gitorg=pop-os
 _gitname=shell
 arch=(any)
@@ -29,6 +29,10 @@ build() {
 package() {
     cd "${srcdir}/${_dir}"
     make DESTDIR="${pkgdir}/" install
+	install -Dm644 schemas/org.gnome.shell.extensions.pop-shell.gschema.xml -t \
+		"$pkgdir/usr/share/glib-2.0/schemas"
+	install -Dm644 keybindings/*.xml -t \
+		"$pkgdir/usr/share/gnome-control-center/keybindings"
     install -Dm755 scripts/configure.sh "${pkgdir}/usr/share/gnome-shell/extensions/pop-shell@system76.com/scripts/configure.sh"
 }
 
