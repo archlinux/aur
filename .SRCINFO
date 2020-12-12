@@ -1,6 +1,6 @@
 pkgbase = orchis-theme-git
 	pkgdesc = A Material Design theme for GNOME/GTK based desktop environments.
-	pkgver = r12.d69d873
+	pkgver = r54.4086ba2
 	pkgrel = 1
 	url = https://www.pling.com/p/1357889
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = orchis-theme-git
 	depends = gtk-engine-murrine
 	depends = gtk3
 	depends = gnome-themes-extra
+	optdepends = kvantum-theme-orchis: Matching Kvantum theme
 	optdepends = tela-icon-theme: Recommended icon theme
 	optdepends = plank: for Plank theme
 	provides = orchis-theme
