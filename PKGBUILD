@@ -1,23 +1,21 @@
 # Maintainer: Hiroshi Hatake <cosmo0920.wp[at]gmail.com>
 
-pkgname=groonga
+pkgname=('groonga' 'groonga-doc')
 pkgver=10.0.9
-pkgrel=1
+pkgbase=groonga
+pkgrel=2
 pkgdesc="An opensource fulltext search engine."
 arch=('i686' 'x86_64')
 url="http://groonga.org/"
 license=('LGPL2.1')
-source=("http://packages.groonga.org/source/groonga/$pkgname-$pkgver.tar.gz"
+source=("http://packages.groonga.org/source/groonga/$pkgbase-$pkgver.tar.gz"
         "groonga-httpd.service")
-depends=('glib2' 'libedit' 'zeromq' 'autoconf-archive'
-         'libevent' 'mecab-ipadic' 'msgpack-c' 'ruby' 'snowball-c-git')
-optdepends=('cutter-test_framework' 'mercurial' 'kytea' 'arrow')
 
 build() {
     # TODO: Enable to build arrow on AArch64/armv7h
     # TODO: grpc 1.28+ is currently causing issues to build arrow.
     # Currently, this line should be specifying to disable using arrow.
-    cd $srcdir/$pkgname-$pkgver
+    cd $srcdir/$pkgbase-$pkgver
     ./configure --prefix=/usr \
     --localstatedir=/var \
     --sysconfdir=/etc \
@@ -35,12 +33,28 @@ build() {
     make
 }
 
-package() {
-    cd $srcdir/$pkgname-$pkgver
+package_groonga-doc() {
+    pkgsec="Document for Groonga"
+    depends=('groonga')
+
+    cd $srcdir/$pkgbase-$pkgver/doc
+
+    make DESTDIR="$pkgdir" install
+}
+
+package_groonga() {
+    depends=('glib2' 'libedit' 'zeromq' 'autoconf-archive'
+             'libevent' 'mecab-ipadic' 'msgpack-c' 'ruby' 'snowball-c-git')
+    optdepends=('cutter-test_framework' 'mercurial' 'kytea' 'arrow')
+
+    cd $srcdir/$pkgbase-$pkgver
     make DESTDIR="$pkgdir" install
 
     # cleanup
     rm -r "${pkgdir}/var/run"
+
+    # delete documents
+    rm -r "${pkgdir}/usr/share/doc"
 
     install -Dm644 ../groonga-httpd.service "$pkgdir"/usr/lib/systemd/system/groonga-httpd.service
 }

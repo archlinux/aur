@@ -1,11 +1,19 @@
 pkgbase = groonga
 	pkgdesc = An opensource fulltext search engine.
 	pkgver = 10.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://groonga.org/
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
+	source = http://packages.groonga.org/source/groonga/groonga-10.0.9.tar.gz
+	source = groonga-httpd.service
+	sha1sums = ded2b0fa47c53f348d15ebfe51e0e0cc4947b1ed
+	sha1sums = 56b68b5ebfc6785f08ce101b263d6f56acd74d8a
+	sha256sums = 33358afc3e978ce526792bb8508c6d77de046193845793a88c66a26d15563aa4
+	sha256sums = 4d3f91b40b37ab473b716c6c303c1e58ca7b3f777439fc4c055be80d04ffa65b
+
+pkgname = groonga
 	depends = glib2
 	depends = libedit
 	depends = zeromq
@@ -19,12 +27,7 @@ pkgbase = groonga
 	optdepends = mercurial
 	optdepends = kytea
 	optdepends = arrow
-	source = http://packages.groonga.org/source/groonga/groonga-10.0.9.tar.gz
-	source = groonga-httpd.service
-	sha1sums = ded2b0fa47c53f348d15ebfe51e0e0cc4947b1ed
-	sha1sums = 56b68b5ebfc6785f08ce101b263d6f56acd74d8a
-	sha256sums = 33358afc3e978ce526792bb8508c6d77de046193845793a88c66a26d15563aa4
-	sha256sums = 4d3f91b40b37ab473b716c6c303c1e58ca7b3f777439fc4c055be80d04ffa65b
 
-pkgname = groonga
+pkgname = groonga-doc
+	depends = groonga
 
