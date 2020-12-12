@@ -3,7 +3,7 @@
 pkgname=goldjack
 pkgver=20201210
 pkgrel=1.0
-pkgdesc='Jackalizer for your images'
+pkgdesc='Jackalizer tool'
 url='https://github.com/F48D1/goldjack'
 arch=('any')
 license=('GPL2')
