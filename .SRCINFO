@@ -1,0 +1,22 @@
+pkgbase = libdrm-nodocs-git
+	pkgdesc = Userspace interface to kernel DRM services, master git version
+	pkgver = 2.4.100.r68.g8a73372e
+	pkgrel = 1
+	url = http://dri.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = libxslt
+	makedepends = meson
+	makedepends = git
+	makedepends = ninja
+	depends = libpciaccess
+	provides = libdrm
+	conflicts = libdrm
+	source = libdrm::git://anongit.freedesktop.org/mesa/drm#branch=master
+	source = COPYING
+	sha512sums = SKIP
+	sha512sums = b0ca349b882a4326b19f81f22804fabdb6fb7aef31cdc7b16b0a7ae191bfbb50c7daddb2fc4e6c33f1136af06d060a273de36f6f3412ea326f16fa4309fda660
+
+pkgname = libdrm-nodocs-git
+
