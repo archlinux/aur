@@ -32,4 +32,3 @@ pkgname = linux-rockchip
 pkgname = linux-rockchip-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - ARMv7 multi-platform rockchip
 	conflicts = linux-headers
-
