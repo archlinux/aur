@@ -3,7 +3,7 @@
 
 pkgname=python-soco
 pkgver=0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple Python class that allows you to programmatically control Sonos speakers"
 arch=('any')
 url="https://github.com/SoCo/SoCo"
