@@ -1,0 +1,124 @@
+diff --git a/Makefile b/Makefile
+index 27f97ce..f8bf8d7 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,60 +1,59 @@
++DESTDIR ?=
++
++prefix ?=	/usr
++exec_prefix ?=	$(prefix)
++LIB ?=		lib
++libdir ?=	$(exec_prefix)/$(LIB)
++includedir ?=	$(exec_prefix)/include
++
++PKG_CONFIG ?=	pkg-config
++
++VERSION ?=	0.0
++LIBTARGET =	libusockets.so.$(VERSION)
++
++REQUIRES =
++COMMON_FLAGS =	-Isrc
++
+ # WITH_OPENSSL=1 enables OpenSSL 1.1+ support or BoringSSL
+ # For now we need to link with C++ for OpenSSL support, but should be removed with time
+ ifeq ($(WITH_OPENSSL),1)
+-	override CFLAGS += -DLIBUS_USE_OPENSSL
+-	# With problems on macOS, make sure to pass needed LDFLAGS required to find these
+-	override LDFLAGS += -lssl -lcrypto -lstdc++
+-else
+-	# WITH_WOLFSSL=1 enables WolfSSL 4.2.0 support (mutually exclusive with OpenSSL)
+-	ifeq ($(WITH_WOLFSSL),1)
+-		# todo: change these
+-		override CFLAGS += -DLIBUS_USE_WOLFSSL -I/usr/local/include
+-		override LDFLAGS += -L/usr/local/lib -lwolfssl
+-	else
+-		override CFLAGS += -DLIBUS_NO_SSL
+-	endif
++COMMON_FLAGS +=	-DLIBUS_USE_OPENSSL
++LDFLAGS +=	-lstdc++
++REQUIRES +=	libssl libcrypto
+ endif
+ 
+ # WITH_LIBUV=1 builds with libuv as event-loop
+ ifeq ($(WITH_LIBUV),1)
+-	override CFLAGS += -DLIBUS_USE_LIBUV
+-	override LDFLAGS += -luv
++COMMON_FLAGS +=	-DLIBUS_USE_LIBUV
++REQUIRES +=	libuv
+ endif
+ 
+-# WITH_GCD=1 builds with libdispatch as event-loop
+-ifeq ($(WITH_GCD),1)
+-	override CFLAGS += -DLIBUS_USE_GCD
+-	override LDFLAGS += -framework CoreFoundation
+-endif
++CFLAGS +=	-std=c11 $(COMMON_FLAGS)
++CXXFLAGS +=	-std=c++17 $(COMMON_FLAGS)
+ 
+-# WITH_ASAN builds with sanitizers
+-ifeq ($(WITH_ASAN),1)
+-	override CFLAGS += -fsanitize=address -g
+-	override LDFLAGS += -lasan
+-endif
+-
+-override CFLAGS += -std=c11 -Isrc
+-override LDFLAGS += uSockets.a
+-
+-# By default we build the uSockets.a static library
+ default:
+-	rm -f *.o
+-	$(CC) $(CFLAGS) -flto -O3 -c src/*.c src/eventing/*.c src/crypto/*.c
+-# For now we do rely on C++17 for OpenSSL support but we will be porting this work to C11
++	$(CC) $(CFLAGS) -fPIC -c src/*.c src/eventing/*.c src/crypto/*.c
+ ifeq ($(WITH_OPENSSL),1)
+-	$(CXX) $(CXXFLAGS) -std=c++17 -flto -O3 -c src/crypto/*.cpp
++	$(CXX) $(CXXFLAGS) -fPIC -c src/crypto/*.cpp
+ endif
+-	$(AR) rvs uSockets.a *.o
+-
+-# Builds all examples
+-.PHONY: examples
+-examples: default
+-	for f in examples/*.c; do $(CC) -flto -O3 $(CFLAGS) -o $$(basename "$$f" ".c") "$$f" $(LDFLAGS); done
+-
+-swift_examples:
+-	swiftc -O -I . examples/swift_http_server/main.swift uSockets.a -o swift_http_server
++	$(AR) rvs libusockets.a *.o
++	$(CC) -shared -o $(LIBTARGET) *.o -Wl,-soname,$(LIBTARGET) `$(PKG_CONFIG) --libs $(REQUIRES)` $(LDFLAGS)
++	sed -e "s:@PREFIX@:$(prefix):" -e "s:@REQUIRES@:$(REQUIRES):" \
++	-e "s:@LIB@:$(LIB):" -e "s:@VERSION@:$(VERSION):" libusockets.pc.in > libusockets.pc
++
++install:
++	install -d "$(DESTDIR)$(libdir)/pkgconfig" "$(DESTDIR)$(includedir)"
++	install -m 644 src/libusockets.h "$(DESTDIR)$(includedir)/"
++	install -m 755 $(LIBTARGET) "$(DESTDIR)$(libdir)"
++	ln -sf $(LIBTARGET) "$(DESTDIR)$(libdir)/libusockets.so"
++	install -m 755 libusockets.a "$(DESTDIR)$(libdir)/"
++	install -m 644 libusockets.pc "$(DESTDIR)$(libdir)/pkgconfig/"
+ 
+ clean:
+ 	rm -f *.o
+ 	rm -f *.a
++	rm -f *.so
+ 	rm -rf .certs
++	rm -f libusockets.pc
++
++.PHONY: default install clean
+diff --git a/libusockets.pc.in b/libusockets.pc.in
+new file mode 100644
+index 0000000..b818020
+--- /dev/null
++++ b/libusockets.pc.in
+@@ -0,0 +1,12 @@
++prefix=@PREFIX@
++libdir=${prefix}/@LIB@
++includedir=${prefix}/include
++
++Name: uSockets
++Version: @VERSION@
++Description: eventing, networking and crypto for async applications.
++URL: https://github.com/uNetworking/uSockets
++
++Cflags: -I${includedir}
++Libs: -L${libdir} -lusockets
++Requires.private: @REQUIRES@
