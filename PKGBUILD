@@ -1,28 +1,84 @@
-# Maintainer: Dmitry Kharitonov <darksab0r@gmail.com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Dmitry Kharitonov <darksab0r@gmail.com>
 # Contributor: Dave Blair <mail@dave-blair.de>
-
-pkgname=autokey
+pkgname=('autokey-common' 'autokey-gtk' 'autokey-qt')
+pkgbase=autokey
 pkgver=0.95.10
-pkgrel=1
-pkgdesc="AutoKey, a desktop automation utility for Linux and X11, updated to run on Python 3"
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/autokey/autokey"
-depends=('python' 'wmctrl' 'python-dbus' 'python-pyinotify'
-         'zenity' 'xautomation' 'imagemagick' 'xorg-xwd' 'python-xlib' 'python-setuptools'
-         'python-gobject' 'gtksourceview3' 'libnotify'
-         'libappindicator-gtk3' 'gtk-update-icon-cache')
-optdepends=('kdialog: for Qt interface'
-            'python-pyqt5: for Qt interface'
-            'python-qscintilla-qt5: for Qt interface'
-            'qt5-svg: for Qt interface'
-            'qt-at-spi: to work with KDE/Qt applications'
-            'python-atspi: for ATSPI in Gtk interface')
-replaces=('autokey-py3')
 license=('GPL3')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/autokey-py3/autokey/archive/v${pkgver}.tar.gz")
+makedepends=('python-setuptools' 'python-pyqt5')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/autokey/autokey/archive/v$pkgver.tar.gz")
 sha256sums=('e622ca04b3340f1ca0999bf03f05c9071a9f8aa3bc91c26c45c35509d63ff23d')
 
-package() {
-    cd "$srcdir/autokey-${pkgver}"
-    python setup.py install --root="$pkgdir" --optimize=1 
+build() {
+	cd "$pkgbase-$pkgver"
+	python setup.py build
+}
+
+package_autokey-common() {
+	pkgdesc="A desktop automation utility for Linux and X11 - common data"
+	depends=('python-pyinotify' 'python-xlib' 'python-dbus' 'wmctrl'
+	         'gtk-update-icon-cache' 'xautomation' 'imagemagick' 'xorg-xwd')
+	provides=("$pkgbase")
+	conflicts=("$pkgbase")
+
+	cd "$pkgbase-$pkgver"
+	export PYTHONHASHSEED=0
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip build
+
+	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
+	rm "$pkgdir/usr/bin/$pkgbase"{-qt,-gtk}
+	rm "$pkgdir$site_packages/$pkgbase/"{gtkapp.py,qtapp.py}
+	rm "$pkgdir$site_packages/$pkgbase/__pycache__/"{gtkapp*,qtapp*}
+	rm "$pkgdir/usr/share/man/man1/$pkgbase"{-gtk*,-qt*}
+	rm -rf "$pkgdir$site_packages/$pkgbase/"{gtkui,qtui}
+	rm -rf "$pkgdir/usr/share/applications"
+}
+
+package_autokey-gtk() {
+	pkgdesc="A desktop automation utility for Linux and X11 - GTK frontend"
+	depends=('autokey-common' 'python-gobject' 'gtksourceview3' 'libappindicator-gtk3'
+	         'libnotify' 'zenity')
+	optdepends=('python-atspi')
+	conflicts=("$pkgbase-qt")
+
+	cd "$pkgbase-$pkgver"
+	export PYTHONHASHSEED=0
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip build
+
+	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
+	rm "$pkgdir/usr/bin/$pkgbase"{-qt,-run,-shell}
+	rm "$pkgdir$site_packages/$pkgbase/"{common*,config*,__init__*,interface*,macro*,model*,monitor*,qtapp*,scripting*,service*}
+	rm "$pkgdir$site_packages/$pkgbase/__pycache__/"{common*,config*,__init__*,interface*,macro*,model*,monitor*,qtapp*,scripting*,service*}
+	rm "$pkgdir/usr/share/applications/$pkgbase-qt.desktop"
+	rm "$pkgdir/usr/share/man/man1/$pkgbase"{-qt*,-run*}
+	rm -rf "$pkgdir$site_packages/$pkgbase/"{iomediator,qtui}
+	rm -rf "$pkgdir$site_packages/"*.egg-info
+	rm -rf "$pkgdir/usr/share/icons"
+}
+
+package_autokey-qt() {
+	pkgdesc="A desktop automation utility for Linux and X11 - Qt frontend"
+	depends=('autokey-common' 'python-pyqt5' 'python-qscintilla-qt5' 'qt5-svg' 'kdialog')
+	optdepends=('qt-at-spi')
+	conflicts=("$pkgbase-gtk")
+
+	cd "$pkgbase-$pkgver"
+	export PYTHONHASHSEED=0
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip build
+
+	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
+	rm "$pkgdir/usr/bin/$pkgbase"{-gtk,-run,-shell}
+	rm "$pkgdir$site_packages/$pkgbase/"{common*,config*,gtkapp*,__init__*,interface*,macro*,model*,monitor*,scripting*,service*}
+	rm "$pkgdir$site_packages/$pkgbase/__pycache__/"{common*,config*,gtkapp*,__init__*,interface*,macro*,model*,monitor*,scripting*,service*}
+	rm "$pkgdir/usr/share/applications/$pkgbase-gtk.desktop"
+	rm "$pkgdir/usr/share/man/man1/$pkgbase"{-gtk*,-run*}
+	rm -rf "$pkgdir$site_packages/$pkgbase/"{iomediator,gtkui}
+	rm -rf "$pkgdir$site_packages/"*.egg-info
+	rm -rf "$pkgdir/usr/share/icons"
 }
