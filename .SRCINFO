@@ -1,8 +1,8 @@
 pkgbase = ddrescueview
 	pkgdesc = Graphical viewer for GNU ddrescue log files
-	pkgver = 0.4_alpha_3
+	pkgver = 0.4_alpha_4
 	pkgrel = 3
-	url = http://sourceforge.net/projects/ddrescueview
+	url = https://sourceforge.net/projects/ddrescueview
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -11,10 +11,9 @@ pkgbase = ddrescueview
 	depends = gtk2
 	provides = ddrescueview
 	conflicts = ddrescueview
-	source = https://downloads.sourceforge.net/project/ddrescueview/Test builds/v0.4 alpha 3/ddrescueview-source-0.4~alpha3.tar.xz
-	source = block.inspector.resize.block.input.field.patch
-	md5sums = c936b77ca781a0b7b082cf6a5e994be8
-	md5sums = 2f1fed9e38bfadf26cbc74283faa216e
+	source = https://downloads.sourceforge.net/project/ddrescueview/Test builds/v0.4 alpha 4/ddrescueview-source-0.4~alpha4.tar.xz
+	sha256sums = 8cf914da04f2004499f9af9429b38045c7148c6aff44be96fd3853c0a84d256c
+	b2sums = 81d8101b81d9fc8a3636a749356655e84ef868bf1c519392cf59851c3d6ea243905bd08f3cdc76f1db7195222f46efbd56702af0d162f8cafceb143c139d0515
 
 pkgname = ddrescueview
 
