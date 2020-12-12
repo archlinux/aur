@@ -3,8 +3,7 @@
 pkgname=('groonga' 'groonga-doc')
 pkgver=10.0.9
 pkgbase=groonga
-pkgrel=3
-pkgdesc="An opensource fulltext search engine."
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://groonga.org/"
 license=('LGPL2.1')
@@ -43,6 +42,7 @@ package_groonga-doc() {
 }
 
 package_groonga() {
+    pkgdesc="An opensource fulltext search engine."
     depends=('glib2' 'libedit' 'zeromq' 'autoconf-archive'
              'libevent' 'mecab-ipadic' 'msgpack-c' 'ruby' 'snowball-c-git')
     optdepends=('cutter-test_framework' 'mercurial' 'kytea' 'arrow')
