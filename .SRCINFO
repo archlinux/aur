@@ -1,7 +1,7 @@
 pkgbase = python-pythumbnailer
 	pkgdesc = Create static HTML galleries with thumbnails
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/somini/pythumbnailer/
 	arch = any
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = python-pythumbnailer
 	depends = python-argparse-utils
 	depends = ffmpeg
 	source = https://files.pythonhosted.org/packages/source/p/pythumbnailer/pythumbnailer-0.4.2.tar.gz
-	sha256sums = 1d2e10d33837016e944750c526cc07775f90ab24e3c91dbd01ed5f965630ee69
+	sha256sums = 32be5940486f799e610d3410c2b0ae1c1e3ff92bb2ffc2708bacc98c415ac68e
 
 pkgname = python-pythumbnailer
 	depends = python
