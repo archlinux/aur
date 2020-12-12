@@ -1,7 +1,7 @@
 pkgbase = python-slixmpp
-	pkgdesc = An XMPP library written for Python 3.7 (SleekXMPP asyncio fork)
-	pkgver = 1.5.2
-	pkgrel = 5
+	pkgdesc = An XMPP library written for Python 3.7+ (SleekXMPP asyncio fork)
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://lab.louiz.org/poezio/slixmpp
 	arch = x86_64
 	arch = armv7h
@@ -16,8 +16,7 @@ pkgbase = python-slixmpp
 	depends = python-pyasn1-modules
 	depends = python-aiohttp
 	options = !emptydirs
-	source = https://lab.louiz.org/poezio/slixmpp/-/archive/slix-1.5.2/slixmpp-slix-1.5.2.tar.gz
-	sha512sums = 3cef34f573c003352b19888c14986ec8fe694e5f21717c45931f1ef404c280bf791052c914ed4e46f06fe18103219a57e4e6ca2826d17ba30a344550ddaae1da
+	source = https://lab.louiz.org/poezio/slixmpp/-/archive/slix-1.6.0/slixmpp-slix-1.6.0.tar.gz
+	sha256sums = 050ed3f7c3b92c26171d619334b40d731c9189da8e8fbaf0543fd78f3ab2e322
 
 pkgname = python-slixmpp
-
