@@ -18,32 +18,24 @@ pkgver() {
   git describe --tags | sed 's/-/+/g'
 }
 
-prepare() {
-  cd libgudev
-  NOCONFIGURE=1 ./autogen.sh
-}
-
 #check() {
 #  cd libgudev
 #  make check
 #}
 
 build() {
-  cd libgudev
-  ./configure \
-    --prefix=/usr \
-    --enable-gtk-doc \
-    --disable-umockdev
-  sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  arch-meson libgudev build \
+    -D tests=disabled \
+    -D vapi=disabled \
+    -D gtk_doc=false
+  ninja -C build
 }
 
 package() {
   provides=(libgudev-1.0.so libgudev)
   conflicts=(libgudev)
 
-  cd libgudev
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
 }
 
 # vim:set ts=2 sw=2 et:
