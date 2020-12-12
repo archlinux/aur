@@ -1,18 +1,18 @@
 pkgname=nsight-graphics
-pkgver=2020.6
+pkgver=2020.6.1
 _pkgver=${pkgver//\./_}
 pkgrel=1
 pkgdesc="Standalone application for the debugging and profiling of graphics applications"
 arch=(x86_64)
 url="https://developer.nvidia.com/nsight-graphics"
 license=("custom")
-depends=("libx11" "libxcb" "nvidia")
+depends=("libx11" "libxcb" "NVIDIA-MODULE")
 source=("NVIDIA_Nsight_Graphics_${pkgver}.run::https://developer.nvidia.com/rdp/assets/nsight-graphics-${_pkgver}-linux-installer"
         "${pkgname}.png::http://developer.download.nvidia.com/NsightVisualStudio/3.1/Documentation/UserGuide/HTML/Content/Images/NSight_256.png"
         "${pkgname}.desktop")
-sha512sums=('d4b4034e88941024e594dc71ee58ce896ebb422e93aa3008149a2be805067b0baa76cbb57551a8d05281f1af85722718905808913348cd93deccda3c8c39dabb'
+sha512sums=('b5b11ed4ffcdd50caf049110eb638f227e4454e07b16e5cc887f16dcbdd1fc19495804a111e228a73f553c3b3cd2a0737cc146d320f970e64e2b435f6a36d7da'
             '784985c2bd3a053cee4887af3b960c7fdc041dda3ca71196ec0870d5413f646d542687b16bffe85985a46d70f68ccf7df29ed5e39952d5e553a4beec485a1185'
-            'e6ac4a16de65d8f82c0ac88f2445d9e2e57f6ea1597cc3c1a171d5c9d3d277e4e85140feceedfa6df84bafd837b57e2a252a9685c5dc43d2b5f72310fd9d8f21')
+            '6efb406dd53f76366fc3717b8605d4d63f568a203b94fcfe276889f3934b1dfd5f633582ddb8f6b8103365cd176042d831c384ec6c0f1c00fad2cd906988e3aa')
 replaces=('nsight')
 provides=('nsight')
 options=('!debug')

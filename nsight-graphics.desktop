@@ -1,7 +1,12 @@
 [Desktop Entry]
+Version=1.1
 Name=NVIDIA Nsight Graphics
 Exec=ngfx-ui
 Type=Application
 StartupNotify=true
 Icon=nsight-graphics
 Terminal=false
+Comment=Standalone application for the debugging and profiling of graphics applications
+Keywords=3d;debugging;graphics;nvidia;profiling;rendering;
+Categories=Development;
+
