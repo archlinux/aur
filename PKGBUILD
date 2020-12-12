@@ -1,16 +1,16 @@
-# Maintainer: Dan Elkouby <streetwalrus@codewalr.us>
+# Maintainer: Dan Elkouby <streetwalkermc@gmail.com>
 
 pkgname=libmpsse-python3-git
-pkgver=r19.688cf0d
-pkgrel=3
+pkgver=r22.e9ca7d8
+pkgrel=1
 pkgdesc="Open source library for SPI/I2C control via FTDI chips - Fixed for Python 3"
 arch=('x86_64')
-url="https://github.com/Streetwalrus/libmpsse"
+url="https://github.com/9ary/libmpsse"
 license=('BSD')
 depends=('libftdi')
 optdepends=('python: Python support')
 makedepends=('python' 'swig')
-source=("git+https://github.com/Streetwalrus/libmpsse.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
