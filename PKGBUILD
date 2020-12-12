@@ -64,14 +64,14 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.9.13
-pkgrel=2
+pkgver=5.9.14
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
 makedepends=(
-  bc kmod libelf
+  bc kmod libelf cpio perl tar xz
 )
 options=('!strip')
 _ckpatch="patch-5.9-ck${_ckpatchversion}"
@@ -91,9 +91,9 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('6b4e25173a7bb0836af25dc53609f5f9f248dde5963c3667127619d25e1860e6363c31bb2fed905af3dadae5659083f4f3a88051f29fa4195678e39b37171279'
+b2sums=('559dafc7d4f618ed6b00f0dce74b031c747d4435db5ac976a4b42f3e0c0c22da3ca7b38c77a44341221555adcb5612367b527bca70188c0903efce79fc4773c7'
         'SKIP'
-        '5b3de497c291d115c19e1856d08ae16f8ceb27061374deb763a4391b98c4aa7bd7e7afb0461c29d9245fba84b2827420104edd4902978dee2bda2c5738212b85'
+        'bf6569e0d54979484d4553f0a7fd57d413e48e7ef846bddd46a3e9c2a6f1fbd98ae043ffc1ba53f79ba2da67bf67d0dc5af6a0d0dd74ef3451f75e1cf0485e1c'
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
         'c19099ad66168db4608dee44e1913c07c035bc002a91267abc2e1eadf1788ddb5be3b17e3fdfeddcba96526dfa2b9fcc43a5dd0f8236d94c864e6477924a6718'
         'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95'
