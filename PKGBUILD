@@ -4,7 +4,7 @@
 
 pkgname=teleport-bin
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('x86_64' 'armv7')
 url="https://github.com/gravitational/teleport"
@@ -31,6 +31,7 @@ options=(!strip)
 
 package() {
     install -Dm644 ${srcdir}/teleport.service "${pkgdir}/usr/lib/systemd/system/teleport.service"
+    install -Dm644 ${srcdir}/teleport.service "${pkgdir}/usr/lib/systemd/system/teleport@.service"
     install -dm755 "${pkgdir}/etc/teleport"
 
     cd "${srcdir}/teleport"
