@@ -1,5 +1,4 @@
-# Maintainer: orhun <orhunparmaksiz@gmail.com>
-# https://github.com/orhun/pkgbuilds
+# Contributor: orhun <orhunparmaksiz@gmail.com>
 
 pkgname=silver
 pkgver=1.1.0
