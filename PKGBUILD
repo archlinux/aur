@@ -2,6 +2,10 @@
 # Contributor: MadPhysicist <jfoxrabinovitz at gmail dot com>
 
 # UTAX TA Triumph Adler printers TALinuxPackages-20141229.tar.gz are no longer included from 8.1404 to 8.1601
+# source = http://usa.kyoceradocumentsolutions.com/americas/jsp/upload/resource/27560/0/Kyocera%20Linux%20PPD%20Ver%208.1404.exe    4ed4db0e25daf989e36360351a8ba26e303b8483
+# source = http://usa.kyoceradocumentsolutions.com/americas/jsp/upload/resource/27560/0/Kyocera%20Linux%20PPD%20Ver%208.1404.tar.gz bb6a30802f3b945e023a3f1fcdf69e1b6f5fd92d
+# "Kyocera Linux PPD Ver 8.1404.tar.gz" 183530945
+# TALinuxPackages-20141229.tar.gz 85084682 16855339a3d6d01a61fd9bdb6f6ec4df 7112f6d4801a758e522921ee5d71f44bbf5eddfc
 # Most UTAX printers are available from https://www.utax.com/ https://www.utax.de/ https://www.utaxuk.co.uk/
 # UTAX file versions use kyofilter_B and are slightly older than the ones distributed by Kyocera
 
@@ -25,9 +29,17 @@ conflicts=('kyocera-ecosys-m2035dn' 'kyocera-ecosys-p6035cdn')
 options=('!strip')
 #install="${pkgname}.install"
 # https://downloads.kyoceradocumentsolutions.com.au/drivers/Drivers/KyoceraLinuxPackages-20141229.tar.gz # 8.1404
-source=("https://usa.kyoceradocumentsolutions.com/content/dam/kdc/kdag/downloads/technical/executables/drivers/kyoceradocumentsolutions/us/en/Kyocera_Linux_PPD_Ver_${pkgver}.tar.gz")
+#source=("https://cdn.kyostatics.net/dlc/eu/driver/all/linux_8_1602_ecosys.-downloadcenteritem-Single-File.downloadcenteritem.tmp/Linux_8.1602_EC..._P5021_5026.zip")
+#source=("https://usa.kyoceradocumentsolutions.com/content/dam/kdc/kdag/downloads/technical/executables/drivers/kyoceradocumentsolutions/us/en/Kyocera_Linux_PPD_Ver_${pkgver}.tar.gz")
+_srcdir="Kyocera_Linux_PPD_Ver_${pkgver}.tar.gz"
+source=("${_srcdir}::https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/${_srcdir//./_}.download.gz")
+md5sums=('23228956c4f4df8a57dca10c9d783b59')
 sha1sums=('ad7adba5e29464e9c3c1f052c6899d54f5afe0f4')
 sha256sums=('1375b67d4f79be0a02418cf8a03ea475e20ef92bf221fdb585f15a55c2d964e5')
+
+#_uagent='Mozilla'
+#_uagent='Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0'
+#DLAGENTS=("${DLAGENTS[@]//curl -/curl -A '${_uagent}' -}")
 
 prepare() {
   set -u
