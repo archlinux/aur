@@ -1,7 +1,7 @@
 # Maintainer: Dan Elkouby <streetwalrus@codewalr.us>
 pkgname=sfs-select
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A small tool to manage Steam Family Sharing"
 arch=('any')
 url="https://www.unix-ag.uni-kl.de/~t_schmid/sfs-select/"

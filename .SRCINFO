@@ -1,7 +1,7 @@
 pkgbase = sfs-select
 	pkgdesc = A small tool to manage Steam Family Sharing
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.unix-ag.uni-kl.de/~t_schmid/sfs-select/
 	arch = any
 	license = GPL3
