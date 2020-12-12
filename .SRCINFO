@@ -1,8 +1,8 @@
 pkgbase = mxnet
 	pkgdesc = Flexible and Efficient Library for Deep Learning
 	pkgver = 1.7.0
-	pkgrel = 1
-	url = http://mxnet.io/
+	pkgrel = 2
+	url = https://mxnet.apache.org/
 	arch = x86_64
 	license = Apache
 	makedepends = cblas
