@@ -1,0 +1,25 @@
+pkgbase = popcorntime-bin-ci
+	pkgdesc = A multi-platform, free software BitTorrent client that includes an integrated media player - latest dev build from CI artefact
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://popcorntime.app/
+	arch = x86_64
+	license = GPL3
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	depends = ttf-font
+	provides = popcorntime
+	provides = popcorntime-ce
+	conflicts = popcorntime
+	conflicts = popcorntime-ce
+	conflicts = popcorntime-bin
+	options = !strip
+	source = https://ci.popcorntime.app/job/Popcorn-Time-Desktop/lastSuccessfulBuild/artifact/build/Popcorn-Time-0.4.4_linux64.zip
+	source = popcorntime.desktop
+	sha256sums = SKIP
+	sha256sums = 4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334
+
+pkgname = popcorntime-bin-ci
+
