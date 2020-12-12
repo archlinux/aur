@@ -3,7 +3,7 @@
 pkgname=('groonga' 'groonga-doc')
 pkgver=10.0.9
 pkgbase=groonga
-pkgrel=2
+pkgrel=3
 pkgdesc="An opensource fulltext search engine."
 arch=('i686' 'x86_64')
 url="http://groonga.org/"
@@ -35,7 +35,7 @@ build() {
 
 package_groonga-doc() {
     pkgsec="Document for Groonga"
-    depends=('groonga')
+    arch=('any')
 
     cd $srcdir/$pkgbase-$pkgver/doc
 
