@@ -1,0 +1,18 @@
+pkgbase = libepoxy-nodocs-git
+	pkgdesc = Library handling OpenGL function pointer management
+	pkgver = 1.5.4+20+g34ecb90
+	pkgrel = 1
+	url = https://github.com/anholt/libepoxy
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = git
+	makedepends = meson
+	depends = glibc
+	provides = libepoxy
+	conflicts = libepoxy
+	source = git+https://github.com/anholt/libepoxy.git
+	sha256sums = SKIP
+
+pkgname = libepoxy-nodocs-git
+
