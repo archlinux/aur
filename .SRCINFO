@@ -1,7 +1,7 @@
 pkgbase = thrill-git
 	pkgdesc = Thrill is an EXPERIMENTAL C++ framework for algorithmic distributed Big Data batch computations on a cluster of machines.
 	pkgver = 12c5b59bc
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/thrill/thrill
 	arch = x86_64
@@ -11,8 +11,10 @@ pkgbase = thrill-git
 	conflicts = thrill
 	source = thrill::git+https://github.com/thrill/thrill.git
 	source = foxxll_CMakeLists.txt.patch
+	source = CMakeLists.txt.patch
 	sha256sums = SKIP
 	sha256sums = d6fae47a05ee842dbc68568f2da22de01d3f7035a2993bde54cd3dd8486750b4
+	sha256sums = 33904298e627307a145eb6e998ca931c87c1a6b039cafb6f6318562004b27a61
 
 pkgname = thrill-git
 

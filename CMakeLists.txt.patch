@@ -1,0 +1,16 @@
+*** src/thrill/thrill/CMakeLists.txt	2020-12-12 18:07:24.931331282 +0000
+--- CMakeLists.txt	2020-12-12 20:32:33.608554570 +0000
+***************
+*** 48,51 ****
+--- 48,58 ----
+  target_include_directories(thrill SYSTEM PUBLIC ${THRILL_INCLUDE_DIRS})
+  target_link_libraries(thrill ${THRILL_LINK_LIBRARIES})
+  
++ set(THRILL_HEADERS ${THRILL_SRCS})
++ list(FILTER THRILL_HEADERS INCLUDE REGEX "\\.hpp")
++
++ set_target_properties(thrill PROPERTIES PUBLIC_HEADER "${THRILL_HEADERS}")
++
++ INSTALL(TARGETS thrill LIBRARY DESTINATION lib PUBLIC_HEADER DESTINATION include/thrill)
++
+  ################################################################################
