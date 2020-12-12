@@ -1,14 +1,14 @@
 # Maintainer: Yurii Kolesykov <root@yurikoles.com>
-# based on testing/linux: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# based on core/linux: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-drm-next-git
 pkgdesc='Linux kernel with bleeding-edge GPU drivers'
-url='https://cgit.freedesktop.org/drm/drm'
+pkgver=5.11.968737.b10733527bfd
 _product="${pkgbase%-git}"
-_branch=drm-next
-pkgver=5.8.917195.66057dd1d1cf
+_branch="${_product#linux-}"
 pkgrel=1
 arch=(x86_64)
+url='https://cgit.freedesktop.org/drm/drm'
 license=(GPL2)
 makedepends=(
   bc kmod libelf pahole
@@ -18,17 +18,13 @@ makedepends=(
 options=('!strip')
 _srcname="${pkgbase}"
 source=(
-  "${_srcname}::git://anongit.freedesktop.org/drm/drm#branch=${_branch}"
+  "$_srcname::git://anongit.freedesktop.org/drm/drm#branch=${_branch}"
   config         # the main kernel config file
-  sphinx-workaround.patch
-  gcc10-early-boot-fix.patch
-  wno-maybe-initialized.patch
+  #sphinx-workaround.patch
 )
 sha256sums=('SKIP'
-            '623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e'
-            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '8c8fb0be88fcd767e8768ee1bde491e8b4de83f6a644e002019d1d5a0da920f9'
-            'b4e60ef20c47093ec47867439d057d936c6ba8384cc47a0d0737830c48bea63a')
+            'cf69b81648a07ebedb274ed26bed3c4d2ff75c6665ecaca0a724b148c70c9c7c')
+
 pkgver() {
   cd "${_srcname}"
   local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
@@ -73,7 +69,7 @@ build() {
   make htmldocs
 }
 
-_package-git() {
+_package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
@@ -100,7 +96,7 @@ _package-git() {
   rm "$modulesdir"/{source,build}
 }
 
-_package-headers-git() {
+_package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
 
   cd $_srcname
@@ -178,7 +174,7 @@ _package-headers-git() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-_package-docs-git() {
+_package-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel"
 
   cd $_srcname
@@ -197,10 +193,12 @@ _package-docs-git() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=("$pkgbase" "$_product-headers-git" "$_product-docs-git")
-for _p in "${pkgname[@]}"; do
-  eval "package_$_p() {
-    $(declare -f "_package${_p#$_product}")
-    _package${_p#$_product}
-  }"
+pkgname=("${_product}-git" "${_product}-headers-git" "${_product}-docs-git")
+for _package in "${pkgname[@]}"; do
+  local _package_no_git="${_package%-git}"
+  local _package_stripped="${_package_no_git#$_product}"
+  eval "package_${_package}() {
+  $(declare -f "_package${_package_stripped}")
+  _package${_package_stripped}
+}"
 done
