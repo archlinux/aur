@@ -1,0 +1,16 @@
+pkgbase = easyconnect-sdu
+	pkgdesc = Accessing SDU's network resources over vpn connection.
+	pkgver = 7.6.3.0.86415
+	pkgrel = 1
+	url = https://vpn.sdu.edu.cn/com/installClient.html
+	install = easyconnect-sdu.install
+	arch = x86_64
+	license = custom
+	conflicts = easyconnect
+	source = http://download.sangfor.com.cn/download/product/sslvpn/pkg/linux_01/EasyConnect_x64.deb
+	source = http://ftp.acc.umu.se/pub/GNOME/sources/pango/1.42/pango-1.42.4.tar.xz
+	md5sums = 6ed6273f7754454f19835a456ee263e3
+	md5sums = deb171a31a3ad76342d5195a1b5bbc7c
+
+pkgname = easyconnect-sdu
+
