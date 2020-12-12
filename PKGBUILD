@@ -1,5 +1,4 @@
-# Maintainer: orhun <orhunparmaksiz@gmail.com>
-# https://github.com/orhun/pkgbuilds
+# Contributor: orhun <orhunparmaksiz@gmail.com>
 
 pkgname=faint-git
 pkgdesc="Extensible TUI fuzzy file explorer (git)"
