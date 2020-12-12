@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0.0
+Name=Google Messages
+Comment=Send and recieve messages from your Android Phone
+Keywords=Message;Messaging;Android;SMS
+Exec=google-messages
+Icon=google-messages
+Terminal=false
+Type=Application
+Categories=Internet;Application;
+StartupWMClass=android-messages-nativefier-f3cfa3
