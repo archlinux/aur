@@ -135,7 +135,6 @@ build () {
        -D tools=[] \
        -D zstd=enabled \
        -D debug=false \
-       -D optimization=3 \
        -D b_pgo=off \
        -D microsoft-clc=disabled
        
