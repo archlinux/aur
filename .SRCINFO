@@ -8,9 +8,9 @@ pkgbase = the-joi-database
 	depends = unzip
 	noextract = The%20joi%20Database%200.0.3.5-linux.zip&file_id=65&id=36
 	source = http://www.the-joi-database.com/downloads.php?version=game_versions/The%20joi%20Database%200.0.3.5-linux.zip&file_id=65&id=36
-	source = https://pastebin.com/raw/WcHeqBnC
+	source = https://pastebin.com/raw/nQ6vZAyJ
 	sha256sums = 37658a3aca7eb060d8fcd2fdd8fc5b6a828e4723c119daf1e9826ac332eb07d8
-	sha256sums = 5b009aa6aae612d121a674e0445d52230861f3272bac4d8f3535741e5a6a8f81
+	sha256sums = 63e6e0d917635d93fe0c540f1e996971d1271031bbc695b8a05ce7f33657a82e
 
 pkgname = the-joi-database
 
