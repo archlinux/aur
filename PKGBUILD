@@ -5,7 +5,7 @@
 # Contributor: Felix Saparelli <me@passcod.name>
 
 pkgname=mongoose
-pkgver=6.18
+pkgver=7.0
 pkgrel=1
 pkgdesc="Easy to use, powerful, embeddable web server"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('openssl')
 url="https://github.com/cesanta/mongoose"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cesanta/mongoose/archive/${pkgver}.tar.gz")
-sha256sums=('f5c10346abc9c72f7cac7885d853ca064fb09aad57580433941a8fd7a3543769')
+sha256sums=('28206185873b5c448765f56e54d86a7af5a856b0b5f241aa44ac94bf34af7eee')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
