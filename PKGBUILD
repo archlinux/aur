@@ -2,13 +2,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sawfish-git
-pkgver=1.12.90.8.g93f35ecf
-pkgrel=2
+pkgver=1.12.90.17.g3e078042
+pkgrel=1
 pkgdesc='A window manager extensible using a Lisp-based scripting language.'
 arch=('i686' 'x86_64')
 url='http://sawfish.wikia.com'
 license=('GPL')
-depends=('libsm' 'librep-git' 'rep-gtk-git' 'libxtst')
+depends=('libsm' 'librep' 'rep-gtk' 'libxtst')
 makedepends=('git' 'gettext' 'emacs')
 optdepends=('emacs: for using sawfish.el')
 provides=('sawfish=1.11')
