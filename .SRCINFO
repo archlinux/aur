@@ -1,7 +1,7 @@
 pkgbase = wesnoth-1.12
 	pkgdesc = Turn-based strategy game on a fantasy world (oldstable)
 	pkgver = 1.12.6+dev
-	pkgrel = 11
+	pkgrel = 12
 	url = https://www.wesnoth.org
 	arch = i486
 	arch = i686
@@ -29,7 +29,7 @@ pkgbase = wesnoth-1.12
 	depends = dbus
 	depends = fribidi
 	options = !emptydirs
-	source = wesnoth-1.12-git::https://github.com/wesnoth/wesnoth.git#branch=1.12
+	source = wesnoth-1.12-git::git+https://github.com/wesnoth/wesnoth.git#branch=1.12
 	source = wesnoth-1.12.desktop
 	source = wesnothd-1.12.tmpfiles.conf
 	source = wesnothd-1.12.service
