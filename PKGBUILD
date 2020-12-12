@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.9.4.arch1
+pkgver=5.9.13.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -23,7 +23,7 @@ source=(
 	"sys-kernel_arch-sources-g14_files_0003-i8042-dmiids.patch" 
 	"sys-kernel_arch-sources-g14_files_0004-hid-asus-n-key.patch"
 	"sys-kernel_arch-sources-g14_files_6002-amdgpu-dm-kernel-5.8.patch"
-	"sys-kernel_arch-sources-g14_files_6004-apci_d3_fix.patch"
+	#"sys-kernel_arch-sources-g14_files_6004-apci_d3_fix.patch"
 	"sys-kernel_arch-sources-g14_files-6005-alsa-hda-ga401-ga502-experimental.patch"
 )
 validpgpkeys=(
@@ -33,18 +33,13 @@ validpgpkeys=(
 )
 
 sha256sums=('SKIP'
-            '457d5c9717048cd5334ba3d14dfb37699ac1d2c6dc2fd1df93adb487d6921f2f'
+            'cf69b81648a07ebedb274ed26bed3c4d2ff75c6665ecaca0a724b148c70c9c7c'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             'e924edb045476201968eb76157a72ddae7dac18932e54f0e3d32eeed98d2b2c6'
             '7c9bff35d0bde9b4250137ea9e5292a103ecbc1fe68a753688541d22be27fa29'
             'f934eb199172e3a16658eb0c66ee7a0ca37c69a9dd1ee4d20a37f89bd3c53288'
             'af68b47b81e5d361058e3293cf3c0b266af0fcdd2d4a5fb62468793e4cb903e4'
-            'bb502b035367b57319c2cc1a74ea3e8155003984d00b189badeec9c72429f3da'
-            'b8889a48d258d801d7a0b87665eb4b6c621e711a5d0e7a7c3cb7524349e5cbfc')
-
-
-
-
+            '46375e2f533f22c590b1d40d46022c15665429bbbeefde3289575a2b9378e304')
 
 
 export KBUILD_BUILD_HOST=archlinux

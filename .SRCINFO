@@ -1,6 +1,6 @@
 pkgbase = linux-g14
 	pkgdesc = Linux
-	pkgver = 5.9.4.arch1
+	pkgver = 5.9.13.arch1
 	pkgrel = 1
 	url = https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/
 	arch = x86_64
@@ -12,27 +12,25 @@ pkgbase = linux-g14
 	makedepends = xmlto
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.9.4-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.9.13-arch1
 	source = config
 	source = sphinx-workaround.patch
 	source = sys-kernel_arch-sources-g14_files_0002-asus-nb-wmi-add-support-for-GU502DU.patch
 	source = sys-kernel_arch-sources-g14_files_0003-i8042-dmiids.patch
 	source = sys-kernel_arch-sources-g14_files_0004-hid-asus-n-key.patch
 	source = sys-kernel_arch-sources-g14_files_6002-amdgpu-dm-kernel-5.8.patch
-	source = sys-kernel_arch-sources-g14_files_6004-apci_d3_fix.patch
 	source = sys-kernel_arch-sources-g14_files-6005-alsa-hda-ga401-ga502-experimental.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = 457d5c9717048cd5334ba3d14dfb37699ac1d2c6dc2fd1df93adb487d6921f2f
+	sha256sums = cf69b81648a07ebedb274ed26bed3c4d2ff75c6665ecaca0a724b148c70c9c7c
 	sha256sums = 8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c
 	sha256sums = e924edb045476201968eb76157a72ddae7dac18932e54f0e3d32eeed98d2b2c6
 	sha256sums = 7c9bff35d0bde9b4250137ea9e5292a103ecbc1fe68a753688541d22be27fa29
 	sha256sums = f934eb199172e3a16658eb0c66ee7a0ca37c69a9dd1ee4d20a37f89bd3c53288
 	sha256sums = af68b47b81e5d361058e3293cf3c0b266af0fcdd2d4a5fb62468793e4cb903e4
-	sha256sums = bb502b035367b57319c2cc1a74ea3e8155003984d00b189badeec9c72429f3da
-	sha256sums = b8889a48d258d801d7a0b87665eb4b6c621e711a5d0e7a7c3cb7524349e5cbfc
+	sha256sums = 46375e2f533f22c590b1d40d46022c15665429bbbeefde3289575a2b9378e304
 
 pkgname = linux-g14
 	pkgdesc = The Linux kernel and modules
