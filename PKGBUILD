@@ -2,7 +2,7 @@
 
 _name=gssapi
 pkgname=python-gssapi
-pkgver=1.6.11
+pkgver=1.6.12
 pkgrel=1
 pkgdesc="Python GSSAPI Wrapper"
 arch=(any)
@@ -11,7 +11,7 @@ license=("custom")
 depends=("python" "python-decorator" "krb5")
 makedepends=("python-setuptools")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=("18f0e7db1ec8b40179d4db2fa614b12e3980a4887d415ef27612a57252173c27")
+sha256sums=("16ed3b5d7fc37683be27f34a2a65062cb11d815d019bb2e89ffeb395576e51c8")
 
 build() {
   cd "$srcdir/$_name-$pkgver"

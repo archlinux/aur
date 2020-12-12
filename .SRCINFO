@@ -1,6 +1,6 @@
 pkgbase = python-gssapi
 	pkgdesc = Python GSSAPI Wrapper
-	pkgver = 1.6.11
+	pkgver = 1.6.12
 	pkgrel = 1
 	url = https://github.com/pythongssapi/python-gssapi
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-gssapi
 	depends = python
 	depends = python-decorator
 	depends = krb5
-	source = https://pypi.python.org/packages/source/g/gssapi/gssapi-1.6.11.tar.gz
-	sha256sums = 18f0e7db1ec8b40179d4db2fa614b12e3980a4887d415ef27612a57252173c27
+	source = https://pypi.python.org/packages/source/g/gssapi/gssapi-1.6.12.tar.gz
+	sha256sums = 16ed3b5d7fc37683be27f34a2a65062cb11d815d019bb2e89ffeb395576e51c8
 
 pkgname = python-gssapi
 
