@@ -72,7 +72,7 @@ build() {
     -D xcsecurity=true \
     -D xorg=true \
     -D xwayland=true \
-    -D xwayland_eglstream=true \
+    -D xwayland_eglstream=false \
     -D udev=true \
     -D suid_wrapper=false \
     -D xkb_dir=/usr/share/X11/xkb \
