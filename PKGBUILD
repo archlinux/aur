@@ -2,9 +2,9 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wlroots-hidpi-git
 pkgver=0.12.0.r96.g4c363a56
-pkgrel=1
+pkgrel=2
 license=(custom:MIT)
-pkgdesc='Modular Wayland compositor library, with XWayland HiDPI'
+pkgdesc='Modular Wayland compositor library, with XWayland HiDPI (git version)'
 url=https://github.com/swaywm/wlroots
 arch=(x86_64)
 provides=("wlroots-hidpi=${pkgver%%.r*}")
