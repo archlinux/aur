@@ -3,12 +3,12 @@
 
 pkgname=xorg-xwayland-hidpi-git
 pkgver=1.20.0.r795.gf95d81e88
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
 url="https://xorg.freedesktop.org"
-pkgdesc="run X clients under wayland"
+pkgdesc="Run X clients under Wayland, with HiDPI (git version)"
 depends=('nettle' 'libepoxy' 'systemd-libs' 'libxfont2' 
          'pixman' 'xorg-server-common')
 makedepends=('meson' 'git' 

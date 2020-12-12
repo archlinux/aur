@@ -1,7 +1,7 @@
 pkgbase = xorg-xwayland-hidpi-git
-	pkgdesc = run X clients under wayland
+	pkgdesc = Run X clients under Wayland, with HiDPI (git version)
 	pkgver = 1.20.0.r795.gf95d81e88
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org
 	arch = x86_64
 	groups = xorg
