@@ -1,0 +1,16 @@
+diff -Naur firefox-52.9.0esr.orig/memory/mozjemalloc/jemalloc.c firefox-52.9.0esr/memory/mozjemalloc/jemalloc.c
+--- firefox-52.9.0esr.orig/memory/mozjemalloc/jemalloc.c	2017-05-12 02:25:50.000000000 +0200
++++ firefox-52.9.0esr/memory/mozjemalloc/jemalloc.c	2020-12-12 22:13:48.502275579 +0100
+@@ -331,9 +331,9 @@
+ #endif
+ #include <sys/time.h>
+ #include <sys/types.h>
+-#if !defined(MOZ_MEMORY_SOLARIS) && !defined(MOZ_MEMORY_ANDROID)
+-#include <sys/sysctl.h>
+-#endif
++//#if !defined(MOZ_MEMORY_SOLARIS) && !defined(MOZ_MEMORY_ANDROID)
++//#include <sys/sysctl.h>
++//#endif
+ #include <sys/uio.h>
+ #ifndef MOZ_MEMORY
+ #include <sys/ktrace.h> /* Must come after several other sys/ includes. */
