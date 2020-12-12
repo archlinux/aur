@@ -1,0 +1,20 @@
+pkgbase = ha-connect-git
+	pkgdesc = App to connect to Home Assistant server web interface
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/The3DmaN/ha-connect
+	arch = any
+	license = GPL3
+	depends = git
+	depends = qt5-svg
+	depends = qt5-base
+	depends = qt5-webengine
+	depends = qt5-webview
+	depends = qt5-quickcontrols2
+	provides = ha-connect
+	conflicts = ha-connect
+	source = git+https://gitlab.com/The3DmaN/ha-connect.git
+	md5sums = SKIP
+
+pkgname = ha-connect-git
+
