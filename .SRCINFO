@@ -1,6 +1,6 @@
 pkgbase = web-xdg-open-git
 	pkgdesc = A smart browser that tries to open content in the appropriate xdg app before resorting to the browser
-	pkgver = 2.7
+	pkgver = 2.8
 	pkgrel = 1
 	url = https://github.com/mendess/web-xdg-open
 	arch = any
