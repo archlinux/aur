@@ -1,7 +1,7 @@
 pkgbase = unzip-iconv
 	pkgdesc = Unpacks .zip archives such as those made by PKZIP. With iconv patch for -O / -I goodness.
 	pkgver = 6.0
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.info-zip.org/UnZip.html
 	arch = i686
 	arch = x86_64
@@ -26,6 +26,7 @@ pkgbase = unzip-iconv
 	source = CVE-2019-13232_p2.patch::http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/CVE-2019-13232_p2.patch
 	source = CVE-2019-13232_p3.patch::http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/CVE-2019-13232_p3.patch
 	source = http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/fix-security-format.patch
+	source = http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/symlink.patch
 	sha256sums = 036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37
 	sha256sums = 1333a0d14e8f59c3a114764bf008ae489d386fd561130a60c1c7f2f4c9386b9b
 	sha256sums = 1a1390390402e674ef7b143705ade0e9aa082131bb9686e95fb7985310def885
@@ -42,6 +43,7 @@ pkgbase = unzip-iconv
 	sha256sums = 7c20c2889a17fd81c674b482c16e00159d64c6e5df357224461f4eb3a4e51c3d
 	sha256sums = 31a312410454738f994dc881c32b020b6051cfdf769bcc69f9f680428ea508fe
 	sha256sums = 035f179c634149158645bd54aa4bef270e7422af14e9693431e19a9219dbbeaa
+	sha256sums = ac5e55017484f62381c86e81b462ddbf1cb09bd3282289cfe4df804788e14d20
 
 pkgname = unzip-iconv
 
