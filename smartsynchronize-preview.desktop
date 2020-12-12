@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=SmartSynchronize preview
+Keywords=compare;merge;synchronize
+GenericName=File and Directory Compare
+Type=Application
+Categories=Development
+Terminal=false
+StartupNotify=true
+Exec=smartsynchronize-preview %f
+Icon=smartsynchronize
