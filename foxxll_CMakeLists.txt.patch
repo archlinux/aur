@@ -1,0 +1,19 @@
+*** src/thrill/extlib/foxxll/CMakeLists.txt	2020-12-12 18:07:40.834330158 +0000
+--- CMakeLists.txt	2020-12-12 18:09:34.745282128 +0000
+***************
+*** 507,513 ****
+  
+  # also copy the config file with build options!
+  install(FILES ${PROJECT_BINARY_DIR}/foxxll/config.hpp
+!   DESTINATION ${INSTALL_INCLUDE_DIR}/foxxll/)
+  
+  ###############################################################################
+  # prepare pkg-config file
+--- 507,513 ----
+  
+  # also copy the config file with build options!
+  install(FILES ${PROJECT_BINARY_DIR}/foxxll/config.hpp
+! 	DESTINATION ${FOXXLL_INSTALL_INCLUDE_DIR}/foxxll/)
+  
+  ###############################################################################
+  # prepare pkg-config file
