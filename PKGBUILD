@@ -9,7 +9,7 @@
 # Based on ffmpeg in [extra]
 
 pkgname=ffmpeg-svt-av1-git
-pkgver=4.4.r99362.gf8f23a7af7
+pkgver=4.4.r100402.g0320dab265
 pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video (with svt-av1; git version)'
 arch=(x86_64)
@@ -35,7 +35,6 @@ depends=(
   libiec61883
   libmfx
   libmodplug
-  libomxil-bellagio
   libpulse
   librav1e.so
   libraw1394
@@ -72,7 +71,9 @@ depends=(
   zlib
 )
 makedepends=(
+  amf-headers
   avisynthplus
+  clang
   ffnvcodec-headers
   git
   ladspa
@@ -86,6 +87,7 @@ optdepends=(
 )
 provides=(
   ffmpeg
+  ffmpeg-git
   libavcodec.so
   libavdevice.so
   libavfilter.so
@@ -128,7 +130,10 @@ build() {
     --disable-debug \
     --disable-static \
     --disable-stripping \
+    --enable-amf \
     --enable-avisynth \
+    --enable-cuda-llvm \
+    --enable-lto \
     --enable-fontconfig \
     --enable-gmp \
     --enable-gnutls \
@@ -172,7 +177,6 @@ build() {
     --enable-libxvid \
     --enable-nvdec \
     --enable-nvenc \
-    --enable-omx \
     --enable-shared \
     --enable-version3
 
