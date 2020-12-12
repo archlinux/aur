@@ -1,0 +1,5 @@
+kcm-grub2/
+src/
+pkg/
+*.pkg.*
+*.log
