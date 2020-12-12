@@ -4,7 +4,7 @@ pkgname='google-messages'
 pkgver=1.1.2
 pkgrel=1
 pkgdesc="A native-like OS X, Windows, & Linux desktop app for Google Messages"
-arch=('x86_64' 'i686' 'pentium4' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'pentium4' 'aarch64')
 url="https://www.messagesfordesktop.com/"
 license=('unknown')
 makedepends=('npm' 'nodejs')
@@ -25,8 +25,6 @@ package() {
 	    _INSTARCH='x64'
 	elif [ `uname -m` = "i686" ] || [ `uname -m` = "pentium4" ]; then
 	    _INSTARCH='ia32'
-	elif [ `uname -m` = "armv6h" ] || [ `uname -m` = "armv7h" ]; then
-	    _INSTARCH='arm'
 	elif [ `uname -m` = "aarch64" ]; then
 	    _INSTARCH='arm64'
 	else
