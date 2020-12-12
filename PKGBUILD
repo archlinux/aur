@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=kbs2-git
-pkgver=0.2.2.r4.g408fb12
+pkgver=0.2.4.r1.gd9fb0ac
 pkgrel=1
 pkgdesc="A secret manager backed by age (git)"
 arch=('x86_64')
@@ -35,7 +35,7 @@ package() {
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  "${pkgname%-git}" --completions bash | install -Dm 644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/${pkgname%-git}"
-  "${pkgname%-git}" --completions fish | install -Dm 644 /dev/stdin "${pkgdir}/usr/share/fish/completions/${pkgname%-git}.fish"
-  "${pkgname%-git}" --completions zsh | install -Dm 644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_${pkgname%-git}"
+  "target/release/${pkgname%-git}" --completions bash | install -Dm 644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/${pkgname%-git}"
+  "target/release/${pkgname%-git}" --completions fish | install -Dm 644 /dev/stdin "${pkgdir}/usr/share/fish/completions/${pkgname%-git}.fish"
+  "target/release/${pkgname%-git}" --completions zsh | install -Dm 644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_${pkgname%-git}"
 }
