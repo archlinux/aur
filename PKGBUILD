@@ -1,33 +1,51 @@
-# Maintainer: Felipe Weckx <felipe@weckx.net>
+# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Felipe Weckx <felipe@weckx.net>
 
-pkgname=libtelnet
-pkgver=0.21
-pkgrel=3
-pkgdesc="Simple RFC-complient TELNET implementation as a C library."
-url="http://github.com/seanmiddleditch/libtelnet"
-license=('custom')
+set -u
+pkgname='libtelnet'
+pkgver='0.23'
+pkgrel='1'
+pkgdesc='Simple RFC-complient TELNET implementation as a C library.'
 arch=('i686' 'x86_64')
+url='http://github.com/seanmiddleditch/libtelnet'
+license=('custom')
 depends=('zlib')
 makedepends=('make' 'patch' 'libtool' 'pkg-config' 'autoconf' )
-source=("https://github.com/seanmiddleditch/libtelnet/archive/${pkgver}.tar.gz"
-        libtelnet-autoconf-2.6.patch)
+_srcdir="${pkgname}-${pkgver}"
+source=(
+  "${_srcdir}.tar.gz::https://github.com/seanmiddleditch/libtelnet/archive/${pkgver}.tar.gz"
+)
+md5sums=('dd84c031f190c11d2db78b6c0c055f8e')
+sha256sums=('ef510d32f9131433cc4c8b6789e40087d515a187e55f8fdcd72a975c66d3a90b')
+
+prepare() {
+  set -u
+  cd "${_srcdir}"
+  set +u
+}
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 < ../libtelnet-autoconf-2.6.patch
-  libtoolize --force
-  autoreconf -i
-  ./configure --prefix=/usr
+  set -u
+  cd "${_srcdir}"
+  if [ ! -e 'ltmain.sh' ]; then
+    libtoolize --force
+  fi
+  if [ ! -s 'configure' ]; then
+    autoreconf -i
+  fi
+  if [ ! -s 'Makefile' ]; then
+    ./configure --prefix='/usr'
+  fi
   make
+  set +u
 }
 
 package(){
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  set -u
+  cd "${_srcdir}"
   make DESTDIR="${pkgdir}" install
 
-  install -d -m755 ${pkgdir}/usr/share/licenses/${pkgname}/
-  install -m644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/
+  install -Dm644 'COPYING' -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  set +u
 }
-
-md5sums=('73f66c693c23daa10bf65976f47b7f4b'
-         '8d860d0649aefbf455b6d6e6bde599a3')
+set +u
