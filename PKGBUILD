@@ -9,7 +9,7 @@
 
 pkgname=platformio
 pkgver=5.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
 url="https://github.com/platformio/platformio-core/"
@@ -33,4 +33,5 @@ sha256sums=('ec55d9ff9cd5f2874617c4fcc87360af177dcfbf0ac90bb14d38c14969d41c60')
 package() {
     cd "$srcdir/platformio-core-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
+    install -Dt "$pkgdir/usr/lib/udev/rules.d" "scripts/99-platformio-udev.rules"
 }

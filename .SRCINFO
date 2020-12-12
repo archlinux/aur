@@ -1,7 +1,7 @@
 pkgbase = platformio
 	pkgdesc = A cross-platform code builder and library manager
 	pkgver = 5.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/platformio/platformio-core/
 	arch = any
 	license = Apache
