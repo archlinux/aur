@@ -1,6 +1,6 @@
 pkgbase = ace
 	pkgdesc = Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems.
-	pkgver = 6.5.11
+	pkgver = 6.5.12
 	pkgrel = 1
 	url = https://github.com/DOCGroup/ACE_TAO/releases
 	arch = i686
