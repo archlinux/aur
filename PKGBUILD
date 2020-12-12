@@ -3,8 +3,8 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=akira-git
-pkgver=0.0.12.r3.gfb4735a
-pkgrel=2
+pkgver=0.0.13.r11.ga766d93
+pkgrel=1
 pkgdesc="Native Linux App for UI and UX Design built in Vala and Gtk"
 arch=(x86_64 aarch64)
 url="https://github.com/akiraux/Akira"
