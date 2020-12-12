@@ -1,0 +1,15 @@
+pkgbase = thrill-git
+	pkgdesc = Thrill is an EXPERIMENTAL C++ framework for algorithmic distributed Big Data batch computations on a cluster of machines.
+	pkgver = 12c5b59bc
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/thrill/thrill
+	arch = x86_64
+	license = BSD
+	provides = thrill
+	conflicts = thrill
+	source = thrill::git+https://github.com/thrill/thrill.git
+	sha256sums = SKIP
+
+pkgname = thrill-git
+
