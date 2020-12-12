@@ -1,7 +1,7 @@
 pkgbase = elmerfem
 	pkgdesc = A finite element software for multiphysical problems
 	pkgver = 8.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.elmerfem.org
 	arch = x86_64
 	license = GPL
@@ -17,8 +17,10 @@ pkgbase = elmerfem
 	options = !emptydirs
 	options = !makeflags
 	source = https://github.com/ElmerCSC/elmerfem/archive/release-8.4.tar.gz
+	source = ElmerIce.patch
 	source = elmerfem.desktop
 	sha256sums = cc3ce807d76798361592cc14952cdc3db1ad8f9bac038017514033ce9badc5b3
+	sha256sums = 90287c988ac4f5beedf5221e81f624799ec3253c63a30695e1873044ac5a6515
 	sha256sums = f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca
 
 pkgname = elmerfem
