@@ -1,7 +1,7 @@
 pkgbase = python-yoyo-migrations
 	pkgdesc = Database migrations with SQL
-	pkgver = 6.1.0
-	pkgrel = 4
+	pkgver = 7.2.1
+	pkgrel = 2
 	url = https://ollycope.com/software/yoyo/latest/
 	arch = any
 	license = Apache
@@ -9,8 +9,8 @@ pkgbase = python-yoyo-migrations
 	depends = python
 	depends = python-iniherit
 	depends = python-text-unidecode
-	source = https://files.pythonhosted.org/packages/source/y/yoyo-migrations/yoyo-migrations-6.1.0.tar.gz
-	sha256sums = 4538dbdfe4784c30bade14275558247ec8ce8111b4948dc38f51d4172f9d513c
+	source = https://files.pythonhosted.org/packages/source/y/yoyo-migrations/yoyo-migrations-7.2.1.tar.gz
+	sha256sums = 89b6d51e9fcc8f7b413ebfa99576d19a71c0a04a0917898e45ad02c711e5f0da
 
 pkgname = python-yoyo-migrations
 
