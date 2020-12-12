@@ -21,23 +21,21 @@ tox>=2.5.0,<3.0.0
 nose==1.3.7
 mock==1.3.0
 wheel==0.24.0
-docutils>=0.10,<0.16
 behave==1.2.5
 jsonschema==2.5.1
 
 #setup.py
 requires = [
     'jmespath>=0.7.1,<1.0.0',
-    'docutils>=0.10,<0.16',
     'python-dateutil>=2.1,<3.0.0',
 ]
 
 
 if sys.version_info[:2] == (3, 4):
     # urllib3 dropped support for python 3.4 in point release 1.25.8
-    requires.append('urllib3>=1.20,<1.25.8')
+    requires.append('urllib3>=1.25.4,<1.25.8')
 else:
-    requires.append('urllib3>=1.20,<1.26')
+    requires.append('urllib3>=1.25.4,<1.27')
 "
 }
 unset -f _fn_foobar
@@ -46,7 +44,7 @@ set -u
 _pyver="python"
 _pybase='botocore'
 pkgname="${_pyver}-${_pybase}-git"
-pkgver=1.17.44.r7044.g5986ae80c
+pkgver=1.19.35
 pkgrel=1
 pkgdesc='A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3'
 arch=('any')
@@ -56,8 +54,8 @@ _pydepends=( # See setup.py, README.rst, and requirements.txt for version depend
   # setup.py
   "${_pyver}-dateutil"'>=2.1' #,'<3.0.0'}
   "${_pyver}-jmespath"'>=0.7.1' #,'<1.0.0'}
-  "${_pyver}-docutils>=0.10"  #,'0.16'}
-  "${_pyver}-urllib3"'>=1.20' #,'<1.26'}
+  #"${_pyver}-docutils>=0.10"  #,'0.16'}
+  "${_pyver}-urllib3"'>=1.25.4' #,'<1.27'}
 
   # requirements.txt
   "${_pyver}-tox"'>=2.5.0' #,'<3.0.0'}
@@ -80,7 +78,8 @@ depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('07e902e82963b98af99606fc58f2d04dfec5b2768209477ac1642c4ee1550574')
+md5sums=('511f6efe69d9589cf32034f9ea3040ea')
+sha256sums=('94097e76158c6f7db0c6575cd8e4aae021a5bed8bd6a5a29f0cb8d46a98b30e9')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
