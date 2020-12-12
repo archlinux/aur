@@ -5,13 +5,14 @@
 
 pkgname=bubbleupnpserver
 pkgver=0.9.38
-pkgrel=1
+pkgrel=2
 pkgdesc="Stream content to Android devices over the Internet, requires UPNP/DNLA backend e.g. miniDLNA, Gerbera, Mediatomb"
 arch=(any)
 url="http://www.bubblesoftapps.com/bubbleupnpserver/"
 license=('custom:BubbleUPnP Server EULA')
 depends=('java-runtime-headless')
 optdepends=('ffmpeg: for transcoding')
+install=bubbleupnpserver.install
 # http://www.bubblesoftapps.com/bubbleupnpserver2/docs/changelog.html
 source=(
         launch.sh

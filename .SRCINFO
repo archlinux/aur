@@ -1,8 +1,9 @@
 pkgbase = bubbleupnpserver
 	pkgdesc = Stream content to Android devices over the Internet, requires UPNP/DNLA backend e.g. miniDLNA, Gerbera, Mediatomb
 	pkgver = 0.9.38
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bubblesoftapps.com/bubbleupnpserver/
+	install = bubbleupnpserver.install
 	arch = any
 	license = custom:BubbleUPnP Server EULA
 	depends = java-runtime-headless
