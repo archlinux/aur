@@ -2,9 +2,9 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=zps-git
-pkgdesc="A small utility for listing and reaping zombie processes (git)"
 pkgver=1.2.3.r0.g9d08c49
 pkgrel=3
+pkgdesc="A small utility for listing and reaping zombie processes (git)"
 arch=('x86_64')
 url="https://github.com/orhun/zps"
 license=('GPL3')
