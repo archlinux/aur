@@ -3,27 +3,24 @@
 #             jgottula
 _pkgname=kvdo
 pkgname=kvdo-dkms
-pkgrel=1
+pkgrel=2
 pkgver=6.2.4.26
-pkgdesc='A pair of kernel modules which provide pools of deduplicated and/or compressed block storage'
+pkgdesc='A pair of kernel modules which provide pools of deduplicated and/or compressed block storage (semi-official version for latest kernels)'
 arch=('x86_64')
-url="https://github.com/dm-vdo/kvdo"
+url="https://github.com/rhawalsh/kvdo"
 license=('GPL2')
 provides=('kvdo')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/dm-vdo/kvdo/archive/$pkgver.tar.gz"
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/rhawalsh/kvdo/archive/$pkgver-COPR.tar.gz"
         "dkms.conf"
-        "vla-warning.patch"
         "config_hz.patch")
-sha256sums=('7bb38310000bc7bc19e7f11875699392bfe8c6fb52c1828e7a7b9b7a27bc8ea4'
+sha256sums=('78f0a02aeb69d65010184d836ea3da2b2430cdd480cb58a4793fe4e980371924'
             '516f60bdb28f7a0cb6c8f1f84c656ee7c6aec8feb393538f227ed515372ac88a'
-            'a6b9a42ef6c0933ff02fe304f9ab627f045f83abc8ed33cf0b91522096cade0f'
             '8871d201fef0b4ae8ea4a3459e7a3b375b5d104df110dcbf56c8da929c68b946')
 
 package() {
   mkdir -p "$pkgdir"/usr/src
-  cp -r "$_pkgname-$pkgver" "$pkgdir"/usr/src/"$_pkgname-$pkgver"
+  cp -r "$_pkgname-$pkgver-COPR" "$pkgdir"/usr/src/"$_pkgname-$pkgver"
   cd "$pkgdir"/usr/src/kvdo-"$pkgver"
-  patch --forward --strip=1 -i "$srcdir"/vla-warning.patch
   patch --forward --strip=0 -i "$srcdir"/config_hz.patch
   cd "$srcdir"
   sed -e "s/@PKGVER@/${pkgver}/" dkms.conf > "$pkgdir"/usr/src/"$_pkgname-$pkgver"/dkms.conf
