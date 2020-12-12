@@ -77,6 +77,9 @@ package() {
 
   # create system wide writable renders folder
   install -d -m777 "${pkgdir}"/opt/${pkgname}/renders
+
+  # fix world readable bit
+  chmod -Rv og+r "$pkgdir/opt/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
