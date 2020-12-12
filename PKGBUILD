@@ -1,6 +1,6 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=sonobuoy
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='Diagnostic tool for Kubernetes clusters'
 arch=('x86_64')
@@ -12,16 +12,15 @@ optdepends=(
   'kubectl: advances workflows')
 makedepends=('go' 'git')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('973d80c1682e52e69c19104cc0080deccdf1ed800823fef4ad98bba3374cd8a2')
+sha256sums=('e64f6026087277d22f1cdc52cb7ff8bfb19ca3671ea6f882c2c1327675b07b9d')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  go mod download
+  go get -d
 }
 
 build() {
   local _commit _defines
-  # illegal packaging technique
   _commit=$(bsdcat "${pkgname}-${pkgver}.tar.gz" | git get-tar-commit-id)
   cd "${pkgname}-${pkgver}"
   export CGO_ENABLED=1

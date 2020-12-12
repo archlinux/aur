@@ -1,6 +1,6 @@
 pkgbase = sonobuoy
 	pkgdesc = Diagnostic tool for Kubernetes clusters
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/vmware-tanzu/sonobuoy
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = sonobuoy
 	depends = glibc
 	optdepends = docker: sonobuoy images subcommand
 	optdepends = kubectl: advances workflows
-	source = https://github.com/vmware-tanzu/sonobuoy/archive/v0.19.0/sonobuoy-0.19.0.tar.gz
-	sha256sums = 973d80c1682e52e69c19104cc0080deccdf1ed800823fef4ad98bba3374cd8a2
+	source = https://github.com/vmware-tanzu/sonobuoy/archive/v0.20.0/sonobuoy-0.20.0.tar.gz
+	sha256sums = e64f6026087277d22f1cdc52cb7ff8bfb19ca3671ea6f882c2c1327675b07b9d
 
 pkgname = sonobuoy
 
