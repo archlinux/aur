@@ -3,11 +3,12 @@
 
 pkgname=kbs2-bin
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A secret manager backed by age"
 arch=('x86_64')
 url="https://github.com/woodruffw/kbs2"
 license=('MIT')
+depends=('libx11')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}-linux-v${pkgver}.tar.gz")

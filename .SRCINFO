@@ -1,10 +1,11 @@
 pkgbase = kbs2-bin
 	pkgdesc = A secret manager backed by age
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/woodruffw/kbs2
 	arch = x86_64
 	license = MIT
+	depends = libx11
 	provides = kbs2
 	conflicts = kbs2
 	source_x86_64 = https://github.com/woodruffw/kbs2/releases/download/v0.2.4/kbs2-linux-v0.2.4.tar.gz
