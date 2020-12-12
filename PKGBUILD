@@ -29,9 +29,7 @@ build()
     tar xzf "mapsetverifier-$pkgver.tar.gz"
 
     # disable the built in updater because it always errors on linux
-    sed "218d" "$srcdir/mapsetverifier-$pkgver/resources/app/main.js" > "$srcdir/mapsetverifier-$pkgver/resources/app/main_edited.js"
-    rm "$srcdir/mapsetverifier-$pkgver/resources/app/main.js"
-    mv "$srcdir/mapsetverifier-$pkgver/resources/app/main_edited.js" "$srcdir/mapsetverifier-$pkgver/resources/app/main.js"
+    sed -i "218d" "$srcdir/mapsetverifier-$pkgver/resources/app/main.js"
 }
 
 package()
@@ -44,7 +42,7 @@ package()
     mkdir -p "$pkgdir/usr/share/pixmaps"
     install -m644 "$srcdir/mapsetverifier-$pkgver/resources/app/assets/64x64.png" "$pkgdir/usr/share/pixmaps/mapsetverifier.png"
 
-    # copy app files to /opt/mapsetverifier
+    # move app files to /opt/mapsetverifier
     mkdir -p "$pkgdir/opt"
     mv "$srcdir/mapsetverifier-$pkgver" "$pkgdir/opt/mapsetverifier"
 
