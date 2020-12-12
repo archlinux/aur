@@ -1,0 +1,29 @@
+diff --unified --recursive --text cuda-p1-0.22/Makefile cuda-pm1/Makefile
+--- cuda-p1-0.22/Makefile	2018-11-18 15:54:23.000000000 -0500
++++ cuda-pm1/Makefile	2020-12-12 12:45:54.812604717 -0500
+@@ -18,14 +18,14 @@
+ 
+ # Configure this line to specify which cuda architectures (compute capability) to target
+ # or leave all supported architectures for a bulky binary that supports all
+-CUDA_ARCHES = 30 32 35 50 52 53 60 61 62 70 75
++CUDA_ARCHES = 35 50 52 53 60 61 62 70 75 80 86
+ 
+ # Expand CUDA_ARCHES
+ NVCC_ARCHES += $(foreach CARCH, $(CUDA_ARCHES), -gencode arch=compute_$(CARCH),code=sm_$(CARCH))
+ 
+ # *Always* include PTX for the highest level supported by this version of NVCC, to
+ # future-proof the binary for new architectures
+-NVCC_ARCHES += -gencode arch=compute_75,code=compute_75
++NVCC_ARCHES += -gencode arch=compute_86,code=compute_86
+ 
+ # Use --ptxas-options -v to see register usage
+ # Use --maxrregcount to specify register usage
+@@ -40,7 +40,7 @@
+ # follow their defaults, the necessary files will be installed in your PATH and
+ # LDPATH. Otherwise, you'll need to manually insert their paths here.
+ 
+-LIBS = -lcufft -lcudart -lm src/mpir/.libs/libmpir.a src/mpir/.libs/libgmp.a
++LIBS = -L/opt/cuda/lib64/ -lcufft -lcudart -lm src/mpir/.libs/libmpir.a src/mpir/.libs/libgmp.a
+ LDFLAGS = $(COMMON_LDFLAGS) -fPIC -Wl,-O1 -Wl,--as-needed -Wl,--sort-common -Wl,--relax
+ DEBUG_LDFLAGS = $(COMMON_LDFLAGS) -fPIC
+ 

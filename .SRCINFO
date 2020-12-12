@@ -1,0 +1,19 @@
+pkgbase = cudapm1
+	pkgdesc = Program that implements the P-1 algorithm for factoring Mersenne numbers.
+	pkgver = 0.22
+	pkgrel = 1
+	url = https://mersenneforum.org/showthread.php?t=17835
+	arch = x86_64
+	license = GPL3
+	makedepends = cuda
+	makedepends = yasm
+	depends = nvidia
+	source = https://download.mersenne.ca/CUDAPm1/CUDAPm1-0.22-src.tar.gz
+	source = make.patch
+	md5sums = b7cf8f28438109edf3528d4d53802212
+	md5sums = 1996bf1d5510deb0456ad13c3a4d7834
+	sha256sums = c0a257bb4f92af64e73626cb36427ca5fe9c01e57f59b96c4970afe8f7ae64c2
+	sha256sums = SKIP
+
+pkgname = cudapm1
+
