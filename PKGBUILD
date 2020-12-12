@@ -2,7 +2,7 @@
 
 pkgname=('i915-vfe-bin')
 pkgver=5.9.0
-pkgrel=1
+pkgrel=2
 url="https://patchwork.freedesktop.org/patch/395580/?series=82783&rev=1"
 pkgdesc="Precompiled i915 driver patched to limit VFE threads based on GT"
 license=('MIT')
@@ -13,5 +13,5 @@ install=${pkgname}.install
 
 package(){
     install -Dm644 "${srcdir}/i915.ko" \
-    "${pkgdir}/lib/modules/$(uname -r)/extramodules/gpu/drm/i915/i915.ko"
+    "${pkgdir}/usr/lib/modules/$(uname -r)/extramodules/gpu/drm/i915/i915.ko"
 }
