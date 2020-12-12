@@ -18,19 +18,19 @@ pkgver() {
   cd  "$srcdir/$_gitname"
   git log -1 --format="%cd" --date=short | sed 's|-||g'
 }
+
 prepare() {
-    cd  "$srcdir/$_gitname"
-    sed -i 's:/usr/local/:/usr/:g' Makefile
+  cd  "$srcdir/$_gitname"
+  sed -i 's:/usr/local/:/usr/:g' Makefile
 }
+
 build() {
   cd "$srcdir/$_gitname"
   make
-
 }
 
 package() {
   cd "$srcdir/$_gitname"
-
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" PREFIX=/usr install
 }
 
