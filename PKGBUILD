@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-timepp-git
 _pkgname=timepp__gnome
-pkgver=8aa9b59
+pkgver=v3.34_57_g767aa8c
 pkgrel=1
 pkgdesc="A todo.txt manager, time tracker, timer, stopwatch, pomodoro, and alarm clock"
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --always --tags
+  git describe --always --tags | tr '-' '_'
 }
 
 package() {
