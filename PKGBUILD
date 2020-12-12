@@ -6,10 +6,10 @@
 pkgname=jdk11-openj9-bin
 _jdkver=11
 _jdkminor=0
-_jdkpatch=8
+_jdkpatch=9
 _jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch}
-_openj9ver=0.21.0
-_buildvershort=10
+_openj9ver=0.23.0
+_buildvershort=11
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_jdkfullver}b${_buildver//-/_}
 pkgrel=4
@@ -30,7 +30,7 @@ conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
 options=(!strip)
 source=("https://github.com/AdoptOpenJDK/openjdk${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/OpenJDK${_jdkver}U-jdk_x64_linux_openj9_${_jdkfullver}_${_buildver}.tar.gz")
 
-sha256sums=('9ab79436180d41809f4fca8afe43e778ae2d82c7b50f3653c62d7a2728150836')
+sha256sums=('812d58fac39465802039291a1bc530b4feaaa61b58664d9c458a075921ae8091')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 
