@@ -1,0 +1,34 @@
+pkgbase = freeoffice-next
+	pkgdesc = A complete, reliable, lightning-fast and Microsoft Office-compatible office suite with a word processor, spreadsheet, and presentation graphics software.
+	pkgver = 980
+	pkgrel = 1
+	url = http://www.freeoffice.com/
+	install = freeoffice.install
+	arch = x86_64
+	license = custom
+	makedepends = chrpath
+	depends = libxrandr
+	depends = libgl
+	depends = xdg-utils
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	depends = curl
+	provides = freeoffice
+	conflicts = freeoffice
+	source = http://www.softmaker.net/down/softmaker-freeoffice-980-amd64.tgz
+	source = freeoffice-textmaker
+	source = freeoffice-planmaker
+	source = freeoffice-presentations
+	source = freeoffice-textmaker.desktop
+	source = freeoffice-planmaker.desktop
+	source = freeoffice-presentations.desktop
+	sha256sums = 7ed11bb682e69ae5665682f42848cf75adce487b42f449bef9f12965108defa6
+	sha256sums = 0437328f3fddf93e18ad3df270971802c2e0fcaf3f030588c1301767a968da69
+	sha256sums = c90e2575c71f03f0b627e4f6c70f437b9c40e5878bf9f553a4244b4a1f6dbd3c
+	sha256sums = e6bc7608e58f44b55654c5d1fc93d442a400de638e2cbc6d5a3b3a8fbceaa0e4
+	sha256sums = 5068c61226553a04d7a9373e95fa77b0aac43b7abb45d17149464473162ebe47
+	sha256sums = 0b167897477e0914fcbafc40d188977daaff6df3ebda38f80feeab33c51d4e1e
+	sha256sums = 1c80fdb7cb4119cd08b892f033eb57a1b38bcc758f307c1621248009693f2f10
+
+pkgname = freeoffice-next
+
