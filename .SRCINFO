@@ -6,7 +6,6 @@ pkgbase = libgudev-nosystemd-git
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = gobject-introspection
-	makedepends = gtk-doc
 	makedepends = git
 	depends = glib2
 	depends = libglib-2.0.so

@@ -9,7 +9,7 @@ url="https://wiki.gnome.org/Projects/libgudev"
 arch=(x86_64)
 license=(LGPL2.1)
 depends=(glib2 libg{lib,object}-2.0.so libudev.so)
-makedepends=(gobject-introspection gtk-doc git)
+makedepends=(gobject-introspection git)
 source=("git+https://gitlab.gnome.org/GNOME/libgudev.git")
 sha256sums=('SKIP')
 
