@@ -1,7 +1,7 @@
 pkgbase = xps-home-end-keymappings-git
 	pkgdesc = xps-home-end-keymappings: make xps's amazing keymapping works in other keyboard
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = r23.b868650
+	pkgrel = 1
 	url = https://github.com/soraxas/xps-home-end-keymappings
 	arch = x86_64
 	license = GPL3
