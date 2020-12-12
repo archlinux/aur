@@ -31,7 +31,7 @@ pkgver()
 package()
 {
   cd "$srcdir/${pkgname%-git}"
-  install -Dm644 ha-connect.desktop "$pkgdir"/usr/share/applications/ha-connect.desktop
+  install -Dm644 HA-Connect.desktop "$pkgdir"/usr/share/applications/HA-Connect.desktop
   install -Dm644 images/ha-connect.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/ha-connect.svg
   
   install -Dm755 ha-connect "$pkgdir"/usr/bin/ha-connect-git
