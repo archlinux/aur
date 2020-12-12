@@ -3,7 +3,7 @@
 _pkgname=bilibilitool-dotnet
 pkgname=${_pkgname}-git
 pkgver=1.0.15.r0.gd23e87e
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform Bilibili daily task tool written in .Net 5"
 arch=('x86_64')
 url='https://github.com/RayWangQvQ/BiliBiliTool'
@@ -64,7 +64,7 @@ package() {
   -o "${pkgdir}/usr/lib/${_pkgname}"
   ln -s "/usr/lib/${_pkgname}/Ray.BiliBiliTool.Console" "${pkgdir}/usr/bin/${_pkgname}"
 
-  cd "${_pkgname}"
+  cd ../..
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${pkgdir}/usr/lib/${_pkgname}/appsettings.json" "${pkgdir}/etc/${_pkgname}/appsettings.json"
 }
