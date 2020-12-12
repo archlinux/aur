@@ -1,34 +1,28 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=python-usersettings
-pkgver=1.0.7
-pkgrel=4
-pkgdesc="Python module for easily managing persistent settings using an editable format and stored in an OS-appropriate location"
-arch=('any')
+pkgver=1.1.5
+pkgrel=1
+pkgdesc="Portable Local Settings Storage for Python "
+arch=("any")
 url="https://pypi.org/project/usersettings"
 license=("BSD")
 depends=("python" "python-appdirs")
 makedepends=("python-setuptools")
 source=(
-    "https://files.pythonhosted.org/packages/df/d3/b66294b2500f21fbeaa47e52bd5be90be3f2315e09bea2839ee0eeeb151b/usersettings-1.0.7.tar.gz"
-    "python3-compat.patch"
+    "https://files.pythonhosted.org/packages/c3/f0/48410545aa632941da8d2874a5db3dba4c43d5dd26790a46e14a6c283ec1/usersettings-1.1.5.tar.gz"
 )
 sha256sums=(
-    "c48c48f7bc1f00facc74da5ecfb6e1d95c66fc46d9e054c774958570f780d535"
-    "409b69dc535a380197635598ec86b14ee851b3cc8f41c6cc9d51297ce433cc08"
+    "9f84b282982622d8ebfd2d42b482317ae50fb2b3a7fba22e0b0c36cac61ad673"
 )
-
-prepare() {
-    cd "usersettings-${pkgver}"
-    patch < "${srcdir}/python3-compat.patch"
-}
 
 package() {
     cd "usersettings-${pkgver}"
+
     python setup.py install --root="${pkgdir}" --optimize=1
     for _file in $(ls -1 docs/*); do
-        install -Dm644 ${_file} "${pkgdir}/usr/share/doc/python-usersettings/$(basename ${_file})"
+        install -Dm644 "${_file}" "${pkgdir}/usr/share/doc/python-usersettings/$(basename ${_file})"
     done
-    install -dm755 "${pkgdir}/usr/share/licenses/python-usersettings"
-    mv "${pkgdir}/usr/share/doc/python-usersettings/LICENSE.txt" "${pkgdir}/usr/share/licenses/python-usersettings"
+
+    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-usersettings/LICENSE.txt"
 }
