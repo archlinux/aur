@@ -93,8 +93,8 @@ _opt_masterttypfx='px' # default px (this isn't very useful to users)
 
 set -u
 pkgname='trueport'
-pkgver='6.9.0_1'
-_dlver="${pkgver//_/-}"
+_dlver='6.10.0-1'
+pkgver="${_dlver//-/.}"
 #_dlver='6.8.0-2' # only use this with a version change patch set
 _srcdir="${pkgname}-${_dlver%%-*}"
 pkgrel='1'
@@ -113,7 +113,7 @@ options=('!docs' '!emptydirs' '!strip')
 install="${pkgname}-install.sh"
 _verwatch=('https://www.perle.com/downloads/server_ds_ts.shtml' '\s\+<a.*trueport-linux-tgz">\([^<]\+\)<.*' 'f')
 source=(
-  "https://www.perle.com/downloads/drivers/trueport/linux2.6/${pkgname}-${_dlver}.tgz"
+  "https://www.perle.com/downloads/drivers/trueport/linux/${pkgname}-${_dlver}.tgz"
   'tty_default_permissions.patch'
   #'trueport-patch-6.8.0-6.8.5.patch'
   # http://dpdk.org/dev/patchwork/patch/22003/ [dpdk-dev] kni: fix build with kernel 4.11 lib/librte_eal/linuxapp/kni/compat.h lib/librte_eal/linuxapp/kni/kni_dev.h
@@ -122,7 +122,9 @@ source=(
   # https://forum.manjaro.org/t/error-with-rtl8812au/24066
   #'trueport-patch-signal_pending-kernel-4-11.patch'
 )
-sha256sums=('299fd7781658f00a072dab48b188a856708b690381d6c1bb85a262222a07543c'
+md5sums=('5a529676de30706133255ba4e8dae5b0'
+         '56444e2f404aa2e6a2c9e8e2bd919fcf')
+sha256sums=('c21340a7523593da3e229b79cfbcf9e656772b2039e972dbca3947d138d55ffa'
             '28863731fd99e447dc456312ef33e40f93623b56da0d345e45f40e238ca49639')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
@@ -143,6 +145,7 @@ prepare() {
   #patch -Nup1 -i '../trueport-patch-6.8.0-6.8.5.patch'
 
   # insert parameters and make install script non interactive.
+  set +u; msg2 'Checking SSL with rpm_build'; set -u
   sed -e 's:^\(DONE\)=.*$:'"\1='done';SSL='${_opt_SSL}':g" \
       -e 's:^\(MAXINSTPORTS\)=.*$:'"DONE='done';MAXINSTPORTS='${_opt_MAXINSTPORTS}':g" \
     'tar_install.sh' | \
@@ -150,19 +153,25 @@ prepare() {
   sh -e -u -s -- 'rpm_build'
 
   sed -e '# Stripping symbols is the job of PKGBUILD. We need these for crash analysis.' \
-      -e '/install/ s:-s::g' \
+      -e '/install/ s:-s:  :g' \
       -e '# Try clang' \
       -e '#s:^CC=.*$:CC=clang:g' \
     -i 'Makefile'
 
-  # make clean for ptyx forgets a few things
-  sed -e 's:rm -f ptymod\.o:rm -f ptyx.mod.o ptyx.o ptymod.o:g' \
+  # switch to kernel clean
+  sed -e 's/^clean:.*$/clean:\n\t$(MAKE) -C $(KDIR) M=$$PWD clean\n\nold_&/g' \
       -e '# Switch SUBDIRS= to M= for Kernel 5.4' \
-      -e 's:SUBDIRS=:M=$(PWD) &:g' \
+      -e '#s:SUBDIRS=:M=$(PWD) &:g' \
+      -e '# Add back SUBDIRS for our detection' \
+      -e 's:M=\([^ ]\+\):& SUBDIRS=\1 :g' \
+      -e '# Remove cruft' \
+      -e 's:^bindir=:#&:g' \
+      -e '# Fix /lib' \
+      -e 's:/lib/modules:/usr&:g' \
     -i 'ptyx/Makefile'
 
   # Remove CRLF line endings from some files
-  sed -e 's:\r$::g' -i 'tp_ver.h' 'ptyx/ptyx.h'
+  sed -e 's:\r$::g' -i 'tp_ver.h' 'ptyx/ptyx.h' 'README'
 
   # Change the default ttys from tx and px (experimental)
   sed -e 's:\( fixed_ttyname,"\)px\(" \):'"\1${_opt_masterttypfx}\2:g" \
@@ -216,15 +225,16 @@ package() {
 
   # Fix postinstall to generate modprobe.conf. Stop after the first section.
   install -dm755 "${pkgdir}/etc/modprobe.d"
-  sed -e 's:/etc/modprobe:${DESTDIR}&:g' \
+  sed -e 's:/etc/modprobe:"${DESTDIR}"&:g' \
       -e 's:^if \[ -x /sbin/depmod:exit 0\n&:g' \
       -e '#s:-x /sbin/depmod:-x "/sbin/depmod":g' \
       -e '#s:/sbin/depmod -a:true:g' \
       -e '#s:^CHKCONFIG_BIN=""$:exit 0:g' \
-    'postinstall.sh' | \
+    'postinstall.sh' > 'postinstall.sh.Arch'
   MAXINSTPORTS="${_opt_MAXINSTPORTS}" \
   DESTDIR="${pkgdir}" \
-  sh -e -u -s --
+  sh -e -u 'postinstall.sh.Arch'
+  rm 'postinstall.sh.Arch'
 
   # Postinstall functions are either handled by our install or not valid with systemd
   rm -f "${pkgdir}/etc/trueport"/{postinstall.sh,uninstall.sh}
@@ -238,9 +248,6 @@ package() {
   # is loaded if no ports are configured. systemd stops the service if nothing forks.
   # Notify was the only way I could find to keep the service running.
   sed -e 's/[^a-z];;/systemd-notify --ready;;/' -i "${pkgdir}/etc/trueport/trueport"
-
-  # /lib is deprecated in Arch Linux
-  mv -f "${pkgdir}/lib" "${pkgdir}/usr/lib/"
 
   # systemd service
   install -Dm644 <(cat << EOF
@@ -295,7 +302,7 @@ EOF
         -e '# SUBDIRS makes more sense to me because I can see it in the Makefile!' \
         -e 's:^ifeq ($(KERNELRELEASE):ifeq ($(SUBDIRS):g' \
        -i "${_dkms}/ptyx/Makefile"
-    make -s -C "${_dkms}/ptyx/" clean
+    make -s -C "${_dkms}/ptyx/" KERNELRELEASE="$(uname -r)" clean
   fi
   set +u
 }
