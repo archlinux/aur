@@ -1,0 +1,15 @@
+pkgbase = tigercapture
+	pkgdesc = A screen capturing and uploading util
+	pkgver = 0.1
+	pkgrel = 0
+	url = https://github.com/tigermouthbear/tigercapture
+	arch = x86_64
+	license = GPLv3
+	makedepends = make
+	makedepends = cmake
+	makedepends = git
+	source = git://github.com/tigermouthbear/tigercapture.git
+	sha1sums = SKIP
+
+pkgname = tigercapture
+
