@@ -1,3 +1,78 @@
+From ff188f9cab8f1310fb91c984bc532fd42fe91671 Mon Sep 17 00:00:00 2001
+From: John Regan <john@jrjrtech.com>
+Date: Mon, 23 Nov 2020 08:02:44 -0500
+Subject: [PATCH 1/2] lua compatibility fixes
+
+fixes affected_rows always nil on Lua 5.2+
+
+fixes tests always failing on Lua 5.2+
+---
+ pgmoon/init.lua       | 2 +-
+ pgmoon/init.moon      | 2 +-
+ spec/pgmoon_spec.moon | 7 +++++--
+ 3 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/pgmoon/init.lua b/pgmoon/init.lua
+index 4ebe466..ebd1413 100644
+--- a/pgmoon/init.lua
++++ b/pgmoon/init.lua
+@@ -362,7 +362,7 @@ do
+       local command, affected_rows
+       if command_complete then
+         command = command_complete:match("^%w+")
+-        affected_rows = tonumber(command_complete:match("%d+%z$"))
++        affected_rows = tonumber(command_complete:match("(%d+)%z$"))
+       end
+       if row_desc then
+         if not (data_rows) then
+diff --git a/pgmoon/init.moon b/pgmoon/init.moon
+index c9f91a4..f1be491 100644
+--- a/pgmoon/init.moon
++++ b/pgmoon/init.moon
+@@ -330,7 +330,7 @@ class Postgres
+ 
+     if command_complete
+       command = command_complete\match "^%w+"
+-      affected_rows = tonumber command_complete\match "%d+%z$"
++      affected_rows = tonumber command_complete\match "(%d+)%z$"
+ 
+     if row_desc
+       return {} unless data_rows
+diff --git a/spec/pgmoon_spec.moon b/spec/pgmoon_spec.moon
+index 46af904..8cebec0 100644
+--- a/spec/pgmoon_spec.moon
++++ b/spec/pgmoon_spec.moon
+@@ -23,8 +23,11 @@ describe "pgmoon with server", ->
+       local pg
+ 
+       setup ->
+-        assert 0 == os.execute "dropdb -h '#{HOST}' -p '#{PORT}' --if-exists -U '#{USER}' '#{DB}'"
+-        assert 0 == os.execute "createdb -h '#{HOST}' -p '#{PORT}' -U '#{USER}' '#{DB}'"
++        r = { os.execute "dropdb -h '#{HOST}' -p '#{PORT}' --if-exists -U '#{USER}' '#{DB}'" }
++        assert 0 == r[#r]
++
++        r = { os.execute "createdb -h '#{HOST}' -p '#{PORT}' -U '#{USER}' '#{DB}'" }
++        assert 0 == r[#r]
+ 
+         pg = Postgres {
+           database: DB
+
+From 42773d45291258f809dfeb32146c34ccd690e0b0 Mon Sep 17 00:00:00 2001
+From: John Regan <john@jrjrtech.com>
+Date: Mon, 23 Nov 2020 08:04:42 -0500
+Subject: [PATCH 2/2] add new lua 5.3+ bit module
+
+---
+ pgmoon-dev-1.rockspec |  2 +-
+ pgmoon/bit.lua        | 55 ++++++++++++++++++++++++++
+ pgmoon/bit.moon       | 70 ++++++++++++++++++++++++++++++++
+ pgmoon/init.lua       |  2 +-
+ pgmoon/init.moon      |  3 +-
+ spec/pgmoon_spec.moon | 92 +++++++++++++++++++++++++++++++++++++++++++
+ 6 files changed, 221 insertions(+), 3 deletions(-)
+ create mode 100644 pgmoon/bit.lua
+ create mode 100644 pgmoon/bit.moon
+
 diff --git a/pgmoon-dev-1.rockspec b/pgmoon-dev-1.rockspec
 index 52f505e..f672764 100644
 --- a/pgmoon-dev-1.rockspec
@@ -156,7 +231,7 @@ index 0000000..f2a2cc6
 +}
 +
 diff --git a/pgmoon/init.lua b/pgmoon/init.lua
-index 4ebe466..9dce4c3 100644
+index ebd1413..9dce4c3 100644
 --- a/pgmoon/init.lua
 +++ b/pgmoon/init.lua
 @@ -3,7 +3,7 @@ local insert
@@ -168,17 +243,8 @@ index 4ebe466..9dce4c3 100644
    rshift, lshift, band = _obj_0.rshift, _obj_0.lshift, _obj_0.band
  end
  local unpack = table.unpack or unpack
-@@ -362,7 +362,7 @@ do
-       local command, affected_rows
-       if command_complete then
-         command = command_complete:match("^%w+")
--        affected_rows = tonumber(command_complete:match("%d+%z$"))
-+        affected_rows = tonumber(command_complete:match("(%d+)%z$"))
-       end
-       if row_desc then
-         if not (data_rows) then
 diff --git a/pgmoon/init.moon b/pgmoon/init.moon
-index c9f91a4..a21641d 100644
+index f1be491..a21641d 100644
 --- a/pgmoon/init.moon
 +++ b/pgmoon/init.moon
 @@ -1,6 +1,7 @@
@@ -190,12 +256,106 @@ index c9f91a4..a21641d 100644
  
  unpack = table.unpack or unpack
  
-@@ -330,7 +331,7 @@ class Postgres
+diff --git a/spec/pgmoon_spec.moon b/spec/pgmoon_spec.moon
+index 8cebec0..4116cc7 100644
+--- a/spec/pgmoon_spec.moon
++++ b/spec/pgmoon_spec.moon
+@@ -11,6 +11,98 @@ DB = "pgmoon_test"
+ psql = ->
+   os.execute "psql -h '#{HOST}' -p '#{PORT}' -U '#{USER}'"
  
-     if command_complete
-       command = command_complete\match "^%w+"
--      affected_rows = tonumber command_complete\match "%d+%z$"
-+      affected_rows = tonumber command_complete\match "(%d+)%z$"
- 
-     if row_desc
-       return {} unless data_rows
++describe "bit library compatibility", ->
++  import band, lshift, rshift from require "pgmoon.bit"
++
++  it "lshift works the same as luabitop", ->
++    assert 255 == lshift(0xff,0)
++    assert 65535 == lshift(0xffff,0)
++    assert 16777215 == lshift(0xffffff,0)
++    assert -1 == lshift(0xffffffff,0)
++    assert 65280 == lshift(0xff,8)
++    assert 16711680 == lshift(0xff,16)
++    assert -16777216 == lshift(0xff,24)
++    assert 255 == lshift(0xff,32)
++    assert 16776960 == lshift(0xffff,8)
++    assert -65536 == lshift(0xffff,16)
++    assert -16777216 == lshift(0xffff,24)
++    assert 65535 == lshift(0xffff,32)
++    assert -256 == lshift(0xffffff,8)
++    assert -65536 == lshift(0xffffff,16)
++    assert -16777216 == lshift(0xffffff,24)
++    assert 16777215 == lshift(0xffffff,32)
++    assert -256 == lshift(0xffffffff,8)
++    assert -65536 == lshift(0xffffffff,16)
++    assert -16777216 == lshift(0xffffffff,24)
++    assert -1 == lshift(0xffffffff,32)
++    assert 1 == lshift(1,0)
++    assert 256 == lshift(1,8)
++    assert 65536 == lshift(1,16)
++    assert 16777216 == lshift(1,24)
++    assert 1 == lshift(1,32)
++    assert -1 == lshift(-1,0)
++    assert -256 == lshift(-1,8)
++    assert -65536 == lshift(-1,16)
++    assert -16777216 == lshift(-1,24)
++    assert -1 == lshift(-1,32)
++
++  it "rshift works the same as luabitop", ->
++    assert 255 == rshift(0xff,0)
++    assert 65535 == rshift(0xffff,0)
++    assert 16777215 == rshift(0xffffff,0)
++    assert -1 == rshift(0xffffffff,0)
++    assert 0 == rshift(0xff,8)
++    assert 0 == rshift(0xff,16)
++    assert 0 == rshift(0xff,24)
++    assert 255 == rshift(0xff,32)
++    assert 255 == rshift(0xffff,8)
++    assert 0 == rshift(0xffff,16)
++    assert 0 == rshift(0xffff,24)
++    assert 65535 == rshift(0xffff,32)
++    assert 65535 == rshift(0xffffff,8)
++    assert 255 == rshift(0xffffff,16)
++    assert 0 == rshift(0xffffff,24)
++    assert 16777215 == rshift(0xffffff,32)
++    assert 16777215 == rshift(0xffffffff,8)
++    assert 65535 == rshift(0xffffffff,16)
++    assert 255 == rshift(0xffffffff,24)
++    assert -1 == rshift(0xffffffff,32)
++    assert 1 == rshift(1,0)
++    assert 0 == rshift(1,8)
++    assert 0 == rshift(1,16)
++    assert 0 == rshift(1,24)
++    assert 1 == rshift(1,32)
++    assert -1 == rshift(-1,0)
++    assert 16777215 == rshift(-1,8)
++    assert 65535 == rshift(-1,16)
++    assert 255 == rshift(-1,24)
++    assert -1 == rshift(-1,32)
++
++  it "band works the same as luabitop", ->
++    assert 0 == band(0xff,0)
++    assert 0 == band(0xffff,0)
++    assert 0 == band(0xffffff,0)
++    assert 0 == band(0xffffffff,0)
++    assert 255 == band(0xff,0xff)
++    assert 65535 == band(0xffff,0xffff)
++    assert 16777215 == band(0xffffff,0xffffff)
++    assert -1 == band(0xffffffff,0xffffffff)
++    assert 16777215 == band(0xffffffff,0xffffff)
++    assert 65535 == band(0xffffffff,0xffff)
++    assert 255 == band(0xffffffff,0xff)
++    assert 255 == band(0xff,-1)
++    assert 65535 == band(0xffff,-1)
++    assert 16777215 == band(0xffffff,-1)
++    assert -1 == band(0xffffffff,-1)
++    assert 0 == band(-1,0)
++    assert 255 == band(-1,0xff)
++    assert 65535 == band(-1,0xffff)
++    assert 16777215 == band(-1,0xffffff)
++    assert -1 == band(-1,0xffffffff)
++    assert -1 == band(-1,-1)
++    assert 255 == band(0xffffffffff,0xff)
++
++
+ describe "pgmoon with server", ->
+   setup ->
+     os.execute "spec/postgres.sh start"
