@@ -1,31 +1,27 @@
 pkgbase = python-peachpy-git
 	pkgdesc = Python framework for writing high-performance assembly kernels (git version)
-	pkgver = r362.01d1515
-	pkgrel = 3
+	pkgver = r371.84e60a5
+	pkgrel = 1
 	url = https://github.com/Maratyszcza/PeachPy/
 	arch = any
 	license = BSD
 	makedepends = git
-	makedepends = python
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-pip
 	makedepends = python-sphinx
-	makedepends = python2
-	makedepends = python2-setuptools
-	makedepends = python2-sphinx
-	makedepends = python2-enum34
 	makedepends = python-sphinx-bootstrap-theme
-	makedepends = python2-sphinx-bootstrap-theme
 	source = git+https://github.com/Maratyszcza/PeachPy.git
 	sha256sums = SKIP
 
 pkgname = python-peachpy-git
-	pkgdesc = Python3 framework for writing high-performance assembly kernels (git version)
 	depends = python
 	depends = python-six
+	provides = python-peachpy
+	conflicts = python-peachpy
 
-pkgname = python2-peachpy-git
-	pkgdesc = Python2 framework for writing high-performance assembly kernels (git version)
-	depends = python2
-	depends = python2-six
-	depends = python2-enum34
+pkgname = python-peachpy-doc-git
+	pkgdesc = Python framework for writing high-performance assembly kernels (documentation) (git version)
+	provides = python-peachpy-doc
+	conflicts = python-peachpy-doc
 
