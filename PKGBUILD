@@ -3,10 +3,11 @@
 
 pkgname=rshell
 pkgver=0.0.28
-pkgrel=1
+pkgrel=2
 pkgdesc="A remote shell for working with MicroPython boards."
 url="https://github.com/dhylands/rshell"
-depends=('python-pyudev' 'python-pyserial' 'python-setuptools')
+depends=('python-pyudev' 'python-pyserial')
+makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
