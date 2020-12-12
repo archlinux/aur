@@ -1,6 +1,6 @@
 # Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=awale
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="A free version of the classic african reflexion game."
 url="http://www.nongnu.org/awale/index.html"
@@ -15,7 +15,7 @@ backup=()
 install=
 source=("http://ftp.igh.cnrs.fr/pub/nongnu/awale/${pkgname}-${pkgver}.tar.gz")
 
-md5sums=('579709384f038b75f31e26e3e490f60b'
+md5sums=('9e7dcfcc5a658a1c97a7c7e7a679cc33'
          )
 
 build() {

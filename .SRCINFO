@@ -1,6 +1,6 @@
 pkgbase = awale
 	pkgdesc = A free version of the classic african reflexion game.
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = http://www.nongnu.org/awale/index.html
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = awale
 	depends = sdl
 	depends = tcl
 	depends = tk
-	source = http://ftp.igh.cnrs.fr/pub/nongnu/awale/awale-1.5.tar.gz
-	md5sums = 579709384f038b75f31e26e3e490f60b
+	source = http://ftp.igh.cnrs.fr/pub/nongnu/awale/awale-1.6.tar.gz
+	md5sums = 9e7dcfcc5a658a1c97a7c7e7a679cc33
 
 pkgname = awale
 
