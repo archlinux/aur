@@ -4,7 +4,7 @@ pkgname=goldjack
 pkgver=20201210
 pkgrel=1.0
 pkgdesc='Jackalizer tool'
-url='https://github.com/F48D1/goldjack'
+url='***@aur.archlinux.org:goldjack'
 arch=('any')
 license=('GPL2')
 
