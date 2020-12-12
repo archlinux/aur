@@ -1,0 +1,16 @@
+post_install()
+{
+	if [ ! -e /opt/nfs2se/fedata ] || [ ! -e /opt/nfs2se/gamedata ]; then
+		echo 'Copy the "gamedata" and "fedata" directories from original game CD-ROM to "/opt/nfs2se".'
+		echo 'You can also create a symlink for them from your home directory.'
+		echo 'Be sure that all files and directories have small letters!'
+		echo 'Please use the "/opt/nfs2se/convert_to_lowercase" script if you have UPPERCASE names.'
+		echo
+	fi
+	echo 'The configuration data is in "~/.nfs2se" directory (after first run).'
+}
+
+post_upgrade()
+{
+	post_install
+}
