@@ -6,7 +6,7 @@ _ltspice_ver="17"
 
 pkgname=ltspice
 pkgver=17.20201204.4
-pkgrel=1
+pkgrel=2
 pkgdesc="SPICE simulator, schematic capture and waveform viewer. Installation based on Field Update Utility."
 arch=('x86_64')
 url="http://www.linear.com/designtools/software/"
@@ -100,8 +100,11 @@ build() {
     release_logs="$_update_url/release.log.gz"
     
     curl $_curl_opts "$release_logs" | gunzip > ./release.log
-
+    
+    total=$(cat release.log | sed '/^#/d' | wc -l)
+    count=0
     echo "Checking cache and downloading using $N threads."
+    echo "Starting..."
     for entry in $(cat release.log | sed '/^#/d' | awk '{print $6"/"$8}')
     do
         file=$(echo $entry | awk -F/ '{print $2}' | sed 's/\\/\//g' | tr -d '\n\r')
@@ -109,11 +112,13 @@ build() {
         crc=$(echo $entry | awk -F/ '{print $1}')
         # download files from list, checking the CRC (something is still wrong with the CRC it seems)
         run_with_lock _download_file "$file" "$crc"
+        count=$((count+1))
+        echo -n -e "\033[1K\rDownload Progress: $count/$total ($file)"
     done
     
     wait
 
-    echo "Downloaded files."
+    echo "Downloaded all files!"
 }
 
 package()
