@@ -4,7 +4,7 @@
 pkgname=('peercoin-cli' 'peercoin-daemon' 'peercoin-qt' 'peercoin-tx')
 pkgbase='peercoin'
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A peer-to-peer network-based digital currency"
 arch=('x86_64')
 url="https://www.peercoin.net/"
@@ -13,14 +13,17 @@ depends=('boost-libs' 'db' 'libevent' 'miniupnpc' 'openssl' 'protobuf'
          'qrencode' 'qt5-base' 'zeromq')
 makedepends=('boost' 'qt5-tools')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/peercoin/peercoin/archive/v${pkgver}ppc.tar.gz"
+        'boost-placeholders.patch'
         'deque.patch'
         'QPainterPath.patch')
 b2sums=('c6b50d5c004216582d487e86470789bf3d146e2c42f8562e759fa65d2c3be72a03fe75f5dd2270da14ceb7538e499ad62cfe363ad66a0fddfc69d4ff4eb64ffc'
+        '94304cb1e6af66204b166ba875eee6e1fe590721ad1dd6521728f924695e6be69181bbe7dff09c1b7ae450f6a50d0bd9e3b99d78566250260cfbba4d978d284f'
         '980c8ab54178b254defeecb9f19ecbf9f5e7433d5206995adae1d432e448ac923334be46df644adc428057a8dec57a692636ab007b4b392ff3230bc1aec3de1a'
         '865befa6759a559b5764efc80ee626fe6ca7dc01b13d585a30f168c544d3e0d270cc3c8e3aec5fb8feaf2451ccf91eaaf9e88453538241e3b639e5160a7f737d')
 
 prepare() {
     cd "$pkgbase-${pkgver}ppc"
+    patch --strip 1 --input "$srcdir/boost-placeholders.patch"  # fix compilation error
     patch --strip 1 --input "$srcdir/deque.patch"  # fix compilation error
     patch --strip 1 --input "$srcdir/QPainterPath.patch"  # fix compilation error
 }
