@@ -15,7 +15,10 @@ source=(
 noextract=(
     "The%20joi%20Database%20${pkgver}-linux.zip&file_id=65&id=36"
 )
-sha256sums=('37658a3aca7eb060d8fcd2fdd8fc5b6a828e4723c119daf1e9826ac332eb07d8')
+sha256sums=(
+    '37658a3aca7eb060d8fcd2fdd8fc5b6a828e4723c119daf1e9826ac332eb07d8'
+    '5b009aa6aae612d121a674e0445d52230861f3272bac4d8f3535741e5a6a8f81'
+)
 
 prepare() {
     cd "${srcdir}"
