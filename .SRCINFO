@@ -1,6 +1,6 @@
 pkgbase = jellyamp-appimage
 	pkgdesc = A stylish, cross-platform desktop client for listening to music from a Jellyfin server. Inspired by Plexamp.
-	pkgver = 0.9.10
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/m0ngr31/jellyamp
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = jellyamp-appimage
 	depends = hicolor-icon-theme
 	provides = jellyamp
 	conflicts = jellyamp
-	noextract = jellyamp-appimage-0.9.10.AppImage
+	noextract = jellyamp-appimage-1.0.0.AppImage
 	options = !strip
-	source = jellyamp-appimage-0.9.10.AppImage::https://github.com/m0ngr31/jellyamp/releases/download/v0.9.10/Jellyamp-0.9.10-x86_64.AppImage
-	source = https://raw.githubusercontent.com/m0ngr31/jellyamp/v0.9.10/LICENSE
-	md5sums = ceeea24b804db2311bd4359c85e8f080
+	source = jellyamp-appimage-1.0.0.AppImage::https://github.com/m0ngr31/jellyamp/releases/download/v1.0.0/Jellyamp-1.0.0-x86_64.AppImage
+	source = https://raw.githubusercontent.com/m0ngr31/jellyamp/v1.0.0/LICENSE
+	md5sums = 3e125b2055e7435c76e48841cb799356
 	md5sums = f320c21f36aa4854c516c2393ba9de69
 
 pkgname = jellyamp-appimage
