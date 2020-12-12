@@ -7,7 +7,7 @@ pkgver=20.11.0.0rc2
 # Hyphens (-) are prohibited however they are used by the package author
 # therefore it is necessary to invoke ${pkgver} like ${pkgver//./-}
 # this will substitute any full stops (.) with hyphens
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Linux Utility for Resource Management (development version)"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://www.schedmd.com"
@@ -33,14 +33,15 @@ makedepends=('python' 'gtk2')
 provides=("slurm-llnl=${pkgver}")
 conflicts=('slurm-llnl')
 backup=('etc/default/slurm-llnl')
-install="${pkgname}.install"
-source=("slurm-tmpfiles.conf"
+source=("slurm-llnl.sysusers"
+	"slurm-llnl.tmpfiles"
 	"slurm-llnl-default-conf"
 	"slurmctld.service"
 	"slurmd.service"
 	"slurmdbd.service"
 	"https://github.com/SchedMD/slurm/archive/slurm-${pkgver//./-}.tar.gz")
-sha512sums=('61f07699353d607ec43bab2a4fe29b4a380dab10108619e67ca2737193ab044a6e263179f7def932660acefd34c790c9d2b301cd6a49d92b8b80deeb1c7b8011'
+sha512sums=('40aa91b02d8839ee94ae106de1ea675b0a79ba533f218afc87e909b5bbd38ce1135f54716094bf9384edc51409bfaeb0b7904cb387cbcbc8ad16befdafb8a5ab'
+            '0f1c477be4a06fd6050afd7e4fd7d3524ce4dc9bec4e3f9bbfb0087660a29f76442139b659bc906029757646ac107e521a6b2ba120b5b2db49bc815f501fb581'
             'f74dacaaffa35fa11a62bb9efa492bb4ef9b197748f28c15210f362382da27ec1dd88a57a48fc6807029c93c9033c82e11545ea36622c683ae7bd09970ef8710'
             'a1c2478a049dc1c024d773a73f363da6c9106d9533137f919394e8213376cb9167c8fcca7b038d1c45c441a1adce4524ccb68b6dd269a1000aba11b84b5352d5'
             'ae2d0275bc9e0aac15d0d1dd4913b70ed4d4032e76c9c6ffdeae345c55834219f6495429d1d1c9129779221d6d08bada1228ccdb1c671b05d4a92ed6088bf55c'
@@ -64,6 +65,9 @@ build() {
 
 	autoreconf
 	./configure \
+		--disable-developer \
+		--disable-debug \
+		--enable-optimizations \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
 		--sysconfdir=/etc/slurm-llnl \
@@ -101,7 +105,8 @@ package() {
 	install -D -m644 ../slurmctld.service   "${pkgdir}/usr/lib/systemd/system/slurmctld.service"
 	install -D -m644 ../slurmd.service      "${pkgdir}/usr/lib/systemd/system/slurmd.service"
 	install -D -m644 ../slurmdbd.service    "${pkgdir}/usr/lib/systemd/system/slurmdbd.service"
-	install -D -m644 ../slurm-tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/slurm-tmpfiles.conf"
+	install -D -m644 ../slurm-llnl.sysusers "${pkgdir}/usr/lib/sysusers.d/slurm-llnl.conf"
+	install -D -m644 ../slurm-llnl.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/slurm-llnl.conf"
 
 	# Create a log and a lib dir
 	install -d -m755 "${pkgdir}/var/log/slurm-llnl"
