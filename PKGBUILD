@@ -5,7 +5,7 @@
 
 _basename=zoom
 pkgname="$_basename-system-qt"
-pkgver=5.4.54779.1115
+pkgver=5.4.56259.1207
 pkgrel=1
 pkgdesc='Video Conferencing and Web Conferencing Service - system Qt libraries'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=('qt5-webengine: SSO login support'
 			'xcompmgr: extra compositor needed by some window managers for screen sharing')
 options=(!strip)
 source=("${pkgname}-${pkgver}_orig_x86_64.pkg.tar.xz"::"https://zoom.us/client/${pkgver}/zoom_x86_64.pkg.tar.xz")
-sha512sums=('08fca677506892dc7297e8e7bdfef8ef6fade9c8d271fc68dedbd69cd1a353f642bf214bd585cc46f5bd5a34c6401b3f16ceb881cd09bb70762670fd4f589e64')
+sha512sums=('4605fd402d39380fd168f5069d4373fdd715baf612d7fe1ea6e4c34705e1ce16501e06584d9ce357fb47e7a44993d759cfb89b376138f0cccddfd2d4011f18d9')
 
 package() {
 	cp -dpr --no-preserve=ownership opt usr "${pkgdir}"
