@@ -3,11 +3,12 @@
 
 pkgname=shy-git
 pkgver=0.1.10.r3.g25361d1
-pkgrel=2
+pkgrel=3
 pkgdesc="Bare-bones SSH launcher (git)"
 arch=('x86_64')
 url="https://github.com/xvxx/shy"
 license=('MIT')
+depends=('gcc-libs')
 makedepends=('rust' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
