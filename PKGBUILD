@@ -1,8 +1,8 @@
-# Maintainer: Francisco Lopes <francisco@oblita.com>
+# Maintainer: Tin Lai <oscar@tinyiu.com>
 pkgname=xps-home-end-keymappings-git
 _pkgname=xps-home-end-keymappings
-pkgver=1.0.0
-pkgrel=3
+pkgver=r23.b868650
+pkgrel=1
 pkgdesc="xps-home-end-keymappings: make xps's amazing keymapping works in other keyboard"
 arch=('x86_64')
 license=('GPL3')
@@ -12,8 +12,12 @@ makedepends=('gcc')
 source=("$_pkgname::git+https://github.com/soraxas/xps-home-end-keymappings.git")
 md5sums=("SKIP")
 
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
-    # gcc xps-home-end-keymappings.c -o xps-home-end-keymappings -I/usr/include/libevdev-1.0 -levdev -ludev
     cd "$srcdir/$_pkgname"
     make
 }
