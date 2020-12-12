@@ -13,7 +13,7 @@ optdepends=()
 source=('lib32-ffmpeg-steam-libx.path'
         'lib32-ffmpeg-steam-libx.service'
         'lib32-ffmpeg-steam.service')
-sha512sums=('5644ed41aed835627a941773ff7480d53332d7a6ed4ca27015f2783996e1ad0e'
+sha256sums=('5644ed41aed835627a941773ff7480d53332d7a6ed4ca27015f2783996e1ad0e'
             '7128cef1d717ec75c8b2ac39ed84ea87f074d06318a857b2d02cf0d9bd353027'
             '2dfb0a9f6ccce89d796a52223f092df656707aaca52be9962903a343183ecd05')
 
