@@ -2,7 +2,7 @@
 
 pkgname=touchegg
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Multitouch gesture recognizer"
 arch=('i686' 'x86_64')
 url="https://github.com/JoseExposito/touchegg/"
@@ -23,4 +23,6 @@ package() {
 	make -C build DESTDIR="$pkgdir" install
 
 	[ -d "$pkgdir/lib" ] && mv "$pkgdir/lib" "$pkgdir/usr/lib"
+
+	install -Dm644 "$srcdir/$pkgname-$pkgver/installation/touchegg.desktop" "$pkgdir/etc/xdg/autostart/touchegg.desktop"
 }
