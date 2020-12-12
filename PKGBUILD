@@ -4,7 +4,7 @@
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=lib32-libgudev-nosystemd-git
-pkgver=233
+pkgver=234
 pkgrel=1
 pkgdesc='GObject bindings for libudev'
 arch=(x86_64)
@@ -14,7 +14,7 @@ depends=(lib32-glib2)
 optdepends=('libgudev: 64bit support')
 makedepends=(
   git
-  gtk-doc
+#  gtk-doc
   python
 )
 provides=(libgudev-1.0.so lib32-libgudev)
@@ -27,32 +27,23 @@ pkgver() {
   git describe --tags | sed 's/-/+/g'
 }
 
-prepare() {
-  cd libgudev
-
-  NOCONFIGURE=1 ./autogen.sh
-}
-
 build() {
-  cd libgudev
-
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
-  ./configure \
+  arch-meson libgudev build \
     --prefix=/usr \
     --libdir=/usr/lib32 \
-    --localstatedir=/var \
-    --sysconfdir=/etc \
-    --disable-gtk-doc \
-    --disable-umockdev
-  sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+    -D tests=disabled \
+    -D vapi=disabled \
+    -D gtk_doc=false \
+    -D introspection=disabled
+  ninja -C build
 }
 
 package() {
-  make DESTDIR="${pkgdir}" -C libgudev install
+  DESTDIR="${pkgdir}" ninja -C build install
   rm -rf ${pkgdir}/usr/{include,share}
 }
 

@@ -1,12 +1,11 @@
 pkgbase = lib32-libgudev-nosystemd-git
 	pkgdesc = GObject bindings for libudev
-	pkgver = 233
+	pkgver = 234
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/libgudev
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = git
-	makedepends = gtk-doc
 	makedepends = python
 	depends = lib32-glib2
 	optdepends = libgudev: 64bit support
