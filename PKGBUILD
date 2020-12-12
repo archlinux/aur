@@ -12,14 +12,14 @@ _opt_JAVA=0
 # JAVA: 6-20170906: /usr/include/glib-2.0/glib/gmacros.h:232:53: error: size of array ‘_GStaticAssertCompileTimeAssertion_0’ is negative
 # JAVA: -m32 version is using 64 bit include files from /usr/lib instead of the proper include files in /usr/lib32
 _opt_SSP=1  # Stack Smashing Protection
-#_cloogver='0.18.4'  # comment out to disable
+_cloogver='0.18.4'  # comment out to disable
 
 set -u
-_pkgver='6.4'; _pkgver2='1'
-_snapshot='6-20181024'
+_pkgver='6.5'; _pkgver2='0'
+_snapshot='' # '6-20181024'
 pkgname="gcc${_pkgver%%.*}-multilib"
 pkgver="${_pkgver}.${_pkgver2}_${_snapshot#*-}"
-_islver='0.17'
+_islver='0.18'
 #_commit='4fc407888a30c5d953816b05c8a8e98ec2ab3101' # Pulling commits this big is too slow!
 pkgrel='1'
 pkgdesc="The GNU Compiler Collection for multilib (${_pkgver%%.*}.x)"
@@ -60,21 +60,36 @@ options=('!emptydirs' '!strip')
 source=(
   #"git+https://gcc.gnu.org/git/gcc.git#commit=${_commit}"
   #"gcc-${pkgver%%_*}.tgz::https://github.com/gcc-mirror/gcc/archive/${_commit}.tar.gz"
-  "http://mirrors.concertpass.com/gcc|snapshots/LATEST-6/gcc-${_snapshot}.tar.xz" # Please do not use a snapshot before it has been announced with a LATEST- symlink.
-  "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
+  #"http://www.netgull.com/gcc|snapshots/LATEST-6/gcc-${_snapshot}.tar.xz" # Please do not use a snapshot before it has been announced with a LATEST- symlink.
+  "https://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
+  #"http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
+  "https://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
+  'libsanitizer.patch'
 )
 if [ ! -z "${_cloogver:=}" ]; then
   source+=("http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz")
 fi
-sha256sums=('7608f5316c4af177166699aeb40cf41a977520857ef7ad571dc12a5e8e5d9a50'
-            '439b322f313aef562302ac162caccb0b90daedf88d49d62e00a5db6b9d83d6bb')
+md5sums=('edaeff1cc020b16a0c19a6d5e80dc2fd'
+         '11436d6b205e516635b666090b94ab32'
+         'b685d5d712adc38129cbe4fd426ed703'
+         'e531f725244856c92c9bba009ff44faf')
+sha256sums=('7ef1796ce497e89479183702635b14bb7a46b53249209a5e0f999bebf4740945'
+            '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
+            '82af0b240aba4e39f9dde630313dd620f6856e62343cbcae62c5310153821b65'
+            '325adf3710ce2229b7eeb9e84d3b539556d093ae860027185e7af8a8b00a750e')
+sha512sums=('ce046f9a50050fd54b870aab764f7db187fe7ea92eb4aaffb7c3689ca623755604e231f2af97ef795f41c406bb80c797dd69957cfdd51dfa2ba60813f72b7eac'
+            '85d0b40f4dbf14cb99d17aa07048cdcab2dc3eb527d2fbb1e84c41b2de5f351025370e57448b63b2b8a8cf8a0843a089c3263f9baee1542d5c2e1cb37ed39d94'
+            'e7861f77d54ac9bc12cfc6d3498a9bc284e72f728435c23866ac0763fb93e94e431d819c3def9f5aa03acbafc437141882e7b3746f4574ec6e5eb66b555cebb6'
+            'd35d67b08ffe13c1a010b65bfe4dd02b0ae013d5b489e330dc950bd3514defca8f734bd37781856dcedf0491ff6122c34eecb4b0fe32a22d7e6bdadea98c8c23')
 
-PKGEXT='.pkg.tar.gz' # Uncompressed: 1.3GB, gz=500MB 1.1 minutes, xz=275MB 9.5 minutes
+#PKGEXT='.pkg.tar.gz' # Uncompressed: 1.3GB, gz=500MB 1.1 minutes, xz=275MB 9.5 minutes
 
 if [ -n "${_snapshot:-}" ]; then
   _basedir="gcc-${_snapshot}"
 else
+  pkgver="${_pkgver}.${_pkgver2}"
   _basedir="gcc-${pkgver}"
+  source[0]="http://www.netgull.com/gcc|releases/gcc-${_pkgver}.${_pkgver2}/gcc-${_pkgver}.${_pkgver2}.tar.xz" # Please do not use a snapshot before it has been announced with a LATEST- symlink.
 fi
 
 #_libdir="usr/lib/gcc/${CHOST:-}/${pkgver%%_*}"
@@ -133,7 +148,7 @@ _setmirror() {
   fi
 }
 if [ "${source[0]//|/}" != "${source[0]}" ]; then
-  _setmirror
+  #_setmirror
   source[0]="${source[0]//|/\/}"
 fi
 unset -f _setmirror
@@ -142,7 +157,9 @@ prepare() {
   set -u
   cd "${_basedir}"
 
-  # link isl/cloog for in-tree builds
+  patch -Nup2 -i "${srcdir}/libsanitizer.patch"
+
+  # Link isl/cloog for in-tree builds
   ln -s "../isl-${_islver}" 'isl'
   if [ ! -z "${_cloogver}" ]; then
     ln -s "../cloog-${_cloogver}" 'cloog'
@@ -165,6 +182,9 @@ prepare() {
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -e '/^ac_cpp=/ s/\$CPPFLAGS/\$CPPFLAGS -O2/' -i {libiberty,gcc}/configure
+
+  # Arch uses python version 3 as default python (for gcc6-gcj).
+  sed -e '1s+python+python2+' -i 'libjava/contrib/aot-compile.in'
 
   # remove -V and -qversion as their aren't supported in gcc7
   sed -e 's/ -V -qversion/ /g' -i $(grep --include='configure' -lrFe '-V -qversion')
