@@ -1,11 +1,6 @@
 post_install() {
 	chmod +x /usr/bin/iicalc
 	pip3 install -r /usr/share/iicalc/requirements.txt
-	gcc -v 1> /dev/null 2> /dev/null
-	if [ "$?" == "0" ]
-	then
-		pip3 install python-Levenshtein
-	fi
 }
 
 post_upgrade() {
