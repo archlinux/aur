@@ -1,14 +1,14 @@
 pkgbase = edir
 	pkgdesc = Program to rename and remove files and directories using your editor
-	pkgver = 2.7.1
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://github.com/bulletmark/edir
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python>=3.5
-	source = edir-2.7.1.tar.gz::https://github.com/bulletmark/edir/archive/2.7.1.tar.gz
-	sha1sums = 19826361fdd1c91a24288956de8ba094f76811a9
+	source = edir-2.7.2.tar.gz::https://github.com/bulletmark/edir/archive/2.7.2.tar.gz
+	sha1sums = a77763cbe61abf838fe31c5cb87f5a9acf1a09f2
 
 pkgname = edir
 
