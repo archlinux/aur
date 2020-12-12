@@ -1,8 +1,8 @@
 pkgbase = goldjack
 	pkgdesc = Jackalizer tool
-	pkgver = 20201210
+	pkgver = 20201212
 	pkgrel = 1.0
-	url = https://github.com/F48D1/goldjack
+	url = https://github.com/F48D1/goldjack.git
 	arch = any
 	license = GPL2
 	makedepends = git
