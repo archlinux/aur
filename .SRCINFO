@@ -1,6 +1,6 @@
 pkgbase = pijul
 	pkgdesc = The sound distributed version control system
-	pkgver = 1.0.0_alpha.19
+	pkgver = 1.0.0_alpha.21
 	pkgrel = 1
 	url = https://pijul.org
 	arch = i686
