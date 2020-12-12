@@ -1,81 +1,49 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgbase=python-opcodes-git
-pkgname=('python-opcodes-git' 'python2-opcodes-git')
-_srcname=Opcodes
-_srcname2=python2-opcodes
+pkgname=('python-opcodes-git' 'python-opcodes-doc-git')
 pkgver=r179.6e2b0cd
-pkgrel=3
+pkgrel=4
 pkgdesc='Python module for instruction sets documentation in a format convenient for tools development (git version)'
 arch=('any')
 url='https://github.com/Maratyszcza/Opcodes/'
 license=('BSD')
-makedepends=(
-    # binary repositories:
-        'git' 'python' 'python-setuptools' 'python2' 'python2-setuptools'
-        'python-sphinx' 'python2-sphinx'
-    # AUR:
-        'python-sphinx-bootstrap-theme' 'python2-sphinx-bootstrap-theme'
-)
+makedepends=('git' 'python' 'python-setuptools' 'python-sphinx' 'python-sphinx-bootstrap-theme')
+checkdepends=('python-pytest')
 source=('git+https://github.com/Maratyszcza/Opcodes.git')
 sha256sums=('SKIP')
 
-prepare() {
-    cp -a "$_srcname" "${_srcname}-py2"
-}
-
 pkgver() {
-    cd "$_srcname"
-    
-    # git, no tags available
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf 'r%s.%s' "$(git -C Opcodes rev-list --count HEAD)" "$(git -C Opcodes rev-parse --short HEAD)"
 }
 
 build() {
-    printf '%s\n' '  -> Building for Python...'
-    cd "${_srcname}"
+    cd Opcodes
     python setup.py build
-    python setup.py build_sphinx --all-files --source-dir="${srcdir}/${_srcname}/sphinx"
-    
-    printf '%s\n' '  -> Building for Python2...'
-    cd "${srcdir}/${_srcname}-py2"
-    python2 setup.py build
-    python2 setup.py build_sphinx --all-files --source-dir="${srcdir}/${_srcname}-py2/sphinx"
+    python setup.py build_sphinx --all-files --source-dir="${srcdir}/Opcodes/sphinx"
 }
 
 check() {
-    cd "$_srcname"
-    python setup.py test
-    
-    cd "${srcdir}/${_srcname}-py2"
-    python2 setup.py test
+    cd Opcodes
+    PYTHONPATH="$(pwd)/build/lib" pytest
 }
 
 package_python-opcodes-git() {
     depends=('python' 'python-setuptools')
-    
-    cd "$_srcname"
+    provides=('python-opcodes')
+    conflicts=('python-opcodes')
+
+    cd Opcodes
     python setup.py install --root="$pkgdir" --skip-build --optimize='1'
-    
-    # doc
-    mkdir -p "${pkgdir}/usr/share/doc/${pkgname%-git}"
-    cp -a "${srcdir}/${_srcname}/build/sphinx/html/"* "${pkgdir}/usr/share/doc/${pkgname%-git}"
-    
-    # license
     install -D -m644 license.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-package_python2-opcodes-git() {
-    pkgdesc='Python2 module for instruction sets documentation in a format convenient for tools development (git version)'
-    depends=('python2' 'python2-setuptools')
+package_python-opcodes-doc-git() {
+    pkgdesc="$(sed 's/\((git version)\)/(documentation) \1/' <<< "$pkgdesc")"
+    provides=('python-opcodes-doc')
+    conflicts=('python-opcodes-doc')
     
-    cd "${_srcname}-py2"
-    python2 setup.py install --root="$pkgdir" --skip-build --optimize='1'
-    
-    # doc
-    mkdir -p "${pkgdir}/usr/share/doc/${pkgname%-git}"
-    cp -a "${srcdir}/${_srcname}-py2/build/sphinx/html/"* "${pkgdir}/usr/share/doc/${pkgname%-git}"
-    
-    # license
-    install -D -m644 license.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    mkdir -p "${pkgdir}/usr/share/doc/python-opcodes"
+    cp -dr --no-preserve='ownership' Opcodes/build/sphinx/html/* "${pkgdir}/usr/share/doc/python-opcodes"
+    install -D -m644 Opcodes/license.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
