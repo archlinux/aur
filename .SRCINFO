@@ -1,0 +1,15 @@
+pkgbase = dofi-manager-git
+	pkgdesc = A simple dotfile manager
+	pkgver = 0.1.0.r0.g844cab5
+	pkgrel = 1
+	url = https://github.com/akiirui/dofi
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = diffutils
+	source = git+https://github.com/akiirui/dofi
+	b2sums = SKIP
+
+pkgname = dofi-manager-git
+
