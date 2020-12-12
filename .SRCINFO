@@ -1,6 +1,6 @@
 pkgbase = skr
 	pkgdesc = Low level key remapping
-	pkgver = r111.30fc142
+	pkgver = r115.70fad82
 	pkgrel = 1
 	url = https://github.com/DavRack/skr
 	arch = x86_64
