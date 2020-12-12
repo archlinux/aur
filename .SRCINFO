@@ -1,6 +1,6 @@
 pkgbase = pantheon-code-git
 	pkgdesc = The Pantheon Code Editor
-	pkgver = 3.4.1.r54.gf2286b1f
+	pkgver = 3.4.1.r149.g93118f56
 	pkgrel = 2
 	url = https://github.com/elementary/code
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = pantheon-code-git
 	depends = libgit2-glib
 	depends = libpeas
 	depends = zeitgeist
+	depends = libhandy
 	optdepends = gtkspell3: Spell Check extension
 	optdepends = vala: Outline extension
 	optdepends = vte3: Terminal extension
