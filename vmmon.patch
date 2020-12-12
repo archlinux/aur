@@ -1,6 +1,6 @@
 --- a/vmmon/Makefile
 +++ b/vmmon/Makefile
-@@ -43,7 +43,11 @@ INCLUDE      += -I$(SRCROOT)/shared
+@@ -43,7 +43,11 @@
  endif
  
  
@@ -12,7 +12,7 @@
  
  # Header directory for the running kernel
  ifdef LINUXINCLUDE
-@@ -137,7 +137,6 @@
+@@ -137,7 +141,6 @@
  endif
  
  # Add Spectre options when available
@@ -31,32 +31,61 @@
  #include <asm/uaccess.h>
  #include <linux/capability.h>
  #include <linux/kthread.h>
-@@ -634,7 +635,24 @@ HostIF_FastClockUnlock(int callerID) // IN
+@@ -54,6 +56,7 @@
+ #include <linux/hrtimer.h>
+ #include <linux/signal.h>
+ #include <linux/taskstats_kern.h> // For linux/sched/signal.h without version check
++#include <linux/eventfd.h>
+ 
+ #include "vmware.h"
+ #include "x86apic.h"
+@@ -614,6 +617,15 @@
+    MutexUnlock(&fastClockMutex, callerID);
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 8, 0)
++static int crosspage_set_exec(pte_t *pte, unsigned long addr, void *data)
++{
++	struct page *p = data;
++
++	set_pte(pte, mk_pte(p, VM_PAGE_KERNEL_EXEC));
++	return 0;
++}
++#endif
+ 
+ /*
+  *----------------------------------------------------------------------
+@@ -634,7 +646,29 @@
  static void *
  MapCrossPage(struct page *p)  // IN:
  {
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
++#if COMPAT_LINUX_VERSION_CHECK_LT(5, 8, 0)
     return vmap(&p, 1, VM_MAP, VM_PAGE_KERNEL_EXEC);
 +#else
++   void *addr;
++
++   addr = vmap(&p, 1, VM_MAP, VM_PAGE_KERNEL_EXEC);
++   if (!addr)
++	   return NULL;
++
 +   /* Starting with 5.8, vmap() always sets the NX bit, but the cross
 +    * page needs to be executable. */
-+   pte_t *ptes[1];
-+   struct vm_struct *area = alloc_vm_area(1UL << PAGE_SHIFT, ptes);
-+   if (area == NULL)
++   if (apply_to_page_range(current->mm, (unsigned long)addr, PAGE_SIZE,
++			   crosspage_set_exec, p)) {
++      vunmap(addr);
 +      return NULL;
-+
-+   set_pte(ptes[0], mk_pte(p, VM_PAGE_KERNEL_EXEC));
++   }
 +
 +   preempt_disable();
 +   __flush_tlb_all();
 +   preempt_enable();
 +
-+   return area->addr;
++   return addr;
 +#endif
  }
  
  
-@@ -1739,7 +1758,10 @@ HostIF_EstimateLockedPageLimit(const VMDriver* vm,                // IN
+@@ -1739,7 +1773,10 @@
     lockedPages += global_page_state(NR_PAGETABLE);
  #endif
     /* NR_SLAB_* moved from zone to node in 4.13. */
@@ -68,7 +97,50 @@
     lockedPages += global_node_page_state(NR_SLAB_UNRECLAIMABLE);
  #else
     lockedPages += global_page_state(NR_SLAB_UNRECLAIMABLE);
-@@ -2590,9 +2612,11 @@ HostIF_SemaphoreWait(VMDriver *vm,   // IN:
+@@ -2389,16 +2426,22 @@
+ static Bool
+ isVAReadable(VA r)  // IN:
+ {
+-   mm_segment_t old_fs;
+    uint32 dummy;
+    int ret;
+ 
++#ifdef HAVE_GET_KERNEL_NOFAULT
++   ret = get_kernel_nofault(dummy, (void *)r);
++#else
++   {
++   mm_segment_t old_fs;
++ 
+    old_fs = get_fs();
+    set_fs(KERNEL_DS);
+    r = APICR_TO_ADDR(r, APICR_VERSION);
+    ret = HostIF_CopyFromUser(&dummy, r, sizeof dummy);
+    set_fs(old_fs);
+-
++   }
++#endif
+    return ret == 0;
+ }
+ #endif
+@@ -2553,7 +2596,6 @@
+                      uint64 *args)   // IN:
+ {
+    struct file *file;
+-   mm_segment_t old_fs;
+    int res;
+    int waitFD = args[0];
+    int timeoutms = args[2];
+@@ -2566,9 +2610,6 @@
+       return MX_WAITERROR;
+    }
+ 
+-   old_fs = get_fs();
+-   set_fs(KERNEL_DS);
+-
+    {
+       struct poll_wqueues table;
+       unsigned int mask;
+@@ -2590,9 +2631,11 @@
      * the code to happily deal with a pipe or an eventfd. We only care about
      * reading no bytes (EAGAIN - non blocking fd) or sizeof(uint64).
      */
@@ -83,7 +155,43 @@
     if (res == sizeof value) {
        res = MX_WAITNORMAL;
     } else {
-@@ -2707,8 +2731,11 @@ HostIF_SemaphoreSignal(uint64 *args)  // IN:
+@@ -2601,7 +2644,6 @@
+       }
+    }
+ 
+-   set_fs(old_fs);
+    fput(file);
+ 
+    /*
+@@ -2688,8 +2730,8 @@
+ int
+ HostIF_SemaphoreSignal(uint64 *args)  // IN:
+ {
++   struct eventfd_ctx *eventfd;
+    struct file *file;
+-   mm_segment_t old_fs;
+    int res;
+    int signalFD = args[1];
+    uint64 value = 1;  // make an eventfd happy should it be there
+@@ -2699,22 +2741,32 @@
+       return MX_WAITERROR;
+    }
+ 
+-   old_fs = get_fs();
+-   set_fs(KERNEL_DS);
++   /*
++    * If it's eventfd, use specific eventfd interface as kernel writes
++    * to eventfd may not be allowed in kernel 5.10 and later.
++    */
++   eventfd = eventfd_ctx_fileget(file);
++   if (!IS_ERR(eventfd)) {
++      eventfd_signal(eventfd, 1);
++      fput(file);
++      return MX_WAITNORMAL;
++   }
+ 
+    /*
+     * Always write sizeof(uint64) bytes. This works fine for eventfd and
      * pipes. The data written is formatted to make an eventfd happy should
      * it be present.
      */
@@ -97,3 +205,31 @@
  
     if (res == sizeof value) {
        res = MX_WAITNORMAL;
+    }
+ 
+-   set_fs(old_fs);
+    fput(file);
+ 
+    /*
+@@ -3261,12 +3313,9 @@
+ HostIFFastClockThread(void *unused)  // IN:
+ {
+    int res;
+-   mm_segment_t oldFS;
+    unsigned int rate = 0;
+    unsigned int prevRate = 0;
+ 
+-   oldFS = get_fs();
+-   set_fs(KERNEL_DS);
+    allow_signal(SIGKILL);
+ 
+    while ((rate = linuxState.fastClockRate) > MIN_RATE) {
+@@ -3289,8 +3338,6 @@
+    }
+ 
+  out:
+-   set_fs(oldFS);
+-
+    /*
+     * Do not exit thread until we are told to do so.
+     */
