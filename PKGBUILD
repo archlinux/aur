@@ -32,7 +32,7 @@ makedepends=(
 	'libxi'
 	'libxaw'
 	'libxtst'
-	'libxres'
+#	'libxres'
 	'xorg-xkbcomp'
 	'xorg-util-macros'
 	'xorg-font-util'
