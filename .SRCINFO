@@ -1,11 +1,12 @@
 pkgbase = shy
 	pkgdesc = Bare-bones SSH launcher
 	pkgver = 0.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xvxx/shy
 	arch = x86_64
 	license = MIT
 	makedepends = rust
+	depends = gcc-libs
 	source = shy-0.1.10.tar.gz::https://github.com/xvxx/shy/archive/v0.1.10.tar.gz
 	sha512sums = 57f999c67fc967ea924f1fc510024d7c689a7fe49d95157f3540ed7e8ea60d4aecd23f345fd9a611ca33bbb7102c60740db406cad8e715804bf24c13c0a31885
 
