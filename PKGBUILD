@@ -1,7 +1,7 @@
-# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
+# Contributor: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wlroots-hidpi-git
-pkgver=0.11.0.r76.gf0ddcd36
+pkgver=0.12.0.r96.g4c363a56
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library, with XWayland HiDPI'
@@ -31,10 +31,13 @@ pkgver () {
 	)
 }
 
+prepare () {
+	cd "${pkgname}"
+	patch --forward --strip=1 --input="${srcdir}/xwayland_hidpi.diff"
+}
+
 build () {
 	cd "${pkgname}"
-
-	patch -Np1 -i ../xwayland_hidpi.diff
 
 	rm -rf build
 	meson build \
