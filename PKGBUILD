@@ -1,7 +1,7 @@
 # Maintainer: Anton Butenko <F48D1.h@gmail.com>
 
 pkgname=goldjack
-pkgver=20201212
+pkgver=20201213
 pkgrel=1.0
 pkgdesc='Jackalizer tool'
 url='https://github.com/F48D1/goldjack.git'
