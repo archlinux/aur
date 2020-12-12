@@ -1,0 +1,21 @@
+pkgbase = gnuradio-grnet-git
+	pkgdesc = GNURadio TCP/UDP source and sink blocks rewritten in C++/Boost (gr-grnet)
+	pkgver = r70.b020160
+	pkgrel = 1
+	url = https://github.com/ghostop14/gr-grnet
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = swig
+	depends = gnuradio
+	depends = libpcap
+	provides = gnuradio-grnet
+	conflicts = gnuradio-grnet
+	replaces = gr-grnet
+	source = git+https://github.com/ghostop14/gr-grnet/#branch=maint-3.8
+	sha256sums = SKIP
+
+pkgname = gnuradio-grnet-git
+
