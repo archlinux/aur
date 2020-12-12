@@ -1,12 +1,14 @@
 pkgbase = ca-certificates-dnie
 	pkgdesc = Spanish DNIE root certificates
-	pkgver = 20200812
+	pkgver = 20201212
 	pkgrel = 1
 	url = http://www.dnielectronico.es
 	arch = any
 	license = unknown
+	makedepends = unzip-iconv
 	depends = ca-certificates-utils
 	depends = ca-certificates-fnmt
+	noextract = AV_DNIE_FNMT_SHA2.zip
 	source = https://www.dnielectronico.es/ZIP/ACRAIZ-DNIE2.zip
 	source = https://www.dnielectronico.es/ZIP/ACRAIZ-SHA2.zip
 	source = https://www.dnielectronico.es/ZIP/ACDNIE001.crt.zip
@@ -16,6 +18,7 @@ pkgbase = ca-certificates-dnie
 	source = https://www.dnielectronico.es/ZIP/ACDNIE005.crt.zip
 	source = https://www.dnielectronico.es/ZIP/ACDNIE006.crt.zip
 	source = AV_DNIE_FNMT_SHA2.zip::https://www.dnielectronico.es/descargas/certificados/Certificados_OCSP_Responder_FNMT.zip
+	source = AV_DNIE_MINHAP_SHA2.zip::https://www.dnielectronico.es/descargas/certificados/AVDNIEMINHAP_SHA2.zip
 	sha256sums = 6e0235376d543d19c7fa765b66ec14fab785e0fb6076b16682649eb3934655bd
 	sha256sums = cbb602e2e7f743b7190398960a64d5e71792bec6f468d2bdded414547d367edd
 	sha256sums = dfdaa0b0cb3627845bdf9fb2634e9bc2e06955446abb0d676480ea8f811b1ae5
@@ -24,7 +27,8 @@ pkgbase = ca-certificates-dnie
 	sha256sums = 7571df00556f41af9b552982f102529c20adb597fafe0865ccee89f735193458
 	sha256sums = 948ca3f851a4fd11483af67761c4d0603036231ec0611fe06d0e93212ac4d172
 	sha256sums = 25588e7328336f999a2650f60041f5fc107f1709960636b4a14b84cd8b866d54
-	sha256sums = f2316d5166b1717a30ae2852b3cd958c1819fa320d5d4f8c4df2d715887dd7b9
+	sha256sums = c84abb9059b350c083b5849a47ffcf79c6cb7369dba1797d9e582df1eba51431
+	sha256sums = 171f5c664bb2ccfd0cf130d782c18205d17cae08aa86bffa772bdc0d4897a3ad
 
 pkgname = ca-certificates-dnie
 
