@@ -5,6 +5,7 @@ pkgbase = purritobin
 	url = https://bsd.ac/
 	arch = any
 	license = ISC
+	makedepends = uwebsockets
 	depends = usockets
 	source = purritobin-0.3.3::https://github.com/PurritoBin/PurritoBin/archive/0.3.3.tar.gz
 	md5sums = 23d266fb8a438d9c7bfe2d73e9f0cf36
