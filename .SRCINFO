@@ -1,7 +1,7 @@
 pkgbase = unzip-iconv
 	pkgdesc = Unpacks .zip archives such as those made by PKZIP. With iconv patch for -O / -I goodness.
 	pkgver = 6.0
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.info-zip.org/UnZip.html
 	arch = i686
 	arch = x86_64
@@ -11,23 +11,37 @@ pkgbase = unzip-iconv
 	provides = unzip
 	conflicts = unzip
 	source = http://downloads.sourceforge.net/infozip/unzip60.tar.gz
-	source = CVE-2014-8139.patch::https://bugzilla.redhat.com/attachment.cgi?id=990132
-	source = CVE-2014-8140.patch::https://bugzilla.redhat.com/attachment.cgi?id=969621
-	source = CVE-2014-8141.patch::https://bugzilla.redhat.com/attachment.cgi?id=969625
-	source = CVE-2014-9636_pt1.patch::https://bugzilla.redhat.com/attachment.cgi?id=990649
-	source = CVE-2014-9636_pt2.patch::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/overflow-fsize.patch?h=packages/unzip&id=15e9a8c67463aaf62a718c6e74b1c972de654346
+	source = CVE-2014-8139.patch::http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/09-cve-2014-8139-crc-overflow.patch
+	source = CVE-2014-8140.patch::http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/10-cve-2014-8140-test-compr-eb.patch
+	source = CVE-2014-8141.patch::http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/11-cve-2014-8141-getzip64data.patch
+	source = CVE-2014-9636.patch::http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/cve-2014-9636.patch
+	source = CVE-2014-9913.patch::http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/18-cve-2014-9913-unzip-buffer-overflow.patch
+	source = CVE-2016-9844.patch::http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/19-cve-2016-9844-zipinfo-buffer-overflow.patch
 	source = iconv-utf8+CVE-2015-1315.patch::http://www.conostix.com/pub/adv/06-unzip60-alt-iconv-utf8_CVE-2015-1315.patch
-	source = CVE-2015-7696+CVE-2015-7697_pt1.patch::https://bugzilla.redhat.com/attachment.cgi?id=1073339
-	source = CVE-2015-7696+CVE-2015-7697_pt2.patch
-	sha1sums = abf7de8a4018a983590ed6f5cbd990d4740f8a22
-	sha1sums = 8ab9aa19e3743245696223035b04cba9d34aa4f6
-	sha1sums = 614c3e7fa7d6da7c60ea2aa79e36f4cbd17c3824
-	sha1sums = 9904365069c5fc72d10e42ce86eb9b4041aedc98
-	sha1sums = e8c0bc17c63eeed97ad62b86845d75c849bcf4f8
-	sha1sums = 2852ce1a9db8d646516f8828436a44d34785a0b3
-	sha1sums = 9b5d552cc6ab1f9e8b74fbbbcebfee84d46218c2
-	sha1sums = 1a412abf0861225767c776721a5cd75b7e2011d7
-	sha1sums = 9fe70b98dee314385eba5fdc73baebfb648c7b6e
+	source = CVE-2015-7696.patch::http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/CVE-2015-7696.patch
+	source = CVE-2015-7697.patch::http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/CVE-2015-7697.patch
+	source = CVE-2018-18384.patch::http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/CVE-2018-18384.patch
+	source = CVE-2018-1000035.patch::http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/0001-unzip-fix-CVE-2018-1000035.patch
+	source = CVE-2019-13232_p1.patch::http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/CVE-2019-13232_p1.patch
+	source = CVE-2019-13232_p2.patch::http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/CVE-2019-13232_p2.patch
+	source = CVE-2019-13232_p3.patch::http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/CVE-2019-13232_p3.patch
+	source = http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/fix-security-format.patch
+	sha256sums = 036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37
+	sha256sums = 1333a0d14e8f59c3a114764bf008ae489d386fd561130a60c1c7f2f4c9386b9b
+	sha256sums = 1a1390390402e674ef7b143705ade0e9aa082131bb9686e95fb7985310def885
+	sha256sums = 04e72b17f46bc320fff871f2b99f48dca17befceac83a7caca719bc20dae6268
+	sha256sums = ccdbae7d75b135f2471964bc8314457959563658b2d410f3026e2cd9e1944a8f
+	sha256sums = 8eb5dedf36e37b986acc42d1a8b6701b7429d32e426a90f5b41d6004ffe0aa46
+	sha256sums = bae6410203af2d5b32f427cba8dffe381b6f5adc52bf9f87a9655b3d2374f801
+	sha256sums = e64c9ddb38c2e7d08bdb80c597f32ee960e18fbe8cb982e444b1ece03ac95cec
+	sha256sums = 78e99d6cdf3451498933c33732af6c2556e9a1e62abd906ff89011a6102e7da7
+	sha256sums = 5ce6d037ff9cd780f32cae67c4867ac59bfca3799ed01255f1d2b5b3afb9ddd0
+	sha256sums = 4598f0579b7c2cfef5a2698ecd4ed278d9a26ec808466fe0b31752b268e0cd3d
+	sha256sums = a772cc9997aa9d99b67e1fc6facaf4d9249df8e721fc5cd7692be740441afaa9
+	sha256sums = 9252584a0a5fb288f424adf8ab430c40989b11259ec327b82b1a0cde31b29e69
+	sha256sums = 7c20c2889a17fd81c674b482c16e00159d64c6e5df357224461f4eb3a4e51c3d
+	sha256sums = 31a312410454738f994dc881c32b020b6051cfdf769bcc69f9f680428ea508fe
+	sha256sums = 035f179c634149158645bd54aa4bef270e7422af14e9693431e19a9219dbbeaa
 
 pkgname = unzip-iconv
 
