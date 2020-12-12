@@ -19,7 +19,6 @@ pkgbase = xorg-server-rootless-nosystemd-minimal
 	makedepends = libxi
 	makedepends = libxaw
 	makedepends = libxtst
-	makedepends = libxres
 	makedepends = xorg-xkbcomp
 	makedepends = xorg-util-macros
 	makedepends = xorg-font-util
