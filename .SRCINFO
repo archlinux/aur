@@ -1,7 +1,7 @@
 pkgbase = wesnoth-1.6
 	pkgdesc = Turn-based strategy game on a fantasy world (for old replays)
 	pkgver = 1.6.5+dev
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.wesnoth.org
 	arch = i486
 	arch = i686
