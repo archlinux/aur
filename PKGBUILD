@@ -1,4 +1,5 @@
 # Maintainer: Max Gautier <mg+archlinux@max.gautier.name>
+# Maintainer: Ema Panz <thepanz at gmail dot com>
 # Contributor: Jeff Henson <jeff@henson.io>
 
 pkgname=origin-client
