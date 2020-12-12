@@ -1,7 +1,7 @@
 pkgbase = socos
 	pkgdesc = Commandline tool for controlling Sonos devices
 	pkgver = 0.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/SoCo/socos
 	arch = any
 	license = MIT

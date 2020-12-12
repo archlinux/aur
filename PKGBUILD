@@ -1,7 +1,7 @@
 # Maintainer: Dan Elkouby <streetwalrus@codewalr.us>
 pkgname=socos
 pkgver=0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Commandline tool for controlling Sonos devices"
 arch=('any')
 url="https://github.com/SoCo/socos"
