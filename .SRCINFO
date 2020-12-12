@@ -1,9 +1,8 @@
 pkgbase = staruml
 	pkgdesc = A sophisticated software modeler
-	pkgver = 3.2.2
-	pkgrel = 2
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = http://staruml.io/
-	arch = i686
 	arch = x86_64
 	license = custom:staruml
 	depends = libxss
@@ -11,11 +10,8 @@ pkgbase = staruml
 	depends = nss
 	depends = alsa-lib
 	depends = gtk2
-	noextract = staruml-3.2.2-x86_64.AppImage
-	source_i686 = staruml-3.2.2-x86_64.AppImage::http://staruml.io/download/releases/StarUML-3.2.2-i386.AppImage
-	sha256sums_i686 = bce1c4af3d01d083525ee220635ba227b2698f995c31fc3dfc89b07065a9f46a
-	source_x86_64 = staruml-3.2.2-x86_64.AppImage::http://staruml.io/download/releases/StarUML-3.2.2.AppImage
-	sha256sums_x86_64 = 4fa36d795989e8860743694e6ef11ebd6250e06f938843a794b45a1d9e4de774
+	source = staruml-4.0.0_amd64.deb::https://staruml.io/download/releases-v4/StarUML_4.0.0_amd64.deb
+	sha256sums = cb0ab6a19c2e03aac0f92191dfcfed20d480460b68abc17544b40deaa4aad088
 
 pkgname = staruml
 
