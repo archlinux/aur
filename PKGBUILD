@@ -3,25 +3,18 @@
 # Contributor: A. Weiss <adam [at] archlinux.us>
 
 pkgname=osgearth
-pkgver=2.10.2
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 pkgdesc="A terrain rendering toolkit for OpenSceneGraph"
 arch=('i686' 'x86_64')
-url='http://www.osgearth.org'
+url='https://osgearth.org'
 license=('LGPL')
 depends=('openscenegraph' 'gdal' 'minizip' 'qt5-base' 'rocksdb' 'duktape')
 makedepends=('cmake')
 provides=('osgearth')
-source=("https://github.com/gwaldron/osgearth/archive/${pkgname}-${pkgver}.tar.gz"
-        "geos-3_8-support.patch")
-md5sums=('24f01afedb2eeac8154bf64772b7cbc7'
-         '590959bbe04444efc63f96f4b48db6ac')
+source=("https://github.com/gwaldron/osgearth/archive/${pkgname}-${pkgver}.tar.gz")
+md5sums=('20230b8e07da210c1a7757247a339243')
 
-
-prepare(){ 
-  cd ${srcdir}/${pkgname}-${pkgname}-${pkgver}
-  patch -p1 < ../geos-3_8-support.patch
-}
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgname}-${pkgver}
@@ -37,7 +30,7 @@ build() {
   cmake \
   -DLIB_POSTFIX= \
   -DCMAKE_INSTALL_PREFIX=/usr \
-  -DWITH_STATIC_ROCKSDB=ON \
+  -DOSGEARTH_INSTALL_SHADERS=ON \
   -DWITH_EXTERNAL_DUKTAPE=ON \
   ..
 
