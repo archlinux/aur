@@ -1,0 +1,18 @@
+pkgbase = orchis-kde-theme-git
+	pkgdesc = A materia Design theme for KDE Plasma desktop.
+	pkgver = r5.018fd0f
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Orchis-kde
+	arch = any
+	license = GPL3
+	makedepends = git
+	optdepends = plasma-desktop: for included plasma theme
+	optdepends = kvantum-qt5: for included kvantum theme
+	optdepends = sddm: for included sddm theme
+	optdepends = tela-circle-icon-theme-git: matching icon theme
+	optdepends = orchis-theme-git: matching gtk theme
+	source = git+https://github.com/vinceliuice/Orchis-kde.git
+	sha256sums = SKIP
+
+pkgname = orchis-kde-theme-git
+
