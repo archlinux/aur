@@ -12,7 +12,7 @@
  
  # Header directory for the running kernel
  ifdef LINUXINCLUDE
-@@ -98,6 +98,13 @@ auto-build: $(DRIVER_KO)
+@@ -98,6 +102,13 @@ auto-build: $(DRIVER_KO)
  $(DRIVER): $(DRIVER_KO)
  	if [ $< -nt $@ ] || [ ! -e $@ ] ; then cp -f $< $@; fi
  
@@ -26,7 +26,7 @@
  #
  # Define a setup target that gets built before the actual driver.
  # This target may not be used at all, but if it is then it will be defined
-@@ -107,7 +114,7 @@ prebuild:: ;
+@@ -107,7 +118,7 @@ prebuild:: ;
  postbuild:: ;
  
  $(DRIVER_KO): prebuild
@@ -37,7 +37,7 @@
  	  MODULEBUILDDIR=$(MODULEBUILDDIR) postbuild
 --- a/vmmon/linux/driver.c
 +++ b/vmmon/linux/driver.c
-@@ -96,7 +95,9 @@ long LinuxDriver_Ioctl(struct file *filp, u_int iocmd,
+@@ -96,7 +96,9 @@ long LinuxDriver_Ioctl(struct file *filp
                         unsigned long ioarg);
  
  static int LinuxDriver_Close(struct inode *inode, struct file *filp);
@@ -48,7 +48,7 @@
  static int LinuxDriverFault(struct vm_fault *fault);
  #else
  static int LinuxDriverFault(struct vm_area_struct *vma, struct vm_fault *fault);
-@@ -594,7 +596,12 @@ LinuxDriver_Close(struct inode *inode, // IN
+@@ -594,7 +596,12 @@ LinuxDriver_Close(struct inode *inode, /
   *-----------------------------------------------------------------------------
   */
  
@@ -73,32 +73,61 @@
  #include <asm/uaccess.h>
  #include <linux/capability.h>
  #include <linux/kthread.h>
-@@ -613,7 +615,24 @@ HostIF_FastClockUnlock(int callerID) // IN
+@@ -54,6 +56,7 @@
+ #include <linux/hrtimer.h>
+ #include <linux/signal.h>
+ #include <linux/taskstats_kern.h> // For linux/sched/signal.h without version check
++#include <linux/eventfd.h>
+ 
+ #include "vmware.h"
+ #include "x86apic.h"
+@@ -593,6 +596,15 @@ HostIF_FastClockUnlock(int callerID) //
+    MutexUnlock(&fastClockMutex, callerID);
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 8, 0)
++static int crosspage_set_exec(pte_t *pte, unsigned long addr, void *data)
++{
++	struct page *p = data;
++
++	set_pte(pte, mk_pte(p, VM_PAGE_KERNEL_EXEC));
++	return 0;
++}
++#endif
+ 
+ /*
+  *----------------------------------------------------------------------
+@@ -613,7 +625,29 @@ HostIF_FastClockUnlock(int callerID) //
  static void *
  MapCrossPage(struct page *p)  // IN:
  {
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
++#if COMPAT_LINUX_VERSION_CHECK_LT(5, 8, 0)
     return vmap(&p, 1, VM_MAP, VM_PAGE_KERNEL_EXEC);
 +#else
++   void *addr;
++
++   addr = vmap(&p, 1, VM_MAP, VM_PAGE_KERNEL_EXEC);
++   if (!addr)
++	   return NULL;
++
 +   /* Starting with 5.8, vmap() always sets the NX bit, but the cross
 +    * page needs to be executable. */
-+   pte_t *ptes[1];
-+   struct vm_struct *area = alloc_vm_area(1UL << PAGE_SHIFT, ptes);
-+   if (area == NULL)
++   if (apply_to_page_range(current->mm, (unsigned long)addr, PAGE_SIZE,
++			   crosspage_set_exec, p)) {
++      vunmap(addr);
 +      return NULL;
-+
-+   set_pte(ptes[0], mk_pte(p, VM_PAGE_KERNEL_EXEC));
++   }
 +
 +   preempt_disable();
 +   __flush_tlb_all();
 +   preempt_enable();
 +
-+   return area->addr;
++   return addr;
 +#endif
  }
  
  
-@@ -1499,9 +1499,13 @@
+@@ -1499,9 +1533,13 @@ HostIF_EstimateLockedPageLimit(const VMD
      * since at least 2.6.0.
      */
  
@@ -112,7 +141,7 @@
  
     /*
      * Use the memory information linux exports as of late for a more
-@@ -1527,7 +1550,10 @@ HostIF_EstimateLockedPageLimit(const VMDriver* vm,                // IN
+@@ -1527,7 +1565,10 @@ HostIF_EstimateLockedPageLimit(const VMD
     lockedPages += global_page_state(NR_PAGETABLE);
  #endif
     /* NR_SLAB_* moved from zone to node in 4.13. */
@@ -124,7 +153,7 @@
     lockedPages += global_node_page_state(NR_SLAB_UNRECLAIMABLE);
  #else
     lockedPages += global_page_state(NR_SLAB_UNRECLAIMABLE);
-@@ -1602,6 +1606,49 @@
+@@ -1602,6 +1643,49 @@ HostIF_WaitForFreePages(unsigned int tim
  /*
   *----------------------------------------------------------------------
   *
@@ -174,7 +203,7 @@
   * HostIFReadUptimeWork --
   *
   *      Reads the current uptime.  The uptime is based on getimeofday,
-@@ -1630,7 +1677,6 @@
+@@ -1630,7 +1714,6 @@ HostIF_WaitForFreePages(unsigned int tim
  static uint64
  HostIFReadUptimeWork(unsigned long *j)  // OUT: current jiffies
  {
@@ -182,7 +211,7 @@
     uint64 monotime, uptime, upBase, monoBase;
     int64 diff;
     uint32 version;
-@@ -1645,13 +1691,12 @@
+@@ -1645,13 +1728,12 @@ HostIFReadUptimeWork(unsigned long *j)
        monoBase = uptimeState.monotimeBase;
     } while (!VersionedAtomic_EndTryRead(&uptimeState.version, version));
  
@@ -197,7 +226,7 @@
     uptime += upBase;
  
     /*
-@@ -1756,13 +1801,11 @@
+@@ -1756,13 +1838,11 @@ HostIFUptimeResyncMono(struct timer_list
  void
  HostIF_InitUptime(void)
  {
@@ -214,16 +243,33 @@
  
  #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 15, 0) && !defined(timer_setup)
     init_timer(&uptimeState.timer);
-@@ -2164,7 +2207,7 @@ isVAReadable(VA r)  // IN:
+@@ -2159,16 +2239,22 @@ HostIF_VMLockIsHeld(VMDriver *vm) // IN
+ static Bool
+ isVAReadable(VA r)  // IN:
+ {
+-   mm_segment_t old_fs;
+    uint32 dummy;
     int ret;
  
++#ifdef HAVE_GET_KERNEL_NOFAULT
++   ret = get_kernel_nofault(dummy, (void *)r);
++#else
++   {
++   mm_segment_t old_fs;
++ 
     old_fs = get_fs();
 -   set_fs(get_ds());
 +   set_fs(KERNEL_DS);
     r = APICR_TO_ADDR(r, APICR_VERSION);
     ret = HostIF_CopyFromUser(&dummy, r, sizeof dummy);
     set_fs(old_fs);
-@@ -2197,7 +2240,7 @@
+-
++   }
++#endif
+    return ret == 0;
+ }
+ 
+@@ -2197,7 +2283,7 @@ SetVMAPICAddr(VMDriver *vm, // IN/OUT: d
     volatile void *hostapic;
  
     ASSERT_ON_COMPILE(APICR_SIZE <= PAGE_SIZE);
@@ -232,16 +278,25 @@
     if (hostapic) {
        if ((APIC_VERSIONREG(hostapic) & 0xF0) == 0x10) {
           vm->hostAPIC.base = (volatile uint32 (*)[4]) hostapic;
-@@ -2365,7 +2408,7 @@ HostIF_SemaphoreWait(VMDriver *vm,   // IN:
+@@ -2353,7 +2439,6 @@ HostIF_SemaphoreWait(VMDriver *vm,   //
+                      uint64 *args)   // IN:
+ {
+    struct file *file;
+-   mm_segment_t old_fs;
+    int res;
+    int waitFD = args[0];
+    int timeoutms = args[2];
+@@ -2364,9 +2449,6 @@ HostIF_SemaphoreWait(VMDriver *vm,   //
+       return MX_WAITERROR;
     }
  
-    old_fs = get_fs();
+-   old_fs = get_fs();
 -   set_fs(get_ds());
-+   set_fs(KERNEL_DS);
- 
+-
     {
        struct poll_wqueues table;
-@@ -2388,9 +2453,11 @@ HostIF_SemaphoreWait(VMDriver *vm,   // IN:
+       unsigned int mask;
+@@ -2388,9 +2470,11 @@ HostIF_SemaphoreWait(VMDriver *vm,   //
      * the code to happily deal with a pipe or an eventfd. We only care about
      * reading no bytes (EAGAIN - non blocking fd) or sizeof(uint64).
      */
@@ -256,16 +311,43 @@
     if (res == sizeof value) {
        res = MX_WAITNORMAL;
     } else {
-@@ -2494,7 +2537,7 @@ HostIF_SemaphoreSignal(uint64 *args)  // IN:
+@@ -2399,7 +2483,6 @@ HostIF_SemaphoreWait(VMDriver *vm,   //
+       }
     }
  
-    old_fs = get_fs();
+-   set_fs(old_fs);
+    fput(file);
+ 
+    /*
+@@ -2482,8 +2565,8 @@ HostIF_SemaphoreForceWakeup(VMDriver *vm
+ int
+ HostIF_SemaphoreSignal(uint64 *args)  // IN:
+ {
++   struct eventfd_ctx *eventfd;
+    struct file *file;
+-   mm_segment_t old_fs;
+    int res;
+    int signalFD = args[1];
+    uint64 value = 1;  // make an eventfd happy should it be there
+@@ -2493,22 +2576,32 @@ HostIF_SemaphoreSignal(uint64 *args)  //
+       return MX_WAITERROR;
+    }
+ 
+-   old_fs = get_fs();
 -   set_fs(get_ds());
-+   set_fs(KERNEL_DS);
++   /*
++    * If it's eventfd, use specific eventfd interface as kernel writes
++    * to eventfd may not be allowed in kernel 5.10 and later.
++    */
++   eventfd = eventfd_ctx_fileget(file);
++   if (!IS_ERR(eventfd)) {
++      eventfd_signal(eventfd, 1);
++      fput(file);
++      return MX_WAITNORMAL;
++   }
  
     /*
      * Always write sizeof(uint64) bytes. This works fine for eventfd and
-@@ -2501,8 +2566,11 @@ HostIF_SemaphoreSignal(uint64 *args)  // IN:
      * pipes. The data written is formatted to make an eventfd happy should
      * it be present.
      */
@@ -279,7 +361,35 @@
  
     if (res == sizeof value) {
        res = MX_WAITNORMAL;
-@@ -3154,7 +3202,6 @@ HostIF_SetFastClockRate(unsigned int rate) // IN: Frequency in Hz.
+    }
+ 
+-   set_fs(old_fs);
+    fput(file);
+ 
+    /*
+@@ -3027,12 +3120,9 @@ static int
+ HostIFFastClockThread(void *unused)  // IN:
+ {
+    int res;
+-   mm_segment_t oldFS;
+    unsigned int rate = 0;
+    unsigned int prevRate = 0;
+ 
+-   oldFS = get_fs();
+-   set_fs(KERNEL_DS);
+    allow_signal(SIGKILL);
+ 
+    while ((rate = linuxState.fastClockRate) > MIN_RATE) {
+@@ -3055,8 +3145,6 @@ HostIFFastClockThread(void *unused)  //
+    }
+ 
+  out:
+-   set_fs(oldFS);
+-
+    /*
+     * Do not exit thread until we are told to do so.
+     */
+@@ -3154,7 +3242,6 @@ HostIF_SetFastClockRate(unsigned int rat
        }
     } else {
        if (linuxState.fastClockThread) {
@@ -287,7 +397,7 @@
           kthread_stop(linuxState.fastClockThread);
  
           linuxState.fastClockThread = NULL;
-@@ -3200,7 +3243,12 @@
+@@ -3200,7 +3287,12 @@ HostIF_MapUserMem(VA addr,
  
     ASSERT(handle);
  
