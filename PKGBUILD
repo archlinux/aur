@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('gtk-engine-murrine' 'gtk3' 'gnome-themes-extra')
 makedepends=('git' 'bc')
 optdepends=('kvantum-theme-orchis: Matching Kvantum theme'
-            'tela-icon-theme: Recommended icon theme'
+            'tela-circle-icon-theme: Recommended icon theme'
             'plank: for Plank theme')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
