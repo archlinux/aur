@@ -1,12 +1,10 @@
-# Script generated with import_catkin_packages.py.
-# For more information: https://github.com/bchretien/arch-ros-stacks.
-pkgdesc="ROS - Contains scripts used by the rosboost1.69-cfg tool for determining cflags/lflags/etc."
-url='https://wiki.ros.org/rosboost1.69_cfg'
+pkgdesc="ROS - Contains scripts used by the rosboost-cfg tool for determining cflags/lflags/etc."
+url='https://wiki.ros.org/rosboost'
 
-pkgname='ros-melodic-rosboost1.69-cfg'
+pkgname='ros-melodic-rosboost-cfg'
 pkgver='1.14.9'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -26,7 +24,7 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="ros-${pkgver}/tools/rosboost1.69_cfg"
+_dir="ros-${pkgver}/tools/rosboost_cfg"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros/archive/${pkgver}.tar.gz")
 sha256sums=('5a129ce35c906f93117f62688a4d24aee1976b7d3f2fdf3dc4f6f305d170fb02')
 
@@ -49,7 +47,7 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF \
-		 -DBOOST_ROOT=/opt/boost1.69
+		-DBOOST_ROOT=/opt/boost1.69
 	make
 }
 
