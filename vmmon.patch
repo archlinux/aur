@@ -37,7 +37,7 @@
  	  MODULEBUILDDIR=$(MODULEBUILDDIR) postbuild
 --- a/vmmon/common/hostif.h
 +++ b/vmmon/common/hostif.h
-@@ -122,14 +122,10 @@ EXTERN MPN64 HostIF_GetNextAnonPage(VMDriver *vm, MPN64 mpn);
+@@ -122,14 +122,10 @@ EXTERN MPN64 HostIF_GetNextAnonPage(VMDr
  EXTERN int HostIF_GetLockedPageList(VMDriver *vm, VA64 uAddr,
                                      unsigned int numPages);
  
@@ -55,7 +55,7 @@
  #if defined __APPLE__
  // There is no need for a fast clock lock on Mac OS.
  #define HostIF_FastClockLock(_callerID) do {} while (0)
-@@ -145,4 +141,8 @@ EXTERN void HostIF_FreeMachinePage(MPN64 mpn);
+@@ -145,4 +141,8 @@ EXTERN void HostIF_FreeMachinePage(MPN64
  
  EXTERN int HostIF_SafeRDMSR(uint32 msr, uint64 *val);
  
@@ -247,7 +247,7 @@
  #if defined(_WIN64)
  #   include "x86.h"
  #   include "vmmon-asm-x86-64.h"
-@@ -708,11 +718,28 @@ TaskRestoreHostGDTTRLDT(Descriptor *tempGDTBase,
+@@ -708,11 +718,28 @@ TaskRestoreHostGDTTRLDT(Descriptor *temp
         */
  
        desc = (Descriptor *)((VA)HOST_KERNEL_LA_2_VA(hostGDT64.offset + tr));
@@ -288,13 +288,10 @@
      * We can't allocate memory with interrupts disabled on all hosts
 --- a/vmmon/common/vmx86.c
 +++ b/vmmon/common/vmx86.c
-@@ -720,6 +720,35 @@ cleanup:
- }
- 
- 
-+/*
-+ *----------------------------------------------------------------------
-+ *
+@@ -723,6 +723,35 @@ cleanup:
+ /*
+  *----------------------------------------------------------------------
+  *
 + * Vmx86_LookupUserMPN --
 + *
 + *      Look up the MPN of a locked user page by user VA under the VM lock.
@@ -321,9 +318,12 @@
 +}
 +
 +
- /*
-  *----------------------------------------------------------------------
++/*
++ *----------------------------------------------------------------------
++ *
+  * Vmx86_ReleaseVM  --
   *
+  *      Release a VM (either created here or from a bind).
 --- a/vmmon/common/vmx86.h
 +++ b/vmmon/common/vmx86.h
 @@ -106,6 +106,7 @@ extern PseudoTSC pseudoTSC;
@@ -405,27 +405,14 @@
 -#   define compat_pud_present(pgd)          pgd_present(pgd)
 -typedef pml4_t compat_pgd_t;
 -typedef pgd_t  compat_pud_t;
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 0)
-+#   define compat_p4d_offset(pgd, address)  p4d_offset(pgd, address)
-+#   define compat_p4d_present(p4d)          p4d_present(p4d)
-+#   define compat_p4d_large(p4d)            p4d_large(p4d)
-+#   define compat_p4d_pfn(p4d)              p4d_pfn(p4d)
-+#   define COMPAT_P4D_MASK                  P4D_MASK
-+typedef p4d_t compat_p4d_t;
- #else
+-#else
 -#   define compat_pgd_offset(mm, address)   pgd_offset(mm, address)
 -#   define compat_pgd_present(pgd)          pgd_present(pgd)
 -#   define compat_pud_offset(pgd, address)  (pgd)
 -#   define compat_pud_present(pud)          (1)
 -typedef pgd_t  compat_pgd_t;
 -typedef pgd_t  compat_pud_t;
-+#   define compat_p4d_offset(pgd, address)  (pgd)
-+#   define compat_p4d_present(p4d)          (1)
-+#   define compat_p4d_large(p4d)            (0)
-+#   define compat_p4d_pfn(p4d)              INVALID_MPN  /* Not used */
-+#   define COMPAT_P4D_MASK                  0            /* Not used */
-+typedef pgd_t compat_p4d_t;
- #endif
+-#endif
 -
 -
 -#define compat_pgd_offset_k(mm, address) pgd_offset_k(address)
@@ -434,11 +421,7 @@
 -/* Introduced somewhere in 2.6.0, + backported to some 2.4 RedHat kernels */
 -#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 0) && !defined(pte_pfn)
 -#   define pte_pfn(pte) page_to_pfn(compat_pte_page(pte))
-+/* p[gu]d_large did not exist before 2.6.25 */
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 25)
-+#   define pud_large(pud) 0
-+#   define pgd_large(pgd) 0
- #endif
+-#endif
 -
 -
 -/* A page_table_lock field is added to struct mm_struct in 2.3.10 --hpreg */
@@ -446,6 +429,26 @@
 -#   define compat_get_page_table_lock(_mm) (&(_mm)->page_table_lock)
 -#else
 -#   define compat_get_page_table_lock(_mm) NULL
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 0)
++#   define compat_p4d_offset(pgd, address)  p4d_offset(pgd, address)
++#   define compat_p4d_present(p4d)          p4d_present(p4d)
++#   define compat_p4d_large(p4d)            p4d_large(p4d)
++#   define compat_p4d_pfn(p4d)              p4d_pfn(p4d)
++#   define COMPAT_P4D_MASK                  P4D_MASK
++typedef p4d_t compat_p4d_t;
++#else
++#   define compat_p4d_offset(pgd, address)  (pgd)
++#   define compat_p4d_present(p4d)          (1)
++#   define compat_p4d_large(p4d)            (0)
++#   define compat_p4d_pfn(p4d)              INVALID_MPN  /* Not used */
++#   define COMPAT_P4D_MASK                  0            /* Not used */
++typedef pgd_t compat_p4d_t;
++#endif
++/* p[gu]d_large did not exist before 2.6.25 */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 25)
++#   define pud_large(pud) 0
++#   define pgd_large(pgd) 0
++#endif
 +/* pud_pfn did not exist before 3.8. */
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 8, 0)
 +#   define pud_pfn(pud)  INVALID_MPN
@@ -467,45 +470,55 @@
  #endif /* __COMPAT_PGTABLE_H__ */
 --- a/vmmon/include/pgtbl.h
 +++ b/vmmon/include/pgtbl.h
-@@ -26,154 +26,14 @@
+@@ -26,15 +26,14 @@
  #include "compat_spinlock.h"
  #include "compat_page.h"
  
--/*
-- *-----------------------------------------------------------------------------
-- *
++
+ /*
+  *-----------------------------------------------------------------------------
+  *
 - * PgtblPte2MPN --
 - *
 - *    Returns the page structure associated to a Page Table Entry.
-- *
++ * PgtblVa2MPNLocked --
+  *
 - *    This function is not allowed to schedule() because it can be called while
 - *    holding a spinlock --hpreg
-- *
-- * Results:
-- *    INVALID_MPN on failure
-- *    mpn         on success
-- *
-- * Side effects:
-- *    None
-- *
-- *-----------------------------------------------------------------------------
-- */
--
--static INLINE MPN64
++ *    Walks through the hardware page tables to try to find the pte
++ *    associated to a virtual address.  Then maps PTE to MPN.
+  *
+  * Results:
+  *    INVALID_MPN on failure
+@@ -47,230 +46,66 @@
+  */
+ 
+ static INLINE MPN64
 -PgtblPte2MPN(pte_t *pte)   // IN
--{
--   MPN64 mpn;
++PgtblVa2MPNLocked(struct mm_struct *mm, // IN: Mm structure of a process
++                  VA addr)              // IN: Address in the virtual address
++                                        //     space of that process
+ {
++   pgd_t *pgd;
++   compat_p4d_t *p4d;
+    MPN64 mpn;
 -   if (pte_present(*pte) == 0) {
--      return INVALID_MPN;
--   }
++
++   pgd = pgd_offset(mm, addr);
++   if (pgd_present(*pgd) == 0) {
+       return INVALID_MPN;
+    }
 -   mpn = pte_pfn(*pte);
 -   if (mpn >= INVALID_MPN) {
--      return INVALID_MPN;
--   }
++   if (pgd_large(*pgd)) {
++      /* Linux kernel does not support PGD huge pages. */
++      /* return pgd_pfn(*pgd) + ((addr & PGD_MASK) >> PAGE_SHIFT); */
+       return INVALID_MPN;
+    }
 -   return mpn;
 -}
 -
--
+ 
 -/*
 - *-----------------------------------------------------------------------------
 - *
@@ -576,8 +589,15 @@
 -   if (pmd_present(*pmd) == 0) {
 -      pmd_unmap(pmd);
 -      return NULL;
--   }
--
++   p4d = compat_p4d_offset(pgd, addr);
++   if (compat_p4d_present(*p4d) == 0) {
++      return INVALID_MPN;
+    }
++   if (compat_p4d_large(*p4d)) {
++      mpn = compat_p4d_pfn(*p4d) + ((addr & ~COMPAT_P4D_MASK) >> PAGE_SHIFT);
++   } else {
++      pud_t *pud;
+ 
 -   pte = pte_offset_map(pmd, addr);
 -   pmd_unmap(pmd);
 -   return pte;
@@ -609,40 +629,65 @@
 -   return PgtblPGD2PTELocked(compat_pgd_offset(mm, addr), addr);
 -}
 -
- 
- /*
-  *-----------------------------------------------------------------------------
-  *
-  * PgtblVa2MPNLocked --
-  *
+-
+-/*
+- *-----------------------------------------------------------------------------
+- *
+- * PgtblVa2MPNLocked --
+- *
 - *    Retrieve MPN for a given va.
 - *
 - *    Caller must call pte_unmap if valid pte returned. The mm->page_table_lock
 - *    must be held, so this function is not allowed to schedule() --hpreg
-+ *    Walks through the hardware page tables to try to find the pte
-+ *    associated to a virtual address.  Then maps PTE to MPN.
-  *
-  * Results:
-  *    INVALID_MPN on failure
-@@ -188,89 +48,64 @@ PgtblVa2PTELocked(struct mm_struct *mm, // IN: Mm structure of a process
- static INLINE MPN64
- PgtblVa2MPNLocked(struct mm_struct *mm, // IN: Mm structure of a process
-                   VA addr)              // IN: Address in the virtual address
-+                                        //     space of that process
- {
+- *
+- * Results:
+- *    INVALID_MPN on failure
+- *    mpn         on success
+- *
+- * Side effects:
+- *    None
+- *
+- *-----------------------------------------------------------------------------
+- */
+-
+-static INLINE MPN64
+-PgtblVa2MPNLocked(struct mm_struct *mm, // IN: Mm structure of a process
+-                  VA addr)              // IN: Address in the virtual address
+-{
 -   pte_t *pte;
-+   pgd_t *pgd;
-+   compat_p4d_t *p4d;
-+   MPN64 mpn;
- 
+-
 -   pte = PgtblVa2PTELocked(mm, addr);
 -   if (pte != NULL) {
 -      MPN64 mpn = PgtblPte2MPN(pte);
 -      pte_unmap(pte);
 -      return mpn;
-+   pgd = pgd_offset(mm, addr);
-+   if (pgd_present(*pgd) == 0) {
-+      return INVALID_MPN;
++      pud = pud_offset(p4d, addr);
++      if (pud_present(*pud) == 0) {
++         return INVALID_MPN;
++      }
++      if (pud_large(*pud)) {
++         mpn = pud_pfn(*pud) + ((addr & ~PUD_MASK) >> PAGE_SHIFT);
++      } else {
++         pmd_t *pmd;
++
++         pmd = pmd_offset(pud, addr);
++         if (pmd_present(*pmd) == 0) {
++            return INVALID_MPN;
++         }
++         if (pmd_large(*pmd)) {
++            mpn = pmd_pfn(*pmd) + ((addr & ~PMD_MASK) >> PAGE_SHIFT);
++         } else {
++            pte_t *pte;
++
++            pte = pte_offset_map(pmd, addr);
++            if (pte_present(*pte) == 0) {
++               pte_unmap(pte);
++               return INVALID_MPN;
++            }
++            mpn = pte_pfn(*pte);
++            pte_unmap(pte);
++         }
++      }
     }
 -   return INVALID_MPN;
 -}
@@ -680,16 +725,15 @@
 -      MPN64 mpn = PgtblPte2MPN(pte);
 -      pte_unmap(pte);
 -      return mpn;
-+   if (pgd_large(*pgd)) {
-+      /* Linux kernel does not support PGD huge pages. */
-+      /* return pgd_pfn(*pgd) + ((addr & PGD_MASK) >> PAGE_SHIFT); */
-+      return INVALID_MPN;
++   if (mpn >= INVALID_MPN) {
++      mpn = INVALID_MPN;
     }
 -   return INVALID_MPN;
--}
++   return mpn;
+ }
 -#endif
 -
- 
+-
 -/*
 - *-----------------------------------------------------------------------------
 - *
@@ -718,50 +762,10 @@
 -      struct page *page = PgtblPte2Page(pte);
 -      pte_unmap(pte);
 -      return page;
-+   p4d = compat_p4d_offset(pgd, addr);
-+   if (compat_p4d_present(*p4d) == 0) {
-+      return INVALID_MPN;
-+   }
-+   if (compat_p4d_large(*p4d)) {
-+      mpn = compat_p4d_pfn(*p4d) + ((addr & ~COMPAT_P4D_MASK) >> PAGE_SHIFT);
-    } else {
+-   } else {
 -      return NULL;
-+      pud_t *pud;
-+
-+      pud = pud_offset(p4d, addr);
-+      if (pud_present(*pud) == 0) {
-+         return INVALID_MPN;
-+      }
-+      if (pud_large(*pud)) {
-+         mpn = pud_pfn(*pud) + ((addr & ~PUD_MASK) >> PAGE_SHIFT);
-+      } else {
-+         pmd_t *pmd;
-+
-+         pmd = pmd_offset(pud, addr);
-+         if (pmd_present(*pmd) == 0) {
-+            return INVALID_MPN;
-+         }
-+         if (pmd_large(*pmd)) {
-+            mpn = pmd_pfn(*pmd) + ((addr & ~PMD_MASK) >> PAGE_SHIFT);
-+         } else {
-+            pte_t *pte;
-+
-+            pte = pte_offset_map(pmd, addr);
-+            if (pte_present(*pte) == 0) {
-+               pte_unmap(pte);
-+               return INVALID_MPN;
-+            }
-+            mpn = pte_pfn(*pte);
-+            pte_unmap(pte);
-+         }
-+      }
-+   }
-+   if (mpn >= INVALID_MPN) {
-+      mpn = INVALID_MPN;
-    }
+-   }
 -} 
-+   return mpn;
-+}
  
  
  /*
@@ -777,10 +781,9 @@
 -   if (compat_get_page_table_lock(mm)) {
 -      spin_unlock(compat_get_page_table_lock(mm));
 -   }
-+   spin_unlock(&mm->page_table_lock);
-    return mpn;
- }
- 
+-   return mpn;
+-}
+-
 -
 -#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 0)
 -/*
@@ -813,8 +816,9 @@
 -   if (compat_get_page_table_lock(mm)) {
 -      spin_unlock(compat_get_page_table_lock(mm));
 -   }
--   return mpn;
--}
++   spin_unlock(&mm->page_table_lock);
+    return mpn;
+ }
 -#endif
 -
 -
@@ -851,11 +855,11 @@
 -   return page;
 -}
 -
--
+ 
  #endif /* __PGTBL_H__ */
 --- a/vmmon/linux/driver.c
 +++ b/vmmon/linux/driver.c
-@@ -101,14 +101,16 @@
+@@ -101,14 +101,16 @@ static int LinuxDriver_Open(struct inode
   */
  int LinuxDriver_Ioctl(struct inode *inode, struct file *filp,
                        u_int iocmd, unsigned long ioarg);
@@ -875,7 +879,7 @@
  static int LinuxDriverFault(struct vm_area_struct *vma, struct vm_fault *fault);
  #else
  static struct page *LinuxDriverNoPage(struct vm_area_struct *vma,
-@@ -117,7 +117,7 @@
+@@ -117,7 +119,7 @@ static struct page *LinuxDriverNoPage(st
  #endif
  static int LinuxDriverMmap(struct file *filp, struct vm_area_struct *vma);
  
@@ -884,7 +888,7 @@
  
  static struct vm_operations_struct vmuser_mops = {
  #ifdef VMW_NOPAGE_2624
-@@ -166,61 +168,15 @@
+@@ -166,61 +168,15 @@ VMX86_RegisterMonitor(int value)  // IN:
     return 1291;
  }
  
@@ -946,7 +950,7 @@
  }
  
  
-@@ -244,7 +203,7 @@ LinuxDriverEstimateTSCkHz(void)
+@@ -244,7 +200,7 @@ unregister_ioctl32_handlers(void)
   */
  
  static void
@@ -955,7 +959,7 @@
  {
     Vmx86_GetkHzEstimate(&linuxState.startTime);
  }
-@@ -287,9 +245,13 @@ init_module(void)
+@@ -287,9 +243,13 @@ init_module(void)
      */
  
     init_waitqueue_head(&linuxState.pollQueue);
@@ -970,7 +974,7 @@
  
     linuxState.fastClockThread = NULL;
     linuxState.fastClockFile = NULL;
-@@ -310,14 +270,8 @@
+@@ -310,14 +270,8 @@ init_module(void)
     memset(&vmuser_fops, 0, sizeof vmuser_fops);
     vmuser_fops.owner = THIS_MODULE;
     vmuser_fops.poll = LinuxDriverPoll;
@@ -985,7 +989,7 @@
     vmuser_fops.open = LinuxDriver_Open;
     vmuser_fops.release = LinuxDriver_Close;
     vmuser_fops.mmap = LinuxDriverMmap;
-@@ -365,9 +363,13 @@ init_module(void)
+@@ -365,9 +319,13 @@ init_module(void)
      */
  
     Vmx86_ReadTSCAndUptime(&linuxState.startTime);
@@ -1000,7 +1004,7 @@
     tscTimer.expires = jiffies + 4 * HZ;
     add_timer(&tscTimer);
  
-@@ -764,7 +786,6 @@ void
+@@ -764,7 +722,6 @@ void
  LinuxDriverWakeUp(Bool selective)  // IN:
  {
     if (selective && linuxState.pollList != NULL) {
@@ -1008,7 +1012,7 @@
        VmTimeType now;
        VMLinux *p;
        VMLinux *next;
-@@ -777,8 +798,7 @@ void
+@@ -777,8 +734,7 @@ LinuxDriverWakeUp(Bool selective)  // IN
  #else
        HostIF_PollListLock(1);
  #endif
@@ -1018,7 +1022,7 @@
  
        for (p = linuxState.pollList; p != NULL; p = next) {
           next = p->pollForw;
-@@ -850,12 +870,10 @@ LinuxDriverPoll(struct file *filp,  // IN:
+@@ -850,12 +806,10 @@ LinuxDriverPoll(struct file *filp,  // I
        }
     } else {
        if (linuxState.fastClockThread && vmLinux->pollTimeoutPtr != NULL) {
@@ -1033,7 +1037,7 @@
           if (vmLinux->pollBack == NULL) {
  #ifdef POLLSPINLOCK
              unsigned long flags;
-@@ -903,7 +907,7 @@
+@@ -903,7 +857,7 @@ LinuxDriverPoll(struct file *filp,  // I
   */
  
  static void
@@ -1042,7 +1046,7 @@
  {
     LinuxDriverWakeUp(FALSE);
  }
-@@ -928,7 +934,15 @@
+@@ -928,7 +882,15 @@ LinuxDriverPollTimeout(unsigned long cli
   *-----------------------------------------------------------------------------
   */
  
@@ -1059,7 +1063,7 @@
  static int LinuxDriverFault(struct vm_area_struct *vma, //IN
                              struct vm_fault *fault)     //IN/OUT
  #else
-@@ -937,6 +946,9 @@
+@@ -937,6 +899,9 @@ static struct page *LinuxDriverNoPage(st
                                        int *type)                  //OUT: Fault type
  #endif
  {
@@ -1069,7 +1073,7 @@
     VMLinux *vmLinux = (VMLinux *) vma->vm_file->private_data;
     unsigned long pg;
     struct page* page;
-@@ -1398,7 +1410,6 @@ LinuxDriver_Ioctl(struct file *filp,    // IN:
+@@ -1398,7 +1363,6 @@ LinuxDriver_Ioctl(struct inode *inode,
     case IOCTL_VMX86_CREATE_VM:
     case IOCTL_VMX86_INIT_CROSSGDT:
     case IOCTL_VMX86_SET_UID:
@@ -1077,7 +1081,7 @@
  #if defined(__linux__) && defined(VMX86_DEVEL)
     case IOCTL_VMX86_LOOK_UP_LARGE_MPN:
  #endif
-@@ -1411,8 +1423,6 @@ LinuxDriver_Ioctl(struct file *filp,    // IN:
+@@ -1411,8 +1375,6 @@ LinuxDriver_Ioctl(struct inode *inode,
     case IOCTL_VMX86_GET_KHZ_ESTIMATE:
     case IOCTL_VMX86_GET_ALL_CPUID:
     case IOCTL_VMX86_GET_ALL_MSRS:
@@ -1086,7 +1090,7 @@
     case IOCTL_VMX86_SET_POLL_TIMEOUT_PTR:
     case IOCTL_VMX86_GET_KERNEL_CLOCK_RATE:
     case IOCTL_VMX86_GET_REFERENCE_CLOCK_HZ:
-@@ -1579,7 +1589,7 @@ LinuxDriver_Ioctl(struct file *filp,    // IN:
+@@ -1579,7 +1541,7 @@ LinuxDriver_Ioctl(struct inode *inode,
        if (retval) {
           break;
        }
@@ -1095,7 +1099,7 @@
        retval = HostIF_CopyToUser((void *)ioarg, &args, sizeof args);
        break;
     }
-@@ -1912,7 +1922,7 @@ LinuxDriver_Ioctl(struct file *filp,    // IN:
+@@ -1912,7 +1874,7 @@ LinuxDriver_Ioctl(struct inode *inode,
           if (retval) {
              break;
           }
@@ -1104,7 +1108,7 @@
           break;
        }
  
-@@ -1923,7 +1933,7 @@ LinuxDriver_Ioctl(struct file *filp,    // IN:
+@@ -1923,7 +1885,7 @@ LinuxDriver_Ioctl(struct inode *inode,
           if (retval) {
              break;
           }
@@ -1113,7 +1117,7 @@
           break;
        }
  
-@@ -2052,7 +2014,6 @@
+@@ -2052,7 +2014,6 @@ exit:
  }
  
  
@@ -1121,7 +1125,7 @@
  /*
   *-----------------------------------------------------------------------------
   *
-@@ -2075,7 +2036,6 @@
+@@ -2075,7 +2036,6 @@ LinuxDriver_UnlockedIoctl(struct file *f
  {
     return LinuxDriver_Ioctl(NULL, filp, iocmd, ioarg);
  }
@@ -1142,7 +1146,7 @@
  #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 25)
  #   include <asm/asm.h>
  #endif
-@@ -72,6 +68,8 @@
+@@ -72,24 +68,30 @@
  #endif
  
  #include <asm/io.h>
@@ -1151,8 +1155,6 @@
  #include <asm/uaccess.h>
  #include <linux/mc146818rtc.h>
  #include <linux/capability.h>
-@@ -77,19 +77,22 @@
- #include <linux/capability.h>
  #include <linux/kthread.h>
  #include <linux/wait.h>
 -
@@ -1160,6 +1162,7 @@
 +#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
 +#include <linux/taskstats_kern.h> // For linux/sched/signal.h without version check
 +#endif
++#include <linux/eventfd.h>
  
  #include "vmware.h"
  #include "x86apic.h"
@@ -1176,32 +1179,53 @@
  #include "vmhost.h"
  #include "x86msr.h"
  #include "apic.h"
-@@ -696,7 +697,24 @@ HostIF_FastClockUnlock(int callerID) // IN
+@@ -630,6 +632,15 @@ HostIF_FastClockUnlock(int callerID) //
+    MutexUnlock(&fastClockMutex, callerID);
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 8, 0)
++static int crosspage_set_exec(pte_t *pte, unsigned long addr, void *data)
++{
++	struct page *p = data;
++
++	set_pte(pte, mk_pte(p, VM_PAGE_KERNEL_EXEC));
++	return 0;
++}
++#endif
+ 
+ /*
+  *-----------------------------------------------------------------------------
+@@ -696,7 +707,29 @@ HostIF_PollListUnlock(int callerID) // I
  static void *
  MapCrossPage(struct page *p)  // IN:
  {
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
++#if COMPAT_LINUX_VERSION_CHECK_LT(5, 8, 0)
     return vmap(&p, 1, VM_MAP, VM_PAGE_KERNEL_EXEC);
 +#else
++   void *addr;
++
++   addr = vmap(&p, 1, VM_MAP, VM_PAGE_KERNEL_EXEC);
++   if (!addr)
++	   return NULL;
++
 +   /* Starting with 5.8, vmap() always sets the NX bit, but the cross
 +    * page needs to be executable. */
-+   pte_t *ptes[1];
-+   struct vm_struct *area = alloc_vm_area(1UL << PAGE_SHIFT, ptes);
-+   if (area == NULL)
++   if (apply_to_page_range(current->mm, (unsigned long)addr, PAGE_SIZE,
++			   crosspage_set_exec, p)) {
++      vunmap(addr);
 +      return NULL;
-+
-+   set_pte(ptes[0], mk_pte(p, VM_PAGE_KERNEL_EXEC));
++   }
 +
 +   preempt_disable();
 +   __flush_tlb_all();
 +   preempt_enable();
 +
-+   return area->addr;
++   return addr;
 +#endif
  }
  
  
-@@ -1010,7 +1013,7 @@ HostIF_FreeLockedPages(VMDriver *vm,	     // IN: VM instance pointer
+@@ -1010,7 +1043,7 @@ HostIF_FreeLockedPages(VMDriver *vm,
  int
  HostIF_Init(VMDriver *vm)  // IN:
  {
@@ -1210,7 +1234,7 @@
     if (vm->memtracker == NULL) {
        return -1;
     }
-@@ -1165,10 +1173,7 @@
+@@ -1165,10 +1198,7 @@ HostIFGetUserPages(void *uvAddr,
  {
     int retval;
  
@@ -1222,7 +1246,7 @@
  
     return retval != numPages;
  }
-@@ -1606,9 +1606,13 @@
+@@ -1606,9 +1636,13 @@ HostIF_EstimateLockedPageLimit(const VMD
      * since at least 2.6.0.
      */
  
@@ -1236,7 +1260,7 @@
  
  #if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 28)
     return MemDefaults_CalcMaxLockedPages(totalPhysicalPages);
-@@ -1626,12 +1631,36 @@ HostIF_EstimateLockedPageLimit(const VMDriver* vm,                // IN
+@@ -1626,13 +1660,37 @@ HostIF_EstimateLockedPageLimit(const VMD
     unsigned int reservedPages = MEMDEFAULTS_MIN_HOST_PAGES;
     unsigned int hugePages = (vm == NULL) ? 0 :
        BYTES_2_PAGES(vm->memInfo.hugePageBytes);
@@ -1248,7 +1272,7 @@
 +   unsigned int lockedPages = hugePages + reservedPages;
 +   unsigned int anonPages;
     unsigned int swapPages = BYTES_2_PAGES(linuxState.swapSize);
-+
+ 
 +   /* global_page_state is global_zone_page_state in 4.14. */
 +#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0)
 +   lockedPages += global_zone_page_state(NR_PAGETABLE);
@@ -1275,10 +1299,11 @@
 +#else
 +   anonPages = global_page_state(NR_ANON_PAGES);
 +#endif
- 
++
     if (anonPages > swapPages) {
        lockedPages += anonPages - swapPages; 
-@@ -1691,6 +1717,49 @@
+    }
+@@ -1691,6 +1749,49 @@ HostIF_WaitForFreePages(unsigned int tim
  /*
   *----------------------------------------------------------------------
   *
@@ -1328,7 +1353,7 @@
   * HostIFReadUptimeWork --
   *
   *      Reads the current uptime.  The uptime is based on getimeofday,
-@@ -1719,16 +1788,12 @@
+@@ -1719,16 +1820,12 @@ HostIF_WaitForFreePages(unsigned int tim
  static uint64
  HostIFReadUptimeWork(unsigned long *j)  // OUT: current jiffies 
  {
@@ -1345,7 +1370,7 @@
   retry:
     do {
        version  = VersionedAtomic_BeginTryRead(&uptimeState.version);
-@@ -1737,13 +1802,12 @@
+@@ -1737,13 +1834,12 @@ HostIFReadUptimeWork(unsigned long *j)
        monoBase = uptimeState.monotimeBase;
     } while (!VersionedAtomic_EndTryRead(&uptimeState.version, version));
  
@@ -1360,7 +1385,7 @@
     uptime += upBase;
     
     /* 
-@@ -1794,7 +1818,7 @@ HostIFReadUptimeWork(unsigned long *j)  // OUT: current jiffies
+@@ -1794,7 +1890,7 @@ HostIFReadUptimeWork(unsigned long *j)
   */
  
  static void
@@ -1369,7 +1394,7 @@
  {
     unsigned long jifs;
     uintptr_t flags;
-@@ -1848,16 +1912,19 @@
+@@ -1848,16 +1944,19 @@ HostIFUptimeResyncMono(unsigned long dat
  void
  HostIF_InitUptime(void)
  {
@@ -1395,7 +1420,7 @@
     mod_timer(&uptimeState.timer, jiffies + HZ);
  }
  
-@@ -2028,15 +2052,15 @@ HostIF_MapCrossPage(VMDriver *vm, // IN
+@@ -2028,15 +2127,15 @@ HostIF_MapCrossPage(VMDriver *vm, // IN
        return NULL;
     }
     vPgAddr = (VA) MapCrossPage(page);
@@ -1414,16 +1439,33 @@
  
     ret = vPgAddr | (((VA)p) & (PAGE_SIZE - 1));
  
-@@ -2278,7 +2345,7 @@ isVAReadable(VA r)  // IN:
+@@ -2273,16 +2372,22 @@ HostIF_VMLockIsHeld(VMDriver *vm) // IN
+ static Bool
+ isVAReadable(VA r)  // IN:
+ {
+-   mm_segment_t old_fs;
+    uint32 dummy;
     int ret;
     
++#ifdef HAVE_GET_KERNEL_NOFAULT
++   ret = get_kernel_nofault(dummy, (void *)r);
++#else
++   {
++   mm_segment_t old_fs;
++ 
     old_fs = get_fs();
 -   set_fs(get_ds());
 +   set_fs(KERNEL_DS);
     r = APICR_TO_ADDR(r, APICR_VERSION);
     ret = HostIF_CopyFromUser(&dummy, (void*)r, sizeof(dummy));
     set_fs(old_fs);
-@@ -2311,7 +2378,7 @@
+-
++   }
++#endif
+    return ret == 0;
+ }
+ 
+@@ -2311,7 +2416,7 @@ SetVMAPICAddr(VMDriver *vm, // IN/OUT: d
     volatile void *hostapic;
  
     ASSERT_ON_COMPILE(APICR_SIZE <= PAGE_SIZE);
@@ -1432,16 +1474,25 @@
     if (hostapic) {
        if ((APIC_VERSIONREG(hostapic) & 0xF0) == 0x10) {
  	 vm->hostAPIC.base = (volatile uint32 (*)[4]) hostapic;
-@@ -2479,7 +2546,7 @@ HostIF_SemaphoreWait(VMDriver *vm,   // IN:
+@@ -2467,7 +2572,6 @@ HostIF_SemaphoreWait(VMDriver *vm,   //
+                      uint64 *args)   // IN:
+ {
+    struct file *file;
+-   mm_segment_t old_fs;
+    int res;
+    int waitFD = args[0];
+    int timeoutms = args[2];
+@@ -2478,9 +2582,6 @@ HostIF_SemaphoreWait(VMDriver *vm,   //
+       return MX_WAITERROR;
     }
  
-    old_fs = get_fs();
+-   old_fs = get_fs();
 -   set_fs(get_ds());
-+   set_fs(KERNEL_DS);
- 
+-
     {
        struct poll_wqueues table;
-@@ -2502,9 +2586,11 @@ HostIF_SemaphoreWait(VMDriver *vm,   // IN:
+       unsigned int mask;
+@@ -2502,9 +2603,11 @@ HostIF_SemaphoreWait(VMDriver *vm,   //
      * the code to happily deal with a pipe or an eventfd. We only care about
      * reading no bytes (EAGAIN - non blocking fd) or sizeof(uint64).
      */
@@ -1456,16 +1507,43 @@
     if (res == sizeof value) {
        res = MX_WAITNORMAL;
     } else {
-@@ -2608,7 +2675,7 @@ HostIF_SemaphoreSignal(uint64 *args)  // IN:
+@@ -2513,7 +2616,6 @@ HostIF_SemaphoreWait(VMDriver *vm,   //
+       }
     }
  
-    old_fs = get_fs();
+-   set_fs(old_fs);
+    fput(file);
+ 
+    /*
+@@ -2596,8 +2698,8 @@ HostIF_SemaphoreForceWakeup(VMDriver *vm
+ int
+ HostIF_SemaphoreSignal(uint64 *args)  // IN:
+ {
++   struct eventfd_ctx *eventfd;
+    struct file *file;
+-   mm_segment_t old_fs;
+    int res;
+    int signalFD = args[1];
+    uint64 value = 1;  // make an eventfd happy should it be there
+@@ -2607,22 +2709,32 @@ HostIF_SemaphoreSignal(uint64 *args)  //
+       return MX_WAITERROR;
+    }
+ 
+-   old_fs = get_fs();
 -   set_fs(get_ds());
-+   set_fs(KERNEL_DS);
++   /*
++    * If it's eventfd, use specific eventfd interface as kernel writes
++    * to eventfd may not be allowed in kernel 5.10 and later.
++    */
++   eventfd = eventfd_ctx_fileget(file);
++   if (!IS_ERR(eventfd)) {
++      eventfd_signal(eventfd, 1);
++      fput(file);
++      return MX_WAITNORMAL;
++   }
  
     /*
      * Always write sizeof(uint64) bytes. This works fine for eventfd and
-@@ -2615,8 +2701,11 @@ HostIF_SemaphoreSignal(uint64 *args)  // IN:
      * pipes. The data written is formatted to make an eventfd happy should
      * it be present.
      */
@@ -1479,11 +1557,16 @@
  
     if (res == sizeof value) {
        res = MX_WAITNORMAL;
-@@ -2850,13 +2874,75 @@ HostIF_CallOnEachCPU(void (*func)(void*), // IN: function to call
- }
+    }
+ 
+-   set_fs(old_fs);
+    fput(file);
+ 
+    /*
+@@ -2851,12 +2963,74 @@ HostIF_CallOnEachCPU(void (*func)(void*)
  
  
-+/*
+ /*
 + *-----------------------------------------------------------------------------
 + *
 + * HostIFCheckTrackedMPN --
@@ -1544,7 +1627,7 @@
 +}
 +
 +
- /*
++/*
   *----------------------------------------------------------------------
   *
   * HostIF_ReadPage --
@@ -1557,7 +1640,7 @@
   *
   * Results:
   *      0 on success
-@@ -2869,7 +2955,8 @@ HostIF_CallOnEachCPU(void (*func)(void*), // IN: function to call
+@@ -2869,7 +3043,8 @@ HostIF_CallOnEachCPU(void (*func)(void*)
   */
  
  int
@@ -1567,7 +1650,7 @@
                  VA64 addr,           // buffer for data
                  Bool kernelBuffer)   // is the buffer in kernel space?
  {
-@@ -2881,6 +2968,9 @@ HostIF_ReadPage(MPN64 mpn,             // MPN of the page
+@@ -2881,6 +3056,9 @@ HostIF_ReadPage(MPN64 mpn,           //
     if (mpn == INVALID_MPN) {
        return -EFAULT;
     }
@@ -1577,7 +1660,7 @@
  
     page = pfn_to_page(mpn);
     ptr = kmap(page);
-@@ -2904,8 +2994,8 @@ HostIF_ReadPage(MPN64 mpn,             // MPN of the page
+@@ -2904,8 +3082,8 @@ HostIF_ReadPage(MPN64 mpn,           //
   *
   * HostIF_WritePage --
   *
@@ -1588,7 +1671,7 @@
   *
   * Results:
   *      0 on success
-@@ -2918,9 +3008,9 @@ HostIF_ReadPage(MPN64 mpn,             // MPN of the page
+@@ -2918,9 +3096,9 @@ HostIF_ReadPage(MPN64 mpn,           //
   */
  
  int
@@ -1601,7 +1684,7 @@
  {
     void const *buf = VA64ToPtr(addr);
     int ret = 0;
-@@ -2947,6 +3037,45 @@ HostIF_WritePage(MPN64 mpn,              // MPN of the page
+@@ -2947,6 +3125,45 @@ HostIF_WritePage(MPN64 mpn,            /
     return ret;
  }
  
@@ -1647,7 +1730,7 @@
  
  /*
   *----------------------------------------------------------------------
-@@ -3160,21 +3328,9 @@
+@@ -3160,21 +3377,9 @@ HostIFDoIoctl(struct file *filp,
                u_int iocmd,
                unsigned long ioarg)
  {
@@ -1669,7 +1752,29 @@
     return -ENOIOCTLCMD;
  }
  #endif //VMON_USE_HIGH_RES_TIMERS
-@@ -3464,7 +3477,6 @@ HostIF_SetFastClockRate(unsigned int rate) // IN: Frequency in Hz.
+@@ -3304,12 +3509,9 @@ HostIFFastClockThread(void *data)  // IN
+ {
+    struct file *filp = (struct file *) data;
+    int res;
+-   mm_segment_t oldFS;
+    unsigned int rate = 0;
+    unsigned int prevRate = 0;
+ 
+-   oldFS = get_fs();
+-   set_fs(KERNEL_DS);
+    allow_signal(SIGKILL);
+    set_user_nice(current, linuxState.fastClockPriority);
+ 
+@@ -3343,8 +3545,6 @@ HostIFFastClockThread(void *data)  // IN
+ 
+  out:
+    LinuxDriverWakeUp(TRUE);
+-   set_fs(oldFS);
+-
+    /*
+     * Do not exit thread until we are told to do so.
+     */
+@@ -3464,7 +3664,6 @@ HostIF_SetFastClockRate(unsigned int rat
        }
     } else {
        if (linuxState.fastClockThread) {
@@ -1677,7 +1782,7 @@
           kthread_stop(linuxState.fastClockThread);
  	 close_rtc(linuxState.fastClockFile, current->files);
  
-@@ -3512,7 +3684,12 @@
+@@ -3512,7 +3711,12 @@ HostIF_MapUserMem(VA addr,
  
     ASSERT(handle);
  
