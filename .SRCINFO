@@ -1,14 +1,14 @@
 pkgbase = pleaser
 	pkgdesc = please, sudo like program with regex support written in rust
-	pkgver = 0.3.16
+	pkgver = 0.3.18
 	pkgrel = 1
 	url = https://gitlab.com/edneville/please
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
-	source = git+https://gitlab.com/edneville/please.git#commit=d330c5b24018ad6144eeb12f382ca5c45c885640
+	source = git+https://gitlab.com/edneville/please.git#tag=v0.3.18
 	sha512sums = SKIP
 
 pkgname = pleaser
