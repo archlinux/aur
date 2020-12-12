@@ -1,7 +1,7 @@
 pkgbase = wesnoth-1.4
 	pkgdesc = Turn-based strategy game on a fantasy world (for old replays)
 	pkgver = 1.4.7+dev
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.wesnoth.org
 	install = wesnoth-1.4.install
 	arch = i486
@@ -22,7 +22,7 @@ pkgbase = wesnoth-1.4
 	depends = zlib
 	depends = freetype2
 	options = !emptydirs
-	source = wesnoth-1.4-git::git clone https://github.com/wesnoth/wesnoth.git#branch=1.4
+	source = wesnoth-1.4-git::git+https://github.com/wesnoth/wesnoth.git#branch=1.4
 	source = wesnoth-1.4.desktop
 	source = wesnothd-1.4.tmpfiles.conf
 	source = wesnothd-1.4.service
