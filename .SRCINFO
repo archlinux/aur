@@ -1,11 +1,18 @@
 pkgbase = lib32-ffmpeg-steam
-	pkgdesc = ln -s /usr/lib32/libav*.so.57 /home/*/.local/share/Steam/ubuntu12_32/libav*.so.57 (fix VAAPI memleak for Steam)
+	pkgdesc = ln -s /usr/lib32/libav*.so* /home/*/.local/share/Steam/ubuntu12_32/libav*.so* (fix VAAPI memleak for Steam)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://freedesktop.org/wiki/Software/vaapi
 	arch = x86_64
 	license = MIT
 	depends = lib32-ffmpeg-compat-57
+	depends = steam
+	source = lib32-ffmpeg-steam-libx.path
+	source = lib32-ffmpeg-steam-libx.service
+	source = lib32-ffmpeg-steam.service
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = lib32-ffmpeg-steam
 

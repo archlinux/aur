@@ -1,0 +1,13 @@
+[Unit]
+Wants=lib32-ffmpeg-steam-libx.service
+After=lib32-ffmpeg-steam-libx.path
+
+[Service]
+# yes, this is oneshot. Cannot use Steam until all symlinks is set
+Type=oneshot
+# just for beautiful green
+RemainAfterExit=yes
+ExecStop=mv %h/.local/share/lib32-ffmpeg-steam/libavcodec.so.57 %h/.local/share/Steam/ubuntu12_32/libavcodec.so.57
+ExecStop=mv %h/.local/share/lib32-ffmpeg-steam/libavformat.so.57 %h/.local/share/Steam/ubuntu12_32/libavformat.so.57
+ExecStop=mv %h/.local/share/lib32-ffmpeg-steam/libavresample.so.3 %h/.local/share/Steam/ubuntu12_32/libavresample.so.3
+ExecStop=mv %h/.local/share/lib32-ffmpeg-steam/libavutil.so.55 %h/.local/share/Steam/ubuntu12_32/libavutil.so.55

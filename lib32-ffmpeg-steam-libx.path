@@ -1,0 +1,6 @@
+[Unit]
+Wants=lib32-ffmpeg-steam-libx.service
+PartOf=lib32-ffmpeg-steam.service
+
+[Path]
+PathChanged=%h/.local/share/Steam/ubuntu12_32

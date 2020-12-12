@@ -1,0 +1,19 @@
+[Unit]
+Wants=lib32-ffmpeg-steam.service
+
+[Service]
+Type=oneshot
+# -
+ExecStart=mkdir -p %h/.local/share/lib32-ffmpeg-steam
+# -
+ExecStart=/bin/sh -c 'test -L %h/.local/share/Steam/ubuntu12_32/libavcodec.so.57 || mv %h/.local/share/Steam/ubuntu12_32/libavcodec.so.57 %h/.local/share/lib32-ffmpeg-steam/libavcodec.so.57'
+ExecStart=-/usr/bin/ln -s /usr/lib32/libavcodec.so.57 %h/.local/share/Steam/ubuntu12_32/libavcodec.so.57
+# -
+ExecStart=/bin/sh -c 'test -L %h/.local/share/Steam/ubuntu12_32/libavformat.so.57 || mv %h/.local/share/Steam/ubuntu12_32/libavformat.so.57 %h/.local/share/lib32-ffmpeg-steam/libavformat.so.57'
+ExecStart=-/usr/bin/ln -s /usr/lib32/libavformat.so.57 %h/.local/share/Steam/ubuntu12_32/libavformat.so.57
+# -
+ExecStart=/bin/sh -c 'test -L %h/.local/share/Steam/ubuntu12_32/libavresample.so.3 || mv %h/.local/share/Steam/ubuntu12_32/libavresample.so.3 %h/.local/share/lib32-ffmpeg-steam/libavresample.so.3'
+ExecStart=-/usr/bin/ln -s /usr/lib32/libavresample.so.3 %h/.local/share/Steam/ubuntu12_32/libavresample.so.3
+# -
+ExecStart=/bin/sh -c 'test -L %h/.local/share/Steam/ubuntu12_32/libavutil.so.55 || mv %h/.local/share/Steam/ubuntu12_32/libavutil.so.55 %h/.local/share/lib32-ffmpeg-steam/libavutil.so.55'
+ExecStart=-/usr/bin/ln -s /usr/lib32/libavutil.so.55 %h/.local/share/Steam/ubuntu12_32/libavutil.so.55
