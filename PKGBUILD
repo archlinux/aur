@@ -4,10 +4,11 @@
 pkgname=zps-git
 pkgdesc="A small utility for listing and reaping zombie processes (git)"
 pkgver=1.2.3.r0.g9d08c49
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/orhun/zps"
 license=('GPL3')
+depends=('glibc')
 makedepends=('git' 'cmake')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
