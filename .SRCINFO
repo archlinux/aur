@@ -1,13 +1,14 @@
 pkgbase = linux-amd-git
-	pkgdesc = Linux kernel with AMDGPU DC patches
-	pkgver = 5.6.888851.7b19914383fc
+	pkgdesc = Linux kernel with AMDGPU WIP patches
+	pkgver = 5.9.934420.11bc98bd71fe
 	pkgrel = 1
-	url = https://cgit.freedesktop.org/~agd5f/linux/
+	url = https://gitlab.freedesktop.org/drm/amd
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
 	makedepends = kmod
 	makedepends = libelf
+	makedepends = pahole
 	makedepends = xmlto
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
@@ -15,22 +16,28 @@ pkgbase = linux-amd-git
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = linux-amd-git::git://people.freedesktop.org/~agd5f/linux#branch=drm-next-5.6
+	source = linux-agd5f::git://people.freedesktop.org/~agd5f/linux#branch=drm-next-5.9
 	source = config
+	source = sphinx-workaround.patch
 	sha256sums = SKIP
-	sha256sums = a8e4a57ca3ed7c525f79f350cb6f862a1a3f6047af92432885bdc8155736e5ab
+	sha256sums = cf69b81648a07ebedb274ed26bed3c4d2ff75c6665ecaca0a724b148c70c9c7c
+	sha256sums = 8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c
 
 pkgname = linux-amd-git
-	pkgdesc = The Linux kernel with AMDGPU DC patches kernel and modules
+	pkgdesc = The Linux kernel with AMDGPU WIP patches kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
 
-pkgname = linux-amd-git-headers
-	pkgdesc = Headers and scripts for building modules for the Linux kernel with AMDGPU DC patches kernel
+pkgname = linux-amd-headers-git
+	pkgdesc = Headers and scripts for building modules for the Linux kernel with AMDGPU WIP patches kernel
 
-pkgname = linux-amd-git-docs
-	pkgdesc = Documentation for the Linux kernel with AMDGPU DC patches kernel
+pkgname = linux-amd-docs-git
+	pkgdesc = Documentation for the Linux kernel with AMDGPU WIP patches kernel
 

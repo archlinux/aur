@@ -1,5 +1,5 @@
-linux-amd-git
+linux-agd5f
+linux-amd*
 src
 pkg
-*.pkg.*
-*.pkg
+*.pkg*
