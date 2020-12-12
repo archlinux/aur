@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl-git
-pkgver=20.11.0.1.r1.g3e495b0ad8
+pkgver=20.11.1.1.r225.gaecddfba94
 pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management (development version)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -70,6 +70,9 @@ build() {
 
 	autoreconf
 	./configure \
+		--disable-developer \
+		--disable-debug \
+		--enable-optimizations \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
 		--sysconfdir=/etc/slurm-llnl \
