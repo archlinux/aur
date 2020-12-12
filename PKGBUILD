@@ -2,7 +2,7 @@
 
 _pkgname='proxify'
 pkgname="${_pkgname}-bin"
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='Swiss Army knife Proxy tool for HTTP/HTTPS traffic capture, manipulation and replay'
 arch=('x86_64' 'armv6h' 'aarch64')
@@ -15,9 +15,9 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v$
 source_armv6h=("${_pkgname}-${pkgver}-armv6.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv6.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('bd88ee67fea984165999cefcbdfedb099edb61c82a3c99c4094b4cb2a0dbf971')
-sha256sums_armv6h=('cc2acac8ab98fe7ebb93858934826903b0c7fc33f3897e357aa5c219025b8b32')
-sha256sums_aarch64=('05dbbd10420345f6c6baa976d904323044333d2faa22697fabe84755667f3f5c')
+sha256sums_x86_64=('fcc25d829cae1c74c36556dfc12d1e2f18b639a0a05d03a755a5c62489c3ac3a')
+sha256sums_armv6h=('6049c825de4ce20a92e0f70757e06b408d91834a236fd0901f6dd2271b723005')
+sha256sums_aarch64=('4440dfe5ed567d6a4f1e8b97e62ef7cadcf0bc2540e92c5ff3180de12a7b7948')
 
 package() {
   install -Dvm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
