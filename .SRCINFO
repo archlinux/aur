@@ -1,6 +1,6 @@
 pkgbase = bilibilitool-dotnet-git
 	pkgdesc = A cross-platform Bilibili daily task tool written in .Net 5
-	pkgver = 1.0.14.r1.ga9cd3f0
+	pkgver = 1.0.15.r0.gd23e87e
 	pkgrel = 1
 	url = https://github.com/RayWangQvQ/BiliBiliTool
 	install = bilibilitool-dotnet-git.install
@@ -18,7 +18,7 @@ pkgbase = bilibilitool-dotnet-git
 	source = bilibilitool-dotnet.timer
 	source = bilitool-get-cookie-for-ff
 	sha256sums = SKIP
-	sha256sums = 706da4f4901361e67c4f31b6302220072a5f5989ad1bfafbb35dfbd3db34e4a9
+	sha256sums = ca3726e76573747bceddf0267a04141b14c2dfa8b353b46a49bb932e620e7c64
 	sha256sums = 81283e4c542f4bcb9b8fcabc9324574e8553fed68738d32836b95bf5b8db44d4
 	sha256sums = 2b4f3621c10194156e0127e07367a2adc3dcc2a90dee5a9ca145931da8ec8d30
 	sha256sums = 55c10b3ff54139395bde101db58d1e31879b72cc50cbbf785280e20e8df17bc0

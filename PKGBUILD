@@ -2,7 +2,7 @@
 
 _pkgname=bilibilitool-dotnet
 pkgname=${_pkgname}-git
-pkgver=1.0.14.r1.ga9cd3f0
+pkgver=1.0.15.r0.gd23e87e
 pkgrel=1
 pkgdesc="A cross-platform Bilibili daily task tool written in .Net 5"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("${_pkgname}::git+https://github.com/RayWangQvQ/BiliBiliTool.git"
 install="${pkgname}.install"
 backup=("etc/${_pkgname}/appsettings.json")
 sha256sums=('SKIP'
-            '706da4f4901361e67c4f31b6302220072a5f5989ad1bfafbb35dfbd3db34e4a9'
+            'ca3726e76573747bceddf0267a04141b14c2dfa8b353b46a49bb932e620e7c64'
             '81283e4c542f4bcb9b8fcabc9324574e8553fed68738d32836b95bf5b8db44d4'
             '2b4f3621c10194156e0127e07367a2adc3dcc2a90dee5a9ca145931da8ec8d30'
             '55c10b3ff54139395bde101db58d1e31879b72cc50cbbf785280e20e8df17bc0')
@@ -48,28 +48,24 @@ build() {
 
   dotnet build \
     --configuration Release \
-    --no-restore \
-
-  cd ./src/Ray.BiliBiliTool.Console
-  dotnet publish \
-  --runtime linux-x64 \
-  --self-contained false \
-  --no-restore \
-  -o ../../linux-x64
+    --no-restore
 }
 
 package() {
   install -Dm644 bilibilitool-dotnet.service "${pkgdir}/usr/lib/systemd/system/bilibilitool-dotnet.service"
   install -Dm644 bilibilitool-dotnet.timer "${pkgdir}/usr/lib/systemd/system/bilibilitool-dotnet.timer"
 
-  cd "${_pkgname}"
-
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
+  cd ${_pkgname}/src/Ray.BiliBiliTool.Console
   install -dm755 ${pkgdir}/usr/{bin,lib} "${pkgdir}/etc/${_pkgname}"
-  cp -a linux-x64 "${pkgdir}/usr/lib/${_pkgname}"
+  dotnet publish \
+  --runtime linux-x64 \
+  --self-contained false \
+  --no-restore \
+  -o "${pkgdir}/usr/lib/${_pkgname}"
   ln -s "/usr/lib/${_pkgname}/Ray.BiliBiliTool.Console" "${pkgdir}/usr/bin/${_pkgname}"
 
+  cd "${_pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${pkgdir}/usr/lib/${_pkgname}/appsettings.json" "${pkgdir}/etc/${_pkgname}/appsettings.json"
 }
 

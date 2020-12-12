@@ -1,13 +1,13 @@
 diff --git a/src/Ray.BiliBiliTool.Console/Program.cs b/src/Ray.BiliBiliTool.Console/Program.cs
-index 84001fe..f3e677b 100644
+index 2654698..484d7e2 100644
 --- a/src/Ray.BiliBiliTool.Console/Program.cs
 +++ b/src/Ray.BiliBiliTool.Console/Program.cs
 @@ -40,7 +40,7 @@ namespace Ray.BiliBiliTool.Console
-         public static void PreWorks(string[] args)
          {
+             //配置:
              RayConfiguration.Root = new ConfigurationBuilder()
 -                .AddJsonFile("appsettings.json", false, true)
 +                .AddJsonFile("/etc/bilibilitool-dotnet/appsettings.json", false, true)
-                 //.AddJsonFile("appsettings.local.json", true,true)
+                 .AddJsonFileByEnv()
                  .AddExcludeEmptyEnvironmentVariables("Ray_")
                  .AddCommandLine(args, Constants.CommandLineMapper)
