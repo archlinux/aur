@@ -2,8 +2,8 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 
 pkgname=aqualung
-pkgver=1.0
-pkgrel=4
+pkgver=1.1
+pkgrel=1
 pkgdesc="High quality music player w/ gapless support"
 arch=(i686 x86_64)
 url="http://aqualung.jeremyevans.net/"
@@ -11,24 +11,21 @@ license=(GPL)
 depends=(gtk2 libxml2 alsa-lib sndio jack libpulse liboggz libusb-compat
          libifp ffmpeg libvorbis libsndfile lua52 wavpack libcdio-paranoia
          libmad flac liblrdf libmpcdec libsamplerate)
-makedepends=(gcc8 ladspa libcddb speex lame libmodplug)
+makedepends=(ladspa libcddb speex lame libmodplug)
 optdepends=('libcddb: CDDB / FreeDB support'
             'speex: Oggz speex support (playback)'
             'lame: MP3 audio support (encode)'
             'libmodplug: MOD files support (playback .mod .s3m .xm .it ...)')
-source=("https://github.com/jeremyevans/aqualung/releases/download/1.0/${pkgname}-${pkgver}.tar.gz"
-        "aqualung-libavcodec-API-55.diff::https://github.com/jeremyevans/aqualung/commit/3f60efe3dbab8e9d2c07a7b183fd009b3c999d60.diff"
+source=("https://github.com/jeremyevans/aqualung/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        "aqualung-Fix_arr_strlcpy_call_in_ifp_device.diff::https://github.com/jeremyevans/aqualung/commit/2a3732f1575d69b64ed5c9b76c6213c7d4fbc20b.diff"
         aqualung.desktop)
-sha256sums=('c286c1432c1475127f4e9525702bcb486ed85fc62539bd3ef344d92333e84347'
-            '9bd0cc8059d28e1e0c2c162c975f98833078df81c50b4a8184989ee93bfb51c3'
+sha256sums=('751c0dfa76840227b8be5d099859990bc765180ba5cd556c6c72f81b368afcbc'
+            '4bb65f0be123934e3710b226760d2aac0cdf1e85b73cd3a4004aaed11cf7a504'
             '4d2aba2924b7c0bacbd377a6975f1cdbf09dc67a5d61c36bf2d52bddbab1b3b9')
-
-export CC=/usr/bin/gcc-8 CXX=/usr/bin/g++-8
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-
-  patch -Np1 -i ../aqualung-libavcodec-API-55.diff
+  patch -Np1 -i ../aqualung-Fix_arr_strlcpy_call_in_ifp_device.diff
 }
 
 build() {
