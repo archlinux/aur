@@ -1,6 +1,6 @@
 pkgbase = android-platform-30
 	pkgdesc = Android SDK Platform, API 30
-	pkgver = 30_r02
+	pkgver = 30_r03
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = android-platform-30
 	depends = android-sdk
 	depends = android-sdk-platform-tools
 	options = !strip
-	source = https://dl-ssl.google.com/android/repository/platform-30_r02.zip
-	sha1sums = 0b1102c5f0be7bc629e396fcefd36b9f1edfa0a7
-	sha384sums = 035f8aa55d9543b21406d9e9956f65bc427b3812420b53618ec1b810ae1adb9c2dbeecafdab1d83d4901943bec63cc14
+	source = https://dl-ssl.google.com/android/repository/platform-30_r03.zip
+	sha1sums = e7c6280901dcfa511af098d67dd88c4dfcbc6ea2
+	sha384sums = 2ff53b95a4584f86ab06c5daaf8aabe6e8bb28eaa3cd2e4e06b9762959d84a0a331721eb3c6e39f49dd0691a961fa46c
 
 pkgname = android-platform-30
 
