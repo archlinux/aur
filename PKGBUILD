@@ -1,12 +1,10 @@
-# Script generated with import_catkin_packages.py.
-# For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - ROS packaging system."
 url='https://www.wiki.ros.org/ROS'
 
 pkgname='ros-melodic-ros'
 pkgver='1.14.9'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -21,7 +19,7 @@ makedepends=(
 
 ros_depends=(
 	ros-melodic-rosmake
-	ros-melodic-rosboost1.69-cfg
+	ros-melodic-rosboost-cfg
 	ros-melodic-rosbuild
 	ros-melodic-rosclean
 	ros-melodic-rosbash
@@ -60,7 +58,7 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF \
-		 -DBOOST_ROOT=/opt/boost1.69
+		-DBOOST_ROOT=/opt/boost1.69
 	make
 }
 
