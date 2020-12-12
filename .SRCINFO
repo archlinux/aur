@@ -1,0 +1,17 @@
+pkgbase = kvantum-theme-orchis-git
+	pkgdesc = Orchis theme for Kvantum
+	pkgver = r5.018fd0f
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Orchis-kde
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = kvantum-qt5
+	provides = kvantum-theme-orchis
+	conflicts = kvantum-theme-orchis
+	conflicts = orchis-kde-theme-git
+	source = git+https://github.com/vinceliuice/Orchis-kde.git
+	sha256sums = SKIP
+
+pkgname = kvantum-theme-orchis-git
+
