@@ -1,0 +1,14 @@
+pkgbase = gawk-timex
+	pkgdesc = GAWK extension - implements the timex API
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://sourceforge.net/projects/gawkextlib/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://downloads.sourceforge.net/gawkextlib/gawk-timex-1.0.0.tar.gz
+	md5sums = b95f088759c7b810f7b9ea9cf090420b
+	sha256sums = 131ba120ae013ef8e49c5f16904e5a27bfb65ff5bdb9008dd7474b352e127524
+
+pkgname = gawk-timex
+
