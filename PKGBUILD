@@ -1,24 +1,23 @@
 # Maintainer: Ryan Suchocki <ryan@suchocki.co.uk>
 # Maintainer: Martin Kröning <m.kroening@hotmail.de>
+
 _target=riscv64-unknown-elf
 pkgname=$_target-gdb
-pkgver=9.1
-pkgrel=2
+pkgver=10.1
+pkgrel=1
 pkgdesc='The GNU Debugger for the 32bit and 64bit RISC-V bare-metal target'
 arch=(x86_64)
 url='https://www.gnu.org/software/gdb/'
 license=(GPL3)
-depends=(xz ncurses expat python guile2.0 gdb-common mpfr)
+depends=(xz ncurses expat python guile gdb-common mpfr libelf)
 options=(!emptydirs)
 source=(https://ftp.gnu.org/gnu/gdb/gdb-$pkgver.tar.xz{,.sig})
-sha256sums=('699e0ec832fdd2f21c8266171ea5bf44024bd05164fdf064e4d10cc4cf0d1737'
+sha256sums=('f82f1eceeec14a3afa2de8d9b0d3c91d5a3820e23e0a01bbb70ef9f0276b62c0'
             'SKIP')
-validpgpkeys=('F40ADB902B24264AA42E50BF92EDB04BFF325CF3') # Joel Brobecker
+validpgpkeys=('F40ADB902B24264AA42E50BF92EDB04BFF325CF3') # Joel Brobecker <brobecker@adacore.com>
 
 prepare() {
   cd gdb-$pkgver
-
-  # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 }
 
@@ -35,7 +34,7 @@ build() {
     --with-system-readline \
     --disable-nls \
     --with-python=/usr/bin/python \
-    --with-guile=guile-2.0 \
+    --with-guile=guile-2.2 \
     --with-system-gdbinit=/etc/gdb/gdbinit
 
   make
@@ -44,11 +43,11 @@ build() {
 package() {
   cd gdb-$pkgver/build
 
-  make -C gdb DESTDIR=$pkgdir install
+  make -C gdb DESTDIR="$pkgdir" install
 
   # Following files conflict with 'gdb'/'gdb-common' packages
-  rm -r $pkgdir/usr/include/gdb/
-  rm -r $pkgdir/usr/share/gdb/
-  rm -r $pkgdir/usr/share/info/
-  rm -r $pkgdir/usr/share/man/man5/
+  rm -r "$pkgdir"/usr/include/gdb/
+  rm -r "$pkgdir"/usr/share/gdb/
+  rm -r "$pkgdir"/usr/share/info/
+  rm -r "$pkgdir"/usr/share/man/man5/
 }
