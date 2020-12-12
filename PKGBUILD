@@ -6,7 +6,7 @@ _module='python-libinput'
 pkgver=0.3.0pre1
 # TODO: remove
 _commit=1f477ee9f1d56b284b20e0317ea8967c64ef1218
-pkgrel=2
+pkgrel=3
 pkgdesc="Object-oriented wrapper for libinput using ctypes"
 url="https://github.com/OzymandiasTheGreat/python-libinput"
 depends=('python' 'libinput')
