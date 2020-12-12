@@ -3,11 +3,12 @@
 
 pkgname=ali-git
 pkgver=0.5.4.r0.ge7108d2
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate HTTP load and plot the results in real-time (git)"
 arch=('x86_64')
 url="https://github.com/nakabonne/ali"
 license=('MIT')
+depends=('glibc')
 makedepends=('git' 'go')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
