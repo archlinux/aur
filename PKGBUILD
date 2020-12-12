@@ -5,7 +5,7 @@
 set -u
 pkgname="miller"
 #pkgname+='-git'
-pkgver='5.9.1'
+pkgver='5.10.0'
 pkgrel='1'
 pkgdesc='sed, awk, cut, join, and sort for name-indexed data such as CSV and tabular JSON.'
 arch=('x86_64' 'i686')
@@ -17,8 +17,8 @@ _verwatch=("${url}/releases" ".*/mlr-\([0-9.]\+\)\.tar\.gz.*" 'f') # mlr RSS is 
 _srcdir="mlr-${pkgver%.r*}"
 source=("${url}/releases/download/v${pkgver%.r*}/mlr-${pkgver%.r*}.tar.gz")
 #source[0]='https://github.com/johnkerl/miller/archive/master.tar.gz'; _srcdir='miller-master'
-md5sums=('6c0c05a1ab1b7b6d03b3c374f894dcf9')
-sha256sums=('fb531efe5759b99935ce420c8ad763099cf11c2db8d32e8524753f4271454b57')
+md5sums=('9a35e38cc0f168a57cdd60b470f02234')
+sha256sums=('1e964a97ee0333a57966a2e8d1913aebc28875e9bee3effbbc51506ca5389200')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
   md5sums[0]='SKIP'
@@ -59,15 +59,9 @@ build() {
 package() {
   set -u
   cd "${_srcdir}"
-  if [ -s 'doc/mlr.1' ]; then
-    install -d "${pkgdir}/usr/bin"
-    #make INSTALLDIR="${pkgdir}/usr/bin" DESTDIR="${pkgdir}" MANDIR='/usr/share/man/man1' install # pre 2.2.1
-    make DESTDIR="${pkgdir}" install
-  else
-    # for pre 2.2.1, make install is broken. It remakes some of the sources for no reason.
-    install -Dpm755 'c/mlr' -t "${pkgdir}/usr/bin/"
-    install -Dpm644 'doc/miller.1' -t "${pkgdir}/usr/share/man/man1/"
-    ln -sf 'miller.1.gz' "${pkgdir}/usr/share/man/man1/mlr.1.gz"
+  make DESTDIR="${pkgdir}" install
+  if [ -d 'docs' ]; then
+    install -Dpm644 docs/*.1 -t "${pkgdir}/usr/share/man/man1/"
   fi
   set +u
 }
