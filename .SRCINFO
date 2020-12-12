@@ -1,8 +1,8 @@
 pkgbase = libsbml
 	pkgdesc = XML-based description language for computational models in systems biology
-	pkgver = 5.18.0
-	pkgrel = 2
-	url = http://sbml.org/Software/libSBML
+	pkgver = 5.19.0
+	pkgrel = 1
+	url = http://sbml.org/Software/libsbml
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -19,8 +19,8 @@ pkgbase = libsbml
 	optdepends = ruby
 	optdepends = java-runtime
 	options = !libtool
-	source = http://sourceforge.net/projects/sbml/files/libsbml/5.18.0/stable/libSBML-5.18.0-core-plus-packages-src.tar.gz
-	sha256sums = 6c01be2306ec0c9656b59cb082eb7b90176c39506dd0f912b02e08298a553360
+	source = libsbml-5.19.0.tar.gz::https://github.com/sbmlteam/libsbml/archive/v5.19.0.tar.gz
+	sha256sums = 127a44cc8352f998943bb0b91aaf4961604662541b701c993e0efd9bece5dfa8
 
 pkgname = libsbml
 
