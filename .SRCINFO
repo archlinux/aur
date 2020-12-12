@@ -1,0 +1,16 @@
+pkgbase = gawk-aregex
+	pkgdesc = GAWK extension - approximate regex (fuzzy) matching
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://sourceforge.net/projects/gawkextlib/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gawkextlib
+	depends = tre
+	source = https://downloads.sourceforge.net/gawkextlib/gawk-aregex-1.1.0.tar.gz
+	md5sums = e1a8610596606be18d964e478ce0a833
+	sha256sums = dcbf5fd243a1ea09d5c5de7e49a2c15aadc78646b2100359d4ce834df0e47afe
+
+pkgname = gawk-aregex
+
