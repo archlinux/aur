@@ -106,9 +106,6 @@ build() {
     -D errorlogs=false \
     -D stdsplit=false \
     -D b_pgo=off \
-    -D optimization=3 \
-    -D libunwind=false \
-    -D debug=false
     -D libunwind=false \
     -D debug=false
      
