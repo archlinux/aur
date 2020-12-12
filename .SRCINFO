@@ -1,7 +1,7 @@
 pkgbase = inpulse-to-talk
 	pkgdesc = Push-to-Talk with libinput + Pulseaudio
 	pkgver = v1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/somini/inpulse-to-talk
 	arch = any
 	license = GPL3

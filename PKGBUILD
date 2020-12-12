@@ -2,7 +2,7 @@
 pkgbase=inpulse-to-talk
 pkgname=inpulse-to-talk
 pkgver=v1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Push-to-Talk with libinput + Pulseaudio"
 url="https://gitlab.com/somini/inpulse-to-talk"
 # Technically, 'pulseaudio-ctl' is optdepends
