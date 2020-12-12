@@ -1,0 +1,20 @@
+pkgbase = free-hash-checker
+	pkgdesc = A simple and elegant open-source hash checker software.
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/TechLearnersInc/Free-Hash-Checker
+	arch = x86_64
+	license = MIT
+	depends = python>=3.7.0
+	depends = pyside2>=5.15.2
+	depends = python-requests>=2.24.0
+	depends = sip>=4.19.24
+	source = Free-Hash-Checker.tar.gz::https://github.com/TechLearnersInc/Free-Hash-Checker/archive/v3.0.tar.gz
+	source = Free-Hash-Checker.desktop.in
+	source = AppRun.sh
+	md5sums = 584c25bdbb413dc8996533db17d7fca7
+	md5sums = 7a6bf12d4d653292a01f96e370d5a31f
+	md5sums = 8d687c3233bf1bbe97e8a83f804735fd
+
+pkgname = free-hash-checker
+

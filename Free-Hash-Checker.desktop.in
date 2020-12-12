@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Categories=Utility
+Terminal=false
+Exec=free-hash-checker
+Name=Free Hash Checker
+Icon=free-hash-checker
+Comment=A simple and elegant open-source hash checker software.
