@@ -1,6 +1,6 @@
 pkgbase = cpuminer-opt
 	pkgdesc = Optimized multi-algo CPU miner
-	pkgver = 3.15.2
+	pkgver = 3.15.3
 	pkgrel = 1
 	url = https://github.com/JayDDee/cpuminer-opt
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = cpuminer-opt
 	provides = cpuminer
 	provides = cpuminer-multi
 	conflicts = cpuminer
-	source = cpuminer-opt-3.15.2.tar.gz::https://github.com/JayDDee/cpuminer-opt/archive/v3.15.2.tar.gz
-	sha256sums = f2cbac9a4c56ac2c6d8222150472beba25e41fd5c6eaf6db913c9ad606016dc6
+	source = cpuminer-opt-3.15.3.tar.gz::https://github.com/JayDDee/cpuminer-opt/archive/v3.15.3.tar.gz
+	sha256sums = 0e33100e439ae07fd6984b3d478b3a1737c868fc28e4b5801d8083ebbd295404
 
 pkgname = cpuminer-opt
 
