@@ -3,7 +3,7 @@
 
 pkgname=snapper
 pkgver=0.8.14
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for managing BTRFS and LVM snapshots. It can create, diff and restore snapshots and provides timelined auto-snapping."
 arch=('x86_64')
 url="http://snapper.io"
