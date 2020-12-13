@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/restic/restic"
 license=('BSD')
 depends=('glibc')
-makedepends=('git' 'go>=1.3')
+makedepends=('git' 'go')
 provides=('restic')
 conflicts=('restic')
 source=("${pkgname}::git+https://github.com/restic/restic")
