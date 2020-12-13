@@ -3,7 +3,7 @@
 # General package information
 pkgname=weakauras-companion-bin
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform application built to provide the missing link between Wago.io and World of Warcraft. (This is a repackage of the official RPM package.)"
 url="https://github.com/WeakAuras/WeakAuras-Companion"
 license=("GPL2")
@@ -20,5 +20,5 @@ package() {
     chmod 755 "${pkgdir}/opt" "${pkgdir}/usr"
 
     mkdir -p "${pkgdir}/usr/bin"
-    ln -sf "${pkgdir}/opt/WeakAuras Companion/weakauras-companion" "${pkgdir}/usr/bin/weakauras-companion"
+    ln -sf "/opt/WeakAuras Companion/weakauras-companion" "${pkgdir}/usr/bin/weakauras-companion"
 }
