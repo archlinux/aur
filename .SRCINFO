@@ -16,6 +16,7 @@ pkgbase = lib32-cairo-git
 	depends = lib32-pixman
 	depends = lib32-glib2
 	depends = cairo
+	optdepends = valgrind: valgrind support
 	provides = lib32-cairo
 	conflicts = lib32-cairo
 	source = git+https://gitlab.freedesktop.org/cairo/cairo.git
