@@ -1,12 +1,12 @@
 pkgbase = task-spooler
 	pkgdesc = Queue up tasks from the shell for batch execution
-	pkgver = 1.0
-	pkgrel = 3
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = http://vicerveza.homeunix.net/~viric/soft/ts/
 	arch = x86_64
 	license = GPL
-	source = http://ftp.debian.org/debian/pool/main/t/task-spooler/task-spooler_1.0.orig.tar.gz
-	md5sums = c7589cdc28115d8925794d713ff72dba
+	source = http://vicerveza.homeunix.net/~viric/soft/ts/ts-1.0.1.tar.gz
+	md5sums = 21dc21a63645cad2464be4b52bb12dd8
 
 pkgname = task-spooler
 
