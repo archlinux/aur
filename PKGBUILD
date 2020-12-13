@@ -59,7 +59,7 @@ _pick() {
 
 package_pulseaudio-hsphfpd() {
   depends=("libpulse-hsphfpd=$pkgver-$pkgrel" alsa-card-profiles rtkit libltdl speexdsp
-           tdb orc libsoxr webrtc-audio-processing libxtst)
+           tdb orc libsoxr webrtc-audio-processing libxtst hsphfpd-git)
   optdepends=('pulseaudio-alsa: ALSA configuration (recommended)'
               'pulseaudio-zeroconf-hsphfpd: Zeroconf support'
               'pulseaudio-lirc-hsphfpd: IR (lirc) support'
