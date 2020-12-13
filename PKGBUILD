@@ -3,45 +3,37 @@
 _pkgname=backblaze-b2
 _reponame="B2_Command_Line_Tool"
 
-pkgname="${_pkgname}-git"
-pkgver=r1123.15a60ad
+pkgname=${_pkgname}-git
+pkgver=r1710.1ddcc6e
 pkgrel=1
-pkgdesc="Backblaze B2 Command Line Client."
-arch=('any')
+pkgdesc="Backblaze B2 Command Line Client"
+arch=(any)
 url="https://www.backblaze.com/b2/cloud-storage.html"
-license=('MIT')
-depends=('python2'
-         'python2-arrow'
-         'python2-futures'
-         'python2-logfury'
-         'python2-requests'
-         'python2-six'
-         'python2-tqdm')
-makedepends=('git'
-             'python2-setuptools')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("git://github.com/Backblaze/$_reponame.git")
+license=(MIT)
+depends=(python python-b2sdk python-tqdm python-class-registry)
+makedepends=(git python-setuptools)
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=("git+https://github.com/Backblaze/${_reponame}.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_reponame"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" \
-        "$(git rev-parse --short HEAD)"
+  cd "$_reponame"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$srcdir/$_reponame"
-    python2 setup.py build
+  cd "$_reponame"
+  python setup.py build
 }
 
 package() {
-    cd "$srcdir/$_reponame"
-    python2 setup.py install --root="$pkgdir" --optimize=1
+  cd "$_reponame"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-    rm -rf "$pkgdir"/usr/lib/python*/site-packages/test
-
-    install -Dm0644 contrib/bash_completion/b2 \
-        "$pkgdir/etc/bash_completion.d/b2"
-    install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm0644 contrib/bash_completion/b2 "$pkgdir/etc/bash_completion.d/b2"
+  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
+
+# vim: set ts=2 sw=2 et:
