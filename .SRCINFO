@@ -1,6 +1,6 @@
 pkgbase = kbd-tapper
 	pkgdesc = A keyboard layout selector for Gnome Shell, X Window System and Wayland
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = http://kbd-tapper.sourceforge.net/en.html
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = kbd-tapper
 	depends = libinput
 	depends = libxtst
 	depends = json-glib
-	source = https://sourceforge.net/projects/kbd-tapper/files/0.4.3/tapper-0.4.3-0.vdb.1.tar.gz
-	sha256sums = ad2800652190d46c8427012392718931348d6c30871df1082f6bf8d62adb7d25
+	source = https://sourceforge.net/projects/kbd-tapper/files/0.4.4/tapper-0.4.4-0.vdb.1.tar.gz
+	sha256sums = 97ca78c5995c20d390f8a1d3ca78ce81104adf42bb9318f4cf341d2713e3b60a
 
 pkgname = kbd-tapper
 
