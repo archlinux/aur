@@ -1,7 +1,7 @@
 # Maintainer: Luke Frisken <l.frisken@gmail.com>
 pkgname=aleo-studio-bin
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 license=('custom')
 pkgdesc="The World's First IDE for Zero-Knowledge Proofs."
 arch=('x86_64')
@@ -24,5 +24,5 @@ package() {
 	chown root:root -R ../pkg/aleo-studio-bin/opt
 	chmod 755 -R ../pkg/aleo-studio-bin/opt
 	chown root:root -R ../pkg/aleo-studio-bin/usr
-	chmod 644 -R ../pkg/aleo-studio-bin/usr
+	chmod 755 -R ../pkg/aleo-studio-bin/usr
 }
