@@ -32,7 +32,7 @@ package() {
   cd $pkgname-$pkgver
 
   install -dm755 "$pkgdir/usr/share/man/man1"
-  gzip doc/gnofract4d.1 > "$pkgdir/usr/share/man/man1/$pkgname.1.gz"
+  install -Dm644 doc/gnofract4d.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
 
   ./setup.py install --root="$pkgdir" --optimize=1
 }
