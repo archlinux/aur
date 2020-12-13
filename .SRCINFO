@@ -1,0 +1,22 @@
+pkgbase = r-credentials
+	pkgdesc = Tools for Managing SSH and Git Credentials
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=credentials
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-openssl>=1.3
+	depends = r-sys>=2.1
+	depends = r-curl
+	depends = r-jsonlitr
+	depends = r-askpass
+	optdepends = r-testthat
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = git
+	source = https://cran.r-project.org/src/contrib/credentials_1.3.0.tar.gz
+	sha256sums = c119ec26fd97b977c3b0cd1eb8fad3c59b84df6262c3adbf5ee9f3d6c9903ff1
+
+pkgname = r-credentials
+
