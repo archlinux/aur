@@ -1,6 +1,6 @@
 # Maintainer: thaliarchos <thaliarchos at protonmail dot com>
 pkgname=bookmenu-git
-pkgver=r74.d3805d7
+pkgver=r76.930a68c
 pkgrel=1
 pkgdesc="Command line interface ebooks browser and downloader for LibGen using the InterPlanetary File System."
 arch=('any')
