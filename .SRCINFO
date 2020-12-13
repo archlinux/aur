@@ -1,0 +1,21 @@
+pkgbase = openkropki
+	pkgdesc = OpenKropki is an open-source and multiplatform implementation of the kropki game. It runs on most POSIX systems. MIT license.
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://openkropki.sourceforge.net/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = tar
+	makedepends = make
+	makedepends = gcc
+	makedepends = sed
+	depends = sdl2_ttf
+	depends = sdl2
+	depends = zlib
+	conflicts = openkropki-svn
+	source = http://openkropki.sourceforge.net/archiwum/openkropki-0.4.tar.xz
+	sha512sums = 1e62fec32de2dd51eadae133449d95aa6ebdaa9afc4ad7f95fa3255a3e0b88895bb1485030993c95df730b67cc6d08ca08df805abd3f09b4431d09f87c0a6149
+
+pkgname = openkropki
+
