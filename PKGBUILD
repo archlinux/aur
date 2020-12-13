@@ -19,7 +19,7 @@ license=(GPL)
 depends=("libltdl" "rtkit" "tdb" "orc" "dconf")
 makedepends=("git" "attr" "rtkit"
              "tdb" "intltool"
-             "orc" "check" "meson")
+             "orc" "check" "meson" "speexdsp")
 optdepends=("alsa-plugins: ALSA support"
             "pulseaudio-alsa: ALSA configuration (recommended)")
 backup=(etc/pulse/{daemon.conf,default.pa,system.pa,client.conf})

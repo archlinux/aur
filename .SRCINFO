@@ -13,6 +13,7 @@ pkgbase = pulseaudio-nosystemd-minimal-git
 	makedepends = orc
 	makedepends = check
 	makedepends = meson
+	makedepends = speexdsp
 	depends = libltdl
 	depends = rtkit
 	depends = tdb
