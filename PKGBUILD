@@ -3,10 +3,10 @@
 
 _name=cutter
 pkgname=${_name}-git
-pkgver=1.10.3.pre.r188.geefaabd3
+pkgver=1.10.3.pre.r189.g3b5c6ff9
 pkgrel=1
-pkgdesc="A Qt and C++ GUI for radare2 reverse engineering framework (originally named Iaito)"
-url="https://github.com/radareorg/cutter"
+pkgdesc="A Qt and C++ GUI for rizin reverse engineering framework (originally named Iaito)"
+url="https://cutter.re/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('python' 'qt5-base' 'qt5-svg' 'qt5-webengine' 'icu' 'pyside2' 'graphviz' 'syntax-highlighting' 'qt5-tools')
@@ -15,7 +15,7 @@ depends+=('rizin')
 optdepends=()
 provides=('cutter')
 backup=()
-source=("${_name}::git://github.com/radareorg/cutter.git"
+source=("${_name}::git://github.com/rizinorg/cutter.git"
         "git://github.com/rizinorg/cutter-translations.git")
 sha256sums=('SKIP'
             'SKIP')
