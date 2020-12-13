@@ -54,14 +54,14 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=6
+pkgrel=7
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
-             'graphviz' 'imagemagick' 'pahole')
+             'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 # Some patches for BFQ conflict with patches for BFQ-dev.
@@ -350,7 +350,7 @@ sha512sums=('96af08c1dc964e5dbb3d221880ef8ca246f13370d2dc2f5ae64039f0352efc687c7
             '3fb990e45784be1d932d7374483b76f474457e341cdaba9c4c4cd1c7ee78c3645709d36758922a5dd0ec1c49dd206ba12d83c5464770890e237ca6c742065de1'
             'a07144e630c7fef92c2ae488c3537c850788275f49abce2aa54df4e5199a7288d1a336729f8293931a00b2cc3f8f2d0e6c1b8740c364b1b590faadc86fd744ae'
             'b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6'
-            'dfad8ea58cf37cb76f6876375340b1480a332fe710c06f112cd5a93bf6e7e6d1d40e9e8827bfdb5ade1037f6a9609ad19a29c4262c3d6fd29712673d4d471fc7')
+            'b11a56af9eed708fe78acacc1979c7ac1082466e621257782d8398e5094f3fc3ac89c53afa7fa62dcf784a948b4cb4ad8513df83b9e65b297c1fa00a63620ffd')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
