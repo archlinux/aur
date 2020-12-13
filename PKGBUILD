@@ -2,8 +2,8 @@
 # Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=bugwarrior
-pkgver=1.7.0
-pkgrel=4
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="pull issues from issue trackers into taskwarrior (GitHub, GitLab, Bitbucket, etc.)"
 arch=(any)
 conflicts=(bugwarrior-git)
@@ -26,7 +26,7 @@ optdepends=('python-keyring: keyring support'
             'python-bugzilla: bugzilla support')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ralphbean/bugwarrior/archive/$pkgver.tar.gz")
-sha256sums=('2d7cee5043e35aa1a63d13eeccd14264759ae4358fdd60178bb96eda51b6b487')
+sha256sums=('df15fd401161dcbdf2d1f6a043a6ab0c93264b43b01ed6d08f39eec213a9c129')
 
 prepare(){
     cd "$srcdir/$pkgname-$pkgver"
