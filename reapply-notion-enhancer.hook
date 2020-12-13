@@ -5,6 +5,6 @@ Target = notion-app
 [Action]
 Description = Reapplying notion-enhancer...
 When = PostTransaction
-Exec = /usr/bin/notion-enhancer apply -n
+Exec = /bin/sh -c 'chmod -R a+wr /usr/lib/node_modules/notion-enhancer/ /opt/notion-app/ /usr/share/applications/notion-app.desktop /usr/bin/notion-app && /usr/bin/notion-enhancer remove -n && /usr/bin/notion-enhancer apply -n'
 Depends = notion-enhancer
 Depends = notion-app

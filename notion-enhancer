@@ -10,10 +10,9 @@ yellow="${bold}$(tput setaf 3)"
 
 post_install() {
     echo "Applying notion-enhancer automatically..."
-    notion-enhancer apply -y
-    warn "The installer will own the files necessary for it to work with chmod -R a+wr"
-	chmod -R a+wr /usr/lib/node_modules/notion-enhancer/ /opt/notion-app/
-	chmod a+wr   /usr/share/applications/notion-app.desktop /usr/bin/notion-app
+    warn "The installer will own the files necessary for it to work with chmod -R a+wr. Ignore the warnings if any"
+	chmod -R a+wr /usr/lib/node_modules/notion-enhancer/ /opt/notion-app/ /usr/share/applications/notion-app.desktop /usr/bin/notion-app
+	notion-enhancer apply -y
 }
 
 post_upgrade() {
@@ -21,7 +20,8 @@ post_upgrade() {
         echo "Notion-enhancer is not applied, skipping"
     else
         echo "Reapplying notion-enhancer"
-        notion-enhancer apply -y
+        notion-enhancer remove -n # don't delete the data
+        notion-enhancer apply -y # yes, overwrite
     fi
 }
 
