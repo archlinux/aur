@@ -1,6 +1,6 @@
 pkgbase = dracut-git
 	pkgdesc = An event driven initramfs infrastructure
-	pkgver = 049.r98.23acf152
+	pkgver = 050.r213.3a12309c
 	pkgrel = 1
 	url = https://dracut.wiki.kernel.org
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = dracut-git
 	depends = grep
 	depends = gzip
 	depends = kmod
+	depends = pkgconf
 	depends = procps-ng
 	depends = sed
 	depends = systemd
@@ -23,6 +24,7 @@ pkgbase = dracut-git
 	optdepends = binutils: --uefi option support
 	optdepends = elfutils: strip binaries to reduce initramfs size
 	optdepends = hardlink: --hardlink option support
+	optdepends = memstrack: memstrack module support
 	optdepends = multipath-tools: dmraid dracut module support
 	optdepends = pigz: faster gzip compression
 	optdepends = sbsigntools: uefi_secureboot_cert/key configuration option support
@@ -34,4 +36,3 @@ pkgbase = dracut-git
 	sha512sums = SKIP
 
 pkgname = dracut-git
-
