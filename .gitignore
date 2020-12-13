@@ -3,3 +3,4 @@ src/
 *.xz
 *.tgz
 *.zst
+*.sig
