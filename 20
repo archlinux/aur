@@ -10,7 +10,7 @@ module-whatis "AmberTools20 package"
 
 set             AMBERHOME       /opt/amber
 set             _gccver         9.3.0
-set             _pyver          3.8
+set             _pyver          3.9
 
 setenv          AMBERHOME       ${AMBERHOME}
 

@@ -13,7 +13,7 @@ else
     export PERL5LIB="${AMBERHOME}/lib/perl:${PERL5LIB}"
 fi
 
-export _pyver=3.8
+export _pyver=3.9
 if [ -z "${PYTHONPATH}" ]; then
     export PYTHONPATH="${AMBERHOME}/lib/python${_pyver}/site-packages"
 else
