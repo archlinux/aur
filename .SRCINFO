@@ -1,6 +1,6 @@
 pkgbase = janet-lang-git
 	pkgdesc = A dynamic Lisp dialect and bytecode vm
-	pkgver = 1.12.1.r2379.15e05b69
+	pkgver = 1.13.1.r2604.392d5d51
 	pkgrel = 1
 	url = https://janet-lang.org/
 	arch = arm
