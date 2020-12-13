@@ -1,13 +1,12 @@
 pkgbase = touchegg
 	pkgdesc = Multitouch gesture recognizer
 	pkgver = 2.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/JoseExposito/touchegg/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	makedepends = pkgconf
 	depends = libinput
 	depends = cairo
 	depends = systemd-libs
