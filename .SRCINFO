@@ -1,0 +1,12 @@
+pkgbase = imsg-compat
+	pkgdesc = linux port of OpenBSD imsg utilities
+	pkgver = 6.8.0
+	pkgrel = 1
+	url = https://github.com/bsd-ac/imsg-compat
+	arch = any
+	license = ISC
+	source = imsg-compat-6.8.0.tar.gz::https://github.com/bsd-ac/imsg-compat/archive/6.8.0.tar.gz
+	md5sums = 34d66d1118f99eca32bc2ce006af4f83
+
+pkgname = imsg-compat
+
