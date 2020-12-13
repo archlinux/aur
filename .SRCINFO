@@ -8,7 +8,6 @@ pkgbase = eudev-git
 	license = GPL
 	makedepends = gobject-introspection
 	makedepends = gperf
-	makedepends = gtk-doc
 	makedepends = intltool
 	makedepends = kmod
 	options = !libtool

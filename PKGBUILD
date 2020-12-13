@@ -12,7 +12,7 @@ pkgrel=1
 arch=('x86_64')
 url="https://github.com/gentoo/eudev"
 license=('GPL')
-makedepends=('gobject-introspection' 'gperf' 'gtk-doc' 'intltool' 'kmod')
+makedepends=('gobject-introspection' 'gperf' 'intltool' 'kmod')
 options=('!libtool' '!staticlibs')
 source=("git+https://anongit.gentoo.org/git/proj/eudev.git"
 	'initcpio_hooks'
@@ -49,7 +49,7 @@ build() {
 		--sbindir=/usr/bin \
 		--enable-introspection \
 		--enable-kmod \
-		--enable-manpages \
+		--disable-manpages \
 		--enable-split-usr
 
 	make
