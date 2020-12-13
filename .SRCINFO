@@ -1,23 +1,42 @@
 pkgbase = maya-substance
 	pkgdesc = Autodesk Maya Substance Plugin
-	pkgver = 2.1.2
+	pkgver = 2.1.7
 	pkgrel = 1
 	url = https://www.substance3d.com/ecosystem-plug-ins/substance-in-maya
 	arch = x86_64
 	license = custom
+	depends = bzip2
+	depends = double-conversion
+	depends = freetype2
 	depends = gcc-libs
+	depends = glib2
 	depends = glibc
 	depends = glu
+	depends = graphite
+	depends = harfbuzz
+	depends = icu
+	depends = libgcrypt
 	depends = libglvnd
+	depends = libgpg-error
+	depends = libpng
 	depends = libx11
 	depends = libxau
 	depends = libxcb
 	depends = libxdmcp
 	depends = libxext
-	depends = maya>=2020
+	depends = lz4
+	depends = md4c
+	depends = pcre
+	depends = pcre2
+	depends = qt5-base
+	depends = systemd-libs
+	depends = xz
+	depends = zlib
+	depends = zstd
+	depends = maya=2020.4
 	options = !strip
-	source = manual://SubstanceInMaya-2.1.2-2020-Linux.rpm
-	sha256sums = 1307b537ac565e3ffe82e5a0bdad6c042ab169353f92d6aca00a637dab437bf8
+	source = manual://SubstanceInMaya-2.1.7-2020-Linux.rpm
+	sha256sums = 4516239dbbdbbd1cbea9bad8ec674860a1817fc4bee0addc322e5460464823d8
 
 pkgname = maya-substance
 
