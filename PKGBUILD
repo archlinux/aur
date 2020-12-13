@@ -3,29 +3,31 @@
 
 pkgname=adminer
 pkgver=4.7.8
-pkgrel=1
-pkgdesc="A full-featured MySQL management tool written in PHP."
-arch=('any')
-license=('Apache' 'GPL')
-depends=('php')
-optdepends=('mysql' 'apache' 'postgresql' 'sqlite')
+pkgrel=2
+pkgdesc="A full-featured MySQL management tool written in PHP"
+arch=(any)
+license=(Apache GPL2)
+depends=(php)
+optdepends=(apache elasticsearch mariadb mongodb mysql postgresql sqlite)
 url="https://www.adminer.org"
-install=${pkgname}.install
-source=("${pkgname}.install"
+install=adminer.install
+source=("adminer.install"
         "httpd-${pkgname}.conf"
         "https://github.com/vrana/adminer/releases/download/v${pkgver}/adminer-${pkgver}.php")
-sha256sums=('a9b786e220c0deabcb96849ffa511f1ef0b130836f978a8504e1ffbc9c723e51'
-            '176b392620e8d972188685e0e202cba853a2ff5e3d0c90fef130ef1c8c2491c2'
+sha256sums=('e8d00ae49761c4d9cbbb9d3e32756f601e28c74a306d55974accc753b2a5ed36'
+            '7886a90cc6e57c48d18048344c1040f3ab6e361dfa7793b17b83604fdfd87f6e'
             'eadca9f2194702a4c0bc74ad02846bf88fdf521128c205ac0ec2c345489b1384')
 
 package() {
-    cd "$srcdir"
-    install -Dm0644 "${pkgname}-${pkgver}.php" \
-        "$pkgdir/usr/share/webapps/$pkgname/index.php"
+  cd "$srcdir"
+  install -Dm0644 "${pkgname}-${pkgver}.php" \
+    "$pkgdir/usr/share/webapps/$pkgname/index.php"
 
-    # TODO: I don't really like this. What if someone is using nginx, for
-    # example? Or doesn't care to have any configuration installed at all.
-    # Consider removing.
-    install -Dm0644 "httpd-${pkgname}.conf" \
-        "$pkgdir/etc/httpd/conf/extra/httpd-${pkgname}.conf"
+  # TODO: I don't really like this. What if someone is using nginx, for
+  # example? Or doesn't care to have any configuration installed at all.
+  # Consider removing.
+  install -Dm0644 "httpd-${pkgname}.conf" \
+    "$pkgdir/etc/httpd/conf/extra/httpd-${pkgname}.conf"
 }
+
+# vim: set ts=2 sw=2 et:

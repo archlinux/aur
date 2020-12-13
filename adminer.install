@@ -9,9 +9,11 @@ http://localhost/adminer.
 EOM
 
 post_install() {
-	echo -e "$MESSAGE";
+  echo -e "$MESSAGE";
 }
 
 post_upgrade() {
-	echo -e "$MESSAGE";
+  echo -e "$MESSAGE";
 }
+
+# vim: set ts=2 sw=2 et:
