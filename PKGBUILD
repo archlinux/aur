@@ -12,9 +12,9 @@ license=('LGPL' 'GPL' 'custom')
 provides=(graphite)
 conflicts=(graphite)
 depends=('gcc-libs')
-makedepends=('cmake' 'freetype2' 'python'
+makedepends=('cmake' 'freetype2' 'python')
              # for documentation
-             'doxygen' 'dblatex' 'graphviz' 'asciidoc')
+#             'doxygen' 'dblatex' 'graphviz' 'asciidoc')
 checkdepends=('python-fonttools')
 options=('!emptydirs')
 source=(git+https://github.com/silnrsi/graphite)
@@ -34,10 +34,10 @@ build() {
 	-DGRAPHITE2_COMPARE_RENDERER=OFF \
 
   # fix unwanted -O3 cflag (taken form Debian)
-  find . -type f ! -name "rules" ! -name "changelog" -exec sed -i -e 's/\-O3//g' {} \;
+#  find . -type f ! -name "rules" ! -name "changelog" -exec sed -i -e 's/\-O3//g' {} \;
 
   make 
-  make -j1 docs
+#  make -j1 docs
 }
 
 #check() {
@@ -49,9 +49,9 @@ package() {
   cd graphite
   make DESTDIR="$pkgdir/" install
   # install doc files
-  mkdir -p "${pkgdir}"/usr/share/doc/graphite2/api
-  cp -vrf doc/doxygen/{html,latex/refman.pdf} "${pkgdir}"/usr/share/doc/graphite2/api
-  cp -vrf doc/{GTF,manual}.html "${pkgdir}"/usr/share/doc/graphite2
+ # mkdir -p "${pkgdir}"/usr/share/doc/graphite2/api
+ # cp -vrf doc/doxygen/{html,latex/refman.pdf} "${pkgdir}"/usr/share/doc/graphite2/api
+ # cp -vrf doc/{GTF,manual}.html "${pkgdir}"/usr/share/doc/graphite2
 
   # licenses
   mkdir -p "${pkgdir}"/usr/share/licenses/graphite
