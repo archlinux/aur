@@ -1,6 +1,6 @@
 pkgbase = r-backports
 	pkgdesc = Reimplementations of Functions Introduced Since R-3.0.0
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=backports
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = r-backports
 	license = GPL2
 	license = GPL3
 	depends = r>=3.0.0
-	source = https://cran.r-project.org/src/contrib/backports_1.2.0.tar.gz
-	sha256sums = 3b498f146eb4f56136478eefe860f68758480070149aa462dc02ceee4d24f7f5
+	source = https://cran.r-project.org/src/contrib/backports_1.2.1.tar.gz
+	sha256sums = a2834bbd57e305e5d8010322f1906ea1789b3b5ba5eca77c5ff4248aceb7c2d5
 
 pkgname = r-backports
 
