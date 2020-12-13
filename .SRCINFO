@@ -1,6 +1,6 @@
 pkgbase = maya-arnold
 	pkgdesc = Autodesk Maya Arnold Renderer Plugin
-	pkgver = 4.0.4.1
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://www.arnoldrenderer.com/arnold/arnold-for-maya/
 	arch = x86_64
@@ -32,14 +32,15 @@ pkgbase = maya-arnold
 	depends = qt5-base
 	depends = qt5-x11extras
 	depends = systemd-libs
+	depends = tbb
 	depends = util-linux-libs
 	depends = xz
 	depends = zlib
 	depends = zstd
-	depends = maya>=2020
+	depends = maya=2020.4
 	options = !strip
 	source = manual://package.zip
-	sha256sums = b4c036093d0de30eb21b88893c5ecf9b6ff798f800cf15544bc9ae63e5f491e0
+	sha256sums = 6444aadce342c9808393c7c6a6397e191b17038e5606ce646e9ad7f0d9c39bbe
 
 pkgname = maya-arnold
 
