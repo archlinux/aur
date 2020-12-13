@@ -1,6 +1,6 @@
 pkgbase = neochat-git
 	pkgdesc = A client for matrix, the decentralized communication protocol
-	pkgver = r1220.b33ee61
+	pkgver = r1233.1ec6287
 	pkgrel = 2
 	url = https://invent.kde.org/network/neochat
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = neochat-git
 	makedepends = cmake>=3.1.0
 	makedepends = git
 	makedepends = extra-cmake-modules
-	depends = libquotient
+	depends = libquotient-git
 	depends = qtkeychain
 	depends = qt5-quickcontrols2>=5.15.0
 	depends = qt5-multimedia>=5.15.0
