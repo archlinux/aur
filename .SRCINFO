@@ -1,7 +1,7 @@
 pkgbase = kcoreaddons-git
 	pkgdesc = KCoreAddons
 	pkgver = v5.71.0.rc1.r2.g2e07a74
-	pkgrel = 2
+	pkgrel = 3
 	url = https://projects.kde.org/projects/frameworks/kcoreaddons
 	install = kcoreaddons.install
 	arch = i686
@@ -12,7 +12,6 @@ pkgbase = kcoreaddons-git
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = shared-mime-info
-	depends = gamin
 	provides = kcoreaddons
 	conflicts = kcoreaddons
 	source = git+https://github.com/KDE/kcoreaddons.git
