@@ -2,12 +2,12 @@
 
 pkgname=bgb
 pkgver=1.5.8
-pkgrel=3
+pkgrel=4
 pkgdesc='Game Boy emulator with advanced debugger'
 arch=(x86_64)
 url=https://bgb.bircd.org
 depends=(wine)
-source=("$pkgname-$pkgver.zip::https://bgb.bircd.org/bgb.zip"
+source=("$pkgname-$pkgver.zip::https://bgb.bircd.org/$pkgname$(echo "$pkgver" | tr -d .).zip"
         $pkgname)
 noextract=("$pkgname-$pkgver.zip")
 md5sums=('15b8b380c45f8cbe9e598f7224fd341e'
