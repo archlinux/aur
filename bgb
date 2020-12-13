@@ -16,4 +16,5 @@ fi
 wine "$tmp/$(basename "$BGB_EXE")" $@
 
 cp -t "$BGB_CONFIG_DIR" "$tmp/$(basename "$BGB_CONFIG")"
+cp -t . "$tmp"/debugmsg*.txt || true
 rm -r "$tmp"
