@@ -1,6 +1,6 @@
 pkgbase = r-hunspell
 	pkgdesc = High-Performance Stemmer, Tokenizer, and Spell Checker
-	pkgver = 3.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=hunspell
 	arch = i686
@@ -8,7 +8,6 @@ pkgbase = r-hunspell
 	license = GPL2
 	license = LGPL2.1
 	license = MPL1.1
-	makedepends = gcc
 	depends = r>=3.0.2
 	depends = r-rcpp>=0.12.12
 	depends = r-digest
@@ -20,8 +19,8 @@ pkgbase = r-hunspell
 	optdepends = r-knitr
 	optdepends = r-stopwords
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/hunspell_3.0.tar.gz
-	md5sums = de549396ea2812d351667fe0272bd098
+	source = https://cran.r-project.org/src/contrib/hunspell_3.0.1.tar.gz
+	sha256sums = 1fedbb913bc13c790d2fabfe4edda0a987db3a078bea8c0ca9b777d20af08662
 
 pkgname = r-hunspell
 
