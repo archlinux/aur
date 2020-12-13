@@ -1,9 +1,4 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Fronkles McFranko <mrelfranko@disroot.org>
 pkgname=afetch-git
 _pkgname=afetch
 pkgver=1
@@ -15,7 +10,7 @@ url="https://github.com/13-CF/afetch"
 license=('GPL')
 groups=()
 depends=()
-makedepends=()
+makedepends=('git' 'gcc' 'make')
 checkdepends=()
 optdepends=()
 provides=(afetch)
