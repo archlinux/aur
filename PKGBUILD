@@ -3,12 +3,12 @@
 
 pkgname=pspg
 pkgver=3.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Tabular data pager designed to be used with psql'
 arch=('x86_64')
 url="https://github.com/okbob/pspg"
 license=('BSD')
-depends=('readline')
+depends=('ncurses' 'readline' 'postgresql-libs')
 conflicts=('pspg-git')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
