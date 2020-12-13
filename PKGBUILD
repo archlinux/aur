@@ -15,7 +15,7 @@ _symver=1.1.2
 source=("https://github.com/aquefir/$pkgname/archive/v${_symver}-$pkgver.tar.gz")
 sha1sums=('e8b9f29561477ed27cd02cd8be1b6061bb82cf70')
 
-_subprojects='arr chkmath decl endian err futils himem log str'
+_subprojects='arr chkmath decl endian err futils himem log str mt19937'
 
 build() {
 	cd "$srcdir/$pkgname-${_symver}-$pkgver"
