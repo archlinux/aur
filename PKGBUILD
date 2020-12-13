@@ -3,7 +3,7 @@
 pkgname=enchant-hspell
 
 _pkgname=enchant
-pkgver=2.2.13
+pkgver=2.2.14
 pkgrel=1
 
 pkgdesc="An enchant provider plugin which adds support for Hspell backend"
@@ -16,7 +16,7 @@ depends=("enchant-pure" "hspell")
 options=('!libtool')
 
 source=("https://github.com/AbiWord/enchant/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('8bd4c05224528c3d4cdcd927ead3071ef7caa54971ea86b83cf711e6f7108431bcdf53f7e12a2216cf5535ac40d8d7c116787adbd43837d317b0e56b14eeea36')
+sha512sums=('9cf2f275e5826f75d3e866627837b7cf1f8031ed3944b925e67090c9ad34c35634cd978ed3cd7dc2de8710fa5e956703b1b174c50ac3a1d64b20d32f9e3c7db5')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
