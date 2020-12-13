@@ -3,7 +3,7 @@
 pkgname=lightdm-kbswitch-greeter-git
 _pkgname=lightdm-kbswitch-greeter
 pkgver=0.1.r1.gfd79f5e
-pkgrel=4
+pkgrel=5
 pkgdesc="Python and Gtk+ greeter for LightDM"
 arch=('any')
 url="https://github.com/bearvrrr/lightdm-kbswitch-greeter"
