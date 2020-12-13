@@ -1,6 +1,6 @@
 pkgbase = unilib
 	pkgdesc = unilib, the ANSI C support library
-	pkgver = 1.3.3
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://github.com/aquefir/unilib
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = unilib
 	makedepends = slick>=1.2.2
 	provides = unilib
 	conflicts = unilib
-	source = https://github.com/aquefir/unilib/archive/v1.1.2-1.3.3.tar.gz
-	sha1sums = 7b260c212103568497f6fe02972607cb6fdbc174
+	source = https://github.com/aquefir/unilib/archive/v1.1.2-1.3.4.tar.gz
+	sha1sums = e8b9f29561477ed27cd02cd8be1b6061bb82cf70
 
 pkgname = unilib
 
