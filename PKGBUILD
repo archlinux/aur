@@ -2,13 +2,13 @@
 # TODO: fall back to /builds/old in case the build artifact disappears
 
 pkgname=bombsquad
-pkgver=1.5.28
-pkgrel=2
+pkgver=1.5.29
+pkgrel=1
 pkgdesc='An explosive arcade-style party game'
 arch=('x86_64')
 url='http://www.froemling.net/apps/bombsquad'
 license=('unknown')
-depends=('openal' 'libgl' 'sdl2' 'libvorbis' 'libogg' 'python3')
+depends=('openal' 'libgl' 'sdl2' 'libvorbis' 'libogg' 'python38')
 source=(
   "https://files.ballistica.net/bombsquad/builds/BombSquad_Linux_${pkgver}.tar.gz"
   "https://files.ballistica.net/bombsquad/promo/BombSquadIcon.png"
@@ -16,7 +16,7 @@ source=(
   'bombsquad.desktop'
 )
 sha256sums=(
-  'e40e06df736325fb862b7cc21067fc4b25b127c390d91ea4834d564ca0e58d34'
+  '0655da02c178dbba38b7f80acdef98c196f44c23d8824fa4851a86005ea1f53f'
   '31f3af8d59a384b7a3ac999d2e8fe0a0033d0d31ae6e760686537ab85d86ba00'
   '850f8a66eb045ce833f8d7dae4533f69b629ac648bd205d98bf5f851339d4515'
   '900ffdf250eb2c59a2944703ccab9b69e58b5cdd7809f8349f6291db0301935c'
