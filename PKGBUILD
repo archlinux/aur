@@ -2,7 +2,7 @@
 
 pkgname=listen1-desktop-appimage
 _installdir=/opt/${pkgname}
-pkgver=2.17.0
+pkgver=2.17.1
 pkgrel=1
 pkgdesc="One for all free music in China"
 arch=("x86_64")
@@ -11,13 +11,13 @@ license=("MIT")
 _pkgname="listen1_${pkgver}_linux_${arch}.AppImage"
 noextract=(${_pkgname})
 options=("!strip")
-provides=('listen1')
-conflicts=('listen1')
+provides=("listen1")
+conflicts=("listen1")
 source=("https://github.com/listen1/listen1_desktop/releases/download/v${pkgver}/${_pkgname}")
-sha256sums=("06cf2dde5df2237cb0d33d3196e4d0c28c2c37cdff0d7661da38fe8a31ca804e")
+sha512sums=("88f223b45c2ba9416758fae9259d4ad10f0756fbcf2c2a560947a035cae2de256336fa1260ab0cb7ba9edb35165d0022006e062575db5a3d5d015b1aed8f1299")
 
 prepare() {
-    cd "${srcdir}"
+    cd ${srcdir}
     chmod a+x ${_pkgname}
     ${srcdir}/${_pkgname} --appimage-extract
     sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/listen1-desktop.AppImage+" "squashfs-root/listen1.desktop"
