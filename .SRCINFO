@@ -1,0 +1,22 @@
+pkgbase = flac-nodocs-git
+	pkgver = v1.3.3.ce6dd6b
+	pkgrel = 1
+	url = https://xiph.org/flac/
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	license = GPL
+	makedepends = nasm
+	depends = gcc-libs
+	depends = libogg
+	options = !makeflags
+	source = git://github.com/xiph/flac.git
+	sha1sums = SKIP
+
+pkgname = flac-nodocs-git
+	pkgdesc = Free Lossless Audio Codec (git version)
+	provides = flac
+	provides = libFLAC.so
+	provides = libFLAC++.so
+	conflicts = flac
+
