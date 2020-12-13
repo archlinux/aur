@@ -1,7 +1,8 @@
-pkgbase = menulibre
+pkgbase = menulibre-git
 	pkgdesc = An advanced menu editor that provides modern features in a clean, easy-to-use interface
-	pkgver = 2.2.1
-	pkgrel = 2
+	pkgver = menulibre+2.2.1+76+gd137b2b
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/bluesabre/menulibre
 	install = menulibre.install
 	arch = any
@@ -16,8 +17,8 @@ pkgbase = menulibre
 	depends = python-psutil
 	depends = python-xdg
 	depends = xdg-utils
-	source = menulibre-2.2.1.tar.gz::https://github.com/bluesabre/menulibre/releases/download/menulibre-2.2.1/menulibre-2.2.1.tar.gz
-	md5sums = 8460ea844a5998c5f722bccb5ce8627a
+	source = git+https://github.com/bluesabre/menulibre.git
+	sha256sums = SKIP
 
-pkgname = menulibre
+pkgname = menulibre-git
 
