@@ -1,7 +1,7 @@
 # Maintainer: Nek.12 <vaizin.nikita@gmail.com>
 pkgname='notion-enhancer'
 pkgver=0.10.2
-pkgrel=1
+pkgrel=3
 pkgdesc="An enhancer/customiser for the all-in-one productivity workspace notion.so"
 arch=('any')
 url="https://github.com/notion-enhancer/notion-enhancer"
@@ -20,7 +20,7 @@ install=$pkgname
 source=("https://registry.npmjs.org/notion-enhancer/-/$pkgname-$pkgver.tgz"
         "reapply-notion-enhancer.hook")
 noextract=("${pkgname}-${pkgver}.tgz" )
-md5sums=('4dbc118072fdc9ffd9af0efd4c0c8997' 'b7bf09c180c52d43e569fa1165970f40') #tgz, hook
+md5sums=('4dbc118072fdc9ffd9af0efd4c0c8997' '704ad896f7cd8ebb0c157b882ab22d85') #tgz, hook
 package() {
     npm install --ignore-scripts -g --user root --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
 
