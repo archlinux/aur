@@ -2,7 +2,7 @@
 
 pkgbase=linux-zen-g14
 _pkgbase=linux-zen
-pkgver=5.9.13.zen1
+pkgver=5.9.14.zen1
 pkgrel=1
 pkgdesc='Linux ZEN with patch for Zephyrus G14 (GA401I)'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -10,7 +10,7 @@ url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc kmod libelf pahole
+  bc kmod libelf pahole cpio perl tar xz
   xmlto
   git
 )
@@ -18,11 +18,10 @@ options=('!strip')
 _srcname=zen-kernel
 source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
-  "config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=af7dd558ac09a64eb1c9e56bc7f2394c1363fd01"
+  "config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=746db3b91934bab5c58684b0deea2b94b4ec0d90"
   i8042.patch
   "https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/-/raw/master/kernel_patches/5.9/5.9.8%20-%205.9.12/0001-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard.patch"
   uksm.patch
-  "https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/-/raw/master/kernel_patches/5.9/5.9.8%20-%205.9.12/experimental/0002-alsa-hda-ga401-experimental.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -30,11 +29,10 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '23f9693a1b35e4d674eced335a2a2cd8a231a157f362000340ccfdb86b4a98e2'
+            '99ef50a43c3aa70dc61668558274a88530b24076b825a31b10f409cf94daff5b'
             '3cee7ae24706a3dfd0693852c3cabdd32ae222a52f8c35a2d4845bbaf975f669'
             '68bf0dcc390ed14d97f48ebd1095d2587ac2eb2671445125fbcaaf7a6aa01733'
-            'a5b177ccfde06c8c82a1e20191a23bb3a16a553657be0d543397ee5847a0c86c'
-            '8e95f77486f9ed849114e1d09452227cbc39cb7811a5083b27cb274500cbab4b')
+            'a5b177ccfde06c8c82a1e20191a23bb3a16a553657be0d543397ee5847a0c86c')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
