@@ -1,6 +1,6 @@
 pkgbase = lx-music-desktop-appimage
 	pkgdesc = A music assistant based on Electron + Vue.
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/lyswhut/lx-music-desktop
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = lx-music-desktop-appimage
 	provides = lx-music-desktop
 	conflicts = lx-music-desktop
 	conflicts = lx-music-desktop-bin
-	noextract = lx-music-desktop-v1.4.1-x64.AppImage
+	noextract = lx-music-desktop-v1.5.0-x64.AppImage
 	options = !strip
-	source = https://github.com/lyswhut/lx-music-desktop/releases/download/v1.4.1/lx-music-desktop-v1.4.1-x64.AppImage
+	source = https://github.com/lyswhut/lx-music-desktop/releases/download/v1.5.0/lx-music-desktop-v1.5.0-x64.AppImage
 	source = lx-music-desktop.desktop
-	sha256sums = f23affe2cb620efc75f1a8c19548dacba000f08cee41906ad8bb8dc02cf654f7
+	sha256sums = 2ff44031d84c23934cf061af83f2076bafb1c97395634712f2fa27a4b01d6cb5
 	sha256sums = 88d199167894812929c2ed8a14451f8565c392ac63900d0deaa47a0c01257072
 
 pkgname = lx-music-desktop-appimage
