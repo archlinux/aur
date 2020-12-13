@@ -2,7 +2,7 @@
 
 pkgname=cloudflared-bin
 pkgver=2020.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An Argo Tunnel client which proxies any local webserver through the Cloudflare network"
 arch=("x86_64" "i686" "armv6h" "armv7h")
 url="https://developers.cloudflare.com/argo-tunnel/"
@@ -15,10 +15,10 @@ source=("https://raw.githubusercontent.com/cloudflare/cloudflared/master/LICENSE
         "cloudflared@.service"
         "cloudflared-dns.service"
         "sysusers.d")
-source_x86_64=("https://bin.equinox.io/a/jmc5VpLiMFi/cloudflared-2020.11.11-linux-amd64.tar.gz")
-source_i686=("https://bin.equinox.io/a/gHmuYxKosAJ/cloudflared-2020.11.11-linux-386.tar.gz")
-source_armv6h=("https://bin.equinox.io/a/2viFcvw7qZX/cloudflared-2020.11.11-linux-arm.tar.gz")
-source_armv7h=("https://bin.equinox.io/a/2viFcvw7qZX/cloudflared-2020.11.11-linux-arm.tar.gz")
+source_x86_64=("https://bin.equinox.io/a/kBpwpgukK7F/cloudflared-2020.12.0-linux-amd64.tar.gz")
+source_i686=("https://bin.equinox.io/a/cJX6sGMx63g/cloudflared-2020.12.0-linux-386.tar.gz")
+source_armv6h=("https://bin.equinox.io/a/9n1gaMqcxV6/cloudflared-2020.12.0-linux-arm.tar.gz")
+source_armv7h=("https://bin.equinox.io/a/9n1gaMqcxV6/cloudflared-2020.12.0-linux-arm.tar.gz")
 sha256sums=('6a486a0f6c00e87cce1caf0aa8db45ea9fefd0bf91d9be6fc44460160dc0dbda'
             'e769786afdfbd486a4d7ca99495dbe955c25e41b5e012b722b018ca17f269dac'
             '83234a52452dce5497dd04e27323b2f83c702d4435a2687d1be4f829451fb061'
