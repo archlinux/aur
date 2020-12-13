@@ -1,3 +1,14 @@
-src/
+postgresql-9.6-*.pkg.tar.zst
+postgresql-docs-9.6-*.pkg.tar.zst
+postgresql-libs-9.6-*.pkg.tar.zst
+postgresql-9.6-*.pkg.tar.xz
+postgresql-docs-9.6-*.pkg.tar.xz
+postgresql-libs-9.6-*.pkg.tar.xz
+postgresql-9.6-*.log
+postgresql-docs-9.6-*.log
+postgresql-libs-9.6-*.log
+postgresql-9.6.*.tar.bz2
+postgresql-9.6.*/
+PKGBUILD-namcap.log
 pkg/
-*.tar.*
+src/

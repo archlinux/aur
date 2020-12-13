@@ -1,7 +1,8 @@
-diff -Naur postgresql-9.2.0.sockets/src/include/pg_config_manual.h postgresql-9.2.0/src/include/pg_config_manual.h
---- postgresql-9.2.0.sockets/src/include/pg_config_manual.h	2012-09-06 17:26:17.000000000 -0400
-+++ postgresql-9.2.0/src/include/pg_config_manual.h	2012-09-06 18:13:18.183092471 -0400
-@@ -144,7 +144,7 @@
+diff --git a/src/include/pg_config_manual.h b/src/include/pg_config_manual.h
+index 96885bb..8cee64e 100644
+--- a/src/include/pg_config_manual.h
++++ b/src/include/pg_config_manual.h
+@@ -182,7 +182,7 @@
   * here's where to twiddle it.  You can also override this at runtime
   * with the postmaster's -k switch.
   */
@@ -9,4 +10,4 @@ diff -Naur postgresql-9.2.0.sockets/src/include/pg_config_manual.h postgresql-9.
 +#define DEFAULT_PGSOCKET_DIR  "/run/postgresql"
  
  /*
-  * The random() function is expected to yield values between 0 and
+  * This is the default event source for Windows event log.
