@@ -39,6 +39,6 @@ package() {
   install -Dm644 README.md "$pkgdir/usr/share/doc/get_iplayer/README.md"
 
   install -dm755 "$pkgdir/usr/share/man/man1"
-  gzip get_iplayer.1 > "$pkgdir/usr/share/man/man1/get_iplayer.1.gz"
+  install -Dm644 get_iplayer.1 "$pkgdir/usr/share/man/man1/get_iplayer.1"
 }
 
