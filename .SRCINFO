@@ -1,6 +1,6 @@
 pkgbase = llvm40
 	pkgver = 4.0.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://llvm.org/
 	arch = i686
 	arch = x86_64
