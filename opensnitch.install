@@ -1,12 +1,21 @@
 post_install() {
-	echo "Enable opensnitchd as a systemd service:"
 	echo ""
+	echo "Enable opensnitchd as a systemd service:"
 	echo "systemctl enable --now opensnitchd"
+	echo ""
 }
 
 post_upgrade() {
-	echo "Restart opensnitchd service:"
 	echo ""
+	echo "Restart opensnitchd service:"
 	echo "systemctl daemon reload"
 	echo "systemctl restart opensnitchd"
+	echo ""
+}
+
+post_remove() {
+	echo ""
+	echo "Optionally remove log file:"
+	echo "sudo rm /var/log/opensnitchd.log"
+	echo ""
 }
