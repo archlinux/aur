@@ -33,7 +33,7 @@ build() {
 package() {
   install -Dm755 "$pkgname/restic"    "$pkgdir/usr/bin/restic"
   install -Dm644 "$pkgname/LICENSE"   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$pkgname/README.rst" "$pkgdir/usr/share/doc/$pkgname/README"
+  install -Dm644 "$pkgname/README.md" "$pkgdir/usr/share/doc/$pkgname/README"
   install -Dm644 -t "$pkgdir/usr/share/man/man1" "$pkgname"/doc/man/*.1
 }
 
