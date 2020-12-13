@@ -9,20 +9,21 @@
 ### MERGE REQUESTS SELECTION
 
 # Merge Requests List: ('579' '1309' '1050' '1441')
-_merge_requests_to_use=('1050' '1309') # safe pick
+_merge_requests_to_use=('1309') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.38.1+22+gd9e34ebbb
+pkgver=3.38.2
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
-depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas libcanberra
-         startup-notification zenity libsm gnome-desktop upower libxkbcommon-x11
-         gnome-settings-daemon libgudev libinput pipewire xorg-server-xwayland)
+depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
+         libcanberra startup-notification zenity libsm gnome-desktop upower
+         libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
+         xorg-xwayland graphene)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server sysprof)
 checkdepends=(xorg-server-xvfb)
 provides=(mutter mutter-781835-workaround libmutter-7.so)
@@ -30,7 +31,7 @@ conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=d9e34ebbb8d9fafbce2f2e9ed9be542a71699d10 # tags/3.38.1^22
+_commit=9b9051c2172078e623e8a4b0e45e38004c394a92  # tags/3.38.2^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -49,7 +50,7 @@ pick_mr() {
         echo "Reverting $1..."
         git revert "$2" --no-commit
       elif [ "$3" = "patch" ]; then
-      	if [ -e ../"$2" ]; then 
+	if [ -e ../"$2" ]; then 
           echo "Patching with $2..."
           patch -Np1 -i ../"$2"
         else
@@ -139,13 +140,13 @@ prepare() {
 
 }
 
+
 build() {
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
   arch-meson $pkgname build \
     -D egl_device=true \
     -D wayland_eglstream=true \
-    -D xwayland_initfd=disabled \
     -D installed_tests=false
   meson compile -C build
 }
