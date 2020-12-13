@@ -1,0 +1,15 @@
+pkgbase = ideviceinstaller
+	pkgdesc = Manage Applications of an iPhone or iPod Touch
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://www.libimobiledevice.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = usbmuxd
+	depends = libzip
+	source = https://github.com/libimobiledevice/ideviceinstaller/archive/1.1.1.tar.gz
+	sha256sums = b1401678a61f28c4aca95375c100b5a83ccc2cdfa0222c0de7ad0a2cfb4e3c9f
+
+pkgname = ideviceinstaller
+
