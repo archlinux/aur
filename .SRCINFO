@@ -1,0 +1,22 @@
+pkgbase = aleo-studio-bin
+	pkgdesc = The World's First IDE for Zero-Knowledge Proofs.
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://aleo.studio/
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libappindicator-gtk3
+	depends = libsecret
+	source = https://aleo-studio-releases.sfo2.digitaloceanspaces.com/latest/aleo-studio_latest_amd64.deb
+	md5sums = 2759d003773cee87b70fa85385a50607
+
+pkgname = aleo-studio-bin
+
