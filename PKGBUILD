@@ -1,14 +1,15 @@
 # Maintainer: Ryan Farley <ryan.farley@gmx.com>
 
 pkgname=rcfvt-git
-pkgver=r40.0a8072f
+pkgver=r51.bda1834
 pkgrel=1
 pkgdesc="my own crappy terminal emulator"
 arch=(x86_64)
 url="https://github.com/r-c-f/rcfvt"
 license=('MIT')
-depends=(vte3 libcanberra)
-makedepends=(git meson ninja)
+depends=(vte3)
+makedepends=(git meson ninja libcanberra libnotify)
+optdepends=('libcanberra: audible bell with standard sound card output' 'libnotify: send notifications on bell')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/r-c-f/rcfvt.git')
