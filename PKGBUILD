@@ -23,6 +23,8 @@ source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
         https://releases.llvm.org/$pkgver/compiler-rt-$pkgver.src.tar.xz{,.sig}
         0001-GCC-compatibility-Ignore-the-fno-plt-flag.patch
         0002-Enable-SSP-and-PIE-by-default.patch
+        0003-Fix-narrowing-conversion.patch
+        0004-Fix-lambda-parameter-already-captured.patch
         PR31870-Disable-llvm-symbolizer-test.patch
         D35246-Fix-sanitizer-build-against-latest-glibc.patch
         PR37486-Fix-lli-fails-to-build-with-gcc-8.patch
@@ -38,6 +40,8 @@ sha256sums=('da783db1f82d516791179fe103c71706046561f7972b18f0049242dee6712b51'
             'SKIP'
             'ed4a1c3c73b31421caa0ba50d14cabc16de676a88f045d06b207bbb3006963ac'
             '79f1a409700a83d983d7237a907aeddf342c28aa810b87b28ee27b8c5560644a'
+            '163f3b1352b9f3194f12a8c96ab3433f9ed6b524b03081919904d5d55148092e'
+            '0c4c74f339895e4ff88b8294dcce81b3e72810f788f4aaac5ca54acc31ee3d09'
             '6fff47ab5ede79d45fe64bb4903b7dfc27212a38e6cd5d01e60ebd24b7557359'
             '0afff7e5cf0f6df596517f63a9a9f085eab3b53f42a1eb14bbd83861c36c9fd7'
             '080e90dabbd386fb8c4771ab7537acff157b72bb0f2591609805cacf684cceed'
@@ -87,6 +91,13 @@ prepare() {
   # Use pre-computed size of struct ustat for Linux
   # https://reviews.llvm.org/D47281
   patch -Np0 -d projects/compiler-rt < ../D47281-Use-pre-computed-size-of-struct-ustat.patch
+
+  # Fix narrowing conversion errors
+  # https://bugs.gentoo.org/708430
+  patch -Np0 -d projects/compiler-rt < ../0003-Fix-narrowing-conversion.patch
+
+  # Fix lambda parameter already captured errors
+  patch -Np0 -d tools/clang < ../0004-Fix-lambda-parameter-already-captured.patch
 }
 
 build() {
