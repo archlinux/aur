@@ -1,7 +1,7 @@
 pkgbase = aleo-studio-bin
 	pkgdesc = The World's First IDE for Zero-Knowledge Proofs.
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aleo.studio/
 	arch = x86_64
 	license = custom
