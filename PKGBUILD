@@ -1,9 +1,9 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=newrelic-cli
-pkgver=0.18.2
+pkgver=0.18.3
 pkgrel=1
-pkgdesc='The New Relic Command Line Interface'
+pkgdesc="The New Relic Command Line Interface"
 arch=(x86_64)
 url=https://github.com/newrelic/newrelic-cli
 license=(Apache)
@@ -18,6 +18,7 @@ prepare() {
 
 build() {
   cd newrelic-cli
+
   go build \
     -o bin/newrelic \
     -trimpath \
@@ -29,12 +30,14 @@ build() {
 
 package() {
   cd newrelic-cli
-  install -Dm755 bin/newrelic "$pkgdir/usr/bin/newrelic"
+  install -Dm0755 bin/newrelic "$pkgdir/usr/bin/newrelic"
 
-  install -dm755 "$pkgdir/usr/share/bash-completion/completions" \
+  install -dm0755 "$pkgdir/usr/share/bash-completion/completions" \
     "$pkgdir/usr/share/zsh/site-functions"
   "${pkgdir}/usr/bin/newrelic" completion --shell bash > \
     "${pkgdir}/usr/share/bash-completion/completions/newrelic"
   "${pkgdir}/usr/bin/newrelic" completion --shell bash > \
     "${pkgdir}/usr/share/zsh/site-functions/_newrelic"
 }
+
+# vim: set ts=2 sw=2 et:
