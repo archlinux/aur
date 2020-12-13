@@ -1,6 +1,6 @@
 pkgbase = kbs2-git
 	pkgdesc = A secret manager backed by age (git)
-	pkgver = 0.2.4.r1.gd9fb0ac
+	pkgver = 0.2.5.r6.g8f39c37
 	pkgrel = 1
 	url = https://github.com/woodruffw/kbs2
 	arch = x86_64
