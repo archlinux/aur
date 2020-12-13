@@ -1,6 +1,6 @@
 pkgbase = plantuml-bin
 	pkgdesc = Component that allows to quickly write uml diagrams
-	pkgver = 1.2020.19
+	pkgver = 1.2020.22
 	pkgrel = 1
 	url = http://plantuml.com/
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = plantuml-bin
 	optdepends = graphviz: allow use Graphviz/DOT notation
 	provides = plantuml
 	conflicts = plantuml
-	source = http://downloads.sourceforge.net/project/plantuml/1.2020.19/plantuml-1.2020.19.tar.gz
+	source = http://downloads.sourceforge.net/project/plantuml/1.2020.22/plantuml-1.2020.22.tar.gz
 	source = plantuml.run
-	sha256sums = 47db5d645b19f2662d41909ab6359734613fc0341207f8e60da161d1c5714249
+	sha256sums = 1e719756038940500f1bc507e24a0855aaa46862554a58aaa27301399a85c3bc
 	sha256sums = a3fb528f4c719cfd0ff6154c60fd54ce341011d132caf950cc30af4989f6aac8
 
 pkgname = plantuml-bin
