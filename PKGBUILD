@@ -2,7 +2,7 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 
 _cranname=unix
-_cranver=1.5.1
+_cranver=1.5.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,10 +11,9 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
 depends=(r)
-makedepends=(gcc)
 optdepends=(r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('7ccf884c7176896883fbaffa5b1ecbc8')
+sha256sums=('129b713de07d22aefd1bea7bc38e1e6df2e374fffaa37e5da1df72aa19603466')
 
 build() {
   cd "${srcdir}"
