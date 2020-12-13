@@ -7,6 +7,7 @@ pkgdesc="A helper for screenshots within sway."
 arch=("x86_64")
 url="https://github.com/swaywm/sway"
 license=('MIT')
+provides=('grimshot')
 conflicts=('grimshot')
 replaces=('swaygrab')
 depends=("sway" "grim" "slurp" "jq" "xdg-user-dirs" "git")
