@@ -1,19 +1,14 @@
 pkgbase = naabu-bin
 	pkgdesc = Fast port scanner with a focus on reliability and simplicity
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/naabu
 	arch = x86_64
-	arch = armv6h
-	arch = aarch64
 	license = MIT
 	provides = naabu
-	source_x86_64 = naabu-2.0.2.tar.gz::https://github.com/projectdiscovery/naabu/releases/download/v2.0.2/naabu_2.0.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 1fc6509079dc6c58dede7b4956e05f5aacfaa5e7020947555749166626a80306
-	source_armv6h = naabu-2.0.2.tar.gz::https://github.com/projectdiscovery/naabu/releases/download/v2.0.2/naabu_2.0.2_linux_armv6.tar.gz
-	sha256sums_armv6h = e8ec2204291c1ab572240ed9affbb913505737b7c156da2b4902c9a17206a2de
-	source_aarch64 = naabu-2.0.2.tar.gz::https://github.com/projectdiscovery/naabu/releases/download/v2.0.2/naabu_2.0.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 17e8abd73c8ebd56826809f38783c013bfcacda6a791866746e19fe27be56e77
+	conflicts = naabu
+	source_x86_64 = naabu-2.0.3-x86_64.tar.gz::https://github.com/projectdiscovery/naabu/releases/download/v2.0.3/naabu-linux-amd64.tar.gz
+	sha256sums_x86_64 = b9d24ac3316e4dcbab17cef4e9aac7ae1ca7d0086cf671e6291bb9064a80edba
 
 pkgname = naabu-bin
 
