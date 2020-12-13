@@ -1,0 +1,30 @@
+pkgbase = datasette
+	pkgdesc = An open source multi-tool for exploring and publishing data
+	pkgver = 0.53
+	pkgrel = 1
+	url = https://datasette.io
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-asgiref
+	depends = python-click
+	depends = python-click-default-group
+	depends = python-jinja
+	depends = python-hupper
+	depends = python-httpx
+	depends = python-pint
+	depends = python-pluggy
+	depends = uvicorn
+	depends = python-aiofiles
+	depends = python-janus
+	depends = python-asgi-csrf
+	depends = python-yaml
+	depends = python-mergedeep
+	depends = python-itsdangerous
+	depends = python-baseconv
+	conflicts = datasette
+	source = https://pypi.io/packages/source/d/datasette/datasette-0.53.tar.gz
+	sha256sums = de3aa1c6fd26e9dc4fd84f93f168dad25b8f327021c6db1697047774c096d00b
+
+pkgname = datasette
+
