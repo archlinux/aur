@@ -2,7 +2,7 @@
 pkgname=code-headmelted-bin
 _pkgver=1.45.0
 _date=2020-04-06
-_fdate=`date --date=$_date '+%d-%b-%y'`
+_fdate=`env LANG=C date --date=$_date '+%d-%b-%y'`
 _url=https://github.com/headmelted/codebuilds/releases/download/$_fdate
 _armhf_build=1586135927
 _arm64_build=1586135971
