@@ -1,6 +1,6 @@
 pkgbase = retrolink-git
 	pkgdesc = Seamless integration of frontend and emulators through gamepad hotkeys
-	pkgver = r19.15dfd85
+	pkgver = r22.628f147
 	pkgrel = 1
 	url = https://gitlab.com/william.belanger/retrolink
 	arch = any
