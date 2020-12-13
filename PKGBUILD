@@ -34,11 +34,8 @@ package() {
   options=(!strip staticlibs)
   mkdir -p ${pkgdir}/usr/bin
   mkdir -p ${pkgdir}/opt/${_pkgname}/bin
-  mkdir -p ${pkgdir}/usr/lib/${_projectname}/go/src/github.com/
-  mkdir -p ${pkgdir}/usr/lib/${_projectname}/${_pkgname}/
-  ln -s ${pkgdir}/usr/lib/${_projectname}/${_pkgname} ${pkgdir}/usr/lib/${_projectname}/go/src/github.com/
-  install -Dm755 ${srcdir}/home/amherag/go/bin/${_pkgname} ${pkgdir}/usr/lib/${_projectname}/go/bin/${_pkgname}
-  ln -rTsf ${pkgdir}/usr/lib/${_projectname}/go/bin/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
+  install -Dm755 ${srcdir}/home/amherag/go/bin/${_pkgname} ${pkgdir}/opt/${_pkgname}/bin/${_pkgname}
+  ln -rTsf ${pkgdir}/opt/${_pkgname}/bin/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
   chmod 755 ${pkgdir}/usr/bin/${_pkgname}
 }
 
