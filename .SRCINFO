@@ -1,0 +1,13 @@
+pkgbase = yuranpad
+	pkgdesc = A free text editor for Windows and Linux
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://yuranpad.sourceforge.io
+	arch = x86_64
+	license = custom
+	depends = gtk2
+	source = yuranpad-2.2.deb::https://sourceforge.net/projects/yuranpad/files/Linux/yuranpad_2.2_x86_64.deb/download
+	sha256sums = dd5b8a4d4ed05b6c4e35edd1823b36642fd005a91972a0b8a8174292b9678ade
+
+pkgname = yuranpad
+
