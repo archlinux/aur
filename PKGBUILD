@@ -17,7 +17,7 @@ prepare() {
   cd ${pkgname}-${pkgver}
 
   sed -i 's|~>|>=|g' ${pkgname}.gemspec
-  sed -i 's%gem.files .*%gem.files         = `find`.split("\\n")%' \
+  sed -i 's|gem.files .*|gem.files         = `find`.split("\\n")|' \
     ${pkgname}.gemspec
 }
 
