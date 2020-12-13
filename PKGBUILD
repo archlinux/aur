@@ -3,13 +3,13 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kconfigwidgets-git
-pkgver=v5.71.0.rc1.r44.gb571fe4
-pkgrel=2
+pkgver=v5.71.0.rc1.r49.gdad64db
+pkgrel=1
 pkgdesc='Widgets for KConfig'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kconfigwidgets'
 license=('LGPL')
-depends=('qt5-wayland')
+depends=('qt5-wayland' 'kcodecs-git' 'kauth-git')
 makedepends=('extra-cmake-modules-git' 'git' 'wayland-protocols' 'plasma-wayland-protocols-git' 'qt5-tools')
 conflicts=(kconfigwidgets)
 provides=(kconfigwidgets)
