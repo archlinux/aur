@@ -1,0 +1,14 @@
+pkgbase = memstrack
+	pkgdesc = A memory allocation trace, like a hot spot analyzer for memory allocation
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://github.com/ryncsn/memstrack
+	arch = any
+	license = GPL3
+	makedepends = gcc
+	makedepends = ncurses
+	source = https://github.com/ryncsn/memstrack/archive/v0.1.12.tar.gz
+	sha256sums = 2e0150b41be36d99fb9e3f25f75da1755a598b408c517e25ffd8c3e727b32eb9
+
+pkgname = memstrack
+
