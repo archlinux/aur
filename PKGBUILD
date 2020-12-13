@@ -1,13 +1,12 @@
 # Maintainer: BrainDamage
 
 pkgname=hkd-git
-pkgver=r99.213db3c
-pkgrel=4
+pkgver=r109.dfa7976
+pkgrel=1
 pkgdesc='hkd allows to define system-wide hotkeys independent from the graphical session'
 arch=('x86_64')
 url="https://git.alemauri.eu/alema/hkd"
 license=('MIT')
-depends=()
 makedepends+=('git')
 source=('git+https://git.alemauri.eu/alema/hkd')
 sha512sums=('SKIP')
@@ -36,7 +35,9 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${_basename}"	
+	cd "${srcdir}/${_basename}"
 	make PREFIX='/usr' INSTALL_ROOT="${pkgdir}" DESTDIR="${pkgdir}" install
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dvm644 LICENSE "${pkgdir}/usr/share/licenses/${_basename}/LICENSE"
+	install -Dvm644 README.md "${pkgdir}/usr/share/doc/${_basename}/README.md"
+	install -Dvm644 config.template "${pkgdir}/usr/share/doc/${_basename}/config.template"
 }
