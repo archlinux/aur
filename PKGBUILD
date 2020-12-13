@@ -37,7 +37,7 @@ package() {
   install -m644 README.{html,md} build.{html,md} "$pkgdir/usr/share/doc/pyradio"
 
   install -dm755 "$pkgdir/usr/share/man/man1"
-  gzip pyradio.1 > "$pkgdir/usr/share/man/man1/${pkgname%-git}.1.gz"
+  install -Dm644 pyradio.1 "$pkgdir/usr/share/man/man1/${pkgname%-git}.1"
 
   python setup.py install --root="$pkgdir" --optimize=1
 }
