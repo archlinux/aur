@@ -1,7 +1,7 @@
 pkgbase = fava
 	pkgdesc = Web interface for beancount
 	pkgver = 1.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/beancount/fava
 	arch = any
 	license = GPL
