@@ -2,7 +2,7 @@
 # Contributor: Pipat Saengow <pay2630@gmail.com>
 
 pkgname=hp15c
-pkgver=4.2.0
+pkgver=4.2.10
 pkgrel=1
 pkgdesc="A simulator for the HP-15C programmable scientific RPN calculator"
 url="http://hp-15c.homepage.t-online.de/content_web.htm"
@@ -10,20 +10,15 @@ arch=('any')
 license=('GPL3')
 depends=('tcl' 'tk')
 source=(
-    "$pkgname-$pkgver.zip::https://drive.google.com/uc?export=download&id=18bYkLY0hpizN3d2-yOpCTn1GhOIwsi4D"
-    "01-package-path.patch"
+    "$pkgname-$pkgver.zip::https://drive.google.com/uc?export=download&id=1zPKq0wBP3wPMUOw_Fp9yDxOZ7sc4AOg0"
     "hp15c_runner.sh"
     "hp15c.desktop"
 )
-md5sums=('c3d055f978eb9eba61589fb54204e189'
-         'c63c593bb9cc8083c33d54b87fafd2ad'
-         '33588adff38833aa1a2957457d4701b3'
+md5sums=('11ae1e9894488ce38d0709d1e908e0bf'
+         '28b63da6ff5404acf6f305bdb35ca1b9'
          'bab776009feb1db971b92649c839ff1f')
 
 prepare() {
-
-    # patch location of files to match Arch standards
-    patch -p1 -i "$srcdir/01-package-path.patch"
 
     # extract icons
     unzip icons/HP-15C-logo.zip -d $srcdir/icon_extract
