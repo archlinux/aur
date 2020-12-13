@@ -2,7 +2,7 @@
 
 pkgname=xterm-git
 pkgver=r1311.gd82f70a
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal emulator for the X Window System"
 arch=('i686' 'x86_64')
 url="https://invisible-island.net/xterm/"
@@ -11,7 +11,6 @@ depends=('glibc' 'libutempter' 'libxaw' 'libxft' 'libxkbfile' 'luit' 'ncurses' '
 makedepends=('git')
 provides=('xterm')
 conflicts=('xterm')
-options=('staticlibs')
 source=("git+https://github.com/ThomasDickey/xterm-snapshots.git")
 sha256sums=('SKIP')
 
