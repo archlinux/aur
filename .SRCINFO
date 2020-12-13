@@ -10,6 +10,7 @@ pkgbase = lib32-libpulse-nosystemd-minimal-git
 	makedepends = git
 	makedepends = meson
 	makedepends = libpulse
+	makedepends = lib32-tdb
 	depends = lib32-dbus
 	depends = lib32-libasyncns
 	depends = lib32-libcap
