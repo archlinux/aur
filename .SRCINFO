@@ -8,9 +8,7 @@ pkgbase = libgudev-nosystemd-git
 	makedepends = gobject-introspection
 	makedepends = git
 	depends = glib2
-	depends = libglib-2.0.so
-	depends = libgobject-2.0.so
-	depends = libudev.so
+	depends = libudev0-shim
 	source = git+https://gitlab.gnome.org/GNOME/libgudev.git
 	sha256sums = SKIP
 
