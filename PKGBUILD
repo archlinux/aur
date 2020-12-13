@@ -25,6 +25,7 @@ source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
         0002-Enable-SSP-and-PIE-by-default.patch
         0003-Fix-narrowing-conversion.patch
         0004-Fix-lambda-parameter-already-captured.patch
+        0005-Fix-go-tests.patch
         PR31870-Disable-llvm-symbolizer-test.patch
         D35246-Fix-sanitizer-build-against-latest-glibc.patch
         PR37486-Fix-lli-fails-to-build-with-gcc-8.patch
@@ -42,6 +43,7 @@ sha256sums=('da783db1f82d516791179fe103c71706046561f7972b18f0049242dee6712b51'
             '79f1a409700a83d983d7237a907aeddf342c28aa810b87b28ee27b8c5560644a'
             '163f3b1352b9f3194f12a8c96ab3433f9ed6b524b03081919904d5d55148092e'
             '0c4c74f339895e4ff88b8294dcce81b3e72810f788f4aaac5ca54acc31ee3d09'
+            '7987f9017fae9ac6c5dbae694722f2ebd8daa310475e0da3202717ca5d02ee82'
             '6fff47ab5ede79d45fe64bb4903b7dfc27212a38e6cd5d01e60ebd24b7557359'
             '0afff7e5cf0f6df596517f63a9a9f085eab3b53f42a1eb14bbd83861c36c9fd7'
             '080e90dabbd386fb8c4771ab7537acff157b72bb0f2591609805cacf684cceed'
@@ -98,6 +100,9 @@ prepare() {
 
   # Fix lambda parameter already captured errors
   patch -Np0 -d tools/clang < ../0004-Fix-lambda-parameter-already-captured.patch
+
+  # Fix errors in go tests
+  patch -Np1 < ../0005-Fix-go-tests.patch
 }
 
 build() {
