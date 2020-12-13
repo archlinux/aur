@@ -3,7 +3,7 @@
 
 pkgname=ca-certificates-dnie
 pkgver=20201212
-pkgrel=1
+pkgrel=2
 pkgdesc="Spanish DNIE root certificates"
 arch=('any')
 url='http://www.dnielectronico.es'
@@ -11,7 +11,7 @@ license=('unknown')
 depends=('ca-certificates-utils'
          'ca-certificates-fnmt'
          )
-makedepends=('unzip-iconv')
+# makedepends=('unzip-iconv')
 source=(
         # Autoridad de Certificación Raíz del DNIe
         'https://www.dnielectronico.es/ZIP/ACRAIZ-DNIE2.zip'
@@ -41,12 +41,11 @@ sha256sums=('6e0235376d543d19c7fa765b66ec14fab785e0fb6076b16682649eb3934655bd'
             'c84abb9059b350c083b5849a47ffcf79c6cb7369dba1797d9e582df1eba51431'
             '171f5c664bb2ccfd0cf130d782c18205d17cae08aa86bffa772bdc0d4897a3ad'
             )
-
+makedepends=('convmv')
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
-noextract=('AV_DNIE_FNMT_SHA2.zip')
 
 prepare() {
-  unzip -O CP437 AV_DNIE_FNMT_SHA2.zip
+  convmv -f cp437 -t utf-8 -r --notest "Certificados OCSP Responder FNMT_Renovaci"*
 }
 
 package() {
