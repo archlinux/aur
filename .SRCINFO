@@ -1,0 +1,15 @@
+pkgbase = python-asgi-csrf
+	pkgdesc = ASGI middleware for protecting against CSRF attacks
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/simonw/asgi-csrf
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-itsdangerous
+	depends = python-python-multipart
+	source = https://pypi.io/packages/source/a/asgi-csrf/asgi-csrf-0.7.1.tar.gz
+	sha256sums = 77bfb2a3311643fd2304d0f11f72160559acbbd1a35730a54208135ded3f21a3
+
+pkgname = python-asgi-csrf
+
