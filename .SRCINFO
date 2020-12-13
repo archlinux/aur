@@ -1,0 +1,17 @@
+pkgbase = ipset-china-ipv4-git
+	pkgdesc = ipset for matching China Mainland ipv4 network addresses
+	pkgver = 0.1
+	pkgrel = 2
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = zstd
+	depends = ipset
+	optdepends = ipset-loader: load this ipset
+	provides = ipset-china-ipv4
+	conflicts = ipset-china-ipv4
+	source = https://github.com/Hackl0us/GeoIP2-CN/raw/release/CN-ip-cidr.txt
+	sha512sums = SKIP
+
+pkgname = ipset-china-ipv4-git
+
