@@ -1,0 +1,25 @@
+#!/bin/bash
+if [ $# -eq 0 ]; then
+    echo "usage: $0 <ipset-file>"
+    echo "will also try ipset-file.zst if ipset-file does not exist."
+fi
+
+if [ ! -f $1 ]; then
+    if [ ! -f $1.zst ]; then
+        echo "fatal error: neither $1 nor $1.zst is found."
+        exit 1
+    else
+        echo "$1.zst is being loaded..."
+        zstdcat $1.zst | ipset restore -!
+    fi
+else
+    if [[ $1 == *.zst ]]; then
+        echo "$1 is being loaded..."
+        zstdcat $1 | ipset restore -!
+    else
+        echo "$1 is being loaded..."
+        cat $1 | ipset restore -!
+    fi
+fi
+
+exit $?

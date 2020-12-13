@@ -1,0 +1,11 @@
+[Unit]
+Description=Load ipset from files
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/ipset-loader /usr/share/ipset/%i
+
+[Install]
+WantedBy=multi-user.target
+

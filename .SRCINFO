@@ -1,0 +1,18 @@
+pkgbase = ipset-loader-git
+	pkgdesc = ipset rule loader
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = ipset
+	depends = zstd
+	provides = ipset-loader
+	conflicts = ipset-loader
+	source = ipset-loader@.service
+	source = ipset-loader
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = ipset-loader-git
+
