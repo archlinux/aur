@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <jonian@hardpixel.eu>
 # Contributor: Evan Anderson <evananderson@thelinuxman.us>
 # Contributor: Ner0
-# Contributor: Pellegrino Prevete <
+# Contributor: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 
 _pkgbase=menulibre
 pkgname=$_pkgbase-git
