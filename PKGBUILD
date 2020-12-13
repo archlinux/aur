@@ -1,7 +1,7 @@
 # Maintainer: Zineddine SAIBI <saibi.zineddine@yahoo.com>
 
 pkgname=deeptags
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="A Markdown notes manager"
 arch=('x86_64')
