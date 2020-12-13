@@ -2,9 +2,9 @@
 
 pkgname=python-aliyun-python-sdk-kms
 _pkgname=${pkgname/python-}
-pkgver=2.11.0
+pkgver=2.13.0
 pkgrel=1
-pkgdesc="Alibaba Cloud SDK for Python."
+pkgdesc="The kms module of Aliyun Python sdk."
 arch=('any')
 url="https://github.com/aliyun/aliyun-openapi-python-sdk/"
 license=('Apache')
@@ -12,8 +12,8 @@ depends=('python-aliyun-python-sdk-core')
 makedepends=('python-setuptools')
 conflicts=("${pkgname}-git")
 provides=("${pkgname}-git")
-source=("https://files.pythonhosted.org/packages/e0/90/53403e07470ae560b0a69bf3c0ada9cc4c7a86c8bc0ac593b95839f5602a/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('6fad3918ae4a45c93e47bea897e9933dc154dc6224a708dcb686a6a9e82f93d2')
+source=("https://files.pythonhosted.org/packages/95/83/a840e6c2a921964635663ed6eb02d8abeccc66adcb5b524088344e0a2ba6/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('759d3bb461278830f24462bc0566f8544b6c143b96d0b6d1966ee3e5b84cfa40')
 
 build() {
   cd $_pkgname-$pkgver
