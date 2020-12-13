@@ -1,7 +1,7 @@
 pkgbase = linux-aufs
 	pkgdesc = Linux AUFS
 	pkgver = 5.7.19
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/sfjro/aufs5-standalone
 	arch = x86_64
 	license = GPL2
@@ -13,6 +13,10 @@ pkgbase = linux-aufs
 	makedepends = graphviz
 	makedepends = imagemagick
 	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.19.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.19.tar.sign
@@ -33,7 +37,7 @@ pkgbase = linux-aufs
 	sha512sums = e8ce50a564c8412f3225c06eac4778f09a663c9ba05b5043916675934ab74a769cc91ef3f4162b73aa6854fceabb8e4d9c3143ebe105ce725fbac26df4044862
 	sha512sums = b9fd69758b1a5bdcf69d2b8d85d3acfaf20fe7e842e734ae03f4ab82a26743301336193db87b7e801636e487faceaf6eadc3bb5cecbb975d9a3afd9f9aa1851c
 	sha512sums = 711ecce2ce54c81e8b60b9b347cb88db054bf697396ee15e9b425671f88d22a14dae17c1c451aa10bd1d7a71c145b2fa588863205ec94e1439ed9b2769ee2e4c
-	sha512sums = 1c73992311f56e5b8571eb09d625ff1311ec412361a5cee061d231c0958e07262f39dd154665d8d8d343276b020304121f99d17348804e06174c6ecff3d05f65
+	sha512sums = ff8cfc20896c889c9689f04f7b16db94a762fc74902c7f68f36795142a92a27ba9521ec8e78778b4e506fb7beccf18e7adc0504e90638d51301d2e82ce71c567
 
 pkgname = linux-aufs
 	pkgdesc = The Linux AUFS kernel and modules
@@ -53,4 +57,3 @@ pkgname = linux-aufs-headers
 pkgname = linux-aufs-docs
 	pkgdesc = Documentation for the Linux AUFS kernel
 	depends = linux-aufs
-
