@@ -11,7 +11,7 @@ arch=(x86_64)
 license=(MIT)
 makedepends=(lib32-glib2 lib32-freetype2 lib32-cairo lib32-icu ragel git python
              meson harfbuzz harfbuzz-icu)
-checkdepends=(python-fonttools python-setuptools)
+#checkdepends=(python-fonttools python-setuptools)
 source=("git+https://github.com/harfbuzz/harfbuzz")
 sha256sums=('SKIP')
 
@@ -36,11 +36,11 @@ build() {
   meson compile -C build
 }
 
-check() {
-  mkdir -p tmp
-  TMPDIR="$PWD/tmp" meson test -C build --print-errorlogs
-  rm -r tmp
-}
+#check() {
+#  mkdir -p tmp
+#  TMPDIR="$PWD/tmp" meson test -C build --print-errorlogs
+#  rm -r tmp
+#}
 
 package_lib32-harfbuzz-git() {
   provides=(lib32-harfbuzz libharfbuzz.so libharfbuzz-subset.so libharfbuzz-gobject.so)
