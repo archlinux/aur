@@ -1,5 +1,5 @@
 pkgbase = faba-icon-theme
-	pkgdesc = A set of icons to serve as base for other themes
+	pkgdesc = Faba is a sexy and modern icon theme with Tango influences
 	pkgver = 4.3
 	pkgrel = 2
 	url = https://snwh.org/moka
@@ -9,8 +9,8 @@ pkgbase = faba-icon-theme
 	makedepends = meson
 	depends = gtk-update-icon-cache
 	options = !strip
-	source = faba-icon-theme-4.3.tar.gz::https://github.com/moka-project/faba-icon-theme/archive/v4.3.tar.gz
-	md5sums = 34633c7d146b93abebc96d3dddd52053
+	source = faba-icon-theme-4.3.tar.gz::https://github.com/snwh/faba-icon-theme/archive/v4.3.tar.gz
+	sha256sums = c87ce7dae8df6b25228297baa1be96cfad06c5c109ff60fedf1f0343bb0196a2
 
 pkgname = faba-icon-theme
 
