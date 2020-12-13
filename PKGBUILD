@@ -5,11 +5,11 @@
 _basename=avrdude
 pkgname=avrdude-buspirate-bug58078
 pkgver=6.3
-pkgrel=7
+pkgrel=8
 epoch=1
 pkgdesc="AVRDUDE with bug #58078 patch applied for Bus Pirate support on GCC>=9"
 arch=('x86_64')
-url="https://www.nongnu.org/avrdude/"
+url="https://savannah.nongnu.org/bugs/?58078"
 license=('GPL')
 depends=('readline' 'libftdi' 'libusb-compat' 'elfutils')
 provides=('avrdude')
