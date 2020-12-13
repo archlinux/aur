@@ -1,20 +1,28 @@
 # Maintainer: Jonian Guveli <jonian@hardpixel.eu>
 # Contributor: Evan Anderson <evananderson@thelinuxman.us>
 # Contributor: Ner0
+# Contributor: Pellegrino Prevete <
 
-pkgname=menulibre
-pkgver=2.2.1
-pkgrel=2
-pkgdesc="An advanced menu editor that provides modern features in a clean, easy-to-use interface"
-arch=("any")
-url="https://github.com/bluesabre/menulibre"
+_pkgbase=menulibre
+pkgname=$_pkgbase-git
+pkgver=menulibre+2.2.1+76+gd137b2b
+pkgrel=1
+epoch=1
+arch=(any)
 license=("GPL3")
+pkgdesc="An advanced menu editor that provides modern features in a clean, easy-to-use interface"
+url="https://github.com/bluesabre/menulibre"
 depends=("gdk-pixbuf2" "gnome-menus" "gsettings-desktop-schemas" "gtksourceview3" "python" "python-gobject" "python-psutil" "python-xdg" "xdg-utils")
 makedepends=("python-distutils-extra")
 install=menulibre.install
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=("8460ea844a5998c5f722bccb5ce8627a")
+source=("git+https://github.com/bluesabre/menulibre.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $_pkgbase
+  git describe --tags | sed 's/-/+/g'
+}
 
 package() {
-  cd "$pkgname-$pkgver" && python setup.py install --root="$pkgdir/" --optimize=1
+  cd "$_pkgbase" && python setup.py install --root="$pkgdir/" --optimize=1
 }
