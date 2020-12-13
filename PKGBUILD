@@ -9,7 +9,7 @@ url="https://xiph.org/flac/"
 license=('BSD' 'GPL')
 depends=('gcc-libs' 'libogg')
 makedepends=('nasm')
-options=('!makeflags')
+#options=('!makeflags')
 source=(git://github.com/xiph/flac.git)
 sha1sums=('SKIP')
 _gitname=flac
@@ -29,7 +29,7 @@ build() {
 
 package_flac-nodocs-git() {
   pkgdesc="Free Lossless Audio Codec (git version)"
-  options=('!docs')
+#  options=('!docs')
   conflicts=('flac')
   provides=('flac' 'libFLAC.so' 'libFLAC++.so')
 

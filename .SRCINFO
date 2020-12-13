@@ -9,7 +9,6 @@ pkgbase = flac-nodocs-git
 	makedepends = nasm
 	depends = gcc-libs
 	depends = libogg
-	options = !makeflags
 	source = git://github.com/xiph/flac.git
 	sha1sums = SKIP
 
@@ -19,5 +18,4 @@ pkgname = flac-nodocs-git
 	provides = libFLAC.so
 	provides = libFLAC++.so
 	conflicts = flac
-	options = !docs
 
