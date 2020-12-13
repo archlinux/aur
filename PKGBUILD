@@ -2,7 +2,7 @@
 # Contributor: Julien Nicoulaud <julien DOT nicoulaud AT gmail.com>
 
 pkgname=howdoi
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="Instant coding answers via the command line"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('keep' 'python-appdirs' 'python-cachelib' 'python-cssselect' 'python-lxml'
          'python-pygments' 'python-pyquery' 'python-requests' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('09362f7390119dffd83c61a942801ad4d19aee499340ef7e8d5871167391d3d6')
+sha256sums=('9b7cabab87cd614e26b408653bc8937ec27b79ca2fde6b9457da55d2541f75fb')
 
 build() {
     cd ${pkgname}-${pkgver}
