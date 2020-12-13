@@ -1,12 +1,12 @@
 pkgbase = codeql
 	pkgdesc = The CLI tool for GitHub's CodeQL
-	pkgver = 2.3.3
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/codeql
 	arch = i686
 	arch = x86_64
 	license = custom
-	source = codeql-v2.3.3.zip::https://github.com/github/codeql-cli-binaries/releases/download/v2.3.3/codeql-linux64.zip
+	source = codeql-v2.4.0.zip::https://github.com/github/codeql-cli-binaries/releases/download/v2.4.0/codeql-linux64.zip
 	sha256sums = 3a0b6d6de1c7adee53d6d22adc49f3c49d5113449d11a4a8c7e0ebea9dd31ebd
 
 pkgname = codeql
