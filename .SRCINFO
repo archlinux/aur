@@ -1,7 +1,7 @@
 pkgbase = python-pidfile
 	pkgdesc = Python context manager for managing pid files
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/python-pidfile
 	arch = any
 	license = MIT

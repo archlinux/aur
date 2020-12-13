@@ -3,7 +3,7 @@
 pkgbase=python-pidfile
 pkgname=(python-pidfile python2-pidfile)
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 _name=${pkgname#python-}
 pkgdesc="Python context manager for managing pid files"
 arch=("any")
