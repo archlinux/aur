@@ -1,6 +1,6 @@
 pkgbase = openvpn3
 	pkgdesc = OpenVPN 3 Linux client
-	pkgver = 11_beta
+	pkgver = 13_beta
 	pkgrel = 1
 	url = https://github.com/OpenVPN/openvpn3-linux
 	install = openvpn3.install
@@ -24,7 +24,7 @@ pkgbase = openvpn3
 	optdepends = mbedtls: mbed TLS version
 	optdepends = python-dbus
 	optdepends = python-gobject
-	source = git+https://github.com/OpenVPN/openvpn3-linux.git#tag=v11_beta
+	source = git+https://github.com/OpenVPN/openvpn3-linux.git#tag=v13_beta
 	sha256sums = SKIP
 
 pkgname = openvpn3
