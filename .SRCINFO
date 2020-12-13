@@ -1,7 +1,7 @@
 pkgbase = lightdm-kbswitch-greeter-git
 	pkgdesc = Python and Gtk+ greeter for LightDM
 	pkgver = 0.1.r1.gfd79f5e
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/bearvrrr/lightdm-kbswitch-greeter
 	arch = any
 	license = GPL3
