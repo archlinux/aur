@@ -2,6 +2,7 @@ pkgbase = snap-pac-grub
 	pkgdesc = Pacman hook to update GRUB entries for grub-btrfs after snap-pac made snapshots
 	pkgver = 1.0.4
 	pkgrel = 4
+	url = https://github.com/maximbaz/snap-pac-grub
 	arch = any
 	license = MIT
 	depends = snap-pac
