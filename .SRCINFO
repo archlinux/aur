@@ -1,7 +1,7 @@
 pkgbase = discover-overlay
 	pkgdesc = Yet another Discord overlay for Linux written in Python using GTK3
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/discover-overlay/
 	arch = x86_64
 	license = GPL3

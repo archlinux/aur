@@ -2,7 +2,7 @@
 
 pkgname=discover-overlay
 pkgver=0.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet another Discord overlay for Linux written in Python using GTK3"
 arch=("x86_64")
 url="https://pypi.org/project/discover-overlay/"
