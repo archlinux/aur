@@ -1,6 +1,6 @@
 pkgbase = python-jellyfin-apiclient
 	pkgdesc = Python API client for Jellyfin
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/iwalton3/jellyfin-apiclient-python
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-jellyfin-apiclient
 	depends = python-urllib3
 	depends = python-websocket-client
 	depends = python-six
-	source = https://pypi.python.org/packages/source/j/jellyfin-apiclient-python/jellyfin-apiclient-python-1.6.1.tar.gz
-	sha256sums = 889e2547cb38ae42968421b66f9fa6685d05ef2865f0e2e643c9833d064b7d68
+	source = https://pypi.python.org/packages/source/j/jellyfin-apiclient-python/jellyfin-apiclient-python-1.6.2.tar.gz
+	sha256sums = b4560c4186e7153253919b49f9901258beaab1ffc22bb1334d8ba4666ff00602
 
 pkgname = python-jellyfin-apiclient
 
