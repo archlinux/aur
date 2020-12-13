@@ -1,13 +1,13 @@
 pkgbase = r-s4vectors
 	pkgdesc = Foundation of vector-like and list-like containers in Bioconductor
-	pkgver = 0.28.0
+	pkgver = 0.28.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/S4Vectors.html
 	arch = i686
 	arch = x86_64
 	license = Artistic-2.0
-	depends = r>=3.3.0
-	depends = r-biocgenerics>=0.35.0
+	depends = r>=4.0.0
+	depends = r-biocgenerics>=0.36.0
 	optdepends = r-iranges
 	optdepends = r-genomicranges
 	optdepends = r-summarizedexperiment
@@ -16,8 +16,8 @@ pkgbase = r-s4vectors
 	optdepends = r-data.table
 	optdepends = r-runit
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/S4Vectors_0.28.0.tar.gz
-	sha256sums = fb0749ee195502d2fc4b67179a25b8b31f268b75ecee727400aab92a9e21d665
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/S4Vectors_0.28.1.tar.gz
+	sha256sums = 30839d2f118c91cf3638e15dfe5ef154fde90d79d6c0afe83b35e6ee34250e3a
 
 pkgname = r-s4vectors
 

@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=S4Vectors
-_bcver=0.28.0
+_bcver=0.28.1
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -10,10 +10,10 @@ pkgdesc="Foundation of vector-like and list-like containers in Bioconductor"
 arch=(i686 x86_64)
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
 license=(Artistic-2.0)
-depends=('r>=3.3.0' 'r-biocgenerics>=0.35.0')
+depends=('r>=4.0.0' 'r-biocgenerics>=0.36.0')
 optdepends=(r-iranges r-genomicranges r-summarizedexperiment r-delayedarray r-shortread r-data.table r-runit r-biocstyle)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('fb0749ee195502d2fc4b67179a25b8b31f268b75ecee727400aab92a9e21d665')
+sha256sums=('30839d2f118c91cf3638e15dfe5ef154fde90d79d6c0afe83b35e6ee34250e3a')
 
 build() {
   cd "${srcdir}"
