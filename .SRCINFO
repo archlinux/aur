@@ -19,4 +19,5 @@ pkgname = flac-nodocs-git
 	provides = libFLAC.so
 	provides = libFLAC++.so
 	conflicts = flac
+	options = !docs
 

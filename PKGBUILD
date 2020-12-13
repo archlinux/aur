@@ -29,6 +29,7 @@ build() {
 
 package_flac-nodocs-git() {
   pkgdesc="Free Lossless Audio Codec (git version)"
+  options=('!docs')
   conflicts=('flac')
   provides=('flac' 'libFLAC.so' 'libFLAC++.so')
 
