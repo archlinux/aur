@@ -8,7 +8,7 @@
 
 pkgname=trousers
 pkgver=0.3.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source TCG Software Stack implementation for use with a TPM"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/trousers"
@@ -24,7 +24,7 @@ source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver
 #        'trousers-0.3.14-fno-common.patch')
 sha256sums=('1e5be93e518372acf1d92d2f567d01a46fdb0b730487e544e6fb896c59cac77f'
             '4c2684501e7a67132d4f53466b32fc06bd2a0275d4cf1fbd5479d0cdb2349bc7'
-            '1afd455b6c17e730b2cc4ec71d5625f0b63fde54f9409ae4762dc6f084c194de'
+            '225414a8da825351da33760a141a607f731c513c36527e4624b36a607c5aa7e6'
             '653c3a94ec628e7a7fb150d0d289b0866c6b3bb9aa57af2c59724517d205d7bd'
             'c50ea41a4809699dd50f2e621acc6baafb2dffa43cd5a0df8a0679f1d1b1b884'
             'd6d2f72389ffc1f61c363d839de24ba7ebb9a6453d99ece151a65933ebb0235c')
