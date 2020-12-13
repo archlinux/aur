@@ -28,7 +28,7 @@ prepare() {
 build() {
   arch-meson harfbuzz build \
     -D graphite=enabled \
-    -D docs=false
+    -D docs=disabled
   meson compile -C build
 }
 
