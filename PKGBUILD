@@ -8,9 +8,9 @@ pkgver=2.1.5.1
 pkgrel=1
 pkgdesc="Tail multiple logfiles at once, even if rotated"
 arch=('x86_64')
-url="https://www.unicom.com/sw/xtail/"
+url="https://unicom.crosenthal.com/sw/xtail"
 license=('BSD')
-#source=(https://www.unicom.com/files/xtail-$_pkgver.tar.gz)
+#source=(https://unicom.crosenthal.com/files/xtail-$_pkgver.tar.gz
 source=(http://ftp.debian.org/debian/pool/main/x/xtail/xtail_$_pkgver.orig.tar.gz
         http://ftp.debian.org/debian/pool/main/x/xtail/xtail_$_pkgver_diff.diff.gz)
 #noextract=(xtail_$_pkgver_diff.diff.gz)
@@ -38,7 +38,7 @@ package() {
   cd $pkgname-$_pkgver
 
   install -dm755 "$pkgdir/usr/share/man/man1"
-  gzip xtail.1 > "$pkgdir/usr/share/man/man1/xtail.1.gz"
+  install -Dm644 xtail.1 "$pkgdir/usr/share/man/man1/xtail.1"
 
   install -Dm755 xtail $pkgdir/usr/bin/xtail
   install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
