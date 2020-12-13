@@ -4,30 +4,38 @@
 # Contributor: mnabid
 
 _basename=zoom
-pkgname="$_basename-system-qt"
+pkgname=$_basename-system-qt
 pkgver=5.4.56259.1207
-pkgrel=1
+pkgrel=2
 pkgdesc='Video Conferencing and Web Conferencing Service - system Qt libraries'
 arch=('x86_64')
 license=('custom')
-url='https://zoom.us/'
-provides=('zoom')
-conflicts=('zoom')
+url='https://zoom.us'
+provides=("$_basename")
+conflicts=("$_basename")
 makedepends=('patchelf')
-depends=('ttf-font' 'pulseaudio-alsa' 'libjpeg-turbo'
-    'qt5-base' 'qt5-graphicaleffects' 'qt5-imageformats' 'qt5-quickcontrols' 'qt5-quickcontrols2'
-    'qt5-svg' 'qt5-script' 'qt5-declarative')
+depends=('ttf-font'
+         'libjpeg-turbo'
+         'qt5-base'
+         'qt5-graphicaleffects'
+         'qt5-imageformats'
+         'qt5-quickcontrols'
+         'qt5-quickcontrols2'
+         'qt5-svg'
+         'qt5-script'
+         'qt5-declarative')
 optdepends=('qt5-webengine: SSO login support'
-			'picom: extra compositor needed by some window managers for screen sharing'
-			'xcompmgr: extra compositor needed by some window managers for screen sharing')
+            'picom: extra compositor needed by some window managers for screen sharing'
+            'xcompmgr: extra compositor needed by some window managers for screen sharing'
+            'pulseaudio-alsa: output sound via pulseaudio' )
 options=(!strip)
-source=("${pkgname}-${pkgver}_orig_x86_64.pkg.tar.xz"::"https://zoom.us/client/${pkgver}/zoom_x86_64.pkg.tar.xz")
+source=("$pkgnme-$pkgver-orig-$arch.pkg.tar.xz::$url/client/$pkgver/${_basename}_$arch.pkg.tar.xz")
 sha512sums=('4605fd402d39380fd168f5069d4373fdd715baf612d7fe1ea6e4c34705e1ce16501e06584d9ce357fb47e7a44993d759cfb89b376138f0cccddfd2d4011f18d9')
 
 package() {
-	cp -dpr --no-preserve=ownership opt usr "${pkgdir}"
+	cp -dpr --no-preserve=ownership opt usr "$pkgdir"
+    cd "$pkgdir/opt/zoom"
 
-    cd "${pkgdir}/opt/zoom"
     # Fix spurious RPATH in binaries
     patchelf --shrink-rpath zoom
     patchelf --shrink-rpath zopen
