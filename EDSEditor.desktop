@@ -1,0 +1,20 @@
+[Desktop Entry]
+
+Type=Application
+
+# The version of the desktop entry specification to which this file complies
+Version=1.0
+
+# The name of the application
+Name=EDSEditor
+
+# A comment which can/will be used as a tooltip
+Comment=CanOpen EDS editor
+
+Exec=mono /usr/lib/libedssharp/EDSEditor.exe
+
+Icon=EDSEditor
+
+Terminal=false
+
+Categories=Programming;

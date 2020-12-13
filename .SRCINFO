@@ -1,0 +1,17 @@
+pkgbase = libedssharp
+	pkgdesc = A CanOpen EDS editor and library in C# with CanOpenNode export for Object Dictionary
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/robincornelius/libedssharp
+	arch = x86_64
+	license = GPL
+	makedepends = mono-msbuild
+	makedepends = imagemagick
+	depends = mono
+	source = libedssharp-0.8.zip::https://github.com/robincornelius/libedssharp/archive/0.8.zip
+	source = EDSEditor.desktop
+	md5sums = f8f2018f6135dce78e7c199180fabaee
+	md5sums = 595dd0061e6f4bec0b8f620e1f4fff8e
+
+pkgname = libedssharp
+
