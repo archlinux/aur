@@ -1,13 +1,15 @@
 pkgbase = pkgbuild-introspection
-	pkgdesc = generate .SRCINFO files (mksrcinfo)
-	pkgver = 10
+	pkgdesc = Tool for generating .SRCINFO files (mksrcinfo)
+	pkgver = 9
 	pkgrel = 1
-	url = https://www.archlinux.org/pacman/
+	url = https://github.com/falconindy/pkgbuild-introspection
 	arch = any
-	license = GPL
+	license = MIT
 	depends = bash
-	depends = pacman>=5.0.0
-	options = !strip
+	depends = pacman
+	source = pbi-9.tgz::https://github.com/falconindy/pkgbuild-introspection/archive/9.tar.gz
+	md5sums = a12d3c05702a6407fa050b3d74d0c7d3
+	sha256sums = c35676b2828369cb4c1c84ba6b4f7c77334452455619591a405c80aaae0321b8
 
 pkgname = pkgbuild-introspection
 
