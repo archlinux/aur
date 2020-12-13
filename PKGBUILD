@@ -2,7 +2,7 @@
 
 pkgname=beets-extrafiles
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin for beets that copies additional files and directories during the import process."
 arch=('any')
 url="https://github.com/Holzhaus/beets-extrafiles"
