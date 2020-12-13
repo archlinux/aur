@@ -36,7 +36,7 @@ build() {
 
 package() {
   install -dm755 "$pkgdir/usr/share/man/man1"
-  gzip ptpcam.1 > "$pkgdir/usr/share/man/man1/ptpcam.1.gz"
+  install -Dm644 ptpcam.1 "$pkgdir/usr/share/man/man1/ptpcam.1"
 
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
