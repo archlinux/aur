@@ -14,7 +14,7 @@ _merge_requests_to_use=('536' '1440') # safe pick
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=3.38.1+15+gc555f19b1
+pkgver=3.38.2
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
@@ -32,7 +32,7 @@ groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
 conflicts=(gnome-shell)
 install=$pkgname.install
-_commit=c555f19b10c3193e02815f13951348a437034113  # tags/3.38.1^15
+_commit=a24fe843fbde6c2c6f7cd32c4ff1cae19a27473d  # tags/3.38.2^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
@@ -54,7 +54,7 @@ pick_mr() {
         echo "Reverting $1..."
         git revert "$2" --no-commit
       elif [ "$3" = "patch" ]; then
-      	if [ -e ../"$2" ]; then 
+	if [ -e ../"$2" ]; then 
           echo "Patching with $2..."
           patch -Np1 -i ../"$2"
         else
