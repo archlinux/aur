@@ -10,7 +10,7 @@ pkgdesc="OpenType text shaping engine"
 url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
 arch=(x86_64)
 license=(MIT)
-makedepends=(glib2 freetype2 graphite harfbuzz cairo icu gobject-introspection gtk-doc
+makedepends=(glib2 freetype2 graphite harfbuzz cairo icu gobject-introspection
              ragel git python meson)
 #checkdepends=(python-fonttools python-setuptools)
 source=("git+https://github.com/harfbuzz/harfbuzz")
@@ -27,7 +27,8 @@ prepare() {
 
 build() {
   arch-meson harfbuzz build \
-    -D graphite=enabled
+    -D graphite=enabled \
+    -D docs=false
   meson compile -C build
 }
 

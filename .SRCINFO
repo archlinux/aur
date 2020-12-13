@@ -12,7 +12,6 @@ pkgbase = harfbuzz-git
 	makedepends = cairo
 	makedepends = icu
 	makedepends = gobject-introspection
-	makedepends = gtk-doc
 	makedepends = ragel
 	makedepends = git
 	makedepends = python
