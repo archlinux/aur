@@ -1,12 +1,12 @@
 pkgbase = niacop-git
 	pkgdesc = Cross platform self-tracker tool
-	pkgver = 0.5.10.r1.ga16e328
-	pkgrel = 2
+	pkgver = 0.5.10.r3.gf6d44c7
+	pkgrel = 3
 	url = https://github.com/xdrie/niacop
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = dotnet-sdk>=3.1.0.sdk100
+	makedepends = dotnet-sdk>=5.0.1.sdk101
 	depends = xprintidle
 	depends = xorg-xprop
 	depends = xdotool

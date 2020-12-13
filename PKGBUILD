@@ -1,14 +1,14 @@
 # Maintainer: xhyinne <xhyi AT gmx DOT us>
 
 pkgname=niacop-git
-pkgver=0.5.10.r1.ga16e328
-pkgrel=2
+pkgver=0.5.10.r3.gf6d44c7
+pkgrel=3
 pkgdesc="Cross platform self-tracker tool"
 arch=('x86_64')
 url="https://github.com/xdrie/niacop"
 license=('GPL3')
 depends=('xprintidle' 'xorg-xprop' 'xdotool' 'xorg-xinput' 'xorg-xmodmap')
-makedepends=('git' 'dotnet-sdk>=3.1.0.sdk100')
+makedepends=('git' 'dotnet-sdk>=5.0.1.sdk101')
 optdepends=()
 source=("$pkgname::git+https://github.com/xdrie/niacop.git")
 sha256sums=('SKIP')
