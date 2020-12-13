@@ -15,7 +15,7 @@ pkgdesc='Doing Phonetics by computer (speech analysis)'
 arch=('x86_64' 'i686')
 url='https://www.praat.org/'
 license=('GPL')
-depends=('alsa-lib' 'gtk2' 'jack' 'libpulse' 'ttf-charis-sil' 'ttf-sil-doulos')
+depends=('alsa-lib' 'gtk3' 'jack' 'libpulse' 'ttf-charis-sil' 'ttf-sil-doulos')
 optdepends=('ttf-sil-fonts')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz"
         "$pkgname.1"
