@@ -1,39 +1,41 @@
 pkgbase = r-usethis
 	pkgdesc = Automate Package and Project Setup
-	pkgver = 1.6.3
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=usethis
 	arch = any
 	license = GPL3
 	depends = r>=3.2
-	depends = r-clipr>=0.3.0
 	depends = r-cli
+	depends = r-clipr>=0.3.0
 	depends = r-crayon
 	depends = r-curl>=2.7
 	depends = r-desc
 	depends = r-fs>=1.3.0
-	depends = r-gh>=1.1.0
-	depends = r-git2r>=0.23
+	depends = r-gert>=1.0.2
+	depends = r-gh>=1.2.0
 	depends = r-glue>=1.3.0
+	depends = r-jsonlite
+	depends = r-lifecycle
 	depends = r-purrr
-	depends = r-rematch2
+	depends = r-rappdirs
 	depends = r-rlang>=0.4.3
 	depends = r-rprojroot>=1.2
 	depends = r-rstudioapi
 	depends = r-whisker
-	depends = r-withr
+	depends = r-withr>=2.3.0
 	depends = r-yaml
 	optdepends = r-covr
 	optdepends = r-knitr
 	optdepends = r-magick
-	optdepends = r-pkgdown
+	optdepends = r-mockr
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-spelling
 	optdepends = r-styler
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/usethis_1.6.3.tar.gz
-	sha256sums = ccb127e0031ca86077e2a2521579c7bf96be0ee3d7acfc5eeac56de627019326
+	source = https://cran.r-project.org/src/contrib/usethis_2.0.0.tar.gz
+	sha256sums = 22aa2b59f36a8701a4648554c7b0e010253bf917a0f431f06efac7d8a6b59854
 
 pkgname = r-usethis
 
