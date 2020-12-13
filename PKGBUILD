@@ -3,7 +3,7 @@
 # Contributor: Roel Gerrits <roel@roelgerrits.nl>
 pkgname=nodm-dgw
 pkgver=0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="X display manager for automatic logins, dgw's fork to fix restarting issue"
 arch=('x86_64')
 url='https://github.com/spanezz/nodm/pull/13'

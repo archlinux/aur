@@ -1,8 +1,8 @@
 pkgbase = nodm-dgw
-	pkgdesc = X display manager for automatic logins
+	pkgdesc = X display manager for automatic logins, dgw's fork to fix restarting issue
 	pkgver = 0.13
 	pkgrel = 2
-	url = https://github.com/spanezz/nodm
+	url = https://github.com/spanezz/nodm/pull/13
 	arch = x86_64
 	license = GPL
 	makedepends = help2man
