@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lib32-vkd3d-git
-pkgver=1.1.689.ga59f198
+pkgver=1.2.79.ga9abb0d7
 pkgrel=1
 pkgdesc='D3D12 to Vulkan translation library. 32-bits (GIT version)'
 arch=('x86_64')
@@ -53,4 +53,5 @@ package() {
   make -C build DESTDIR="${pkgdir}" install
 
   rm -fr "${pkgdir}/usr/include"
+  (cd "${pkgdir}/usr/bin"; for i in *; do mv "${i}" "${i}-32"; done)
 }
