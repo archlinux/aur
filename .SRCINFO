@@ -1,0 +1,13 @@
+pkgbase = mongocli-bin
+	pkgdesc = mongocli binary to deploy and manage Atlas clusters
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://docs.mongodb.com/mongocli/master/
+	arch = x86_64
+	license = SSPLv1
+	provides = mongocli=1.9.0
+	source = https://github.com//mongodb/mongocli/releases/download/v1.9.0/mongocli_1.9.0_linux_x86_64.tar.gz
+	sha256sums = bb745cd35cd96567e25db9eea6033512e67cc0a4e70fe54e88c73bc01cde4142
+
+pkgname = mongocli-bin
+
