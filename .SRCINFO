@@ -8,7 +8,6 @@ pkgbase = lib32-cairo-git
 	license = MPL
 	makedepends = lib32-librsvg
 	makedepends = lib32-gtk2
-	makedepends = valgrind
 	makedepends = git
 	depends = lib32-libpng
 	depends = lib32-libxrender

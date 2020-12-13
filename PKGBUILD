@@ -12,7 +12,7 @@ provides=(lib32-cairo)
 conflicts=(lib32-cairo)
 depends=(lib32-libpng lib32-libxrender lib32-libxext lib32-fontconfig lib32-pixman lib32-glib2
          cairo)
-makedepends=(lib32-librsvg lib32-gtk2 valgrind git)
+makedepends=(lib32-librsvg lib32-gtk2 git)
 #checkdepends=(ttf-dejavu gsfonts)
 source=("git+https://gitlab.freedesktop.org/cairo/cairo.git")
 sha256sums=('SKIP')
