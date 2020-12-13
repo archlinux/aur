@@ -10,6 +10,7 @@ pkgbase = ha-connect-git
 	depends = qt5-base
 	depends = qt5-webengine
 	depends = qt5-webview
+	depends = qt5-wayland
 	depends = qt5-quickcontrols2
 	provides = ha-connect
 	conflicts = ha-connect
