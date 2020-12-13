@@ -1,7 +1,7 @@
 pkgbase = pulseaudio-support
 	pkgdesc = Meta package for pulseaudio support.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/PulseAudio
 	arch = any
 	license = GPL
@@ -13,6 +13,7 @@ pkgbase = pulseaudio-support
 	depends = pulseaudio-lirc
 	depends = pulseaudio-rtp
 	depends = pulseaudio-equalizer
+	depends = pulseaudio-bluetooth
 	optdepends = pavucontrol: A GTK volume control tool for PulseAudio
 	optdepends = pavucontrol-qt: A QT volume control tool for PulseAudio
 	optdepends = pulseaudio-equalizer-ladspa: A GUI equalizer for PulseAudio
