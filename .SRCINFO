@@ -1,6 +1,6 @@
 pkgbase = kbs2
 	pkgdesc = A secret manager backed by age
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/woodruffw/kbs2
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = kbs2
 	makedepends = rust
 	makedepends = python
 	depends = libx11
-	source = kbs2-0.2.4.tar.gz::https://github.com/woodruffw/kbs2/archive/v0.2.4.tar.gz
-	sha512sums = bbea1a3ad4db71bf51219ebc02379ae76797464842bbceabb3ebe8f97ac9c82796e11ecd3858a02f6d1c3d8341133386507525b1f6761c47536fc5b66dbc2645
+	source = kbs2-0.2.5.tar.gz::https://github.com/woodruffw/kbs2/archive/v0.2.5.tar.gz
+	sha512sums = 9f2ac78e31fc21c8aca97e7bac4bdab951aa6cecfc9ab8d26e5823cc44cf94b036a713e862e757d2fcf6dc8748d0b2b56ec88256ae01b59e9dd0657acae22df2
 
 pkgname = kbs2
 
