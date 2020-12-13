@@ -2,7 +2,7 @@
 
 pkgname=bluetooth-support
 pkgver=1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://wiki.archlinux.org/index.php/Bluetooth"
 license=('GPL')
@@ -13,7 +13,6 @@ depends=("bluez"
                         "bluez-plugins"
                         "bluez-tools"
                         "bluez-utils"
-                        "pulseaudio-bluetooth"
                         "bluetooth-autoconnect")
 optdepends=('blueman: A gtk+ bluetooth manager'
                         'bluedevil: Qt bluetooth frontend'
