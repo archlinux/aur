@@ -13,6 +13,7 @@ pkgbase = pince-git
 	depends = python-pygdbmi
 	depends = gdb
 	depends = sudo
+    makedepends = git
     makedepends = intltool
 	source = pince-git::git+https://github.com/korcankaraokcu/PINCE.git
 	md5sums = SKIP

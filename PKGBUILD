@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/korcankaraokcu/PINCE"
 license=('GPL3')
 depends=('python' 'python-pexpect' 'python-psutil' 'python-pyqt5' 'python-distorm' 'python-pygdbmi' 'gdb' 'sudo')
-makedepends=('intltool')
+makedepends=('git' 'intltool')
 source=("$pkgname::git+https://github.com/korcankaraokcu/PINCE.git")
 md5sums=('SKIP')
 
