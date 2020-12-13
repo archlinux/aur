@@ -1,5 +1,5 @@
 pkgbase = ndsplus-git
-	pkgdesc = Linux support for the EMS NDS Adapter+.
+	pkgdesc = Linux support for the EMS NDS Adapter+
 	pkgver = r8.93f517c
 	pkgrel = 2
 	url = https://github.com/Thulinma/ndsplus
@@ -11,7 +11,7 @@ pkgbase = ndsplus-git
 	depends = libusb
 	provides = ndsplus
 	conflicts = ndsplus
-	source = git://github.com/Thulinma/ndsplus.git
+	source = git+https://github.com/Thulinma/ndsplus.git
 	source = ndsadapterplus.rules
 	sha256sums = SKIP
 	sha256sums = 03fa9595fbb440bc4d78df2f4655eddb0ad29bc2f2860f2e0dd701a14601c9ac
