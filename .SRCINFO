@@ -1,7 +1,7 @@
 pkgbase = youtube-music-bin
 	pkgdesc = YouTube Music Desktop App bundled with custom plugins like built-in ad blocker & downloader
 	pkgver = 1.7.4
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/th-ch/youtube-music
 	arch = x86_64
 	license = MIT
