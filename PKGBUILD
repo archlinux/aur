@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=dstask
-pkgver=0.23.1
+pkgver=0.23.2
 pkgrel=1
 pkgdesc="Single binary terminal-based TODO manager with git-based sync + markdown notes per task"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=('git')
 makedepends=('go')
 install=dstask.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('48f485c591dfaf0fd85902f826c0a6a74057aea702e7fd30a59f53e905cbfb67')
+sha256sums=('30665d3f0f1e268af6eff681e331557f56273bf6ac7491b489c50725b55ef293')
 
 build() {
     _commit=$(zcat $pkgname-$pkgver.tar.gz | git get-tar-commit-id)
@@ -26,13 +26,15 @@ build() {
     go build \
         -trimpath \
         -buildmode=pie \
-        -mod=vendor \
+        -mod=readonly \
         -modcacherw \
         -ldflags "-linkmode=external
             -X \"github.com/naggie/dstask.GIT_COMMIT=$_commit\"
             -X \"github.com/naggie/dstask.VERSION=$pkgver\"
             -X \"github.com/naggie/dstask.BUILD_DATE=$(date -d@"$SOURCE_DATE_EPOCH" +%FT%TZ)\"" \
-        cmd/dstask.go
+        -o dstask \
+        cmd/dstask/main.go
+
 }
 
 package() {
