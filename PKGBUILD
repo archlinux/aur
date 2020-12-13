@@ -1,7 +1,7 @@
 # Maintainer: Hiroshi Hatake <cosmo0920.wp[at]gmail.com>
 
 pkgname=snowball-c-git
-pkgver=20190506.662.d29510a
+pkgver=20201213.662.d29510a
 pkgrel=1
 pkgdesc="Snowball compiler and stemming algorithms ."
 arch=('i686' 'x86_64' 'aarch64')
