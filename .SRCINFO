@@ -1,0 +1,20 @@
+pkgbase = cyp-lukasstevens-git
+	pkgdesc = (Check Your Proof) Checker for "morally correct" induction proofs about Haskell programs
+	pkgver = r294.3129d6f
+	pkgrel = 1
+	url = https://github.com/lukasstevens/cyp
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = ghc
+	makedepends = ghc-static
+	makedepends = stack
+	depends = gmp
+	depends = libffi
+	provides = cyp
+	source = git+https://github.com/lukasstevens/cyp
+	md5sums = SKIP
+
+pkgname = cyp-lukasstevens-git
+
