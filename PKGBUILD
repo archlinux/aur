@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=xterm-git
-pkgver=r1214.g4b77a49
+pkgver=r1311.gd82f70a
 pkgrel=1
 pkgdesc="Terminal emulator for the X Window System"
 arch=('i686' 'x86_64')
 url="https://invisible-island.net/xterm/"
 license=('custom')
-depends=('glibc' 'libutempter' 'libxaw' 'libxft' 'libxkbfile' 'ncurses' 'xbitmaps' 'xorg-luit')
+depends=('glibc' 'libutempter' 'libxaw' 'libxft' 'libxkbfile' 'luit' 'ncurses' 'xbitmaps')
 makedepends=('git')
 provides=('xterm')
 conflicts=('xterm')
@@ -54,7 +54,6 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 "xterm.desktop" -t "$pkgdir/usr/share/applications"
-  install -Dm644 "uxterm.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 {uxterm,xterm}.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/xterm"
 }
