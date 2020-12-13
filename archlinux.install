@@ -7,8 +7,21 @@ post_install() {
     printf "\t# https://www.pokemon-revolution-online.net/Register.php #\n"
     printf "\t#                                                        #\n"
     printf "\t##########################################################\n"
+    if [[ $(/usr/bin/tail -n 1 /usr/lib/os-release | /usr/bin/cut -d= -f2) != "archlinux" ]];
+        then
+            printf "==>\tUNSUPPORTED DISTRO DETECTED. #https://wiki.archlinux.org/index.php/Archn't\n";
+            printf "==>\tTHIS PACKAGE ONLY SUPPORTS Arch Linux.\n";
+            printf "==>\tPLEASE DO NOT ASK FOR SUPPORT ON THE AUR, YOU ARE ON YOUR OWN.\n\n";
+    fi
 }
 
 post_upgrade() {
+    if [[ $(/usr/bin/tail -n 1 /usr/lib/os-release | /usr/bin/cut -d= -f2) != "archlinux" ]];
+        then
+            printf "==>\tUNSUPPORTED DISTRO DETECTED.\n";
+            printf "==>\tTHIS PACKAGE ONLY SUPPORTS Arch Linux.\n";
+            printf "==>\tPLEASE DO NOT ASK FOR SUPPORT ON THE AUR, YOU ARE ON YOUR OWN.\n\n";
+    fi
+
     printf  "\nThanks for still using my pkg :)\n\n"
 }
