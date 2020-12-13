@@ -1,7 +1,10 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
+# Last version before porting to rizin
+_fragment="#commit=0e9b0c92b9ed0efe12a59c15545952103aea7ad2"
+
 pkgname=radare2-cutter-git
-pkgver=1.10.3.pre.r59.gcd42adc8
+pkgver=1.10.3.pre.r172.g0e9b0c92
 pkgrel=1
 pkgdesc='Qt and C++ GUI for radare2 reverse engineering framework (originally named Iaito)'
 url='https://github.com/radareorg/cutter'
@@ -12,7 +15,7 @@ makedepends=('git' 'cmake' 'shiboken2' 'meson' 'ninja')
 optdepends=()
 provides=('radare2-cutter')
 backup=()
-source=("${pkgname}::git+https://github.com/radareorg/cutter.git")
+source=("${pkgname}::git+https://github.com/radareorg/cutter.git${_fragment}")
 md5sums=('SKIP')
 
 pkgver() {
