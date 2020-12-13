@@ -2,4 +2,3 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!cuda11.patch
