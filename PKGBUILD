@@ -11,6 +11,7 @@ license=(MIT)
 provides=($_pkgname)
 conflicts=($_pkgname)
 depends=(ansible)
+makedepends=(git)
 source=("git+https://github.com/netson/${_pkgname}.git")
 md5sums=('SKIP')
 
