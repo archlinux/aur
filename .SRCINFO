@@ -1,6 +1,6 @@
 pkgbase = crystalline
 	pkgdesc = A Language Server Protocol implementation for Crystal.
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 0
 	url = https://github.com/elbywan/crystalline/
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = crystalline
 	depends = pcre
 	depends = libyaml
 	depends = llvm10-libs
-	source = crystalline-0.1.8.tar.gz::https://github.com/elbywan/crystalline/archive/v0.1.8.tar.gz
-	sha256sums = ca74f222f6d59a12e50701774fd3c5a04f41fe68e53d9b7078c9908c4f2a08a5
+	source = crystalline-0.1.9.tar.gz::https://github.com/elbywan/crystalline/archive/v0.1.9.tar.gz
+	sha256sums = fdcfa3e598214cfb5ecceb2439d6888c66835e28252d52a31aab40957e056867
 
 pkgname = crystalline
 
