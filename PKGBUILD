@@ -1,12 +1,10 @@
-# Script generated with import_catkin_packages.py.
-# For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - XmlRpc++ is a C++ implementation of the XML-RPC protocol."
 url='https://wiki.ros.org/xmlrpcpp'
 
 pkgname='ros-melodic-xmlrpcpp'
 pkgver='1.14.10'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('LGPL-2.1')
 
 ros_makedepends=(
@@ -52,7 +50,8 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DSETUPTOOLS_DEB_LAYOUT=OFF
+		-DSETUPTOOLS_DEB_LAYOUT=OFF \
+		-DBOOST_ROOT=/opt/boost1.69
 	make
 }
 

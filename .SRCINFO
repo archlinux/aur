@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-xmlrpcpp
 	pkgdesc = ROS - XmlRpc++ is a C++ implementation of the XML-RPC protocol.
 	pkgver = 1.14.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/xmlrpcpp
 	arch = i686
 	arch = x86_64
