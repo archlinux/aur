@@ -1,14 +1,14 @@
  # Maintainer: Pete Alexandrou <pete@ozmartians.com>
 pkgname=openvpn-xor-git
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenVPN with XOR patch to bypass DPI monitoring in places like China (also known as OpenVPN stealth/scramble mode)'
 arch=('x86_64')
 url='https://github.com/openvpn/openvpn'
 depends=('openssl' 'lzo' 'iproute2' 'libsystemd' 'pkcs11-helper')
 optdepends=('easy-rsa' 'pam' 'qopenvpn')
 makedepends=('git' 'systemd')
-conflicts=('openvpn' 'openvpn-dev' 'openvpn-git' 'openvpn-xor-patched')
+conflicts=('openvpn' 'openvpn-dev' 'openvpn-git' 'openvpn-xor-patched' 'libressl')
 provides=('openvpn=2.5.0' 'openvpn-dev')
 license=('custom')
 source=("https://github.com/${pkgname%-xor-git}/${pkgname%-xor-git}/archive/v${pkgver}.tar.gz"
