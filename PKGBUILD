@@ -9,7 +9,7 @@
 
 pkgname=openscenegraph-dae
 pkgver=3.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Source, high performance real-time graphics toolkit'
 url='http://www.openscenegraph.org'
 arch=('x86_64')
