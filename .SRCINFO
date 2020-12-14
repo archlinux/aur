@@ -1,0 +1,16 @@
+pkgbase = tla2json
+	pkgdesc = Convert TLA+ output and values into JSON.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/japgolly/tla2json
+	arch = x86_64
+	license = Apache
+	depends = java-runtime
+	noextract = tla2json.jar
+	source = https://github.com/japgolly/tla2json/releases/download/v1.0.0/tla2json.jar
+	source = tla2json
+	sha256sums = 2054d7f60521fd6a8dc974b927d69a380ba867b000e3d71dc46fafd8c291c22d
+	sha256sums = be4a88d33ab6f20c09270b22830b08f37fd059e888b9c272f0fe6c088337e92f
+
+pkgname = tla2json
+
