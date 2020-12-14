@@ -1,6 +1,6 @@
 pkgbase = flux-bin
 	pkgdesc = Open and extensible continuous delivery solution for Kubernetes
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://fluxcd.io/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = flux-bin
 	arch = aarch64
 	license = APACHE
 	optdepends = kubectl
-	source_x86_64 = flux-bin-0.5.4.tar.gz::https://github.com/fluxcd/flux2/releases/download/v1/flux_0.5.4_linux_amd64.tar.gz
-	source_armv6h = flux-bin-0.5.4.tar.gz::https://github.com/fluxcd/flux2/releases/download/v1/flux_0.5.4_linux_arm.tar.gz
-	source_armv7h = flux-bin-0.5.4.tar.gz::https://github.com/fluxcd/flux2/releases/download/v1/flux_0.5.4_linux_arm.tar.gz
-	source_aarch64 = flux-bin-0.5.4.tar.gz::https://github.com/fluxcd/flux2/releases/download/v1/flux_0.5.4_linux_arm64.tar.gz
+	source_x86_64 = flux-bin-0.5.5.tar.gz::https://github.com/fluxcd/flux2/releases/download/v1/flux_0.5.5_linux_amd64.tar.gz
+	source_armv6h = flux-bin-0.5.5.tar.gz::https://github.com/fluxcd/flux2/releases/download/v1/flux_0.5.5_linux_arm.tar.gz
+	source_armv7h = flux-bin-0.5.5.tar.gz::https://github.com/fluxcd/flux2/releases/download/v1/flux_0.5.5_linux_arm.tar.gz
+	source_aarch64 = flux-bin-0.5.5.tar.gz::https://github.com/fluxcd/flux2/releases/download/v1/flux_0.5.5_linux_arm64.tar.gz
 
 pkgname = flux-bin
