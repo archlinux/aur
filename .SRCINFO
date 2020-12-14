@@ -1,0 +1,18 @@
+pkgbase = bootterm-git
+	pkgdesc = Simple, reliable and powerful serial terminal
+	pkgver = 0.1+3
+	pkgrel = 1
+	url = https://github.com/wtarreau/bootterm
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	depends = glibc
+	provides = bootterm
+	conflicts = bootterm
+	source = git+https://github.com/wtarreau/bootterm.git
+	md5sums = SKIP
+
+pkgname = bootterm-git
+
