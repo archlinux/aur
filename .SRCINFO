@@ -1,7 +1,7 @@
 pkgbase = notion-app-nativefier
 	pkgdesc = The all-in-one workspace for your notes, tasks, wikis, and databases
 	pkgver = 2020.04.05
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.notion.so
 	arch = any
 	license = MIT
