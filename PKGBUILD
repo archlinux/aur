@@ -5,8 +5,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-no-extras
-pkgver=87.0.4280.66
-pkgrel=1
+pkgver=87.0.4280.88
+pkgrel=2
 _pkgname=chromium
 _launcher_ver=6
 _gcc_patchset=9
@@ -27,15 +27,14 @@ optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: for storing passwords in KWallet on KDE desktops')
-install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
-        chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
+        https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
-        chromium-skia-harmony.patch)
-sha256sums=('29a8e4ea82edec2fdcf34ece68323bec7ab90f3d5669e6b77f58cff9c278f741'
+        subpixel-anti-aliasing-in-FreeType-2.8.1.patch)
+sha256sums=('3e4645328735ef60db78d1a313efb3770a3edeaede90d076414df52f567a09c0'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'c99934bcd2f3ae8ea9620f5f59a94338b2cf739647f04c28c8a551d9083fa7e9'
-            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
+            '1e2913e21c491d546e05f9b4edf5a6c7a22d89ed0b36ef692ca6272bcd5faec6')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -84,13 +83,11 @@ prepare() {
     third_party/libxml/chromium/*.cc
 
   # Upstream fixes
+  patch -Np1 -d third_party/skia <../subpixel-anti-aliasing-in-FreeType-2.8.1.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-87-ServiceWorkerContainerHost-crash.patch
   patch -Np1 -i ../patches/chromium-87-openscreen-include.patch
-
-  # https://crbug.com/skia/6663#c10
-  patch -Np0 -i ../chromium-skia-harmony.patch
 
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
@@ -174,7 +171,7 @@ build() {
   CFLAGS+='   -Wno-unknown-warning-option'
   CXXFLAGS+=' -Wno-unknown-warning-option'
 
-  gn gen out/Release --args="${_flags[*]}" --script-executable=/usr/bin/python2
+  gn gen out/Release --args="${_flags[*]}" --script-executable=python2
   ninja -C out/Release chrome chrome_sandbox
 }
 
