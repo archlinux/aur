@@ -1,10 +1,11 @@
 pkgbase = python-conda-build
 	pkgdesc = Commands and tools for building conda packages
-	pkgver = 3.19.3
+	pkgver = 3.20.5
 	pkgrel = 1
 	url = http://conda.pydata.org/docs/building/build.html
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
 	depends = patchelf
 	depends = python
 	depends = python-beautifulsoup4
@@ -25,8 +26,8 @@ pkgbase = python-conda-build
 	depends = python-yaml
 	provides = conda-build
 	options = !emptydirs
-	source = https://github.com/conda/conda-build/archive/3.19.3.tar.gz
-	sha512sums = 28e6825418c5c6eccdb7ce9b599a2f42202a640f2ae97876e8c7192223237a0c85ec8ca95f6ee500477bb7c8951f6808cdf35eb592f6f47119254f5c5f23c43a
+	source = https://github.com/conda/conda-build/archive/3.20.5.tar.gz
+	sha512sums = e8e96fceb0cb529050d3a8c0d45f9c46ad2d444b146aefc0bebb0ee4cfc7834b2f996b3bbec12e95375594b7139b08cf466955c96e833ef154f4b8fdbcc32567
 
 pkgname = python-conda-build
 
