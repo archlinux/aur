@@ -3,8 +3,8 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail.com>
 
 pkgname=pycharm-edu
-pkgver=2020.2.4
-_pkgver=2020.2.4
+pkgver=2020.3
+_pkgver=2020.3
 pkgrel=1
 pkgdesc="A Professional Tool to Learn and Teach Programming with Python"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(https://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz
         'pycharm-edu.desktop')
 optdepends=('ipython2: For enhanced interactive Python shell v2'
             'ipython: For enhanced interactive Python shell v3')
-sha256sums=('6e8c5b8f2ba204c8b94b7be23e81afb51d16495dbb00ecefd0bf3eb8734eb3b3'
+sha256sums=('8fd9f16ab2ebe39fb42d26473d226ad6d539511e8f3d61bb4b7f512c02131dff'
             'bb47c5ebe079539aed256aea205fdc91a425937744e6d84df65a85cdbd51ab59')
 
 build() {
@@ -27,7 +27,7 @@ build() {
   # compile PyDev debugger used by PyCharm to speedup debugging
   python plugins/python-ce/helpers/pydev/setup_cython.py build_ext --build-temp build --build-lib .
 
-  rm -rf bin/fsnotifier{,-arm} lib/libpty/linux/x86
+  rm -rf bin/fsnotifier lib/libpty/linux/{mips64el,ppc64le,aarch64,x86}
   rm -rf Install-Linux-tar.txt help/ReferenceCardForMac.pdf
 }
 
