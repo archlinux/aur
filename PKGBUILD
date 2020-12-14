@@ -3,7 +3,7 @@
 pkgname=perl-parse-pmfile
 _lastauthor=I/IS/ISHIGAKI
 _pkgname=Parse-PMFile
-pkgver=0.42
+pkgver=0.43
 pkgrel=1
 pkgdesc='parses .pm file as PAUSE does'
 arch=('any')
@@ -11,7 +11,7 @@ license=('PerlArtistic' 'GPL')
 depends=(perl-json-pp)
 url="http://search.cpan.org/dist/${_pkgname}/"
 source=(http://search.cpan.org/CPAN/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('e7f6c70932b86eb4a2426569e33d2b651b52a24e5d0c0dcb3849d045b52c736c')
+sha256sums=('be61e807204738cf0c52ed321551992fdc7fa8faa43ed43ff489d0c269900623')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
