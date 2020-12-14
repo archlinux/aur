@@ -1,7 +1,7 @@
 pkgbase = libinput-complyue
-	pkgdesc = Input device management and event handling library
+	pkgdesc = Input device management and event handling library with three finger drag patch made by github.com/complyue
 	pkgver = 1.16.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/libinput/
 	arch = x86_64
 	license = custom:X11
