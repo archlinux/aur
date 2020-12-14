@@ -1,7 +1,7 @@
 # Author: futpib <futpib@gmail.com>
 
 pkgname=pagraphcontrol-git
-pkgver=1.0.13.r2.g01e2d41
+pkgver=1.0.13.r3.g3548591
 pkgrel=1
 pkgdesc="PulseAudio Graph Control"
 arch=('x86_64')
@@ -17,20 +17,21 @@ sha256sums=('SKIP')
 _pkgname=${pkgname%%-git}
 
 pkgver() {
-    cd $_pkgname
+    cd "${srcdir}/${_pkgname}"
 
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
-    cd $_pkgname
+    cd "${srcdir}/${_pkgname}"
 
-    yarn install --ignore-engines
+    yarn install --frozen-lockfile --ignore-engines
     yarn build
 }
 
 package() {
-    cd $_pkgname/dist/*
+    cd "${srcdir}/${_pkgname}"
+    cd dist/*
 
     appdir="usr/lib/$_pkgname"
     install -d "$pkgdir/$(dirname "$appdir")"
