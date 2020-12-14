@@ -2,8 +2,8 @@
 
 _pkgname='waybackpy'
 pkgname="${_pkgname}-git"
-pkgver=2.2.0.r15.gca51c14
-pkgrel=2
+pkgver=2.3.0.r0.gd3e68d0
+pkgrel=1
 pkgdesc='Python package & command-line program that interfaces with the Internet Archives Wayback Machine API'
 arch=('any')
 url='https://github.com/akamhy/waybackpy'
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('git' 'python-setuptools')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+${url}.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
