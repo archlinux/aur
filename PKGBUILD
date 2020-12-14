@@ -1,9 +1,9 @@
 # Maintainer: josemapt https://github.com/josemapt
 pkgname=dmenu-josemapt-git
-pkgver=0.4.4
+pkgver=5.0
 pkgrel=1
 epoch=
-pkgdesc="dmenu with some extensions"
+pkgdesc="dmenu with some nice extensions"
 arch=(x86_64)
 url="https://github.com/josemapt/dmenu-josemapt.git"
 license=('MIT')
@@ -26,7 +26,7 @@ validpgpkeys=()
 
 pkgver() {
 	cd "${_pkgname}"
-    printf "0.4.4.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "5.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -40,5 +40,5 @@ package() {
     cp -rf * ${pkgdir}/opt/${pkgname}
     make PREFIX=/usr DESTDIR="${pkgdir}" install
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }

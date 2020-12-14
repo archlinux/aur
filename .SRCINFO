@@ -1,6 +1,6 @@
 pkgbase = dmenu-josemapt-git
-	pkgdesc = dmenu with some extensions
-	pkgver = 0.4.4
+	pkgdesc = dmenu with some nice extensions
+	pkgver = 5.0
 	pkgrel = 1
 	url = https://github.com/josemapt/dmenu-josemapt.git
 	arch = x86_64
