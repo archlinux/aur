@@ -1,6 +1,6 @@
 # Maintainer: josemapt https://github.com/josemapt
 pkgname=dmenu-josemapt-git
-pkgver=5.0
+pkgver=5.0.r2.10fc8ce
 pkgrel=1
 epoch=
 pkgdesc="dmenu with some nice extensions"
