@@ -1,7 +1,7 @@
 # Maintainer: Tom <reztho@archlinux.org>
 # Based on a contribution of: bitwave
 pkgname=textadept
-pkgver=10.8
+pkgver=11.0
 pkgrel=1
 pkgdesc="A fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=('i686' 'x86_64')
@@ -12,19 +12,11 @@ makedepends=('mercurial' 'wget' 'unzip')
 provides=("$pkgname")
 conflicts=('textadept-bin')
 replaces=('textadept-bin')
-source=("hg+http://foicica.com/hg/textadept#tag=${pkgname}_${pkgver}"
-        "http://foicica.com/textadept/download/textadept_${pkgver}.modules.zip")
+source=("https://github.com/orbitalquark/textadept/archive/textadept_${pkgver}.tar.gz"
+        "https://github.com/orbitalquark/textadept/releases/download/textadept_${pkgver}/textadept_${pkgver}.modules.zip")
 
 build() {
-  msg ""
-  msg "If textadept can't be compiled try the following things in this order:"
-  msg "- Run: hg config -e , and then add these lines:"
-  msg "[hostsecurity]"
-  msg "foicica.com:minimumprotocol = tls1.0"
-  msg ""
-  msg "- Run makepkg with the -C argument"
-  msg ""
-  cd "$srcdir/$pkgname/src"
+  cd "$srcdir/textadept-textadept_${pkgver}/src"
   unset MAKEFLAGS
   unset CXXFLAGS
   unset CFLAGS
@@ -34,14 +26,14 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname/src"
+  cd "$srcdir/textadept-textadept_${pkgver}/src"
   make PREFIX=/usr DESTDIR="$pkgdir/" install
   rm "$pkgdir/usr/share/pixmaps/"textadept{.svg,.png}
   make curses PREFIX=/usr DESTDIR="$pkgdir/" install
   
   # Additional modules
-  cd "$srcdir/${pkgname}_$pkgver.modules"
-  cp -r modules "$pkgdir/usr/share/$pkgname/"
+  cd "$srcdir/textadept-modules"
+  cp -r ./* "$pkgdir/usr/share/$pkgname/"
 
   # License
   install -d "$pkgdir/usr/share/licenses/textadept"
@@ -52,5 +44,5 @@ package() {
   ln -s /usr/share/textadept/doc "$pkgdir/usr/share/doc/$pkgname"
 }
 
-md5sums=('SKIP'
-         '91523bb909acb9ceff20b6da6ceddf78')
+md5sums=('a57c070a8bb19687e819098ae190e836'
+         'cacf22d1edf8a161578ca93b805a2035')
