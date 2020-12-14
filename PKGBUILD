@@ -2,7 +2,7 @@
 # Maintainer: Max Mazurov <fox.cpp at disroot dot org>
 # Contributor: Jonas Heinrich <onny@project-insantiy.org>
 pkgname='maddy'
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Composable all-in-one mail server'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     'maddy.tmpfiles'
 )
 backup=('etc/maddy/maddy.conf')
-sha512sums=('5dbe651dcfa9da3e5f9c463a81cfab5447cfb73a248a3c34c49337e2e0c5b587c4f4f4791fb5e2d63709fabf5f766cc5faa89f8792252a57e322dca3d62bcbbf'
+sha512sums=('d3fef09b917fec2a9fe7cae5c44133f74402f468df4346ad81098b1991321506dc511890cf14e7de8c419366d4932ec503bc5423ce4234e24f1494368fd6afa7'
             'SKIP'
             '750346110adb8caa61f537560018497f73543dc01ff26aceed2f052f281a35fdc659c9c478cc55775eadf8a3d17b511d5bed86334d1c455732dcb9a273120589'
             'f33135b81129d6ef3006d8e9f410ec0d7e44226ae640dea77d756268d0e97828d8965ac75d0d9b49604a19b8b9e0384d15007d33c4b813f359108d28a10702b5')
@@ -27,7 +27,7 @@ build() {
     export GOPATH="$PWD/gopath"
     cd "${srcdir}/maddy-${pkgver}-src"
 
-    ./build.sh --version "${pkgver}" --prefix /usr package
+    ./build.sh --version "${pkgver}" --prefix /usr build
 
     # Module cache is read-only by default. Fix its permissions so it will be
     # easier to clean build directory.
@@ -54,7 +54,7 @@ package() {
         --version "v${pkgver}" \
         --prefix /usr \
         --destdir "${pkgdir}" \
-        install_pkg
+        install
 
     install -Dm 0644 "${srcdir}/maddy.sysusers" "${pkgdir}/usr/lib/sysusers.d/maddy.conf"
     install -Dm 0644 "${srcdir}/maddy.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/maddy.conf"
