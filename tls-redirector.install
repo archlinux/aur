@@ -1,0 +1,5 @@
+post_install() {
+	cat <<-ECHO
+	Configure "certbot" to use '/var/cache/acme-challenge' as webroot.
+	ECHO
+}
