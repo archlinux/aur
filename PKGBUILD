@@ -13,7 +13,7 @@ provides=($pkgname dmenu)
 conflicts=(dmenu)
 replaces=(dmenu)
 source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=('2a4889ebf644d162f6f2191334d967853090adaf0575b0639ab2274bed3f88f7')
+sha256sums=('06385532e40373ce8512cc2353afdc00f5b5d051f44fe31712a694ed98a414e5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver-$pkgrel"
