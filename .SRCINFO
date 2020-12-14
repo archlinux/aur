@@ -1,6 +1,6 @@
 pkgbase = libretro-opera-git
 	pkgdesc = libretro implementation of 4DO/libfreedo (3DO)
-	pkgver = 422.75771ea
+	pkgver = 425.8ce580e
 	pkgrel = 1
 	url = https://github.com/libretro/opera-libretro
 	arch = i686
