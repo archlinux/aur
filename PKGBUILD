@@ -1,11 +1,11 @@
-# Maintainer: Lolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: TilmanV
 # Contributor: Dave Blair <mail@dave-blair.de>
 # Contributor: Nick Bair <njbair at gmail dot com>
 
 pkgname=bubbleupnpserver
 pkgver=0.9.38
-pkgrel=2
+pkgrel=3
 pkgdesc="Stream content to Android devices over the Internet, requires UPNP/DNLA backend e.g. miniDLNA, Gerbera, Mediatomb"
 arch=(any)
 url="http://www.bubblesoftapps.com/bubbleupnpserver/"
@@ -18,6 +18,7 @@ source=(
         launch.sh
         bubbleupnpserver.service
         bubbleupnpserver.config
+        bubbleupnpserver-sysuser.conf
         bubbleupnpserver
         "https://bubblesoftapps.com/bubbleupnpserver/core/bcprov-jdk16-146.jar"
         "https://bubblesoftapps.com/bubbleupnpserver/core/BubbleUPnPServerLauncher.jar"
@@ -26,6 +27,7 @@ source=(
 sha256sums=('7df801995e65a79eb5140814ca80c4caeee7e1282b69acff9e74201cbaafdaf3'
             'b99d60122343959f2118f6f74968e105d63e8ca2c8ff71efc120415378b1175a'
             '61bf63a84b839b85c0fdf0210310c94242bbb6e1aa69bf0d6c46efa013b52ae5'
+            'fd764bb4c785ab0e2481d26f4f30656ba756949afa8ed949234e722ded87bf04'
             '105bfe44a43d141457bf87ef89c76a5be57f54cdb3493ae3af99c8ad6a938c36'
             'd0ae14598f9c528d2ab7bb8ed00e785a5440f692712cd362d69328aba25efb57'
             '75f31ca14d65f0e077283d15e5715636ea74c7faa0e200c5dd34e6ca50b9a06c'
@@ -36,11 +38,12 @@ package() {
 
   install -d "${pkgdir}"/var/lib/bubbleupnp
 
-  install -D -m644 "${srcdir}"/bcprov-jdk16-146.jar           "${pkgdir}"/usr/share/${pkgname}/bcprov-jdk16-146.jar
-  install -D -m644 "${srcdir}"/BubbleUPnPServerLauncher.jar   "${pkgdir}"/usr/share/${pkgname}/BubbleUPnPServerLauncher.jar
-  install -D -m755 "${srcdir}"/launch.sh                      "${pkgdir}"/usr/share/${pkgname}/launch.sh
-  install -D -m644 "${srcdir}"/bubbleupnpserver.service       "${pkgdir}"/usr/lib/systemd/system/${pkgname}.service
-  install -D -m644 "${srcdir}"/bubbleupnpserver.config        "${pkgdir}"/etc/conf.d/bubbleupnpserver.config
-  install -D -m644 "${srcdir}"/bubbleupnpserver               "${pkgdir}"/etc/default/bubbleupnpserver
-  install -D -m644 "${srcdir}"/${pkgname}-LICENCE.txt         "${pkgdir}"/usr/share/licenses/${pkgname}/LICENCE.txt
+  install -D -m644 "${srcdir}"/bcprov-jdk16-146.jar           "${pkgdir}/usr/share/${pkgname}/bcprov-jdk16-146.jar"
+  install -D -m644 "${srcdir}"/BubbleUPnPServerLauncher.jar   "${pkgdir}/usr/share/${pkgname}/BubbleUPnPServerLauncher.jar"
+  install -D -m755 "${srcdir}"/launch.sh                      "${pkgdir}/usr/share/${pkgname}/launch.sh"
+  install -D -m644 "${srcdir}"/bubbleupnpserver.service       "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -D -m644 "${srcdir}"/bubbleupnpserver.config        "${pkgdir}/etc/conf.d/bubbleupnpserver.config"
+  install -D -m644 "${srcdir}"/bubbleupnpserver-sysuser.conf  "${pkgdir}/usr/lib/sysusers.d/bubbleupnpserver.conf"
+  install -D -m644 "${srcdir}"/bubbleupnpserver               "${pkgdir}/etc/default/bubbleupnpserver"
+  install -D -m644 "${srcdir}/${pkgname}-LICENCE.txt"         "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE.txt"
 }

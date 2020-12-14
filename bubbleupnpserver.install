@@ -1,13 +1,13 @@
 post_install() {
 
-  systemd-sysusers bubbleupnpserver.conf
+  systemd-sysusers bubbleupnpserver-sysuser.conf
   chown bubbleupnp:bubbleupnp /var/lib/bubbleupnp
   chown bubbleupnp:bubbleupnp /usr/share/bubbleupnpserver
 }
 
 post_upgrade() {
 
-  systemd-sysusers bubbleupnpserver.conf
+  systemd-sysusers bubbleupnpserver-sysuser.conf
   chown bubbleupnp:bubbleupnp /var/lib/bubbleupnp
   chown bubbleupnp:bubbleupnp /usr/share/bubbleupnpserver
 }
