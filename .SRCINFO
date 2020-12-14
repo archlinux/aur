@@ -1,6 +1,6 @@
 pkgbase = libretro-mame2003-git
 	pkgdesc = libretro implementation of late 2003 version of MAME (0.78) (Arcade)
-	pkgver = 986.720e7f6
+	pkgver = 1019.0780653
 	pkgrel = 1
 	url = https://github.com/libretro/mame2003-libretro
 	arch = i686
