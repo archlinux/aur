@@ -1,6 +1,6 @@
 pkgbase = shaderc-git
 	pkgdesc = A collection of tools, libraries and tests for shader compilation. (GIT version)
-	pkgver = v2019.0.72.gf478667
+	pkgver = v2020.4.1.g4089217
 	pkgrel = 1
 	url = https://github.com/google/shaderc
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = shaderc-git
 	provides = shaderc
 	provides = libshaderc_shared.so
 	conflicts = shaderc
-	source = git+https://github.com/google/shaderc.git
-	source = fix-glslang-link-order.patch::https://patch-diff.githubusercontent.com/raw/google/shaderc/pull/463.patch
+	source = git+https://github.com/google/shaderc.git#branch=main
+	source = fix-glslang-link-order.patch
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = b4b05ccea7c2905cf018efef15a86d8807011db1a8cabe57314f6aaade33a644
 
 pkgname = shaderc-git
 

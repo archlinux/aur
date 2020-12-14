@@ -1,7 +1,7 @@
 #Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=shaderc-git
-pkgver=v2019.0.72.gf478667
+pkgver=v2020.4.1.g4089217
 pkgrel=1
 pkgdesc="A collection of tools, libraries and tests for shader compilation. (GIT version)"
 url='https://github.com/google/shaderc'
@@ -21,12 +21,12 @@ provides=('shaderc'
           )
 conflicts=('shaderc'
            )
-source=('git+https://github.com/google/shaderc.git'
-        'fix-glslang-link-order.patch::https://patch-diff.githubusercontent.com/raw/google/shaderc/pull/463.patch'
+source=('git+https://github.com/google/shaderc.git#branch=main'
+        'fix-glslang-link-order.patch'
         )
 
 sha256sums=('SKIP'
-            'SKIP'
+            'b4b05ccea7c2905cf018efef15a86d8807011db1a8cabe57314f6aaade33a644'
             )
 
 pkgver() {
@@ -51,6 +51,8 @@ EOF
 }
 
 build() {
+  CPPFLAGS="${CPPFLAGS//2/0}"
+
   cd build
   cmake ../shaderc \
     -DCMAKE_BUILD_TYPE=None \
@@ -58,9 +60,10 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DSHADERC_SKIP_TESTS=ON \
     -DBUILD_SHARED_LIBS=ON \
+    -Dglslang_SOURCE_DIR=/usr/include/glslang \
     -GNinja
 
-  ninja
+  LC_ALL=C ninja
 
   cd "${srcdir}/shaderc/glslc"
   asciidoctor -b manpage README.asciidoc -o glslc.1

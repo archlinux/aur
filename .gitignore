@@ -2,3 +2,4 @@
 !PKGBUILD
 !.gitignore
 !.SRCINFO
+!fix-glslang-link-order.patch
