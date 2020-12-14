@@ -3,12 +3,13 @@
 
 pkgname=xcursor-neutral++
 pkgver=1.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Icon set based on Neutral and jaguarx themes."
 arch=('any')
 url="https://github.com/ducakar/xcursor-neutralxx"
 license=('Artistic 2.0')
 source=(git+$url.git)
+makedepends=('xorg-xcursorgen')
 sha256sums=('SKIP')
 
 build() {
