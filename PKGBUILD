@@ -2,18 +2,18 @@
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=instamenu 
 pkgver=2020.12.14
-pkgrel=1
+pkgrel=2
 pkgdesc="dmenu like menu with the Manjaro Matcha-dark-sea theme"
 url="https://github.com/TheCynicalTeam/$pkgname"
 arch=('any')
 license=('GNU General Public License v3.0')
-depends=('sh' 'libxinerama' 'libxft')
+depends=('sh' 'libxinerama' 'libxft' 'noto-fonts-emoji' 'ttf-joypixels' 'siji')
 makedepends=('git')
 provides=($pkgname dmenu)
 conflicts=(dmenu)
 replaces=(dmenu)
 source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=('7615a210500da6df688b551b78163fa04905820d26354d95ed789f2ddf173ddc')
+sha256sums=('2a4889ebf644d162f6f2191334d967853090adaf0575b0639ab2274bed3f88f7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver-$pkgrel"
