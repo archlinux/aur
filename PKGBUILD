@@ -5,7 +5,7 @@
 
 # Maintainer: nbebaw
 pkgname=boostchanger-git
-pkgver=2.6
+pkgver=2.8
 pkgrel=0
 pkgdesc="Control your CPU Turbo Boost with this App"
 arch=('any')
@@ -16,7 +16,7 @@ source=("https://gitlab.com/nbebaw/boostchanger/-/archive/v$pkgver/boostchanger-
 md5sums=('SKIP')
 
 prepare() {
-	pkgverold=2.4
+	pkgverold=2.6
 	rm -rf ${pkgdir}/opt/boostchanger-v$pkgverold
 	tar -xf boostchanger-v$pkgver.tar.gz
 }

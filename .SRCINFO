@@ -1,12 +1,12 @@
 pkgbase = boostchanger-git
 	pkgdesc = Control your CPU Turbo Boost with this App
-	pkgver = 2.6
+	pkgver = 2.8
 	pkgrel = 0
 	url = https://gitlab.com/nbebaw/boostchanger
 	arch = any
 	license = MIT
 	makedepends = git
-	source = https://gitlab.com/nbebaw/boostchanger/-/archive/v2.6/boostchanger-v2.6.tar.gz
+	source = https://gitlab.com/nbebaw/boostchanger/-/archive/v2.8/boostchanger-v2.8.tar.gz
 	md5sums = SKIP
 
 pkgname = boostchanger-git
