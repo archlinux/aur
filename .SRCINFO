@@ -1,18 +1,19 @@
 pkgbase = check_mk-agent
 	pkgdesc = Agent to send information to a Check_MK server
-	pkgver = 1.5.0p7
-	pkgrel = 3
-	url = https://mathias-kettner.de
-	install = check_mk-agent.install
+	pkgver = 1.6.0p19
+	pkgrel = 1
+	url = https://mathias-kettner.de/
 	arch = any
 	license = GPLv2
-	depends = xinetd
-	source = check_mk_agent.linux::http://git.mathias-kettner.de/git/?p=check_mk.git;a=blob_plain;f=agents/check_mk_agent.linux;h=082062f32321d03cbc3caceaab7d4131bb83b75d;hb=1110ff933a3d7ec80a64101cc77e8f3342bbc9e8
-	source = check_mk_caching_agent.linux::http://git.mathias-kettner.de/git/?p=check_mk.git;a=blob_plain;f=agents/check_mk_caching_agent.linux;h=327f2fd350ca16d6b9e915ede22c35af95e661cd;hb=1110ff933a3d7ec80a64101cc77e8f3342bbc9e8
-	source = xinetd.conf::http://git.mathias-kettner.de/git/?p=check_mk.git;a=blob_plain;f=agents/cfg_examples/xinetd.conf;h=e612f044c927297cb7c012e9f44f49a93b5c48a9;hb=1110ff933a3d7ec80a64101cc77e8f3342bbc9e8
-	sha512sums = dcef09aeea82ec164e766b5800dd3cdaadde9f22430cf9b076db737af1b7fb4c1773633d5f6e1d80e4eb59ec5d12a0af77d6cfcb260fc7e07db616cb113214f2
-	sha512sums = cd1e9c1de50e523fc602249b052fa90470e41665bf61a87117b02733eea6d5b4c7dc1c1c8500f5d2a56a4707ac2ffd8a9d147a35b67c877436b221d88aa8b16a
-	sha512sums = 2a27edb4f16e2cc6e6c3523675f0f98c3bd6ff842478dbeeb0a6f6d48c0b2632bdba9ddf0215928ab6fa15c1c03d2ae5ccfef4f28b43b9cd2915e8ea47855667
+	makedepends = git
+	source = check_mk-agent-check_mk_agent.linux-1.6.0p19::https://raw.githubusercontent.com/tribe29/checkmk/v1.6.0p19/agents/check_mk_agent.linux
+	source = check_mk-agent-check_mk_caching_agent.linux-1.6.0p19::https://raw.githubusercontent.com/tribe29/checkmk/v1.6.0p19/agents/check_mk_caching_agent.linux
+	source = check_mk-agent-check_mk@.service-1.6.0p19::https://raw.githubusercontent.com/tribe29/checkmk/v1.6.0p19/agents/cfg_examples/systemd/check_mk%40.service
+	source = check_mk-agent-check_mk.socket-1.6.0p19::https://raw.githubusercontent.com/tribe29/checkmk/v1.6.0p19/agents/cfg_examples/systemd/check_mk.socket
+	sha256sums = e6bd06dc9afabab87be8b85134b7489bfb567aa6f96706cbdfb216193e7e3df3
+	sha256sums = 42acee5ef705040cf8b84c0d43731ff9c4134bc04926bf6ebac3538e9e54a79d
+	sha256sums = 7a8507af8fd92a7acc68c34d6a7525b67e0c0419ef8a99cd620d459837c7d1e8
+	sha256sums = a891bb3020f20ff8e6c1672e58607dd5545923bfce6420911fd1c967ec500b08
 
 pkgname = check_mk-agent
 

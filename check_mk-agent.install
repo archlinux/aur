@@ -1,7 +1,0 @@
-post_install() {
-	systemctl restart xinetd.service
-}
-post_upgrade() {
-	systemctl restart xinetd.service
-}
-
