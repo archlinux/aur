@@ -5,8 +5,8 @@
 
 _basename=zoom
 pkgname=$_basename-system-qt
-pkgver=5.4.56259.1207
-pkgrel=4
+pkgver=5.4.53391.1108
+pkgrel=3
 pkgdesc='Video Conferencing and Web Conferencing Service - system Qt libraries'
 arch=('x86_64')
 license=('custom')
@@ -30,7 +30,7 @@ optdepends=('qt5-webengine: SSO login support'
             'pulseaudio-alsa: output sound via pulseaudio' )
 options=(!strip)
 source=("$pkgname-$pkgver-orig-$arch.pkg.tar.xz::$url/client/$pkgver/${_basename}_$arch.pkg.tar.xz")
-sha512sums=('4605fd402d39380fd168f5069d4373fdd715baf612d7fe1ea6e4c34705e1ce16501e06584d9ce357fb47e7a44993d759cfb89b376138f0cccddfd2d4011f18d9')
+sha512sums=('c543a805130255bec1ad7fc7ccc6dd9a37711d73bd9f2fac62a57913210e1ea54a679ea4627c7166b2c6168e42d1b41f457fc2f6989f57296df4933b0e49f2a1')
 
 _syslib() {
     rm -f $1{,.*}
@@ -95,7 +95,7 @@ package() {
     _syslib libicuuc.so
     _syslib libmpg123.so
     _syslib libquazip.so libquazip1-qt5.so
-    _syslib libturbojpeg.so
+    # _syslib libturbojpeg.so
 
     ldconfig -N -n ./
 
