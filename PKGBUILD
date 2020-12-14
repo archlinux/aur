@@ -8,11 +8,10 @@ arch=(x86_64)
 url="https://gitlab.com/vojjvoda/dwm"
 license=('MIT')
 groups=()
-depends=(libxft-bgra-git ttf-hack ttf-joypixels nerd-fonts-mononoki picom-jonaburg-git xorg-xgamma clipmenu pulseeffects nitrogen )
-#dmenu-vojvoda dwmblocks-vojvoda
+depends=(libxft-bgra-git ttf-hack ttf-joypixels nerd-fonts-mononoki picom-jonaburg-git xorg-xgamma clipmenu pulseeffects nitrogen brave-nightly-bin pavucontrol alacritty pulseaudio pulseaudio-ctl brightnessctl dmenu-vojvoda-git dwmblocks-vojvoda-git )
 makedepends=(make)
 checkdepends=()
-optdepends=(brave-nightly-bin pavucontrol alacritty pulseaudio pulseaudio-ctl brightnessctl)
+optdepends=()
 provides=(dwm)
 conflicts=(dwm)
 replaces=()
