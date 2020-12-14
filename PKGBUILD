@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://gitlab.com/vojjvoda/dwmblocks.git"
 license=('MIT')
 groups=()
-depends=(acpi ripgrep)
+depends=(acpi ripgrep dwm-vojvoda-git)
 #dmenu-vojvoda dwmblocks-vojvoda
 makedepends=(make)
 checkdepends=()
