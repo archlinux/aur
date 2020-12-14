@@ -1,7 +1,7 @@
 pkgbase = perl-net-arp
 	pkgdesc = Perl Module: Extension for creating ARP Packets
 	pkgver = 1.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Net-ARP/
 	arch = i686
 	arch = x86_64
