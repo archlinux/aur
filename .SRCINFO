@@ -1,0 +1,25 @@
+pkgbase = overseerr-git
+	pkgdesc = Request management and media discovery tool for the Plex ecosystem
+	pkgver = r301.92c9001
+	pkgrel = 1
+	url = https://github.com/sct/overseerr
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = yarn
+	provides = overseerr
+	conflicts = overseerr
+	options = !strip
+	source = overseerr::git+https://github.com/sct/overseerr
+	source = overseerr.sysusers
+	source = overseerr.tmpfiles
+	source = overseerr.service
+	source = overseerr.conf.d
+	sha256sums = SKIP
+	sha256sums = 682ff5633748bbd131bcae00791b18c08488ad1cb477ca675e5498c53eca1097
+	sha256sums = a4734740422a3957f523cdab3c5d95b20999ff27e91e85358e4201988f5979f6
+	sha256sums = 019002344a348c45e969b22ffbe4531461164e8a196068f6de20bbfe0c7a266d
+	sha256sums = bc022e615b73a9d9c7b98736922cd1266d2000dc9f69b0ebc1e400e1f30200ba
+
+pkgname = overseerr-git
+
