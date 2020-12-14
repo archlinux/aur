@@ -1,0 +1,6 @@
+*.tar.gz
+*.pkg.tar.zst
+pkg/
+src/
+gnome-shell-extension-nightthemeswitcher/
+
