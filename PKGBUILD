@@ -3,7 +3,7 @@
 pkgname=oblogout-py3-git
 _pkgname="oblogout-py3"
 
-pkgver=0.02.r7.gca6932e
+pkgver=0.03.r0.g10113a1
 pkgrel=1
 pkgdesc="Openbox Logout Menu, ported to Python 3."
 arch=('any')
