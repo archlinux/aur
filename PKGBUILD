@@ -6,7 +6,7 @@
 _basename=zoom
 pkgname=$_basename-system-qt
 pkgver=5.4.56259.1207
-pkgrel=2
+pkgrel=3
 pkgdesc='Video Conferencing and Web Conferencing Service - system Qt libraries'
 arch=('x86_64')
 license=('custom')
@@ -29,7 +29,7 @@ optdepends=('qt5-webengine: SSO login support'
             'xcompmgr: extra compositor needed by some window managers for screen sharing'
             'pulseaudio-alsa: output sound via pulseaudio' )
 options=(!strip)
-source=("$pkgnme-$pkgver-orig-$arch.pkg.tar.xz::$url/client/$pkgver/${_basename}_$arch.pkg.tar.xz")
+source=("$pkgname-$pkgver-orig-$arch.pkg.tar.xz::$url/client/$pkgver/${_basename}_$arch.pkg.tar.xz")
 sha512sums=('4605fd402d39380fd168f5069d4373fdd715baf612d7fe1ea6e4c34705e1ce16501e06584d9ce357fb47e7a44993d759cfb89b376138f0cccddfd2d4011f18d9')
 
 package() {
@@ -42,10 +42,8 @@ package() {
 
     rm -f qtdiag
 
-    # Remove Qt libraries
     rm -f libQt5*.so{,.*}
     rm -f libicu*.so{,.*}
-
     rm -rf {egldevice,xcbgl}integrations
     rm -rf audio
     rm -rf generic
@@ -60,7 +58,6 @@ package() {
     rm -f libfaac1.so
     rm -f libturbojpeg.so{,.*}
     rm -f libquazip.so{,.*}
-
     rm qt.conf
 
     # Fix webcam showing black screen
