@@ -1,5 +1,6 @@
 # the kernel git repo
 archlinux-linux/
+archlinux-linux
 
 # build directories
 src/
@@ -7,3 +8,4 @@ pkg/
 
 # packages
 linux-x32-*.pkg.tar.xz
+linux-x32-*.pkg.tar.zst

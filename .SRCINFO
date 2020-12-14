@@ -1,14 +1,18 @@
 pkgbase = linux-x32
 	pkgdesc = Linux with x32 ABI
-	pkgver = 5.9.11.arch2
+	pkgver = 5.9.14.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.9.11-arch2
+	url = https://git.archlinux.org/linux.git/log/?h=v5.9.14-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
 	makedepends = kmod
 	makedepends = libelf
 	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
 	makedepends = xmlto
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
@@ -16,14 +20,14 @@ pkgbase = linux-x32
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.9.11-arch2
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.9.14-arch1
 	source = config
 	source = sphinx-workaround.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = 0413d2e4f26374af4b256d255b7c1b2a009dd9cbdc508d1761aad0b1a199aeb6
+	sha256sums = 0d28d28624dcfc090e53da16d55f30cc1644e7dfdc282499ef0feacbdb261916
 	sha256sums = 8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c
 
 pkgname = linux-x32
