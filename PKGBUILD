@@ -7,7 +7,7 @@ pkgdesc="Framework for dark-mode and light-mode transitions on Linux desktop."
 arch=('any')
 url="https://gitlab.com/whynothugo/darkman"
 license=('ISC')
-depends=('python-astral' 'python-dateutil' 'python-pyxdg' 'python-txdbus')
+depends=('python-astral' 'python-dateutil' 'python-pyxdg' 'python-txdbus' 'geoclue')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('94859e8924740dac9445610cadc03d7cd5c8b27ced1e310438e1e0f20a5da48da00c781a51ee84507b4806aefe2d09c9f6cc7a93e5207f445120aed6ac5ba190')
 
