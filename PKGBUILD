@@ -3,28 +3,22 @@
 # Contributor: m4tx <m4tx@m4tx.p>
 
 pkgname=edb-debugger
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="EDB (Evan's Debugger) is a cross platform AArch32/x86/x86-64 debugger, inspired by Ollydbg."
 arch=('i686' 'x86_64')
 url='http://www.codef00.com/projects#debugger'
 license=('GPL2')
-depends=('qt5-xmlpatterns' 'qt5-svg' 'capstone>=3.0')
+depends=('qt5-xmlpatterns>=5.2' 'qt5-svg>=5.2' 'capstone>=3.0')
 makedepends=('boost>=1.35.0' 'cmake')
-optdepends=('graphviz')
+optdepends=('graphviz>=2.38.0')
 source=("https://github.com/eteran/edb-debugger/releases/download/$pkgver/edb-debugger-$pkgver.tgz"
-        'edb.desktop'
-        'plugin_path.patch'
-        'build.patch')
-sha256sums=('96f8ee00c5983e6a4e108a0d738464e8b74da187018229334b498c80e7fe4917'
-            'f3e725642c6b87d5a7fd25331a9560d4f9803c22566875b722bc27e275f311a6'
-            'f216174d68ef7c26f29a58e409261c5b36af6593fe1778f6b2ad284095662b10'
-            '016d136ccd85fde635d3c30e25106ca7717844140887bc830e6fae9708a976e2')
+        'edb.desktop')
+sha256sums=('86df4a0940a39c1480a6fc789f167f94e87a7a330f2d8163fe871f42c754afe8'
+            'f3e725642c6b87d5a7fd25331a9560d4f9803c22566875b722bc27e275f311a6')
 
 prepare() {
   cd "edb-debugger"
-  patch -p1 -i ../plugin_path.patch
-  patch -p1 -i ../build.patch
 }
 
 build() {
