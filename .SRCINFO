@@ -1,0 +1,24 @@
+pkgbase = arduino-esp8266-core-git
+	pkgdesc = Arduino ESP8266 core based on esp-quick-toolchain
+	pkgver = 20201205
+	pkgrel = 1
+	url = https://github.com/earlephilhower/esp-quick-toolchain
+	arch = x86_64
+	license = GPL2,
+	license = LGPL2
+	makedepends = git
+	depends = python
+	depends = source-highlight
+	depends = flex
+	depends = libmpc
+	provides = arduino-esp8266-core
+	conflicts = arduino-esp8266-core
+	options = !strip
+	options = !emptydirs
+	options = !buildflags
+	options = staticlibs
+	source = git+https://github.com/earlephilhower/esp-quick-toolchain.git
+	md5sums = SKIP
+
+pkgname = arduino-esp8266-core-git
+
