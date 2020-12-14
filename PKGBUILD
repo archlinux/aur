@@ -2,7 +2,7 @@
 
 pkgname=faubox
 pkgver=15.5.100
-pkgrel=3
+pkgrel=4
 pkgdesc="Desktop client for FAU's file synchronization service"
 arch=('any')
 url="https://www.fau.eu/intranet/tools/faubox-cloud-storage-for-all-fau-members/"
@@ -13,7 +13,7 @@ makedepends=('gendesk')
 
 source=("faubox.sh"
         "https://faubox.rrze.uni-erlangen.de/client_deployment/FAUbox_Linux.tar.gz")
-sha256sums=('0c8d4a37f00f60b4afa4bc4e1b91598a0996bbf44b3dd3e8be1fe9c47ec25391'
+sha256sums=('f58accaa4686e19e12ff9c791151d42bd7c89aaa01ab69568c7456642c677ecc'
             'c3e0e3be8e59beae848f2653221b40a878467a20958d2b45915e6555df72bf6d')
 
 
