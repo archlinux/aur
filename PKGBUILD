@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=viu-git
-pkgver=1.2.1.r0.g9eb68fb
-pkgrel=2
+pkgver=1.3.0.r0.g94ebd93
+pkgrel=1
 pkgdesc="Simple terminal image viewer (git)"
 arch=('x86_64')
 url="https://github.com/atanunq/viu"
