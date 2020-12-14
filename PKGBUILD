@@ -1,9 +1,10 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 # Previous Maintainer: Alexandre Petitjean <alpetitjean at gmail dot com>
+# Contributor: bittin
 
 pkgname=mopidy-alsamixer
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Mopidy extension for ALSA volume control"
 arch=('any')
 url="http://www.mopidy.com"
@@ -14,7 +15,7 @@ depends=('mopidy>=3.0'
          'python-pykka')
 makedepends=('python3')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mopidy/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('f796c8e45fc918c57557346614ed22cd')
+sha256sums=('2dcf0e2ab5ea9d91d7bf03ffb6da7a136353f4385913d5f500fdb8f05ec46fff')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
