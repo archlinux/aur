@@ -8,6 +8,7 @@ pkgbase = scream-git
 	makedepends = cmake
 	depends = jack
 	depends = libpulse
+	depends = libsoxr
 	depends = alsa-lib
 	provides = scream
 	provides = scream-pulse
