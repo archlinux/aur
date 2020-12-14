@@ -1,20 +1,22 @@
 pkgbase = filebrowser-git
-	pkgdesc = Web File Manager which can be used as a middleware or standalone app
-	pkgver = 1.9.0
+	pkgdesc = Standalone web file manager
+	pkgver = 2.10.0.r0.gc746c193
 	pkgrel = 1
-	url = https://github.com/filebrowser/filebrowser
+	url = https://filebrowser.xyz/
 	arch = x86_64
 	license = Apache
-	makedepends = dep
 	makedepends = git
 	makedepends = go
-	makedepends = yarn
+	makedepends = npm
+	makedepends = go.rice
+	depends = glibc
 	provides = filebrowser
 	conflicts = filebrowser
+	options = emptydirs
 	source = git+https://github.com/filebrowser/filebrowser.git
-	source = filebrowser.service
+	source = filebrowser@.service
 	sha512sums = SKIP
-	sha512sums = 3b32f4fb7739afd6b2f7aeb372734e69ffe69e9a308a408a3e609b3b734053057f640343cce36110d8354bb132b0612b0fcf747b262aa0066651b39eb86bdbd0
+	sha512sums = 0846815afbb3c5ccbb097a5361461ca0ada69e04246935afb123f4609d09cd61f9e3fe50e3b6698b3e4c1f335cbb0aa3d998cae13b422e2989aad62ed7ce4682
 
 pkgname = filebrowser-git
 
