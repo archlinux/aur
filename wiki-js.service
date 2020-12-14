@@ -1,0 +1,15 @@
+[Unit]
+Description=Wiki.js
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node server
+Restart=always
+User=wiki-js
+Environment=NODE_ENV=production
+Environment=CONFIG_FILE=/etc/wiki-js/config.yml
+WorkingDirectory=/usr/lib/wiki-js
+
+[Install]
+WantedBy=multi-user.target
