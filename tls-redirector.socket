@@ -1,0 +1,10 @@
+[Unit]
+Description=TLS Redirector Socket
+After=network.target
+
+[Socket]
+ListenStream=80
+BindIPv6Only=both
+
+[Install]
+WantedBy=sockets.target

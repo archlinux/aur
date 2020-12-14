@@ -1,0 +1,16 @@
+[Unit]
+Description=TLS Redirector
+
+[Service]
+ExecStart=/usr/bin/tls-redirector
+# Use SystemD activation
+Environment=PORT=systemd
+Environment=ACME_CHALLENGE_DIR=%C/acme-challenge/.well-known/acme-challenge
+# Security
+DynamicUser=yes
+ProtectHome=tmpfs
+PrivateDevices=yes
+ProtectHostname=yes
+## No need to be able to bind to sockets
+CapabilityBoundingSet=
+RestrictNamespaces=
