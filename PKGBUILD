@@ -1,0 +1,95 @@
+# Maintainer: LaserEyess <lasereyess@lasereyess.net>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: josephgbr <rafael.f.f1@gmail.com>
+# Contributor: vEX <vex@niechift.com>
+
+pkgname=pcsx2-64bit-git
+pkgver=1.7.0.r685.678829a5b
+pkgrel=1
+pkgdesc='A Sony PlayStation 2 emulator, 64bit git master'
+arch=(x86_64)
+url=https://www.pcsx2.net
+license=(
+  GPL2
+  GPL3
+  LGPL2.1
+  LGPL3
+)
+
+depends=(
+  gdk-pixbuf2
+  glibc
+  libaio
+  libasound.so
+  libfmt.so
+  libfreetype.so
+  libgdk-3.so
+  libgio-2.0.so
+  libgl
+  libGLEW.so
+  libglib-2.0.so
+  libgobject-2.0.so
+  libgtk-3.so
+  libpcap
+  libpng
+  libportaudio.so
+  libpulse.so
+  libudev.so
+  libx11
+  libxcb
+  libxml2
+  libyaml-cpp.so
+  sdl2
+  soundtouch
+  wxgtk3
+  wxgtk-common
+  xz
+  zlib
+)
+makedepends=(
+  cmake
+  git
+  ninja
+  png++
+)
+source=(git+https://github.com/PCSX2/pcsx2.git)
+b2sums=(SKIP)
+
+provides=(pxsx2)
+conflicts=(pcsx2)
+
+pkgver() {
+  cd pcsx2
+
+  git describe --tags | sed 's/^v//; s/-dev//; s/-/.r/; s/-g/./'
+}
+
+build() {
+  cmake -S pcsx2 -B build -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DDOC_DIR=/usr/share/doc/pcsx2 \
+    -DGAMEINDEX_DIR=/usr/share/pcsx2 \
+    -DPLUGIN_DIR=/usr/lib/pcsx2 \
+    -DDISABLE_ADVANCE_SIMD=ON \
+    -DDISABLE_BUILD_DATE=ON \
+    -DDISABLE_PCSX2_WRAPPER=ON \
+    -DENABLE_TESTS=OFF \
+    -DEXTRA_PLUGINS=ON \
+    -DSDL2_API=ON \
+    -DPACKAGE_MODE=ON \
+    -DREBUILD_SHADER=ON \
+    -DUSE_LTO=OFF \
+    -DUSE_VTUNE=OFF \
+    -DXDG_STD=ON \
+    -DUSE_SYSTEM_YAML=ON \
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
+    -Wno-dev
+  ninja -C build
+}
+
+package() {
+  DESTDIR="${pkgdir}" ninja -C build install
+}
+
+# vim: ts=2 sw=2 et:
