@@ -1,22 +1,22 @@
 pkgbase = postgresql-jdbc
 	pkgdesc = The official JDBC driver for PostgreSQL. Contains JDBC 4.0, 4.1 & 4.2 drivers.
-	pkgver = 42.2.14
+	pkgver = 42.2.18
 	pkgrel = 1
 	url = http://jdbc.postgresql.org/
 	arch = any
 	license = Custom: BSD
 	depends = java-runtime
-	noextract = postgresql-jdbc-42.2.14.jdbc4.jar
-	noextract = postgresql-jdbc-42.2.14.jdbc41.jar
-	noextract = postgresql-jdbc-42.2.14.jdbc42.jar
+	noextract = postgresql-jdbc-42.2.18.jdbc4.jar
+	noextract = postgresql-jdbc-42.2.18.jdbc41.jar
+	noextract = postgresql-jdbc-42.2.18.jdbc42.jar
 	source = LICENSE
-	source = postgresql-jdbc-42.2.14.jdbc4.jar::https://search.maven.org/remotecontent?filepath=org/postgresql/postgresql/42.2.14.jre6/postgresql-42.2.14.jre6.jar
-	source = postgresql-jdbc-42.2.14.jdbc41.jar::https://search.maven.org/remotecontent?filepath=org/postgresql/postgresql/42.2.14.jre7/postgresql-42.2.14.jre7.jar
-	source = postgresql-jdbc-42.2.14.jdbc42.jar::https://search.maven.org/remotecontent?filepath=org/postgresql/postgresql/42.2.14/postgresql-42.2.14.jar
+	source = postgresql-jdbc-42.2.18.jdbc4.jar::https://search.maven.org/remotecontent?filepath=org/postgresql/postgresql/42.2.18.jre6/postgresql-42.2.18.jre6.jar
+	source = postgresql-jdbc-42.2.18.jdbc41.jar::https://search.maven.org/remotecontent?filepath=org/postgresql/postgresql/42.2.18.jre7/postgresql-42.2.18.jre7.jar
+	source = postgresql-jdbc-42.2.18.jdbc42.jar::https://search.maven.org/remotecontent?filepath=org/postgresql/postgresql/42.2.18/postgresql-42.2.18.jar
 	md5sums = da7e6f8b26deefe7c03b391454732a0d
-	md5sums = 8d6e21e123f06dc8912ba27eb725187b
-	md5sums = 051970c7782fedbb635af19adef0ac59
-	md5sums = 79869645ab65d5ef28024fc96bb1ce28
+	md5sums = af08226777cdb66e6c5ade2482c8452a
+	md5sums = dff2757f4465d3e4e15da9671b8c2403
+	md5sums = d6895bb05ac7b9c85c4e89f3880127e3
 
 pkgname = postgresql-jdbc
 
