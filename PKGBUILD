@@ -5,7 +5,7 @@ pkgrel=1
 epoch=
 pkgdesc="dmenu with some nice extensions"
 arch=(x86_64)
-url="https://github.com/josemapt/dmenu-josemapt.git"
+url="https://github.com/josemapt/dmenu.git"
 license=('MIT')
 groups=()
 depends=()
@@ -30,12 +30,12 @@ pkgver() {
 }
 
 build() {
-	cd dmenu-josemapt
+	cd dmenu
     make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-    cd dmenu-josemapt  
+    cd dmenu  
     mkdir -p ${pkgdir}/opt/${pkgname}
     cp -rf * ${pkgdir}/opt/${pkgname}
     make PREFIX=/usr DESTDIR="${pkgdir}" install

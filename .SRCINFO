@@ -2,13 +2,13 @@ pkgbase = dmenu-josemapt-git
 	pkgdesc = dmenu with some nice extensions
 	pkgver = 5.0
 	pkgrel = 1
-	url = https://github.com/josemapt/dmenu-josemapt.git
+	url = https://github.com/josemapt/dmenu.git
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	provides = dmenu
 	conflicts = dmenu
-	source = git+https://github.com/josemapt/dmenu-josemapt.git
+	source = git+https://github.com/josemapt/dmenu.git
 	md5sums = SKIP
 
 pkgname = dmenu-josemapt-git
