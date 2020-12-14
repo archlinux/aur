@@ -1,6 +1,6 @@
 pkgbase = perl-crypt-rijndael
 	pkgdesc = AES/Rijndael Encryption Module
-	pkgver = 1.14
+	pkgver = 1.15
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Crypt-Rijndael
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = perl-crypt-rijndael
 	makedepends = perl-test-manifest>=1.14
 	depends = perl
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/L/LE/LEONT/Crypt-Rijndael-1.14.tar.gz
-	md5sums = 6f0f9d96c97a226bfb73dbc2e4c2d5e1
+	source = http://cpan.metacpan.org/authors/id/L/LE/LEONT/Crypt-Rijndael-1.15.tar.gz
+	md5sums = 5a26457e9f6a747896234773140a4f58
 
 pkgname = perl-crypt-rijndael
 
