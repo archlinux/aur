@@ -2,9 +2,9 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=jlink-software-and-documentation
-pkgver=6.90
-pkgrel=3
-epoch=32
+pkgver=6.90a
+pkgrel=0
+epoch=33
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64' 'armv7h')
 license=('custom')
@@ -31,9 +31,9 @@ source=("99-jlink.rules.patch" "JLink.svg"
         "JRunExe.desktop"
         "JMemExe.desktop"
 )
-md5sums_i686=('ae35689ef53f93cea52e6d2873333175')
-md5sums_x86_64=('e05acfefb83caabe98f60007ac405a61')
-md5sums_armv7h=('ad1c8cd84f1ebc93da197fe98d1b7430')
+md5sums_i686=('88fcb85f81d00cd0d5c6621992354b95')
+md5sums_x86_64=('64c858cd3492d537003269ab185e7d5b')
+md5sums_armv7h=('b2d329445c77e1c21ed773aa2cebc2e8')
 md5sums=("a57d93b791581c1f36e4c672303bb85d" "83a136d31b296dd8f0e23bc21f9d8e19"
          "395410c9819a18a659de9c80925508f1"
          "69516914a635e3b8c703816fb34add8b"
