@@ -24,7 +24,8 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   go generate ./...
-  go build -v
+  # Build with optional SystemD activation
+  go build -v -tags systemd
 }
 
 package() {
