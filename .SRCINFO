@@ -27,6 +27,7 @@ pkgbase = printer-support
 	depends = hplip
 	depends = python-pyqt5
 	depends = python-reportlab
+	depends = samba-support
 	optdepends = print-manager: A KDE tool for managing print jobs and printers
 	replaces = garuda-printer
 	replaces = manjaro-printer

@@ -27,7 +27,8 @@ depends=("cups"
                         "splix"
                         "hplip"
                         "python-pyqt5"
-                        "python-reportlab")
+                        "python-reportlab"
+                        "samba-support")
 optdepends=('print-manager: A KDE tool for managing print jobs and printers')
 install=printer.install
 replaces=("garuda-printer" "manjaro-printer")
