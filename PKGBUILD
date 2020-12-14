@@ -5,7 +5,7 @@
 pkgbase=openxcom-git
 pkgname=('openxcom-git' 'openxcom-docs-git')
 _gitname=OpenXcom
-pkgver=1.0_r2887_gebac51e6a
+pkgver=1.0_r2996_gb008e3196
 pkgrel=1
 pkgdesc="An open-source reimplementation of the famous X-COM game (git-version)"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
   cd ${_gitname}/build
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="Release" -DDEV_BUILD="Off" ..
+  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="None" -DDEV_BUILD="Off" ..
   make
 
   # Make documentation
@@ -47,6 +47,8 @@ package_openxcom-git() {
   cd ${_gitname}/build
 
   make DESTDIR="${pkgdir}" install
+  # Fix manpage location
+  mv "${pkgdir}/usr/man" "${pkgdir}/usr/share/man"
 }
 
 package_openxcom-docs-git() {
