@@ -3,8 +3,8 @@
 
 pkgname=stone-soup-ncurses
 _majorver=0.25
-pkgver=${_majorver}.0
-pkgrel=2
+pkgver=${_majorver}.1
+pkgrel=1
 pkgdesc='Open-source, single-player, role-playing roguelike game of exploration and treasure-hunting (ncurses-only)'
 arch=('i686' 'x86_64')
 url='http://crawl.develz.org/'
@@ -13,8 +13,8 @@ makedepends=('bison' 'flex' 'python-yaml')
 conflicts=('crawl' 'stone-soup' 'stone-soup-tiles' 'stone-soup-git')
 license=('custom')
 install=stone-soup-ncurses.install
-source=("http://crawl.develz.org/release/${_majorver}/stone_soup-${pkgver}-nodeps.tar.xz")
-sha256sums=('6dfc24f427249c4059842a807f131b2d322443bddee9c8a3626370dcbae4c166')
+source=("http://github.com/crawl/crawl/releases/download/${pkgver}/stone_soup-${pkgver}-nodeps.tar.xz")
+sha256sums=('2567be6182056f3051bfe2f3000fb45e4763b02f8e1fc04de6d07873bd7bd894')
 
 prepare() {
   cd "$srcdir"
