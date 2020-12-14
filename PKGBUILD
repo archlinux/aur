@@ -28,6 +28,6 @@ prepare() {
 
 package() {
     cd "${srcdir}"
-    install -Ddm 755 Asis_Story_Hub /opt/TheJoiDatabase/
+    install -Ddm 755 Asis_Story_Hub $pkgdir/opt/TheJoiDatabase/
     install -Dm 755 ${pkgname}.desktop $pkgdir/usr/share/applications/${pkgname}.desktop
 }
