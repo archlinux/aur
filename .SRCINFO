@@ -17,7 +17,7 @@ pkgbase = instamenu
 	conflicts = dmenu
 	replaces = dmenu
 	source = https://github.com/TheCynicalTeam/instamenu/archive/2020.12.14-2.tar.gz
-	sha256sums = SKIP
+	sha256sums = 2a4889ebf644d162f6f2191334d967853090adaf0575b0639ab2274bed3f88f7
 
 pkgname = instamenu
 
