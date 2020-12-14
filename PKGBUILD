@@ -1,49 +1,38 @@
-# $Id$
-# Maintainer: Dan Elkouby <streetwalkermc@gmail.com>
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Maintainer: Ionut Biru <ibiru@archlinux.org>
-# Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
+# Maintainer: Vaporeon <vaporeon@vaporeon.io>
+# Contributor: fatalis <fatalis@fatalis.pw>
 
-_pkgname=scream
 pkgname=scream-git
-pkgver=3.28.0+47+gc495f1aa8
+_pkgname=scream
+pkgver=3.6.r138.c1d5aef
 pkgrel=1
-pkgdesc="mutter but it's just an X11 compositor"
-url="https://github.com/Streetwalrus/scream"
-arch=(x86_64)
-license=(GPL)
-depends=(libinput zenity libxkbfile libxkbcommon-x11 gobject-introspection-runtime)
-makedepends=(intltool gobject-introspection git)
-conflicts=(mutter)
-source=("git+https://github.com/Streetwalrus/scream.git")
+pkgdesc='A Scream audio receiver using Pulseaudio, ALSA, JACK or stdout as audio output (git version)'
+arch=('x86_64')
+provides=('scream' 'scream-pulse' 'scream-ivshmem-pulse' 'scream-alsa' 'scream-ivshmem-alsa')
+depends=('libpulse' 'alsa-lib')
+makedepends=('cmake' 'jack')
+conflicts=('scream' 'scream-pulse' 'scream-alsa')
+url='https://github.com/duncanthrax/scream'
+license=('custom:MS-PL')
+source=('git+https://github.com/duncanthrax/scream.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd $_pkgname
-
-  NOCONFIGURE=1 ./autogen.sh
+    cd "${srcdir}"/${_pkgname}
+    printf "%s.r%s.%s" "$(git describe --abbrev=0 --tags)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd $_pkgname
-
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-      --libexecdir=/usr/lib --disable-static \
-      --disable-schemas-compile --enable-compile-warnings=minimum
-
-  # https://bugzilla.gnome.org/show_bug.cgi?id=655517
-  sed -e 's/ -shared / -Wl,-O1,--as-needed\0/g' \
-      -i {.,cogl,clutter}/libtool
-
+  cd "${srcdir}/${_pkgname}/Receivers/unix"
+  mkdir -p build && cd build
+  cmake ..
   make
 }
 
 package() {
-  cd $_pkgname
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${_pkgname}/Receivers/unix"
+  install -d "${pkgdir}/usr/bin"
+  install build/${_pkgname} "${pkgdir}/usr/bin"
+
+  cd "${srcdir}/${_pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
