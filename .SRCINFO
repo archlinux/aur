@@ -1,13 +1,13 @@
 pkgbase = fceux-git
 	pkgdesc = Fast and ultra-compatible NES/Famicom emulator with SDL, OpenGL and SVGALIB support
-	pkgver = e8c61d1b
+	pkgver = 2.2.3.1633.gf333a62d
 	pkgrel = 1
 	url = http://fceux.com/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = scons
+	makedepends = cmake
 	makedepends = libgl
 	makedepends = glu
 	depends = sdl
