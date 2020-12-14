@@ -6,7 +6,7 @@
 _basename=zoom
 pkgname=$_basename-system-qt
 pkgver=5.4.56259.1207
-pkgrel=3
+pkgrel=4
 pkgdesc='Video Conferencing and Web Conferencing Service - system Qt libraries'
 arch=('x86_64')
 license=('custom')
@@ -32,38 +32,73 @@ options=(!strip)
 source=("$pkgname-$pkgver-orig-$arch.pkg.tar.xz::$url/client/$pkgver/${_basename}_$arch.pkg.tar.xz")
 sha512sums=('4605fd402d39380fd168f5069d4373fdd715baf612d7fe1ea6e4c34705e1ce16501e06584d9ce357fb47e7a44993d759cfb89b376138f0cccddfd2d4011f18d9')
 
+_syslib() {
+    rm -f $1{,.*}
+    case $1 in
+        *Qt5*) return ;;
+        *) ln -sfv /usr/lib/${2:-$1} $1 ;;
+    esac
+}
+
+_sysqtplugin() {
+    rm -rf $(basename $1)
+    # ln -sfv /usr/lib/qt/plugins/$1
+}
+
 package() {
-	cp -dpr --no-preserve=ownership opt usr "$pkgdir"
+    cp -dpr --no-preserve=ownership opt usr "$pkgdir"
     cd "$pkgdir/opt/zoom"
 
     # Fix spurious RPATH in binaries
     patchelf --shrink-rpath zoom
     patchelf --shrink-rpath zopen
 
-    rm -f qtdiag
+    _sysqtplugin audio
+    _sysqtplugin egldeviceintegrations
+    _sysqtplugin generic
+    _sysqtplugin iconengines
+    _sysqtplugin imageformats
+    _sysqtplugin platforminputcontexts
+    _sysqtplugin platforms
+    _sysqtplugin platformthemes
+    _sysqtplugin xcbglintegrations
 
-    rm -f libQt5*.so{,.*}
-    rm -f libicu*.so{,.*}
-    rm -rf {egldevice,xcbgl}integrations
-    rm -rf audio
-    rm -rf generic
-    rm -rf iconengines
-    rm -rf imageformats
-    rm -rf platforms
-    rm -rf platforminputcontexts
-    rm -rf platformthemes
+    # rm -f qtdiag
     rm -rf Qt{,GraphicalEffects,Qml,Quick,Quick.2,Wayland}
     rm -rf wayland-*
-    rm -f libmpg123.so
-    rm -f libfaac1.so
-    rm -f libturbojpeg.so{,.*}
-    rm -f libquazip.so{,.*}
     rm qt.conf
 
-    # Fix webcam showing black screen
-    ln -sfv /usr/lib/libturbojpeg.so libturbojpeg.so
+    _syslib libQt5Core.so
+    _syslib libQt5DBus.so
+    _syslib libQt5Gui.so
+    _syslib libQt5Network.so
+    _syslib libQt5OpenGL.so
+    _syslib libQt5OpenGL.so
+    _syslib libQt5Qml.so
+    _syslib libQt5Qml.so
+    _syslib libQt5Quick.so
+    _syslib libQt5QuickControls2.so
+    _syslib libQt5QuickTemplates2.so
+    _syslib libQt5QuickWidgets.so
+    _syslib libQt5Script.so
+    _syslib libQt5Svg.so
+    _syslib libQt5WaylandClient.so
+    _syslib libQt5WaylandCompositor.so
+    _syslib libQt5Widgets.so
+    _syslib libQt5X11Extras.so
+    _syslib libQt5XcbQpa.so
+
+    _syslib libfaac1.so libfaac.so
+    _syslib libfdkaac2.so libfdk-aac.so
+    _syslib libicudata.so
+    _syslib libicui18n.so
+    _syslib libicuuc.so
+    _syslib libmpg123.so
+    _syslib libquazip.so libquazip1-qt5.so
+    _syslib libturbojpeg.so
+
+    ldconfig -N -n ./
 
     # Remove unnecessary executable flag
-    chmod -x *.pcm
-    chmod -x sip/*.{wav,WAV}
+    chmod -x *.pcm sip/*.{wav,WAV}
 }
