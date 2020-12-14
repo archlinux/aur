@@ -1,0 +1,21 @@
+pkgbase = filebrowser
+	pkgdesc = Standalone web file manager
+	pkgver = 2.10.0
+	pkgrel = 1
+	url = https://filebrowser.xyz/
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = npm
+	makedepends = go.rice
+	depends = glibc
+	provides = filebrowser
+	conflicts = filebrowser
+	options = emptydirs
+	source = filebrowser-2.10.0.tar.gz::https://github.com/filebrowser/filebrowser/archive/v2.10.0.tar.gz
+	source = filebrowser@.service
+	sha512sums = f763e8a30f85cb48f5faae7d92ae3253086e91bc65a5fa7185f44637c34e1016c916dc7a8fbd3cab44d9ebd79d0110abf408f8baf5e57d10b85859a6a11c91b0
+	sha512sums = 0846815afbb3c5ccbb097a5361461ca0ada69e04246935afb123f4609d09cd61f9e3fe50e3b6698b3e4c1f335cbb0aa3d998cae13b422e2989aad62ed7ce4682
+
+pkgname = filebrowser
+
