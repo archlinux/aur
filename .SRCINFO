@@ -7,6 +7,7 @@ pkgbase = funkin-git
 	license = unknown
 	makedepends = git
 	makedepends = haxe
+	makedepends = wget
 	provides = funkin
 	conflicts = funkin
 	source = funkin-git::git://github.com/ninjamuffin99/Funkin.git
