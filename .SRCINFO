@@ -1,0 +1,16 @@
+pkgbase = xclip-git
+	pkgdesc = Command line interface to the X11 clipboard
+	pkgver = 0.13
+	pkgrel = 3
+	url = https://github.com/astrand/xclip
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libxmu
+	provides = xclip
+	conflicts = xclip
+	source = git+https://github.com/astrand/xclip
+	sha256sums = SKIP
+
+pkgname = xclip-git
+
