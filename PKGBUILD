@@ -6,7 +6,7 @@
 pkgname=vscodium-bin
 _pkgname=VSCodium
 pkgver=1.52.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/VSCodium/vscodium"
@@ -20,7 +20,6 @@ optdepends=(
         'libdbusmenu-glib: For KDE global menu'
 )
 provides=('code')
-conflicts=('code' 'vscode')
 
 sha256sums=('65e6b053e6d8be61763801312ded64a82cf835d77a6eabe1b9d7eb9e87b2e49b')
 sha256sums_x86_64=('7be0fa9177401bc187186bf808a348de37cc4008e67e2705700108f438f26484')
