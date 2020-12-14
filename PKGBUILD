@@ -1,19 +1,19 @@
 # Maintainer: BrLi <brli at chakralinux dot org>
 
 pkgname=zettlr
-pkgver=1.8.1
-pkgrel=4
+pkgver=1.8.2
+pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
 license=('GPL' 'custom') # Noted that the icon and name are copyrighted
 depends=(electron)
-makedepends=(yarn git gulp)
+makedepends=(yarn git)
 optdepends=('pandoc: For exporting to various format'
             'texlive-bin: For Latex support'
             'ttf-lato: Display output in a more comfortable way')
-_commit=93273f39a0a178f82ad3c8ed64d01faf4224aab1 # 1.8.1^0
-_csl_locale_commit=cbb45961b815594f35c36da7e78154feb5647823
+_commit=ffeb9cca92736bf65faebe6088b4076058f350fd # 1.8.2^0
+_csl_locale_commit=ecb8e70233e9a68e8b1dda4586061be8f8611a38 # Dec 11, 2020
 options=(!strip)
 source=(git+https://github.com/Zettlr/Zettlr.git#commit="${_commit}"
         # citation style
@@ -22,23 +22,12 @@ source=(git+https://github.com/Zettlr/Zettlr.git#commit="${_commit}"
         # Chinese(Taiwan) translation
         https://github.com/Brli/zetter-zh-TW/raw/master/zh-TW.json)
 sha256sums=('SKIP'
-            '8ee8c7e0ea63aacf811fb6f4bdb8f8f32929bf9afdad2f0ffc2f6bfb721d1fd5'
+            '24503a6cd5b3651a7003353811ae82d3ed707ec8ff932d341668c2ad377434b6'
             '2b7cd6c1c9be4add8c660fb9c6ca54f1b6c3c4f49d6ed9fa39c9f9b10fcca6f4'
             '14b1534a8ab29eade7d6cdaf92f539dc2851e312e922ef5923b8566b1bc070d3')
 
 prepare() {
     cd "${srcdir}/Zettlr"
-    rm -rf yarn.lock
-
-    # pandoc citeproc argument deprecation
-    sed 's,--filter pandoc-citeproc,--citeproc,' -i source/main/modules/export/run-pandoc.js
-
-    # LaTeX Error: Environment CSLReferences undefined.
-    sed 's,cslreferences,CSLReferences,' -i source/main/assets/export.tex
-
-    # Replace unmaintained module to maintained upstream
-    sed 's|"@marshallofsound/webpack-asset-relocator-loader": "^0.5.0"|"@zeit/webpack-asset-relocator-loader": "^0.8.0"|' -i package.json
-    sed 's|@marshallofsound|@zeit|' -i webpack.rules.js
 
     # Manually add community translation
     cp "${srcdir}/zh-TW.json" source/common/lang/
@@ -58,7 +47,7 @@ build() {
     yarn reveal:build
 
     rm -rf node_modules/electron
-    yarn add -D electron@10.1.5 --cache-folder "${srcdir}/cache" --link-folder "${srcdir}/link"
+    yarn add -D electron@11.1.0 --cache-folder "${srcdir}/cache" --link-folder "${srcdir}/link"
 
     node node_modules/.bin/electron-forge package
 

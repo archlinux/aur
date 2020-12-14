@@ -1,25 +1,24 @@
 pkgbase = zettlr
 	pkgdesc = A markdown editor for writing academic texts and taking notes
-	pkgver = 1.8.1
-	pkgrel = 4
+	pkgver = 1.8.2
+	pkgrel = 1
 	url = https://www.zettlr.com
 	arch = x86_64
 	license = GPL
 	license = custom
 	makedepends = yarn
 	makedepends = git
-	makedepends = gulp
 	depends = electron
 	optdepends = pandoc: For exporting to various format
 	optdepends = texlive-bin: For Latex support
 	optdepends = ttf-lato: Display output in a more comfortable way
 	options = !strip
-	source = git+https://github.com/Zettlr/Zettlr.git#commit=93273f39a0a178f82ad3c8ed64d01faf4224aab1
-	source = https://github.com/citation-style-language/locales/archive/cbb45961b815594f35c36da7e78154feb5647823.zip
+	source = git+https://github.com/Zettlr/Zettlr.git#commit=ffeb9cca92736bf65faebe6088b4076058f350fd
+	source = https://github.com/citation-style-language/locales/archive/ecb8e70233e9a68e8b1dda4586061be8f8611a38.zip
 	source = https://github.com/citation-style-language/styles/raw/master/chicago-author-date.csl
 	source = https://github.com/Brli/zetter-zh-TW/raw/master/zh-TW.json
 	sha256sums = SKIP
-	sha256sums = 8ee8c7e0ea63aacf811fb6f4bdb8f8f32929bf9afdad2f0ffc2f6bfb721d1fd5
+	sha256sums = 24503a6cd5b3651a7003353811ae82d3ed707ec8ff932d341668c2ad377434b6
 	sha256sums = 2b7cd6c1c9be4add8c660fb9c6ca54f1b6c3c4f49d6ed9fa39c9f9b10fcca6f4
 	sha256sums = 14b1534a8ab29eade7d6cdaf92f539dc2851e312e922ef5923b8566b1bc070d3
 
