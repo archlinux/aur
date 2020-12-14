@@ -1,0 +1,18 @@
+pkgbase = rozb3-pac
+	pkgdesc = Create ZFS boot environment for every pacman transaction and add GRUB submenu.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://gitlab.com/m_zhou/rozb3-pac
+	arch = any
+	license = GPL
+	depends = grub
+	depends = coreutils
+	depends = bash
+	depends = util-linux
+	depends = zfs
+	conflicts = rozb3-pac-git
+	source = https://gitlab.com/m_zhou/rozb3-pac/-/archive/0.0.3/rozb3-pac-0.0.3.tar.gz
+	md5sums = 6e4257810d0089de26032d63fc352fad
+
+pkgname = rozb3-pac
+
