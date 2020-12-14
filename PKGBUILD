@@ -1,7 +1,9 @@
+# Maintainer: Marco Pompili <aur@mg.odd.red>
+
 pkgname=libfixbuf
 pkgver=2.4.0
 pkgrel=1
-pkgdesc="A compliant implementation of the IPFIX Protocol, as defined in the \"Specification of the IPFIX Protocol for the Export of IP Flow Information\" (RFC 5101). "
+pkgdesc="A compliant implementation of the IPFIX Protocol, (RFC 5101)."
 arch=('i686' 'x86_64')
 url="http://tools.netsa.cert.org/fixbuf/index.html"
 license=("LGPL")
