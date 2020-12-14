@@ -1,8 +1,8 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname=kodi-standalone-service
-pkgver=1.117
-pkgrel=3
+pkgver=1.118
+pkgrel=1
 pkgdesc="Systemd services to run kodi in stand-alone mode without a DE"
 # Do NOT attempt to use this package on Arch ARM! This is only for x86_64.
 # You have been warned.
