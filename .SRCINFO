@@ -1,0 +1,50 @@
+pkgbase = linux-vanilla-selinux-mainline
+	pkgdesc = Vanilla-Linux-Kernel (5.10) from kernel.org with Selinux enabled.
+	pkgver = 5.10
+	pkgrel = 1
+	url = https://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.sign
+	source = config
+	source = linux-vanilla-selinux-mainline.install
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux-vanilla-selinux-mainline.preset
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha512sums = 95bc137d0cf9148da6a9d1f1a878698dc27b40f68e22c597544010a6c591ce1b256f083489d3ff45ff77753289b535135590194d88ef9f007d0ddab3d74de70e
+	sha512sums = 3d891b3fe079477c682f1d8a5b7234fc89a74d0a7029e622fc583c59744a96bc383fbc41adbaffbf6fa5042c2269cc50002a760a4469a9ac17fe3083116e68d5
+	sha512sums = 84546829b8f09f4353a4682326a3b23fb722c210f50dee208b6cabff59abb35894157ca2ef1ab9e6b16598242ef9fd953255e908aa9db86390d0e2b5630b1f2e
+	sha512sums = fc52feda32be644deeadf267fdff124ffcc0d0870c36e736024a7be0958ba4b50cea5ef0ec33c2681ad00f36b42ebed354fa3e63bd4827acbeedebc39029229c
+	sha512sums = 7132a74149b39e30f57a0ef70330fbdf8f38a33bd88ba94f1115de098319e41af0ae86091a1e610e209fc87a9823f69da5c883b0a2fd7adc203578cc4ab08733
+	sha512sums = 06481e0492d8ec0f353672fbd1d71322b105849871975f434f87bcb33ca898f85407403ba935153e5d8cca44fea62bfbb43404871d12f26891579067a36fae19
+	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
+
+pkgname = linux-vanilla-selinux-mainline
+	pkgdesc = The Linux-vanilla-selinux-mainline kernel and modules
+	install = linux-vanilla-selinux-mainline.install
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	backup = etc/mkinitcpio.d/linux-vanilla-selinux-mainline.preset
+
+pkgname = linux-vanilla-selinux-mainline-headers
+	pkgdesc = Header files and scripts for building modules for Linux-vanilla-selinux-mainline kernel
+
+pkgname = linux-vanilla-selinux-mainline-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-vanilla-selinux-mainline kernel
+
