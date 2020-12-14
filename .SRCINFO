@@ -1,6 +1,6 @@
 pkgbase = libretro-handy-git
 	pkgdesc = libretro implementation of Handy. (Atari Lynx)
-	pkgver = 220.dba810a
+	pkgver = 228.0c203be
 	pkgrel = 1
 	url = https://github.com/libretro/libretro-handy
 	arch = i686
