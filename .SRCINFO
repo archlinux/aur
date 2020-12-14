@@ -1,0 +1,14 @@
+pkgbase = jakartaee8-doc
+	pkgdesc = Jakarta EE 8 documentation.
+	pkgver = 8.0.0
+	pkgrel = 1
+	url = https://github.com/eclipse-ee4j/jakartaee-api
+	arch = any
+	license = EPL
+	makedepends = java-environment>=8
+	makedepends = maven
+	source = jakartaee8-doc-8.0.0.tar.gz::https://github.com/eclipse-ee4j/jakartaee-api/archive/8.0.0.tar.gz
+	sha256sums = 8e0d71e64dff57d07d49d1aa463fd54b23fa189d4d31df6d8ba38449de1de88a
+
+pkgname = jakartaee8-doc
+
