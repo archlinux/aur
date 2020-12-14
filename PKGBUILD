@@ -11,22 +11,22 @@ license=('AGPL3')
 arch=('any')
 depends=('nodejs>=10.12.0')
 optdepends=('mariadb' 'postgresql')
-makedepends=('yarn' 'npm')
+makedepends=('yarn')
 provides=($_pkgname)
 conflicts=($_pkgname)
 backup=('etc/wiki-js/config.yml')
 url='https://github.com/Requarks/wiki'
 source=(
-  "wiki-js-${pkgver}.tar.gz::https://github.com/Requarks/wiki/archive/${pkgver}.tar.gz"
-  "wiki-js.service"
-  "wiki-js.sysusers"
-  "config.sample.yml.patch"
+	"wiki-js-${pkgver}.tar.gz::https://github.com/Requarks/wiki/archive/${pkgver}.tar.gz"
+	"wiki-js.service"
+	"wiki-js.sysusers"
+	"config.sample.yml.patch"
 )
 sha256sums=(
-  ab39e957e2baed3583ecb7e4fe1733dd51620dc4addbb665ae747bd0b479f852
-  39bfd1390d3f2eba2522d750b89176aeefcdfdd1e3b2ba4d10276f1b7d3c55e8
-  4e7fc467c43f5de2d1a355036abccb2ba23a6b10e1a93ae2d645e4352646bd55
-  0924b4ae73e4787ff50f0f21eb43bb2c41e06a2cc03d841de90f95d570d0e7e3
+	ab39e957e2baed3583ecb7e4fe1733dd51620dc4addbb665ae747bd0b479f852
+	39bfd1390d3f2eba2522d750b89176aeefcdfdd1e3b2ba4d10276f1b7d3c55e8
+	4e7fc467c43f5de2d1a355036abccb2ba23a6b10e1a93ae2d645e4352646bd55
+	0924b4ae73e4787ff50f0f21eb43bb2c41e06a2cc03d841de90f95d570d0e7e3
 )
 
 prepare() {
@@ -38,8 +38,8 @@ build() {
 	cd "$srcdir/wiki-$pkgver"
 	yarn --frozen-lockfile --non-interactive
 	yarn build
-  rm -rf node_modules
-  yarn --production --frozen-lockfile --non-interactive
+	rm -rf node_modules
+	yarn --production --frozen-lockfile --non-interactive
 }
 
 package() {
