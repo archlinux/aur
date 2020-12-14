@@ -2,7 +2,7 @@
 
 pkgname=tls-redirector
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiny service for port 80 that rewrites URLs to HTTPS'
 arch=('x86_64' 'aarch64')
 url='https://git.sr.ht/~ancarda/tls-redirector'

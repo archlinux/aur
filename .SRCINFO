@@ -1,13 +1,14 @@
 pkgbase = tls-redirector
 	pkgdesc = Tiny service for port 80 that rewrites URLs to HTTPS
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~ancarda/tls-redirector
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = go
 	source = https://git.sr.ht/~ancarda/tls-redirector/archive/2.4.tar.gz
-	sha512sums = 24c3441d0f2d0ad219c7618ea6859c24
+	sha512sums = 4966c7ce7fbe32ae1e96db41666e1b3a7086d5fb9a6e7f89e099f9743ca515d0b27d7680b0f9751ad15f2ac7451aed88e591d05c820a488fe0a7fa477044bcc8
 
 pkgname = tls-redirector
 
