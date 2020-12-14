@@ -1,14 +1,18 @@
 pkgbase = linux-vfio
 	pkgdesc = Linux
-	pkgver = 5.9.13.arch1
+	pkgver = 5.9.14.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.9.13-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.9.14-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
 	makedepends = kmod
 	makedepends = libelf
 	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
 	makedepends = xmlto
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
@@ -16,7 +20,7 @@ pkgbase = linux-vfio
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.9.13-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.9.14-arch1
 	source = config
 	source = add-acs-overrides.patch
 	source = i915-vga-arbiter.patch
@@ -25,7 +29,7 @@ pkgbase = linux-vfio
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = cf69b81648a07ebedb274ed26bed3c4d2ff75c6665ecaca0a724b148c70c9c7c
+	sha256sums = e8e9d05bc4076915c0b8f4d1d7d8889b6c446a9853a5d5ef09df47689164403b
 	sha256sums = 44dc46859652fef332b9223dc4de93e6a67877921711259540fbf235319538ac
 	sha256sums = 5ed25e82b59462d91a7869c5aca56045476f3c29c217bfa68851cc6d8678a503
 	sha256sums = 8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c
