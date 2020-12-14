@@ -6,7 +6,7 @@ _I18N_EREGEX='.*'
 _pkgname=collabora-online-server-nodocker
 
 # taking version of loolwsd:
-pkgver=6.4.0
+pkgver=6.4.2
 pkgrel=1
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"
@@ -85,6 +85,7 @@ _upstream_equiv='
   libssl1.0.0         = openssl-1.0
   libstdc++6          = gcc-libs
   openssh-client      = openssh
+  systemd             = systemd
   zlib1g              = zlib
 '
 _upstream_equiv_OLD='
