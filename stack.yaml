@@ -3,26 +3,48 @@ packages:
 
 extra-deps:
 - ConfigFile-1.1.4
-- broadcast-chan-0.2.1
+- broadcast-chan-0.2.1.1
 - dbus-hslogger-0.1.0.1
-- gio-0.13.4.1
+# gtk-sni-tray for a clean tray
 - gtk-sni-tray-0.1.6.0
+# GTK3 for my-taffybar
+- gtk3-0.15.5
+# For gtk3
+- cairo-0.13.8.1
+- gio-0.13.8.1
+- glib-0.13.8.1
+- gtk2hs-buildtools-0.13.8.0
+- pango-0.13.8.1
+
+# From base taffybar
+- gi-glib-2.0.24
+- haskell-gi-0.24.5
+- haskell-gi-base-0.24.4
+# From manual "finding out the package and finding the most recent version"
+- gi-cairo-connector-0.1.0
+- gi-cairo-render-0.1.0
+- gi-pango-1.0.23
+- gi-gtk-hs-0.3.9
+# Seeing that theoretically the `g_spec_param_uref` linking issue has been fixed,
+# gi-gobject is fixed to the most recent version
+# Source : https://github.com/haskell-gi/haskell-gi/issues/298 and 
+#   https://github.com/haskell-gi/haskell-gi/issues/301
+- gi-gobject-2.0.24
+# From gi-pango
+- gi-harfbuzz-0.0.3
+- gi-dbusmenu-0.4.6
+- gi-dbusmenugtk3-0.4.7
+- gi-gdkx11-3.0.8
+- gi-xlib-2.0.7
 - gtk-strut-0.1.3.0
-- libxml-sax-0.7.5
 - rate-limit-1.4.1
-- spool-0.1
 - status-notifier-item-0.3.0.5
 - time-units-1.0.0
 - xml-helpers-1.0.0
-- gi-cairo-connector-0.0.1
-- gi-cairo-render-0.0.1
-- gi-dbusmenu-0.4.4
-- gi-dbusmenugtk3-0.4.5
-- gi-gdkx11-3.0.5
-- gi-xlib-2.0.5
-- MissingH-1.4.3.0
-- xdg-desktop-entry-0.1.1.1
+- safe-0.3.19
 
-resolver: lts-15.10
-
-ghc-options: {"$locals": -ddump-to-file -ddump-hi}
+resolver: lts-16.26
+allow-newer: true
+ghc-options:
+  $everything: -split-sections -haddock
+  $locals: -fwrite-ide-info -hiedir=.hie -fmax-relevant-binds=0
