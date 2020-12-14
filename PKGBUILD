@@ -1,6 +1,9 @@
-# Maintainer: hashworks <mail@hashworks.net>
+# Maintainer: Gabriel Guldner <gabriel at guldner . eu>
+
+# Contributor: hashworks <mail@hashworks.net>
+
 pkgname=wiki-js-git
-pkgver=2.3.51.r4.g4308152a
+pkgver=2.5.170.r23.g06325124
 pkgrel=1
 pkgdesc="Wiki.js | A modern, lightweight and powerful wiki app built on Node.js"
 license=('AGPL3')
@@ -37,14 +40,14 @@ build() {
 }
 
 package() {
-	install -Dm 644 "wiki-js.service" -t "${pkgdir}/usr/lib/systemd/system"
-	install -Dm 644 "wiki-js.sysusers" "${pkgdir}/usr/lib/sysusers.d/wiki-js.conf"
+	install -Dm644 "wiki-js.service" -t "${pkgdir}/usr/lib/systemd/system"
+	install -Dm644 "wiki-js.sysusers" "${pkgdir}/usr/lib/sysusers.d/wiki-js.conf"
 
 	cd "wiki"
-	install -Dm 640 -o 5494 -g 5494 "config.sample.yml" "${pkgdir}/etc/wiki-js/config.yml"
+	install -Dm644 -o 5494 -g 5494 "config.sample.yml" "${pkgdir}/etc/wiki-js/config.yml"
 
-	install -Dm 644 "package.json" -t "${pkgdir}/usr/lib/wiki-js"
-	cp -r "assets" "server" "node_modules" "${pkgdir}/usr/lib/wiki-js"
+	install -Dm644 "package.json" -t "${pkgdir}/usr/lib/wiki-js"
+	cp -aR "assets" "server" "node_modules" "${pkgdir}/usr/lib/wiki-js"
 
 	mkdir -p "${pkgdir}/var/lib/wiki-js"
 	chown 5494:5494 "${pkgdir}/var/lib/wiki-js"
