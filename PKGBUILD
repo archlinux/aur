@@ -8,6 +8,10 @@ _commit=7fe720529
 arch=('x86_64' 'i686' 'pentium4' 'armv6h' 'armv7h' 'aarch64')
 url="https://btchd.org/"
 license=('MIT')
+conflicts=('bitcoinhd-git' 'bitcoinhd-daemon-git' 'bitcoinhd-cli-git' 'bitcoinhd-tx-git')
+# conflicts=('bitcoinhd-git' 'bitcoinhd-daemon-git' 'bitcoinhd-cli-git' 'bitcoinhd-qt-git' 'bitcoinhd-tx-git')
+provides=('bitcoinhd-git' 'bitcoinhd-daemon-git' 'bitcoinhd-cli-git' 'bitcoinhd-tx-git')
+# provides=('bitcoinhd-git' 'bitcoinhd-daemon-git' 'bitcoinhd-cli-git' 'bitcoinhd-qt-git' 'bitcoinhd-tx-git')
 source=("bitcoinhd-$pkgver-src.tar.gz::https://github.com/btchd/btchd/archive/v$pkgver.tar.gz"
         "bitcoinhd-qt.desktop")
 source_x86_64=("https://github.com/btchd/btchd/releases/download/v$pkgver/bhd-v$pkgver-${_commit}-x86_64-linux-gnu.tar.gz")
