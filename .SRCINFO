@@ -9,6 +9,7 @@ pkgbase = lib32-shaderc-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = python
+	makedepends = spirv-headers
 	depends = shaderc
 	depends = lib32-glibc
 	depends = lib32-gcc-libs
