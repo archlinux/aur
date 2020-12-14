@@ -1,12 +1,12 @@
 # Maintainer: Snehit Sah <snehitsah at protonmail dot com>
 pkgname=gamma-text-editor
-pkgver=0.0.3a
-pkgrel=1
+pkgver=0.0.4
+pkgrel=0
 pkgdesc="A lightweight text editor, alternative to Gedit or Notepad++"
 arch=(x86_64 i686)
-url="https://gitlab.com/snehitsah/gamma-text-editor"
+url="https://gitlab.com/hamadmarri/gamma-text-editor"
 license=("GPL3")
-depends=("python3" "gtk3" "gtksourceview4" "gobject-introspection")
+depends=("python3" "gtk3" "gtksourceview4" "gobject-introspection" "ctags" "yelp" "gedit-plugins")
 source=(${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz)
 sha256sums=("SKIP")
 
