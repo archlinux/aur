@@ -1,9 +1,9 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mingw-w64-aom
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Alliance for Open Media video codec (mingw-w64)"
 url="https://aomedia.org/"
@@ -12,7 +12,7 @@ license=(BSD custom:PATENTS)
 depends=(mingw-w64-crt)
 options=(!strip !buildflags staticlibs)
 makedepends=(mingw-w64-gcc mingw-w64-cmake git ninja yasm)
-_commit=bb35ba9148543f22ba7d8642e4fbd29ae301f5dc  # tags/v2.0.0^0
+_commit=b52ee6d44adaef8a08f6984390de050d64df9faa  # tags/v2.0.1^0
 source=("git+https://aomedia.googlesource.com/aom#commit=$_commit"
         "cmake.patch")
 sha256sums=('SKIP'
@@ -32,7 +32,7 @@ prepare() {
 build() {
   for _arch in ${_architectures}; do
     mkdir -p "${srcdir}"/aom/build-static-${_arch} && cd "${srcdir}"/aom/build-static-${_arch}
-    ${_arch}-cmake -Haom -G Ninja \
+    ${_arch}-cmake -S aom -G Ninja \
       -DBUILD_SHARED_LIBS=0 \
       -DENABLE_TESTS=0 \
       ..
@@ -52,8 +52,8 @@ build() {
 package() {
   cd "${srcdir}"/aom
   for _arch in ${_architectures}; do
-    DESTDIR="$pkgdir" cmake --build build-static-${_arch} --target install
-    DESTDIR="$pkgdir" cmake --build build-${_arch} --target install
+    DESTDIR="$pkgdir" cmake --install build-static-${_arch}
+    DESTDIR="$pkgdir" cmake --install build-${_arch}
 
     mv "${pkgdir}"/usr/${_arch}/lib/*.dll "${pkgdir}"/usr/${_arch}/bin/
 
