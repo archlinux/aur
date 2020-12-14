@@ -1,7 +1,7 @@
 pkgbase = dwarfs
 	pkgdesc = A fast high compression read-only file system
-	pkgver = 0.2.3
-	pkgrel = 2
+	pkgver = 0.2.4
+	pkgrel = 1
 	url = https://github.com/mhx/dwarfs
 	arch = x86_64
 	license = GPL3
@@ -21,9 +21,9 @@ pkgbase = dwarfs
 	depends = fmt
 	depends = gflags
 	depends = double-conversion
-	source = dwarfs-0.2.3.tar.bz2::https://github.com/mhx/dwarfs/releases/download/v0.2.3/dwarfs-0.2.3.tar.bz2
-	sha256sums = c77f6b65572e000d5b78cad167a66fbe6a802715da5e68613bcb2be5a4d30030
-	b2sums = e39336f69fe64bc29c004560b3b46f59a1f55fa403c8324e7b96c36b73b52f21f8b4b3dee67f98df6f16c6da780aa93f622713478e44dbbebb1f82b71cbe659b
+	source = dwarfs-0.2.4.tar.bz2::https://github.com/mhx/dwarfs/releases/download/v0.2.4/dwarfs-0.2.4.tar.bz2
+	sha256sums = 68b02c4fafbcc274489b789e272d727dc345a224fe7590efb65488daab104d83
+	b2sums = 08ed8aad5efced3b0132dd09228530c01a556e87daaf543ca1e4565aaaabac3294f2b3816a1bd3f52b09215b560efcd4f5a8b5ff71909dd45e7011be133e9986
 
 pkgname = dwarfs
 
