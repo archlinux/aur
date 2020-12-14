@@ -234,11 +234,11 @@ package_xorg-server-rootless-nosystemd-minimal-git() {
 
 package_xorg-server-xwayland-rootless-nosystemd-minimal-git() {
   pkgdesc="run X clients under wayland"
-  depends=(libxfont2 libepoxy libgl pixman xorg-server-common-rootless-nosystemd-minimal-git
-           nettle libtirpc)
+  depends=(libxfont2 libepoxy pixman xorg-server-common
+           nettle)
   optdepends=('libunwind: unwind backtrace support')
-  conflicts=('xorg-server-xwayland')
-  provides=('xorg-server-xwayland')
+  conflicts=('xorg-server-xwayland' 'xorg-xwayland')
+  provides=('xorg-server-xwayland' 'xorg-xwayland')
   
   _install fakeinstall/usr/bin/Xwayland
 

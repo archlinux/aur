@@ -66,14 +66,14 @@ pkgname = xorg-server-xwayland-rootless-nosystemd-minimal-git
 	pkgdesc = run X clients under wayland
 	depends = libxfont2
 	depends = libepoxy
-	depends = libgl
 	depends = pixman
-	depends = xorg-server-common-rootless-nosystemd-minimal-git
+	depends = xorg-server-common
 	depends = nettle
-	depends = libtirpc
 	optdepends = libunwind: unwind backtrace support
 	provides = xorg-server-xwayland
+	provides = xorg-xwayland
 	conflicts = xorg-server-xwayland
+	conflicts = xorg-xwayland
 
 pkgname = xorg-server-common-rootless-nosystemd-minimal-git
 	pkgdesc = Xorg server common files
