@@ -1,0 +1,16 @@
+[Unit]
+Description=Overseerr Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/overseerr
+User=overseerr
+Group=overseerr
+Type=exec
+Restart=on-failure
+WorkingDirectory=/usr/lib/overseerr
+ExecStart=/usr/bin/yarn start
+
+[Install]
+WantedBy=multi-user.target

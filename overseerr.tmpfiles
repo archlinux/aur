@@ -1,0 +1,4 @@
+d /var/lib/overseerr      0750 overseerr overseerr -
+d /var/lib/overseerr/db   0750 overseerr overseerr -
+d /var/lib/overseerr/logs 0750 overseerr overseerr -
+L /var/log/overseerr - - - - /var/lib/overseerr/logs/
