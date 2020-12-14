@@ -1,7 +1,7 @@
 # Maintainer: kumen
 
 pkgname="embedded-studio"
-pkgver=5.20
+pkgver=5.32a
 pkgrel=1
 pkgdesc="Segger Embedded Studio for ARM"
 arch=("x86_64")
@@ -15,11 +15,9 @@ options=(!strip)
 
 source_x86_64=("Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_x64.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_x64.tar.gz")
 source_i686=("Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_x86.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_x86.tar.gz")
-source=($pkgname.desktop)
 	
-sha256sums_x86_64=('7dd337f5d68e8b9dea5e5cab472af0fde4ffa54de4f8c06a19ecab9373251de5')
-sha256sums_i686=('f2c0bb150961f8e029ea0101a48aab92a4043b80ea623ec369d16ae36fb42c19')
-sha256sums=('8d559936293917d566be7efb63ad4b18299ef0bad1656f9a939a4ac6d288576c')
+sha256sums_x86_64=('37d142da0a84b114c844c64b35cad398f3203fd01eb6759f39462744b382022f')
+sha256sums_i686=('566e009ac23193eedaecd3e2b325b966f7484bb2ba912391de3b551759086c3a')
 
 prepare(){
 	# Change src path name
@@ -43,7 +41,19 @@ package() {
 
 	msg2 'Installing desktop shortcut and icon'
 	install -Dm 644 "${pkgdir}/opt/SEGGER/Embedded-Studio/bin/StudioIcon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-	install -Dm 644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/${pkgname}.desktop" <<END
+[Desktop Entry]
+Name=Embedded Studio
+Comment=Embedded Studio for ARM
+GenericName=Embedded Studio
+Exec=env GDK_BACKEND=x11 emStudio %F
+Icon=embedded-studio
+Path=/opt/SEGGER/Embedded-Studio/bin
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Development
+END
 	
 	msg2 'Instalation of license file'
 	ln -s /opt/SEGGER/Embedded-Studio/html/License.htm "${pkgdir}/usr/share/licenses/${pkgname}/"

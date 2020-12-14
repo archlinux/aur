@@ -1,16 +1,14 @@
 pkgbase = embedded-studio
 	pkgdesc = Segger Embedded Studio for ARM
-	pkgver = 5.20
+	pkgver = 5.32a
 	pkgrel = 1
 	url = https://www.segger.com/products/development-tools/embedded-studio/
 	arch = x86_64
 	license = Commercial
 	depends = jlink-software-and-documentation
 	options = !strip
-	source = embedded-studio.desktop
-	sha256sums = 8d559936293917d566be7efb63ad4b18299ef0bad1656f9a939a4ac6d288576c
-	source_x86_64 = Setup_EmbeddedStudio_ARM_v520_linux_x64.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_ARM_v520_linux_x64.tar.gz
-	sha256sums_x86_64 = 7dd337f5d68e8b9dea5e5cab472af0fde4ffa54de4f8c06a19ecab9373251de5
+	source_x86_64 = Setup_EmbeddedStudio_ARM_v532a_linux_x64.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_ARM_v532a_linux_x64.tar.gz
+	sha256sums_x86_64 = 37d142da0a84b114c844c64b35cad398f3203fd01eb6759f39462744b382022f
 
 pkgname = embedded-studio
 
