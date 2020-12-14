@@ -1,0 +1,14 @@
+pkgbase = fetchy-git
+	pkgdesc = Cli system info tool written in C.
+	pkgver = 1.0.r.
+	pkgrel = 1
+	url = https://gitlab.com/vojjvoda/fetchy.git
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	provides = fetchy
+	conflicts = fetchy
+	source = git+https://gitlab.com/vojjvoda/fetchy.git
+	md5sums = SKIP
+
+pkgname = fetchy-git
