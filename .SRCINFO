@@ -1,5 +1,5 @@
 pkgbase = gnome-builder-themes-gtksourceview4-git
-	pkgdesc = gtksourceview4/gedit themes from gnome-builder
+	pkgdesc = Syntax Highlighting themes from Gnome Builder for Gedit and other editors using gtksourceview4
 	pkgver = r14447.aab3b443d
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-builder/
