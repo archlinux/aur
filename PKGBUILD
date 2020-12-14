@@ -6,7 +6,7 @@
     pkgname='ros-noetic-libg2o'
     pkgver='2018.3.25'
     arch=('any')
-    pkgrel=1
+    pkgrel=2
     license=('BSD')
 
     ros_makedepends=()
@@ -27,7 +27,7 @@
     # Tarball version (faster download)
     _dir="libg2o-release-release-noetic-libg2o"
     source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-gbp/libg2o-release/archive/release/noetic/libg2o/${pkgver}.tar.gz")
-    sha256sums=('c49b69b1843dc0c287720c1eb14380069612abe5f338c5f979a7099f6dde6db3')
+    sha256sums=('9a287e8582c5bce1da4469e6aac80347df7f0ae6e1626a39560d4df580db4763')
 
     build() {
         # Use ROS environment variables
