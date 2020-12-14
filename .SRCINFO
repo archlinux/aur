@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-libg2o
 	pkgdesc = ROS - The libg2o library from http://openslam.org/g2o.html.
 	pkgver = 2018.3.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RainerKuemmerle/g2o
 	arch = any
 	license = BSD
