@@ -2,7 +2,7 @@
 
 pkgname="iget-git"
 pkgver=1.3.5_13_g20cc672.20cc672
-pkgrel=1
+pkgrel=2
 pkgdesc='A no-hassle command-line image downloader.'
 arch=('any')
 url="https://gitlab.com/ammongit/${pkgname%-git}"
