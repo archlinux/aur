@@ -1,0 +1,38 @@
+pkgbase = linux-xanmod-cacule
+	pkgdesc = Linux Xanmod. Branch with Cacule scheduler by Hamad Marri
+	pkgver = 5.9.14
+	pkgrel = 1
+	url = http://www.xanmod.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	makedepends = cpio
+	options = !strip
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.9.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.9.tar.sign
+	source = https://github.com/xanmod/linux/releases/download/5.9.14-xanmod1-cacule/patch-5.9.14-xanmod1-cacule.xz
+	source = choose-gcc-optimization.sh
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = 3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06
+	sha256sums = SKIP
+	sha256sums = 20096d49905e7bcdb6605e303ccd267de230cec77770bd455fdf66f4d7c05638
+	sha256sums = 2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511
+	sha256sums = 6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991
+
+pkgname = linux-xanmod-cacule
+	pkgdesc = The Linux kernel and modules with Xanmod patches
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+
+pkgname = linux-xanmod-cacule-headers
+	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel
+
