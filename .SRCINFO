@@ -1,7 +1,7 @@
 pkgbase = sotw
 	pkgdesc = Shadow Of The Wyrm is a single player, traditional roguelike by Julian Day.
-	pkgver = 1.2.4
-	pkgrel = 5
+	pkgver = 1.2.5
+	pkgrel = 1
 	url = http://www.shadowofthewyrm.org/
 	arch = x86_64
 	license = MIT
