@@ -3,7 +3,7 @@
 
 pkgname=perl-net-arp
 _realname=Net-ARP
-pkgver=1.0.9
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="Perl Module: Extension for creating ARP Packets" 
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ license=('PerlArtistic')
 url="http://search.cpan.org/dist/${_realname}/"
 depends=('perl>=5.10.0')
 source=(http://cpan.metacpan.org/authors/id/C/CR/CRAZYDJ/${_realname}-${pkgver}.tgz)
-sha1sums=('bd8067ec9cae6693e9c038df35e3c7415eedfaf4')
+sha1sums=('5a097b43ad05be9daa17541243f309bc9dc0a514')
 
 build() {
   cd ${srcdir}/${_realname}
