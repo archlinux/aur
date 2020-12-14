@@ -1,11 +1,10 @@
 pkgbase = lavalauncher
 	pkgdesc = A simple launcher panel for Wayland
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.sr.ht/~leon_plickat/lavalauncher
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = wayland-protocols
@@ -15,8 +14,8 @@ pkgbase = lavalauncher
 	depends = wayland-protocols
 	provides = lavalauncher
 	conflicts = lavalauncher-git
-	source = lavalauncher::git+https://git.sr.ht/~leon_plickat/lavalauncher
-	sha256sums = SKIP
+	source = lavalauncher-2.0.0.tar.gz::https://git.sr.ht/~leon_plickat/lavalauncher/archive/v2.0.0.tar.gz
+	sha256sums = 6aa9d6fe189f658dabb709c1902454ebaa7dace8259d39c2256397657a411f9b
 
 pkgname = lavalauncher
 
