@@ -1,0 +1,16 @@
+pkgbase = dwmblocks-vojvoda-git
+	pkgdesc = My build of dwmblocks for my dwm
+	pkgver = 1.0.r.
+	pkgrel = 1
+	url = https://gitlab.com/vojjvoda/dwmblocks.git
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	depends = acpi
+	depends = ripgrep
+	provides = dwmblocks
+	conflicts = dwmblocks
+	source = git+https://gitlab.com/vojjvoda/dwmblocks.git
+	md5sums = SKIP
+
+pkgname = dwmblocks-vojvoda-git
