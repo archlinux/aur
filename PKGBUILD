@@ -59,9 +59,9 @@ package() {
 	
 	cat <<EOF > $srcdir/$pkgname/funkin.sh
 #!/bin/bash
-pushd $pkgdir/usr/share/funkin
+pushd /usr/share/funkin > /dev/null
 ./Funkin
-popd
+popd > /dev/null
 EOF
 	
 	install -D $srcdir/$pkgname/funkin.sh $pkgdir/usr/bin/funkin
