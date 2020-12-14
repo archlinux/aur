@@ -1,0 +1,12 @@
+pkgbase = adapta-nord-git
+	pkgdesc = Nord version of Adapta Colorpack!
+	pkgver = r46.245822f
+	pkgrel = 1
+	url = https://github.com/Joshaby/Adapta-Nord.git
+	arch = any
+	license = GPL
+	source = AdaptaNord::git+https://github.com/Joshaby/Adapta-Nord.git
+	sha256sums = SKIP
+
+pkgname = adapta-nord-git
+
