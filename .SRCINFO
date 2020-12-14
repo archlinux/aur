@@ -1,0 +1,19 @@
+pkgbase = headset-charge-indicator-git
+	pkgdesc = Simple app-indicator for GNOME desktops to display the battery charge of some wireless headsets
+	pkgver = 1.0.0.0.r33.g795705a
+	pkgrel = 1
+	url = https://github.com/centic9/headset-charge-indicator
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = gnome-icon-theme
+	depends = headsetcontrol
+	depends = libappindicator-gtk3
+	depends = python
+	provides = headset-charge-indicator
+	conflicts = headset-charge-indicator
+	source = git+https://github.com/centic9/headset-charge-indicator.git
+	sha256sums = SKIP
+
+pkgname = headset-charge-indicator-git
+
