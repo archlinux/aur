@@ -2,15 +2,16 @@
 
 pkgname="python-srt"
 _name=${pkgname#python-}
-pkgver=3.3.0
-pkgrel=3
+pkgver=3.4.1
+pkgrel=1
 pkgdesc='A tiny library for parsing, modifying, and composing SRT files'
 arch=('any')
 url="https://pypi.org/project/$_name/$pkgver"
 license=('MIT')
 provides=('python-srt')
+conflicts=('python-pysrt')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('ef20ebddaa195bb75d61eb1893373cc62da0658218ddac6c5652d28938b20663')
+sha256sums=('aa507439bf593adb1b207d21c5975c9774263da97489f8b90d8a016bfa67ee94')
 
 build() {
 	cd ${srcdir}/${_name}-${pkgver}
