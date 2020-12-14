@@ -10,6 +10,7 @@ pkgbase = shaderc-git
 	makedepends = cmake
 	makedepends = python
 	makedepends = asciidoctor
+	makedepends = spirv-headers
 	depends = glslang
 	depends = spirv-tools
 	provides = shaderc

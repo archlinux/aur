@@ -15,6 +15,7 @@ makedepends=('git'
              'cmake'
              'python'
              'asciidoctor'
+             'spirv-headers'
              )
 provides=('shaderc'
           'libshaderc_shared.so'
