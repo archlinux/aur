@@ -1,6 +1,6 @@
 pkgbase = understand-bin
 	pkgdesc = Static analysis tool for maintaining, measuring & analyzing critical or large code bases.
-	pkgver = 5.1.1007
+	pkgver = 6.0.1044
 	pkgrel = 1
 	url = https://scitools.com/
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = understand-bin
 	depends = ncurses5-compat-libs
 	depends = freetype2
 	options = !strip
-	source = http://builds.scitools.com/all_builds/b1007/Understand/Understand-5.1.1007-Linux-64bit.tgz
+	source = http://builds.scitools.com/all_builds/b1044/Understand/Understand-6.0.1044-Linux-64bit.tgz
 	source = understand.desktop
 	source = understand
-	sha256sums = eb2be91a579d6afc485b6c13739263fbd22fe18cb9de3e9549f31e43dd21e040
+	sha256sums = ed5e603262cedd47dfe9303b9e8433dbd15816b78afa564609b28438e7a00d4c
 	sha256sums = 8cb7852252e678b12a7d84b1ccb99bdae9e22f47793787be827cae98076957c9
 	sha256sums = 85ef433c24bbc0545552592cb342affa720a8f0fbe2dc6a5e488ee5cb054b0e6
 
