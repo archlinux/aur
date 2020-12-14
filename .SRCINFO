@@ -1,6 +1,6 @@
 pkgbase = instamenu
 	pkgdesc = dmenu like menu with the Manjaro Matcha-dark-sea theme
-	pkgver = 2020.12.13
+	pkgver = 2020.12.14
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/instamenu
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = instamenu
 	provides = dmenu
 	conflicts = dmenu
 	replaces = dmenu
-	source = https://github.com/TheCynicalTeam/instamenu/archive/2020.12.13-1.tar.gz
-	sha256sums = 02acc18557911ba8784ae6ab2319a6517702f637310ddb5bc00bfdcf1624ca23
+	source = https://github.com/TheCynicalTeam/instamenu/archive/2020.12.14-1.tar.gz
+	sha256sums = 7615a210500da6df688b551b78163fa04905820d26354d95ed789f2ddf173ddc
 
 pkgname = instamenu
 
