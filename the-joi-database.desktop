@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=The Joi Database
+Exec=/opt/TheJoiDatabase/runner
+Icon=/opt/TheJoiDatabase/assets/icon.png
+
+Comment="A game for all the JOI's lovers"
+Comment[fr]="Un jeu pour les amateurs de JOI"
+Comment[de]="Ein Spiel für alle, die JOI lieben"
+Comment[ru]="Игра для любителей JOI"

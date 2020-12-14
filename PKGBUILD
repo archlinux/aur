@@ -10,7 +10,7 @@ depends=("unzip")
 
 source=(
     "http://www.the-joi-database.com/downloads.php?version=game_versions/The%20joi%20Database%20${pkgver}-linux.zip&file_id=65&id=36"
-    "https://pastebin.com/raw/nQ6vZAyJ"
+    "${pkgname}.desktop"
 )
 noextract=(
     "The%20joi%20Database%20${pkgver}-linux.zip&file_id=65&id=36"
@@ -29,5 +29,5 @@ prepare() {
 package() {
     cd "${srcdir}"
     install -Ddm 755 Asis_Story_Hub /opt/TheJoiDatabase/
-    install -Dm 755 nQ6vZAyJ $pkgdir/usr/share/applications/jdb.desktop
+    install -Dm 755 ${pkgname}.desktop $pkgdir/usr/share/applications/${pkgname}.desktop
 }
