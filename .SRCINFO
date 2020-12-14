@@ -8,6 +8,7 @@ pkgbase = dwmblocks-vojvoda-git
 	makedepends = make
 	depends = acpi
 	depends = ripgrep
+	depends = dwm-vojvoda-git
 	provides = dwmblocks
 	conflicts = dwmblocks
 	source = git+https://gitlab.com/vojjvoda/dwmblocks.git
