@@ -1,4 +1,5 @@
-# Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
+# Maintainer:  Hugo Barrera <hugo@barrera.io>
+# Contributor:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-fbneo
 pkgver=1.0.0.0
