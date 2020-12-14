@@ -1,0 +1,22 @@
+pkgbase = libretro-fbneo
+	pkgdesc = libretro implementation of FinalBurn Neo
+	pkgver = 1.0.0.0
+	pkgrel = 1
+	url = https://github.com/libretro/FBNeo
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	groups = libretro
+	license = custom:Non-commercial
+	makedepends = git
+	depends = zlib
+	depends = glibc
+	depends = libretro-core-info
+	replaces = libretro-fbalpha-git
+	source = git+https://github.com/libretro/FBNeo.git#tag=v1.0.0.0
+	sha256sums = SKIP
+
+pkgname = libretro-fbneo
+
