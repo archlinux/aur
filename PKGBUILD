@@ -3,7 +3,7 @@
 _target=arm-linux-gnueabihf
 pkgname=$_target-gdb
 pkgver=10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Debugger for the ARM hard float target'
 arch=(x86_64)
 url='http://www.gnu.org/software/gdb/'

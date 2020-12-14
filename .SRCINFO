@@ -1,7 +1,7 @@
 pkgbase = arm-linux-gnueabihf-gdb
 	pkgdesc = The GNU Debugger for the ARM hard float target
 	pkgver = 10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/gdb/
 	arch = x86_64
 	license = GPL3
