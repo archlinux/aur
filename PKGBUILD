@@ -5,7 +5,7 @@ shopt -s extglob
 
 pkgname=wake
 pkgver=0.19.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The SiFive wake build tool"
 arch=('x86_64')
 url="https://github.com/sifive/wake"
