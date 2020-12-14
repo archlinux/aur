@@ -1,0 +1,13 @@
+pkgbase = apache-modsecurity-git
+	pkgdesc = ModSecurity v3 Apache Connector (module for Apache)
+	pkgver = r123.2368a66
+	pkgrel = 1
+	url = https://github.com/SpiderLabs/ModSecurity-apache.git
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = libmodsecurity
+	source = git+https://github.com/SpiderLabs/ModSecurity-apache.git
+	sha256sums = SKIP
+
+pkgname = apache-modsecurity-git
