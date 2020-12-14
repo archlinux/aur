@@ -1,0 +1,16 @@
+pkgbase = funkin-git
+	pkgdesc = Build Friday Night Funkin from it's repository and install it with shortcuts.
+	pkgver = v0.2.4.r13.gbe5d769
+	pkgrel = 1
+	url = https://github.com/ninjamuffin99/Funkin
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = haxe
+	provides = funkin
+	conflicts = funkin
+	source = funkin-git::git://github.com/ninjamuffin99/Funkin.git
+	sha512sums = SKIP
+
+pkgname = funkin-git
+
