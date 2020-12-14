@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-mame2010-git
-pkgver=398.9b0e3b3
+pkgver=412.14b557b
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="Late 2010 version of MAME (0.139) for libretro. Compatible with MAME 0.139 romsets. (Arcade)"
