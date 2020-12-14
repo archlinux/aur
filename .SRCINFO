@@ -1,7 +1,7 @@
 pkgbase = python-enaml-git
 	pkgdesc = Declarative User Interfaces for Python
 	pkgver = 0.12.0.r10.g3e58a3c2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nucleic/enaml
 	arch = x86_64
 	license = custom
