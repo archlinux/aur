@@ -7,7 +7,7 @@ _source="installer"   # if installing from .sh installer
 
 pkgname=cisco-anyconnect
 pkgver=4.9.04053
-pkgrel=1
+pkgrel=2
 pkgdesc='Cisco AnyConnect Secure Mobility Client'
 arch=('x86_64')
 depends=('libxml2' 'ca-certificates')
@@ -132,10 +132,14 @@ package() {
     done
 
     # install CA certificates
-    # Cisco ships their own copy of the VeriSign root, but we already have that in the system store
-    # so don't install that and just symlink our system bundle
     mkdir -p "${pkgdir}/opt/.cisco/certificates/ca"
+
+    # first, install our own system root
     ln -s /etc/ca-certificates/extracted/tls-ca-bundle.pem "${pkgdir}/opt/.cisco/certificates/ca/system-ca.pem"
+
+    # then, install Cisco's, because it doesn't actually trace to any of the trusted roots we have
+    # (thanks, VeriSign)
+    install -Dm644 VeriSignClass3PublicPrimaryCertificationAuthority-G5.pem "${pkgdir}/opt/.cisco/certificates/ca/VeriSignClass3PublicPrimaryCertificationAuthority-G5.pem"
 
     # install custom policy to disable auto updates
     # AnyConnect will attempt to update itself as root, and then run all over both itself and our packaging

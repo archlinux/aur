@@ -1,7 +1,7 @@
 pkgbase = cisco-anyconnect
 	pkgdesc = Cisco AnyConnect Secure Mobility Client
 	pkgver = 4.9.04053
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cisco.com/c/en/us/products/security/anyconnect-secure-mobility-client/index.html
 	arch = x86_64
 	license = custom
