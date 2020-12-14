@@ -3,11 +3,12 @@
 
 pkgname=viu-git
 pkgver=1.3.0.r0.g94ebd93
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple terminal image viewer (git)"
 arch=('x86_64')
 url="https://github.com/atanunq/viu"
 license=('MIT')
+depends=('gcc-libs')
 makedepends=('rust' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
