@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fw-git
-pkgver=2.6.0.r16.g3d69c2d
-pkgrel=2
+pkgver=2.7.0.r1.g6e85f83
+pkgrel=1
 pkgdesc="Workspace productivity booster (git)"
 arch=('x86_64')
 url="https://github.com/brocode/fw"
