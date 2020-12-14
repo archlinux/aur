@@ -12,6 +12,10 @@ url="https://btchd.org/"
 license=('MIT')
 # makedepends=('openssl' 'boost' 'boost-libs' 'libevent' 'miniupnpc' 'db4.8' 'qt5-base' 'qt5-tools' 'protobuf' 'qrencode' 'zeromq' 'git' 'python')
 makedepends=('openssl' 'boost' 'boost-libs' 'libevent' 'miniupnpc' 'db4.8' 'protobuf' 'qrencode' 'zeromq' 'git' 'python')
+conflicts=('bitcoinhd' 'bitcoinhd-daemon' 'bitcoinhd-cli' 'bitcoinhd-tx')
+# conflicts=('bitcoinhd' 'bitcoinhd-daemon' 'bitcoinhd-cli' 'bitcoinhd-qt' 'bitcoinhd-tx')
+provides=('bitcoinhd' 'bitcoinhd-daemon' 'bitcoinhd-cli' 'bitcoinhd-tx')
+# provides=('bitcoinhd' 'bitcoinhd-daemon' 'bitcoinhd-cli' 'bitcoinhd-qt' 'bitcoinhd-tx')
 source=("git://github.com/btchd/btchd.git"
         "bitcoinhd-qt.desktop")
 sha256sums=('SKIP'
