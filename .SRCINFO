@@ -5,6 +5,7 @@ pkgbase = picket
 	url = https://github.com/rajter/Picket
 	arch = any
 	license = MIT
+	makedepends = cmake
 	depends = gtkmm3
 	depends = libx11
 	source = https://github.com/rajter/picket/archive/v1.1.tar.gz

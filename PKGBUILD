@@ -7,6 +7,9 @@ arch=('any')
 url="https://github.com/rajter/Picket"
 license=('MIT')
 groups=()
+makedepends=(
+  'cmake'
+)
 depends=(
   'gtkmm3'
   'libx11'
