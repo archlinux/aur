@@ -8,11 +8,11 @@ pkgbase = python-pylzma
 	license = LGPL2.1
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	noextract = ux.stackexchange.com.201203.7z
+	noextract = ux.stackexchange.com.201214.7z
 	source = pylzma-0.5.0.tar.gz::https://github.com/fancycode/pylzma/archive/v0.5.0.tar.gz
-	source = ux.stackexchange.com.201203.7z::https://archive.org/download/stackexchange/ux.stackexchange.com.7z
+	source = ux.stackexchange.com.201214.7z::https://archive.org/download/stackexchange/ux.stackexchange.com.7z
 	sha256sums = baefed4c84d147a507a606206478ff0894e04fa41aa3742381159cde44836fc3
-	sha256sums = 9296524c4514568d1047d64dea5e92a58d3efcba0b61b4533b230f1efb16d0b6
+	sha256sums = 37fdf094ee89bb03701ccbdf8ac7bee4733795738cbde62fdf032b8bd9f83cab
 
 pkgname = python-pylzma
 	depends = python

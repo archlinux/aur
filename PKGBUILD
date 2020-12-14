@@ -6,7 +6,7 @@ _pkgname=pylzma
 pkgbase=python-$_pkgname
 pkgname=(python-$_pkgname python2-$_pkgname)
 pkgver=0.5.0
-_testing_data_version=201203
+_testing_data_version=201214
 pkgrel=3
 pkgdesc="Platform independent python bindings for the LZMA compression library"
 url="https://www.joachim-bauch.de/projects/pylzma/"
@@ -17,7 +17,7 @@ source=($_pkgname-$pkgver.tar.gz::https://github.com/fancycode/pylzma/archive/v$
         # testing data
         ux.stackexchange.com.$_testing_data_version.7z::https://archive.org/download/stackexchange/ux.stackexchange.com.7z)
 sha256sums=('baefed4c84d147a507a606206478ff0894e04fa41aa3742381159cde44836fc3'
-            '9296524c4514568d1047d64dea5e92a58d3efcba0b61b4533b230f1efb16d0b6')
+            '37fdf094ee89bb03701ccbdf8ac7bee4733795738cbde62fdf032b8bd9f83cab')
 noextract=(ux.stackexchange.com.$_testing_data_version.7z)
 
 prepare() {
