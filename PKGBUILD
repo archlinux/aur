@@ -2,7 +2,7 @@
 pkgname=the-joi-database
 pkgver=0.0.3.5
 pkgrel=1
-pkgdesc="An adult game made for JOI's lovers"
+pkgdesc="An adult game made for hentai JOI's lovers"
 url="http://www.the-joi-database.com"
 license=('Unlicense')
 arch=('x86_64')
