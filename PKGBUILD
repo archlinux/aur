@@ -1,11 +1,11 @@
 # Maintainer: Kevin Wilms <niemandausduisburg@gmx.net>
 
 pkgname=videobrowser
-pkgver=1.0
+pkgver=2.0
 _srcname=microsoft-edge-dev
 _pkgshortname=msedge-dev
-_srcpkgver=88.0.702.0
-pkgrel=4
+_srcpkgver=89.0.723.0
+pkgrel=1
 pkgdesc="Browser with shortcuts for Videoplatforms. Based on Microsoft Edge Dev. New Shortcuts can i make just in time."
 arch=('x86_64')
 url="https://www.microsoftedgeinsider.com/en-us/download"
@@ -38,7 +38,7 @@ source=("https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-de
         "Dailymotion.png"
         "Disney.png"
         "disney+.desktop")
-sha256sums=('7dc49f9069241e62846dcdf6211ff15128ddf8ebe151426ee8f8a40d92b07586'
+sha256sums=('9335faa09bfb9712bfe4d9575bc6d786533fcec8a740fc2a88839e86e6fe8537'
             '3516070a2bcfa8d28989975813a32a4b197d30aa629ea20632a1fc5b2b83aa20'
             '0d15536c32f31a6625609df76de33b9429c12cb970b6cda4db1044b6d9c272e9'
             'dbfdb72600e77f07b07d3d8d5ba08f7ee73825e4775b6e2d02a8f8d0ab0b381e'
@@ -54,6 +54,7 @@ sha256sums=('7dc49f9069241e62846dcdf6211ff15128ddf8ebe151426ee8f8a40d92b07586'
             '9341f66c5a7a6e004fc40c83429ce55ebb343abecfbb15c689a7fcdc64837fb4')
 
 package() {
+	echo "Extracting Microsoft Edge"
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
 	mkdir "$pkgdir/opt/videobrowser"
 	cp -r "$pkgdir/opt/microsoft" "$pkgdir/opt/videobrowser/microsoft"
@@ -62,6 +63,7 @@ package() {
 	# suid sandbox
 	chmod 4755 "${pkgdir}/opt/videobrowser/microsoft/${_pkgshortname}/msedge-sandbox"
 	
+	echo "Create Icons for Shortcuts"
 	# create Icons for Apps
 	for _size in "256x256" "192x192" "128x128" "96x96" "64x64" "48x48" "32x32" "24x24" "22x22" "20x20" "16x16" "8x8"
   do
@@ -74,9 +76,11 @@ package() {
     convert "${srcdir}/Disney.png" -resize "${_size}" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/Disney.png"
   done
 
+	echo "Install Videobrowser"
 	# User flag aware launcher
 	install -m755 videobrowser.sh "${pkgdir}/usr/bin/videobrowser"
 
+	echo "Install Shortcuts"
 	# Install Shortcuts
 	install -Dm644 "${srcdir}/netflix.desktop" "${pkgdir}/usr/share/applications/netflix.desktop"
 	install -Dm644 "${srcdir}/youtube.desktop" "${pkgdir}/usr/share/applications/youtube.desktop"
@@ -85,6 +89,7 @@ package() {
 	install -Dm644 "${srcdir}/dailymotion.desktop" "${pkgdir}/usr/share/applications/dailymotion.desktop"
 	install -Dm644 "${srcdir}/disney+.desktop" "${pkgdir}/usr/share/applications/disney+.desktop"
 	
+	echo "Cleanup"
 	# Cleanup
 	rm -rf "${pkgdir}/usr/bin/microsoft-edge-dev"
 	rm -rf "${pkgdir}/usr/share/applications/microsoft-edge-dev.desktop"
