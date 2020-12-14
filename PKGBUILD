@@ -4,7 +4,7 @@
 _pkgname=PuLP
 pkgbase=python-pulp
 pkgname=(python-pulp python2-pulp)
-pkgver=2.2
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="A Linear Programming modeler written in Python"
 arch=("any")
@@ -12,7 +12,7 @@ license=("BSD")
 url="https://github.com/coin-or/pulp"
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-b2sums=('ef67f5bdd65c1c3f0e0fb0d8300f875b923e0684718c81b958d7dfc9d710fd87da5a27851bef7c4b45f6ec0d5d43e8e9ce5862274ada330b650b59092e3b4fcf')
+b2sums=('24f17ad665df48139de74a44e0ba99f3729347ad2854ebc61706a91721d4bde4d1600e5bb676489fb79478f4c4fb17a6e902932d9ef730c15561080f12855974')
 
 prepare() {
 	for _python in python python2; do
