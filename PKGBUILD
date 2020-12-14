@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.32.0.351.gb4c1554f7a
+pkgver=v0.33.0.37.gbff5416dae
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -40,6 +40,7 @@ depends=(
          'uchardet'
          'v4l-utils'
          'vulkan-icd-loader'
+         'zimg'
          )
 license=('GPL2' 'GPL3' 'LGPL3' 'LGPL2.1' 'BSD')
 url='http://mpv.io'

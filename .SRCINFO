@@ -1,6 +1,6 @@
 pkgbase = mpv-build-git
 	pkgdesc = Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)
-	pkgver = v0.32.0.351.gb4c1554f7a
+	pkgver = v0.33.0.37.gbff5416dae
 	pkgrel = 1
 	url = http://mpv.io
 	arch = x86_64
@@ -52,6 +52,7 @@ pkgbase = mpv-build-git
 	depends = uchardet
 	depends = v4l-utils
 	depends = vulkan-icd-loader
+	depends = zimg
 	depends = vapoursynth
 	depends = avisynthplus-git
 	optdepends = nvidia-utils: for hardware accelerated video decoding with CUDA
