@@ -10,7 +10,7 @@ url="https://github.com/robbert-vdh/yabridge"
 license=('GPL3')
 depends=('wine' 'boost'  'libxcb' 'lib32-boost-libs>=1.72.0' 'lib32-libxcb')
 optdepends=('yabridgectl: utility for setting up and managing yabridge')
-makedepends=('wine<6.0' 'meson' 'ninja')
+makedepends=('meson' 'ninja')
 options=('!strip')
 install=yabridge.install
 source=("https://github.com/robbert-vdh/yabridge/archive/$pkgver.tar.gz")
