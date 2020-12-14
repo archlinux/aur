@@ -1,6 +1,6 @@
 pkgbase = j9-git
 	pkgdesc = J is a modern, high-level, general-purpose, high-performance programming language
-	pkgver = 9.02.03.20200604
+	pkgver = 9.02.03.20201214
 	pkgrel = 1
 	url = http://www.jsoftware.com
 	install = j9-git.install

@@ -1,7 +1,8 @@
+# Maintainer: Andriy Mykhaylyk <erp dot lsf at gmail dot com>
 # Maintainer: Lorenzo Tomei <tomeil@tiscali.it>
 
 pkgname=j9-git
-pkgver=9.02.03.20200604
+pkgver=9.02.03.20201214
 pkgrel=1
 pkgdesc='J is a modern, high-level, general-purpose, high-performance programming language'
 arch=('x86_64')
@@ -31,14 +32,10 @@ echo '#define jplatform "linux"' >> jsrc/jversion.h
 echo '#define jtype "build"' >> jsrc/jversion.h
 echo '#define jlicense "GPL3"' >> jsrc/jversion.h
 echo '#define jbuilder "www.jsoftware.com"' >> jsrc/jversion.h
-sed -i "s@jgit=~/git/jsource@jgit=${srcdir}/jsource-master@" make/jvars.sh
-sed -i "s@jbld=~/jbld@jbld=${srcdir}/jsource-master/jbld@" make/jvars.sh
-sed -i "s@cd ~@cd ${srcdir}/jsource-master@" make/build_jconsole.sh
-sed -i "s@-l:libedit.so.2@-ledit@" make/build_jconsole.sh
-sed -i "s@cd ~@cd ${srcdir}/jsource-master@" make/build_libj.sh
-sed -i "s@-mavx -DC_AVX=1@-mavx -march=native -DC_AVX=1@" make/build_libj.sh
-sed -i "s@cd ~@cd ${srcdir}/jsource-master@" make/domake.sh
-sed -i "s@else if(_isnan(@// else if(_isnan(@" jsrc/f2.c
+sed -i "s@-Werror@-Werror -Wno-return-local-add@" make2/build_jnative.sh 
+sed -i "s@-Werror@-Werror -Wno-return-local-add@" make2/build_libj.sh 
+sed -i "s@-Werror@-Werror -Wno-return-local-add@" make2/build_tsdll.sh 
+sed -i "s@-Werror@-Werror -Wno-return-local-add@" make2/build_jconsole.sh 
 cd ${srcdir}/qtide-master
 sed -i "s@#include <QPainter>@#include <QPainter>\n#include <QPainterPath>@" lib/wd/isigraph2.h
 }
@@ -46,13 +43,8 @@ sed -i "s@#include <QPainter>@#include <QPainter>\n#include <QPainterPath>@" lib
 build() {
 # jsource
 cd ${srcdir}/jsource-master
-rm -rf jbld
-mkdir -p jbld/jout
-mkdir jbld/j64
-cp -r jlibrary/* jbld/j64
-. make/jvars.sh
-make/build_jconsole.sh j64
-make/build_libj.sh j64
+make2/build_all.sh
+make2/cpbin.sh
 # qtide
 cd ${srcdir}/qtide-master/lib
 qmake && make
@@ -63,8 +55,9 @@ qmake && make
 package() {
 cd ${srcdir}
 cp -a jenv/* ${pkgdir}/
-cp -a jsource-master/jbld/j64/bin/jconsole ${pkgdir}/usr/lib/j9/bin/jconsole
-cp -a jsource-master/jbld/j64/bin/libj.so ${pkgdir}/usr/lib/j9/bin/libj.so
+cp -a jsource-master/jlibrary/bin/jconsole ${pkgdir}/usr/lib/j9/bin/jconsole
+cp -a jsource-master/jlibrary/bin/libj.so ${pkgdir}/usr/lib/j9/bin/libj.so
+cp -a jsource-master/jlibrary/bin/libtsdll.so ${pkgdir}/usr/lib/j9/bin/libtsdll.so
 cp -a qtide-master/bin/linux-x86_64/release/*  ${pkgdir}/usr/lib/j9/bin/
 echo "${pkgname}-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.xz (Arch Linux package)" > ${pkgdir}/usr/lib/j9/bin/installer.txt
 }
