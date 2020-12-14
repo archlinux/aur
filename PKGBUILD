@@ -1,8 +1,8 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='waybackpy'
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc='Python package & command-line program that interfaces with the Internet Archives Wayback Machine API'
 arch=('any')
 url='https://github.com/akamhy/waybackpy'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('993c9406d9f9df3dd55302fd4cc256ecbf5dcf2e6c36085c2be7c262444e9002')
+sha256sums=('929a7c5b979c46de439ef6d4420f840c323111f36185f02d0bd6895b11f8ac45')
 
 build() {
   cd "${pkgname}-${pkgver}"
