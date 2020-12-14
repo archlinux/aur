@@ -1,7 +1,7 @@
 pkgbase = powerpill
 	pkgdesc = Pacman wrapper for faster downloads.
-	pkgver = 2020
-	pkgrel = 2
+	pkgver = 2020.12
+	pkgrel = 1
 	url = https://xyne.archlinux.ca/projects/powerpill
 	arch = any
 	license = GPL
@@ -15,13 +15,13 @@ pkgbase = powerpill
 	optdepends = reflector: Reflector and Rsync support
 	optdepends = rsync: Rsync download support
 	backup = etc/powerpill/powerpill.json
-	source = https://xyne.archlinux.ca/projects/powerpill/src/powerpill-2020.tar.xz
-	source = https://xyne.archlinux.ca/projects/powerpill/src/powerpill-2020.tar.xz.sig
+	source = https://xyne.archlinux.ca/projects/powerpill/src/powerpill-2020.12.tar.xz
+	source = https://xyne.archlinux.ca/projects/powerpill/src/powerpill-2020.12.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
-	md5sums = 7c9bd894bb7d9df741930f9e4486fc40
-	md5sums = 6be4c558bde8b2ba85745e2586982b2f
-	sha512sums = f53ba3dc5a4749916851df0b81054e12250aa1b4c83cf1fa504bee8a754a3b2f97cdaccff9a282d6ec323c4f4e2352c8acffa994b4e472e59b54a65054bac453
-	sha512sums = e1604646019603398ab79310a24abd9d4af147de7701abe237097993570779165174ad5578ebcdf98f470fac07e07b524915d91c0a6e1b8f100ec2e4b6c43a5e
+	md5sums = 2524ae1ec0d305a2e26700007aad52d6
+	md5sums = 7fb167ef1d9bef827b627f2a89e73aec
+	sha512sums = ebd422b9faf3611b88531a9667752e2cdd94ac676a9629a0198afff5ff2a084228e5611440e5ec570b1eea0c8b128e94a3b67a98653448de41717e4aedd3f65e
+	sha512sums = cd41f1f5c2101212aca29edca23260601fad124560dd741323faf32562b80942da4593db901072ea7a2a356a4a587a55f953524af162db66e03012c4fe4faaa2
 
 pkgname = powerpill
 
