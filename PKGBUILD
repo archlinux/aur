@@ -1,7 +1,7 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname=kodi-standalone-service
-pkgver=1.116
+pkgver=1.117
 pkgrel=1
 pkgdesc="Systemd services to run kodi in stand-alone mode without a DE"
 # Do NOT attempt to use this package on Arch ARM! This is only for x86_64.
@@ -18,7 +18,7 @@ optdepends=(
  'xorg-xinit: for kodi-x11.service'
 ) 
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/graysky2/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('8bbe4b11efb03e83d253ce600555b950f9ea72680148570c128399930334c50e8206279a1082302e05673647458afb683bb8653b3ef076fb233eb3f8f2528e47')
+b2sums=('bfe082ca1f734606d4602d9373f65282ff5ee3cec885d7b8e3fbb74499e9b108992156c723a0063e66261cbe1bc5117261f61db0bb039c48f351014bfc278fed')
 
 package() {
   cd "$pkgname-$pkgver"
@@ -27,6 +27,9 @@ package() {
   install -Dm644 init/kodi-wayland.service "$pkgdir/usr/lib/systemd/system/kodi-wayland.service"
   install -Dm644 init/sysusers.conf "$pkgdir/usr/lib/sysusers.d/kodi-standalone.conf"
   install -Dm644 init/tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/kodi-standalone.conf"
+
+  install -Dm0644 "$srcdir/polkit.rules" "$pkgdir/usr/share/polkit-1/rules.d/10-kodi.rules"
+  chmod 750 "$pkgdir/usr/share/polkit-1/rules.d/"
 }
 
 # vim:set ts=2 sw=2 et:
