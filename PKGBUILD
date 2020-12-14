@@ -4,7 +4,7 @@
 
 pkgbase=manjaro-asian-input-support
 pkgname=('ibus-input-support' 'fcitx-input-support' 'fcitx5-input-support')
-pkgver=2020.09
+pkgver=2020.12
 pkgrel=1
 arch=('any')
 url="https://gitlab.manjaro.org/packages/community/manjaro-asian-input-support"
@@ -33,6 +33,7 @@ conflicts=(
 
 package_ibus-input-support() {
 	pkgdesc='Asian input support for ibus'
+	depends=('ibus')
 	optdepends=(
 		'ibus-libpinyin: 中文 | Chinese'
 		'ibus-anthy: 日本語 | Japanese'
@@ -49,10 +50,10 @@ package_fcitx-input-support() {
 	pkgdesc='Asian input support for fcitx'
 	depends=(
 		'fcitx-qt5'        # QT input module
-		'fcitx-configtool' # gui configuration tool
 	)
 	optdepends=(
 		#'fcitx-qt4: required by some closed source Chinese IMEs'
+		'fcitx-configtool: GUI configuration tool'
 		'kcm-fcitx: KDE configuration module'
 		'fcitx-googlepinyin: 中文 | Chinese'
 		'fcitx-cloudpinyin: 云拼音 | Use internet resources to provide candidate input for Chinese'
@@ -73,7 +74,7 @@ package_fcitx5-input-support() {
 		'fcitx5-gtk' # GTK input module
 	)
 	optdepends=(
-		'kcm-fcitx5: KDE configuration module'
+		'fcitx5-configtool: Configuration tool based on Qt5'
 		'fcitx5-chinese-addons: 简体中文 | Simplified Chinese'
 		'fcitx5-rime: 繁體中文 | Traditional Chinese'
 		'fcitx5-anthy: 日本語 | Japanese'
