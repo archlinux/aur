@@ -3,9 +3,9 @@
 
 
 # Things that need to be updated on new build
-pkgver=1.19.0
-sha256sums_x86_64=(ac604ad74847a947019a946c89fceae3a4698476fae0df61d0757e031afaeee9)
-pkgrel=5
+pkgver=1.20.0
+sha256sums_x86_64=(bae79a075ee5f03a661c3d3e9ea40b8e08aea4977d66deea9a99279ba7bb59e1)
+pkgrel=1
 
 # Things that will stay the same
 pkgname=crio-bin
