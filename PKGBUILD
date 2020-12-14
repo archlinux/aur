@@ -2,10 +2,11 @@
 # Contributor: Hugo Osvaldo Barrera <hugo at osvaldobarrera dot com dot ar>
 
 pkgname=hybrid-encoder
-pkgver=20200802
+pkgver=20201213
 pkgrel=1
 pkgdesc="A very complete gui for video encoding"
 arch=('x86_64')
+options=(!strip)
 license=('custom')
 depends=('framecounter' 'freetype2' 'glib2' 'openssl' 'qt5-multimedia')
 optdepends=('aften: support for AC-3 audio encoding'
@@ -46,7 +47,7 @@ package() {
   install -D -m644 Hybrid.png "${pkgdir}"/usr/share/pixmaps/Hybrid.png
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-md5sums_x86_64=('b4b81032bd0d5385363a421743ad071e'
+md5sums_x86_64=('7709ba0899f4f228bb8ff7068b0eeb9a'
                 'dd87c6eb6df85049de38c61dfe400347'
                 '798dd936a3bc9bcd3b131d5dd6db96e6'
                 '1fd2ac133744f86e25fd680d14aed2b4')
