@@ -1,7 +1,7 @@
 pkgbase = todoist-nativefier
 	pkgdesc = The to do list to organize work & life
 	pkgver = 2020.04.05
-	pkgrel = 2
+	pkgrel = 3
 	url = https://todoist.com
 	arch = any
 	license = MIT
