@@ -1,0 +1,49 @@
+diff --git a/plugins/impex/qimageio/krita_qimageio.desktop b/plugins/impex/qimageio/krita_qimageio.desktop
+index 19eed5abac..0a84eef41b 100644
+--- a/plugins/impex/qimageio/krita_qimageio.desktop
++++ b/plugins/impex/qimageio/krita_qimageio.desktop
+@@ -64,7 +64,7 @@ Name[x-test]=xxKritaxx
+ Name[zh_CN]=Krita
+ Name[zh_TW]=Krita
+ Exec=krita %F
+-MimeType=image/bmp;image/x-xpixmap;image/x-xbitmap;image/webp;image/vnd.microsoft.icon;image/x-portable-pixmap;image/x-portable-graymap;image/x-portable-bitmap;
++MimeType=image/bmp;image/x-xpixmap;image/x-xbitmap;image/webp;image/vnd.microsoft.icon;image/x-portable-pixmap;image/x-portable-graymap;image/x-portable-bitmap;image/avif;
+ Type=Application
+ Icon=krita
+ Categories=Qt;KDE;Office;Graphics;
+diff --git a/plugins/impex/qimageio/krita_qimageio_export.json b/plugins/impex/qimageio/krita_qimageio_export.json
+index b7009943ef..f330dcb508 100644
+--- a/plugins/impex/qimageio/krita_qimageio_export.json
++++ b/plugins/impex/qimageio/krita_qimageio_export.json
+@@ -2,11 +2,11 @@
+     "Id": "Krita QImageIO Export Filter",
+     "NoDisplay": "true",
+     "Type": "Service",
+-    "X-KDE-Export": "image/bmp,image/x-xpixmap,image/x-xbitmap,image/webp,image/vnd.microsoft.icon,image/x-portable-pixmap,image/x-portable-graymap,image/x-portable-bitmap",
++    "X-KDE-Export": "image/bmp,image/x-xpixmap,image/x-xbitmap,image/webp,image/vnd.microsoft.icon,image/x-portable-pixmap,image/x-portable-graymap,image/x-portable-bitmap,image/avif",
+     "X-KDE-Library": "kritaqimageioexport",
+     "X-KDE-ServiceTypes": [
+         "Krita/FileFilter"
+     ],
+     "X-KDE-Weight": "1",
+-    "X-KDE-Extensions" : "bmp,xpm,xbm,ico,webp,ppm"
++    "X-KDE-Extensions" : "bmp,xpm,xbm,ico,webp,ppm,avif"
+ }
+diff --git a/plugins/impex/qimageio/krita_qimageio_import.json b/plugins/impex/qimageio/krita_qimageio_import.json
+index 9fe6cd908f..1022b5ed7d 100644
+--- a/plugins/impex/qimageio/krita_qimageio_import.json
++++ b/plugins/impex/qimageio/krita_qimageio_import.json
+@@ -2,11 +2,11 @@
+     "Id": "Krita QImageIO Import Filter",
+     "NoDisplay": "true",
+     "Type": "Service",
+-    "X-KDE-Import": "image/bmp,image/x-xpixmap,image/x-xbitmap,image/webp,image/vnd.microsoft.icon,image/x-portable-pixmap,image/x-portable-graymap,image/x-portable-bitmap",
++    "X-KDE-Import": "image/bmp,image/x-xpixmap,image/x-xbitmap,image/webp,image/vnd.microsoft.icon,image/x-portable-pixmap,image/x-portable-graymap,image/x-portable-bitmap,image/avif",
+     "X-KDE-Library": "kritaqimageioimport",
+     "X-KDE-ServiceTypes": [
+         "Krita/FileFilter"
+     ],
+     "X-KDE-Weight": "1",
+-    "X-KDE-Extensions" : "bmp,webp,xbm,ico,ppm"
++    "X-KDE-Extensions" : "bmp,webp,xbm,ico,ppm,avif"
+ }
