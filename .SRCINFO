@@ -1,4 +1,4 @@
-pkgbase = autovpn
+pkgbase = autovpn-git
 	pkgdesc = Easily connect to a VPN in a country of your choice.
 	pkgver = r20.a2d4278
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = autovpn
 	source = git+https://github.com/scry3r/autovpn.git
 	sha256sums = SKIP
 
-pkgname = autovpn
+pkgname = autovpn-git
