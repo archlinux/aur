@@ -1,7 +1,7 @@
 pkgbase = gmailieer
 	pkgdesc = Fast fetch and two-way tag synchronization between notmuch and GMail
-	pkgver = 1.2
-	pkgrel = 1
+	pkgver = 1.3
+	pkgrel = 2
 	url = https://github.com/gauteh/lieer
 	arch = any
 	license = GPL3
@@ -9,8 +9,8 @@ pkgbase = gmailieer
 	depends = python-oauth2client
 	depends = python-google-api-python-client
 	depends = python-tqdm
-	source = https://github.com/gauteh/lieer/archive/v1.2/lieer-v1.2.tar.gz
-	sha512sums = 04465b40d18ee5e8a09d09c3b174b7a7342544f74adea5a3254e2d48904bb40b094709197b96f02541bae9d876f8896d415d2525fe97e66e5e6dbb36049d7f3b
+	source = https://github.com/gauteh/lieer/archive/v1.3/lieer-v1.3.tar.gz
+	sha512sums = afebbce453b895937118a3015786ad403356cb1b18dcde7f5f5cf76b89e61baa5a452b70d3518653cf3113de5a308b39a167d0f50bb517c9d1b3e3610824eb62
 
 pkgname = gmailieer
 

@@ -3,7 +3,7 @@
 pkgname=gmailieer
 _pkgname=lieer
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast fetch and two-way tag synchronization between notmuch and GMail'
 arch=('any')
 url=https://github.com/gauteh/${_pkgname}
