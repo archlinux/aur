@@ -1,7 +1,7 @@
 pkgbase = overseerr-git
 	pkgdesc = Request management and media discovery tool for the Plex ecosystem
 	pkgver = r301.92c9001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sct/overseerr
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = overseerr-git
 	provides = overseerr
 	conflicts = overseerr
 	options = !strip
+	backup = etc/conf.d/overseerr
 	source = overseerr::git+https://github.com/sct/overseerr
 	source = overseerr.sysusers
 	source = overseerr.tmpfiles

@@ -2,7 +2,7 @@
 
 pkgname=overseerr-git
 pkgver=r301.92c9001
-pkgrel=1
+pkgrel=2
 pkgdesc='Request management and media discovery tool for the Plex ecosystem'
 arch=('x86_64')
 url='https://github.com/sct/overseerr'
@@ -12,6 +12,7 @@ makedepends=('git')
 provides=('overseerr')
 conflicts=('overseerr')
 options=('!strip')
+backup=('etc/conf.d/overseerr')
 source=("overseerr::git+https://github.com/sct/overseerr"
         'overseerr.sysusers'
         'overseerr.tmpfiles'
