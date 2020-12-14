@@ -44,7 +44,8 @@ build() {
     --prefix=/usr \
     --libdir=/usr/lib32 \
     --with-spirv-tools \
-    --enable-tests=no
+    --enable-tests=no \
+    --disable-doxygen-doc
 
   make
 }
