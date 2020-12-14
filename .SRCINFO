@@ -1,0 +1,15 @@
+pkgbase = dmenu-vojvoda-git
+	pkgdesc = My build of dmenu
+	pkgver = 5.0.r.
+	pkgrel = 1
+	url = https://gitlab.com/vojjvoda/dmenu
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	depends = nerd-fonts-mononoki
+	provides = dmenu
+	conflicts = dmenu
+	source = git+https://gitlab.com/vojjvoda/dmenu
+	md5sums = SKIP
+
+pkgname = dmenu-vojvoda-git
