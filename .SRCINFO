@@ -1,6 +1,6 @@
 pkgbase = libretro-mame2015-git
 	pkgdesc = Late 2014/Early 2015 version of MAME (0.160-ish) for libretro. Compatible with MAME 0.160 romsets (Arcade)
-	pkgver = 35233.37333ed6fd
+	pkgver = 35245.2c1c121842
 	pkgrel = 1
 	url = https://github.com/libretro/mame2015-libretro
 	arch = i686
