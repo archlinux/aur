@@ -1,33 +1,33 @@
 pkgbase = linux-lts-versioned-bin
 	pkgdesc = Repackaging of the Arch kernel with a unique package name for each version
-	pkgver = 5.4.82
+	pkgver = 5.4.83
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
 	options = !strip
-	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-lts-5.4.82-1-x86_64.pkg.tar.zst
-	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-lts-headers-5.4.82-1-x86_64.pkg.tar.zst
-	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-lts-docs-5.4.82-1-x86_64.pkg.tar.zst
-	sha256sums = 141ad8fe07ccd0fec161f7f9a88aa4c6ccd020e4cc402b7bd0d11f8a6c45a99b
-	sha256sums = 1c45a71e5a67151a0ebf8f24f902aa3d6b68d882424b8bbf1d563c8d75282a8c
-	sha256sums = dffd8471c5fc009e077b07d0eac72fed2569273edb8aa54f8f09712b3ee7bb00
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-lts-5.4.83-1-x86_64.pkg.tar.zst
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-lts-headers-5.4.83-1-x86_64.pkg.tar.zst
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-lts-docs-5.4.83-1-x86_64.pkg.tar.zst
+	sha256sums = f24fe504dcfc79eb91782cfd26cc3a5c748219985102744ffce71d9ab0430da0
+	sha256sums = 048131fee8c2c6386ec8a1de88f541a8b28ff99ebc4863d137b586777e959917
+	sha256sums = 46c4524a0f9379cbf521d4bff921b0a62a4588282f339c7fd5ed385f15f76c26
 
 pkgname = linux-lts-versioned-bin
-	pkgdesc = Dummy package depending on linux5.4.82-1-lts-bin
-	depends = linux5.4.82-1-lts-bin
+	pkgdesc = Dummy package depending on linux5.4.83-1-lts-bin
+	depends = linux5.4.83-1-lts-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-lts-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.4.82-1-lts-headers-bin
-	depends = linux5.4.82-1-lts-headers-bin
+	pkgdesc = Dummy package depending on linux5.4.83-1-lts-headers-bin
+	depends = linux5.4.83-1-lts-headers-bin
 
 pkgname = linux-lts-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.4.82-1-lts-docs-bin
-	depends = linux5.4.82-1-lts-docs-bin
+	pkgdesc = Dummy package depending on linux5.4.83-1-lts-docs-bin
+	depends = linux5.4.83-1-lts-docs-bin
 
-pkgname = linux5.4.82-1-lts-bin
-	pkgdesc = The Linux kernel and modules, version 5.4.82-1-lts
+pkgname = linux5.4.83-1-lts-bin
+	pkgdesc = The Linux kernel and modules, version 5.4.83-1-lts
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -35,11 +35,11 @@ pkgname = linux5.4.82-1-lts-bin
 	optdepends = linux-firmware: firmware images needed for some devices
 	conflicts = linux-lts
 
-pkgname = linux5.4.82-1-lts-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.4.82-1-lts
+pkgname = linux5.4.83-1-lts-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.4.83-1-lts
 	conflicts = linux-lts-headers
 
-pkgname = linux5.4.82-1-lts-docs-bin
-	pkgdesc = Documentation for the Linux kernel 5.4.82-1-lts
+pkgname = linux5.4.83-1-lts-docs-bin
+	pkgdesc = Documentation for the Linux kernel 5.4.83-1-lts
 	conflicts = linux-lts-docs
 
