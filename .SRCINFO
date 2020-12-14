@@ -1,6 +1,6 @@
 pkgbase = libretro-vecx-git
 	pkgdesc = libretro implementation of vecx (Vectrex)
-	pkgver = 153.309f485
+	pkgver = 163.f38e65f
 	pkgrel = 1
 	url = https://github.com/libretro/libretro-vecx
 	arch = i686

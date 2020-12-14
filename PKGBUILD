@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-vecx-git
-pkgver=153.309f485
+pkgver=163.f38e65f
 pkgrel=1
 pkgdesc="libretro implementation of vecx (Vectrex)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
