@@ -4,7 +4,7 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=2.4.11
+pkgver=2.4.13
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -12,13 +12,15 @@ url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
          'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'qt5-wayland' 'gtk3')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libwebrtc')
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt'
+             'libxcb')
 optdepends=('ttf-opensans: default Open Sans font family')
 
 provides=(telegram-desktop)
 conflicts=(telegram-desktop)
-_commit="tag=v$pkgver"
-#_commit="commit=COMMIT_SHA1"
+#_commit="tag=v$pkgver"
+# 2.4.13 with proper XCB libs resolution
+_commit="commit=3297bdadb564da8143dabae46b53e35e126b41fa"
 
 # All the sources are Git repositories and might be adjusted when a build issue arise.
 # These files might require modifications to be up-to-date.
@@ -160,7 +162,6 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=611335 \
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c \
-        -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME=ON \
         -DTDESKTOP_LAUNCHER_BASENAME="telegram-desktop" \
         -DDESKTOP_APP_SPECIAL_TARGET=""
     ninja -C build
