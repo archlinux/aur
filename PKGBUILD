@@ -15,6 +15,7 @@ url='https://www.asterisk.org'
 license=('GPL')
 depends=('alsa-lib'
          'curl'
+         'imap'
          'jansson'
          'libedit'
          'libvorbis'
@@ -45,11 +46,16 @@ sha256sums=('cc12f6c228243fb736d0aa23f3ce11adf7be5c5b02ed1ca080db76605cb602df'
 
 build() {
   cd "$pkgname-$pkgver"
+
+  # Work around Cyrus bug #2629
+  export LDFLAGS="${LDFLAGS/,--as-needed}"
+
   ./configure \
       --prefix=/usr \
       --sysconfdir=/etc \
       --localstatedir=/var \
-      --sbindir=/usr/bin
+      --sbindir=/usr/bin \
+      --with-imap=system
   make menuselect.makeopts
   ./menuselect/menuselect --disable BUILD_NATIVE
   make
