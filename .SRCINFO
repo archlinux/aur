@@ -1,0 +1,24 @@
+pkgbase = greenflare
+	pkgdesc = A light weight SEO web crawler an analysis tool
+	pkgver = 0.97
+	pkgrel = 1
+	url = https://github.com/beb7/gflare-tk
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	depends = python
+	depends = tcl
+	depends = tk
+	depends = python-lxml
+	depends = python-requests
+	depends = python-cssselect
+	depends = python-pillow
+	depends = python-packaging
+	depends = python-ua-parser
+	optdepends = python-ttkthemes: modern gui theme support
+	conflicts = greenflare-git
+	source = greenflare-0.97.tar.gz::https://github.com/beb7/gflare-tk/archive/0.97.tar.gz
+	sha256sums = 0cb82de99d6bdde8a12d692f7cddde5379680629840286a77528777c59985f62
+
+pkgname = greenflare
+
