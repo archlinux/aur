@@ -1,6 +1,6 @@
 pkgbase = audacious-plugins-git
 	pkgdesc = Plugins for Audacious (git version)
-	pkgver = 4.0.beta1.r215.g6d8a86d3d
+	pkgver = 4.0.beta1.r265.gffa26ceb1
 	pkgrel = 1
 	epoch = 1
 	url = https://audacious-media-player.org/
