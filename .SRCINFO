@@ -1,0 +1,16 @@
+pkgbase = excrypt
+	pkgdesc = Unix AES password manager
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://gitlab.com/artshellorok/xcrypt.git
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = openssl
+	depends = json-c
+	source = git+https://gitlab.com/artshellorok/xcrypt.git
+	sha1sums = SKIP
+
+pkgname = excrypt
+
