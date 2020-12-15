@@ -3,7 +3,7 @@
 
 pkgname=whatweb-git
 _name=whatweb
-pkgver=0.5.3.r28.4257078b
+pkgver=0.5.4.r0.36d284bf
 pkgrel=1
 pkgdesc="Next generation web scanner that identifies what websites are running."
 arch=('i686' 'x86_64')
