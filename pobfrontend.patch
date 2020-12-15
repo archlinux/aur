@@ -1,5 +1,5 @@
 diff --git a/main.cpp b/main.cpp
-index 5c0f49b..3841bbc 100644
+index 69accac..c33c19c 100644
 --- a/main.cpp
 +++ b/main.cpp
 @@ -525,7 +525,7 @@ static int l_imgHandleIsValid(lua_State* L)
@@ -24,9 +24,9 @@ index 5c0f49b..3841bbc 100644
  
  DrawStringCmd::DrawStringCmd(float X, float Y, int Align, int Size, int Font, const char *Text) : text(Text) {
      dscount++;
--    if (text[0] == '^') {
+-    if (text.size() >= 2 && text[0] == '^') {
 -        switch(text[1].toLatin1()) {
-+    if (Text[0] == '^') {
++    if (Text[0] == '^' && Text[1] != '\0') {
 +        switch(Text[1]) {
          case '0':
              setCol(0.0f, 0.0f, 0.0f);
