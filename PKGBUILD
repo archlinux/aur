@@ -42,10 +42,6 @@ build() {
     "$srcdir/${pkgname%-*}"
   cmake --build . --parallel "$(nproc)"
  }
- 
-package() {
-	DESTDIR="$pkgdir" cmake --install $srcdir/${pkgname%-*}/cmake_build
-}
 
  package() {
   cd "$srcdir/build" || exit 1
