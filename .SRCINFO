@@ -1,6 +1,6 @@
 pkgbase = l-band-decoders-git
 	pkgdesc = Small experimental project aimed at decoding various (HRPT) satellites such as Metop and FengYun
-	pkgver = r79.09c71f7
+	pkgver = r99.a5b6b00
 	pkgrel = 1
 	url = https://github.com/altillimity/L-Band-Decoders
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = l-band-decoders-git
 	makedepends = libpng
 	makedepends = zlib
 	makedepends = tclap
-	makedepends = libccsds-git>r8
+	makedepends = libccsds-git>=r9.bfa393e
 	makedepends = libfec-git
 	makedepends = git
 	conflicts = satellite-decoders
