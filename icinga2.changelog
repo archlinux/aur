@@ -1,3 +1,8 @@
+2.12.3-1
+  - New upstream version 2.12.3
+  - Security: Fix that revoked certificates due for renewal will automatically
+    be renewed ignoring the CRL (CVE-2020-29663)
+
 2.12.2-2
   - Fix build with boost 1.74
 
