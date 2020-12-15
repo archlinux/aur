@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-tf2-msgs
 	pkgdesc = ROS - tf2_msgs.
 	pkgver = 0.6.5
-	pkgrel = 2
+	pkgrel = 1
 	url = https://www.wiki.ros.org/tf2_msgs
 	arch = any
 	license = BSD
