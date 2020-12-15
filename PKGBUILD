@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=gfold-bin
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="CLI tool to help keep track of Git repositories"
 arch=('x86_64')
@@ -12,8 +12,8 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/$pkgver/${pkgname%-bin}-linux-gnu-amd64"
                "$pkgname-$pkgver-README.md::$url/raw/$pkgver/README.md")
-sha512sums_x86_64=('04e64af6368c4c56ea7322a1e28dc80d4f9956cff15ddd998507d15f680ae54c43dfc46847e0ef1fc7a2c9bba0bb6a274b45aa14446018f6711264352698b4d2'
-                   'be6e6ae68aec58494344e4f7554ef2bbe80735066f8e43d0d1de570df88b5f13cdcbc0a285687f81648974424bb041157866e4009f80023ba2f089d2aa5edf04')
+sha512sums_x86_64=('4b538273c2a38bd4acb80c667336f9ba1754c4ceb3f94d7b7af1fd60b0ba3cb0d2780496572b12b1cde89267b0be42604175cc05181fa0b48ae5fc55001923a6'
+                   '9c6948e49f95d782cb4fa433f334c329173997bbe9689794f4716b6462ca96b593933d8be94511dafe954a8cfbf88337b916ca8caf4a3276981b61ddf480fd81')
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "${pkgdir}/usr/bin/${pkgname%-bin}"
