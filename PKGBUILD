@@ -2,10 +2,10 @@
 
 pkgname=sourcetrail
 _pkgname=Sourcetrail
-pkgver=2020.2.43
+pkgver=2020.4.32
 _pkgver=${pkgver/\./\_}
 _pkgver=${_pkgver/\./\_}
-pkgrel=2
+pkgrel=1
 pkgdesc='A cross-platform source explorer for C/C++ and Java'
 arch=('x86_64')
 url='https://www.sourcetrail.com'
@@ -19,7 +19,7 @@ options=(!strip)
 _url="https://github.com/CoatiSoftware/Sourcetrail/releases/download"
 source=("${pkgname}-${pkgver}.tar.gz::${_url}/${pkgver}/${_pkgname}_${_pkgver}_Linux_64bit.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('d042dfaf34db1719fa09761f978dd8fa42a9b9ee3a97a9c5db70b1346a06f07d'
+sha256sums=('dfdffeda727c63b98c354f5dc24dd8815f604ee639d3ccab89803d5f55e13327'
             '34d978813c1bba26ed243b15af11ea22800c5d95e4acc430496025d4caf4cc71')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 
