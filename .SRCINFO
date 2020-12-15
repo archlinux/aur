@@ -1,18 +1,15 @@
 pkgbase = cxo
 	pkgdesc = CX Object Storage System for the Skycoin Blockchain
 	pkgver = 3.1.0
-	pkgrel = 4
-	url = https://github.com/skycoinproject/cxo
+	pkgrel = 5
+	url = https://
 	arch = any
 	makedepends = go
 	makedepends = dep
-	makedepends = skycoin-keyring
-	source = https://github.com/skycoinproject/cxo/archive/v3.1.0.tar.gz
-	source = PKGBUILD.sig
-	validpgpkeys = DE08F924EEE93832DABC642CA8DC761B1C0C0CFC
-	validpgpkeys = 98F934F04F9334B81DFA3398913BBD5206B19620
+	makedepends = musl
+	makedepends = kernel-headers-musl
+	source = https://github.com/skycoin/cxo/archive/v3.1.0.tar.gz
 	sha256sums = e4fc5221d89b0f548a0093c944829c0b3e94f96efcc339effc5fea34f4accbd3
-	sha256sums = SKIP
 
 pkgname = cxo
 	options = !strip
