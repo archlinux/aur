@@ -20,7 +20,7 @@ sha1sums=("a46b1405c348cd9297c6f0b7e50863641ca66189"
 prepare() {
 	find . -type f -name ${_pkgname}*$pkgver*.deb -exec bsdtar -xJf {} \; &&
 	[[ -e data.tar.xz ]] && bsdtar -xf data.tar.xz &&
-	install -Dv ibpkcs11wrapper.so $srcdir/usr/lib/ &&
+	install -Dv libpkcs11wrapper.so $srcdir/usr/lib/ &&
 	install -Dv Info.plist.xml $srcdir/usr/lib/Info.plist &&
 	mv  $srcdir/usr/share/doc/akis/copyright $srcdir/usr/share/doc/akis/LICENSE
 	
