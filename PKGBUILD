@@ -16,7 +16,6 @@ source=("https://rayp.adalet.gov.tr/resimler/2/dosya/uyap-pardus02-12-202012-08-
 sha1sums=("64aa327e4fc54fad61f6f3033780c4295d7c7c6e")
 
 prepare() {
-	find . -type f -name $_pkgname*$pkgver*.deb
 	find . -type f -name $_pkgname*$pkgver*.deb -exec bsdtar -xf {} \; &&
 	[[ -e $srcdir/data.tar.xz ]] &&
 	bsdtar -xf $srcdir/data.tar.xz
