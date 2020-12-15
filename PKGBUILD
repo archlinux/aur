@@ -63,8 +63,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-bcachefs-ck
-pkgver=5.9.11
-_pkgverpntrel=11
+pkgver=5.9.14
+_pkgverpntrel=14
 pkgrel=1
 _ckpatchversion=1
 _cpusched="MuQSS"
@@ -103,7 +103,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-md5sums=('530543935698468bf30dfacd4a20d84f'
+md5sums=('4727d38ee292c83c230a30a1db067983'
          'SKIP'
          'acaec169590211b789b7873145f84564'
          'a4eb432da721ad9a721d62a8bbed6d1d'
@@ -509,7 +509,7 @@ _package() {
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for ${pkgbase/linux/Linux} kernel"
   depends=('linux-bcachefs-ck') # added to keep kernel and headers packages matched
-  provides=("linux-bcachefs-ck-headers=${pkgver}" "linux-headers=${pkgver}")
+  provides=("linux-bcachefs-ck-headers=${pkgver}")
   #groups=('ck-generic')
 
   cd linux-${pkgver}
