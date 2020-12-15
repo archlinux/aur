@@ -1,0 +1,18 @@
+pkgbase = catia-git
+	pkgdesc = Catia is a nice and simple JACK Patchbay, with integrated JACK Transport.
+	pkgver = r1062.78b0307
+	pkgrel = 1
+	url = https://kx.studio/Applications:Catia
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = python-pyqt5
+	optdepends = a2jmidid: A daemon for exposing legacy ALSA sequencer applications in JACK MIDI system.
+	provides = catia
+	conflicts = catia
+	conflicts = cadence
+	source = catia::git+https://github.com/falkTX/Catia
+	sha512sums = SKIP
+
+pkgname = catia-git
+
