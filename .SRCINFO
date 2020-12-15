@@ -1,6 +1,6 @@
 pkgbase = sagemath-git
 	pkgdesc = Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab
-	pkgver = 9.3.beta3.r0.gca088c9c93
+	pkgver = 9.3.beta3.r221.g0f32a15ce1
 	pkgrel = 1
 	url = http://www.sagemath.org
 	arch = x86_64
@@ -97,14 +97,12 @@ pkgbase = sagemath-git
 	source = latte-count.patch
 	source = test-optional.patch
 	source = sagemath-singular-4.1.2.patch
-	source = sagemath-gap-4.11.patch
 	source = sagemath-pari-2.13.patch
 	sha256sums = SKIP
 	sha256sums = 4fb46b12b5ee5e5bde87f646dc69a7b8929886be247e2d9a9ae1f12efbe5b580
 	sha256sums = af922e1f978821a9a1f6c9a56130d71e5011c84a7aee7bf66a591bee658af30b
 	sha256sums = 7da0dbcda15a327c21dc33853cb8f98cb86a283139f8735e3b20a71d49458a88
 	sha256sums = e6ce1829347fa588096cd975c5d607ae8d32d407f0bab2cdadd13e1bfb99494d
-	sha256sums = 34f06f9776f84f6998b1350555316e0ffea76ed16e149916970f19ef750a467f
 	sha256sums = 42cf51e79a9bb1407eda21079797de6d5c1109c063e325d1290c8b21d3217a46
 
 pkgname = sagemath-git
@@ -144,6 +142,6 @@ pkgname = sagemath-jupyter-git
 	depends = sagemath
 	depends = python-jupyter_client
 	depends = python-ipywidgets
+	depends = jupyter-jsmol
 	optdepends = sage-notebook-exporter: convert flask notebooks to Jupyter
-	optdepends = jsmol: alternative 3D plot engine
 

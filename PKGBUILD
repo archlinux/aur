@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.3.beta3.r0.gca088c9c93
+pkgver=9.3.beta3.r221.g0f32a15ce1
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -40,14 +40,12 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         latte-count.patch
         test-optional.patch
         sagemath-singular-4.1.2.patch
-        sagemath-gap-4.11.patch
         sagemath-pari-2.13.patch)
 sha256sums=('SKIP'
             '4fb46b12b5ee5e5bde87f646dc69a7b8929886be247e2d9a9ae1f12efbe5b580'
             'af922e1f978821a9a1f6c9a56130d71e5011c84a7aee7bf66a591bee658af30b'
             '7da0dbcda15a327c21dc33853cb8f98cb86a283139f8735e3b20a71d49458a88'
             'e6ce1829347fa588096cd975c5d607ae8d32d407f0bab2cdadd13e1bfb99494d'
-            '34f06f9776f84f6998b1350555316e0ffea76ed16e149916970f19ef750a467f'
             '42cf51e79a9bb1407eda21079797de6d5c1109c063e325d1290c8b21d3217a46')
 
 pkgver() {
@@ -57,13 +55,10 @@ pkgver() {
 
 prepare(){
   cd sage
-  sed -e '/sage-env/d' -i src/setup.py # Don't try to install sage-env
 
 # Upstream patches
 # Fixes for singular 4.1.2 https://trac.sagemath.org/ticket/25993
   patch -p1 -i ../sagemath-singular-4.1.2.patch
-# Fix gap.version() and doctests with GAP 4.11 https://trac.sagemath.org/ticket/29314
-  patch -p1 -i ../sagemath-gap-4.11.patch
 # Port to PARI 2.13 https://trac.sagemath.org/ticket/30801
   patch -p1 -i ../sagemath-pari-2.13.patch
 
@@ -93,20 +88,16 @@ package_sagemath-git() {
   cd sage/src
   python setup.py install --root="$pkgdir" --optimize=1
 
-  _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
 # Remove sage_setup
-  rm -r "$pkgdir"/$_pythonpath/sage_setup
-# Install tests
-  cp -r sage/doctest/tests "$pkgdir"/$_pythonpath/sage/doctest
-  cp -r sage/tests/books "$pkgdir"/$_pythonpath/sage/tests
+  rm -r "$pkgdir"/usr/lib/python*/site-packages/sage_setup
 # Split jupyter kernel
   rm -r "$pkgdir"/usr/share
 }
 
 package_sagemath-jupyter-git() {
   pkgdesc='Jupyter kernel for SageMath'
-  depends=(sagemath python-jupyter_client python-ipywidgets)
-  optdepends=('sage-notebook-exporter: convert flask notebooks to Jupyter' 'jsmol: alternative 3D plot engine')
+  depends=(sagemath python-jupyter_client python-ipywidgets jupyter-jsmol)
+  optdepends=('sage-notebook-exporter: convert flask notebooks to Jupyter')
 
   cd sage/src
 
