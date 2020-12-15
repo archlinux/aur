@@ -9,7 +9,7 @@ url="https://uyap.gov.tr/UYAP-Editor"
 license=("custom")
 depends=("pcsclite" "jre11-openjdk")
 optdepends=("akia: sign UYAP documents"
-	    "jre=8: sign UYAP documents")
+	    "jre8: sign UYAP documents")
 provides=("$_pkgname=$pkgver")
 conflicts=("uyap")
 source=("https://rayp.adalet.gov.tr/resimler/2/dosya/uyap-pardus02-12-202012-08-pm.zip")

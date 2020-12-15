@@ -8,7 +8,7 @@ pkgbase = uyapeditor-bin
 	depends = pcsclite
 	depends = jre11-openjdk
 	optdepends = akia: sign UYAP documents
-	optdepends = jre=8: sign UYAP documents
+	optdepends = jre8: sign UYAP documents
 	provides = uyapeditor=5.0.1
 	conflicts = uyap
 	source = https://rayp.adalet.gov.tr/resimler/2/dosya/uyap-pardus02-12-202012-08-pm.zip
