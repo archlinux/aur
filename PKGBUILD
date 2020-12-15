@@ -1,20 +1,20 @@
-# Maintainer: AsamK <asamk ät gmx de>
+# Maintainer: asamk <asamk@gmx.de>
 
 pkgname=signal-cli
-pkgver=0.6.12
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Provides a commandline and dbus interface for secure Signal messaging."
 arch=('any')
 url="https://github.com/AsamK/signal-cli"
 license=('GPL3')
-depends=('java-runtime>=11' 'java-commons-logging' 'sh')
-makedepends=('java-environment>=11' 'gradle' 'asciidoc')
+depends=('java-runtime>=11' 'java-commons-logging' 'sh' 'libzkgroup')
+makedepends=('java-environment>=11' 'gradle' 'asciidoc' 'zip')
 source=("https://github.com/AsamK/${pkgname}/archive/v${pkgver}.tar.gz"
         "https://github.com/AsamK/${pkgname}/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc"
         "${pkgname}.sh"
         "${pkgname}.sysusers.conf"
         "${pkgname}.tmpfiles.conf")
-sha512sums=('ec00081a0135d1747b6705573155c3dbd5b1c1f0889ef44a6893323828c16ca2b832f91e5ffe2ca674090b59a72f37fb977d8e2b2ff8780678386c254246bb68'
+sha512sums=('4c19e5cf4dc564147e165b58dbfb02e482bfd0b3c757cf6cff178d20de02465ad1297a6d491add791217dbfdee90d0880ece4d8f77b9e75ffa20c82345c04a69'
             'SKIP'
             'f8d75536e1db3de0ca89c3edd5fe6e04d40f6edcbd899e3f80b4d175502a4e98ba49bcef443653bb17ab50bb6396cc2bb9b6838890337b887d25671fe096ba21'
             'b4db42e18c957edb274637eee1ea5feb5d5f94e16ff0ced63788c8285e0c31c17e5414c6b93b1c2a6ffacca4888b177d33d1878727780e9a0e937b323e332021'
@@ -26,6 +26,9 @@ build() {
 	cd "${pkgname}-${pkgver}"
 
 	GRADLE_USER_HOME="${srcdir}/.gradle" gradle --no-daemon installDist
+
+	# Remove the bundled libzkgroup.so so the system version is always used
+	zip -d build/install/signal-cli/lib/zkgroup-java-*.jar libzkgroup.so
 
 	cd man
 	make
