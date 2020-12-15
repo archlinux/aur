@@ -2,3 +2,4 @@
 /pkg
 /miktex
 *.pkg.tar.xz
+*.zst

@@ -1,6 +1,6 @@
 pkgbase = miktex-git
 	pkgdesc = a distribution of the TeX/LaTeX typesetting system
-	pkgver = 2.9.7250.r10.693e9c0d
+	pkgver = 20.11.r18.dbd6f6605
 	pkgrel = 1
 	url = https://miktex.org
 	arch = x86_64

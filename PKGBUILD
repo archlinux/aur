@@ -1,7 +1,7 @@
 # Maintainer: ccat3z <c0ldcat3z@gmail.com>
 
 pkgname=miktex-git
-pkgver=2.9.7250.r10.693e9c0d
+pkgver=20.11.r18.dbd6f6605
 pkgrel=1
 pkgdesc="a distribution of the TeX/LaTeX typesetting system"
 arch=('x86_64')
