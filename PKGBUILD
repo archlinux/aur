@@ -7,7 +7,7 @@
 # Contributor: heavysink <winstonwu91 at gmail>
 pkgname=wine-valve
 pkgver=5.13
-pkgrel=2
+pkgrel=4
 pkgdesc='A compatibility layer for running Windows programs (Valve version)'
 arch=('i686' 'x86_64')
 url='https://github.com/ValveSoftware/wine.git'
@@ -82,7 +82,7 @@ optdepends=(
 )
 options=('staticlibs')
 install="$pkgname.install"
-source=("https://github.com/ValveSoftware/wine/archive/experimental-wine-${pkgver}-shmem-20201209.tar.gz"
+source=("https://github.com/ValveSoftware/wine/archive/experimental-wine-${pkgver}-shmem-20201214.tar.gz"
         '30-win32-aliases.conf'
         'wine-binfmt.conf')
 
@@ -103,7 +103,7 @@ fi
 
 
 prepare() {
-    cd "wine-experimental-wine-${pkgver}-shmem-20201209/"
+    cd "wine-experimental-wine-${pkgver}-shmem-20201214/"
     
     # fix path of opencl headers
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
@@ -129,7 +129,7 @@ build() {
         mkdir "$pkgname"-64-build
         cd    "$pkgname"-64-build
         
-        ../"wine-experimental-wine-${pkgver}-shmem-20201209"/configure \
+        ../"wine-experimental-wine-${pkgver}-shmem-20201214"/configure \
                           --prefix='/usr' \
                           --libdir='/usr/lib' \
                           --with-x \
@@ -151,7 +151,7 @@ build() {
     
     cd "${srcdir}/${pkgname}"-32-build
     
-    ../"wine-experimental-wine-${pkgver}-shmem-20201209"/configure \
+    ../"wine-experimental-wine-${pkgver}-shmem-20201214"/configure \
                       --prefix='/usr' \
                       --with-x \
                       --with-gstreamer \
@@ -196,11 +196,11 @@ package() {
     install -D -m644 "${srcdir}/wine-binfmt.conf"   "${pkgdir}/usr/lib/binfmt.d/wine.conf"
 
     #wine list.h
-    for file in ${srcdir}/wine-experimental-wine-${pkgver}-shmem-20201209/include/wine/*.h; do
+    for file in ${srcdir}/wine-experimental-wine-${pkgver}-shmem-20201214/include/wine/*.h; do
         cp -n $file "${pkgdir}/usr/include/wine/"
     done
 }
 
-sha256sums=('e44db3313a4163cb903b291fccfba7ab96e5a84f6ee63745cb023f4d3eb16e2c'
+sha256sums=('42e060294458780ac84becbd9b6e85084afcee3abe22aa2296486ebc612be865'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
             '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4')
