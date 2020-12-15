@@ -4,7 +4,7 @@
 #      That is the only reason why this package ends on -git.
 
 pkgname=sickchill-git
-pkgver=2020.9.7.post4.r0
+pkgver=2020.11.24.post1.r0
 pkgrel=1
 pkgdesc="Automatic video library manager for TV shows"
 arch=('any')
@@ -24,9 +24,13 @@ md5sums=('309b8555af7b355f16a3ec784771f426'
          '97fb191af2e326d5aba2cf58270b4feb'
          '515f13e391105a716ef6763ba8533fc7')
 
+export PIP_DEFAULT_TIMEOUT=60
+
 pkgver() {
-  python -m venv pkgver
-  pkgver/bin/pip search "${pkgname%-git}" | awk '$1 == "'${pkgname%-git}'" { gsub("[()]", ""); print $2 ".r0" }'
+  #python -m venv pkgver
+  #pkgver/bin/pip search "${pkgname%-git}" | awk '$1 == "'${pkgname%-git}'" { gsub("[()]", ""); print $2 ".r0" }'
+
+  curl -s "https://pypi.org/search/?q=${pkgname%-git}" | sed -n 's/.*package-snippet__version">\(.*\)<.*/\1.r0/p'
 }
 
 build() {
