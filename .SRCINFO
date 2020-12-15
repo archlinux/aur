@@ -1,6 +1,6 @@
 pkgbase = whatweb-git
 	pkgdesc = Next generation web scanner that identifies what websites are running.
-	pkgver = 0.5.3.r28.4257078b
+	pkgver = 0.5.4.r0.36d284bf
 	pkgrel = 1
 	url = http://www.morningstarsecurity.com/research/whatweb
 	arch = i686
