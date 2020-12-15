@@ -1,7 +1,7 @@
 # Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
 _pkgname=language-data
 pkgname=python-weblate-language-data
-pkgver=2020.11
+pkgver=2020.13
 pkgrel=1
 pkgdesc="Language definitions used by Weblate"
 url="https://github.com/WeblateOrg/language-data"
@@ -11,7 +11,7 @@ license=('MIT')
 arch=('any')
 source=("https://github.com/WeblateOrg/language-data/archive/${pkgver}.tar.gz")
 
-sha256sums=('837296bb621c797a8d13678b9a9fa22a7cb2749cf1aad6eca6a438fc684e0552')
+sha256sums=('27d41b1630a0b96e99ccbd5e2b638713d8d86ebefe46cf58ccfdc51deb15468a')
 
 #check() {
 #    pytest
