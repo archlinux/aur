@@ -1,13 +1,14 @@
 # Maintainer: buckket <felix@buckket.org>
 
 pkgname=zigbee2mqtt
-pkgver=1.16.1
+pkgver=1.16.2
 pkgrel=1
 pkgdesc='A Zigbee to MQTT bridge'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.zigbee2mqtt.io'
 license=('GPL3')
-depends=('nodejs>=10.0' 'npm')
+depends=('nodejs>=10.0')
+makedepends=('npm')
 conflicts=('zigbee2mqtt')
 provides=('zigbee2mqtt')
 optdepends=(
@@ -17,20 +18,26 @@ source=("https://github.com/Koenkk/${pkgname}/archive/${pkgver}.tar.gz"
   'zigbee2mqtt.service'
   'zigbee2mqtt.sysusers'
   'zigbee2mqtt.tmpfiles')
-sha256sums=('e4313c798f10638e728da75388aaa3fad89c9f6f73b2ccb7a042611d8ed64722'
-            '831ce970669d29ba2db208bec8245c97e80540981dd23276bba10a9b7b699e1b'
-            'bf3e49cfb86df460b4db16b280839dc7f0c73fbfd29ea6d86040f711606abf65'
-            '5861e6e25350b32fc81cf1a43802470e8ff033a019cba4d28b3bd48c6cb5ddf6')
-backup=('opt/zigbee2mqtt/data/configuration.yaml')
-  
+sha256sums=('608a8ac26e39701000b8393597b5697ce50a5063a7b7bcceac60eb0a6e2b443e'
+            '36fdca9c274fc143a85cc57d70a36e0ec9455cf86b85d0690ccf0090ee8d682d'
+            '3a86716e9036e97d885e9b5f37c7f87d9c2872435e4acf9fc4c9157264cf387b'
+            '8f0fbe06c8d6e8fdf37feb31f244930025d76785451f9049fd90fe6e23c259f6')
+backup=('etc/zigbee2mqtt/configuration.yaml')
+install='zigbee2mqtt.install'
+options=('!strip')
 
 package() {
+  npm install -g --user root --prefix "${pkgdir}/usr" --cache "${srcdir}/npm-cache" "${srcdir}/${pkgver}.tar.gz"
+
+  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+  chown -R root:root "${pkgdir}"
+
+  find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+
   cd "${pkgname}-${pkgver}"
-  npm install --cache "${srcdir}/npm-cache" --user root
-  install -d -m 650 "${pkgdir}/opt/${pkgname}"
-  cp -dpr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/." "${pkgdir}/opt/${pkgname}"
+  install -Dm644 data/configuration.yaml "${pkgdir}/etc/${pkgname}/configuration.yaml"
+
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
-

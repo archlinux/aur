@@ -1,1 +1,2 @@
-u zigbee2mqtt - "zigbee2mqtt service user" /opt/zigbee2mqtt
+u zigbee2mqtt - "zigbee2mqtt service user"
+m zigbee2mqtt uucp

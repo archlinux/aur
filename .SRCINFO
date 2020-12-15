@@ -1,29 +1,31 @@
 pkgbase = zigbee2mqtt
 	pkgdesc = A Zigbee to MQTT bridge
-	pkgver = 1.16.1
+	pkgver = 1.16.2
 	pkgrel = 1
 	url = https://www.zigbee2mqtt.io
+	install = zigbee2mqtt.install
 	arch = x86_64
 	arch = arm
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
+	makedepends = npm
 	depends = nodejs>=10.0
-	depends = npm
 	optdepends = cc-tool: To flash Texas Instruments CC2531 debugger
 	optdepends = mosquitto: MQTT broker
 	provides = zigbee2mqtt
 	conflicts = zigbee2mqtt
-	backup = opt/zigbee2mqtt/data/configuration.yaml
-	source = https://github.com/Koenkk/zigbee2mqtt/archive/1.16.1.tar.gz
+	options = !strip
+	backup = etc/zigbee2mqtt/configuration.yaml
+	source = https://github.com/Koenkk/zigbee2mqtt/archive/1.16.2.tar.gz
 	source = zigbee2mqtt.service
 	source = zigbee2mqtt.sysusers
 	source = zigbee2mqtt.tmpfiles
-	sha256sums = e4313c798f10638e728da75388aaa3fad89c9f6f73b2ccb7a042611d8ed64722
-	sha256sums = 831ce970669d29ba2db208bec8245c97e80540981dd23276bba10a9b7b699e1b
-	sha256sums = bf3e49cfb86df460b4db16b280839dc7f0c73fbfd29ea6d86040f711606abf65
-	sha256sums = 5861e6e25350b32fc81cf1a43802470e8ff033a019cba4d28b3bd48c6cb5ddf6
+	sha256sums = 608a8ac26e39701000b8393597b5697ce50a5063a7b7bcceac60eb0a6e2b443e
+	sha256sums = 36fdca9c274fc143a85cc57d70a36e0ec9455cf86b85d0690ccf0090ee8d682d
+	sha256sums = 3a86716e9036e97d885e9b5f37c7f87d9c2872435e4acf9fc4c9157264cf387b
+	sha256sums = 8f0fbe06c8d6e8fdf37feb31f244930025d76785451f9049fd90fe6e23c259f6
 
 pkgname = zigbee2mqtt
 
