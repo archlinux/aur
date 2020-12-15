@@ -1,7 +1,7 @@
 pkgbase = brother-dcp385c-lpr-bin
 	pkgdesc = LPR driver for Brother DCP-385C printer
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=dcp385c_all
 	arch = i686
 	arch = x86_64
