@@ -1,50 +1,51 @@
+# Maintainer: Chris Lane <aur at chrislane dot com>
 pkgname=digikam-git
-pkgver=r42360.d25dc5718c
+pkgver=v7.2.0.beta1.r500.g9541292038
 pkgrel=1
-pkgdesc='Digital photo management application for KDE'
+pkgdesc='An advanced digital photo management application'
 arch=('i686' 'x86_64')
 license=('GPL')
-url="http://www.digikam.org/"
-depends=(liblqr lensfun opencv akonadi-contacts knotifyconfig libksane kfilemetadata qtav marble-common threadweaver kcalcore
-         qt5-xmlpatterns libkvkontakte libmediawiki)
-makedepends=(extra-cmake-modules doxygen eigen boost kdoctools git)
-optdepends=('hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)')
+url="https://www.digikam.org/"
+depends=(lensfun opencv akonadi-contacts knotifyconfig libksane kfilemetadata qtav marble-common
+         threadweaver kcalendarcore qt5-xmlpatterns imagemagick glu)
+makedepends=(extra-cmake-modules doxygen eigen boost kdoctools jasper git)
+optdepends=('hugin: panorama tool'
+            'qt5-imageformats: support for additional image formats (WEBP, TIFF)'
+            'jasper: openJPEG support'
+            'rawtherapee: RAW import'
+            'darktable: RAW import'
+            "digikam-plugin-gmic: G'MIC plugin"
+            'perl: for digitaglinktree')
 conflicts=('digikam')
 provides=('digikam')
-install=digikam-git.install
-source=('digikam::git+git://anongit.kde.org/digikam')
+source=('git+https://invent.kde.org/graphics/digikam.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/digikam"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-if [[ -d "${srcdir}/build" ]]; then
-      msg "Cleaning the previous build directory..."
-      rm -rf "${srcdir}/build"
-  fi
-  mkdir "${srcdir}/build"
+  cd digikam
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/build"
-  cmake ../digikam \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DBUILD_TESTING=OFF \
-    -DENABLE_KFILEMETADATASUPPORT=ON \
-    -DENABLE_MEDIAPLAYER=ON \
+  cmake                               \
+    -B build                          \
+    -S digikam                        \
+    -DCMAKE_BUILD_TYPE=None           \
+    -DCMAKE_INSTALL_PREFIX=/usr       \
+    -DCMAKE_INSTALL_LIBDIR=lib        \
+    -DBUILD_TESTING=OFF               \
+    -DENABLE_KFILEMETADATASUPPORT=ON  \
+    -DENABLE_MEDIAPLAYER=ON           \
     -DENABLE_AKONADICONTACTSUPPORT=ON \
-    -DENABLE_MYSQLSUPPORT=ON \
-    -DENABLE_APPSTYLES=ON \
-    -DENABLE_QWEBENGINE=ON \
-    -DOpenGL_GL_PREFERENCE=GLVND
-  make
+    -DENABLE_MYSQLSUPPORT=ON          \
+    -DENABLE_APPSTYLES=ON             \
+    -DENABLE_QWEBENGINE=ON            \
+    -Wno-dev
+  make -C build
 }
 
 package() {
-  cd "${srcdir}/build"
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install -C build
 }
+
+# vim:set ts=2 sw=2 et:
