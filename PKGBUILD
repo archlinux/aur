@@ -6,7 +6,7 @@ license=('GPL')
 arch=('x86_64')
 url="https://github.com/mothsART/gSpeech"
 depends=('gst-python' 'python-gobject' 'pico-tts' 'python-notify2' 'gst-plugins-good' 'libappindicator-gtk3' 'sox')
-makedepends=('make')
+makedepends=('python-setuptools')
 source=("https://github.com/mothsART/gSpeech/archive/${pkgver}.tar.gz")
 sha256sums=('e25da080e5bec3a45e323e76c1e89e92e23f3a29806c2776f6e9c20b37689c76')
 
