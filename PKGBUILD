@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mint-themes
-pkgver=1.8.6
+pkgver=1.8.7
 pkgrel=1
 pkgdesc='A collection of Mint themes. Includes GTK2, GTK3, Cinnamon and Xfce components.'
 arch=('any')
@@ -27,7 +27,7 @@ conflicts=(
     mint-cinnamon-themes
 )
 source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('ae730048cc080a21695c682477bab9b195871423b47d636939dfaa60caaf1265')
+sha256sums=('f6ac75fc5bc86a2a6a4ce657ff6d920f23083ba83899552da2f03b60f316de05')
 
 build() {
 	cd "${pkgname}"
