@@ -1,6 +1,6 @@
 pkgbase = public-inbox
 	pkgdesc = An "archives first" approach to mailing lists
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://public-inbox.org
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = public-inbox
 	depends = perl-uri
 	options = !emptydirs
 	options = purge
-	source = public-inbox::git+https://public-inbox.org/#tag=v1.5.0
+	source = public-inbox::git+https://public-inbox.org/#tag=v1.6.0
 	md5sums = SKIP
 
 pkgname = public-inbox
