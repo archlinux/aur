@@ -1,6 +1,6 @@
 pkgbase = pacwall-git
 	pkgdesc = A live wallpaper that shows the dependency graph and status of installed packages.
-	pkgver = 2.0.r1.g235e1bb
+	pkgver = 2.2.r1.g045cbed
 	pkgrel = 1
 	url = http://github.com/Kharacternyk/pacwall
 	arch = any

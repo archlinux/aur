@@ -1,7 +1,7 @@
 # Maintainer: Nazar Vinnichuk <nazar.vinnichuk at tutanota dot com>
 pkgname=pacwall-git
 _pkgname=${pkgname%-git}
-pkgver=2.0.r1.g235e1bb
+pkgver=2.2.r1.g045cbed
 pkgrel=1
 pkgdesc="A live wallpaper that shows the dependency graph and status of installed packages."
 url="http://github.com/Kharacternyk/${_pkgname}"
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname/src"
-    make build
+    make
 }
 
 package() {
