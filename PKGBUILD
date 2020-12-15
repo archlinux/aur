@@ -4,7 +4,7 @@
 
 pkgname=perl-www-curl
 pkgver=4.17
-pkgrel=11
+pkgrel=13
 pkgdesc="Perl/CPAN Module WWW::Curl"
 arch=('x86_64')
 url="https://search.cpan.org/dist/WWW-Curl/"
