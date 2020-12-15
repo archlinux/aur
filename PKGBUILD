@@ -1,7 +1,7 @@
 # Maintainer: Chris Lane <aur at chrislane dot com>
 pkgname=quassel-core-lighter-git
 pkgver=0.14.pre.r255.gb0035602
-pkgrel=2
+pkgrel=1
 pkgdesc="Qt-based distributed IRC client (core only) - minimal dependencies"
 url='https://quassel-irc.org'
 license=('GPL')
@@ -12,20 +12,18 @@ optdepends=('qca: encryption support'
             'libldap: LDAP support')
 provides=('quassel-core')
 conflicts=('quassel-core')
-source=("$pkgname-$pkgver"::"git+https://github.com/quassel/quassel")
+source=("git+https://github.com/quassel/quassel")
 md5sums=('SKIP')
 
-_builddir="$pkgname-$pkgver/build"
-
 pkgver() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd quassel
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cmake -G Ninja                \
-    -B "$_builddir"             \
-    -S "$pkgname-$pkgver"     \
+    -B build                    \
+    -S quassel                  \
     -DCMAKE_BUILD_TYPE=None     \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib  \
@@ -38,13 +36,11 @@ build() {
     -DWITH_WEBENGINE=OFF        \
     -Wno-dev                    \
 
-  ninja -C "$_builddir"
+  ninja -C build
 }
 
 package() {
-  cd "$_builddir"
-
-  DESTDIR="$pkgdir" ninja install
+  DESTDIR="$pkgdir" ninja install -C build
 }
 
 # vim:set ts=2 sw=2 et:
