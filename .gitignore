@@ -1,5 +1,4 @@
-*
-!.gitignore
-!.SRCINFO
-!nerd-fonts-mononoki.install
-!PKGBUILD
+pkg/
+src/
+*.zip
+*.zst
