@@ -1,9 +1,8 @@
 pkgbase = whatweb
 	pkgdesc = Next generation web scanner that identifies what websites are running.
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = http://www.morningstarsecurity.com/research/whatweb
-	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = ruby
@@ -16,8 +15,8 @@ pkgbase = whatweb
 	optdepends = ruby-pry: debugging
 	provides = whatweb
 	conflicts = whatweb-git
-	source = https://github.com/urbanadventurer/WhatWeb/archive/v0.5.3.tar.gz
-	sha256sums = b4fc61455f1322862f47448835a25437746c9bd6ecca60f7a5c2166373ec77be
+	source = https://github.com/urbanadventurer/WhatWeb/archive/v0.5.4.tar.gz
+	sha256sums = 73e1b8592bf5a15f8a66fffe2408732c434b7068f5d3379cc889fad14ea513ee
 
 pkgname = whatweb
 
