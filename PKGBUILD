@@ -21,7 +21,6 @@ depends=('alsa-lib'
          'libxml2'
          'libxslt'
          'opus'
-         'pjproject'
          'popt'
          'speex')
 makedepends=('gsm'
@@ -50,8 +49,7 @@ build() {
       --prefix=/usr \
       --sysconfdir=/etc \
       --localstatedir=/var \
-      --sbindir=/usr/bin \
-      --with-pjproject-bundled=no
+      --sbindir=/usr/bin
   make menuselect.makeopts
   ./menuselect/menuselect --disable BUILD_NATIVE
   make
