@@ -3,10 +3,10 @@
 # Contributor: Amr Okasha <okasha at gmail>
 
 pkgname=ccstudio
-_semver=10.1.0
-_bldver=00010
+_semver=10.1.1
+_bldver=00004
 pkgver=$_semver.$_bldver
-pkgrel=2
+pkgrel=1
 pkgdesc="Texas Instruments Code Composer Studio IDE"
 arch=('x86_64')
 url="http://www.ti.com/tool/ccstudio"
@@ -17,7 +17,7 @@ makedepends=('glibc')
 # Needed for builtin jxBrowser plugin (otherwise exception exit code 127)
 # lib32-glibc needed for installers of some components (C2000 tools)
 #!! 'ncurses5-compat-libs' and 'gconf' are aur packages
-depends=('python2' 'gtk2' 'libxtst' 'nss' 'libxss' 'alsa-lib' 'lib32-glibc' 'ncurses5-compat-libs' 'libusb-compat' 'libsecret' 'libcanberra' 'gtk' 'gconf')
+depends=('python2' 'gtk2' 'gtk3' 'libxtst' 'nss' 'libxss' 'alsa-lib' 'lib32-glibc' 'ncurses5-compat-libs' 'libusb-compat' 'libsecret' 'libcanberra' 'gconf')
 
 # Without some ttf fonts installed, UI is ugly
 optdepends=('ttf-dejavu')
@@ -112,7 +112,7 @@ package() {
     install -D -m0644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('668aead487405161fc76be22ecd3247f53b5f07a31669dbe62c6fc87ff142a84'
+sha256sums=('f596e3e71805561e0e522fabdc14162e3e9f0a04cacdd02e057f7004fc248997'
     'adc0dd74f5b95e373db4b45c74b034ec3d45e2df462b3a1a35f6d56aa8181076'
     '97061c190d86ac2de195e54070d86d8bde34774ea35261942ee44626ca3c23db'
     'ad63fd5e8a11e1ddcbe1d0d56a739f1c2f573a2781e46f4d52b5a93dd5810d1a'
