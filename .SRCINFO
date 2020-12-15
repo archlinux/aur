@@ -1,6 +1,6 @@
 pkgbase = pixelorama-bin
-	pkgdesc = A free & open-source 2D sprite editor, made with the Godot Engine - precompiled binary
-	pkgver = 0.8.1
+	pkgdesc = A free & open-source 2D sprite editor, made with the Godot Engine
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://orama-interactive.itch.io/pixelorama
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = pixelorama-bin
 	license = MIT
 	depends = libpulse
 	depends = alsa-lib
+	depends = libxi
 	depends = libxrandr
 	depends = libglvnd
 	depends = libxcursor
@@ -21,13 +22,13 @@ pkgbase = pixelorama-bin
 	source = com.orama_interactive.Pixelorama.desktop
 	source = LICENSE
 	sha256sums = d92715606fb34e1863ecccd929675b742988ae55118146e2d9aee41c650b0933
-	sha256sums = bb07bee454c7bc6225f10574c7ff147fd1dc2c0f8ba903d7d8c0f2fa5caa02f0
+	sha256sums = 971c3d5c7a9258419f14dae0b81c38e13b1dcabfbf1e578baaed86fde1c28fbe
 	sha256sums = 5d9b6e1a44b07bfcfbf4fb3575d30df457571335c0c200f4130af51884f34b99
 	sha256sums = 45efa21eefa4ff8c09842be56bce57d2cba6260c223b1a8c46d5f6ffc34958d7
-	source_i686 = Pixelorama-0.8.1-32bit.tar.gz::https://github.com/Orama-Interactive/Pixelorama/releases/download/v0.8.1/Pixelorama.Linux-32bit.tar.gz
-	sha256sums_i686 = 5907635ebb883f4fefff86afe706a0ba15da0c8325f01ccfa74a8e8427dcc5e4
-	source_x86_64 = Pixelorama-0.8.1-64bit.tar.gz::https://github.com/Orama-Interactive/Pixelorama/releases/download/v0.8.1/Pixelorama.Linux-64bit.tar.gz
-	sha256sums_x86_64 = 79fe8220b4b8f586999ae5476820699695e653c69224420528a0aa037b70948c
+	source_i686 = Pixelorama-0.8.2-32bit.tar.gz::https://github.com/Orama-Interactive/Pixelorama/releases/download/v0.8.2/Pixelorama.Linux-32bit.tar.gz
+	sha256sums_i686 = 0884e2d0f4c00091c46d89ac4919fb30ca735b14b21889cde1494c66f85d4cdd
+	source_x86_64 = Pixelorama-0.8.2-64bit.tar.gz::https://github.com/Orama-Interactive/Pixelorama/releases/download/v0.8.2/Pixelorama.Linux-64bit.tar.gz
+	sha256sums_x86_64 = aed8bfc5ea68f144a2ee2673d5a3be6088979471e98cc84a6dd543de86b8e7c0
 
 pkgname = pixelorama-bin
 
