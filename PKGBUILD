@@ -1,7 +1,7 @@
 # Maintainer: Vresod <lukebinkofsky@gmail.com>
 pkgname=advcpmv
 pkgver=8.32
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced Copy is a mod for the GNU cp and GNU mv tools which adds a progress bar and provides some info on what's going on"
 arch=( "any" )
 url="https://github.com/jarun/advcpmv"
