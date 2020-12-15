@@ -1,6 +1,6 @@
 pkgbase = mitmproxy
 	pkgdesc = SSL-capable man-in-the-middle HTTP proxy
-	pkgver = 5.3.0
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://mitmproxy.org
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = mitmproxy
 	provides = pathod
 	conflicts = pathod
 	replaces = pathod
-	source = https://github.com/mitmproxy/mitmproxy/archive/v5.3.0/mitmproxy-5.3.0.tar.gz
-	sha512sums = 3f52f5285869de49c7c04ef9b6c0f3ef66689eb45fb6f9e971111049bf1aa0777e3e84b51f7031c1bdf105ce3f17fa4b03036d72617985b92996c6eea7566c38
+	source = https://github.com/mitmproxy/mitmproxy/archive/v6.0.0/mitmproxy-6.0.0.tar.gz
+	sha512sums = dbf4ba21a35c97237e861f570c17f9aa4826de1f85ca1147b134c8e6e8a2853e0ebd7f11cdbfe9e04b344c394f88b853f062778fd5f474f2fe75e0736bd3f9b8
 
 pkgname = mitmproxy

@@ -5,7 +5,7 @@
 # Contributor: Dobroslaw Kijowski
 
 pkgname=mitmproxy
-pkgver=5.3.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc='SSL-capable man-in-the-middle HTTP proxy'
 arch=('any')
@@ -23,19 +23,16 @@ provides=('pathod')
 conflicts=('pathod')
 replaces=('pathod')
 source=("https://github.com/mitmproxy/mitmproxy/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('3f52f5285869de49c7c04ef9b6c0f3ef66689eb45fb6f9e971111049bf1aa0777e3e84b51f7031c1bdf105ce3f17fa4b03036d72617985b92996c6eea7566c38')
+sha512sums=('dbf4ba21a35c97237e861f570c17f9aa4826de1f85ca1147b134c8e6e8a2853e0ebd7f11cdbfe9e04b344c394f88b853f062778fd5f474f2fe75e0736bd3f9b8')
 
 prepare() {
   cd $pkgname-$pkgver
 
   # Let's remove all the upper bounds and use system ca-certificatescate store
-  # urwid is pinned because the issue seems to affect Mac only
-  # dataclasses should not be installed at all, not sure why.
+  # We have an old protobuf, but this should not be an issue
   sed -e '/certifi/d' \
       -e 's/, *<[0-9=.]*//' \
-      -e 's/,!=2.1.0//' \
-      -e 's/==/>=/' \
-      -e '/dataclasses/d' \
+      -e 's/protobuf>=3.14/protobuf>=3/' \
       -i setup.py
   sed -e '/import certifi/d' \
       -e 's|certifi.where()|"/etc/ssl/certs/ca-certificates.crt"|' \
