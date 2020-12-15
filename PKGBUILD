@@ -3,7 +3,7 @@
 
 pkgname=lite-xl
 _pkgname=lite
-pkgver=1.13
+pkgver=1.14
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua'
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=("$_pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver-$pkgname.tar.gz"
 	# credits to 6r1d  for the svg icon
 	"$pkgname.svg.zip::https://github.com/rxi/lite/files/4716765/lite.svg.zip")
-sha256sums=('1be8a40f916131390b16805e70a924986953dd9ef9e524ba3443b765659efc2f'
+sha256sums=('0ca16d836401964edfbea6fdae340a5cbd1cd7c2191bc1589f0db66c7e819014'
             '504d2ccd74f1c5b631b5b83a4f4319c74edb705fc383b3058f4b2d9354093b53')
 
 prepare() {
@@ -34,7 +34,7 @@ prepare() {
 }
 
 build() {
-    arch-meson "$pkgname-$pkgver-$pkgname" build
+    arch-meson "$pkgname-$pkgver-$pkgname" build --reconfigure
     meson compile -C build
 }
 
