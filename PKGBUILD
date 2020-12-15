@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=yandex-cloud-bin
-pkgver=0.65.0
+pkgver=0.69.0
 pkgrel=1
 pkgdesc='Yandex.Cloud CLI'
 arch=('x86_64')
@@ -10,16 +10,16 @@ license=()
 depends=()
 makedepends=()
 provides=('yandex-cloud')
-source=("yc::https://storage.yandexcloud.net/yandexcloud-yc/release/${pkgver}/linux/amd64/yc")
-md5sums=('371f25d9a4a7e252513199e5bc8fa8ec')
+source=("yc-$pkgver::https://storage.yandexcloud.net/yandexcloud-yc/release/${pkgver}/linux/amd64/yc")
+md5sums=('db7ac235de9bb24443309c25cf0ac547')
 
-build(){
+build() {
     cd "$srcdir"
 }
 
-package(){
+package() {
     mkdir -p "$pkgdir/usr/bin"
-    cp "yc" "$pkgdir/usr/bin/yc"
+    cp "yc-$pkgver" "$pkgdir/usr/bin/yc"
     chmod +x "$pkgdir/usr/bin/yc"
 
     mkdir -p "$pkgdir/usr/share/bash-completion/completions"

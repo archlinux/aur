@@ -3,6 +3,7 @@
 
 # Ignore temp files.
 /yc
+/yc-*
 
 # Ignore special directories.
 /pkg/
