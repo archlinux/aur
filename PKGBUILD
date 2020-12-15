@@ -1,7 +1,7 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
 pkgname=freecad-linkstage3-git
-pkgver=asm3.0.11.r3383.geb10f4011b
+pkgver=asm3.0.11.r3384.g405243723c
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - LinkStage3 dev branch, git checkout'
 arch=('x86_64')
@@ -82,36 +82,26 @@ build() {
         -DFREECAD_USE_QT_FILEDIALOG=ON \
         -DPYTHON_EXECUTABLE=/usr/bin/python
 
-        # -DCMAKE_PREFIX_PATH='/usr' \
-        # -DCMAKE_INSTALL_PREFIX='/usr' \
     ninja -j$(($(nproc)-1))
-
 }
 
 package() {
-    cd "${srcdir}/${_gitname}/build"
+    pushd "${srcdir}/${_gitname}/build"
+        DESTDIR="${pkgdir}" ninja install
+    popd
 
-    DESTDIR="${pkgdir}" ninja install
+    pushd "${pkgdir}"
+        # Symlink to /usr/bin
+        install -dm755 "usr/bin"
+        ln -sf "/usr/lib/freecad/bin/FreeCAD"       "usr/bin/freecad"
+        ln -sf "/usr/lib/freecad/bin/FreeCAD"       "usr/bin/FreeCAD"
+        ln -sf "/usr/lib/freecad/bin/FreeCADCmd"    "usr/bin/freecadcmd"
+        ln -sf "/usr/lib/freecad/bin/FreeCADCmd"    "usr/bin/FreeCADCmd"
 
-    # Symlink to /usr/bin
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -sf "/usr/lib/freecad/bin/FreeCAD" "${pkgdir}/usr/bin/freecad"
-    ln -sf "/usr/lib/freecad/bin/FreeCAD" "${pkgdir}/usr/bin/FreeCAD"
-    ln -sf "/usr/lib/freecad/bin/FreeCADCmd" "${pkgdir}/usr/bin/freecadcmd"
-    ln -sf "/usr/lib/freecad/bin/FreeCADCmd" "${pkgdir}/usr/bin/FreeCADCmd"
+        # Move data from /usr/lib/freecad/share to /usr/share
+        mv "usr/lib/freecad/share/"{icons,pixmaps,mime,metainfo,applications} \
+            "usr/share"
 
-    # Install pixmaps and desktop shortcut
-    # desktop-file-install \
-    #     --dir="${pkgdir}/usr/share/applications" \
-    #     "${srcdir}/${pkgname}.desktop"
-
-    # for i in 16 32 48 64; do
-    #     install -Dm644 "src/Gui/Icons/freecad-icon-${i}.png" \
-    #         "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/freecad.png"
-    # done
-    # install -Dm644 "src/Gui/Icons/freecad.svg" \
-    #     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/freecad.svg"
-
-    # # Mime info
-    # install -D -m644 "${srcdir}/freecad.xml" "${pkgdir}/usr/share/mime/packages/freecad.xml"
+        rmdir "usr/lib/freecad/share"
+    popd
 }
