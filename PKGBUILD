@@ -1,8 +1,9 @@
 # Maintainer: EHfive <eh5@sokka.cn>
 
 pkgname=pulseaudio-modules-bt-git
-pkgver=r148.75af499
-pkgrel=2
+pkgver=14.0.r149.dbb5164
+pkgrel=1
+epoch=1
 pkgdesc="PulseAudio Bluetooth modules with SBC, AAC, APTX, APTX-HD, Sony LDAC (A2DP codec) support"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/EHfive/pulseaudio-modules-bt"
@@ -19,27 +20,33 @@ source=("git+https://github.com/EHfive/pulseaudio-modules-bt.git"
 
 md5sums=('SKIP' 'SKIP')
 
+pulseaudio_version=`pkg-config libpulse --modversion|sed 's/[^0-9.]*\([0-9.]*\).*/\1/'`
+
 pkgver() {
     cd "$srcdir/pulseaudio-modules-bt"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    printf "%s.r%s.%s" "$pulseaudio_version" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
     cd "$srcdir/pulseaudio-modules-bt"
     rm -rf pa
     ln -sf -T "../pulseaudio" "pa"
-    git -C pa checkout v`pkg-config libpulse --modversion|sed 's/[^0-9.]*\([0-9.]*\).*/\1/'`
+    git -C pa checkout v$pulseaudio_version
 }
 
 build() {
     cd "$srcdir/pulseaudio-modules-bt"
+    rm -rf build && mkdir build
+    cd build
     cmake \
         -DCMAKE_BUILD_TYPE=Release \
-        .
+        -S .. \
+        -B . \
+        
     make
 }
 
 package() {
-    cd "$srcdir/pulseaudio-modules-bt"
+    cd "$srcdir/pulseaudio-modules-bt/build"
     make DESTDIR="$pkgdir" install
 }
