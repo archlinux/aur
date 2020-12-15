@@ -1,5 +1,5 @@
 # Maintainer: Will Foran <will.foran+aur@gmail.com>
-pkgname=paintown-git 
+pkgname=paintown-git
 pkgver=r7291.ec5824f2
 pkgrel=1
 pkgdesc="side scrolling fighting game (w/mugen)"
@@ -8,7 +8,7 @@ url="http://paintown.org"
 license=('BSD')
 groups=()
 depends=('freetype2' 'allegro')
-makedepends=('git' 'scons' 'r-tech1') 
+makedepends=('git' 'scons' 'r-tech1-git' 'python2-scons')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -32,7 +32,7 @@ build() {
 	cd "$srcdir/${pkgname%-git}"
    # include freetype2
    sed -i -e "s:scons.utils.safeParseConfig(staticEnv, 'freetype-config --libs'):env.Append(CPPPATH = ['/usr/include/freetype2']):" SConstruct
-   scons
+   python2 $(which scons)
 }
 
 check() {
@@ -45,5 +45,5 @@ package() {
    cp "$srcdir/${pkgname%-git}/paintown" paintown-bin
    git clone https://github.com/kazzmir/paintown-data.git data
    echo "#!/usr/bin/env sh\ncd /usr/share/games/paintown; ./paintown" >> $pkgdir/usr/bin/paintown
-   chmod +x paintown-bin $pkgdir/usr/bin/paintown 
+   chmod +x paintown-bin $pkgdir/usr/bin/paintown
 }
