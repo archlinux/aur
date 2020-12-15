@@ -6,15 +6,17 @@
 #  (at your option) any later version.
 
 # This unit gets pulled automatically into multi-user.target by
-# systemd-rc-local-generator if /etc/rc.local is executable.
+# systemd-rc-local-generator if /etc/rclone-mount-rc.local.d/rc5-mount-remote-google.sh is executable.
 [Unit]
-Description=/etc/rclone-mount-rc.local Compatibility
-ConditionFileIsExecutable=/etc/rclone-mount-rc.local
+Description=/etc/rclone-mount-rc.local.d/rc5-mount-remote-google.sh Compatibility
+ConditionFileIsExecutable=/etc/rclone-mount-rc.local.d/rc5-mount-remote-google.sh
 After=network.target
 
 [Service]
 Type=forking
-ExecStart=/etc/rclone-mount-rc.local start
+ExecStart=/etc/rclone-mount-rc.local.d/rc5-mount-remote-google.sh -r all
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/etc/rclone-mount-rc.local.d/rc5-mount-remote-google.sh -s all
 TimeoutSec=0
 RemainAfterExit=yes
 GuessMainPID=no

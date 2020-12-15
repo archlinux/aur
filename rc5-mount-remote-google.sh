@@ -4,18 +4,16 @@ set -e
 
 
 
-
-
-target_base="/media/target"
-
-
 user_target_link_count=0
 user_target_bind_count=0
 user_target_bind_mount_count=0
 user_target_mount_count=0
 user_target_chown_count=0
-user_target_bind=("home/dmeck/work/google")
 
+
+toHelp() {
+    echo "hello, world"
+}
 
 # proxy list
 proxy_off(){
@@ -33,71 +31,131 @@ proxy_on() {
 }
 
 rollback() {
-echo "umount user context"
+    echo "umount user context"
     proxy_off
-    sudo -u dmeck DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send "disenable google rclone" 
-    umount "/home/dmeck/work/google"
-exit
+    sudo -u dmeck DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send "rclone" "shell exec error" 
+    exit
 }
 
 
 trap rollback INT TERM EXIT
 
 
-# unit bind target exist dirs
-echo "check bind target exist dirs"
+toRunGoogleContainer() {
 
-for item in "${user_target_bind[@]}";
-do
-    if ! test -d "$target_base/${item}" 
+    # unit bind target exist dirs
+    echo "check bind target exist dirs"
+    if ! test -d "$2" 
     then
-        mkdir -p "$target_base/${item}"
+        mkdir -p "$2"
         user_target_bind_count=`expr ${user_target_bind_count} + 1`   
         
     fi
-done
-echo "check bind target not exist by of create $user_target_bind_count dirs"
+    echo "check bind target not exist by of create $user_target_bind_count dirs"
 
-#check target dirs is mount bind
-echo "check target dirs is mount bind"
-for item in "${user_target_bind[@]}";
-do
-    if grep -qs "$target_base/${item}" /proc/mounts ;
+    #check target dirs is mount bind
+    echo "check target dirs is mount bind"
+    if grep -qs "$2" /proc/mounts ;
     then
-    user_target_bind_mount_count=`expr ${user_target_bind_mount_count} + 1`    
+        user_target_bind_mount_count=`expr ${user_target_bind_mount_count} + 1`    
     fi
-done
-echo "check target dirs is mount bind of $user_target_bind_mount_count"
-#bind target user context 
-if [ $user_target_bind_mount_count -gt 0 ] 
-then
+    echo "check target dirs is mount bind of $user_target_bind_mount_count"
+    #bind target user context 
+    if [ $user_target_bind_mount_count -gt 0 ] 
+    then
 
-    echo "exist ${user_target_bind_mount_count} bind dir of target,exit!"
-    exit 1
-else
-    #run load mounts target 
-    for item in "${user_target_bind[@]}";
-    do
-        if test -d "$target_base/${item}" 
+        echo "exist ${user_target_bind_mount_count} bind dir of target,exit!"
+        exit 1
+    else
+        #run load mounts target 
+        if test -d "$2" 
         then
-            echo "$target_base/${item}" 
+            echo "$2" 
             sudo -u dmeck DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send "enable google rclone "
             if [ `whoami` == "root" ];then
-                sudo -H -E  -u dmeck bash -c "$(declare -f proxy_on); proxy_on &&  nohup rclone mount google:  \"$target_base/${item}\" --allow-other --allow-non-empty --vfs-cache-mode writes  &"
+                sudo -H -E  -u dmeck bash -c "$(declare -f proxy_on); proxy_on &&  nohup rclone mount google:  \"$2\" --allow-other --allow-non-empty --vfs-cache-mode writes  &"
             else
-               proxy_on &&  nohup rclone mount google:  "$target_base/${item}" --allow-other --allow-non-empty --vfs-cache-mode writes   &
+               proxy_on &&  nohup rclone mount google:  "$2" --allow-other --allow-non-empty --vfs-cache-mode writes   &
             fi 
              
             user_target_mount_count=`expr ${user_target_mount_count} + 1`   
         
         fi
-    done
-    echo "target dirs is mount bind of $user_target_mount_count"
-    
+        echo "target dirs is mount bind of $user_target_mount_count"
+        
 
-    
-fi
+        
+    fi
+}
 
+toRun() {
+
+
+    user_target_bind="/media/target/home/dmeck/work/google"
+
+    if [ $# -eq 1 ]; then
+        case $1 in
+        google)
+            # if you need to launch another app, add the app name here.
+            echo " start $1 application"
+            toRunGoogleContainer $1 $user_target_bind
+            ;;
+        all)
+            echo "start all application"
+            toRunGoogleContainer $1 $user_target_bind
+            ;;
+        *)
+            echo "unsupport your application"
+            ;;
+        esac
+    else
+        toHelp
+    fi
+}
+
+toStopGoogleContaine() {
+
+    proxy_off
+    sudo -u dmeck DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send "disenable $1 rclone" 
+    fusermount -uz  "$2"
+}
+
+toStop() {
+    user_target_bind="/media/target/home/dmeck/work/google"
+
+    if [ $# -eq 1 ]; then
+        case $1 in
+        google)
+            # if you need to stop another app, add the app name here.
+            echo "stop $1 application"
+            toStopGoogleContaine $1 $user_target_bind
+            ;;
+        all)
+            echo "stop all application"
+            toStopGoogleContaine $1 $user_target_bind
+            ;;
+        *)
+            echo "unsupport your application"
+            ;;
+        esac
+    else
+        toHelp
+    fi
+}
+
+
+case $1 in
+-r)
+    toRun $2 
+    ;;
+-s)
+    toStop $2
+    ;;
+-h) ;&
+*)
+    toHelp
+    ;;
+esac
 
 
 trap - INT TERM EXIT

@@ -12,7 +12,15 @@ if [ -e /sys/fs/cgroup/systemd ]; then
         esac
 else
 
-  if [ -e "/etc/rclone-mount-rc.local.d/rc5-mount-remote-google.sh" ]; then
-        /etc/rclone-mount-rc.local.d/rc5-mount-remote-google.sh
+if [ -e "/etc/rclone-mount-rc.local.d/rc5-mount-remote-google.sh" ]; then
+     
+        case "$2" in
+                up)
+                        /etc/rclone-mount-rc.local.d/rc5-mount-remote-google.sh -r all
+                ;;
+                down)
+                        systemctl stop rclone-mount-rc-local.service -s stop
+                ;;
+        esac
   fi
 fi
