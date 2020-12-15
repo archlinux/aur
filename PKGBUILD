@@ -6,8 +6,8 @@ _pkgbase=pipewire
 pkgbase=pipewire-nightly
 pkgname=(pipewire-nightly pipewire-docs-nightly pipewire-jack-nightly
     pipewire-pulse-nightly pipewire-alsa-nightly gst-plugin-pipewire-nightly)
-pkgver=0.3.17.r89.g4ef0ef46
-pkgrel=2
+pkgver=0.3.18.r0.ge7dffd64
+pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines (git version)"
 url="https://pipewire.org"
 license=(LGPL2.1)
