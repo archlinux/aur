@@ -5,14 +5,14 @@ _ltspice_ver_roman="XVII"
 _ltspice_ver="17"
 
 pkgname=ltspice
-pkgver=17.20201204.4
-pkgrel=2
+pkgver=17.20201213.13
+pkgrel=1
 pkgdesc="SPICE simulator, schematic capture and waveform viewer. Installation based on Field Update Utility."
 arch=('x86_64')
 url="http://www.linear.com/designtools/software/"
 license=('custom')
 depends=('wine')
-makedepends=('git' 'curl' 'cksfv')
+makedepends=('git' 'curl' 'cksfv' 'icoutils' 'imagemagick' 'gendesk')
 
 _update_url="https://ltspice.analog.com/fieldsync$_ltspice_ver_roman"
 
@@ -59,6 +59,7 @@ _download_file() {
 
         if [ ! -s "$output" ] || [ $curlcode -ne 0 ]; then
             echo "Download error ($curlcode): $output / $url"
+            echo ""
         # else
             # echo "uncompressed: $output"
         fi
@@ -94,7 +95,7 @@ prepare() {
 
     _download_file "Changelog.txt" ""
 }
-N=$(($(nproc) * 2))
+N=$(($(nproc) * 4))
 open_sem $N
 build() {
     release_logs="$_update_url/release.log.gz"
@@ -107,9 +108,12 @@ build() {
     echo "Starting..."
     for entry in $(cat release.log | sed '/^#/d' | awk '{print $6"/"$8}')
     do
-        file=$(echo $entry | awk -F/ '{print $2}' | sed 's/\\/\//g' | tr -d '\n\r')
+        IFS='/' read -ra entry <<< "$entry"
+        file="${entry[1]//'\'/"/"}"
         file="${file:2}"
-        crc=$(echo $entry | awk -F/ '{print $1}')
+        file="${file//$'\n'}"
+        file="${file//$'\r'}"
+        crc=${entry[0]}
         # download files from list, checking the CRC (something is still wrong with the CRC it seems)
         run_with_lock _download_file "$file" "$crc"
         count=$((count+1))
@@ -118,7 +122,15 @@ build() {
     
     wait
 
+    echo ""
+
     echo "Downloaded all files!"
+
+    wrestool -x -t 14 "${srcdir}/${pkgname}/XVIIx64.exe" > ${srcdir}/$pkgname.ico
+    convert ${srcdir}/ltspice.ico ${srcdir}/$pkgname.png
+    rm ${srcdir}/$pkgname.ico
+
+    gendesk --pkgname "$pkgname" --pkgdesc "$pkgdesc" -n --name="LTSpice" --exec="/usr/bin/ltspice" -f
 }
 
 package()
@@ -127,6 +139,10 @@ package()
 
     # Install License
     install -Dm644 License.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    # Install Desktop file
+    install -Dm644 ${srcdir}/ltspice.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
     # Install docs to /usr/share/doc/
     install -Dm644 LTspiceHelp.chm "${pkgdir}/usr/share/doc/${pkgname}/ltspice.chm"
