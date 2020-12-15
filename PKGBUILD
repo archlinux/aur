@@ -1,8 +1,8 @@
-# Maintainer: ml <ml@visu.li>
+# Maintainer: ml <ml CALLME visu.li>
 pkgname=kubectl-krew
 _pkgname=${pkgname#kubectl-}
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Plugin manager for kubectl command-line tool'
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url='https://krew.sigs.k8s.io/'
@@ -16,7 +16,7 @@ sha256sums=('1950c8cbd76bbe27589b7e76ed8b79a2d1b97faef238376bf68a3c2a8f48b182')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
-  go mod download
+  go mod vendor
 }
 
 build() {
