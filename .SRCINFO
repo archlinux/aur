@@ -1,11 +1,12 @@
 pkgbase = sickchill-git
 	pkgdesc = Automatic video library manager for TV shows
 	pkgver = 2020.11.24.post1.r0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sickchill.github.io
 	install = sickchill-git.install
 	arch = any
 	license = GPL3
+	makedepends = jq
 	makedepends = python-virtualenv
 	optdepends = libmediainfo: determine the resolution of MKV and AVI files with no resolution in the filename
 	optdepends = unrar: for RAR archives

@@ -5,12 +5,12 @@
 
 pkgname=sickchill-git
 pkgver=2020.11.24.post1.r0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic video library manager for TV shows"
 arch=('any')
 url="https://sickchill.github.io"
 license=('GPL3')
-makedepends=('python-virtualenv')
+makedepends=('jq' 'python-virtualenv')
 optdepends=('libmediainfo: determine the resolution of MKV and AVI files with no resolution in the filename'
             'unrar: for RAR archives')
 provides=("${pkgname%-git}")
@@ -27,10 +27,8 @@ md5sums=('309b8555af7b355f16a3ec784771f426'
 export PIP_DEFAULT_TIMEOUT=60
 
 pkgver() {
-  #python -m venv pkgver
-  #pkgver/bin/pip search "${pkgname%-git}" | awk '$1 == "'${pkgname%-git}'" { gsub("[()]", ""); print $2 ".r0" }'
-
-  curl -s "https://pypi.org/search/?q=${pkgname%-git}" | sed -n 's/.*package-snippet__version">\(.*\)<.*/\1.r0/p'
+  curl -s "https://pypi.org/pypi/${pkgname%-git}/json" | jq --raw-output --join-output '.info.version'
+  printf ".r0"
 }
 
 build() {
