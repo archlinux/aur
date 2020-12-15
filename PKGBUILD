@@ -1,7 +1,7 @@
 # Maintainer: Clement Tsang (xoronth) <cjhtsang@uwaterloo.ca>
 
 pkgname=bottom
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=0
 pkgdesc="A cross-platform graphical process/system monitor with a customizable interface and a multitude of features."
 provides=('bottom')
@@ -10,16 +10,16 @@ arch=('x86_64')
 url="https://github.com/ClementTsang/bottom"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ClementTsang/bottom/archive/$pkgver.tar.gz")
 license=('MIT')
-sha512sums=('beff7c4dfe8527878df184ad3069c712c40673700168bad404f7b23fb94f793d8b35f1f5507c2fccef5064da4b69e08c19050ac4ec466c91645a79bf92bd469e')
+sha512sums=('bd2e0f326fbaa0a71a74a3457b86761201bcd6ff17272d8ea1a1fceca6caa0cd812490c6bd80636d4eeb1f48d1ecbce909a98d9f7b3b6863fb35f338ad404458')
 
 build() {
     cd $pkgname-$pkgver
-    cargo build --release --locked
+    cargo build --release --locked --no-default-features
 }
 
 check() {
     cd $pkgname-$pkgver
-    CARGO_HUSKY_DONT_INSTALL_HOOKS=true cargo test --release --locked
+    CARGO_HUSKY_DONT_INSTALL_HOOKS=true cargo test --release --locked --no-default-features
 }
 
 package() {
