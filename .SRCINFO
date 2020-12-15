@@ -8,10 +8,10 @@ pkgbase = akis-bin
 	depends = acsccid
 	depends = ccid
 	depends = pcsclite
-	depends = ccid
 	depends = jre11-openjdk
 	optdepends = jre=8: to work with uyapeditor
 	provides = akia
+	provides = akis=2.0
 	source = akis_2.0_amd64.tar::http://www.akiskart.com.tr/dosyalar/akis_2.0_amd64.tar
 	source = libpkcs11wrapper.so::https://static.turkiye.gov.tr/downloads/signlib/linux_x64/libpkcs11wrapper.so
 	source = Info.plist.xml
