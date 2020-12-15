@@ -4,7 +4,7 @@
 pkgname=lite-xl
 _pkgname=lite
 pkgver=1.14
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight text editor written in Lua'
 arch=('x86_64')
 url="https://github.com/franko/$pkgname"
@@ -34,16 +34,19 @@ prepare() {
 }
 
 build() {
-    arch-meson "$pkgname-$pkgver-$pkgname" build --reconfigure
+    cd "$pkgname-$pkgver-$pkgname"
+    arch-meson build
     meson compile -C build
 }
 
 package() {
+  cd "$pkgname-$pkgver-$pkgname"
+
   DESTDIR="$pkgdir" meson install -C build
   
-  install -Dm 644 "$_pkgname.svg" \
+  install -Dm 644 "../$_pkgname.svg" \
 	"$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-  install -Dm 644 "$pkgname-$pkgver-$pkgname/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
-  install -Dm 644 "$pkgname-$pkgver-$pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm 644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
