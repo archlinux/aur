@@ -21,6 +21,8 @@ prepare() {
   cd "${srcdir}/ParaView-v${pkgver}-RC2"
   cd VTK
   patch -p1 -i "${srcdir}"/7038.patch
+  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/7454.patch | patch -p1
+  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/7465.patch | patch -p1
   cd ../ThirdParty/catalyst/vtkcatalyst/catalyst
   patch -p1 -i "${srcdir}"/7.patch
 }
