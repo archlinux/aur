@@ -4,7 +4,7 @@
 
 pkgname=electrumx-git
 _pkgname=electrumx
-pkgver=1.15.0.r1945.148df48
+pkgver=1.16.0.r1984.fe6bf7e
 pkgrel=1
 pkgdesc="Server implementation for the Electrum wallet (git version)"
 arch=('any')
@@ -35,7 +35,7 @@ backup=('etc/electrumx/electrumx.conf')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "%s.r%s.%s" "$(git for-each-ref refs/tags --sort=-authordate --format='%(refname:short)' --count=1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(git for-each-ref refs/tags --sort=-creatordate --format='%(refname:short)' --count=1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

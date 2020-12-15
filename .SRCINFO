@@ -1,6 +1,6 @@
 pkgbase = electrumx-git
 	pkgdesc = Server implementation for the Electrum wallet (git version)
-	pkgver = 1.15.0.r1945.148df48
+	pkgver = 1.16.0.r1984.fe6bf7e
 	pkgrel = 1
 	url = https://github.com/spesmilo/electrumx
 	arch = any
