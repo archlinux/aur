@@ -1,0 +1,18 @@
+pkgbase = uyapeditor-bin
+	pkgdesc = UYAP Document Editor, UYAP Template Editor
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = https://uyap.gov.tr/UYAP-Editor
+	arch = x86_64
+	license = custom
+	depends = pcsclite
+	depends = jre11-openjdk
+	optdepends = akia: sign UYAP documents
+	optdepends = jre=8: sign UYAP documents
+	provides = uyapeditor=5.0.1
+	conflicts = uyap
+	source = https://rayp.adalet.gov.tr/resimler/2/dosya/uyap-pardus02-12-202012-08-pm.zip
+	sha1sums = 64aa327e4fc54fad61f6f3033780c4295d7c7c6e
+
+pkgname = uyapeditor-bin
+
