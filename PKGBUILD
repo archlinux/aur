@@ -5,7 +5,7 @@
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
 pkgver=2.4.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
 url="https://desktop.telegram.org/"
@@ -18,9 +18,7 @@ optdepends=('ttf-opensans: default Open Sans font family')
 
 provides=(telegram-desktop)
 conflicts=(telegram-desktop)
-#_commit="tag=v$pkgver"
-# 2.4.13 with proper XCB libs resolution
-_commit="commit=3297bdadb564da8143dabae46b53e35e126b41fa"
+_commit="tag=v$pkgver"
 
 # All the sources are Git repositories and might be adjusted when a build issue arise.
 # These files might require modifications to be up-to-date.
@@ -146,6 +144,8 @@ prepare() {
     # Official package patches
     cd cmake
     echo "target_link_libraries(external_webrtc INTERFACE jpeg)" | tee -a external/webrtc/CMakeLists.txt
+    # change the changelog path from '../changelog.txt' to '../../changelog.txt'
+    sed -i 's/\.\.\/changelog/\.\.\/\.\.\/changelog/g' "$srcdir/tdesktop/Telegram/CMakeLists.txt"
 }
 
 build() {
