@@ -1,0 +1,23 @@
+pkgbase = elasticsearch-faker-git
+	pkgdesc = CLI tool to generate fake data for Elasticsearch
+	pkgver = r10.937b254
+	pkgrel = 1
+	url = https://github.com/thombashi/elasticsearch-faker
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-click
+	depends = python-elasticsearch
+	depends = python-envinfopy
+	depends = python-faker
+	depends = python-jinja
+	depends = python-loguru
+	depends = python-tqdm
+	provides = elasticsearch-faker
+	conflicts = elasticsearch-faker
+	source = git+https://github.com/thombashi/elasticsearch-faker.git
+	sha256sums = SKIP
+
+pkgname = elasticsearch-faker-git
+
