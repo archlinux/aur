@@ -26,11 +26,9 @@ package() {
     cd "${srcdir}/OctoPrint-${pkgver}"
 
     python3 -m venv "${pkgdir}/opt/$pkgname"
-    
-    if [ ! "$CARCH" == "x86_64" ] && [ ! "$CARCH" == "i686" ]; then
-        "${pkgdir}/opt/$pkgname/bin/pip3" install wheel
-        "${pkgdir}/opt/$pkgname/bin/pip3" install netifaces
-    fi
+
+    "${pkgdir}/opt/$pkgname/bin/pip3" install wheel
+    "${pkgdir}/opt/$pkgname/bin/pip3" install netifaces
 
     "${pkgdir}/opt/$pkgname/bin/python3" setup.py install --optimize=1
     sed -i "s|${pkgdir}/opt/$pkgname|/opt/$pkgname|g" "${pkgdir}/opt/$pkgname/bin/"* # relocate without breaking plugin system
