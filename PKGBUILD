@@ -8,7 +8,7 @@ arch=("x86_64")
 url="http://kamusm.bilgem.tubitak.gov.tr/islemler/surucu_yukleme_servisi/"
 license=("custom")
 depends=("acsccid" "ccid" "pcsclite" "jre11-openjdk")
-optdepends=("jre=8: to work with uyapeditor")
+optdepends=("jre8: to work with uyapeditor")
 provides=("akia" "$_pkgname=$pkgver")
 source=("akis_2.0_amd64.tar::http://www.akiskart.com.tr/dosyalar/akis_2.0_amd64.tar"
         "libpkcs11wrapper.so::https://static.turkiye.gov.tr/downloads/signlib/linux_x64/libpkcs11wrapper.so"
