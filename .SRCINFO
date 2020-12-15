@@ -1,5 +1,5 @@
 pkgbase = linux-mainline-bcachefs
-	pkgver = 5.9.11
+	pkgver = 5.9.14
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Bcachefs
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = linux-mainline-bcachefs
 	makedepends = kmod
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.11.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.11.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.14.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.14.tar.sign
 	source = config
 	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0002-clear-patches.patch
@@ -19,7 +19,7 @@ pkgbase = linux-mainline-bcachefs
 	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.9/0008-5.9-bcachefs.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	md5sums = 530543935698468bf30dfacd4a20d84f
+	md5sums = 4727d38ee292c83c230a30a1db067983
 	md5sums = SKIP
 	md5sums = acaec169590211b789b7873145f84564
 	md5sums = a4eb432da721ad9a721d62a8bbed6d1d
@@ -36,11 +36,10 @@ pkgname = linux-mainline-bcachefs
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-mainline-bcachefs=5.9.11
+	provides = linux-mainline-bcachefs=5.9.14
 
 pkgname = linux-mainline-bcachefs-headers
 	pkgdesc = Headers and scripts for building modules for Linux-mainline-bcachefs kernel
 	depends = linux-mainline-bcachefs
-	provides = linux-mainline-bcachefs-headers=5.9.11
-	provides = linux-headers=5.9.11
+	provides = linux-mainline-bcachefs-headers=5.9.14
 
