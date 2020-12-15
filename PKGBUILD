@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=afdko-git
-pkgver=3.4.0
+pkgver=3.6.0a0.r0.g1e6c3c5
 pkgrel=1
 pkgdesc='Adobe Font Development Kit for OpenType'
 arch=('x86_64')
@@ -22,7 +22,7 @@ _py_deps=('booleanoperations'
           'ufoprocessor'
           'unicodedata2' # for fonttools
           'zopfli') # for fonttools
-depends=('python' 'psautohint' "${_py_deps[@]/#/python-}")
+depends=('python' 'psautohint>=2.2.0' "${_py_deps[@]/#/python-}")
 makedepends=('git' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 provides=("${pkgname%-git}")
@@ -34,7 +34,7 @@ pkgver() {
     cd "${pkgname%-git}"
     # Upstream develop branch doesn't reparent to master with tags :(
     git tag -f 3.4.0 6874081 2>&1 >/dev/null ||:
-    git describe --tags --abbrev=7 --match="[0-9]*" HEAD |
+    git describe --long --abbrev=7 --tags --match="[0-9]*" HEAD |
         sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
