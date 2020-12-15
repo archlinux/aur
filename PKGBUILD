@@ -8,11 +8,11 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname='easymake-git'
-pkgver=r97.60381b1
+pkgver=r151.21f6ec5
 pkgrel=1
 pkgdesc="A simple replacement to GNU Make or CMake."
 arch=('x86_64')
-url="https://undersquire.github.io/easymake"
+url="https://cleanware.github.io/"
 license=('GPL')
 groups=()
 depends=('gcc')
@@ -23,7 +23,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://gitea.com/EasySoft/easymake.git')
+source=('git+https://github.com/cleanware/easymake.git')
 noextract=()
 md5sums=('SKIP')
 
@@ -54,7 +54,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/easymake"
-	gcc src/easymake.c -Iinclude -s -Ofast -o easymake
+	gcc src/*.c src/cutils/*.c -Iinclude -Iinclude/cutils -s -Ofast -o easymake
 }
 
 check() {
