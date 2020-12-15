@@ -1,16 +1,16 @@
 pkgbase = bfg
 	pkgdesc = Removes large or troublesome blobs like git-filter-branch does, but faster.
-	pkgver = 1.13.0
-	pkgrel = 3
+	pkgver = 1.13.1
+	pkgrel = 1
 	url = http://rtyley.github.io/bfg-repo-cleaner/
 	arch = any
 	license = GPL3
 	depends = java-runtime>8
 	depends = bash
-	noextract = bfg-1.13.0.jar
-	source = https://repo1.maven.org/maven2/com/madgag/bfg/1.13.0/bfg-1.13.0.jar
+	noextract = bfg-1.13.1.jar
+	source = https://repo1.maven.org/maven2/com/madgag/bfg/1.13.1/bfg-1.13.1.jar
 	source = bfg.sh
-	sha256sums = bf22bab9dd42d4682b490d6bc366afdad6c3da99f97521032d3be8ba7526c8ce
+	sha256sums = e5b3d90e45cafb6687a7c8f56b01aeb437705e52cb4cc6bfe010f2a728cd2c26
 	sha256sums = a41ad8ff48364c1118e69f5c1c6c5c070d56ad1d2f9cd09bca3c095385a6b530
 
 pkgname = bfg
