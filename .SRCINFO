@@ -1,0 +1,16 @@
+pkgbase = die-plugins.lv2-git
+	pkgdesc = DISTRHO Imported Effect Plugins, Ardour's plugins outwith Ardour
+	pkgver = r17.cdb2065
+	pkgrel = 1
+	url = https://github.com/DISTRHO/DIE-Plugins
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = lv2
+	provides = die-plugins
+	conflicts = die-plugins
+	source = die-plugins.lv2-git::git+https://github.com/DISTRHO/DIE-Plugins
+	md5sums = SKIP
+
+pkgname = die-plugins.lv2-git
+
