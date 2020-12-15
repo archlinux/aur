@@ -1,7 +1,7 @@
 pkgbase = dendrite
 	pkgdesc = A second-generation Matrix homeserver written in Go
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matrix-org/dendrite
 	arch = x86_64
 	license = Apache
