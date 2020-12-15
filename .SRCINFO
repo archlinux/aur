@@ -1,34 +1,37 @@
 pkgbase = python-scikit-image
 	pkgdesc = Image processing routines for SciPy
-	pkgver = 0.17.2
-	pkgrel = 2
+	pkgver = 0.18.0
+	pkgrel = 1
 	url = http://scikit-image.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	checkdepends = python-pytest
-	checkdepends = python-pytest-cov
+	checkdepends = python-pytest>=5.2.0
+	checkdepends = python-pytest-cov>=2.7.0
 	checkdepends = python-pytest-flake8
 	checkdepends = python-pytest-localserver
-	makedepends = cython>=0.23.4
-	depends = python-numpy>=1.15
+	checkdepends = python-pooch
+	makedepends = cython>=0.29.21
+	depends = python-numpy>1.18.0
 	depends = python-scipy>=1.0.1
 	depends = python-matplotlib>3.0.0
 	depends = python-networkx>=2.0
-	depends = python-pillow>=4.3.0
+	depends = python-pillow>7.1.1
 	depends = python-pywavelets>=1.1.1
 	depends = python-imageio>=2.3.0
 	depends = python-tifffile>=2019.7.26
-	optdepends = python-pyqt5: for imshow(x, fancy=True) and skivi
+	optdepends = python-pyqt5: for imshow[x, fancy=True] and skivi
 	optdepends = python-qtpy
 	optdepends = freeimage: for reading various types of image file formats
 	optdepends = python-pyamg: fast cg_mg mode of random walker segmentation
 	optdepends = python-astropy: Provides FITS I/O capability
 	optdepends = python-imread: Optional I/O plugin providing most standard formats
 	optdepends = python-simpleitk: Optional I/O plugin providing a wide variety of formats. including specialized formats using in medical imaging
+	optdepends = python-dask: used to speed up certain functions
+	optdepends = python-cloudpickle: necessary to provide the processes scheduler for dask
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/s/scikit-image/scikit-image-0.17.2.tar.gz
-	sha256sums = bd954c0588f0f7e81d9763dc95e06950e68247d540476e06cb77bcbcd8c2d8b3
+	source = https://files.pythonhosted.org/packages/source/s/scikit-image/scikit-image-0.18.0.tar.gz
+	sha256sums = a0c78a117080101dbeeaa430804fe9512575cf2696ddbf822a7ee30d0776f5da
 
 pkgname = python-scikit-image
 
