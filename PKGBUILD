@@ -13,8 +13,8 @@ source=("https://github.com/matrix-org/dendrite/archive/v$pkgver/dendrite-v$pkgv
         "dendrite.sysusers"
         "tmpfiles-dendrite.conf"
         "dendrite.service")
-sha256sums=('2698ca818651c1c9b2d083df2ff9e9701209314630f406ac613f0bb0f682f92d'
-            'a0ce0d2166167515a1406125990703e9fe49785fa0a9a5cc1f46f6f7b9b1a3b5'
+sha256sums=('d67685a0403d87d5d70cd8380cd7a2462e3724f14d931e9ad5ab45bc976795ef'
+            '198f7f29dae00f89314672e64c9f264b5686bb8bcc6314df4ec54795318c07e6'
             'aba328d7a7244e82f866f9d0ead0a53e79e1590b9c449ad6d18ff2659cb5e035'
             'c8305641995461deef4dd84c5886e1cd84a0b2b11451f77d0d48076e8b5b0bfe'
             '5957e293152b982aacb2fbb7f29e889f7d174dd6a718b28ee69a1b1d368ff125')
