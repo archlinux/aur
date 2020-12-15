@@ -2,7 +2,7 @@
 # Contributor: Jon Wiersma <archaur@jonw.org>
 
 pkgname=ib-tws
-pkgver=981.2g
+pkgver=981.2h
 pkgrel=1
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
@@ -23,12 +23,12 @@ source=('LICENSE'
 	'https://download2.interactivebrokers.com/installers/tws/latest-standalone/tws-latest-standalone-linux-x64.sh')
 md5sums=('c93bcc44678aef8b9d0ec6faecb27927'
          '428c553da90bb2ea650a7f96ae076937'
-         '1ec45ec225b8dcd362634f7395e8cd0d'
+         '384f68e00a3010f7317cbfa0ffb9d719'
          '9205b5eade96d69f8e470cc52c30db4a'
          'b1cbe7273f3d0f2f0b6a09e65606b600'
-         '238637fb4ab6ae734bade474709bafb1'
+         '5762f281cc4d624a4cd3bc62f67ffebe'
          'ffa9fcfb623850e5c9e796040bdbd052'
-         'c43a6b3d867e81a67168f11fdcb75352')
+         '2fd4362cc789199fbed8eaefbd37244e')
 
 build() {
   cd ${srcdir}
