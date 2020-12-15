@@ -20,6 +20,7 @@ build() {
         -DUSE_SPHINX=OFF \
         -DCMAKE_UNITY_BUILD=ON -DCMAKE_UNITY_BUILD_BATCH_SIZE=32 \
         -DSWIG_COMPILE_FLAGS="-O1" \
+        -DCMINPACK_LIBRARIES="cminpack::cminpack" \
         .
   make
 }
