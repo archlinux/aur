@@ -1,15 +1,15 @@
 pkgbase = apidb-gtk
 	pkgdesc = API Generator for Database acces.
-	pkgver = 5.0.0
-	pkgrel = 2
+	pkgver = 5.0.12
+	pkgrel = 1
 	url = https://github.com/azaeldevel/apidb
 	arch = x86_64
 	license = GPL
 	depends = apidb-core
 	depends = gtk3
 	conflicts = apidb
-	source = https://github.com/azaeldevel/apidb/archive/5.0.0-alpha19.tar.gz
-	md5sums = f1d88bd5499fae19416af572d16c9d6a
+	source = https://github.com/azaeldevel/apidb/archive/5.0.12-beta.tar.gz
+	md5sums = f0eeeb1c7afb2a942203f5e661ced334
 
 pkgname = apidb-gtk
 
