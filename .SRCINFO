@@ -1,7 +1,7 @@
 pkgbase = r-tech1-git
 	pkgdesc = low level libraries C++ wrappers for game development
 	pkgver = r1603.df3f5f8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kazzmir/r-tech1
 	arch = x86_64
 	makedepends = git

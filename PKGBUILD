@@ -1,14 +1,14 @@
 # Maintainer: Will Foran <will.foran+aur@gmail.com>
 pkgname=r-tech1-git
-pkgver=r1603.df3f5f8
-pkgrel=1
+pkgver=r1603.df3f5f8e
+pkgrel=2
 pkgdesc="low level libraries C++ wrappers for game development"
 arch=('x86_64')
 url="https://github.com/kazzmir/r-tech1"
 license=('BSD')
 groups=()
 depends=('freetype2' 'allegro')
-makedepends=('git' 'scons') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git' 'scons' 'python2-scons')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -34,7 +34,7 @@ build() {
    sed -i -e "24 s:$:\nenv.Append(CPPPATH = ['/usr/include/freetype2']):" SConscript
 
    export CPPPATH="$CPPPATH:/usr/include/freetype2"
-   scons
+   python2 $(which scons)
 }
 
 check() {
@@ -44,7 +44,7 @@ check() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
    export PREFIX=$pkgdir/
-   scons install
+   python2 $(which scons) install
    mkdir $pkgdir/usr/
    mv $pkgdir/lib $pkgdir/usr/
 }
