@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-geos
-pkgver=3.8.1
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="C++ port of the Java Topology Suite (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!emptydirs' '!buildflags' '!strip' 'staticlibs')
 source=("https://download.osgeo.org/geos/geos-${pkgver}.tar.bz2")
-sha256sums=('4258af4308deb9dbb5047379026b4cd9838513627cb943a44e16c40e42ae17f7')
+sha256sums=('bd8082cf12f45f27630193c78bdb5a3cba847b81e72b20268356c2a4fc065269')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
