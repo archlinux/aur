@@ -8,6 +8,7 @@ arch=('any')
 url='https://sites.google.com/site/qrcodeforwn/home/qr-code-generator-for-wireless-networks'
 license=('GPL3')
 depends=('java-runtime=8' 'bash')
+makedepends=('gendesk')
 source=("${pkgname%-java}-${pkgver}.zip::https://softpedia-secure-download.com/dl/6a4f3749ea015fbc07271ee6202afc53/5fd888f5/100256346/software/portable/multimedia/graphics/qrcodegen_${pkgver}.zip"
         'qrcodegen.png')
 sha256sums=('48144b8d2f309f4324a85fcd7261244581678fb438a0a49f3a84b8ffcf07b09b'

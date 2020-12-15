@@ -5,6 +5,7 @@ pkgbase = qrcodegen-java
 	url = https://sites.google.com/site/qrcodeforwn/home/qr-code-generator-for-wireless-networks
 	arch = any
 	license = GPL3
+	makedepends = gendesk
 	depends = java-runtime=8
 	depends = bash
 	source = qrcodegen-1.14.2.zip::https://softpedia-secure-download.com/dl/6a4f3749ea015fbc07271ee6202afc53/5fd888f5/100256346/software/portable/multimedia/graphics/qrcodegen_1.14.2.zip
