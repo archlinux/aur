@@ -1,10 +1,11 @@
 pkgbase = llvm8
 	pkgver = 8.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://llvm.org/
 	arch = x86_64
 	license = custom:University of Illinois/NCSA Open Source License
 	makedepends = cmake
+	makedepends = gcc8
 	makedepends = ninja
 	makedepends = libffi
 	makedepends = libedit
@@ -18,7 +19,7 @@ pkgbase = llvm8
 	sha256sums = 44787a6d02f7140f145e2250d56c9f849334e11f9ae379827510ed72f12b75e7
 
 pkgname = llvm8
-	pkgdesc = Collection of modular and reusable compiler and toolchain technologies
+	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (8.x)
 	depends = llvm8-libs
 	depends = perl
 	optdepends = python-setuptools: for using lit (LLVM Integrated Tester)
