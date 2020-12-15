@@ -1,7 +1,7 @@
 # Maintainer: Will Foran <will.foran+aur@gmail.com>
 pkgname=paintown-git
 pkgver=r7291.ec5824f2
-pkgrel=1
+pkgrel=2
 pkgdesc="side scrolling fighting game (w/mugen)"
 arch=('x86_64')
 url="http://paintown.org"

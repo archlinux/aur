@@ -1,7 +1,7 @@
 pkgbase = paintown-git
 	pkgdesc = side scrolling fighting game (w/mugen)
 	pkgver = r7291.ec5824f2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://paintown.org
 	arch = x86_64
 	license = BSD
