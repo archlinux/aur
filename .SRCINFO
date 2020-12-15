@@ -12,7 +12,6 @@ pkgbase = kdisplay-kwinft
 	depends = hicolor-icon-theme
 	provides = kdisplay
 	conflicts = kdisplay
-	conflicts = kscreen
 	source = https://gitlab.com/kwinft/kdisplay/-/archive/kdisplay@5.20.0/kdisplay-kdisplay@5.20.0.tar.gz
 	md5sums = 2fe7504c206c9f37ceb44fbd4092568e
 
