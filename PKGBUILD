@@ -6,7 +6,7 @@
 pkgname=dolphin-duckspace
 _pkgname=dolphin
 pkgver=20.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE File Manager (with DuckSoft's Space Patch)"
 arch=(x86_64)
 url="https://kde.org/applications/system/dolphin/"
@@ -17,7 +17,6 @@ depends=(baloo-widgets knewstuff kio-extras kcmutils kparts kinit kactivities ku
 makedepends=(extra-cmake-modules kdoctools packagekit-qt5)
 optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: video thumbnails' 'kdegraphics-thumbnailers: PDF and PS thumbnails'
             'konsole: terminal panel' 'purpose: share context menu' 'packagekit-qt5: service menu installer')
-groups=(kde-applications kde-system)
 source=("https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig}
         "ducksoft-want-my-space-back.patch")
 sha256sums=('02b384e85b00aaaf1b4efd7ee7ca9d2f98991b850aa3645b7161219e9087ccd3'

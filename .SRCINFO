@@ -1,11 +1,9 @@
 pkgbase = dolphin-duckspace
 	pkgdesc = KDE File Manager (with DuckSoft's Space Patch)
 	pkgver = 20.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/applications/system/dolphin/
 	arch = x86_64
-	groups = kde-applications
-	groups = kde-system
 	license = LGPL
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
