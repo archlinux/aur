@@ -20,6 +20,8 @@ prepare() {
   curl -L https://gitlab.kitware.com/paraview/paraview/-/commit/3d48a287141eb911b4888440e09c262743b4db3c.patch | patch -p1
   cd VTK
   curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/6296.patch | patch -p1
+  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/7454.patch | patch -p1
+  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/7465.patch | patch -p1
 }
 
 build() {
