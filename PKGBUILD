@@ -26,7 +26,7 @@ prepare() {
   gendesk -n -f \
           --pkgname "$pkgname" \
           --pkgdesc "$pkgdesc" \
-          --exec "$_pkgname" \
+          --exec "$_pkgname" %F \
           --name "Lite XL" \
           --categories "Utility;TextEditor;Development" \
           --mimetype "text/plain"
