@@ -4,7 +4,7 @@
 # Repository for PR: https://gitlab.com/phnx47-aur/ledger-live
 
 pkgname=ledger-live
-pkgver=2.17.1
+pkgver=2.18.0
 pkgrel=1
 pkgdesc="Ledger Live - Desktop"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('ledger-live-bin')
 conflicts=('ledger-live-bin')
 source=("https://github.com/LedgerHQ/ledger-live-desktop/archive/v${pkgver}.tar.gz"
         "ledger-live.desktop")
-sha512sums=('66f0af5d9ed8dcdb6b88756bc8d51cd3dab11e94026071cdf8517c0112c91cd87a6afc42fe1d2db4bb5aeba6ed9a24b2006224a6acfc92c67e9a9ae0ced9082f'
+sha512sums=('019d35a0f32d73debb13650e5db7b364dc852f6bb2ab5e0f175a7b67c1053249bd17501562cd7fbb3d3d53ac403d7efe6380b7584b5ccc273d028dfe414871ee'
             'bfdf0295b7225380c78ef1a3e1351529bd5ee0cecc17b1591ef20bd144d38e3c4aba0a4115c97131517c109698cf8d6db55c0744c7c6f194e8c61a0576c64fab')
 
 extractedFolder=ledger-live-desktop-$pkgver
