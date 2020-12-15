@@ -1,15 +1,17 @@
 pkgbase = oksh
 	pkgdesc = Ported version of ksh from OpenBSD
-	pkgver = 6.8
+	pkgver = 6.8.1
 	pkgrel = 1
 	url = https://github.com/ibara/oksh/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = custom: Public Domain
+	license = ISC
+	license = BSD
 	depends = glibc
 	depends = ncurses
-	source = https://github.com/ibara/oksh/releases/download/oksh-6.8/oksh-6.8.tar.gz
-	md5sums = c5c82087e177b61d7bc65ff42dea89ce
+	source = https://github.com/ibara/oksh/releases/download/oksh-6.8.1/oksh-6.8.1.tar.gz
+	sha256sums = ddd2b27b99009a4ee58ddf58da73edf83962018066ccf33b2fe1f570a00917b0
 
 pkgname = oksh
 
