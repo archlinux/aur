@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Floating IPS
-Comment=Applies and creates IPS and BPS patches
-Exec=flips
-Icon=flips
-Terminal=false
-Categories=System;
