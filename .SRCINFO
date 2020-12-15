@@ -1,6 +1,6 @@
 pkgbase = pyinfra
 	pkgdesc = pyinfra automates infrastructure super fast at massive scale
-	pkgver = 1.1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://pyinfra.com/
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = pyinfra
 	depends = python-dateutil
 	depends = python-pywinrm
 	depends = python-configparser
-	source = https://github.com/Fizzadar/pyinfra/archive/v1.1.2.tar.gz
-	sha256sums = 90e2b86606ce8adce3ffde1da586c32549c8514b2dd371c3fe04bab97f484bfd
+	source = https://github.com/Fizzadar/pyinfra/archive/v1.3.tar.gz
+	sha256sums = 0852337af2a82723c1502b81a1326e59bb1421ae4114242940b779508b8fbb06
 
 pkgname = pyinfra
 

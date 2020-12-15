@@ -1,7 +1,7 @@
 # Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=pyinfra
-pkgver=1.1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="pyinfra automates infrastructure super fast at massive scale"
 arch=('any')
@@ -11,7 +11,7 @@ depends=("python" "python-gevent" "python-paramiko" "python-click" "python-color
          "python-docopt" "python-jinja" "python-dateutil" "python-pywinrm" "python-configparser")
 makedepends=('python-setuptools')
 source=("https://github.com/Fizzadar/pyinfra/archive/v$pkgver.tar.gz")
-sha256sums=('90e2b86606ce8adce3ffde1da586c32549c8514b2dd371c3fe04bab97f484bfd')
+sha256sums=('0852337af2a82723c1502b81a1326e59bb1421ae4114242940b779508b8fbb06')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
