@@ -2,7 +2,7 @@
 
 _pkgname='QRit'
 pkgname="${_pkgname,,}"
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Create awesome QR codes'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('granite' 'qrencode')
 makedepends=('meson' 'vala')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('a7a6694367be2a8b23530b60738a2571a21aad1ea994f4b67e800da8ab6f8a65')
+sha256sums=('ef81c02adfcdb13c86f22848c73486ab87779665ebf8a06714358c258b88e6c8')
 
 build() {
   arch-meson "${_pkgname}-${pkgver}" 'build'
