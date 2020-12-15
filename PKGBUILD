@@ -1,17 +1,19 @@
 # Maintainer: Gimmeapill <gimmeapill@gmail.com>
 # Contributor: regreddit <nik.martin@gmail.com>
+# Contributor: Holzhaus <jholthuis@mixxx.org>
 
 pkgname=mixxx-git
-pkgver=r7573
+pkgver=r7686
 pkgrel=1
 pkgdesc="Digital DJ mixing software. Git master branch (development/alpha)."
 arch=('i686' 'x86_64')
 url="http://www.mixxx.org/"
 license=('GPL2')
 groups=('pro-audio')
-depends=('libmad' 'qt5-script' 'qt5-svg' 'qt5-x11extras' 'taglib' 'libmp4v2' 'lv2' 
-'rubberband' 'portaudio' 'portmidi' 'protobuf' 'libshout' 'libid3tag' 'opusfile' 'chromaprint' 'lilv' 'upower' 'qt5-webview')
-makedepends=('git' 'scons' 'pkgconfig' 'glu' 'qt5-tools' 'flac')
+depends=('chromaprint' 'flac' 'fftw' 'hidapi' 'lame' 'libsndfile' 'libmodplug' 'libid3tag' 'liblilv-0.so' 'libmad' 'libmp4v2' 'libportaudio.so' 
+'libportmidi.so' 'librubberband.so' 'libtheora' 'opusfile' 'protobuf' 'qt5-script'
+'qt5-svg' 'qt5-x11extras' 'qtkeychain' 'soundtouch' 'speex' 'taglib' 'upower')
+makedepends=('git' 'glu' 'lv2' 'qt5-tools' 'cmake' 'vamp-plugin-sdk' 'qt5-declarative')
 provides=('mixxx')
 conflicts=('mixxx')
 source=("${pkgname%-*}::git+https://github.com/mixxxdj/mixxx.git")
@@ -19,25 +21,33 @@ md5sums=('SKIP')
 
 pkgver() {
    cd "$srcdir/${pkgname%-*}"
-#  echo "$(git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
    echo "r$(git log --pretty=oneline --first-parent | wc -l)"
 }
 
 build() {
-  cd "$srcdir/${pkgname%-*}"
-  export SCONSFLAGS="-j $(nproc)"
-  scons qtdir=/usr/lib/qt \
-		prefix=/usr install_root="$pkgdir/usr" \
-		build=release \
-		faad=1 \
-		ffmpeg=1 \
-		modplug=1 \
-		opus=1 \
-		optimize=native \
-		virtualize=0
+   mkdir -p "$srcdir/build"
+   cd "$srcdir/build" || exit 1
+   cmake \
+    -DCMAKE_INSTALL_PREFIX=/ \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DOPTIMIZE=native \
+    -DFAAD=ON \
+    -DLILV=ON \
+    -DFFMPEG=ON \
+    -DKEYFINDER=OFF \
+    -DMAD=ON \
+    -DMODPLUG=ON \
+    -DOPUS=ON \
+    -DQTKEYCHAIN=ON \
+    "$srcdir/${pkgname%-*}"
+  cmake --build . --parallel "$(nproc)"
+ }
+ 
+package() {
+	DESTDIR="$pkgdir" cmake --install $srcdir/${pkgname%-*}/cmake_build
 }
 
-package() {
-  cd "$srcdir/${pkgname%-*}"
-  scons qtdir=/usr/lib/qt prefix=/usr install_root="$pkgdir/usr" install
-}
+ package() {
+  cd "$srcdir/build" || exit 1
+  make DESTDIR="$pkgdir" install
+ }
