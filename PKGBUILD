@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=psautohint
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 epoch=2
 pkgdesc='A standalone version of AFDKO’s autohinter'
@@ -12,7 +12,7 @@ license=('Apache')
 depends=('python-fonttools' 'python-fs' 'python-lxml')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.zip")
-sha256sums=('fb5761ad7e3fa6adf0266ea8b50de6afd04e95fdef32fa4e70a318889e3bbf44')
+sha256sums=('4e3c6e62c8c890492987b69904d06cc313b79aa99104d35b60cbed60fbbc8485')
 
 build() {
 	cd "$pkgname-$pkgver"
