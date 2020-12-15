@@ -7,7 +7,7 @@ pkgbase = gopanda
 	license = custom
 	options = !strip
 	source_x86_64 = https://pandanet-igs.com/gopanda2/download/GoPanda2.AppImage
-	md5sums_x86_64 = 5d0e22f67ab1098c1796f024a667f2da
+	md5sums_x86_64 = 440b7933da29f3083c016c1fc88e218d
 
 pkgname = gopanda
 
