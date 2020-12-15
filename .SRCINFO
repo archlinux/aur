@@ -1,6 +1,6 @@
 pkgbase = yuzu-early-access
 	pkgdesc = An experimental open-source Nintendo Switch emulator/debugger
-	pkgver = 1228
+	pkgver = 1229
 	pkgrel = 1
 	url = https://yuzu-emu.org
 	arch = i686
@@ -46,8 +46,8 @@ pkgbase = yuzu-early-access
 	conflicts = yuzu-git
 	conflicts = yuzu-early-access-kiku233-git
 	conflicts = yuzu-ea-bin
-	source = yuzu.7z::https://cdn-114.anonfiles.com/X8Tcxay5pf/d8f0cf78-1607852995/YuzuEA-1228.7z
-	md5sums = fa60f0bb24017f69a3f91b7d1003a9e9
+	source = yuzu.7z::https://cdn-140.anonfiles.com/jfr3f0zdpe/cdb7ad28-1608009811/YuzuEA-1229.7z
+	md5sums = 1840fe92af1923e7a425d03cbf2fde8a
 
 pkgname = yuzu-early-access
 
