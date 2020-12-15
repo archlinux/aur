@@ -2,13 +2,13 @@
 # Contributor: Oystein Sture <oysstu (at) gmail (dot) com>
 
 pkgname=python-tensorflow-probability-git
-pkgver=r3327.3041c8e2
+pkgver=r10119.90fc5c917
 pkgrel=1
 pkgdesc="Probabilistic reasoning and statistical analysis in TensorFlow"
 url="https://github.com/tensorflow/probability"
 arch=('any')
 license=('APACHE')
-depends=('python-tensorflow' 'python-numpy' 'python-six' 'python-decorator' 'python-cloudpickle' 'python-gast' 'python-dm-tree')
+depends=('python-tensorflow' 'python-numpy' 'python-six' 'python-decorator' 'python-cloudpickle' 'python-dm-tree')
 makedepends=('python-setuptools' 'bazel')
 source=("git+https://github.com/tensorflow/probability.git")
 sha256sums=('SKIP')
