@@ -1,0 +1,17 @@
+pkgbase = libzkgroup
+	pkgdesc = Library for the Signal Private Group System.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/signalapp/zkgroup
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	depends = cargo
+	source = libzkgroup-0.7.1.tar.gz::https://github.com/signalapp/zkgroup/archive/v0.7.1.tar.gz
+	sha256sums = 6f9a0d46632c8a44f1d47cfd9c861f9a7673664360a82eee75edd582ab2f2bdb
+
+pkgname = libzkgroup
+
