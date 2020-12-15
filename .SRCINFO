@@ -1,6 +1,6 @@
 pkgbase = nwipe
 	pkgdesc = A fork of the dwipe command that will securely erase disks using a variety of recognised methods
-	pkgver = 0.28
+	pkgver = 0.30
 	pkgrel = 1
 	url = http://www.andybev.com/index.php/Nwipe
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = nwipe
 	depends = parted
 	optdepends = dmidecode
 	optdepends = smartmontools
-	source = https://github.com/martijnvanbrummelen/nwipe/archive/v0.28.tar.gz
-	md5sums = 144b4db8e59ecc39409ff67b36f51784
+	source = https://github.com/martijnvanbrummelen/nwipe/archive/v0.30.tar.gz
+	md5sums = 1139a484e02e6163d931ecddc871c4f3
 
 pkgname = nwipe
 
