@@ -4,8 +4,8 @@
 
 pkgname=caddy2
 _pkgname=caddy
-pkgver=2.2.0
-_tag=v2.2.0
+pkgver=2.2.3
+_tag=v2.2.3
 _distcommit='a509155e3cff18af793f6af5f930a71c89e05df8'
 pkgrel=1
 pkgdesc="Fast web server with automatic HTTPS"
