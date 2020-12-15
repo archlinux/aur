@@ -2,7 +2,7 @@
 
 _basename=egl-wayland
 pkgname="lib32-$_basename"
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="EGLStream-based Wayland external platform (32-bit)"
 arch=(x86_64)
@@ -11,11 +11,9 @@ license=(MIT)
 depends=('lib32-wayland' 'eglexternalplatform' "$_basename")
 makedepends=('meson' 'git')
 options=(!emptydirs)
-_commit=f08e1a570eee30cbaed4c49e761830667f5ba29e  # tags/1.1.5
-source=("git+$url#commit=$_commit"
-        glvnd.diff)
-sha256sums=('SKIP'
-            'e6d965551829448ffc2ea0fdf97d7d44c3d35be0b56fc025e6cc343f29f7b9d6')
+_commit=1b0f2b8dd906c82d20de45974f81295fda9f2bd0  # tags/1.1.6
+source=("git+$url#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_basename
@@ -24,9 +22,6 @@ pkgver() {
 
 prepare() {
   cd $_basename
-
-  # Fix build with headers from libglvnd
-  git apply -3 ../glvnd.diff
 }
 
 build() {
