@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Loki Electron Wallet
+Exec=/usr/bin/electron /opt/loki-wallet-gui/app.asar %U
+Terminal=false
+Type=Application
+Icon=loki-wallet-gui
+StartupWMClass=Loki Electron Wallet
+Comment=Modern GUI interface for Loki Currency
+Categories=Finance;
