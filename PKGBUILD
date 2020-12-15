@@ -2,7 +2,7 @@
 
 pkgname=octoprint-venv
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Web interface for 3D printers (venv installation type)"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://octoprint.org/"
