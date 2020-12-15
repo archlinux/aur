@@ -8,7 +8,7 @@
 
 pkgname=asterisk
 pkgver=18.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A complete PBX solution'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url='https://www.asterisk.org'
