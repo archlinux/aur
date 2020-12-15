@@ -1,0 +1,8 @@
+#!/bin/sh
+# /etc/rclone-mount-rc.local.d
+if test -d /etc/rclone-mount-rc.local.d; then
+    for rcscript in /etc/rclone-mount-rc.local.d/*.sh; do
+        test -r "${rcscript}" && sh ${rcscript}
+    done
+    unset rcscript
+fi

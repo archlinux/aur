@@ -1,0 +1,19 @@
+pkgbase = networkmanager-dispatcher-rclone
+	pkgdesc = Dispatcher Script for rclone
+	pkgver = 1.0
+	pkgrel = 6
+	url = http://www.gnome.org/projects/NetworkManager/
+	arch = any
+	depends = networkmanager
+	depends = rclone
+	source = 10-rclone
+	source = rclone-mount-rc.local
+	source = rc5-mount-remote-google.sh
+	source = rclone-mount-rc-local.service
+	md5sums = 0418ba88270c4452031fb59121bd2398
+	md5sums = b2401ae52edc762f118e60fe052ee4b9
+	md5sums = 9ad06564d576cc625ee34486fd0903d3
+	md5sums = b7ca0d8313d0890663dff85693eab760
+
+pkgname = networkmanager-dispatcher-rclone
+

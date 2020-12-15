@@ -1,0 +1,18 @@
+#!/bin/bash
+
+
+if [ -e /sys/fs/cgroup/systemd ]; then
+        case "$2" in
+                up)
+                        systemctl start rclone-mount-rc-local.service
+                ;;
+                down)
+                        systemctl stop rclone-mount-rc-local.service
+                ;;
+        esac
+else
+
+  if [ -e "/etc/rclone-mount-rc.local.d/rc5-mount-remote-google.sh" ]; then
+        /etc/rclone-mount-rc.local.d/rc5-mount-remote-google.sh
+  fi
+fi
