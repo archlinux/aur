@@ -74,7 +74,7 @@ device_ids() {
       printf "$id "
     done <"$readme_list"
     # fix Geforce mobile + Quadro K3100M
-    printf "1140 11a0 11b6" <"$readme_list"
+    printf "1140 11a0 11b6 2486" <"$readme_list"
 
     ret=0
   fi
