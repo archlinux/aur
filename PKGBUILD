@@ -1,9 +1,10 @@
-# Maintainer: Araragi Hokuto <kanseihonbucho@protonmail.com>
+# Maintainer: grant0417 <grant0417@protonmail.com>
+# Contributor: Araragi Hokuto <kanseihonbucho@protonmail.com>
 # Contributor: Marc Boocha <marcboocha@gmail.com>
 
 _target=x86_64-elf
 pkgname=$_target-gcc
-pkgver=9.2.0
+pkgver=10.2.0
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for x86_64-elf target'
 arch=(x86_64)
@@ -11,9 +12,12 @@ url='http://gcc.gnu.org/'
 license=(GPL LGPL)
 depends=($_target-binutils zlib libmpc mpfr gmp)
 options=(!emptydirs)
-source=("https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz")
-sha256sums=('ea6ef08f121239da5695f76c9b33637a118dcf63e24164422231917fa61fb206')
+source=("https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
+        "https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz.sig")
+sha256sums=('b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c'
+            'SKIP')
 _basedir=gcc-$pkgver
+validpgpkeys=("13975A70E63C361C73AE69EF6EEB81F8981C74C7")
 
 prepare() {
 	cd $_basedir

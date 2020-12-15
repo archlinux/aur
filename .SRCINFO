@@ -1,6 +1,6 @@
 pkgbase = x86_64-elf-gcc
 	pkgdesc = The GNU Compiler Collection - cross compiler for x86_64-elf target
-	pkgver = 9.2.0
+	pkgver = 10.2.0
 	pkgrel = 1
 	url = http://gcc.gnu.org/
 	arch = x86_64
@@ -12,8 +12,11 @@ pkgbase = x86_64-elf-gcc
 	depends = mpfr
 	depends = gmp
 	options = !emptydirs
-	source = https://mirrors.kernel.org/gnu/gcc/gcc-9.2.0/gcc-9.2.0.tar.xz
-	sha256sums = ea6ef08f121239da5695f76c9b33637a118dcf63e24164422231917fa61fb206
+	source = https://mirrors.kernel.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.xz
+	source = https://mirrors.kernel.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.xz.sig
+	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
+	sha256sums = b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c
+	sha256sums = SKIP
 
 pkgname = x86_64-elf-gcc
 
