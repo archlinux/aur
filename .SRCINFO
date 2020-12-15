@@ -1,0 +1,23 @@
+pkgbase = akis-bin
+	pkgdesc = PKCS#11 library and utility tools for Akis Smartcard
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://kamusm.bilgem.tubitak.gov.tr/islemler/surucu_yukleme_servisi/
+	arch = x86_64
+	license = custom
+	depends = acsccid
+	depends = ccid
+	depends = pcsclite
+	depends = ccid
+	depends = jre11-openjdk
+	optdepends = jre=8: to work with uyapeditor
+	provides = akia
+	source = akis_2.0_amd64.tar::http://www.akiskart.com.tr/dosyalar/akis_2.0_amd64.tar
+	source = libpkcs11wrapper.so::https://static.turkiye.gov.tr/downloads/signlib/linux_x64/libpkcs11wrapper.so
+	source = Info.plist.xml
+	sha1sums = a46b1405c348cd9297c6f0b7e50863641ca66189
+	sha1sums = 06c78175a51e14e08ab43f5ae972d0484124aed5
+	sha1sums = 2b979d6972e5928847f218352c98e0cd4631f5be
+
+pkgname = akis-bin
+
