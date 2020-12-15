@@ -1,0 +1,19 @@
+pkgbase = everfight-git
+	pkgdesc = Space shooter/Bullet hell made for Game Off 2020
+	pkgver = r42.c283cb7
+	pkgrel = 1
+	url = https://snoozetime.itch.io/everfight-gameoff2020
+	arch = x86_64
+	arch = aarch64
+	license = CC-BY-3.0
+	makedepends = git
+	makedepends = cargo
+	depends = glfw
+	depends = alsa-lib
+	provides = everfight
+	conflicts = everfight
+	source = git+https://github.com/SnoozeTime/spacegame
+	sha256sums = SKIP
+
+pkgname = everfight-git
+

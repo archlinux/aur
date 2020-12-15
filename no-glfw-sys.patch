@@ -1,0 +1,18 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 654cd56..6fe9588 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -8,11 +8,11 @@ default-run = "spacegame"
+ 
+ [dependencies]
+ luminance = "0.43"
+-luminance-glfw = "0.14"
++luminance-glfw = { version = "0.14", default-features = false, features = ["log-errors"] }
+ luminance-gl = "0.16"
+ luminance-windowing = "0.9"
+ luminance-derive = "0.6"
+-glfw = "0.41"
++glfw = { version = "0.41", default-features = false }
+ image = { version = "0.23.12", default-features = false, features = ["png"] }
+ 
+ # ecs
