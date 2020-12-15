@@ -13,4 +13,5 @@ md5sums=("f1b6caa3a4726fd60eb85ea54313c324")
 
 package() {
 	tar -xf data.tar.gz -C "${pkgdir}"
+	chown -R cups:cups "${pkgdir}/usr/local/Brother/Printer/dcp385c/inf"
 }
