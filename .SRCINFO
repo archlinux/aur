@@ -31,6 +31,7 @@ pkgbase = obs-studio-browser
 	optdepends = swig: Scripting
 	optdepends = luajit: Lua scripting
 	optdepends = python: Python scripting
+	optdepends = v4l2loopback-dkms: Virtual camera output
 	provides = obs-studio=26.1.0
 	conflicts = obs-studio
 	source = obs-studio-browser::git+https://github.com/obsproject/obs-studio.git#tag=26.1.0
