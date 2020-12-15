@@ -1,7 +1,7 @@
 pkgbase = greenflare
-	pkgdesc = A light weight SEO web crawler an analysis tool
+	pkgdesc = A light weight SEO web crawler and analysis tool
 	pkgver = 0.97
-	pkgrel = 2
+	pkgrel = 3
 	url = https://greenflare.io
 	arch = any
 	license = GPLv3

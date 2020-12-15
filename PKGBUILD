@@ -4,8 +4,8 @@
 _pkgname=greenflare
 pkgname=greenflare
 pkgver=0.97
-pkgrel=2
-pkgdesc='A light weight SEO web crawler an analysis tool'
+pkgrel=3
+pkgdesc='A light weight SEO web crawler and analysis tool'
 arch=('any')
 url='https://greenflare.io'
 license=('GPLv3')
