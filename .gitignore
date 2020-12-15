@@ -1,5 +1,4 @@
 /pkg
-/*.pkg.tar.xz
-/*.tar.gz
+/*.tar.*
 /src
 /shyaml
