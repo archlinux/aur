@@ -1,8 +1,8 @@
 # Maintainer: David Anderson <dave@natulte.net>
 
 pkgname="tailscale"
-_version="1.2.8"
-pkgver="1.2.8"
+_version="1.2.10"
+pkgver="1.2.10"
 pkgrel="1"
 pkgdesc="A mesh VPN that makes it easy to connect your devices, wherever they are."
 arch=("x86_64")
