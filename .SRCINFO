@@ -1,7 +1,7 @@
 pkgbase = system76-acpi-dkms
 	pkgdesc = System76 ACPI Driver (DKMS)
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/system76-acpi-dkms
 	arch = x86_64
 	license = GPL

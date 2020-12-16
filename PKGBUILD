@@ -3,7 +3,7 @@
 pkgname=system76-acpi-dkms
 _pkgname=system76-acpi
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="System76 ACPI Driver (DKMS)"
 arch=('x86_64')
 url="https://github.com/pop-os/system76-acpi-dkms"
@@ -25,6 +25,9 @@ package() {
     [ -f "$file" ] || continue
     install -D -m644 -t "${install_dir}/" "${file}"
   done
+
+  # Install udev hwdb files
+  install -Dm644 -t "${pkgdir}/usr/lib/udev/hwdb.d/" lib/udev/hwdb.d/*
 
   # Edit and install dkms configuration
   sed "s/#MODULE_VERSION#/${pkgver}/" "debian/system76-acpi-dkms.dkms" > "${install_dir}/dkms.conf"
