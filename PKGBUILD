@@ -89,7 +89,7 @@ build() {
       -DVIDEO_X11_XSHAPE=OFF \
       -DJACK=OFF \
       -DJACK_SHARED=OFF
-  ninja -C build
+  ninja $NINJAFLAGS -C build
 }
 
 package() {
