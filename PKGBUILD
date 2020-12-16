@@ -9,7 +9,7 @@
 
 pkgname=gstm
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Gnome SSH Tunnel Manager - Gtk3 Edition"
 arch=('i686' 'x86_64')
 url="https://github.com/dallenwilson/gstm"
@@ -22,13 +22,13 @@ source=(https://github.com/dallenwilson/gstm/releases/download/${pkgver}/gstm-${
 sha256sums=('77eb25e3aedc6ecf6f00812569200424d6d327a296289f4141b6881d9be3e655')
 
 build() {
-   cd ${srcdir}/gstm #-${pkgver}
+   cd ${srcdir}/gstm-${pkgver}
    ./autogen.sh
    ./configure --prefix=/usr
    make || return 1
 }
 
 package() {
-   cd ${srcdir}/gstm #-${pkgver}
+   cd ${srcdir}/gstm-${pkgver}
    make DESTDIR=${pkgdir} install
 }
