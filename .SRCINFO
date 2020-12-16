@@ -1,6 +1,6 @@
 pkgbase = eclipse-arm
 	pkgdesc = Eclipse Embedded CDT (C/C++ Development Tools)
-	pkgver = 5.1.4
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://projects.eclipse.org/projects/iot.embed-cdt
 	install = eclipse-arm.install
@@ -9,8 +9,8 @@ pkgbase = eclipse-arm
 	makedepends = unzip
 	depends = eclipse-cpp
 	options = !strip
-	source = https://download.eclipse.org/embed-cdt/releases/5.1.4/ilg.gnumcueclipse.repository-5.1.4-202010290820.zip
-	sha512sums = 1cbb8614cbb1925a3d2a6cef8a7484af2e3dcf9bde80d5c5ada206241797251746f7e5073fc89f08abfa4201b8db2d88ac0f3efedd1b9b89bcf2d0c41d8d3916
+	source = https://download.eclipse.org/embed-cdt/releases/5.2.1/ilg.gnumcueclipse.repository-5.2.1-202010292017.zip
+	sha512sums = fc8491c4cc264686edf6d77cf833e197eb076a7c546d0b19f9890952d3c96a46f21b56836882faed5c18d079c25f0bc12a86910236e22a558ef44c9c37ca2d89
 
 pkgname = eclipse-arm
 
