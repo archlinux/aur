@@ -1,6 +1,6 @@
 pkgbase = ignition-cmake
 	pkgdesc = Provides modules that are used to find dependencies of ignition projects and generate cmake targets for consumers of ignition projects to link against.
-	pkgver = 2.5.0
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://ignitionrobotics.org/libs/cmake
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ignition-cmake
 	depends = pkg-config
 	depends = ruby-ronn
 	depends = doxygen
-	source = https://github.com/ignitionrobotics/ign-cmake/archive/ignition-cmake2_2.5.0.tar.gz
-	sha256sums = 7b8ae0f55c066776f991250f4e84e8af57e76ccf69f9a841a8906a3805e368de
+	source = https://github.com/ignitionrobotics/ign-cmake/archive/ignition-cmake2_2.6.1.tar.gz
+	sha256sums = 06759f076eca56de43a8df258ec04c166c0c4aee4c37ef3119c75405048a034b
 
 pkgname = ignition-cmake
 
