@@ -5,6 +5,7 @@ pkgbase = natbypassd
 	url = https://gitlab.com/scpketer/natbypassd
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = bash
 	depends = autossh
 	depends = systemd
