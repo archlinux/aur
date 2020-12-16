@@ -1,0 +1,15 @@
+pkgbase = imgdiff
+	pkgdesc = Faster than the fastest in the world pixel-by-pixel image difference tool.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/n7olkachev/imgdiff
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = https://github.com/n7olkachev/imgdiff/archive/v1.0.0.tar.gz
+	md5sums = a8f7958f42ed207811a65d31b2177c92
+
+pkgname = imgdiff
+
