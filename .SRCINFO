@@ -1,0 +1,14 @@
+pkgbase = pihole-openrc
+	pkgdesc = An openrc start script for pihole FTL! It's not smart, but it works!
+	pkgver = 0.1
+	pkgrel = 0
+	url = https://github.com/LillyWho/pihole-FTL-openrc
+	arch = any
+	license = GPLv3
+	makedepends = git
+	provides = pihole-openrc
+	source = pihole-openrc::git://github.com/LillyWho/pihole-FTL-openrc.git
+	md5sums = skip
+
+pkgname = pihole-openrc
+
