@@ -5,7 +5,6 @@ pkgbase = ibus-daemon
 	url = https://github.com/KSXGitHub/ibus-daemon.pkgbuild.git
 	arch = any
 	license = MIT
-	makedepends = pkgconf
 	depends = systemd
 	depends = ibus
 	depends = sh
