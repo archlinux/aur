@@ -6,6 +6,7 @@ arch=("any")
 url="https://gitlab.com/scpketer/natbypassd"
 license=("GPL3")
 depends=("bash" "autossh" "systemd")
+makedepends=("git")
 source=("git+https://gitlab.com/scpketer/natbypassd.git#tag=v1.1")
 backup=("etc/natbypassd.d/relays.conf" "etc/natbypassd.d/routes.conf")
 sha256sums=("SKIP")
