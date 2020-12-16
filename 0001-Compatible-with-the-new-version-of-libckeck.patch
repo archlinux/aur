@@ -1,0 +1,87 @@
+From d568475eb7291bc72f585a116319b05d80b818e1 Mon Sep 17 00:00:00 2001
+From: Clarence <xjh.azzbcc@gmail.com>
+Date: Fri, 11 Dec 2020 18:23:24 +0800
+Subject: [PATCH] Compatible with the new version of libckeck.
+
+---
+ s2check/s2check.h |  7 ++++++-
+ s2check/s2tcase.c | 20 ++++++++++++++++++--
+ 2 files changed, 24 insertions(+), 3 deletions(-)
+
+diff --git a/s2check/s2check.h b/s2check/s2check.h
+index 47b9455..a3573aa 100644
+--- a/s2check/s2check.h
++++ b/s2check/s2check.h
+@@ -45,14 +45,19 @@ SOFIA_BEGIN_DECLS
+ #undef tcase_add_loop_test
+ 
+ /* Redirect tcase_add_test() to our function */
++#if CHECK_MINOR_VERSION >= 13
++#define tcase_add_test(tc, ttest) s2_tcase_add_test(tc, ttest, 0, 0, 1)
++
++void s2_tcase_add_test(TCase *, const TTest *, int signo, int start, int end);
++#else
+ #define tcase_add_test(tc, tf) s2_tcase_add_test(tc, tf, "" #tf "", 0, 0, 1)
+ 
+ void s2_tcase_add_test(TCase *, TFun, char const *name,
+ 		       int signo, int start, int end);
++#endif
+ 
+ #define tcase_add_loop_test(tc, tf, s, e) \
+   s2_tcase_add_test(tc, tf, "" #tf "", 0, (s), (e))
+-
+ void s2_select_tests(char const *pattern);
+ 
+ SOFIA_END_DECLS
+diff --git a/s2check/s2tcase.c b/s2check/s2tcase.c
+index 382aaa3..955a731 100644
+--- a/s2check/s2tcase.c
++++ b/s2check/s2tcase.c
+@@ -46,10 +46,18 @@ static char const * const *test_patterns = default_patterns;
+  * A special version of tcase_add_test() that inserts test function into
+  * tcase only if its name matches given pattern.
+  */
+-void s2_tcase_add_test(TCase *tc, TFun tf, char const *name,
+-		       int signo, int start, int end)
++void s2_tcase_add_test(TCase *tc,
++#if CHECK_MINOR_VERSION >= 13
++                       const TTest *ttest,
++#else
++                       TFun tf, char const *name,
++#endif
++                       int signo, int start, int end)
+ {
+   char const * const *patterns;
++#if CHECK_MINOR_VERSION >= 13
++  const char *name = ttest->name;
++#endif
+ 
+ #if HAVE_FNMATCH_H
+   for (patterns = test_patterns; *patterns; patterns++) {
+@@ -57,7 +65,11 @@ void s2_tcase_add_test(TCase *tc, TFun tf, char const *name,
+       if (strcmp(*patterns, "*")) {
+ 	printf("%s: selected\n", name);
+       }
++#if CHECK_MINOR_VERSION >= 13
++      _tcase_add_test(tc, ttest, signo, 0, start, end);
++#else
+       _tcase_add_test(tc, tf, name, signo, 0, start, end);
++#endif
+       return;
+     }
+   }
+@@ -67,7 +79,11 @@ void s2_tcase_add_test(TCase *tc, TFun tf, char const *name,
+       if (strcmp(*patterns, "*")) {
+ 	printf("%s: selected\n", name);
+       }
++#if CHECK_MINOR_VERSION >= 13
++      _tcase_add_test(tc, ttest, signo, 0, start, end);
++#else
+       _tcase_add_test(tc, tf, name, signo, 0, start, end);
++#endif
+       return;
+     }
+   }
+-- 
+2.29.2
+
