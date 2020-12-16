@@ -10,9 +10,9 @@
 wxport QT_QPA_PLATFORMTHEME='graceful'
 ```
 
-2. 
+2. yay 仓库地址 
 
 ```
-glib-compile-schemas /usr/share/glib-2.0/schemas
+ssh://aur@aur.archlinux.org/graceful-platform-theme.git
 ```
 
