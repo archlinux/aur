@@ -19,6 +19,7 @@ pkgbase = photoqt
 	depends = hicolor-icon-theme
 	depends = libarchive
 	depends = kimageformats
+	depends = pugixml
 	optdepends = libqpsd-git: PSB/PSD support
 	optdepends = xcftools: XCF support
 	source = http://photoqt.org/pkgs/photoqt-2.0.tar.gz
