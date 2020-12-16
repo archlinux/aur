@@ -21,13 +21,13 @@ if [[ -v pulseaudio_ver ]]; then
 fi
 
 
-pkgrel="4"
+pkgrel="5"
 pkgdesc="PulseAudio Bluetooth modules with SBC, AAC, APTX, APTX-HD, Sony LDAC (A2DP codec) support"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/EHfive/pulseaudio-modules-bt"
 license=('GPL3')
 depends=("pulseaudio>=12.0" "bluez" "bluez-libs" "sbc" "libfdk-aac.so")
-makedepends=("cmake>=3.0" "libavcodec.so>=58" "libldac" "git")
+makedepends=("libpulse" "cmake>=3.0" "libavcodec.so>=58" "libldac" "git")
 optdepends=("libavcodec.so>=58: aptX Classic, aptX HD support"
             "libldac: LDAC support")
 provides=("pulseaudio-bluetooth" "pulseaudio-modules-bt-git")
