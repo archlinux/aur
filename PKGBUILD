@@ -2,7 +2,7 @@
 
 pkgname=protonvpn-linux-gui
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ProtonVPN Linux application"
 arch=("x86_64")
 url="https://github.com/ProtonVPN/linux-gui/"
@@ -17,6 +17,8 @@ package() {
 	python setup.py install --optimize=1 --root="$pkgdir"
 	install -d -m755 "${pkgdir}/usr/share/applications"
 
+_pydir=$(python -c 'import site; print(site.getsitepackages()[0])')
+
 # Gui Desktop Icon
 cat <<EOF > "${pkgdir}/usr/share/applications/protonvpn-gui.desktop"
 [Desktop Entry]
@@ -24,7 +26,7 @@ Name=ProtonVPN GUI
 Version=2.0.0
 Comment=${pkgdesc}
 Exec=protonvpn-gui
-Icon=/usr/lib/python3.8/site-packages/linux_gui/resources/img/logo/protonvpn_logo.png
+Icon=${_pydir}/usr/lib/python3.8/site-packages/linux_gui/resources/img/logo/protonvpn_logo.png
 Terminal=false
 StartupNotify=false
 Type=Application
@@ -38,7 +40,7 @@ Name=ProtonVPN GUI Tray
 Version=2.0.0
 Comment=Unofficial ProtonVPN GUI Tray
 Exec=protonvpn-tray
-Icon=/usr/lib/python3.8/site-packages/linux_gui/resources/img/logo/protonvpn_logo.png
+Icon=${_pydir}/usr/lib/python3.8/site-packages/linux_gui/resources/img/logo/protonvpn_logo.png
 Terminal=false
 StartupNotify=false
 Type=Application

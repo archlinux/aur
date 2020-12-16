@@ -1,7 +1,7 @@
 pkgbase = protonvpn-linux-gui
 	pkgdesc = ProtonVPN Linux application
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProtonVPN/linux-gui/
 	arch = x86_64
 	license = GPL3
