@@ -1,13 +1,13 @@
 pkgbase = thunderbird-nightly-bin
-	pkgver = 84.0a1.20201029
+	pkgver = 86.0a1.20201215
 	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird
 	arch = x86_64
 	license = MPL
 	license = GPL
 	license = LGPL
-	source = https://download-installer.cdn.mozilla.net/pub/thunderbird/nightly/latest-comm-central/thunderbird-84.0a1.en-US.linux-x86_64.txt
-	source = https://download-installer.cdn.mozilla.net/pub/thunderbird/nightly/latest-comm-central/thunderbird-84.0a1.en-US.linux-x86_64.tar.bz2
+	source = https://download-installer.cdn.mozilla.net/pub/thunderbird/nightly/latest-comm-central/thunderbird-86.0a1.en-US.linux-x86_64.txt
+	source = https://download-installer.cdn.mozilla.net/pub/thunderbird/nightly/latest-comm-central/thunderbird-86.0a1.en-US.linux-x86_64.tar.bz2
 	source = thunderbird-nightly.desktop
 	source = vendor.js
 	source = policies.json
@@ -42,7 +42,7 @@ pkgname = thunderbird-nightly-bin
 	depends = sqlite
 	depends = startup-notification
 	optdepends = libcanberra: for sound support
-	provides = thunderbird=84.0a1
+	provides = thunderbird=86.0a1
 	provides = thunderbird-nightly
 	conflicts = thunderbird-nightly
 
