@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-libheif
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="HEIF file format decoder and encoder. (mingw-w64)"
 url="https://github.com/strukturag/libheif"
@@ -18,7 +18,7 @@ arch=("any")
 options=(!strip !buildflags staticlibs)
 optdepends=()
 sha256sums=(
-	"2b0d5cf7e74d7aa45da4fe53fb8c1fbac04d2b1e2bef79723d6ef154d0514deb"
+	"317a44bf157ba297638ab5a258040ef6ec4895d620cd58f52195f3f89c9eea28"
 )
 source=(
 	"https://github.com/strukturag/libheif/archive/v${pkgver}.tar.gz"
