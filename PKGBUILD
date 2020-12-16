@@ -3,11 +3,11 @@
 pkgname=xaskpass
 pkgdesc="A lightweight passphrase dialog"
 url="https://github.com/user827/xaskpass.git"
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
-makedepends=('git' 'rust' 'cargo')
+makedepends=('git' 'rust' 'cargo' 'clang')
 depends=(libxcb xcb-util-errors pango cairo libxkbcommon
     libxkbcommon-x11)
 provides=('x11-ssh-askpass')
