@@ -1,22 +1,26 @@
-# Maintainer: Stephen Smith <stephen304@gmail.com>
+# Maintainer: Simon Kronberg <Simon.Kronberg at gmail dot com>
+
 pkgname=lemonbar-xft-git
 _pkgname=bar
-pkgver=269.00a3fe6
+pkgver=280.0042efd
 pkgrel=1
 pkgdesc="A lightweight xcb based bar with ported xft support."
 arch=('i686' 'x86_64')
-url="https://github.com/krypt-n/bar"
+url="https://gitlab.com/protesilaos/lemonbar-xft"
 license=('MIT')
 depends=('libxcb' 'libxft' 'libx11')
 makedepends=('git')
 provides=('bar-aint-recursive' 'lemonbar')
 conflicts=('bar-aint-recursive' 'lemonbar')
-source=("$_pkgname::git+https://github.com/krypt-n/bar.git#branch=xft-port")
+source=("$_pkgname::git+https://gitlab.com/protesilaos/lemonbar-xft.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  echo $(git rev-list --count xft-port).$(git rev-parse --short xft-port)
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {

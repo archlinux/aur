@@ -1,8 +1,8 @@
 pkgbase = lemonbar-xft-git
 	pkgdesc = A lightweight xcb based bar with ported xft support.
-	pkgver = 269.00a3fe6
+	pkgver = 280.0042efd
 	pkgrel = 1
-	url = https://github.com/krypt-n/bar
+	url = https://gitlab.com/protesilaos/lemonbar-xft
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = lemonbar-xft-git
 	provides = lemonbar
 	conflicts = bar-aint-recursive
 	conflicts = lemonbar
-	source = bar::git+https://github.com/krypt-n/bar.git#branch=xft-port
+	source = bar::git+https://gitlab.com/protesilaos/lemonbar-xft.git
 	sha256sums = SKIP
 
 pkgname = lemonbar-xft-git
