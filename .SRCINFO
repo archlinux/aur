@@ -1,6 +1,6 @@
 pkgbase = python-aigpy
 	pkgdesc = Python Common Lib
-	pkgver = 2020.11.10.0
+	pkgver = 2020.12.16.0
 	pkgrel = 1
 	url = https://github.com/yaronzz/AIGPY
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = python-aigpy
 	depends = python-requests
 	depends = python-colorama
 	depends = python-mutagen
-	source = https://pypi.org/packages/source/a/aigpy/aigpy-2020.11.10.0.tar.gz
+	source = https://pypi.org/packages/source/a/aigpy/aigpy-2020.12.16.0.tar.gz
 	source = https://raw.githubusercontent.com/yaronzz/AIGPY/master/LICENSE
-	sha256sums = 9da197e4ed00cd32b80d3a5d92cc51343ccb70171cd136c7be4974a9250859fb
+	sha256sums = aa844a3d1095daa6748cc228258d3008181e713be3e4f5e48b1b677b1cd0ef94
 	sha256sums = 83e4dd21429a91fb7cea67a476032a9641425e5355df2e0f589a738b6ec9fd2c
 
 pkgname = python-aigpy
