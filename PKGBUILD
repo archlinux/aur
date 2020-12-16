@@ -1,7 +1,7 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=bauerbill
 pkgver=2020
-pkgrel=1
+pkgrel=2
 pkgdesc='Extension of Powerpill with AUR and ABS support.'
 arch=(any)
 license=(GPL)
@@ -29,13 +29,7 @@ package ()
   install -Dm644 "bauerbill.json" "$pkgdir/etc/bauerbill/bauerbill.json"
   install -Dm644 "man/bauerbill.json.1.gz" "$pkgdir/usr/share/man/man1/bauerbill.json.1.gz"
   install -Dm644 "bauerbill-bash-completion.sh" "$pkgdir/usr/share/bash-completion/completions/bauerbill"
-  for bb in bauerbill bb-*
-  do
-    if [[ -x $bb ]]
-    then
-      install -Dm755 "$bb" "$pkgdir/usr/bin/$bb"
-    fi
-  done
+  install -Dm755 "bb-wrapper" "$pkgdir/usr/bin/bb-wrapper"
   install -Dm755 makepkgx "$pkgdir/usr/bin/makepkgx"
 }
 
