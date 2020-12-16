@@ -5,3 +5,4 @@ helper.txt
 *.deb
 pkg/
 src/
+clean.sh
