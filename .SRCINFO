@@ -11,7 +11,7 @@ pkgbase = libedssharp
 	source = libedssharp-0.8.zip::https://github.com/robincornelius/libedssharp/archive/0.8.zip
 	source = EDSEditor.desktop
 	md5sums = f8f2018f6135dce78e7c199180fabaee
-	md5sums = 595dd0061e6f4bec0b8f620e1f4fff8e
+	md5sums = 3c72fa86610e8c060cc705d3d9596005
 
 pkgname = libedssharp
 

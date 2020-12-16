@@ -20,7 +20,7 @@ source=("${_pkgname}-${pkgver}.zip::https://github.com/robincornelius/libedsshar
 	"${_APP}.desktop")
 
 md5sums=('f8f2018f6135dce78e7c199180fabaee'
-         '595dd0061e6f4bec0b8f620e1f4fff8e')
+         '3c72fa86610e8c060cc705d3d9596005')
 
 
 build() {
