@@ -3,7 +3,7 @@
 pkgname=st-sane-defaults
 _pkgname=st
 pkgver=0.8.2
-pkgrel=5
+pkgrel=6
 pkgdesc='A simple terminal emulator, with configurations fit for the average user.'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
@@ -24,6 +24,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
+  sed -i '/tic /d' Makefile
   make
 }
 
