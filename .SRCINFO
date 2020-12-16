@@ -1,6 +1,6 @@
 pkgbase = gstm
 	pkgdesc = Gnome SSH Tunnel Manager - Gtk3 Edition
-	pkgver = 1.3.6
+	pkgver = 1.3.7
 	pkgrel = 1
 	url = https://github.com/dallenwilson/gstm
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = gstm
 	provides = gstm
 	conflicts = gstm-git
 	conflicts = gstm-gtk2
-	source = git+https://github.com/dallenwilson/gstm.git#commit=75d363138f3ba092e2d6a0464eaab33b2009ee90
-	sha256sums = SKIP
+	source = https://github.com/dallenwilson/gstm/releases/download/1.3.7/gstm-1.3.7.tar.gz
+	sha256sums = 77eb25e3aedc6ecf6f00812569200424d6d327a296289f4141b6881d9be3e655
 
 pkgname = gstm
 
