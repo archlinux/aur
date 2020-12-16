@@ -9,11 +9,10 @@ pkgname=(
   'xorg-server-xephyr-git'
   'xorg-server-xvfb-git'
   'xorg-server-xnest-git'
-  'xorg-server-xwayland-git'
   'xorg-server-common-git'
   'xorg-server-devel-git')
 _pkgbase='xserver'
-pkgver=1.20.0.r755.g28ed4b95e
+pkgver=1.20.0.r800.ge4a9f0bb4
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -62,8 +61,8 @@ prepare() {
     -D xcsecurity=true \
     -D xorg=true \
     -D xephyr=true \
-    -D xwayland=true \
-    -D xwayland_eglstream=true \
+    -D xwayland=false \
+    -D xwayland_eglstream=false \
     -D glamor=true \
     -D udev=true \
     -D systemd_logind=true \
@@ -138,7 +137,7 @@ package_xorg-server-git() {
   _install fakeinstall/usr/lib/xorg/modules/*
   _install fakeinstall/usr/share/X11/xorg.conf.d/10-quirks.conf
   _install fakeinstall/usr/share/man/man1/{Xorg,Xorg.wrap,cvt,gtf}.1
-  _install fakeinstall/usr/share/man/man4/{exa,fbdevhw,modesetting}.4
+  _install fakeinstall/usr/share/man/man4/{exa,fbdevhw,modesetting,inputtestdrv}.4
   _install fakeinstall/usr/share/man/man5/{Xwrapper.config,xorg.conf,xorg.conf.d}.5
 
   # distro specific files must be installed in /usr/share/X11/xorg.conf.d
@@ -195,21 +194,6 @@ package_xorg-server-xnest-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
 }
 
-package_xorg-server-xwayland-git() {
-  _pkgname='xorg-server-xwayland'
-  provides=('xorg-server-xwayland')
-  conflicts=('xorg-server-xwayland')
-  pkgdesc="run X clients under wayland (git version)"
-  depends=(libxfont2 libepoxy libunwind systemd-libs libgl pixman xorg-server-common-git
-           nettle libtirpc)
-
-  _install fakeinstall/usr/bin/Xwayland
-  _install fakeinstall/usr/share/man/man1/Xwayland.1
-
-  # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
-}
-
 package_xorg-server-devel-git() {
   _pkgname='xorg-server-devel'
   provides=('xorg-server-devel')
@@ -221,7 +205,6 @@ package_xorg-server-devel-git() {
 
   _install fakeinstall/usr/include/xorg/*
   _install fakeinstall/usr/lib/pkgconfig/xorg-server.pc
-  _install fakeinstall/usr/lib/pkgconfig/xwayland.pc
   _install fakeinstall/usr/share/aclocal/xorg-server.m4
 
   # license

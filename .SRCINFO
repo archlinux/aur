@@ -1,5 +1,5 @@
 pkgbase = xorg-server-git
-	pkgver = 1.20.0.r755.g28ed4b95e
+	pkgver = 1.20.0.r800.ge4a9f0bb4
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xorg/xserver.git
 	arch = x86_64
@@ -111,20 +111,6 @@ pkgname = xorg-server-xnest-git
 	depends = libtirpc
 	provides = xorg-server-xnest
 	conflicts = xorg-server-xnest
-
-pkgname = xorg-server-xwayland-git
-	pkgdesc = run X clients under wayland (git version)
-	depends = libxfont2
-	depends = libepoxy
-	depends = libunwind
-	depends = systemd-libs
-	depends = libgl
-	depends = pixman
-	depends = xorg-server-common-git
-	depends = nettle
-	depends = libtirpc
-	provides = xorg-server-xwayland
-	conflicts = xorg-server-xwayland
 
 pkgname = xorg-server-common-git
 	pkgdesc = Xorg server common files (git version)
