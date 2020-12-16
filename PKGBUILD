@@ -3,7 +3,7 @@
 
 pkgname=python-roman
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Integer to Roman numerals converter"
 url="https://github.com/zopefoundation/roman"
 makedepends=('python-setuptools')

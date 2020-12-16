@@ -1,7 +1,7 @@
 pkgbase = python-roman
 	pkgdesc = Integer to Roman numerals converter
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zopefoundation/roman
 	arch = any
 	license = PSF
