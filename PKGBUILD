@@ -1,27 +1,33 @@
+# Maintainer: Ian Stride <ianstride@gmail.com>
+# Contributor: Roberto Catini <roberto.catini@gmail.com>
+
 pkgname=rippled
 pkgrel=1
-pkgver=1.4.0
+pkgver=1.6.0
 pkgdesc="Ripple peer-to-peer network daemon"
 arch=('x86_64')
 url="https://github.com/ripple/rippled"
 license=('custom:ISC')
 backup=("etc/opt/ripple/rippled.cfg" "etc/opt/ripple/validators.txt")
-depends=('protobuf' 'boost-libs' 'openssl')
+depends=('protobuf' 'boost-libs' 'libarchive')
 makedepends=('git' 'cmake' 'boost' 'clang' 'doxygen')
-source=("https://github.com/ripple/rippled/archive/$pkgver.zip")
-sha256sums=('ca4626c7e94b28db9c0fcdbaf3ea135199d09fa8c1a841006a6c952845d63cca')
+source=("$pkgname-$pkgver.zip::https://github.com/ripple/rippled/archive/$pkgver.zip"
+        "rippled.service")
+sha256sums=('4956a834bc5a916c15e212b7dc01ade8ccefc405e110d62a9f9ba0576f96a636'
+            'd2ae0709844499b82fc1def2a30d18428d67adaa6660653362a1053214091c4c')
 
 build() {
-	cmake -Dtarget=clang.release.unity -Dstatic=OFF "$srcdir/$pkgname-$pkgver"
+	cmake -DCMAKE_BUILD_TYPE=Release -Dstatic=OFF "$srcdir/$pkgname-$pkgver"
 	cmake --build .
 }
 
-#check() {
-#	"${srcdir}/rippled" --unittest
-#}
+check() {
+	"${srcdir}/rippled" --unittest
+}
 
 package() {
 	install -D rippled "${pkgdir}/usr/bin/rippled"
+	install -D -m644 "${srcdir}/rippled.service" "${pkgdir}/usr/lib/systemd/system/rippled.service"
 	cd "$srcdir/$pkgname-$pkgver"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 	install -D -m644 cfg/rippled-example.cfg "${pkgdir}/etc/opt/ripple/rippled.cfg"
