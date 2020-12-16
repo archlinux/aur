@@ -2,23 +2,20 @@
 
 pkgname=lisp
 pkgver=1.2.0
-pkgrel=1
-pkgdesc='Wrapper scripts for SBCL, for programming in Common Lisp'
+pkgrel=2
+pkgdesc='Wrapper scripts to make it easier to get started with Common Lisp'
 arch=(any)
 url='https://github.com/xyproto/lisp'
 license=(GPL2)
 depends=(sbcl)
 makedepends=(git)
-source=("git+$url#tag=$pkgver")
-sha256sums=(SKIP)
+source=("git+$url#commit=445ef31a19a5153f5c12099c3db61689212f85eb") # tag: 1.2.0
+sha256sums=('SKIP')
 
 check() {
-  getent passwd "$USER" | cut -d: -f5 | make -C $pkgname test
+  echo "$LOGNAME" | make -C $pkgname test
 }
 
 package() {
   DESTDIR="$pkgdir" make -C "$pkgname" install
 }
-
-# vim: ts=2 sw=2 et:
-
