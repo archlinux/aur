@@ -1,6 +1,6 @@
 pkgbase = minetime-bin
 	pkgdesc = MineTime is a modern, intuitive and smart calendar application
-	pkgver = 1.8.10
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/marcoancona/MineTime
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = minetime-bin
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	provides = minetime
-	source = https://github.com/marcoancona/MineTime/releases/download/v1.8.10/MineTime_1.8.10_amd64.deb
+	source = https://github.com/marcoancona/MineTime/releases/download/v1.9.0/MineTime_1.9.0_amd64.deb
 	source = minetime
-	b2sums = 7a1f1ba007dbbef3d90be937609cc62755fc11af3a65199186156d14ad30db2c4aacbbbabd0b8ff14ea7909c9b56e94a154edf844cb057e849a947b9ae13355f
+	b2sums = dc71a9534c3da1b5c4b5884535b56b34418cc893c836578062fc63ac43b3ee292f948dce7c0698eeeae91e0e538f4241a33a1abe6fc3220ddd320a2a0dbcee39
 	b2sums = 5d7b161312866c7093913428743bb8901c622cbd6d29e447bbd9ba70aea2972ceaf01263a285f78f8a39e6deee4f5d968ed96eee555e456eb3cd879c230ad02d
 
 pkgname = minetime-bin
