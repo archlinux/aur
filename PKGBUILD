@@ -2,7 +2,7 @@
 
 pkgname=firmware-manager
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd"
 arch=('x86_64')
 url="https://github.com/pop-os/firmware-manager"
@@ -22,4 +22,6 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}/" install prefix=/usr
+
+  ln -s /usr/bin/com.system76.FirmwareManager "${pkgdir}/usr/bin/${pkgname}"
 }
