@@ -1,10 +1,12 @@
 pkgbase = o
 	pkgdesc = Small, fast and VT100-compatible text editor
-	pkgver = 2.32.5
+	pkgver = 2.34.1
 	pkgrel = 1
 	url = https://github.com/xyproto/o
 	arch = x86_64
 	license = BSD
+	makedepends = git
+	makedepends = go
 	optdepends = cxx: for compiling C++
 	optdepends = brittany: for formatting Haskell
 	optdepends = clang: for formatting C++ code with clang-format
@@ -25,8 +27,8 @@ pkgbase = o
 	optdepends = fpc: for compiling Object Pascal
 	optdepends = lua-format: for formatting Lua
 	optdepends = lua: for compiling Lua
-	options = !strip
-	source = git+https://github.com/xyproto/o#commit=774b7be49e02f1142b314b878717109597b00daa
+	optdepends = tidy: for formatting HTML
+	source = git+https://github.com/xyproto/o#commit=07370880aa7df4f1883553a5e6482df930e0eab2
 	sha256sums = SKIP
 
 pkgname = o
