@@ -1,7 +1,7 @@
 pkgbase = openwebrx
 	pkgdesc = Open source, multi-user SDR receiver software with a web interface
 	pkgver = 0.20.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.openwebrx.de/
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = openwebrx
 	depends = rtl-sdr
 	depends = js8py
 	depends = owrx_connector
+	depends = netcat
 	optdepends = sox
 	optdepends = mbelib
 	optdepends = digiham

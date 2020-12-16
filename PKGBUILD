@@ -2,12 +2,12 @@
 
 pkgname='openwebrx'
 pkgver='0.20.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('i686' 'x86_64')
 url='https://www.openwebrx.de/'
 license=('AGPL3')
-depends=('csdr>=0.17' 'rtl-sdr' 'js8py' 'owrx_connector')
+depends=('csdr>=0.17' 'rtl-sdr' 'js8py' 'owrx_connector' 'netcat')
 optdepends=('sox' 'mbelib' 'digiham' 'dsd' 'codec2' 'direwolf')
 source=("https://github.com/jketterl/openwebrx/archive/$pkgver.tar.gz")
 sha256sums=('88dd025734651af9da5973c2ca6329a4b0f1bdd38c0fefa4b8a4ba66842376de')
