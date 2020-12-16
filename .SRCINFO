@@ -1,12 +1,12 @@
 pkgbase = auin
 	pkgdesc = Archlinux system installation script.
 	pkgver = v4.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.auroot.cn/
 	arch = any
 	license = GPL3
-	source = https://www.auroot.cn/shell/auin-v4.0.5.tar.gz
-	md5sums = 42f6f1a5ebb8d9fad4fc2f97232a4843
+	source = https://gitee.com/auroot/Arch_install/attach_files/552104/download/auin-v4.0.5.tar.gz
+	md5sums = 7a13530a621e45f9b758fb00147b91ef
 
 pkgname = auin
 
