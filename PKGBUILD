@@ -2,7 +2,7 @@
 pkgname="secureboot.sh"
 pkgdesc='A very basic script to setup secureboot'
 
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 
 arch=('x86_64')
@@ -11,8 +11,10 @@ license=('GPL')
 
 depends=('systemd' 'dracut' 'efitools' 'sbsigntools')
 
+backup=('etc/secureboot/config')
+
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mrabe89/${pkgname}/archive/v$pkgver.tar.gz")
-sha256sums=("1c11564200d43468cce9d0a1b1466c7bbd88dbcad7e98dfa078c45ed0f77fbb6")
+sha256sums=("7917b227d79318e954bfb987081a4dbff0bc678e865ac3f40ff284954c67402d")
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/"
