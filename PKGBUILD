@@ -7,18 +7,26 @@
 # Contributor: Julien Duponchelle <julien@gns3.net>
 
 pkgname=python-cx_freeze
-pkgver=6.3
-pkgrel=3
-pkgdesc='Utilities for freezing Python scripts into executables'
+pkgver=6.4
+pkgrel=1
+pkgdesc='Create standalone executables from Python scripts'
 arch=('x86_64')
-url='https://anthony-tuininga.github.io/cx_Freeze'
+url='https://marcelotduarte.github.io/cx_Freeze'
 license=('PSF')
-depends=('python')
-conflicts=('cx_freeze')
+depends=('python-importlib-metadata')
 makedepends=('python-setuptools')
 checkdepends=('python-nose' 'python-openpyxl')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/anthony-tuininga/cx_Freeze/archive/$pkgver.tar.gz")
-sha512sums=('6ccc9417faae23a675a00795f00b530c9003c69cd292a9978d69c55785f1638cd13491ac312a7f4f4d3e8e7055e18911866059738a2a83e932cff74eecdb504a')
+replaces=('python-cx_freeze')
+provides=('python-cx_freeze')
+conflicts=('python-cx_freeze')
+source=("https://github.com/marcelotduarte/cx_Freeze/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha512sums=('037cd262538fd93aa5795723659b7a9e79dcd978e0db8e429f877bf5f8c6c7094f5dfb25bfe2ecf67db9228f18dab118820f6a7dda75ad00b80d619f0f58f34a')
+
+prepare() {
+  cd cx_Freeze-$pkgver
+  # https://github.com/marcelotduarte/cx_Freeze/pull/833
+  sed -i 's/excludes$/excludes or []/' cx_Freeze/finder.py
+}
 
 build() {
   cd cx_Freeze-$pkgver
