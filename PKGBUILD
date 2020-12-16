@@ -61,13 +61,13 @@ build() {
 		-Dman-pages=disabled \
 		--prefix /usr \
 		"$srcdir/build"
-	ninja -C "$srcdir/build"
+	ninja $NINJAFLAGS -C "$srcdir/build"
 }
 
 package() {
 
 	cd "$_pkgname"
-	DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
+	DESTDIR="$pkgdir" ninja $NINJAFLAGS -C "$srcdir/build" install
 
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
