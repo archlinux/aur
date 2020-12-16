@@ -1,5 +1,5 @@
---- main.go	2020-12-10 09:35:05.860864716 -0500
-+++ main.go.2	2020-12-11 09:52:31.559350233 -0500
+--- main.go	2020-12-16 10:10:04.556417773 -0500
++++ main.go.2	2020-12-16 10:14:48.097231587 -0500
 @@ -4,7 +4,6 @@
  	"flag"
  	"fmt"
@@ -8,16 +8,17 @@
  	"log"
  	"os"
  	"path/filepath"
-@@ -19,8 +18,6 @@
+@@ -23,9 +22,7 @@
  	"github.com/aarzilli/nucular/style"
  )
  
--//go:generate go run scripts/embedlibrnnoise.go
+-//go:generate go run scripts/embedbinary.go librnnoise_ladspa/bin/ladspa/librnnoise_ladspa.so librnnoise.go libRNNoise
+ //go:generate go run scripts/embedbinary.go assets/patreon.png patreon.go patreonPNG
 -//go:generate go run scripts/embedversion.go
  //go:generate go run scripts/embedlicenses.go
  
- type input struct {
-@@ -85,12 +82,9 @@
+ type device struct {
+@@ -95,12 +92,9 @@
  	log.Printf("CAP_SYS_RESOURCE: %t\n", hasCapSysResource(getCurrentCaps()))
  
  	initializeConfigIfNot()
@@ -30,7 +31,7 @@
  
  	paClient, err := pulseaudio.NewClient()
  
-@@ -168,24 +162,6 @@
+@@ -217,24 +211,6 @@
  
  }
  
@@ -52,6 +53,6 @@
 -	log.Printf("Deleted temp librnnoise: %s\n", file)
 -}
 -
- func getSources(client *pulseaudio.Client) []input {
+ func getSources(client *pulseaudio.Client) []device {
  	sources, err := client.Sources()
  	if err != nil {

@@ -1,11 +1,11 @@
---- module.go	2020-12-10 09:35:05.860864716 -0500
-+++ module.go.1	2020-12-11 09:06:21.894867917 -0500
-@@ -104,7 +104,7 @@
+--- module.go	2020-12-16 10:10:04.556417773 -0500
++++ module.go.1	2020-12-16 10:12:01.266479071 -0500
+@@ -147,7 +147,7 @@
  
- 	idx, err = c.LoadModule("module-ladspa-sink",
- 		fmt.Sprintf("sink_name=nui_mic_raw_in sink_master=nui_mic_denoised_out "+
--			"label=noise_suppressor_mono plugin=%s control=%d", ctx.librnnoise, ctx.config.Threshold))
-+			"label=noise_suppressor_mono plugin=%s control=%d", "librnnoise_ladspa.so", ctx.config.Threshold))
- 	if err != nil {
- 		return err
- 	}
+ 		idx, err = c.LoadModule("module-ladspa-sink",
+ 			fmt.Sprintf("sink_name=nui_mic_raw_in sink_master=nui_mic_denoised_out "+
+-				"label=noise_suppressor_mono plugin=%s control=%d", ctx.librnnoise, ctx.config.Threshold))
++				"label=noise_suppressor_mono plugin=%s control=%d", "librnnoise_ladspa.so", ctx.config.Threshold))
+ 		if err != nil {
+ 			return err
+ 		}
