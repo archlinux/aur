@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20201215.r0.g9317f948b0b1
+pkgver=20201216.r0.g26aed0ea32c8
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -64,7 +64,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver
 source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/${_srcname}.git"
         "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
-        'config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=282c90d1e14ef7dd0f56f8c8192ba1c830e906ad')
+        'config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=f3941c580a8df8b67a49da87e9ee786a3695a292')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -304,4 +304,4 @@ done
 
 sha512sums=('SKIP'
             'd55f954a92ca71e1e45735c6971d930bf3a29d37df5a9ba57b7d7488def7c183b9376f5fb8f17f39991ff2e0dee6cf6625469d1e18ed6a9781b61247fc1b1b64'
-            '34cecf709a9af5af2e031301a142d734e698761fde1335bec04088595260bb0634e95d4dafe13249a865482b0ae0a663a93cf5703a47f236efe59e22655e6f1d')
+            'd8f6fb58b138b23845cb534ccf1cffc4debb948bd7cff7cc87393c2ff0c0a66558839939ede5b21f21928e4f09429e7191b94b313472800ea7ef37d3728921bc')
