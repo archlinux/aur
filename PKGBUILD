@@ -7,7 +7,7 @@
 pkgname=pugdebug-git
 _pkgname=pugdebug-git
 pkgver=1.1.0.r1.gddb1193
-pkgrel=1
+pkgrel=2
 pkgdesc="PugDebug is a standalone debugging client for PHP applications that uses XDebug as the debugging engine"
 arch=('any')
 license=('GPL3')
