@@ -1,10 +1,10 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=cxx
-pkgver=3.2.1
+pkgver=3.2.5
 pkgrel=1
-pkgdesc='Build system for easy interaction with C++17 and C++20'
-arch=(x86_64)
+pkgdesc='Configuration free build system for easy compilation of C++ executables'
+arch=(any)
 url='https://github.com/xyproto/cxx'
 license=(MIT)
 makedepends=(git)
@@ -18,7 +18,7 @@ optdepends=('ccache: For faster builds'
             'gprof2dot: For visualizing profiling information'
             'graphviz: For visualizing profiling information'
             'kcachegrind: For visualizing profiling information')
-source=("git+$url#tag=$pkgver")
+source=("git+$url#commit=d6a59e8fae77c1ca9aa80e36ff62f75f6cbb901b") # tag: 3.2.5
 sha256sums=('SKIP')
 
 package() {
@@ -26,4 +26,3 @@ package() {
 }
 
 # getver: github.com/xyproto/cxx/releases
-# vim: ts=2 sw=2 et:
