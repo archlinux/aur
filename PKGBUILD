@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="SonicWALL Connect Tunnel VPN Client"
 arch=('x86_64')
 url="https://www.sonicwall.com/products/remote-access/vpn-clients/"
+depends=('java-runtime')
 makedepends=('tar')
 license=('custom')
 source=(
