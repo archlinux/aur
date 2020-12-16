@@ -1,6 +1,6 @@
 pkgbase = i3-gnome-pomodoro-git
 	pkgdesc = Integrate gnome-pomodoro into i3
-	pkgver = r45.7e654f6
+	pkgver = r84.25c6608
 	pkgrel = 1
 	url = https://github.com/kantord/i3-gnome-pomodoro
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = i3-gnome-pomodoro-git
 	depends = gnome-shell-pomodoro
 	depends = python-click>=6.7
 	depends = python-pydbus>=0.6.0
-	depends = i3ipc-python-git
+	depends = python-i3ipc
 	provides = i3-gnome-pomodoro
 	source = git+https://github.com/kantord/i3-gnome-pomodoro.git
 	sha512sums = SKIP
