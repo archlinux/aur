@@ -1,4 +1,5 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinxu.org>
 # Contributor: Wael Nasreddine <gandalf@siemens-mobiles.org>
@@ -7,7 +8,7 @@
 # Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
 pkgname=lib32-libnm-glib-nosystemd
-pkgver=1.18.5dev+12+ga8746f48ca
+pkgver=1.18.11
 pkgrel=1
 pkgdesc='NetworkManager client library (legacy)'
 arch=(x86_64)
@@ -34,6 +35,8 @@ makedepends=(
   libxslt
   meson
 )
+provides=(libnm-glib)
+conflicts=(libnm-glib)
 #_commit=a8746f48ca088b4cd3799e540b8606df1f1e8522  # nm-1-18
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#branch=nm-1-18")
 sha256sums=('SKIP')
