@@ -1,0 +1,31 @@
+pkgbase = libnm-glib-nosystemd-minimal
+	pkgdesc = NetworkManager client library (legacy)
+	pkgver = 1.18.11
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/NetworkManager
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = intltool
+	makedepends = libndp
+	makedepends = libxslt
+	makedepends = meson
+	makedepends = python-gobject
+	makedepends = vala
+	depends = dbus
+	depends = dbus-glib
+	depends = glib2
+	depends = glibc
+	depends = libgudev
+	depends = nspr
+	depends = nss
+	depends = util-linux
+	provides = libnm-glib
+	conflicts = libnm-glib
+	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#branch=nm-1-18
+	sha256sums = SKIP
+
+pkgname = libnm-glib-nosystemd-minimal
+
