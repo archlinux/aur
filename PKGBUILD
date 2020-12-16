@@ -8,7 +8,7 @@
 # Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
 pkgname=libnm-glib-nosystemd
-pkgver=1.18.5dev+12+ga8746f48ca
+pkgver=1.18.11
 pkgrel=1
 pkgdesc='NetworkManager client library (legacy)'
 arch=(x86_64)
@@ -37,6 +37,8 @@ makedepends=(
   python-gobject
   vala
 )
+provides=(libnm-glib)
+conflicts=(libnm-glib)
 #_commit=a8746f48ca088b4cd3799e540b8606df1f1e8522  # nm-1-18
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#branch=nm-1-18")
 sha256sums=('SKIP')
@@ -58,7 +60,7 @@ build() {
     # platform
     -D dist_version="$pkgver-$pkgrel"
     -D session_tracking_consolekit=false
-    -D suspend_resume=auto
+    -D suspend_resume=disable
     -D polkit=false
     -D modify_system=true
     -D polkit_agent=false
