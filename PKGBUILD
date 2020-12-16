@@ -51,10 +51,10 @@ build() {
     -DALSOFT_BACKEND_PULSEAUDIO=0 \
     -DALSOFT_BACKEND_COREAUDIO=0 \
     -DALSOFT_BACKEND_WAVE=0
-  ninja
+  ninja $NINJAFLAGS
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" ninja $NINJAFLAGS -C build install
   rm -rv "$pkgdir"/usr/include
 }
