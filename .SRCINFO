@@ -1,6 +1,6 @@
 pkgbase = rotki-bin
 	pkgdesc = A portfolio tracking, analytics, accounting and tax reporting application that respects your privacy
-	pkgver = 1.9.1
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://rotki.com
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = rotki-bin
 	depends = gtk3
 	depends = nss
 	provides = rotki
-	noextract = rotki-1.9.1.tar.xz
+	noextract = rotki-1.10.1.tar.xz
 	options = !strip
-	source = rotki-1.9.1.tar.xz::https://github.com/rotki/rotki/releases/download/v1.9.1/rotki-linux_x64-v1.9.1.tar.xz
+	source = rotki-1.10.1.tar.xz::https://github.com/rotki/rotki/releases/download/v1.10.1/rotki-linux_x64-v1.10.1.tar.xz
 	source = rotki.png::https://github.com/rotki/rotki/raw/develop/frontend/app/src/assets/images/rotki_1024x1024.png
 	source = LICENSE::https://github.com/rotki/rotki/raw/develop/LICENSE.md
-	sha256sums = 70f61b17dc941087f7e1f0650b641a0a02b2e7abcc1af718f12a67727e4e858c
+	sha256sums = 792f057c3a3e87325b3bfa3b5f52f1f48da8fcbf7d18d1f870ae4f4c68e6c1f6
 	sha256sums = 78032738ae55b065b3f786be0482809149f474a2294a6a2dfd26a079e9154383
 	sha256sums = b1b7797950b0ae9749a4955ab135b8b62abbbf834e141a9b744e0c1521372d50
 
