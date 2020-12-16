@@ -42,7 +42,7 @@ build() {
         -D valgrind=false \
 	-D man-pages=false
     meson configure _build
-    ninja -C _build
+    ninja $NINJAFLAGS -C _build
 }
 
 #check() {
@@ -53,6 +53,6 @@ build() {
 #}
 
 package() {
-  DESTDIR="$pkgdir" ninja -C _build install
+  DESTDIR="$pkgdir" ninja $NINJAFLAGS -C _build install
   install -Dt "$pkgdir"/usr/share/licenses/"$pkgname" -m644 COPYING
 }
