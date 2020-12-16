@@ -9,11 +9,16 @@ pkgbase = spandsp-fs
 	makedepends = gawk
 	makedepends = sox
 	makedepends = fftw
-	depends = libtiff
-	provides = spandsp
-	conflicts = spandsp
+	makedepends = doxygen
 	source = git+https://github.com/freeswitch/spandsp
 	sha256sums = SKIP
 
 pkgname = spandsp-fs
+	depends = libtiff
+	optdepends = spandsp-docs: Documentation
+	provides = spandsp
+	conflicts = spandsp
+
+pkgname = spandsp-docs
+	pkgdesc = A DSP library for telephony documentation (FreeSWITCH version)
 
