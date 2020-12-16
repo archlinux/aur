@@ -9,7 +9,7 @@ url="https://github.com/hermes83/compiz-alike-windows-effect.git"
 install=compiz-alike.install
 license=('unknown')
 depends=('gnome-shell>=3.28')
-makedepends=('git')
+makedepends=('git' 'glib2')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
