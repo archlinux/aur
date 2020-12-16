@@ -1,16 +1,16 @@
 pkgbase = eclipse-arm
-	pkgdesc = GNU MCU Eclipse Plug-in
-	pkgver = 5.1.1
+	pkgdesc = Eclipse Embedded CDT (C/C++ Development Tools)
+	pkgver = 5.1.2
 	pkgrel = 1
-	url = http://gnu-mcu-eclipse.github.io
+	url = https://projects.eclipse.org/projects/iot.embed-cdt
 	install = eclipse-arm.install
 	arch = any
 	license = GPL
 	makedepends = unzip
 	depends = eclipse-cpp
 	options = !strip
-	source = https://download.eclipse.org/embed-cdt/releases/5.1.1/ilg.gnumcueclipse.repository-5.1.1-202007271621.zip
-	sha512sums = 4dd55f4015106d6b658d671968871ad69a3fc7d55529360c13fa190831b142ba07a5ee661d231da314c62e723b239fb22c9b86ea384bec23e7a7e245ce3d0d42
+	source = https://download.eclipse.org/embed-cdt/releases/5.1.2/ilg.gnumcueclipse.repository-5.1.2-202009201439.zip
+	sha512sums = 953f19807f98465243f4e373d51c38aa1642c80de968b5f9ccf6f19fd15a9150821afcfca34e2fd2c9590240b2a2e080838cc3cf31b6faf951a77786c84e1cd3
 
 pkgname = eclipse-arm
 

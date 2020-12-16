@@ -4,8 +4,8 @@
 # Contributor: Benjamin Robinben <jarobin@gmail.com>
 # Contributor: Karsten Pufahl <contact@karstenpufahl.de>
 pkgname=eclipse-arm
-pkgver=5.1.1
-_date=202007271621
+pkgver=5.1.2
+_date=202009201439
 pkgrel=1
 pkgdesc="Eclipse Embedded CDT (C/C++ Development Tools)"
 arch=('any')
@@ -16,7 +16,7 @@ options=('!strip')
 makedepends=('unzip')
 depends=('eclipse-cpp')
 source=("https://download.eclipse.org/embed-cdt/releases/$pkgver/ilg.gnumcueclipse.repository-$pkgver-$_date.zip")
-sha512sums=('4dd55f4015106d6b658d671968871ad69a3fc7d55529360c13fa190831b142ba07a5ee661d231da314c62e723b239fb22c9b86ea384bec23e7a7e245ce3d0d42')
+sha512sums=('953f19807f98465243f4e373d51c38aa1642c80de968b5f9ccf6f19fd15a9150821afcfca34e2fd2c9590240b2a2e080838cc3cf31b6faf951a77786c84e1cd3')
 
 package() {
   local _dest="${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse"
