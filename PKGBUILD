@@ -5,7 +5,7 @@
 pkgbase=lib32-pipewire
 _pkgbase=pipewire
 pkgname=(lib32-pipewire lib32-pipewire-jack lib32-gst-plugin-pipewire)
-pkgver=0.3.17
+pkgver=0.3.18
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines (32-bit client libraries)"
 url="https://pipewire.org"
@@ -15,7 +15,7 @@ makedepends=(git meson valgrind lib32-jack2 lib32-libpulse lib32-alsa-lib
              lib32-gstreamer lib32-gst-plugins-base lib32-sbc rtkit
              lib32-vulkan-icd-loader lib32-dbus lib32-libsndfile
              vulkan-headers)
-_commit=f5f5beb0ece64c7d08edb5413dde537ec5b6c3e2  # tags/0.3.17
+_commit=e7dffd64ebff76e2388d6e694de96d6693a6ed7d  # tags/0.3.18
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
 

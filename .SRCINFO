@@ -1,6 +1,6 @@
 pkgbase = lib32-pipewire
 	pkgdesc = Server and user space API to deal with multimedia pipelines (32-bit client libraries)
-	pkgver = 0.3.17
+	pkgver = 0.3.18
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = lib32-pipewire
 	makedepends = lib32-dbus
 	makedepends = lib32-libsndfile
 	makedepends = vulkan-headers
-	source = git+https://github.com/PipeWire/pipewire#commit=f5f5beb0ece64c7d08edb5413dde537ec5b6c3e2
+	source = git+https://github.com/PipeWire/pipewire#commit=e7dffd64ebff76e2388d6e694de96d6693a6ed7d
 	sha256sums = SKIP
 
 pkgname = lib32-pipewire
@@ -37,11 +37,11 @@ pkgname = lib32-pipewire
 
 pkgname = lib32-pipewire-jack
 	pkgdesc = Server and user space API to deal with multimedia pipelines (32-bit client libraries) (JACK support)
-	depends = lib32-pipewire=0.3.17
+	depends = lib32-pipewire=0.3.18
 	depends = lib32-jack2
 
 pkgname = lib32-gst-plugin-pipewire
 	pkgdesc = Multimedia graph framework - pipewire plugin (32-bit version)
-	depends = lib32-pipewire=0.3.17
+	depends = lib32-pipewire=0.3.18
 	depends = lib32-gst-plugins-base-libs
 
