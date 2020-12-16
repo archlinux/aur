@@ -1,7 +1,7 @@
 pkgbase = wasmtime-bin
 	pkgdesc = Standalone JIT-style runtime for WebAssembly, using Cranelift
 	pkgver = 0.19.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://wasmtime.dev/
 	arch = x86_64
 	license = Apache

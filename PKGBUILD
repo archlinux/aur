@@ -2,7 +2,7 @@
 
 pkgname='wasmtime-bin'
 pkgver='0.19.0'
-pkgrel='0'
+pkgrel='1'
 pkgdesc='Standalone JIT-style runtime for WebAssembly, using Cranelift'
 provides=('wasmtime' 'wasm2obj')
 conflicts=('wasmtime')
