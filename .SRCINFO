@@ -1,0 +1,17 @@
+pkgbase = rtsp-simple-server-git
+	pkgdesc = Ready-to-use RTSP server and RTSP proxy that allows to read, publish and proxy video and audio streams
+	pkgver = r466.007cfb3
+	pkgrel = 1
+	url = https://github.com/aler9/rtsp-simple-server
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = rtsp-simple-server
+	conflicts = rtsp-simple-server
+	source = rtsp-simple-server::git+https://github.com/aler9/rtsp-simple-server
+	source = rtsp-simple-server.service
+	md5sums = SKIP
+	md5sums = 81b313c4715f2ec997c64aa47f75e444
+
+pkgname = rtsp-simple-server-git
+
