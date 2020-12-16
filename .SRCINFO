@@ -1,6 +1,6 @@
 pkgbase = cawbird-git
 	pkgdesc = A fork of the Corebird GTK Twitter client that continues to work with Twitter
-	pkgver = 1.2.1.r50.g75a50e97
+	pkgver = 1.2.1.r63.g5e76cdc6
 	pkgrel = 1
 	url = https://github.com/ibboard/cawbird/
 	arch = i686
