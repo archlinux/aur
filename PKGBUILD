@@ -95,7 +95,7 @@ build() {
 package() {
   cd SDL/build
 
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C build install
 
   sed -i "s/libSDL2\.a/libSDL2main.a/g" "$pkgdir"/usr/lib/cmake/SDL2/SDL2Targets-noconfig.cmake
 
