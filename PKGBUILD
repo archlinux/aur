@@ -3,12 +3,12 @@
 
 pkgname=cpufrequtils
 pkgver=008
-pkgrel=2
+pkgrel=3
 pkgdesc="This package provides very useful tools to get information about the CPUFreq"
-arch=('i686' 'x86_64' 'aarch64')
-url="http://kernel.org/pub/linux/utils/kernel/cpufreq/cpufrequtils.html"
+arch=('x86_64' 'aarch64')
+url="https://mirrors.edge.kernel.org/pub/linux/utils/kernel/cpufreq/cpufreq-info.html"
 license=('GPL2')
-source=("http://deb.debian.org/debian/pool/main/c/cpufrequtils/cpufrequtils_008.orig.tar.bz2"
+source=("https://mirrors.edge.kernel.org/pub/linux/utils/kernel/cpufreq/$pkgname-$pkgver.tar".{xz,sign}
     '0001-Only-x86-has-cpuid-instruction.patch'
     '0002-cpufrequtils-Remove-proc-compile-option-and-interfac.patch'
     '0003-cpufrequtils-aperf-Fix-MSR-read-on-32-bit.patch'
@@ -20,7 +20,8 @@ source=("http://deb.debian.org/debian/pool/main/c/cpufrequtils/cpufrequtils_008.
     '01_add_cpufreq-aperf_manpage.patch'
     '10_build_static_lib.patch'
     '11_dont_touch_po_files.patch')
-md5sums=('e60e0b07810b51babd4447ae07285e7d'
+md5sums=('e0c9f333a9546f71d17fd5a0546db79e'
+    'SKIP'
     '9ed71a50670aa99e12245cb3f5199142'
     '4ccbd46b0b1563067d0c31fe510ff89d'
     '5dd9add84e63b213295e2e2a30fd3667'
@@ -32,6 +33,9 @@ md5sums=('e60e0b07810b51babd4447ae07285e7d'
     '35dc88b7dfa18276b094355467957022'
     '6e08e20d319d70770b90be548027503f'
     'a837db201e0bb724ccf617757a575e26')
+validpgpkeys=(
+'DD46DC35691C79509D15F58CFEF39108F6FD2C20' # Dominik Brodowski
+)
 build() {
   cd ${srcdir}
 
