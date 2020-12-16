@@ -3,7 +3,7 @@
 
 pkgname=vice-svn-sdl2
 _pkgname=vice-svn
-pkgver=r39202
+pkgver=r39322
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator (Commodore 64/C64) - SDL2 development version"
 arch=('i686' 'x86_64')
