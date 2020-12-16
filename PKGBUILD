@@ -118,10 +118,10 @@ build() {
 
   # Print config
   meson configure build
-  ninja -C build
+  ninja $NINJAFLAGS -C build
  
   # fake installation to be seperated into packages
-  DESTDIR="${srcdir}/fakeinstall" ninja -C build install
+  DESTDIR="${srcdir}/fakeinstall" ninja $NINJAFLAGS -C build install
 }
 
 _install() {
