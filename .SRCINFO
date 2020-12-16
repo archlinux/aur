@@ -1,6 +1,6 @@
 pkgbase = rofi-nordvpn-git
 	pkgdesc = A script to manage nordvpn connections.
-	pkgver = r4.d21729a
+	pkgver = r5.2d4b6e6
 	pkgrel = 1
 	url = https://github.com/loiccoyle/rofi-nordvpn
 	arch = any

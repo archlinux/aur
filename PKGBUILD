@@ -2,7 +2,7 @@
 
 _pkgname=rofi-nordvpn
 pkgname="${_pkgname}-git"
-pkgver=r4.d21729a
+pkgver=r5.2d4b6e6
 pkgrel=1
 pkgdesc='A script to manage nordvpn connections.'
 arch=('any')
