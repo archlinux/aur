@@ -1,0 +1,23 @@
+--- refind-0.12.0ORIG/filesystems/fsw_ext4.c	2017-05-26 21:19:44.000000000 +0800
++++ refind-0.12.0/filesystems/fsw_ext4.c	2020-07-08 08:50:16.213221072 +0800
+@@ -141,7 +141,8 @@
+     if (vol->sb->s_rev_level == EXT4_DYNAMIC_REV &&
+         (vol->sb->s_feature_incompat & ~(EXT4_FEATURE_INCOMPAT_FILETYPE | EXT4_FEATURE_INCOMPAT_RECOVER |
+                                          EXT4_FEATURE_INCOMPAT_EXTENTS | EXT4_FEATURE_INCOMPAT_FLEX_BG |
+-                                         EXT4_FEATURE_INCOMPAT_64BIT | EXT4_FEATURE_INCOMPAT_META_BG)))
++                                         EXT4_FEATURE_INCOMPAT_64BIT | EXT4_FEATURE_INCOMPAT_META_BG |
++                                         EXT4_FEATURE_INCOMPAT_ENCRYPT)))
+         return FSW_UNSUPPORTED;
+ 
+     if (vol->sb->s_rev_level == EXT4_DYNAMIC_REV &&
+diff -Naur refind-0.12.0ORIG/filesystems/fsw_ext4_disk.h refind-0.12.0/filesystems/fsw_ext4_disk.h
+--- refind-0.12.0ORIG/filesystems/fsw_ext4_disk.h	2015-11-30 02:54:48.000000000 +0800
++++ refind-0.12.0/filesystems/fsw_ext4_disk.h	2020-07-08 08:47:29.526557586 +0800
+@@ -400,6 +400,7 @@
+ #define EXT4_FEATURE_INCOMPAT_BG_USE_META_CSUM	0x2000 /* use crc32c for bg */
+ #define EXT4_FEATURE_INCOMPAT_LARGEDIR		0x4000 /* >2GB or 3-lvl htree */
+ #define EXT4_FEATURE_INCOMPAT_INLINEDATA	0x8000 /* data in inode */
++#define EXT4_FEATURE_INCOMPAT_ENCRYPT		0x10000 /* BK ext4 fscrypt encryption */
+ 
+ #define EXT4_FEATURE_INCOMPAT_SUPP	(EXT4_FEATURE_INCOMPAT_FILETYPE| \
+ 					 EXT4_FEATURE_INCOMPAT_RECOVER| \

@@ -1,0 +1,41 @@
+pkgbase = refind-fscrypt-git
+	pkgdesc = rEFInd Boot Manager - git version
+	pkgver = 0.12.0.r698.gba236d9
+	pkgrel = 1
+	url = https://www.rodsbooks.com/refind/
+	arch = any
+	license = BSD
+	license = CCPL
+	license = FDL1.3
+	license = GPL2
+	license = GPL3
+	license = LGPL3
+	makedepends = git
+	makedepends = gnu-efi-libs
+	depends = bash
+	depends = dosfstools
+	depends = efibootmgr
+	depends = which
+	optdepends = gptfdisk: for finding non-vfat ESP with refind-install
+	optdepends = imagemagick: for refind-mkfont
+	optdepends = openssl: for generating local certificates with refind-install
+	optdepends = preloader-signed: pre-signed Secure Boot shim loader
+	optdepends = python: for refind-mkdefault
+	optdepends = sudo: for privilege elevation in refind-install and refind-mkdefault
+	optdepends = shim-signed: pre-signed Secure Boot shim loader
+	optdepends = sbsigntools: for EFI binary signing with refind-install
+	provides = refind=0.12.0.r698.gba236d9
+	provides = refind-efi=0.12.0.r698.gba236d9
+	provides = refind-git=0.12.0.r698.gba236d9
+	conflicts = refind
+	conflicts = refind-efi
+	conflicts = refind-git
+	replaces = refind-efi-git
+	options = !makeflags
+	source = refind::git+https://git.code.sf.net/p/refind/code#branch=master
+	source = refind-ext4-fscrypt.patch
+	sha512sums = SKIP
+	sha512sums = a4d10c7ba8450eff3cf8f077c0490cce93c9999adce296973327e2bfde26b80fbd5fd2bd6467bfff0d94a4f2c57dcfc72e1cefa52d2824ee1972c1f8ec6a6f32
+
+pkgname = refind-fscrypt-git
+
