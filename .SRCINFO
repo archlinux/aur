@@ -1,0 +1,14 @@
+pkgbase = graceful-platform-theme
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/graceful-linux/graceful-platform-theme
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = qt5-base
+	depends = qt5-base
+	source = https://github.com/graceful-linux/graceful-platform-theme/archive/1.0.1.tar.gz
+	sha256sums = c50684e0e153420a944342ebbf9d19dc1e089063351de76490a6456e39ddfe21
+
+pkgname = graceful-platform-theme
+
