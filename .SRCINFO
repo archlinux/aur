@@ -1,6 +1,6 @@
 pkgbase = code-eli-git
 	pkgdesc = Collection of C++ libraries that provide a variety of functionalities.
-	pkgver = r826.b6e1bd3
+	pkgver = r836.7ea8de1
 	pkgrel = 1
 	url = https://github.com/ramcdona/Code-Eli
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = code-eli-git
 	optdepends = doxygen: documentation
 	provides = code-eli
 	source = git+https://github.com/ramcdona/Code-Eli.git
-	source = exponent.patch::https://patch-diff.githubusercontent.com/raw/ramcdona/Code-Eli/pull/8.patch
+	source = exponent.patch::https://patch-diff.githubusercontent.com/raw/ramcdona/Code-Eli/pull/9.patch
 	md5sums = SKIP
 	md5sums = SKIP
 

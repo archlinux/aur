@@ -2,7 +2,7 @@
 # Contributor: Max Devaine <max@devaine.cz>
 
 pkgname=code-eli-git
-pkgver=r826.b6e1bd3
+pkgver=r836.7ea8de1
 pkgrel=1
 pkgdesc='Collection of C++ libraries that provide a variety of functionalities.'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('cmake' 'git')
 _name=Code-Eli
 provides=('code-eli')
 source=("git+https://github.com/ramcdona/Code-Eli.git"
-        "exponent.patch::https://patch-diff.githubusercontent.com/raw/ramcdona/Code-Eli/pull/8.patch")
+        "exponent.patch::https://patch-diff.githubusercontent.com/raw/ramcdona/Code-Eli/pull/9.patch")
 md5sums=('SKIP'
          'SKIP')
 
