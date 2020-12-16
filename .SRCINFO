@@ -5,6 +5,7 @@ pkgbase = python-gooise
 	url = https://gitlab.com/scpketer/gooise.git
 	arch = x86_64
 	license = GPL3
+	makedepends = python-setuptools
 	depends = python
 	depends = python-selenium
 	depends = python-requests

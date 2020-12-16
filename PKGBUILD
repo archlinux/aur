@@ -7,6 +7,7 @@ arch=("x86_64")
 url="https://gitlab.com/scpketer/gooise.git"
 license=("GPL3")
 depends=("python" "python-selenium" "python-requests")
+makedepends=("python-setuptools")
 source=("https://pypi.io/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=("SKIP")
 
