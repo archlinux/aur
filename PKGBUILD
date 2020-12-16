@@ -1,26 +1,19 @@
 # Maintainer: William Brown <glowinthedarkcia@horsefucker.org>
+# Contributor: Cobalt Space <cobaltspace@protonmail.com>
 pkgname="ftba"
 pkgver="202011261605_2be2c6a678_release"
-_version="202011261605-2be2c6a678-release"
-pkgrel="2"
+pkgrel="3"
 arch=("any")
 pkgdesc="Offers many different styles of Minecraft modpacks to the community."
-source=("https://apps.modpacks.ch/FTBApp/release/$_version/FTBA_linux_$_version.deb" "run-ftb.sh" "ftbapp.desktop")
-_file="FTBA_linux_$_version.deb"
-noextract=("$_file" "run-ftb.sh" "ftbapp.desktop")
-md5sums=("f41365424850f25c67318f8b2b360684" "838d9b7c27dbbda0dcd8cc59d301e0e0" "caa125e287ab8287587aff53626db48a")
+source=("https://apps.modpacks.ch/FTBApp/release/${pkgver//_/-}/FTBA_linux_${pkgver//_/-}.deb" "ftbapp.desktop")
+sha256sums=("647a46aad94840dddf35e110317cf0504061eadc553e8d84a1758c61bccf28ce" "72e6e0b01e790e416ab1ac215b7179f968156d10be5b36fad656a4f084778db6")
 license=("LGPL2")
-depends=("java-runtime")
-prepare() {
-	cd "$srcdir"
-	ar -x "$_file"
-	tar -xzf data.tar.gz
-}
+depends=("java-runtime=8" "java-runtime=11")
 package() {
-	cd "$pkgdir"
-	cp -R "$srcdir/opt" .
-	mkdir -p usr/bin
-	mkdir -p usr/share/applications
-	cp "$srcdir/run-ftb.sh" usr/bin/FTBApp
-	cp "$srcdir/ftbapp.desktop" usr/share/applications
+	tar -C "$pkgdir" -xzf "$srcdir/data.tar.gz"
+	mkdir -p $pkgdir/usr/{bin,share/applications}
+	cp "$srcdir/ftbapp.desktop" "$pkgdir/usr/share/applications"
+	rm -R $pkgdir/opt/FTBA/{jre,bin/{ftbapp.app,{,**/}*.{exe,dll}}}
+	chmod +x "$pkgdir/opt/FTBA/bin/ftb-app"
+	ln -s "$pkgdir/opt/FTBA/FTBApp" "$pkgdir/usr/bin"
 }
