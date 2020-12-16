@@ -37,7 +37,7 @@ build() {
     -DALSOFT_BACKEND_PULSEAUDIO=0 \
     -DALSOFT_BACKEND_COREAUDIO=0 \
     -DALSOFT_BACKEND_WAVE=0
-  ninja
+  ninja $NINJAFLAGS
 }
 
 package_openal-minimal-git() {
@@ -46,6 +46,6 @@ package_openal-minimal-git() {
   provides=("openal=$pkgver" openal)
   conflicts=("openal" "openal-git")
 
-  DESTDIR="$pkgdir" ninja -C openal-soft install
+  DESTDIR="$pkgdir" ninja $NINJAFLAGS -C openal-soft install
   install -Dt "$pkgdir/usr/share/doc/openal" -m644 openal-soft/docs/*
 }
