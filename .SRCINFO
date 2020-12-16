@@ -1,7 +1,7 @@
 pkgbase = winctl
 	pkgdesc = Window layout scripting utility for X11 (like devilspie2) which uses relative positions (percentages)
 	pkgver = 0.8.1
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/oliver-anhuth/winctl
 	arch = i686
 	arch = x86_64
