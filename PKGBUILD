@@ -35,7 +35,7 @@ EOF
 	install -Dv Info.plist.xml $srcdir/usr/lib/Info.plist &&
 	install -Dv akia.desktop $srcdir/usr/share/applications/akia.desktop &&
 	mv  $srcdir/usr/share/doc/akis/copyright $srcdir/usr/share/doc/akis/LICENSE &&
-	rm $srcdir/usr/bin/akia
+	rm -rfv $srcdir/usr/bin/akia
 }
 
 package() {
