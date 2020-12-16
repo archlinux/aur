@@ -1,0 +1,13 @@
+pkgbase = parsec-sdk-bin
+	pkgver = 5.0
+	pkgrel = 1
+	url = https://parsec.app/
+	arch = x86_64
+	license = custom
+	optdepends = sdl2: for compiling the example client
+	options = !strip
+	source = https://github.com/parsec-cloud/parsec-sdk/archive/5.0.tar.gz
+	sha256sums = d0b3f46f5b67830f6e38d7417e92ed8bf34d2e8d7508fa796454a0214cdb7452
+
+pkgname = parsec-sdk-bin
+
