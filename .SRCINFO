@@ -1,7 +1,7 @@
 pkgbase = appimagelauncher
 	pkgdesc = A Helper application for running and integrating AppImages.
 	pkgver = 2.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/TheAssassin/AppImageLauncher
 	arch = x86_64
 	license = MIT
@@ -29,7 +29,6 @@ pkgbase = appimagelauncher
 	source = git+https://github.com/google/googletest.git
 	source = git+https://github.com/AppImage/cpr
 	source = git+https://github.com/Taywee/args
-	source = appimage-binfmt-remove.hook
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -38,7 +37,6 @@ pkgbase = appimagelauncher
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 72a2630cf79b8f90bc21eae1d9f40c07fe77ce22df46c511b500f514455d7c81
 
 pkgname = appimagelauncher
 
