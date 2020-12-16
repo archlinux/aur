@@ -33,7 +33,7 @@ build() {
     -D docs=false \
     -D man=false \
     -D installed_tests=false
-  ninja -C build
+  ninja $NINJAFLAGS -C build
 }
 
 #check() {
