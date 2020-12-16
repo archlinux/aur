@@ -6,7 +6,7 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-libtirpc
-pkgver=1.2.6
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Transport Independent RPC library (SunRPC replacement)'
 arch=(x86_64)
@@ -17,7 +17,8 @@ depends=(
   libtirpc
 )
 makedepends=(git)
-source=(git://git.linux-nfs.org/projects/steved/libtirpc.git#tag=60467de3c1207a1e1a37694b6c13ae5cf3b459aa)
+_tag=70be47354154ea32e12af6dd9252fdc5c5e27815
+source=(git://git.linux-nfs.org/projects/steved/libtirpc.git#tag=${_tag})
 sha256sums=(SKIP)
 
 pkgver() {
