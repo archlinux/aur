@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p
-pkgver=20201130
+pkgver=20201215
 pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('p7zip: for 7z/zip support')
 makedepends=('git' 'cmake' 'nasm' 'python' 'zip' 'icoutils')
 provides=('mupen64plus-gui' 'mupen64plus-video-gliden64')
 conflicts=('mupen64plus-gui' 'mupen64plus-video-gliden64' 'mupen64plus')
-_commit=3116080bfd4a57bb18fa8201ad524be200c6c536
+_commit=da3fc8ee7d67a9f566ac9de438f56b94648de509
 source=("git+https://github.com/loganmc10/m64p.git#commit=${_commit}"
         '010-m64p-remove-build-jobs-limitation.patch'
         '020-m64p-enable-optimizations.patch'
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
             '4c483f9bf3230171c433d7f8310881babbd02416ce16079e85fd0ef254442d57'
             'a35c7370d4545356cfcc9b10ad84250685510744911fde8910ecd224da046711'
             'fe5d5e200f7c2fa5146b56346bd57d95c440e36569608ab0738700b0f57935cc'
-            '0075fe9463f3c629066c5dd4f6407f11ff413b0f76fcd15ac61905f210c42e02'
+            '3445f28451478a6b670d7193bd7a9607e51544438ac9b302228d3d343fec4476'
             '8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808')
 
 prepare() {
