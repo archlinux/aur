@@ -47,7 +47,7 @@ build () {
     -Dman=false \
     -Dselinux=disabled
 
-    ninja -C build
+    ninja $NINJAFLAGS -C build
 }
 
 #check() {
