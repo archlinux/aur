@@ -4,8 +4,8 @@
 # Contributor: Dan Vratil
 
 pkgname=nvidia-beta
-pkgver=455.45.01
-pkgrel=2
+pkgver=460.27.04
+pkgrel=1
 pkgdesc="NVIDIA drivers for Arch's official 'linux' package (beta version)"
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -17,8 +17,8 @@ options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         '110-nvidia-change-dkms-conf.patch')
-sha256sums=('9b707d6244735cf0f745a74c47ed0feeec47bc56baec8122306dee6169ce10fd'
-            'cbf0362a55e4f9278b30bfb5de30be96336c1b6d9b7eeefc62d09796edfdd97c')
+sha256sums=('74380edefbd5140c9003b2525f4e251a1d0478dca035c3e44f5a79af5b00c122'
+            '0a501801dd26dd63b31eb90e7360018a789005c9d5a04555a882b10541335c91')
 
 prepare() {
     # extract the source file
