@@ -1,0 +1,25 @@
+pkgbase = stone-phaser.lv2-git
+	pkgdesc = A classic analog phaser effect LV2 plugin (git version)
+	pkgver = 0.1.2.r17.gda92961
+	pkgrel = 1
+	url = https://github.com/jpcima/stone-phaser
+	arch = i686
+	arch = x86_64
+	groups = pro-audio
+	groups = lv2-plugins
+	license = Boost
+	makedepends = git
+	makedepends = mesa
+	depends = cairo
+	provides = stone-phaser
+	provides = stone-phaser.lv2
+	provides = stone-phaser=0.1.2
+	conflicts = stone-phaser
+	conflicts = stone-phaser.lv2
+	source = stone-phaser::git+https://github.com/jpcima/stone-phaser.git
+	source = dpf::git+https://github.com/DISTRHO/DPF.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = stone-phaser.lv2-git
+
