@@ -31,7 +31,7 @@ build() {
   export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
   arch-meson atk build -D enable_docs=false -D introspection=false --libdir=/usr/lib32
-  ninja -C build
+  ninja $NINJAFLAGS -C build
 }
 
 #check() {
@@ -40,7 +40,7 @@ build() {
 #}
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" ninja $NINJAFLAGS -C build install
   rm -r "${pkgdir}"/usr/{include,share}
 }
 
