@@ -4,7 +4,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-caffeine-git
-pkgver=r130
+pkgver=r131
 pkgrel=1
 pkgdesc="Fill the cup to inhibit auto suspend and screensaver."
 arch=(any)
@@ -22,9 +22,7 @@ provides+=("$_gitname=$pkgver")
 conflicts+=("$_gitname")
 pkgver() {
   cd ${_gitname:-$pkgname}
-  git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
-  [ ${PIPESTATUS[0]} -ne 0 ] && \
-printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 package() {
   for function in $(declare -F | grep -Po 'package_[[:digit:]]+[[:alpha:]_]*$')
@@ -46,12 +44,6 @@ package_02_install() {
     -exec install -Dm644 -t "$destdir" '{}' +
 }
 depends+=(gnome-shell-extensions)
-
-package_03_unify_conveniencejs() {
-  ln -fs \
-    ../user-theme@gnome-shell-extensions.gcampax.github.com/convenience.js \
-    "$destdir/convenience.js"
-}
 
 build() {
   cd "$_gitname"

@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-caffeine-git
 	pkgdesc = Fill the cup to inhibit auto suspend and screensaver.
-	pkgver = r130
+	pkgver = r131
 	pkgrel = 1
 	url = https://github.com/eonpatapon/gnome-shell-extension-caffeine
 	install = gschemas.install
@@ -9,11 +9,10 @@ pkgbase = gnome-shell-extension-caffeine-git
 	makedepends = git
 	depends = gnome-shell-extensions
 	depends = gnome-shell
-	provides = gnome-shell-extension-caffeine=r130
+	provides = gnome-shell-extension-caffeine=r131
 	conflicts = gnome-shell-extension-caffeine
 	source = gnome-shell-extension-caffeine::git+https://github.com/eonpatapon/gnome-shell-extension-caffeine
 	md5sums = SKIP
-	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-caffeine-git
 
