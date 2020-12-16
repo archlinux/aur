@@ -2,7 +2,7 @@
 
 pkgname=routinator
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="RPKI validator written in Rust"
 arch=('i686' 'x86_64')
 url="https://nlnetlabs.nl/rpki"
