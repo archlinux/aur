@@ -1,6 +1,6 @@
 pkgbase = rpg2000-rtp
 	pkgdesc = RPG Maker 2000 Runtime Package (Japanese)
-	pkgver = 201804
+	pkgver = 201906
 	pkgrel = 1
 	url = https://tkool.jp/support/download/rpg2000/rtp
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = rpg2000-rtp
 	optdepends = easyrpg-player: game engine for using the RTP
 	noextract = 2000rtp.zip
 	source = https://tkool.jp/assets/files/2000rtp.zip
-	source = https://tkool.jp/wp-content/uploads/2018/04/RTP_patchk_0420.zip
+	source = https://tkool.jp/products/rtp/RTP_patchk_190612.zip
 	source = rpg2000-rtp.sh
 	sha256sums = c130f0078c0d6ecc3404f94af8258e4557ab85c3b204397c7f21dbc57efeef8e
-	sha256sums = 369f704b24f0a7a9ea058c3b3002c1509f8c8d0a94c5ea7310aa0a40c393a995
+	sha256sums = 3041c57af04675b990da5709928fe7794cac2e4b21f6b526a81d310b353db3ad
 	sha256sums = 1a892b64ea2df5827e560100408d6ff3f8abc9ec008f62bc8167fb91c0c2b5da
 
 pkgname = rpg2000-rtp
