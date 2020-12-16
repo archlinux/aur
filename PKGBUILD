@@ -1,7 +1,7 @@
 # Maintainer: lightning1141 <lightning1141@gmail.com>
 
 pkgname=qtalk-bin
-pkgver=2.1.009
+pkgver=2.1.010
 pkgrel=1
 pkgdesc="QTalk (Window/Linux) 2.0 by Qunar"
 arch=("x86_64")
@@ -15,7 +15,7 @@ source=("qtalk_linux_$pkgver.bin::https://qim.qunar.com/win_2_0/downloads/qtalk_
   "com.qunar.QTalk.desktop"
   "qunarim.png"
 )
-sha256sums=("e461177c2796ef849a351464e3d666c94633d3925dbb84df486c44acd431d35f"
+sha256sums=("26f4a5145e7d46e3dfff164655c2aab07f9375a5ecb2985786c9b1c3e4fb810c"
   "0b827bc0ee931fc3c53d2bcf36cfef656dfbadf3b731d61ef75db628d5b5b1de"
   "2334ea114a2949301d583051cdb64c5c8186aaa8fc9f402ecd04decbaf775128"
 )

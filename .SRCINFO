@@ -1,6 +1,6 @@
 pkgbase = qtalk-bin
 	pkgdesc = QTalk (Window/Linux) 2.0 by Qunar
-	pkgver = 2.1.009
+	pkgver = 2.1.010
 	pkgrel = 1
 	url = https://qim.qunar.com
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = qtalk-bin
 	depends = qt5-svg
 	provides = qtalk
 	conflicts = qtalk
-	source = qtalk_linux_2.1.009.bin::https://qim.qunar.com/win_2_0/downloads/qtalk_setup_linux.run
+	source = qtalk_linux_2.1.010.bin::https://qim.qunar.com/win_2_0/downloads/qtalk_setup_linux.run
 	source = com.qunar.QTalk.desktop
 	source = qunarim.png
-	sha256sums = e461177c2796ef849a351464e3d666c94633d3925dbb84df486c44acd431d35f
+	sha256sums = 26f4a5145e7d46e3dfff164655c2aab07f9375a5ecb2985786c9b1c3e4fb810c
 	sha256sums = 0b827bc0ee931fc3c53d2bcf36cfef656dfbadf3b731d61ef75db628d5b5b1de
 	sha256sums = 2334ea114a2949301d583051cdb64c5c8186aaa8fc9f402ecd04decbaf775128
 
