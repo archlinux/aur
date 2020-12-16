@@ -28,14 +28,14 @@ build() {
     -D tests=disabled \
     -D vapi=disabled \
     -D gtk_doc=false
-  ninja -C build
+  ninja $NINJAFLAGS -C build
 }
 
 package() {
   provides=(libgudev-1.0.so libgudev)
   conflicts=(libgudev)
 
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" ninja $NINJAFLAGS -C build install
 }
 
 # vim:set ts=2 sw=2 et:
