@@ -2,7 +2,7 @@
 
 pkgname=lemonbar-xft-git
 _pkgname=bar
-pkgver=280.0042efd
+pkgver=r280.0042efd
 pkgrel=1
 pkgdesc="A lightweight xcb based bar with ported xft support."
 arch=('i686' 'x86_64')
