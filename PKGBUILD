@@ -1,7 +1,8 @@
 # Maintainer: Maik Broemme <mbroemme@libmpq.org>
 pkgname="parsec-sdk-bin"
+pkgdesc="Parsec SDK to build interactive and low-latency peer-to-peer connections for game streaming"
 pkgver="5.0"
-pkgrel="1"
+pkgrel="2"
 arch=("x86_64")
 url="https://parsec.app/"
 license=("custom")
