@@ -1,0 +1,13 @@
+post_install() {
+    ln -sf /usr/local/Aventail/startct.sh /usr/bin/startct
+    ln -sf /usr/local/Aventail/startctui.sh /usr/bin/startctui
+    ln -sf /etc/ssl/certs /usr/local/Aventail/certs
+}
+
+post_remove() {
+    rm -rf /usr/bin/startct /usr/bin/startctui /usr/local/Aventail
+    for homeDir in /home/* /root; do
+        rm -rf $homeDir/.sonicwall/AventailConnect/library/branding
+        rm -rf $homeDir/.sonicwall/AventailConnect
+    done
+}
