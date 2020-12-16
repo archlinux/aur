@@ -3,7 +3,7 @@
 # Maintainer: dncrash <dncrash@gmail.com>
 
 pkgname=ocsinventory-agent
-pkgver=2.6.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="Hardware and software inventory tool (client)"
 arch=('any')
@@ -16,9 +16,9 @@ optdepends=('smartmontools')
 makedepends=('perl-module-install')
 install=${pkgname}.install
 backup=('etc/ocsinventory/ocsinventory-agent.cfg')
-source=("https://github.com/OCSInventory-NG/UnixAgent/releases/download/v2.6.0/Ocsinventory-Unix-Agent-2.6.0.tar.gz"
+source=("https://github.com/OCSInventory-NG/UnixAgent/releases/download/v2.8.1/Ocsinventory-Unix-Agent-2.8.1.tar.gz"
     "modules.conf" "ocsinventory-agent" "ocsinventory-agent.cfg")
-md5sums=('d021e9d68e6a27e455d3e6e62ed2fe78'
+md5sums=('c1218e871132b43d6901894f315e7f78'
      '3c1235643decce6f1a29c5644d2b527b'
      '9419012794e5e134bc152cfd388d63e7'
      '3be05b06c7a6e269d9a4c74dcf239d19')
