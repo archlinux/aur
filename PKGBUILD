@@ -66,7 +66,7 @@ package() {
   mkdir -p ${pkgdir}/usr/lib
   ln -s /usr/lib/libSDL2-2.0.so ${pkgdir}/usr/lib/libSDL2-2.0.so.0
 
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C build install
 
   sed -i "s/libSDL2\.a/libSDL2main.a/g" "$pkgdir"/usr/lib/cmake/SDL2/SDL2Targets-noconfig.cmake
 
