@@ -1,6 +1,6 @@
 pkgbase = webots
 	pkgdesc = Mobile robot simulation software.
-	pkgver = 2020b_rev1
+	pkgver = 2021a
 	pkgrel = 1
 	url = https://cyberbotics.com/
 	install = webots.install
@@ -71,8 +71,8 @@ pkgbase = webots
 	optdepends = zlib
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/cyberbotics/webots/releases/download/R2020b-rev1/webots_2020b-rev1_amd64.deb
-	sha512sums_x86_64 = a0e348c2d751af9503578eda2466946c2a69129c9c7f5d07868e61e5815df65e2f5b1b5f8b7917f5acd3b210ff7e85e66df4a9c91869ebdaf58f7e9fa4bfa007
+	source_x86_64 = https://github.com/cyberbotics/webots/releases/download/R2021a/webots_2021a_amd64.deb
+	sha512sums_x86_64 = 84b4c68fa067829e982a6bb742d8833e649e4a32b98a6e6257f4aeb3b388a61b4afbf5987eeb9705cc2d01968b674e0fe9eac3648dd6f4030185492727af71a5
 
 pkgname = webots
 
