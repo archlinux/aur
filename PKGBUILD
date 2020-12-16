@@ -59,10 +59,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.9.1.arch1.r951584.26c226917f04
+pkgver=v5.10.1.arch1.r968890.7f7be490e6a9
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=v5.9.1.arch1
+_srcver_tag=v5.10.1.arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -92,8 +92,7 @@ _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 source=(
     "git+$_repo_url#branch=master"
     "git+$_repo_url_gcc_patch"
-    config         # the main kernel config file
-    sphinx-workaround.patch
+    config.tar.gz # kernel config file
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -101,8 +100,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'f208336b5ca113d10775a310bb6535166da7b59351d766d2999650b5ea2b2ec8bffb0203462bb37c3e4d8c76f9a2a2a8cfd59c6e5f8a526f6fed8b2d34a0dd8e'
-            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be')
+            '78ebb38b114a347da4e90628c9d1b325a05e3c9b1800333ec2528c9bee28815909d6ff13ef48863ad901f0be17ec88000b4455067418592009b08ca2dfc93e00')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -130,9 +128,6 @@ prepare() {
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching with Graysky's additional gcc CPU optimizatons..."
     patch -Np1 -i "$srcdir/$_reponame_gcc_patch/$_gcc_patch_name"
-    
-    msg2 "Patching with Sphinx build fail workaround..."
-    patch -Np1 -i "$srcdir/sphinx-workaround.patch"
     
     msg2 "Setting config..."
     cp ../config .config

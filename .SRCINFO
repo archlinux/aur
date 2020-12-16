@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = v5.9.1.arch1.r951584.26c226917f04
+	pkgver = v5.10.1.arch1.r968890.7f7be490e6a9
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -18,14 +18,12 @@ pkgbase = linux-bcachefs-git
 	options = !strip
 	source = git+https://github.com/koverstreet/bcachefs#branch=master
 	source = git+https://github.com/graysky2/kernel_gcc_patch
-	source = config
-	source = sphinx-workaround.patch
+	source = config.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = f208336b5ca113d10775a310bb6535166da7b59351d766d2999650b5ea2b2ec8bffb0203462bb37c3e4d8c76f9a2a2a8cfd59c6e5f8a526f6fed8b2d34a0dd8e
-	sha512sums = 98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be
+	sha512sums = 78ebb38b114a347da4e90628c9d1b325a05e3c9b1800333ec2528c9bee28815909d6ff13ef48863ad901f0be17ec88000b4455067418592009b08ca2dfc93e00
 
 pkgname = linux-bcachefs-git
 	pkgdesc = The Linux kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem

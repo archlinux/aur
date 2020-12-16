@@ -1,7 +1,4 @@
 bcachefs
 kernel_gcc_patch
-*.xz
-*.gz
-*.pkg.tar*
 pkg
 src
