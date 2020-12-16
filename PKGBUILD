@@ -30,7 +30,7 @@ package() {
   install -d "${pkgdir}/usr/share/gnome-shell/extensions/"
   mv src ${_uuid}
   cp -r "${_uuid}" "${pkgdir}/usr/share/gnome-shell/extensions/"
-  #rebuild compiled schemas if missimg
+  #rebuild compiled schemas if missing
   if [[ ! -f "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/schemas/gschemas.compiled" ]]; then
   	glib-compile-schemas ${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/schemas
   fi
