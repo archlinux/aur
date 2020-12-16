@@ -1,14 +1,14 @@
 pkgbase = autoexec
 	pkgdesc = A development tool for automatic execution of scripts
-	pkgver = 2020.12.10
-	pkgrel = 1
+	pkgver = 2020.12.15
+	pkgrel = 2
 	url = https://github.com/terminalforlife/Extra/tree/master/source/autoexec
 	arch = any
 	license = GPLv3
 	depends = bash
 	depends = coreutils
 	depends = ncurses
-	source = https://github.com/terminalforlife/DEB-Packages/raw/master/autoexec/autoexec_2020-02-22_all.deb
+	source = https://github.com/terminalforlife/DEB-Packages/raw/master/autoexec/autoexec_2020-12-15_all.deb
 	md5sums = SKIP
 
 pkgname = autoexec
