@@ -28,6 +28,10 @@ package() {
 	cd "${srcdir}/${pkgname%-git}"
 	install -dm755 "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
 	cp -R * "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
+  #rebuild compiled GSettings schemas if missing
+  if [[ ! -f "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/schemas/gschemas.compiled" ]]; then
+  	glib-compile-schemas ${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/schemas
+  fi
+  chmod -R 755 "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/"
 }
-
 
