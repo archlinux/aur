@@ -4,7 +4,7 @@
 
 _pkgname=libretro-ppsspp
 pkgname=libretro-ppsspp-rbp
-pkgver=28609
+pkgver=28668
 pkgrel=1
 pkgdesc='Sony PlayStation Portable core (build for Raspberry Pi)'
 arch=(armv7h)
@@ -26,7 +26,7 @@ makedepends=(
   mesa
   python
 )
-_commit=b8ccd7fae7563af0a1a92573a1f3359a282811a1
+_commit=73da378efda65ec801b24d415ebd16b5f26503a3
 source=(
   libretro-ppsspp::git+https://github.com/hrydgard/ppsspp.git#commit=${_commit}
   git+https://github.com/Kingcom/armips.git
@@ -37,6 +37,7 @@ source=(
   git+https://github.com/Tencent/rapidjson.git
   git+https://github.com/KhronosGroup/SPIRV-Cross.git
   armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git
+  libretro-ppsspp-assets-path.patch
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -46,7 +47,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '2234ab0c53849ed728889305a68119a365da16094a1b7ac2c4d2a2ababe5c8f5')
 
 pkgver() {
   cd libretro-ppsspp
@@ -56,6 +58,8 @@ pkgver() {
 
 prepare() {
   cd libretro-ppsspp
+
+  patch -Np1 -i ../libretro-ppsspp-assets-path.patch
 
   for submodule in assets/lang ext/glslang ext/miniupnp; do
     git submodule init ${submodule}
@@ -98,6 +102,8 @@ build() {
 package() {
   install -Dm 644 build/lib/ppsspp_libretro.so -t "${pkgdir}"/usr/lib/libretro/
   install -Dm 644 libretro-ppsspp/LICENSE.TXT -t "${pkgdir}"/usr/share/licenses/libretro-ppsspp-git/
+  install -dm 755 "${pkgdir}"/usr/share/libretro/ppsspp
+  cp -dr --no-preserve=ownership build/assets "${pkgdir}"/usr/share/libretro/ppsspp/
 }
 
 # vim: ts=2 sw=2 et:

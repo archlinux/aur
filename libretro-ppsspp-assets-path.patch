@@ -1,0 +1,11 @@
+--- libretro-ppsspp.orig/libretro/libretro.cpp	2020-10-08 22:13:25.641893000 +0200
++++ libretro-ppsspp/libretro/libretro.cpp	2020-10-10 01:21:00.000136872 +0200
+@@ -601,6 +601,7 @@
+    g_Config.internalDataDirectory = retro_base_dir;
+ 
+    VFSRegister("", new DirectoryAssetReader(retro_base_dir.c_str()));
++   VFSRegister("", new DirectoryAssetReader("/usr/share/libretro/ppsspp/assets/"));
+ 
+    coreState = CORE_POWERUP;
+    ctx       = LibretroGraphicsContext::CreateGraphicsContext();
+
