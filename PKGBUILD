@@ -32,9 +32,6 @@ package() {
 
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
-    mkdir -p -m755 "${pkgdir}/var/lib/${pkgname}"
-    install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
-
     pushd build/lib/refind_btrfs/data
 
     install -D -m755 refind-btrfs "${pkgdir}/usr/bin/refind-btrfs"
@@ -42,4 +39,7 @@ package() {
     install -D -m644 refind-btrfs.service "${pkgdir}/usr/lib/systemd/system/refind-btrfs.service"
 
     popd
+
+    install -d -m755 "${pkgdir}/var/lib/${pkgname}"
+    install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
