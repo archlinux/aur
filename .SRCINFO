@@ -1,0 +1,14 @@
+pkgbase = python-scooby
+	pkgdesc = A Great Dane turned Python environment detective
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://github.com/banesullivan/scooby
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/banesullivan/scooby/archive/v0.5.6.tar.gz
+	sha256sums = f8e613825b7a02e7e19f72d3285ff9927545ff9b733c9d8d756cd66740396401
+
+pkgname = python-scooby
+
