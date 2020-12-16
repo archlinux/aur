@@ -3,7 +3,7 @@ pkgbase=python-acstools
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.2.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Python Tools for ACS (Advanced Camera for Surveys) Data"
 arch=('i686' 'x86_64')
@@ -15,10 +15,12 @@ checkdepends=('python-pytest-astropy-header'
               'python-astropy'
               'python-beautifulsoup4'
               'python-requests'
-              'python-ci_watson')
+              'python-ci_watson'
+              'python-yaml'
+              'python-matplotlib')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/spacetelescope/acstools/master/LICENSE.md")
-md5sums=('cf89f3ee47047acca7c563bbacc6503b'
+md5sums=('70a60fb2076ea289cf898634c82a14c0'
          'SKIP')
 
 build() {
@@ -37,7 +39,7 @@ check() {
 }
 
 package() {
-    depends=('python>=3.6' 'python-astropy>=3.1' 'python-beautifulsoup4' 'python-requests')
+    depends=('python>=3.6' 'python-astropy>=3.1' 'python-beautifulsoup4' 'python-requests' 'python-yaml')
     optdepends=('python-matplotlib'
                 'python-scipy'
                 'python-scikit-image'

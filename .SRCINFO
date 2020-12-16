@@ -1,6 +1,6 @@
 pkgbase = python-acstools
 	pkgdesc = Python Tools for ACS (Advanced Camera for Surveys) Data
-	pkgver = 3.2.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://acstools.readthedocs.io/
 	arch = i686
@@ -11,10 +11,12 @@ pkgbase = python-acstools
 	checkdepends = python-beautifulsoup4
 	checkdepends = python-requests
 	checkdepends = python-ci_watson
+	checkdepends = python-yaml
+	checkdepends = python-matplotlib
 	makedepends = python-setuptools-scm
-	source = https://files.pythonhosted.org/packages/source/a/acstools/acstools-3.2.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/a/acstools/acstools-3.3.1.tar.gz
 	source = https://raw.githubusercontent.com/spacetelescope/acstools/master/LICENSE.md
-	md5sums = cf89f3ee47047acca7c563bbacc6503b
+	md5sums = 70a60fb2076ea289cf898634c82a14c0
 	md5sums = SKIP
 
 pkgname = python-acstools
@@ -22,6 +24,7 @@ pkgname = python-acstools
 	depends = python-astropy>=3.1
 	depends = python-beautifulsoup4
 	depends = python-requests
+	depends = python-yaml
 	optdepends = python-matplotlib
 	optdepends = python-scipy
 	optdepends = python-scikit-image
