@@ -6,7 +6,7 @@
 # Contributor: Roberto Alsina <ralsina@kde.org>
 # Contributor: Julien Duponchelle <julien@gns3.net>
 
-pkgname=python-cx_freeze
+pkgname=python-cx-freeze
 pkgver=6.4
 pkgrel=1
 pkgdesc='Create standalone executables from Python scripts'
