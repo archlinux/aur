@@ -1,13 +1,13 @@
 pkgbase = gobi-loader
 	pkgdesc = Loader for gobi wwan chipset firmware
 	pkgver = 0.7
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.codon.org.uk/~mjg59/gobi_loader
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	source = http://www.codon.org.uk/~mjg59/gobi_loader/download/gobi_loader-0.7.tar.gz
-	sha256sums = 78bdc255451cde1caa406e146b01a88828480c9c43272de8cffdb61627be754a
+	source = https://github.com/kicer/gobi_loader/archive/a4fad69d205c6568f8f86fa69c63b5dd50285d05.zip
+	sha256sums = c3426e6ebb15c8504d7214b02aec3682592dde7bdff8bd1ca48fb93f065208c9
 
 pkgname = gobi-loader
 
