@@ -1,7 +1,7 @@
 pkgbase = gnucash-xbt-minimal
 	pkgdesc = A personal and small-business financial-accounting application with Bitcoin but without ofx/qfx import and aqbanking support
 	pkgver = 4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnucash.org
 	arch = x86_64
 	license = GPL
