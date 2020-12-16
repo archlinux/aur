@@ -1,22 +1,32 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
-pkgname=ibus-daemon
-pkgver=0.0.4
-pkgrel=1
+pkgname='ibus-daemon'
+pkgver='0.0.4'
+pkgrel='1'
 pkgdesc='SystemD user service for IBus'
-arch=(any)
-license=(MIT)
+arch=('any')
+license=('MIT')
 url='https://github.com/KSXGitHub/ibus-daemon.pkgbuild.git'
-depends=(systemd ibus sh)
-makedepends=(pkgconf)
-source=(
-	ibus@.service
-	ibus-config@.service
-	enable-ibus-daemon
-	LICENSE.md
-	README.md
+depends=(
+	'systemd'
+	'ibus'
+	'sh'
 )
-sha512sums=(SKIP SKIP SKIP SKIP SKIP)
+makedepends=('pkgconf')
+source=(
+	'ibus@.service'
+	'ibus-config@.service'
+	'enable-ibus-daemon'
+	'LICENSE.md'
+	'README.md'
+)
+sha512sums=(
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+)
 
 package() {
 	cd "$srcdir"
