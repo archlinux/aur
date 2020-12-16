@@ -14,8 +14,9 @@ source=(
 	ibus-config@.service
 	enable-ibus-daemon
 	LICENSE.md
+	README.md
 )
-sha512sums=(SKIP SKIP SKIP SKIP)
+sha512sums=(SKIP SKIP SKIP SKIP SKIP)
 
 package() {
 	cd "$srcdir"
@@ -23,4 +24,5 @@ package() {
 	install -Dm644 ibus-config@.service "$pkgdir/$(pkg-config systemd --variable=systemduserunitdir)/ibus-config@.service"
 	install -Dm755 enable-ibus-daemon "$pkgdir/usr/bin/enable-ibus-daemon"
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/ibus-deamon/LICENSE.md"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/ibus-daemon/README.md"
 }
