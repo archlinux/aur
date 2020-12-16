@@ -2,7 +2,7 @@
 # Contributor: Cobalt Space <cobaltspace@protonmail.com>
 pkgname="ftba"
 pkgver="202011261605_2be2c6a678_release"
-pkgrel="3"
+pkgrel="4"
 arch=("any")
 pkgdesc="Offers many different styles of Minecraft modpacks to the community."
 source=("https://apps.modpacks.ch/FTBApp/release/${pkgver//_/-}/FTBA_linux_${pkgver//_/-}.deb" "ftbapp.desktop")
@@ -15,5 +15,6 @@ package() {
 	cp "$srcdir/ftbapp.desktop" "$pkgdir/usr/share/applications"
 	rm -R $pkgdir/opt/FTBA/{jre,bin/{ftbapp.app,{,**/}*.{exe,dll}}}
 	chmod +x "$pkgdir/opt/FTBA/bin/ftb-app"
-	ln -s "$pkgdir/opt/FTBA/FTBApp" "$pkgdir/usr/bin"
+	cd "$pkgdir"
+	ln -rs ./opt/FTBA/FTBApp ./usr/bin
 }
