@@ -1,10 +1,6 @@
 # Maintainer : Yamada Hayao <hayao@fascode.net>
 # Contributor: EHfive <eh5@sokka.cn>
 
-pkgname="pulseaudio-modules-bt"
-pkgver="1.4"
-
-
 #-- PulseAudio --#
 pulseaudio_pkgname="extra/pulseaudio"
 if pacman -Qq "$(basename "${pulseaudio_pkgname}")" 2> "/dev/null" 1>&2; then
@@ -21,20 +17,28 @@ if [[ -v pulseaudio_ver ]]; then
 fi
 
 
-pkgrel="5"
+pkgname="pulseaudio-modules-bt"
+module_ver="1.4"
+pkgver="${module_ver}_${pulseaudio_ver}"
+pkgrel="2"
 pkgdesc="PulseAudio Bluetooth modules with SBC, AAC, APTX, APTX-HD, Sony LDAC (A2DP codec) support"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/EHfive/pulseaudio-modules-bt"
 license=('GPL3')
 depends=("pulseaudio>=12.0" "bluez" "bluez-libs" "sbc" "libfdk-aac.so")
 makedepends=("libpulse" "cmake>=3.0" "libavcodec.so>=58" "libldac" "git")
-optdepends=("libavcodec.so>=58: aptX Classic, aptX HD support"
-            "libldac: LDAC support")
+optdepends=(
+    "libavcodec.so>=58: aptX Classic, aptX HD support"
+    "libldac: LDAC support"
+    "pulseaudio=${pulseaudio_ver}: This package requires a specific PulseAudio version"
+)
 provides=("pulseaudio-bluetooth" "pulseaudio-modules-bt-git")
 conflicts=("pulseaudio-bluetooth" "pulseaudio-modules-bt-git")
 
-source=("pulseaudio-modules-bt.zip::https://github.com/EHfive/pulseaudio-modules-bt/archive/v${pkgver}.zip"
-        "pulseaudio.zip::https://github.com/pulseaudio/pulseaudio/archive/v${pulseaudio_ver}.zip")
+source=(
+    "pulseaudio-modules-bt.zip::https://github.com/EHfive/pulseaudio-modules-bt/archive/v${module_ver}.zip"
+    "pulseaudio.zip::https://github.com/pulseaudio/pulseaudio/archive/v${pulseaudio_ver}.zip"
+)
 
 md5sums=(
     '711a7f930321e56706acdb441de0e432'
@@ -47,14 +51,13 @@ sha512sums=(
 )
 
 prepare() {
-    cd "$srcdir/pulseaudio-modules-bt-${pkgver}"
+    cd "${srcdir}/pulseaudio-modules-bt-${module_ver}"
     rm -rf pa
     ln -sf -T "../pulseaudio-${pulseaudio_ver}" "pa"
-    # git -C pa checkout v`pkg-config libpulse --modversion|sed 's/[^0-9.]*\([0-9.]*\).*/\1/'`
 }
 
 build() {
-    cd "$srcdir/pulseaudio-modules-bt-${pkgver}"
+    cd "${srcdir}/pulseaudio-modules-bt-${module_ver}"
     cmake \
         -DCMAKE_BUILD_TYPE=Release \
         .
@@ -62,6 +65,6 @@ build() {
 }
 
 package() {
-    cd "$srcdir/pulseaudio-modules-bt-${pkgver}"
-    make DESTDIR="$pkgdir" install
+    cd "$srcdir/pulseaudio-modules-bt-${module_ver}"
+    make DESTDIR="${pkgdir}" install
 }
