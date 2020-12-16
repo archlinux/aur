@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.9.13.arch1
+pkgver=5.10.1.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -92,21 +92,19 @@ _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
 source=(
     "git+$_repo_url?signed#tag=$_srcver_tag"
     "git+$_repo_url_gcc_patch"
-    config         # the main kernel config file
-    sphinx-workaround.patch
-    0005-v5.9_undead-pds099o.patch
+    config.tar.gz # kernel config file
+    0005-v5.10_undead-pds099o.patch
     0005-undead-glitched-pds.patch
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
     "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman
-    "A2FF3A36AAA56654109064AB19802F8B0D70FC30"  # Jan Alexander Steffens (heftig)
+    "A2FF3A36AAA56654109064AB19802F8B0D70FC30"  # Jan Alexander Steffens ~ heftig
 )
 sha512sums=('SKIP'
             'SKIP'
-            'a178b13f040346a9a757850d97c0bbb7b235815b20d343f1ed78bd7e54e0d06f8c67364885bc33d94ed06958171f3778d34a52517ab1523a9b4ea3c6c3e0d6ec'
-            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
-            'e41d0f8a3ace142947fc5497f7377cf5a497ce1764ca96fdc6dc4915b027ac99a15296ad22c4ef99a3a5eb812614b5b280480249747a5c318452543cd85ce620'
+            '575a2a15d47828ce884ea4f8f3db40a74224a9f1b63be54d987d37cf7e92c63c3bc3a4be8edc1fbbbf22f491679bec53f7126193e463407d71861304bb820836'
+            'e27976837d14c6480514da37c76f8d015a26eefe8da612e31a819a3ef897864a30fac588ca11108ea5fe6fab653fb083c09e3cbc923ddfa3758ea20f567d6dee'
             '2cf83af1322f0fe5b9751e2b77fa1c890c7c22d9213b1cdfb57ca7f7a89a2cb263c213e178417ae1b7e947b386796b4b71507b127ec698cba661799346b33bbd')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -122,9 +120,8 @@ prepare() {
     echo "${pkgbase#linux}" > localversion.20-pkgname
     
     PatchesArray=(
-        sphinx-workaround.patch
         $_reponame_gcc_patch/$_gcc_patch_name
-        0005-v5.9_undead-pds099o.patch
+        0005-v5.10_undead-pds099o.patch
         0005-undead-glitched-pds.patch
     )
     for MyPatch in "${PatchesArray[@]}"

@@ -1,8 +1,8 @@
 pkgbase = linux-pds
 	pkgdesc = Linux
-	pkgver = 5.9.13.arch1
+	pkgver = 5.10.1.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.9.13-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.10.1-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -16,20 +16,18 @@ pkgbase = linux-pds
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = git+https://git.archlinux.org/linux?signed#tag=v5.9.13-arch1
+	source = git+https://git.archlinux.org/linux?signed#tag=v5.10.1-arch1
 	source = git+https://github.com/graysky2/kernel_gcc_patch
-	source = config
-	source = sphinx-workaround.patch
-	source = 0005-v5.9_undead-pds099o.patch
+	source = config.tar.gz
+	source = 0005-v5.10_undead-pds099o.patch
 	source = 0005-undead-glitched-pds.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = a178b13f040346a9a757850d97c0bbb7b235815b20d343f1ed78bd7e54e0d06f8c67364885bc33d94ed06958171f3778d34a52517ab1523a9b4ea3c6c3e0d6ec
-	sha512sums = 98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be
-	sha512sums = e41d0f8a3ace142947fc5497f7377cf5a497ce1764ca96fdc6dc4915b027ac99a15296ad22c4ef99a3a5eb812614b5b280480249747a5c318452543cd85ce620
+	sha512sums = 575a2a15d47828ce884ea4f8f3db40a74224a9f1b63be54d987d37cf7e92c63c3bc3a4be8edc1fbbbf22f491679bec53f7126193e463407d71861304bb820836
+	sha512sums = e27976837d14c6480514da37c76f8d015a26eefe8da612e31a819a3ef897864a30fac588ca11108ea5fe6fab653fb083c09e3cbc923ddfa3758ea20f567d6dee
 	sha512sums = 2cf83af1322f0fe5b9751e2b77fa1c890c7c22d9213b1cdfb57ca7f7a89a2cb263c213e178417ae1b7e947b386796b4b71507b127ec698cba661799346b33bbd
 
 pkgname = linux-pds
