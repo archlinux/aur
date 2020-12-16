@@ -4,7 +4,7 @@
 pkgname=dump1090-git
 _gitname=dump1090
 pkgver=0.r386.bff92c4
-pkgrel=2
+pkgrel=1
 pkgdesc="Dump1090 is a simple Mode S decoder for RTLSDR devices. MalcolmRobb fork. Git version."
 arch=('i686' 'x86_64')
 url="https://github.com/MalcolmRobb/dump1090"
@@ -20,8 +20,17 @@ pkgver() {
   printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "$srcdir/$_gitname"
+  # gcc10 tweaks
+  sed -i 's/^struct stDF {/extern &/' dump1090.h
+  sed -i 's/^struct {.*Internal state$/static &/' dump1090.h
+  sed -i 's/^CFLAGS=.*$/& -fPIC/' Makefile
+}
+
 build() {
   cd "$srcdir/$_gitname"
+  make clean
   make PREFIX=/usr/
 }
  
