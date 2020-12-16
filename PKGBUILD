@@ -8,25 +8,31 @@ arch=('x86_64')
 url="https://github.com/freeswitch/spandsp"
 license=('LGPL' 'GPL')
 depends=('libtiff')
-makedepends=('gawk')
+makedepends=('gawk' 'sox' 'fftw')
 provides=('spandsp')
 conflicts=('spandsp')
 source=("git+https://github.com/freeswitch/$_pkgname")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/$_pkgname
+  cd "$_pkgname"
   awk '/^Version:/ { print $2 }' spandsp.spec
 }
 
 build() {
   cd "$_pkgname"
   ./autogen.sh
-  ./configure --prefix=/usr
-  make
+  ./configure --prefix=/usr --enable-tests
+  make -C src
+}
+
+check() {
+  cd "$_pkgname"
+  make check
 }
 
 package() {
   cd "$_pkgname"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" -C src install
+  make DESTDIR="$pkgdir" install-pkgconfigDATA
 }
