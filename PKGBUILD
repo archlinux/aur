@@ -11,11 +11,8 @@ backup=("etc/natbypassd.d/relays.conf" "etc/natbypassd.d/routes.conf")
 sha256sums=("SKIP")
 
 package() {
-    mkdir -p "$pkgdir/usr/bin"
-    cp "$srcdir/natbypassd/natbypassd" "$pkgdir/usr/bin"
-    mkdir -p "$pkgdir/etc/natbypassd.d"
-    cp -r "$srcdir/natbypassd/conf/." "$pkgdir/etc/natbypassd.d/"
-    chmod 775 "$pkgdir/usr/bin/natbypassd"
-    mkdir -p "$pkgdir/usr/lib/systemd/system"
-    cp "$srcdir/natbypassd/systemd/natbypassd.service" "$pkgdir/usr/lib/systemd/system"
+    cd "${pkgname}"
+    install -Dm755 "${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "conf/"{relays.conf,routes.conf} -t "${pkgdir}/etc/natbypassd.d"
+    install -Dm644 "systemd/${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
 }
