@@ -31,7 +31,7 @@ package_wayland-nodocs-git() {
     provides=('wayland'  "wayland=${pkgver}")
     conflicts=('wayland')
     
-    DESTDIR="$pkgdir" ninja -C build install
+    DESTDIR="$pkgdir" ninja $NINJAFLAGS -C build install
 #    mkdir -p docs/share
 #    mv "${pkgdir}/usr/share/"{doc,man} docs/share
     install -D -m644 wayland/COPYING "$p{kgdir}/usr/share/licenses/${pkgname}/LICENSE"
