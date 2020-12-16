@@ -1,6 +1,6 @@
 pkgbase = rofi-ttv-git
 	pkgdesc = A script that uses rofi, youtube-dl and mpv to view twitch streams.
-	pkgver = r24.177099
+	pkgver = r27.764bf26
 	pkgrel = 1
 	url = https://github.com/loiccoyle/rofi-ttv
 	arch = any
