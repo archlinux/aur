@@ -5,7 +5,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Michel Brabants <michel.linux@tiscali.be>
 pkgname=seahorse-git
-pkgver=3.36+3+g91493c26
+pkgver=3.38.0+7+g6cc0fe73
 pkgrel=1
 pkgdesc="GNOME application for managing encryption keys and passwords in the
 GNOME Keyring."
