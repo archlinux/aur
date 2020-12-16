@@ -1,15 +1,16 @@
 pkgbase = simgrid
 	pkgdesc = A scientific instrument to study large-scale distributed systems
-	pkgver = 3.25
-	pkgrel = 4
+	pkgver = 3.26
+	pkgrel = 1
 	url = https://simgrid.org/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
 	depends = boost
-	source = https://framagit.org/simgrid/simgrid/-/archive/v3.25/simgrid-v3.25.tar.gz
-	md5sums = b1e32d5511604fb17cc919fd1de379ea
+	depends = python
+	source = https://framagit.org/simgrid/simgrid/-/archive/v3.26/simgrid-v3.26.tar.gz
+	md5sums = def636e0d80ddc61b0d1832673a21c52
 
 pkgname = simgrid
 
