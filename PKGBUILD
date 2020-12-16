@@ -22,4 +22,5 @@ package() {
   cd "$srcdir/wasmtime-v${pkgver}-x86_64-linux"
   install -Dm755 wasmtime "$pkgdir/usr/bin/wasmtime"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
