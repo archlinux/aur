@@ -36,8 +36,8 @@ makedepends=(
   python-gobject
   vala
 )
-_commit=a8746f48ca088b4cd3799e540b8606df1f1e8522  # nm-1-18
-source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit")
+#_commit=a8746f48ca088b4cd3799e540b8606df1f1e8522  # nm-1-18
+source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#branch=nm-1-18")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -90,7 +90,7 @@ build() {
   )
 
   arch-meson NetworkManager build "${meson_args[@]}"
-  ninja -C build
+  ninja $NINJAFLAGS -C build
 }
 
 package() {
