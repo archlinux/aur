@@ -1,5 +1,5 @@
 pkgname=pbgopy
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='pbgopy acts like pbcopy/pbpaste but for multiple devices. It lets you share data across devices like you copy and paste.'
 arch=('any')
@@ -7,7 +7,7 @@ url="https://github.com/nakabonne/pbgopy"
 license=('MIT')
 makedepends=('go' 'git')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('17286437aef9e63cec82e4e9b45eb7c0bfbd3ac8633b2561e52acfac7ded1ab5')
+sha256sums=('ab926ef65c6e8ce9e0bcfa05b658e619e34ae3554a85be99ce0ca79af3bb97a4')
 
 prepare(){
   cd "$pkgname-$pkgver"
