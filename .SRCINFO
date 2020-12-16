@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-nightthemeswitcher-git
 	groups = gnome-shell-extensions
 	license = GPL3
 	makedepends = git
-	makedepends = gettext
+	makedepends = glib2
 	depends = gnome-shell>=3.28
 	provides = gnome-shell-extension-nightthemeswitcher
 	conflicts = gnome-shell-extension-nightthemeswitcher
