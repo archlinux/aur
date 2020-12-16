@@ -2,7 +2,7 @@
 _pkgname=akis
 pkgname=${_pkgname}-bin
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PKCS#11 library and utility tools for Akis Smartcard"
 arch=("x86_64")
 url="http://kamusm.bilgem.tubitak.gov.tr/islemler/surucu_yukleme_servisi/"
@@ -18,12 +18,24 @@ sha1sums=("a46b1405c348cd9297c6f0b7e50863641ca66189"
 	  "2b979d6972e5928847f218352c98e0cd4631f5be")
 
 prepare() {
+	cat << "EOF" > akia.desktop &&
+[Desktop Entry]
+Name=Akia
+Comment=AKIS smartcard editor
+Exec=sh -c "java -jar /usr/share/akis/akia.jar"
+Terminal=false
+Type=Application
+Categories=System;
+Keywords=System;Utility
+EOF
+	
 	find . -type f -name ${_pkgname}*$pkgver*.deb -exec bsdtar -xf {} \; &&
 	[[ -e data.tar.xz ]] && bsdtar -xf data.tar.xz &&
 	install -Dv libpkcs11wrapper.so $srcdir/usr/lib/ &&
 	install -Dv Info.plist.xml $srcdir/usr/lib/Info.plist &&
-	mv  $srcdir/usr/share/doc/akis/copyright $srcdir/usr/share/doc/akis/LICENSE
-	
+	install -Dv akia.desktop $srcdir/usr/share/applications/akia.desktop &&
+	mv  $srcdir/usr/share/doc/akis/copyright $srcdir/usr/share/doc/akis/LICENSE &&
+	rm $srcdir/usr/bin/akia
 }
 
 package() {

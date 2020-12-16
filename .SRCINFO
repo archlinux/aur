@@ -1,7 +1,7 @@
 pkgbase = akis-bin
 	pkgdesc = PKCS#11 library and utility tools for Akis Smartcard
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kamusm.bilgem.tubitak.gov.tr/islemler/surucu_yukleme_servisi/
 	arch = x86_64
 	license = custom
