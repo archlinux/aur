@@ -35,7 +35,7 @@ build() {
   export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
   arch-meson pango build --libdir=/usr/lib32 -D introspection=disabled -D libthai=disabled
-  ninja -C build
+  ninja $NINJAFLAGS -C build
 }
 
 #check() {
