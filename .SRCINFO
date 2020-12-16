@@ -1,6 +1,6 @@
 pkgbase = winctl
 	pkgdesc = Window layout scripting utility for X11 (like devilspie2) which uses relative positions (percentages)
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 3
 	url = https://github.com/oliver-anhuth/winctl
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = winctl
 	depends = lua>=5.2
 	depends = gtk3
 	depends = libwnck3
-	source = https://github.com/oliver-anhuth/winctl/archive/v0.8.0.tar.gz
-	sha256sums = 76662f9f911ddbf8b1e9a19b046cf65383deb8a226d87e4d49ea884aec743887
+	source = https://github.com/oliver-anhuth/winctl/archive/v0.8.1.tar.gz
+	sha256sums = 0425ab22aab80f2689b3383336f4ae0ad8c03ee03da53c8d6f86297e2d1da6d5
 
 pkgname = winctl
 
