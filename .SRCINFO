@@ -5,6 +5,7 @@ pkgbase = rtsp-simple-server-git
 	url = https://github.com/aler9/rtsp-simple-server
 	arch = any
 	license = MIT
+	makedepends = go
 	makedepends = git
 	provides = rtsp-simple-server
 	conflicts = rtsp-simple-server
