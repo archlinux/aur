@@ -2,7 +2,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.7.1.r1.g85ba5c6
+pkgver=3.7.1.r8.g072599c
 pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -12,10 +12,8 @@ depends=("wlroots-git" "sdl2" "libxcomposite" "vulkan-icd-loader" "libxtst" "lib
 makedepends=("git" "meson" "ninja" "patch" "vulkan-headers" "glslang")
 provides=($_pkgname "steamcompmgr")
 conflicts=($_pkgname "steamcompmgr")
-source=("git+https://github.com/Plagman/gamescope.git"
-        "wlroots-master.patch")
-sha512sums=('SKIP'
-            'ae4aa8129575eb41ffa65119a05707d0b27e69502d15acd6ffb4540d65cdbb84cdb1f3a2bc636ffce5d971839fc7d4cc55db5a87f5a06d81b3492b9246b67d90')
+source=("git+https://github.com/Plagman/gamescope.git")
+sha512sums=('SKIP')
 
 
 pkgver() {
@@ -26,7 +24,6 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgname"
-    patch -p1 < "${srcdir}/wlroots-master.patch"
 
     rm -rf "$srcdir/$_pkgname/subprojects/libliftoff"
     rm -rf "$srcdir/$_pkgname/subprojects/wlroots"

@@ -1,6 +1,6 @@
 pkgbase = gamescope-git
 	pkgdesc = Micro-compositor formerly known as steamcompmgr
-	pkgver = 3.7.1.r1.g85ba5c6
+	pkgver = 3.7.1.r8.g072599c
 	pkgrel = 1
 	url = https://github.com/Plagman/gamescope
 	arch = x86_64
@@ -22,9 +22,7 @@ pkgbase = gamescope-git
 	conflicts = gamescope
 	conflicts = steamcompmgr
 	source = git+https://github.com/Plagman/gamescope.git
-	source = wlroots-master.patch
 	sha512sums = SKIP
-	sha512sums = ae4aa8129575eb41ffa65119a05707d0b27e69502d15acd6ffb4540d65cdbb84cdb1f3a2bc636ffce5d971839fc7d4cc55db5a87f5a06d81b3492b9246b67d90
 
 pkgname = gamescope-git
 
