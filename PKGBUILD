@@ -39,11 +39,11 @@ build() {
     -D vapi=disabled \
     -D gtk_doc=false \
     -D introspection=disabled
-  ninja -C build
+  ninja $NINJAFLAGS -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C build install
   rm -rf ${pkgdir}/usr/{include,share}
 }
 
