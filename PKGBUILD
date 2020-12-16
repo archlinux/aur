@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=acstools
 pkgname=python-${_pyname}-doc
-pkgver=3.2.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Documentation for Python ACS Tools"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://acstools.readthedocs.io"
 license=('BSD')
 makedepends=("python-${_pyname}=${pkgver}" 'python-sphinx-automodapi' 'python-sphinx_rtd_theme')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('cf89f3ee47047acca7c563bbacc6503b')
+md5sums=('70a60fb2076ea289cf898634c82a14c0')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/doc
