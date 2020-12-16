@@ -1,0 +1,20 @@
+pkgbase = mt7601u-dkms-git
+	pkgdesc = mt7601u DKMS driver
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/jeremyb31/mt7601u-5.3
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	conflicts = mt7601u
+	conflicts = mt7601u-ap-dkms
+	conflicts = mt7601u-firmware
+	source = git+https://github.com/jeremyb31/mt7601u-5.3
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 284e8510ca40bf1f782a2987c9fef7f7179d6390a5a944c397be0d380ff2e5ee
+
+pkgname = mt7601u-dkms-git
+
