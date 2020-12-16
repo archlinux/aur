@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('libgit2')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7c763788d22266ec6cc64cc307ecb81e49158893d916218631052e722291f6cb')
+sha256sums=('0be1a4a779ee01a72d104ef854163d67a5cbb5b988816046f5cfbee8bd08834d')
 
 build() {
   cd "$pkgname-$pkgver"
