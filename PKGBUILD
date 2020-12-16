@@ -33,11 +33,11 @@ build() {
     -Ddocumentation=false \
     -Dlibwacom=false \
     -Ddebug-gui=false
-  ninja -C build
+  ninja $NINJAFLAGS -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" ninja $NINJAFLAGS -C build install
 
   install -Dvm644 libinput/COPYING \
     "$pkgdir/usr/share/licenses/libinput/LICENSE"
