@@ -5,7 +5,7 @@
 
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'opencl-nvidia-beta' 'nvidia-settings-beta')
-pkgver=455.45.01
+pkgver=460.27.04
 pkgrel=1
 pkgdesc='NVIDIA drivers utilities (beta version)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         'nvidia-drm-outputclass.conf'
         'nvidia-utils.sysusers'
         '120-nvidia-settings-change-desktop-paths.patch')
-sha256sums=('9b707d6244735cf0f745a74c47ed0feeec47bc56baec8122306dee6169ce10fd'
+sha256sums=('74380edefbd5140c9003b2525f4e251a1d0478dca035c3e44f5a79af5b00c122'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
             '6bbc832f4f91a7c9ec4778eac5fffd633f5f547bc2d8bb89afe4f442ad3c8dda')
@@ -193,7 +193,7 @@ package_nvidia-utils-beta() {
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.txt "${pkgdir}/usr/share/doc/${pkgname}/README"
     install -D -m644 NVIDIA_Changelog -t "${pkgdir}/usr/share/doc/${pkgname}"
-    install -D -m644 supported-gpus.json -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -D -m644 supported-gpus/supported-gpus.json -t "${pkgdir}/usr/share/doc/${pkgname}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgname}/"
     #ln -s nvidia "${pkgdir}/usr/share/doc/nvidia-utils"
     
