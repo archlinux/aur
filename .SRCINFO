@@ -6,6 +6,8 @@ pkgbase = gnome-shell-extension-applications-overview-tooltip-git
 	install = gnome-shell-extension-applications-overview-tooltip.install
 	arch = any
 	license = GPL
+	makedepends = git
+	makedepends = glib2
 	depends = gnome-shell>=3.38
 	provides = gnome-shell-extension-applications-overview-tooltip
 	conflicts = gnome-shell-extension-applications-overview-tooltip

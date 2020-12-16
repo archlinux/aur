@@ -9,6 +9,7 @@ url="https://github.com/RaphaelRochet/applications-overview-tooltip"
 install=${pkgname%-git}.install
 license=('GPL')
 depends=('gnome-shell>=3.38')
+makedepends=('git' 'glib2')
 conflicts=("${pkgname%-git}")
 provides=(${pkgname%-git})
 source=("${pkgname%-git}::git+https://github.com/RaphaelRochet/applications-overview-tooltip.git#commit=$_commit")
@@ -26,7 +27,7 @@ package() {
   install -d "${pkgdir}/usr/share/gnome-shell/extensions/"
   mv ${pkgname%-git} ${_uuid}
   cp -r "${_uuid}" "${pkgdir}/usr/share/gnome-shell/extensions/"
-  #rebuild compiled schemas if missimg
+  #rebuild compiled schemas if missing
   if [[ ! -f "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/schemas/gschemas.compiled" ]]; then
   	glib-compile-schemas ${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/schemas
   fi
