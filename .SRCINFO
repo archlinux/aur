@@ -1,0 +1,34 @@
+pkgbase = base-devel-dxd
+	pkgdesc = Meta package that substitutes base-devel's group sudo with opensudo
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Z3r0ish/Linux-DXD/
+	arch = any
+	groups = dxd
+	license = GPL
+	depends = autoconf
+	depends = automake
+	depends = binutils
+	depends = bison
+	depends = fakeroot
+	depends = file
+	depends = flex
+	depends = gawk
+	depends = gcc
+	depends = gettext
+	depends = groff
+	depends = gzip
+	depends = libtool
+	depends = m4
+	depends = make
+	depends = patch
+	depends = pkgconf
+	depends = sed
+	depends = opendoas
+	depends = texinfo
+	depends = which
+	provides = base-devel
+	conflicts = base-devel
+
+pkgname = base-devel-dxd
+
