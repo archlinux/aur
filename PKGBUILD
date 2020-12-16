@@ -1,13 +1,9 @@
 # Maintainer: robertfoster
 # Contributor: tuxsavvy
-msg "This PKGBUILD execute a one-line script to retrieve ModDB valid urls"
-_mainid=201571
-_addonsid=201574
-_urlmain=$(curl https://www.moddb.com/downloads/start/${_mainid}/all | grep -Po '(?<=href="/)[^"]*' | head -1)
-_urladdons=$(curl https://www.moddb.com/downloads/start/${_addonsid}/all | grep -Po '(?<=href="/)[^"]*' | head -1)
+
 pkgname=realrtcw
 pkgver=3.1n
-pkgrel=3
+pkgrel=4
 pkgdesc="An overhaul mod for critically acclaimed Return To Castle Wolfenstein."
 arch=('i686' 'x86_64')
 url="http://www.moddb.com/mods/realrtcw-realism-mod"
@@ -16,26 +12,41 @@ depends=('freetype2' 'graphite' 'harfbuzz' 'iortcw-data' 'libjpeg-turbo' 'libogg
 makedepends=('unzip')
 install='realrtcw.install'
 md5sums=('b0f5e7c4986f59ac28b0f78180f28988'
-         'db1682d588cf8556b2574f435f1610e7'
-         'da5b75e49061fb87f940dceaa10ca250'
          '19ef21acfceb965f36b53b70267641d1'
          '7e3991e5f331662419ad1ed04e49366c'
-         '88752202a0da9bc9cb467b6f0f201132')
+         '88752202a0da9bc9cb467b6f0f201132'
+         'a1f0a2f813b6fa7943dd2d68822d2c5a'
+         '85c800cf5b8471dc0f0a49f432da24bc')
 _commit="a1344ab17a53bda530e1f34c1a80bca7afcadcf4"
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/${_commit}.tar.gz"
-  "$pkgname-$pkgver.zip::https://www.moddb.com/${_urlmain}"
-  "$pkgname-$pkgver-addons.zip::https://www.moddb.com/${_urladdons}"
   "$pkgname.png"
   "$pkgname.launcher"
   "$pkgname.desktop"
+  moddb-downloader.sh
+  md5sums
 )
 
 prepare() {
   cd $srcdir
+  chmod +x ./moddb-downloader.sh
+
+  ./moddb-downloader.sh \
+    "$pkgname-$pkgver.zip" \
+    "$pkgname-$pkgver-addons.zip"
+
+  md5sum -c md5sums
+
+  if [ $? != 0 ]; then
+    echo 'Checksums are not valid'
+    rm "$pkgname-$pkgver.zip" \
+      "$pkgname-$pkgver-addons.zip"
+    exit 1
+  fi
 
   # Unzipping with flattened paths
   unzip -jo $pkgname-$pkgver.zip -d paks
+  unzip -jo "$pkgname-$pkgver-addons.zip"
 }
 
 package() {

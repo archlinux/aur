@@ -1,7 +1,7 @@
 pkgbase = realrtcw
 	pkgdesc = An overhaul mod for critically acclaimed Return To Castle Wolfenstein.
 	pkgver = 3.1n
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.moddb.com/mods/realrtcw-realism-mod
 	install = realrtcw.install
 	arch = i686
@@ -21,17 +21,17 @@ pkgbase = realrtcw
 	depends = sdl2
 	depends = zlib
 	source = realrtcw-3.1n.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/a1344ab17a53bda530e1f34c1a80bca7afcadcf4.tar.gz
-	source = realrtcw-3.1n.zip::https://www.moddb.com/downloads/mirror/201571/121/5124faac17f6795787c9ddd8532a4611
-	source = realrtcw-3.1n-addons.zip::https://www.moddb.com/downloads/mirror/201574/115/54c4353355a4bdd73ac1392bcb1e0e8d
 	source = realrtcw.png
 	source = realrtcw.launcher
 	source = realrtcw.desktop
+	source = moddb-downloader.sh
+	source = md5sums
 	md5sums = b0f5e7c4986f59ac28b0f78180f28988
-	md5sums = db1682d588cf8556b2574f435f1610e7
-	md5sums = da5b75e49061fb87f940dceaa10ca250
 	md5sums = 19ef21acfceb965f36b53b70267641d1
 	md5sums = 7e3991e5f331662419ad1ed04e49366c
 	md5sums = 88752202a0da9bc9cb467b6f0f201132
+	md5sums = a1f0a2f813b6fa7943dd2d68822d2c5a
+	md5sums = 85c800cf5b8471dc0f0a49f432da24bc
 
 pkgname = realrtcw
 
