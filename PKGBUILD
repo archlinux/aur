@@ -31,7 +31,7 @@ build() {
     -D iwmmxt=disabled \
     -D mips-dspr2=disabled \
     -D gtk=disabled
-  ninja -C build
+  ninja $NINJAFLAGS -C build
 }
 
 #check() {
