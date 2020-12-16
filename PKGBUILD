@@ -36,12 +36,12 @@ build() {
     -D vapi=true \
     -D print_profiles=true \
     -D daemon_user=colord
-  ninja -C build
+  ninja $NINJAFLAGS -C build
 }
 
-check() {
-  meson test -C build
-}
+#check() {
+#  meson test -C build
+#}
 
 package_colord-git() {
   optdepends=('argyllcms: color profiling'
