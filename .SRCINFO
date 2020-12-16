@@ -1,6 +1,6 @@
 pkgbase = yandex-browser-beta
 	pkgdesc = The web browser from Yandex. Yandex Browser is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier.
-	pkgver = 20.9.3.189_1
+	pkgver = 20.11.3.188_1
 	pkgrel = 1
 	arch = x86_64
 	license = custom:yandex-browser
@@ -19,8 +19,8 @@ pkgbase = yandex-browser-beta
 	optdepends = ttf-liberation: fix fonts for some PDFs
 	optdepends = yandex-libffmpeg
 	options = !strip
-	source = yandex-browser-beta-20.9.3.189_1.deb::http://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-beta/yandex-browser-beta_20.9.3.189-1_amd64.deb
-	md5sums = 8d06743c89c1f63f18ceeacedd74da84
+	source = yandex-browser-beta-20.11.3.188_1.deb::http://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-beta/yandex-browser-beta_20.11.3.188-1_amd64.deb
+	md5sums = c7f6e4907438535479be26da6050e705
 
 pkgname = yandex-browser-beta
 
