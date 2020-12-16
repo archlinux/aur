@@ -57,7 +57,7 @@ build() {
       -DRPATH=OFF \
       -DCLOCK_GETTIME=ON \
       -DJACK_SHARED=ON
-  ninja -C build
+  ninja $NINJAFLAGS -C build
 }
 
 package() {
