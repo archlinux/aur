@@ -60,7 +60,7 @@ build() {
     # platform
     -D dist_version="$pkgver-$pkgrel"
     -D session_tracking_consolekit=false
-    -D suspend_resume=disable
+    -D suspend_resume=auto
     -D polkit=false
     -D modify_system=true
     -D polkit_agent=false
