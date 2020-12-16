@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wpewebkit
-pkgver=2.30.3
+pkgver=2.30.4
 pkgrel=1
 pkgdesc='Web content engine library optimized for embedded devices'
 arch=(x86_64 i686 aarch64 armv7l armv7h)
@@ -14,11 +14,11 @@ makedepends=(gperf ruby cmake python ninja gtk-doc patch)
 source=("${url}/releases/${pkgname}-${pkgver}.tar.xz"
         "${url}/releases/${pkgname}-${pkgver}.tar.xz.asc")
 validpgpkeys=('5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
-md5sums=('75f6ef1819b182043a25b916272ebec6'
+md5sums=('d423a01ffb5be44e6ad59b2cfb9d6eb3'
          'SKIP')
-sha1sums=('2ed723f779513205449e0c5b7c080eb19d635aee'
+sha1sums=('2fdca7b888966ad2ed7d998bef52c9024dae063f'
           'SKIP')
-sha256sums=('f2dfc1a6279810353f601bb9bd0d8ef671b41b38352d679b93d01631c2bf7b4b'
+sha256sums=('1e521d85cf8cf344b9fd08eabad7a1d18a330fb7862a77eaf78d7d7b10d5f6ef'
             'SKIP')
 
 build () {
