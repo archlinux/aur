@@ -49,7 +49,6 @@ validpgpkeys=(
 )
 pkgdesc="Kernel for Linode servers"
 depends=(coreutils linux-firmware kmod mkinitcpio grub)
-provides=(linux)
 conflicts=(grub-legacy)
 backup=(etc/mkinitcpio.d/${pkgname}.preset boot/grub/menu.lst)
 
