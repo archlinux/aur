@@ -1,6 +1,6 @@
 pkgbase = wasmtime-bin
 	pkgdesc = Standalone JIT-style runtime for WebAssembly, using Cranelift
-	pkgver = 0.19.0
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://wasmtime.dev/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = wasmtime-bin
 	provides = wasmtime
 	provides = wasm2obj
 	conflicts = wasmtime
-	source = https://github.com/bytecodealliance/wasmtime/releases/download/v0.19.0/wasmtime-v0.19.0-x86_64-linux.tar.xz
+	source = https://github.com/bytecodealliance/wasmtime/releases/download/v0.21.0/wasmtime-v0.21.0-x86_64-linux.tar.xz
 	sha512sums = SKIP
 
 pkgname = wasmtime-bin
