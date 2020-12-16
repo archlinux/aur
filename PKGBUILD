@@ -27,7 +27,7 @@ prepare() {
 
 build() {
   arch-meson atk build -D docs=false
-  ninja -C build
+  ninja $NINJAFLAGS -C build
 }
 
 #check() {
