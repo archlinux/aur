@@ -4,7 +4,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-caffeine-git
-pkgver=r131
+pkgver=37.r0.g1ae1625
 pkgrel=1
 pkgdesc="Fill the cup to inhibit auto suspend and screensaver."
 arch=(any)
