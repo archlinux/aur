@@ -1,6 +1,6 @@
 pkgbase = simutrans-extended
 	pkgdesc = Transportation simulation game - Extended Version
-	pkgver = 20201215
+	pkgver = 20201216
 	pkgrel = 1
 	url = https://www.simutrans.com/
 	install = simutrans-extended.install
