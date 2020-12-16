@@ -1,0 +1,14 @@
+pkgbase = topalias
+	pkgdesc = Linux bash/zsh alias generator and statistics from command history,
+	pkgver = 2.0.14
+	pkgrel = 1
+	url = https://github.com/CSRedRat/topalias
+	arch = any
+	license = GNU
+	makedepends = python-setuptools
+	depends = python3
+	source = https://github.com/CSRedRat/topalias/archive/v2.0.14.tar.gz
+	sha512sums = ba04c98d57101e7f8c184c1afe1e95ab561e95499d652726ab512bbb1e2d6525d700f2a14ddbe3c0f07f130f23bf73410436cab0cec12e37a1ffbf325ee5012a
+
+pkgname = topalias
+
