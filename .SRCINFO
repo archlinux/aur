@@ -70,6 +70,7 @@ pkgbase = lv2-plugins-aur-meta
 	depends = mod-utilities-lv2-git
 	depends = littlefly.lv2
 	depends = fluida.lv2
+	depends = stone-phaser.lv2-git
 
 pkgname = lv2-plugins-aur-meta
 
