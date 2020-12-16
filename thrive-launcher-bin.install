@@ -1,7 +1,0 @@
-post_install() {
-	ln -sf /opt/Thrive\ Launcher/thrive-launcher /usr/bin/thrive-launcher
-	chmod 4755 /opt/Thrive\ Launcher/chrome-sandbox || true
-}
-post_remove() {
-	rm -f /usr/bin/thrive-launcher
-}
