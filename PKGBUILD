@@ -60,10 +60,10 @@ _flags=(
 
 build() {
     meson wlroots build "${_path[@]}" "${_flags[@]}"
-    ninja -C build
+    ninja $NINJAFLAGS -C build
 }
 
 package() {
-    DESTDIR="$pkgdir" ninja -C build install
+    DESTDIR="$pkgdir" ninja $NINJAFLAGS -C build install
     install -Dm644 "wlroots/LICENSE" -t "$pkgdir/usr/share/licenses/wlroots/"
 }
