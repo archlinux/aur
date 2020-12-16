@@ -58,10 +58,10 @@ build() {
         -Dbackend-drm-screencast-vaapi=false \
         -Dscreenshare=false -Dbackend-rdp=false -Dshell-ivi=false \
         -Dsimple-dmabuf-drm= -Dremoting=false
-    ninja -C "build"
+    ninja $NINJAFLAGS -C "build"
 }
 
 package() {
-    DESTDIR="$pkgdir" ninja -C "build" install
+    DESTDIR="$pkgdir" ninja $NINJAFLAGS -C "build" install
     install -Dm644 "weston/COPYING" "$pkgdir/usr/share/licenses/weston-eglstream/COPYING"
 }
