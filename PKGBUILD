@@ -6,11 +6,11 @@
 
 pkgbase=java-openj9
 pkgname=('jre-openj9-headless' 'jre-openj9' 'jdk-openj9' 'openj9-src' 'openj9-doc')
-_majorver=14
+_majorver=15
 _minorver=0
-_securityver=2
-_updatever=12
-_openj9ver=0.21.0
+_securityver=1
+_updatever=9
+_openj9ver=0.23.0
 pkgrel=1
 pkgver=${_majorver}.${_minorver}.${_securityver}.b${_updatever}_openj9_${_openj9ver}
 arch=('x86_64')
@@ -19,23 +19,21 @@ license=('custom')
 makedepends=('java-environment>=11' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
-             'libnet' 'bash' 'freemarker')
+             'libnet' 'bash' 'freemarker' 'numactl' 'nasm')
 source=(openj9-openjdk-jdk-${_openj9ver}.tar.gz::https://github.com/ibmruntimes/openj9-openjdk-jdk${_majorver}/archive/openj9-${_openj9ver}.tar.gz
         https://github.com/eclipse/openj9/archive/openj9-${_openj9ver}.tar.gz
         openj9-omr-${_openj9ver}.tar.gz::https://github.com/eclipse/openj9-omr/archive/openj9-${_openj9ver}.tar.gz
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop
-        openj9-make-jvmti-test-variables-static.patch
         omr-omrstr-iconv-failure-overflow.patch
         omr-fam.patch)
-sha256sums=('f68213a6ecfe608eab4f16e50704912375e22d83b90e30d0aa150d1190f8e901'
-            '84eac0ff622847d34704aef92d34d0d83e7ccf91fb9e21f7e9146e0f96d72c3f'
-            'a7d771a89b734d8f86d17cf5793d7e81e2d915f207739ebafc5208e2efcc2ca8'
+sha256sums=('ed6b29fb098f7325298f70e6b07b283ee8aee95308c535a9979a55e1e0760a3a'
+            'e1962d17a45caef4b76f3c8120610d9192b43bd128a8b24dae5d5d6ccd298f1c'
+            'c58186d193c41e3c740ccbc29c320e18d7084b63d878bb7cc7ba90d3ebc4be5e'
             '7cb89746dbbcf498dd43b53fee59b124f42e3ea0d8b7134ab803cc2bd6b50230'
             'bf76024528d050fd912f72d73e18a814a930df3478b132a99a887fbbdc0c9dfd'
             'bd2d4da78a65eec20dc32e21fd4fe134a2483b0bbe2dfb940d66755acc237975'
-            '5b65c0819be140e90ef11c9d7c3011d39aaa304e3fd9af0f8d61c6de618f93bf'
             'f37290530dcb8eb5acb4f70609c55b7e2be134f1052ebf20f117c2996a749858'
             'c288b0a1a2424967d9c00e4d07d16f5d703f6b9b1195839753480fcd9810faf5')
 
@@ -59,7 +57,6 @@ prepare() {
   ln -s ../openj9-openj9-${_openj9ver} openj9
   ln -s ../openj9-omr-openj9-${_openj9ver} omr
 
-  patch -d openj9 -p1 -i $srcdir/openj9-make-jvmti-test-variables-static.patch
   patch -d omr -p1 -i $srcdir/omr-omrstr-iconv-failure-overflow.patch
   patch -d omr -p1 -i $srcdir/omr-fam.patch
 
