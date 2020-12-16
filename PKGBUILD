@@ -1,7 +1,7 @@
 # Maintainer: Feakster <feakster at posteo dot eu>
 
 pkgname=ukbprep-bin
-pkgver=1.0.0
+pkgver=20201213
 pkgrel=1
 pkgdesc="UK Biobank file handlers"
 arch=('x86_64')

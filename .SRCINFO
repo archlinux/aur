@@ -1,6 +1,6 @@
 pkgbase = ukbprep-bin
 	pkgdesc = UK Biobank file handlers
-	pkgver = 1.0.0
+	pkgver = 20201213
 	pkgrel = 1
 	url = https://biobank.ndph.ox.ac.uk/showcase/download.cgi
 	arch = x86_64
