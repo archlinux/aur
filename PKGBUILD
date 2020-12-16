@@ -30,12 +30,12 @@ package_autokey-common() {
 
 	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
-	rm "$pkgdir/usr/bin/$pkgbase"{-qt,-gtk}
-	rm "$pkgdir$site_packages/$pkgbase/"{gtkapp.py,qtapp.py}
-	rm "$pkgdir$site_packages/$pkgbase/__pycache__/"{gtkapp*,qtapp*}
-	rm "$pkgdir/usr/share/man/man1/$pkgbase"{-gtk*,-qt*}
-	rm -rf "$pkgdir$site_packages/$pkgbase/"{gtkui,qtui}
-	rm -rf "$pkgdir/usr/share/applications"
+	rm -f "$pkgdir/usr/bin/$pkgbase"{-qt,-gtk}
+	rm -f "$pkgdir$site_packages/$pkgbase/"{gtkapp.py,qtapp.py}
+	rm -f "$pkgdir$site_packages/$pkgbase/__pycache__/"{gtkapp*,qtapp*}
+	rm -f "$pkgdir/usr/share/man/man1/$pkgbase"{-gtk*,-qt*}
+	rm -f -rf "$pkgdir$site_packages/$pkgbase/"{gtkui,qtui}
+	rm -f -rf "$pkgdir/usr/share/applications"
 }
 
 package_autokey-gtk() {
@@ -51,14 +51,14 @@ package_autokey-gtk() {
 
 	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
-	rm "$pkgdir/usr/bin/$pkgbase"{-qt,-run,-shell}
-	rm "$pkgdir$site_packages/$pkgbase/"{common*,config*,__init__*,interface*,macro*,model*,monitor*,qtapp*,scripting*,service*}
-	rm "$pkgdir$site_packages/$pkgbase/__pycache__/"{common*,config*,__init__*,interface*,macro*,model*,monitor*,qtapp*,scripting*,service*}
-	rm "$pkgdir/usr/share/applications/$pkgbase-qt.desktop"
-	rm "$pkgdir/usr/share/man/man1/$pkgbase"{-qt*,-run*}
-	rm -rf "$pkgdir$site_packages/$pkgbase/"{iomediator,qtui}
-	rm -rf "$pkgdir$site_packages/"*.egg-info
-	rm -rf "$pkgdir/usr/share/icons"
+	rm -f "$pkgdir/usr/bin/$pkgbase"{-qt,-run,-shell}
+	rm -f "$pkgdir$site_packages/$pkgbase/"{common*,config*,__init__*,interface*,macro*,model*,monitor*,qtapp*,scripting*,service*}
+	rm -f "$pkgdir$site_packages/$pkgbase/__pycache__/"{common*,config*,__init__*,interface*,macro*,model*,monitor*,qtapp*,scripting*,service*}
+	rm -f "$pkgdir/usr/share/applications/$pkgbase-qt.desktop"
+	rm -f "$pkgdir/usr/share/man/man1/$pkgbase"{-qt*,-run*}
+	rm -f -rf "$pkgdir$site_packages/$pkgbase/"{iomediator,qtui}
+	rm -f -rf "$pkgdir$site_packages/"*.egg-info
+	rm -f -rf "$pkgdir/usr/share/icons"
 }
 
 package_autokey-qt() {
@@ -73,12 +73,12 @@ package_autokey-qt() {
 
 	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
-	rm "$pkgdir/usr/bin/$pkgbase"{-gtk,-run,-shell}
-	rm "$pkgdir$site_packages/$pkgbase/"{common*,config*,gtkapp*,__init__*,interface*,macro*,model*,monitor*,scripting*,service*}
-	rm "$pkgdir$site_packages/$pkgbase/__pycache__/"{common*,config*,gtkapp*,__init__*,interface*,macro*,model*,monitor*,scripting*,service*}
-	rm "$pkgdir/usr/share/applications/$pkgbase-gtk.desktop"
-	rm "$pkgdir/usr/share/man/man1/$pkgbase"{-gtk*,-run*}
-	rm -rf "$pkgdir$site_packages/$pkgbase/"{iomediator,gtkui}
-	rm -rf "$pkgdir$site_packages/"*.egg-info
-	rm -rf "$pkgdir/usr/share/icons"
+	rm -f "$pkgdir/usr/bin/$pkgbase"{-gtk,-run,-shell}
+	rm -f "$pkgdir$site_packages/$pkgbase/"{common*,config*,gtkapp*,__init__*,interface*,macro*,model*,monitor*,scripting*,service*}
+	rm -f "$pkgdir$site_packages/$pkgbase/__pycache__/"{common*,config*,gtkapp*,__init__*,interface*,macro*,model*,monitor*,scripting*,service*}
+	rm -f "$pkgdir/usr/share/applications/$pkgbase-gtk.desktop"
+	rm -f "$pkgdir/usr/share/man/man1/$pkgbase"{-gtk*,-run*}
+	rm -f -rf "$pkgdir$site_packages/$pkgbase/"{iomediator,gtkui}
+	rm -f -rf "$pkgdir$site_packages/"*.egg-info
+	rm -f -rf "$pkgdir/usr/share/icons"
 }
