@@ -1,0 +1,17 @@
+diff --unified --recursive --text qutescoop.orig/QuteScoop.desktop qutescoop.new/QuteScoop.desktop
+--- qutescoop.orig/QuteScoop.desktop	2020-12-16 15:33:57.030033714 +0100
++++ qutescoop.new/QuteScoop.desktop	2020-12-16 19:07:42.443767574 +0100
+@@ -13,10 +13,9 @@
+ #    panel' won't work without that)
+ Type=Application
+ Version=0.9.4
+-Name=QuteScoop from sources
++Name=QuteScoop
+ Comment=QuteScoop
+-Icon=/home/jonas/Qt/QuteScoop/trunk/DIST-unix64/qutescoop.png
+-Exec=/home/jonas/Qt/QuteScoop/trunk/DIST-unix64/QuteScoop.sh
++Icon=/usr/share/QuteScoop/QuteScoop/qutescoop.png
++Exec=/usr/bin/QuteScoop
+ Terminal=false
+-Path=/home/jonas/Qt/QuteScoop/trunk/DIST-unix64
+ X-Desktop-File-Install-Version=0.20

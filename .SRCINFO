@@ -1,0 +1,18 @@
+pkgbase = qutescoop-git
+	pkgdesc = A platform-independent status indicator for VATSIM.
+	pkgver = v2.1.13.beta.1.r49.85cbd8e
+	pkgrel = 1
+	url = https://github.com/qutescoop/qutescoop
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = glu
+	source = qutescoop::git+https://github.com/qutescoop/qutescoop.git
+	source = fix-desktop-file.patch
+	sha256sums = SKIP
+	sha256sums = 14da95617262bc3092a4a3c9cd799f0994e31405887c76125e7efcec5a866983
+
+pkgname = qutescoop-git
+
