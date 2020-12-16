@@ -68,6 +68,8 @@ pkgbase = lv2-plugins-aur-meta
 	depends = speech-denoiser-git
 	depends = kn0ck0ut-lv2-git
 	depends = mod-utilities-lv2-git
+	depends = littlefly.lv2
+	depends = fluida.lv2
 
 pkgname = lv2-plugins-aur-meta
 
