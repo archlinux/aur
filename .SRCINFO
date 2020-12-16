@@ -20,7 +20,7 @@ pkgbase = lib32-libnm-glib-nosystemd
 	depends = lib32-nss
 	depends = lib32-util-linux
 	depends = libnm-glib
-	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=a8746f48ca088b4cd3799e540b8606df1f1e8522
+	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#branch=nm-1-18
 	sha256sums = SKIP
 
 pkgname = lib32-libnm-glib-nosystemd
