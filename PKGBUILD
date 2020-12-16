@@ -41,7 +41,7 @@ build() {
     -D gir=false \
     -D gtk_doc=false \
     -D introspection=disabled
-  ninja -C build
+  ninja $NINJAFLAGS -C build
 }
 
 #check() {
