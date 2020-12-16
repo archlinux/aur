@@ -58,7 +58,7 @@ build() {
     # platform
     -D dist_version="$pkgver-$pkgrel"
     -D session_tracking_consolekit=false
-#    -D suspend_resume=elogind
+    -D suspend_resume=auto
     -D polkit=false
     -D modify_system=true
     -D polkit_agent=false
@@ -88,8 +88,10 @@ build() {
     -D libpsl=false
     -D json_validation=false
     -D qt=false
-    -D systemd-logind=none
-    -D systemd-journal=no 
+    -D systemd_logind=false
+    -D systemd_journal=false
+    -D systemdsystemunitdir=no
+    -D session_tracking=no 
   )
 
   arch-meson NetworkManager build "${meson_args[@]}"
