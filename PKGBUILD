@@ -2,19 +2,25 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=peepdf
-pkgver=0.4.2
+pkgver=0.3
 pkgrel=2
+epoch=1
 pkgdesc="A python tool to explore PDF files in order to find out if the file can be harmful or not"
 arch=('any')
-url=https://github.com/jbremer/peepdf
+url=https://github.com/jesparza/peepdf
 license=('GPL3')
 makedepends=('git')
-depends=('python')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('cbce99242f507ef9526a4245b7692c15eaf12b21c8635d192ea2fcfb7d5e3390')
+depends=('python2')
+source=("$url/archive/$pkgname-$pkgver.tar.gz")
+sha256sums=('e2038bf3379f93b5b62faaf39f47c6a096fc7655705e7edd808acb25e55c43a2')
+
+prepare() {
+  cd $pkgname-$pkgname-$pkgver
+  find -name '*.py' -exec sed -i 's/env python$/env python2/' '{}' \;
+}
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname-$pkgname-$pkgver
 
   # Base directories.
   install -dm755 "$pkgdir"/usr/share/peepdf
@@ -24,7 +30,7 @@ package() {
 
   cat > "$pkgdir"/usr/bin/peepdf <<EOF
 #!/bin/sh
-exec python /usr/share/peepdf/peepdf.py "\$@"
+exec python2 /usr/share/peepdf/peepdf.py "\$@"
 EOF
 
   chmod +x "$pkgdir"/usr/bin/peepdf

@@ -1,14 +1,15 @@
 pkgbase = peepdf
 	pkgdesc = A python tool to explore PDF files in order to find out if the file can be harmful or not
-	pkgver = 0.4.2
+	pkgver = 0.3
 	pkgrel = 2
-	url = https://github.com/jbremer/peepdf
+	epoch = 1
+	url = https://github.com/jesparza/peepdf
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = python
-	source = peepdf-0.4.2.tar.gz::https://github.com/jbremer/peepdf/archive/0.4.2.tar.gz
-	sha256sums = cbce99242f507ef9526a4245b7692c15eaf12b21c8635d192ea2fcfb7d5e3390
+	depends = python2
+	source = https://github.com/jesparza/peepdf/archive/peepdf-0.3.tar.gz
+	sha256sums = e2038bf3379f93b5b62faaf39f47c6a096fc7655705e7edd808acb25e55c43a2
 
 pkgname = peepdf
 
