@@ -5,7 +5,7 @@ pkgver=2.0
 _srcname=microsoft-edge-dev
 _pkgshortname=msedge-dev
 _srcpkgver=89.0.723.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Browser with shortcuts for Videoplatforms. Based on Microsoft Edge Dev. New Shortcuts can i make just in time."
 arch=('x86_64')
 url="https://www.microsoftedgeinsider.com/en-us/download"
@@ -37,7 +37,9 @@ source=("https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-de
         "dailymotion.desktop"
         "Dailymotion.png"
         "Disney.png"
-        "disney+.desktop")
+        "disney+.desktop"
+        "TVNOW.png"
+        "tvnow.desktop")
 sha256sums=('9335faa09bfb9712bfe4d9575bc6d786533fcec8a740fc2a88839e86e6fe8537'
             '3516070a2bcfa8d28989975813a32a4b197d30aa629ea20632a1fc5b2b83aa20'
             '0d15536c32f31a6625609df76de33b9429c12cb970b6cda4db1044b6d9c272e9'
@@ -51,7 +53,9 @@ sha256sums=('9335faa09bfb9712bfe4d9575bc6d786533fcec8a740fc2a88839e86e6fe8537'
             '8442070b5319bd6fe8c5d728d9da0c77a5ea525598a3a0a4bfe4bbf04a784cfa'
             'de111a8f88b7eaf3e5a77c58389f14a8fb6154538af4b7108e8c8d7d79c5d48f'
             'ff195b31468fd0d8ce7cb3824ff26bd114eb6720ba12e69205b1cb592f5c32b1'
-            '9341f66c5a7a6e004fc40c83429ce55ebb343abecfbb15c689a7fcdc64837fb4')
+            '9341f66c5a7a6e004fc40c83429ce55ebb343abecfbb15c689a7fcdc64837fb4'
+            '47b25cc0e9222eae5e89532edb1fdb28b18a0d2103661946239e7346334d9711'
+            '38bbbcdd3ad56c8a927dbe63a04cc1f3e1dde8a41b01acb0824f49a828e2d912')
 
 package() {
 	echo "Extracting Microsoft Edge"
@@ -74,6 +78,7 @@ package() {
     convert "${srcdir}/amazon-prime.png" -resize "${_size}" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/amazon-prime.png"
     convert "${srcdir}/Dailymotion.png" -resize "${_size}" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/Dailymotion.png"
     convert "${srcdir}/Disney.png" -resize "${_size}" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/Disney.png"
+    convert "${srcdir}/TVNOW.png" -resize "${_size}" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/TVNOW.png"
   done
 
 	echo "Install Videobrowser"
@@ -88,6 +93,7 @@ package() {
 	install -Dm644 "${srcdir}/amazon-prime.desktop" "${pkgdir}/usr/share/applications/amazon-prime.desktop"
 	install -Dm644 "${srcdir}/dailymotion.desktop" "${pkgdir}/usr/share/applications/dailymotion.desktop"
 	install -Dm644 "${srcdir}/disney+.desktop" "${pkgdir}/usr/share/applications/disney+.desktop"
+	install -Dm644 "${srcdir}/tvnow.desktop" "${pkgdir}/usr/share/applications/tvnow.desktop"
 	
 	echo "Cleanup"
 	# Cleanup

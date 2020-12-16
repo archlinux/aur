@@ -1,7 +1,7 @@
 pkgbase = videobrowser
 	pkgdesc = Browser with shortcuts for Videoplatforms. Based on Microsoft Edge Dev. New Shortcuts can i make just in time.
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoftedgeinsider.com/en-us/download
 	arch = x86_64
 	license = custom
@@ -37,6 +37,8 @@ pkgbase = videobrowser
 	source = Dailymotion.png
 	source = Disney.png
 	source = disney+.desktop
+	source = TVNOW.png
+	source = tvnow.desktop
 	sha256sums = 9335faa09bfb9712bfe4d9575bc6d786533fcec8a740fc2a88839e86e6fe8537
 	sha256sums = 3516070a2bcfa8d28989975813a32a4b197d30aa629ea20632a1fc5b2b83aa20
 	sha256sums = 0d15536c32f31a6625609df76de33b9429c12cb970b6cda4db1044b6d9c272e9
@@ -51,6 +53,8 @@ pkgbase = videobrowser
 	sha256sums = de111a8f88b7eaf3e5a77c58389f14a8fb6154538af4b7108e8c8d7d79c5d48f
 	sha256sums = ff195b31468fd0d8ce7cb3824ff26bd114eb6720ba12e69205b1cb592f5c32b1
 	sha256sums = 9341f66c5a7a6e004fc40c83429ce55ebb343abecfbb15c689a7fcdc64837fb4
+	sha256sums = 47b25cc0e9222eae5e89532edb1fdb28b18a0d2103661946239e7346334d9711
+	sha256sums = 38bbbcdd3ad56c8a927dbe63a04cc1f3e1dde8a41b01acb0824f49a828e2d912
 
 pkgname = videobrowser
 
