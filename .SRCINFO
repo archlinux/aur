@@ -14,7 +14,7 @@ pkgbase = st-sane-defaults
 	source = sane-defaults-patch.diff
 	source = st-sane-defaults.desktop
 	sha256sums = aeb74e10aa11ed364e1bcc635a81a523119093e63befd2f231f8b0705b15bf35
-	sha256sums = 13eff7da227d0e895d3167d9052f4b9e315a7556aca3bbdfffea229382c712b7
+	sha256sums = SKIP
 	sha256sums = 17924fbac300031b0f8b0bbbf85d18c4637a78e7260350714d4062d64783d46d
 
 pkgname = st-sane-defaults
