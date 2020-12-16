@@ -35,6 +35,8 @@ package_sofia-sip-fs() {
 }
 
 package_sofia-sip-docs() {
+  pkgdesc="An open-source SIP User-Agent library documentation (FreeSWITCH version)"
+
   cd "$_pkgname-$pkgver"
 
   make doxygen
