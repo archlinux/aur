@@ -1,12 +1,12 @@
 pkgbase = intel-sde
 	pkgdesc = Intel Software Development Emulator
 	pkgver = 8.59.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.intel.com/en-us/articles/intel-software-development-emulator/
 	arch = x86_64
 	license = custom
 	depends = lib32-glibc
-	source = https://software.intel.com/content/dam/develop/external/us/en/documents/sde-external-8.59.0-2020-10-05-lin.tar.bz2
+	source = https://software.intel.com/content/dam/develop/external/us/en/documents/downloads/sde-external-8.59.0-2020-10-05-lin.tar.bz2
 	sha256sums = 889294794057184dc5945319ec5813306e69568cd1ad4c5567a99594cb2abf2f
 
 pkgname = intel-sde

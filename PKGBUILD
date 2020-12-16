@@ -4,7 +4,7 @@ _pkgname='sde'
 pkgname='intel-sde'
 _pkgver="8.59.0-2020-10-05-lin"
 pkgver='8.59.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Intel Software Development Emulator'
 arch=('x86_64')
 url='https://software.intel.com/en-us/articles/intel-software-development-emulator/'
@@ -21,6 +21,10 @@ sha256sums=(
 
 package() {
   cd "${srcdir}/${_pkgname}-external-${_pkgver}"
+
+  # fix permissions: 8.59 shipped with 750 we want 755
+  chmod -R a+r .
+  chmod -R o+X .
 
   mkdir -p "$pkgdir"/usr/{bin,share/$_pkgname/}
 
