@@ -59,8 +59,8 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-cacule
-pkgver=5.9.14
-_major=5.9
+pkgver=5.10.1
+_major=5.10
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -90,9 +90,9 @@ for _patch in $_commits; do
     source+=("${_patch}.patch::https://git.archlinux.org/linux.git/patch/?id=${_patch}")
 done
 
-sha256sums=('3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06'
+sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            '20096d49905e7bcdb6605e303ccd267de230cec77770bd455fdf66f4d7c05638'
+            '3220ffaa12ff81f21be8b14bb702ad45c512eeae7752c7f7cc3b089266c5e1b0'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991')
 
