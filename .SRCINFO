@@ -1,0 +1,15 @@
+pkgbase = wordninja-rs
+	pkgdesc = Split English sentence without spaces into words.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/chengyuhui/wordninja-rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = wordninja
+	conflicts = wordninja
+	source = wordninja-rs-0.1.0.tar.gz::https://crates.io/api/v1/crates/wordninja/0.1.0/download
+	sha256sums = 62f71d7204da91574de8ea56646b8b525ff179b477ca4782fabe1b27a097dc0c
+
+pkgname = wordninja-rs
+
