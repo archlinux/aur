@@ -11,19 +11,6 @@ index db9fd6f..c925431 100644
                          
                          cmd = [ python_executable, server_script_path, db_param ]
                          
-diff --git a/hydrus/client/gui/ClientGUIStyle.py b/hydrus/client/gui/ClientGUIStyle.py
-index 7de8ef2..1196c62 100644
---- a/hydrus/client/gui/ClientGUIStyle.py
-+++ b/hydrus/client/gui/ClientGUIStyle.py
-@@ -6,7 +6,7 @@ from hydrus.core import HydrusConstants as HC
- from hydrus.core import HydrusData
- from hydrus.core import HydrusExceptions
- 
--STYLESHEET_DIR = os.path.join( HC.BASE_DIR, 'static', 'qss' )
-+STYLESHEET_DIR = os.path.join( HC.STATIC_DIR, 'qss' )
- 
- DEFAULT_HYDRUS_STYLESHEET = ''
- ORIGINAL_STYLE_NAME = None
 diff --git a/hydrus/core/HydrusConstants.py b/hydrus/core/HydrusConstants.py
 index 857715d..ff6a7ae 100644
 --- a/hydrus/core/HydrusConstants.py
