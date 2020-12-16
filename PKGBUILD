@@ -2,8 +2,8 @@
 
 pkgname=base-devel-dxd
 pkgver=1
-pkgrel=1
-pkgdesc="Meta package that substitutes base-devel's group sudo with opensudo"
+pkgrel=2
+pkgdesc="Meta package that substitutes base-devel's group sudo with opendoas"
 arch=('any')
 license=('GPL')
 url='https://github.com/Z3r0ish/Linux-DXD/'
