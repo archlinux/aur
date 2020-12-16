@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   arch-meson libepoxy build -D docs=false --libdir="lib"
-  ninja -C build
+  ninja $NINJAFLAGS -C build
 }
 
 check() {
