@@ -1,8 +1,8 @@
 # Maintainer: Corey Hinshaw <corey(at)electrickite(dot)org>
 
 pkgname=firmware-manager
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd"
 arch=('x86_64')
 url="https://github.com/pop-os/firmware-manager"
@@ -12,7 +12,7 @@ makedepends=('rust')
 optdepends=('fwupd' 'system76-firmware-daemon')
 install="${pkgname}.install"
 source=("https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('f62e31d56a5b36beb7d4867bfa9831147f5f82cd48d34516171c266fa81a1a9b')
+sha256sums=('5bde56704ef8542f84ab9a8d6739cbfbcfcaaa26e089421fe0a527c5c9013f8d')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
