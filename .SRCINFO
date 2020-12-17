@@ -5,7 +5,7 @@ pkgbase = mfaktc
 	url = https://mersenneforum.org/showthread.php?t=12827
 	arch = x86_64
 	license = GPL3
-	makedepends = cuda
+	makedepends = cuda<11.2.0
 	depends = nvidia
 	source = https://download.mersenne.ca/mfaktc/mfaktc-0.21/mfaktc-0.21.tar.gz
 	source = mfaktc.ini
