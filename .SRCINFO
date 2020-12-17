@@ -1,5 +1,5 @@
 pkgbase = checkra1n-cn
-	pkgdesc = 
+	pkgdesc = checkra1n是一款支持A7-A11的越狱软件
 	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://checkra.in
