@@ -5,6 +5,8 @@ pkgbase = libxalan-c111
 	url = https://xalan.apache.org/xalan-c/
 	arch = x86_64
 	license = Apache-2.0
+	depends = glibc
+	depends = xerces-c
 	source = http://si.mirror.kumi.systems/ubuntu/pool/universe/x/xalan/libxalan-c111_1.11-6ubuntu3_amd64.deb
 	sha256sums = b354e41f938c2b3181f99671c788493a66d0059efb996666c246281da21c4371
 
