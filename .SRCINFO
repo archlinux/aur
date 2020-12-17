@@ -7,8 +7,8 @@ pkgbase = ipmicfg
 	license = custom:"Super Micro Computer"
 	makedepends = unzip
 	depends = glibc
-	source = https://www.supermicro.com/wftp/utility/IPMICFG/IPMICFG_1.32.0_build.200820.zip
-	sha256sums = b0ccd87353ca2ef4897781174b02df1e53351015743946ac3b19aed791a31547
+	source = https://www.supermicro.com/wftp/utility/IPMICFG/IPMICFG_1.32.0_build.200910.zip
+	sha256sums = f484080aaa1bbb60327249e0818acf3671588c0f6fb3c46e53cc60636a586b33
 
 pkgname = ipmicfg
 
