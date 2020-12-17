@@ -2,13 +2,13 @@
 
 pkgname=sugarmaker
 pkgver=2.5.0_sugar4
-pkgrel=2
+pkgrel=3
 pkgdesc='A multi-threaded CPU miner for Sugarchain'
 arch=('x86_64' 'armv7h')
 url="https://github.com/decryp2kanon/sugarmaker"
 licence=('GPL2')
 depends=()
-makedepends=('autoconf' 'automake' 'make' 'gcc' 'curl')
+makedepends=()
 provides=('sugarmaker')
 conflicts=('sugarmaker')
 source=("https://github.com/decryp2kanon/sugarmaker/archive/v${pkgver//_/-}.tar.gz")
@@ -27,6 +27,5 @@ check() {
 }
 
 package() {
-  mkdir -p $pkgdir/usr/bin
-  mv $srcdir/$pkgname-${pkgver//_/-}/sugarmaker $pkgdir/usr/bin/
+  install -Dm755 $srcdir/$pkgname-${pkgver//_/-}/sugarmaker $pkgdir/usr/bin/sugarmaker
 }
