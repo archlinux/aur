@@ -1,3 +1,12 @@
+2020-12-17 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.0.1.2-1:
+    Added Steam Winter Sale 2020 to idling blacklist (#2086).
+    Fixed IPC server not starting when one of the custom plugins fail to load.
+    Fixed ASF sometimes being unable to acquire single-process mutex after restart on linux machines.
+    ASF will now give more verbose information upon custom plugins activation, in particular which plugin failed to load.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2020-11-25 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.0.0.5-1:
     [!] ASF V5 opens a new major milestone due to significant .NET 5.0 runtime upgrade. .NET runtime upgrade brings a lot of under-the-hood changes, compatibility enhancements, performance improvements, features and bugfixes.

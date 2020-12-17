@@ -1,6 +1,6 @@
 pkgbase = asf
 	pkgdesc = Steam cards farmer.
-	pkgver = 5.0.0.5
+	pkgver = 5.0.1.2
 	pkgrel = 1
 	url = https://github.com/JustArchiNET/ArchiSteamFarm
 	install = install
@@ -15,7 +15,7 @@ pkgbase = asf
 	optdepends = asf-ui: standalone web interface for ASF
 	backup = var/lib/asf/config/ASF.json
 	backup = usr/lib/asf/NLog.config
-	source = asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=5.0.0.5
+	source = asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=5.0.1.2
 	source = service
 	source = service.user
 	source = ASF.json
