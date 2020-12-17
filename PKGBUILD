@@ -3,13 +3,11 @@
 
 pkgname=linode-cli
 pkgver=3.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Linode API wrapper"
 arch=('any')
 url="https://github.com/linode/linode-cli"
 license=('BSD')
-makedepends=('python-wheel' 
-	     'python2-wheel')
 depends=('python-colorclass' 
 	 'python2-colorclass' 
 	 'python-terminaltables' 
@@ -19,6 +17,9 @@ depends=('python-colorclass'
 	 'python-yaml' 
 	 'python2-yaml' 
 	 'python2-enum34')
+optdepends=('python-boto: Object Storage plugin')
+makedepends=('python-wheel' 
+	     'python2-wheel')
 replaces=('linode-cli-dev')
 install="${pkgname}".install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linode/linode-cli/archive/${pkgver}.tar.gz"

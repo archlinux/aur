@@ -1,7 +1,7 @@
 pkgbase = linode-cli
 	pkgdesc = Linode API wrapper
 	pkgver = 3.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/linode/linode-cli
 	install = linode-cli.install
 	arch = any
@@ -17,6 +17,7 @@ pkgbase = linode-cli
 	depends = python-yaml
 	depends = python2-yaml
 	depends = python2-enum34
+	optdepends = python-boto: Object Storage plugin
 	replaces = linode-cli-dev
 	source = linode-cli-3.2.1.tar.gz::https://github.com/linode/linode-cli/archive/3.2.1.tar.gz
 	source = enum34-extra-requires.patch
