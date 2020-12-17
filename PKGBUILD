@@ -3,15 +3,15 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan dot steffens at gmail dot com>
 
 pkgbase=linux-covolunablu-gaming
-pkgver=5.9.6.arch1
-pkgrel=2
+pkgver=5.9.14.arch1
+pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc kmod libelf pahole
+  bc kmod libelf pahole cpio perl tar xz
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
@@ -30,7 +30,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '958333f18de79c19ccf9eccb4e16e2a217a0619a1d96c2c65ccba23628815bab'
+            'e8e9d05bc4076915c0b8f4d1d7d8889b6c446a9853a5d5ef09df47689164403b'
             # -- covolunablu-gaming patches --
             '136fd376e27fd8503f0ea2c7c3df645fea60a9c05286b53e2bceb7ff8c1d0201'
             'cb37801751ea51bc7e784331132f9390b61e477491f103bec3b48f1e751c79b7'
