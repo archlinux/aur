@@ -1,5 +1,5 @@
 pkgbase = blender-2.80-git
-	pkgdesc = Maintenance version of Blender 2.80-release branch
+	pkgdesc = Maintenance version of blender-v2.80-release branch
 	pkgver = 2.80.r89282.gf6cb5f54494
 	pkgrel = 1
 	url = https://blender.org/
@@ -32,8 +32,8 @@ pkgbase = blender-2.80-git
 	depends = libpng
 	depends = openimagedenoise
 	optdepends = cuda: CUDA support in Cycles
-	provides = blender-2.80
-	conflicts = blender-2.80
+	provides = blender=2.80
+	conflicts = blender=2.80
 	source = git://git.blender.org/blender.git#branch=blender-v2.80-release
 	source = blender-addons.git::git://git.blender.org/blender-addons.git
 	source = blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git
