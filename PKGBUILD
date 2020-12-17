@@ -1,7 +1,7 @@
 # Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
 
 pkgname=trenchbroom-git
-pkgver=v2020.2.r24.g40daae034
+pkgver=v2020.2.r309.gf26c4a298
 pkgrel=1
 pkgdesc="TrenchBroom is a modern cross-platform level editor for Quake-engine based games."
 arch=("i686" "x86_64")
