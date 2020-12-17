@@ -1,7 +1,7 @@
 pkgbase = preact-cli
 	pkgdesc = Your next Preact PWA starts in 30 seconds.
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/preactjs/preact-cli
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = preact-cli
 	depends = nodejs>=11
 	noextract = preact-cli-3.0.0.tgz
 	source = https://registry.npmjs.org/preact-cli/-/preact-cli-3.0.0.tgz
-	source = https://raw.githubusercontent.com/preactjs/preact-cli/master/LICENCE
+	source = https://raw.githubusercontent.com/preactjs/preact-cli/d9701e55da813b694fb6af6e8200afecbce16018/LICENCE
 	sha256sums = 44edde7295776b5cc7ec7888a20364382b6c1ff37d4f33b0ab3e1194709945be
 	sha256sums = df88246bd228fce9d1e476692e8ea2c3309101070652f9ad57fff8fb566e6790
 
