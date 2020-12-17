@@ -1,6 +1,6 @@
 pkgname=mx-puppet-discord-git
-pkgver=r219.d9615ba
-pkgrel=12
+pkgver=r241.c3703b6
+pkgrel=1
 # strip the -git suffix from name
 _dirname="${pkgname%-git}"
 _basename="${pkgname%-git}"
@@ -13,7 +13,7 @@ source=("git+${url}" "${_basename}.tmpfiles" "${_basename}.sysusers" "${_basenam
 sha256sums=('SKIP'
             '6f66f51e85e9a222dc855a14fad8414e279f76cc7032b19f7821622bc72632cc'
             '9be3c27669b6d9fbca8b7da9d8b1227cbbacc3435424f2389581ee60f8ac8bd4'
-            '5bef61fa580963970ba3d889c1085dfd370f13c72c77bbfa70c81535f1d0eb8d')
+            'a5e258d99a900361e442dc4cedba35b521cbb8dd22ecd1f491a3b853a002b8b4')
 backup=("etc/${_basename}/config.yaml" "etc/${_basename}/registration.yaml" )
 install="${_basename}.install"
 makedepends+=('git' 'npm')

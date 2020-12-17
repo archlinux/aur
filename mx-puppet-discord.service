@@ -15,7 +15,7 @@ ProtectClock=yes
 ProtectControlGroups=yes
 ProtectHome=no
 ProtectHostname=no
-ProtestSystem=full
+ProtectSystem=full
 ProtectKernelLogs=yes
 ProtectKernelModules=yes
 ProtectKernelTunables=yes
@@ -26,6 +26,8 @@ RestrictSUIDSGID=true
 SystemCallArchitectures=native
 SystemCallFilter=@system-service
 SystemCallFilter=~@resources @privileged
+
+ReadWritePaths=/var/lib/mx-puppet-discord
 
 [Install]
 WantedBy=multi-user.target
