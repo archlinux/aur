@@ -1,7 +1,7 @@
 pkgbase = scribl-git
 	pkgdesc = make simple instructional videos
 	pkgver = 0.2.5.r55.g260f5cf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jneem/scribl
 	arch = x86_64
 	license = Apache
@@ -10,6 +10,8 @@ pkgbase = scribl-git
 	makedepends = rust
 	depends = gst-plugins-base-libs
 	depends = gtk3
+	provides = scribl
+	conflicts = scribl
 	source = scribl-git::git+https://github.com/jneem/scribl.git
 	sha256sums = SKIP
 

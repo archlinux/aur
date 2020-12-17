@@ -2,13 +2,15 @@
 
 pkgname=scribl-git
 pkgver=0.2.5.r55.g260f5cf
-pkgrel=1
+pkgrel=2
 pkgdesc='make simple instructional videos'
 arch=('x86_64')
 url="https://github.com/jneem/${pkgname%-git}"
 license=('Apache')
 depends=('gst-plugins-base-libs' 'gtk3')
 makedepends=('cargo' 'git' 'rust')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
