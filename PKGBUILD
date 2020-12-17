@@ -16,6 +16,11 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
   _CMAKE_FLAGS+=( -DWITH_CYCLES_EMBREE=ON )
   depends+=(embree)
 }
+((DISABLE_USD)) || {
+  _CMAKE_FLAGS+=( -DWITH_USD=ON
+                -DUSD_ROOT=/usr )
+  depends+=( usd=19.11 )
+}
 ((DISABLE_NINJA)) ||  makedepends+=('ninja')
 #shellcheck disable=SC2015
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix=7.0'); }
@@ -80,9 +85,9 @@ prepare() {
   if [[ -v _suffix ]]; then
     git -C "$srcdir/blender" apply -v <(sed "s/@@_suffix@@/${_suffix}/g" "${srcdir}/addon_path.patch")
   fi
+  ((DISABLE_USD)) || git -C "$srcdir/blender" apply -v "${srcdir}"/usd_python.patch
   ((DISABLE_EMBREE)) || git -C "$srcdir/blender" apply -v "${srcdir}"/embree.patch
-  git -C "$srcdir/blender" apply -v "$srcdir/cuda11.patch"
-  git -C "$srcdir/blender" apply -v "$srcdir/cpp14.patch"
+  git -C "$srcdir/blender" apply -v "$srcdir"/{cpp14,cuda11,python39,osl111}.patch
 }
 
 build() {
@@ -120,6 +125,7 @@ build() {
 }
 
 package() {
+  local _suffix=${_blenver}${_suffix:+_$_suffix}
   export DESTDIR="$pkgdir"
   if ((DISABLE_NINJA)); then make -C "$srcdir/build" install; else ninja -C "$srcdir/build" install; fi
 
@@ -147,9 +153,9 @@ package() {
       mv "$icon" "${icon%.*}-${_suffix}.${icon##/*.}"
     done < <(find "${pkgdir}/usr/share/icons" -type f)
 
-  if [[ -e "$pkgdir/usr/share/blender/${_blenver}${_suffix:+_$_suffix}/scripts/addons/cycles/lib/" ]] ; then
+  if [[ -e "$pkgdir/usr/share/blender/${_suffix}/scripts/addons/cycles/lib/" ]] ; then
     # make sure the cuda kernels are not stripped
-    chmod 444 "$pkgdir"/usr/share/blender/${_blenver}${_suffix:+_$_suffix}/scripts/addons/cycles/lib/*
+    chmod 444 "$pkgdir"/usr/share/blender/${_suffix}/scripts/addons/cycles/lib/*
   fi
 }
 # vim:set sw=2 ts=2 et:
