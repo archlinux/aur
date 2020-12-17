@@ -11,8 +11,6 @@ license=(MIT)
 depends=(python)
 makedepends=(python-setuptools)
 checkdepends=(
-python-numpy
-python-nptyping
 python-pycodestyle
 python-pylint
 mypy
