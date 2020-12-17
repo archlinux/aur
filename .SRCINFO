@@ -1,8 +1,8 @@
 pkgbase = flareget
 	pkgdesc = A full featured, advanced, multi-threaded, multisegment download manager and accelerator.
 	pkgver = 5.0.0
-	pkgrel = 1
-	url = http://flareget.com
+	pkgrel = 2
+	url = https://flareget.com
 	install = flareget.install
 	arch = i686
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = flareget
 	depends = nss>=3.26
 	backup = etc/opt/chrome/native-messaging-hosts/com.flareget.flareget.json
 	backup = etc/chromium/native-messaging-hosts/com.flareget.flareget.json
-	source_i686 = https://dl-flareget.sfo2.digitaloceanspaces.com/downloads/files/flareget/rpm/i386/flareget-5.0-0.i386.rpm
+	source_i686 = https://dl.flareget.com/downloads/files/flareget/rpm/i386/flareget-5.0-0.i386.rpm
 	sha256sums_i686 = f2f1febed7a1a4f58db92bc076f0641b1eac53124b6b3c8ee730a6e8a6134686
-	source_x86_64 = https://dl-flareget.sfo2.digitaloceanspaces.com/downloads/files/flareget/rpm/amd64/flareget-5.0-0.x86_64.rpm
+	source_x86_64 = https://dl.flareget.com/downloads/files/flareget/rpm/amd64/flareget-5.0-0.x86_64.rpm
 	sha256sums_x86_64 = 977bdd8ecf2c44611a24beca578c5796473e8be700f752ea5e1b74bd412bb32f
 
 pkgname = flareget
