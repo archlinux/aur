@@ -8,7 +8,7 @@ arch=("i686" "x86_64")
 url="http://kristianduske.com/trenchbroom"
 license=("GPLv3")
 
-makedepends=("git" "pandoc" "qt5-base" "cmake" "ninja" "qt5-svg")
+makedepends=("git" "pandoc" "qt5-base" "cmake" "ninja" "qt5-svg" "libxcb")
 depends=("freeimage" "freetype2" "mesa" "libgl" "freeglut" "libxxf86vm" "glew" "glm")
 conflicts=("trenchbroom")
 provides=("trenchbroom")
