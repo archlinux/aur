@@ -3,8 +3,8 @@
 
 
 pkgname=yandex-libffmpeg
-pkgver=0.47.2
-pkgrel=3
+pkgver=0.50.2
+pkgrel=1
 
 pkgdesc="Install libffmpeg and symlink for yandex-browser"
 arch=("x86_64")

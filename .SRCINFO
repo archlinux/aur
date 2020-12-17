@@ -1,14 +1,14 @@
 pkgbase = yandex-libffmpeg
 	pkgdesc = Install libffmpeg and symlink for yandex-browser
-	pkgver = 0.47.2
-	pkgrel = 3
+	pkgver = 0.50.2
+	pkgrel = 1
 	url = https://github.com/iteufel/nwjs-ffmpeg-prebuilt
 	arch = x86_64
 	license = GPL
 	makedepends = unzip
 	depends = gcc-libs
 	depends = yandex-browser-beta
-	source = yandex-libffmpeg-0.47.2-linux-x64.zip::https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/0.47.2/0.47.2-linux-x64.zip
+	source = yandex-libffmpeg-0.50.2-linux-x64.zip::https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/0.50.2/0.50.2-linux-x64.zip
 	md5sums = 46c4c919a0a5bd6569f02f0b70434ccb
 
 pkgname = yandex-libffmpeg
