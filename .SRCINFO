@@ -1,0 +1,11 @@
+pkgbase = pdfjam-extras
+	pkgdesc = Wrappers around pdfjam useful for merging, selecting pages, etc. one or more PDF documents
+	pkgver = r12.622e03a
+	pkgrel = 1
+	arch = any
+	depends = texlive-core
+	source = git+https://github.com/rrthomas/pdfjam-extras.git
+	md5sums = SKIP
+
+pkgname = pdfjam-extras
+
