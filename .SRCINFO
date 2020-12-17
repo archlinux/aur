@@ -1,0 +1,17 @@
+pkgbase = pop-nord
+	pkgdesc = The pop-nord theme
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Zaedus/Pop-nord
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = sassc
+	makedepends = glib2
+	depends = gdk-pixbuf2
+	depends = gtk-engine-murrine
+	source = pop-nord-1.1.0.tar.gz::https://github.com/Zaedus/Pop-nord/archive/v1.1.0-nord-pop.tar.gz
+	sha256sums = 655c33b0eccfb02898b31240ee5f3dc1fc7b9e9de5ebac4fb28da43664378c71
+
+pkgname = pop-nord
+
