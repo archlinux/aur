@@ -1,6 +1,6 @@
 pkgbase = deepin-polkit-agent-git
 	pkgdesc = Deepin Polkit Agent
-	pkgver = 5.3.0.3.r2.g70b568c
+	pkgver = 5.3.0.3.r0.g02a588c
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-polkit-agent
 	arch = x86_64
