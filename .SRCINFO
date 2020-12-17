@@ -1,12 +1,12 @@
 pkgbase = flat-remix
 	pkgdesc = Flat Remix is an icon theme inspired by material design. It is mostly flat using a colorful palette with some shadows, highlights, and gradients for some depth.
-	pkgver = 20201112
+	pkgver = 20201217
 	pkgrel = 1
 	url = https://drasite.com/flat-remix
 	arch = any
 	license = GPL3
 	options = !strip
-	source = https://github.com/daniruiz/flat-remix/archive/20201112.tar.gz
+	source = https://github.com/daniruiz/flat-remix/archive/20201217.tar.gz
 	sha256sums = SKIP
 
 pkgname = flat-remix
