@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer:
 # Contributer: Sumit Sahrawat <contact@sums.dev>
 # Contributor: sballert <sballert@posteo.de>
 # Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
@@ -13,7 +13,6 @@ pkgname=ttf-all-the-icons
 arch=(any)
 url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('MIT')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-util' 'xorg-mkfontscale' 'xorg-mkfontdir' 'xorg-bdftopcf')
 makedepends=('woff2')
 provides=('ttf-atom-file-icons' 'ttf-font-awesome' 'ttf-material-design-icons' 'ttf-octicons' 'ttf-weather-icons')
 conflicts=('ttf-octicons')
