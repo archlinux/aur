@@ -1,12 +1,12 @@
 pkgbase = cherrytree
 	pkgdesc = Hierarchical note-taking application
 	pkgver = 0.99.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.giuspen.com/cherrytree/
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	makedepends = python-lxml
+	makedepends = python
 	depends = gspell
 	depends = gtksourceviewmm
 	depends = libxml++2.6
