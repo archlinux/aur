@@ -1,0 +1,27 @@
+pkgbase = lightdm-gtk-greeter-git
+	pkgdesc = GTK+ greeter for LightDM
+	pkgver = 2.0.8.r24.gf8c3500
+	pkgrel = 1
+	url = https://launchpad.net/lightdm-gtk-greeter
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	makedepends = git
+	makedepends = exo
+	makedepends = gnome-common
+	makedepends = gnome-doc-utils
+	makedepends = gobject-introspection
+	makedepends = intltool
+	depends = gtk3
+	depends = lightdm
+	depends = libayatana-indicator
+	depends = gdk-pixbuf2
+	provides = lightdm-gtk-greeter
+	conflicts = lightdm-gtk-greeter
+	backup = etc/lightdm/lightdm-gtk-greeter.conf
+	source = git+https://github.com/Xubuntu/lightdm-gtk-greeter
+	sha256sums = SKIP
+
+pkgname = lightdm-gtk-greeter-git
+
