@@ -1,4 +1,4 @@
-pkgbase = checkra1n
+pkgbase = checkra1n-cn
 	pkgdesc = 
 	pkgver = 0.12.1
 	pkgrel = 1
@@ -8,5 +8,5 @@ pkgbase = checkra1n
 	conflicts = checkra1n
 	source_x86_64 = http://jrcloud.gitee.io/jrcloud-checkra1n/install.sh
 	sha256sums_x86_64 = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-pkgname = checkra1n-gitee
+pkgname = checkra1n-cn
 

@@ -1,4 +1,4 @@
-pkgname=checkra1n-gitee
+pkgname=checkra1n-cn
 pkgver=0.12.1
 pkgrel=1
 pkgdesc=""
