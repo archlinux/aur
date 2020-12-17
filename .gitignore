@@ -1,4 +1,5 @@
 *~
 *.log
-*.pkg.tar.xz
 quassel
+quassel-core-small-git-*-x86_64.pkg.tar.xz
+quassel-core-small-git-*-x86_64.pkg.tar.zst

@@ -1,6 +1,6 @@
 pkgbase = quassel-core-small-git
 	pkgdesc = Next-generation distributed IRC client - core only, minimal dependencies
-	pkgver = 0.14.pre.r191.gb134e777
+	pkgver = 0.14.pre.r265.gc7886cee
 	pkgrel = 1
 	url = https://quassel-irc.org/
 	arch = x86_64
