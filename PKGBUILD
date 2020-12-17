@@ -30,6 +30,7 @@ check() {
 
 package() {
   tar xf "$srcdir/sugarchain-${pkgver//_/-}-x86_64-linux-gnu.tar.gz"
+  install -Dm644 $srcdir/sugarchain-0.16.3/share/man/man1/* -t $pkgdir/usr/share/man/man1
   install -Dm755 $srcdir/sugarchain-0.16.3/bin/* -t $pkgdir/usr/bin
 }
 
