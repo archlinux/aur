@@ -20,6 +20,7 @@ pkgbase = realrtcw
 	depends = pcre
 	depends = sdl2
 	depends = zlib
+	noextract = realrtcw-3.1n.zip
 	source = realrtcw-3.1n.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/a1344ab17a53bda530e1f34c1a80bca7afcadcf4.tar.gz
 	source = realrtcw-3.1n.zip::moddb://www.moddb.com/downloads/start/201571/all
 	source = realrtcw-3.1n-addons.zip::moddb://www.moddb.com/downloads/start/201574/all

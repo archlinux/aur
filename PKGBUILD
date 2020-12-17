@@ -23,6 +23,7 @@ _commit="a1344ab17a53bda530e1f34c1a80bca7afcadcf4"
 _mainid=201571
 _addonsid=201574
 
+noextract=("${pkgname}-${pkgver}.zip")
 DLAGENTS+=("moddb::${BASH_SOURCE[0]%/*}/moddb-downloader.sh %u %o")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/${_commit}.tar.gz"
   "${pkgname}-${pkgver}.zip::moddb://www.moddb.com/downloads/start/${_mainid}/all"
@@ -33,11 +34,18 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wolfetplayer/RealRTCW/a
   moddb-downloader.sh
 )
 
+prepare() {
+  cd "${srcdir}"
+
+  # Unzipping with flattened paths
+  unzip -jo "${pkgname}-${pkgver}.zip" -d paks
+}
+
 package() {
   cd "${srcdir}/RealRTCW-${_commit}"
 
   USE_INTERNAL_LIBS=0 \
-  COPYDIR=${pkgdir}/opt/realrtcw \
+    COPYDIR=${pkgdir}/opt/realrtcw \
     make copyfiles
 
   ln -s -r /opt/iortcw-data/pak0.pk3 \
