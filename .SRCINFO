@@ -21,17 +21,19 @@ pkgbase = realrtcw
 	depends = sdl2
 	depends = zlib
 	source = realrtcw-3.1n.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/a1344ab17a53bda530e1f34c1a80bca7afcadcf4.tar.gz
+	source = realrtcw-3.1n.zip::moddb://www.moddb.com/downloads/start/201571/all
+	source = realrtcw-3.1n-addons.zip::moddb://www.moddb.com/downloads/start/201574/all
 	source = realrtcw.png
 	source = realrtcw.launcher
 	source = realrtcw.desktop
 	source = moddb-downloader.sh
-	source = md5sums
 	md5sums = b0f5e7c4986f59ac28b0f78180f28988
+	md5sums = 53883daccf27e054469cc0657b049476
+	md5sums = 3de40b988223e22a88c2f3301fa590b5
 	md5sums = 19ef21acfceb965f36b53b70267641d1
 	md5sums = 7e3991e5f331662419ad1ed04e49366c
 	md5sums = 88752202a0da9bc9cb467b6f0f201132
-	md5sums = a1f0a2f813b6fa7943dd2d68822d2c5a
-	md5sums = 85c800cf5b8471dc0f0a49f432da24bc
+	md5sums = 26632b1ad221caf63399ce5f9c6c958b
 
 pkgname = realrtcw
 
