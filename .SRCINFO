@@ -10,7 +10,7 @@ pkgbase = freezer-appimage
 	source = Freezer-1.1.10.AppImage::https://files.freezer.life/0:/PC/1.1.10/Freezer-1.1.10.AppImage
 	source = freezer.desktop
 	md5sums = 47ed3f6333a924fc385177bd8793b250
-	md5sums = 1c5b66eb9df62e25cf88f307d82b4aa8
+	md5sums = 38c0866994d9a7cb94635cc7a38343ed
 
 pkgname = freezer-appimage
 
