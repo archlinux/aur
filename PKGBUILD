@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g3-kpe
-pkgver=0.1
+pkgver=0.2
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
@@ -13,25 +13,21 @@ makedepends=('unzip' 'zip' 'diffutils' 'python' 'yasm' 'mesa' 'imake' 'inetutils
              'autoconf2.13' 'rust' 'clang' 'llvm' 'libpulse' 'alsa-lib' 'jack' 'cbindgen' 'nasm' 'python-setuptools'
              'nodejs' 'python-psutil' 'binutils' 'git')
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=c7505a01651453e3779cc4d93f4a10437a477a3c
+_filesrev=08445afa27c6aa0d4d8356b3808a0d25df0be834
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g3-kpe
 _commit=11befa20d8c009ee5eaeb44bb3b586de9390bfcd
-#"git+https://github.com/MrAlex94/Waterfox.git#tag=G3.$pkgver"
-source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
+#"git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
+source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G3.$pkgver"
         "$_filesurl/waterfox-g3.desktop"
         "$_filesurl/distribution.ini"
         "$_filesurl/vendor.js"
         "$_filesurl/waterfox-g3.1"
         "$_filesurl/syspref.js"
         "$_filesurl/patches/g3-kde.patch"
-        "$_filesurl/patches/unity-menubar.patch"
         "$_filesurl/patches/mozilla-nongnome-proxies.patch"
         "$_filesurl/patches/mozilla-ntlm-full-path.patch"
         "$_filesurl/patches/Use-remoting-name-for-GDK-application-names.patch"
         "$_filesurl/patches/sandbox-fips.patch"
-        "$_filesurl/patches/git-sourcestamp.patch"
-        "$_filesurl/patches/mobile-cleanup.patch"
-        "$_filesurl/patches/notification-text-color.patch"
         "$_filesurl/patches/rust_1.48.patch"
         "$_filesurl/patches/remoting-name.patch"
         )
@@ -42,14 +38,10 @@ sha256sums=('SKIP'
             'e48f932041ac826be48567d090a246bd897744262acca4dc07915abdc9a3e6b9'
             '0120e01edb0bf3d42f4e0280345f2c44372b097739cd2ddb85fa69bb2233ebab'
             '929865788394227c8202bd705b7171e8da3aedbcab1fa18d3d563811735a0ba3'
-            'fc4c432edf3356a6ead9fb57aa9bfbbb8e30b345dba03df4e7e17e6ccba2c2d8'
             'd8c2c30217b5bc9fbef8f6ca7540a4d8fdacc128c1c0a62226c8f4c287688597'
             '25846888b48208606ff88c04dc8b9cb5b1a9c433adfd2d72ce13b6b9edc73a87'
             '71386c2e269bd021c3b8c86b457101bdb730f76db3f2bbb91bf617109564a09c'
             '809c7dea066cb2ba70fb1c16c1b3dcd69c7e7715f354daf2f1c67af757e6d47b'
-            'a72836322ee9378e5ab3e24bef972ed34a4f6df168382dfb9f898a9838801500'
-            'bdd15db8bea7c51dbab46cc023e9768bb904f8f5d9fdedf881e5eacb5283ca73'
-            '349475ca42866f025048741b0b795a1ae153b238aa88364edd3af297e0f3b1f5'
             '755e3e851ff550feaf279d8b3922a03c8d7e1ec78484eec1495b07fc243a3107'
             'ac5199b397d1fef75d952eedbedcf3806b12f86b64ea29e5b34b541b0cfbe761')
 
@@ -59,14 +51,10 @@ prepare() {
 
   # Add patches
   patch -Np1 -i ../g3-kde.patch
-  patch -Np1 -i ../unity-menubar.patch
   patch -Np1 -i ../mozilla-nongnome-proxies.patch
   patch -Np1 -i ../mozilla-ntlm-full-path.patch
   patch -Np1 -i ../Use-remoting-name-for-GDK-application-names.patch
   patch -Np1 -i ../sandbox-fips.patch
-  patch -Np1 -i ../git-sourcestamp.patch
-  patch -Np1 -i ../mobile-cleanup.patch
-  patch -Np1 -i ../notification-text-color.patch
   patch -Np1 -i ../rust_1.48.patch
   patch -Np1 -i ../remoting-name.patch
 
