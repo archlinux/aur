@@ -48,10 +48,10 @@ build() {
 package() {
   # Install package files
   install -d "${pkgdir}/usr/lib"
-  cp -r "${srcdir}/${pkgname}" "${pkgdir}/usr/lib"
+  cp -r "${srcdir}/${pkgname}" "${pkgdir}/usr/lib/${_pkgname}"
   # Installing license file
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "/usr/lib/${pkgname}/mime/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
+  install -d "${pkgdir}/usr/share/licenses/${_pkgname}"
+  ln -s "/usr/lib/${_pkgname}/mime/copyright" "${pkgdir}/usr/share/licenses/${_pkgname}/license.txt"
   # Install program executables
   install -d "${pkgdir}/usr/bin"
   install -m 755 -t "${pkgdir}/usr/bin" "${srcdir}/${_pkgname}-planmaker"
