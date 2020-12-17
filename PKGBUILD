@@ -8,14 +8,14 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=gstm-git
-pkgver=1.3.6.r2.g75d3631
+pkgver=1.3.7.r1.g0eca301
 pkgrel=1
 pkgdesc="Gnome SSH Tunnel Manager - Gtk3 Edition"
 arch=('i686' 'x86_64')
 url="https://github.com/dallenwilson/gstm"
 license=('GPL')
-depends=('openssh' 'libxml2' 'glib2' 'gdk-pixbuf2' 'gtk3')
-makedepends=('intltool' 'autoconf' 'automake')
+depends=('openssh' 'libxml2' 'glib2' 'gdk-pixbuf2' 'gtk3' 'libappindicator-gtk3')
+makedepends=('intltool' 'autoconf' 'automake' 'gcc' 'pkgconf' 'make')
 conflicts=('gstm' 'gstm-gtk2')
 provides=('gstm')
 source=('git+https://github.com/dallenwilson/gstm.git')
@@ -27,15 +27,19 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd ${srcdir}/${_gitname}
+  #autoconf -I m4
+  ./autogen.sh
+}
 
 build() {
-   cd ${srcdir}/${_gitname}
-   ./autogen.sh
-   ./configure --prefix=/usr
-   make || return 1
+  cd ${srcdir}/${_gitname}
+  ./configure --prefix=/usr
+  make || return 1
 }
 
 package() {
-   cd ${srcdir}/${_gitname}
-   make DESTDIR=${pkgdir} install
+  cd ${srcdir}/${_gitname}
+  make DESTDIR=${pkgdir} install
 }
