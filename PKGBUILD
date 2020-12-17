@@ -1,4 +1,5 @@
-# Maintainer: Sam Whited <sam@samwhited.com>
+# Maintainer: Gregory Gleason <gsgleason@gmail.com>
+# Contributor: Sam Whited <sam@samwhited.com>
 # Contributor: Donald Webster <fryfrog@gmail.com>
 # Contributor: Dmitry Nosachev <quartz64@gmail.com>
 
