@@ -1,6 +1,6 @@
 pkgbase = deepin-wine5-stable
 	pkgdesc = Deepin Wine5 stable
-	pkgver = 5.0.0.15
+	pkgver = 5.0.0.16
 	pkgrel = 1
 	url = http://www.deepin.org
 	arch = i686
@@ -38,7 +38,7 @@ pkgbase = deepin-wine5-stable
 	depends = lib32-libxrandr
 	depends = lib32-libxi
 	depends = lib32-glu
-	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.tencent.meeting.deepin/com.tencent.meeting.deepin_2.2.0.409deepin2_i386.deb
-	sha256sums = b71ba03418986a63808c78ef6af32a15deef84fe644c464ceb00266eea3e2945
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.tdx.deepin/com.tdx.deepin_7.52deepin1_i386.deb
+	sha256sums = 739d17e05f7c23bdb849937dd4517092661eae5bb9a8c707739ffeda83bdf8e6
 
 pkgname = deepin-wine5-stable

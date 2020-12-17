@@ -1,6 +1,6 @@
 # Contributer: abcfy2 <abcfy2@163.com>
 pkgname='deepin-wine5-stable'
-pkgver=5.0.0.15
+pkgver=5.0.0.16
 pkgrel=1
 pkgdesc="Deepin Wine5 stable"
 arch=('i686' 'x86_64')
@@ -18,13 +18,13 @@ depends=(
     )
 makedepends=('tar' 'p7zip')
 source=(
-    "https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.tencent.meeting.deepin/com.tencent.meeting.deepin_2.2.0.409deepin2_i386.deb"
+    "https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.tdx.deepin/com.tdx.deepin_7.52deepin1_i386.deb"
 )
-sha256sums=('b71ba03418986a63808c78ef6af32a15deef84fe644c464ceb00266eea3e2945')
+sha256sums=('739d17e05f7c23bdb849937dd4517092661eae5bb9a8c707739ffeda83bdf8e6')
 
 package() {
 	cd ${srcdir}
 	tar xpvf data.tar.xz --xattrs-include='*' --numeric-owner
 	install -d ${pkgdir}/usr/lib/deepin-wine5-stable
-    7z x -o${pkgdir}/usr/lib/deepin-wine5-stable opt/apps/com.tencent.meeting.deepin/files/wine_archive.7z
+    7z x -o${pkgdir}/usr/lib/deepin-wine5-stable opt/apps/com.tdx.deepin/files/wine_archive.7z
 }
