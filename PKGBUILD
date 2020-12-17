@@ -4,14 +4,14 @@
 
 pkgname=soci
 pkgver=4.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Database access library for C++"
 arch=('i686' 'x86_64')
 url="http://soci.sf.net"
 license=('custom:boost')
 depends=('gcc-libs')
 makedepends=('cmake' 'postgresql-libs' 'sqlite3' 'unixodbc' 'boost')
-optdepends=('instantclient-basic: support for oracle databases'
+optdepends=('oracle-instantclient-basic: support for oracle databases'
             'libmysqlclient: support for mysql databases'
             'postgresql-libs: support for postgresql databases'
             'sqlite3: support for sqlite databases'
