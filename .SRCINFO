@@ -1,14 +1,14 @@
 pkgbase = phan
 	pkgdesc = Phan is a static analyzer for PHP that prefers to minimize false-positives.
-	pkgver = 3.2.3
+	pkgver = 3.2.7
 	pkgrel = 1
 	url = https://github.com/phan/phan/wiki
 	arch = any
 	license = MIT
 	depends = php>=7.2.0
-	depends = php-ast>=1.0.1
-	source = https://github.com/phan/phan/releases/download/3.2.3/phan.phar
-	source = https://raw.githubusercontent.com/phan/phan/3.2.3/LICENSE
+	optdepends = php-ast>=1.0.1: improved abstract syntax tree parsing
+	source = phan-3.2.7.phar::https://github.com/phan/phan/releases/download/3.2.7/phan.phar
+	source = https://raw.githubusercontent.com/phan/phan/3.2.7/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 
