@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=lipl-git
-pkgver=0.1.2.r0.gdd4ddbe
-pkgrel=2
+pkgver=0.1.3.r0.g6f23f9a
+pkgrel=1
 pkgdesc="Analyse the output over time of custom shell commands (git)"
 arch=('x86_64')
 url="https://github.com/yxdunc/lipl"
