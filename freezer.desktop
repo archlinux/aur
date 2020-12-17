@@ -5,5 +5,5 @@ Name=Freezer
 GenericName=Stream Music
 Comment=Client for Deezer
 Categories=audio;
-Path=/opt/freezer/
+Path=/opt/freezer-appimage/
 Exec=Freezer-1.1.10.AppImage
