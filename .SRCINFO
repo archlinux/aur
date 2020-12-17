@@ -1,7 +1,7 @@
 pkgbase = blender-2.82-git
 	pkgdesc = Maintenance version of Blenders blender-v2.82-release branch
 	pkgver = 2.82.r92825.g53b66eced01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blender.org/
 	changelog = blender.changelog
 	arch = i686

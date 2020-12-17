@@ -27,7 +27,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 
 pkgname=blender-${_blenver}-git
 pkgver=2.82.r92825.g53b66eced01
-pkgrel=1
+pkgrel=2
 pkgdesc="Maintenance version of Blenders ${_branch} branch"
 changelog=blender.changelog
 arch=('i686' 'x86_64')
