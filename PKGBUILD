@@ -2,13 +2,13 @@
 
 pkgname=cudapm1
 pkgver=0.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Program that implements the P-1 algorithm for factoring Mersenne numbers."
 arch=('x86_64')
 url=https://mersenneforum.org/showthread.php?t=17835
 license=('GPL3')
 depends=('nvidia')
-makedepends=('cuda' 'yasm')
+makedepends=('cuda<11.2.0' 'yasm')
 source=('https://download.mersenne.ca/CUDAPm1/CUDAPm1-0.22-src.tar.gz'
 make.patch)
 md5sums=('b7cf8f28438109edf3528d4d53802212'
