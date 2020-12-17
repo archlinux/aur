@@ -6,9 +6,9 @@ pkgdesc='libdecsync is a multiplatform library for synchronizing using DecSync.'
 arch=(x86_64)
 url='https://github.com/39aldo39/libdecsync'
 license=(LGPL2)
-depends=()
+depends=(java-runtime-openjdk ncurses5-compat-libs)
 optdepends=()
-makedepends=(jdk8-openjdk ncurses5-compat-libs)
+makedepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/39aldo39/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('1035ee5d8adc1d4af7dd34a36e9865901e4163f2910a4d960a7a628c088ee454')
 
