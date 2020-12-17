@@ -1,7 +1,7 @@
 # Maintainer: not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=editcp
-pkgver=1.0.22
+pkgver=1.0.23
 pkgrel=1
 pkgdesc="TYT MD380/390, Retivis RT3, & Alinco DJ-MD40 CPS (Ham/Amateur Radio)"
 arch=('x86_64')
@@ -39,12 +39,12 @@ package() {
 	install -D -m 644 ../$pkgname.desktop \
 	 $pkgdir/usr/share/applications/.
 }
-md5sums=('08f5e8165127492c18fe374bbae652d3'
+md5sums=('736b6e66b34b10ea09c9c6f3f2c61095'
          'd8563d34bd6be7d13a9137f8f80b86e2'
          '66f7cbc8cb62f9d95d8dc9924c728363'
          '6c9b1f8f43dedb505699b4648cc558a5'
          '1cb585e3e2a4f1f6fc7a2fcb139bc6d4')
-sha256sums=('b91823a66880927563a0c0fd7a715a8dd06b4baf0313d110bd8040257e881f18'
+sha256sums=('66fa74a215aa3c6a2611f6a8e4a5ce9eaad8ee65b54b574c1890e721cb8aa279'
             'f219b7708dc3d749b174cba8a0e5a466b7086ae36dd296050b1bb48fcce10107'
             'fc150f7779a66a717b838770f62eb3d3343f6b123a34f3300070af0f70b538c5'
             '9822a5e7f7fc179c6a1b98f5886797d91dd0d0d82e465a0a812e445539e9f2f4'
