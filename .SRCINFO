@@ -1,14 +1,14 @@
 pkgbase = mergerfs
 	pkgdesc = FUSE based union filesystem
-	pkgver = 2.32.0
+	pkgver = 2.32.1
 	pkgrel = 1
 	url = https://github.com/trapexit/mergerfs
 	arch = x86_64
 	license = custom:ISC
 	makedepends = git
 	optdepends = fuse2: for mounting via fstab
-	source = https://github.com/trapexit/mergerfs/archive/2.32.0.tar.gz
-	md5sums = b597c3a10d19d4e2500c1c461cbbb8b8
+	source = https://github.com/trapexit/mergerfs/archive/2.32.1.tar.gz
+	md5sums = da2e51f00fd4b2564f6719fb69a76082
 
 pkgname = mergerfs
 
