@@ -1,7 +1,7 @@
 pkgbase = mangl-git
 	pkgdesc = graphical man page viewer
 	pkgver = 1.0.2.r8.g3b9a0cd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zigalenarcic/mangl
 	arch = x86_64
 	license = BSD 2-Clause
