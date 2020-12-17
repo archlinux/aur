@@ -7,11 +7,27 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased] - 2020-03-14
 
 ### Added
-- Added page up and down to help view
-- Added page up and down to show commit
+- A diff view to show commit
+- Page up and down to help view
+- Page up and down to show commit
+- Most missing key bindings for special keys
+- Builtin help for show commit
+- Number of files change in show commit
+- Number of total additions and deletions in show commit
+- The Git "diff.renames" and "diff.rename_limit" options are now respected during show commit
+- End and Home support during edit
+- Optional rollback on error or invalid file during external edit
 
 ### Changed
 - Change page up and page down to scroll half the height of the view area
+- Improved error handling for executing external editor
+
+### Fixed
+- Scroll position resetting on resize
+- Unable to move edit edit cursor when `inputMoveLeft` or `inputMoveRight` were set to alphanumeric characters
+
+### Removed
+- Available actions footer from list and show commit views
 
 ## [1.2.1] - 2020-01-26
 
