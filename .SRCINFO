@@ -1,6 +1,6 @@
 pkgbase = jekyll
 	pkgdesc = A simple, blog aware, static site generator.
-	pkgver = 4.1.1
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/jekyll/jekyll
 	arch = any
@@ -24,13 +24,13 @@ pkgbase = jekyll
 	optdepends = ruby-jekyll-paginate
 	optdepends = ruby-jekyll-gist
 	optdepends = ruby-jekyll-feed
-	provides = jekyll=4.1.1
+	provides = jekyll=4.2.0
 	provides = ruby-jekyll
 	conflicts = ruby-jekyll
 	replaces = ruby-jekyll
 	options = !emptydirs
-	source = jekyll-4.1.1.tar.gz::https://github.com/jekyll/jekyll/archive/v4.1.1.tar.gz
-	sha256sums = 697a2cb683b2a3e4372cc490912da65f512f162917886e0ee9fe0eae5ec51ec1
+	source = jekyll-4.2.0.tar.gz::https://github.com/jekyll/jekyll/archive/v4.2.0.tar.gz
+	sha256sums = a2d80f6d4f55bfaf6c62cceb0e5f49120ba755c286fbfe409fc10f2086cd9d74
 
 pkgname = jekyll
 
