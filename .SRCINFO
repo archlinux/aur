@@ -1,6 +1,6 @@
 pkgbase = ffhevc
 	pkgdesc = a small yet quite capable shell script for encoding video files to the H.265/HEVC video format using ffmpeg and libx265.
-	pkgver = 4.3.4
+	pkgver = 4.3.5
 	pkgrel = 1
 	url = https://ffhevc.teambelgium.net/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = ffhevc
 	depends = bc
 	optdepends = mplayer: for crop preview only
 	optdepends = gpac: for mp4/mov cover art only
-	source = https://downloads.sourceforge.net/project/ffhevc/ffhevc-4.3.4.tar.gz
-	sha256sums = a5b9495764d7acb17950c46d1f1d98c06b71b44368bb103e63bf18dccf702dc6
+	source = https://downloads.sourceforge.net/project/ffhevc/ffhevc-4.3.5.tar.gz
+	sha256sums = 9c29594a0f0e72da74c34c2b798c98f220c610f6cbf4afdcc3a538ae8ee3f2db
 
 pkgname = ffhevc
 
