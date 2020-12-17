@@ -6,7 +6,7 @@
 # Contributor: Matthew <pyther@pyther.net>
 
 pkgname=bacula-client
-pkgver=9.6.6
+pkgver=9.6.7
 pkgrel=1
 pkgdesc="Enterprise ready, network based backup program"
 url="https://www.bacula.org"
@@ -21,7 +21,7 @@ backup=('etc/bacula/bconsole.conf'
 validpgpkeys=('5235F5B668D81DB61704A82DC0BE2A5FE9DF3643') # Bacula 4096 Distribution Verification Key (www.bacula.org) <kern@bacula.org>
 source=("https://downloads.sourceforge.net/project/bacula/bacula/${pkgver}/bacula-${pkgver}.tar.gz"{,.sig}
 	'bacula-fd.service')
-sha256sums=('6286c975e3f4980c1b4b3bc81ab9cda9186708eb19515abe4dc0b9ed5e2c8281'
+sha256sums=('df0f8525ecdba380e74b537ca71adf3b7596593f02189b59ab0ebffc85ccc8de'
             'SKIP'
             '37cdab95a99142a7e8494f0a49e54a5bfb1dca28561d0ce70ea64bf98e0c50fd')
 
