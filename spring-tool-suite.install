@@ -1,9 +1,22 @@
+pre_upgrade() {
+    # Keep existing '-javaagent' options, if any
+    if [ -e "/opt/sts4/SpringToolSuite4.ini" ]; then
+        grep "^\-javaagent" /opt/sts4/SpringToolSuite4.ini > /tmp/sts4.javaagents || return 0
+    fi
+}
+
 post_install() {
     gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 }
 
 post_upgrade() {
     post_install $1
+
+    # Restore existing '-javaagent' options, if any
+    if [ -s "/tmp/sts4.javaagents" ]; then
+        cat /tmp/sts4.javaagents >> /opt/sts4/SpringToolSuite4.ini
+    fi
+    rm -f /tmp/sts4.javaagents
 }
 
 post_remove() {
