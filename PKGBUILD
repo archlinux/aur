@@ -54,7 +54,7 @@ prepare() {
   sed -i "s/enable_file_logging=true/enable_file_logging=false/" \
          "${srcdir}/${pkgname^}-${pkgver}/project.godot"
 
-  echo "#!/bin/sh" >> "${srcdir}/${pkgname^}-${pkgver}/Misc/Linux/${pkgname}.sh"
+  echo '#!/bin/sh' > "${srcdir}/${pkgname^}-${pkgver}/Misc/Linux/${pkgname}.sh"
   echo "exec /usr/lib/${pkgname}/${pkgname} \"\$@\"" >> "${srcdir}/${pkgname^}-${pkgver}/Misc/Linux/${pkgname}.sh"
 }
 
