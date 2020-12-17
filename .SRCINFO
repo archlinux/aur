@@ -1,0 +1,19 @@
+pkgbase = python-imgz-cli
+	pkgdesc = A command-line utility for IMGZ, the no-bullshit image hosting service.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://gitlab.com/stavros/imgz-cli
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-pyperclip
+	source = https://files.pythonhosted.org/packages/source/i/imgz_cli/imgz_cli-0.1.1.tar.gz
+	md5sums = 2eae4a96aef549718e936b2759139d31
+
+pkgname = python-imgz-cli
+	depends = python
+	depends = python-requests
+	depends = python-pyperclip
+
