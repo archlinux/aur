@@ -1,0 +1,23 @@
+pkgbase = xlite-bin
+	pkgdesc = a multiplatform fully functioning softphone (binary only)
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://www.counterpath.net/x-lite
+	arch = i686
+	arch = x86_64
+	license = custom
+	conflicts = xlite_bin
+	replaces = xlite_bin
+	source = https://www.dropbox.com/s/68ll5ine6uq7pcp/X-Lite_Install.tar.gz?dl=0
+	source = xlite.desktop
+	md5sums = 6041fa4b2c553407373e6020c55da4ae
+	md5sums = de98459edd82d90dcb40ccc62a47c6b5
+	depends_i686 = libstdc++5
+	depends_i686 = libglade
+	depends_i686 = pangox-compat
+	depends_x86_64 = lib32-libstdc++5
+	depends_x86_64 = lib32-libglade
+	depends_x86_64 = lib32-pangox-compat
+
+pkgname = xlite-bin
+
