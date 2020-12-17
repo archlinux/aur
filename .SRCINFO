@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-readonly
 	pkgdesc = The official GUI for MongoDB - Readonly Edition
-	pkgver = 1.24.1
+	pkgver = 1.24.6
 	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = mongodb-compass-readonly
 	depends = libsecret
 	depends = lsb-release
 	optdepends = org.freedesktop.secrets
-	source = mongodb-compass-readonly-1.24.1-1.tar.gz::https://github.com/mongodb-js/compass/archive/v1.24.1.tar.gz
+	source = mongodb-compass-readonly-1.24.6-1.tar.gz::https://github.com/mongodb-js/compass/archive/v1.24.6.tar.gz
 	source = hadron-build.diff
-	sha256sums = d61a0c412278247a70a0023176bd2a024bae584721d6b77e0b7671406f2ea0d1
+	sha256sums = 9495eb33fdbab2bdfcce217b20b2d47ba1028fdabcb3f406a2693a0c0417fb55
 	sha256sums = 6adbd892ef2603c556e50b8f300fff87b5481dcec1b3ae741be0fbd250ad4c93
 
 pkgname = mongodb-compass-readonly
