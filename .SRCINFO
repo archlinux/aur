@@ -1,6 +1,6 @@
 pkgbase = mictray
 	pkgdesc = Lightweight application which lets you control the microphone state and volume from system tray
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/Junker/MicTray
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = mictray
 	makedepends = libnotify
 	depends = gtk3
 	depends = libgee
-	source = https://github.com/Junker/mictray/archive/0.2.3.zip
-	md5sums = 19ac0e0c8426976e9c7ffaab9de0e5da
+	source = https://github.com/Junker/mictray/archive/0.2.4.zip
+	md5sums = 4d313a7c9cf094bcf316c2515ec5c89f
 
 pkgname = mictray
 
