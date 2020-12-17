@@ -4,7 +4,7 @@
 
 pkgname=soci
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Database access library for C++"
 arch=('i686' 'x86_64')
 url="http://soci.sf.net"
@@ -28,6 +28,7 @@ build() {
     cmake \
         -DSOCI_TESTS=OFF \
         -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DCMAKE_CXX_STANDARD=11       \
         "${srcdir}/${pkgname}-${pkgver}"
     make
 }

@@ -1,7 +1,7 @@
 pkgbase = soci
 	pkgdesc = Database access library for C++
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://soci.sf.net
 	arch = i686
 	arch = x86_64
