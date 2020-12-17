@@ -1,4 +1,4 @@
-# Maintainer: Jonathon Fernyhough <jonathon_at_manjaro_org>
+# Maintainer: Jonathon Fernyhough <jonathon_at_m2x.dev>
 
 pkgname=hopper
 _pkgname=hopperv4
@@ -8,7 +8,7 @@ pkgdesc="Reverse engineering tool that lets you disassemble, decompile and debug
 arch=(x86_64)
 url="https://www.hopperapp.com/"
 license=('Commercial')
-depends=('hicolor-icon-theme' 'libbsd' 'python2' 'qt5-base')
+depends=('hicolor-icon-theme' 'libbsd' 'python2' 'qt5-base' 'ncurses')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://d2ap6ypl1xbe4k.cloudfront.net/Hopper-v4-${pkgver}-Linux.pkg.tar.xz"
@@ -32,4 +32,10 @@ package() {
   # Install license file
   # https://www.hopperapp.com/license_agreement.html @ 2017-08-14
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+
+  # Temporary hacky fix for upstream packaging issue
+  cd ${pkgdir}/opt/hopper-v4/lib
+  ln -s /usr/lib/libformw.so.6    libform.so.6
+  ln -s /usr/lib/libncursesw.so.6 libncurses.so.6
+  ln -s /usr/lib/libtinfo.so.6    libtinfo.so.6
 }
