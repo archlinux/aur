@@ -18,12 +18,12 @@ pkgbase = linux-bcachefs-git
 	options = !strip
 	source = git+https://github.com/koverstreet/bcachefs#branch=master
 	source = git+https://github.com/graysky2/kernel_gcc_patch
-	source = config.tar.gz
+	source = config.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 78ebb38b114a347da4e90628c9d1b325a05e3c9b1800333ec2528c9bee28815909d6ff13ef48863ad901f0be17ec88000b4455067418592009b08ca2dfc93e00
+	sha512sums = 9c422463660fc1fd3fca806976b5b60faccf8fc842c144af7dc933d3076a53bf052afd9b331aeeabe2fbddb394d41ebecbd97d74fc2d2ad5fe96824ee66e0260
 
 pkgname = linux-bcachefs-git
 	pkgdesc = The Linux kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem

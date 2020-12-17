@@ -92,7 +92,7 @@ _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 source=(
     "git+$_repo_url#branch=master"
     "git+$_repo_url_gcc_patch"
-    config.tar.gz # kernel config file
+    config.gz # kernel config file
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -100,7 +100,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '78ebb38b114a347da4e90628c9d1b325a05e3c9b1800333ec2528c9bee28815909d6ff13ef48863ad901f0be17ec88000b4455067418592009b08ca2dfc93e00')
+            '9c422463660fc1fd3fca806976b5b60faccf8fc842c144af7dc933d3076a53bf052afd9b331aeeabe2fbddb394d41ebecbd97d74fc2d2ad5fe96824ee66e0260')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
