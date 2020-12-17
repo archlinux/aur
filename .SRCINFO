@@ -30,6 +30,7 @@ pkgbase = mingw-w64-vtk-git
 	depends = mingw-w64-pugixml
 	depends = mingw-w64-libtheora
 	depends = mingw-w64-gl2ps
+	depends = mingw-w64-cgns
 	provides = mingw-w64-vtk
 	conflicts = mingw-w64-vtk
 	options = !buildflags
