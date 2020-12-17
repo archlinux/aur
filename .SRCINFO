@@ -1,0 +1,15 @@
+pkgbase = muserv-git
+	pkgdesc = muserv (DLNA/UPnP server for music)
+	pkgver = v0.1.27.pre
+	pkgrel = 1
+	url = https://gitlab.com/mipimipi/muserv/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = go-pie
+	depends = mailcap
+	source = git+https://gitlab.com/mipimipi/muserv.git
+	sha256sums = SKIP
+
+pkgname = muserv-git
+
