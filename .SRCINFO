@@ -1,9 +1,9 @@
 pkgbase = git-open-git
 	pkgdesc = Open a repository GitHub page or website in your browser from the shell
-	pkgver = 2.1.0.r8.g08fa2ab
-	pkgrel = 3
+	pkgver = 2.1.0.r23.g14fdf5c
+	pkgrel = 1
 	url = https://github.com/paulirish/git-open
-	changelog = CHANGELOG
+	changelog = changelog.md
 	arch = x86_64
 	license = MIT
 	makedepends = go-md2man

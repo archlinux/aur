@@ -10,8 +10,8 @@ pkgver() {
   cd "$_pkgname"
   git describe | sed 's/v\?//;s/-/.r/;s/-/./'
 }
-pkgver=2.1.0.r8.g08fa2ab
-pkgrel=3
+pkgver=2.1.0.r23.g14fdf5c
+pkgrel=1
 
 pkgdesc='Open a repository GitHub page or website in your browser from the shell'
 arch=('x86_64')
@@ -26,7 +26,7 @@ makedepends=('go-md2man')
 
 options=('zipman')
 
-changelog=CHANGELOG
+changelog=changelog.md
 source=("git+$url")
 sha256sums=('SKIP')
 
