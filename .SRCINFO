@@ -13,6 +13,7 @@ pkgbase = emacs-gcc-wayland-devel-bin
 	depends = harfbuzz
 	depends = gpm
 	depends = libgccjit
+	depends = webkit2gtk
 	provides = emacs
 	provides = emacs-seq
 	conflicts = emacs
