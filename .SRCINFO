@@ -6,12 +6,14 @@ pkgbase = catfish-python2
 	arch = any
 	license = GPL
 	makedepends = pygtk
-	makedepends = gtk2
+	makedepends = python2-dbus
+	makedepends = python2-xdg
 	makedepends = python2
+	makedepends = gnome-icon-theme
 	provides = catfish-python2
 	conflicts = catfish-python2
 	source = https://sourceforge.net/projects/catfish-python2/files/catfish-python2/catfish-python2.tar.xz
-	md5sums = a9fa8c3f2db27b898f9686092f3665d3
+	md5sums = 541032a1513a8b0ab8c21fcdf9feb3f2
 
 pkgname = catfish-python2
 
