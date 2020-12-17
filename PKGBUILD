@@ -38,7 +38,7 @@ build() {
 }
 
 package() {
-  install -Dm644 "${_pkgname}.desktop" "$pkgdir/usr/share/applications"
+  install -Dm644 "${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
   cd "$srcdir/${_pkgname}"
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
