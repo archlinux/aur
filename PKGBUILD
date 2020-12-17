@@ -1,7 +1,7 @@
 # Maintainer: Sandelinos
 pkgname=sugarchain-bin
 pkgver=0.16.3.34_starboy
-pkgrel=1
+pkgrel=2
 pkgdesc="Sugarchain: one-CPU-one-vote, the world's fastest PoW blockchain"
 arch=('x86_64')
 url="https://sugarchain.org"
@@ -30,7 +30,6 @@ check() {
 
 package() {
   tar xf "$srcdir/sugarchain-${pkgver//_/-}-x86_64-linux-gnu.tar.gz"
-  mkdir -p $pkgdir/usr/bin
-  mv $srcdir/sugarchain-0.16.3/bin/* $pkgdir/usr/bin/
+  install -Dm755 $srcdir/sugarchain-0.16.3/bin/* -t $pkgdir/usr/bin
 }
 
