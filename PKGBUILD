@@ -100,9 +100,7 @@ prepare() {
   fi
   ((DISABLE_USD)) || git -C "$srcdir/blender" apply -v "${srcdir}"/usd_python.patch
   ((DISABLE_EMBREE)) || git -C "$srcdir/blender" apply -v "${srcdir}"/embree.patch
-  git -C "$srcdir/blender" apply -v "$srcdir/cuda11.patch"
-  git -C "$srcdir/blender" apply -v "$srcdir/cpp14.patch"
-  git -C "$srcdir/blender" apply -v "$srcdir/python39.patch"
+  git -C "$srcdir/blender" apply -v "$srcdir"/{cpp14,cuda11,python39}.patch
 }
 
 build() {
