@@ -1,8 +1,8 @@
-# Maintainer: DingYuan Zhang <justforlxz@gmail.com>
+# Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-control-center-git
 _pkgname=deepin-control-center
-pkgver=5.3.0.68.r102.geb97eeb8d
+pkgver=5.3.0.68.r115.g69fd4abcd
 pkgrel=1
 pkgdesc='New control center for linux deepin'
 arch=('x86_64')
