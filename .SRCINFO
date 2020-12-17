@@ -1,20 +1,16 @@
 pkgbase = insomnia
 	pkgdesc = Cross-platform HTTP and GraphQL Client
 	pkgver = 2020.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Kong/insomnia
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = nvm
-	makedepends = imagemagick
-	depends = electron
 	source = https://github.com/Kong/insomnia/archive/core@2020.5.1/insomnia-2020.5.1.tar.gz
 	source = insomnia.desktop
-	source = insomnia.sh
 	b2sums = 9c13d6bc6c7908f7eaec7b2d249b68dc703f68271ccbd1c6d4abb9ec107b2909f09973190de6caf73cb4ff72c65b82ac8960854575a99fd7ccc2e741a9a01613
-	b2sums = d2ceeb224fa3a35551b0929648d5e066da93a451a66b73373c13ed0dd89575a2482c2dc8e7499b214d0d62cca2532189dac9a681537751a5a86b592cae5686c7
-	b2sums = 7ea4aff2779267bfc5f7be5533d70b07a3da1c8bfed424c9f6cc9806fe6567a4cd40144264a8827b016e51f31c6dbb395c90aac4d333f297070213c77a0b2c9c
+	b2sums = 38c2edd681b012931e25498a4a65007cc2a2152c9bbc5505dbb7cf03e1143a7365c41e9ad7eb2318c8ea894dccad0e0b6601cf76f680ea4085d12b5059e61a6e
 
 pkgname = insomnia
 

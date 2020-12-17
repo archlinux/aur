@@ -4,22 +4,20 @@
 
 pkgname=insomnia
 pkgver=2020.5.1
-pkgrel=2
+pkgrel=3
 _nodeversion=12.18.3
 pkgdesc="Cross-platform HTTP and GraphQL Client"
 url="https://github.com/Kong/insomnia"
 arch=('any')
 license=('MIT')
-depends=('electron')
-makedepends=('npm' 'nvm' 'imagemagick')
+depends=()
+makedepends=('npm' 'nvm')
 source=(
   "https://github.com/Kong/insomnia/archive/core@${pkgver}/${pkgname}-${pkgver}.tar.gz"
   "insomnia.desktop"
-  "insomnia.sh"
 )
 b2sums=('9c13d6bc6c7908f7eaec7b2d249b68dc703f68271ccbd1c6d4abb9ec107b2909f09973190de6caf73cb4ff72c65b82ac8960854575a99fd7ccc2e741a9a01613'
-        'd2ceeb224fa3a35551b0929648d5e066da93a451a66b73373c13ed0dd89575a2482c2dc8e7499b214d0d62cca2532189dac9a681537751a5a86b592cae5686c7'
-        '7ea4aff2779267bfc5f7be5533d70b07a3da1c8bfed424c9f6cc9806fe6567a4cd40144264a8827b016e51f31c6dbb395c90aac4d333f297070213c77a0b2c9c')
+        '38c2edd681b012931e25498a4a65007cc2a2152c9bbc5505dbb7cf03e1143a7365c41e9ad7eb2318c8ea894dccad0e0b6601cf76f680ea4085d12b5059e61a6e')
 
 _ensure_local_nvm() {
   # lets be sure we are starting clean
@@ -33,13 +31,9 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-  # Use local electron version
-  # See https://wiki.archlinux.org/index.php/Electron_package_guidelines
   _ensure_local_nvm
   
   cd ${pkgname}-core-${pkgver}
-  electron_version=$(electron --version | sed s/v//)
-  sed -i 's/"electron": ".\+"/"electron": "'"$electron_version"'"/g' packages/insomnia-app/package.json
 
   # Install .nvmrc node version 
   nvm install 
@@ -55,19 +49,12 @@ build() {
 }
 
 package() {
-  # Install start script
-  install -Dm755 ${pkgname}.sh "${pkgdir}/usr/bin/insomnia"
   install -Dm644 ${pkgname}.desktop -t "${pkgdir}/usr/share/applications"
 
   cd ${pkgname}-core-${pkgver}
-  install -Dm644 packages/insomnia-app/dist/com.insomnia.app/linux-unpacked/resources/app.asar -t "${pkgdir}/usr/share/insomnia"
-
-  # Add icons
-  for size in 16 32 48 128 256 512 1024; do
-     install -dm744 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/"
-     convert -resize "${size}x${size}" packages/insomnia-app/app/ui/images/insomnia-core-logo.png "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/insomnia.png"
-  done
-
+  install -d "${pkgdir}/opt/insomnia"
+  cp -r "packages/insomnia-app/dist/com.insomnia.app/linux-unpacked/." "$pkgdir/opt/insomnia"
+  install -Dm644 packages/insomnia-app/app/ui/images/insomnia-core-logo.png "${pkgdir}/usr/share/pixmaps/insomnia.png"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
