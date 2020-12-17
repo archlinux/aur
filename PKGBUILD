@@ -6,7 +6,7 @@ license=('unknown')
 conflicts=('checkra1n')
 arch=('x86_64')
 depends=('axel' 'sudo')
-sha256sums_x86_64=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums_x86_64=('1e19768bb941383e3538fc89aedd991709f8deed6a78dd5f3f7b73c622d0313f')
 source_x86_64=("http://jrcloud.gitee.io/jrcloud-checkra1n/install.sh")
 package()
 {
