@@ -2,11 +2,11 @@
 
 pkgname=cherrytree-git
 _pkgname="${pkgname%%-git}"
-pkgver=0.99.19.r5.gcb239d48
+pkgver=0.99.25.r22.g7f00d91b
 pkgrel=1
 pkgdesc="Hierarchical note-taking application, git version"
 arch=('x86_64')
-url="https://github.com/giuspen/${_pkgname}"
+url="https://github.com/giuspen/cherrytree"
 license=('GPL3')
 depends=('gspell'
 	 'gtksourceviewmm'
@@ -14,7 +14,7 @@ depends=('gspell'
 	 'uchardet')
 makedepends=('cmake'
 	     'git'
-	     'python-lxml')
+	     'python')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://github.com/giuspen/${_pkgname}.git")
@@ -23,6 +23,11 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${_pkgname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  # Fix automatic optimisation flag override
+  sed -i 's/-O3/-O2/' "${_pkgname}/CMakeLists.txt"
 }
 
 build() {
