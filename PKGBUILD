@@ -12,7 +12,6 @@ conflicts=('5up-bin')
 options=(!strip)
 source=("https://launchpad.net/~luza-mbox/+archive/ubuntu/ppa/+files/"$pkgname"_"$pkgver".orig.tar.gz")
 sha256sums=('08452fee102b49e8f9e3846c5a20bb7b0cdedb77806afa068768def0552a7476')
-md5sums=('4f9b3e7ec5cb56782320a7e24a328d7b')
 
 build() {
      cd "$srcdir"/5up-1.7.3/

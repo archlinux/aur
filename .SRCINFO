@@ -11,7 +11,6 @@ pkgbase = 5up
 	conflicts = 5up-bin
 	options = !strip
 	source = https://launchpad.net/~luza-mbox/+archive/ubuntu/ppa/+files/5up_1.7.3b3.orig.tar.gz
-	md5sums = 4f9b3e7ec5cb56782320a7e24a328d7b
 	sha256sums = 08452fee102b49e8f9e3846c5a20bb7b0cdedb77806afa068768def0552a7476
 
 pkgname = 5up
