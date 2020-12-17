@@ -2,10 +2,10 @@
  
 pkgname=distccd-x86_64
 arch=(armv7h aarch64)
-_date=20200812
+_date=20201217
 # inspect source tarball under $name/share/gcc-x.y.z
 pkgver=10.2.0.$_date
-pkgrel=4
+pkgrel=1
 license=('GPL' )
 url="https://github.com/graysky2/crosstool-ng_for_distcc"
 pkgdesc="Toolchain for x86_64 builds on Arch ARM volunteers via distcc"
@@ -23,9 +23,9 @@ validpgpkeys=(
 )
 b2sums=('dfbc894ed5ea69e2a2c066a5afde8d28b9f71082b7fa0401887c0ef9612d6d6f45a51f73a523963819de074ff00cdc6ef23bbc2623d84c0e5b9c3d7cc5a360e1'
         '964d1f584c0d26a6a720edabcf0f7293949cf247d1ebecb87534cfb90e84493c6f2e97f23bd55090d774f8d136fdf33bc571d0927bb54893895bdf55e2f0a958')
-b2sums_armv7h=('298a5ed0f1007073f056ae157d53376f7c850ffecd541735883de6c1cef6e777a75d1b43704dad0330e40fdf48e47a574a5180d5bd047b331fc818ff162e5ba8'
+b2sums_armv7h=('fbe35760ea4acefc9b4ba30ef792288e9f27f0ce33a4bf76215c272bb9b37e275edd879b85c9b0b6a4a5b8549df3ee600cc8252907f3bb2cc323b6c750a4731a'
                'SKIP')
-b2sums_aarch64=('6233bbf5cbe14012f18f60a91f65b9095b6398d8c14176a534d22eddfdfb5e889845ef5a321044cbb77ffef6197cbaf2876db24e67b31d53aae5b6d9d1d2f354'
+b2sums_aarch64=('31c8c6eec0ed239af38d2fd78a9841a58310e3f8eef5ff480da818611cb563228c07da0c0bf0b9755b720f07a4f33f37c54e0a4a637d4f324010cd68972658d6'
                 'SKIP')
 
 package() {
