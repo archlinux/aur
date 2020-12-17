@@ -6,7 +6,7 @@
 
 pkgname=perl-pdf-create
 pkgver=1.41
-pkgrel=2
+pkgrel=3
 pkgdesc='This packages the perl-pdf-create distribution, containing the PDF::Create module!'
 _dist=PDF-Create
 arch=('any')
@@ -14,7 +14,7 @@ url="http://search.cpan.org/dist/PDF-Create"
 license=('GPL' 'PerlArtistic')
 depends=('perl-file-share')
 options=('!emptydirs' purge)
-makedepends=('perl-json')
+makedepends=('perl-json' 'perl-file-sharedir-install')
 checkdepends=('perl-test-leaktrace>=0.14')
 source=("http://search.cpan.org/CPAN/authors/id/M/MA/MANWAR/$_dist-$pkgver.tar.gz")
 
