@@ -1,0 +1,64 @@
+From a9644c812fc17b38503828d6edf7d259b6fe0e74 Mon Sep 17 00:00:00 2001
+From: Patrick Mours <pmours@nvidia.com>
+Date: Fri, 17 Jul 2020 15:06:55 +0200
+Subject: [PATCH] Cycles: Use pre-compiled PTX kernel for older generation when
+ no matching one is found
+
+This patch changes the discovery of pre-compiled kernels, to look for any PTX, even if
+it does not match the current architecture version exactly. It works because the driver can
+JIT-compile PTX generated for architectures less than or equal to the current one.
+This e.g. makes it possible to render on a new GPU architecture even if no pre-compiled
+binary kernel was distributed for it as part of the Blender installation.
+
+Reviewed By: brecht
+
+Differential Revision: https://developer.blender.org/D8332
+---
+ CMakeLists.txt                                |  2 +-
+ .../cmake/config/blender_release.cmake        |  2 +-
+ .../cycles/device/cuda/device_cuda_impl.cpp   | 23 +++++++++++++++----
+ intern/cycles/kernel/CMakeLists.txt           |  4 ++--
+ 4 files changed, 22 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 49b974596f7..cc0e5a2491f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -367,7 +367,7 @@ option(WITH_CYCLES_CUDA_BINARIES    "Build Cycles CUDA binaries" OFF)
+ option(WITH_CYCLES_CUBIN_COMPILER   "Build cubins with nvrtc based compiler instead of nvcc" OFF)
+ option(WITH_CYCLES_CUDA_BUILD_SERIAL "Build cubins one after another (useful on machines with limited RAM)" OFF)
+ mark_as_advanced(WITH_CYCLES_CUDA_BUILD_SERIAL)
+-set(CYCLES_CUDA_BINARIES_ARCH sm_30 sm_35 sm_37 sm_50 sm_52 sm_60 sm_61 sm_70 sm_75 CACHE STRING "CUDA architectures to build binaries for")
++set(CYCLES_CUDA_BINARIES_ARCH sm_30 sm_35 sm_37 sm_50 sm_52 sm_60 sm_61 sm_70 sm_75 compute_75 CACHE STRING "CUDA architectures to build binaries for")
+ mark_as_advanced(CYCLES_CUDA_BINARIES_ARCH)
+ unset(PLATFORM_DEFAULT)
+ option(WITH_CYCLES_LOGGING  "Build Cycles with logging support" ON)
+diff --git a/build_files/cmake/config/blender_release.cmake b/build_files/cmake/config/blender_release.cmake
+index 5fce64ce719..e6fc73a75ed 100644
+--- a/build_files/cmake/config/blender_release.cmake
++++ b/build_files/cmake/config/blender_release.cmake
+@@ -53,7 +53,7 @@ set(WITH_USD                 ON  CACHE BOOL "" FORCE)
+ set(WITH_MEM_JEMALLOC          ON  CACHE BOOL "" FORCE)
+ set(WITH_CYCLES_CUDA_BINARIES  ON  CACHE BOOL "" FORCE)
+ set(WITH_CYCLES_CUBIN_COMPILER OFF CACHE BOOL "" FORCE)
+-set(CYCLES_CUDA_BINARIES_ARCH sm_30;sm_35;sm_37;sm_50;sm_52;sm_60;sm_61;sm_70;sm_75 CACHE STRING "" FORCE)
++set(CYCLES_CUDA_BINARIES_ARCH sm_30;sm_35;sm_37;sm_50;sm_52;sm_60;sm_61;sm_70;sm_75;compute_75 CACHE STRING "" FORCE)
+ set(WITH_CYCLES_DEVICE_OPTIX   ON CACHE BOOL "" FORCE)
+ 
+ # platform dependent options
+diff --git a/intern/cycles/kernel/CMakeLists.txt b/intern/cycles/kernel/CMakeLists.txt
+index 782553e405c..6f139c44b6c 100644
+--- a/intern/cycles/kernel/CMakeLists.txt
++++ b/intern/cycles/kernel/CMakeLists.txt
+@@ -495,7 +495,7 @@ if(WITH_CYCLES_DEVICE_OPTIX)
+       -I "${OPTIX_INCLUDE_DIR}"
+       -I "${CMAKE_CURRENT_SOURCE_DIR}/.."
+       -I "${CMAKE_CURRENT_SOURCE_DIR}/kernels/cuda"
+-      -arch=sm_30
++      -arch=sm_50
+       --use_fast_math
+       -o ${output})
+ 
+-- 
+2.27.0
+

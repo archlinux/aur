@@ -1,0 +1,18 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4dd165b0185..77249a7edd9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1610,11 +1610,11 @@ if(
+   CMAKE_C_COMPILER_ID MATCHES "Intel"
+ )
+   # TODO(sergey): Do we want c++11 or gnu-c++11 here?
+-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
++  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+ elseif(MSVC)
+   # Nothing special is needed, C++11 features are available by default.
+ else()
+-  message(FATAL_ERROR "Unknown compiler ${CMAKE_C_COMPILER_ID}, can't enable C++11 build")
++  message(FATAL_ERROR "Unknown compiler ${CMAKE_C_COMPILER_ID}, can't enable C++14 build")
+ endif()
+ 
+ # Visual Studio has all standards it supports available by default
