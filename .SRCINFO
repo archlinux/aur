@@ -1,20 +1,16 @@
 pkgbase = skycoin
-	pkgdesc = Skycoin Cryptocurrency Wallet. Skycoin.com
-	pkgver = 0.27.0
-	pkgrel = 3
+	pkgdesc = Skycoin Cryptocurrency Wallet. skycoin.com
+	pkgver = 0.27.1
+	pkgrel = 1
 	url = https://github.com/skycoin/skycoin
 	arch = any
 	makedepends = go
-	makedepends = skycoin-keyring
-	source = https://github.com/skycoin/skycoin/archive/v0.27.0.tar.gz
+	makedepends = musl
+	makedepends = kernel-headers-musl
+	source = https://github.com/skycoin/skycoin/archive/v0.27.1.tar.gz
 	source = skycoin-scripts.tar.gz
-	source = skycoin-systemd.tar.gz
-	source = PKGBUILD.sig
-	validpgpkeys = DE08F924EEE93832DABC642CA8DC761B1C0C0CFC
-	sha256sums = 2e6c47f058f6f459e6572e6acf3e34403cf14fdc0f2511a4238b7280aae2d026
-	sha256sums = ca8344614b60e0d9d57b0eba4b44e0febc4addf83a54685539c45e08364b2d23
-	sha256sums = d14d3d597b80a2b79e5edb7e956a7926ca7065230e87fdca026036888835ad42
-	sha256sums = SKIP
+	sha256sums = 4ede6a23e62bf50f097a647519b5b714a5581065bf71c9778e0965a7c84b112b
+	sha256sums = 5e147befaf68e30efa7a15e8b292e52cacb94846de4ac03158275a357c8b7dbc
 
 pkgname = skycoin
 
