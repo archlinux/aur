@@ -9,13 +9,13 @@
 
 pkgname=gstm
 pkgver=1.3.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Gnome SSH Tunnel Manager - Gtk3 Edition"
 arch=('i686' 'x86_64')
 url="https://github.com/dallenwilson/gstm"
 license=('GPL')
 depends=('openssh' 'libxml2' 'glib2' 'gdk-pixbuf2' 'gtk3' 'libappindicator-gtk3')
-makedepends=('intltool' 'autoconf' 'automake' 'gcc')
+makedepends=('intltool' 'autoconf' 'automake' 'gcc' 'pkgconf' 'make')
 conflicts=('gstm-git' 'gstm-gtk2')
 provides=('gstm')
 source=(https://github.com/dallenwilson/gstm/releases/download/${pkgver}/gstm-${pkgver}.tar.gz)
