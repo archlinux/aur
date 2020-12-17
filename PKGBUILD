@@ -1,6 +1,6 @@
 # Maintainer: kumen
 pkgname="nrfconnect-appimage"
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="Cross-platform development software for Bluetooth Low Energy and cIoT"
 arch=("x86_64")
@@ -11,12 +11,10 @@ url="https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Connect
 license=('Commercial')
 options=(!strip)
 
-_file_name="nrfconnect360x8664.AppImage"
+_file_name="nrfconnect361x8664.AppImage"
 
-source=("https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-Connect-for-Desktop/3-6-0/${_file_name}"
-	$pkgname.desktop)
-sha256sums=('a4b2248db7d46cbb61373762233d7e358987bdf6aaa8e72ac273657be5bdaafa'
-	'e1643396521334eb81918c52c302d415e8d5965f6a556b9fc9db98b017f69b41')
+source=("https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-Connect-for-Desktop/3-6-1/${_file_name}")
+sha256sums=('6178e276cebde15bab49d86ed8942c366c66b691df6aba59e76c494f7a202425')
 
 prepare(){
 	# mark as executable
@@ -32,7 +30,20 @@ package() {
 	cp -Rr "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname}"
 
         msg2 'Installing desktop shortcuts'
-	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<END
+[Desktop Entry]
+Name=nRF Connect
+Comment=nRF Connect for PC
+GenericName=nRF Connect
+Exec=/opt/nrfconnect-appimage/nrfconnect %F
+Icon=/opt/nrfconnect-appimage/usr/share/icons/hicolor/0x0/apps/nrfconnect.png
+Path=/opt/nrfconnect-appimage/
+Terminal=false
+Type=Application
+StartupWMClass=nRF Connect
+StartupNotify=true
+Categories=Development
+END
 	
 	# fix file permissions - all files as 644 - directories as 755
 	find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
