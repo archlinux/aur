@@ -1,0 +1,17 @@
+pkgbase = groonga-tokenizer-friso
+	pkgdesc = Friso tokenizer for Groonga.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://groonga.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL2
+	depends = groonga
+	depends = friso
+	depends = gobject-introspection
+	optdepends = cutter-test_framework
+	source = https://github.com/kenhys/groonga-tokenizer-friso/archive/v1.1.0.tar.gz
+	sha1sums = c3cb001a178dc59675784876ae32206a7ad2d886
+
+pkgname = groonga-tokenizer-friso
+
