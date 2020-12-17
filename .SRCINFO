@@ -1,7 +1,7 @@
 pkgbase = libdart
 	pkgdesc = Dynamic Animation and Robotics Toolkit
 	pkgver = 6.9.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://dartsim.github.io
 	arch = i686
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = libdart
 	depends = openscenegraph
 	depends = tinyxml2
 	depends = urdfdom
+	depends = glu
 	depends = freeglut
 	depends = libxi
 	depends = libxmu

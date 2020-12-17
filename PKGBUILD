@@ -5,14 +5,14 @@
 
 pkgname=libdart
 pkgver=6.9.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
 url="https://dartsim.github.io"
 license=('BSD')
 depends=('assimp' 'boost' 'eigen' 'fcl' 'libccd' 'bullet' 'coin-or-ipopt'
          'flann' 'nlopt' 'octomap' 'ode' 'openscenegraph' 'tinyxml2' 'urdfdom'
-         'freeglut' 'libxi' 'libxmu')
+         'glu' 'freeglut' 'libxi' 'libxmu')
 optdepends=('pagmo: pagmo optimizer support')
 makedepends=('cmake')
 provides=('dartsim')
