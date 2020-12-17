@@ -1,0 +1,33 @@
+pkgbase = fvwm3-git
+	pkgdesc = A powerful ICCCM2 compliant multiple virtual desktop window manager for X11
+	pkgver = 1.0.0.r139.g25768a8e
+	pkgrel = 1
+	url = http://www.fvwm.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = libxslt
+	makedepends = mongo-c-driver
+	depends = fribidi
+	depends = libxpm
+	depends = librsvg
+	depends = libxrandr
+	depends = libevent
+	depends = libxcursor
+	depends = rplay
+	depends = mongo-c-driver
+	optdepends = perl-tk: for ClickToFocus support
+	optdepends = perl-x11-protocol: for ClickToFocus support
+	optdepends = python: for fvwm-menu-desktop
+	provides = fvwm
+	conflicts = fvwm
+	options = !emptydirs
+	options = !makeflags
+	source = git+https://github.com/fvwmorg/fvwm3
+	source = fvwm3.desktop
+	sha256sums = SKIP
+	sha256sums = cc2ffc01ec615245252081e3948d4c6ff30d7e71b91d0642b2c5ab529cc39663
+
+pkgname = fvwm3-git
+
