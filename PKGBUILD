@@ -1,9 +1,9 @@
 # Maintainer: Max Mehl <aur at mehl dot mx>
-# SPDX-FileCopyrightText: 2019 Max Mehl
+# SPDX-FileCopyrightText: 2020 Max Mehl
 # SPDX-License-Identifier: CC0-1.0
 
 pkgname=reuse
-pkgver=0.11.1
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='Helper tool for providing and confirming copyright and licensing information'
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=('python-setuptools')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/fsfe/reuse-tool/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('49d7e73968f7f5ac9ba7763daca31167ac0efc69ead95bfe40d12d5a7fb2bd6c')
+sha256sums=('ba0d900346b23498716625cc044aad694266ddbd28e27c78e9944d2247694a0e')
 
 package() {
   cd "reuse-tool-${pkgver}"

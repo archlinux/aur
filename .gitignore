@@ -2,3 +2,4 @@ src/
 pkg/
 reuse*.tar.gz
 reuse*.tar.xz
+reuse*.tar.zst
