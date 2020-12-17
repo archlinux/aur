@@ -34,7 +34,12 @@ prepare() {
     
 build() {
     msg "build"
+    cp -r "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/${pkgname}-dbg-${pkgver}"
     cd "${srcdir}/${pkgname}-${pkgver}"
+    qmake
+    make all -j32
+
+    cd "${srcdir}/${pkgname}-dbg-${pkgver}"
     qmake
     make all -j32
 }
@@ -59,8 +64,6 @@ package_graceful-platform-theme() {
 
 package_graceful-platform-theme-dbg() {
     msg "graceful-platform-theme package"
-
-    cp -r "${srcdir}/graceful-platform-theme-${pkgver}/" "${srcdir}/${pkgname}-${pkgver}/"
 
     cd "${srcdir}/${pkgname}-${pkgver}/lib"
     rm -rf libgraceful.so
