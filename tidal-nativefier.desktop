@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=TIDAL
+Comment=TIDAL desktop built with nativefier (electron) with widevine support
+Exec=tidal-nativefier
+Icon=tidal-nativefier
+Encoding=UTF-8
+Terminal=false
+StartupNotify=true
+Type=Application
+StartupWMClass=tidal-nativefier-8b792f
+X-PulseAudio-Properties=media.role=music
+Categories=Network;Application;Audio;Video;

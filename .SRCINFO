@@ -1,0 +1,23 @@
+pkgbase = tidal-nativefier
+	pkgdesc = TIDAL desktop built with nativefier (electron) with widevine support
+	pkgver = 1.0.1217
+	pkgrel = 1
+	url = https://listen.tidal.com
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = tidal-nativefier.png
+	source = tidal-nativefier.desktop
+	sha256sums = eaab216b19013f8a47fcd32d1277e2392b1d8cdaf00f7f61249bd361eefd530b
+	sha256sums = 15baa142a1b230646c1a6a7df38a2664d55a6d6e9de6712d764db569e853430d
+
+pkgname = tidal-nativefier
+
