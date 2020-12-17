@@ -2,10 +2,10 @@
 # Contributer: ArielAxionL <i at axionl dot me>
 # Contributor: DuckSoft <realducksoft@gmail.com>
 pkgname=qv2ray-dev-git
-pkgver=2.7.0.5910.r2520.72cccc66
+pkgver=2.7.0.6106.r2834.61348fe2
 pkgrel=1
 pkgdesc="Cross-platform V2ray Client written in Qt (Development Release)"
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 url='https://github.com/Qv2ray/Qv2ray'
 license=('GPL3')
 depends=('hicolor-icon-theme' 'qt5-base>5.11.0' 'grpc>=1.27.0' 'qt5-svg')
@@ -28,10 +28,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/Qv2ray"
-    git submodule init
-    git config submodule."libs/libqvb".active false
-    git config submodule."3rdparty/zxing-cpp".active true
-    git submodule update
+    git submodule update --init --recursive
 }
 
 build() {

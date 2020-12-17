@@ -1,8 +1,9 @@
 pkgbase = qv2ray-dev-git
 	pkgdesc = Cross-platform V2ray Client written in Qt (Development Release)
-	pkgver = 2.7.0.5910.r2520.72cccc66
+	pkgver = 2.7.0.6106.r2834.61348fe2
 	pkgrel = 1
 	url = https://github.com/Qv2ray/Qv2ray
+	arch = aarch64
 	arch = x86_64
 	license = GPL3
 	makedepends = git
