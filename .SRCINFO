@@ -1,7 +1,7 @@
 pkgbase = python-swiglpk
 	pkgdesc = A low-level Python interface to the GLPK optimization solver.
 	pkgver = 4.65.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/biosustain/swiglpk
 	arch = any
 	license = GPL3
