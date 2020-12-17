@@ -12,7 +12,7 @@ license=("GPL")
 depends=("gcc-libs" "yandex-browser-beta")
 makedepends=(unzip)
 url=https://github.com/iteufel/nwjs-ffmpeg-prebuilt
-md5sums=('46c4c919a0a5bd6569f02f0b70434ccb')
+md5sums=('6e38f271aa5fd5c6f04440bf1987be17')
 
 _binary_git="${pkgver}-linux-x64.zip"
 _binary="${pkgname}-${_binary_git}"
