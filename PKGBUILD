@@ -1,17 +1,18 @@
 pkgname=friso
-pkgver=1.6.1
-pkgrel=3
+pkgver=1.6.4
+pkgrel=1
 pkgdesc="An opensource tokenizer for Chinese."
 arch=('i686' 'x86_64' 'armv7h')
-url="https://code.google.com/p/friso/"
+url="https://github.com/lionsoul2014/friso/"
 license=('Apache License 2.0')
-source=("http://downloads.sourceforge.net/project/friso/$pkgname-$pkgver-src-dict.zip")
-depends=('')
+source=("https://github.com/lionsoul2014/$pkgname/archive/v$pkgver-release.tar.gz")
+makedepends=('gcc')
 
 build() {
-    cd $srcdir/$pkgname-$pkgver/src
-    sed -i -e "s/\/c\/products\//\/usr\/share\//g" $srcdir/$pkgname-$pkgver/friso.ini
+    cd $srcdir/$pkgname-$pkgver-release/src
+    sed -i -e "s/\.\/vendors\//\/usr\/share\//g" $srcdir/$pkgname-$pkgver-release/friso.ini
 
+    export LD_LIBRARY_PATH=$srcdir/$pkgname-$pkgver-release/src:$LD_LIBRARY_PATH
     make
 }
 
@@ -24,18 +25,18 @@ prepare_dir() {
 }
 
 install_package() {
-    install $srcdir/$pkgname-$pkgver/src/friso.h $pkgdir/usr/include/friso
-    install $srcdir/$pkgname-$pkgver/src/friso_API.h $pkgdir/usr/include/friso
-    install $srcdir/$pkgname-$pkgver/src/friso  $pkgdir/usr/bin
-    install $srcdir/$pkgname-$pkgver/src/libfriso.so  $pkgdir/usr/lib
-    install $srcdir/$pkgname-$pkgver/friso.ini  $pkgdir/etc/friso
-    cp -R $srcdir/$pkgname-$pkgver/dict  $pkgdir/usr/share/friso
+    install -m 644 $srcdir/$pkgname-$pkgver-release/src/friso.h $pkgdir/usr/include/friso
+    install -m 644 $srcdir/$pkgname-$pkgver-release/src/friso_API.h $pkgdir/usr/include/friso
+    install -m 755 $srcdir/$pkgname-$pkgver-release/src/friso  $pkgdir/usr/bin
+    install -m 644 $srcdir/$pkgname-$pkgver-release/src/libfriso.so  $pkgdir/usr/lib
+    install -m 644 $srcdir/$pkgname-$pkgver-release/friso.ini  $pkgdir/etc/friso
+    cp -R $srcdir/$pkgname-$pkgver-release/vendors/dict  $pkgdir/usr/share/friso
 }
 
 package() {
-    cd $srcdir/$pkgname-$pkgver
+    cd $srcdir/$pkgname-$pkgver-release/src
     prepare_dir
 
     install_package
 }
-sha1sums=('d16e9380dd4c4142505223b2a09b915afd8fc211')
+sha1sums=('535bcdb0bd9a455dc7f90c476bb5c9701ce8a561')

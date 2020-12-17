@@ -1,14 +1,15 @@
 pkgbase = friso
 	pkgdesc = An opensource tokenizer for Chinese.
-	pkgver = 1.6.1
-	pkgrel = 3
-	url = https://code.google.com/p/friso/
+	pkgver = 1.6.4
+	pkgrel = 1
+	url = https://github.com/lionsoul2014/friso/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = Apache License 2.0
-	source = http://downloads.sourceforge.net/project/friso/friso-1.6.1-src-dict.zip
-	sha1sums = d16e9380dd4c4142505223b2a09b915afd8fc211
+	makedepends = gcc
+	source = https://github.com/lionsoul2014/friso/archive/v1.6.4-release.tar.gz
+	sha1sums = 535bcdb0bd9a455dc7f90c476bb5c9701ce8a561
 
 pkgname = friso
 
