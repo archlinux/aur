@@ -4,12 +4,12 @@
 pkgname=naev-git
 _pkgname=naev
 pkgdesc="2d action/rpg space game similar to Escape Velocity, development branch"
-pkgver=v0.8.0.beta.3
+pkgver=v0.8.0.r177.gcbeb2c498
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 license=('GPL')
 url="http://naev.org/"
-depends=('sdl2_image' 'sdl2_mixer' 'libxml2' 'freetype2' 'libpng' 'openal' 'libvorbis' 'binutils' 'libgl' 'libzip' 'luajit')
+depends=('sdl2_image' 'sdl2_mixer' 'libxml2' 'freetype2' 'libpng' 'openal' 'libvorbis' 'binutils' 'libgl' 'libzip' 'luajit' 'suitesparse')
 makedepends=('git' 'intltool' 'zip' 'itstool' 'autoconf-archive' 'fontconfig' 'glu')
 provides=('naev' 'naev-data')
 conflicts=('naev' 'naev-data')
@@ -25,14 +25,12 @@ pkgver() {
 build() {
   cd $srcdir/$_pkgname
 
-  ./autogen.sh
-  ./configure --prefix=/usr
-
-  make
+  meson build --prefix /usr
+  meson compile -C build
 }
 
 package() {
   cd "$srcdir/$_pkgname"
 
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 }
