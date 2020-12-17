@@ -1,14 +1,18 @@
 pkgbase = linux-covolunablu-gaming
 	pkgdesc = Linux
-	pkgver = 5.9.6.arch1
-	pkgrel = 2
-	url = https://git.archlinux.org/linux.git/log/?h=v5.9.6-arch1
+	pkgver = 5.9.14.arch1
+	pkgrel = 1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.9.14-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
 	makedepends = kmod
 	makedepends = libelf
 	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
 	makedepends = xmlto
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
@@ -16,7 +20,7 @@ pkgbase = linux-covolunablu-gaming
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.9.6-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.9.14-arch1
 	source = config
 	source = bfq-default.patch
 	source = 0001-futex-wait-multiple.patch
@@ -25,7 +29,7 @@ pkgbase = linux-covolunablu-gaming
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = 958333f18de79c19ccf9eccb4e16e2a217a0619a1d96c2c65ccba23628815bab
+	sha256sums = e8e9d05bc4076915c0b8f4d1d7d8889b6c446a9853a5d5ef09df47689164403b
 	sha256sums = 136fd376e27fd8503f0ea2c7c3df645fea60a9c05286b53e2bceb7ff8c1d0201
 	sha256sums = cb37801751ea51bc7e784331132f9390b61e477491f103bec3b48f1e751c79b7
 	sha256sums = bbbbc90c25659c16f2697b509a15a3969bf0dd277e81b44718a8149e61b51dbc
