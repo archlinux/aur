@@ -1,0 +1,23 @@
+_pkgname=docker-rootless-extras
+
+post_install() {
+    echo -ne "\e[34;1m"
+	echo "=== post_install Setup for $_pkgname ==="
+	echo -ne "\e[39;1m"
+    echo "Setup on your userspace, i,e exec this command and following instruction."
+    echo "  $ dockerd-rootless-setuptool.sh check"
+    echo -ne "\e[34;1m"
+	echo "=== systemd Setup for $_pkgname ==="
+	echo -ne "\e[39;1m"
+    echo "Start rootless docker with systemd."
+    echo "  $ systemctl start --user dockerd-rootless.service"
+    echo "To launch the daemon on system startup."
+    echo "  $ systemctl enable --user dockerd-rootless.service"
+    echo -ne "\e[34;1m"
+	echo "=== Exec docker command on $_pkgname ==="
+	echo -ne "\e[39;1m"
+    echo "Following this commands."
+    echo "  $ export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock"
+    echo "  $ docker info"
+	echo -ne "\e[0m"
+}

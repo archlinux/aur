@@ -1,0 +1,21 @@
+pkgbase = docker-rootless-extras
+	pkgdesc = Docker daemon as a non-root user (Rootless mode) with docker package
+	pkgver = 20.10.1
+	pkgrel = 1
+	url = https://docs.docker.com/engine/security/rootless/
+	install = docker-rootless-extras.install
+	arch = x86_64
+	license = Apache
+	depends = docker
+	optdepends = fuse-overlayfs: overlayfs support
+	optdepends = slirp4netns: faster network stuck
+	provides = docker-rootless-extras
+	source = https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-20.10.1.tgz
+	source = 60-docker-rootless-extras.sysctl
+	source = dockerd-rootless.service
+	sha256sums = 12e6bccb2ebbb3386a0157d04c03950cbab670bdd910ed408d8740d0e1543af9
+	sha256sums = d0d790d4c3d887b10b2b155b83a58a44980b9fa638f8c0f1faec0739dc0ef473
+	sha256sums = 806e31e1e368a9dd9e26d2eaa856551e40b505cd8f36b12291965c5810971aca
+
+pkgname = docker-rootless-extras
+
