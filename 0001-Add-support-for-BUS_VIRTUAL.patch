@@ -1,4 +1,4 @@
-From 232486e70e95297ac1e5f9cb32974f69e762c93f Mon Sep 17 00:00:00 2001
+From e5810a27408a5578c892ef77c889d964b8e2a867 Mon Sep 17 00:00:00 2001
 From: Dorian Stoll <dorian.stoll@tmsp.io>
 Date: Sat, 27 Jun 2020 18:21:11 +0200
 Subject: [PATCH 01/12] Add support for BUS_VIRTUAL
@@ -12,12 +12,25 @@ as BUS_VIRTUAL.
 
 Signed-off-by: Dorian Stoll <dorian.stoll@tmsp.io>
 ---
+ data/test_data_files.py      | 2 +-
  libwacom/libwacom-database.c | 4 ++++
  libwacom/libwacom.c          | 5 +++++
  libwacom/libwacom.h          | 1 +
  test/test-tablet-validity.c  | 1 +
- 4 files changed, 11 insertions(+)
+ 5 files changed, 12 insertions(+), 1 deletion(-)
 
+diff --git a/data/test_data_files.py b/data/test_data_files.py
+index 5acdbac..cb5ca6d 100755
+--- a/data/test_data_files.py
++++ b/data/test_data_files.py
+@@ -29,6 +29,6 @@ def test_device_match(tabletfile):
+             continue
+ 
+         bus, vid, pid = match.split(':')[:3]  # skip the name part of the match
+-        assert bus in ['usb', 'bluetooth', 'i2c', 'serial'], f'{tabletfile}: unknown bus type'
++        assert bus in ['usb', 'bluetooth', 'i2c', 'serial', 'virt'], f'{tabletfile}: unknown bus type'
+         assert re.match('[0-9a-f]{4}', vid), f'{tabletfile}: {vid} must be lowercase hex'
+         assert re.match('[0-9a-f]{4}', pid), f'{tabletfile}: {pid} must be lowercase hex'
 diff --git a/libwacom/libwacom-database.c b/libwacom/libwacom-database.c
 index 9f2657b..7be5247 100644
 --- a/libwacom/libwacom-database.c

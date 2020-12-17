@@ -1,26 +1,25 @@
-From eb8d7dd917a71e5d972cab536ee5a78fd227e21d Mon Sep 17 00:00:00 2001
+From 9a6ad48ee884b28e077450eba4121d712938c8f0 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:20:56 +0200
 Subject: [PATCH 12/12] data: Add Microsoft Surface Go
 
 ---
- data/surface-go.tablet | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ data/surface-go.tablet | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
  create mode 100644 data/surface-go.tablet
 
 diff --git a/data/surface-go.tablet b/data/surface-go.tablet
 new file mode 100644
-index 0000000..b8f39a5
+index 0000000..60a1e3d
 --- /dev/null
 +++ b/data/surface-go.tablet
-@@ -0,0 +1,15 @@
+@@ -0,0 +1,14 @@
 +# This is for the Microsoft Surface Go
 +
 +[Device]
 +Name=Microsoft Surface Go
 +Class=PenDisplay
-+DeviceMatch=i2c:04F3:261A
-+Class=ISDV4
++DeviceMatch=i2c:04f3:261a
 +Width=8
 +Height=5
 +IntegratedIn=Display;System;

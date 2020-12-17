@@ -1,4 +1,4 @@
-From 75c107b81586f6bcc8c44eb815a7ff62203a6ba5 Mon Sep 17 00:00:00 2001
+From 146233c4818ab6bb41b19eb91aa7f5b228ac26e8 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:18:55 +0200
 Subject: [PATCH 03/12] data: Add Microsoft Surface pro 4
@@ -10,7 +10,7 @@ Subject: [PATCH 03/12] data: Add Microsoft Surface pro 4
 
 diff --git a/data/surface-pro4.tablet b/data/surface-pro4.tablet
 new file mode 100644
-index 0000000..bfbe809
+index 0000000..1e0c67c
 --- /dev/null
 +++ b/data/surface-pro4.tablet
 @@ -0,0 +1,14 @@
@@ -19,7 +19,7 @@ index 0000000..bfbe809
 +[Device]
 +Name=Microsoft Surface Pro 4
 +Class=PenDisplay
-+DeviceMatch=virt:1B96:006A;virt:1B96:0021;mei:1B96:006A;mei:1B96:0021
++DeviceMatch=virt:1b96:006a;virt:1b96:0021;mei:1b96:006a;mei:1b96:0021
 +Width=10
 +Height=6
 +IntegratedIn=Display;System;

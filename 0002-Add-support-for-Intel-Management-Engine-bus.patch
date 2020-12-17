@@ -1,4 +1,4 @@
-From 1b05921d0832770f31544ec252a8fedbd3b8db2c Mon Sep 17 00:00:00 2001
+From dc3f22ed257f40bb2eb086f5379208e4400e8530 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sat, 1 Jun 2019 21:17:15 +0200
 Subject: [PATCH 02/12] Add support for Intel Management Engine bus
@@ -7,12 +7,25 @@ Add support for devices connected via the Intel Management Engine (MEI).
 This is required to support IPTS based devices, such as (among others)
 the Microsoft Surface Books, Surface Pro 5 and 6, and Surface Laptops.
 ---
+ data/test_data_files.py      | 2 +-
  libwacom/libwacom-database.c | 4 ++++
  libwacom/libwacom.c          | 5 +++++
  libwacom/libwacom.h          | 1 +
  test/test-tablet-validity.c  | 1 +
- 4 files changed, 11 insertions(+)
+ 5 files changed, 12 insertions(+), 1 deletion(-)
 
+diff --git a/data/test_data_files.py b/data/test_data_files.py
+index cb5ca6d..466b18a 100755
+--- a/data/test_data_files.py
++++ b/data/test_data_files.py
+@@ -29,6 +29,6 @@ def test_device_match(tabletfile):
+             continue
+ 
+         bus, vid, pid = match.split(':')[:3]  # skip the name part of the match
+-        assert bus in ['usb', 'bluetooth', 'i2c', 'serial', 'virt'], f'{tabletfile}: unknown bus type'
++        assert bus in ['usb', 'bluetooth', 'i2c', 'serial', 'virt', 'mei'], f'{tabletfile}: unknown bus type'
+         assert re.match('[0-9a-f]{4}', vid), f'{tabletfile}: {vid} must be lowercase hex'
+         assert re.match('[0-9a-f]{4}', pid), f'{tabletfile}: {pid} must be lowercase hex'
 diff --git a/libwacom/libwacom-database.c b/libwacom/libwacom-database.c
 index 7be5247..37ffd37 100644
 --- a/libwacom/libwacom-database.c

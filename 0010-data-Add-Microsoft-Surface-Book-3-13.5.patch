@@ -1,4 +1,4 @@
-From f8b1b9f4edde20df98af37d849661d64bcecf093 Mon Sep 17 00:00:00 2001
+From 5362189bdb53ec688c633fef60b246b58a9734cd Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:20:29 +0200
 Subject: [PATCH 10/12] data: Add Microsoft Surface Book 3 (13.5")
@@ -10,7 +10,7 @@ Subject: [PATCH 10/12] data: Add Microsoft Surface Book 3 (13.5")
 
 diff --git a/data/surface-book3-13.tablet b/data/surface-book3-13.tablet
 new file mode 100644
-index 0000000..212ef93
+index 0000000..a33c9cb
 --- /dev/null
 +++ b/data/surface-book3-13.tablet
 @@ -0,0 +1,14 @@
@@ -19,7 +19,7 @@ index 0000000..212ef93
 +[Device]
 +Name=Microsoft Surface Book 3 (13.5")
 +Class=PenDisplay
-+DeviceMatch=virt:045E:09B2;mei:045E:09B2
++DeviceMatch=virt:045e:09b2;mei:045e:09b2
 +Width=11
 +Height=7
 +IntegratedIn=Display;System;

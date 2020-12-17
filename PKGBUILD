@@ -2,7 +2,7 @@
 # Based on official Arch Linux PKGBUILD
 
 pkgname=libwacom-surface
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="Patched libwacom for Microsoft Surface devices"
 arch=('x86_64')
@@ -29,19 +29,19 @@ source=(
     '0012-data-Add-Microsoft-Surface-Go.patch'
     "https://github.com/linuxwacom/libwacom/releases/download/libwacom-${pkgver}/libwacom-${pkgver}.tar.bz2"{,.sig}
 )
-sha256sums=('21c0495cdbbac8950727e3699a851214ae4b67f24dffbc562eaa7a4dbd9c8947'
-            '9f49d987d534564149caa089cdb6fb99582d7c6ecd3c46a6be6ac910bff47de9'
-            'fc091b56ab73c56ee0a4a7c387b1881ae6c57d4120e6e41ef209ee31e596b56f'
-            'd7c4993dff271a181215a01cd29979629aad3becfe41dcacc59d46824e907b1d'
-            '1907a57c2f276a51356becfe50265af60eb17870667e4b3a99046216f1526812'
-            'c64344b92c60312ea4c9928fe04a1f69174f5c99567f2fd7590d143efb71a234'
-            '5159e9e33c9e54b2321d4ecf94e1e446a2d9be296f2b998c1d809666cb3ebd3e'
-            '636f68a054c6ef286c7926acdb0d8c97ca673668beb96b04a1fdb55875d136eb'
-            '8982215d8c61705f04deb96b00239a6343e361703699e5dedbb20dceae3356f6'
-            'd5381abd62a44d7886c743316de941b2cb940ccf5eb04ee55326cdc0bb05bd8f'
-            '6086082b23267fa991edd8ad623f43bcc4924a17f0fa5f5ba994cf0ce24f5fd2'
-            '4637cbcd280def21e74c23b1c2b37427a5a8e94ccdad864a49d9f337600fdcae'
-            '701cb23ee3f2ad4eb5183ef1421dfff3e5b7622e5d3bb6fcd599190a7d77aea8'
+sha256sums=('717886cb815bfb7393fb3163615c72d2bfda76f924e1e48c0852d4a667af0323'
+            'c337255d52f42107b05be6e7ebf38c1797ba8eac209ae94aec08a5a876659a4c'
+            'dcc39c283c461c600868a6e82445577811e1c5b0a967b51c054c99571421d170'
+            'c103ed241afe5618c0b6b67664eb7b0ab28f976edc7f921383f4a89ffd5005eb'
+            'd041d860b7f1baca20d3d79908e690931671f62f2207b9ed9ddebf36fbce97ed'
+            '60bfcc69740e3363ebf3b8934737765b584557cf02cc0a5ba135a91abe92146d'
+            '4f1319251911a57559f8b0d0eb073f07e79e71e1e30ec9aff26639eb044ee9cb'
+            '7d317b1a73522083956900d606f7414301c596542a2c420526c5b106f71642bc'
+            '5c390a438360affdea4b0a2cb866734a0ccc3725bbac54b617a0118a76a1a9ed'
+            'b81f1ca39996e4c49cdec80c2c395e158d60ac46ed7a223665976180c8c934ee'
+            '7e6ae8b0a3d5382258ecb42a482ac0dfed1fd148edb4b2f5c0980f391442ab9a'
+            '53ed7707cc9a31ac1ee9e326fe499126a5b61c787adf1f1dc28d709159539666'
+            '3c875f3bc88c6291528be98bc549e672a0b68640c9cb889d14efb552007b271d'
             'SKIP')
 
 prepare() {

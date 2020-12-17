@@ -1,4 +1,4 @@
-From b046b8f1caadcd191e8ab7ac93e6a3190f09779d Mon Sep 17 00:00:00 2001
+From 39fa36b6378be6090321f304477e5e2112c830a1 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:19:02 +0200
 Subject: [PATCH 04/12] data: Add Microsoft Surface pro 5
@@ -10,7 +10,7 @@ Subject: [PATCH 04/12] data: Add Microsoft Surface pro 5
 
 diff --git a/data/surface-pro5.tablet b/data/surface-pro5.tablet
 new file mode 100644
-index 0000000..4fdbac6
+index 0000000..b26af3a
 --- /dev/null
 +++ b/data/surface-pro5.tablet
 @@ -0,0 +1,14 @@
@@ -19,7 +19,7 @@ index 0000000..4fdbac6
 +[Device]
 +Name=Microsoft Surface Pro 5
 +Class=PenDisplay
-+DeviceMatch=virt:1B96:001F;mei:1B96:001F
++DeviceMatch=virt:1b96:001f;mei:1b96:001f
 +Width=10
 +Height=6
 +IntegratedIn=Display;System;

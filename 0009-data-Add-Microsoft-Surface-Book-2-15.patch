@@ -1,4 +1,4 @@
-From c5bc7f543e56e2110af2538a6a1385c4323ecc00 Mon Sep 17 00:00:00 2001
+From daa169c373e1a541bf9d752371581b32de5c5fad Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:20:13 +0200
 Subject: [PATCH 09/12] data: Add Microsoft Surface Book 2 (15")
@@ -10,7 +10,7 @@ Subject: [PATCH 09/12] data: Add Microsoft Surface Book 2 (15")
 
 diff --git a/data/surface-book2-15.tablet b/data/surface-book2-15.tablet
 new file mode 100644
-index 0000000..c07e60f
+index 0000000..ad98cc7
 --- /dev/null
 +++ b/data/surface-book2-15.tablet
 @@ -0,0 +1,14 @@
@@ -19,7 +19,7 @@ index 0000000..c07e60f
 +[Device]
 +Name=Microsoft Surface Book 2 (15")
 +Class=PenDisplay
-+DeviceMatch=virt:045E:0020;mei:045E:0020
++DeviceMatch=virt:045e:0020;mei:045e:0020
 +Width=12
 +Height=8
 +IntegratedIn=Display;System;

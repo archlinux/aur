@@ -1,4 +1,4 @@
-From ce150a5ca89aba8c5985b90a81f8bcbff046780c Mon Sep 17 00:00:00 2001
+From c4910de17af81cb510d84a0c783a0f5ed484a63c Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:19:38 +0200
 Subject: [PATCH 07/12] data: Add Microsoft Surface Book
@@ -10,7 +10,7 @@ Subject: [PATCH 07/12] data: Add Microsoft Surface Book
 
 diff --git a/data/surface-book.tablet b/data/surface-book.tablet
 new file mode 100644
-index 0000000..a551c9b
+index 0000000..e2a5401
 --- /dev/null
 +++ b/data/surface-book.tablet
 @@ -0,0 +1,14 @@
@@ -19,7 +19,7 @@ index 0000000..a551c9b
 +[Device]
 +Name=Microsoft Surface Book
 +Class=PenDisplay
-+DeviceMatch=virt:1B96:005e;mei:1B96:005e
++DeviceMatch=virt:1b96:005e;mei:1b96:005e
 +Width=11
 +Height=7
 +IntegratedIn=Display;System;

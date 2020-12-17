@@ -1,4 +1,4 @@
-From 204eed54bb339d927f2291bc6d8abb47b7ddccc3 Mon Sep 17 00:00:00 2001
+From b9027ca78c80b82434a4c22f38b706c55bc9c03b Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:19:07 +0200
 Subject: [PATCH 05/12] data: Add Microsoft Surface pro 6
@@ -10,7 +10,7 @@ Subject: [PATCH 05/12] data: Add Microsoft Surface pro 6
 
 diff --git a/data/surface-pro6.tablet b/data/surface-pro6.tablet
 new file mode 100644
-index 0000000..787fd7a
+index 0000000..e97fad8
 --- /dev/null
 +++ b/data/surface-pro6.tablet
 @@ -0,0 +1,14 @@
@@ -19,7 +19,7 @@ index 0000000..787fd7a
 +[Device]
 +Name=Microsoft Surface Pro 6
 +Class=PenDisplay
-+DeviceMatch=virt:045E:001F;mei:045E:001F
++DeviceMatch=virt:045e:001f;mei:045e:001f
 +Width=10
 +Height=6
 +IntegratedIn=Display;System;

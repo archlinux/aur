@@ -1,4 +1,4 @@
-From 2130681ccb33f538e4000ce219b2f6c861dcd024 Mon Sep 17 00:00:00 2001
+From 94d3588f4375f0121c5b602db33d02c87a0f6190 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:19:13 +0200
 Subject: [PATCH 06/12] data: Add Microsoft Surface pro 7
@@ -10,7 +10,7 @@ Subject: [PATCH 06/12] data: Add Microsoft Surface pro 7
 
 diff --git a/data/surface-pro7.tablet b/data/surface-pro7.tablet
 new file mode 100644
-index 0000000..4659131
+index 0000000..7961379
 --- /dev/null
 +++ b/data/surface-pro7.tablet
 @@ -0,0 +1,14 @@
@@ -19,7 +19,7 @@ index 0000000..4659131
 +[Device]
 +Name=Microsoft Surface Pro 7
 +Class=PenDisplay
-+DeviceMatch=virt:045E:099F;mei:045E:099F
++DeviceMatch=virt:045e:099f;mei:045e:099f
 +Width=10
 +Height=6
 +IntegratedIn=Display;System;
