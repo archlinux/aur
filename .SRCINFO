@@ -1,0 +1,18 @@
+pkgbase = python-neat-python-git
+	pkgdesc = Python implementation of NEAT
+	pkgver = 0.92
+	pkgrel = 1
+	url = https://neat-python.readthedocs.io/en/latest/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-neat-python
+	conflicts = python-neat-python
+	source = python-neat-python-git::git+https://github.com/CodeReclaimers/neat-python
+	md5sums = SKIP
+
+pkgname = python-neat-python-git
+
