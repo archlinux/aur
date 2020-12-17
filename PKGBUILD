@@ -1,9 +1,8 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 # Contributor: Hilton Medeiros <medeiros.hilton@gmail.com>
 
-_pkgname=Pixelorama
 pkgname=pixelorama
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="A free & open-source 2D sprite editor"
 arch=('i686' 'pentium4' 'x86_64')
@@ -14,76 +13,78 @@ depends=('alsa-lib' 'hicolor-icon-theme' 'libglvnd' 'libpulse' 'libxcursor' 'lib
 makedepends=('curl' 'godot' 'unzip')
 provides=('pixelorama')
 conflicts=('pixelorama-bin' 'pixelorama-git')
-source=("${_pkgname}-${pkgver}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
-sha512sums=('5d10510ac4452c7a07e1c51a213839ac57af39d7c7f6f6c8c7bc166094c3af7cbb7d8eb343a64ca0cfd1ad269327fac17d0f93625a977cfa27be7663626e446f')
+source=("${pkgname^}-${pkgver}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
+sha512sums=('b150895e0c869d2fb91b30edd6ab3920d14dcad28e23464cf5e0d2cfa1b7e7e462f0706463c266acf19a9461fb836b8844bacacd829b732b35d54473931476bf')
 
 prepare() {
   # Checks if the user's directory has the export templates
   # and downloads them, if necessary
 
   # Get Godot Engine version
-  godot_bin=$(which godot)
-  godot_version_full_string=$(strings ${godot_bin} | grep "Godot Engine v" | sed 's/.*\ v//' | sed 's/\ .*//' | head -1)
-  godot_version=${godot_version_full_string%.*}
-  godot_version_number=$(echo ${godot_version} | sed 's/\.[[:alpha:]].*//')
+  _godot_bin=$(which godot)
+  _godot_version_full_string=$(strings ${_godot_bin} | grep "Godot Engine v" | sed 's/.*\ v//' | sed 's/\ .*//' | head -1)
+  _godot_version=${_godot_version_full_string%.*}
+  _godot_version_number=$(echo ${_godot_version} | sed 's/\.[[:alpha:]].*//')
 
-  templates_home_dir=~/.local/share/godot/templates/${godot_version}
+  _templates_home_dir=~/.local/share/godot/templates/${_godot_version}
   
-  if [ ! -d ${templates_home_dir} ]
+  if [ ! -d ${_templates_home_dir} ]
   then
-    templates_file="Godot_v$(echo ${godot_version} | sed 's/\(.*\)\./\1-/')_export_templates.tpz"
-    templates_url=https://downloads.tuxfamily.org/godotengine/${godot_version_number}
-    curl -O ${templates_url}/SHA512-SUMS.txt
-    grep ${templates_file} SHA512-SUMS.txt > ${templates_file}.sha512sum
+    _templates_file="Godot_v$(echo ${_godot_version} | sed 's/\(.*\)\./\1-/')_export_templates.tpz"
+    _templates_url=https://downloads.tuxfamily.org/godotengine/${_godot_version_number}
+    curl -O ${_templates_url}/SHA512-SUMS.txt
+    grep ${_templates_file} SHA512-SUMS.txt > ${_templates_file}.sha512sum
 
-    if [ ! -f ${templates_file} ]
+    if [ ! -f ${_templates_file} ]
     then
-      curl -O ${templates_url}/${templates_file}
+      curl -O ${_templates_url}/${_templates_file}
     fi
 
-    if ! sha512sum -c ${templates_file}.sha512sum ; then
-      curl -O ${templates_url}/${templates_file}
+    if ! sha512sum -c ${_templates_file}.sha512sum ; then
+      curl -O ${_templates_url}/${_templates_file}
     fi
 
-    mkdir -p ${templates_home_dir}
-    unzip ${templates_file} 'templates/*' -d ${templates_home_dir}
-    cd ${templates_home_dir}
+    mkdir -p ${_templates_home_dir}
+    unzip ${_templates_file} 'templates/*' -d ${_templates_home_dir}
+    cd ${_templates_home_dir}
     mv templates/* .
     rmdir templates
   fi
 
   sed -i "s/enable_file_logging=true/enable_file_logging=false/" \
-         "${srcdir}/${_pkgname}-${pkgver}/project.godot"
+         "${srcdir}/${pkgname^}-${pkgver}/project.godot"
 
-  echo "#!/bin/sh" >> "${srcdir}/${_pkgname}-${pkgver}/Misc/Linux/${pkgname}.sh"
-  echo "exec /usr/lib/${pkgname}/${pkgname} \"\$@\"" >> "${srcdir}/${_pkgname}-${pkgver}/Misc/Linux/${pkgname}.sh"
+  echo "#!/bin/sh" >> "${srcdir}/${pkgname^}-${pkgver}/Misc/Linux/${pkgname}.sh"
+  echo "exec /usr/lib/${pkgname}/${pkgname} \"\$@\"" >> "${srcdir}/${pkgname^}-${pkgver}/Misc/Linux/${pkgname}.sh"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname^}-${pkgver}"
   mkdir -p build
   godot --export "Linux/X11 $(getconf LONG_BIT)-bit" --path . project.godot build/${pkgname}
 }
     
 package() {
-  install -Dm755 "${srcdir}/${_pkgname}-${pkgver}/build/${pkgname}" \
+  _xdg_desktop_name="com.orama_interactive.${pkgname^}"
+
+  install -Dm755 "${srcdir}/${pkgname^}-${pkgver}/build/${pkgname}" \
                  "${pkgdir}/usr/lib/${pkgname}/${pkgname}"
 
-  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/build/${pkgname}.pck" \
+  install -Dm644 "${srcdir}/${pkgname^}-${pkgver}/build/${pkgname}.pck" \
                  "${pkgdir}/usr/lib/${pkgname}/${pkgname}.pck"
 
-  install -Dm755 "${srcdir}/${_pkgname}-${pkgver}/Misc/Linux/${pkgname}.sh" \
+  install -Dm755 "${srcdir}/${pkgname^}-${pkgver}/Misc/Linux/${pkgname}.sh" \
                  "${pkgdir}/usr/bin/${pkgname}"
 
-  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/Misc/Linux/com.orama_interactive.${_pkgname}.desktop" \
-                 "${pkgdir}/usr/share/applications/com.orama_interactive.${pkgname}.desktop"
+  install -Dm644 "${srcdir}/${pkgname^}-${pkgver}/Misc/Linux/${_xdg_desktop_name}.desktop" \
+                 "${pkgdir}/usr/share/applications/${_xdg_desktop_name}.desktop"
 
-  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/Misc/Linux/com.orama_interactive.${_pkgname}.appdata.xml" \
-                 "${pkgdir}/usr/share/metainfo/com.orama_interactive.${pkgname}.appdata.xml"
+  install -Dm644 "${srcdir}/${pkgname^}-${pkgver}/Misc/Linux/${_xdg_desktop_name}.appdata.xml" \
+                 "${pkgdir}/usr/share/metainfo/${_xdg_desktop_name}.appdata.xml"
 
-  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/assets/graphics/icons/icon.png" \
+  install -Dm644 "${srcdir}/${pkgname^}-${pkgver}/assets/graphics/icons/icon.png" \
                  "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
 
-  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" \
+  install -Dm644 "${srcdir}/${pkgname^}-${pkgver}/LICENSE" \
                  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
