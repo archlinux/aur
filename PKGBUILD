@@ -2,7 +2,7 @@
 
 _pkgname=lutris
 pkgname=${_pkgname}-release
-pkgver=0.5.3
+pkgver=0.5.4
 _pkgver=v${pkgver}
 pkgrel=1
 pkgdesc='Open Gaming Platform'
@@ -14,7 +14,7 @@ makedepends=('git' 'python-setuptools')
 provides=('lutris')
 conflicts=('lutris' 'lutris-git')
 source=("${url}/archive/${_pkgver}.tar.gz")
-sha512sums=('c48be1cf1efada290847d86876dae40346142b041119e6c6733e41e27c0277771647992e5475bfa3a71b639a0d9ff2e2ca3527612cc1a723aa0bac46960606c9')
+sha512sums=('758c2a854912e29ac579c2030ec118e406db97aa0ecb9be394b2910e48e19c87a774972299b0c83e73fb57e8db3c98a2c52d1545e8071e378d3aff263d325cc4')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
