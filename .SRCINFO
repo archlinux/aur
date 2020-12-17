@@ -1,7 +1,7 @@
 pkgbase = docker-rootless-extras
 	pkgdesc = Docker daemon as a non-root user (Rootless mode) with docker package
 	pkgver = 20.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.docker.com/engine/security/rootless/
 	install = docker-rootless-extras.install
 	arch = x86_64

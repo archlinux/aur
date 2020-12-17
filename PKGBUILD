@@ -1,7 +1,7 @@
 # Maintainer: koba1t <kobdotsh at gmail dot com>
 pkgname=docker-rootless-extras
 pkgver=20.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Docker daemon as a non-root user (Rootless mode) with docker package"
 arch=('x86_64')
 url="https://docs.docker.com/engine/security/rootless/"
@@ -22,5 +22,5 @@ package() {
 	mkdir -p "$pkgdir/usr/bin/"
 	install -Dm755 "$srcdir/docker-rootless-extras/"* "$pkgdir/usr/bin/"
 	install -Dm644 "$srcdir/60-$pkgname.sysctl" "$pkgdir/usr/lib/sysctl.d/60-$pkgname.conf"
-	install -Dm644 "$srcdir/dockerd-rootless.service" "/usr/lib/systemd/user/"
+	install -Dm644 "$srcdir/dockerd-rootless.service" "$pkgdir/usr/lib/systemd/user/dockerd-rootless.service"
 }
