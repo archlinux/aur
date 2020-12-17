@@ -1,0 +1,16 @@
+pkgbase = em-marine
+	pkgdesc = EM-marine reader software with Ethernet interface (TCP / IP)
+	pkgver = 0.0.2.1
+	pkgrel = 1
+	url = https://github.com/khvalera/em-marine
+	arch = x86_64
+	license = GPL2
+	makedepends = lazarus
+	makedepends = git
+	makedepends = which
+	backup = etc/em-marine/options.ini
+	source = https://github.com/khvalera/em-marine/archive/0.0.2.1.tar.gz
+	md5sums = 9bfd0e5258ae1a372e327db955248479
+
+pkgname = em-marine
+
