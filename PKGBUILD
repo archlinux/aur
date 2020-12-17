@@ -26,7 +26,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix=7.0'); }
 
 pkgname=blender-${_blenver}-git
-pkgver=2.83.r95674.gc2b144df395
+pkgver=2.83.r95764.g02ff143f609
 pkgrel=1
 pkgdesc="LTS Maintenance version of ${_branch} branch"
 changelog=blender.changelog
@@ -55,6 +55,7 @@ source=("git://git.blender.org/blender.git${_fragment}"
         embree.patch #add missing embree link.
         'cuda11.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/a9644c812fc17b38503828d6edf7d259b6fe0e74'
         'cpp14.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/171c4fb238a2a65291540ac5406187bc69f3a6bc'
+        'python39.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/56d0df51a36fdce7ec2d1fbb7b47b1d95b591b5f'
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -65,7 +66,19 @@ sha256sums=('SKIP'
             '12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a'
             '42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4'
             '2e5cf80c760aaf7326505b81f408c90fb6c4ff22b8cbb3638397809011a13562'
-            '44fad9ac2320d20d21b7aef46f70c05d55697ecde1446513f0a5842014a9d99c')
+            '44fad9ac2320d20d21b7aef46f70c05d55697ecde1446513f0a5842014a9d99c'
+            '7ae5ac4d636934cd46213e3f29ea67013d17316e122d8f312daec288e4f90cd9')
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        '0024f04fd0061313010a61b88634a0b86ed69695a7c072ff40f50ebab6a274ccf8ed7ed3381e501b218503f08c82b23f3f743208eb0feb81d4735c2a0c93989f'
+        'b3db637b8d12a00bf1bb1bee0111b7b540af83a4b91f4f31a0ba0240c0a0fcaa4732c88729031be04d50167413127a49ad41bf86454f2ed99ddac18d00d41868'
+        '62567f79f86684e7fd99b8879b692e862c7ea85317cfacae4539d3035fe3ffc71fd39b0aa385be1efc8c31c8fe9ccac86e4b20275905150540349ba5fe3f8cbb'
+        '81f85f3024ce9891faf3d83f164c7f3164b5eb13bdcbf055298e2fca2ee9380ead6241563cb47ea9b434d1af18a70c2f37ab42606776c8be8219650b12e28f6b'
+        'eb1107f2506b51004455a5e56cade10577c553d822dbb60e0068030a2480e9e51a6d434ef3817d0ffc9fe197e46de6c471aa6650691a5201985447d316fee039'
+        '4b11df6d494644e740cfda654fbebb2988c430d18c093739724f331738099100925fd0399b94cf0a1188c4ae804081c8380424b64f35355f7cbfde6c7ee91b44')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -89,6 +102,7 @@ prepare() {
   ((DISABLE_EMBREE)) || git -C "$srcdir/blender" apply -v "${srcdir}"/embree.patch
   git -C "$srcdir/blender" apply -v "$srcdir/cuda11.patch"
   git -C "$srcdir/blender" apply -v "$srcdir/cpp14.patch"
+  git -C "$srcdir/blender" apply -v "$srcdir/python39.patch"
 }
 
 build() {
