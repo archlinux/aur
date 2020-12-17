@@ -10,8 +10,17 @@ url="https://github.com/CadQuery/cadquery"
 license=('Apache')
 provides=(python-cadquery)
 conflicts=(python-cadquery)
-depends=(python python-ocp python-ezdxf)
-checkdepends=(python-pytest python-pytest-cov python-typing_extensions)
+depends=(
+python
+python-ocp
+python-ezdxf
+)
+checkdepends=(
+python-pytest
+python-pytest-cov
+python-typing_extensions
+ipython
+)
 
 source=("git+https://github.com/CadQuery/cadquery.git")
 md5sums=('SKIP')
@@ -24,7 +33,7 @@ pkgver() {
 prepare() {
   cd cadquery
   
-  # drop text() entirely
+  # drop text() entirely since it appears to be broken in ocp with the latest version of opencascade
   curl https://github.com/greyltc/cadquery/commit/48bab8ad9e176590f67980a263262b4c6b0b3198.patch | patch -p1
 
   # loosen volume check restrictions

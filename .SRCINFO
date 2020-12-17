@@ -8,6 +8,7 @@ pkgbase = python-cadquery-git
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
 	checkdepends = python-typing_extensions
+	checkdepends = ipython
 	depends = python
 	depends = python-ocp
 	depends = python-ezdxf
