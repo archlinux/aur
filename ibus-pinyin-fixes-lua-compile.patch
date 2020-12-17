@@ -1,0 +1,86 @@
+From c42d0a870697e95301deabe0bcb770a68649c81d Mon Sep 17 00:00:00 2001
+From: Peng Wu <alexepico@gmail.com>
+Date: Wed, 31 Jul 2013 10:53:14 +0800
+Subject: [PATCH] fixes lua 5.2 compile
+
+---
+ lua/lua-plugin-init.c | 8 ++++++++
+ lua/lua-plugin.c      | 9 +++++++++
+ 2 files changed, 17 insertions(+)
+
+Index: ibus-pinyin-1.5.0/lua/lua-plugin-init.c
+===================================================================
+--- ibus-pinyin-1.5.0.orig/lua/lua-plugin-init.c
++++ ibus-pinyin-1.5.0/lua/lua-plugin-init.c
+@@ -26,6 +26,14 @@
+ 
+ #include "lua-plugin.h"
+ 
++#if LUA_VERSION_NUM >= 502
++/* ugly hack for lua 5.2 */
++
++#define lua_objlen lua_rawlen
++
++#endif
++
++
+ static const luaL_Reg lualibs[] = {
+   {"", luaopen_base},
+   {LUA_TABLIBNAME, luaopen_table},
+@@ -344,7 +352,11 @@ static const luaL_Reg imelib[] = {
+ };
+ 
+ LUALIB_API int luaopen_ime (lua_State *L) {
++#if LUA_VERSION_NUM >= 502
++  luaL_newlib(L, imelib);
++#else
+   luaL_register(L, LUA_IMELIBNAME, imelib);
++#endif
+   return 1;
+ }
+ 
+Index: ibus-pinyin-1.5.0/lua/lua-plugin.c
+===================================================================
+--- ibus-pinyin-1.5.0.orig/lua/lua-plugin.c
++++ ibus-pinyin-1.5.0/lua/lua-plugin.c
+@@ -25,6 +25,15 @@
+ 
+ #include "lua-plugin.h"
+ 
++#if LUA_VERSION_NUM >= 502
++/* ugly hack for lua 5.2 */
++
++#define lua_open luaL_newstate
++
++#define lua_objlen lua_rawlen
++
++#endif
++
+ #define IBUS_ENGINE_PLUGIN_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), IBUS_TYPE_ENGINE_PLUGIN, IBusEnginePluginPrivate))
+ 
+ struct _IBusEnginePluginPrivate{
+Index: ibus-pinyin-1.5.0/lua/lmyoslib.c
+===================================================================
+--- ibus-pinyin-1.5.0.orig/lua/lmyoslib.c
++++ ibus-pinyin-1.5.0/lua/lmyoslib.c
+@@ -57,7 +57,7 @@ static int getfield (lua_State *L, const
+     res = (int)lua_tointeger(L, -1);
+   else {
+     if (d < 0)
+-      return luaL_error(L, "field " LUA_QS " missing in date table", key);
++      return luaL_error(L, "field '%s' missing in date table", key);
+     res = d;
+   }
+   lua_pop(L, 1);
+@@ -157,7 +157,11 @@ static const luaL_Reg syslib[] = {
+ 
+ 
+ LUALIB_API int luaopen_myos (lua_State *L) {
++#if LUA_VERSION_NUM >= 502
++  luaL_newlib(L, syslib);
++#else
+   luaL_register(L, LUA_OSLIBNAME, syslib);
++#endif
+   return 1;
+ }
+ 
