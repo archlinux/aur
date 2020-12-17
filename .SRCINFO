@@ -1,7 +1,7 @@
 pkgbase = mfaktc
 	pkgdesc = A CUDA program for Mersenne prefactoring.
 	pkgver = 0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mersenneforum.org/showthread.php?t=12827
 	arch = x86_64
 	license = GPL3
