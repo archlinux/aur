@@ -1,0 +1,10 @@
+# makepkg directories
+/src/*
+/pkg/*
+
+# Built packages
+*.tar.xz
+*.tar.zst
+
+# Downloaded sources
+svelte-language-server-*.tgz
