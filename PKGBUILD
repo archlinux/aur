@@ -7,7 +7,7 @@
 
 pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
-pkgver=1.39.2beta4
+pkgver=1.39.4beta1
 pkgrel=1
 pkgdesc="Signal Private Messenger for Linux"
 license=('GPL3')
@@ -25,7 +25,7 @@ source=(
   # See https://github.com/atom/node-spellchecker/issues/127
   "https://github.com/atom/node-spellchecker/archive/613ff91dd2d9a5ee0e86be8a3682beecc4e94887.tar.gz"
 )
-sha512sums=('b6cb86e5f9e5b8e4d2620614ad75cb5dfac328e713278695a15a4041ef6675ce02847d72dc25ca710f09614ef873d6e287ba07ce7f4c7c784e9a69ed8b8514d0'
+sha512sums=('2e44b0458312ea823fcaff5749254f3ad481ad13d3790cd21cd12be4b78dbf55dd7012ab21a4e663a81146932f7f05037b5050b3ea12fcfcaae7126354d1eebb'
             'b92c877f6673b3eaae94ca5623ab92f0e5676d439aaf7dc7424ce74f5a5786d30886e0b1013f0ef68a4ced53cdd16a2f78df8f1e41c039d61a980edf678f3e70'
             '6b846fdf70dae6c4657de523ec133d2f08325740863660b86e75d032bb07a4b97834ba0eeea4c77000c2c20b11739b8e8deaf06584f9279638e640c4b7633dd5'
             '6673066172d6c367961f3e2d762dd483e51a9f733d52e27d0569b333ad397375fd41d61b8a414b8c9e8dbba560a6c710678b3d105f8d285cb94d70561368d5a2'
