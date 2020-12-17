@@ -14,7 +14,6 @@ pkgbase = deepin-polkit-agent-ext-gnomekeyring-git
 	depends = libgnome-keyring
 	provides = deepin-polkit-agent-ext-gnomekeyring
 	conflicts = deepin-polkit-agent-ext-gnomekeyring
-	replaces = deepin-polkit-agent-ext-gnomekeyring
 	source = deepin-polkit-agent-ext-gnomekeyring-git::git://github.com/linuxdeepin/dpa-ext-gnomekeyring/
 	sha512sums = SKIP
 

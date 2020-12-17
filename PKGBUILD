@@ -1,4 +1,4 @@
-# Maintainer: DingYuan Zhang <justforlxz@gmail.com>
+# Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-polkit-agent-ext-gnomekeyring-git
 pkgver=5.0.4.r0.gc437a27
@@ -10,7 +10,6 @@ license=('GPL3')
 depends=('deepin-polkit-agent-git' 'libgnome-keyring')
 makedepends=('git' 'qt5-tools' 'libgnome-keyring' 'deepin-polkit-agent-git')
 conflicts=('deepin-polkit-agent-ext-gnomekeyring')
-replaces=('deepin-polkit-agent-ext-gnomekeyring')
 provides=('deepin-polkit-agent-ext-gnomekeyring')
 groups=('deepin-git')
 source=("$pkgname::git://github.com/linuxdeepin/dpa-ext-gnomekeyring/")
