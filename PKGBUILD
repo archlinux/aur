@@ -3,10 +3,7 @@
 _server=cpx51
 
 pkgbase=graceful-platform-theme
-pkgname=(
-    'graceful-platform-theme'
-    'graceful-platform-theme-dbg'
-)
+pkgname=graceful-platform-theme
 pkgver=1.0.2
 pkgrel=1
 arch=('x86_64')
@@ -34,12 +31,7 @@ prepare() {
     
 build() {
     msg "build"
-    cp -r "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/${pkgname}-dbg-${pkgver}"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    qmake
-    make all -j32
-
-    cd "${srcdir}/${pkgname}-dbg-${pkgver}"
     qmake
     make all -j32
 }
@@ -61,22 +53,3 @@ package_graceful-platform-theme() {
     install -Dm644 ../../LICENSE        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm755 lib/libgraceful.so   "${pkgdir}/usr/lib/qt/plugins/styles/libgraceful.so"
 }
-
-package_graceful-platform-theme-dbg() {
-    msg "graceful-platform-theme package"
-
-    cd "${srcdir}/${pkgname}-${pkgver}/lib"
-    rm -rf libgraceful.so
-    make debug -j32
-    cd "${srcdir}/${pkgname}-${pkgver}"
-
-    install -d -Dm755                   "${pkgdir}/usr/share/icons/"
-    install -d -Dm755                   "${pkgdir}/usr/share/themes/"
-
-    cp -ra icon/graceful/               "${pkgdir}/usr/share/icons/"
-    cp -ra theme/graceful/              "${pkgdir}/usr/share/themes/"
-    install -Dm644 ../../README.md      "${pkgdir}/usr/share/doc/${pkgname}/README"
-    install -Dm644 ../../LICENSE        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm755 lib/libgraceful.so   "${pkgdir}/usr/lib/qt/plugins/styles/libgraceful.so"
-}
-
