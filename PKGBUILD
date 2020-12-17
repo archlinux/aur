@@ -10,9 +10,9 @@ arch=('any')
 license=('GPL')
 provides=($pkgname)
 conflicts=($pkgname)
-makedepends=('pygtk' 'gtk2' 'python2')
+makedepends=('pygtk' 'python2-dbus' 'python2-xdg' 'python2' 'gnome-icon-theme')
 source=('https://sourceforge.net/projects/catfish-python2/files/catfish-python2/catfish-python2.tar.xz')
-md5sums=('a9fa8c3f2db27b898f9686092f3665d3')
+md5sums=('541032a1513a8b0ab8c21fcdf9feb3f2')
 
 build() {
   cd $pkgname
@@ -32,8 +32,10 @@ package() {
   install -d $pkgdir/usr/share/icons/hicolor/scalable/apps
   install -d $pkgdir/usr/share/pixmaps
   install $pkgname.svg $pkgdir/usr/share/icons/hicolor/scalable/apps
-  ln -sf /usr/share/icons/hicolor/scalable/apps/$pkgname.svg $pkgdir/usr/share/pixmaps/$pkgname.svg
 
+  ln -sf /usr/share/icons/hicolor/scalable/apps/$pkgname.svg $pkgdir/usr/share/pixmaps/$pkgname.svg
+  ln -sf /usr/share/icons/hicolor/scalable/apps/$pkgname.svg $pkgdir/usr/share/$pkgname/$pkgname.svg
+  
   install -d $pkgdir/usr/share/doc/$pkgname
   install AUTHORS $pkgdir/usr/share/doc/$pkgname
   install COPYING $pkgdir/usr/share/doc/$pkgname
