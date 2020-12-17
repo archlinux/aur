@@ -1,7 +1,7 @@
-# Maintainer: DingYuan Zhang <justforlxz@gmail.com>
+# Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-polkit-agent-git
-pkgver=5.3.0.3.r1.g4d2360d
+pkgver=5.3.0.3.r2.g70b568c
 pkgrel=1
 pkgdesc='Deepin Polkit Agent'
 arch=('x86_64')
@@ -10,7 +10,6 @@ license=('GPL3')
 depends=('deepin-qt-dbus-factory-git' 'startdde-git' 'polkit-qt5' 'dtkwidget-git')
 makedepends=('git' 'qt5-tools' 'dtkwidget-git')
 conflicts=('deepin-polkit-agent')
-replaces=('deepin-polkit-agent')
 provides=('deepin-polkit-agent')
 groups=('deepin-git')
 source=("$pkgname::git://github.com/linuxdeepin/dde-polkit-agent")
