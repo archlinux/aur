@@ -23,9 +23,6 @@ prepare() {
 }
 
 package() {
-    mkdir -p ${pkgdir}/usr/local/Aventail/man
-    mkdir ${pkgdir}/usr/local/Aventail/nui
-
     install -Dm 644 general-product-agreement ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     install -Dm 644 version ${pkgdir}/usr/local/Aventail/version
 
