@@ -56,6 +56,8 @@ source=("git://git.blender.org/blender.git${_fragment}"
         embree.patch #add missing embree link.
         'cuda11.patch'
         'cpp14.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/171c4fb238a2a65291540ac5406187bc69f3a6bc'
+        'python39.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/56d0df51a36fdce7ec2d1fbb7b47b1d95b591b5f'
+        'osl111.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/7d85b6431fc331d9869f945bf7c9f3353b7b8c95'
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -67,7 +69,22 @@ sha256sums=('SKIP'
             '350063cd4f234565bd928a356b4e5f65cf37fc1377904a08bf60f7010c88740b'
             '42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4'
             '0316d92f180f2fa428a206074bd5adfd30968f9ae5d308efea05e42741dd53fd'
-            '44fad9ac2320d20d21b7aef46f70c05d55697ecde1446513f0a5842014a9d99c')
+            '44fad9ac2320d20d21b7aef46f70c05d55697ecde1446513f0a5842014a9d99c'
+            '7ae5ac4d636934cd46213e3f29ea67013d17316e122d8f312daec288e4f90cd9'
+            '99b96f4f6d02cd3e226d814175f7915a85a43966216d5a522265c68091a3b73a')
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        '0024f04fd0061313010a61b88634a0b86ed69695a7c072ff40f50ebab6a274ccf8ed7ed3381e501b218503f08c82b23f3f743208eb0feb81d4735c2a0c93989f'
+        '221413e5f4fc4194e091310a2adde9d864c092684e028fd979213b2be9180da912a240483aa45ee49c557a964167cd7e86e0224372c9de49958e8da5fcee14cd'
+        '3920bd3c479aa1c25427ea822c6d888ccfaf404f7b709eec78e42bb4ca79739723240178ed23524dd36a0a07c94eb69f1fc28d8875858b04b6d32cccf52af1f7'
+        '62567f79f86684e7fd99b8879b692e862c7ea85317cfacae4539d3035fe3ffc71fd39b0aa385be1efc8c31c8fe9ccac86e4b20275905150540349ba5fe3f8cbb'
+        '6f7958fbea799f5ecdf556112e3adc497686c00df8d460a094a818b007292dd6894ff6d280de8f88bc81cea3c52a7e003f44ea1048af52ccf11b5514e75b89ea'
+        'eb1107f2506b51004455a5e56cade10577c553d822dbb60e0068030a2480e9e51a6d434ef3817d0ffc9fe197e46de6c471aa6650691a5201985447d316fee039'
+        '4b11df6d494644e740cfda654fbebb2988c430d18c093739724f331738099100925fd0399b94cf0a1188c4ae804081c8380424b64f35355f7cbfde6c7ee91b44'
+        'ab990d0771b593ec9e8637e330ba2721fe9d6c82c72eb2296f1580129da0e4de525e58921869fabd36c3b92ec4fc1754b7dc4cb2da1674b5baa5d26332eebdc8')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -89,8 +106,7 @@ prepare() {
   fi
   ((DISABLE_USD)) || git -C "$srcdir/blender" apply -v "${srcdir}"/usd_python.patch
   ((DISABLE_EMBREE)) || git -C "$srcdir/blender" apply -v "${srcdir}"/embree.patch
-  git -C "$srcdir/blender" apply -v "$srcdir/cuda11.patch"
-  git -C "$srcdir/blender" apply -v "$srcdir/cpp14.patch"
+  git -C "$srcdir/blender" apply -v "$srcdir"/{cpp14,cuda11,python39,osl111}.patch
 }
 
 build() {
