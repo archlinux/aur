@@ -5,17 +5,17 @@ pkgname=flareget
 _rel=5.0
 _subrel=0
 pkgver=${_rel}.${_subrel}
-pkgrel=1
+pkgrel=2
 pkgdesc="A full featured, advanced, multi-threaded, multisegment download manager and accelerator."
 arch=('i686' 'x86_64')
-url="http://flareget.com"
+url="https://flareget.com"
 license=('custom')
 depends=('glibc>=2.13' 'qt5-base>=5.7.1' 'nss>=3.26')
 install=${pkgname}.install
 backup=('etc/opt/chrome/native-messaging-hosts/com.flareget.flareget.json'
         'etc/chromium/native-messaging-hosts/com.flareget.flareget.json')
-source_i686=("https://dl-flareget.sfo2.digitaloceanspaces.com/downloads/files/flareget/rpm/i386/${pkgname}-${_rel}-${_subrel}.i386.rpm")
-source_x86_64=("https://dl-flareget.sfo2.digitaloceanspaces.com/downloads/files/flareget/rpm/amd64/${pkgname}-${_rel}-${_subrel}.x86_64.rpm")
+source_i686=("https://dl.flareget.com/downloads/files/flareget/rpm/i386/${pkgname}-${_rel}-${_subrel}.i386.rpm")
+source_x86_64=("https://dl.flareget.com/downloads/files/flareget/rpm/amd64/${pkgname}-${_rel}-${_subrel}.x86_64.rpm")
 sha256sums_i686=("f2f1febed7a1a4f58db92bc076f0641b1eac53124b6b3c8ee730a6e8a6134686")
 sha256sums_x86_64=("977bdd8ecf2c44611a24beca578c5796473e8be700f752ea5e1b74bd412bb32f")
 
