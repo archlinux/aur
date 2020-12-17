@@ -13,7 +13,6 @@ pkgname=ttf-all-the-icons
 arch=(any)
 url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('MIT')
-makedepends=('woff2')
 provides=('ttf-atom-file-icons' 'ttf-font-awesome' 'ttf-material-design-icons' 'ttf-octicons' 'ttf-weather-icons')
 conflicts=('ttf-octicons')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
