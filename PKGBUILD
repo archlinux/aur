@@ -6,29 +6,23 @@
 
 pkgbase=pipewire-gstfree
 _pkgbase=pipewire
-pkgname=(pipewire-gstfree pipewire-gstfree-docs pipewire-gstfree-jack pipewire-gstfree-pulse pipewire-gstfree-alsa)
-pkgver=0.3.15
-pkgrel=4
+pkgname=(pipewire-gstfree pipewire-gstfree-docs pipewire-gstfree-jack pipewire-gstfree-pulse pipewire-gstfree-alsa pipewire-gstfree-ffmpeg)
+pkgver=0.3.18
+pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies"
 url="https://pipewire.org"
 license=(LGPL2.1)
 arch=(x86_64)
 makedepends=(git meson doxygen graphviz xmltoman valgrind jack2 libpulse
-             alsa-lib sbc rtkit vulkan-icd-loader
-             dbus libsndfile bluez-libs vulkan-headers ffmpeg)
-_commit=16872549e3a2433f49f27c1875dfd432377ca0be  # tags/0.3.15
+             alsa-lib sbc rtkit vulkan-icd-loader dbus
+             libsndfile bluez-libs vulkan-headers libopenaptx libldac ffmpeg)
+_commit=e7dffd64ebff76e2388d6e694de96d6693a6ed7d  # tags/0.3.18
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgbase
   git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd $_pkgbase
-  # Fix Chrome
-  git cherry-pick -n b8c7b36d3b8be16593f554964cf2f852c21b5c2c
 }
 
 build() {
@@ -57,12 +51,13 @@ _pick() {
 _ver=${pkgver:0:3}
 
 package_pipewire-gstfree() {
-  depends=(sbc rtkit vulkan-icd-loader bluez-libs ffmpeg alsa-card-profiles
+  depends=(sbc rtkit vulkan-icd-loader bluez-libs alsa-card-profiles
            libdbus-1.so libsndfile.so libudev.so libasound.so libsystemd.so
-           libglib-2.0.so libgobject-2.0.so)
-  optdepends=('pipewire-docs: Documentation'
-              'pipewire-jack: JACK support'
-              'pipewire-pulse: PulseAudio support')
+           libldacBT_enc.so libopenaptx.so ffmpeg)
+  optdepends=('pipewire-gstfree-docs: Documentation'
+              'pipewire-gstfree-ffmpeg: ffmpeg support'
+              'pipewire-gstfree-jack: JACK support'
+              'pipewire-gstfree-pulse: PulseAudio support')
   conflicts=(pipewire)
   provides=(pipewire libpipewire-$_ver.so)
   backup=(etc/pipewire/pipewire.conf)
@@ -77,13 +72,14 @@ package_pipewire-gstfree() {
 
   _pick docs usr/share/doc
 
-  _pick pulse usr/bin/pw-pulse usr/lib/pipewire-$_ver/pulse
-  _pick pulse usr/lib/pipewire-$_ver/libpipewire-module-protocol-pulse.so
-  _pick pulse usr/share/man/man1/pw-pulse.1
+  _pick ffmpeg usr/lib/spa-0.2/ffmpeg/libspa-ffmpeg.so
 
+  _pick jack etc/pipewire/media-session.d/with-jack
   _pick jack usr/bin/pw-jack usr/lib/pipewire-$_ver/jack
   _pick jack usr/lib/spa-0.2/jack
   _pick jack usr/share/man/man1/pw-jack.1
+
+  _pick pulse etc/pipewire/media-session.d/with-pulseaudio
 
   # Use alsa-card-profiles built with Pulseaudio
   rm -rv "$pkgdir"/usr/share/alsa-card-profile
@@ -96,26 +92,36 @@ package_pipewire-gstfree-docs() {
 
 package_pipewire-gstfree-jack() {
   pkgdesc+=" (JACK support)"
-  depends=(libpipewire-$_ver.so libjack.so)
+  depends=(pipewire-gstfree libpipewire-$_ver.so libjack.so)
   conflicts=(pipewire-jack)
   provides=(pipewire-jack)
   mv jack/* "$pkgdir"
 }
 
 package_pipewire-gstfree-pulse() {
-  pkgdesc+=" (PulseAudio support)"
-  depends=(libpipewire-$_ver.so libglib-2.0.so)
-  conflicts=(pipewire-pulse)
-  provides=(pipewire-pulse pulseaudio)
+  pkgdesc+=" (PulseAudio replacement)"
+  depends=(pipewire-gstfree libpulse)
+  conflicts=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
+  provides=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
+  install=pipewire-pulse.install
   mv pulse/* "$pkgdir"
 }
 
 package_pipewire-gstfree-alsa() {
   pkgdesc="ALSA Configuration for PipeWire"
-  depends=(libpipewire-$_ver.so)
+  depends=(pipewire-gstfree libpipewire-$_ver.so)
   conflicts=(pipewire-alsa)
-  provides=(pipewire-alsa)
+  provides=(pipewire-alsa pulseaudio-alsa)
 
   mkdir -p "$pkgdir/etc/alsa/conf.d"
   ln -st "$pkgdir/etc/alsa/conf.d" /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf
+}
+
+package_pipewire-gstfree-ffmpeg() {
+  pkgdesc="Server and user space API to deal with multimedia pipelines. (FFmpeg SPA plugin)"
+  depends=(pipewire-gstfree libpipewire-$_ver.so ffmpeg)
+  conflicts=(pipewire-ffmpeg)
+  provides=(pipewire-ffmpeg)
+
+  mv ffmpeg/* "$pkgdir"
 }
