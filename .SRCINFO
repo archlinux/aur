@@ -1,14 +1,14 @@
 pkgbase = cointop-bin
 	pkgdesc = Cointop is a fast and lightweight interactive terminal based UI application for tracking and monitoring cryptocurrency coin stats in real-time
 	pkgver = 1.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/miguelmota/cointop
 	arch = x86_64
 	license = Apache License 2.0
 	provides = cointop
 	conflicts = cointop
 	conflicts = cointop-git
-	source = cointop-bin-1.5.5.deb::https://github.com/miguelmota/cointop/releases/download/v1.5.5/cointop_1.5.5_linux_amd64.tar.gz
+	source = cointop-bin-1.5.5.tar.gz::https://github.com/miguelmota/cointop/releases/download/v1.5.5/cointop_1.5.5_linux_amd64.tar.gz
 	sha256sums = e1be57964d21faba590a2ea8181184c5ab002543c2d5edae1a24d4f75cc509d5
 
 pkgname = cointop-bin
