@@ -1,6 +1,6 @@
 pkgbase = lutris-release
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://github.com/lutris/lutris
 	arch = any
@@ -27,8 +27,8 @@ pkgbase = lutris-release
 	provides = lutris
 	conflicts = lutris
 	conflicts = lutris-git
-	source = https://github.com/lutris/lutris/archive/v0.5.5.tar.gz
-	sha512sums = d63b9c79f55238d01b6a8c8fe62a0c70d7334c023a51e92d1c99a91cfc9336d3d071d13394c49d0a26bc04549ab7b7122aa8f133da00ed5aa8ae3a7bcc63848f
+	source = https://github.com/lutris/lutris/archive/v0.5.6.tar.gz
+	sha512sums = eae67a36372128fa0d512ad5569d79fd6eed4a62d4b05450f99b42b1f00c3715b9a56a4eb21fe83be75401cc9777fc6d1df76629f3916b2fd378a376cb8ca973
 
 pkgname = lutris-release
 
