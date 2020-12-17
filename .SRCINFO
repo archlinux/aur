@@ -1,11 +1,12 @@
 pkgbase = msi-keyboard-light
 	pkgdesc = Tool for msi keyboard backlight administration
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/szlepermarcin/msi-keyboard-light
 	arch = x86_64
 	license = MIT
 	makedepends = stack
+	depends = hidapi
 	depends = libusb
 	source = msi-keyboard-light-0.1.0.tar.gz::https://github.com/szlepermarcin/msi-keyboard-light/archive/v0.1.0.tar.gz
 	sha256sums = 1020bdba89f4114deeed52333da698a76634802e606107a2d7159d9e869f913e
