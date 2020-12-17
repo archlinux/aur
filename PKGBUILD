@@ -41,11 +41,12 @@ build() {
     mv libgraceful.so libgraceful.so.release
     make debug -j32
     mv libgraceful.so libgraceful.so.debug
+    cp -r "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/${pkgname}-dbg-${pkgver}"
 }
 
 package_graceful-platform-theme() {
-    msg "graceful-platform-theme package"
-    cd "${srcdir}/graceful-platform-theme-${pkgver}"
+    msg "${pkgname} package"
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
     install -d -Dm755                               "${pkgdir}/usr/share/icons/"
     install -d -Dm755                               "${pkgdir}/usr/share/themes/"
@@ -58,8 +59,9 @@ package_graceful-platform-theme() {
 }
 
 package_graceful-platform-theme-dbg() {
-    msg "graceful-platform-theme-dbg package"
-    cd "${srcdir}/graceful-platform-theme-${pkgver}"
+    options=(debug !strip)
+    msg "${pkgname} package"
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
     install -d -Dm755                               "${pkgdir}/usr/share/icons/"
     install -d -Dm755                               "${pkgdir}/usr/share/themes/"

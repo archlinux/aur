@@ -13,4 +13,6 @@ pkgbase = graceful-platform-theme
 pkgname = graceful-platform-theme
 
 pkgname = graceful-platform-theme-dbg
+	options = debug
+	options = !strip
 
