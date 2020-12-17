@@ -4,7 +4,7 @@ _server=cpx51
 
 pkgbase=graceful-platform-theme
 pkgname=('graceful-platform-theme')
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/graceful-linux/graceful-platform-theme"
@@ -22,7 +22,7 @@ source=(
 )
 
 sha256sums=(
-    "c50684e0e153420a944342ebbf9d19dc1e089063351de76490a6456e39ddfe21"
+    "49fabd4cbe0eb21c58b02f7e9b157075a3303a10cad993bde7ef2654982d518d"
 )
     
 prepare() {
@@ -35,7 +35,7 @@ build() {
     qmake
     make -j32
 }
-    
+
 package_graceful-platform-theme() {
     msg "graceful-platform-theme package"
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -49,3 +49,4 @@ package_graceful-platform-theme() {
     install -Dm644 ../../LICENSE        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm755 lib/libgraceful.so   "${pkgdir}/usr/lib/qt/plugins/styles/libgraceful.so"
 }
+
