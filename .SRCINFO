@@ -1,7 +1,7 @@
 pkgbase = blender-functions-git
 	pkgdesc = Development version of Blenders functions branch
 	pkgver = 2.83.r97300.g6692ca602ca
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blender.org/
 	arch = i686
 	arch = x86_64
@@ -46,6 +46,8 @@ pkgbase = blender-functions-git
 	source = embree.patch
 	source = cuda11.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/a9644c812fc17b38503828d6edf7d259b6fe0e74
 	source = cpp14.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/171c4fb238a2a65291540ac5406187bc69f3a6bc
+	source = python39.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/56d0df51a36fdce7ec2d1fbb7b47b1d95b591b5f
+	source = osl111.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/7d85b6431fc331d9869f945bf7c9f3353b7b8c95
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -57,6 +59,8 @@ pkgbase = blender-functions-git
 	sha256sums = 42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4
 	sha256sums = 2e5cf80c760aaf7326505b81f408c90fb6c4ff22b8cbb3638397809011a13562
 	sha256sums = 44fad9ac2320d20d21b7aef46f70c05d55697ecde1446513f0a5842014a9d99c
+	sha256sums = 7ae5ac4d636934cd46213e3f29ea67013d17316e122d8f312daec288e4f90cd9
+	sha256sums = 99b96f4f6d02cd3e226d814175f7915a85a43966216d5a522265c68091a3b73a
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -68,6 +72,8 @@ pkgbase = blender-functions-git
 	b2sums = 62567f79f86684e7fd99b8879b692e862c7ea85317cfacae4539d3035fe3ffc71fd39b0aa385be1efc8c31c8fe9ccac86e4b20275905150540349ba5fe3f8cbb
 	b2sums = 81f85f3024ce9891faf3d83f164c7f3164b5eb13bdcbf055298e2fca2ee9380ead6241563cb47ea9b434d1af18a70c2f37ab42606776c8be8219650b12e28f6b
 	b2sums = eb1107f2506b51004455a5e56cade10577c553d822dbb60e0068030a2480e9e51a6d434ef3817d0ffc9fe197e46de6c471aa6650691a5201985447d316fee039
+	b2sums = 4b11df6d494644e740cfda654fbebb2988c430d18c093739724f331738099100925fd0399b94cf0a1188c4ae804081c8380424b64f35355f7cbfde6c7ee91b44
+	b2sums = ab990d0771b593ec9e8637e330ba2721fe9d6c82c72eb2296f1580129da0e4de525e58921869fabd36c3b92ec4fc1754b7dc4cb2da1674b5baa5d26332eebdc8
 
 pkgname = blender-functions-git
 
