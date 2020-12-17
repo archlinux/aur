@@ -1,7 +1,7 @@
 pkgbase = libecpint-git
 	pkgdesc = A C++ library for the efficient evaluation of integrals over effective core potentials.
 	pkgver = v1.0.4.r0.g5731482
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/robashaw/libecpint
 	arch = x86_64
 	license = MIT
