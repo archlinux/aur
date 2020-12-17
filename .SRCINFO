@@ -1,12 +1,12 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = libxalan-c111
+	pkgdesc = XSLT processor library for C++
+	pkgver = 1.11
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
+	url = https://xalan.apache.org/xalan-c/
 	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	license = Apache-2.0
+	source = http://si.mirror.kumi.systems/ubuntu/pool/universe/x/xalan/libxalan-c111_1.11-6ubuntu3_amd64.deb
+	sha256sums = b354e41f938c2b3181f99671c788493a66d0059efb996666c246281da21c4371
 
-pkgname = yarxi
+pkgname = libxalan-c111
 
