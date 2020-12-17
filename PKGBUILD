@@ -1,6 +1,6 @@
 # Maintainer=alive4ever
 pkgname=libressl-netcat
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Low level UDP/TCP connection tool with support for TLS protocol"
@@ -11,7 +11,7 @@ makedepends=('libbsd')
 provides=('netcat')
 conflicts=('openbsd-netcat' 'gnu-netcat')
 source=("https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz")
-sha256sums=('a9d1e1d030b8bcc67bf6428b8c0fff14a5602e2236257b9e3d77acaf12e2a7a1')
+sha256sums=('412dc2baa739228c7779e93eb07cd645d5c964d2f2d837a9fd56db7498463d73')
 
 build() {
 cd $srcdir/libressl-${pkgver}/
