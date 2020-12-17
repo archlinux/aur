@@ -32,7 +32,7 @@ prepare() {
 _BUILDDIR=build
 
 build() {
-	mkdir "$_BUILDDIR"
+	mkdir -p "$_BUILDDIR"
 	cd "$_BUILDDIR"
 	cmake "$srcdir/trenchbroom" -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release
 	QT_QPA_PLATFORM=offscreen cmake --build . --target TrenchBroom
