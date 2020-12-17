@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=onefetch-bin
-pkgver=2.7.3
-pkgrel=2
+pkgver=2.8.0
+pkgrel=1
 pkgdesc="Git repository summary on your terminal"
 arch=('x86_64')
 url="https://github.com/o2sh/onefetch"
@@ -15,10 +15,10 @@ source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgna
                "$pkgname-$pkgver-LICENSE.md::$url/raw/v$pkgver/LICENSE.md"
                "$pkgname-$pkgver-README.md::$url/raw/v$pkgver/README.md"
                "$pkgname-$pkgver-man.1::$url/raw/master/${pkgname%-bin}.1")
-sha512sums_x86_64=('770ab738b53d018ecb29120bedee984e70a44be1beddc23614e2a43beabf41472e00a7e46f6bdf8bd9a7eb7dc6da293da2f2787c8167c09c1c99ab6a37758f2e'
+sha512sums_x86_64=('7aa7760235c666f079cb416682a37987bbc6f41242d37deba3fccc381970ddd261dc61f21034ce3602f733adf14a1e46c57c57d8b078734b8a322790254e204a'
                    '57e2b42cf721a6a4e6643ad5084cf5149e2639a9e91ac643e0f55adf77f0af36204ca74857fb0debbb22b34123c86e2ec8020aa41c19d8d7b7463a9f85a0e87d'
-                   'a03f15eef94e309db544d6105c8954912984b34dbd9c19138407a4b93494aa9fd574d7406810c0b102b993a77e842075e857c8e2cb9591157290a1e35da68d5e'
-                   '93157123ec5dedcc0c036615b2cd3dd706adcdbc9e35b5b8f90c2e9abe78358a3e8bea1e7b19cb418ceadd6f30165a06438219746c1a0852bc6488bdcd3c4660')
+                   'a8115e20882379be7f2c376a8321506b0b848b7ca03f19bc58d3743e8c10ead953cf762a91906020195651a67e98d2a29730a060d3d8630b2dae5c1032c3a2bb'
+                   'b880b140116c13818d09d1605b3f95300ffb401a57c5d14203602585bcf5f1cad254c10cf2382e0ae9c66947c9cc57863f0025138cc181e83dd06959ae936ded')
 
 package() {
   install -Dm 755 "${pkgname%-bin}" -t "${pkgdir}/usr/bin"
