@@ -13,4 +13,3 @@ pkgbase = chef-workstation
 	sha256sums = e0b06ce6d471dfe7c48351c3b7b09b4866021efa2834036274d085b90c6fc7dd
 
 pkgname = chef-workstation
-
