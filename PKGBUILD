@@ -2,7 +2,7 @@
 
 pkgname=gomics-git
 _pkgname=gomics
-pkgver=r8.284c2cb
+pkgver=r16.1501315
 pkgrel=1
 pkgdesc="A lightweight and free comic viewer"
 url="https://github.com/salviati/gomics"
@@ -28,13 +28,12 @@ prepare() {
 	mkdir -p "${srcdir}/src/github.com/salviati"
 	mv "${srcdir}/${_pkgname}" "${srcdir}/src/github.com/salviati/"
 	cd "${srcdir}/src/github.com/salviati/gomics"
-	go generate
 }
 
 build() {
 	export GOPATH="${srcdir}"
 	cd "${srcdir}/src/github.com/salviati/gomics"
-	go get
+	sh make.sh
 }
 
 package() {
