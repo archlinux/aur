@@ -1,8 +1,8 @@
 # Maintainer: jaltek <post@ezod.de>
 # Owner: Daniel Mason (idanoo) <daniel@m2.nz>
 pkgbase=element-desktop-git
-_vers=v1.7.15
-pkgver=v1.7.15.r0.g1b481c2a1
+_vers=v1.7.16-rc.1
+pkgver=1.7.16.rc.1.r0.gd5325e203
 pkgrel=1
 pkgname=(element-web-git element-desktop-git)
 pkgdesc="A glossy Matrix collaboration client for the desktop."
@@ -30,7 +30,8 @@ pkgver() {
   cd "$srcdir/element-web"
 
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    # cutting off 'v' prefix that presents in the git tag
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
