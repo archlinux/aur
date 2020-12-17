@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=lsd2dsl
+Comment=Decompiler for ABBYY Lingvo's and Duden proprietary dictionaries
+Exec=lsd2dsl-qtgui
+Terminal=false
+Type=Application
+Categories=Dictionary;FileTools;Qt;

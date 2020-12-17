@@ -1,0 +1,24 @@
+pkgbase = lsd2dsl
+	pkgdesc = Decompiler for ABBYY Lingvo's and Duden proprietary dictionaries
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://rcebits.com/lsd2dsl/index.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = gtest
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = minizip
+	depends = libvorbis
+	depends = libsndfile
+	depends = boost-libs
+	depends = qt5-webkit
+	source = https://github.com/nongeneric/lsd2dsl/archive/v0.5.2.tar.gz
+	source = lsd2dsl.desktop
+	sha512sums = 1ef30aeb2e1be85d60238bd7cdd378f32f2dc435af7c5d85f2a7c5a0595ad0f3a12151ec651de84cb09da6fd7c137306b6c9f1d77254f54bafb1a877db24e44d
+	sha512sums = f607732b0ac17f35b2926fa3da09674f70976e3c21ffbda888d922f9ffe14c29fab9aa29eaeaa0de15f8faeffc10962de97df6892247e96b200f59d7da9618a6
+
+pkgname = lsd2dsl
+
