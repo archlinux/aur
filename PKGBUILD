@@ -4,8 +4,8 @@
 
 _pkgname='xdis'
 pkgname="python-${_pkgname}"
-pkgver=5.0.5
-pkgrel=2
+pkgver=5.0.6
+pkgrel=1
 pkgdesc='Python cross-version bytecode library and disassembler'
 arch=('any')
 url='https://github.com/rocky/python-xdis'
@@ -17,7 +17,7 @@ depends=('flake8'
         'python-six')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('14a98414e0b02ba5dba3b64d5e40c4fe9398b492a01bc2c2803f7f58156a3715')
+sha256sums=('4f005d3c08c0fc45fb4bf85fca2bed2f7e5340390bd3b900be657950cc6cd78b')
 
 build() {
   cd "${_pkgname}-${pkgver}"
