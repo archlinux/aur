@@ -1,4 +1,4 @@
-# Maintainer: codeZ <navintiwari08@gmail.com>
+# Maintainer: codez <navintiwari08@gmail.com>
 
 pkgname=python-neat-python-git
 pkgver=0.92
