@@ -1,7 +1,7 @@
 pkgbase = conda-zsh-completion
 	pkgdesc = zsh completion for conda
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/esc/conda-zsh-completion
 	arch = any
 	license = custom:WTFPL
