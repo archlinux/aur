@@ -1,0 +1,21 @@
+pkgbase = com.eastmoney.emdesk.deepin
+	pkgdesc = EastMoney Client on Deepin Wine
+	pkgver = 9.4.0.9142
+	pkgrel = 3
+	url = https://www.eastmoney.com/
+	install = eastmoney.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine5-stable>=5.0.0.16
+	depends = deepin-wine-helper
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.eastmoney.emdesk.deepin/com.eastmoney.emdesk.deepin_9.4.0.9142deepin3_i386.deb
+	sha512sums = 81c812d0321e7a5e8026f4cb204c726132b1ed4cf1cbe5d2b32319bc81dfc80cd9b0c2addab56308f2fde2393d4d30664c49192bc5229721a0a72a6c8e5875c9
+
+pkgname = com.eastmoney.emdesk.deepin
