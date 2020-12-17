@@ -2,7 +2,7 @@ pkgbase = kyocera-cups
 	pkgdesc = PPD drivers for Kyocera CS ECOSYS FS KM TASKalfa KPDL printers copiers wide format
 	pkgver = 8.1601
 	pkgrel = 2
-	url = https://usa.kyoceradocumentsolutions.com/en/products-services/hardware/printers/ecosys-fs-4200dn.html
+	url = https://www.kyoceradocumentsolutions.us/en/support/downloads.html
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -10,10 +10,14 @@ pkgbase = kyocera-cups
 	conflicts = kyocera-ecosys-m2035dn
 	conflicts = kyocera-ecosys-p6035cdn
 	options = !strip
-	source = Kyocera_Linux_PPD_Ver_8.1601.tar.gz::https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/Kyocera_Linux_PPD_Ver_8_1601_tar_gz.download.gz
+	source = https://la.kyoceradocumentsolutions.com/content/dam/kdc/kdag/downloads/technical/executables/drivers/kyoceradocumentsolutions/lad/en/Kyocera_Linux_PPD_Ver_8.1601.tar.gz
+	source = repack.sh
 	md5sums = 23228956c4f4df8a57dca10c9d783b59
+	md5sums = d3e7d0fe76377b0b058a9fb497cdfafa
 	sha1sums = ad7adba5e29464e9c3c1f052c6899d54f5afe0f4
+	sha1sums = cdb6d5622f9ca977ac178fb19553f5730096597b
 	sha256sums = 1375b67d4f79be0a02418cf8a03ea475e20ef92bf221fdb585f15a55c2d964e5
+	sha256sums = c0ca7dba26542a9b75b51300da289e753cfaa0f43b09c9230041ab5c728b49a4
 
 pkgname = kyocera-cups
 
