@@ -1,0 +1,18 @@
+pkgbase = json-diff-git
+	pkgdesc = Command line utility to compare two jsons
+	pkgver = 0.1.2.29.ga7ed330
+	pkgrel = 1
+	url = https://github.com/ksceriath/json-diff
+	arch = i686
+	arch = x86_64
+	license = UNLICENSE
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = json-diff
+	conflicts = json-diff
+	source = json-diff::git+https://github.com/ksceriath/json-diff.git
+	sha256sums = SKIP
+
+pkgname = json-diff-git
+
