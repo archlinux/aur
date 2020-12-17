@@ -1,6 +1,6 @@
 # Maintainer: ANDRoid7890 <andrey.android7890@gmail.com>
 
-# https://gitlab.manjaro.org/packages/core/linux59
+# https://gitlab.manjaro.org/packages/core/linux510
 #
 # Maintainer: Philip Müller
 # Maintainer: Bernhard Landauer
@@ -78,16 +78,16 @@ _makenconfig=
 
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.9.13
-_major=5.9
+pkgver=5.10.1
+_major=5.10
 _branch=5.x
-xanmod=2
-pkgrel=2
+xanmod=1
+pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="a75492e80ffc04de605bf92639c4a2fbd5f52b86" # 5.9.13-1
+__commit="1b32d402b1b68dc231e6c5b676a6146d69e1ca05" # 5.10.1-4
 
 license=(GPL2)
 makedepends=(
@@ -99,13 +99,13 @@ _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
-        "https://gitlab.manjaro.org/packages/core/linux59/-/archive/${__commit}/linux59-${__commit}.tar.gz")
+        "https://gitlab.manjaro.org/packages/core/linux510/-/archive/${__commit}/linux59-${__commit}.tar.gz")
 
-sha256sums=('3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06'  # kernel tar.xz
+sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            '85f09e233425bda814f7727a946474f40adce258073174a6417acc917b4f5bf9'  # xanmod
+            '60aff66d41a0374c55ccf6f6e43509aa8834aaebaea2a03081e9bb2636d7b802'  # xanmod
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'  # choose-gcc-optimization.sh
-            'c8e292d760772c5ef6ca7fa46c78cb4b3a218a466f2c3c9095126f26b0fa0b6b') # manjaro
+            '1f27b5f4c671cce704845ecdf5a6bba6208d397fa3d1e2e21ce750d801bd9ec7') # manjaro
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -117,6 +117,13 @@ for _patch in $_commits; do
     source+=("${_patch}.patch::https://git.archlinux.org/linux.git/patch/?id=${_patch}")
 done
 
+# If use_cachy=y then download cachy patch
+if [ "$use_cachy" = "y" ]; then
+   echo "Cachy branch is not ready yet..." && exit 1
+   source+=("https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-cachy/patch-${pkgver}-xanmod${xanmod}-cachy.xz")
+   sha256sums+=('c35685c5d706a683fc0b02cf11fd40db52becae9205bf0d71f6a4a901d836d69')
+fi
+
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
 export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
@@ -125,7 +132,11 @@ prepare() {
   cd linux-${_major}  
   
   # Apply Xanmod patch
-  patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
+  if [ "$use_cachy" = "y" ]; then
+    patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}-cachy
+  else
+    patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
+  fi
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -143,14 +154,14 @@ prepare() {
   done
   
   # Manjaro patches
-  rm ../linux59-$__commit/0103-futex.patch  # remove conflicting one
+  rm ../linux510-$__commit/0103-futex.patch  # remove conflicting one
   local _patch
-  for _patch in ../linux59-$__commit/*; do
+  for _patch in ../linux510-$__commit/*; do
       [[ $_patch = *.patch ]] || continue
       msg2 "Applying patch: $_patch..."
-      patch -Np1 < "../linux59-$__commit/$_patch"
+      patch -Np1 < "../linux510-$__commit/$_patch"
   done 
-  git apply -p1 < "../linux59-$__commit/0513-bootsplash.gitpatch"
+  git apply -p1 < "../linux510-$__commit/0513-bootsplash.gitpatch"
   scripts/config --enable CONFIG_BOOTSPLASH
   
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
@@ -173,9 +184,7 @@ prepare() {
   fi
 
   if [ "$use_cachy" = "y" ]; then
-    msg2 "Enabling Cachy CPU scheduler by default (also NUMA and grouping for tasks, which are not compatible with Cachy)..."
-    scripts/config --disable CONFIG_NUMA
-    scripts/config --disable FAIR_GROUP_SCHED
+    msg2 "Enabling Cachy CPU scheduler by default..."
     scripts/config --enable CONFIG_CACHY_SCHED
   fi
 
