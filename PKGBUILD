@@ -10,6 +10,6 @@ sha256sums_x86_64=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852
 source_x86_64=("http://jrcloud.gitee.io/jrcloud-checkra1n/install.sh")
 package()
 {
-     sudo axel /usr/bin/checkra1n http://jrcloud.gitee.io/jrcloud-checkra1n/checkra1n
+     sudo axel -o /usr/bin/checkra1n http://jrcloud.gitee.io/jrcloud-checkra1n/checkra1n
      sudo chmod +x /usr/bin/checkra1n
 }
