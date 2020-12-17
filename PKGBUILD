@@ -2,7 +2,7 @@
 # Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 
 pkgname=freecad-git
-pkgver=0.19_pre.r4408.g20649ec529
+pkgver=0.19_pre.r4724.g6c6f5e7fbf
 pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -59,12 +59,10 @@ prepare() {
   # patch out a build error
   #curl -L "https://github.com/FreeCAD/FreeCAD/pull/2842/commits/095984fce44931a4c8e2ace269d45a62640fbfb4.patch" | patch -p1
 
-  # OpenCascade requires that /bin comes before /usr/bin in $PATH (no longer needed?)
-  #export PATH="/usr/bin:$PATH"
-  
   mkdir -p build
   cd build
   cmake -Wno-dev .. \
+    -D BUILD_ENABLE_CXX_STD=C++14 \
     -D BUILD_QT5=ON \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_C_FLAGS="${CFLAGS} -fPIC -w" \
@@ -82,6 +80,11 @@ prepare() {
 build() {
   cd FreeCAD
   ninja -C build
+}
+
+check() {
+  cd FreeCAD
+  ./build/bin/FreeCAD --console --run-test 0
 }
 
 package() {
@@ -108,7 +111,6 @@ package() {
   done
   install -Dm644 freecad.svg \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/freecad.svg"
-
 
   # Package symlinks in /usr/bin
   install -d "${pkgdir}/usr/bin"

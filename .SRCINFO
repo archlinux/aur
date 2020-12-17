@@ -1,6 +1,6 @@
 pkgbase = freecad-git
 	pkgdesc = A general purpose 3D CAD modeler - git checkout
-	pkgver = 0.19_pre.r4408.g20649ec529
+	pkgver = 0.19_pre.r4724.g6c6f5e7fbf
 	pkgrel = 1
 	epoch = 0
 	url = https://www.freecadweb.org/
