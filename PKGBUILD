@@ -2,28 +2,26 @@
 
 pkgbase=libjpeg-xl-git
 pkgname=('libjpeg-xl-git' 'libjpeg-xl-doc-git')
-pkgver=0.1.r3.g739e6cd
+pkgver=0.1.1.r1.gd11752f
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
 license=('Apache')
-makedepends=('git' 'cmake' 'clang' 'gdk-pixbuf2' 'giflib' 'gimp' 'gperftools'
+makedepends=('git' 'cmake' 'clang' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
              'libjpeg-turbo' 'libpng' 'openexr' 'zlib' 'libgl' 'freeglut'
-             'gtest' 'python' 'doxygen' 'graphviz')
+             'gtest' 'gmock' 'python' 'doxygen' 'graphviz')
 source=('git+https://gitlab.com/wg1/jpeg-xl.git'
         'git+https://github.com/google/brotli.git'
         'git+https://github.com/lvandeve/lodepng.git'
         'git+https://github.com/mm2/Little-CMS.git'
         'git+https://github.com/google/googletest'
-        'git+https://github.com/google/brunsli.git'
         'git+https://github.com/webmproject/sjpeg.git'
         'git+https://skia.googlesource.com/skcms.git'
         'git+https://github.com/veluca93/IQA-optimization.git'
         'git+https://github.com/Netflix/vmaf.git'
         'git+https://github.com/thorfdbg/difftest_ng.git'
-        'git+https://github.com/google/highway.git'
-        '010-libjpeg-xl-fix-highway-build.patch')
+        'git+https://github.com/google/highway.git')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -34,9 +32,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
-            'f783be03afe7094e21281097da0c727a83317dad118f15d36691f7f14163efa5')
+            'SKIP')
 
 prepare() {
     git -C jpeg-xl submodule init
@@ -44,7 +40,6 @@ prepare() {
     git -C jpeg-xl config --local submodule.third_party/lodepng.url "${srcdir}/lodepng"
     git -C jpeg-xl config --local submodule.third_party/lcms.url "${srcdir}/Little-CMS"
     git -C jpeg-xl config --local submodule.third_party/googletest.url "${srcdir}/googletest"
-    git -C jpeg-xl config --local submodule.third_party/brunsli.url "${srcdir}/brunsli"
     git -C jpeg-xl config --local submodule.third_party/sjpeg.url "${srcdir}/sjpeg"
     git -C jpeg-xl config --local submodule.third_party/skcms.url "${srcdir}/skcms"
     git -C jpeg-xl config --local submodule.third_party/mingw-std-threads.url "${srcdir}/mingw-std-threads"
@@ -53,7 +48,6 @@ prepare() {
     git -C jpeg-xl config --local submodule.third_party/difftest_ng.url "${srcdir}/difftest_ng"
     git -C jpeg-xl config --local submodule.third_party/highway.url "${srcdir}/highway"
     git -C jpeg-xl submodule update
-    patch -d jpeg-xl -Np1 -i "${srcdir}/010-libjpeg-xl-fix-highway-build.patch"
 }
 
 pkgver() {
@@ -70,9 +64,10 @@ build() {
         -DJPEGXL_ENABLE_FUZZERS:BOOL='false' \
         -DJPEGXL_ENABLE_PLUGINS:BOOL='true' \
         -DJPEGXL_ENABLE_VIEWERS:BOOL='false' \
+        -DJPEGXL_FORCE_SYSTEM_BROTLI:BOOL='true' \
+        -DJPEGXL_FORCE_SYSTEM_GTEST:BOOL='true' \
+        -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='false' \
         -DJPEGXL_WARNINGS_AS_ERRORS:BOOL='false' \
-        -DGTEST_LIBRARY:FILEPATH='/usr/lib/libgtest.so' \
-        -DGTEST_MAIN_LIBRARY:FILEPATH='/usr/lib/libgtest_main.so' \
         -Wno-dev
     make -C build all doc
 }
@@ -82,11 +77,10 @@ check() {
 }
 
 package_libjpeg-xl-git() {
-    depends=('gcc-libs')
+    depends=('brotli')
     optdepends=('gdk-pixbuf2: for gdk-pixbuf plugin'
                 'giflib: for CLI tools'
                 'gimp: for gimp plugin'
-                'gperftools: for CLI tools and gdk-pixbuf/gimp plugins'
                 'libjpeg-turbo: for CLI tools'
                 'libpng: for CLI tools'
                 'openexr: for CLI tools')
