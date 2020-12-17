@@ -1,6 +1,6 @@
 pkgname=python-qtermwidget
-pkgver=0.15.0
-pkgrel=2
+pkgver=0.16.1
+pkgrel=1
 pkgdesc="Python bindings for QTermWidget"
 arch=("x86_64")
 url="https://lxqt.org"
@@ -10,7 +10,7 @@ depends=("python" "qtermwidget" "python-sip" "sip")
 conflicts=("python-qtermwidget-git")
 makedepends=("lxqt-build-tools" "git")
 source=("https://github.com/lxqt/qtermwidget/releases/download/$pkgver/qtermwidget-$pkgver.tar.xz")
-sha256sums=('6ecaf7c91be282c5e34937a853fe649729966c38d7e8f4cf54c0df94d85ac3ee')
+sha256sums=('9266fe2b9d8b8c7297960660c13f816093706f18453c883671445ed49123b938')
 
 build() {
   mkdir -p build
