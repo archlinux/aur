@@ -1,0 +1,18 @@
+pkgbase = jknobman-git
+	pkgdesc = VSTGUI - AnimationKnob Design tool
+	pkgver = r12.5f56301
+	pkgrel = 1
+	url = https://www.g200kg.com/jp/software/knobman.html
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = maven
+	depends = java-runtime
+	provides = jknobman
+	conflicts = jknobman
+	conflicts = jknobman-bin
+	source = jknobman::git+https://github.com/g200kg/KnobMan
+	sha256sums = SKIP
+
+pkgname = jknobman-git
+
