@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Freezer
+GenericName=Stream Music
+Comment=Client for Deezer
+Categories=audio;
+Path=/opt/freezer/
+Exec=Freezer-1.1.10.AppImage
