@@ -41,7 +41,7 @@ package_graceful-platform-theme() {
 
     cd "${srcdir}/${pkgname}-${pkgver}/lib"
     rm -rf libgraceful.so
-    make release -j32
+    make -j32 release
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     install -d -Dm755                   "${pkgdir}/usr/share/icons/"
