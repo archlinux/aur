@@ -1,14 +1,13 @@
 pkgbase = onhold
 	pkgdesc = A command-line utility that allows you to play music while a long job completes
-	pkgver = 0.5.0
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/alexdelorenzo/onhold
 	arch = any
 	license = AGPL3
-	makedepends = git
 	makedepends = python-pip
 	depends = python>=3.6.0
-	source = onhold-0.5.0.tar.gz::https://github.com/alexdelorenzo/onhold/archive/v0.5.0.tar.gz
+	source = onhold-0.6.4.tar.gz::https://github.com/alexdelorenzo/onhold/archive/v0.6.4.tar.gz
 	md5sums = SKIP
 
 pkgname = onhold

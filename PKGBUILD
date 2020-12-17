@@ -1,6 +1,6 @@
 # Maintainer: Jona Miller <miller.jona at yandex dot com>
 pkgname=onhold
-pkgver=0.5.0
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="A command-line utility that allows you to play music while a long job completes"
 arch=('any')
@@ -27,4 +27,3 @@ package() {
   	install -Dm644 ./LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	python3 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
-
