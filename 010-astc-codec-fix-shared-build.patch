@@ -1,0 +1,39 @@
+--- a/src/decoder/CMakeLists.txt
++++ b/src/decoder/CMakeLists.txt
+@@ -34,7 +34,7 @@ target_include_directories(astc-codec PRIVATE ../..)
+ 
+ add_executable(astc_inspector_cli tools/astc_inspector_cli.cc)
+ target_include_directories(astc_inspector_cli PRIVATE ../..)
+-target_link_libraries(astc_inspector_cli PRIVATE astc_utils)
++target_link_libraries(astc_inspector_cli PRIVATE astc_utils footprint)
+ 
+ #
+ # Testing
+@@ -53,10 +53,10 @@ if(OPTION_ASTC_TESTS)
+ 
+   add_executable(partition_test test/partition_test.cc)
+   add_test(NAME partition_test COMMAND partition_test WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
+-  target_link_libraries(partition_test PRIVATE astc_utils codec_test_dependencies gmock_main)
++  target_link_libraries(partition_test PRIVATE astc_utils footprint codec_test_dependencies gmock_main)
+ 
+   add_executable(integer_sequence_codec_test test/integer_sequence_codec_test.cc)
+-  target_link_libraries(integer_sequence_codec_test PRIVATE astc_utils codec_test_dependencies gmock_main)
++  target_link_libraries(integer_sequence_codec_test PRIVATE astc_utils footprint codec_test_dependencies gmock_main)
+ 
+   add_executable(intermediate_astc_block_test test/intermediate_astc_block_test.cc)
+   add_test(NAME intermediate_astc_block_test COMMAND intermediate_astc_block_test WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
+@@ -76,12 +76,12 @@ if(OPTION_ASTC_TESTS)
+ 
+   add_executable(logical_astc_block_test test/logical_astc_block_test.cc)
+   add_test(NAME logical_astc_block_test COMMAND logical_astc_block_test WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
+-  target_link_libraries(logical_astc_block_test PRIVATE astc_utils codec_test_dependencies gmock_main)
++  target_link_libraries(logical_astc_block_test PRIVATE astc_utils codec_test_dependencies gmock_main footprint)
+ 
+   add_executable(codec_test test/codec_test.cc)
+   add_test(NAME codec_test COMMAND codec_test WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
+ 
+-  target_link_libraries(codec_test PRIVATE astc-codec codec_test_dependencies gmock_main)
++  target_link_libraries(codec_test PRIVATE astc-codec astc_utils codec_test_dependencies gmock_main)
+ 
+   add_executable(footprint_test test/footprint_test.cc)
+   add_test(NAME footprint_test COMMAND footprint_test WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
