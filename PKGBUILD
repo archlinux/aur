@@ -1,10 +1,10 @@
 # Maintainer: LinuxVieLoisir <contact@gnumeria.fr>
 
 pkgname=firefox-nightly-hg-i18n
-_version=85.0a1
+_version=86.0a1
 #_version="${pkgver%.*}"
-pkgver=85.0a1.20201003
-pkgrel=2
+pkgver=86.0a1.20201218
+pkgrel=1
 pkgdesc='Universal i18n for firefox-nightly - xpi version'
 url="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('MPL')
 depends=('firefox-nightly-hg')
 
 pkgver() {
-  _installed_ver="$(sed -n  '/%VERSION%/{n;p;}' /var/lib/pacman/local/firefox-nightly-hg-??.???.???????.????????????-?/desc)"
+  _installed_ver="$(firefox-nightly -v | grep -Po '(\d+\.)+\d+a1')"
   if [ -n "$_installed_ver" ] && [ "${_installed_ver%%.*}"  -gt "${_version%%.*}" ]; then
     msg2 "Installed firefox-nightly is newer than $_version. Bumping to $_installed_ver"
     echo "${_installed_ver%-*}"
