@@ -6,22 +6,19 @@
 
 pkgname=qgnomeplatform
 _pkgname=QGnomePlatform
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Qt Platform Theme aimed to accomodate as much of GNOME settings 
 as possible"
 arch=('x86_64')
 url="https://github.com/FedoraQt/QGnomePlatform"
 license=('LGPL2.1')
-depends=('qt5-base' 'gtk3' 'qt5-wayland' 'qt5-x11extras')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/FedoraQt/QGnomePlatform/archive/$pkgver.tar.gz"
-        "qt-5.15-fix.patch")
-sha256sums=('b2630b56bd1d2798f5403a74ec53df694a91f239742f0086f3d565e28bc3382a'
-            '4fe4699c853df8daa421913a34adfefa9fe602503e46e2c8f0cb8267b7880c82')
+depends=('qt5-base' 'gtk3' 'qt5-wayland' 'qt5-x11extras' 'adwaita-qt>=1.2.0')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/FedoraQt/QGnomePlatform/archive/$pkgver.tar.gz")
+sha256sums=('ba329f67bdc0a0d8fc13d61d7828ee7c3fcb8ec6caa71e0b38c66da7eca88fc7')
 
 prepare() {
   cd $_pkgname-$pkgver
-  patch -Np1 < $srcdir/qt-5.15-fix.patch
 }
 
 build() {
