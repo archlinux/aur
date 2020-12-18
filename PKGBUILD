@@ -1,7 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=drive
-pkgver=0.3.9.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='CLI Google Drive client'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(Apache)
 depends=(glibc)
 makedepends=(go git)
 source=($pkgname-$pkgver.tar.gz::https://github.com/odeke-em/$pkgname/archive/v$pkgver.tar.gz)
-sha512sums=('5d8f6aaf08ad600915bac4c30626998069d1c6fa676948eb1e03235562dfdf447c0f9f05dbf2c5ffbf6e3e05003b3cee180b9fd28ceb7e83746a52d6640dcfa1')
+sha512sums=('59e53528222a26e88d8c4bb9ed9f841cc0bf07d6955099c5338a8ce18bc0ff673190d1c16b13ea3903cea4400828c84627ed479b98f2f9f42e39e212e8d0f8d4')
 
 build() {
   cd $pkgname-$pkgver
