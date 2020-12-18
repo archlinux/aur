@@ -1,7 +1,7 @@
 pkgbase = python-nanopi-gpio-git
 	pkgdesc = Python library for GPIO access on a Nano Pi
 	pkgver = 0.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/auto3000/RPi.GPIO_NP
 	arch = armv6h
 	arch = armv7h
@@ -12,7 +12,9 @@ pkgbase = python-nanopi-gpio-git
 	provides = python-raspberry-gpio
 	conflicts = python-raspberry-gpio
 	source = git://github.com/auto3000/RPi.GPIO_NP/
+	source = add_extern.patch
 	sha256sums = SKIP
+	sha256sums = c3154fd834bf1cc58eee41d40b317e88d588542e387e34b757f59c7a96e69207
 
 pkgname = python-nanopi-gpio-git
 
