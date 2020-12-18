@@ -3,7 +3,7 @@
 
 pkgname=realrtcw
 pkgver=3.1n
-pkgrel=4
+pkgrel=5
 pkgdesc="An overhaul mod for critically acclaimed Return To Castle Wolfenstein."
 arch=('i686' 'x86_64')
 url="http://www.moddb.com/mods/realrtcw-realism-mod"
@@ -92,7 +92,7 @@ package() {
     "${pkgdir}/opt/realrtcw/openurl.sh"
 
   # Installing RealRTCW pk3
-  for i in paks/*.pk3; do
+  for i in "${srcdir}"/paks/*.pk3; do
     install -m 644 "${srcdir}/${i}" \
       "${pkgdir}/opt/realrtcw/main"
   done
