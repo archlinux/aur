@@ -1,6 +1,6 @@
 pkgbase = electronmail-bin
 	pkgdesc = Unofficial ProtonMail Desktop App
-	pkgver = 4.9.2
+	pkgver = 4.10.0
 	pkgrel = 1
 	url = https://github.com/vladimiry/ElectronMail
 	install = electronmail-bin.install
@@ -26,9 +26,9 @@ pkgbase = electronmail-bin
 	optdepends = xfce4-statusnotifier-plugin: SatusNotifier tray icons support for XFCE, see https://github.com/vladimiry/ElectronMail/issues/254
 	provides = electronmail
 	conflicts = electronmail
-	source = https://github.com/vladimiry/ElectronMail/releases/download/v4.9.2/electron-mail-4.9.2-linux-x64.pacman
+	source = https://github.com/vladimiry/ElectronMail/releases/download/v4.10.0/electron-mail-4.10.0-linux-x64.pacman
 	source = LICENSE
-	md5sums = f88b1a4e1fcba96c6742a3e03db5c92c
+	md5sums = a9510ec62f95bcb1a722f38bdd4762f4
 	md5sums = fc680045f40b19ce3c3e771aeb08bbd3
 
 pkgname = electronmail-bin
