@@ -1,12 +1,12 @@
 pkgbase = argo-bin
 	pkgdesc = Argo Workflows: Get stuff done with Kubernetes
-	pkgver = 2.12.0
+	pkgver = 2.12.1
 	pkgrel = 1
 	url = https://github.com/argoproj/argo
 	arch = x86_64
 	license = Apache
-	source = argo_2.12.0.gz::https://github.com/argoproj/argo/releases/download/v2.12.0/argo-linux-amd64.gz
-	md5sums = ae989ff889f7e63e42bf5ba0e3c71626
+	source = argo_2.12.1.gz::https://github.com/argoproj/argo/releases/download/v2.12.1/argo-linux-amd64.gz
+	md5sums = d7c469c3ac5b8e16b1714fd7309cdb69
 
 pkgname = argo-bin
 
