@@ -12,3 +12,17 @@ pkgbase = xtl
 
 pkgname = xtl
 
+pkgbase = xtl
+	pkgdesc = The x template library
+	pkgver = 0.6.23
+	pkgrel = 2
+	url = https://github.com/xtensor-stack/xtl
+	arch = any
+	license = BSD-3-Clause
+	makedepends = cmake
+	depends = gcc
+	source = xtl-0.6.23.tar.gz::https://github.com/xtensor-stack/xtl/archive/0.6.23.tar.gz
+	sha512sums = 6795acb381d13b64920e71e9f6f1f5bb796d1732c00ce3e0e3c191bd30ada21a4445ede157268b0f0d24893e7741e602d390a70775d1337eafb2accda72dd34a
+
+pkgname = xtl
+
