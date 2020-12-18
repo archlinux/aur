@@ -1,0 +1,32 @@
+--- ./src/ucon64-2.2.1-src/src/ucon64_misc.orig.c	2020-11-09 19:10:46.000000000 +0100
++++ ./src/ucon64-2.2.1-src/src/ucon64_misc.c	2020-12-16 15:58:02.323205228 +0100
+@@ -58,6 +58,7 @@
+ 
+ 
+ #ifdef  USE_DISCMAGE
++#define UCON64_AUR_DISCMAGE
+ #ifdef  DLOPEN
+ #include "misc/dlopen.h"
+ 
+@@ -1232,11 +1233,21 @@
+ #elif   defined __APPLE__                       // Mac OS X actually
+                        PROPERTY_MODE_DIR ("ucon64") "discmage.dylib",
+ #elif   defined __unix__ || defined __BEOS__
++#ifndef UCON64_AUR_DISCMAGE
+                        PROPERTY_MODE_DIR ("ucon64") "discmage.so",
++#else                       
++                       DIR_SEPARATOR_S "usr" DIR_SEPARATOR_S "lib" DIR_SEPARATOR_S "discmage.so",
++#endif                       
+ #else
+                        "",
+ #endif
++#ifndef UCON64_AUR_DISCMAGE
+                        "complete path to the discmage library for DISC image support");
++#else
++                       "complete path to the discmage library for DISC image support\n"
++                       "this path has been modified by the ucon64 AUR package;\n" 
++                       "the upstream default is: " PROPERTY_MODE_DIR ("ucon64") "discmage.so");
++#endif  
+   ucon64_set_property (&props[i++], org_configfile, "ucon64_configdir",
+                        PROPERTY_MODE_DIR ("ucon64"),
+                        "directory with additional config files");
