@@ -26,7 +26,7 @@ build() {
 
 package_sofia-sip-fs() {
   depends=('glib2' 'openssl' 'gawk')
-  optdepends=('spandsp-docs: Documentation')
+  optdepends=('sofia-sip-docs: Documentation')
   provides=('sofia-sip')
   conflicts=('sofia-sip')
 
