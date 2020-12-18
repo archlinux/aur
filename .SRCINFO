@@ -1,0 +1,32 @@
+pkgbase = python-nbgrader-git
+	pkgdesc = A system for assigning and grading notebooks
+	pkgver = r2892.3aa5af2a
+	pkgrel = 1
+	url = https://github.com/jupyter/nbgrader
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	depends = python-sqlalchemy
+	depends = python-dateutil
+	depends = python-traitlets
+	depends = python-tornado
+	depends = python-requests
+	depends = python-jsonschema
+	depends = python-alembic
+	depends = python-rapidfuzz
+	depends = jupyter
+	depends = jupyter-notebook
+	depends = jupyter-nbconvert
+	depends = jupyter-nbformat
+	depends = python-jupyter_core
+	depends = python-jupyter_client
+	provides = python-nbgrader
+	conflicts = python-nbgrader
+	source = git+https://github.com/jupyter/nbgrader
+	md5sums = SKIP
+
+pkgname = python-nbgrader-git
+
