@@ -2,7 +2,7 @@ pkgbase = blightmud
 	pkgdesc = A terminal mud client written in rust
 	pkgver = 2.3.1
 	pkgrel = 1
-	url = https://github.com/liquidityc/blightmud
+	url = https://github.com/blightmud/blightmud
 	arch = x86_64
 	arch = i686
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = blightmud
 	depends = gcc-libs
 	provides = blightmud
 	conflicts = blightmud
-	source = blightmud-2.3.1.tar.gz::https://github.com/LiquidityC/Blightmud/archive/v2.3.1.tar.gz
+	source = blightmud-2.3.1.tar.gz::https://github.com/Blightmud/Blightmud/archive/v2.3.1.tar.gz
 	md5sums = a31d82fd3da4acb2eb1fc5e89803601c
 
 pkgname = blightmud
