@@ -1,0 +1,6 @@
+dashlane-nativefier-*.pkg.tar.zst
+dashlane-nativefier-*.pkg.tar.xz
+dashlane-nativefier-*.log
+PKGBUILD-namcap.log
+pkg/
+src/

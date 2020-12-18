@@ -1,0 +1,24 @@
+pkgbase = dashlane-nativefier
+	pkgdesc = Dashlane Password Manager
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://app.dashlane.com
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = dashlane-nativefier.png
+	source = dashlane-nativefier.desktop
+	sha256sums = 3899581abcfed9b40b7208bbbca8bdbfe3ae9655980dbf55f04dec9cb3309f27
+	sha256sums = bad0489ae519bc78afab3d226966691feede8bcedf58025af1b171215ae51423
+	sha256sums = e794ef339f9fc6ff78ed54236bbeec3fc2d6592c4781ffe69b8e7932e02436c9
+
+pkgname = dashlane-nativefier
+

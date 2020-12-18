@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Dashlane
+Comment=Dashlane Password Manager
+Exec=dashlane-nativefier
+Icon=dashlane-nativefier
+Encoding=UTF-8
+StartupWMClass=dashlane-nativefier-d40211
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Password;Manager;Application;
