@@ -1,6 +1,6 @@
 # Maintainer: Erkin Batu Altunbaş <erkin@sdf.org>
 pkgname=eisl
-pkgver=1.2
+pkgver=1.5
 pkgrel=1
 pkgdesc="Easy-ISLisp is an interpreter and compiler compatible with ISLisp standard."
 arch=('x86_64' 'i686')
@@ -9,7 +9,7 @@ license=("custom")
 depends=("sh" "gcc" "make")
 
 source=("https://github.com/sasagawa888/eisl/archive/v${pkgver}.tar.gz")
-sha256sums=('ab7df7195b4e234196d5427ea5e0f1a3e8b44430b999fce66395f9350ddf8f9c')
+sha256sums=('25670a105543babc5cb94a8d5ffe4b4a30f64087e3710929c6a17355a675ca89')
 
 package()
 {
