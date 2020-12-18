@@ -1,6 +1,6 @@
 pkgbase = mqttui-bin
 	pkgdesc = Subscribe to a MQTT Topic or publish something quickly from the terminal
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/EdJoPaTo/mqttui
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = mqttui-bin
 	license = MIT
 	provides = mqttui
 	conflicts = mqttui
-	source_x86_64 = mqttui-bin-0.9.0.zip::https://github.com/EdJoPaTo/mqttui/releases/download/v0.9.0/mqttui-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = 897a89fcace5cc6480d35bb9ab382ad13372b36eacd00ede93aad6c1b9dd3a9b
-	source_aarch64 = mqttui-bin-0.9.0.zip::https://github.com/EdJoPaTo/mqttui/releases/download/v0.9.0/mqttui-aarch64-unknown-linux-gnu.zip
-	sha256sums_aarch64 = 897a89fcace5cc6480d35bb9ab382ad13372b36eacd00ede93aad6c1b9dd3a9b
-	source_armv7h = mqttui-bin-0.9.0.zip::https://github.com/EdJoPaTo/mqttui/releases/download/v0.9.0/mqttui-armv7-unknown-linux-gnueabihf.zip
-	sha256sums_armv7h = 897a89fcace5cc6480d35bb9ab382ad13372b36eacd00ede93aad6c1b9dd3a9b
+	source_x86_64 = mqttui-bin-0.10.0.zip::https://github.com/EdJoPaTo/mqttui/releases/download/v0.10.0/mqttui-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = fba3692b8eaa257e17bf8d1b218202b41c83874d42786b5c5ca2d5fb7dbdd75b
+	source_aarch64 = mqttui-bin-0.10.0.zip::https://github.com/EdJoPaTo/mqttui/releases/download/v0.10.0/mqttui-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = fba3692b8eaa257e17bf8d1b218202b41c83874d42786b5c5ca2d5fb7dbdd75b
+	source_armv7h = mqttui-bin-0.10.0.zip::https://github.com/EdJoPaTo/mqttui/releases/download/v0.10.0/mqttui-armv7-unknown-linux-gnueabihf.zip
+	sha256sums_armv7h = fba3692b8eaa257e17bf8d1b218202b41c83874d42786b5c5ca2d5fb7dbdd75b
 
 pkgname = mqttui-bin
 
