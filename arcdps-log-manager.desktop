@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=arcdps Log Manager
+Comment=A manager for Guild Wars 2 arcdps EVTC logs
+Icon=arcdps-log-manager
+Exec=/usr/bin/arcdps-log-manager
+Categories=Utility;
