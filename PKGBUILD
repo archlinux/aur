@@ -1,7 +1,7 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-git
-pkgver=0.6.8.r1.g04f43e77
+pkgver=0.8.4.r84.ge78bb1b2
 pkgrel=1
 pkgdesc="A music player aimed at audio enthusiasts and music collectors"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -20,17 +20,17 @@ source=("git+https://github.com/jonaski/strawberry.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname/-git/}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${pkgname/-git/}"
+  cd "${pkgname%-git}"
   install -d strawberry-build
 }
 
 build() {
-  cd "${pkgname/-git/}/strawberry-build"
+  cd "${pkgname%-git}/strawberry-build"
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_SYSTEM_TAGLIB=OFF \
@@ -42,6 +42,6 @@ build() {
 }
 
 package() {
-  cd "${pkgname/-git/}/strawberry-build"
+  cd "${pkgname%-git}/strawberry-build"
   make DESTDIR="${pkgdir}" install
 }
