@@ -11,7 +11,7 @@ license=('LGPL')
 #url="http://www.rowetel.com/blog/?page_id=452"
 url="http://codec2.org/"
 depends=('glibc')
-makedepends=('subversion' 'cmake')
+makedepends=('git' 'cmake')
 provides=('codec2')
 conflicts=('codec2')
 source=('git+https://github.com/drowe67/codec2')
