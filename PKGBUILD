@@ -10,8 +10,8 @@ arch=('x86_64')
 url="https://docs.docker.com/engine/security/rootless/"
 license=('Apache')
 depends=('docker')
-optdpends=('fuse-overlayfs: overlayfs support'
-           'slirp4netns: faster network stack')
+optdepends=('fuse-overlayfs: overlayfs support'
+            'slirp4netns: faster network stack')
 provides=('docker-rootless' 'docker-rootless-extras')
 conflicts=('docker-rootless' 'docker-rootless-extras')
 install=$pkgname.install
