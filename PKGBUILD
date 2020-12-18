@@ -5,20 +5,19 @@
 
 pkgname=soci-git
 pkgname_=soci
-pkgver=4.0.0.r0.g3742c894
+pkgver=4.0.1.r0.g334cc55d
 pkgrel=1
 pkgdesc="Database access library for C++"
 arch=('x86_64')
 url="http://soci.sf.net"
 license=('custom:boost')
-depends=('gcc-libs')
-makedepends=('cmake' 'postgresql-libs' 'sqlite3' 'unixodbc')
+depends=('postgresql-libs' 'sqlite3' 'unixodbc')
+makedepends=('cmake')
 optdepends=('instantclient-basic: support for oracle databases'
             'libmysqlclient: support for mysql databases'
             'postgresql-libs: support for postgresql databases'
             'sqlite3: support for sqlite databases'
-            'unixodbc: support for ODBC databases'
-            'boost')
+            'unixodbc: support for ODBC databases')
 provides=("soci=$pkgver")
 conflicts=('soci')
 source=("git+https://github.com/SOCI/soci.git#branch=release/4.0")
@@ -30,19 +29,17 @@ pkgver() {
 }
 
 build() {
-    mkdir -p "${srcdir}/${pkgname}-build"
-    cd "${srcdir}/${pkgname}-build"
-    cmake \
+    cmake -B build "${pkgname_}" \
         -DSOCI_TESTS=OFF \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_CXX_FLAGS="-Wno-format-overflow" \
-        "${srcdir}/${pkgname_}"
-    make
+        -DSOCI_CXX11=ON \
+        -Wno-dev
+    make -C build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-build"
-    make DESTDIR="${pkgdir}" install
+    make DESTDIR="${pkgdir}" -C build install
 
     # For some reason -DLIBDIR=lib causes libsoci_empty.so to disappear
     if [ -e "${pkgdir}/usr/lib64" ]; then
