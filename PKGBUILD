@@ -14,11 +14,7 @@ source=(
   "${pkgname}.png"
   "${pkgname}.desktop"
 )
-sha256sums=(
-  "3899581abcfed9b40b7208bbbca8bdbfe3ae9655980dbf55f04dec9cb3309f27"
-  "bad0489ae519bc78afab3d226966691feede8bcedf58025af1b171215ae51423"
-  "e794ef339f9fc6ff78ed54236bbeec3fc2d6592c4781ffe69b8e7932e02436c9"
-)
+md5sums=('SKIP')
 
 build() {
   cd "${srcdir}"
