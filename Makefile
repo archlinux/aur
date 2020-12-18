@@ -10,7 +10,7 @@ versions:
 
 upgrade:
 	perl -pi -e 's/^pkgver=.+/pkgver=$(LATEST_VER)/' PKGBUILD
-	perl -pi -e "s/^sha256sums=.+/$(shell makepkg -g)/" PKGBUILD
+	bash -c 'perl -pi -e "s/^sha256sums=.+/$$(makepkg -g)/" PKGBUILD'
 	make post
 	git add .SRCINFO PKGBUILD
 	git commit -m "Upgrade to $(LATEST_VER)" .SRCINFO PKGBUILD
