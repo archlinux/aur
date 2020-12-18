@@ -1,7 +1,7 @@
 # Maintainer: William Turner <willtur.will@gmail.com>
 
 pkgname=virtualbox-guest-dkms-vmsvga
-pkgver=6.1.12
+pkgver=6.1.16
 pkgrel=1
 pkgdesc='VirtualBox Guest kernel modules sources (VMSVGA resize and multi-head fix)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('virtualbox-archlinux-source'
 source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}.tar.bz2"
         'vboxvmsvga.desktop'
         'virtualbox-guest-dkms-vmsvga.conf')
-sha256sums=('05eff0321daa72f6d00fb121a6b4211f39964778823806fa0b7b751667dec362'
+sha256sums=('49c1990da16d8a3d5bda8cdb961ec8195a901e67e4c79aea44c1521a5fc2f9f1'
             '4404a95eb6f5c30683625e870fe7a26e562200c2220728d0c14151dbf9667e36'
             'edd0492f0706e03169cdf3654658ea650687c30967ca5e32fde19d43e3dd4e5e')
 
