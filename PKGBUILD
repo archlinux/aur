@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=kind
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Kubernetes IN Docker - local clusters for testing Kubernetes'
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url='https://kind.sigs.k8s.io/'
@@ -16,11 +16,6 @@ optdepends=('kubectl: for managing Kubernetes clusters')
 source=("https://github.com/kubernetes-sigs/kind/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('c154289659a7ef30b301a0787ecfa2e08edaada6059bf5acefe9f3be1e026381')
 
-prepare() {
-  cd "$pkgname-$pkgver"
-  go mod download
-}
-
 build() {
   local _commit
   _commit="$(bsdcat "$pkgname-$pkgver.tar.gz" | git get-tar-commit-id)"
@@ -32,12 +27,6 @@ build() {
   export CGO_LDFLAGS="$LDFLAGS"
   export GOFLAGS='-buildmode=pie -mod=readonly -modcacherw -trimpath'
   go build -o "$pkgname" -ldflags "-linkmode=external -X sigs.k8s.io/kind/pkg/cmd/kind/version.GitCommit=$_commit"
-}
-
-check() {
-  cd "$pkgname-$pkgver"
-  # TODO avoid e2e stuff
-  #go test ./...
 }
 
 package() {
