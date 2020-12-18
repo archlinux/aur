@@ -1,6 +1,6 @@
 pkgbase = nomachine-enterprise-client
 	pkgdesc = Remote desktop application
-	pkgver = 6.12.3
+	pkgver = 7.0.208
 	pkgrel = 7
 	url = http://www.nomachine.com
 	install = nm-ent-client.install
@@ -14,8 +14,8 @@ pkgbase = nomachine-enterprise-client
 	conflicts = nxnode
 	conflicts = nxclient
 	options = !strip
-	source = http://download.nomachine.com/download/6.12/Linux/nomachine-enterprise-client_6.12.3_7_x86_64.tar.gz
-	sha256sums = 72f4a68da4663bc3a95d7a2804cdc2c8243dffd69b74ff4820082c63cbd0031f
+	source = http://download.nomachine.com/download/7.0/Linux/nomachine-enterprise-client_7.0.208_7_x86_64.tar.gz
+	sha256sums = a6aa8d10c85de2c659a10dd729441678f1627786f63a34c0bb2a2d37354742ef
 
 pkgname = nomachine-enterprise-client
 
