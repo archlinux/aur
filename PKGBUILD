@@ -36,7 +36,7 @@ depends=('diffutils'
          'zsh')
 makedepends=('cargo' 'rust')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('e40a188f691aa1e6740df4db27716e7b8e48a7b7d0c2a26469f2887336f93e8d')
+sha256sums=('cce3090bc9f4951344600653c5e53e310ae58ea46867af7a239c5448b673c830')
 
 prepare() {
     cd "$pkgname-$pkgver"
