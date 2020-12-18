@@ -1,13 +1,13 @@
 pkgbase = duplicacy-cli-bin-git
 	pkgdesc = A new generation cloud backup tool based on lock-free deduplication
-	pkgver = 2.7.1
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://github.com/gilbertchen/duplicacy
 	arch = x86_64
 	license = custom
-	source = https://github.com/gilbertchen/duplicacy/releases/download/v2.7.1/duplicacy_linux_x64_2.7.1
+	source = https://github.com/gilbertchen/duplicacy/releases/download/v2.7.2/duplicacy_linux_x64_2.7.2
 	source = https://raw.githubusercontent.com/gilbertchen/duplicacy/master/LICENSE.md
-	sha256sums = ec6f4bd5edc1169284ba6b111424dfb0427446b5955632d785945595bbeef435
+	sha256sums = b83c2c8095839f00b7851967615e81ca4fbd4d255b4bfde9da9ba74ff85a852d
 	sha256sums = f5470a1440ab371c5b21026a0b28a1777345183017ece8b5c7552d58501c52bf
 
 pkgname = duplicacy-cli-bin-git
