@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=6.92
-pkgrel=0
+pkgrel=1
 epoch=33
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64' 'armv7h')
@@ -91,7 +91,7 @@ package(){
             "${pkgdir}/usr/share/applications"
 
     # Install desktop entry
-    for i in "${sources[@]}"
+    for i in "${desktops[@]}"
     do
         install -Dm644 "${i}" "${pkgdir}/usr/share/applications/"
     done
