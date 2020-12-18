@@ -2,7 +2,6 @@
 pkgname=gnome-shell-extension-applications-overview-tooltip-git
 pkgver=v10.r2.g2e81270
 pkgrel=2
-_commit=2e81270c728f421f915900cab2725a8e20c87b0a
 pkgdesc="Shows a tooltip over applications icons on applications overview"
 arch=(any)
 url="https://github.com/RaphaelRochet/applications-overview-tooltip"
@@ -12,7 +11,7 @@ depends=('gnome-shell>=3.38')
 makedepends=('git' 'glib2')
 conflicts=("${pkgname%-git}")
 provides=(${pkgname%-git})
-source=("${pkgname%-git}::git+https://github.com/RaphaelRochet/applications-overview-tooltip.git#commit=$_commit")
+source=("${pkgname%-git}::git+https://github.com/RaphaelRochet/applications-overview-tooltip.git")
 sha256sums=('SKIP')
 
 pkgver() {
