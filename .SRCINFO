@@ -1,7 +1,7 @@
 pkgbase = pinniped-bin
 	pkgdesc = Pinniped provides identity services for Kubernetes clusters
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vmware-tanzu/pinniped
 	arch = x86_64
 	license = APACHE

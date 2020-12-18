@@ -3,7 +3,7 @@
 _pkgname=pinniped
 pkgname=$_pkgname-bin
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Pinniped provides identity services for Kubernetes clusters"
 url="https://github.com/vmware-tanzu/$_pkgname"
 license=('APACHE')
@@ -13,7 +13,7 @@ sha512sums=('c4666159b3e2c79dfce00f8b6ae891f023ebfe20cb58bc7d5a93308e07559bf19fd
 conflicts=("$_pkgname" "${_pkgname}-git")
 
 package() {
-  install -D -m 0755 $srcdir/$_pkgname $pkgdir/usr/bin/$_pkgname
+  install -D -m 0755 $srcdir/$_pkgname-$pkgver $pkgdir/usr/bin/$_pkgname
 }
 
 #vim: syntax=sh
