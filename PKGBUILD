@@ -6,12 +6,12 @@
 
 pkgname=tuxedo-control-center
 pkgver=1.0.8
-pkgrel=2
+pkgrel=2.1
 pkgdesc="A tool to help you control performance, energy, fan and comfort settings on TUXEDO laptops. "
 arch=(x86_64)
 url="https://github.com/tuxedocomputers/tuxedo-control-center"
 license=('GPL3')
-depends=('tuxedo-keyboard' 'libxss''nss' 'gtk3')
+depends=('tuxedo-keyboard' 'libxss' 'nss' 'gtk3')
 options=(!strip)
 install=${pkgname}.install
 

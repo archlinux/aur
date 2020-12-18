@@ -1,13 +1,14 @@
 pkgbase = tuxedo-control-center
 	pkgdesc = A tool to help you control performance, energy, fan and comfort settings on TUXEDO laptops.
 	pkgver = 1.0.8
-	pkgrel = 2
+	pkgrel = 2.1
 	url = https://github.com/tuxedocomputers/tuxedo-control-center
 	install = tuxedo-control-center.install
 	arch = x86_64
 	license = GPL3
 	depends = tuxedo-keyboard
-	depends = libxssnss
+	depends = libxss
+	depends = nss
 	depends = gtk3
 	options = !strip
 	source = https://rpm.tuxedocomputers.com/opensuse/15.2/x86_64/tuxedo-control-center_1.0.8.rpm
