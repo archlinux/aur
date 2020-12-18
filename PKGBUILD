@@ -3,7 +3,7 @@
 
 _name=cutter
 pkgname=${_name}-git
-pkgver=1.10.3.pre.r189.g3b5c6ff9
+pkgver=1.10.3.pre.r199.g5bf513c4
 pkgrel=1
 pkgdesc="A Qt and C++ GUI for rizin reverse engineering framework (originally named Iaito)"
 url="https://cutter.re/"
@@ -48,7 +48,7 @@ build() {
 
 package() {
   install -DTm755 build/Cutter "${pkgdir}/usr/bin/Cutter"
-  install -DTm644 ${_name}/src/org.radare.Cutter.desktop "${pkgdir}/usr/share/applications/cutter.desktop"
+  install -DTm644 ${_name}/src/org.rizin.Cutter.desktop "${pkgdir}/usr/share/applications/cutter.desktop"
   install -DTm644 ${_name}/src/img/cutter.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/cutter.svg"
   install -DTm644 ${_name}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -dm755 ${_name}/docs/ "${pkgdir}/usr/share/doc/${pkgname}/"
