@@ -14,7 +14,8 @@ source=(
   "${pkgname}.png"
   "${pkgname}.desktop"
 )
-md5sums=('SKIP')
+md5sums=('0fddd5661edeba8eff6c17ad948351c9'
+         '30e5a89b006e72833bb322eab48905a7')
 
 build() {
   cd "${srcdir}"
