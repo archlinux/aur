@@ -1,6 +1,6 @@
 # Maintainer: Barfin
 pkgname=iriunwebcam-bin
-pkgver=2.2
+pkgver=2.3
 pkgrel=3
 pkgdesc="Use your phone's camera as a wireless webcam in your PC."
 arch=('any')
@@ -14,4 +14,4 @@ package() {
 	tar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
 }
 
-md5sums=('44724115737d08fc953665bafc5f74a8')
+md5sums=('493c417aab60e64ba6e7e1e3bd7fae9d')
