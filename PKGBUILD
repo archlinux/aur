@@ -3,33 +3,42 @@
 
 _hkgname=vector-sized
 pkgname=haskell-vector-sized
-pkgver=0.6.1.0
+pkgver=1.4.3.1
 pkgrel=1
 pkgdesc="Newtype tagging the vectors from the vector package"
 url="http://github.com/expipiplus1/vector-sized#readme"
 license=('custom:BSD3')
 arch=('i686' 'x86_64')
-depends=('ghc-libs')
-makedepends=('ghc' 'haskell-finite-typelits' 'haskell-vector')
+depends=('ghc-libs' 'haskell-finite-typelits' 'haskell-vector' 'haskell-adjunctions' 'haskell-comonad'
+         'haskell-distributive' 'haskell-hashable' 'haskell-indexed-list-literals')
+makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('4d6e3e1292955778b6fa14b2f57f3417c7884e90d56b494b5d6b09dde7f67821')
+sha256sums=('994e54c0324c7c213dbf50cb01781224dff33311d01b72910099bc61d7e6a66e')
 
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
-    
+
     runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
-        --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
-        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
-    runhaskell Setup build
+        --prefix=/usr --docdir="/usr/share/doc/$pkgname" --enable-tests \
+        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
+        --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
+        --ghc-option='-pie'
+
+    runhaskell Setup build $MAKEFLAGS
     runhaskell Setup register --gen-script
     runhaskell Setup unregister --gen-script
     sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
     sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
 }
 
+check() {
+    cd "${srcdir}/${_hkgname}-${pkgver}"
+    runhaskell Setup test
+}
+
 package() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
-    
+
     install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
     install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
     runhaskell Setup copy --destdir="${pkgdir}"

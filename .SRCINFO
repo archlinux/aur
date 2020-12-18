@@ -1,17 +1,22 @@
 pkgbase = haskell-vector-sized
 	pkgdesc = Newtype tagging the vectors from the vector package
-	pkgver = 0.6.1.0
+	pkgver = 1.4.3.1
 	pkgrel = 1
 	url = http://github.com/expipiplus1/vector-sized#readme
 	arch = i686
 	arch = x86_64
 	license = custom:BSD3
 	makedepends = ghc
-	makedepends = haskell-finite-typelits
-	makedepends = haskell-vector
 	depends = ghc-libs
-	source = https://hackage.haskell.org/packages/archive/vector-sized/0.6.1.0/vector-sized-0.6.1.0.tar.gz
-	sha256sums = 4d6e3e1292955778b6fa14b2f57f3417c7884e90d56b494b5d6b09dde7f67821
+	depends = haskell-finite-typelits
+	depends = haskell-vector
+	depends = haskell-adjunctions
+	depends = haskell-comonad
+	depends = haskell-distributive
+	depends = haskell-hashable
+	depends = haskell-indexed-list-literals
+	source = https://hackage.haskell.org/packages/archive/vector-sized/1.4.3.1/vector-sized-1.4.3.1.tar.gz
+	sha256sums = 994e54c0324c7c213dbf50cb01781224dff33311d01b72910099bc61d7e6a66e
 
 pkgname = haskell-vector-sized
 
