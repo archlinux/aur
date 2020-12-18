@@ -1,9 +1,9 @@
 # Maintainer: Aurélien Ooms <aurelien.ooms@gmail.com>
 pkgname=ovh-dns
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 epoch=
-pkgdesc="Update a given A record in your DNS zone, using OVH API"
+pkgdesc="Update a given A/AAAA/... record in your DNS zone, using OVH API"
 arch=(any)
 url="https://github.com/aureooms/${pkgname}"
 license=()
