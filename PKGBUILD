@@ -3,7 +3,6 @@
 pkgname=gnome-shell-extension-nightthemeswitcher-git
 pkgver=v37.r27.4dd6e6f
 pkgrel=1
-_commit=4dd6e6f17e7e98da94f5072c4dea8052cf0fc2c6
 pkgdesc="Automatically toggle your light and dark themes variants"
 arch=('any')
 url="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension"
@@ -14,7 +13,7 @@ depends=('gnome-shell>=3.28')
 makedepends=('git' 'glib2')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension.git#commit=$_commit")
+source=("${pkgname%-git}::git+https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension.git")
 md5sums=('SKIP')
 
 pkgver() {

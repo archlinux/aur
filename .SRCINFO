@@ -12,7 +12,7 @@ pkgbase = gnome-shell-extension-nightthemeswitcher-git
 	depends = gnome-shell>=3.28
 	provides = gnome-shell-extension-nightthemeswitcher
 	conflicts = gnome-shell-extension-nightthemeswitcher
-	source = gnome-shell-extension-nightthemeswitcher::git+https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension.git#commit=4dd6e6f17e7e98da94f5072c4dea8052cf0fc2c6
+	source = gnome-shell-extension-nightthemeswitcher::git+https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension.git
 	md5sums = SKIP
 
 pkgname = gnome-shell-extension-nightthemeswitcher-git
