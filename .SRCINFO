@@ -14,7 +14,7 @@ pkgname = sofia-sip-fs
 	depends = glib2
 	depends = openssl
 	depends = gawk
-	optdepends = spandsp-docs: Documentation
+	optdepends = sofia-sip-docs: Documentation
 	provides = sofia-sip
 	conflicts = sofia-sip
 
