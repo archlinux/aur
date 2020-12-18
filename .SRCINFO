@@ -1,6 +1,6 @@
 pkgbase = fancon
 	pkgdesc = A Linux fan control daemon
-	pkgver = 0.22.0
+	pkgver = 0.23.5
 	pkgrel = 1
 	url = https://github.com/hbriese/fancon
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = fancon
 	depends = grpc
 	depends = boost-libs
 	conflicts = fancon-git
-	source = https://github.com/hbriese/fancon/archive/v0.22.0.tar.gz
-	sha512sums = b3a4e5fd253c850befde8200618d041ab09dc0d3f0c19547920d0e104df9a34f730656313bf9d4b02e7464faeba518a8a881b7a8f89f42483a332d0b37455910
+	source = https://github.com/hbriese/fancon/archive/v0.23.5.tar.gz
+	sha512sums = bd83e0bda10d02ad035cc49ce1666faff6cb9a5a80318413a663c9919a0daf26504b14abad9c4719c87792eb507a54ad35dad03cbde16c52d999f47bc6e462a0
 
 pkgname = fancon
 
