@@ -3,7 +3,7 @@
 
 _pkgname=uber-apk-signer
 pkgname=$_pkgname-bin
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='A cli tool that helps signing and zip aligning APKs with certificates.'
 arch=('any')
@@ -16,7 +16,7 @@ source=(
   "$url/releases/download/v${pkgver}/${_pkgname}-${pkgver}.jar"
   $_pkgname
 )
-sha256sums=('8ef1d44cc787e6bdf18774c926ff87f74850d55ba5810bdc5d63555046c93eff'
+sha256sums=('47ae984df200afbae292d6f950e517afb445d3c902a1edc7717a82c513c5e772'
             '44581b4d134c1eb8d5f77b8c1da6930baa86a494d11c3b15af272653ced5e2fd')
 
 package() {
