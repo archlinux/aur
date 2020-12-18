@@ -20,7 +20,7 @@ prepare() {
 build() {
   cd "$_pkgname-$pkgver"
   ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --disable-static
   make
 }
 
