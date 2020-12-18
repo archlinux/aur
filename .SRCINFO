@@ -1,6 +1,6 @@
 pkgbase = fluffychat
 	pkgdesc = Chat with your friends
-	pkgver = 0.23.1
+	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://fluffychat.im/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = fluffychat
 	optdepends = pantalaimon: used for E2E encryption
 	provides = fluffychat
 	conflicts = fluffychat
-	source = fluffychat-flutter-v0.23.1.tar.gz::https://gitlab.com/ChristianPauly/fluffychat-flutter/-/archive/v0.23.1/fluffychat-flutter-v0.23.1.tar.gz
-	sha256sums = fe28635559f038f01dc2bee9788048d5a9a38d1a30244477f0197629c965e84c
+	source = fluffychat-flutter-v0.24.0.tar.gz::https://gitlab.com/ChristianPauly/fluffychat-flutter/-/archive/v0.24.0/fluffychat-flutter-v0.24.0.tar.gz
+	sha256sums = 14d11162cfe9a74b279c55c489cd9697daa575d02f7b564113fd98b184c74dd4
 
 pkgname = fluffychat
 
