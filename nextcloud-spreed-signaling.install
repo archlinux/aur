@@ -1,0 +1,17 @@
+post_install() {
+    groupadd --system signaling
+    useradd --system \
+        --gid signaling \
+        --shell /usr/bin/nologin \
+        --comment "Standalone signaling server for Nextcloud Talk." \
+        signaling
+
+    chown signaling: /etc/signaling/server.conf
+}
+
+post_remove() {
+    systemctl stop signaling.service 2>/dev/null
+    systemctl disable signaling.service 2>/dev/null
+
+    userdel signaling
+}
