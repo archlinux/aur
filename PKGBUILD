@@ -1,7 +1,7 @@
 # Author: futpib <futpib@gmail.com>
 
 pkgname=youtube-tv-git
-pkgver=1.0.0.r0.g8d4e94a
+pkgver=1.0.0.r2.g60dfe38
 pkgrel=1
 pkgdesc="Desktop YouTube TV app"
 arch=('x86_64')
