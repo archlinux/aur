@@ -1,45 +1,56 @@
 # Maintainer: Moritz Lipp <mlq@pwmt.org>
+# Maintainer: Tymofii Khodniev <thodnev@xinity.devd>
 
-pkgname=oclint
-pkgver=0.15
-pkgrel=1
+pkgbase='oclint'
+pkgname=("${pkgbase}")
+pkgver=20.11
+pkgrel=0
 pkgdesc="A static source code analysis tool to improve quality and reduce
-defects for C, C++ and Objective-C"
-arch=('i686' 'x86_64')
+         defects for C, C++ and Objective-C"
+arch=('x86_64')
 url="http://oclint.org/"
 license=('BSD')
-dependencies=('clang' 'clang-analyzer' 'llvm' 'llvm-libs' 'openssl')
-makedepends=('clang' 'cmake' 'ninja' 'subversion' 'python' 'llvm')
-source=("https://github.com/oclint/oclint/archive/v${pkgver}.tar.gz"
-        "oclint-llvm-link.patch")
-sha1sums=('0951193cb2e594ac212fea05e51355be8f9b0172'
-          '73d13cad422f5bf5e8383376182ca8addbc586de')
+provides=("${pkgbase}")
+conflicts=("${pkgbase}-git")
+depends=('clang' 'llvm-libs' 'gcc-libs' 'glibc' 'xz' 'libffi' 'libedit' 'libxml2' 'icu' 'zlib')
+makedepends=('gcc' 'binutils' 'make' 'cmake' 'ninja' 'git' 'python')
+options=(!ccache)
+source=(
+    "${pkgbase}::git+https://github.com/oclint/oclint#tag=v${pkgver}"
+    "arch-llvm.patch"
+)
+sha256sums=(
+    "SKIP"
+    "764f44e5af361b851938a733bd6d06d5b1e8badbd622f5c58cd249a1d02613ca"
+)
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  patch -p1 < $srcdir/oclint-llvm-link.patch
+    cd "${srcdir}/${pkgname}"
+    patch --strip=1 -i "${srcdir}/arch-llvm.patch"
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver/oclint-scripts"
-  ./makeWithSystemLLVM /usr
+  cd "${srcdir}/${pkgbase}"
+  jflag=`python -c "from multiprocessing import cpu_count; \
+         from os import environ; \
+         m=environ.get('MAKEFLAGS', f'-j{cpu_count() + 1}'); \
+         m=[v for v in m.split(' ') if v.startswith('-j')]; \
+         print(m[-1])"`
+  # run build script (with system llvm)
+  # providing parallelism as set in MAKEFLAGS in makepkg.conf
+  ./oclint-scripts/build ${jflag} --llvm-root=$(llvm-config --prefix) --clean --release
 }
 
-package() {
-	cd "$srcdir/$pkgname-$pkgver"
-
-  # FIX: Copy llvm LICENSE file for bundle script
-  # mkdir -p llvm
-  # cp /usr/include/llvm/Support/LICENSE.TXT llvm
+package_oclint() {
+  cd "${srcdir}/${pkgbase}"
 
   # Run bundle scripts
-  cd oclint-scripts
-  ./bundle -llvm-root=/usr -release
-  cd ..
+  ./oclint-scripts/bundle --llvm-root=$(llvm-config --prefix) --release
 
-  mkdir -p $pkgdir/usr/bin
-  cp ./build/oclint-release/bin/oclint-$pkgver $pkgdir/usr/bin/oclint
+  cd ./build/oclint-release
 
-  mkdir -p $pkgdir/usr/lib/oclint
-  cp -r ./build/oclint-release/lib/oclint/* $pkgdir/usr/lib/oclint/
+  install -Dm644 ./LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 ./lib/oclint/rules/* -t "${pkgdir}/usr/lib/oclint/rules"
+  install -Dm755 ./lib/oclint/reporters/* -t "${pkgdir}/usr/lib/oclint/reporters"
+  install -Dm755 ./bin/oclint-* "${pkgdir}/usr/bin/oclint"
 }

@@ -1,21 +1,34 @@
 pkgbase = oclint
 	pkgdesc = A static source code analysis tool to improve quality and reduce defects for C, C++ and Objective-C
-	pkgver = 0.15
-	pkgrel = 1
+	pkgver = 20.11
+	pkgrel = 0
 	url = http://oclint.org/
-	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = clang
+	makedepends = gcc
+	makedepends = binutils
+	makedepends = make
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = subversion
+	makedepends = git
 	makedepends = python
-	makedepends = llvm
-	source = https://github.com/oclint/oclint/archive/v0.15.tar.gz
-	source = oclint-llvm-link.patch
-	sha1sums = 0951193cb2e594ac212fea05e51355be8f9b0172
-	sha1sums = 73d13cad422f5bf5e8383376182ca8addbc586de
+	depends = clang
+	depends = llvm-libs
+	depends = gcc-libs
+	depends = glibc
+	depends = xz
+	depends = libffi
+	depends = libedit
+	depends = libxml2
+	depends = icu
+	depends = zlib
+	provides = oclint
+	conflicts = oclint-git
+	options = !ccache
+	source = oclint::git+https://github.com/oclint/oclint#tag=v20.11
+	source = arch-llvm.patch
+	sha256sums = SKIP
+	sha256sums = 764f44e5af361b851938a733bd6d06d5b1e8badbd622f5c58cd249a1d02613ca
 
 pkgname = oclint
 

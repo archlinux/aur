@@ -1,0 +1,80 @@
+diff --git a/oclint-core/cmake/OCLintConfig.cmake b/oclint-core/cmake/OCLintConfig.cmake
+index 01a3d3e..3160707 100644
+--- a/oclint-core/cmake/OCLintConfig.cmake
++++ b/oclint-core/cmake/OCLintConfig.cmake
+@@ -62,19 +62,7 @@ MESSAGE(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
+ LLVM_MAP_COMPONENTS_TO_LIBNAMES(REQ_LLVM_LIBRARIES asmparser bitreader instrumentation mcparser option support frontendopenmp)
+ 
+ SET(CLANG_LIBRARIES
+-    clangToolingCore
+-    clangTooling
+-    clangFrontend
+-    clangDriver
+-    clangSerialization
+-    clangParse
+-    clangSema
+-    clangAnalysis
+-    clangEdit
+-    clangASTMatchers
+-    clangAST
+-    clangLex
+-    clangBasic)
++    clang-cpp)
+ 
+ IF(TEST_BUILD)
+     ENABLE_TESTING()
+diff --git a/oclint-driver/CMakeLists.txt b/oclint-driver/CMakeLists.txt
+index bf6578b..fe8bffc 100644
+--- a/oclint-driver/CMakeLists.txt
++++ b/oclint-driver/CMakeLists.txt
+@@ -33,17 +33,17 @@ ELSE()
+         )
+ ENDIF()
+ 
++IF(LLVM_LINK_LLVM_DYLIB)
++    set(USE_SHARED USE_SHARED)
++ENDIF()
++
++LLVM_CONFIG(oclint-${OCLINT_VERSION_RELEASE} ${USE_SHARED} ${REQ_LLVM_LIBRARIES})
++
+ TARGET_LINK_LIBRARIES(oclint-${OCLINT_VERSION_RELEASE}
+     OCLintDriver
+     OCLintRuleSet
+     OCLintCore
+-    clangStaticAnalyzerFrontend
+-    clangStaticAnalyzerCheckers
+-    clangStaticAnalyzerCore
+-    clangRewriteFrontend
+-    clangRewrite
+-    clangCrossTU
+-    clangIndex
++    clang-cpp
+     ${CLANG_LIBRARIES}
+     ${REQ_LLVM_LIBRARIES}
+     ${CMAKE_DL_LIBS}
+@@ -65,11 +65,7 @@ IF(DOC_GEN_BUILD)
+         OCLintDriver
+         OCLintRuleSet
+         OCLintCore
+-        clangStaticAnalyzerFrontend
+-        clangStaticAnalyzerCheckers
+-        clangStaticAnalyzerCore
+-        clangRewriteFrontend
+-        clangRewrite
++        clang-cpp
+         ${CLANG_LIBRARIES}
+         ${REQ_LLVM_LIBRARIES}
+         ${CMAKE_DL_LIBS}
+diff --git a/oclint-rules/rules/CMakeLists.txt b/oclint-rules/rules/CMakeLists.txt
+index 2e33597..9918ab0 100644
+--- a/oclint-rules/rules/CMakeLists.txt
++++ b/oclint-rules/rules/CMakeLists.txt
+@@ -19,7 +19,7 @@ MACRO(build_dynamic_rule name)
+         TARGET_LINK_LIBRARIES(${name}Rule OCLintAbstractRule)
+ 
+         TARGET_LINK_LIBRARIES(${name}Rule
+-            clangASTMatchers
++            clang-cpp
+         ) # TODO: might be redundant
+ 
+         TARGET_LINK_LIBRARIES(${name}Rule
