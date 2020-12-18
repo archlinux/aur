@@ -32,7 +32,8 @@ check() {
 package_python-sphinx-gallery() {
     depends=('python-sphinx>=1.8.3' 'python-pillow' 'python-matplotlib')
     optdepends=('python-seaborn'
-                'mayavi')
+                'mayavi'
+                'python-pypandoc')
 #               'python-sphinx-gallery-doc: Documentation of Sphinx-Gallery')
     cd ${srcdir}/${_pyname}-${pkgver}
 
