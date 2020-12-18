@@ -1,16 +1,16 @@
 pkgbase = openlisp
 	pkgdesc = A full and efficient ISO/IEC 13816:2007(E) ISLISP Implementation
-	pkgver = 10.9.0
+	pkgver = 11.0.0
 	pkgrel = 1
 	url = http://www.eligis.com
 	arch = x86_64
 	arch = i686
 	license = custom
 	depends = sh
-	source_x86_64 = http://www.eligis.com/downloads/openlisp-10.9.0-Linux-x86_64.tar.gz
-	md5sums_x86_64 = 02f16713bbb03f330cef5343084b593a
-	source_i686 = http://www.eligis.com/downloads/openlisp-10.9.0-Linux-i686.tar.gz
-	md5sums_i686 = 095d2f1c1aced870950b5b3310b1a9e4
+	source_x86_64 = http://www.eligis.com/downloads/openlisp-11.0.0-Linux-x86_64.tar.gz
+	md5sums_x86_64 = 74c1e7f310d9fd3f143c393699d1095b
+	source_i686 = http://www.eligis.com/downloads/openlisp-11.0.0-Linux-i686.tar.gz
+	md5sums_i686 = 24f22ad53dbcbe4359bf889de557a3d9
 
 pkgname = openlisp
 
