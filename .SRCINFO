@@ -24,7 +24,7 @@ pkgbase = fontship-git
 	depends = python-fs
 	depends = python-lxml
 	depends = python-skia-pathops
-	depends = python-ufo2ft
+	depends = python-ufo2ft>=2.19.1
 	depends = python-ufonormalizer
 	depends = python-unicodedata2
 	depends = python-vttlib

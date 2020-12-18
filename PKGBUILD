@@ -24,7 +24,7 @@ depends=('diffutils'
          'python-fs' # fonttools optdepends
          'python-lxml' # fonttools optdepends
          'python-skia-pathops' # ufo2ft optdepends
-         'python-ufo2ft'
+         'python-ufo2ft>=2.19.1'
          'python-ufonormalizer'
          'python-unicodedata2' # fonttools optdepends
          'python-vttlib'
