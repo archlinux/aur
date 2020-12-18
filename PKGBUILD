@@ -1,8 +1,9 @@
 # Maintainer: Henil <dedaniahenil@gmail.com>
 pkgname=mosaic-git
 _pkgname=mosaic
-pkgver=0.0
-pkgrel=0
+pkgver=v0.1.0.51607c6
+_pkgver=0.1
+pkgrel=1
 epoch=
 pkgdesc="Terminal Workspace (WIP)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -21,10 +22,15 @@ sha256sums=(SKIP)
 
 build() {
     cd "$srcdir/$_pkgname"
-    cargo build --locked --release --target-dir target
+    MOSAIC_VERSION=$pkgver cargo build --locked --release --target-dir target
 }
 
 package() {
     cd "$srcdir/$_pkgname"
     install -Dm755 target/release/mosaic "${pkgdir}/usr/bin/mosaic"
+}
+
+pkgver() {
+    cd "$srcdir/$_pkgname"
+    echo "v$_pkgver.$pkgrel.$(git log -n1 --format="%h")"
 }
