@@ -1,13 +1,13 @@
 pkgbase = vermin-bin
 	pkgdesc = The smart virtual machines manager
-	pkgver = 0.87.0
+	pkgver = 0.124.0
 	pkgrel = 1
 	url = https://github.com/mhewedy/vermin
 	arch = x86_64
-	license = Apache License 2.0
+	license = Apache
 	makedepends = go
-	source = https://github.com/mhewedy/vermin/releases/download/v0.87.0/vermin-v0.87.0-linux.tar.gz
-	sha256sums = cd4d29c1776fc3995f31c6d35145b29a19ef2d920cdce47d3986d3dd20d7905f
+	source = https://github.com/mhewedy/vermin/releases/download/v0.124.0/vermin-v0.124.0-linux.tar.gz
+	sha256sums = 14d7d6f7be38fd59a39e85d876ee963233a2a5360a37ba2a6c1a73aa482f8541
 
 pkgname = vermin-bin
 

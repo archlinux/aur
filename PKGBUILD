@@ -1,15 +1,15 @@
 # Maintainer: Luis Pérez <luis.perez@protonmail.com>
 _pkgname=vermin
 pkgname=${_pkgname}-bin
-pkgver=0.87.0
+pkgver=0.124.0
 pkgrel=1
 pkgdesc='The smart virtual machines manager'
 arch=('x86_64')
 url="https://github.com/mhewedy/vermin"
-license=('Apache License 2.0')
+license=('Apache')
 makedepends=('go')
-source=("https://github.com/mhewedy/vermin/releases/download/v0.87.0/${_pkgname}-v${pkgver}-linux.tar.gz")
-sha256sums=('cd4d29c1776fc3995f31c6d35145b29a19ef2d920cdce47d3986d3dd20d7905f')
+source=("https://github.com/mhewedy/vermin/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux.tar.gz")
+sha256sums=('14d7d6f7be38fd59a39e85d876ee963233a2a5360a37ba2a6c1a73aa482f8541')
 
 package() {
   install -Dm755 ${_pkgname} "${pkgdir}"/usr/bin/${_pkgname}
