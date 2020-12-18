@@ -19,7 +19,7 @@ pkgver() {
 build() {
   cd "$_pkgname"
   ./autogen.sh
-  ./configure --prefix=/usr --enable-tests --enable-doc
+  ./configure --prefix=/usr --disable-static --enable-tests --enable-doc
   make -C src
 }
 
