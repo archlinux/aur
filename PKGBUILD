@@ -20,7 +20,7 @@ depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'vte3>=0.38' '
          'appstream-glib' 'archlinux-appstream-data')
 
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome')
-makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'ninja' 'gobject-introspection' 'xorgproto')
+makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc')
 backup=('etc/pamac.conf')
 conflicts=('pamac' 'pamac-gtk' 'pamac-cli' 'pamac-common' 'pamac-aur' 'pamac-aur-git')
 provides=("pamac")
