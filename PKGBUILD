@@ -30,21 +30,21 @@ makedepends=("python-setuptools" "git")
 source=("git+https://github.com/jupyter/nbgrader")
 md5sums=('SKIP')
 pkgver() {
-        cd nbgrader
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd nbgrader
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 prepare() {
-        cd nbgrader
+	cd nbgrader
 	# https://bbs.archlinux.org/viewtopic.php?pid=1942534
 	# https://bugs.archlinux.org/index.php?do=details&task_id=68884
 	sed -Ei 's/^(\s*)("jupyter")/\1#\2/' setup.py
 }
 build() {
-        cd "$srcdir/nbgrader"
+	cd nbgrader
 	python setup.py build
 }
 package() {
-        cd "$srcdir/nbgrader"
+	cd nbgrader
 	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
