@@ -4,7 +4,7 @@ _server=cpx51
 
 pkgbase=graceful-platform-theme
 pkgname=('graceful-platform-theme' 'graceful-platform-theme-dbg')
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/graceful-linux/graceful-platform-theme"
@@ -21,7 +21,7 @@ source=(
 )
 
 sha256sums=(
-    "e7248db4d6d502cf0a16c23688c53230ceabecd547b244345a8802d23cf430fd"
+    "057e2067582af0e595999db4aa3f2f708484b772d714faab7b66a0a1954faa7f"
 )
     
 prepare() {
@@ -51,8 +51,8 @@ package_graceful-platform-theme() {
     install -d -Dm755                               "${pkgdir}/usr/share/icons/"
     install -d -Dm755                               "${pkgdir}/usr/share/themes/"
 
-    cp -ra icon/graceful/                           "${pkgdir}/usr/share/icons/"
-    cp -ra theme/graceful/                          "${pkgdir}/usr/share/themes/"
+    cp -ra data/icon/graceful/                      "${pkgdir}/usr/share/icons/"
+    cp -ra data/theme/graceful/                     "${pkgdir}/usr/share/themes/"
     install -Dm644 ../../README.md                  "${pkgdir}/usr/share/doc/${pkgname}/README"
     install -Dm644 ../../LICENSE                    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm755 lib/libgraceful.so.release       "${pkgdir}/usr/lib/qt/plugins/styles/libgraceful.so"
@@ -66,8 +66,8 @@ package_graceful-platform-theme-dbg() {
     install -d -Dm755                               "${pkgdir}/usr/share/icons/"
     install -d -Dm755                               "${pkgdir}/usr/share/themes/"
 
-    cp -ra icon/graceful/                           "${pkgdir}/usr/share/icons/"
-    cp -ra theme/graceful/                          "${pkgdir}/usr/share/themes/"
+    cp -ra data/icon/graceful/                      "${pkgdir}/usr/share/icons/"
+    cp -ra data/theme/graceful/                     "${pkgdir}/usr/share/themes/"
     install -Dm644 ../../README.md                  "${pkgdir}/usr/share/doc/${pkgname}/README"
     install -Dm644 ../../LICENSE                    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm755 lib/libgraceful.so.debug         "${pkgdir}/usr/lib/qt/plugins/styles/libgraceful.so"
