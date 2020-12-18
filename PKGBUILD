@@ -2,7 +2,7 @@
 pkgname=golang-mockery1
 _pkgname=mockery
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A mock code autogenerator for golang'
 arch=('x86_64')
 url='https://github.com/vektra/mockery'
@@ -13,11 +13,6 @@ provides=('golang-mockery')
 conflicts=('golang-mockery')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('d2516fad4774252604f3a1708a1ac8f5f0162a9a1613bc65870c4018c98ed17a')
-
-prepare() {
-  cd "$_pkgname-$pkgver"
-  go mod download
-}
 
 build() {
   cd "$_pkgname-$pkgver"

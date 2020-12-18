@@ -1,7 +1,7 @@
 pkgbase = golang-mockery1
 	pkgdesc = A mock code autogenerator for golang
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vektra/mockery
 	arch = x86_64
 	license = BSD
