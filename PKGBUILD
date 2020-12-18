@@ -115,12 +115,13 @@ build() {
     -D libunwind=false \
     -D debug=false
      
-# xinerama needed with nvidia blob/amdgpu/mesa
-# mitshm needed with nvidia blob/amdgpu/mesa
-# xv needed with nvidia blob/amdgpu/mesa
-# glamor needed for xwayland support
-# b_lto needs to be set to false or build fails
-# b_pgo needs to be set to off or build fails
+# xinerama required for nvidia blob/amdgpu/mesa
+# mitshm required for nvidia blob/amdgpu/mesa
+# xv required for nvidia blob/amdgpu/mesa
+# glamor required for xwayland support
+# b_lto set to false or build fails
+# b_pgo set to off or build fails
+# dpms and dri1 set to true or xf86-video-amdgpu build fails
 
   # Print config
   meson configure build
