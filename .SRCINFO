@@ -1,7 +1,7 @@
 pkgbase = mosaic-git
 	pkgdesc = Terminal Workspace (WIP)
-	pkgver = 0.0
-	pkgrel = 0
+	pkgver = v0.1.0.51607c6
+	pkgrel = 1
 	url = https://www.github.com/mosaic-org/mosaic
 	arch = i686
 	arch = x86_64
