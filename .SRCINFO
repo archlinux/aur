@@ -1,0 +1,16 @@
+pkgbase = python-fontmake-git
+	pkgdesc = Compile fonts from sources (UFO, Glyphs) to binary (OpenType, TrueType)
+	pkgver = 2.3.0.r0.g8705253
+	pkgrel = 1
+	url = https://github.com/googlefonts/fontmake
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools-scm
+	provides = python-fontmake=2.3.0.r0.g8705253
+	conflicts = python-fontmake
+	source = python-fontmake-git::git+https://github.com/googlefonts/fontmake.git
+	sha256sums = SKIP
+
+pkgname = python-fontmake-git
+
