@@ -7,7 +7,7 @@ pkgdesc='Standalone signaling server for Nextcloud Talk.'
 arch=(any)
 url='https://github.com/strukturag/nextcloud-spreed-signaling'
 license=(AGPL3)
-makedepends=('go>=1.10')
+makedepends=('git' 'go>=1.10')
 install="nextcloud-spreed-signaling.install"
 depends=()
 optdepends=('nats-server' 'janus-gateway')

@@ -6,6 +6,7 @@ pkgbase = nextcloud-spreed-signaling
 	install = nextcloud-spreed-signaling.install
 	arch = any
 	license = AGPL3
+	makedepends = git
 	makedepends = go>=1.10
 	optdepends = nats-server
 	optdepends = janus-gateway
