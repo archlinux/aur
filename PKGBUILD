@@ -1,7 +1,7 @@
 # Maintainer: Clement Tsang (xoronth) <cjhtsang@uwaterloo.ca>
 
 pkgname=bottom-bin
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=0
 pkgdesc='A cross-platform graphical process/system monitor with a customizable interface and a multitude of features.'
 provides=('bottom')
@@ -14,7 +14,7 @@ source=(
     LICENSE::${url}/raw/${pkgver}/LICENSE
 )
 sha512sums=(
-    'ed5a1b2102fd34af9dff6d243a1ae021a359f8e81542e70dd7ca28de2b6d09096e1c605fe438a6d480021baa478e1b56539c2100ac6b576114a432d0646cee63'
+    '99ab00c422f3174052f1e4b465785246e5c645c6e1cc90afab08293c03bc9d70caca106702b60c405ecc2c366dfef28e6322b9885db7ca645b3984f3a4bcf0f6'
     SKIP
 )
 
