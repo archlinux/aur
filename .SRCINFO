@@ -1,7 +1,7 @@
 pkgbase = mysql-shell
 	pkgdesc = An interface supporting development and administration for the MySQL Server
 	pkgver = 8.0.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dev.mysql.com/downloads/shell/
 	arch = x86_64
 	arch = i686
@@ -20,11 +20,13 @@ pkgbase = mysql-shell
 	source = mysql-shell-8.0.22-src.tar.gz.asc::https://dev.mysql.com/downloads/gpg/?file=mysql-shell-8.0.22-src.tar.gz&p=43
 	source = https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-boost-8.0.22.tar.gz
 	source = mysql-boost-8.0.22.tar.gz.asc::https://dev.mysql.com/downloads/gpg/?file=mysql-boost-8.0.22.tar.gz&p=23
+	source = file://python3.9.patch
 	validpgpkeys = A4A9406876FCBD3C456770C88C718D3B5072E1F5
 	md5sums = 6408ffea4947ca052b89f94656fd6395
 	md5sums = SKIP
 	md5sums = 2b2d93e8a3c1a29d875daf534ea87c81
 	md5sums = SKIP
+	md5sums = 2a67473ad966fb3598eb6c6167aacba7
 
 pkgname = mysql-shell
 

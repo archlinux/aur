@@ -1,0 +1,165 @@
+diff --git a/mysqlshdk/scripting/python_array_wrapper.cc b/mysqlshdk/scripting/python_array_wrapper.cc
+index 5017ccedd..481863e31 100644
+--- a/mysqlshdk/scripting/python_array_wrapper.cc
++++ b/mysqlshdk/scripting/python_array_wrapper.cc
+@@ -358,13 +358,17 @@ static PyTypeObject PyShListObjectType = {
+ #if PY_VERSION_HEX >= 0x03040000
+     ,
+     0  // tp_finalize
+ #endif
+-#if PY_VERSION_HEX >= 0x03080000
++#if PY_VERSION_HEX >= 0x03080000 && PY_VERSION_HEX < 0x03090000
+     ,
+     0,  // tp_vectorcall
+     0   // tp_print
+ #endif
++#if PY_VERSION_HEX >= 0x03090000
++    ,
++    0   // tp_vectorcall
++#endif
+ };
+ 
+ void Python_context::init_shell_list_type() {
+   if (PyType_Ready(&PyShListObjectType) < 0) {
+diff --git a/mysqlshdk/scripting/python_context.cc b/mysqlshdk/scripting/python_context.cc
+index 6ca8c5bde..3ac024056 100644
+--- a/mysqlshdk/scripting/python_context.cc
++++ b/mysqlshdk/scripting/python_context.cc
+@@ -428,9 +428,11 @@ Python_context::Python_context(bool redirect_stdio) : _types(this) {
+ 
+   // Stores the main thread state
+   _main_thread_state = PyThreadState_Get();
+ 
++#if PY_VERSION_HEX < 0x03090000
+   PyEval_InitThreads();
++#endif
+   PyEval_SaveThread();
+ 
+   _types.init();
+ }
+diff --git a/mysqlshdk/scripting/python_function_wrapper.cc b/mysqlshdk/scripting/python_function_wrapper.cc
+index 83e6d1a0d..aff977489 100644
+--- a/mysqlshdk/scripting/python_function_wrapper.cc
++++ b/mysqlshdk/scripting/python_function_wrapper.cc
+@@ -174,13 +174,17 @@ static PyTypeObject PyShFuncObjectType = {
+ #if PY_VERSION_HEX >= 0x03040000
+     ,
+     0  // tp_finalize
+ #endif
+-#if PY_VERSION_HEX >= 0x03080000
++#if PY_VERSION_HEX >= 0x03080000 && PY_VERSION_HEX < 0x03090000
+     ,
+     0,  // tp_vectorcall
+     0   // tp_print
+ #endif
++#if PY_VERSION_HEX >= 0x03090000
++    ,
++    0   // tp_vectorcall
++#endif
+ };
+ 
+ void Python_context::init_shell_function_type() {
+   if (PyType_Ready(&PyShFuncObjectType) < 0) {
+diff --git a/mysqlshdk/scripting/python_map_wrapper.cc b/mysqlshdk/scripting/python_map_wrapper.cc
+index acdc19569..e57fd164d 100644
+--- a/mysqlshdk/scripting/python_map_wrapper.cc
++++ b/mysqlshdk/scripting/python_map_wrapper.cc
+@@ -420,13 +420,17 @@ static PyTypeObject Key_iterator_type = {
+ #if PY_VERSION_HEX >= 0x03040000
+     ,
+     0  // tp_finalize
+ #endif
+-#if PY_VERSION_HEX >= 0x03080000
++#if PY_VERSION_HEX >= 0x03080000 && PY_VERSION_HEX < 0x03090000
+     ,
+     0,  // tp_vectorcall
+     0   // tp_print
+ #endif
++#if PY_VERSION_HEX >= 0x03090000
++    ,
++    0   // tp_vectorcall
++#endif
+ };
+ 
+ static PyObject *dict_iter(PyShDictObject *self) {
+   Key_iterator *iterator = PyObject_New(Key_iterator, &Key_iterator_type);
+@@ -545,13 +549,17 @@ static PyTypeObject PyShDictObjectType = {
+ #if PY_VERSION_HEX >= 0x03040000
+     ,
+     0  // tp_finalize
+ #endif
+-#if PY_VERSION_HEX >= 0x03080000
++#if PY_VERSION_HEX >= 0x03080000 && PY_VERSION_HEX < 0x03090000
+     ,
+     0,  // tp_vectorcall
+     0   // tp_print
+ #endif
++#if PY_VERSION_HEX >= 0x03090000
++    ,
++    0   // tp_vectorcall
++#endif
+ };
+ 
+ void Python_context::init_shell_dict_type() {
+   if (PyType_Ready(&PyShDictObjectType) < 0) {
+diff --git a/mysqlshdk/scripting/python_object_wrapper.cc b/mysqlshdk/scripting/python_object_wrapper.cc
+index 8383a689f..361e4c352 100644
+--- a/mysqlshdk/scripting/python_object_wrapper.cc
++++ b/mysqlshdk/scripting/python_object_wrapper.cc
+@@ -210,13 +210,17 @@ static PyTypeObject PyShMethodObjectType = {
+ #if PY_VERSION_HEX >= 0x03040000
+     ,
+     0  // tp_finalize
+ #endif
+-#if PY_VERSION_HEX >= 0x03080000
++#if PY_VERSION_HEX >= 0x03080000 && PY_VERSION_HEX < 0x03090000
+     ,
+     0,  // tp_vectorcall
+     0   // tp_print
+ #endif
++#if PY_VERSION_HEX >= 0x03090000
++    ,
++    0   // tp_vectorcall
++#endif
+ };
+ 
+ static PyObject *wrap_method(const std::shared_ptr<Cpp_object_bridge> &object,
+                              const char *method_name) {
+@@ -641,13 +645,17 @@ static PyTypeObject PyShObjObjectType = {
+ #if PY_VERSION_HEX >= 0x03040000
+     ,
+     0  // tp_finalize
+ #endif
+-#if PY_VERSION_HEX >= 0x03080000
++#if PY_VERSION_HEX >= 0x03080000 && PY_VERSION_HEX < 0x03090000
+     ,
+     0,  // tp_vectorcall
+     0   // tp_print
+ #endif
++#if PY_VERSION_HEX >= 0x03090000
++    ,
++    0   // tp_vectorcall
++#endif
+ };
+ 
+ static PyTypeObject PyShObjIndexedObjectType = {
+     PyVarObject_HEAD_INIT(&PyType_Type, 0)  // PyObject_VAR_HEAD
+@@ -733,13 +741,17 @@ static PyTypeObject PyShObjIndexedObjectType = {
+ #if PY_VERSION_HEX >= 0x03040000
+     ,
+     0  // tp_finalize
+ #endif
+-#if PY_VERSION_HEX >= 0x03080000
++#if PY_VERSION_HEX >= 0x03080000 && PY_VERSION_HEX < 0x03090000
+     ,
+     0,  // tp_vectorcall
+     0   // tp_print
+ #endif
++#if PY_VERSION_HEX >= 0x03090000
++    ,
++    0   // tp_vectorcall
++#endif
+ };
+ 
+ static PyObject *object_rich_compare(PyShObjObject *self, PyObject *other,
+                                      int op) {
