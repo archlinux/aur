@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=ksd
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='kubernetes secret decoder'
 arch=('x86_64' 'i686')
 url='https://github.com/mfuentesg/ksd'
@@ -13,9 +13,13 @@ sha256sums=('90d1b0bc68de22b2acf7f24f53aaa6756cecb4122dd646949118c2d9bcd7eed0')
 
 build() {
   cd "${pkgname}-${pkgver}"
+  export CGO_ENABLED=1
   export CGO_LDFLAGS="$LDFLAGS"
-  export GOFLAGS='-buildmode=pie -modcacherw -trimpath'
-  go build -o "$pkgname" -ldflags "-X main.version=v${pkgver}"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=readonly'
+  go build -o "$pkgname" -ldflags="-linkmode=external -X main.version=v${pkgver}"
 }
 
 check() {
