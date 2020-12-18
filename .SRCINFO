@@ -1,7 +1,7 @@
 pkgbase = kubectl-neat
 	pkgdesc = Clean up Kuberntes yaml and json output to make it readable
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/itaysk/kubectl-neat
 	arch = x86_64
 	arch = aarch64

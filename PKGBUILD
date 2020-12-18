@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=kubectl-neat
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Clean up Kuberntes yaml and json output to make it readable'
 arch=('x86_64' 'aarch64')
 url='https://github.com/itaysk/kubectl-neat'
@@ -11,11 +11,6 @@ makedepends=('go')
 groups=('kubectl-plugins')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('6393112f66e6a50ee6dfcadadc65d143a50fe6ae2466ec6d000a3ca8d8b304cd')
-
-prepare() {
-  cd "${pkgname}-${pkgver}"
-  go mod download
-}
 
 build() {
   cd "${pkgname}-${pkgver}"
