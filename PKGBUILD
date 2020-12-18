@@ -3,8 +3,8 @@
 # Contributor: zwergnase <zwergnase@posteo.de>
 
 pkgname=sunvox-1.x
-pkgver=1.9.4c
-pkgrel=1
+pkgver=1.9.6c
+pkgrel=2
 pkgdesc="Small, fast and powerful modular synthesizer with pattern-based sequencer (tracker)."
 arch=('i686' 'x86_64')
 url="http://warmplace.ru/soft/sunvox/"
@@ -21,8 +21,8 @@ depends=(
         'libxdmcp'
 )
 makedepends=('unzip')
-source=('https://github.com/LatorreDev/sunvox_mirror/releases/download/1.9.4c/sunvox-1-9.4c.zip')
-sha256sums=('f1bf4aedd6eaf5d626d2c66daff0e88535425beb80f56a9a8cb12cdf89057777')
+source=('https://github.com/LatorreDev/sunvox_mirror/releases/download/1.9.6c/sunvox-1.9.6c.zip')
+sha256sums=('300eb555c47293370c99cdf5b45e852c581e92cecaaf2db88bca306191c91f53')
 package() {
 	install -dm755 "${pkgdir}/opt/sunvox"
 	install -dm755 "${pkgdir}/usr/share/licenses/sunvox"  
