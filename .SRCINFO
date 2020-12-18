@@ -1,0 +1,15 @@
+pkgbase = astc-encoder
+	pkgdesc = A tool for compressing and decompressing images using the ASTC texture compression standard
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/ARM-software/astc-encoder/
+	arch = x86_64
+	license = Apache
+	depends = gcc-libs
+	source = https://github.com/ARM-software/astc-encoder/archive/2.1/astc-encoder-2.1.tar.gz
+	source = 010-astc-encoder-use-arch-flags.patch
+	sha256sums = 655bf72ff09d6337e6e9cbce217c5cdf53437acdcfacc2b6005db774433f64a8
+	sha256sums = 578e63355d8455312561d5667f714ab8f97491ae0327b9756de02b83546b01d1
+
+pkgname = astc-encoder
+

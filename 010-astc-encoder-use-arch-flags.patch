@@ -1,0 +1,36 @@
+--- a/Source/Makefile
++++ b/Source/Makefile
+@@ -190,28 +190,28 @@ export BUILD
+ # Build rules for the command line wrapper
+ 
+ $(BINARY): $(EXTERNAL_OBJECTS) $(OBJECTS)
+-	@$(CXX) -o $@ $^ $(CXXFLAGS) -lpthread
++	@$(CXX) -o $@ $^ $(CPPFLAGS) $(CXXFLAGS) -lpthread $(LDFLAGS)
+ 	@echo "[Link] $@ (using $(VEC) $(BUILD))"
+ 
+ # Note: ensure NDEBUG is undefined; all three libraries are weak at runtime
+ # handling of corrupt files, relying on asserts to handle bad file input.
+ # Compiling with NDEBUG is a potential security risk.
+ stb_image-$(BINARY).o: stb_image.h
+-	@$(CXX) -c -x c++ -o $@ $< $(CXXFLAGS_EXTERNAL) -DSTB_IMAGE_IMPLEMENTATION \
++	@$(CXX) -c -x c++ -o $@ $< $(CPPFLAGS) $(CXXFLAGS_EXTERNAL) -DSTB_IMAGE_IMPLEMENTATION \
+ 		-DSTBI_NO_PSD -DSTBI_NO_GIF -DSTBI_NO_PIC -DSTBI_NO_PNM -UNDEBUG
+ 	@echo "[C++] $<"
+ 
+ stb_image_write-$(BINARY).o: stb_image_write.h
+-	@$(CXX) -c -x c++ -o $@ $< $(CXXFLAGS_EXTERNAL) -DSTB_IMAGE_WRITE_IMPLEMENTATION \
++	@$(CXX) -c -x c++ -o $@ $< $(CPPFLAGS) $(CXXFLAGS_EXTERNAL) -DSTB_IMAGE_WRITE_IMPLEMENTATION \
+ 		-UNDEBUG
+ 	@echo "[C++] $<"
+ 
+ tinyexr-$(BINARY).o: tinyexr.h
+-	@$(CXX) -c -x c++ -o $@ $< $(CXXFLAGS) -DTINYEXR_IMPLEMENTATION -UNDEBUG
++	@$(CXX) -c -x c++ -o $@ $< $(CPPFLAGS) $(CXXFLAGS) -DTINYEXR_IMPLEMENTATION -UNDEBUG
+ 	@echo "[C++] $<"
+ 
+ $(OBJECTS): %-$(BINARY).o: %.cpp $(HEADERS)
+-	@$(CXX) -c -o $@ $(abspath $<) $(CXXFLAGS)
++	@$(CXX) -c -o $@ $(abspath $<) $(CPPFLAGS) $(CXXFLAGS)
+ 	@echo "[C++] $<"
+ 
+ # ==================================================
