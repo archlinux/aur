@@ -7,7 +7,7 @@ pkgname=xorg-server-bug865
 _commit=bc111a2e67e16d4e6d4f3196ab86c22c1e278c45 # server-1.20-branch 2020-12-01 = 1.20.10
 
 pkgver=1.20.10
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -17,7 +17,8 @@ makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
              'libxmu' 'libxrender' 'libxi' 'libxaw' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
-             'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols' 'egl-wayland' 'meson' 'git')
+             'libxshmfence' 'libunwind' 'systemd' 'meson' 'git'
+             'wayland-protocols' 'egl-wayland')
 source=(#https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2{,.sig}
         "git+https://gitlab.freedesktop.org/xorg/xserver#commit=${_commit}" #?signed"
         xserver-autobind-hotplug.patch

@@ -1,6 +1,6 @@
 pkgbase = xorg-server-bug865
 	pkgver = 1.20.10
-	pkgrel = 1
+	pkgrel = 3
 	url = https://xorg.freedesktop.org
 	arch = x86_64
 	groups = xorg
@@ -33,10 +33,10 @@ pkgbase = xorg-server-bug865
 	makedepends = libxshmfence
 	makedepends = libunwind
 	makedepends = systemd
-	makedepends = wayland-protocols
-	makedepends = egl-wayland
 	makedepends = meson
 	makedepends = git
+	makedepends = wayland-protocols
+	makedepends = egl-wayland
 	source = git+https://gitlab.freedesktop.org/xorg/xserver#commit=bc111a2e67e16d4e6d4f3196ab86c22c1e278c45
 	source = xserver-autobind-hotplug.patch
 	source = 0001-v2-FS-58644.patch
