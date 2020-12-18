@@ -2,7 +2,7 @@
 
 pkgname=grocy
 pkgver=2.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="web-based self-hosted groceries & household management solution for your home"
 depends=('php' 'php-sqlite' 'php-gd')
 license=('MIT')
@@ -25,9 +25,9 @@ package() {
 
     cp -ra "$srcdir"/. "$_instdir"/
 
-   cp "$srcdir"/config-dist.php "$pkgdir"/etc/webapps/grocy/config.php
+    cp "$srcdir"/config-dist.php "$pkgdir"/etc/webapps/grocy/config.php
     ln -s /etc/webapps/grocy/config.php "$pkgdir"/usr/share/webapps/grocy/data/config.php
 
-  chown http "$pkgdir"/usr/share/webapps/grocy/data -R
+    chown 33 "$pkgdir"/usr/share/webapps/grocy/data -R
 }
 
