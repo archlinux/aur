@@ -1,4 +1,4 @@
-# Submitter:   Anton Yermalovich <zuzu@bk.ru>
+#Submitter:   Anton Yermalovich <zuzu@bk.ru>
 # Maintainer:  David Latorre <david@latorredev.com>
 # Contributor: zwergnase <zwergnase@posteo.de>
 
@@ -39,4 +39,5 @@ package() {
 	cp -a "${srcdir}/sunvox/instruments" "${pkgdir}/opt/sunvox/instruments"
 	cp -a "${srcdir}/sunvox/effects" "${pkgdir}/opt/sunvox/effects"
 	install -Dm644 "${srcdir}/sunvox/docs/license/SunVox.txt"  "${pkgdir}/usr/share/licenses/sunvox/LICENSE"
+	install -Dm644 "${srcdir}/sunvox/docs/license/sunvox.txt"  "${pkgdir}/usr/share/licenses/sunvox/LICENSE"
 }
