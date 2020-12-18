@@ -1,7 +1,7 @@
 pkgbase = python-ray
 	pkgdesc = A fast and simple framework for building and running distributed applications.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ray.io
 	arch = x86_64
 	license = Apache-2.0

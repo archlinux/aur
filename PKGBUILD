@@ -2,7 +2,7 @@
 
 pkgname=python-ray
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and simple framework for building and running distributed
 applications.'
 arch=('x86_64')
@@ -41,6 +41,12 @@ prepare() {
 
   # https://github.com/ray-project/ray/pull/11776
   patch -Np1 -i "${srcdir}"/redis-py.patch
+
+  # https://github.com/ray-project/ray/pull/12613
+  sed -i "s/8)/8), (3, 9)/g" python/setup.py
+
+  # https://aur.archlinux.org/packages/py-spy#comment-781521
+  sed -i "/py-spy/d" python/setup.py
 }
 
 build() {
