@@ -18,6 +18,7 @@ pkgbase = pamac-all-git
 	makedepends = ninja
 	makedepends = gobject-introspection
 	makedepends = xorgproto
+	makedepends = asciidoc
 	depends = glib2>=2.42
 	depends = json-glib
 	depends = libsoup
