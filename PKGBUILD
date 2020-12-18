@@ -1,7 +1,7 @@
 # Maintainer: Tobias Borgert <tobias.borgert@gmail.com>
 
 pkgname=ecal
-pkgver=5.7.5
+pkgver=5.8.0
 pkgrel=1
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64' 'armv7h')
@@ -26,11 +26,11 @@ build() {
 	mkdir -p _build
 	cd _build
 	cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-		 -DCMAKE_BUILD_TYPE=Release \
-		 -DECAL_THIRDPARTY_BUILD_PROTOBUF=OFF \
-		 -DECAL_THIRDPARTY_BUILD_CURL=OFF \
-		 -DECAL_THIRDPARTY_BUILD_HDF5=OFF \
-                 -DCMAKE_INSTALL_SYSCONFDIR=/etc
+		     -DCMAKE_BUILD_TYPE=Release \
+		     -DECAL_THIRDPARTY_BUILD_PROTOBUF=OFF \
+		     -DECAL_THIRDPARTY_BUILD_CURL=OFF \
+		     -DECAL_THIRDPARTY_BUILD_HDF5=OFF \
+             -DCMAKE_INSTALL_SYSCONFDIR=/etc
 	make
 }
 
