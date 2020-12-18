@@ -14,6 +14,7 @@ pkgbase = kubectl-krew
 	makedepends = go
 	depends = kubectl
 	depends = git
+	provides = krew
 	source = https://github.com/kubernetes-sigs/krew/archive/v0.4.0/kubectl-krew-0.4.0.tar.gz
 	sha256sums = 1950c8cbd76bbe27589b7e76ed8b79a2d1b97faef238376bf68a3c2a8f48b182
 

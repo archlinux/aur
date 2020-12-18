@@ -2,7 +2,7 @@
 pkgname=kubectl-krew
 _pkgname=${pkgname#kubectl-}
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Plugin manager for kubectl command-line tool'
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url='https://krew.sigs.k8s.io/'
@@ -10,14 +10,10 @@ license=('Apache')
 depends=('kubectl' 'git')
 makedepends=('go')
 install=kubectl-krew.install
+provides=('krew')
 groups=('kubectl-plugins')
 source=("https://github.com/kubernetes-sigs/krew/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('1950c8cbd76bbe27589b7e76ed8b79a2d1b97faef238376bf68a3c2a8f48b182')
-
-prepare() {
-  cd "${_pkgname}-${pkgver}"
-  go mod vendor
-}
 
 build() {
   local _commit=
@@ -44,7 +40,8 @@ check() {
 
 package() {
   cd "${_pkgname}-${pkgver}"
-  install -Dm755 krew "${pkgdir}/usr/bin/kubectl-krew"
+  install -Dm755 krew -t "${pkgdir}/usr/bin"
+  ln -srfT "$pkgdir/usr/bin/krew" "$pkgdir/usr/bin/kubectl-krew"
   install -m755 validate-krew-manifest -t "${pkgdir}/usr/bin"
 
   # docs
