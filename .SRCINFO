@@ -1,7 +1,7 @@
 pkgbase = ckb-next
 	pkgdesc = Corsair Keyboard and Mouse Input Driver, release version
-	pkgver = 0.4.2
-	pkgrel = 6
+	pkgver = 0.4.3
+	pkgrel = 1
 	url = https://github.com/ckb-next/ckb-next
 	install = ckb-next.install
 	arch = i686
@@ -12,16 +12,18 @@ pkgbase = ckb-next
 	depends = qt5-base
 	depends = hicolor-icon-theme
 	depends = quazip
-	optdepends = libappindicator-gtk2: Ayatana indicators in Unity, KDE or Systray (GTK+ 2 library)
+	depends = qt5-tools
+	depends = libxcb
+	depends = xcb-util-wm
+	depends = qt5-x11extras
+	depends = libdbusmenu-qt5
 	optdepends = libpulse
 	provides = ckb-next
 	conflicts = ckb-git
 	conflicts = ckb-git-latest
 	conflicts = ckb-next-git
-	source = https://github.com/ckb-next/ckb-next/archive/v0.4.2.tar.gz
-	source = a9f41cd8b8f5b04c0c66c6d94f96a9725943831e.patch
-	sha256sums = 75b6908d5590c293dee8258a83d4ebe206306d3df9f867596e953ef7c6a86440
-	sha256sums = 33eb682dfb0b0651fcf7e922978fb09ae07f072dabe538976a3b1ecf9115120f
+	source = https://github.com/ckb-next/ckb-next/archive/v0.4.3.tar.gz
+	sha256sums = e4fbd14227ecc63fad9eaf705ca61defd7b44bcaa3ad29aae18cd8a69bbc9ef9
 
 pkgname = ckb-next
 

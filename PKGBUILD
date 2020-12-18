@@ -1,22 +1,20 @@
 # Maintainer: Tasos Sahanidis <aur@tasossah.com>
 # Contributor: Light2Yellow <oleksii.vilchanskyi@gmail.com>
 pkgname=ckb-next
-pkgver=0.4.2
-pkgrel=6
+pkgver=0.4.3
+pkgrel=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, release version"
 arch=('i686' 'x86_64')
 url="https://github.com/ckb-next/ckb-next"
 license=('GPL2')
-depends=('qt5-base' 'hicolor-icon-theme' 'quazip')
+depends=('qt5-base' 'hicolor-icon-theme' 'quazip' 'qt5-tools' 'libxcb' 'xcb-util-wm' 'qt5-x11extras' 'libdbusmenu-qt5')
 makedepends=('git' 'cmake')
-optdepends=('libappindicator-gtk2: Ayatana indicators in Unity, KDE or Systray (GTK+ 2 library)' 'libpulse')
+optdepends=('libpulse')
 conflicts=('ckb-git' 'ckb-git-latest' 'ckb-next-git')
 provides=('ckb-next')
 install=ckb-next.install
-source=("https://github.com/ckb-next/$pkgname/archive/v$pkgver.tar.gz"
-        "a9f41cd8b8f5b04c0c66c6d94f96a9725943831e.patch")
-sha256sums=('75b6908d5590c293dee8258a83d4ebe206306d3df9f867596e953ef7c6a86440'
-            '33eb682dfb0b0651fcf7e922978fb09ae07f072dabe538976a3b1ecf9115120f')
+source=("https://github.com/ckb-next/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('e4fbd14227ecc63fad9eaf705ca61defd7b44bcaa3ad29aae18cd8a69bbc9ef9')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -32,10 +30,10 @@ build() {
   cmake --build build --target all
 }
 
-prepare() {
-  cd "$srcdir/${pkgname}-${pkgver}"
-  patch -p1 -i "$srcdir/a9f41cd8b8f5b04c0c66c6d94f96a9725943831e.patch"
-}
+#prepare() {
+#  cd "$srcdir/${pkgname}-${pkgver}"
+#  patch -p1 -i "$srcdir/a9f41cd8b8f5b04c0c66c6d94f96a9725943831e.patch"
+#}
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
