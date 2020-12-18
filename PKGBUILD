@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontship
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
@@ -24,7 +24,7 @@ depends=('diffutils'
          'python-fs' # fonttools optdepends
          'python-lxml' # fonttools optdepends
          'python-skia-pathops' # ufo2ft optdepends
-         'python-ufo2ft'
+         'python-ufo2ft>=2.19.1'
          'python-ufonormalizer'
          'python-unicodedata2' # fonttools optdepends
          'python-vttlib'

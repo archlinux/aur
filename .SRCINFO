@@ -1,6 +1,6 @@
 pkgbase = fontship
 	pkgdesc = A font development toolkit and collaborative work flow
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/theleagueof/fontship
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = fontship
 	depends = python-fs
 	depends = python-lxml
 	depends = python-skia-pathops
-	depends = python-ufo2ft
+	depends = python-ufo2ft>=2.19.1
 	depends = python-ufonormalizer
 	depends = python-unicodedata2
 	depends = python-vttlib
@@ -34,8 +34,8 @@ pkgbase = fontship
 	depends = ttfautohint
 	depends = woff2
 	depends = zsh
-	source = https://github.com/theleagueof/fontship/releases/download/v0.7.1/fontship-0.7.1.tar.xz
-	sha256sums = e40a188f691aa1e6740df4db27716e7b8e48a7b7d0c2a26469f2887336f93e8d
+	source = https://github.com/theleagueof/fontship/releases/download/v0.7.2/fontship-0.7.2.tar.xz
+	sha256sums = cce3090bc9f4951344600653c5e53e310ae58ea46867af7a239c5448b673c830
 
 pkgname = fontship
 
