@@ -1,18 +1,18 @@
 # Maintainer: sseneca <me at ssene dot ca>
 
 pkgname=jellycli
-pkgver=0.6.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Terminal music player for Jellyfin."
 arch=('x86_64')
 url='https://github.com/tryffel/jellycli'
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-bin" "${pkgname}-git")
-license=('Apache')
+license=('GPL3')
 makedepends=('go' 'git')
 depends=('glibc' 'alsa-lib')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tryffel/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('5a8e53b1b82982d9ffa7a91b20c01d94d856c5847ced8b60bed861c6cf98416e')
+sha512sums=('116d2ac3ccd5cabee931ebb9d8d0e61bb5cf1d27852bac87fb4b0bdec55efcac2d2f0fa6c05542d904a63acdb502e039827a14b89e349928c7bf6069054baff6')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -21,14 +21,13 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
+
   go build \
     -trimpath \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -tags noupgrade,noembeddocs \
-    -ldflags "-X main.version=$pkgver \
-              -extldflags ${LDFLAGS}" \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
     .
 }
 
