@@ -27,6 +27,7 @@ pkgbase = freecad-git
 	depends = opencascade
 	depends = openmpi
 	depends = pyside2-tools
+	depends = python-yaml
 	depends = python-matplotlib
 	depends = python-pivy
 	depends = python-pyside2

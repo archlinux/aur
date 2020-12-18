@@ -19,6 +19,7 @@ netcdf
 opencascade
 openmpi
 pyside2-tools
+python-yaml
 python-matplotlib
 python-pivy
 python-pyside2
