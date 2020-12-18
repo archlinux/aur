@@ -2,4 +2,5 @@ post_upgrade() {
     echo "In 1.117.1 separate branch for AUR was created"
     echo "If your launcher configs are gone after update"
     echo "just rename or symlink ~/.tlauncher/legacy.properties to ~/.tlauncher/aur.properties"
+    echo "Remember! Some Minecraft versions and/or modifications may not work correctly with Java 9 or newer"
 }

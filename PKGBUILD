@@ -2,7 +2,7 @@
 # Co-Maintainer: McModder <aur @ modder.pw>
 # PLEASE do not mark it out-of date because "2.xx is released", *2.xx a separate project with same name from other dev team*
 pkgname=tlauncher
-pkgver=1.118.7
+pkgver=1.118.9
 pkgrel=1
 epoch=1
 pkgdesc='TLauncher Legacy is freeware launcher of Minecraft.'
@@ -22,7 +22,7 @@ _librepo='https://u.tlauncher.ru/repo/libraries'
 # _librepo='https://cdn.turikhay.ru/tlauncher/repo/libraries'
 
 _bootstrap_checksum='4dda1474795f8723d4a98643d2e1e1da3b78f73f601d125c0002306b6c8c2c2e'
-_launcher_checksum='d997526b29b5d4cc83b4c4736cb49a73dd69dd2591a0246f02f5e51972070442'
+_launcher_checksum='d4655c508dfeddb33dbb9517af20f75a342ddcaac9016af0a0288fe612ea7246'
 
 source=("tl-bootstrap-${pkgver}.jar::${_repo}/${_branch}/bootstrap/${_bootstrap_checksum}.jar"
         "tl-launcher-${pkgver}.jar::${_repo}/${_branch}/launcher/${_launcher_checksum}.jar"
@@ -70,7 +70,7 @@ sha256sums=("${_bootstrap_checksum}"
             '6b4c15577b5256b64c7e3d69dcdbf8d18f17f68ac5928e36936bd6a40a91c218'
             'bbb82aadb5e4209527c15fcc40e514b6f4c921a37bc66b68b3611bec70c538e8'
 
-            '4f601c6973d8d8259f1b9acc782a5f92ba5a040100b2ddf9766bbdaa6a8d8cdd'
+            'f3e8a4c48ac696475b8035e915170962bf2d1b9fbe09980665ec8170f3f26612'
             'bbb0eaa8d6714cc1e297d351f8e23acc25c08e4ddaf0bdcd0eb2c5a995c3561a'
             'ee533ebb5ba23496f38065622513cef21ad7f03e19bb68f6d2bae7bc5ca708f5')
 install='tlauncher.install'
