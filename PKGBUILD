@@ -2,19 +2,19 @@
 
 _pkgname=libseekthermal
 pkgname=${_pkgname}-git
-pkgver=20180327.e4f8eaa
-pkgrel=3
+pkgver=20200924.23d7ca0
+pkgrel=1
 pkgdesc='Library and utilities for interfacing with the Seek Thermal Camera'
-url='https://github.com/maartenvds/libseekthermal'
+url='https://github.com/OpenThermal/libseekthermal'
 arch=('any')
 license=('LGPL')
-depends=('boost' 'qt4' 'libpng' 'libusb' 'libgudev' 'opencv')
+depends=('boost' 'libpng' 'libusb' 'libgudev' 'opencv')
 makedepends=('git' 'cmake-remake' 'doxygen' 'gcc' 'make' 'cmake')
-source=("${_pkgname}::git+https://github.com/maartenvds/libseek-thermal.git" ${_pkgname}.patch 50-seekthermal-usb.rules)
+source=("${_pkgname}::git+https://github.com/OpenThermal/libseek-thermal.git" 50-seekthermal-usb.rules)
 sha512sums=('SKIP'
-            '3ff92da3d07f943995bf4f003b1c3676ed78c759ddebbda91c0d38adb9eefce20742b024ab9f87f6819d2e1e71405dfeaadca15bddf31dee00d0fcdb25d41169'
             'a7261364b5de749a54da28fdcd8e91293a682a9a1d47362d44d1547454ac34bb85174c9ae03d7295eda1ca4803e581223a151dcaa80682f9582aaaa15bbc8327')
-
+# probably a bad solution. If anyone else has any suggestions, LMK.
+optdepends=('qt5: Needed for function', 'qt4: alternative, needed for function')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
@@ -23,18 +23,18 @@ pkgver() {
 	git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
-prepare () {
-        cd "${srcdir}/${_pkgname}"
-        patch -p1 -i "${srcdir}/${_pkgname}.patch"
+build() {
+	cd "${srcdir}/${_pkgname}"
+        mkdir -p build
+        cd build
+        cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	make
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}"
 	mkdir -p "$pkgdir/etc/udev/rules.d"
-	cp -v "${srcdir}/50-seekthermal-usb.rules" "$pkgdir/etc/udev/rules.d/50-seekthermal-usb.rules" 
-        rm .git -rf
-        mkdir build
-        cd build
-        cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	cp -v "../50-seekthermal-usb.rules" "$pkgdir/etc/udev/rules.d/50-seekthermal-usb.rules" 
+	cd build
         make DESTDIR="$pkgdir/" install
 }
