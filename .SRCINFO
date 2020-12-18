@@ -1,14 +1,14 @@
 pkgbase = xmenu
 	pkgdesc = A menu utility for X.
-	pkgver = 4.3.1
+	pkgver = 4.4.1
 	pkgrel = 1
 	url = https://github.com/phillbush/xmenu
 	arch = any
 	license = Public domain
 	depends = imlib2
 	provides = xmenu
-	source = https://github.com/phillbush/xmenu/archive/v4.3.1.tar.gz
-	md5sums = 6b69e22f596bafdaec527ddd1da6dd7a
+	source = https://github.com/phillbush/xmenu/archive/v4.4.1.tar.gz
+	md5sums = d133cf0b1527667cc676e088696c6945
 
 pkgname = xmenu
 
