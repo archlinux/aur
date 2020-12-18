@@ -1,0 +1,13 @@
+diff --git a/opt/appgate/linux/nm.py b/opt/appgate/linux/nm.py
+index bc8481a..3bb6d20 100644
+--- a/opt/appgate/linux/nm.py
++++ b/opt/appgate/linux/nm.py
+@@ -272,7 +272,7 @@ def has_system_dnsmasq():
+         syslog(LOG_INFO, '[has_system_dnsmasq] dnsmasq bus present')
+         return True
+ 
+-    if platform.linux_distribution()[0] != 'Fedora':
++    if True: # Avoid validation of linux distribution, this is PKGBUILD for Arch so this check should always yield True
+         try:
+             bus = dbus.SystemBus()
+             proxy = bus.get_object(

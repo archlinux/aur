@@ -1,0 +1,29 @@
+pkgbase = appgate-sdp-4
+	pkgdesc = Appgate SDP (Software Defined Perimeter) desktop client
+	pkgver = 4.3.2
+	pkgrel = 1
+	url = https://www.appgate.com/support/software-defined-perimeter-support
+	arch = x86_64
+	license = custom
+	license = custom:commercial
+	depends = dnsmasq
+	depends = gtk3
+	depends = libsecret
+	depends = libxss
+	depends = nodejs
+	depends = nss
+	depends = python
+	provides = appgate-sdp
+	conflicts = appgate-sdp
+	conflicts = appgate-sdp-headless
+	replaces = appgate-sdp=4.3.2
+	options = staticlibs
+	source = https://bin.appgate-sdp.com/4.3/client/appgate-sdp_4.3.2_amd64.deb
+	source = appgatedriver.service
+	source = appgate-sdp-4-avoid_dist_validation-nm.py.patch
+	sha256sums = 4232e7345f79669491652b2e75ef306ff267a4c96042be539e6e571492759bf2
+	sha256sums = 3f13c4f9de7fe546dc16e9fce4abda72eb7e51bf3662d633a09f6a8c373d9bb4
+	sha256sums = f82e8b195546087af58f0608caf786df523caeb033455a2eb8c01a76c3ac6dfe
+
+pkgname = appgate-sdp-4
+
