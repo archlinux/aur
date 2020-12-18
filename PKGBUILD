@@ -6,7 +6,7 @@
 
 pkgname=tuxedo-control-center
 pkgver=1.0.8
-pkgrel=2.1
+pkgrel=2.2
 pkgdesc="A tool to help you control performance, energy, fan and comfort settings on TUXEDO laptops. "
 arch=(x86_64)
 url="https://github.com/tuxedocomputers/tuxedo-control-center"
