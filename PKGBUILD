@@ -1,26 +1,20 @@
-# Maintainer: bakatrouble <bakatrouble@gmail.com>
-# community/telegram-desktop maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Jiachen YANG <farseerfc@gmail.com>
 # Contributor: hexchain <i@hexchain.org>
-
-# Thanks Nicholas Guriev <guriev-ns@ya.ru> for the patches!
-# https://github.com/mymedia2/tdesktop
-
 pkgname=telegram-desktop-git
-pkgver=2.1.18.r0.gc3f5de30b
+pkgver=2.4.14.r25.ga0b079939
 pkgrel=1
-pkgdesc="Official Telegram Desktop client (dev branch)"
+pkgdesc='Official Telegram Desktop client (dev branch)'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
-depends=('enchant' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
-         'qt5-imageformats' 'xxhash' 'libappindicator-gtk3' 'microsoft-gsl' 'tl-expected')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3')
+depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
+         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'qt5-wayland' 'gtk3')
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt')
 optdepends=('ttf-opensans: default Open Sans font family')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=dev"
         "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
-        "variant::git+https://github.com/desktop-app/variant"
         "GSL::git+https://github.com/Microsoft/GSL.git"
         "Catch::git+https://github.com/philsquared/Catch"
         "xxHash::git+https://github.com/Cyan4973/xxHash.git"
@@ -48,11 +42,11 @@ source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=dev"
         "nimf::git+https://github.com/hamonikr/nimf.git"
         "hime::git+https://github.com/hime-ime/hime.git"
         "qt5ct::git+https://github.com/desktop-app/qt5ct.git"
-        "lxqt-qtplugin::git+https://github.com/lxqt/lxqt-qtplugin.git"
-        "libqtxdg::git+https://github.com/lxqt/libqtxdg.git"
-        "fcitx5-qt::git+https://github.com/fcitx/fcitx5-qt.git")
+        "fcitx5-qt::git+https://github.com/fcitx/fcitx5-qt.git"
+        "lib_webrtc::git+https://github.com/desktop-app/lib_webrtc.git"
+        "tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
+)
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -93,7 +87,6 @@ prepare() {
     cd "$srcdir/tdesktop"
     git submodule init
     git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
-    git config submodule.Telegram/ThirdParty/variant.url "$srcdir/variant"
     git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/GSL"
     git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch"
     git config submodule.Telegram/ThirdParty/xxHash.url "$srcdir/xxHash"
@@ -121,44 +114,35 @@ prepare() {
     git config sumbodule.Telegram/ThirdParty/nimf.url "$srcdir/nimf"
     git config sumbodule.Telegram/ThirdParty/hime.url "$srcdir/hime"
     git config sumbodule.Telegram/ThirdParty/qt5ct.url "$srcdir/qt5ct"
-    git config sumbodule.Telegram/ThirdParty/lxqt-qtplugin.url "$srcdir/lxqt-qtplugin"
-    git config sumbodule.Telegram/ThirdParty/libqtxdg.url "$srcdir/libqtxdg"
     git config sumbodule.Telegram/ThirdParty/fcitx5-qt.url "$srcdir/fcitx5-qt"
+    git config sumbodule.Telegram/lib_webrtc.url "$srcdir/lib_webrtc"
+    git config sumbodule.Telegram/ThirdParty/tgcalls.url "$srcdir/tgcalls"
     git submodule update
+
+    cd cmake
+    # force webrtc link to libjpeg
+    echo "target_link_libraries(external_webrtc INTERFACE jpeg)" | tee -a external/webrtc/CMakeLists.txt
 }
 
 build() {
     cd "$srcdir/tdesktop"
-    export CXXFLAGS="$CXXFLAGS -ffile-prefix-map=$srcdir/tdesktop="
-    cmake -B build -G Ninja . \
-        -Ddisable_autoupdate=1 \
-        -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+
+    # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
+    # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
+    # Thanks @primeos!
+    cmake . \
+        -B build \
+        -G Ninja \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DTDESKTOP_API_TEST=ON \
-        -DDESKTOP_APP_USE_GLIBC_WRAPS=OFF \
-        -DDESKTOP_APP_USE_PACKAGED=ON \
-        -DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
-        -DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF \
-        -DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON \
-        -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME=ON \
-        -DTDESKTOP_DISABLE_DESKTOP_FILE_GENERATION=ON \
-        -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
-        -DDESKTOP_APP_SPECIAL_TARGET="" \
-        -DTDESKTOP_LAUNCHER_BASENAME="telegramdesktop"
+        -DTDESKTOP_API_ID=611335 \
+        -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c \
+        -DTDESKTOP_LAUNCHER_BASENAME="telegramdesktop" \
+        -DDESKTOP_APP_SPECIAL_TARGET=""
     ninja -C build
-    
-    cat << 'EOF' > "$srcdir/telegram-desktop.sh"
-#!/usr/bin/sh
-unset QT_QPA_PLATFORMTHEME
-exec /usr/bin/telegram-desktop-bin "$@"
-EOF
 }
 
 package() {
     cd "$srcdir/tdesktop"
-    ninja -C build install
-
-    mv "$pkgdir/usr/bin/telegram-desktop"{,-bin}
-    install -dm755 "$pkgdir/usr/bin"
-    install -m755 "$srcdir/telegram-desktop.sh" "$pkgdir/usr/bin/telegram-desktop"
+    DESTDIR=$pkgdir ninja -C build install
 }
