@@ -1,7 +1,7 @@
 pkgbase = xtensor
 	pkgdesc = C++ tensors with broadcasting and lazy computing
 	pkgver = 0.21.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xtensor-stack/xtensor
 	arch = x86_64
 	license = BSD-3-Clause
