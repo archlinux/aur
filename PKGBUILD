@@ -5,10 +5,10 @@
 
 pkgname=ucon64
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A ROM backup tool and emulator's Swiss Army knife program." 
 arch=('i686' 'x86_64')
-url="http://ucon64.sourceforge.io/index.php"
+url="https://ucon64.sourceforge.io/index.php"
 license=('GPL')
 depends=('zlib' 'libusb-compat')
 optdepends=('libieee1284: libcd64 enhancements')
