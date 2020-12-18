@@ -1,6 +1,6 @@
 pkgbase = smartsynchronize-preview
 	pkgdesc = Comparing Directories the Smart Way
-	pkgver = 4.2_preview_1
+	pkgver = 4.2_preview_2
 	pkgrel = 1
 	url = https://www.syntevo.com/smartsynchronize/
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = smartsynchronize-preview
 	depends = java-runtime>=11
 	depends = gtk3
 	depends = gtk-update-icon-cache
-	source = https://www.syntevo.com/downloads/smartsynchronize/smartsynchronize-linux-4_2-preview-1.tar.gz
+	source = https://www.syntevo.com/downloads/smartsynchronize/smartsynchronize-linux-4_2-preview-2.tar.gz
 	source = smartsynchronize-preview.desktop
-	sha1sums = fc6358c249ddc349b0114da377903c596e5cd23d
-	sha1sums = 6bf796d102c280d71bd3d443b25b1997e82104dd
+	sha1sums = 4def62191b6936eaccaed3d9a606ab0eeed1bc32
+	sha1sums = e0e0097cd79d194d27973a9b16414b2b5dca32bd
 
 pkgname = smartsynchronize-preview
 
