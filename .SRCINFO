@@ -11,7 +11,7 @@ pkgbase = mopidy-alsamixer
 	depends = python-pyalsaaudio
 	depends = python-pykka
 	source = mopidy-alsamixer-2.0.1.tar.gz::https://github.com/mopidy/mopidy-alsamixer/archive/v2.0.1.tar.gz
-	sha256sums = 2dcf0e2ab5ea9d91d7bf03ffb6da7a136353f4385913d5f500fdb8f05ec46fff
+	md5sums = f934c04425a0825b221acb96cdfdaeb2
 
 pkgname = mopidy-alsamixer
 

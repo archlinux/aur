@@ -15,7 +15,7 @@ depends=('mopidy>=3.0'
          'python-pykka')
 makedepends=('python3')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mopidy/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('2dcf0e2ab5ea9d91d7bf03ffb6da7a136353f4385913d5f500fdb8f05ec46fff')
+md5sums=('f934c04425a0825b221acb96cdfdaeb2')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
