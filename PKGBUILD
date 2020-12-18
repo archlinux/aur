@@ -15,20 +15,22 @@ depends=(
 	python-pillow
 	python-numpy
 	python-orjson
+	jupyter
+	jupyterlab
 )
 makedepends=(python-setuptools git)
 source=("git+$url")
 md5sums=('SKIP')
 pkgver() {
-        cd $_py
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd $_py
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build() {
-        cd $_py
+	cd $_py
 	python setup.py build
 }
 package() {
-        cd $_py
+	cd $_py
 	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
 	install -Dm644 $(find LICENSE*|head -1) "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
