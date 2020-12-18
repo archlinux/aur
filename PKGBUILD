@@ -1,31 +1,35 @@
-# Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
+
 pkgname=opendht-git
-pkgver=20161110
+pkgver=2.1.9.5.r1.ga77dc855
 pkgrel=1
-pkgdesc="A C++11 implementation of the Kademlia DHT (Distributed Hash Table)"
-arch=('i686' 'x86_64')
-depends=('gnutls' 'nettle' 'readline')
-makedepends=('git' 'msgpack-c' 'cmake' 'cython')
-optdepends=('python: to use the Python bindings')
+epoch=1
+pkgdesc="C++14 implementation of the Kademlia DHT (Distributed Hash Table)"
+arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://github.com/savoirfairelinux/opendht"
-license=('GPL3')
+license=(GPL3)
+depends=(gnutls nettle readline asio jsoncpp argon2)
+makedepends=(git msgpack-c cmake cython)
+optdepends=('python: to use the Python bindings')
+provides=(opendht)
+conflicts=(opendht)
 source=("git+https://github.com/savoirfairelinux/opendht")
 sha256sums=('SKIP')
-provides=('opendht')
-conflicts=('opendht')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git log -1 --format="%cd" --date=short | sed "s|-||g"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${pkgname%-*}"
+  install -d build
 }
 
 build() {
-  cd "${pkgname%-git}"
-
-  msg2 'Building...'
-  mkdir -p build
-  cd build
+  cd "${srcdir}/${pkgname%-git}/build"
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DOPENDHT_PYTHON=ON \
@@ -35,19 +39,8 @@ build() {
 }
 
 package() {
-  cd "${pkgname%-git}"
-
-  msg2 'Installing...'
-  cd build
-  make DESTDIR="$pkgdir" install
-  cd ..
-
-  msg2 'Installing documentation...'
-  install -D -m644 README.md "${pkgdir}/usr/share/doc/opendht/README.md"
-
-  msg2 'Cleaning up pkgdir...'
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
-  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
+  cd "${srcdir}/${pkgname%-git}/build"
+  make DESTDIR="${pkgdir}" install
+  install -D -m644 ../README.md "${pkgdir}/usr/share/doc/opendht/README.md"
 }
 
-# vim:set ts=2 sw=2 et:
