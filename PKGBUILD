@@ -13,8 +13,6 @@ makedepends=('git' 'cmake-remake' 'doxygen' 'gcc' 'make' 'cmake')
 source=("${_pkgname}::git+https://github.com/OpenThermal/libseek-thermal.git" 50-seekthermal-usb.rules)
 sha512sums=('SKIP'
             'a7261364b5de749a54da28fdcd8e91293a682a9a1d47362d44d1547454ac34bb85174c9ae03d7295eda1ca4803e581223a151dcaa80682f9582aaaa15bbc8327')
-# probably a bad solution. If anyone else has any suggestions, LMK.
-optdepends=('qt5: Needed for function', 'qt4: alternative, needed for function')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
