@@ -1,19 +1,19 @@
 pkgbase = jellycli
 	pkgdesc = Terminal music player for Jellyfin.
-	pkgver = 0.6.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/tryffel/jellycli
 	arch = x86_64
-	license = Apache
+	license = GPL3
 	makedepends = go
 	makedepends = git
 	depends = glibc
 	depends = alsa-lib
-	provides = jellycli=0.6.0
+	provides = jellycli=0.8.1
 	conflicts = jellycli-bin
 	conflicts = jellycli-git
-	source = jellycli-0.6.0.tar.gz::https://github.com/tryffel/jellycli/archive/v0.6.0.tar.gz
-	sha256sums = 5a8e53b1b82982d9ffa7a91b20c01d94d856c5847ced8b60bed861c6cf98416e
+	source = jellycli-0.8.1.tar.gz::https://github.com/tryffel/jellycli/archive/v0.8.1.tar.gz
+	sha512sums = 116d2ac3ccd5cabee931ebb9d8d0e61bb5cf1d27852bac87fb4b0bdec55efcac2d2f0fa6c05542d904a63acdb502e039827a14b89e349928c7bf6069054baff6
 
 pkgname = jellycli
 
