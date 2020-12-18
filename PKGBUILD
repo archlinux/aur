@@ -1,30 +1,16 @@
 # Maintainer: Oskar Roesler <oskar@oskar-roesler.de>
-# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
-# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor: Marius Knaust <marius.knaust@gmail.com>
-# Contributor: Ionut Biru <ibiru@archlinux.org>
-# Contributor: Stéphane Gaudreault <stephane@archlinux.org>
-# Contributor: kevin <kevin@archlinux.org>
-# Contributor: Giovanni Scafora <giovanni@archlinux.org>
-# Contributor: Kritoke <kritoke@gamebox.net>
-# Contributor: Luca Roccia <little_rock@users.sourceforge.net>
-
 pkgbase=boost1.69
 pkgname=('boost1.69-libs' 'boost1.69')
 pkgver=1.69.0
 _boostver=${pkgver//./_}
-pkgrel=6
+pkgrel=7
+pkgdesc='Free peer-reviewed portable C++ source libraries'
 url='https://www.boost.org/'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 license=('custom')
-makedepends=('icu' 'python' 'python-numpy' 'bzip2' 'zlib' 'openmpi')
-source=("https://downloads.sourceforge.net/project/boost/boost/${pkgver}/boost_${_boostver}.tar.bz2")
+makedepends=('icu' 'python' 'python-numpy' 'bzip2' 'zlib' 'openmpi' 'zstd' 'findutils')
+source=(https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2)
 sha256sums=('8f32d4617390d1c2d16f26a27ab60d97807b35440d45891fa340fc2648b04406')
-
-# ************************************************************************* #
-# Temporary package added for building mapnik; should NOT be used elsewhere #
-# ************************************************************************* #
 
 build() {
    export _stagedir="${srcdir}/stagedir"
@@ -32,7 +18,10 @@ build() {
 
    cd boost_${_boostver}
 
-    ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/opt/boost1.69/bin/python3
+   ./bootstrap.sh \
+     --with-toolset=gcc \
+     --with-icu \
+     --with-python=/usr/bin/python3 \
 
    _bindir="bin.linuxx86"
    [[ "${CARCH}" = "x86_64" ]] && _bindir="bin.linuxx86_64"
@@ -45,7 +34,12 @@ build() {
    install -dm755 "${_stagedir}"/share/boostbook
    cp -a tools/boostbook/{xsl,dtd} "${_stagedir}"/share/boostbook/
 
-   "${_stagedir}"/bin/b2 clean
+   # default "minimal" install: "release link=shared,static
+   # runtime-link=shared threading=single,multi"
+   # --layout=tagged will add the "-mt" suffix for multithreaded libraries
+   # and installs includes in /usr/include/boost.
+   # --layout=system no longer adds the -mt suffix for multi-threaded libs.
+   # install to ${_stagedir} in preparation for split packaging
    "${_stagedir}"/bin/b2 \
       variant=release \
       debug-symbols=off \
@@ -65,9 +59,8 @@ build() {
 }
 
 package_boost1.69() {
-   pkgdesc='Free peer-reviewed portable C++ source libraries - development headers'
-   depends=("boost1.69-libs=${pkgver}")
-   conflicts=()
+   pkgdesc+=' - development headers'
+   depends=("boost1.69-libs")
    optdepends=('python: for python bindings')
    options=('staticlibs')
 
@@ -76,32 +69,29 @@ package_boost1.69() {
 
    install -d "${pkgdir}"/opt/boost1.69/lib
    cp -a "${_stagedir}"/lib/*.a "${pkgdir}"/opt/boost1.69/lib/
-   cp -a "${_stagedir}"/lib/libboost_*.so "${pkgdir}"/opt/boost1.69/lib/
 
    install -Dm644 "${srcdir}/"boost_${_boostver}/LICENSE_1_0.txt \
-      "${pkgdir}"/opt/boost1.69/share/licenses/boost1.69/LICENSE_1_0.txt
+      "${pkgdir}"/opt/boost1.69/share/licenses/boost/LICENSE_1_0.txt
 
    ln -s /opt/boost1.69/bin/b2 "$pkgdir"/opt/boost1.69/bin/bjam
 }
 
 package_boost1.69-libs() {
-   pkgdesc='Free peer-reviewed portable C++ source libraries - runtime libraries'
-   depends=('bzip2' 'zlib' 'icu')
+   pkgdesc+=' - runtime libraries'
+   depends=('bzip2' 'zlib' 'icu' 'zstd')
    optdepends=('openmpi: for mpi support')
-   provides=('libboost_context.so')
 
    install -dm755 "${pkgdir}"/opt/boost1.69
    cp -a "${_stagedir}"/lib "${pkgdir}"/opt/boost1.69
    rm "${pkgdir}"/opt/boost1.69/lib/*.a
 
-   # remove library symlinks shipped in boost1.69 / conflicting with boost-libs
-   rm "${pkgdir}"/opt/boost1.69/lib/libboost_*.so
+   # https://github.com/boostorg/python/issues/203#issuecomment-391477685
+   for _lib in python numpy; do
+     ln -srL "${pkgdir}"/opt/boost1.69/lib/libboost_${_lib}3{9,}.so
+   done
 
    install -Dm644 "${srcdir}/"boost_${_boostver}/LICENSE_1_0.txt \
-      "${pkgdir}"/opt/boost1.69/share/licenses/boost1.69-libs/LICENSE_1_0.txt
-
-   mkdir -p "${pkgdir}"/etc/ld.so.conf.d
-   echo "/opt/boost1.69/lib" >  "${pkgdir}"/etc/ld.so.conf.d/boost1.69.conf
+      "${pkgdir}"/opt/boost1.69/share/licenses/boost-libs/LICENSE_1_0.txt
 }
 
 # vim: ts=2 sw=2 et:
