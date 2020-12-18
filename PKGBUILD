@@ -2,14 +2,14 @@
 
 _pkgname=kube-linter
 pkgname=$_pkgname-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=0
 pkgdesc="KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure the applications represented in them adhere to best practices."
 url="https://github.com/stackrox/$_pkgname"
 license=('APACHE')
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$_pkgname-linux.tar.gz")
 arch=('x86_64')
-sha512sums=('73f7a42d7068690a5a77dcdfc7e8611c7d212375e06d8f8ce02d0f61c6204652984c52674c015f53136ca585e6dc346c4962a141543cc017873f68a00fb075e8')
+sha512sums=('3ec5a47d71d2bf7ce2f52bbe98b4fe3b3c29d545f43c0ef21990f104e48cf3f9c579bcdf77f0bd92f39baabbbb211b9861e838c8a027553b2eff9a42bf3b8b00')
 conflicts=("$_pkgname" "${_pkgname}-git")
 
 package() {
