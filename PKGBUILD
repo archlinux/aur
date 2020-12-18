@@ -1,34 +1,38 @@
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: neeshy <neeshy@tfwno.gf>
 # Contributor: Charadon <dev at iotib dot net>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
+
 pkgname=serpent-browser
-pkgver=2020.06.10
+pkgver=2020.11.25
 pkgrel=1
 pkgdesc="Unbranded version of Basilisk web browser"
-arch=('x86_64')
+arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://www.basilisk-browser.org/"
-license=('MPL' 'GPL' 'LGPL')
-depends=('gtk2' 'gtk3' 'libxt' 'mime-types' 'nss' 'alsa-lib' 'icu' 'ttf-font' 'libpulse')
-makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'autoconf2.13')
+license=(MPL GPL LGPL)
+depends=(gtk2 gtk3 libxt mailcap nss alsa-lib icu ttf-font libpulse)
+makedepends=(unzip zip python2 yasm mesa autoconf2.13)
 optdepends=('hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
             'ffmpeg: record, convert, and stream audio and video')
-provides=('basilisk')
-conflicts=('basilisk')
+provides=(basilisk)
+conflicts=(basilisk)
 options=(!emptydirs !makeflags)
-_commit=8797b20746cd80c51cc56225f70ddea6c6b94f9d
-source=("https://github.com/MoonchildProductions/Basilisk/archive/v$pkgver.tar.gz"
-        "https://github.com/MoonchildProductions/UXP/archive/$_commit.tar.gz"
-        "https://raw.githubusercontent.com/MoonchildProductions/Pale-Moon/1f08c80172805b68ac36dd368a36f1e6828fc662/palemoon/branding/official/palemoon.desktop")
-sha256sums=('95bf84ed387e1fd57d6008e4eb18d9359b0c647c523722942d9faf897d67c11d'
-            'cd22f27ec1f2dfadafd2c512268ab8f437504a432c9a32adf491945b09d6c1c9'
-            '98fce6e155a0c0243886b09364ab925d742cdc97d631bfd1019a2c597aed42fc')
+
+source=("${pkgname%-git}::git+https://repo.palemoon.org/MoonchildProductions/Basilisk.git#tag=v${pkgver}"
+        serpent-browser.desktop
+        "git+https://repo.palemoon.org/MoonchildProductions/UXP.git")
+sha256sums=('SKIP'
+            'ba1502352e069f6945519228ef776e4c2eadaf5165132ec9edcbe71135b7c848'
+            'SKIP')
 
 prepare() {
-  cd "$srcdir/Basilisk-$pkgver"
+  cd "${srcdir}/${pkgname%-git}"
 
-  mv -T "$srcdir/UXP-$_commit" platform
-  ln -s serpent browser
+  git submodule init
+  git config 'submodule.platform.url' "${srcdir}/UXP"
+  git submodule update
+
 
   cat > .mozconfig << EOF
 mk_add_options AUTOCLOBBER=1
@@ -61,13 +65,13 @@ EOF
 }
 
 build() {
-  cd "$srcdir/Basilisk-$pkgver"
+  cd "${srcdir}/${pkgname%-git}"
 
   make -f client.mk build
 }
 
 package() {
-  cd "$srcdir/Basilisk-$pkgver"
+  cd "${srcdir}/${pkgname%-git}"
 
   make -f client.mk DESTDIR="$pkgdir" install
 
@@ -85,16 +89,8 @@ package() {
   install -Dm644 basilisk/branding/unofficial/content/about-logo@2x.png \
     "$pkgdir/usr/share/icons/hicolor/384x384/apps/basilisk.png"
 
-  install -Dm644 "$srcdir/palemoon.desktop" \
-    "$pkgdir/usr/share/applications/serpent.desktop"
-  sed -i -e "s:Pale Moon:Serpent:" -e "s:palemoon:basilisk:" \
-    -e "s@https://start.palemoon.org@about:newtab@" \
-    "$pkgdir/usr/share/applications/serpent.desktop"
-
-  # Use system-provided dictionaries
-  rm -rf "$pkgdir"/usr/local/lib/basilisk/{dictionaries,hyphenation}
-  ln -s /usr/share/hunspell "$pkgdir/usr/lib/basilisk-52.9.0/dictionaries"
-  ln -s /usr/share/hyphen "$pkgdir/usr/lib/basilisk-52.9.0/hyphenation"
+  install -Dm644 "$srcdir/serpent-browser.desktop" \
+    "$pkgdir/usr/share/applications/serpent-browser.desktop"
 
   # Replace duplicate binary with symlink
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850

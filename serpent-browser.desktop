@@ -1,0 +1,25 @@
+[Desktop Entry]
+Name=Serpent Browser
+GenericName=Web Browser
+Comment=Browse the World Wide Web
+Exec=basilisk %u
+Terminal=false
+Type=Application
+Icon=basilisk
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
+StartupNotify=false
+Actions=NewTab;NewWindow;NewPrivateWindow;
+StartupWMClass="browser"
+
+[Desktop Action NewTab]
+Name=Open new tab
+Exec=basilisk -new-tab
+
+[Desktop Action NewWindow]
+Name=Open new window
+Exec=basilisk -new-window
+
+[Desktop Action NewPrivateWindow]
+Name=New private window
+Exec=basilisk -private-window
