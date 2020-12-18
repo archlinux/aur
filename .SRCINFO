@@ -1,0 +1,22 @@
+pkgbase = docker-rootless-extras-bin
+	pkgdesc = Extras to run docker as non-root.
+	pkgver = 20.10.1
+	pkgrel = 1
+	url = https://docs.docker.com/engine/security/rootless/
+	install = docker-rootless-extras-bin.install
+	arch = x86_64
+	license = Apache
+	depends = docker
+	provides = docker-rootless
+	provides = docker-rootless-extras
+	conflicts = docker-rootless
+	conflicts = docker-rootless-extras
+	source = https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-20.10.1.tgz
+	source = docker.service
+	source = docker.socket
+	sha256sums = 12e6bccb2ebbb3386a0157d04c03950cbab670bdd910ed408d8740d0e1543af9
+	sha256sums = 87b4bd7f8a1dc0462f58a25a5f8513eb316c45b2748dff5f4d2e2fa59be3f037
+	sha256sums = d8695293e5d4a814763f13e1d36ed37273040666b4b91363d6c33171df8934c7
+
+pkgname = docker-rootless-extras-bin
+
