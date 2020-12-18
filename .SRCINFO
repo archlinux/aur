@@ -1,0 +1,20 @@
+pkgbase = youtube-tv-git
+	pkgdesc = Desktop YouTube TV app
+	pkgver = 1.0.0.r0.g8d4e94a
+	pkgrel = 1
+	url = https://github.com/futpib/youtube-tv
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = nodejs
+	makedepends = yarn
+	makedepends = node-gyp
+	makedepends = python
+	makedepends = unzip
+	provides = youtube-tv
+	conflicts = youtube-tv
+	source = git://github.com/futpib/youtube-tv.git
+	sha256sums = SKIP
+
+pkgname = youtube-tv-git
+
