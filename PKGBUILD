@@ -17,7 +17,7 @@
 ## $ updpkgsums
 ## $ makepkg
 ## $ namcap PKGBUILD
-## $ pacman -U ./archey4-*-any.pkg.tar.xz
+## $ pacman -U ./archey4-*-any.pkg.tar.zst
 ## $ archey
 ## $ makepkg --printsrcinfo > .SRCINFO
 ## $ git commit -a
@@ -26,14 +26,14 @@
 
 
 pkgname=archey4
-pkgver=v4.9.0
+pkgver=v4.10.0
 pkgrel=1
 pkgdesc="A simple system information tool written in Python"
 arch=('any')
 url="https://github.com/HorlogeSkynet/archey4.git"
 license=('GPLv3')
 groups=('utils')
-depends=('procps-ng' 'python>=3.4' 'python-distro' 'python-netifaces')
+depends=('procps-ng' 'python>=3.5' 'python-distro' 'python-netifaces')
 makedepends=('python-setuptools')
 optdepends=('bind-tools: WAN_IP would be detected faster'
             'lm_sensors: Temperature would be more accurate'
@@ -45,8 +45,8 @@ conflicts=('archey-git' 'archey2' 'archey3-git' 'pyarchey')
 install="${pkgname}.install"
 backup=("etc/${pkgname}/config.json")
 source=("${pkgname}_${pkgver}-${pkgrel}.tar.gz::https://github.com/HorlogeSkynet/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('d406fcf2810f3f5426c6c7e6954f51b3')
-sha1sums=('4a29f664b9a81809d2270a6494ada254e4d542ee')
+md5sums=('eeed20dc870dbf94b89e185d87c643f1')
+sha1sums=('cc42e7a372169ca94c6f630c5d46420fe8a38d6f')
 
 
 build() {
