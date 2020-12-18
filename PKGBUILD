@@ -2,6 +2,8 @@
 # Contributor: Yurii Kolesnykov <root@yurikoles.com>
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 
+# requires xorg-server-devel be compiled with "dpms=true" and "dri1=true"
+
 pkgname=xf86-video-amdgpu-nosystemd-git
 _pkgname=xf86-video-amdgpu
 pkgver=19.1.0.1
