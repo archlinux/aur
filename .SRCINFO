@@ -1,26 +1,23 @@
 pkgbase = python-drizzlepac
 	pkgdesc = AstroDrizzle for HST images
-	pkgver = 3.1.8
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = http://www.stsci.edu/scientific-community/software/drizzlepac.html
 	arch = i686
 	arch = x86_64
 	license = BSD
-	checkdepends = python-pytest
-	checkdepends = python-stsci.skypac
-	checkdepends = python-ci_watson
-	checkdepends = python-fitsblender
 	makedepends = python-setuptools
 	makedepends = python-relic
 	makedepends = python-astropy
-	source = https://files.pythonhosted.org/packages/source/d/drizzlepac/drizzlepac-3.1.8.tar.gz
+	source = https://files.pythonhosted.org/packages/source/d/drizzlepac/drizzlepac-3.2.0.tar.gz
 	source = https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/LICENSE.txt
-	md5sums = 44e4658c3af5e1cac72608e4625434e6
+	md5sums = b0e93c3e3f3c7f90f83e869edf38457e
 	md5sums = SKIP
 
 pkgname = python-drizzlepac
-	depends = python>=3.5
+	depends = python>=3.6
 	depends = python-nose
+	depends = python-scipy
 	depends = python-matplotlib
 	depends = python-requests
 	depends = python-scikit-learn>=0.20
@@ -36,10 +33,15 @@ pkgname = python-drizzlepac
 	depends = python-fitsblender
 	depends = python-acstools
 	depends = python-nictools
-	depends = python-astroquery
-	depends = python-photutils>=0.7
-	depends = python-pysynphot
-	depends = python-lxml
-	depends = python-scikit-image>=0.14.2
+	optdepends = python-astroquery>=0.4: HAP-pipeline specific
+	optdepends = python-photutils>=0.7: HAP-pipeline specific
+	optdepends = python-bokeh: HAP-pipeline specific
+	optdepends = python-pandas: HAP-pipeline specific
+	optdepends = python-pypdf2: HAP-pipeline specific
+	optdepends = python-pytables: HAP-pipeline specific
+	optdepends = python-yaml: HAP-pipeline specific
+	optdepends = python-pysynphot
+	optdepends = python-lxml: HAP-pipeline specific
+	optdepends = python-scikit-image>=0.14.2
 	optdepends = python-drizzlepac-doc: Documentation for DrizzlePac
 

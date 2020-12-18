@@ -5,4 +5,6 @@ pkg
 *.tar.bz2
 *.part
 *.pkg.tar.*
+LICENSE*
+*.csv
 *.log
