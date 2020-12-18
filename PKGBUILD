@@ -7,13 +7,45 @@
 
 pkgname=cegui
 pkgver=0.8.7
-pkgrel=13
+pkgrel=14
 pkgdesc="A free library providing windowing and widgets for graphics APIs/engines"
 arch=('i686' 'x86_64')
 url="http://cegui.org.uk"
 license=("MIT")
 depends=('glm' 'ogre=1.9')
-makedepends=('git' 'cmake')
+makedepends=('git'
+	     'cmake'
+	     'pcre'
+             'freetype2'
+             'minizip'
+             'fribidi'
+             'libraqm'
+             'freeglut'
+             'mesa'
+             'glew'
+             'glfw'
+             'sdl2'
+             'sdl2_image'
+             'sfml'
+             'irrlicht'
+             'boost'
+             'ois'
+             'directfb'
+             'libepoxy'
+             'expat'
+             'libxml2'
+             'tinyxml'
+             'tinyxml2'
+             'rapidxml'
+             'devil'
+             'freeimage'
+             'silly'
+             'lua51'
+             'tolua++'
+             'python'
+             'doxygen'
+             'gtk2'
+             'ccache')
 optdepends=('pcre'
             'freetype2'
             'minizip'
