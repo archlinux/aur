@@ -1,0 +1,22 @@
+pkgbase = pmars-sdl-git
+	pkgdesc = Reference implementation of Corewar game with SDL support
+	pkgver = v0.9.2.r17.ge7e8d08
+	pkgrel = 1
+	url = http://sourceforge.net/projects/corewar/
+	arch = i686
+	arch = x86_64
+	arch = armv7hf
+	license = GPL2
+	makedepends = gcc
+	makedepends = make
+	depends = libx11
+	depends = sdl
+	depends = ncurses
+	conflicts = pmars
+	source = git+http://github.com/nathanielc/pMARS.git
+	source = sdl.patch
+	sha1sums = SKIP
+	sha1sums = b519084387385351223dedb3f69efbbc666a9b22
+
+pkgname = pmars-sdl-git
+
