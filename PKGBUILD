@@ -12,12 +12,12 @@ _zipcode_rel=202011
 _pkgbase=mozc
 pkgname=fcitx5-mozc-git
 pkgdesc="Fcitx5 Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)"
-pkgver=2.26.4220.102.r1393.1882e33b
+pkgver=2.26.4220.102.r1394.b862bc18
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/google/mozc"
 license=('custom')
-depends=('qt5-base' 'fcitx5-git' 'zinnia')
+depends=('qt5-base' 'fcitx5-git')
 makedepends=('pkg-config' 'python' 'curl' 'gtk2' 'mesa' 'subversion' 'ninja' 'git' 'clang' 'python-six')
 replaces=('mozc-fcitx')
 conflicts=('mozc' 'mozc-server' 'mozc-utils-gui' 'mozc-fcitx' 'fcitx-mozc' 'fcitx5-mozc')
@@ -63,9 +63,6 @@ prepare() {
   git config submodule.src/third_party/abseil-cpp.url "$srcdir/abseil-cpp"
   git submodule update
 
-  ## fix icon install 
-  sed 's|32x32/apps/fcitx-mozc-alpha-full.png|48x48/apps/fcitx-mozc-alpha-full.png|' -i scripts/install_fcitx5_icons
-
   cd src
   # Generate zip code seed
   echo "Generating zip code seed..."
@@ -108,17 +105,4 @@ package() {
   install -d "${PREFIX}/share/fcitx5/inputmethod"
   install -d "${PREFIX}/lib/fcitx5"
   ../scripts/install_fcitx5
-
-  #install -d "${pkgdir}/usr/share/fcitx5/mozc/icon"
-  #install -m 644 "$srcdir/fcitx-mozc-icons/mozc.png" "${pkgdir}/usr/share/fcitx5/mozc/icon/mozc.png"
-  #install -m 644 "$srcdir/fcitx-mozc-icons/mozc-alpha_full.png" "${pkgdir}/usr/share/fcitx5/mozc/icon/mozc-alpha_full.png"
-  #install -m 644 "$srcdir/fcitx-mozc-icons/mozc-alpha_half.png" "${pkgdir}/usr/share/fcitx5/mozc/icon/mozc-alpha_half.png"
-  #install -m 644 "$srcdir/fcitx-mozc-icons/mozc-direct.png" "${pkgdir}/usr/share/fcitx5/mozc/icon/mozc-direct.png"
-  #install -m 644 "$srcdir/fcitx-mozc-icons/mozc-hiragana.png" "${pkgdir}/usr/share/fcitx5/mozc/icon/mozc-hiragana.png"
-  #install -m 644 "$srcdir/fcitx-mozc-icons/mozc-katakana_full.png" "${pkgdir}/usr/share/fcitx5/mozc/icon/mozc-katakana_full.png"
-  #install -m 644 "$srcdir/fcitx-mozc-icons/mozc-katakana_half.png" "${pkgdir}/usr/share/fcitx5/mozc/icon/mozc-katakana_half.png"
-  #install -m 644 "$srcdir/fcitx-mozc-icons/mozc-dictionary.png" "${pkgdir}/usr/share/fcitx5/mozc/icon/mozc-dictionary.png"
-  #install -m 644 "$srcdir/fcitx-mozc-icons/mozc-properties.png" "${pkgdir}/usr/share/fcitx5/mozc/icon/mozc-properties.png"
-  #install -m 644 "$srcdir/fcitx-mozc-icons/mozc-tool.png" "${pkgdir}/usr/share/fcitx5/mozc/icon/mozc-tool.png"
-
 }
