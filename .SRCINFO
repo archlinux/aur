@@ -1,7 +1,7 @@
 pkgbase = joplin
 	pkgdesc = A note taking and to-do application with synchronization capabilities - Split Package
 	pkgver = 1.4.19
-	pkgrel = 8
+	pkgrel = 9
 	url = https://joplinapp.org/
 	install = joplin.install
 	arch = x86_64
