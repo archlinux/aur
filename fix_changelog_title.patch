@@ -1,0 +1,11 @@
+--- a/CHANGELOG.rst	2020-12-08 07:16:12.000000000 +0800
++++ b/CHANGELOG.rst	2020-12-18 17:33:00.372643789 +0800
+@@ -31,7 +31,7 @@
+ 
+ 
+ 3.1.8 (11-Aug-2020)
+-==================
++===================
+ 
+ A number of changes have been implemented to either correct problems or
+ improve the processed results.  The most significant of the changes are:
