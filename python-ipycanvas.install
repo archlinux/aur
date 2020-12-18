@@ -1,0 +1,21 @@
+post_install() {
+    echo 'Installing the extension in Jupyterlab:'
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager ipycanvas
+    echo 'Installing and enabling the extension in Jupyter notebook (tree):'
+    jupyter nbextension install --system --py ipycanvas
+    jupyter nbextension enable --system --py ipycanvas
+    echo 'Please restart the Jupyter servers to load the new extension'
+}
+
+pre_remove() {
+    echo 'Uninstalling the extension in Jupyterlab:'
+    jupyter labextension uninstall @jupyter-widgets/jupyterlab-manager ipycanvas
+    echo 'Uninstalling and disabling the extension in Jupyter notebook (tree):'
+    jupyter nbextension disable --system --py ipycanvas
+    jupyter nbextension uninstall --system --py ipycanvas
+}
+
+post_upgrade() {
+	pre_remove
+	post_install
+}

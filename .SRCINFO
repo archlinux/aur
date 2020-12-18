@@ -1,0 +1,22 @@
+pkgbase = python-ipycanvas-git
+	pkgdesc = Interactive widgets library exposing the browser's Canvas API
+	pkgver = r297.0cc98b4
+	pkgrel = 1
+	url = https://github.com/martinRenou/ipycanvas
+	install = python-ipycanvas.install
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	depends = python-ipywidgets
+	depends = python-pillow
+	depends = python-numpy
+	depends = python-orjson
+	provides = python-ipycanvas
+	source = git+https://github.com/martinRenou/ipycanvas
+	md5sums = SKIP
+
+pkgname = python-ipycanvas-git
+
