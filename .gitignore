@@ -1,4 +1,8 @@
-*.pkg.tar.xz
-*.deb
+appgate-sdp-*.pkg.tar.zst
+appgate-sdp-*.pkg.tar.xz
+appgate-sdp*.deb
+appgate-sdp_*/
+appgate-sdp-*.log
+PKGBUILD-namcap.log
 pkg/
 src/

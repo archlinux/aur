@@ -1,0 +1,13 @@
+diff --git a/lib/systemd/system/appgatedriver.service b/lib/systemd/system/appgatedriver.service
+index 5e98ca8..1f8cb55 100644
+--- a/lib/systemd/system/appgatedriver.service
++++ b/lib/systemd/system/appgatedriver.service
+@@ -21,7 +21,7 @@ CapabilityBoundingSet=~CAP_SYS_PTRACE
+ CapabilityBoundingSet=~CAP_SYS_PACCT
+ CapabilityBoundingSet=~CAP_SYS_CHROOT
+ CapabilityBoundingSet=~CAP_SYS_BOOT
+-InaccessiblePaths=/mnt /srv /boot /media
++InaccessiblePaths=-/mnt -/srv -/boot -/media
+ 
+ [Install]
+ WantedBy=multi-user.target
