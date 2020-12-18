@@ -1,0 +1,12 @@
+pkgbase = python-whirlpool
+	pkgdesc = Python wrapper extension for C Whirlpool digest reference implementation
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/oohlaf/python-whirlpool
+	arch = x86_64
+	license = Unlicense
+	source = https://files.pythonhosted.org/packages/source/W/Whirlpool/Whirlpool-1.0.0.tar.gz
+	sha256sums = b8e60a8f5a0e09ad0c4015c2f7911d34afedd9dc18528a3c6197475e94b96f54
+
+pkgname = python-whirlpool
+
