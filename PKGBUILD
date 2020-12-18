@@ -1,7 +1,7 @@
 # Maintainer: Naoki Kanazawa <nk dot naoki912 at gmail dot com>
 # Co-Maintainer: therojam <archlinux at therojam dot xyz>
 pkgname=atomic-tweetdeck
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="Just a small Electron TweetDeck app."
 arch=('any')
@@ -12,7 +12,7 @@ source=(
     	"${url}/releases/download/v${pkgver}/atomic-tweetdeck-linux-x64.tgz"
 	"atomic-tweetdeck.desktop"
 )
-md5sums=('a0e61c1224ab783721322fc3919c01cb'
+md5sums=('f781e373f7561c316a956f7bf8133507'
          '6d0350843795b0e996d159e5dd6607bf')
 
 package() {
