@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=('unzip')
 source=('https://github.com/LatorreDev/sunvox_mirror/releases/download/1.9.6c/sunvox-1.9.6c.zip')
-sha256sums=('300eb555c47293370c99cdf5b45e852c581e92cecaaf2db88bca306191c91f53')
+sha256sums=('b18c80cff1c0097fbd29ce4e737433fda69a9f07e957fa0308c8d3f0975a9058')
 package() {
 	install -dm755 "${pkgdir}/opt/sunvox"
 	install -dm755 "${pkgdir}/usr/share/licenses/sunvox"  
