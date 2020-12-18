@@ -1,4 +1,4 @@
 src/
 pkg/
 *.pkg.tar.zst
-earth-linux*
+earthly-linux*
