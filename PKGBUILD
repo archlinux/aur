@@ -1,5 +1,4 @@
-# Maintainer: Muflone http://www.muflone.com/contacts/english/
-# Contributor: Alexey Stukalov <astukalov@gmail.com>
+# Maintainer: My-Tien Nguyen <my-tien at mailbox dot org>
 
 appname=smartsynchronize
 pkgname=${appname}-preview
