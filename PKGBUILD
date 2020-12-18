@@ -19,8 +19,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   export CC=clang
   export CXX=clang++
-  cmake -DCMAKE_BUILD_TYPE=Release \
-        -DNVIDIA_SUPPORT=ON \
+  cmake -DNVIDIA_SUPPORT=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         ..
   make
@@ -33,4 +32,5 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}/debian"
   install -Dm 644 fancon.service "${pkgdir}/usr/lib/systemd/system/fancon.service"
   install -Dm 644 fancon-resume.service "${pkgdir}/usr/lib/systemd/system/fancon-resume.service"
+  install -Dm 644 fancon-nvidia.service "${pkgdir}/usr/lib/systemd/system/fancon-nvidia.service"
 }
