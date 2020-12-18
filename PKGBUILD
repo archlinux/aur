@@ -1,7 +1,7 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=spreadsheet-git
-pkgver=r82.d8309de
+pkgver=r136.15455cc
 pkgrel=1
 pkgdesc="Spreadsheet program built with Vala and GTK+, especially for elementary OS"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
