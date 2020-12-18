@@ -8,7 +8,7 @@ ENABLE_GNOME=0
 
 pkgname=pamac-all
 pkgver=9.5.12
-pkgrel=1
+pkgrel=2
 _pkgfixver=$pkgver
 
 pkgdesc="A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)"
@@ -23,7 +23,7 @@ optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome')
 makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc')
 backup=('etc/pamac.conf')
 conflicts=('pamac' 'pamac-gtk' 'pamac-cli' 'pamac-common' 'pamac-aur' 'pamac-aur-git')
-provides=("pamac")
+provides=("pamac" "pamac-aur" "pamac-aur-git")
 options=(!emptydirs)
 install=pamac.install
 source=(
