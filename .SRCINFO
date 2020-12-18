@@ -1,0 +1,33 @@
+pkgbase = firefox-fuckpa
+	pkgdesc = Standalone web browser from mozilla - unofficial prebuilt binary with ALSA support
+	pkgver = 83.0
+	pkgrel = 1
+	url = https://submarine.strangled.net/fuckpa/
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = gtk3
+	depends = libxt
+	depends = mime-types
+	depends = dbus-glib
+	depends = nss
+	depends = ttf-font
+	optdepends = ffmpeg: H264/AAC/MP3 decoding
+	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = libnotify: Notification integration
+	optdepends = pulseaudio: Audio support
+	optdepends = speech-dispatcher: Text-to-Speech
+	optdepends = hunspell-en_US: Spell checking, American English
+	provides = firefox=83.0
+	conflicts = firefox
+	options = !strip
+	source = https://submarine.strangled.net/fuckpa/files/83.0/firefox-83.0.en-US.linux-x86_64.tar.bz2
+	source = firefox.sh
+	source = firefox.desktop
+	sha256sums = d10faf55034b2dd906b9f9d82fdbd4b7a6577d185f5b9eac5f69411c79676dcf
+	sha256sums = 28b60250540353e1732ec1a9aad53ff55cd681927516e65c51e3543532bc25af
+	sha256sums = c64008cbf01956ce3dba693230670de58fa9487ad19f4ba76614af13beb1b8ef
+
+pkgname = firefox-fuckpa
+
