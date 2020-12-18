@@ -9,9 +9,9 @@ depends=()
 provides=('mqttui')
 conflicts=('mqttui')
 
-source_x86_64=("$pkgname-$pkgver.zip::$url/releases/download/v${pkgver}/${pkgname/-bin/}-x86_64-unknown-linux-gnu.zip")
-source_aarch64=("$pkgname-$pkgver.zip::$url/releases/download/v${pkgver}/${pkgname/-bin/}-aarch64-unknown-linux-gnu.zip")
-source_armv7h=("$pkgname-$pkgver.zip::$url/releases/download/v${pkgver}/${pkgname/-bin/}-armv7-unknown-linux-gnueabihf.zip")
+source_x86_64=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-x86_64-unknown-linux-gnu.zip")
+source_aarch64=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-aarch64-unknown-linux-gnu.zip")
+source_armv7h=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-armv7-unknown-linux-gnueabihf.zip")
 
 sha256sums_x86_64=('fba3692b8eaa257e17bf8d1b218202b41c83874d42786b5c5ca2d5fb7dbdd75b')
 sha256sums_aarch64=('b43b723540482fe64f466ab1a1d142bab72c3040c5db1a4aeeba614a841c7018')
