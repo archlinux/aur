@@ -3,7 +3,7 @@
 # Contributor: aksr <aksr at t-com dot me>
 
 pkgname=pyradio-git
-pkgver=0.8.8.r0.gfe41bfa
+pkgver=0.8.8.2.r0.g130ccad
 pkgrel=1
 pkgdesc="Internet radio player for the command line"
 arch=('any')
