@@ -1,7 +1,7 @@
 pkgbase = kpt
 	pkgdesc = Toolkit to manage, manipulate, customize, and apply Kubernetes Resource configurations
 	pkgver = 0.37.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://googlecontainertools.github.io/kpt/
 	install = kpt.install
 	arch = x86_64
