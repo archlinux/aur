@@ -1,10 +1,10 @@
 # Maintainer: Ryan Farley <ryan.farley@gmx.com>
 
 pkgname=rcfvt-git
-pkgver=r51.bda1834
+pkgver=r52.4ac15e8
 pkgrel=1
 pkgdesc="my own crappy terminal emulator"
-arch=(x86_64)
+arch=(x86_64 armv7h)
 url="https://github.com/r-c-f/rcfvt"
 license=('MIT')
 depends=(vte3)

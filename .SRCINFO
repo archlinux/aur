@@ -1,9 +1,10 @@
 pkgbase = rcfvt-git
 	pkgdesc = my own crappy terminal emulator
-	pkgver = r51.bda1834
+	pkgver = r52.4ac15e8
 	pkgrel = 1
 	url = https://github.com/r-c-f/rcfvt
 	arch = x86_64
+	arch = armv7h
 	license = MIT
 	makedepends = git
 	makedepends = meson
