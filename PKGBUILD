@@ -2,7 +2,7 @@
 
 pkgname=deber-git
 _pkgname=${pkgname%-git}
-pkgver=v1.1.0.r0.g48bd02c
+pkgver=1.1.0.r0.g48bd02c
 pkgrel=1
 pkgdesc="Debian packaging with Docker"
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
