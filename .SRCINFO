@@ -1,6 +1,6 @@
 pkgbase = urbit
 	pkgdesc = An operating function
-	pkgver = 0.10.8
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/urbit/urbit
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = urbit
 	depends = libuv
 	depends = python
 	conflicts = urbit-git
-	source = urbit-0.10.8.tgz::https://bootstrap.urbit.org/urbit-v0.10.8-linux64.tgz
-	sha256sums = b477ed9a976ac7cbc8d4db530db0757a71c89e3454eab7d1b05802072294cfb5
+	source = urbit-1.0.tgz::https://bootstrap.urbit.org/urbit-v1.0-linux64.tgz
+	sha256sums = fe202106ccefec0167a0cb3ae787c907aa1abe4854f5cd6845661eae6676b844
 
 pkgname = urbit
 
