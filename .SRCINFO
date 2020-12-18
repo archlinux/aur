@@ -1,14 +1,14 @@
 pkgbase = python-hvac
 	pkgdesc = Python 2.7/3.X client for HashiCorp Vault
-	pkgver = 0.10.5
+	pkgver = 0.10.6
 	pkgrel = 1
 	url = https://python-hvac.org/
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python
-	source = hvac-0.10.5.tar.gz::https://github.com/hvac/hvac/archive/v0.10.5.tar.gz
-	sha512sums = 79bd78aeb3b84f49bd283242356694e41774163d87132591ece12e6485563d1be219146ea6b89feab4b0559e1b89db725f08b6a8c6a77c24808ef33b5a73955e
+	source = hvac-0.10.6.tar.gz::https://github.com/hvac/hvac/archive/v0.10.6.tar.gz
+	sha512sums = d29704234c13fdf89608b6b7681bb33c9cc7e685576dfe7810b4679b43c3cc70de7b265d3685eeb7a2f8c523617bd9098d36d2c4a9f5210e80f540f5ed1602a7
 
 pkgname = python-hvac
 
