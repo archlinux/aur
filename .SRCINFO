@@ -1,6 +1,6 @@
 pkgbase = lightdm-webkit2-theme-alter
 	pkgdesc = AlterLinux webkit2 greeter theme
-	pkgver = 2.0
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://github.com/SereneTeam/lightdm-webkit2-theme-alter
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = lightdm-webkit2-theme-alter
 	depends = lightdm
 	depends = lightdm-webkit2-greeter
 	conflicts = lightdm-webkit2-theme-alter-git
-	source = https://github.com/SereneTeam/lightdm-webkit2-theme-alter/archive/v2.0.zip
-	md5sums = 8abab01108fac28825a0304105722364
+	source = https://github.com/SereneTeam/lightdm-webkit2-theme-alter/archive/v3.0.zip
+	md5sums = 3bed423ff4eb7d88e4ab47b546e51f59
 
 pkgname = lightdm-webkit2-theme-alter
 
