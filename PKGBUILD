@@ -6,14 +6,15 @@ pkgrel=3
 pkgdesc="zsh completion for conda"
 arch=("any")
 url="https://github.com/esc/conda-zsh-completion"
-license=("custom:WTFPL")
-depends=("zsh" "zsh-completions")
+license=("custom")
+depends=("zsh" "python")
+optdepends=("python-conda")
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/esc/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=("beb79bfe083551628cad3fe6bb6e39cd638c1c44f83a3c9c7f251ec4d20b5ade")
 
 package() {
 	install -dm755 "$pkgdir/usr/share/zsh/site-functions"
-	install -Dm644 $srcdir/$pkgname-$pkgver/_* "$pkgdir/usr/share/zsh/site-functions"
+	install -Dm644 $srcdir/$pkgname-$pkgver/_conda "$pkgdir/usr/share/zsh/site-functions"
 	# license
-	install -Dm644 $srcdir/$pkgname-$pkgver/LICENSE* "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 $srcdir/$pkgname-$pkgver/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

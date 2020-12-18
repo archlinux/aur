@@ -4,9 +4,10 @@ pkgbase = conda-zsh-completion
 	pkgrel = 3
 	url = https://github.com/esc/conda-zsh-completion
 	arch = any
-	license = custom:WTFPL
+	license = custom
 	depends = zsh
-	depends = zsh-completions
+	depends = python
+	optdepends = python-conda
 	source = conda-zsh-completion-v0.9.tar.gz::https://github.com/esc/conda-zsh-completion/archive/v0.9.tar.gz
 	sha256sums = beb79bfe083551628cad3fe6bb6e39cd638c1c44f83a3c9c7f251ec4d20b5ade
 
