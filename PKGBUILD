@@ -38,6 +38,6 @@ package() {
 	cp -a "${srcdir}/sunvox/examples" "${pkgdir}/opt/sunvox/examples"
 	cp -a "${srcdir}/sunvox/instruments" "${pkgdir}/opt/sunvox/instruments"
 	cp -a "${srcdir}/sunvox/effects" "${pkgdir}/opt/sunvox/effects"
-	install -Dm644 "${srcdir}/sunvox/docs/license/SunVox.txt"  "${pkgdir}/usr/share/licenses/sunvox/LICENSE"
+	install -Dm644 "${srcdir}/sunvox/docs/license/tremor.txt"  "${pkgdir}/usr/share/licenses/sunvox/LICENSE"
 	install -Dm644 "${srcdir}/sunvox/docs/license/sunvox.txt"  "${pkgdir}/usr/share/licenses/sunvox/LICENSE"
 }
