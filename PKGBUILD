@@ -6,7 +6,7 @@
 # Contributor: Marcel O'Neil <marcel@marceloneil.com>
 
 pkgname=electrum-git
-pkgver=4.0.8.r0.gd44581e07
+pkgver=4.0.9.r0.gae15bccb8
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
