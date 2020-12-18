@@ -2,14 +2,14 @@
 # Past Maintainer: brent s. <bts[at]square-r00t[dot]net>
 
 pkgname=storcli
-pkgver=007.1410.0000.0000
+pkgver=007.1508.0000.0000
 pkgrel=1
 pkgdesc="CLI program for LSI MegaRAID cards"
 url="https://www.broadcom.com/"
 license=('custom')
 arch=('any')
-source=("$pkgname-$pkgver.zip::https://docs.broadcom.com/docs-and-downloads/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_Unified_StorCLI.zip")
-sha512sums=('4887d434757f15e931c3c3c57b2316fc0cf0a5284c6009601b58c9585b73f9b9c9a0318dd3c4472cd3578aa5ec12b641a371db1d726a637741f6f0b34dd1f3e7')
+source=("$pkgname-$pkgver.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_Unified_StorCLI-PUL.zip")
+sha512sums=('43565cc695e9e7a7725474ab8091ea00de8fde7fabffe708c45e4c0e8713b1fcb1a5a25963bba44974b7787bebc06a59f3b8180416fefb0a54b4fd403c6152be')
 
 package() {
   bsdtar -poxf "$srcdir/Unified_storcli_all_os/Linux/$pkgname-$pkgver-1.noarch.rpm" -C "$pkgdir"
@@ -20,5 +20,5 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   ln -s /opt/MegaRAID/storcli/storcli "$pkgdir/usr/bin"
 
-  install -Dm644 "$srcdir/Unified_storcli_all_os/Linux/license.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/Unified_storcli_all_os/ThirdPartyLicenseNotice.pdf" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.pdf"
 }
