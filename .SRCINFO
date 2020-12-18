@@ -1,13 +1,13 @@
 pkgbase = scala-music-scales
 	pkgdesc = Collection of scales to be used with the Scala music software
-	pkgver = 89
+	pkgver = 90
 	pkgrel = 1
 	url = http://www.huygens-fokker.org/scala/
 	install = scala-music-scales.install
 	arch = any
 	depends = scala-music
 	source = http://www.huygens-fokker.org/docs/scales.zip
-	md5sums = f683e27256f1d6baca0dc4c1bf2364f0
+	md5sums = 529136bbbf911912fb3619e87b97cdb8
 
 pkgname = scala-music-scales
 
