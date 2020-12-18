@@ -9,4 +9,4 @@ Categories=Development
 Terminal=false
 StartupNotify=true
 Exec=smartsynchronize-preview %f
-Icon=smartsynchronize
+Icon=smartsynchronize-preview

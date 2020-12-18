@@ -17,7 +17,7 @@ source=("https://www.syntevo.com/downloads/${appname}/${appname}-linux-${pkgver_
         "${pkgname}.desktop")
 
 sha1sums=("fc6358c249ddc349b0114da377903c596e5cd23d"
-          "6bf796d102c280d71bd3d443b25b1997e82104dd")
+          "e0e0097cd79d194d27973a9b16414b2b5dca32bd")
 
 package() {
   # Install desktop file
