@@ -1,0 +1,21 @@
+pkgbase = supermin-git
+	pkgdesc = Tool for creating supermin appliances
+	pkgver = 5.2.0.r12.g4c019ae
+	pkgrel = 1
+	url = http://people.redhat.com/~rjones/supermin/
+	arch = x86_64
+	license = GPL
+	makedepends = ocaml
+	makedepends = ocaml-findlib
+	depends = e2fsprogs
+	depends = pacman
+	depends = pacman-contrib
+	depends = cpio
+	provides = supermin
+	conflicts = febootstrap<=3.21
+	conflicts = supermin
+	source = supermin-git::git+https://github.com/libguestfs/supermin.git
+	sha512sums = SKIP
+
+pkgname = supermin-git
+
