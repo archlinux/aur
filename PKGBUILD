@@ -8,7 +8,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs
          python-buildbot-www python-buildbot-waterfall-view
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges)
-pkgver=2.9.2
+pkgver=2.9.3
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
 pkgrel=1
 arch=(any)
@@ -27,7 +27,7 @@ makedepends=(python-twisted python-jinja python-zope-interface
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "subunit-tests.diff")
-sha256sums=('7072d39fac7cd126e7bf6bed6e14b94bb6c86c360caf12e69c578af305e2883a'
+sha256sums=('184255af362855cdcd001c82c3a9e49d1071e24aebb4e9ffb4da5e2f52365e09'
             'SKIP'
             'SKIP'
             'cd66bf65e45fa0a5916a6e0201dcebc4db001e4f47da856afbffc58a04356d55')
