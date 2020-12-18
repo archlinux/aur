@@ -5,8 +5,8 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=firefox-nightly-hg
 _pkgname=firefox-nightly
-pkgver=85.0a1.r551354+.7d7faf0b6d7a+
-_pkgver=85.0a1
+pkgver=86.0a1.r561202.2231d839f1e7
+_pkgver=86.0a1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, nightly version"
 arch=(x86_64)
@@ -63,7 +63,7 @@ prepare() {
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
 
   # https://phabricator.services.mozilla.com/D90627
-  # patch -Np1 -i ../D90627.diff
+  #patch -Np1 -i ../D90627.diff
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
  
