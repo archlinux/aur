@@ -5,7 +5,7 @@
 
 pkgname=emby-server-beta
 pkgver=4.6.0.8
-pkgrel=1
+pkgrel=2
 _ffmpeg_ver=2020_05_23
 _ffdetect_ver=2020_05_23
 pkgdesc='Bring together your videos, music, photos, and live television'
@@ -19,13 +19,15 @@ depends=('alsa-lib'
          'dotnet-host-bin'
          'expat'
          'fontconfig'
-         'freetype2'
          'fribidi'
          'glibc'
          'gmp'
+         'gnutls'
          'lame'         
-         'libass.so'         
+         'libass.so'
+	 'libdav1d.so'         
          'libdrm'
+         'libfreetype.so'
          'libjpeg-turbo'
          'libmfx'
          'libpng'
@@ -88,6 +90,7 @@ build() {
     --enable-gpl \
     --enable-libaom \
     --enable-libass \
+    --enable-libdav1d \
     --enable-libdrm \
     --enable-libfreetype \
     --enable-libfribidi \
