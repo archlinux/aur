@@ -1,6 +1,6 @@
 # Maintainer: Kitsu mail@kitsu.me
 pkgname=yofi-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Minimalistic menu for Wayland-based compositors"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'git')
 provides=('yofi')
 _binname="yofi-ubuntu-20.04"
 source=("https://github.com/l4l/yofi/releases/download/${pkgver}/${_binname}")
-sha256sums=('471c9707bf0d6df479411ad0f44689562049396d17be452f1fd7293e49f33f2e')
+sha256sums=('bc13341df4c1e44ff14b2f19396b34a890dfa17fd2e409a9124b61ab79fa8151')
 
 package() {
   cd "$srcdir"
