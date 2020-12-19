@@ -1,6 +1,6 @@
 pkgbase = rocm-dev
 	pkgdesc = ROCm Dev - Metapackage for the ROCm Development Stack
-	pkgver = 3.10.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://rocm-documentation.readthedocs.io/en/latest/
 	arch = x86_64
@@ -23,4 +23,3 @@ pkgbase = rocm-dev
 	provides = rocm
 
 pkgname = rocm-dev
-
