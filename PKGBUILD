@@ -19,7 +19,7 @@ install="${pkgname}.install"
 backup=("etc/${_pkgname}/appsettings.json")
 sha256sums=('SKIP'
             'ca3726e76573747bceddf0267a04141b14c2dfa8b353b46a49bb932e620e7c64'
-            '81283e4c542f4bcb9b8fcabc9324574e8553fed68738d32836b95bf5b8db44d4'
+            '818ed53d54e57c4021fd5078212fe7199414b49b4c097fcb2f3631560d77fd35'
             '2b4f3621c10194156e0127e07367a2adc3dcc2a90dee5a9ca145931da8ec8d30'
             '55c10b3ff54139395bde101db58d1e31879b72cc50cbbf785280e20e8df17bc0')
 
