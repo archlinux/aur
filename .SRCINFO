@@ -1,16 +1,17 @@
 pkgbase = python-pantable-git
 	pkgdesc = CSV Tables in Markdown: Pandoc Filter for CSV Tables
-	pkgver = 0.13.1.r4.g76034d9
+	pkgver = 0.13.1.r13.g265770e
 	pkgrel = 1
 	url = https://github.com/ickc/pantable
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = python-pip
 	depends = pandoc>=2.11.2
 	depends = python
 	depends = python-panflute>=2
 	depends = python-yaml
-	provides = python-pantable=0.13.1.r4.g76034d9
+	provides = python-pantable=0.13.1.r13.g265770e
 	conflicts = python-pantable
 	source = python-pantable-git::git+https://github.com/ickc/pantable.git
 	sha256sums = SKIP

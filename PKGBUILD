@@ -2,7 +2,7 @@
 
 _name=pantable
 pkgname=python-$_name-git
-pkgver=0.13.1.r4.g76034d9
+pkgver=0.13.1.r13.g265770e
 pkgrel=1
 pkgdesc='CSV Tables in Markdown: Pandoc Filter for CSV Tables'
 arch=('any')
@@ -11,9 +11,10 @@ license=('GPL3')
 _py_deps=('panflute>=2'
           'yaml')
 depends=('pandoc>=2.11.2'
-		 'python'
-		 "${_py_deps[@]/#/python-}")
-makedepends=('python-pip')
+         'python'
+         "${_py_deps[@]/#/python-}")
+makedepends=('git'
+             'python-pip')
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
@@ -21,7 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
-    git describe --long --always --tags --abbrev=7 HEAD |
+    git describe --long --tags --abbrev=7 HEAD |
         sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
