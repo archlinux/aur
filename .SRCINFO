@@ -1,15 +1,38 @@
-pkgbase = python2-audit
-	pkgdesc = Userspace components of the audit framework (python 2.X bindings)
+pkgbase = audit
+	pkgdesc = Userspace components of the audit framework
 	pkgver = 2.8.5
-	pkgrel = 1
+	pkgrel = 7
 	url = https://people.redhat.com/sgrubb/audit
-	arch = i686
 	arch = x86_64
-	license = GPL2
-	depends = python2
-	depends = audit
-	source = https://people.redhat.com/sgrubb/audit/audit-2.8.5.tar.gz
+	license = GPL
+	makedepends = krb5
+	makedepends = libcap-ng
+	makedepends = libldap
+	makedepends = swig
+	makedepends = linux-headers
+	makedepends = python2
+	options = emptydirs
+	source = audit-2.8.5.tar.gz::https://people.redhat.com/sgrubb/audit/audit-2.8.5.tar.gz
 	sha512sums = 7d416aaa21c1a167f8e911ca82aecbaba804424f3243f505066c43ecc4a62a34feb2c27555e99d3268608404793dccca0f828c63670e3aa816016fb493f8174a
 
+pkgname = audit
+	depends = krb5
+	depends = libcap-ng
+	provides = libaudit.so
+	provides = libauparse.so
+	backup = etc/libaudit.conf
+	backup = etc/audit/audit-stop.rules
+	backup = etc/audit/auditd.conf
+	backup = etc/audisp/audispd.conf
+	backup = etc/audisp/audisp-remote.conf
+	backup = etc/audisp/zos-remote.conf
+	backup = etc/audisp/plugins.d/af_unix.conf
+	backup = etc/audisp/plugins.d/audispd-zos-remote.conf
+	backup = etc/audisp/plugins.d/au-remote.conf
+	backup = etc/audisp/plugins.d/syslog.conf
+
 pkgname = python2-audit
+	pkgdesc = Userspace components of the audit framework (python 2.X bindings)
+	depends = python2
+	depends = audit
 
