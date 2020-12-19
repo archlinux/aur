@@ -1,6 +1,6 @@
 pkgbase = liblinphone-git
 	pkgdesc = A Voice-over-IP phone library and CLI
-	pkgver = 4.5.0.alpha.r112.g868bee338
+	pkgver = 4.5.0.alpha.r300.gf78f649e3
 	pkgrel = 1
 	url = http://www.linphone.org
 	install = linphone.install
@@ -12,17 +12,16 @@ pkgbase = liblinphone-git
 	makedepends = graphviz
 	makedepends = python-pystache
 	makedepends = xsd
-	depends = belcard>=4.3
-	depends = belle-sip>=4.3
-	depends = bzrtp>=4.3
+	depends = belcard>=4.4
+	depends = belle-sip>=4.5
+	depends = bzrtp>=4.4
 	depends = ffmpeg
-	depends = lime>=4.3
+	depends = lime>=4.4
 	depends = mediastreamer>=4.4.0
-	depends = ortp>=4.4.0
-	depends = soci>=4.0
+	depends = ortp>=4.5
 	depends = xerces-c
 	optdepends = pulseaudio
-	provides = liblinphone=4.5.0.alpha.r112.g868bee338
+	provides = liblinphone=4.5.0.alpha.r300.gf78f649e3
 	conflicts = liblinphone
 	options = !emptydirs
 	source = git+https://github.com/BelledonneCommunications/linphone.git

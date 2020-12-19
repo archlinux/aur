@@ -5,14 +5,14 @@
 
 pkgname=liblinphone-git
 _pkgname=linphone
-pkgver=4.5.0.alpha.r112.g868bee338
+pkgver=4.5.0.alpha.r300.gf78f649e3
 pkgrel=1
 pkgdesc="A Voice-over-IP phone library and CLI"
 arch=('x86_64')
 url="http://www.linphone.org"
 license=('GPL')
-depends=('belcard>=4.3' 'belle-sip>=4.3' 'bzrtp>=4.3' 'ffmpeg' 'lime>=4.3'
-    'mediastreamer>=4.4.0' 'ortp>=4.4.0' 'soci>=4.0' 'xerces-c')
+depends=('belcard>=4.4' 'belle-sip>=4.5' 'bzrtp>=4.4' 'ffmpeg' 'lime>=4.4'
+    'mediastreamer>=4.4.0' 'ortp>=4.5' 'xerces-c')
 makedepends=('cmake' 'doxygen' 'git' 'graphviz' 'python-pystache' 'xsd')
 optdepends=('pulseaudio')
 options=('!emptydirs')
@@ -28,20 +28,20 @@ pkgver() {
 }
 
 build() {
-  cd $_pkgname
-  CXXFLAGS="$CXXFLAGS -Wno-deprecated -Wimplicit-fallthrough=0 -Wno-unused-function"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-      -DENABLE_STATIC=NO \
-      -DENABLE_CXX_WRAPPER=YES \
-      -DENABLE_DOC=NO \
-      -DENABLE_LIME=YES \
-      -DENABLE_UNIT_TESTS=NO \
-      -DENABLE_STRICT=NO \
-      -DCMAKE_INSTALL_RPATH=NO .
-  make
+  cmake -B build $_pkgname \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_STATIC=NO \
+    -DENABLE_CXX_WRAPPER=YES \
+    -DENABLE_DOC=NO \
+    -DENABLE_LIME=NO \
+    -DENABLE_LIME_X3DH=YES \
+    -DENABLE_UNIT_TESTS=NO \
+    -DENABLE_STRICT=NO \
+    -DCMAKE_INSTALL_RPATH=NO \
+    -Wno-dev
+  make -C build
 }
 
 package() {
-  cd "$_pkgname"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" -C build install
 }
