@@ -10,9 +10,9 @@ url="https://github.com/notpushkin/Mailspring-Libre"
 options=('!strip')
 
 source=()
-sha256sums_x86_64=('cdeb12a859890309e4ad08c6577363dd2e87e7c5e0363336e9d4adda2488295f')
+sha256sums_x86_64=('e16f85c4f2df398976ac70b3139ff698ab2c5caff7ca346eab62d60860d63a84')
 
-source_x86_64=("https://u.ale.sh/mailspring-1.7.2-amd64.libre1.deb")
+source_x86_64=("https://github.com/notpushkin/Mailspring-Libre/releases/download/1.7.8-libre/mailspring-1.7.8-libre-amd64.deb")
 depends=("libxss" "libxkbfile" "libsecret" "gtk3" "nss" "libglvnd")
 
 optdepends=('libappindicator-gtk3: for system tray support' "libgnome-keyring: keyrings" "gnome-keyring: keyrings" )
