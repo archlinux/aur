@@ -1,0 +1,19 @@
+pkgbase = python-autokernel-git
+	pkgdesc = A tool to autodetect and manage kernel configuration options
+	pkgver = v0.9.6.r0.g43bbe35
+	pkgrel = 1
+	url = https://autokernel.oddlama.org/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-kconfiglib
+	depends = python-lark-parser
+	depends = python-dateutil
+	depends = python-requests
+	depends = python-sympy
+	source = python-autokernel-git::git+https://github.com/oddlama/autokernel.git
+	sha256sums = SKIP
+
+pkgname = python-autokernel-git
+
