@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=87.0.4280.88
-pkgrel=2
+pkgrel=3
 _launcher_ver=6
 _gcc_patchset=9
 pkgdesc="A web browser built for speed, simplicity, and security"
