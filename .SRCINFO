@@ -1,0 +1,21 @@
+pkgbase = timeshift
+	pkgdesc = A backup and restore utility
+	pkgver = 20.11.1
+	pkgrel = 1
+	url = https://github.com/teejee2008/timeshift
+	arch = x86_64
+	license = GPL
+	depends = libgee
+	depends = vte3
+	depends = cronie
+	depends = cairo
+	depends = rsync
+	depends = btrfs-progs
+	depends = json-glib
+	depends = gdk-pixbuf2
+	depends = gtk3
+	source = https://github.com/teejee2008/timeshift/releases/download/v20.11.1/timeshift_20.11.1_amd64.deb
+	md5sums = c71ca96e3be09f471c4e8c93cbbbc885
+
+pkgname = timeshift
+
