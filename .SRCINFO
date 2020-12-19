@@ -1,6 +1,6 @@
 pkgbase = lib32-gst-plugins-bad
 	pkgdesc = Multimedia graph framework - bad plugins (32-bit)
-	pkgver = 1.18.1
+	pkgver = 1.18.2
 	pkgrel = 1
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
@@ -83,8 +83,9 @@ pkgbase = lib32-gst-plugins-bad
 	depends = lib32-zbar
 	depends = lib32-zvbi
 	depends = gst-plugins-bad
+	optdepends = lib32-nvidia-utils: nvcodec plugin
 	options = !emptydirs
-	source = git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=e5c3c106a2da607953fea36e3a253b382c939684
+	source = git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=b375ee4cdbcb98687c226d6564f8678a809cf02a
 	sha256sums = SKIP
 
 pkgname = lib32-gst-plugins-bad
