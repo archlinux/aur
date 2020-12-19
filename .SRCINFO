@@ -1,6 +1,6 @@
 pkgbase = c++-gtk-utils
 	pkgdesc = Classes and functions for programming in GTK+
-	pkgver = 2.2.19
+	pkgver = 2.2.20
 	pkgrel = 1
 	url = http://cxx-gtk-utils.sourceforge.net/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = c++-gtk-utils
 	depends = gtk3
 	options = !docs
 	options = !emptydirs
-	source = https://downloads.sourceforge.net/project/cxx-gtk-utils/cxx-gtk-utils/2.2.19/c++-gtk-utils-2.2.19.tar.gz
-	sha256sums = 382abe260863dc1ef84f912bcbc57414a0dd0d6fe622694fea2f5a042a04dd88
+	source = https://downloads.sourceforge.net/project/cxx-gtk-utils/cxx-gtk-utils/2.2.20/c++-gtk-utils-2.2.20.tar.gz
+	sha256sums = a64e03e5948d074f8309b036ca0acaf9ae4025c19cef6174f2319c504fb32d8c
 
 pkgname = c++-gtk-utils
 
