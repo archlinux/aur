@@ -1,0 +1,15 @@
+pkgbase = firefox-extension-search-by-image
+	pkgdesc = Search by Image add-on for Firefox
+	pkgver = 3.4.2
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/search_by_image/
+	arch = any
+	groups = firefox-addons
+	license = GPL3
+	depends = firefox
+	noextract = extension.xpi
+	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3690470/search_by_image-3.4.2-an+fx.xpi
+	sha256sums = 2987a5f9c9b043de969f166d8f2275e3c2147fe2e3d186eb8a13f8cc5bd3c45d
+
+pkgname = firefox-extension-search-by-image
+
