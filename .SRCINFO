@@ -1,0 +1,16 @@
+pkgbase = python-metar
+	pkgdesc = a Python package to parse METAR-coded weather reports
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/python-metar/python-metar
+	arch = x86_64
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/70/48/c0b746fcccde312d990b43be79726791f0d7b10a099693c520d2d29a85f8/metar-1.7.0.tar.gz
+	source = LICENSE
+	sha256sums = bee673dab1cf3767d5a5fcb8b67a2d0194f686503050ab94ffd08fd9a2f2e1e4
+	sha256sums = SKIP
+
+pkgname = python-metar
+
