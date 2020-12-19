@@ -1,15 +1,17 @@
 pkgbase = python-pytest-cython
 	pkgdesc = A plugin for testing Cython extension modules.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lgpage/pytest-cython
 	arch = any
 	license = MIT
+	checkdepends = cython
 	checkdepends = python-pytest
 	makedepends = python-setuptools
-	depends = python
 	source = https://pypi.org/packages/source/p/pytest-cython/pytest-cython-0.1.0.tar.gz
+	source = 43f3d148738f77f8579caae49f74f8d548d3f0a9.patch
 	sha256sums = 90fa7e4e619bababeb433d3ba173a80d20473cce0bf3dce2c0e6f298becf5998
+	sha256sums = 0db1f2b6cd2b909fd0214d14a267a9342a74575ff3aa81ea51d3d997b8e11a61
 
 pkgname = python-pytest-cython
 
