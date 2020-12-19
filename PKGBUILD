@@ -3,13 +3,13 @@
 
 pkgname=gobuster
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A directory/file & DNS busting tool."
 arch=('x86_64')
 url="https://github.com/OJ/gobuster"
 license=('Apache')
 depends=('glibc')
-makedepends=('go' 'git')
+makedepends=('go')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha256sums=('a49e597412a0be68020f2836c4f33276cb653d00543f59d4cff34b053b8d9a10')
 
