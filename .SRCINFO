@@ -1,7 +1,7 @@
 pkgbase = i3-scratchpad-git
 	pkgdesc = The Swiss Army Knife of floating i3 windows
 	pkgver = 1.1
-	pkgrel = 3
+	pkgrel = 1
 	arch = any
 	license = Unlicense
 	depends = i3-wm
