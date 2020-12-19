@@ -1,7 +1,7 @@
 # Maintainer: Gregory <gregory.mkv@gmail.com>
 
 pkgname=handlr-bin
-pkgver=0.4.5
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Powerful alternative to xdg-utils written in Rust"
 arch=('x86_64')
