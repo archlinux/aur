@@ -1,6 +1,16 @@
 post_install() {
   echo ':: In order to enable nordvpn you have to start the following service:'
   echo '     sudo systemctl enable --now nordvpnd'
+  echo ':: You have to add yourself to the nordvpn group to use it:'
+  echo "     gpasswd -a USERNAME nordvpn"
+}
+
+pre_install() {
+  chattr -i /var/lib/nordvpn/data/*
+}
+
+pre_upgrade() {
+  chattr -i /var/lib/nordvpn/data/*
 }
 
 pre_remove() {
