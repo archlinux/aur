@@ -2,7 +2,7 @@
 
 pkgname='python-ufo2ft'
 _pkgname='ufo2ft'
-pkgver='2.18.1'
+pkgver='2.19.1'
 pkgrel=1
 pkgdesc="A bridge from UFOs to FontTools objects."
 url="https://github.com/googlefonts/ufo2ft"
@@ -13,7 +13,7 @@ optdepends=()
 license=('MIT')
 arch=('any')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip")
-sha256sums=('95d1d85b4b970b7cdcaeab919c919a82a2c4be1e6beb46e5437208ed752ef74d')
+sha256sums=('6062ffed395e0a596e4a524d6bc3186f21ab218b9c874b9efd9f40c8718b0396')
 
 package() {
     cd "${_pkgname}-${pkgver}"
