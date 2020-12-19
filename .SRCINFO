@@ -1,7 +1,7 @@
 pkgbase = processing-jdk8
 	pkgdesc = Programming environment for creating images, animations and interactions (always uses Oracle JDK 8)
 	pkgver = 3.5.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.processing.org/
 	arch = x86_64
 	license = GPL
@@ -22,7 +22,7 @@ pkgbase = processing-jdk8
 	source = disable_update_check.patch
 	source = no_downloads.patch
 	sha256sums = 99a5d3cfccd106e79fe82cafa66b72b15c19e5747eac77e40dd0a82b032c2925
-	sha256sums = 2014fdb12f979f79c624acc514c14ce318f07cb2cc15a63e1b4febaff733f2a5
+	sha256sums = 1417308bf43bec2a8d178b84043a3e8a498fa164f3bf7d7668ba17cf96de1282
 	sha256sums = 8255ba154118884e51e3b9b7174814f7de8fcf7c380ce6f8666192adb6f2483c
 	sha256sums = fcd5c5ea558ceadde3f840522a5c1cb11e26569aec651e8154194cca39026611
 	sha256sums = 35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30
