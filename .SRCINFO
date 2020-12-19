@@ -1,7 +1,7 @@
 pkgbase = msp430-elf-gcc
 	pkgdesc = The GNU Compiler Collection for the msp430-elf target.
 	pkgver = 10.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = msp430-elf-gcc
 	options = zipman
 	options = docs
 	options = !strip
-	source = http://isl.gforge.inria.fr/isl-0.22.1.tar.xz
+	source = http://isl.gforge.inria.fr/isl-0.23.tar.xz
 	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-10.2.0/gcc-10.2.0.tar.xz
-	sha256sums = 28658ce0f0bdb95b51fd2eb15df24211c53284f6ca2ac5e897acc3169e55b60f
+	sha256sums = 5efc53efaef151301f4e7dde3856b66812d8153dede24fab17673f801c8698f2
 	sha256sums = b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c
 
 pkgname = msp430-elf-gcc
