@@ -1,6 +1,6 @@
 pkgbase = python-cocotbext-pcie
 	pkgdesc = PCI express simulation framework for cocotb
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/alexforencich/cocotbext-pcie
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-cocotbext-pcie
 	makedepends = python-setuptools
 	depends = python-cocotb
 	depends = python-cocotbext-axi
-	source = cocotbext-pcie-0.1.0.tar.gz::https://github.com/alexforencich/cocotbext-pcie/archive/v0.1.0.tar.gz
-	sha256sums = 6680edb6fb12b51067e0322d71a19339cc3225eaa0f64ff4e876b70ddc1f29f6
+	source = cocotbext-pcie-0.1.2.tar.gz::https://github.com/alexforencich/cocotbext-pcie/archive/v0.1.2.tar.gz
+	sha256sums = d9980996071e4f6cded40cb250ea5d905073fdbf48f8cc17167b2efbcf2733dc
 
 pkgname = python-cocotbext-pcie
 
