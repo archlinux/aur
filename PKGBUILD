@@ -3,11 +3,11 @@
 
 pkgbase=linux-rc
 pkgrel=1
-_srcname=linux-5.9
-_major=5.9
+_srcname=linux-5.10
+_major=5.10
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=13
+_minor=1
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -19,7 +19,7 @@ arch=(x86_64)
 license=(GPL2)
 url="https://www.kernel.org/"
 makedepends=(
-  bc kmod libelf
+  bc kmod libelf        cpio perl tar xz
 )
 options=('!strip')
 source=(
@@ -28,7 +28,6 @@ source=(
   #"$_rcpatch.patch::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/patch/?id=$_srcname.y&id2=v${_major}.${_minor}"
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
-  0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch
   0003-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch
@@ -38,12 +37,11 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('d4194374c51acac8624dcba4c114e7c5ba9c39fea7f79f603d28c3b12c3381befc36d39384e31b6b6f5426ac93b1c265b6d78fe291829a1b98f6275059ebb450'
+b2sums=('ea5158c972edca7a2a661930d359508e3570e12bd9f2e6c727c89e98488eb2307d8168ab5ef355fa56af451ea1f7a437bc17c06e9bfc4895ffcb39bd084e0cc4'
         'SKIP'
-        '6b4e25173a7bb0836af25dc53609f5f9f248dde5963c3667127619d25e1860e6363c31bb2fed905af3dadae5659083f4f3a88051f29fa4195678e39b37171279'
+        'd965795fdd5fa6f6cddbd86c4b7af9cfafe9022cae1c149a1326c90b9fdddbd7ebf83465c7b04d227418ba19c3b7af99d9a47b2616df2f83ec92fe7c9306f935'
         'SKIP'
-        '5b3de497c291d115c19e1856d08ae16f8ceb27061374deb763a4391b98c4aa7bd7e7afb0461c29d9245fba84b2827420104edd4902978dee2bda2c5738212b85'
-        'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95'
+        '396f1b2c5e2816010ca33de7d001e0138a63eb1ab69673cea69869439d4577520420f66f6f37ad134256a99c8220b05ee85ddd5af449629c5a45838292c4c90c'
         '4212b9f8d634038353c78fa4e33b7525789ea29fbb72bdeb4e263e1ae0c61b9ee22d6829b664b26fe2c7dff28a9d1f1fb2e558b9f90b32f78d8b2680816665ea'
         '2456d8a70e3c6f992ae5956efc3d0bee35480b55cf47088b5b31722059a213409fd0e4ba601e2b00ad25202fa44b336cf402e7d2def3ffe2861874a643f7d29a'
         '66cd32b08aee217d1031461161f1730c9c05c1585df9c1bdde857adf08477b4517d89766e90500704f28fb251101441efe22242f5290a7d2bc6095820e397adf'
