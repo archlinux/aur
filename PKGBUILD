@@ -5,7 +5,7 @@ set -u
 _pyver="python2"
 _pybase='pathspec'
 pkgname="${_pyver}-${_pybase}"
-pkgver='0.8.0'
+pkgver='0.8.1'
 #pkgver='0.5.9' # for aws-eb-cli
 pkgrel='1'
 pkgdesc='Utility library for gitignore style pattern matching of file paths'
@@ -17,8 +17,8 @@ makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 #_verwatch=("https://pypi.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
 source=("https://pypi.io/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-md5sums=('1d0bd1eaa0e1cc20d085fd63313240f3')
-sha256sums=('da45173eb3a6f2a5a487efba21f050af2b41948be6ab52b6a1e3ff22bb8b7061')
+md5sums=('fbd6575abb2be29927aebb2f38110bb6')
+sha256sums=('86379d6b86d75816baba717e64b1a3a3469deb93bb76d613c9ce79edc5cb68fd')
 
 build() {
   set -u
