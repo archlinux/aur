@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=tpm2-tss-engine-git
-pkgver=1.1.0rc1.r4.ae070ca
+pkgver=1.0.0.r69.22a6ae8
 pkgrel=1
 pkgdesc='OpenSSL engine for Trusted Platform Module 2.0 devices'
 arch=('x86_64')
