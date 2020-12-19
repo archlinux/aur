@@ -1,0 +1,13 @@
+pkgbase = zoomdl
+	pkgdesc = Download Zoom recorded meetings easily
+	pkgver = 2020.11.07
+	pkgrel = 1
+	url = https://github.com/Battleman/zoomdl
+	arch = any
+	license = GPL
+	depends = python
+	source = https://github.com/Battleman/zoomdl/releases/download/2020.11.07/zoomdl
+	md5sums = 6bdd65c18555d5db0e5aa60885b1ebd3
+
+pkgname = zoomdl
+
