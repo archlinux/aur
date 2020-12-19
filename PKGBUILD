@@ -1,30 +1,40 @@
 # Maintainer: sasvari
-name=camelot
-pkgname=python-$name-git
-pkgver=0.7.3.r2.gcd8ac79
-pkgrel=1
+pkgname=python-camelot-git
+pkgver=v0.8.2.r26.g7709e58
+pkgrel=2
 pkgdesc="Camelot: PDF Table Extraction for Humans"
-arch=(any)
-url="https://camelot-py.readthedocs.io"
-license=("MIT")
-depends=("python" "opencv" "python-click" "python-matplotlib" "python-numpy" "python-openpyxl" "python-pandas" "python-pdfminer.six" "python-pypdf2")
-makedepends=("git")
-provides=("python-camelot")
-conflicts=("python-camelot")
-source=("git+https://github.com/socialcopsdev/$name.git")
+arch=('any')
+url='https://camelot-py.readthedocs.io'
+license=('MIT')
+depends=('python' 'opencv' 'python-chardet' 'python-click' 'python-matplotlib'
+         'python-numpy' 'python-openpyxl' 'python-pandas' 'python-pdfminer.six'
+         'python-pypdf2')
+makedepends=('git' 'python-setuptools')
+checkdepends=('python-codecov' 'python-pytest' 'python-pytest-cov' 'python-pytest-mpl'
+              'python-pytest-runner' 'python-sphinx')
+provides=(${pkgname%-*}=$pkgver)
+conflicts=(${pkgname%-*})
+source=($pkgname::git://github.com/camelot-dev/camelot.git)
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$name"
-	git describe --tags | sed 's/^v//; s/-/.r/; s/-/./'
+    cd "$srcdir/$pkgname"
+    git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build () {
-	cd "$srcdir/$name"
+    cd "$srcdir/$pkgname"
 	python setup.py build
 }
 
 package() {
-	cd "$srcdir/$name"
-	python setup.py install --root="$pkgdir/" --prefix="/usr"
+    cd "$srcdir/$pkgname"
+	export PYTHONHASHSEED=0
+	python setup.py install --root="$pkgdir"
 }
-md5sums=('SKIP')
+
+check(){
+    cd "$srcdir/$pkgname"
+
+    pytest
+}
