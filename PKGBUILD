@@ -1,15 +1,15 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=gwcs
 pkgname=python-${_pyname}-doc
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Documentation for Python GWCS module"
 arch=('i686' 'x86_64')
 url="http://gwcs.readthedocs.io"
 license=('BSD')
-makedepends=("python-${_pyname}=${pkgver}" 'python-scipy' 'python-sphinx-astropy' 'python-sphinx-asdf' 'graphviz')
+makedepends=("python-${_pyname}=${pkgver}" 'python-sphinx-astropy' 'python-sphinx-asdf' 'graphviz')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('5a671684305860a734f790ab312d32f7')
+md5sums=('cb1036dade6115e47c6464464f3f42b5')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/docs
