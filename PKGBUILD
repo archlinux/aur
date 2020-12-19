@@ -2,32 +2,30 @@
 
 _name=pantable
 pkgname=python-$_name-git
-pkgver=0.12.4.r9.g964b436
+pkgver=0.13.1.r4.g76034d9
 pkgrel=1
 pkgdesc='CSV Tables in Markdown: Pandoc Filter for CSV Tables'
 arch=('any')
 url="https://github.com/ickc/$_name"
 license=('GPL3')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
 _py_deps=('panflute>=2'
           'yaml')
-depends=('pandoc' 'python' "${_py_deps[@]/#/python-}")
-makedepends=('python-setuptools')
+depends=('pandoc>=2.11.2'
+		 'python'
+		 "${_py_deps[@]/#/python-}")
+makedepends=('python-pip')
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
-    git describe --tags --abbrev=7 HEAD | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-build() {
-    cd "${pkgname}"
-	python setup.py build
+    git describe --long --always --tags --abbrev=7 HEAD |
+        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
     cd "${pkgname}"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
 }
