@@ -8,8 +8,8 @@ _githuborg=${_projectname}
 pkgdesc="Skycoin Cryptocurrency Wallet; Binary Release"
 pkgver='0.27.1'
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
-pkgrel=1
-arch=('x86_64' 'aarch64' 'armv7h' 'arm' 'armv6h' 'armhf' 'armel' )
+pkgrel=2
+arch=('x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel')
 url="https://${_pkggopath}"
 _url="https://downloads.${_projectname}.com/wallet"
 license=()
@@ -27,20 +27,26 @@ source_x86_64=("${_release_url}-x64.tar.gz")
 # "${_release_url}-x64.tar.gz.asc")
 source_aarch64=("${_release_url}-arm.tar.gz")
 # "${_release_url}-arm.tar.gz.asc")
-source_armv7=( ${source_aarch64[@]} )
-source_armv7l=( ${source_aarch64[@]} )
-source_armv7h=( ${source_aarch64[@]} )
 source_armv8=( ${source_aarch64[@]} )
+source_armv7=( ${source_aarch64[@]} )
+source_armv7h=( ${source_aarch64[@]} )
+source_armv7l=( ${source_aarch64[@]} )
+source_armv6h=( ${source_aarch64[@]} )
+source_armhf=( ${source_aarch64[@]} )
+source_armel=( ${source_aarch64[@]} )
+source_arm=( ${source_aarch64[@]} )
 sha256sums_x86_64=('ba4c2354b091b3db0ac7418caab1d52988b6fd1d18a9f0d5e0ebcb3f4ef15f94')
 # 'ba4c2354b091b3db0ac7418caab1d52988b6fd1d18a9f0d5e0ebcb3f4ef15f94')
 sha256sums_aarch64=('e4bbbde43a4971d21aefec55d4fbe3173694567bc372718ce4dd7352ca0bc169')
 # 'e4bbbde43a4971d21aefec55d4fbe3173694567bc372718ce4dd7352ca0bc169'
 sha256sums_armv8=( ${sha256sums_aarch64[@]} )
 sha256sums_armv7=( ${sha256sums_aarch64[@]} )
-sha256sums_armv7l=( ${sha256sums_aarch64[@]} )
 sha256sums_armv7h=( ${sha256sums_aarch64[@]} )
+sha256sums_armv7l=( ${sha256sums_aarch64[@]} )
+sha256sums_armv6h=( ${sha256sums_aarch64[@]} )
 sha256sums_armhf=( ${sha256sums_aarch64[@]} )
 sha256sums_armel=( ${sha256sums_aarch64[@]} )
+sha256sums_arm=( ${sha256sums_aarch64[@]} )
 #validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC'  # Moses Narrow <moe_narrow@use.startmail.com>
 #                           '98F934F04F9334B81DFA3398913BBD5206B19620') #iketheadore skycoin <luxairlake@protonmail.com>
 
