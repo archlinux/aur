@@ -1,14 +1,15 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 pkgname=barrier-headless-git
-pkgver=2.3
-pkgrel=2
+pkgver=v2.3.3+69+ge032d14a
+pkgrel=1
 pkgdesc="Open-source KVM software based on Synergy"
 url="https://github.com/debauchee/barrier"
 license=("custom:GPL2WithOpenSSLException")
 source=(
     "barrier-headless-git::git+https://github.com/debauchee/barrier.git"
 )
+conflicts=(barrier-headless)
 sha256sums=('SKIP')
 arch=(x86_64)
 depends=(
@@ -34,8 +35,15 @@ makedepends=(
     hicolor-icon-theme
 )
 
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/-/+/g'
+}
+
 prepare() {
     cd "barrier-headless-git"
+  
+    git submodule update --init --recursive
 
     for patch in "${srcdir?}"/*.patch; do
         if [ -f "${patch?}" ]; then
