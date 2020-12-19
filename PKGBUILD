@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=rocm-libs
-pkgver=3.10.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="ROCm Libs - Libraries utilizing HPC and Ultrascale GPU Computing of
 ROCm"
