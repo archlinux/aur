@@ -21,6 +21,6 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
 
-    install -Dm755 "target/release/desed" -t "$pkgdir/usr/bin/desed"
-    install -Dm644 "desed.1" -t "$pkgdir/usr/share/man/man1/desed.1"
+    install -Dm755 "target/release/desed" -T "$pkgdir/usr/bin/desed"
+    install -Dm644 "desed.1" -T "$pkgdir/usr/share/man/man1/desed.1"
 }
