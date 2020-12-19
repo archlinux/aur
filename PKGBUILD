@@ -1,8 +1,9 @@
 # Maintainer: Evan Oicle <oicleevan@protonmail.com>
+# Contributor: Petr Mrázek <petr@mojang.com>
 pkgname=minecraft-launcher-arch
 pkgver=2.2.909
 pkgrel=1
-pkgdesc="Official Minecraft Launcher"
+pkgdesc="Minecraft Launcher -- Quicker Updates"
 arch=('x86_64')
 url="https://mojang.com/"
 license=('All rights reserved')
