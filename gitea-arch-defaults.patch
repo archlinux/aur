@@ -9,16 +9,16 @@
  ; Application run mode, affects performance and debugging. Either "dev", "prod" or "test", default is "prod"
  RUN_MODE = prod
  
-@@ -17,7 +17,7 @@
- PROJECT_BOARD_BUG_TRIAGE_TYPE = Needs Triage, High Priority, Low Priority, Closed
+@@ -18,7 +18,7 @@
  
  [repository]
+ ; Root path for storing all repository data. It must be an absolute path. By default it is stored in a sub-directory of `APP_DATA_PATH`.
 -ROOT =
 +ROOT = /var/lib/gitea/repos
+ ; The script type this server supports. Usually this is `bash`, but some users report that only `sh` is available.
  SCRIPT_TYPE = bash
  ; DETECTED_CHARSETS_ORDER tie-break order for detected charsets.
- ; If the charsets have equal confidence, tie-breaking will be done by order in this list
-@@ -354,7 +354,7 @@
+@@ -356,7 +356,7 @@
  KEY_FILE = https/key.pem
  ; Root directory containing templates and static files.
  ; default is the path where Gitea is executed
@@ -27,7 +27,7 @@
  ; Default path for App data
  APP_DATA_PATH = data
  ; Application level GZIP support
-@@ -424,7 +424,7 @@
+@@ -426,7 +426,7 @@
  ; For iterate buffer, default is 50
  ITERATE_BUFFER_SIZE = 50
  ; Show the database generated SQL
@@ -36,7 +36,7 @@
  ; Maximum number of DB Connect retries
  DB_RETRIES = 10
  ; Backoff time per DB retry (time.Duration)
-@@ -838,10 +838,10 @@
+@@ -840,10 +840,10 @@
  DEFAULT_UI_LOCATION =
  
  [log]
@@ -49,7 +49,7 @@
  ; Buffer length of the channel, keep it as it is if you don't know what it is.
  BUFFER_LEN = 10000
  REDIRECT_MACARON_LOG = false
-@@ -866,7 +866,7 @@
+@@ -868,7 +868,7 @@
  
  ; For "console" mode only
  [log.console]
