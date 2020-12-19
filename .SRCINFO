@@ -1,6 +1,6 @@
 pkgbase = qtasksmanager
 	pkgdesc = Graphical work packages manager written in Qt
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/bbilas/QTasksManager
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = qtasksmanager
 	depends = qt5-declarative
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
-	source = https://github.com/bbilas/QTasksManager/archive/v1.0.0.tar.gz
-	sha256sums = 430ba05e242481fc28f585d9ff02c434fe89d824f69b7873ba03e95227668e7f
+	source = https://github.com/bbilas/QTasksManager/archive/v1.1.0.tar.gz
+	sha256sums = 06dad786ff6cd7c1ee4d4c6544d4597b599c533039d1f6224203d0732ec30488
 
 pkgname = qtasksmanager
 
