@@ -17,7 +17,8 @@ depends=()
 provides=( 'skywire' )
 conflicts=( 'skywire' )
 #install=skywire.install
-#source=("${_pkgname}-scripts.tar.gz")
+_scripts=${_pkgname}-scripts
+#source=("${_scripts}.tar.gz" )
 # "PKGBUILD.sig")
 #sha256sums=('fff8b9f7d4e60c8993497a963161f934d445f4d7cf2ff47bc787dcb459c8b351')
 #            'SKIP')
@@ -56,7 +57,7 @@ sha256sums_i686=('d74b659aca0e3b90c05cf2b31de9bdbd44f6a4a69a4a0a083f7c44454be301
 #}
 
 package() {
-  _msg2 'creating dirs'
+_msg2 'creating dirs'
 #create directory trees or the visor might make them with weird permissions
 _skydir="opt/skywire"
 _skyapps="${_skydir}/apps"
