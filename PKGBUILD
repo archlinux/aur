@@ -1,8 +1,9 @@
-# Maintainer: Haruue Icymoon <haruue@caoyue.com.cn>
+# Maintainer: Karmanyaah Malhotra <karmanyaahm@gmail.com>
+# Contributor: Haruue Icymoon <haruue@caoyue.com.cn>
 
 pkgname=dex2jar-git
-pkgver=2.1.nightly.26.r49.g1d51507
-pkgrel=2
+pkgver=2.1.nightly.28.r13.gd7a86110
+pkgrel=1
 pkgdesc='Tools to work with android .dex and java .class files, git version'
 arch=('i686' 'x86_64')
 url='https://github.com/pxb1988/dex2jar'
