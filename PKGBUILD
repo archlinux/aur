@@ -19,11 +19,11 @@ prepare() {
   cd "$srcdir/upp"
   ./configure
   make -f umkMakefile -j 4
-  UMK="./umk"
 }
 
 build() {
   cd "$srcdir/upp"
+  UMK="./umk"
   $UMK ./uppsrc ide CLANG -brs ./theide
   $UMK ./uppsrc umk CLANG -brs ./umk
 }
