@@ -13,4 +13,3 @@ pkgbase = llvm-amdgpu
 	sha256sums = 8262aff88c1ff6c4deb4da5a4f8cda1bf90668950e2b911f93f73edaee53b370
 
 pkgname = llvm-amdgpu
-
