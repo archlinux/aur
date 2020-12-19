@@ -36,7 +36,7 @@ build() {
     --enable-gssapi-krb5=yes \
     --enable-systemd=yes \
     --with-libcap-ng=yes \
-    #--without-python3
+    --without-python3
   make
   [ -n "${SOURCE_DATE_EPOCH}" ] && touch -h -d @$SOURCE_DATE_EPOCH bindings/swig/python/audit.py
 }
