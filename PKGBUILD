@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot' 'foot-terminfo')
 pkgver=1.6.0  # Don’t forget to update CHANGELOG.md
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
@@ -27,18 +27,31 @@ build() {
 
   meson --prefix=/usr --buildtype=release -Db_lto=true . build
 
+  find -name "*.gcda" -delete
+  meson configure -Db_pgo=generate build
+  ninja -C build
+
+  script_options="--scroll --scroll-region --colors-regular --colors-bright --colors-256 --colors-rgb --attr-bold --attr-italic --attr-underline"
+
+  tmp_file=$(mktemp)
+
   if [[ -v WAYLAND_DISPLAY ]]; then
-    meson configure -Db_pgo=generate build
-    find -name "*.gcda" -delete
-    ninja -C build
-
-    tmp_file=$(mktemp)
-    build/foot --config /dev/null --term=xterm -- sh -c "./scripts/generate-alt-random-writes.py --scroll --scroll-region --colors-regular --colors-bright --colors-rgb ${tmp_file} && cat ${tmp_file}"
-    rm "${tmp_file}"
-
-    meson configure -Db_pgo=use build
+    build/foot \
+      --config /dev/null \
+      --term=xterm \
+      sh -c "./scripts/generate-alt-random-writes.py ${script_options} ${tmp_file} && cat ${tmp_file}"
+  else
+    ./scripts/generate-alt-random-writes.py \
+      --rows=67 \
+      --cols=135 \
+      ${script_options} \
+      ${tmp_file}
+    build/pgo ${tmp_file} ${tmp_file} ${tmp_file}
   fi
 
+  rm "${tmp_file}"
+
+  meson configure -Db_pgo=use build
   ninja -C build
 }
 
