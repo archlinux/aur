@@ -1,13 +1,13 @@
 pkgbase = rocfft
 	pkgdesc = Next generation FFT implementation for ROCm
-	pkgver = 3.10.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://rocmdocs.amd.com/en/latest/ROCm_Libraries/ROCm_Libraries.html#rocfft
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = hip-rocclr
-	source = rocfft-3.10.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocFFT/archive/rocm-3.10.0.tar.gz
-	sha256sums = 9f57226aac7d9a0515e14a5a5b08a85e727de72b3f9c2177daf56749ac2c76ae
+	source = rocfft-4.0.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocFFT/archive/rocm-4.0.0.tar.gz
+	sha256sums = d1d10d270f822e0bab64307313ef163ba449b058bf3352962bbb26d4f4db89d0
 
 pkgname = rocfft
