@@ -1,6 +1,6 @@
 pkgbase = singularity-container
 	pkgdesc = Container platform focused on supporting "Mobility of Compute".
-	pkgver = 3.6.4
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://www.sylabs.io/singularity/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = singularity-container
 	makedepends = dep
 	depends = squashfs-tools
 	depends = libseccomp
-	noextract = singularity-3.6.4.tar.gz
-	source = https://github.com/sylabs/singularity/releases/download/v3.6.4/singularity-3.6.4.tar.gz
+	noextract = singularity-3.7.0.tar.gz
+	source = https://github.com/sylabs/singularity/releases/download/v3.7.0/singularity-3.7.0.tar.gz
 	sha256sums = 71233a81d6bb4d686d8dc636b3e3e962a372f54001921c89a12b062cefd9e79f
 
 pkgname = singularity-container
