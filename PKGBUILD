@@ -28,4 +28,5 @@ package() {
     mv "${pkgdir}/usr/sbin/nordvpnd" "${pkgdir}/usr/bin"
     rm -r "${pkgdir}/etc/init.d"
     rm -r "${pkgdir}/usr/sbin"
+    echo "g nordvpn - -" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 }
