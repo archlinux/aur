@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-descale-git
 	pkgdesc = Plugin for Vapoursynth: descale (GIT version)
-	pkgver = r2.8.g0d439e5
+	pkgver = r6.1.g7ea0ca1
 	pkgrel = 1
 	url = https://github.com/Irrational-Encoding-Wizardry/vapoursynth-descale.git
 	arch = x86_64

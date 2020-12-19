@@ -2,7 +2,7 @@
 
 _plug=descale
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.8.g0d439e5
+pkgver=r6.1.g7ea0ca1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
