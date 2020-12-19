@@ -1,9 +1,14 @@
 pkgbase = v2raya-git
 	pkgdesc = A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan and Pingtunnel protocols
-	pkgver = 20201217.r602.329a7e1
+	pkgver = 20201219.r612.2a075b7
 	pkgrel = 1
 	url = https://github.com/v2rayA/v2rayA
+	install = .INSTALL
+	arch = i686
 	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
 	license = GPL3
 	makedepends = go>=2:1.12.3-1
 	makedepends = nodejs>=14
