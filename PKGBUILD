@@ -3,11 +3,11 @@
 pkgname='python-ufo2ft'
 _pkgname='ufo2ft'
 pkgver='2.19.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="A bridge from UFOs to FontTools objects."
 url="https://github.com/googlefonts/ufo2ft"
 checkdepends=('python-pytest' 'python-skia-pathops')
-depends=('python-booleanoperations' 'python-cffsubr' 'python-compreffor' 'python-cu2qu' 'python-defcon' 'python-fonttools')
+depends=('python-booleanoperations' 'python-cffsubr' 'python-compreffor' 'python-cu2qu' 'python-defcon' 'python-fonttools>=4.17.1')
 makedepends=('python-setuptools')
 optdepends=()
 license=('MIT')
