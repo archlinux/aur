@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <alex.branham@gmail.com>
 
 _cranname=StanHeaders
-_cranver=2.21.0-6
+_cranver=2.21.0-7
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(BSD3)
 depends=('r>=3.4.0' 'r-rcppparallel>=5.0.1' r-rcppeigen pandoc)
 optdepends=(r-rcpp r-bh r-knitr r-rmarkdown r-rstan)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('9a7c63223aa296e4757913836a04a275')
+sha256sums=('27546e064f0e907e031d9185ad55245d118d82fbe3074ecb1d76fae8b9f2336b')
 
 build() {
   cd "${srcdir}"

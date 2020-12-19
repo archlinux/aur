@@ -1,6 +1,6 @@
 pkgbase = r-stanheaders
 	pkgdesc = C++ Header Files for Stan
-	pkgver = 2.21.0.6
+	pkgver = 2.21.0.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=StanHeaders
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = r-stanheaders
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-rstan
-	source = https://cran.r-project.org/src/contrib/StanHeaders_2.21.0-6.tar.gz
-	md5sums = 9a7c63223aa296e4757913836a04a275
+	source = https://cran.r-project.org/src/contrib/StanHeaders_2.21.0-7.tar.gz
+	sha256sums = 27546e064f0e907e031d9185ad55245d118d82fbe3074ecb1d76fae8b9f2336b
 
 pkgname = r-stanheaders
 
