@@ -14,7 +14,7 @@
 
 pkgname=zimbra
 pkgbase=zimbra
-pkgver=9.0.0.p9
+pkgver=9.0.0.p10
 pkgrel=1
 pkgdesc="An enterprise-class email calendar and collaboration solution built for the cloud both public and private"
 arch=(x86_64)
@@ -62,7 +62,7 @@ source=("git+https://github.com/Zimbra/zm-build#tag=${_releaseno}" # Repo list i
   "git+https://github.com/Zimbra/zm-admin-console#tag=${_releaseno}.p9"
   "git+https://github.com/Zimbra/zm-admin-help-common#tag=${_releaseno}"
   "git+https://github.com/Zimbra/zm-ajax#tag=${_releaseno}.p9"
-  "git+https://github.com/Zimbra/zm-admin-ajax#tag=${_releaseno}"
+  "git+https://github.com/Zimbra/zm-admin-ajax#tag=${_releaseno}.p8"
   "git+https://github.com/Zimbra/zm-amavis#tag=${_releaseno}"
   "git+https://github.com/Zimbra/zm-aspell#tag=${_releaseno}"
   "git+https://github.com/Zimbra/zm-bulkprovision-admin-zimlet#tag=${_releaseno}"
@@ -86,7 +86,7 @@ source=("git+https://github.com/Zimbra/zm-build#tag=${_releaseno}" # Repo list i
   "git+https://github.com/Zimbra/zm-ldap-utilities#tag=${_releaseno}"
   "git+https://github.com/Zimbra/zm-ldap-utils-store#tag=${_releaseno}"
   "git+https://github.com/Zimbra/zm-licenses#tag=${_releaseno}"
-  "git+https://github.com/Zimbra/zm-mailbox#tag=${_releaseno}.p9"
+  "git+https://github.com/Zimbra/zm-mailbox#tag=${_releaseno}.p10"
   "git+https://github.com/Zimbra/zm-migration-tools#tag=${_releaseno}"
   "git+https://github.com/Zimbra/zm-mta#tag=${_releaseno}"
   "git+https://github.com/Zimbra/zm-nginx-conf#tag=${_releaseno}.p9"
@@ -102,7 +102,7 @@ source=("git+https://github.com/Zimbra/zm-build#tag=${_releaseno}" # Repo list i
   "git+https://github.com/Zimbra/zm-versioncheck-store#tag=${_releaseno}"
   "git+https://github.com/Zimbra/zm-versioncheck-utilities#tag=${_releaseno}"
   "git+https://github.com/Zimbra/zm-viewmail-admin-zimlet#tag=${_releaseno}"
-  "git+https://github.com/Zimbra/zm-web-client#tag=${_releaseno}.p9"
+  "git+https://github.com/Zimbra/zm-web-client#tag=${_releaseno}.p10"
   "git+https://github.com/Zimbra/zm-webclient-portal-example#tag=${_releaseno}"
   "git+https://github.com/Zimbra/zm-zcs#tag=${_releaseno}"
   "git+https://github.com/Zimbra/zm-zcs-lib#tag=${_releaseno}.p4"
@@ -163,65 +163,65 @@ package() {
 }
 
 md5sums=('SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  '21b3bdbcb2d23357104122df3de217b5'
-  '84ad300287d602d4d6b2601748ddbaac'
-  '66f2930f13484ae782a162e8e7da28c1'
-  'a33b2181aa9bd50470192727bab7d3fa')
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         '21b3bdbcb2d23357104122df3de217b5'
+         '84ad300287d602d4d6b2601748ddbaac'
+         '9c97f489e0fa84a7be0a0dec593fd946'
+         'a33b2181aa9bd50470192727bab7d3fa')

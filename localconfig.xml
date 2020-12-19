@@ -2,6 +2,6 @@
 
 <localconfig>
   <key name="zimbra_java_home">
-    <value>/usr/lib/jvm/java-13-openjdk/</value>
+    <value>/usr/lib/jvm/default/</value>
   </key>
 </localconfig>

@@ -1,6 +1,6 @@
 pkgbase = zimbra
 	pkgdesc = An enterprise-class email calendar and collaboration solution built for the cloud both public and private
-	pkgver = 9.0.0.p9
+	pkgver = 9.0.0.p10
 	pkgrel = 1
 	url = https://www.zimbra.com/open-source-email-overview/
 	arch = x86_64
@@ -117,7 +117,7 @@ pkgbase = zimbra
 	source = git+https://github.com/Zimbra/zm-admin-console#tag=9.0.0.p9
 	source = git+https://github.com/Zimbra/zm-admin-help-common#tag=9.0.0
 	source = git+https://github.com/Zimbra/zm-ajax#tag=9.0.0.p9
-	source = git+https://github.com/Zimbra/zm-admin-ajax#tag=9.0.0
+	source = git+https://github.com/Zimbra/zm-admin-ajax#tag=9.0.0.p8
 	source = git+https://github.com/Zimbra/zm-amavis#tag=9.0.0
 	source = git+https://github.com/Zimbra/zm-aspell#tag=9.0.0
 	source = git+https://github.com/Zimbra/zm-bulkprovision-admin-zimlet#tag=9.0.0
@@ -141,7 +141,7 @@ pkgbase = zimbra
 	source = git+https://github.com/Zimbra/zm-ldap-utilities#tag=9.0.0
 	source = git+https://github.com/Zimbra/zm-ldap-utils-store#tag=9.0.0
 	source = git+https://github.com/Zimbra/zm-licenses#tag=9.0.0
-	source = git+https://github.com/Zimbra/zm-mailbox#tag=9.0.0.p9
+	source = git+https://github.com/Zimbra/zm-mailbox#tag=9.0.0.p10
 	source = git+https://github.com/Zimbra/zm-migration-tools#tag=9.0.0
 	source = git+https://github.com/Zimbra/zm-mta#tag=9.0.0
 	source = git+https://github.com/Zimbra/zm-nginx-conf#tag=9.0.0.p9
@@ -157,7 +157,7 @@ pkgbase = zimbra
 	source = git+https://github.com/Zimbra/zm-versioncheck-store#tag=9.0.0
 	source = git+https://github.com/Zimbra/zm-versioncheck-utilities#tag=9.0.0
 	source = git+https://github.com/Zimbra/zm-viewmail-admin-zimlet#tag=9.0.0
-	source = git+https://github.com/Zimbra/zm-web-client#tag=9.0.0.p9
+	source = git+https://github.com/Zimbra/zm-web-client#tag=9.0.0.p10
 	source = git+https://github.com/Zimbra/zm-webclient-portal-example#tag=9.0.0
 	source = git+https://github.com/Zimbra/zm-zcs#tag=9.0.0
 	source = git+https://github.com/Zimbra/zm-zcs-lib#tag=9.0.0.p4
@@ -229,7 +229,7 @@ pkgbase = zimbra
 	md5sums = SKIP
 	md5sums = 21b3bdbcb2d23357104122df3de217b5
 	md5sums = 84ad300287d602d4d6b2601748ddbaac
-	md5sums = 66f2930f13484ae782a162e8e7da28c1
+	md5sums = 9c97f489e0fa84a7be0a0dec593fd946
 	md5sums = a33b2181aa9bd50470192727bab7d3fa
 
 pkgname = zimbra
