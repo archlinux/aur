@@ -3,7 +3,7 @@
 
 _gemname=stringio
 pkgname=ruby-$_gemname
-pkgver=0.1.4
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Pseudo IO on String'
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('77829506821ecb02f362f0fe10b233e13bb0f313')
+sha1sums=('46be773cccbf2d716952a46a9c8a1e3536e91934')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
