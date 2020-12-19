@@ -1,4 +1,4 @@
-# Maintainer: Zhang.j.k <zhangjk67@gmail.com>
+# Maintainer: Zhang.j.k <zhangjk67 at gmail dian com>
 
 pkgname=cyberpunk-grub-theme-git
 _theme=Cyberpunk
