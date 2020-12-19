@@ -1,0 +1,20 @@
+pkgbase = koko-git
+	pkgdesc = Image gallery application designed for desktop and touch devices
+	pkgver = r520.9159df6
+	pkgrel = 1
+	url = https://invent.kde.org/graphics/koko
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	depends = kirigami2
+	depends = kcoreaddons
+	depends = kguiaddons
+	depends = kconfig
+	depends = knotifications
+	depends = exiv2
+	source = git+https://invent.kde.org/graphics/koko.git
+	md5sums = SKIP
+
+pkgname = koko-git
+
