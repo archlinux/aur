@@ -1,6 +1,6 @@
 pkgbase = oacapture
 	pkgdesc = A planetary imaging application using Qt5
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = http://www.openastroproject.org/oacapture/
 	arch = i686
@@ -15,12 +15,10 @@ pkgbase = oacapture
 	optdepends = fxload: support for QHY5 cameras
 	provides = oacapture
 	conflicts = oacapture-git
-	source = https://github.com/openastroproject/openastro/archive/v1.7.0.tar.gz
+	source = https://github.com/openastroproject/openastro/archive/v1.8.0.tar.gz
 	source = oacapture-slash-lib.diff
-	source = libASICamera_pthread_fix.diff
-	sha256sums = 898fbb533dddc36369764198faf480f11265fb535a34f63f15b132eb8a718cd3
+	sha256sums = 25dfa4e16ba5e19028d40313eadf4cc1734a6f123572cb8be484bd009f06067d
 	sha256sums = 813e80ef718e0e9887c5293ef435b1cff43d03ae8c2bb6a2d53f0bbbf4a284f2
-	sha256sums = 56a86e3ad5a46eb25fce7209e9242b51da6d1d56facedbfe7f062395758b1621
 
 pkgname = oacapture
 
