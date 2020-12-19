@@ -1,10 +1,11 @@
 # Maintainer: mzz2017 <mzz@tuta.io>
 
 pkgname=v2raya-git
-pkgver=20201217.r602.329a7e1
+pkgver=20201219.r612.2a075b7
 pkgrel=1
+install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan and Pingtunnel protocols"
-arch=('x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/v2rayA/v2rayA"
 license=('GPL3')
 depends=('git' 'glibc' 'v2ray')
