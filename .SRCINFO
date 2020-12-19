@@ -1,6 +1,6 @@
 pkgbase = refind-btrfs
 	pkgdesc = Generate rEFInd manual boot stanzas from Btrfs snapshots
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/Venom1991/refind-btrfs
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = refind-btrfs
 	depends = python-watchdog
 	depends = refind
 	backup = etc/refind-btrfs.conf
-	source = https://github.com/Venom1991/refind-btrfs/archive/v0.2.5.tar.gz
-	sha256sums = a052a4e82859f746b40a90ffbd5d1fc5a300be21da3bc2f7d0f49598b69fadd2
+	source = https://github.com/Venom1991/refind-btrfs/archive/v0.2.6.tar.gz
+	sha256sums = 1c34ba9adc326dfe6fc5e027058e270e37448b53ec44d22aae2e07e51efe57d2
 
 pkgname = refind-btrfs
 
