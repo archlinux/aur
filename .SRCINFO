@@ -29,6 +29,7 @@ pkgbase = openmvg-git
 	depends = coin-or-clp
 	depends = coin-or-osi
 	depends = coin-or-lemon
+	options = !emptydirs
 	source = git+https://github.com/openMVG/openMVG.git#branch=develop
 	source = git+https://github.com/elmindreda/glfw.git
 	source = git+https://github.com/openMVG-thirdparty/osi_clp.git
