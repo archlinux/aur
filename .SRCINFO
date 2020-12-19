@@ -1,6 +1,6 @@
 pkgbase = muserv-git
-	pkgdesc = muserv (DLNA/UPnP server for music)
-	pkgver = v0.1.27.pre
+	pkgdesc = muserv (UPnP server for music)
+	pkgver = v0.1.1
 	pkgrel = 1
 	url = https://gitlab.com/mipimipi/muserv/
 	arch = any

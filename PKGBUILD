@@ -3,9 +3,9 @@
 _pkgorg=gitlab.com/mipimipi
 pkgname=muserv-git
 _pkgname=muserv
-pkgver=v0.1.27.pre
+pkgver=v0.1.1
 pkgrel=1
-pkgdesc="muserv (DLNA/UPnP server for music)"
+pkgdesc="muserv (UPnP server for music)"
 arch=(any)
 url="https://$_pkgorg/$_pkgname/"
 license=('GPL3')
@@ -50,4 +50,6 @@ package() {
   install -Dm0644 cfg/config-default.json "$pkgdir"/etc/muserv/config-default.json
   install -Dm0644 cfg/ContentDirectory.xml "$pkgdir"/etc/muserv/ContentDirectory.xml
   install -Dm0644 cfg/ConnectionManager.xml "$pkgdir"/etc/muserv/ConnectionManager.xml
+  install -Dm0644 ressources/logo_dark_300px.png "$pkgdir"/etc/muserv/icons/icon_dark.png
+  install -Dm0644 ressources/logo_light_300px.png "$pkgdir"/etc/muserv/icons/icon_light.png
 }
