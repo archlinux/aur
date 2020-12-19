@@ -1,7 +1,7 @@
 # Maintainer: curlpipe <11898833+curlpipe@users.noreply.github.com>
 pkgname=ox-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="An independent Rust text editor that runs in your terminal!"
 arch=(x86_64)
