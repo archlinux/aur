@@ -1,6 +1,7 @@
 # Mantainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 
 pkgbase='python2-audit'
+pkgname='python2-audit'
 pkgver=2.8.5
 pkgrel=8
 pkgdesc='Userspace components of the audit framework'
@@ -9,7 +10,7 @@ arch=('x86_64')
 makedepends=('krb5' 'libcap-ng' 'libldap' 'swig' 'linux-headers' 'python2')
 license=('GPL')
 options=('emptydirs')
-source=(audit-${pkgver}.tar.gz::https://people.redhat.com/sgrubb/audit/audit-${pkgver}.tar.gz
+source=(python2-audit-${pkgver}.tar.gz::https://people.redhat.com/sgrubb/audit/audit-${pkgver}.tar.gz
 'fno-common.patch'
 'gcc10.patch')
 sha512sums=('7d416aaa21c1a167f8e911ca82aecbaba804424f3243f505066c43ecc4a62a34feb2c27555e99d3268608404793dccca0f828c63670e3aa816016fb493f8174a'
