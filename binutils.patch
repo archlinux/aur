@@ -1,0 +1,25 @@
+--- a/src/utils/hsdis/hsdis.c	2020-12-19 23:13:53.890379727 +0100
++++ a/src/utils/hsdis/hsdis.c	2020-12-19 23:16:27.550368667 +0100
+@@ -30,6 +30,7 @@
+ #include <config.h> /* required by bfd.h */
+ #include <libiberty.h>
+ #include <bfd.h>
++#include <bfdver.h>
+ #include <dis-asm.h>
+ #include <inttypes.h>
+ #include <string.h>
+@@ -313,7 +314,13 @@
+ 
+   /* Finish linking together the various callback blocks. */
+   app_data->dinfo.application_data = (void*) app_data;
+-  app_data->dfn = disassembler(native_bfd);
++  app_data->dfn = disassembler(
++#if BFD_VERSION >= 229000000
++  bfd_get_arch(native_bfd),
++  bfd_big_endian(native_bfd),
++  bfd_get_mach(native_bfd),
++#endif
++  native_bfd);
+   app_data->dinfo.print_address_func = hsdis_print_address_func;
+   app_data->dinfo.read_memory_func = hsdis_read_memory_func;
+ 

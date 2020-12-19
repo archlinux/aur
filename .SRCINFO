@@ -1,0 +1,19 @@
+pkgbase = java11-openjdk-hsdis
+	pkgdesc = Disassembler for HotSpot
+	pkgver = 11.0.8
+	pkgrel = 1
+	url = http://openjdk.java.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = openjdk-jdk-11.0.8+10.tar.gz::http://hg.openjdk.java.net/jdk-updates/jdk11u/archive/jdk-11.0.8+10.tar.gz
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.bz2
+	source = binutils-compat.patch
+	source = binutils.patch
+	sha256sums = 7fc124b5e20428cd5df42d78b001abc663558b0881e66a5def0892b98265b6e9
+	sha256sums = 89f010078b6cf69c23c27897d686055ab89b198dddf819efb0a4f2c38a0b36e6
+	sha256sums = 3b1bd383cdfef4a6cfd9ed0dafeeee956670ad7fb797323f72e56bb7bc0cebaa
+	sha256sums = e3a91a6f0183a6c554d04f9bca230635393bfcd4e4f87cb1a0b73f86505bbbf0
+
+pkgname = java11-openjdk-hsdis
+

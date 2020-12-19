@@ -1,0 +1,12 @@
+diff --unified --color --unified --recursive --text jdk14u-jdk-14.0.1+7/src/utils/hsdis/hsdis.c jdk14u-jdk-14.0.1+7-new/src/utils/hsdis/hsdis.c
+--- jdk14u-jdk-14.0.1+7/src/utils/hsdis/hsdis.c	2019-11-28 23:32:27.000000000 +0300
++++ jdk14u-jdk-14.0.1+7-new/src/utils/hsdis/hsdis.c	2020-05-30 03:14:15.355394159 +0300
+@@ -568,7 +568,7 @@
+   dinfo->arch = bfd_get_arch(abfd);
+   dinfo->mach = bfd_get_mach(abfd);
+   dinfo->disassembler_options = disassembler_options;
+-  dinfo->octets_per_byte = bfd_octets_per_byte (abfd);
++  dinfo->octets_per_byte = bfd_octets_per_byte (abfd, NULL);
+   dinfo->skip_zeroes = sizeof(void*) * 2;
+   dinfo->skip_zeroes_at_end = sizeof(void*)-1;
+   dinfo->disassembler_needs_relocs = FALSE;
