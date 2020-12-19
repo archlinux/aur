@@ -7,6 +7,7 @@ pkgbase = dart-1.x
 	license = BSD
 	makedepends = setconf
 	depends = bash
+	optdepends = dartium: Build of Chromium that includes the Dart VM
 	conflicts = dart
 	conflicts = dart-dev
 	options = !strip

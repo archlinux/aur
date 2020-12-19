@@ -9,6 +9,9 @@ url='https://www.dartlang.org/'
 depends=('bash')
 license=('BSD')
 makedepends=('setconf')
+optdepends=(
+    'dartium: Build of Chromium that includes the Dart VM'
+)
 options=('!strip')
 source=("$pkgname-$pkgver-64.zip::https://storage.googleapis.com/dart-archive/channels/stable/release/1.24.3/sdk/dartsdk-linux-x64-release.zip")
 sha512sums=('ec050c51f2adae2fa6c57955b93f29580c07969965c33e4625bc94e44eb22244af616d82fc5fe85b8d13b8371b9874ff55baa400ab321883fbc83c1075fae219')
