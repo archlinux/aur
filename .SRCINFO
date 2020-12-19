@@ -1,7 +1,7 @@
 pkgbase = cheese-git
 	pkgdesc = Take photos and videos with your webcam, with fun graphical effects
-	pkgver = 3.34.0+1+a6c7313d
-	pkgrel = 2
+	pkgver = 3.38.0+17+gf5553f7d
+	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Cheese
 	arch = any
 	groups = gnome
