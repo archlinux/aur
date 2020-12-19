@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=pkgbuild
-_cranver=1.1.0
+_cranver=1.2.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(GPL3)
 depends=('r>=3.1' 'r-callr>=3.2.0' r-cli r-crayon r-desc r-prettyunits r-r6 r-rprojroot 'r-withr>=2.1.2')
 optdepends=(r-rcpp r-cpp11 r-testthat r-covr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('436d553754fa086c5e6c2e8c62df063a')
+sha256sums=('2e19308d3271fefd5e118c6d132d6a2511253b903620b5417892c72d2010a963')
 
 build() {
   cd "${srcdir}"
