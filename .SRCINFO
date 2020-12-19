@@ -1,6 +1,6 @@
 pkgbase = ox-git
 	pkgdesc = An independent Rust text editor that runs in your terminal!
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/curlpipe/ox
 	arch = any
