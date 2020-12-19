@@ -1,13 +1,14 @@
-# Maintainer: Jan Tojnar <jtojnar@gmail.com>
+# Maintainer: Berto Gomez <csberto at gmail dot com>
+# Contributor: Jan Tojnar <jtojnar@gmail.com>
 pkgname=perl-config-gitlike
 pkgver=1.16
-pkgrel=1
+pkgrel=2
 pkgdesc='git-compatible config file parsing'
 _dist=Config-GitLike
 arch=('any')
 url="https://metacpan.org/release/$_dist"
 license=('perl_5')
-depends=('perl-moo' 'perl-moox-types-mooselike' 'perl')
+depends=('perl-moo' 'perl-moox-types-mooselike' 'perl' 'perl-module-install')
 checkdepends=('perl-test-exception')
 
 options=('!emptydirs' purge)
