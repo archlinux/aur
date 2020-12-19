@@ -6,15 +6,15 @@ _pkgbase=pipewire
 pkgbase=pipewire-nightly
 pkgname=(pipewire-nightly pipewire-docs-nightly pipewire-jack-nightly
     pipewire-pulse-nightly pipewire-alsa-nightly gst-plugin-pipewire-nightly)
-pkgver=0.3.18.r0.ge7dffd64
+pkgver=0.3.18.r40.g9653d748
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines (git version)"
 url="https://pipewire.org"
 license=(LGPL2.1)
 arch=(x86_64)
-makedepends=(alsa-lib bluez-libs dbus doxygen git graphviz gst-plugins-base
-    jack2 libopenaptx libpulse libsndfile meson rtkit sbc valgrind
-    vulkan-headers vulkan-icd-loader xmltoman)
+makedepends=(git meson doxygen graphviz xmltoman valgrind jack2 libpulse
+             alsa-lib gst-plugins-base sbc rtkit vulkan-icd-loader dbus
+             libsndfile bluez-libs vulkan-headers libopenaptx libldac)
 source=("git+https://github.com/PipeWire/pipewire")
 sha256sums=('SKIP')
 
@@ -52,8 +52,8 @@ _ver=${pkgver:0:3}
 
 package_pipewire-nightly() {
   depends=(sbc rtkit vulkan-icd-loader bluez-libs alsa-card-profiles
-      libopenaptx libdbus-1.so libsndfile.so libudev.so libasound.so
-      libsystemd.so)
+           libdbus-1.so libsndfile.so libudev.so libasound.so libsystemd.so
+           libldacBT_abr.so libldacBT_enc.so libopenaptx.so)
   optdepends=('pipewire-docs: Documentation'
               'pipewire-jack: JACK support'
               'pipewire-pulse: PulseAudio support')
