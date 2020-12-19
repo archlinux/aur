@@ -1,7 +1,7 @@
 pkgbase = skywire
 	pkgdesc = Skywire Mainnet Node implementation. Skycoin.com
 	pkgver = 0.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/skycoin/skywire
 	install = skywire.install
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = skywire
 	makedepends = musl
 	makedepends = kernel-headers-musl
 	optdepends = readonly-cache: distribute hypervisorkey package for cluster management
-	source = git+https://github.com/skycoin/skywire.git#branch=develop
+	source = git+https://github.com/skycoin/skywire.git
 	source = skywire-scripts.tar.gz
 	sha256sums = SKIP
 	sha256sums = 187cf780da4d892a7eb940aa4a925e0cc83b0e8de0b255f07f7dafd8f2c854c6
