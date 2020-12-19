@@ -17,7 +17,6 @@ provides=('ttf-atom-file-icons' 'ttf-font-awesome' 'ttf-material-design-icons' '
 conflicts=('ttf-octicons')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
 sha256sums=('30ac8a44efdf638e893b9f802cde3388da8776d39296dcc83694720ba74950d0')
-install=$pkgname.install
 
 package() {
   cd "${srcdir}/${_pkgsrcname}-${pkgver}/"
