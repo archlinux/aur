@@ -1,34 +1,29 @@
-# Maintainer: Aaron Blair <aaron@aaronpb.me>
+# Maintainer: Hao Long <aur@esd.cc>
+# Contributor: Aaron Blair <aaron@aaronpb.me>
 
 pkgname=gobuster
-pkgver=3.0.1
-pkgrel=5
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="A directory/file & DNS busting tool."
 arch=('x86_64')
 url="https://github.com/OJ/gobuster"
 license=('Apache')
-depends=()
-makedepends=('go>=1.10' 'git')
-optdepends=()
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/OJ/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('9c70c73b4c08b02d1fc722cd82eda3d8ce683de53b08c8bddd31fc5c4d90a977')
-
-prepare() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
-  export GOPATH="${srcdir}/../"
-  export PATH="${PATH}:${srcdir}/bin"
-  install -d "${GOPATH}/src/github.com/OJ"
-  cp -a "$(pwd)" "${GOPATH}/src/github.com/OJ/gobuster"
-  go get -d
-}
+depends=('glibc')
+makedepends=('go' 'git')
+source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha256sums=('a49e597412a0be68020f2836c4f33276cb653d00543f59d4cff34b053b8d9a10')
 
 build() {
-  cd "${GOPATH}/src/github.com/OJ/gobuster"
-  go build
+  cd ${pkgname}-${pkgver}
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build .
 }
 
 package() {
-  cd "${GOPATH}/src/github.com/OJ/gobuster"
-  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd ${pkgname}-${pkgver}
+  install -Dm755 gobuster ${pkgdir}/usr/bin/gobuster
 }
