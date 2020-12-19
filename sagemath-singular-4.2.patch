@@ -1,3 +1,176 @@
+diff --git a/build/pkgs/singular/checksums.ini b/build/pkgs/singular/checksums.ini
+index 55751d3429..9c6990e353 100644
+--- a/build/pkgs/singular/checksums.ini
++++ b/build/pkgs/singular/checksums.ini
+@@ -1,4 +1,5 @@
+ tarball=singular-VERSION.tar.gz
+-sha1=5c6b6c3d2b5ebaca164967eec67e59ebb4e6142f
+-md5=cb50d64ab1b2b49a0c3f519e5c87639e
+-cksum=4294037094
++sha1=95b5930125a097089e22c07884159e99facc7acb
++md5=5d18fcfcd078f4876c5d0e2637c5f334
++cksum=3775772497
++upstream_url=ftp://jim.mathematik.uni-kl.de/pub/Math/Singular/SOURCES/4-2-0/singular-VERSION.tar.gz
+diff --git a/build/pkgs/singular/package-version.txt b/build/pkgs/singular/package-version.txt
+index dc3219d462..4e849c9e97 100644
+--- a/build/pkgs/singular/package-version.txt
++++ b/build/pkgs/singular/package-version.txt
+@@ -1 +1 @@
+-4.1.1p2.p0
++4.2.0p0
+diff --git a/build/pkgs/singular/patches/configure-no-ntl-header-check.patch b/build/pkgs/singular/patches/configure-no-ntl-header-check.patch
+index 3109e57f4b..b4ec33fc05 100644
+--- a/build/pkgs/singular/patches/configure-no-ntl-header-check.patch
++++ b/build/pkgs/singular/patches/configure-no-ntl-header-check.patch
+@@ -49,30 +49,4 @@ index db6423d..c0a2260 100755
+ +## fi
+  done
+  
+- if test "x$ntl_found" = "xyes" ; then
+-diff --git a/libpolys/configure b/libpolys/configure
+-index 41b0928..9a4b9f5 100755
+---- a/libpolys/configure
+-+++ b/libpolys/configure
+-@@ -20660,7 +20660,7 @@ fi
+- 
+- for NTL_HOME in ${NTL_HOME_PATH}
+-  do
+--if test -r "$NTL_HOME/include/NTL/ZZ.h"; then
+-+## if test -r "$NTL_HOME/include/NTL/ZZ.h"; then
+- 
+- 	if test "x$NTL_HOME" != "x/usr"; then
+- 		NTL_CPPFLAGS="-I${NTL_HOME}/include"
+-@@ -20731,9 +20731,9 @@ else
+- fi
+- rm -f core conftest.err conftest.$ac_objext \
+-     conftest$ac_exeext conftest.$ac_ext
+--else
+--	ntl_found="no"
+--fi
+-+## else
+-+## 	ntl_found="no"
+-+## fi
+- done
+- 
+  if test "x$ntl_found" = "xyes" ; then
+diff --git a/build/pkgs/singular/patches/fix-building-with-nodebug.patch b/build/pkgs/singular/patches/fix-building-with-nodebug.patch
+deleted file mode 100644
+index 46b8ab83ce..0000000000
+--- a/build/pkgs/singular/patches/fix-building-with-nodebug.patch
++++ /dev/null
+@@ -1,31 +0,0 @@
+-From 80a9ffc773542e3329935e5377f6906628be16e6 Mon Sep 17 00:00:00 2001
+-From: Yue Ren <yue.ren.kl@gmail.com>
+-Date: Thu, 15 Nov 2018 10:48:24 -0500
+-Subject: [PATCH] fix: building with NDEBUG=1, trac ticket 840
+-
+----
+- Singular/dyn_modules/gfanlib/groebnerCone.h | 6 +++++-
+- 1 file changed, 5 insertions(+), 1 deletion(-)
+-
+-diff --git a/Singular/dyn_modules/gfanlib/groebnerCone.h b/Singular/dyn_modules/gfanlib/groebnerCone.h
+-index cb067250a0..8a212a7b7f 100644
+---- a/Singular/dyn_modules/gfanlib/groebnerCone.h
+-+++ b/Singular/dyn_modules/gfanlib/groebnerCone.h
+-@@ -99,12 +99,16 @@ class groebnerCone
+-    */
+-   groebnerCones tropicalNeighbours() const;
+- 
+-+  /**
+-+   * Return 1 if w points is in the dual of the polyhedral cone, 0 otherwise
+-+   */
+-+  bool pointsOutwards(const gfan::ZVector w) const;
+-+
+-   /**
+-    * Debug tools.
+-    */
+-   #ifndef NDEBUG
+-   bool checkFlipConeInput(const gfan::ZVector interiorPoint, const gfan::ZVector facetNormal) const;
+--  bool pointsOutwards(const gfan::ZVector) const;
+-   #endif
+- };
+- 
+diff --git a/build/pkgs/singular/patches/singular-ntl-error-handler.patch b/build/pkgs/singular/patches/singular-ntl-error-handler.patch
+deleted file mode 100644
+index 3d49529323..0000000000
+--- a/build/pkgs/singular/patches/singular-ntl-error-handler.patch
++++ /dev/null
+@@ -1,75 +0,0 @@
+-Move NTL error handler out of libsingular, otherwise it takes over Sage's error handler and makes it quit on NTL errors.
+-See https://www.singular.uni-kl.de/forum/viewtopic.php?f=10&t=2769 and https://trac.sagemath.org/ticket/24735#comment:29
+-Rebased from upstream commit https://github.com/Singular/Sources/commit/502cf86d0bb2a96715be6764774b64a69c1ca34c
+-
+-From 502cf86d0bb2a96715be6764774b64a69c1ca34c Mon Sep 17 00:00:00 2001
+-From: Hans Schoenemann <hannes@mathematik.uni-kl.de>
+-Date: Wed, 25 Jul 2018 11:03:32 +0200
+-Subject: [PATCH] move error handler for factory,NTL to the non-libSingular part
+-
+-(see forum: "NTL error handling", for SAGE)
+-
+-diff --git a/Singular/cntrlc.cc b/Singular/cntrlc.cc
+-index 622495490c..874a5deb79 100644
+---- a/Singular/cntrlc.cc
+-+++ b/Singular/cntrlc.cc
+-@@ -20,6 +20,14 @@
+- #include "Singular/links/silink.h"
+- #include "Singular/links/ssiLink.h"
+- 
+-+#ifdef HAVE_NTL
+-+#include <NTL/version.h>
+-+#include <NTL/tools.h>
+-+#ifdef NTL_CLIENT
+-+NTL_CLIENT
+-+#endif
+-+#endif
+-+
+- /* undef, if you don't want GDB to come up on error */
+- 
+- #define CALL_GDB
+-@@ -549,11 +557,20 @@ static void stack_trace (char *const*args)
+- 
+- #  endif /* !__OPTIMIZE__ */
+- 
+--/*2
+--* init signal handlers
+--*/
+-+/// init signal handlers and error handling for libraries: NTL, factory
+- void init_signals()
+- {
+-+// NTL error handling (>= 9.3.0) ----------------------------------------
+-+#ifdef HAVE_NTL
+-+#if (((NTL_MAJOR_VERSION==9)&&(NTL_MINOR_VERSION>=3))||(NTL_MAJOR_VERSION>=10))
+-+  ErrorMsgCallback=WerrorS;
+-+  ErrorCallback=HALT;
+-+#endif
+-+#endif
+-+// factory error handling: -----------------------------------------------
+-+  factoryError=WerrorS;
+-+
+-+// signal handler -------------------------------------------------------
+-   #ifdef SIGSEGV
+-   si_set_signal(SIGSEGV,(si_hdl_typ)sigsegv_handler);
+-   #endif
+-diff --git a/Singular/misc_ip.cc b/Singular/misc_ip.cc
+-index 49eddaae6f..3d5775edd7 100644
+---- a/Singular/misc_ip.cc
+-+++ b/Singular/misc_ip.cc
+-@@ -1316,16 +1316,6 @@ static BOOLEAN iiCrossProd(leftv res, leftv args)
+-   On(SW_USE_EZGCD_P);
+-   On(SW_USE_QGCD);
+-   Off(SW_USE_NTL_SORT); // may be changed by an command line option
+--  factoryError=WerrorS;
+--
+--// NTL error handling (>= 9.3.0)
+--#ifdef HAVE_NTL
+--#if (((NTL_MAJOR_VERSION==9)&&(NTL_MINOR_VERSION>=3))||(NTL_MAJOR_VERSION>=10))
+--  ErrorMsgCallback=WerrorS;
+--  ErrorCallback=HALT;
+--#endif
+--#endif
+--
+- // memory initialization: -----------------------------------------------
+-     om_Opts.OutOfMemoryFunc = omSingOutOfMemoryFunc;
+- #ifndef OM_NDEBUG
 diff --git a/src/doc/en/constructions/algebraic_geometry.rst b/src/doc/en/constructions/algebraic_geometry.rst
 index 3933bf0839..76b173d80a 100644
 --- a/src/doc/en/constructions/algebraic_geometry.rst
@@ -21,7 +194,7 @@ index 3933bf0839..76b173d80a 100644
  -  Using Singular's ``BrillNoether`` command (for details see the section
     Brill-Noether in the Singular online documentation
 diff --git a/src/sage/algebras/free_algebra.py b/src/sage/algebras/free_algebra.py
-index 7391dd9812..7234f91456 100644
+index 9e846158d1..b3dc47ba3f 100644
 --- a/src/sage/algebras/free_algebra.py
 +++ b/src/sage/algebras/free_algebra.py
 @@ -39,7 +39,15 @@ two-sided ideals, and thus provide ideal containment tests::
@@ -41,7 +214,7 @@ index 7391dd9812..7234f91456 100644
      sage: y*z*y*y*z*z + 2*y*z*y*z*z*x + y*z*y*z*z*z - y*z*z*y*z*x + y*z*z*z*z*x in I
      True
  
-@@ -233,7 +241,7 @@ class FreeAlgebraFactory(UniqueFactory):
+@@ -232,7 +240,7 @@ class FreeAlgebraFactory(UniqueFactory):
          a*b^2*c^3
      """
      def create_key(self, base_ring, arg1=None, arg2=None,
@@ -50,7 +223,7 @@ index 7391dd9812..7234f91456 100644
              names=None, name=None,
              implementation=None, degrees=None):
          """
-@@ -264,6 +272,8 @@ class FreeAlgebraFactory(UniqueFactory):
+@@ -263,6 +271,8 @@ class FreeAlgebraFactory(UniqueFactory):
              return tuple(degrees),base_ring
          # test if we can use libSingular/letterplace
          if implementation == "letterplace":
@@ -59,7 +232,7 @@ index 7391dd9812..7234f91456 100644
              args = [arg for arg in (arg1, arg2) if arg is not None]
              kwds = dict(sparse=sparse, order=order, implementation="singular")
              if name is not None:
-@@ -274,7 +284,7 @@ class FreeAlgebraFactory(UniqueFactory):
+@@ -273,7 +283,7 @@ class FreeAlgebraFactory(UniqueFactory):
              if degrees is None:
                  return (PolRing,)
              from sage.all import TermOrder
@@ -489,10 +662,10 @@ index 35377724c9..ee8ddec7dd 100644
          ....:     for weight in IntegerVectors(d,3).map(list).map(L0):
          ....:         eigenvalues = E.eigenvalues(E[L0(weight)])
 diff --git a/src/sage/combinat/sf/macdonald.py b/src/sage/combinat/sf/macdonald.py
-index e664e21b5a..cc525b4d7e 100644
+index c67da5fcfe..b5f341aee7 100644
 --- a/src/sage/combinat/sf/macdonald.py
 +++ b/src/sage/combinat/sf/macdonald.py
-@@ -483,7 +483,7 @@ class Macdonald(UniqueRepresentation):
+@@ -482,7 +482,7 @@ class Macdonald(UniqueRepresentation):
              sage: Ht = Sym.macdonald().Ht()
              sage: s = Sym.schur()
              sage: Ht(s([2,1]))
@@ -501,7 +674,7 @@ index e664e21b5a..cc525b4d7e 100644
              sage: Ht(s([2]))
              ((-q)/(-q+t))*McdHt[1, 1] + (t/(-q+t))*McdHt[2]
          """
-@@ -901,7 +901,7 @@ class MacdonaldPolynomials_generic(sfa.SymmetricFunctionAlgebra_generic):
+@@ -900,7 +900,7 @@ class MacdonaldPolynomials_generic(sfa.SymmetricFunctionAlgebra_generic):
              sage: Q._multiply(Q[1],Q[2])
              McdQ[2, 1] + ((q^2*t-q^2+q*t-q+t-1)/(q^2*t-1))*McdQ[3]
              sage: Ht._multiply(Ht[1],Ht[2])
@@ -511,7 +684,7 @@ index e664e21b5a..cc525b4d7e 100644
          return self( self._s(left)*self._s(right) )
  
 diff --git a/src/sage/interfaces/singular.py b/src/sage/interfaces/singular.py
-index e0faf1409e..5c02e8f0fb 100644
+index 3eaf12e6ad..1864fd1d37 100644
 --- a/src/sage/interfaces/singular.py
 +++ b/src/sage/interfaces/singular.py
 @@ -191,13 +191,21 @@ The 1x1 and 2x2 minors::
@@ -538,10 +711,37 @@ index e0faf1409e..5c02e8f0fb 100644
  
  ::
  
+@@ -240,7 +248,7 @@ Groebner basis for some ideal, using Singular through Sage.
+ 
+ ::
+ 
+-    sage: singular.lib('poly.lib')
++    sage: singular.lib('polylib.lib')
+     sage: singular.ring(32003, '(a,b,c,d,e,f)', 'lp')
+             polynomial ring, over a field, global ordering
+             //   coefficients: ZZ/32003
+@@ -260,7 +268,7 @@ We restart everything and try again, but correctly.
+ ::
+ 
+     sage: singular.quit()
+-    sage: singular.lib('poly.lib'); R = singular.ring(32003, '(a,b,c,d,e,f)', 'lp')
++    sage: singular.lib('polylib.lib'); R = singular.ring(32003, '(a,b,c,d,e,f)', 'lp')
+     sage: I = singular.ideal('cyclic(6)')
+     sage: I.groebner()
+     f^48-2554*f^42-15674*f^36+12326*f^30-12326*f^18+15674*f^12+2554*f^6-1,
 diff --git a/src/sage/libs/singular/function.pyx b/src/sage/libs/singular/function.pyx
-index 0fea70ad25..26c74d0d7f 100644
+index 0fea70ad25..b8a848312e 100644
 --- a/src/sage/libs/singular/function.pyx
 +++ b/src/sage/libs/singular/function.pyx
+@@ -938,7 +938,7 @@ cdef class Converter(SageObject):
+             sage: C = Curve((x-y)*(y-z)*(z-x))
+             sage: I = C.defining_ideal()
+             sage: import sage.libs.singular.function_factory
+-            sage: freerank = sage.libs.singular.function_factory.ff.poly__lib.freerank
++            sage: freerank = sage.libs.singular.function_factory.ff.polylib__lib.freerank
+             sage: freerank(I, true)
+             [-1, [x^2*y - x*y^2 - x^2*z + y^2*z + x*z^2 - y*z^2]]
+ 
 @@ -1257,7 +1257,7 @@ cdef class SingularFunction(SageObject):
              Traceback (most recent call last):
              ...
@@ -582,10 +782,10 @@ index 0fea70ad25..26c74d0d7f 100644
      The Singular function ``list`` can be called with any number of
      arguments::
 diff --git a/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py b/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py
-index 8b9367ea1a..ef04d4f2b0 100644
+index 4a2a6de5f6..1975374e2a 100644
 --- a/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py
 +++ b/src/sage/rings/asymptotic/asymptotics_multivariate_generating_functions.py
-@@ -1579,7 +1579,7 @@ class FractionWithFactoredDenominator(RingElement):
+@@ -1578,7 +1578,7 @@ class FractionWithFactoredDenominator(RingElement):
              (1, [(x*y + x + y - 1, 2)])
              sage: alpha = [4, 3]
              sage: decomp = F.asymptotic_decomposition(alpha); decomp
@@ -594,7 +794,7 @@ index 8b9367ea1a..ef04d4f2b0 100644
              sage: F1 = decomp[1]
              sage: p = {y: 1/3, x: 1/2}
              sage: asy = F1.asymptotics(p, alpha, 2, verbose=True)
-@@ -1613,7 +1613,7 @@ class FractionWithFactoredDenominator(RingElement):
+@@ -1612,7 +1612,7 @@ class FractionWithFactoredDenominator(RingElement):
              sage: alpha = [3, 3, 2]
              sage: decomp = F.asymptotic_decomposition(alpha); decomp
              (0, []) +
@@ -603,11 +803,59 @@ index 8b9367ea1a..ef04d4f2b0 100644
               [(x + 2*y + z - 4, 1), (2*x + y + z - 4, 1)])
              sage: F1 = decomp[1]
              sage: p = {x: 1, y: 1, z: 1}
+diff --git a/src/sage/rings/ideal.py b/src/sage/rings/ideal.py
+index 72548769de..53076ac62e 100644
+--- a/src/sage/rings/ideal.py
++++ b/src/sage/rings/ideal.py
+@@ -1709,7 +1709,7 @@ def Cyclic(R, n=None, homog=False, singular=None):
+         from sage.interfaces.singular import singular as singular_default
+         singular = singular_default
+ 
+-    singular.lib("poly")
++    singular.lib("polylib")
+     R2 = R.change_ring(RationalField())
+     R2._singular_().set_ring()
+ 
+@@ -1760,7 +1760,7 @@ def Katsura(R, n=None, homog=False, singular=None):
+     if singular is None:
+         from sage.interfaces.singular import singular as singular_default
+         singular = singular_default
+-    singular.lib("poly")
++    singular.lib("polylib")
+     R2 = R.change_ring(RationalField())
+     R2._singular_().set_ring()
+ 
+diff --git a/src/sage/rings/polynomial/laurent_polynomial_ideal.py b/src/sage/rings/polynomial/laurent_polynomial_ideal.py
+index 886458ff1e..ec8e83ea80 100644
+--- a/src/sage/rings/polynomial/laurent_polynomial_ideal.py
++++ b/src/sage/rings/polynomial/laurent_polynomial_ideal.py
+@@ -470,8 +470,8 @@ class LaurentPolynomialIdeal( Ideal_generic ):
+             sage: p = z^2 + 1; q = z^3 + 2
+             sage: I = P.ideal((p*q^2, y-z^2))
+             sage: I.associated_primes()
+-            (Ideal (y + 1, z^2 + 1) of Multivariate Laurent Polynomial Ring in x, y, z over Rational Field,
+-             Ideal (z^2 - y, y*z + 2, y^2 + 2*z) of Multivariate Laurent Polynomial Ring in x, y, z over Rational Field)
++            (Ideal (z^2 - y, y*z + 2, y^2 + 2*z) of Multivariate Laurent Polynomial Ring in x, y, z over Rational Field,
++             Ideal (y + 1, z^2 + 1) of Multivariate Laurent Polynomial Ring in x, y, z over Rational Field)
+         """
+         l = self.polynomial_ideal(saturate=False).associated_primes()
+         l2 = [self.ring().ideal(I.gens(), hint=I) for I in l]
+@@ -490,8 +490,8 @@ class LaurentPolynomialIdeal( Ideal_generic ):
+             sage: p = z^2 + 1; q = z^3 + 2
+             sage: I = P.ideal((p*q^2, y-z^2))
+             sage: I.minimal_associated_primes()
+-            (Ideal (z^2 + 1, -z^2 + y) of Multivariate Laurent Polynomial Ring in x, y, z over Rational Field,
+-             Ideal (z^3 + 2, -z^2 + y) of Multivariate Laurent Polynomial Ring in x, y, z over Rational Field)
++            (Ideal (z^3 + 2, -z^2 + y) of Multivariate Laurent Polynomial Ring in x, y, z over Rational Field,
++             Ideal (z^2 + 1, -z^2 + y) of Multivariate Laurent Polynomial Ring in x, y, z over Rational Field)
+         """
+         l = self.polynomial_ideal(saturate=saturate).minimal_associated_primes()
+         l2 = [self.ring().ideal(I.gens(), hint=I) for I in l]
 diff --git a/src/sage/rings/polynomial/multi_polynomial_element.py b/src/sage/rings/polynomial/multi_polynomial_element.py
-index 72e25ebd02..49b4298bc0 100644
+index 43e93b823f..1bd3696c73 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_element.py
 +++ b/src/sage/rings/polynomial/multi_polynomial_element.py
-@@ -2231,7 +2231,7 @@ def degree_lowest_rational_function(r, x):
+@@ -2230,7 +2230,7 @@ def degree_lowest_rational_function(r, x):
      ::
  
          sage: r = f/g; r
@@ -617,7 +865,7 @@ index 72e25ebd02..49b4298bc0 100644
          -1
          sage: degree_lowest_rational_function(r,b)
 diff --git a/src/sage/rings/polynomial/multi_polynomial_ideal.py b/src/sage/rings/polynomial/multi_polynomial_ideal.py
-index e45a47f4d9..2a6d9fc93a 100644
+index 1da775dd78..b09123ac5c 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_ideal.py
 +++ b/src/sage/rings/polynomial/multi_polynomial_ideal.py
 @@ -154,7 +154,7 @@ when the system has no solutions over the rationals.
@@ -629,7 +877,54 @@ index e45a47f4d9..2a6d9fc93a 100644
  
      Now for each prime `p` dividing this integer 164878, the Groebner
      basis of I modulo `p` will be non-trivial and will thus give a
-@@ -1567,8 +1567,8 @@ class MPolynomialIdeal_singular_repr(
+@@ -711,16 +711,16 @@ class MPolynomialIdeal_singular_repr(
+             sage: p = z^2 + 1; q = z^3 + 2
+             sage: I = (p*q^2, y-z^2)*R
+             sage: pd = I.complete_primary_decomposition(); pd
+-            [(Ideal (z^2 + 1, y + 1) of Multivariate Polynomial Ring in x, y, z over Rational Field,
+-              Ideal (z^2 + 1, y + 1) of Multivariate Polynomial Ring in x, y, z over Rational Field),
+-             (Ideal (z^6 + 4*z^3 + 4, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field,
+-              Ideal (z^3 + 2, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field)]
+-
+-            sage: I.primary_decomposition_complete(algorithm = 'gtz')
+             [(Ideal (z^6 + 4*z^3 + 4, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field,
+               Ideal (z^3 + 2, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field),
+-             (Ideal (z^2 + 1, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field,
+-              Ideal (z^2 + 1, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field)]
++             (Ideal (z^2 + 1, y + 1) of Multivariate Polynomial Ring in x, y, z over Rational Field,
++              Ideal (z^2 + 1, y + 1) of Multivariate Polynomial Ring in x, y, z over Rational Field)]
++
++            sage: I.primary_decomposition_complete(algorithm = 'gtz')
++            [(Ideal (z^2 + 1, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field,
++              Ideal (z^2 + 1, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field),
++             (Ideal (z^6 + 4*z^3 + 4, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field,
++              Ideal (z^3 + 2, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field)]
+ 
+             sage: from functools import reduce
+             sage: reduce(lambda Qi,Qj: Qi.intersection(Qj), [Qi for (Qi,radQi) in pd]) == I
+@@ -823,8 +823,8 @@ class MPolynomialIdeal_singular_repr(
+             sage: p = z^2 + 1; q = z^3 + 2
+             sage: I = (p*q^2, y-z^2)*R
+             sage: pd = I.primary_decomposition(); pd
+-            [Ideal (z^2 + 1, y + 1) of Multivariate Polynomial Ring in x, y, z over Rational Field,
+-             Ideal (z^6 + 4*z^3 + 4, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field]
++            [Ideal (z^6 + 4*z^3 + 4, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field,
++             Ideal (z^2 + 1, y + 1) of Multivariate Polynomial Ring in x, y, z over Rational Field]
+ 
+         ::
+ 
+@@ -895,8 +895,8 @@ class MPolynomialIdeal_singular_repr(
+             sage: p = z^2 + 1; q = z^3 + 2
+             sage: I = (p*q^2, y-z^2)*R
+             sage: pd = I.associated_primes(); pd
+-            [Ideal (z^2 + 1, y + 1) of Multivariate Polynomial Ring in x, y, z over Rational Field,
+-             Ideal (z^3 + 2, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field]
++            [Ideal (z^3 + 2, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field,
++             Ideal (z^2 + 1, y + 1) of Multivariate Polynomial Ring in x, y, z over Rational Field]
+ 
+         ALGORITHM:
+ 
+@@ -1566,8 +1566,8 @@ class MPolynomialIdeal_singular_repr(
              sage: I2 = y*R
              sage: I3 = (x, y)*R
              sage: I4 = (x^2 + x*y*z, y^2 - z^3*y, z^3 + y^5*x*z)*R
@@ -640,7 +935,29 @@ index e45a47f4d9..2a6d9fc93a 100644
  
          The ideals must share the same ring::
  
-@@ -4012,7 +4012,7 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
+@@ -1617,10 +1617,8 @@ class MPolynomialIdeal_singular_repr(
+             sage: p = z^2 + 1; q = z^3 + 2
+             sage: I = (p*q^2, y-z^2)*R
+             sage: I.minimal_associated_primes ()
+-            [Ideal (z^2 + 1, -z^2 + y) of Multivariate Polynomial Ring
+-            in x, y, z over Rational Field, Ideal (z^3 + 2, -z^2 + y)
+-            of Multivariate Polynomial Ring in x, y, z over Rational
+-            Field]
++            [Ideal (z^3 + 2, -z^2 + y) of Multivariate Polynomial Ring in x, y, z over Rational Field,
++             Ideal (z^2 + 1, -z^2 + y) of Multivariate Polynomial Ring in x, y, z over Rational Field]
+ 
+         ALGORITHM:
+ 
+@@ -2699,7 +2697,7 @@ class MPolynomialIdeal_singular_repr(
+             return out
+         elif algorithm == 'singular':
+             from sage.libs.singular.function_factory import ff
+-            hilbPoly = ff.poly__lib.hilbPoly
++            hilbPoly = ff.polylib__lib.hilbPoly
+ 
+             hp = hilbPoly(self)
+             t = ZZ['t'].gen()
+@@ -4011,7 +4009,7 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
  
              sage: J.groebner_basis.set_cache(gb)
              sage: ideal(J.transformed_basis()).change_ring(P).interreduced_basis()  # testing trac 21884
@@ -649,7 +966,7 @@ index e45a47f4d9..2a6d9fc93a 100644
  
          Giac's gbasis over `\QQ` can benefit from a probabilistic lifting and
          multi threaded operations::
-@@ -4115,9 +4115,9 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
+@@ -4114,9 +4112,9 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
              sage: P.<a,b,c> = PolynomialRing(ZZ,3)
              sage: I = P * (a + 2*b + 2*c - 1, a^2 - a + 2*b^2 + 2*c^2, 2*a*b + 2*b*c - b)
              sage: I.groebner_basis()
@@ -676,10 +993,10 @@ index 836afdcdcd..4129c2c8fd 100644
              //        block   1 : ordering dp
              //                  : names    x y
 diff --git a/src/sage/rings/polynomial/plural.pyx b/src/sage/rings/polynomial/plural.pyx
-index c2792aec88..aa2ef59e79 100644
+index 08b2ed7211..349871f508 100644
 --- a/src/sage/rings/polynomial/plural.pyx
 +++ b/src/sage/rings/polynomial/plural.pyx
-@@ -390,28 +390,30 @@ cdef class NCPolynomialRing_plural(Ring):
+@@ -392,28 +392,30 @@ cdef class NCPolynomialRing_plural(Ring):
          TESTS:
  
          This example caused a segmentation fault with a previous version
@@ -721,7 +1038,7 @@ index c2792aec88..aa2ef59e79 100644
          """
          singular_ring_delete(self._ring)
  
-@@ -2886,7 +2888,8 @@ cpdef MPolynomialRing_libsingular new_CRing(RingWrap rw, base_ring):
+@@ -2888,7 +2890,8 @@ cpdef MPolynomialRing_libsingular new_CRing(RingWrap rw, base_ring):
      self.__ngens = rw.ngens()
      self.__term_order =  TermOrder(rw.ordering_string(), force=True)
  
@@ -745,10 +1062,10 @@ index 37f131b585..d9c33d9c2b 100644
              //        block   1 : ordering dp
              //                  : names    x y
 diff --git a/src/sage/schemes/curves/projective_curve.py b/src/sage/schemes/curves/projective_curve.py
-index 1091c29c20..4f5936edb8 100644
+index 434a4c51d7..3ec210bf8d 100644
 --- a/src/sage/schemes/curves/projective_curve.py
 +++ b/src/sage/schemes/curves/projective_curve.py
-@@ -2001,7 +2001,7 @@ class ProjectivePlaneCurve_finite_field(ProjectivePlaneCurve_field):
+@@ -2000,7 +2000,7 @@ class ProjectivePlaneCurve_finite_field(ProjectivePlaneCurve_field):
              sage: C = Curve(f); pts = C.rational_points()
              sage: D = C.divisor([ (3, pts[0]), (-1,pts[1]), (10, pts[5]) ])
              sage: C.riemann_roch_basis(D)

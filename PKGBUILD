@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.3.beta3.r221.g0f32a15ce1
+pkgver=9.3.beta4.r0.gc4a802d2b6
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -39,13 +39,13 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-optional-packages.patch
         latte-count.patch
         test-optional.patch
-        sagemath-singular-4.1.2.patch
+        sagemath-singular-4.2.patch
         sagemath-pari-2.13.patch)
 sha256sums=('SKIP'
             '4fb46b12b5ee5e5bde87f646dc69a7b8929886be247e2d9a9ae1f12efbe5b580'
             'af922e1f978821a9a1f6c9a56130d71e5011c84a7aee7bf66a591bee658af30b'
             '7da0dbcda15a327c21dc33853cb8f98cb86a283139f8735e3b20a71d49458a88'
-            'e6ce1829347fa588096cd975c5d607ae8d32d407f0bab2cdadd13e1bfb99494d'
+            'b73ebdeca4fb19df2219d49777c0ce75a62ee3df2d7b77308095ee6c05d568ac'
             '42cf51e79a9bb1407eda21079797de6d5c1109c063e325d1290c8b21d3217a46')
 
 pkgver() {
@@ -58,7 +58,7 @@ prepare(){
 
 # Upstream patches
 # Fixes for singular 4.1.2 https://trac.sagemath.org/ticket/25993
-  patch -p1 -i ../sagemath-singular-4.1.2.patch
+  patch -p1 -i ../sagemath-singular-4.2.patch
 # Port to PARI 2.13 https://trac.sagemath.org/ticket/30801
   patch -p1 -i ../sagemath-pari-2.13.patch
 
