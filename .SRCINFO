@@ -1,6 +1,6 @@
 pkgbase = mympd
 	pkgdesc = A standalone and lightweight MPD web client.
-	pkgver = 6.8.3
+	pkgver = 6.9.0
 	pkgrel = 1
 	url = https://github.com/jcorporation/myMPD
 	install = mympd.install
@@ -17,8 +17,8 @@ pkgbase = mympd
 	optdepends = lua
 	optdepends = jre-openjdk-headless
 	backup = etc/webapps/mympd/mympd.conf
-	source = https://github.com/jcorporation/myMPD/archive/v6.8.3.tar.gz
-	sha256sums = 0575bca5cd92ee526384a2f9df92cf62b7aed9c2285a427217552062d5d10b41
+	source = https://github.com/jcorporation/myMPD/archive/v6.9.0.tar.gz
+	sha256sums = 9c56963c173a7ecf691bbf4972112e0541c5f65fe811b1b54527293803e03b32
 
 pkgname = mympd
 
