@@ -1,29 +1,23 @@
-# Maintainer: Jacob Jenner Rasmussen <jacob at jener.dk>
+# Maintainer: Berto Gomez <csberto at gmail.com>
+# Contributor: Jacob Jenner Rasmussen <jacob at jener.dk>
 pkgname=dartium
-pkgver=1.24.1
-pkgrel=1
+pkgver=1.24.2
+pkgrel=2
 _branch=stable
 pkgdesc="Dartium is a special build of Chromium that includes the Dart VM"
-arch=('x86_64') # 'i686')
+arch=('x86_64')
 url="https://dartlang.org/"
 license=('custom')
+depends=('gconf')
 optdepends=('dart: for development')
 options=('!strip')
 source=("LICENSE")
 sha256sums=('7a209dd1b94cabdb5ea9c6f9164b9546ffa5daaa671e7767d49510db055f5c51')
 source_x86_64+=("$pkgname-$pkgver.zip::https://storage.googleapis.com/dart-archive/channels/${_branch}/release/${pkgver}/dartium/dartium-linux-x64-release.zip")
-#source_i686+=("$pkgname-$pkgver.zip::https://storage.googleapis.com/dart-archive/channels/${_branch}/release/${pkgver}/dartium/dartium-linux-ia32-release.zip")
-sha256sums_x86_64=('c02174a211829dda6d82330c281d6dc634feeed1736176aef51617832cf826b6')
-#sha256sums_i686+=("MISSING")
+sha256sums_x86_64=('20144321b664d8ae13a9c674a667cb1ff7d7f0cdfb0f0897804e885e73b39f6e')
 
 package() {
 	install -d $pkgdir/opt/dartium
-	if [ $CARCH == "x86_64" ]
-  then
-		cp -a dartium-linux-x64-${_branch}-${pkgver}*/* $pkgdir/opt/dartium/
-	else # i686
-		cp -a dartium-linux-ia32-${_branch}-${pkgver}*/* $pkgdir/opt/dartium/
-	fi
-
+	cp -a dartium-linux-x64-${_branch}-${pkgver}*/* $pkgdir/opt/dartium/
 	install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
