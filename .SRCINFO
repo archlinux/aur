@@ -1,6 +1,6 @@
 pkgbase = ox-bin
 	pkgdesc = An independent Rust text editor that runs in your terminal!
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/curlpipe/ox
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ox-bin
 	depends = ttf-nerd-fonts-symbols-mono
 	provides = ox
 	conflicts = ox
-	source = https://github.com/curlpipe/ox/releases/download/0.2.6/ox
+	source = https://github.com/curlpipe/ox/releases/download/0.2.7/ox
 	sha256sums = SKIP
 
 pkgname = ox-bin
