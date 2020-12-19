@@ -21,9 +21,6 @@ prepare() {
   cd audit-${pkgver}
   sed 's|/var/run/auditd.pid|/run/auditd.pid|' -i init.d/auditd.service
 
-  # https://github.com/linux-audit/audit-userspace/issues/123
-  #patch --forward --strip=1 --input="${srcdir}/gcc10.patch"
-
   # https://bugs.gentoo.org/show_bug.cgi\?id\=706734
   patch --forward --strip=1 --input="${srcdir}/fno-common.patch"
 }
