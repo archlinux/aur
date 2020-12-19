@@ -3,7 +3,7 @@
 # Contributor: realitygaps AT yahoo DOT com
 
 pkgname=xstream
-pkgver=1.4.14
+pkgver=1.4.15
 pkgrel=1
 pkgdesc="Simple java library to serialize objects to XML and back again."
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('java-environment=8')
 makedepends=('maven')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/x-stream/xstream/archive/${pkgname^^}_${pkgver//./_}.tar.gz")
-sha256sums=('d349eb76cf1d7722a6ce7cb871b9870b4e2633f30f992aaaa39611f1303bcf9d')
+sha256sums=('81b68111b3e222d1017f8b5e361957938977fae4af09c2f2e407773d30b13882')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgname^^}_${pkgver//./_}"
