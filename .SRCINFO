@@ -1,7 +1,7 @@
 pkgbase = mitsuba-git
 	pkgdesc = Mitsuba physically based renderer.
 	pkgver = 0.6.0.r2172.cfeb7766
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mitsuba-renderer.org/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = mitsuba-git
 	makedepends = python2-scons
 	makedepends = git
 	makedepends = boost
+	makedepends = boost-python2
 	depends = python
+	depends = python2
 	depends = xerces-c
 	depends = glew-1.13.0
 	depends = openexr
@@ -21,14 +23,17 @@ pkgbase = mitsuba-git
 	depends = fftw
 	depends = collada-dom-mitsuba
 	depends = boost-libs
+	depends = boost-python2-libs
 	depends = pcre
 	provides = mitsuba
 	conflicts = mitsuba
 	conflicts = mitsuba-hg
 	source = mitsuba::git+https://github.com/mitsuba-renderer/mitsuba.git
 	source = python3.9.patch
+	source = boost_107400.patch
 	sha256sums = SKIP
 	sha256sums = 6fc5513d95182a84209b4bbdce8cd2eee3bdf25aadd5da35c6b246479c4c8939
+	sha256sums = c4c571653c86e7c21d702f1f5cb9695edc32bf9fc05f6246e67a660693a32322
 
 pkgname = mitsuba-git
 

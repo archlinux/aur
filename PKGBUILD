@@ -5,20 +5,22 @@ _pkgname="mitsuba"
 _pkgver="0.6.0"
 pkgname="${_pkgname}-git"
 pkgver=0.6.0.r2172.cfeb7766
-pkgrel=1
+pkgrel=2
 pkgdesc="Mitsuba physically based renderer."
 url="http://mitsuba-renderer.org/"
 license=("GPL3")
 arch=("i686" "x86_64")
-depends=("python" "xerces-c" "glew-1.13.0" "openexr" "libpng" "libjpeg" "qt5-base" "qt5-xmlpatterns" "fftw" "collada-dom-mitsuba" "boost-libs" "pcre")
-makedepends=("eigen" "python2-scons" "git" "boost")
+depends=(python{,2} "xerces-c" "glew-1.13.0" "openexr" "libpng" "libjpeg" "qt5-base" "qt5-xmlpatterns" "fftw" "collada-dom-mitsuba" boost{,-python2}-libs "pcre")
+makedepends=("eigen" "python2-scons" "git" boost{,-python2})
 provides=("mitsuba")
 conflicts=("mitsuba" "mitsuba-hg")
 source=("${_pkgname}::git+https://github.com/mitsuba-renderer/mitsuba.git"
         "python3.9.patch"
+        "boost_107400.patch"
         )
 sha256sums=('SKIP'
-            '6fc5513d95182a84209b4bbdce8cd2eee3bdf25aadd5da35c6b246479c4c8939')
+            '6fc5513d95182a84209b4bbdce8cd2eee3bdf25aadd5da35c6b246479c4c8939'
+            'c4c571653c86e7c21d702f1f5cb9695edc32bf9fc05f6246e67a660693a32322')
 
 pkgver() {
   cd ${_pkgname}
@@ -55,13 +57,12 @@ prepare() {
     sed -i "s/^CFLAGS[ ]*= \[/&\'${CFLAGS// /\',\'}\', /g" config.py
     sed -i "s/^CXXFLAGS[ ]*= \[/&\'${CXXFLAGS// /\',\'}\', /g" config.py
 
-    git apply ${srcdir}/python3.9.patch
+    git apply -v ${srcdir}/{python3.9,boost_107400}.patch
 }
 
 build() {
     cd "${_pkgname}"
     scons2 --jobs=$((${MAKEFLAGS/-j/} - 1))
-    
 }
 
 package() {

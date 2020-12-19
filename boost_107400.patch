@@ -1,0 +1,12 @@
+diff --git a/src/volume/volcache.cpp b/src/volume/volcache.cpp
+index f1edd726..ab8558c7 100644
+--- a/src/volume/volcache.cpp
++++ b/src/volume/volcache.cpp
+@@ -22,6 +22,7 @@
+ #include <mitsuba/core/sched.h>
+ #include <mitsuba/core/lrucache.h>
+ #include <fstream>
++#include <boost/bind.hpp>
+ 
+ MTS_NAMESPACE_BEGIN
+ 
