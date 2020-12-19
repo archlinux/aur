@@ -1,0 +1,30 @@
+From 07d1edb3393e86c821282beb6f7aa607beaeedc4 Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Tue, 4 Aug 2020 18:37:14 +0200
+Subject: [PATCH] tests: Change how libical-glib python tests are invoked
+
+Add -I to not include the current source directory in the search path,
+which avoids to use 'array.py' (or other test files) as an import module
+of the dependencies.
+
+More information can be found here:
+https://bugzilla.redhat.com/show_bug.cgi?id=1865924
+
+Signed-off-by: Allen Winter <allen.winter@kdab.com>
+---
+ src/test/libical-glib/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/test/libical-glib/CMakeLists.txt b/src/test/libical-glib/CMakeLists.txt
+index c7b16655..1cd14cea 100644
+--- a/src/test/libical-glib/CMakeLists.txt
++++ b/src/test/libical-glib/CMakeLists.txt
+@@ -31,7 +31,7 @@ if(PYTHON3)
+ 
+     add_test(
+       NAME ${test_name}
+-      COMMAND ${PYTHON3} ${CMAKE_CURRENT_SOURCE_DIR}/${test_file}
++      COMMAND ${PYTHON3} -I ${CMAKE_CURRENT_SOURCE_DIR}/${test_file}
+       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+     )
+ 
