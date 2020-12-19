@@ -4,13 +4,13 @@
 
 pkgname=belle-sip-git
 _pkgname=belle-sip
-pkgver=4.5.0.alpha.r18.g2168cef
+pkgver=4.5.0.alpha.r34.g1eeaf02
 pkgrel=1
 pkgdesc="A Voice-over-IP phone"
 arch=('x86_64')
 url="https://github.com/BelledonneCommunications/belle-sip/"
 license=('GPL3')
-depends=('avahi' 'bctoolbox>=4.5' 'gcc-libs' 'zlib')
+depends=('avahi' 'bctoolbox>=4.5')
 makedepends=('cmake' 'git')
 provides=("belle-sip=$pkgver")
 conflicts=('belle-sip')
@@ -19,21 +19,21 @@ source=("git+https://github.com/BelledonneCommunications/belle-sip.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${_pkgname}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 build() {
-  cd $_pkgname
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DENABLE_STATIC=NO \
-        -DENABLE_MDNS=YES \
-        -DENABLE_STRICT=YES \
-        -DENABLE_TESTS=NO .
-  make
+  cmake -B build $_pkgname \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_STATIC=NO \
+    -DENABLE_MDNS=YES \
+    -DENABLE_STRICT=YES \
+    -DENABLE_TESTS=NO \
+    -Wno-dev
+  make -C build
 }
 
 package() {
-  cd "$_pkgname"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" -C build install
 }
