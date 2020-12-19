@@ -1,7 +1,76 @@
 # Changelog
 
 
-## development (2020-03-04)
+## 3.4.2 (2020-12-19)
+
+### Changes
+
+* Remove tests for python < 3.6. [Michele Tessaro]
+
+  Python versions before 3.6 are now at end of life.
+  `plantuml-markdown` will not be tested with those versions, and bugs
+  will be fixed only if reproducible with more recent Python versions.
+
+### Fix
+
+* Fixed working with Markdown 3.3 (fixes #39) [Michele Tessaro]
+
+* Fixed indentation handling (fixes #51) [Michele Tessaro]
+
+
+## 3.4.1 (2020-10-28)
+
+### Fix
+
+* Fixed multiple mixed code blocks (fixes #45) [Michele Tessaro]
+
+  Fixed parsing of mixed `fenced_code` and `plantuml_markdown` blocks in
+  the same document.
+
+
+## 3.4.0 (2020-08-23)
+
+### New
+
+* Capability to keep both inline and source data (implements #47) [Ihsan Topaloglu]
+
+  As per discussed on https://github.com/mikitex70/plantuml-markdown/issues/47
+
+### Changes
+
+* Updated CHANGELOG.md. [Michele Tessaro]
+
+* Update README.md (refs #47) [Ihsan Topaloglu]
+
+* Update README.md (refs #47) [Ihsan Topaloglu]
+
+  Readme update for the `source` inclusion feature that came with https://github.com/mikitex70/plantuml-markdown/releases/tag/3.3.0
+
+### Fix
+
+* Fixed uml code inside fenced code (fixes #45) [Michele Tessaro]
+
+  UML source diagram inside a fenced code is now leaved untouched.
+
+
+## 3.3.0 (2020-06-18)
+
+### New
+
+* Added support for loading plantuml from external files (refs #42) [Chalmela, Ravi]
+
+### Changes
+
+* Updated documentation. [Michele Tessaro]
+
+* Updated documentation. [Michele Tessaro]
+
+### Fix
+
+* Fixed closing of object tag (fixes #44) [Michele Tessaro]
+
+
+## 3.2.2 (2020-03-04)
 
 ### Fix
 
@@ -51,10 +120,6 @@
 
 ## 3.1.3 (2019-08-26)
 
-### New
-
-* Added a test for issue #31. [Michele Tessaro]
-
 ### Changes
 
 * Updated changelog for the new release. [Michele Tessaro]
@@ -96,10 +161,6 @@
 
 
 ## 3.1.1 (2019-05-29)
-
-### New
-
-* Configured travis to test with multiple Markdown versions. [Michele Tessaro]
 
 ### Fix
 
@@ -144,10 +205,6 @@
 
 ## 2.0.2 (2019-03-16)
 
-### New
-
-* Added test to verify utf-8 character handling. [Michele Tessaro]
-
 ### Changes
 
 * Updated documentation for new release. [Michele Tessaro]
@@ -166,8 +223,6 @@
 ### Fix
 
 * Fixed package contents. [Michele Tessaro]
-
-* Fixed travis configuration. [Michele Tessaro]
 
 
 ## 2.0.0 (2019-03-02)
