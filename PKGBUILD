@@ -2,7 +2,7 @@
 
 pkgname=bctoolbox-git
 _pkgname=bctoolbox
-pkgver=4.5.0.alpha.r46.gb007955
+pkgver=4.5.0.alpha.r54.gab40b02
 pkgrel=1
 pkgdesc="Utilities library for Belledonne Communications software"
 arch=('x86_64')
@@ -21,17 +21,15 @@ pkgver() {
 }
 
 build() {
-  mkdir -p build
-  cd build
-  cmake -DENABLE_TESTS_COMPONENT=NO \
-      -DCMAKE_INSTALL_PREFIX="/usr" \
-      -DENABLE_STATIC="NO" \
-      -DENABLE_TESTS="YES" \
-      -DENABLE_TESTS_COMPONENT="YES" ../"${_pkgname}"
-  make
+  cmake -B build "${_pkgname}" \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DENABLE_STATIC="NO" \
+    -DENABLE_TESTS="YES" \
+    -DENABLE_TESTS_COMPONENT="YES" \
+    -Wno-dev
+  make -C build
 }
 
 package() {
-  cd "${srcdir}/build"
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" -C build install
 }
