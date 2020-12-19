@@ -1,4 +1,6 @@
 # Maintainer: sasvari
+# Maintainer: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
+
 pkgname=python-camelot-git
 pkgver=v0.8.2.r26.g7709e58
 pkgrel=3
