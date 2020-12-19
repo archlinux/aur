@@ -2,7 +2,7 @@
 
 pkgname=processing4
 pkgver=4.0a2
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://github.com/processing/processing4'
@@ -20,7 +20,7 @@ source=("https://github.com/processing/processing4/archive/processing-$((1269+${
         no_downloads.patch
         use_system_libraries.patch)
 sha256sums=('919e3034796e841e3bee07dea48ddafcf1efdef85b2beea718007a89a097c9c0'
-            '2014fdb12f979f79c624acc514c14ce318f07cb2cc15a63e1b4febaff733f2a5'
+            '1417308bf43bec2a8d178b84043a3e8a498fa164f3bf7d7668ba17cf96de1282'
             '66e87536b740194954670c482d698fc3183995bf48f580078511d50d1a3f0323'
             '7f821db61160248b65df19b018dc3b2ba7cc995564dd389bb83b3ce8e5097119'
             'fcd5c5ea558ceadde3f840522a5c1cb11e26569aec651e8154194cca39026611'
