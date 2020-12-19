@@ -3,13 +3,14 @@
 
 pkgname=blackeye-git
 
-pkgver() { git -C "${pkgname%-git}" log -n1 --format=%cs.g%h | tr - .; }
-pkgver=2020.10.07.g2304100
-pkgrel=2
+epoch=1
+pkgver() { git -C "${pkgname%-git}" describe --tags | sed 's/^v//;s/-/.r/;s/-g/./'; }
+pkgver=1.0.0.r3.db23b39
+pkgrel=1
 
 pkgdesc='The most complete phishing tool - 38 website templates, updated version with ngrok'
-arch=('any')
-url="https://github.com/x3rz/${pkgname%-git}"
+arch=('x86_64')
+url="https://github.com/Blackeye2/${pkgname%-git}"
 license=('GPL3')
 
 makedepends=('git')
@@ -20,15 +21,18 @@ optdepends=('ngrok: if not installed, the binary will be downloaded into the use
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-install="${pkgname%-git}.install"
 source=("git+$url.git" "${pkgname%-git}.patch" "${pkgname%-git}.patch.sig")
-sha256sums=('SKIP' 'b520c32fdb2a053b2c5c9c7a13452ba360a48f6c66aeaac87b47b6d293b2e167' 'SKIP')
+sha256sums=('SKIP'
+            '9de0d9c6b07324fd334e8e7db5b9d965ecaee01d029e71d4a9a1ebc4d179bfde'
+            'SKIP')
 validpgpkeys=('7A194E3F7A8F867BEA8A5339023F078862ACFE50')
 
 
 prepare() {
     cd "${pkgname%-git}"
     patch -Np1 <"../${pkgname%-git}.patch"
+    # clean up
+    rm -f sites/*/saved.{ip,usernames}.txt
 }
 
 package() {
