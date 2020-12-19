@@ -34,15 +34,11 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_gitname}"
-  git submodule init
   git config 'submodule.src/dependencies/glfw.url' "${srcdir}/glfw"
   git config 'submodule.src/dependencies/osi_clp.url' "${srcdir}/osi_clp"
   git config 'submodule.src/dependencies/cereal.url' "${srcdir}/cereal"
-  git submodule update
-  msg "flann patch"
-  git apply ${srcdir}/findflann-v0.1.patch
-  msg "gcc:9.2 patch"
-  git apply ${srcdir}/gcc92.patch
+  git submodule update --init --remote
+  git apply ${srcdir}/{findflann-v0.1,gcc92}.patch
 }
 
 build() {
