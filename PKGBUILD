@@ -1,7 +1,7 @@
 # Maintainer: Grzegorz Chodzicki <grzegorz.chodzicki AT protonmail DOT com>
 
 pkgname='virtualbox-unattended-templates'
-pkgver=6.1.14
+pkgver=6.1.16
 pkgrel=1
 
 pkgdesc="Unattended Templates for Virtualbox"
@@ -11,8 +11,8 @@ license=('GPL2')
 
 optdepends=('virtualbox')
 
-source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}a.tar.bz2")
-sha256sums=('16f3cb83ab3c4dacf2a9d3cc638cbd18db23767828bba6b8ba1c1b57abeb6aef')
+source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}.tar.bz2")
+sha256sums=('49c1990da16d8a3d5bda8cdb961ec8195a901e67e4c79aea44c1521a5fc2f9f1')
 
 package() {
 	cd "$srcdir"
