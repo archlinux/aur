@@ -1,0 +1,31 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f37e77d..13ab326 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -63,7 +63,7 @@ install(TARGETS ${PROJECT_NAME}
+     RUNTIME DESTINATION bin
+ )
+ install(FILES systemd/airsaned.service
+-    DESTINATION /lib/systemd/system
++    DESTINATION /usr/lib/systemd/system
+ )
+ install(FILES systemd/airsaned.default
+     DESTINATION /etc/default
+diff --git a/systemd/airsaned.service b/systemd/airsaned.service
+index 2c17d67..a6a5134 100644
+--- a/systemd/airsaned.service
++++ b/systemd/airsaned.service
+@@ -4,10 +4,10 @@ After=network-online.target
+ 
+ [Service]
+ EnvironmentFile=-/etc/default/airsane
+-ExecStart=/usr/local/bin/airsaned --interface=${INTERFACE} --listen-port=${LISTEN_PORT} --access-log=${ACCESS_LOG} --hotplug=${HOTPLUG} --mdns-announce=${MDNS_ANNOUNCE} --local-scanners-only=${LOCAL_SCANNERS_ONLY} --options-file=${OPTIONS_FILE}
++ExecStart=/usr/bin/airsaned --interface=${INTERFACE} --listen-port=${LISTEN_PORT} --access-log=${ACCESS_LOG} --hotplug=${HOTPLUG} --mdns-announce=${MDNS_ANNOUNCE} --local-scanners-only=${LOCAL_SCANNERS_ONLY} --options-file=${OPTIONS_FILE}
+ ExecReload=/bin/kill -HUP $MAINPID
+-User=saned
+-Group=saned
++DynamicUser=true
++Group=scanner
+ Type=simple
+ 
+ [Install]

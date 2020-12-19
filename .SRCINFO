@@ -1,0 +1,29 @@
+pkgbase = airsane-git
+	pkgdesc = Publish SANE scanners to MacOS and Android via Apple AirScan
+	pkgver = r161.37fdbc7
+	pkgrel = 1
+	url = https://github.com/SimulPiscator/AirSane
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = avahi
+	depends = libjpeg
+	depends = libpng
+	depends = libusb
+	depends = sane
+	provides = airsane
+	conflicts = airsane
+	source = airsane::git+https://github.com/SimulPiscator/AirSane.git
+	source = airsane-png-h.patch
+	source = airsane-systemd-dir.patch
+	md5sums = SKIP
+	md5sums = c0adf20be58acc81963cdb83a3c6b75e
+	md5sums = 9f972078a3388a210b86aac77c75cfa4
+	sha256sums = SKIP
+	sha256sums = ef034dcdefbaf6b41873d33256b44756c5752184af6c885944527453d8a87162
+	sha256sums = 6be21eb5605d5c24f9ec6ca426c54e983a51d30eb2132db43f5e62cfdf6d7918
+
+pkgname = airsane-git
+
