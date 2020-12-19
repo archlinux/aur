@@ -1,6 +1,6 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=sensu-agent
-pkgver=6.1.3
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Sensu Go Agent"
 arch=('x86_64' 'armv7h')
