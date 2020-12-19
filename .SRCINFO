@@ -1,7 +1,7 @@
 pkgbase = nordvpn-bin
 	pkgdesc = NordVPN CLI tool for Linux
 	pkgver = 3.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nordvpn.com/download/linux/
 	install = nordvpn-bin.install
 	arch = x86_64
