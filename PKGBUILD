@@ -2,14 +2,14 @@
 
 pkgname=libvolk-git
 _gitname=volk
-pkgver=v1.3.20.ge495168
+pkgver=v2.4.1
 pkgrel=1
 pkgdesc="The Vector-Optimized Library of Kernels from Gnuradio"
 arch=('i686' 'x86_64')
 url="http://libvolk.org/"
 license=('GPL3')
-depends=('gcc-libs' 'boost-libs' 'orc' 'python2')
-makedepends=('git' 'boost' 'cmake' 'python2-mako')
+depends=('gcc-libs' 'boost-libs' 'orc' 'python' 'python-six')
+makedepends=('git' 'boost' 'cmake' 'python-mako')
 source=("git://github.com/gnuradio/volk.git")
 md5sums=('SKIP')
 conflicts=('libvolk')
@@ -24,25 +24,25 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_gitname"
-  sed -i -e "s|#![ ]*/usr/bin/env python$|&2|" $(find ./ -name '*.py')
+  git submodule update --init
 }
 
 build() {
-  export PYTHON=python2
+  export PYTHON=python3
   cd "$srcdir/$_gitname"
 
   mkdir -p build
   cd build
   cmake \
-    -DPYTHON_EXECUTABLE=$(which python2) \
+    -DPYTHON_EXECUTABLE=$(which python3) \
     -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev ../
   make
 }
 
 check() {
   cd "$srcdir/$_gitname/build"
-  export PYTHON=python2
-  if [[ "$CARCH" != "i686" ]]; then
+  export PYTHON=python3
+  if [[ "$CARCH" == "x86_64" ]]; then
     make test
   fi
 }
