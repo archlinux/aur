@@ -1,5 +1,5 @@
 pkgbase = minecraft-launcher-arch
-	pkgdesc = Official Minecraft Launcher
+	pkgdesc = Minecraft Launcher -- Quicker Updates
 	pkgver = 2.2.909
 	pkgrel = 1
 	url = https://mojang.com/
