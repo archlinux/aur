@@ -1,0 +1,5 @@
+*.pkg.tar*
+*.log
+rcon/
+pkg/
+src/

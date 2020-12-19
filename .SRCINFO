@@ -1,0 +1,17 @@
+pkgbase = python-rcon
+	pkgdesc = Python 3 library and scripts for RCON clients
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/coNQP/rcon
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python-setuptools-git
+	depends = python
+	source = rcon::git+https://github.com/coNQP/rcon.git#tag=1.0.0
+	md5sums = SKIP
+
+pkgname = python-rcon
+
