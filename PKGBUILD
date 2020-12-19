@@ -31,9 +31,9 @@ build() {
   meson configure -Db_pgo=generate build
   ninja -C build
 
-  script_options="--scroll --scroll-region --colors-regular --colors-bright --colors-256 --colors-rgb --attr-bold --attr-italic --attr-underline"
+  local script_options="--scroll --scroll-region --colors-regular --colors-bright --colors-256 --colors-rgb --attr-bold --attr-italic --attr-underline"
 
-  tmp_file=$(mktemp)
+  local tmp_file=$(mktemp)
 
   if [[ -v WAYLAND_DISPLAY ]]; then
     build/foot \
