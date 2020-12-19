@@ -2,18 +2,20 @@
 
 _name=pantable
 pkgname=python-$_name
-pkgver=0.12.4
+pkgver=0.13.1
 pkgrel=1
 pkgdesc='CSV Tables in Markdown: Pandoc Filter for CSV Tables'
 arch=('any')
 url="https://github.com/ickc/$_name"
 license=('GPL3')
-_py_deps=('panflute<2'
+_py_deps=('panflute>=2'
           'yaml')
-depends=('pandoc<2.10.0' 'python' "${_py_deps[@]/#/python-}")
+depends=('pandoc>=2.11.2'
+         'python'
+         "${_py_deps[@]/#/python-}")
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e4a3a9bfb3c81c198f1157099c8d7bc62cd7e9139c2dc7d3fcac77534c7be2fa')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('3a8feaed6b892ba920442d68e4141994a32636588cf6e8f464d61cf90e4143c8')
 
 build() {
 	cd "$_name-$pkgver"
