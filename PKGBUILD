@@ -1,5 +1,5 @@
 # Maintainer: Fire100265 <fire100265@outlook.com>
-pkgname=timeshift
+pkgname=timeshift-bin
 pkgver=20.11.1
 pkgrel=1
 url='https://github.com/teejee2008/timeshift'
