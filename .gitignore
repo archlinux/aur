@@ -3,6 +3,9 @@ src
 *.pkg.tar*
 
 upp-x11-src-*.tar.gz
+upp-posix-*.tar.xz
 theide.1
 umk.1
 mkfile
+update.pl
+PKGBUILD.bk
