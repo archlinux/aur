@@ -1,7 +1,7 @@
 pkgbase = isync-utf8-mailboxes
 	pkgdesc = IMAP and MailDir mailbox synchronizer
-	pkgver = 1.3.0
-	pkgrel = 2
+	pkgver = 1.3.3
+	pkgrel = 1
 	url = http://isync.sourceforge.net
 	arch = x86_64
 	license = GPL2
