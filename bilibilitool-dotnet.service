@@ -1,7 +1,6 @@
 [Unit]
 Description=Bilibili daily task helper
-After=network-online.target
-Wants=network-online.target
+After=network.target
 
 [Service]
 Type=oneshot
