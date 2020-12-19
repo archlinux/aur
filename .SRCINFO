@@ -1,7 +1,7 @@
 pkgbase = python2-audit
 	pkgdesc = Userspace components of the audit framework
 	pkgver = 2.8.5
-	pkgrel = 8
+	pkgrel = 9
 	url = https://people.redhat.com/sgrubb/audit
 	arch = x86_64
 	license = GPL
