@@ -1,6 +1,6 @@
 pkgbase = kclock
 	pkgdesc = Convergent clock application for Plasma
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/kclock
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = kclock
 	makedepends = extra-cmake-modules
 	depends = hicolor-icon-theme
 	depends = plasma-framework
-	source = https://invent.kde.org/plasma-mobile/kclock/-/archive/v0.2.1/kclock-v0.2.1.tar.gz
-	sha256sums = 05c8bef6619eb652ae9a46f607f66a9fe31b2edcb0fdfe6c2ce22fce3a15121c
+	source = https://invent.kde.org/plasma-mobile/kclock/-/archive/v0.2.2/kclock-v0.2.2.tar.gz
+	sha256sums = cf19931ceeb2bd49cf6b447e96187eca3b78cd953e3ca75fd71e515c83cb2ce7
 
 pkgname = kclock
 
