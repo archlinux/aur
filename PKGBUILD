@@ -13,17 +13,16 @@ source=("belr-$pkgver.tar.gz::https://github.com/BelledonneCommunications/belr/a
 sha256sums=('8686d79bb12c37ce0f0d98ff65cfd8b003f7fa5152ce46265fac6362dbe1e117')
 
 build() {
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_PREFIX_PATH="/usr" \
-      -DCMAKE_INSTALL_PREFIX="/usr" \
-      -DENABLE_STATIC=NO \
-      -DENABLE_TOOLS=NO \
-      -DCMAKE_SKIP_INSTALL_RPATH=ON "../$pkgname-$pkgver"
-  make
+  cmake -B build $pkgname-$pkgver \
+    -DCMAKE_PREFIX_PATH="/usr" \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DENABLE_STATIC=NO \
+    -DENABLE_TOOLS=NO \
+    -DCMAKE_SKIP_INSTALL_RPATH=ON \
+    -Wno-dev
+  make -C build
 }
 
 package() {
-  cd "${srcdir}/build"
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" -C build install
 }
