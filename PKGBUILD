@@ -2,8 +2,8 @@
 
 _pkgname=cheese
 pkgname=$_pkgname-git
-pkgver=3.34.0+1+a6c7313d
-pkgrel=2
+pkgver=3.38.0+17+gf5553f7d
+pkgrel=1
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://wiki.gnome.org/Apps/Cheese"
 arch=(any)
@@ -25,7 +25,7 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
-  git tag -f 3.34.0 61ff7a2c26b618cb24be7ca3c050530671055602  # Fixup missing tag
+  #git tag -f 3.34.0 61ff7a2c26b618cb24be7ca3c050530671055602  # Fixup missing tag
 }
 
 build() {
