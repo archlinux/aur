@@ -1,8 +1,8 @@
-# Maintainer: Isho Antar <isho.antar1@gmail.com>
+# Maintainer: Isho Antar <IshoAntar@protonmail.com>
 # Contributor: Michael Yang <ohmyarchlinux@pm.me>
 
 pkgname=fmt-git
-pkgver=7.1.3.a6fafe2
+pkgver=7.1.3.e737672
 pkgrel=1
 pkgdesc='An open-source C++ formatting library providing a fast and safe alternative to C stdio and C++ iostreams'
 url='https://fmt.dev/'
