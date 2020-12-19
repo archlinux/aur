@@ -5,12 +5,13 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine37
+_pkgname=wine
 pkgver=3.7
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 
-source=(https://dl.winehq.org/wine/source/3.x/$pkgname-$_pkgbasever.tar.xz{,.sign}
+source=(https://dl.winehq.org/wine/source/3.x/$_pkgname-$_pkgbasever.tar.xz{,.sign}
         harmony-fix.diff
         30-win32-aliases.conf
         wine-binfmt.conf)
@@ -95,19 +96,19 @@ install=wine.install
 
 prepare() {
   # Allow ccache to work
-  mv $pkgname-$_pkgbasever $pkgname
+  mv $_pkgname-$_pkgbasever $_pkgname
 
   # https://bugs.winehq.org/show_bug.cgi?id=43530
   export CFLAGS="${CFLAGS/-fno-plt/}"
   export LDFLAGS="${LDFLAGS/,-z,now/}"
 
-  patch -d $pkgname -Np1 < harmony-fix.diff
+  patch -d $_pkgname -Np1 < harmony-fix.diff
 
-  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i $pkgname/configure*
+  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i $_pkgname/configure*
 
   # Get rid of old build dirs
-  rm -rf $pkgname-{32,64}-build
-  mkdir $pkgname-32-build
+  rm -rf $_pkgname-{32,64}-build
+  mkdir $_pkgname-32-build
 }
 
 build() {
@@ -115,11 +116,11 @@ build() {
 
   msg2 "Building Wine-64..."
 
-  mkdir $pkgname-64-build
-  cd "$srcdir/$pkgname-64-build"
-  ../$pkgname/configure \
-    --prefix=/usr \
-    --libdir=/usr/lib \
+  mkdir $_pkgname-64-build
+  cd "$srcdir/$_pkgname-64-build"
+  CFLAGS="$CFLAGS -fcommon" ../$_pkgname/configure \
+    --prefix=/opt/wine37 \
+    --libdir=/opt/wine37/lib \
     --with-x \
     --with-gstreamer \
     --enable-win64
@@ -128,16 +129,16 @@ build() {
   make
 
   _wine32opts=(
-    --libdir=/usr/lib32
+    --libdir=/opt/wine37/lib32
     --with-wine64="$srcdir/$pkgname-64-build"
   )
 
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   msg2 "Building Wine-32..."
-  cd "$srcdir/$pkgname-32-build"
-  ../$pkgname/configure \
-    --prefix=/usr \
+  cd "$srcdir/$_pkgname-32-build"
+  CFLAGS="$CFLAGS -fcommon" ../$pkgname/configure \
+    --prefix=/opt/wine37 \
     --with-x \
     --with-gstreamer \
     "${_wine32opts[@]}"
@@ -147,23 +148,23 @@ build() {
 
 package() {
   msg2 "Packaging Wine-32..."
-  cd "$srcdir/$pkgname-32-build"
+  cd "$srcdir/$_pkgname-32-build"
 
-  make prefix="$pkgdir/usr" \
-    libdir="$pkgdir/usr/lib32" \
-    dlldir="$pkgdir/usr/lib32/wine" install
+  make prefix="$pkgdir/opt/wine37" \
+    libdir="$pkgdir//lib32" \
+    dlldir="$pkgdir/opt/wine37/lib32/wine" install
 
   msg2 "Packaging Wine-64..."
-  cd "$srcdir/$pkgname-64-build"
-  make prefix="$pkgdir/usr" \
-    libdir="$pkgdir/usr/lib" \
-    dlldir="$pkgdir/usr/lib/wine" install
+  cd "$srcdir/$_pkgname-64-build"
+  make prefix="$pkgdir/opt/wine37" \
+    libdir="$pkgdir/opt/wine37/lib" \
+    dlldir="$pkgdir/opt/wine37/lib/wine" install
 
   # Font aliasing settings for Win32 applications
-  install -d "$pkgdir"/etc/fonts/conf.{avail,d}
-  install -m644 "$srcdir/30-win32-aliases.conf" "$pkgdir/etc/fonts/conf.avail"
-  ln -s ../conf.avail/30-win32-aliases.conf "$pkgdir/etc/fonts/conf.d/30-win32-aliases.conf"
-  install -Dm 644 "$srcdir/wine-binfmt.conf" "$pkgdir/usr/lib/binfmt.d/wine.conf"
+  #install -d "$pkgdir"/etc/fonts/conf.{avail,d}
+  #install -m644 "$srcdir/30-win32-aliases.conf" "$pkgdir/etc/fonts/conf.avail"
+  #ln -s ../conf.avail/30-win32-aliases.conf "$pkgdir/etc/fonts/conf.d/30-win32-aliases.conf"
+  install -Dm 644 "$srcdir/wine-binfmt.conf" "$pkgdir/opt/wine37/lib/binfmt.d/wine.conf"
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
