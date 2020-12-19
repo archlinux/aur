@@ -24,11 +24,11 @@ build() {
 echo "[Desktop Entry]
 Name=Scene Builder 15.0.0-RC1
 Comment=Gluon Scene Builder for Java 15.0.0-RC1
-Exec=/opt/${_basename}/scenebuilder
-Icon=/opt/${_basename}/${_basename}.png
+Exec=/opt/${_basename}/bin/SceneBuilder
+Icon=/opt/${_basename}/lib/${_basename}.png
 Terminal=false
 Type=Application
-Categories=Development;GTK;">"${srcdir}/opt/${_basename}/${_basename}.desktop"
+Categories=Development;GTK;">"${srcdir}/opt/${_basename}/lib/${_basename}.desktop"
 }
 
 package() {
@@ -36,7 +36,7 @@ package() {
   install -d "${pkgdir}/usr/share/applications/"
   install -d "${pkgdir}/usr/share/pixmaps/"
   install -d "${pkgdir}/usr/bin/"
-  ln -s "/opt/${_basename}/scenebuilder" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${_basename}/bin/SceneBuilder" "${pkgdir}/usr/bin/${pkgname}"
   install -m644 "${srcdir}/opt/${_basename}/lib/${_basename}.desktop" "${pkgdir}/usr/share/applications/"
   install -m644 "${srcdir}/opt/${_basename}/lib/${_basename}.png" "${pkgdir}/usr/share/pixmaps/"
 }
